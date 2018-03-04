@@ -32,13 +32,21 @@ describe('Game', function() {
       game.roll(2, 3);
       expect(game.calculateScore()).toEqual(10);
     });
-    
-
   });
 
-  // describe('calculate total score', function() {
-  //   it('returns an integer with correct score', function() {
-  //     expect
-  //   });
-  // });
+  describe(':bonus', function () {
+    it('one spare', function() {
+      game.roll(9,1)
+      game.roll(5,3)
+      expect(game.calculateScore()).toEqual(23)
+      console.log(game)
+    });
+  
+    // it('returns correct score for triple strike', function() {
+    //   for (var i = 1; i <= 3; i ++) {
+    //     game.roll(10);
+    //   }
+    //   expect(game.calculateScore()).toEqual(30)
+    // });
+  });
 });

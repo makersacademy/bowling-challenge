@@ -7,7 +7,7 @@ function Game() {
 
 Game.prototype.calculateScore = function() {
   for(var i = 1; i <= this.frameList.length; i++) {
-    this.totalScore += this.frameList[0].frameScore;
+    this.totalScore += this.frameList[i].frameScore;
   };
   return this.totalScore;
 };

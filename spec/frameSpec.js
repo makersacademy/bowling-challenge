@@ -12,16 +12,19 @@ describe('Frame', function () {
     strikeFrame = new Frame(10);
   });
 
-  describe('Strike and Spare', function() {
+  describe('Strike and Spare:', function() {
     it('returns true for a strike', function() {
       expect(strikeFrame.isStrike()).toEqual(true);
     });
     it('returns true for a spare', function() {
       expect(spareFrame.isSpare()).toEqual(true);
     });
+    it('a spare is not a strike', function() {
+      expect(spareFrame.isStrike()).toEqual(false);
+    });
   });
 
-  describe('frameScore', function() {
+  describe(':frameScore', function() {
     it('returns the correct amount for strikes', function() {
       expect(strikeFrame.frameScore).toEqual(10);
     });

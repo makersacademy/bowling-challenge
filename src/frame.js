@@ -11,6 +11,6 @@ Frame.prototype.isStrike = function() {
 };
 
 Frame.prototype.isSpare = function () {
-  return this.roll1 + this.roll2 === 10;
+  return this.roll1 + this.roll2 === 10 && this.roll1 != 10;
 };
 

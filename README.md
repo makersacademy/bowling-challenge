@@ -3,11 +3,11 @@ Bowling Challenge
 =================
 
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+## Approach
+
+- For this challenge, most of the time and focus went into the initial diagramming. Unfortunately, due to time constraints, I haven't been able to spend as much time as I would want to on the challenge.
+- If I had had more time, I would have added additional edge cases and some styling. 
+- After this challenge, it is more obvious than ever that some good planning and diagram modelling is the key to success in logic-heavy exercises such as this one.
 
 ## The Task
 

@@ -9,9 +9,7 @@ describe('fullGameCalculator', function() {
     gutterGame = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     noTensGame = [7, 2, 7, 2, 7, 2, 7, 2, 7, 2, 7, 2, 7, 2, 7, 2, 7, 2, 7, 2];
     perfectGame = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
-    awkwardGame = [10, 10, 10, 9, 1, 10, 10, 10, 9, 1, 10, 10, 10, 10];
-    awkwardGameTwo = [10, 5, 5, 4, 3, 7, 3, 10, 8, 1, 7, 2, 4, 3, 10, 7, 3, 7];
-    awkwardGameThree = [9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 10];
+    awkwardGame = [9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 10];
     strikeFirst = [10, 5, 3, 10, 10, 10];
     spareFirst = [8, 2, 8, 10, 10, 10];
     strikeFrames = [[10, 10], [10], [10]];
@@ -30,8 +28,8 @@ describe('fullGameCalculator', function() {
       expect(game.score(perfectGame)).toEqual(300);
     });
 
-    it('can score an awkward games', function() {
-      expect(game.score(awkwardGameThree)).toEqual(191);
+    it('can score an awkward game', function() {
+      expect(game.score(awkwardGame)).toEqual(191);
     });
 
     it('resets allFrames to an empty array', function(){

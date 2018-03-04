@@ -5,10 +5,11 @@ body {
   vertical-align: middle;
   font-family: Arial;
   color: #2a618b;
+  opacity: 0.92;
 }
 
 h1 {
-  text-shadow: -1px 2px 3px #dfe5ff;
+  text-shadow: -1px 2px 3px #dfe5ff, -1px 1px 2px #dfe5ff;
 }
 
 button {
@@ -21,28 +22,44 @@ button {
   margin: 5px 2px;
   text-decoration: none;
   z-index: 20;
-  box-shadow: -3px 3px 5px 0px black;
+  box-shadow: -3px 3px 5px 2px black;
+  text-decoration: none;
+  transition: 0.5s;
 }
 
 button:hover {
   border: none;
-  background: #3cb0fd;
+  background: #5a8fe2;
+  color: #ffffff;
   text-decoration: none;
+  text-decoration: none;
+  box-shadow: -5px 5px 16px 0 rgba(0,0,0,0.8), -6px 7px 50px 0 rgba(0,0,0,0.7);
+}
+
+button:focus, input:focus {
+  outline: 0;
+}
+
+button:active {
+  box-shadow: 0;
+  box-shadow: -1px 1px 2px 1px black;
+  transform: translateY(1.5px);
 }
 
 input {
   background: #abbdd8;
+  color: #2a618b;
   border-radius: 28px;
-  color: #2368d3;
+  border: 1px solid #77773e;
   font-size: 20px;
   padding: 5px 15px;
   margin: 5px 2px;
   text-decoration: none;
-  box-shadow: -3px 3px 5px 0px black;
+  box-shadow: -3px 3px 5px 1px black;
 }
 
 .cover {
-  background-color: rgba(50,50,50,0.3);
+  background-color: rgba(234, 237, 168, 0.4);
   position:fixed;
   width:100%;
   height:100%;
@@ -50,7 +67,6 @@ input {
   left:0px;
   z-index: 10;
 }
-
 
 .scorecard {
   margin-left: 40px;
@@ -61,19 +77,20 @@ input {
 }
 
 .scorecard-box {
-  margin: 3px;
+  margin: 4px;
   float: left;
   height: 100px;
   width: 100px;
   border: 1px solid black;
   display: inline-block;
-  background-color: beige;
+  background-color: #d8c484;
   border-radius: 10px;
-  box-shadow: -3px 3px 5px 0px black;
+  box-shadow: -2px 2px 5px 1.5px black;
 }
 
 .header {
   height: 20px;
+  padding-top: 3px;
   border-radius: 10px 10px 0px 0px;
   border-bottom: 1px solid black;
   background-color: #abbdd8;
@@ -82,6 +99,7 @@ input {
 .inner1, .inner2 {
   float: left;
   height: 20px;
+  padding-top: 3px;
   width: 49.5px;
   border-bottom: 1px solid black;
   position: relative;
@@ -96,26 +114,24 @@ input {
   border-left: 1px solid black;
 }
 
-.inner3, #final-score {
+.inner3, #final-scorecard-score {
   height: 50px;
+  font-size: 27.5px;
   padding-top: 35px;
-  font-size: 25px;
 }
 
 .roll-buttons {
   clear: both;
 }
 
-
-
 .hide {
   display: none;
 }
 
-
 #f10-inner1, #f10-inner2, #f10-inner3 {
   float:left;
   height: 20px;
+  padding-top: 3px;
   width: 32.5px;
   border-bottom: 1px solid black;
   position: relative;
@@ -128,4 +144,5 @@ input {
 
 #final-score {
   height: 20px;
+  font-size: 30px;
 }

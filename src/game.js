@@ -31,7 +31,7 @@ Game.prototype = {
   addRollToFrame(frames, count, roll) {
     if (count < 9 && !frames[count]) {
       frames[count] = [roll];
-    } else if (count < 9 && frames[count][0] + roll <= 10) {
+    } else if (count < 9) {
       frames[count].push(roll);
     } else if (count === 9) {
       frames[count] ? frames[count].push(roll) : frames[count] = [roll];
@@ -64,5 +64,9 @@ Game.prototype = {
 
   hasBonus(frame) {
     return frame.length === 3;
+  },
+
+  remainingPins(frame) {
+    return !frame[1] && frame[0] < 10 ? 10 - frame[0] : 10;
   }
 }

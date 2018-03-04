@@ -103,4 +103,18 @@ describe('Game', function() {
       expect(game.hasBonus([10])).toEqual(false);
     });
   });
+
+  describe('The remainingPins function', function(){
+    it('returns the remaining pins if roll one is not a strike', function(){
+      expect(game.remainingPins([8])).toEqual(2);
+    });
+
+    it('returns zero for a strike frame', function() {
+      expect(game.remainingPins([10])).toEqual(0);
+    });
+
+    it('returns zero on roll two', function() {
+      expect(game.remainingPins([4, 4])).toEqual(0);
+    });
+  });
 });

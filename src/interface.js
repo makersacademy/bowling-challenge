@@ -4,22 +4,22 @@ $(document).ready(function() {
   var frameCount = 0;
   var frames = [];
   var roll;
+  var remainingPins;
 
   $('#score').click(function(){
     var gameArr = $('#full-game').val().replace(/\s/,'').split(',').map(Number);
-    console.log(gameArr);
     $('#full-game').val('');
     $('#final-score').text('Total score: ' + calculator.score(gameArr));
   });
 
   $('#restart').click(function(){
-    console.log('restart clicked')
     location.reload();
   });
 
   $('.roll-score').click(function(){
 
-    roll = parseInt(this.id);
+    roll = parseInt(this.value);
+    console.log(frames);
 
     if (frameCount < 9) {
       game.addRollToFrame(frames, frameCount, roll);
@@ -47,13 +47,24 @@ $(document).ready(function() {
       }
       frames = game.bonusChecker(frames);
       frameCount = game.frameTenCheck(frames, frameCount);
-      $(`#f${frameCount} > #final-score > span`).text(game.flattenAndSum(frames));
+      $(`#f${frameCount} > #final-scorecard-score > span`).text(game.flattenAndSum(frames));
 
       console.log(frameCount);
     }
 
     if (frameCount === 10) {
       $('.roll-score').addClass('hide');
+    }
+    if (frames[frameCount]) {
+      remainingPins = game.remainingPins(frames[frameCount]);
+    } else {
+      remainingPins = 10;
+    }
+
+
+    for (var i = 10; i > 0; i--) {
+      $(`#roll${i}`).removeClass('hide');
+      $(`#roll${i+remainingPins}`).addClass('hide');
     }
 
     for (var i = 1; i <= frames.length; i ++) {

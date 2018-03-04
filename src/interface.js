@@ -52,9 +52,7 @@ $(document).ready(function() {
       console.log(frameCount);
     }
 
-    if (frameCount === 10) {
-      $('.roll-score').addClass('hide');
-    }
+
     if (frames[frameCount]) {
       remainingPins = game.remainingPins(frames[frameCount]);
     } else {
@@ -65,6 +63,10 @@ $(document).ready(function() {
     for (var i = 10; i > 0; i--) {
       $(`#roll${i}`).removeClass('hide');
       $(`#roll${i+remainingPins}`).addClass('hide');
+    }
+    
+    if (frameCount === 10) {
+      $('.roll-score').addClass('hide');
     }
 
     for (var i = 1; i <= frames.length; i ++) {

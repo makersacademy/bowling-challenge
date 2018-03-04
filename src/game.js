@@ -1,5 +1,12 @@
 'use strict';
 
+const STRIKE = 10,
+      SPARE = 10,
+      ALL_PINS = 10;
+var   roll1 = 0,
+      roll2 = 1;
+
+
 var Game = function() {};
 
 Game.prototype = {
@@ -8,12 +15,13 @@ Game.prototype = {
     var l = frames.length;
     var [antepenult, penult, ult] = [frames[l - 3], frames[l - 2], frames[l -1]];
     if (l > 2 && this.isStrike(antepenult) && !this.hasBonus(antepenult) && this.isStrike(penult)) {
-      antepenult.push(ult[0]);
-      ult[1] ? penult.push(ult[0], ult[1]) : penult.push(ult[0]);
+      antepenult.push(ult[roll1]);
+      ult[roll2] ? penult.push(ult[roll1], ult[roll2]) : penult.push(ult[roll1]);
     } else if (l > 1 && this.isStrike(penult) && !this.hasBonus(ult)) {
-      ult[1] && ult[1] !== 10 ? penult.push(ult[0], ult[1]) : penult.push(ult[0]);
+      ult[roll2] && ult[roll2] !== 10 ?
+      penult.push(ult[roll1], ult[rol2]) : penult.push(ult[roll1]);
     } else if (l > 1 && !this.hasBonus(penult) && this.isSpare(penult)) {
-      penult.push(ult[0]);
+      penult.push(ult[roll1]);
     }
     return frames;
   },
@@ -29,11 +37,11 @@ Game.prototype = {
   },
 
   addRollToFrame(frames, count, roll) {
-    if (count < 9 && !frames[count]) {
+    if (frames.length < 10 && !frames[count]) {
       frames[count] = [roll];
-    } else if (count < 9) {
+    } else if (frames.length < 10 && frames[count][0] + roll <= 10) {
       frames[count].push(roll);
-    } else if (count === 9) {
+    } else {
       frames[count] ? frames[count].push(roll) : frames[count] = [roll];
     }
     return frames;
@@ -48,25 +56,21 @@ Game.prototype = {
   },
 
   frameTenCheck(frames, count) {
-    if (frames[count].length === 3 || frames[count][0] + frames[count][1] < 10) {
-    count ++;
+    if (frames[index].length === 3 || frames[index][0] + frames[index][1] < 10) {
+    index ++;
     }
-    return count;
+    return index;
   },
 
-  isStrike(frame) {
-    return frame[0] === 10 ? true : false;
+  isStrike(frames) {
+    return frames[0] === 10 ? true : false;
   },
 
-  isSpare(frame) {
-    return frame[0] + frame[1] === 10 ? true : false;
+  isSpare(frames) {
+    return frames[0] + frames[1] === 10 ? true : false;
   },
 
-  hasBonus(frame) {
-    return frame.length === 3;
-  },
-
-  remainingPins(frame) {
-    return !frame[1] && frame[0] < 10 ? 10 - frame[0] : 10;
+  hasBonus(frames) {
+    return frames.length === 3;
   }
 }

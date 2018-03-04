@@ -36,6 +36,12 @@ describe('Game', function(){
       frame.roll_two = 4;
       expect(frame.isSpare()).toEqual(true)
     })
+
+    it("doesn't return true for a strike", function(){
+      frame.roll_one = 10
+      frame.roll_two = 0
+      expect(frame.isSpare()).not.toEqual(true)
+    })
   });
 
 });

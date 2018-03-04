@@ -12,23 +12,68 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
     <article>
-        <section id="frame-1">Hi</section>
-        <section id="frame-2" hidden>No hi</section>
-        <section id="frame-3" hidden></section>
-        <section id="frame-4" hidden></section>
-        <section id="frame-5" hidden></section>
-        <section id="frame-6" hidden></section>
-        <section id="frame-7" hidden></section>
-        <section id="frame-8" hidden></section>
-        <section id="frame-9" hidden></section>
-        <section id="frame-10" hidden></section>
+        <section id="frame-1" class="frame-box">
+            <h4>Frame 1</h4>
+        </section>
+
+        <section id="frame-2" class="frame-box" hidden>
+            <h4>Frame 2</h4>
+        </section>
+
+        <section id="frame-3" class="frame-box" hidden>
+            <h4>Frame 3</h4>
+        </section>
+
+        <section id="frame-4" class="frame-box" hidden>
+            <h4>Frame 4</h4>
+        </section>
+
+        <section id="frame-5" class="frame-box" hidden>
+            <h4>Frame 5</h4>
+        </section>
+
+        <section id="frame-6" class="frame-box" hidden>
+            <h4>Frame 6</h4>
+        </section>
+
+        <section id="frame-7" class="frame-box" hidden>
+            <h4>Frame 7</h4>
+        </section>
+
+        <section id="frame-8" class="frame-box" hidden>
+            <h4>Frame 8</h4>
+        </section>
+
+        <section id="frame-9" class="frame-box" hidden>
+            <h4>Frame 9</h4>
+        </section>
+
+        <section id="frame-10" class="frame-box" hidden>
+            <h4>Frame 10</h4>
+        </section>
+
+        <div id="pins">
+            <button id="0" class="pin-button">0</button>
+            <button id="1" class="pin-button">1</button>
+            <button id="2" class="pin-button">2</button>
+            <button id="3" class="pin-button">3</button>
+            <button id="4" class="pin-button">4</button>
+            <button id="5" class="pin-button">5</button>
+            <button id="6" class="pin-button">6</button>
+            <button id="7" class="pin-button">7</button>
+            <button id="8" class="pin-button">8</button>
+            <button id="9" class="pin-button">9</button>
+            <button id="10" class="pin-button">10</button>
+        </div>
     </article>
 
-    <button id="next-frame"></button>
+
+
+    <button type="submit" id="next-frame">Next frame</button>
 
     <script src="src/Frame.js"></script>
     <script src="src/Game.js"></script>
-    <script>
+    <!-- <script>
         let frame1 = new Frame();
         let frame2 = new Frame();
         let frame3 = new Frame();
@@ -86,7 +131,7 @@
         game.addFrame(frame10);
 
         game.finalScore();
-    </script>
+    </script> -->
     <script src="public/js/interface.js"></script>
 </body>
 </html>

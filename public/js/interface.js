@@ -1,3 +1,4 @@
+// const game = new Game();
 const frame = new Frame();
 
 $(document).ready(() => {
@@ -7,6 +8,13 @@ $(document).ready(() => {
 
   const nextFrame = $('#next-frame');
   nextFrame.click(() => {
-    
+    $('.frame-box:hidden:first').show();
+  });
+
+  const pins = $('#pins');
+  pins.click(() => {
+    const pin = $(pins).attr('id');
+    console.log(pin);
+    frame.roll(pin);
   });
 });

@@ -52,7 +52,7 @@ describe('Frame', () => {
       lastFrame.roll(2);
       lastFrame.roll(3);
 
-      expect(() => { lastFrame.roll(10); }).toThrowError("You can't roll an additional ball. Click on 'Final Score' to see your points!");
+      expect(() => { lastFrame.roll(10); }).toThrowError('The game is over!');
     });
 
     it('it prevents player from rolling a 4th ball in last frame if strike or spare', () => {
@@ -60,7 +60,7 @@ describe('Frame', () => {
       lastFrame.roll(5);
       lastFrame.roll(5);
 
-      expect(() => { lastFrame.roll(10); }).toThrowError("You can't roll an additional ball. Click on 'Final Score' to see your points!");
+      expect(() => { lastFrame.roll(10); }).toThrowError('The game is over!');
     });
 
     describe('#isStrike', () => {

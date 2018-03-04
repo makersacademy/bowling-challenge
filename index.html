@@ -19,10 +19,18 @@
 
     <section class="game hidden">
         <article class="score">
-            <h4>Your score so far: <span>0</span></h4>
+            <h2>Your score so far: <span>0</span></h2>
         </article>
 
-        <section class="frames"></section>
+        <section class="frames">
+            <article class="frame">
+                <h4 id="frame-1">Frame 1</h4>
+                <div class="rolls">
+                    <span class="first-roll"></span>
+                    <span class="second-roll"></span>
+                </div>
+            </article>
+        </section>
         
         <section class="pins"></section>
         
@@ -30,7 +38,13 @@
     </section>
 
     <section class="game-over hidden">
-        <h1>Game Over</h1>
+        <h1>GAME OVER</h1>
+        <h2>
+            Thank you for playing! Your score:
+            <article class="final-score"></article>
+        </h2>
+
+        <div class="score-img"></div>
     </section>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

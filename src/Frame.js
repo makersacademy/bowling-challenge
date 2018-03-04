@@ -32,9 +32,9 @@ Frame.prototype.isRollLegit = function isRollLegit() {
   const newCounter = this.rollCounter + 1;
 
   if (this.strike === false && this.spare === false && this.frameNum === 10 && newCounter === 3) {
-    throw new Error("You can't roll an additional ball. Click on 'Final Score' to see your points!");
+    throw new Error('The game is over!');
   } else if ((this.strike || this.spare) === true && this.frameNum === 10 && newCounter === 4) {
-    throw new Error("You can't roll an additional ball. Click on 'Final Score' to see your points!");
+    throw new Error('The game is over!');
   } else if (this.strike === true && this.frameNum === undefined) {
     throw new Error('You scored a strike. Start next frame!');
   } else if (newCounter >= 3 && this.frameNum === undefined) {

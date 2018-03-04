@@ -33,6 +33,14 @@ $(document).ready(() => {
 
     frame.roll(id);
 
+    if (count === 1) {
+      $('.first-roll').last().html(id);
+    } else if (count === 2) {
+      $('.second-roll').last().html(id);
+    } else if (count === 3) {
+      $('.third-roll').last().html(id);
+    }
+
     if (game.frames.length < 9) {
       if (id === 10) {
         $(pins).addClass('hidden');
@@ -54,12 +62,36 @@ $(document).ready(() => {
         count = 0;
       }
     } else if (game.frames.length === 9) {
-      if (count === 3) {
+      if (count === 2 && frame.currentScore < 10) {
         $(pins).addClass('hidden');
 
         game.addFrame(frame);
         game.finalScore();
         $('.score span').html(game.totalScore);
+        $('.game').addClass('hidden');
+
+        $('.game-over').removeClass('hidden');
+        $('.final-score').html(`${game.totalScore}`);
+
+        if (game.totalScore === 0) {
+          $('.score-img').prepend('<img src="./public/img/gutter_game.png">');
+          $('.score-img').html('You got a gutter game, you need to practise more!');
+        }
+      } else if (count === 3) {
+        $(pins).addClass('hidden');
+
+        game.addFrame(frame);
+        game.finalScore();
+        $('.score span').html(game.totalScore);
+        $('.game').addClass('hidden');
+
+        $('.game-over').removeClass('hidden');
+        $('.final-score').html(`${game.totalScore}`);
+
+        if (game.totalScore === 300) {
+          $('.score-img').prepend('<img src="./public/img/bowling_trophy.jpg">');
+          $('.score-img').html('Congratulations! You got a perfect game!');
+        }
         count = 0;
       } else if (id === 10) {
         $('.pins .pin-button').removeClass('hidden');
@@ -70,8 +102,31 @@ $(document).ready(() => {
   $(next).click(function jQuery() {
     if (game.frames.length === 9) {
       frame = new Frame(10);
+      const num = game.frames.length + 1;
+
+      $('.frames').append($(`
+        <article class="frame">
+          <h4 id="frame-${num}">Frame ${num}</h4>
+          <div class="rolls">
+            <span class="first-roll"></span>
+            <span class="second-roll"></span>
+            <span class="third-roll"></span>
+          </div>
+        </article>
+      `));
     } else {
       frame = new Frame();
+      const num = game.frames.length + 1;
+
+      $('.frames').append($(`
+        <article class="frame">
+          <h4 id="frame-${num}">Frame ${num}</h4>
+          <div class="rolls">
+            <span class="first-roll"></span>
+            <span class="second-roll"></span>
+          </div>
+        </article>
+      `));
     }
 
     $(pins).removeClass('hidden');

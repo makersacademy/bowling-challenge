@@ -31,6 +31,9 @@ TBC
 7) Contain amount of frames per game to 10 and allow frame index to increment after 1 strike or 2 bowls.
 8) Redesign score method in game class to play gutter game or a basic game of no strikes or spares.
 9) Carefully plan out logic for strikes and spares in separate function that tracks each frame score.
+10) Create HTML file to build basic content for bowling app e.g. bowl button and scoresheet table.
+11) Create stylesheet to make web page look more appealing.
+12) Create jQuery file to fill out scoresheet with every bowl. Realised at this point that more logic needs to be added for not allowing a frame with more than 10 pins, and also a function to confirm that the game is over so that the final total can be shown.
 
 ### Author
 

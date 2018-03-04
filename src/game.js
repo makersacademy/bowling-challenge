@@ -34,11 +34,6 @@ Game.prototype._currentFrameNumber = function() {
   return ((this.allFrames.length)-1);
 };
 
-// Game.prototype._currentRoll = function() {
-//   if (this._isSecondRollOfFrame()) {return 2;}
-//   else {return 1;}
-// };
-
 Game.prototype._isNotLegalInput = function(rollScore) {
   return ($.inArray(rollScore, this.legalScores) === -1);
 };

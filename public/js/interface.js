@@ -13,27 +13,36 @@ $(document).ready(function() {
     return function(){
       var currentFrame = game.getFrame(id);
       var previousFrame = game.getFrame(id - 1);
-      console.log(previousFrame);
+      var doubleStrikeFrame = game.getFrame(id - 2);
+      console.log(game.getFrame(id));
       scoreList.push(numberOfPins);
-      console.log(scoreList);
+
+      if (previousFrame || doubleStrikeFrame) {
+        frame.bonusCheck(previousFrame, doubleStrikeFrame, numberOfPins);
+      }
+
       if (currentFrame.ball1 === null) {
         currentFrame.setBall1(numberOfPins);
+        console.log();
+        $('#ball-result-' + currentFrame.frameId ).text(numberOfPins);
+        console.log('frame: ' + currentFrame.frameId);
+        console.log('first ball:');
         console.log(currentFrame);
+        $('#frame-score-' + currentFrame.frameId).text(currentFrame.getScore());
       } else if (frame.ball2 === null) {
         currentFrame.setBall2(numberOfPins);
+        $('#second-ball-result-' + currentFrame.frameId ).text(numberOfPins);
+        console.log('second ball:');
         console.log(currentFrame);
       };
-      console.log(scoreList.length);
-      if (previousFrame != null && previousFrame.strike) {
-        previousFrame.score = previousFrame.score + currentFrame.score;
-      };
-      console.log('current frame ball1:' + currentFrame.ball1);
-      if (currentFrame.ball1 === 10) {
-        var secondStrike = previousFrame;
-      }
+      // if (previousFrame != null && previousFrame.strike) {
+      //   previousFrame.score = previousFrame.score + currentFrame.score;
+      // };
       if (currentFrame.isComplete()) {
         id += 1;
+        console.log('Game after ' + id + ' frames');
         console.log(game);
+
       };
     };
   };

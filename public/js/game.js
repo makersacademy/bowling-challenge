@@ -40,6 +40,14 @@ Game.prototype.getBall1 = function () {
 
 };
 
+// Game.prototype.bonusCheck = function (previousFrame) {
+//   console.log('Bonus check');
+//   console.log(previousFrame);
+//   if (previousFrame.bonus) {
+//
+//   };
+// };
+
 // Game.prototype.currentFrame = function () {
 //   return this._frames[0]
 // };

@@ -82,27 +82,15 @@ $( document ).ready(function() {
     player.roll(10);
     $('.messages').text('You rolled 10')
     $('.table').find('div:empty:first').append(10);
-    if (player.currentGame._numberOfPairs() < 19) {
+    if (player.currentGame._valueOfPair(player.currentGame._numberOfPairs()-1) === undefined ) {
       $('.table').find('div:empty:first').append("X");
     }
     $('.score').text(player.displayBasicScore());
   });
 
-  // if !(game.isInProgress)
-  // $('.final_score2').text(player.score);
-
   $('.count_final_score').click(function() {
     player.countScore()
     $('.final_score').text(player.score);
   });
-
-
-  // $('#add_user_button').click(function() {
-  //   $('.form2').attr('class', 'visible_form')
-  // });
-  //
-  // $('#log_in_button').click(function() {
-  //   $('.form3').attr('class', 'visible_form')
-  // });
 
 });

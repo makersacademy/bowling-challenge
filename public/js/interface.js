@@ -1,20 +1,33 @@
-// const game = new Game();
+const game = new Game();
 const frame = new Frame();
+let i = 0;
 
 $(document).ready(() => {
-  // const pins = $('#pins');
-  // pins.text(frame.pins);
-  // Create one button per number and clicking is a closure to Frame-Roll
-
   const nextFrame = $('#next-frame');
-  nextFrame.click(() => {
-    $('.frame-box:hidden:first').show();
+  const pins = $('.pins');
+
+  $('.begin button').click(() => {
+    $(this).parent().addClass('hidden');
+    $('.game').removeClass('hidden');
   });
 
-  const pins = $('#pins');
-  pins.click(() => {
-    const pin = $(pins).attr('id');
-    console.log(pin);
-    frame.roll(pin);
+  for (i; i <= 10; i++) {
+    if (i === 0) {
+      pins.append($(`<span data-id="${i}" class="pin-button">0</span>`));
+    } else {
+      pins.append($(`<span data-id="${i}" class="pin-button flaticon-bowling-pin"></span>`));
+    }
+  }
+
+  let count = 0;
+  $('.pin-button'.click(() => {
+    count += 1
+    const id = $(this).data('id');
+
+    for (i; i < id; i++) {
+      $('.pins .pin-button:not(.hidden)').last().addClass('hidden');
+    }
+
+    frame.roll(id);
   });
 });

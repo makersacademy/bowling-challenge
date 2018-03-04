@@ -4,134 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Bowling!</title>
+    <title>Bowl and Roll!</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="./public/font/flaticon.css">
     <link rel="stylesheet" href="./public/css/style.css">
 </head>
 <body>
+    <section class="begin">
+        <h1>Welcome to Bowl and Roll!</h1>
+        <p>Click on the button below to start a new game:</p>
+        <button class="start-game">Start game</button>
+    </section>
+
+    <section class="game hidden">
+        <article class="score">
+            <h4>Your score so far: <span>0</span></h4>
+        </article>
+
+        <section class="frames"></section>
+        
+        <section class="pins"></section>
+        
+        <button id="next-frame">Next frame</button>
+    </section>
+
+    <section class="game-over hidden">
+        <h1>Game Over</h1>
+    </section>
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
-    <article>
-        <section id="frame-1" class="frame-box">
-            <h4>Frame 1</h4>
-        </section>
-
-        <section id="frame-2" class="frame-box" hidden>
-            <h4>Frame 2</h4>
-        </section>
-
-        <section id="frame-3" class="frame-box" hidden>
-            <h4>Frame 3</h4>
-        </section>
-
-        <section id="frame-4" class="frame-box" hidden>
-            <h4>Frame 4</h4>
-        </section>
-
-        <section id="frame-5" class="frame-box" hidden>
-            <h4>Frame 5</h4>
-        </section>
-
-        <section id="frame-6" class="frame-box" hidden>
-            <h4>Frame 6</h4>
-        </section>
-
-        <section id="frame-7" class="frame-box" hidden>
-            <h4>Frame 7</h4>
-        </section>
-
-        <section id="frame-8" class="frame-box" hidden>
-            <h4>Frame 8</h4>
-        </section>
-
-        <section id="frame-9" class="frame-box" hidden>
-            <h4>Frame 9</h4>
-        </section>
-
-        <section id="frame-10" class="frame-box" hidden>
-            <h4>Frame 10</h4>
-        </section>
-
-        <div id="pins">
-            <button id="0" class="pin-button">0</button>
-            <button id="1" class="pin-button">1</button>
-            <button id="2" class="pin-button">2</button>
-            <button id="3" class="pin-button">3</button>
-            <button id="4" class="pin-button">4</button>
-            <button id="5" class="pin-button">5</button>
-            <button id="6" class="pin-button">6</button>
-            <button id="7" class="pin-button">7</button>
-            <button id="8" class="pin-button">8</button>
-            <button id="9" class="pin-button">9</button>
-            <button id="10" class="pin-button">10</button>
-        </div>
-    </article>
-
-
-
-    <button type="submit" id="next-frame">Next frame</button>
-
     <script src="src/Frame.js"></script>
     <script src="src/Game.js"></script>
-    <!-- <script>
-        let frame1 = new Frame();
-        let frame2 = new Frame();
-        let frame3 = new Frame();
-        let frame4 = new Frame();
-        let frame5 = new Frame();
-        let frame6 = new Frame();
-        let frame7 = new Frame();
-        let frame8 = new Frame();
-        let frame9 = new Frame();
-        let frame10 = new Frame(10);
-
-        let game = new Game();
-
-        frame1.roll(10);
-        game.addFrame(frame1);
-
-        frame2.roll(10);
-        game.addFrame(frame2);
-
-        frame3.roll(10);
-        game.addFrame(frame3);
-
-        frame4.roll(10);
-        game.addFrame(frame4);
-
-        frame5.roll(10);
-        game.addFrame(frame5);
-
-        frame6.roll(10);
-        game.addFrame(frame6);
-
-        frame7.roll(10);
-        game.addFrame(frame7);
-
-        frame8.roll(10);
-        game.addFrame(frame8);
-
-        frame9.roll(10);
-        game.addFrame(frame9);
-
-        // frame10.roll(2, true);
-        // frame10.roll(3, true);
-
-        // try {
-        //     frame10.roll(10, true);
-        // }
-        // catch(e) {
-        //     // console.log(e);
-        // }
-
-        frame10.roll(10);
-        frame10.roll(10);
-        frame10.roll(10);
-
-        game.addFrame(frame10);
-
-        game.finalScore();
-    </script> -->
     <script src="public/js/interface.js"></script>
 </body>
 </html>

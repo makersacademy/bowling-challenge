@@ -1,11 +1,63 @@
 body {
-  background-color: beige;
+  background: url('http://www.stickpng.com/assets/images/580b585b2edbce24c47b2ae6.png') no-repeat;
+  background-size: 90%;
   text-align: center;
+  vertical-align: middle;
+  font-family: Arial;
+  color: #2a618b;
+}
+
+h1 {
+  text-shadow: -1px 2px 3px #dfe5ff;
+}
+
+button {
+  background: #2368d3;
+  border-radius: 28px;
+  border: none;
+  color: #abbdd8;
+  font-size: 20px;
+  padding: 5px 15px;
+  margin: 5px 2px;
+  text-decoration: none;
+  z-index: 20;
+  box-shadow: -3px 3px 5px 0px black;
+}
+
+button:hover {
+  border: none;
+  background: #3cb0fd;
+  text-decoration: none;
+}
+
+input {
+  background: #abbdd8;
+  border-radius: 28px;
+  color: #2368d3;
+  font-size: 20px;
+  padding: 5px 15px;
+  margin: 5px 2px;
+  text-decoration: none;
+  box-shadow: -3px 3px 5px 0px black;
+}
+
+.cover {
+  background-color: rgba(50,50,50,0.3);
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0px;
+  left:0px;
+  z-index: 10;
 }
 
 
 .scorecard {
+  margin-left: 40px;
   width: 100%;
+  position: relative;
+  margin-left: 8%;
+  margin-right: 8%;
 }
 
 .scorecard-box {
@@ -14,16 +66,22 @@ body {
   height: 100px;
   width: 100px;
   border: 1px solid black;
+  display: inline-block;
+  background-color: beige;
+  border-radius: 10px;
+  box-shadow: -3px 3px 5px 0px black;
 }
 
 .header {
   height: 20px;
+  border-radius: 10px 10px 0px 0px;
   border-bottom: 1px solid black;
+  background-color: #abbdd8;
 }
 
 .inner1, .inner2 {
   float: left;
-  height: 25px;
+  height: 20px;
   width: 49.5px;
   border-bottom: 1px solid black;
   position: relative;
@@ -38,17 +96,26 @@ body {
   border-left: 1px solid black;
 }
 
+.inner3, #final-score {
+  height: 50px;
+  padding-top: 35px;
+  font-size: 25px;
+}
+
 .roll-buttons {
   clear: both;
 }
+
+
 
 .hide {
   display: none;
 }
 
+
 #f10-inner1, #f10-inner2, #f10-inner3 {
   float:left;
-  height: 25px;
+  height: 20px;
   width: 32.5px;
   border-bottom: 1px solid black;
   position: relative;
@@ -60,5 +127,5 @@ body {
 }
 
 #final-score {
-  height: 70px;
+  height: 20px;
 }

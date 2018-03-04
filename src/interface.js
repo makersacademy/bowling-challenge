@@ -42,12 +42,14 @@ $(document).ready(function() {
           $(`#f${frameCount + 1} > #f10-inner${i + 1}`).text(frames[frameCount][i]);
         }
         if (game.isSpare(frames[frameCount])) {
-          $(`#f${frameCount + 1} > #f10-inner${2}`).text('/');
+          $(`#f${frameCount + 1} > #f10-inner2`).text('/');
         }
       }
-      $(`#f${frameCount} > span`).text(game.flattenAndSum(frames));
       frames = game.bonusChecker(frames);
       frameCount = game.frameTenCheck(frames, frameCount);
+      $(`#f${frameCount} > #final-score > span`).text(game.flattenAndSum(frames));
+
+      console.log(frameCount);
     }
 
     if (frameCount === 10) {
@@ -55,7 +57,7 @@ $(document).ready(function() {
     }
 
     for (var i = 1; i <= frames.length; i ++) {
-      $(`#f${i} > span`).text(game.flattenAndSum(frames.slice(0, i)));
+      $(`#f${i} > .inner3 > span`).text(game.flattenAndSum(frames.slice(0, i)));
     }
   });
 });

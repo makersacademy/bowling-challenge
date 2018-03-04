@@ -39,3 +39,7 @@ Game.prototype.getFrame = function (frameNum) {
 Game.prototype.getBall1 = function () {
 
 };
+
+Game.prototype.currentFrame = function () {
+  return this._frames[0]  
+};

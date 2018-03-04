@@ -56,6 +56,8 @@ describe('Game', function() {
       expect(game.getFrame(1)).toBe(frame1)
     })
   });
+
+
   // describe('.frameComplete', function() {
   //   it('checks whether frame is complete', function() {
   //     expect(game.frameComplete(0))

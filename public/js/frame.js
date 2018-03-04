@@ -35,8 +35,10 @@ Frame.prototype.getStrike = function() {
 };
 
 Frame.prototype.isComplete = function() {
-  if (this.score < 10 && this.ball2 != null) {
+  if (this.score < 10 && this.ball2 != null
+      || this.strike === true) {
     console.log(this.score);
+    this.complete = true;
     return true;
   } else {
     return false;

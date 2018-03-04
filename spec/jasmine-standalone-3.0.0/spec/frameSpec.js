@@ -75,9 +75,8 @@ describe('Frame', function() {
     it('knows frame is incomplete when strike is true and score is 10',
     function() {
       frame.setBall1(10);
-      expect(frame.isComplete()).toEqual(false); 
+      expect(frame.isComplete()).toEqual(false);
     });
   });
-
 
 });

@@ -1,37 +1,31 @@
 
 $(document).ready(function() {
   var game = new Game();
-  // var frame = new Frame();
-  var id = 1;
+  var id = 0;
   var scoreList = [];
 
   for (var i = 1; i < 11; i++) {
     var frame = new Frame(i);
     game.addFrame(frame);
-    console.log(game);
-
   };
 
-  function createCallback( i ){
+  function createCallback( numberOfPins ){
     return function(){
-
-      var frame = new Frame(id);
-      var toggle = true
-      numberOfPins = i;
+      var currentFrame = game.getFrame(id);
       scoreList.push(numberOfPins);
-      if (frame.ball1 === null) {
-        frame.setBall1(numberOfPins);
-        game.addFrame(frame)
+      if (currentFrame.ball1 === null) {
+        currentFrame.setBall1(numberOfPins);
       } else if (frame.ball2 === null) {
-        frame.setBall2(numberOfPins);
-        // game.addFrame(frame)
+        currentFrame.setBall2(numberOfPins);
       }
-      console.log(scoreList);
-      console.log(game);
-      id += 1;
+      if (currentFrame.isComplete()) {
+        console.log(currentFrame.isComplete());
+        id += 1;
+        console.log(game);
+
+      };
     };
   };
-
 
 // Here we run the game
     for (var i = 0; i < 11; i++) {

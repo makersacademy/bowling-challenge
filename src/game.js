@@ -29,11 +29,11 @@ Game.prototype = {
   },
 
   addRollToFrame(frames, count, roll) {
-    if (frames.length < 10 && !frames[count]) {
+    if (count < 9 && !frames[count]) {
       frames[count] = [roll];
-    } else if (frames.length < 10 && frames[count][0] + roll <= 10) {
+    } else if (count < 9 && frames[count][0] + roll <= 10) {
       frames[count].push(roll);
-    } else {
+    } else if (count === 9) {
       frames[count] ? frames[count].push(roll) : frames[count] = [roll];
     }
     return frames;
@@ -54,15 +54,15 @@ Game.prototype = {
     return count;
   },
 
-  isStrike(frames) {
-    return frames[0] === 10 ? true : false;
+  isStrike(frame) {
+    return frame[0] === 10 ? true : false;
   },
 
-  isSpare(frames) {
-    return frames[0] + frames[1] === 10 ? true : false;
+  isSpare(frame) {
+    return frame[0] + frame[1] === 10 ? true : false;
   },
 
-  hasBonus(frames) {
-    return frames.length === 3;
+  hasBonus(frame) {
+    return frame.length === 3;
   }
 }

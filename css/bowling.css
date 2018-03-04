@@ -1,31 +1,62 @@
 body {
   background-color: beige;
+  text-align: center;
 }
 
 
 .scorecard {
-
+  width: 100%;
 }
 
 .scorecard-box {
-  margin: 5px 0px;
-  vertical-align: top;
-  position:inherit;
-  display: inline-block;
+  margin: 3px;
+  float: left;
   height: 100px;
   width: 100px;
   border: 1px solid black;
 }
 
-.inner {
-  text-align: center;
-  height: 50px;
-  width: 50px;
-  border-left: 1px solid black;
+.header {
+  height: 20px;
+  border-bottom: 1px solid black;
+}
+
+.inner1, .inner2 {
+  float: left;
+  height: 25px;
+  width: 49.5px;
   border-bottom: 1px solid black;
   position: relative;
   top: 0px;
-  left: 50px;
+}
+
+.inner1 {
+  left: 0px;
+}
+
+.inner2 {
+  border-left: 1px solid black;
+}
+
+.roll-buttons {
+  clear: both;
+}
+
+.hide {
+  display: none;
+}
+
+#f10-inner1, #f10-inner2, #f10-inner3 {
+  float:left;
+  height: 25px;
+  width: 32.5px;
+  border-bottom: 1px solid black;
+  position: relative;
+  top: 0px;
+}
+
+#f10-inner2, #f10-inner3 {
+  border-left: 1px solid black;
 }
 
 #final-score {

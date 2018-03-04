@@ -18,25 +18,44 @@ $(document).ready(function() {
   });
 
   $('.roll-score').click(function(){
-    for (var i = 1; i <= frames.length; i ++) {
-      $(`#f${i} > span`).text(game.flattenAndSum(frames.slice(0, i)));
-    }
+
     roll = parseInt(this.id);
 
     if (frameCount < 9) {
       game.addRollToFrame(frames, frameCount, roll);
-      $(`#f${frameCount + 1} > .inner`).text(frames[frameCount]);
+      if (game.isStrike(frames[frameCount])) {
+        $(`#f${frameCount + 1} > .inner2`).text('X');
+      } else if (game.isSpare(frames[frameCount])) {
+        $(`#f${frameCount + 1} > .inner1`).text(frames[frameCount][0]);
+        $(`#f${frameCount + 1} > .inner2`).text('/');
+      } else {
+        $(`#f${frameCount + 1} > .inner1`).text(frames[frameCount][0]);
+        $(`#f${frameCount + 1} > .inner2`).text(frames[frameCount][1]);
+      }
       frameCount = game.completeFrameCheck(frames, frameCount);
     } else {
       game.addRollToFrame(frames, frameCount, roll)
-      $(`#f${frameCount + 1} > .inner`).text(frames[frameCount]);
+      for (var i = 0; i < frames[frameCount].length; i ++) {
+        if (frames[frameCount][i] === 10) {
+          $(`#f${frameCount + 1} > #f10-inner${i + 1}`).text('X');
+        } else {
+          $(`#f${frameCount + 1} > #f10-inner${i + 1}`).text(frames[frameCount][i]);
+        }
+        if (game.isSpare(frames[frameCount])) {
+          $(`#f${frameCount + 1} > #f10-inner${2}`).text('/');
+        }
+      }
+      $(`#f${frameCount} > span`).text(game.flattenAndSum(frames));
       frames = game.bonusChecker(frames);
       frameCount = game.frameTenCheck(frames, frameCount);
-      $(`#f${frameCount} > span`).text(game.flattenAndSum(frames));
     }
 
     if (frameCount === 10) {
-      $('.roll-score').css('display', 'none');
+      $('.roll-score').addClass('hide');
+    }
+
+    for (var i = 1; i <= frames.length; i ++) {
+      $(`#f${i} > span`).text(game.flattenAndSum(frames.slice(0, i)));
     }
   });
 });

@@ -1,7 +1,9 @@
 $( document ).ready(function() {
 
   const player = new Player;
-  let game;
+  let game = new Game;
+  player.newGame(game);
+
 
   for (i = 1; i < 10; i++) {
     $('.table').append(
@@ -53,7 +55,7 @@ $( document ).ready(function() {
   }
 
   $('.about').click(function() {
-    alert("This app allows you to calculate a score of a classic 10-pins bowling game based upon your input.\n\n   * Click --New game-- to start counting;\n   * Click --Count final score-- to get the final result.\n\nThe basic score (ie. the number of pins knocked down) will be refreshed automatically each time you enter the number.\n\nMind the fact that the final score (basic score + bonuses for strikes and spares) will be available once the game is finished.\n\n ************************\n\nCopyright\n   * The whole code was written by me.\n   * The illustration in the header was been released on a CC licence by Mohamed Hassan\n\n************************\n\nErrors\nIf you find any errors on this website, please do not hesitate to contact me on Github - contact details in the footer.")
+    alert("This app allows you to calculate a score of a classic 10-pins bowling game based upon your input.\n\n   * Click --New game-- to start counting;\n   * Click --Count final score-- to get the final result.\n\nThe basic score (ie. the number of pins knocked down) will be refreshed automatically each time you enter the number.\n\nMind the fact that the final score (basic score + bonuses for strikes and spares) will be available once the game is finished.\n\n ************************\n\nCopyright\n   * The whole code was written by me.\n   * The illustration in the header was been released on a CC licence by Vexels\n\n************************\n\nErrors\nIf you find any errors on this website, please do not hesitate to contact me on Github - contact details in the footer.")
   });
 
   $('.new_game').click(function() {

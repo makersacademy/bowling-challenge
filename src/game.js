@@ -2,7 +2,9 @@
 
 const STRIKE = 10,
       SPARE = 10,
-      ALL_PINS = 10;
+      ALL_PINS = 10,
+      MAX_ROLLS = 3,
+      MAX_FRAMES = 10;
 var   roll1 = 0,
       roll2 = 1;
 
@@ -37,9 +39,9 @@ Game.prototype = {
   },
 
   addRollToFrame(frames, count, roll) {
-    if (frames.length < 10 && !frames[count]) {
+    if (frames.length < MAX_FRAMES && !frames[count]) {
       frames[count] = [roll];
-    } else if (frames.length < 10 && frames[count][0] + roll <= 10) {
+    } else if (frames.length < MAX_FRAMES) {
       frames[count].push(roll);
     } else {
       frames[count] ? frames[count].push(roll) : frames[count] = [roll];
@@ -48,7 +50,7 @@ Game.prototype = {
   },
 
   completeFrameCheck(frames, count) {
-    if (frames[count][0] === 10 || frames[count].length === 2) {
+    if (frames[count][roll1] === STRIKE || frames[count].length === 2) {
       frames = this.bonusChecker(frames);
       count ++;
     }
@@ -56,21 +58,27 @@ Game.prototype = {
   },
 
   frameTenCheck(frames, count) {
-    if (frames[index].length === 3 || frames[index][0] + frames[index][1] < 10) {
-    index ++;
+    if (frames[count].length === MAX_ROLLS
+      || frames[count][roll1] + frames[count][roll2] < SPARE) {
+    count ++;
     }
-    return index;
+    return count;
   },
 
-  isStrike(frames) {
-    return frames[0] === 10 ? true : false;
+  isStrike(frame) {
+    return frame[roll1] === STRIKE ? true : false;
   },
 
-  isSpare(frames) {
-    return frames[0] + frames[1] === 10 ? true : false;
+  isSpare(frame) {
+    return frame[roll1] + frame[roll2] === SPARE ? true : false;
   },
 
-  hasBonus(frames) {
-    return frames.length === 3;
+  hasBonus(frame) {
+    return frame.length === MAX_ROLLS;
+  },
+
+  remainingPins(frame) {
+    return !frame[roll2] && frame[roll1] < STRIKE ?
+      ALL_PINS - frame[roll1] : ALL_PINS;
   }
 }

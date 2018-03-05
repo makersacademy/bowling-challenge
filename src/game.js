@@ -16,13 +16,13 @@ Game.prototype = {
   bonusChecker(frames) {
     var l = frames.length;
     var [antepenult, penult, ult] = [frames[l - 3], frames[l - 2], frames[l -1]];
-    if (l > 2 && this.isStrike(antepenult) && !this.hasBonus(antepenult) && this.isStrike(penult)) {
+    if (l > 2 && this.isStrike(antepenult) && !this.hasBonus(antepenult)) {
       antepenult.push(ult[roll1]);
       ult[roll2] ? penult.push(ult[roll1], ult[roll2]) : penult.push(ult[roll1]);
-    } else if (l > 1 && this.isStrike(penult) && !this.hasBonus(ult)) {
+    } else if (l > 1 && this.isStrike(penult) && !this.hasBonus(penult)) {
       ult[roll2] && ult[roll2] !== 10 ?
-      penult.push(ult[roll1], ult[rol2]) : penult.push(ult[roll1]);
-    } else if (l > 1 && !this.hasBonus(penult) && this.isSpare(penult)) {
+      penult.push(ult[roll1], ult[roll2]) : penult.push(ult[roll1]);
+    } else if (l > 1 && this.isSpare(penult)) {
       penult.push(ult[roll1]);
     }
     return frames;

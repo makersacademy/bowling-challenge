@@ -1,4 +1,4 @@
-Hunoe bowling challenge
+Hunor bowling challenge
 
 
 Bowling Challenge

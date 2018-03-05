@@ -78,7 +78,7 @@ Game.prototype = {
   },
 
   remainingPins(frame) {
-    return !frame[roll2] && frame[roll1] < STRIKE ?
+    return frame && !frame[roll2] && frame[roll1] < STRIKE ?
       ALL_PINS - frame[roll1] : ALL_PINS;
   }
 }

@@ -32,12 +32,7 @@ $(document).ready(function() {
         .text(game.flattenAndSum(frames));
     }
 
-
-    if (frames[frameCount]) {
-      remainingPins = game.remainingPins(frames[frameCount]);
-    } else {
-      remainingPins = ALL_PINS;
-    }
+    remainingPins = game.remainingPins(frames[frameCount]);
 
     for (var i = ALL_PINS; i > 0; i--) {
       $(`#roll${i}`).removeClass('hide');

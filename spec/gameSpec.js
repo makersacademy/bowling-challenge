@@ -121,5 +121,9 @@ describe('Game', function() {
     it('returns ten on roll two', function() {
       expect(game.remainingPins(nine)).toEqual(ALL_PINS);
     });
+
+    it('returns ten for a nil frame', function() {
+      expect(game.remainingPins([][0])).toEqual(ALL_PINS);
+    });
   });
 });

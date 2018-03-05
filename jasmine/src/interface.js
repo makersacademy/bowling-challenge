@@ -3,6 +3,8 @@ window.onload = function() {
 };
 
 $(document).ready( function() {
+  $('.rollpin').css("color", "red");
+
   var bowling = new Bowling ();
   pins();
   // gameScore();

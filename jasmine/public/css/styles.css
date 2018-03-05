@@ -7,17 +7,19 @@ body {
 
 h1 {
   color: black;
-  font-size: 100 px;
-  padding: 50px 30px 30px;
+  font-size: 200 px;
+  padding: 70px 30px 30px;
   text-align: center;
   width: 300 px;
-  height: 100px;
+  height: 200px;
   font-family: Orbitron;
   border-bottom: 4px solid black;
 }
 
 header {
-  /* background-image: url("/images/bowling1.jpeg"); */
+  background-image: url("http://www.cocopahwildriver.com/art/wild-river-illustration.png");
+  background-size: 50%;
+
 }
 
 h2 {
@@ -45,10 +47,10 @@ h2 {
 table, tr, th{
   border: 2px solid;
   align-items: center;
-  margin: 70px 40px 70px 50px;
+  margin: 70px 40px 70px 110px;
   width: 1100px;
   height: 60px;
-  background-color: lightgreen;
+  background-color: white;
 }
 
 .frames{

@@ -19,30 +19,13 @@ $(document).ready(function() {
   $('.roll-score').click(function(){
     roll = parseInt(this.value);
     console.log(frames);
-    if (frameCount < 9) {
+    if (frameCount < MAX_FRAMES - 1) {
       game.addRollToFrame(frames, frameCount, roll);
-      if (game.isStrike(frames[frameCount])) {
-        $(`#f${frameCount + 1} > .inner2`).text('X');
-      } else if (game.isSpare(frames[frameCount])) {
-        $(`#f${frameCount + 1} > .inner1`).text(frames[frameCount][0]);
-        $(`#f${frameCount + 1} > .inner2`).html('<strong><em>/</em></strong>');
-      } else {
-        $(`#f${frameCount + 1} > .inner1`).text(frames[frameCount][0]);
-        $(`#f${frameCount + 1} > .inner2`).text(frames[frameCount][1]);
-      }
+      displayNormalFrame(frames[frameCount]);
       frameCount = game.completeFrameCheck(frames, frameCount);
     } else {
-      game.addRollToFrame(frames, frameCount, roll)
-      for (var i = 0; i < frames[frameCount].length; i ++) {
-        if (frames[frameCount][i] === 10) {
-          $(`#f${frameCount + 1} > #f10-inner${i + 1}`).text('X');
-        } else {
-          $(`#f${frameCount + 1} > #f10-inner${i + 1}`).text(frames[frameCount][i]);
-        }
-        if (game.isSpare(frames[frameCount])) {
-          $(`#f${frameCount + 1} > #f10-inner2`).text('/');
-        }
-      }
+      game.addRollToFrame(frames, frameCount, roll);
+      displayFrameTen(frames[frameCount]);
       frames = game.bonusChecker(frames);
       frameCount = game.frameTenCheck(frames, frameCount);
       $(`#f${frameCount} > #final-scorecard-score > span`)
@@ -53,25 +36,45 @@ $(document).ready(function() {
     if (frames[frameCount]) {
       remainingPins = game.remainingPins(frames[frameCount]);
     } else {
-      remainingPins = 10;
+      remainingPins = ALL_PINS;
     }
 
-    for (var i = 10; i > 0; i--) {
+    for (var i = ALL_PINS; i > 0; i--) {
       $(`#roll${i}`).removeClass('hide');
       $(`#roll${i+remainingPins}`).addClass('hide');
     }
 
-    if (frameCount === 10) {
-      $('.roll-score').addClass('hide');
-    }
-
-    if (frameCount === 10) {
-      console.log('hello from end of game')
+    if (frameCount === MAX_FRAMES) {
       $('.roll-score').addClass('hide');
     }
 
     for (var i = 1; i <= frames.length; i ++) {
       $(`#f${i} > .inner3 > span`).text(game.flattenAndSum(frames.slice(0, i)));
+    }
+
+    function displayNormalFrame() {
+      if (game.isStrike(frames[frameCount])) {
+        $(`#f${frameCount + 1} > .inner2`).text('X');
+      } else if (game.isSpare(frames[frameCount])) {
+        $(`#f${frameCount + 1} > .inner1`).text(frames[frameCount][roll1]);
+        $(`#f${frameCount + 1} > .inner2`).html('<strong><em>/</em></strong>');
+      } else {
+        $(`#f${frameCount + 1} > .inner1`).text(frames[frameCount][roll1]);
+        $(`#f${frameCount + 1} > .inner2`).text(frames[frameCount][roll2]);
+      }
+    }
+
+    function displayFrameTen(frame) {
+      for (var i = 0; i < frame.length; i ++) {
+        if (frame[i] === 10) {
+          $(`#f${frameCount + 1} > #f10-inner${i + 1}`).text('X');
+        } else {
+          $(`#f${frameCount + 1} > #f10-inner${i + 1}`).text(frame[i]);
+        }
+        if (game.isSpare(frame)) {
+          $(`#f${frameCount + 1} > #f10-inner2`).text('/');
+        }
+      }
     }
   });
 });

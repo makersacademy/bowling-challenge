@@ -1,6 +1,6 @@
 body {
   background: url('http://www.stickpng.com/assets/images/580b585b2edbce24c47b2ae6.png') no-repeat;
-  /* background-size: 90%; */
+  background-size: 90%;
   text-align: center;
   vertical-align: middle;
   font-family: 'Courgette', cursive;
@@ -12,6 +12,7 @@ body {
 
 h1 {
   margin-top: 0;
+  margin-bottom: 20px;
   color: #e6f0ff;
   font-family: 'Courgette', cursive;
   /* font-family: 'Satisfy', cursive; */

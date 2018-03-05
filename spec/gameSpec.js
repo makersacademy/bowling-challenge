@@ -15,14 +15,14 @@ describe('Game', function() {
     nine = [8, 1];
   });
 
-  describe('The .bonusChecker function', function() {
+  describe('The .addBonuses function', function() {
     it('adds bonuses to strikeFrames', function() {
-      expect(game.bonusChecker(strikeFrames))
+      expect(game.addBonuses(strikeFrames))
         .toEqual([[10, 10, 10], [10, 10], [10]]);
     });
 
     it('adds bonuses to spareFrames', function() {
-      expect(game.bonusChecker(spareFrame)).toEqual([[8, 2, 5], [5, 2]]);
+      expect(game.addBonuses(spareFrame)).toEqual([[8, 2, 5], [5, 2]]);
     });
   });
 
@@ -47,27 +47,27 @@ describe('Game', function() {
     });
   });
 
-  describe('The completeFrameCheck function', function() {
+  describe('The checkCompleteFrame function', function() {
     it('increments frameCount if the frame is complete', function() {
-      expect(game.completeFrameCheck([strike], 0)).toEqual(1);
+      expect(game.checkCompleteFrame([strike], 0)).toEqual(1);
     });
 
     it('won\'t increment frameCount if the frame is not complete', function() {
-      expect(game.completeFrameCheck([[8]], 0)).toEqual(0);
+      expect(game.checkCompleteFrame([[8]], 0)).toEqual(0);
     });
   });
 
-  describe('The frameTenCheck function', function() {
+  describe('The checkFrameTen function', function() {
     it('increments frameCount if the strike frame is complete', function() {
-      expect(game.completeFrameCheck([[10, 8, 2]], 0)).toEqual(1);
+      expect(game.checkFrameTen([[10, 8, 2]], 0)).toEqual(1);
     });
 
     it('increments frameCount if the no strike frame is complete', function() {
-      expect(game.completeFrameCheck([nine], 0)).toEqual(1);
+      expect(game.checkFrameTen([nine], 0)).toEqual(1);
     });
 
     it('won\'t increment frameCount if the frame is not complete', function() {
-      expect(game.completeFrameCheck([[8]], 0)).toEqual(0);
+      expect(game.checkFrameTen([[8]], 0)).toEqual(0);
     });
   });
 
@@ -109,21 +109,21 @@ describe('Game', function() {
     });
   });
 
-  describe('The remainingPins function', function(){
+  describe('The getRemainingPins function', function(){
     it('returns the remaining pins if roll one is not a strike', function(){
-      expect(game.remainingPins([8])).toEqual(ALL_PINS - 8);
+      expect(game.getRemainingPins([8])).toEqual(ALL_PINS - 8);
     });
 
     it('returns ten for a strike frame', function() {
-      expect(game.remainingPins(strike)).toEqual(ALL_PINS);
+      expect(game.getRemainingPins(strike)).toEqual(ALL_PINS);
     });
 
     it('returns ten on roll two', function() {
-      expect(game.remainingPins(nine)).toEqual(ALL_PINS);
+      expect(game.getRemainingPins(nine)).toEqual(ALL_PINS);
     });
 
     it('returns ten for a nil frame', function() {
-      expect(game.remainingPins([][0])).toEqual(ALL_PINS);
+      expect(game.getRemainingPins([][0])).toEqual(ALL_PINS);
     });
   });
 });

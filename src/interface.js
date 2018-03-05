@@ -22,17 +22,17 @@ $(document).ready(function() {
     if (frameCount < MAX_FRAMES - 1) {
       game.addRollToFrame(frames, frameCount, roll);
       displayNormalFrame(frames[frameCount]);
-      frameCount = game.completeFrameCheck(frames, frameCount);
+      frameCount = game.checkCompleteFrame(frames, frameCount);
     } else {
       game.addRollToFrame(frames, frameCount, roll);
       displayFrameTen(frames[frameCount]);
-      frames = game.bonusChecker(frames);
-      frameCount = game.frameTenCheck(frames, frameCount);
+      frames = game.addBonuses(frames);
+      frameCount = game.checkFrameTen(frames, frameCount);
       $(`#f${frameCount} > #final-scorecard-score > span`)
         .text(game.flattenAndSum(frames));
     }
 
-    remainingPins = game.remainingPins(frames[frameCount]);
+    remainingPins = game.getRemainingPins(frames[frameCount]);
 
     for (var i = ALL_PINS; i > 0; i--) {
       $(`#roll${i}`).removeClass('hide');

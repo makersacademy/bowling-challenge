@@ -9,7 +9,9 @@ var   roll1 = 0,
       roll2 = 1;
 
 
-var Game = function() {};
+var Game = function() {
+
+};
 
 Game.prototype = {
 

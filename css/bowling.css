@@ -17,8 +17,8 @@ h1 {
   font-family: 'Courgette', cursive;
   /* font-family: 'Satisfy', cursive; */
   font-size: 40px;
-  /* text-shadow: -1px 2px 3px #dfe5ff, -1px 1px 2px #dfe5ff; */
-  text-shadow: 0 0 2px #7c9ac7, 0 0 5px #fff, 0 0 5px #5a8fe2, 0 0 7px #2368d3, 0 0 11px #2368d3, 0 0 15px #2368d3, 0 0 21px #5a8fe2;
+  text-shadow: 0 0 2px #cd23d3, 0 0 5px #fff, 0 0 5px #cd23d3, 0 0 7px #cd23d3,
+    0 0 11px #cd23d3, 0 0 15px #cd23d3, 0 0 21px #cd23d3;
 }
 
 button {
@@ -55,7 +55,6 @@ button:active {
   box-shadow: 0;
   box-shadow: -1px 1px 2px 1px #0d2b5a;
   transform: translateY(1.5px);
-  transition: 0.5s;
 }
 
 input {
@@ -75,7 +74,7 @@ input {
 .cover {
   padding-top: 20px;
   background-size: contain;
-  background-color: rgba(35, 104, 211, 0.4);
+  background-color: rgba(35, 104, 211, 0.3);
   width: 100vw;
   height: 200vh;
   top: 0;
@@ -84,11 +83,9 @@ input {
 }
 
 .scorecard {
-  margin-left: 40px;
-  width: 100%;
-  position: relative;
-  margin-left: 8%;
-  margin-right: 8%;
+  display: inline-block;
+  margin: 0 auto;
+  width: 88%;
 }
 
 .scorecard-box {

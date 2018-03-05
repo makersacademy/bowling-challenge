@@ -74,7 +74,7 @@ input {
 .cover {
   padding-top: 20px;
   background-size: contain;
-  background-color: rgba(35, 104, 211, 0.3);
+  background-color: rgba(35, 104, 211, 0.6);
   width: 100vw;
   height: 200vh;
   top: 0;

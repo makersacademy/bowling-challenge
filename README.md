@@ -29,5 +29,4 @@ When I have more time I hope to:
 * Do more research and use a separate module for Frame.
 * In terms of the functionality of the UI, I'd hoped to display different background images or gifs for strikes, spares, gutter-balls and perfect games.
 * Loop for scorecard 1-9 and buttons in a bowling.ejs file.
-* Move variables from jQuery to Game / Frame.
 * Use Selenium for browser testing.

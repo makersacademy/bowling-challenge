@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bowling challenge</title>
+
+  <!--<link rel="stylesheet" href="public/css/style.css">-->
+</head>
+<body>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+
+  <section>
+    <h1>Roll power: <span id="roll-power"></span></h1>
+    <form id="select-roll-power">
+      <input id="current-roll-power" type="number" placeholder="Enter a number 1-10"></input>
+      <input type="submit"></input>
+    </form>
+  </section>
+
+  <section>
+      <h1>Amount of spin: <span id="spin-amount"></span></h1>
+      <form id="select-spin-amount">
+          <input id="current-spin-amount" type="number" placeholder="Enter a number 1-10"></input>
+          <input type="submit"></input>
+      </form>
+  </section>
+
+    <section id="current frame">
+      <h1>Frame number</h1>
+      <p id="current-frame">0</p>
+    </section>
+
+    <section id="current roll">
+      <h1>Roll number</h1>
+      <p id="current-roll">1</p>
+    </section>
+
+    <section id="score">
+      <h1>Score</h1>
+      <p id="current-score">0</p>
+    </section>
+
+    <section id="play-button">
+      <button id="Throw the ball!">Throw the ball</button>
+    </section>
+
+  <script src="jasmine-standalone-3.0.0/src/Bowling.js"></script>
+  <script src="public/js/interface.js"></script>
+</body>
+</html>

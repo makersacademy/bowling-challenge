@@ -4,59 +4,81 @@ window.onload = function() {
 
 $(document).ready( function() {
   var bowling = new Bowling ();
-  var afteroll = function(){
-    for (var i = 1; i <= 21; i ++){
-      $('.roll' + i).text(bowling.roll());
-    };
+  pins();
+  // gameScore();
+
+  function pins() {
+    for (var i = 1; i < 21; i++){
+    $('.roll'+ i).text(bowling.rolls[i-1]);
+  }
   };
+
+  // function gameScore() {
+  //   for (var i = 1; i < 10; i++){
+  //   $('.score'+ i).text(bowling.score());
+  // }
+  // };
+
 
   $('.pin1').click( function (){
     bowling.roll(1);
-    afteroll();
+    pins();
+    $('.score1').text(bowling.score());
+
   })
 
   $('.pin2').click( function (){
     bowling.roll(2);
-    afteroll();
+    pins();
+    $('.score2').text(bowling.score());
   })
 
   $('.pin3').click( function (){
     bowling.roll(3);
-    afteroll();
+    pins();
+    $('.score3').text(bowling.score());
   })
 
   $('.pin4').click( function (){
     bowling.roll(4);
-    afteroll();
+    pins();
+    $('.score4').text(bowling.score());
   })
+
   $('.pin5').click( function (){
     bowling.roll(5);
-    afteroll();
+    pins();
+    $('.score5').text(bowling.score());
   })
 
   $('.pin6').click( function (){
     bowling.roll(6);
-    afteroll();
+    pins();
+    $('.score6').text(bowling.score());
   })
 
   $('.pin7').click( function (){
     bowling.roll(7);
-    afteroll();
+    pins();
+    $('.score7').text(bowling.score());
   })
 
   $('.pin8').click( function (){
     bowling.roll(8);
-    afteroll();
+    pins();
+    $('.score8').text(bowling.score());
   })
 
   $('.pin9').click( function(){
-    bowling.roll(9):
-    afteroll();
+    bowling.roll(9);
+    pins();
+    $('.score9').text(bowling.score());
   })
 
   $('.pin10').click( function(){
     bowling.roll(10);
-    afteroll;
+    pins();
+    $('.score10').text(bowling.score());
   })
 
 

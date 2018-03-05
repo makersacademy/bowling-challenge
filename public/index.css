@@ -70,7 +70,8 @@ p {
     font-size: 48px;
     line-height: 48px;
     text-transform: uppercase;
-    text-align: center;
+    text-align: right;
+    margin: 70px;
     color: #00FF00; 
 }
 
@@ -78,4 +79,46 @@ div.pins {
     max-width: 768px;
     margin: auto;
     border: none;
+}
+
+div.box {
+    background-color: #0033CC; 
+    border: solid 4px; 
+    color: #00FF00;
+    padding: 20px 20px;
+    /* margin: 0px; */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    font-family: 'Press Start 2P', sans-serif;
+    width: 1px;
+}
+
+div.frame {
+    background-color: #0033CC; 
+    border: solid 4px; 
+    color: #00FF00;
+    padding: 20px 20px;
+    /* margin: 0px; */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    font-family: 'Press Start 2P', sans-serif;
+    width: 54px;
+}
+
+div.frame10 {
+    background-color: #0033CC; 
+    border: solid 4px; 
+    color: #00FF00;
+    padding: 20px 20px;
+    /* margin: 0px; */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    font-family: 'Press Start 2P', sans-serif;
+    width: 108px;
 }

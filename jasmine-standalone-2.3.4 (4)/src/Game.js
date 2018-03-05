@@ -56,7 +56,7 @@ Game.prototype.basicScore = function() {
         counter += this._valueOfPair(i)
       } else if (i === 18 && this._valueOfPair(18) === 10){
         counter += this._valueOfPair(18)
-    } else if  (i === 18 && this._valueOfPair(18) !== 10 && (this._valueOfPair(18) + this._valueOfPair(19) === 10)) {
+      } else if  (i === 18 && this._valueOfPair(18) !== 10 ) {
         counter += this._valueOfPair(18)
         counter += this._valueOfPair(19)
       }

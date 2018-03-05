@@ -64,7 +64,7 @@ describe("Player", function() {
     player.roll(3);
     player.roll(3); //
     player.countScore();
-    expect(player.score).toEqual(109);
+    expect(player.score).toEqual(115);
   });
 
 });

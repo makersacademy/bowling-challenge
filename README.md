@@ -1,77 +1,45 @@
+#### General
 
-Bowling Challenge
-=================
+This program allows you to count a score in a classic 10-pins bowling game, including all of the edge cases.
 
+#### How to use the program.
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+1) Locally
+```plain
+$ git clone
+```
+then run the index.html in the browser
 
-## The Task
+2) Online
+go to: http://bowling-calculator.surge.sh/
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+#### Technology
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+#### Classess, functions etc
 
-As usual please start by
+#### Reflection:
 
-* Forking this repo
+## General thoughts
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+This was so far the most logically advanced challenge at makers so far and I must say - I've enjoyed it. It was a pleasure to think through the problem and look for the solution. After weeks of learning how to set up an app etc. - what is more 'technical' and less 'logical', I've welcomed a chance to stretch my brain. I also started to like JS during this one :)
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+Even though I've had fun and I've spend a lot of time diagramming and understanding various edge cases, it took me a few tries to achieve a perfect product. There were some details that I've overlooked on the first glance - especially the fact that the strike creates an empty frame - and it shouldn't have happened.
 
-Also, don't generate random rolls. Trust us on this one.
+Overall I'm very happy with this challenge. Completing it was very satisfying and I am proud of myself.
 
-### Optional Extras
+## What went good:
 
-In any order you like:
+1) completing the logic - indeed, counting bowling scores is harder than it appears.
+2) looping html code in jQuery instead of writing tons of lines which are almost the same.
+3) refactoring code (shorter methods both in model and jquery).
+4) testing - I believe my tests cover all edge cases.
+5) making the UI look nice :)
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+## What went worse:
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+1) I should have created a separate class for a frame (2 rolls) to stash there the more complicated logic (e.g. was there a strike or spare, the number of points etc.) Unfortunately my game class ended up pretty long and on some point's too complicated.
+2) I was unable to count the whole score (with strikes and spares) as the game went on, not only at the end. I think its because my methods were too complicated and it was hard to adapt them to constant refreshments.
 
-## Bowling — how does it work?
+## If I had more time...
 
-### Strikes
-
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
-
-### Spares
-
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-### 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-### Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-### Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+1) I would give myself a few days without this code, look on it with a fresh eye and energy, and create a new frame class. I think that my program can be faaaar better designed.

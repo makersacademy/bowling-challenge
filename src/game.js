@@ -3,10 +3,24 @@
 function Game() {
   this.rolls = [];
   this.result = 0;
+  this.START_SCORE = 0;
+  this.pinTally = this.START_SCORE;
 };
+
+Game.prototype.pinsDown = function(pins) {
+  return pins;
+}
 
 Game.prototype.roll = function(pins) {
   this.rolls.push(pins);
+};
+
+Game.prototype.tally = function(pins) {
+  return this.pinTally += pins;
+};
+
+Game.prototype.getTally = function() {
+  return this.pinTally;
 };
 
 Game.prototype.score = function() {
@@ -36,6 +50,7 @@ Game.prototype.score = function() {
   for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
       if (isStrike()) {
         this.result += getStrikeScore();
+        // this.currentScore = getStrikeScore();
         rollIndex++;
       } else if (isSpare()) {
         this.result += getSpareScore();

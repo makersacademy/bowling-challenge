@@ -3,7 +3,7 @@ $(document).ready(function(){
   updateResult();
 
   function updateResult() {
-    $('#score').text(game.currentScore);
+    $('#score').text(game.pinTally);
   };
 
   $('#one').click(function() {

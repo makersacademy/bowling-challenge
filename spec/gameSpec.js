@@ -13,6 +13,15 @@ describe('Game', function() {
     };
   };
 
+  it('has a starting score of zero', function() {
+    expect(game.getTally()).toEqual(0);
+  });
+
+  it('can score points by number of fallen pins', function(){
+    game.tally(5);
+    expect(game.getTally()).toEqual(5);
+  });
+
   it('can roll a gutter game', function() {
     completeGame(0, 20);
     expect(game.score()).toBe(0);

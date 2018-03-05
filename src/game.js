@@ -3,8 +3,7 @@
 function Game() {
   this.rolls = [];
   this.result = 0;
-  this.START_SCORE = 0;
-  this.pinTally = this.START_SCORE;
+  this.pinTally = 0;
 };
 
 Game.prototype.pinsDown = function(pins) {
@@ -15,12 +14,12 @@ Game.prototype.roll = function(pins) {
   this.rolls.push(pins);
 };
 
-Game.prototype.tally = function(pins) {
-  return this.pinTally += pins;
-};
-
 Game.prototype.getTally = function() {
   return this.pinTally;
+};
+
+Game.prototype.tally = function(pins) {
+  return this.pinTally += pins;
 };
 
 Game.prototype.score = function() {

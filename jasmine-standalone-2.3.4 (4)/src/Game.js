@@ -50,11 +50,11 @@ Game.prototype._addFrame = function() {
 
 Game.prototype.basicScore = function() {
   var counter = 0;
-  this.pairs.map(function(pair) {
-    if (Object.values(pair)[0] !== undefined) {
-      counter += Object.values(pair)[0]
-    }
-  })
+  for (i = 0; i < 20; i ++) {
+   if (this._valueOfPair(i) !== undefined) {
+     counter += this._valueOfPair(i)
+   }
+  }
   return counter;
 }
 

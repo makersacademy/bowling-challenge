@@ -50,10 +50,17 @@ Game.prototype._addFrame = function() {
 
 Game.prototype.basicScore = function() {
   var counter = 0;
-  for (i = 0; i < 20; i ++) {
+  for (i = 0; i < this.pairs.length; i ++) {
    if (this._valueOfPair(i) !== undefined) {
-     counter += this._valueOfPair(i)
-   }
+      if (i < 18) {
+        counter += this._valueOfPair(i)
+      } else if (i === 18 && this._valueOfPair(18) === 10){
+        counter += this._valueOfPair(18)
+    } else if  (i === 18 && this._valueOfPair(18) !== 10 && (this._valueOfPair(18) + this._valueOfPair(19) === 10)) {
+        counter += this._valueOfPair(18)
+        counter += this._valueOfPair(19)
+      }
+    }
   }
   return counter;
 }
@@ -89,6 +96,11 @@ Game.prototype.strikes = function() {
   if (this._valueOfPair(16) === 10) {
     strikes += this._valueOfPair(18);
     strikes += this._valueOfPair(19);
+  }
+
+  if (this._valueOfPair(18) === 10) {
+    strikes += this._valueOfPair(19);
+    strikes += this._valueOfPair(20);
   }
   return strikes;
 }

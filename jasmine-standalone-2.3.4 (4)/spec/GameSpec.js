@@ -65,7 +65,7 @@ describe("Game", function() {
     });
 
     it("calculates basic scores", function() {
-      expect(game.basicScore()).toEqual(82);
+      expect(game.basicScore()).toEqual(76);
     });
 
     it("calculates spares", function() {
@@ -77,7 +77,7 @@ describe("Game", function() {
     });
 
     it("calculates general score", function() {
-      expect(game.generalScore()).toEqual(115);
+      expect(game.generalScore()).toEqual(109);
     });
 
   });
@@ -103,7 +103,7 @@ describe("Game", function() {
       player.roll(10);
       player.roll(10);
       player.roll(2); //
-      expect(game.strikes()).toEqual(21);
+      expect(game.strikes()).toEqual(33);
     });
   });
 
@@ -237,7 +237,7 @@ describe("Game", function() {
       player.roll(10); //
       player.roll(3);
       player.roll(3); //
-      expect(game.generalScore()).toEqual(122);
+      expect(game.generalScore()).toEqual(116);
     });
   });
 });

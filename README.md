@@ -13,7 +13,7 @@ $ open bowling.html
 
 You can then use the UI to either enter a full frame with each roll separated by commas, or enter a game roll by roll into the scorecard.
 
-![Screenshot](https://www.dropbox.com/s/hwdof4konnc509c/Screen%20Shot%202018-03-06%20at%2017.31.09.png?dl=0)
+![Screenshot](https://www.dropbox.com/s/hwdof4konnc509c/Screen%20Shot%202018-03-06%20at%2017.31.09.png?dl=1)
 
 ## Successes, Challenges, and Wish List:
 

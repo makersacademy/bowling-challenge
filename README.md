@@ -23,7 +23,7 @@ I am very pleased with the look and the functionality of the game, I had a lot o
 
 # Challenges
 
-I really wanted to separate the Frame functions into another constructor file, I began to do this and separated the spec files as well, but was not able to get the module.exports to work! My interface jQuery is probably handling more logic than it should but I am struggling with how to separate it out as it is also the logic for what is displayed where on the screen. The addBonuses function feels clunky but I am not sure how to refactor it.
+I really wanted to separate the Frame functions into another constructor file, I began to do this and separated the spec files as well, but was not able to get the module.exports to work! The addBonuses function feels clunky but I am not sure how to refactor it.
 
 # Wish List
 

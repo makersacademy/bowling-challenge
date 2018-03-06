@@ -45,7 +45,7 @@ $(document).ready(function() {
       $(`#f${game.frameCount + 1} > .inner2`).text('X');
     } else if (game.isSpare(frame)) {
       $(`#f${game.frameCount + 1} > .inner1`).text(frame[roll1]);
-      $(`#f${game.frameCount + 1} > .inner2`);
+      $(`#f${game.frameCount + 1} > .inner2`)
         .html('<strong><em>/</em></strong>');
     } else {
       $(`#f${game.frameCount + 1} > .inner1`).text(frame[roll1]);

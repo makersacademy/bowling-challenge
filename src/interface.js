@@ -18,9 +18,9 @@ $(document).ready(function() {
     game.roll = parseInt(this.value);
     game.addRollToFrame();
     game.frameCount < MAX_FRAMES - 1 ? displayFrames() : displayFrameTen();
-    game.checkFramesAndRemainingPins()
-    hideOrShowButtons()
-    displayFrameTotals()
+    game.checkFramesAndRemainingPins();
+    hideOrShowButtons();
+    displayFrameTotals();
   });
 
   function createScoreCardAndButtonsHTML() {
@@ -45,7 +45,7 @@ $(document).ready(function() {
       $(`#f${game.frameCount + 1} > .inner2`).text('X');
     } else if (game.isSpare(frame)) {
       $(`#f${game.frameCount + 1} > .inner1`).text(frame[roll1]);
-      $(`#f${game.frameCount + 1} > .inner2`)
+      $(`#f${game.frameCount + 1} > .inner2`);
         .html('<strong><em>/</em></strong>');
     } else {
       $(`#f${game.frameCount + 1} > .inner1`).text(frame[roll1]);

@@ -2,6 +2,8 @@ $(document).ready(function() {
   var game = new Game();
   var calculator = new GameCalculator();
 
+  createScoreCardAndButtonsHTML();
+
   $('#score').click(function(){
     var gameArr = $('#full-game').val().replace(/\s/,'').split(',').map(Number);
     $('#full-game').val('');
@@ -20,6 +22,22 @@ $(document).ready(function() {
     hideOrShowButtons()
     displayFrameTotals()
   });
+
+  function createScoreCardAndButtonsHTML() {
+    for (var i = 0; i < 11; i++) {
+      $('.roll-buttons').append(
+        `<button class="roll-score" id="roll${i}" value="${i}">${i}</button>`
+      )}
+
+    for (var i = 9; i > 0; i--) {
+    $('.scorecard').prepend(`<div class="scorecard-box" id="f${i}">
+      <div class="header">Frame ${i}</div>
+      <div class="inner1"></div>
+      <div class="inner2"></div>
+      <div class="inner3"><span></span></div>
+      <span></span>
+    </div>`)}
+  }
 
   function displayFrames() {
     var frame = game.frames[game.frameCount];

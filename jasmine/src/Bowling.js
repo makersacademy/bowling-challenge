@@ -1,24 +1,26 @@
 'use strict'
 
-var Bowling = function (){
+var Bowling = function() {
   this.rolls = [];
   this.current = 0;
 };
 
 Bowling.prototype = {
-  roll: function(pins){
+  roll: function(pins) {
     this.rolls[this.current++] = pins;
   },
-
-  score: function(){
+// Create 2 functions separetly for strikescore and spare for refactoring
+// Create a function for 10th frame -- when tenth frame then gameover
+  score: function() {
     var points = 0;
 
     for (var i = 0; i < this.rolls.length; i++) {
       if (this.isStrike(i)) {
-        points += 10 + this.rolls[i+1] + this.rolls[i+2];
+        points += 10 + this.rolls[i + 1] + this.rolls[i + 2];
       } else if (this.isSpare(i)) {
-        points += 10 + this.rolls[i+2];
-        i++; } else {
+        points += 10 + this.rolls[i + 2];
+        i++;
+      } else {
         points += this.rolls[i];
       }
     }
@@ -26,10 +28,10 @@ Bowling.prototype = {
   },
 
   isSpare: function(roll) {
-   return this.rolls[roll] + this.rolls[roll+1] === 10;
+    return this.rolls[roll] + this.rolls[roll + 1] === 10;
   },
 
-  isStrike: function(roll){
+  isStrike: function(roll) {
     return this.rolls[roll] === 10;
   },
 

@@ -2,86 +2,81 @@ window.onload = function() {
 
 };
 
-$(document).ready( function() {
-  $('.rollpin').css("color", "red");
+$(document).ready(function() {
+  $('.pin1').css("background-color", "white");
 
-  var bowling = new Bowling ();
-  pins();
-  // gameScore();
+  var bowling = new Bowling();
 
   function pins() {
-    for (var i = 1; i < 21; i++){
-    $('.roll'+ i).text(bowling.rolls[i-1]);
-  }
+    for (var i = 0; i < 21; i++) {
+      $('.roll' + i).text(bowling.rolls[i-1]);
+    }
   };
 
-  // function gameScore() {
-  //   for (var i = 1; i < 10; i++){
-  //   $('.score'+ i).text(bowling.score());
-  // }
-  // };
+  function score() {
+    for (var i = 0; i < 2; i++) {
+      $('.score'+ i).text(bowling.score());
+    }
+  };
 
-
-  $('.pin1').click( function (){
+  $('.pin1').click(function() {
     bowling.roll(1);
     pins();
-    $('.score1').text(bowling.score());
+    score();
+  });
 
-  })
-
-  $('.pin2').click( function (){
+  $('.pin2').click(function() {
     bowling.roll(2);
     pins();
-    $('.score2').text(bowling.score());
+    score();
   })
 
-  $('.pin3').click( function (){
+  $('.pin3').click(function() {
     bowling.roll(3);
     pins();
-    $('.score3').text(bowling.score());
+    score();
   })
 
-  $('.pin4').click( function (){
+  $('.pin4').click(function() {
     bowling.roll(4);
     pins();
-    $('.score4').text(bowling.score());
+    score();
   })
 
-  $('.pin5').click( function (){
+  $('.pin5').click(function() {
     bowling.roll(5);
     pins();
-    $('.score5').text(bowling.score());
+    score();
   })
 
-  $('.pin6').click( function (){
+  $('.pin6').click(function() {
     bowling.roll(6);
     pins();
-    $('.score6').text(bowling.score());
+    score();
   })
 
-  $('.pin7').click( function (){
+  $('.pin7').click(function() {
     bowling.roll(7);
     pins();
-    $('.score7').text(bowling.score());
+    score();
   })
 
-  $('.pin8').click( function (){
+  $('.pin8').click(function() {
     bowling.roll(8);
     pins();
-    $('.score8').text(bowling.score());
+    score();
   })
 
-  $('.pin9').click( function(){
+  $('.pin9').click(function() {
     bowling.roll(9);
     pins();
-    $('.score9').text(bowling.score());
+    score();
   })
 
-  $('.pin10').click( function(){
+  $('.pin10').click(function() {
     bowling.roll(10);
     pins();
-    $('.score10').text(bowling.score());
+    score();
   })
-
 
 })

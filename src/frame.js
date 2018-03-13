@@ -6,12 +6,13 @@ const STRIKE_SCORE_ROUND = 3;
 class Frame {
   constructor(strikeRound = STRIKE_ROUND, spareRound = STANDARD_ROUND) {
     this.rounds = [];
+    this.bonus = [];
     this.rules = {
       strike: { length: strikeRound, scoreLength: STRIKE_SCORE_ROUND },
       spare: { length: spareRound, scoreLength: STRIKE_SCORE_ROUND },
       normal: { length: STANDARD_ROUND, scoreLength: STANDARD_ROUND },
     };
-    this.rulesToFollow = 'normal';
+    this.rulesToFollow = this.rules['normal'];
   }
 
   score() {
@@ -19,7 +20,8 @@ class Frame {
   }
 
   roll(value) {
-    if (this.rounds.length < STRIKE_SCORE_ROUND) { this.rounds.push(value); }
+    if (this.rounds.length < this.rulesToFollow.length) { this.rounds.push(value); }
+    else if(this.bonus.length < STRIKE_SCORE_ROUND - this.rulesToFollow.length) { this.bonus.push(value) }
     this.resultType();
   }
 
@@ -28,7 +30,7 @@ class Frame {
   }
 
   view() {
-    return this.rounds.slice(0, this.rulesToFollow.length);
+    return this.rounds
   }
 
   // need to make private
@@ -40,7 +42,8 @@ class Frame {
   }
 
   rollsForScores() {
-    return this.rounds.slice(0, this.rulesToFollow.scoreLength);
+    if (this.rulesToFollow.scoreLength === STANDARD_ROUND) { return this.rounds; }
+    return this.rounds.concat(this.bonus)
   }
 
   firstRoll() {

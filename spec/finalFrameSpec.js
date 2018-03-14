@@ -1,5 +1,5 @@
 /* eslint-env jasmine */
-const Frame = require('../src/finalFrame');
+const FinalFrame = require('../src/finalFrame');
 
 
 
@@ -7,7 +7,7 @@ describe('StrikeRound', () => {
   let finalFrame;
 
   beforeEach(() => {
-    finalFrame = new Frame(3, 3);
+    finalFrame = new FinalFrame();
   });
 
   function chainOfRolls(...rolls) {

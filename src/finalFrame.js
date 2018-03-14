@@ -1,17 +1,16 @@
 const STRIKE = 10;
 const STANDARD_ROUND = 2;
-const STRIKE_ROUND = 1;
+const STRIKE_ROUND = 3;
 const STRIKE_SCORE_ROUND = 3;
 
-class Frame {
-  constructor(strikeRound = STRIKE_ROUND, spareRound = STANDARD_ROUND) {
+class FinalFrame {
+  constructor(strikeRound = STRIKE_ROUND) {
     this.rules = {
       strike: { length: strikeRound, bonus: true },
-      spare: { length: spareRound, bonus: true },
+      spare: { length: strikeRound, bonus: true },
       normal: { length: STANDARD_ROUND, bonus: false },
     };
     this.rounds = [];
-    this.bonus = [];
     this.frame = this.rules['normal'];
   }
 
@@ -21,7 +20,6 @@ class Frame {
 
   roll(value) {
     if (this.rounds.length < this.frame.length) { this.rounds.push(value); }
-    else if(this.bonus.length < STRIKE_SCORE_ROUND - this.frame.length) { this.bonus.push(value) }
     this.resultType();
   }
 
@@ -54,4 +52,4 @@ class Frame {
   }
 }
 
-module.exports = Frame;
+module.exports = FinalFrame;

@@ -4,14 +4,14 @@ const STRIKE_ROUND = 1;
 const STRIKE_SCORE_ROUND = 3;
 
 class Frame {
-  constructor(strikeRound = STRIKE_ROUND, spareRound = STANDARD_ROUND) {
-    this.rounds = [];
+  constructor() {
     this.rules = {
-      strike: { length: strikeRound, scoreLength: STRIKE_SCORE_ROUND },
-      spare: { length: spareRound, scoreLength: STRIKE_SCORE_ROUND },
-      normal: { length: STANDARD_ROUND, scoreLength: STANDARD_ROUND },
+      strike: { length: STRIKE_ROUND, bonus: true },
+      spare: { length: STANDARD_ROUND, bonus: true },
+      normal: { length: STANDARD_ROUND, bonus: false },
     };
-    this.rulesToFollow = 'normal';
+    this.rounds = [];
+    this.bonus = [];
   }
 
   score() {
@@ -19,28 +19,27 @@ class Frame {
   }
 
   roll(value) {
-    if (this.rounds.length < STRIKE_SCORE_ROUND) { this.rounds.push(value); }
-    this.resultType();
+    if (this.rounds.length < this.frameRules().length) { this.rounds.push(value); }
+    else if(this.bonus.length < STRIKE_SCORE_ROUND - this.frameRules().length) { this.bonus.push(value); }
   }
 
   isFinished() {
-    return this.rounds.length >= this.rulesToFollow.length;
+    return this.rounds.length === this.frameRules().length;
   }
 
   view() {
-    return this.rounds.slice(0, this.rulesToFollow.length);
+    return this.rounds
   }
 
   // need to make private
-  resultType() {
-    let type = 'normal';
-    if (this.firstRoll() === STRIKE) { type = 'strike'; }
-    if (this.firstRoll() + this.secondRoll() === STRIKE) { type = 'spare'; }
-    this.rulesToFollow = this.rules[type];
+  frameRules() {
+    if (this.firstRoll() === STRIKE) { return this.rules.strike; }
+    if (this.firstRoll() + this.secondRoll() === STRIKE) { return this.rules.spare; }
+    return this.rules.normal;
   }
 
   rollsForScores() {
-    return this.rounds.slice(0, this.rulesToFollow.scoreLength);
+    return (this.frameRules().bonus) ? [...this.rounds,...this.bonus] : this.rounds;
   }
 
   firstRoll() {

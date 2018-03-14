@@ -18,20 +18,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  let colourGen = () => {
-      let a = Math.random() * 255;
-      let b = Math.random() * 255;
-      let c = Math.random() * 255;
-   return "rgb(" + a + ", " + b + ", " + c + ")"
-}
-
-function colours() {
-  document.getElementById('scorecardLabels').style.backgroundColor = colourGen();
-  document.getElementById('scoreCardScores').style.backgroundColor = colourGen();
-  document.getElementById('frameResults').style.backgroundColor = colourGen();
-  document.body.style.backgroundColor = colourGen();
-  document.body.style.color = colourGen();
-}
+//   let colourGen = () => {
+//       let a = Math.random() * 255;
+//       let b = Math.random() * 255;
+//       let c = Math.random() * 255;
+//    return "rgb(" + a + ", " + b + ", " + c + ")"
+// }
+//
+// function colours() {
+//   document.getElementById('scorecardLabels').style.backgroundColor = colourGen();
+//   document.getElementById('scoreCardScores').style.backgroundColor = colourGen();
+//   document.getElementById('frameResults').style.backgroundColor = colourGen();
+//   document.body.style.backgroundColor = colourGen();
+//   document.body.style.text = colourGen();
+// }
 
   // this logic should be in model not in the formatting page...
 
@@ -60,7 +60,7 @@ function colours() {
     });
   };
 
-  let roll = (value) => { game.play(value); setTotal(); individualScores(); showRolls(); colours();};
+  let roll = (value) => { game.play(value); setTotal(); individualScores(); showRolls();};
 
   let rollButton = (pins) => {
     const btn = document.createElement('button');
@@ -96,7 +96,6 @@ function colours() {
     }
   };
 
-  colours();
   setTotal();
   showScoreButtons();
   createScoreCard();

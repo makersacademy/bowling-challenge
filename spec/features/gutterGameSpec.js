@@ -13,7 +13,7 @@ describe('Gutter game', () => {
     let scores = [];
     let frame = Frame;
     let finalFrame = new FinalFrame();
-    let game = new Game(frame, finalFrame);
+    game = new Game(frame, finalFrame);
 
     for (let i = 0; i < 10; i += 1) {
       game.play(GUTTER_GAME);

@@ -2,14 +2,18 @@
 
 const Frame = require('../../src/frame');
 const Game = require('../../src/game');
+const FinalFrame = require('../../src/finalFrame');
 
 describe('Game feature', () => {
   let game;
   let frame;
+  let finalFrame;
+
 
   beforeEach(() => {
     frame = Frame;
-    game = new Game(frame);
+    finalFrame = new FinalFrame();
+    game = new Game(frame, finalFrame);
   });
 
   function chainOfRolls(...rolls) {

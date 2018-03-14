@@ -2,6 +2,7 @@
 
 const Frame = require('../../src/frame');
 const Game = require('../../src/game');
+const FinalFrame = require('../../src/finalFrame');
 
 
 const GUTTER_GAME = 0;
@@ -11,7 +12,8 @@ describe('Gutter game', () => {
     let views = [];
     let scores = [];
     let frame = Frame;
-    let game = new Game(frame);
+    let finalFrame = new FinalFrame();
+    let game = new Game(frame, finalFrame);
 
     for (let i = 0; i < 10; i += 1) {
       game.play(GUTTER_GAME);

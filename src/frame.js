@@ -5,13 +5,13 @@ const STRIKE_SCORE_ROUND = 3;
 
 class Frame {
   constructor(strikeRound = STRIKE_ROUND, spareRound = STANDARD_ROUND) {
+    this.rules = {
+      strike: { length: strikeRound, bonus: true },
+      spare: { length: spareRound, bonus: true },
+      normal: { length: STANDARD_ROUND, bonus: false },
+    };
     this.rounds = [];
     this.bonus = [];
-    this.rules = {
-      strike: { length: strikeRound, scoreLength: STRIKE_SCORE_ROUND },
-      spare: { length: spareRound, scoreLength: STRIKE_SCORE_ROUND },
-      normal: { length: STANDARD_ROUND, scoreLength: STANDARD_ROUND },
-    };
     this.rulesToFollow = this.rules['normal'];
   }
 
@@ -26,7 +26,7 @@ class Frame {
   }
 
   isFinished() {
-    return this.rounds.length >= this.rulesToFollow.length;
+    return this.rounds.length === this.rulesToFollow.length;
   }
 
   view() {
@@ -42,8 +42,7 @@ class Frame {
   }
 
   rollsForScores() {
-    if (this.rulesToFollow.scoreLength === STANDARD_ROUND) { return this.rounds; }
-    return this.rounds.concat(this.bonus)
+    return (this.rulesToFollow.bonus) ? this.rounds.concat(this.bonus) : this.rounds;
   }
 
   firstRoll() {

@@ -4,13 +4,8 @@ const STRIKE_ROUND = 3;
 
 class FinalFrame {
   constructor() {
-    this.rules = {
-      strike: { length: STRIKE_ROUND, bonus: true },
-      spare: { length: STRIKE_ROUND, bonus: true },
-      normal: { length: STANDARD_ROUND, bonus: false },
-    };
+    this.gameLength = STANDARD_ROUND
     this.rounds = [];
-    this.frame = this.rules['normal'];
   }
 
   score() {
@@ -18,7 +13,7 @@ class FinalFrame {
   }
 
   roll(value) {
-    if (this.rounds.length < this.frame.length) { this.rounds.push(value); }
+    if (this.rounds.length < this.gameLength) { this.rounds.push(value); }
     this.resultType();
   }
 
@@ -30,10 +25,8 @@ class FinalFrame {
 
   // need to make private
   resultType() {
-    let type = 'normal';
-    if (this.firstRoll() === STRIKE) { type = 'strike'; }
-    if (this.firstRoll() + this.secondRoll() === STRIKE) { type = 'spare'; }
-    this.frame = this.rules[type];
+    if (this.firstRoll() === STRIKE || this.firstRoll() + this.secondRoll() === STRIKE) { return this.gameLength = STRIKE_ROUND; }
+    return this.gameLength = STANDARD_ROUND
   }
 
   firstRoll() {

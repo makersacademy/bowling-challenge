@@ -12,7 +12,7 @@ class Frame {
     };
     this.rounds = [];
     this.bonus = [];
-    this.rulesToFollow = this.rules['normal'];
+    this.frame = this.rules['normal'];
   }
 
   score() {
@@ -20,13 +20,13 @@ class Frame {
   }
 
   roll(value) {
-    if (this.rounds.length < this.rulesToFollow.length) { this.rounds.push(value); }
-    else if(this.bonus.length < STRIKE_SCORE_ROUND - this.rulesToFollow.length) { this.bonus.push(value) }
+    if (this.rounds.length < this.frame.length) { this.rounds.push(value); }
+    else if(this.bonus.length < STRIKE_SCORE_ROUND - this.frame.length) { this.bonus.push(value) }
     this.resultType();
   }
 
   isFinished() {
-    return this.rounds.length === this.rulesToFollow.length;
+    return this.rounds.length === this.frame.length;
   }
 
   view() {
@@ -38,11 +38,11 @@ class Frame {
     let type = 'normal';
     if (this.firstRoll() === STRIKE) { type = 'strike'; }
     if (this.firstRoll() + this.secondRoll() === STRIKE) { type = 'spare'; }
-    this.rulesToFollow = this.rules[type];
+    this.frame = this.rules[type];
   }
 
   rollsForScores() {
-    return (this.rulesToFollow.bonus) ? this.rounds.concat(this.bonus) : this.rounds;
+    return (this.frame.bonus) ? [...this.rounds, ...this.bonus] : this.rounds;
   }
 
   firstRoll() {

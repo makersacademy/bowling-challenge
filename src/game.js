@@ -29,7 +29,7 @@ class Game {
       if (!frame.isFinished()) { return index; }
       index += 1;
     });
-    return index;
+    return (index > this.board.length) ? this.board.length : index;
   }
 
   addRoll(index, roll) {

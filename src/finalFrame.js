@@ -14,7 +14,7 @@ class FinalFrame {
 
   roll(value) {
     if (this.rounds.length < this.gameLength) { this.rounds.push(value); }
-    this.resultType();
+    this.extraRound();
   }
 
   isFinished() {}
@@ -24,9 +24,10 @@ class FinalFrame {
   }
 
   // need to make private
-  resultType() {
-    if (this.firstRoll() === STRIKE || this.firstRoll() + this.secondRoll() === STRIKE) { return this.gameLength = STRIKE_ROUND; }
-    return this.gameLength = STANDARD_ROUND
+  extraRound() {
+    if (this.firstRoll() === STRIKE || this.firstRoll() + this.secondRoll() === STRIKE) {
+      this.gameLength = STRIKE_ROUND;
+    }
   }
 
   firstRoll() {

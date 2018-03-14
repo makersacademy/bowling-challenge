@@ -42,7 +42,7 @@ class Frame {
   }
 
   rollsForScores() {
-    return (this.frame.bonus) ? [...this.rounds, ...this.bonus] : this.rounds;
+    return (this.frame.bonus) ? [...this.rounds,...this.bonus] : this.rounds;
   }
 
   firstRoll() {

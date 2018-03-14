@@ -14,7 +14,7 @@ class FinalFrame {
   }
 
   score() {
-    return this.round().reduce((a, b) => a + b, 0);
+    return this.rounds.reduce((a, b) => a + b, 0);
   }
 
   roll(value) {
@@ -22,8 +22,7 @@ class FinalFrame {
     this.resultType();
   }
 
-  isFinished() {
-  }
+  isFinished() {}
 
   view() {
     return this.rounds

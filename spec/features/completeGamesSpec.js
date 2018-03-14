@@ -2,6 +2,7 @@
 
 const Frame = require('../../src/frame');
 const Game = require('../../src/game');
+const FinalFrame = require('../../src/finalFrame');
 
 const ROLL_ONE = 7;
 const ROLL_TWO = 2;
@@ -14,6 +15,7 @@ describe('Game feature', () => {
   let frame;
   let views;
   let scores;
+  let finalFrame;
 
   function chainOfRolls(...rolls) {
     rolls.forEach((roll) => {
@@ -25,7 +27,8 @@ describe('Game feature', () => {
     views = [];
     scores = [];
     frame = Frame;
-    game = new Game(frame);
+    finalFrame = new FinalFrame();
+    game = new Game(frame, finalFrame);
 
     for (let i = 0; i < SECOND_TO_LAST_FRAME; i += 1) {
       chainOfRolls(ROLL_ONE, ROLL_TWO);

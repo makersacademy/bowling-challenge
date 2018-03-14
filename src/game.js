@@ -2,9 +2,10 @@ const GAME_LENGTH = 10;
 const FINAL_GAME_STRIKE = 3;
 
 class Game {
-  constructor(frame) {
+  constructor(frame, finalFrame) {
     this.Frames = frame;
     this.board = this.setUpBoard();
+    this.finalFrame = finalFrame;
   }
 
   play(roll) {
@@ -19,7 +20,7 @@ class Game {
     for (let i = 0; i < GAME_LENGTH - 1; i += 1) {
       board.push(new this.Frames());
     }
-    board.push(new this.Frames(FINAL_GAME_STRIKE, FINAL_GAME_STRIKE));
+    (!this.finalFrame) ? board.push(new this.Frames(FINAL_GAME_STRIKE, FINAL_GAME_STRIKE)) : board.push(this.finalFrame)
     return board;
   };
 
@@ -30,6 +31,7 @@ class Game {
       index += 1;
     });
     return (index > this.board.length) ? this.board.length : index;
+    return index;
   }
 
   addRoll(index, roll) {

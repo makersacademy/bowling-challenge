@@ -12,7 +12,6 @@ class Frame {
     };
     this.rounds = [];
     this.bonus = [];
-    this.frame = this.rules['normal'];
   }
 
   score() {
@@ -20,13 +19,12 @@ class Frame {
   }
 
   roll(value) {
-    if (this.rounds.length < this.frame.length) { this.rounds.push(value); }
-    else if(this.bonus.length < STRIKE_SCORE_ROUND - this.frame.length) { this.bonus.push(value) }
-    this.resultType();
+    if (this.rounds.length < this.frameRules().length) { this.rounds.push(value); }
+    else if(this.bonus.length < STRIKE_SCORE_ROUND - this.frameRules().length) { this.bonus.push(value); }
   }
 
   isFinished() {
-    return this.rounds.length === this.frame.length;
+    return this.rounds.length === this.frameRules().length;
   }
 
   view() {
@@ -34,15 +32,14 @@ class Frame {
   }
 
   // need to make private
-  resultType() {
-    let type = 'normal';
-    if (this.firstRoll() === STRIKE) { type = 'strike'; }
-    if (this.firstRoll() + this.secondRoll() === STRIKE) { type = 'spare'; }
-    this.frame = this.rules[type];
+  frameRules() {
+    if (this.firstRoll() === STRIKE) { return this.rules.strike; }
+    if (this.firstRoll() + this.secondRoll() === STRIKE) { return this.rules.spare; }
+    return this.rules.normal;
   }
 
   rollsForScores() {
-    return (this.frame.bonus) ? [...this.rounds,...this.bonus] : this.rounds;
+    return (this.frameRules().bonus) ? [...this.rounds,...this.bonus] : this.rounds;
   }
 
   firstRoll() {

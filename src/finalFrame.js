@@ -23,7 +23,7 @@ class FinalFrame {
 
   // need to make private
   gameLength() {
-    if (this.firstRoll() === STRIKE || this.firstRoll() + this.secondRoll() === STRIKE) { return STRIKE_ROUND ;}
+    if (this.score() >= STRIKE) { return STRIKE_ROUND ;}
     return STANDARD_ROUND
   }
 

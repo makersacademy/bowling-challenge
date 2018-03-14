@@ -4,10 +4,10 @@ const STRIKE_ROUND = 1;
 const STRIKE_SCORE_ROUND = 3;
 
 class Frame {
-  constructor(strikeRound = STRIKE_ROUND, spareRound = STANDARD_ROUND) {
+  constructor() {
     this.rules = {
-      strike: { length: strikeRound, bonus: true },
-      spare: { length: spareRound, bonus: true },
+      strike: { length: STRIKE_ROUND, bonus: true },
+      spare: { length: STANDARD_ROUND, bonus: true },
       normal: { length: STANDARD_ROUND, bonus: false },
     };
     this.rounds = [];

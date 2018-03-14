@@ -4,7 +4,6 @@ const STRIKE_ROUND = 3;
 
 class FinalFrame {
   constructor() {
-    this.gameLength = STANDARD_ROUND
     this.rounds = [];
   }
 
@@ -13,8 +12,7 @@ class FinalFrame {
   }
 
   roll(value) {
-    if (this.rounds.length < this.gameLength) { this.rounds.push(value); }
-    this.extraRound();
+    if (this.rounds.length < this.gameLength()) { this.rounds.push(value); }
   }
 
   isFinished() {}
@@ -24,10 +22,9 @@ class FinalFrame {
   }
 
   // need to make private
-  extraRound() {
-    if (this.firstRoll() === STRIKE || this.firstRoll() + this.secondRoll() === STRIKE) {
-      this.gameLength = STRIKE_ROUND;
-    }
+  gameLength() {
+    if (this.firstRoll() === STRIKE || this.firstRoll() + this.secondRoll() === STRIKE) { return STRIKE_ROUND ;}
+    return STANDARD_ROUND
   }
 
   firstRoll() {

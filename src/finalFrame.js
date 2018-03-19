@@ -1,6 +1,6 @@
-const STRIKE = 10;
-const STANDARD_ROUND = 2;
-const STRIKE_ROUND = 3;
+const STRIKE_FINAL = 10;
+const STANDARD_ROUND_FINAL = 2;
+const STRIKE_ROUND_FINAL = 3;
 
 class FinalFrame {
   constructor() {
@@ -23,8 +23,8 @@ class FinalFrame {
 
   // need to make private
   gameLength() {
-    if (this.score() >= STRIKE) { return STRIKE_ROUND ;}
-    return STANDARD_ROUND
+    if (this.score() >= STRIKE_FINAL) { return STRIKE_ROUND_FINAL ;}
+    return STANDARD_ROUND_FINAL
   }
 
   firstRoll() {

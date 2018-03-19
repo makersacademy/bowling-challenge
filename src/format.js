@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const STRIKE_SYMBOL = 'X';
   const SPARE_SYMBOL = '/';
   let isParty = true;
-  let game = new Game(Frame);
+  let game = new Game(Frame, new FinalFrame());
 
   let setTotal = () => {
     document.getElementById('currentScore').innerHTML = game.score();

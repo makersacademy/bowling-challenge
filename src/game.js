@@ -31,7 +31,6 @@ class Game {
       index += 1;
     });
     return (index > this.board.length) ? this.board.length : index;
-    return index;
   }
 
   addRoll(index, roll) {

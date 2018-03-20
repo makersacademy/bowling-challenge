@@ -3,8 +3,7 @@
 <h2 align="center"> Bowling </h2>
 <h3 align="center"> Work out your score, and see who will win </h3>
 
- <p align="center">  <a href='#scenario'>Scenario</a> |  <a href='#approach'>Approach</a>   |   <a href='#reflections'>Reflections</a> |
- <a href='#user_story'> User Stories</a> |  <a href='#setup'>Setup</a>   |   <a href='#tech'>Tech</a>
+ <p align="center">  <a href='#scenario'>Scenario</a> |  <a href='#approach'>Approach</a>   |   <a href='#reflections'>Reflections</a> | <a href='#rules'>Rules</a>  |  <a href='#setup'>Setup</a>   |   <a href='#tech'>Tech</a>
 
 ## Scenario <a name= "scenario"></a>
 
@@ -38,6 +37,19 @@ One thing I would do building this again, is instead of building all the backend
 
 I would also be interested to see what building the game, and just putting all the rolls in an array would be like. 
 
+## Rules<a name= "rules"></a>
+
+#### Strikes
+
+The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+
+#### Spares
+
+The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+10th frame
+
+#### Normal
+If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
 
 ## Setup <a name= "setup"></a>
 -------
@@ -54,10 +66,6 @@ For extra fun go to format.js:
 6) For even more fun, add ```colour();``` to the end of the rolls.
 
 Then play again! 
-
-## How to play <a name= "Play"></a>
-
-### Basic Rules
 
 
 ## Technologies used  <a name= "Technologies"></a>

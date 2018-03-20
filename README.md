@@ -1,8 +1,10 @@
-[Scenario](#scenario) | [Approach](#approach) | [Extention](#extention) | [Setup](#Setup)| [Play](#Play) | [Technologies](#Technologies)
 
 
-# Bowling
+<h2 align="center"> Bowling </h2>
+<h3 align="center"> Find out your score in this great sport </h3>
 
+ <p align="center">  <a href='#scenario'>Scenario</a> |  <a href='#approach'>Approach</a>   |   <a href='#reflections'>Reflections</a> |
+ <a href='#user_story'> User Stories</a> |  <a href='#setup'>Setup</a>   |   <a href='#tech'>Tech</a>
 
 ## Scenario <a name= "scenario"></a>
 
@@ -23,7 +25,7 @@ As usual I tried to follow test first, build later. And worked on planning and d
 
 One thing I would do building this again, is instead of building all the backend and all the front end seperately, is add one feature at a time. I feel this would have helped me get less stuck at points but also kept the user at the forefront of my mind when building. By doing all the backend first I noticed a few integration issues with the fronted, which led to some messy code...
 
-## Extention <a name= "extention"></a>
+## Reflections <a name= "reflections"></a>
 
 If I'd have had more time, then I would have done 3 things 
 1) Created a rulebook class/game log class to extract out responsibility
@@ -34,7 +36,7 @@ If I'd have had more time, then I would have done 3 things
 I would also be interested to see what building the game, and just putting all the rolls in an array would be like. 
 
 
-## Setup <a name= "Setup"></a>
+## Setup <a name= "setup"></a>
 -------
  
 1) Clone this repo [https://github.com/Tagrand/bowling-challenge.git](https://github.com/Tagrand/bowling-challenge.git)

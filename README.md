@@ -18,7 +18,7 @@ As usual I tried to follow test first, build later. And worked on planning and d
 *Later addition* I decided a few weeks later to come back and refactor the code. I recieved some great feedback on this project and wanted to have a go at it further. I also want to practise working with legacy code. So instead of starting afresh I will be working with my existng code base to gradually improve it. Also I like JS and want more practise with it. 
 
 #### Targets
-*Written at the start of the challenge *
+*Written at the start of the challenge*
 
    - No Jquery, since we covered this during the past week, I'd like to see how much I can do with just Vanilla. 
    - Use the class formatting from ES6 and AirBnB, as this is a different way of structruing JS to how we've been taught. 
@@ -26,6 +26,7 @@ As usual I tried to follow test first, build later. And worked on planning and d
    - Focus on extendability in design.
 
 ## Reflections <a name= "reflections"></a>
+*Written during and after the challenge*
 
 One thing I would do building this again, is instead of building all the backend and all the front end seperately, is add one feature at a time. I feel this would have helped me get less stuck at points but also kept the user at the forefront of my mind when building. By doing all the backend first I noticed a few integration issues with the fronted, which led to some messy code.
 

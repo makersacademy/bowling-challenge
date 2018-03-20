@@ -29,6 +29,6 @@
     "jasmine": "^2.9.0"
   },
   "dependencies": {
-    "http-server"
+    "http-server": "^0.11.1"
   }
 }

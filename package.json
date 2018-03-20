@@ -4,8 +4,9 @@
   "description": "bowling challenge project",
   "main": "index",
   "directories": {
-    "doc": "docs",
-    "lib": "lib"
+    "lib": "lib",
+    "src": "src",
+    "test": "spec"
   },
   "scripts": {
     "test": "jasmine"

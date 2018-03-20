@@ -1,8 +1,8 @@
 {
   "name": "y",
-  "version": "5.6.0",
+  "version": "5.7.1",
   "description": "bowling challenge project",
-  "main": "y",
+  "main": "index",
   "directories": {
     "doc": "docs",
     "lib": "lib"

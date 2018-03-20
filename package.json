@@ -25,10 +25,10 @@
     "eslint": "^4.17.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jasmine": "^2.9.1"
+    "eslint-plugin-jasmine": "^2.9.1",
+    "jasmine": "^2.9.0"
   },
   "dependencies": {
-    "eslint-config-airbnb": "^16.1.0",
-    "jasmine": "^2.9.0"
+    "http-server"
   }
 }

@@ -1,7 +1,7 @@
 
 
 <h2 align="center"> Bowling </h2>
-<h3 align="center"> Find out your score in this great sport </h3>
+<h3 align="center"> Work out your score, and see who will win </h3>
 
  <p align="center">  <a href='#scenario'>Scenario</a> |  <a href='#approach'>Approach</a>   |   <a href='#reflections'>Reflections</a> |
  <a href='#user_story'> User Stories</a> |  <a href='#setup'>Setup</a>   |   <a href='#tech'>Tech</a>
@@ -14,20 +14,23 @@ Great news, there's a website that you can input your score, and it will add up 
 
 ## Approach <a name= "approach"></a>
 
-I set myself 4 targets starting this challenge 
-  
-   - No Jquery (because, why not make things harder?)
-   - Use the class formatting from ES6 so I could get used to that. 
-   - After passing tests, make sure they also fail for the **right reasons** 
-   - Focus on extendability in design.
-   
 As usual I tried to follow test first, build later. And worked on planning and designing my system. Before building the programme I designed 3 different structures, chose the simplest one and worked on that. Had I found time, I would like to try out the other two designs. Which I will try and put on here at some point.
 
-One thing I would do building this again, is instead of building all the backend and all the front end seperately, is add one feature at a time. I feel this would have helped me get less stuck at points but also kept the user at the forefront of my mind when building. By doing all the backend first I noticed a few integration issues with the fronted, which led to some messy code...
+*Later addition* I decided a few weeks later to come back and refactor the code. I recieved some great feedback on this project and wanted to have a go at it further. I also want to practise working with legacy code. So instead of starting afresh I will be working with my existng code base to gradually improve it. Also I like JS and want more practise with it. 
+
+#### Targets
+*Written at the start of the challenge *
+
+   - No Jquery, since we covered this during the past week, I'd like to see how much I can do with just Vanilla. 
+   - Use the class formatting from ES6 and AirBnB, as this is a different way of structruing JS to how we've been taught. 
+   - After passing tests, make sure they also fail for the **right reasons** 
+   - Focus on extendability in design.
 
 ## Reflections <a name= "reflections"></a>
 
-If I'd have had more time, then I would have done 3 things 
+One thing I would do building this again, is instead of building all the backend and all the front end seperately, is add one feature at a time. I feel this would have helped me get less stuck at points but also kept the user at the forefront of my mind when building. By doing all the backend first I noticed a few integration issues with the fronted, which led to some messy code.
+
+#### With more time I would have:
 1) Created a rulebook class/game log class to extract out responsibility
 2) Styled it nicer - bit more time on the css
 3) Refactor my tests more and make sure there's no repetition
@@ -39,18 +42,17 @@ I would also be interested to see what building the game, and just putting all t
 ## Setup <a name= "setup"></a>
 -------
  
-1) Clone this repo [https://github.com/Tagrand/bowling-challenge.git](https://github.com/Tagrand/bowling-challenge.git)
-2) Open the index page
+1) Clone this repo 
+``` git clone https://github.com/Tagrand/bowling-challenge.git ```
+2) Open the index page in your browser
 3) Enjoy!
 
-(For extra fun go to format.js:
+For extra fun go to format.js:
 
-```
-1) Uncomment the colour code
-2) Add colour() to the bottom of the file where the other methods are
-3) For even more fun, add colour(); to the end of the rolls.
+4) Uncomment the colour code
+5) Add ```colour()``` to the bottom of the file where the other methods are
+6) For even more fun, add ```colour();``` to the end of the rolls.
 
-```
 Then play again! 
 
 ## How to play <a name= "Play"></a>

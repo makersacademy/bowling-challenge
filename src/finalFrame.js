@@ -15,16 +15,18 @@ class FinalFrame {
     if (this.rounds.length < this.gameLength()) { this.rounds.push(value); }
   }
 
-  isFinished() {}
+  isFinished() {
+    return false;
+  }
 
   view() {
-    return this.rounds
+    return this.rounds;
   }
 
   // need to make private
   gameLength() {
-    if (this.score() >= STRIKE_FINAL) { return STRIKE_ROUND_FINAL ;}
-    return STANDARD_ROUND_FINAL
+    if (this.score() >= STRIKE_FINAL) { return STRIKE_ROUND_FINAL; }
+    return STANDARD_ROUND_FINAL;
   }
 
   firstRoll() {

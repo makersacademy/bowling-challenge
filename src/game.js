@@ -9,15 +9,15 @@ class Game {
   }
 
   play(roll) {
-    let runningFrame = this.currentFrameIndex();
+    const runningFrame = this.currentFrameIndex();
     this.addRoll(runningFrame, roll);
     if (runningFrame > 0) { this.addRoll(runningFrame - 1, roll); }
     if (runningFrame > 1) { this.addRoll(runningFrame - 2, roll); }
   }
 
   setUpBoard() {
-    let board = [];
-    for (let i = 0; i < GAME_LENGTH -1; i += 1) {
+    const board = [];
+    for (let i = 0; i < GAME_LENGTH - 1; i += 1) {
       board.push(new this.Frames());
     }
     board.push(this.finalFrame);
@@ -42,13 +42,13 @@ class Game {
   }
 
   runningScores() {
-    let results = [];
+    const results = [];
     this.board.forEach((frame) => { results.push(frame.score()); });
     return results;
   }
 
   view() {
-    let views = [];
+    const views = [];
     this.board.forEach((frame) => { views.push(frame.view()); });
     return views;
   }

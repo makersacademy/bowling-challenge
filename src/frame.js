@@ -19,8 +19,7 @@ class Frame {
   }
 
   roll(value) {
-    if (this.rounds.length < this.frameRules().length) { this.rounds.push(value); }
-    else if(this.bonus.length < STRIKE_SCORE_ROUND - this.frameRules().length) { this.bonus.push(value); }
+    if (this.rounds.length < this.frameRules().length) { this.rounds.push(value); } else if (this.bonus.length < STRIKE_SCORE_ROUND - this.frameRules().length) { this.bonus.push(value); }
   }
 
   isFinished() {
@@ -28,7 +27,7 @@ class Frame {
   }
 
   view() {
-    return this.rounds
+    return this.rounds;
   }
 
   // need to make private
@@ -39,7 +38,7 @@ class Frame {
   }
 
   rollsForScores() {
-    return (this.frameRules().bonus) ? [...this.rounds,...this.bonus] : this.rounds;
+    return (this.frameRules().bonus) ? [...this.rounds, ...this.bonus] : this.rounds;
   }
 
   firstRoll() {

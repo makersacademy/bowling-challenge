@@ -68,7 +68,7 @@ For extra fun go to format.js:
 Then play again! 
 
 
-## Technologies used  <a name= "Technologies"></a>
+## Technologies used  <a name= "tech"></a>
   - Javascript 
   - Jasmine
   - HTML

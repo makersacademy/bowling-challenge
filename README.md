@@ -55,25 +55,30 @@ If the player rolls a strike or spare in the 10th frame they can roll the additi
 ## Setup <a name= "setup"></a>
 -------
  
-1) Clone this repo 
-``` git clone https://github.com/Tagrand/bowling-challenge.git ```
-2) Open the index page in your browser
+1) Clone this repo and load the server
+``` 
+git clone https://github.com/Tagrand/bowling-challenge.git 
+npm install 
+http-server 
+```
+
+2) Visit localhost:8080
 3) Enjoy!
 
-For extra fun go to format.js:
+For extra fun, kill the server and go to src/format.js:
 
 4) Uncomment the colour code
 5) Add ```colour()``` to the bottom of the file where the other methods are
 6) For even more fun, add ```colour();``` to the end of the rolls.
 
-Then play again! 
+Then play again
 
 
 ## Technologies used  <a name= "tech"></a>
   - Javascript 
   - Jasmine
-  - HTML
-  - CSS
+  - Node
+  - HTTP-server
   
 ## Acknowledgements
 

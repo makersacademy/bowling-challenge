@@ -15,7 +15,7 @@ Great news, there's a website that you can input your score, and it will add up 
 
 As usual I tried to follow test first, build later. And worked on planning and designing my system. Before building the programme I designed 3 different structures, chose the simplest one and worked on that. Had I found time, I would like to try out the other two designs. Which I will try and put on here at some point.
 
-*Later addition* I decided a few weeks later to come back and refactor the code. I recieved some great feedback on this project and wanted to have a go at it further. I also want to practise working with legacy code. So instead of starting afresh I will be working with my existng code base to gradually improve it. Also I like JS and want more practise with it. 
+*Later addition* I decided a few weeks later to come back and refactor the code. I recieved some great feedback on this project and wanted to have a go at it further. I also want to practise working with legacy code. So instead of starting afresh I will be working with my existing code base to gradually improve it. Also I like JS and want more practise with it. However, for fun I decided to go with a new test framework - Jest, to stretch myself. 
 
 #### Targets
 *Written at the start of the challenge*
@@ -30,6 +30,8 @@ As usual I tried to follow test first, build later. And worked on planning and d
 
 One thing I would do building this again, is instead of building all the backend and all the front end seperately, is add one feature at a time. I feel this would have helped me get less stuck at points but also kept the user at the forefront of my mind when building. By doing all the backend first I noticed a few integration issues with the fronted, which led to some messy code.
 
+*Extention* After deciding to add front end. I chose to use Jest and Puppeteer. Originally I used Karma too but part way through doing this. I realised I had just added a lot of stuff without reflecting. So I slowed it down, I pulled back and the past few hours I've been working on a sandbox project playing with Jest and Puppeteer (no Karma, keep it simple). A future key target is to do this more - rather than just adding new tech to a project, build a sandbox and play about so I understand it fully before I use it. 
+ 
 #### With more time I would have:
 1) Created a rulebook class/game log class to extract out responsibility
 2) Styled it nicer - bit more time on the css
@@ -79,6 +81,8 @@ Then play again
   - Jasmine
   - Node
   - HTTP-server
+  - Jest 
+  - Puppeteer
   
 ## Acknowledgements
 

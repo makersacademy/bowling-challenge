@@ -26,7 +26,9 @@
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jasmine": "^2.9.1",
-    "jasmine": "^2.9.0"
+    "jasmine": "^2.9.0",
+    "jest": "^22.4.3",
+    "jest-cli": "^22.4.3"
   },
   "dependencies": {
     "http-server": "^0.11.1"

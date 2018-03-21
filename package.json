@@ -28,7 +28,8 @@
     "eslint-plugin-jasmine": "^2.9.1",
     "jasmine": "^2.9.0",
     "jest": "^22.4.3",
-    "jest-cli": "^22.4.3"
+    "jest-cli": "^22.4.3",
+    "puppeteer": "^1.2.0"
   },
   "dependencies": {
     "http-server": "^0.11.1"

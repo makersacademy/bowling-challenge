@@ -42,7 +42,7 @@ This is where PART 4 from the previous section comes into play. I would divide t
 
 1. Business logic:
 * Definitely the <i>finalScore</i> method in Game.js needs refactoring. This is a top priority for the next focus. Some private methods can be added to make the Game class more elegant and readable.
-* I am aware that there is a short way of writing prototype pattern methods for a class, I would look into that as well, even though I am aware that is not really a priority.
+* I am aware that there is a short way of writing prototype pattern methods for a class, I would look into that as well, even though I do not consider this to be really a priority.
 
 * Functionality / Edge cases:
 - Because of the view layer (when I intentionally hid buttons when a roll is not possible), not all the logic needs to be perfect, but it should be. For example, I am aware that two 9's could be potentially rolled in the same frame without the view layer. Also a method needs to be added to check if the player tries to add more than 10 frames to an instance of Game.

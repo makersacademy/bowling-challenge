@@ -1,6 +1,6 @@
 module.exports = {
-    "plugins": ["jasmine"],
-    "extends": ["airbnb-base", 'plugin:jasmine/recommended'],
+    "plugins": ["jasmine", "jest"],
+    "extends": ["airbnb-base", 'plugin:jasmine/recommended', 'plugin:jest/recommended'],
      "env": {
      "jasmine": true,
     }

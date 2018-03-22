@@ -1,17 +1,19 @@
-describe("Testing Karma with Chrome headless", () => {
+/* eslint-env jest */
+const path = require('path');
 
-    it("Should work if configuration is correct", () => {
-      expect(true).toBeTruthy();
-    });
-
-});
+const root = path.result(__dirname);
 const puppeteer = require('puppeteer');
 
-(async () => {
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-  await page.goto('https://example.com');
-  await page.screenshot({path: 'example.png'});
+describe('visit page', () => {
+  const url = `file:///${root}../index.html`;
 
-  await browser.close();
-})();
+  test('has title', async () => {
+    const browser = await puppeteer.launch({ headless: false, slowmo: 1000 });
+    const page = await browser.newPage();
+    await page.goto(url);
+    const title = await page.title();
+    await page.screenshot({ path: 'screenshot.png' });
+
+    expect(title).toBe('Bowling');
+  });
+});

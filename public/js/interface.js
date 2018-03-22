@@ -12,6 +12,7 @@ $(document).ready(() => {
     $(next).addClass('hidden');
   });
 
+  // Create pins
   for (i; i <= 10; i++) {
     if (i === 0) {
       pins.append($(`<span data-id="${i}" class="pin-button">0</span>`));
@@ -33,6 +34,7 @@ $(document).ready(() => {
 
     frame.roll(id);
 
+    // Hiding/Showing pins depending on pins knocked | Frame num
     if (count === 1) {
       $('.first-roll').last().html(id);
     } else if (count === 2) {
@@ -97,6 +99,7 @@ $(document).ready(() => {
     }
   });
 
+  // Populating Frames as game advances
   $(next).click(function jQuery() {
     if (game.frames.length === 9) {
       frame = new Frame(10);

@@ -9,7 +9,7 @@
     "test": "spec"
   },
   "scripts": {
-    "test": "jasmine"
+    "test": "jest"
   },
   "repository": {
     "type": "git",

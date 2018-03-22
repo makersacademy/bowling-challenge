@@ -19,7 +19,11 @@ class Frame {
   }
 
   roll(value) {
-    if (this.rounds.length < this.frameRules().length) { this.rounds.push(value); } else if (this.bonus.length < STRIKE_SCORE_ROUND - this.frameRules().length) { this.bonus.push(value); }
+    if (this.rounds.length < this.frameRules().length) {
+      this.rounds.push(value);
+    } else if (this.bonus.length < STRIKE_SCORE_ROUND - this.frameRules().length) {
+      this.bonus.push(value);
+    }
   }
 
   isFinished() {

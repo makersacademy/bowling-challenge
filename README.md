@@ -7,7 +7,7 @@ Bowling Challenge
 
 ## How to play
 * Clone it
-* Run following (open index.html) from terminal
+* Run following (open index.html(mac))/( xdg-open index.html(linux)) from terminal
 * Play by clicking on 'Roll Pins'(It will randomly generate knocked out pins)
 
 ## Bowling — how does it work?

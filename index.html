@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bowl and Roll!</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="./public/font/flaticon.css">
+    <link rel="stylesheet" href="./public/css/style.css">
+</head>
+<body>
+    <section class="begin">
+        <h1>Welcome to Bowl and Roll!</h1>
+        <p>Click on the button below to start a new game:</p>
+        <button class="start-game">Start game</button>
+    </section>
+
+    <section class="game hidden">
+        <article class="score">
+            <h2>Your score so far: <span>0</span></h2>
+        </article>
+
+        <section class="frames">
+            <article class="frame">
+                <h4 id="frame-1">Frame 1</h4>
+                <div class="rolls">
+                    <span class="first-roll"></span>
+                    <span class="second-roll"></span>
+                </div>
+            </article>
+        </section>
+        
+        <section class="pins"></section>
+        
+        <button class="next-frame">Next frame</button>
+    </section>
+
+    <section class="game-over hidden">
+        <h1>GAME OVER</h1>
+        <h2>
+            Thank you for playing! Your score:
+            <article class="final-score"></article>
+        </h2>
+
+        <div class="gutter-game hidden">
+            <img src="./public/img/gutter_game.png" alt="a gutter game">
+            <p>You got a gutter game, you need to practise more!</p>
+        </div>
+        <div class="perfect-game hidden">
+            <img src="./public/img/bowling_trophy.jpg" alt="a perfect game">
+            <p>Congratulations! You got a perfect game!</p>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="src/Frame.js"></script>
+    <script src="src/Game.js"></script>
+    <script src="public/js/interface.js"></script>
+</body>
+</html>

@@ -11,20 +11,21 @@ var BowlingGame = function (){
 };
 
 BowlingGame.prototype.roll = function (pins1, pins2) {
-  this.pins1 = pins1;
-  this.pins2 = pins2;
-  total = pins1 + pins2;
+  this.pins1 = parseInt(pins1);
+  this.pins2 = parseInt(pins2);
+  total = this.pins1 + this.pins2;
   this.currentRollNumber += 2;
   this.frameNumber += 1;
   this.score();
 
-  if (total === 10 && pins2 !== 0) {
+ if (total === 10 && parseInt(pins2) !== 0) {
     return this._isSpare();
   }
 
-  if (pins1 === 10 && pins2 === 0) {
+ if (pins1 === 10 && parseInt(pins2) === 0) {
     return this._isStrike();
   }
+  console.log(this)
 };
 
 BowlingGame.prototype.score = function () {
@@ -34,46 +35,43 @@ BowlingGame.prototype.score = function () {
 
 BowlingGame.prototype.finalScore = function () {
 
-  if (this.scoreTotal === 130) {
+ if (this.scoreTotal === 130) {
    this.scoreFinal = 300;
-}
-else {
-  
-  var indexSpare = this.scoreArrayIndexSpare;
-  var array = this.scoreArray;
-  var total = [];
-  var sum = 0;
+  } else {
+    var indexSpare = this.scoreArrayIndexSpare;
+    var array = this.scoreArray;
+    var total = [];
+    var sum = 0;
 
-  indexSpare.forEach(function(index){
-    var totalSpareArray = [];
-    totalSpareArray.push(array[index]);
-    total.push(totalSpareArray[0]);
+   indexSpare.forEach(function(index){
+      var totalSpareArray = [];
+      totalSpareArray.push(array[index]);
+      total.push(totalSpareArray[0]);
+    });
 
-});
-total.forEach(function(num){
-  sum += num;
+   total.forEach(function(num){
+      sum += num;
+    });
 
-});
+   var indexStrike = this.scoreArrayIndexStrike;
+    var totalStrikes = [];
+    var sumStrikes = 0;
 
-var indexStrike = this.scoreArrayIndexStrike;
-var totalStrikes = [];
-var sumStrikes = 0;
+   indexStrike.forEach(function(index){
+      var totalStrikeArray = [];
+      totalStrikeArray.push(array[index]);
+      totalStrikes.push(totalStrikeArray[0]);
+    });
 
-indexStrike.forEach(function(index){
-  var totalStrikeArray = [];
-  totalStrikeArray.push(array[index]);
-  totalStrikes.push(totalStrikeArray[0]);
-
-});
-totalStrikes.forEach(function(num){
-sumStrikes += num;
-});
+   totalStrikes.forEach(function(num){
+      sumStrikes += num;
+    });
+  };
 
 this.scoreFinal = this.scoreTotal + sum + sumStrikes;
 
 console.log(sum);
 console.log(sumStrikes);
-}
 
 };
 

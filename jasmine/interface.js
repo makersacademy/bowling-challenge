@@ -222,6 +222,7 @@ $(document).ready(function() {
   });
 
   $('#finalScore').on('click', function() {
+    game.finalScore();
     $('#final2').text(game.scoreFinal);
   });
 

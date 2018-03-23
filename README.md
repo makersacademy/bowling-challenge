@@ -1,77 +1,89 @@
 
-Bowling Challenge
-=================
 
+<h2 align="center"> Bowling </h2>
+<h3 align="center"> Work out your score, and see who will win </h3>
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+ <p align="center">  <a href='#scenario'>Scenario</a> |  <a href='#approach'>Approach</a>   |   <a href='#reflections'>Reflections</a> | <a href='#rules'>Rules</a>  |  <a href='#setup'>Setup</a>   |   <a href='#tech'>Tech</a>
 
-## The Task
+## Scenario <a name= "scenario"></a>
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+You've set up some pins and want to play a casual game of bowling on your own. You like to be laid back and casual, but at the same time obcessively following the rules to the letter. How will you keep score?!
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+Great news, there's a website that you can input your score, and it will add up and calculate how much you've got. Following traditional bowling rules. It will never cease to amaze! 
 
-As usual please start by
+## Approach <a name= "approach"></a>
 
-* Forking this repo
+As usual I tried to follow test first, build later. And worked on planning and designing my system. Before building the programme I designed 3 different structures, chose the simplest one and worked on that. Had I found time, I would like to try out the other two designs. Which I will try and put on here at some point.
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+*Later addition* I decided a few weeks later to come back and refactor the code. I recieved some great feedback on this project and wanted to have a go at it further. I also want to practise working with legacy code. So instead of starting afresh I will be working with my existing code base to gradually improve it. Also I like JS and want more practise with it. However, for fun I decided to go with a new test framework - Jest, to stretch myself. 
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+#### Targets
+*Written at the start of the challenge*
 
-Also, don't generate random rolls. Trust us on this one.
+   - No Jquery, since we covered this during the past week, I'd like to see how much I can do with just Vanilla. 
+   - Use the class formatting from ES6 and AirBnB, as this is a different way of structruing JS to how we've been taught. 
+   - After passing tests, make sure they also fail for the **right reasons** 
+   - Focus on extendability in design.
 
-### Optional Extras
+## Reflections <a name= "reflections"></a>
+*Written during and after the challenge*
 
-In any order you like:
+One thing I would do building this again, is instead of building all the backend and all the front end seperately, is add one feature at a time. I feel this would have helped me get less stuck at points but also kept the user at the forefront of my mind when building. By doing all the backend first I noticed a few integration issues with the fronted, which led to some messy code.
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+*Extention* After deciding to add front end. I chose to use Jest and Puppeteer. Originally I used Karma too but part way through doing this. I realised I had just added a lot of stuff without reflecting. So I slowed it down, I pulled back and the past few hours I've been working on a sandbox project playing with Jest and Puppeteer (no Karma, keep it simple). A future key target is to do this more - rather than just adding new tech to a project, build a sandbox and play about so I understand it fully before I use it. 
+ 
+#### With more time I would have:
+1) Created a rulebook class/game log class to extract out responsibility
+2) Styled it nicer - bit more time on the css
+3) Refactor my tests more and make sure there's no repetition
+4) Moved my format.js into two files, a controller and a views section (or something similar)
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+I would also be interested to see what building the game, and just putting all the rolls in an array would be like. 
 
-## Bowling — how does it work?
+## Rules<a name= "rules"></a>
 
-### Strikes
+#### Strikes
 
 The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
 
-### Spares
+#### Spares
 
 The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+10th frame
 
-### 10th frame
-
+#### Normal
 If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
 
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
+## Setup <a name= "setup"></a>
+-------
+ 
+1) Clone this repo and load the server
+``` 
+git clone https://github.com/Tagrand/bowling-challenge.git 
+npm install 
+http-server 
+```
 
-### Gutter Game
+2) Visit localhost:8080
+3) Enjoy!
 
-A Gutter Game is when the player never hits a pin (20 zero scores).
+For extra fun, kill the server and go to src/format.js:
 
-### Perfect Game
+4) Uncomment the colour code
+5) Add ```colour()``` to the bottom of the file where the other methods are
+6) For even more fun, add ```colour();``` to the end of the rolls.
 
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+Then play again
 
-In the image below you can find some score examples.
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
+## Technologies used  <a name= "tech"></a>
+  - Javascript 
+  - Jasmine
+  - Node
+  - HTTP-server
+  - Jest 
+  - Puppeteer
+  
+## Acknowledgements
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+ Thanks to @MakersAcademy for providing the challenge, and as always, google, for continuing to listen to all my many questions. 

@@ -1,0 +1,38 @@
+{
+  "name": "y",
+  "version": "5.7.1",
+  "description": "bowling challenge project",
+  "main": "index",
+  "directories": {
+    "lib": "lib",
+    "src": "src",
+    "test": "spec"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tagrand/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tagrand/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/Tagrand/bowling-challenge#readme",
+  "devDependencies": {
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jasmine": "^2.9.1",
+    "eslint-plugin-jest": "^21.15.0",
+    "jasmine": "^2.9.0",
+    "jest": "^22.4.3",
+    "jest-cli": "^22.4.3",
+    "puppeteer": "^1.2.0"
+  },
+  "dependencies": {
+    "http-server": "^0.11.1"
+  }
+}

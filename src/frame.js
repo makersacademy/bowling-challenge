@@ -2,9 +2,8 @@ function Frame() {
   this.rollOne = 0;
   this.rollTwo = 0;
   this.bonus = 'none';
-  this.BONUS = 10
-
-
+  this.BONUS = 10;
+  this.frame = 0;
 };
 
 Frame.prototype.play1 = function(pins) {
@@ -33,8 +32,6 @@ Frame.prototype.frameScore = function() {
   return this.rollOne + this.rollTwo;
 };
 
-
-
-Frame.prototype.bonus = function() {
-
+Frame.prototype.frameNumber = function() {
+  return this.frame
 }

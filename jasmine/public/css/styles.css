@@ -1,0 +1,61 @@
+body {
+
+  background-color: lightgrey;
+  width: 400 px;
+
+}
+
+h1 {
+  color: black;
+  font-size: 200 px;
+  padding: 70px 30px 30px;
+  text-align: center;
+  width: 300 px;
+  height: 200px;
+  font-family: Orbitron;
+  border-bottom: 4px solid black;
+}
+
+header {
+  background-image: url("http://www.cocopahwildriver.com/art/wild-river-illustration.png");
+  background-size: 50%;
+
+}
+
+h2 {
+  font-family: Orbitron;
+  font-size: 80 px;
+  padding-left: 20px;
+
+}
+
+.rollpin {
+
+  margin-left: 70px;
+
+}
+
+.pinroll {
+
+  width: 300 px;
+  font-family: Orbitron;
+  color: black;
+  text-align: center;
+  margin: 20px 30px 40px 40px;
+}
+
+table, tr, th{
+  border: 2px solid;
+  align-items: center;
+  margin: 70px 40px 70px 110px;
+  width: 1100px;
+  height: 60px;
+  background-color: white;
+}
+
+.frames{
+  font-family: Orbitron;
+  text-align: center;
+  text-decoration: line-through;
+
+}

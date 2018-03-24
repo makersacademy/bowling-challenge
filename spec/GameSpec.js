@@ -1,8 +1,9 @@
 describe('Game', function() {
-  let game;
+  let game, frame;
 
   beforeEach(function() {
     game = new Game();
+    frame = jasmine.createSpy('Frame');
   });
 
   it('should have an inital score of 0', function() {
@@ -12,73 +13,41 @@ describe('Game', function() {
   it('should have no frames played', function() {
     expect(game._frames).toEqual([]);
   });
-});
 
-describe('Frame', function() {
-  let frame;
-  var round;
+  describe('addFrame', function() {
+    it('stores a frame', function() {
+      game.addFrame(frame);
 
-  beforeEach(function() {
-    frame = new Frame();
-    round = jasmine.createSpy('Round');
-  });
-
-  it('should have an inital score of 0', function() {
-    expect(frame._score).toEqual(0);
-  });
-
-  it('should have no rounds played', function() {
-    expect(frame._rounds).toEqual([]);
-  });
-
-  describe('addRound', function() {
-    it('should be able to store a round', function() {
-      frame.addRound(round);
-
-      expect(frame._rounds).toEqual([round]);
+      expect(game._frames).toEqual([frame])
     });
 
-    it('throws an error if more than three rounds are added to a frame', function() {
-      frame.addRound(round);
-      frame.addRound(round);
-      frame.addRound(round);
+    it('throws an error if more than ten frams are added to a game', function() {
+      for(var i = 0; i <= 10; i++) {
+        game.addFrame(frame);
+      }
 
       expect(function() {
-        frame.addRound(round);
-      }).toThrowError('Max number of rounds exceeded');
+        game.addFrame(frame);
+      }).toThrowError('Max number of frames reached');
     });
   });
 
   describe('score', function() {
-    it('returns the score from the current frame', function() {
+    it('returns the score from the current game', function() {
       // TODO: How to stub this
+      var frame = new Frame();
       frame.addRound(new Round(7));
       frame.addRound(new Round(2));
+      frame.score();
 
-      expect(frame.score()).toEqual(9);
+      var frame1 = new Frame();
+      frame1.addRound(new Round(2));
+      frame1.addRound(new Round(5));
+      frame1.score();
+
+      game.addFrame(frame);
+      game.addFrame(frame1);
+      expect(game.score()).toEqual(16);
     });
-  });
-});
-
-describe('Round', function() {
-  let round;
-
-  beforeEach(function() {
-    round = new Round(0);
-  });
-
-  it('should have an inital score of 0', function() {
-    expect(round._score).toEqual(0);
-  });
-
-  it('updates the round score with how many pins knocked down', function() {
-    round = new Round(9);
-    expect(round._score).toEqual(9);
-  });
-
-  it('throws an error if max number of pins are entered', function() {
-    expect(function() {
-      new Round(11);
-    }).toThrowError('Max number of pins exceeded');
   });
 });

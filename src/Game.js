@@ -5,31 +5,18 @@ function Game() {
   this._frames = [];
 };
 
-function Frame() {
-  this._score = 0;
-  this._rounds = [];
-};
-
-Frame.prototype.addRound = function(round) {
-  if (this._rounds.length >= 3) {
-    throw new Error("Max number of rounds exceeded");
+Game.prototype.addFrame = function(frame) {
+  if (this._frames.length > 10) {
+    throw new Error('Max number of frames reached');
   } else {
-    this._rounds.push(round);
+    this._frames.push(frame);
   };
 };
 
-Frame.prototype.score = function() {
+Game.prototype.score = function() {
   let that = this;
-  this._rounds.forEach(function(element) {
+  this._frames.forEach(function(element) {
     that._score += element._score;
   });
   return this._score;
-};
-
-function Round(numberOfPins) {
-  if (numberOfPins > 10) {
-    throw new Error("Max number of pins exceeded");
-  } else {
-    this._score = numberOfPins;
-  };
 };

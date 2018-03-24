@@ -6,8 +6,13 @@ function Score() {
 }
 
 Score.prototype.totalScore = function(frame) {
-
-  return this.currentTotalScore += (frame.rollOne + frame.rollTwo);
+  if (this.previousBonus === 'spares') {
+    return this.currentTotalScore += ((frame.rollOne * 2) + frame.rollTwo);
+  } else if (this.previousBonus === 'strike') {
+    return this.currentTotalScore += (frame.rollOne + frame.rollTwo) * 2;
+  }else {
+    return this.currentTotalScore += (frame.rollOne + frame.rollTwo);
+  }
 }
 
 Score.prototype.giveBonus = function(frame) {
@@ -20,13 +25,6 @@ Score.prototype.giveBonus = function(frame) {
   }
 }
 
-Score.prototype.isPreviousFrameSparesBonus = function(frame) {
-  return frame.bonusAward() === 'spares';
-}
-
-Score.prototype.isPreviousFrameStrikeBonus = function(frame) {
-  return frame.bonusAward() === 'strike';
-}
 
 function Frame() {
   this.rollOne = 0;

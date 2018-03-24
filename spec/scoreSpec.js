@@ -44,14 +44,37 @@ describe('Score', function(){
     expect(score.previousBonus).toEqual('strike');
   });
 
-  it('awards an appropriate bonus', function() {
+  it('awards a strike bonus', function() {
     score.totalScore(frame1);
     frame2.play1(10);
     frame2.bonusAward();
     score.totalScore(frame2)
     frame3.play1(1);
     frame3.play2(2);
-    score.isPreviousFrameStrikeBonus(frame2)
+    score.giveBonus(frame2)
     expect(score.totalScore(frame3)).toEqual(22)
+  });
+  it('awards a spares bonus', function() {
+    score.totalScore(frame1);
+    frame2.play1(5);
+    frame2.play2(5);
+    frame2.bonusAward();
+    score.totalScore(frame2)
+    frame3.play1(1);
+    frame3.play2(2);
+    score.giveBonus(frame2)
+    expect(score.totalScore(frame3)).toEqual(20)
+  });
+  it('awards no bonus', function() {
+    score.totalScore(frame1);
+    frame2.play1(5);
+    frame2.play2(4);
+    frame2.bonusAward();
+    score.totalScore(frame2)
+    frame3.play1(1);
+    frame3.play2(2);
+    score.giveBonus(frame2)
+    expect(score.totalScore(frame3)).toEqual(18)
   })
+
 });

@@ -24,4 +24,11 @@ describe('Score', function(){
     frame2.play2(3)
     expect(score.totalScore(frame2)).toEqual(14);
   })
+
+  it('knows if there is a spares bonus', function(){
+    score.totalScore(frame1)
+    frame2.play1(5)
+    frame2.play2(5)
+    expect(score.isSparesBonus).toBe(true);
+  })
 });

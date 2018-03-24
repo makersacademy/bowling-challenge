@@ -11,6 +11,9 @@ Score.prototype.totalScore = function(frame) {
 function Frame() {
   this.rollOne = 0;
   this.rollTwo = 0;
+  this.bonus = 'none';
+  this.BONUS = 10
+
 
 };
 
@@ -29,3 +32,18 @@ Frame.prototype.currentScore = function(roll) {
 Frame.prototype.frameScore = function() {
   return this.rollOne + this.rollTwo;
 };
+
+Frame.prototype.bonusAward = function() {
+  if ((this.rollOne === 0 && this.rollTwo !== 0) || (this.rollOne !== 0 && this.rollTwo === 0)
+  &&  (this.rollOne + this.rollTwo === this.BONUS)) {
+    return this.bonus = 'strike';
+  } else if (this.rollOne + this.rollTwo === this.BONUS) {
+    return this.bonus = 'spares';
+  } else {
+    return this.bonus = 'none';
+  }
+}
+
+Frame.prototype.bonus = function() {
+
+}

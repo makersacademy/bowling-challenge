@@ -64,9 +64,17 @@ $(document).ready(function() {
   // })
   $('[id*=pins]').each(function() {
     $(this).on("click", function(){
-      console.log($(this).val())
-      console.log('hello')
-      console.log(this.val)
+      var pins = $(this).val()
+      if (currentFrame.roll === 1) {
+        console.log(currentFrame.play1(pins))
+           currentFrame.nextRoll()
+           console.log(currentFrame)
+         }else if (currentFrame.roll === 2) {
+           console.log(currentFrame.play2(pins))
+           console.log(currentFrame)
+           currentFrame.nextRoll()
+         }
+
     });
 
   })

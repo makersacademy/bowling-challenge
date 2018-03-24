@@ -1,6 +1,11 @@
 'use strict';
 function Score() {
+  this.currentTotalScore = 0
 
+}
+
+Score.prototype.totalScore = function(frame) {
+  return this.currentTotalScore += (frame.rollOne + frame.rollTwo);
 }
 
 function Frame() {

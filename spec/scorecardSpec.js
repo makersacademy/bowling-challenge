@@ -15,8 +15,14 @@ describe('Scorecard', function(){
   });
   it('returns nil for a gutter game', function(){
     for(var i = 0; i < 20; i++){
-      scorecard.add(0)
+      scorecard.roll(0)
     }
     expect(scorecard.score()).toBe(0)
-  })
-})
+  });
+  it('returns the correct score for an open frame game', function(){
+    for(var i = 0; i < 20; i++){
+      scorecard.roll(4)
+    }
+    expect(scorecard.score()).toBe(80)
+  });
+});

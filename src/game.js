@@ -1,18 +1,24 @@
 function Game() {
   this.currentFrame = 1
-  this.currentRoll = 1
+  this.currentBowl = 1
   this.framePins = 10
-  // var score = new Score();
+  this.score = 0
 };
 
-Game.prototype.roll = function(pins) {
-  this.currentRoll ++
-  this.framePins -= pins
-  this._calcFrame();
+Game.prototype.bowl = function(pins) {
+  var score =
+  this._calcFrame()
+  this.currentBowl ++;
+  this.framePins -= pins;
+  this._calcBowlScore(pins);
 };
 
 Game.prototype._calcFrame = function () {
-  if (this.currentRoll == 2) {
+    if (this.currentBowl == 2) {
     this.currentFrame ++
-  };
+    };
+};
+
+Game.prototype._calcBowlScore = function (pins) {
+    this.score += pins;
 };

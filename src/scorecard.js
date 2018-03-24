@@ -7,3 +7,7 @@ function Scorecard() {
 Scorecard.prototype.score = function(){
   return this._score
 }
+
+Scorecard.prototype.add = function(number){
+  this._score += number
+}

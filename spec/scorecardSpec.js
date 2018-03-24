@@ -9,4 +9,8 @@ describe('Scorecard', function(){
   it('returns the score', function(){
     expect(scorecard.score()).toBe(0)
   });
+  it('adds the score', function(){
+    scorecard.add(5)
+    expect(scorecard.score()).toBe(5)
+  })
 })

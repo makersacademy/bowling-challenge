@@ -19,7 +19,7 @@ describe('Game', function() {
   });
 
   it('starts each game with a score of 0', function() {
-    expect(game.score).toEqual(0);
+    expect(game.totalScore).toEqual(0);
   });
 
   describe('bowl', function() {
@@ -44,7 +44,7 @@ describe('Game', function() {
     it('should add the bowl score to the score', function() {
       game.bowl(3);
       game.bowl(4);
-      expect(game.score).toEqual(7);
+      expect(game.totalScore).toEqual(7);
     });
   });
 });

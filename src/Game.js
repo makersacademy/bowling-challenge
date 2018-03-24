@@ -1,18 +1,32 @@
+'use strict';
+
 function Game() {
   this._score = 0;
+  this._frames = [];
 };
 
-function Frame(lastRoundFrame = false, round = new Round()) {
+function Frame() {
   this._score = 0;
-  this._isLastRoundFrame = lastRoundFrame;
-  this._rounds = lastRoundFrame ? [round, round, round] : [round, round];
+  this._rounds = [];
 };
 
-function Round() {
-  this._score = 0;
+Frame.prototype.addRound = function(round) {
+  if (this._rounds.length >= 3) {
+    throw new Error("Max number of rounds exceeded");
+  } else {
+    this._rounds.push(round);
+  };
 };
 
-Round.prototype.updateScore = function (numberOfPins) {
+Frame.prototype.score = function() {
+  let that = this;
+  this._rounds.forEach(function(element) {
+    that._score += element._score;
+  });
+  return this._score;
+};
+
+function Round(numberOfPins) {
   if (numberOfPins > 10) {
     throw new Error("Max number of pins exceeded");
   } else {

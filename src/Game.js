@@ -11,3 +11,11 @@ function Frame(lastRoundFrame = false, round = new Round()) {
 function Round() {
   this._score = 0;
 };
+
+Round.prototype.updateScore = function (numberOfPins) {
+  if (numberOfPins > 10) {
+    throw new Error("Max number of pins exceeded");
+  } else {
+    this._score = numberOfPins;
+  };
+};

@@ -14,17 +14,17 @@ $(document).ready(function() {
     $('#frame').text(parseInt(index) + 1);
   });
 
-  $('#pins-0').click(function() {
-    if (currentFrame.roll === 1) {
-      console.log(currentFrame.play1(0))
-      console.log(currentFrame.nextRoll())
-      console.log(currentFrame)
-    }else if (currentFrame.roll === 2) {
-      console.log(currentFrame.play2(0))
-      console.log(currentFrame)
-      console.log(currentFrame.nextRoll())
-    }
-  });
+  // $('#pins-0').click(function() {
+  //   if (currentFrame.roll === 1) {
+  //     console.log(currentFrame.play1(0))
+  //     console.log(currentFrame.nextRoll())
+  //     console.log(currentFrame)
+  //   }else if (currentFrame.roll === 2) {
+  //     console.log(currentFrame.play2(0))
+  //     console.log(currentFrame)
+  //     console.log(currentFrame.nextRoll())
+  //   }
+  // });
 
   // $('#pins-1').click(function() {
   //   if (currentFrame.roll === 1) {
@@ -66,11 +66,13 @@ $(document).ready(function() {
     $(this).on("click", function(){
       var pins = $(this).val()
       if (currentFrame.roll === 1) {
-        console.log(currentFrame.play1(pins))
+        $('#current-roll').text(currentFrame.roll)
+        console.log(currentFrame.play1(parseInt(pins)))
            currentFrame.nextRoll()
            console.log(currentFrame)
          }else if (currentFrame.roll === 2) {
-           console.log(currentFrame.play2(pins))
+           $('#current-roll').text(currentFrame.roll)
+           console.log(currentFrame.play2(parseInt(pins)))
            console.log(currentFrame)
            currentFrame.nextRoll()
          }

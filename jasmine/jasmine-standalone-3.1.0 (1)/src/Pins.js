@@ -25,7 +25,7 @@ NumberOfPins.prototype.roll = function(n) {
       if (this.frame === 10) {
         if (n === 10) {
           this.rolls += 1
-        } else if (secondButtons.length === n) {
+        } else if (secondButtons.length - 1 === n) {
         this.rolls += 1;
         } else {
         this.rolls -= 1;
@@ -37,7 +37,7 @@ NumberOfPins.prototype.roll = function(n) {
     return this.DEFAULT_BUTTONS;
   } else if (this.rolls === 3) {
     this.frame += 1
-    this.rolls -= 1
+    this.rolls -= 2
     return this.DEFAULT_BUTTONS;
   }
 };

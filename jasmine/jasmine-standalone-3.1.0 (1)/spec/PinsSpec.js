@@ -39,7 +39,7 @@ describe('NumberOfPins', function() {
       expect(function(){numberOfPins.roll(9);}).toThrowError('You already did 10 frames!');
      });
 
-     it('chooses a number from nextButtons and goes to the next frame', function() {
+     it('chooses a number from secondButtons and goes to the next frame', function() {
        numberOfPins.rolls += 1
        expect(numberOfPins.roll(3)).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
      });

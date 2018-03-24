@@ -17,4 +17,12 @@ describe('Frame', function() {
       expect(frame.currentScore(frame.rollTwo)).toEqual(6);
     });
   });
+
+  describe('after frame', function() {
+    it('gives a total score for the frame', function() {
+      frame.play1(3);
+      frame.play2(6);
+      expect(frame.frameScore()).toEqual(9);
+    });
+  });
 });

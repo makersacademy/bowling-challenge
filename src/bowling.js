@@ -10,16 +10,17 @@ function Frame() {
 };
 
 Frame.prototype.play1 = function(pins) {
-
-  return this.rollOne= pins;
+  return this.rollOne = pins;
 };
 
 Frame.prototype.play2 = function(pins) {
-
-  return this.rollTwo= pins;
+  return this.rollTwo = pins;
 };
 
 Frame.prototype.currentScore = function(roll) {
-
   return roll;
-}
+};
+
+Frame.prototype.frameScore = function() {
+  return this.rollOne + this.rollTwo;
+};

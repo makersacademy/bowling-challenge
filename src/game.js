@@ -2,6 +2,7 @@
 
 function Game() {
   this.rolls = [];
+  this.result = 0;
 };
 
 Game.prototype.roll = function(pins) {
@@ -9,25 +10,32 @@ Game.prototype.roll = function(pins) {
 };
 
 Game.prototype.score = function() {
-  var res = 0;
   var rollIdx = 0;
   var game = this;
 
   for (var frameIdx = 0; frameIdx < 10; frameIdx++) {
-    if (isSpare( )) {
-      res += getSpareScore();
+    if (isStrike()) {
+        game.result += getStrikeAndSpareScore();
+        rollIdx++;
+    } else if (isSpare()) {
+        game.result += getStrikeAndSpareScore();
+      rollIdx += 2;
     } else {
-      res += getNormalScore();
-    }
-    rollIdx += 2;
-  }
-  return res;
+        game.result += getNormalScore();
+      rollIdx += 2;
+    };
+  };
+  return game.result;
+
+  function isStrike(){
+    return game.rolls[rollIdx] == 10;
+  };
 
   function isSpare(){
     return game.rolls[rollIdx] + game.rolls[rollIdx + 1] === 10;
   };
 
-  function getSpareScore(){
+  function getStrikeAndSpareScore(){
     return game.rolls[rollIdx] + game.rolls[rollIdx + 1] + game.rolls[rollIdx + 2];
   };
 

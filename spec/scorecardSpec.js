@@ -4,7 +4,7 @@ describe('Scorecard', function(){
   var scorecard;
 
   beforeEach(function(){
-    scorecard = new Scorecard
+    scorecard = new Scorecard()
   });
   it('returns the score', function(){
     expect(scorecard.score()).toBe(0)
@@ -14,13 +14,13 @@ describe('Scorecard', function(){
     expect(scorecard.score()).toBe(5)
   });
   it('returns nil for a gutter game', function(){
-    for(var i = 0; i < 20; i++){
+    while (scorecard._frameCount <= 10){
       scorecard.roll(0)
     }
     expect(scorecard.score()).toBe(0)
   });
   it('returns the correct score for an open frame game', function(){
-    for(var i = 0; i < 20; i++){
+    while (scorecard._frameCount <= 10){
       scorecard.roll(4)
     }
     expect(scorecard.score()).toBe(80)

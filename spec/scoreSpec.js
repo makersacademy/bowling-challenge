@@ -29,6 +29,14 @@ describe('Score', function(){
     score.totalScore(frame1)
     frame2.play1(5)
     frame2.play2(5)
-    expect(score.isSparesBonus).toBe(true);
+    frame2.bonusAward()
+    expect(score.isSparesBonus(frame2)).toBe(true);
+  });
+  it('knows if there is a strike bonus', function(){
+    score.totalScore(frame1)
+    frame2.play1(10)
+    frame2.play2(0)
+    frame2.bonusAward()
+    expect(score.isStrikeBonus(frame2)).toBe(true);
   })
 });

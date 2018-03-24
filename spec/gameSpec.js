@@ -21,6 +21,16 @@ describe('Game', function(){
     });
   });
 
+  describe('Player makes a spare', function(){
+    it('returns a score of 10 plus the score in the following roll', function(){
+      game.roll(3);
+      game.roll(7);
+      game.roll(8);
+      rollMany(0, 17);
+      expect(game.score()).toBe(26);
+    });
+  });
+
   var rollMany = function(pins, rolls) {
     for (var i = 0; i < 20; i++){
       game.roll(pins);

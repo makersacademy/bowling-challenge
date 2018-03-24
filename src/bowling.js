@@ -1,18 +1,30 @@
 'use strict';
 function Score() {
   this.currentTotalScore = 0
+  this.previousBonus = 'none'
 
 }
 
 Score.prototype.totalScore = function(frame) {
+
   return this.currentTotalScore += (frame.rollOne + frame.rollTwo);
 }
 
-Score.prototype.isSparesBonus = function(frame) {
+Score.prototype.giveBonus = function(frame) {
+  if (frame.bonusAward() === 'spares') {
+    this.previousBonus = 'spares';
+  }else if (frame.bonusAward() === 'strike') {
+    this.previousBonus = 'strike';
+  }else {
+    this.previousBonus = 'none';
+  }
+}
+
+Score.prototype.isPreviousFrameSparesBonus = function(frame) {
   return frame.bonusAward() === 'spares';
 }
 
-Score.prototype.isStrikeBonus = function(frame) {
+Score.prototype.isPreviousFrameStrikeBonus = function(frame) {
   return frame.bonusAward() === 'strike';
 }
 

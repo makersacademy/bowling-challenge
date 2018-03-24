@@ -15,4 +15,13 @@ describe('Game', function(){
       expect(game.score()).toBe(0);
     });
   });
+
+  describe('Player hits one pin every roll', function(){
+    it('returns a score of 20 when player hits one pin per roll', function(){
+      for (var i = 0; i < 20; i++){
+        game.roll(1);
+      }
+      expect(game.score()).toBe(20);
+    });
+  });
 });

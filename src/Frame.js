@@ -19,7 +19,7 @@ Frame.prototype.pinsKnockedOver = function(pinCount) {
 };
 
 Frame.prototype.isStrikeOnFirstRound = function() {
-  if (this._roundsPlayed === 0 && this._pins.length === 0) {
+  if (this._frameReplay[0] === 10) {
     return true;
   };
   return false;

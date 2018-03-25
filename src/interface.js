@@ -8,8 +8,7 @@ $(document).ready(function() {
     frame.play(event.currentTarget.id);
     updatePinsRemainingButtons();
     updateScoreCard();
-  // $(`#f${frameCounter}`).html(frame.score());
-  // $(`#r${roundCounter}`).html(event.currentTarget.id);
+
     roundCounter++
   });
 

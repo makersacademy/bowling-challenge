@@ -37,10 +37,18 @@ Frame.prototype.illegalRoll = function() {
   return false
 }
 
+Frame.prototype.illegalBonusRoll = function() {
+  if (this.isSpare() && this._bonusRolls.length === 1) {
+    return 'Only one bonus roll allowed with a spare!';
+  }
+  return false
+}
+
 Frame.prototype.specials = function() {
   if (this._rolls.length === 2 && this.normalScore() === 10) { this._isSpare = true };
 }
 
 Frame.prototype.bonus = function(score) {
+  if (this.illegalBonusRoll()) { return this.illegalBonusRoll() }
   this._bonusRolls.push(score);
 }

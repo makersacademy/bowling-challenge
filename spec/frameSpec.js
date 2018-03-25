@@ -31,6 +31,13 @@ describe('Frame', function() {
       frame.bonus(5);
       expect(frame.score()).toEqual(15);
     });
+    it('does not allow multiple bonus rolls to be added if a spare is logged', function(){
+      var frame = new Frame();
+      frame.roll(5);
+      frame.roll(5);
+      frame.bonus(5);
+      expect(frame.bonus(2)).toEqual('Only one bonus roll allowed with a spare!');
+    });
     it('does not allow a bonus roll to be added is a spare is not logged', function(){
       var frame = new Frame();
       frame.roll(5);

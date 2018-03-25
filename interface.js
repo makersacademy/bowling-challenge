@@ -6,62 +6,19 @@ $(document).ready(function() {
   var roll = 1
 
 
+  $('#confirm').hide()
+  $('#edit').hide()
+
   $('#current-frame').change(function() {
     var index = $('select#current-frame').val();
     console.log(index)
     currentFrame = game._allFrames[index];
     console.log(currentFrame)
     $('#frame').text(parseInt(index) + 1);
+    console.dir(index);
   });
+    console.log($('body'));
 
-  // $('#pins-0').click(function() {
-  //   if (currentFrame.roll === 1) {
-  //     console.log(currentFrame.play1(0))
-  //     console.log(currentFrame.nextRoll())
-  //     console.log(currentFrame)
-  //   }else if (currentFrame.roll === 2) {
-  //     console.log(currentFrame.play2(0))
-  //     console.log(currentFrame)
-  //     console.log(currentFrame.nextRoll())
-  //   }
-  // });
-
-  // $('#pins-1').click(function() {
-  //   if (currentFrame.roll === 1) {
-  //     console.log(currentFrame.play1(1))
-  //     currentFrame.nextRoll()
-  //     console.log(currentFrame)
-  //   }else if (currentFrame.roll === 2) {
-  //     console.log(currentFrame.play2(1))
-  //     console.log(currentFrame)
-  //     currentFrame.nextRoll()
-  //   }
-  // });
-  //
-  // $('#pins-2').click(function() {
-  //   if (currentFrame.roll === 1) {
-  //     console.log(currentFrame.play1(2))
-  //     currentFrame.nextRoll()
-  //     console.log(currentFrame)
-  //   }else if (currentFrame.roll === 2) {
-  //     console.log(currentFrame.play2(2))
-  //     console.log(currentFrame)
-  //     currentFrame.nextRoll()
-  //   }
-  // });
-  //
-  // $('#pins-3').click(function() {
-  //   if (currentFrame.roll === 1) {
-  //     console.log(currentFrame.play1(3))
-  //     currentFrame.nextRoll()
-  //     console.log(currentFrame)
-  //   }else if (currentFrame.roll === 2) {
-  //     console.log(currentFrame.play2(3))
-  //     console.log(currentFrame)
-  //     currentFrame.nextRoll()
-  //   }
-  //
-  // })
   $('[id*=pins]').each(function() {
     $(this).on("click", function(){
       var pins = $(this).val()
@@ -74,15 +31,28 @@ $(document).ready(function() {
       }
            currentFrame.nextRoll()
            console.log(currentFrame)
+           $('#confirm').hide()
+           $('#edit').hide()
          }else if (currentFrame.roll === 2) {
            $('#current-roll').text(currentFrame.roll)
            console.log(currentFrame.play2(parseInt(pins)))
-           for (var i = 0; i <=10; i++) {
-          $("#pins-" + i).show();
+
+          currentFrame.nextRoll()
+          console.log(currentFrame.bonusAward());
+          $('#confirm').show()
+          $('#edit').show()
+
         }
            console.log(currentFrame)
-           currentFrame.nextRoll()
+          $('#edit').click(function() {
+            for (var i = 0; i <=10; i++) {
+           $("#pins-" + i).show();
+           $('#edit').hide()
+           $('#confirm').hide()
          }
+          })
+
+
 
     });
 

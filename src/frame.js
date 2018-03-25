@@ -14,7 +14,8 @@ Frame.prototype.nextRoll = function() {
 }
 
 Frame.prototype.play1 = function(pins) {
-
+  this.rollTwo = 0
+  this.bonus = 'none'
   return this.rollOne = pins;
 };
 

@@ -16,3 +16,6 @@ Game.prototype.score = function() {
     return sum + frame.score()
   }, 0);
 }
+
+// checkers
+Game.prototype.isOver = function() { return this.frames().length >= 10 }

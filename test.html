@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+   <TITLE>
+   Add three numbers
+   </TITLE>
+
+</HEAD>
+<BODY>
+
+
+<FORM Name="theForm">
+  <INPUT Type=Text Name="num3">
+  <INPUT Type=Button Value="Add Them" onClick='addThreeNums(theForm.num3.value);'>
+</FORM>
+
+<SCRIPT>
+function addThreeNums (inThree) {
+   var inThree = Number(inThree);
+   console.log( Number(inThree));
+}
+</SCRIPT>
+
+
+
+</BODY>
+</HTML>

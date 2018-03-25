@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Bowling Card</title>
+  <script src="src/game.js"></script>
+  <script src="src/frame.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+
+  <p id="roll"></p>
+  <p id="frame"></p>
+  <p id="score"></p>
+
+  <FORM Name="theForm">
+    <INPUT Type=Text Name="pins">
+    <INPUT Type=Button Value="Enter Throw" onClick='recordThrow(theForm.pins.value);'>
+  </FORM>
+
+  <SCRIPT>
+    game = new Game();
+
+    function recordThrow(pinsHit) {
+      if (game.frameLength() < 11) {
+
+        if (game.frameLength() === 0) {
+          game.addFrame(new Frame(pinsHit));
+        } else if (game.lastFrame().completed()) {
+          game.addFrame(new Frame(pinsHit));
+        } else {
+            game.lastFrame().addRoll(pinsHit);
+            if (game.frameLength() < 10) {
+              game.lastFrame().complete();
+            }
+            else if (game.lastFrame().rollLength() === 3) {
+              game.lastFrame().complete();
+            }
+          }
+          status();
+        }
+      }
+
+
+    function status() {
+      $("#roll").text("Roll:" + game.lastFrame().rollLength());
+      $("#frame").text("Frame:" + game.frameLength());
+      $("#score").text("Score:" + game.getScore());
+    }
+  </SCRIPT>
+
+</body>
+
+</html>

@@ -79,7 +79,7 @@ describe('Frame', function() {
   });
 
   describe('frame 10', function(){
-    it('allows three rolls if a the first roll is a strike', function(){
+    it('allows three rolls if the first roll is a strike', function(){
       var frame = new Frame();
       frame.nSet(10);
       frame.roll(10);

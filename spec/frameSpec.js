@@ -87,5 +87,13 @@ describe('Frame', function() {
       frame.roll(10);
       expect(frame.score()).toEqual(30);
     });
+    it('does not allow more than three rolls, even if the first roll is a strike', function(){
+      var frame = new Frame();
+      frame.nSet(10);
+      frame.roll(10);
+      frame.roll(10);
+      frame.roll(10);
+      expect(frame.roll(10)).toEqual('Only three rolls allowed in frame 10!');
+    });
   });
 });

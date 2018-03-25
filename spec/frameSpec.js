@@ -12,7 +12,7 @@ describe("Frame", function() {
   });
 
   it("is initialised with the passed multiplier array", function() {
-    expect(frame.multipliers).toEqual([2,1]);
+    expect(frame.scoreMultipliers).toEqual([2,1]);
   });
 
   it("is initialised with score 0", function() {
@@ -39,11 +39,11 @@ describe("Frame", function() {
 
     });
 
-    it("calls this._calculateMultipliers", function() {
-      spyOn(frame, "_calculateMultipliers");
+    it("calls this._calculateScoreMultipliers", function() {
+      spyOn(frame, "_calculateScoreMultipliers");
       frame.roll(firstRoll);
 
-      expect(frame._calculateMultipliers).toHaveBeenCalledWith();
+      expect(frame._calculateScoreMultipliers).toHaveBeenCalledWith();
     });
   });
 
@@ -56,42 +56,42 @@ describe("Frame", function() {
     });
   });
 
-  describe("._calculateMultipliers", function() {
+  describe("._calculateScoreMultipliers", function() {
     let secondRoll, strikeRoll, spareRoll;
     beforeEach(function() {
       secondRoll = 6;
       spareRoll = 8;
       strikeRoll = 10;
-      frame.multipliers = [1];
+      frame.scoreMultipliers = [1];
     });
 
     it("when final frame, leaves first multiplier untouched, sets second to 1", function() {
-      finalFrame.multipliers = [1];
+      finalFrame.scoreMultipliers = [1];
       finalFrame.rolls = [strikeRoll];
-      finalFrame._calculateMultipliers();
+      finalFrame._calculateScoreMultipliers();
 
-      expect(finalFrame.multipliers).toEqual([1,1]);
+      expect(finalFrame.scoreMultipliers).toEqual([1,1]);
     });
 
     it("when strike, adds one to the first multiplier, sets the second to 2", function() {
       frame.rolls = [strikeRoll];
-      frame._calculateMultipliers();
+      frame._calculateScoreMultipliers();
 
-      expect(frame.multipliers).toEqual([2, 2]);
+      expect(frame.scoreMultipliers).toEqual([2, 2]);
     });
 
     it("when spare, adds one to the first multiplier, sets the second to 1", function() {
       frame.rolls = [firstRoll, spareRoll];
-      frame._calculateMultipliers();
+      frame._calculateScoreMultipliers();
 
-      expect(frame.multipliers).toEqual([2, 1]);
+      expect(frame.scoreMultipliers).toEqual([2, 1]);
     });
 
     it("when not spare and not strike, leaves first multiplier unchanged, sets second to 1", function() {
       frame.rolls = [firstRoll, secondRoll];
-      frame._calculateMultipliers();
+      frame._calculateScoreMultipliers();
 
-      expect(frame.multipliers).toEqual([1, 1]);
+      expect(frame.scoreMultipliers).toEqual([1, 1]);
     });
   });
 

@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<!-- saved from url=(0075)https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/ -->
+<html class="js wf-quattrocentosans-n4-active wf-quattrocentosans-i4-active wf-quattrocentosans-n7-active wf-quattrocentosans-i7-active wf-active gr__abdulapopoola_com" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script async="" src="https://platform.linkedin.com/in.js?async=true&amp;_=1520592523474"></script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="https://abdulapopoola.com/xmlrpc.php">
+	<script type="text/javascript" async="" src="https://apis.google.com/js/plusone.js">{"parsetags": "explicit"}</script><script id="twitter-wjs" src="https://platform.twitter.com/widgets.js"></script><script id="facebook-jssdk" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;appId=249643311490&amp;version=v2.3"></script><script src="./How function spies work in JavaScript – CodeKraft_files/webfont.js" type="text/javascript" async=""></script><script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+<title>How function spies work in JavaScript – CodeKraft</title>
+<script type="text/javascript">
+  WebFontConfig = {"google":{"families":["Quattrocento+Sans:r:latin,latin-ext","Quattrocento+Sans:r,i,b,bi:latin,latin-ext"]}};
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = 'https://s1.wp.com/wp-content/plugins/custom-fonts/js/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+	})();
+</script><style id="jetpack-custom-fonts-css">.wf-active html{font-family:"Quattrocento Sans",sans-serif}.wf-active body{font-size:20.8px}.wf-active body, .wf-active button, .wf-active input, .wf-active select, .wf-active textarea{font-family:"Quattrocento Sans",sans-serif}.wf-active small{font-size:97.5%}.wf-active big{font-size:162.5%}.wf-active html{font-size:81.25%}.wf-active dt{font-family:"Quattrocento Sans",sans-serif}.wf-active caption{font-size:31.2px}.wf-active legend{font-size:18.2px}.wf-active ::-webkit-input-placeholder{font-family:"Quattrocento Sans",sans-serif}.wf-active :-moz-placeholder{font-family:"Quattrocento Sans",sans-serif}.wf-active ::-moz-placeholder{font-family:"Quattrocento Sans",sans-serif}.wf-active :-ms-input-placeholder{font-family:"Quattrocento Sans",sans-serif}.wf-active label{font-family:"Quattrocento Sans",sans-serif}.wf-active button, .wf-active input, .wf-active select{font-family:"Quattrocento Sans",sans-serif}.wf-active .button, .wf-active button, .wf-active html input[type="button"], .wf-active input[type="reset"], .wf-active input[type="submit"]{font-size:15.6px}.wf-active form{font-size:20.8px}.wf-active input[type="checkbox"] + label, .wf-active input[type="radio"] + label{font-family:"Quattrocento Sans",sans-serif;font-size:1.1375em}.wf-active input[type="email"], .wf-active input[type="password"], .wf-active input[type="search"], .wf-active input[type="text"], .wf-active input[type="url"], .wf-active textarea{font-size:1.1375em}.wf-active textarea{font-family:"Quattrocento Sans",sans-serif}.wf-active .nav-menu .menu-fallback-notice{font-size:0.975em}.wf-active .nav-menu-toggle{font-size:1.3em}@media (min-width: 768px){.wf-active .nav-menu .menu ul a{font-size:15.6px;font-size:1.56rem}}.wf-active .page-links{font-size:0.975em}@media (min-width: 800px){.wf-active .post-navigation .meta-nav{font-size:15.6px}}.wf-active .posts-navigation a{font-size:0.975em}.wf-active .post-type-navigation{font-size:0.975em}.wf-active .site-navigation .menu, .wf-active .site-navigation .nav-menu-toggle{font-size:0.975em}.wf-active .social-navigation{font-size:2.6em}.wf-active .site .skip-link{font-size:1.3em}.wf-active .logged-in .site .skip-link{font-size:1.3em}@media (min-width: 660px){.wf-active .stretch-wide .wp-caption-text{font-size:1.1375em}}.wf-active .site-search .search-form{font-size:1.95em}.wf-active .site-search .search-form label{font-size:1.3em}.wf-active .site-search .search-field{font-family:"Quattrocento Sans",sans-serif;font-size:1.3em}.wf-active .site-search .search-submit{font-size:1.3em}.wf-active .site-search-toggle{font-size:0.975em}.wf-active .widget_rss cite, .wf-active .widget_rss .rssSummary{font-size:1.1375em}.wf-active .widget_rss .rss-date{font-size:0.975em}.wf-active .entry-header .entry-meta{font-size:0.975em}.wf-active .term-list{font-size:1.1375em}.wf-active .format-quote blockquote cite{font-size:1.1375em}@media (min-width: 480px){.wf-active .format-status .entry-content, .wf-active .format-quote blockquote{font-size:1.95em}}@media (min-width: 480px){.wf-active .format-quote blockquote cite{font-size:0.866666671em}}.wf-active .comments-area{font-family:"Quattrocento Sans",sans-serif;font-size:18.2px}.wf-active .comment-body .reply a{font-size:15.6px}.wf-active .comment-body .reply a{font-family:"Quattrocento Sans",sans-serif}.wf-active .comment-metadata{font-size:1.114285718em}.wf-active .site-footer{font-size:20.8px}.wf-active .site-footer select{font-size:1.1375em}.wf-active .site-footer caption, .wf-active .site-footer th, .wf-active .site-footer tfoot{font-size:15.6px}.wf-active .site-footer .credits{font-size:15.6px}.wf-active .infinite-loader, .wf-active .fluid-width-video-wrapper:before{font-size:3.25em}.wf-active figcaption, .wf-active .wp-caption-text{font-size:0.975em}.wf-active .gallery{font-size:0.975em}.wf-active body .mejs-container .mejs-controls .mejs-button:before{font-size:27.3px}.wf-active body .wp-playlist{font-size:20.8px}.wf-active body .wp-playlist-caption, .wf-active body .wp-playlist-item-title{font-size:20.8px}.wf-active .block-grid{font-size:20.8px}.wf-active span.drop-cap, .wf-active .drop-cap:first-letter{font-size:4.30625em}.wf-active .pull-quote{font-size:1.95em}.wf-active .content-area .contact-form label span{font-size:104%}.wf-active .grofile .grofile-accounts{font-size:2.6em}.wf-active #infinite-handle{font-size:0.975em}.wf-active .jetpack-portfolio-shortcode .portfolio-entry-meta{font-size:1.1375em}.wf-active .jetpack-portfolio-shortcode .portfolio-entry-meta a, .wf-active .jetpack-portfolio-shortcode .portfolio-entry-meta span{font-size:20.8px}.wf-active h1{font-style:normal;font-weight:400}.wf-active h1, .wf-active h2, .wf-active h3, .wf-active h4, .wf-active h5, .wf-active h6{font-family:"Quattrocento Sans",sans-serif;font-weight:400;font-style:normal}.wf-active th{font-weight:400;font-style:normal}.wf-active thead{font-style:normal;font-weight:400}.wf-active .site-header{font-style:normal;font-weight:400}.wf-active .site-title{font-weight:400;font-style:normal}.wf-active .widget-title{font-weight:400;font-style:normal}.wf-active .entry-content h1, .wf-active .entry-summary h1, .wf-active .page-content h1, .wf-active .comment-content h1{font-weight:400;font-style:normal}.wf-active .entry-content h2, .wf-active .entry-summary h2, .wf-active .page-content h2, .wf-active .comment-content h2{font-weight:400;font-style:normal}.wf-active .entry-content h3, .wf-active .entry-summary h3, .wf-active .page-content h3, .wf-active .comment-content h3{font-style:normal;font-weight:400}.wf-active .entry-content h4, .wf-active .entry-summary h4, .wf-active .page-content h4, .wf-active .comment-content h4{font-style:normal;font-weight:400}.wf-active .entry-content h5, .wf-active .entry-summary h5, .wf-active .page-content h5, .wf-active .comment-content h5{font-style:normal;font-weight:400}.wf-active .entry-content h6, .wf-active .entry-summary h6, .wf-active .page-content h6, .wf-active .comment-content h6{font-style:normal;font-weight:400}.wf-active .entry-terms .term-title{font-weight:400;font-style:normal}.wf-active .page-title span{font-style:normal;font-weight:400}@media (max-width: 767px){.wf-active .entry-content h1, .wf-active .entry-summary h1, .wf-active .page-content h1, .wf-active .comment-content h1{font-style:normal;font-weight:400}}@media (min-width: 660px){.wf-active .lead{font-style:normal;font-weight:400}}.wf-active .format-audio .entry-title, .wf-active .format-gallery .entry-title, .wf-active .format-image .entry-title, .wf-active .format-video .entry-title{font-style:normal;font-weight:400}.wf-active .format-link .entry-title{font-style:normal;font-weight:400}.wf-active .comments-header{font-style:normal;font-weight:400}.wf-active .comments-header .comments-title{font-weight:400;font-style:normal}.wf-active .comment-reply-title{font-weight:400;font-style:normal}.wf-active .comment-reply-title small{font-family:"Quattrocento Sans",sans-serif;font-weight:400;font-style:normal}.wf-active .block-grid-item-title{font-weight:400;font-style:normal}.wf-active .grofile .grofile-meta h4{font-weight:400;font-style:normal}.wf-active .jetpack-portfolio-shortcode .portfolio-entry-title{font-weight:400;font-style:normal}.wf-active div#jp-relatedposts div.jp-relatedposts-items-visual h4.jp-relatedposts-post-title{font-style:normal;font-weight:400}.wf-active .sharedaddy h3.sd-title, .wf-active .sharedaddy div#jp-relatedposts h3.jp-relatedposts-headline{font-weight:400;font-style:normal}</style>
+<meta name="google-site-verification" content="kDTGEHKKlK9nTtLx-cJ_PoIGsVvHnXe8q91-KhjPMhE">
+		<script src="./How function spies work in JavaScript – CodeKraft_files/remote-login.php" type="text/javascript"></script>
+		<script type="text/javascript">
+		/* <![CDATA[ */
+			if ( 'function' === typeof WPRemoteLogin ) {
+				document.cookie = "wordpress_test_cookie=test; path=/";
+				if ( document.cookie.match( /(;|^)\s*wordpress_test_cookie\=/ ) ) {
+					WPRemoteLogin();
+				}
+			}
+		/* ]]> */
+		</script>
+		<link rel="dns-prefetch" href="https://s2.wp.com/">
+<link rel="dns-prefetch" href="https://s1.wp.com/">
+<link rel="dns-prefetch" href="https://s0.wp.com/">
+<link rel="dns-prefetch" href="https://abdulapopoola.wordpress.com/">
+<link rel="alternate" type="application/rss+xml" title="CodeKraft » Feed" href="https://abdulapopoola.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="CodeKraft » Comments Feed" href="https://abdulapopoola.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="CodeKraft » How function spies work in JavaScript Comments Feed" href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/feed/">
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+			<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s1.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1516999477h&ver=4.9.4"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56692,8205,9792,65039],[55357,56692,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./How function spies work in JavaScript – CodeKraft_files/wp-emoji-release.min.js" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="all-css-0-1" href="./How function spies work in JavaScript – CodeKraft_files/saved_resource" type="text/css" media="all">
+<link rel="stylesheet" id="hyalite-fonts-css" href="./How function spies work in JavaScript – CodeKraft_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="all-css-2-1" href="./How function spies work in JavaScript – CodeKraft_files/saved_resource(1)" type="text/css" media="all">
+<link rel="stylesheet" id="print-css-3-1" href="./How function spies work in JavaScript – CodeKraft_files/global-print.css" type="text/css" media="print">
+<link rel="stylesheet" id="all-css-4-1" href="./How function spies work in JavaScript – CodeKraft_files/saved_resource(2)" type="text/css" media="all">
+<script type="text/javascript">
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./How function spies work in JavaScript – CodeKraft_files/saved_resource(3)"></script>
+<link rel="stylesheet" id="all-css-0-2" href="./How function spies work in JavaScript – CodeKraft_files/style.css" type="text/css" media="all">
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='https://s1.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1351637563h&#038;ver=20110606' type='text/css' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://abdulapopoola.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Learning ES2015 : let, const and var" href="https://abdulapopoola.com/2016/04/04/learning-es2015-let-const-and-var/">
+<link rel="next" title="10 years of programming: Lessons Learnt" href="https://abdulapopoola.com/2016/04/18/10-years-of-programming-lessons-learnt/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/">
+<link rel="shortlink" href="https://wp.me/p1fx0m-1pR">
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Fabdulapopoola.com%2F2016%2F04%2F11%2Fhow-function-spies-work-in-javascript%2F&amp;for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Fabdulapopoola.com%2F2016%2F04%2F11%2Fhow-function-spies-work-in-javascript%2F&amp;for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="How function spies work in JavaScript">
+<meta property="og:url" content="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/">
+<meta property="og:description" content="If you write unit tests, then you likely use a testing framework and might have come across spies. If you don’t write unit tests, please take a quick pause and promise yourself to always writ…">
+<meta property="article:published_time" content="2016-04-11T03:37:20+00:00">
+<meta property="article:modified_time" content="2016-10-21T02:12:45+00:00">
+<meta property="og:site_name" content="CodeKraft">
+<meta property="og:image" content="https://secure.gravatar.com/blavatar/809caf76f132b4f947fc875e79a2b02a?s=200&amp;ts=1520592522">
+<meta property="og:image:width" content="200">
+<meta property="og:image:height" content="200">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:site" content="@abdulapopoola">
+<meta name="twitter:text:title" content="How function spies work in JavaScript">
+<meta name="twitter:image" content="https://secure.gravatar.com/blavatar/809caf76f132b4f947fc875e79a2b02a?s=240">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@abdulapopoola">
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom">
+<link rel="shortcut icon" type="image/x-icon" href="https://secure.gravatar.com/blavatar/809caf76f132b4f947fc875e79a2b02a?s=32" sizes="16x16">
+<link rel="icon" type="image/x-icon" href="https://secure.gravatar.com/blavatar/809caf76f132b4f947fc875e79a2b02a?s=32" sizes="16x16">
+<link rel="apple-touch-icon-precomposed" href="https://secure.gravatar.com/blavatar/809caf76f132b4f947fc875e79a2b02a?s=114">
+<link rel="openid.server" href="https://abdulapopoola.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="https://abdulapopoola.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="https://abdulapopoola.com/osd.xml" title="CodeKraft">
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com">
+		<style type="text/css">
+			.recentcomments a {
+				display: inline !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+
+			table.recentcommentsavatartop img.avatar, table.recentcommentsavatarend img.avatar {
+				border: 0px;
+				margin: 0;
+			}
+
+			table.recentcommentsavatartop a, table.recentcommentsavatarend a {
+				border: 0px !important;
+				background-color: transparent !important;
+			}
+
+			td.recentcommentsavatarend, td.recentcommentsavatartop {
+				padding: 0px 0px 1px 0px;
+				margin: 0px;
+			}
+
+			td.recentcommentstextend {
+				border: none !important;
+				padding: 0px 0px 2px 10px;
+			}
+
+			.rtl td.recentcommentstextend {
+				padding: 0px 10px 2px 0px;
+			}
+
+			td.recentcommentstexttop {
+				border: none;
+				padding: 0px 0px 0px 10px;
+			}
+
+			.rtl td.recentcommentstexttop {
+				padding: 0px 10px 0px 0px;
+			}
+		</style>
+		<meta name="application-name" content="CodeKraft"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="Software Development, Programming Languages and Life"><meta name="msapplication-task" content="name=Subscribe;action-uri=https://abdulapopoola.com/feed/;icon-uri=https://secure.gravatar.com/blavatar/809caf76f132b4f947fc875e79a2b02a?s=16"><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="title" content="How function spies work in JavaScript | CodeKraft on WordPress.com">
+<meta name="description" content="If you write unit tests, then you likely use a testing framework and might have come across spies. If you don&#39;t write unit tests, please take a quick pause and promise yourself to always write tests. Testing framework suggestions? Try Sinon or Jasmine. Spies allow you to monitor a function; they expose options to track invocation counts,…">
+	<style type="text/css">
+		
+			</style>
+	<link rel="amphtml" href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/amp/"><link rel="stylesheet" type="text/css" href="./How function spies work in JavaScript – CodeKraft_files/shCore.css"><link rel="stylesheet" type="text/css" href="./How function spies work in JavaScript – CodeKraft_files/shThemeDefault.css"><style type="text/css" id="syntaxhighlighteranchor"></style>
+<link rel="stylesheet" href="./How function spies work in JavaScript – CodeKraft_files/css(1)" media="all"><style>@media print {#ghostery-purple-box {display:none !important}}</style><script charset="utf-8" src="./How function spies work in JavaScript – CodeKraft_files/rate.php"></script><style type="text/css" id="pd_popup_holder_style_3529016_post_5447">#pd_popup_holder_3529016_post_5447 { position:absolute; display:none; width:350px; height:auto; top:0px; left:0px; z-index:10000; border:solid 1px #CCC; background-color:white; padding:0px 15px;font-family:Arial,Sans;box-shadow: -10px 10px 20px rgba(0, 0, 0, .5);-webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, .25);-moz-box-shadow: 0px 0px 6px rgba(0, 0, 0, .25); }</style></head>
+
+<body class="post-template-default single single-post postid-5447 single-format-standard mp6 customizer-styles-applied highlander-enabled highlander-light no-touch" itemscope="itemscope" itemtype="http://schema.org/Blog" data-gr-c-s-loaded="true">
+	<div id="page" class="hfeed site">
+		<a class="skip-link screen-reader-text" href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/#content">Skip to content</a>
+
+		
+		<header id="masthead" class="site-header" role="banner" itemscope="" itemtype="http://schema.org/WPHeader">
+			
+			
+			<h1 class="site-title"><a href="https://abdulapopoola.com/" rel="home">CodeKraft</a></h1>
+			<p class="site-description">Software Development, Programming Languages and Life
+			</p><nav id="primary-nav" class="site-navigation nav-menu" role="navigation" itemscope="" itemtype="http://schema.org/SiteNavigationElement">
+									<button class="nav-menu-toggle">Menu</button>
+				
+				<ul id="menu-about" class="menu"><li id="menu-item-333" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-333"><a href="https://abdulapopoola.wordpress.com/about/">About Me</a></li>
+<li id="menu-item-337" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-337"><a title="Projects" href="https://abdulapopoola.com/projects/">Projects</a></li>
+<li id="menu-item-334" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-334"><a href="http://www.linkedin.com/in/abdulfattah">Linkedin</a></li>
+<li id="menu-item-336" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-336"><a href="https://twitter.com/#!/abdulapopoola">Twitter</a></li>
+<li id="menu-item-1421" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1421"><a href="https://abdulapopoola.com/reading-list/">Reading</a></li>
+<li id="menu-item-6901" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6901"><a title="Github" href="https://github.com/abdulapopoola">Github</a></li>
+</ul>			</nav>
+
+			<div class="site-search">
+				<button class="site-search-toggle">Search</button>
+				<form role="search" method="get" class="search-form" action="https://abdulapopoola.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search …" value="" name="s">
+				</label>
+				<input type="submit" class="search-submit" value="Search">
+			</form>			</div>
+
+			
+					</header>
+
+		
+<main id="content" class="site-content" role="main">
+
+	
+	
+		<section id="primary" class="content-area content-fence">
+
+			
+<article id="post-5447" class="post-5447 post type-post status-publish format-standard hentry category-javascript-languages category-software-testing category-unit-testing tag-javascript tag-test-spy tag-unit-testing full-text" itemscope="" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+	<header class="entry-header stretch-wide">
+		<h1 class="entry-title"><span class="headline" itemprop="headline">How function spies work in&nbsp;JavaScript</span></h1>
+		<div class="entry-meta">
+				<span class="posted-by byline">
+		<span class="sep">by</span>
+			<span class="entry-author author vcard" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<a class="entry-author-link url fn n" href="https://abdulapopoola.com/author/abdulapopoola/" rel="author" itemprop="url"><span itemprop="name">AbdulFattaah Popoola</span></a>	</span>
+		</span>
+					<span class="posted-on">
+		<span class="sep">on</span>
+		<a href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/" rel="bookmark">
+			<time class="entry-date published" datetime="2016-04-11T03:37:20+00:00" itemprop="dateCreated datePublished" pubdate="">April 11, 2016</time><time class="entry-date updated" datetime="2016-10-21T02:12:45+00:00" itemprop="dateModified">October 21, 2016</time>		</a>
+	</span>
+			</div>
+	</header>
+
+	<div class="entry-content" itemprop="articleBody">
+		<div class="pd-rating" id="pd_rating_holder_3529016_post_5447" style="display: inline-block;"><div class="rating-icons" id="pd_rate_3529016_post_5447" style="float:left;"><div class="rating-star-icon" onmouseout="PDRTJS_3529016_post_5447.rebuild();" onclick="PDRTJS_3529016_post_5447.rate(1);" onmouseover="PDRTJS_3529016_post_5447.hover(1);" id="PDRTJS_3529016_post_5447_stars_1" style="background-size: 32px 48px !important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background: url(https://polldaddy.com/images/ratings/star-yellow-sml.png) top left; float: left; padding: 0px; margin: 0px; margin-right: 1px;">&nbsp;</div><div class="rating-star-icon" onmouseout="PDRTJS_3529016_post_5447.rebuild();" onclick="PDRTJS_3529016_post_5447.rate(2);" onmouseover="PDRTJS_3529016_post_5447.hover(2);" id="PDRTJS_3529016_post_5447_stars_2" style="background-size: 32px 48px !important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background: url(https://polldaddy.com/images/ratings/star-yellow-sml.png) top left; float: left; padding: 0px; margin: 0px; margin-right: 1px;">&nbsp;</div><div class="rating-star-icon" onmouseout="PDRTJS_3529016_post_5447.rebuild();" onclick="PDRTJS_3529016_post_5447.rate(3);" onmouseover="PDRTJS_3529016_post_5447.hover(3);" id="PDRTJS_3529016_post_5447_stars_3" style="background-size: 32px 48px !important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background: url(https://polldaddy.com/images/ratings/star-yellow-sml.png) top left; float: left; padding: 0px; margin: 0px; margin-right: 1px;">&nbsp;</div><div class="rating-star-icon" onmouseout="PDRTJS_3529016_post_5447.rebuild();" onclick="PDRTJS_3529016_post_5447.rate(4);" onmouseover="PDRTJS_3529016_post_5447.hover(4);" id="PDRTJS_3529016_post_5447_stars_4" style="background-size: 32px 48px !important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background: url(https://polldaddy.com/images/ratings/star-yellow-sml.png) top left; float: left; padding: 0px; margin: 0px; margin-right: 1px;">&nbsp;</div><div class="rating-star-icon" onmouseout="PDRTJS_3529016_post_5447.rebuild();" onclick="PDRTJS_3529016_post_5447.rate(5);" onmouseover="PDRTJS_3529016_post_5447.hover(5);" id="PDRTJS_3529016_post_5447_stars_5" style="background-size: 32px 48px !important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background: url(https://polldaddy.com/images/ratings/star-yellow-sml.png) top left; float: left; padding: 0px; margin: 0px; margin-right: 1px;">&nbsp;</div></div><span style="float:left;">&nbsp;</span><div id="rating_info_3529016_post_5447" style="display:block;float:left;background:url(https://polldaddy.com/images/ratings/info.png) no-repeat 3px 2px;width:16px;height:16px;cursor:pointer; null " onclick="javascript:PDRTJS_3529016_post_5447.togglePopup();return false;"><span style="display:none;">i</span></div><div class="pd_popup_holder" id="pd_popup_holder_3529016_post_5447">&nbsp;</div><div class="rating-msg" id="PDRTJS_3529016_post_5447_msg" style="float:left; padding-left: 5px; text-align: left; font:normal normal /16px ; color: #;">3 Votes</div><p style="padding: 0px; margin: 0px; clear: both;"></p></div><br><p style="text-align:justify;">If you write unit tests, then you likely&nbsp;use a testing framework and might have come across spies. If you don’t write unit tests, please take a quick pause and promise yourself to always write tests.</p>
+<blockquote>
+<p style="text-align:justify;">Testing framework suggestions? Try&nbsp;<a href="http://sinonjs.org/">Sinon</a> or <a href="http://jasmine.github.io/">Jasmine</a>.</p>
+</blockquote>
+<p style="text-align:justify;">Spies allow you to monitor a function; they expose options to track invocation counts, arguments&nbsp;and return values. This enables you to write tests to verify&nbsp;function behaviour.</p>
+<p style="text-align:justify;">They&nbsp;can even help you mock out unneeded functions. For example, dummy spies&nbsp;can be used to swap out AJAX calls with preset promise values.</p>
+<p style="text-align:justify;">The code below shows how to spy on&nbsp;the&nbsp;<em>bar</em> method of object&nbsp;<em>foo. </em></p>
+<div><div id="highlighter_917794" class="syntaxhighlighter  jscript"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="jscript plain">spyOn(foo, </code><code class="jscript string">'bar'</code><code class="jscript plain">);</code></div><div class="line number2 index1 alt1"><code class="jscript plain">foo.bar(1);</code></div><div class="line number3 index2 alt2">&nbsp;</div><div class="line number4 index3 alt1"><code class="jscript plain">expect(foo.bar).toHaveBeenCalled();</code></div><div class="line number5 index4 alt2"><code class="jscript plain">expect(foo.bar).toHaveBeenCalledWith(1);</code></div></div></td></tr></tbody></table></div></div>
+<blockquote><p>Jump into the <a href="http://jasmine.github.io/2.0/introduction.html">documentation</a> for more examples.</p></blockquote>
+<p style="text-align:justify;">That was pretty cool right. So how difficult can it be to write a spy&nbsp;and what&nbsp;happens under the hood?&nbsp;&nbsp;It turns out implementing a spy is very easy in JavaScript. So let’s write ours!</p>
+<p style="text-align:justify;">The goal of the spy is to intercept calls to a specified function. A possible approach is to replace the original function with another function that stores necessary information and then invokes the original method.&nbsp;<a href="https://abdulapopoola.com/2014/08/18/understanding-partial-application-and-currying/">Partial application</a> makes this quite easy…</p>
+<h3 style="text-align:justify;">The Code</h3>
+<div><div id="highlighter_91124" class="syntaxhighlighter  jscript"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div><div class="line number28 index27 alt1">28</div><div class="line number29 index28 alt2">29</div><div class="line number30 index29 alt1">30</div><div class="line number31 index30 alt2">31</div><div class="line number32 index31 alt1">32</div><div class="line number33 index32 alt2">33</div><div class="line number34 index33 alt1">34</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="jscript keyword">function</code> <code class="jscript plain">Spy(obj, method) {</code></div><div class="line number2 index1 alt1"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript keyword">let</code> <code class="jscript plain">spy = {</code></div><div class="line number3 index2 alt2"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">args: []</code></div><div class="line number4 index3 alt1"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">};</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript keyword">let</code> <code class="jscript plain">original = obj[method];</code></div><div class="line number7 index6 alt2"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">obj[method] = </code><code class="jscript keyword">function</code><code class="jscript plain">() {</code></div><div class="line number8 index7 alt1"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript keyword">let</code> <code class="jscript plain">args = [].slice.apply(arguments);</code></div><div class="line number9 index8 alt2"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">spy.count++;</code></div><div class="line number10 index9 alt1"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">spy.args.push(args);</code></div><div class="line number11 index10 alt2"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript keyword">return</code> <code class="jscript plain">original.call(obj, args);</code></div><div class="line number12 index11 alt1"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">};</code></div><div class="line number13 index12 alt2">&nbsp;</div><div class="line number14 index13 alt1"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript keyword">return</code> <code class="jscript plain">Object.freeze(spy);</code></div><div class="line number15 index14 alt2"><code class="jscript plain">}</code></div><div class="line number16 index15 alt1">&nbsp;</div><div class="line number17 index16 alt2"><code class="jscript keyword">let</code> <code class="jscript plain">sample = {</code></div><div class="line number18 index17 alt1"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">fn: </code><code class="jscript keyword">function</code><code class="jscript plain">(args){</code></div><div class="line number19 index18 alt2"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">console.log(args);</code></div><div class="line number20 index19 alt1"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">}</code></div><div class="line number21 index20 alt2"><code class="jscript plain">};</code></div><div class="line number22 index21 alt1">&nbsp;</div><div class="line number23 index22 alt2"><code class="jscript keyword">let</code> <code class="jscript plain">spy = Spy(sample, </code><code class="jscript string">'fn'</code><code class="jscript plain">);</code></div><div class="line number24 index23 alt1"><code class="jscript plain">sample.fn(1,2,3);</code></div><div class="line number25 index24 alt2"><code class="jscript plain">console.log(spy.args.length); </code><code class="jscript comments">//1</code></div><div class="line number26 index25 alt1"><code class="jscript plain">console.log(spy.args); </code><code class="jscript comments">//[[1,2,3]]</code></div><div class="line number27 index26 alt2">&nbsp;</div><div class="line number28 index27 alt1"><code class="jscript plain">sample.fn(</code><code class="jscript string">'The second call'</code><code class="jscript plain">);</code></div><div class="line number29 index28 alt2"><code class="jscript plain">console.log(spy.args.length); </code><code class="jscript comments">//2</code></div><div class="line number30 index29 alt1"><code class="jscript plain">console.log(spy.args); </code><code class="jscript comments">//[[1,2,3], 'The second call']</code></div><div class="line number31 index30 alt2">&nbsp;</div><div class="line number32 index31 alt1"><code class="jscript comments">//try modifying the spy</code></div><div class="line number33 index32 alt2"><code class="jscript plain">spy.args = [];</code></div><div class="line number34 index33 alt1"><code class="jscript plain">console.log(spy.args); </code><code class="jscript comments">//[[1,2,3], 'The second call']</code></div></div></td></tr></tbody></table></div></div>
+<h3 style="text-align:justify;">Taking the code apart</h3>
+<p style="text-align:justify;">The spy method takes an&nbsp;object and a&nbsp;method to be spied upon.&nbsp;Next, it creates an object containing the call count and an array tracking&nbsp;invocation arguments.</p>
+<p style="text-align:justify;">It swaps out the original call with a new function that always updates the information object whenever the original method is invoked.</p>
+<p style="text-align:justify;">The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze">Object.freeze</a> call ‘freezes’ the spy object and prevents any modifications of values. This is necessary to prevent arbitrary changes of the spied values.</p>
+<h3 style="text-align:justify;">Limitations</h3>
+<p style="text-align:justify;">The toy sample is brittle (yes I know it). Can you spot the issues? Here are some:</p>
+<ul>
+<li style="text-align:justify;">What happens if the method doesn’t exist on the object?</li>
+<li style="text-align:justify;">What happens if the object is null?</li>
+<li style="text-align:justify;">Can it work for non-object methods? Would pure functions work? Would using <em>window</em> as the parent object work?</li>
+<li style="text-align:justify;">What happens if method is a primitive and not a function?</li>
+</ul>
+<p style="text-align:justify;">These can (and should) be fixed but again, that would make this post very complicated. The goal was to show a simple toy implementation.</p>
+<h3 style="text-align:justify;">Challenges</h3>
+<p style="text-align:justify;">How do you <em>‘unregister’&nbsp;</em> spies&nbsp;without losing the original method? Hint: store it in some closure and replace once you expose an unregister call.</p>
+<p>How would you implement a spy&nbsp;in Java?</p>
+<header class="span-17 last">
+<h3 style="text-align:justify;">Related</h3>
+<p><a href="http://www.adequatelygood.com/Spying-Constructors-in-JavaScript.html">Spying Constructors in JavaScript</a></p>
+</header>
+<div id="jp-post-flair" class="sharedaddy sd-rating-enabled sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-official sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-facebook"><div class="fb-share-button" data-href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/" data-layout="button_count"></div></li><li class="share-twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/" data-text="How function spies work in JavaScript" data-via="abdulapopoola" data-related="wordpressdotcom">Tweet</a></li><li class="share-google-plus-1"><div class="googleplus1_button"><div class="g-plus" data-action="share" data-size="medium" data-annotation="bubble" data-href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/"></div></div></li><li class="share-linkedin"><div class="linkedin_button"><script type="in/share" data-url="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/" data-counter="right"></script></div></li><li class="share-tumblr"><a target="_blank" href="http://www.tumblr.com/share/link/?url=https%3A%2F%2Fabdulapopoola.com%2F2016%2F04%2F11%2Fhow-function-spies-work-in-javascript%2F&amp;name=How%20function%20spies%20work%20in%20JavaScript" title="Share on Tumblr" style="display:inline-block; text-indent:-9999px; overflow:hidden; width:62px; height:20px; background:url(&#39;//platform.tumblr.com/v1/share_2.png&#39;) top left no-repeat transparent;">Share on Tumblr</a></li><li class="share-email share-service-visible"><a rel="nofollow" data-shared="" class="share-email sd-button" href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/?share=email&amp;nb=1" target="_blank" title="Click to email"><span>Email</span></a></li><li><a href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/#" class="sharing-anchor sd-button share-more"><span>More</span></a></li><li class="share-end"></li></ul><div class="sharing-hidden"><div class="inner" style="display: none;"><ul><li class="share-print"><a rel="nofollow" data-shared="" class="share-print sd-button" href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/#print" target="_blank" title="Click to print"><span>Print</span></a></li><li class="share-reddit"><div class="reddit_button"><iframe src="./How function spies work in JavaScript – CodeKraft_files/button1.html" height="22" width="120" scrolling="no" frameborder="0"></iframe></div></li><li class="share-end"></li><li class="share-end"></li></ul></div></div></div></div></div><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-loaded" id="like-post-wrapper-18478130-5447-5aa2668a82648" data-src="//widgets.wp.com/likes/index.html?ver=20180228#blog_id=18478130&amp;post_id=5447&amp;origin=abdulapopoola.wordpress.com&amp;obj_id=18478130-5447-5aa2668a82648" data-name="like-post-frame-18478130-5447-5aa2668a82648"><h3 class="sd-title">Like this:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px; display: none;"><span class="button"><span>Like</span></span> <span class="loading">Loading...</span></div><iframe class="post-likes-widget jetpack-likes-widget" name="like-post-frame-18478130-5447-5aa2668a82648" height="55px" width="100%" frameborder="0" src="./How function spies work in JavaScript – CodeKraft_files/index.html"></iframe><span class="sd-text-color"></span><a class="sd-link-color"></a></div>
+<div id="jp-relatedposts" class="jp-relatedposts" style="display: block;">
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+<div class="jp-relatedposts-items jp-relatedposts-items-visual"><div class="jp-relatedposts-post jp-relatedposts-post0 jp-relatedposts-post-nothumbs" data-post-id="1127" data-post-format="false"><a class="jp-relatedposts-post-a jp-relatedposts-post-aoverlay" href="https://abdulapopoola.com/2013/04/09/for-devs-only/" title="For Devs only
+
+I try to do less to achieve more - it is good; it makes me do my job faster and more easily; you should do so too. Automate, use shortcuts, innovate; well the initial investment might take a lot of time but it&#39;s something you will be glad you did.…" rel="nofollow" data-origin="5447" data-position="0"></a><h4 class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://abdulapopoola.com/2013/04/09/for-devs-only/" title="For Devs only
+
+I try to do less to achieve more - it is good; it makes me do my job faster and more easily; you should do so too. Automate, use shortcuts, innovate; well the initial investment might take a lot of time but it&#39;s something you will be glad you did.…" rel="nofollow" data-origin="5447" data-position="0">For Devs only</a></h4><p class="jp-relatedposts-post-excerpt" style="max-height: 7.14286em;">I try to do less to achieve more - it is good; it makes me do my job faster and more easily; you should do so too. Automate, use shortcuts, innovate; well the initial investment might take a lot of time but it's something you will be glad you did.…</p><p class="jp-relatedposts-post-context">In "Miscellaneous"</p></div><div class="jp-relatedposts-post jp-relatedposts-post1 jp-relatedposts-post-nothumbs" data-post-id="10349" data-post-format="false"><a class="jp-relatedposts-post-a jp-relatedposts-post-aoverlay" href="https://abdulapopoola.com/2017/02/27/what-you-didnt-know-about-json-stringify/" title="What you didn&#39;t know about JSON.Stringify
+
+JSON, the ubiquitous data format that has become second nature to engineers all over the world. This post shows you how to achieve much more with JavaScript&#39;s native JSON.Stringify method. A quick refresher about JSON and JavaScript: Not all valid JSON is valid JavaScript JSON is a text-only format, no blobs…" rel="nofollow" data-origin="5447" data-position="1"></a><h4 class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://abdulapopoola.com/2017/02/27/what-you-didnt-know-about-json-stringify/" title="What you didn&#39;t know about JSON.Stringify
+
+JSON, the ubiquitous data format that has become second nature to engineers all over the world. This post shows you how to achieve much more with JavaScript&#39;s native JSON.Stringify method. A quick refresher about JSON and JavaScript: Not all valid JSON is valid JavaScript JSON is a text-only format, no blobs…" rel="nofollow" data-origin="5447" data-position="1">What you didn't know about JSON.Stringify</a></h4><p class="jp-relatedposts-post-excerpt" style="max-height: 7.14286em;">JSON, the ubiquitous data format that has become second nature to engineers all over the world. This post shows you how to achieve much more with JavaScript's native&nbsp;JSON.Stringify method. A quick refresher about JSON and JavaScript: Not all valid JSON is valid JavaScript JSON is a text-only format, no blobs…</p><p class="jp-relatedposts-post-context">In "JavaScript"</p></div><div class="jp-relatedposts-post jp-relatedposts-post2 jp-relatedposts-post-nothumbs" data-post-id="1109" data-post-format="false"><a class="jp-relatedposts-post-a jp-relatedposts-post-aoverlay" href="https://abdulapopoola.com/2013/03/30/static-and-instance-methods-in-javascript/" title="Static and Instance Methods in JavaScript
+
+I thought I quite &#39;understood&#39; inheritance in JavaScript until I got flummoxed while trying to test my understanding. The JS prototypical inheritance model is hugely different from the classical approaches of the languages I started out with; the only way to fix this that I know of is by writing code…" rel="nofollow" data-origin="5447" data-position="2"></a><h4 class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://abdulapopoola.com/2013/03/30/static-and-instance-methods-in-javascript/" title="Static and Instance Methods in JavaScript
+
+I thought I quite &#39;understood&#39; inheritance in JavaScript until I got flummoxed while trying to test my understanding. The JS prototypical inheritance model is hugely different from the classical approaches of the languages I started out with; the only way to fix this that I know of is by writing code…" rel="nofollow" data-origin="5447" data-position="2">Static and Instance Methods in JavaScript</a></h4><p class="jp-relatedposts-post-excerpt" style="max-height: 7.14286em;">I thought I quite 'understood' inheritance in JavaScript until I got flummoxed while trying to test my understanding.&nbsp;The JS prototypical inheritance model is hugely different from the classical approaches of the languages I started out with; the only way to fix this that I know of is by writing code…</p><p class="jp-relatedposts-post-context">In "JavaScript"</p></div></div></div></div>	</div>
+
+	
+		<footer class="entry-footer">
+			<div class="entry-terms entry-meta"><div class="term term--category is-open"><h3 class="term-title">Published In</h3> <ul class="term-list"><li><a href="https://abdulapopoola.com/category/languages/javascript-languages/" rel="tag">JavaScript</a></li><li><a href="https://abdulapopoola.com/category/software-testing/" rel="tag">Software Testing</a></li><li><a href="https://abdulapopoola.com/category/software-testing/unit-testing/" rel="tag">Unit testing</a></li></ul></div><div class="term term--post_tag"><h3 class="term-title">Tagged</h3> <ul class="term-list"><li><a href="https://abdulapopoola.com/tag/javascript/" rel="tag">JavaScript</a></li><li><a href="https://abdulapopoola.com/tag/test-spy/" rel="tag">test spy</a></li><li><a href="https://abdulapopoola.com/tag/unit-testing/" rel="tag">Unit testing</a></li></ul></div></div>
+					</footer>
+
+	</article>
+
+			
+	<nav class="navigation post-navigation" role="navigation">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://abdulapopoola.com/2016/04/04/learning-es2015-let-const-and-var/" rel="prev"><span class="meta-nav">Previous <span class="screen-reader-text">post:</span></span><span class="post-title">Learning ES2015 : let, const and&nbsp;var</span></a></div><div class="nav-next"><a href="https://abdulapopoola.com/2016/04/18/10-years-of-programming-lessons-learnt/" rel="next"><span class="meta-nav">Next <span class="screen-reader-text">post:</span></span><span class="post-title">10 years of programming: Lessons&nbsp;Learnt</span></a></div></div>
+	</nav>
+		</section>
+
+		
+
+<section id="comments" class="comments-area">
+
+	
+	<div class="content-fence">
+		<header class="comments-header">
+			
+				<h2 class="comments-title">
+					2 Comments				</h2>
+
+				<span class="sep">·</span>
+
+			
+			<p class="comments-reply">
+				<a href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/#respond">Leave a Reply</a>
+			</p>
+		</header>
+
+		
+			<ol class="comment-list show-avatars">
+						<li id="comment-14082" class="comment even thread-even depth-1 parent highlander-comment">
+			<article id="div-comment-14082" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="https://1.gravatar.com/avatar/4a5bc11ce2c8b20b4c6dafe85e412998?s=60&amp;d=identicon&amp;r=G" class="avatar avatar-60" height="60" width="60">						<b class="fn">Godmar Back</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/#comment-14082">
+							<time datetime="2016-09-08T21:53:18+00:00">
+								September 8, 2016 at 9:53 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>On line 11, you need to use .apply instead of .call.</p>
+<p>Change sample.fn to</p>
+<p>let sample = {<br>
+    fn: function(a, b, c){<br>
+        console.log(`${a} and ${b} and ${c}`);<br>
+    }<br>
+};</p>
+<p>to see the difference</p>
+<p id="comment-like-14082" data-liked="comment-not-liked" class="comment-likes comment-not-liked"><a href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/?like_comment=14082&amp;_wpnonce=c206c5009c" class="comment-like-link needs-login" rel="nofollow" data-blog="18478130"><span>Like</span></a><span id="comment-like-count-14082" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/?replytocom=14082#respond" onclick="return addComment.moveForm( &quot;div-comment-14082&quot;, &quot;14082&quot;, &quot;respond&quot;, &quot;5447&quot; )" aria-label="Reply to Godmar Back">Reply</a></div>			</article><!-- .comment-body -->
+<ul class="children">
+		<li id="comment-14142" class="comment byuser comment-author-abdulapopoola bypostauthor odd alt depth-2 highlander-comment">
+			<article id="div-comment-14142" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="https://0.gravatar.com/avatar/3ae0d06e5a5c1c1091e5d1820215180b?s=60&amp;d=identicon&amp;r=G" class="avatar avatar-60" height="60" width="60">						<b class="fn"><a href="https://abdulapopoola.wordpress.com/" rel="external nofollow" class="url">AbdulFattaah Popoola</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/#comment-14142">
+							<time datetime="2016-10-21T02:13:20+00:00">
+								October 21, 2016 at 2:13 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Thanks! Good call – was a mistake on my part.</p>
+<p id="comment-like-14142" data-liked="comment-not-liked" class="comment-likes comment-not-liked"><a href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/?like_comment=14142&amp;_wpnonce=6dab5c5084" class="comment-like-link needs-login" rel="nofollow" data-blog="18478130"><span>Like</span></a><span id="comment-like-count-14142" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/?replytocom=14142#respond" onclick="return addComment.moveForm( &quot;div-comment-14142&quot;, &quot;14142&quot;, &quot;respond&quot;, &quot;5447&quot; )" aria-label="Reply to AbdulFattaah Popoola">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+			</ol>
+
+			
+		
+		
+			<div id="respond" class="comment-respond js" style="">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/#respond" style="display:none;">Cancel reply</a></small></h3>			<form action="https://abdulapopoola.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
+				<input type="hidden" id="highlander_comment_nonce" name="highlander_comment_nonce" value="1b60a301ed"><input type="hidden" name="_wp_http_referer" value="/2016/04/11/how-function-spies-work-in-javascript/">
+<input type="hidden" name="hc_post_as" id="hc_post_as" value="guest">
+
+<div class="comment-form-field comment-textarea">
+	
+	<div id="comment-form-comment"><textarea tabindex="-1" style="position: absolute; top: -999px; left: 0px; right: auto; bottom: auto; border: 0px; padding: 0px; box-sizing: content-box; word-wrap: break-word; overflow: hidden; transition: none; height: 0px !important; min-height: 0px !important; font-family: Arial, Helvetica, Tahoma, Verdana, sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: 0px; text-transform: none; text-decoration: none solid rgba(0, 0, 0, 0.7); word-spacing: 0px; text-indent: 0px; line-height: 18px; width: 100px;" class="autosizejs "></textarea><textarea id="comment" name="comment" title="Enter your comment here..." placeholder="Enter your comment here..." style="height: 20px; overflow: hidden; word-wrap: break-word; resize: none;"></textarea></div>
+</div>
+
+<div id="comment-form-identity" style="display: none;">
+
+	<div id="comment-form-nascar">
+		<p>Fill in your details below or click an icon to log in:</p>
+		<ul>
+			<li class="selected" style="display:none;">
+				<a href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/#comment-form-guest" id="postas-guest" title="Guest">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/#comment-form-load-service:WordPress.com" id="postas-wordpress" title="WordPress.com">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/#comment-form-load-service:Twitter" id="postas-twitter" title="Twitter">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/#comment-form-load-service:Facebook" id="postas-facebook" title="Facebook">
+					<span></span>
+				</a>
+			</li>
+			<li>
+		</li></ul>
+	</div>
+
+	<div id="comment-form-guest" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+<a href="https://gravatar.com/site/signup/" target="_blank">				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=identicon&amp;forcedefault=y&amp;r=G" alt="Gravatar" width="25" class="no-grav">
+</a>			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">Email <span class="required">(required)</span> <span class="nopublish">(Address never made public)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" type="email" value=""></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">Name <span class="required">(required)</span></label>
+					<div class="comment-form-input"><input id="author" name="author" type="text" value=""></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">Website</label>
+					<div class="comment-form-input"><input id="url" name="url" type="url" value=""></div>
+				</div>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=identicon&amp;forcedefault=y&amp;r=G" alt="WordPress.com Logo" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="wp_avatar" id="wordpress-avatar" class="comment-meta-wordpress" value="">
+				<input type="hidden" name="wp_user_id" id="wordpress-user_id" class="comment-meta-wordpress" value="">
+				<input type="hidden" name="wp_access_token" id="wordpress-access_token" class="comment-meta-wordpress" value="">
+				<p class="comment-form-posting-as pa-wordpress"><strong></strong> You are commenting using your WordPress.com account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;wordpress&#39; );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=identicon&amp;forcedefault=y&amp;r=G" alt="Twitter picture" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="">
+				<input type="hidden" name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="">
+				<input type="hidden" name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="">
+				<p class="comment-form-posting-as pa-twitter"><strong></strong> You are commenting using your Twitter account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;twitter&#39; );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=identicon&amp;forcedefault=y&amp;r=G" alt="Facebook photo" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="">
+				<input type="hidden" name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="">
+				<input type="hidden" name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="">
+				<p class="comment-form-posting-as pa-facebook"><strong></strong> You are commenting using your Facebook account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;facebook&#39; );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-googleplus" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=identicon&amp;forcedefault=y&amp;r=G" alt="Google+ photo" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="googleplus_avatar" id="googleplus-avatar" class="comment-meta-googleplus" value="">
+				<input type="hidden" name="googleplus_user_id" id="googleplus-user_id" class="comment-meta-googleplus" value="">
+				<input type="hidden" name="googleplus_access_token" id="googleplus-access_token" class="comment-meta-googleplus" value="">
+				<p class="comment-form-posting-as pa-googleplus"><strong></strong> You are commenting using your Google+ account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;googleplus&#39; );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service">
+		<div class="comment-form-posting-as-cancel"><a href="javascript:HighlanderComments.cancelExternalWindow();">Cancel</a></div>
+		<p>Connecting to %s</p>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+var highlander_expando_javascript = function(){
+	var input = document.createElement( 'input' ),
+	    comment = jQuery( '#comment' );
+
+	if ( 'placeholder' in input ) {
+		comment.attr( 'placeholder', jQuery( '.comment-textarea label' ).remove().text() );
+	}
+
+	// Expando Mode: start small, then auto-resize on first click + text length
+	jQuery( '#comment-form-identity' ).hide();
+	jQuery( '#comment-form-subscribe' ).hide();
+	jQuery( '#commentform .form-submit' ).hide();
+
+	comment.css( { 'height':'10px' } ).one( 'focus', function() {
+		var timer = setInterval( HighlanderComments.resizeCallback, 10 )
+		jQuery( this ).animate( { 'height': HighlanderComments.initialHeight } ).delay( 100 ).queue( function(n) { clearInterval( timer ); HighlanderComments.resizeCallback(); n(); } );
+		jQuery( '#comment-form-identity' ).slideDown();
+		jQuery( '#comment-form-subscribe' ).slideDown();
+		jQuery( '#commentform .form-submit' ).slideDown();
+	});
+}
+jQuery(document).ready( highlander_expando_javascript );
+</script>
+
+<div id="comment-form-subscribe" style="display: none;">
+	<p class="comment-subscription-form"><input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;"> <label class="subscribe-label" id="subscribe-label" for="subscribe" style="display: inline;">Notify me of new comments via email.</label></p><p class="post-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto;"> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog" style="display: inline;">Notify me of new posts via email.</label></p></div>
+
+
+
+
+<p class="form-submit" style="display: none;"><input name="submit" type="submit" id="comment-submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="5447" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="c41114aef1"></p>
+<input type="hidden" name="genseq" value="1520592522">
+<p style="display: none;"></p>			<input type="hidden" id="ak_js" name="ak_js" value="1520592523912"></form>
+			</div><!-- #respond -->
+	<div style="clear: both"></div>	</div>
+
+	
+</section>
+
+
+	
+	
+</main>
+
+
+		
+		<footer id="footer" class="site-footer" role="contentinfo" itemscope="" itemtype="http://schema.org/WPFooter">
+
+			
+			
+				<nav class="social-navigation" role="navigation">
+					<ul id="menu-social" class="menu"><li id="menu-item-12679" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12679"><a href="https://github.com/abdulapopoola"><span class="screen-reader-text">Github</span></a></li>
+<li id="menu-item-12680" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12680"><a href="https://twitter.com/abdulapopoola"><span class="screen-reader-text">Twitter</span></a></li>
+<li id="menu-item-12681" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12681"><a href="https://www.linkedin.com/in/abdulfattah/"><span class="screen-reader-text">LinkedIn</span></a></li>
+</ul>				</nav>
+
+			
+			<section class="credits">
+				<a href="https://wordpress.com/?ref=footer_custom_svg" title="Create a website or blog at WordPress.com"><svg style="fill: currentColor; position: relative; top: 1px;" width="14px" height="15px" viewBox="0 0 14 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-labelledby="title" role="img">
+				<desc id="title">Create a website or blog at WordPress.com</desc>
+				<path d="M12.5225848,4.97949746 C13.0138466,5.87586309 13.2934037,6.90452431 13.2934037,7.99874074 C13.2934037,10.3205803 12.0351007,12.3476807 10.1640538,13.4385638 L12.0862862,7.88081544 C12.4453251,6.98296834 12.5648813,6.26504621 12.5648813,5.62667922 C12.5648813,5.39497674 12.549622,5.17994084 12.5225848,4.97949746 L12.5225848,4.97949746 Z M7.86730089,5.04801561 C8.24619178,5.02808979 8.58760099,4.98823815 8.58760099,4.98823815 C8.9267139,4.94809022 8.88671369,4.44972248 8.54745263,4.46957423 C8.54745263,4.46957423 7.52803983,4.54957381 6.86996227,4.54957381 C6.25158863,4.54957381 5.21247202,4.46957423 5.21247202,4.46957423 C4.87306282,4.44972248 4.83328483,4.96816418 5.17254589,4.98823815 C5.17254589,4.98823815 5.49358462,5.02808979 5.83269753,5.04801561 L6.81314716,7.73459399 L5.43565839,11.8651647 L3.14394256,5.04801561 C3.52312975,5.02808979 3.86416859,4.98823815 3.86416859,4.98823815 C4.20305928,4.94809022 4.16305906,4.44972248 3.82394616,4.46957423 C3.82394616,4.46957423 2.80475558,4.54957381 2.14660395,4.54957381 C2.02852925,4.54957381 1.88934333,4.54668493 1.74156477,4.54194422 C2.86690406,2.83350881 4.80113651,1.70529256 6.99996296,1.70529256 C8.638342,1.70529256 10.1302017,2.33173369 11.2498373,3.35765419 C11.222726,3.35602457 11.1962815,3.35261718 11.1683554,3.35261718 C10.5501299,3.35261718 10.1114609,3.89113285 10.1114609,4.46957423 C10.1114609,4.98823815 10.4107217,5.42705065 10.7296864,5.94564049 C10.969021,6.36482346 11.248578,6.90326506 11.248578,7.68133501 C11.248578,8.21992476 11.0413918,8.84503256 10.7696866,9.71584277 L10.1417574,11.8132391 L7.86730089,5.04801561 Z M6.99996296,14.2927074 C6.38218192,14.2927074 5.78595654,14.2021153 5.22195356,14.0362644 L7.11048207,8.54925635 L9.04486267,13.8491542 C9.05760348,13.8802652 9.07323319,13.9089317 9.08989995,13.9358945 C8.43574834,14.1661896 7.73285573,14.2927074 6.99996296,14.2927074 L6.99996296,14.2927074 Z M0.706448182,7.99874074 C0.706448182,7.08630113 0.902152921,6.22015756 1.25141403,5.43749503 L4.25357806,13.6627848 C2.15393732,12.6427902 0.706448182,10.4898387 0.706448182,7.99874074 L0.706448182,7.99874074 Z M6.99996296,0.999 C3.14016476,0.999 0,4.13905746 0,7.99874074 C0,11.8585722 3.14016476,14.999 6.99996296,14.999 C10.8596871,14.999 14,11.8585722 14,7.99874074 C14,4.13905746 10.8596871,0.999 6.99996296,0.999 L6.99996296,0.999 Z" id="wordpress-logo-simplified-cmyk" stroke="none" fill="“currentColor”" fill-rule="evenodd"></path>
+			</svg></a>			</section>
+		</footer>
+
+		
+	</div><!-- #page -->
+
+	<!--  -->
+<script type="text/javascript" src="https://0.gravatar.com/js/gprofiles.js?ver=201810y"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./How function spies work in JavaScript – CodeKraft_files/wpgroho.js"></script>
+
+	<script>
+		//initialize and attach hovercards to all gravatars
+		jQuery( document ).ready( function( $ ) {
+
+			if (typeof Gravatar === "undefined"){
+				return;
+			}
+
+			if ( typeof Gravatar.init !== "function" ) {
+				return;
+			}			
+
+			Gravatar.profile_cb = function( hash, id ) {
+				WPGroHo.syncProfileData( hash, id );
+			};
+			Gravatar.my_hash = WPGroHo.my_hash;
+			Gravatar.init( 'body', '#wp-admin-bar-my-account' );
+		});
+	</script>
+
+		<div style="display:none">
+	<div class="grofile-hash-map-4a5bc11ce2c8b20b4c6dafe85e412998">
+	</div>
+	<div class="grofile-hash-map-3ae0d06e5a5c1c1091e5d1820215180b">
+	</div>
+	</div>
+<script type="text/javascript">
+/* <![CDATA[ */
+var HighlanderComments = {"loggingInText":"Logging In\u2026","submittingText":"Posting Comment\u2026","postCommentText":"Post Comment","connectingToText":"Connecting to %s","commentingAsText":"%1$s: You are commenting using your %2$s account.","logoutText":"Log Out","loginText":"Log In","connectURL":"https:\/\/abdulapopoola.wordpress.com\/public.api\/connect\/?action=request","logoutURL":"https:\/\/abdulapopoola.wordpress.com\/wp-login.php?action=logout&_wpnonce=f17a0b70e3","homeURL":"https:\/\/abdulapopoola.com\/","postID":"5447","gravDefault":"identicon","enterACommentError":"Please enter a comment","enterEmailError":"Please enter your email address here","invalidEmailError":"Invalid email address","enterAuthorError":"Please enter your name here","gravatarFromEmail":"This picture will show whenever you leave a comment. Click to customize it.","logInToExternalAccount":"Log in to use details from one of these accounts.","change":"Change","changeAccount":"Change Account","comment_registration":"","userIsLoggedIn":"","isJetpack":"","text_direction":"ltr"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./How function spies work in JavaScript – CodeKraft_files/saved_resource(4)"></script>
+<script type="text/javascript" charset="UTF-8" id="polldaddyRatings"><!--//--><![CDATA[//><!--
+PDRTJS_settings_3529016_post_5447={"id":3529016,"unique_id":"wp-post-5447","title":"How%20function%20spies%20work%20in%26nbsp%3BJavaScript","permalink":"https:\/\/abdulapopoola.com\/2016\/04\/11\/how-function-spies-work-in-javascript\/","item_id":"_post_5447"}; if ( typeof PDRTJS_RATING !== 'undefined' ){if ( typeof PDRTJS_3529016_post_5447 == 'undefined' ){PDRTJS_3529016_post_5447 = new PDRTJS_RATING( PDRTJS_settings_3529016_post_5447 );}}
+//--><!]]></script><script type="text/javascript" charset="UTF-8" src="./How function spies work in JavaScript – CodeKraft_files/rating.js"></script>
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/abdulapopoola.com\/2016\/04\/11\/how-function-spies-work-in-javascript\/":5447};
+	</script>
+		<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-facebook' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+		});
+		</script>
+					<div id="fb-root"></div>
+			<script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = '//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=249643311490&version=v2.3'; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
+			<script>
+			jQuery( document.body ).on( 'post-load', function() {
+				if ( 'undefined' !== typeof FB ) {
+					FB.XFBML.parse();
+				}
+			} );
+			</script>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+						<script>
+			function renderGooglePlus1() {
+				if ( 'undefined' === typeof gapi ) {
+					return;
+				}
+
+				jQuery( '.g-plus' ).each(function() {
+					var $button = jQuery( this );
+
+					if ( ! $button.data( 'gplus-rendered' ) ) {
+						gapi.plusone.render( this, {
+							href: $button.attr( 'data-href' ),
+							size: $button.attr( 'data-size' ),
+							annotation: $button.attr( 'data-annotation' )
+						});
+
+						$button.data( 'gplus-rendered', true );
+					}
+				});
+			}
+
+			(function() {
+				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+				po.src = 'https://apis.google.com/js/plusone.js';
+				po.innerHTML = '{"parsetags": "explicit"}';
+				po.onload = renderGooglePlus1;
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+			})();
+
+			jQuery( document.body ).on( 'post-load', renderGooglePlus1 );
+			</script>
+			<script type="text/javascript">
+			jQuery( document ).ready( function() {
+			    jQuery.getScript( '//platform.linkedin.com/in.js?async=true', function success() {
+			        IN.init();
+			    });
+			});
+			jQuery( document.body ).on( 'post-load', function() {
+				if ( typeof IN != 'undefined' )
+					IN.parse();
+			});
+			</script><script type="text/javascript" src="https://platform.tumblr.com/v1/share.js"></script>	
+<script type="text/javascript" src="./How function spies work in JavaScript – CodeKraft_files/saved_resource(5)"></script>
+<script type="text/javascript">
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "https://s0.wp.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+		var themecssurl = "https://s0.wp.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?m=1363304414h&amp;ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+// Infinite scroll support
+jQuery( function( $ ) {
+	$( document.body ).on( 'post-load', function() {
+		SyntaxHighlighter.highlight();
+	} );
+} );
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var comment_like_text = {"loading":"Loading..."};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var actionbardata = {"siteID":"18478130","siteName":"CodeKraft","siteURL":"https:\/\/abdulapopoola.com","icon":"<img alt='' src='https:\/\/secure.gravatar.com\/blavatar\/809caf76f132b4f947fc875e79a2b02a?s=50&d=https%3A%2F%2Fs1.wp.com%2Fi%2Flogo%2Fwpcom-gray-white.png' class='avatar avatar-50' height='50' width='50' \/>","canManageOptions":"","canCustomizeSite":"","isFollowing":"","themeSlug":"premium\/hyalite","signupURL":"https:\/\/wordpress.com\/start\/","loginURL":"https:\/\/abdulapopoola.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fabdulapopoola.com%2F2016%2F04%2F11%2Fhow-function-spies-work-in-javascript%2F","themeURL":"https:\/\/wordpress.com\/theme\/hyalite\/","xhrURL":"https:\/\/abdulapopoola.com\/wp-admin\/admin-ajax.php","nonce":"cc36776438","isSingular":"1","isFolded":"","isLoggedIn":"","isMobile":"","subscribeNonce":"<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"6c433f7083\" \/>","referer":"https:\/\/abdulapopoola.com\/2016\/04\/11\/how-function-spies-work-in-javascript\/","canFollow":"1","feedID":"16639688","statusMessage":"","customizeLink":"https:\/\/abdulapopoola.wordpress.com\/wp-admin\/customize.php?url=https%3A%2F%2Fabdulapopoola.wordpress.com%2F2016%2F04%2F11%2Fhow-function-spies-work-in-javascript%2F","postID":"5447","shortlink":"https:\/\/wp.me\/p1fx0m-1pR","canEditPost":"","editLink":"https:\/\/wordpress.com\/post\/abdulapopoola.com\/5447","statsLink":"https:\/\/wordpress.com\/stats\/post\/5447\/abdulapopoola.com","i18n":{"view":"View site","follow":"Follow","following":"Following","edit":"Edit","login":"Log in","signup":"Sign up","customize":"Customize","report":"Report this content","themeInfo":"Get theme: Hyalite","shortlink":"Copy shortlink","copied":"Copied","followedText":"New posts from this site will now appear in your <a href=\"https:\/\/wordpress.com\/\">Reader<\/a>","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","editSubs":"Manage subscriptions","viewReader":"View site in Reader","viewReadPost":"View post in Reader","subscribe":"Sign me up","enterEmail":"Enter your email address","followers":"Join 2,278 other followers","alreadyUser":"Already have a WordPress.com account? <a href=\"https:\/\/abdulapopoola.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fabdulapopoola.com%2F2016%2F04%2F11%2Fhow-function-spies-work-in-javascript%2F\">Log in now.<\/a>","stats":"Stats"}};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./How function spies work in JavaScript – CodeKraft_files/saved_resource(6)"></script><div id="actionbar" class="actnbr-premium-hyalite actnbr-has-follow"><ul><li class="actnbr-btn actnbr-hidden"> 			    	<a class="actnbr-action actnbr-actn-follow" href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/"><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>Follow</span></a> 			    	<div class="actnbr-popover tip tip-top-left actnbr-notice"> 			    		<div class="tip-arrow"></div> 			    		<div class="tip-inner actnbr-follow-bubble"></div> 			    	</div> 			    </li><li class="actnbr-ellipsis actnbr-hidden"> 			  <svg class="gridicon gridicon__ellipsis" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><circle cx="5" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle></g></svg> 			  <div class="actnbr-popover tip tip-top-left actnbr-more"> 			  	<div class="tip-arrow"></div> 			  	<div class="tip-inner"> 				  <ul> 				    <li class="actnbr-sitename"><a href="https://abdulapopoola.com/"><img alt="" src="https://secure.gravatar.com/blavatar/809caf76f132b4f947fc875e79a2b02a?s=50&amp;d=https%3A%2F%2Fs1.wp.com%2Fi%2Flogo%2Fwpcom-gray-white.png" class="avatar avatar-50" height="50" width="50"> CodeKraft</a></li> 				   	<li class="actnbr-folded-customize"><a href="https://abdulapopoola.wordpress.com/wp-admin/customize.php?url=https%3A%2F%2Fabdulapopoola.wordpress.com%2F2016%2F04%2F11%2Fhow-function-spies-work-in-javascript%2F"><svg class="gridicon gridicon__customize" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M2 6c0-1.505.78-3.08 2-4 0 .845.69 2 2 2 1.657 0 3 1.343 3 3 0 .386-.08.752-.212 1.09.74.594 1.476 1.19 2.19 1.81L8.9 11.98c-.62-.716-1.214-1.454-1.807-2.192C6.753 9.92 6.387 10 6 10c-2.21 0-4-1.79-4-4zm12.152 6.848l1.34-1.34c.607.304 1.283.492 2.008.492 2.485 0 4.5-2.015 4.5-4.5 0-.725-.188-1.4-.493-2.007L18 9l-2-2 3.507-3.507C18.9 3.188 18.225 3 17.5 3 15.015 3 13 5.015 13 7.5c0 .725.188 1.4.493 2.007L3 20l2 2 6.848-6.848c1.885 1.928 3.874 3.753 5.977 5.45l1.425 1.148 1.5-1.5-1.15-1.425c-1.695-2.103-3.52-4.092-5.448-5.977z" data-reactid=".2.1.1:0.1b.0"></path></g></svg><span>Customize<span></span></span></a></li> 				    <li class="actnbr-folded-follow"><a class="actnbr-action actnbr-actn-follow" href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/"><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>Follow</span></a></li> 					<li class="actnbr-signup"><a href="https://wordpress.com/start/">Sign up</a></li> 				    <li class="actnbr-login"><a href="https://abdulapopoola.wordpress.com/wp-login.php?redirect_to=https%3A%2F%2Fabdulapopoola.com%2F2016%2F04%2F11%2Fhow-function-spies-work-in-javascript%2F">Log in</a></li> 				     				    <li class="actnbr-shortlink"><a href="https://wp.me/p1fx0m-1pR">Copy shortlink</a></li> 				    <li class="flb-report"><a href="http://en.wordpress.com/abuse/">Report this content</a></li> 				     				     				    <li class="actnbr-subs"><a href="https://subscribe.wordpress.com/">Manage subscriptions</a></li> 				    <li class="actnbr-fold"><a href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/">Collapse this bar</a></li> 			      </ul> 			    </div> 		      </div> 		    </li> 	      </ul></div>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script>		<iframe src="./How function spies work in JavaScript – CodeKraft_files/master.html" scrolling="no" id="likes-master" name="likes-master" style="display:none;"></iframe>
+		<div id="likes-other-gravatars"><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+<script src="https://stats.wp.com/w.js?56" type="text/javascript" async="" defer=""></script>
+<script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'18478130','blog_tz':'0','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+_stq.push(['view', {'blog':'18478130','v':'wpcom','tz':'0','user_id':'0','post':'5447','subd':'abdulapopoola'}]);
+_stq.push(['extra', {'crypt':'UE40eW5QN0p8M2Y/RE1TaVhzUzFMbjdWNHpwZGhTayxPSUFCMGNrd29+Smw0TDhnZmRTK0hlRi9QSGh6bi9GXVhBJWIlZlR5U1JMLU8/MkNtblkvY1cteDJoN1NZRmw5S3x+M35aQWlqaHFZb3oscXc0Y21fLkFQVXRBbz0vR2o1LFQlNi9NenJ6dGcmS3lXZ3FOZno2MGNoVEpyWlFxeD1PLT1mRVd1SFdlSDI1c1RqUmF+YzZZP09kaTZnNHFrU2NWayU4bThWLiZ2T2V+NFhIUWhrLHQxV11qMnNYNnZ2c3U2Um9vckxVJismYl95aTFYfFVvMUpXLDguU085dHFELmVmdEw9bzNQQ1k1ejkzblMsZw=='}]);
+_stq.push([ 'clickTrackerInit', '18478130', '5447' ]);
+	</script>
+<noscript>&lt;img src="https://pixel.wp.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /&gt;</noscript>
+<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script>
+
+<div class="comment-likes-overlay" style="display: none;"></div><div id="sharing_email" style="display: none;">
+		<form action="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/" method="post">
+			<label for="target_email">Send to Email Address</label>
+			<input type="email" name="target_email" id="target_email" value="">
+
+			
+				<label for="source_name">Your Name</label>
+				<input type="text" name="source_name" id="source_name" value="">
+
+				<label for="source_email">Your Email Address</label>
+				<input type="email" name="source_email" id="source_email" value="">
+
+						<input type="text" id="jetpack-source_f_name" name="source_f_name" class="input" value="" size="25" autocomplete="off">
+			<script> document.getElementById('jetpack-source_f_name').value = ''; </script>
+			<div class="recaptcha" id="sharing_recaptcha"></div><input type="hidden" name="recaptcha_public_key" id="recaptcha_public_key" value="6LcYW8MSAAAAADBAuEH9yaPcF7lWh11Iq62ZKtoo">
+			<img style="float: right; display: none" class="loading" src="./How function spies work in JavaScript – CodeKraft_files/loading.gif" alt="loading" width="16" height="16">
+			<input type="submit" value="Send Email" class="sharing_send">
+			<a rel="nofollow" href="https://abdulapopoola.com/2016/04/11/how-function-spies-work-in-javascript/#cancel" class="sharing_cancel">Cancel</a>
+
+			<div class="errors errors-1" style="display: none;">
+				Post was not sent - check your email addresses!			</div>
+
+			<div class="errors errors-2" style="display: none;">
+				Email check failed, please try again			</div>
+
+			<div class="errors errors-3" style="display: none;">
+				Sorry, your blog cannot share posts by email.			</div>
+		</form>
+	</div></body><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span></html>

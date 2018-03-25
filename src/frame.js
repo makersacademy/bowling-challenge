@@ -1,5 +1,5 @@
-function Frame(multipliers, isFinalFrame) {
-  this.multipliers = multipliers;
+function Frame(scoreMultipliers, isFinalFrame) {
+  this.scoreMultipliers = scoreMultipliers;
   this.rolls = [];
   this.score = 0;
   this.isFinalFrame = isFinalFrame;
@@ -8,7 +8,7 @@ function Frame(multipliers, isFinalFrame) {
 Frame.prototype.roll = function(pinsKnocked) {
   this.rolls.push(pinsKnocked);
   this._updateScore(pinsKnocked);
-  this._calculateMultipliers();
+  this._calculateScoreMultipliers();
 };
 
 Frame.prototype.isComplete = function() {
@@ -20,20 +20,20 @@ Frame.prototype.isComplete = function() {
 };
 
 Frame.prototype._updateScore = function(pinsKnocked) {
-  let currentMultiplier = this.multipliers.shift();
+  let currentMultiplier = this.scoreMultipliers.shift();
   this.score += (pinsKnocked * currentMultiplier);
 };
 
-Frame.prototype._calculateMultipliers = function() {
-  let multipliers = this.multipliers;
-  multipliers.push(1);
+Frame.prototype._calculateScoreMultipliers = function() {
+  let scoreMultipliers = this.scoreMultipliers;
+  scoreMultipliers.push(1);
   if (this.isFinalFrame) { return; }
   if (this.rolls[0] === 10) {
-    this.multipliers[1] += 1;
-    this.multipliers[0] += 1;
+    this.scoreMultipliers[1] += 1;
+    this.scoreMultipliers[0] += 1;
   }
   if (this.rolls[0] + this.rolls[1] === 10) {
-    this.multipliers[0] += 1;
+    this.scoreMultipliers[0] += 1;
   }
 };
 

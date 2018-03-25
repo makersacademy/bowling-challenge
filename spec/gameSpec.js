@@ -18,8 +18,8 @@ describe("Game", function() {
     expect(game.player).toEqual("Alice");
   });
 
-  it("is initialised with this.multipliers = [1, 1]", function() {
-    expect(game.multipliers).toEqual([1, 1]);
+  it("is initialised with this.scoreMultipliers = [1, 1]", function() {
+    expect(game.scoreMultipliers).toEqual([1, 1]);
   });
 
   it("is initialised with frameConstructor", function() {
@@ -31,7 +31,7 @@ describe("Game", function() {
 
     beforeEach(function() {
       testFrame = jasmine.createSpyObj("testFrame", ["roll", "isComplete"]);
-      spyOn(game, "_updateMultipliers").and.returnValue(true);
+      spyOn(game, "_updateScoreMultipliers").and.returnValue(true);
       spyOn(game, "_updateScore").and.returnValue(true);
       game.frames.push(testFrame);
       pinsKnocked = 5;
@@ -57,10 +57,10 @@ describe("Game", function() {
       expect(game._updateFrameNumber).toHaveBeenCalledWith();
     });
 
-    it("calls this._updateMultipliers", function() {
+    it("calls this._updateScoreMultipliers", function() {
       game.roll(pinsKnocked);
 
-      expect(game._updateMultipliers).toHaveBeenCalledWith();
+      expect(game._updateScoreMultipliers).toHaveBeenCalledWith();
     });
 
     it("calls this._updateScore", function() {
@@ -88,27 +88,27 @@ describe("Game", function() {
     });
   });
 
-  describe("._updateMultipliers", function() {
+  describe("._updateScoreMultipliers", function() {
     beforeEach(function() {
       testFrame = jasmine.createSpy("frame");
       game.frameNumber = 1;
-      testFrame.multipliers = [2, 2];
+      testFrame.scoreMultipliers = [2, 2];
       game.frames.push(testFrame);
     });
 
     it("updates the multipliers with those from the last frame if that frame is complete", function() {
       testFrame.isComplete = function() { return true; };
-      game._updateMultipliers();
+      game._updateScoreMultipliers();
 
-      expect(game.multipliers).toEqual(testFrame.multipliers);
+      expect(game.scoreMultipliers).toEqual(testFrame.scoreMultipliers);
     });
 
     it("does not change multipliers if last frame is not complete", function() {
-      let previousMultipliers = game.multipliers;
+      let previousMultipliers = game.scoreMultipliers;
       testFrame.isComplete = function() { return false; };
-      game._updateMultipliers();
+      game._updateScoreMultipliers();
 
-      expect(game.multipliers).toEqual(previousMultipliers);
+      expect(game.scoreMultipliers).toEqual(previousMultipliers);
     });
   });
 

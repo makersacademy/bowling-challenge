@@ -3,7 +3,6 @@ body {
 }
 
 .title-container {
-  border: 4px 3px 30px 3px;
   border-color: black;
   border-style: double groove;
   padding: 10px;
@@ -16,6 +15,7 @@ body {
 
 .button-table {
   width: 300px;
+  background-color: #fc9220;
 }
 
 .button-cell {

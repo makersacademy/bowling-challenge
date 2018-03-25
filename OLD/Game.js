@@ -20,3 +20,7 @@ Game.prototype.score = function() {
   });
   return this._score;
 };
+
+Game.prototype.framesPlayed = function() {
+  return this._frames.length;
+}

@@ -1,44 +1,60 @@
 describe('Frame', function() {
-  let frame, round;
+  let frame;
 
   beforeEach(function() {
     frame = new Frame();
-    round = jasmine.createSpy('Round');
   });
 
-  it('should have an inital score of 0', function() {
-    expect(frame._score).toEqual(0);
+  it('should initally have 10 pins', function() {
+    expect(frame._pins).toEqual([1,2,3,4,5,6,7,8,9,10]);
   });
 
-  it('should have no rounds played', function() {
-    expect(frame._rounds).toEqual([]);
+  it('should initally have 0 rounds played', function() {
+    expect(frame._roundsPlayed).toEqual(0);
   });
 
-  describe('addRound', function() {
-    it('should be able to store a round', function() {
-      frame.addRound(round);
-
-      expect(frame._rounds).toEqual([round]);
+  describe('pinsKnockedOver', function() {
+    it('should return 3 pins remaining if 7 pins knocked over', function() {
+      frame.pinsKnockedOver(7);
+      expect(frame._pins).toEqual([1,2,3]);
     });
 
-    it('throws an error if more than three rounds are added to a frame', function() {
-      frame.addRound(round);
-      frame.addRound(round);
-      frame.addRound(round);
+    it('should return 5 pins remaining if 5 pins knocked over', function() {
+      frame.pinsKnockedOver(5);
+      expect(frame._pins).toEqual([1,2,3,4,5]);
+    });
 
+    it('it should return 0 pins remaining if 10 pins knocked over', function() {
+      frame.pinsKnockedOver(10);
+      expect(frame._pins).toEqual([]);
+    });
+  });
+
+  describe('isStrikeOnFirstRound', function() {
+    it('should return true if one round played and all pins knocked over', function() {
+      frame.play(10);
+      expect(frame.isStrikeOnFirstRound()).toEqual(true);
+    });
+
+    it('should return false if one round played a not all pins knocked over', function() {
+      frame.play(5);
+      expect(frame.isStrikeOnFirstRound()).toEqual(false);
+    });
+  });
+
+  describe('play', function() {
+    it('should play a round of the frame', function() {
       expect(function() {
-        frame.addRound(round);
-      }).toThrowError('Max number of rounds exceeded');
+        frame.play(4);
+      }).not.toThrow();
     });
-  });
 
-  describe('score', function() {
-    it('returns the score from the current frame', function() {
-      // TODO: How to stub this
-      frame.addRound(new Round(7));
-      frame.addRound(new Round(2));
-
-      expect(frame.score()).toEqual(9);
+    it('shoulds throw a error if more than 2 rounds are played', function() {
+      frame.play(2);
+      frame.play(4);
+      expect(function() {
+        frame.play(2)
+      }).toThrowError('Max number of rounds played');
     });
   });
 });

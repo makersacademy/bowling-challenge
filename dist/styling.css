@@ -1,0 +1,17 @@
+table {
+  margin-top: 20px;
+  text-align: center;
+  border: solid 7px;
+  border-radius: 5px;
+}
+
+th {
+  font-size: 30px;
+  border-top: 5px solid grey;
+  border-bottom: 5px solid grey;
+}
+
+td {
+  padding: 20px;
+  border: 2px solid grey;
+}

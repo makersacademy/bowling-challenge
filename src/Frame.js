@@ -1,22 +1,28 @@
 'use strict';
 
+const MAX_ROUNDS = 2;
+
 function Frame() {
-  this._score = 0;
-  this._rounds = [];
+  this._pins = [1,2,3,4,5,6,7,8,9,10];
+  this._roundsPlayed = 0;
 };
 
-Frame.prototype.addRound = function(round) {
-  if (this._rounds.length >= 3) {
-    throw new Error("Max number of rounds exceeded");
-  } else {
-    this._rounds.push(round);
+Frame.prototype.pinsKnockedOver = function(pinCount) {
+  this._pins.splice(-pinCount, pinCount);
+};
+
+Frame.prototype.isStrikeOnFirstRound = function() {
+  if (this._roundsPlayed === 1 && this._pins.length === 0) {
+    return true;
   };
+  return false;
 };
 
-Frame.prototype.score = function() {
-  let that = this;
-  this._rounds.forEach(function(element) {
-    that._score += element._score;
-  });
-  return this._score;
-};
+Frame.prototype.play = function(pinCount) {
+  if (this._roundsPlayed === 2) {
+    throw new Error('Max number of rounds played');
+  } else {
+    this._roundsPlayed += 1;
+    this.pinsKnockedOver(pinCount);
+  }
+}

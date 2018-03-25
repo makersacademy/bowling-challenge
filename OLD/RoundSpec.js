@@ -19,4 +19,11 @@ describe('Round', function() {
       new Round(11);
     }).toThrowError('Max number of pins exceeded');
   });
+
+  describe('isOver', function() {
+    it('returns true if round is over', function() {
+      round = new Round(10);
+      expect(round.isOver()).toEqual(true);
+    });
+  });
 });

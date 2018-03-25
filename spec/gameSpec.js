@@ -12,9 +12,6 @@ describe('Game', function(){
       expect(game.rolls).toEqual([]);
     });
 
-    it('is initialised with a score of 0', function(){
-      expect(game.result).toEqual(0);
-    });
   });
 
   describe('Score calculation for', function(){

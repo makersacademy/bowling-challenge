@@ -3,23 +3,86 @@
   <head>
     <title>SuperDuperCool Bowling ScoreCard</title>
     <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="public/style.css">
   </head>
   <body>
     <section>
       <h1 id="score"></h1>
+
+      <table>
+
       <p>
-        <button id="one">1</button>
-        <button id="two">2</button>
-        <button id="three">3</button>
-        <button id="four">4</button>
-        <button id="five">5</button>
-        <button id="six">6</button>
-        <button id="seven">7</button>
-        <button id="eight">8</button>
-        <button id="nine">9</button>
-        <button id="ten">10</button>
+        <button class="button" id="one">1</button>
+        <button class="button" id="two">2</button>
+        <button class="button" id="three">3</button>
+        <button class="button" id="four">4</button>
+        <button class="button" id="five">5</button>
+        <button class="button" id="six">6</button>
+        <button class="button" id="seven">7</button>
+        <button class="button" id="eight">8</button>
+        <button class="button" id="nine">9</button>
+        <button class="button" id="ten">10</button>
       </p>
+
+      <div class="frames clearfix">
+        <div class="frame" id="frame1">
+          <div class="rollDisplay"></div>
+          <div class="rollDisplay"></div>
+          <div class="scoreDisplay"></div>
+        </div>
+        <div class="frame" id="frame2">
+          <div class="rollDisplay"></div>
+          <div class="rollDisplay"></div>
+          <div class="scoreDisplay"></div>
+        </div>
+        <div class="frame" id="frame3">
+          <div class="rollDisplay"></div>
+          <div class="rollDisplay"></div>
+          <div class="scoreDisplay"></div>
+        </div>
+        <div class="frame" id="frame4">
+          <div class="rollDisplay"></div>
+          <div class="rollDisplay"></div>
+          <div class="scoreDisplay"></div>
+        </div>
+        <div class="frame" id="frame5">
+          <div class="rollDisplay"></div>
+          <div class="rollDisplay"></div>
+          <div class="scoreDisplay"></div>
+        </div>
+        <div class="frame" id="frame6">
+          <div class="rollDisplay"></div>
+          <div class="rollDisplay"></div>
+          <div class="scoreDisplay"></div>
+        </div>
+        <div class="frame" id="frame7">
+          <div class="rollDisplay"></div>
+          <div class="rollDisplay"></div>
+          <div class="scoreDisplay"></div>
+        </div>
+        <div class="frame" id="frame8">
+          <div class="rollDisplay"></div>
+          <div class="rollDisplay"></div>
+          <div class="scoreDisplay"></div>
+        </div>
+        <div class="frame" id="frame9">
+          <div class="rollDisplay"></div>
+          <div class="rollDisplay"></div>
+          <div class="scoreDisplay"></div>
+        </div>
+        <div class="frame tenth" id="frame10">
+          <div class="rollDisplay"></div>
+          <div class="rollDisplay"></div>
+          <div class="rollDisplay"></div>
+          <div class="scoreDisplay"></div>
+        </div>
+        <div class="frame totalScore" id="frameTotScore">
+
+        </div>
+      </div>
+
     </section>
     <script src="src/game.js"></script>
+    <script src="public/interface.js"></script>
   </body>
 </html>

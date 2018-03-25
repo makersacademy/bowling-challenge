@@ -1,4 +1,4 @@
-Bowling Challenge
+Bowling Challenge - INCOMPLETE
 =================
 
 ```
@@ -22,3 +22,16 @@ As a bowling player,
 So that I can start a new game,
 I want to be able to play again.
 ```
+
+Reflections
+----
+Despite the vast amount of research (and exercising) carried out over the week, this challenge proved that I still find JavaScript rather daunting. I tried to develop the task following [Robert C. Martin's presentation](http://butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata) and a [YouTube tutorial](https://www.youtube.com/watch?v=-qA_MjNmpVU). I feel like I didn't really achieve much. Even if the few tests I wrote are passing, I believe there is something wrong in the code (e.g. _NaN_ messages when `console.log`ing `score()`. Hopefully, there will be some time during the week to discuss my concerns with classmates and coaches, to eventually try and improve the code next weekend.
+
+Some positivity
+----
+- I am becoming more confident with writing user stories and modelling diagrams.
+- Despite the complexity behind the score calculation, I will always enjoy playing bowling.
+
+Resources
+----
+I have been fiddling with [this CSS style](http://jsfiddle.net/subskybox/Lk46gjkL/)

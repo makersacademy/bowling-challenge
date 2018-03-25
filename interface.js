@@ -68,11 +68,18 @@ $(document).ready(function() {
       if (currentFrame.roll === 1) {
         $('#current-roll').text(currentFrame.roll)
         console.log(currentFrame.play1(parseInt(pins)))
+
+        for (var i = 10; i > (10-parseInt(pins)); i--) {
+        $("#pins-" + i).hide();
+      }
            currentFrame.nextRoll()
            console.log(currentFrame)
          }else if (currentFrame.roll === 2) {
            $('#current-roll').text(currentFrame.roll)
            console.log(currentFrame.play2(parseInt(pins)))
+           for (var i = 0; i <=10; i++) {
+          $("#pins-" + i).show();
+        }
            console.log(currentFrame)
            currentFrame.nextRoll()
          }

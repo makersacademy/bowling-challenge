@@ -17,7 +17,9 @@ Game.prototype.score = function() {
   }, 0);
 }
 Game.prototype.roll = function(number) {
-  this._frames[this._frames.length-1].roll(number);
+  if (typeof this._frames[this._frames.length-1].roll(number) === "string") {
+    this._frames.push(new this._frameConstructor);
+  }
 }
 
 // checkers

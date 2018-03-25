@@ -37,6 +37,3 @@ Frame.prototype.bonusAward = function() {
     return this.bonus = 'none';
   }
 }
-Frame.prototype.frameScore = function() {
-  return this.rollOne + this.rollTwo;
-};

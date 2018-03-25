@@ -19,11 +19,7 @@ describe('Frame', function() {
   });
 
   describe('after frame', function() {
-    it('gives a total score for the frame', function() {
-      frame.play1(3);
-      frame.play2(6);
-      expect(frame.frameScore()).toEqual(9);
-    });
+    
     describe('it knows when the bonus is...', function() {
       it('not awarded', function() {
         frame.play1(3);

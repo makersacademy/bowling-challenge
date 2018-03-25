@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 
 
-
+  $('#scores').hide();
   $('#confirm').hide()
   $('#edit').hide()
 
@@ -18,10 +18,13 @@ $(document).ready(function() {
     $('#frame').text(parseInt(index) + 1);
     console.dir(index);
     for (var i = 0; i <=10; i++) {
-    $("#pins-" + i).show();
-   }
+      $("#pins-" + i).show();
+    }
+    $('#scores').show();
+
     $('#edit').hide();
     $('#confirm').hide();
+
 
   });
 
@@ -45,13 +48,15 @@ $(document).ready(function() {
 
           currentFrame.nextRoll()
           console.log(currentFrame.bonusAward());
+          $('#scores').hide();
           $('#confirm').show()
           $('#edit').show()
 
         }
 
           $('#edit').unbind('click').click(function() {
-            DisplayButtons()
+            DisplayButtons();
+            $('#next').hide();
 
          });
 
@@ -59,7 +64,10 @@ $(document).ready(function() {
            console.log(currentFrame)
            console.log(score.totalScore(currentFrame));
            console.log(score.giveBonus(currentFrame));
-           DisplayButtons()
+           $('#edit').hide();
+           $('#confirm').hide();
+           $('#next').show();
+           $('#next').text('Please pick the next frame you wish to record')
          });
 
          $('#see-score').text(score.seeScore())
@@ -67,8 +75,9 @@ $(document).ready(function() {
 
          function DisplayButtons() {
            for (var i = 0; i <=10; i++) {
-           $("#pins-" + i).show();
-          }
+             $("#pins-" + i).show();
+           }
+           $('#scores').show();
            $('#edit').hide();
            $('#confirm').hide();
 

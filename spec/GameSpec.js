@@ -26,6 +26,14 @@ describe('Game', function() {
     expect(game.score()).toEqual(22);
   });
 
+  it('can roll Strke game', function() {
+    game.roll(10);
+    game.roll(6);
+    game.roll(2);
+    rollMany(0, 16);
+    expect(game.score()).toEqual(26);
+  });
+
   var rollMany = function(pins, rolls) {
     for (var i = 0; i < rolls; i++) {
       game.roll(pins)

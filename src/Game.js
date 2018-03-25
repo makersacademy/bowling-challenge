@@ -15,18 +15,31 @@ Game.prototype.score = function() {
   var game = this;
 
   for (var frameIndex = 0; frameIndex < 10 ; frameIndex++) {
-    if(isSpare()) {
+    if (isStrke()) {
+      result += getStrikeScore();
+      rollIndex++;
+    }
+    else if (isSpare()) {
       result += getSpareScore();
+      rollIndex += 2;
     } else {
       result += getNormalScore();
+      rollIndex += 2;
     }
-    rollIndex += 2;
   }
   return result;
 
 
   function isSpare() {
     return game.rolls[rollIndex] + game.rolls[rollIndex + 1] == 10;
+  }
+
+  function isStrke() {
+    return game.rolls[rollIndex] == 10;
+  }
+
+  function getStrikeScore() {
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
   }
 
   function getSpareScore() {

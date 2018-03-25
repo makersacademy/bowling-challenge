@@ -51,12 +51,16 @@ Frame.prototype.nSet = function(nFrame) {
 
 // checkers
 Frame.prototype.illegalRoll = function() {
-  if (this.n() == 10) { return false }
-  if (this._rolls.length === 2) {
-    return 'Only two rolls per frame until frame 10!';
+  if (this.n() == 10 && this._rolls.length === 3) {
+    return 'Only three rolls allowed in frame 10!' 
   }
-  if (this.isStrike() && this._rolls.length === 1) {
-    return 'No second roll after strike!';
+  if (this.n() != 10) {
+    if (this._rolls.length === 2) {
+      return 'Only two rolls per frame until frame 10!';
+    }
+    if (this.isStrike() && this._rolls.length === 1) {
+      return 'No second roll after strike!';
+    }
   }
   return false
 }

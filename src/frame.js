@@ -38,6 +38,9 @@ Frame.prototype.illegalRoll = function() {
   if (this._n != 10 && this._rolls.length === 2) {
     return 'Only two rolls per frame until frame 10!';
   }
+  if (this.isStrike() && this._rolls.length === 1) {
+    return 'No second roll after strike!';
+  }
   return false
 }
 

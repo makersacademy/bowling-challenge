@@ -24,3 +24,7 @@ Score.prototype.giveBonus = function(frame) {
     this.previousBonus = 'none';
   }
 }
+
+Score.prototype.seeScore = function() {
+  return this.currentTotalScore;
+}

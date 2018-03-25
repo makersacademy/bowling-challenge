@@ -3,7 +3,8 @@ $(document).ready(function() {
   var game = new Game;
   var currentFrame;
   game.start();
-  var roll = 1
+
+
 
 
   $('#confirm').hide()
@@ -16,8 +17,13 @@ $(document).ready(function() {
     console.log(currentFrame)
     $('#frame').text(parseInt(index) + 1);
     console.dir(index);
+    for (var i = 0; i <=10; i++) {
+    $("#pins-" + i).show();
+   }
+    $('#edit').hide();
+    $('#confirm').hide();
+
   });
-    console.log($('body'));
 
   $('[id*=pins]').each(function() {
     $(this).on("click", function(){
@@ -29,8 +35,8 @@ $(document).ready(function() {
         for (var i = 10; i > (10-parseInt(pins)); i--) {
         $("#pins-" + i).hide();
       }
-           currentFrame.nextRoll()
-           console.log(currentFrame)
+           console.log(currentFrame.nextRoll())
+
            $('#confirm').hide()
            $('#edit').hide()
          }else if (currentFrame.roll === 2) {
@@ -43,17 +49,30 @@ $(document).ready(function() {
           $('#edit').show()
 
         }
+
+          $('#edit').unbind('click').click(function() {
+            DisplayButtons()
+
+         });
+
+         $('#confirm').unbind('click').click(function() {
            console.log(currentFrame)
-          $('#edit').click(function() {
-            for (var i = 0; i <=10; i++) {
+           console.log(score.totalScore(currentFrame));
+           console.log(score.giveBonus(currentFrame));
+           DisplayButtons()
+         });
+
+         $('#see-score').text(score.seeScore())
+
+
+         function DisplayButtons() {
+           for (var i = 0; i <=10; i++) {
            $("#pins-" + i).show();
-           $('#edit').hide()
-           $('#confirm').hide()
+          }
+           $('#edit').hide();
+           $('#confirm').hide();
+
          }
-          })
-
-
-
     });
 
   })

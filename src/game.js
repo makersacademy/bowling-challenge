@@ -2,14 +2,13 @@
 
 function Game (frameConstructor) {
   this._frameConstructor = frameConstructor
-  this._frames = []
+  this._frames = [new this._frameConstructor]
 };
 
 //getters
 Game.prototype.frames = function(){ return this._frames };
 
 //setters
-Game.prototype.play = function() { this._frames.push( new this._frameConstructor) };
 
 //more complex stuff
 Game.prototype.score = function() {

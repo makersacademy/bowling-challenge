@@ -10,6 +10,16 @@ $(document).ready(function() {
   $('#confirm').hide()
   $('#edit').hide()
 
+  function DisplayButtons() {
+    for (var i = 0; i <=10; i++) {
+      $("#pins-" + i).show();
+    }
+    $('#scores').show();
+    $('#edit').hide();
+    $('#confirm').hide();
+
+  }
+
   $('#current-frame').change(function() {
     var index = $('select#current-frame').val();
     console.log(index)
@@ -17,14 +27,8 @@ $(document).ready(function() {
     console.log(currentFrame)
     $('#frame').text(parseInt(index) + 1);
     console.dir(index);
-    for (var i = 0; i <=10; i++) {
-      $("#pins-" + i).show();
-    }
-    $('#scores').show();
-
-    $('#edit').hide();
-    $('#confirm').hide();
-
+    DisplayButtons();
+    $('#next').hide();
 
   });
 
@@ -32,7 +36,7 @@ $(document).ready(function() {
     $(this).on("click", function(){
       var pins = $(this).val()
       if (currentFrame.roll === 1) {
-        $('#current-roll').text(currentFrame.roll)
+        $('#current-roll').text('2')
         console.log(currentFrame.play1(parseInt(pins)))
 
         for (var i = 10; i > (10-parseInt(pins)); i--) {
@@ -43,7 +47,7 @@ $(document).ready(function() {
            $('#confirm').hide()
            $('#edit').hide()
          }else if (currentFrame.roll === 2) {
-           $('#current-roll').text(currentFrame.roll)
+           $('#current-roll').text('1')
            console.log(currentFrame.play2(parseInt(pins)))
 
           currentFrame.nextRoll()
@@ -70,18 +74,8 @@ $(document).ready(function() {
            $('#next').text('Please pick the next frame you wish to record')
          });
 
-         $('#see-score').text(score.seeScore())
 
 
-         function DisplayButtons() {
-           for (var i = 0; i <=10; i++) {
-             $("#pins-" + i).show();
-           }
-           $('#scores').show();
-           $('#edit').hide();
-           $('#confirm').hide();
-
-         }
     });
 
   })

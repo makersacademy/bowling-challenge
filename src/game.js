@@ -17,6 +17,9 @@ Game.prototype.score = function() {
     return sum + frame.score()
   }, 0);
 }
+Game.prototype.roll = function(number) {
+  this._frames[this._frames.length-1].roll(number);
+}
 
 // checkers
 Game.prototype.isOver = function() { return this.frames().length >= 10 }

@@ -15,7 +15,7 @@ describe('Game', function(){
       var game = new Game(MockFrame);
       game.play();
       game.roll(5);
-      expect(game.frames()[0].score).toEqual(5);
+      expect(game.frames()[0].score()).toEqual(5);
     });
     it('tallies the score', function(){
       function MockFrame() {}

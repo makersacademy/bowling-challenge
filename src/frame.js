@@ -30,6 +30,10 @@ Frame.prototype.isSpare = function() {
   return this._isSpare;
 }
 
+Frame.prototype.isStrike = function() {
+  return this._isStrike;
+}
+
 Frame.prototype.illegalRoll = function() {
   if (this._n != 10 && this._rolls.length === 2) {
     return 'Only two rolls per frame until frame 10!';
@@ -38,7 +42,7 @@ Frame.prototype.illegalRoll = function() {
 }
 
 Frame.prototype.illegalBonusRoll = function() {
-  if (!this.isSpare()) { 
+  if (!this.isSpare()) {
     return 'Bonus rolls not permitted unless a strike or spare is logged!'
   }
   if (this.isSpare() && this._bonusRolls.length === 1) {
@@ -49,6 +53,7 @@ Frame.prototype.illegalBonusRoll = function() {
 
 Frame.prototype.specials = function() {
   if (this._rolls.length === 2 && this.normalScore() === 10) { this._isSpare = true };
+  if (this._rolls.length === 1 && this.normalScore() === 10) { this._isStrike = true };
 }
 
 Frame.prototype.bonus = function(score) {

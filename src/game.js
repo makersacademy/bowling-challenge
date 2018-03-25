@@ -18,12 +18,14 @@ Game.prototype.score = function() {
 //setters
 Game.prototype.roll = function(number) {
   if (typeof this._frames.slice(-1)[0].roll(number) === "string") {
-    this._frames.push(new this._frameConstructor);
-    this._nFrames++;
-    this._frames.slice(-1)[0].nSet(this._nFrames);
-  }
-}
-
+    this.nextFrame()
+  };
+};
+Game.prototype.nextFrame = function() {
+  this._frames.push(new this._frameConstructor);
+  this._nFrames++;
+  this._frames.slice(-1)[0].nSet(this._nFrames);
+};
 
 // checkers
 Game.prototype.isOver = function() { return this.frames().length >= 10 }

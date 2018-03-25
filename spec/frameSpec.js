@@ -10,7 +10,7 @@ describe('Frame', function() {
       expect(frame.score()).toEqual(6);
     });
     it('allows only two rolls in normal circumstances', function(){
-        var frame = new Frame();
+      var frame = new Frame();
       frame.roll(2);
       frame.roll(3);
       expect(frame.roll(2)).toEqual('Only two rolls per frame until frame 10!');

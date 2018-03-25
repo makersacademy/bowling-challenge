@@ -71,10 +71,10 @@ function _completeFrame(frameNumber, score) {
 }
 
 function _scoreConverter(frame, pinsKnocked) {
-  if (pinsKnocked === 10) {
-    return "X";
-  } else if (frame.rolls.length === 2 && frame.rolls[0] + frame.rolls[1] === 10) {
+  if (frame.rolls.length === 2 && frame.rolls[0] + frame.rolls[1] === 10) {
     return "/";
+  } else if (pinsKnocked === 10) {
+    return "X";
   } else if (pinsKnocked === 0) {
     return "-";
   } else {

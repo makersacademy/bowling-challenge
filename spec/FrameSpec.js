@@ -5,19 +5,19 @@ describe('Frame', function() {
     frame = new Frame();
   });
 
-describe('initial', function() {
-  it('should initally have 10 pins', function() {
-    expect(frame._pins).toEqual([1,2,3,4,5,6,7,8,9,10]);
-  });
+  describe('initial', function() {
+    it('should initally have 10 pins', function() {
+      expect(frame._pins).toEqual([1,2,3,4,5,6,7,8,9,10]);
+    });
 
-  it('should initally have 0 rounds played', function() {
-    expect(frame._roundsPlayed).toEqual(0);
-  });
+    it('should initally have 0 rounds played', function() {
+      expect(frame._roundsPlayed).toEqual(0);
+    });
 
-  it('should initally have a score of 0', function() {
-    expect(frame._score).toEqual(0);
+    it('should initally have a score of 0', function() {
+      expect(frame._score).toEqual(0);
+    });
   });
-});
 
   describe('pinsKnockedOver', function() {
     it('should return 3 pins remaining if 7 pins knocked over', function() {

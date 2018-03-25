@@ -8,6 +8,7 @@ function Frame() {
   this._roundsPlayed = 0;
   this._score = 0;
   this._bonusFrame = false;
+  this._frameReplay = [];
 };
 
 Frame.prototype.pinsKnockedOver = function(pinCount) {
@@ -18,7 +19,7 @@ Frame.prototype.pinsKnockedOver = function(pinCount) {
 };
 
 Frame.prototype.isStrikeOnFirstRound = function() {
-  if (this._roundsPlayed === 1 && this._pins.length === 0) {
+  if (this._roundsPlayed === 0 && this._pins.length === 0) {
     return true;
   };
   return false;
@@ -28,9 +29,16 @@ Frame.prototype.play = function(pinCount) {
   if (this._roundsPlayed === MAX_ROUNDS) {
     throw new Error('Max number of rounds played');
   } else {
-    this.pinsKnockedOver(pinCount);
-    this.isBonusFrame();
-    this._roundsPlayed += 1;
+    this._frameReplay.push(pinCount); // create a replay for current frame
+    this.pinsKnockedOver(pinCount); // knock over virtual pins
+    this.score(); // update score for frame;
+    this.isBonusFrame(); // update frame if it is a bonus frame (strike/spare)
+
+    if (this.isStrikeOnFirstRound()) { // check if strike on first round
+      this._roundsPlayed += 2; // close the frame off
+    } else {
+      this._roundsPlayed += 1; // update round counter
+    };
   };
 };
 
@@ -41,5 +49,5 @@ Frame.prototype.score = function() {
 Frame.prototype.isBonusFrame = function() {
   if (this._pins.length === 0) {
     return this._bonusFrame = true;
-  }
+  };
 };

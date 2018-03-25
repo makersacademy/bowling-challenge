@@ -84,6 +84,7 @@ describe('Frame', function() {
       frame.nSet(10);
       frame.roll(10);
       frame.roll(10);
+      frame.roll(10);
       expect(frame.score()).toEqual(30);
     });
   });

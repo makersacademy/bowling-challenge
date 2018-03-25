@@ -8,6 +8,15 @@ describe('Game', function(){
       game.play();
       expect(game.frames()[0] instanceof MockFrame).toEqual(true);
     });
+    it('adds scores to the newest frame when playing', function(){
+      function MockFrame() {this._score}
+      MockFrame.prototype.roll = function(number) {this._score = number}
+      MockFrame.prototype.score = function() {return this._score}
+      var game = new Game(MockFrame);
+      game.play();
+      game.roll(5);
+      expect(game.frames()[0].score).toEqual(5);
+    });
     it('tallies the score', function(){
       function MockFrame() {}
       MockFrame.prototype.score = function() { return 5 }

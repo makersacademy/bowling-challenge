@@ -55,30 +55,39 @@ $(document).ready(function() {
           $('#scores').hide();
           $('#confirm').show()
           $('#edit').show()
+    };
 
-        }
+    $('#edit').unbind('click').click(function() {
+      DisplayButtons();
+      $('#next').hide();
 
-          $('#edit').unbind('click').click(function() {
-            DisplayButtons();
-            $('#next').hide();
+   });
+ });
 
-         });
+});
 
-         $('#confirm').unbind('click').click(function() {
-           console.log(currentFrame)
-           console.log(score.totalScore(currentFrame));
-           console.log(score.giveBonus(currentFrame));
-           $('#edit').hide();
-           $('#confirm').hide();
-           $('#next').show();
-           $('#next').text('Please pick the next frame you wish to record')
-         });
+   $('#confirm').unbind('click').click(function() {
+     console.log(currentFrame)
+     console.log(score.totalScore(currentFrame));
+     console.log(score.giveBonus(currentFrame));
+     ShowNextFrameMessage();
+     AppendScorecard();
+   });
 
+    function ShowNextFrameMessage() {
+      $('#edit').hide();
+      $('#confirm').hide();
+      $('#next').show();
+      $('#next').text('Please pick the next frame you wish to record')
+    }
 
+    function AppendScorecard() {
+      var index = $('select#current-frame').val();
+      $('#scorecard').append('<tr><td>' + (parseInt(index) + 1) +
+      '</td><td>' + currentFrame.rollOne + '</td><td>' +
+      currentFrame.rollTwo + '</td><td>' + score.currentTotalScore + '</td></tr>')
 
-    });
-
-  })
+    }
 
 
 

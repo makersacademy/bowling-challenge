@@ -11,3 +11,7 @@ Game.prototype.start = function() {
     this._allFrames.push(new Frame)
   }
 }
+
+Game.prototype.all = function() {
+  return this._allFrames;
+}

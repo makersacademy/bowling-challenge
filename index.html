@@ -23,7 +23,7 @@
 
         <h2><span id="next"></span><h2>
 
-      <form class="scoring-buttons" id="scores">
+      <form id="scores">
         <h3>Roll: <span id="current-roll"></span></h3>
         <button id="pins-0" value="0" type="button">0</button>
         <button id="pins-1" value="1" type="button">1</button>
@@ -39,6 +39,15 @@
         </form>
         <button id="confirm" type="button">Confirm Frame Score</button>
         <button id="edit" type="button">Edit Frame Score</button>
+        <table id="scorecard">
+          <tbody>
+            <h4><th>Scores</th></h4>
+            <tr>
+              <td>Frame</td><td>Roll 1</td><td>Roll 2</td><td>Total Score</td>
+
+            </tr>
+          </tbody>
+        </table>
 
       <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
       <script src="src/game.js"></script>

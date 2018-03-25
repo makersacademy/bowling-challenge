@@ -24,7 +24,7 @@ describe('Frame', function() {
       frame.roll(5);
       expect(frame.isSpare()).toEqual(true);
     });
-    it('allows a single bonus rolls to be added if a spare is logged', function(){
+    it('allows a single bonus roll to be added if a spare is logged', function(){
       var frame = new Frame();
       frame.roll(5);
       frame.roll(5);

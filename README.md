@@ -1,7 +1,38 @@
-
 Bowling Challenge
 =================
 
+Frame:
+1) Keeps track of which `_frame` player is at
+2) Keeps track of the number of pins knocked down each `_roll`
+
+Base:
+1) Calculates the base score for current `_frame` using `_roll` numbers
+
+Bonus:
+1) Calculates the bonus score for previous `_frame` using current `_frame` `_roll` numbers
+
+
+App Logic:
+1. Page loads, new Frame, Base and Bonus objects are instantiated with default values.
+2. User inputs two numbers (required) and clicks Submit.
+3. Call base.calc to get current frame score; push to base_scores hash.
+4. bonus.calc will skip because currFrame === 1.
+5. Update display to show current base score.
+6. User inputs two numbers (required) for next frame and clicks Submit.
+7. Call base.calc to get current frame score; push to base_scores hash.
+8. Call bonus.calc to get previous frame's bonus score; push to bonus_scores hash.
+9. Update display to show current base score and previous bonus score.
+10. Repeat 6-9 until 10th frame.
+11. On 10th frame:
+  * if score is STRIKE or SPARE, allow 11th frame where:
+    * STRIKE has 2 rolls, SPARE has 1 roll
+    * There is no base_score - it is only to calculate bonus_score of frame 10
+  * else end game.
+
+Game Logic:
+![Bowling Logic Chart](images/bowling logic.png)
+
+##########
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

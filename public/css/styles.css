@@ -1,0 +1,13 @@
+
+
+h1#title {
+  font-size: 100px;
+  font-weight: bold;
+}
+
+table, tr, td {
+  border: 1px solid blue;
+  border-radius: 5px;
+  padding: 5px;
+
+}

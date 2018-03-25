@@ -28,7 +28,10 @@ describe('Game', function() {
   });
 
   it('final score', function() {
-    expect(game.finalScore()).toEqual(150);
+    game.roll(7, 3);
+    game.roll(2, 5);
+    game.score();
+    expect(game.finalScore).toEqual(12);
   });
 
   it('check after each set currnt roll changes by 2', function() {

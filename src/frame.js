@@ -38,6 +38,9 @@ Frame.prototype.illegalRoll = function() {
 }
 
 Frame.prototype.illegalBonusRoll = function() {
+  if (!this.isSpare()) { 
+    return 'Bonus rolls not permitted unless a strike or spare is logged!'
+  }
   if (this.isSpare() && this._bonusRolls.length === 1) {
     return 'Only one bonus roll allowed with a spare!';
   }

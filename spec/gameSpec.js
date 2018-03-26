@@ -31,11 +31,10 @@ describe('Game', function(){
     });
     it('knows when it is finished', function(){
       function MockFrame() {
-        this._n = 0;
         this._i = 0
         this._responses = [true, false]
       }
-      MockFrame.prototype.nSet = function(n) { this._n = n };
+      MockFrame.prototype.nSet = function(n) { };
       MockFrame.prototype.isFinished = function() {
         this._i++;
         return this._responses[this._i-1];

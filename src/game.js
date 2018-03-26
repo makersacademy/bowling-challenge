@@ -3,8 +3,7 @@
 function Game (frameConstructor) {
   this._frameConstructor = frameConstructor;
   this._frames = [new this._frameConstructor];
-  this._nFrames = 1;
-  this._frames[0].nSet(1);
+  this._frames[0].nSet(this._frames.length);
 };
 
 //getters
@@ -22,5 +21,5 @@ Game.prototype.roll = function(score) {
 
 //checkers
 Game.prototype.isFinished = function(){
-  return (this._nFrames == 10 && this._frames.slice(-1)[0].isFinished())
+  return (this._nFrames == 10 && this._frames[10].isFinished())
 };

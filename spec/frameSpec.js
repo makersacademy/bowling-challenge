@@ -6,14 +6,21 @@ describe('Frame', function() {
     it('tallies a normal score', function() {
       var frame = new Frame();
       frame.roll(2);
-      frame.roll(4);
-      expect(frame.score()).toEqual(6);
+      frame.roll(2);
+      expect(frame.score()).toEqual(4);
     });
     it('allows only two rolls in normal circumstances', function(){
       var frame = new Frame();
       frame.roll(2);
-      frame.roll(3);
-      expect(frame.roll(2)).toEqual('Only two rolls per frame until frame 10!');
+      frame.roll(2);
+      frame.roll(2);
+      expect(frame.score()).toEqual(4);
+    });
+    it('is finished after two rolls', function(){
+      var frame = new Frame();
+      frame.roll(2);
+      frame.roll(2);
+      expect(frame.isFinished()).toEqual(true);
     });
   });
 
@@ -28,20 +35,16 @@ describe('Frame', function() {
       var frame = new Frame();
       frame.roll(5);
       frame.roll(5);
-      frame.bonus(5);
+      frame.roll(5);
       expect(frame.score()).toEqual(15);
     });
     it('does not allow multiple bonus rolls to be added if a spare is logged', function(){
       var frame = new Frame();
       frame.roll(5);
       frame.roll(5);
-      frame.bonus(5);
-      expect(frame.bonus(2)).toEqual('Only one bonus roll allowed with a spare!');
-    });
-    it('does not allow a bonus roll to be added is a spare is not logged', function(){
-      var frame = new Frame();
       frame.roll(5);
-      expect(frame.bonus(2)).toEqual('Bonus rolls not permitted unless a strike or spare is logged!');
+      frame.roll(5);
+      expect(frame.score()).toEqual(15);
     });
   });
 
@@ -51,22 +54,28 @@ describe('Frame', function() {
       frame.roll(10);
       expect(frame.isStrike()).toEqual(true);
     });
-    it('will not accept a second roll if a strike is logged', function(){
+    it('is finished when a strike is logged', function(){
       var frame = new Frame();
       frame.roll(10);
-      expect(frame.roll(2)).toEqual('No second roll after strike!');
+      expect(frame.isFinished()).toEqual(true);
     });
-    it('allows multiple bonus rolls to be added if a strike is logged', function(){
+    it('allows multiple bonus rolls if continual strikes are logged', function(){
       var frame = new Frame();
       frame.roll(10);
-      frame.bonus(5);
-      frame.bonus(5);
-      expect(frame.score()).toEqual(20);
+      frame.roll(10);
+      frame.roll(10);
+      frame.roll(10);
+      frame.roll(10);
+      expect(frame.score()).toEqual(50);
     });
-    it('does not allow bonus rolls to be added is a strike is not logged', function(){
+    it('stops accepting bonus rolls if two non-strikes are logged', function(){
       var frame = new Frame();
+      frame.roll(10);
       frame.roll(5);
-      expect(frame.bonus(2)).toEqual('Bonus rolls not permitted unless a strike or spare is logged!');
+      frame.roll(5);
+      frame.roll(5);
+      frame.roll(5);
+      expect(frame.score()).toEqual(20);
     });
   });
 
@@ -79,21 +88,14 @@ describe('Frame', function() {
   });
 
   describe('frame 10', function(){
-    it('allows three rolls if the first roll is a strike', function(){
+    it('allows only two bonus rolls if the first roll is a strike', function(){
       var frame = new Frame();
       frame.nSet(10);
       frame.roll(10);
-      frame.roll(10);
-      frame.roll(10);
-      expect(frame.score()).toEqual(30);
-    });
-    it('does not allow more than three rolls, even if the first roll is a strike', function(){
-      var frame = new Frame();
-      frame.nSet(10);
-      frame.roll(10);
-      frame.roll(10);
-      frame.roll(10);
-      expect(frame.roll(10)).toEqual('Only three rolls allowed in frame 10!');
+      frame.roll(5);
+      frame.roll(5);
+      frame.roll(5);
+      expect(frame.score()).toEqual(20);
     });
   });
 });

@@ -2,7 +2,9 @@
 
 function Frame () {
   this._rolls = [];
+  this._rollsCap = 2;
   this._bonusRolls = [];
+  this._bonusCap = 0;
   this._isSpare = false;
   this._isStrike = false;
   this._n;
@@ -18,68 +20,41 @@ Frame.prototype.bonusScore = function() {
 Frame.prototype.score = function() {
   return this.normalScore() + this.bonusScore();
 };
-Frame.prototype.rolls = function() { return this._rolls}
 Frame.prototype.isSpare = function() { return this._isSpare };
 Frame.prototype.isStrike = function() { return this._isStrike };
 Frame.prototype.n = function() { return this._n };
-Frame.prototype.nRolls = function() { return this._rolls.length };
-Frame.prototype.nBonusRolls = function() { return this._bonusRolls.length };
+Frame.prototype.nSet = function(nFrame) { this._n = nFrame };
 
-// setters
+//setters
 Frame.prototype.roll = function(score) {
-  if (this.illegalRoll()) { return this.illegalRoll() }
-  this._rolls.push(score);
+  if (!this.isFinished()) { this._rolls.push(score) };
+  if (!this.isBonusFull()) { this._bonusRolls.push(score) };
   this.specials();
 };
-Frame.prototype.bonus = function(score) {
-  if (this.illegalBonusRoll()) { return this.illegalBonusRoll() };
-  this._bonusRolls.push(score);
-};
-Frame.prototype.nSet = function(nFrame) { this._n = nFrame };
-Frame.prototype.cancelSpecials = function() {
-  this.isStrike = false;
-  this.isSpare = false;
-};
 
-// checkers
+//checkers
+Frame.prototype.isFinished = function() { return this._rolls.length >= this._rollsCap };
+Frame.prototype.isBonusFull = function() { return this._bonusRolls.length >= this._bonusCap};
 Frame.prototype.specials = function() {
-  if (this._rolls.length === 2 && this.normalScore() === 10) { this._isSpare = true };
-  if (this._rolls.length === 1 && this.normalScore() === 10) { this._isStrike = true };
+  this.checkSpare();
+  this.checkStrike();
+  this.continueStrike();
 };
-Frame.prototype.illegalRoll = function() {
-  if (this.moreThanThreeAt10()) { return this.moreThanThreeAt10() };
-  if (this.moreThanTwoBefore10()) { return this.moreThanTwoBefore10() };
-  if (this.secondAfterStrike()) { return this.secondAfterStrike() };
-  return false;
+Frame.prototype.checkSpare = function() {
+  if (this._rollsCap === 2 && this.normalScore() === 10) {
+    this._isSpare = true;
+    this._bonusCap = 1;
+  };
 };
-Frame.prototype.illegalBonusRoll = function() {
-  if (this.noSpecialNoBonus()) { return this.noSpecialNoBonus() };
-  if (this.secondBonusAfterSpare()) { return this.secondBonusAfterSpare() };
-  return false;
+Frame.prototype.checkStrike = function() {
+  if (this._rolls[0] === 10) {
+    this._isStrike = true;
+    this._rollsCap = 1;
+    this._bonusCap = 2;
+  };
 };
-Frame.prototype.isFrame10 = function() { this.n() === 10 }
-Frame.prototype.moreThanThreeAt10 = function() {
-  return (this.n() == 10 && this.nRolls() === 3) ?
-  'Only three rolls allowed in frame 10!' :
-  false;
-};
-Frame.prototype.moreThanTwoBefore10 = function() {
-  return (this.n() != 10 && this.nRolls() === 2) ?
-  'Only two rolls per frame until frame 10!' :
-  false;
-};
-Frame.prototype.secondAfterStrike = function() {
-  return (this.n() != 10 && (this.isStrike() && this.nRolls() === 1)) ?
-  'No second roll after strike!' :
-  false;
-};
-Frame.prototype.noSpecialNoBonus = function() {
-  return (!this.isSpare() && !this.isStrike()) ?
-  'Bonus rolls not permitted unless a strike or spare is logged!' :
-  false;
-};
-Frame.prototype.secondBonusAfterSpare = function() {
-  return (this.isSpare() && this.nBonusRolls() === 1) ?
-  'Only one bonus roll allowed with a spare!' :
-  false;
+Frame.prototype.continueStrike = function() {
+  if (this._bonusRolls.slice(-1)[0] === 10) {
+    this._bonusCap += 2;
+  };
 };

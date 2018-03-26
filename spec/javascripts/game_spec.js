@@ -41,10 +41,10 @@ describe('Game', function() {
   });
 
   describe('_calcBowlScore', function() {
-    it('should add the bowl score to the score', function() {
+    it('should add the frame score to the gameScore array', function() {
       game.bowl(3);
       game.bowl(4);
-      expect(game.totalScore).toEqual(7);
+      expect(game.gameScore).toEqual([[3,4]]);
     });
   });
 });

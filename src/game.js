@@ -13,7 +13,8 @@ Game.prototype.score = function(){
 };
 //setters
 Game.prototype.roll = function(score) {
-  if (this._frames.slice(-1)[0].isFinished() && !this.isFrame10()) {
+  if ( this.isFinished() ) { return }
+  if ( this._frames.slice(-1)[0].isFinished() ) {
     this._frames.push(new this._frameConstructor)
     this._nFrames++;
     this._frames.slice(-1)[0].nSet(this._nFrames);
@@ -23,6 +24,5 @@ Game.prototype.roll = function(score) {
 
 //checkers
 Game.prototype.isFinished = function(){
-  return ( this.isFrame10() && this._frames[9].isFinished())
+  return ( this._frames.length > 10 );
 };
-Game.prototype.isFrame10 = function() { return this._frames.length == 10 };

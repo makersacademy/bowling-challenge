@@ -47,7 +47,7 @@ describe('Game', function(){
         this._i++;
         return this._responses2[this._i-1];
        }
-      for (var i = 1; i < 20; i++) { game.roll(2) };
+      for (var i = 1; i <= 20; i++) { game.roll(2) };
       expect(game.isFinished()).toEqual(true);
     });
     it('will not allow more rolls when it is finished', function(){
@@ -55,7 +55,7 @@ describe('Game', function(){
         this._i++;
         return this._responses2[this._i-1];
        }
-      for (var i = 1; i < 20; i++) { game.roll(2) };
+      for (var i = 1; i <= 20; i++) { game.roll(2) };
       var score = game.score();
       game.roll(2);
       expect(game.score()).toEqual(score);

@@ -59,31 +59,11 @@ describe('Frame', function() {
       frame.roll(10);
       expect(frame.isFinished()).toEqual(true);
     });
-    it('allows multiple bonus rolls if continual strikes are logged', function(){
+    it('allows two bonus rolls', function(){
       var frame = new Frame();
       frame.roll(10);
       frame.roll(10);
       frame.roll(10);
-      frame.roll(10);
-      frame.roll(10);
-      expect(frame.score()).toEqual(50);
-    });
-    it('stops accepting bonus rolls if two non-strikes are logged', function(){
-      var frame = new Frame();
-      frame.roll(10);
-      frame.roll(5);
-      frame.roll(5);
-      frame.roll(5);
-      frame.roll(5);
-      expect(frame.score()).toEqual(20);
-    });
-    it('extends bonus roll cap by one if a subsequent strike is logged', function(){
-      var frame = new Frame();
-      frame.roll(10);
-      frame.roll(10);
-      frame.roll(5);
-      frame.roll(5);
-      frame.roll(5);
       expect(frame.score()).toEqual(30);
     });
   });

@@ -15,11 +15,11 @@ Bonus:
 App Logic:
 1. Page loads, new Frame, Base and Bonus objects are instantiated with default values.
 2. User inputs two numbers (required) and clicks Submit.
-3. Call base.calc to get current frame score; push to base_scores hash.
+3. Call base.calc to get current frame score; push to base_scores hash; update `_strike` and `_spare` attributes.
 4. bonus.calc will skip because currFrame === 1.
 5. Update display to show current base score.
 6. User inputs two numbers (required) for next frame and clicks Submit.
-7. Call base.calc to get current frame score; push to base_scores hash.
+7. Call base.calc to get current frame score; push to base_scores hash; update `_strike` and `_spare` attributes
 8. Call bonus.calc to get previous frame's bonus score; push to bonus_scores hash.
 9. Update display to show current base score and previous bonus score.
 10. Repeat 6-9 until 10th frame.

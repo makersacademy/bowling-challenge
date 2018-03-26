@@ -38,10 +38,10 @@ describe('Game', function(){
     });
     it('numbers frames', function(){
         function MockFrame () {
-          this.i = 1; this.responses = [1, 2, 'a string'];
+          this.i = 1;
+          this.responses = [1, 2, 'a string'];
           this._n;
          }
-      MockFrame.prototype.nSet = function(n) {};
       MockFrame.prototype.roll = function(number) { this.i++; return this.responses[this.i-1]}
       MockFrame.prototype.nSet = function(n) { this._n = n };
       MockFrame.prototype.n = function() { return this._n };
@@ -49,6 +49,26 @@ describe('Game', function(){
       game.roll(1)
       game.roll(1)
       expect(game.frames()[1].n()).toEqual(2);
+    });
+    it('knows when the game is over', function(){
+      function MockFrame () {
+        this.i = 1;
+        this.responses = [1, 2, 'a string'];
+       }
+    MockFrame.prototype.nSet = function(n) {};
+    MockFrame.prototype.roll = function(number) { this.i++; return this.responses[this.i-1]}
+    var game = new Game(MockFrame);
+    for (var i = 1; i <= 20; i++) { game.roll(1) };
+    expect(game.isOver()).toEqual(true);
+    });
+  });
+  describe('a game with specials', function() {
+    it('adds a bonus roll to a spare', function(){
+      function MockFrame () {
+       }
+    MockFrame.prototype.roll = function(){}   
+    MockFrame.prototype.isSpare = function() {return true};
+    MockFrame.prototype.isStrike = function() {return false};
     });
   });
 });

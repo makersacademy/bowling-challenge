@@ -18,6 +18,7 @@ Frame.prototype.bonusScore = function() {
 Frame.prototype.score = function() {
   return this.normalScore() + this.bonusScore();
 };
+Frame.prototype.rolls = function() { return this._rolls}
 Frame.prototype.isSpare = function() { return this._isSpare };
 Frame.prototype.isStrike = function() { return this._isStrike };
 Frame.prototype.n = function() { return this._n };
@@ -34,8 +35,10 @@ Frame.prototype.bonus = function(score) {
   if (this.illegalBonusRoll()) { return this.illegalBonusRoll() };
   this._bonusRolls.push(score);
 };
-Frame.prototype.nSet = function(nFrame) {
-  this._n = nFrame;
+Frame.prototype.nSet = function(nFrame) { this._n = nFrame };
+Frame.prototype.cancelSpecials = function() {
+  this.isStrike = false;
+  this.isSpare = false;
 };
 
 // checkers

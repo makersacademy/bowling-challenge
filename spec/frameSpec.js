@@ -77,6 +77,15 @@ describe('Frame', function() {
       frame.roll(5);
       expect(frame.score()).toEqual(20);
     });
+    it('rolls bonus roll cap by one if a subsequent strike is logged', function(){
+      var frame = new Frame();
+      frame.roll(10);
+      frame.roll(10);
+      frame.roll(5);
+      frame.roll(5);
+      frame.roll(5);
+      expect(frame.score()).toEqual(30);
+    });
   });
 
   describe('frame numbering', function(){
@@ -88,14 +97,14 @@ describe('Frame', function() {
   });
 
   describe('frame 10', function(){
-    it('allows only two bonus rolls if the first roll is a strike', function(){
+    it('allows only two bonus rolls if the first roll is a strike, even if all subsequent are strikes', function(){
       var frame = new Frame();
       frame.nSet(10);
       frame.roll(10);
-      frame.roll(5);
-      frame.roll(5);
-      frame.roll(5);
-      expect(frame.score()).toEqual(20);
+      frame.roll(10);
+      frame.roll(10);
+      frame.roll(10);
+      expect(frame.score()).toEqual(30);
     });
   });
 });

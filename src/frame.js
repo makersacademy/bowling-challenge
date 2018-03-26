@@ -29,16 +29,16 @@ Frame.prototype.nSet = function(nFrame) { this._n = nFrame };
 Frame.prototype.roll = function(score) {
   if (!this.isFinished()) { this._rolls.push(score) };
   if (!this.isBonusFull()) { this._bonusRolls.push(score) };
-  this.specials();
+  this.specials(score);
 };
 
 //checkers
 Frame.prototype.isFinished = function() { return this._rolls.length >= this._rollsCap };
 Frame.prototype.isBonusFull = function() { return this._bonusRolls.length >= this._bonusCap};
-Frame.prototype.specials = function() {
+Frame.prototype.specials = function(score) {
   this.checkSpare();
+  this.continueStrike(score);
   this.checkStrike();
-  this.continueStrike();
 };
 Frame.prototype.checkSpare = function() {
   if (this._rollsCap === 2 && this.normalScore() === 10) {
@@ -47,14 +47,13 @@ Frame.prototype.checkSpare = function() {
   };
 };
 Frame.prototype.checkStrike = function() {
-  if (this._rolls[0] === 10) {
+  if (this._rolls[0] === 10 && !this.isStrike()) {
     this._isStrike = true;
     this._rollsCap = 1;
     this._bonusCap = 2;
   };
 };
-Frame.prototype.continueStrike = function() {
-  if (this._bonusRolls.slice(-1)[0] === 10) {
-    this._bonusCap += 2;
-  };
+Frame.prototype.continueStrike = function(score) {
+  if (this.n() === 10) { return false }
+  if (this._bonusRolls.slice(-1)[0]==10) { this._bonusCap += 1 };
 };

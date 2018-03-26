@@ -77,7 +77,7 @@ describe('Frame', function() {
       frame.roll(5);
       expect(frame.score()).toEqual(20);
     });
-    it('rolls bonus roll cap by one if a subsequent strike is logged', function(){
+    it('extends bonus roll cap by one if a subsequent strike is logged', function(){
       var frame = new Frame();
       frame.roll(10);
       frame.roll(10);

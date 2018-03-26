@@ -8,10 +8,12 @@ function Game (frameConstructor) {
 
 //getters
 Game.prototype.frames = function(){ return this._frames };
-
+Game.prototype.score = function(){
+  return this._frames.reduce(function(e,x) { return e + x.score() }, 0);
+};
 //setters
 Game.prototype.roll = function(score) {
-  if (this._frames.slice(-1)[0].isFinished()) {
+  if (this._frames.slice(-1)[0].isFinished() && !this.isFrame10()) {
     this._frames.push(new this._frameConstructor)
     this._nFrames++;
     this._frames.slice(-1)[0].nSet(this._nFrames);
@@ -21,6 +23,6 @@ Game.prototype.roll = function(score) {
 
 //checkers
 Game.prototype.isFinished = function(){
-  console.log(this._frames.length)
-  return (this._frames.length == 10 && this._frames[9].isFinished())
+  return ( this.isFrame10() && this._frames[9].isFinished())
 };
+Game.prototype.isFrame10 = function() { return this._frames.length == 10 };

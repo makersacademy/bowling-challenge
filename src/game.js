@@ -50,7 +50,7 @@ Game.prototype._calcFrame = function () {
   if (this.currentFrame >= 11 && this.frameScore[0] == 10) {
     this.currentFrame = 12;
     return this.gameScore.push(this.frameScore);
-  } else if (this.currentFrame >= 11 && (this.frameScore[0] + this.frameScore[1]) != 10) {
+  } else if (this.currentFrame >= 11 && (this.frameScore[0] + this.frameScore[1]) != 10 && this.currentFrame != 12) {
     this.gameScore.push(this.frameScore);
     this._calcFinalScore();
     alert(`NICE ONE! \n YOUR Final Score is ${this.totalScore}`);
@@ -71,7 +71,6 @@ Game.prototype._calcFinalScore = function () {
   this.gameScore.forEach(function(frame) {
     self.totalScore += (frame[0] + frame[1]);
   });
-  console.log(this.totalScore);
   // calculate bonus scores from all spares in game
   this.spareBonus.forEach(function(frame) {
     var spares = self.gameScore[frame];

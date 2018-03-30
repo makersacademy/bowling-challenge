@@ -6,14 +6,19 @@ describe('Game', function(){
   function MockFrame() {
     this._n = 0;
     this._i = 0;
+    this._i2= 0;
     this._responses = [true, false];
     this._responses2 = [false, true, true];
+    this._responses3 = [false, false, true];
   };
   MockFrame.prototype.nSet = function(n) { this._n = n };
   MockFrame.prototype.n = function() { return this._n };
   MockFrame.prototype.roll = function(score) {};
   MockFrame.prototype.score = function() {return 1};
-
+  MockFrame.prototype.isFullyFinished = function() {
+    this._i2++;
+    return this._responses3[this._i-1];
+   }
   beforeEach(function() {
      game = new Game(MockFrame);
   });
@@ -47,6 +52,7 @@ describe('Game', function(){
         this._i++;
         return this._responses2[this._i-1];
        }
+      MockFrame.prototype.isFullyFinished = function() { return true }
       for (var i = 1; i <= 20; i++) { game.roll(2) };
       expect(game.isFinished()).toEqual(true);
     });

@@ -37,8 +37,8 @@ Frame.prototype.isFinished = function() { return this._rolls.length >= this._rol
 Frame.prototype.isBonusFull = function() { return this._bonusRolls.length >= this._bonusCap};
 Frame.prototype.isFullyFinished = function() { return this.isFinished() && this.isBonusFull()};
 Frame.prototype.specials = function() {
-  this.checkSpare();
   this.checkStrike();
+  this.checkSpare();
 };
 Frame.prototype.checkSpare = function() {
   if (this._rollsCap === 2 && this.normalScore() === 10) {

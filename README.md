@@ -3,6 +3,8 @@ Marcus' README Edits - My approach and mini code review
 
 To use
 ---------
+* View deployed app at: https://bowling-challenge-mfg.herokuapp.com/
+
 * git clone repository
 * Open 'SpecRunner.html' for tests
 * Open 'index.html' for the bowling scorecard itself

@@ -29,7 +29,15 @@ describe('Game:', function(){
       ])
   });
   describe('Tenth frame :-', function(){
-    it('gives two bonus rolls for a strike', function(){
+    it('gives two bonus rolls for a strike(still playing after two rolls)', function(){
+      for(var i = 0; i < 18; i++){
+        game.roll(1)
+      }
+      game.roll(10)
+      game.roll(3)
+      expect(game._playing).toBe(true)
+    })
+    it('gives two bonus rolls for a strike(game finished after three rolls)', function(){
       for(var i = 0; i < 18; i++){
         game.roll(1)
       }
@@ -37,6 +45,31 @@ describe('Game:', function(){
       game.roll(3)
       game.roll(3)
       expect(game._playing).toBe(false)
+    })
+    it('gives only two rolls for the tenth frame if they open frames(no longer playing after two rolls)', function(){
+      for(var i = 0; i < 18; i++){
+        game.roll(1)
+      }
+      game.roll(3)
+      game.roll(3)
+      expect(game._playing).toBe(false)
+    })
+    it('gives a bonus roll after a spare(no longer playing after third roll)', function(){
+      for(var i = 0; i < 18; i++){
+        game.roll(1)
+      }
+      game.roll(3)
+      game.roll(7)
+      game.roll(1)
+      expect(game._playing).toBe(false)
+    })
+    it('gives a bonus roll after a spare(still playing after spare)', function(){
+      for(var i = 0; i < 18; i++){
+        game.roll(1)
+      }
+      game.roll(3)
+      game.roll(7)
+      expect(game._playing).toBe(true)
     })
   })
 })

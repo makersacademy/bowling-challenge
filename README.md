@@ -2,6 +2,13 @@
 Bowling Challenge
 =================
 
+```
+As a player,
+So that I can see my score,
+I want to have a score card.
+```
+
+
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

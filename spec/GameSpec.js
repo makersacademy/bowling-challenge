@@ -4,7 +4,7 @@ describe('Game', function() {
   var game;
 
 
-  describe('When a game starts.', function() {
+  describe('When a game starts:', function() {
     beforeEach(function() {
       game = new Game();
     });

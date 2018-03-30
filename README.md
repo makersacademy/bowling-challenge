@@ -4,8 +4,12 @@ Bowling Challenge
 
 ```
 As a player,
-So that I can see my score,
+So that I can keep track of my score,
 I want to have a score card.
+
+As a player,
+So that I can see my score,
+I want my score card to display my total score.
 ```
 
 

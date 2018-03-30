@@ -1,35 +1,29 @@
 'use strict';
 
-function Scorecard() {
-  this._score = [0];
-  this._frameScore = 0;
-  this._frameCount = 1;
-  this._rollsThisFrame = 0;
+function Scorecard(rolls) {
+  this._rolls = rolls
+
 }
 
-Scorecard.prototype.score = function(){
-  const reducer = (accumulator, currentValue) => accumulator + currentValue;
-  return this._score.reduce(reducer)
-}
-
-Scorecard.prototype.add = function(frame_score){
-  this._score.push(frame_score)
-}
-
-
-Scorecard.prototype.roll = function(pinsKnockedDown){
-  if (this._rollsThisFrame == 0) {
-    this._frameScore += pinsKnockedDown
-    this._rollsThisFrame += 1
+Scorecard.prototype._sum = function(numbers) {
+    return numbers.reduce( function (a,b) { return a + b })
   }
-  else if (this._rollsThisFrame == 1){
-    this._frameScore += pinsKnockedDown
-    this.resetPins()
+
+Scorecard.prototype._isSpare = function(rolls) {
+    return 10 === this._sum(this._rolls.slice(0, 2))
   }
-}
-Scorecard.prototype.resetPins = function(){
-  this.add(this._frameScore)
-  this._frameCount += 1
-  this._frameScore = 0
-  this._rollsThisFrame = 0
-}
+
+Scorecard.prototype._isStrike = function(rolls){
+    return 10 === this._rolls[0]
+  }
+
+Scorecard.prototype.calcScore = function(rolls, frame) {
+    if(frame === 10){
+      return this._sum(rolls)}
+    else if (this._isStrike(rolls)){
+      return this._sum(rolls.slice(0, 3)) + this.calcScore(rolls.slice(1), frame + 1)}
+    else if (this._isSpare(rolls)){
+      return this._sum(rolls.slice(0, 3)) + this.calcScore(rolls.slice(2), frame + 1)}
+    else{
+      return this._sum(rolls.slice(0, 2)) + this.calcScore(rolls.slice(2), frame + 1)}
+  }

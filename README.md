@@ -1,6 +1,10 @@
 Marcus' README Edits - My approach and mini code review
 =================
 
+### Solo Challenge: Automate complex score-calculation logic for Ten Pin Bowling
+
+<img src="BowlingChallengeGif.gif" width="100%" height="100%" />
+
 To use
 ---------
 * View deployed app at: https://bowling-challenge-mfg.herokuapp.com/

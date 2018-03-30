@@ -1,7 +1,7 @@
-function Bowling(){
+var Bowling = function(){
   this.pointsPerRoll = []
 
-}
+};
 
 Bowling.prototype.roll = function(knockedPins){
   this.pointsPerRoll.push(knockedPins);
@@ -9,28 +9,23 @@ Bowling.prototype.roll = function(knockedPins){
 };
 
 Bowling.prototype.calculateScore = function(){
-  var points = 0;
-  var index = 0;
+  var total = 0;
+  var arrIndex = 0;
+  var thisGame = this;
 
-  for (var i = 0; i < 10; i = i + 1){
-    if (this.pointsPerRoll[index] === 10) {
-      points += this.strikeBonus();
-      index ++;
+  for (var i = 0; i < 10; i++){
+    if (isSpare()) {
+      total += this.pointsPerRoll[arrIndex] + this.pointsPerRoll[arrIndex + 1] + this.pointsPerRoll[arrIndex + 2];
+      arrIndex += 2;
     } else {
-      points += this.scoreNoBonus();
-      index += 2;
+    total += this.pointsPerRoll[arrIndex] + this.pointsPerRoll[arrIndex + 1];
+    arrIndex += 2;
     }
   }
-return points;
+  return total;
 
-
-
-Bowling.prototype.scoreNoBonus = function(){
-  return this.pointsPerRoll[index] + this.pointsPerRoll[index + 1];
-}
-
-Bowling.prototype.strikeBonus = function(){
-  return this.pointsPerRoll[index] + this.pointsPerRoll[index + 1] + this.pointsPerRoll[index + 2];
+function isSpare(){
+  return thisGame.pointsPerRoll[arrIndex] + thisGame.pointsPerRoll[arrIndex + 1] == 10;
 }
 
 };

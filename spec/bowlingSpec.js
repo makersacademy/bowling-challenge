@@ -12,28 +12,27 @@ it('zero points at the beginning of the game', function(){
 });
 
 it('gutter game', function(){
-  for (var i = 0; i < 20; i ++) {
-    bowling.roll(0);
+  for (var i = 0; i < 20; i++) {
+  bowling.roll(0);
   }
-  expect(bowling.pointsPerRoll).toEqual([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
-  // expect(bowling.calculateScore()).toEqual([0]);
+  expect(bowling.calculateScore()).toBe(0);
+});
 
-  })
-
-
-it('player can score a strike', function(){
-  bowling.roll(10);
+it('the player can score a spare', function(){
   bowling.roll(3);
-  bowling.roll(5);
-  expect(bowling.pointsPerRoll).toEqual([10, 3, 5]);
-  // expect(bowling.calculateScore()).toEqual(18);
-
-})
-
-
+  bowling.roll(7);
+  bowling.roll(6);
+  severalRolls(0, 17);
+  expect(bowling.calculateScore()).toBe(22);
+});
 
 
+var severalRolls = function(knockedPins, rolls){
+  for (var i = 0; i < rolls; i++){
+    bowling.roll(knockedPins);
+  }
 
+};
 
 
 

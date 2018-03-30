@@ -26,6 +26,13 @@ it('the player can score a spare', function(){
   expect(bowling.calculateScore()).toBe(22);
 });
 
+it('the player can score a strike', function(){
+  bowling.roll(10);
+  bowling.roll(3);
+  bowling.roll(5);
+  severalRolls(0, 16);
+  expect(bowling.calculateScore()).toEqual(26);
+})
 
 var severalRolls = function(knockedPins, rolls){
   for (var i = 0; i < rolls; i++){

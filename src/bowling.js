@@ -17,6 +17,9 @@ Bowling.prototype.calculateScore = function(){
     if (isSpare()) {
       total += this.pointsPerRoll[arrIndex] + this.pointsPerRoll[arrIndex + 1] + this.pointsPerRoll[arrIndex + 2];
       arrIndex += 2;
+    } else if (this.pointsPerRoll[arrIndex] == 10){
+      total += this.pointsPerRoll[arrIndex] + this.pointsPerRoll[arrIndex + 1] + this.pointsPerRoll[arrIndex + 2];
+      arrIndex++;
     } else {
     total += this.pointsPerRoll[arrIndex] + this.pointsPerRoll[arrIndex + 1];
     arrIndex += 2;

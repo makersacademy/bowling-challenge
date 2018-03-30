@@ -7,7 +7,7 @@ describe('Game', function(){
     this._n = 0;
     this._i = 0;
     this._responses = [true, false];
-    this._responses2 = [false, true];
+    this._responses2 = [false, true, true];
   };
   MockFrame.prototype.nSet = function(n) { this._n = n };
   MockFrame.prototype.n = function() { return this._n };

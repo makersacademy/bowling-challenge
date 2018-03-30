@@ -35,6 +35,7 @@ Frame.prototype.roll = function(score) {
 //checkers
 Frame.prototype.isFinished = function() { return this._rolls.length >= this._rollsCap };
 Frame.prototype.isBonusFull = function() { return this._bonusRolls.length >= this._bonusCap};
+Frame.prototype.isFullyFinished = function() { return this.isFinished() && this.isBonusFull()};
 Frame.prototype.specials = function() {
   this.checkSpare();
   this.checkStrike();

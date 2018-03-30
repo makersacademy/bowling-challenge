@@ -24,5 +24,5 @@ Game.prototype.roll = function(score) {
 
 //checkers
 Game.prototype.isFinished = function(){
-  return ( this._frames.length > 10 );
+  return ( this._frames.length >= 10 && this._frames[9].isFinished());
 };

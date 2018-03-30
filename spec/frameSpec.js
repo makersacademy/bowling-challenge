@@ -46,6 +46,13 @@ describe('Frame', function() {
       frame.roll(5);
       expect(frame.score()).toEqual(15);
     });
+    it('knows it is fully finished when the bonus roll has been added', function(){
+      var frame = new Frame();
+      frame.roll(5);
+      frame.roll(5);
+      frame.roll(5);
+      expect(frame.isFullyFinished()).toEqual(true);
+    });
   });
 
   describe('strikes', function(){
@@ -65,6 +72,13 @@ describe('Frame', function() {
       frame.roll(10);
       frame.roll(10);
       expect(frame.score()).toEqual(30);
+    });
+    it('knows it is fully finished when two bonus rolls have been added', function(){
+      var frame = new Frame();
+      frame.roll(10);
+      frame.roll(10);
+      frame.roll(10);
+      expect(frame.isFullyFinished()).toEqual(true);
     });
   });
 

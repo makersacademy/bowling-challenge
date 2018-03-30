@@ -26,4 +26,15 @@ describe ('game and frame integrated' , function(){
       expect(game.isFinished()).toEqual(true);
     });
   })
+
+  describe ('a gutter game', function(){
+    it ('knows the score', function(){
+      for (var i = 1; i <= 20; i++) { game.roll(0) };
+      expect(game.score()).toEqual(0);
+    });
+    it ('knows it is finished', function(){
+      for (var i = 1; i <= 20; i++) { game.roll(0) };
+      expect(game.isFinished()).toEqual(true);
+    });
+  });
 });

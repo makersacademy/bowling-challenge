@@ -15,7 +15,7 @@ To use
 
 My approach
 ---------
-* I used the first weekend to work out the logic of the model, with the second week for the front end, css and testing out jQuery
+* I completed the challenge over 2 weekends. I used the first weekend to work out the logic of the model, with the second week for the front end, css and testing out jQuery
 * I also split the logical tasks into: score calculator and game runner. This enabled me to only consider each aspect and reduce the cognitive load
 * CSS and jQuery are new to me, so I ensured to practice both extensively on the second weekend, challenging myself with styling the table and making a strike animation
 * I aimed to have deep understanding of my code, diagrammed extensively and stuck to the coding processes that I am refining e.g. TDD, Debugging process, algorithmic thinking, simplest step to MVP first

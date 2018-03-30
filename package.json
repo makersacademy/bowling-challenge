@@ -1,0 +1,26 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "A simple ten pin bowling scorer",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "dependencies": {
+    "spectre.css": "^0.5.1"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hemesh-Unka/bowling-challenge.git"
+  },
+  "author": "Hemesh Unka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hemesh-Unka/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/Hemesh-Unka/bowling-challenge#readme"
+}

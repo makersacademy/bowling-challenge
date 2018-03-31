@@ -13,14 +13,27 @@ Game.prototype.roll = function(pins) {
 Game.prototype.score = function() {
   var result = 0
   var rollIndex = 0;
+  var game = this;
   for(var frameIndex = 0; frameIndex < 10; frameIndex++){
-    if(this.rolls[rollIndex] + this.rolls[rollIndex + 1] == 10){
-      result = result + this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+    if(isSpare()){
+      result = result + getSpareScore();
     } else {
 
-    result = result + this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+    result = result + getNormalScore();
     }
     rollIndex = rollIndex + 2;
   }
   return result
+
+  function isSpare(){
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] == 10;
+  }
+
+  function getSpareScore(){
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2]
+  }
+
+  function getNormalScore(){
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1]
+  }
 };

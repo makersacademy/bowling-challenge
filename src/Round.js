@@ -24,4 +24,4 @@ Round.prototype.isStrike = function() {
   return (this.score() === MAX_SCORE) ? true : false;
 }
 
-// Does not like const to be in constructor
+// Does not like const to be in function decliration

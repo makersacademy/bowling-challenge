@@ -7,7 +7,7 @@ Marcus' README Edits - My approach and mini code review
 
 To use
 ---------
-* View deployed app at: https://bowling-challenge-mfg.herokuapp.com/
+* View deployed app at: https://bowling-challenge-mfg.herokuapp.com/ [![Heroku](https://cloud.githubusercontent.com/assets/12953472/18688266/701982fc-7f7b-11e6-8971-5f1e03f554b7.png)](https://bowling-challenge-mfg.herokuapp.com/)
 
 * git clone repository
 * Open 'SpecRunner.html' for tests

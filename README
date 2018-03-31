@@ -1,0 +1,12 @@
+Frameworks used
+
+Testing
+- Mocha npm install mocha --save,  create mocha.opts in test --reporter spec and --recursive. Mocha runs on all files with describe and outputs to the 'spec.
+- Chai npm install chai --save-dev - this is the assertion module makes the syntax easier
+- Zombie npm install zombie --save-dev
+
+Setup
+- Nodemon npm install nodemon --save
+
+API
+- Express npm install express --save

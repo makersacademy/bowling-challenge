@@ -1,0 +1,23 @@
+{
+	"name": "bowling-challenge",
+	"version": "1.0.0",
+	"description": "A fullstack bowling scorecard application",
+	"main": "index.js",
+	"directories": {
+		"doc": "docs",
+		"lib": "lib"
+	},
+	"scripts": {
+		"test": "jasmine"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/AlfieDarko/bowling-challenge.git"
+	},
+	"author": "Alfie Darko",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/AlfieDarko/bowling-challenge/issues"
+	},
+	"homepage": "https://github.com/AlfieDarko/bowling-challenge#readme"
+}

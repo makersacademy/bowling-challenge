@@ -15,4 +15,10 @@ describe("Frame", function() {
 		frame.logRoll(7);
 		expect(frame.rolls).toEqual(jasmine.arrayContaining([7]));
 	});
+
+	it("it should initiate with 10 pins", function() {
+		frame.logRoll(5);
+		frame.logRoll(4);
+		expect(frame.total).toBe(9);
+	});
 });

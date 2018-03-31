@@ -10,4 +10,9 @@ describe("Frame", function() {
 	it("it should initiate with an empty array", function() {
 		expect(frame.rolls).toEqual(jasmine.arrayContaining([]));
 	});
+
+	it("should record the pins that have been knocked down", function() {
+		frame.logRoll(7);
+		expect(frame.rolls).toEqual(jasmine.arrayContaining([7]));
+	});
 });

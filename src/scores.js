@@ -6,5 +6,5 @@ function NormaliseScoreFrame (accumulator, score) {
 }
 
 function NormaliseScores (scoresList){
-  return (scoresList.reduce( NormaliseScoreFrame, [[], true] ))[0]
+  return ((scoresList.reduce( NormaliseScoreFrame, [[], true] ))[0]).concat([null, null, null])
 }

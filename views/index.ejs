@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Chocobowling</title>
+
+    <script src="js/jquery.js"></script>
+    <script src="src/Frame.js"></script>
+    <script src="src/Scorecard.js"></script>
+    <script src="src/BowlingJQuery.js"></script>
+    <script src="src/DatabaseConnection.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+
+
+  <body>
+    <h1 id="title">Chocobowling</h1>
+    <div id="roll_div">
+      <h2> Current Frame: <span id="curr_frame"></span></h2>
+        <label for="roll1">Enter roll 1 score</label>
+        <input type="text" name="roll1" id="roll1">
+        <br/>
+        <label for="roll2">Enter roll 2 score</label>
+        <input type="text" name="roll2" id="roll2">
+        <br/>
+        <input type="submit" name="submit_rolls" id="submit_rolls">
+    </div>
+
+    <div id="display_div">
+      <table>
+
+        <tr id="row_header">
+          <% ["Score Type","Frame 1","Frame 2","Frame 3","Frame 4","Frame 5",
+            "Frame 6","Frame 7","Frame 8","Frame 9","Frame 10","Frame 11",
+            "Sub-Totals"].map(function(el, idx) { %>
+          <th id="row_header_<%= idx %>">
+            <%= el %>
+          </th>
+          <% }); %>
+        </tr>
+
+        <tr id="row_roll1">
+          <% ["Base - Roll 1","-","-","-","-","-","-","-","-","-","-","-","-"].map(function(el, idx) { %>
+          <td id="row_roll1_<%= idx %>">
+            <%= el %>
+          </td>
+          <% }); %>
+        </tr>
+
+        <tr id="row_roll2">
+          <% ["Base - Roll 2","-","-","-","-","-","-","-","-","-","-","-","-"].map(function(el, idx) { %>
+          <td id="row_roll2_<%= idx %>">
+            <%= el %>
+          </td>
+          <% }); %>
+        </tr>
+
+        <tr  id="row_bonus">
+          <% ["Bonus","-","-","-","-","-","-","-","-","-","-","N/A","-"].map(function(el, idx) { %>
+          <td id="row_bonus_<%= idx %>">
+            <%= el %>
+          </td>
+          <% }); %>
+        </tr>
+      </table>
+    </div>
+
+  </body>
+</html>

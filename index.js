@@ -1,59 +1,59 @@
 $(document).ready(function(){
-  var frame = new Frame();
+  var game = new Game();
 
   $('#zero').click(function() {
-    frame.roll(0);
-    $('#tot').text(frame.tot());
+    game.roll(0);
+    $('#tot').text(game.tot());
   });
 
   $('#one').click(function() {
-    frame.roll(1);
-    $('#tot').text(frame.tot());
+    game.roll(1);
+    $('#tot').text(game.tot());
   });
 
   $('#two').click(function() {
-    frame.roll(2);
-    $('#tot').text(frame.tot());
+    game.roll(2);
+    $('#tot').text(game.tot());
   });
 
   $('#three').click(function() {
-    frame.roll(3);
-    $('#tot').text(frame.tot());
+    game.roll(3);
+    $('#tot').text(game.tot());
   });
 
   $('#four').click(function() {
-    frame.roll(4);
-    $('#tot').text(frame.tot());
+    game.roll(4);
+    $('#tot').text(game.tot());
   });
 
   $('#five').click(function() {
-    frame.roll(5);
-    $('#tot').text(frame.tot());
+    game.roll(5);
+    $('#tot').text(game.tot());
   });
 
   $('#six').click(function() {
-    frame.roll(6);
-    $('#tot').text(frame.tot());
+    game.roll(6);
+    $('#tot').text(game.tot());
   });
 
   $('#seven').click(function() {
-    frame.roll(7);
-    $('#tot').text(frame.tot());
+    game.roll(7);
+    $('#tot').text(game.tot());
   });
 
   $('#eight').click(function() {
-    frame.roll(8);
-    $('#tot').text(frame.tot());
+    game.roll(8);
+    $('#tot').text(game.tot());
   });
 
   $('#nine').click(function() {
-    frame.roll(9);
-    $('#tot').text(frame.tot());
+    game.roll(9);
+    $('#tot').text(game.tot());
   });
 
   $('#ten').click(function() {
-    frame.roll(10);
-    $('#tot').text(frame.tot());
+    game.roll(10);
+    $('#tot').text(game.tot());
   });
 
 });

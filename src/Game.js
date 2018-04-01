@@ -5,6 +5,9 @@ function Game() {
 };
 
 Game.prototype.roll = function(pinsDown) {
+  if (pinsDown > 10) {
+    throw new Error ('There are only 10 pins');
+  }
   this._scorecard.push(pinsDown);
 };
 

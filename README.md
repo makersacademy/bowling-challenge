@@ -8,8 +8,16 @@ So that I can keep track of my score,
 I want to have a score card.
 
 As a player,
-So that I can see my score,
-I want my score card to display my total score.
+So that I can start the game,
+I want my score to be empty when I start.
+
+As a player,
+So that I can keep playing the game,
+I want to see my total score while playing.
+
+As a player,
+So that I can stick to the laws of the physics,
+I want to not to be able to take down more pins than the standing 10. 
 ```
 
 

@@ -21,7 +21,7 @@ Play.prototype.score = function () {
       roll++
     }
     else if (this.isSpare(roll)) {
-      this._score += 10 + unDefined(this._rolls[roll + 1]);
+      this._score += 10 + unDefined(this._rolls[roll + 2]);
       roll += 2;
     }
     else {

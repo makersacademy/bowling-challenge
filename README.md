@@ -21,7 +21,15 @@ I want to not to be able to take down more pins than the standing 10.
 
 As a player,
 So that I can finish the game,
-I want the game to contain 10 frames. 
+I want the game to contain 20 rolls.
+
+As a player,
+So that I can finish the game,
+I want the game to contain 10 frames.
+
+As a player,
+So that I can finish the frame,
+I want the frame to contain 2 rolls. 
 ```
 
 

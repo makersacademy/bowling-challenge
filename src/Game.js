@@ -2,8 +2,11 @@
 
 function Game() {
   this._scorecard = [];
+  this._frame = []
   this.MAX_ROLLS = 20;
 };
+
+// Game.prototype.turn = (function)
 
 Game.prototype.roll = function(pinsDown) {
   if (this._scorecard.length === this.MAX_ROLLS) {

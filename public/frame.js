@@ -54,4 +54,4 @@ Frame.prototype.checkStrike = function() {
   };
 };
 
-module.exports = Frame;
+exports.Frame = Frame;

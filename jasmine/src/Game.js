@@ -2,7 +2,6 @@ function Game(bonus) {
   this.bonus = bonus
   this.total = 0
   this.frame = 1
-  this.roundsUsed = 0
 }
 
 Game.prototype.roll = function(first, second = 0, third = 0) {
@@ -12,8 +11,7 @@ Game.prototype.roll = function(first, second = 0, third = 0) {
     var bonus = 0
   } else {
     var score = this.score(first, second)
-    var bonus = this.bonusScore(first, second)
-  }
+    var bonus = this.bonusScore(first, second) }
   this.frame += 1
   this.total += (score + bonus)
   this.bonus.calculate(first, second)
@@ -33,6 +31,7 @@ Game.prototype.edgeCase = function(first, second=0, third=0) {
   if (this.frame != 10 && third != 0) {throw new Error('You cannot have 3 balls');}
   if (first + second < 10 && third != 0) {throw new Error('You cannot have 3 balls');}
   if (first + second > 10 && first != 10) {throw new Error('You can only knock over 10 pins');}
+  if (this.frame === 10 && third === 0) {throw new Error('You should use all 3 balls');}
 }
 
 Game.prototype.tenthScore = function(first, second, third) {

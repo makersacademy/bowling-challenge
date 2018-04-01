@@ -12,7 +12,7 @@ describe('Bowling Challenge app interface', function(){
 
   describe('basic page features', function(done){
     it ('shows a title page', function(){
-      browser.assert.text('h1', 'Bowling Scorecard');
+      browser.assert.text('#title', 'Bowling Scorecard');
     });
   });
 
@@ -23,7 +23,7 @@ describe('Bowling Challenge app interface', function(){
     });
 
     it('lets you start a new game', function(){
-      browser.assert.text('score', '0');
+      browser.assert.text('#score', '0');
     });
   });
 

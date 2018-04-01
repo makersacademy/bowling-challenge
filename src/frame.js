@@ -53,3 +53,5 @@ Frame.prototype.checkStrike = function() {
     this._bonusCap = 2;
   };
 };
+
+module.exports = Frame;

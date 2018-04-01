@@ -1,0 +1,20 @@
+<html>
+<head>
+  <script type = "application/javascript" src="./src/frame.js"></script>
+  <script type = "application/javascript" src="./src/game.js"></script>
+</head>
+<body>
+  <div id='msg'>
+    <h1>Welcome to Bowling!<h1>
+  </div>
+  <div id = 'main'>
+    <script>
+      function startGame(){
+        var game = Game new(Frame);
+        document.getElementById("msg").innerHTML = 'Game on! Current Score:' + game.score();
+      }
+    </script>
+    <button onclick= "startGame()">Start new game</button>
+  </div>
+</body>
+</html>

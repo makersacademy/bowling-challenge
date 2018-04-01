@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="public/style.css"
     <meta charset="utf-8">
-    <title></title>
+    <title>Bowling Scorecard</title>
   </head>
   <body>
+    <form action="/" method="post">
+      <input type="text" name="name">
+      <input type="submit" value="Record Name">
+    </form>
     <h1>Bowling Scorecard<h1>
       <h2>What was your score for frame <span id="frame">1</span>?<h2>
         <select id="current-frame" required>
@@ -23,19 +28,19 @@
 
         <h2><span id="next"></span><h2>
 
-      <form id="scores">
+      <form  id="scores">
         <h3>Roll: <span id="current-roll"></span></h3>
-        <button id="pins-0" value="0" type="button">0</button>
-        <button id="pins-1" value="1" type="button">1</button>
-        <button id="pins-2" value="2" type="button">2</button>
-        <button id="pins-3" value="3" type="button">3</button>
-        <button id="pins-4" value="4" type="button">4</button>
-        <button id="pins-5" value="5" type="button">5</button>
-        <button id="pins-6" value="6" type="button">6</button>
-        <button id="pins-7" value="7" type="button">7</button>
-        <button id="pins-8" value="8" type="button">8</button>
-        <button id="pins-9" value="9" type="button">9</button>
-        <button id="pins-10" value="10" type="button">10</button><br />
+        <button class="button hover" id="pins-0" value="0" type="button">0</button>
+        <button class="button hover" id="pins-1" value="1" type="button">1</button>
+        <button class="button hover" id="pins-2" value="2" type="button">2</button>
+        <button class="button hover" id="pins-3" value="3" type="button">3</button>
+        <button class="button hover" id="pins-4" value="4" type="button">4</button>
+        <button class="button hover" id="pins-5" value="5" type="button">5</button>
+        <button class="button hover" id="pins-6" value="6" type="button">6</button>
+        <button class="button hover" id="pins-7" value="7" type="button">7</button>
+        <button class="button hover" id="pins-8" value="8" type="button">8</button>
+        <button class="button hover" id="pins-9" value="9" type="button">9</button>
+        <button class="button hover" id="pins-10" value="10" type="button">10</button><br />
         </form>
         <button id="confirm" type="button">Confirm Frame Score</button>
         <button id="edit" type="button">Edit Frame Score</button>

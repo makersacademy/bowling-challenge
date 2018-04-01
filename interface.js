@@ -38,11 +38,12 @@ $(document).ready(function() {
       if (currentFrame.roll === 1) {
         $('#current-roll').text('2')
         console.log(currentFrame.play1(parseInt(pins)))
+         console.log(currentFrame.nextRoll())
 
         for (var i = 10; i > (10-parseInt(pins)); i--) {
         $("#pins-" + i).hide();
       }
-           console.log(currentFrame.nextRoll())
+
 
            $('#confirm').hide()
            $('#edit').hide()
@@ -86,6 +87,11 @@ $(document).ready(function() {
       $('#scorecard').append('<tr><td>' + (parseInt(index) + 1) +
       '</td><td>' + currentFrame.rollOne + '</td><td>' +
       currentFrame.rollTwo + '</td><td>' + score.currentTotalScore + '</td></tr>')
+
+    }
+
+    function TenthFrameStrike() {
+      DisplayButtons()
 
     }
 

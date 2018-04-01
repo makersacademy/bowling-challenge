@@ -21,4 +21,12 @@ describe('Game', function() {
     });
   });
 
+  describe('Score', function() {
+    it('returns the current score', function() {
+      game.addFrame(frame);
+      game.currentScore();
+      expect(game.score).toEqual(10);
+    });
+  });
+
 });

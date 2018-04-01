@@ -15,19 +15,5 @@ Frame.prototype.nextFrame = function(strikeOrSpare) {
       throw "Game Finished!"
   } else {
     this._currFrame += 1;
-    console.log(this._currFrame)
-  };
-};
-
-Frame.prototype.setRoll = function(elID, rollValue) {
-  thisRoll = (elID === "roll1" ? this._roll1 : this._roll2);
-  if (rollValue >= this._ROLLMIN && rollValue <= this._ROLLMAX) {
-    thisRoll = rollValue;
-  } else if(rollValue < this._ROLLMIN) {
-    throw "Roll score less than 0!";
-  } else if (rollValue > this._ROLLMAX) {
-    throw "Roll score exceeds 10!";
-  } else if (isNaN(rollValue) === true) {
-    throw "Enter a whole number!"
   };
 };

@@ -12,7 +12,7 @@ describe("Scorecard", function() {
 
 
   describe("#calculate", function() {
-    it("adds two numbers together to update _score", function() {
+    it("adds two numbers together to update the _score hash", function() {
       scorecard.calculate(1,2,5);
       expect(scorecard._score).toEqual({1: [2,5,7,"normal"]});
     });
@@ -27,11 +27,21 @@ describe("Scorecard", function() {
       expect(scorecard._score[1][3]).toEqual("spare");
     });
 
-    it("throws an error when the two numbers sum to exceed 10", function(){
-      expect(function() { scorecard.calculate(1,6,5) }).toThrow("Total exceeds 10 - check your inputs");
+    it("throws an error when the two numbers sum to exceed 10", function() {
+      expect(function() { scorecard.calculate(1,6,5) }).toThrow("Invalid score - check your roll input values!");
+    });
+
+    it("throws an error when negative numbers are entered", function() {
+      expect(function() { scorecard.calculate(1,-6,5) }).toThrow("Invalid score - check your roll input values!");
+    });
+
+    it("throws an error when non-integers are entered", function() {
+      expect(function() { scorecard.calculate(1,"A",5) }).toThrow("Invalid score - check your roll input values!");
     });
 
   });
+
+
 
   describe("#calc_bonus", function() {
     beforeEach(function() {

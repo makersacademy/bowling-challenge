@@ -4,6 +4,7 @@ function Frame() {
   this.bonus = 'none';
   this.BONUS = 10;
   this.roll = 1
+
 };
 Frame.prototype.nextRoll = function() {
   if (this.roll === 1) {

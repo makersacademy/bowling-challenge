@@ -35,27 +35,56 @@ $(document).ready(function() {
   $('[id*=pins]').each(function() {
     $(this).on("click", function(){
       var pins = $(this).val()
+
       if (currentFrame.roll === 1) {
         $('#current-roll').text('2')
         console.log(currentFrame.play1(parseInt(pins)))
          console.log(currentFrame.nextRoll())
+           if ($('select#current-frame').val() === '9' && currentFrame.rollOne === 10) {
+             $('#scores').show();
+           }else{
 
-        for (var i = 10; i > (10-parseInt(pins)); i--) {
-        $("#pins-" + i).hide();
-      }
+             for (var i = 10; i > (10-parseInt(pins)); i--) {
+             $("#pins-" + i).hide();
+            }
+           }
 
 
-           $('#confirm').hide()
-           $('#edit').hide()
+
+           $('#confirm').hide();
+           $('#edit').hide();
+
          }else if (currentFrame.roll === 2) {
            $('#current-roll').text('1')
            console.log(currentFrame.play2(parseInt(pins)))
+             if ($('select#current-frame').val() === '9' && currentFrame.rollTwo === 10){
+               $('#frame').text('final');
+               $('#scores').show();
+               console.log(true);
+               $('#confirm').hide()
+               $('#edit').hide()
+               $('#current-roll').text('Bonus roll for two strikes in final frame')
+
+               $('[id*=pins]').each(function() {
+                 $(this).on("click", function(){
+                   var pins = $(this).val()
+                   score.tenthTwoStrikes(parseInt(pins));
+                   $('#scores').hide();
+                   $('#confirm').show()
+                   $('#edit').hide()
+                   currentFrame.roll = 3
+                 });
+               });
+
+             } else {
+
 
           currentFrame.nextRoll()
           console.log(currentFrame.bonusAward());
           $('#scores').hide();
           $('#confirm').show()
           $('#edit').show()
+        }
     };
 
     $('#edit').unbind('click').click(function() {
@@ -71,8 +100,16 @@ $(document).ready(function() {
      console.log(currentFrame)
      console.log(score.totalScore(currentFrame));
      console.log(score.giveBonus(currentFrame));
-     ShowNextFrameMessage();
      AppendScorecard();
+     if (currentFrame.roll === 3) {
+       $('#extra-points').text('You were awarded bonus points')
+       GameOver()
+     }else if ($('select#current-frame').val() === '9') {
+       GameOver()
+     }else{
+
+     ShowNextFrameMessage();
+   }
    });
 
     function ShowNextFrameMessage() {
@@ -90,10 +127,15 @@ $(document).ready(function() {
 
     }
 
-    function TenthFrameStrike() {
-      DisplayButtons()
-
+    function GameOver() {
+      $('#scores').hide();
+      $('#confirm').hide()
+      $('#edit').hide()
+      $('#over').text('GAME OVER!')
     }
+
+
+
 
 
 

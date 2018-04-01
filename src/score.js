@@ -5,6 +5,10 @@ function Score() {
 
 }
 
+Score.prototype.tenthTwoStrikes = function(score) {
+  this.currentTotalScore += score;
+}
+
 Score.prototype.totalScore = function(frame) {
   if (this.previousBonus === 'spares') {
     return this.currentTotalScore += ((frame.rollOne * 2) + frame.rollTwo);

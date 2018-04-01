@@ -6,10 +6,11 @@
     <title>Bowling Scorecard</title>
   </head>
   <body>
-    <form action="/" method="post">
+    <INPUT TYPE="button" onClick="history.go(0)" VALUE="New Game">
+    <!-- <form action="/" method="post">
       <input type="text" name="name">
       <input type="submit" value="Record Name">
-    </form>
+    </form> -->
     <h1>Bowling Scorecard<h1>
       <h2>What was your score for frame <span id="frame">1</span>?<h2>
         <select id="current-frame" required>
@@ -27,6 +28,9 @@
         </select>
 
         <h2><span id="next"></span><h2>
+        <h2><span id="extra-points"></span><h2>
+        <h1><span id="over"></span><h1>
+
 
       <form  id="scores">
         <h3>Roll: <span id="current-roll"></span></h3>

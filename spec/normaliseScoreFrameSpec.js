@@ -57,5 +57,10 @@ describe('NormaliseScores', function(){
       scoresList = [2, 5, 10, 0, 10]
       expect(NormaliseScores(scoresList)).toEqual([2, 5, 10, null, 0, 10, null, null, null])
     });
+
+    it('returns a score list with null after a stike', function(){
+      scoresList = [10, 0, 5]
+      expect(NormaliseScores(scoresList)).toEqual([10, null, 0, 5, null, null, null])
+    });
   });
 });

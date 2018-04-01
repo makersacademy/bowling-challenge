@@ -17,7 +17,11 @@ I want to see my total score while playing.
 
 As a player,
 So that I can stick to the laws of the physics,
-I want to not to be able to take down more pins than the standing 10. 
+I want to not to be able to take down more pins than the standing 10.
+
+As a player,
+So that I can finish the game,
+I want the game to contain 10 frames. 
 ```
 
 

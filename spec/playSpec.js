@@ -43,8 +43,9 @@ describe('Play', function() {
     })
 
     it('can roll 300 - a perfect game', function() {
-      multipleRolls(10, 20)
+      multipleRolls(10, 11)
       expect(play.score()).toEqual(300)
     })
+
   })
 })

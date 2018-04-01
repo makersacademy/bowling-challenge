@@ -1,0 +1,9 @@
+<% include partials/header %>
+<label for='row'> Row <%= row %> </label>
+<label for='frame'> Frame <%= frame %> </label>
+<label for='score'> Score <%= score %> </label>
+<form action='/' method='post'>
+  <input type='text' name='ball_throw'>
+  <input type='submit' value='Submit' name='throw_submit'>
+</form>
+<% include partials/footer %>

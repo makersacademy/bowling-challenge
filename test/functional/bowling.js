@@ -10,8 +10,8 @@ var assert = require('assert');
 
 
     before(function() {
-      this.server = http.createServer(app).listen(3000); 
-      this.browser = new Browser ({ site: 'http://localhost:3000' });
+      this.server = http.createServer(app).listen(3001); 
+      this.browser = new Browser ({ site: 'http://localhost:3001' });
       browser = this.browser
     });
 
@@ -24,14 +24,12 @@ var assert = require('assert');
     });
 
     it('page contains two inputs, one for entry and one for submit', function() {
-      assert.ok(browser.element('form input[name=throw]'));
-      assert.ok(browser.element('form input[name=throw_submit]'));
+      browser.assert.element('form input[name=ball_throw]');
+      browser.assert.element('form input[name=throw_submit]');
     });
 
     it('page contains labels of: score, frame and throw', function() {
-      browser.assert.text('label', 'Score 0');
-      browser.assert.text('label', 'Frame 1');
-      browser.assert.text('label', 'Throw 1');
+      browser.assert.text('label', 'Score 0 Row 1 Frame 1');
     });
 
     it('throw of 5 increase score by 5 and throw by 1', function() {
@@ -44,7 +42,7 @@ var assert = require('assert');
     });
 
     it('throw of 5 then 1 increase score by 6, returns throw to 1 and frame to 2', function() {
-      browser.fill('throw', '5');
+      browser.fill('throw', '1');
       browser.pressButton('throw_submit').then(function() {
         browser.assert.text('label', 'Score 6');
         browser.assert.text('label', 'Frame 2');

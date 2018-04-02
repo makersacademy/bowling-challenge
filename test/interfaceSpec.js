@@ -6,19 +6,21 @@ describe('Bowling Challenge app interface', function(){
 
   var browser = new Browser();
 
+
   before(function(done) {
     browser.visit('/', done);
   });
 
-  describe('basic page features', function(done){
+  describe('basic page features', function(){
     it ('shows a title page', function(){
-      browser.assert.text('#msg', 'Welcome to Bowling!', done);
+      browser.assert.text('#msg', 'Welcome to Bowling!');
     });
   });
 
   describe('starting a game', function(){
     before(function(done){
-      browser.pressButton('Start new game', done);
+      browser.pressButton('Start new game');
+      done();
     });
     it('lets you start a new game', function(){
       browser.assert.text('#msg', 'Game on!');
@@ -29,7 +31,8 @@ describe('Bowling Challenge app interface', function(){
     before(function(done){
       browser.pressButton('Start new game');
       browser.select('#rollSelect', '5');
-      browser.pressButton('Add roll', done);
+      browser.pressButton('Add roll');
+      done();
     });
     it('totals the score', function(){
       browser.assert.text('#score', 'Total Score: 5');
@@ -50,7 +53,8 @@ describe('Bowling Challenge app interface', function(){
       browser.select('#rollSelect', '5');
       browser.pressButton('Add roll');
       browser.select('#rollSelect', '4');
-      browser.pressButton('Add roll', done);
+      browser.pressButton('Add roll');
+      done();
     });
     it('displays multiple frames', function(){
       browser.select('#rollSelect', '3');
@@ -67,7 +71,8 @@ describe('Bowling Challenge app interface', function(){
       browser.select('#rollSelect', '4');
       browser.pressButton('Add roll');
       browser.select('#rollSelect', '4');
-      browser.pressButton('Add roll', done);
+      browser.pressButton('Add roll');
+      done();
     });
     it ('scores a strike and adds bonus rolls', function(){
       browser.assert.text('#frame1', "Frame 1: 18 (10) [4] [4]");
@@ -84,9 +89,10 @@ describe('Bowling Challenge app interface', function(){
       browser.select('#rollSelect', '4');
       browser.pressButton('Add roll');
       browser.select('#rollSelect', '4');
-      browser.pressButton('Add roll', done);
+      browser.pressButton('Add roll');
+      done();
     });
-    it ('scores a strike and adds bonus rolls', function(){
+    it ('scores a spare and adds a bonus roll', function(){
       browser.assert.text('#frame1', "Frame 1: 14 (5) (5) [4]");
     });
   });

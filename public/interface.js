@@ -23,7 +23,7 @@ function buildRollSelect(game){
   } else {
       var maxPermittedScore = 10 - game.currentFrame().normalScore();
   }
-  for (var i = 1; i <= maxPermittedScore; i++) {
+  for (var i = 0; i <= maxPermittedScore; i++) {
     var el = document.createElement("option");
     el.textContent = String(i);
     el.textContent = String(i);
@@ -45,6 +45,7 @@ function addRoll(game){
   addFrame(game);
   updateFrames(game);
   buildRollSelect(game);
+  checkFinished(game);
 }
 function addFrame(game){
   var frameDisplay = document.getElementById("frameDisplay");
@@ -80,5 +81,13 @@ function emptyFrames(){
   var frameDisplay = document.getElementById("frameDisplay");
   while( frameDisplay.firstChild ){
     frameDisplay.removeChild( frameDisplay.firstChild );
+  }
+}
+function checkFinished(game){
+  if (game.isFinished()) {
+    var winString = ""
+    if (game.score() === 300) { winString = " Perfect game!" }
+    if (game.score() === 0) { winString = " Gutter game!" }
+    document.getElementById("msg").innerHTML = 'Game over!' + winString;
   }
 }

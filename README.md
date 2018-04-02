@@ -1,3 +1,37 @@
+```
+As a player,
+So I can keep track of my score,
+I need a Scorecard.
+
+As a player,
+So I can register my scores,
+I want to add my scores to the Scorecard.
+
+As a player,
+So I can see my progress,
+I want to see the sum of my scores.
+
+As a player,
+So I can keep track of the bonus points,
+I want to add bonus for Strikes.
+
+As a player,
+So I can keep track of the bonus points,
+I want to add bonus for Spares.
+
+As a player,
+So I can roll additional balls in the 10th frame,
+I want to add bonus for 10th frame.
+
+As a player,
+So I can see if I have played a Gutter Game.
+I want to see if I have played a Gutter Game.
+
+As a player,
+So I can see if I have played a Perfect Game.
+I want to see if I have played a Perfect Game.
+
+```
 
 Bowling Challenge
 =================

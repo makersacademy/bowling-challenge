@@ -2,10 +2,6 @@ function Frame(){
   this._currFrame = 1;
   this._roll1 = 0;
   this._roll2 = 0;
-  this._ROLLMIN = 0;
-  this._ROLLMAX = 10;
-  this._strike = false
-  this._spare = false
 };
 
 Frame.prototype.nextFrame = function(strikeOrSpare) {

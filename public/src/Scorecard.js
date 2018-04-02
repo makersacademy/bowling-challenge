@@ -22,11 +22,21 @@ Scorecard.prototype.calculate = function(frame, roll1, roll2) {
 };
 
 Scorecard.prototype.calc_bonus = function(frame) {
-  if (this._score[frame][3] === "strike") {
-    this._score[frame].push(this._score[frame + 1][0] + this._score[frame + 1][1]);
-  } else if (this._score[frame][3] === "spare") {
-    this._score[frame].push(this._score[frame + 1][0]);
-  } else {
-    this._score[frame].push(0);
+  switch(this._score[frame][3]) {
+    case "strike":
+      if (this._score[frame + 1][3] === "strike") {
+        this._score[frame].push(this._score[frame + 1][0] + this._score[frame + 2][0]);
+      } else {
+        this._score[frame].push(this._score[frame + 1][0] + this._score[frame + 1][1]);
+      };
+      break;
+
+    case "spare":
+      this._score[frame].push(this._score[frame + 1][0]);
+      break;
+
+    case "normal":
+      this._score[frame].push(0);
+      break;
   };
 };

@@ -19,9 +19,8 @@ $(document).ready(function(){
 
   function getScores() {
     scorecard.calculate(frame._currFrame, parseInt(roll1.value), parseInt(roll2.value));
-    if (frame._currFrame > 1) {
-      scorecard.calc_bonus(frame._currFrame - 1);
-      console.log(scorecard._score[frame._currFrame]);
+    if (frame._currFrame > 2 && scorecard._score) {
+      scorecard.calc_bonus(frame._currFrame - 2);
     }
   };
 
@@ -30,8 +29,8 @@ $(document).ready(function(){
     roll1_val.innerHTML = roll1_input.value;
     roll2_val = document.getElementById("row_roll2_" + refFrame);
     roll2_val.innerHTML = roll2_input.value;
-    if (refFrame > 1) {
-      prevFrame = parseInt(refFrame - 1);
+    if (refFrame > 2) {
+      prevFrame = parseInt(refFrame - 2);
       bonus_val = document.getElementById("row_bonus_" + prevFrame);
       console.log("bonus: " + scorecard._score[prevFrame][4])
       bonus_val.innerHTML = scorecard._score[prevFrame][4];

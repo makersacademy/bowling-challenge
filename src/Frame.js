@@ -1,45 +1,66 @@
-'use strict';
+'use strict'
 
-const STRIKE_OR_SPARE_SCORE = 10;
-const DEFAULT_ROUND_FRAME_COUNT = 2;
+const MAX_ROUND_LIMIT = 2;
+const MAX_BONUS_ROUND_LIMIT = 3;
+const MAX_SCORE = 10;
 
-function Frame() {
+function Frame(bonusRound = false) {
+  this._rounds = [];
+  this._isBonusFrame = bonusRound;
   this._score = 0;
-  this._bonusScore = 0;
-  this._rounds = [];
-  this._noOfRounds = DEFAULT_ROUND_FRAME_COUNT;
 };
 
-Frame.prototype.reset = function() {
-  this._rounds = [];
+Frame.prototype.addRound = function(round) {
+  this._rounds.push(round);
 };
 
-Frame.prototype.play = function(round) {
-  if (this._rounds.length >= this._noOfRounds) {
-    throw new Error('The maximum round limit for this frame has been reached!');
+Frame.prototype.isBonusFrame = function () {
+  return (this._isBonusFrame) ? true : false;
+};
+
+Frame.prototype.isFull = function() {
+  if (this.isBonusFrame()) {
+    if (this.isStrike() || this.isSpare()) {
+      return (this._rounds.length >= MAX_BONUS_ROUND_LIMIT) ? true : false;
+    } else {
+      return (this._rounds.length >= MAX_ROUND_LIMIT) ? true : false;
+    };
   } else {
-    this._rounds.push(round);
+    return (this._rounds.length >= MAX_ROUND_LIMIT || this.isStrike()) ? true : false;
   };
 };
 
-Frame.prototype.containsStrikeOrSpare = function() {
-  let result = false
-  this._rounds.forEach(function(round) {
-    return result = (round.score() >= STRIKE_OR_SPARE_SCORE) ? true : false;
-  });
-  return result;
+Frame.prototype.isSpare = function() {
+  if (this._rounds[1] == null) {
+    return false;
+  } else {
+    return ((this._rounds[0].score() + this._rounds[1].score()) === MAX_SCORE) ? true : false;
+  };
 };
 
-Frame.prototype.strikeOnFirstRound = function () {
-  return (this._rounds[0].isStrike()) ? true : false;
+Frame.prototype.isStrike = function() {
+  if (this._rounds[0] == null) {
+    return false;
+  } else {
+    return (this._rounds[0].score() === MAX_SCORE) ? true : false;
+  }
 };
 
 Frame.prototype.score = function() {
+  this._score = 0;
   let that = this;
+
   this._rounds.forEach(function(round) {
     that._score += round.score();
   });
   return this._score;
 };
 
-// last function needed exposure from the outside scope.
+Frame.prototype.bonusScore = function(roundAhead = new Round(), nextRoundAhead = new Round()) {
+  if (this.isStrike()) {
+      return roundAhead.score() + nextRoundAhead.score() || 0;
+  } else if (this.isSpare()) {
+    return roundAhead.score() || 0;
+  }
+  return 0;
+};

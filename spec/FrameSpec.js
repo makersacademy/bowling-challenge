@@ -1,110 +1,154 @@
 describe('Frame', function() {
   let frame;
-  let fakeRound;
 
   beforeEach(function() {
     frame = new Frame();
-    fakeRound = {};
+
+    fakeRound = {
+      score: function() {
+        return 0;
+      }
+    };
   });
 
   describe('initial', function() {
-    it('should have a score of 0', function() {
+    it('should not be a bonus round', function() {
+      expect(frame.isBonusFrame()).toEqual(false);
+    });
+
+    it('can be set to be a bonus round if required', function() {
+      frame = new Frame(true);
+
+      expect(frame.isBonusFrame()).toEqual(true);
+    });
+
+    it('should have an score of 0 for the frame', function() {
       expect(frame._score).toEqual(0);
     });
 
-    it('should have a bonus score of 0', function() {
-      expect(frame._bonusScore).toEqual(0);
-    });
-
-    it('should have an empty array for rounds played', function() {
+    it('should have an empty rounds array', function() {
       expect(frame._rounds).toEqual([]);
     });
+  });
 
-    it('returns 2 if frame is not the 10th frame', function() {
-      expect(frame._noOfRounds).toEqual(2);
+  describe('addRound', function() {
+    it('should add a round to the frame', function() {
+      frame.addRound(fakeRound);
+      expect(frame._rounds).toEqual([fakeRound]);
     });
   });
 
-  describe('reset', function() {
-    it('should reset the frames rounds to an empty array', function() {
-      frame.play(fakeRound);
-      frame.reset();
-
-      expect(frame._rounds).toEqual([]);
-    })
-  });
-
-  describe('play', function() {
-    it('throws an error if the number of rounds has been exceeded for a normal frame', function() {
-        frame.play(fakeRound);
-        frame.play(fakeRound);
-
-      expect(function() {
-        frame.play(fakeRound);
-      }).toThrowError('The maximum round limit for this frame has been reached!');
+  describe('isBonusFrame', function() {
+    it('returns true or false depending if frame is a bonus frame', function() {
+      expect(frame.isBonusFrame()).toEqual(false);
+      frame = new Frame(true);
+      expect(frame.isBonusFrame()).toEqual(true);
     });
   });
 
-  describe('containsStrikeOrSpare', function() {
-    it('returns true if rounds contain a strike or a spare', function() {
-      let fakeRound = {
-        score: function() {
-          return 10;
-        }
-      };
-      frame.play(fakeRound);
+  describe('isFull', function() {
+    it('returns true if it is a bonus round and has had a strike/spare and is full', function() {
+      frame = new Frame(true);
+      spyOn(fakeRound, 'score').and.returnValue(5);
+      frame.addRound(fakeRound);
+      frame.addRound(fakeRound);
+      frame.addRound(fakeRound);
 
-      expect(frame.containsStrikeOrSpare()).toEqual(true);
+      expect(frame.isFull()).toEqual(true);
     });
 
-    it('returns false if rounds do not contain a strike or a spare', function() {
-      let fakeRound = {
-        score: function() { return 3; }
-      };
+    it('returns true if it is a bonus round and hasnt had a strike/spare and is full', function() {
+      frame = new Frame(true);
+      spyOn(fakeRound, 'score').and.returnValue(5);
+      frame.addRound(fakeRound);
+      frame.addRound(fakeRound);
+      frame.addRound(fakeRound);
 
-      frame.play(fakeRound);
-      frame.play(fakeRound);
+      expect(frame.isFull()).toEqual(true);
+    });
 
-      expect(frame.containsStrikeOrSpare()).toEqual(false);
+    it('returns true if frame is a normal frame and contains a strike', function() {
+      spyOn(fakeRound, 'score').and.returnValue(10);
+      frame.addRound(fakeRound);
+
+      expect(frame.isFull()).toEqual(true);
+    });
+
+    it('returns true if frame is a normal frame is full', function() {
+      frame.addRound(fakeRound);
+      frame.addRound(fakeRound);
+
+      expect(frame.isFull()).toEqual(true);
     });
   });
 
-  describe('strikeOnFirstRound', function() {
-    it('returns true strike was hit on first round', function() {
-      let fakeStrikeRound = {
-        isStrike: function() {
-          return true;
-        }
-      };
-      frame.play(fakeStrikeRound);
-      frame.play(fakeRound);
+  describe('isSpare', function() {
+    it('returns true depending if it was a spare frame', function() {
+      spyOn(fakeRound, 'score').and.returnValue(5);
+      frame.addRound(fakeRound);
+      frame.addRound(fakeRound);
 
-      expect(frame.strikeOnFirstRound()).toEqual(true);
+      expect(frame.isSpare()).toEqual(true);
     });
 
-    it('returns false if normal first round', function() {
-      let fakeStrikeRound = {
-        isStrike: function() {
-          return false;
-        }
-      };
-      frame.play(fakeStrikeRound);
-      frame.play(fakeRound);
+    it('returns false if it was not a spare frame', function() {
+      spyOn(fakeRound, 'score').and.returnValue(2);
+      frame.addRound(fakeRound);
+      frame.addRound(fakeRound);
 
-      expect(frame.strikeOnFirstRound()).toEqual(false);
+      expect(frame.isSpare()).toEqual(false);
+    });
+  });
+
+  describe('isStrike', function() {
+    it('returns true if round was a strike', function() {
+      spyOn(fakeRound, 'score').and.returnValue(10);
+      frame.addRound(fakeRound);
+      expect(frame.isStrike()).toEqual(true);
+    });
+
+    it('returns false if round is empty', function() {
+      expect(frame.isStrike()).toEqual(false);
+    });
+
+    it('returns false if round does not include strike', function() {
+      frame.addRound(fakeRound);
+      expect(frame.isStrike()).toEqual(false);
     });
   });
 
   describe('score', function() {
-    it('returns the score of the current frame', function() {
-      let fakeRound = {
-        score: function() { return 3; }
-      };
+    it('returns the frames score', function() {
+      spyOn(fakeRound, 'score').and.returnValue(4);
+      frame.addRound(fakeRound);
+      frame.addRound(fakeRound);
 
-      frame.play(fakeRound);
-      frame.play(fakeRound);
+      expect(frame.score()).toEqual(8);
+    });
+  });
 
-      expect(frame.score()).toEqual(6)
+  describe('bonusScore', function() {
+    it('collects the bonus score for the frame if it contained a strike', function() {
+      spyOn(fakeRound, 'score').and.returnValue(10);
+      frame.addRound(fakeRound);
+
+      expect(frame.bonusScore(fakeRound, fakeRound)).toEqual(20);
+    });
+
+    it('collects the bonus score for the frame if it contained a spare', function() {
+      spyOn(fakeRound, 'score').and.returnValue(5);
+      frame.addRound(fakeRound);
+      frame.addRound(fakeRound);
+
+      expect(frame.bonusScore(fakeRound)).toEqual(5);
+    });
+
+    it('returns 0 if there is no bonus score', function() {
+      spyOn(fakeRound, 'score').and.returnValue(0);
+      frame.addRound(fakeRound);
+      frame.addRound(fakeRound);
+
+      expect(frame.bonusScore()).toEqual(0);
     });
   });
 });

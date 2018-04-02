@@ -21,7 +21,7 @@ describe('Game', function() {
       expect(game._frames).toEqual([frame])
     });
 
-    it('throws an error if more than ten frams are added to a game', function() {
+    it('throws an error if more than ten frames are added to a game', function() {
       for(var i = 0; i <= 10; i++) {
         game.addFrame(frame);
       }

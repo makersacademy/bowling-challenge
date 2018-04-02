@@ -24,3 +24,7 @@ Game.prototype.score = function() {
 Game.prototype.framesPlayed = function() {
   return this._frames.length;
 }
+
+Game.prototype.full = function () {
+  return true;
+};

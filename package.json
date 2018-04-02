@@ -28,6 +28,8 @@
   },
   "dependencies": {
     "each-cons": "^1.0.0",
-    "eslint": "^4.19.1"
+    "ejs": "^2.5.8",
+    "eslint": "^4.19.1",
+    "npm": "^5.8.0"
   }
 }

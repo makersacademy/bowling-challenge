@@ -10,6 +10,27 @@ function bowlingGame(rolls) {
   return scoreCalcu(finalScoreFrameList)
 }
 
+function getFrameRolls(rolls) {
+  var fullRolls = NormaliseScoresPair(rolls)
+  var scoreFrames = eachCons(fullRolls, 2)
+  var rollsList = filterNulls(scoreFrames)
+  return rollTypeCheck(rollsList)
+}
+
+function rollTypeCheck(rollsList) {
+  return rollsList.map(function(frameRolls){
+    if(frameRolls.length === 1){
+      if(frameRolls[0] === 10){
+        return {type: "strike", score: frameRolls}
+      }else{return{type: "incomplete", score: frameRolls}}
+    }else if(frameRolls.length === 2){
+      if(frameRolls[0] + frameRolls[1] === 10){
+        return {type: "spare", score: frameRolls}
+      } else{return {type: "normal", score: frameRolls}}
+    }
+  })
+}
+
 function NormaliseScoreFrame (accumulator, score) {
   var framesSoFar = accumulator[0]
   var isRoll1 = accumulator[1] //it's true or false
@@ -19,6 +40,10 @@ function NormaliseScoreFrame (accumulator, score) {
 
 function NormaliseScores (scoresList){
   return ((scoresList.reduce( NormaliseScoreFrame, [[], true] ))[0]).concat([null, null, null])
+}
+
+function NormaliseScoresPair (scoresList){
+  return ((scoresList.reduce( NormaliseScoreFrame, [[], true] ))[0]).concat([null])
 }
 
 var eachCons = function (a, n) {
@@ -46,7 +71,6 @@ function filterNulls(scoreFrames) {
 };
 
 function getCompletedFrame(scoreFrame){
-  console.log("bye")
   if(scoreFrame.length < 2){
     return null
   } else if (scoreFrame.length === 2){

@@ -1,11 +1,14 @@
 function Game(rolls = 1, frameNumber = 1, totalScore = 0, frames = []){
   pins = new Pins;
-  this.defaultPins = pins.default
-  this.rolls = rolls
-  this.frameNumber = frameNumber
-  this.totalScore = totalScore
+  this.defaultPins = pins.default;
+  this.rolls = rolls;
+  this.frameNumber = frameNumber;
+  this.totalScore = totalScore;
   this.frames = frames;
-}
+  for (i = 0; i < 10; i++) {
+    this.frames.push(new Frame());
+  };
+};
 
 Game.prototype.roll = function(n) {
   if (this.frameNumber > 10) {
@@ -24,18 +27,18 @@ Game.prototype.roll = function(n) {
       return secondButtons;
     }
   } else if (this.rolls === 2) {
-      if (this.frameNumber === 10) {
-        if (n === 10) {
-          this.rolls += 1
-        } else if (secondButtons.length - 1 === n) {
+    if (this.frameNumber === 10) {
+      if (n === 10) {
+        this.rolls += 1
+      } else if (secondButtons.length - 1 === n) {
         this.rolls += 1;
-        } else {
-        this.rolls -= 1;
-        }
       } else {
         this.rolls -= 1;
-        this.frameNumber += 1
       }
+    } else {
+      this.rolls -= 1;
+      this.frameNumber += 1
+    }
     return this.defaultPins;
   } else if (this.rolls === 3) {
     this.frameNumber += 1

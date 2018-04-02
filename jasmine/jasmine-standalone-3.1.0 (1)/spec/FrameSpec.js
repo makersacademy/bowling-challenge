@@ -4,11 +4,10 @@ describe('Frame', function() {
     frame = new Frame;
   })
   describe('frame', function() {
-    it('has a firstRoll', function() {
-      expect(frame.firstRoll)
+    it('has three rolls', function() {
+      expect(frame.firstRoll).toEqual(null);
+      expect(frame.secondRoll).toEqual(null);
+      expect(frame.thirdRoll).toEqual(null);
     });
-  })
-
+  });
 });
-
-// [[{firstRoll: 10}, {secondRoll: null}],

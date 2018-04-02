@@ -3,6 +3,7 @@ describe('Game', function() {
   beforeEach(function() {
     game = new Game;
     pins = new Pins;
+    frame = new Frame;
   });
 
   describe('game', function() {
@@ -21,19 +22,18 @@ describe('Game', function() {
     it('has a total', function() {
       expect(game.totalScore).toEqual(0)
     });
-
-    it('has an array', function() {
-      expect(game.frames).toEqual([])
-    });
-
-    it('has Game object inside', function() {
-      expect(game.frames[0]).toEqual(1)
-    });
   });
+  // it('has an array', function() {
+  //   expect(game.frames).toEqual([])
+  // });
+
+  // it('has Frame object inside', function() {
+  //   expect(game.frames[0]).toEqual(1)
+  // });
 
   describe('roll', function() {
     beforeEach(function() {
-    game.rolls = 1
+      game.rolls = 1
     });
 
     it('throws an error if game is already 10', function() {

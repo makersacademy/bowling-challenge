@@ -42,7 +42,6 @@ describe("Scorecard", function() {
   });
 
 
-
   describe("#calc_bonus", function() {
     beforeEach(function() {
 
@@ -51,22 +50,42 @@ describe("Scorecard", function() {
     it("adds a bonus of 0 for frames which score less than 10", function() {
       scorecard.calculate(1,2,2);
       scorecard.calculate(2,3,3);
-      scorecard.calc_bonus(1)
+      scorecard.calc_bonus(1);
       expect(scorecard._score[1]).toEqual([2,2,4,"normal",0]);
     });
 
     it("adds a bonus of the next roll for spares", function() {
       scorecard.calculate(1,5,5);
       scorecard.calculate(2,3,5);
-      scorecard.calc_bonus(1)
+      scorecard.calc_bonus(1);
       expect(scorecard._score[1]).toEqual([5,5,10,"spare",3]);
     });
 
     it("adds a bonus of the next two rolls for strikes", function() {
       scorecard.calculate(1,10,0);
       scorecard.calculate(2,3,5);
-      scorecard.calc_bonus(1)
+      scorecard.calc_bonus(1);
       expect(scorecard._score[1]).toEqual([10,0,10,"strike",8]);
     });
+  });
+
+  describe("#grandtotal", function() {
+    beforeEach(function() {
+      scorecard.calculate(1,2,4);
+      scorecard.calculate(2,5,5);
+      scorecard.calculate(3,10,0);
+      scorecard.calculate(4,3,5);
+      scorecard.calc_bonus(1);
+      scorecard.calc_bonus(2);
+      scorecard.calc_bonus(3);
+      scorecard.calc_bonus(4);
+
+    });
+
+    it("Calculates the total score (base and bonus)", function() {
+      expect(scorecard.grandtotal()).toEqual(52);
+    });
+
+
   });
 });

@@ -1,5 +1,6 @@
 var game
 function startGame(){
+  emptyFrames();
   var game = new Game (Frame);
   document.getElementById("msg").innerHTML = 'Game on!';
   document.getElementById("rollSelect").style.display = 'block';
@@ -43,6 +44,7 @@ function addFrame(game){
   var frameDisplay = document.getElementById("frameDisplay");
   var displayedFrames = frameDisplay.getElementsByTagName("li").length;
   var nFrame = game.currentFrame().n();
+  console.log(nFrame);
     if (displayedFrames != nFrame) {
     var frameID = 'frame' + nFrame;
     var node = document.createElement("LI");
@@ -50,5 +52,11 @@ function addFrame(game){
     node.id = frameID;
     node.appendChild(textNode)
     frameDisplay.appendChild(node);
+  }
+}
+function emptyFrames(){
+  var frameDisplay = document.getElementById("frameDisplay");
+  while( frameDisplay.firstChild ){
+    frameDisplay.removeChild( frameDisplay.firstChild );
   }
 }

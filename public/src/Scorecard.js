@@ -50,5 +50,10 @@ Scorecard.prototype.calc_bonus = function(frame) {
 };
 
 Scorecard.prototype.subtotal = function(hash_val_arr_idx) {
-
-}
+  subtotal = 0;
+  for(i = 1; i <= Object.keys(this._score).length; i++) {
+    subtotal += this._score[i][hash_val_arr_idx];
+  };
+  console.log(subtotal)
+  return subtotal;
+};

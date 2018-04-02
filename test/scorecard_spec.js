@@ -11,10 +11,13 @@ describe("Scorecard", function() {
 		expect(game.frame).to.be.a("object");
 	});
 
-	it("can reference frame within the function", function() {
+	it("can reference the current frame rolls within Scorecard function", function() {
 		game = new Scorecard();
 
 		game.frame.logRoll(5);
-		expect(game.frame).to.equal(10);
+		game.frame.logRoll(3);
+
+		expect(game.frame.rolls).to.be.a("array");
+		expect(game.frame.rolls).to.include(5, 3);
 	});
 });

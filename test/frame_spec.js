@@ -1,4 +1,5 @@
 var Frame = require("../lib/Frame.js");
+
 var assert = require("chai").assert;
 var expect = require("chai").expect;
 

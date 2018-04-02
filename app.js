@@ -1,24 +1,16 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const app = express();
-const path = require('path');
-
-
-const index = require('./index.js')
-
 app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/public'));
 
 
-app.use(express.static('views'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: false
-}))
+app.get('/', function(req, res){
+  res.redirect('/index');
+});
 
-
-app.use('/', index);
-
-
+app.get('/index', function(req,res){
+  res.render('index');
+});
 
 
 // catch 404 and forward to error handler

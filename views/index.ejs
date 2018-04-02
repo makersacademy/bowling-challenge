@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="public/style.css"
+    <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+    <script src="game.js"></script>
+    <script src="frame.js"></script>
+    <script src="score.js"></script>
+    <script src="interface.js"></script>
+    <!-- <script src="expect.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8">
     <title>Bowling Scorecard</title>
   </head>
@@ -10,12 +16,8 @@
       <div class="new">
     <INPUT TYPE="button" onClick="history.go(0)" VALUE="New Game">
       </div>
-    <!-- <form action="/" method="post">
-      <input type="text" name="name">
-      <input type="submit" value="Record Name">
-    </form> -->
     <div class="header">
-      <h1>Bowling Scorecard<h1>
+      <h1 id="welcome">Bowling Scorecard<h1>
     </div>
       <h2>What was your score for frame <span id="frame">1</span>?<h2>
         <select id="current-frame" required>
@@ -66,10 +68,6 @@
           </tbody>
         </table>
 
-      <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
-      <script src="src/game.js"></script>
-      <script src="src/frame.js"></script>
-      <script src="src/score.js"></script>
-      <script src="interface.js"></script>
+
   </body>
 </html>

@@ -1,3 +1,8 @@
+**MODELLING**
+
+![bowling_model](bowling-challenge.png)
+
+**INSTRUCTIONS**
 
 Bowling Challenge
 =================

@@ -11,20 +11,7 @@ $(document).ready(function() {
     button.appendTo("form");
     button.on('click', function(){
       bowlingRolls.push(pin)
-
-      var scores = bowlingGame(bowlingRolls)
-      $.map(scores, function(element, index){
-        $('#frame'+ (index + 1) + ' .score').text(element);
-      })
-      var frameList = getFrameRolls(bowlingRolls)
-      $.map(frameList, function(element, index){
-        var display = []
-        if(element.type === "strike"){ display = ["", "X"]}
-        else if(element.type === "spare"){ display = [element.score[0], "/"]}
-        else{ display = [element.score[0], element.score[1]]}
-        $('#frame'+ (index + 1) + ' .r1').text(display[0]);
-        $('#frame'+ (index + 1) + ' .r2').text(display[1]);
-      })
+      upDateUi(bowlingRolls)
 
     })
   })
@@ -39,4 +26,40 @@ $(document).ready(function() {
 
   })
   templete.remove();
+  upDateUi(bowlingRolls)
 })
+
+function upDateUi(bowlingRolls){
+  var scores = bowlingGame(bowlingRolls)
+  var frameList = getFrameRolls(bowlingRolls)
+  var frameListWithType = rollTypeCheck(frameList)
+  var gameFinished = isGameFinished(scores)
+  var pinsToShow = getMaxNumRemainPins(frameList)
+  console.log("pins to show:", pinsToShow)
+
+  $.map(scores, function(element, index){
+    $('#frame'+ (index + 1) + ' .score').text(element);
+  })
+
+  $.map(frameListWithType, function(element, index){
+    var display = []
+    if(element.type === "strike"){ display = ["", "X"]}
+    else if(element.type === "spare"){ display = [element.score[0], "/"]}
+    else{ display = [element.score[0], element.score[1]]}
+    $('#frame'+ (index + 1) + ' .r1').text(display[0]);
+    $('#frame'+ (index + 1) + ' .r2').text(display[1]);
+  })
+
+  if(gameFinished){
+    $('.gameFinished').show()
+  }else{
+    $('.gameFinished').hide()
+  }
+
+  var possibPins = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  $.map(possibPins, function(pin){
+    if(pin <= pinsToShow && !gameFinished){
+      $('#btn' + pin).show()
+    }else { $('#btn' + pin).hide()}
+  })
+}

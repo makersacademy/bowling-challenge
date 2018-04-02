@@ -1,20 +1,33 @@
 function bowlingGame(rolls) {
-  console.log("rolls:", rolls)
   var fullRolls = NormaliseScores(rolls)
-  console.log("fullRolls:", fullRolls)
   var scoreFrames = getScoreFrames(fullRolls)
-  console.log("scoreFrames:", scoreFrames)
   var scoreFramesWithoutNulls = filterNulls(scoreFrames)
-  console.log("scoreFramesWithoutNulls:", scoreFramesWithoutNulls)
   var finalScoreFrameList = allFrameCalcu(scoreFramesWithoutNulls)
   return scoreCalcu(finalScoreFrameList)
 }
 
-function getFrameRolls(rolls) {
+function getFrameRolls(rolls){
   var fullRolls = NormaliseScoresPair(rolls)
   var scoreFrames = eachCons(fullRolls, 2)
-  var rollsList = filterNulls(scoreFrames)
-  return rollTypeCheck(rollsList)
+  return rollsList = filterNulls(scoreFrames)
+}
+
+// get maximum number of remaining pins in current frame
+function getMaxNumRemainPins(rollsList){
+  var oneFrame = getFirstUnfinishedFrame(rollsList)
+  return getNumOfRemainpins(oneFrame)
+}
+
+//unit functions
+function getFirstUnfinishedFrame(rollsList){
+  var unfinishedFrame = rollsList.find(function(eachList){
+    return isRollFinished(eachList) === false
+  })
+  if(unfinishedFrame === undefined){
+    return []
+  }else{
+    return unfinishedFrame
+  }
 }
 
 function rollTypeCheck(rollsList) {
@@ -22,13 +35,36 @@ function rollTypeCheck(rollsList) {
     if(frameRolls.length === 1){
       if(frameRolls[0] === 10){
         return {type: "strike", score: frameRolls}
-      }else{return{type: "incomplete", score: frameRolls}}
+      }else{return{type: "normal", score: frameRolls}}
     }else if(frameRolls.length === 2){
       if(frameRolls[0] + frameRolls[1] === 10){
         return {type: "spare", score: frameRolls}
       } else{return {type: "normal", score: frameRolls}}
     }
   })
+}
+
+function isGameFinished(scoreFrameList){
+  if(scoreFrameList.length === 10){
+    return true
+  }else{
+    return false
+  }
+}
+
+function isRollFinished(oneFrame){
+  return (oneFrame.length === 1 && oneFrame[0] === 10) || oneFrame.length === 2
+}
+
+//get the number of the remaining pins of the current frame
+function getNumOfRemainpins(oneFrame){
+  if(isRollFinished(oneFrame)){
+    return 0
+  }else if(oneFrame.length === 0){
+    return 10
+  }else {
+    return 10 - oneFrame[0]
+  }
 }
 
 function NormaliseScoreFrame (accumulator, score) {

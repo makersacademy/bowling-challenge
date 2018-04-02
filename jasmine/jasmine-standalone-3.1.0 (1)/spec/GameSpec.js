@@ -8,7 +8,7 @@ describe('Game', function() {
 
   describe('game', function() {
     it('has a counter for games', function() {
-      expect(game.frameNumber).toEqual(1)
+      expect(game.frameNumber).toEqual(0)
     });
 
     it('keeps track of rolls', function() {
@@ -18,18 +18,7 @@ describe('Game', function() {
     it('has a default number of pins', function() {
       expect(game.defaultPins).toEqual(pins.default)
     });
-
-    it('has a total', function() {
-      expect(game.totalScore).toEqual(0)
-    });
   });
-  // it('has an array', function() {
-  //   expect(game.frames).toEqual([])
-  // });
-
-  // it('has Frame object inside', function() {
-  //   expect(game.frames[0]).toEqual(1)
-  // });
 
   describe('roll', function() {
     beforeEach(function() {
@@ -37,7 +26,7 @@ describe('Game', function() {
     });
 
     it('throws an error if game is already 10', function() {
-      game.frameNumber = 11
+      game.frameNumber = 10
       expect(function(){game.roll(9);}).toThrowError('You already did 10 frames!');
     });
 
@@ -49,8 +38,17 @@ describe('Game', function() {
     it('can have a third rolls on the 10th game', function() {
 
       game.rolls += 1
-      game.frameNumber === 10
+      game.frameNumber === 9
       expect(game.roll(3)).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    });
+  });
+
+  describe('strike', function() {
+    it('gives a bonus', function() {
+      game.frames[0]['firstRoll'] = 10
+      game.frames[1]['firstRoll'] = 6
+      game.frames[1]['secondRoll'] = 2
+      expect(game.totalScore()).toEqual(18)
     });
   });
 });

@@ -1,5 +1,4 @@
 const Browser = require('zombie');
-const expect = require('chai').expect;
 
 Browser.localhost('localhost', 3000)
 

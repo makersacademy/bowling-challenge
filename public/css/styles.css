@@ -1,17 +1,61 @@
+body {
+    max-width: 800px;
+    margin: auto;
+    background: black;
+    padding: 10px;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 18px;
+    color: #fad703;
+}
 
+img {
+  max-width: 400px !important;
+}
+
+
+div {
+  margin: 20px 0px 20px 0px;
+}
+
+div#image {
+  display: inline-block;
+  margin: auto;
+}
+
+div#roll_div {
+
+}
+
+input {
+  margin: 10px;
+  height: 25px;
+  width: 30px;
+  font-size: 18px;
+  text-align: center;
+}
+
+input#submit_rolls {
+  height: 40px !important;
+  width: 100px !important;
+  font-size: 40px !important;
+}
 
 h1#title {
   font-size: 100px;
   font-weight: bold;
+  text-align: center;
+  color: red;
 }
 
+
 table, tr, td {
-  border: 1px solid blue;
+  border: 3px solid red;
   border-radius: 5px;
   padding: 5px;
+
 }
 
 tr.gt, td.gt {
-  border: 2px solid red;
+  border: 3px solid red;
   font-weight: bold;
 }

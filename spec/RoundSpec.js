@@ -1,5 +1,4 @@
 describe('Round', function() {
-  let Round = require('./../lib/Round');
   let round;
 
   beforeEach(function() {

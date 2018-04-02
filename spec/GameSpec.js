@@ -1,5 +1,4 @@
 describe('Game', function() {
-  let Game = require('./../lib/Game');
   let game,fakeFrame0, fakeFrame1, fakeFullFrameArray;
 
   beforeEach(function() {

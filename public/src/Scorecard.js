@@ -26,7 +26,8 @@ Scorecard.prototype.calc_bonus = function(frame) {
     case "strike":
       if (this._score[frame + 1][3] === "strike") {
         this._score[frame].push(this._score[frame + 1][0] + this._score[frame + 2][0]);
-      } else {
+      }
+      else {
         this._score[frame].push(this._score[frame + 1][0] + this._score[frame + 1][1]);
       };
       break;

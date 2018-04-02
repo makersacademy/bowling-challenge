@@ -7,7 +7,7 @@
 // const roll1 = 0;
 // const roll2 = 1;
 //
-// var Frame = function() {
+// var Frame = function(frame) {
 //
 // };
 //
@@ -20,8 +20,12 @@
 //     return frame[roll1] + frame[roll2] === SPARE ? true : false;
 //   },
 //
-//   hasBonus(frame) {
-//     return frame.length === MAX_ROLLS;
+//   hasAllBonuses(frame) {
+//     if (this.isNeither(frame)) {
+//       return true;
+//     } else {
+//       return frame.length === MAX_ROLLS;
+//     }
 //   },
 //
 //   remainingPins(frame) {

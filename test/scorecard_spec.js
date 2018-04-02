@@ -75,5 +75,16 @@ describe("Scorecard", function() {
 			console.log(game.frame.rollCount);
 			expect(game.isFrameOver()).to.be.false;
 		});
+
+		it("returns true after 3 strikes", function() {
+			game = new Scorecard();
+			game.logRoll(10);
+			game.logRoll(10);
+			game.logRoll(10);
+			// game.logRoll(4);
+			// game.addToScorecard();
+			console.log(game.frame.rollCount);
+			expect(game.isFrameOver()).to.be.true;
+		});
 	});
 });

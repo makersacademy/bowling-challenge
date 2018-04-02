@@ -49,11 +49,17 @@ Scorecard.prototype.calc_bonus = function(frame) {
   };
 };
 
-Scorecard.prototype.subtotal = function(hash_val_arr_idx) {
-  subtotal = 0;
-  for(i = 1; i <= Object.keys(this._score).length; i++) {
-    subtotal += this._score[i][hash_val_arr_idx];
-  };
-  console.log(subtotal)
+Scorecard.prototype.subtotal = function(frame) {
+  bonus = this._score[frame][4] || 0;
+  subtotal = this._score[frame][2] + bonus;
   return subtotal;
+};
+
+Scorecard.prototype.grandtotal = function() {
+  grandtotal = 0;
+  num_frames = Object.keys(scorecard._score).length;
+  for (i = 1; i < num_frames; i++) {
+    grandtotal += (scorecard._score[i][2] + scorecard._score[i][4]);
+  };
+  return grandtotal;
 };

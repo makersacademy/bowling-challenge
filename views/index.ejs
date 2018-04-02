@@ -30,8 +30,8 @@
 
         <tr id="row_header">
           <% ["Score Type","Frame 1","Frame 2","Frame 3","Frame 4","Frame 5",
-            "Frame 6","Frame 7","Frame 8","Frame 9","Frame 10","Frame 11",
-            "Sub-Totals"].map(function(el, idx) { %>
+            "Frame 6","Frame 7","Frame 8","Frame 9","Frame 10","Frame 11"]
+            .map(function(el, idx) { %>
           <th id="row_header_<%= idx %>">
             <%= el %>
           </th>
@@ -39,7 +39,7 @@
         </tr>
 
         <tr id="row_roll1">
-          <% ["Base - Roll 1","-","-","-","-","-","-","-","-","-","-","-","-"].map(function(el, idx) { %>
+          <% ["Base - Roll 1","-","-","-","-","-","-","-","-","-","-","-"].map(function(el, idx) { %>
           <td id="row_roll1_<%= idx %>">
             <%= el %>
           </td>
@@ -47,7 +47,7 @@
         </tr>
 
         <tr id="row_roll2">
-          <% ["Base - Roll 2","-","-","-","-","-","-","-","-","-","-","-","-"].map(function(el, idx) { %>
+          <% ["Base - Roll 2","-","-","-","-","-","-","-","-","-","-","-"].map(function(el, idx) { %>
           <td id="row_roll2_<%= idx %>">
             <%= el %>
           </td>
@@ -55,12 +55,30 @@
         </tr>
 
         <tr  id="row_bonus">
-          <% ["Bonus","-","-","-","-","-","-","-","-","-","-","N/A","-"].map(function(el, idx) { %>
+          <% ["Bonus","-","-","-","-","-","-","-","-","-","-"].map(function(el, idx) { %>
           <td id="row_bonus_<%= idx %>">
             <%= el %>
           </td>
           <% }); %>
         </tr>
+
+        <tr  id="row_subtotal">
+          <% ["Subtotal","-","-","-","-","-","-","-","-","-","-"].map(function(el, idx) { %>
+          <td id="row_subtotal_<%= idx %>">
+            <%= el %>
+          </td>
+          <% }); %>
+        </tr>
+
+        <tr  id="row_total" class="gt">
+          <td class="gt">
+            Grand Total
+          </td>
+          <td id="row_grandtotal" class="gt">
+            -
+          </td>
+        </tr>
+
       </table>
     </div>
 

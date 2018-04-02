@@ -37,6 +37,13 @@ describe ("As a user, So that I can keep track of my bowling score,", function()
     });
   });
 
+  describe("I want to see subtotals per frame.", function() {
+    it("Should calculate the subtotals even when bonuses not yet calculated", function() {
+      browser.assert.text('td[id=row_subtotal_1]', '9');
+      browser.assert.text('td[id=row_subtotal_2]', '10');
+    });
+  });
+
   describe("I want to see my bonus scores for a spare.", function() {
     before(function() {
       browser
@@ -52,11 +59,18 @@ describe ("As a user, So that I can keep track of my bowling score,", function()
     it('Should not add a bonus to the frame which scored < 10', function(){
       browser.assert.text('td[id=row_bonus_1]', '0');
     });
+
     it('Should add the one-roll bonus to the frame which scored a spare', function(){
       browser.assert.text('td[id=row_bonus_2]', '4');
     });
   });
 
+  describe("I want to see updated subtotals with bonuses added.", function() {
+    it("Should calculate the subtotals even when bonuses not yet calculated", function() {
+      browser.assert.text('td[id=row_subtotal_1]', '9');
+      browser.assert.text('td[id=row_subtotal_2]', '14');
+    });
+  });
 
   describe("I want to see my bonus scores for a strike.", function() {
     before(function() {
@@ -101,6 +115,7 @@ describe ("As a user, So that I can keep track of my bowling score,", function()
 
   });
 
+
 });
 
 describe ("As a user, So that I can play a whole game,", function(){
@@ -124,6 +139,10 @@ describe ("As a user, So that I can play a whole game,", function(){
       return browser.pressButton('submit_rolls');
     });
 
+    it('Should sum the grandtotal', function(){
+      browser.assert.text('td[id=row_grandtotal]', '90');
+    });
+
     it('Should end the game', function(){
       browser.assert.text('h2[id=message]', 'Game Finished!');
     });
@@ -144,12 +163,16 @@ describe ("As a user, So that I can play a whole game,", function(){
       }
       browser
         .fill('roll1', '4')
-        .fill('roll2', '3');
+        .fill('roll2', '0');
       return browser.pressButton('submit_rolls');
     });
 
     it('Should add the single 11th frame roll to the 10th frame bonus', function() {
       browser.assert.text('td[id=row_bonus_10]', '4');
+    });
+
+    it('Should sum the grandtotal', function(){
+      browser.assert.text('td[id=row_grandtotal]', '149');
     });
 
     it('Should end the game', function(){
@@ -180,6 +203,10 @@ describe ("As a user, So that I can play a whole game,", function(){
       browser.assert.text('td[id=row_bonus_10]', '9');
     });
 
+    it('Should sum the grandtotal', function(){
+      browser.assert.text('td[id=row_grandtotal]', '289');
+    });
+
     it('Should end the game', function(){
       browser.assert.text('h2[id=message]', 'Game Finished!');
     });
@@ -206,6 +233,11 @@ describe ("As a user, So that I can play a whole game,", function(){
 
     it('Should add both the 11th frame rolls to the 10th frame bonus', function() {
       browser.assert.text('td[id=row_bonus_10]', '20');
+    });
+
+
+    it('Should sum the grandtotal', function(){
+      browser.assert.text('td[id=row_grandtotal]', '300');
     });
 
     it('Should end the game', function(){

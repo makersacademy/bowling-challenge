@@ -78,19 +78,18 @@ describe("Scorecard", function() {
       scorecard.calc_bonus(1);
       scorecard.calc_bonus(2);
       scorecard.calc_bonus(3);
-      scorecard.calc_bonus(4);
+
     });
 
-    it("Sums the roll1 scores", function() {
-      expect(scorecard.subtotal(0)).toEqual(20);
+    it("Sums the scores when bonus is calculated", function() {
+      expect(scorecard.subtotal(1)).toEqual(6);
+      expect(scorecard.subtotal(2)).toEqual(20);
+      expect(scorecard.subtotal(3)).toEqual(18);
     });
 
-    it("Sums the roll2 scores", function() {
-      expect(scorecard.subtotal(1)).toEqual(14);
+    it("Sums the scores when bonus is not yet calculated", function() {
+      expect(scorecard.subtotal(4)).toEqual(8);
     });
 
-    it("Sums the bonus scores", function() {
-      expect(scorecard.subtotal(4)).toEqual(18);
-    });
   });
 });

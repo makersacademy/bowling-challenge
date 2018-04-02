@@ -91,6 +91,20 @@ describe('Game', function(){
         expect(function() {game.roll(11);}).toThrow(new Error('You cannot knock down more than 10 pins'));
       });
     });
+
+    describe('Game is over when', function(){
+      it('after 20 rolls, extra roll is not achieved', function(){
+        rollMany(20, 4)
+        expect(game.roll(4)).toEqual('The game is over.')
+      });
+
+      it('after 21 rolls, bonus is achieved', function(){
+        rollMany(19, 4);
+        game.roll(6);
+        expect(game.roll(4)).not.toEqual('The game is over.');
+        expect(game.roll(5)).toEqual('The game is over.');
+      });
+    });
   });
 
 
@@ -100,6 +114,7 @@ describe('Game', function(){
       game.roll(pins);
     }
   };
+
 
   var rollSpare = function() {
     game.roll(5);

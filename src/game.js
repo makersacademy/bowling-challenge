@@ -7,9 +7,13 @@ function Game() {
 };
 
 Game.prototype.roll = function(pins) {
-  this.rolls[this.currentRoll++] = pins;
+  if (this.isOver()){
+    return 'The game is over.';
+  } else {
+    this.rolls[this.currentRoll++] = pins
+  };
+  // this.rolls[this.currentRoll++] = pins;
   if (pins > 10) throw new Error('You cannot knock down more than 10 pins');
-
 };
 
 // Game.prototype.getCount = function() {
@@ -70,6 +74,20 @@ Game.prototype.score = function() {
 
 };
 
+Game.prototype.isOver = function(){
+  if (this.rolls.length === 21) {
+    return true
+  } else if (this.rolls.length === 20) {
+    if (this.rolls.slice(-1)[0] === 10 || this.rolls.slice(-1)[0] + this.rolls.slice(-2)[0] === 10) {
+      return false
+    } else {
+      return true
+    }
+  } else {
+    return false
+  }
+};
+
 var rollMany = function(rolls, pins) {
   for (var i = 0; i < rolls; i++){
     game.roll(pins);
@@ -78,7 +96,11 @@ var rollMany = function(rolls, pins) {
 
 let game = new Game();
 console.log(game)
-console.log(rollMany(20, 5))
+console.log(rollMany(19, 4))
+console.log(game.roll(6))
 console.log(game.roll(10))
 console.log(game)
 console.log(game.score())
+console.log(game.isOver())
+console.log(game.rolls.length)
+console.log(game.roll(10))

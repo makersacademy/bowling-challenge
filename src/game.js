@@ -3,17 +3,20 @@
 function Game() {
   this.rolls = [];
   this.currentRoll = 0;
-
 };
 
 Game.prototype.roll = function(pins) {
+
   if (this.isOver()){
     return 'The game is over.';
   } else {
     this.rolls[this.currentRoll++] = pins
+
   };
   // this.rolls[this.currentRoll++] = pins;
   if (pins > 10) throw new Error('You cannot knock down more than 10 pins');
+
+
 };
 
 // Game.prototype.getCount = function() {
@@ -30,27 +33,37 @@ Game.prototype.score = function() {
   var result = 0;
   var frameIdx = 0;
   var game = this;
+  var boxCount = 0;
 
 
   for (var frame = 0; frame < 10; frame++) {
+
     if (isStrike()) {
         result += 10 + getStrikeScore();
         frameIdx++;
+        boxCount += 2
     } else if (isSpare()) {
         result += 10 + getSpareScore();
         frameIdx += 2;
+        boxCount += 2
     }
     else {
+      if (isCheating()) {
+        throw new Error("Trying to cheat huh? There aren't that many pins left.");
+        boxCount += 2
+      } else {
         result += getNormalScore();
         frameIdx += 2;
+        boxCount += 2
+      }
     }
-    console.log(result)
   }
-
 
   return result;
 
-
+  function isCheating(){
+    return game.rolls[boxCount] + game.rolls[boxCount + 1] > 10
+  }
 
   function isStrike(){
     return game.rolls[frameIdx] === 10;
@@ -96,11 +109,9 @@ var rollMany = function(rolls, pins) {
 
 let game = new Game();
 console.log(game)
-console.log(rollMany(19, 4))
-console.log(game.roll(6))
+console.log(rollMany(20, 4))
 console.log(game.roll(10))
 console.log(game)
 console.log(game.score())
 console.log(game.isOver())
-console.log(game.rolls.length)
-console.log(game.roll(10))
+console.log(game.currentRoll)

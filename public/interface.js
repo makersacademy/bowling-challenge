@@ -1,6 +1,6 @@
 $(document).ready(function(){
   var game = new Game();
-  updateResult();
+  // updateResult();
 
   $('#zero').click(function(){
     game.roll(0);
@@ -57,6 +57,7 @@ $(document).ready(function(){
 
   $('#nine').click(function(){
     game.roll(9);
+
     // game.count(9);
     updateResult();
   });
@@ -69,5 +70,6 @@ $(document).ready(function(){
 
   function updateResult(){
     $('#score').text(game.score());
+    // $("h1").text("Hello world!");
   };
 });

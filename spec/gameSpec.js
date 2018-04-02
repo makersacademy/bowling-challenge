@@ -90,6 +90,12 @@ describe('Game', function(){
       it('player tries to knock down more than 10 pins', function (){
         expect(function() {game.roll(11);}).toThrow(new Error('You cannot knock down more than 10 pins'));
       });
+
+      it('player tries to take score over 10', function(){
+        game.roll(6);
+        game.roll(5);
+        expect(function() {game.score()}).toThrow(new Error ("Trying to cheat huh? There aren't that many pins left."));
+      });
     });
 
     describe('Game is over when', function(){
@@ -106,8 +112,6 @@ describe('Game', function(){
       });
     });
   });
-
-
 
   var rollMany = function(rolls, pins) {
     for (var i = 0; i < rolls; i++){

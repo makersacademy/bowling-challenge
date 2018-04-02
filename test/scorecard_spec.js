@@ -22,6 +22,11 @@ describe("Scorecard", function() {
 	});
 
 	it("counts score after 2 rolls when not a spare or strike", function() {
-		expect(Scorecard.score).to.include(8);
+		game = new Scorecard();
+
+		game.frame.logRoll(5);
+		game.frame.logRoll(3);
+		game.addToScorecard();
+		expect(game.score).to.include(8);
 	});
 });

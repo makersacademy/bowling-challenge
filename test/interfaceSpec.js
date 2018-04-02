@@ -58,4 +58,36 @@ describe('Bowling Challenge app interface', function(){
       browser.assert.text('#frame2', "Frame 2: 3 (3)");
     });
   });
+
+  describe('multiple frame display with strike bonus rolls', function(){
+    before(function(done){
+      browser.pressButton('Start new game');
+      browser.select('#rollSelect', '10');
+      browser.pressButton('Add roll');
+      browser.select('#rollSelect', '4');
+      browser.pressButton('Add roll');
+      browser.select('#rollSelect', '4');
+      browser.pressButton('Add roll', done);
+    });
+    it ('scores a strike and adds bonus rolls', function(){
+      browser.assert.text('#frame1', "Frame 1: 18 (10) [4] [4]");
+    });
+  });
+
+  describe('multiple frame display with spare bonus rolls', function(){
+    before(function(done){
+      browser.pressButton('Start new game');
+      browser.select('#rollSelect', '5');
+      browser.pressButton('Add roll');
+      browser.select('#rollSelect', '5');
+      browser.pressButton('Add roll');
+      browser.select('#rollSelect', '4');
+      browser.pressButton('Add roll');
+      browser.select('#rollSelect', '4');
+      browser.pressButton('Add roll', done);
+    });
+    it ('scores a strike and adds bonus rolls', function(){
+      browser.assert.text('#frame1', "Frame 1: 14 (5) (5) [4]");
+    });
+  });
 });

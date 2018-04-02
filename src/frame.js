@@ -12,3 +12,7 @@ Frame.prototype.getID = function(){
 Frame.prototype.setFirstRoll = function(pins){
   this.firstRoll = pins;
 };
+
+Frame.prototype.getFirstRoll = function(){
+  return this.firstRoll;
+};

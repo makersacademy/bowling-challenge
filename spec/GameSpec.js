@@ -9,36 +9,93 @@ describe('Game', function() {
   });
 
   describe('when a game starts:', function() {
-    it('contains an empty scorecard', function() {
-     expect(game._scorecard).toEqual([]);
-     });
-  });
 
-  describe('while playing the game:', function() {
-    it('records my score', function() {
-      game.roll(1)
-      game.roll(3)
-      expect(game._scorecard).toEqual([1,3]);
+    it('the scorecard is empty', function() {
+      expect(game._scorecard).toEqual([]);
     });
 
-    it('displays my tot score', function() {
-      game.roll(1)
+    it('the frame is empty', function() {
+      expect(game._frame).toEqual([]);
+    });
+
+    it('the partial scores are empty', function() {
+      expect(game._partialScores).toEqual([]);
+    });
+
+  });
+
+  describe('when rolling:', function() {
+
+    it('the roll score is added to the frame', function() {
       game.roll(3)
-      expect(game.tot()).toEqual(4);
+      expect(game._frame).toEqual([3]);
     });
 
     it('raises an error if someone tries to knock down more than 10 pins', function() {
       expect(function() {game.roll(11);}).toThrow(new Error('There are only 10 pins'));
     });
+
+    it('adds a maximum of 2 rolls to a frame', function() {
+      game.roll(1)
+      game.roll(2)
+      game.roll(3)
+      expect(game._frame).toEqual([1,2]);
+    });
+
   });
 
-  describe('when the game finishes', function() {
-    it('has a total of 10 frames', function() {
-      for (var i=0; i<22; i++) {
-        game.roll(5)
-      }
-      expect(game._scorecard.length).toEqual(20);
+  describe('within a frame', function() {
+
+    it('keeps track of the score', function() {
+      game.roll(1)
+      game.roll(2)
+      expect(game.frameScore()).toEqual(3);
     });
+
+  });
+
+  describe('within a game', function() {
+
+    it('adds a full frame to the scorecard', function() {
+      game.roll(1)
+      game.roll(2)
+      game.turn()
+      game.roll(3)
+      game.roll(4)
+      game.turn()
+      expect(game._scorecard).toEqual([ [1, 2], [3, 4] ] );
+    });
+
+    it('resets a frame to empty once the turn is finished', function() {
+      game.roll(1)
+      game.roll(2)
+      game.turn()
+      expect(game._frame).toEqual([]);
+    });
+
+    it('adds a maximum of 10 frames to a game', function() {
+      for (var i=0; i<20; i++) {
+        game.roll(1)
+        game.roll(2)
+        game.turn()
+      }
+      expect(game._scorecard.length).toEqual(10);
+    });
+
+  });
+
+  describe('within a game', function() {
+
+    it('keeps track of the score', function() {
+      for (var i=0; i<20; i++) {
+        game.roll(1)
+        game.roll(2)
+        game.turn()
+        game.frameScore()
+      }
+      expect(game.totalScore()).toEqual(30);
+    });
+
   });
 
 });

@@ -1,3 +1,8 @@
+User-Stories 1-3 have to do with the properties initialised with the Game object.
+User-Stories 4-6 have to do with .roll function.
+User-Stories 7 has to do with .frameTotal function.
+User-Stories 8-10 have to do with .turn function.
+
 
 Bowling Challenge
 =================
@@ -5,31 +10,39 @@ Bowling Challenge
 ```
 As a player,
 So that I can keep track of my score,
-I want to have a score card.
+I want to have an empty score card when I start.
 
 As a player,
-So that I can start the game,
-I want my score to be empty when I start.
+So that I can play through turns,
+I want empty frames in my scorecard when I start.
 
 As a player,
-So that I can keep playing the game,
-I want to see my total score while playing.
+So that I can see my score,
+I want to have partial scores for every frame that are empty when I start.
 
 As a player,
-So that I can stick to the laws of the physics,
-I want to not to be able to take down more pins than the standing 10.
+So that I can stick to the rules of the game,
+I want my rolls to be added to a frame.
 
 As a player,
-So that I can finish the game,
-I want the game to contain 20 rolls.
+So that I can stick to the rules of the game,
+I want to be able to take down a maximum of 10 pins per roll.
 
 As a player,
-So that I can finish the game,
-I want the game to contain 10 frames.
+So that I can be aware of my score within a frame,
+I want to be able to see the partial score that comprehends a whole frame.
 
 As a player,
-So that I can finish the frame,
-I want the frame to contain 2 rolls. 
+So that I can stick to the rules of the game,
+I want my frames to be stored in my scorecard.
+
+As a player,
+So that I can stick to the rules of the game,
+I want a new empty frame once I finish the previous one.
+
+As a player,
+So that I can stick to the rules of the game,
+I want to be able to play a maximum of 10 frames per game.
 ```
 
 

@@ -97,5 +97,14 @@ describe("Scorecard", function() {
 			console.log(game.score);
 			expect(game.finalScore()).to.eql(0);
 		});
+
+		it("can calculate a perfect game", function() {
+			game = new Scorecard();
+			for (var i = 0; i < 13; i++) {
+				game.logRoll(10);
+			}
+			console.log(game.score);
+			expect(game.finalScore()).to.eql(300);
+		});
 	});
 });

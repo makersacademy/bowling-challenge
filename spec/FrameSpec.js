@@ -141,7 +141,7 @@ describe('Frame', function() {
       frame.addRound(fakeRound);
       frame.addRound(fakeRound);
 
-      expect(frame.bonusScore(fakeRound)).toEqual(5);
+      expect(frame.bonusScore(fakeRound, fakeRound)).toEqual(5);
     });
 
     it('returns 0 if there is no bonus score', function() {
@@ -149,7 +149,7 @@ describe('Frame', function() {
       frame.addRound(fakeRound);
       frame.addRound(fakeRound);
 
-      expect(frame.bonusScore()).toEqual(0);
+      expect(frame.bonusScore(fakeRound, fakeRound)).toEqual(0);
     });
   });
 });

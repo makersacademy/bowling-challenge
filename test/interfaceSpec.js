@@ -33,7 +33,7 @@ describe('Bowling Challenge app interface', function(){
       browser.assert.text('#score', 'Total Score: 0')
     })
     it('totals the score', function(){
-      browser.select('#addRoll', '5')
+      browser.select('#rollSelect', '5')
       browser.pressButton('Add roll', done)
       browser.assert.text('#score', 'Total Score: 5')
     })

@@ -18,7 +18,7 @@ describe('Bowling Challenge app interface', function(){
 
   describe('starting a game', function(){
     before(function(done){
-      browser.pressButton('Start new game', done)
+      browser.pressButton('Start new game', done);
     });
     it('lets you start a new game', function(){
       browser.assert.text('#msg', 'Game on!');
@@ -27,18 +27,25 @@ describe('Bowling Challenge app interface', function(){
 
   describe('playing a game', function(){
     before(function(done){
-      browser.pressButton('Start new game', done)
+      browser.pressButton('Start new game', done);
     });
     it ('shows the score', function(){
-      browser.assert.text('#score', 'Total Score: 0')
+      browser.assert.text('#score', 'Total Score: 0');
     });
     it('totals the score', function(){
-      browser.select('#rollSelect', '5')
-      browser.pressButton('Add roll')
-      browser.assert.text('#score', 'Total Score: 5')
+      browser.select('#rollSelect', '5');
+      browser.pressButton('Add roll');
+      browser.assert.text('#score', 'Total Score: 5');
     });
     it('displays a frame', function(){
-      browser.assert.element('#frame1')
+      browser.assert.element('#frame1');
+    });
+    it('displays the score for an individual frame', function(){
+      browser.select('#rollSelect', '4');
+      browser.pressButton('Add roll');
+      browser.select('#rollSelect', '4');
+      browser.pressButton('Add roll');
+      browswer.assert.text('#frame1', "Frame 1 (8): 4 4");
     });
   });
 

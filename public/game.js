@@ -29,3 +29,5 @@ Game.prototype.isFinished = function(){
   return (this.isFrame10() && this._frames[9].isFullyFinished());
 };
 Game.prototype.isFrame10 = function(){ return this._frames.length === 10 };
+
+module.exports = Game;

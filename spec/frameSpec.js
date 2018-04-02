@@ -19,4 +19,9 @@ it('set firstRoll', function(){
   frame.setFirstRoll(6);
   expect(frame.getFirstRoll()).toEqual(6);
 });
+
+it('Throw error if firstRoll set to more than 10 pins', function(){
+  frame.setFirstRoll(11);
+  expect(function(){frame.checkPinsExceeded(11)}).toThrowError('A roll cannot exceed maximum of 10 pins');
+});
 });

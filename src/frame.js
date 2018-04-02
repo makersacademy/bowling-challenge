@@ -16,3 +16,7 @@ Frame.prototype.setFirstRoll = function(pins){
 Frame.prototype.getFirstRoll = function(){
   return this.firstRoll;
 };
+
+Frame.prototype.checkPinsExceeded = function(pins){
+  if(this.firstRoll + pins > 10) {throw Error('A roll cannot exceed maximum of 10 pins')};
+};

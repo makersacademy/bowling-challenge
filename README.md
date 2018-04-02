@@ -28,6 +28,6 @@ I really wanted to separate the Frame functions into another constructor file, I
 # Wish List
 
 When I have more time I hope to:
-* Do more research and use a separate module for Frame.
+* Do more research and use a separate constructor for Frame.
 * In terms of the functionality of the UI, I'd hoped to display different background images or gifs for strikes, spares, gutter-balls and perfect games.
 * Use Selenium for browser testing.

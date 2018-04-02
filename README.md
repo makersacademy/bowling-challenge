@@ -1,3 +1,14 @@
+EASTER UPDATE
+=================
+
+Challenge is still incomplete. However, I have added a couple of tests for _game over_ when ```after 20 rolls, extra roll is not achieved``` and when ```after 21 rolls.extra roll is achieved```. Although the app now raises an error when player tries to knock down more than 10 pins, the incorrect number is **still added** to  ```this.rolls``` array. I also wrote a test for when player tries to take the score over 10 (e.g. roll 5 and then roll 6); the test passes, however, as per other test above, the wrong number of pin is **still added** to the ```this.rolls``` array.
+
+I am yet to find a solution to these two issues. I have a feeling that the error for taking the score over 10 should be part of ```Game.prototype.roll``` instead of being part of ```Game.prototype.score```.
+
+With regards to the interface, I am still having issues with _NaN_ values. By running the debugger, I noticed that the functions defined in ```Game.prototype.score``` (```isCheating()```, ```isStrike()```, ```isSpare()```, ```getStrikeScore()```, ```getSpareScore()``` and ```getNormalScore```) have a _ReferenceError: ...not defined_. Perhaps this could be something related to _NaN_?
+
+Need to investigate further.
+
 Bowling Challenge - INCOMPLETE
 =================
 

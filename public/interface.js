@@ -2,6 +2,12 @@ $(document).ready(function(){
   var game = new Game();
   updateResult();
 
+  $('#zero').click(function(){
+    game.roll(0);
+    // game.count(1);
+    updateResult();
+  });
+
   $('#one').click(function(){
     game.roll(1);
     // game.count(1);

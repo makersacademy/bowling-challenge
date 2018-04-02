@@ -16,33 +16,48 @@ describe('Game', function(){
 
   describe('Score calculation for', function(){
     it('a gutter game', function(){
-      rollMany(0, 20);
+      rollMany(20, 0);
       expect(game.score()).toBe(0);
     });
 
     it('an all ones game', function(){
-      rollMany(1, 20);
+      rollMany(20, 1);
       expect(game.score()).toBe(20);
     });
 
     it('a spare', function(){
-      game.roll(3);
-      game.roll(7);
+      rollSpare();
       game.roll(8);
-      rollMany(0, 17);
+      rollMany(17, 0);
       expect(game.score()).toBe(26);
     });
+
+    it('all spares with final strike', function(){
+      rollSpare();
+      rollSpare();
+      rollSpare();
+      rollSpare();
+      rollSpare();
+      rollSpare();
+      rollSpare();
+      rollSpare();
+      rollSpare();
+      rollSpare();
+      game.roll(10);
+      expect(game.score()).toBe(155);
+    });
+
 
     it('a strike', function (){
       game.roll(10);
       game.roll(2);
       game.roll(7);
-      rollMany(0, 16);
+      rollMany(16, 0);
       expect(game.score()).toBe(28);
     });
 
     it('a perfect game', function(){
-      rollMany(10, 12);
+      rollMany(12, 10);
       expect(game.score()).toBe(300);
     });
 
@@ -70,13 +85,24 @@ describe('Game', function(){
       game.roll(6); //frame10 roll3 -- extra because of spare
       expect(game.score()).toBe(133);
     });
+
+    describe('Error raised when', function(){
+      it('player tries to knock down more than 10 pins', function (){
+        expect(function() {game.roll(11);}).toThrow(new Error('You cannot knock down more than 10 pins'));
+      });
+    });
   });
 
 
 
-  var rollMany = function(pins, rolls) {
-    for (var i = 0; i < 20; i++){
+  var rollMany = function(rolls, pins) {
+    for (var i = 0; i < rolls; i++){
       game.roll(pins);
     }
   };
+
+  var rollSpare = function() {
+    game.roll(5);
+    game.roll(5);
+  }
 });

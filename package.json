@@ -7,6 +7,9 @@
     "doc": "docs",
     "lib": "lib"
   },
+  "scripts": {
+    "test": "jasmine"
+  },
   "dependencies": {
     "spectre.css": "^0.5.1"
   },
@@ -19,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/Hemesh-Unka/bowling-challenge/issues"
   },
-  "homepage": "https://github.com/Hemesh-Unka/bowling-challenge#readme"
+  "homepage": "https://github.com/Hemesh-Unka/bowling-challenge#readme",
+  "devDependencies": {
+    "jasmine": "^3.1.0"
+  }
 }

@@ -128,7 +128,7 @@ describe ("As a user, So that I can play a whole game,", function(){
     });
 
     it('Should sum the grandtotal', function(){
-      browser.assert.text('td[id=row_grandtotal]', '81');
+      browser.assert.text('td[id=row_grandtotal]', '90');
     });
 
     it('Should end the game', function(){

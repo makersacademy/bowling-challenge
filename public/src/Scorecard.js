@@ -52,8 +52,11 @@ Scorecard.prototype.calc_bonus = function(frame) {
 Scorecard.prototype.grandtotal = function() {
   grandtotal = 0;
   num_frames = Object.keys(scorecard._score).length;
-  for (i = 1; i < num_frames; i++) {
-    grandtotal += (scorecard._score[i][2] + scorecard._score[i][4]);
+
+  max_frames = num_frames === 11 ? 10 : num_frames
+  for (i = 1; i <= max_frames; i++) {
+    bonus = scorecard._score[i][4] || 0
+    grandtotal += (scorecard._score[i][2] + bonus);
   };
   return grandtotal;
 };

@@ -69,7 +69,7 @@ describe("Scorecard", function() {
     });
   });
 
-  describe("#subtotal", function() {
+  describe("#grandtotal", function() {
     beforeEach(function() {
       scorecard.calculate(1,2,4);
       scorecard.calculate(2,5,5);
@@ -78,18 +78,14 @@ describe("Scorecard", function() {
       scorecard.calc_bonus(1);
       scorecard.calc_bonus(2);
       scorecard.calc_bonus(3);
+      scorecard.calc_bonus(4);
 
     });
 
-    it("Sums the scores when bonus is calculated", function() {
-      expect(scorecard.subtotal(1)).toEqual(6);
-      expect(scorecard.subtotal(2)).toEqual(20);
-      expect(scorecard.subtotal(3)).toEqual(18);
+    it("Calculates the total score (base and bonus)", function() {
+      expect(scorecard.grandtotal()).toEqual(52);
     });
 
-    it("Sums the scores when bonus is not yet calculated", function() {
-      expect(scorecard.subtotal(4)).toEqual(8);
-    });
 
   });
 });

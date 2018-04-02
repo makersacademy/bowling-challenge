@@ -1,8 +1,92 @@
+**INTRODUCTION**
+
+This is a simple, single page app for calculating the scores of a game of
+10 pin bowling.
+
+**TECH**
+
+This is a javascript app served using node.js, express and nodemon, with ejs used for rendering.
+Unit testing was done with jasmine, and feature testing with zombie and mocha. NPM is used for bundling.
+Web interface has been tested with the Chrome browser (Version 65.0.3325.181).
+
+**CONTENTS**
+
+| dir: public | logic |
+|--|
+| frame.js | logic for individual bowling frame |
+| game.js | logic for bowling game |
+| interface.js | logic for running web interface |
+
+
+| dir: spec | jasmine test suites - unit & integration |
+|--|
+| frameSpec.js | jasmine unit test suite for frame.js |
+| gameSpec.js | jasmine unit test suite for game.js |
+| gameFrameIntegrationSpec.js | jasmine integration test for game.js and frame.js |
+
+| dir: test | mocha / zombie test suites - feature |
+|--|
+| interfaceSpec.js | basic web interface feature tests |
+| normalGameSpec.js | feature test for complete standard bowling game |
+| perfectGameSpec.js | feature test for perfect bowling game |
+| gutterGameSpec.js | feature test for gutter bowling game |
+
+| dir: views | ejs pages |
+|--|
+| bowling.ejs | ejs page for web interface |
+
+| dir: main | misc. |
+|--|
+| app.js | main app controller file |
+| package.json | dependencies list for npm |
+| README.md | You are reading it! |
+| SpecRunner.html | display page for Jasmine tests |
+
+**GETTING STARTED**
+
+Clone or download the repository to a local directory, and then run **npm install** from a
+console in the root folder to install all necessary dependencies.
+
+**INSTRUCTIONS FOR USE**
+
+To boot the app, run **npx nodemon app.js** from a console in the root folder.
+Open a web browser and navitage to http://localhost:4567/bowling. You should see
+a page with **Welcome to Bowling!** displayed. Click on the **Start new game**
+button to score a new bowling game.
+
+To add the score for each roll, simply select the value from the drop-down menu
+(immediately below the **Start new game** button), then click on **Add roll**.
+The score will be added to both the total score (shown as **Total Score:**
+and to the appropriate frame. Frames are drawn below the total score display,
+and are added and updated automatically.
+
+Specials (strikes and spares) are handled automatically, simple add the scores
+they represent (i.e 10 for a strike) using the drop-down menu and add roll button.
+Bonus scores relating to strikes and spares are added to frames automatically,
+as appropriate. After ten frames (plus one bonus roll if the first roll of the final
+frame was a strike!), the game will be over.
+
+To start a new game (at any point), click **Start new game**, and the game will
+be reset.
+
+**TESTING**
+
+The core logic of the app is a game object that contains and interacts with frame
+objects. Unit tests for the frame and game logic, and integration tests for the game and
+frame together, we written using the Jasmine testing framework. To run the unit and
+integration tests, open the **SpecRunner.html** in a web browser.
+
+The feature tests for the web interface were written using Mocha (test framework)
+and Zombie (headless browser plus test framework). To run these tests, enter
+**npm test** from a console in the root folder of the app.
+
+**// ==================== DEVELOPMENT ==================== //**
+
 **MODELLING**
 
 ![bowling_model](bowling-challenge.png)
 
-**INSTRUCTIONS**
+**CHALLENGE INSTRUCTIONS**
 
 Bowling Challenge
 =================

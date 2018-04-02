@@ -20,4 +20,8 @@ describe("Scorecard", function() {
 		expect(game.frame.rolls).to.be.a("array");
 		expect(game.frame.rolls).to.include(5, 3);
 	});
+
+	it("counts score after 2 rolls when not a spare or strike", function() {
+		expect(Scorecard.score).to.include(8);
+	});
 });

@@ -11,6 +11,8 @@ function Frame () {
 };
 
 // getters
+Frame.prototype.rolls = function(){ return this._rolls };
+Frame.prototype.brolls = function(){ return this._bonusRolls };
 Frame.prototype.normalScore = function() {
   return this._rolls.reduce(function (sum, x) { return sum + x }, 0);
 };

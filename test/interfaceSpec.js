@@ -27,25 +27,20 @@ describe('Bowling Challenge app interface', function(){
 
   describe('playing a game', function(){
     before(function(done){
-      browser.pressButton('Start new game', done);
-    });
-    it ('shows the score', function(){
-      browser.assert.text('#score', 'Total Score: 0');
+      browser.pressButton('Start new game');
+      browser.select('#rollSelect', '5');
+      browser.pressButton('Add roll', done);
     });
     it('totals the score', function(){
-      browser.select('#rollSelect', '5');
-      browser.pressButton('Add roll');
       browser.assert.text('#score', 'Total Score: 5');
     });
     it('displays a frame', function(){
       browser.assert.element('#frame1');
     });
     it('displays the score for an individual frame', function(){
-      browser.select('#rollSelect', '4');
+      browser.select('#rollSelect', '3');
       browser.pressButton('Add roll');
-      browser.select('#rollSelect', '4');
-      browser.pressButton('Add roll');
-      browswer.assert.text('#frame1', "Frame 1 (8): 4 4");
+      browser.assert.text('#frame1', "Frame 1: 8 (5) (3)");
     });
   });
 

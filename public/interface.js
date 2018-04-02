@@ -33,25 +33,42 @@ function emptyRollSelect(){
   }
 }
 function addRoll(game){
-  addFrame(game);
   var rollSelect = document.getElementById("rollSelect");
   var score = parseInt(rollSelect.options[rollSelect.selectedIndex].value);
   game.roll(score);
-  buildRollSelect(game);
   showScore(game);
+  updateFrames(game);
+  addFrame(game);
+  buildRollSelect(game);
 }
 function addFrame(game){
   var frameDisplay = document.getElementById("frameDisplay");
   var displayedFrames = frameDisplay.getElementsByTagName("li").length;
   var nFrame = game.currentFrame().n();
-  console.log(nFrame);
-    if (displayedFrames != nFrame) {
+  if (displayedFrames != nFrame) {
     var frameID = 'frame' + nFrame;
     var node = document.createElement("LI");
     var textNode = document.createTextNode("Frame " + nFrame);
     node.id = frameID;
     node.appendChild(textNode)
     frameDisplay.appendChild(node);
+  }
+}
+function updateFrames(game){
+  var frameDisplay = document.getElementById("frameDisplay");
+  var displayedFrames = frameDisplay.getElementsByTagName("li").length;
+  for (i = 0; i < displayedFrames; i++) {
+    var frameI = i + 1
+    var frame = game.frames()[i];
+    var score = frame.score();
+    var rollstring = frame.rolls().reduce( function (stringOut, roll) {
+      return stringOut + " (" + roll + ")"
+    }, "");
+    var brollstring = frame.brolls().reduce( function (stringOut, roll) {
+      return stringOut + " [" + roll + "]"
+    }, "")
+    var displayFrame = document.getElementById("frame" + frameI)
+    displayFrame.innerHTML = "Frame " + frameI + ": " + score + rollstring + brollstring;
   }
 }
 function emptyFrames(){

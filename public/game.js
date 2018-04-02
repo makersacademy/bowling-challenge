@@ -3,8 +3,8 @@
 function Game (frameConstructor) {
   this._frameConstructor = frameConstructor;
   this._frames = [new this._frameConstructor];
-  this._frames[0].nSet(1);
   this._nFrames = 1;
+  this._frames[0].nSet(this._nFrames);
 };
 
 //getters

@@ -30,7 +30,7 @@ Navigate to http://localhost:3000
 For each frame, enter your two roll scores in the input boxes and click 'Submit'. How your scores tally up are shown in the Game Logic image below.
 
 ## Game Logic
-![Bowling Logic Chart](/images/bowling logic.png)
+![Bowling Logic Chart](/images/bowling_logic.png)
 
 ## Running Tests
 To run the Jasmine unit tests, open the 'SpecRunner.html' file in your browser. The file is located in the project root directory.

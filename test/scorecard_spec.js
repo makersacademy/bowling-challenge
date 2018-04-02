@@ -58,13 +58,13 @@ describe("Scorecard", function() {
 		});
 	});
 
-	describe("frameOver", function() {
+	describe(".frameOver", function() {
 		it("returns true if it is time to calculate the Score", function() {
 			game = new Scorecard();
 			game.frame.logRoll(2);
 			game.frame.logRoll(7);
 
-			expect(game.frameOver).to.be(true);
+			expect(game.isFrameOver()).to.be.true;
 		});
 	});
 });

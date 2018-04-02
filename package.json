@@ -10,9 +10,6 @@
   "dependencies": {
     "spectre.css": "^0.5.1"
   },
-  "scripts": {
-    "test": "jasmine"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Hemesh-Unka/bowling-challenge.git"

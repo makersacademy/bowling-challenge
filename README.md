@@ -12,31 +12,31 @@ Web interface has been tested with the Chrome browser (Version 65.0.3325.181).
 **CONTENTS**
 
 | dir: public | logic |
-|--|
+|--|--|
 | frame.js | logic for individual bowling frame |
 | game.js | logic for bowling game |
 | interface.js | logic for running web interface |
 
 
 | dir: spec | jasmine test suites - unit & integration |
-|--|
+|--|--|
 | frameSpec.js | jasmine unit test suite for frame.js |
 | gameSpec.js | jasmine unit test suite for game.js |
 | gameFrameIntegrationSpec.js | jasmine integration test for game.js and frame.js |
 
 | dir: test | mocha / zombie test suites - feature |
-|--|
+|--|--|
 | interfaceSpec.js | basic web interface feature tests |
 | normalGameSpec.js | feature test for complete standard bowling game |
 | perfectGameSpec.js | feature test for perfect bowling game |
 | gutterGameSpec.js | feature test for gutter bowling game |
 
 | dir: views | ejs pages |
-|--|
+|--|--|
 | bowling.ejs | ejs page for web interface |
 
 | dir: main | misc. |
-|--|
+|--|--| 
 | app.js | main app controller file |
 | package.json | dependencies list for npm |
 | README.md | You are reading it! |

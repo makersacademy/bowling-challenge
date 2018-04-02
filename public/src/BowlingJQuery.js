@@ -9,19 +9,16 @@ $(document).ready(function(){
   });
 
   $("input#submit_rolls").click(function() {
+
     if (frame._gameEnd === false) {
       try {
         getScores();
         updateTable(frame._currFrame);
-        calcTotal();
         prepNextFrame();
       }
       catch(err) {
         $("h2#message").text(err);
       };
-    }
-    else {
-      calcTotal();
     }
   });
 
@@ -41,22 +38,13 @@ $(document).ready(function(){
       scorecard.calc_bonus(frame._currFrame - 2);
       scorecard.calc_bonus(frame._currFrame - 1);
     };
+
   };
 
-  function calcTotal() {
-    num_frames = Object.keys(scorecard._score).length;
-    if (num_frames < 11) {
-      for (i = 1; i <= num_frames; i++) {
-        subtotal_val = document.getElementById("row_subtotal_" + i);
-        subtotal_val.innerHTML = scorecard.subtotal(i);
-      };
-    }
-    else {
-      grandtotal_cell = document.getElementById("row_grandtotal");
-      grandtotal_cell = scorecard.grandtotal();
-      throw "Game Finished!";
-    }
-  };
+  function calcGrandtotal() {
+    grandtotal_cell = document.getElementById("row_grandtotal");
+    grandtotal_cell.innerHTML = scorecard.grandtotal();
+  }
 
   function updateTable(refFrame) {
     roll1_val = document.getElementById("row_roll1_" + refFrame);
@@ -75,6 +63,7 @@ $(document).ready(function(){
         bonus_val = document.getElementById("row_bonus_" + prevFrame);
         bonus_val.innerHTML = scorecard._score[prevFrame][4];
       }
+      calcGrandtotal();
     }
     else if (frame._currFrame === 10 && scorecard._type !== "normal") {
       prevFrame = parseInt(refFrame - 2);
@@ -87,6 +76,7 @@ $(document).ready(function(){
         bonus_val = document.getElementById("row_bonus_" + prevFrame);
         bonus_val.innerHTML = scorecard._score[prevFrame][4];
       }
+      calcGrandtotal();
     }
   };
 

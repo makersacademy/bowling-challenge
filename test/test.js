@@ -37,12 +37,6 @@ describe ("As a user, So that I can keep track of my bowling score,", function()
     });
   });
 
-  describe("I want to see subtotals per frame.", function() {
-    it("Should calculate the subtotals even when bonuses not yet calculated", function() {
-      browser.assert.text('td[id=row_subtotal_1]', '9');
-      browser.assert.text('td[id=row_subtotal_2]', '10');
-    });
-  });
 
   describe("I want to see my bonus scores for a spare.", function() {
     before(function() {
@@ -65,12 +59,6 @@ describe ("As a user, So that I can keep track of my bowling score,", function()
     });
   });
 
-  describe("I want to see updated subtotals with bonuses added.", function() {
-    it("Should calculate the subtotals even when bonuses not yet calculated", function() {
-      browser.assert.text('td[id=row_subtotal_1]', '9');
-      browser.assert.text('td[id=row_subtotal_2]', '14');
-    });
-  });
 
   describe("I want to see my bonus scores for a strike.", function() {
     before(function() {
@@ -140,7 +128,7 @@ describe ("As a user, So that I can play a whole game,", function(){
     });
 
     it('Should sum the grandtotal', function(){
-      browser.assert.text('td[id=row_grandtotal]', '90');
+      browser.assert.text('td[id=row_grandtotal]', '81');
     });
 
     it('Should end the game', function(){
@@ -204,7 +192,7 @@ describe ("As a user, So that I can play a whole game,", function(){
     });
 
     it('Should sum the grandtotal', function(){
-      browser.assert.text('td[id=row_grandtotal]', '289');
+      browser.assert.text('td[id=row_grandtotal]', '284');
     });
 
     it('Should end the game', function(){
@@ -234,7 +222,6 @@ describe ("As a user, So that I can play a whole game,", function(){
     it('Should add both the 11th frame rolls to the 10th frame bonus', function() {
       browser.assert.text('td[id=row_bonus_10]', '20');
     });
-
 
     it('Should sum the grandtotal', function(){
       browser.assert.text('td[id=row_grandtotal]', '300');

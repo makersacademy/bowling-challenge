@@ -55,20 +55,13 @@
         </tr>
 
         <tr  id="row_bonus">
-          <% ["Bonus","-","-","-","-","-","-","-","-","-","-"].map(function(el, idx) { %>
+          <% ["Bonus","-","-","-","-","-","-","-","-","-","-","N/A"].map(function(el, idx) { %>
           <td id="row_bonus_<%= idx %>">
             <%= el %>
           </td>
           <% }); %>
         </tr>
 
-        <tr  id="row_subtotal">
-          <% ["Subtotal","-","-","-","-","-","-","-","-","-","-"].map(function(el, idx) { %>
-          <td id="row_subtotal_<%= idx %>">
-            <%= el %>
-          </td>
-          <% }); %>
-        </tr>
 
         <tr  id="row_total" class="gt">
           <td class="gt">

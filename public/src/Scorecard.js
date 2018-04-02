@@ -49,12 +49,6 @@ Scorecard.prototype.calc_bonus = function(frame) {
   };
 };
 
-Scorecard.prototype.subtotal = function(frame) {
-  bonus = this._score[frame][4] || 0;
-  subtotal = this._score[frame][2] + bonus;
-  return subtotal;
-};
-
 Scorecard.prototype.grandtotal = function() {
   grandtotal = 0;
   num_frames = Object.keys(scorecard._score).length;

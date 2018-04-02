@@ -2,7 +2,8 @@ User-Stories 1-3 have to do with the properties initialised with the Game object
 User-Stories 4-6 have to do with .roll function.
 User-Stories 7 has to do with .frameTotal function.
 User-Stories 8-10 have to do with .turn function.
-
+User-Stories 11 has to do with .roll2 function.
+User-Stories 12 has to do with .round function.
 
 Bowling Challenge
 =================
@@ -43,6 +44,14 @@ I want a new empty frame once I finish the previous one.
 As a player,
 So that I can stick to the rules of the game,
 I want to be able to play a maximum of 10 frames per game.
+
+As a player,
+So that I can stick to the rules of the game,
+I want to be able to take down no more than the pins left for the second roll.
+
+As a player,
+So that I can stick to the rules of the game,
+I want to see a cross if I get a strike.
 ```
 
 

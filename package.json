@@ -22,7 +22,6 @@
   "homepage": "https://github.com/VivianAllen/bowling-challenge#readme",
   "dependencies": {
     "ejs": "^2.5.8",
-    "express": "^4.16.3",
     "karma-chrome-launcher": "^2.2.0",
     "karma-cli": "^1.0.1",
     "request": "^2.85.0"
@@ -30,6 +29,7 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "expect": "^22.4.3",
+    "express": "^4.16.3",
     "mocha": "^5.0.5",
     "nodemon": "^1.17.3",
     "zombie": "^5.0.8"

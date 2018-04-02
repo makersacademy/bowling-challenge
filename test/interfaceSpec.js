@@ -12,19 +12,26 @@ describe('Bowling Challenge app interface', function(){
 
   describe('basic page features', function(done){
     it ('shows a title page', function(){
-      browser.assert.text('#title', 'Bowling Scorecard');
+      browser.assert.text('#msg', 'Welcome to Bowling!');
     });
   });
 
   describe('starting a game', function(done){
-
     before(function(done){
       browser.pressButton('Start new game', done)
     });
-
     it('lets you start a new game', function(){
-      browser.assert.text('#score', '0');
+      browser.assert.text('#msg', 'Game on!', done);
     });
+  });
+
+  describe('playing a game', function(done){
+    before(function(done){
+      browser.pressButton('Start new game', done)
+    });
+    it ('shows the score', function(){
+      browser.assert.text('#score', 'Total Score: 0')
+    })
   });
 
 });

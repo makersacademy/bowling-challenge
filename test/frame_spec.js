@@ -4,14 +4,6 @@ var assert = require("chai").assert;
 var expect = require("chai").expect;
 
 describe("Frame", function() {
-	describe(".pins", function() {
-		it("it should initiate with 10 pins", function() {
-			frame = new Frame();
-
-			expect(frame.pins).to.equal(10);
-		});
-	});
-
 	describe(".rolls", function() {
 		it("should initiate with an empty array", function() {
 			frame = new Frame();

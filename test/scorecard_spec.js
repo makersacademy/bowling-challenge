@@ -47,7 +47,24 @@ describe("Scorecard", function() {
 		});
 	});
 
-	describe("", function() {
-		it("", function() {});
+	describe(".addToScorecard()", function() {
+		it("counts score after a strike", function() {
+			game = new Scorecard();
+
+			game.frame.logRoll(10);
+			game.addToScorecard();
+
+			expect(game.score).to.include(10);
+		});
+	});
+
+	describe("frameOver", function() {
+		it("returns true if it is time to calculate the Score", function() {
+			game = new Scorecard();
+			game.frame.logRoll(2);
+			game.frame.logRoll(7);
+
+			expect(game.frameOver).to.be(true);
+		});
 	});
 });

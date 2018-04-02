@@ -1,0 +1,26 @@
+{
+  "name": "bowlingchallenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge ================= I made a basic bowling score app according to the specification.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chiakimz/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chiakimz/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/chiakimz/bowling-challenge#readme"
+}

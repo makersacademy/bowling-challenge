@@ -89,12 +89,13 @@ describe("Scorecard", function() {
 	});
 
 	describe(".finalScore()", function() {
-		it("calculates final score", function() {
+		it("can calculate a gutter game", function() {
 			game = new Scorecard();
-			for (var i = 0; i == 10; i++) {
-				game.logRoll(10);
+			for (var i = 1; i < 20; i++) {
+				game.logRoll(0);
 			}
-			expect(game.finalScore()).to.be(300);
+			console.log(game.score);
+			expect(game.finalScore()).to.eql(0);
 		});
 	});
 });

@@ -10,9 +10,9 @@ $(document).ready(function(){
 
   $("input#submit_rolls").click(function() {
     if (frame._gameEnd === false) {
-      getScores();
-      updateTable(frame._currFrame);
       try {
+        getScores();
+        updateTable(frame._currFrame);
         prepNextFrame();
       }
       catch(err) {

@@ -200,7 +200,7 @@ describe ("As a user, So that I can play a whole game,", function(){
       }
       browser
         .fill('roll1', '10')
-        .fill('roll2', '0');
+        .fill('roll2', '10');
       return browser.pressButton('submit_rolls');
     });
 

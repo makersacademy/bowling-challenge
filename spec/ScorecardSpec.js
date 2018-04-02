@@ -42,7 +42,6 @@ describe("Scorecard", function() {
   });
 
 
-
   describe("#calc_bonus", function() {
     beforeEach(function() {
 
@@ -68,5 +67,14 @@ describe("Scorecard", function() {
       scorecard.calc_bonus(1)
       expect(scorecard._score[1]).toEqual([10,0,10,"strike",8]);
     });
+  });
+
+  describe("#subtotal", function() {
+    scorecard.calculate(1,5,5);
+    scorecard.calculate(2,3,5);
+    scorecard.calculate(5,5,10);
+    scorecard.calculate(10,0,10);
+    scorecard.calc_bonus(1)
+    scorecard.subtotal[0]
   });
 });

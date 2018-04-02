@@ -17,7 +17,12 @@ function showScore(game){
 function buildRollSelect(game){
   emptyRollSelect();
   var rollSelect = document.getElementById("rollSelect");
-  var maxPermittedScore = 10 - game.currentFrame().normalScore();
+  if (game.currentFrame().isFinished()) {
+    var maxPermittedScore = 10;
+
+  } else {
+      var maxPermittedScore = 10 - game.currentFrame().normalScore();
+  }
   for (var i = 1; i <= maxPermittedScore; i++) {
     var el = document.createElement("option");
     el.textContent = String(i);

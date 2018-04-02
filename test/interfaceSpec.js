@@ -25,7 +25,7 @@ describe('Bowling Challenge app interface', function(){
     });
   });
 
-  describe('playing a game', function(){
+  describe('basic display', function(){
     before(function(done){
       browser.pressButton('Start new game');
       browser.select('#rollSelect', '5');
@@ -42,6 +42,20 @@ describe('Bowling Challenge app interface', function(){
       browser.pressButton('Add roll');
       browser.assert.text('#frame1', "Frame 1: 8 (5) (3)");
     });
-  });
+  })
 
+  describe('basic multiple frame display', function(){
+    before(function(done){
+      browser.pressButton('Start new game');
+      browser.select('#rollSelect', '5');
+      browser.pressButton('Add roll');
+      browser.select('#rollSelect', '4');
+      browser.pressButton('Add roll', done);
+    });
+    it('displays multiple frames', function(){
+      browser.select('#rollSelect', '3');
+      browser.pressButton('Add roll');
+      browser.assert.text('#frame2', "Frame 2: 3 (3)");
+    });
+  });
 });

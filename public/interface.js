@@ -37,8 +37,8 @@ function addRoll(game){
   var score = parseInt(rollSelect.options[rollSelect.selectedIndex].value);
   game.roll(score);
   showScore(game);
-  updateFrames(game);
   addFrame(game);
+  updateFrames(game);
   buildRollSelect(game);
 }
 function addFrame(game){

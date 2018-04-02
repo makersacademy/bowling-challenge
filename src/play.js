@@ -1,6 +1,6 @@
 function Play() {
 this._rolls = [ ]
-this._frameCounter = 1
+this._frameCounter = 0
 this._score = 0
 }
 
@@ -15,7 +15,7 @@ Play.prototype.frame = function() {
 Play.prototype.score = function () {
   this._score = 0;
   let roll = 0;
-  for (var frameCount = 0; frameCount < 11; frameCount++) {
+  for (var frameCount = 0; frameCount <= 10; frameCount++) {
     if (this.isStrike(roll)) {
       this._score += 10 + unDefined(this._rolls[roll + 1]) + unDefined(this._rolls[roll + 2]);
       roll++
@@ -29,6 +29,7 @@ Play.prototype.score = function () {
       roll += 2;
     }
   }
+  this._frameCounter++
   return this._score;
 };
 

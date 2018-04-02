@@ -1,7 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee Shade');
+
+.header {
+  font-family: 'Bungee Shade';
+  font-size: 22px;
+}
+
+table, td {
+    border: 1px solid black;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    margin-top: 10px;
+}
+
+th {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td {
+  margin: auto;
+  width: 200px;
+}
+
+
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #f9f5d1;
-  color: #b2210a;
+  background-color: #fbf7fc;
+  color: #e64398;
   text-align: center;
 }
 
@@ -13,3 +39,15 @@ body {
     border: solid 1px #c2c2c2;
     border-bottom: solid 3px #b2b1b1;
     box-shadow: inset 0 0 0 1px #efefef; }
+
+
+    .block {
+      width: 100%;
+      border: 1px solid;
+      text-align: center;
+      background-color: #a1c3d1;
+    }
+
+    .new {
+      padding-top: 10px;
+    }

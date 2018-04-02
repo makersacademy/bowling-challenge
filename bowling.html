@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bowling App</title>
+    <link href="https://fonts.googleapis.com/css?family=Satisfy|Courgette"
+      rel="stylesheet">
+    <link rel="stylesheet" href="css/bowling.css">
+  </head>
+  <body>
+    <div class="cover">
+      <h1>Either enter a full game of scores separated by commas</h1>
+      <input id="full-game" type="text" placeholder="e.g. 9, 1, 5, 2...">
+      <button type="button" id="score">Calculate score</button>
+      <h1 id="final-score"></h1>
+      <h1>Or use the buttons to fill in the scorecard</h1>
+      <div class="scorecard" id="scorecard">
+        <div class="scorecard-box" id="f10">
+          <div class="header">Frame 10</div>
+          <div id="f10-inner1"></div>
+          <div id="f10-inner2"></div>
+          <div id="f10-inner3"></div>
+          <div id="final-scorecard-score"><span></span></div>
+          <span></span>
+        </div>
+      </div>
+      <br>
+      <div class="roll-buttons"></div>
+      <div>
+        <button id="restart" type="button">Start a new game!</button>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="lib/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="src/game.js"></script>
+    <script type="text/javascript" src="src/gameArrayCalculator.js"></script>
+    <script type="text/javascript" src="src/interface.js"></script>
+  </body>
+</html>

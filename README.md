@@ -2,76 +2,32 @@
 Bowling Challenge
 =================
 
+In order to run the game and tests:
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+```
+$ git clone git@github.com:l3w15/bowling-challenge.git
+$ cd bowling-challenge
+$ open SpecRunner.html
+$ open bowling.html
+```
 
-## The Task
+You can then use the UI to either enter a full frame with each roll separated by commas, or enter a game roll by roll into the scorecard.
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+[![Screen_Shot_2018-03-06_at_17.31.09.png](https://s6.postimg.org/qzagwrxdd/Screen_Shot_2018-03-06_at_17.31.09.png)](https://postimg.org/image/yf9qikl2l/)
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+## Successes, Challenges, and Wish List:
 
-As usual please start by
+# Successes
 
-* Forking this repo
+I am very pleased with the look and the functionality of the game, I had a lot of fun (and lost a lot of time) with the CSS! It was very rewarding to overcome the tricky logic of bowling and write a UI which prevents impossible rolls by hiding the buttons which would result in an impossible roll. I planned well and followed TDD to write each function and the tests were useful in debugging. Two of my wish list wishes have now been removed: The interface and game files have now been refactored to so that interface is only responsible for data coming from or being outputted to the browser and I used jQuery to loop through repeated HTML such as the scorecard boxes and scoring buttons. The addBonuses function feels has been refactored to make it somewhat clearer refactor it.
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+# Challenges
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+I really wanted to separate the Frame functions into another constructor file, I began to do this and separated the spec files as well, but struggled to implement the new constructor with the existing game class, and the existing interface.
 
-Also, don't generate random rolls. Trust us on this one.
+# Wish List
 
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
-
-## Bowling — how does it work?
-
-### Strikes
-
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
-
-### Spares
-
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-### 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-### Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-### Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+When I have more time I hope to:
+* Use my learning from this challenge in order to better follow the Single Responsibility Principle, so that Frame can be responsible for frames, Game for game functionality, and any other classes that seem appropriate.
+* Do more research and use a separate constructor for Frame.
+* Use Selenium for browser testing.

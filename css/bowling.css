@@ -1,0 +1,164 @@
+body {
+  background: url('http://www.stickpng.com/assets/images/580b585b2edbce24c47b2ae6.png') no-repeat;
+  background-size: 80%;
+  background-position: top;
+  text-align: center;
+  vertical-align: middle;
+  font-family: 'Courgette', cursive;
+  color: #0d2b5a;
+  opacity: 0.92;
+  position: absolute;
+  margin: 0;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #e6f0ff;
+  font-family: 'Courgette', cursive;
+  /* font-family: 'Satisfy', cursive; */
+  font-size: 40px;
+  text-shadow: 0 0 2px #cd23d3, 0 0 5px #fff, 0 0 5px #cd23d3, 0 0 7px #cd23d3,
+    0 0 11px #cd23d3, 0 0 15px #cd23d3, 0 0 21px #cd23d3;
+}
+
+button {
+  font-family: 'Courgette', cursive;
+  min-width: 50px;
+  background: #2368d3;
+  border-radius: 28px;
+  border: none;
+  color: #cce0ff;
+  font-size: 20px;
+  padding: 6px 15px;
+  margin: 7px 3px;
+  text-decoration: none;
+  z-index: 20;
+  box-shadow: -3px 3px 5px 2px #0d2b5a;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+button:hover {
+  border: none;
+  background: #5a8fe2;
+  color: #ffffff;
+  text-decoration: none;
+  text-decoration: none;
+  box-shadow: -5px 5px 16px 0 rgba(0,0,0,0.8), -6px 7px 50px 0 rgba(0,0,0,0.7);
+}
+
+button:focus, input:focus {
+  outline: 0;
+}
+
+button:active {
+  box-shadow: 0;
+  box-shadow: -1px 1px 2px 1px #0d2b5a;
+  transform: translateY(1.5px);
+}
+
+input {
+  width: 400px;
+  font-family: 'Courgette', cursive;
+  background: #d9dac5;
+  color: #0d2b5a;
+  border-radius: 28px;
+  border: 1px solid #77773e;
+  font-size: 20px;
+  padding: 5px 15px;
+  margin: 5px 2px;
+  text-decoration: none;
+  box-shadow: -3px 3px 5px 1px #0d2b5a;
+}
+
+.cover {
+  padding-top: 20px;
+  background-size: contain;
+  background-color: rgba(35, 104, 211, 0.55);
+  width: 100vw;
+  height: 200vh;
+  top: 0;
+  left: 0;
+  display: block;
+}
+
+.scorecard {
+  display: inline-block;
+  margin: 0 auto;
+  min-width: 40%;
+  max-width: 90%;
+}
+
+.scorecard-box {
+  margin: 4px;
+  float: left;
+  height: 100px;
+  width: 100px;
+  border: 1px solid #0d2b5a;
+  display: inline-block;
+  background-color: #d9dac5;
+  border-radius: 10px;
+  box-shadow: -2px 2px 5px 1.5px #0d2b5a;
+}
+
+.header {
+  height: 20px;
+  padding-top: 3px;
+  border-radius: 10px 10px 0px 0px;
+  border-bottom: 1px solid #0d2b5a;
+  background-color: #a6c9ff;
+}
+
+.inner1, .inner2 {
+  font-family: Arial;
+  float: left;
+  height: 20px;
+  padding-top: 3px;
+  width: 49.5px;
+  border-bottom: 1px solid #0d2b5a;
+  position: relative;
+  top: 0px;
+}
+
+.inner1 {
+  left: 0px;
+}
+
+.inner2 {
+  border-left: 1px solid #0d2b5a;
+}
+
+.inner3, #final-scorecard-score {
+  height: 50px;
+  font-size: 27.5px;
+  padding-top: 35px;
+}
+
+.roll-buttons {
+  clear: both;
+}
+
+.hide {
+  display: none;
+}
+
+#f10-inner1, #f10-inner2, #f10-inner3 {
+  font-family: Arial;
+  float:left;
+  height: 20px;
+  padding-top: 3px;
+  width: 32.5px;
+  border-bottom: 1px solid #0d2b5a;
+  position: relative;
+  top: 0px;
+}
+
+#f10-inner2, #f10-inner3 {
+  border-left: 1px solid #0d2b5a;
+}
+
+#final-score {
+  height: 20px;
+  font-size: 30px;
+}

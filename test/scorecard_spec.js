@@ -87,4 +87,14 @@ describe("Scorecard", function() {
 			expect(game.isFrameOver()).to.be.true;
 		});
 	});
+
+	describe(".finalScore()", function() {
+		it("calculates final score", function() {
+			game = new Scorecard();
+			for (var i = 0; i == 10; i++) {
+				game.logRoll(10);
+			}
+			expect(game.finalScore()).to.be(300);
+		});
+	});
 });

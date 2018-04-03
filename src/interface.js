@@ -32,13 +32,14 @@ $(document).ready(function() {
 function upDateUi(bowlingRolls){
   var scores = bowlingGame(bowlingRolls)
   var frameList = getFrameRolls(bowlingRolls)
+  console.log("framelist:", frameList)
   var frameListWithType = rollTypeCheck(frameList)
   var gameFinished = isGameFinished(scores)
   var pinsToShow = getMaxNumRemainPins(frameList)
   console.log("pins to show:", pinsToShow)
 
   $.map(scores, function(element, index){
-    $('#frame'+ (index + 1) + ' .score').text(element);
+    $('#frame'+ (index + 1) + ' .js_score').text(element);
   })
 
   $.map(frameListWithType, function(element, index){
@@ -46,11 +47,12 @@ function upDateUi(bowlingRolls){
     if(element.type === "strike"){ display = ["", "X"]}
     else if(element.type === "spare"){ display = [element.score[0], "/"]}
     else{ display = [element.score[0], element.score[1]]}
-    $('#frame'+ (index + 1) + ' .r1').text(display[0]);
-    $('#frame'+ (index + 1) + ' .r2').text(display[1]);
+    $('#frame'+ (index + 1) + ' .js_roll1').text(display[0]);
+    $('#frame'+ (index + 1) + ' .js_roll2').text(display[1]);
   })
 
   if(gameFinished){
+    $('#final-score').text(scores[9])
     $('.gameFinished').show()
   }else{
     $('.gameFinished').hide()

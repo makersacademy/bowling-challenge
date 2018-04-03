@@ -139,3 +139,4 @@ function historyAndCurrentTotal(accumulator, score){
 function scoreCalcu(scoreFrameList){
   return scoreFrameList.reduce(historyAndCurrentTotal, { history: [], currentTotal: 0 }).history
 }
+//TODO: need to include bonus roll for frame 10 and fix bug for bonus roll in frame 10, currently it doesn't finish the game if frame 10 is stike and bonus score is not strike

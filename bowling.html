@@ -3,27 +3,118 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <style>
+      .game{
+        text-align: center;
+        margin: 50px auto 50px auto;
+        width: 90%;
+      }
+      #gameList {
+        list-style: none;
+      }
+      .frame{
+        width: 100px;
+        height: 80px;
+        float:left;
+        list-style-type: none;
+        margin-bottom: 5px;
+        border-style: solid;
+        border-width: 1px;
+        /* border-collapse: collapse; TODO: it doesn't work */
+      }
+      .frame-score {
+        height: 100%;
+        padding-top: 0.3em;
+        font-size: 24px;
+      }
+      .frame .r1 {
+        float: left;
+        width: 50%;
+        height: 100%;
+      }
+      .frame .r2 {
+        float: left;
+        width: 50%;
+        height: 100%;
+      }
+      .roll1 {
+        border-style: solid;
+        border-width: 1px;
+        height: 80%;
+        padding-top: 0.3em;
+        font-size: 24px;
+      }
+      .roll2 {
+        border-style: solid;
+        border-width: 1px 0 1px 0;
+        height: 80%;
+        padding-top: 0.3em;
+        font-size: 24px;
+      }
+      .rolls {
+        float: right;
+        width: 66%;
+        height: 50%;
+      }
+      .score{
+        clear:right;
+        height: 50%;
+      }
+      .rolls_score {
+        border-style: solid;
+        border-width: 1px 1px 1px 0;
+        height: 100%;
+      }
+      .gameFinished {
+        clear: left;
+        font-size: 36px;
+        text-align: center;
+      }
+      .buttons {
+        margin: 50px 50px 0 100px;
+      }
+      .button {
+        width: 60px;
+        height: 60px;
+        background-color: lightblue;
+        font-size: 24px;
+        border: none;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 20%;
+      }
+
+
+    </style>
   </head>
   <body>
     <script src="jquery.min.js"></script>
     <script src="src/interface.js"></script>
     <script src="src/bowlingGame.js"></script>
 
-    <form class="" action="" method="post">
-      <button type="button" id="templeteBtn">0</button>
+    <form class="buttons">
+      <button class="button" type="button" id="templeteBtn">0</button>
     </form>
-
     <div class="game">
       <ol id="gameList">
-        <li id="templeteFrame">
-          <div class="r1">roll1</div>
-          <div class="r2">roll2</div>
-          <div class="score">frameScore</div>
+        <li class="frame" id="templeteFrame">
+          <div class="rolls_score">
+            <div class="rolls">
+              <div class="r1"><div class="roll1 js_roll1"></div></div>
+              <div class="r2"><div class="roll2 js_roll2"></div></div>
+            </div>
+            <div class="score"><div class="frame-score js_score"></div></div>
+          </div>
         </li>
       </ol>
-    <div>
-      <p class="gameFinished">Game over!</p>
-
+    </div>
+      <p class="gameFinished">Congratuations your score is <span id="final-score"></span>!</p>
 
   </body>
 </html>

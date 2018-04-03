@@ -106,5 +106,15 @@ describe("Scorecard", function() {
 			console.log(game.score);
 			expect(game.finalScore()).to.eql(300);
 		});
+
+		it("can calculate an imperfect game", function() {
+			game = new Scorecard();
+			for (var i = 0; i < 11; i++) {
+				game.logRoll(6);
+				game.logRoll(3);
+			}
+			console.log(game.score);
+			expect(game.finalScore()).to.eql(90);
+		});
 	});
 });

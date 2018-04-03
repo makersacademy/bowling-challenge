@@ -1,6 +1,59 @@
+User-Stories 1-3 have to do with the properties initialised with the Game object.
+User-Stories 4-6 have to do with .roll function.
+User-Stories 7 has to do with .frameTotal function.
+User-Stories 8-10 have to do with .turn function.
+User-Stories 11 has to do with .roll2 function.
+User-Stories 12 has to do with .round function.
 
 Bowling Challenge
 =================
+
+```
+As a player,
+So that I can keep track of my score,
+I want to have an empty score card when I start.
+
+As a player,
+So that I can play through turns,
+I want empty frames in my scorecard when I start.
+
+As a player,
+So that I can see my score,
+I want to have partial scores for every frame that are empty when I start.
+
+As a player,
+So that I can stick to the rules of the game,
+I want my rolls to be added to a frame.
+
+As a player,
+So that I can stick to the rules of the game,
+I want to be able to take down a maximum of 10 pins per roll.
+
+As a player,
+So that I can be aware of my score within a frame,
+I want to be able to see the partial score that comprehends a whole frame.
+
+As a player,
+So that I can stick to the rules of the game,
+I want my frames to be stored in my scorecard.
+
+As a player,
+So that I can stick to the rules of the game,
+I want a new empty frame once I finish the previous one.
+
+As a player,
+So that I can stick to the rules of the game,
+I want to be able to play a maximum of 10 frames per game.
+
+As a player,
+So that I can stick to the rules of the game,
+I want to be able to take down no more than the pins left for the second roll.
+
+As a player,
+So that I can stick to the rules of the game,
+I want to see a cross if I get a strike.
+```
+
 
 
 * Challenge time: rest of the day and weekend.

@@ -64,9 +64,7 @@ Game.prototype.roll = function(n) {
       } else {
         this.rolls -= 1;
         this.frameNumber += 1
-      }
-    } else if (n === secondPins.length - 1) {
-        this.rolls += 1;
+      };
     } else {
       this.rolls -= 1;
       this.calculateBonus()

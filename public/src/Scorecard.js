@@ -50,13 +50,13 @@ Scorecard.prototype.calc_bonus = function(frame) {
 };
 
 Scorecard.prototype.grandtotal = function() {
-  grandtotal = 0;
-  num_frames = Object.keys(scorecard._score).length;
+  this._grandtotal = 0;
+  this._numFrames = Object.keys(scorecard._score).length;
 
-  max_frames = num_frames === 11 ? 10 : num_frames
-  for (i = 1; i <= max_frames; i++) {
-    bonus = scorecard._score[i][4] || 0
-    grandtotal += (scorecard._score[i][2] + bonus);
+  this._maxFrames = this._numFrames === 11 ? 10 : this._numFrames
+  for (i = 1; i <= this._maxFrames; i++) {
+    this._bonus = scorecard._score[i][4] || 0
+    this._grandtotal += (scorecard._score[i][2] + this._bonus);
   };
-  return grandtotal;
+  return this._grandtotal;
 };

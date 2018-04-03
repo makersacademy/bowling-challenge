@@ -8,6 +8,7 @@
     <script src="src/Frame.js"></script>
     <script src="src/Scorecard.js"></script>
     <script src="src/BowlingJQuery.js"></script>
+    <script src="src/AnimationJQuery.js"></script>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
   </head>
@@ -21,15 +22,32 @@
       <img src="/images/bowling_explosion.png"></img>
     </div>
 
-    <div id="roll_div">
+    <button id="start_game">Start Game</button>
+
+    <div id="roll_div"  class="no_border">
       <h2> Current Frame: <span id="curr_frame"></span></h2>
-        <label for="roll1">Enter roll 1 score</label>
-        <input type="text" name="roll1" id="roll1" maxlength="2">
-        <br/>
-        <label for="roll2">Enter roll 2 score</label>
-        <input type="text" name="roll2" id="roll2" maxlength="2">
-        <br/>
-        <input type="submit" name="submit_rolls" id="submit_rolls">
+        <table>
+          <tr class="no_border">
+            <td class="no_border">
+              <label for="roll1">Enter roll 1 score</label>
+            </td>
+            <td class="no_border">
+              <input type="text" name="roll1" id="roll1" maxlength="2">
+            </td>
+            <td rowspan="2" class="no_border">
+              <input type="submit" name="submit_rolls" id="submit_rolls">
+            </td>
+          </tr>
+          <tr class="no_border">
+            <td class="no_border">
+              <label for="roll2">Enter roll 2 score</label>
+            </td>
+            <td class="no_border">
+              <input type="text" name="roll2" id="roll2" maxlength="2" class="no_border">
+            </td>
+          </tr>
+
+        </table>
     </div>
 
     <div id="display_div">

@@ -5,8 +5,9 @@ $(document).ready(function(){
     $("span#curr_frame").text(frame._currFrame);
     $(roll1_input = document.getElementById("roll1"));
     $(roll2_input = document.getElementById("roll2"));
-    roll1_input.focus();
+    //roll1_input.focus();
   });
+
 
   $("input#submit_rolls").click(function() {
 

@@ -1,32 +1,40 @@
 var expect = require('expect');
 var Browser = require('zombie');
-
+var url = 'http://localhost:3000/index'
 Browser.localhost('localhost', 3000);
 
 describe('Player can record bowling scores', function() {
-  var browser = new Browser();
+  var browser = new Browser(
+    // waitDuration: 29*1000
+  );
 
-  // before(function(done) {
-  //   browser.visit('/', done);
-  // });
+  before(function(done) {
+    browser.visit(url, function() {
+    done();
+});
+  });
+
+  it('loads successfully', function() {
+    browser.assert.success();
+  });
+
+  it('has a title', function() {
+    browser.assert.text('title', 'Bowling Scorecard');
+  });
 
   describe('home page', function(){
-    before(function(done) {
-      browser.visit('/', done);
-    });
     it ('welcomes player', function(){
-      expect(browser.text('#welcome')).to.equal('Bowling Scorecard');
-      done();
+      browser.assert.text('h1[id=welcome]','Bowling Scorecard');
     });
   });
 
   describe('playing', function() {
     it('a player can record a score', function() {
-      browser.select('current-frame', '0');
+      browser.select('select[id=current-frame]', 'Frame 1');
       browser.pressButton('4');
       browser.pressButton('3');
-      browser.pressButton('#confirm')
-      expect(browser.text('score.currentTotalScore')).to.equal(7);
+      browser.pressButton('confirm')
+      browser.assert.text('td[id=row-0-1]', '7');
     });
   });
 });

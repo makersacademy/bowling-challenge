@@ -121,9 +121,9 @@ $(document).ready(function() {
 
     function AppendScorecard() {
       var index = $('select#current-frame').val();
-      $('#scorecard').append('<tr><td>' + (parseInt(index) + 1) +
-      '</td><td>' + currentFrame.rollOne + '</td><td>' +
-      currentFrame.rollTwo + '</td><td>' + score.currentTotalScore + '</td></tr>')
+      $('#scorecard').append('<tr><td id="row-' + index + '-1">' + (parseInt(index) + 1) +
+      '</td><td id="row-' + index + '-2">' + currentFrame.rollOne + '</td><td id="row-' + index + '-3">' +
+      currentFrame.rollTwo + '</td><td id="row-' + index + '-4">' + score.currentTotalScore + '</td></tr>')
 
     }
 

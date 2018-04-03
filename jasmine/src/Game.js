@@ -2,6 +2,8 @@ function Game(bonus) {
   this.bonus = bonus
   this.total = 0
   this.frame = 1
+  this.inGame = false
+  this.firstRoll = null
 }
 
 Game.prototype.roll = function(first, second = 0, third = 0) {

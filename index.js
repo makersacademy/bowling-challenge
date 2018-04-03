@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function() {
   var game = new Game();
 
   $('#zero').click(function() {

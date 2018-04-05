@@ -1,18 +1,20 @@
 $(document).ready(function () {
 
-  setup();
+  setupGame();
 
-  function setup() {
+  // Listeners
+
+  $('.hit-pins').on('click', function () {
+    addRoll(parseInt($(this).val()))
+  });
+
+  function setupGame() {
     var empty_frames = []
     for (i = 0; i < 10; i++) {
       empty_frames.push(new Frame())
     }
     game = new Game(empty_frames);
   }
-
-  $('.hit-pins').on('click', function () {
-    addRoll(parseInt($(this).val()))
-  });
 
   function addRoll(pins) {
     game.addRoll(pins)

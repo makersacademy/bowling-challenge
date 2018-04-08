@@ -1,10 +1,10 @@
-#### General
+## Bowling Calculator
 
 A javascript application created as a weekend challange at the 5th and 6th weekend (took me 4 days) of Makers Academy that allows you to count a score in a classic 10-pins bowling game, including all of the edge cases.
 
 This one is my most important lesson-learnd from Makers Academy - check out the Reflecion paragraph.
 
-#### How to use the program.
+## How to use the program.
 
 1) Locally
 ```plain
@@ -15,13 +15,13 @@ then run the index.html in the browser
 2) Online
 go to: http://bowling-calculator.surge.sh/
 
-#### Technology
+## Technology
 
 * Front-end: Javascript, jQuery, HTML, CSS
 * Back-end: Javascript
 * Testing: Jasmine
 
-#### Design of code
+## Design of code
 
 ##### Constructor Game
 methods:
@@ -59,7 +59,7 @@ methods:
 `displayBasicScore` - displays the score.
 `_addEmptyPairWhenStrike` - adds empty pair when strike.
 
-#### Screenshots
+## Screenshots
 
 Big screen
 
@@ -70,9 +70,9 @@ Mobile
 ![See image](/readme_images/bow2.png)
 
 
-#### Reflection:
+## Reflection:
 
-## General thoughts
+#### General thoughts
 
 This was so far the most logically advanced challenge at makers so far and I must say - I've enjoyed it. It was a pleasure to think through the problem and look for the solution. After weeks of learning how to set up an app etc. - what is more 'technical' and less 'logical', I've welcomed a chance to stretch my brain. I also started to like JS during this one :)
 
@@ -82,7 +82,7 @@ I've also made a mistake in design - it checks if there was a strike or spare by
 
 Overall I'm very happy with this challenge. Completing it was very satisfying and I am proud of myself.
 
-## What went good:
+#### What went good:
 
 1) completing the logic - indeed, counting bowling scores is harder than it appears.
 2) looping html code in jQuery instead of writing tons of lines which are almost the same.
@@ -90,11 +90,11 @@ Overall I'm very happy with this challenge. Completing it was very satisfying an
 4) testing - I believe my tests cover all edge cases.
 5) making the UI look good.
 
-## What went worse:
+#### What went worse:
 
 1) I should have created a separate class for a frame (2 rolls) to stash there the more complicated logic (e.g. was there a strike or spare, the number of points etc.) Unfortunately my game class ended up pretty long and on some point's too complicated.
 2) I was unable to count the whole score (with strikes and spares) as the game went on, not only at the end. I think its because my methods were too complicated and it was hard to adapt them to constant refreshments.
 
-## If I had more time...
+#### If I had more time...
 
 1) I would give myself a few days without this code, look on it with a fresh eye and energy, and create a new frame class. I think that my program can be faaaar better designed.

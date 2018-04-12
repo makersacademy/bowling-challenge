@@ -2,7 +2,7 @@
 
 A javascript application created as a weekend challange at the 5th and 6th weekend (took me 4 days) of Makers Academy that allows you to count a score in a classic 10-pins bowling game, including all of the edge cases.
 
-This one is my most important lesson-learnd from Makers Academy - check out the Reflecion paragraph.
+This one is my most important lesson-learned from Makers Academy - check out the Reflection paragraph.
 
 ## How to use the program.
 
@@ -12,8 +12,8 @@ $ git clone
 ```
 then run the index.html in the browser
 
-2) Online
-go to: http://bowling-calculator.surge.sh/
+2) Online:
+Go to http://bowling-calculator.surge.sh/
 
 ## Technology
 

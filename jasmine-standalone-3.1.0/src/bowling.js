@@ -8,24 +8,22 @@ function Bowling() {
 };
 
 Bowling.prototype.countScore = function(score) {
-  if(0 < score =< 10) {
-    this.currentScore = score;
+  if((score <= 10) && (score > 0)) {
+    this.currentScore += score;
     return this.currentScore;
   } else {
     throw new Error ('Wrong score number')
   };
 };
 
-Bowling.protoype.RollScore = function(score) {
-  Bowling.countScore(score)
-  if (this.currentScore < 10) {
-    this.currentScore += this.currentScore;
-  } else if (this.currentScore == 10) {
-    this.currentScore += this.currentScore;
-  };
-  this.totalScore += this.currentScore
-  this.currentScore = 0
-  return this.totalScore
-};
-
-};
+// Bowling.protoype.RollScore = function(score) {
+//   Bowling.countScore(score)
+//   if (this.currentScore < 10) {
+//     this.currentScore += this.currentScore;
+//   } else if (this.currentScore == 10) {
+//     this.currentScore += this.currentScore;
+//   };
+//   this.totalScore += this.currentScore
+//   this.currentScore = 0
+//   return this.totalScore
+// };

@@ -1,0 +1,11 @@
+table, th, td {
+  font-family: sans-serif;
+  border: 1px solid grey;
+  border-collapse: collapse;
+}
+th, td {
+  height: 20px;
+  min-width: 20px;
+  text-align: center;
+  padding: 3px
+}

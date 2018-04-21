@@ -1,75 +1,29 @@
 "use strict";
 
-function Game(){
-  for (var i = 0, a = new Array(21); i < 21;){
-    a[i++] = 0;
-  }
-  this.rolls = a;
-  this.currentRoll = 0;
-}
-
-Game.prototype.roll = function(pins){
-  this.rolls[this.currentRoll++] = pins;
+var BowlingGame = function() {
+  this.rolls = [];
 };
 
-Game.prototype.score = function(){
-  var score = 0;
-  var i = 0;
-  for(var frame = 0; frame < 10; frame++){
-    if(this.rolls[i] + this.rolls[i+1] === 10){
-      score += 10 + this.rolls[i+2];
-      i += 2
+BowlingGame.prototype.roll = function(pins) {
+  this.rolls.push(pins);
+};
+
+BowlingGame.prototype.score = function() {
+  var result = 0;
+  var rollIndex = 0;
+  var game = this;
+
+  for (var frameIndex  = 0; frameIndex < 10; frameIndex++) {
+    if (isSpare()) {
+      result += this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
     } else {
-      score += this.rolls[i] + this.rolls[i+1];
-      i += 2;
+      result += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
     }
+    rollIndex += 2;
   }
-  return score;
+  return result;
+
+  function isSpare() {
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] == 10;
+  }
 };
-
-var game = new Game();
-console.log(game.roll(20));
-
-
-
-// function Game(){
-//   this._frames = [];
-// }
-
-// Games.prototype.addFrame = function(frame){
-//   this._frames.push(frame);
-// }
-
-// game = new Game();
-// game.addFrame(new Frame());
-
-
-
-// Game.prototype.strikeBonus = function(index) {
-//   var bonus = this.frames[index+1].total;
-//   var frames = this.frames;
-//   if (this.isAStrike(index+1)) {
-//     bonus = isAStrike(index+2) ? 20 : 10 + this.frames[index+2].firstBowl;
-//   }
-//   return bonus;
-// }
-
-// Game.prototype.isAStrike(index){
-//   return this.frames[index+1].outcome === 'X';
-// }
-
-
-// BowlingGame.prototype.currentMove = function(pins) {
-//   if ( this.isStrike() ) {
-//     this.strikeScoring(pins);
-//   } else if ( this.isSpare() ) {
-//     this.spareScoring(pins);
-//   } else {
-//     this.addToScore(pins);
-//     if ( this.isFirstRoll() ) {
-//       this.incrementRoll();
-//     } else {
-//       this.resetFrame(pins);
-//     }
-//   }
-// };

@@ -1,36 +1,35 @@
 "use strict";
 
-describe("Game", function(){
+describe("The Bowling Game", function() {
 
   var game;
 
-  beforeEach(function(){
-    game = new Game();
+  beforeEach(function() {
+    game = new BowlingGame();
   });
 
-  function rollMany(rolls, pins){
-    for(var i = 0; i < rolls; i++){
+  it("can roll gutter game", function() {
+    rollMany(0, 20);
+    expect(game.score()).toBe(0);
+  });
+
+  it("can roll all ones", function() {
+    rollMany(1, 20);
+    expect(game.score()).toBe(20);
+  });
+
+  it("can roll a spare", function () {
+    game.roll(5);
+    game.roll(5); // spare
+    game.roll(3); // value doubles
+    rollMany(0, 17);
+    expect(game.score()).toBe(16);
+  });
+
+  var rollMany = function(pins, rolls) {
+    for (var i = 0; i < rolls; i++) {
       game.roll(pins);
     }
   };
 
-  it("Gutter game", function(){
-    rollMany(20, 0); 
-    expect(game.score()).toBe(0);
-  });
-
-  it("All ones", function(){
-    rollMany(20, 1);
-    expect(game.score()).toBe(20);
-  });
-
-  it("One spare", function(){
-    game.roll(5);
-    game.roll(5); //spare
-    game.roll(3);
-    rollMany(17, 0);
-    expect(game.score()).toBe(16);
-  });
-
 });
-

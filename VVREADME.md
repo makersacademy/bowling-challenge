@@ -2,12 +2,11 @@
 
 Link to the task source with detailed instructions regarding the challenge itself is available [here](https://github.com/makersacademy/bowling-challenge).
 
-To solve this challange I used the following examples and videos:
+To solve this challange I used the following sources:
 - [example1](https://github.com/spike01/bowlingJS).
-- 
 - [example2](http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata). 
-- [review.md](https://github.com/makersacademy/bowling-challenge/blob/master/docs/review.md).
 - [example3](https://github.com/sanjsanj/bowling-challenge/blob/7f312772739e1ebdc783d82124c672c9a4120657/src/Bowling.js).
+- [example4](https://www.youtube.com/watch?v=-qA_MjNmpVU).
 
 Unfinished code or other missing elements will be highlighted, and plan will be provided how to finalise the challenge in [ToDo](#todo).
 

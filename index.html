@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Thermostat</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="src/thermostat.js"></script>
+    <script src="src/interface.js"></script>
+    <section>
+
+      <div class="container">
+
+        <div class="row justify-content-start">
+          <div class="col-md-4">
+            <h1>Thermostat</h1>
+          </div>
+        </div>
+
+        <div class="row align-self-center">
+          <div class="col-md-3 ml-md-auto">
+            <h1 id="degree"></h1>
+          </div>
+          <div class="col-md-5 ml-md-auto">
+          </div>
+        </div>
+
+        <div class="row align-self-center">
+          <div class="col-md-5 ml-md-auto">
+            <h2>Current Weather</h2>
+          </div>
+        </div>
+
+        <div class="row justify-content-end">
+          <div class="col-md-3 ml-md-auto">
+            <h3>
+              <span id="current-temperature"></span>
+            </h3>
+          </div>
+          <div class="col-3">
+          </div>
+        </div>
+
+        <div class="row justify-content-end">
+            <div class="form-group col-md-3">
+              <select class="form-control" id="current-city">
+                <option value='london' selected>London</option>
+                <option value='edinburgh'>Edinburgh</option>
+                <option value='paris'>Paris</option>
+                <option value='taipei'>Taipei</option>
+                <option value='tokyo'>Tokyo</option>
+              </select>
+            </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md">
+            <button class="btn btn-outline-dark btn-lg" id="degree-reset">reset</button>
+            <button  class="btn btn-outline-dark btn-lg" class="btn btn-primary" id="degree-up">+</button>
+            <button class="btn btn-outline-dark btn-lg" id="degree-down">-</button>
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-md-3">
+            <span id="prower-saving-mode"></span>
+            <br/>
+            <button class="btn btn-outline-success btn-sm" id="PSM-on">PSM on</button>
+            <button class="btn btn-outline-danger btn-sm" id="PSM-off">PSM off</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

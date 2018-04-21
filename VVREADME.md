@@ -2,7 +2,12 @@
 
 Link to the task source with detailed instructions regarding the challenge itself is available [here](https://github.com/makersacademy/bowling-challenge).
 
-To solve this challange I used [example](https://github.com/spike01/bowlingJS). Also, [this example](http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata) and [review.md](https://github.com/makersacademy/bowling-challenge/blob/master/docs/review.md).
+To solve this challange I used the following examples and videos:
+- [example1](https://github.com/spike01/bowlingJS).
+- 
+- [example2](http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata). 
+- [review.md](https://github.com/makersacademy/bowling-challenge/blob/master/docs/review.md).
+- [example3](https://github.com/sanjsanj/bowling-challenge/blob/7f312772739e1ebdc783d82124c672c9a4120657/src/Bowling.js).
 
 Unfinished code or other missing elements will be highlighted, and plan will be provided how to finalise the challenge in [ToDo](#todo).
 
@@ -36,6 +41,11 @@ Run the automated tests for this challenge via RSpec -fd.
 - 1 - Setting up project:
 	- Creating testing environment;
 	- Passing initial tests, creating game class;
+- 2 - Second test:
+	- test for Gutter Game;
+	- test for All Ones;
+- 3 - Third test:
+	- 	
 
 ## ToDo
 

@@ -35,6 +35,7 @@ Run the automated tests for this challenge via RSpec -fd.
 
 - 1 - Setting up project:
 	- Creating testing environment;
+	- Passing initial tests, creating game class;
 
 ## ToDo
 

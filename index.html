@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <body>
+  <head>
+    <title>Bowling</title>
+  </head>
+  <body>
+    <!-- <section>
+      <link rel="stylesheet" href="mystyle.css">
+      <img src="https://nerdist.com/wp-content/uploads/2015/08/Cold-Weather-Movies-082215.jpg"; height="350" width="500">
+      <div id="div_title">Bowling Game</div>
+      <br>
+      <h1 id="temperature"></h1>
+      <p>
+        <button id="temperature-up" >+</button>
+        <button id="temperature-down" >-</button>
+        <button id="temperature-reset" >reset</button>
+        power saving mode is <span id="power-saving-status">on</span>
+        <button id="powersaving-on" >PSM on</button>
+        <button id="powersaving-off">PSM off</button><br>
+        <div id="temp1">Current temperature: <span id="current-temperature"></span>C</div>
+        <section>
+            <form id="select-city">
+              <input id="current-city" type="text" placeholder="Enter a city"></input>
+              <input type="submit"></input>
+            </form>
+          </section>
+      </p>
+    </section>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> 
+  <script src="src/bowling.js"></script>
+  
+  <script type="text/javascript">
+
+    $(document).ready(function() {
+
+      var thermostat = new Thermostat();
+      $('#temperature').text(thermostat.temperature);
+
+      $('#temperature-up').click(function() {
+        thermostat.up();
+        updateTemperature();
+      });
+
+      $('#temperature-up').css("color", "lightred")
+
+      $('#temperature-down').click(function() {
+        thermostat.down();
+        updateTemperature();
+      });
+
+      $('#temperature-reset').click(function() {
+        thermostat.resetTemperature();
+        updateTemperature();
+      });
+
+      $('#powersaving-on').click(function() {
+        thermostat.PSMon();
+        $('#power-saving-status').text('on')
+        updateTemperature();
+      })
+
+      $('#powersaving-off').click(function() {
+        thermostat.PSMoff();
+        $('#power-saving-status').text('off')
+        updateTemperature();
+      })
+
+      function updateTemperature() {
+        $('#temperature').text(thermostat.temperature);
+        $('#temperature').attr('class', thermostat.energyUsage());
+      };
+
+      $.get('http://api.openweathermap.org/data/2.5/weather?q=London&appid=60cd41f0985da39cc0c9703145e788d0&units=metric', function(data) {
+      $('#current-temperature').text(data.main.temp);
+      })
+
+      $('#select-city').submit(function(event) {
+      event.preventDefault();
+      var city = $('#current-city').val();
+      $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=60cd41f0985da39cc0c9703145e788d0&units=metric', function(data) {
+      $('#current-temperature').text(data.main.temp);
+      })
+      })
+    });
+  
+  </script> -->
+
+  </body>
+</html>

@@ -42,18 +42,6 @@ Game.prototype.roll = function(pinsHit){
 	}
 	this.currentFrame.roll++;
 
-
-	if(pinsHit !== 10 && this.currentFrame.roll !== 2){
-		console.log("Hit " + pinsHit + " pins down!");
-		this.currentFrame.roll++; // only on roll 1
-		this.score = pinsHit;
-	}
-	if(score === this.score){
-		this.finishFrame(true);
-	}
-	else{
-		this.finishFrame(false)
-	}
 };
 
 Game.prototype.finishFrame = function(scoreFinal){

@@ -48,6 +48,11 @@ class ScoreCalculator
         p @score_final
         @score_final += 10 + score[:bonus][0] + score[10][0]
 
+      elsif rolls[0] == 10 && score[frame + 1][0] == 10 # 2 strikes in a row
+        p frame
+        p @score_final
+        @score_final += 10+ (score[frame + 1][0]) + (score[frame + 2].sum)
+
       elsif rolls[0] == 10 # this signifies a strike
         @score_final += 10 + (score[frame + 1].sum)
         # + (score[frame + 2].sum)
@@ -77,29 +82,29 @@ end
 
 s = ScoreCalculator.new
 
-# s.add_frame(1, 10)
-# s.add_frame(2, 10)
-# s.add_frame(3, 10)
-# s.add_frame(4, 10)
-# s.add_frame(5, 10)
-# s.add_frame(6, 10)
-# s.add_frame(7, 10)
-# s.add_frame(8, 10)
-# s.add_frame(9, 10)
-# s.add_frame(10, 10)
-# s.add_frame(:bonus, 10, 10)
-
-s.add_frame(1, 1, 4)
-s.add_frame(2, 4, 5)
-s.add_frame(3, 6, 4)
-s.add_frame(4, 5, 5)
+s.add_frame(1, 10)
+s.add_frame(2, 10)
+s.add_frame(3, 10)
+s.add_frame(4, 10)
 s.add_frame(5, 10)
-s.add_frame(6, 0, 1)
-s.add_frame(7, 7, 3)
-s.add_frame(8, 6, 4)
+s.add_frame(6, 10)
+s.add_frame(7, 10)
+s.add_frame(8, 10)
 s.add_frame(9, 10)
-s.add_frame(10, 2, 8)
-s.add_frame(:bonus, 6, 0)
+s.add_frame(10, 10)
+s.add_frame(:bonus, 10, 10)
+
+# s.add_frame(1, 1, 4)
+# s.add_frame(2, 4, 5)
+# s.add_frame(3, 6, 4)
+# s.add_frame(4, 5, 5)
+# s.add_frame(5, 10)
+# s.add_frame(6, 0, 1)
+# s.add_frame(7, 7, 3)
+# s.add_frame(8, 6, 4)
+# s.add_frame(9, 10)
+# s.add_frame(10, 2, 8)
+# s.add_frame(:bonus, 6, 0)
 
 
 

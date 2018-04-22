@@ -2,8 +2,9 @@ function Game(){
   this.frames = [new Frame()];
   this.currentFrame = this.frames[0];
   this.state = this.inProgress();
-  this.bonus = []
+  this.bonus = [];
 }
+
 
 Game.prototype.roll = function(pinsHit){
 	this.currentFrame.score = pinsHit + this.bonus;
@@ -34,7 +35,7 @@ Game.prototype.roll = function(pinsHit){
 				this.frames[this.bonus.frameNumber].score = this.currentFrame.score + 10;
 			}
 			else{
-				this.frames.push(new Frame(this.frames.length + 1));
+				this.frames.push(new Frame());
 				this.currentFrame.score += pinsHit;
 				console.log("Hit " + pinsHit + " pins down!");
 			}

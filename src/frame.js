@@ -1,7 +1,4 @@
 function Frame(){
 	this.roll = 1;
+	this.score = 0;
 }
-
-Frame.prototype.score = function(){
-
-};

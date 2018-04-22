@@ -11,10 +11,9 @@ Game.prototype.roll = function(pinsHit){
 
 		if(this.currentFrame.roll === 1){
 			// deal with strike
-
 			let length = this.frames.length;
 			this.frames.push(new Frame(length + 1));
-			this.bonus = { rolls: 2, frameNumber: length + 1};
+			this.bonus = { rolls: 2, frameNumber: length + 1}; // deal with multiple bonuses (array)
 			this.currentFrame = this.frames[length];
 		}
 		else if(this.currentFrame.roll === 2){
@@ -27,15 +26,16 @@ Game.prototype.roll = function(pinsHit){
 		}
 	}
 	else{
-		if(this.bonus.rolls !== 0){
+		if(this.bonus.rolls !== 0){ // check for bonus in array. remove bonus when applied
 			if(this.bonus.rolls === 1){
 				this.bonus.rolls--;
 				this.currentFrame.score += pinsHit;
 				this.frames[this.bonus.frameNumber].score = this.currentFrame.score + 10;
 			}
 			else{
-				this.frames.push(new Frame(this.frames.length + 1))
-				this.currentFrame.score += pinsHit
+				this.frames.push(new Frame(this.frames.length + 1));
+				this.currentFrame.score += pinsHit;
+				console.log("Hit " + pinsHit + " pins down!");
 			}
 		}
 	}

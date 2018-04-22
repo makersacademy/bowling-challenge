@@ -13,6 +13,11 @@ Game.prototype.total = function(){
   return total;
 };
 
+Game.prototype.nextFrame = function(){
+	this.frames.push(new Frame(this.currentFrame.number + 1));
+	this.currentFrame = this.frames[this.frames.length - 1];
+};
+
 Game.prototype.roll = function(pinsHit){
 	//this.currentFrame.score = pinsHit + this.bonus;
 	// extra roll if last frame is spare
@@ -26,8 +31,7 @@ Game.prototype.roll = function(pinsHit){
 		case 1:
 			this.currentFrame.rolls.push(pinsHit);
 			console.log("Second roll: " + pinsHit);
-			this.frames.push(new Frame(this.currentFrame.number + 1));
-			this.currentFrame = this.frames[this.frames.length - 1];
+			this.nextFrame();
 			break;
 		case 2:
 			this.currentFrame.rolls.push(pinsHit);

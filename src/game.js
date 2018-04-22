@@ -47,3 +47,5 @@ BowlingGame.prototype.score = function() {
     return game.rolls[rollIndex] + game.rolls[rollIndex + 1];
   }
 };
+
+var game = new Game();

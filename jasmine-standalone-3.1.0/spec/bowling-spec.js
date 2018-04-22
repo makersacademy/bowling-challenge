@@ -15,9 +15,9 @@ describe('Bowling', function() {
     expect(bowling.totalScore).toEqual(0);
   });
 
-  it('has a bonus counter that starts at 0', function(){
-    expect(bowling.currentBonus).toEqual(0);
-  });
+  // it('has a bonus counter that starts at 0', function(){
+  //   expect(bowling.currentBonus).toEqual(0);
+  // });
 
   it('has a counter for the frames that starts at 1', function (){
     expect(bowling.frameCount).toEqual(1);
@@ -63,6 +63,12 @@ describe('Bowling', function() {
 
   it('returns a string note if the player scores a special roll(gutter ball/strike/spare', function(){
     expect(bowling.displayNote('strike')).toEqual('Congratulations you scored a strike');
+
+  });
+
+  it('applies bonus rolls to a frame if a strike is rolled', function() {
+    bowling.countScore(10);
+    expect(bowling.currentFrameScore).toEqual(0);
 
   });
 

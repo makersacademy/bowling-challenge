@@ -2,7 +2,6 @@
 function Bowling() {
   this.totalScore = 0;
   this.currentFrameScore = 0;
-  this.currentBonus = 0;
   this.frameCount = 1;
   this.frameRoll = 1;
 };
@@ -15,13 +14,13 @@ Bowling.prototype.validScore = (function(score) {
 
   } else if (score == 10){
 
-    displayNote('strike');
-    this.frameCount += 1;
+    this.displayNote('strike');
+    this.applyBonus('strike');
 
     
 
   } else if (score == 0) {
-    displayNote('gutter');
+    this.displayNote('gutter');
   } else {
     throw new Error ('Wrong score number')
   };
@@ -40,6 +39,7 @@ Bowling.prototype.validScoreSecondMove = (function (score) {
     this.frameRoll -= 1;
   } else if (score == 0) {
     displayNote('gutter');
+    this.frameRoll -= 1;
   } else {
     throw new Error('Wrong score number')
 
@@ -48,7 +48,7 @@ Bowling.prototype.validScoreSecondMove = (function (score) {
 });
 
 Bowling.prototype.countScore = (function(score) {
-  if (this.currentFrameScore == 0) {
+  if (this.frameRoll == 1) {
     this.validScore(score);
   } else {
     this.validScoreSecondMove(score);
@@ -79,9 +79,14 @@ Bowling.prototype.displayNote = (function(string) {
   }
   else if (string == 'strike') {
     return 'Congratulations you scored a strike';
-  } 
+  } else {
+    return 'Bad luck you rolled a gutter ball';
+  }
 });
 
-Bowling.prototype.Move = (function (score) {
-  return this.moveCount;
+Bowling.prototype.applyBonus = (function (event) {
+  if (event == 'strike'){
+    this.frameRoll = 1;
+    countScore(score);
+  }
 });

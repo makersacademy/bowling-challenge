@@ -1,13 +1,20 @@
 function Game(){
-  this.frames = [new Frame()];
+  this.frames = [new Frame(1)];
   this.currentFrame = this.frames[0];
   this.state = this.inProgress();
   this.bonus = [];
 }
 
+Game.prototype.total = function(){
+  let total = 0
+  this.frames.forEach(function(frame){
+    total += frame.total();
+  });
+  return total;
+};
 
 Game.prototype.roll = function(pinsHit){
-	this.currentFrame.score = pinsHit + this.bonus;
+	//this.currentFrame.score = pinsHit + this.bonus;
 	// extra roll if last frame is spare
 	if(pinsHit === 10){
 
@@ -29,7 +36,7 @@ Game.prototype.roll = function(pinsHit){
 		}
 	}
 	else{
-		if (this.bonus.length === 0){ // check for bonus in array. remove bonus when applied
+		if (this.bonus.length !== 0){ // check for bonus in array. remove bonus when applied
 			if(this.bonus.rolls === 1){
 				this.bonus.rolls--;
 				this.currentFrame.score += pinsHit;
@@ -37,12 +44,18 @@ Game.prototype.roll = function(pinsHit){
 			}
     }
 		else{
-			this.frames.push(new Frame());
-			this.currentFrame.score += pinsHit;
-			console.log("Hit " + pinsHit + " pins down!");
+      if(this.currentFrame.rolls.length <= 1){
+        this.currentFrame.rolls.push(pinsHit);
+        console.log("Hit " + pinsHit + " pins down!");
+      }
+      else{
+        this.frames.push(new Frame(this.currentFrame.number + 1));
+        this.currentFrame = this.frames[this.frames.length - 1];
+        this.roll(pinsHit);
+      }
 		}
 	}
-	this.currentFrame.roll++;
+
 
 };
 

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Street Bowling</title>
+
+    <script src="js/jquery.js"></script>
+    <script src="src/Frame.js"></script>
+    <script src="src/Scorecard.js"></script>
+    <script src="src/BowlingJQuery.js"></script>
+    <script src="src/AnimationJQuery.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+  </head>
+
+
+  <body>
+    <h1 id="title">Street Bowling</h1>
+
+    <div id="image">
+      <img src="/images/akuma_hadouken.gif"></img>
+      <img src="/images/bowling_explosion.png"></img>
+    </div>
+
+    <button id="start_game">Start Game</button>
+
+    <div id="roll_div"  class="no_border">
+      <h2> Current Frame: <span id="curr_frame"></span></h2>
+        <table>
+          <tr class="no_border">
+            <td class="no_border">
+              <label for="roll1">Enter roll 1 score</label>
+            </td>
+            <td class="no_border">
+              <input type="text" name="roll1" id="roll1" maxlength="2">
+            </td>
+            <td rowspan="2" class="no_border">
+              <input type="submit" name="submit_rolls" id="submit_rolls">
+            </td>
+          </tr>
+          <tr class="no_border">
+            <td class="no_border">
+              <label for="roll2">Enter roll 2 score</label>
+            </td>
+            <td class="no_border">
+              <input type="text" name="roll2" id="roll2" maxlength="2" class="no_border">
+            </td>
+          </tr>
+
+        </table>
+    </div>
+
+    <div id="display_div">
+      <table>
+
+        <tr id="row_header">
+          <% ["Score Type","Frame 1","Frame 2","Frame 3","Frame 4","Frame 5",
+            "Frame 6","Frame 7","Frame 8","Frame 9","Frame 10","Frame 11"]
+            .map(function(el, idx) { %>
+          <th id="row_header_<%= idx %>">
+            <%= el %>
+          </th>
+          <% }); %>
+        </tr>
+
+        <tr id="row_roll1">
+          <% ["Roll 1","-","-","-","-","-","-","-","-","-","-","-"].map(function(el, idx) { %>
+          <td id="row_roll1_<%= idx %>">
+            <%= el %>
+          </td>
+          <% }); %>
+        </tr>
+
+        <tr id="row_roll2">
+          <% ["Roll 2","-","-","-","-","-","-","-","-","-","-","-"].map(function(el, idx) { %>
+          <td id="row_roll2_<%= idx %>">
+            <%= el %>
+          </td>
+          <% }); %>
+        </tr>
+
+        <tr  id="row_bonus">
+          <% ["Bonus","-","-","-","-","-","-","-","-","-","-","N/A"].map(function(el, idx) { %>
+          <td id="row_bonus_<%= idx %>">
+            <%= el %>
+          </td>
+          <% }); %>
+        </tr>
+
+
+        <tr  id="row_total" class="gt">
+          <td class="gt">
+            Grand Total
+          </td>
+          <td id="row_grandtotal" class="gt">
+            -
+          </td>
+        </tr>
+
+      </table>
+    </div>
+
+    <h2 id="message"></h2>
+
+  </body>
+</html>

@@ -1,0 +1,85 @@
+body {
+    max-width: 800px;
+    margin: auto;
+    background: black;
+    padding: 10px;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 18px;
+    color: #fad703;
+}
+
+img {
+  max-width: 400px !important;
+}
+
+
+div {
+  margin: 20px 0px 20px 0px;
+}
+
+div#image {
+  display: none;
+  margin: auto;
+}
+
+div#roll_div, div#display_div {
+  display: none;
+}
+
+input {
+  margin: 10px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  font-size: 18px;
+  text-align: center;
+}
+
+input#submit_rolls {
+  height: 50px !important;
+  width: 100px !important;
+  font-size: 20px !important;
+  border-radius: 5px;
+}
+
+button#start_game {
+  height: 50px !important;
+  width: 100px !important;
+  font-size: 20px !important;
+  border: none;
+  border-radius: 5px;
+  background-color: red;
+  color: #fad703;
+  font-weight: bold;
+  display: block;
+  margin: 0 350px;
+}
+
+button#start_game:hover {
+  background-color: #fad703;
+  color: red;
+}
+
+h1#title {
+  font-size: 100px;
+  font-weight: bold;
+  text-align: center;
+  color: red;
+  display:none;
+}
+
+
+table, tr, td {
+  border: 3px solid red;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.no_border {
+  border: none;
+}
+
+tr.gt, td.gt {
+  border: 3px solid red;
+  font-weight: bold;
+}

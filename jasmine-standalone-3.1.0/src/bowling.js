@@ -3,18 +3,20 @@ function Bowling() {
   this.totalScore = 0;
   this.currentFrameScore = 0;
   this.currentBonus = 0;
-  this.moveCount = 1;
+  this.frameCount = 1;
   this.frameRoll = 1;
 };
 
 Bowling.prototype.validScore = (function(score) {
   if((score > 0) && (score < 10)) {
     this.currentFrameScore += score;
-    this.totalScore += this.currentFrameScore
+    this.frameRoll += 1;
+    this.totalScore += this.currentFrameScore;
 
   } else if (score == 10){
 
     displayNote('strike');
+    this.frameCount += 1;
 
     
 
@@ -30,10 +32,12 @@ Bowling.prototype.validScoreSecondMove = (function (score) {
   var limit = 10 - (this.currentScore);
   if((score < limit) || (score > limit)) {
     this.currentFrameScore += score;
-    this.totalScore += this.currentFrameScore
+    this.totalScore += this.currentFrameScore;
     this.currentFrameScore = 0;
+    this.frameRoll -= 1;
   } else if(score == limit) { displayNote('spare');
     this.currentBonus += 1;
+    this.frameRoll -= 1;
   } else if (score == 0) {
     displayNote('gutter');
   } else {

@@ -20,7 +20,7 @@ describe('Bowling', function() {
   });
 
   it('has a counter for the frames that starts at 1', function (){
-    expect(bowling.moveCount).toEqual(1);
+    expect(bowling.frameCount).toEqual(1);
   });
 
   it('has a counter that counts the roll in the frame that starts at 1', function () {
@@ -38,7 +38,12 @@ describe('Bowling', function() {
     }).toThrowError('Wrong score number');
   });
 
-  it('throws an error if the score is outside the possible score limit during the second', function () {
+  it('throws an error if the score is outside the possible score limit during the first roll', function () {
+    expect(function (){bowling.validScore(19)}).toThrowError('Wrong score number');
+
+});
+
+  it('throws an error if the score is outside the possible score limit during the second roll', function () {
       bowling.validScore(5);
       expect(function() {
         bowling.validScoreSecondMove(18);
@@ -47,23 +52,20 @@ describe('Bowling', function() {
   });
 
   it('returns the total score of a roll', function() {
-
     bowling.countScore(5);
     expect(bowling.totalScore).toEqual(5);
   });
 
-  it ('returns the number of the current roll', function () {
-    expect();
+  it ('returns the number of the current roll inside a frame', function () {
+    bowling.countScore(5);
+    expect(bowling.frameRoll).toEqual(2);
   });
 
   // it ('returns the number of the current roll', function () {
   //   expect(bowling.currentRoll()).toEqual(1);
   // });
 
-  it ('returns number of move', function() {
-    expect(bowling.Move()).toEqual(1);
 
-  });
 
   // it('has a function that returns a note, when the user rolls a spare', function () {
   //   expect(bowling.note()).toEqual('Spare');

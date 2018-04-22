@@ -15,16 +15,32 @@ BowlingGame.prototype.score = function() {
   var game = this
 
   for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
-    if (isSpare()) {
-    score += this.rolls[rollIndex] + this.rolls[rollIndex + 1] +this.rolls[rollIndex + 2];
-  } else {
-    score += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
-  }
-    rollIndex += 2;
+    if (isStrike()) {
+      score += strikeScore();
+      rollIndex++
+    } else if (isSpare()) {
+        score += spareScore();
+        rollIndex += 2
+    } else {
+        score += normalScore();
+        rollIndex += 2;
+    }
   }
 	return score;
 
+  function isStrike() {
+    return game.rolls[rollIndex] === 10;
+  }
   function isSpare() {
     return game.rolls[rollIndex] + game.rolls[rollIndex + 1] === 10;
+  }
+  function spareScore() {
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] +game.rolls[rollIndex + 2];
+  }
+  function strikeScore() {
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] +game.rolls[rollIndex + 2];
+  }
+  function normalScore() {
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1];
   }
 };

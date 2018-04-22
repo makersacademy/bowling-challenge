@@ -5,9 +5,13 @@ function gameStatus(){
   console.log("\nScoreboard:")
   for(i = 1; i <= f; i++){
     let frame = game.frames[i - 1];
-    console.log("Frame " + i)
-    console.log(frame.score);
+    console.log("Frame: " + i)
+    console.log("Score: " + frame.score);
   }
+}
+
+function turn(){
+  // 2 rolls only
 }
 
 console.log("Current Frame: " + game.frames.length);

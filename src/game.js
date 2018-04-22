@@ -25,20 +25,21 @@ Game.prototype.roll = function(pinsHit){
 		else{
 			// Final extra roll
 			this.currentFrame.score += pinsHit;
+
 		}
 	}
 	else{
-		if(this.bonus.length === 0){ // check for bonus in array. remove bonus when applied
+		if (this.bonus.length === 0){ // check for bonus in array. remove bonus when applied
 			if(this.bonus.rolls === 1){
 				this.bonus.rolls--;
 				this.currentFrame.score += pinsHit;
-				this.frames[this.bonus.frameNumber].score = this.currentFrame.score + 10;
+				this.frames[this.bonus.frameNumber].score = (this.currentFrame.score + 10);
 			}
-			else{
-				this.frames.push(new Frame());
-				this.currentFrame.score += pinsHit;
-				console.log("Hit " + pinsHit + " pins down!");
-			}
+    }
+		else{
+			this.frames.push(new Frame());
+			this.currentFrame.score += pinsHit;
+			console.log("Hit " + pinsHit + " pins down!");
 		}
 	}
 	this.currentFrame.roll++;

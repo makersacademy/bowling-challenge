@@ -25,8 +25,18 @@ Game.prototype.roll = function(pinsHit){
 	// 3 cases: 0 rolls made: make 1st roll - deal with strike, 1 roll made, 2nd roll - spares, 2 rolls made: throw error if isn't last frame with bonus
 	switch(this.currentFrame.rolls.length){
 		case 0:
-			this.currentFrame.rolls.push(pinsHit);
-			console.log("First roll: " + pinsHit);
+			if(this.bonus.length !== 0 && this.bonus[0].rolls[1] === '/'){
+				this.bonus[0].rolls[1] = pinsHit + 10;
+			}
+			if(pinsHit === 10){
+				this.currentFrame.rolls.push('X');
+				console.log("Strike!");
+				this.bonus.push(this.currentFrame);
+			}
+			else {
+				this.currentFrame.rolls.push(pinsHit);
+				console.log("First roll: " + pinsHit);
+			}
 			break;
 		case 1:
 			this.currentFrame.rolls.push(pinsHit);

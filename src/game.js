@@ -1,5 +1,5 @@
 function Game(){
-  this.frames = [new Frame(1, 0)];
+  this.frames = [new Frame()];
   this.currentFrame = this.frames[0];
   this.state = this.inProgress();
   this.bonus = []

@@ -1,4 +1,4 @@
-function Frame(number){
+function Frame(){
 	this.roll = 1;
 }
 

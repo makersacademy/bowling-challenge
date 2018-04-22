@@ -2,10 +2,11 @@
 
 var BowlingGame = function() {
   this.rolls = [];
+  this.currentRoll = 0;
 };
 
 BowlingGame.prototype.roll = function(pins) {
-  this.rolls.push(pins);
+  this.rolls[this.currentRoll++] = pins;
 };
 
 BowlingGame.prototype.score = function() {
@@ -13,7 +14,7 @@ BowlingGame.prototype.score = function() {
   var rollIndex = 0;
   var game = this;
 
-  for (var frameIndex  = 0; frameIndex < 10; frameIndex++) {
+  for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
     if (isStrike()) {
       result += getStrikeScore();
       rollIndex++;
@@ -48,4 +49,6 @@ BowlingGame.prototype.score = function() {
   }
 };
 
-var game = new Game();
+// var game = new BowlingGame();
+
+// console.log(game);

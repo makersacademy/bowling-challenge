@@ -4,7 +4,7 @@ body {
     font-size: 1.0em;
 }
 
-button {
+.btn-group button  {
     color: DodgerBlue;
     height: 50px;
     width: 50px;
@@ -33,4 +33,13 @@ td, th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
-} 
+}
+
+.btn-group1 button {
+    color: rgb(0, 0, 0);
+    height: 50px;
+    width: 120px;
+    font-size : 15px;
+    font-family: cursive;
+    border-radius: 8%;
+}

@@ -1,48 +1,62 @@
 'use strict';
 function Bowling() {
   this.totalScore = 0;
-  this.currentScore = 0;
+  this.currentFrameScore = 0;
   this.currentBonus = 0;
   this.moveCount = 1;
   this.frameRoll = 1;
 };
 
 Bowling.prototype.validScore = (function(score) {
-
   if((score > 0) && (score < 10)) {
-    this.currentScore += score;
-    return this.currentScore;
+    this.currentFrameScore += score;
+    this.totalScore += this.currentFrameScore
+
+  } else if (score == 10){
+
+    displayNote('strike');
+
+    
+
+  } else if (score == 0) {
+    displayNote('gutter');
   } else {
     throw new Error ('Wrong score number')
   };
-  return this.currentScore;
+  
 });
 
 Bowling.prototype.validScoreSecondMove = (function (score) {
-  var limit = 10 - (this.currentScore)
-  if(score <= limit) {
-    this.currentScore += score;
-    return this.currentScore;
+  var limit = 10 - (this.currentScore);
+  if((score < limit) || (score > limit)) {
+    this.currentFrameScore += score;
+    this.totalScore += this.currentFrameScore
+    this.currentFrameScore = 0;
+  } else if(score == limit) { displayNote('spare');
+    this.currentBonus += 1;
+  } else if (score == 0) {
+    displayNote('gutter');
   } else {
-    throw new Error ('Wrong score number')
-  };
+    throw new Error('Wrong score number')
+
+  }
+
 });
 
 Bowling.prototype.countScore = (function(score) {
-  if (this.currentScore === 0) {
-    this.validScore(score)
+  if (this.currentFrameScore == 0) {
+    this.validScore(score);
   } else {
-    this.validScoreSecondMove(score)
+    this.validScoreSecondMove(score);
   };
   return this.currentScore
 });
 
-Bowling.prototype.countTotal = (function() {
+Bowling.prototype.countTotal = (function(score) {
   //   this.totalScore += this.currentScore;
-  if (this.currentScore <= 10) {
     this.totalScore += this.currentScore
-  }
-  return this.totalScore;
+  
+
 });
 
 Bowling.prototype.currentRoll = (function () {
@@ -55,6 +69,15 @@ Bowling.prototype.currentRoll = (function () {
   };
 });
 
+Bowling.prototype.displayNote = (function(string) {
+  if (string == 'spare') {
+    return 'Congratulations you scored a spare';
+  }
+  else if (string == 'strike') {
+    return 'Congratulations you scored a strike';
+  } 
+});
+
 Bowling.prototype.Move = (function (score) {
-  return this.moveCount
+  return this.moveCount;
 });

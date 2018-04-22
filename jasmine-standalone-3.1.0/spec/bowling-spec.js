@@ -7,11 +7,11 @@ describe('Bowling', function() {
     bowling = new Bowling();
   });
 
-  it('has a function that returns the current score and it starts with zero', function(){
-    expect(bowling.currentScore).toEqual(0);
+  it('has a function that returns the current score of a frame and it starts with zero', function(){
+    expect(bowling.currentFrameScore).toEqual(0);
   });
 
-  it('starts with zero', function() {
+  it('has a total score which starts with zero', function() {
     expect(bowling.totalScore).toEqual(0);
   });
 
@@ -27,31 +27,39 @@ describe('Bowling', function() {
     expect(bowling.frameRoll).toEqual(1);
   });
 
-  it('counts the score of a roll, if the score is between 1 and 10', function() {
-    expect(bowling.countScore(3)).toEqual(3);
+  it('counts the score of a roll in a frame', function() {
+    bowling.countScore(3);
+    expect(bowling.totalScore).toEqual(3);
   });
 
   it('throws an error if the score is < 0 or score > 10', function () {
     expect(function() {
-      bowling.countScore(11);
+      bowling.validScore(11);
     }).toThrowError('Wrong score number');
+  });
+
+  it('throws an error if the score is outside the possible score limit during the second', function () {
+      bowling.validScore(5);
+      expect(function() {
+        bowling.validScoreSecondMove(18);
+      }).toThrowError('Wrong score number');
+
   });
 
   it('returns the total score of a roll', function() {
 
     bowling.countScore(5);
-    expect(bowling.countTotal()).toEqual(5);
+    expect(bowling.totalScore).toEqual(5);
   });
 
   it ('returns the number of the current roll', function () {
-    bowling.countScore(5);
-    expect(bowling.currentRoll()).toEqual(2);
+    expect();
   });
 
-  it ('returns the number of the current roll', function () {
-    expect(bowling.currentRoll()).toEqual(1);
-  });
-  
+  // it ('returns the number of the current roll', function () {
+  //   expect(bowling.currentRoll()).toEqual(1);
+  // });
+
   it ('returns number of move', function() {
     expect(bowling.Move()).toEqual(1);
 

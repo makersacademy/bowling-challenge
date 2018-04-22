@@ -17,30 +17,32 @@ Game.prototype.roll = function(pinsHit){
 	//this.currentFrame.score = pinsHit + this.bonus;
 	// extra roll if last frame is spare
 	if(pinsHit === 10){
-
-		if(this.currentFrame.roll === 1){
+		if(this.currentFrame.rolls.length === 0){
 			// deal with strike
-			let length = this.frames.length;
-			this.frames.push(new Frame(length + 1));
-			this.bonus.push({ rolls: 2, frameNumber: length + 1}); // deal with multiple bonuses (array)
-			this.currentFrame = this.frames[length];
+      this.currentFrame.rolls.push('X');
+      console.log("Strike!");
+      this.frames.push(new Frame(this.currentFrame.number + 1));
+			this.bonus.push({ roll: 1, frameNumber: this.currentFrame.number}); // deal with multiple bonuses (array)
+			this.currentFrame = this.frames[this.frames.length - 1];
 		}
-		else if(this.currentFrame.roll === 2){
+		else if(this.currentFrame.rolls.length === 1){
 			// deal with spare
-			this.currentFrame.score = -2;
+			this.currentFrame.rolls.push('/');
+      console.log("Spare!");
+      this.frames.push(new Frame(this.currentFrame.number + 1));
+      this.bonus.push({roll: 2, frameNumber: this.currentFrame.number});
 		}
 		else{
 			// Final extra roll
 			this.currentFrame.score += pinsHit;
-
 		}
 	}
 	else{
 		if (this.bonus.length !== 0){ // check for bonus in array. remove bonus when applied
-			if(this.bonus.rolls === 1){
+			if(this.bonus.roll === 1){
 				this.bonus.rolls--;
-				this.currentFrame.score += pinsHit;
-				this.frames[this.bonus.frameNumber].score = (this.currentFrame.score + 10);
+				this.currentFrame.rolls.push(pinsHit);
+				this.frames[this.bonus.frameNumber - 1].rolls = (this.currentFrame.score + 10);
 			}
     }
 		else{
@@ -55,8 +57,6 @@ Game.prototype.roll = function(pinsHit){
       }
 		}
 	}
-
-
 };
 
 Game.prototype.finishFrame = function(scoreFinal){

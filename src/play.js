@@ -20,7 +20,10 @@ function scoreboard(){
   console.log("Game total: " + game.total());
 }
 
+console.log(game.total());
 game.roll(8);
-game.roll(6);
+console.log(game.total());
+game.roll(2);
+console.log(game.total());
 game.roll(3);
 scoreboard();

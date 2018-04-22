@@ -18,21 +18,44 @@ Game.prototype.nextFrame = function(){
 	this.currentFrame = this.frames[this.frames.length - 1];
 };
 
+Game.prototype.applyBonus = function(bonus, pinsHit){
+	if(bonus.length !== 0){
+		switch(this.currentFrame.rolls.length){
+			case 0:
+				this.bonus[0].frame.total = 10 + pinsHit;
+				if(this.bonus[0].frame.rolls.length !== 1 || this.bonus[0].rolls === 1){
+					this.bonus.shift();
+				}
+				this.bonus[0].rolls--;
+				break;
+			case 1:
+				this.bonus[0].total += pinsHit;
+				this.bonus.shift();
+				break;
+			case 2:
+				console.log("Deal with 3rd roll");
+				break;
+			default:
+				console.log("Invalid roll");
+		}
+	}
+};
+
 Game.prototype.roll = function(pinsHit){
 	//this.currentFrame.score = pinsHit + this.bonus;
 	// extra roll if last frame is spare
 
 	// 3 cases: 0 rolls made: make 1st roll - deal with strike, 1 roll made, 2nd roll - spares, 2 rolls made: throw error if isn't last frame with bonus
+	this.applyBonus(this.bonus, pinsHit);
 	switch(this.currentFrame.rolls.length){
 		case 0:
-			if(this.bonus.length !== 0 && this.bonus[0].rolls[1] === '/'){
-				this.bonus[0].total = pinsHit + 10;
-				this.bonus.shift();
+			if(pinsHit > 10){
+				throw new Error("Invalid roll!");
 			}
-			if(pinsHit === 10){
+			else if(pinsHit === 10){
 				this.currentFrame.rolls.push('X');
 				console.log("Strike!");
-				this.bonus.push(this.currentFrame);
+				this.bonus.push({frame: this.currentFrame, rolls: 2});
 				this.nextFrame();
 			}
 			else {
@@ -42,14 +65,13 @@ Game.prototype.roll = function(pinsHit){
 			}
 			break;
 		case 1:
-			if(this.bonus.length !== 0 && this.bonus[0].rolls[0] === 'X'){
-				this.bonus[0].total = this.currentFrame.rolls[0] + pinsHit + 10;
-				this.bonus.shift();
-			}
 			if(pinsHit + this.currentFrame.rolls[0] === 10){
 				this.currentFrame.rolls.push('/');
 				console.log("Spare!");
-				this.bonus.push(this.currentFrame);
+				this.bonus.push({frame: this.currentFrame, rolls: 1});
+			}
+			else if(pinsHit + this.currentFrame.rolls[0] > 10){
+				throw new Error("Invalid roll!");
 			}
 			else{
 				this.currentFrame.rolls.push(pinsHit);
@@ -64,7 +86,6 @@ Game.prototype.roll = function(pinsHit){
 			break;
 		default:
 			console.log("Invalid");
-			break;
 	}
 	// if(pinsHit === 10){
 	// 	if(this.currentFrame.rolls.length === 0){

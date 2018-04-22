@@ -2,6 +2,7 @@ function Game(){
   this.frames = [new Frame(1, 0)];
   this.currentFrame = this.frames[0];
   this.state = this.inProgress();
+  this.bonus = []
 }
 
 Game.prototype.roll = function(pinsHit){
@@ -13,7 +14,7 @@ Game.prototype.roll = function(pinsHit){
 			// deal with strike
 			let length = this.frames.length;
 			this.frames.push(new Frame(length + 1));
-			this.bonus = { rolls: 2, frameNumber: length + 1}; // deal with multiple bonuses (array)
+			this.bonus.push({ rolls: 2, frameNumber: length + 1}); // deal with multiple bonuses (array)
 			this.currentFrame = this.frames[length];
 		}
 		else if(this.currentFrame.roll === 2){
@@ -26,7 +27,7 @@ Game.prototype.roll = function(pinsHit){
 		}
 	}
 	else{
-		if(this.bonus.rolls !== 0){ // check for bonus in array. remove bonus when applied
+		if(this.bonus.length === 0){ // check for bonus in array. remove bonus when applied
 			if(this.bonus.rolls === 1){
 				this.bonus.rolls--;
 				this.currentFrame.score += pinsHit;

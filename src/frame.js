@@ -3,10 +3,15 @@ function Frame(number){
 	this.rolls = [];
 }
 
-Frame.prototype.total = function(){
-	var total = 0
-	this.rolls.forEach(function(roll){
-		total += roll;
-	});
+Frame.prototype.calcTotal = function(){
+	let total = 0;
+	if(this.total !== undefined){
+		total = this.total;
+	}
+	else{
+		this.rolls.forEach(function(roll){
+			total += roll;
+		});
+	}
 	return total;
-}
+};

@@ -8,7 +8,7 @@ function Game(){
 Game.prototype.total = function(){
   let total = 0;
   this.frames.forEach(function(frame){
-    total += frame.total();
+    total += frame.calcTotal();
   });
   return total;
 };
@@ -26,12 +26,14 @@ Game.prototype.roll = function(pinsHit){
 	switch(this.currentFrame.rolls.length){
 		case 0:
 			if(this.bonus.length !== 0 && this.bonus[0].rolls[1] === '/'){
-				this.bonus[0].rolls[1] = pinsHit + 10;
+				this.bonus[0].total = pinsHit + 10;
+				this.bonus.shift();
 			}
 			if(pinsHit === 10){
 				this.currentFrame.rolls.push('X');
 				console.log("Strike!");
 				this.bonus.push(this.currentFrame);
+				this.nextFrame();
 			}
 			else {
 				this.currentFrame.rolls.push(pinsHit);
@@ -39,8 +41,19 @@ Game.prototype.roll = function(pinsHit){
 			}
 			break;
 		case 1:
-			this.currentFrame.rolls.push(pinsHit);
-			console.log("Second roll: " + pinsHit);
+			if(this.bonus.length !== 0 && this.bonus[0].rolls[0] === 'X'){
+				this.bonus[0].total = this.currentFrame.rolls[0] + pinsHit + 10;
+				this.bonus.shift();
+			}
+			if(pinsHit + this.currentFrame.rolls[0] === 10){
+				this.currentFrame.rolls.push('/');
+				console.log("Spare!");
+				this.bonus.push(this.currentFrame);
+			}
+			else{
+				this.currentFrame.rolls.push(pinsHit);
+				console.log("Second roll: " + pinsHit);
+			}
 			this.nextFrame();
 			break;
 		case 2:

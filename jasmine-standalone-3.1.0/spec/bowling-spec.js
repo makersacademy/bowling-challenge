@@ -61,6 +61,11 @@ describe('Bowling', function() {
     expect(bowling.frameRoll).toEqual(2);
   });
 
+  it('returns a string note if the player scores a special roll(gutter ball/strike/spare', function(){
+    expect(bowling.displayNote('strike')).toEqual('Congratulations you scored a strike');
+
+  });
+
   // it ('returns the number of the current roll', function () {
   //   expect(bowling.currentRoll()).toEqual(1);
   // });

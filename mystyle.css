@@ -1,50 +1,24 @@
-/* .low-usage {
-    color: green;
-  }
-  
-  .medium-usage {
-    color: black;
-  }
-  
-  .high-usage {
-    color: red;
-  }
-
 body {
-    background-color: lightblue;
+    background-color: rgba(159, 147, 224, 0.877);
     color: rgb(38, 53, 53);
     font-size: 1.0em;
-}
-
-#div_title {
-    padding-left: 200px;
-    margin: auto;
-    color: red;
-    font-size: 1.2em;
 }
 
 button {
     color: DodgerBlue;
     height: 50px;
     width: 50px;
+    font-size : 20px;
+    border-radius: 50%;
 }
 
-#temperature {
-    padding-left: 225px;
-    margin: auto;
-    font-size: 1.9em;
+p {
+    text-align:center;
 }
 
-#temp1 {
-    padding-left: 123px;
-    margin: auto;
-    color: rgb(21, 23, 146);
-    font-size: 1.3em;
+header {
+    text-align: center;
+    font-size: 30px;
+    font-family: cursive;
+    font-weight: 900;
 }
-
-#select-city {
-    padding-left: 145px;
-    margin: auto;
-    color: rgb(21, 23, 146);
-    font-size: 1.3em;
-} */

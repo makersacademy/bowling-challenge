@@ -23,7 +23,7 @@ BowlingGame.prototype.score = function() {
     } else {
       result += getNormalScore();
       rollIndex += 2;
-    }
+    } 
   }
   return result;
 

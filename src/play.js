@@ -15,7 +15,7 @@ function scoreboard(){
 		    console.log("\nRoll: 2");
 		    console.log("Score: " + frame.rolls[1]);
 	    }
-	    console.log("\nFrame total: " + frame.calcTotal());
+	    console.log("\nFrame total: " + frame.total);
     }
   });
   console.log("Game total: " + game.total());

@@ -8,7 +8,7 @@ function Game(){
 Game.prototype.total = function(){
   let total = 0;
   this.frames.forEach(function(frame){
-    total += frame.calcTotal();
+    total += frame.total;
   });
   return total;
 };
@@ -37,6 +37,7 @@ Game.prototype.roll = function(pinsHit){
 			}
 			else {
 				this.currentFrame.rolls.push(pinsHit);
+				this.currentFrame.total = pinsHit;
 				console.log("First roll: " + pinsHit);
 			}
 			break;
@@ -52,6 +53,7 @@ Game.prototype.roll = function(pinsHit){
 			}
 			else{
 				this.currentFrame.rolls.push(pinsHit);
+				this.currentFrame.total += pinsHit;
 				console.log("Second roll: " + pinsHit);
 			}
 			this.nextFrame();

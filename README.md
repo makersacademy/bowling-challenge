@@ -2,6 +2,14 @@
 Bowling Challenge
 =================
 
+## User Stories
+
+1. A user can enter enter the numbers of pins knocked down per frame and see the correct score
+2. A user can see where they are in game (frame and roll)
+3. A user can see whether they have made a strike or a spare
+4. A logged in user can save a game and view past games ( time and score)
+5. A logged in user can view their average, best and worst scores
+
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

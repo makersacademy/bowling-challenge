@@ -17,14 +17,14 @@ Bowling.prototype.validScore = (function(score) {
     this.displayNote('strike');
     this.applyBonus('strike');
 
-    
+
 
   } else if (score == 0) {
     this.displayNote('gutter');
   } else {
     throw new Error ('Wrong score number')
   };
-  
+
 });
 
 Bowling.prototype.validScoreSecondMove = (function (score) {
@@ -59,7 +59,7 @@ Bowling.prototype.countScore = (function(score) {
 Bowling.prototype.countTotal = (function(score) {
   //   this.totalScore += this.currentScore;
     this.totalScore += this.currentScore
-  
+
 
 });
 

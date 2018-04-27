@@ -66,6 +66,11 @@ describe('Bowling', function() {
 
   });
 
+  it('returns a string note if the player scores a special roll(gutter ball/strike/spare', function(){
+    expect(bowling.displayNote('notastrikeorspare')).toEqual('Bad luck you rolled a gutter ball');
+
+  });
+
   it('applies bonus rolls to a frame if a strike is rolled', function() {
     bowling.countScore(10);
     expect(bowling.currentFrameScore).toEqual(0);

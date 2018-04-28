@@ -7,6 +7,7 @@ function Game() {
 
 Game.prototype.roll = function(score) {
   this.rolls.push(score);
+  this.gFrames.push(new Frame());
 }
 
 Game.prototype.score = function() {
@@ -39,3 +40,8 @@ Game.prototype.incrementRoll = function() {
   this.rollNum === 1 ? this.rollNum++ : this.rollNum--;
 }
 
+Game.prototype.setupGame = function() {
+  for(var i = 0; i < 10; i++) {
+    this.gFrames.push(new Frame());
+  };
+}

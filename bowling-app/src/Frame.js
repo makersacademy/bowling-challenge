@@ -20,7 +20,7 @@ Frame.prototype.checkStrike = function(score) {
   if (score === 10) {
     this.bonus = 2;
     this.rollTwo = 0;
-  } 
+  };
 }
 
 Frame.prototype.checkSpare = function(score) {

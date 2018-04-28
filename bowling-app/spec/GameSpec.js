@@ -94,4 +94,11 @@ describe("Game", function() {
       expect(game.isStrike(4)).toEqual(false);
     });
   })
-});
+
+  describe('setupGame', function() {
+    it('populates gFrames array', function() {
+      game.setupGame();
+      expect(game.gFrames.length).toEqual(10);
+    });
+  });
+})

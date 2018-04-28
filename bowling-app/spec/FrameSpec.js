@@ -18,6 +18,10 @@ describe('Frame', function(){
        frame.setRoll(1, 10);
        expect(frame.rollOne).toEqual(10);
      });
+     it('sets the second roll to specified number', function() {
+      frame.setRoll(2, 5);
+      expect(frame.rollTwo).toEqual(5);
+    });
   })
 
   describe('checkStrike', function() {

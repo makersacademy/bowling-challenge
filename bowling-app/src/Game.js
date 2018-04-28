@@ -1,4 +1,5 @@
 function Game() {
+  this.gFrames = [],
   this.rolls = [],    
   this.frameNum = 1,
   this.rollNum = 1

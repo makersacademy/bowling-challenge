@@ -11,7 +11,7 @@ describe("Game", function() {
         game.roll(0);
       }
       expect(game.score()).toEqual(0);
-    })
+    });
   })
 
   describe('increment frame', function(){
@@ -19,6 +19,19 @@ describe("Game", function() {
       expect(game.frameNum).toEqual(1);
       game.incrementFrame();
       expect(game.frameNum).toEqual(2);
+    });
+  })
+
+  describe('incrementRoll', function(){
+    it('increments 1 to 2', function(){
+      expect(game.rollNum).toEqual(1);
+      game.incrementRoll();
+      expect(game.rollNum).toEqual(2);
+    })
+    it('resets 2 to 1', function(){
+      game.incrementRoll();
+      game.incrementRoll();
+      expect(game.rollNum).toEqual(1);
     })
   })
 });

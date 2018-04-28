@@ -25,6 +25,10 @@ describe('Frame', function(){
       frame.checkStrike(10);
       expect(frame.bonus).toEqual(2);
     });
+    it('sets this.rollTwo to 0 when passed 10', function() {
+      frame.checkStrike(10);
+      expect(frame.rollTwo).toEqual(0);
+    });
   });
 
   describe('checkSpare', function() {
@@ -32,6 +36,17 @@ describe('Frame', function(){
       frame.firstRoll = 4;
       frame.checkSpare(6);
       expect(frame.bonus).toEqual(1);
+    });
+  });
+
+  describe('isBonusAvailable', function() {
+    it('returns true when this.bonus > 0', function() {
+      frame.bonus = 1;
+      expect(frame.isBonusAvailable()).toEqual(true);
+    });
+    it('returns false when this.bonus === 0', function() {
+      frame.bonus = 0;
+      expect(frame.isBonusAvailable()).toEqual(false);
     });
   });
 })

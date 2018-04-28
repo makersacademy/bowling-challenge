@@ -9,7 +9,16 @@ Game.prototype.roll = function(score) {
 }
 
 Game.prototype.score = function() {
-  return this.rolls.reduce((a, b) => a + b)
+  return this.rolls.reduce((a, b) => a + b);
+}
+
+Game.prototype.isStrike = function(score) {
+  return score === 10;
+}
+
+Game.prototype.startNextFrame = function() {
+  this.rollNum = 1;
+  this.frameNum++
 }
 
 Game.prototype.setupNext = function() {

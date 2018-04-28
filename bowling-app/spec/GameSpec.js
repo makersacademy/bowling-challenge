@@ -8,6 +8,7 @@ describe("Game", function() {
 
   describe('roll', function() {
     it('scores a game of all gutter balls', function() {
+      game.setupGame();
       for(var i = 0; i < 20; i++) {
         game.roll(0);
       }
@@ -34,6 +35,8 @@ describe("Game", function() {
 
   describe('makeFirstRoll', function() {
     beforeEach(function() {
+      game = new Game();
+      game.setupGame();
       spyOn(game, 'startNextFrame')
       spyOn(game, 'incrementRoll')
     });
@@ -52,6 +55,11 @@ describe("Game", function() {
       spyOn(game,'isStrike').and.returnValue(false);
       game.makeFirstRoll(9);
       expect(game.startNextFrame).not.toHaveBeenCalled();
+    });
+    it('does not call this.incrementRoll() when a strike is passed', function() {
+      spyOn(game,'isStrike').and.returnValue(true);
+      game.makeFirstRoll(9);
+      expect(game.incrementRoll).not.toHaveBeenCalled();
     });
     it('calls this.incrementRoll() when not a strike', function() {
       spyOn(game,'isStrike').and.returnValue(false);
@@ -109,14 +117,14 @@ describe("Game", function() {
       Object.setPrototypeOf(game, proto);
       spyOn(game, 'incrementRoll');
       spyOn(game, 'incrementFrame');
-    })
+    });
 
     it('calls incrementRoll when rollNum is 1', function() {
       game.rollNum = 1;
       game.setupNext();
       expect(game.incrementRoll).toHaveBeenCalled();
       expect(game.incrementFrame).not.toHaveBeenCalled();
-    })
+    });
 
     it('calls incrementRoll and incrementFrame when rollNum is 2', function() {
       game.rollNum = 2;
@@ -131,7 +139,7 @@ describe("Game", function() {
       game = {};
       Object.setPrototypeOf(game, proto);
       spyOn(game, 'incrementFrame');
-    })
+    });
 
     it('calls incrementFrame', function(){
       game.startNextFrame();

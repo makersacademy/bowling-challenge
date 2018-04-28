@@ -27,6 +27,7 @@ Game.prototype.makeSecondRoll = function(score) {
 
 Game.prototype.roll = function(score) {
   this.rolls.push(score);
+  this.gFrames[this.frameNum - 1].setRoll(this.rollNum, score);
 }
 
 Game.prototype.score = function() {

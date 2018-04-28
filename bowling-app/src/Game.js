@@ -24,12 +24,8 @@ Game.prototype.startNextFrame = function() {
 }
 
 Game.prototype.setupNext = function() {
-  if (this.rollNum === 1) {
-    this.incrementRoll();
-  } else {
-    this.incrementRoll();
-    this.incrementFrame();
-  };
+  if (this.rollNum === 2) this.incrementFrame();
+  this.incrementRoll();
 }
 
 Game.prototype.incrementFrame = function() {

@@ -26,4 +26,5 @@ Frame.prototype.showBonus = function() {
   return this._bonus;
 };
 
+
 module.exports = Frame;

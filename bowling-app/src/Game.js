@@ -5,9 +5,28 @@ function Game() {
   this.rollNum = 1
 }
 
+Game.prototype.play = function(score) {
+  if (this.rollNum === 1) this.makeFirstRoll(score);
+  if (this.rollNum === 2) this.makeSecondRoll(score);
+}
+
+Game.prototype.makeFirstRoll = function(score) {
+  this.roll(score);
+  if (this.isStrike(score)) {
+    this.startNextFrame();
+  } else {
+    this.incrementRoll();
+  };
+}
+
+Game.prototype.makeSecondRoll = function(score) {
+  this.roll(score);
+  this.incrementRoll();
+  this.incrementFrame();
+}
+
 Game.prototype.roll = function(score) {
   this.rolls.push(score);
-  this.gFrames.push(new Frame());
 }
 
 Game.prototype.score = function() {
@@ -20,7 +39,7 @@ Game.prototype.isStrike = function(score) {
 
 Game.prototype.startNextFrame = function() {
   this.rollNum = 1;
-  this.frameNum++;
+  this.incrementFrame();
 }
 
 Game.prototype.setupNext = function() {

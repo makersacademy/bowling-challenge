@@ -13,4 +13,12 @@ describe("Game", function() {
       expect(game.score()).toEqual(0);
     })
   })
+
+  describe('increment frame', function(){
+    it('increments this.frameNum by 1', function() {
+      expect(game.frameNum).toEqual(1);
+      game.incrementFrame();
+      expect(game.frameNum).toEqual(2);
+    })
+  })
 });

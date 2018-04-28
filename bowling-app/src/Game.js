@@ -1,5 +1,6 @@
 function Game() {
-  this.rolls = []    
+  this.rolls = [],    
+  this.frameNum = 1
 }
 
 Game.prototype.roll = function(score) {
@@ -8,4 +9,8 @@ Game.prototype.roll = function(score) {
 
 Game.prototype.score = function() {
   return this.rolls.reduce((a, b) => a + b)
+}
+
+Game.prototype.incrementFrame = function() {
+  this.frameNum++
 }

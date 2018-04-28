@@ -23,18 +23,40 @@ describe("Game", function() {
     });
   })
 
-  describe('incrementRoll', function(){
-    it('increments 1 to 2', function(){
+  describe('incrementRoll', function() {
+    it('increments 1 to 2', function() {
       var game = { rollNum: 1 }
       Object.setPrototypeOf(game, proto)
       game.incrementRoll();
       expect(game.rollNum).toEqual(2);
     })
-    it('resets 2 to 1', function(){
+    it('resets 2 to 1', function() {
       var game = { rollNum: 2 }
       Object.setPrototypeOf(game, proto)
       game.incrementRoll();
       expect(game.rollNum).toEqual(1);
+    })
+  })
+
+  describe('setupNext', function() {
+    it('calls incrementRoll when rollNum is 1', function() {
+      var game = { rollNum: 1 }
+      Object.setPrototypeOf(game, proto)
+      spyOn(game, 'incrementRoll');
+      spyOn(game, 'incrementFrame');
+      game.setupNext();
+      expect(game.incrementRoll).toHaveBeenCalled();
+      expect(game.incrementFrame).not.toHaveBeenCalled();
+    })
+
+    it('calls incrementRoll and incrementFrame when rollNum is 2', function() {
+      var game = { rollNum: 2 }
+      Object.setPrototypeOf(game, proto)
+      spyOn(game, 'incrementRoll');
+      spyOn(game, 'incrementFrame');
+      game.setupNext();
+      expect(game.incrementRoll).toHaveBeenCalled();
+      expect(game.incrementFrame).toHaveBeenCalled();
     })
   })
 });

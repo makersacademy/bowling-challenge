@@ -12,6 +12,15 @@ Game.prototype.score = function() {
   return this.rolls.reduce((a, b) => a + b)
 }
 
+Game.prototype.setupNext = function() {
+  if (this.rollNum === 1) {
+    this.incrementRoll();
+  } else {
+    this.incrementRoll();
+    this.incrementFrame();
+  }
+}
+
 Game.prototype.incrementFrame = function() {
   this.frameNum++
 }
@@ -19,3 +28,4 @@ Game.prototype.incrementFrame = function() {
 Game.prototype.incrementRoll = function() {
   this.rollNum === 1 ? this.rollNum++ : this.rollNum--;
 }
+

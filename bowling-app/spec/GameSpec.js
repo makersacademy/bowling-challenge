@@ -1,5 +1,6 @@
 describe("Game", function() {
   var game;
+  var proto = Game.prototype;
 
   beforeEach(function() {
     game = new Game();
@@ -24,12 +25,14 @@ describe("Game", function() {
 
   describe('incrementRoll', function(){
     it('increments 1 to 2', function(){
-      expect(game.rollNum).toEqual(1);
+      var game = { rollNum: 1 }
+      Object.setPrototypeOf(game, proto)
       game.incrementRoll();
       expect(game.rollNum).toEqual(2);
     })
     it('resets 2 to 1', function(){
-      game.incrementRoll();
+      var game = { rollNum: 2 }
+      Object.setPrototypeOf(game, proto)
       game.incrementRoll();
       expect(game.rollNum).toEqual(1);
     })

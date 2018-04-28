@@ -39,21 +39,22 @@ describe("Game", function() {
   })
 
   describe('setupNext', function() {
-    it('calls incrementRoll when rollNum is 1', function() {
-      var game = { rollNum: 1 };
+    beforeEach(function() {
+      game = {}
       Object.setPrototypeOf(game, proto);
       spyOn(game, 'incrementRoll');
       spyOn(game, 'incrementFrame');
+    })
+
+    it('calls incrementRoll when rollNum is 1', function() {
+      game.rollNum = 1;
       game.setupNext();
       expect(game.incrementRoll).toHaveBeenCalled();
       expect(game.incrementFrame).not.toHaveBeenCalled();
     })
 
     it('calls incrementRoll and incrementFrame when rollNum is 2', function() {
-      var game = { rollNum: 2 };
-      Object.setPrototypeOf(game, proto);
-      spyOn(game, 'incrementRoll');
-      spyOn(game, 'incrementFrame');
+      game.rollNum = 2;
       game.setupNext();
       expect(game.incrementRoll).toHaveBeenCalled();
       expect(game.incrementFrame).toHaveBeenCalled();
@@ -61,20 +62,25 @@ describe("Game", function() {
   })
 
   describe('startNextFrame', function() {
-    it('calls incrementFrame', function(){
+    beforeEach(function(){
+      game = {};
+      Object.setPrototypeOf(game, proto);
       spyOn(game, 'incrementFrame');
+    })
+
+    it('calls incrementFrame', function(){
       game.startNextFrame();
       expect(game.incrementFrame).toHaveBeenCalled;
     });
+
     it('sets this.rollNum to 1 when rollNum = 1', function(){
-      var game = { rollNum: 1 };
-      Object.setPrototypeOf(game, proto);
+      game.rollNum = 1
       game.startNextFrame();
       expect(game.rollNum).toEqual(1);
     });
+
     it('sets this.rollNum to 1 when rollNum = 2', function(){
-      var game = { rollNum: 2 };
-      Object.setPrototypeOf(game, proto);
+      game.rollNum = 2;
       game.startNextFrame();
       expect(game.rollNum).toEqual(1);
     });

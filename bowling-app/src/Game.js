@@ -18,7 +18,7 @@ Game.prototype.isStrike = function(score) {
 
 Game.prototype.startNextFrame = function() {
   this.rollNum = 1;
-  this.frameNum++
+  this.frameNum++;
 }
 
 Game.prototype.setupNext = function() {
@@ -27,11 +27,11 @@ Game.prototype.setupNext = function() {
   } else {
     this.incrementRoll();
     this.incrementFrame();
-  }
+  };
 }
 
 Game.prototype.incrementFrame = function() {
-  this.frameNum++
+  this.frameNum++;
 }
 
 Game.prototype.incrementRoll = function() {

@@ -1,0 +1,39 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "bowling score calculator",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irbekrm/bowling-challenge.git"
+  },
+  "keywords": [
+    "node",
+    "mongodb",
+    "express",
+    "javascript",
+    "pug"
+  ],
+  "author": "irbekrm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/irbekrm/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/irbekrm/bowling-challenge#readme",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "express": "^4.16.3",
+    "exr": "^1.0.0",
+    "mocha": "^5.1.1"
+  },
+  "devDependencies": {
+    "request": "^2.85.0"
+  }
+}

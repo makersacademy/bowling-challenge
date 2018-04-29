@@ -45,7 +45,7 @@ Bowling.prototype.validScore = (function(score) {
 });
 
 Bowling.prototype.validScoreSecondMove = (function (score) {
-  // var limit = 10 - (this.currentFrameScore);
+
   if((score <= this.scoreLimit) && (score > 0)) {
     this.currentFrameScore += score;
     this.totalScore += this.currentFrameScore;
@@ -81,7 +81,7 @@ Bowling.prototype.countScore = (function(score) {
 });
 
 Bowling.prototype.countTotal = (function(score) {
-  //   this.totalScore += this.currentScore;
+
     this.totalScore += this.currentScore;
 
 

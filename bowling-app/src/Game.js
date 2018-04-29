@@ -61,11 +61,6 @@ Game.prototype.startNextFrame = function() {
   this.incrementFrame();
 };
 
-Game.prototype.setupNext = function() {
-  if (this.rollNum === 2) this.incrementFrame();
-  this.incrementRoll();
-};
-
 Game.prototype.incrementFrame = function() {
   this.frameNum++;
 };

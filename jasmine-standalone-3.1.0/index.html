@@ -1,0 +1,44 @@
+<DOCTYPE html>
+<html>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+</script>
+<script src="src/frame.js"></script>
+<script src="src/game.js"></script>
+<script src="src/roll.js"></script>
+<script src="src/interface.js"></script>
+<body id = 'Bowling'>
+  <input type = 'text' id = 'rollScore' placeholder = 'Type score'>
+  <button id = 'roll'>
+    Roll
+  </button>
+  <table id = 'scoreTable'>
+    <tr>
+      <th>Frame</th>
+      <th>Roll</th>
+      <th>Knocked down pins</th>
+      <th>Total score</th>
+      <th>Notes</th>
+    </tr>
+  </table>
+
+</body>
+</html>
+</DOCTYPE>

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "open index.html",
+    "start": "node ./bin/www",
     "test": "jasmine"
   },
   "dependencies": {

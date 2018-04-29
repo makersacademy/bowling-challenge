@@ -31,7 +31,7 @@ describe('Frame', function(){
     });
     it('sets this.rollTwo to 0 when passed 10', function() {
       frame.checkStrike(10);
-      expect(frame.rollTwo).toEqual('-');
+      expect(frame.rollTwo).toEqual(undefined);
     });
   });
 
@@ -44,21 +44,11 @@ describe('Frame', function(){
   });
 
   describe('applyBonus', function() {
-    it('applies a bonus when this.isBonusAvailable returns true', function() {
-       spyOn(frame, 'isBonusAvailable').and.returnValue(true);
-       frame.applyBonus(5);
-       expect(frame.bonusPoints[0]).toEqual(5);
-    });
     it('decrements this.bonus when this.isBonusAvailable returns true', function() {
        spyOn(frame, 'isBonusAvailable').and.returnValue(true);
        frame.applyBonus(5);
        expect(frame.bonus).toEqual(-1);
     });
-    it('does not apply a bonus when this.isBonusAvailable returns false', function() {
-      spyOn(frame, 'isBonusAvailable').and.returnValue(false);
-      frame.applyBonus(5);
-      expect(frame.bonusPoints[0]).toEqual(undefined);
-   });
     it('does not decrement this.bonus when this.isBonus available returns false', function() {
       spyOn(frame, 'isBonusAvailable').and.returnValue(false);
       frame.applyBonus(5);

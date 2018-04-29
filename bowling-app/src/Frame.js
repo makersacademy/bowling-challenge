@@ -1,6 +1,5 @@
 function Frame() {
    this.bonus = 0;
-   this.bonusPoints = [];
 }
 
 Frame.prototype.score = function() {
@@ -11,7 +10,6 @@ Frame.prototype.setRoll = function(rollNum, score, frameNum) {
   if (rollNum === 1) {
     this.checkStrike(score);
     this.rollOne = score;
-    this.frameNum = frameNum;
   } else {
     this.checkSpare(score);
     this.rollTwo = score;
@@ -19,21 +17,15 @@ Frame.prototype.setRoll = function(rollNum, score, frameNum) {
 };
 
 Frame.prototype.checkStrike = function(score) {
-  if (score === 10) {
-    this.bonus = 2;
-    this.rollTwo = '-';
-  }
+  if (score === 10) this.bonus = 2;
 };
 
 Frame.prototype.checkSpare = function(score) {
-  if (this.rollOne + score === 10) {
-    this.bonus = 1;
-  }
+  if (this.rollOne + score === 10) this.bonus = 1;
 };
 
 Frame.prototype.applyBonus = function(score) {
   if (this.isBonusAvailable()) {
-    this.bonusPoints.push(score);
     this.bonus--;
     return true;
   } else {

@@ -1,0 +1,12 @@
+{
+  "name": "bowling-challenge",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "jasmine"
+  },
+  "dependencies": {
+    "jasmine": "^3.1.0"
+  }
+}

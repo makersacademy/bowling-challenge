@@ -1,6 +1,7 @@
 'use strict';
 
- function Roll() {
-   score = 0;
-   frmae_number = 0;
+ function Roll(score, frameNumber, rollNumber) {
+   this.score = score;
+   this.frameNumber = frameNumber;
+   this.rollNumber = rollNumber;
  };

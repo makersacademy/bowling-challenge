@@ -2,6 +2,9 @@
 Bowling Challenge
 =================
 
+## Run the app
+http://bowling_md.surge.sh/
+
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

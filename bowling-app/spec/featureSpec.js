@@ -6,23 +6,23 @@ describe("Game", function() {
     game.setupGame();
   });
 
+  function autoRoll(score, times) {
+    for(var i = 0; i < times; i++) {
+      game.play(score);
+    };
+  };
+
   describe('roll', function() {
     it('scores a game of all gutter balls', function() {
-      for(var i = 0; i < 20; i++) {
-        game.play(0);
-      }
+      autoRoll(0, 20)
       expect(game.score()).toEqual(0);
     });
     it('scores a perfect game', function() {
-      for(var i = 0; i < 13; i++) {
-        game.play(10);
-      }
+      autoRoll(10, 12)
       expect(game.score()).toEqual(300);
     });
     it('scores a game of spares', function() {
-      for(var i = 0; i < 21; i++) {
-        game.play(5);
-      }
+      autoRoll(5, 21)
       expect(game.score()).toEqual(150);
     });
   });

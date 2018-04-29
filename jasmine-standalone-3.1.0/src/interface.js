@@ -3,7 +3,7 @@ $(document).ready(function() {
 
   var clearScoreSelectDropdown = function() {
     document.getElementById('scoreSelect').options.length = 0;
-  }
+  };
 
   var insertRollIntoTable = function(roll) {
     var table = document.getElementById('scoreTable');
@@ -18,7 +18,7 @@ $(document).ready(function() {
     scoreColumn.innerHTML = `${roll.score}`;
     totalScoreColumn.innerHTML = `${game.totalScore()}`;
     notesColumn.innerHTML = "";
-  }
+  };
 
   var updateScoreSelectDropdown = function() {
     var selectDropdown = document.getElementById('scoreSelect');
@@ -29,7 +29,7 @@ $(document).ready(function() {
       option.value = `${i}`;
       selectDropdown.add(option, selectDropdown[i]);
     }
-  }
+  };
 
   $('#roll').on('click', function() {
     var rollScoreInput = document.getElementById('scoreSelect');
@@ -39,5 +39,9 @@ $(document).ready(function() {
     insertRollIntoTable(roll);
     clearScoreSelectDropdown();
     updateScoreSelectDropdown();
+
+    if (game.isGameOver()) {
+      alert(`Game is over. Final score is ${game.totalScore()}`);
+    }
   });
 });

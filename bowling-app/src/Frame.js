@@ -7,10 +7,11 @@ Frame.prototype.score = function() {
   return this.rollOne + this.rollTwo;
 };
 
-Frame.prototype.setRoll = function(rollNum, score) {
+Frame.prototype.setRoll = function(rollNum, score, frameNum) {
   if (rollNum === 1) {
     this.checkStrike(score);
     this.rollOne = score;
+    this.frameNum = frameNum;
   } else {
     this.checkSpare(score);
     this.rollTwo = score;
@@ -20,8 +21,8 @@ Frame.prototype.setRoll = function(rollNum, score) {
 Frame.prototype.checkStrike = function(score) {
   if (score === 10) {
     this.bonus = 2;
-    this.rollTwo = 0;
-  };
+    this.rollTwo = '-';
+  }
 };
 
 Frame.prototype.checkSpare = function(score) {

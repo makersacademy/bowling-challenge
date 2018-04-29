@@ -15,17 +15,12 @@ Game.prototype.play = function(score) {
     return;
   } else {
     this.makeSecondRoll(score);
-  } 
+  }
 };
 
 Game.prototype.makeFirstRoll = function(score) {
   this.roll(score);
-
-  if (this.isStrike(score)) {
-    this.startNextFrame();
-  } else {
-    this.incrementRoll();
-  }
+  this.isStrike(score) ? this.startNextFrame() : this.incrementRoll();
 };
 
 Game.prototype.makeSecondRoll = function(score) {
@@ -42,12 +37,12 @@ Game.prototype.applyBonus = function(score) {
 
 Game.prototype.roll = function(score) {
   this.rolls.push(score);
-  this.gFrames[this.frameNum - 1].setRoll(this.rollNum, score);
+  this.gFrames[this.frameNum - 1].setRoll(this.rollNum, score, this.frameNum);
 };
 
 Game.prototype.score = function() {
   let rolls, bonus;
-  rolls = this.rolls.reduce((a, b) => a + b);
+  rolls = this.rolls[0] ? this.rolls.reduce((a, b) => a + b) : 0;
   bonus = this.bonus[0] ? this.bonus.reduce((a, b) => a + b) : 0;
   return rolls + bonus;
 };

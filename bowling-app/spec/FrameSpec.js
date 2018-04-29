@@ -31,7 +31,7 @@ describe('Frame', function(){
     });
     it('sets this.rollTwo to 0 when passed 10', function() {
       frame.checkStrike(10);
-      expect(frame.rollTwo).toEqual(0);
+      expect(frame.rollTwo).toEqual('-');
     });
   });
 

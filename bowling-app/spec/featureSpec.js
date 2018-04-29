@@ -4,7 +4,7 @@ describe("Game", function() {
 
   beforeEach(function() {
     game = new Game();
-    game.setupGame(Frame);
+    game.setupGame(frame);
   });
 
   function autoRoll(score, times) {

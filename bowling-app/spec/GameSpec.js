@@ -31,12 +31,12 @@ describe("Game", function() {
       game.play(10);
       expect(game.makeFirstRoll).toHaveBeenCalled();
     });
-    it('call this.makeSeonddRoll when rollNum === 2', function() {
+    it('calls this.makeSeonddRoll when rollNum === 2', function() {
       game.rollNum = 2;
       game.play(10);
       expect(game.makeSecondRoll).toHaveBeenCalled();
     });
-    it('call this.applyBonus on first roll', function() {
+    it('calls this.applyBonus on first roll', function() {
       game.rollNum = 1;
       game.play(10);
       expect(game.applyBonus).toHaveBeenCalled();

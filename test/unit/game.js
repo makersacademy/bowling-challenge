@@ -17,9 +17,9 @@ describe('Game', _ => {
 
   beforeEach(done => {
     incompleteFrame = chai.spy.interface({
-      showBonus() { return ''; },
+      showBonus() {this.bonus = this.bonus || ''; return this.bonus;},
       showStatus() { this.status = this.status || 'in progress'; return this.status; }, 
-      roll(number) { this.rolls = this.rolls || [4]; this.rolls.push(number); this.status = 'complete';},
+      roll(number) { this.rolls = this.rolls || [4]; this.rolls.push(number); this.status = 'complete'; if(number == 6) this.bonus = 'spare';},
       showRolls() { return this.rolls; }
     });
 
@@ -58,6 +58,29 @@ describe('Game', _ => {
       game._frames = [ incompleteFrame ];
       game.play(5);
       expect(game.showScore()).to.equal(9);
+      done();
+    });
+  });
+
+  describe('bonuses', _ => {
+    it('updates debt by -1 if a complete frame was a spare', done => {
+      game._frames = [ incompleteFrame ];
+      game.play(6);
+      expect(game._debt).to.equal(-1);
+      done();
+    });
+
+    it('updates debt by -2 if a complete frame was a strike', done => {
+      game.play(10);
+      expect(game._debt).to.equal(-2);
+      done();
+    });
+
+    it('updates the score correctly when there is a debt', done => {
+      game.play(10);
+      game.play(2);
+      game.play(4);
+      expect(game.showScore()).to.equal(22);
       done();
     });
   });

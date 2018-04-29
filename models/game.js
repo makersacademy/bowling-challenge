@@ -14,11 +14,17 @@ Game.prototype.play = function(pins) {
   this._frames[this._frames.length-1].roll(pins);
   if (this._frames[this._frames.length-1].showStatus() == 'complete'){
     this._updateScore();
+    this._updateDebt();
   };
 };
 
 Game.prototype.showScore = function() {
   return this._score;
+};
+
+Game.prototype._updateDebt = function() {
+  if(this._frames[this._frames.length -1].showBonus() == 'strike') { this._debt -= 2 };
+  if(this._frames[this._frames.length-1].showBonus() == 'spare') { this._debt--; };
 };
   
 Game.prototype._updateScore = function() {

@@ -8,6 +8,7 @@ function Game() {
 
 Game.prototype.play = function(score) {
   this.applyBonus(score);
+  if (this.frameNum === 11) return;
 
   if (this.rollNum === 1) {
     this.makeFirstRoll(score);
@@ -35,7 +36,7 @@ Game.prototype.makeSecondRoll = function(score) {
 
 Game.prototype.applyBonus = function(score) {
   this.gFrames.forEach(frame => {
-     if (frame.isBonus(score)) this.bonus.push(score);
+     if (frame.applyBonus(score)) this.bonus.push(score);
   });
 };
 
@@ -75,4 +76,3 @@ Game.prototype.setupGame = function() {
     this.gFrames.push(new Frame());
   }
 };
-

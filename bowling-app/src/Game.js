@@ -6,8 +6,13 @@ function Game() {
 }
 
 Game.prototype.play = function(score) {
-  if (this.rollNum === 1) this.makeFirstRoll(score);
-  if (this.rollNum === 2) this.makeSecondRoll(score);
+  if (this.rollNum === 1) {
+    this.makeFirstRoll(score);
+    return;
+  } else {
+    this.makeSecondRoll(score);
+  } 
+
 };
 
 Game.prototype.makeFirstRoll = function(score) {
@@ -61,3 +66,5 @@ Game.prototype.setupGame = function() {
     this.gFrames.push(new Frame());
   }
 };
+
+module.exports = Game;

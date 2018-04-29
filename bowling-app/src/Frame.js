@@ -8,7 +8,7 @@ Frame.prototype.score = function() {
 
 Frame.prototype.setRoll = function(rollNum, score) {
   if (rollNum === 1) {
-    this.checkStrike();
+    this.checkStrike(score);
     this.rollOne = score;
   } else {
     this.checkSpare(score);
@@ -21,12 +21,16 @@ Frame.prototype.checkStrike = function(score) {
     this.bonus = 2;
     this.rollTwo = 0;
   };
-}
+};
 
 Frame.prototype.checkSpare = function(score) {
-  if (this.firstRoll + score === 10) this.bonus = 1;
-}
+  if (this.rollOne + score === 10) {
+    this.bonus = 1;
+  }
+};
 
 Frame.prototype.isBonusAvailable = function() {
   return this.bonus > 0;
-}
+};
+
+module.exports = Frame;

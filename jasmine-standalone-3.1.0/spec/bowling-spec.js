@@ -56,12 +56,12 @@ describe('Bowling', function() {
   });
 
   it('returns a string note if the player scores a special roll(gutter ball/strike/spare', function(){
-    expect(bowling.displayNote('strike')).toEqual('Congratulations you scored a strike');
+    expect(bowling.displayNote('strike')).toEqual('Congratulations you scored a strike!');
 
   });
 
   it('returns a string note if the player scores a special roll(gutter ball/strike/spare', function(){
-    expect(bowling.displayNote('notastrikeorspare')).toEqual('Bad luck you rolled a gutter ball');
+    expect(bowling.displayNote('gutter')).toEqual('Bad luck you rolled a gutter ball!');
 
   });
 

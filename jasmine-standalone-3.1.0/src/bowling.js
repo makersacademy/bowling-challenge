@@ -7,19 +7,24 @@ function Bowling() {
   this.bonusRoll = 0;
   this.scoreLimit = 0;
   this.frameLimit = 10;
+  this.note = "";
 };
 
 Bowling.prototype.validScore = (function(score) {
-  if((score > 0) && (score < 10)) {
+  if (this.frameRoll == 2) {
+    this.validScoreSecondMove(score);
+  }
+} else if((score > 0) && (score < 10)) {
     this.currentFrameScore += score;
     this.scoreLimit = 10 - score;
     this.frameRoll += 1;
+    this.note = this.displayNote('');
 
 
 
   } else if ((score == 10) && (this.bonusRoll == 1)) {
 
-    this.displayNote('strike');
+    this.note = this.displayNote('strike');
     this.currentFrameScore += score;
     this.bonusRoll = 2;
 
@@ -28,7 +33,7 @@ Bowling.prototype.validScore = (function(score) {
 
   } else if (score == 10) {
 
-    this.displayNote('strike');
+    this.note = this.displayNote('strike');
     this.currentFrameScore += score;
     this.applyBonus('strike');
 
@@ -37,7 +42,7 @@ Bowling.prototype.validScore = (function(score) {
 
 
   } else if (score == 0) {
-    this.displayNote('gutter');
+    this.note = this.displayNote('gutter');
   } else {
     throw new Error ('Wrong score number')
   };
@@ -53,11 +58,11 @@ Bowling.prototype.validScoreSecondMove = (function (score) {
     this.bonusRoll = 0;
     this.frameCount += 1;
     this.frameRoll = 1;
-  } else if(score == this.scoreLimit) { displayNote('spare');
+  } else if(score == this.scoreLimit) { this.note = displayNote('spare');
     this.currentBonus += 1;
     this.frameRoll -= 1;
   } else if (score == 0) {
-    displayNote('gutter');
+    this.note = displayNote('gutter');
     this.frameRoll -= 1;
   } else {
     throw new Error('Wrong score number')
@@ -94,9 +99,11 @@ Bowling.prototype.displayNote = (function(string) {
     return 'Congratulations you scored a spare';
   }
   else if (string == 'strike') {
-    return 'Congratulations you scored a strike';
+    return 'Congratulations you scored a strike!';
+  } else if (string == 'gutter') {
+    return 'Bad luck you rolled a gutter ball!';
   } else {
-    return 'Bad luck you rolled a gutter ball';
+    return "";
   }
 });
 

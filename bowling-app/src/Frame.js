@@ -5,7 +5,7 @@ function Frame() {
 
 Frame.prototype.score = function() {
   return this.rollOne + this.rollTwo;
-}
+};
 
 Frame.prototype.setRoll = function(rollNum, score) {
   if (rollNum === 1) {
@@ -14,8 +14,8 @@ Frame.prototype.setRoll = function(rollNum, score) {
   } else {
     this.checkSpare(score);
     this.rollTwo = score;
-  };
-}
+  }
+};
 
 Frame.prototype.checkStrike = function(score) {
   if (score === 10) {

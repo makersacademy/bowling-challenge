@@ -46,7 +46,7 @@ Game.prototype.roll = function(score) {
 };
 
 Game.prototype.score = function() {
-  let rolls, bonus
+  let rolls, bonus;
   rolls = this.rolls.reduce((a, b) => a + b);
   bonus = this.bonus[0] ? this.bonus.reduce((a, b) => a + b) : 0;
   return rolls + bonus;

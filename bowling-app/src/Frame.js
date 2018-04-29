@@ -6,7 +6,7 @@ Frame.prototype.score = function() {
   return this.rollOne + this.rollTwo;
 };
 
-Frame.prototype.setRoll = function(rollNum, score, frameNum) {
+Frame.prototype.setRoll = function(rollNum, score) {
   if (rollNum === 1) {
     this.checkStrike(score);
     this.rollOne = score;

@@ -48,7 +48,7 @@ describe("Game", function() {
       game = new Game();
       game.setupGame(frame);
       spyOn(game, 'startNextFrame');
-      spyOn(game, 'incrementRoll');
+      spyOn(game, 'nextRoll');
     });
 
     it('calls this.isStrike()', function() {
@@ -69,19 +69,19 @@ describe("Game", function() {
     it('does not call this.incrementRoll() when a strike is passed', function() {
       spyOn(game,'isStrike').and.returnValue(true);
       game.makeFirstRoll(9);
-      expect(game.incrementRoll).not.toHaveBeenCalled();
+      expect(game.nextRoll).not.toHaveBeenCalled();
     });
     it('calls this.incrementRoll() when not a strike', function() {
       spyOn(game,'isStrike').and.returnValue(false);
       game.makeFirstRoll(9);
-      expect(game.incrementRoll).toHaveBeenCalled();
+      expect(game.nextRoll).toHaveBeenCalled();
     });
   });
   
   describe('makeSecondRoll', function() {
     beforeEach(function() {
       spyOn(game, 'roll');
-      spyOn(game, 'incrementRoll');
+      spyOn(game, 'startNextFrame');
       spyOn(game, 'incrementFrame');
     });
     it('calls this.roll()', function() {
@@ -90,11 +90,7 @@ describe("Game", function() {
     });
     it('calls this.incrementRoll()', function() {
       game.makeSecondRoll(5);
-      expect(game.incrementRoll).toHaveBeenCalled();
-    });
-    it('calls this.incrementFrame()', function() {
-      game.makeSecondRoll(5);
-      expect(game.incrementFrame).toHaveBeenCalled();
+      expect(game.startNextFrame).toHaveBeenCalled();
     });
   });
 
@@ -106,17 +102,17 @@ describe("Game", function() {
     });
   });
 
-  describe('incrementRoll', function() {
+  describe('nextRoll', function() {
     it('increments 1 to 2', function() {
       var game = { rollNum: 1 };
       Object.setPrototypeOf(game, proto);
-      game.incrementRoll();
+      game.nextRoll();
       expect(game.rollNum).toEqual(2);
     });
     it('resets 2 to 1', function() {
       var game = { rollNum: 2 };
       Object.setPrototypeOf(game, proto);
-      game.incrementRoll();
+      game.nextRoll();
       expect(game.rollNum).toEqual(1);
     });
   });

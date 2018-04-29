@@ -20,13 +20,12 @@ Game.prototype.play = function(score) {
 
 Game.prototype.makeFirstRoll = function(score) {
   this.roll(score);
-  this.isStrike(score) ? this.startNextFrame() : this.incrementRoll();
+  this.isStrike(score) ? this.startNextFrame() : this.nextRoll();
 };
 
 Game.prototype.makeSecondRoll = function(score) {
   this.roll(score);
-  this.incrementRoll();
-  this.incrementFrame();
+  this.startNextFrame();
 };
 
 Game.prototype.applyBonus = function(score) {
@@ -37,7 +36,7 @@ Game.prototype.applyBonus = function(score) {
 
 Game.prototype.roll = function(score) {
   this.rolls.push(score);
-  this.gFrames[this.frameNum - 1].setRoll(this.rollNum, score, this.frameNum);
+  this.gFrames[this.frameNum - 1].setRoll(this.rollNum, score);
 };
 
 Game.prototype.score = function() {
@@ -47,9 +46,7 @@ Game.prototype.score = function() {
   return rolls + bonus;
 };
 
-Game.prototype.isStrike = function(score) {
-  return score === 10;
-};
+Game.prototype.isStrike = (score) => score === 10;
 
 Game.prototype.startNextFrame = function() {
   this.rollNum = 1;
@@ -60,7 +57,7 @@ Game.prototype.incrementFrame = function() {
   this.frameNum++;
 };
 
-Game.prototype.incrementRoll = function() {
+Game.prototype.nextRoll = function() {
   this.rollNum === 1 ? this.rollNum++ : this.rollNum--;
 };
 

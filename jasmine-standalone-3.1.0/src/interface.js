@@ -1,12 +1,11 @@
 $(document).ready(function() {
   game = new Game();
 
-  $('#roll').on('click', function() {
-    var rollScoreInput = document.getElementById('rollScore');
-    var score = parseInt(rollScoreInput.value, 10);
-    var roll = game.roll(score);
+  var clearScoreSelectDropdown = function() {
+    document.getElementById('scoreSelect').options.length = 0;
+  }
 
-    //Insert into table
+  var insertRollIntoTable = function(roll) {
     var table = document.getElementById('scoreTable');
     var rollRow = table.insertRow(-1);
     var frameNumberColumn = rollRow.insertCell(0);
@@ -19,5 +18,26 @@ $(document).ready(function() {
     scoreColumn.innerHTML = `${roll.score}`;
     totalScoreColumn.innerHTML = `${game.totalScore()}`;
     notesColumn.innerHTML = "";
+  }
+
+  var updateScoreSelectDropdown = function() {
+    var selectDropdown = document.getElementById('scoreSelect');
+    var rollLimit = game.nextRollScoreLimit();
+    for (var i = 0; i <= rollLimit; i++) {
+      var option = document.createElement('option');
+      option.text = `${i}`;
+      option.value = `${i}`;
+      selectDropdown.add(option, selectDropdown[i]);
+    }
+  }
+
+  $('#roll').on('click', function() {
+    var rollScoreInput = document.getElementById('scoreSelect');
+    var score = parseInt(rollScoreInput.value, 10);
+    var roll = game.roll(score);
+
+    insertRollIntoTable(roll);
+    clearScoreSelectDropdown();
+    updateScoreSelectDropdown();
   });
 });

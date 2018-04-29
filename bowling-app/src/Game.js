@@ -74,3 +74,4 @@ Game.prototype.setupGame = function() {
     this.gFrames.push(new Frame());
   }
 };
+

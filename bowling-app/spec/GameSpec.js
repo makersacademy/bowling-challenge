@@ -16,10 +16,24 @@ describe("Game", function() {
     });
   });
 
+  describe('score', function() {
+    it('returns the sum of rolls and bonus', function() {
+       game = { bonus: [1, 2, 3, 4], rolls: [5, 5, 5, 5, 5]};
+       Object.setPrototypeOf(game, proto);
+       expect(game.score()).toEqual(35);
+    });
+    it('works with an empty bonus array', function() {
+      game = { bonus: [], rolls: [5, 5, 5, 5, 5]};
+      Object.setPrototypeOf(game, proto);
+      expect(game.score()).toEqual(25);
+   });
+  });
+
   describe('play', function() {
     beforeEach(function() {
       spyOn(game, 'makeFirstRoll');
       spyOn(game, 'makeSecondRoll');
+      spyOn(game, 'applyBonus');
     });
 
     it('calls this.makeFirstRoll() when rollNum === 1', function() {
@@ -30,6 +44,11 @@ describe("Game", function() {
       game.rollNum = 2;
       game.play(10);
       expect(game.makeSecondRoll).toHaveBeenCalled();
+    });
+    it('call this.applyBonus on first roll', function() {
+      game.rollNum = 1;
+      game.play(10);
+      expect(game.applyBonus).toHaveBeenCalled();
     });
   });
 
@@ -111,29 +130,6 @@ describe("Game", function() {
     });
   });
 
-  describe('setupNext', function() {
-    beforeEach(function() {
-      game = {};
-      Object.setPrototypeOf(game, proto);
-      spyOn(game, 'incrementRoll');
-      spyOn(game, 'incrementFrame');
-    });
-
-    it('calls incrementRoll when rollNum is 1', function() {
-      game.rollNum = 1;
-      game.setupNext();
-      expect(game.incrementRoll).toHaveBeenCalled();
-      expect(game.incrementFrame).not.toHaveBeenCalled();
-    });
-
-    it('calls incrementRoll and incrementFrame when rollNum is 2', function() {
-      game.rollNum = 2;
-      game.setupNext();
-      expect(game.incrementRoll).toHaveBeenCalled();
-      expect(game.incrementFrame).toHaveBeenCalled();
-    });
-  });
-
   describe('startNextFrame', function() {
     beforeEach(function(){
       game = {};
@@ -174,4 +170,20 @@ describe("Game", function() {
       expect(game.gFrames.length).toEqual(10);
     });
   });
+
+  describe('applyBonus', function() {
+    it('applys a bonus when Frame.applyBonus returns true', function() {
+       var Frame = { applyBonus: function() { return true; } };
+       game.gFrames.unshift(Frame);
+       game.applyBonus(10);
+       expect(game.bonus[0]).toEqual(10);
+    });
+    it('does not apply a bonus when Frame.applyBonus returns false', function() {
+      var Frame = { applyBonus: function() { return false; } };
+      game.gFrames.unshift(Frame);
+      game.applyBonus(10);
+      expect(game.bonus[0]).toEqual(undefined);
+   });
+  });
 });
+

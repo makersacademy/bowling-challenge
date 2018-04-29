@@ -44,4 +44,3 @@ Frame.prototype.isBonusAvailable = function() {
   return this.bonus > 0;
 };
 
-

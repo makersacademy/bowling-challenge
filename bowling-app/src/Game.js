@@ -46,7 +46,10 @@ Game.prototype.roll = function(score) {
 };
 
 Game.prototype.score = function() {
-  return this.rolls.reduce((a, b) => a + b);
+  let rolls, bonus
+  rolls = this.rolls.reduce((a, b) => a + b);
+  bonus = this.bonus[0] ? this.bonus.reduce((a, b) => a + b) : 0;
+  return rolls + bonus;
 };
 
 Game.prototype.isStrike = function(score) {

@@ -43,3 +43,5 @@ Frame.prototype.applyBonus = function(score) {
 Frame.prototype.isBonusAvailable = function() {
   return this.bonus > 0;
 };
+
+

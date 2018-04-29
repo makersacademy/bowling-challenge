@@ -1,17 +1,104 @@
 'use strict';
 
 describe('Game', function() {
- var game;
- var gameSpecHelper;
+  var game;
+  var gameSpecHelper;
 
- beforeEach(function(){
-   game = new Game();
-   gameSpecHelper = new GameSpecHelper();
- });
+  beforeEach(function(){
+    game = new Game();
+    gameSpecHelper = new GameSpecHelper();
+  });
 
   it('has empty frame by default', function() {
     expect(game.frames).toEqual([]);
   })
+
+  describe('#nextRollScoreLimit', function() {
+    it('returns correct score limit when\
+    current frame has no rolls', function() {
+      var frame = new Frame(1);
+      game.frames.push(frame);
+      expect(game.nextRollScoreLimit()).toEqual(GameMaximumRollScore);
+    });
+
+    it('returns correct score limit when\
+    current frame already has one roll', function() {
+      var frame = new Frame(1);
+      game.frames.push(frame);
+      game.roll(5);
+      expect(game.nextRollScoreLimit()).toEqual(GameMaximumRollScore - 5);
+    });
+
+    it('returns correct score limit when\
+    its extra roll', function() {
+      var createdFrames = gameSpecHelper.pushFramesToTheGame(game, 10);
+      var lastFrame = createdFrames[9];
+      spyOn(lastFrame, 'canRoll')
+      .and
+      .callFake(function() {
+        return false;
+      });
+      spyOn(lastFrame, 'isAwaitingBonus')
+      .and
+      .callFake(function() {
+        return false;
+      });
+      expect(game.nextRollScoreLimit()).toEqual(GameMaximumRollScore);
+    });
+  });
+
+  describe('#isGameOver', function() {
+    it('returns true if no more rolls possible', function() {
+      var createdFrames = gameSpecHelper.pushFramesToTheGame(game, 10);
+      var lastFrame = createdFrames[9];
+      spyOn(lastFrame, 'isAwaitingBonus')
+      .and
+      .callFake(function() {
+        return false;
+      });
+      spyOn(lastFrame, 'canRoll')
+      .and
+      .callFake(function() {
+        return false;
+      });
+
+      expect(game.isGameOver()).toBe(true);
+    });
+
+    it('returns false if more rolls possible', function() {
+      var createdFrames = gameSpecHelper.pushFramesToTheGame(game, 5);
+      var lastFrame = createdFrames[4];
+      spyOn(lastFrame, 'isAwaitingBonus')
+      .and
+      .callFake(function() {
+        return false;
+      });
+      spyOn(lastFrame, 'canRoll')
+      .and
+      .callFake(function() {
+        return false;
+      });
+
+      expect(game.isGameOver()).toBe(false);
+    });
+
+    it('returns false if some rolls are awaiting bonus', function() {
+      var createdFrames = gameSpecHelper.pushFramesToTheGame(game, 10);
+      var lastFrame = createdFrames[9];
+      spyOn(lastFrame, 'isAwaitingBonus')
+      .and
+      .callFake(function() {
+        return true;
+      });
+      spyOn(lastFrame, 'canRoll')
+      .and
+      .callFake(function() {
+        return false;
+      });
+
+      expect(game.isGameOver()).toBe(false);
+    });
+  });
 
   describe('#currentFrame', function() {
     it('returns last frame if it is awaiting bonus', function() {

@@ -1,9 +1,18 @@
 'use strict';
 
 const GameMaximumFrames = 10;
+const GameMaximumRollScore = 10;
 
 function Game() {
   this.frames = [];
+}
+
+Game.prototype.isGameOver = function() {
+  if (this.frames.length < GameMaximumFrames) {
+    return false;
+  }
+  var lastFrame = this.frames[GameMaximumFrames - 1];
+  return !lastFrame.isAwaitingBonus();
 }
 
 Game.prototype.totalScore = function() {
@@ -23,6 +32,19 @@ Game.prototype.roll = function(score) {
     frame.recordRoll(roll);
   };
   return roll;
+};
+
+Game.prototype.nextRollScoreLimit = function() {
+  if(this.frames.length === 0) {
+    return GameMaximumRollScore;
+  };
+
+  var lastFrame = this.frames[this.frames.length - 1];
+  if (lastFrame.canRoll()) {
+    return GameMaximumRollScore - lastFrame.normalRollsScore();
+  } else {
+    return GameMaximumRollScore;
+  }
 };
 
 Game.prototype.currentFrame = (function() {

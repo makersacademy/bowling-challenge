@@ -54,7 +54,6 @@ describe('Bowling', function() {
 
   it ('returns number of move', function() {
     expect(bowling.Move()).toEqual(1);
-
   });
 
   // it('has a function that returns a note, when the user rolls a spare', function () {

@@ -1,5 +1,6 @@
 function Frame() {
    this.bonus = 0;
+   this.bonusPoints = [];
 }
 
 Frame.prototype.score = function() {
@@ -29,8 +30,16 @@ Frame.prototype.checkSpare = function(score) {
   }
 };
 
+Frame.prototype.applyBonus = function(score) {
+  if (this.isBonusAvailable()) {
+    this.bonusPoints.push(score);
+    this.bonus--;
+    return true;
+  } else {
+    return false;
+  }
+}
+
 Frame.prototype.isBonusAvailable = function() {
   return this.bonus > 0;
 };
-
-module.exports = Frame;

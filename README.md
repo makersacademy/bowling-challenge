@@ -15,6 +15,10 @@ Javascript - Jasmine
    * To input a roll, call game.play(score)
    * To view the current total call game.score()
 
+## Testing 
+
+* Launch /SpecRunner.html in your browser
+
 ## Approach
 In this challenge I attempted to design my application so that a user interface could be added at a later time with
 ease. As the end of the second day was approaching I began to realise that adding a user interface
@@ -23,8 +27,8 @@ quality as extra features can be added at a later date.
 
 ## Positives
 * Full test driven design with comprehensive feature testing
-* Wrote concise, DRY tests with the use of before hooks and helper methods
 * Kept a potentialy logically complex challenge clean and maintainable 
+* Used es6 arrow functions to keep code clean with the use of lexical 'this' and implicit return
 
 ## If I had more time
 * Build a front end using Jquery, Jquery Ui and Boostrap 4

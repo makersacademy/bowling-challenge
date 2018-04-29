@@ -69,7 +69,7 @@ Game.prototype.incrementRoll = function() {
   this.rollNum === 1 ? this.rollNum++ : this.rollNum--;
 };
 
-Game.prototype.setupGame = function() {
+Game.prototype.setupGame = function(Frame) {
   for(var i = 0; i < 10; i++) {
     this.gFrames.push(new Frame());
   }

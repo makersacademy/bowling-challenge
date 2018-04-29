@@ -1,9 +1,10 @@
 describe("Game", function() {
   var game;
+  var frame = Frame;
 
   beforeEach(function() {
     game = new Game();
-    game.setupGame();
+    game.setupGame(Frame);
   });
 
   function autoRoll(score, times) {

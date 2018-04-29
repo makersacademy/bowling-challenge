@@ -1,19 +1,10 @@
 describe("Game", function() {
   var game;
   var proto = Game.prototype;
+  var frame = Frame;
 
   beforeEach(function() {
     game = new Game();
-  });
-
-  describe('roll', function() {
-    it('scores a game of all gutter balls', function() {
-      game.setupGame();
-      for(var i = 0; i < 20; i++) {
-        game.roll(0);
-      }
-      expect(game.score()).toEqual(0);
-    });
   });
 
   describe('score', function() {
@@ -55,7 +46,7 @@ describe("Game", function() {
   describe('makeFirstRoll', function() {
     beforeEach(function() {
       game = new Game();
-      game.setupGame();
+      game.setupGame(frame);
       spyOn(game, 'startNextFrame');
       spyOn(game, 'incrementRoll');
     });
@@ -166,7 +157,7 @@ describe("Game", function() {
 
   describe('setupGame', function() {
     it('populates gFrames array', function() {
-      game.setupGame();
+      game.setupGame(function(){});
       expect(game.gFrames.length).toEqual(10);
     });
   });

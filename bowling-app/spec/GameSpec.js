@@ -14,13 +14,13 @@ describe("Game", function() {
       }
       expect(game.score()).toEqual(0);
     });
-  })
+  });
 
   describe('play', function() {
     beforeEach(function() {
       spyOn(game, 'makeFirstRoll');
       spyOn(game, 'makeSecondRoll');
-    })
+    });
 
     it('calls this.makeFirstRoll() when rollNum === 1', function() {
       game.play(10);
@@ -31,14 +31,14 @@ describe("Game", function() {
       game.play(10);
       expect(game.makeSecondRoll).toHaveBeenCalled();
     });
-  })
+  });
 
   describe('makeFirstRoll', function() {
     beforeEach(function() {
       game = new Game();
       game.setupGame();
-      spyOn(game, 'startNextFrame')
-      spyOn(game, 'incrementRoll')
+      spyOn(game, 'startNextFrame');
+      spyOn(game, 'incrementRoll');
     });
 
     it('calls this.isStrike()', function() {
@@ -73,7 +73,7 @@ describe("Game", function() {
       spyOn(game, 'roll');
       spyOn(game, 'incrementRoll');
       spyOn(game, 'incrementFrame');
-    })
+    });
     it('calls this.roll()', function() {
       game.makeSecondRoll(5);
       expect(game.roll).toHaveBeenCalled();
@@ -85,7 +85,7 @@ describe("Game", function() {
     it('calls this.incrementFrame()', function() {
       game.makeSecondRoll(5);
       expect(game.incrementFrame).toHaveBeenCalled();
-    })
+    });
   });
 
   describe('increment frame', function(){
@@ -94,7 +94,7 @@ describe("Game", function() {
       game.incrementFrame();
       expect(game.frameNum).toEqual(2);
     });
-  })
+  });
 
   describe('incrementRoll', function() {
     it('increments 1 to 2', function() {
@@ -109,11 +109,11 @@ describe("Game", function() {
       game.incrementRoll();
       expect(game.rollNum).toEqual(1);
     });
-  })
+  });
 
   describe('setupNext', function() {
     beforeEach(function() {
-      game = {}
+      game = {};
       Object.setPrototypeOf(game, proto);
       spyOn(game, 'incrementRoll');
       spyOn(game, 'incrementFrame');
@@ -132,7 +132,7 @@ describe("Game", function() {
       expect(game.incrementRoll).toHaveBeenCalled();
       expect(game.incrementFrame).toHaveBeenCalled();
     });
-  })
+  });
 
   describe('startNextFrame', function() {
     beforeEach(function(){
@@ -147,7 +147,7 @@ describe("Game", function() {
     });
 
     it('sets this.rollNum to 1 when rollNum = 1', function(){
-      game.rollNum = 1
+      game.rollNum = 1;
       game.startNextFrame();
       expect(game.rollNum).toEqual(1);
     });
@@ -157,7 +157,7 @@ describe("Game", function() {
       game.startNextFrame();
       expect(game.rollNum).toEqual(1);
     });
-  })
+  });
 
   describe('isStrike', function() {
     it('returns true when passed 10', function(){
@@ -166,7 +166,7 @@ describe("Game", function() {
     it('returns false when passed a number !== 10', function(){
       expect(game.isStrike(4)).toEqual(false);
     });
-  })
+  });
 
   describe('setupGame', function() {
     it('populates gFrames array', function() {
@@ -174,4 +174,4 @@ describe("Game", function() {
       expect(game.gFrames.length).toEqual(10);
     });
   });
-})
+});

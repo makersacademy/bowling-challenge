@@ -19,7 +19,7 @@ function ScoreCalculator() {
 }
 
 ScoreCalculator.prototype.addFrame = function(frameIndex, frameNumber, rollOne = 0, rollTwo = 0) {
-  this.score[frameIndex][frameNumber] = [parseInt(rollOne), parseInt(rollTwo)];
+  this.score[frameIndex][frameNumber] = [rollOne, rollTwo];
 };
 
 ScoreCalculator.prototype.calculate = function(score = this.score) {
@@ -80,4 +80,4 @@ function add(a , b){
 }
 
 
-var calculator = new ScoreCalculator();
+var c = new ScoreCalculator();

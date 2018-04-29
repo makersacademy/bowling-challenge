@@ -13,6 +13,15 @@ describe('Game', function() {
     expect(game.frames).toEqual([]);
   })
 
+  it('can be played', function() {
+    var rolls = [1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6];
+    for (var i = 0; i < rolls.length; i++) {
+      game.roll(rolls[i]);
+    }
+    expect(game.totalScore()).toEqual(133);
+    expect(game.isGameOver()).toBe(true);
+  });
+
   describe('#nextRollScoreLimit', function() {
     it('returns correct score limit when\
     current frame has no rolls', function() {
@@ -94,6 +103,23 @@ describe('Game', function() {
       .and
       .callFake(function() {
         return false;
+      });
+
+      expect(game.isGameOver()).toBe(false);
+    });
+
+    it('returns false if last frame still can be rolled', function() {
+      var createdFrames = gameSpecHelper.pushFramesToTheGame(game, 10);
+      var lastFrame = createdFrames[9];
+      spyOn(lastFrame, 'isAwaitingBonus')
+      .and
+      .callFake(function() {
+        return false;
+      });
+      spyOn(lastFrame, 'canRoll')
+      .and
+      .callFake(function() {
+        return true;
       });
 
       expect(game.isGameOver()).toBe(false);

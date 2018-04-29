@@ -12,7 +12,7 @@ Game.prototype.isGameOver = function() {
     return false;
   }
   var lastFrame = this.frames[GameMaximumFrames - 1];
-  return !lastFrame.isAwaitingBonus();
+  return !lastFrame.canRoll() && !lastFrame.isAwaitingBonus();
 }
 
 Game.prototype.totalScore = function() {

@@ -1,22 +1,25 @@
 function Game() {
   this.gFrames = [],
   this.rolls = [],    
+  this.bonus = [],
   this.frameNum = 1,
   this.rollNum = 1;
 }
 
 Game.prototype.play = function(score) {
+  this.applyBonus(score);
+
   if (this.rollNum === 1) {
     this.makeFirstRoll(score);
     return;
   } else {
     this.makeSecondRoll(score);
   } 
-
 };
 
 Game.prototype.makeFirstRoll = function(score) {
   this.roll(score);
+
   if (this.isStrike(score)) {
     this.startNextFrame();
   } else {
@@ -28,6 +31,12 @@ Game.prototype.makeSecondRoll = function(score) {
   this.roll(score);
   this.incrementRoll();
   this.incrementFrame();
+};
+
+Game.prototype.applyBonus = function(score) {
+  this.gFrames.forEach(frame => {
+     if (frame.isBonus(score)) this.bonus.push(score);
+  });
 };
 
 Game.prototype.roll = function(score) {
@@ -67,4 +76,3 @@ Game.prototype.setupGame = function() {
   }
 };
 
-module.exports = Game;

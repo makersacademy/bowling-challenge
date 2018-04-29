@@ -38,7 +38,7 @@ Frame.prototype.applyBonus = function(score) {
   } else {
     return false;
   }
-}
+};
 
 Frame.prototype.isBonusAvailable = function() {
   return this.bonus > 0;

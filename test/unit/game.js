@@ -84,4 +84,27 @@ describe('Game', _ => {
       done();
     });
   });
+
+  describe('final frame', _ => {
+    it('sets game status to complete after the 10th frame if there is no debt', done => {
+      game._frames = Array.from({length:9}, _ => completeFrame);
+      game.play(4).play(4);
+      expect(game.showStatus()).to.equal('complete');
+      done();
+    });      
+
+    it('allows for additional rolls if there is debt after 10th frame', done => {
+      game._frames = Array.from({length:9}, _=> completeFrame);
+      game.play(5).play(5).play(4);
+      expect(game.showScore()).to.equal(14);
+      done();
+    });
+
+    it('does not allow for more than three rolls in final frame + bonus rolls', done => {
+      game._frames = Array.from({length: 9}, _=> completeFrame);
+      game.play(10).play(10).play(10).play(10);
+      expect(game.showScore()).to.equal(30);
+      done();
+    });
+  });
 });

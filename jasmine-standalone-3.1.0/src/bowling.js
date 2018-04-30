@@ -13,8 +13,7 @@ function Bowling() {
 Bowling.prototype.validScore = (function(score) {
   if (this.frameRoll == 2) {
     this.validScoreSecondMove(score);
-  }
-} else if((score > 0) && (score < 10)) {
+  } else if((score > 0) && (score < 10)) {
     this.currentFrameScore += score;
     this.scoreLimit = 10 - score;
     this.frameRoll += 1;
@@ -36,6 +35,7 @@ Bowling.prototype.validScore = (function(score) {
     this.note = this.displayNote('strike');
     this.currentFrameScore += score;
     this.applyBonus('strike');
+    this.bonusRoll = 1;
 
 
 
@@ -75,8 +75,14 @@ Bowling.prototype.countScore = (function(score) {
   if (this.bonusRoll == 1) {
      this.currentFrameScore += score;
      this.scoreLimit = 10;
-     this.frameRoll = 2;
+     this.bonusRoll += 1;
 
+  } else if (this.bonusRoll == 2) {
+    this.currentFrameScore += score;
+    this.bonusRoll = 0;
+    this.frameCount += 1;
+    this.frameRoll -= 1;
+    this.countTotal(this.currentFrameScore);
   } else if (this.frameRoll == 1) {
     this.validScore(score);
   } else {
@@ -87,7 +93,7 @@ Bowling.prototype.countScore = (function(score) {
 
 Bowling.prototype.countTotal = (function(score) {
 
-    this.totalScore += this.currentScore;
+    this.totalScore += this.currentFrameScore;
 
 
 });

@@ -10,30 +10,16 @@ function Game() {
 
 Game.prototype.play = function(pins) {
   if(this._frames.length < 10) {
-  if(this._frames.length === 0 || this._frames[this._frames.length-1].showStatus() == 'complete') {
-    this._frames.push(new Frame());
-  } 
-  this._frames[this._frames.length-1].roll(pins)
-  if (this._frames[this._frames.length-1].showStatus() == 'complete'){
-    this._updateScore();
-    this._updateDebt();
-    if(this._frames.length == 10) { this._status = 'complete'};
-  }
-  } else if(this.showStatus() == 'in progress') {
-      this._frames[this._frames.length-1].roll(pins);
-      this._updateScore();
-      this._updateDebt();
-      this._status = 'complete';
-  }
-  else {
-    if (this._frames.length == 10 && (this._debt == 0 || this._frames[this._frames.length-1].showRolls().length + this._finalRolls.length == 3)) { this._status = 'complete'}
-    else {
+    (!(this._frames.length) || this._isComplete()) && this._newFrame();
+    this._execute(pins);
+  } else if(this._last().showStatus() == 'in progress') {
+      this._execute(pins);
+      this._makeComplete();
+  } else {
       this._finalRolls.push(pins);
-      this._debt++;
-      this._score += pins;
-    }
-  }
-  return this;
+      this._debt++; this._score += pins;
+      this._makeComplete();
+  }; return this;
 };
 
 Game.prototype.showScore = function() {
@@ -45,13 +31,41 @@ Game.prototype.showStatus = function() {
 };
 
 Game.prototype._updateDebt = function() {
-  if(this._frames[this._frames.length -1].showBonus() == 'strike') { this._debt -= 2 };
-  if(this._frames[this._frames.length-1].showBonus() == 'spare') { this._debt--; };
+  if(this._last().showBonus() == 'strike') { this._debt -= 2 };
+  if(this._last().showBonus() == 'spare') { this._debt--; };
 };
   
 Game.prototype._updateScore = function() {
-  let rolls = this._frames[this._frames.length-1].showRolls();
+  let rolls = this._last().showRolls();
   rolls.forEach(roll => {if(this._debt < 0) { this._debt++; roll *=2 }; this._score += roll});
+};
+
+Game.prototype._last = function() {
+  return this._frames[this._frames.length - 1];
+};
+
+Game.prototype._update = function() {
+  this._updateScore();
+  this._updateDebt();
+};
+
+Game.prototype._newFrame = function() {
+  this._frames.push(new Frame());
+};
+
+Game.prototype._isComplete = function() {
+  return this._last().showStatus() == 'complete';
+};
+
+Game.prototype._execute = function(pins) {
+  this._last().roll(pins);
+  this._isComplete() && this._update();
+}
+
+Game.prototype._makeComplete = function() {
+  if (!(this._debt) || this._last().showRolls().length + this._finalRolls.length == 3) {
+    this._status = 'complete';
+  }
 };
 
 module.exports = Game; 

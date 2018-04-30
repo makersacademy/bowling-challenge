@@ -99,12 +99,5 @@ describe('Game', _ => {
       expect(game.showScore()).to.equal(14);
       done();
     });
-
-    it('does not allow for more than three rolls in final frame + bonus rolls', done => {
-      game._frames = Array.from({length: 9}, _=> completeFrame);
-      game.play(10).play(10).play(10).play(10);
-      expect(game.showScore()).to.equal(30);
-      done();
-    });
   });
 });

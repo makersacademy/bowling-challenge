@@ -1,4 +1,7 @@
+p #{currentFrame ? `Frame: ${currentFrame}` : ''}
+p #{currentRoll ? `Roll: ${currentRoll}` : ''}
+p Please enter the number of pins knocked down
 form(method='POST' action='/game/play')
-  label(for='pins') PINS
   input(type='text',name='pins')
   input(type='submit',value='SUBMIT')
+p #{bonus ? `You had a ${bonus} in the previous frame!` : ""}

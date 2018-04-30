@@ -1,4 +1,4 @@
-const async = require('async');
+const url = require('url');
 const Game = require('../models/game');
 const game = new Game();
 
@@ -7,6 +7,13 @@ exports.play = function(req, res) {
   if(game.showStatus() == 'complete') {
     res.render('score', { score: game.showScore()});
   } else {
-    res.redirect('/game/play');
+      res.redirect(url.format({
+        pathname:"/game/play",
+        query: {
+        'bonus': game.lastBonus(),
+        'currentFrame': game.currentFrame(),
+        'currentRoll': game.currentRoll()
+        }
+      }))
+    }
   }
-}

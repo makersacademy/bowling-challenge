@@ -15,7 +15,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/game/play', function(req,res) {
-  res.render('play');
+  res.render('play', { bonus: req.query.bonus, currentFrame: req.query.currentFrame, currentRoll: req.query.currentRoll});
 });
 
 app.post('/game/play', gameController.play);

@@ -6,6 +6,7 @@ function Game() {
   this._debt = 0;
   this._finalRolls = [];
   this._score = 0;
+  this._lastBonus = '';
 };
 
 Game.prototype.play = function(pins) {
@@ -30,7 +31,20 @@ Game.prototype.showStatus = function() {
   return this._status;
 };
 
+Game.prototype.lastBonus = function() {
+  return this._lastBonus;
+};
+
+Game.prototype.currentFrame = function() {
+  return this._frames.length + ( this._isComplete() ? 1 : 0)
+};
+
+Game.prototype.currentRoll = function() {
+  return (!this._isComplete()) + 1;
+};
+
 Game.prototype._updateDebt = function() {
+  this._lastBonus = this._last().showBonus();
   if(this._last().showBonus() == 'strike') { this._debt -= 2 };
   if(this._last().showBonus() == 'spare') { this._debt--; };
 };

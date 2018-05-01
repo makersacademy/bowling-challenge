@@ -12,7 +12,8 @@ exports.play = function(req, res) {
         query: {
         'bonus': game.lastBonus(),
         'currentFrame': game.currentFrame(),
-        'currentRoll': game.currentRoll()
+        'currentRoll': game.currentRoll(),
+        'title': 'Play'
         }
       }))
     }

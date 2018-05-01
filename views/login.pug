@@ -1,0 +1,10 @@
+html
+  head
+    title= title
+  body
+    form(method='POST' action='/session/new')
+      label(for='username') Username
+      input(type='text',name='username')
+      label(for='password') Password
+      input(type='password',name='password')
+      button(type='submit') Log In

@@ -17,3 +17,13 @@ exports.find_user = function(req, res) {
     });
   });
 };
+
+exports.find_user_by_id = function(id) {
+  User.findOne({_id: id}, function(err, user) {
+    if(err) {
+    } else {
+      console.log('The name is ' + user.username);
+      return user.username;
+    }
+  });
+};

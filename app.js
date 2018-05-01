@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(session({secret: 'this-is-a-secret', cookie: { maxAge: 60000}}));
 
 app.get('/', function(req, res) {
-  if(req.session.userId) { console.log('SUCCESS: ' + req.session.userId)};
+  if(req.session.userId) { userController.find_user_by_id(req.session.userId); }; 
   res.render('index', { title: 'Home' });
 });
 

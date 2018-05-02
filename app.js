@@ -43,4 +43,10 @@ app.post('/session/new', userController.find_user);
 
 app.post('/gamerecord/new', gameRecordController.create_game_record);
 
+app.post('/gamerecords', gameRecordController.all);
+
+app.get('/gamerecords', function(req, res) {
+  res.render('gamerecords', { ...req.query, title: 'Game Records'});
+});
+
 app.listen(port, _ => console.log(`Listening at port ${port}`));

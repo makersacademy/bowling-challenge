@@ -1,1 +1,12 @@
-p Score: #{score}
+html
+  head
+    title= title
+  body
+    p Score: #{score}
+    
+    form(method='POST' action='/gamerecord/new')
+      input(type='hidden',name='score',value=score)
+      input(type='submit',value='Save game record')
+
+    form(method='GET' action='/game/play')
+      button(type='submit') New Game

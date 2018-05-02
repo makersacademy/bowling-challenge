@@ -5,6 +5,7 @@ const session = require('express-session'),
       mongoose = require('mongoose'),
       userController = require('./controllers/userController'),
       gameController = require('./controllers/gameController'),
+      gameRecordController = require('./controllers/gameRecordController'),
       port = 8080;
 
 mongoose.connect('mongodb://localhost:27017/bowling_test');
@@ -39,5 +40,7 @@ app.get('/session/new', function(req, res) {
 });
 
 app.post('/session/new', userController.find_user);
+
+app.post('/gamerecord/new', gameRecordController.create_game_record);
 
 app.listen(port, _ => console.log(`Listening at port ${port}`));

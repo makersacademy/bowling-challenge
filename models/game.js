@@ -27,6 +27,15 @@ Game.prototype.showScore = function() {
   return this._score;
 };
 
+Game.prototype.reset = function() {
+  this._frames = [];
+  this._status = 'in progress';
+  this.debt = 0;
+  this._finalRolls = [];
+  this._score = 0;
+  this._lastBonus = '';
+};
+
 Game.prototype.showStatus = function() {
   return this._status;
 };

@@ -5,7 +5,9 @@ const game = new Game();
 exports.play = function(req, res) {
   game.play(+(req.body.pins));
   if(game.showStatus() == 'complete') {
-    res.render('score', { score: game.showScore()});
+    let currentScore = game.showScore();
+    game.reset();
+    res.render('score', { score: currentScore });
   } else {
       res.redirect(url.format({
         pathname:"/game/play",

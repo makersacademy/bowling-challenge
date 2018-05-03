@@ -6,36 +6,69 @@ I made a basic bowling score app according to the specification.
 Example code in console
 
 ====================
+
 game = new Game
+
 Game {defaultPins: Array(11), rolls: 1, frameNumber: 0, frames: Array(10)}
+
 game.roll(10)
+
 (11) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
 game.roll(10)
+
 (11) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
 game.roll(10)
+
 (11) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
 game.roll(10)
+
 (11) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
 game.roll(10)
+
 (11) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
 game.roll(10)
+
 (11) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
 game.roll(10)
+
 (11) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
 game.roll(10)
+
 (11) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
 game
+
 Game {defaultPins: Array(11), rolls: 1, frameNumber: 8, frames: Array(10)}
+
 game.roll(10)
+
 (11) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
 game.roll(1)
+
 (10) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
 game
+
 Game {defaultPins: Array(11), rolls: 2, frameNumber: 9, frames: Array(10)}
+
 game.roll(1)
+
 (11) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
 game
+
+
 Game {defaultPins: Array(11), rolls: 1, frameNumber: 10, frames: Array(10)}
+
+
 ====================
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

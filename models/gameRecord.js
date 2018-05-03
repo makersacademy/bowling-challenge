@@ -5,7 +5,7 @@ const Schema = mongoose.Schema,
 
 const GameRecordSchema = new Schema({
   score: Number,
-  date: { type: Date, default: Date.now() },
+  date: { type: Date, default: new Date() },
   user_id: ObjectId
 });
 

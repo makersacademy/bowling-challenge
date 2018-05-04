@@ -13,6 +13,14 @@ function Bowling() {
 Bowling.prototype.validScore = (function(score) {
   if (this.frameRoll == 2) {
     this.validScoreSecondMove(score);
+  } else if((score > 0) && (score < 10) && (this.frameRoll == "Bonus roll 1")) {
+    this.currentFrameScore += score;
+    this.scoreLimit = 10 - score;
+    this.frameRoll = "Bonus roll 2";
+    this.bonusRoll = 2;
+    this.note = this.displayNote('');
+
+
   } else if((score > 0) && (score < 10)) {
     this.currentFrameScore += score;
     this.scoreLimit = 10 - score;
@@ -35,7 +43,7 @@ Bowling.prototype.validScore = (function(score) {
     this.note = this.displayNote('strike');
     this.currentFrameScore += score;
     this.applyBonus('strike');
-    this.bonusRoll = 1;
+
 
 
 
@@ -66,22 +74,21 @@ Bowling.prototype.validScoreSecondMove = (function (score) {
     this.frameRoll -= 1;
   } else {
     throw new Error('Wrong score number')
+    this.note = displayNote('that is not a valid score');
 
   }
 
 });
 
 Bowling.prototype.countScore = (function(score) {
-  if (this.bonusRoll == 1) {
-     this.currentFrameScore += score;
-     this.scoreLimit = 10;
-     this.bonusRoll += 1;
+  if (this.frameRoll == "Bonus roll 1") {
+     this.validScore(score);
 
   } else if (this.bonusRoll == 2) {
     this.currentFrameScore += score;
     this.bonusRoll = 0;
     this.frameCount += 1;
-    this.frameRoll -= 1;
+    this.frameRoll = 1;
     this.countTotal(this.currentFrameScore);
   } else if (this.frameRoll == 1) {
     this.validScore(score);
@@ -115,6 +122,7 @@ Bowling.prototype.displayNote = (function(string) {
 
 Bowling.prototype.applyBonus = (function (string) {
    if (string == 'strike') {
+     this.frameRoll = "Bonus roll 1";
      this.bonusRoll = 1;
 
 

@@ -65,6 +65,9 @@ describe('Bowling', function() {
 
   });
 
+
+
+
   it('applies bonus rolls to a frame if a strike is rolled', function() {
     bowling.validScore(10);
     expect(bowling.bonusRoll).toEqual(1);

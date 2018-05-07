@@ -2,15 +2,13 @@ const express = require('express');
 const app = express();
 const session = require('express-session'),
       bodyParser = require('body-parser'),
-      mongoose = require('mongoose'),
       userController = require('./controllers/userController'),
       gameRecordController = require('./controllers/gameRecordController'),
       game = require('./routes/game'),
       port = 8080,
       user = require('./routes/user'),
-      gamerecords = require('./routes/gamerecord');
-
-mongoose.connect('mongodb://localhost:27017/bowling_test');
+      gamerecords = require('./routes/gamerecord'),
+      db = require('./db');
 
 app.set('views', './views');
 app.set('view engine', 'pug');
@@ -32,5 +30,4 @@ app.get('/session/new', function(req, res) {
 
 app.post('/session/new', userController.find_user);
 
-app.listen(port, _ => console.log(`Listening at port ${port}`));
-
+module.exports = app;

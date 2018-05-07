@@ -1,12 +1,13 @@
-html
-  title= title
-  body
-    h3 ANALYSIS
-    p AVERAGE SCORE: #{average} || HIGHEST SCORE: ||  #{max} || LOWEST SCORE: #{min}
-    h3 RECORDS
-    ul
-      each record in records
-        li date: #{record.date} || score: #{record.score}
+extends layout.pug
+
+block content
+
+  h3 ANALYSIS
+  p AVERAGE SCORE: #{average} || HIGHEST SCORE: ||  #{max} || LOWEST SCORE: #{min}
+  h3 RECORDS
+  ul
+    each record in records
+      li date: #{record.date} || score: #{record.score}
     
-    form(method='GET' action='/game/play')
-      button(type='submit') New Game
+  form(method='GET' action='/game/play')
+    button(type='submit') New Game

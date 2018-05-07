@@ -1,6 +1,7 @@
-const url = require('url');
-const Game = require('../models/game');
-const game = new Game();
+const url = require('url'),
+  Game = require('../models/game'),
+  game = new Game(),
+  User = require('../models/user');
 
 exports.play = function(req, res) {
   game.play(+(req.body.pins));
@@ -20,3 +21,7 @@ exports.play = function(req, res) {
       }))
     }
   }
+
+exports.play_show = function(req, res) {
+  res.render('play', { ...req.query, title: 'Play'});
+};

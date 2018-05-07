@@ -1,13 +1,12 @@
-html
-  head
-    title= title
-  body
-    p #{currentFrame ? `Frame: ${currentFrame}` : ''}
-    p #{currentRoll ? `Roll: ${currentRoll}` : ''}
-    p Please enter the number of pins knocked down
+extends layout.pug
 
-    form(method='POST' action='/game/play')
-      input(type='text',name='pins')
-      input(type='submit',value='Submit')
+block content
+  p #{currentFrame ? `Frame: ${currentFrame}` : ''}
+  p #{currentRoll ? `Roll: ${currentRoll}` : ''}
+  p Please enter the number of pins knocked down
 
-    p #{bonus ? `You had a ${bonus} in the previous frame!` : ""}
+  form(method='POST' action='/game/play')
+    input(type='text',name='pins')
+    input(type='submit',value='Submit')
+
+  p #{bonus ? `You had a ${bonus} in the previous frame!` : ""}

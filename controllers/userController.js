@@ -18,12 +18,16 @@ exports.find_user = function(req, res) {
   });
 };
 
-exports.find_user_by_id = function(id) {
-  User.findOne({_id: id}, function(err, user) {
-    if(err) {
-    } else {
-      console.log('The name is ' + user.username);
-      return user.username;
-    }
-  });
+exports.find_user_by_id = function(req, res) {
+  if(req.session.userId) {
+    User.findOne({_id: req.session.userId}, function(err, user) {
+      if(err) {
+        console.log(err);
+      } else {
+        res.render('index', { title: 'Home', user: user.username });
+      }
+    });
+  } else {
+    res.render('index', {title: 'Home', user: 'guest'});
+  }
 };

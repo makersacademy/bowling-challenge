@@ -1,3 +1,4 @@
+require('dotenv').load();
 const express = require('express');
 const app = express();
 const session = require('express-session'),
@@ -8,7 +9,8 @@ const session = require('express-session'),
       port = 8080,
       user = require('./routes/user'),
       gamerecords = require('./routes/gamerecord'),
-      db = require('./db');
+      db = require('./db'),
+      auth = require('./routes/auth');
 
 app.set('views', './views');
 app.set('view engine', 'pug');
@@ -16,18 +18,13 @@ app.set('view engine', 'pug');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-app.use(session({secret: 'this-is-a-secret', cookie: { maxAge: 60000}}));
+app.use(session({secret: process.env.SECRET, cookie: { maxAge: 60000}}));
 
 app.use('/game', game);
 app.use('/user', user);
 app.use('/gamerecords', gamerecords);
+app.use('/auth', auth);
 
 app.get('/', userController.find_user_by_id);
-
-app.get('/session/new', function(req, res) {
-  res.render('login', { title: 'Log In' });
-});
-
-app.post('/session/new', userController.find_user);
 
 module.exports = app;

@@ -4,10 +4,11 @@ block content
     
   form(method='GET' action='/game/play')
     button(type='submit') New Game  
-    form(method='GET' action='/user/new')
+
+  form(method='GET' action='/auth/signup')
     button(type='submit') Sign Up
   
-  form(method='GET' action='session/new')
+  form(method='GET' action='auth/login')
     button(type='submit') Log In
 
   form(method='GET' action='/gamerecords')

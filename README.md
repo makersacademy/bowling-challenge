@@ -2,6 +2,8 @@
 Bowling Challenge
 =================
 
+[Check project online](http://bowling_md.surge.sh/)
+
 Task
 -----
 

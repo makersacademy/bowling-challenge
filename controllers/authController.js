@@ -15,3 +15,15 @@ exports.signup = (req, res) => {
     res.status(200).send({ auth: true, token: token });
   });
 };
+
+exports.getName = (req, res) => {
+  const token = req.headers['x-access-token'];
+  if(!token) return res.status(401).send({ auth: false, message: 'No token provided' });
+  jwt.verify(token, process.env.SECRET, (err, decoded) => {
+    if(err) return res.status(500).send({ auth: false, message: 'Failed to authenticate token' });
+    User.findById(decoded.id, { password: 0 }, ( err, user) => {
+      if(err) res.status(500).send("There was a problem finding the user");
+      res.status(200).send(user);
+    });
+  });
+};

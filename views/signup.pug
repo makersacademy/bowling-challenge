@@ -2,9 +2,8 @@ extends layout.pug
 
 block content
 
-  form(method='POST' action='/auth/signup')
-    label(for='username') Username:
-    input(type='text',name='username') 
-    label(for='password') Password:
-    input(type='password',name='password')
-    button(type='submit') Sign Up
+  label(for='username') Username:
+  input#name(type='text',name='username') 
+  label(for='password') Password:
+  input#password(type='password',name='password')
+  button#signupForm(type='submit') Sign Up

@@ -25,6 +25,8 @@ app.use('/user', user);
 app.use('/gamerecords', gamerecords);
 app.use('/auth', auth);
 
-app.get('/', userController.find_user_by_id);
+app.get('/', (req, res) => {
+  res.render('index');
+});
 
 module.exports = app;

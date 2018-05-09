@@ -1,15 +1,14 @@
 extends layout.pug
 
 block content
-    
   form(method='GET' action='/game/play')
     button(type='submit') New Game  
 
-  form(method='GET' action='/auth/signup')
+  form#myForm(method='GET' action='/auth/signup')
     button(type='submit') Sign Up
   
   form(method='GET' action='auth/login')
     button(type='submit') Log In
 
-  form(method='GET' action='/gamerecords')
+  form#recordsForm(method='GET' action='/gamerecords')
     button(type='submit') View Game Records

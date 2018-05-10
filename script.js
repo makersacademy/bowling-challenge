@@ -1,12 +1,21 @@
 window.onload = _ => {
-  let signupForm = document.getElementById('signupForm');//.addEventListener('click', onClick);
-  signupForm && signupForm.addEventListener('click', onClick);
+  let signup = document.getElementById('signup');//.addEventListener('click', onClick);
+  let login = document.getElementById('login');
+  signup && signup.addEventListener('click', onClick);
+  login && login.addEventListener('click', onLogin); 
   setGreeting();  
 };
 
 async function onClick(e) {
   await submitForm('http://localhost:8080/auth/signup').then(result =>{ window.localStorage.setItem('token', JSON.parse(result).token)}).catch(err => console.log(err));
   await getName().then(result => window.localStorage.setItem('name', JSON.parse(result).username)).catch(err => console.log(err));
+  e.preventDefault();
+};
+
+async function onLogin(e) {
+  console.log('Starting login...')
+  await submitForm('http://localhost:8080/auth/login').then(result => {console.log('RESULT IS ', result);window.localStorage.setItem('token', JSON.parse(result).token)}).catch(err => console.log(err));
+  await getName().then(result => {console.log('NAME IS ', name);window.localStorage.setItem('name', JSON.parse(result).username)}).catch(err => console.log(err));
   e.preventDefault();
 };
 

@@ -1,8 +1,9 @@
 html
   head
     title= title
-    script
-      include ../script.js
+    block script
+      script
+        include ../script.js
   body
     p#greeting
     block content

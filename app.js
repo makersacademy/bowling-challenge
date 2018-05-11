@@ -29,4 +29,8 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+app.get('/showRecords', (req, res) => {
+  res.render('gamerecords');
+});
+
 module.exports = app;

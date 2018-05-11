@@ -1,13 +1,16 @@
 extends layout.pug
 
+block script
+  script
+    include ../records.js
 block content
 
   h3 ANALYSIS
-  p AVERAGE SCORE: #{average} || HIGHEST SCORE: ||  #{max} || LOWEST SCORE: #{min}
+  p#average AVERAGE SCORE:
+  p#max HIGHEST SCORE:
+  p#min LOWEST SCORE: 
   h3 RECORDS
-  ul
-    each record in records
-      li date: #{record.date} || score: #{record.score}
+  ul#records
     
   form(method='GET' action='/game/play')
     button(type='submit') New Game

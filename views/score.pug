@@ -1,12 +1,10 @@
-html
-  head
-    title= title
-  body
-    p Score: #{score}
-    
-    form(method='POST' action='/gamerecords/new')
-      input(type='hidden',name='score',value=score)
-      input(type='submit',value='Save game record')
+extends layout.pug
 
-    form(method='GET' action='/game/play')
-      button(type='submit') New Game
+block content
+  p Score: #{score}
+    
+  input#score(type='hidden',name='score',value=score)
+  button#gameRec Save Game
+
+  form(method='GET' action='/game/play')
+    button(type='submit') New Game

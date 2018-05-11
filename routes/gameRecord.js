@@ -1,9 +1,10 @@
 const express = require('express'),
       router = express.Router(),
-      gameRecordController = require('../controllers/gameRecordController');
+      gameRecordController = require('../controllers/gameRecordController'),
+      verifyToken = require('../controllers/verifyToken');
 
-router.post('/new', gameRecordController.create_game_record);
+router.post('/new', verifyToken, gameRecordController.create_game_record);
 
-router.get('/', gameRecordController.all);
+router.get('/', verifyToken, gameRecordController.all);
 
 module.exports = router;

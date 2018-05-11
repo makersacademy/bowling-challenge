@@ -21,19 +21,19 @@ async function onSaveGame(e) {
 };
 
 async function onShowGames(e) {
-  await requestGames().then(result => { res = JSON.parse(result); for(let i in res) {window.localStorage.setItem(i, res[i]);}; const s = res.records.reduce((p,n) => `${p}<li>date: ${n.date} score: ${n.score}</li>`, ''); window.localStorage.setItem('records', s) });
+  await requestGames().then(result => processResultRec(result)).catch(err => console.log(err));
   redirect(`${HOME}showRecords`);
   e.preventDefault();
 };
 
 async function onClick(e) {
-  await submitUserDetails('auth/signup').then(result =>{ window.localStorage.setItem('token', JSON.parse(result).token); window.localStorage.setItem('name', JSON.parse(result).name)}).catch(err => console.log(err));
+  await submitUserDetails('auth/signup').then(result => processResult(result)).catch(err => console.log(err));
   redirect(HOME);
   e.preventDefault();
 };
 
 async function onLogin(e) {
-  await submitUserDetails('auth/login').then(result => {window.localStorage.setItem('name', JSON.parse(result).name); window.localStorage.setItem('token', JSON.parse(result).token)}).catch(err => console.log(err));
+  await submitUserDetails('auth/login').then(result => processResult(result)).catch(err => console.log(err));
   redirect(HOME);
   e.preventDefault();
 };
@@ -62,11 +62,7 @@ const sendRequest = (method, url, params='', headers={}) => {
     xhr.open(method, url, true);
     xhr.onreadystatechange = _ => {
       if(xhr.readyState == 4) {
-        if(xhr.status == 200) {
-          res(xhr.responseText);
-        } else {
-          rej(xhr.statusText);
-        }
+        xhr.status == 200 ? res(xhr.responseText) : rej(xhr.statusText);
       }
     };
     for(let head in headers) { xhr.setRequestHeader(head, headers[head]) };
@@ -75,13 +71,27 @@ const sendRequest = (method, url, params='', headers={}) => {
 };
 
 const onLogout = _ => {
-  window.localStorage.clear();
+  window.sessionStorage.clear();
   redirect(HOME);
 }
 
 const setGreeting = _ => 
-  document.getElementById('greeting').innerHTML = `Hello, ${window.localStorage.name || 'guest'}`;
+  document.getElementById('greeting').innerHTML = `Hello, ${window.sessionStorage.name || 'guest'}`;
 
-const token = _ => window.localStorage.token;
+const token = _ => window.sessionStorage.token;
+
+const setStorage = result => {for(let key in result) { window.sessionStorage.setItem(key, result[key]); }};
+
+const processResult = result => {
+  result = JSON.parse(result);
+  setStorage(result);
+};
+
+const processResultRec = result => {
+  result = JSON.parse(result);
+  setStorage(result);
+  const records = result.records.reduce((p,n) => `${p}<li> DATE: ${n.date} || SCORE: ${n.score}</li>`,'');
+  window.sessionStorage.setItem('records', records);
+}
 
 const redirect = address => window.location.href = address;

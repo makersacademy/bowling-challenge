@@ -3,12 +3,7 @@ $(document).ready(function() {
   var game = new Game;
   var currentFrame;
   game.start();
-
-
-
-  $('#scores').hide();
-  $('#confirm').hide()
-  $('#edit').hide()
+  SetUp();
 
   function DisplayButtons() {
     for (var i = 0; i <=10; i++) {
@@ -48,9 +43,6 @@ $(document).ready(function() {
              $("#pins-" + i).hide();
             }
            }
-
-
-
            $('#confirm').hide();
            $('#edit').hide();
 
@@ -77,8 +69,6 @@ $(document).ready(function() {
                });
 
              } else {
-
-
           currentFrame.nextRoll()
           console.log(currentFrame.bonusAward());
           $('#scores').hide();
@@ -134,16 +124,10 @@ $(document).ready(function() {
       $('#over').text('GAME OVER!')
     }
 
-
-
-
-
-
-
-
-
-
-
-
+    function SetUp() {
+      $('#scores').hide();
+      $('#confirm').hide()
+      $('#edit').hide()
+    }
 
 })

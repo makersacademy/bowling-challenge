@@ -68,7 +68,6 @@ $(document).ready(function() {
 
              } else {
           currentFrame.nextRoll()
-          console.log(currentFrame.bonusAward());
           $('#scores').hide();
           $('#confirm').show()
           $('#edit').show()

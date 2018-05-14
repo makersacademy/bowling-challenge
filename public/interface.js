@@ -34,7 +34,7 @@ $(document).ready(function() {
       if (currentFrame.roll === 1) {
         $('#current-roll').text('2')
         console.log(currentFrame.play1(parseInt(pins)))
-         console.log(currentFrame.nextRoll())
+         
            if ($('select#current-frame').val() === '9' && currentFrame.rollOne === 10) {
              $('#scores').show();
            }else{

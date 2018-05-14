@@ -48,11 +48,9 @@ $(document).ready(function() {
 
          }else if (currentFrame.roll === 2) {
            $('#current-roll').text('1')
-           console.log(currentFrame.play2(parseInt(pins)))
              if ($('select#current-frame').val() === '9' && currentFrame.rollTwo === 10){
                $('#frame').text('final');
                $('#scores').show();
-               console.log(true);
                $('#confirm').hide()
                $('#edit').hide()
                $('#current-roll').text('Bonus roll for two strikes in final frame')

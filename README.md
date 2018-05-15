@@ -1,9 +1,11 @@
 
 Bowling Challenge
 =================
-I made a basic bowling score app according to the specification.
+I made a basic bowling score app, at the moment it's only backend but frontend coming soon!
 
-Example code in console
+Sadly, this is not the app to play bowling, but to keep track of your score!
+
+Example code in console; go to your terminal...
 
 ====================
 
@@ -70,6 +72,8 @@ Game {defaultPins: Array(11), rolls: 1, frameNumber: 10, frames: Array(10)}
 
 
 ====================
+### Below is the specification and the rule of bowling, if you are interested.
+
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README

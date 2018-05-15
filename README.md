@@ -2,39 +2,32 @@
 Bowling Challenge
 =================
 
-
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
-
 ## The Task
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by
+## Project Review
 
-* Forking this repo
+### Language
+JavaScript, jQuary, HTML/CSS
+### Testing framework
+Jasmine
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+This project has been the most challenge and definitely requires high level logic thinking throughout all the projects at Makers. I have really enjoyed it and followed TDD process.
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+## Screenshot
+<img width="1045" alt="screen shot 2018-05-15 at 03 20 47" src="https://user-images.githubusercontent.com/33848023/40033286-a0593ad6-57ef-11e8-8b77-b1beb4e334e7.png">
 
-Also, don't generate random rolls. Trust us on this one.
+## How to run the application
 
-### Optional Extras
+- Clone this repository into to your local computer.
+- Open the bowling.html file in the browser
 
-In any order you like:
+## How to run the tests
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+Right click on SpecRunner.html and copy full path, paste it into browser.
 
 ## Bowling — how does it work?
 

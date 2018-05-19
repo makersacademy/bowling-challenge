@@ -16,7 +16,7 @@ describe('bowling', function() {
   });
 
   describe('#current_roll', function() {
-    it('#Starts a game on roll 1', function() {
+    it('#Starts a game on knock_pins 1', function() {
       expect(bowlingGame.current_roll).toEqual(1)
     });
   });
@@ -31,66 +31,86 @@ describe('bowling', function() {
     it('#Starts a game empty', function() {
       expect(bowlingGame.score_card).toEqual([])
     });
+
+    it('Keeps track of multiple frame scores', function() {
+      console.log(bowlingGame.score_card)
+      bowlingGame.knock_pins(5);
+      console.log(bowlingGame.score_card)
+      bowlingGame.knock_pins(1);
+      console.log(bowlingGame.score_card)
+      bowlingGame.knock_pins(2);
+      console.log(bowlingGame.score_card)
+      bowlingGame.knock_pins(3);
+      console.log(bowlingGame.score_card)
+      expect(bowlingGame.score_card).toEqual([6, 5])
+    });
   });
 
-  describe('#roll', function() {
+  describe('#knock_pins', function() {
 
     it('Should knock down specified number of pins', function() {
-      bowlingGame.roll(5);
+      bowlingGame.knock_pins(5);
       expect(bowlingGame.pins).toEqual(5)
     });
 
     it('Should throw an error if attempting to knock too many pins', function() {
-      expect(function() { bowlingGame.roll(11) } ).toThrow("You cannot knock over more pins than there are standing")
+      expect(function() { bowlingGame.knock_pins(11) } ).toThrow("You cannot knock over more pins than there are standing")
     });
 
     it('Should throw an error if attempting to knock too many pins', function() {
-      bowlingGame.roll(5);
-      expect(function() { bowlingGame.roll(6) } ).toThrow("You cannot knock over more pins than there are standing")
+      bowlingGame.knock_pins(5);
+      expect(function() { bowlingGame.knock_pins(6) } ).toThrow("You cannot knock over more pins than there are standing")
     });
 
     it('Should start current roll on a new frame as 1 ', function() {
+      bowlingGame.knock_pins(10);
       expect(bowlingGame.current_roll).toEqual(1)
     });
 
     it('Should change the current roll to 2', function() {
-      bowlingGame.roll(5);
+      bowlingGame.knock_pins(5);
       expect(bowlingGame.current_roll).toEqual(2)
     });
 
     it('Should update the frame score', function() {
-      bowlingGame.roll(5);
+      bowlingGame.knock_pins(5);
       expect(bowlingGame.frame_score).toEqual(5)
     })
   });
 
   describe('#end_frame', function() {
 
-    it('Sets current_roll to 1', function() {
-      bowlingGame.roll(10)
+    it('Sets current_knock_pins to 1', function() {
+      bowlingGame.knock_pins(10)
       expect(bowlingGame.current_roll).toEqual(1)
     });
 
     it('Updates the score_card', function() {
-      bowlingGame.roll(5);
-      bowlingGame.roll(5);
+      bowlingGame.knock_pins(5);
+      bowlingGame.knock_pins(5);
       expect(bowlingGame.score_card).toEqual([10])
     });
 
     it('Starts a new frame after a strike', function() {
-      bowlingGame.roll(10);
+      bowlingGame.knock_pins(10);
       expect(bowlingGame.current_frame).toEqual(2)
     });
 
-    it('Starts a new frame after two rolls in a frame', function() {
-      bowlingGame.roll(1);
-      bowlingGame.roll(1);
+    it('Starts a new frame after two knock_pinss in a frame', function() {
+      bowlingGame.knock_pins(1);
+      bowlingGame.knock_pins(1);
       expect(bowlingGame.current_frame).toEqual(2)
     });
 
     it('Resets the pins to 10', function() {
-      bowlingGame.roll(10);
+      bowlingGame.knock_pins(10);
       expect(bowlingGame.pins).toEqual(10)
+    });
+
+    it('Resets the frame score', function() {
+      bowlingGame.knock_pins(2);
+      bowlingGame.knock_pins(4);
+      expect(bowlingGame.frame_score).toEqual(0)
     });
   });
 });

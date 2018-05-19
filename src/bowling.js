@@ -6,7 +6,7 @@ function Bowling() {
   this.score_card = []
 }
 
-Bowling.prototype.roll = function(num) {
+Bowling.prototype.knock_pins = function(num) {
   if(this.pins - num < 0 || num > 10) {
     throw("You cannot knock over more pins than there are standing")
   } else {
@@ -22,8 +22,9 @@ Bowling.prototype.roll = function(num) {
 };
 
 Bowling.prototype.end_frame = function() {
-  this.current_roll = 1
-  this.current_frame += 1
   this.pins = 10
+  this.current_frame += 1
+  this.current_roll = 1
   this.score_card.push(this.frame_score)
+  this.frame_score = 0
 };

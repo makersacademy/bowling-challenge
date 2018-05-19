@@ -202,5 +202,25 @@ describe('bowling', function() {
       bowlingGame.knock_pins(6);
       expect(bowlingGame.score_card).toEqual([[1, 2], [10, 3, 1], [3, 1], [10, 10, 3], [10, 3, 4], [3, 4], [10, 1, 6], [1, 6]])
     });
+
+
+    describe('Game of strikes and spares', function() {
+      it('Works for random strikes and spares', function() {
+        bowlingGame.knock_pins(1);
+        bowlingGame.knock_pins(9);
+        bowlingGame.knock_pins(10);
+        bowlingGame.knock_pins(3);
+        bowlingGame.knock_pins(7);
+        bowlingGame.knock_pins(10);
+        bowlingGame.knock_pins(1);
+        bowlingGame.knock_pins(3);
+        bowlingGame.knock_pins(4);
+        bowlingGame.knock_pins(6);
+        bowlingGame.knock_pins(10);
+        bowlingGame.knock_pins(6);
+        bowlingGame.knock_pins(1);
+        expect(bowlingGame.score_card).toEqual([[1, 9, 10], [10, 3, 7], [3, 7, 10], [10, 1, 3], [1, 3], [4, 6, 10], [10, 6, 1], [6, 1]])
+      });
+    });
   });
 });

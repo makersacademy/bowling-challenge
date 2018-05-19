@@ -9,15 +9,26 @@ describe("Frame", function() {
     expect(frame.isComplete).toBe(false);
   })
 
-  it("Takes the result of the first roll", function(){
-    frame.addScore(5);
-    expect(frame.firstRoll).toEqual(5);
+  describe("#addScore", function(){
+    it("Takes the result of the first roll", function(){
+      frame.addScore(5);
+      expect(frame.firstRoll).toEqual(5);
+    });
+
+    it("Takes the result of the second roll", function(){
+      frame.addScore(5);
+      frame.addScore(3);
+      expect(frame.secondRoll).toEqual(3);
+    });
   });
 
-  it("Takes the result of the second roll", function(){
-    frame.addScore(5);
-    frame.addScore(6);
-    expect(frame.secondRoll).toEqual(6);
+  describe("#_calculateScore", function(){
+    it("calculates its score", function(){
+      frame.addScore(5);
+      frame.addScore(3);
+      expect(frame.Score).toEqual(8);
+    });
   });
+
 
 });

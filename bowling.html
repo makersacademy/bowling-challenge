@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      header{
+        color: #602a23;
+        font-size: 48px;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+      }
+      body {
+        background-image: url("images/bowling-background.jpg");
+        background-size: auto 100%;
+      }
+      .game{
+        text-align: center;
+        margin: 50px auto 50px auto;
+        width: 90%;
+      }
+      #gameList {
+        list-style: none;
+      }
+      .frame{
+        background-color: #f2e9d5;
+        width: 100px;
+        height: 80px;
+        float:left;
+        list-style-type: none;
+        margin-bottom: 5px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: brown;
+        /* border-collapse: collapse; TODO: it doesn't work */
+      }
+      .frame-score {
+        height: 100%;
+        padding-top: 0.3em;
+        font-size: 24px;
+        color: #874e47;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .frame .r1 {
+        float: left;
+        width: 50%;
+        height: 100%;
+      }
+      .frame .r2 {
+        float: left;
+        width: 50%;
+        height: 100%;
+      }
+      .roll1 {
+        border-style: solid;
+        border-width: 1px;
+        border-color: white;
+        height: 80%;
+        padding-top: 0.3em;
+        font-size: 24px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .roll2 {
+        border-style: solid;
+        border-width: 1px 2px 1px 0;
+        border-color: white;
+        height: 80%;
+        padding-top: 0.3em;
+        font-size: 24px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .rolls {
+        background-color: #a5645c;
+        float: right;
+        width: 66%;
+        height: 50%;
+        color: white;
+      }
+      .score{
+        clear:right;
+        height: 50%;
+      }
+      .rolls_score {
+        height: 100%;
+      }
+      .gameFinished {
+        clear: left;
+        font-size: 36px;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #602a23;
+      }
+      .clickButton {
+        font-size: 27px;
+        color: #602a23;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .buttons {
+        margin: 50px 50px 0 100px;
+      }
+      .button {
+        width: 50px;
+        height: 50px;
+        background-color: #874e47;
+        font-size: 24px;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 20%;
+        transition-duration: 0.4s;
+      }
+      .button:hover {
+        background-color: linen;
+        color: black;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <header>
+      Bowling Score Calculator
+    </header>
+    <script src="jquery.min.js"></script>
+    <script src="src/interface.js"></script>
+    <script src="src/bowlingGame.js"></script>
+    <div class="buttons">
+      <p class="clickButton">Click Number of Pins Knocked Down</p>
+      <form>
+        <button class="button" type="button" id="templeteBtn">0</button>
+      </form>
+    </div>
+
+    <div class="game">
+      <ol id="gameList">
+        <li class="frame" id="templeteFrame">
+          <div class="rolls_score">
+            <div class="rolls">
+              <div class="r1"><div class="roll1 js_roll1"></div></div>
+              <div class="r2"><div class="roll2 js_roll2"></div></div>
+            </div>
+            <div class="score"><div class="frame-score js_score"></div></div>
+          </div>
+        </li>
+      </ol>
+    </div>
+      <p class="gameFinished">Congratuations your score is <span id="final-score"></span>!</p>
+
+  </body>
+</html>

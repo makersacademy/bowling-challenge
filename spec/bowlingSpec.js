@@ -27,5 +27,18 @@ describe('bowling', function() {
       bowlingGame.roll(5);
       expect(bowlingGame.current_roll).toEqual(2)
     });
+
+    it('Should update the frame score', function() {
+      bowlingGame.roll(5);
+      expect(bowlingGame.frame_score).toEqual(5)
+    })
+  });
+
+  describe('#end_frame', function() {
+    it('Sets current_roll to 1', function() {
+      bowlingGame.roll(10)
+      bowlingGame.end_frame();
+      expect(bowlingGame.current_roll).toEqual(1)
+    });
   });
 });

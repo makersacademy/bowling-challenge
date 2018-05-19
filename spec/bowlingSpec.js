@@ -3,11 +3,13 @@ describe('bowling', function() {
     bowlingGame = new Bowling();
   });
 
+
   describe('#pins', function() {
     it('Starts a game with 10 pins', function() {
       expect(bowlingGame.pins).toEqual(10)
     });
   });
+
 
   describe('#current_frame', function() {
     it('Starts the game on frame 1', function() {
@@ -15,17 +17,20 @@ describe('bowling', function() {
     });
   });
 
+
   describe('#current_roll', function() {
     it('#Starts a game on knock_pins 1', function() {
       expect(bowlingGame.current_roll).toEqual(1)
     });
   });
 
+
   describe('#frame_score', function() {
     it('#Starts a game on 0', function() {
       expect(bowlingGame.frame_score).toEqual([])
     });
   });
+
 
   describe('#score_card', function() {
     it('#Starts a game empty', function() {
@@ -39,7 +44,13 @@ describe('bowling', function() {
       bowlingGame.knock_pins(3);
       expect(bowlingGame.score_card).toEqual([[5, 1], [2, 3]])
     });
+
+    it('Updates after a strike', function() {
+      bowlingGame.knock_pins(10);
+      expect(bowlingGame.score_card).toEqual([[10]])
+    })
   });
+
 
   describe('#knock_pins', function() {
 
@@ -72,6 +83,7 @@ describe('bowling', function() {
       expect(bowlingGame.frame_score).toEqual([5])
     });
   });
+
 
   describe('#end_frame', function() {
 
@@ -109,12 +121,51 @@ describe('bowling', function() {
     });
   });
 
-  // describe('#Getting a spare', function() {
-  //   it('Gains bonus score after the next roll', function() {
-  //     bowlingGame.knock_pins(5);
-  //     bowlingGame.knock_pins(5);
-  //     bowlingGame.knock_pins(1);
-  //     expect(bowlingGame.score_card).toEqual([11])
-  //   });
-  // });
+
+  describe('#Getting a spare', function() {
+    it('Gains bonus score after the next roll', function() {
+      bowlingGame.knock_pins(5);
+      bowlingGame.knock_pins(5);
+      bowlingGame.knock_pins(1);
+      expect(bowlingGame.score_card).toEqual([[5, 5, 1]])
+    });
+
+    it('Only gains bonus score after the next roll', function() {
+      bowlingGame.knock_pins(6);
+      bowlingGame.knock_pins(4);
+      bowlingGame.knock_pins(8);
+      bowlingGame.knock_pins(1);
+      bowlingGame.knock_pins(2);
+      expect(bowlingGame.score_card).toEqual([[6, 4, 8], [8, 1,]])
+    });
+
+    it('Works for multiple spares in a row', function() {
+      bowlingGame.knock_pins(6);
+      bowlingGame.knock_pins(4);
+      bowlingGame.knock_pins(8);
+      bowlingGame.knock_pins(2);
+      bowlingGame.knock_pins(3);
+      bowlingGame.knock_pins(7);
+      bowlingGame.knock_pins(4);
+      bowlingGame.knock_pins(6);
+      bowlingGame.knock_pins(1);
+      bowlingGame.knock_pins(9);
+      expect(bowlingGame.score_card).toEqual([[6, 4, 8], [8, 2, 3], [3, 7, 4], [4, 6, 1], [1, 9]])
+    });
+
+    it('Works for random spares', function() {
+      bowlingGame.knock_pins(6);
+      bowlingGame.knock_pins(4);
+      bowlingGame.knock_pins(8);
+      bowlingGame.knock_pins(1);
+      bowlingGame.knock_pins(3);
+      bowlingGame.knock_pins(4);
+      bowlingGame.knock_pins(4);
+      bowlingGame.knock_pins(6);
+      bowlingGame.knock_pins(1);
+      bowlingGame.knock_pins(9);
+      bowlingGame.knock_pins(3);
+      expect(bowlingGame.score_card).toEqual([[6, 4, 8], [8, 1], [3, 4], [4, 6, 1], [1, 9, 3]])
+    });
+  });
 });

@@ -14,7 +14,13 @@ Bowling.prototype.knock_pins = function(num) {
   this.frame_score.push(num)
   };
 
-  if (this.current_roll == 2 || this.pins == 0) {
+  if (this.current_frame > 1) {
+    if (this.current_roll === 1 && (this.score_card[this.score_card.length - 1]).length === 2 && (this.score_card[this.score_card.length - 1]).reduce(function(acc, val) { return acc + val; }) == 10) {
+      this.score_card[this.score_card.length - 1].push(num);
+    };
+  }
+
+  if (this.current_roll === 2 || this.pins === 0) {
     this.end_frame();
   } else {
   this.current_roll = 2;
@@ -22,10 +28,6 @@ Bowling.prototype.knock_pins = function(num) {
 };
 
 Bowling.prototype.end_frame = function() {
-  // if (this.current_roll == 2 && this.) {
-  //
-  // }
-
   this.pins = 10
   this.current_frame += 1
   this.current_roll = 1

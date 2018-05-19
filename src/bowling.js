@@ -24,5 +24,6 @@ Bowling.prototype.roll = function(num) {
 Bowling.prototype.end_frame = function() {
   this.current_roll = 1
   this.current_frame += 1
+  this.pins = 10
   this.score_card.push(this.frame_score)
 };

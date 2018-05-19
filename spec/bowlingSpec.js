@@ -3,12 +3,35 @@ describe('bowling', function() {
     bowlingGame = new Bowling();
   });
 
-  describe('#score_card', function() {
+  describe('#pins', function() {
+    it('Starts a game with 10 pins', function() {
+      expect(bowlingGame.pins).toEqual(10)
+    });
+  });
 
+  describe('#current_frame', function() {
+    it('Starts the game on frame 1', function() {
+      expect(bowlingGame.current_frame).toEqual(1)
+    });
+  });
+
+  describe('#current_roll', function() {
+    it('#Starts a game on roll 1', function() {
+      expect(bowlingGame.current_roll).toEqual(1)
+    });
+  });
+
+  describe('#frame_score', function() {
+    it('#Starts a game on 0', function() {
+      expect(bowlingGame.frame_score).toEqual(0)
+    });
+  });
+
+  describe('#score_card', function() {
     it('#Starts a game empty', function() {
       expect(bowlingGame.score_card).toEqual([])
-    })
-  })
+    });
+  });
 
   describe('#roll', function() {
 
@@ -57,6 +80,17 @@ describe('bowling', function() {
     it('Starts a new frame after a strike', function() {
       bowlingGame.roll(10);
       expect(bowlingGame.current_frame).toEqual(2)
+    });
+
+    it('Starts a new frame after two rolls in a frame', function() {
+      bowlingGame.roll(1);
+      bowlingGame.roll(1);
+      expect(bowlingGame.current_frame).toEqual(2)
+    });
+
+    it('Resets the pins to 10', function() {
+      bowlingGame.roll(10);
+      expect(bowlingGame.pins).toEqual(10)
     });
   });
 });

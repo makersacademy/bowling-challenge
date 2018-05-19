@@ -185,6 +185,22 @@ describe('bowling', function() {
       bowlingGame.knock_pins(1);
       bowlingGame.knock_pins(2);
       expect(bowlingGame.score_card).toEqual([[10, 10, 10], [10, 10, 1], [10, 1, 2], [1, 2]])
-    })
+    });
+
+    it('Works for random strikes throughout a game', function () {
+      bowlingGame.knock_pins(1);
+      bowlingGame.knock_pins(2);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(3);
+      bowlingGame.knock_pins(1);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(3);
+      bowlingGame.knock_pins(4);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(1);
+      bowlingGame.knock_pins(6);
+      expect(bowlingGame.score_card).toEqual([[1, 2], [10, 3, 1], [3, 1], [10, 10, 3], [10, 3, 4], [3, 4], [10, 1, 6], [1, 6]])
+    });
   });
 });

@@ -178,8 +178,13 @@ describe('bowling', function() {
       expect(bowlingGame.score_card).toEqual([[10, 1, 2], [1, 2]])
     });
 
-    // it('Works for multiple strikes in a row', function() {
-    //
-    // })
+    it('Works for multiple strikes in a row', function() {
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(1);
+      bowlingGame.knock_pins(2);
+      expect(bowlingGame.score_card).toEqual([[10, 10, 10], [10, 10, 1], [10, 1, 2], [1, 2]])
+    })
   });
 });

@@ -48,9 +48,21 @@ Bowling.prototype.knock_pins = function(num) {
 };
 
 Bowling.prototype.end_frame = function() {
-  this.pins = 10
-  this.current_frame += 1
-  this.current_roll = 1
-  this.score_card.push(this.frame_score)
-  this.frame_score = []
+  if (this.current_frame === 10) {
+    this.reset_game();
+  } else {
+    this.pins = 10
+    this.current_frame += 1
+    this.current_roll = 1
+    this.score_card.push(this.frame_score)
+    this.frame_score = []
+  };
 };
+
+Bowling.prototype.reset_game = function() {
+  this.pins = 10
+  this.current_frame = 1
+  this.current_roll = 1
+  this.frame_score = []
+  this.score_card = []
+}

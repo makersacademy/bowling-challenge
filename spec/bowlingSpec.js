@@ -23,7 +23,7 @@ describe('bowling', function() {
 
   describe('#frame_score', function() {
     it('#Starts a game on 0', function() {
-      expect(bowlingGame.frame_score).toEqual(0)
+      expect(bowlingGame.frame_score).toEqual([])
     });
   });
 
@@ -33,16 +33,11 @@ describe('bowling', function() {
     });
 
     it('Keeps track of multiple frame scores', function() {
-      console.log(bowlingGame.score_card)
       bowlingGame.knock_pins(5);
-      console.log(bowlingGame.score_card)
       bowlingGame.knock_pins(1);
-      console.log(bowlingGame.score_card)
       bowlingGame.knock_pins(2);
-      console.log(bowlingGame.score_card)
       bowlingGame.knock_pins(3);
-      console.log(bowlingGame.score_card)
-      expect(bowlingGame.score_card).toEqual([6, 5])
+      expect(bowlingGame.score_card).toEqual([[5, 1], [2, 3]])
     });
   });
 
@@ -74,8 +69,8 @@ describe('bowling', function() {
 
     it('Should update the frame score', function() {
       bowlingGame.knock_pins(5);
-      expect(bowlingGame.frame_score).toEqual(5)
-    })
+      expect(bowlingGame.frame_score).toEqual([5])
+    });
   });
 
   describe('#end_frame', function() {
@@ -88,7 +83,7 @@ describe('bowling', function() {
     it('Updates the score_card', function() {
       bowlingGame.knock_pins(5);
       bowlingGame.knock_pins(5);
-      expect(bowlingGame.score_card).toEqual([10])
+      expect(bowlingGame.score_card).toEqual([[5, 5]])
     });
 
     it('Starts a new frame after a strike', function() {
@@ -110,7 +105,16 @@ describe('bowling', function() {
     it('Resets the frame score', function() {
       bowlingGame.knock_pins(2);
       bowlingGame.knock_pins(4);
-      expect(bowlingGame.frame_score).toEqual(0)
+      expect(bowlingGame.frame_score).toEqual([])
     });
   });
+
+  // describe('#Getting a spare', function() {
+  //   it('Gains bonus score after the next roll', function() {
+  //     bowlingGame.knock_pins(5);
+  //     bowlingGame.knock_pins(5);
+  //     bowlingGame.knock_pins(1);
+  //     expect(bowlingGame.score_card).toEqual([11])
+  //   });
+  // });
 });

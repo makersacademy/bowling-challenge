@@ -27,24 +27,42 @@ describe("Frame", function() {
       expect(frame.isComplete).toBe(true);
     });
 
-    it("registers a strike", function(){
-      frame.addScore(10);
-      expect(frame.isStrike).toBe(true)
+    describe("strike", function(){
+      beforeEach(function(){
+        frame.addScore(10);
+      });
+      it("registers a strike", function(){
+        expect(frame.isStrike).toBe(true)
+      });
+
+      it("doesn't complete the frame for a strike", function(){
+        expect(frame.isComplete).toBe(false);
+      });
     });
 
-    it("registers a spare", function(){
-      frame.addScore(5);
-      frame.addScore(5);
-      expect(frame.isComplete).toBe(false);
+    describe("spare", function(){
+      beforeEach(function(){
+        frame.addScore(5);
+        frame.addScore(5);
+      });
+      it("registers a spare", function(){
+        expect(frame.isComplete).toBe(false);
+      });
+
+      it("adds a bonus ball for a spare", function(){
+        frame.addScore(3);
+        expect(frame.rollScores.length).toEqual(3)
+        expect(frame.rollScores[frame.rollScores.length - 1]).toBe(3);
+      });
+
+      it("completes a frame after one bonus ball", function(){
+        frame.addScore(3);
+        expect(frame.isComplete).toBe(true);
+      });
+
     });
 
-    it("adds a bonus ball for a spare", function(){
-      frame.addScore(5);
-      frame.addScore(5);
-      frame.addScore(3);
-      expect(frame.rollScores.length).toEqual(3)
-      expect(frame.rollScores[frame.rollScores.length - 1]).toBe(3);
-    });
+
   });
 
   describe("#_calculateScore", function(){

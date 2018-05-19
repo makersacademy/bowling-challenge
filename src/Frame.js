@@ -1,11 +1,11 @@
 function Frame(){
   this.isComplete = false;
-  this.rollScores = []
+  this.rollScores = [];
 }
 
 Frame.prototype.addScore = function(score){
   if (this.isComplete) { return }
-  if (this.rollScores.length === 0 && score === 10 ) { this.isStrike = true; }
+  if (this.rollScores.length === 0 && score === 10) { this.isStrike = true; }
   this.rollScores.push(score);
   this._checkComplete();
 }

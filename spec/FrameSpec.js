@@ -104,6 +104,21 @@ describe("Frame", function() {
         expect(frame.isComplete).toBe(true);
       });
 
+      describe("spare with bonus ball", function(){
+        beforeEach(function(){
+          frame.addScore(8);
+        });
+
+        it("doesn't complete the frame for one bonus ball", function(){
+          expect(frame.isComplete).toBe(true);
+        });
+
+        it("doesn't calculate the score for one bonus ball", function(){
+          expect(frame.Score).toEqual(18);
+        });
+
+      });
+
     });
 
   });

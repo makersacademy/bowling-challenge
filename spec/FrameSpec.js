@@ -42,7 +42,8 @@ describe("Frame", function() {
       frame.addScore(5);
       frame.addScore(5);
       frame.addScore(3);
-      expect(frame.rollScores.last).toBe(3);
+      expect(frame.rollScores.length).toEqual(3)
+      expect(frame.rollScores[frame.rollScores.length - 1]).toBe(3);
     });
   });
 

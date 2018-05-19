@@ -11,7 +11,7 @@ Frame.prototype.addScore = function(score){
 }
 
 Frame.prototype._isSpare = function(){
-  (this.rollScores[0] + this.rollScores[1]) === 10;
+  return (this.rollScores[0] + this.rollScores[1]) === 10;
 }
 
 Frame.prototype._checkComplete = function(){

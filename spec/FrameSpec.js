@@ -26,6 +26,17 @@ describe("Frame", function() {
       frame.addScore(3);
       expect(frame.isComplete).toBe(true);
     });
+
+    it("registers a strike", function(){
+      frame.addScore(10);
+      expect(frame.isStrike).toBe(true)
+    });
+
+    it("does not add a second roll when a strike is scored", function(){
+      frame.addScore(10);
+      frame.addScore(5);
+      expect(frame.secondRoll).toBeUndefined()
+    });
   });
 
   describe("#_calculateScore", function(){

@@ -1,5 +1,6 @@
 function Bowling() {
   this.pins = 10
+  this.current_roll = 1
 }
 
 Bowling.prototype.roll = function(num) {
@@ -7,5 +8,6 @@ Bowling.prototype.roll = function(num) {
     throw("You cannot knock over more pins than there are standing")
   } else {
   this.pins -= num;
+  this.current_roll = 2
   };
 };

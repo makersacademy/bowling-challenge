@@ -26,9 +26,5 @@ Frame.prototype._calculateFinalScore = function(){
 }
 
 Frame.prototype._hasAllRolls = function(){
-  if (((!!this.isStrike || this._isSpare()) && this.rollScores.length < 3) || (this.rollScores.length < 2)){
-    return false;
-  } else {
-    return true;
-  }
+  return (((!!this.isStrike || this._isSpare()) && this.rollScores.length < 3) || (this.rollScores.length < 2)) ? false : true;
 }

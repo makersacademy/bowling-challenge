@@ -1,0 +1,10 @@
+html {
+  background-image: url("photo.jpg");
+  background-size: cover;
+}
+
+.writing {
+  color: purple;
+  font-weight: bold;
+  margin-left: 250px;
+}

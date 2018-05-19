@@ -15,6 +15,12 @@ Bowling.prototype.knock_pins = function(num) {
   };
 
   if (this.current_frame > 1) {
+
+    if (this.current_roll === 2 && (this.score_card[this.score_card.length - 1]).length === 1 ) {
+      this.score_card[this.score_card.length - 1].push(this.frame_score[0]);
+      this.score_card[this.score_card.length - 1].push(num);
+    }
+
     if (this.current_roll === 1 && (this.score_card[this.score_card.length - 1]).length === 2 && (this.score_card[this.score_card.length - 1]).reduce(function(acc, val) { return acc + val; }) == 10) {
       this.score_card[this.score_card.length - 1].push(num);
     };

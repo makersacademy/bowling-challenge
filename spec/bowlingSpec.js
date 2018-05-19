@@ -168,4 +168,18 @@ describe('bowling', function() {
       expect(bowlingGame.score_card).toEqual([[6, 4, 8], [8, 1], [3, 4], [4, 6, 1], [1, 9, 3]])
     });
   });
+
+
+  describe('Getting a strike', function() {
+    it('Gains a bonus for the next two rolls', function() {
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(1);
+      bowlingGame.knock_pins(2);
+      expect(bowlingGame.score_card).toEqual([[10, 1, 2], [1, 2]])
+    });
+
+    // it('Works for multiple strikes in a row', function() {
+    //
+    // })
+  });
 });

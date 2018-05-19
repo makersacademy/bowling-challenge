@@ -18,4 +18,4 @@ Bowling.prototype.roll = function(num) {
 Bowling.prototype.end_frame = function() {
   this.current_roll = 1
   this.score_card.push(this.frame_score)
-}
+};

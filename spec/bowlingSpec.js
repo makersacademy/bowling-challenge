@@ -3,6 +3,13 @@ describe('bowling', function() {
     bowlingGame = new Bowling();
   });
 
+  describe('#score_card', function() {
+
+    it('#Starts a game empty', function() {
+      expect(bowlingGame.score_card).toEqual([])
+    })
+  })
+
   describe('#roll', function() {
 
     it('Should knock down specified number of pins', function() {

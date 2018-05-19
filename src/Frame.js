@@ -10,4 +10,9 @@ Frame.prototype.addScore = function(score){
 
 Frame.prototype._calculateScore = function(){
   this.Score = this.firstRoll + this.secondRoll;
+  this._setComplete();
+}
+
+Frame.prototype._setComplete = function(){
+  this.isComplete = true;
 }

@@ -20,6 +20,12 @@ describe("Frame", function() {
       frame.addScore(3);
       expect(frame.secondRoll).toEqual(3);
     });
+
+    it("completes a frame once two normal balls are bowled(no X or /)", function(){
+      frame.addScore(5);
+      frame.addScore(3);
+      expect(frame.isComplete).toBe(true);
+    });
   });
 
   describe("#_calculateScore", function(){

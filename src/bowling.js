@@ -2,6 +2,7 @@ function Bowling() {
   this.pins = 10
   this.current_roll = 1
   this.frame_score = 0
+  this.score_card = []
 }
 
 Bowling.prototype.roll = function(num) {
@@ -16,4 +17,5 @@ Bowling.prototype.roll = function(num) {
 
 Bowling.prototype.end_frame = function() {
   this.current_roll = 1
+  this.score_card.push(this.frame_score)
 }

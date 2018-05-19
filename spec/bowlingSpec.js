@@ -35,10 +35,18 @@ describe('bowling', function() {
   });
 
   describe('#end_frame', function() {
+
     it('Sets current_roll to 1', function() {
       bowlingGame.roll(10)
       bowlingGame.end_frame();
       expect(bowlingGame.current_roll).toEqual(1)
     });
+
+    it('Updates the score_card', function() {
+      bowlingGame.roll(5);
+      bowlingGame.roll(5);
+      bowlingGame.end_frame();
+      expect(bowlingGame.score_card).toEqual([10])
+    })
   });
 });

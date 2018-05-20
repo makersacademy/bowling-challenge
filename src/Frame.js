@@ -20,7 +20,7 @@ Frame.prototype._checkComplete = function(){
 }
 
 Frame.prototype._calculateFinalScore = function(){
-  this.Score = this.rollScores.reduce(function(acc, val) { return acc + val; });
+  this.score = this.rollScores.reduce(function(acc, val) { return acc + val; });
 }
 
 Frame.prototype._hasAllRolls = function(){

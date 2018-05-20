@@ -31,7 +31,7 @@ describe("Frame", function() {
       });
 
       it("calculates its score", function(){
-        expect(frame.Score).toEqual(8);
+        expect(frame.score).toEqual(8);
       });
     });
 
@@ -49,7 +49,7 @@ describe("Frame", function() {
       });
 
       it("doesn't calculate the score a strike", function(){
-        expect(frame.Score).toBeUndefined();
+        expect(frame.score).toBeUndefined();
       });
 
       describe("strike with bonus balls", function(){
@@ -58,12 +58,12 @@ describe("Frame", function() {
         });
 
         it("doesn't calculate the score for one bonus ball", function(){
-          expect(frame.Score).toBeUndefined();
+          expect(frame.score).toBeUndefined();
         });
 
         it("does calculate the score after the second bonus ball", function(){
           frame.addScore(8);
-          expect(frame.Score).toEqual(23);
+          expect(frame.score).toEqual(23);
         });
 
 
@@ -81,7 +81,7 @@ describe("Frame", function() {
       });
 
       it("doesn't calculate the score a spare before bonus ball", function(){
-        expect(frame.Score).toBeUndefined();
+        expect(frame.score).toBeUndefined();
       });
 
       it("adds a bonus ball for a spare", function(){
@@ -97,7 +97,7 @@ describe("Frame", function() {
         });
 
         it("calculates the score for one bonus ball", function(){
-          expect(frame.Score).toEqual(18);
+          expect(frame.score).toEqual(18);
         });
 
       });

@@ -4,7 +4,10 @@ function Game(frameClass = Frame){
 }
 
 Game.prototype.bowl = function(score){
-  if (this.frames.length === 0 || this.currentFrame().isComplete){ this.frames.push(this.createFrame()); }
+  if (this.isOver()) { return }
+  if (this.frames.length === 0 || this.currentFrame().isComplete){
+    if (this.frames.length < 10){ this.frames.push(this.createFrame()); }
+   }
   for (var i = 0; i < this.frames.length; i++){
     if (!this.frames[i].score){ this.frames[i].addScore(score); }
   }
@@ -24,4 +27,8 @@ Game.prototype.currentScore = function(){
     if (this.frames[i].score){ score += this.frames[i].score }
   }
   return score;
+}
+
+Game.prototype.isOver = function(){
+  return ((this.frames.length === 10) && !!this.currentFrame().score)
 }

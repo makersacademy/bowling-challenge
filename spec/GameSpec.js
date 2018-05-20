@@ -1,11 +1,13 @@
 describe("Game", function(){
-  var game, frame;
+  var game, frame, game2;
 
   beforeEach(function(){
     frame = new Frame;
-    game = new Game;
     frame2 = new Frame;
+    game = new Game;
+    game2 = new Game;
     spyOn(game, 'createFrame').and.returnValues(frame, frame2);
+    spyOn(game2, 'createFrame').and.returnValues(frame);
     spyOn(frame, 'addScore');
     spyOn(frame2, 'addScore');
     game.bowl(5);
@@ -40,6 +42,15 @@ describe("Game", function(){
     frame["isComplete"] = true;
     game.bowl(4);
     expect(game.currentScore()).toEqual(35);
+  });
+
+  it('only creates 10 frames', function(){
+    frame["score"] = 15;
+    frame["isComplete"] = true;
+    for (var i = 0; i < 10; i++){
+      game2.frames.push(frame)
+    }
+    expect(game2.isOver()).toBe(true);
   });
 
 });

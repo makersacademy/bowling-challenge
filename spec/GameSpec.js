@@ -31,6 +31,12 @@ describe("Game", function(){
     expect(game.frames.length).toEqual(2);
   });
 
+  it('creates a new frame when the previous one is a spare', function(){
+    frame["isStrike"] = true;
+    game.bowl(4);
+    expect(game.frames.length).toEqual(2);
+  });
+
   describe("More complex game", function(){
     var game2, firstFrame, secondFrame;
 

@@ -15,7 +15,7 @@ Frame.prototype.isSpare = function(){
 }
 
 Frame.prototype._checkComplete = function(){
-  if (this.isStrike || this.rollScores >=2 ) { this.isComplete = true; }
+  if (this.isStrike || this.rollScores.length >= 2 ) { this.isComplete = true; }
   if (this._hasAllRolls()){ this._calculateFinalScore(); }
 }
 

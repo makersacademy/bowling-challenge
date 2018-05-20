@@ -46,5 +46,10 @@ describe('Bowling Game', function() {
       rollMany(16, 0);
       expect(game.getScore()).toBe(24);
     });
+
+    it('for a maximum score', function() {
+      rollMany(12, 10);
+      expect(game.getScore()).toBe(300);
+    });
   });
 });

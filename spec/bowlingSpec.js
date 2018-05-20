@@ -240,4 +240,22 @@ describe('bowling', function() {
       expect(bowlingGame.score_card).toEqual([[1, 9, 10], [10, 3, 7], [3, 7, 10], [10, 1, 3], [1, 3], [4, 6, 10], [10, 6, 1], [6, 1]])
     });
   });
+
+  describe('3 strikes in 10th frame', function() {
+    it('Resets game after 10th frame', function() {
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      expect(bowlingGame.current_frame).toEqual(1)
+    });
+  });
 });

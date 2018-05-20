@@ -1,7 +1,8 @@
 {
   "name": "bowling-challenge",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Makers' bowling challenge",
+  "private": true,
   "main": "index.js",
   "directories": {
     "doc": "docs"
@@ -17,7 +18,7 @@
     "karma-jasmine": "^1.1.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "karma start ./karma.conf.js"
   },
   "repository": {
     "type": "git",

@@ -1,7 +1,7 @@
 describe('Frame', function () {
   var frame = new Frame;
 
-  describe('Frame should be a defined object', function () {
+  describe('on initialisation', function () {
     it('should be defined', function () {
       expect(frame).toBeDefined()
     })
@@ -9,7 +9,7 @@ describe('Frame', function () {
       expect(frame).toEqual(jasmine.any(Object))
     })
   })
-  describe('Frame.score should be an object', function () {
+  describe('keeps score', function () {
     it('should have an attribute .score', function () {
       expect(frame.score).toBeDefined()
     })
@@ -17,7 +17,7 @@ describe('Frame', function () {
       expect(frame.score).toEqual({})
     })
   })
-  describe('Frame should have a method to add scores', function () {
+  describe('can add scores', function () {
     afterEach(function () {
       frame.score = {}
     })

@@ -13,3 +13,7 @@ BowlingEngine.prototype.addFrame = function () {
   this.frames.push(frame)
   this.currentFrame ++
 }
+
+BowlingEngine.prototype.throwBall = function () {
+  
+}

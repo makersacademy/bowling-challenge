@@ -1,7 +1,7 @@
 describe('BowlingEngine', function () {
   var bowlingEngine = new BowlingEngine()
 
-  describe('Bowling Engine initialisation values', function () {
+  describe('initialisation values', function () {
     it('should have a current frame property', function () {
       expect(bowlingEngine.currentFrame).toEqual(0)
     })
@@ -10,7 +10,7 @@ describe('BowlingEngine', function () {
     })
   })
 
-  describe('it should create a new frame at the start of the game', function () {
+  describe('creates a new frame at the start of the game', function () {
     beforeEach(function () {
       bowlingEngine.currentFrame = 0
       bowlingEngine.frames = []
@@ -34,9 +34,15 @@ describe('BowlingEngine', function () {
       bowlingEngine.addFrame()
       expect(bowlingEngine.frames).toEqual(jasmine.arrayContaining([jasmine.any(Frame)]))
     })
-    it('should incerement frame count by 1', function () {
+    it('should increment frame count by 1', function () {
       bowlingEngine.addFrame()
       expect(bowlingEngine.currentFrame).toEqual(1)
     })
+  })
+  describe('can throw a ball', function () {
+    it('should have a #throwBall method', function () {
+      expect(typeof bowlingEngine.throwBall).toBe('function')
+    })
+
   })
 })

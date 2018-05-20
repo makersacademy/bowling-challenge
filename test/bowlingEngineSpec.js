@@ -1,5 +1,9 @@
 describe('BowlingEngine', function () {
-  var bowlingEngine = new BowlingEngine()
+  var mockFrame = {score: []}
+  var FrameConstructorMock = function () {
+    return mockFrame
+  }
+  var bowlingEngine = new BowlingEngine(FrameConstructorMock)
 
   describe('initialisation values', function () {
     it('should have a current frame property', function () {
@@ -32,7 +36,7 @@ describe('BowlingEngine', function () {
     })
     it('should push the new frame into the .frames attribute', function () {
       bowlingEngine.addFrame()
-      expect(bowlingEngine.frames).toEqual(jasmine.arrayContaining([jasmine.any(Frame)]))
+      expect(bowlingEngine.frames[0]).toEqual(mockFrame)
     })
     it('should increment frame count by 1', function () {
       bowlingEngine.addFrame()

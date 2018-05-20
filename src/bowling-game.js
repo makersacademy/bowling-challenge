@@ -12,7 +12,10 @@ BowlingGame.prototype.getScore = function() {
   var score = 0;
   var frameIndex = 0;
   for (var frame = 0; frame < 10; frame++) {
-    if (this._isSpare(frameIndex)) {
+    if (this._isStrike(frameIndex)) {
+      score += 10 + this.rolls[frameIndex + 1] + this.rolls[frameIndex + 2];
+      frameIndex += 1;
+    } else if (this._isSpare(frameIndex)) {
       score += 10 + this.rolls[frameIndex + 2];
       frameIndex += 2;
     } else {
@@ -21,6 +24,10 @@ BowlingGame.prototype.getScore = function() {
     }
   }
   return score;
+};
+
+BowlingGame.prototype._isStrike = function(frameIndex) {
+  return this.rolls[frameIndex] === 10;
 };
 
 BowlingGame.prototype._isSpare = function(frameIndex) {

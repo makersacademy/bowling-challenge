@@ -12,6 +12,11 @@ describe('Bowling Game', function() {
     }
   };
 
+  var rollSpare = function() {
+    game.roll(5);
+    game.roll(5);
+  };
+
   describe('calculates scores', function() {
     it('for a gutter game', function() {
       rollMany(20, 0);
@@ -24,11 +29,18 @@ describe('Bowling Game', function() {
     });
 
     it('for a spare', function() {
-      game.roll(5);
-      game.roll(5); // a spare
+      rollSpare();
       game.roll(2);
       rollMany(17, 0);
       expect(game.getScore()).toBe(14);
+    });
+
+    it('for a strike', function() {
+      game.roll(10);
+      game.roll(3);
+      game.roll(4);
+      rollMany(16, 0);
+      expect(game.getScore()).toBe(24);
     });
   });
 });

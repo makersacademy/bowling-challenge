@@ -15,3 +15,9 @@ Bowling.prototype.isSpare = function() {
       {return true;}
   else {return false;}
 };
+
+Bowling.prototype.isStrike = function(){
+  if (this.roll1 == 10)
+     {return true;}
+     else {return false;}
+};

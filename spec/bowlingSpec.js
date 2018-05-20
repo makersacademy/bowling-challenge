@@ -27,4 +27,18 @@ describe('Bowling', function(){
       expect(bowling.isSpare()).toBe(false)
     });
   });
+  describe('#isStrike', function(){
+    it('if roll1 and roll2 equals 10 return false', function(){
+      bowling.roll(2,8)
+      expect(bowling.isStrike()).toBe(false)
+    });
+    it('if roll1 is 10 return false', function(){
+      bowling.roll(10,0)
+      expect(bowling.isStrike()).toBe(true)
+    });
+    it('if roll1 is not equal to 10 return false', function(){
+      bowling.roll(4,0)
+      expect(bowling.isSpare()).toBe(false)
+    });
+  });
 });

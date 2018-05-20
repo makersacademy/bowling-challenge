@@ -29,10 +29,9 @@ describe('BowlingEngine', function () {
       expect(bowlingEngine.addFrame).toHaveBeenCalledWith()
     })
     it('should create a new frame', function () {
-      var cSpy = spyOn(window, 'Frame')
-      var bowlingEngine = new BowlingEngine()
+      spyOn(bowlingEngine, '_frameBuilder')
       bowlingEngine.addFrame()
-      expect(cSpy).toHaveBeenCalled()
+      expect(bowlingEngine._frameBuilder).toHaveBeenCalled()
     })
     it('should push the new frame into the .frames attribute', function () {
       bowlingEngine.addFrame()

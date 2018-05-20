@@ -22,5 +22,13 @@ describe('Bowling Game', function() {
       rollMany(20, 1);
       expect(game.getScore()).toBe(20);
     });
+
+    it('for a spare', function() {
+      game.roll(5);
+      game.roll(5); // a spare
+      game.roll(2);
+      rollMany(17, 0);
+      expect(game.getScore()).toBe(14);
+    });
   });
 });

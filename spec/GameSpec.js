@@ -29,30 +29,17 @@ describe("Game", function(){
 
   it('sends the bonus balls to those that need them', function(){
     frame["isComplete"] = true;
-    console.log(frame.score);
     game.bowl(4);
-    console.log(game.frames);
     expect(frame.addScore).toHaveBeenCalledWith(4);
     expect(frame2.addScore).toHaveBeenCalledWith(4);
   });
 
-  // describe("More complex game", function(){
-  //   var game2, firstFrame, secondFrame;
-  //
-  //   beforeEach(function(){
-  //     firstFrame, secondFrame = new Frame;
-  //     game2 = new Game;
-  //     spyOn(game, 'createFrame').and.returnValues(firstFrame, secondFrame);
-  //     spyOn(firstFrame, 'addScore');
-  //     spyOn(secondFrame, 'addScore')
-  //     game2.bowl(5);
-  //   });
-  //
-  //   it("Adds bonus balls to those that need them", function(){
-  //     game2.bowl(7)
-  //   });
-  //
-  //
-  // });
+  it('calculates the score at a current point in the game', function(){
+    frame["score"] = 23;
+    frame2["score"] = 12;
+    frame["isComplete"] = true;
+    game.bowl(4);
+    expect(game.currentScore()).toEqual(35);
+  });
 
 });

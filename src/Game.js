@@ -17,3 +17,11 @@ Game.prototype.createFrame = function(){
 Game.prototype.currentFrame = function(){
   return this.frames[this.frames.length - 1];
 }
+
+Game.prototype.currentScore = function(){
+  var score = 0;
+  for (var i = 0; i < this.frames.length; i++){
+    if (this.frames[i].score){ score += this.frames[i].score }
+  }
+  return score;
+}

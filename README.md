@@ -5,6 +5,10 @@
 Bowling Challenge
 =================
 
+## Description
+
+Calculate your bowling score, store it and track your progress.
+
 ## User Stories
 
 1. A user can calculate their score by entering numbers of knocked down pins
@@ -15,7 +19,7 @@ Bowling Challenge
 
 ## Use
 
-Clone the git repo 
+Clone the git repo https://github.com/irbekrm/bowling-challenge.git
 
 *npm install* (install dependencies)
 

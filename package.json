@@ -28,7 +28,7 @@
   "homepage": "https://github.com/irbekrm/bowling-challenge#readme",
   "dependencies": {
     "async": "^2.6.0",
-    "bcrypt": "^2.0.1",
+    "bcrypt-nodejs": "0.0.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "chai": "^4.1.2",

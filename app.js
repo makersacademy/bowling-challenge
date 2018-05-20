@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser'),
       game = require('./routes/game'),
-      gamerecords = require('./routes/gamerecord'),
+      gamerecords = require('./routes/gameRecord'),
       db = require('./db'),
       auth = require('./routes/auth');
 

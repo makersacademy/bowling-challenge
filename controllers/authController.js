@@ -1,10 +1,10 @@
 const jwt = require('jsonwebtoken'),
       url = require('url'),
-      bcrypt = require('bcryptjs'),
+      bcrypt = require('bcrypt-nodejs'),
       User = require('../models/user');
 
 exports.signup = (req, res) => {
-  const hashedPassword = bcrypt.hashSync(req.body.password, 8);
+  const hashedPassword = bcrypt.hashSync(req.body.password);
   User.create({username: req.body.username, password: hashedPassword}, (err, user) => {
     if(err){
     return res.status(500).send("There was a problem registering the user.");

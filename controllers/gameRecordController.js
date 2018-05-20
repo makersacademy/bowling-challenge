@@ -3,7 +3,6 @@ const url = require('url'),
       gameRecord = require('../models/gameRecord');
 
 exports.create_game_record = (req, res) => {
-  console.log('REQUEST body is ', req.body);
   gameRecord.create({ score: req.body.score, user_id: req.userId }, (err, record) => {
     if(err) res.redirect(500, '/'); 
     res.redirect(200, '/');

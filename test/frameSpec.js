@@ -18,10 +18,12 @@ describe('Frame', function () {
     })
   })
   describe('Frame should have a method to add scores', function () {
+    afterEach(function () {
+      frame.score = {}
+    })
     it('should add score for each throw', function () {
       frame.add('throw1', 5)
       expect(frame.score).toEqual({'throw1': 5})
-      console.log(frame.score)
     })
   })
 })

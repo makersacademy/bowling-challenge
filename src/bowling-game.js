@@ -10,26 +10,26 @@ BowlingGame.prototype.roll = function(pins) {
 
 BowlingGame.prototype.getScore = function() {
   var score = 0;
-  var frameIndex = 0;
+  var rollIndex = 0;
   for (var frame = 0; frame < 10; frame++) {
-    if (this._isStrike(frameIndex)) {
-      score += 10 + this.rolls[frameIndex + 1] + this.rolls[frameIndex + 2];
-      frameIndex += 1;
-    } else if (this._isSpare(frameIndex)) {
-      score += 10 + this.rolls[frameIndex + 2];
-      frameIndex += 2;
+    if (this._isStrike(rollIndex)) {
+      score += 10 + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+      rollIndex += 1;
+    } else if (this._isSpare(rollIndex)) {
+      score += 10 + this.rolls[rollIndex + 2];
+      rollIndex += 2;
     } else {
-      score += this.rolls[frameIndex] + this.rolls[frameIndex + 1];
-      frameIndex += 2;
+      score += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+      rollIndex += 2;
     }
   }
   return score;
 };
 
-BowlingGame.prototype._isStrike = function(frameIndex) {
-  return this.rolls[frameIndex] === 10;
+BowlingGame.prototype._isStrike = function(rollIndex) {
+  return this.rolls[rollIndex] === 10;
 };
 
-BowlingGame.prototype._isSpare = function(frameIndex) {
-  return this.rolls[frameIndex] + this.rolls[frameIndex + 1] === 10;
+BowlingGame.prototype._isSpare = function(rollIndex) {
+  return this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10;
 };

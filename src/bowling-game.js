@@ -10,8 +10,10 @@ BowlingGame.prototype.roll = function(pins) {
 
 BowlingGame.prototype.getScore = function() {
   var score = 0;
-  for (var i = 0; i < this.rolls.length; i++) {
-    score += this.rolls[i];
+  var i = 0;
+  for (var frame = 0; frame < 10; frame++) {
+    score += this.rolls[i] + this.rolls[i + 1];
+    i += 2;
   }
   return score;
 };

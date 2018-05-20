@@ -48,7 +48,7 @@ describe('bowling', function() {
     it('Updates after a strike', function() {
       bowlingGame.knock_pins(10);
       expect(bowlingGame.score_card).toEqual([[10]])
-    })
+    });
   });
 
 
@@ -134,8 +134,25 @@ describe('bowling', function() {
       bowlingGame.knock_pins(10);
       bowlingGame.knock_pins(10);
       bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(4);
       expect(bowlingGame.current_frame).toEqual(1)
       expect(bowlingGame.score_card).toEqual([])
+    });
+
+    it('Resets game after 10th frame of a full strike game', function() {
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      bowlingGame.knock_pins(10);
+      expect(bowlingGame.current_frame).toEqual(1)
     });
   });
 
@@ -242,6 +259,22 @@ describe('bowling', function() {
   });
 
   describe('#score', function() {
+    it('Tallys a full game of strikes', function() {
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      expect(bowlingGame.game_scores).toEqual([300])
+    });
+
     it('Adds the final score to the game_scores array', function() {
       bowlingGame.knock_pins(10)
       bowlingGame.knock_pins(10)
@@ -253,7 +286,8 @@ describe('bowling', function() {
       bowlingGame.knock_pins(10)
       bowlingGame.knock_pins(10)
       bowlingGame.knock_pins(10)
-      expect(bowlingGame.game_scores).toEqual([270])
+      bowlingGame.knock_pins(2)
+      expect(bowlingGame.game_scores).toEqual([274])
     });
 
     it('Adds the final score to the game_scores array Mk.2', function() {
@@ -274,24 +308,34 @@ describe('bowling', function() {
       bowlingGame.knock_pins(2)
       expect(bowlingGame.game_scores).toEqual([160])
     });
-
   });
 
-  // describe('3 strikes in 10th frame', function() {
-  //   it('Resets game after 10th frame', function() {
-  //     bowlingGame.knock_pins(10);
-  //     bowlingGame.knock_pins(10);
-  //     bowlingGame.knock_pins(10);
-  //     bowlingGame.knock_pins(10);
-  //     bowlingGame.knock_pins(10);
-  //     bowlingGame.knock_pins(10);
-  //     bowlingGame.knock_pins(10);
-  //     bowlingGame.knock_pins(10);
-  //     bowlingGame.knock_pins(10);
-  //     bowlingGame.knock_pins(10);
-  //     bowlingGame.knock_pins(10);
-  //     bowlingGame.knock_pins(10);
-  //     expect(bowlingGame.current_frame).toEqual(1)
-  //   });
-  // });
+
+  describe('Full feature testing', function() {
+    it('Does as expected', function() {
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(6)
+      bowlingGame.knock_pins(4)
+      bowlingGame.knock_pins(0)
+      bowlingGame.knock_pins(1)
+      bowlingGame.knock_pins(0)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(9)
+      bowlingGame.knock_pins(0)
+      bowlingGame.knock_pins(1)
+      bowlingGame.knock_pins(5)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(1)
+      bowlingGame.knock_pins(9)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(0)
+      expect(bowlingGame.game_scores).toEqual([146])
+      expect(bowlingGame.current_frame).toEqual(1)
+      expect(bowlingGame.current_roll).toEqual(1)
+      expect(bowlingGame.pins).toEqual(10)
+      expect(bowlingGame.score_card).toEqual([])
+    });
+  });
 });

@@ -4,15 +4,16 @@ function Bowling() {
   this.current_roll = 1
   this.frame_score = []
   this.score_card = []
+  this.game_scores = []
 }
 
 // Knocking down pins in a frame
 Bowling.prototype.knock_pins = function(num) {
 
   //If the current frame is the 10th frame, abide by a different set of rules
-  if (this.current_frame === 10) {
-    this.frame_ten();
-  };
+  // if (this.current_frame === 10) {
+  //   this.frame_ten();
+  // };
 
   // If the number of pins to knock is more than there are, raise error
   if (this.pins - num < 0 || num > 10) {
@@ -76,6 +77,9 @@ Bowling.prototype.knock_pins = function(num) {
 Bowling.prototype.end_frame = function() {
   //If the current frame is 10, and all pins have been knocked, or two rolls have been taken
   if (this.current_frame === 10) {
+    this.score_card.push(this.frame_score)
+    //Tally the total score and add to the game_scores array
+    this.score();
     //Reset all game variables
     this.reset_game();
     //Otherwise, reset the appropriate variables, and start a new frame
@@ -98,14 +102,22 @@ Bowling.prototype.reset_game = function() {
 }
 
 
+Bowling.prototype.score = function() {
+  var total = 0
+  this.score_card.forEach(function(frame_score) {
+    frame_score.forEach(function(roll) {
+      total += roll
+    });
+  });
+  this.game_scores.push(total)
+};
 
 
 
 
 
 
-
-Bowling.prototype.frame_ten = function() {
+// Bowling.prototype.frame_ten = function() {
   //follows same scoring rules in terms of past frames
 
   //Does not end frame if first roll is a strike
@@ -118,4 +130,4 @@ Bowling.prototype.frame_ten = function() {
 
   //Ends game after 3 rolls
 
-}
+// }

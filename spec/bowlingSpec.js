@@ -241,21 +241,57 @@ describe('bowling', function() {
     });
   });
 
-  describe('3 strikes in 10th frame', function() {
-    it('Resets game after 10th frame', function() {
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      expect(bowlingGame.current_frame).toEqual(1)
+  describe('#score', function() {
+    it('Adds the final score to the game_scores array', function() {
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      expect(bowlingGame.game_scores).toEqual([270])
     });
+
+    it('Adds the final score to the game_scores array Mk.2', function() {
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(8)
+      bowlingGame.knock_pins(1)
+      bowlingGame.knock_pins(9)
+      bowlingGame.knock_pins(1)
+      bowlingGame.knock_pins(1)
+      bowlingGame.knock_pins(2)
+      bowlingGame.knock_pins(2)
+      bowlingGame.knock_pins(7)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(10)
+      bowlingGame.knock_pins(5)
+      bowlingGame.knock_pins(2)
+      expect(bowlingGame.game_scores).toEqual([160])
+    });
+
   });
+
+  // describe('3 strikes in 10th frame', function() {
+  //   it('Resets game after 10th frame', function() {
+  //     bowlingGame.knock_pins(10);
+  //     bowlingGame.knock_pins(10);
+  //     bowlingGame.knock_pins(10);
+  //     bowlingGame.knock_pins(10);
+  //     bowlingGame.knock_pins(10);
+  //     bowlingGame.knock_pins(10);
+  //     bowlingGame.knock_pins(10);
+  //     bowlingGame.knock_pins(10);
+  //     bowlingGame.knock_pins(10);
+  //     bowlingGame.knock_pins(10);
+  //     bowlingGame.knock_pins(10);
+  //     bowlingGame.knock_pins(10);
+  //     expect(bowlingGame.current_frame).toEqual(1)
+  //   });
+  // });
 });

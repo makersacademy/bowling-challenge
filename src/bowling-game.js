@@ -11,7 +11,7 @@ BowlingGame.prototype.roll = function(pins) {
 BowlingGame.prototype.getScore = function() {
   var score = 0;
   var rollIndex = 0;
-  for (var frame = 0; frame < 10; frame++) {
+  for (var frame = 0; frame < 10; frame += 1) {
     if (this._isStrike(rollIndex)) {
       score += 10 + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
       rollIndex += 1;

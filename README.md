@@ -29,6 +29,7 @@ Clone the git repo https://github.com/irbekrm/bowling-challenge.git
 
 ##### Test
 *mongod*
+
 *npm test*
 
 

@@ -4,7 +4,7 @@ function Game(frameClass = Frame){
 }
 
 Game.prototype.bowl = function(score){
-  if (this.frames.length === 0 || this.currentFrame().isComplete){ this.frames.push(this.createFrame()); }
+  if (this.frames.length === 0 || this.currentFrame().isComplete || this.currentFrame().isStrike){ this.frames.push(this.createFrame()); }
   this.currentFrame().addScore(score);
 }
 

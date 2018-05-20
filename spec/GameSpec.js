@@ -1,6 +1,6 @@
 describe("Game", function(){
-  var game;
-  var frame;
+  var game, frame;
+
   beforeEach(function(){
     frame = new Frame;
     game = new Game;
@@ -23,6 +23,27 @@ describe("Game", function(){
     frame["isComplete"] = true;
     game.bowl(4);
     expect(game.frames.length).toEqual(2);
+  });
+
+  it('creates a new frame when the previous one is a strike', function(){
+    frame["isStrike"] = true;
+    game.bowl(4);
+    expect(game.frames.length).toEqual(2);
+  });
+
+  describe("More complex game", function(){
+    var game2, firstFrame, secondFrame;
+
+    beforeEach(function(){
+      firstFrame, secondFrame = new Frame;
+      game2 = new Game;
+      spyOn(game, 'createFrame').and.returnValues(firstFrame, secondFrame);
+      spyOn(firstFrame, 'addScore');
+      spyOn(secondFrame, 'addScore')
+      game.bowl(5);
+    });
+
+
   });
 
 });

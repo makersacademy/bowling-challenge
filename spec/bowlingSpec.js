@@ -337,5 +337,29 @@ describe('bowling', function() {
       expect(bowlingGame.pins).toEqual(10)
       expect(bowlingGame.score_card).toEqual([])
     });
+
+    it('Works for a 0 score game', function() {
+      bowlingGame.knock_pins(0)
+      bowlingGame.knock_pins(0)
+      bowlingGame.knock_pins(0)
+      bowlingGame.knock_pins(0)
+      bowlingGame.knock_pins(0)
+      bowlingGame.knock_pins(0)
+      bowlingGame.knock_pins(0)
+      bowlingGame.knock_pins(0)
+      bowlingGame.knock_pins(0)
+      bowlingGame.knock_pins(0)
+      bowlingGame.knock_pins(0)
+      bowlingGame.knock_pins(0)
+      bowlingGame.knock_pins(0)
+      bowlingGame.knock_pins(0)
+      bowlingGame.knock_pins(0)
+      bowlingGame.knock_pins(0)
+      bowlingGame.knock_pins(0)
+      bowlingGame.knock_pins(0)
+      bowlingGame.knock_pins(0)
+      bowlingGame.knock_pins(0)
+      expect(bowlingGame.game_scores).toEqual([0])
+    });
   });
 });

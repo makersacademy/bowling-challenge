@@ -14,7 +14,10 @@ describe("Game", function(){
   });
 
   it('doesn\'t create a new frame until the previous frame is complete', function(){
-
+    frame["isComplete"] = false;
+    game.bowl(4);
+    console.log(game.frames)
+    expect(game.frames.length).toEqual(1);
   });
 
 });

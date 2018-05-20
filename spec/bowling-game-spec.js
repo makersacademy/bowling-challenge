@@ -1,22 +1,26 @@
 describe('Bowling Game', function() {
-  var bowlingGame;
+  var game;
 
   beforeEach(function() {
-    bowlingGame = new BowlingGame();
+    game = new BowlingGame();
   });
+
+  var rollMany = function(rolls, pins) {
+    var total = 0;
+    for (var i = 0; i < rolls; i++) {
+      game.roll(pins);
+    }
+  };
 
   describe('calculates scores', function() {
     it('for a gutter game', function() {
-      for (var i = 0; i < 20; i++) {
-        bowlingGame.roll(0);
-      }
-      expect(bowlingGame.score).toBe(0);
+      rollMany(20, 0);
+      expect(game.getScore()).toBe(0);
     });
+
     it("for all 1's", function() {
-      for (var i = 0; i < 20; i++) {
-        bowlingGame.roll(1);
-      }
-      expect(bowlingGame.score).toBe(20);
+      rollMany(20, 1);
+      expect(game.getScore()).toBe(20);
     });
   });
 });

@@ -1,6 +1,5 @@
 var BowlingEngine = function (frameConstructor = FrameInterface) {
   this._frameBuilder = frameConstructor
-  console.log(this._frameBuilder)
   this.currentFrame = 0
   this.frames = []
 }
@@ -15,6 +14,15 @@ BowlingEngine.prototype.addFrame = function () {
   this.currentFrame ++
 }
 
-BowlingEngine.prototype.throwBall = function () {
-  
+BowlingEngine.prototype.throwBall = function (number) {
+  var currentFrame = this.currentFrame - 1
+  console.log(this.frames)
+  console.log(this.frames[currentFrame])
+  return this.frames[currentFrame].newBall(number)
+
 }
+
+var bowlingEngine = new BowlingEngine()
+bowlingEngine.startGame()
+bowlingEngine.throwBall(5)
+bowlingEngine.throwBall(5)

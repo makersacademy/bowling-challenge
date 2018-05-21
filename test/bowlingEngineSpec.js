@@ -1,5 +1,5 @@
 describe('BowlingEngine', function () {
-  var mockFrame = {score: []}
+  var mockFrame = jasmine.createSpyObj('mockFrame', {'newBall': 10 })
   var FrameConstructorMock = function () {
     return mockFrame
   }
@@ -43,8 +43,21 @@ describe('BowlingEngine', function () {
     })
   })
   describe('can throw a ball', function () {
+    beforeEach(function () {
+      bowlingEngine.currentFrame = 0
+      bowlingEngine.frames = []
+    })
+    afterEach(function () {
+      bowlingEngine.currentFrame = 0
+      bowlingEngine.frames = []
+    })
     it('should have a #throwBall method', function () {
       expect(typeof bowlingEngine.throwBall).toBe('function')
+    })
+    it('should throw a ball of set number', function () {
+      bowlingEngine.addFrame()
+      expect(bowlingEngine.throwBall(10)).toEqual(10)
+      console.log(bowlingEngine.frames)
     })
 
   })

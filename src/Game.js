@@ -5,8 +5,8 @@ function Game(frameClass = Frame){
 
 Game.prototype.bowl = function(score){
   if (this.isOver()) { return }
-  if (this._isNewGame() || this.currentFrame().isComplete){
-    if (this.frames.length < 10){ this.frames.push(this.createFrame()); }
+  if (this._isNewGame() || (this.currentFrame().isComplete && this.frames.length < 10)){
+    this.frames.push(this.createFrame());
    }
   for (var i = 0; i < this.frames.length; i++){
     if (!this.frames[i].score){ this.frames[i].addScore(score); }

@@ -55,7 +55,20 @@ describe("Game scenarios", function(){
   });
 
   describe("halfway through a game", function(){
-
+    it("calculates the correct score", function(){
+      var bowls = [5,3,8,2,10,6,1,0,10]
+      var scores = [8,20,17,7,undefined]
+      for(var i = 0; i < 9; i++){
+        game.bowl(bowls.shift());
+      }
+      expect(game.isOver()).toBe(false);
+      expect(game.frames.length).toEqual(5);
+      expect(game.currentScore()).toEqual(52);
+      game.frames.forEach(function(frame){
+        expect(frame.isComplete).toBe(true);
+        expect(frame.score).toEqual(scores.shift());
+      });
+    });
   });
 
 });

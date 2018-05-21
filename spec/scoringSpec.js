@@ -1,15 +1,15 @@
 describe('Scoring', function(){
   var scoring;
   beforeEach(function(){
-    bowl = jasmine.createSpyObj('bowl', ['roll', 'isSpare', 'isStrike'],);
-    bowl.isSpare.and.callFake(function() {
+    yo = jasmine.createSpyObj('yo', ['roll', 'isSpare', 'isStrike'],);
+    yo.isSpare.and.callFake(function() {
     return false;
       });
-    bowl.isStrike.and.callFake(function() {
+    yo.isStrike.and.callFake(function() {
       return false;
       });
-    bowl.roll1 = 2
-    bowl.roll2 = 5
+    yo.roll1 = 2
+    yo.roll2 = 5
     strike = jasmine.createSpyObj('strike', ['roll', 'isSpare', 'isStrike'],);
     strike.isSpare.and.callFake(function() {
     return false;
@@ -28,7 +28,7 @@ describe('Scoring', function(){
       });
     spare.roll1 = 5
     spare.roll2 = 5
-    scoring = new Scoring(bowl);
+    scoring = new Scoring(yo);
   });
 
 
@@ -63,7 +63,7 @@ describe('Scoring', function(){
     });
     it('resets', function(){
       scoring.reset(spare)
-      scoring.reset(bowl)
+      scoring.reset(yo)
       expect(scoring.bowl.roll1).toEqual(2)
     });
   });
@@ -71,7 +71,7 @@ describe('Scoring', function(){
     it('scores the first score adding the first roll', function(){
       scoring.reset(spare)
       scoring.turn()
-      scoring.reset(bowl)
+      scoring.reset(yo)
       scoring.turn()
       expect(scoring.scoreArray[0]).toEqual(12)
       expect(scoring.scoreArray[1]).toEqual(7)
@@ -81,7 +81,7 @@ describe('Scoring', function(){
       scoring.turn()
       scoring.turn()
       scoring.turn()
-      scoring.reset(bowl)
+      scoring.reset(yo)
       scoring.turn()
       expect(scoring.scoreArray[0]).toEqual(15)
       expect(scoring.scoreArray[1]).toEqual(15)
@@ -94,7 +94,7 @@ describe('Scoring', function(){
     it('checks for score after one strike', function(){
       scoring.reset(strike)
       scoring.turn()
-      scoring.reset(bowl)
+      scoring.reset(yo)
       scoring.turn()
       expect(scoring.scoreArray[0]).toEqual(17)
     });
@@ -102,7 +102,7 @@ describe('Scoring', function(){
       scoring.reset(strike)
       scoring.turn()
       scoring.turn()
-      scoring.reset(bowl)
+      scoring.reset(yo)
       scoring.turn()
       expect(scoring.scoreArray[0]).toEqual(22)
       expect(scoring.scoreArray[1]).toEqual(17)
@@ -130,6 +130,78 @@ describe('Scoring', function(){
       expect(scoring.scoreArray[1]).toEqual(30)
       expect(scoring.scoreArray[2]).toEqual(25)
       expect(scoring.scoreArray[3]).toEqual(20)
+    });
+    it('checks for score after 8 strikes', function(){
+      scoring.reset(strike);
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.reset(yo);
+      scoring.turn();
+      expect(scoring.scoreArray[0]).toEqual(30)
+      expect(scoring.scoreArray[1]).toEqual(30)
+      expect(scoring.scoreArray[2]).toEqual(30)
+      expect(scoring.scoreArray[3]).toEqual(30)
+      expect(scoring.scoreArray[4]).toEqual(30)
+      expect(scoring.scoreArray[5]).toEqual(30)
+      expect(scoring.scoreArray[6]).toEqual(22)
+      expect(scoring.scoreArray[7]).toEqual(17)
+      expect(scoring.scoreArray[8]).toEqual(7)
+    });
+  });
+  describe('tenthFrame', function(){
+    it('returns 30 for final frame if strikes',function(){
+      scoring.reset(strike);
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.tenthFrame();
+      expect(scoring.scoreArray[8]).toEqual(30)
+      expect(scoring.scoreArray[9]).toEqual(30)
+    });
+    it('returns 15 for final frame if spares',function(){
+      scoring.reset(strike);
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.reset(spare)
+      scoring.tenthFrame();
+      expect(scoring.scoreArray[8]).toEqual(20)
+      expect(scoring.scoreArray[9]).toEqual(15)
+    });
+    it('returns 15 for final frame if spares',function(){
+      scoring.reset(strike);
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.turn();
+      scoring.reset(yo)
+      scoring.tenthFrame();
+      expect(scoring.scoreArray[7]).toEqual(22)
+      expect(scoring.scoreArray[8]).toEqual(17)
+      expect(scoring.scoreArray[9]).toEqual(7)
     });
   });
 });

@@ -10,8 +10,9 @@ Scoring.prototype.turn = function(score1,score2){
     this.rollArray.push(this.bowl)
     this.scoreArray.push(this.score())
     this._checkSpare()
-    this._checkStike()
     this._StrikeCounter()
+    this._checkStike()
+
 
 }
 
@@ -37,7 +38,6 @@ Scoring.prototype._StrikeCounter = function(){
 Scoring.prototype._checkStike = function(strikeCount){
 
   if (this.strikeCount >= 3) {
-    this.scoreArray[this.scoreArray.length - 4] = 30
     this.scoreArray[this.scoreArray.length - 3] = (20 + this.bowl.roll1)
     this.scoreArray[this.scoreArray.length - 2] = (10 + this.bowl.roll1 + this.bowl.roll2)
     if (this.bowl.isStrike() == false) {

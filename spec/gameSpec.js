@@ -34,6 +34,14 @@ describe("Game", function() {
       rollMany(17, 0);
       expect(game.score()).toEqual(16)
     });
+
+    it("scores a game with one strike", function() {
+      game.roll(10);
+      game.roll(3);
+      game.roll(4);
+      rollMany(16, 0);
+      expect(game.score()).toEqual(24);
+    });
   });
 
   describe("isSpare", function() {

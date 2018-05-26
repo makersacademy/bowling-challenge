@@ -19,7 +19,7 @@ Game.prototype.score = function() {
       this.scores += 10 + this.rolls[frameIndex + 2];
       frameIndex += 2;
     } else {
-      this.scores += this.rolls[frameIndex] + this.rolls[frameIndex + 1];
+      this.scores += this.sumOfBallsInFrame(frameIndex);
       frameIndex += 2;
     }
   }
@@ -28,4 +28,8 @@ Game.prototype.score = function() {
 
 Game.prototype.isSpare = function(frameIndex) {
   return this.rolls[frameIndex] + this.rolls[frameIndex + 1] === 10;
+}
+
+Game.prototype.sumOfBallsInFrame = function(frameIndex) {
+  return this.rolls[frameIndex] + this.rolls[frameIndex + 1];
 }

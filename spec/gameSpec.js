@@ -51,4 +51,12 @@ describe("Game", function() {
     });
   });
 
+  describe("sumOfBallsInFrame", function() {
+    it("returns a score for the regular frame", function() {
+      game.roll(4);
+      game.roll(3);
+      expect(game.sumOfBallsInFrame(0)).toEqual(7)
+    })
+  });
+
 });

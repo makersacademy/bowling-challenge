@@ -1,0 +1,10 @@
+extends layout.pug
+
+block content
+  p Score: #{score}
+    
+  input#score(type='hidden',name='score',value=score)
+  button#gameRec Save Game
+
+  form(method='GET' action='/game/play')
+    button(type='submit') New Game

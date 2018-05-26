@@ -1,0 +1,55 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "bowling score calculator",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha $(find test -name '*.js')"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irbekrm/bowling-challenge.git"
+  },
+  "keywords": [
+    "node",
+    "mongodb",
+    "express",
+    "javascript",
+    "pug"
+  ],
+  "author": "irbekrm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/irbekrm/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/irbekrm/bowling-challenge#readme",
+  "dependencies": {
+    "async": "^2.6.0",
+    "bcrypt-nodejs": "0.0.3",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "exr": "^1.0.0",
+    "jsonwebtoken": "^8.2.1",
+    "mocha": "^5.1.1",
+    "moment": "^2.22.1",
+    "mongoose": "^5.0.16",
+    "nightwatch": "^0.9.21",
+    "pug": "^2.0.3",
+    "sinon": "^4.5.0",
+    "sinon-chai": "^3.0.0",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "chai-spies": "^1.0.0",
+    "nodemon": "^1.17.3",
+    "request": "^2.85.0"
+  }
+}

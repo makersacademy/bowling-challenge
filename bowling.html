@@ -6,6 +6,9 @@
 
   </title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="./src/bowling.js"></script>
+  <script src="./src/scoring.js"></script>
+  <script src="./src/jqueryFunctions.js"></script>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -67,69 +70,79 @@
     </div>
     <div class="row bowling">
       <div class="col-xs-1 rolls">
-        <ul class="shots">
-          <li class="shot" id="one">1</li>
-          <li class="shot2" id="two">/</li>
+        <ul class="shots 1">
+          <li class="shot"></li>
+          <li class="shot2"></li>
+        </ul>
+        <p class="score">10</p>
+      </div>
+      <div class="col-xs-1 rolls">
+        <ul class="shots 2">
+          <li class="shot"></li>
+          <li class="shot2"></li>
+          <p class="score"></p>
         </ul>
       </div>
       <div class="col-xs-1 rolls">
-        <ul class="shots">
-          <li class="shot" id="three">1</li>
-          <li class="shot2" id="four">/</li>
+        <ul class="shots 3">
+          <li class="shot"></li>
+          <li class="shot2"></li>
+          <p class="score"></p>
         </ul>
       </div>
       <div class="col-xs-1 rolls">
-        <ul class="shots">
-          <li class="shot" id="five">1</li>
-          <li class="shot2" id="six">/</li>
+        <ul class="shots 4">
+          <li class="shot"></li>
+          <li class="shot2"></li>
+          <p class="score"></p>
         </ul>
       </div>
       <div class="col-xs-1 rolls">
-        <ul class="shots">
-          <li class="shot" id="seven">1</li>
-          <li class="shot2" id="eight">/</li>
+        <ul class="shots 5">
+          <li class="shot"></li>
+          <li class="shot2"></li>
+          <p class="score"></p>
         </ul>
       </div>
       <div class="col-xs-1 rolls">
-        <ul class="shots">
-          <li class="shot" id="nine">1</li>
-          <li class="shot2" id="ten">/</li>
+        <ul class="shots 6">
+          <li class="shot"></li>
+          <li class="shot2"></li>
+          <p class="score"></p>
         </ul>
       </div>
       <div class="col-xs-1 rolls">
-        <ul class="shots">
-          <li class="shot" id="eleven">1</li>
-          <li class="shot2" id="twelve">/</li>
+        <ul class="shots 7">
+          <li class="shot"></li>
+          <li class="shot2"></li>
+          <p class="score"></p>
         </ul>
       </div>
       <div class="col-xs-1 rolls">
-        <ul class="shots">
-          <li class="shot" id="thirteen">1</li>
-          <li class="shot2" id="fourteen">/</li>
+        <ul class="shots 8">
+          <li class="shot"></li>
+          <li class="shot2"></li>
+          <p class="score"></p>
         </ul>
       </div>
       <div class="col-xs-1 rolls">
-        <ul class="shots">
-          <li class="shot" id="fifthteen">1</li>
-          <li class="shot2" id="sixteen">/</li>
+        <ul class="shots 9">
+          <li class="shot"></li>
+          <li class="shot2"></li>
+          <p class="score"></p>
         </ul>
       </div>
       <div class="col-xs-1 rolls">
-        <ul class="shots">
-          <li class="shot" id="seventeen">1</li>
-          <li class="shot2" id="eighteen">/</li>
-        </ul>
-      </div>
-      <div class="col-xs-1 rolls">
-        <ul class="shots">
-          <li class="shot" id="nineteen">1</li>
-          <li class="shot2" id="twenty">/</li>
+        <ul class="shots 10">
+          <li class="shot"></li>
+          <li class="shot2"></li>
+          <p class="score"></p>
         </ul>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-4 col-xs-offset-4">
-        <button type="button" class="btn btn-default">Bowl</button>
+        <button type="button" name="button" id="Turn" class="btn btn-default">Bowl</button>
         <button type="button" class="btn btn-default">Reset</button>
       </div>
     </div>

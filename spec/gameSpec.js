@@ -17,6 +17,10 @@ describe("Game", function() {
     game.roll(6);
   }
 
+  function rollStrike() {
+    game.roll(10)
+  }
+
   describe("score", function() {
     it("scores gutter game", function() {
       rollMany(20, 0)
@@ -36,11 +40,16 @@ describe("Game", function() {
     });
 
     it("scores a game with one strike", function() {
-      game.roll(10);
+      rollStrike();
       game.roll(3);
       game.roll(4);
       rollMany(16, 0);
       expect(game.score()).toEqual(24);
+    });
+
+    it("scores a perfect game", function() {
+      rollMany(12, 10);
+      expect(game.score()).toEqual(300);
     });
   });
 
@@ -77,7 +86,7 @@ describe("Game", function() {
 
   describe("strikeBonus", function() {
     it("returns a bonus scores for strike", function() {
-      game.roll(10);
+      rollStrike();
       game.roll(3);
       game.roll(2);
       expect(game.strikeBonus(0)).toEqual(5);

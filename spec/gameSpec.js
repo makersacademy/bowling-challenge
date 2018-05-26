@@ -59,4 +59,13 @@ describe("Game", function() {
     })
   });
 
+  describe("spareBonus", function() {
+    it("returns a bonus scores for spare", function() {
+      rollSpare();
+      game.roll(2);
+      game.roll(4);
+      expect(game.spareBonus(0)).toEqual(2);
+    });
+  })
+
 });

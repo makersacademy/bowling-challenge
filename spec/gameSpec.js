@@ -12,6 +12,11 @@ describe("Game", function() {
     }
   };
 
+  function rollSpare() {
+    game.roll(4);
+    game.roll(6);
+  }
+
   describe("score", function() {
     it("scores gutter game", function() {
       rollMany(20, 0)
@@ -24,8 +29,7 @@ describe("Game", function() {
     });
 
     it("scores a game with one spare", function() {
-      game.roll(5);
-      game.roll(5);
+      rollSpare();
       game.roll(3);
       rollMany(17, 0);
       expect(game.score()).toEqual(16)
@@ -34,8 +38,7 @@ describe("Game", function() {
 
   describe("isSpare", function() {
     it("returns true if frame is a spare", function() {
-      game.roll(4);
-      game.roll(6);
+      rollSpare();
       expect(game.isSpare(0)).toBe(true);
     });
   });

@@ -68,4 +68,13 @@ describe("Game", function() {
     });
   })
 
+  describe("strikeBonus", function() {
+    it("returns a bonus scores for strike", function() {
+      game.roll(10);
+      game.roll(3);
+      game.roll(2);
+      expect(game.strikeBonus(0)).toEqual(5);
+    });
+  });
+
 });

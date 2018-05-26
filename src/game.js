@@ -11,7 +11,7 @@ Game.prototype.roll = function(pins) {
 Game.prototype.score = function() {
   var frameIndex = 0
   for (var frame = 0; frame < 10; frame++) {
-    if (this.rolls[frameIndex] === 10) {
+    if (this.isStrike(frameIndex)) {
       this.scores += 10 + this.strikeBonus(frameIndex);
       frameIndex++
     }

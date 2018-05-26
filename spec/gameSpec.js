@@ -15,13 +15,21 @@ describe("Game", function() {
   describe("score", function() {
     it("scores gutter game", function() {
       rollMany(20, 0)
-      expect(game.score).toEqual(0);
+      expect(game.score()).toEqual(0);
     });
 
     it("scores a game where 1 pin is knocked in each roll", function() {
       rollMany(20, 1)
-      expect(game.score).toEqual(20)
+      expect(game.score()).toEqual(20)
       })
+    });
+
+    it("scores a game with one spare", function() {
+      game.roll(5);
+      game.roll(5);
+      game.roll(3);
+      rollMany(17, 0);
+      expect(game.score()).toEqual(16)
     });
 
 

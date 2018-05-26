@@ -30,6 +30,10 @@ Game.prototype.isSpare = function(frameIndex) {
   return this.rolls[frameIndex] + this.rolls[frameIndex + 1] === 10;
 }
 
+Game.prototype.isStrike = function(frameIndex) {
+  return this.rolls[frameIndex] === 10;
+}
+
 Game.prototype.sumOfBallsInFrame = function(frameIndex) {
   return this.rolls[frameIndex] + this.rolls[frameIndex + 1];
 }

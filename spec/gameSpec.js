@@ -51,6 +51,13 @@ describe("Game", function() {
     });
   });
 
+  describe("isStrike", function() {
+    it("returns true if frame is a strike", function() {
+      game.roll(10);
+      expect(game.isStrike(0)).toBe(true);
+    })
+  });
+
   describe("sumOfBallsInFrame", function() {
     it("returns a score for the regular frame", function() {
       game.roll(4);

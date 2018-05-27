@@ -14,13 +14,7 @@ describe('Frame', function () {
       expect(frame).toEqual(jasmine.any(Object))
     })
   })
-  describe('keeps _pins, _hits, _spares and _strikes counter', function () {
-    it('should have an attribute ._pins', function () {
-      expect(frame._pins).toEqual(jasmine.any(Number))
-    })
-    it('should have 10 _pins on start', function () {
-      expect(frame._pins).toEqual(10)
-    })
+  describe('keeps counters', function () {
     it('should have a pin-hit counter', function () {
       expect(frame._hits).toEqual(0)
     })
@@ -30,29 +24,54 @@ describe('Frame', function () {
     it('should have a strike counter', function () {
       expect(frame._strikes).toEqual(0)
     })
+    it('should have a _scores array', function () {
+      expect(frame._score).toEqual([])
+    })
+    it('should have a _isScored boolean', function () {
+      expect(frame._isScored).toEqual(false)
+    })
+    it('should have a _isComplete boolean', function () {
+      expect(frame._isComplete).toEqual(false)
+    })
+  })
+
+  describe('#score method', function () {
+    it('should change _isScored when the method is called', function () {
+      frame.scored()
+      expect(frame._isScored).toEqual(true)
+    })
   })
 
   describe('receives the ball and knocks out _pins', function () {
     beforeEach(function () {
-      frame._pins = 10
-      frame._hits = 0
-      frame._strikes = 0
-      Frame._spares = 0
-    })
-    afterEach(function () {
-      frame._pins = 10
       frame._hits = 0
       frame._strikes = 0
       frame._spares = 0
+      frame._score = []
+      frame._isScored = false
+      frame._isComplete = false
     })
-    it('should reduce the number of _pins on 1st throw from _pins[1st] ', function () {
+    afterEach(function () {
+      frame._hits = 0
+      frame._strikes = 0
+      frame._spares = 0
+      frame._score = []
+      frame._isScored = false
+      frame._isComplete = false
+    })
+    it('should record the score after the first throw', function () {
       frame.newBall(5)
-      expect(frame._pins).toEqual(5)
+      expect(frame._score[0]).toEqual(5)
     })
-    it('should reduce the number of _pins on 2nd throw from _pins[2nd]', function () {
+    it('should record the second score after the first throw', function () {
       frame.newBall(5)
       frame.newBall(4)
-      expect(frame._pins).toEqual(1)
+      expect(frame._score).toEqual([5, 4])
+    })
+    it('should mark the frame complete after two throws', function () {
+      frame.newBall(5)
+      frame.newBall(4)
+      expect(frame._isComplete).toEqual(true)
     })
     it('should throw an error if newBall tries to hit more than twice', function () {
       frame.newBall(5)
@@ -64,6 +83,10 @@ describe('Frame', function () {
     it('should record a strike if newBall is 10 on the 1st throw', function () {
       frame.newBall(10)
       expect(frame._strikes).toEqual(1)
+    })
+    it('should record frame is complete on strike', function () {
+      frame.newBall(10)
+      expect(frame._isComplete).toEqual(true)
     })
     it('should record a spare if newBall knocks out all remaining pins on second throw', function () {
       frame.newBall(5)

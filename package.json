@@ -11,8 +11,15 @@
     "standard": "^11.0.1"
   },
   "devDependencies": {},
+  "nyc": {
+    "exclude": [
+      "spec"
+    ]
+  },
   "scripts": {
-    "test": "jasmine"
+    "test": "jasmine",
+    "coverage": "nyc jasmine",
+    "coverage_html": "nyc report --reporter=html"
   },
   "repository": {
     "type": "git",

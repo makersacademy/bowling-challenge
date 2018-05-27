@@ -13,13 +13,14 @@ Bowling.prototype.knock_pins = function(num) {
   } else {
     this.pins_knocked(num);
     this.calculate_scoring(num);
-
-    if (this.current_roll === 2 || this.pins === 0) {
-      this.end_frame();
-    } else {
-      this.current_roll = 2;
-    };
+    this.test_for_frame_end();
   };
+};
+
+Bowling.prototype.frame_ten = function(num) {
+  this.pins_knocked(num);
+  this.frame_10_scoring(num)
+  this.test_for_frame_10_end(num);
 };
 
 Bowling.prototype.pins_knocked = function(num) {
@@ -28,6 +29,14 @@ Bowling.prototype.pins_knocked = function(num) {
   } else {
     this.pins -= num;
     this.frame_score.push(num)
+  };
+};
+
+Bowling.prototype.test_for_frame_end = function() {
+  if (this.current_roll === 2 || this.pins === 0) {
+    this.end_frame();
+  } else {
+    this.current_roll = 2;
   };
 };
 
@@ -42,113 +51,99 @@ Bowling.prototype.end_frame = function() {
 };
 
 Bowling.prototype.reset_game = function() {
-  this.pins = 10
-  this.current_frame = 1
-  this.current_roll = 1
-  this.frame_score = []
-  this.score_card = []
+  this.pins = 10;
+  this.current_frame = 1;
+  this.current_roll = 1;
+  this.frame_score = [];
+  this.score_card = [];
 };
 
 Bowling.prototype.score = function() {
   var total = 0
   this.score_card.forEach(function(frame_score) {
     frame_score.forEach(function(roll) {
-      total += roll
+      total += roll;
     });
   });
-  this.game_scores.push(total)
+  this.game_scores.push(total);
 };
 
 Bowling.prototype.new_frame = function() {
-  this.pins = 10
-  this.current_frame += 1
-  this.current_roll = 1
-  this.score_card.push(this.frame_score)
-  this.frame_score = []
+  this.pins = 10;
+  this.current_frame += 1;
+  this.current_roll = 1;
+  this.score_card.push(this.frame_score);
+  this.frame_score = [];
 };
 
 Bowling.prototype.previous_frame = function() {
-  return (this.score_card[this.score_card.length - 1])
-}
+  return (this.score_card[this.score_card.length - 1]);
+};
 
 Bowling.prototype.frame_before_last = function() {
-  return (this.score_card[this.score_card.length - 2])
-}
+  return (this.score_card[this.score_card.length - 2]);
+};
 
 Bowling.prototype.previous_frame_was_a_spare = function() {
-  return (this.previous_frame().length === 2 && this.previous_frame().reduce(function(acc, val) { return acc + val; }) == 10)
-}
+  return (this.previous_frame().length === 2 && this.previous_frame().reduce(function(acc, val) { return acc + val; }) == 10);
+};
 
 Bowling.prototype.previous_frame_was_a_strike = function() {
-  return (this.previous_frame().length === 1)
-}
+  return (this.previous_frame().length === 1);
+};
 
- Bowling.prototype.frame_ten = function(num) {
-   this.pins_knocked(num);
-   this.frame_10_scoring(num)
-    //If the third roll has been taken, or two rolls have been taken and the second roll has not knocked all pins
-    if (this.current_roll === 3 || (this.current_roll === 2 && this.pins > 0)) {
-      this.end_frame();
-      //Else if it is the second roll and all pins have been knocked
-    } else if (this.current_roll === 2 && this.pins === 0) {
-      this.current_roll = 3;
-      this.pins = 10;
-      //Else if it is the first roll and it is a strike
-    } else if (this.current_roll === 1 && num === 10) {
-      this.current_roll = 2;
-      this.pins = 10;
-      //Else if it is the first roll
-    } else if (this.current_roll === 1) {
-      this.current_roll = 2;
-    };
-  };
-
-
-
-
-//METHODS THAT ARE TOO LONG
-
-
-
-Bowling.prototype.frame_10_scoring = function(num) {
-  //SPARE SCORING
-  if (this.current_roll === 1 && this.previous_frame_was_a_spare()) {
-    this.previous_frame().push(num);
-  };
-    //STRIKE SCORING
+Bowling.prototype.test_for_strike_bonus = function(num) {
   if (this.current_roll === 2 && this.previous_frame_was_a_strike()) {
     this.previous_frame().push(this.frame_score[0]);
     this.previous_frame().push(num);
   };
-    //If on the first roll of the current frame, and the score of the frame before the last is currently a strike plus a single score
+};
+
+Bowling.prototype.test_for_strike_bonus_for_frame_before_last = function(num) {
   if ((this.current_roll === 1) && (this.frame_before_last().length === 2) && (this.frame_before_last().includes(10))) {
-    //Add to the frame score before last, the score of this first roll
     this.frame_before_last().push(num);
+  };
+};
+
+Bowling.prototype.test_for_two_strikes = function(num) {
+  if ((this.current_roll === 1) && (this.previous_frame_was_a_strike()) && (num === 10)) {
+    this.previous_frame().push(num);
+  };
+};
+
+Bowling.prototype.test_for_spare_bonus = function(num) {
+  if (this.current_roll === 1 && this.previous_frame_was_a_spare()) {
+    this.previous_frame().push(num);
   };
 };
 
 Bowling.prototype.calculate_scoring = function(num) {
   if (this.current_frame > 1) {
-//STRIKE SCORING
-    if (this.current_roll === 2 && this.previous_frame_was_a_strike()) {
-      this.previous_frame().push(this.frame_score[0]);
-      this.previous_frame().push(num);
-    };
-    //If on the first roll of the current frame, and the prevous frame score was 10, and the current roll is 10
-    if ((this.current_roll === 1) && (this.previous_frame_was_a_strike()) && (num === 10)) {
-      this.previous_frame().push(num);
-    };
-//SPARE SCORING
-    if (this.current_roll === 1 && this.previous_frame_was_a_spare()) {
-      this.previous_frame().push(num);
-    };
+    this.test_for_spare_bonus(num);
+    this.test_for_strike_bonus(num);
+    this.test_for_two_strikes(num);
   };
-//CONDITIONAL FOR GETTING A STRIKE, FOLLOWED BY A STRIKE, FOLLOWED BY FURTHER SCORING
-  //If on any frame beyond the second
   if (this.current_frame > 2) {
-    //If on the first roll of the current frame, and the score of the frame before the last is currently a strike plus a single score
-    if ((this.current_roll === 1) && (this.frame_before_last().length === 2) && (this.frame_before_last().includes(10))) {
-      this.frame_before_last().push(num);
-    };
+    this.test_for_strike_bonus_for_frame_before_last(num);
   };
+};
+
+Bowling.prototype.test_for_frame_10_end = function(num) {
+  if (this.current_roll === 3 || (this.current_roll === 2 && this.pins > 0)) {
+    this.end_frame();
+  } else if (this.current_roll === 2 && this.pins === 0) {
+    this.current_roll = 3;
+    this.pins = 10;
+  } else if (this.current_roll === 1 && num === 10) {
+    this.current_roll = 2;
+    this.pins = 10;
+  } else if (this.current_roll === 1) {
+    this.current_roll = 2;
+  };
+};
+
+Bowling.prototype.frame_10_scoring = function(num) {
+  this.test_for_spare_bonus(num);
+  this.test_for_strike_bonus(num);
+  this.test_for_strike_bonus_for_frame_before_last(num);
 };

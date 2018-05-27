@@ -23,18 +23,18 @@ describe ("Frame", function() {
 
     it('ends the turn after a stike', function() {
       frame.bowl(10);
-      expect(frame.finish).toBeTruthy;
+      expect(frame.finish).toEqual(true);
     });
 
     it('ends the turn after two bowls', function() {
       frame.bowl(4);
       frame.bowl(4);
-      expect(frame.finish).toBeTruthy;
+      expect(frame.finish).toEqual(true);
     });
 
     it('does not end the turn after one bowl', function() {
       frame.bowl(4);
-      expect(frame.finish).not.toBeFalsy;
+      expect(frame.finish).toEqual(false);
     });
 
     it('throws an error if the turn is over', function() {

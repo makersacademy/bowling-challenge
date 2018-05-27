@@ -124,34 +124,18 @@ describe('bowling', function() {
 
   describe('#reset_game', function() {
     it('Resets everything after the 10th frame', function() {
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
+      for (i = 0; i < 10; i++) {
+        bowlingGame.knock_pins(10)
+      }
       bowlingGame.knock_pins(4);
       expect(bowlingGame.current_frame).toEqual(1)
       expect(bowlingGame.score_card).toEqual([])
     });
 
     it('Resets game after 10th frame of a full strike game', function() {
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
-      bowlingGame.knock_pins(10);
+      for (i = 0; i < 12; i++) {
+        bowlingGame.knock_pins(10)
+      }
       expect(bowlingGame.current_frame).toEqual(1)
     });
   });
@@ -260,32 +244,16 @@ describe('bowling', function() {
 
   describe('#score', function() {
     it('Tallys a full game of strikes', function() {
-      bowlingGame.knock_pins(10)
-      bowlingGame.knock_pins(10)
-      bowlingGame.knock_pins(10)
-      bowlingGame.knock_pins(10)
-      bowlingGame.knock_pins(10)
-      bowlingGame.knock_pins(10)
-      bowlingGame.knock_pins(10)
-      bowlingGame.knock_pins(10)
-      bowlingGame.knock_pins(10)
-      bowlingGame.knock_pins(10)
-      bowlingGame.knock_pins(10)
-      bowlingGame.knock_pins(10)
+      for (i = 0; i < 12; i++) {
+        bowlingGame.knock_pins(10)
+      }
       expect(bowlingGame.game_scores).toEqual([300])
     });
 
     it('Adds the final score to the game_scores array', function() {
-      bowlingGame.knock_pins(10)
-      bowlingGame.knock_pins(10)
-      bowlingGame.knock_pins(10)
-      bowlingGame.knock_pins(10)
-      bowlingGame.knock_pins(10)
-      bowlingGame.knock_pins(10)
-      bowlingGame.knock_pins(10)
-      bowlingGame.knock_pins(10)
-      bowlingGame.knock_pins(10)
-      bowlingGame.knock_pins(10)
+      for (i = 0; i < 10; i++) {
+        bowlingGame.knock_pins(10)
+      }
       bowlingGame.knock_pins(2)
       expect(bowlingGame.game_scores).toEqual([274])
     });

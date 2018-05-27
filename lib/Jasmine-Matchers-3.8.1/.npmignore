@@ -1,0 +1,6 @@
+coverage/
+examples/
+gulpfile.js
+karma/
+node_modules/
+test/

@@ -19,4 +19,8 @@ It took me a long time to work out how to get the 10th frame logic to work, and 
 
 It took so long for me to get the algorithm working, that I have not been able to refactor as of yet, however I am very happy that I at least managed to get the algorithm working.
 
-There is a lot more work to be done to this code, however it currently passes all of tests in the extensive test file. This was very much a TDD project. 
+There is a lot more work to be done to this code, however it currently passes all of tests in the extensive test file. This was very much a TDD project.
+
+27/05/18 Update:
+
+I have now refactored all of the Bowling methods fairly extensively, and now no longer need the comments explaining what each line does, as it reads a lot more like english now! Still aiming to extract a Frame constructor function with its own logic into a separate file.

@@ -1,9 +1,14 @@
 describe('BowlingEngine', function () {
-  var mockFrame = jasmine.createSpyObj('mockFrame', {'newBall': 10 })
+  var BowlingEngine = require('../lib/bowlingEngine')
+  var bowlingEngine
+
+  var mockFrame = jasmine.createSpyObj('mockFrame', { 'newBall': 10, '_pins': 0 })
   var FrameConstructorMock = function () {
     return mockFrame
   }
-  var bowlingEngine = new BowlingEngine(FrameConstructorMock)
+  beforeEach(function () {
+    bowlingEngine = new BowlingEngine(FrameConstructorMock)
+  })
 
   describe('initialisation values', function () {
     it('should have a current frame property', function () {
@@ -56,9 +61,8 @@ describe('BowlingEngine', function () {
     })
     it('should throw a ball of set number', function () {
       bowlingEngine.addFrame()
-      expect(bowlingEngine.throwBall(10)).toEqual(10)
-      console.log(bowlingEngine.frames)
+      bowlingEngine.throwBall(10)
+      expect(mockFrame.newBall).toHaveBeenCalledWith(10)
     })
-
   })
 })

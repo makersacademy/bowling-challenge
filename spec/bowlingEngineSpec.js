@@ -9,16 +9,38 @@ describe('BowlingEngine', function () {
     '_score': [],
     '_isScored': false,
     '_isComplete': false,
-    'newBall': function (number) {
-      this._score.push(number)
-    }
+    'newBall': function (number) {}
+  }
+
+  var mockFrameComplete = {
+    '_hits': 2,
+    '_spares': 0,
+    '_strikes': 0,
+    '_score': [5, 4],
+    '_isScored': false,
+    '_isComplete': true,
+    'newBall': function (number) {}
+  }
+  var mockFrameCompleteSpare = {
+    '_hits': 2,
+    '_spares': 1,
+    '_strikes': 0,
+    '_score': [5, 5],
+    '_isScored': false,
+    '_isComplete': true,
+    'newBall': function (number) {}
   }
   var FrameConstructorMock = function () {
     return mockFrame
   }
+  var FrameConstructorMock1 = function () {
+    return mockFrameComplete
+  }
+  var FrameConstructorMockSpare = function () {
+    return mockFrameCompleteSpare
+  }
   beforeEach(function () {
     bowlingEngine = new BowlingEngine(FrameConstructorMock)
-    // bowlingEngine = new BowlingEngine()
   })
 
   describe('initialisation values', function () {
@@ -76,6 +98,13 @@ describe('BowlingEngine', function () {
       bowlingEngine.throwBall(10)
       expect(mockFrame.newBall).toHaveBeenCalledWith(10)
     })
+    it('should check if current frame is complete and throw ball in the next frame', function () {
+      bowlingEngine.currentFrame = 1
+      bowlingEngine.frames = [mockFrameCompleteSpare]
+      bowlingEngine.throwBall(5)
+      expect(bowlingEngine.currentFrame).toEqual(2)
+      expect(bowlingEngine.frames.length).toEqual(2)
+    })
   })
   describe('it adds frames into array', function () {
     beforeEach(function () {
@@ -95,6 +124,77 @@ describe('BowlingEngine', function () {
       bowlingEngine.addFrame()
       bowlingEngine.addFrame()
       expect(bowlingEngine.currentFrame).toEqual(2)
+    })
+  })
+  describe('frameSelector', function () {
+    beforeEach(function () {
+      bowlingEngine.currentFrame = 0
+      bowlingEngine.frames = []
+    })
+    afterEach(function () {
+      bowlingEngine.currentFrame = 0
+      bowlingEngine.frames = []
+    })
+    it('should return false if it is not the last frame', function () {
+      spyOn(bowlingEngine, '_frameBuilder')
+      bowlingEngine.addFrame()
+      expect(bowlingEngine._frameBuilder).toHaveBeenCalledWith()
+    })
+    it('should return true if it is the last frame', function () {
+      spyOn(bowlingEngine, '_frameBuilder')
+      bowlingEngine.addFrame()
+      bowlingEngine.addFrame()
+      bowlingEngine.addFrame()
+      bowlingEngine.addFrame()
+      bowlingEngine.addFrame()
+      bowlingEngine.addFrame()
+      bowlingEngine.addFrame()
+      bowlingEngine.addFrame()
+      bowlingEngine.addFrame()
+      bowlingEngine.addFrame()
+      expect(bowlingEngine._frameBuilder).toHaveBeenCalledWith('last')
+    })
+  })
+  describe('scoring', function () {
+    beforeEach(function () {
+      bowlingEngine = new BowlingEngine(FrameConstructorMock1)
+      bowlingEngine.currentFrame = 0
+      bowlingEngine.frames = []
+      mockFrameCompleteSpare._isScored = false
+      mockFrameComplete._isScored = false
+
+    })
+    afterEach(function () {
+      bowlingEngine = new BowlingEngine(FrameConstructorMock1)
+      bowlingEngine.currentFrame = 0
+      bowlingEngine.frames = []
+      mockFrameCompleteSpare._isScored = false
+      mockFrameComplete._isScored = false
+    })
+    it('should call score after every throw ball', function () {
+      spyOn(bowlingEngine, 'score')
+      bowlingEngine.addFrame()
+      bowlingEngine.throwBall(5)
+      expect(bowlingEngine.score).toHaveBeenCalled()
+    })
+    it('should score the frames', function () {
+      bowlingEngine.currentFrame = 1
+      bowlingEngine.frames = [mockFrameComplete]
+      console.log('_______ONE FRAME TEST_________')
+      console.log(bowlingEngine.frames)
+      console.log('________________')
+      bowlingEngine.score()
+      expect(bowlingEngine.totalScore).toEqual(9)
+    })
+    it('should score previous frame on spare', function () {
+      bowlingEngine.currentFrame = 2
+      bowlingEngine.frames = [mockFrameCompleteSpare, mockFrameComplete]
+      console.log('_______TWO FRAMES TEST_________')
+      console.log(bowlingEngine.frames)
+      console.log('________________')
+      bowlingEngine.score()
+      expect(bowlingEngine.totalScore).toEqual(24)
+
     })
   })
 })

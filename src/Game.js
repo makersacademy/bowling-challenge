@@ -23,7 +23,7 @@ Game.prototype.score = function(frame){
       }
     }
     else if (this.frameScore === 10) {
-      this.frameScore += this.frames[frame]
+      this.frameScore += this.frames[frame][0]
     }
 }
 

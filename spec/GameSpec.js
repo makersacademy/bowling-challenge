@@ -33,5 +33,20 @@ describe ("Game", function() {
       game.score(1);
       expect(game.frameScore).toEqual(12);
     })
+
+    it('adds the next two bowls after a stike even if another is a stike', function() {
+      game.bowl([10]);
+      game.bowl([10]);
+      game.bowl([1,1]);
+      game.score(1);
+      expect(game.frameScore).toEqual(21);
+    });
+
+    it('adds the next bowl after a spare', function() {
+      game.bowl([4,6]);
+      game.bowl([1,1]);
+      game.score(1);
+      expect(game.frameScore).toEqual(11);
+    });
   });
 });

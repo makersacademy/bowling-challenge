@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Bowling Scorecard</title>
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="css/scorecard.css">
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+    <script src="semantic/dist/semantic.min.js"></script>
+    <script type="text/javascript" src="js/Frame.js"></script>
+    <script type="text/javascript" src="js/Game.js"></script>
+    <script type="text/javascript" src="js/Bowling.js"></script>
+  </head>
+  <body>
+    <div class="ui inverted segment" style="height: 100%;">
+      <div class="ui container">
+        <div class="ui text container center aligned" id="header">
+          <h1 class="ui huge inverted teal header">Bowling Scorecard</h1>
+          <div class="ui large inverted teal button" id="new_game">
+            New game
+          </div>
+        </div>
+      </div>
+      <div class="container ui ten column celled center aligned grid" id="sc">
+        <% include ../partials/frame %>
+        <% include ../partials/frame %>
+        <% include ../partials/frame %>
+        <% include ../partials/frame %>
+        <% include ../partials/frame %>
+        <% include ../partials/frame %>
+        <% include ../partials/frame %>
+        <% include ../partials/frame %>
+        <% include ../partials/frame %>
+        <div id="frame" class="column ui three column celled center aligned grey grid">
+          <div class="row">
+            <div class="column ball" id="ball1">
+            </div>
+            <div class="column ball" id="ball2">
+            </div>
+            <div class="column ball" id="ball3">
+            </div>
+          </div>
+          <div class="row">
+            <div class="column" id="score">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container ui eleven buttons" id="bowls">
+        <button class="ui huge teal button" id="bowl" value="0">0</button>
+        <button class="ui huge teal button" id="bowl" value="1">1</button>
+        <button class="ui huge teal button" id="bowl" value="2">2</button>
+        <button class="ui huge teal button" id="bowl" value="3">3</button>
+        <button class="ui huge teal button" id="bowl" value="4">4</button>
+        <button class="ui huge teal button" id="bowl" value="5">5</button>
+        <button class="ui huge teal button" id="bowl" value="6">6</button>
+        <button class="ui huge teal button" id="bowl" value="7">7</button>
+        <button class="ui huge teal button" id="bowl" value="8">8</button>
+        <button class="ui huge teal button" id="bowl" value="9">9</button>
+        <button class="ui huge teal button" id="bowl" value="10">10</button>
+      </div>
+      <div class="image"></div>
+    </div>
+  </body>
+</html>

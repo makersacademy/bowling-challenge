@@ -1,11 +1,11 @@
 function Game() {
-  this.frames = []
-  this.frameScore = 0
+  this.frames = [];
+  this.frameScore = 0;
 };
 
 
-Game.prototype.bowl = function(score) {
-  this.frames.push(score);
+Game.prototype.runFrame = function(scores) {
+  this.frames.push(scores);
   this._setFrame();
 };
 

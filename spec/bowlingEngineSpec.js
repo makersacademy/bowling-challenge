@@ -180,21 +180,14 @@ describe('BowlingEngine', function () {
     it('should score the frames', function () {
       bowlingEngine.currentFrame = 1
       bowlingEngine.frames = [mockFrameComplete]
-      console.log('_______ONE FRAME TEST_________')
-      console.log(bowlingEngine.frames)
-      console.log('________________')
       bowlingEngine.score()
       expect(bowlingEngine.totalScore).toEqual(9)
     })
     it('should score previous frame on spare', function () {
       bowlingEngine.currentFrame = 2
       bowlingEngine.frames = [mockFrameCompleteSpare, mockFrameComplete]
-      console.log('_______TWO FRAMES TEST_________')
-      console.log(bowlingEngine.frames)
-      console.log('________________')
       bowlingEngine.score()
       expect(bowlingEngine.totalScore).toEqual(24)
-
     })
   })
 })

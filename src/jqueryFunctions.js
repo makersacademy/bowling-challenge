@@ -30,6 +30,8 @@ $('#Turn').click(function() {
   $('.' + turn + '>.shot').html(score1)
   $('.' + turn + '>.shot2').html(score2)
   turn ++
+
+  $('.10>.totalscore').html(scoring.scoreArray.reduce(function(a, b) { return a + b; }, 0));
   scoring.reset();
 });
 
@@ -54,5 +56,6 @@ function _StikePrinter() {
   }
 
 }
+
 
 })

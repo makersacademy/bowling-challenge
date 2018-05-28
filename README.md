@@ -10,7 +10,7 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 
 ## My solution - BOWLING GAME
 
-Game logic was created with help of <a href='http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata' Uncle Bob's </a> bowling game kata presentation;
+Game logic was created with help of <a href='http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata'> Uncle Bob's </a> bowling game kata presentation;
 I added some additional methods and tests to help create user interface. Game logic works fine for normal game, strike and spare. However user interface needs more work. It works for normal game only.
 I am planning to fix the problem with UI as soon as possible and also clean on logic , deleting parts I do not need for UI;
 

@@ -1,7 +1,7 @@
 function Frame() {
   this.scores = [];
   this.pins = 10;
-  this.finish = false
+  this.finish = false;
 }
 
 Frame.prototype.bowl = function(score) {

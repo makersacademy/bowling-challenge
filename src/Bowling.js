@@ -31,7 +31,7 @@ Game.prototype._endTurn = function() {
 
 Game.prototype._endGame = function() {
   if ((this.frame.length === 2 && (this.frame[0] + this.frame[1]) < 10 ) || this.frame.length === 3) {
-    this.finish = !this.finish;
+    this.finish = true;
     this.frames.push(this.frame);
     this.frame = [];
     this.pins = 10;
@@ -87,10 +87,12 @@ Game.prototype._calcFrame = function(frame) {
 };
 
 Game.prototype._frameNotComplete = function(frame) {
-  if (frame > this.frames.length && this.frame.length === 1)  {
+  if (frame > this.frames.length && this.frame.length === 1  && this.finalFrame === false)  {
     this.frameScore += this.frame[0] }
-  else if (this.finalFrame === true && this.finish === false) {
+  else if (this.finalFrame === true && this.finish === false  && this.frame.length === 1) {
     this.frameScore += this.frame[0] }
+    else if (this.finalFrame === true && this.finish === false  && this.frame.length === 2) {
+      this.frameScore += this.frame[0] + this.frame[1] }
   else if (frame > this.frames.length) {}
   else { this._frameComplete(frame) };
 };

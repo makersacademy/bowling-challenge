@@ -1,136 +1,140 @@
-describe ("Bowling", function() {
+describe ("Game", function() {
 
-    var bowling
+  var game
+
+  beforeEach(function(){
+    game = new Game();
+  });
+
+
+  describe('bowl', function() {
+    it('adds score to the current frame', function() {
+      game.bowl(1);
+      expect(game.frame[0]).toEqual(1);
+    })
+
+    it('adds score to the frames', function() {
+      game.bowl(1);
+      game.bowl(1);
+      expect(game.frames[0]).toEqual([1,1]);
+    });
+
+    it('reduce the nuber of pins by the score', function() {
+      game.bowl(4);
+      expect(game.pins).toEqual(6);
+    })
+
+    it('throws an error if score is too high', function() {
+      expect( function(){ game.bowl(11); } ).toThrow("please enter a valid score");
+    });
+  });
+
+  describe('score', function() {
+    it('adds the scores together', function() {
+      game.bowl(1);
+      game.bowl(1);
+      expect(game.score(1)).toEqual(2);
+    });
+
+    it('adds the next two bowls after a strike', function() {
+      game.bowl(10);
+      game.bowl(1);
+      game.bowl(1);
+      expect(game.score(1)).toEqual(12);
+    })
+
+    it('adds the next two bowls after a stike even if another is a stike', function() {
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(1);
+      game.bowl(1);
+      expect(game.score(1)).toEqual(21);
+    });
+
+    it('adds the next bowl after a spare', function() {
+      game.bowl(6);
+      game.bowl(4);
+      game.bowl(1);
+      game.bowl(1);
+      expect(game.score(1)).toEqual(11);
+    });
+  });
+
+  it('returns the current frame if frame is not complete', function() {
+    game.bowl(2);
+    expect(game.score(1)).toEqual(2);
+  });
+
+  it('returns 10 after a strike and no further frames are played', function() {
+    game.bowl(10);
+    expect(game.score(1)).toEqual(10);
+  });
+
+  describe('finalframe', function() {
 
     beforeEach(function(){
-      bowling = new Bowling();
-    });
-
-    describe('pins', function() {
-      it('deducts score from pins', function() {
-        bowling.takeTurn(1);
-        expect(bowling.pins).toEqual(9);
-      });
-
-      it('cannot allow the score to be higher than the number of pins', function() {
-        expect( function(){ bowling.takeTurn(11); } ).toThrow("please enter a valid score");
-      });
-
-      it('resets pins after a strike', function() {
-        bowling.takeTurn(10);
-        expect(bowling.pins).toEqual(10);
-      })
-
-      it('resets pins after 2 throws', function() {
-        bowling.takeTurn(4);
-        bowling.takeTurn(4);
-        expect(bowling.pins).toEqual(10);
-      })
-    });
-
-    describe('first turn', function() {
-      it('turns to false after one bowl', function() {
-        bowling.takeTurn(1);
-        expect(bowling.firstTurn).toEqual(false);
-      });
-
-      it('turns back to true after two bowls', function() {
-        bowling.takeTurn(1);
-        bowling.takeTurn(1);
-        expect(bowling.firstTurn).toEqual(true);
-      });
-
-      it('stays true after a strike', function() {
-        bowling.takeTurn(10);
-        expect(bowling.firstTurn).toEqual(true);
-      })
-    });
-
-    describe('points', function() {
-      it('adds score to points', function() {
-        bowling.takeTurn(1);
-        expect(bowling.points).toEqual(1);
-      });
-
-      it('adds double points for 2 rounds after a strike', function() {
-        bowling.takeTurn(10);
-        bowling.takeTurn(2);
-        bowling.takeTurn(2);
-        bowling.takeTurn(2);
-        expect(bowling.points).toEqual(20);
-      });
-
-      it('adds bonus points for 1 round after a spare', function() {
-        bowling.takeTurn(5);
-        bowling.takeTurn(5);
-        bowling.takeTurn(3);
-        bowling.takeTurn(3);
-        expect(bowling.points).toEqual(19);
-      })
-    });
-
-    describe('bonus', function() {
-      it('adds 2 doubles on strike', function() {
-        bowling.takeTurn(10);
-        expect(bowling.double).toEqual(2);
-      });
-
-      it('adds 1 double on a spare', function() {
-        bowling.takeTurn(5);
-        bowling.takeTurn(5);
-        expect(bowling.double).toEqual(1);
-      });
-
-      it('reduces double by 1 if no strike or spare', function() {
-        bowling.takeTurn(10);
-        bowling.takeTurn(5);
-        expect(bowling.double).toEqual(1);
-      });
-
-      it('does not reduce double if it is already 0', function() {
-        bowling.takeTurn(5);
-        expect(bowling.double).toEqual(0);
-      });
-
-      it('still shows 3 double after 2 strikes', function() {
-        bowling.takeTurn(10);
-        bowling.takeTurn(10);
-        expect(bowling.double).toEqual(3);
-      })
-    });
-
-    describe('frame', function() {
-      it('adds to the frame after 2 throws', function() {
-        bowling.takeTurn(4);
-        bowling.takeTurn(4);
-        expect(bowling.frame).toEqual(2);
-      });
-
-      it('adds to the frame after a spare', function() {
-        bowling.takeTurn(5);
-        bowling.takeTurn(5);
-        expect(bowling.frame).toEqual(2);
-      });
-
-      it('adds to the frame after a strike', function() {
-        bowling.takeTurn(10);
-        expect(bowling.frame).toEqual(2);
-      });
-
-      it('throws error if game is over', function() {
-        for (i = 0; i < 20; i++) {
-        bowling.takeTurn(4)
+      for (i = 0; i < 9; i++) {
+        game.runFrame([1,1])
       }
-        expect( function(){ bowling.takeTurn(1); } ).toThrow("please start a new game");
-      });
+    });
+    it('sets final frame after 9 frames', function() {
+      expect(game.finalFrame).toEqual(true);
+    });
 
-      it('allows 1 extra throw on final frame after spare', function() {
-        for (i = 0; i < 9; i++) {
-        bowling.takeTurn(10)
-      }
-      bowling.takeTurn(5);
-      bowling.takeTurn(5);
-      expect(bowling.frame).toEqual(10);
+
+    it('does not ends the turn after a stike', function() {
+      game.bowl(10);
+      expect(game.finish).toEqual(false);
     });
+
+    it('does not end the turn after 2 strikes', function() {
+      game.bowl(10);
+      game.bowl(10);
+      expect(game.finish).toEqual(false);
+    })
+
+    it('ends the turn after two bowls', function() {
+      game.bowl(4);
+      game.bowl(4);
+      expect(game.finish).toEqual(true);
     });
+
+    it('ends the turn after 3 turns', function() {
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(4);
+      expect(game.finish).toEqual(true);
+    });
+
+    it('does not end the turn after a spare', function() {
+      game.bowl(5);
+      game.bowl(5);
+      expect(game.finish).toEqual(false);
+    });
+
+    it('ends the turn after a spare and one more bowl', function() {
+      game.bowl(5);
+      game.bowl(5);
+      game.bowl(5);
+      expect(game.finish).toEqual(true);
+    });
+
+    it('ends the turn after 3 strikes', function() {
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      expect(game.finish).toEqual(true);
+    })
+
+    it('does not end the turn after one bowl', function() {
+      game.bowl(4);
+      expect(game.finish).toEqual(false);
+    });
+
+    it('throws an error if the turn is over', function() {
+      game.bowl(2);
+      game.bowl(2);
+      expect( function(){ game.bowl(4); } ).toThrow("Game has finished, start a new game");
+    });
+  });
 });

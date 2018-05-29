@@ -11,18 +11,28 @@ Game.prototype.addFrame = function () {
   this.currentFrame ++
 }
 
+Game.prototype.totalScore = function (scoreCard) {
+  let totalScore = 0
+  for (let score in scoreCard) {
+    if (scoreCard.hasOwnProperty(score)) {
+      totalScore += scoreCard[score]
+    }
+  }
+  return totalScore
+}
+
 Game.prototype.throwBall = function (num) {
   if (this.gameOver) {
     console.log('illegal throw - game is finished')
     return
   }
-  if (this.currentFrame !== 9 && this.frames[this.currentFrame].length ===  1 && num + this.frames[this.currentFrame][0] !== 10) {
+  if (this.currentFrame !== 9 && this.frames[this.currentFrame].length === 1 && num + this.frames[this.currentFrame][0] !== 10) {
     this.frames[this.currentFrame].push(num)
     this.score(this.frames[this.currentFrame])
     this.addFrame()
     return
   }
-  if (this.currentFrame !== 9 && this.frames[this.currentFrame].length ===  0 && num === 10){
+  if (this.currentFrame !== 9 && this.frames[this.currentFrame].length === 0 && num === 10) {
     this.frames[this.currentFrame].push(num)
     this.score(this.frames[this.currentFrame])
     this.addFrame()
@@ -50,14 +60,14 @@ Game.prototype.throwBall = function (num) {
     this.score(this.frames[this.currentFrame])
     return
   }
-  if (this.currentFrame === 9 && this.frames[this.currentFrame][0] !== 10 && this.frames[this.currentFrame].length === 1 && num !== 10 && this.frames[this.currentFrame][0] + num !== 10 ) {
+  if (this.currentFrame === 9 && this.frames[this.currentFrame][0] !== 10 && this.frames[this.currentFrame].length === 1 && num !== 10 && this.frames[this.currentFrame][0] + num !== 10) {
     this.frames[this.currentFrame].push(num)
     this.score(this.frames[this.currentFrame])
     console.log('Game Over')
     this.gameOver = true
     return
   }
-  if (this.currentFrame === 9 && this.frames[this.currentFrame][0] !== 10 && this.frames[this.currentFrame].length === 1 && num !== 10 && this.frames[this.currentFrame][0] + num === 10 ) {
+  if (this.currentFrame === 9 && this.frames[this.currentFrame][0] !== 10 && this.frames[this.currentFrame].length === 1 && num !== 10 && this.frames[this.currentFrame][0] + num === 10) {
     this.frames[this.currentFrame].push(num)
     this.score(this.frames[this.currentFrame])
     return
@@ -72,7 +82,6 @@ Game.prototype.throwBall = function (num) {
 }
 
 Game.prototype.score = function (frame) {
-
   this.scoreCard[this.frames.indexOf(frame)] = frame.reduce(function (acc, val) { return acc + val })
 
   if (this.currentFrame !== 9 && this.frames.indexOf(frame) - 1 >= 0) {
@@ -109,8 +118,7 @@ var game = new Game()
 
 game.addFrame()
 //frame 0
-game.throwBall(2)
-game.throwBall(8)
+game.throwBall(10)
 
 //frame 1
 game.throwBall(10)
@@ -133,9 +141,11 @@ game.throwBall(10)
 //frame 8
 game.throwBall(10)
 //frame 9
-game.throwBall(1)
-game.throwBall(8)
+game.throwBall(10)
+game.throwBall(10)
+game.throwBall(10)
 
 console.log('Frames: ')
 for (var frame of game.frames) { console.log(game.frames.indexOf(frame), frame) }
 console.log('Score: \n', game.scoreCard)
+console.log(game.totalScore(game.scoreCard))

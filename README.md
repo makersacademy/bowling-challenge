@@ -2,6 +2,23 @@
 Bowling Challenge
 =================
 
+This is a Bowling Scorecard used for keeping track of your score during a game of bowling.
+
+### How to use
+
+Fork and clone this repo, then start the server either by running ```node app.js``` or ```nodemon app.js``` if you have nodemon installed. The localhost port is 3000.
+
+Choose which frame you wish to record from the drop down menu, then choose the scores for roll 1 and roll 2 via the buttons provided. Confirm your score then choose the next frame you wish to record.Do this until you have recorded scores for all the frames and see your final score including all bonuses you get for strikes and spares. 
+
+### Technologies used
+
+This entire app was built on a single page with JavaScript, it is never redirected to anywhere else. I used Jquery to link my logic to my views. It runs on a node/express server.  
+
+### Why did I build this?
+
+This was a weekend challenge given to us by Makers Academy. The details of which are provided below. This was after our first week of using JavaScript and Jquery.
+
+## From Makers...
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

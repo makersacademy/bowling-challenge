@@ -52,7 +52,6 @@ Game.prototype.throwBall = function (num) {
   if (this.currentFrame === 9 && this.frames[this.currentFrame].length === 0 && num !== 10) {
     this.frames[this.currentFrame].push(num)
     this.score(this.frames[this.currentFrame])
-    console.log('Coming to end')
     return
   }
   if (this.currentFrame === 9 && this.frames[this.currentFrame].length === 1 && num === 10) {
@@ -118,34 +117,45 @@ var game = new Game()
 
 game.addFrame()
 //frame 0
-game.throwBall(10)
+game.throwBall(0)
+game.throwBall(0)
 
 //frame 1
-game.throwBall(10)
+game.throwBall(0)
+game.throwBall(0)
 
 //frame 2
-game.throwBall(10)
+game.throwBall(0)
+game.throwBall(0)
 
 //frame 3
-game.throwBall(10)
+game.throwBall(0)
+game.throwBall(0)
 //frame 4
-game.throwBall(10)
+game.throwBall(0)
+game.throwBall(0)
 //frame 5
-game.throwBall(10)
+game.throwBall(0)
+game.throwBall(0)
 //frame 6
-game.throwBall(10)
+game.throwBall(0)
+game.throwBall(0)
 
 //frame 7
-game.throwBall(10)
+game.throwBall(9)
+game.throwBall(1)
 
 //frame 8
-game.throwBall(10)
+game.throwBall(0)
+game.throwBall(0)
 //frame 9
-game.throwBall(10)
-game.throwBall(10)
-game.throwBall(10)
+game.throwBall(0)
+game.throwBall(0)
 
 console.log('Frames: ')
-for (var frame of game.frames) { console.log(game.frames.indexOf(frame), frame) }
-console.log('Score: \n', game.scoreCard)
-console.log(game.totalScore(game.scoreCard))
+for (let frame of game.frames) { console.log('Frame: ', game.frames.indexOf(frame) + 1, frame) }
+console.log('__________')
+console.log('Scores: ')
+for (let score in game.scoreCard) { console.log('Frame ', parseInt(score) + 1, ' score: ', game.scoreCard[score]) }
+console.log('__________')
+console.log('Total Score: ', game.totalScore(game.scoreCard))

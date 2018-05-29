@@ -9,8 +9,8 @@ Update
 So, it took me 5 days of diagramming and meandering to solve this challenge. 
 
 TDD and diagramming led me down rabbit hole that seemed unending and 
-ever more convoluted. in the end, after almost giving up,
-I decided to work this process out through trial and error (ie `console.log()`). 
+ever more convoluted. In the end, after almost giving up,
+I decided to work this process out through trial and error (ie console.log() ). 
 Diagramming did result in my eventual understanding of the underlying
 mechanics, which allowed me to establish four simple rules for all 
 frames but the last and then adapt the same to the last frame.

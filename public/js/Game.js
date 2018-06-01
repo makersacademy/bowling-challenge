@@ -9,7 +9,7 @@ Game.prototype.bowl = function(score){
     this.frames.push(this.createFrame());
   }
   for (var i = 0; i < this.frames.length; i++){
-    if (!this.frames[i].score){ this.frames[i].addScore(score); }
+    if (this.frames[i].score === undefined){ this.frames[i].addScore(score); }
   }
 }
 
@@ -24,7 +24,7 @@ Game.prototype.currentFrame = function(){
 Game.prototype.currentScore = function(frame = this.frames.length){
   var score = 0;
   for (var i = 0; i < frame; i++){
-    if (this.frames[i].score){ score += this.frames[i].score }
+    if (!(this.frames[i].score === undefined)){ score += this.frames[i].score }
   }
   return score;
 }

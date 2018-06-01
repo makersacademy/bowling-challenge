@@ -19,7 +19,7 @@ $(function() {
     for (var i = 0; i < game.frames.length; i++){
       var frame = game.frames[i];
       var frameElement = $("#sc #frame:nth-child(" + (i+1) + ")");
-      if (frame.score) {
+      if (!(frame.score === undefined)) {
         $(frameElement).find("#score").text(game.currentScore(i+1));
       }
       if (i === 9){

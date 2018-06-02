@@ -1,72 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
-    <script src="game.js"></script>
-    <script src="frame.js"></script>
-    <script src="score.js"></script>
-    <script src="interface.js"></script>
-    <!-- <script src="expect.js"></script> -->
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <meta charset="utf-8">
-    <title>Bowling Scorecard</title>
-  </head>
-  <body>
-    <div class="block">
-      <div class="new">
-    <INPUT TYPE="button" onClick="history.go(0)" VALUE="New Game">
+<head>
+  <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+  <script src="game.js"></script>
+  <script src="frame.js"></script>
+  <script src="score.js"></script>
+  <script src="interface.js"></script>
+  <!-- <script src="expect.js"></script> -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="utf-8">
+  <title>Bowling Scorecard</title>
+</head>
+<body>
+  <div class="block">
+    <div class="new">
+      <INPUT TYPE="button" onClick="history.go(0)" VALUE="New Game">
       </div>
-    <div class="header">
-      <h1 id="welcome">Bowling Scorecard<h1>
-    </div>
-      <h2>What was your score for frame <span id="frame">1</span>?<h2>
-        <select id="current-frame" required>
-          <option value="title">Pick Frame</option>
-          <option value="0">Frame 1</option>
-          <option value="1">Frame 2</option>
-          <option value="2">Frame 3</option>
-          <option value="3">Frame 4</option>
-          <option value="4">Frame 5</option>
-          <option value="5">Frame 6</option>
-          <option value="6">Frame 7</option>
-          <option value="7">Frame 8</option>
-          <option value="8">Frame 9</option>
-          <option value="9">Frame 10</option>
-        </select>
+      <div class="header">
+        <h1 id="welcome">Bowling Scorecard<h1>
+        </div>
+        <h2>What was your score for frame <span id="frame">1</span>?<h2>
+          <select id="current-frame" required>
+            <option value="title">Pick Frame</option>
+            <option value="0">Frame 1</option>
+            <option value="1">Frame 2</option>
+            <option value="2">Frame 3</option>
+            <option value="3">Frame 4</option>
+            <option value="4">Frame 5</option>
+            <option value="5">Frame 6</option>
+            <option value="6">Frame 7</option>
+            <option value="7">Frame 8</option>
+            <option value="8">Frame 9</option>
+            <option value="9">Frame 10</option>
+          </select>
 
-        <h2><span id="next"></span><h2>
-        <h2><span id="extra-points"></span><h2>
-        <h1><span id="over"></span><h1>
-    </div>
+          <h2><span id="next"></span><h2>
+            <h2><span id="extra-points"></span><h2>
+              <h1><span id="over"></span><h1>
+              </div>
 
-      <form  id="scores">
-        <h3>Roll: <span id="current-roll"></span></h3>
-        <button class="button hover" id="pins-0" value="0" type="button">0</button>
-        <button class="button hover" id="pins-1" value="1" type="button">1</button>
-        <button class="button hover" id="pins-2" value="2" type="button">2</button>
-        <button class="button hover" id="pins-3" value="3" type="button">3</button>
-        <button class="button hover" id="pins-4" value="4" type="button">4</button>
-        <button class="button hover" id="pins-5" value="5" type="button">5</button>
-        <button class="button hover" id="pins-6" value="6" type="button">6</button>
-        <button class="button hover" id="pins-7" value="7" type="button">7</button>
-        <button class="button hover" id="pins-8" value="8" type="button">8</button>
-        <button class="button hover" id="pins-9" value="9" type="button">9</button>
-        <button class="button hover" id="pins-10" value="10" type="button">10</button><br />
-        </form>
-        <div class="new">
-        <button id="confirm" type="button">Confirm Frame Score</button>
-        <button id="edit" type="button">Edit Frame Score</button>
-      </div>
-        <table id="scorecard">
-          <tbody>
-            <th colspan="4">Scores</th>
-            <tr>
-              <td>Frame</td><td>Roll 1</td><td>Roll 2</td><td>Total Score</td>
+              <form  id="scores">
+                <h3>Roll: <span id="current-roll"></span></h3>
+                <button class="button hover" id="pins-0" value="0" type="button">0</button>
+                <button class="button hover" id="pins-1" value="1" type="button">1</button>
+                <button class="button hover" id="pins-2" value="2" type="button">2</button>
+                <button class="button hover" id="pins-3" value="3" type="button">3</button>
+                <button class="button hover" id="pins-4" value="4" type="button">4</button>
+                <button class="button hover" id="pins-5" value="5" type="button">5</button>
+                <button class="button hover" id="pins-6" value="6" type="button">6</button>
+                <button class="button hover" id="pins-7" value="7" type="button">7</button>
+                <button class="button hover" id="pins-8" value="8" type="button">8</button>
+                <button class="button hover" id="pins-9" value="9" type="button">9</button>
+                <button class="button hover" id="pins-10" value="10" type="button">10</button><br />
+              </form>
+              <div class="new">
+                <button id="confirm" type="button">Confirm Frame Score</button>
+                <button id="edit" type="button">Edit Frame Score</button>
+              </div>
+              <table id="scorecard">
+                <tbody>
+                  <th colspan="4">Scores</th>
+                  <tr>
+                    <td>Frame</td><td>Roll 1</td><td>Roll 2</td><td>Total Score</td>
 
-            </tr>
-          </tbody>
-        </table>
+                  </tr>
+                </tbody>
+              </table>
 
 
-  </body>
-</html>
+            </body>
+            </html>

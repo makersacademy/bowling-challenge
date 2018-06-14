@@ -2,8 +2,6 @@
 
 Welcome to the code review for the Bowling Challenge!  Again, don't worry - you are not expected to have all the answers. The following is a code-review scaffold for Bowling Challenge that you can follow if you want to.  These are common issues to look out for in this challenge - but you may decide to take your own route.
 
-If you can please use this [form](http://goo.gl/forms/cuObDCzC4v) to tick off where your reviewee has successfully has successfully incorporated these guidelines!  This form helps us get an overall picture of how the whole cohort is doing - it's not an assessment of an individual student.
-
 # Step 0: Checkout and Run tests
 
 Please checkout your reviewee's code and run their tests. Read the code and try and use the app through the web interface (if they have made one).  You can also experiment with the engine in the console. How easy is it to understand the structure of their code? How readable is their code? Did you need to make any cognitive leaps to 'get it'?  Is it more complicated than it needs to be?

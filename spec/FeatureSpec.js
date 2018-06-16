@@ -14,14 +14,14 @@ describe('bowling feature tests',function(){
   it('bowling the ball generates the first score', function(){
     spyOn(Math,'floor').and.returnValue(8);
     bowling.bowl()
-    expect(bowling.score).toEqual(8)
+    expect(bowling.viewScore()).toEqual(8)
   });
 
   it('a frame has two rolls with a cumulative score', function(){
     spyOn(Math,'floor').and.returnValue(7);
     bowling.bowl()
     bowling.bowl()
-    expect(bowling.score).toEqual(14)
+    expect(bowling.viewScore()).toEqual(14)
   });
 
   it('frame scores and overall scores are both tracked', function(){
@@ -30,8 +30,8 @@ describe('bowling feature tests',function(){
     for( i = 0; i < 4; i++){
       bowling.bowl();
     };
-    expect(bowling.score).toEqual(28)
-    expect(bowling.frameScore).toEqual(14)
+    expect(bowling.viewScore()).toEqual(28)
+    expect(bowling.viewFrameScore()).toEqual(14)
 
   });
 

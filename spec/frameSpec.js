@@ -13,7 +13,12 @@ describe('Frame', function() {
   });
 
   it('has a starting score of zero', function() {
-    expect(frame.getCurrentScore()).toEqual(0);
+    expect(frame.getCurrentFrameScore()).toEqual(0);
   });
+
+  it('has a maximum score of thirty', function() {
+    expect(frame.MAX_SCORE).toEqual(30);
+  });
+
 
 });

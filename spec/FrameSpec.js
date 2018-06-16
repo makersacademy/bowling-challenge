@@ -21,7 +21,6 @@ describe('Frame', function(){
 
   describe('when not a strike or spare', function(){
     it('updates current frame score', function(){
-      console.log(new Frame());
       var frame = new Frame(game);
       // Exercise
       frame.firstBallScore(6)
@@ -35,8 +34,9 @@ describe('Frame', function(){
       frame.firstBallScore(6);
       frame.secondBallScore(2);
       // Verify
-      console.log("GAME :", game);
       expect(game.updateTotalScore).toHaveBeenCalledWith(frame.currentFrameScore);
     });
   });
+
+
 });

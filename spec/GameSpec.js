@@ -27,4 +27,14 @@ describe('Game', function(){
     expect(game.currentFrame).toEqual(3);
   });
 
+  describe('when a strike', function(){
+    it('adds a bonus to the score', function(){
+      var game = new Game();
+      game.updateTotalScore(10, "strike");
+      expect(game.totalScore).toEqual(0);
+      game.updateTotalScore(6);
+      expect(game.totalScore).toEqual(22);
+    });
+  });
+
 });

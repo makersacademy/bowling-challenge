@@ -11,4 +11,9 @@ describe ('Scoreboard', function(){
   it('start the frame at 0 points', function(){
     expect(scoreboard.getCurrentFrameScore()).toEqual(0);
   });
+
+  it('adds the first roll to the current frame score', function(){
+    scoreboard.addFirstRoll(8);
+    expect(scoreboard.getCurrentFrameScore()).toEqual(8);
+  });
 });

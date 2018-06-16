@@ -41,4 +41,10 @@ describe('BowlingGame', function() {
     expect(bowlingGame.getScoreCard()).toEqual({1: [3, undefined]});
   });
 
+  it('a roll of 5 on the second frame can be added to the score card', function (){
+    bowlingGame.scoreCard = {1: [3, undefined]};
+    bowlingGame.changeRollNumber();
+    bowlingGame.addRoll(5);
+    expect(bowlingGame.getScoreCard()).toEqual({1: [3, 5]});
+  });
 });

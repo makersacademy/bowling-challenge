@@ -1,23 +1,18 @@
 'use strict';
 
-describe('bowling',function(){
-  var bowling
+describe('Bowling',function(){
+  var bowling;
+  var scoreCard;
 
   beforeEach(function(){
     bowling = new Bowling();
+    scoreCard = jasmine.createSpyObj('scoreCard',['update','viewScore', 'viewFrameScore']);
+
   });
 
-  it('starts the game by bowling the ball', function(){
-    spyOn(Math,'floor').and.returnValue(6);
-    bowling.bowl()
-    expect(bowling.viewScore()).toEqual(6)
-  });
-
-  it('a frame score is produced after 2 bowls', function(){
-    spyOn(Math,'floor').and.returnValue(5);
-    bowling.bowl()
-    bowling.bowl()
-    expect(bowling.viewFrameScore()).toEqual(10)
+  it('bowling the ball updates the scorecard', function(){
+    bowling.bowl(scoreCard)
+    expect(scoreCard.update).toHaveBeenCalled();
   });
 
 });

@@ -30,5 +30,15 @@ describe('BowlingGame', function() {
   it('can change the roll number', function() {
     bowlingGame.changeRollNumber();
     expect(bowlingGame.getRollNumber()).toEqual(2);
-  })
+  });
+
+  it('score card starts as an empty object', function() {
+    expect(bowlingGame.getScoreCard()).toEqual({});
+  });
+
+  it('a roll of 3 on the first frame can be added to the score card', function (){
+    bowlingGame.addRoll(3);
+    expect(bowlingGame.getScoreCard()).toEqual({1: [3, undefined]});
+  });
+
 });

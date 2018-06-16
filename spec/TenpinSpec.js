@@ -18,6 +18,19 @@ describe("Tenpin", function() {
     expect(tenpin.strike).toEqual(true);
   })
 
+  it('the first roll after a spare is added as a bonus to the last frame score', function() {
+    var tenpin = new Tenpin();
+    tenpin.frame(7,3);
+    tenpin.frame(5,3);
+    expect(tenpin.scoreCard).toEqual([15, 8]);
+  })
+
+  it('if two spares in a row the first roll of the second frame is added as a bonus to the first roll but the score of the second frame is not calculated', function() {
+    var tenpin = new Tenpin();
+    tenpin.frame(7,3);
+    tenpin.frame(5,5);
+    expect(tenpin.scoreCard).toEqual([15]);
+  })
 
 
 

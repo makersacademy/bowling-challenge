@@ -20,5 +20,12 @@ describe('Frame', function() {
     expect(frame.MAX_SCORE).toEqual(30);
   });
 
+  it('stores a score for the first roll', function() {
+    frame.addRollOne(9);
+    expect(frame.getCurrentFrameScore()).toEqual(9);
+  });
+
+
+
 
 });

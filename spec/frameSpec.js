@@ -25,6 +25,12 @@ describe('Frame', function() {
     expect(frame.getCurrentFrameScore()).toEqual(9);
   });
 
+  it('stores a score for the second roll', function() {
+    frame.addRollOne(9);
+    frame.addRollTwo(1);
+    expect(frame.getCurrentFrameScore()).toEqual(10);
+  });
+
 
 
 

@@ -17,3 +17,8 @@ Frame.prototype.addRollOne = function(number) {
   this.rollOne += number;
   this.totalScore += this.rollOne;
 };
+
+Frame.prototype.addRollTwo = function(number) {
+  this.rollTwo += number;
+  this.totalScore += this.rollTwo;
+};

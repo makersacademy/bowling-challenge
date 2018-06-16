@@ -32,20 +32,23 @@ describe('BowlingGame', function() {
     expect(bowlingGame.getRollNumber()).toEqual(2);
   });
 
-  it('score card starts as an empty object', function() {
-    expect(bowlingGame.getScoreCard()).toEqual({});
+  it('score card starts as an object on frame 0 with 0 points', function() {
+    expect(bowlingGame.getScoreCard()).toEqual({0: [0, 0, 0]});
   });
 
   it('a roll of 3 on the first frame can be added to the score card', function(){
     bowlingGame.addRoll(3);
-    expect(bowlingGame.getScoreCard()).toEqual({1: [3, undefined]});
+    expect(bowlingGame.getScoreCard()).toEqual({
+      0: [0, 0, 0],
+      1: [3, undefined]
+    });
   });
 
   it('a roll of 5 on the second frame can be added to the score card', function(){
     bowlingGame.scoreCard = {1: [3, undefined]};
     bowlingGame.changeRollNumber();
     bowlingGame.addRoll(5);
-    expect(bowlingGame.getScoreCard()).toEqual({1: [3, 5]});
+    expect(bowlingGame.getScoreCard()).toEqual({1: [3, 5, 0]});
   });
 
   it('adding a roll to the score card changes the roll number', function() {
@@ -64,12 +67,28 @@ describe('BowlingGame', function() {
   it('rolling a strike automatically moves the game on to the next frame', function() {
     bowlingGame.addRoll(10);
     expect(bowlingGame.getCurrentFrame()).toEqual(2);
-    expect(bowlingGame.getScoreCard()).toEqual({1: [10, undefined]});
+    expect(bowlingGame.getScoreCard()).toEqual({
+      0: [0, 0, 0],
+      1: [10, undefined]
+    });
   });
 
   it('checks whether the previous frame was a spare', function() {
     bowlingGame.addRoll(5);
     bowlingGame.addRoll(5);
     expect(bowlingGame.previousFrameIsSpare()).toBe(true);
+  });
+
+  describe('when the previous frame was a spare', function() {
+    it('adds the bonus to the previous frame', function() {
+      bowlingGame.addRoll(5);
+      bowlingGame.addRoll(5);
+      bowlingGame.addRoll(2);
+      expect(bowlingGame.getScoreCard()).toEqual({
+        0: [0, 0, 0],
+        1: [5, 5, 2],
+        2: [2, undefined]
+      });
+    });
   });
 });

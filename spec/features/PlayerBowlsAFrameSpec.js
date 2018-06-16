@@ -15,11 +15,13 @@ describe('Player bowls a frame', function(){
     it('total score updates', function(){
       // Setup
       var game = new Game();
+      var frame1 = new Frame(game);
       // Exercise
-      game.first_ball_score(7)
-      game.second_ball_score(2)
+      frame1.firstBallScore(7)
+      frame1.secondBallScore(2)
       // Verify
-      expect(game.total_score).toEqual(9)
+      expect(game.totalScore).toEqual(9)
+      expect(game.currentFrame).toEqual(2)
     });
   });
 //

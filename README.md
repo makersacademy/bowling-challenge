@@ -2,6 +2,46 @@
 Bowling Challenge
 =================
 
+### Quickstart:
+#### How to install the code:
+1. Fork this project
+
+#### How to use the website:
+1. Load the site via ```open index.html```
+2. Enter your scores in the interface
+
+#### How to run the tests:
+Jasmine SpecRunner file includes all spec and source code files.
+All tests can be run via a browser, type ```open SpecRunner.html``` in to the terminal.
+
+### Approach to solving the challenge:
+1. Set up browser based Jasmine for TDD of the application.
+1. Review the bowling game scoring system and break it down into the smallest requirements.
+2. Top line diagram for how these elements work
+3. Diagram for the interaction between each element of the game   
+
+### Status at point of push:
+
+
+### Description of what code does:
+This is a bowling score card as per the standard game rules. Top score is 300, gutter game is zero pins hit, bonuses are given for rolling a spare and or strike.
+
+### Code Style:
+Standard JavaScript, with Jasmine syntax for testing.
+
+### Features:
+1.
+2.
+3.
+
+### Code Example:
+Extract from the codebase:
+```
+
+```
+
+Instructions Set by Makers Academy
+-------
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

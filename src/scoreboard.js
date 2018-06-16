@@ -12,3 +12,8 @@ Scoreboard.prototype.addFirstRoll = function (roll) {
   this.frameScore += roll
   return this.frameScore;
 };
+
+Scoreboard.prototype.addSecondRoll = function (roll) {
+  this.frameScore += roll
+  return this.frameScore;
+};

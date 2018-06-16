@@ -18,8 +18,7 @@ describe ('Scoreboard', function(){
   });
 
   it('adds the second roll to the current frame score', function(){
-    scoreboard.addFirstRoll(8);
     scoreboard.addSecondRoll(1);
-    expect(scoreboard.getCurrentFrameScore()).toEqual(9);
+    expect(scoreboard.getCurrentFrameScore()).toEqual(1);
   });
 });

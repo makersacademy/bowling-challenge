@@ -8,5 +8,5 @@ describe('bowling',function(){
     bowling.play()
     expect(bowling.score).toEqual(10)
   });
-  
+
 });

@@ -45,8 +45,7 @@ describe('BowlingGame', function() {
   });
 
   it('a roll of 5 on the second frame can be added to the score card', function(){
-    bowlingGame.scoreCard = {0: [0, 0, 0], 1: [3, 0, 0]};
-    bowlingGame.changeRollNumber();
+    bowlingGame.addRoll(3);
     bowlingGame.addRoll(5);
     expect(bowlingGame.getScoreCard()).toEqual({
       0: [0, 0, 0],
@@ -60,8 +59,7 @@ describe('BowlingGame', function() {
   });
 
   it('adding a second roll to the score card changes the current and previous frame numbers', function() {
-    bowlingGame.scoreCard = {0: [0, 0, 0], 1: [3, 0, 0]};
-    bowlingGame.changeRollNumber();
+    bowlingGame.addRoll(3)
     bowlingGame.addRoll(2);
     expect(bowlingGame.getCurrentFrame()).toEqual(2);
     expect(bowlingGame.getPreviousFrame()).toEqual(1);
@@ -93,6 +91,11 @@ describe('BowlingGame', function() {
         2: [2, 0, 0]
       });
     });
+  });
+
+  it('checks whether the previous frame was a strike', function() {
+    bowlingGame.addRoll(10);
+    expect(bowlingGame.previousFrameIsStrike()).toBe(true);
   });
 
   describe('when the previous frame was a strike', function() {

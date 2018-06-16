@@ -40,15 +40,18 @@ describe('BowlingGame', function() {
     bowlingGame.addRoll(3);
     expect(bowlingGame.getScoreCard()).toEqual({
       0: [0, 0, 0],
-      1: [3, undefined]
+      1: [3, 0, 0]
     });
   });
 
   it('a roll of 5 on the second frame can be added to the score card', function(){
-    bowlingGame.scoreCard = {1: [3, undefined]};
+    bowlingGame.scoreCard = {0: [0, 0, 0], 1: [3, 0, 0]};
     bowlingGame.changeRollNumber();
     bowlingGame.addRoll(5);
-    expect(bowlingGame.getScoreCard()).toEqual({1: [3, 5, 0]});
+    expect(bowlingGame.getScoreCard()).toEqual({
+      0: [0, 0, 0],
+      1: [3, 5, 0]
+    });
   });
 
   it('adding a roll to the score card changes the roll number', function() {
@@ -57,7 +60,7 @@ describe('BowlingGame', function() {
   });
 
   it('adding a second roll to the score card changes the current and previous frame numbers', function() {
-    bowlingGame.scoreCard = {1: [3, undefined]};
+    bowlingGame.scoreCard = {0: [0, 0, 0], 1: [3, 0, 0]};
     bowlingGame.changeRollNumber();
     bowlingGame.addRoll(2);
     expect(bowlingGame.getCurrentFrame()).toEqual(2);
@@ -69,7 +72,7 @@ describe('BowlingGame', function() {
     expect(bowlingGame.getCurrentFrame()).toEqual(2);
     expect(bowlingGame.getScoreCard()).toEqual({
       0: [0, 0, 0],
-      1: [10, undefined]
+      1: [10, 0, 0]
     });
   });
 
@@ -87,7 +90,20 @@ describe('BowlingGame', function() {
       expect(bowlingGame.getScoreCard()).toEqual({
         0: [0, 0, 0],
         1: [5, 5, 2],
-        2: [2, undefined]
+        2: [2, 0, 0]
+      });
+    });
+  });
+
+  describe('when the previous frame was a strike', function() {
+    it('adds the bonus to the previous frame', function() {
+      bowlingGame.addRoll(10);
+      bowlingGame.addRoll(1);
+      bowlingGame.addRoll(2);
+      expect(bowlingGame.getScoreCard()).toEqual({
+        0: [0, 0, 0],
+        1: [10, 0, 3],
+        2: [1, 2, 0]
       });
     });
   });

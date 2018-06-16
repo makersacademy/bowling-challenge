@@ -31,3 +31,8 @@ Frame.prototype.addBonusOne = function(number) {
   this.bonusOne += number;
   this.totalScore += this.bonusOne;
 };
+
+Frame.prototype.addBonusTwo = function(number) {
+  this.bonusTwo += number;
+  this.totalScore += this.bonusTwo;
+};

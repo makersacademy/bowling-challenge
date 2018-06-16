@@ -1,35 +1,38 @@
 'use strict';
-//
-// As a player
-// So that I can play
-// I want to be able to bowl a ball
-//
-// As a player
-// So that I know how I am doing
-// I want to know my score from 1 to 10
 
-describe('bowling',function(){
+// As a player
+// So that I can play my first frame
+// I'd like to bowl 2 balls and know my score
+
+describe('bowling feature tests',function(){
   var bowling
 
-  it('bowling the ball generates the first score', function(){
+  beforeEach(function(){
     bowling = new Bowling();
+  });
+
+  it('bowling the ball generates the first score', function(){
     spyOn(Math,'floor').and.returnValue(8);
     bowling.bowl()
     expect(bowling.score).toEqual(8)
   });
 
+  it('a frame has two rolls with a cumulative score', function(){
+    spyOn(Math,'floor').and.returnValue(7);
+    bowling.bowl()
+    bowling.bowl()
+    expect(bowling.score).toEqual(14)
+  });
+
+  it('frame scores and overall scores are both tracked', function(){
+    spyOn(Math,'floor').and.returnValue(7);
+    var i;
+    for( i = 0; i < 4; i++){
+      bowling.bowl();
+    };
+    expect(bowling.score).toEqual(28)
+    expect(bowling.frameScore).toEqual(14)
+
+  });
+
 });
-// describe('Weather',function(){
-//   var weather;
-//   beforeEach(function(){
-//     weather = new Weather();
-//   });
-//   it('gives stormy sometimes', function(){
-//     spyOn(Math,'random').and.returnValue(1);
-//     expect(weather.isStormy()).toBeTruthy();
-//   });
-//   it('gives not stormy other times', function(){
-//     spyOn(Math,'random').and.returnValue(0);
-//     expect(weather.isStormy()).toBeFalsy();
-//   });
-// });

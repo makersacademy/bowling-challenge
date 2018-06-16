@@ -1,7 +1,15 @@
 'use strict';
 
-function Bowling(){};
+function Bowling(){
+  this.score = 0;
+};
 
-Bowling.prototype.play = function () {
-  this.score = 10
+Bowling.prototype.bowl = function () {
+  var pinsKnockedDown;
+  pinsKnockedDown = Math.floor(Math.random() * 11);
+  this.score += pinsKnockedDown;
+};
+
+Bowling.prototype.score = function () {
+  return this.score;
 };

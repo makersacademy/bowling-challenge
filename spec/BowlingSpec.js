@@ -5,8 +5,9 @@ describe('bowling',function(){
 
   it('starts the game by bowling the ball', function(){
     bowling = new Bowling();
-    bowling.play()
-    expect(bowling.score).toEqual(10)
+    spyOn(Math,'floor').and.returnValue(6);
+    bowling.bowl()
+    expect(bowling.score).toEqual(6)
   });
 
 });

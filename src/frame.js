@@ -1,12 +1,13 @@
 'use strict';
 
 function Frame() {
-  this.totalScore = 0;
+  this.DEFAULT_SCORE = 0;
+  this.totalScore = this.DEFAULT_SCORE;
   this.MAX_SCORE = 30;
-  this.rollOne = 0;
-  this.rollTwo = 0;
-  this.bonusOne = 0;
-  this.bonusTwo = 0;
+  this.rollOne = this.DEFAULT_SCORE;
+  this.rollTwo = this.DEFAULT_SCORE;
+  this.bonusOne = this.DEFAULT_SCORE;
+  this.bonusTwo = this.DEFAULT_SCORE;
 };
 
 Frame.prototype.getCurrentFrameScore = function() {
@@ -36,3 +37,11 @@ Frame.prototype.addBonusTwo = function(number) {
   this.bonusTwo += number;
   this.totalScore += this.bonusTwo;
 };
+
+Frame.prototype.clearScore = function() {
+  this.rollOne = this.DEFAULT_SCORE;
+  this.rollTwo = this.DEFAULT_SCORE;
+  this.bonusOne = this.DEFAULT_SCORE;
+  this.bonusTwo = this.DEFAULT_SCORE;
+  this.totalScore = this.DEFAULT_SCORE;
+}

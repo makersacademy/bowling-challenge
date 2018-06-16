@@ -31,23 +31,39 @@ describe('Frame', function() {
     expect(frame.getCurrentFrameScore()).toEqual(10);
   });
 
-  it('stores a score for the spare or strike part 1 bonus', function() {
+  it('stores a score for a single bonus', function() {
     frame.addRollOne(9);
     frame.addRollTwo(1);
     frame.addBonusOne(10);
     expect(frame.getCurrentFrameScore()).toEqual(20);
   });
 
-  it('stores a score for the strike part 2 bonus', function () {
+  it('stores a score for a second bonus', function () {
     frame.addRollOne(10);
     frame.addBonusOne(8);
     frame.addBonusTwo(1);
     expect(frame.getCurrentFrameScore()).toEqual(19);
   });
 
+  it('calculates three consecutive strikes', function() {
+    frame.addRollOne(10);
+    frame.addBonusOne(10);
+    frame.addBonusTwo(10);
+    expect(frame.getCurrentFrameScore()).toEqual(30);
+  });
 
+  it('calculates a gutter frame', function() {
+    frame.addRollOne(0);
+    frame.addRollTwo(0);
+    expect(frame.getCurrentFrameScore()).toEqual(0);
+  });
 
-
-
+  it('clears the frame score', function() {
+    frame.addRollOne(10);
+    frame.addBonusOne(10);
+    frame.addBonusTwo(10);
+    frame.clearScore();
+    expect(frame.getCurrentFrameScore()).toEqual(0);
+  });
 
 });

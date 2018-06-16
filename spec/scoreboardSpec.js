@@ -16,4 +16,10 @@ describe ('Scoreboard', function(){
     scoreboard.addFirstRoll(8);
     expect(scoreboard.getCurrentFrameScore()).toEqual(8);
   });
+
+  it('adds the second roll to the current frame score', function(){
+    scoreboard.addFirstRoll(8);
+    scoreboard.addSecondRoll(1);
+    expect(scoreboard.getCurrentFrameScore()).toEqual(9);
+  });
 });

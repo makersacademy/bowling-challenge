@@ -36,15 +36,26 @@ describe('BowlingGame', function() {
     expect(bowlingGame.getScoreCard()).toEqual({});
   });
 
-  it('a roll of 3 on the first frame can be added to the score card', function (){
+  it('a roll of 3 on the first frame can be added to the score card', function(){
     bowlingGame.addRoll(3);
     expect(bowlingGame.getScoreCard()).toEqual({1: [3, undefined]});
   });
 
-  it('a roll of 5 on the second frame can be added to the score card', function (){
+  it('a roll of 5 on the second frame can be added to the score card', function(){
     bowlingGame.scoreCard = {1: [3, undefined]};
     bowlingGame.changeRollNumber();
     bowlingGame.addRoll(5);
     expect(bowlingGame.getScoreCard()).toEqual({1: [3, 5]});
+  });
+
+  it('adding a roll to the score card changes the roll number', function() {
+    bowlingGame.addRoll(9);
+    expect(bowlingGame.getRollNumber()).toEqual(2);
+  });
+
+  it('adding a second roll to the score card changes the current and previous frame numbers', function() {
+    bowlingGame.addRoll(2);
+    expect(bowlingGame.getCurrentFrame()).toEqual(2);
+    expect(bowlingGame.getPreviousFrame()).toEqual(1);
   });
 });

@@ -22,4 +22,13 @@ describe('BowlingGame', function() {
     bowlingGame.nextFrame();
     expect(bowlingGame.getPreviousFrame()).toEqual(1);
   });
+
+  it('starts on the first roll of the frame', function() {
+    expect(bowlingGame.getRollNumber()).toEqual(1);
+  });
+
+  it('can change the roll number', function() {
+    bowlingGame.changeRollNumber();
+    expect(bowlingGame.getRollNumber()).toEqual(2);
+  })
 });

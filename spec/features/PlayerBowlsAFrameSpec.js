@@ -21,22 +21,48 @@ describe('Player bowls a frame', function(){
       frame1.secondBallScore(2)
       // Verify
       expect(game.totalScore).toEqual(9)
+    });
+    it('current frame updates', function(){
+      // Setup
+      var game = new Game();
+      var frame1 = new Frame(game);
+      // Exercise
+      frame1.firstBallScore(7)
+      frame1.secondBallScore(2)
+      // Verify
       expect(game.currentFrame).toEqual(2)
     });
   });
-//
-//   describe('When a strike', function(){
-//     describe('', function(){
-//       it('total score ', function(){
-//
-//       });
-//     });
-//   });
-//
-//   describe('When a spare', function(){
-//     it('', function(){
-//
-//     });
-//   });
-//
+
+  describe('When a strike', function(){
+    it('adds a bonus to the first frame score', function(){
+      // Setup
+      var game = new Game();
+      var frame1 = new Frame(game);
+      var frame2 = new Frame(game);
+
+      frame1.firstBallScore(10)
+      expect(game.totalScore).toEqual(0);
+
+      frame2.firstBallScore(6)
+      frame1.secondBallScore(1)
+      expect(game.totalScore).toEqual(17)
+    });
+    // it('It updates the current frame for the game', function(){
+    //   // Setup
+    //   var game = new Game();
+    //   var frame1 = new Frame(game);
+    //   // Exercise
+    //   frame1.firstBallScore(10)
+    //   // Verify
+    //   expect(game.currentFrame).toEqual(2)
+    // });
+  });
+
+  // describe('When a spare', function(){
+  //   it('', function(){
+  //
+  //   });
+  // });
+
 });

@@ -20,4 +20,11 @@ describe('Game', function(){
     expect(game.totalScore).toEqual(11);
   });
 
+  it('updates the current frame every game', function(){
+    var game = new Game();
+    game.updateTotalScore(6);
+    game.updateTotalScore(6);
+    expect(game.currentFrame).toEqual(3);
+  });
+
 });

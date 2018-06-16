@@ -13,6 +13,10 @@ Frame.prototype.getCurrentFrameScore = function() {
   return this.totalScore;
 };
 
+Frame.prototype.isMaximumScore = function() {
+  return this.MAX_SCORE === this.totalScore;
+};
+
 Frame.prototype.addRollOne = function(number) {
   this.rollOne += number;
   this.totalScore += this.rollOne;
@@ -21,4 +25,9 @@ Frame.prototype.addRollOne = function(number) {
 Frame.prototype.addRollTwo = function(number) {
   this.rollTwo += number;
   this.totalScore += this.rollTwo;
+};
+
+Frame.prototype.addBonusOne = function(number) {
+  this.bonusOne += number;
+  this.totalScore += this.bonusOne;
 };

@@ -31,6 +31,15 @@ describe('Frame', function() {
     expect(frame.getCurrentFrameScore()).toEqual(10);
   });
 
+  it('stores a score for the spare bonus', function() {
+    frame.addRollOne(9);
+    frame.addRollTwo(1);
+    frame.addBonusOne(10);
+    expect(frame.getCurrentFrameScore()).toEqual(20);
+  });
+
+
+
 
 
 

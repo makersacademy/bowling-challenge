@@ -54,8 +54,22 @@ describe('BowlingGame', function() {
   });
 
   it('adding a second roll to the score card changes the current and previous frame numbers', function() {
+    bowlingGame.scoreCard = {1: [3, undefined]};
+    bowlingGame.changeRollNumber();
     bowlingGame.addRoll(2);
     expect(bowlingGame.getCurrentFrame()).toEqual(2);
     expect(bowlingGame.getPreviousFrame()).toEqual(1);
+  });
+
+  it('rolling a strike automatically moves the game on to the next frame', function() {
+    bowlingGame.addRoll(10);
+    expect(bowlingGame.getCurrentFrame()).toEqual(2);
+    expect(bowlingGame.getScoreCard()).toEqual({1: [10, undefined]});
+  });
+
+  it('checks whether the previous frame was a spare', function() {
+    bowlingGame.addRoll(5);
+    bowlingGame.addRoll(5);
+    expect(bowlingGame.previousFrameIsSpare()).toBe(true);
   });
 });

@@ -2,9 +2,10 @@
 
 function Scoreboard(){
   this.frameScore = 0;
+  this.gameScore = [];
 }
 
-Scoreboard.prototype.getCurrentFrameScore = function() {
+Scoreboard.prototype.totalFrameScore = function() {
   return this.frameScore;
 };
 

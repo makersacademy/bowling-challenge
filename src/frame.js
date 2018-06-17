@@ -19,23 +19,34 @@ Frame.prototype.isMaximumScore = function() {
 };
 
 Frame.prototype.addRollOne = function(number) {
-  this.rollOne += number;
-  this.totalScore += this.rollOne;
+  console.log(number);
+  this.rollOne = number;
+  console.log(this.rollOne);
+  (this.totalScore) += (this.rollOne);
+  console.log(this.totalScore);
 };
 
 Frame.prototype.addRollTwo = function(number) {
-  this.rollTwo += number;
-  this.totalScore += this.rollTwo;
+  this.rollTwo = number;
+  (this.totalScore) += (this.rollTwo);
 };
 
 Frame.prototype.addBonusOne = function(number) {
-  this.bonusOne += number;
-  this.totalScore += this.bonusOne;
+  if (this.rollOne === 10 || (this.rollOne + this.rollTwo) === 10) {
+    this.bonusOne = number;
+    this.totalScore += this.bonusOne;
+  } else {
+    this.totalScore += this.DEFAULT_SCORE;
+  }
 };
 
 Frame.prototype.addBonusTwo = function(number) {
-  this.bonusTwo += number;
-  this.totalScore += this.bonusTwo;
+  if (this.rollOne === 10) {
+    this.bonusTwo = number;
+    this.totalScore += this.bonusTwo;
+  } else {
+    this.totalScore += this.DEFAULT_SCORE;
+  }
 };
 
 Frame.prototype.clearScore = function() {

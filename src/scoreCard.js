@@ -6,20 +6,20 @@ function Scorecard (frameOne, frameTwo, frameThree, frameFour, frameFive, frameS
   this.MINIMUM_SCORE = 0;
   this.MAXIMUM_SCORE = 300;
   this.frameOne = typeof frameOne !== 'undefined' ? frameOne : new Frame();
-  this.frameTwo = typeof frameOne !== 'undefined' ? frameOne : new Frame();
-  this.frameThree = typeof frameOne !== 'undefined' ? frameOne : new Frame();
-  this.frameFour = typeof frameOne !== 'undefined' ? frameOne : new Frame();
-  this.frameFive = typeof frameOne !== 'undefined' ? frameOne : new Frame();
-  this.frameSix = typeof frameOne !== 'undefined' ? frameOne : new Frame();
-  this.frameSeven = typeof frameOne !== 'undefined' ? frameOne : new Frame();
-  this.frameEight = typeof frameOne !== 'undefined' ? frameOne : new Frame();
-  this.frameNine = typeof frameOne !== 'undefined' ? frameOne : new Frame();
-  this.frameTen = typeof frameOne !== 'undefined' ? frameOne : new Frame();
+  this.frameTwo = typeof frameTwo !== 'undefined' ? frameTwo : new Frame();
+  this.frameThree = typeof frameThree !== 'undefined' ? frameThree : new Frame();
+  this.frameFour = typeof frameFour !== 'undefined' ? frameFour : new Frame();
+  this.frameFive = typeof frameFive !== 'undefined' ? frameFive : new Frame();
+  this.frameSix = typeof frameSix !== 'undefined' ? frameSix : new Frame();
+  this.frameSeven = typeof frameSeven !== 'undefined' ? frameSeven : new Frame();
+  this.frameEight = typeof frameEight !== 'undefined' ? frameEight : new Frame();
+  this.frameNine = typeof frameNine !== 'undefined' ? frameNine : new Frame();
+  this.frameTen = typeof frameTen !== 'undefined' ? frameTen : new Frame();
 };
 
 Scorecard.prototype.calculateScore = function() {
   var sum = (this.frameOne.getCurrentFrameScore() + this.frameTwo.getCurrentFrameScore() + this.frameThree.getCurrentFrameScore() + this.frameFour.getCurrentFrameScore() + this.frameFive.getCurrentFrameScore() + this.frameSix.getCurrentFrameScore() + this.frameSeven.getCurrentFrameScore() + this.frameEight.getCurrentFrameScore() + this.frameNine.getCurrentFrameScore() + this.frameTen.getCurrentFrameScore())
-  this.totalScore += sum;
+  this.totalScore = sum;
   return this.totalScore;
 };
 

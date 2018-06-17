@@ -131,4 +131,13 @@ describe('BowlingGame', function() {
     }
     expect(bowlingGame.calculateFinalScore()).toEqual(125);
   });
+
+  it('prevents the user from knocking down more than 10 pins per roll', function() {
+    expect(function(){ bowlingGame.addRoll(11); }).toThrowError('That is not a valid roll.');
+  });
+
+  it('prevents the user from knocking down more than 10 pins per frame', function() {
+    bowlingGame.addRoll(9);
+    expect(function(){ bowlingGame.addRoll(2); }).toThrowError('That is not a valid roll.');
+  });
 });

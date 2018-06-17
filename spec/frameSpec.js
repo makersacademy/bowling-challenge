@@ -20,6 +20,17 @@ describe('Frame', function() {
     expect(frame.MAX_SCORE).toEqual(30);
   });
 
+  it('can determine a strike', function() {
+    frame.addRollOne(10);
+    expect(frame.isStrike()).toEqual(true);
+  });
+
+  it('can determine a spare', function() {
+    frame.addRollOne(2);
+    frame.addRollTwo(8);
+    expect(frame.isSpare()).toEqual(true);
+  });
+
   it('stores a score for the first roll', function() {
     frame.addRollOne(9);
     expect(frame.getCurrentFrameScore()).toEqual(9);

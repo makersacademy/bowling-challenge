@@ -1,6 +1,8 @@
 'use strict';
 
 function Frame() {
+  this.STRIKE = 10
+  this.SPARE = 10
   this.DEFAULT_SCORE = 0;
   this.totalScore = this.DEFAULT_SCORE;
   this.MAX_SCORE = 30;
@@ -19,7 +21,7 @@ Frame.prototype.isMaximumScore = function() {
 };
 
 Frame.prototype.addRollOne = function(number) {
-  this.rollOne = parseInt(number, 10);
+  this.rollOne = number;
   (this.totalScore) += (this.rollOne);
 };
 
@@ -27,6 +29,14 @@ Frame.prototype.addRollTwo = function(number) {
   this.rollTwo = number;
   (this.totalScore) += (this.rollTwo);
 };
+
+Frame.prototype.isStrike = function() {
+  return this.rollOne === this.STRIKE
+}
+
+Frame.prototype.isSpare = function() {
+  return (this.rollOne + this.rollTwo) === this.SPARE
+}
 
 Frame.prototype.addBonusOne = function(number) {
   if (this.rollOne === 10 || (this.rollOne + this.rollTwo) === 10) {

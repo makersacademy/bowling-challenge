@@ -2,9 +2,11 @@ function Tenpin() {
   this.scoreCard = [];
   this.strikeCount = 0;
   this.spareCount = 0;
+  this.frameCount = 0;
 };
 
 Tenpin.prototype.frame = function(roll1, roll2) {
+  this.frameCount += 1;
   if (roll1 + roll2 < 10) {
     this.normalScore(roll1, roll2);
   } else if (roll1 === 10) {

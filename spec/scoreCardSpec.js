@@ -32,6 +32,21 @@ describe('Scorecard', function() {
     expect(scorecard.totalScore).toEqual(0);
   });
 
+  it('can reset the score to zero', function() {
+    frameOne.getCurrentFrameScore.and.returnValue(30);
+    frameTwo.getCurrentFrameScore.and.returnValue(30);
+    frameThree.getCurrentFrameScore.and.returnValue(30);
+    frameFour.getCurrentFrameScore.and.returnValue(30);
+    frameFive.getCurrentFrameScore.and.returnValue(30);
+    frameSix.getCurrentFrameScore.and.returnValue(30);
+    frameSeven.getCurrentFrameScore.and.returnValue(30);
+    frameEight.getCurrentFrameScore.and.returnValue(30);
+    frameNine.getCurrentFrameScore.and.returnValue(30);
+    frameTen.getCurrentFrameScore.and.returnValue(30);
+    scorecard.reset();
+    expect(scorecard.totalScore).toEqual(0)
+  });
+
   describe('with a top score', function() {
 
     beforeEach(function() {
@@ -56,7 +71,6 @@ describe('Scorecard', function() {
       scorecard.calculateScore();
       expect(scorecard.isPerfectScore()).toEqual(true);
     });
-
   });
 
   describe('with a minimum score', function() {
@@ -84,5 +98,4 @@ describe('Scorecard', function() {
       expect(scorecard.isGutterScore()).toEqual(true);
     });
   });
-
 });

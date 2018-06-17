@@ -30,3 +30,7 @@ Scorecard.prototype.isPerfectScore = function() {
 Scorecard.prototype.isGutterScore = function() {
   return this.totalScore === this.MINIMUM_SCORE;
 };
+
+Scorecard.prototype.reset = function() {
+  this.totalScore = this.DEFAULT_SCORE;
+};

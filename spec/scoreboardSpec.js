@@ -39,7 +39,7 @@ describe ('Scoreboard', function(){
     expect(scoreboard.accessLastFrameTotal()).toEqual(7);
   });
 
-  it('determines if last frame was a spare', function (){
+  it('determines if the last frame was a spare', function (){
     scoreboard.recordFirstRoll(8);
     scoreboard.recordSecondRoll(2);
     scoreboard.recordFrameResults();
@@ -61,4 +61,41 @@ describe ('Scoreboard', function(){
     scoreboard.addSparePoints();
     expect(scoreboard.accessResultsArray()).toEqual([[8,2,3],[3,4]]);
   });
+
+  it('does not add points when there is not a spare', function(){
+    scoreboard.recordFirstRoll(8);
+    scoreboard.recordSecondRoll(1);
+    scoreboard.recordFrameResults();
+    scoreboard.recordFirstRoll(3);
+    scoreboard.recordSecondRoll(4);
+    scoreboard.recordFrameResults();
+    scoreboard.sumPreviousFrame();
+    scoreboard.addSparePoints();
+    expect(scoreboard.accessResultsArray()).toEqual([[8,1],[3,4]]);
+  });
+
+  it('determines if the last frame was a stirke', function(){
+    scoreboard.recordFirstRoll(10);
+    scoreboard.recordSecondRoll(0);
+    scoreboard.recordFrameResults();
+    scoreboard.recordFirstRoll(3);
+    scoreboard.recordSecondRoll(4);
+    scoreboard.recordFrameResults();
+    scoreboard.sumPreviousFrame();
+    expect(scoreboard.isStrike()).toEqual(true);
+  });
+
+  it('adds additional points for a strike', function(){
+    scoreboard.recordFirstRoll(10);
+    scoreboard.recordSecondRoll(0);
+    scoreboard.recordFrameResults();
+    scoreboard.recordFirstRoll(3);
+    scoreboard.recordSecondRoll(4);
+    scoreboard.recordFrameResults();
+    scoreboard.sumPreviousFrame();
+    scoreboard.addStrikePoints();
+    expect(scoreboard.accessResultsArray()).toEqual([[10,0,3,4],[3,4]]);
+  });
+
+
 });

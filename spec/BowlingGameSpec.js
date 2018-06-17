@@ -24,12 +24,12 @@ describe('BowlingGame', function() {
   });
 
   it('starts on the first roll of the frame', function() {
-    expect(bowlingGame.getRollNumber()).toEqual(1);
+    expect(bowlingGame.isFirstRoll()).toBe(true);
   });
 
   it('can change the roll number', function() {
     bowlingGame.changeRollNumber();
-    expect(bowlingGame.getRollNumber()).toEqual(2);
+    expect(bowlingGame.isFirstRoll()).toBe(false);
   });
 
   it('score card starts as an object on frame 0 with 0 points', function() {
@@ -55,7 +55,7 @@ describe('BowlingGame', function() {
 
   it('adding a roll to the score card changes the roll number', function() {
     bowlingGame.addRoll(9);
-    expect(bowlingGame.getRollNumber()).toEqual(2);
+    expect(bowlingGame.isFirstRoll()).toBe(false);
   });
 
   it('adding a second roll to the score card changes the current and previous frame numbers', function() {
@@ -109,5 +109,9 @@ describe('BowlingGame', function() {
         2: [1, 2, 0]
       });
     });
+  });
+
+  it('checks whether the current frame is a strike', function() {
+    expect(bowlingGame.isStrike(10)).toBe(true);
   });
 });

@@ -1,9 +1,5 @@
 'use strict';
 
-// As a player
-// So that I can play my first frame
-// I'd like to bowl 2 balls and know my score
-
 describe('Feature tests',function(){
   var bowling
   var scoreCard
@@ -36,7 +32,7 @@ describe('Feature tests',function(){
     expect(scoreCard.viewFrameScore()).toEqual([3,3])
   });
 
-  describe('strike',function(){
+  describe('Bonus points',function(){
     it('When a stike is scored, I get bonus points for the next 2 goes', function(){
       spyOn(Math,'floor').and.returnValues(10,0,1,1);
       bowling.bowlOne(scoreCard);
@@ -44,6 +40,15 @@ describe('Feature tests',function(){
       bowling.bowlOne(scoreCard);
       bowling.bowlTwo(scoreCard);
       expect(scoreCard.viewScore()).toEqual(14)
+    });
+
+    it('When a spare is scored, I get bonus points on the next go', function(){
+      spyOn(Math,'floor').and.returnValues(5,5,3,2);
+      bowling.bowlOne(scoreCard);
+      bowling.bowlTwo(scoreCard);
+      bowling.bowlOne(scoreCard);
+      bowling.bowlTwo(scoreCard);
+      expect(scoreCard.viewScore()).toEqual(18)
     });
 
   });

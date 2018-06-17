@@ -47,9 +47,16 @@ ScoreCard.prototype._throwErrorIfRequired = function (pinsKnockedDown) {
 };
 
 ScoreCard.prototype._addStrikeBonus = function (pinsKnockedDown) {
+  var isSpare;
+  isSpare = this._lastFrameScore[0] + this._lastFrameScore[1] === 10
   if(this._lastFrameScore[0] === 10){
     this._bonusScore += pinsKnockedDown;
+  } else if(isSpare){
+    if(this._frameScore.length === 1){
+      this._bonusScore += pinsKnockedDown;
+    };
   };
+
   if(this._frameScore.length === 2){
     this._score += this._bonusScore;
   };

@@ -13,28 +13,32 @@ describe('Feature tests',function(){
     scoreCard = new ScoreCard();
   });
 
-  it('bowling the ball generates the first score', function(){
+  it('Bowling the ball generates the first score', function(){
     spyOn(Math,'floor').and.returnValue(8);
-    bowling.bowl(scoreCard)
+    bowling.bowlOne(scoreCard)
     expect(scoreCard.viewScore()).toEqual(8)
   });
 
   it('a frame has two rolls with a cumulative score', function(){
-    spyOn(Math,'floor').and.returnValue(7);
-    bowling.bowl(scoreCard)
-    bowling.bowl(scoreCard)
-    expect(scoreCard.viewScore()).toEqual(14)
+    spyOn(Math,'floor').and.returnValue(4);
+    bowling.bowlOne(scoreCard)
+    bowling.bowlTwo(scoreCard)
+    expect(scoreCard.viewScore()).toEqual(8)
   });
 
   it('frame scores and overall scores are both tracked', function(){
-    spyOn(Math,'floor').and.returnValue(7);
-    var i;
-    for( i = 0; i < 4; i++){
-      bowling.bowl(scoreCard);
-    };
-    expect(scoreCard.viewScore()).toEqual(28)
-    expect(scoreCard.viewFrameScore()).toEqual(14)
-
+    spyOn(Math,'floor').and.returnValue(3);
+    bowling.bowlOne(scoreCard);
+    bowling.bowlTwo(scoreCard);
+    bowling.bowlOne(scoreCard);
+    bowling.bowlTwo(scoreCard);
+    expect(scoreCard.viewScore()).toEqual(12)
+    expect(scoreCard.viewFrameScore()).toEqual(6)
   });
+
+  // describe('strike',function(){
+  //   it('10', function(){});
+  //
+  // });
 
 });

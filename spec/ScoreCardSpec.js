@@ -12,25 +12,41 @@ describe('ScoreCard',function(){
   });
 
   it('Updates the score on the scorecard', function(){
-    scoreCard.update(8);
+    scoreCard.updateBowlOne(8);
     expect(scoreCard.viewScore()).toEqual(8);
   });
 
   describe('Frames:', function(){
 
     it('Updates the frame score on the scorecard', function(){
-      scoreCard.update(8);
-      scoreCard.update(8);
-      expect(scoreCard.viewFrameScore()).toEqual(16);
+      scoreCard.updateBowlOne(7);
+      scoreCard.updateBowlTwo(2);
+      expect(scoreCard.viewFrameScore()).toEqual(9);
     });
 
     it('Resets frame score to 0 after frame', function(){
-      scoreCard.update(8);
-      scoreCard.update(8);
-      scoreCard.update(3);
-      expect(scoreCard.viewScore()).toEqual(19);
+      scoreCard.updateBowlOne(8);
+      scoreCard.updateBowlTwo(2);
+      scoreCard.updateBowlOne(3);
+      expect(scoreCard.viewScore()).toEqual(13);
       expect(scoreCard.viewFrameScore()).toEqual(3);
     });
+
+    // it('Bowl 1 has a max of 10 points', function(){
+    //   expect(function(){
+    //     scoreCard.update(11);
+    //   }).toThrowError('Cannot score more than 10 points');
+    // });
+
+    // it('The max cumulative score is 10 points', function(){
+    //   scoreCard.update(8);
+    //   expect(scoreCard.viewFrameScore()).toEqual(3);
+    // });
+    //
+    // it('The min score is zero', function(){
+    //   scoreCard.update(8);
+    //   expect(scoreCard.viewFrameScore()).toEqual(3);
+    // });
 
   });
 

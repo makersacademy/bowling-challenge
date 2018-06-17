@@ -1,14 +1,15 @@
 'use strict';
 
-function Bowling(){
-  this._score = 0;
-  this._frameScore = 0;
-  this._bowlNum = 0;
+function Bowling(){};
+
+Bowling.prototype.bowlOne = function (scoreCard) {
+  var pinsKnockedDown = this._randomNum1to10();
+  scoreCard.updateBowlOne(pinsKnockedDown);
 };
 
-Bowling.prototype.bowl = function (scoreCard) {
+Bowling.prototype.bowlTwo = function (scoreCard) {
   var pinsKnockedDown = this._randomNum1to10();
-  scoreCard.update(pinsKnockedDown);
+  scoreCard.updateBowlTwo(pinsKnockedDown);
 };
 
 Bowling.prototype._randomNum1to10 = function () {

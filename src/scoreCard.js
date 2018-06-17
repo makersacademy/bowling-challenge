@@ -22,3 +22,7 @@ Scorecard.prototype.calculateScore = function() {
   this.totalScore += sum;
   return this.totalScore;
 };
+
+Scorecard.prototype.isPerfectScore = function() {
+  return this.totalScore === this.MAXIMUM_SCORE;
+};

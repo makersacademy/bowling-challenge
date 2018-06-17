@@ -44,12 +44,17 @@ describe('Scorecard', function() {
       frameSeven.getCurrentFrameScore.and.returnValue(30);
       frameEight.getCurrentFrameScore.and.returnValue(30);
       frameNine.getCurrentFrameScore.and.returnValue(30);
-      frameTen .getCurrentFrameScore.and.returnValue(30);
+      frameTen.getCurrentFrameScore.and.returnValue(30);
     });
 
     it('can calculate the total socre of ten frames', function() {
       scorecard.calculateScore();
       expect(scorecard.totalScore).toEqual(300);
+    });
+
+    it('can display a perfect score when 300', function() {
+      scorecard.calculateScore();
+      expect(scorecard.isPerfectScore()).toEqual(true);
     });
 
   });

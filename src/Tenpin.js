@@ -20,8 +20,9 @@ Tenpin.prototype.postStrikeScore = function(roll1, roll2) {
   if (this.strikeCount === 3) {
     this.scoreCard.push(30)
     this.strikeCount -= 1;
-  } else {
-    return;
+  } else if (this.spareCount === 1) {
+    this.scoreCard.push(20);
+    this.spareCount = 0;
   }
 }
 
@@ -29,8 +30,9 @@ Tenpin.prototype.postSpareScore = function(roll1, roll2) {
   if (this.spareCount === 2) {
     this.scoreCard.push(10 + roll1);
     this.spareCount -= 1;
-  } else {
-    return;
+  } else if (this.strikeCount === 1) {
+    this.scoreCard.push(20);
+    this.strikeCount = 0;
   }
 };
 

@@ -32,21 +32,24 @@ describe('ScoreCard',function(){
       expect(scoreCard.viewFrameScore()).toEqual(3);
     });
 
-    // it('Bowl 1 has a max of 10 points', function(){
-    //   expect(function(){
-    //     scoreCard.update(11);
-    //   }).toThrowError('Cannot score more than 10 points');
-    // });
+    it('Bowl 1 has a max of 10 points', function(){
+      expect(function(){
+        scoreCard.updateBowlOne(11);
+      }).toThrowError('Cannot knock down more than 10 pins');
+    });
 
-    // it('The max cumulative score is 10 points', function(){
-    //   scoreCard.update(8);
-    //   expect(scoreCard.viewFrameScore()).toEqual(3);
-    // });
-    //
-    // it('The min score is zero', function(){
-    //   scoreCard.update(8);
-    //   expect(scoreCard.viewFrameScore()).toEqual(3);
-    // });
+    it('The max cumulative score is 10 points',  function(){
+      scoreCard.updateBowlOne(9);
+      expect(function(){
+        scoreCard.updateBowlTwo(2);
+      }).toThrowError('Cannot knock down more than 10 pins');
+    });
+
+    it('The min score is zero', function(){
+      expect(function(){
+        scoreCard.updateBowlOne(-1);
+      }).toThrowError('Cannot knock down less than 0 pins');
+    });
 
   });
 

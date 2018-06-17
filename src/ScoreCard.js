@@ -7,10 +7,12 @@ function ScoreCard(){
 
 ScoreCard.prototype.updateBowlOne = function (pinsKnockedDown) {
   this._frameScore = 0;
+  this._throwErrorIfRequired(pinsKnockedDown)
   this._updateScores(pinsKnockedDown);
 };
 
 ScoreCard.prototype.updateBowlTwo = function (pinsKnockedDown) {
+  this._throwErrorIfRequired(pinsKnockedDown)
   this._updateScores(pinsKnockedDown);
 };
 
@@ -25,4 +27,13 @@ ScoreCard.prototype.viewFrameScore = function () {
 ScoreCard.prototype._updateScores = function (pinsKnockedDown) {
   this._score += pinsKnockedDown;
   this._frameScore += pinsKnockedDown;
+};
+
+ScoreCard.prototype._throwErrorIfRequired = function (pinsKnockedDown) {
+  if(pinsKnockedDown + this._frameScore > 10){
+    throw new Error('Cannot knock down more than 10 pins');
+  };
+  if(pinsKnockedDown < 0){
+    throw new Error('Cannot knock down less than 0 pins');
+  };
 };

@@ -53,10 +53,12 @@ ScoreCard.prototype._addBonus = function (pinsKnockedDown) {
   } else if(this._isStrike()){
     this._bonusScore += pinsKnockedDown;
   } else if(this._isSpare()){
-    if(this._bowlNumber() === 1){
-      this._bonusScore += pinsKnockedDown;
-    };
+    this._bonusScore += pinsKnockedDown;
   };
+  this._addBonusToScore();
+};
+
+ScoreCard.prototype._addBonusToScore = function () {
   if(this._bowlNumber() === 2){
     this._score += this._bonusScore;
   };
@@ -74,7 +76,9 @@ ScoreCard.prototype._isDoubleStrike = function () {
 };
 
 ScoreCard.prototype._isSpare = function () {
-  return this._lastFrameScore[0] + this._lastFrameScore[1] === 10;
+  var condition1 = this._lastFrameScore[0] + this._lastFrameScore[1] === 10;
+  var condition2 = this._bowlNumber() === 1;
+  return condition1 && condition2;
 };
 
 ScoreCard.prototype._resetBonusAndFrameScoreToZero = function () {

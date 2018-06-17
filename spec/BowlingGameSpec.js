@@ -114,4 +114,21 @@ describe('BowlingGame', function() {
   it('checks whether the current frame is a strike', function() {
     expect(bowlingGame.isStrike(10)).toBe(true);
   });
+
+  it('calculates the total score at the end of the game', function() {
+    bowlingGame.scoreCard = {
+      0: [0, 0, 0],
+      1: [1, 4, 0],
+      2: [4, 5, 0],
+      3: [6, 4, 5],
+      4: [5, 5, 10],
+      5: [10, 0, 1],
+      6: [0, 1, 0],
+      7: [7, 3, 6],
+      8: [6, 4, 10],
+      9: [10, 0, 9],
+      10: [2, 7, 0]
+    }
+    expect(bowlingGame.calculateFinalScore()).toEqual(125);
+  });
 });

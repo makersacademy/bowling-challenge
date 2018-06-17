@@ -20,16 +20,6 @@ Frame.prototype.isMaximumScore = function() {
   return this.MAX_SCORE === this.totalScore;
 };
 
-Frame.prototype.addRollOne = function(number) {
-  this.rollOne = number;
-  (this.totalScore) += (this.rollOne);
-};
-
-Frame.prototype.addRollTwo = function(number) {
-  this.rollTwo = number;
-  (this.totalScore) += (this.rollTwo);
-};
-
 Frame.prototype.isStrike = function() {
   return this.rollOne === this.STRIKE
 }
@@ -37,6 +27,18 @@ Frame.prototype.isStrike = function() {
 Frame.prototype.isSpare = function() {
   return (this.rollOne + this.rollTwo) === this.SPARE
 }
+
+Frame.prototype.addRollOne = function(number) {
+  this.rollOne = number;
+  (this.totalScore) += (this.rollOne);
+};
+
+Frame.prototype.addRollTwo = function(number) {
+  if (this.isStrike() === false) {
+    this.rollTwo = number;
+    (this.totalScore) += (this.rollTwo);
+  }
+};
 
 Frame.prototype.addBonusOne = function(number) {
   if (this.isStrike() || this.isSpare()) {

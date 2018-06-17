@@ -101,7 +101,42 @@ $(document).ready( function() {
     frameTen.addRollTwo(frameTenRollTwo);
     frameTen.addBonusOne(frameTenBonusOne);
     frameTen.addBonusTwo(frameTenBonusTwo);
+    if (scorecard['frameOne']['rollOne'] === 10 && scorecard['frameOne']['bonusOne'] === 10) {
+      scorecard['frameOne']['bonusTwo'] = frameThreeRollOne;
+      scorecard['frameOne']['totalScore'] += frameThreeRollOne;
+    };
+    if (scorecard['frameTwo']['rollOne'] === 10 && scorecard['frameTwo']['bonusOne'] === 10) {
+      scorecard['frameTwo']['bonusTwo'] = frameFourRollOne;
+      scorecard['frameTwo']['totalScore'] += frameFourRollOne;
+    };
+    if (scorecard['frameThree']['rollOne'] === 10 && scorecard['frameThree']['bonusOne'] === 10) {
+      scorecard['frameThree']['bonusTwo'] = frameFiveRollOne;
+      scorecard['frameThree']['totalScore'] += frameFiveRollOne;
+    };
+    if (scorecard['frameFour']['rollOne'] === 10 && scorecard['frameFour']['bonusOne'] === 10) {
+      scorecard['frameFour']['bonusTwo'] = frameSixRollOne;
+      scorecard['frameFour']['totalScore'] += frameSixRollOne;
+    };
+    if (scorecard['frameFive']['rollOne'] === 10 && scorecard['frameFive']['bonusOne'] === 10) {
+      scorecard['frameFive']['bonusTwo'] = frameSevenRollOne;
+      scorecard['frameFive']['totalScore'] += frameSevenRollOne;
+    };
+    if (scorecard['frameSix']['rollOne'] === 10 && scorecard['frameSix']['bonusOne'] === 10) {
+      scorecard['frameSix']['bonusTwo'] = frameEightRollOne;
+      scorecard['frameSix']['totalScore'] += frameEightRollOne;
+    };
+    if (scorecard['frameSeven']['rollOne'] === 10 && scorecard['frameSeven']['bonusOne'] === 10) {
+      scorecard['frameSeven']['bonusTwo'] = frameNineRollOne;
+      scorecard['frameSeven']['totalScore'] += frameNineRollOne;
+    };
+    if (scorecard['frameEight']['rollOne'] === 10 && scorecard['frameEight']['bonusOne'] === 10) {
+      scorecard['frameEight']['bonusTwo'] = frameTenRollOne;
+      scorecard['frameEight']['totalScore'] += frameTenRollOne;
+    };
+    if (scorecard['frameNine']['rollOne'] === 10 && scorecard['frameNine']['bonusOne'] === 10) {
+      scorecard['frameNine']['bonusTwo'] = frameTenBonusOne;
+      scorecard['frameNine']['totalScore'] += frameTenBonusOne;
+    };
     $('#total-score').text(scorecard.calculateScore());
-    debugger;
   });
 });

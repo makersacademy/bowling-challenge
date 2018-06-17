@@ -1,49 +1,52 @@
-describe ("Game", function() {
+describe('Game', () => {
+  let game;
 
-  var game
-
-  beforeEach(function(){
+  beforeEach(() => {
     game = new Game();
   });
 
 
-  describe('bowl', function() {
-    it('adds score to the current frame', function() {
+  describe('bowl', () => {
+    it('adds score to the current frame', () => {
       game.bowl(1);
       expect(game.frame[0]).toEqual(1);
-    })
-
-    it('adds score to the frames', function() {
-      game.bowl(1);
-      game.bowl(1);
-      expect(game.frames[0]).toEqual([1,1]);
     });
 
-    it('reduce the nuber of pins by the score', function() {
+    it('adds score to the frames', () => {
+      game.bowl(1);
+      game.bowl(1);
+      expect(game.frames[0]).toEqual([1, 1]);
+    });
+
+    it('reduce the nuber of pins by the score', () => {
       game.bowl(4);
       expect(game.pins).toEqual(6);
-    })
+    });
 
-    it('throws an error if score is too high', function() {
-      expect( function(){ game.bowl(11); } ).toThrow("please enter a valid score");
+    it('throws an error if score is too high', () => {
+      expect(() => { game.bowl(11); }).toThrowError('please enter a valid score');
     });
   });
 
-  describe('score', function() {
-    it('adds the scores together', function() {
+  describe('score', () => {
+    it('adds the scores together', () => {
       game.bowl(1);
       game.bowl(1);
       expect(game.score(1)).toEqual(2);
     });
 
-    it('adds the next two bowls after a strike', function() {
+    it('scores 0 for frame which has not started', () => {
+      expect(game.score(2)).toEqual(0);
+    });
+
+    it('adds the next two bowls after a strike', () => {
       game.bowl(10);
       game.bowl(1);
       game.bowl(1);
       expect(game.score(1)).toEqual(12);
-    })
+    });
 
-    it('adds the next two bowls after a stike even if another is a stike', function() {
+    it('adds the next two bowls after a stike even if another is a stike', () => {
       game.bowl(10);
       game.bowl(10);
       game.bowl(1);
@@ -51,7 +54,7 @@ describe ("Game", function() {
       expect(game.score(1)).toEqual(21);
     });
 
-    it('adds the next bowl after a spare', function() {
+    it('adds the next bowl after a spare', () => {
       game.bowl(6);
       game.bowl(4);
       game.bowl(1);
@@ -59,171 +62,174 @@ describe ("Game", function() {
       expect(game.score(1)).toEqual(11);
     });
 
-    it('returns the current frame if frame is not complete', function() {
+    it('returns the current frame if frame is not complete', () => {
       game.bowl(2);
       expect(game.score(1)).toEqual(2);
     });
 
-    it('returns 10 after a strike and no further frames are played', function() {
+    it('returns 10 after a strike and no further frames are played', () => {
       game.bowl(10);
       expect(game.score(1)).toEqual(10);
     });
 
-      describe('ninthframe', function() {
+    describe('ninthframe', () => {
+      beforeEach(() => {
+        for (i = 0; i < 16; i += 1) {
+          game.bowl(1);
+        }
+      });
 
-        beforeEach(function(){
-          for (i = 0; i < 16; i++) {
-            game.bowl(1)
-          };
-        });
+      it('scores the 9th frame correctly if there is a strike', () => {
+        game.bowl(10);
+        game.bowl(4);
+        game.bowl(4);
+        expect(game.score(9)).toEqual(18);
+      });
 
-        it('scores the 9th frame correctly if there is a strike', function() {
-          game.bowl(10);
-          game.bowl(4);
-          game.bowl(4);
-          expect(game.score(9)).toEqual(18);
-        });
+      it('scores the 9th frame correctly if there is a strike on strike', () => {
+        game.bowl(10);
+        game.bowl(10);
+        game.bowl(4);
+        game.bowl(4);
+        expect(game.score(9)).toEqual(24);
+      });
 
-        it('scores the 9th frame correctly if there is a strike on strike', function() {
-          game.bowl(10);
-          game.bowl(10);
-          game.bowl(4);
-          game.bowl(4);
-          expect(game.score(9)).toEqual(24);
-        });
+      it('scores the 9th frame correctly if there is a turkey', () => {
+        game.bowl(10);
+        game.bowl(10);
+        game.bowl(10);
+        game.bowl(10);
+        expect(game.score(9)).toEqual(30);
+      });
 
-        it('scores the 9th frame correctly if there is a turkey', function() {
-          game.bowl(10);
-          game.bowl(10);
-          game.bowl(10);
-          game.bowl(10);
-          expect(game.score(9)).toEqual(30);
-        });
-
-        it('scores the 9th frame correctly if there is a spare', function() {
-          game.bowl(5);
-          game.bowl(5);
-          game.bowl(4);
-          game.bowl(4);
-          expect(game.score(9)).toEqual(14);
-        });
-
+      it('scores the 9th frame correctly if there is a spare', () => {
+        game.bowl(5);
+        game.bowl(5);
+        game.bowl(4);
+        game.bowl(4);
+        expect(game.score(9)).toEqual(14);
       });
     });
+  });
 
-  describe('finalframe', function() {
-
-    beforeEach(function(){
-      for (i = 0; i < 18; i++) {
-        game.bowl(1)
+  describe('finalframe', () => {
+    beforeEach(() => {
+      for (i = 0; i < 18; i += 1) {
+        game.bowl(1);
       }
     });
-    it('sets final frame after 9 frames', function() {
+    it('sets final frame after 9 frames', () => {
       expect(game.finalFrame).toEqual(true);
     });
 
 
-    it('does not ends the turn after a stike', function() {
+    it('does not ends the turn after a stike', () => {
       game.bowl(10);
       expect(game.finish).toEqual(false);
     });
 
-    it('does not end the turn after 2 strikes', function() {
+    it('does not end the turn after 2 strikes', () => {
       game.bowl(10);
       game.bowl(10);
       expect(game.finish).toEqual(false);
-    })
+    });
 
-    it('ends the turn after two bowls', function() {
+    it('ends the turn after two bowls', () => {
       game.bowl(4);
       game.bowl(4);
       expect(game.finish).toEqual(true);
     });
 
-    it('ends the turn after 3 turns', function() {
+    it('ends the turn after 3 turns', () => {
       game.bowl(10);
       game.bowl(4);
       game.bowl(4);
       expect(game.finish).toEqual(true);
     });
 
-    it('does not end the turn after a spare', function() {
+    it('does not end the turn after a spare', () => {
       game.bowl(5);
       game.bowl(5);
       expect(game.finish).toEqual(false);
     });
 
-    it('ends the turn after a spare and one more bowl', function() {
+    it('ends the turn after a spare and one more bowl', () => {
       game.bowl(5);
       game.bowl(5);
       game.bowl(5);
       expect(game.finish).toEqual(true);
     });
 
-    it('ends the turn after 3 strikes', function() {
+    it('ends the turn after 3 strikes', () => {
       game.bowl(10);
       game.bowl(10);
       game.bowl(10);
       expect(game.finish).toEqual(true);
-    })
+    });
 
-    it('does not end the turn after one bowl', function() {
+    it('does not end the turn after one bowl', () => {
       game.bowl(4);
       expect(game.finish).toEqual(false);
     });
 
-    it('throws an error if the turn is over', function() {
+    it('throws an error if the turn is over', () => {
       game.bowl(2);
       game.bowl(2);
-      expect( function(){ game.bowl(4); } ).toThrow("Game has finished, start a new game");
+      expect(() => { game.bowl(4); }).toThrowError('Game has finished, start a new game');
     });
 
-    it('adds to the score after one bowl', function() {
+    it('adds to the score after one bowl', () => {
       game.bowl(4);
       expect(game.score(10)).toEqual(4);
     });
 
-    it('adds to the score after two bowls', function() {
+    it('adds to the score after two bowls', () => {
       game.bowl(4);
       game.bowl(4);
       expect(game.score(10)).toEqual(8);
     });
 
-    it('scores correctly after a spare', function() {
+    it('scores correctly after a spare', () => {
       game.bowl(5);
       game.bowl(5);
       game.bowl(5);
       expect(game.score(10)).toEqual(15);
     });
 
-    it('scores correctly after a strike', function() {
+    it('scores correctly after a strike', () => {
       game.bowl(10);
       game.bowl(4);
       game.bowl(4);
       expect(game.score(10)).toEqual(18);
     });
 
-    it('scores correctly after two strikes', function() {
+    it('scores correctly after two strikes', () => {
       game.bowl(10);
       game.bowl(10);
       game.bowl(4);
       expect(game.score(10)).toEqual(24);
-    })
+    });
+
+    it('scores correctly after 2 bowls in incomplete final frame', () => {
+      game.bowl(10);
+      game.bowl(10);
+      expect(game.score(10)).toEqual(20);
+    });
   });
 
-  describe('total', function() {
-    it('scores a perfect game', function() {
-      for (i = 0; i < 12; i++) {
-        game.bowl(10)
+  describe('total', () => {
+    it('scores a perfect game', () => {
+      for (i = 0; i < 12; i += 1) {
+        game.bowl(10);
       }
       expect(game.total()).toEqual(300);
     });
 
-    it('scores a gutter game', function() {
-      for (i = 0; i < 20; i++) {
-        game.bowl(0)
+    it('scores a gutter game', () => {
+      for (i = 0; i < 20; i += 1) {
+        game.bowl(0);
       }
       expect(game.total()).toEqual(0);
-    })
+    });
   });
 });

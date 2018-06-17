@@ -11,13 +11,13 @@ ScoreCard.prototype.updateBowlOne = function (pinsKnockedDown) {
   this._resetBonusAndFrameScoreToZero();
   this._throwErrorIfRequired(pinsKnockedDown);
   this._updateScores(pinsKnockedDown);
-  this._addStrikeBonus(pinsKnockedDown);
+  this._addBonus(pinsKnockedDown);
 };
 
 ScoreCard.prototype.updateBowlTwo = function (pinsKnockedDown) {
   this._throwErrorIfRequired(pinsKnockedDown);
   this._updateScores(pinsKnockedDown);
-  this._addStrikeBonus(pinsKnockedDown);
+  this._addBonus(pinsKnockedDown);
 };
 
 ScoreCard.prototype.viewScore = function () {
@@ -46,24 +46,33 @@ ScoreCard.prototype._throwErrorIfRequired = function (pinsKnockedDown) {
   };
 };
 
-ScoreCard.prototype._addStrikeBonus = function (pinsKnockedDown) {
-  var isSpare;
-  isSpare = this._lastFrameScore[0] + this._lastFrameScore[1] === 10
-  if(this._lastFrameScore[0] === 10){
+ScoreCard.prototype._addBonus = function (pinsKnockedDown) {
+  if(this.isStrike()){
     this._bonusScore += pinsKnockedDown;
-  } else if(isSpare){
-    if(this._frameScore.length === 1){
+  } else if(this.isSpare()){
+    if(this._bowlNumber() === 1){
       this._bonusScore += pinsKnockedDown;
     };
   };
-
-  if(this._frameScore.length === 2){
+  if(this._bowlNumber() === 2){
     this._score += this._bonusScore;
   };
+};
+
+ScoreCard.prototype.isStrike = function () {
+  return this._lastFrameScore[0] === 10
+};
+
+ScoreCard.prototype.isSpare = function () {
+  return this._lastFrameScore[0] + this._lastFrameScore[1] === 10
 };
 
 ScoreCard.prototype._resetBonusAndFrameScoreToZero = function () {
   this._bonusScore = 0;
   this._lastFrameScore = this._frameScore
   this._frameScore = [];
+};
+
+ScoreCard.prototype._bowlNumber = function () {
+  return this._frameScore.length
 };

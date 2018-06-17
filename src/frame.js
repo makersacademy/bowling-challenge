@@ -39,7 +39,7 @@ Frame.prototype.isSpare = function() {
 }
 
 Frame.prototype.addBonusOne = function(number) {
-  if (this.rollOne === 10 || (this.rollOne + this.rollTwo) === 10) {
+  if (this.isStrike() || this.isSpare()) {
     this.bonusOne = number;
     this.totalScore += this.bonusOne;
   } else {
@@ -48,7 +48,7 @@ Frame.prototype.addBonusOne = function(number) {
 };
 
 Frame.prototype.addBonusTwo = function(number) {
-  if (this.rollOne === 10) {
+  if (this.isStrike()) {
     this.bonusTwo = number;
     this.totalScore += this.bonusTwo;
   } else {

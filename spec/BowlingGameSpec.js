@@ -111,6 +111,21 @@ describe('BowlingGame', function() {
     });
   });
 
+  describe('when the previous two frames were strikes and this one is not', function() {
+    it('adds the bonus to the previous but one frame', function() {
+      bowlingGame.addRoll(10);
+      bowlingGame.addRoll(10);
+      bowlingGame.addRoll(2);
+      bowlingGame.addRoll(4);
+      expect(bowlingGame.getScoreCard()).toEqual({
+        0: [0, 0, 0],
+        1: [10, 0, 12],
+        2: [10, 0, 6],
+        3: [2, 4, 0]
+      });
+    });
+  });
+
   it('checks whether the current frame is a strike', function() {
     expect(bowlingGame.isStrike(10)).toBe(true);
   });

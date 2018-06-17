@@ -19,11 +19,8 @@ Frame.prototype.isMaximumScore = function() {
 };
 
 Frame.prototype.addRollOne = function(number) {
-  console.log(number);
-  this.rollOne = number;
-  console.log(this.rollOne);
+  this.rollOne = parseInt(number, 10);
   (this.totalScore) += (this.rollOne);
-  console.log(this.totalScore);
 };
 
 Frame.prototype.addRollTwo = function(number) {

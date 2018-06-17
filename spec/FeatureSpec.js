@@ -36,9 +36,15 @@ describe('Feature tests',function(){
     expect(scoreCard.viewFrameScore()).toEqual(6)
   });
 
-  // describe('strike',function(){
-  //   it('10', function(){});
-  //
-  // });
+  describe('strike',function(){
+    it('When a stike is scored, I get bonus points for the next 2 goes', function(){
+      spyOn(Math,'floor').and.returnValues(10,1,1);
+      bowling.bowlOne(scoreCard);
+      bowling.bowlOne(scoreCard);
+      bowling.bowlTwo(scoreCard);
+      expect(scoreCard.viewScore()).toEqual(14)
+    });
+
+  });
 
 });

@@ -33,13 +33,14 @@ describe('Feature tests',function(){
     bowling.bowlOne(scoreCard);
     bowling.bowlTwo(scoreCard);
     expect(scoreCard.viewScore()).toEqual(12)
-    expect(scoreCard.viewFrameScore()).toEqual(6)
+    expect(scoreCard.viewFrameScore()).toEqual([3,3])
   });
 
   describe('strike',function(){
     it('When a stike is scored, I get bonus points for the next 2 goes', function(){
-      spyOn(Math,'floor').and.returnValues(10,1,1);
+      spyOn(Math,'floor').and.returnValues(10,0,1,1);
       bowling.bowlOne(scoreCard);
+      bowling.bowlTwo(scoreCard);
       bowling.bowlOne(scoreCard);
       bowling.bowlTwo(scoreCard);
       expect(scoreCard.viewScore()).toEqual(14)

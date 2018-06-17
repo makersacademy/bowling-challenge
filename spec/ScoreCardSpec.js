@@ -25,7 +25,7 @@ describe('ScoreCard',function(){
       it('Updates the frame score on the scorecard', function(){
         scoreCard.updateBowlOne(7);
         scoreCard.updateBowlTwo(2);
-        expect(scoreCard.viewFrameScore()).toEqual(9);
+        expect(scoreCard.viewFrameScore()).toEqual([7,2]);
       });
 
       it('Resets frame score to 0 after frame', function(){
@@ -33,11 +33,12 @@ describe('ScoreCard',function(){
         scoreCard.updateBowlTwo(2);
         scoreCard.updateBowlOne(3);
         expect(scoreCard.viewScore()).toEqual(13);
-        expect(scoreCard.viewFrameScore()).toEqual(3);
+        expect(scoreCard.viewFrameScore()).toEqual([3]);
       });
 
       it('Gives bonus 10 points for strike', function(){
         scoreCard.updateBowlOne(10);
+        scoreCard.updateBowlTwo(0);
         scoreCard.updateBowlOne(2);
         scoreCard.updateBowlTwo(3);
         expect(scoreCard.viewScore()).toEqual(20);

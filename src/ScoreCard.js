@@ -2,28 +2,22 @@
 
 function ScoreCard(){
   this._score = 0;
-  this._frameScore = 0;
-  this._gameScore = [];
+  this._frameScore = [];
+  this._lastFrameScore = [];
   this._bonusScore = 0;
 };
 
 ScoreCard.prototype.updateBowlOne = function (pinsKnockedDown) {
-  this._bonusScore = 0;
-  if(this._gameScore[this._gameScore.length - 1] === 10){
-    this._bonusScore += pinsKnockedDown;
-  };
-  this._frameScore = 0;
-  this._throwErrorIfRequired(pinsKnockedDown)
+  this._resetBonusAndFrameScoreToZero();
+  this._throwErrorIfRequired(pinsKnockedDown);
   this._updateScores(pinsKnockedDown);
+  this._addStrikeBonus(pinsKnockedDown);
 };
 
 ScoreCard.prototype.updateBowlTwo = function (pinsKnockedDown) {
-  if(this._gameScore[this._gameScore.length - 2] === 10){
-    this._bonusScore += pinsKnockedDown;
-  };
   this._throwErrorIfRequired(pinsKnockedDown);
   this._updateScores(pinsKnockedDown);
-  this._score += this._bonusScore
+  this._addStrikeBonus(pinsKnockedDown);
 };
 
 ScoreCard.prototype.viewScore = function () {
@@ -36,15 +30,33 @@ ScoreCard.prototype.viewFrameScore = function () {
 
 ScoreCard.prototype._updateScores = function (pinsKnockedDown) {
   this._score += pinsKnockedDown;
-  this._frameScore += pinsKnockedDown;
-  this._gameScore.push(pinsKnockedDown);
+  this._frameScore.push(pinsKnockedDown);
 };
 
 ScoreCard.prototype._throwErrorIfRequired = function (pinsKnockedDown) {
-  if(pinsKnockedDown + this._frameScore > 10){
+  var firstBowl = this._frameScore[0];
+  if(firstBowl === undefined){
+    firstBowl = 0;
+  };
+  if(pinsKnockedDown + firstBowl > 10){
     throw new Error('Cannot knock down more than 10 pins');
   };
   if(pinsKnockedDown < 0){
     throw new Error('Cannot knock down less than 0 pins');
   };
+};
+
+ScoreCard.prototype._addStrikeBonus = function (pinsKnockedDown) {
+  if(this._lastFrameScore[0] === 10){
+    this._bonusScore += pinsKnockedDown;
+  };
+  if(this._frameScore.length === 2){
+    this._score += this._bonusScore;
+  };
+};
+
+ScoreCard.prototype._resetBonusAndFrameScoreToZero = function () {
+  this._bonusScore = 0;
+  this._lastFrameScore = this._frameScore
+  this._frameScore = [];
 };

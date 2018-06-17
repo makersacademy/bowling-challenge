@@ -23,4 +23,12 @@ describe('Bowling', function(){
 		expect(function(){bowling.roll(4);}).toThrowError("Not possible!")
 	});
 
+	it('adds each individual score to a _cumalativescore array', function() {
+		bowling.roll(1);
+		bowling.roll(2);
+		bowling.roll(3);
+		bowling.roll(2);
+		expect(bowling._cumalativescore).toEqual([1, 2, 3, 2]);
+	});
+
 });

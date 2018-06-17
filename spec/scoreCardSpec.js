@@ -47,16 +47,42 @@ describe('Scorecard', function() {
       frameTen.getCurrentFrameScore.and.returnValue(30);
     });
 
-    it('can calculate the total socre of ten frames', function() {
+    it('can calculate the top total socre for ten frames', function() {
       scorecard.calculateScore();
       expect(scorecard.totalScore).toEqual(300);
     });
 
-    it('can display a perfect score when 300', function() {
+    it('can display a perfect score when 300 points earned', function() {
       scorecard.calculateScore();
       expect(scorecard.isPerfectScore()).toEqual(true);
     });
 
+  });
+
+  describe('with a minimum score', function() {
+
+    beforeEach(function() {
+      frameOne.getCurrentFrameScore.and.returnValue(0);
+      frameTwo.getCurrentFrameScore.and.returnValue(0);
+      frameThree.getCurrentFrameScore.and.returnValue(0);
+      frameFour.getCurrentFrameScore.and.returnValue(0);
+      frameFive.getCurrentFrameScore.and.returnValue(0);
+      frameSix.getCurrentFrameScore.and.returnValue(0);
+      frameSeven.getCurrentFrameScore.and.returnValue(0);
+      frameEight.getCurrentFrameScore.and.returnValue(0);
+      frameNine.getCurrentFrameScore.and.returnValue(0);
+      frameTen.getCurrentFrameScore.and.returnValue(0);
+    });
+
+    it('can calculate a minimum score for ten frames', function() {
+      scorecard.calculateScore();
+      expect(scorecard.totalScore).toEqual(0);
+    });
+
+    it('can display a gutter score when 0 points earned', function() {
+      scorecard.calculateScore();
+      expect(scorecard.isGutterScore()).toEqual(true);
+    });
   });
 
 });

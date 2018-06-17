@@ -26,3 +26,7 @@ Scorecard.prototype.calculateScore = function() {
 Scorecard.prototype.isPerfectScore = function() {
   return this.totalScore === this.MAXIMUM_SCORE;
 };
+
+Scorecard.prototype.isGutterScore = function() {
+  return this.totalScore === this.MINIMUM_SCORE;
+};

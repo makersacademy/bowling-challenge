@@ -19,20 +19,23 @@ Bowling.prototype.currentTotalScore = function () {
 
 Bowling.prototype.roll = function (number) {
 	if(this._cumalativescore.length%2 == 0 && this._cumalativescore.length > 0) {
-		this.newFrame()
+		this.newFrame();
 	}
 	if(number > this._pins) {
 		throw new Error ("Not possible!");
-	}
+	};
 	this._score += number;
 	this._pins -= number;
-	this._cumalativescore.push(number)
+	this._cumalativescore.push(number);
 };
 
 Bowling.prototype.newFrame = function () {
-	this._frame += 1
-	this._pins = 10
-	this._score = 0
+	if(this.currentFrame() >= 10) {
+		throw new Error ("Game finished: Your final score is ");
+	}
+	this._frame += 1;
+	this._pins = 10;
+	this._score = 0;
 };
 
 Bowling.prototype.framescore = function () {

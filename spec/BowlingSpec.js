@@ -31,7 +31,7 @@ describe('Bowling', function(){
 		expect(bowling._cumalativescore).toEqual([1, 2, 3, 2]);
 	});
 
-	it('can know there are two rounds in a frame and 10 frames in a game', function() {
+	it('can know there are two rounds in a frame', function() {
 		bowling.roll(1);
 		bowling.roll(8);
 		bowling.roll(1);
@@ -41,4 +41,11 @@ describe('Bowling', function(){
 		expect(bowling.currentFrame()).toEqual(3);
 	});
 
+	it('ends the game when 10 frames have been played', function() {
+		var times = 20;
+		for(var i=0; i < times; i++){
+    	bowling.roll(1);
+		}
+		expect(function(){bowling.roll(1);}).toThrowError("Game finished: Your final score is ");
+	});
 });

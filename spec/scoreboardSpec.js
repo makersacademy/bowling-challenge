@@ -8,33 +8,57 @@ describe ('Scoreboard', function(){
     scoreboard = new Scoreboard;
   });
 
-  it('start the frame at 0 points', function(){
-    expect(scoreboard.totalFrameScore()).toEqual(0);
+  it('records the first roll', function(){
+    scoreboard.recordFirstRoll(7);
+    expect(scoreboard.accessFirstRoll()).toEqual(7);
   });
 
-  it('adds the first roll to the current frame score', function(){
-    scoreboard.addFirstRoll(8);
-    expect(scoreboard.totalFrameScore()).toEqual(8);
+  it('records the second roll', function(){
+    scoreboard.recordSecondRoll(8);
+    expect(scoreboard.accessSecondRoll()).toEqual(8);
   });
 
-  it('adds the second roll to the current frame score', function(){
-    scoreboard.addSecondRoll(1);
-    expect(scoreboard.totalFrameScore()).toEqual(1);
+  it('keeps track of each individual frame on the scorecard', function(){
+    scoreboard.recordFirstRoll(2);
+    scoreboard.recordSecondRoll(3);
+    scoreboard.recordFrameResults();
+    scoreboard.recordFirstRoll(4);
+    scoreboard.recordSecondRoll(5);
+    scoreboard.recordFrameResults();
+    expect(scoreboard.accessResultsArray()).toEqual([[2,3],[4,5]]);
   });
 
-  it('totals the first and second roll in the current frame score', function(){
-    scoreboard.addFirstRoll(3);
-    scoreboard.addSecondRoll(4);
-    expect(scoreboard.totalFrameScore()).toEqual(7);
+  it('totals the previous frame', function (){
+    scoreboard.recordFirstRoll(4);
+    scoreboard.recordSecondRoll(3);
+    scoreboard.recordFrameResults();
+    scoreboard.recordFirstRoll(2);
+    scoreboard.recordSecondRoll(3);
+    scoreboard.recordFrameResults();
+    scoreboard.sumPreviousFrame();
+    expect(scoreboard.accessLastFrameTotal()).toEqual(7);
   });
 
-  it('adds end of frame total to the game total', function(){
-    scoreboard.addFirstRoll(5);
-    scoreboard.addSecondRoll(4);
-    scoreboard.recordFrameScore(scoreboard.totalFrameScore);
-    expect(scoreboard.totalGameScore()).toEqual(9);
+  it('determines if last frame was a spare', function (){
+    scoreboard.recordFirstRoll(8);
+    scoreboard.recordSecondRoll(2);
+    scoreboard.recordFrameResults();
+    scoreboard.recordFirstRoll(3);
+    scoreboard.recordSecondRoll(4);
+    scoreboard.recordFrameResults();
+    scoreboard.sumPreviousFrame();
+    expect(scoreboard.isSpare()).toEqual(true);
   });
 
-
-
+  it('adds additional points for a spare', function (){
+    scoreboard.recordFirstRoll(8);
+    scoreboard.recordSecondRoll(2);
+    scoreboard.recordFrameResults();
+    scoreboard.recordFirstRoll(3);
+    scoreboard.recordSecondRoll(4);
+    scoreboard.recordFrameResults();
+    scoreboard.sumPreviousFrame();
+    scoreboard.addSparePoints();
+    expect(scoreboard.accessResultsArray()).toEqual([[8,2,3],[3,4]]);
+  });
 });

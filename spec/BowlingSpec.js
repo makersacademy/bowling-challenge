@@ -48,4 +48,12 @@ describe('Bowling', function(){
 		}
 		expect(function(){bowling.roll(1);}).toThrowError("Game finished: Your final score is ");
 	});
+
+	it('awards a spare bonus if the player knocks down all 10 pins in one frame', function() {
+		bowling.roll(6);
+		bowling.roll(4);
+		bowling.roll(4);
+		bowling.roll(4);
+		expect(bowling._cumalativescore).toEqual([6, 8, 4, 4]);
+	});
 });

@@ -20,12 +20,16 @@ Bowling.prototype.currentTotalScore = function () {
 Bowling.prototype.roll = function (number) {
 	if(this._cumalativescore.length%2 == 0 && this._cumalativescore.length > 0) {
 		this.newFrame();
-	}
+	};
 	if(number > this._pins) {
 		throw new Error ("Not possible!");
 	};
-	this._score += number;
+	if (this.isSpare()) {
+		var lastrollnumber = this._cumalativescore.pop();
+		this._cumalativescore.push(number + lastrollnumber);
+	};
 	this._pins -= number;
+	this._score += number;
 	this._cumalativescore.push(number);
 };
 
@@ -43,5 +47,13 @@ Bowling.prototype.framescore = function () {
 };
 
 Bowling.prototype.currentFrame = function () {
-	return this._frame
+	return this._frame;
+};
+
+Bowling.prototype.isSpare = function () {
+	var firstlastscore = this._cumalativescore.pop();
+	var secondlastscore = this._cumalativescore.pop();
+	this._cumalativescore.push(secondlastscore);
+	this._cumalativescore.push(firstlastscore);
+	firstlastscore + secondlastscore = 10 && firstlastscore < 10 && secondlastscore < 10
 };

@@ -6,18 +6,6 @@ describe("Tenpin", function() {
     expect(tenpin.scoreCard).toEqual([7])
   })
 
-  it('if the two rolls add up to ten spare is switched to true', function() {
-    var tenpin = new Tenpin();
-    tenpin.frame(6,4);
-    expect(tenpin.spare).toEqual(true);
-  })
-
-  it('if the first roll is 10 strike is switched to true', function() {
-    var tenpin = new Tenpin();
-    tenpin.frame(10,0);
-    expect(tenpin.strike).toEqual(true);
-  })
-
   it('the first roll after a spare is added as a bonus to the last frame score', function() {
     var tenpin = new Tenpin();
     tenpin.frame(7,3);
@@ -32,7 +20,20 @@ describe("Tenpin", function() {
     expect(tenpin.scoreCard).toEqual([15]);
   })
 
+  it('after a strike the sum of the next two rolls is added to the score for the last frame as a bonus', function() {
+    var tenpin = new Tenpin();
+    tenpin.frame(10,0);
+    tenpin.frame(3,5);
+    expect(tenpin.scoreCard).toEqual([18, 8]);
+  })
 
+  it('after a strike if the next frame is a strike the score is not calculated until the score of the following frame can be used to calculate the bonus', function() {
+    var tenpin = new Tenpin();
+    tenpin.frame(10,0);
+    tenpin.frame(10,0);
+    tenpin.frame(3, 1);
+    expect(tenpin.scoreCard).toEqual([23, 14, 4]);
+  })
 
 
 });

@@ -4,6 +4,7 @@ function ScoreCard(){
   this._score = 0;
   this._frameScore = [];
   this._lastFrameScore = [];
+  this._frameBeforeLastScore = [];
   this._bonusScore = 0;
 };
 
@@ -47,9 +48,11 @@ ScoreCard.prototype._throwErrorIfRequired = function (pinsKnockedDown) {
 };
 
 ScoreCard.prototype._addBonus = function (pinsKnockedDown) {
-  if(this.isStrike()){
+  if(this._isDoubleStrike()){
+    this._bonusScore += (2 * pinsKnockedDown);
+  } else if(this._isStrike()){
     this._bonusScore += pinsKnockedDown;
-  } else if(this.isSpare()){
+  } else if(this._isSpare()){
     if(this._bowlNumber() === 1){
       this._bonusScore += pinsKnockedDown;
     };
@@ -59,20 +62,28 @@ ScoreCard.prototype._addBonus = function (pinsKnockedDown) {
   };
 };
 
-ScoreCard.prototype.isStrike = function () {
-  return this._lastFrameScore[0] === 10
+ScoreCard.prototype._isStrike = function () {
+  return this._lastFrameScore[0] === 10;
 };
 
-ScoreCard.prototype.isSpare = function () {
-  return this._lastFrameScore[0] + this._lastFrameScore[1] === 10
+ScoreCard.prototype._isDoubleStrike = function () {
+  var condition1 = this._lastFrameScore[0] === 10;
+  var condition2 = this._frameBeforeLastScore[0] === 10;
+  var condition3 = this._bowlNumber() === 1;
+  return condition1 && condition2 && condition3;
+};
+
+ScoreCard.prototype._isSpare = function () {
+  return this._lastFrameScore[0] + this._lastFrameScore[1] === 10;
 };
 
 ScoreCard.prototype._resetBonusAndFrameScoreToZero = function () {
   this._bonusScore = 0;
-  this._lastFrameScore = this._frameScore
+  this._frameBeforeLastScore = this._lastFrameScore;
+  this._lastFrameScore = this._frameScore;
   this._frameScore = [];
 };
 
 ScoreCard.prototype._bowlNumber = function () {
-  return this._frameScore.length
+  return this._frameScore.length;
 };

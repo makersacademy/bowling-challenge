@@ -36,20 +36,34 @@ describe('ScoreCard',function(){
         expect(scoreCard.viewFrameScore()).toEqual([3]);
       });
 
-      it('Gives bonus points for strike', function(){
-        scoreCard.updateBowlOne(10);
-        scoreCard.updateBowlTwo(0);
-        scoreCard.updateBowlOne(2);
-        scoreCard.updateBowlTwo(3);
-        expect(scoreCard.viewScore()).toEqual(20);
-      });
+      describe('bonus points', function(){
 
-      it('Gives bonus points for spare', function(){
-        scoreCard.updateBowlOne(4);
-        scoreCard.updateBowlTwo(6);
-        scoreCard.updateBowlOne(7);
-        scoreCard.updateBowlTwo(2);
-        expect(scoreCard.viewScore()).toEqual(26);
+        it('Gives bonus points for strike', function(){
+          scoreCard.updateBowlOne(10);
+          scoreCard.updateBowlTwo(0);
+          scoreCard.updateBowlOne(2);
+          scoreCard.updateBowlTwo(3);
+          expect(scoreCard.viewScore()).toEqual(20);
+        });
+
+        it('Gives bonus points for spare', function(){
+          scoreCard.updateBowlOne(4);
+          scoreCard.updateBowlTwo(6);
+          scoreCard.updateBowlOne(7);
+          scoreCard.updateBowlTwo(2);
+          expect(scoreCard.viewScore()).toEqual(26);
+        });
+
+        it('Two consecutive strikes means bonus points roll to the third frame', function(){
+          scoreCard.updateBowlOne(10);
+          scoreCard.updateBowlTwo(0);
+          scoreCard.updateBowlOne(10);
+          scoreCard.updateBowlTwo(0);
+          scoreCard.updateBowlOne(5);
+          scoreCard.updateBowlTwo(3);
+          expect(scoreCard.viewScore()).toEqual(51);
+        });
+
       });
 
     });

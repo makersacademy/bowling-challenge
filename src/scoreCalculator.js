@@ -9,3 +9,9 @@ function ScoreCalculator() {
 ScoreCalculator.prototype.getScore = function() {
   return this.totalScore;
 };
+
+ScoreCalculator.prototype.addScore = function(scores) {
+  for(var i = 0; i < (scores.length); i++) {
+    this.scores.push(scores[i]);
+  }
+};

@@ -54,6 +54,6 @@ describe('Bowling', function(){
 		bowling.roll(4);
 		bowling.roll(4);
 		bowling.roll(4);
-		expect(bowling._cumalativescore).toEqual([6, 8, 4, 4]);
+		expect(bowling.currentTotalScore()).toEqual(18);
 	});
 });

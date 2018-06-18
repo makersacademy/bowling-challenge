@@ -24,7 +24,7 @@ Bowling.prototype.roll = function (number) {
 	if(number > this._pins) {
 		throw new Error ("Not possible!");
 	};
-	if (this.isSpare()) {
+	if (this.lastScoreIsSpare()) {
 		var lastrollnumber = this._cumalativescore.pop();
 		this._cumalativescore.push(number + lastrollnumber);
 	};
@@ -50,10 +50,10 @@ Bowling.prototype.currentFrame = function () {
 	return this._frame;
 };
 
-Bowling.prototype.isSpare = function () {
-	var firstlastscore = this._cumalativescore.pop();
-	var secondlastscore = this._cumalativescore.pop();
-	this._cumalativescore.push(secondlastscore);
-	this._cumalativescore.push(firstlastscore);
-	firstlastscore + secondlastscore = 10 && firstlastscore < 10 && secondlastscore < 10
+Bowling.prototype.lastScoreIsSpare = function () {
+	var first = this._cumalativescore[-2];
+	var second = this._cumalativescore[-1];
+	if(first + second === 10 && first < 10) {
+		return true
+	};
 };

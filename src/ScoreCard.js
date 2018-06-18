@@ -21,6 +21,18 @@ ScoreCard.prototype.updateBowlTwo = function (pinsKnockedDown) {
   this._addBonus(pinsKnockedDown);
 };
 
+ScoreCard.prototype.bonusBowlOne = function (pinsKnockedDown) {
+  this._resetBonusAndFrameScoreToZero();
+  this._updateScores(pinsKnockedDown);
+  if(this._isDoubleStrike()){
+    this._score += pinsKnockedDown;
+  };
+};
+
+ScoreCard.prototype.bonusBowlTwo = function (pinsKnockedDown) {
+  this._updateScores(pinsKnockedDown);
+};
+
 ScoreCard.prototype.viewScore = function () {
   return this._score;
 };

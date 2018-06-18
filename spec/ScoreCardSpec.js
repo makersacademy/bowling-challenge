@@ -64,6 +64,31 @@ describe('ScoreCard',function(){
           expect(scoreCard.viewScore()).toEqual(51);
         });
 
+        it('Strike and spare combo', function(){
+          scoreCard.updateBowlOne(10);
+          scoreCard.updateBowlTwo(0);
+          scoreCard.updateBowlOne(5);
+          scoreCard.updateBowlTwo(5);
+          scoreCard.updateBowlOne(10);
+          scoreCard.updateBowlTwo(0);
+          scoreCard.updateBowlOne(10);
+          scoreCard.updateBowlTwo(0);
+          scoreCard.updateBowlOne(4);
+          scoreCard.updateBowlTwo(2);
+          expect(scoreCard.viewScore()).toEqual(86);
+        });
+
+      });
+
+      it('A perfect game is 300', function(){
+        var i;
+        for( i=1 ; i<11 ; i++ ){
+          scoreCard.updateBowlOne(10);
+          scoreCard.updateBowlTwo(0);
+        };
+        scoreCard.bonusBowlOne(10);
+        scoreCard.bonusBowlTwo(10);
+        expect(scoreCard.viewScore()).toEqual(300);
       });
 
     });

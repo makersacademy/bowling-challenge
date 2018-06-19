@@ -5,6 +5,7 @@ function Scoreboard(){
   this.secondRoll = 0;
   this.resultsArray = [];
   this.lastFrameTotal = 0;
+  this.gameTotal = 0;
 
 }
 
@@ -22,6 +23,10 @@ Scoreboard.prototype.accessResultsArray = function () {
 
 Scoreboard.prototype.accessLastFrameTotal = function () {
   return this.lastFrameTotal;
+};
+
+Scoreboard.prototype.accessGameTotal = function () {
+  return this.gameTotal;
 };
 
 Scoreboard.prototype.recordFirstRoll = function (roll) {
@@ -68,5 +73,16 @@ Scoreboard.prototype.addStrikePoints = function () {
   if (this.isStrike()){
     lastFrame.push(this.firstRoll, this.secondRoll);
   }
-    return; 
+    return;
+};
+
+Scoreboard.prototype.totalScore = function () {
+  var sum = this.gameTotal;
+  for(var i = 0; i < this.resultsArray.length; i++) {
+      var frame = this.resultsArray[i];
+      for(var j = 0; j < frame.length; j++) {
+        sum += frame[j]
+      }
+  }
+      this.gameTotal = sum;
 };

@@ -97,5 +97,16 @@ describe ('Scoreboard', function(){
     expect(scoreboard.accessResultsArray()).toEqual([[10,0,3,4],[3,4]]);
   });
 
-
+  it('totals the score', function(){
+    scoreboard.recordFirstRoll(10);
+    scoreboard.recordSecondRoll(0);
+    scoreboard.recordFrameResults();
+    scoreboard.recordFirstRoll(3);
+    scoreboard.recordSecondRoll(4);
+    scoreboard.recordFrameResults();
+    scoreboard.sumPreviousFrame();
+    scoreboard.addStrikePoints();
+    scoreboard.totalScore();
+    expect(scoreboard.accessGameTotal()).toEqual(24);
+  });
 });

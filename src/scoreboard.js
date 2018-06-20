@@ -53,7 +53,8 @@ Scoreboard.prototype.sumPreviousFrame = function() {
 };
 
 Scoreboard.prototype.isSpare = function() {
-  return this.lastFrameTotal === 10 && this.resultsArray[0][0]!=10;
+  var lastFrame = this.resultsArray[(this.resultsArray.length) - 2]
+  return this.lastFrameTotal === 10 && lastFrame[0]!=10;
 };
 
 Scoreboard.prototype.addSparePoints = function() {
@@ -65,7 +66,8 @@ Scoreboard.prototype.addSparePoints = function() {
 };
 
 Scoreboard.prototype.isStrike = function () {
-  return this.resultsArray[0][0] === 10;
+  var lastFrame = this.resultsArray[(this.resultsArray.length) - 2]
+  return lastFrame[0] === 10;
 };
 
 Scoreboard.prototype.addStrikePoints = function () {
@@ -74,6 +76,20 @@ Scoreboard.prototype.addStrikePoints = function () {
     lastFrame.push(this.firstRoll, this.secondRoll);
   }
     return;
+};
+
+Scoreboard.prototype.isDoubleStrike = function () {
+  var lastFrame = this.resultsArray[(this.resultsArray.length) - 2];
+  var lastlastFrame = this.resultsArray[(this.resultsArray.length) - 3];
+  return (lastFrame[0] === 10) && (lastlastFrame[0]===10);
+};
+
+Scoreboard.prototype.addDoubleStrikePoints = function () {
+  var lastlastFrame = this.resultsArray[(this.resultsArray.length) - 3];
+  if (this.isDoubleStrike()){
+    lastlastFrame.push(this.firstRoll);
+  }
+  return;
 };
 
 Scoreboard.prototype.totalScore = function () {

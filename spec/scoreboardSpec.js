@@ -101,12 +101,47 @@ describe ('Scoreboard', function(){
     scoreboard.recordFirstRoll(10);
     scoreboard.recordSecondRoll(0);
     scoreboard.recordFrameResults();
+    scoreboard.recordFirstRoll(10);
+    scoreboard.recordSecondRoll(0);
+    scoreboard.recordFrameResults();
+    scoreboard.sumPreviousFrame();
+    scoreboard.addStrikePoints();
     scoreboard.recordFirstRoll(3);
     scoreboard.recordSecondRoll(4);
     scoreboard.recordFrameResults();
     scoreboard.sumPreviousFrame();
     scoreboard.addStrikePoints();
+    scoreboard.addDoubleStrikePoints();
     scoreboard.totalScore();
-    expect(scoreboard.accessGameTotal()).toEqual(24);
+    expect(scoreboard.accessGameTotal()).toEqual(47);
+  });
+
+  it('checks for a double strike', function(){
+    scoreboard.recordFirstRoll(10);
+    scoreboard.recordSecondRoll(0);
+    scoreboard.recordFrameResults();
+    scoreboard.recordFirstRoll(10);
+    scoreboard.recordSecondRoll(0);
+    scoreboard.recordFrameResults();
+    scoreboard.recordFirstRoll(3);
+    scoreboard.recordSecondRoll(4);
+    scoreboard.recordFrameResults();
+    expect(scoreboard.isDoubleStrike()).toEqual(true);
+  });
+
+  it('adds extra points for a double strike', function(){
+  scoreboard.recordFirstRoll(10);
+  scoreboard.recordSecondRoll(0);
+  scoreboard.recordFrameResults();
+  scoreboard.recordFirstRoll(10);
+  scoreboard.recordSecondRoll(0);
+  scoreboard.recordFrameResults();
+  scoreboard.addStrikePoints();
+  scoreboard.recordFirstRoll(3);
+  scoreboard.recordSecondRoll(4);
+  scoreboard.recordFrameResults();
+  scoreboard.addStrikePoints();
+  scoreboard.addDoubleStrikePoints();
+  expect(scoreboard.accessResultsArray()).toEqual([[10,0,10,0,3],[10,0,3,4],[3,4]]);
   });
 });

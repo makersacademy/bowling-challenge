@@ -35,3 +35,6 @@ Scorecard.prototype.previousFrameScore = function() {
 Scorecard.prototype.previousFrameFirstPin = function() {
   return this._scoreCard[this._scoreCard.length -1][0];
 }
+
+// If current score is not a strike
+  // if previous score is strike then check if the score before is a strike

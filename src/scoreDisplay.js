@@ -16,4 +16,8 @@ ScoreDisplay.prototype.isGutterGame = function() {
 
 ScoreDisplay.prototype.isPerfectGame = function() {
   return this.totalScore === this.PERFECT_GAME;
-}
+};
+
+ScoreDisplay.prototype.reset = function() {
+  this.totalScore = 0;
+};

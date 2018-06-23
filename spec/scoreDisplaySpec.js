@@ -29,4 +29,10 @@ describe('Score Display', function() {
     expect(scoreDisplay.isPerfectGame()).toEqual(false);
   });
 
+  it('resets the to zero', function() {
+    scoreDisplay = new ScoreDisplay(125);
+    scoreDisplay.reset();
+    expect(scoreDisplay.totalScore).toEqual(0);
+  });
+
 });

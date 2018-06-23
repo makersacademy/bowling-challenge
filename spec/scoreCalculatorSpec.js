@@ -56,4 +56,11 @@ describe('Score Calculator', function() {
     scoreCalculator.calculateScore();
     expect(scoreCalculator.totalScore).toEqual(0);
   });
+
+  it('clears the scores', function() {
+    var scores = ([[8, 2], [9, 0], [4, 4], [7, 2], [9, 0], [10, 0], [10, 0], [8, 0], [3, 5], [9, 1], [7, 0]])
+    scoreCalculator.addScore(scores);
+    scoreCalculator.clearScore();
+    expect(scoreCalculator.scores).toEqual([]);
+  });
 });

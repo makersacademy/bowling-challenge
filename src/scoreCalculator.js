@@ -41,3 +41,7 @@ ScoreCalculator.prototype.calculateScore = function() {
     }
   }
 };
+
+ScoreCalculator.prototype.clearScore = function() {
+  this.scores = [];
+};

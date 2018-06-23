@@ -38,7 +38,9 @@ ScoreCalculator.prototype.calculateScore = function() {
     console.log('this is c: ', c);
     console.log('this is d: ', d);
     console.log('this is e: ', e);
-    if (a === 10 && c === 10) {
+    if (i === 9 && a === 10 && c === 10) {
+      this.totalScore += (a + c + d);
+    } else if (a === 10 && c === 10) {
       console.log(4)
       this.totalScore += (a + c + e);
     } else if (a === 10) {

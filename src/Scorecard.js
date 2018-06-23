@@ -11,13 +11,27 @@ Scorecard.prototype.showScore = function(){
 };
 
 Scorecard.prototype.addFrameScore = function(firstBall, secondBall){
-  if(firstBall !== 10) {
-    this._currentScore += firstBall + secondBall;
+  var thisFrameScore = firstBall + secondBall;
+
+  if(thisFrameScore !== 10) {
+    this._currentScore += thisFrameScore;
   }
-  if(this._currentFrame > 0 && this._scoreCard[this._scoreCard.length -1][0] === 10){
-    console.log("scorecard = ", this._scoreCard[this._scoreCard.length -1])
-    this._currentScore += (10 + firstBall + secondBall)
+  if(this._currentFrame > 0 && this.previousFrameFirstPin() === 10){
+    this._currentScore += 10 + thisFrameScore
+  }
+  // if the last frame total score was 10
+  else if (this._currentFrame > 0 && this.previousFrameScore() === 10){
+    this._currentScore += 10 + firstBall
   }
   this._scoreCard.push([firstBall, secondBall]);
   this._currentFrame += 1;
 };
+
+Scorecard.prototype.previousFrameScore = function() {
+  return this._scoreCard[this._scoreCard.length -1][0] +
+    this._scoreCard[this._scoreCard.length -1][0];
+}
+
+Scorecard.prototype.previousFrameFirstPin = function() {
+  return this._scoreCard[this._scoreCard.length -1][0];
+}

@@ -28,7 +28,10 @@ describe('Scorecard', function(){
 
     describe('When user enters a spare', function(){
       it('it adds the bonus of the first pin of next game', function(){
-
+        scorecard = new Scorecard();
+        scorecard.addFrameScore(5, 5)
+        scorecard.addFrameScore(3, 5)
+        expect(scorecard.showScore()).toBe(21)
       });
     });
   });

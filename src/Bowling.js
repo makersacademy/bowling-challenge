@@ -1,60 +1,53 @@
 function Bowling(){
-	this._pins = 10;
-	this._score = 0;
-	this._cumalativescore = [];
-	this._frame = 1;
+	this.pins = 10;
+	this.framescore = 0;
+	this.cumalativescore = [];
+	this.frame = 1;
 }
 
-Bowling.prototype.pins = function () {
-	return this._pins;
+Bowling.prototype.currentpins = function () {
+	return this.pins;
 };
 
 Bowling.prototype.score = function () {
-	var sum = this._cumalativescore.reduce(add, 0);
-	function add(a, b) {
-			return a + b;
-	}
+	var sum = 0;
+	var roll = 0;
+	for (var frame = 0; frame < 10; frame++) {
+		if (this.cumalativescore[roll] + this.cumalativescore[roll + 1] == 10) {
+			sum += this.cumalativescore[roll] + this.cumalativescore[roll + 1] + this.cumalativescore[roll + 2];
+		} else {
+			sum += (this.cumalativescore[roll] + this.cumalativescore[roll + 1]);
+		}
+		roll += 2;
+	};
 	return sum;
 };
 
 Bowling.prototype.roll = function (number) {
-	if(this._cumalativescore.length%2 == 0 && this._cumalativescore.length > 0) {
+	if(this.cumalativescore.length%2 == 0 && this.cumalativescore.length > 0) {
 		this.newFrame();
 	};
-	if(number > this._pins) {
+	if(number > this.pins) {
 		throw new Error ("Not possible!");
 	};
-	if (this.lastScoreIsSpare()) {
-		var lastrollnumber = this._cumalativescore.pop();
-		this._cumalativescore.push(number + lastrollnumber);
-	};
-	this._pins -= number;
-	this._score += number;
-	this._cumalativescore.push(number);
+	this.pins -= number;
+	this.framescore += number;
+	this.cumalativescore.push(number);
 };
 
 Bowling.prototype.newFrame = function () {
 	if(this.currentFrame() >= 10) {
 		throw new Error ("Game finished: Your final score is ");
 	}
-	this._frame += 1;
-	this._pins = 10;
-	this._score = 0;
+	this.frame += 1;
+	this.pins = 10;
+	this.framescore = 0;
 };
 
 Bowling.prototype.framescore = function () {
-	return this._score;
+	return this.framescore;
 };
 
 Bowling.prototype.currentFrame = function () {
-	return this._frame;
-};
-
-Bowling.prototype.lastScoreIsSpare = function () {
-	var first = this._cumalativescore[-2];
-	var second = this._cumalativescore[-1];
-	if(first + second === 10 && first < 10) {
-		return true
-	};
-
+	return this.frame;
 };

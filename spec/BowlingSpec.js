@@ -8,28 +8,30 @@ describe('Bowling', function(){
 	});
 
 	it('starts a new frame with 10 pins', function() {
-		expect(bowling.pins()).toEqual(10);
+		expect(bowling.currentpins()).toEqual(10);
 	});
 
 	it('user rolls a ball and knocks down pins', function() {
 		bowling.roll(4);
-		expect(bowling.pins()).toEqual(6);
+		expect(bowling.currentpins()).toEqual(6);
 	})
 
 	it('adds the scores together in the scorecard', function() {
-		rollMultiple(4, 2)
-		expect(bowling.score()).toBe(8);
+		rollMultiple(4, 20)
+		expect(bowling.score()).toEqual(80);
+	});
+
+	it('does not allow player to input invalid score', function() {
 		expect(function(){bowling.roll(11);}).toThrowError("Not possible!")
 	});
 
 	it('adds each individual score to a _cumalativescore array', function() {
 		rollMultiple(2, 4)
-		expect(bowling._cumalativescore).toEqual([2, 2, 2, 2]);
+		expect(bowling.cumalativescore).toEqual([2, 2, 2, 2]);
 	});
 
 	it('can know there are two rounds in a frame', function() {
 		rollMultiple(4, 5)
-		expect(bowling.framescore()).toEqual(4);
 		expect(bowling.currentFrame()).toEqual(3);
 	});
 

@@ -3,14 +3,17 @@ describe('Scorecard', function(){
   describe('.currentScore', function(){
     it('has an initial score of 0', function(){
       scorecard = new Scorecard();
-      expect(scorecard.currentScore()).toEqual(0)
+      expect(scorecard.showScore()).toEqual(0)
     });
   });
 
-  describe('.frameScore', function(){
+  describe('.addFrameScore', function(){
     describe('When user enters score below 10', function(){
-      it('adds score to the total score', function(){
-
+      it('adds score to the current score', function(){
+        scorecard = new Scorecard();
+        scorecard.addFrameScore(2, 2)
+        scorecard.addFrameScore(3, 5)
+        expect(scorecard.showScore()).toEqual(12)
       });
     });
 

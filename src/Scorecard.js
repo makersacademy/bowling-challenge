@@ -15,6 +15,9 @@ Scorecard.prototype.addFrameScore = function(firstBall, secondBall){
 
   this._calculateFirstFrameScore(firstBall, secondBall, thisFrameScore)
   this._calculateSecondFrameScore(firstBall, secondBall, thisFrameScore)
+  if(this._currentFrame >= 3 && this._currentFrame < 10) {
+    this._calculateThirdToNinthFrameScore(firstBall, secondBall, thisFrameScore)
+  }
 
   this._scoreCard.push([firstBall, secondBall]);
   this._currentFrame += 1;
@@ -74,5 +77,11 @@ Scorecard.prototype._calculateFirstFrameScore = function(firstBall, secondBall, 
     if(thisFrameScore !== 10) {
       this._currentScore += thisFrameScore;
     }
+  }
+}
+
+Scorecard.prototype._calculateThirdToNinthFrameScore = function(firstBall, secondBall, thisFrameScore){
+  if(thisFrameScore < 10 && this.previousFrameScore() < 10){
+    this._currentScore += thisFrameScore;
   }
 }

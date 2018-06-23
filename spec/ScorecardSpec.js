@@ -78,4 +78,17 @@ describe('Scorecard', function(){
       });
     });
   });
+
+  describe('When 3rd to 9th Frame', function(){
+    describe('is under 10', function(){
+      describe('When previous frame is under 10', function(){
+        it('adds the current frame score to total', function(){
+          scorecard.addFrameScore(10, 0)
+          scorecard.addFrameScore(8, 1)
+          scorecard.addFrameScore(4, 3)
+          expect(scorecard.showScore()).toBe(35)
+        });
+      });
+    });
+  });
 });

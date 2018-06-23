@@ -19,7 +19,10 @@ describe('Scorecard', function(){
 
     describe('When user enters a strike', function(){
       it('it adds the bonus of next frames score', function(){
-
+        scorecard = new Scorecard();
+        scorecard.addFrameScore(10, 0)
+        scorecard.addFrameScore(3, 5)
+        expect(scorecard.showScore()).toBe(26)
       });
     });
 

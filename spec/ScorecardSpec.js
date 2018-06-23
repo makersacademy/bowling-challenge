@@ -66,19 +66,24 @@ describe('Scorecard', function(){
 
     describe('is a spare', function(){
       describe('When the first frame score is a strike', function(){
-        it('adds the strike + bonus to total', function(){
+        it('adds the strike + 2 ball bonus to total', function(){
           scorecard = new Scorecard();
           scorecard.addFrameScore(10, 0)
           scorecard.addFrameScore(7, 3)
           expect(scorecard.showScore()).toBe(20)
         });
       });
+      describe('When the first frame score is a spare', function(){
+        it('adds the strike + first ball bonus to total', function(){
+          scorecard = new Scorecard();
+          scorecard.addFrameScore(5, 5)
+          scorecard.addFrameScore(7, 3)
+          expect(scorecard.showScore()).toBe(17)
+        });
+      });
     });
+
 
 
   });
 });
-
-// scorecard = new Scorecard();
-// scorecard.addFrameScore(, )
-// expect(scorecard.showScore()).toBe()A

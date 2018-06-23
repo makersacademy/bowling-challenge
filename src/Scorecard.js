@@ -31,11 +31,18 @@ Scorecard.prototype.addFrameScore = function(firstBall, secondBall){
         this._currentScore += thisFrameScore;
       }
     }
-
+    // If second frame is a strike and first frame is spare
     if(firstBall === 10 && this._isPreviousFrameSpare()){
-      this._currentScore += 20;
-    } else if(thisFrameScore === 10) {
-      this._currentScore += 20;
+      this._currentScore += 10 + firstBall;
+    }
+    // if 2nd frame is a spare
+    if(firstBall !== 10 && thisFrameScore === 10) {
+      if(this._isPreviousFrameStrike()){
+        this._currentScore += 20;
+      }
+      if(this._isPreviousFrameSpare()){
+        this._currentScore += 10 + firstBall;
+      }
     }
 
   }

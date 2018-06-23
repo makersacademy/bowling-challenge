@@ -28,7 +28,11 @@ describe('Bowling', function(){
 		rollMultiple(4, 2);
 		rollMultiple(0, 16)
 		expect(bowling.score()).toEqual(26)
+	});
 
+	it('can roll a game of strikes', function() {
+		rollMultiple(10, 12);
+		expect(bowling.score()).toEqual(300);
 	});
 
 	var rollMultiple = function (number, rolls) {

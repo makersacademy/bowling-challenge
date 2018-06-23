@@ -44,3 +44,7 @@ Bowling.prototype.score = function () {
 Bowling.prototype.roll = function (number) {
 	this.cumalativescore.push(number);
 };
+
+Bowling.prototype.reset = function(){
+	this.cumalativescore = [];
+};

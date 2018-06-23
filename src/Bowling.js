@@ -9,7 +9,7 @@ Bowling.prototype.pins = function () {
 	return this._pins;
 };
 
-Bowling.prototype.currentTotalScore = function () {
+Bowling.prototype.score = function () {
 	var sum = this._cumalativescore.reduce(add, 0);
 	function add(a, b) {
 			return a + b;
@@ -56,4 +56,5 @@ Bowling.prototype.lastScoreIsSpare = function () {
 	if(first + second === 10 && first < 10) {
 		return true
 	};
+
 };

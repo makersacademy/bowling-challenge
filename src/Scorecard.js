@@ -23,20 +23,14 @@ Scorecard.prototype.addFrameScore = function(firstBall, secondBall){
   this._currentFrame += 1;
 };
 
-
-
-Scorecard.prototype.previousFrameScore = function() {
-  return this._scoreCard[this._scoreCard.length -1][0] +
-    this._scoreCard[this._scoreCard.length -1][1];
-}
-
-Scorecard.prototype.previousFrameFirstPin = function() {
-  return this._scoreCard[this._scoreCard.length -1][0];
+Scorecard.prototype._previousFrameScore = function(framesBack = 1) {
+  return this._scoreCard[this._scoreCard.length - framesBack][0] +
+    this._scoreCard[this._scoreCard.length - framesBack][1];
 }
 
 Scorecard.prototype._isPreviousFrameSpare = function(){
   return this._scoreCard[this._scoreCard.length -1][0] !== 10 &&
-    this.previousFrameScore() === 10;
+    this._previousFrameScore() === 10;
 }
 
 Scorecard.prototype._isPreviousFrameStrike = function(){
@@ -52,7 +46,7 @@ Scorecard.prototype._calculateSecondFrameScore = function(firstBall, secondBall,
       if(this._isPreviousFrameStrike()) {
         this._currentScore += 10 + thisFrameScore + thisFrameScore;
       }
-      if(this.previousFrameScore() < 10) {
+      if(this._previousFrameScore() < 10) {
         this._currentScore += thisFrameScore;
       }
     }
@@ -81,7 +75,14 @@ Scorecard.prototype._calculateFirstFrameScore = function(firstBall, secondBall, 
 }
 
 Scorecard.prototype._calculateThirdToNinthFrameScore = function(firstBall, secondBall, thisFrameScore){
-  if(thisFrameScore < 10 && this.previousFrameScore() < 10){
-    this._currentScore += thisFrameScore;
+  if(thisFrameScore < 10) {
+    if(this._previousFrameScore() < 10) {
+      this._currentScore += thisFrameScore;
+    }
+    if(this._isPreviousFrameStrike()) {
+      if(this._previousFrameScore(2) < 10) {
+        this._currentScore += 10 + thisFrameScore + thisFrameScore
+      }
+    }
   }
 }

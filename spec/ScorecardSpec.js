@@ -80,7 +80,7 @@ describe('Scorecard', function(){
   });
 
   describe('When 3rd to 9th Frame', function(){
-    describe('is under 10', function(){
+    describe('When current frame is under 10', function(){
       describe('When previous frame is under 10', function(){
         it('adds the current frame score to total', function(){
           scorecard.addFrameScore(10, 0)
@@ -88,7 +88,21 @@ describe('Scorecard', function(){
           scorecard.addFrameScore(4, 3)
           expect(scorecard.showScore()).toBe(35)
         });
+        describe('When the previous frame is a strike', function(){
+          describe('When the frame before that is under 10', function(){
+            it('adds the strike, bonus & current framescore to total', function(){
+              scorecard.addFrameScore(7, 0)
+              scorecard.addFrameScore(8, 1)
+              scorecard.addFrameScore(4, 4)
+              scorecard.addFrameScore(10, 0)
+              scorecard.addFrameScore(4, 3)
+              expect(scorecard.showScore()).toBe(48)
+            });
+          });
+        });
       });
     });
   });
+
+
 });

@@ -47,7 +47,6 @@ describe('Scorecard', function(){
         it('adds the strike + bonus and first ball bonus to total', function(){
           scorecard = new Scorecard();
           scorecard.addFrameScore(3, 7)
-
           scorecard.addFrameScore(6, 3)
           expect(scorecard.showScore()).toBe(25)
         });
@@ -55,8 +54,13 @@ describe('Scorecard', function(){
     });
 
     describe('When second frame score is a strike', function(){
-      describe('When the first frame score is under 10', function(){
-        
+      describe('When the first frame score is a spare', function(){
+        it('adds the strike + bonus to total', function(){
+          scorecard = new Scorecard();
+          scorecard.addFrameScore(3, 7)
+          scorecard.addFrameScore(10, 0)
+          expect(scorecard.showScore()).toBe(20)
+        });
       });
     });
 

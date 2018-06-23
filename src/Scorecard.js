@@ -31,6 +31,11 @@ Scorecard.prototype.addFrameScore = function(firstBall, secondBall){
         this._currentScore += thisFrameScore;
       }
     }
+
+    if(firstBall === 10 && this._isPreviousFrameSpare()){
+      this._currentScore += 20;
+    }
+
   }
 
   this._scoreCard.push([firstBall, secondBall]);

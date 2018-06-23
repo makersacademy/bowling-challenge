@@ -34,6 +34,24 @@ describe('Scorecard', function(){
         expect(scorecard.showScore()).toBe(21)
       });
     });
+
+    describe('When user gets multiple strikes', function(){
+      it('calculates correct score for 2 strikes', function(){
+        scorecard = new Scorecard();
+        scorecard.addFrameScore(10, 0)
+        scorecard.addFrameScore(10, 0)
+        scorecard.addFrameScore(5, 0)
+        expect(scorecard.showScore()).toBe(45)
+      });
+      xit('calculates correct score for 3 strikes', function(){
+        scorecard = new Scorecard();
+        scorecard.addFrameScore(10, 0)
+        scorecard.addFrameScore(10, 0)
+        scorecard.addFrameScore(10, 0)
+        scorecard.addFrameScore(5, 0)
+        expect(scorecard.showScore()).toBe(75)
+      });
+    });
   });
 
 });

@@ -40,13 +40,15 @@ After the first day I was happy with some of the functionality but decided that 
 
 I wanted the score for each frame to add all the previous frames and show update the score even if the frame is not complete as I believe this is how a bowling scorecard should work.  I had some bugs while getting this to work and I got a lot of useful experience getting viability using console.log and narrowing down the functionality commenting out lines of code.  This was also helped by my TDD approach.
 
+### Conclusion
+
 I had planned to build a front-end interactive page for this however I run out of time.  I would also have liked to extract functions to be more in keeping with good object orientated practices which I have learned on the course.  I found the whole process was a great learning experience, especially in the importance of planning and diagramming everything before building any functionality.
 
-## Technologies
+### Technologies
 
 The functionality was built using Javascript and tests was preformed using Jasmine which has 34 tests all passing.  Eslint was used as a linter. The tests can be run by opening the SpecRunner.html file in the browser.
 
-## Functionality
+### Functionality
 
 An example of of how the code runs in the console below:
 

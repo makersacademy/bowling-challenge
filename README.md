@@ -13,15 +13,20 @@ Bowling Challenge
 2. Enter your scores in the interface
 
 #### How to run the tests:
-Jasmine SpecRunner file includes all spec and source code files.
+1. Jasmine SpecRunner file includes all spec and source code files.
 All tests can be run via a browser, type ```open SpecRunner.html``` in to the terminal.
-ESLint can be run via ```./node_modules/.bin/eslint src``` and ```./node_modules/.bin/eslint spec```
+2. ESLint can be run via ```./node_modules/.bin/eslint src``` and ```./node_modules/.bin/eslint spec```
 
 ### Approach to solving the challenge:
 1. Set up browser based Jasmine for TDD of the application.
-1. Review the bowling game scoring system and break it down into the smallest requirements.
-2. Top line diagram for how these elements work
-3. Diagram for the interaction between each element of the game - score calculation and score score display
+2. Review the bowling game scoring system and break it down into the smallest requirements.
+3. Top line diagram for bowling scoring works
+4. Excel spreadsheet to check mathematical calculations
+5. Diagram for the interaction between each element of the game - score calculation and score score display
+6. TDD source code creation.
+7. Basic HTML page built
+8. Interface created to connect HTML with JavaScript functionality
+9. Further refactoring to reduce functions and research object orientated design patterns
 
 ### Status at point of push:
 1. Total score is calculated and displayed once the user has input the number of pins knocked down in each roll of the game.

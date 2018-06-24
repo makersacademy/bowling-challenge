@@ -89,11 +89,19 @@ Game.prototype._frameNotComplete = function _frameNotComplete(frame) {
   if (frame > this.frames.length && this.frame.length === 1) {
     this.frameScore = this.frame[0];
   } else if (frame > this.frames.length && this.finalFrame === true && this.finish === false) {
-    this._finalFrameCheck(frame);
+    this._finalFrameCheck();
   } else if (frame > this.frames.length) {
-    // empty
+    this.frameScore = 0;
   } else {
     this._frameComplete(frame);
+  }
+};
+
+Game.prototype._finalFrameCheck = function _finalFrameCheck() {
+  if (this.frame.length === 2) {
+    this.frameScore = this.frame[0] + this.frame[1];
+  } else if (this.frame.length === 1) { this.frameScore = this.frame[0]; } else {
+    this.frameScore = 0;
   }
 };
 
@@ -106,29 +114,25 @@ Game.prototype._frameComplete = function _frameComplete(frame) {
 
 Game.prototype._strike = function _strike(frame) {
   if (this.frameScore === 10 && this.frames[frame - 1][0] === 10 && this.frames.length > frame) {
-    let frameLength;
-    if (this.frames[frame].length > 2) {
-      frameLength = 2;
-    } else { frameLength = this.frames[frame].length; }
-    for (y = 0; y < frameLength; y += 1) {
-      this.frameScore += this.frames[frame][y];
-    }
-    if (this.frames[frame][0] === 10 && this.frames.length > (frame + 1) && frame !== 9) {
-      this.frameScore += this.frames[frame + 1][0];
-    }
+    this._strikeBonus(frame);
   } else if (this.frameScore === 10 && this.frames.length > frame) {
     this._spare(frame);
+  }
+};
+
+Game.prototype._strikeBonus = function _strikeBonus(frame) {
+  let frameLength;
+  if (this.frames[frame].length > 2) {
+    frameLength = 2;
+  } else { frameLength = this.frames[frame].length; }
+  for (y = 0; y < frameLength; y += 1) {
+    this.frameScore += this.frames[frame][y];
+  }
+  if (this.frames[frame][0] === 10 && this.frames.length > (frame + 1) && frame !== 9) {
+    this.frameScore += this.frames[frame + 1][0];
   }
 };
 
 Game.prototype._spare = function _spare(frame) {
   this.frameScore += this.frames[frame][0];
 };
-
-Game.prototype._finalFrameCheck = function _finalFrameCheck(frame) {
-  if (this.frame.length === 2) {
-    this.frameScore = this.frame[0] + this.frame[1];
-  } else if (this.frame.length === 1) { this.frameScore = this.frame[0]; } else {
-    // empty
-  }
-}

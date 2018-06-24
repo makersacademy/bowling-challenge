@@ -5,6 +5,8 @@ Bowling Challenge
 ### Quickstart:
 #### How to install the code:
 1. Fork this project
+2. Use node version 10.4.0
+3. Run ```npm install``` to add module dependencies
 
 #### How to use the website:
 1. Load the site via ```open index.html```
@@ -13,31 +15,52 @@ Bowling Challenge
 #### How to run the tests:
 Jasmine SpecRunner file includes all spec and source code files.
 All tests can be run via a browser, type ```open SpecRunner.html``` in to the terminal.
+ESLint can be run via ```./node_modules/.bin/eslint src``` and ```./node_modules/.bin/eslint spec```
 
 ### Approach to solving the challenge:
 1. Set up browser based Jasmine for TDD of the application.
 1. Review the bowling game scoring system and break it down into the smallest requirements.
 2. Top line diagram for how these elements work
-3. Diagram for the interaction between each element of the game   
+3. Diagram for the interaction between each element of the game - score calculation and score score display
 
 ### Status at point of push:
+1. Total score is calculated and displayed once the user has input the number of pins knocked down in each roll of the game.
+2. Minimal CSS styling applied.
+3. Travis CI added but don't seem to have admin access to the repo as it's forked from Makers.
+4. Functions added for identifying Gutter Game and Perfect Score in the display but not yet implemented in the interface.
 
+![Application Example](images/application_at_point_of_pull_request.png)
 
 ### Description of what code does:
 This is a bowling score card as per the standard game rules. Top score is 300, gutter game is zero pins hit, bonuses are given for rolling a spare and or strike.
 
 ### Code Style:
-Standard JavaScript, with Jasmine syntax for testing.
+Vanilla JavaScript, with Jasmine syntax for testing.
+jQuery for page interaction and HTML/CSS styling using Bootstrap.
 
 ### Features:
-1.
-2.
-3.
+1. Drop down menu for each roll per frame.
+2. Submit button calculates the total score of the game
+3. Reset button allows reuse of the score calculator without refreshing the page.
+
+### Intended next steps:
+1. Implement a Strategy Pattern for calculating the score
+2. Cumulative scoring for each frame
+3. Http-server for local hosting of the site
+4. Cypress feature tests
 
 ### Code Example:
 Extract from the codebase:
 ```
+ScoreCalculator.prototype.getScore = function() {
+  return this.totalScore;
+};
 
+ScoreCalculator.prototype.addScore = function(scores) {
+  for(var i = 0; i < (scores.length); i++) {
+    this.scores.push(scores[i]);
+  };
+};
 ```
 
 Instructions Set by Makers Academy

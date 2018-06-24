@@ -234,35 +234,35 @@ describe('Scorecard', function(){
         });
       });
       describe('When the second ball is under 10', function(){
-        it('adds the final frame and bonus', function(){
-          scorecard.addFrameScore(2, 1)
-          scorecard.addFrameScore(1, 9)
-          scorecard.addFrameScore(10)
-          scorecard.addFrameScore(10)
-          scorecard.addFrameScore(3, 1)
-          scorecard.addFrameScore(6, 4)
-          scorecard.addFrameScore(10)
-          scorecard.addFrameScore(4, 6)
-          scorecard.addFrameScore(10)
-          scorecard.addFrameScore(10, 6, 4)
-          expect(scorecard.showScore()).toBe(170)
+        describe('when the last 2 balls add to 10', function(){
+          it('calculates the correct score', function(){
+            scorecard.addFrameScore(2, 1)
+            scorecard.addFrameScore(1, 9)
+            scorecard.addFrameScore(10)
+            scorecard.addFrameScore(10)
+            scorecard.addFrameScore(3, 1)
+            scorecard.addFrameScore(6, 4)
+            scorecard.addFrameScore(10)
+            scorecard.addFrameScore(4, 6)
+            scorecard.addFrameScore(10)
+            scorecard.addFrameScore(10, 6, 4)
+            expect(scorecard.showScore()).toBe(170)
+          });
         });
-      });
-      describe('When the final 2 balls add up to 10', function(){
-        it('calculates the correct score', function(){
-          scorecard = new Scorecard();
-
-          scorecard.addFrameScore(10);
-          scorecard.addFrameScore(4, 6);
-          scorecard.addFrameScore(6, 2);
-          scorecard.addFrameScore(10);
-          scorecard.addFrameScore(10);
-          scorecard.addFrameScore(10);
-          scorecard.addFrameScore(10);
-          scorecard.addFrameScore(10);
-          scorecard.addFrameScore(10);
-          scorecard.addFrameScore(10, 6, 3);
-          expect(scorecard.showScore()).toEqual(239);
+        describe('When the last 2 balls dont add to 10', function(){
+          it('calculates the correct score', function(){
+            scorecard.addFrameScore(10);
+            scorecard.addFrameScore(4, 6);
+            scorecard.addFrameScore(6, 2);
+            scorecard.addFrameScore(10);
+            scorecard.addFrameScore(10);
+            scorecard.addFrameScore(10);
+            scorecard.addFrameScore(10);
+            scorecard.addFrameScore(10);
+            scorecard.addFrameScore(10);
+            scorecard.addFrameScore(10, 6, 3);
+            expect(scorecard.showScore()).toEqual(239);
+          });
         });
       });
     });

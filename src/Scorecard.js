@@ -10,7 +10,7 @@ Scorecard.prototype.showScore = function(){
   return this._currentScore;
 };
 
-Scorecard.prototype.addFrameScore = function(firstBall, secondBall, tenthFrameThirdBall = null){
+Scorecard.prototype.addFrameScore = function(firstBall, secondBall = 0, tenthFrameThirdBall = null){
   var thisFrameScore = firstBall + secondBall;
 
   this._updateFirstFrameScore(firstBall, secondBall, thisFrameScore);

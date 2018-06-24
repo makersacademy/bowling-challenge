@@ -1,42 +1,16 @@
+Bowling ScoreCard Challenge!
+==================
 
-Bowling Challenge
-=================
+ ![Alt text](https://media.giphy.com/media/26DOMQa5Ib2SmaRZm/source.gif)
 
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+This project is our 5th and 6th weekend challenge. We started to learn javascript in our 5th week. Completed solo on 23rd-24th June 2018. We were tasked with creating a bowling scorecard.
 
-## The Task
-
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
-
+Instructions:  
+```
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
-
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
-
-## Bowling — how does it work?
 
 ### Strikes
 
@@ -61,17 +35,61 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
 
-In the image below you can find some score examples.
+```
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
+## Motivation
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+This project has been created so that somebody could use it to generate their scores in a bowling game by entering each frame.
 
-## Code Review
+## Getting started
 
-In code review we'll be hoping to see:
+* Fork this repo
+* Open the scoreCard.html document in chrome and navigate to the console in developer tools
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+## Usage
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+Once you've navigated to localhost, you can follow the instructions on the screen.
+
+## 1. Register (optional) by clicking Register and entering your email and a password
+
+### Homepage
+<img src="/public/before-sorted.19.29.png">
+
+### After you click Register
+<img src="/public/register.08.57.png">
+
+### After you've completed registration
+<img src="/public/registered.56.51.png">
+
+## 2. Add a film by clicking 'add film'
+
+### After you've clicked Add Film
+<img src="/public/add_film.08.19.png">
+
+## 3. Add comments
+
+### After clicking Comment button
+<img src="/public/add-comment.33.24.png">
+
+## 4. Sort alphabetically
+
+###ß After clicking Sort A-Z
+<img src="/public/SortA-Z.07.37.png">
+
+
+## Tech/Framework used
+
+Built in Javascript<br />
+Tested using Jasmine<br />
+
+## Running tests
+
+Open the SpecRunner.html in chrome and tests will run automatically.
+
+## Credits
+
+[This little bowling score checker.](http://www.bowlinggenius.com/)<br />
+
+## Skills I used creating thing project
+
+* Javascript

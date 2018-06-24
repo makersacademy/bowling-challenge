@@ -21,15 +21,15 @@ describe('Perfect Game', function(){
   it('has a final score of 300', function(){
     scorecard = new Scorecard();
 
-    scorecard.addFrameScore(10, 0);
-    scorecard.addFrameScore(10, 0);
-    scorecard.addFrameScore(10, 0);
-    scorecard.addFrameScore(10, 0);
-    scorecard.addFrameScore(10, 0);
-    scorecard.addFrameScore(10, 0);
-    scorecard.addFrameScore(10, 0);
-    scorecard.addFrameScore(10, 0);
-    scorecard.addFrameScore(10, 0);
+    scorecard.addFrameScore(10);
+    scorecard.addFrameScore(10);
+    scorecard.addFrameScore(10);
+    scorecard.addFrameScore(10);
+    scorecard.addFrameScore(10);
+    scorecard.addFrameScore(10);
+    scorecard.addFrameScore(10);
+    scorecard.addFrameScore(10);
+    scorecard.addFrameScore(10);
     scorecard.addFrameScore(10, 10, 10);
     expect(scorecard.showScore()).toEqual(300);
   });
@@ -62,11 +62,11 @@ describe('Normal Game', function(){
     scorecard.addFrameScore(4, 5);
     scorecard.addFrameScore(6, 4);
     scorecard.addFrameScore(5, 5);
-    scorecard.addFrameScore(10, 0);
+    scorecard.addFrameScore(10);
     scorecard.addFrameScore(0, 1);
     scorecard.addFrameScore(7, 3);
     scorecard.addFrameScore(6, 4);
-    scorecard.addFrameScore(10, 0);
+    scorecard.addFrameScore(10);
     scorecard.addFrameScore(2, 8, 6);
 
     expect(scorecard.showScore()).toEqual(133);

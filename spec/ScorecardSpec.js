@@ -127,13 +127,9 @@ describe('Scorecard', function(){
         describe('When previous frame is a spare', function(){
           it('adds spare, bonus and current framescore', function(){
             scorecard.addFrameScore(3, 0)
-            console.log("1. current score =", scorecard._currentScore)
             scorecard.addFrameScore(7, 3)
-            console.log("2. current score =", scorecard._currentScore)
             scorecard.addFrameScore(8, 2)
-            console.log("3. current score =", scorecard._currentScore)
             scorecard.addFrameScore(4, 3)
-            console.log("4. current score =", scorecard._currentScore)
             expect(scorecard.showScore()).toBe(42)
           });
         });
@@ -147,6 +143,19 @@ describe('Scorecard', function(){
             scorecard.addFrameScore(9, 1)
             scorecard.addFrameScore(10, 0)
             expect(scorecard.showScore()).toBe(31)
+          });
+        });
+        describe('When previous frame is a strike', function(){
+          describe('When frame before that is a strike', function(){
+            it('add strike and bonus', function(){
+              scorecard.addFrameScore(3, 0)
+              scorecard.addFrameScore(6, 2)
+              scorecard.addFrameScore(9, 1)
+              scorecard.addFrameScore(10, 0)
+              scorecard.addFrameScore(10, 0)
+              scorecard.addFrameScore(10, 0)
+              expect(scorecard.showScore()).toBe(61)
+            });
           });
         });
       // end of when current frame is a strike
@@ -166,6 +175,5 @@ describe('Scorecard', function(){
     });
 
   });
-
 
 });

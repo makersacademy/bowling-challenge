@@ -109,7 +109,10 @@ Scorecard.prototype._calculateThirdToNinthFrameScore = function(firstBall, secon
   // when current frame is a strike
   if(firstBall === 10){
     if(this._isPreviousFrameSpare()){
-      this._currentScore += 10 + 10
+      this._currentScore += 10 + 10;
+    }
+    if(this._isPreviousFrameStrike() && this._isPreviousFrameStrike(2)) {
+      this._currentScore += 10 + 20;
     }
   }
 }

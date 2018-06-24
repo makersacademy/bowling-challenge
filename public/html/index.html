@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ens">
+
+  <head>
+    <link rel="stylesheet" href="../css/scorecard.css">
+    <link rel="shortcut icon" href="../images/pinandball.ico" />
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src = '../javascript/interface.js'></script>
+
+    <title>Bowling Scorecard</title>
+  </head>
+
+  <body>
+  <div>  <img src="../images/bowlingicon.png" alt="bowlingicon">
+    <h1> Bowling Scorecard </h1>
+  </div>
+    <h2> Click Number of Pins Knocked Down </h2>
+    <button type="button" class="scoreButton" value = 0 id="0">0</button>
+    <button type="button" class="scoreButton" value = 1 id="1">1</button>
+    <button type="button" class="scoreButton" value = 2 id="2">2</button>
+    <button type="button" class="scoreButton" value = 3 id="3">3</button>
+    <button type="button" class="scoreButton" value = 4 id="4">4</button>
+    <button type="button" class="scoreButton" value = 5 id="5">5</button>
+    <button type="button" class="scoreButton" value = 6 id="6">6</button>
+    <button type="button" class="scoreButton" value = 7 id="7">7</button>
+    <button type="button" class="scoreButton" value = 8 id="8">8</button>
+    <button type="button" class="scoreButton" value = 9 id="9">9</button>
+    <button type="button" class="scoreButton" value = 10 id="10">10</button><br></br><br><br>
+
+    <table>
+  <tr>
+    <th colspan="2" class="toprow">1</th>
+    <th colspan="2" class="toprow">2</th>
+    <th colspan="2" class="toprow">3</th>
+    <th colspan="2" class="toprow">4</th>
+    <th colspan="2" class="toprow">5</th>
+    <th colspan="2" class="toprow">6</th>
+    <th colspan="2" class="toprow">7</th>
+    <th colspan="2" class="toprow">8</th>
+    <th colspan="2" class="toprow">9</th>
+    <th colspan="2" class="toprow">10</th>
+    <th colspan="1" class="toprow">B</th>
+  </tr>
+  <tr>
+    <td class="topbox" id="roll-1"></td>
+    <td class="topbox" id="roll-2"></td>
+    <td class="topbox" id="roll-3"></td>
+    <td class="topbox" id="roll-4"></td>
+    <td class="topbox" id="roll-5"></td>
+    <td class="topbox" id="roll-6"></td>
+    <td class="topbox" id="roll-7"></td>
+    <td class="topbox" id="roll-8"></td>
+    <td class="topbox" id="roll-9"></td>
+    <td class="topbox" id="roll-10"></td>
+    <td class="topbox" id="roll-11"></td>
+    <td class="topbox" id="roll-12"></td>
+    <td class="topbox" id="roll-13"></td>
+    <td class="topbox" id="roll-14"></td>
+    <td class="topbox" id="roll-15"></td>
+    <td class="topbox" id="roll-16"></td>
+    <td class="topbox" id="roll-17"></td>
+    <td class="topbox" id="roll-18"></td>
+    <td class="topbox" id="roll-19"></td>
+    <td class="topbox" id="roll-20"></td>
+    <td class="topbox" id="roll-20"></td>
+  </tr>
+  <tr>
+    <td colspan="2" class="bottomrow" id="framescore-1"></td>
+    <td colspan="2" class="bottomrow" id="framescore-2"></td>
+    <td colspan="2" class="bottomrow" id="framescore-3"></td>
+    <td colspan="2" class="bottomrow" id="framescore-4"></td>
+    <td colspan="2" class="bottomrow" id="framescore-5"></td>
+    <td colspan="2" class="bottomrow" id="framescore-6"></td>
+    <td colspan="2" class="bottomrow" id="framescore-7"></td>
+    <td colspan="2" class="bottomrow" id="framescore-8"></td>
+    <td colspan="2" class="bottomrow" id="framescore-9"></td>
+    <td colspan="3" class="bottomrow" id="framescore-10"></td>
+  </tr>
+</table><br><br>
+
+<input type="button" value="Reset Scorecard" onClick="window.location.reload()">
+<br><br><br><br><br><br><br><br><br><br><br>
+
+<script src = '../javascript/scoreboard.js'></script>
+  </body>
+</html>

@@ -45,7 +45,7 @@ Scoreboard.prototype.recordFrameResults = function() {
 
 Scoreboard.prototype.sumPreviousFrame = function() {
   var previousFrameArray = this.resultsArray[this.resultsArray.length - 2];
-  var total = this.lastFrameTotal;
+  var total = 0; 
   for(var i=0; i<2; i++){
     total += previousFrameArray[i]
   }

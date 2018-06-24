@@ -31,19 +31,23 @@ Scorecard.prototype._calculateFirstFrameScore = function(firstBall, secondBall, 
   }
 }
 
+Scorecard.prototype._updateScoreForFrameScoreUnder10 = function(firstBall, secondBall, thisFrameScore){
+  if(this._isPreviousFrameSpare()) {
+    this._currentScore += 10 + firstBall + thisFrameScore;
+  }
+  if(this._isPreviousFrameStrike()) {
+    this._currentScore += 10 + thisFrameScore * 2;
+  }
+  if(this._previousFrameScore() < 10) {
+    this._addCurrentFrameScore(thisFrameScore);
+  }
+}
+
 Scorecard.prototype._calculateSecondFrameScore = function(firstBall, secondBall, thisFrameScore){
   if(this._currentFrame === 2) {
     // when second frame is under 10
     if(thisFrameScore < 10){
-      if(this._isPreviousFrameSpare()) {
-        this._currentScore += 10 + firstBall + thisFrameScore;
-      }
-      if(this._isPreviousFrameStrike()) {
-        this._currentScore += 10 + thisFrameScore * 2;
-      }
-      if(this._previousFrameScore() < 10) {
-        this._addCurrentFrameScore(thisFrameScore);
-      }
+      this._updateScoreForFrameScoreUnder10(firstBall, secondBall, thisFrameScore)
     }
     // When second frame is a strike and first frame is spare
     if(firstBall === 10 && this._isPreviousFrameSpare()){
@@ -75,8 +79,7 @@ Scorecard.prototype._calculateFrameScore = function(firstBall, secondBall, thisF
         this._currentScore += 10 + thisFrameScore * 2;
       }
       if(this._isPreviousFrameStrike(2)) {
-        this._testy(firstBall, secondBall)
-        // this._currentScore += 30 + firstBall + thisFrameScore * 2;
+        this._currentScore += 30 + firstBall + thisFrameScore * 2;
       }
       if(this._isPreviousFrameSpare(2)) {
         this._currentScore += 10 + thisFrameScore * 2;
@@ -149,6 +152,9 @@ Scorecard.prototype._calculateTenthFrameScore = function(firstBall, secondBall, 
   }
 }
 
+
+
+
 Scorecard.prototype._endFrame = function(firstBall, secondBall){
   this._currentFrame += 1;
   this._scoreCard.push([firstBall, secondBall]);
@@ -179,15 +185,3 @@ Scorecard.prototype._addCurrentFrameScore = function(thisFrameScore){
 Scorecard.prototype._addSpareWithBonus = function(thisFrameScore){
   this._currentScore += 10 + thisFrameScore;
 }
-
-Scorecard.prototype._pattern1 = function(firstBall, secondBall){
-  this._currentScore += this._scoreCard[this._scoreCard.length - 2][0]
-    + this._scoreCard[this._scoreCard.length - 1][0] +
-    firstBall +
-    this._scoreCard[this._scoreCard.length - 1][0] +
-    firstBall +
-    secondBall +
-    firstBall + secondBall
-}
-// Scorecard.prototype._addLast
-// this._currentScore += 10 + firstBall + thisFrameScore

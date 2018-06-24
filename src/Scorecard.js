@@ -33,8 +33,8 @@ Scorecard.prototype._isPreviousFrameSpare = function(){
     this._previousFrameScore() === 10;
 }
 
-Scorecard.prototype._isPreviousFrameStrike = function(){
-  return this._scoreCard[this._scoreCard.length -1][0] === 10
+Scorecard.prototype._isPreviousFrameStrike = function(framesBack = 1){
+  return this._scoreCard[this._scoreCard.length - framesBack][0] === 10
 }
 
 Scorecard.prototype._calculateSecondFrameScore = function(firstBall, secondBall, thisFrameScore){
@@ -82,6 +82,9 @@ Scorecard.prototype._calculateThirdToNinthFrameScore = function(firstBall, secon
     if(this._isPreviousFrameStrike()) {
       if(this._previousFrameScore(2) < 10) {
         this._currentScore += 10 + thisFrameScore + thisFrameScore
+      }
+      if(this._isPreviousFrameStrike(2)) {
+        this._currentScore += 10 + 10 + firstBall + 10 + thisFrameScore + thisFrameScore;
       }
     }
   }

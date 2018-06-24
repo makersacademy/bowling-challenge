@@ -99,6 +99,18 @@ describe('Scorecard', function(){
               expect(scorecard.showScore()).toBe(48)
             });
           });
+          describe('When the frame before that is a strike', function(){
+            it('add both strikes, bonuses & current framescore', function(){
+              scorecard.addFrameScore(7, 0)
+              scorecard.addFrameScore(8, 1)
+              scorecard.addFrameScore(4, 4)
+              scorecard.addFrameScore(3, 0)
+              scorecard.addFrameScore(10, 0)
+              scorecard.addFrameScore(10, 0)
+              scorecard.addFrameScore(4, 3)
+              expect(scorecard.showScore()).toBe(75)
+            });
+          });
         });
       });
     });

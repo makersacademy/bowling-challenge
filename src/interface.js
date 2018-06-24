@@ -1,7 +1,8 @@
 $(document).ready( function() {
 	var scoreCalculator = new ScoreCalculator;
+	var scoreDisplay;
 
-	$(function() {
+	$(function values() {
 		var $select = $(".0-10");
 		for (var i = 0; i <= 10; i++) {
 			$select.append($("<option></option>").val(i).html(i));
@@ -23,8 +24,15 @@ $(document).ready( function() {
 		scoreCalculator.addScore(scores);
 		scoreCalculator.calculateScore();
 		var gameScore = scoreCalculator.getScore();
-		var scoreDisplay = new ScoreDisplay(gameScore);
+		scoreDisplay = new ScoreDisplay(gameScore);
 		$("#total-score").text(scoreDisplay.getTotalScore());
 	});
-	
+
+	$("#reset").click ( function(event) {
+		scoreCalculator.clearScore();
+		scoreCalculator.getScore();
+		scoreDisplay.reset();
+		$("#total-score").text(scoreDisplay.getTotalScore());
+	});
+
 });

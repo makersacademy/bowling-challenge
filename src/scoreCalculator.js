@@ -42,5 +42,6 @@ ScoreCalculator.prototype.calculateScore = function() {
 };
 
 ScoreCalculator.prototype.clearScore = function() {
+  this.totalScore = this.DEFAULT_SCORE;
   this.scores = [];
 };

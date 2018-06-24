@@ -13,17 +13,17 @@ Scorecard.prototype.showScore = function(){
 Scorecard.prototype.bowl = function(firstBall, secondBall, tenthFrameThirdBall = null){
   var thisFrameScore = firstBall + secondBall;
 
-  this._calculateFirstFrameScore(firstBall, secondBall, thisFrameScore)
-  this._calculateSecondFrameScore(firstBall, secondBall, thisFrameScore)
+  this._updateFirstFrameScore(firstBall, secondBall, thisFrameScore)
+  this._updateSecondFrameScore(firstBall, secondBall, thisFrameScore)
   if(this._currentFrame >= 3 && this._currentFrame < 10) {
-    this._calculateFrameScore(firstBall, secondBall, thisFrameScore)
+    this._updateFrameScore(firstBall, secondBall, thisFrameScore)
   }
-  this._calculateTenthFrameScore(firstBall, secondBall, tenthFrameThirdBall, thisFrameScore)
+  this._updateTenthFrameScore(firstBall, secondBall, tenthFrameThirdBall, thisFrameScore)
 
   this._endFrame(firstBall, secondBall);
 };
 
-Scorecard.prototype._calculateFirstFrameScore = function(firstBall, secondBall, thisFrameScore){
+Scorecard.prototype._updateFirstFrameScore = function(firstBall, secondBall, thisFrameScore){
   if (this._currentFrame === 1) {
     if(thisFrameScore !== 10) {
       this._addCurrentFrameScore(thisFrameScore);
@@ -31,25 +31,21 @@ Scorecard.prototype._calculateFirstFrameScore = function(firstBall, secondBall, 
   }
 }
 
-
-Scorecard.prototype._calculateSecondFrameScore = function(firstBall, secondBall, thisFrameScore){
+Scorecard.prototype._updateSecondFrameScore = function(firstBall, secondBall, thisFrameScore){
   if(this._currentFrame === 2) {
-    // when second frame is under 10
     if(thisFrameScore < 10){
       this._updateScoreForSecondFrameScoreUnder10(firstBall, secondBall, thisFrameScore)
     }
-    // When second frame is a strike and first frame is spare
     if(firstBall === 10 && this._isPreviousFrameSpare()){
       this._currentScore += 10 + firstBall;
     }
-    // When second frame is a spare
     if(firstBall !== 10 && thisFrameScore === 10) {
       this._updateScoreForSecondFrameSpare(firstBall)
     }
   }
 }
 
-Scorecard.prototype._calculateFrameScore = function(firstBall, secondBall, thisFrameScore){
+Scorecard.prototype._updateFrameScore = function(firstBall, secondBall, thisFrameScore){
   // when current frame is under 10
   if(thisFrameScore < 10) {
     // when previous frame is under 10
@@ -103,34 +99,34 @@ Scorecard.prototype._calculateFrameScore = function(firstBall, secondBall, thisF
   }
 }
 
-Scorecard.prototype._calculateTenthFrameScore = function(firstBall, secondBall, tenthFrameThirdBall, thisFrameScore){
+Scorecard.prototype._updateTenthFrameScore = function(firstBall, secondBall, tenthFrameThirdBall, thisFrameScore){
   if(this._currentFrame == 10) {
     // if the 10th frame is under 10
     if(thisFrameScore < 10){
-      this._calculateFrameScore(firstBall, secondBall, thisFrameScore)
+      this._updateFrameScore(firstBall, secondBall, thisFrameScore)
     }
     // if the 10th frame is a spare
     if(this._isThisFrameSpare(firstBall, secondBall, thisFrameScore)) {
-      this._calculateFrameScore(firstBall, secondBall, thisFrameScore)
+      this._updateFrameScore(firstBall, secondBall, thisFrameScore)
       this._endFrame(firstBall, secondBall);
-      this._calculateFrameScore(tenthFrameThirdBall, 0, tenthFrameThirdBall)
+      this._updateFrameScore(tenthFrameThirdBall, 0, tenthFrameThirdBall)
       this._currentScore -= tenthFrameThirdBall
     }
     // if the first ball of 10th frame is a strike
     if(firstBall === 10){
-      this._calculateFrameScore(firstBall, 0, firstBall)
+      this._updateFrameScore(firstBall, 0, firstBall)
       // when the second ball is a strike
       if(secondBall === 10) {
         this._endFrame(firstBall, secondBall);
-        this._calculateFrameScore(secondBall, 0, secondBall)
+        this._updateFrameScore(secondBall, 0, secondBall)
         this._endFrame(firstBall, secondBall);
-        this._calculateFrameScore(tenthFrameThirdBall, 0, tenthFrameThirdBall)
+        this._updateFrameScore(tenthFrameThirdBall, 0, tenthFrameThirdBall)
       }
       // when the second ball is under 10
       if(secondBall < 10) {
         var finalTotal = secondBall + tenthFrameThirdBall
         this._endFrame(firstBall, secondBall);
-        this._calculateFrameScore(secondBall, tenthFrameThirdBall, finalTotal)
+        this._updateFrameScore(secondBall, tenthFrameThirdBall, finalTotal)
       }
     }
   }

@@ -18,6 +18,7 @@ Scorecard.prototype.addFrameScore = function(firstBall, secondBall){
   if(this._currentFrame >= 3 && this._currentFrame < 10) {
     this._calculateThirdToNinthFrameScore(firstBall, secondBall, thisFrameScore)
   }
+  this._calculateTenthFrameScore(firstBall, secondBall, thisFrameScore)
 
   this._scoreCard.push([firstBall, secondBall]);
   this._currentFrame += 1;
@@ -124,6 +125,15 @@ Scorecard.prototype._calculateThirdToNinthFrameScore = function(firstBall, secon
     }
     if(this._isPreviousFrameStrike() && this._isPreviousFrameStrike(2)) {
       this._currentScore += 10 + 20;
+    }
+  }
+}
+
+Scorecard.prototype._calculateTenthFrameScore = function(firstBall, secondBall, thisFrameScore){
+  if(this._currentFrame == 10) {
+    // if the 10th frame is under 10
+    if(thisFrameScore < 10){
+      this._calculateThirdToNinthFrameScore(firstBall, secondBall, thisFrameScore)
     }
   }
 }

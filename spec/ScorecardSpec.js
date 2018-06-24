@@ -80,7 +80,7 @@ describe('Scorecard', function(){
   });
 
   describe('When 3rd to 9th Frame', function(){
-    describe('When current frame is under 10', function(){
+    describe('When under 10', function(){
       describe('When previous frame is under 10', function(){
         it('adds the current frame score to total', function(){
           scorecard.addFrameScore(10, 0)
@@ -201,6 +201,33 @@ describe('Scorecard', function(){
         });
       });
     //end of 3rd-9th frame
+    });
+    describe('When 10th Frame', function(){
+      // describe('When a spare', function(){
+      //   describe('When the second ball is a strike', function(){
+      //
+      //   });
+      // });
+      // describe('When a strike', function(){
+      //   describe('When the second ball is a strike', function(){
+      //
+      //   });
+      // });
+      describe('When under 10', function(){
+        it('calculates the final score', function(){
+          scorecard.addFrameScore(3, 1)
+          scorecard.addFrameScore(6, 4)
+          scorecard.addFrameScore(10, 0)
+          scorecard.addFrameScore(4, 6)
+          scorecard.addFrameScore(3, 1)
+          scorecard.addFrameScore(6, 4)
+          scorecard.addFrameScore(10, 0)
+          scorecard.addFrameScore(4, 6)
+          scorecard.addFrameScore(10, 0)
+          scorecard.addFrameScore(4, 5)
+          expect(scorecard.showScore()).toBe(149)
+        });
+      });
     });
 
   });

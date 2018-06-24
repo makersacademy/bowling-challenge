@@ -189,6 +189,15 @@ describe('Scorecard', function(){
               expect(scorecard.showScore()).toBe(48)
             });
           });
+          describe('When the frame before that was a spare', function(){
+            it('adds the spare and bonus', function(){
+              scorecard.addFrameScore(3, 1)
+              scorecard.addFrameScore(6, 4)
+              scorecard.addFrameScore(10, 0)
+              scorecard.addFrameScore(4, 6)
+              expect(scorecard.showScore()).toBe(44)
+            });
+          });
         });
       });
     //end of 3rd-9th frame

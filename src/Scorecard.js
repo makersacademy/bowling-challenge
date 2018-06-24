@@ -10,7 +10,7 @@ Scorecard.prototype.showScore = function(){
   return this._currentScore;
 };
 
-Scorecard.prototype.addFrameScore = function(firstBall, secondBall){
+Scorecard.prototype.addFrameScore = function(firstBall, secondBall, tenthFrameThirdBall = null){
   var thisFrameScore = firstBall + secondBall;
 
   this._calculateFirstFrameScore(firstBall, secondBall, thisFrameScore)
@@ -18,7 +18,7 @@ Scorecard.prototype.addFrameScore = function(firstBall, secondBall){
   if(this._currentFrame >= 3 && this._currentFrame < 10) {
     this._calculateThirdToNinthFrameScore(firstBall, secondBall, thisFrameScore)
   }
-  this._calculateTenthFrameScore(firstBall, secondBall, thisFrameScore)
+  this._calculateTenthFrameScore(firstBall, secondBall, tenthFrameThirdBall, thisFrameScore)
 
   this._scoreCard.push([firstBall, secondBall]);
   this._currentFrame += 1;
@@ -129,11 +129,17 @@ Scorecard.prototype._calculateThirdToNinthFrameScore = function(firstBall, secon
   }
 }
 
-Scorecard.prototype._calculateTenthFrameScore = function(firstBall, secondBall, thisFrameScore){
+Scorecard.prototype._calculateTenthFrameScore = function(firstBall, secondBall, tenthFrameThirdBall, thisFrameScore){
   if(this._currentFrame == 10) {
     // if the 10th frame is under 10
     if(thisFrameScore < 10){
       this._calculateThirdToNinthFrameScore(firstBall, secondBall, thisFrameScore)
+    }
+    // if the 10th frame is a spare
+    if(firstBall !== 10 && thisFrameScore === 10) {
+      this._calculateThirdToNinthFrameScore(firstBall, secondBall, thisFrameScore)
+      this._calculateThirdToNinthFrameScore(tenthFrameThirdBall, 0, tenthFrameThirdBall)
+      this._currentScore -= tenthFrameThirdBall
     }
   }
 }

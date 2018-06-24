@@ -202,34 +202,44 @@ describe('Scorecard', function(){
       });
     //end of 3rd-9th frame
     });
-    describe('When 10th Frame', function(){
-      // describe('When a spare', function(){
-      //   describe('When the second ball is a strike', function(){
-      //
-      //   });
-      // });
-      // describe('When a strike', function(){
-      //   describe('When the second ball is a strike', function(){
-      //
-      //   });
-      // });
-      describe('When under 10', function(){
-        it('calculates the final score', function(){
-          scorecard.addFrameScore(3, 1)
-          scorecard.addFrameScore(6, 4)
-          scorecard.addFrameScore(10, 0)
-          scorecard.addFrameScore(4, 6)
-          scorecard.addFrameScore(3, 1)
-          scorecard.addFrameScore(6, 4)
-          scorecard.addFrameScore(10, 0)
-          scorecard.addFrameScore(4, 6)
-          scorecard.addFrameScore(10, 0)
-          scorecard.addFrameScore(4, 5)
-          expect(scorecard.showScore()).toBe(149)
-        });
-      });
-    });
+
 
   });
-
+  describe('When 10th Frame', function(){
+    describe('When a spare', function(){
+      it('adds the final frame and bonus', function(){
+        scorecard.addFrameScore(2, 1)
+        scorecard.addFrameScore(1, 9)
+        scorecard.addFrameScore(10, 0)
+        scorecard.addFrameScore(10, 0)
+        scorecard.addFrameScore(3, 1)
+        scorecard.addFrameScore(6, 4)
+        scorecard.addFrameScore(10, 0)
+        scorecard.addFrameScore(4, 6)
+        scorecard.addFrameScore(10, 0)
+        scorecard.addFrameScore(5, 5, 7)
+        expect(scorecard.showScore()).toBe(161)
+      })
+    });
+    // describe('When a strike', function(){
+    //   describe('When the second ball is a strike', function(){
+    //
+    //   });
+    // });
+    describe('When under 10', function(){
+      it('calculates the final score', function(){
+        scorecard.addFrameScore(3, 1)
+        scorecard.addFrameScore(6, 4)
+        scorecard.addFrameScore(10, 0)
+        scorecard.addFrameScore(4, 6)
+        scorecard.addFrameScore(3, 1)
+        scorecard.addFrameScore(6, 4)
+        scorecard.addFrameScore(10, 0)
+        scorecard.addFrameScore(4, 6)
+        scorecard.addFrameScore(10, 0)
+        scorecard.addFrameScore(4, 5)
+        expect(scorecard.showScore()).toBe(149)
+      });
+    });
+  });
 });

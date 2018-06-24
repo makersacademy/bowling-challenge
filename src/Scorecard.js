@@ -141,5 +141,19 @@ Scorecard.prototype._calculateTenthFrameScore = function(firstBall, secondBall, 
       this._calculateThirdToNinthFrameScore(tenthFrameThirdBall, 0, tenthFrameThirdBall)
       this._currentScore -= tenthFrameThirdBall
     }
+    // if the first ball of 10th frame is a strike
+    if(firstBall === 10){
+      // when the second ball is a strike
+      if(secondBall === 10) {
+        this._calculateThirdToNinthFrameScore(firstBall, 0, firstBall)
+        this._currentFrame += 1
+        this._scoreCard.push([firstBall, secondBall]);
+        this._calculateThirdToNinthFrameScore(secondBall, 0, secondBall)
+        this._currentFrame += 1
+        this._scoreCard.push([firstBall, secondBall]);
+        this._calculateThirdToNinthFrameScore(tenthFrameThirdBall, 0, tenthFrameThirdBall)
+        // this._currentScore -= tenthFrameThirdBall
+      }
+    }
   }
 }

@@ -28,9 +28,9 @@ Scorecard.prototype._previousFrameScore = function(framesBack = 1) {
     this._scoreCard[this._scoreCard.length - framesBack][1];
 }
 
-Scorecard.prototype._isPreviousFrameSpare = function(){
-  return this._scoreCard[this._scoreCard.length -1][0] !== 10 &&
-    this._previousFrameScore() === 10;
+Scorecard.prototype._isPreviousFrameSpare = function(framesBack = 1){
+  return this._scoreCard[this._scoreCard.length - framesBack][0] !== 10 &&
+    this._previousFrameScore(framesBack) === 10;
 }
 
 Scorecard.prototype._isPreviousFrameStrike = function(framesBack = 1){
@@ -75,6 +75,7 @@ Scorecard.prototype._calculateFirstFrameScore = function(firstBall, secondBall, 
 }
 
 Scorecard.prototype._calculateThirdToNinthFrameScore = function(firstBall, secondBall, thisFrameScore){
+  // when current frame is under 10
   if(thisFrameScore < 10) {
     if(this._previousFrameScore() < 10) {
       this._currentScore += thisFrameScore;
@@ -86,6 +87,15 @@ Scorecard.prototype._calculateThirdToNinthFrameScore = function(firstBall, secon
       if(this._isPreviousFrameStrike(2)) {
         this._currentScore += 10 + 10 + firstBall + 10 + thisFrameScore + thisFrameScore;
       }
+      if(this._isPreviousFrameSpare(2)) {
+        this._currentScore += 10 + thisFrameScore + thisFrameScore;
+      }
+    }
+  }
+  // when current frame is a strike
+  if(firstBall === 10){
+    if(this._isPreviousFrameSpare()){
+      this._currentScore += 10 + 10
     }
   }
 }

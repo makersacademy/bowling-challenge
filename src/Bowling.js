@@ -12,26 +12,32 @@ Game.prototype.bowl = function bowl(score) {
   this._validScore(score);
   this.frame.push(score);
   this.pins -= score;
+  this._endFrame();
+};
+
+Game.prototype.score = function score(frame) {
+  let total = 0;
+  for (i = 1; i <= frame; i += 1) {
+    this.frameScore = 0;
+    this._calcFrame(i);
+    total += this.frameScore;
+  }
+  return total;
+};
+
+Game.prototype._gameOver = function _gameOver() {
+  if (this.finish === true) {
+    throw new Error('Game has finished, start a new game');
+  }
+};
+
+Game.prototype._endFrame = function _endFrame() {
   if (this.finalFrame === false) {
     this._endTurn();
   } else {
     this._endGame();
     this._resetPins();
   }
-};
-
-Game.prototype.score = function score(frame) {
-  this.frameScore = 0;
-  this._calcFrame(frame);
-  return this.frameScore;
-};
-
-Game.prototype.total = function total() {
-  let totalScore = 0;
-  for (i = 1; i <= this.frames.length; i += 1) {
-    totalScore += this.score(i);
-  }
-  return totalScore;
 };
 
 Game.prototype._endTurn = function _endTurn() {
@@ -49,12 +55,6 @@ Game.prototype._endGame = function _endGame() {
     this.frames.push(this.frame);
     this.frame = [];
     this.pins = 10;
-  }
-};
-
-Game.prototype._gameOver = function _gameOver() {
-  if (this.finish === true) {
-    throw new Error('Game has finished, start a new game');
   }
 };
 
@@ -88,16 +88,18 @@ Game.prototype._calcFrame = function _calcFrame(frame) {
 Game.prototype._frameNotComplete = function _frameNotComplete(frame) {
   if (frame > this.frames.length && this.frame.length === 1) {
     this.frameScore = this.frame[0];
-  } else if (this.finalFrame === true && this.finish === false) {
-    this.frameScore = this.frame[0] + this.frame[1];
+  } else if (frame > this.frames.length && this.finalFrame === true && this.finish === false) {
+    this._finalFrameCheck(frame);
   } else if (frame > this.frames.length) {
     // empty
-  } else { this._frameComplete(frame); }
+  } else {
+    this._frameComplete(frame);
+  }
 };
 
 Game.prototype._frameComplete = function _frameComplete(frame) {
-  for (i = 0; i < this.frames[frame - 1].length; i += 1) {
-    this.frameScore += this.frames[frame - 1][i];
+  for (x = 0; x < this.frames[frame - 1].length; x += 1) {
+    this.frameScore += this.frames[frame - 1][x];
   }
   this._strike(frame);
 };
@@ -108,8 +110,8 @@ Game.prototype._strike = function _strike(frame) {
     if (this.frames[frame].length > 2) {
       frameLength = 2;
     } else { frameLength = this.frames[frame].length; }
-    for (i = 0; i < frameLength; i += 1) {
-      this.frameScore += this.frames[frame][i];
+    for (y = 0; y < frameLength; y += 1) {
+      this.frameScore += this.frames[frame][y];
     }
     if (this.frames[frame][0] === 10 && this.frames.length > (frame + 1) && frame !== 9) {
       this.frameScore += this.frames[frame + 1][0];
@@ -122,3 +124,11 @@ Game.prototype._strike = function _strike(frame) {
 Game.prototype._spare = function _spare(frame) {
   this.frameScore += this.frames[frame][0];
 };
+
+Game.prototype._finalFrameCheck = function _finalFrameCheck(frame) {
+  if (this.frame.length === 2) {
+    this.frameScore = this.frame[0] + this.frame[1];
+  } else if (this.frame.length === 1) { this.frameScore = this.frame[0]; } else {
+    // empty
+  }
+}

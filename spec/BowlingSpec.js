@@ -83,7 +83,7 @@ describe('Game', () => {
         game.bowl(10);
         game.bowl(4);
         game.bowl(4);
-        expect(game.score(9)).toEqual(18);
+        expect(game.score(9)).toEqual(34);
       });
 
       it('scores the 9th frame correctly if there is a strike on strike', () => {
@@ -91,7 +91,7 @@ describe('Game', () => {
         game.bowl(10);
         game.bowl(4);
         game.bowl(4);
-        expect(game.score(9)).toEqual(24);
+        expect(game.score(9)).toEqual(40);
       });
 
       it('scores the 9th frame correctly if there is a turkey', () => {
@@ -99,7 +99,7 @@ describe('Game', () => {
         game.bowl(10);
         game.bowl(10);
         game.bowl(10);
-        expect(game.score(9)).toEqual(30);
+        expect(game.score(9)).toEqual(46);
       });
 
       it('scores the 9th frame correctly if there is a spare', () => {
@@ -107,7 +107,7 @@ describe('Game', () => {
         game.bowl(5);
         game.bowl(4);
         game.bowl(4);
-        expect(game.score(9)).toEqual(14);
+        expect(game.score(9)).toEqual(30);
       });
     });
   });
@@ -180,40 +180,40 @@ describe('Game', () => {
 
     it('adds to the score after one bowl', () => {
       game.bowl(4);
-      expect(game.score(10)).toEqual(4);
+      expect(game.score(10)).toEqual(22);
     });
 
     it('adds to the score after two bowls', () => {
       game.bowl(4);
       game.bowl(4);
-      expect(game.score(10)).toEqual(8);
+      expect(game.score(10)).toEqual(26);
     });
 
     it('scores correctly after a spare', () => {
       game.bowl(5);
       game.bowl(5);
       game.bowl(5);
-      expect(game.score(10)).toEqual(15);
+      expect(game.score(10)).toEqual(33);
     });
 
     it('scores correctly after a strike', () => {
       game.bowl(10);
       game.bowl(4);
       game.bowl(4);
-      expect(game.score(10)).toEqual(18);
+      expect(game.score(10)).toEqual(36);
     });
 
     it('scores correctly after two strikes', () => {
       game.bowl(10);
       game.bowl(10);
       game.bowl(4);
-      expect(game.score(10)).toEqual(24);
+      expect(game.score(10)).toEqual(42);
     });
 
     it('scores correctly after 2 bowls in incomplete final frame', () => {
       game.bowl(10);
       game.bowl(10);
-      expect(game.score(10)).toEqual(20);
+      expect(game.score(10)).toEqual(38);
     });
   });
 
@@ -222,14 +222,14 @@ describe('Game', () => {
       for (i = 0; i < 12; i += 1) {
         game.bowl(10);
       }
-      expect(game.total()).toEqual(300);
+      expect(game.score(10)).toEqual(300);
     });
 
     it('scores a gutter game', () => {
       for (i = 0; i < 20; i += 1) {
         game.bowl(0);
       }
-      expect(game.total()).toEqual(0);
+      expect(game.score(10)).toEqual(0);
     });
   });
 });

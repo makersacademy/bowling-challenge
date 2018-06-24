@@ -1,5 +1,7 @@
 "use strict";
 
+var describe, it, expect, ScoreDisplay;
+
 describe("Score Display", function() {
 
 	var scoreDisplay;

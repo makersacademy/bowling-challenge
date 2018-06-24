@@ -114,36 +114,57 @@ describe('Scorecard', function(){
           describe('When the frame before that is a spare', function(){
             it('add strike, bonus & current framescore', function(){
               scorecard.addFrameScore(7, 0)
-              console.log("1. current score =", scorecard._currentScore)
               scorecard.addFrameScore(8, 1)
-              console.log("2. current score =", scorecard._currentScore)
               scorecard.addFrameScore(4, 4)
-              console.log("3. current score =", scorecard._currentScore)
               scorecard.addFrameScore(3, 0)
-              console.log("4. current score =", scorecard._currentScore)
               scorecard.addFrameScore(7, 3)
-              console.log("5. current score =", scorecard._currentScore)
               scorecard.addFrameScore(10, 0)
-              console.log("6. current score =", scorecard._currentScore)
               scorecard.addFrameScore(4, 3)
-              console.log("7. current score =", scorecard._currentScore)
               expect(scorecard.showScore()).toBe(71)
             });
           });
         });
-        describe('When current frame is a strike', function(){
-          describe('When previous frame is a spare', function(){
-            it('adds spare and bonus', function(){
-              scorecard.addFrameScore(3, 0)
-              scorecard.addFrameScore(6, 2)
-              scorecard.addFrameScore(9, 1)
-              scorecard.addFrameScore(10, 0)
-              expect(scorecard.showScore()).toBe(31)
-            });
+        describe('When previous frame is a spare', function(){
+          it('adds spare, bonus and current framescore', function(){
+            scorecard.addFrameScore(3, 0)
+            console.log("1. current score =", scorecard._currentScore)
+            scorecard.addFrameScore(7, 3)
+            console.log("2. current score =", scorecard._currentScore)
+            scorecard.addFrameScore(8, 2)
+            console.log("3. current score =", scorecard._currentScore)
+            scorecard.addFrameScore(4, 3)
+            console.log("4. current score =", scorecard._currentScore)
+            expect(scorecard.showScore()).toBe(42)
+          });
+        });
+      // end of when current frame is under 10
+      });
+      describe('When current frame is a strike', function(){
+        describe('When previous frame is a spare', function(){
+          it('adds spare and bonus', function(){
+            scorecard.addFrameScore(3, 0)
+            scorecard.addFrameScore(6, 2)
+            scorecard.addFrameScore(9, 1)
+            scorecard.addFrameScore(10, 0)
+            expect(scorecard.showScore()).toBe(31)
+          });
+        });
+      // end of when current frame is a strike
+      });
+      describe('When current frame is a spare', function(){
+        describe('When previous frame is a spare', function(){
+          it('adds spare and bonus', function(){
+            scorecard.addFrameScore(3, 1)
+            scorecard.addFrameScore(4, 1)
+            scorecard.addFrameScore(7, 3)
+            scorecard.addFrameScore(4, 6)
+            expect(scorecard.showScore()).toBe(23)
           });
         });
       });
+    //end of 3rd-9th frame
     });
+
   });
 
 

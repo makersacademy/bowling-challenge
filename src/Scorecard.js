@@ -39,6 +39,7 @@ Scorecard.prototype._isPreviousFrameStrike = function(framesBack = 1){
 
 Scorecard.prototype._calculateSecondFrameScore = function(firstBall, secondBall, thisFrameScore){
   if(this._currentFrame === 2) {
+    // when second frame is under 10
     if(thisFrameScore < 10){
       if(this._isPreviousFrameSpare()) {
         this._currentScore += 10 + firstBall + thisFrameScore;
@@ -50,11 +51,11 @@ Scorecard.prototype._calculateSecondFrameScore = function(firstBall, secondBall,
         this._currentScore += thisFrameScore;
       }
     }
-    // If second frame is a strike and first frame is spare
+    // When second frame is a strike and first frame is spare
     if(firstBall === 10 && this._isPreviousFrameSpare()){
       this._currentScore += 10 + firstBall;
     }
-    // if 2nd frame is a spare
+    // When second frame is a spare
     if(firstBall !== 10 && thisFrameScore === 10) {
       if(this._isPreviousFrameStrike()){
         this._currentScore += 20;
@@ -77,9 +78,11 @@ Scorecard.prototype._calculateFirstFrameScore = function(firstBall, secondBall, 
 Scorecard.prototype._calculateThirdToNinthFrameScore = function(firstBall, secondBall, thisFrameScore){
   // when current frame is under 10
   if(thisFrameScore < 10) {
+    // when previous frame is under 10
     if(this._previousFrameScore() < 10) {
       this._currentScore += thisFrameScore;
     }
+    // when previous frame is a strike
     if(this._isPreviousFrameStrike()) {
       if(this._previousFrameScore(2) < 10) {
         this._currentScore += 10 + thisFrameScore + thisFrameScore
@@ -91,7 +94,18 @@ Scorecard.prototype._calculateThirdToNinthFrameScore = function(firstBall, secon
         this._currentScore += 10 + thisFrameScore + thisFrameScore;
       }
     }
+    // when previous frame is a spare
+    if(this._isPreviousFrameSpare()){
+      this._currentScore += 10 + firstBall + thisFrameScore;
+    }
   }
+  // when current frame is a spare
+  if(firstBall !== 10 && thisFrameScore === 10) {
+    if(this._isPreviousFrameSpare()){
+      this._currentScore += 10 + firstBall;
+    }
+  }
+
   // when current frame is a strike
   if(firstBall === 10){
     if(this._isPreviousFrameSpare()){

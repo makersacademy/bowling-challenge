@@ -232,16 +232,25 @@ describe('Scorecard', function(){
           scorecard.addFrameScore(6, 4)
           scorecard.addFrameScore(10, 0)
           scorecard.addFrameScore(4, 6)
-          console.log("Scorecard =", scorecard._currentScore)
           scorecard.addFrameScore(10, 0)
-          console.log("1. Scorecard =", scorecard._currentScore)
           scorecard.addFrameScore(10, 10, 10)
-          console.log("final. Scorecard =", scorecard._currentScore)
           expect(scorecard.showScore()).toBe(184)
         });
       });
       describe('When the second ball is under 10', function(){
-
+        it('adds the final frame and bonus', function(){
+          scorecard.addFrameScore(2, 1)
+          scorecard.addFrameScore(1, 9)
+          scorecard.addFrameScore(10, 0)
+          scorecard.addFrameScore(10, 0)
+          scorecard.addFrameScore(3, 1)
+          scorecard.addFrameScore(6, 4)
+          scorecard.addFrameScore(10, 0)
+          scorecard.addFrameScore(4, 6)
+          scorecard.addFrameScore(10, 0)
+          scorecard.addFrameScore(10, 6, 4)
+          expect(scorecard.showScore()).toBe(170)
+        });
       });
     });
     describe('When under 10', function(){

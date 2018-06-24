@@ -138,6 +138,7 @@ Scorecard.prototype._calculateTenthFrameScore = function(firstBall, secondBall, 
     // if the 10th frame is a spare
     if(firstBall !== 10 && thisFrameScore === 10) {
       this._calculateThirdToNinthFrameScore(firstBall, secondBall, thisFrameScore)
+      // ADD FRAME & PUSH THE BALLS?
       this._calculateThirdToNinthFrameScore(tenthFrameThirdBall, 0, tenthFrameThirdBall)
       this._currentScore -= tenthFrameThirdBall
     }
@@ -153,6 +154,14 @@ Scorecard.prototype._calculateTenthFrameScore = function(firstBall, secondBall, 
         this._scoreCard.push([firstBall, secondBall]);
         this._calculateThirdToNinthFrameScore(tenthFrameThirdBall, 0, tenthFrameThirdBall)
         // this._currentScore -= tenthFrameThirdBall
+      }
+      // when the second ball is under 10
+      if(secondBall < 10) {
+        var finalTotal = secondBall + tenthFrameThirdBall
+        this._calculateThirdToNinthFrameScore(firstBall, 0, firstBall)
+        this._currentFrame += 1;
+        this._scoreCard.push([firstBall, secondBall]);
+        this._calculateThirdToNinthFrameScore(secondBall, tenthFrameThirdBall, finalTotal)
       }
     }
   }

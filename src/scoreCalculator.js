@@ -2,8 +2,10 @@
 
 function ScoreCalculator() {
   this.DEFAULT_SCORE = 0;
+  this.STRIKE = 10;
   this.scores = [];
   this.totalScore = this.DEFAULT_SCORE;
+
 };
 
 ScoreCalculator.prototype.getScore = function() {
@@ -17,10 +19,8 @@ ScoreCalculator.prototype.addScore = function(scores) {
 };
 
 ScoreCalculator.prototype.calculateScore = function() {
-  var i = 0;
-  var j = 1;
-  var k = 2;
-  var scores = this.scores
+  var [i, j, k] = [0, 1, 2];
+  var scores = this.scores;
   var length = scores.length;
   for(; i < 10; (i++, j++, k++)) {
     var a = (scores[i] === undefined) ? 0 : scores[i][0];
@@ -28,13 +28,13 @@ ScoreCalculator.prototype.calculateScore = function() {
     var c = (scores[j] === undefined) ? 0 : scores[j][0];
     var d = (scores[j] === undefined) ? 0 : scores[j][1];
     var e = (scores[k] === undefined) ? 0 : scores[k][0];
-    if (i === 9 && a === 10 && c === 10) {
+    if (i === 9 && a === this.STRIKE && c === this.STRIKE) {
       this.totalScore += (a + c + d);
-    } else if (a === 10 && c === 10) {
+    } else if (a === this.STRIKE && c === this.STRIKE) {
       this.totalScore += (a + c + e);
-    } else if (a === 10) {
+    } else if (a === this.STRIKE) {
       this.totalScore += (a + c + d);
-    } else if (a + b === 10) {
+    } else if (a + b === this.STRIKE) {
       this.totalScore += (a + b + c);
     } else {
       this.totalScore += (a + b);

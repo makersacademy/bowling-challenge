@@ -2,10 +2,9 @@
 
 function ScoreCalculator() {
   this.DEFAULT_SCORE = 0;
-  this.STRIKE = 10;
+  this.MAX_ROLL = 10;
   this.scores = [];
   this.totalScore = this.DEFAULT_SCORE;
-
 };
 
 ScoreCalculator.prototype.getScore = function() {
@@ -28,13 +27,13 @@ ScoreCalculator.prototype.calculateScore = function() {
     var c = (scores[j] === undefined) ? 0 : scores[j][0];
     var d = (scores[j] === undefined) ? 0 : scores[j][1];
     var e = (scores[k] === undefined) ? 0 : scores[k][0];
-    if (i === 9 && a === this.STRIKE && c === this.STRIKE) {
+    if (i === 9 && a === this.MAX_ROLL && c === this.MAX_ROLL) {
       this.totalScore += (a + c + d);
-    } else if (a === this.STRIKE && c === this.STRIKE) {
+    } else if (a === this.MAX_ROLL && c === this.MAX_ROLL) {
       this.totalScore += (a + c + e);
-    } else if (a === this.STRIKE) {
+    } else if (a === this.MAX_ROLL) {
       this.totalScore += (a + c + d);
-    } else if (a + b === this.STRIKE) {
+    } else if (a + b === this.MAX_ROLL) {
       this.totalScore += (a + b + c);
     } else {
       this.totalScore += (a + b);

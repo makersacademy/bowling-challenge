@@ -131,6 +131,44 @@ describe('BowlingGame', function() {
   });
 
   it('calculates the total score at the end of the game', function() {
+    setUpCompleteGame()
+    expect(bowlingGame.calculateFinalScore()).toEqual(120);
+  });
+
+  it('prevents the user from knocking down more than 10 pins per roll', function() {
+    expect(function(){ bowlingGame.addRoll(11); }).toThrowError('You cannot knock more than 10 pins in one roll.');
+  });
+
+  it('prevents the user from knocking down more than 10 pins per frame', function() {
+    bowlingGame.addRoll(9);
+    expect(function(){ bowlingGame.addRoll(2); }).toThrowError('You cannot knock more than 10 pins in one frame.');
+  });
+
+  it('prevents the user from playing more than 10 frames per game', function() {
+    bowlingGame.currentFrame = 11;
+    expect(function(){ bowlingGame.addRoll(2); }).toThrowError('The game has finished.');
+  });
+
+  describe('when it is the last frame', function() {
+    describe('when the first roll is a strike', function() {
+      it('the frame has three rolls', function() {
+        bowlingGame.currentFrame = 10;
+        bowlingGame.addRoll(10);
+        expect(function(){ bowlingGame.addRoll(2); }).not.toThrow();
+        expect(function(){ bowlingGame.addRoll(5); }).not.toThrow();
+      });
+    });
+    describe('when the first roll is a spare', function() {
+      it('the frame has three rolls', function() {
+        bowlingGame.currentFrame = 10;
+        bowlingGame.addRoll(1);
+        expect(function(){ bowlingGame.addRoll(9); }).not.toThrow();
+        expect(function(){ bowlingGame.addRoll(5); }).not.toThrow();
+      });
+    });
+  });
+
+  function setUpCompleteGame() {
     bowlingGame.scoreCard = {
       0: [0, 0, 0],
       1: [1, 4, 0],
@@ -140,19 +178,9 @@ describe('BowlingGame', function() {
       5: [10, 0, 1],
       6: [0, 1, 0],
       7: [7, 3, 6],
-      8: [6, 4, 10],
-      9: [10, 0, 9],
-      10: [2, 7, 0]
+      8: [6, 4, 4],
+      9: [4, 5, 0],
+      10: [10, 9, 1]
     }
-    expect(bowlingGame.calculateFinalScore()).toEqual(125);
-  });
-
-  it('prevents the user from knocking down more than 10 pins per roll', function() {
-    expect(function(){ bowlingGame.addRoll(11); }).toThrowError('That is not a valid roll.');
-  });
-
-  it('prevents the user from knocking down more than 10 pins per frame', function() {
-    bowlingGame.addRoll(9);
-    expect(function(){ bowlingGame.addRoll(2); }).toThrowError('That is not a valid roll.');
-  });
+  }
 });

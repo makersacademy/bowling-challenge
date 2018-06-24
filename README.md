@@ -40,8 +40,8 @@ All tests can be run via a browser, type ```open SpecRunner.html``` in to the te
 This is a bowling score card as per the standard game rules. Top score is 300, gutter game is zero pins hit, bonuses are given for rolling a spare and or strike.
 
 ### Code Style:
-Vanilla JavaScript, with Jasmine syntax for testing.
-jQuery for page interaction and HTML/CSS styling using Bootstrap.
+1. Vanilla JavaScript, with Jasmine syntax for testing.
+2. jQuery for page interaction and HTML/CSS styling using Bootstrap.
 
 ### Features:
 1. Drop down menu for each roll per frame.

@@ -138,7 +138,8 @@ Scorecard.prototype._calculateTenthFrameScore = function(firstBall, secondBall, 
     // if the 10th frame is a spare
     if(firstBall !== 10 && thisFrameScore === 10) {
       this._calculateThirdToNinthFrameScore(firstBall, secondBall, thisFrameScore)
-      // ADD FRAME & PUSH THE BALLS?
+      this._currentFrame += 1
+      this._scoreCard.push([firstBall, secondBall]);
       this._calculateThirdToNinthFrameScore(tenthFrameThirdBall, 0, tenthFrameThirdBall)
       this._currentScore -= tenthFrameThirdBall
     }

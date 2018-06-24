@@ -180,6 +180,15 @@ describe('Scorecard', function(){
               expect(scorecard.showScore()).toBe(29)
             });
           });
+          describe('When the frame before that was a strike', function(){
+            it('add the strikes and bonuses', function(){
+              scorecard.addFrameScore(3, 1)
+              scorecard.addFrameScore(10, 0)
+              scorecard.addFrameScore(10, 0)
+              scorecard.addFrameScore(4, 6)
+              expect(scorecard.showScore()).toBe(48)
+            });
+          });
         });
       });
     //end of 3rd-9th frame

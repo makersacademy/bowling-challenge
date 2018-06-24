@@ -86,7 +86,7 @@ Game.prototype._calcFrame = function _calcFrame(frame) {
 };
 
 Game.prototype._frameNotComplete = function _frameNotComplete(frame) {
-  if (frame > this.frames.length && this.frame.length === 1) {
+  if ((frame - 1) === this.frames.length && this.frame.length === 1) {
     this.frameScore = this.frame[0];
   } else if (frame > this.frames.length && this.finalFrame === true && this.finish === false) {
     this._finalFrameCheck();

@@ -72,6 +72,14 @@ describe('Game', () => {
       expect(game.score(1)).toEqual(10);
     });
 
+    it('returns the total score', () => {
+      game.bowl(10);
+      game.bowl(4);
+      game.bowl(1);
+      game.bowl(1);
+      expect(game.score(10)).toEqual(21);
+    });
+
     describe('ninthframe', () => {
       beforeEach(() => {
         for (i = 0; i < 16; i += 1) {

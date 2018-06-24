@@ -3,38 +3,11 @@ Bowling Challenge
 =================
 
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
-
 ## The Task
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
-
-Also, don't generate random rolls. Trust us on this one.
-
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
 
 ## Bowling — how does it work?
 
@@ -57,21 +30,47 @@ If the player rolls a strike or spare in the 10th frame they can roll the additi
 
 A Gutter Game is when the player never hits a pin (20 zero scores).
 
-### Perfect Game
+## Approach
 
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+### Methodology
 
-In the image below you can find some score examples.
+I started off going through the rules of bowling and listing out all the variables I believed would be needed to build the program and how they would be used during all eventual scenarios.  My next step was to diagram out the domain model.  I believed I should have a Game function, Frame function and Final Frame function.  I then set out to build the program while test driving first.  I began to build this with only a vague idea of how the bonus system would work and how the game would incorporate the frame and final frame.
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
+After the first day I was happy with some of the functionality but decided that I would need to rethink the bonus system and how to manage the frames.  I decided it would be easier to have everything in one function and worked out how to implement the bonuses so started again but using some of the basic functionality I had built previously.  I soon got the system to work roughly how I wanted with some minor tweaks needed to get the functionality to work exactly how I wanted.
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+I wanted the score for each frame to add all the previous frames and show update the score even if the frame is not complete as I believe this is how a bowling scorecard should work.  I had some bugs while getting this to work and I got a lot of useful experience getting viability using console.log and narrowing down the functionality commenting out lines of code.  This was also helped by my TDD approach.
 
-## Code Review
+I had planned to build a front-end interactive page for this however I run out of time.  I would also have liked to extract functions to be more in keeping with good object orientated practices which I have learned on the course.  I found the whole process was a great learning experience, especially in the importance of planning and diagramming everything before building any functionality.
 
-In code review we'll be hoping to see:
+## Technologies
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+The functionality was built using Javascript and tests was preformed using Jasmine which has 34 tests all passing.  Eslint was used as a linter. The tests can be run by opening the SpecRunner.html file in the browser.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+## Functionality
+
+An example of of how the code runs in the console below:
+
+```
+game = new Game()
+
+game.bowl(5)
+game.bowl(5)
+game.bowl(10)
+game.bowl(10)
+game.bowl(5)
+
+game.score(1)
+20
+
+game.score(2)
+40
+
+game.score(3)
+50
+
+game.score(4)
+55
+
+game.score(10)
+55
+```

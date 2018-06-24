@@ -170,6 +170,17 @@ describe('Scorecard', function(){
             expect(scorecard.showScore()).toBe(23)
           });
         });
+        describe('When previous frame is a strike', function(){
+          describe('When frame before that was under 10', function(){
+            it('adds the strike and bonus', function(){
+              scorecard.addFrameScore(3, 1)
+              scorecard.addFrameScore(4, 1)
+              scorecard.addFrameScore(10, 0)
+              scorecard.addFrameScore(4, 6)
+              expect(scorecard.showScore()).toBe(29)
+            });
+          });
+        });
       });
     //end of 3rd-9th frame
     });

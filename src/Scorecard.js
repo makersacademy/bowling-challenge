@@ -10,7 +10,7 @@ Scorecard.prototype.showScore = function(){
   return this._currentScore;
 };
 
-Scorecard.prototype.addFrameScore = function(firstBall, secondBall, tenthFrameThirdBall = null){
+Scorecard.prototype.bowl = function(firstBall, secondBall, tenthFrameThirdBall = null){
   var thisFrameScore = firstBall + secondBall;
 
   this._calculateFirstFrameScore(firstBall, secondBall, thisFrameScore)
@@ -26,7 +26,7 @@ Scorecard.prototype.addFrameScore = function(firstBall, secondBall, tenthFrameTh
 Scorecard.prototype._calculateFirstFrameScore = function(firstBall, secondBall, thisFrameScore){
   if (this._currentFrame === 1) {
     if(thisFrameScore !== 10) {
-      this._currentScore += thisFrameScore;
+      this._addCurrentFrameScore(thisFrameScore);
     }
   }
 }
@@ -42,7 +42,7 @@ Scorecard.prototype._calculateSecondFrameScore = function(firstBall, secondBall,
         this._currentScore += 10 + thisFrameScore + thisFrameScore;
       }
       if(this._previousFrameScore() < 10) {
-        this._currentScore += thisFrameScore;
+        this._addCurrentFrameScore(thisFrameScore);
       }
     }
     // When second frame is a strike and first frame is spare
@@ -66,7 +66,7 @@ Scorecard.prototype._calculateFrameScore = function(firstBall, secondBall, thisF
   if(thisFrameScore < 10) {
     // when previous frame is under 10
     if(this._previousFrameScore() < 10) {
-      this._currentScore += thisFrameScore;
+      this._addCurrentFrameScore(thisFrameScore);
     }
     // when previous frame is a strike
     if(this._isPreviousFrameStrike()) {
@@ -169,3 +169,10 @@ Scorecard.prototype._isPreviousFrameSpare = function(framesBack = 1){
 Scorecard.prototype._isPreviousFrameStrike = function(framesBack = 1){
   return this._scoreCard[this._scoreCard.length - framesBack][0] === 10
 }
+
+Scorecard.prototype._addCurrentFrameScore = function(thisFrameScore){
+  this._currentScore += thisFrameScore;
+}
+
+// Scorecard.prototype._addLast
+// this._currentScore += 10 + firstBall + thisFrameScore

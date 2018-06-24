@@ -151,16 +151,22 @@ Scorecard.prototype._updateScoreForTenthFrameSpare = function(firstBall, secondB
 
 Scorecard.prototype._updateScoreForTenthFrameStrike = function(firstBall, secondBall, tenthFrameThirdBall, thisFrameScore){
   this._updateFrameScore(firstBall, 0, firstBall);
+  this._endFrame(firstBall, 0);
+
   if(secondBall === 10) {
-    this._endFrame(firstBall, secondBall);
     this._updateFrameScore(secondBall, 0, secondBall);
     this._endFrame(firstBall, secondBall);
     this._updateFrameScore(tenthFrameThirdBall, 0, tenthFrameThirdBall);
   }
   if(secondBall < 10) {
     var finalTotal = secondBall + tenthFrameThirdBall;
-    this._endFrame(firstBall, secondBall);
     this._updateFrameScore(secondBall, tenthFrameThirdBall, finalTotal);
+    if(secondBall + tenthFrameThirdBall === 10) {
+      this._currentScore += 10;
+    }
+    if(this._isFrameBeforePreviousAStrike()) {
+      this._currentScore -= finalTotal
+    }
   }
 }
 

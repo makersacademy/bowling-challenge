@@ -158,7 +158,6 @@ describe('Scorecard', function(){
             });
           });
         });
-      // end of when current frame is a strike
       });
       describe('When current frame is a spare', function(){
         describe('When previous frame is a spare', function(){
@@ -200,10 +199,7 @@ describe('Scorecard', function(){
           });
         });
       });
-    //end of 3rd-9th frame
     });
-
-
   });
   describe('When 10th Frame', function(){
     describe('When a spare', function(){
@@ -250,6 +246,23 @@ describe('Scorecard', function(){
           scorecard.addFrameScore(10)
           scorecard.addFrameScore(10, 6, 4)
           expect(scorecard.showScore()).toBe(170)
+        });
+      });
+      describe('When the final 2 balls add up to 10', function(){
+        it('calculates the correct score', function(){
+          scorecard = new Scorecard();
+
+          scorecard.addFrameScore(10);
+          scorecard.addFrameScore(4, 6);
+          scorecard.addFrameScore(6, 2);
+          scorecard.addFrameScore(10);
+          scorecard.addFrameScore(10);
+          scorecard.addFrameScore(10);
+          scorecard.addFrameScore(10);
+          scorecard.addFrameScore(10);
+          scorecard.addFrameScore(10);
+          scorecard.addFrameScore(10, 6, 3);
+          expect(scorecard.showScore()).toEqual(239);
         });
       });
     });

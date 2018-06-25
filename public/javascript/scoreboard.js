@@ -45,7 +45,7 @@ Scoreboard.prototype.recordFrameResults = function() {
 
 Scoreboard.prototype.sumPreviousFrame = function() {
   var previousFrameArray = this.resultsArray[this.resultsArray.length - 2];
-  var total = 0; 
+  var total = 0;
   for(var i=0; i<2; i++){
     total += previousFrameArray[i]
   }
@@ -93,7 +93,7 @@ Scoreboard.prototype.addDoubleStrikePoints = function () {
 };
 
 Scoreboard.prototype.totalScore = function () {
-  var sum = this.gameTotal;
+  var sum = 0;
   for(var i = 0; i < this.resultsArray.length; i++) {
       var frame = this.resultsArray[i];
       for(var j = 0; j < frame.length; j++) {
@@ -101,4 +101,15 @@ Scoreboard.prototype.totalScore = function () {
       }
   }
       this.gameTotal = sum;
+};
+
+
+Scoreboard.prototype.isEleventhFrame = function () {
+  if (this.resultsArray.length === 10 && this.lastFrameTotal === 10){
+    
+
+  } else {
+
+  }
+
 };

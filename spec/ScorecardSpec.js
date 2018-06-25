@@ -11,7 +11,7 @@ describe('Scorecard', function(){
     });
   });
 
-  describe('When First Frame', function(){
+  describe('When calculating the first frame', function(){
     it('it will not update total score if strike', function(){
       scorecard.addFrameScore(10)
       expect(scorecard.showScore()).toBe(0)
@@ -21,13 +21,13 @@ describe('Scorecard', function(){
       expect(scorecard.showScore()).toBe(0)
     });
     it('it will update total score if framescore is under 10', function(){
-      scorecard.addFrameScore(6, 4)
-      expect(scorecard.showScore()).toBe(0)
+      scorecard.addFrameScore(7, 2)
+      expect(scorecard.showScore()).toBe(9)
     });
   });
 
-  describe('When Second Frame', function(){
-    describe('is under 10', function(){
+  describe('When calculating the second frame', function(){
+    describe('When the second frame is under 10', function(){
       describe('When the first frame score is under 10', function(){
         it('adds current frame score to total', function(){
           scorecard.addFrameScore(4, 2)
@@ -51,7 +51,7 @@ describe('Scorecard', function(){
       });
     });
 
-    describe('is a strike', function(){
+    describe('When the second frame is a strike', function(){
       describe('When the first frame is a spare', function(){
         it('adds the strike + bonus to total', function(){
           scorecard.addFrameScore(3, 7)
@@ -61,7 +61,7 @@ describe('Scorecard', function(){
       });
     });
 
-    describe('is a spare', function(){
+    describe('When the second frame is a spare', function(){
       describe('When the first frame score is a strike', function(){
         it('adds the strike + 2 ball bonus to total', function(){
           scorecard.addFrameScore(10)
@@ -79,8 +79,8 @@ describe('Scorecard', function(){
     });
   });
 
-  describe('When 3rd to 9th Frame', function(){
-    describe('When under 10', function(){
+  describe('When calculating the 3rd to 9th frames', function(){
+    describe('When the current frame is under 10', function(){
       describe('When previous frame is under 10', function(){
         it('adds the current frame score to total', function(){
           scorecard.addFrameScore(10)
@@ -201,7 +201,7 @@ describe('Scorecard', function(){
       });
     });
   });
-  describe('When 10th Frame', function(){
+  describe('When calculating the 10th frame', function(){
     describe('When a spare', function(){
       it('adds the final frame and bonus', function(){
         scorecard.addFrameScore(2, 1)

@@ -35,5 +35,31 @@ describe("Tenpin", function() {
     expect(tenpin.scoreCard).toEqual([23, 14, 4]);
   })
 
+  it('ten frames of non strikes and spares are logged correctly', function() {
+    var tenpin = new Tenpin();
+    for (i = 1; i < 11; i++) {
+      tenpin.frame(3,4);
+    }
+    expect(tenpin.scoreCard).toEqual([7, 7, 7, 7, 7, 7, 7, 7, 7, 7]);
+  });
+
+  it('ten strikes in a row logs ten frames of thirty points for a total of 300', function() {
+    var tenpin = new Tenpin();
+    for (i = 1; i < 11; i++) {
+      tenpin.frame(10,0);
+    };
+    tenpin.frame(10,10);
+    expect(tenpin.scoreCard).toEqual([30, 30, 30, 30, 30, 30, 30, 30, 30, 30]);
+  });
+
+  it('ten strikes in a row plus bonus balls', function() {
+    var tenpin = new Tenpin();
+    for (i = 1; i < 11; i++) {
+      tenpin.frame(10,0);
+    };
+    tenpin.frame(3,4);
+    expect(tenpin.scoreCard).toEqual([30, 30, 30, 30, 30, 30, 30, 30, 30, 17]);
+  });
+
 
 });

@@ -42,10 +42,13 @@ Tenpin.prototype.postSpareScore = function(roll1, roll2) {
 };
 
 Tenpin.prototype.normalScore = function(roll1, roll2) {
-  if (this.frameCount === 11) {
+  if (this.frameCount === 11 && this.strikeCount > 0) {
     this.scoreCard.push(30);
     this.scoreCard.push(10 + roll1 + roll2);
     this.strikeCount = 0;
+  } else if (this.frameCount === 11 && this.spareCount > 0) {
+    this.scoreCard.push(10 + roll1 + roll2);
+    this.spareCount = 0;
   } else if (this.strikeCount === 0 && this.spareCount === 0) {
     this.scoreCard.push(roll1 + roll2);
   } else if (this.strikeCount === 1) {

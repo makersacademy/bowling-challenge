@@ -28,6 +28,11 @@ describe ('Scoreboard', function(){
     expect(scoreboard.accessResultsArray()).toEqual([[2,3],[4,5]]);
   });
 
+  // it('records the first and second roll and records the frame'), function(){
+  //   scoreboard.rollAndRecord(2,3);
+  //   expect(scoreboard.accessResultsArray()).toEqual([[2,3]]);
+  // };
+
   it('totals the previous frame', function (){
     scoreboard.recordFirstRoll(4);
     scoreboard.recordSecondRoll(3);
@@ -143,5 +148,40 @@ describe ('Scoreboard', function(){
   scoreboard.addStrikePoints();
   scoreboard.addDoubleStrikePoints();
   expect(scoreboard.accessResultsArray()).toEqual([[10,0,10,0,3],[10,0,3,4],[3,4]]);
+  });
+
+  it('checks if it is the 11th frame', function(){
+    scoreboard.recordFirstRoll(2);
+    scoreboard.recordSecondRoll(0);
+    scoreboard.recordFrameResults();
+    scoreboard.recordFirstRoll(2);
+    scoreboard.recordSecondRoll(0);
+    scoreboard.recordFrameResults();
+    scoreboard.recordFirstRoll(2);
+    scoreboard.recordSecondRoll(0);
+    scoreboard.recordFrameResults();
+    scoreboard.recordFirstRoll(2);
+    scoreboard.recordSecondRoll(0);
+    scoreboard.recordFrameResults();
+    scoreboard.recordFirstRoll(2);
+    scoreboard.recordSecondRoll(0);
+    scoreboard.recordFrameResults();
+    scoreboard.recordFirstRoll(2);
+    scoreboard.recordSecondRoll(0);
+    scoreboard.recordFrameResults();
+    scoreboard.recordFirstRoll(2);
+    scoreboard.recordSecondRoll(0);
+    scoreboard.recordFrameResults();
+    scoreboard.recordFirstRoll(2);
+    scoreboard.recordSecondRoll(0);
+    scoreboard.recordFrameResults();
+    scoreboard.recordFirstRoll(5);
+    scoreboard.recordSecondRoll(0);
+    scoreboard.recordFrameResults();
+    scoreboard.recordFirstRoll(4);
+    scoreboard.recordSecondRoll(6);
+    scoreboard.recordFrameResults();
+    console.log(this.firstRoll);
+    expect(scoreboard.isEleventhFrame()).toEqual(true);
   });
 });

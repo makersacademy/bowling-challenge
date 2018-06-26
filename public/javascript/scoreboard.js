@@ -105,11 +105,6 @@ Scoreboard.prototype.totalScore = function () {
 
 
 Scoreboard.prototype.isEleventhFrame = function () {
-  if (this.resultsArray.length === 10 && this.lastFrameTotal === 10){
-    
-
-  } else {
-
-  }
-
+  var frameTotal = (this.firstRoll + this.secondRoll);
+  return (this.resultsArray.length === 10) && (frameTotal===10);
 };

@@ -46,7 +46,7 @@ Scoreboard.prototype.recordFrameResults = function() {
 Scoreboard.prototype.sumPreviousFrame = function() {
   var previousFrameArray = this.resultsArray[this.resultsArray.length - 2];
   var total = 0;
-  for(var i=0; i<2; i++){
+  for(var i=0; i<previousFrameArray.length; i++){
     total += previousFrameArray[i]
   }
   this.lastFrameTotal = total;
@@ -107,4 +107,18 @@ Scoreboard.prototype.totalScore = function () {
 Scoreboard.prototype.isEleventhFrame = function () {
   var frameTotal = (this.firstRoll + this.secondRoll);
   return (this.resultsArray.length === 10) && (frameTotal===10);
+};
+
+Scoreboard.prototype.addBonusSparePoints = function (bonusRoll) {
+  var lastFrame = this.resultsArray[(this.resultsArray.length) - 2];
+  if (this.isEleventhFrame()){
+    lastFrame.push(bonusRoll);
+  }
+  return;
+};
+
+Scoreboard.prototype.rollAndRecord = function (roll1, roll2) {
+  this.recordFirstRoll(roll1);
+  this.recordSecondRoll(roll2);
+  this.recordFrameResults();
 };

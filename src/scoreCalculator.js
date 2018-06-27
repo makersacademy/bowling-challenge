@@ -20,6 +20,7 @@ ScoreCalculator.prototype.addScore = function(scores) {
 ScoreCalculator.prototype.calculateScore = function() {
   var [i, j, k] = [0, 1, 2];
   var scores = this.scores;
+  var length = scores.length;
   for(; i < 10; (i++, j++, k++)) {
     var a = (scores[i] === undefined) ? 0 : scores[i][0];
     var b = (scores[i] === undefined) ? 0 : scores[i][1];

@@ -31,6 +31,11 @@ describe("Score Calculator", function() {
 		expect(scoreCalculator.scores).toEqual([[10, 0], [2, 6], [4, 4], [2, 6], [1, 6], [2, 1], [2, 6], [4, 4], [1, 6], [3, 6], [0, 0]]);
 	});
 
+	it("calucalates the adds values to the total score", function() {
+		scoreCalculator._calculateFrameScore(10, 10, 10);
+		expect(scoreCalculator.totalScore).toEqual(30);
+	});
+
 	describe("Calculates the total score", function() {
 
 		function addAndCalculateScore(scores) {

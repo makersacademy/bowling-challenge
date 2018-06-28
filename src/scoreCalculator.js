@@ -1,14 +1,9 @@
 'use strict';
 
 function ScoreCalculator() {
-  this.DEFAULT_SCORE = 0;
-  this.MAX_ROLL = 10;
+  var DEFAULT_SCORE = 0;
   this.scores = [];
-  this.totalScore = this.DEFAULT_SCORE;
-};
-
-ScoreCalculator.prototype.getScore = function() {
-  return this.totalScore;
+  this.totalScore = DEFAULT_SCORE;
 };
 
 ScoreCalculator.prototype.addScore = function(scores) {
@@ -17,40 +12,39 @@ ScoreCalculator.prototype.addScore = function(scores) {
   };
 };
 
-ScoreCalculator.prototype._calculateFrameScore = function(a, c, d) {
-  this.totalScore += (a + c + d);
+ScoreCalculator.prototype._calculateFrameScore = function(a, b, c) {
+  this.totalScore += (a + b + c);
 };
 
 ScoreCalculator.prototype.calculateScore = function() { // rename to calculate total score
   var [i, j, k] = [0, 1, 2];
   var scores = this.scores;
-  for(; i < 10; (i++, j++, k++)) {
-    var a = (scores[i] === undefined) ? 0 : scores[i][0];
-    var b = (scores[i] === undefined) ? 0 : scores[i][1];
-    var c = (scores[j] === undefined) ? 0 : scores[j][0];
-    var d = (scores[j] === undefined) ? 0 : scores[j][1];
-    var e = (scores[k] === undefined) ? 0 : scores[k][0];
-    if (i === 9 && a === this.MAX_ROLL && c === this.MAX_ROLL) {
-      this._calculateFrameScore(a, c, d);
-    } else if (a === this.MAX_ROLL && c === this.MAX_ROLL) {
-      this._calculateFrameScore(a, c, e);
-    } else if (a === this.MAX_ROLL) {
-      this._calculateFrameScore(a, c, d);
-    } else if (a + b === this.MAX_ROLL) {
-      this._calculateFrameScore(a, b, c);
+  var FRAME_TEN = 9;
+  var MAX_FRAME = 10;
+  for(; i <= FRAME_TEN; (i++, j++, k++)) {
+    var roll1 = (scores[i] === undefined) ? 0 : scores[i][0];
+    var roll2 = (scores[i] === undefined) ? 0 : scores[i][1];
+    var roll3 = (scores[j] === undefined) ? 0 : scores[j][0];
+    var roll4 = (scores[j] === undefined) ? 0 : scores[j][1];
+    var roll5 = (scores[k] === undefined) ? 0 : scores[k][0];
+    if (i === FRAME_TEN && roll1 === MAX_FRAME && roll3 === MAX_FRAME) {
+      this._calculateFrameScore(roll1, roll3, roll4);
+    } else if (roll1 === MAX_FRAME && roll3 === MAX_FRAME) {
+      this._calculateFrameScore(roll1, roll3, roll5);
+    } else if (roll1 === MAX_FRAME) {
+      this._calculateFrameScore(roll1, roll3, roll4);
+    } else if (roll1 + roll2 === MAX_FRAME) {
+      this._calculateFrameScore(roll1, roll2, roll3);
     } else {
-      this._calculateFrameScore(a, b, c = 0);
+      this._calculateFrameScore(roll1, roll2, 0);
     }
   }
 };
-
-
 
 ScoreCalculator.prototype.clearScore = function() {
   this.totalScore = this.DEFAULT_SCORE;
   this.scores = [];
 };
-
 
 // ScoreCalculator.prototype.clearScore = function() {
 //   this.totalScore = this.DEFAULT_SCORE;

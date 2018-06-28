@@ -15,7 +15,7 @@ describe("Score Calculator", function() {
 	});
 
 	it("has a default score of zero", function() {
-		expect(scoreCalculator.getScore()).toEqual(0);
+		expect(scoreCalculator.totalScore).toEqual(0);
 	});
 
 	it("clears the scores", function() {

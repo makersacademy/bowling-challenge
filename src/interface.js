@@ -25,7 +25,7 @@ $(document).ready( function() {
 		var scores = extractScores();
 		scoreCalculator.addScore(scores);
 		scoreCalculator.calculateScore();
-		var gameScore = scoreCalculator.getScore();
+		var gameScore = scoreCalculator.totalScore;
 		scoreDisplay = new ScoreDisplay(gameScore);
 		$("#total-score").text(scoreDisplay.getTotalScore());
 	});

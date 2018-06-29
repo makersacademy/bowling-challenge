@@ -4,11 +4,16 @@ function ScoreCalculator() {
   var DEFAULT_SCORE = 0;
   this.scores = [];
   this.totalScore = DEFAULT_SCORE;
+  this.individualScores = new IndividualScores;
+  // This could start to be a frame object ^^
 };
 
 ScoreCalculator.prototype.addScore = function(scores) {
   for(var i = 0; i < (scores.length); i++) {
     this.scores.push(scores[i]);
+    // could initialise a frame object here that intialises on receipt of two values
+    // could have bonus as an 11th frame???
+    // bonus would be initiaised through the frame object
   };
 };
 
@@ -20,20 +25,21 @@ ScoreCalculator.prototype.calculateScore = function() { // rename to calculate t
   var [i, j, k] = [0, 1, 2];
   var scores = this.scores;
   var FRAME_TEN = 9;
-  var MAX_FRAME = 10;
   for(; i <= FRAME_TEN; (i++, j++, k++)) {
     var roll1 = (scores[i] === undefined) ? 0 : scores[i][0];
     var roll2 = (scores[i] === undefined) ? 0 : scores[i][1];
     var roll3 = (scores[j] === undefined) ? 0 : scores[j][0];
     var roll4 = (scores[j] === undefined) ? 0 : scores[j][1];
     var roll5 = (scores[k] === undefined) ? 0 : scores[k][0];
-    if (i === FRAME_TEN && roll1 === MAX_FRAME && roll3 === MAX_FRAME) {
+    // var bonus = new Bonus(frame1, frame2, frame3);
+    // scores += bonus.calculate();
+    if (this.individualScores.isFinalFrameStrikeWithBonusStrike(i, roll1, roll3)) {
       this._calculateFrameScore(roll1, roll3, roll4);
-    } else if (roll1 === MAX_FRAME && roll3 === MAX_FRAME) {
+    } else if (this.individualScores.isConsecutiveFrameStike(roll1, roll3)) {
       this._calculateFrameScore(roll1, roll3, roll5);
-    } else if (roll1 === MAX_FRAME) {
+    } else if (this.individualScores.isStrike(roll1)) {
       this._calculateFrameScore(roll1, roll3, roll4);
-    } else if (roll1 + roll2 === MAX_FRAME) {
+    } else if (this.individualScores.isSpare(roll1, roll2)) {
       this._calculateFrameScore(roll1, roll2, roll3);
     } else {
       this._calculateFrameScore(roll1, roll2, 0);

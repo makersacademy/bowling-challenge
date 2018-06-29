@@ -1,8 +1,10 @@
 "use strict";
 
 (function(exports) {
+  // Doesn't need to be an IIFE
 
   function IndividualScores() {
+    // I don't need any inheritance...
   };
 
   IndividualScores.prototype.isStrike = function(roll1) {

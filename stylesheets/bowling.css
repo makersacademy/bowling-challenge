@@ -2,6 +2,8 @@ table.bowling, th, td {
   border: 1px solid black;
 }
 
-table.bowling {
-  width: 100%;
+.bowling_table {
+}
+
+.table_container {
 }

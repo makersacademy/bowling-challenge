@@ -10,13 +10,46 @@
 
   <body>
     <h1>Bowling Scoring</h1>
-    <table class="bowling table">
+
+    <select id="scoreSelect">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    <button type="button" id="roll">Roll</button>
+
+    <h4>Current Frame:</h4><div id="current_frame">1</div>
+
+    <h4>Current Roll:</h4><div id="current_roll">1</div>
+
+    <h4>Pins still standing:</h4><div id="pins_standing">10</div>
+
+  </br>
+
+  <div class="table_container">
+    <table id="bowling_table">
       <tr class="headers">
         <th>Frame</th>
         <th>Roll</th>
         <th>Frame Score</th>
         <th>Total Score</th>
       </tr>
+      <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
     </table>
+  </div>
+
   </body>
 </html>

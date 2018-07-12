@@ -1,6 +1,6 @@
 # Bowling Scorecard Calculator  
 
-### [Makers Academy](https://www.makersacademy.com) - Week FILL_IN Individual Project 
+### [Makers Academy](https://www.makersacademy.com) - Weeks 5 & 6 Individual Project 
 
 ## Outline
 This program mimics the behavior of a takeaway delivery service. The user is able to view a menu, submit an order request, confirm that the total is what they expected and receive an SMS message confirming that their order has been received and the appromixate delivery time. This project uses Twilio to send SMS messages. 

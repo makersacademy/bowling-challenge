@@ -1,7 +1,7 @@
 $(document).ready(function() {
   var game = new Bowling();
 
-  var updateTable = function(roll) {
+  var updateTable = function(score) {
     var current_frame = document.getElementById('current_frame');
     var current_roll = document.getElementById('current_roll');
     var pinsStanding = document.getElementById('pins_standing');
@@ -11,14 +11,18 @@ $(document).ready(function() {
     var rollColumn = rollRow.insertCell(1);
     var frameScoreColumn = rollRow.insertCell(2);
     var totalScoreColumn = rollRow.insertCell(3);
-
-    current_frame.innerHTML = `${game.current_frame}`;
-    current_roll.innerHTML = `${game.current_roll}`;
-    pinsStanding.innerHTML = `${game.pins}`;
+    //Before bowling the ball
 
     frameColumn.innerHTML = `${game.current_frame}`;
     rollColumn.innerHTML = `${game.current_roll}`;
 
+    //After rolling
+    game.knock_pins(score)
+
+    current_frame.innerHTML = `${game.current_frame}`;
+    current_roll.innerHTML = `${game.current_roll}`;
+    pinsStanding.innerHTML = `${game.pins}`;
+    
     var totalFrameScore = game.frame_score.reduce((a, b) => a + b, 0);
     frameScoreColumn.innerHTML = `${totalFrameScore}`;
 
@@ -29,7 +33,6 @@ $(document).ready(function() {
   $('#roll').on('click', function() {
     var scoreSelect = document.getElementById('scoreSelect');
     var score = parseInt(scoreSelect.value, 10);
-    roll = game.knock_pins(score)
-    updateTable(roll);
+    updateTable(score);
   });
 });

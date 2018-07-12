@@ -1,9 +1,66 @@
-table.bowling, th, td {
+body {
+  background-color: #b366ff;
+}
+
+* {
+  font-family: Impact, fantasy;
+}
+
+h1#page_header  {
+  color: white;
+  text-align: center;
+}
+
+#selector_container {
+  width: 200px;
+  margin: auto;
+}
+
+#current_stats {
+  background-color: white;
+  width: 300px;
+  height: 230px;
+  border-radius: 5%;
+  margin: auto;
+
+}
+
+#current_stats h4 {
+  text-align: center;
+}
+
+#current_stats #current_frame {
+  color: #b366ff;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  text-align: center;
+}
+
+#current_stats #current_roll {
+  color: #b366ff;
+  text-align: center;
+}
+
+#current_stats #pins_standing {
+  color: #b366ff;
+  text-align: center;
+}
+
+table#bowling_table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: white;
+}
+
+table#bowling_table th, td {
   border: 1px solid black;
 }
 
-.bowling_table {
+#table_container {
+  height: 400px;
+  overflow: scroll;
 }
 
-.table_container {
+td {
+  text-align: center;
 }

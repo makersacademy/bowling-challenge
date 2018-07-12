@@ -9,22 +9,25 @@
   </head>
 
   <body>
-    <h1>Bowling Scoring</h1>
+    <h1 id="page_header">Bowling Scoring</h1>
+    <img src="" />
 
-    <select id="scoreSelect">
-      <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
-    <button type="button" id="roll">Roll</button>
+    <div id="selector_container">
+      <select id="scoreSelect">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+      <button type="button" id="roll">Roll</button>
+    </div>
 
     <div id="current_stats">
       <h4>Current Frame:</h4><div id="current_frame">1</div>
@@ -34,7 +37,7 @@
 
   </br>
 
-  <div class="table_container">
+  <div id="table_container">
     <table id="bowling_table">
       <tr class="headers">
         <th>Frame</th>

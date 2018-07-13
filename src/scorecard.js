@@ -36,5 +36,6 @@ Scorecard.prototype.updateScore = function(){
 
 Scorecard.prototype.nextFrame = function(){
   // Moves current frame to incomplete frames array.
+  // Checks if we are at the end stage of the game.
   // Creates a new frame and sets it as the current frame.
 };

@@ -4,7 +4,7 @@ function Game() {
   this.MAX_ROLLS = 2;
 
   this._frames = [];
-  this.rolls = 0;
+  this._rolls = 0;
   this.score = 0;
 }
 
@@ -18,14 +18,14 @@ Game.prototype.getFrames = function() {
 
 Game.prototype.roll = function(pins) {
   this.score += pins
-  this.rolls += 1;
+  this._rolls += 1;
 
   // 2 rolls = a completed Frame
-  if (this._frames.length <= 9 && this.rolls === this.MAX_ROLLS) {
+  if (this._frames.length <= 9 && this._rolls === this.MAX_ROLLS) {
     this._frames.push('X');
-    this.rolls = 0;
+    this._rolls = 0;
   }
-  return this.rolls;
+  return this._rolls;
 };
 
 

@@ -8,6 +8,6 @@ describe("Bowling Game", function() {
   });
 
   it('A Game contains Frames', function() {
-    expect(game.frames).toBeTruthy();
+    expect(game.getFrames()).toBeTruthy();
   });
 });

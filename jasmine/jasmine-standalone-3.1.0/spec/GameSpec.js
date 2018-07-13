@@ -2,9 +2,11 @@
 
 describe("Bowling Game", function() {
   var game;
+  var calc;
 
   beforeEach(function(){
     game = new Game();
+    calc = new CalculateScore();
   });
 
   it('A Game contains Frames', function() {
@@ -33,7 +35,7 @@ describe("Bowling Game", function() {
   it('A User can Roll 2 times and score 5 points', function() {
     game.roll(1);
     game.roll(4);
-    expect(game.getPoints()).toEqual(5);
+    expect(game.score()).toEqual(5);
   });
 
 });

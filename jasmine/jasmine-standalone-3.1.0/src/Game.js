@@ -5,7 +5,9 @@ function Game() {
 
   this._frames = [];
   this._rolls = 0;
-  this._score = 0;
+  // this._score = 0;
+
+  this._calculate = new CalculateScore();
 }
 
 Game.prototype.addFrame = function(frame){
@@ -17,7 +19,8 @@ Game.prototype.getFrames = function() {
 };
 
 Game.prototype.roll = function(pins) {
-  this._score += pins
+  // this._score += pins
+  this._calculate.calculateScore(pins);
   this._rolls += 1;
 
   // 2 rolls = a completed Frame
@@ -28,7 +31,7 @@ Game.prototype.roll = function(pins) {
   return this._rolls;
 };
 
-
-Game.prototype.getPoints = function() {
-  return this._score
+Game.prototype.score = function() {
+  // return this._score
+  return this._calculate.getScore();
 };

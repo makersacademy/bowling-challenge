@@ -1,0 +1,25 @@
+- Game = includes 10 frames
+- Frame = includes 2 rolls
+- Score = is the total points (pins knocked down) in 1 frame
+
+Other - good to know:
+- roll = user inputs how many pins knocked down
+- pins = there are 10 pins within a Frame
+
+Scoring:
+- Strikes = 10 points + bonus form next frame (2 rolls)
+
+Spares:
+- A "spare" is awarded when no pins are left standing after the second ball of a frame
+- the points from first roll of next frame is called a spare
+
+10th frame:
+- 3 balls in the frame e.g 10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
+1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus)
+
+=====
+
+Rules for Scoring:
+- Score = is the total points (pins knocked down) in 1 frame
+- Gutter Game = 0 points (20 zero scores, no pins hit)
+- Perfect Game = A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.

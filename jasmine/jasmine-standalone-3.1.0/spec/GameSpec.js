@@ -8,26 +8,18 @@ describe("Bowling Game", function() {
   });
 
   it('A Game contains Frames', function() {
-    expect(game.getFrames()).toBeTruthy();
+    expect(game.getFrames()).not .toBeNull()
   });
 
   it('A User can Roll 2 times per Frame', function() {
     game.roll(1);
     game.roll(1);
     game.roll(1);
-    expect(game.getFrames()).toEqual(['X']);
+    expect(game.getFrames()).toEqual(1);
   });
 
-  // it('A User can Roll 3 times in Frame 10', function() {
-  //   game.frames = ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
-  //   game.roll();
-  //   game.roll();
-  //   game.roll();
-  //   expect(game.getFrames()).toEqual(['X']);
-  // });
-
   it('A User can Roll 20 times per Game', function() {
-
+    // A game contains 10 Frames
     // This for loop adds 9 Frames to a Game
     for (var i = 0; i < 10; i++) {
       game.addFrame('X');
@@ -35,7 +27,7 @@ describe("Bowling Game", function() {
     game.roll(1);
     game.roll(1);
     game.roll(1);
-    expect(game.frames.length).toEqual(10);
+    expect(game.getFrames()).toEqual(10);
   });
 
   it('A User can Roll 2 times and score 5 points', function() {

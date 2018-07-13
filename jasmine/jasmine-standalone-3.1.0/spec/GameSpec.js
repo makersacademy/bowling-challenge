@@ -1,6 +1,6 @@
 'use strict';
 
-describe("Bowling Game", function() {
+describe("Game: ", function() {
   var game;
   var calc;
 

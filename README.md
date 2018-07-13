@@ -1,8 +1,8 @@
 
-#Bowling Challenge
+# Bowling Challenge
 
 
-###Task
+### Task
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
@@ -11,7 +11,7 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 The aim of this challenge was to use and develop our new knowledge of JavaScript, creating a fairly complex algorithm in a relatively unchartered language.
 
 
-###Approach
+### Approach
 
 My approach was to diagram all the logic first, to save myself time in the future. I wrote all the tests and the code for a normal game with the assumption that the 10th frame acted the same as the previous 9. This made it easier to implement the basic scoring logic first, and allowed me to save the difficult part until the rest was working.
 

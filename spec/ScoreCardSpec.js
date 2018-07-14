@@ -30,4 +30,9 @@ describe('ScoreCard', function(){
     expect(scorecard.checkForSpare()).toEqual(true)
   });
 
+  it('should know the total points of a frame', function(){
+    scorecard.roll_1(3);
+    scorecard.roll_2(4);
+    expect(scorecard.getTotalFrame()).toEqual(7)
+  });
 });

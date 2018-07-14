@@ -1,5 +1,6 @@
 function ScoreCard (){
   this.frame = [];
+  this.total = 0
   }
 
 
@@ -7,11 +8,9 @@ function ScoreCard (){
     this.frame.push(value);
   };
 
-
   ScoreCard.prototype.getRoll_1 = function() {
     return this.frame[0];
   };
-
 
   ScoreCard.prototype.roll_2 = function(value) {
     this.frame.push(value);
@@ -31,4 +30,9 @@ function ScoreCard (){
     if((this.frame[0] + this.frame[1]) === 10) {
         return true;
   };
+};
+
+ScoreCard.prototype.getTotalFrame = function(){
+  return this.total += this.frame[0] + this.frame[1]
+
 };

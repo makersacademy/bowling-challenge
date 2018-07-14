@@ -96,3 +96,8 @@ User story 4
 As an score-manager
 So i can keep on eye on the score
 I want to know if the second roll is a spare
+
+User story 5
+As an score-manager
+So i can keep on eye on the score
+I want to know the total points from one frame

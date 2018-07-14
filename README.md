@@ -81,3 +81,13 @@ User story 1
 As an score-manager
 So i can keep on eye on the score
 I want to add a score to the first roll at the first frame'
+
+User story 2
+As an score-manager
+So i can keep on eye on the score
+I want to add a score to the second roll at the first frame'
+
+User story 3
+As an score-manager
+So i can keep on eye on the score
+I want to know if the first roll is a strike

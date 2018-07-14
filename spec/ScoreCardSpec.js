@@ -19,12 +19,15 @@ describe('ScoreCard', function(){
     expect(scorecard.getRoll_2()).toEqual(3);
   });
 
-  it('should let you know if the first roll is a strike', function(){
+  it('should know if the first roll is a strike', function(){
       scorecard.roll_1(10);
     expect(scorecard.checkForStrick()).toEqual(true)
   });
 
-
-
+  it('should know if the second roll is a spare', function(){
+    scorecard.roll_1(5);
+    scorecard.roll_2(5);
+    expect(scorecard.checkForSpare()).toEqual(true)
+  });
 
 });

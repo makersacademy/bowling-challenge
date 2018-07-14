@@ -91,3 +91,8 @@ User story 3
 As an score-manager
 So i can keep on eye on the score
 I want to know if the first roll is a strike
+
+User story 4
+As an score-manager
+So i can keep on eye on the score
+I want to know if the second roll is a spare

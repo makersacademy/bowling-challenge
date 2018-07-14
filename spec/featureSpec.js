@@ -1,6 +1,23 @@
+describe("Feature test", function () {
+  var game;
+  var frame;
+});
+
+beforeEach(function(){
+  game = new Game();
+  frame = new Frame();
+});
+
 // As a bowler
-// So that I can know how I did
+// So that I can know my game went
 // I want to see my total score
+  it("user can see total score", function() {
+    for (i = 0; i < 10; i++) {
+      frame.first_roll = 1;
+      frame.second_roll = 1;
+    }
+    expect(game.total).toEqual(20);
+  });
 //
 // As a bowler
 // So that good rolls are rewarded

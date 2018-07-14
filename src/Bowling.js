@@ -1,9 +1,10 @@
 'use strict';
 
 function Bowling() {
-  this.score = {};
+  this.score = [];
 }
 
-Bowling.prototype.roll = function(k,v) {
-  this.score[k] = v;
+Bowling.prototype.roll = function(one,two) {
+  var arr = [one, two];
+  this.score.push(arr);
 };

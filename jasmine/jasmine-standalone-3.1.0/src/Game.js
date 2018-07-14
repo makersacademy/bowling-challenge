@@ -18,16 +18,16 @@ Game.prototype.getFrames = function() {
   return this._frames.length;
 };
 
-Game.prototype.roll = function(pins) {
+Game.prototype.roll = function(kockedDownPins) {
   if (this._rolls === 0) {
-    this.calculate.logRollScore(pins);
-    this.pinsHit += pins;
+    this.calculate.logRollScore(kockedDownPins);
+    this.pinsHit += kockedDownPins;
     this._rolls += 1;
     return "roll again"
   } else {
     this._rolls += 1; // 2 rolls
-    this.calculate.logRollScore(pins);
-    this.pinsHit += pins;
+    this.calculate.logRollScore(kockedDownPins);
+    this.pinsHit += kockedDownPins;
     this.calculate.calculateScore(this.pinsHit);
     this.pinsHit = 0;
   }

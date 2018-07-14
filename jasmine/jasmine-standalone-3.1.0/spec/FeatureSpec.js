@@ -17,13 +17,8 @@ describe("Feature Test: ", function() {
     });
   });
 
-  it('A User can roll a Strike and score 10 points', function() {
-    calc.calculateScore(10);
-    expect(calc.getScore()).toEqual(10);
-  });
-
-  describe('User can score addtional Bonus points for Spare', function() {
-    it('A User can roll 10 pins and score bonus points', function() {
+  describe('User can score addtional Bonus points', function() {
+    it('A User can roll 10 pins in Frame and score bonus points', function() {
       game.roll(6);
       game.roll(4);
       game.roll(5);
@@ -34,33 +29,34 @@ describe("Feature Test: ", function() {
 
     // TODO - this test will need to be refactored when you
     // include Strike
-    it('A User can roll 10 pins and score bonus points', function() {
+    it('A User can roll 10 pins or Strikes multiple times in a Game and score bonus points', function() {
       game.roll(1);
       game.roll(4);//
       game.roll(4);
       game.roll(5);//
       game.roll(6);
-      game.roll(4);//
+      game.roll(4);// bonus
       game.roll(5);
       game.roll(5);//
-            game.getBonus(); //5 // 39 total
-      game.roll(10);
-      game.roll(0);//
-            game.getBonus(); //10
+             game.getBonus(); //5 // 29 total
+       game.roll(10);
+       game.roll(0);//
+              game.getBonus(); //10
       game.roll(0);
-      game.roll(1);//
-            game.getBonus(); // 10
-      game.roll(7);
-      game.roll(3);//
-      game.roll(6);
-      game.roll(4); ////
-            game.getBonus(); //6
+       game.roll(1);//
+               game.getBonus(); // 1
+       game.roll(7);
+       game.roll(3);// bonus
+       game.roll(6);
+       game.roll(4);//
+             game.getBonus(); //6
       game.roll(10);
       game.roll(0);//
+           game.getBonus(); // 10
       game.roll(2);
       game.roll(8);//
-            game.getBonus(); // 12
-      expect(game.score()).toEqual(128);
+             game.getBonus(); // 10
+      expect(game.score()).toEqual(127);
     });
   });
 });

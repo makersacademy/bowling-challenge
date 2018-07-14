@@ -8,12 +8,12 @@ function CalculateScore() {
   this.rollScore = [];
 }
 
-CalculateScore.prototype.logRollScore = function(pins) {
-  this.rollScore.push(pins);
+CalculateScore.prototype.logRollScore = function(kockedDownPins) {
+  this.rollScore.push(kockedDownPins);
 };
 
-CalculateScore.prototype.calculateScore = function(pins) {
-   this.totalScore.push(pins);
+CalculateScore.prototype.calculateScore = function(kockedDownPins) {
+   this.totalScore.push(kockedDownPins);
 };
 
 CalculateScore.prototype.getScore = function() {
@@ -32,7 +32,9 @@ CalculateScore.prototype.strikeBonus = function(index) {
     if (this.rollScore[index - '3'] === 10) {
       bonus = 20;
     } else {
-      bonus = 10 + this.rollScore[index-'2'];
+      bonus =
+      this.rollScore[index-'2'] +
+      this.rollScore[index-'1'];
     };
   } else {
     bonus = this.rollScore[index-'2'];

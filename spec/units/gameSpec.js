@@ -11,7 +11,7 @@ describe("game.js", function() {
       for (i = 0; i < 10; i++) {
         game.frames.push({first_roll: 2, second_roll: 2});
       }
-      expect(game.total).toEqual();
+      expect(game.total).toEqual(40);
     });
   });
 });

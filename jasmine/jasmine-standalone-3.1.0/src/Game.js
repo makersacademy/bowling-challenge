@@ -5,9 +5,8 @@ function Game() {
 
   this._frames = [];
   this._rolls = 0;
+  // this property records total pins hit in a Frame
   this.pinsHit = 0;
-  // this._score = 0;
-
   this.calculate = new CalculateScore();
 }
 
@@ -21,20 +20,28 @@ Game.prototype.getFrames = function() {
 
 Game.prototype.roll = function(pins) {
   if (this._rolls === 0) {
+    this.calculate.logRollScore(pins);
     this.pinsHit += pins;
     this._rolls += 1;
     return "roll again"
   } else {
+    this._rolls += 1; // 2 rolls
+    this.calculate.logRollScore(pins);
     this.pinsHit += pins;
     this.calculate.calculateScore(this.pinsHit);
-    this._rolls += 1;
     this.pinsHit = 0;
   }
+
+  // TODO this logic is not in the corretc place
+  // if(this.pinsHit === 10 && this._rolls === this.MAX_ROLLS) {
+  //   this.getBonus();
+  // }
 
   // 2 rolls = a completed Frame
   if (this._frames.length <= 9 && this._rolls === this.MAX_ROLLS) {
     this._frames.push('X');
-    this._rolls = 0;
+
+
   }
   return this._rolls;
 };
@@ -44,7 +51,11 @@ Game.prototype.score = function() {
   return this.calculate.getScore();
 };
 
-// Game.prototype.score2 = function() {
-//   // return this._score
-//   return this.calculate.score;
-// };
+Game.prototype.getBonus = function() {
+  // return this._score
+   return this.calculate.strikeBonus(this.calculate.rollScore.length);
+};
+
+Game.prototype.array = function() {
+  return this.calculate.rollScore.length;
+};

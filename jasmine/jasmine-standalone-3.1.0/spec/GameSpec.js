@@ -49,4 +49,11 @@ describe("Game: ", function() {
     expect(game.score()).toEqual(300);
   });
 
+  it('A User can roll 0 pins in a GUTTER GAME and score 0 points', function() {
+    for (var i = 0; i < 20; i++) {
+      game.roll(0);
+    }
+    expect(game.score()).toEqual(0);
+  });
+
 });

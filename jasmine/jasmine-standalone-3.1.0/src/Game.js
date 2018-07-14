@@ -6,8 +6,8 @@ function Game() {
   this._frames = [];
   this._rolls = 0;
   // this property records total pins hit in a Frame
-  this.pinsHit = 0;
-  this.calculate = new CalculateScore();
+  this._pinsHit = 0;
+  this._calculate = new CalculateScore();
 }
 
 Game.prototype.addFrame = function(frame){
@@ -20,16 +20,16 @@ Game.prototype.getFrames = function() {
 
 Game.prototype.roll = function(kockedDownPins) {
   if (this._rolls === 0) {
-    this.calculate.storeRollScore(kockedDownPins);
-    this.pinsHit += kockedDownPins;
+    this._calculate.storeRollScore(kockedDownPins);
+    this._pinsHit += kockedDownPins;
     this._rolls += 1;
     return "roll again"
   } else {
     this._rolls += 1; // 2 rolls
-    this.calculate.storeRollScore(kockedDownPins);
-    this.pinsHit += kockedDownPins;
-    this.calculate.calculateScore(this.pinsHit);
-    this.pinsHit = 0;
+    this._calculate.storeRollScore(kockedDownPins);
+    this._pinsHit += kockedDownPins;
+    this._calculate.calculateScore(this._pinsHit);
+    this._pinsHit = 0;
   }
 
   // TODO this logic is not in the corretc place
@@ -48,14 +48,14 @@ Game.prototype.roll = function(kockedDownPins) {
 
 Game.prototype.score = function() {
   // return this._score
-  return this.calculate.getScore();
+  return this._calculate.getScore();
 };
 
 Game.prototype.getBonus = function() {
   // return this._score
-   return this.calculate.bonus(this.calculate.rollScore.length);
+   return this._calculate.bonus(this._calculate._rollScore.length);
 };
 
 Game.prototype.array = function() {
-  return this.calculate.rollScore.length;
+  return this._calculate._rollScore.length;
 };

@@ -12,7 +12,7 @@ describe("Calculate Score: ", function() {
 
   it('A User Game score is stored', function() {
     calc.storeRollScore(1);
-    expect(calc.rollScore).toEqual([1]);
+    expect(calc._rollScore).toEqual([1]);
   });
 
   it('A User can Roll 2 times and the calculated score 5 points', function() {

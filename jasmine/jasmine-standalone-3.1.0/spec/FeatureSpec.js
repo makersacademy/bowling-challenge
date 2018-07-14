@@ -27,9 +27,7 @@ describe("Feature Test: ", function() {
       expect(game.score()).toEqual(23);
     });
 
-    // TODO - this test will need to be refactored when you
-    // include Strike
-    it('A User can roll 20 pins or Strikes multiple times in a Game and score bonus points', function() {
+    it('A User can roll all 10 pins or Strikes multiple times and score bonus points', function() {
       game.roll(1);
       game.roll(4); //
       game.roll(4);
@@ -57,6 +55,24 @@ describe("Feature Test: ", function() {
       game.roll(8);//
       game.getBonus(); // bonus 10
       expect(game.score()).toEqual(127);
+    });
+
+    it('A User can roll 10 strikes in a PERFECT GAME and score maximum points', function() {
+      for (var i = 0; i < 5; i++) {
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.getBonus();
+      }
+      expect(game.score()).toEqual(300);
+    });
+
+    it('A User can roll 0 pins in a GUTTER GAME and score 0 points', function() {
+      for (var i = 0; i < 20; i++) {
+        game.roll(0);
+      }
+      expect(game.score()).toEqual(0);
     });
   });
 });

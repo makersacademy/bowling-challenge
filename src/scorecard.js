@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 var Scorecard = function(){
   this._score = 0;
   this._pinsDown = 0;
@@ -5,9 +6,7 @@ var Scorecard = function(){
   this._currentFrame = this.generateFrame();
   this._rollNumber = 1;
   this._incompleteFrames = [];
-  this._completeFrames = [];
-
-  this._incompleteFrames.push(this._currentFrame);
+  this._completedFrames = [];
 };
 
 Scorecard.prototype.generateFrame = function(){
@@ -19,23 +18,47 @@ Scorecard.prototype.displayScore = function(){
 };
 
 Scorecard.prototype.roll = function (pins) {
-  this._currentFrame.knockedDown(pins);
+  this._currentFrame.knockDown(pins);
+  this.updateScore(pins);
   if(!this._currentFrame.isActive()){
     this.nextFrame();
-    this.updateScore();
   }
   this._rollNumber = this._currentFrame.rollNumber();
+  return this._score;
 };
 
-Scorecard.prototype.updateScore = function(){
-  // Iterates through incomplete frames
-  // Adds bonuses.
-  // Adds score of completed frames to _score
-  // Moves completed frames to _completedFrames array
+Scorecard.prototype.updateScore = function(pins){
+  'use strict';
+  this._incompleteFrames.forEach((frame) => {
+    frame.manageBonus(pins);
+    if(frame.isComplete()) {
+      this.manageComplete(frame);
+    }
+  });
+  this._incompleteFrames = this._incompleteFrames.filter(frame => !frame.isComplete());
+};
+
+Scorecard.prototype.manageComplete = function(frame){
+  this._score += frame._score;
+  this._completedFrames.push(frame);
 };
 
 Scorecard.prototype.nextFrame = function(){
-  // Moves current frame to incomplete frames array.
+  if(this._currentFrame.isComplete()){
+    this._score += this._currentFrame._score;
+    this._completedFrames.push(this._currentFrame);
+  } else {
+    this._incompleteFrames.push(this._currentFrame);
+  }
   // Checks if we are at the end stage of the game.
-  // Creates a new frame and sets it as the current frame.
+  this._currentFrame = new Frame();
+};
+Scorecard.prototype.printScores = function(){
+  var score = 0;
+  var scores = [];
+  for(var i = 0; i < this._completedFrames.length; i++){
+    score += this._completedFrames[i]._score;
+    scores.push(score);
+  }
+  return scores;
 };

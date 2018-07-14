@@ -7,7 +7,7 @@ var Frame = function(){
   this._isComplete = false;
 };
 
-Frame.prototype.knockedDown = function(pins) {
+Frame.prototype.knockDown = function(pins) {
   this._score += pins;
   this._pinsDown += pins;
 
@@ -37,6 +37,22 @@ Frame.prototype.firstRoll = function(){
 Frame.prototype.secondRoll = function(){
   if (this._pinsDown == 10){
     this._bonusRollsLeft = 1;
+  } else {
+    this._isComplete = true;
   }
   this._isActive = false;
+};
+
+Frame.prototype.manageBonus = function(pins) {
+  if(this._bonusRollsLeft > 0){
+    this._score += pins;
+    this._bonusRollsLeft--;
+  }
+  if(this._bonusRollsLeft == 0){
+    this._isComplete = true;
+  }
+};
+
+Frame.prototype.isComplete = function(){
+  return this._isComplete;
 };

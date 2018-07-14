@@ -12,38 +12,38 @@ describe('Frame',() => {
     });
   });
 
-  describe('.knockedDown',() => {
+  describe('.knockDown',() => {
     it('adds the score to the current frame',() => {
-      frame.knockedDown(3);
+      frame.knockDown(3);
       expect(frame._score).toEqual(3);
     });
 
     it('holds one if a spare is scored', () => {
-      frame.knockedDown(3);
-      frame.knockedDown(7);
+      frame.knockDown(3);
+      frame.knockDown(7);
       expect(frame._bonusRollsLeft).toEqual(1);
     });
 
     it('holds two if a strike is scored', () => {
-      frame.knockedDown(10);
+      frame.knockDown(10);
       expect(frame._bonusRollsLeft).toEqual(2);
     });
 
     it('sets to inactive if a spare is scored', () => {
-      frame.knockedDown(2);
-      frame.knockedDown(8);
+      frame.knockDown(2);
+      frame.knockDown(8);
       expect(frame._isActive).toBe(false);
     });
 
 
     it('sets to inactive if a strike is scored', () => {
-      frame.knockedDown(10);
+      frame.knockDown(10);
       expect(frame._isActive).toBe(false);
     });
 
     it('sets to inactive once two rolls occur', () => {
-      frame.knockedDown(4);
-      frame.knockedDown(1);
+      frame.knockDown(4);
+      frame.knockDown(1);
       expect(frame._isActive).toBe(false);
     });
   });

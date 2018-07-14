@@ -2,14 +2,15 @@
 
 describe('Scorecard', () => {
 
-  var DummyFrame = function(){};
-  DummyFrame.prototype.knockedDown = function(){};
+  var DummyFrame = function(){this._score = 5;};
+
+  DummyFrame.prototype.knockDown = function(){};
   DummyFrame.prototype.isActive = function(){};
   DummyFrame.prototype.rollNumber = function(){};
 
   beforeEach(() => {
     frame = new DummyFrame();
-    spyOn(frame, 'knockedDown').and.returnValue(true);
+    spyOn(frame, 'knockDown').and.returnValue(true);
     spyOn(Scorecard.prototype, 'generateFrame').and.returnValue(frame);
     scorecard = new Scorecard();
   });
@@ -46,7 +47,7 @@ describe('Scorecard', () => {
   describe('.roll', () => {
     it('adds the current roll to the frame', () => {
       scorecard.roll(2);
-      expect(scorecard._currentFrame.knockedDown).toHaveBeenCalledWith(2);
+      expect(scorecard._currentFrame.knockDown).toHaveBeenCalledWith(2);
     });
     it('moves to the next frame if frame is no longer active', () => {
       spyOn(frame, 'isActive').and.returnValue(false);
@@ -58,6 +59,18 @@ describe('Scorecard', () => {
       spyOn(scorecard, 'updateScore');
       scorecard.roll(2);
       expect(scorecard.updateScore).toHaveBeenCalled();
+    });
+  });
+
+  describe('.nextFrame', () => {
+    it('moves current frame to the incomplete frame array', () => {
+      scorecard.nextFrame();
+      expect(scorecard._incompleteFrames).toContain(frame);
+    });
+
+    it('sets the current frame to a new frame', () => {
+      scorecard.nextFrame();
+      expect(Scorecard.prototype.generateFrame).toHaveBeenCalled();
     });
   });
 });

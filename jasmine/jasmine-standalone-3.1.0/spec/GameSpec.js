@@ -38,4 +38,15 @@ describe("Game: ", function() {
     expect(game.score()).toEqual(5);
   });
 
+  it('A User can roll 10 strikes in a Game and score maximum points', function() {
+    for (var i = 0; i < 5; i++) {
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.getBonus();
+    }
+    expect(game.score()).toEqual(300);
+  });
+
 });

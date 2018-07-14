@@ -29,33 +29,33 @@ describe("Feature Test: ", function() {
 
     // TODO - this test will need to be refactored when you
     // include Strike
-    it('A User can roll 10 pins or Strikes multiple times in a Game and score bonus points', function() {
+    it('A User can roll 20 pins or Strikes multiple times in a Game and score bonus points', function() {
       game.roll(1);
-      game.roll(4);//
+      game.roll(4); //
       game.roll(4);
-      game.roll(5);//
+      game.roll(5); //
       game.roll(6);
-      game.roll(4);// bonus
+      game.roll(4); // bonus
       game.roll(5);
-      game.roll(5);//
-             game.getBonus(); //5 // 29 total
-       game.roll(10);
-       game.roll(0);//
-              game.getBonus(); //10
-      game.roll(0);
-       game.roll(1);//
-               game.getBonus(); // 1
-       game.roll(7);
-       game.roll(3);// bonus
-       game.roll(6);
-       game.roll(4);//
-             game.getBonus(); //6
+      game.roll(5); //
+      game.getBonus(); // bonus 5
       game.roll(10);
       game.roll(0);//
-           game.getBonus(); // 10
+      game.getBonus(); // bonus 10
+      game.roll(0);
+      game.roll(1);//
+      game.getBonus(); // bonus 1
+      game.roll(7);
+      game.roll(3);// bonus
+      game.roll(6);
+      game.roll(4);//
+      game.getBonus(); // bonus 6
+      game.roll(10);
+      game.roll(0);//
+      game.getBonus(); // bonus 10
       game.roll(2);
       game.roll(8);//
-             game.getBonus(); // 10
+      game.getBonus(); // bonus 10
       expect(game.score()).toEqual(127);
     });
   });

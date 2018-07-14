@@ -20,13 +20,13 @@ Game.prototype.getFrames = function() {
 
 Game.prototype.roll = function(kockedDownPins) {
   if (this._rolls === 0) {
-    this.calculate.logRollScore(kockedDownPins);
+    this.calculate.storeRollScore(kockedDownPins);
     this.pinsHit += kockedDownPins;
     this._rolls += 1;
     return "roll again"
   } else {
     this._rolls += 1; // 2 rolls
-    this.calculate.logRollScore(kockedDownPins);
+    this.calculate.storeRollScore(kockedDownPins);
     this.pinsHit += kockedDownPins;
     this.calculate.calculateScore(this.pinsHit);
     this.pinsHit = 0;
@@ -53,7 +53,7 @@ Game.prototype.score = function() {
 
 Game.prototype.getBonus = function() {
   // return this._score
-   return this.calculate.strikeBonus(this.calculate.rollScore.length);
+   return this.calculate.bonus(this.calculate.rollScore.length);
 };
 
 Game.prototype.array = function() {

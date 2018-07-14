@@ -5,9 +5,10 @@ function Game() {
 
   this._frames = [];
   this._rolls = 0;
+  this.pinsHit = 0;
   // this._score = 0;
 
-  this._calculate = new CalculateScore();
+  this.calculate = new CalculateScore();
 }
 
 Game.prototype.addFrame = function(frame){
@@ -19,9 +20,16 @@ Game.prototype.getFrames = function() {
 };
 
 Game.prototype.roll = function(pins) {
-  // this._score += pins
-  this._calculate.calculateScore(pins);
-  this._rolls += 1;
+  if (this._rolls === 0) {
+    this.pinsHit += pins;
+    this._rolls += 1;
+    return "roll again"
+  } else {
+    this.pinsHit += pins;
+    this.calculate.calculateScore(this.pinsHit);
+    this._rolls += 1;
+    this.pinsHit = 0;
+  }
 
   // 2 rolls = a completed Frame
   if (this._frames.length <= 9 && this._rolls === this.MAX_ROLLS) {
@@ -33,5 +41,10 @@ Game.prototype.roll = function(pins) {
 
 Game.prototype.score = function() {
   // return this._score
-  return this._calculate.getScore();
+  return this.calculate.getScore();
 };
+
+// Game.prototype.score2 = function() {
+//   // return this._score
+//   return this.calculate.score;
+// };

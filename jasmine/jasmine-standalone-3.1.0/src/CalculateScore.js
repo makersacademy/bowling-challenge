@@ -1,14 +1,17 @@
 'use strict';
 
 function CalculateScore() {
-  this._score = 0;
+  this.score = [];
 }
 
 CalculateScore.prototype.calculateScore = function(pins) {
-  return this._score += pins
+   this.score.push(pins);
 };
 
-
 CalculateScore.prototype.getScore = function() {
-  return this._score
+  var sum = 0;
+  for (var i = this.score.length; !!i--;) {
+  sum += this.score[i];
+  }
+  return sum;
 };

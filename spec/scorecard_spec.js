@@ -1,8 +1,6 @@
 describe ('Scorecard', function() {
 
   var scorecard;
-  var frame1;
-  var frame2;
 
   beforeEach(function() {
     scorecard = new Scorecard();
@@ -55,6 +53,13 @@ describe ('Scorecard', function() {
         expect(scorecard.futureBonusFrames).toEqual([0])
       });
     });
+    describe('.addBonusScore', function() {
+      it ('adds the bonus score to the correct frame', function() {
+        scorecard.addScore(2, 5)
+        scorecard.addScore(2, 3)
+        expect(scorecard.frames[0].totalScore()).toEqual (4);
+      });
+    });
   });
 
   describe('When the player rolls a spare', function() {
@@ -76,6 +81,13 @@ describe ('Scorecard', function() {
         expect(scorecard.futureBonusFrames).toEqual([0])
       });
     });
+    describe('.addBonusScore', function() {
+      it ('adds the bonus score to the correct frame', function() {
+        scorecard.addScore(2, 5)
+        scorecard.addScore(2, 3)
+        expect(scorecard.frames[0].totalScore()).toEqual (15);
+      });
+    });
   })
 
   describe('When the player rolls a strike', function() {
@@ -94,6 +106,13 @@ describe ('Scorecard', function() {
       });
       it ('add the frame to the future bonus frames', function() {
         expect(scorecard.futureBonusFrames).toEqual([1])
+      });
+    });
+    describe('.addBonusScore', function() {
+      it ('adds the bonus score to the correct frame', function() {
+        scorecard.addScore(2, 5)
+        scorecard.addScore(2, 3)
+        expect(scorecard.frames[0].totalScore()).toEqual (18);
       });
     });
   });

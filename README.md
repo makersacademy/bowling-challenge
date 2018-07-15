@@ -100,5 +100,5 @@ Print frame scores and current running total:
 
 ```
 
-**NOTE: a complete game of ten frames has been set up under a variable called `exampleScorecard` - run the printScores function to see the final output**
+**NOTE: a complete game of ten frames has been set up under a variable called `exampleScorecard` - run `exampleScorecard.printScores()` to see the final output**
 ____

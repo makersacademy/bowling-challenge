@@ -13,7 +13,7 @@ describe ('Frame', function() {
   });
 
   it ('returns the total score for the frame', function() {
-    expect(frame.totalScore()).toEqual (8);
+    expect(frame.totalFrameScore()).toEqual (8);
   });
 
 });

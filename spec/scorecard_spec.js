@@ -22,22 +22,22 @@ describe ('Scorecard', function() {
     it ('adds the basic score to the correct frame', function() {
       var frame = 1;
       var score = 5
-      scorecard.addScore(frame, score)
-      expect(scorecard.frames[(frame - 1)].totalScore()).toEqual (5);
+      scorecard.addBasicScore(frame, score)
+      expect(scorecard.frames[(frame - 1)].totalFrameScore()).toEqual (5);
     });
   });
 
   describe('.totalScore', function() {
     it ('calculates a running total of all frame scores', function() {
-      scorecard.addScore(1, 3)
-      scorecard.addScore(2, 4)
+      scorecard.recordScore(1, 3)
+      scorecard.recordScore(2, 4)
       expect(scorecard.totalScore()).toEqual (7);
     });
   });
 
   describe('When the player rolls an ordinary number', function() {
     beforeEach(function() {
-      scorecard.addScore(2, 4);
+      scorecard.recordScore(2, 4);
     });
 
     describe('.checkScoreType', function() {
@@ -55,8 +55,8 @@ describe ('Scorecard', function() {
     });
     describe('.addBonusScore', function() {
       it ('adds the bonus score to the correct frame', function() {
-        scorecard.addScore(2, 5)
-        scorecard.addScore(2, 3)
+        scorecard.recordScore(2, 5)
+        scorecard.recordScore(2, 3)
         expect(scorecard.frames[0].totalScore()).toEqual (4);
       });
     });
@@ -64,8 +64,8 @@ describe ('Scorecard', function() {
 
   describe('When the player rolls a spare', function() {
     beforeEach(function() {
-      scorecard.addScore(1, 3)
-      scorecard.addScore(1, 7)
+      scorecard.recordScore(1, 3)
+      scorecard.recordScore(1, 7)
     });
 
     describe('.checkScoreType', function() {
@@ -83,8 +83,8 @@ describe ('Scorecard', function() {
     });
     describe('.addBonusScore', function() {
       it ('adds the bonus score to the correct frame', function() {
-        scorecard.addScore(2, 5)
-        scorecard.addScore(2, 3)
+        scorecard.recordScore(2, 5)
+        scorecard.recordScore(2, 3)
         expect(scorecard.frames[0].totalScore()).toEqual (15);
       });
     });
@@ -92,7 +92,7 @@ describe ('Scorecard', function() {
 
   describe('When the player rolls a strike', function() {
     beforeEach(function() {
-      scorecard.addScore(1, 10)
+      scorecard.recordScore(1, 10)
     });
 
     describe('.checkScoreType', function() {
@@ -110,8 +110,8 @@ describe ('Scorecard', function() {
     });
     describe('.addBonusScore', function() {
       it ('adds the bonus score to the correct frame', function() {
-        scorecard.addScore(2, 5)
-        scorecard.addScore(2, 3)
+        scorecard.recordScore(2, 5)
+        scorecard.recordScore(2, 3)
         expect(scorecard.frames[0].totalScore()).toEqual (18);
       });
     });
@@ -119,8 +119,8 @@ describe ('Scorecard', function() {
 
   describe('When the player rolls 2 strikes', function() {
     beforeEach(function() {
-      scorecard.addScore(1, 10)
-      scorecard.addScore(2, 10)
+      scorecard.recordScore(1, 10)
+      scorecard.recordScore(2, 10)
     });
 
     describe('._setBonusCondition', function() {

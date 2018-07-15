@@ -13,8 +13,8 @@ function Scorecard() {
   ];
 }
 
-Scorecard.prototype.addScore = function(frame, score) {
-  this.frames[(frame - 1)].addScore(score);
+Scorecard.prototype.addScore = function(frameNumber, score) {
+  this.frames[(frameNumber - 1)].addScore(score);
 }
 
 Scorecard.prototype.totalScore = function() {
@@ -23,3 +23,15 @@ Scorecard.prototype.totalScore = function() {
     return (a + b)
   });
 };
+
+Scorecard.prototype.checkScoreType = function(frameNumber, score) {
+  if (score === 10) {
+    return 'Strike'
+  }
+  else if (this.frames[(frameNumber - 1)].totalScore() === 10) {
+    return 'Spare'
+  }
+  else {
+    return 'Ordinary Roll'
+  }
+}

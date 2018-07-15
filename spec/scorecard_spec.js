@@ -38,7 +38,8 @@ describe ('Scorecard', function() {
 
   it ('checks the score type - strike', function() {
     scorecard.addScore(1, 10)
-    expect(scorecard.checkScoreType(1, 3)).toEqual('Strike')
+    console.log(scorecard)
+    expect(scorecard.checkScoreType(1, 10)).toEqual('Strike')
   })
 
 });

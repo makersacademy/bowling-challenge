@@ -13,5 +13,5 @@ Frame.prototype.recordRoll = function(roll) {
 }
 
 Frame.prototype.totalScore = function() {
-  return this.scores.reduce((a, b) => a + b, 0)
-};
+  return this.scores.reduce((a, b) => a + b, 0);
+}

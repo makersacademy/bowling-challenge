@@ -1,7 +1,7 @@
 function Scorecard() {
-  this.frames = []
+  this.frames = [];
 }
 
 Scorecard.prototype.getFrames = function() {
-  return this.frames
+  return this.frames;
 }

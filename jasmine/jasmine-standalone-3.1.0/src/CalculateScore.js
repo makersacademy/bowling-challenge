@@ -10,10 +10,12 @@ function CalculateScore() {
 
 CalculateScore.prototype.storeRollScore = function(kockedDownPins) {
   this._rollScore.push(kockedDownPins);
+
 };
 
 CalculateScore.prototype.calculateScore = function(kockedDownPins) {
    this._totalScore.push(kockedDownPins);
+
 };
 
 CalculateScore.prototype.getScore = function() {
@@ -24,10 +26,21 @@ CalculateScore.prototype.getScore = function() {
   return sum;
 };
 
-CalculateScore.prototype.bonus = function(index) {
+CalculateScore.prototype.checkBonus = function(index) {
+
+  if (this._rollScore[index - '4'] === 10) {
+    this.addBonus(index);
+  } else if (this._rollScore[index - '4'] === 10 && this._rollScore[index - '3'] === 10) {
+    this.addBonus(index);
+  } else if (this._rollScore[index - '4'] + this._rollScore[index - '3'] === 10) {
+    this.addBonus(index);
+  };
+};
+
+CalculateScore.prototype.addBonus = function(index) {
   // return this.rollScore[(index-3)]  ;
   var bonus = 0;
-  var tempScore = this._rollScore;
+  // var tempScore = this._rollScore;
   if (this._rollScore[index - '4'] === 10) {
     if (this._rollScore[index - '3'] === 10) {
       bonus = 20;

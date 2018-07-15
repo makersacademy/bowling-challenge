@@ -35,6 +35,6 @@ describe("Game: ", function() {
   it('A User can Roll 2 times and score 5 points', function() {
     game.roll(1);
     game.roll(4);
-    expect(game.score()).toEqual(5);
+    expect(game.getScore()).toEqual(5);
   });
 });

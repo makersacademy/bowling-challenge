@@ -23,13 +23,15 @@ Game.prototype.roll = function(kockedDownPins) {
     this._calculate.storeRollScore(kockedDownPins);
     this._totalPinsHitFrame += kockedDownPins;
     this._rolls += 1;
+    this.getBonus();
     return "roll again"
   } else {
-    this._rolls += 1; // 2 rolls
     this._calculate.storeRollScore(kockedDownPins);
     this._totalPinsHitFrame += kockedDownPins;
+    this._rolls += 1; // 2 rolls
+    this.getBonus();
     this._calculate.calculateScore(this._totalPinsHitFrame);
-    this._totalPinsHitFrame = 0;
+    this._totalPinsHitFrame = 0; // reset pins hit
   }
 
   // TODO this logic is not in the corretc place
@@ -37,20 +39,32 @@ Game.prototype.roll = function(kockedDownPins) {
   //   this.getBonus();
   // }
 
-  // 2 rolls = a completed Frame
+  // 2 rolls = a completed Frame TODO create a function for this
   if (this._frames.length <= 9 && this._rolls === this.MAX_ROLLS) {
     this._frames.push('X');
   }
+
+  // if the total pins hit in a game == 10
+  // if (this._totalPinsHitFrame === 10) {
+  //   this.getBonus();
+  // }
+
   return this._rolls;
 };
 
-Game.prototype.score = function() {
+Game.prototype.getScore = function() {
   return this._calculate.getScore();
 };
 
+// Game.prototype.getBonus = function() {
+//    return this._calculate.addBonus(this._calculate._rollScore.length);
+// };
+
+
 Game.prototype.getBonus = function() {
-   return this._calculate.bonus(this._calculate._rollScore.length);
+   return this._calculate.checkBonus(this._calculate._rollScore.length);
 };
+
 
 Game.prototype.array = function() {
   return this._calculate._rollScore.length;

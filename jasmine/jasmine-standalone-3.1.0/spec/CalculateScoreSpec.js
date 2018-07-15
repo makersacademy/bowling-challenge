@@ -4,7 +4,6 @@ describe("Calculate Score: ", function() {
   var calc;
   var game;
 
-
   beforeEach(function(){
     calc = new CalculateScore();
     game = new Game();

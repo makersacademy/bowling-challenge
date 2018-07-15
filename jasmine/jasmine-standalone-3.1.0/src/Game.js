@@ -44,7 +44,7 @@ Game.prototype.roll = function(kockedDownPins) {
     };
     return this._rolls;
   } else {
-    return "Game over";
+      return "Game over";
   };
 };
 
@@ -85,7 +85,7 @@ Game.prototype.resetFrames = function() {
 };
 
 Game.prototype.gameOver = function() {
-  return this._frames.length === this.MAX_FRAMES;
+  return this.getFrames() === this.MAX_FRAMES;
 };
 
 Game.prototype.resetGame = function() {

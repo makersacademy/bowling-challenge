@@ -6,8 +6,6 @@ describe ('Scorecard', function() {
 
   beforeEach(function() {
     scorecard = new Scorecard();
-    frame1 = { number: 1, rolls: [], scores: [1,2] };
-    frame2 = { number: 2, rolls: [], scores: [3,4] };
   });
 
   it ('initializes with an empty frames array', function() {
@@ -19,10 +17,14 @@ describe ('Scorecard', function() {
     expect(scorecard.getFrames()).toContain (frame1);
   });
 
-  it ('calculates a running total of all frames', function() {
+  it ('calculates a running total of all frame scores', function() {
+    frame1 = new Frame (1);
+    frame2 = new Frame (2);
     scorecard.addFrame(frame1);
     scorecard.addFrame(frame2);
-    expect(scorecard.totalScore()).toEqual(10);
+    frame1.addScore(3);
+    frame2.addScore(7);
+    expect(scorecard.totalScore()).toEqual (10);
   });
 
 });

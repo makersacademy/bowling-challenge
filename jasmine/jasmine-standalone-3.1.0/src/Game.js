@@ -2,6 +2,7 @@
 
 function Game() {
   this.MAX_ROLLS = 2;
+  this.MAX_FRAMES = 10;
 
   this._frames = [];
   this._rolls = 0;
@@ -31,11 +32,11 @@ Game.prototype.roll = function(kockedDownPins) {
     this._rolls += 1; // 2 rolls
     this.getBonus();
     this._score.calculateScore(this._totalPinsHitFrame);
-      if (this._frames.length <= 10 && this._rolls === this.MAX_ROLLS) {
+      if (this._frames.length <= this.MAX_FRAMES && this._rolls === this.MAX_ROLLS) {
         this._frames.push('X');
       };
     this.resetPinsCount(); // reset pins hit
-    this.resetRollsCount(); // reset rolls
+    this.resetRollsCount(); // reset rolls count
   }
   return this._rolls;
 };

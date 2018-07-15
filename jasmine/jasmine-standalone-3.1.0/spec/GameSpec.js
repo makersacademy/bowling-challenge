@@ -1,6 +1,6 @@
 'use strict';
 
-describe("Game: ", function() {
+describe("Game unit test: ", function() {
   var game;
   var score;
 

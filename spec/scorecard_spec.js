@@ -96,6 +96,22 @@ describe ('Scorecard', function() {
         expect(scorecard.futureBonusFrames).toEqual([1])
       });
     });
+  });
+
+  describe('When the player rolls 2 strikes', function() {
+    beforeEach(function() {
+      scorecard.addScore(1, 10)
+      scorecard.addScore(2, 10)
+    });
+
+    describe('._setBonusCondition', function() {
+      it ('adds 2 frame to the current bonus frames', function() {
+        expect(scorecard.currentBonusFrames).toEqual([1, 2])
+      });
+      it ('add the frame to the future bonus frames', function() {
+        expect(scorecard.futureBonusFrames).toEqual([2])
+      });
+    });
   })
 
 });

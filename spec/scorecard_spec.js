@@ -8,11 +8,12 @@ describe ('Scorecard', function() {
     scorecard = new Scorecard();
   });
 
-  it ('initializes with an empty frames array', function() {
-    expect(scorecard.getFrames()).toEqual ([]);
+  it ('initializes with an array of 10 frames', function() {
+    expect(scorecard.frames.length).toEqual (10);
   });
 
   it ('stores frames', function() {
+    frame1 = new Frame (1);
     scorecard.addFrame(frame1);
     expect(scorecard.getFrames()).toContain (frame1);
   });

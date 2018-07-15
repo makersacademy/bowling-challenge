@@ -54,6 +54,10 @@ describe("Game unit test: ", function() {
     game.gameOver() === true;
     game.resetGame();
     expect(game.gameOver()).toBeFalsy();
+    expect(game._rolls).toEqual(0);
+    expect(game._frames).toEqual([]);
+    expect(game.getScore()).toEqual(0);
+    expect(game.getScoreScard()).toEqual([]);
   });
 
 });

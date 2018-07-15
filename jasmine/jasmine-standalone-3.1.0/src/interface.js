@@ -13,13 +13,15 @@ $(document).ready(function() {
       game.roll(pins);
       updateScore();
       updateFrame();
+      // showScorecard();
   });
 
   $('#roll-button').on('click', function() {
-    game.roll(1);
+    game.roll(10);
+    // showStrike();
     updateScore();
     updateFrame();
-    showScorecard();
+    // showScorecard();
   });
 
   function updateScore() {
@@ -33,4 +35,9 @@ $(document).ready(function() {
   function showScorecard() {
     $('#score-card').text(game.getScore());
   };
+
+  function showStrike() {
+    $('#strike').text(game.checkStrike(10));
+  };
+
 });

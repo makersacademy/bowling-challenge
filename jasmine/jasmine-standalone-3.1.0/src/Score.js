@@ -24,8 +24,11 @@ Score.prototype.getScore = function() {
   return sum;
 };
 
-Score.prototype.checkBonus = function(index) {
+Score.prototype.getScoreScard = function(kockedDownPins) {
+   return this._rollScore;
+};
 
+Score.prototype.checkBonus = function(index) {
   if (this._rollScore[index - '4'] === 10) {
     this.addBonus(index);
   } else if (this._rollScore[index - '4'] === 10 && this._rollScore[index - '3'] === 10) {

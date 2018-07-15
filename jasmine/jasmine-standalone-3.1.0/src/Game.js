@@ -54,6 +54,10 @@ Game.prototype.getScore = function() {
   return this._score.getScore();
 };
 
+Game.prototype.getScoreScard = function() {
+  return this._score.getScoreScard();
+};
+
 Game.prototype.resetPinsCount = function() {
   this._totalPinsHitFrame = 0;
 };

@@ -26,7 +26,8 @@ describe("Feature Test: ", function() {
       expect(game.getScore()).toEqual(23);
     });
 
-    it('A User can roll all 10 pins or Strikes multiple times and score bonus points', function() {
+    it('A User can roll all 10 pins or Strikes multiple times and score' +
+    'bonus points', function() {
       game.roll(1);
       game.roll(4);
       game.roll(4);
@@ -51,14 +52,16 @@ describe("Feature Test: ", function() {
     });
 
     // in a Perfect game, user rolls has 12 rolls
-    it('A User can roll 10 strikes in a PERFECT GAME and score maximum points', function() {
+    it('A User can roll 10 strikes in a PERFECT GAME and score maximum points'
+    , function() {
       for (var i = 0; i < 12; i++) {
         game.roll(10);
       }
       expect(game.getScore()).toEqual(300);
     });
 
-    it('A User can roll 0 pins in a GUTTER GAME and score 0 points', function() {
+    it('A User can roll 0 pins in a GUTTER GAME and score 0 points',
+      function() {
       for (var i = 0; i <= 20; i++) {
         game.roll(0);
       }
@@ -83,7 +86,8 @@ describe("Feature Test: ", function() {
   });
 
   describe('Reset Game', function() {
-    it('A User can play a game after resetting the game to start again', function() {
+    it('A User can play a game after resetting the game to start again',
+     function() {
       for (var i = 0; i < 10; i++) {
         game.addFrame();
       }

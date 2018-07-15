@@ -23,68 +23,37 @@ describe("Feature Test: ", function() {
       game.roll(4);
       game.roll(5);
       game.roll(3);
-    //  game.getBonus();
       expect(game.getScore()).toEqual(23);
     });
 
     it('A User can roll all 10 pins or Strikes multiple times and score bonus points', function() {
       game.roll(1);
-      // game.getBonus();
-      game.roll(4); //
-      // game.getBonus();
       game.roll(4);
-      // game.getBonus();
-      game.roll(5); //
-      // game.getBonus();
-      game.roll(6);
-      // game.getBonus();
-      game.roll(4); // bonus
-      // game.getBonus();
+      game.roll(4);
       game.roll(5);
-      // game.getBonus();
-      game.roll(5); //
-        // calc.checkBonus();
-      // game.getBonus(); // bonus 5
-      game.roll(10);
-      // game.getBonus();
-      game.roll(0);//
-        // calc.checkBonus();
-     // game.getBonus(); // bonus 10
-      game.roll(0);
-      // game.getBonus();
-      game.roll(1);//
-              // calc.checkBonus();
-     // game.getBonus(); // bonus 1
-      game.roll(7);
-      // game.getBonus();
-      game.roll(3);// bonus
-      // game.getBonus();
       game.roll(6);
-      // game.getBonus();
-      game.roll(4);//
-              // calc.checkBonus();
-      // game.getBonus(); // bonus 6
+      game.roll(4);
+      game.roll(5);
+      game.roll(5);
       game.roll(10);
-      // game.getBonus();
-      game.roll(0);//
-              // calc.checkBonus();
-      // game.getBonus(); // bonus 10
+      game.roll(0);
+      game.roll(0);
+      game.roll(1);
+      game.roll(7);
+      game.roll(3);
+      game.roll(6);
+      game.roll(4);
+      game.roll(10);
+      game.roll(0);
       game.roll(2);
-      // game.getBonus();
-      game.roll(8);//
-              // calc.checkBonus();
-      // game.getBonus(); // bonus 10
+      game.roll(8);
       expect(game.getScore()).toEqual(127);
     });
 
-    // TODO
+    // in a Perfect game, user rolls has 12 rolls
     it('A User can roll 10 strikes in a PERFECT GAME and score maximum points', function() {
       for (var i = 0; i < 12; i++) {
         game.roll(10);
-        // game.roll(10);
-        // game.roll(10);
-        // game.roll(10);
-      //   game.getBonus();
       }
       expect(game.getScore()).toEqual(300);
     });

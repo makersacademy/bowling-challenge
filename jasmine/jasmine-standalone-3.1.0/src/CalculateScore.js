@@ -10,12 +10,10 @@ function CalculateScore() {
 
 CalculateScore.prototype.storeRollScore = function(kockedDownPins) {
   this._rollScore.push(kockedDownPins);
-
 };
 
 CalculateScore.prototype.calculateScore = function(kockedDownPins) {
    this._totalScore.push(kockedDownPins);
-
 };
 
 CalculateScore.prototype.getScore = function() {
@@ -38,9 +36,7 @@ CalculateScore.prototype.checkBonus = function(index) {
 };
 
 CalculateScore.prototype.addBonus = function(index) {
-  // return this.rollScore[(index-3)]  ;
   var bonus = 0;
-  // var tempScore = this._rollScore;
   if (this._rollScore[index - '4'] === 10) {
     if (this._rollScore[index - '3'] === 10) {
       bonus = 20;

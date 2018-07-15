@@ -11,12 +11,13 @@ function Scorecard() {
     frame9 =  new Frame(),
     frame10 = new Frame(),
   ];
-  this.currentBonusFrames = []
-  this.futureBonusFrames = []
+  this.currentBonusFrames = [0,0]
+  this.futureBonusFrames = [0]
 }
 
 Scorecard.prototype.addScore = function(frameNumber, score) {
   this.frames[(frameNumber - 1)].addScore(score);
+  this._setBonusCondition(frameNumber, score);
 }
 
 Scorecard.prototype.totalScore = function() {
@@ -36,17 +37,17 @@ Scorecard.prototype.checkScoreType = function(frameNumber, score) {
   }
 }
 
-Scorecard.prototype._setBonusCondition = function(framenumber) {
+Scorecard.prototype._setBonusCondition = function(frameNumber, score) {
   this.currentBonusFrames[0] = this.futureBonusFrames[0]
-  var scoreType = this.checkScoreType(frame, score)
+  var scoreType = this.checkScoreType(frameNumber, score)
   if (scoreType === 'Ordinary Roll') {
     this.currentBonusFrames[1] = 0;
     this.futureBonusFrames[0] = 0;
   } else if (scoreType === 'Spare') {
-    this.currentBonusFrames[1] = frame;
+    this.currentBonusFrames[1] = frameNumber;
     this.futureBonusFrames[0] = 0;
   } else if (scoreType = 'Strike') {
-    this.currentBonusFrames[1] = frame;
-    this.futureBonusFrames[0] = frame;
+    this.currentBonusFrames[1] = frameNumber;
+    this.futureBonusFrames[0] = frameNumber;
   }
 }

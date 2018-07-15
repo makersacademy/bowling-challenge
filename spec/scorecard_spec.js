@@ -13,10 +13,10 @@ describe ('Scorecard', function() {
       expect(scorecard.frames.length).toEqual (10);
     });
     it ('initializes with an array for current bonus frames', function(){
-      expect(scorecard.currentBonusFrames).toEqual([]);
+      expect(scorecard.currentBonusFrames).toEqual([0,0]);
     });
     it ('initializes with an array for future bonus frames', function(){
-      expect(scorecard.futureBonusFrames).toEqual([]);
+      expect(scorecard.futureBonusFrames).toEqual([0]);
     });
   });
 

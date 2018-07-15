@@ -12,6 +12,9 @@ describe ('Scorecard', function() {
     it ('initializes with an array of 10 frames', function() {
       expect(scorecard.frames.length).toEqual (10);
     });
+    it ('initializes with an object which stores bonus information', function(){
+      expect(scorecard.bonus.length).toEqual (3);
+    });
   });
 
   describe('.addScore', function() {

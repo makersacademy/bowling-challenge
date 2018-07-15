@@ -27,11 +27,9 @@ Scorecard.prototype.totalScore = function() {
 Scorecard.prototype.checkScoreType = function(frameNumber, score) {
   if (score === 10) {
     return 'Strike'
-  }
-  else if (this.frames[(frameNumber - 1)].totalScore() === 10) {
+  } else if (this.frames[(frameNumber - 1)].totalScore() === 10) {
     return 'Spare'
-  }
-  else {
+  } else {
     return 'Ordinary Roll'
   }
 }

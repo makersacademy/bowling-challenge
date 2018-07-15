@@ -17,7 +17,7 @@ function Scorecard() {
 
 Scorecard.prototype.recordScore = function(frameNumber, score) {
   this.addBasicScore(frameNumber, score)
-
+  this.addBonusScore(score)
   this._setBonusCondition(frameNumber, score);
 }
 
@@ -25,14 +25,15 @@ Scorecard.prototype.addBasicScore = function(frameNumber, score) {
   this.frames[(frameNumber - 1)].addScore(score);
 }
 
-Scorecard.prototype.totalScore = function() {
-  var scores = this.frames.map( frame => frame.totalFrameScore() )
-  return scores.reduce(function(a,b) {
-    return (a + b)
-  });
-};
+Scorecard.prototype.addBonusScore = function(score) {
+  this.currentBonusFrames.forEach( frame => {
+    if (frame !== 0) {
+      this.frames[frame - 1].addScore(score)
+    }
+  })
+}
 
-Scorecard.prototype.checkScoreType = function(frameNumber, score) {
+Scorecard.prototype._checkScoreType = function(frameNumber, score) {
   if (score === 10) {
     return 'Strike'
   } else if (this.frames[(frameNumber - 1)].totalFrameScore() === 10) {
@@ -44,7 +45,7 @@ Scorecard.prototype.checkScoreType = function(frameNumber, score) {
 
 Scorecard.prototype._setBonusCondition = function(frameNumber, score) {
   this.currentBonusFrames[0] = this.futureBonusFrames[0]
-  var scoreType = this.checkScoreType(frameNumber, score)
+  var scoreType = this._checkScoreType(frameNumber, score)
   if (scoreType === 'Ordinary Roll') {
     this.currentBonusFrames[1] = 0;
     this.futureBonusFrames[0] = 0;
@@ -56,3 +57,10 @@ Scorecard.prototype._setBonusCondition = function(frameNumber, score) {
     this.futureBonusFrames[0] = frameNumber;
   }
 }
+
+Scorecard.prototype.runningTotal = function() {
+  var scores = this.frames.map( frame => frame.totalFrameScore() )
+  return scores.reduce(function(a,b) {
+    return (a + b)
+  });
+};

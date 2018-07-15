@@ -31,18 +31,18 @@ describe ('Scorecard', function() {
     it ('calculates a running total of all frame scores', function() {
       scorecard.recordScore(1, 3)
       scorecard.recordScore(2, 4)
-      expect(scorecard.totalScore()).toEqual (7);
+      expect(scorecard.runningTotal()).toEqual (7);
     });
   });
 
   describe('When the player rolls an ordinary number', function() {
     beforeEach(function() {
-      scorecard.recordScore(2, 4);
+      scorecard.recordScore(1, 4);
     });
 
-    describe('.checkScoreType', function() {
+    describe('._checkScoreType', function() {
       it ('returns ordinary number', function() {
-        expect(scorecard.checkScoreType(2, 4)).toEqual('Ordinary Roll')
+        expect(scorecard._checkScoreType(1, 4)).toEqual('Ordinary Roll')
       });
     });
     describe('._setBonusCondition', function() {
@@ -55,9 +55,7 @@ describe ('Scorecard', function() {
     });
     describe('.addBonusScore', function() {
       it ('adds the bonus score to the correct frame', function() {
-        scorecard.recordScore(2, 5)
-        scorecard.recordScore(2, 3)
-        expect(scorecard.frames[0].totalScore()).toEqual (4);
+        expect(scorecard.frames[0].totalFrameScore()).toEqual (4);
       });
     });
   });
@@ -68,9 +66,9 @@ describe ('Scorecard', function() {
       scorecard.recordScore(1, 7)
     });
 
-    describe('.checkScoreType', function() {
+    describe('._checkScoreType', function() {
       it ('returns spare', function() {
-        expect(scorecard.checkScoreType(1, 7)).toEqual('Spare')
+        expect(scorecard._checkScoreType(1, 7)).toEqual('Spare')
       });
     });
     describe('._setBonusCondition', function() {
@@ -85,7 +83,7 @@ describe ('Scorecard', function() {
       it ('adds the bonus score to the correct frame', function() {
         scorecard.recordScore(2, 5)
         scorecard.recordScore(2, 3)
-        expect(scorecard.frames[0].totalScore()).toEqual (15);
+        expect(scorecard.frames[0].totalFrameScore()).toEqual (15);
       });
     });
   })
@@ -95,9 +93,9 @@ describe ('Scorecard', function() {
       scorecard.recordScore(1, 10)
     });
 
-    describe('.checkScoreType', function() {
+    describe('._checkScoreType', function() {
       it ('returns strike', function() {
-        expect(scorecard.checkScoreType(1, 10)).toEqual('Strike')
+        expect(scorecard._checkScoreType(1, 10)).toEqual('Strike')
       });
     });
     describe('._setBonusCondition', function() {
@@ -112,7 +110,7 @@ describe ('Scorecard', function() {
       it ('adds the bonus score to the correct frame', function() {
         scorecard.recordScore(2, 5)
         scorecard.recordScore(2, 3)
-        expect(scorecard.frames[0].totalScore()).toEqual (18);
+        expect(scorecard.frames[0].totalFrameScore()).toEqual (18);
       });
     });
   });

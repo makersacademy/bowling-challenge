@@ -11,14 +11,43 @@ $(document).ready(function() {
   //   updateScore();
   // });
 
-  $('#bowl-pins').submit(function(event) {
-    event.preventDefault();
-    var pin = $('#pins').val();
-    game.roll(pin);
-    updateScore();
-    // $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=a3d9eb01d4de82b9b8d0849ef604dbed&units=metric', function(data) {
-    //   $('#current-temperature').text(data.main.temp);
-    // })
+  // $('#bowl-pins').submit(function(event) {
+  //   event.preventDefault();
+  //   var pins = $('#pins').val();
+  //
+  //   if (pins === 1) {
+  //     pins = 1;
+  //   } else if (pins === 2) {
+  //     pins = 2;
+  //   } else if (pins === 3) {
+  //     pins = 3;
+  //   } else if (pins === 4) {
+  //     pins = 4;
+  //   } else if (pins === 5) {
+  //     pins = 5;
+  //   } else if (pins === 6) {
+  //     pins = 6;
+  //   } else if (pins === 7) {
+  //     pins = 7;
+  //   } else if (pins === 8) {
+  //     pins = 8;
+  //   } else if (pins === 9) {
+  //     pins = 9;
+  //   } else if (pins === 10) {
+  //     pins = 10;
+  //   };
+  //
+  //   game.roll(pins);
+  //   updateScore();
+  // });
+
+
+  $('#bowl-pins').change(function() {
+    var pins = $('#bowl-pins').val();
+      $('#pins').text(pins);
+      game.roll(pins);
+      updateScore();
+      updateFrame();
   });
 
   $('#roll-button').on('click', function() {
@@ -27,8 +56,6 @@ $(document).ready(function() {
     updateFrame();
   });
 
-
-
   function updateScore() {
     $('#current-score').text(game.getScore());
   };
@@ -36,6 +63,5 @@ $(document).ready(function() {
   function updateFrame() {
     $('#frame').text(game.getFrames());
   };
-
 
 });

@@ -16,18 +16,33 @@
     <p>Frame: <span id="frame" class="frame"></span></p>
   </div>
   <div>
+    <p><span id="strike" class="strike"></span></p>
+  </div>
+  <div>
     <h2>Current score <span id="current-score"></span>: <span id="current-score"></span></h2>
   </div>
   <div>
-    <form id="bowl-pins">
+    <!-- <form id="bowl-pins">
       Input how many pins to know down:<input id="pins" type="text"></input>
       <input type="submit" value="roll"></input>
-    </form>
+    </form> -->
+    <select id="bowl-pins">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">7</option>
+      <option value="9">7</option>
+      <option value="10">7</option>
+    </select>
+  </div>
+  <div>
+    <p>Pins: <span id="pins" class="pins"></span></p>
   </div>
 
-  <div>
-    <p id="strike" class="strike"></p>
-  </div>
 
   <div>
     <button id="roll-button" class="roll-button">roll</button>

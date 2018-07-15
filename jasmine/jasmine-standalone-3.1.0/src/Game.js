@@ -20,25 +20,30 @@ Game.prototype.getFrames = function() {
 };
 
 Game.prototype.roll = function(kockedDownPins) {
-  if (this._rolls === 0) {
-    this._score.storeRollScore(kockedDownPins);
-    this._totalPinsHitFrame += kockedDownPins;
-    this._rolls += 1;
-    this.getBonus();
-    return "roll again"
+  // first check the status of the game
+  if (this.getGameStatus() === false) {
+    if (this._rolls === 0) {
+      this._score.storeRollScore(kockedDownPins);
+      this._totalPinsHitFrame += kockedDownPins;
+      this._rolls += 1;
+      this.getBonus();
+      return "roll again"
+    } else {
+      this._score.storeRollScore(kockedDownPins);
+      this._totalPinsHitFrame += kockedDownPins;
+      this._rolls += 1; // 2 rolls
+      this.getBonus();
+      this._score.calculateScore(this._totalPinsHitFrame);
+        if (this._frames.length <= this.MAX_FRAMES && this._rolls === this.MAX_ROLLS) {
+          this._frames.push('X');
+        };
+      this.resetPinsCount(); // reset pins hit
+      this.resetRollsCount(); // reset rolls count
+    };
+    return this._rolls;
   } else {
-    this._score.storeRollScore(kockedDownPins);
-    this._totalPinsHitFrame += kockedDownPins;
-    this._rolls += 1; // 2 rolls
-    this.getBonus();
-    this._score.calculateScore(this._totalPinsHitFrame);
-      if (this._frames.length <= this.MAX_FRAMES && this._rolls === this.MAX_ROLLS) {
-        this._frames.push('X');
-      };
-    this.resetPinsCount(); // reset pins hit
-    this.resetRollsCount(); // reset rolls count
-  }
-  return this._rolls;
+    return "Game over";
+  };ss
 };
 
 Game.prototype.getBonus = function() {
@@ -56,6 +61,11 @@ Game.prototype.resetPinsCount = function() {
 Game.prototype.resetRollsCount = function() {
   this._rolls = 0;
 };
+
+Game.prototype.getGameStatus = function() {
+  return this._frames.length === this.MAX_FRAMES;
+};
+
 
 //
 // Game.prototype.array = function() {

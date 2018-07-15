@@ -46,4 +46,12 @@ describe("Game: ", function() {
     game.roll(4);
     expect(game.getScore()).toEqual(5);
   });
+
+  it('Game over if 10 Frames played', function() {
+    for (var i = 0; i <= 9; i++) {
+      game.addFrame('X');
+    }
+    expect(game.getGameStatus()).toBeTruthy();
+  });
+
 });

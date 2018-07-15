@@ -13,6 +13,11 @@ describe("Game unit test: ", function() {
     expect(game.getFrames()).not .toBeNull()
   });
 
+  it('A User can roll in a Game', function() {
+    game.roll(1);
+    expect(game.getRolls()).toEqual(1);
+  });
+
   it('A User can Roll 2 times per Frame', function() {
     game.roll(1);
     game.roll(1);
@@ -43,21 +48,21 @@ describe("Game unit test: ", function() {
     expect(game.getScore()).toEqual(5);
   });
 
-  it('Game over if 10 Frames played', function() {
+  it('A Game is over if 10 Frames played', function() {
     for (var i = 0; i < 10; i++) {
       game.addFrame('X');
     }
     expect(game.gameOver()).toBeTruthy();
   });
 
-  it('A user can play again when the game is over', function() {
+  it('A User can play again when the game is over', function() {
     game.gameOver() === true;
     game.resetGame();
     expect(game.gameOver()).toBeFalsy();
     expect(game._rolls).toEqual(0);
     expect(game._frames).toEqual([]);
     expect(game.getScore()).toEqual(0);
-    expect(game.getScoreScard()).toEqual([]);
+    expect(game.getScoreCard()).toEqual([]);
   });
 
 });

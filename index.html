@@ -11,9 +11,12 @@
   <title>Bowling</title>
 </head>
 <body>
-  <br/><br/>
+    <h1>Bowling</h1>
   <div>
-    <p>Frame: <span id="frame" class="frame"></span> | Scorecard: <span id="score-card" class="score-card"></span></p>
+    <h2>Game status: <span id="game-status" class="game-status"></span> <span id="game-status"></span></h2>
+  </div>
+  <div>
+    <p>Frame: <span id="frame" class="frame"></span> | Rolls: <span id="rolls-count" class="rolls-count"></span> | Scorecard: <span id="score-card" class="score-card"></span></p>
   </div>
   <div>
     <h2><span id="strike" class="strike"></span></h2>
@@ -22,10 +25,17 @@
     <h2>Current score <span id="current-score"></span>: <span id="current-score"></span></h2>
   </div>
   <div>
+    <button id="roll-button" class="roll-button">roll</button>
+    <br/><br/>
+  </div>
+
+  <div>
     <!-- <form id="bowl-pins">
       Input how many pins to know down:<input id="pins" type="text"></input>
       <input type="submit" value="roll"></input>
     </form> -->
+
+
     <select id="bowl-pins">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -39,11 +49,6 @@
       <option value="10">10</option>
     </select>
   </div>
-  <div>
-    <p>Pins: <span id="pins" class="pins"></span></p>
-  </div>
-  <div>
-    <button id="roll-button" class="roll-button">roll</button>
-  </div>
+
 </body>
 </html>

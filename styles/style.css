@@ -27,3 +27,7 @@
   background-color: #555555; /* Green */
   color: #ffffff;
 }
+
+.game-status {
+  color: green;
+}

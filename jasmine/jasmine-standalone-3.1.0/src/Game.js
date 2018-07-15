@@ -56,7 +56,7 @@ Game.prototype.getScore = function() {
   return this._score.getScore();
 };
 
-Game.prototype.getScoreScard = function() {
+Game.prototype.getScoreCard = function() {
   return this._score.getScoreScard();
 };
 
@@ -64,6 +64,10 @@ Game.prototype.checkStrike = function(kockedDownPins) {
    if (kockedDownPins === 10) {
     return "Strike!"
   };
+};
+
+Game.prototype.getRolls = function() {
+  return this._rolls;
 };
 
 Game.prototype.resetPinsCount = function() {
@@ -78,7 +82,6 @@ Game.prototype.resetFrames = function() {
   this._frames = [];
 };
 
-
 Game.prototype.gameOver = function() {
   return this._frames.length === this.MAX_FRAMES;
 };
@@ -89,8 +92,3 @@ Game.prototype.resetGame = function() {
   this.resetPinsCount();
   this._score.resetScore();
 };
-
-//
-// Game.prototype.array = function() {
-//   return this._calculate._rollScore.length;
-// };

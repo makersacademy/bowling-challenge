@@ -51,11 +51,11 @@ describe("Feature Test: ", function() {
       expect(game.getScore()).toEqual(127);
     });
 
-    // in a Perfect game, user rolls has 12 rolls
-    it('A User can roll 10 strikes in a PERFECT GAME and score maximum points'
+    // in a Perfect game, user has 2 bonus strike in Game 10
+    it('A User can roll 12 strikes in a PERFECT GAME and score maximum points'
     , function() {
       for (var i = 0; i < 12; i++) {
-        game.roll(10);
+      game.roll(10);
       }
       expect(game.getScore()).toEqual(300);
     });

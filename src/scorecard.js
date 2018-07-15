@@ -21,10 +21,28 @@ Scorecard.prototype.recordScore = function(frameNumber, score) {
   this._setBonusCondition(frameNumber, score);
 }
 
+Scorecard.prototype.runningTotal = function() {
+  var scores = this.frames.map( frame => frame.totalFrameScore() )
+  return scores.reduce(function(a,b) {
+    return (a + b)
+  });
+};
+
+Scorecard.prototype.printScores = function() {
+  var frameNumber = 1
+  this.frames.forEach( frame =>   {
+    console.log('Frame ' + frameNumber + ': ' + frame.totalFrameScore());
+    frameNumber += 1;
+  })
+  console.log('Total: ' + this.runningTotal())
+}
+
+// Extract to Controller Class
 Scorecard.prototype.addBasicScore = function(frameNumber, score) {
   this.frames[(frameNumber - 1)].addScore(score);
 }
 
+// Extract to Controller Class
 Scorecard.prototype.addBonusScore = function(score) {
   this.currentBonusFrames.forEach( frame => {
     if (frame !== 0) {
@@ -33,16 +51,7 @@ Scorecard.prototype.addBonusScore = function(score) {
   })
 }
 
-Scorecard.prototype._checkScoreType = function(frameNumber, score) {
-  if (score === 10) {
-    return 'Strike'
-  } else if (this.frames[(frameNumber - 1)].totalFrameScore() === 10) {
-    return 'Spare'
-  } else {
-    return 'Ordinary Roll'
-  }
-}
-
+// Extract to Controller Class
 Scorecard.prototype._setBonusCondition = function(frameNumber, score) {
   this.currentBonusFrames[0] = this.futureBonusFrames[0]
   var scoreType = this._checkScoreType(frameNumber, score)
@@ -58,18 +67,13 @@ Scorecard.prototype._setBonusCondition = function(frameNumber, score) {
   }
 }
 
-Scorecard.prototype.runningTotal = function() {
-  var scores = this.frames.map( frame => frame.totalFrameScore() )
-  return scores.reduce(function(a,b) {
-    return (a + b)
-  });
-};
-
-Scorecard.prototype.printScores = function() {
-  var frameNumber = 1
-  this.frames.forEach( frame =>   {
-    console.log('Frame ' + frameNumber + ': ' + frame.totalFrameScore());
-    frameNumber += 1;
-  })
-  console.log('Total: ' + this.runningTotal())
+// Extract to Controller Class
+Scorecard.prototype._checkScoreType = function(frameNumber, score) {
+  if (score === 10) {
+    return 'Strike'
+  } else if (this.frames[(frameNumber - 1)].totalFrameScore() === 10) {
+    return 'Spare'
+  } else {
+    return 'Ordinary Roll'
+  }
 }

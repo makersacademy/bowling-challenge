@@ -2,10 +2,10 @@
 $(document).ready(function() {
   var score = new Score();
   var game = new Game();
-  showGameStatus();
-  showScorecard();
+  updateGameStatus();
+  updateScorecard();
   updateScore();
-  showGameStatus();
+  updateGameStatus();
 //  updateFrame();
 
 
@@ -15,35 +15,35 @@ $(document).ready(function() {
     // convert string into integer
     var pinsInt = parseInt(pins);
     game.roll(pinsInt);
-    showRolls();
-    showFrame();
+    updateRolls();
+    updateFrame();
     updateScore();
-    showStrike(pinsInt);
-    showScorecard();
-    showGameStatus();
+    updateStrike(pinsInt);
+    updateScorecard();
+    updateGameStatus();
   })
 
   function updateScore() {
     $('#current-score').text(game.getScore());
   };
 
-  function showFrame() {
+  function updateFrame() {
     $('#frame').text(game.getFrames());
   };
 
-  function showScorecard() {
+  function updateScorecard() {
     $('#score-card').text(game.getScoreCard());
   };
 
-  function showStrike(pinsInt) {
+  function updateStrike(pinsInt) {
     $('#strike').text(game.checkStrike(pinsInt));
   };
 
-  function showRolls() {
+  function updateRolls() {
     $('#rolls-count').text(game.getRolls());
   };
 
-  function showGameStatus() {
+  function updateGameStatus() {
     if (game.gameOver() === false) {
       var gameStatus = 'In progress';
     } else {

@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 describe('ScoreCard', function(){
 
@@ -18,19 +18,26 @@ describe('ScoreCard', function(){
     expect(scorecard.checkForStrike()).toEqual("strike")
   });
 
-  it('should adds a score to the second roll if not strike', function(){
-      scorecard.roll_1(5);
-      scorecard.evaluateRoll_1_ForStrike();
-      scorecard.roll_2(3);
-    expect(scorecard.getTotalFrame()).toEqual(8)
+  it('should start with the first frame', function(){
+    expect(scorecard.getCurrentFrame()).toEqual(1)
+  });
+
+  it('adds the current frame to the board', function(){
+    scorecard.roll_1(5);
+    scorecard.roll_2(3);
+    scorecard.addToFrame();
+    expect(scorecard.getBoard()).toEqual([[5,3],]);
   });
 
 
-// ask for number: fill number in
-// evaluate: check if number is strike...no
-// ask for second number: fill in
+  it('should go to the next frame', function(){
+    expect(scorecard.getNextFrame()).toEqual(2);
+  });
 
 
+  it('scoreboard starts with an empty object', function(){
+    expect(scorecard.getScoreBoard()).toEqual([])
+  });
 
 
 
@@ -54,23 +61,3 @@ describe('ScoreCard', function(){
   expect(scorecard.getTotalFrame()).toEqual(7)
   });
 });
-
-
-
-// start with roll 1
-//   ask for how many pins knocked down
-//   save the number in frame (array)
-//   if 1 till 9?
-//
-//     go to roll 2
-//       ask for how many pins knocked down?
-//       save the number in frame(array)
-//       calculated the number of roll 1 and roll 2
-//
-//       if number is a spare?
-//       add the next number from roll 1 to the array
-//
-//
-//   if number is a strike
-//       add number of the next frame to the array
-// I want to add a score to the bord at the first frame

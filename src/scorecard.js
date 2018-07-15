@@ -56,14 +56,11 @@ Scorecard.prototype._setBonusCondition = function(frameNumber, score) {
   this.currentBonusFrames[0] = this.futureBonusFrames[0]
   var scoreType = this._checkScoreType(frameNumber, score)
   if (scoreType === 'Ordinary Roll') {
-    this.currentBonusFrames[1] = 0;
-    this.futureBonusFrames[0] = 0;
+    this.currentBonusFrames[1] = 0; this.futureBonusFrames[0] = 0;
   } else if (scoreType === 'Spare') {
-    this.currentBonusFrames[1] = frameNumber;
-    this.futureBonusFrames[0] = 0;
+    this.currentBonusFrames[1] = frameNumber; this.futureBonusFrames[0] = 0;
   } else if (scoreType = 'Strike') {
-    this.currentBonusFrames[1] = frameNumber;
-    this.futureBonusFrames[0] = frameNumber;
+    this.currentBonusFrames[1] = frameNumber; this.futureBonusFrames[0] = frameNumber;
   }
 }
 

@@ -16,8 +16,8 @@ function Scorecard() {
 }
 
 Scorecard.prototype.recordScore = function(frameNumber, score) {
-  this.addBasicScore(frameNumber, score)
-  this.addBonusScore(score)
+  this.addBasicScore(frameNumber, score);
+  this.addBonusScore(score);
   this._setBonusCondition(frameNumber, score);
 }
 

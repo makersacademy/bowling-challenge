@@ -46,5 +46,13 @@ describe('Scorecard', function() {
     expect(scorecard.total).toEqual(22);
   });
 
+  it('calculates a gutter game', function(){
+    for(var i = 0; i < 20; i++){
+      scorecard.roll(0);
+      scorecard.calcFrameScores();
+    }
+    expect(scorecard.total).toEqual(0);
+  });
+
 
 });

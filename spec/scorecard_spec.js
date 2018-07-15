@@ -13,9 +13,9 @@ describe ('Scorecard', function() {
   });
 
   it ('calculates a running total of all frame scores', function() {
-    scorecard.frames[0].addScore(3);
-    scorecard.frames[1].addScore(6);
-    expect(scorecard.totalScore()).toEqual (9);
+    scorecard.addScore(1, 3)
+    scorecard.addScore(2, 4)
+    expect(scorecard.totalScore()).toEqual (7);
   });
 
   it ('adds a score to the correct frame', function() {

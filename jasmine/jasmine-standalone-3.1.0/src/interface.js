@@ -8,25 +8,35 @@ $(document).ready(function() {
   showGameStatus();
 //  updateFrame();
 
-  // $('#bowl-pins').change(function() {
-  //   var pins = $('#bowl-pins').val();
-  //     $('#pins').text(pins);
-  //     game.roll(pins);
-  //     updateScore();
-  //   //  updateFrame();
-  //     showScorecard();
-  //     showRolls();
-  // });
 
-  $('#roll-button').on('click', function() {
-    game.roll(5);
+  $('#bowl-pins').submit(function(event) {
+    event.preventDefault();
+    var pins = $('#pins').val();
+    var pins2 = parseInt(pins);
+    game.roll(pins2);
     showRolls();
     showFrame();
     updateScore();
-    // showStrike();
+    showStrike(pins2);
     showScorecard();
     showGameStatus();
-  });
+  })
+
+  // $('#bowl-pins-2').change(function() {
+  //   var pins = $('#bowl-pins-2').val();
+  //     // $('#pins').text(pins);
+  //
+  //     // var pins2 = 2;
+  //
+  //     var pins2 = parseInt(pins);
+  //     game.roll(pins2);
+  //     showRolls();
+  //     showFrame();
+  //     updateScore();
+  //     // showStrike();
+  //     showScorecard();
+  //     showGameStatus();
+  // });
 
   function updateScore() {
     $('#current-score').text(game.getScore());
@@ -40,9 +50,9 @@ $(document).ready(function() {
     $('#score-card').text(game.getScoreCard());
   };
 
-  // function showStrike() {
-  //   $('#strike').text(game.checkStrike(10));
-  // };
+  function showStrike(pins2) {
+    $('#strike').text(game.checkStrike(pins2));
+  };
 
   function showRolls() {
     $('#rolls-count').text(game.getRolls());

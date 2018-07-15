@@ -62,7 +62,9 @@ Game.prototype.getScoreCard = function() {
 
 Game.prototype.checkStrike = function(kockedDownPins) {
    if (kockedDownPins === 10) {
-    return "Strike!"
+    return "Strike!";
+  } else {
+    return " ";
   };
 };
 

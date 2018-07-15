@@ -13,8 +13,8 @@ function Scorecard() {
   ];
 }
 
-Scorecard.prototype.getFrames = function() {
-  return this.frames;
+Scorecard.prototype.addScore = function(frame, score) {
+  this.frames[(frame - 1)].addScore(score);
 }
 
 Scorecard.prototype.totalScore = function() {

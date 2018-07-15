@@ -18,14 +18,11 @@ describe ('Scorecard', function() {
     expect(scorecard.totalScore()).toEqual (9);
   });
 
-
   it ('adds a score to the correct frame', function() {
     var frame = 1;
     var score = 5
     scorecard.addScore(frame, score)
     expect(scorecard.frames[(frame - 1)].totalScore()).toEqual (5);
   });
-
-
 
 });

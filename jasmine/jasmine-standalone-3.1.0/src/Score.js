@@ -51,3 +51,8 @@ Score.prototype.addBonus = function(index) {
   this._totalScore.push(bonus);
   return bonus;
 };
+
+Score.prototype.resetScore = function() {
+  this._totalScore = [];
+  this._rollScore = [];
+};

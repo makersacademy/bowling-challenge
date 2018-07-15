@@ -66,6 +66,14 @@ Game.prototype.gameOver = function() {
   return this._frames.length === this.MAX_FRAMES;
 };
 
+Game.prototype.resetGame = function() {
+  this._frames = [];
+  this._rolls = 0;
+  this._totalPinsHitFrame = 0;
+  this._score.resetScore();
+};
+
+
 //
 // Game.prototype.array = function() {
 //   return this._calculate._rollScore.length;

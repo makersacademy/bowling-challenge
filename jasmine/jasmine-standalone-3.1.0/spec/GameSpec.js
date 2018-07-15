@@ -50,4 +50,10 @@ describe("Game unit test: ", function() {
     expect(game.gameOver()).toBeTruthy();
   });
 
+  it('A user can play again when the game is over', function() {
+    game.gameOver() === true;
+    game.resetGame();
+    expect(game.gameOver()).toBeFalsy();
+  });
+
 });

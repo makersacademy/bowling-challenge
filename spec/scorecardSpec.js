@@ -35,6 +35,7 @@ describe('Scorecard', function() {
     scorecard.roll(0);
     scorecard.calcFrameScores();
     expect(scorecard.total).toEqual(26);
+    expect(scorecard.frameScores).toEqual([18, 26]);
   });
 
   it('calculates a strike', function(){
@@ -44,6 +45,7 @@ describe('Scorecard', function() {
     scorecard.roll(2);
     scorecard.calcFrameScores();
     expect(scorecard.total).toEqual(22);
+    expect(scorecard.frameScores).toEqual([16, 22]);
   });
 
   it('calculates a gutter game', function(){

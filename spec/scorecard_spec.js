@@ -21,7 +21,7 @@ describe ('Scorecard', function() {
   });
 
   describe('.addScore', function() {
-    it ('adds a score to the correct frame', function() {
+    it ('adds the basic score to the correct frame', function() {
       var frame = 1;
       var score = 5
       scorecard.addScore(frame, score)
@@ -38,60 +38,61 @@ describe ('Scorecard', function() {
   });
 
   describe('When the player rolls an ordinary number', function() {
+    beforeEach(function() {
+      scorecard.addScore(2, 4);
+    });
+
     describe('.checkScoreType', function() {
       it ('returns ordinary number', function() {
-        scorecard.addScore(1, 3)
-        expect(scorecard.checkScoreType(1, 3)).toEqual('Ordinary Roll')
+        expect(scorecard.checkScoreType(2, 4)).toEqual('Ordinary Roll')
       });
     });
     describe('._setBonusCondition', function() {
       it ('keeps the current bonus frames empty', function() {
-        scorecard.addScore(1,3)
         expect(scorecard.currentBonusFrames).toEqual([0, 0])
       });
       it ('keeps the future bonus frames empty', function() {
-        scorecard.addScore(1,3)
         expect(scorecard.futureBonusFrames).toEqual([0])
       });
     });
   });
 
   describe('When the player rolls a spare', function() {
+    beforeEach(function() {
+      scorecard.addScore(1, 3)
+      scorecard.addScore(1, 7)
+    });
+
     describe('.checkScoreType', function() {
       it ('returns spare', function() {
-        scorecard.addScore(1, 3)
-        scorecard.addScore(1, 7)
-        expect(scorecard.checkScoreType(1, 3)).toEqual('Spare')
+        expect(scorecard.checkScoreType(1, 7)).toEqual('Spare')
       });
     });
     describe('._setBonusCondition', function() {
       it ('adds the frame to the current bonus frames', function() {
-        scorecard.addScore(1,3)
-        scorecard.addScore(1,7)
         expect(scorecard.currentBonusFrames).toEqual([0, 1])
       });
       it ('keeps the future bonus frames empty', function() {
-        scorecard.addScore(1,3)
-        scorecard.addScore(1,7)
         expect(scorecard.futureBonusFrames).toEqual([0])
       });
     });
   })
 
   describe('When the player rolls a strike', function() {
+    beforeEach(function() {
+      scorecard.addScore(1, 10)
+    });
+
     describe('.checkScoreType', function() {
       it ('returns strike', function() {
-        scorecard.addScore(1, 10)
         expect(scorecard.checkScoreType(1, 10)).toEqual('Strike')
       });
     });
     describe('._setBonusCondition', function() {
       it ('adds the frame to the current bonus frames', function() {
-        scorecard.addScore(1, 10)
         expect(scorecard.currentBonusFrames).toEqual([0, 1])
       });
       it ('add the frame to the future bonus frames', function() {
-        scorecard.addScore(1, 10)
         expect(scorecard.futureBonusFrames).toEqual([1])
       });
     });

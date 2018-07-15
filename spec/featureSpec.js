@@ -9,8 +9,8 @@ describe("Feature test", function () {
 // So that I can know my game went
 // I want to see my total score
   it("user can see total score", function() {
-    for (i = 0; i < 20; i++) {
-      game.enterScore(3);
+    for (i = 0; i < 10; i++) {
+      game.enterRolls(3, 3);
     }
     expect(game.returnScore()).toEqual(60);
   });
@@ -19,10 +19,8 @@ describe("Feature test", function () {
 // I want to receive a bonus that equals my next roll when I roll a spare
   describe("when user rolls a spare", function() {
     it("adds a bonus to the total score", function() {
-      game.enterScore(5);
-      game.enterScore(5);
-      game.enterScore(2);
-      game.enterScore(2);
+      game.enterRolls(5, 5);
+      game.enterRolls(2, 2);
       expect(game.returnScore()).toEqual(16);
     });
   });
@@ -31,9 +29,8 @@ describe("Feature test", function () {
 // I want to receive a bonus that equals my next two rolls when I roll a strike
 describe("when user rolls a strike", function() {
   it("adds two bonuses to the total score", function() {
-    game.enterScore(10);
-    game.enterScore(2);
-    game.enterScore(2);
+    game.enterRolls(10);
+    game.enterRolls(2, 2);
     expect(game.returnScore()).toEqual(18);
   });
 });

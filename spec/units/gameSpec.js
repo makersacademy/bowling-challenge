@@ -1,26 +1,30 @@
-describe("game.js", function() {
+describe("Game", function() {
 
   var game;
+  var DummyFrame = function () { this.score = 8; };
+
+  DummyFrame.prototype.result = function () {};
 
   beforeEach(function() {
+    var dummyFrame = new DummyFrame();
+    spyOn(Game.prototype, "_createNewFrame").and.returnValue(dummyFrame);
     game = new Game();
   });
 
-  describe(".enterScore", function() {
-    it("saves the scores in a hash", function() {
-      game.enterScore(3);
-      game.enterScore(5);
-      expect(game.frames[0][0]).toEqual(3);
-      expect(game.frames[0][1]).toEqual(5);
+  describe(".enterRolls", function() {
+    it("creates a new frame", function() {
+      var dummyFrame = new DummyFrame();
+      game.enterRolls(3, 5);
+      expect(game._frames).toContain(dummyFrame);
     });
   });
 
   describe(".returnScore", function() {
     it("returns the total score", function() {
-      for (i = 0; i < 20; i++) {
-        game.enterScore(2);
+      for (i = 0; i < 10; i++) {
+        game.enterRolls(3, 5);
       }
-      expect(game.returnScore()).toEqual(40);
+      expect(game.returnScore()).toEqual(80);
     });
   });
 });

@@ -37,5 +37,14 @@ describe('Scorecard', function() {
     expect(scorecard.total).toEqual(26);
   });
 
+  it('calculates a strike', function(){
+    scorecard.roll(10);
+    scorecard.calcFrameScores();
+    scorecard.roll(4);
+    scorecard.roll(2);
+    scorecard.calcFrameScores();
+    expect(scorecard.total).toEqual(22);
+  });
+
 
 });

@@ -81,4 +81,14 @@ describe("Feature Test: ", function() {
       expect(game.gameOver()).toBeTruthy();
     });
   });
+
+  describe('Reset Game', function() {
+    it('A User can play a game after resetting the game to start again', function() {
+      for (var i = 0; i < 10; i++) {
+        game.addFrame();
+      }
+      game.resetGame();
+      expect(game.gameOver()).toBeFalsy();
+    });
+  });
 });

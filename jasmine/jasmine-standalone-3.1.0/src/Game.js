@@ -73,7 +73,6 @@ Game.prototype.resetGame = function() {
   this._score.resetScore();
 };
 
-
 //
 // Game.prototype.array = function() {
 //   return this._calculate._rollScore.length;

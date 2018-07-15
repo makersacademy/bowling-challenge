@@ -12,7 +12,7 @@ describe("Feature test", function () {
     for (i = 0; i < 20; i++) {
       game.enterScore(3);
     }
-    expect(game.totalScore).toEqual(60);
+    expect(game.returnScore()).toEqual(60);
   });
 // As a bowler
 // So that good rolls are rewarded
@@ -23,13 +23,21 @@ describe("Feature test", function () {
       game.enterScore(5);
       game.enterScore(2);
       game.enterScore(2);
-      expect(game.totalScore).toEqual(16);
+      expect(game.returnScore()).toEqual(16);
     });
   });
 // As a bowler
 // So that great rolls beget great rewards
 // I want to receive a bonus that equals my next two rolls when I roll a strike
-//
+describe("when user rolls a strike", function() {
+  it("adds two bonuses to the total score", function() {
+    game.enterScore(10);
+    game.enterScore(2);
+    game.enterScore(2);
+    expect(game.returnScore()).toEqual(18);
+  });
+});
+
 // As a bowler
 // So that I get the bonus I deserve
 // I want to keep rolling for bonus points after the 10th frame

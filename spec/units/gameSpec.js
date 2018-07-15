@@ -15,12 +15,12 @@ describe("game.js", function() {
     });
   });
 
-  describe(".total", function() {
+  describe(".returnScore", function() {
     it("returns the total score", function() {
       for (i = 0; i < 20; i++) {
         game.enterScore(2);
       }
-      expect(game.totalScore).toEqual(40);
+      expect(game.returnScore()).toEqual(40);
     });
   });
 });

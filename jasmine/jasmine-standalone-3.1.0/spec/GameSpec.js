@@ -16,9 +16,18 @@ describe("Game: ", function() {
   it('A User can Roll 2 times per Frame', function() {
     game.roll(1);
     game.roll(1);
-    game.roll(1);
+    // game.roll(1);
     expect(game.getFrames()).toEqual(1);
   });
+
+
+    it('A User can Roll 2 times per Frame', function() {
+      game.roll(1);
+      game.roll(1);
+      game.roll(1);
+      game.roll(1);
+      expect(game.getFrames()).toEqual(2);
+    });
 
   it('A User can Roll 20 times per Game', function() {
     // A game contains 10 Frames

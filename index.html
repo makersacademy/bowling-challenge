@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <script src="./jasmine/jasmine-standalone-3.1.0/src/Game.js"></script>
-  <script src="./jasmine/jasmine-standalone-3.1.0/src/CalculateScore.js"></script>
+  <script src="./jasmine/jasmine-standalone-3.1.0/src/Score.js"></script>
   <!-- JQuery file  -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="./jasmine/jasmine-standalone-3.1.0/src/interface.js"></script>
@@ -11,20 +11,24 @@
   <title>Bowling</title>
 </head>
 <body>
+  <br/><br/>
+  <div>
+    <p>Frame: <span id="frame" class="frame"></span></p>
+  </div>
   <div>
     <h2>Current score <span id="current-score"></span>: <span id="current-score"></span></h2>
   </div>
   <div>
-    <p>Input how many pins to hit: <p id="bowl"></p>
-
+    <form id="bowl-pins">
+      Input how many pins to know down:<input id="pins" type="text"></input>
+      <input type="submit" value="roll"></input>
+    </form>
   </div>
 
   <div>
     <p id="strike" class="strike"></p>
   </div>
-  <div>
-    Frame: <p id="frame" class="frame"></p>
-  </div>
+
   <div>
     <button id="roll-button" class="roll-button">roll</button>
   </div>

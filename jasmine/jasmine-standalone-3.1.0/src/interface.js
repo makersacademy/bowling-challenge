@@ -1,34 +1,41 @@
 // JQuery
 $(document).ready(function() {
+  var score = new Score();
   var game = new Game();
-  var calc = new CalculateScore();
+
   updateScore();
+  updateFrame();
 
-  // api request for city $.get('http://api.openweathermap.org/data/2.5/weather?q=London&appid=63d1ac51575b09b11d1f8408f4f4ccd3&units=metric', function(data) {
-  //   $('#current-temperature').text(data.main.temp);
-  // });
-
-
-
-  // $('#tcurrent-score').on('click', function() {
-  //   thermostat.up();
+  // $('#button-score').on('click', function() {
+  //   game.getScore();
   //   updateScore();
   // });
 
-  $('#button-score').on('click', function() {
-    game.getScore();
+  $('#bowl-pins').submit(function(event) {
+    event.preventDefault();
+    var pin = $('#pins').val();
+    game.roll(pin);
     updateScore();
+    // $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=a3d9eb01d4de82b9b8d0849ef604dbed&units=metric', function(data) {
+    //   $('#current-temperature').text(data.main.temp);
+    // })
   });
-
 
   $('#roll-button').on('click', function() {
-    game.roll(5);
-    // updateScore();
+    game.roll(1);
+    updateScore();
+    updateFrame();
   });
-  // have put updateTemperature into its own function (method( because
-  // it is repeatedly invoked (called) in each of the above functions
+
+
+
   function updateScore() {
     $('#current-score').text(game.getScore());
   };
+
+  function updateFrame() {
+    $('#frame').text(game.getFrames());
+  };
+
 
 });

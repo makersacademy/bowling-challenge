@@ -11,8 +11,8 @@ function Scorecard() {
     frame9 =  new Frame(),
     frame10 = new Frame(),
   ];
-  this.currentBonusFrames = [0,0]
-  this.futureBonusFrames = [0]
+  this.currentBonusFrames = []
+  this.futureBonusFrames = []
 }
 
 Scorecard.prototype.addScore = function(frameNumber, score) {
@@ -33,5 +33,20 @@ Scorecard.prototype.checkScoreType = function(frameNumber, score) {
     return 'Spare'
   } else {
     return 'Ordinary Roll'
+  }
+}
+
+Scorecard.prototype._setBonusCondition = function(framenumber) {
+  this.currentBonusFrames[0] = this.futureBonusFrames[0]
+  var scoreType = this.checkScoreType(frame, score)
+  if (scoreType === 'Ordinary Roll') {
+    this.currentBonusFrames[1] = 0;
+    this.futureBonusFrames[0] = 0;
+  } else if (scoreType === 'Spare') {
+    this.currentBonusFrames[1] = frame;
+    this.futureBonusFrames[0] = 0;
+  } else if (scoreType = 'Strike') {
+    this.currentBonusFrames[1] = frame;
+    this.futureBonusFrames[0] = frame;
   }
 }

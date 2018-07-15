@@ -43,7 +43,7 @@ Game.prototype.roll = function(kockedDownPins) {
     return this._rolls;
   } else {
     return "Game over";
-  };ss
+  };
 };
 
 Game.prototype.getBonus = function() {

@@ -31,12 +31,11 @@ Game.prototype.roll = function(kockedDownPins) {
     this._rolls += 1; // 2 rolls
     this.getBonus();
     this._score.calculateScore(this._totalPinsHitFrame);
-    // this.addFrame();
-      if (this._frames.length <= 10 && this._rolls === 2) {
+      if (this._frames.length <= 10 && this._rolls === this.MAX_ROLLS) {
         this._frames.push('X');
       };
-    this._totalPinsHitFrame = 0; // reset pins hit
-    this._rolls = 0 // reset rolls
+    this.resetPinsCount(); // reset pins hit
+    this.resetRollsCount(); // reset rolls
   }
   return this._rolls;
 };
@@ -47,6 +46,14 @@ Game.prototype.getBonus = function() {
 
 Game.prototype.getScore = function() {
   return this._score.getScore();
+};
+
+Game.prototype.resetPinsCount = function() {
+  this._totalPinsHitFrame = 0;
+};
+
+Game.prototype.resetRollsCount = function() {
+  this._rolls = 0;
 };
 
 //

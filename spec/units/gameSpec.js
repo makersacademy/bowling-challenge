@@ -10,9 +10,8 @@ describe("game.js", function() {
     it("saves the scores in a hash", function() {
       game.enterScore(3);
       game.enterScore(5);
-      console.log(game.scores);
-      expect(game.scores[0]).toEqual(3);
-      expect(game.scores[1]).toEqual(5);
+      expect(game.frames[0][0]).toEqual(3);
+      expect(game.frames[0][1]).toEqual(5);
     });
   });
 

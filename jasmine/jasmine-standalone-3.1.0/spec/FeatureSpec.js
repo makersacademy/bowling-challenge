@@ -80,5 +80,12 @@ describe("Feature Test: ", function() {
       }
       expect(game.gameOver()).toEqual(true);
     });
+
+    it('A user cannot roll when the game is over', function() {
+      for (var i = 0; i < 30; i++) {
+        game.roll(1);
+      }
+      expect(game.roll()).toEqual('Game over');
+    });
   });
 });

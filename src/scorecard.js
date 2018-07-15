@@ -64,3 +64,12 @@ Scorecard.prototype.runningTotal = function() {
     return (a + b)
   });
 };
+
+Scorecard.prototype.printScores = function() {
+  var frameNumber = 1
+  this.frames.forEach( frame =>   {
+    console.log('Frame ' + frameNumber + ': ' + frame.totalFrameScore());
+    frameNumber += 1;
+  })
+  console.log('Total: ' + this.runningTotal())
+}

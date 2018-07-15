@@ -2,11 +2,11 @@
 
 describe("Feature Test: ", function() {
   var game;
-  var calc;
+  var score;
 
   beforeEach(function(){
     game = new Game();
-    calc = new CalculateScore();
+    score = new Score();
   });
 
   describe('User can score points in a Frame', function() {

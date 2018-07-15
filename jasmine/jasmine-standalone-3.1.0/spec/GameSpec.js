@@ -2,11 +2,11 @@
 
 describe("Game: ", function() {
   var game;
-  var calc;
+  var score;
 
   beforeEach(function(){
     game = new Game();
-    calc = new CalculateScore();
+    score = new Score();
   });
 
   it('A Game contains Frames', function() {

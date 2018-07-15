@@ -1,22 +1,22 @@
 'use strict';
 
 describe("Calculate Score: ", function() {
-  var calc;
+  var score;
   var game;
 
   beforeEach(function(){
-    calc = new CalculateScore();
+    score = new Score();
     game = new Game();
   });
 
   it('A User Game score is stored', function() {
-    calc.storeRollScore(1);
-    expect(calc._rollScore).toEqual([1]);
+    score.storeRollScore(1);
+    expect(score._rollScore).toEqual([1]);
   });
 
   it('A User can Roll 2 times and the calculated score 5 points', function() {
-    calc.calculateScore(1);
-    calc.calculateScore(4);
-    expect(calc.getScore()).toEqual(5);
+    score.calculateScore(1);
+    score.calculateScore(4);
+    expect(score.getScore()).toEqual(5);
   });
 });

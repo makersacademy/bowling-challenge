@@ -1,6 +1,6 @@
 'use strict';
 
-function CalculateScore() {
+function Score() {
   // this array logs the score after each frame
   this._totalScore = [];
 
@@ -8,15 +8,15 @@ function CalculateScore() {
   this._rollScore = [];
 }
 
-CalculateScore.prototype.storeRollScore = function(kockedDownPins) {
+Score.prototype.storeRollScore = function(kockedDownPins) {
   this._rollScore.push(kockedDownPins);
 };
 
-CalculateScore.prototype.calculateScore = function(kockedDownPins) {
+Score.prototype.calculateScore = function(kockedDownPins) {
    this._totalScore.push(kockedDownPins);
 };
 
-CalculateScore.prototype.getScore = function() {
+Score.prototype.getScore = function() {
   var sum = 0;
   for (var i = this._totalScore.length; !!i--;) {
   sum += this._totalScore[i];
@@ -24,7 +24,7 @@ CalculateScore.prototype.getScore = function() {
   return sum;
 };
 
-CalculateScore.prototype.checkBonus = function(index) {
+Score.prototype.checkBonus = function(index) {
 
   if (this._rollScore[index - '4'] === 10) {
     this.addBonus(index);
@@ -35,7 +35,7 @@ CalculateScore.prototype.checkBonus = function(index) {
   };
 };
 
-CalculateScore.prototype.addBonus = function(index) {
+Score.prototype.addBonus = function(index) {
   var bonus = 0;
   if (this._rollScore[index - '4'] === 10) {
     if (this._rollScore[index - '3'] === 10) {

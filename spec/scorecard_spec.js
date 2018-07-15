@@ -12,20 +12,20 @@ describe ('Scorecard', function() {
     expect(scorecard.frames.length).toEqual (10);
   });
 
-  it ('stores frames', function() {
-    frame1 = new Frame (1);
-    scorecard.addFrame(frame1);
-    expect(scorecard.getFrames()).toContain (frame1);
+  it ('calculates a running total of all frame scores', function() {
+    scorecard.frames[0].addScore(3);
+    scorecard.frames[1].addScore(6);
+    expect(scorecard.totalScore()).toEqual (9);
   });
 
-  it ('calculates a running total of all frame scores', function() {
-    frame1 = new Frame (1);
-    frame2 = new Frame (2);
-    scorecard.addFrame(frame1);
-    scorecard.addFrame(frame2);
-    frame1.addScore(3);
-    frame2.addScore(7);
-    expect(scorecard.totalScore()).toEqual (10);
+
+  it ('adds a score to the correct frame', function() {
+    var frame = 1;
+    var score = 5
+    scorecard.addScore(frame, score)
+    expect(scorecard.frames[(frame - 1)].totalScore()).toEqual (5);
   });
+
+
 
 });

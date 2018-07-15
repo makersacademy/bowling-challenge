@@ -51,7 +51,7 @@ describe("Game: ", function() {
     for (var i = 0; i <= 9; i++) {
       game.addFrame('X');
     }
-    expect(game.getGameStatus()).toBeTruthy();
+    expect(game.gameOver()).toBeTruthy();
   });
 
 });

@@ -65,4 +65,20 @@ describe("Feature Test: ", function() {
       expect(game.getScore()).toEqual(0);
     });
   });
+
+  describe('Game status', function() {
+    it('A Game is over when 20 rolls are played', function() {
+      for (var i = 0; i < 20; i++) {
+        game.roll(1);
+      }
+      expect(game.gameOver()).toEqual(true);
+    });
+
+    it('A Game is over when 10 frames are played', function() {
+      for (var i = 0; i < 10; i++) {
+        game.addFrame();
+      }
+      expect(game.gameOver()).toEqual(true);
+    });
+  });
 });

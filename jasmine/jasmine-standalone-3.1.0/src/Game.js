@@ -21,7 +21,7 @@ Game.prototype.getFrames = function() {
 
 Game.prototype.roll = function(kockedDownPins) {
   // first check the status of the game
-  if (this.getGameStatus() === false) {
+  if (this.gameOver() === false) {
     if (this._rolls === 0) {
       this._score.storeRollScore(kockedDownPins);
       this._totalPinsHitFrame += kockedDownPins;
@@ -62,7 +62,7 @@ Game.prototype.resetRollsCount = function() {
   this._rolls = 0;
 };
 
-Game.prototype.getGameStatus = function() {
+Game.prototype.gameOver = function() {
   return this._frames.length === this.MAX_FRAMES;
 };
 

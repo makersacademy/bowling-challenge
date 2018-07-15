@@ -66,7 +66,6 @@ Game.prototype.gameOver = function() {
   return this._frames.length === this.MAX_FRAMES;
 };
 
-
 //
 // Game.prototype.array = function() {
 //   return this._calculate._rollScore.length;

@@ -71,21 +71,14 @@ describe("Feature Test: ", function() {
       for (var i = 0; i < 20; i++) {
         game.roll(1);
       }
-      expect(game.gameOver()).toEqual(true);
+      expect(game.gameOver()).toBeTruthy();
     });
 
     it('A Game is over when 10 frames are played', function() {
       for (var i = 0; i < 10; i++) {
         game.addFrame();
       }
-      expect(game.gameOver()).toEqual(true);
-    });
-
-    it('A user cannot roll when the game is over', function() {
-      for (var i = 0; i < 30; i++) {
-        game.roll(1);
-      }
-      expect(game.roll()).toEqual('Game over');
+      expect(game.gameOver()).toBeTruthy();
     });
   });
 });

@@ -12,8 +12,11 @@ describe ('Scorecard', function() {
     it ('initializes with an array of 10 frames', function() {
       expect(scorecard.frames.length).toEqual (10);
     });
-    it ('initializes with an object which stores bonus information', function(){
-      expect(scorecard.bonus.length).toEqual (3);
+    it ('initializes with an array for current bonus frames', function(){
+      expect(scorecard.currentBonusFrames).toEqual([0,0]);
+    });
+    it ('initializes with an array for future bonus frames', function(){
+      expect(scorecard.futureBonusFrames).toEqual([0]);
     });
   });
 
@@ -46,7 +49,6 @@ describe ('Scorecard', function() {
     });
     it ('checks the score type - strike', function() {
       scorecard.addScore(1, 10)
-      console.log(scorecard)
       expect(scorecard.checkScoreType(1, 10)).toEqual('Strike')
     });
   });

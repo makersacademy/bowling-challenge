@@ -11,6 +11,8 @@ function Scorecard() {
     frame9 =  new Frame(),
     frame10 = new Frame(),
   ];
+  this.currentBonusFrames = [0,0]
+  this.futureBonusFrames = [0]
 }
 
 Scorecard.prototype.addScore = function(frameNumber, score) {

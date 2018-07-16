@@ -20,8 +20,9 @@ describe("Feature test", function () {
   describe("when user rolls a spare", function() {
     it("adds a bonus to the total score", function() {
       game.enterRolls(5, 5);
+      game.enterRolls(5, 5);
       game.enterRolls(2, 2);
-      expect(game.returnScore()).toEqual(16);
+      expect(game.returnScore()).toEqual(31);
     });
   });
 // As a bowler
@@ -30,8 +31,9 @@ describe("Feature test", function () {
 describe("when user rolls a strike", function() {
   it("adds two bonuses to the total score", function() {
     game.enterRolls(10);
+    game.enterRolls(10);
     game.enterRolls(2, 2);
-    expect(game.returnScore()).toEqual(18);
+    expect(game.returnScore()).toEqual(40);
   });
 });
 

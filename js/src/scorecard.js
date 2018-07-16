@@ -53,9 +53,6 @@ Scorecard.prototype.calculateFrameScore = function() {
 Scorecard.prototype.enterScore = function(score) {
   this._frame.push(score);
   if (score === 10 && this.getRoll() === 1) {
-    if (this.isStrike === true || this.isSpare === true) {
-      this.finalScores[(this.getFinalScores().length) - 1] += 10;
-    }
     this._frame.push(0);
     this._strike = true;
     this.endTurn();
@@ -63,18 +60,8 @@ Scorecard.prototype.enterScore = function(score) {
     this._spare = true;
     this.endTurn();
   } else if (this.getRoll() === 1) {
-    if (this.isSpare === true) {
-      this._finalScores[(this.getFinalScores().length) - 1] += score;
-    }
     this._roll = 2;
   } else {
-    if (this.isStrike === true && this.getRoll() === 2) {
-      this._finalScores[(this.getFinalScores().length) - 1] += (this.getFrame()[0] + this.getFrame()[1]);
-      this._strike = false;
-    } else if (this.isSpare === true && this.getRoll() === 2) {
-      this._finalScores[(this.getFinalScores().length) - 1] += this.getFrame()[0];
-      this._spare = false;
-    }
     this.endTurn();
   };
 };

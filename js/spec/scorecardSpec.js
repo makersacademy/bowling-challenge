@@ -50,20 +50,4 @@ describe('Scorecard', function() {
       expect(scorecard.getFinalScores()).toEqual([[8]]);
     });
   });
-
-  describe('keeps track of bonus modifiers', function() {
-    it('logs strike when score is 10', function() {
-      scorecard.enterScore(10);
-      expect(scorecard.isStrike()).toEqual(true);
-    });
-    it('logs spare when score is 10', function() {
-      scorecard.enterScore(5);
-      scorecard.enterScore(5);
-      expect(scorecard.isSpare()).toEqual(true);
-    });
-  });
-
-  describe('appends bonus points at end of turn', function() {
-    
-  });
 });

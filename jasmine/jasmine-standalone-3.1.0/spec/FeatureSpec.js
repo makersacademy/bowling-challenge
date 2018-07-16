@@ -27,7 +27,7 @@ describe("Feature Test: ", function() {
     });
 
     it('A User can roll all 10 pins or Strikes multiple times and score' +
-    'bonus points', function() {
+    'bonus points, variation 1', function() {
       game.roll(1);
       game.roll(4);
       game.roll(4);
@@ -49,6 +49,31 @@ describe("Feature Test: ", function() {
       game.roll(2);
       game.roll(8);
       expect(game.getScore()).toEqual(127);
+    });
+
+    it('A User can roll all 10 pins or Strikes multiple times and score' +
+    'bonus points, variation 2', function() {
+      game.roll(1);
+      game.roll(9);
+      game.roll(2);
+      game.roll(3);
+      game.roll(10);
+      game.roll(0);
+      game.roll(3); // 10
+      game.roll(0);
+      game.roll(3); // 10
+      game.roll(0);
+      game.roll(2);
+      game.roll(8);
+      game.roll(9);
+      game.roll(0);
+      game.roll(1);
+      game.roll(3);
+      game.roll(2);
+      game.roll(2);
+      game.roll(3);
+      game.roll(3);
+      expect(game.getScore()).toEqual(78);
     });
 
     // in a Perfect game, user has 2 bonus strike in Game 10

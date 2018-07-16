@@ -35,6 +35,14 @@ describe ('Scorecard', function() {
     });
   });
 
+  describe('.currentFrame', function() {
+    xit ('stores the current frame', function() {
+      var frame2 = new Frame();
+      scorecard.recordScore(2, 3);
+      expect(scorecard.currentFrame).toEqual (frame2);
+    });
+  });
+
   describe('When the player rolls an ordinary number', function() {
     beforeEach(function() {
       scorecard.recordScore(1, 4);

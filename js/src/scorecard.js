@@ -45,8 +45,16 @@ Scorecard.prototype.calculateFrameScore = function() {
   this._finalScores.push(frameScore);
 };
 
+Scorecard.prototype.calculateBonus = function(score) {
+  if (this._spareBonus === true) {
+    this._finalScores[this.getFinalScores().length - 1] += score;
+    this._spareBonus = false;
+  };
+};
+
 Scorecard.prototype.enterScore = function(score) {
   this._frame.push(score);
+  this.calculateBonus(score);
   if (this._isSpare()) {
     this._spareBonus = true;
     this.endTurn();

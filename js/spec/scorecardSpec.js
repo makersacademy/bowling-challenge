@@ -58,5 +58,12 @@ describe('Scorecard', function() {
       scorecard.enterScore(7);
       expect(scorecard._spareBonus).toEqual(true);
     });
+    it('modifies final scores based on spare bonus', function() {
+      scorecard.enterScore(3);
+      scorecard.enterScore(7);
+      scorecard.enterScore(5);
+      console.log(scorecard);
+      expect(scorecard.getFinalScores()[0]).toEqual(15);
+    });
   });
 });

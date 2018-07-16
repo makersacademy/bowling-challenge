@@ -196,9 +196,9 @@ describe("Feature Test: ", function() {
       game.roll(0);
       game.roll(10);//
       game.roll(0);
-      game.roll(3);
-      game.roll(3);
-      expect(game.getScore()).toEqual(161);
+      game.roll(10);
+      game.roll(0);
+      expect(game.getScore()).toEqual(176);
     });
 
     // in a Perfect game, user has 2 bonus strike in Game 10

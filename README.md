@@ -1,4 +1,35 @@
+Bowling Challenge
+==================
 
+What is working:
+-------
+All of the following features listed below have been implemented.
+
+Features implemented
+-------
+```
+* [ ] Gutter game
+* [ ] One frame
+* [ ] Multiple frames
+* [ ] Spares
+* [ ] Strikes
+* Interactive animated interface with jQuery.
+
+```
+
+What is not implemented:
+-------
+* [ ] Final Frame
+
+Instructions to Start
+-------
+
+* Clone the repo
+* Open Terminal and type in 'open index.html' to open the index page.
+
+You can now play Bowling!
+
+<!--
 Bowling Challenge
 =================
 
@@ -74,4 +105,4 @@ In code review we'll be hoping to see:
 * All tests passing
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want. -->

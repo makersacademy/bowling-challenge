@@ -6,7 +6,7 @@ $(document).ready(function() {
   updateScorecard();
   updateScore();
   updateGameStatus();
-//  updateFrame();
+  updateFrame();
 
 
   $('#bowl-pins').submit(function(event) {
@@ -51,6 +51,5 @@ $(document).ready(function() {
     }
     $('#game-status').text(gameStatus);
   };
-
 
 });

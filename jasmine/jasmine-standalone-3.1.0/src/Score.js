@@ -31,17 +31,18 @@ Score.prototype.getScoreScard = function(kockedDownPins) {
 Score.prototype.checkBonus = function(index) {
   if (this._rollScore[index - '4'] === 10) {
     this.addBonus(index);
-  } else if (this._rollScore[index - '4'] === 10 && this._rollScore[index - '3'] === 10) {
-    this.addBonus(index);
+  // } else if (this._rollScore[index - '4'] === 10 && this._rollScore[index - '2'] === 10) {
+  //   this.addBonus(index);
   } else if (this._rollScore[index - '4'] + this._rollScore[index - '3'] === 10) {
     this.addBonus(index);
   };
 };
 
+// review logic for PERFECT GAME
 Score.prototype.addBonus = function(index) {
   var bonus = 0;
   if (this._rollScore[index - '4'] === 10) {
-    if (this._rollScore[index - '3'] === 10) {
+    if (this._rollScore[index - '2'] === 10) {
       bonus = 20;
     } else {
       bonus =

@@ -54,10 +54,29 @@ describe("Feature Test: ", function() {
     // in a Perfect game, user has 2 bonus strike in Game 10
     // it('A User can roll 12 strikes in a PERFECT GAME and score maximum points'
     // , function() {
-    //   for (var i = 0; i < 6; i++) {
     //   game.roll(10);
     //   game.roll(0);
-    //   }
+    //   game.roll(10);
+    //   game.roll(0);
+    //   game.roll(10);
+    //   game.roll(0);
+    //   game.roll(10);
+    //   game.roll(0);
+    //   game.roll(10);
+    //   game.roll(0);
+    //   game.roll(10);
+    //   game.roll(0);
+    //   game.roll(10);
+    //   game.roll(0);
+    //   game.roll(10);
+    //   game.roll(0);
+    //   game.roll(10);
+    //   game.roll(0);
+    //   game.roll(10);
+    //   game.roll(0);
+    //   game.roll(10);
+    //   game.roll(10);
+    //
     //   expect(game.getScore()).toEqual(300);
     // });
 

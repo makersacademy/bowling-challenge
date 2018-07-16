@@ -45,9 +45,18 @@ describe('Scorecard', function() {
     it('contains modified scores in a seperate array from base scores', function() {
       scorecard.enterScore(3);
       scorecard.enterScore(5);
-      console.log(scorecard.getFrame());
-      console.log(scorecard);
-      expect(scorecard.getFinalScores()).toEqual([[8]]);
+      expect(scorecard.getFinalScores()).toEqual([8]);
+    });
+  });
+
+  describe('understands spares and strikes', function() {
+    it('spare is set to false by default', function() {
+      expect(scorecard._spareBonus).toEqual(false);
+    });
+    it('understands when a spare takes place', function() {
+      scorecard.enterScore(3);
+      scorecard.enterScore(7);
+      expect(scorecard._spareBonus).toEqual(true);
     });
   });
 });

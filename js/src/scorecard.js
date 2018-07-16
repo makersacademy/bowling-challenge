@@ -4,9 +4,8 @@ var Scorecard = function() {
   this._baseScores = [];
   this._finalScores = [];
   this._frame = [];
-  this._strike = false;
-  this._spare = false;
   this._roll = 1;
+  this._spareBonus = false;
   this._turn = 1;
 };
 
@@ -34,12 +33,8 @@ Scorecard.prototype.getTurn = function() {
   return this._turn;
 };
 
-Scorecard.prototype.isStrike = function() {
-  return this._strike;
-};
-
-Scorecard.prototype.isSpare = function() {
-  return this._spare;
+Scorecard.prototype._isSpare = function() {
+  return this.getFrame()[0] + this.getFrame()[1] === 10;
 };
 
 Scorecard.prototype.calculateFrameScore = function() {
@@ -47,17 +42,13 @@ Scorecard.prototype.calculateFrameScore = function() {
   for (var i = 0; i < this.getFrame().length; i++) {
     frameScore += this.getFrame()[i];
   };
-  this._finalScores.push([frameScore]);
+  this._finalScores.push(frameScore);
 };
 
 Scorecard.prototype.enterScore = function(score) {
   this._frame.push(score);
-  if (score === 10 && this.getRoll() === 1) {
-    this._frame.push(0);
-    this._strike = true;
-    this.endTurn();
-  } else if ((this.getFrame()[0] + this.getFrame()[1]) === 10) {
-    this._spare = true;
+  if (this._isSpare()) {
+    this._spareBonus = true;
     this.endTurn();
   } else if (this.getRoll() === 1) {
     this._roll = 2;
@@ -73,5 +64,6 @@ Scorecard.prototype.endTurn = function() {
     this._frame = [];
     this._turn += 1;
     this._roll = 1;
+    this._finalScores;
   };
 };

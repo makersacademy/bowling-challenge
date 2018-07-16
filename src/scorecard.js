@@ -36,27 +36,30 @@ Scorecard.prototype.printScores = function() {
     frameNumber += 1;
   })
   console.log('Total: ' + this.runningTotal())
-}
+};
 
 Scorecard.prototype.addBasicScore = function(frameNumber, score) {
   this.frames[(frameNumber - 1)].addScore(score);
-}
+};
 
 Scorecard.prototype.addBonusScore = function(score) {
   this.currentBonusFrames.forEach( frame => {
     if (frame !== 0) {
       this.frames[frame - 1].addScore(score)
-    }
-  })
-}
+    };
+  });
+};
 
 Scorecard.prototype._setBonusCondition = function(frameNumber) {
   this.currentBonusFrames[0] = this.futureBonusFrames[0]
   if (this.currentFrame.isStrike()) {
-    this.currentBonusFrames[1] = frameNumber; this.futureBonusFrames[0] = frameNumber;
+    this.currentBonusFrames[1] = frameNumber;
+    this.futureBonusFrames[0] = frameNumber;
   } else if (this.currentFrame.isSpare()) {
-    this.currentBonusFrames[1] = frameNumber; this.futureBonusFrames[0] = 0;
+    this.currentBonusFrames[1] = frameNumber;
+    this.futureBonusFrames[0] = 0;
   } else {
-    this.currentBonusFrames[1] = 0; this.futureBonusFrames[0] = 0;
-  }
-}
+    this.currentBonusFrames[1] = 0;
+    this.futureBonusFrames[0] = 0;
+  };
+};

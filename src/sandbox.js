@@ -28,3 +28,18 @@ exampleScorecard.recordScore(9,10)
 exampleScorecard.recordScore(10,2)
 exampleScorecard.recordScore(10,8)
 exampleScorecard.recordScore(10,6)
+
+var perfectScorecard = new Scorecard();
+
+perfectScorecard.recordScore(1,10)
+perfectScorecard.recordScore(2,10)
+perfectScorecard.recordScore(3,10)
+perfectScorecard.recordScore(4,10)
+perfectScorecard.recordScore(5,10)
+perfectScorecard.recordScore(6,10)
+perfectScorecard.recordScore(7,10)
+perfectScorecard.recordScore(8,10)
+perfectScorecard.recordScore(9,10)
+perfectScorecard.recordScore(10,10)
+perfectScorecard.recordScore(10,10)
+perfectScorecard.recordScore(10,10)

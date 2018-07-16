@@ -38,12 +38,10 @@ Scorecard.prototype.printScores = function() {
   console.log('Total: ' + this.runningTotal())
 }
 
-// Extract to Controller Class
 Scorecard.prototype.addBasicScore = function(frameNumber, score) {
   this.frames[(frameNumber - 1)].addScore(score);
 }
 
-// Extract to Controller Class
 Scorecard.prototype.addBonusScore = function(score) {
   this.currentBonusFrames.forEach( frame => {
     if (frame !== 0) {
@@ -52,26 +50,13 @@ Scorecard.prototype.addBonusScore = function(score) {
   })
 }
 
-// Extract to Controller Class
 Scorecard.prototype._setBonusCondition = function(frameNumber, score) {
   this.currentBonusFrames[0] = this.futureBonusFrames[0]
-  var scoreType = this._checkScoreType(frameNumber, score)
-  if (scoreType === 'Ordinary Roll') {
-    this.currentBonusFrames[1] = 0; this.futureBonusFrames[0] = 0;
-  } else if (scoreType === 'Spare') {
-    this.currentBonusFrames[1] = frameNumber; this.futureBonusFrames[0] = 0;
-  } else if (scoreType = 'Strike') {
+  if (this.currentFrame.isStrike()) {
     this.currentBonusFrames[1] = frameNumber; this.futureBonusFrames[0] = frameNumber;
-  }
-}
-
-// Extract to Controller Class
-Scorecard.prototype._checkScoreType = function(frameNumber, score) {
-  if (score === 10) {
-    return 'Strike'
-  } else if (this.frames[(frameNumber - 1)].totalFrameScore() === 10) {
-    return 'Spare'
+  } else if (this.currentFrame.isSpare()) {
+    this.currentBonusFrames[1] = frameNumber; this.futureBonusFrames[0] = 0;
   } else {
-    return 'Ordinary Roll'
+    this.currentBonusFrames[1] = 0; this.futureBonusFrames[0] = 0;
   }
 }

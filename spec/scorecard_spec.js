@@ -48,11 +48,6 @@ describe ('Scorecard', function() {
       scorecard.recordScore(1, 4);
     });
 
-    describe('._checkScoreType', function() {
-      it ('returns ordinary number', function() {
-        expect(scorecard._checkScoreType(1, 4)).toEqual('Ordinary Roll')
-      });
-    });
     describe('._setBonusCondition', function() {
       it ('keeps the current bonus frames empty', function() {
         expect(scorecard.currentBonusFrames).toEqual([0, 0])
@@ -74,11 +69,6 @@ describe ('Scorecard', function() {
       scorecard.recordScore(1, 7)
     });
 
-    describe('._checkScoreType', function() {
-      it ('returns spare', function() {
-        expect(scorecard._checkScoreType(1, 7)).toEqual('Spare')
-      });
-    });
     describe('._setBonusCondition', function() {
       it ('adds the frame to the current bonus frames', function() {
         expect(scorecard.currentBonusFrames).toEqual([0, 1])
@@ -101,11 +91,6 @@ describe ('Scorecard', function() {
       scorecard.recordScore(1, 10)
     });
 
-    describe('._checkScoreType', function() {
-      it ('returns strike', function() {
-        expect(scorecard._checkScoreType(1, 10)).toEqual('Strike')
-      });
-    });
     describe('._setBonusCondition', function() {
       it ('adds the frame to the current bonus frames', function() {
         expect(scorecard.currentBonusFrames).toEqual([0, 1])

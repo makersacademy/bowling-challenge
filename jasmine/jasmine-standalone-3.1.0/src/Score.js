@@ -39,11 +39,61 @@ Score.prototype.checkBonus = function(index) {
 };
 
 // review logic for PERFECT GAME
+// Score.prototype.addBonus = function(index) {
+//   var bonus = 0;
+//   if (this._rollScore[index - '4'] === 10) {
+//     if (this._rollScore[index - '2'] === 10) {
+//       bonus = 10;
+//     } else {
+//       bonus =
+//       this._rollScore[index-'2'] +
+//       this._rollScore[index-'1'];
+//     };
+//   } else {
+//     bonus = this._rollScore[index-'2'];
+//   };
+//   this._totalScore.push(bonus);
+//   return bonus;
+// };
+
+
 Score.prototype.addBonus = function(index) {
   var bonus = 0;
-  if (this._rollScore[index - '4'] === 10) {
-    if (this._rollScore[index - '2'] === 10) {
-      bonus = 20;
+  if (this._rollScore[index - '6'] === 10) {
+    if (this._rollScore[index - '4'] === 10) {
+     bonus =
+     this._rollScore[index-'2'] +
+     this._rollScore[index-'1'];
+     this._totalScore.push(bonus);
+    }
+  }
+
+  if (this._rollScore[index - '8'] === 10) {
+    if (this._rollScore[index - '6'] === 10) {
+      if (this._rollScore[index - '4'] === 10) {
+     bonus =
+     this._rollScore[index-'2'] +
+     this._rollScore[index-'1'];
+     this._totalScore.push(bonus);
+      }
+    }
+  }
+
+  // if (this._rollScore[index - '8'] === 10) {
+  //   if (this._rollScore[index - '6'] === 10) {
+  //    bonus =
+  //    this._rollScore[index-'2'] +
+  //    this._rollScore[index-'1'];
+  //    this._totalScore.push(bonus);
+  //   }
+  // }
+
+
+
+    if (this._rollScore[index - '4'] === 10) {
+      if (this._rollScore[index - '2'] === 10) {
+      bonus = 10;
+
     } else {
       bonus =
       this._rollScore[index-'2'] +
@@ -55,6 +105,7 @@ Score.prototype.addBonus = function(index) {
   this._totalScore.push(bonus);
   return bonus;
 };
+
 
 Score.prototype.resetScore = function() {
   this._totalScore = [];

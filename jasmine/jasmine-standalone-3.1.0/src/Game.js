@@ -37,7 +37,7 @@ Game.prototype.roll = function(kockedDownPins) {
       this.checkStrike(kockedDownPins);
       this._score.calculateScore(this._totalPinsHitFrame);
         if (this.getFrames() <= this.MAX_FRAMES && this.getRolls() === this.MAX_ROLLS) {
-          this._frames.push('1');
+          this._frames.push('frame');
         };
       this.resetPinsCount(); // reset pins hit
       this.resetRollsCount(); // reset rolls count

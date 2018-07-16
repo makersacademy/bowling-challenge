@@ -5,6 +5,7 @@ $(document).ready(function() {
   updateGameStatus();
   updateScorecard();
   updateScore();
+  updateBonus();
   updateGameStatus();
   updateFrame();
 
@@ -18,6 +19,7 @@ $(document).ready(function() {
     updateRolls();
     updateFrame();
     updateScore();
+    updateBonus();
     updateStrike(pinsInt);
     updateScorecard();
     updateGameStatus();
@@ -41,6 +43,10 @@ $(document).ready(function() {
 
   function updateRolls() {
     $('#rolls-count').text(game.getRolls());
+  };
+
+  function updateBonus() {
+    $('#bonus').text(game._score.getBonus());
   };
 
   function updateGameStatus() {

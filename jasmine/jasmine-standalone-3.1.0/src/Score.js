@@ -6,6 +6,7 @@ function Score() {
 
   // this array logs the score after each roll
   this._rollScore = [];
+  this._bonus = [];
 }
 
 Score.prototype.storeRollScore = function(kockedDownPins) {
@@ -29,83 +30,55 @@ Score.prototype.getScoreScard = function(kockedDownPins) {
 };
 
 Score.prototype.checkBonus = function(index) {
-  if (this._rollScore[index - '4'] === 10) {
+
+  if (this._rollScore[index - '6'] === 10) {
+    if (this._rollScore[index - '4'] === 10) {
+      this.addBonus(index);
+    }
+  }
+  else if (this._rollScore[index - '4'] === 10) {
     this.addBonus(index);
-  // } else if (this._rollScore[index - '4'] === 10 && this._rollScore[index - '2'] === 10) {
-  //   this.addBonus(index);
   } else if (this._rollScore[index - '4'] + this._rollScore[index - '3'] === 10) {
     this.addBonus(index);
   };
 };
 
-// review logic for PERFECT GAME
-// Score.prototype.addBonus = function(index) {
-//   var bonus = 0;
-//   if (this._rollScore[index - '4'] === 10) {
-//     if (this._rollScore[index - '2'] === 10) {
-//       bonus = 10;
-//     } else {
-//       bonus =
-//       this._rollScore[index-'2'] +
-//       this._rollScore[index-'1'];
-//     };
-//   } else {
-//     bonus = this._rollScore[index-'2'];
-//   };
-//   this._totalScore.push(bonus);
-//   return bonus;
-// };
-
-
 Score.prototype.addBonus = function(index) {
   var bonus = 0;
+
   if (this._rollScore[index - '6'] === 10) {
     if (this._rollScore[index - '4'] === 10) {
      bonus =
-     this._rollScore[index-'2'] +
-     this._rollScore[index-'1'];
+     this._rollScore[index-'2']
+     // + this._rollScore[index-'1'];
      this._totalScore.push(bonus);
+     this._bonus.push(bonus);
     }
   }
 
-  if (this._rollScore[index - '8'] === 10) {
-    if (this._rollScore[index - '6'] === 10) {
-      if (this._rollScore[index - '4'] === 10) {
-     bonus =
-     this._rollScore[index-'2'] +
-     this._rollScore[index-'1'];
-     this._totalScore.push(bonus);
-      }
-    }
-  }
-
-  // if (this._rollScore[index - '8'] === 10) {
-  //   if (this._rollScore[index - '6'] === 10) {
-  //    bonus =
-  //    this._rollScore[index-'2'] +
-  //    this._rollScore[index-'1'];
-  //    this._totalScore.push(bonus);
-  //   }
-  // }
-
-
-
-    if (this._rollScore[index - '4'] === 10) {
-      if (this._rollScore[index - '2'] === 10) {
-      bonus = 10;
-
+  if (this._rollScore[index - '4'] === 10) {
+    if (this._rollScore[index - '2'] === 10) {
+    bonus = 10;
     } else {
+      bonus = 0;
       bonus =
-      this._rollScore[index-'2'] +
-      this._rollScore[index-'1'];
+      this._rollScore[index-'2']
+       + this._rollScore[index-'1'];
     };
   } else {
+    // if only 1x 10
+    bonus = 0;
     bonus = this._rollScore[index-'2'];
   };
+
   this._totalScore.push(bonus);
+  this._bonus.push(bonus);
   return bonus;
 };
 
+Score.prototype.getBonus = function() {
+  return this._bonus;
+};
 
 Score.prototype.resetScore = function() {
   this._totalScore = [];

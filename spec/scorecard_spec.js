@@ -19,7 +19,7 @@ describe ('Scorecard', function() {
   });
 
   describe('._addScoreToThisFrame', function() {
-    it ('adds the basic score to the correct frame', function() {
+    it ('adds the basic score to the current frame', function() {
       var frame = 1;
       var score = 5
       scorecard._addScoreToThisFrame(frame, score)
@@ -32,14 +32,6 @@ describe ('Scorecard', function() {
       scorecard.recordScore(1, 3)
       scorecard.recordScore(2, 4)
       expect(scorecard._runningTotal()).toEqual (7);
-    });
-  });
-
-  describe('.currentFrame', function() {
-    xit ('stores the current frame', function() {
-      var frame2 = new Frame();
-      scorecard.recordScore(2, 3);
-      expect(scorecard.currentFrame).toEqual (frame2);
     });
   });
 
@@ -115,7 +107,7 @@ describe ('Scorecard', function() {
     });
 
     describe('._updateBonusFrames', function() {
-      it ('adds 2 frame to the current bonus frames', function() {
+      it ('adds 2 frames to the current bonus frames', function() {
         expect(scorecard._currentBonusFrames).toEqual([1, 2])
       });
       it ('adds the frame to the future bonus frames', function() {

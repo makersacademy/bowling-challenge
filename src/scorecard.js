@@ -53,16 +53,24 @@ Scorecard.prototype._addBonusScore = function(score) {
 Scorecard.prototype._setBonusCondition = function(frameNumber) {
   this._currentBonusFrames[0] = this._futureBonusFrames[0]
   if (frameNumber === 10) {
-    this._currentBonusFrames[1] = 0;
-    this._futureBonusFrames[0] = 0;
+    this._noBonus();
   } else if (this._currentFrame.isStrike()) {
-    this._currentBonusFrames[1] = frameNumber;
-    this._futureBonusFrames[0] = frameNumber;
+    this._strikeBonus(frameNumber);
   } else if (this._currentFrame.isSpare()) {
-    this._currentBonusFrames[1] = frameNumber;
-    this._futureBonusFrames[0] = 0;
+    this._spareBonus(frameNumber);
   } else {
-    this._currentBonusFrames[1] = 0;
-    this._futureBonusFrames[0] = 0;
+    this._noBonus();
   };
 };
+
+Scorecard.prototype._strikeBonus = function(frameNumber) {
+  this._currentBonusFrames[1] = frameNumber; this._futureBonusFrames[0] = frameNumber;
+}
+
+Scorecard.prototype._spareBonus = function(frameNumber) {
+  this._currentBonusFrames[1] = frameNumber; this._futureBonusFrames[0] = 0;
+}
+
+Scorecard.prototype._noBonus = function() {
+  this._currentBonusFrames[1] = 0; this._futureBonusFrames[0] = 0;
+}

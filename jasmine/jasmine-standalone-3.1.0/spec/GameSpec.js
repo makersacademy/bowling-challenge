@@ -33,11 +33,31 @@ describe("Game unit test: ", function() {
     expect(game.getFrames()).toEqual(2);
   });
 
+  it('A User can Roll 3 times in Frame 10', function() {
+    for (var i = 0; i < 10; i++) {
+      game.addFrame('1');
+    }
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    expect(game.getRolls()).toEqual(3);
+  });
+
+  it('A User can Roll 2 times if not in Frame 10', function() {
+    for (var i = 0; i < 9; i++) {
+      game.addFrame('1');
+    }
+    game.roll(10);
+    game.roll(10); // reset roll to 0
+    game.roll(10);
+    expect(game.getRolls()).toEqual(1);
+  });
+
   it('A User can Roll 20 times per Game', function() {
     // A game contains 10 Frames
     // This for loop adds 9 Frames to a Game
     for (var i = 0; i < 10; i++) {
-      game.addFrame('X');
+      game.addFrame('1');
     }
     expect(game.getFrames()).toEqual(10);
   });

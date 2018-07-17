@@ -8,13 +8,13 @@ describe ('Scorecard', function() {
 
   describe('.initialize', function() {
     it ('initializes with an array of 10 frames', function() {
-      expect(scorecard.frames.length).toEqual (10);
+      expect(scorecard._frames.length).toEqual (10);
     });
     it ('initializes with an array for current bonus frames', function(){
-      expect(scorecard.currentBonusFrames).toEqual([0,0]);
+      expect(scorecard._currentBonusFrames).toEqual([0,0]);
     });
     it ('initializes with an array for future bonus frames', function(){
-      expect(scorecard.futureBonusFrames).toEqual([0]);
+      expect(scorecard._futureBonusFrames).toEqual([0]);
     });
   });
 
@@ -22,16 +22,16 @@ describe ('Scorecard', function() {
     it ('adds the basic score to the correct frame', function() {
       var frame = 1;
       var score = 5
-      scorecard.addBasicScore(frame, score)
-      expect(scorecard.frames[(frame - 1)].totalFrameScore()).toEqual (5);
+      scorecard._addBasicScore(frame, score)
+      expect(scorecard._frames[(frame - 1)].totalFrameScore()).toEqual (5);
     });
   });
 
-  describe('.totalScore', function() {
+  describe('._runningTotal', function() {
     it ('calculates a running total of all frame scores', function() {
       scorecard.recordScore(1, 3)
       scorecard.recordScore(2, 4)
-      expect(scorecard.runningTotal()).toEqual (7);
+      expect(scorecard._runningTotal()).toEqual (7);
     });
   });
 
@@ -50,15 +50,15 @@ describe ('Scorecard', function() {
 
     describe('._setBonusCondition', function() {
       it ('keeps the current bonus frames empty', function() {
-        expect(scorecard.currentBonusFrames).toEqual([0, 0])
+        expect(scorecard._currentBonusFrames).toEqual([0, 0])
       });
       it ('keeps the future bonus frames empty', function() {
-        expect(scorecard.futureBonusFrames).toEqual([0])
+        expect(scorecard._futureBonusFrames).toEqual([0])
       });
     });
-    describe('.addBonusScore', function() {
+    describe('._addBonusScore', function() {
       it ('adds the bonus score to the correct frame', function() {
-        expect(scorecard.frames[0].totalFrameScore()).toEqual (4);
+        expect(scorecard._frames[0].totalFrameScore()).toEqual (4);
       });
     });
   });
@@ -71,17 +71,17 @@ describe ('Scorecard', function() {
 
     describe('._setBonusCondition', function() {
       it ('adds the frame to the current bonus frames', function() {
-        expect(scorecard.currentBonusFrames).toEqual([0, 1])
+        expect(scorecard._currentBonusFrames).toEqual([0, 1])
       });
       it ('keeps the future bonus frames empty', function() {
-        expect(scorecard.futureBonusFrames).toEqual([0])
+        expect(scorecard._futureBonusFrames).toEqual([0])
       });
     });
-    describe('.addBonusScore', function() {
+    describe('._addBonusScore', function() {
       it ('adds the bonus score to the correct frame', function() {
         scorecard.recordScore(2, 5)
         scorecard.recordScore(2, 3)
-        expect(scorecard.frames[0].totalFrameScore()).toEqual (15);
+        expect(scorecard._frames[0].totalFrameScore()).toEqual (15);
       });
     });
   })
@@ -93,17 +93,17 @@ describe ('Scorecard', function() {
 
     describe('._setBonusCondition', function() {
       it ('adds the frame to the current bonus frames', function() {
-        expect(scorecard.currentBonusFrames).toEqual([0, 1])
+        expect(scorecard._currentBonusFrames).toEqual([0, 1])
       });
       it ('adds the frame to the future bonus frames', function() {
-        expect(scorecard.futureBonusFrames).toEqual([1])
+        expect(scorecard._futureBonusFrames).toEqual([1])
       });
     });
-    describe('.addBonusScore', function() {
+    describe('._addBonusScore', function() {
       it ('adds the bonus score to the correct frame', function() {
         scorecard.recordScore(2, 5)
         scorecard.recordScore(2, 3)
-        expect(scorecard.frames[0].totalFrameScore()).toEqual (18);
+        expect(scorecard._frames[0].totalFrameScore()).toEqual (18);
       });
     });
   });
@@ -116,10 +116,10 @@ describe ('Scorecard', function() {
 
     describe('._setBonusCondition', function() {
       it ('adds 2 frame to the current bonus frames', function() {
-        expect(scorecard.currentBonusFrames).toEqual([1, 2])
+        expect(scorecard._currentBonusFrames).toEqual([1, 2])
       });
       it ('adds the frame to the future bonus frames', function() {
-        expect(scorecard.futureBonusFrames).toEqual([2])
+        expect(scorecard._futureBonusFrames).toEqual([2])
       });
     });
   });
@@ -132,11 +132,10 @@ describe ('Scorecard', function() {
 
     describe('._setBonusCondition', function() {
       it ('does not add bonuses to the tenth frame', function() {
-        console.log(scorecard.currentBonusFrames)
-        expect(scorecard.currentBonusFrames).toEqual([9, 0])
+        expect(scorecard._currentBonusFrames).toEqual([9, 0])
       });
       it ('does not add the frame to the future bonus frames', function() {
-        expect(scorecard.futureBonusFrames).toEqual([0])
+        expect(scorecard._futureBonusFrames).toEqual([0])
       });
     });
   })

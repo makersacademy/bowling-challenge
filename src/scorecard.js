@@ -52,7 +52,10 @@ Scorecard.prototype.addBonusScore = function(score) {
 
 Scorecard.prototype._setBonusCondition = function(frameNumber) {
   this.currentBonusFrames[0] = this.futureBonusFrames[0]
-  if (this.currentFrame.isStrike()) {
+  if (frameNumber === 10) {
+    this.currentBonusFrames[1] = 0;
+    this.futureBonusFrames[0] = 0;
+  } else if (this.currentFrame.isStrike()) {
     this.currentBonusFrames[1] = frameNumber;
     this.futureBonusFrames[0] = frameNumber;
   } else if (this.currentFrame.isSpare()) {

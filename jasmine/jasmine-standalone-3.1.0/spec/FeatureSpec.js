@@ -229,7 +229,7 @@ describe("Feature Test: ", function() {
       expect(game.getScore()).toEqual(300);
     });
 
-    it('A User has an extra roll in Final Frame', function() {
+    it('A User has an extra roll in FINAL FRAME', function() {
       game.roll(10);
       game.roll(0);
       game.roll(10);
@@ -255,7 +255,7 @@ describe("Feature Test: ", function() {
       expect(game.getScore()).toEqual(278);
     });
 
-    it('A User has an extra roll in Final Frame', function() {
+    it('A User has an extra roll in FINAL FRAME', function() {
       game.roll(10);
       game.roll(0);
       game.roll(10);

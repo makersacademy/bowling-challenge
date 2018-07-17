@@ -46,6 +46,7 @@ Score.prototype.checkBonus = function(index) {
 Score.prototype.addBonus = function(index) {
   var bonus = 0;
 
+  // index -5 checks for roll 2 in a game
   if (this._rollScore[index - '6'] === 10 || this._rollScore[index - '5'] === 10) {
     if (this._rollScore[index - '4'] === 10) {
      bonus =
@@ -56,6 +57,7 @@ Score.prototype.addBonus = function(index) {
     }
   }
 
+  // index -3 checks for roll 2 in a game
   if (this._rollScore[index - '4'] === 10 || this._rollScore[index - '3'] === 10) {
     if (this._rollScore[index - '2'] === 10) {
     bonus = 10;

@@ -53,12 +53,14 @@ Scorecard.prototype.calculateBonus = function(score) {
 Scorecard.prototype.enterScore = function(score) {
   this._frame.push(score);
   this.calculateBonus(score);
+  this._applyScoreConditions();
+};
+
+Scorecard.prototype._applyScoreConditions = function() {
   if (this._isStrike()) {
-    this._strikeBonus = true;
-    this._endTurn();
+    this._applyStrikeConditions();
   } else if (this._isSpare()) {
-    this._spareBonus = true;
-    this._endTurn();
+    this._applySpareConditions();
   } else if (this.getRoll() === 1) {
     this._roll = 2;
   } else {
@@ -76,8 +78,19 @@ Scorecard.prototype._applyStrikeBonus = function(score) {
   this._strikeBonus = false;
 };
 
+Scorecard.prototype._applySpareConditions = function() {
+  this._spareBonus = true;
+  this._endTurn();
+};
+
+Scorecard.prototype._applyStrikeConditions = function() {
+  this._strikeBonus = true;
+  this._frame[1] = 0;
+  this._endTurn();
+};
+
 Scorecard.prototype._endTurn = function() {
-  if (this.getTurn() < 10) {
+  if (this.getTurn() < 11) {
     this._resetTurn();
   };
 };

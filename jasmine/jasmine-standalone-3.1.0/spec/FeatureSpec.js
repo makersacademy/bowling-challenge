@@ -280,8 +280,8 @@ describe("Feature Test: ", function() {
     });
 
     it('A User has an extra roll in FINAL FRAME, variation 11', function() {
-      game.roll(10);
       game.roll(0);
+      game.roll(10);
       game.roll(9);
       game.roll(0);
       game.roll(9);

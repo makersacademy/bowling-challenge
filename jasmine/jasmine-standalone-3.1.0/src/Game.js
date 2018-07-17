@@ -26,7 +26,7 @@ Game.prototype.roll = function(kockedDownPins) {
       this._score.storeRollScore(kockedDownPins);
       this._totalPinsHitFrame += kockedDownPins;
       this._rolls += 1;
-      this.getBonus();
+    //  this.getBonus();
       this.checkStrike(kockedDownPins);
       return "roll again"
     } else {

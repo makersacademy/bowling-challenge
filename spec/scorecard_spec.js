@@ -95,7 +95,7 @@ describe ('Scorecard', function() {
       it ('adds the frame to the current bonus frames', function() {
         expect(scorecard.currentBonusFrames).toEqual([0, 1])
       });
-      it ('add the frame to the future bonus frames', function() {
+      it ('adds the frame to the future bonus frames', function() {
         expect(scorecard.futureBonusFrames).toEqual([1])
       });
     });
@@ -118,8 +118,25 @@ describe ('Scorecard', function() {
       it ('adds 2 frame to the current bonus frames', function() {
         expect(scorecard.currentBonusFrames).toEqual([1, 2])
       });
-      it ('add the frame to the future bonus frames', function() {
+      it ('adds the frame to the future bonus frames', function() {
         expect(scorecard.futureBonusFrames).toEqual([2])
+      });
+    });
+  });
+
+  describe('In the final round', function() {
+    beforeEach(function() {
+      scorecard.recordScore(9, 10)
+      scorecard.recordScore(10, 10)
+    });
+
+    describe('._setBonusCondition', function() {
+      it ('does not add bonuses to the tenth frame', function() {
+        console.log(scorecard.currentBonusFrames)
+        expect(scorecard.currentBonusFrames).toEqual([9, 0])
+      });
+      it ('does not add the frame to the future bonus frames', function() {
+        expect(scorecard.futureBonusFrames).toEqual([0])
       });
     });
   })

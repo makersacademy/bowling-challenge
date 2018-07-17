@@ -16,7 +16,7 @@ function Scorecard() {
 }
 
 Scorecard.prototype.recordScore = function(frameNumber, score) {
-  this.currentFrame = this._frames[(frameNumber - 1)]
+  this._currentFrame = this._frames[(frameNumber - 1)]
   this._addBasicScore(frameNumber, score);
   this._addBonusScore(score);
   this._setBonusCondition(frameNumber);
@@ -55,10 +55,10 @@ Scorecard.prototype._setBonusCondition = function(frameNumber) {
   if (frameNumber === 10) {
     this._currentBonusFrames[1] = 0;
     this._futureBonusFrames[0] = 0;
-  } else if (this.currentFrame.isStrike()) {
+  } else if (this._currentFrame.isStrike()) {
     this._currentBonusFrames[1] = frameNumber;
     this._futureBonusFrames[0] = frameNumber;
-  } else if (this.currentFrame.isSpare()) {
+  } else if (this._currentFrame.isSpare()) {
     this._currentBonusFrames[1] = frameNumber;
     this._futureBonusFrames[0] = 0;
   } else {

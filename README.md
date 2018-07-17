@@ -13,13 +13,10 @@ Features implemented
 * [ ] Multiple frames
 * [ ] Spares
 * [ ] Strikes
+* [ ] Final Frame
 * Interactive animated interface with jQuery.
 
 ```
-
-What is not implemented:
--------
-* [ ] Final Frame
 
 Instructions to Start
 -------

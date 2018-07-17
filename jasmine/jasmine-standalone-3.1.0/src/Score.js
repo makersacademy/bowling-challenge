@@ -38,9 +38,6 @@ Score.prototype.checkBonus = function(index) {
   } else if (this._rollScore[index - '4'] === 10) {
     this.addBonus(index);
   }
-  else if (this._rollScore[index - '3'] === 10) {
-    this.addBonus(index);
-  }
    else if (this._rollScore[index - '4'] + this._rollScore[index - '3'] === 10) {
     this.addBonus(index);
   };
@@ -74,17 +71,11 @@ Score.prototype.addBonus = function(index) {
     bonus = this._rollScore[index-'2'];
   };
 
-//  if (this._rollScore[index - '3'] === 10) {
-//   bonus = 1;
-//   // bonus = this._rollScore[index-'2']
-//   //  + this._rollScore[index-'1'];
-// };
-
   // Frame 10 logic
   if (this._rollScore[index - '1'] === 10) {
     if (this._rollScore[index - '2'] === 10) {
       if (this._rollScore[index - '3'] === 10) {
-       bonus =5
+       bonus = 5;
        // this._rollScore[index-'2']
        // + this._rollScore[index-'1'];
        this._totalScore.push(bonus);
@@ -92,11 +83,11 @@ Score.prototype.addBonus = function(index) {
      }
     }
   }
-
   this._totalScore.push(bonus);
   this._bonus.push(bonus);
   return bonus;
 };
+
 
 Score.prototype.getBonus = function() {
   return this._bonus;

@@ -102,7 +102,7 @@ describe("Feature Test: ", function() {
     });
 
     it('A User can roll all 10 pins or Strikes multiple times and score' +
-    'bonus points, variation 3', function() {
+    'bonus points, variation 4', function() {
       game.roll(1);
       game.roll(9);
       game.roll(2);
@@ -127,7 +127,7 @@ describe("Feature Test: ", function() {
     });
 
     it('A User can roll all 10 pins or Strikes multiple times and score' +
-    'bonus points, variation 4', function() {
+    'bonus points, variation 5', function() {
       game.roll(1);
       game.roll(9);
       game.roll(2);
@@ -152,7 +152,7 @@ describe("Feature Test: ", function() {
     });
 
     it('A User can roll all 10 pins or Strikes multiple times and score' +
-    'bonus points, variation 5', function() {
+    'bonus points, variation 6', function() {
       game.roll(1);
       game.roll(9);
       game.roll(2);
@@ -177,7 +177,7 @@ describe("Feature Test: ", function() {
     });
 
     it('A User can roll all 10 pins or Strikes multiple times and score' +
-    'bonus points, variation 6', function() {
+    'bonus points, variation 7', function() {
       game.roll(1);
       game.roll(9);
       game.roll(2);
@@ -199,6 +199,110 @@ describe("Feature Test: ", function() {
       game.roll(10);
       game.roll(0);
       expect(game.getScore()).toEqual(176);
+    });
+
+    it('A User has an extra roll in FINAL FRAME, varation 8', function() {
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(8);
+      game.roll(2);
+      game.roll(10); // bonus ball for Frame 10
+
+      expect(game.getScore()).toEqual(278);
+    });
+
+    it('A User has an extra roll in FINAL FRAME, variation 9', function() {
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(0);
+      game.roll(10);
+      game.roll(10); // bonus ball for Frame 10
+
+      expect(game.getScore()).toEqual(270);
+    });
+
+    it('A User has an extra roll in FINAL FRAME, variation 10', function() {
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(0);
+      game.roll(0);
+      game.roll(0); // bonus ball for Frame 10
+
+      expect(game.getScore()).toEqual(240);
+    });
+
+    it('A User has an extra roll in FINAL FRAME, variation 11', function() {
+      game.roll(10);
+      game.roll(0);
+      game.roll(9);
+      game.roll(0);
+      game.roll(9);
+      game.roll(0);
+      game.roll(9);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);//
+      game.roll(3);
+      game.roll(6);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(2);
+      game.roll(0); // bonus ball for Frame 10
+
+      expect(game.getScore()).toEqual(161);
     });
 
     // in a Perfect game, user has 2 bonus strike in Game 10
@@ -227,110 +331,6 @@ describe("Feature Test: ", function() {
       game.roll(10); // bonus ball for Frame 10
 
       expect(game.getScore()).toEqual(300);
-    });
-
-    it('A User has an extra roll in FINAL FRAME, varation 7', function() {
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(8);
-      game.roll(2);
-      game.roll(10); // bonus ball for Frame 10
-
-      expect(game.getScore()).toEqual(278);
-    });
-
-    it('A User has an extra roll in FINAL FRAME, variation 8', function() {
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(0);
-      game.roll(10);
-      game.roll(10); // bonus ball for Frame 10
-
-      expect(game.getScore()).toEqual(270);
-    });
-
-    it('A User has an extra roll in FINAL FRAME, variation 9', function() {
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(0);
-      game.roll(0);
-      game.roll(0); // bonus ball for Frame 10
-
-      expect(game.getScore()).toEqual(240);
-    });
-
-    it('A User has an extra roll in FINAL FRAME, variation 10', function() {
-      game.roll(10);
-      game.roll(0);
-      game.roll(9);
-      game.roll(0);
-      game.roll(9);
-      game.roll(0);
-      game.roll(9);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(0);//
-      game.roll(3);
-      game.roll(6);
-      game.roll(10);
-      game.roll(0);
-      game.roll(10);
-      game.roll(3);
-      game.roll(8); // bonus ball for Frame 10
-
-      expect(game.getScore()).toEqual(171);
     });
 
     it('A User can roll 0 pins in a GUTTER GAME and score 0 points',

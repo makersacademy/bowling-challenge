@@ -35,10 +35,13 @@ Score.prototype.checkBonus = function(index) {
     if (this._rollScore[index - '4'] === 10) {
       this.addBonus(index);
     }
-  }
-  else if (this._rollScore[index - '4'] === 10) {
+  } else if (this._rollScore[index - '4'] === 10) {
     this.addBonus(index);
-  } else if (this._rollScore[index - '4'] + this._rollScore[index - '3'] === 10) {
+  }
+  else if (this._rollScore[index - '3'] === 10) {
+    this.addBonus(index);
+  }
+   else if (this._rollScore[index - '4'] + this._rollScore[index - '3'] === 10) {
     this.addBonus(index);
   };
 };
@@ -70,6 +73,12 @@ Score.prototype.addBonus = function(index) {
     bonus = 0;
     bonus = this._rollScore[index-'2'];
   };
+
+//  if (this._rollScore[index - '3'] === 10) {
+//   bonus = 1;
+//   // bonus = this._rollScore[index-'2']
+//   //  + this._rollScore[index-'1'];
+// };
 
   // Frame 10 logic
   if (this._rollScore[index - '1'] === 10) {

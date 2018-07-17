@@ -229,7 +229,7 @@ describe("Feature Test: ", function() {
       expect(game.getScore()).toEqual(300);
     });
 
-    it('A User has an extra roll in FINAL FRAME', function() {
+    it('A User has an extra roll in FINAL FRAME, varation 7', function() {
       game.roll(10);
       game.roll(0);
       game.roll(10);
@@ -255,7 +255,7 @@ describe("Feature Test: ", function() {
       expect(game.getScore()).toEqual(278);
     });
 
-    it('A User has an extra roll in FINAL FRAME', function() {
+    it('A User has an extra roll in FINAL FRAME, variation 8', function() {
       game.roll(10);
       game.roll(0);
       game.roll(10);
@@ -279,6 +279,58 @@ describe("Feature Test: ", function() {
       game.roll(10); // bonus ball for Frame 10
 
       expect(game.getScore()).toEqual(270);
+    });
+
+    it('A User has an extra roll in FINAL FRAME, variation 9', function() {
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(0);
+      game.roll(0);
+      game.roll(0); // bonus ball for Frame 10
+
+      expect(game.getScore()).toEqual(240);
+    });
+
+    it('A User has an extra roll in FINAL FRAME, variation 10', function() {
+      game.roll(10);
+      game.roll(0);
+      game.roll(9);
+      game.roll(0);
+      game.roll(9);
+      game.roll(0);
+      game.roll(9);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);//
+      game.roll(3);
+      game.roll(6);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(3);
+      game.roll(8); // bonus ball for Frame 10
+
+      expect(game.getScore()).toEqual(171);
     });
 
     it('A User can roll 0 pins in a GUTTER GAME and score 0 points',

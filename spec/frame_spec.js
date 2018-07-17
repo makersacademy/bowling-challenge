@@ -1,4 +1,4 @@
-describe ('Frame', function() {
+describe ('UNIT TESTS: Frame', function() {
 
   var frame;
 
@@ -15,7 +15,7 @@ describe ('Frame', function() {
   it ('returns the total score for the frame', function() {
     frame.addScore(3);
     frame.addScore(5);
-    expect(frame.totalFrameScore()).toEqual (8);
+    expect(frame.score()).toEqual (8);
   });
 
   describe ('.isSpare', function() {

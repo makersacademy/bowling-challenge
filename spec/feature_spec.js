@@ -1,4 +1,4 @@
-describe ('Example Bowling Game', function() {
+describe ('FEATURE TESTS:', function() {
 
   var scorecard;
 
@@ -6,7 +6,7 @@ describe ('Example Bowling Game', function() {
     scorecard = new Scorecard();
   });
 
-  describe('Game 1', function() {
+  describe('Example Game', function() {
     it ('The scorecard calculates the correct total', function() {
       scorecard.recordScore(1, 8)
       scorecard.recordScore(1, 1)

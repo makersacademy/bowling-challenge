@@ -1,4 +1,4 @@
-describe ('Scorecard', function() {
+describe ('UNIT TESTS: Scorecard', function() {
 
   var scorecard;
 
@@ -23,7 +23,7 @@ describe ('Scorecard', function() {
       var frame = 1;
       var score = 5
       scorecard._addScoreToThisFrame(frame, score)
-      expect(scorecard._frames[(frame - 1)].totalFrameScore()).toEqual (5);
+      expect(scorecard._currentFrame.score()).toEqual (5);
     });
   });
 
@@ -50,7 +50,7 @@ describe ('Scorecard', function() {
     });
     describe('._addBonusToOtherFrames', function() {
       it ('adds the bonus score to the correct frame', function() {
-        expect(scorecard._frames[0].totalFrameScore()).toEqual (4);
+        expect(scorecard._frames[0].score()).toEqual (4);
       });
     });
   });
@@ -73,7 +73,7 @@ describe ('Scorecard', function() {
       it ('adds the bonus score to the correct frame', function() {
         scorecard.recordScore(2, 5)
         scorecard.recordScore(2, 3)
-        expect(scorecard._frames[0].totalFrameScore()).toEqual (15);
+        expect(scorecard._frames[0].score()).toEqual (15);
       });
     });
   })
@@ -95,7 +95,7 @@ describe ('Scorecard', function() {
       it ('adds the bonus score to the correct frame', function() {
         scorecard.recordScore(2, 5)
         scorecard.recordScore(2, 3)
-        expect(scorecard._frames[0].totalFrameScore()).toEqual (18);
+        expect(scorecard._frames[0].score()).toEqual (18);
       });
     });
   });

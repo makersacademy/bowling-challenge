@@ -35,17 +35,6 @@ I want to be able to see the running total for the whole game
 
 ___
 
-## Learning Outcomes
-
-### Topics Covered
-
-Tbc
-
-### Personal Reflection
-
-Tbc
-___
-
 ## State of Completion
 
 ### Implemented Functionality
@@ -59,11 +48,9 @@ ___
 
 ### To Do List
 
-* Update game rules for the final frame
 * Extract a controller / scorer class to reduce responsibility on Scorecard
 * Create clear user interface (web page)
 * Ensure tests are fully isolated
-
 
 ___
 
@@ -78,19 +65,19 @@ Javascript, Jasmine
 ```
 $ git clone https://github.com/elishkaflint/bowling-challenge.git
 $ cd bowling-challenge
-$ open SpecRunner.html
+$ open index.html
 ```
 
-Create a scorecard:
+Create a scorecard (in the console):
 
 ```
 > var scorecard = new Scorecard()
 ```
 
-Record a score:
+Record a score (in the console):
 
 ```
-> scorecard.recordScore(frameNumber, score)
+> scorecard.recordScore(frame, roll)
 ```
 
 Print frame scores and current running total:
@@ -100,5 +87,16 @@ Print frame scores and current running total:
 
 ```
 
-**NOTE: a complete game of ten frames has been set up under a variable called `exampleScorecard` - run `exampleScorecard.printScores()` to see the final output**
-____
+**NOTE: a complete game of ten frames has been set up under a variable called `exampleScorecard` - run `exampleScorecard.printScores()` in the console to see the final output**
+___
+
+## Learning Outcomes
+
+### Topics Covered
+
+Tbc
+
+### Personal Reflection
+
+Tbc
+___

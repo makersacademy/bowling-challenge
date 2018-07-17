@@ -11,22 +11,23 @@ function Scorecard() {
     frame9 =  new Frame(),
     frame10 = new Frame(),
   ];
-  this._currentBonusFrames = [0,0]
-  this._futureBonusFrames = [0]
+  this._currentBonusFrames = [0,0];
+  this._futureBonusFrames = [0];
+  this._currentFrame = frame1;
 }
 
-Scorecard.prototype.recordScore = function(frame, score) {
+Scorecard.prototype.recordScore = function(frame, roll) {
   this._setCurrentFrame(frame);
-  this._addScoreToThisFrame(frame, score);
-  this._addBonusToOtherFrames(score);
+  this._addScoreToThisFrame(frame, roll);
+  this._addBonusToOtherFrames(roll);
   this._updateBonusFrames(frame);
 }
 
 Scorecard.prototype.printScores = function() {
-  var frame = 1
+  var frameNumber = 1
   this._frames.forEach( frame =>   {
-    console.log('Frame ' + frame + ': ' + frame.totalFrameScore());
-    frame += 1;
+    console.log('Frame ' + frameNumber + ': ' + frame.score());
+    frameNumber += 1;
   })
   console.log('Total: ' + this._runningTotal())
 };
@@ -35,14 +36,14 @@ Scorecard.prototype._setCurrentFrame = function(frame) {
   this._currentFrame = this._frames[(frame - 1)]
 }
 
-Scorecard.prototype._addScoreToThisFrame = function(frame, score) {
-  this._frames[(frame - 1)].addScore(score);
+Scorecard.prototype._addScoreToThisFrame = function(frame, roll) {
+  this._currentFrame.addScore(roll);
 };
 
-Scorecard.prototype._addBonusToOtherFrames = function(score) {
+Scorecard.prototype._addBonusToOtherFrames = function(roll) {
   this._currentBonusFrames.forEach( frame => {
     if (frame !== 0) {
-      this._frames[frame - 1].addScore(score)
+      this._frames[frame - 1].addScore(roll)
     };
   });
 };
@@ -81,7 +82,7 @@ Scorecard.prototype._noBonus = function() {
 }
 
 Scorecard.prototype._runningTotal = function() {
-  var scores = this._frames.map( frame => frame.totalFrameScore() )
+  var scores = this._frames.map( frame => frame.score() )
   return scores.reduce(function(a,b) {
     return (a + b)
   });

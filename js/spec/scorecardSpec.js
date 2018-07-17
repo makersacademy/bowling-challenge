@@ -49,7 +49,7 @@ describe('Scorecard', function() {
     });
   });
 
-  describe('understands spares and strikes', function() {
+  describe('understands spares', function() {
     it('spare is set to false by default', function() {
       expect(scorecard._spareBonus).toEqual(false);
     });
@@ -62,8 +62,23 @@ describe('Scorecard', function() {
       scorecard.enterScore(3);
       scorecard.enterScore(7);
       scorecard.enterScore(5);
-      console.log(scorecard);
       expect(scorecard.getFinalScores()[0]).toEqual(15);
+    });
+  });
+
+  describe('understands strikes', function() {
+    it('strike is set to false by default', function() {
+      expect(scorecard._strikeBonus).toEqual(false);
+    });
+    it('understands when a strike takes place', function() {
+      scorecard.enterScore(10);
+      expect(scorecard._strikeBonus).toEqual(true);
+    });
+    it('modifies final scores based on strike bonus', function() {
+      scorecard.enterScore(10);
+      scorecard.enterScore(7);
+      scorecard.enterScore(2);
+      expect(scorecard.getFinalScores()[0]).toEqual(19);
     });
   });
 });

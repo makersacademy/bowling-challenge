@@ -18,11 +18,11 @@ describe ('Scorecard', function() {
     });
   });
 
-  describe('.addScore', function() {
+  describe('._addScoreToThisFrame', function() {
     it ('adds the basic score to the correct frame', function() {
       var frame = 1;
       var score = 5
-      scorecard._addBasicScore(frame, score)
+      scorecard._addScoreToThisFrame(frame, score)
       expect(scorecard._frames[(frame - 1)].totalFrameScore()).toEqual (5);
     });
   });
@@ -48,7 +48,7 @@ describe ('Scorecard', function() {
       scorecard.recordScore(1, 4);
     });
 
-    describe('._setBonusCondition', function() {
+    describe('._updateBonusFrames', function() {
       it ('keeps the current bonus frames empty', function() {
         expect(scorecard._currentBonusFrames).toEqual([0, 0])
       });
@@ -56,7 +56,7 @@ describe ('Scorecard', function() {
         expect(scorecard._futureBonusFrames).toEqual([0])
       });
     });
-    describe('._addBonusScore', function() {
+    describe('._addBonusToOtherFrames', function() {
       it ('adds the bonus score to the correct frame', function() {
         expect(scorecard._frames[0].totalFrameScore()).toEqual (4);
       });
@@ -69,7 +69,7 @@ describe ('Scorecard', function() {
       scorecard.recordScore(1, 7)
     });
 
-    describe('._setBonusCondition', function() {
+    describe('._updateBonusFrames', function() {
       it ('adds the frame to the current bonus frames', function() {
         expect(scorecard._currentBonusFrames).toEqual([0, 1])
       });
@@ -77,7 +77,7 @@ describe ('Scorecard', function() {
         expect(scorecard._futureBonusFrames).toEqual([0])
       });
     });
-    describe('._addBonusScore', function() {
+    describe('._addBonusToOtherFrames', function() {
       it ('adds the bonus score to the correct frame', function() {
         scorecard.recordScore(2, 5)
         scorecard.recordScore(2, 3)
@@ -91,7 +91,7 @@ describe ('Scorecard', function() {
       scorecard.recordScore(1, 10)
     });
 
-    describe('._setBonusCondition', function() {
+    describe('._updateBonusFrames', function() {
       it ('adds the frame to the current bonus frames', function() {
         expect(scorecard._currentBonusFrames).toEqual([0, 1])
       });
@@ -99,7 +99,7 @@ describe ('Scorecard', function() {
         expect(scorecard._futureBonusFrames).toEqual([1])
       });
     });
-    describe('._addBonusScore', function() {
+    describe('._addBonusToOtherFrames', function() {
       it ('adds the bonus score to the correct frame', function() {
         scorecard.recordScore(2, 5)
         scorecard.recordScore(2, 3)
@@ -114,7 +114,7 @@ describe ('Scorecard', function() {
       scorecard.recordScore(2, 10)
     });
 
-    describe('._setBonusCondition', function() {
+    describe('._updateBonusFrames', function() {
       it ('adds 2 frame to the current bonus frames', function() {
         expect(scorecard._currentBonusFrames).toEqual([1, 2])
       });
@@ -130,7 +130,7 @@ describe ('Scorecard', function() {
       scorecard.recordScore(10, 10)
     });
 
-    describe('._setBonusCondition', function() {
+    describe('._updateBonusFrames', function() {
       it ('does not add bonuses to the tenth frame', function() {
         expect(scorecard._currentBonusFrames).toEqual([9, 0])
       });

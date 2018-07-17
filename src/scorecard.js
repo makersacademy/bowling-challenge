@@ -15,34 +15,31 @@ function Scorecard() {
   this._futureBonusFrames = [0]
 }
 
-Scorecard.prototype.recordScore = function(frameNumber, score) {
-  this._currentFrame = this._frames[(frameNumber - 1)]
-  this._addBasicScore(frameNumber, score);
-  this._addBonusScore(score);
-  this._setBonusCondition(frameNumber);
+Scorecard.prototype.recordScore = function(frame, score) {
+  this._setCurrentFrame(frame);
+  this._addScoreToThisFrame(frame, score);
+  this._addBonusToOtherFrames(score);
+  this._updateBonusFrames(frame);
 }
 
 Scorecard.prototype.printScores = function() {
-  var frameNumber = 1
+  var frame = 1
   this._frames.forEach( frame =>   {
-    console.log('Frame ' + frameNumber + ': ' + frame.totalFrameScore());
-    frameNumber += 1;
+    console.log('Frame ' + frame + ': ' + frame.totalFrameScore());
+    frame += 1;
   })
   console.log('Total: ' + this._runningTotal())
 };
 
-Scorecard.prototype._runningTotal = function() {
-  var scores = this._frames.map( frame => frame.totalFrameScore() )
-  return scores.reduce(function(a,b) {
-    return (a + b)
-  });
+Scorecard.prototype._setCurrentFrame = function(frame) {
+  this._currentFrame = this._frames[(frame - 1)]
+}
+
+Scorecard.prototype._addScoreToThisFrame = function(frame, score) {
+  this._frames[(frame - 1)].addScore(score);
 };
 
-Scorecard.prototype._addBasicScore = function(frameNumber, score) {
-  this._frames[(frameNumber - 1)].addScore(score);
-};
-
-Scorecard.prototype._addBonusScore = function(score) {
+Scorecard.prototype._addBonusToOtherFrames = function(score) {
   this._currentBonusFrames.forEach( frame => {
     if (frame !== 0) {
       this._frames[frame - 1].addScore(score)
@@ -50,27 +47,42 @@ Scorecard.prototype._addBonusScore = function(score) {
   });
 };
 
-Scorecard.prototype._setBonusCondition = function(frameNumber) {
+Scorecard.prototype._updateBonusFrames = function(frame) {
+  this._bringBonusFramesForward();
+  this._setNewBonusFrames(frame);
+};
+
+Scorecard.prototype._bringBonusFramesForward = function() {
   this._currentBonusFrames[0] = this._futureBonusFrames[0]
-  if (frameNumber === 10) {
+}
+
+Scorecard.prototype._setNewBonusFrames = function(frame) {
+  if (frame === 10) {
     this._noBonus();
   } else if (this._currentFrame.isStrike()) {
-    this._strikeBonus(frameNumber);
+    this._strikeBonus(frame);
   } else if (this._currentFrame.isSpare()) {
-    this._spareBonus(frameNumber);
+    this._spareBonus(frame);
   } else {
     this._noBonus();
   };
-};
-
-Scorecard.prototype._strikeBonus = function(frameNumber) {
-  this._currentBonusFrames[1] = frameNumber; this._futureBonusFrames[0] = frameNumber;
 }
 
-Scorecard.prototype._spareBonus = function(frameNumber) {
-  this._currentBonusFrames[1] = frameNumber; this._futureBonusFrames[0] = 0;
+Scorecard.prototype._strikeBonus = function(frame) {
+  this._currentBonusFrames[1] = frame; this._futureBonusFrames[0] = frame;
+}
+
+Scorecard.prototype._spareBonus = function(frame) {
+  this._currentBonusFrames[1] = frame; this._futureBonusFrames[0] = 0;
 }
 
 Scorecard.prototype._noBonus = function() {
   this._currentBonusFrames[1] = 0; this._futureBonusFrames[0] = 0;
 }
+
+Scorecard.prototype._runningTotal = function() {
+  var scores = this._frames.map( frame => frame.totalFrameScore() )
+  return scores.reduce(function(a,b) {
+    return (a + b)
+  });
+};

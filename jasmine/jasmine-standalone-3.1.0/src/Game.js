@@ -21,7 +21,7 @@ Game.prototype.getFrames = function() {
 
 Game.prototype.roll = function(kockedDownPins) {
   // first check the status of the game
-  if (this.gameOver() === false) {
+  if (this.gameOver() === false && this.getFrames() != 10) {
     if (this._rolls === 0) {
       this._score.storeRollScore(kockedDownPins);
       this._totalPinsHitFrame += kockedDownPins;
@@ -44,7 +44,18 @@ Game.prototype.roll = function(kockedDownPins) {
     };
     return this._rolls;
   } else {
-      return "Game over";
+    // 10th frame
+    this._score.storeRollScore(kockedDownPins);
+    this._totalPinsHitFrame += kockedDownPins;
+    this._rolls += 1;
+    this.getBonus();
+    this.checkStrike(kockedDownPins);
+    this._score.calculateScore(this._totalPinsHitFrame);
+    // this is to prevent the user rolling more than 3 times
+    // in frame 10
+    if (this.getRolls() === 3) {
+            return "Game over";
+    };
   };
 };
 

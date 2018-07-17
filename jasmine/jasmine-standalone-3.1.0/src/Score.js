@@ -71,6 +71,19 @@ Score.prototype.addBonus = function(index) {
     bonus = this._rollScore[index-'2'];
   };
 
+  // Frame 10 logic
+  if (this._rollScore[index - '1'] === 10) {
+    if (this._rollScore[index - '2'] === 10) {
+      if (this._rollScore[index - '3'] === 10) {
+       bonus =5
+       // this._rollScore[index-'2']
+       // + this._rollScore[index-'1'];
+       this._totalScore.push(bonus);
+       this._bonus.push(bonus);
+     }
+    }
+  }
+
   this._totalScore.push(bonus);
   this._bonus.push(bonus);
   return bonus;

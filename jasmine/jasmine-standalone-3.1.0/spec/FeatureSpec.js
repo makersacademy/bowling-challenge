@@ -202,32 +202,84 @@ describe("Feature Test: ", function() {
     });
 
     // in a Perfect game, user has 2 bonus strike in Game 10
-    // it('A User can roll 12 strikes in a PERFECT GAME and score maximum points'
-    // , function() {
-    //   game.roll(10);
-    //   game.roll(0);
-    //   game.roll(10);
-    //   game.roll(0);
-    //   game.roll(10);
-    //   game.roll(0);
-    //   game.roll(10);
-    //   game.roll(0);
-    //   game.roll(10);
-    //   game.roll(0);
-    //   game.roll(10);
-    //   game.roll(0);
-    //   game.roll(10);
-    //   game.roll(0);
-    //   game.roll(10);
-    //   game.roll(0);
-    //   game.roll(10);
-    //   game.roll(0);
-    //   game.roll(10);
-    //   game.roll(10);
-    //   game.roll(10);
-    //
-    //   expect(game.getScore()).toEqual(300);
-    // });
+    it('A User can roll 12 strikes in a PERFECT GAME and score maximum points'
+    , function() {
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10); // bonus ball for Frame 10
+
+      expect(game.getScore()).toEqual(300);
+    });
+
+    it('A User has an extra roll in Final Frame', function() {
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(8);
+      game.roll(2);
+      game.roll(10); // bonus ball for Frame 10
+
+      expect(game.getScore()).toEqual(278);
+    });
+
+    it('A User has an extra roll in Final Frame', function() {
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(10);
+      game.roll(0);
+      game.roll(0);
+      game.roll(10);
+      game.roll(10); // bonus ball for Frame 10
+
+      expect(game.getScore()).toEqual(270);
+    });
 
     it('A User can roll 0 pins in a GUTTER GAME and score 0 points',
       function() {

@@ -49,7 +49,7 @@ A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 str
 
 * Create a nice interactive animated interface with jQuery. Half way there! See image:
 
-<img src="/images/Screen Shot 2018-07-19 at 09.06.19.png" />
+<img src="/images/Screen Shot 2018-07-19 at 09.07.19.png" />
 
 * Set up [Travis CI](https://travis-ci.org) to run your tests.
 * Add [ESLint](http://eslint.org/) to your codebase and make your code conform.

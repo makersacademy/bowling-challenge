@@ -4,6 +4,9 @@ Bowling Scorecard
 
 **THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. THERE ARE NO RANDOMLY GENERATED ROLLS. THE USER INPUTS THE ROLLS.**
 
+<img src="/img/Screen Shot 2018-07-19 at 09.06.12.png" />
+
+
 # The Challenge Set:
 
 * Count and sum the scores of a bowling game for one player (in JavaScript).
@@ -44,7 +47,9 @@ A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 str
 
 ### Optional Extras I am still working on!
 
-* Create a nice interactive animated interface with jQuery.
+* Create a nice interactive animated interface with jQuery. Half way there! See image:
+
+<img src="/img/Screen Shot 2018-07-19 at 09.06.19.png" />
+
 * Set up [Travis CI](https://travis-ci.org) to run your tests.
 * Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-

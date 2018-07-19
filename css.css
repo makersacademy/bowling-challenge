@@ -1,5 +1,5 @@
-body{
-
+body {
+  background-color: lightblue;
 }
 .title{
   text-align: center;
@@ -17,9 +17,7 @@ body{
   color: green;
   padding-bottom: 10px;
 }
-#playagain{
-  text-align: center;
-}
+
 
 table.scorecard {margin: 0 auto; width:70%; font-size:12px; border:1px solid; text-align: center; table-layout: fixed; margin-bottom: 40px;}
 table.scorecard th, tr, td {padding: 0; vertical-align: middle; font-family: Arial, Helvetica, sans-serif; text-align: center;}

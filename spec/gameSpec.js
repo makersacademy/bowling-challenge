@@ -7,8 +7,8 @@ describe("Game", function () {
 	});
 
 	describe("state", function () {
-		it("set to created when only created", function () {
-			expect(game.state).toBe("created");
+		it("set to true", function () {
+			expect(game.state).toBe(true);
 		});
 	});
 });

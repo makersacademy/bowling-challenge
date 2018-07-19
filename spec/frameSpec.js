@@ -6,7 +6,8 @@ describe('Frame', function(){
 		frame = new Frame(1);
 	});
 
-	it('starts on roll 1', function(){
-		expect(frame.roll).toBe(1);
+	it('starts with no rolls', function(){
+		expect(frame.rolls.length).toBe(0);
+		console.log(frame);
 	});
 });

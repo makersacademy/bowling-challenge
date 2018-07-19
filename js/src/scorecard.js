@@ -34,6 +34,12 @@ Scorecard.prototype.getTurn = function() {
   return this._turn;
 };
 
+Scorecard.prototype.enterScore = function(score) {
+  this._frame.push(score);
+  this.calculateBonus(score);
+  this._applyScoreConditions();
+};
+
 Scorecard.prototype.calculateFrameScore = function() {
   var frameScore = 0;
   for (var i = 0; i < this.getFrame().length; i++) {
@@ -45,15 +51,9 @@ Scorecard.prototype.calculateFrameScore = function() {
 Scorecard.prototype.calculateBonus = function(score) {
   if (this._spareBonus === true) {
     this._applySpareBonus(score);
-  } else if (this._strikeBonus === true && this.getRoll() === 2) {
-    this._applyStrikeBonus();
+  } else if (this._strikeBonus === true && this.getRoll() === 2 || this._strikeBonus === true && score === 10) {
+    this._applyStrikeBonus(score);
   };
-};
-
-Scorecard.prototype.enterScore = function(score) {
-  this._frame.push(score);
-  this.calculateBonus(score);
-  this._applyScoreConditions();
 };
 
 Scorecard.prototype._applyScoreConditions = function() {
@@ -74,7 +74,11 @@ Scorecard.prototype._applySpareBonus = function(score) {
 };
 
 Scorecard.prototype._applyStrikeBonus = function(score) {
-  this._finalScores[this.getFinalScores().length - 1] += (this.getFrame()[0] + this.getFrame()[1]);
+  if (score === 10) {
+    this._finalScores[this.getFinalScores().length - 1] += 10
+  } else {
+    this._finalScores[this.getFinalScores().length - 1] += (this.getFrame()[0] + this.getFrame()[1]);
+  };
   this._strikeBonus = false;
 };
 

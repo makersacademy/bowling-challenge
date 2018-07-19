@@ -80,5 +80,10 @@ describe('Scorecard', function() {
       scorecard.enterScore(2);
       expect(scorecard.getFinalScores()[0]).toEqual(19);
     });
+    it('modifies scores based on consecutive strikes', function() {
+      scorecard.enterScore(10);
+      scorecard.enterScore(10);
+      expect(scorecard.getFinalScores()[0]).toEqual(20);
+    });
   });
 });

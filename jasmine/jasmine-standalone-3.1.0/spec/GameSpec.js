@@ -85,4 +85,9 @@ describe("Game unit test: ", function() {
     expect(game.getScoreCard()).toEqual([]);
   });
 
+  it('Updates the roll total', function() {
+    game._rolls = 0
+    expect(game.updateRolls()).toEqual(1);
+  });
+
 });

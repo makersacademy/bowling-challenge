@@ -24,14 +24,14 @@ Game.prototype.roll = function(kockedDownPins) {
   if (this.gameOver() === false && this.getFrames() != 10) {
     if (this._rolls === 0) {
       this._score.storeRollScore(kockedDownPins);
-      this._totalPinsHitFrame += kockedDownPins;
-      this.updateRolls(); 
+      this.updatePinsHit(kockedDownPins);
+      this.updateRolls();
     //  this.getBonus();
       this.checkStrike(kockedDownPins);
       return "roll again"
     } else {
       this._score.storeRollScore(kockedDownPins);
-      this._totalPinsHitFrame += kockedDownPins;
+      this.updatePinsHit(kockedDownPins);
       this.updateRolls(); // 2 rolls
       this.getBonus();
       this.checkStrike(kockedDownPins);
@@ -46,7 +46,7 @@ Game.prototype.roll = function(kockedDownPins) {
   } else {
     // 10th frame
     this._score.storeRollScore(kockedDownPins);
-    this._totalPinsHitFrame += kockedDownPins;
+    this.updatePinsHit(kockedDownPins);
     this.updateRolls();
     this.getBonus();
     this.checkStrike(kockedDownPins);
@@ -57,6 +57,10 @@ Game.prototype.roll = function(kockedDownPins) {
             return "Game over";
     };
   };
+};
+
+Game.prototype.updatePinsHit = function(kockedDownPins) {
+   return this._totalPinsHitFrame += kockedDownPins;
 };
 
 Game.prototype.updateRolls = function() {

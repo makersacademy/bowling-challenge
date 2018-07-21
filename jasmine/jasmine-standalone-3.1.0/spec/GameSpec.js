@@ -85,6 +85,11 @@ describe("Game unit test: ", function() {
     expect(game.getScoreCard()).toEqual([]);
   });
 
+  it('Updates the pins hit total', function() {
+    this._totalPinsHitFrame = 0
+    expect(game.updatePinsHit(1)).toEqual(1);
+  });
+
   it('Updates the roll total', function() {
     game._rolls = 0
     expect(game.updateRolls()).toEqual(1);

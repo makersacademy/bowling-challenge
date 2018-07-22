@@ -100,6 +100,7 @@ Game.prototype.gameOver = function() {
   return this.getFrames() === this.MAX_FRAMES && this.getRolls() === 3;
 };
 
+// this function is used in interface.js
 Game.prototype.resetGame = function() {
   this.resetFrames();
   this.resetRollsCount();

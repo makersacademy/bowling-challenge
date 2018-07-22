@@ -8,8 +8,8 @@ $(document).ready(() => {
   updateScorecard();
   updateScore();
   updateBonus();
-  updateGameStatus();
   updateFrame();
+  resetGame();
 
   $('#bowl-pins').submit(function(event) {
     event.preventDefault();
@@ -24,6 +24,7 @@ $(document).ready(() => {
     updateStrike(pinsInt);
     updateScorecard();
     updateGameStatus();
+    resetGame();
   })
 
   function updateScore() {
@@ -57,6 +58,12 @@ $(document).ready(() => {
       var gameStatus = 'Game Over!';
     }
     $('#game-status').text(gameStatus);
+  };
+
+  function resetGame() {
+    if (game.gameOver() === true) {
+      $('#reset-game').text(game.resetGame());
+    }
   };
 
 });

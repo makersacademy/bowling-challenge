@@ -38,21 +38,31 @@ describe('ScoreCard', function(){
 
 
 
-it('scoreboard start at an empty object', function(){
-  expect(scorecard.getBoard()).toEqual({});
+it('scoreboard start at an empty object with 0 points at frame 1', function(){
+  expect(scorecard.getBoard()).toEqual({0:[0,0,0]});
 });
+
+
+
 
 
 it('should add a score to the first roll and added to the scoreboard', function(){
   scorecard.addRoll(5);
-  expect(scorecard.getBoard()).toEqual({1: [5, undefined]});
+  expect(scorecard.getBoard()).toEqual({
+    0: [0, 0, 0],
+    1: [5, 0, 0]
+
+  });
 });
 
 it('should add a 4 to the second roll and added to the scoreboard', function(){
-  scorecard.board = {1: [3, undefined]};
-  scorecard.changeRollNumber();
+  scorecard.addRoll(3);
   scorecard.addRoll(4);
-  expect(scorecard.getBoard()).toEqual({1: [3, 4]});
+  expect(scorecard.getBoard()).toEqual({
+    0: [0, 0, 0],
+    1: [3, 4, 0]
+
+  });
 });
 
 
@@ -63,9 +73,9 @@ it('should change the roll number when add first roll',  function(){
 });
 
 it('should change the frameNumber and previousFrame when adding a second roll', function(){
-  scorecard.board = {1: [3, undefined]};
-  scorecard.changeRollNumber();
+
   scorecard.addRoll(3);
+  scorecard.addRoll(2);
   expect(scorecard.getPreviousFrame()).toEqual(1);
   expect(scorecard.getFrameNumber()).toEqual(2);
 });
@@ -74,7 +84,10 @@ it('should change the frameNumber and previousFrame when adding a second roll', 
 it('should go to the next frame if strike', function(){
   scorecard.addRoll(10);
   expect(scorecard.getFrameNumber()).toEqual(2);
-  expect(scorecard.getBoard()).toEqual({1: [10, undefined]});
+  expect(scorecard.getBoard()).toEqual({
+    0: [0, 0, 0],
+    1: [10, 0, 0]
+  });
 });
 
 
@@ -86,15 +99,38 @@ it('should know if a previous frame is a spare', function(){
 });
 
 
-
-
-
-
-
-
-  it('scoreboard starts with an empty array', function(){
-    expect(scorecard.getScoreBoard()).toEqual({})
+it('should add a bonus when spare', function(){
+  scorecard.addRoll(5);
+  scorecard.addRoll(5);
+  scorecard.addRoll(7);
+  expect(scorecard.getBoard()).toEqual({
+    0: [0, 0, 0],
+    1: [5, 5, 7],
+    2: [7, 0, 0]
   });
+
+});
+
+
+it('should add a bonus when strike to previous frame', function(){
+  scorecard.addRoll(10);
+  scorecard.addRoll(2);
+  scorecard.addRoll(4);
+  expect(scorecard.getBoard()).toEqual({
+    0: [0, 0, 0],
+    1: [10, 0, 6],
+    2: [2, 4, 0]
+  });
+});
+
+
+
+
+
+
+
+
+
 
 
 

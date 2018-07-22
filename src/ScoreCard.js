@@ -1,13 +1,13 @@
 'use strict';
 
 function ScoreCard (){
-  this.board = {};
+  this.board = {0:[0, 0, 0]};
   this.frame = [];
   this.total = 0;
 
   this.frameNumber = 1;
   this.previousFrame = 0;
-  this.rollNumber = 1 ;
+  this.rollNumber = 1;
 
 };
 
@@ -44,20 +44,61 @@ ScoreCard.prototype.getBoard = function(){
 
 
 
-ScoreCard.prototype.addRoll = function(roll){
+ScoreCard.prototype.addRoll = function(roll) {
   var frame = this.getFrameNumber();
   if(this.getRollNumber() === 1) {
+    if(this.previousFrameIsSpare()) {
+      var previousFrame = this.getPreviousFrame();
+      this.board[previousFrame][2] = roll;
+    }
+
+
     if(roll === 10){
       this.nextFrame();
+      this.changeRollNumber();
+
     }
-      this.board[frame] = [roll, undefined];
+    this.board[frame] = [roll, 0, 0];
+  }
+
+
+
+
+  else {
+    this.board[frame][1] = roll;
+    this.board[frame][2] = 0;
+    if(this.previousFrameIsStrike()) {
+      var previousFrame = this.getPreviousFrame();
+      var roll1 = this.board[frame][0]
+      var roll2 = this.board[frame][1]
+      this.board[previousFrame][2] = roll1 + roll2
     }
-    else {
-      this.board[frame][1] = roll;
-      this.nextFrame();
-    }
-    this.changeRollNumber();
+
+
+
+
+
+
+
+
+
+    this.nextFrame();
+  }
+  this.changeRollNumber();
 };
+
+ScoreCard.prototype.previousFrameIsStrike = function(){
+  var previousFrame = this.getPreviousFrame();
+  var board = this.getBoard();
+  return board[previousFrame][0] === 10;
+};
+
+
+
+
+
+
+
 
 ScoreCard.prototype.previousFrameIsSpare = function(){
   var previousFrame = this.getPreviousFrame();
@@ -73,12 +114,6 @@ ScoreCard.prototype.frameScore = function(frame){
 
 
 
-
-
-
-ScoreCard.prototype.getScoreBoard = function() {
-    return this.board
-};
 
 ScoreCard.prototype.roll_1 = function(value) {
   this.frame[0] = value;

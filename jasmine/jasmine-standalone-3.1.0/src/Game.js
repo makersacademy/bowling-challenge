@@ -20,21 +20,18 @@ Game.prototype.getFrames = function() {
 };
 
 Game.prototype.roll = function(kockedDownPins) {
-  // first check the status of the game, check it is not frame 10
+  // first check the status of the game
   if (this.gameOver() === false) {
-    if (this._rolls === 0) {
-      this._score.storeRollScore(kockedDownPins);
-      this.updatePinsHit(kockedDownPins);
-      this.updateRolls();
+    this._score.storeRollScore(kockedDownPins);
+    this.updatePinsHit(kockedDownPins);
+    this.updateRolls();
     //  this.getBonus();
-      this.checkStrike(kockedDownPins);
+    this.checkStrike(kockedDownPins);
+
+    if (this._rolls === 1) {
       return "roll again"
     } else {
-      this._score.storeRollScore(kockedDownPins);
-      this.updatePinsHit(kockedDownPins);
-      this.updateRolls(); // 2 rolls
       this.getBonus();
-      this.checkStrike(kockedDownPins);
       this._score.calculateScore(this._totalPinsHitFrame);
         if (this.getFrames() <= this.MAX_FRAMES && this.getRolls() === this.MAX_ROLLS) {
           this._frames.push('frame');

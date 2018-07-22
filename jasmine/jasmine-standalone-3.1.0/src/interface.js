@@ -1,5 +1,7 @@
-// JQuery
-$(document).ready(function() {
+'use strict';
+
+// jquery
+$(document).ready(() => {
   var score = new Score();
   var game = new Game();
   updateGameStatus();
@@ -8,7 +10,6 @@ $(document).ready(function() {
   updateBonus();
   updateGameStatus();
   updateFrame();
-
 
   $('#bowl-pins').submit(function(event) {
     event.preventDefault();

@@ -35,7 +35,7 @@ Game.prototype.roll = function(kockedDownPins) {
       this.addFrame();
       this.resetPinsCount(); // reset pins hit
       this.resetRollsCount(); // reset rolls count
-    };
+    }
     return this._rolls;
   } else if (this.frameTen()) {
     this.getBonus();
@@ -44,8 +44,8 @@ Game.prototype.roll = function(kockedDownPins) {
     // in frame 10
     if (this.gameOver()) {
       return "Game over";
-    };
-  };
+    }
+  }
 };
 
 Game.prototype.updatePinsHit = function(kockedDownPins) {
@@ -73,7 +73,7 @@ Game.prototype.checkStrike = function(kockedDownPins) {
     return "Strike!";
   } else {
     return " ";
-  };
+  }
 };
 
 Game.prototype.getRolls = function() {

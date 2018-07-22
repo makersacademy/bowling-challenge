@@ -18,14 +18,16 @@ Score.prototype.calculateScore = function(kockedDownPins) {
 };
 
 Score.prototype.getScore = function() {
-  var sum = 0;
-  for (var i = this._totalScore.length; !!i--;) {
-  sum += this._totalScore[i];
+  let sum = 0,
+   counter = 0;
+
+  for (counter = this._totalScore.length; Boolean(counter--);) {
+  sum += this._totalScore[counter];
   }
   return sum;
 };
 
-Score.prototype.getScoreScard = function(kockedDownPins) {
+Score.prototype.getScoreScard = function() {
    return this._rollScore;
 };
 
@@ -37,43 +39,42 @@ Score.prototype.checkBonus = function(index) {
     }
   } else if (this._rollScore[index - '4'] === 10) {
     this.addBonus(index);
+  } else if (this._rollScore[index - '4'] +
+    this._rollScore[index - '3'] === 10) {
+      this.addBonus(index);
   }
-   else if (this._rollScore[index - '4'] + this._rollScore[index - '3'] === 10) {
-    this.addBonus(index);
-  };
 };
 
 Score.prototype.addBonus = function(index) {
-  var bonus = 0;
+  let bonus = 0;
 
   // index -5 checks for roll 2 in a game
-  if (this._rollScore[index - '6'] === 10 || this._rollScore[index - '5'] === 10) {
-    if (this._rollScore[index - '4'] === 10) {
-     bonus =
-     this._rollScore[index-'2']
-     // + this._rollScore[index-'1'];
-     this._totalScore.push(bonus);
-     this._bonus.push(bonus);
-    }
+  if (this._rollScore[index - '6'] === 10 ||
+    this._rollScore[index - '5'] === 10) {
+      if (this._rollScore[index - '4'] === 10) {
+       bonus = this._rollScore[index - '2']
+       // + this._rollScore[index-'1'];
+       this._totalScore.push(bonus);
+       this._bonus.push(bonus);
+      }
   }
 
   // index -3 checks for roll 2 in a game
-  if (this._rollScore[index - '4'] === 10 || this._rollScore[index - '3'] === 10) {
-    if (this._rollScore[index - '2'] === 10) {
-    bonus = 10;
+  if (this._rollScore[index - '4'] === 10 ||
+    this._rollScore[index - '3'] === 10) {
+      if (this._rollScore[index - '2'] === 10) {
+        bonus = 10;
+      } else {
+        bonus = 0;
+        bonus = this._rollScore[index - '2'] + this._rollScore[index - '1'];
+      }
     } else {
+      // if only 1x 10
       bonus = 0;
-      bonus =
-      this._rollScore[index-'2']
-       + this._rollScore[index-'1'];
-    };
-  } else {
-    // if only 1x 10
-    bonus = 0;
-    bonus = this._rollScore[index-'2'];
-  };
+      bonus = this._rollScore[index - '2'];
+  }
 
-  // Frame 10 logic
+  // frame 10 logic
   if (this._rollScore[index - '1'] === 10) {
     if (this._rollScore[index - '2'] === 10) {
       if (this._rollScore[index - '3'] === 10) {

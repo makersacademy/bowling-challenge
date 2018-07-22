@@ -7,6 +7,7 @@ var Scorecard = function() {
   this._roll = 1;
   this._spareBonus = false;
   this._strikeBonus = false;
+  this._strikeDoubleBonus = false;
   this._turn = 1;
 };
 
@@ -74,8 +75,13 @@ Scorecard.prototype._applySpareBonus = function(score) {
 };
 
 Scorecard.prototype._applyStrikeBonus = function(score) {
-  if (score === 10) {
+  if (score === 10 && this._strikeDoubleBonus === true) {
     this._finalScores[this.getFinalScores().length - 1] += 10
+    this._finalScores[this.getFinalScores().length - 2] += 10
+    this._strikeDoubleBonus = true;
+  } else if (score === 10) {
+    this._finalScores[this.getFinalScores().length - 1] += 10
+    this._strikeDoubleBonus = true;
   } else {
     this._finalScores[this.getFinalScores().length - 1] += (this.getFrame()[0] + this.getFrame()[1]);
   };

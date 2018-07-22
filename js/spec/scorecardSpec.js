@@ -85,5 +85,11 @@ describe('Scorecard', function() {
       scorecard.enterScore(10);
       expect(scorecard.getFinalScores()[0]).toEqual(20);
     });
+    it('modifies scores based on triple strikes', function() {
+      scorecard.enterScore(10);
+      scorecard.enterScore(10);
+      scorecard.enterScore(10);
+      expect(scorecard.getFinalScores()[0]).toEqual(30);
+    });
   });
 });

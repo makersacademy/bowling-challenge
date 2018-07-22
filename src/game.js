@@ -1,8 +1,11 @@
 "use strict";
 
-function Game() {
+function Game (frame) {
   this._score = 0;
   this._frames = [];
+  this._frame = function (firstRoll, secondRoll) {
+    return frame || new Frame(firstRoll, secondRoll);
+  };
 }
 
 Game.prototype.enterRolls = function (firstRoll, secondRoll) {
@@ -17,7 +20,7 @@ Game.prototype.returnScore = function () {
 };
 
 Game.prototype._createNewFrame = function (firstRoll, secondRoll) {
-  return new Frame (firstRoll, secondRoll);
+  return this._frame (firstRoll, secondRoll);
 };
 
 Game.prototype._addScore = function (frame) {

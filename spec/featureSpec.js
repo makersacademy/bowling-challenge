@@ -6,7 +6,18 @@ describe("Feature test", function () {
   });
 
 // As a bowler
-// So that I can know my game went
+// So that I relate how I did
+// I want to enter a score
+it("user can see total score", function() {
+  for (i = 0; i < 10; i++) {
+    game.enterRolls(3, 3);
+  }
+  expect(game.returnScore()).toEqual(60);
+});
+
+
+// As a bowler
+// So that I can know how my game went
 // I want to see my total score
   it("user can see total score", function() {
     for (i = 0; i < 10; i++) {

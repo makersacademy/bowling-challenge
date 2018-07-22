@@ -79,6 +79,9 @@ describe("Game unit test: ", function() {
     for (var i = 0; i < 10; i++) {
       game.addFrame('1');
     }
+      game.roll('1');
+      game.roll('1');
+      game.roll('1');
     expect(game.gameOver()).toBeTruthy();
   });
 

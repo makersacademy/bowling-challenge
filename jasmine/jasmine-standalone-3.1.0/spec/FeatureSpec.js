@@ -369,17 +369,13 @@ describe("Feature Test: ", function() {
   });
 
   describe('Game status', function() {
-    it('A Game is over when 20 rolls are played', function() {
-      for (var i = 0; i < 20; i++) {
-        game.roll(1);
-      }
-      expect(game.gameOver()).toBeTruthy();
-    });
-
     it('A Game is over when 10 frames are played', function() {
       for (var i = 0; i < 10; i++) {
         game.addFrame();
       }
+      game.roll(1);
+      game.roll(1);
+      game.roll(1);
       expect(game.gameOver()).toBeTruthy();
     });
   });

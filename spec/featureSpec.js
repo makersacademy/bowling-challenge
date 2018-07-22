@@ -6,44 +6,46 @@ describe("Feature test", function () {
   });
 
 // As a bowler
-// So that I relate how I did
-// I want to enter a score
+// So that I can know how my game went
+// I want to see my total score
 it("user can see total score", function() {
-  for (i = 0; i < 10; i++) {
-    game.enterRolls(3, 3);
+  for (i = 0; i < 20; i++) {
+    game.getRoll(3);
   }
   expect(game.returnScore()).toEqual(60);
 });
 
-
-// As a bowler
-// So that I can know how my game went
-// I want to see my total score
-  it("user can see total score", function() {
-    for (i = 0; i < 10; i++) {
-      game.enterRolls(3, 3);
-    }
-    expect(game.returnScore()).toEqual(60);
-  });
 // As a bowler
 // So that good rolls are rewarded
 // I want to receive a bonus that equals my next roll when I roll a spare
   describe("when user rolls a spare", function() {
     it("adds a bonus to the total score", function() {
-      game.enterRolls(5, 5);
-      game.enterRolls(5, 5);
-      game.enterRolls(2, 2);
-      expect(game.returnScore()).toEqual(31);
+      game.getRoll(4);
+      game.getRoll(6);
+      game.getRoll(2);
+      game.getRoll(2);
+      expect(game.returnScore()).toEqual(16);
     });
   });
+
 // As a bowler
 // So that great rolls beget great rewards
 // I want to receive a bonus that equals my next two rolls when I roll a strike
 describe("when user rolls a strike", function() {
   it("adds two bonuses to the total score", function() {
-    game.enterRolls(10);
-    game.enterRolls(10);
-    game.enterRolls(2, 2);
+    game.getRoll(10);
+    game.getRoll(2);
+    game.getRoll(2);
+    expect(game.returnScore()).toEqual(18);
+  });
+});
+
+describe("when user rolls two strikes", function() {
+  it("adds four bonuses to the total score", function() {
+    game.getRoll(10);
+    game.getRoll(10);
+    game.getRoll(2);
+    game.getRoll(2);
     expect(game.returnScore()).toEqual(40);
   });
 });

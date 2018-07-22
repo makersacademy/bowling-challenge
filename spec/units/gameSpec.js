@@ -1,5 +1,4 @@
 describe("Game", function() {
-
   var game;
   var DummyFrame = function () { this.score = 8; };
 

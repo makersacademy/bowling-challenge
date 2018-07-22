@@ -56,7 +56,7 @@ describe("Game unit test: ", function() {
   it('A User can Roll 20 times per Game', function() {
     // A game contains 10 Frames
     // This for loop adds 9 Frames to a Game
-    for (var i = 0; i < 10; i++) {
+    for (var i = 1; i <= 10; i++) {
       game.addFrame('1');
     }
     expect(game.getFrames()).toEqual(10);
@@ -70,7 +70,7 @@ describe("Game unit test: ", function() {
 
   it('A Game is over if 10 Frames played', function() {
     for (var i = 0; i < 10; i++) {
-      game.addFrame('X');
+      game.addFrame('1');
     }
     expect(game.gameOver()).toBeTruthy();
   });
@@ -95,4 +95,10 @@ describe("Game unit test: ", function() {
     expect(game.updateRolls()).toEqual(1);
   });
 
+  it('Returns true if the User is in Frame 10', function() {
+    for (var i = 0; i < 10; i++) {
+      game.addFrame('1');
+    }
+    expect(game.frameTen()).toBeTruthy();
+  });
 });

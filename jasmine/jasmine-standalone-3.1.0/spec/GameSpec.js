@@ -33,6 +33,13 @@ describe("Game unit test: ", function() {
     expect(game.getFrames()).toEqual(2);
   });
 
+  it('Returns true if the User is in Frame 10', function() {
+    for (var i = 0; i < 10; i++) {
+      game.addFrame('1');
+    }
+    expect(game.frameTen()).toBeTruthy();
+  });
+
   it('A User can Roll 3 times in Frame 10', function() {
     for (var i = 0; i < 10; i++) {
       game.addFrame('1');
@@ -93,12 +100,5 @@ describe("Game unit test: ", function() {
   it('Updates the roll total', function() {
     game._rolls = 0
     expect(game.updateRolls()).toEqual(1);
-  });
-
-  it('Returns true if the User is in Frame 10', function() {
-    for (var i = 0; i < 10; i++) {
-      game.addFrame('1');
-    }
-    expect(game.frameTen()).toBeTruthy();
   });
 });

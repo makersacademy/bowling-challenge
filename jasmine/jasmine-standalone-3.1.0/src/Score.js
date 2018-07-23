@@ -39,8 +39,8 @@ Score.prototype.checkBonus = function(index) {
     }
   } else if (this.isFourthRollStrike(index)) {
     this.addBonus(index);
-  } else if (this._rollScore[index - '4'] +
-    this._rollScore[index - '3'] === 10) {
+  } else if (this._rollScore[index - 4] +
+    this._rollScore[index - 3] === 10) {
       this.addBonus(index);
   }
 };
@@ -49,10 +49,10 @@ Score.prototype.addBonus = function(index) {
   var bonus = 0;
 
   // index -5 checks for roll 2 in a game
-  if (this._rollScore[index - '6'] === 10 ||
+  if (this.isSixthRollStrike(index) ||
     this.isFifthRollSpare(index)) {
       if (this.isFourthRollStrike(index)) {
-       bonus = this._rollScore[index - '2']
+       bonus = this._rollScore[index - 2]
        // + this._rollScore[index-'1'];
        this._totalScore.push(bonus);
        this._bonus.push(bonus);
@@ -60,27 +60,23 @@ Score.prototype.addBonus = function(index) {
   }
 
   // index -3 checks for roll 2 in a game
-  if (this._rollScore[index - '4'] === 10 ||
+  if (this.isFourthRollStrike(index) ||
     this.isThirdRollSpare(index)) {
       if (this.isSecondRollStrike(index)) {
         bonus = 10;
       } else {
-        bonus = 0;
-        bonus = this._rollScore[index - '2'] + this._rollScore[index - '1'];
+        bonus = this._rollScore[index - 2] + this._rollScore[index - 1];
       }
     } else {
       // if only 1x 10
-      bonus = 0;
-      bonus = this._rollScore[index - '2'];
+      bonus = this._rollScore[index - 2];
   }
 
   // frame 10 logic
-  if (this._rollScore[index - '1'] === 10) {
-    if (this._rollScore[index - '2'] === 10) {
-      if (this._rollScore[index - '3'] === 10) {
+  if (this.isfirstRollStrike(index)) {
+    if (this.isSecondRollStrike(index)) {
+      if (this.isThirdRollStrike(index)) {
        bonus = 5;
-       // this._rollScore[index-'2']
-       // + this._rollScore[index-'1'];
        this._totalScore.push(bonus);
        this._bonus.push(bonus);
      }
@@ -92,23 +88,31 @@ Score.prototype.addBonus = function(index) {
 };
 
 Score.prototype.isSixthRollStrike = function(index) {
-   return this._rollScore[index - '6'] === 10;
+   return this._rollScore[index - 6] === 10;
 };
 
 Score.prototype.isFifthRollSpare = function(index) {
-   return this._rollScore[index - '5'] === 10;
+   return this._rollScore[index - 5] === 10;
 };
 
 Score.prototype.isFourthRollStrike = function(index) {
-   return this._rollScore[index - '4'] === 10;
+   return this._rollScore[index - 4] === 10;
 };
 
 Score.prototype.isThirdRollSpare = function(index) {
-   return this._rollScore[index - '3'] === 10;
+   return this._rollScore[index - 3] === 10;
+};
+
+Score.prototype.isThirdRollStrike = function(index) {
+   return this._rollScore[index - 3] === 10;
 };
 
 Score.prototype.isSecondRollStrike = function(index) {
-   return this._rollScore[index - '2'] === 10;
+   return this._rollScore[index - 2] === 10;
+};
+
+Score.prototype.isfirstRollStrike = function(index) {
+   return this._rollScore[index - 1] === 10;
 };
 
 Score.prototype.getBonus = function() {

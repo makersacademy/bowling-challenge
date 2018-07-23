@@ -7,6 +7,10 @@ var Frame = function(){
   this._isComplete = false;
 };
 
+Frame.prototype.Score = function(){
+  return this._score;
+};
+
 Frame.prototype.knockDown = function(pins) {
   this._score += pins;
   this._pinsDown += pins;

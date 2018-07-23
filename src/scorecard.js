@@ -17,18 +17,27 @@ Scorecard.prototype.displayScore = function(){
   return this._score;
 };
 
+Scorecard.prototype.frameNumber = function(){
+  return this._frameNumber;
+};
+
+Scorecard.prototype.rollNumber = function(){
+  return this._rollNumber;
+};
+
 Scorecard.prototype.roll = function (pins) {
   this._currentFrame.knockDown(pins);
   this.updateScore(pins);
+
   if(!this._currentFrame.isActive()){
     this.nextFrame();
   }
   this._rollNumber = this._currentFrame.rollNumber();
-  return this._score;
+  return this.printScores();
 };
 
 Scorecard.prototype.updateScore = function(pins){
-  'use strict';
+  //'use strict';
   this._incompleteFrames.forEach((frame) => {
     frame.manageBonus(pins);
     if(frame.isComplete()) {
@@ -39,25 +48,32 @@ Scorecard.prototype.updateScore = function(pins){
 };
 
 Scorecard.prototype.manageComplete = function(frame){
-  this._score += frame._score;
-  this._completedFrames.push(frame);
+  if(this._completedFrames.length < 10){
+    this._score += frame.Score();
+    this._completedFrames.push(frame);
+  }
 };
 
 Scorecard.prototype.nextFrame = function(){
   if(this._currentFrame.isComplete()){
-    this._score += this._currentFrame._score;
-    this._completedFrames.push(this._currentFrame);
+    this.manageComplete(this._currentFrame);
   } else {
     this._incompleteFrames.push(this._currentFrame);
   }
   // Checks if we are at the end stage of the game.
-  this._currentFrame = new Frame();
+  this._currentFrame = this.generateFrame();
+  this._frameNumber++;
 };
+
+Scorecard.prototype.score = function() {
+  return this._score;
+};
+
 Scorecard.prototype.printScores = function(){
   var score = 0;
   var scores = [];
   for(var i = 0; i < this._completedFrames.length; i++){
-    score += this._completedFrames[i]._score;
+    score += this._completedFrames[i].Score();
     scores.push(score);
   }
   return scores;

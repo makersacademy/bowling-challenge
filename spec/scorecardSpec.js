@@ -74,3 +74,8 @@ describe('Scorecard', () => {
     });
   });
 });
+
+// var weatherSpy = spyOn(airport,'_isStormy');
+// weatherSpy.and.returnValue(false);
+// airport.land(plane);
+// weatherSpy.and.returnValue(true);

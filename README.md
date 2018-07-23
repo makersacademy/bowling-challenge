@@ -12,6 +12,8 @@ The task was to implement scoring behind a game of bowling in Javascript, using 
 
 While the score system can be used in the chrome console with `scorecard.js`, the `index.html` file provides a rudimentary user interface. Refresh the page to restart the game.
 
+To use in the console, instantiate a new scorecard with `new Scorecard();` and add rolls with the `.roll(<number of pins>)` prototype method.
+
 ## Approach 🎳
 
 I split the game into two classes: the scorecard, and a frame class. The scorecard has an active frame, an array of 'incomplete' frames, and an array of 'completed' frames. A frame is considered incomplete if it has bonus rolls yet to apply (such as after a spare or a strike), and is considered complete after all bonuses have been applied. Only completed frames are used when calculating scoring.

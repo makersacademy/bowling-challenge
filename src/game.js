@@ -5,8 +5,8 @@ function Game (frame) {
   this._score = 0;
   this._frames = [];
   this._currentFrame = null;
-  this._frame = function (firstRoll, secondRoll) {
-    return frame || new Frame(firstRoll, secondRoll);
+  this._frame = function (roll) {
+    return frame || new Frame(roll);
   };
 }
 
@@ -37,8 +37,8 @@ Game.prototype._incrementRollCount = function(roll) {
 };
 
 Game.prototype._addFrame = function () {
-  this._addScore (this._currentFrame);
-  this._addBonus (this._currentFrame);
+  if (this._rollCount <= 20) { this._addScore (this._currentFrame); }
+  if (this._rollCount <= 22) { this._addBonus (this._currentFrame); }
   this._frames.push (this._currentFrame);
 };
 

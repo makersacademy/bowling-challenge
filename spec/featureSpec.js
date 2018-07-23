@@ -53,7 +53,38 @@ describe("when user rolls two strikes", function() {
 // As a bowler
 // So that I get the bonus I deserve
 // I want to keep rolling for bonus points after the 10th frame
+describe("after the tenth frame", function() {
+  it("score is no longer added", function() {
+    for (var i=0; i < 22; i++) {
+      game.getRoll(2);
+    }
+    expect(game.returnScore()).toEqual(40);
+  });
 
+  it("two bonus roll are added on a strike", function() {
+    for (var i=0; i < 18; i++) {
+      game.getRoll(2);
+    }
+    game.getRoll(10);
+    game.getRoll(5);
+    game.getRoll(5);
+    game.getRoll(2);
+    game.getRoll(2);
+    expect(game.returnScore()).toEqual(56);
+  });
+
+  it("one bonus roll is added on a spare", function() {
+    for (var i=0; i < 18; i++) {
+      game.getRoll(2);
+    }
+    game.getRoll(5);
+    game.getRoll(5);
+    game.getRoll(2);
+    game.getRoll(4);
+    game.getRoll(4);
+    expect(game.returnScore()).toEqual(48);
+  });
+});
 // As a bowler
 // So that I can know how I am doing
 // I want to see my score after every frame

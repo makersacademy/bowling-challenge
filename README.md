@@ -20,11 +20,12 @@ Features implemented
 
 Improvements
 -------
+* the bonus logic for spare (roll 2) has not been implemented
 * validation: currently the app does not check if the roll is a number between
 0-10
 * validation: currently the app does not check the no. of pins knocked down in
 roll 1, so as to limit the number of pins that can be knocked down in roll 2
-* the bonus logic for spare (roll 2) has not been implemented
+* validation for roll 3 in Game 10
 * improved UI: on the index page, if you score a Strike, you must enter '0' in
 roll 2 manually
 

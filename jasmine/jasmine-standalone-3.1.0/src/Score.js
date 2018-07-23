@@ -72,7 +72,7 @@ Score.prototype.addBonus = function(index) {
       bonus = this._rollScore[index - 2];
   }
 
-  // frame 10 logic
+  // frame 10 bonus logic
   if (this.isfirstRollStrike(index)) {
     if (this.isSecondRollStrike(index)) {
       if (this.isThirdRollStrike(index)) {

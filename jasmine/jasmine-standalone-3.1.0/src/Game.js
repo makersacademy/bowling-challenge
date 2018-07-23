@@ -23,7 +23,6 @@ Game.prototype.roll = function(kockedDownPins) {
   this._score.storeRollScore(kockedDownPins);
   this.updatePinsHit(kockedDownPins);
   this.updateRolls();
-  //  this.getBonus();
   this.checkStrike(kockedDownPins);
 
   if (this.frameTen() === false) {
@@ -68,14 +67,6 @@ Game.prototype.getScoreCard = function() {
   return this._score.getScoreScard();
 };
 
-Game.prototype.checkStrike = function(kockedDownPins) {
-   if (kockedDownPins === 10) {
-    return "Strike!";
-  } else {
-    return " ";
-  }
-};
-
 Game.prototype.getRolls = function() {
   return this._rolls;
 };
@@ -98,6 +89,15 @@ Game.prototype.frameTen = function() {
 
 Game.prototype.gameOver = function() {
   return this.getFrames() === this.MAX_FRAMES && this.getRolls() === 3;
+};
+
+// this function is used in interface.js
+Game.prototype.checkStrike = function(kockedDownPins) {
+   if (kockedDownPins === 10) {
+    return "Strike!";
+  } else {
+    return " ";
+  }
 };
 
 // this function is used in interface.js

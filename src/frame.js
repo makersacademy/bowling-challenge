@@ -1,8 +1,8 @@
 'use strict'
 
-function Frame(firstRoll, secondRoll) {
-  this.firstRoll = firstRoll;
-  this.secondRoll = secondRoll;
+function Frame(roll) {
+  this.firstRoll = roll;
+  this.secondRoll = 0;
   this.complete = this.result() === 'strike' ? true : false;
 }
 
@@ -20,7 +20,7 @@ Frame.prototype.result = function () {
 };
 
 Frame.prototype.score = function () {
-  return this.firstRoll + (this.secondRoll || 0);
+  return this.firstRoll + this.secondRoll;
 };
 
 Frame.prototype._setFrameToComplete = function () {

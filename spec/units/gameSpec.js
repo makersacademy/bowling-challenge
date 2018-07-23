@@ -1,6 +1,6 @@
 describe("Game", function() {
   var game;
-  var DummyFrame = function () { this.secondRoll = 0; };
+  var DummyFrame = function () { this.secondRoll = 0; this.complete = false; };
   var dummyFrame;
 
   DummyFrame.prototype.result = function () {};
@@ -27,16 +27,11 @@ describe("Game", function() {
     });
   });
 
-  describe(".enterRolls", function () {
-    it("creates a new frame", function () {
-      game.enterRolls(3, 5);
-      expect(game._frames).toContain(dummyFrame);
-    });
-  });
-
   describe(".returnScore", function () {
     it("returns the total score", function () {
-      game.enterRolls(3, 5);
+      game.getRoll(3);
+      dummyFrame.complete = true;
+      game.getRoll(5);
       expect(game.returnScore()).toEqual(8);
     });
   });

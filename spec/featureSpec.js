@@ -53,7 +53,7 @@ describe("when user rolls two strikes", function() {
 // As a bowler
 // So that I get the bonus I deserve
 // I want to keep rolling for bonus points after the 10th frame
-//
+
 // As a bowler
 // So that I can know how I am doing
 // I want to see my score after every frame

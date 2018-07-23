@@ -16,13 +16,6 @@ Game.prototype.getRoll = function (roll) {
   if (this._currentFrame.complete) { this._addFrame(); }
 };
 
-Game.prototype.enterRolls = function (firstRoll, secondRoll) {
-  var frame = this._createNewFrame(firstRoll, secondRoll);
-  this._addScore (frame);
-  this._addBonus (frame);
-  this._frames.push (frame);
-};
-
 Game.prototype.returnScore = function () {
   return this._score;
 };
@@ -49,8 +42,8 @@ Game.prototype._addFrame = function () {
   this._frames.push (this._currentFrame);
 };
 
-Game.prototype._createNewFrame = function (firstRoll, secondRoll) {
-  return this._frame (firstRoll, secondRoll);
+Game.prototype._createNewFrame = function (roll) {
+  return this._frame (roll);
 };
 
 Game.prototype._addScore = function (frame) {

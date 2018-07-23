@@ -39,12 +39,7 @@ ___
 
 ### Implemented Functionality
 
-#### Front-end
-* None yet
-
-#### Back-end
-* Tbc
-
+* Users can add a score and a frame number and the programme will calculate the score for each frame and a running total
 
 ### To Do List
 
@@ -52,6 +47,18 @@ ___
 * Create clear user interface (web page)
 * Ensure tests are fully isolated
 
+___
+
+## Learning Outcomes
+
+### Topics Covered
+
+- Coding in Javascript
+- Jasmine testing
+
+### Personal Reflection
+
+This was the most challenging weekend project yet, but very enjoyable. I spent a significant amount of time diagramming my solution before starting to code, which made the coding much more straightforward. Once I reached a working solution, I then did a lot of refactoring to ensure that my code is clear for others.
 ___
 
 ## Technical
@@ -88,15 +95,3 @@ Print frame scores and current running total:
 ```
 
 **NOTE: a complete game of ten frames has been set up under a variable called `exampleScorecard` - run `exampleScorecard.printScores()` in the console to see the final output**
-___
-
-## Learning Outcomes
-
-### Topics Covered
-
-Tbc
-
-### Personal Reflection
-
-Tbc
-___

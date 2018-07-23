@@ -93,8 +93,10 @@ Game.prototype.gameOver = function() {
 
 // this function is used in interface.js
 Game.prototype.checkStrike = function(kockedDownPins) {
-   if (kockedDownPins === 10) {
+   if (this._rolls === 1 && kockedDownPins === 10) {
     return "Strike!";
+  } else if (this._rolls != 1 && kockedDownPins === 10) {
+    return "Spare!";
   } else {
     return " ";
   }

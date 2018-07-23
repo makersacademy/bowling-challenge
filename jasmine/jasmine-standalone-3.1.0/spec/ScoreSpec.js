@@ -15,8 +15,26 @@ describe("Score unit test: ", function() {
   });
 
   it('A User can Roll 2 times and the calculated score 5 points', function() {
-    score.calculateScore(1);
-    score.calculateScore(4);
+    score.storeScore(1);
+    score.storeScore(4);
     expect(score.getScore()).toEqual(5);
+  });
+
+  it('gets the bonus', function() {
+    score._bonus = [10];
+    expect(score.getBonus()).toEqual([10]);
+  });
+
+  it('gets the score card', function() {
+    score._rollScore = [5, 10];
+    expect(score.getScoreCard()).toEqual([5, 10]);
+  });
+  
+  it('resets the roll score and total score', function() {
+    score._totalScore = [1];
+    score._rollScore = [1];
+    score.resetScore();
+    expect(score._totalScore).toEqual([]);
+    expect(score._rollScore).toEqual([]);
   });
 });

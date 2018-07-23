@@ -13,7 +13,7 @@ Score.prototype.storeRollScore = function(kockedDownPins) {
   this._rollScore.push(kockedDownPins);
 };
 
-Score.prototype.calculateScore = function(kockedDownPins) {
+Score.prototype.storeScore = function(kockedDownPins) {
    this._totalScore.push(kockedDownPins);
 };
 
@@ -27,7 +27,7 @@ Score.prototype.getScore = function() {
   return sum;
 };
 
-Score.prototype.getScoreScard = function() {
+Score.prototype.getScoreCard = function() {
    return this._rollScore;
 };
 

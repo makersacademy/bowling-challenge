@@ -30,7 +30,7 @@ Game.prototype.roll = function(kockedDownPins) {
       return "roll again"
     } else {
       this.getBonus();
-      this._score.calculateScore(this._totalPinsHitFrame);
+      this._score.storeScore(this._totalPinsHitFrame);
       this.addFrame();
       this.resetPinsCount(); // reset pins hit
       this.resetRollsCount(); // reset rolls count
@@ -38,7 +38,7 @@ Game.prototype.roll = function(kockedDownPins) {
     return this._rolls;
   } else if (this.frameTen()) {
     this.getBonus();
-    this._score.calculateScore(this._totalPinsHitFrame);
+    this._score.storeScore(this._totalPinsHitFrame);
     // this is to prevent the user rolling more than 3 times
     // in frame 10
     if (this.gameOver()) {
@@ -64,7 +64,7 @@ Game.prototype.getScore = function() {
 };
 
 Game.prototype.getScoreCard = function() {
-  return this._score.getScoreScard();
+  return this._score.getScoreCard();
 };
 
 Game.prototype.getRolls = function() {

@@ -42,10 +42,17 @@ describe('Scorecard', function() {
   });
 
   describe('keeps track of modified final scores', function() {
-    it('contains modified scores in a seperate array from base scores', function() {
+    beforeEach(function() {
       scorecard.enterScore(3);
       scorecard.enterScore(5);
+    });
+    it('contains modified scores in a seperate array from base scores', function() {
       expect(scorecard.getFinalScores()).toEqual([8]);
+    });
+    it('returns a total rolling score', function() {
+      scorecard.enterScore(2);
+      scorecard.enterScore(1);
+      expect(scorecard.totalScore()).toEqual(11);
     });
   });
 

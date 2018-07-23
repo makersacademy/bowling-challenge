@@ -11,6 +11,8 @@ var Scorecard = function() {
   this._turn = 1;
 };
 
+// Return object properties
+
 Scorecard.prototype.getBaseScores = function() {
   return this._baseScores;
 };
@@ -34,6 +36,8 @@ Scorecard.prototype.getScore = function() {
 Scorecard.prototype.getTurn = function() {
   return this._turn;
 };
+
+// Roll entry and scoring
 
 Scorecard.prototype.enterScore = function(score) {
   this._frame.push(score);
@@ -69,6 +73,14 @@ Scorecard.prototype._applyScoreConditions = function() {
   };
 };
 
+Scorecard.prototype.totalScore = function() {
+  var total = 0;
+  this.getFinalScores().forEach(score => total += score);
+  return total;
+};
+
+// Strike & Spare logic
+
 Scorecard.prototype._applySpareBonus = function(score) {
   this._finalScores[this.getFinalScores().length - 1] += score;
   this._spareBonus = false;
@@ -99,19 +111,7 @@ Scorecard.prototype._applyStrikeConditions = function() {
   this._endTurn();
 };
 
-Scorecard.prototype._endTurn = function() {
-  if (this.getTurn() < 11) {
-    this._resetTurn();
-  };
-};
-
-Scorecard.prototype._isSpare = function() {
-  return this.getFrame()[0] + this.getFrame()[1] === 10;
-};
-
-Scorecard.prototype._isStrike = function() {
-  return (this.getFrame()[0] === 10) && (this.getRoll() === 1);
-};
+// Conclude turn
 
 Scorecard.prototype._resetTurn = function() {
   this.calculateFrameScore();
@@ -119,5 +119,20 @@ Scorecard.prototype._resetTurn = function() {
   this._frame = [];
   this._turn += 1;
   this._roll = 1;
-  this._finalScores;
+};
+
+Scorecard.prototype._endTurn = function() {
+  if (this.getTurn() < 11) {
+    this._resetTurn();
+  };
+};
+
+// Internal boolean logic
+
+Scorecard.prototype._isSpare = function() {
+  return this.getFrame()[0] + this.getFrame()[1] === 10;
+};
+
+Scorecard.prototype._isStrike = function() {
+  return (this.getFrame()[0] === 10) && (this.getRoll() === 1);
 };

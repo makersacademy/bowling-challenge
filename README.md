@@ -1,4 +1,4 @@
-# Makers Academy Week Four - Bowling Challenge
+# Makers Academy Week Five & Six - Bowling Challenge
 > 14-15 & 21-22 July 2018
 
 Fifth and sixth week (weekend) solo project, building a bowling scorecard that accurately tracks user rolls and applies bonus modifiers where appropriate.

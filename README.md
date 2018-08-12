@@ -6,7 +6,7 @@ Bowling Scoreboard Challenge
 
 ### Using: Javascript, JQuery, Jasmine, DOM
 
-[The Big Lebowski](http://res.cloudinary.com/dani-devs-and-designs/image/upload/v1526749202/theDude4_orkwwr.png)
+![The Big Lebowski](http://res.cloudinary.com/dani-devs-and-designs/image/upload/v1526749202/theDude4_orkwwr.png)
 
  It seems that this year's all about tenpin bowling. [Here's a fun little "The Big Lebowski"-themed quote generator](https://daniellebooysen.com/random-quote-machine) I made a few months ago as part of the freeCodeCamp frontend development course.
 

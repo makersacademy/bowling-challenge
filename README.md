@@ -1,17 +1,16 @@
 
-Bowling Challenge
+# Bowling Scoreboard Challenge
 =================
 
+## Makers Weekend Challenge, Weeks 5 & 6
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+### Javascript, JQuery, Jasmine, DOM
+
+![The Big Lebowski](http://res.cloudinary.com/dani-devs-and-designs/image/upload/v1526749202/theDude4_orkwwr.png)
 
 ## The Task
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. THE USER INPUTS THE ROLLS.**
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
@@ -24,6 +23,23 @@ As usual please start by
 * Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
 
 ___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+
+## My User Stories:
+
+1. I want 10 frames per game  
+2. I want to roll twice per frame  
+3. I want each roll to be added to my frame’s total  
+4. I cannot roll more than the sum of 10 in one frame*  
+( * bonus points for strikes & spares calculated later)  
+5. I want to be able to roll in the gutter (0 points)  
+6. I want to be able to roll a strike (1 roll === 10)  
+7. If I roll a strike, I want the sum of the frame after my strike to be doubled as a bonus  
+8. I want to be able to roll a spare (1 frame === 10)  
+9. If I roll a spare, I want the next roll (first roll in next frame) to be doubled as a bonus  
+10. At the end of 10 frames, I want my total to be added up into a final score
+11. If I roll a strike in frame 10, I want 2 more rolls
+12. If I roll a spare in frame 10, I want one more roll
+
 
 ### Optional Extras
 

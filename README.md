@@ -1,26 +1,20 @@
 
-# Bowling Scoreboard Challenge
+Bowling Scoreboard Challenge
 =================
 
 ## Makers Weekend Challenge, Weeks 5 & 6
 
-### Javascript, JQuery, Jasmine, DOM
+### Using: Javascript, JQuery, Jasmine, DOM
 
-![The Big Lebowski](http://res.cloudinary.com/dani-devs-and-designs/image/upload/v1526749202/theDude4_orkwwr.png)
+[The Big Lebowski](http://res.cloudinary.com/dani-devs-and-designs/image/upload/v1526749202/theDude4_orkwwr.png)
+
+ It seems that this year's all about tenpin bowling. [Here's a fun little "The Big Lebowski"-themed quote generator](https://daniellebooysen.com/random-quote-machine) I made a few months ago as part of the freeCodeCamp frontend development course.
 
 ## The Task
 
 **THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. THE USER INPUTS THE ROLLS.**
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
-
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
 
 ___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
 
@@ -29,7 +23,7 @@ ___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. 
 1. I want 10 frames per game  
 2. I want to roll twice per frame  
 3. I want each roll to be added to my frame’s total  
-4. I cannot roll more than the sum of 10 in one frame*  
+4. I cannot roll more than the sum of 10 in one frame *  
 ( * bonus points for strikes & spares calculated later)  
 5. I want to be able to roll in the gutter (0 points)  
 6. I want to be able to roll a strike (1 roll === 10)  
@@ -39,15 +33,16 @@ ___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. 
 10. At the end of 10 frames, I want my total to be added up into a final score
 11. If I roll a strike in frame 10, I want 2 more rolls
 12. If I roll a spare in frame 10, I want one more roll
-
+13. I want to be able to have a perfect game with strikes only (300 points)  
+14. I want to be able to have a gutter game (0 points)
 
 ### Optional Extras
 
-In any order you like:
+In any order:
 
 * Create a nice interactive animated interface with jQuery.
 * Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+* Add [ESLint](http://eslint.org/) to your codebase and make your code conform. (I'm using [Prettier](https://prettier.io/) with VSCode)
 
 You might even want to start with ESLint early on in your work — to help you
 learn Javascript conventions as you go along.
@@ -76,10 +71,6 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 ### Perfect Game
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 

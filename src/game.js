@@ -6,13 +6,14 @@ function Game () {
 	this.numBonus = 0;
 	this.scoreHistory = [];
 	this.frameHistory = [];
+	this.bonusMessage = "";
 }
 
 Game.prototype.roll = function(numPins) {
 
+	this.bonusMessage = "";
 	this.currentScore += numPins;
 	this.frameHistory.push(numPins);
-
 	this.bonusAdd(numPins);
 
 	if(numPins == 10) {
@@ -57,7 +58,11 @@ Game.prototype.bonusAdd = function(numPins) {
 	if(this.numBonus == 0) {
 		return;
 	}
+	if(this.numBonus > 2) {
+		numPins += numPins;
+	}
 	this.currentScore += numPins;
+	this.bonusMessage = numPins + " bonus points added";
 	this.numBonus -= 1;
 };
 

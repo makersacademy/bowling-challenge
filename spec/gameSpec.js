@@ -31,6 +31,10 @@ describe("Game", function() {
 		it("Has an empty array for frame", function () {
 			expect(game.frameHistory).toEqual([]);
 		});
+
+		it("Has an empty string for bonusMessage", function() {
+			expect(game.bonusMessage).toEqual("");
+		});
 	});
 
 	describe("Bowling score types", function() {
@@ -92,6 +96,7 @@ describe("Game", function() {
 
 			it("processes bonus correctly", function() {
 				game.roll(6);
+				expect(game.bonusMessage).toEqual("6 bonus points added");
 				game.roll(2);
 				expect(game.scoreHistory).toEqual([[3, 7], [6, 2]]);
 				expect(game.currentScore).toEqual(24);
@@ -121,15 +126,37 @@ describe("Game", function() {
 			it("adds the bonus correctly for the next 2 rolls", function() {
 				game.roll(3);
 				expect(game.currentScore).toEqual(16);
+				expect(game.bonusMessage).toEqual("3 bonus points added");
 				game.roll(4);
 				expect(game.currentScore).toEqual(24);
+				expect(game.bonusMessage).toEqual("4 bonus points added");
 			});
 
 			it("Works correctly when more strikes", function() {
 				game.roll(10);
 				expect(game.currentScore).toEqual(30);
+				expect(game.bonusMessage).toEqual("10 bonus points added");
 				game.roll(10);
 				expect(game.currentScore).toEqual(60);
+				expect(game.bonusMessage).toEqual("30 bonus points added");
+				game.roll(10);
+				expect(game.currentScore).toEqual(100);
+				expect(game.bonusMessage).toEqual("20 bonus points added");
+				game.roll(10);
+				expect(game.currentScore).toEqual(130);
+				expect(game.bonusMessage).toEqual("20 bonus points added");
+			});
+
+			it("works for strike then spare then roll", function () {
+				game.roll(4);
+				expect(game.currentScore).toEqual(18);
+				expect(game.bonusMessage).toEqual("4 bonus points added");
+				game.roll(6);
+				expect(game.currentScore).toEqual(30);
+				expect(game.bonusMessage).toEqual("6 bonus points added");
+				game.roll(5);
+				expect(game.currentScore).toEqual(40);
+				expect(game.bonusMessage).toEqual("5 bonus points added");
 			});
 		});
 

@@ -3,8 +3,8 @@ module.exports = {
         "browser": true,
         "jasmine": true
     },
-    "extends": "eslint:recommended",
     "extends": "plugin:jasmine/recommended",
+    "extends": "eslint:recommended",
     "plugins": ["jasmine"],
     "parserOptions": {
         "ecmaVersion": 5

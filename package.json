@@ -24,5 +24,9 @@
   "homepage": "https://github.com/pliantmeerkat/bowling-challenge#readme",
   "devDependencies": {
     "eslint-plugin-jasmine": "^2.10.1"
+  },
+  "dependencies": {
+    "jasmine-node": "^1.15.0",
+    "nightwatch": "^0.9.21"
   }
 }

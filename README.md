@@ -68,4 +68,17 @@ In code review we'll be hoping to see:
 * All tests passing
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make th§e challenge somewhat easier.  You should be the judge of how much challenge you want.
+
+
+first frame...
+i roll1 a 10 (i have a strike)
+
+second frame...
+i roll1 a 7 (strike bonus1 is 7)
+i roll2 a 1 (strike bonus2 is 1)
+
+
+
+
+///

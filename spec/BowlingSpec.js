@@ -31,5 +31,47 @@ describe('Bowling', function(){
     });
   });
 
-  describe("has a spare ")
+  describe("has a spare", function(){
+    it('and returns true if the player scores a 10 in their 2 rolls', function(){
+      bowling.firstRoll(1);
+      bowling.secondRoll(9);
+      expect(bowling.isSpare).toBe(true);
+    });
+    it('and gives a player a bonus for that round which is the roll from the next round', function(){
+      bowling.firstRoll(1);
+      bowling.secondRoll(9);
+      expect(bowling.isSpare).toBe(true);
+      bowling.firstRoll(4);
+      expect(bowling.spareBonus).toEqual(4);
+      expect(bowling.total).toEqual(18)
+      expect(bowling.isSpare).toEqual(false);
+    });
+  });
+  describe('has a strike', function(){
+    it('and returns true if the player scores a 10 in their first roll', function(){
+      bowling.firstRoll(10);
+      expect(bowling.isStrike).toBe(true);
+    });
+    it('and gives a player a bonus for that round which is the sum of the rolls from the next round', function(){
+      bowling.firstRoll(10);
+      expect(bowling.isStrike).toBe(true);
+      bowling.firstRoll(4);
+      expect(bowling.strikeBonus1).toEqual(4);
+      bowling.secondRoll(5);
+      expect(bowling.strikeBonus2).toEqual(5);
+      expect(bowling.total).toEqual(28);
+      expect(bowling.isStrike).toEqual(false);
+    });
+    it('calculates the total score for numerous rolls in different frames', function(){
+      bowling.firstRoll(3);
+      bowling.secondRoll(7);
+      bowling.firstRoll(4);
+      bowling.secondRoll(3);
+      bowling.firstRoll(10);
+      bowling.firstRoll(10);
+      bowling.firstRoll(3);
+      bowling.secondRoll(4);
+      expect(bowling.total).toEqual(65);
+    });
+  });
 });

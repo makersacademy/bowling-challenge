@@ -4,6 +4,7 @@ var Bowling = function(){
   this.spareBonus = 0;
   this.strikeBonus1 = 0;
   this.strikeBonus2 = 0;
+  this.totalStrikeBonus = 0;
   this.total = 0;
   this.isStrike = false;
   this.isSpare = false;
@@ -11,6 +12,7 @@ var Bowling = function(){
 
 Bowling.prototype.firstRoll = function(value){
   this.strikeBonus2 = 0
+  this.totalStrikeBonus = 0
   this.roll1 = 0
   if (this.isStrike === true) {this.strikeBonus1 = value}
   if (this.isSpare === true) {this.spareBonus = value, this.isSpare = false}
@@ -24,10 +26,11 @@ Bowling.prototype.firstRoll = function(value){
 };
 
 Bowling.prototype.secondRoll = function(value){
-  this.strikeBonus1 = 0
   this.spareBonus = 0;
   this.roll2 = 0
   if (this.isStrike === true) {this.strikeBonus2 = value}
+  this.totalStrikeBonus = this.strikeBonus1 + this.strikeBonus2
+  this.strikeBonus1 = 0
 
   this.roll2 = value;
   this.total = this.total + this.roll2 + this.strikeBonus2;

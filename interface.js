@@ -8,7 +8,7 @@ $(document).ready(function() {
   $('.strike-bonus').text(bowling.totalStrikeBonus);
 
   $('#enter').click(function (){
-    bowling.firstRoll(value = document.getElementById('userInput'));
+    bowling.firstRoll(document.getElementById('userInput'));
   });
 
 });
@@ -18,3 +18,4 @@ $(document).ready(function() {
 
 //think about making multiple $ for each thing and giving things
 //different ids so they wont change eachtime
+// think about instantiating bowling each roll so dont have to reset numbers

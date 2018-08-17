@@ -67,5 +67,21 @@ describe('Bowling', function(){
       expect(bowling.maxTotal).toEqual(145);
     });
 
+    it('calculates random scores', function(){
+      bowling.frameOneFirstRoll(4);
+      bowling.frameOneSecondRoll(6);
+      bowling.frameTwoFirstRoll(5);
+      bowling.frameTwoSecondRoll(5);
+      bowling.frameThreeFirstRoll(2);
+      bowling.frameThreeSecondRoll(8);
+      bowling.frameFourFirstRoll(3);
+      bowling.frameFourSecondRoll(7);
+      bowling.frameFiveFirstRoll(6);
+      bowling.frameFiveSecondRoll(4);
+      bowling.frameSixFirstRoll(2);
+      bowling.frameSixSecondRoll(3);
+      expect(bowling.maxTotal).toEqual(73)
+    });
+
   });
 });

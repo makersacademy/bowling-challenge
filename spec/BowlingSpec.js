@@ -1,5 +1,4 @@
 'use strict';
-
 describe('Game', function(){
 
   var game;
@@ -26,20 +25,20 @@ describe('Game', function(){
     expect(game.score()).toEqual(16);
   });
 
-
-// Helper functions
+// Helper functions - transfer to helper file
 
   function rollMultiple(rolls, pins) {
     for(var i = 0; i < rolls; i += 1) {
       game.roll(pins);
     }
-  };
+  }
 
   function rollSpare() {
     game.roll(5);
     game.roll(5);
-  };
-
+  }
 
 });
+
+
 

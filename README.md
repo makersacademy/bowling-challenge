@@ -15,7 +15,18 @@ Workflow:
 
 Progress Update:
 --------
+
 - [ ] Business rules identified and tests created
+
+*Disclaimer: I used the [Uncle Bob Bowling Game Kata](http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata) for inspiration. Not a total cheat as it was written in Java, but a definite help*  
+
+Uncles Bob's rules:
+
+- Test 1: testGutterGame() 
+- Test 2: testAllOnes()  
+- Test 3: testOneSpare() 
+- Test 4: testOneStrike() 
+- Test 5: testPerfectGame() 
 
 Next Steps:
 --------

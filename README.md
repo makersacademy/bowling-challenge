@@ -27,9 +27,9 @@ ___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. 
 ( * bonus points for strikes & spares calculated later)  
 5. I want to be able to roll in the gutter (0 points)  
 6. I want to be able to roll a strike (1 roll === 10)  
-7. If I roll a strike, I want the sum of the frame after my strike to be doubled as a bonus  
-8. I want to be able to roll a spare (1 frame === 10)  
-9. If I roll a spare, I want the next roll (first roll in next frame) to be doubled as a bonus  
+7. If I roll a strike, I want 2 more rolls as a bonus  
+8. I want to be able to roll a spare (1 frame (2 rolls) === 10)  
+9. If I roll a spare, I want an extra roll (first roll in next frame = doubled as a bonus)  
 10. At the end of 10 frames, I want my total to be added up into a final score
 11. If I roll a strike in frame 10, I want 2 more rolls
 12. If I roll a spare in frame 10, I want one more roll

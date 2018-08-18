@@ -1,1 +1,5 @@
-function Scoreboard() {};
+'use strict';
+
+function Scoreboard() {
+  this._frames = [];
+};

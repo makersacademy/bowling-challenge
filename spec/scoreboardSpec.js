@@ -1,12 +1,10 @@
 describe("Scoreboard", function() {
-
-  // beforeEach(function() {
-  //   var frame;
-  // });
-
-  describe('roll', function() {
-    it('adds a score to its frame', function() {
-
-    });
+  var score;
+  beforeEach(function() {
+    score = new Scoreboard();
   });
+
+  it('starts out with empty frames', function() {
+    expect(score._frames).toEqual([]);
+   });
 });

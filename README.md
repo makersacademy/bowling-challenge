@@ -1,77 +1,98 @@
+# Bowling Challenge
 
-Bowling Challenge
-=================
+___
 
+## Summary
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+Week 5/6 Makers Academy weekend project to develop a bowling scorecard.</br>
+[Full instructions here.](https://github.com/makersacademy/bowling-challenge)
+___
 
-## The Task
+## Credits
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+Developed solo by Elishka Flint.
+___
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+## User Stories
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+```
+As a player
+So that I can keep track of my bowling score,
+I want to be able to record what happens each time I roll
+```
 
-As usual please start by
+```
+As a player,
+So that I know how well each frame went,
+I want to be able to see the total score for the each frame
+```
 
-* Forking this repo
+```
+As a player,
+So that I understand my complete performance.
+I want to be able to see the running total for the whole game
+```
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+___
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+## State of Completion
 
-### Optional Extras
+### Implemented Functionality
 
-In any order you like:
+* Users can add a score and a frame number and the programme will calculate the score for each frame and a running total
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+### To Do List
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+* Extract a controller / scorer class to reduce responsibility on Scorecard
+* Create clear user interface (web page)
+* Ensure tests are fully isolated
 
-## Bowling — how does it work?
+___
 
-### Strikes
+## Learning Outcomes
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+### Topics Covered
 
-### Spares
+- Coding in Javascript
+- Jasmine testing
 
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+### Personal Reflection
 
-### 10th frame
+This was the most challenging weekend project yet, but very enjoyable. I spent a significant amount of time diagramming my solution before starting to code, which made the coding much more straightforward. Once I reached a working solution, I then did a lot of refactoring to ensure that my code is clear for others.
 
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
+___
 
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
+## Technical
 
-### Gutter Game
+### Tech/Frameworks Used
 
-A Gutter Game is when the player never hits a pin (20 zero scores).
+Javascript, Jasmine
 
-### Perfect Game
+### Launching the Application
 
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+```
+$ git clone https://github.com/elishkaflint/bowling-challenge.git
+$ cd bowling-challenge
+$ open index.html
+```
 
-In the image below you can find some score examples.
+Create a scorecard (in the console):
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
+```
+> var scorecard = new Scorecard()
+```
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+Record a score (in the console):
 
-## Code Review
+```
+> scorecard.recordScore(frame, roll)
+```
 
-In code review we'll be hoping to see:
+Print frame scores and current running total:
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+```
+> scorecard.printScores()
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+```
+
+**NOTE: a complete game of ten frames has been set up under a variable called `exampleScorecard` - run `exampleScorecard.printScores()` in the console to see the final output**

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/bowling.css">
+    <title>Bowling Score Card</title>
+  </head>
+  <body>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+    <section>
+    <h1>Total Score:</h1><h1><span id="total-score"></span></h1>
+      <div class="box">
+        <form id='bowling-scores'>
+          Frame 1
+          <select class='0-10' id='frame-1-roll-one'></select>
+          <select class='0-10' id='frame-1-roll-two'></select>
+          <br><br>
+          Frame 2
+          <select class='0-10' id='frame-2-roll-one'></select>
+          <select class='0-10' id='frame-2-roll-two'></select>
+          <br><br>
+          Frame 3
+          <select class='0-10' id='frame-3-roll-one'></select>
+          <select class='0-10' id='frame-3-roll-two'></select>
+          <br><br>
+          Frame 4
+          <select class='0-10' id='frame-4-roll-one'></select>
+          <select class='0-10' id='frame-4-roll-two'></select>
+          <br><br>
+          Frame 5
+          <select class='0-10' id='frame-5-roll-one'></select>
+          <select class='0-10' id='frame-5-roll-two'></select>
+          <br><br>
+          Frame 6
+          <select class='0-10' id='frame-6-roll-one'></select>
+          <select class='0-10' id='frame-6-roll-two'></select>
+          <br><br>
+          Frame 7
+          <select class='0-10' id='frame-7-roll-one'></select>
+          <select class='0-10' id='frame-7-roll-two'></select>
+          <br><br>
+          Frame 8
+          <select class='0-10' id='frame-8-roll-one'></select>
+          <select class='0-10' id='frame-8-roll-two'></select>
+          <br><br>
+          Frame 9
+          <select class='0-10' id='frame-9-roll-one'></select>
+          <select class='0-10' id='frame-9-roll-two'></select>
+          <br><br>
+          Frame 10
+          <select class='0-10' id='frame-10-roll-one'></select>
+          <select class='0-10' id='frame-10-roll-two'></select>
+          <br><br>
+          Bonus Roll
+          <select class='0-10' id='frame-bonus-roll-one'></select>
+          <select class='0-10' id='frame-bonus-roll-two'></select>
+          <br><br>
+          <input id='submit' class="btn btn-success" type='submit'></input>
+          <input id='reset' class="btn btn-fail" type='reset'></input>
+        </form>
+      </div>
+    </section>
+    <script src="src/individualScores.js"></script>
+    <script src="src/scoreCalculator.js"></script>
+    <script src="src/scoreDisplay.js"></script>
+    <script src="src/interface.js"></script>
+  </body>
+</html>

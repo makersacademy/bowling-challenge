@@ -12,16 +12,19 @@ describe('Frame', function() {
    expect(frame._standingPins).toBe(10);
   });
 
-  it('knows the amount of rolls', function() {
+  it('knows how many times the player has rolled', function() {
    frame.roll();
    expect(frame._rolls).toEqual(1);
   });
 
   it('ups points and downs pins with rolls', function() {
-    spyOn(frame, '_hit').and.returnValue(7);
+    spyOn(frame, '_hit').and.returnValue(2);
     frame.roll();
-    expect(frame._points).toBe(7);
-    expect(frame._standingPins).toBe(3);
+    expect(frame._firstRoll).toBe(2);
+    expect(frame._standingPins).toBe(8);
+    frame.roll();
+    expect(frame._secondRoll).toBe(2);
+    expect(frame._standingPins).toBe(6);
    });
 
    it('knows when the frame is complete', function() {
@@ -29,6 +32,18 @@ describe('Frame', function() {
      frame.roll();
      expect(frame.isDone()).toBe(true);
    })
+
+  it('adds points together', function() {
+    spyOn(frame, '_hit').and.returnValue(3);
+    frame.roll();
+    frame.roll();
+    expect(frame._points).toEqual(6);
+  });
+
+   it('saves points', function() {
+    frame.roll()
+    expect(frame.savePoints()).toEqual(frame._points)
+  });
 
    it('can have a gutter roll', function() {
      spyOn(frame, '_hit').and.returnValue(0);
@@ -55,5 +70,17 @@ describe('Frame', function() {
    frame.roll();
    expect(frame.isStrike()).toBe(true);
    expect(frame.isDone()).toBe(true);
+  });
+
+  it('can add bonus points', function() {
+    frame.addBonus(3);
+    expect(frame.savePoints()).toEqual(3);
+  });
+
+  it('calculates and adds bonus points for spares', function() {
+    spyOn(frame, '_hit').and.returnValue(3);
+    frame.roll();
+    // frame.roll();
+    expect(frame.spareBonus()).toEqual(3);
   });
 });

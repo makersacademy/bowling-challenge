@@ -59,6 +59,7 @@ ___
 ### Personal Reflection
 
 This was the most challenging weekend project yet, but very enjoyable. I spent a significant amount of time diagramming my solution before starting to code, which made the coding much more straightforward. Once I reached a working solution, I then did a lot of refactoring to ensure that my code is clear for others.
+
 ___
 
 ## Technical

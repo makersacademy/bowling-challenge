@@ -1,6 +1,6 @@
 # bowling-challenge
 
-This repository contains all the files required to run, test and edit my Bowling Challenge submission, forked from the makers academy repository (https://github.com/makersacademy/bowling-challenge)[bowling-challenge]
+This repository contains all the files required to run, test and edit my Bowling Challenge submission, forked from the makers academy repository [bowling-challenge](https://github.com/makersacademy/bowling-challenge)
 
 ## Installation
 

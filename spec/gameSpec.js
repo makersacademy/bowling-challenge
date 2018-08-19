@@ -39,6 +39,27 @@ describe("Game", function() {
 		it("is not game over", function() {
 			expect(game.gameOver).toEqual(false);
 		});
+
+		it("Visual frame for scorecard is 0", function() {
+			expect(game.visualFrame).toEqual(0);
+		});
+	});
+
+	describe("Basic Scoring Tests", function() {
+		it("Game scoring variables are correct with two rolls in 1 frame", function() {
+			game.roll(4);
+			expect(game.currentFrame).toEqual(1);
+			expect(game.currentScore).toEqual(4);
+			expect(game.frameHistory).toEqual([4]);
+			expect(game.visualFrame).toEqual(1);
+			game.roll(5);
+			expect(game.currentFrame).toEqual(2);
+			expect(game.currentScore).toEqual(9);
+			expect(game.frameHistory).toEqual([]);
+			expect(game.visualFrame).toEqual(1);
+			game.roll(5);
+			expect(game.visualFrame).toEqual(2);
+		});
 	});
 
 	describe("tenth frame", function() {
@@ -72,7 +93,6 @@ describe("Game", function() {
 			game.roll(10);
 			expect(game.currentScore).toEqual(30);
 			expect(game.gameOver).toEqual(true);
-
 		});
 
 		it("starts new game when finished", function() {

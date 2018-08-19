@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/pliantmeerkat/bowling-challenge#readme",
   "devDependencies": {
+    "cypress": "^3.1.0",
     "eslint-plugin-jasmine": "^2.10.1"
   },
   "dependencies": {

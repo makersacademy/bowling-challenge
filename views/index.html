@@ -11,6 +11,80 @@
 </head>
 
 <body>
+  <div class="app" data-cy="appDiv" align="center">
+    <div class="title" data-cy="titleDiv">
+      <h1 class="titleHead" data-cy="titleH1">
+        Bowlerama
+      </h1>
+    </div>
+    <div class="scoreCard" data-cy="scoreDiv">
+      <table class="scoreTableClass" id="scoreTable" data-cy="scoreTableCy">
+        <tr>
+          <th class="tableHead">Frame</th>
+          <th class="tableHead">Score</th>
+          <th class="tableHead">Notes</th> 
+      </tr>
+      <tr id="Frame1">
+        <td id="F1Frame"></td>
+        <td id="F1Score"></td>
+        <td id="F1note"></td>
+      </tr>
+      <tr id="Frame2">
+        <td id="F2Frame"></td>
+        <td id="F2Score"></td>
+        <td id="F2note"></td>
+      </tr>
+      <tr id="Frame3">
+          <td id="F3Frame"></td>
+          <td id="F3Score"></td>
+          <td id="F3note"></td>
+      </tr>
+      <tr id="Frame4">
+          <td id="F4Frame"></td>
+          <td id="F4Score"></td>
+          <td id="F4note"></td>
+      </tr>
+      <tr id="Frame5">
+          <td id="F5Frame"></td>
+          <td id="F5Score"></td>
+          <td id="F5note"></td>
+      </tr>
+      <tr id="Frame6">
+          <td id="F6Frame"></td>
+          <td id="F6Score"></td>
+          <td id="F6note"></td>
+      </tr>
+      <tr id="Frame7">
+          <td id="F7Frame"></td>
+          <td id="F7Score"></td>
+          <td id="F7note"></td>
+      </tr> 
+      <tr id="Frame8">
+          <td id="F8Frame"></td>
+          <td id="F8Score"></td>
+          <td id="F8note"></td>
+      </tr>
+      <tr id="Frame9">
+          <td id="F9Frame"></td>
+          <td id="F9Score"></td>
+          <td id="F9note"></td>
+      </tr>
+      <tr id="Frame10">
+          <td id="F10Frame"></td>
+          <td id="F10Score"></td>
+          <td id="F10note"></td>
+      </tr>
+      </table>
+    </div>
+    <div class="rollEntry" data-cy="rollDiv" align="center">
+      <h1>Enter Roll</h1>
+      <p>
+        <h1 class="scale" id="rollSelectVal"></h1>
+        <input type="range" class="rollInputBox" id="rollIn" min="0" max="10" step="1"value="0">
+      </p>
+      <input type="submit" class="rollSub" value="Submit" id="RollSubmit">
+    </div>
+  </div>
   <script src="jQuery.js"></script>
   <script src="../src/game.js"></script>
   <script src="js/index.js"></script>

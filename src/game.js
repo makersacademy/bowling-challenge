@@ -12,11 +12,18 @@ Game.prototype.newGame = function() {
 	this.scoreHistory = [];
 	this.frameHistory = [];
 	this.bonusMessage = "";
+	this.visualFrame = 0;
 };
 
 Game.prototype.roll = function(numPins) {
 
+	console.log(this.frameHistory);
+
+	if(this.frameHistory.length == 0) {
+		this.visualFrame += 1;
+	}
 	this.bonusMessage = "";
+	
 	if(this.gameOver == true) {
 		this.newGame();
 	}
@@ -52,7 +59,6 @@ Game.prototype.add = function(a, b) {
 };
 
 Game.prototype.processRoll = function() {
-
 	switch(this.currentRoll) {
 	case 1:
 		this.currentRoll += 1;
@@ -82,7 +88,7 @@ Game.prototype.bonusAdd = function(numPins) {
 
 Game.prototype.strike = function() {
 	this.numBonus += 2;
-	this.frameHistory.push(10);
+	//this.frameHistory.push(10);
 	this.newFrame();
 };
 

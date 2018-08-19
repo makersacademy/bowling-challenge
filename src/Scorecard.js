@@ -35,7 +35,6 @@ Scorecard.prototype.roll = function(roll) {
     }
     else if(this.frame.length === 2){
       if(this.frameScore === 10){
-        console.log("Spare!!!");
         this.spare();
         this.endFrame();
       }
@@ -62,5 +61,14 @@ Scorecard.prototype.strike = function(){
   }
   else{
     this.strikebonus = 2;
+  };
+};
+
+// Spechelper
+
+Scorecard.prototype.repeat = function(pins, number){
+  var times = number;
+  for(var i=0; i < times; i++){
+    this.roll(pins);
   };
 };

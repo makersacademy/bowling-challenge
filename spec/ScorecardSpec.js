@@ -19,10 +19,7 @@ describe("Scorecard", function() {
     });
 
     it('records overall score when a full game has been played', function() {
-      var times = 20;
-      for(var i=0; i < times; i++){
-        scorecard.roll(3);
-      };
+      scorecard.repeat(3, 20);
       expect(scorecard.cumulativeScore).toEqual(60);
     });
 
@@ -42,17 +39,12 @@ describe("Scorecard", function() {
     });
 
     it('gives a score of 60 if a turkey is immediately rolled', function(){
-      scorecard.roll(10);
-      scorecard.roll(10);
-      scorecard.roll(10);
+      scorecard.repeat(10, 3)
       expect(scorecard.cumulativeScore).toEqual(60);
     });
 
     it('gives a score of 90 if a 4 strikes are immediately rolled', function(){
-      scorecard.roll(10);
-      scorecard.roll(10);
-      scorecard.roll(10);
-      scorecard.roll(10);
+      scorecard.repeat(10, 4)
       expect(scorecard.cumulativeScore).toEqual(90);
     });
 
@@ -61,6 +53,15 @@ describe("Scorecard", function() {
       scorecard.roll(1);
       scorecard.roll(8);
       expect(scorecard.cumulativeScore).toEqual(26);
+    });
+
+    it('functions as expected after 2 spares', function(){
+      scorecard.roll(8);
+      scorecard.roll(2);
+      scorecard.roll(5);
+      scorecard.roll(5);
+      scorecard.roll(1);
+      expect(scorecard.cumulativeScore).toEqual(27);
     });
   });
 });

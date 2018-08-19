@@ -7,20 +7,20 @@ function Game() {
   this.rollIndex = 0; // 0 to 20 for all potential rolls
   this.frameIndex = 0; // will be 0,1,2 for rolls in frame
   //this.totalScore = 0;
-  this.currentRoll = 0;
+  this.currentRoll = 0; // I don't think this is reqd
 }
 
 Game.prototype.roll = function roll(pins) {
   this.rollHistory[this.rollIndex] = (pins);
   this.frameHistory[this.frame][this.frameIndex] = pins;
   if (this._isStrike(this.rollIndex)) {
-    console.log('strike');
+    console.log('rolls' + pins + 'for a strike');
     this.rollIndex += 2;
     this.frame += 1; // new frames please
     this.frameIndex = 0; //reset to initial index for frame
   }
   else {
-    console.log('not a strike');
+    console.log('rolls' + pins + 'not a strike');
     this.rollIndex += 1;
     if (this.frameIndex === 0) {
       this.frameIndex += 1
@@ -40,26 +40,30 @@ Game.prototype.score = function score() {
     if (this._isStrike(this.rollIndex)) {
       score += 10 // + strikeBonus;
       // frameIndex++;
-    } else if (this._isSpare(this.rollIndex)) {
-        score += 10 //+ spareBonus;
+    } else if (this._isSpare(this.frame)) {
+        score += 10 + this.spareBonus(this.frame);
         // frameIndex += 2;
     } else {
-        score += this._currentFrameTotal(this.frame);
+        score += this._FrameTotal(this.frame);
         // frameIndex += 2;
     }
   }
   return score;
 };
 
-Game.prototype._currentFrameTotal = function (frame) {
+Game.prototype._FrameTotal = function (frame) {
   return this.frameHistory[frame][0] + this.frameHistory[frame][1];
 };
 
 // need to sort out how to hold frameIndex
-Game.prototype._isSpare = function (rollIndex) {
-  return this.rollHistory[rollIndex]+this.rollHistory[rollIndex+1] === 10;
+Game.prototype._isSpare = function (frame) {
+  return this.frameHistory[frame][0]+this.frameHistory[frame][1] === 10;
 };
 
 Game.prototype._isStrike = function (rollIndex) {
   return this.rollHistory[rollIndex] === 10;
+};
+
+Game.prototype.spareBonus = function (frame) {
+  return this.frameHistory[frame + 1][0];
 };

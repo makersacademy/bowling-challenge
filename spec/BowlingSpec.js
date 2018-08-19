@@ -19,7 +19,7 @@ describe('Game', function(){
   });
 
   it ("A single spare test, followed by 3, results in score 16", function() {
-    rollSpare;
+    rollSpare();
     game.roll(3);
     rollMultiple(17,0);
     expect(game.score()).toEqual(16);

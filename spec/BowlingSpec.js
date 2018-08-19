@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 describe('BowlingGame', function() {
   var game;
@@ -12,6 +12,10 @@ describe('BowlingGame', function() {
 			game.roll(pins);
 		}
 	}
+  function rollSpare () {
+    game.roll(5);
+    game.roll(5);
+  }
 
   it("Rolls all 0's", function() {
     // for (var i = 0; i < 20; i++) {
@@ -26,4 +30,10 @@ describe('BowlingGame', function() {
     expect(game.score()).toEqual(20);
   });
 
+  it('Should score a spare', function() {
+    rollSpare();
+    game.roll(5);
+    rollMany(17, 0)
+    expect(game.score()).toEqual(20);
+  });
 });

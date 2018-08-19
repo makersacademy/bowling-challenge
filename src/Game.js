@@ -16,19 +16,25 @@ Game.prototype.roll = function roll(pins) {
 };
 
 Game.prototype._setupNextRoll = function (frame, frameIndex) {
-  if (this._isStrike(frame)) {
-    this.rollIndex += 2;
-    this._setupNewFrame();
-  }
-  else {
-    this.rollIndex += 1;
-    if (frameIndex === 0) {
-      this.frameIndex += 1
+  if (this._finalFrame(frame)) {
+    if (this._finalFrameBonusBall(frame) || this.frameIndex < 1) {
+      this.frameIndex += 1;
+      this.rollIndex += 1;
     }
-    else {
-      this._setupNewFrame();
+    else {console.log('Game over with a score of ' + this.score());}
+  } else {
+      if (this._isStrike(frame)) {
+        this.rollIndex += 2;
+        this._setupNewFrame();
+      }
+      else {
+        this.rollIndex += 1;
+        if (frameIndex === 0) {
+          this.frameIndex += 1
+        }
+        else {this._setupNewFrame()}
+      }
     }
-  }
 };
 
 Game.prototype._setupNewFrame = function () {
@@ -43,16 +49,16 @@ Game.prototype.score = function score() {
       score += 10 + this._strikeBonus(this.frame);
     } else if (this._isSpare(this.frame)) {
         score += 10 + this._spareBonus(this.frame);
-    } else {
-        score += this._frameTotal(this.frame);
-    }
+    } else {score += this._frameTotal(this.frame)}
   }
   return score;
 };
 
 // shows the pin total for a given frame
 Game.prototype._frameTotal = function (frame) {
-  return this.frameHistory[frame][0] + this.frameHistory[frame][1];
+  if (this._finalFrame(frame)) {
+    return this.frameHistory[frame][0] + this.frameHistory[frame][1] + this.frameHistory[frame][2];
+  } else {return this.frameHistory[frame][0] + this.frameHistory[frame][1]}
 };
 
 Game.prototype._isSpare = function (frame) {
@@ -61,6 +67,15 @@ Game.prototype._isSpare = function (frame) {
 
 Game.prototype._isStrike = function (frame) {
   return this.frameHistory[frame][0] === 10;
+};
+
+Game.prototype._finalFrame = function (frame) {
+  return frame === 9;
+};
+
+// Final frame rolled strike or spare requiring third roll
+Game.prototype._finalFrameBonusBall = function (frame) {
+  return this._finalFrame(frame) && this._frameTotal(frame) >= 10 && this.frameIndex < 2;
 };
 
 Game.prototype._spareBonus = function (frame) {
@@ -77,11 +92,3 @@ Game.prototype._strikeBonus = function (frame) {
   else {return this._frameTotal(frame + 1)}
 };
 
-Game.prototype._finalFrame = function (frame) {
-  return frame === 10;
-};
-
-// Final frame rolled strike or spare requiring third roll
-Game.prototype._finalFrameBonusBall = function (frame) {
-  return this._finalFrame(frame) && this._frameTotal(frame) >= 10 && this.frameIndex < 2;
-};

@@ -1,54 +1,70 @@
 'use strict';
 
-function Frame() {
-  this._points = 0;
-  this._firstRoll = 0;
-  this._secondRoll = 0;
-  this._rolls = 0;
-  this._bonus = 0;
-  this._standingPins = 10;
+function Frame(name) {
+  this._frameNumber = name
+  this._pins = 10
+  this._roll = 1
+  this._firstRoll = 0
+  this._secondRoll = 0
+  this._bonusPoints = 0
+}
+
+Frame.prototype.hit = function() {
+  return Math.floor(Math.random() * (this._pins + 1))
 }
 
 Frame.prototype.roll = function() {
-  var hit = this.hit();
-  this._rolls === 0 ? this._firstRoll = hit : this._secondRoll = hit;
-  this._points += hit;
-  this._standingPins -= hit;
-  this._rolls +=1;
+  var hit = this.hit()
+  this._roll === 1 ? this._firstRoll = hit : this._secondRoll = hit
+  this._pins -= hit
+  this._roll +=1
 }
 
-// Using Math.random for now to simulate user input
-Frame.prototype.hit = function() {
-  return Math.floor(Math.random() * (this._points + 1));
+Frame.prototype.whichFrame = function() {
+  return this._frameNumber;
 }
 
-Frame.prototype.savePoints = function() {
-  return this._firstRoll + this._secondRoll + this._bonus;
+Frame.prototype.currentRoll = function() {
+  return this._roll
 }
 
-Frame.prototype.gutter = function() {
-  return this._rolls === 2 && this._points === 0 ;   
+Frame.prototype.points = function() {
+  return this._firstRoll + this._secondRoll + this._bonusPoints
 }
 
-Frame.prototype.strike = function() {
-  return this._rolls === 1 && this._points === 10;
+Frame.prototype.pins = function() {
+  return this._pins
 }
 
 Frame.prototype.spare = function() {
-  return this._rolls === 2 && this._points === 10;
+  return this._firstRoll
+}
+
+Frame.prototype.strike = function() {
+  return this._firstRoll + this._secondRoll
+}
+
+Frame.prototype.superPlay = function() {
+  if(this._firstRoll === 10) {
+    return 'strike'
+  } 
+  else if (this._firstRoll + this._secondRoll === 10) {
+    return 'spare'
+  } 
+  else {
+    return ''
+  }
+}
+
+Frame.prototype.bonus = function(points) {
+  this._bonusPoints += points
 }
 
 Frame.prototype.done = function() {
-  if (this.strike || this.__rolls === 2) {
-    return true;
+  if(this.superPlay() === 'strike' || this._roll === 3) {
+    return true
+  } 
+  else {
+    return false
   }
-  return false;
-}
-
-Frame.prototype.addBonus = function() {
-  return this._bonus + this.savePoints;
-}
-
-Frame.prototype.spareBonus = function() {
-  return this._firstRoll; 
 }

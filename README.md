@@ -1,5 +1,5 @@
 
-Bowling Scoreboard Challenge
+:bowling: Bowling Scoreboard Challenge :bowling:
 =================
 
 ## Makers Weekend Challenge, Weeks 5 & 6
@@ -20,21 +20,20 @@ ___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. 
 
 ## My User Stories:
 
-1. I want 10 frames per game  
-2. I want to roll twice per frame :bowling:  
-3. I want each roll to be added to my frame’s total  
-4. I cannot roll more than the sum of 10 in one frame :bowling: *    
-( * bonus points for strikes & spares calculated later)  
-5. I want to be able to roll in the gutter (0 points) :bowling:   
-6. I want to be able to roll a strike (1 roll === 10) :bowling:  
-7. If I roll a strike, I want 2 more rolls as a bonus  
-8. I want to be able to roll a spare (1 frame (2 rolls) === 10) :bowling:  
-9. If I roll a spare, I want an extra roll (first roll in next frame = doubled as a bonus)  
-10. At the end of 10 frames, I want my total to be added up into a final score
-11. If I roll a strike in frame 10, I want 2 more rolls
-12. If I roll a spare in frame 10, I want one more roll
-13. I want to be able to have a perfect game with strikes only (300 points)  
-14. I want to be able to have a gutter game (0 points)
+:white_check_mark: I want 10 frames per game   
+:white_check_mark: I want to roll twice per frame   
+:white_check_mark: I want each roll to be added to my frame’s total   
+:white_check_mark: I cannot roll more than the sum of 10 in one frame     
+:white_check_mark: I want to be able to roll in the gutter (0 points)    
+:white_check_mark: I want to be able to roll a strike (1 roll === 10)   
+:white_check_mark: If I roll a strike, I want 2 more rolls as a bonus    
+:white_check_mark: I want to be able to roll a spare (1 frame (2 rolls) === 10)   
+:white_check_mark: If I roll a spare, I want an extra roll (first roll in next frame = doubled as a bonus)  
+:white_check_mark: At the end of 10 frames, I want my total to be added up into a final score   
+:white_check_mark: If I roll a strike in frame 10, I want 2 more rolls   
+:white_check_mark: If I roll a spare in frame 10, I want one more roll   
+:white_check_mark: I want to be able to have a perfect game with strikes only (300 points)     
+:white_check_mark: I want to be able to have a gutter game (0 points)   
 
 ### Optional Extras
 

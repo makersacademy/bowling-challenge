@@ -1,86 +1,94 @@
 describe('Frame', function() {
   var frame;
   beforeEach(function() {
-   frame = new Frame();
+    frame = new Frame();
   })
 
-  it('starts out empty', function() {
-   expect(frame._points).toEqual(0);
- });
-
-  it('has 10 pins', function() {
-   expect(frame._standingPins).toBe(10);
-  });
-
-  it('knows how many times the player has rolled', function() {
-   frame.roll();
-   expect(frame._rolls).toEqual(1);
-  });
-
-  it('ups points and downs pins with rolls', function() {
-    spyOn(frame, 'hit').and.returnValue(2);
-    frame.roll();
-    expect(frame._firstRoll).toBe(2);
-    expect(frame._standingPins).toBe(8);
-    frame.roll();
-    expect(frame._secondRoll).toBe(2);
-    expect(frame._standingPins).toBe(6);
-   });
-
-   it('knows when the frame is complete', function() {
-     frame.roll();
-     frame.roll();
-     expect(frame.done()).toBe(true);
-   })
-
-  it('adds points together', function() {
-    spyOn(frame, 'hit').and.returnValue(3);
-    frame.roll();
-    frame.roll();
-    expect(frame.savePoints()).toEqual(6);
-  });
-
-   it('saves points', function() {
+  doubleRoll = function() {
     frame.roll()
-    expect(frame.savePoints()).toEqual(frame._points)
+    frame.roll()
+  }
+
+  describe('Basic structure:', function() {
+
+    it('starts out empty', function() {
+      expect(frame._firstRoll).toBe(0)
+      expect(frame._secondRoll).toBe(0)
+    });
+
+    it('is numbered from 1 to 10', function() {
+      var testFrame = new Frame(5);
+      expect(testFrame.whichFrame()).toBe(5);
+    });
+
+    it('has 10 pins', function() {
+      expect(frame._pins).toBe(10)
+    });
   });
 
-   it('can have a gutter roll', function() {
-     spyOn(frame, 'hit').and.returnValue(0);
-     frame.roll();
-     expect(frame.savePoints()).toBe(0);
-   })
+  describe('Calculations:', function() {
+    
+    it('ups points and downs pins with rolls', function() {
+      spyOn(frame, 'hit').and.returnValue(2);
+      doubleRoll()
+      expect(frame._secondRoll).toBe(2)
+      expect(frame._pins).toBe(6)
+    });
+    
+    it('adds points together', function() {
+      spyOn(frame, 'hit').and.returnValue(4)
+      doubleRoll()
+      expect(frame.points()).toBe(8)
+    });
 
-   it('has zero points with only gutter rolls', function() {
-     spyOn(frame, 'hit').and.returnValue(0);
-     frame.roll();
-     frame.roll();
-     expect(frame.gutter()).toBe(true);
-   })
+    it('knows how many times the player has rolled', function() {
+      frame.roll()
+      expect(frame._roll).toBe(2)
+    });
 
-   it('reads a spare', function() {
-    spyOn(frame, 'hit').and.returnValue(5)
-    frame.roll();
-    frame.roll();
-    expect(frame.spare()).toBe(true);
-   });
-
-  it('knows that strike ends the frame', function() {
-   spyOn(frame, 'hit').and.returnValue(10);
-   frame.roll();
-   expect(frame.strike()).toBe(true);
-   expect(frame.done()).toBe(true);
+    it('knows when the frame is complete', function() {
+      doubleRoll()
+      expect(frame.done()).toBeTruthy()
+    });
   });
 
-  it('can add bonus points', function() {
-    frame.addBonus(3);
-    expect(frame.savePoints()).toEqual(3);
+  describe('For Big Lebowski moves:', function() {
+
+    it('awards bonus points', function(){
+      frame.bonus(6)
+      expect(frame.points()).toBe(6)
+    });
+  
+    it('reads a spare', function() {
+      spyOn(frame, 'hit').and.returnValue(5)
+      doubleRoll()
+      expect(frame.superPlay()).toBe('spare')
+    });
+  
+    it('awards spare bonus points', function() {
+      spyOn(frame, 'hit').and.returnValue(7)
+      doubleRoll()
+      expect(frame.spare()).toBe(7)
+    });
+  
+    it('knows that a strike completes the frame', function() {
+      spyOn(frame, 'hit').and.returnValue(10)
+      frame.roll()
+      expect(frame.superPlay()).toBe('strike')
+      expect(frame.done()).toBeTruthy()
+    });
   });
 
-  it('calculates and adds bonus points for spares', function() {
-    spyOn(frame, 'hit').and.returnValue(3);
-    frame.roll();
-    // frame.roll();
-    expect(frame.spareBonus()).toEqual(3);
-  });
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
 });

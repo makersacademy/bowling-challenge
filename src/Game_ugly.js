@@ -44,14 +44,24 @@ Game.prototype._setupNewFrame = function () {
 
 Game.prototype.score = function score() {
   var score = 0
-  for (this.frame = 0; this.frame < 10; this.frame += 1) {
+  for (this.frame = 0; this.frame < 9; this.frame += 1) {
     if (this._isStrike(this.frame)) {
       score += 10 + this._strikeBonus(this.frame);
     } else if (this._isSpare(this.frame)) {
         score += 10 + this._spareBonus(this.frame);
     } else {score += this._frameTotal(this.frame)}
+    console.log('score for ' + this.frame + ' is ' + score);
   }
+  score += this._finalFrameScore();
   return score;
+};
+
+Game.prototype._finalFrameScore = function () {
+  if (this.frameHistory[9][0] === 10){
+    return this._frameTotal(9);
+  } else if (this.frameHistory[9][0] + this.frameHistory[9][1] === 10) {
+      return this._frameTotal(9);
+  } else { return this.frameHistory[9][0] + this.frameHistory[9][1] }
 };
 
 // shows the pin total for a given frame
@@ -79,16 +89,16 @@ Game.prototype._finalFrameBonusBall = function (frame) {
 };
 
 Game.prototype._spareBonus = function (frame) {
-  if (this._finalFrame(frame)) {
-    return this.frameHistory[frame][2];
-  }
-  else {return this.frameHistory[frame + 1][0]}
+  return this.frameHistory[frame + 1][0];
 };
 
 Game.prototype._strikeBonus = function (frame) {
-  if (this._finalFrame(frame)) {
-    return this._frameTotal(frame);
-  }
-  else {return this._frameTotal(frame + 1)}
-};
+  if (this._isStrike(frame + 1) && frame === 8 ) {
+    return this.frameHistory[frame + 1][0] + this.frameHistory[frame + 1][1];
+  } else if (this._isStrike(frame + 1)) {
+    return this.frameHistory[frame + 1][0] + this.frameHistory[frame + 2][0];
+  } else {return this.frameHistory[frame + 1][0] + this.frameHistory[frame + 1][1]}
+  };
+
+
 

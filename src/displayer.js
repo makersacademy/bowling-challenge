@@ -8,20 +8,20 @@ function Displayer() {
 
 Displayer.prototype.addToScoreCard = function () {
   var roll = Number(document.getElementById('playerInput').value)
-  console.log(this.scorecard.rolls);
   try {
     this.scorecard.enter_roll(roll)
   }
   catch(e) {
     window.alert(e.message);
   };
-  console.log(this.scorecard.rolls)
   for (i = 1; i <= this.scorecard.rolls.length; i++) {
     var rollToUpdate = document.getElementById("roll" + i);
     rollToUpdate.innerHTML = this.scorecard.rolls[i - 1];
   }
-
-  frameToUpdate = document.getElementById(`frame${this.scorecard.current_frame}`);
+  for (i = 1; i <= this.scorecard.frame_scores.length; i++) {
+    var frameToUpdate = document.getElementById("frame" + i);
+    frameToUpdate.innerHTML = this.scorecard.frame_scores[i - 1];
+  }
 };
 
 function resetInputText() {

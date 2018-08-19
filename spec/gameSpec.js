@@ -155,7 +155,6 @@ describe("Game", function() {
 				game.roll(4);
 			}
 		}
-
 		describe("strike score type", function() {
 
 			beforeEach(function() {
@@ -219,11 +218,8 @@ describe("Game", function() {
 					game.roll(10);
 				}
 				expect(game.currentScore).toEqual(300);
-				
 			});
 		});
-
 	});
-
 });
 

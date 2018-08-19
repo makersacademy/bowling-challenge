@@ -1,37 +1,53 @@
 
-Bowling Challenge
+:bowling: Bowling Scoreboard Challenge :bowling:
 =================
 
+## Makers Weekend Challenge, Weeks 5 & 6
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+### Using: Javascript, JQuery, Jasmine, DOM
+
+![The Big Lebowski](http://res.cloudinary.com/dani-devs-and-designs/image/upload/v1526749202/theDude4_orkwwr.png)
+
+ It seems that this year's all about tenpin bowling. [Here's a fun little "The Big Lebowski"-themed quote generator](https://daniellebooysen.com/random-quote-machine) I made a few months ago as part of the freeCodeCamp frontend development course.
 
 ## The Task
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. THE USER INPUTS THE ROLLS.**
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
 ___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+
+## My User Stories:
+
+:white_check_mark: I want 10 frames per game   
+:white_check_mark: I want to roll twice per frame   
+:white_check_mark: I want each roll to be added to my frame’s total   
+:white_check_mark: I cannot roll more than the sum of 10 in one frame     
+:white_check_mark: I want to be able to roll in the gutter (0 points)    
+:white_check_mark: I want to be able to roll a strike (1 roll === 10)   
+:white_check_mark: If I roll a strike, I want 2 more rolls as a bonus    
+:white_check_mark: I want to be able to roll a spare (1 frame (2 rolls) === 10)   
+:white_check_mark: If I roll a spare, I want an extra roll (first roll in next frame = doubled as a bonus)  
+:white_check_mark: At the end of 10 frames, I want my total to be added up into a final score   
+:white_check_mark: If I roll a strike in frame 10, I want 2 more rolls   
+:white_check_mark: If I roll a spare in frame 10, I want one more roll   
+:white_check_mark: I want to be able to have a perfect game with strikes only (300 points)     
+:white_check_mark: I want to be able to have a gutter game (0 points) 
+
+## Jasmine tests results:
+
+![Jasmine tests page 1](http://res.cloudinary.com/dani-devs-and-designs/image/upload/v1534715650/Screen_Shot_2018-08-19_at_22.49.03_itqyzc.png)
+
+![Jasmine tests page 2](http://res.cloudinary.com/dani-devs-and-designs/image/upload/v1534715650/Screen_Shot_2018-08-19_at_22.49.47_sxxhtv.png)
 
 ### Optional Extras
 
-In any order you like:
+In any order:
 
 * Create a nice interactive animated interface with jQuery.
 * Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+* Add [ESLint](http://eslint.org/) to your codebase and make your code conform. (I'm using [Prettier](https://prettier.io/) with VSCode)
 
 You might even want to start with ESLint early on in your work — to help you
 learn Javascript conventions as you go along.
@@ -60,10 +76,6 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 ### Perfect Game
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 

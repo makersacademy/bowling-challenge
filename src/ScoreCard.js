@@ -14,6 +14,9 @@ ScoreCard.prototype.enter_roll = function (roll) {
   if (this.first_roll_of_frame()) { //if on the first roll of a frame
     this.rolls.push(roll);
     if (roll < 10) { // if not a strike on the first roll of a frame
+      if (this.last_frame_was_spare) {
+        this.update_spare_midframe(roll); //moved to here
+      }
       this.current_roll ++;
     }
     else { //if strike on the first roll of a frame
@@ -30,6 +33,7 @@ ScoreCard.prototype.enter_roll = function (roll) {
     }
     else {
       if (this.spare(roll)) {
+        // removed from here
         this.update_previous_scores("spare");
         this.update_strikes_and_spares("spare");
       }
@@ -103,9 +107,6 @@ ScoreCard.prototype.update_previous_scores = function (current_frame_score) {
         };
         this.frame_scores.push(20);
       }
-      else if (this.last_frame_was_spare === true) {
-        this.frame_scores.push(10 + this.last_roll());
-      }
     break;
     default:
       if (this.last_frame_was_strike === true) {
@@ -115,5 +116,11 @@ ScoreCard.prototype.update_previous_scores = function (current_frame_score) {
         this.frame_scores.push(10 + current_frame_score);
       };
       this.frame_scores.push(current_frame_score);
+  }
+};
+
+ScoreCard.prototype.update_spare_midframe = function (roll) {
+  if (this.last_frame_was_spare === true) {
+    this.frame_scores.push(10 + roll);
   }
 };

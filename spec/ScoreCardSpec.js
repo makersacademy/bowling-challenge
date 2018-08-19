@@ -71,11 +71,10 @@ describe("#frame_scores", function () {
         scorecard.enter_roll(10);
         expect(scorecard.frame_scores).toEqual([20]);
       });
-      it("adds a score of 10 + first roll if not a strike next", function () {
+      it("adds a score of 10 + next roll as soon as it occurs", function () {
         scorecard.enter_roll(8);
         scorecard.enter_roll(2);
         scorecard.enter_roll(7);
-        scorecard.enter_roll(3);
         expect(scorecard.frame_scores).toEqual([17]);
       });
     });

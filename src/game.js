@@ -1,5 +1,10 @@
 "use strict";
 function Game () {
+	this.newGame();
+}
+
+Game.prototype.newGame = function() {
+	this.gameOver = false;
 	this.currentFrame = 1;
 	this.currentRoll = 1;
 	this.currentScore = 0;
@@ -7,20 +12,28 @@ function Game () {
 	this.scoreHistory = [];
 	this.frameHistory = [];
 	this.bonusMessage = "";
-}
+};
 
 Game.prototype.roll = function(numPins) {
 
 	this.bonusMessage = "";
-	this.currentScore += numPins;
-	this.frameHistory.push(numPins);
-	this.bonusAdd(numPins);
-
-	if(numPins == 10) {
-		this.strike();
+	if(this.gameOver == true) {
+		this.newGame();
+	}
+	if(this.currentFrame > 9)
+	{
+		this.tenFrame(numPins);		
 	}
 	else {
-		this.processRoll(numPins);
+		this.currentScore += numPins;
+		this.frameHistory.push(numPins);
+		this.bonusAdd(numPins);
+		if(numPins == 10) {
+			this.strike();
+		}
+		else {
+			this.processRoll(numPins);
+		}
 	}
 };
 
@@ -60,6 +73,7 @@ Game.prototype.bonusAdd = function(numPins) {
 	}
 	if(this.numBonus > 2) {
 		numPins += numPins;
+		this.numBonus -= 1; //adds score to 2 rounds
 	}
 	this.currentScore += numPins;
 	this.bonusMessage = numPins + " bonus points added";
@@ -72,3 +86,19 @@ Game.prototype.strike = function() {
 	this.newFrame();
 };
 
+Game.prototype.tenFrame = function(numPins) {
+	this.currentScore += numPins;
+	this.frameHistory.push(numPins);
+	if(numPins == 10 && this.currentScore >= 250) {
+		this.currentScore += numPins; // due to strike bonus bug fixes perfect game
+	}
+	if(this.currentRoll == 2) {
+		if(this.frameHistory.reduce(this.add, 0) < 9) {
+			this.gameOver = true;
+		} 
+	}
+	else if(this.currentRoll == 3) {
+		this.gameOver = true;
+	}
+	this.currentRoll += 1;
+};

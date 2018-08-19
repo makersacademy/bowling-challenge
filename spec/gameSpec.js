@@ -35,6 +35,50 @@ describe("Game", function() {
 		it("Has an empty string for bonusMessage", function() {
 			expect(game.bonusMessage).toEqual("");
 		});
+
+		it("is not game over", function() {
+			expect(game.gameOver).toEqual(false);
+		});
+	});
+
+	describe("tenth frame", function() {
+		
+		beforeEach(function() {
+			game.currentFrame = 10;
+		});
+
+		it("only has two rounds if no strike or spare", function() {
+			game.roll(4);
+			game.roll(3);
+			expect(game.gameOver).toEqual(true);
+			expect(game.currentScore).toEqual(7);
+			game.roll(4);
+			expect(game.currentScore).toEqual(4);
+		});
+
+		it("works correctly with a spare", function() {
+			game.roll(5);
+			game.roll(5);
+			expect(game.gameOver).toEqual(false);
+			game.roll(7);
+			expect(game.currentScore).toEqual(17);
+			expect(game.gameOver).toEqual(true);
+		});
+
+		it("works correctly with three strikes", function() {
+			game.roll(10);
+			game.roll(10);
+			expect(game.gameOver).toEqual(false);
+			game.roll(10);
+			expect(game.currentScore).toEqual(30);
+			expect(game.gameOver).toEqual(true);
+
+		});
+
+		it("starts new game when finished", function() {
+			game.roll(4);
+			expect(game.gameOver).toEqual(false);
+		});
 	});
 
 	describe("Bowling score types", function() {
@@ -105,6 +149,13 @@ describe("Game", function() {
 
 		});
 
+		function strikeAndTwoFrames() {
+			game.roll(10);
+			for(var i = 0; i < 4; i ++) {
+				game.roll(4);
+			}
+		}
+
 		describe("strike score type", function() {
 
 			beforeEach(function() {
@@ -132,19 +183,23 @@ describe("Game", function() {
 				expect(game.bonusMessage).toEqual("4 bonus points added");
 			});
 
-			it("Works correctly when more strikes", function() {
+			it("works when 2 strikes then 4 normal rolls", function() {
+				strikeAndTwoFrames();
+				expect(game.currentScore).toEqual(58);
+			});
+
+			it("works for 3 strikes then 4 normal rolls", function() {
 				game.roll(10);
-				expect(game.currentScore).toEqual(30);
-				expect(game.bonusMessage).toEqual("10 bonus points added");
+				strikeAndTwoFrames();
+				expect(game.currentScore).toEqual(88);
+			});
+
+			it("works for 3 strikes, 4 normal rolls and 2 strikes, 2 normal rolls", function() {
 				game.roll(10);
-				expect(game.currentScore).toEqual(60);
-				expect(game.bonusMessage).toEqual("30 bonus points added");
+				strikeAndTwoFrames();
 				game.roll(10);
-				expect(game.currentScore).toEqual(100);
-				expect(game.bonusMessage).toEqual("20 bonus points added");
-				game.roll(10);
-				expect(game.currentScore).toEqual(130);
-				expect(game.bonusMessage).toEqual("20 bonus points added");
+				strikeAndTwoFrames();
+				expect(game.currentScore).toEqual(150); // not passing as no add last bonus
 			});
 
 			it("works for strike then spare then roll", function () {
@@ -157,6 +212,14 @@ describe("Game", function() {
 				game.roll(5);
 				expect(game.currentScore).toEqual(40);
 				expect(game.bonusMessage).toEqual("5 bonus points added");
+			});
+			
+			it("works for perfect game", function() {
+				for(var i = 2; i < 13; i ++) {
+					game.roll(10);
+				}
+				expect(game.currentScore).toEqual(300);
+				
 			});
 		});
 

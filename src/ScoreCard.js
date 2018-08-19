@@ -11,6 +11,9 @@ function ScoreCard() {
 };
 
 ScoreCard.prototype.enter_roll = function (roll) {
+  if (roll > 10 ) {
+    throw new Error("Can not knock more than 10 pins in a single roll");
+  }
   if (this.first_roll_of_frame()) { //if on the first roll of a frame
     this.rolls.push(roll);
     if (roll < 10) { // if not a strike on the first roll of a frame

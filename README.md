@@ -33,7 +33,13 @@ ___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. 
 :white_check_mark: If I roll a strike in frame 10, I want 2 more rolls   
 :white_check_mark: If I roll a spare in frame 10, I want one more roll   
 :white_check_mark: I want to be able to have a perfect game with strikes only (300 points)     
-:white_check_mark: I want to be able to have a gutter game (0 points)   
+:white_check_mark: I want to be able to have a gutter game (0 points) 
+
+## Jasmine tests results:
+
+![Jasmine tests page 1](http://res.cloudinary.com/dani-devs-and-designs/image/upload/v1534715650/Screen_Shot_2018-08-19_at_22.49.03_itqyzc.png)
+
+![Jasmine tests page 2](http://res.cloudinary.com/dani-devs-and-designs/image/upload/v1534715650/Screen_Shot_2018-08-19_at_22.49.47_sxxhtv.png)
 
 ### Optional Extras
 

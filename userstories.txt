@@ -1,0 +1,3 @@
+As a bowler
+I want to write how many pins have been knocked on that go
+And see the overall score so far

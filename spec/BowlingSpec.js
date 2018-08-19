@@ -32,6 +32,11 @@ describe('Game', function(){
     expect(game.score()).toEqual(22);
   });
 
+  it ("A perfect game test, 12 strikes, results in score 300", function() {
+    rollMultiple(12,10);
+    expect(game.score()).toEqual(300);
+  });
+
 // Helper functions - transfer to helper file
 
   function rollMultiple(rolls, pins) {

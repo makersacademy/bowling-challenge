@@ -16,22 +16,16 @@ Workflow:
 Progress Update:
 --------
 
-- [x] Business rules identified and tests created
-        Uncles Bob's rules:
-        - Test 1: testGutterGame() 
-        - Test 2: testAllOnes()  
-        - Test 3: testOneSpare() 
-        - Test 4: testOneStrike() 
-        - Test 5: testPerfectGame() 
+- [x] Business rules identified and tests created  
 - [x] Solution 1 referred to as Ugly Solution
 - [x] Soultion 2 referred to as the Neat or Uncle Bob Solution
 
 The Ugly Solution
 ------
 I thought I was on to a winner with this approach. 
-I captured all the throws in frame sequence using both a rollHistory array and a frameHistory array. I knew I didn't need both but I thought they may come in handy for the GUI interface.
+I captured all the throws in frame sequence using both a rollHistory array and a frameHistory array. I knew I didn't need both but I thought they may come in handy for the GUI interface.  
 The frameHistory gave an output like this:  
-`[10,0][10,0][3,7][0,0][10,0][10,0][3,7][0,0][2,8][10,10,10]`
+`[10,0][10,0][3,7][0,0][10,0][10,0][3,7][0,0][2,8][10,10,10]`  
 I thought this was pretty cool but when I came to deal with the scoring for the final frame I ended up falling into a quagmnire of if, else if and else statements. Yuk!
 It does work though and I learned plenty....
 
@@ -40,6 +34,13 @@ The Neat Solution
 Heavily inspired by Uncle Bob (whoever he is?).  
 This differs initially by holding an rollHistory array that only contains actual rolls. It isn't as visually expressive as my rollHistory array but having this enables me to calculate the spare and strike bonus without getting fixated on the frame number and it's vicinity to the final frame.  
 It's a super cool solution.
+
+*Uncles Bob's rules:*  
+- Test 1: testGutterGame()  
+- Test 2: testAllOnes()  
+- Test 3: testOneSpare() 
+- Test 4: testOneStrike() 
+- Test 5: testPerfectGame() 
 
 
 *Disclaimer: This uses the [Uncle Bob Bowling Game Kata](http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata) for inspiration. It's written in Java, but that is very similar to JavaScript*  

@@ -10,7 +10,7 @@ function Frame() {
 }
 
 Frame.prototype.roll = function() {
-  var hit = this._hit();
+  var hit = this.hit();
   this._rolls === 0 ? this._firstRoll = hit : this._secondRoll = hit;
   this._points += hit;
   this._standingPins -= hit;
@@ -18,7 +18,7 @@ Frame.prototype.roll = function() {
 }
 
 // Using Math.random for now to simulate user input
-Frame.prototype._hit = function() {
+Frame.prototype.hit = function() {
   return Math.floor(Math.random() * (this._points + 1));
 }
 
@@ -26,20 +26,20 @@ Frame.prototype.savePoints = function() {
   return this._firstRoll + this._secondRoll + this._bonus;
 }
 
-Frame.prototype.isGutter = function() {
+Frame.prototype.gutter = function() {
   return this._rolls === 2 && this._points === 0 ;   
 }
 
-Frame.prototype.isStrike = function() {
+Frame.prototype.strike = function() {
   return this._rolls === 1 && this._points === 10;
 }
 
-Frame.prototype.isSpare = function() {
+Frame.prototype.spare = function() {
   return this._rolls === 2 && this._points === 10;
 }
 
-Frame.prototype.isDone = function() {
-  if (this.isStrike || this.__rolls === 2) {
+Frame.prototype.done = function() {
+  if (this.strike || this.__rolls === 2) {
     return true;
   }
   return false;

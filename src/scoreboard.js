@@ -7,8 +7,8 @@ function Scoreboard() {
 
 Scoreboard.prototype.roll = function() {
   this._currentFrame.roll();
-  if (this._currentFrame.isDone()) {
-    this._storeFrame();
+  if (this._currentFrame.done()) {
+    this.saveFrame();
   }
 }
 
@@ -19,10 +19,24 @@ Scoreboard.prototype.total = function() {
   })
   return total;
 }
- Scoreboard.prototype._storeFrame = function() {
+
+Scoreboard.prototype.saveFrame = function() {
+  if (this._frames.length > 0) {
+    this.addBonus(this._frames[this._frames.length - 1], this._currentFrame)
+  }
   this._frames.push(this._currentFrame);
   this._currentFrame = new Frame();
 }
+
+Scoreboard.prototype.addBonus = function(prev, current) {
+  if (prev.spare()) {
+    prev.addBonus(current.spareBonus());
+  }
+  if (prev.strike()) {
+    prev.addBonus(current.savePoints());
+  }
+}
+
  // Game.prototype._strikeBonus = function() {
 //   this._frames.forEach(function(frame) {
 //   })

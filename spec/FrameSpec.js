@@ -18,7 +18,7 @@ describe('Frame', function() {
   });
 
   it('ups points and downs pins with rolls', function() {
-    spyOn(frame, '_hit').and.returnValue(2);
+    spyOn(frame, 'hit').and.returnValue(2);
     frame.roll();
     expect(frame._firstRoll).toBe(2);
     expect(frame._standingPins).toBe(8);
@@ -30,14 +30,14 @@ describe('Frame', function() {
    it('knows when the frame is complete', function() {
      frame.roll();
      frame.roll();
-     expect(frame.isDone()).toBe(true);
+     expect(frame.done()).toBe(true);
    })
 
   it('adds points together', function() {
-    spyOn(frame, '_hit').and.returnValue(3);
+    spyOn(frame, 'hit').and.returnValue(3);
     frame.roll();
     frame.roll();
-    expect(frame._points).toEqual(6);
+    expect(frame.savePoints()).toEqual(6);
   });
 
    it('saves points', function() {
@@ -46,30 +46,30 @@ describe('Frame', function() {
   });
 
    it('can have a gutter roll', function() {
-     spyOn(frame, '_hit').and.returnValue(0);
+     spyOn(frame, 'hit').and.returnValue(0);
      frame.roll();
-     expect(frame._points).toBe(0);
+     expect(frame.savePoints()).toBe(0);
    })
 
    it('has zero points with only gutter rolls', function() {
-     spyOn(frame, '_hit').and.returnValue(0);
+     spyOn(frame, 'hit').and.returnValue(0);
      frame.roll();
      frame.roll();
-     expect(frame.isGutter()).toBe(true);
+     expect(frame.gutter()).toBe(true);
    })
 
    it('reads a spare', function() {
-    spyOn(frame, '_hit').and.returnValue(5)
+    spyOn(frame, 'hit').and.returnValue(5)
     frame.roll();
     frame.roll();
-    expect(frame.isSpare()).toBe(true);
+    expect(frame.spare()).toBe(true);
    });
 
   it('knows that strike ends the frame', function() {
-   spyOn(frame, '_hit').and.returnValue(10);
+   spyOn(frame, 'hit').and.returnValue(10);
    frame.roll();
-   expect(frame.isStrike()).toBe(true);
-   expect(frame.isDone()).toBe(true);
+   expect(frame.strike()).toBe(true);
+   expect(frame.done()).toBe(true);
   });
 
   it('can add bonus points', function() {
@@ -78,7 +78,7 @@ describe('Frame', function() {
   });
 
   it('calculates and adds bonus points for spares', function() {
-    spyOn(frame, '_hit').and.returnValue(3);
+    spyOn(frame, 'hit').and.returnValue(3);
     frame.roll();
     // frame.roll();
     expect(frame.spareBonus()).toEqual(3);

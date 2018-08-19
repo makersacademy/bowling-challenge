@@ -23,7 +23,7 @@ describe("Scorecard", function() {
       for(var i=0; i < times; i++){
         scorecard.roll(3);
       };
-      expect(scorecard.score).toEqual(60);
+      expect(scorecard.cumulativeScore).toEqual(60);
     });
 
     it('ends the frame early if strike rolled', function() {
@@ -38,14 +38,29 @@ describe("Scorecard", function() {
       scorecard.roll(10);
       scorecard.roll(8);
       scorecard.roll(1);
-      expect(scorecard.allFrames[0]).toEqual(19);
+      expect(scorecard.cumulativeScore).toEqual(28);
+    });
+
+    it('gives a score of 60 if a turkey is immediately rolled', function(){
+      scorecard.roll(10);
+      scorecard.roll(10);
+      scorecard.roll(10);
+      expect(scorecard.cumulativeScore).toEqual(60);
+    });
+
+    it('gives a score of 90 if a 4 strikes are immediately rolled', function(){
+      scorecard.roll(10);
+      scorecard.roll(10);
+      scorecard.roll(10);
+      scorecard.roll(10);
+      expect(scorecard.cumulativeScore).toEqual(90);
     });
 
     it('rewards a spare by giving a bonus of the next roll', function() {
       scorecard.roll(9);
       scorecard.roll(1);
       scorecard.roll(8);
-      expect(scorecard.allFrames[0]).toEqual(18);
+      expect(scorecard.cumulativeScore).toEqual(26);
     });
   });
 });

@@ -7,7 +7,6 @@ describe('Game', function(){
     game = new Game();
   });
 
-
   it("A gutter game has a zero score", function(){
     rollMultiple(20,0);
     expect(game.score()).toEqual(0);
@@ -25,6 +24,14 @@ describe('Game', function(){
     expect(game.score()).toEqual(16);
   });
 
+  it ("A single strike test, followed by two rolls of 3, results in score 22", function() {
+    rollStrike();
+    game.roll(3);
+    game.roll(3);
+    rollMultiple(16,0);
+    expect(game.score()).toEqual(22);
+  });
+
 // Helper functions - transfer to helper file
 
   function rollMultiple(rolls, pins) {
@@ -38,7 +45,7 @@ describe('Game', function(){
     game.roll(5);
   }
 
+  function rollStrike() {
+    game.roll(10);
+  }
 });
-
-
-

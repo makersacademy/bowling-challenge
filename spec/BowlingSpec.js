@@ -83,5 +83,46 @@ describe('Bowling', function(){
       expect(bowling.maxTotal).toEqual(73)
     });
 
+    it('gives a max point game of 300', function(){
+      bowling.frameOneFirstRoll(10);
+      bowling.frameTwoFirstRoll(10);
+      bowling.frameThreeFirstRoll(10);
+      bowling.frameFourFirstRoll(10);
+      bowling.frameFiveFirstRoll(10);
+      bowling.frameSixFirstRoll(10);
+      bowling.frameSevenFirstRoll(10);
+      bowling.frameEightFirstRoll(10);
+      bowling.frameNineFirstRoll(10);
+      bowling.frameTenFirstRoll(10);
+      bowling.frameTenSecondRoll(10);
+      bowling.frameTenThirdRoll(10);
+      expect(bowling.maxTotal).toEqual(300);
+    });
+
+    it('calculates random scores', function(){
+      bowling.frameOneFirstRoll(4);
+      bowling.frameOneSecondRoll(6);
+      bowling.frameTwoFirstRoll(5);
+      bowling.frameTwoSecondRoll(5);
+      bowling.frameThreeFirstRoll(2);
+      bowling.frameThreeSecondRoll(8);
+      bowling.frameFourFirstRoll(3);
+      bowling.frameFourSecondRoll(7);
+      bowling.frameFiveFirstRoll(6);
+      bowling.frameFiveSecondRoll(4);
+      bowling.frameSixFirstRoll(6);
+      bowling.frameSixSecondRoll(4);
+      bowling.frameSevenFirstRoll(6);
+      bowling.frameSevenSecondRoll(4);
+      bowling.frameEightFirstRoll(6);
+      bowling.frameEightSecondRoll(4);
+      bowling.frameNineFirstRoll(6);
+      bowling.frameNineSecondRoll(4);
+      bowling.frameTenFirstRoll(10);
+      bowling.frameTenSecondRoll(10);
+      bowling.frameTenThirdRoll(10);
+      expect(bowling.maxTotal).toEqual(170)
+    });
+
   });
 });

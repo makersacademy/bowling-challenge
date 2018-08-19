@@ -1,0 +1,96 @@
+input[type=range].rollInputBox {
+    -webkit-appearance: none;
+    width: 42%;
+    margin: 13.8px 0;
+  }
+  input[type=range].rollInputBox:focus {
+    outline: none;
+  }
+  input[type=range].rollInputBox::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 3.9px 3.9px 1px #00003e, 0px 0px 3.9px #000058;
+    background: #c071a9;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+  }
+  input[type=range].rollInputBox::-webkit-slider-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 2.7px solid #697b3e;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: rgba(129, 255, 0, 0.68);
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -14px;
+  }
+  input[type=range].rollInputBox:focus::-webkit-slider-runnable-track {
+    background: #ecd4e5;
+  }
+  input[type=range].rollInputBox::-moz-range-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 3.9px 3.9px 1px #00003e, 0px 0px 3.9px #000058;
+    background: #c071a9;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+  }
+  input[type=range].rollInputBox::-moz-range-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 2.7px solid #697b3e;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: rgba(129, 255, 0, 0.68);
+    cursor: pointer;
+  }
+  input[type=range].rollInputBox::-ms-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+  input[type=range].rollInputBox::-ms-fill-lower {
+    background: #70325e;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 3.9px 3.9px 1px #00003e, 0px 0px 3.9px #000058;
+  }
+  input[type=range].rollInputBox::-ms-fill-upper {
+    background: #c071a9;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 3.9px 3.9px 1px #00003e, 0px 0px 3.9px #000058;
+  }
+  input[type=range].rollInputBox::-ms-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 2.7px solid #697b3e;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: rgba(129, 255, 0, 0.68);
+    cursor: pointer;
+    height: 8.4px;
+  }
+  input[type=range].rollInputBox:focus::-ms-fill-lower {
+    background: #c071a9;
+  }
+  input[type=range].rollInputBox:focus::-ms-fill-upper {
+    background: #ecd4e5;
+  }
+
+  .scoreTableClass {
+      width: 30%;
+      font-size: 200%;
+      border: 10px red ridge;
+      padding: 1%;
+      border-spacing: 10px;
+      background-color: #f1f1c1;
+  }
+
+  

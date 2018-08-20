@@ -47,6 +47,8 @@ It's a super cool solution.
 
 Next Steps:
 --------
+- [ ] More tests to protect from edge cases. Eg. second roll of frame shouldn't allow frame total to exceed 10  
+- [ ] Prevent user from rolling more than 10 frames - basically an end game catcher  
 - [ ] GUI developed
 
 

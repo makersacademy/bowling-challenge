@@ -93,8 +93,6 @@ Displayer.prototype.specialGameEndings = function (score) {
   }
 }
 
-
-
 playerInputElement.addEventListener("keyup", function(event) {
   // Cancel the default action, if needed
   event.preventDefault();

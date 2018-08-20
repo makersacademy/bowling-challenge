@@ -7,16 +7,14 @@ function ScoreCard() {
   this.last_frame_was_strike = false;
   this.two_frames_ago_was_strike = false;
   this.last_frame_was_spare = false;
-  this.last_frame_score = 0;
-  this.two_frames_ago_score = 0;
 };
 
 ScoreCard.prototype.enter_roll = function (roll) {
-  if ([0,1,2,3,4,5,6,7,8,9,10].includes(roll) === false) {
-    throw new Error("Please enter a valid integer equal to or greater than 0");
-  }
   if (roll > 10 ) {
     throw new Error("Can not knock more than 10 pins in a single roll");
+  }
+  if ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].includes(roll) === false) {
+    throw new Error("Please enter a valid integer equal to or greater than 0");
   }
   if (this.first_roll_of_frame()) { //if on the first roll of a frame
     this.rolls.push(roll);
@@ -59,24 +57,6 @@ ScoreCard.prototype.enter_roll = function (roll) {
       this.current_frame ++;
     }
   }
-};
-
-
-
-ScoreCard.prototype.last_roll = function () {
-  return this.rolls[this.current_roll - 2];
-}
-
-ScoreCard.prototype.first_roll_of_frame = function () {
-  return (this.current_roll % 2 === 1);
-};
-
-ScoreCard.prototype.over_ten_pins_in_one_frame = function (roll) {
-  return ((this.last_roll() + roll) > 10);
-};
-
-ScoreCard.prototype.spare = function (roll) {
-  return ((this.last_roll() + roll) === 10);
 };
 
 ScoreCard.prototype.update_strikes_and_spares = function (current_frame_score) {
@@ -133,6 +113,22 @@ ScoreCard.prototype.update_twoStrikesAgo_midframe = function (roll) {
       this.frame_scores.push(20 + roll)
     }
   }
+};
+
+ScoreCard.prototype.last_roll = function () {
+  return this.rolls[this.current_roll - 2];
+}
+
+ScoreCard.prototype.first_roll_of_frame = function () {
+  return (this.current_roll % 2 === 1);
+};
+
+ScoreCard.prototype.over_ten_pins_in_one_frame = function (roll) {
+  return ((this.last_roll() + roll) > 10);
+};
+
+ScoreCard.prototype.spare = function (roll) {
+  return ((this.last_roll() + roll) === 10);
 };
 
 ScoreCard.prototype.total_score = function () {

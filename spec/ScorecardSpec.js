@@ -63,5 +63,13 @@ describe("Scorecard", function() {
       scorecard.roll(1);
       expect(scorecard.cumulativeScore).toEqual(27);
     });
+
+    it('allows 3 rolls in 10th frame if a spare or strike rolled', function(){
+      scorecard.repeat(0, 18)
+      scorecard.roll(10);
+      scorecard.roll(2);
+      scorecard.roll(3);
+      expect(scorecard.cumulativeScore).toEqual(20);
+    });
   });
 });

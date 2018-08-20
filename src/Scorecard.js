@@ -15,33 +15,38 @@ Scorecard.prototype.roll = function(roll) {
   else{
     this.cumulativeScore += roll;
     this.frame.push(roll);
-    if(this.strikebonus > 0){
-      this.cumulativeScore += roll;
-      this.strikebonus -=1;
-    };
-    if(this.strikebonus2 > 0){
-      this.cumulativeScore += roll;
-      this.strikebonus2 -=1;
-    };
-    if(this.sparebonus > 0){
-      this.cumulativeScore += roll;
-      this.sparebonus -= 1;
-    };
     this.frameScore += roll;
-    this.allRolls.push(roll);
-    if(roll === 10 && this.frame.length === 1){
-      this.strike();
-      this.endFrame();
+    if(this.frame.length === 1 && this.allFrames === 9 || this.allFrames === 10){
+      frameTen();
     }
-    else if(this.frame.length === 2){
-      if(this.frameScore === 10){
-        this.spare();
+    else{
+      if(this.strikebonus > 0){
+        this.cumulativeScore += roll;
+        this.strikebonus -=1;
+      };
+      if(this.strikebonus2 > 0){
+        this.cumulativeScore += roll;
+        this.strikebonus2 -=1;
+      };
+      if(this.sparebonus > 0){
+        this.cumulativeScore += roll;
+        this.sparebonus -= 1;
+      };
+      this.allRolls.push(roll);
+      if(roll === 10 && this.frame.length === 1){
+        this.strike();
         this.endFrame();
       }
-      else{
-        this.endFrame();
+      else if(this.frame.length === 2){
+        if(this.frameScore === 10){
+          this.spare();
+          this.endFrame();
+        }
+        else{
+          this.endFrame();
+        };
       };
-    };
+    }
   };
 };
 
@@ -61,6 +66,15 @@ Scorecard.prototype.strike = function(){
   }
   else{
     this.strikebonus = 2;
+  };
+};
+
+Scorecard.prototype.frameTen = function(){
+  if(roll === 10 && this.frame.length === 1){
+    this.strike();
+  }
+  else if(this.frame.length === 2 && this.frameScore === 10){
+    this.spare();
   };
 };
 

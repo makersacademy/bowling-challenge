@@ -41,9 +41,9 @@ th {
   margin-left: auto;
   margin-right: auto;
 }
-.no_border {
-  border: 0;
-}
 .less_tall {
   height: 4vh;
+}
+.no_border {
+  border: 0;
 }

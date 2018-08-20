@@ -40,7 +40,6 @@ Displayer.prototype.gameOverPopUp = function (score) {
   window.alert(`Game Over, final score is ${this.scorecard.total_score()}. ` + this.specialGameEndings(score));
 }
 
-
 Displayer.prototype.resetInputText = function () {
   document.getElementById('playerInput').value = '';
 }

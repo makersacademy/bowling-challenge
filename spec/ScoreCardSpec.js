@@ -9,21 +9,17 @@ describe("ScoreCard", function () {
   });
 
   describe("#rolls", function () {
-
     it("returns an array of all rolls so far for the current game", function () {
       expect(scorecard.rolls).toEqual([]);
     });
-
   });
 
   describe("#frame_scores", function () {
-
     it("returns an array of all frame scores so far for the current game", function () {
       expect(scorecard.rolls).toEqual([]);
     });
 
     describe("special conditions", function () {
-
       describe("single strike", function () {
         it("does not update until the next non-strike", function () {
           scorecard.enter_roll(10);
@@ -86,7 +82,6 @@ describe("ScoreCard", function () {
   });
 
   describe("#current_roll", function() {
-
     it("initiates at 1", function () {
       expect(scorecard.current_roll).toEqual(1);
     });
@@ -217,6 +212,7 @@ describe("ScoreCard", function () {
         expect(scorecard.gameOver()).toBe(true);
       });
     });
+
     describe("spare on last frame", function () {
       it("is true after 21 total rolls", function () {
         for (var i = 1; i < 19; i++) {
@@ -229,6 +225,7 @@ describe("ScoreCard", function () {
         expect(scorecard.gameOver()).toBe(true);
       });
     });
+    
     describe("neither strike nor spare on last frame", function () {
       it("is true after 20 total rolls", function () {
         for (var i = 1; i < 21; i++) {

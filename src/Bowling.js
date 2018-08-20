@@ -68,7 +68,6 @@ Bowling.prototype.frameOneSecondRoll = function(value){
   this.maxTotal += value1}
 };
 
-///////////////////////////////////////---------------------------------///////////////////////////////////////////////////////////
 
 Bowling.prototype.frameTwoFirstRoll = function(value){
   var value1 = Number(value)
@@ -88,8 +87,6 @@ Bowling.prototype.frameTwoSecondRoll = function(value){
   this.maxTotal += value1
   if (this.roll1 === 10) {this.totalStrikeBonus1 += this.roll4, this.frameOneTotal += value1, this.maxTotal += value1}}
 };
-
-///////////////////////////////////////---------------------------------///////////////////////////////////////////////////////////
 
 Bowling.prototype.frameThreeFirstRoll = function(value){
   var value1 = Number(value)
@@ -111,8 +108,6 @@ Bowling.prototype.frameThreeSecondRoll = function(value){
   this.maxTotal += value1
   if (this.roll3 === 10) {this.totalStrikeBonus2 += this.roll6, this.frameTwoTotal += value1, this.maxTotal += value1}}
 };
-
-////////////////////////////////////////----------------------------------//////////////////////////////////////////////////////////
 
 Bowling.prototype.frameFourFirstRoll = function(value){
   var value1 = Number(value)
@@ -136,8 +131,6 @@ Bowling.prototype.frameFourSecondRoll = function(value){
   if (this.roll5 === 10) {this.totalStrikeBonus3 += this.roll8, this.frameThreeTotal += value1, this.maxTotal += value1}}
 };
 
-///////////////////////////////////////---------------------------------///////////////////////////////////////////////////////////
-
 Bowling.prototype.frameFiveFirstRoll = function(value){
   var value1 = Number(value)
   if (value1 > 10) {alert("You can't score more than 10, silly")}
@@ -158,8 +151,6 @@ Bowling.prototype.frameFiveSecondRoll = function(value){
   this.maxTotal += value1
   if (this.roll3 === 10) {this.totalStrikeBonus4 += this.roll10, this.frameFourTotal += value1, this.maxTotal += value1}}
 };
-
-///////////////////////////////////////---------------------------------///////////////////////////////////////////////////////////
 
 Bowling.prototype.frameSixFirstRoll = function(value){
   var value1 = Number(value)
@@ -182,8 +173,6 @@ Bowling.prototype.frameSixSecondRoll = function(value){
   if (this.roll3 === 10) {this.totalStrikeBonus5 += this.roll12, this.frameFiveTotal += value1, this.maxTotal += value1}}
 };
 
-///////////////////////////////////////---------------------------------///////////////////////////////////////////////////////////
-
 Bowling.prototype.frameSevenFirstRoll = function(value){
   var value1 = Number(value)
   if (value1 > 10) {alert("You can't score more than 10, silly")}
@@ -204,8 +193,6 @@ Bowling.prototype.frameSevenSecondRoll = function(value){
   this.maxTotal += value1
   if (this.roll3 === 10) {this.totalStrikeBonus6 += this.roll14, this.frameSixTotal += value1, this.maxTotal += value1}}
 };
-
-///////////////////////////////////////---------------------------------///////////////////////////////////////////////////////////
 
 Bowling.prototype.frameEightFirstRoll = function(value){
   var value1 = Number(value)
@@ -228,8 +215,6 @@ Bowling.prototype.frameEightSecondRoll = function(value){
   if (this.roll3 === 10) {this.totalStrikeBonus7 += this.roll16, this.frameSevenTotal += value1, this.maxTotal += value1}}
 };
 
-///////////////////////////////////////---------------------------------///////////////////////////////////////////////////////////
-
 Bowling.prototype.frameNineFirstRoll = function(value){
   var value1 = Number(value)
   if (value1 > 10) {alert("You can't score more than 10, silly")}
@@ -251,8 +236,6 @@ Bowling.prototype.frameNineSecondRoll = function(value){
   if (this.roll3 === 10) {this.totalStrikeBonus8 += this.roll18, this.frameEightTotal += value1, this.maxTotal += value1}}
 };
 
-///////////////////////////////////////---------------------------------///////////////////////////////////////////////////////////
-
 Bowling.prototype.frameTenFirstRoll = function(value){
   var value1 = Number(value)
   if (value1 > 10) {alert("You can't score more than 10, silly")}
@@ -266,7 +249,7 @@ Bowling.prototype.frameTenFirstRoll = function(value){
 Bowling.prototype.frameTenSecondRoll = function(value){
   var value1 = Number(value)
   if (this.roll19 === 10 && value1 > 10) {alert("You can't score more than 10, silly")}
-  if (this.roll19 + value1 > 10) {alert("You cant do that")}
+  if (this.roll19 !== 10 && this.roll19 + value1 > 10) {alert("You cant do that")}
   else {this.roll20 = value1,
   this.frameTenTotal += value1,
   this.maxTotal += value1
@@ -277,7 +260,7 @@ Bowling.prototype.frameTenThirdRoll = function(value){
   var value1 = Number(value)
   if (this.roll20 === 10 && value1 > 10) {alert("You can't score more than 10, silly")}
   if (this.roll19 + this.roll20 < 10) {alert("Sorry, you don't have any extra balls to throw")}
-  if (this.roll19 === 10 && this.roll20 + value1 > 10) {alert("insufficent pins remaining")}
+  if (this.roll19 === 10 && this.roll20 !== 10 && this.roll20 + value1 > 10) {alert("insufficent pins remaining")}
   else {this.roll21 = value1,
   this.frameTenTotal += value1,
   this.maxTotal += value1}

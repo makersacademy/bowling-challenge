@@ -1,0 +1,49 @@
+caption {
+  font-size: 2em;
+  font-style: italic;
+}
+html, body {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
+table {
+  border: 3px solid black;
+  border-collapse: collapse;
+  margin: 15vh auto;
+  width: 90vw;
+  table-layout: fixed;
+}
+td, th {
+  border: 1px solid black;
+  padding: 1px;
+  table-layout: fixed;
+}
+td {
+  height: 6vh;
+}
+th {
+  background-color: #f2f2f2;
+  width: 9vw;
+  height: 4vh;
+}
+#total_score_title {
+  background-color: #f2f2f2;
+  text-align: right;
+}
+.border_sides {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-top: 0;
+}
+.input_container {
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+.less_tall {
+  height: 4vh;
+}
+.no_border {
+  border: 0;
+}

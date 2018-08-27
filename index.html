@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 60%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+</style>
+</head>
+<body>
+
+<center><h1>Bowling Scorecard</h1></center>
+
+<center><table>
+  <tr>
+    <th>Frames</th>
+    <th colspan="3"><center>- ~ - ~ - ~ - ~ - ~ - ~ - ~ Scores ~ - ~ - ~ - ~ - ~ - ~ - ~ -</center></th>
+    <th>Spare Bonus</th>
+    <th>Strike Bonus</th>
+    <th>Frame Total</th>
+  </tr>
+
+  <tr>
+    <td height="50">
+      <h2>1</h2>
+    </td>
+    <td height="50">
+      <input style=width:60%; type="number" min="1" max="10" id="a" />
+      <button id="roll1"/> Go </button>
+    </td>
+    <td height="50">
+      <input style=width:60%; type="number" id="b" />
+      <button id="roll2"/> Go </button>
+    </td>
+    <td bgcolor="#978784">
+    </td>
+    <td height="50">
+      <h3 id="spare-bonus-1"></h3>
+    </td>
+    <td height="50">
+      <h3 id="strike-bonus-1"></h3>
+    </td>
+    <td height="50">
+      <h3 id="frame-one-total"></h3>
+    </td>
+  </tr>
+
+  <tr>
+    <td height="50">
+      <h2>2</h2>
+    </td>
+    <td height="50">
+      <input style=width:60%; type="number" id="c" />
+      <button id="roll3"/> Go </button>
+    </td>
+    <td height="50">
+      <input style=width:60%; type="number" id="d" />
+      <button id="roll4"/> Go </button>
+    </td>
+    <td bgcolor="#978784">
+    </td>
+    <td height="50">
+      <h3 id="spare-bonus-2"></h3>
+    </td>
+    <td height="50">
+      <h3 id="strike-bonus-2"></h3>
+    </td>
+    <td height="50">
+      <h3 id="frame-two-total"></h3>
+    </td>
+  </tr>
+
+  <tr>
+    <td height="50">
+      <h2>3</h2>
+    </td>
+    <td height="50">
+      <input style=width:60%; type="number" id="e" />
+      <button id="roll5"/> Go </button>
+    </td>
+    <td height="50">
+      <input style=width:60%; type="number" id="f" />
+      <button id="roll6"/> Go </button>
+    </td>
+    <td bgcolor="#978784">
+    </td>
+    <td height="50">
+      <h3 id="spare-bonus-3"></h3>
+    </td>
+    <td height="50">
+      <h3 id="strike-bonus-3"></h3>
+    </td>
+    <td height="50">
+      <h3 id="frame-three-total"></h3>
+    </td>
+  </tr>
+
+  <tr>
+    <td height="50">
+      <h2>4</h2>
+    </td>
+    <td height="50">
+      <input style=width:60%; type="number" id="g" />
+      <button id="roll7"/> Go </button>
+    </td>
+    <td height="50">
+      <input style=width:60%; type="number" id="h" />
+      <button id="roll8"/> Go </button>
+    </td>
+    <td bgcolor="#978784">
+    </td>
+    <td height="50">
+      <h3 id="spare-bonus-4"></h3>
+    </td>
+    <td height="50">
+      <h3 id="strike-bonus-4"></h3>
+    </td>
+    <td height="50">
+      <h3 id="frame-four-total"></h3>
+    </td>
+  </tr>
+
+  <tr>
+    <td height="50">
+      <h2>5</h2>
+    </td>
+    <td height="50">
+      <input style=width:60%; type="number" id="i" />
+      <button id="roll9"/> Go </button>
+    </td>
+    <td height="50">
+      <input style=width:60%; type="number" id="j" />
+      <button id="roll10"/> Go </button>
+    </td>
+    <td bgcolor="#978784">
+    </td>
+    <td height="50">
+      <h3 id="spare-bonus-5"></h3>
+    </td>
+    <td height="50">
+      <h3 id="strike-bonus-5"></h3>
+    </td>
+    <td height="50">
+      <h3 id="frame-five-total"></h3>
+    </td>
+  </tr>
+
+  <tr>
+    <td height="50">
+      <h2>6</h2>
+    </td>
+    <td height="50">
+      <input style=width:60%; type="number" id="k" />
+      <button id="roll11"/> Go </button>
+    </td>
+    <td height="50">
+      <input style=width:60%; type="number" id="l" />
+      <button id="roll12"/> Go </button>
+    </td>
+    <td bgcolor="#978784">
+    </td>
+    <td height="50">
+      <h3 id="spare-bonus-6"></h3>
+    </td>
+    <td height="50">
+      <h3 id="strike-bonus-6"></h3>
+    </td>
+    <td height="50">
+      <h3 id="frame-six-total"></h3>
+    </td>
+  </tr>
+
+  <tr>
+    <td height="50">
+      <h2>7</h2>
+    </td>
+    <td height="50">
+      <input style=width:60%; type="number" id="m" />
+      <button id="roll13"/> Go </button>
+    </td>
+    <td height="50">
+      <input style=width:60%; type="number" id="n" />
+      <button id="roll14"/> Go </button>
+    </td>
+    <td bgcolor="#978784">
+    </td>
+    <td height="50">
+      <h3 id="spare-bonus-7"></h3>
+    </td>
+    <td height="50">
+      <h3 id="strike-bonus-7"></h3>
+    </td>
+    <td height="50">
+      <h3 id="frame-seven-total"></h3>
+    </td>
+  </tr>
+
+  <tr>
+    <td height="50">
+      <h2>8 </h2>
+    </td>
+    <td height="50">
+      <input style=width:60%; type="number" id="o" />
+      <button id="roll15"/> Go </button>
+    </td>
+    <td height="50">
+      <input style=width:60%; type="number" id="p" />
+      <button id="roll16"/> Go </button>
+    </td>
+    <td bgcolor="#978784">
+    </td>
+    <td height="50">
+      <h3 id="spare-bonus-8"></h3>
+    </td>
+    <td height="50">
+      <h3 id="strike-bonus-8"></h3>
+    </td>
+    <td height="50">
+      <h3 id="frame-eight-total"></h3>
+    </td>
+  </tr>
+
+  <tr>
+    <td height="50">
+      <h2>9</h2>
+    </td>
+    <td height="50">
+      <input style=width:60%; type="number" id="q" />
+      <button id="roll17"/> Go </button>
+    </td>
+    <td height="50">
+      <input style=width:60%; type="number" id="r" />
+      <button id="roll18"/> Go </button>
+    </td>
+    <td bgcolor="#978784">
+    </td>
+    <td height="50">
+      <h3 id="spare-bonus-9"></h3>
+    </td>
+    <td height="50">
+      <h3 id="strike-bonus-9"></h3>
+    </td>
+    <td height="50">
+      <h3 id="frame-nine-total"></h3>
+    </td>
+  </tr>
+
+  <tr>
+    <td height="50">
+      <h2>10</h2>
+    </td>
+    <td height="50">
+      <input style=width:60%; type="number" id="s" />
+      <button id="roll19"/> Go </button>
+    </td>
+    <td height="50">
+      <input style=width:60%; type="number" id="t" />
+      <button id="roll20"/> Go </button>
+    </td>
+    <td height="50">
+      <input style=width:60%; type="number" id="u" />
+      <button id="roll21"/> Go </button>
+    </td>
+    <td bgcolor="#978784">
+    </td>
+    <td bgcolor="#978784">
+    </td>
+    <td>
+      <h3 id="frame-ten-total"></h3>
+    </td>
+  </tr>
+
+  <tr>
+    <td height="50">
+      <h2>Total</h2>
+    </td>
+    <td bgcolor="#978784">
+    </td>
+    <td bgcolor="#978784">
+    </td>
+    <td bgcolor="#978784">
+    </td>
+    <td bgcolor="#978784">
+    </td>
+    <td bgcolor="#978784">
+    </td>
+    <td height="50">
+      <h3 id="total"></h3>
+    </td>
+  </tr>
+</table></center>
+
+    <script src="src/Bowling.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="./interface.js"></script>
+</body>
+</html>

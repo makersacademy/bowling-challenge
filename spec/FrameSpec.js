@@ -12,4 +12,16 @@ describe('Frame', function() {
       expect(frame.isStrike()).toEqual(false);
     });
   });
+
+  describe('isSpare', function() {
+    it('returns true if a frame is a spare', function() {
+      var frame = new Frame(5, 5);
+      expect(frame.isSpare()).toEqual(true);
+    });
+
+    it('returns false if the frame is not a spare', function() {
+      var frame = new Frame(1, 2);
+      expect(frame.isSpare()).toEqual(false);
+    });
+  });
 });

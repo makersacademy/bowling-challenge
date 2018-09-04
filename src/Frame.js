@@ -10,6 +10,11 @@ Frame.prototype.isStrike = function() {
 }
 
 Frame.prototype.isSpare = function() {
-  if (this.firstRoll + this.secondRoll == 10) return(true);
+  if ((!this.isStrike()) && (this.firstRoll + this.secondRoll == 10)) return(true);
   else return(false)
+}
+
+Frame.prototype.frameScore = function() {
+  if (this.thirdRoll != null) return (this.firstRoll + this.secondRoll +  this.thirdRoll)
+  else return (this.firstRoll + this.secondRoll)
 }

@@ -24,4 +24,16 @@ describe('Frame', function() {
       expect(frame.isSpare()).toEqual(false);
     });
   });
+
+  describe('frameScore', function() {
+    it('returns the sum of the rolls in the frame', function(){
+      var frame = new Frame(4, 3);
+      expect(frame.frameScore()).toEqual(7);
+    });
+
+    it('returns the sum of the rolls in the frame', function() {
+      var frame = new Frame(4, 6, 3);
+      expect(frame.frameScore()).toEqual(13);
+    });
+  });
 });

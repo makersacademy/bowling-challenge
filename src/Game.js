@@ -7,40 +7,55 @@ function Game(framesArray) {
 Game.prototype._convertToFrames = function(array) {
   arr = []
   array.forEach(function(element) {
-    if(element.length == 2)
+    if (element.length == 2) {
       arr.push(new Frame(element[0], element[1]))
-    else
+    } else {
       arr.push(new Frame(element[0], element[1], element[2]))
+    }
     });
   return arr;
   };
 
   Game.prototype.calculateScore = function() {
     var score = 0;
-    var i = 0;
-    while(i < 9) {
-      if (this.frames[i].isStrike())
-        if (this.frames[i+1].isStrike())
+    for (i = 0; i <= 7; i++) {
+      if (this.frames[i].isStrike()) {
+        if (this.frames[i+1].isStrike()) {
           score += (
-                    20 + 
-                    this.frames[i+2].firstRoll +
-                    this.secondRoll
-                    );
-        else
+                    20 +
+                    this.frames[i+2].firstRoll
+                   )
+        } else {
           score += (
-                    10 + 
-                    this.frames[i+1].firstRoll +
-                    this.frames[i+1].secondRoll
-                    );
-      else if (this.frames[i].isSpare())
+                    10 +
+                    this.frames[i+1].frameScore()
+                   )
+        }
+      } else if (this.frames[i].isSpare()) {
         score += (
-                  10 + 
+                  10 +
                   this.frames[i+1].firstRoll
-                  );
-      else
-        score += this.frames[i].frameScore();
-      console.log(score)
-      i += 1
+                 )
+      } else {
+        score += this.frames[i].frameScore()
+      }
+      console.log(score);
     }
-    return (score += this.frames[9].frameScore());
+
+    if (this.frames[8].isStrike()) {
+      score += (
+                10 +
+                this.frames[9].firstRoll +
+                this.frames[9].secondRoll
+               )
+    } else if (this.frames[8].isSpare()) {
+      score += (
+                10 +
+                this.frames[9].firstRoll
+               )
+    } else {
+      score += this.frames[8].frameScore()
+    }
+
+    return score += this.frames[9].frameScore();
   }

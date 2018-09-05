@@ -39,7 +39,6 @@ Game.prototype._convertToFrames = function(array) {
       } else {
         score += this.frames[i].frameScore()
       }
-      console.log(score);
     }
 
     if (this.frames[8].isStrike()) {

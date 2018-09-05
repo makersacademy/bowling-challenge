@@ -1,6 +1,7 @@
-function Player() {
+function Score() {
+  // This tracks the overall player score
+  this._score = 0
 }
-Player.prototype.play = function(song) {
-  this.currentlyPlayingSong = song;
-  this.isPlaying = true;
+Score.prototype.score = function() {
+  return this._score;
 };

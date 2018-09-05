@@ -1,6 +1,3 @@
-function Player() {
+function Frame() {
+  // This tracks the scores for a frame
 }
-Player.prototype.play = function(song) {
-  this.currentlyPlayingSong = song;
-  this.isPlaying = true;
-};

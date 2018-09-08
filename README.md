@@ -25,6 +25,37 @@ As usual please start by
 
 ___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
 
+
+### User Stories
+
+```
+As an avid bowler
+So I can keep track of my rolls
+I'd like to be able to enter my roll on a web interface
+
+As an avid bowler
+So I can keep track of my score
+I'd like my web interface to update my current score as I input my rolls
+
+As an avid bowler
+So I can be sure my score is correct
+I'd like my web interface to follow standard bowling rules when generating the score
+
+As an avid bowler
+So that I follow the game correctly
+I'd like my web interface to show which frame I'm on and if I'm allowed to roll
+
+-- IF I HAVE TIME --
+
+As an avid bowler
+So that I can keep track of my progress
+I'd like my game to be saved in a database
+
+As an avid bowler
+So that I can keep track of my progress
+I'd like my past games to be viewable through the web interface
+```
+
 ### Optional Extras
 
 In any order you like:

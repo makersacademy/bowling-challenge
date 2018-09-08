@@ -2,24 +2,25 @@
 
 function ScoreCalculator() {
   this._currentTurn = { frame: 1, roll: 1 };
-  this._nextTurn = {};
   this._scoreArray = Array(10).fill(0);
-  this._runningTotal = 0;
-  this._strike = { frame: 0 };
+  this._strikeFrame = 0;
+  this._spareFrame = 0;
 };
 
 ScoreCalculator.prototype.increment = function(knockedPins, nextTurn) {
-  this._nextTurn = nextTurn;
   this.incrementFrameTotal(knockedPins);
-  this.calculateCurrentTotal();
+  var currentTotal = this.calculateCurrentTotal();
   this._currentTurn = nextTurn;
-  return this._runningTotal;
+  return currentTotal;
 };
 
 ScoreCalculator.prototype.incrementFrameTotal = function(knockedPins) {
   this._addKnockedPinsToArray(knockedPins);
-  this._addStrikeScores(knockedPins);
+  this._strikeFrame !== 0 ? this._addStrikeScores(knockedPins) : null;
+  this._spareFrame !== 0 ? this._addSpareScores(knockedPins) : null;
   this._logIfStrike(knockedPins);
+  this._currentTurn.roll == 2 ? this._logIfSpare() : null;
+  console.log(this._spareFrame);
 };
 
 ScoreCalculator.prototype._addKnockedPinsToArray = function(knockedPins) {
@@ -27,20 +28,35 @@ ScoreCalculator.prototype._addKnockedPinsToArray = function(knockedPins) {
   this._scoreArray[index] += knockedPins;
 };
 
-ScoreCalculator.prototype._logIfStrike = function(knockedPins) {
-  if (knockedPins === 10) {
-    this._strike = { frame: this._currentTurn.frame };
-  };
-};
-
 ScoreCalculator.prototype._addStrikeScores = function(knockedPins) {
-  if (this._currentTurn.frame === this._strike.frame + 1) {
+  if (this._currentTurn.frame === this._strikeFrame + 1) {
     var currentIndex = this._currentTurn.frame - 1;
-    var strikeIndex = this._strike.frame - 1;
+    var strikeIndex = this._strikeFrame - 1;
     this._scoreArray[strikeIndex] += knockedPins;
   };
 };
 
+ScoreCalculator.prototype._logIfStrike = function(knockedPins) {
+  if (knockedPins === 10) {
+    this._strikeFrame = this._currentTurn.frame;
+  };
+};
+
+ScoreCalculator.prototype._logIfSpare = function() {
+  var index = this._currentTurn.frame - 1;
+  if (this._scoreArray[index] === 10) {
+    this._spareFrame = this._currentTurn.frame;
+  };
+};
+
+ScoreCalculator.prototype._addSpareScores = function(knockedPins) {
+  if (this._currentTurn.frame === this._spareFrame + 1 && this._currentTurn.roll === 1) {
+    var currentIndex = this._currentTurn.frame - 1;
+    var spareIndex = this._spareFrame - 1;
+    this._scoreArray[spareIndex] += knockedPins;
+  };
+};
+
 ScoreCalculator.prototype.calculateCurrentTotal = function() {
-  this._runningTotal = this._scoreArray.reduce((a, b) => a + b, 0);
+  return this._scoreArray.reduce((a, b) => a + b, 0);
 };

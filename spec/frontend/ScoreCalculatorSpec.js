@@ -9,7 +9,7 @@ describe('ScoreCalculator', function() {
   })
 
   it('Instantiates with a score of zero', function() {
-    expect(scoreCalculator._runningTotal).toEqual(0);
+    expect(scoreCalculator.increment(0, { frame: 1, roll: 2})).toEqual(0);
   });
 
   it('Instantiates current turn: frame = 1, roll = 1', function() {
@@ -39,6 +39,17 @@ describe('ScoreCalculator', function() {
       scoreCalculator.increment(10, { frame: 2, roll: 1 });
       scoreCalculator.increment(10, { frame: 3, roll: 1 });
       expect(scoreCalculator.increment(10, { frame: 2, roll: 1 })).toEqual(50);
+    });
+
+    it('Adds correct score after a spare', function() {
+      scoreCalculator.increment(7, { frame: 1, roll: 2 });
+      scoreCalculator.increment(3, { frame: 2, roll: 1 });
+      console.log(scoreCalculator._scoreArray)
+
+      scoreCalculator.increment(4, { frame: 2, roll: 2 });
+      console.log(scoreCalculator._scoreArray)      
+      expect(scoreCalculator.increment(4, { frame: 3, roll: 1 })).toEqual(22);
+      console.log(scoreCalculator._scoreArray)
     });
   });
 });

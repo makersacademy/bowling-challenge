@@ -36,4 +36,16 @@ describe('Frame', function() {
       expect(frame.frameScore()).toEqual(13);
     });
   });
+
+  describe('.isNormal', function() {
+    it('returns true for a frame with no bonus', function() {
+      var frame = new Frame(2, 0);
+      expect(frame.isNormal()).toEqual(true);
+    });
+
+    it('returns false for a frame with bonus', function() {
+      var frame = new Frame(10, 0);
+      expect(frame.isNormal()).toEqual(false);
+    });
+  });
 });

@@ -7,6 +7,7 @@ function Scorecard() {
 };
 
 
+
 Scorecard.prototype.getFrames = function() {
   return this.frames;
 };
@@ -18,4 +19,9 @@ Scorecard.prototype.addFrame = function(frame) {
 Scorecard.prototype.getScores = function() {
   this.frames.map
   return this.buildScores;
+};
+
+// Start here....
+Scorecard.prototype.frameScoreDisplay = function() {
+  return 0;
 };

@@ -21,4 +21,19 @@ describe('features', function() {
       expect(scorecard.getFrames()[0].results[0]).toEqual(0);
     });
   });
+
+
+  describe('display result: gutterball game - frame 1', function() {
+    it('will display the correct total score for frame 1 for 2 gutterballs', function() {
+      frame.rollOne(0);
+      frame.rollTwo(0);
+      scorecard.addFrame(frame);
+      expect(scorecard.frameScoreDisplay()).toEqual(0);
+    });
+  });
+
+
+
+
+
 });

@@ -28,5 +28,12 @@ describe('Scorecard', function() {
     expect(scorecard.getScores()).toEqual([]);
   });
 
+  it('can calculate a total frame score', function() {
+    frame.rollOne(0);
+    frame.rollTwo(0);
+    scorecard.addFrame(frame);
+    expect(scorecard.frameScoreDisplay()).toEqual(0);
+  });
+
 
 });

@@ -78,6 +78,27 @@ describe("Scorecard", function () {
       expect(scorecard.frame).toEqual(2);
     });
 
+    it("sets strike to true", function() {
+      expect(scorecard.strike).toEqual(true);
+    });
+
+    it("adds the next two rolls to currentScore", function() {
+      scorecard.addRoll(2);
+      scorecard.addRoll(3);
+
+      expect(scorecard.currentScore).toEqual(20);
+    });
+
+  });
+
+  describe("when user enters a number higher than 10", function() {
+
+    it("throws an error", function() {
+      expect(function() {
+        scorecard.addRoll(12);
+      }).toThrowError("This is 10-pin bowling, not 12-pin bowling!");
+    });
+
   });
 
 });

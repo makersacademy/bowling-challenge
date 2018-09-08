@@ -10,3 +10,7 @@ function Frame() {
 Frame.prototype.remainingPins = function() {
   return this.pins;
 };
+
+Frame.prototype.rollOne = function(num) {
+  this.results.push(num)
+};

@@ -20,6 +20,12 @@ describe('Frame behaviour', function() {
     expect(frame.results).toEqual([]);
   });
 
+  it('should log the score of my first roll', function() {
+    frame.rollOne(8);
+    expect(frame.results.length).toEqual(1);
+    expect(frame.results).toEqual([8]);
+  });
+
 
 
 });

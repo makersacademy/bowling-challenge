@@ -47,4 +47,17 @@ describe('Frame behaviour', function() {
     frame.rollTwo(0);
     expect(frame.frameScore()).toEqual(0);
   });
+
+
+  it('max score per roll is 10 (strike)', function() {
+    expect(function() {frame.rollOne(11)}).toThrowError("Invalid score value");
+  });
+
+  it('min score per roll is 0 (gutter ball)', function() {
+    expect(function() {frame.rollOne(-1)}).toThrowError("Invalid score value");
+  });
+
+
+
+
 });

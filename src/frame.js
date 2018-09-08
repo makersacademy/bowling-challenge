@@ -12,6 +12,9 @@ Frame.prototype.remainingPins = function() {
 };
 
 Frame.prototype.rollOne = function(num) {
+  if (num > 10 || num < 0) {
+    throw new Error('Invalid score value');
+  }
   this.pins -= num;
   this.results.push(num);
 };

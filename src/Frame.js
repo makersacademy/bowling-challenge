@@ -14,9 +14,9 @@ Frame.prototype = {
   isStrike: function() {
     return this.bowl === 1 && this.score === 10
   },
-  // isSpare: function() {
-  //   return this.bowl === 2 && this.score === 10
-  // }
+  isSpare: function() {
+    return this.bowl === 2 && this.score === 10
+  },
   isGetAnotherBowl: function() {
     return this.bowl === 1 && this.score < 10
   }

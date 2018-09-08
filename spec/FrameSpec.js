@@ -27,10 +27,10 @@ describe("Frame", function() {
     expect(frame.isGetAnotherBowl()).toEqual(true);
   });
 
-  // it("should be able to return a spare", function() {
-  //   expect(frame.getScore()).toEqual(0);
-  //   frame.roll(5);
-  //   frame.roll(5);
-  //   expect(frame.isSpare()).toEqual(true);
-  // });
+  it("should be able to return a spare", function() {
+    expect(frame.getScore()).toEqual(0);
+    frame.roll(5);
+    frame.roll(5);
+    expect(frame.isSpare()).toEqual(true);
+  });
 });

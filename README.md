@@ -34,6 +34,10 @@ I want to see a running total of my score.
 | addRoll                           |
 | pushFrameToGame                   |
 | sumFrame                          |
+| endTheFrame                       |
+| currentFrameSum                   |
+| wasLastFrameSpare                 |
+| calcCurrentScore                  |
 + --------------------------------- +
 
 ```

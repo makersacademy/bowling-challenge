@@ -54,8 +54,30 @@ describe("Scorecard", function () {
 
   describe("when user gets a spare", function () {
 
+    beforeEach(function() {
+      scorecard.addRoll(5);
+      scorecard.addRoll(5);
+    });
+    
+    it("adds next roll twice to currentScore", function() {
+      scorecard.addRoll(2);
+      scorecard.addRoll(3);
+
+      expect(scorecard.currentScore).toEqual(17);
+    });
+
   });
 
+  describe("when user gets a stike", function() {
 
+    beforeEach(function() {
+      scorecard.addRoll(10);
+    });
+    
+    it("will move on to next frame", function() {
+      expect(scorecard.frame).toEqual(2);
+    });
+
+  });
 
 });

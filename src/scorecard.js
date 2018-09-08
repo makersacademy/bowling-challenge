@@ -8,20 +8,14 @@ function Scorecard() {
 
 Scorecard.prototype.addRoll = function (number) {
 
-  this.currentFrame.push(number);
-
-  if (this.currentFrame.length === 2) {
-    if (this.wasLastFrameSpare()) {
-      this.currentScore += this.currentFrame[0]
-      this.spare = false;
+  if (number < 10) {
+    this.currentFrame.push(number);
+    if (this.currentFrame.length === 2) {
+      this.endTheFrame();
     }
-    this.calcCurrentScore();
-    this.pushFrameToGame();
-    if (this.currentFrame[0] + this.currentFrame[1] === 10) {
-      this.spare = true;
-    }
-    this.currentFrame = [];
-    this.frame++
+  } else if (number === 10) {
+    this.currentFrame.push(number);
+    this.endTheFrame();
   }
 }
 
@@ -41,4 +35,31 @@ Scorecard.prototype.pushFrameToGame = function () {
 
 Scorecard.prototype.wasLastFrameSpare = function () {
   return this.spare;
+}
+
+Scorecard.prototype.endTheFrame = function () {
+
+  this.checkForSpare();
+  this.calcCurrentScore();
+  this.pushFrameToGame();
+  this.setSpareStatus();
+  this.currentFrame = [];
+  this.frame++
+}
+
+Scorecard.prototype.currentFrameSum = function () {
+  return this.currentFrame[0] + this.currentFrame[1]
+}
+
+Scorecard.prototype.checkForSpare = function () {
+  if (this.wasLastFrameSpare()) {
+    this.currentScore += this.currentFrame[0]
+    this.spare = false;
+  }
+}
+
+Scorecard.prototype.setSpareStatus = function () {
+  if (this.currentFrameSum() === 10) {
+    this.spare = true;
+  }
 }

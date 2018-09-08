@@ -16,23 +16,29 @@ describe('ScoreCalculator', function() {
     expect(scoreCalculator._currentTurn).toEqual({ frame: 1, roll: 1 });
   })
 
-  it('Keeps a running total of score (no strikes)', function() {
-    scoreCalculator.increment(5, { frame: 1, roll: 2 });
-    scoreCalculator.increment(5, { frame: 2, roll: 1 });
-    expect(scoreCalculator.increment(5, { frame: 2, roll: 2 })).toEqual(15);
-  })
+  describe('.increment', function() {
+    it('Keeps a running total of score', function() {
+      scoreCalculator.increment(5, { frame: 1, roll: 2 });
+      scoreCalculator.increment(4, { frame: 2, roll: 1 });
+      expect(scoreCalculator.increment(5, { frame: 2, roll: 2 })).toEqual(14);
+    })
 
-  it('Updates _currentTurn', function() {
-    scoreCalculator.increment(5, { frame: 1, roll: 2 });
-    scoreCalculator.increment(5, { frame: 2, roll: 1 });
-    expect(scoreCalculator._currentTurn).toEqual({ frame: 2, roll: 1 });
+    it('Updates _currentTurn', function() {
+      scoreCalculator.increment(5, { frame: 1, roll: 2 });
+      scoreCalculator.increment(5, { frame: 2, roll: 1 });
+      expect(scoreCalculator._currentTurn).toEqual({ frame: 2, roll: 1 });
+    });
+
+    it('Adds correct score after a strike', function() {
+      scoreCalculator.increment(10, { frame: 2, roll: 1 });
+      scoreCalculator.increment(5, { frame: 2, roll: 2 });
+      expect(scoreCalculator.increment(4, { frame: 3, roll: 1 })).toEqual(28);
+    })
+
+    it('Adds correct score after sequential strikes', function() {
+      scoreCalculator.increment(10, { frame: 2, roll: 1 });
+      scoreCalculator.increment(10, { frame: 3, roll: 1 });
+      expect(scoreCalculator.increment(10, { frame: 2, roll: 1 })).toEqual(50);
+    });
   });
-
-  it('Adds on the next total frame score when getting a strike', function() {
-    console.log('beginning of test')
-    scoreCalculator.increment(10, { frame: 2, roll: 1 });
-    scoreCalculator.increment(5, { frame: 2, roll: 2 });
-    expect(scoreCalculator.increment(5, { frame: 3, roll: 1 })).toEqual(30);
-  })
-
 });

@@ -18,8 +18,8 @@ ScoreCalculator.prototype.increment = function(knockedPins, nextTurn) {
 
 ScoreCalculator.prototype.incrementFrameTotal = function(knockedPins) {
   this._addKnockedPinsToArray(knockedPins);
-  this._logIfStrike(knockedPins);
   this._addStrikeScores(knockedPins);
+  this._logIfStrike(knockedPins);
 };
 
 ScoreCalculator.prototype._addKnockedPinsToArray = function(knockedPins) {
@@ -35,11 +35,9 @@ ScoreCalculator.prototype._logIfStrike = function(knockedPins) {
 
 ScoreCalculator.prototype._addStrikeScores = function(knockedPins) {
   if (this._currentTurn.frame === this._strike.frame + 1) {
-    console.log("In if" + this._scoreArray)
     var currentIndex = this._currentTurn.frame - 1;
     var strikeIndex = this._strike.frame - 1;
     this._scoreArray[strikeIndex] += knockedPins;
-    console.log(this._scoreArray)
   };
 };
 

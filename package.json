@@ -2,7 +2,7 @@
   "name": "bowling-challenge",
   "version": "1.0.0",
   "description": "Makers Bowling Challenge",
-  "main": "index.js",
+  "main": "/public/js/BowlingModel.js",
   "directories": {
     "doc": "docs"
   },

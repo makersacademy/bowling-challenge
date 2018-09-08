@@ -5,21 +5,21 @@ function Frame(firstRoll, secondRoll, thirdRoll = null) {
 }
 
 Frame.prototype.isStrike = function() {
-  if (this.firstRoll == 10) return(true);
-  else return(false);
+  if (this.firstRoll == 10) return true;
+  return false;
 }
 
 Frame.prototype.isSpare = function() {
-  if ((!this.isStrike()) && (this.firstRoll + this.secondRoll == 10)) return(true);
-  else return(false);
+  if ((!this.isStrike()) && (this.firstRoll + this.secondRoll == 10)) return true;
+  return false;
 }
 
-Frame.prototype.isNormal = function() {
+Frame.prototype.noBonus = function() {
   if (!this.isStrike() && !this.isSpare()) return true;
-  else return(false);
+  return false;
 }
 
 Frame.prototype.frameScore = function() {
   if (this.thirdRoll != null) return (this.firstRoll + this.secondRoll +  this.thirdRoll);
-  else return (this.firstRoll + this.secondRoll);
+  return (this.firstRoll + this.secondRoll);
 }

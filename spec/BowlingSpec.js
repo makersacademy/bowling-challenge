@@ -7,17 +7,6 @@ describe("Bowling", function() {
     game = new BowlingGame;
   });
 
-  // it("should allow a player to input a score", function() {
-  //   game.addPoints(4);
-  //   expect(game.scores).toContain(4);
-  // });
-
-  // it("should calculate score total", function() {
-  //   game.addPoints(4);
-  //   game.addPoints(5);
-  //   expect(game.total()).toEqual(9);
-  // });
-
   it("should add bonus to score after spare", function() {
     game.addPoints(9);
     game.addPoints(1);
@@ -26,5 +15,12 @@ describe("Bowling", function() {
     expect(game.total()).toEqual(22);
   });
 
+  it("should add bonus to score after strike", function() {
+    game.addPoints(10);
+    game.addPoints(1);
+    game.addPoints(5);
+    game.addPoints(2);
+    expect(game.total()).toEqual(24);
+  });
 
 });

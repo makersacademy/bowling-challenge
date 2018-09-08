@@ -11,6 +11,9 @@ Frame.prototype.remainingPins = function() {
   return this.pins;
 };
 
+
+// Do i need two roll functions here, will it be ok with just one - to think about..
+
 Frame.prototype.rollOne = function(num) {
   if (num > 10 || num < 0) {
     throw new Error('Invalid score value');

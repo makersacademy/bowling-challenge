@@ -12,7 +12,7 @@ Scorecard.prototype.addRoll = function (number) {
 
   if (number > 10) throw new Error(`This is 10-pin bowling, not ${number}-pin bowling!`)
 
-  if (this.frame === 9) {
+  if (this.frame === 10) {
     this.theTenthFrame(number);
   } else if (number < 10) {
     this.currentFrame.push(number);
@@ -37,6 +37,10 @@ Scorecard.prototype.calcCurrentScore = function () {
 
 Scorecard.prototype.pushFrameToGame = function () {
   this.currentGame.push(new Array(this.currentFrame[0], this.currentFrame[1]));
+}
+
+Scorecard.prototype.pushFrameToGameEnd = function () {
+  this.currentGame.push(new Array(this.currentFrame[0], this.currentFrame[1], this.currentFrame[2]));
 }
 
 Scorecard.prototype.wasLastFrameSpare = function () {
@@ -92,50 +96,61 @@ Scorecard.prototype.setStrikeStatus = function () {
 
 Scorecard.prototype.theTenthFrame = function (number) {
 
-  // if bonusRoll equals true
-  if (this.bonusRoll) {
-    // push number to frame
+  if (this.bonusRoll && this.currentFrame.length < 3) {
     this.currentFrame.push(number);
-    // calculate score
-    this.currentGame.push(new Array(this.currentFrame[0], this.currentFrame[1], this.currentFrame[2]));
-    this.calcCurrentScore();
-    // set bonusRoll to false
-    this.bonusRoll = false;
-  } else if (number === 10) {
-    // set Strike status to true
-    this.Strike = true;
-    // set bonusRoll to true
+  } else if (number === 10 && this.currentFrame.length < 3) {
+    this.currentFrame.push(number);
     this.bonusRoll = true;
-    // push number to frame
+  } else if (this.currentFrame[0] + number === 10) {
+    this.currentFrame.push(number);
+    this.bonusRoll = true;
+  } else if (this.currentFrame.length < 2) {
     this.currentFrame.push(number);
   } else {
-    // push number to frame
-    this.currentFrame.push(number)
-    // if currentFrame equals 10
-    if (this.currentFrame.length === 2 && this.currentFrameSum() === 10) {
-      // set Spare status to true
-      this.spare = true;
-      // set bonusRoll to true
-      this.bonusRoll = true;
-    } else {
-      this.endTheFrame();
-    }
+    this.endGame();
   }
-
-
-
-
-
-
-
-
-  // if (number < 10) {
+  
+  
+  
+  // if (this.bonusRoll) {
+    
   //   this.currentFrame.push(number);
-  //   if (this.currentFrame.length === 2) {
+    
+  //   this.currentGame.push(new Array(this.currentFrame[0], this.currentFrame[1], this.currentFrame[2]));
+  //   this.calcCurrentScore();
+    
+  //   this.bonusRoll = false;
+  // } else if (number === 10) {
+    
+  //   this.setStrikeStatus();
+    
+  //   this.bonusRoll = true;
+    
+  //   this.currentFrame.push(number);
+
+  // } else {
+    
+  //   this.currentFrame.push(number)
+    
+  //   if (this.currentFrame.length === 2 && this.currentFrameSum() === 10) {
+      
+  //     this.spare = true;
+      
+  //     this.bonusRoll = true;
+
+  //   } else {
+
   //     this.endTheFrame();
   //   }
-  // } else if (number === 10) {
-  //   this.currentFrame.push(number);
-  //   this.endTheFrame();
   // }
+}
+
+Scorecard.prototype.endGame = function() {
+  this.checkForSpare();
+  this.checkForStrike();
+  this.calcCurrentScore();
+  this.pushFrameToGameEnd();
+  this.setStrikeStatus();
+  this.setSpareStatus();
+  this.currentFrame = [];
 }

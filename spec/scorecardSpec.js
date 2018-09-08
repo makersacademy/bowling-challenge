@@ -69,7 +69,6 @@ describe("Scorecard", function () {
   });
 
   describe("when user gets a stike", function () {
-
     beforeEach(function () {
       scorecard.addRoll(10);
     });
@@ -123,6 +122,32 @@ describe("Scorecard", function () {
 
     });
 
+  });
+
+  describe("user bowls the perfect game", function() {
+
+    beforeEach(function() {
+      for (var i = 1; i <= 21; i++) {
+        scorecard.addRoll(10);
+      }
+    });
+    
+    it("score will equal 300", function() {
+      expect(scorecard.currentScore).toEqual(300);
+    });
+
+  });
+
+  describe("user bowls a gutter game", function() {
+    beforeEach(function() {
+      for (var i = 1; i <= 20; i++) {
+        scorecard.addRoll(0);
+      }
+    });
+
+    it ("score will be 0", function () {
+      expect(scorecard.currentScore).toEqual(0);
+    });
   });
 
   describe("when user enters a number higher than 10", function () {

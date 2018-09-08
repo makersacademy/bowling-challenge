@@ -1,5 +1,6 @@
 function Frame() {
   this.score = 0
+  this.bowl = 1
 }
 
 Frame.prototype = {
@@ -8,6 +9,9 @@ Frame.prototype = {
   }, 
   roll: function(pins) {
     this.score += pins
+  },
+  isStrike: function() {
+    return this.bowl === 1 && this.score === 10
   }
 
 };

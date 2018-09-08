@@ -20,7 +20,6 @@ ScoreCalculator.prototype.incrementFrameTotal = function(knockedPins) {
   this._spareFrame !== 0 ? this._addSpareScores(knockedPins) : null;
   this._logIfStrike(knockedPins);
   this._currentTurn.roll == 2 ? this._logIfSpare() : null;
-  console.log(this._spareFrame);
 };
 
 ScoreCalculator.prototype._addKnockedPinsToArray = function(knockedPins) {
@@ -58,5 +57,6 @@ ScoreCalculator.prototype._addSpareScores = function(knockedPins) {
 };
 
 ScoreCalculator.prototype.calculateCurrentTotal = function() {
+  console.log(this._scoreArray.reduce((a, b) => a + b, 0))
   return this._scoreArray.reduce((a, b) => a + b, 0);
 };

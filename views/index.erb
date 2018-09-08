@@ -4,14 +4,20 @@
     <meta charset="utf-8">
     <title>Bowling Scorecard</title>
     <link rel="stylesheet" type="text/css" href="bowling.css"/>
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/BowlingModel.js"></script>
+    <script src="js/ScoreCalculator.js"></script>
+    <script src="js/TurnIncrementer.js"></script>
+    <script src="js/BowlingController.js"></script>
   </head>
   <body>
     <h1>Bowling Scorecard</h1>
-    <form class="" action="index.html" method="">
+    <form action="">
       Pins knocked down:
-      <input type="text" name="knocked_pins" value="0">
-      <input type="submit" name="submit" value="Enter">
+      <input id="knocked_pins" type="text" name="knocked_pins" value="0">
+      <input id="enter" type="button" name="" value="Enter">
     </form><br>
+    <p id="current_score"></p>
     <table>
       <tr>
         <th>Frame</th>

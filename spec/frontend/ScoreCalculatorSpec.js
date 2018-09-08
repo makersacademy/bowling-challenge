@@ -44,12 +44,8 @@ describe('ScoreCalculator', function() {
     it('Adds correct score after a spare', function() {
       scoreCalculator.increment(7, { frame: 1, roll: 2 });
       scoreCalculator.increment(3, { frame: 2, roll: 1 });
-      console.log(scoreCalculator._scoreArray)
-
       scoreCalculator.increment(4, { frame: 2, roll: 2 });
-      console.log(scoreCalculator._scoreArray)      
       expect(scoreCalculator.increment(4, { frame: 3, roll: 1 })).toEqual(22);
-      console.log(scoreCalculator._scoreArray)
     });
   });
 });

@@ -38,7 +38,7 @@ describe("Scorecard", function () {
 
       describe("if they equal 10", function () {
 
-        beforeEach(function() {
+        beforeEach(function () {
           scorecard.addRoll(5);
           scorecard.addRoll(5);
         });
@@ -54,12 +54,12 @@ describe("Scorecard", function () {
 
   describe("when user gets a spare", function () {
 
-    beforeEach(function() {
+    beforeEach(function () {
       scorecard.addRoll(5);
       scorecard.addRoll(5);
     });
-    
-    it("adds next roll twice to currentScore", function() {
+
+    it("adds next roll twice to currentScore", function () {
       scorecard.addRoll(2);
       scorecard.addRoll(3);
 
@@ -68,21 +68,21 @@ describe("Scorecard", function () {
 
   });
 
-  describe("when user gets a stike", function() {
+  describe("when user gets a stike", function () {
 
-    beforeEach(function() {
+    beforeEach(function () {
       scorecard.addRoll(10);
     });
-    
-    it("will move on to next frame", function() {
+
+    it("will move on to next frame", function () {
       expect(scorecard.frame).toEqual(2);
     });
 
-    it("sets strike to true", function() {
+    it("sets strike to true", function () {
       expect(scorecard.strike).toEqual(true);
     });
 
-    it("adds the next two rolls to currentScore", function() {
+    it("adds the next two rolls to currentScore", function () {
       scorecard.addRoll(2);
       scorecard.addRoll(3);
 
@@ -91,10 +91,44 @@ describe("Scorecard", function () {
 
   });
 
-  describe("when user enters a number higher than 10", function() {
+  describe("on the last frame", function () {
 
-    it("throws an error", function() {
-      expect(function() {
+    beforeEach(function() {
+      for (var i = 1; i <= 18; i++) {
+        scorecard.addRoll(3);
+      }
+    });
+
+    describe("if the user gets a spare", function() {
+      
+      it("will give them a bonus turn", function () {
+        scorecard.addRoll(9);
+        scorecard.addRoll(1);
+        scorecard.addRoll(6);
+
+        expect(scorecard.currentScore).toEqual(70);
+      });
+
+    });
+    
+    describe("if the user gets a strike", function() {
+      
+      it("will give them a bonus turn", function () {
+        scorecard.addRoll(10);
+        scorecard.addRoll(1);
+        scorecard.addRoll(6);
+
+        expect(scorecard.currentScore).toEqual(71);
+      });
+
+    });
+
+  });
+
+  describe("when user enters a number higher than 10", function () {
+
+    it("throws an error", function () {
+      expect(function () {
         scorecard.addRoll(12);
       }).toThrowError("This is 10-pin bowling, not 12-pin bowling!");
     });

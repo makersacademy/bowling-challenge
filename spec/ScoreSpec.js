@@ -31,4 +31,27 @@ describe("Game", function() {
     expect(game.score).toEqual(17)
   })
 
+  describe('Spares', function() {
+    beforeEach(function() {
+      game.add_score(5)
+      game.add_score(5)
+    })
+    it('adds first ball bonus for spare', function() {
+      game.add_score(5)
+      game.add_score(2)
+      expect(game.score).toEqual(22)
+    })
+  })
+
+  describe('Strike', function() {
+    beforeEach(function() {
+      game.add_score(10)
+    })
+    it('adds first ball bonus for spare', function() {
+      game.add_score(5)
+      game.add_score(2)
+      expect(game.score).toEqual(24)
+    })
+  })
+
 });

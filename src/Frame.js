@@ -1,11 +1,12 @@
 function Frame() {
   // This tracks the rolls for a frame
   this.scores = [0, 0];
-  this.bonusBalls = 0
+  this.bonusBalls = 0;
   this.ball = 0;
-  this.round = 0
-  this.isOver = false
-  this.flatscore = 0
+  this.round = 0;
+  this.isOver = false;
+  this.flatscore = 0;
+  this.bonusscore = 0;
 };
 
 Frame.prototype.add_score = function(score) {
@@ -15,6 +16,10 @@ Frame.prototype.add_score = function(score) {
   this._determineBonusBalls();
   this._isOver();
 };
+
+Frame.prototype.add_bonus = function(bonus) {
+  this.bonusscore += bonus
+}
 
 Frame.prototype._determineBonusBalls = function() {
   if (this.scores[0] === 10) {

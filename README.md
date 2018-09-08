@@ -24,6 +24,15 @@ Technologies used:
 - Javascript (language) with jQuery (Javascript library)
 - Tested using [Jasmine](http://jasmine.github.io/) (behavior-driven development framework for testing JavaScript code)
 
+## User stories:
+
+```
+As a bowler
+So that i can keep track of my score during a game,
+I want to be able to log my scores on a scoresheet.
+```
+
+
 ## Bowling — how does it work?
 
 ### Strikes

@@ -7,7 +7,7 @@ describe('Scorecard', function() {
 
   beforeEach(function() {
     scorecard = new Scorecard();
-    frame = jasmine.createSpyObj('frame', ['rollOne', 'rollTwo']);
+    frame = jasmine.createSpyObj('frame', ['rollOne','rollTwo']);
   });
 
 
@@ -22,6 +22,10 @@ describe('Scorecard', function() {
     expect(scorecard.getFrames().length).toEqual(1);
     expect(scorecard.getFrames()).toContain(frame);
     expect(scorecard.getFrames()[0]).toEqual(frame);
+  });
+
+  it('can build an array of the frame scores', function() {
+    expect(scorecard.getScores()).toEqual([]);
   });
 
 

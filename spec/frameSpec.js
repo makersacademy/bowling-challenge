@@ -42,6 +42,15 @@ describe('Frame behaviour', function() {
     expect(frame.frameScore()).toEqual(9);
   });
 
+
+  it('should give the total score of the frame', function() {
+    frame.rollOne(10);
+    frame.rollTwo(0);
+    expect(frame.frameScore()).toEqual(10);
+  });
+
+
+
   it('a gutter game results in a zero score', function() {
     frame.rollOne(0);
     frame.rollTwo(0);

@@ -9,14 +9,16 @@ describe('Roll', function(){
   describe('bowling score', function(){
     it('keeps track of bowling score', function(){
       bowling.roll(10);
-      expect(bowling.bowling_score).toContain(10);
+      expect(bowling.frame).toContain(10);
     });
 
     it('adds up the bowling score', function(){
-      bowling.roll(10);
-      bowling.roll(8);
+      bowling.roll(2);
       bowling.roll(5);
-      expect(bowling.score()).toEqual(23);
+      bowling.score();
+      bowling.roll(5);
+      bowling.roll(4);
+      expect(bowling.score()).toEqual(16);
     });
   });
 

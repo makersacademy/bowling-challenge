@@ -1,5 +1,6 @@
 function Scoreboard() {
   this.scores = [];
+  this.frames = [];
 };
 
 Scoreboard.prototype.firstRoll = function(number) {
@@ -26,5 +27,13 @@ Scoreboard.prototype.secondRoll = function(number) {
 };
 
 Scoreboard.prototype.rollScore = function() {
-  return this.scores.reduce((a,b) => a + b);
+  if (this.scores.length == 2) {
+    return this.scores.reduce((a,b) => a + b);
+  }
+};
+
+Scoreboard.prototype.newFrame = function() {
+  var frame = this.rollScore();
+  this.frames[0] = frame;
+  return console.log(this.frames);
 };

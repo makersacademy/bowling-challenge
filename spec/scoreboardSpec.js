@@ -34,13 +34,32 @@ describe ('Scoreboard', function() {
   });
 
   describe('rollScore', function() {
-    it('sums the numbers inside the array', function() {
+
+    beforeEach(function() {
       scoreboard.firstRoll(8);
       scoreboard.secondRoll(2);
-      expect(scoreboard.rollScore()).toEqual(10);
     });
 
+    it('expects the array to have two items', function() {
+      expect(scoreboard.scores.length).toEqual(2);
+    });
+
+    it('sums the numbers inside the array', function() {
+      expect(scoreboard.rollScore()).toEqual(10);
+    });
   });
 
+  describe('newFrame', function() {
 
+    beforeEach(function() {
+      scoreboard.firstRoll(8);
+      scoreboard.secondRoll(2);
+      scoreboard.rollScore();
+    });
+
+    it('displays the score in a frame', function() {
+      scoreboard.newFrame();
+      expect(scoreboard.frames).toContain(10);
+    });
+  });
 });

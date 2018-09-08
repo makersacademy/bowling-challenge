@@ -2,12 +2,12 @@
 
 function BowlingModel() {
   this.scoreCalculator = new ScoreCalculator();
-  this.rollDecider = new RollDecider();
+  this.turnIncrementer = new TurnIncrementer();
 };
 
 BowlingModel.prototype.increment = function(knockedPins) {
-  var score, turn;
-  score = this.scoreCalculator.increment(knockedPins);
-  turn = this.rollDecider.increment(knockedPins);
-  return { frame: turn.frame, roll: turn.roll, score: score }
+  var score, nextTurn;
+  nextTurn = this.turnIncrementer.increment(knockedPins);
+  score = this.scoreCalculator.increment(knockedPins, nextTurn);
+  return { frame: nextTurn.frame, roll: nextTurn.roll, score: score }
 };

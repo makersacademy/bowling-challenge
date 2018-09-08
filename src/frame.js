@@ -12,5 +12,21 @@ Frame.prototype.remainingPins = function() {
 };
 
 Frame.prototype.rollOne = function(num) {
-  this.results.push(num)
+  this.pins -= num;
+  this.results.push(num);
+};
+
+Frame.prototype.rollTwo = function(num) {
+  this.pins -= num;
+  this.results.push(num);
+};
+
+
+Frame.prototype.frameScore = function() {
+  var total = 0;
+  for(var i = 0; i < this.results.length; i++) {
+      total += this.results[i];
+  }
+  return total;
+  console.log(total);
 };

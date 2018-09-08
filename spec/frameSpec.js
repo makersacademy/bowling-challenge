@@ -13,7 +13,8 @@ describe('Frame behaviour', function() {
 
 
   it('should return the current number of pins left standing', function() {
-    expect(frame.remainingPins()).toEqual(10);
+    frame.rollOne(8);
+    expect(frame.remainingPins()).toEqual(2);
   });
 
   it('should initialize with a constructor variable array to hold the scores', function() {
@@ -27,5 +28,23 @@ describe('Frame behaviour', function() {
   });
 
 
+  it('should log the score of my second roll', function() {
+    frame.rollOne(8);
+    frame.rollTwo(1);
+    expect(frame.results.length).toEqual(2);
+    expect(frame.results).toEqual([8,1]);
+  });
 
+
+  it('should give the total score of the frame', function() {
+    frame.rollOne(8);
+    frame.rollTwo(1);
+    expect(frame.frameScore()).toEqual(9);
+  });
+
+  it('a gutter game results in a zero score', function() {
+    frame.rollOne(0);
+    frame.rollTwo(0);
+    expect(frame.frameScore()).toEqual(0);
+  });
 });

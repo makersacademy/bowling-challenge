@@ -16,6 +16,10 @@ describe('Frame behaviour', function() {
     expect(frame.remainingPins()).toEqual(10);
   });
 
+  it('should initialize with a constructor variable array to hold the scores', function() {
+    expect(frame.results).toEqual([]);
+  });
+
 
 
 });

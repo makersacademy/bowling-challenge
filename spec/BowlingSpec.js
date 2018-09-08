@@ -12,4 +12,10 @@ describe("Bowling", function() {
     expect(game.scores).toContain(4);
   });
 
+  it("should calculate score total", function() {
+    game.addPoints(4);
+    game.addPoints(5);
+    expect(game.total()).toEqual(9);
+  });
+
 });

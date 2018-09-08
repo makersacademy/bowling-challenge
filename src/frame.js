@@ -3,6 +3,6 @@ function Frame() {
 };
 
 
-Frame.prototype.rollOne = function(num) {
-  return num;
-};
+// Frame.prototype.rollOne = function(num) {
+//   return num;
+// };

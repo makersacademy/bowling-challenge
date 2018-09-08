@@ -7,11 +7,13 @@
     "doc": "docs"
   },
   "dependencies": {
-    "eslint": "^5.5.0"
+    "eslint": "^5.5.0",
+    "jasmine-terminal-reporter": "^1.0.3"
   },
   "devDependencies": {
     "jasmine": "^3.2.0",
-    "jasmine-core": "^3.2.1"
+    "jasmine-core": "^3.2.1",
+    "jasmine-spec-reporter": "^4.2.1"
   },
   "scripts": {
     "test": "jasmine"

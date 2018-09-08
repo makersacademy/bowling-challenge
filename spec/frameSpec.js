@@ -1,3 +1,5 @@
+'use strict'
+
 describe('Frame behaviour', function() {
   var frame;
 
@@ -6,7 +8,12 @@ describe('Frame behaviour', function() {
   });
 
   it('should have a constuctor variable of 10 pins as default', function() {
-    expect(frame.pins).toEqual(10);
+    expect(frame.DEFAULT_PINS).toEqual(10);
+  });
+
+
+  it('should return the current number of pins left standing', function() {
+    expect(frame.remainingPins()).toEqual(10);
   });
 
   // it('can record the pins from the first roll', function(num) {

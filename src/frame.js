@@ -1,8 +1,11 @@
+'use strict'
+
 function Frame() {
-  this.pins = 10;
+  this.DEFAULT_PINS = 10;
+  this.pins = this.DEFAULT_PINS;
 };
 
 
-// Frame.prototype.rollOne = function(num) {
-//   return num;
-// };
+Frame.prototype.remainingPins = function() {
+  return this.pins;
+};

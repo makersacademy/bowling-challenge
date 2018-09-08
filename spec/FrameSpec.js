@@ -15,9 +15,22 @@ describe("Frame", function() {
     expect(frame.getScore()).toEqual(3);
   });
 
-  it("should be able to return a strike", function() {
+  it("returns true for a strike", function() {
     expect(frame.getScore()).toEqual(0);
     frame.roll(10);
     expect(frame.isStrike()).toEqual(true);
   });
+
+  it("return if another bowl can be taken", function() {
+    expect(frame.getScore()).toEqual(0);
+    frame.roll(5);
+    expect(frame.isGetAnotherBowl()).toEqual(true);
+  });
+
+  // it("should be able to return a spare", function() {
+  //   expect(frame.getScore()).toEqual(0);
+  //   frame.roll(5);
+  //   frame.roll(5);
+  //   expect(frame.isSpare()).toEqual(true);
+  // });
 });

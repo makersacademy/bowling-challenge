@@ -22,6 +22,12 @@ describe('Roll', function(){
     });
   });
 
+  it('throws error if more than 2 rolls in a frame', function(){
+    bowling.roll(2);
+    bowling.roll(5);
+    expect(function(){ bowling.roll(); }).toThrowError('already had 2 rolls');
+  });
+
   describe('is strike or spare', function(){
     it('returns false if not a strike', function(){
       bowling.roll(7);

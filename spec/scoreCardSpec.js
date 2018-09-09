@@ -52,6 +52,11 @@ describe('ScoreCard', function() {
       expect(scoreCard._frame).toEqual(11); // breaks loop if frame is higher than 10 (end of game)
     });
 
+    it ('game with no strikes or spares scored correctly'), function () {
+      scoreCard._bowls = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4];
+      expect(scoreCard._score).toEqual(80);
+    }
+
   });
 
 });

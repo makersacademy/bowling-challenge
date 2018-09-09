@@ -15,8 +15,6 @@ ScoreCard.prototype.score = function () {
   while (this._frame <= 10) {
     this._score += (this.notDefinedCheck(this._bowls[this._bowlIndex]) + this.notDefinedCheck(this._bowls[this._bowlIndex+1]));
     this._bowlIndex += 2;
-    console.log(this._frame);
-    console.log(this._score);
     this._frame += 1;
   };
 };

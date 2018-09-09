@@ -8,35 +8,55 @@ describe('Roll', function(){
 
   describe('bowling score', function(){
     it('keeps track of bowling score', function(){
-      bowling.roll(10);
-      expect(bowling.frame).toContain(10);
+      bowling.roll(8);
+      expect(bowling.frame).toContain(8);
     });
 
     it('adds up the bowling score', function(){
       bowling.roll(2);
       bowling.roll(5);
-      bowling.score();
       bowling.roll(5);
       bowling.roll(4);
       expect(bowling.score()).toEqual(16);
     });
-  });
 
-  it('throws error if more than 2 rolls in a frame', function(){
-    bowling.roll(2);
-    bowling.roll(5);
-    expect(function(){ bowling.roll(); }).toThrowError('already had 2 rolls');
-  });
+    it('calculates the score of a strike', function(){
+      console.log(bowling)
+      bowling.roll(10);
+      bowling.roll(2);
+      bowling.roll(3);
+      // bowling.roll(1);
+      // bowling.roll(1);
+      expect(bowling.frame_roll()).toEqual(20);
+    });
 
-  describe('is strike or spare', function(){
-    it('returns false if not a strike', function(){
+    it('calculates the score of a spare', function(){
       bowling.roll(7);
-      expect(bowling.isStrike()).toBe(false);
+      bowling.roll(3);
+      bowling.roll(3);
+      bowling.roll(4);
+      bowling.roll(3);
+      bowling.roll(4);
+      expect(bowling.score()).toEqual(27);
+    });
+
+    it('calculates next two pins after strike', function(){
+      bowling.roll(10);
+      bowling.roll(2);
+      bowling.roll(3);
+      expect(bowling._calc_strike()).toEqual(5);
     });
 
     it('returns true if strike', function(){
-      bowling.roll(10);
-      expect(bowling.isStrike()).toBe(true);
+      bowling.frame = [10];
+      expect(bowling.strike()).toBe(true);
+    })
+
+    it('returns true if spare', function(){
+      bowling.frame = [7, 3];
+      expect(bowling.spare()).toBe(true);
     });
+
   });
+
 });

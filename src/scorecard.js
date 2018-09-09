@@ -19,7 +19,6 @@ Scorecard.prototype.addRoll = function (number) {
     if (number > 10) throw new Error(`This is 10-pin bowling, not ${number}-pin bowling!`)
 
     if (this.frame === 10) {
-
       this.theTenthFrame(number);
     } else if (number < 10) {
       this.currentFrame.push(number);
@@ -110,23 +109,18 @@ Scorecard.prototype.currentFrameSum = function () {
   return this.currentFrame[0] + this.currentFrame[1]
 }
 
-
-
-
-
-
-
-
-
 Scorecard.prototype.theTenthFrame = function (number) {
 
   if (this.bonusRoll && this.currentFrame.length < 3) {
     this.currentFrame.push(number);
+    this.currentScore += number;
   } else if (number === 10 && this.currentFrame.length < 3) {
     this.currentFrame.push(number);
+    this.currentScore += number;
     this.bonusRoll = true;
   } else if (this.currentFrame[0] + number === 10) {
     this.currentFrame.push(number);
+    this.currentScore += number;
     this.bonusRoll = true;
   } else if (this.currentFrame.length < 2) {
     this.currentFrame.push(number);

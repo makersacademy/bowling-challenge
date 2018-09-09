@@ -10,7 +10,11 @@ ScoreCard.prototype.bowl = function (knockedPins) {
 };
 
 ScoreCard.prototype.score = function () {
-  this._score += (this.notDefinedCheck(this._bowls[this._bowlIndex]) + this.notDefinedCheck(this._bowls[this._bowlIndex+1]));
+  while (this._frame <= 10) {
+    this._score += (this.notDefinedCheck(this._bowls[this._bowlIndex]) + this.notDefinedCheck(this._bowls[this._bowlIndex+1]));
+    this._bowlIndex += 2;
+    this._frame += 1;
+  };
 };
 
 ScoreCard.prototype.notDefinedCheck = function (indexToCheck) {

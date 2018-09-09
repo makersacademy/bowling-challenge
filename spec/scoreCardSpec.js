@@ -24,8 +24,18 @@ describe('ScoreCard', function() {
     it ('adds up the bowls in a frame', function () {
       scoreCard.bowl(5);
       scoreCard.bowl(5);
-      scoreCard.score()
+      scoreCard.score();
       expect(scoreCard._score).toEqual(10);
+    });
+
+    it ('loops through the frames of a game adding the scores', function () {
+      scoreCard.bowl(1);
+      scoreCard.bowl(2);
+      scoreCard.bowl(3);
+      scoreCard.bowl(4);
+      scoreCard.score();
+      expect(scoreCard._score).toEqual(10);
+      expect(scoreCard._frame).toEqual(11); // breaks loop if frame is higher than 10
     });
 
   });

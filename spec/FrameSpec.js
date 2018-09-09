@@ -42,7 +42,7 @@ describe("Frame", function() {
       frame.add_score(10)
     });
     it('scores a round correctly', function() {
-      expect(frame.scores).toEqual([10,0])
+      expect(frame.scores).toEqual([10,null])
     });
     it('knows the number of bonus balls', function() {
       expect(frame.bonusBalls).toEqual(2)

@@ -1,12 +1,13 @@
 function Frame() {
   // This tracks the rolls for a frame
-  this.scores = [0, 0];
-  this.bonusBalls = 0;
-  this.ball = 0;
-  this.round = 0;
-  this.isOver = false;
+  this.scores = [null, null];
   this.flatscore = 0;
+  this.ball = 0;
+  this.isOver = false;
+
+  this.bonusBalls = 0;
   this.bonusscore = 0;
+  this.bonusAdded = false;
 };
 
 Frame.prototype.add_score = function(score) {
@@ -18,16 +19,37 @@ Frame.prototype.add_score = function(score) {
 };
 
 Frame.prototype.add_bonus = function(bonus) {
-  this.bonusscore += bonus
+  this.bonusscore += bonus;
+  this.bonusAdded = true;
 }
 
 Frame.prototype._determineBonusBalls = function() {
-  if (this.scores[0] === 10) {
+  if (this._isStrike()) {
     this.bonusBalls = 2
-  } else if (this.flatscore === 10) {
+  } else if (this._isSpare()) {
     this.bonusBalls = 1
-  };
+  } else {
+    if (this.ball == 2) {
+      this.bonusAdded = true
+    }
+  }
 };
+
+Frame.prototype._isOver = function() {
+  if (this._isStrike()) {
+    this.isOver = true
+  } else if (this.ball === 2) {
+    this.isOver = true
+  };
+}
+
+Frame.prototype._isStrike = function() {
+  return this.scores[0] === 10;
+}
+
+Frame.prototype._isSpare = function() {
+  return this.flatscore === 10;
+}
 
 // Frame.prototype._score = function() {
 //   var total = 0;
@@ -36,11 +58,3 @@ Frame.prototype._determineBonusBalls = function() {
 //   });
 //   return total;
 // };
-
-Frame.prototype._isOver = function() {
-  if (this.scores[0] === 10) {
-    this.isOver = true
-  } else if (this.ball === 2) {
-    this.isOver = true
-  };
-}

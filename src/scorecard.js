@@ -25,6 +25,17 @@ Scorecard.prototype.frameTotal = function(frameNumber) {
 
   var displayTotal = null;
 
+  if(this.frames[frameNumber - 1].results[0] === 10) {
+    return displayTotal;
+  };
+
+
+  // thinking about spare logic below....to be implemented...
+  // if(this.frames[frameNumber - 1].results[0] < 10 && this.arraySum(this.frames[frameNumber - 1].results) === 10) {
+  //   return displayTotal;
+  // };
+
+
   for(var i = 0; i <= frameNumber - 1; i++) {
   var array = this.frames[i].results;
   displayTotal += this.arraySum(array);

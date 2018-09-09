@@ -6,8 +6,12 @@ function ScoreCard () {
 }
 
 ScoreCard.prototype.bowl = function (knockedPins) {
-  this._bowls.push(knockedPins);
-  this.score();
+  if (this.isCorrectPinsEntered (knockedPins)) {
+    this._bowls.push(knockedPins);
+    this.score();
+  } else {
+    return 'invalid number entered'
+  }
 };
 
 ScoreCard.prototype.score = function () {
@@ -32,6 +36,16 @@ ScoreCard.prototype.resetForScore = function () {
   this._bowlIndex = 0;
   this._score = 0;
 }
+
+ScoreCard.prototype.isCorrectPinsEntered = function (knockedPins) {
+  if (knockedPins > 10) {
+    return false;
+  } else if ((this._bowls.length % 2 === 1) && (knockedPins + this.notDefinedCheck(this._bowls.slice(-1)[0]) > 10) ) {
+    return false;
+  } else {
+    return true;
+  };
+};
 
 ScoreCard.prototype.notDefinedCheck = function (indexToCheck) {
   if (isNaN(indexToCheck)) {

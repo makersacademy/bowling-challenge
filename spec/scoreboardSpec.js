@@ -19,10 +19,16 @@ describe ('Scoreboard', function() {
   });
 
   describe('secondRoll', function() {
-    it('adds the score of the second roll', function() {
-      scoreboard.firstRoll(8);
-      scoreboard.secondRoll(1);
-      expect(scoreboard.scores).toContain(1);
+    it('adds the score of the second roll, first roll > 5', function() {
+      scoreboard.firstRoll(7);
+      scoreboard.secondRoll(3);
+      expect(scoreboard.scores).toContain(3);
+    });
+
+    it('adds the score of the second roll, first roll < 5', function() {
+      scoreboard.firstRoll(3);
+      scoreboard.secondRoll(7);
+      expect(scoreboard.scores).toContain(7);
     });
 
     it('refuses to add a number above the first roll', function() {
@@ -33,12 +39,12 @@ describe ('Scoreboard', function() {
     });
   });
 
-  describe('rollScore', function() {
+  beforeEach(function() {
+    scoreboard.firstRoll(8);
+    scoreboard.secondRoll(2);
+  });
 
-    beforeEach(function() {
-      scoreboard.firstRoll(8);
-      scoreboard.secondRoll(2);
-    });
+  describe('rollScore', function() {
 
     it('expects the array to have two items', function() {
       expect(scoreboard.scores.length).toEqual(2);
@@ -49,11 +55,16 @@ describe ('Scoreboard', function() {
     });
   });
 
+  describe('emptyScores', function() {
+    it('empties the scores array', function() {
+      scoreboard.emptyScores();
+      expect(scoreboard.scores.length).toEqual(0);
+    });
+  });
+
   describe('newFrame', function() {
 
     beforeEach(function() {
-      scoreboard.firstRoll(8);
-      scoreboard.secondRoll(2);
       scoreboard.rollScore();
     });
 

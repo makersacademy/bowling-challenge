@@ -13,7 +13,7 @@ Scoreboard.prototype.firstRoll = function(number) {
 };
 
 Scoreboard.prototype.secondRoll = function(number) {
-  if (this.scores[0] <= 5 && number <= 5) {
+  if (this.scores[0] <= 5 && number <= (10-this.scores[0])) {
      this.scores[1] = number;
      return console.log(this.scores);
   }
@@ -32,8 +32,13 @@ Scoreboard.prototype.rollScore = function() {
   }
 };
 
+Scoreboard.prototype.emptyScores = function() {
+  this.scores = [];
+  return console.log(this.scores);
+};
+
 Scoreboard.prototype.newFrame = function() {
   var frame = this.rollScore();
-  this.frames[0] = frame;
+  this.frames.push(frame);
   return console.log(this.frames);
 };

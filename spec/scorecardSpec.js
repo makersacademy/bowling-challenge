@@ -1,7 +1,7 @@
 'use strict'
 // i know this is an absolute mess but plan to refactor later once i figure out how to correctly create spy objects
 // spies - callThrough() or returnValues() ????????
-describe('Scorecard', function() {
+describe('Scorecard behaviour', function() {
   var scorecard;
   var frame;
 

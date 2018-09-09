@@ -11,4 +11,12 @@ describe('ScoreCard', function() {
     });
 
   });
+
+  describe('entering the knocked down pins', function () {
+
+    it ('recorded in the bowls array', function () {
+      scoreCard.bowl(5)
+      expect(scoreCard._bowls).toEqual([5])
+    });
+  });
 });

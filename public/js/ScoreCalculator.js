@@ -7,11 +7,10 @@ function ScoreCalculator() {
   this._spareFrame = 0;
 };
 
-ScoreCalculator.prototype.increment = function(knockedPins, nextTurn) {
+ScoreCalculator.prototype.calculate = function(knockedPins) {
   this.incrementFrameTotal(knockedPins);
   var currentTotal = this.calculateCurrentTotal();
-  this._currentTurn = nextTurn;
-  return currentTotal;
+  return {total: currentTotal, scoresArray: this._scoreArray };
 };
 
 ScoreCalculator.prototype.incrementFrameTotal = function(knockedPins) {
@@ -57,6 +56,13 @@ ScoreCalculator.prototype._addSpareScores = function(knockedPins) {
 };
 
 ScoreCalculator.prototype.calculateCurrentTotal = function() {
-  console.log(this._scoreArray.reduce((a, b) => a + b, 0))
   return this._scoreArray.reduce((a, b) => a + b, 0);
+};
+
+// function updateCurrentTurn() {
+//   this._currentTurn = this._nextTurn
+// };
+
+ScoreCalculator.prototype.updateTurn = function(nextTurn) {
+  this._currentTurn = nextTurn;
 };

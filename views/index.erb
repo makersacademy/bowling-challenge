@@ -18,7 +18,7 @@
       <input id="enter" type="button" name="" value="Enter">
     </form><br>
     <p id="current_score"></p>
-    <table>
+    <table id="game">
       <tr>
         <th>Frame</th>
         <th>Roll</th>
@@ -26,109 +26,24 @@
         <th>Score</th>
         <th>Notes</th>
       </tr>
-      <tr>
-        <td>1</td>
-        <td>1</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>1</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>2</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>1</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>2</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>1</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>2</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>1</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>2</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>6</td>
-        <td>1</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>6</td>
-        <td>2</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>7</td>
-        <td>1</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>7</td>
-        <td>2</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td>1</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td>2</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>9</td>
-        <td>1</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>9</td>
-        <td>2</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>10</td>
-        <td>1</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>10</td>
-        <td>2</td>
-        <td></td>
-      </tr>
-      <tr>
+      <% i = 0 %>
+      <% roll = 1 %>
+      <% while i <= 19 %>
+        <tr>
+          <% frame = (i/2).floor + 1 %>
+          <td><%=frame%></td>
+          <td><%= roll %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <% i += 1 %>
+        <% roll == 1 ? roll = 2 : roll = 1 %>
+      <% end %>
         <td>10</td>
         <td>3</td>
+        <td></td>
+        <td></td>
         <td></td>
       </tr>
     </table>

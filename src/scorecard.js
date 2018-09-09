@@ -22,12 +22,24 @@ Scorecard.prototype.getScores = function() {
 };
 
 Scorecard.prototype.frameTotal = function(frameNumber) {
-
+  var x = frameNumber - 1;
   var displayTotal = null;
 
-  if(this.frames[frameNumber - 1].results[0] === 10) {
+// this has to come first in the order
+  if(this.frames[x].results[0] === 10 && typeof this.frames[x + 1] === 'undefined') {
     return displayTotal;
   };
+
+
+  if(this.frames[x].results[0] === 10 && this.frames[x + 1].results[0] === 10 && this.frames[x + 2].results[0] === 10) {
+    displayTotal = this.frames[x].frameScore() + this.frames[x + 1].frameScore() + this.frames[x + 2].frameScore();
+    return displayTotal * frameNumber;
+  };
+
+
+
+
+
 
 
   // thinking about spare logic below....to be implemented...
@@ -36,12 +48,16 @@ Scorecard.prototype.frameTotal = function(frameNumber) {
   // };
 
 
-  for(var i = 0; i <= frameNumber - 1; i++) {
-  var array = this.frames[i].results;
-  displayTotal += this.arraySum(array);
+  for(var i = 0; i <= x; i++) {
+    var array = this.frames[i].results;
+    displayTotal += this.arraySum(array);
   };
   return displayTotal;
 };
+
+
+
+
 
 
 Scorecard.prototype.arraySum = function(array) {

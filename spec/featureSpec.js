@@ -147,11 +147,38 @@ describe('features', function() {
     });
 
     describe('Perfect game', function() {
-      it('will correctly display the result given that every shot is a strike', function() {
+      it('will record a null result of the first frame given there was a strike', function() {
         frame1.rollOne(10);
         scorecard.addFrame(frame1);
         expect(scorecard.frameTotal(1)).toEqual(null);
       });
-    })
+      it('will record a null result of the second frame given all strikes', function() {
+        frame1.rollOne(10);
+        scorecard.addFrame(frame1);
+        frame2.rollOne(10);
+        scorecard.addFrame(frame2);
+        expect(scorecard.frameTotal(2)).toEqual(null);
+      });
+      it('will record result of 30 the first frame given all strikes in first 3 frames', function() {
+        frame1.rollOne(10);
+        scorecard.addFrame(frame1);
+        frame2.rollOne(10);
+        scorecard.addFrame(frame2);
+        frame3.rollOne(10);
+        scorecard.addFrame(frame3);
+        expect(scorecard.frameTotal(1)).toEqual(30);
+      });
+      it('will record result of 60 in the second frame given all strikes in the first 4 frames', function() {
+        frame1.rollOne(10);
+        scorecard.addFrame(frame1);
+        frame2.rollOne(10);
+        scorecard.addFrame(frame2);
+        frame3.rollOne(10);
+        scorecard.addFrame(frame3);
+        frame4.rollOne(10);
+        scorecard.addFrame(frame4);
+        expect(scorecard.frameTotal(2)).toEqual(60);
+      });
+    });
   });
 });

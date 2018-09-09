@@ -124,6 +124,7 @@ Scorecard.prototype.theTenthFrame = function (number) {
     this.bonusRoll = true;
   } else if (this.currentFrame.length < 2) {
     this.currentFrame.push(number);
+    this.currentScore += number;
   } else {
     this.endGame();
   }

@@ -71,15 +71,27 @@ describe('ScoreCard', function() {
     });
 
     it ('mixed game of spares (no strikes)', function () {
-      scoreCard._bowls = [1, 1, 5, 5, 1, 1, 1, 1, 5, 5, 1, 1, 5, 5, 1, 1, 5, 5, 1, 1]
+      scoreCard._bowls = [1, 1, 5, 5, 1, 1, 1, 1, 5, 5, 1, 1, 5, 5, 1, 1, 5, 5, 1, 1];
       scoreCard.score();
       expect(scoreCard._score).toEqual(56);
     })
 
     it ('mixed game of spares (no strikes) if more than alloted bowls entered', function () {
-      scoreCard._bowls = [1, 1, 5, 5, 1, 1, 1, 1, 5, 5, 1, 1, 5, 5, 1, 1, 5, 5, 1, 1, 5]
+      scoreCard._bowls = [1, 1, 5, 5, 1, 1, 1, 1, 5, 5, 1, 1, 5, 5, 1, 1, 5, 5, 1, 1, 5];
       scoreCard.score();
       expect(scoreCard._score).toEqual(56);
+    })
+
+    it ('game of strikes scores correctly', function () {
+      scoreCard._bowls = [10, 10, 10 ,10 ,10 ,10 ,10, 10 ,10 ,10 ,10 ,10];
+      scoreCard.score();
+      expect(scoreCard._score).toEqual(300);
+    })
+
+    it ('game of strikes scores correctly if extra bowl is entered', function () {
+      scoreCard._bowls = [10, 10, 10 ,10 ,10 ,10 ,10, 10 ,10 ,10 ,10 ,10, 5];
+      scoreCard.score();
+      expect(scoreCard._score).toEqual(300);
     })
 
   });

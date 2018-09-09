@@ -16,6 +16,12 @@ Scorecard.prototype.start = function () {
 Scorecard.prototype.addRoll = function (number) {
 
   if (!this.gameOver) {
+
+    if (this.strike > 0) {
+      this.currentScore += number;
+      this.strike--;
+    }
+
     if (number > 10) throw new Error(`This is 10-pin bowling, not ${number}-pin bowling!`)
 
     if (this.frame === 10) {
@@ -27,7 +33,7 @@ Scorecard.prototype.addRoll = function (number) {
       }
     } else if (number === 10) {
       this.currentFrame.push(number);
-
+      this.setStrikeStatus();
       this.endTheFrame();
     }
   }
@@ -35,8 +41,6 @@ Scorecard.prototype.addRoll = function (number) {
 
 Scorecard.prototype.endTheFrame = function () {
   this.checkForSpare();
-  this.checkForStrike();
-  if (this.currentFrame[0] === 10) this.setStrikeStatus();
   if (this.currentFrameSum() === 10 && this.currentFrame[0] != 10) {
     this.setSpareStatus();
   }
@@ -111,7 +115,7 @@ Scorecard.prototype.currentFrameSum = function () {
 
 Scorecard.prototype.theTenthFrame = function (number) {
 
-  if (this.bonusRoll && this.currentFrame.length < 3) {
+  if (this.bonusRoll && this.currentFrame.length <= 3) {
     this.currentFrame.push(number);
     this.currentScore += number;
   } else if (number === 10 && this.currentFrame.length < 3) {
@@ -133,11 +137,11 @@ Scorecard.prototype.theTenthFrame = function (number) {
 
 Scorecard.prototype.endGame = function () {
   this.checkForSpare();
-  this.checkForStrike();
+  // this.checkForStrike();
   this.calcCurrentScore();
   if (this.bonusRoll) this.pushTenthFrameToGame();
   if (!this.bonusRoll) this.pushFrameToGame();
-  this.setStrikeStatus();
+  // this.setStrikeStatus();
   this.setSpareStatus();
   this.currentFrame = [];
   this.bonusRoll = false;

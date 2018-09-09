@@ -36,16 +36,16 @@ Scorecard.prototype.frameTotal = function(frameNumber) {
     return displayTotal * frameNumber;
   };
 
+  if(this.frames[x].results[0] < 10 && this.frames[x].remainingPins() === 0 && typeof this.frames[x + 1] === 'undefined') {
+    return displayTotal;
+  };
+
+  // if(this.frames[x].results[0] < 10 && this.frames[x].remainingPins() === 0 &&)
+//  ok im busted here......think about maybe instantiating the scorecard with 10 empty frame objects to begin with might make this easier!
 
 
 
 
-
-
-  // thinking about spare logic below....to be implemented...
-  // if(this.frames[frameNumber - 1].results[0] < 10 && this.arraySum(this.frames[frameNumber - 1].results) === 10) {
-  //   return displayTotal;
-  // };
 
 
   for(var i = 0; i <= x; i++) {

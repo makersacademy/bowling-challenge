@@ -7,6 +7,8 @@ function Frame() {
   this.frameOver = false;
 };
 
+// Might need to instantiate every frame with default [null, null] and push it into scorecard before rolls, or even instantiate all 10 and push them all in first to create the card?!?!?!?
+
 
 Frame.prototype.remainingPins = function() {
   return this.pins;

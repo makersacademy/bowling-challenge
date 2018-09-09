@@ -290,8 +290,22 @@ describe('features', function() {
       // THIS IS WHERE IT BREAKS DOWN AND WE NEED TO LOOK AT THE FINAL FRAME FUNCTIONALITY!!
     });
 
-    describe('testing spares logic', function() {
-      
-    })
+    describe('testing spares logic - (pick up spare in every frame)', function() {
+      it('will record a null result for the first game', function() {
+        frame1.rollOne(5);
+        frame1.rollTwo(5);
+        scorecard.addFrame(frame1);
+        expect(scorecard.frameTotal(1)).toEqual(null);
+      });
+
+      // does the frame need to be added to the scorecard???? to proceed with - i think maybe
+      // it('will record result of 15 for the 1st frame once player rolls a 5 on roll 1 of second frame', function() {
+      //   frame1.rollOne(5);
+      //   frame1.rollTwo(5);
+      //   scorecard.addFrame(frame1);
+      //   frame2.rollOne(5);
+      //   expect(scorecard.frameTotal(1)).toEqual(15);
+      // });
+    });
   });
 });

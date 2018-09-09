@@ -179,6 +179,119 @@ describe('features', function() {
         scorecard.addFrame(frame4);
         expect(scorecard.frameTotal(2)).toEqual(60);
       });
+      it('will record result of 90 in the 3rd frame given all strikes in the first 5 frames', function() {
+        frame1.rollOne(10);
+        scorecard.addFrame(frame1);
+        frame2.rollOne(10);
+        scorecard.addFrame(frame2);
+        frame3.rollOne(10);
+        scorecard.addFrame(frame3);
+        frame4.rollOne(10);
+        scorecard.addFrame(frame4);
+        frame5.rollOne(10);
+        scorecard.addFrame(frame5);
+        expect(scorecard.frameTotal(3)).toEqual(90);
+      });
+      it('will record result of 120 in the 4th frame given all strikes in the first 6 frames', function() {
+        frame1.rollOne(10);
+        scorecard.addFrame(frame1);
+        frame2.rollOne(10);
+        scorecard.addFrame(frame2);
+        frame3.rollOne(10);
+        scorecard.addFrame(frame3);
+        frame4.rollOne(10);
+        scorecard.addFrame(frame4);
+        frame5.rollOne(10);
+        scorecard.addFrame(frame5);
+        frame6.rollOne(10);
+        scorecard.addFrame(frame6);
+        expect(scorecard.frameTotal(4)).toEqual(120);
+      });
+      it('will record result of 150 in the 5th frame given all strikes in the first 7 frames', function() {
+        frame1.rollOne(10);
+        scorecard.addFrame(frame1);
+        frame2.rollOne(10);
+        scorecard.addFrame(frame2);
+        frame3.rollOne(10);
+        scorecard.addFrame(frame3);
+        frame4.rollOne(10);
+        scorecard.addFrame(frame4);
+        frame5.rollOne(10);
+        scorecard.addFrame(frame5);
+        frame6.rollOne(10);
+        scorecard.addFrame(frame6);
+        frame7.rollOne(10);
+        scorecard.addFrame(frame7);
+        expect(scorecard.frameTotal(5)).toEqual(150);
+      });
+      it('will record result of 180 in the 6th frame given all strikes in the first 8 frames', function() {
+        frame1.rollOne(10);
+        scorecard.addFrame(frame1);
+        frame2.rollOne(10);
+        scorecard.addFrame(frame2);
+        frame3.rollOne(10);
+        scorecard.addFrame(frame3);
+        frame4.rollOne(10);
+        scorecard.addFrame(frame4);
+        frame5.rollOne(10);
+        scorecard.addFrame(frame5);
+        frame6.rollOne(10);
+        scorecard.addFrame(frame6);
+        frame7.rollOne(10);
+        scorecard.addFrame(frame7);
+        frame8.rollOne(10);
+        scorecard.addFrame(frame8);
+        expect(scorecard.frameTotal(6)).toEqual(180);
+      });
+      it('will record result of 210 in the 7th frame given all strikes in the first 9 frames', function() {
+        frame1.rollOne(10);
+        scorecard.addFrame(frame1);
+        frame2.rollOne(10);
+        scorecard.addFrame(frame2);
+        frame3.rollOne(10);
+        scorecard.addFrame(frame3);
+        frame4.rollOne(10);
+        scorecard.addFrame(frame4);
+        frame5.rollOne(10);
+        scorecard.addFrame(frame5);
+        frame6.rollOne(10);
+        scorecard.addFrame(frame6);
+        frame7.rollOne(10);
+        scorecard.addFrame(frame7);
+        frame8.rollOne(10);
+        scorecard.addFrame(frame8);
+        frame9.rollOne(10);
+        scorecard.addFrame(frame9);
+        expect(scorecard.frameTotal(7)).toEqual(210);
+      });
+      it('will record result of 240 in the 8th frame given all strikes in the first 10 frames', function() {
+        frame1.rollOne(10);
+        scorecard.addFrame(frame1);
+        frame2.rollOne(10);
+        scorecard.addFrame(frame2);
+        frame3.rollOne(10);
+        scorecard.addFrame(frame3);
+        frame4.rollOne(10);
+        scorecard.addFrame(frame4);
+        frame5.rollOne(10);
+        scorecard.addFrame(frame5);
+        frame6.rollOne(10);
+        scorecard.addFrame(frame6);
+        frame7.rollOne(10);
+        scorecard.addFrame(frame7);
+        frame8.rollOne(10);
+        scorecard.addFrame(frame8);
+        frame9.rollOne(10);
+        scorecard.addFrame(frame9);
+        frame10.rollOne(10);
+        scorecard.addFrame(frame10);
+        expect(scorecard.frameTotal(8)).toEqual(240);
+      });
+      // THIS IS WHERE IT BREAKS DOWN AND WE NEED TO LOOK AT THE FINAL FRAME FUNCTIONALITY!!
     });
+
+    describe('testing spares logic', function() {
+      
+    })
   });
 });

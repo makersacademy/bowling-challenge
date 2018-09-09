@@ -43,9 +43,8 @@ describe('Frame behaviour', function() {
   });
 
 
-  it('should give the total score of the frame', function() {
+  it('should give the total score of the frame(with a strike as the first roll)', function() {
     frame.rollOne(10);
-    frame.rollTwo(0);
     expect(frame.frameScore()).toEqual(10);
   });
 
@@ -64,6 +63,20 @@ describe('Frame behaviour', function() {
 
   it('min score per roll is 0 (gutter ball)', function() {
     expect(function() {frame.rollOne(-1)}).toThrowError("Invalid score value");
+  });
+
+
+  it('ends the frame if there is a strike on the first roll by populating the second roll with 0', function() {
+    frame.rollOne(10);
+    expect(frame.remainingPins()).toEqual(0);
+    expect(frame.resultArray()).toEqual([10,0]);
+    expect(frame.frameOver).toBe(true);
+  });
+
+
+  it('will not allow a second roll if the frame is over', function() {
+    frame.rollOne(10);
+    expect(function() {frame.rollTwo(1)}).toThrowError("frame is complete");
   });
 
 

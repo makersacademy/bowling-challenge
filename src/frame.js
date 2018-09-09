@@ -4,11 +4,16 @@ function Frame() {
   this.DEFAULT_PINS = 10;
   this.pins = this.DEFAULT_PINS;
   this.results = [];
+  this.frameOver = false;
 };
 
 
 Frame.prototype.remainingPins = function() {
   return this.pins;
+};
+
+Frame.prototype.resultArray = function() {
+  return this.results;
 };
 
 
@@ -20,12 +25,35 @@ Frame.prototype.rollOne = function(num) {
   }
   this.pins -= num;
   this.results.push(num);
+  if(num === 10) {
+    this.results.push(0);
+    this.frameOver = true;
+  }
 };
 
 Frame.prototype.rollTwo = function(num) {
+  if(this.frameOver === true) {
+    throw new Error('frame is complete');
+  }
   this.pins -= num;
   this.results.push(num);
 };
+
+// possible implementation if i go with a single roll function???
+// Frame.prototype.roll = function(num) {
+//   if(this.frameOver === true) {
+//     throw new Error('frame is complete');
+//   }
+//   if (num > 10 || num < 0) {
+//     throw new Error('Invalid score value');
+//   }
+//   this.pins -= num;
+//   this.results.push(num);
+//   if(num === 10) {
+//     this.results.push(0);
+//     this.frameOver = true;
+//   }
+// };
 
 
 Frame.prototype.frameScore = function() {

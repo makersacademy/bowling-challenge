@@ -4,6 +4,7 @@ describe("Scorecard", function () {
 
   beforeEach(function () {
     scorecard = new Scorecard();
+    scorecard.start();
   });
 
   describe("addRoll", function () {
@@ -77,8 +78,8 @@ describe("Scorecard", function () {
       expect(scorecard.frame).toEqual(2);
     });
 
-    it("sets strike to true", function () {
-      expect(scorecard.strike).toEqual(true);
+    it("sets strike to 2", function () {
+      expect(scorecard.strike).toEqual(2);
     });
 
     it("adds the next two rolls to currentScore", function () {
@@ -92,14 +93,14 @@ describe("Scorecard", function () {
 
   describe("on the last frame", function () {
 
-    beforeEach(function() {
+    beforeEach(function () {
       for (var i = 1; i <= 18; i++) {
         scorecard.addRoll(3);
       }
     });
 
-    describe("if the user gets a spare", function() {
-      
+    describe("if the user gets a spare", function () {
+
       it("will give them a bonus turn", function () {
         scorecard.addRoll(9);
         scorecard.addRoll(1);
@@ -109,9 +110,9 @@ describe("Scorecard", function () {
       });
 
     });
-    
-    describe("if the user gets a strike", function() {
-      
+
+    describe("if the user gets a strike", function () {
+
       it("will give them a bonus turn", function () {
         scorecard.addRoll(10);
         scorecard.addRoll(1);
@@ -124,28 +125,28 @@ describe("Scorecard", function () {
 
   });
 
-  describe("user bowls the perfect game", function() {
+  describe("user bowls the perfect game", function () {
 
-    beforeEach(function() {
+    beforeEach(function () {
       for (var i = 1; i <= 21; i++) {
         scorecard.addRoll(10);
       }
     });
-    
-    it("score will equal 300", function() {
+
+    it("score will equal 300", function () {
       expect(scorecard.currentScore).toEqual(300);
     });
 
   });
 
-  describe("user bowls a gutter game", function() {
-    beforeEach(function() {
+  describe("user bowls a gutter game", function () {
+    beforeEach(function () {
       for (var i = 1; i <= 20; i++) {
         scorecard.addRoll(0);
       }
     });
 
-    it ("score will be 0", function () {
+    it("score will be 0", function () {
       expect(scorecard.currentScore).toEqual(0);
     });
   });

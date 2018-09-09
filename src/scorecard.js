@@ -4,24 +4,33 @@ function Scorecard() {
   this.currentGame = [];
   this.frame = 1;
   this.spare = false;
-  this.strike = false;
+  this.strike = 0;
   this.bonusRoll = false;
+  this.gameOver = false;
+}
+
+Scorecard.prototype.start = function () {
+  this.gameOver = false;
 }
 
 Scorecard.prototype.addRoll = function (number) {
 
-  if (number > 10) throw new Error(`This is 10-pin bowling, not ${number}-pin bowling!`)
+  if (!this.gameOver) {
+    if (number > 10) throw new Error(`This is 10-pin bowling, not ${number}-pin bowling!`)
 
-  if (this.frame === 10) {
-    this.theTenthFrame(number);
-  } else if (number < 10) {
-    this.currentFrame.push(number);
-    if (this.currentFrame.length === 2) {
+    if (this.frame === 10) {
+
+      this.theTenthFrame(number);
+    } else if (number < 10) {
+      this.currentFrame.push(number);
+      if (this.currentFrame.length === 2) {
+        this.endTheFrame();
+      }
+    } else if (number === 10) {
+      this.currentFrame.push(number);
+
       this.endTheFrame();
     }
-  } else if (number === 10) {
-    this.currentFrame.push(number);
-    this.endTheFrame();
   }
 }
 
@@ -36,11 +45,17 @@ Scorecard.prototype.calcCurrentScore = function () {
 }
 
 Scorecard.prototype.pushFrameToGame = function () {
-  this.currentGame.push(new Array(this.currentFrame[0], this.currentFrame[1]));
+  if (this.currentFrame[0] === 10) {
+    this.currentGame.push(this.currentFrame[0]);
+  } else {
+    this.currentGame.push(new Array(this.currentFrame[0], this.currentFrame[1]));
+  }
 }
 
-Scorecard.prototype.pushFrameToGameEnd = function () {
+Scorecard.prototype.pushTenthFrameToGame = function () {
   this.currentGame.push(new Array(this.currentFrame[0], this.currentFrame[1], this.currentFrame[2]));
+  console.log(this.currentGame)
+  console.log(this.currentScore)
 }
 
 Scorecard.prototype.wasLastFrameSpare = function () {
@@ -55,10 +70,12 @@ Scorecard.prototype.endTheFrame = function () {
 
   this.checkForSpare();
   this.checkForStrike();
-  this.calcCurrentScore();
+  if (this.currentFrame[0] === 10) this.setStrikeStatus();
+  if (this.currentFrameSum() === 10 && this.currentFrame[0] != 10) {
+    this.setSpareStatus();
+  }
   this.pushFrameToGame();
-  this.setStrikeStatus();
-  this.setSpareStatus();
+  this.calcCurrentScore();
   this.currentFrame = [];
   this.frame++
 }
@@ -75,23 +92,22 @@ Scorecard.prototype.checkForSpare = function () {
 }
 
 Scorecard.prototype.setSpareStatus = function () {
-  if (this.currentFrameSum() === 10) {
-    this.spare = true;
-  }
+  this.spare = true;
 }
 
 Scorecard.prototype.checkForStrike = function () {
-  if (this.wasLastFrameStrike()) {
+  if (this.strike > 0) {
     this.currentScore += this.currentFrame[0];
-    this.currentScore += this.currentFrame[1];
-    this.strike = false;
+    this.strike--;
+    if (this.currentFrame[0] != 10) {
+      this.currentScore += this.currentFrame[1];
+      this.strike--;
+    }
   }
 }
 
 Scorecard.prototype.setStrikeStatus = function () {
-  if (this.currentFrame[0] === 10) {
-    this.strike = true;
-  }
+  this.strike += 2;
 }
 
 Scorecard.prototype.theTenthFrame = function (number) {
@@ -109,48 +125,18 @@ Scorecard.prototype.theTenthFrame = function (number) {
   } else {
     this.endGame();
   }
-  
-  
-  
-  // if (this.bonusRoll) {
-    
-  //   this.currentFrame.push(number);
-    
-  //   this.currentGame.push(new Array(this.currentFrame[0], this.currentFrame[1], this.currentFrame[2]));
-  //   this.calcCurrentScore();
-    
-  //   this.bonusRoll = false;
-  // } else if (number === 10) {
-    
-  //   this.setStrikeStatus();
-    
-  //   this.bonusRoll = true;
-    
-  //   this.currentFrame.push(number);
 
-  // } else {
-    
-  //   this.currentFrame.push(number)
-    
-  //   if (this.currentFrame.length === 2 && this.currentFrameSum() === 10) {
-      
-  //     this.spare = true;
-      
-  //     this.bonusRoll = true;
-
-  //   } else {
-
-  //     this.endTheFrame();
-  //   }
-  // }
 }
 
-Scorecard.prototype.endGame = function() {
+Scorecard.prototype.endGame = function () {
   this.checkForSpare();
   this.checkForStrike();
   this.calcCurrentScore();
-  this.pushFrameToGameEnd();
+  if (this.bonusRoll) this.pushTenthFrameToGame();
+  if (!this.bonusRoll) this.pushFrameToGame();
   this.setStrikeStatus();
   this.setSpareStatus();
   this.currentFrame = [];
+  this.bonusRoll = false;
+  this.gameOver = true;
 }

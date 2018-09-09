@@ -97,8 +97,6 @@ Scorecard.prototype.calcCurrentScore = function () {
 
 Scorecard.prototype.pushTenthFrameToGame = function () {
   this.currentGame.push(new Array(this.currentFrame[0], this.currentFrame[1], this.currentFrame[2]));
-  console.log(this.currentGame)
-  console.log(this.currentScore)
 }
 
 Scorecard.prototype.wasLastFrameSpare = function () {
@@ -137,11 +135,9 @@ Scorecard.prototype.theTenthFrame = function (number) {
 
 Scorecard.prototype.endGame = function () {
   this.checkForSpare();
-  // this.checkForStrike();
   this.calcCurrentScore();
   if (this.bonusRoll) this.pushTenthFrameToGame();
   if (!this.bonusRoll) this.pushFrameToGame();
-  // this.setStrikeStatus();
   this.setSpareStatus();
   this.currentFrame = [];
   this.bonusRoll = false;

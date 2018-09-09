@@ -1,3 +1,5 @@
+'use strict';
+
 function Scoreboard() {
   this.scores = [];
   this.frames = [];

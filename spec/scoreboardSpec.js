@@ -1,3 +1,5 @@
+'use strict';
+
 describe ('Scoreboard', function() {
   var scoreboard
 

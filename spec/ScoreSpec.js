@@ -58,15 +58,10 @@ describe("Game", function() {
     })
     it('adds two ball bonus for strike', function() {
       expect(game.cumulatives).toEqual([])
-      console.log('DISPLAY OF STRIKE BOTH IN NEXT: ');
-      display.print(game.frames, game.cumulatives)
       game.add_score(5)
       game.add_score(2)
-      console.log('after both');
-      display.print(game.frames, game.cumulatives)
       expect(game.score).toEqual(7+17)
       expect(game.cumulatives).toEqual([17, 7+17]);
-
     })
     it('carry over bonus for strike and spare', function() {
       game.add_score(5)
@@ -75,25 +70,39 @@ describe("Game", function() {
       game.add_score(0)
       expect(game.score).toEqual(3+13+20)
       expect(game.cumulatives).toEqual([20, 13 + 20, 13 + 20 + 3]);
-
     })
     it('carry over bonus for two strikes', function() {
-      console.log('strike attempt: ');
-      console.log('DISPLAY OF PREVIOUS STRIKE: ');
-      display.print(game.frames, game.cumulatives)
       game.add_score(10)
-      console.log('display after 1 extra strike: ');
-      display.print(game.frames, game.cumulatives)
       game.add_score(5)
-      console.log('Needs to add second ball score to second strike');
-      console.log('display after 2 extra ball: ');
-      display.print(game.frames, game.cumulatives)
       game.add_score(2)
       expect(game.score).toEqual(7+17+25)
       expect(game.cumulatives).toEqual([25, 25 + 10 + 7, 25 + 17 + 7]);
-      console.log('display final: ');
-      display.print(game.frames, game.cumulatives)
+    })
+    it('carry over bonus for two strikes', function() {
+      game.add_score(10)
+      game.add_score(10)
+      game.add_score(10)
+      game.add_score(0)
+      game.add_score(0)
+      expect(game.score).toEqual(90)
+      expect(game.cumulatives).toEqual([30, 60, 80, 90, 90 ]);
     })
   })
-
+  describe('End Game', function() {
+    beforeEach(function() {
+      [1,2,3,4,5,6,7,8,9,10].forEach( function() {
+        game.add_score(10)
+      })
+    })
+    it('Adds extra balls to the last frame', function() {
+      console.log('SHOWING BEFORE SHOTS');
+      display.print(game.frames, game.cumulatives)
+      game.add_score(10)
+      game.add_score(10)
+      expect(game.score).toEqual(300)
+      expect(game.cumulatives).toEqual([30, 60, 90, 120, 150, 180, 210, 240, 270, 300 ]);
+      console.log('SHOWING AFTER LAST SHOTS');
+      display.print(game.frames, game.cumulatives)
+    });
+  });
 });

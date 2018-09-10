@@ -40,23 +40,11 @@ Game.prototype.add_score = function(score) {
 // }
 
 Game.prototype._checkPrevBonusAndCumul = function () {
-  console.log('prev has bonus: ', this._prevHasBonus());
-
   if (this._prevHasBonus()) {
-
-    console.log('bonus not added: ', this._bonusNotAdded());
     if (this._bonusNotAdded()) {
-
-      console.log('has prev bonus and not added');
       if (this.allBonusBallsRolled()) {
-        console.log('all balls rolled');
         this._add_bonus();
-        // Add the cumulative to the cumulative array
-      } else {
-
       }
-    } else {
-    console.log('No prev bonus');
     }
   }
 };
@@ -99,8 +87,6 @@ Game.prototype.allBonusBallsRolled = function () {
     currentframe = this.frames[lenFrames - 1]
     framePendingTotal = this.frames[lenCumulatives] // The one after the last cumulative score
     requiredBalls = framePendingTotal.bonusBalls
-    console.log('Required balls: ', requiredBalls);
-    console.log('Current frame ball', currentframe.ball)
 
     // if lenCumulatives + 2 === lenFrames then only one frame is pending a bonus
     // for a spare this means can add it after the first ball

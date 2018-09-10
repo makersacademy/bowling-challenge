@@ -9,43 +9,28 @@ describe('ScoreCalculator', function() {
   })
 
   it('Instantiates with a score of zero', function() {
-    expect(scoreCalculator.calculate(0, { frame: 1, roll: 2})).toEqual({ total: 0, scoresArray: [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ] });
+    expect(scoreCalculator.calculateTotal(0)).toEqual(0);
   });
 
-  it('Instantiates current turn: frame = 1, roll = 1', function() {
-    expect(scoreCalculator._currentTurn).toEqual({ frame: 1, roll: 1 });
-  })
-
-  describe('.calculate', function() {
-    it('Keeps a running total of score', function() {
-      scoreCalculator.calculate(5, { frame: 1, roll: 2 });
-      scoreCalculator.calculate(4, { frame: 2, roll: 1 });
-      expect(scoreCalculator.calculate(5, { frame: 2, roll: 2 })).toEqual({ total: 14, scoresArray: [ 9, 5, 0, 0, 0, 0, 0, 0, 0, 0 ] });
-    })
-
-    it('Updates _currentTurn', function() {
-      scoreCalculator.calculate(5, { frame: 1, roll: 2 });
-      scoreCalculator.calculate(5, { frame: 2, roll: 1 });
-      expect(scoreCalculator._currentTurn).toEqual({ frame: 2, roll: 1 });
+  describe('.calculateTotal', function() {
+    it('Returns the total current score', function() {
+      scoreCalculator._scoreArray = [5,6,7,8,0,0,0,0,0,0];
+      expect(scoreCalculator.calculateTotal()).toEqual(26);
     });
+  });
 
-    it('Adds correct score after a strike', function() {
-      scoreCalculator.calculate(10, { frame: 2, roll: 1 });
-      scoreCalculator.calculate(5, { frame: 2, roll: 2 });
-      expect(scoreCalculator.calculate(4, { frame: 3, roll: 1 })).toEqual({ total: 28, scoresArray: [ 19, 9, 0, 0, 0, 0, 0, 0, 0, 0 ] });
-    })
-
-    it('Adds correct score after sequential strikes', function() {
-      scoreCalculator.calculate(10, { frame: 2, roll: 1 });
-      scoreCalculator.calculate(10, { frame: 3, roll: 1 });
-      expect(scoreCalculator.calculate(10, { frame: 2, roll: 1 })).toEqual({ total: 50, scoresArray: [ 20, 20, 10, 0, 0, 0, 0, 0, 0, 0 ] });
+  describe('.updateArray', function() {
+    it('Keeps a running total of the score, per frame', function() {
+      scoreCalculator.updateArray(5, 1);
+      scoreCalculator.updateArray(4, 1);
+      expect(scoreCalculator.updateArray(5, 2)).toEqual([ 9, 5, 0, 0, 0, 0, 0, 0, 0, 0 ]);
     });
+  });
 
-    it('Adds correct score after a spare', function() {
-      scoreCalculator.calculate(7, { frame: 1, roll: 2 });
-      scoreCalculator.calculate(3, { frame: 2, roll: 1 });
-      scoreCalculator.calculate(4, { frame: 2, roll: 2 });
-      expect(scoreCalculator.calculate(4, { frame: 3, roll: 1 })).toEqual({ total: 22, scoresArray: [ 14, 8, 0, 0, 0, 0, 0, 0, 0, 0 ] });
-    });
+
+  describe('.addStrike', function() {
+  });
+
+  describe('Edge cases', function() {
   });
 });

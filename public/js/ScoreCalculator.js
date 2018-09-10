@@ -1,12 +1,24 @@
 "use strict";
 
 function ScoreCalculator() {
-  this._currentTurn = { frame: 1, roll: 1 };
   this._scoreArray = Array(10).fill(0);
-  this._strikeFrame = 0;
-  this._spareFrame = 0;
 };
 
+ScoreCalculator.prototype.calculateTotal = function() {
+  return this._scoreArray.reduce((a, b) => a + b, 0);
+};
+
+ScoreCalculator.prototype.updateArray = function(pins, frame) {
+  var index = frame - 1;
+  this._scoreArray[index] += pins;
+  return this._scoreArray;
+};
+
+ScoreCalculator.prototype.addStrike = function() {
+
+};
+
+/*
 ScoreCalculator.prototype.calculate = function(knockedPins) {
   this.incrementFrameTotal(knockedPins);
   var currentTotal = this.calculateCurrentTotal();
@@ -55,14 +67,10 @@ ScoreCalculator.prototype._addSpareScores = function(knockedPins) {
   };
 };
 
-ScoreCalculator.prototype.calculateCurrentTotal = function() {
-  return this._scoreArray.reduce((a, b) => a + b, 0);
-};
-
 // function updateCurrentTurn() {
 //   this._currentTurn = this._nextTurn
 // };
 
 ScoreCalculator.prototype.updateTurn = function(nextTurn) {
   this._currentTurn = nextTurn;
-};
+};*/

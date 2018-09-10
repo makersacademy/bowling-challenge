@@ -1,5 +1,6 @@
 function Display() {
-
+// for debugging purposes
+// uses Scorecard.html for real display
 }
 Display.prototype.print = function(frames, cumulatives) {
   counter = 0

@@ -1,9 +1,9 @@
 'use strict';
 
-function Frame(final_frame = false) {
+function Frame(finalFrame = false) {
   this.score = 0
   this.bowl = 0 
-  this.final_frame = final_frame
+  this.finalFrame = finalFrame
   this.rolls =[]
 };
 
@@ -23,7 +23,8 @@ Frame.prototype = {
     return this.bowl === 2 && this.score === 10;
   },
   isGetAnotherBowl: function() {
-    return this.bowl === 1 && this.score < 10;
+    return this.bowl === 1 && this.score < 10 ||
+      this.finalFrame && this.score >= 10 && this.bowl < 3;
   },
   isFinished: function() {
     return !this.isGetAnotherBowl();

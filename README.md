@@ -3,38 +3,41 @@ Bowling Challenge
 =================
 
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+This project aims to build a bowling scorecard using Javascript. It was built test-first using Jasmine.
 
-## The Task
+At the moment, the program doesn't include the following functionalities:
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
-
-Count and sum the scores of a bowling game for one player (in JavaScript).
-
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+* Bonus points for Strikes and Spares
+* Behavior of the 10th frame
+* Messages for Gutter and Perfect Games
+* A nice interface with jQuery
+* Set up [Travis CI](https://travis-ci.org) to run the tests
+* Add [ESLint](http://eslint.org/) to the codebase and make the code conform.
 
 ___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
 
-### Optional Extras
+## User stories
 
-In any order you like:
+```
+As a player,
+So that I can know my score,
+I want to input the number of knocked down pins for each roll and get the score.
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+As a player,
+So that I can count my score for each frame,
+I want to sum the score of both rolls.
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+As a player,
+So that I can remember my score,
+I want the score of each frame displayed on a scoreboard.
+
+As a player,
+So that I can improve myself,
+I want to see the total score of my game.
+```
+
+
+
 
 ## Bowling — how does it work?
 

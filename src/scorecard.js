@@ -10,5 +10,12 @@ Scorecard.prototype = {
   },
   isFinalFrame: function() {
     return this.frames.length === 9
+  },
+  finalScore: function() {
+    var score = 0;     
+    this.frames.forEach(function(frame) {
+      score += frame.score; 
+    });
+    return score;
   }
 };

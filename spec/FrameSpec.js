@@ -50,18 +50,27 @@ describe("Frame", function() {
     expect(frame.isFinished()).toEqual(true);
   });
 
-  it("should return true when it is the final frame", function() {
-    var f10 = new Frame(true);
-    expect(f10.finalFrame).toEqual(true);
-  });
+  describe("final frame", function() {
+    it("should return true when it is the final frame", function() {
+      var f10 = new Frame(true);
+      expect(f10.finalFrame).toEqual(true);
+    });
 
-  it("should allow 2 extra rolls when get a strike in final frame", function() {
-    var f10 = new Frame(true);
-    f10.roll(10);
-    expect(f10.isGetAnotherBowl()).toEqual(true);
-    f10.roll(10)
-    expect(f10.isGetAnotherBowl()).toEqual(true);
-  });
+    it("should allow 2 extra rolls when get a strike in final frame", function() {
+      var f10 = new Frame(true);
+      f10.roll(10);
+      expect(f10.isGetAnotherBowl()).toEqual(true);
+      f10.roll(10)
+      expect(f10.isGetAnotherBowl()).toEqual(true);
+    });
 
+    it("should allow 1 extra roll when get a spare in final frame", function() {
+      var f10 = new Frame(true);
+      f10.roll(8);
+      expect(f10.isGetAnotherBowl()).toEqual(true);
+      f10.roll(2)
+      expect(f10.isGetAnotherBowl()).toEqual(true);
+    });    
+  })
 
 });

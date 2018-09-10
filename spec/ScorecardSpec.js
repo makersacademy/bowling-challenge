@@ -19,6 +19,16 @@ describe("Scorecard", function() {
     expect(scorecard.isFinalFrame()).toBe(true);
   });
 
+  describe("scores", function() {
+    it("should return 0 for gutter game", function() {
+      for (var i = 1; i < 11; i ++) {
+        frame.roll(0);
+        frame.roll(0);
+        scorecard.addFrame(frame);
+      }
+      expect(scorecard.finalScore()).toEqual(0);
+    })
+  })
   
   
 });

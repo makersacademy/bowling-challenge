@@ -16,6 +16,14 @@ describe("Frame", function() {
       expect(frame.getScore()).toEqual(3);
     });
 
+    it("should be able to return score for a bowl", function() {
+      expect(frame.getScore()).toEqual(0);
+      frame.roll(3);
+      expect(frame.getRollScore(1)).toEqual(3);
+      frame.roll(4);
+      expect(frame.getRollScore(2)).toEqual(4);
+    });
+
     it("returns true for a strike", function() {
       expect(frame.getScore()).toEqual(0);
       frame.roll(10);
@@ -44,10 +52,7 @@ describe("Frame", function() {
 
   // it("should return true when it is the final frame", function() {
   //   var scorecard = jasmine.createSpyObj('scorecard', ['frames']);
-  //   scorecard.frames = [];
-  //   for (i = 0; i < 10; i ++) {
-  //     frame.addFrame(frame);
-  //   }
-  //   expect(frame.isFinalFrame()).toEqual(true);
+  //   scorecard.frames.length = 9
+  //   expect(frame.getFinalFrame).toEqual(true);
   // });
 });

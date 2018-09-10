@@ -25,9 +25,11 @@ describe('Roll', function(){
       bowling.roll(10);
       bowling.roll(2);
       bowling.roll(3);
-      // bowling.roll(1);
-      // bowling.roll(1);
-      expect(bowling.frame_roll()).toEqual(20);
+      // console.log(bowling);
+      expect(bowling.score()).toEqual(20);
+      bowling.roll(1);
+      bowling.roll(1);
+      expect(bowling.score()).toEqual(22);
     });
 
     it('calculates the score of a spare', function(){
@@ -35,17 +37,17 @@ describe('Roll', function(){
       bowling.roll(3);
       bowling.roll(3);
       bowling.roll(4);
-      bowling.roll(3);
       bowling.roll(4);
-      expect(bowling.score()).toEqual(27);
+      bowling.roll(4);
+      expect(bowling.score()).toEqual(28);
     });
 
-    it('calculates next two pins after strike', function(){
-      bowling.roll(10);
-      bowling.roll(2);
-      bowling.roll(3);
-      expect(bowling._calc_strike()).toEqual(5);
-    });
+    // it('calculates next two pins after strike', function(){
+    //   bowling.roll(10);
+    //   bowling.roll(2);
+    //   bowling.roll(3);
+    //   expect(bowling._calc_strike()).toEqual(5);
+    // });
 
     it('returns true if strike', function(){
       bowling.frame = [10];

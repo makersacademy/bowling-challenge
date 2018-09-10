@@ -2,10 +2,12 @@
 
 function Bowling(){
   this.STRIKE = 10;
+  this.score_card = [];
   this.bowling_score = [];
   this.frame = [];
   this.isStrike = false;
   this.isSpare = false;
+  this.total = 0;
 }
 
 Bowling.prototype.roll = function(score){
@@ -14,19 +16,12 @@ Bowling.prototype.roll = function(score){
 };
 
 Bowling.prototype.score = function(){
-  if (this.isStrike) {
-    return this._calc_score() + this._calc_strike();
-  } else if (this.isSpare) {
-    return this._calc_score() + this._calc_spare();
-  } else {
-    return this._calc_score();
-  };
+  return this._calc_score();
 };
 
 Bowling.prototype.frame_roll = function(){
   if (this.strike()) {
     this._clear_frame();
-    return this.score();
   };
   if (this.spare()) {
     this._clear_frame();
@@ -42,17 +37,29 @@ Bowling.prototype._clear_frame = function(){
 };
 
 Bowling.prototype._calc_score = function(){
+  var total = 0
   var new_score = this.bowling_score.concat.apply([], this.bowling_score);
-  return new_score.reduce((a, b) => a + b);
+  new_score.forEach(function(score){
+    total += score
+  });
+  if (new_score[new_score.length-3] === this.STRIKE){
+    total += new_score[new_score.length-2] + new_score[new_score.length-1]
+  };
+  this.score_card.push(new_score);
+  this.total += total
+  this.bowling_score = [];
+  return this.total
 };
 
-Bowling.prototype._calc_strike = function(){
-  var new_score = this.bowling_score.concat.apply([], this.bowling_score);
-  return new_score[new_score.length-1] + new_score[new_score.length-2];
-};
+// Bowling.prototype._calc_strike = function(){
+//   var new_score = this.bowling_score.concat.apply([], this.bowling_score);
+//   if (new_score[new_score.length-3] === this.STRIKE){
+//     new_score[new_score.length-2] + new_score[new_score.length-1]
+//   };
+// };
 
 Bowling.prototype._calc_spare = function(){
-  var new_score = this.bowling_score.concat.apply([], this.bowling_score);
+  var new_score = this.score_card.concat.apply([], this.score_card);
   return new_score[new_score.length-2];
 };
 

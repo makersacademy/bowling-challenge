@@ -23,6 +23,9 @@ Scorecard.prototype.addRoll = function (number) {
     }
 
     if (number > 10) throw new Error(`This is 10-pin bowling, not ${number}-pin bowling!`)
+    if (this.currentFrame.length > 0 && this.frame != 10) {
+      if (number + this.currentFrame[0] > 10) throw new Error("Stop cheating...there aren't even that many pins!");
+    }
 
     if (this.frame === 10) {
       this.theTenthFrame(number);

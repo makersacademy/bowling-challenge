@@ -161,4 +161,16 @@ describe("Scorecard", function () {
 
   });
 
+  describe("when user enters more than 10 in a single frame", function () {
+
+    it("throws an error", function() {
+      scorecard.addRoll(7);
+
+      expect(function () {
+        scorecard.addRoll(7);
+      }).toThrowError("Stop cheating...there aren't even that many pins!");
+    });
+
+  });
+
 });

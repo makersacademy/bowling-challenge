@@ -3,6 +3,15 @@ function Game(frame = new Frame()) {
   this.score = 0
   this.frames = [frame]
   this.cumulatives = []
+
+  //THE BELOW ARE REFERENCED A LOT. MAYBE MAKE THEM INSTANCE VARIABLES
+  // this.lenFrames = this.frames.length
+  // this.currentFrame = this.frames[this.lenFrames - 1]
+  // this.previousFrame = null
+  // this.twobackframe = null
+  // this.lenCumulatives = this.cumulatives.length
+  // this.framePendingTotal = this.frames[lenCumulatives]
+
 };
 
 Game.prototype.add_score = function(score) {
@@ -10,6 +19,7 @@ Game.prototype.add_score = function(score) {
   currentframe.add_score(score);
 
   this._checkPrevBonusAndCumul()
+  // adds first pending bonus. Need to check again for if there is a second pending bonus.
   this._checkPrevBonusAndCumul()
 
   if (this._currentFrameOver()) {
@@ -18,26 +28,6 @@ Game.prototype.add_score = function(score) {
     this._add_frame();
   }
 };
-
-// Game.prototype._checkBonusReady = function () {
-//   if (this.frames.length > 2) {
-//     twobackframe = this.frames[this.frames.length - 3]
-//     if (twobackframe.bonusAdded === false) {
-//       // add the two back bonus
-//     } else {
-//       previousframe = this.frames[this.frames.length - 2]
-//       if (previousframe.bonusAdded === false) {
-//         // check the prev bonus
-//       }
-//     }
-//   }
-//   if (this.frames.length > 1) {
-//     previousframe = this.frames[this.frames.length - 2]
-//     if (previousframe.bonusAdded === false) {
-//       // check the prev bonus
-//     }
-//   }
-// }
 
 Game.prototype._checkPrevBonusAndCumul = function () {
   if (this._prevHasBonus()) {
@@ -50,6 +40,7 @@ Game.prototype._checkPrevBonusAndCumul = function () {
 };
 
 Game.prototype._checkCurrentFrameBonus = function() {
+  // if current frame not waiting for a bonus then add the cumuative score
   lenFrames = this.frames.length
   currentframe = this.frames[lenFrames - 1]
   if (currentframe.bonusBalls === 0) {
@@ -110,16 +101,19 @@ Game.prototype._add_bonus = function () {
   if (this.frames.length > 2) {
     twobackframe = this.frames[this.frames.length - 3]
     if (twobackframe.bonusAdded === false) {
+      // If bonus from two back isn't added then it must have been a strike last round
       twobackframe.add_bonus(10+currentframe.scores[0])
       this.cumulatives.push(this.newTotal())
       return;
     }
   }
   if (previousframe.bonusBalls == 1) {
+    // if previous was a spare just add first ball of current frame as bonus
     previousframe.add_bonus(currentframe.scores[0])
     this.cumulatives.push(this.newTotal())
   } else if (previousframe.bonusBalls == 2) {
     if (currentframe.scores[0] != 10) {
+      // won't add the bonus yet if another strike scored
       previousframe.add_bonus(currentframe.flatscore)
       this.cumulatives.push(this.newTotal())
     }
@@ -139,8 +133,6 @@ Game.prototype.newTotal = function () {
   return flatFrame + bonusFrame + lastTotal;
 }
 
-
-
 Game.prototype._currentFrameOver = function() {
   return this.frames[this.frames.length - 1].isOver;
 };
@@ -148,41 +140,3 @@ Game.prototype._currentFrameOver = function() {
 Game.prototype._add_frame = function(frame = new Frame()) {
   this.frames.push(frame)
 };
-
-
-
-// Game.prototype._endOfFrameProcess = function() {
-//   this.score = this.cumulatives[this.cumulatives.length - 1]
-//   this._add_frame();
-//
-// };
-//
-// Game.prototype.updateScore = function() {
-//   this.updateFlat()
-//   this.updateBonus()
-//   this.updateDelayedBonus()
-//   return this.score;
-// };
-//
-// Game.prototype.updateFlat = function() {
-//   frame = this.frames[this.frames.length - 1]
-//   this.scoreUpdate(frame.flatscore)
-// }
-//
-// Game.prototype.updateBonus = function() {
-//   if (this.frames.length > 1) {
-//     frame = this.frames[this.frames.length - 2]
-//     this.scoreUpdate(frame.bonusscore)
-//   }
-// }
-//
-// Game.prototype.updateDelayedBonus = function() {
-//   if (this.frames.length > 2) {
-//     frame = this.frames[this.frames.length - 3]
-//     this.scoreUpdate(frame.bonusscore)
-//   }
-// }
-//
-// Game.prototype.scoreUpdate = function(gain) {
-//     this.score += gain
-// }

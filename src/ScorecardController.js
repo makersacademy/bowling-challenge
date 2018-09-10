@@ -34,39 +34,12 @@ $( document ).ready( function() {
     counter = 0
     frames.forEach( function(frame) {
       if (counter < 9) {
-        row = new_body.appendChild(document.createElement('tr'))
-        framenum = row.appendChild(document.createElement('th'))
-        roll1 = row.appendChild(document.createElement('td'))
-        roll2 = row.appendChild(document.createElement('td'))
-        roll3 = row.appendChild(document.createElement('td'))
-        frameTotal = row.appendChild(document.createElement('td'))
+        var [row, framenum, roll1, roll2, roll3, frameTotal] = insert_row(new_body)
 
         framenum.innerHTML = counter + 1
-
-        roll1score = frame.scores[0]
-        if (roll1score === 10) {
-          roll1.innerHTML = 'X'
-        } else {
-          roll1.innerHTML = roll1score
-        }
-
-        roll2score = frame.scores[1]
-        if (roll1score === 10) {
-          roll2.innerHTML = ""
-        } else {
-          if (roll1score + roll2score === 10) {
-            roll2.innerHTML = '/'
-          } else {
-            roll2.innerHTML = roll2score
-          }
-        }
-
-        cumulative = cumulatives[counter]
-        if (cumulative === undefined) {
-          frameTotal.innerHTML = ""
-        } else {
-          frameTotal.innerHTML = cumulative
-        }
+        add_roll_1(roll1, frame.scores[0])
+        add_roll_2(roll2, frame.scores[1], frame.scores[0])
+        add_total(frameTotal, cumulatives[counter])
       }
       counter++
     })
@@ -74,64 +47,86 @@ $( document ).ready( function() {
 
   function populate_with_new_rows_over_9(new_body, frames, cumulatives) {
     if (frames[10] != undefined) {
-      row = new_body.appendChild(document.createElement('tr'))
-      framenum = row.appendChild(document.createElement('th'))
-      roll1 = row.appendChild(document.createElement('td'))
-      roll2 = row.appendChild(document.createElement('td'))
-      roll3 = row.appendChild(document.createElement('td'))
-      frameTotal = row.appendChild(document.createElement('td'))
+      var [row, framenum, roll1, roll2, roll3, frameTotal] = insert_row(new_body)
 
       framenum.innerHTML = 10
-
-      finalscores = []
-
-      finalscores.push(frames[9].scores[0])
-      if (frames[9].scores[1] != null ) {
-        finalscores.push(frames[9].scores[1])
-      }
-
-      if (frames[10] != undefined) {
-        finalscores.push(frames[10].scores[0])
-        if (frames[10].scores[1] != null ) {
-          finalscores.push(frames[10].scores[1])
-        }
-        if (frames[11] != undefined) {
-          finalscores.push(frames[11].scores[0])
-        }
-      }
-
-      roll1score = finalscores[0]
-      if (roll1score === 10) {
-        roll1.innerHTML = 'X'
-      } else {
-        roll1.innerHTML = roll1score
-      }
-
+      finalscores = array_final_scores(frames[9], frames[10], frames[11])
+      add_roll_1(roll1, finalscores[0])
       if (finalscores.length > 1) {
-        roll2score = finalscores[1]
-        if (roll2score === 10) {
-          roll2.innerHTML = 'X'
-        } else {
-          roll2.innerHTML = roll2score
-        }
+        add_roll_3(roll2, finalscores[1], finalscores[0])
       }
-
       if (finalscores.length > 2) {
-        roll3score = finalscores[2]
-        if (roll3score === 10) {
-          roll3.innerHTML = 'X'
-        } else {
-          roll3.innerHTML = roll3score
-        }
+        add_roll_3(roll3, finalscores[2], finalscores[1])
       }
-
-      cumulative = cumulatives[9]
-      if (cumulative === undefined) {
-        frameTotal.innerHTML = ""
-      } else {
-        frameTotal.innerHTML = cumulative
-      }
-
+      add_total(frameTotal, cumulatives[9])
     }
+  }
+
+  function insert_row(new_body) {
+    row = new_body.appendChild(document.createElement('tr'))
+    framenum = row.appendChild(document.createElement('th'))
+    roll1 = row.appendChild(document.createElement('td'))
+    roll2 = row.appendChild(document.createElement('td'))
+    roll3 = row.appendChild(document.createElement('td'))
+    frameTotal = row.appendChild(document.createElement('td'))
+    return [row, framenum, roll1, roll2, roll3, frameTotal]
+  }
+
+  function add_roll_1(element, roll1) {
+    if (roll1 === 10) {
+      element.innerHTML = 'X'
+    } else {
+      element.innerHTML = roll1
+    }
+  }
+
+  function add_roll_2(element, roll2, roll1 ) {
+    if (roll1 === 10) {
+      element.innerHTML = ""
+    } else {
+      if (roll1 + roll2 === 10) {
+        element.innerHTML = '/'
+      } else {
+        element.innerHTML = roll2
+      }
+    }
+  }
+
+  function add_roll_3(element, rolly, rollx) {
+    if (rolly === null) {
+      element.innerHTML = ''
+    } else if (rollx + rolly === 10) {
+      element.innerHTML = '/'
+    } else if (rolly === 10 ){
+      element.innerHTML = 'X'
+    } else {
+      element.innerHTML = rolly
+    }
+  }
+
+  function add_total(element, cumulative) {
+    if (cumulative === undefined) {
+      element.innerHTML = ""
+    } else {
+      element.innerHTML = cumulative
+    }
+  }
+
+  function array_final_scores(frame9, frame10, frame11) {
+    finalscores = []
+    finalscores.push(frame9.scores[0])
+    if (frame9.scores[1] != null ) {
+      finalscores.push(frame9.scores[1])
+    }
+    if (frame10 != undefined) {
+      finalscores.push(frame10.scores[0])
+      if (frame10.scores[1] != null ) {
+        finalscores.push(frame10.scores[1])
+      }
+      if (frame11 != undefined) {
+        finalscores.push(frame11.scores[0])
+      }
+    }
+    return finalscores;
   }
 })

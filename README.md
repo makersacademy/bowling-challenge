@@ -3,68 +3,27 @@ Bowling Challenge
 =================
 ![Build Status](https://travis-ci.org/DaveLawes/bowling-challenge.svg?branch=master)
 
-Technologies: JavaScript, Jasmine, HTML, CSS, Ruby, RSpec, Sinatra, Capybara
-
-## Model
-
-The app is hosted on the Sinatra web framework with a single view (index.html). This architecture was chosen to make it extensible (e.g. a database could be added to the backend). 
-
-The front end uses JavaScript to manage the scoring logic and dynamic display.
-
-
-### JavaScript Objects
-
-To manage the front end logic there are a number of JavaScript classes:
-
-1. The view Controller: it controls the view and passes information to the model. The Controller utilises the jQuery library to wait for a button click event (the user submitting the number of pins knocked down).
-2. The model: it controls two further classes: 
-	1. The score calculator: it updates an array of scores (each integer in the array represents the total score for a frame).
-	2. The turn incrementer: it determines the next frame and roll, based on the current turn and the pins knocked down.
-
-
-### Flow of Information
-
-A user enters their score and clicks button 'enter':
-
-```
-╔════════════╗  
-║            ║ Controller listens for button click event
-║ Controller ║ Controller extracts number entered      
-║            ║ Controller passes number to model
-╚════════════╝
-      |
-      |
-      |
-╔════════════╗
-║            ║ Tells ScoreCalculator to add current score, then
-║    Model   ║ Tells ScoreCalculator to add strikes score, then
-║            ║ Tells ScoreCalculator to add spares score
-╚════════════╝
-      |
-      |
-      |                
-      |                    ╔════════════╗       
-      |------------------->║            ║ .calculateTotal      
-      |                    ║  ScoreCalc ║ .updateArray 
-      |                    ║            ║       
-      |                    ╚════════════╝ 
-      |
-╔════════════╗
-║            ║ Tells TurnIncrementer to:
-║    Model   ║   - increment turn if no strike, or
-║            ║   - increment frame if strike
-╚════════════╝                                
-      |                    ╔════════════╗
-      |                    ║            ║ .incrementTurn            
-      |------------------->║  TurnIncr  ║ .incrementFrame
-                           ║            ║
-                           ╚════════════╝
-                                                 
-```
-
+* Challenge time: rest of the day and weekend.
+* Feel free to use google, your notes, books, etc. but work on your own
+* If you refer to the solution of another coach or student, please put a link to that in your README
+* If you have a partial solution, **still check in a partial solution**
+* You must submit a pull request to this repo with your code by 9am Monday week
 
 ## The Task
 
+**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+
+Count and sum the scores of a bowling game for one player (in JavaScript).
+
+A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+
+As usual please start by
+
+* Forking this repo
+
+* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+
+___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
 
 
 ### User Stories
@@ -84,7 +43,7 @@ I'd like my web interface to follow standard bowling rules when generating the s
 
 As an avid bowler
 So that I follow the game correctly
-I'd like my web interface to indicate my progress through the game
+I'd like my web interface to show which frame I'm on and if I'm allowed to roll
 
 -- IF I HAVE TIME --
 
@@ -97,6 +56,17 @@ So that I can keep track of my progress
 I'd like my past games to be viewable through the web interface
 ```
 
+### Optional Extras
+
+In any order you like:
+
+* Create a nice interactive animated interface with jQuery.
+* Set up [Travis CI](https://travis-ci.org) to run your tests.
+* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+$ eslint yourfile.js
+
+You might even want to start with ESLint early on in your work — to help you
+learn Javascript conventions as you go along.
 
 ## Bowling — how does it work?
 
@@ -129,3 +99,11 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
+## Code Review
+
+In code review we'll be hoping to see:
+
+* All tests passing
+* The code is elegant: every class has a clear responsibility, methods are short etc.
+
+Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

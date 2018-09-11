@@ -9,12 +9,12 @@ function TurnIncrementer() {
 
 TurnIncrementer.prototype.incrementFrame = function() {
   if (this._isTenthFrame()) {
-    this._incrementRoll(); // allows three rolls in 10th frame
+    this._incrementRoll();
   } else {
     this.nextTurn.frame++;
     this.nextTurn.roll = 1;
+    return this.nextTurn
   }
-  return this.nextTurn
 };
 
 TurnIncrementer.prototype.incrementTurn = function() {
@@ -28,6 +28,7 @@ TurnIncrementer.prototype.incrementTurn = function() {
 
 TurnIncrementer.prototype._incrementRoll = function() {
   this.nextTurn.roll++
+  return this.nextTurn;
 }
 
 TurnIncrementer.prototype._isTenthFrame = function() {

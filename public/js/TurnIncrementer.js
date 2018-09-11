@@ -4,33 +4,48 @@
 "use strict";
 
 function TurnIncrementer() {
-  this.nextTurn = { frame: 1, roll: 1 };
+  this.turn = { frame: 1, roll: 0 };
+  this._newFrame = false;
 };
 
-TurnIncrementer.prototype.incrementFrame = function() {
-  if (this._isTenthFrame()) {
-    this._incrementRoll();
+TurnIncrementer.prototype.isNewFrame = function(pins) {
+  if (this.turn.roll === 0) {
+    return true; // edge case for first move
   } else {
-    this.nextTurn.frame++;
-    this.nextTurn.roll = 1;
-    return this.nextTurn
+    this._decideNextTurn(pins);
+    return this._newFrame;
   }
 };
 
-TurnIncrementer.prototype.incrementTurn = function() {
+TurnIncrementer.prototype._decideNextTurn = function(pins) {
+  if (pins === 10) {
+    this._incrementFrame()
+  } else { this._incrementTurn() };
+};
+
+TurnIncrementer.prototype._incrementFrame = function() {
+  this._newFrame = true;
   if (this._isTenthFrame()) {
     this._incrementRoll();
   } else {
-    this.nextTurn.roll === 2 ? this.incrementFrame() : this._incrementRoll();
+    this.turn.frame++;
+    this.turn.roll = 1;
+  }
+};
+
+TurnIncrementer.prototype._incrementTurn = function() {
+  this._newFrame = false;
+  if (this._isTenthFrame()) {
+    this._incrementRoll();
+  } else {
+    this.turn.roll === 2 ? this._incrementFrame() : this._incrementRoll();
   };
-  return this.nextTurn;
 };
 
 TurnIncrementer.prototype._incrementRoll = function() {
-  this.nextTurn.roll++
-  return this.nextTurn;
+  this.turn.roll++
 }
 
 TurnIncrementer.prototype._isTenthFrame = function() {
-  return this.nextTurn.frame === 10
+  return this.turn.frame === 10
 };

@@ -3,41 +3,21 @@
 function BowlingModel() {
   this.scoreCalculator = new ScoreCalculator();
   this.turnIncrementer = new TurnIncrementer();
+  this._frameArray = [];
 };
 
 BowlingModel.prototype.play = function(pins) {
-  // decide what the next frame and roll should be
-  var nextTurn = this.incrementGame(pins);
-
-  // update score array
-  var game = this.scoreCalculator.calculate(pins);
-
-  // calculate current total
-  this.scoreCalculator.updateTurn(nextTurn);
-
-  // return all relevant information
-  return { frame: nextTurn.frame, roll: nextTurn.roll, total: game.total, scoresArray: game.scoresArray }
+  if (this.turnIncrementer.isNewFrame(pins)) {
+    var frame = new Frame();
+    frame.addPins(pins);
+    this._frameArray.push(frame)
+  } else {
+    frame.addPins(pins);
+  }
 };
 
-
-// if strike: tell turnincrementer to increment frame
-// if not strike: tell turnincrementer to increment turn
-
-
-BowlingModel.prototype.incrementGame = function(pins) {
-  if (this.isStrike(pins)) {
-    return this.turnIncrementer.incrementFrame()
-  } else { return this.turnIncrementer.incrementTurn() };
-};
-
-BowlingModel.prototype.isComplete = function() {
-
-};
-
-BowlingModel.prototype.isStrike = function(pins) {
-  return pins === 10
-};
-
-BowlingModel.prototype.isSpare = function(pins) {
-
+BowlingModel.prototype.score = function() {
+  //result = this.scoreCalculator.score(this._frameArray)
+  // result = { total: total, frameScores: this._frameScores }
+  // return this.scoreCalculator.score(this._frameArray)
 };

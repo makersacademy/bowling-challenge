@@ -1,68 +1,34 @@
 "use strict";
-
+// receive array of frames
 function ScoreCalculator() {
-  this._currentTurn = { frame: 1, roll: 1 };
-  this._scoreArray = Array(10).fill(0);
-  this._strikeFrame = 0;
-  this._spareFrame = 0;
+  this._frameScores = Array(10).fill(0);
 };
 
-ScoreCalculator.prototype.calculate = function(knockedPins) {
-  this.incrementFrameTotal(knockedPins);
-  var currentTotal = this.calculateCurrentTotal();
-  return {total: currentTotal, scoresArray: this._scoreArray };
+ScoreCalculator.prototype.score = function(frameArray) {
+  this._calculateFrameTotal(frameArray);
+  var total = this._calculateTotal()
+  return { total: total, frameScores: this._frameScores }
 };
 
-ScoreCalculator.prototype.incrementFrameTotal = function(knockedPins) {
-  this._addKnockedPinsToArray(knockedPins);
-  this._strikeFrame !== 0 ? this._addStrikeScores(knockedPins) : null;
-  this._spareFrame !== 0 ? this._addSpareScores(knockedPins) : null;
-  this._logIfStrike(knockedPins);
-  this._currentTurn.roll == 2 ? this._logIfSpare() : null;
-};
+ScoreCalculator.prototype._calculateFrameTotal = function(frameArray) {
+  var _this = this;
+  frameArray.forEach(function(frame, index) {
+    var frameScore = 0;
+    if (frame.bonus() === null) {
+      frameScore = frame.score()
+    } else if (frame.bonus() === "strike") {
+      frameScore = frame.score() + add_frame_plus_one_score(index + 1)
+    } else if (frame.bonus() === "spare") {
+      frameScore = frame.score() + add_frame_plus_one_roll_one_score(index + 1)
+    }
+  _this._frameScores[index] += frameScore;
+  });
+}
 
-ScoreCalculator.prototype._addKnockedPinsToArray = function(knockedPins) {
-  var index = this._currentTurn.frame - 1;
-  this._scoreArray[index] += knockedPins;
-};
-
-ScoreCalculator.prototype._addStrikeScores = function(knockedPins) {
-  if (this._currentTurn.frame === this._strikeFrame + 1) {
-    var currentIndex = this._currentTurn.frame - 1;
-    var strikeIndex = this._strikeFrame - 1;
-    this._scoreArray[strikeIndex] += knockedPins;
-  };
-};
-
-ScoreCalculator.prototype._logIfStrike = function(knockedPins) {
-  if (knockedPins === 10) {
-    this._strikeFrame = this._currentTurn.frame;
-  };
-};
-
-ScoreCalculator.prototype._logIfSpare = function() {
-  var index = this._currentTurn.frame - 1;
-  if (this._scoreArray[index] === 10) {
-    this._spareFrame = this._currentTurn.frame;
-  };
-};
-
-ScoreCalculator.prototype._addSpareScores = function(knockedPins) {
-  if (this._currentTurn.frame === this._spareFrame + 1 && this._currentTurn.roll === 1) {
-    var currentIndex = this._currentTurn.frame - 1;
-    var spareIndex = this._spareFrame - 1;
-    this._scoreArray[spareIndex] += knockedPins;
-  };
-};
-
-ScoreCalculator.prototype.calculateCurrentTotal = function() {
-  return this._scoreArray.reduce((a, b) => a + b, 0);
-};
-
-// function updateCurrentTurn() {
-//   this._currentTurn = this._nextTurn
-// };
-
-ScoreCalculator.prototype.updateTurn = function(nextTurn) {
-  this._currentTurn = nextTurn;
+ScoreCalculator.prototype._calculateTotal = function() {
+  var total = 0;
+  this._frameScores.forEach(function(score) {
+    total += score;
+  })
+  return total;
 };

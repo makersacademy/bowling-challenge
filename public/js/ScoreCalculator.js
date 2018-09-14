@@ -5,19 +5,19 @@ function ScoreCalculator() {
 };
 
 ScoreCalculator.prototype.score = function(frameArray) {
-  var response = this._calculateScores(frameArray, 0);
-  var total = this._calculateTotal()
-  return { total: total, frameScores: this._frameScores }
+  this._calculateScores(frameArray, 0);
+  return { total: this._calculateTotal(), frameScores: this._frameScores }
 };
 
 ScoreCalculator.prototype._calculateScores = function(frameArray, index) {
   if (index >= 10) return; // exit condition from recursive function
   var frameScore = 0;
   if (frameArray[index] !== undefined) { // for when we calculate score before game is complete
-    frameScore = frameArray[index].score() + addBonus(frameArray[index], frameArray[index+1], frameArray[index+2]);
+    frameScore = frameArray[index].score() + addBonus(frameArray[index], frameArray[index+1], frameArray[index+2], index);
   };
   this._frameScores[index] += frameScore;
   this._calculateScores(frameArray, index+1);
+  console.log(this._frameScores);
 };
 
 ScoreCalculator.prototype._calculateTotal = function() {
@@ -28,16 +28,16 @@ ScoreCalculator.prototype._calculateTotal = function() {
   return total;
 };
 
-function addBonus(frame, framePlusOne, framePlusTwo) {
-  var frameScore = 0;
+function addBonus(frame, framePlusOne, framePlusTwo, index) {
+  var bonusScore = 0;
   if (frame.bonus() === null) {
-    frameScore = 0;
+    bonusScore = 0;
   } else if (frame.bonus() === "strike") {
     if (framePlusOne !== undefined) {
-      frameScore = framePlusOne.score() + addBonus(framePlusOne, framePlusTwo)
+      bonusScore = framePlusOne.scoreForBonus() + addBonus(framePlusOne, framePlusTwo)
     }
   } else if (frame.bonus() === "spare") {
-    frameScore = framePlusOne.roll[0]
+    bonusScore = framePlusOne.roll[0]
   };
-  return frameScore;
+  return bonusScore;
 };

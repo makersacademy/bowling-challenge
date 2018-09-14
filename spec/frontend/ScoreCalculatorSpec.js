@@ -31,18 +31,21 @@ describe('ScoreCalculator', function() {
     beforeEach(function() {
       frame1.addPins(10);
       frame2.addPins(10);
+      frame2.addPins(10);
+      frame2.addPins(10);
     });
 
     it('Adds correct score after a strike', function() {
-      expect(scoreCalculator.score([frame1, frame2]).total).toEqual(30);
+      expect(scoreCalculator.score([frame1, frame1]).total).toEqual(30);
     })
 
     it('Returns an array of total scores per frame', function() {
-      expect(scoreCalculator.score([frame1, frame2]).frameScores).toEqual([20, 10, 0, 0, 0, 0, 0, 0, 0, 0]);
+      expect(scoreCalculator.score([frame1, frame1]).frameScores).toEqual([20, 10, 0, 0, 0, 0, 0, 0, 0, 0]);
     });
 
-    it('Returns correct score after 10 strikes', function() {
-      expect(scoreCalculator.score([frame1, frame1, frame1, frame1, frame1, frame1, frame1, frame1, frame1, frame1]).total).toEqual(270)
+    it('Returns correct maximum score', function() {
+      console.log("max score test")
+      expect(scoreCalculator.score([frame1, frame1, frame1, frame1, frame1, frame1, frame1, frame1, frame1, frame2]).total).toEqual(300)
     });
   });
 

@@ -11,6 +11,10 @@ describe('TurnIncrementer', function() {
     expect(turnIncrementer.turn).toEqual({ frame: 1, roll: 0});
   });
 
+  it('Returns true for first roll', function() {
+    expect(turnIncrementer.isNewFrame(2)).toEqual(true);
+  });
+
   it('Returns true if pins === 10', function() {
     expect(turnIncrementer.isNewFrame(10)).toEqual(true);
   });

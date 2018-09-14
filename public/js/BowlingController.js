@@ -8,7 +8,9 @@ $( document ).ready(function() {
   // user presses 'enter' on interface
   $( "input[type=button]" ).click(function( event ) {
     var pins = recordPins();
-    game = bowlingModel.play(pins);
+    bowlingModel.play(pins);
+    game = bowlingModel.score()
+    //return { total: this._calculateTotal(), frameScores: this._frameScores }
     updateDisplay(game, pins);
   });
 
@@ -19,7 +21,7 @@ $( document ).ready(function() {
 
   function updateDisplay(game, pins) {
     $("#current_score").text("Current total score: " + game.total)
-    updateKnockedPins(pins);
+    //updateKnockedPins(pins);
     updateTable(game);
   };
 
@@ -33,7 +35,7 @@ $( document ).ready(function() {
     var x = 0;
     for (var i = 2; i < 21; i +=2 ) {
       row = table.rows[i].cells;
-      row[3].innerHTML = game.scoresArray[x];
+      row[3].innerHTML = game.frameScores[x];
       x++;
     };
   }

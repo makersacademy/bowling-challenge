@@ -2,10 +2,12 @@
 
 function Frame() {
   this.roll = [];
+  this._isTenthFrame = false;
 };
 
 Frame.prototype.addPins = function(pins) {
   this.roll.push(pins);
+  if (this.roll.length === 3) { this._isTenthFrame = true };
   return this.roll;
 };
 
@@ -15,6 +17,12 @@ Frame.prototype.score = function() {
     score += element;
   });
   return score;
+};
+
+Frame.prototype.scoreForBonus = function() {
+  if (this._isTenthFrame) {
+    return this.roll[0] + this.roll[1];
+  } else { return this.score() }
 };
 
 Frame.prototype.bonus = function() {

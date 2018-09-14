@@ -9,7 +9,9 @@ function TurnIncrementer() {
 };
 
 TurnIncrementer.prototype.isNewFrame = function(pins) {
+  console.log("i'm called")
   if (this.turn.roll === 0) {
+    this.turn.roll++;
     return true; // edge case for first move
   } else {
     this._decideNextTurn(pins);

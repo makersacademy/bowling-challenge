@@ -17,11 +17,13 @@ describe('BowlingModel', function() {
       expect(bowlingModel._frameArray.length).toEqual(1);
     });
 
-    it('Passes pins to frame object', function() {
-
+    it('Adds new frame to _frameArray', function() {
+      bowlingModel.play(5);
+      expect(bowlingModel._frameArray.length).toEqual(1);
     });
 
-    it('Adds new frame to _frameArray', function() {
+    it('Add pins to current frame if not new Frame', function() {
+      bowlingModel.play(5);
       bowlingModel.play(5);
       expect(bowlingModel._frameArray.length).toEqual(1);
     });

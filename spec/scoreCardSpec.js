@@ -99,17 +99,18 @@ describe('ScoreCard', function() {
         expect(scoreCard._score).toEqual(300);
       });
 
-      it ("returns 'invalid number entered' if an individual bowl is more than 10", function () {
-        expect(scoreCard.bowl(11)).toEqual('invalid number entered');
-      })
-
-      it ("returns 'invalid number entered' if both bowls in a frame add up to more than 10", function () {
-        scoreCard.bowl(6);
-        expect(scoreCard.bowl(6)).toEqual('invalid number entered');
-      })
-
     });
 
   });
 
 });
+
+
+// it ("returns 'invalid number entered' if an individual bowl is more than 10", function () {
+//   expect(scoreCard.bowl(11)).toEqual('invalid number entered');
+// })
+//
+// it ("returns 'invalid number entered' if both bowls in a frame add up to more than 10", function () {
+//   scoreCard.bowl(6);
+//   expect(scoreCard.bowl(6)).toEqual('invalid number entered');
+// })

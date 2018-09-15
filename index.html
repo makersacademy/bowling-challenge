@@ -1,105 +1,103 @@
-<!DOCTYPE <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <title>Bowling Scorecard</title>
-  <link rel="stylesheet" type="text/css" href="style.css" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
-  <script src="src/scorecard.js"></script>
-  <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-  <script src="src/interface.js"></script>
-</head>
-<body>
-  
-  <div id="wrapper">
+  <head>
+    <meta charset="utf-8" />
+    <title>Bowling Scorecard</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script src="src/scorecard.js"></script>
+    <script src="src/interface.js"></script>
+  </head>
+  <body>
     
-    <div id="title">
-        <h1 id="title_bowling">Bowling</h1>
-        <h1 id="title_scorecard">Scorecard</h1>
-    </div>
-    
-    <div class="userInput">
-      <form>
-        <label for="userRoll" id="inputTitle">Input your roll</label>
-        <input id="inputBox" type="number" name="userRoll">
-        <button id="submitRoll" type="submit">Submit</button>
-      </form>
+    <div id="wrapper">
+      
+      <div id="title">
+          <h1 id="title_bowling">Bowling</h1>
+          <h1 id="title_scorecard">Scorecard</h1>
+      </div>
+      
+      <div class="userInput">
+          <label for="userRoll" id="inputTitle">Input your roll</label>
+          <input id="inputBox" type="number" name="userRoll" required>
+          <button id="submitRoll">Submit</button>
+      </div>
+
+      <div id="currentScore">
+        <p id="score-title">Score</p>
+        <p id="score">-</p>
+      </div>
+
+      <div class="frame" id="frame1">
+        <p class="frameTitle">Frame 01</p>
+        <p class="rollInput" id="roll1">-</p>
+        <p class="rollInput" id="roll2">-</p>
+      </div>
+
+      <div class="frame" id="frame2">
+        <p class="frameTitle">Frame 02</p>
+        <p class="rollInput" id="roll1">-</p>
+        <p class="rollInput" id="roll2">-</p>
+      </div>
+
+      <div class="frame" id="frame3">
+        <p class="frameTitle">Frame 03</p>
+        <p class="rollInput" id="roll1">-</p>
+        <p class="rollInput" id="roll2">-</p>
+      </div>
+
+      <div class="frame" id="frame4">
+        <p class="frameTitle">Frame 04</p>
+        <p class="rollInput" id="roll1">-</p>
+        <p class="rollInput" id="roll2">-</p>
+      </div>
+
+      <div class="frame" id="frame5">
+        <p class="frameTitle">Frame 05</p>
+        <p class="rollInput" id="roll1">-</p>
+        <p class="rollInput" id="roll2">-</p>
+      </div>
+
+      <div class="frame" id="frame6">
+        <p class="frameTitle">Frame 06</p>
+        <p class="rollInput" id="roll1">-</p>
+        <p class="rollInput" id="roll2">-</p>
+      </div>
+
+      <div class="frame" id="frame7">
+        <p class="frameTitle">Frame 07</p>
+        <p class="rollInput" id="roll1">-</p>
+        <p class="rollInput" id="roll2">-</p>
+      </div>
+
+      <div class="frame" id="frame8">
+        <p class="frameTitle">Frame 08</p>
+        <p class="rollInput" id="roll1">-</p>
+        <p class="rollInput" id="roll2">-</p>
+      </div>
+
+      <div class="frame" id="frame9">
+        <p class="frameTitle">Frame 09</p>
+        <p class="rollInput" id="roll1">-</p>
+        <p class="rollInput" id="roll2">-</p>
+      </div>
+
+      <div class="frame" id="frame10">
+        <p class="frameTitle">Frame 10</p>
+        <p class="rollInput" id="roll1">-</p>
+        <p class="rollInput" id="roll2">-</p>
+      </div>
+
+      <div class="frame" id="bonusRoll">
+        <p class="frameTitle">Bonus Roll</p>
+        <p class="rollInput" id="roll2">-</p>
+      </div>
+
     </div>
 
-    <div id="currentScore">
-      <p id="score-title">Score</p>
-      <p id="score">0</p>
-    </div>
-
-    <div class="frame" id="frame01">
-      <p class="frameTitle">Frame 01</p>
-      <p class="rollInput" id="roll01">-</p>
-      <p class="rollInput" id="roll02">-</p>
-    </div>
-
-    <div class="frame" id="frame02">
-      <p class="frameTitle">Frame 02</p>
-      <p class="rollInput" id="roll01">-</p>
-      <p class="rollInput" id="roll02">-</p>
-    </div>
-
-    <div class="frame" id="frame03">
-      <p class="frameTitle">Frame 03</p>
-      <p class="rollInput" id="roll01">-</p>
-      <p class="rollInput" id="roll02">-</p>
-    </div>
-
-    <div class="frame" id="frame04">
-      <p class="frameTitle">Frame 04</p>
-      <p class="rollInput" id="roll01">-</p>
-      <p class="rollInput" id="roll02">-</p>
-    </div>
-
-    <div class="frame" id="frame05">
-      <p class="frameTitle">Frame 05</p>
-      <p class="rollInput" id="roll01">-</p>
-      <p class="rollInput" id="roll02">-</p>
-    </div>
-
-    <div class="frame" id="frame06">
-      <p class="frameTitle">Frame 06</p>
-      <p class="rollInput" id="roll01">-</p>
-      <p class="rollInput" id="roll02">-</p>
-    </div>
-
-    <div class="frame" id="frame07">
-      <p class="frameTitle">Frame 07</p>
-      <p class="rollInput" id="roll01">-</p>
-      <p class="rollInput" id="roll02">-</p>
-    </div>
-
-    <div class="frame" id="frame08">
-      <p class="frameTitle">Frame 08</p>
-      <p class="rollInput" id="roll01">-</p>
-      <p class="rollInput" id="roll02">-</p>
-    </div>
-
-    <div class="frame" id="frame09">
-      <p class="frameTitle">Frame 09</p>
-      <p class="rollInput" id="roll01">-</p>
-      <p class="rollInput" id="roll02">-</p>
-    </div>
-
-    <div class="frame" id="frame10">
-      <p class="frameTitle">Frame 10</p>
-      <p class="rollInput" id="roll01">-</p>
-      <p class="rollInput" id="roll02">-</p>
-    </div>
-
-    <div class="frame" id="bonusRoll">
-      <p class="frameTitle">Bonus Roll</p>
-      <p class="rollInput" id="roll01">-</p>
-    </div>
-
-  </div>
-
-</body>
+  </body>
 </html>

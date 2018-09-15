@@ -1,8 +1,11 @@
+'use strict';
+
 function Scorecard() {
   this.currentScore = 0;
   this.currentFrame = [];
   this.currentGame = [];
   this.frame = 1;
+  this.rollNumber = 0;
   this.spare = false;
   this.strike = 0;
   this.bonusRoll = false;
@@ -20,6 +23,7 @@ Scorecard.prototype.addRoll = function (number) {
     if (this.strike > 0) {
       this.currentScore += number;
       this.strike--;
+      this.rollNumber++;
     }
 
     if (number > 10) throw new Error(`This is 10-pin bowling, not ${number}-pin bowling!`)
@@ -29,8 +33,10 @@ Scorecard.prototype.addRoll = function (number) {
 
     if (this.frame === 10) {
       this.theTenthFrame(number);
+      this.rollNumber++;
     } else if (number < 10) {
       this.currentFrame.push(number);
+      this.rollNumber++;
       if (this.currentFrame.length === 2) {
         this.endTheFrame();
       }
@@ -38,6 +44,7 @@ Scorecard.prototype.addRoll = function (number) {
       this.currentFrame.push(number);
       this.setStrikeStatus();
       this.endTheFrame();
+      this.rollNumber++;
     }
   }
 }
@@ -145,4 +152,15 @@ Scorecard.prototype.endGame = function () {
   this.currentFrame = [];
   this.bonusRoll = false;
   this.gameOver = true;
+}
+
+Scorecard.prototype.reset = function () {
+  this.currentScore = 0;
+  this.currentFrame = [];
+  this.currentGame = [];
+  this.frame = 1;
+  this.spare = false;
+  this.strike = 0;
+  this.bonusRoll = false;
+  this.gameOver = false;
 }

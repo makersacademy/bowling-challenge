@@ -4,28 +4,41 @@ describe('Card', function() {
 
   beforeEach(function(){
     card = new Card();
-    frame = new Frame();
+    frame1 = new Frame();
+    frame2 = new Frame();
   });
 
   it('stores a frames score', function() {
-    frame.bowl(6)
-    frame.bowl(0)
-    card.store(frame)
-    expect(card.frames).toContain(frame.bowls)
+    frame1.bowl(6)
+    frame1.bowl(0)
+    card.store(frame1)
+    expect(card.frames).toContain(frame1.bowls)
   });
 
   describe('when a spare or strike frame is stored', function() {
     it('knows to add the next two rolls for a strike', function() {
-      frame.bowl(10)
-      card.store(frame)
+      frame1.bowl(10)
+      card.store(frame1)
       expect(card.bonuses).toContain(2)
     });
 
     it('knows to add the next one roll for a spare', function() {
-      frame.bowl(5)
-      frame.bowl(5)
-      card.store(frame)
+      frame1.bowl(5)
+      frame1.bowl(5)
+      card.store(frame1)
       expect(card.bonuses).toContain(1)
+    });
+  });
+
+  describe('when the previous frame was a spare', function() {
+    it('adds the next roll to its score', function() {
+      frame1.bowl(5)
+      frame1.bowl(5)
+      card.store(frame1)
+      frame2.bowl(8)
+      frame2.bowl(0)
+      card.store(frame2)
+      expect(card.frames[0]).toContain(8)
     });
   });
   

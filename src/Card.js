@@ -17,3 +17,7 @@ Card.prototype.trackBonus = function(frame) {
     this.bonuses.push(0)
   };
 };
+
+Card.prototype.applyBonus = function() {
+  
+};

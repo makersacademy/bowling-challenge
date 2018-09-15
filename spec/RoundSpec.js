@@ -1,27 +1,36 @@
-describe('Round', function() {
+describe('frame', function() {
   beforeEach(function() {
-    round = new Round();
+    frame = new Frame();
   });
 
   it('stores pins boweld', function() {
-    round.bowl(8)
-    round.bowl(1)
-    expect(round.score).toEqual(9)
+    frame.bowl(8)
+    frame.bowl(1)
+    expect(frame.score).toEqual(9)
   });
 
-  it('knows if its a strike', function() {
-    round.bowl(10)
-    expect(round.strike).toEqual(true)
-    expect(round.spare).toEqual(false)
+  it('knows if it\'s a strike', function() {
+    frame.bowl(10)
+    expect(frame.strike).toBe(true)
+    expect(frame.spare).toBe(false)
   });
 
+  it('knows if it\'s a spare', function() {
+    frame.bowl(5)
+    frame.bowl(5)
+    expect(frame.spare).toBe(true)
+    expect(frame.strike).toBe(false)
+  });
 
+  it('knows the frame is over', function() {
+    frame.bowl(10)
+    expect(frame.end).toBe(true)
+  });
 
-  it('knows if it is a spare', function() {
-    round.bowl(5)
-    round.bowl(5)
-    expect(round.spare).toEqual(true)
-    expect(round.strike).toEqual(false)
+  it('cannot have a score higher than 10', function() {
+    frame.bowl(5)
+    frame.bowl(6)
+    expect(frame.score).toEqual(5)
   });
 
 });

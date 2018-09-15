@@ -19,7 +19,7 @@ describe('Card', function() {
     it('knows to add the next two rolls for a strike', function() {
       frame1.bowl(10)
       card.store(frame1)
-      expect(card.bonuses).toContain(2)
+      expect(card.bonuses).toEqual([0, 2])
     });
 
     it('knows to add the next one roll for a spare', function() {

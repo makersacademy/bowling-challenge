@@ -45,15 +45,6 @@ describe('ScoreCalculator', function() {
     });
 
     it('Returns correct maximum score', function() {
-      console.log("max score test")
-      console.log(frame1);
-      console.log(frame1.bonus());
-      console.log(frame1.scoreForBonus());
-      console.log(frame1.score());
-      console.log(frame2);
-      console.log(frame2.bonus());
-      console.log(frame2.scoreForBonus());
-      console.log(frame2.score());
       expect(scoreCalculator.score([frame1, frame1, frame1, frame1, frame1, frame1, frame1, frame1, frame1, tenthFrame]).total).toEqual(300)
     });
   });

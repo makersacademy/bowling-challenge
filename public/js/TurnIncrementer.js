@@ -29,7 +29,6 @@ TurnIncrementer.prototype._decideNextTurn = function(pins) {
 
 TurnIncrementer.prototype._incrementFrame = function() {
   if (this._isTenthFrame()) {
-  console.log("i know i'm the tenth frame")
     this._incrementRoll();
     this._newFrame = false;
   } else {

@@ -1,32 +1,111 @@
 
 Bowling Challenge
 =================
-![Build Status](https://travis-ci.org/DaveLawes/bowling-challenge.svg?branch=master)
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+Simple bowling scorecard: enter the number of pins you knock down for each roll and this app will keep track of your total score!
 
-## The Task
-
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
-
-Count and sum the scores of a bowling game for one player (in JavaScript).
-
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+Tags: JavaScript, Jasmine, jQuery, Recursive Functions, OOP
 
 
-### User Stories
+## Domain Model
+
+OOP principles were used when designing the app. The result is the following domain model (considering the front-end JavaScript functions only:
+
+```
+   Client
+╔════════════╗  
+║            ║ 
+║  Browser   ║ User enters score and clicks button     
+║            ║
+╚════════════╝
+      |
+      | 
+      |
+╔════════════╗
+║            ║ jQuery event listeners waiting for user input
+║    View    ║ Invokes model functions based on input
+║ Controller ║ Updates display
+╚════════════╝
+      |
+      |
+      |                
+╔════════════╗             ╔════════════╗       
+║            ║             ║            ║       
+║ Front-end  ║-------------║    Turn    ║ Returns true if new frame required 
+║   Model    ║             ║ Incrementer║       
+╚════════════╝             ╚════════════╝ 
+      |
+      |
+      |
+      |                    ╔════════════╗
+      |                    ║            ║ Keeps track of the rolls           
+      |--------------------║    Frame   ║ Returns the score
+      |                    ║            ║ Knows if its the tenth frame
+      |                    ╚════════════╝
+      | 
+      |                    ╔════════════╗
+      |                    ║            ║ Calculates score per frame
+      |--------------------║   Score    ║ Calculates overall total
+                           ║ Calculator ║
+                           ╚════════════╝
+                                              
+```
+
+The front-end model contains an array of Frame objects - and inputs the pins knocked down into the appropriate Frame object.
+
+
+### Score Calculation
+
+Effort was directed to implementing succient logic for the score calculation. Recursive functions were used to iterate over the scores and bonus points. An example snippet of code:
+
+```
+ScoreCalculator.prototype._calculateScores = function(frameArray, index) {
+  if (index >= 10) return; // exit condition from recursive function
+  var frameScore = 0;
+  if (frameArray[index] !== undefined) { // for when we calculate score before game is complete
+    frameScore = frameArray[index].score() + addBonus(frameArray[index], frameArray[index+1], frameArray[index+2], index);
+  };
+  this._frameScores[index] += frameScore;
+  this._calculateScores(frameArray, index+1);
+};
+```
+
+The function above invoked itself to loop over all the frame scores, exiting when the condition (index >= 10) was satisfied.
+
+
+## How to Use
+
+### Install
+
+Clone this repo to your local machine then run `bundle install`. This will ensure all Ruby gems are loaded on your machine.
+
+The web app is hosted on a Sinatra server using Rack. So to start the server enter `rackup` into the CLI. 
+
+Go to the `localhost:[PORTNUMBER]` to view the scorecard, you'll see the following screen:
+
+<p align="center"><img src="./public/images/first_view.png"/></p>
+
+Enter the number of pins you knock down and then click the `Enter` button. The total score will update with every roll you enter. You can also see your score per frame (when you roll a strike or a spare the bonus points will be added when the following frames are completed).
+
+An example game:
+<p align="center"><img src="./public/images/example_game.png"/></p>
+
+The maximum score you can achieve is also calculated correctly:
+<p align="center"><img src="./public/images/max_score.png"/></p>
+
+
+## Tests
+
+Tests have been created in Jasmine for the JavaScript front-end. Tests can be run by running the Jasmine SpecRunner file:
+`open SpecRunner.html`.
+
+All tests are passing:
+<p align="center"><img src="./public/images/jasmine_tests.png"/></p>
+
+
+## User Stories
+
+User stories were created to document the features the app should deliver.
 
 ```
 As an avid bowler
@@ -38,12 +117,20 @@ So I can keep track of my score
 I'd like my web interface to update my current score as I input my rolls
 
 As an avid bowler
+So that I follow the game correctly
+I'd like my web interface to my score per frame
+
+As an avid bowler
 So I can be sure my score is correct
 I'd like my web interface to follow standard bowling rules when generating the score
 
 As an avid bowler
-So that I follow the game correctly
-I'd like my web interface to show which frame I'm on and if I'm allowed to roll
+So I can be sure my score is correct
+I'd like my app to include logic for the tenth frame
+
+As an avid bowler
+So I can be sure my score is correct
+I want my maximum calculated total score to be 300
 
 -- IF I HAVE TIME --
 
@@ -56,17 +143,8 @@ So that I can keep track of my progress
 I'd like my past games to be viewable through the web interface
 ```
 
-### Optional Extras
+The intention was to link the front-end to a database, allowing the scorecards to be saved after completion (and then viewed later if required). However, these final user stories have not been completed.
 
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-$ eslint yourfile.js
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
 
 ## Bowling — how does it work?
 
@@ -97,13 +175,3 @@ In the image below you can find some score examples.
 
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

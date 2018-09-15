@@ -17,7 +17,7 @@ $( document ).ready(function() {
   };
 
   function updateDisplay(game, pins) {
-    $("#current_score").text("Current total score: " + game.total)
+    $("#current_score").text("Current total: " + game.total)
     updateKnockedPins(pins);
     updateTable(game);
   };

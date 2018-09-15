@@ -35,6 +35,45 @@ body {
   border-bottom: 10px solid #fed75a;
 }
 
+.userInput {
+  grid-column: 1 / 3;
+  width: 40%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#inputTitle {
+  text-transform: uppercase;
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+#inputBox {
+  margin: 0 auto;
+  width: 25%;
+  height: 40px;
+  padding: 0;
+  font-size: 2em;
+  font-weight: 500;
+  display: block;
+}
+
+#inputBox:focus {
+  outline: none !important;
+  border: 3px solid #fed75a;
+}
+
+#submitRoll {
+  height: 30px;
+  font-size: 1em;
+  background-color: #fed75a;
+  margin-top: 2%;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+}
+
 .frame {
   grid-column: 1 / 2;
   border-top: 1px dashed #1f1e1c;
@@ -51,13 +90,36 @@ body {
   text-transform: uppercase;
 }
 
+#frame06 {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+#frame07 {
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
+}
+#frame08 {
+  grid-column: 2 / 3;
+  grid-row: 5 / 6;
+}
+#frame09 {
+  grid-column: 2 / 3;
+  grid-row: 6 / 7;
+}
+#frame10 {
+  grid-column: 2 / 3;
+  grid-row: 7 / 8;
+}
+
 .rollInput {
   grid-column: 3 / 4;
   width: 100%;
-  height: 40px;
+  /* height: 40px; */
   padding: 0;
   font-size: 2em;
   font-weight: 500;
+  margin: 0;
+  text-align: center;
 }
 
 .rollInput:focus {
@@ -70,7 +132,7 @@ body {
   grid-row: 2 / 3;
   background-color: #fed75a;
   width: 10%;
-  margin-top: 173px;
+  margin-top: 283px;
   margin-left: 25%;
   position: fixed;
 }

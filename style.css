@@ -36,8 +36,8 @@ body {
 }
 
 .userInput {
-  grid-column: 1 / 3;
-  width: 40%;
+  grid-column: 1 / 2;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
 }
@@ -72,6 +72,33 @@ body {
   font-weight: bold;
   border-radius: 10px;
   border: none;
+}
+
+#currentScore {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  background-color: #fed75a;
+  width: 50%;
+  margin: 0 auto;
+  height: 105px;
+}
+
+#score-title {
+  margin-top: 5%;
+  margin-bottom: 2%;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-decoration: underline;
+  font-size: 1.5em;
+}
+
+#score {
+  font-size: 3em;
+  text-align: center;
+  margin-top: 5%;
+  margin-bottom: 1%;
+  font-weight: bold;
 }
 
 .frame {
@@ -127,30 +154,3 @@ body {
   border: 3px solid #fed75a;
 }
 
-#currentScore {
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
-  background-color: #fed75a;
-  width: 10%;
-  margin-top: 283px;
-  margin-left: 25%;
-  position: fixed;
-}
-
-#score-title {
-  margin-top: 5%;
-  margin-bottom: 2%;
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 500;
-  text-decoration: underline;
-  font-size: 1.5em;
-}
-
-#score {
-  font-size: 3em;
-  text-align: center;
-  margin-top: 5%;
-  margin-bottom: 1%;
-  font-weight: bold;
-}

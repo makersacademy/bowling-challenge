@@ -13,15 +13,14 @@ Frame.prototype.bowl = function(pins) {
   if (!this.end && this._isValidBowl(pins)) {
     this.storeScore(pins)
     this.isEnd()
+    this._spareOrStrike();
   };
-  this._spareOrStrike();
 };
 
 Frame.prototype.storeScore = function(pins) {
   this.bowls.push(pins)
   this.score += pins
 };
-
 
 Frame.prototype._isStrike = function() {
   if (this.bowls[0] == 10) {

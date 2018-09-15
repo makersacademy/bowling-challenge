@@ -1,10 +1,11 @@
 "use strict";
 
 function ScoreCalculator() {
-  this._frameScores = Array(10).fill(0);
+  this._frameScores = [];
 };
 
 ScoreCalculator.prototype.score = function(frameArray) {
+  this._frameScores = Array(10).fill(0); // reset array every time we calc scores
   this._calculateScores(frameArray, 0);
   return { total: this._calculateTotal(), frameScores: this._frameScores }
 };
@@ -37,7 +38,9 @@ function addBonus(frame, framePlusOne, framePlusTwo, index) {
       bonusScore = framePlusOne.scoreForBonus() + addBonus(framePlusOne, framePlusTwo)
     }
   } else if (frame.bonus() === "spare") {
-    bonusScore = framePlusOne.roll[0]
+    if (framePlusOne !== undefined) {
+      bonusScore = framePlusOne.roll[0]      
+    }
   };
   return bonusScore;
 };

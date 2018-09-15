@@ -1,38 +1,40 @@
 // TurnIncrementer.js
-// returns the next frame and roll
+// returns true/false if there is a new frame
 
 "use strict";
 
 function TurnIncrementer() {
   this.turn = { frame: 1, roll: 0 };
-  this._newFrame = false;
+  this._newFrame = false; // if true then model constructs new Frame object
+  this._isStrike = false; // record if last roll was strike
 };
 
 TurnIncrementer.prototype.isNewFrame = function(pins) {
-  console.log("i'm called")
   if (this.turn.roll === 0) {
-    this.turn.roll++;
+    this._incrementRoll();
     return true; // edge case for first move
   } else {
     this._decideNextTurn(pins);
     return this._newFrame;
-  }
+  };
 };
 
 TurnIncrementer.prototype._decideNextTurn = function(pins) {
-  if (pins === 10) {
+  if (pins === 10 || this._isStrike === true) {
+    if (pins !== 10) { this._isStrike = false }
+    else { this._isStrike = true };
     this._incrementFrame()
   } else { this._incrementTurn() };
 };
 
 TurnIncrementer.prototype._incrementFrame = function() {
-  this._newFrame = true;
   if (this._isTenthFrame()) {
     this._incrementRoll();
   } else {
     this.turn.frame++;
     this.turn.roll = 1;
   }
+  this._newFrame = true;
 };
 
 TurnIncrementer.prototype._incrementTurn = function() {
@@ -45,9 +47,9 @@ TurnIncrementer.prototype._incrementTurn = function() {
 };
 
 TurnIncrementer.prototype._incrementRoll = function() {
-  this.turn.roll++
+  this.turn.roll++;
 }
 
 TurnIncrementer.prototype._isTenthFrame = function() {
-  return this.turn.frame === 10
+  return this.turn.frame === 10;
 };

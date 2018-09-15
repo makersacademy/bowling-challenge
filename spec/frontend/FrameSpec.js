@@ -5,26 +5,29 @@ describe('Frame', function() {
 
   beforeEach(function(){
     frame = new Frame();
-    frame.addPins(4);
-    frame.addPins(3);
     strikeFrame = new Frame();
-    strikeFrame.addPins(10);
     spareFrame = new Frame()
-    spareFrame.addPins(4);
-    spareFrame.addPins(6);
     tenthFrame = new Frame();
-    tenthFrame.addPins(1);
-    tenthFrame.addPins(2);
-    tenthFrame.addPins(2);
   });
 
   describe('.addPins', function() {
+    beforeEach(function() {
+      frame.addPins(4);
+      frame.addPins(3);
+    })
+
     it('Adds pins to the roll array', function() {
       expect(frame.roll).toEqual([4, 3]);
     });
   });
 
   describe('.score', function() {
+    beforeEach(function() {
+      frame.addPins(4);
+      frame.addPins(3);
+      strikeFrame.addPins(10);
+    });
+
     it('Returns total score for frame', function() {
       expect(frame.score()).toEqual(7);
     });
@@ -35,6 +38,14 @@ describe('Frame', function() {
   });
 
   describe('.bonus', function() {
+    beforeEach(function() {
+      frame.addPins(4);
+      frame.addPins(3);
+      strikeFrame.addPins(10);
+      spareFrame.addPins(4);
+      spareFrame.addPins(6);
+    });
+
     it('Returns null if no bonus points', function() {
       expect(frame.bonus()).toEqual(null);
     });
@@ -48,17 +59,15 @@ describe('Frame', function() {
     });
   });
 
-  describe('._isTenthFrame', function() {
-    it('Returns false if not tenth frame', function() {
-      expect(frame._isTenthFrame).toEqual(false);
-    });
-
-    it('Returns true if tenth frame', function() {
-      expect(tenthFrame._isTenthFrame).toEqual(true);
-    });
-  });
-
   describe('.scoreForBonus', function() {
+    beforeEach(function() {
+      frame.addPins(4);
+      frame.addPins(3);
+      tenthFrame.addPins(1);
+      tenthFrame.addPins(2);
+      tenthFrame.addPins(2);
+    });
+
     it('Returns total score if not tenth frame', function() {
       expect(frame.scoreForBonus()).toEqual(7);
     });

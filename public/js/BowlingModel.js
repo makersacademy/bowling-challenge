@@ -9,6 +9,7 @@ function BowlingModel() {
 
 BowlingModel.prototype.play = function(pins) {
   if (this.turnIncrementer.isNewFrame(pins)) {
+    console.log("I returned true") // note: note giving new frame after strike
     var frame = new Frame();
     frame.addPins(pins);
     this._frameArray.push(frame)
@@ -16,10 +17,12 @@ BowlingModel.prototype.play = function(pins) {
   } else {
     this._currentFrame.addPins(pins);
   }
-  console.log(this._frameArray)
-  console.log(this._currentFrame)
 };
 
 BowlingModel.prototype.score = function() {
   return this.scoreCalculator.score(this._frameArray)
 };
+
+BowlingModel.prototype.currentTurn = function() {
+  return this.turnIncrementer.turn;
+}

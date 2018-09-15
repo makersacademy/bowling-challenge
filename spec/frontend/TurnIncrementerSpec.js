@@ -19,6 +19,28 @@ describe('TurnIncrementer', function() {
     expect(turnIncrementer.isNewFrame(10)).toEqual(true);
   });
 
+  it('Returns true after strike on roll 3', function() {
+    turnIncrementer.isNewFrame(1);
+    turnIncrementer.isNewFrame(2);
+    turnIncrementer.isNewFrame(10)
+    expect(turnIncrementer.isNewFrame(2)).toEqual(true);
+  });
+
+  it('Returns false after strike on roll 3 and no strike on roll 4', function() {
+    turnIncrementer.isNewFrame(1);
+    turnIncrementer.isNewFrame(2);
+    turnIncrementer.isNewFrame(10);
+    turnIncrementer.isNewFrame(2)
+    expect(turnIncrementer.isNewFrame(1)).toEqual(false);
+  });
+
+  it('Returns true for sequential strikes', function() {
+    turnIncrementer.isNewFrame(10);
+    turnIncrementer.isNewFrame(10);
+    turnIncrementer.isNewFrame(10)
+    expect(turnIncrementer.isNewFrame(10)).toEqual(true);
+  });
+
   it('Returns true if roll is complete', function() {
     turnIncrementer.isNewFrame(2)
     turnIncrementer.isNewFrame(2)

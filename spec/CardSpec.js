@@ -26,7 +26,7 @@ describe('Card', function() {
       frame1.bowl(5)
       frame1.bowl(5)
       card.store(frame1)
-      expect(card.bonuses).toContain(1)
+      expect(card.bonuses).toEqual([0, 1])
     });
   });
 

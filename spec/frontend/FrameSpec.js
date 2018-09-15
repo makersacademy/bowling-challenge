@@ -4,10 +4,10 @@ describe('Frame', function() {
   var frame, strikeFrame, spareFrame, tenthFrame;
 
   beforeEach(function(){
-    frame = new Frame();
-    strikeFrame = new Frame();
-    spareFrame = new Frame()
-    tenthFrame = new Frame();
+    frame = new Frame(false);
+    strikeFrame = new Frame(false);
+    spareFrame = new Frame(false)
+    tenthFrame = new Frame(true);
   });
 
   describe('.addPins', function() {
@@ -72,8 +72,20 @@ describe('Frame', function() {
       expect(frame.scoreForBonus()).toEqual(7);
     });
 
-    it('Returns first two rolls if tenth frame', function() {
-      expect(tenthFrame.scoreForBonus()).toEqual(3);
+    it('Returns first roll if tenth frame', function() {
+      expect(tenthFrame.scoreForBonus()).toEqual(1);
+    });
+  });
+
+  describe('.bonusForTenth', function() {
+    beforeEach(function() {
+      tenthFrame.addPins(1);
+      tenthFrame.addPins(2);
+      tenthFrame.addPins(2);
+    });
+
+    it('Returns the first two rolls', function() {
+      expect(tenthFrame.bonusForTenth()).toEqual(3);
     });
   });
 });

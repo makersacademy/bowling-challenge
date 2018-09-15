@@ -10,9 +10,14 @@ function BowlingModel() {
 BowlingModel.prototype.play = function(pins) {
   if (this.turnIncrementer.isNewFrame(pins)) {
     console.log("I returned true") // note: note giving new frame after strike
-    var frame = new Frame();
+    if (this._frameArray.length < 9) {
+      var frame = new Frame(false);
+    } else if (this._frameArray.length <= 10) {
+      var frame = new Frame(true);
+    }
     frame.addPins(pins);
     this._frameArray.push(frame)
+    console.log(this._frameArray)
     this._currentFrame = frame;
   } else {
     this._currentFrame.addPins(pins);

@@ -1,12 +1,13 @@
 "use strict";
 
 describe('ScoreCalculator', function() {
-  var scoreCalculator, frame1, frame2;
+  var scoreCalculator, frame1, frame2, tenthFrame;
 
   beforeEach(function() {
     scoreCalculator = new ScoreCalculator();
-    frame1 = new Frame();
-    frame2 = new Frame();
+    frame1 = new Frame(false);
+    frame2 = new Frame(false);
+    tenthFrame = new Frame(true);
   })
 
   describe('Given no bonus scores', function() {
@@ -30,9 +31,9 @@ describe('ScoreCalculator', function() {
   describe('Bonus points - Strike', function() {
     beforeEach(function() {
       frame1.addPins(10);
-      frame2.addPins(10);
-      frame2.addPins(10);
-      frame2.addPins(10);
+      tenthFrame.addPins(10);
+      tenthFrame.addPins(10);
+      tenthFrame.addPins(10);
     });
 
     it('Adds correct score after a strike', function() {
@@ -45,7 +46,15 @@ describe('ScoreCalculator', function() {
 
     it('Returns correct maximum score', function() {
       console.log("max score test")
-      expect(scoreCalculator.score([frame1, frame1, frame1, frame1, frame1, frame1, frame1, frame1, frame1, frame2]).total).toEqual(300)
+      console.log(frame1);
+      console.log(frame1.bonus());
+      console.log(frame1.scoreForBonus());
+      console.log(frame1.score());
+      console.log(frame2);
+      console.log(frame2.bonus());
+      console.log(frame2.scoreForBonus());
+      console.log(frame2.score());
+      expect(scoreCalculator.score([frame1, frame1, frame1, frame1, frame1, frame1, frame1, frame1, frame1, tenthFrame]).total).toEqual(300)
     });
   });
 

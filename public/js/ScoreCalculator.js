@@ -16,6 +16,8 @@ ScoreCalculator.prototype._calculateScores = function(frameArray, index) {
   if (frameArray[index] !== undefined) { // for when we calculate score before game is complete
     frameScore = frameArray[index].score() + addBonus(frameArray[index], frameArray[index+1], frameArray[index+2], index);
   };
+  console.log("Index = " + index);
+  console.log("Framescore = " + frameScore);
   this._frameScores[index] += frameScore;
   this._calculateScores(frameArray, index+1);
   console.log(this._frameScores);
@@ -35,12 +37,20 @@ function addBonus(frame, framePlusOne, framePlusTwo, index) {
     bonusScore = 0;
   } else if (frame.bonus() === "strike") {
     if (framePlusOne !== undefined) {
-      bonusScore = framePlusOne.scoreForBonus() + addBonus(framePlusOne, framePlusTwo)
+      if (index === 8) {
+        console.log("scoreForTenth")
+        console.log(framePlusOne.bonusForTenth())
+        bonusScore = framePlusOne.bonusForTenth();
+      } else {
+        bonusScore = framePlusOne.scoreForBonus() + addBonus(framePlusOne, framePlusTwo);
+      }
     }
   } else if (frame.bonus() === "spare") {
     if (framePlusOne !== undefined) {
-      bonusScore = framePlusOne.roll[0]      
+      bonusScore = framePlusOne.roll[0]
     }
   };
+  console.log("Index = " + index);
+  console.log("Bonus = " + bonusScore)
   return bonusScore;
 };

@@ -51,4 +51,15 @@ describe('TurnIncrementer', function() {
     turnIncrementer.isNewFrame(2)
     expect(turnIncrementer.isNewFrame(3)).toEqual(false)
   });
+
+  it('Returns false for all rolls of the tenth frame', function() {
+    for (var i = 0; i < 10; i++) {
+      turnIncrementer.isNewFrame(10);
+      console.log(turnIncrementer.turn)
+    };
+    expect(turnIncrementer.isNewFrame(10)).toEqual(false);
+    console.log(turnIncrementer.turn)
+    console.log(turnIncrementer.isNewFrame(10))
+    console.log(turnIncrementer.turn)
+  });
 });

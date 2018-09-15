@@ -21,7 +21,7 @@ TurnIncrementer.prototype.isNewFrame = function(pins) {
 
 TurnIncrementer.prototype._decideNextTurn = function(pins) {
   if (pins === 10 || this._isStrike === true) {
-    if (pins !== 10) { this._isStrike = false }
+    if (pins !== 10) { this._isStrike = false } // make sure we increment frame if last move was a strike
     else { this._isStrike = true };
     this._incrementFrame()
   } else { this._incrementTurn() };
@@ -29,12 +29,14 @@ TurnIncrementer.prototype._decideNextTurn = function(pins) {
 
 TurnIncrementer.prototype._incrementFrame = function() {
   if (this._isTenthFrame()) {
+  console.log("i know i'm the tenth frame")
     this._incrementRoll();
+    this._newFrame = false;
   } else {
     this.turn.frame++;
     this.turn.roll = 1;
+    this._newFrame = true;
   }
-  this._newFrame = true;
 };
 
 TurnIncrementer.prototype._incrementTurn = function() {

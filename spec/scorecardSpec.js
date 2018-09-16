@@ -2,6 +2,8 @@
 // i know this is an absolute mess but plan to refactor later once i figure out how to correctly create spy objects
 // spies - callThrough() or returnValues() ????????
 // how am i going to test the frameTotal function here on the basis of unit testing with spies!!
+// james suggested creating a mock object that looks a bit like what is returned in the console when you call it like a var xxx = {} with key value pairs??? ask a coach
+
 describe('Scorecard behaviour', function() {
   var scorecard;
   var frame;

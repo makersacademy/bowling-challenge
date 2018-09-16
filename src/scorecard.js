@@ -165,14 +165,3 @@ Scorecard.prototype.checkForIllegalInputs = function (number) {
       if (number + this.currentFrame[0] > 10) this.frameTooHighError();
     }
 }
-
-Scorecard.prototype.reset = function () {
-  this.currentScore = 0;
-  this.currentFrame = [];
-  this.currentGame = [];
-  this.frame = 1;
-  this.spare = false;
-  this.strike = 0;
-  this.bonusRoll = false;
-  this.gameOver = false;
-}

@@ -19,6 +19,7 @@ I want to see a running total of my score.
 ```
 git clone https://github.com/EsamAl-Dabagh/bowling-challenge.git
 cd bowling-challenge
+
 ```
 
 ### Domain Model
@@ -61,7 +62,6 @@ cd bowling-challenge
 | rollTooHighError                  |
 | frameTooHighError                 |
 | checkForIllegalInputs             |
-| reset                             |
 + --------------------------------- +
 
 ```

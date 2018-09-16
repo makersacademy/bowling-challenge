@@ -19,7 +19,7 @@ describe('ScoreCard', function() {
     });
 
     it ('score starts at 0', function() {
-      expect(scoreCard._score).toEqual(0);
+      expect(scoreCard.score).toEqual(0);
     });
 
   });
@@ -42,75 +42,43 @@ describe('ScoreCard', function() {
     it ('adds up the bowls in a frame', function () {
       scoreCard.bowl(5);
       scoreCard.bowl(5);
-      expect(scoreCard._score).toEqual(10);
+      expect(scoreCard.score).toEqual(10);
     });
 
     describe('normal game', function () {
 
       it ('loops through the frames of a game adding the scores', function () {
         scoreCard._bowls = [1, 2, 3, 4];
-        scoreCard.score();
-        expect(scoreCard._score).toEqual(10);
+        scoreCard.scoreCalculate();
+        expect(scoreCard.score).toEqual(10);
         expect(scoreCard._frame).toEqual(11); // breaks loop if frame is higher than 10 (end of game)
       });
 
       it ('full game with no strikes or spares scored correctly', function () {
         scoreCard._bowls = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4];
-        scoreCard.score();
-        expect(scoreCard._score).toEqual(80);
+        scoreCard.scoreCalculate();
+        expect(scoreCard.score).toEqual(80);
       });
 
-      it ("full game, all spares scored correctly", function () {
+      it ('full game, all spares scored correctly', function () {
         scoreCard._bowls = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5];
-        scoreCard.score();
-        expect(scoreCard._score).toEqual(150);
+        scoreCard.scoreCalculate();
+        expect(scoreCard.score).toEqual(150);
       });
 
-      it ('mixed game of spares (no strikes)', function () {
+      it ('mixed game (no strikes or spares) scored correctly', function () {
         scoreCard._bowls = [1, 1, 5, 5, 1, 1, 1, 1, 5, 5, 1, 1, 5, 5, 1, 1, 5, 5, 1, 1];
-        scoreCard.score();
-        expect(scoreCard._score).toEqual(56);
+        scoreCard.scoreCalculate();
+        expect(scoreCard.score).toEqual(56);
       });
 
       it ('game of strikes scores correctly', function () {
         scoreCard._bowls = [10, 10, 10 ,10 ,10 ,10 ,10, 10 ,10 ,10 ,10 ,10];
-        scoreCard.score();
-        expect(scoreCard._score).toEqual(300);
+        scoreCard.scoreCalculate();
+        expect(scoreCard.score).toEqual(300);
       });
-    });
-
-    describe('exception checks', function (){
-
-      it ('full game with no strikes or spares scored correctly if more than alloted bowls entered', function () {
-        scoreCard._bowls = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 8];
-        scoreCard.score();
-        expect(scoreCard._score).toEqual(80);
-      });
-
-      it ('mixed game of spares (no strikes) if more than alloted bowls entered', function () {
-        scoreCard._bowls = [1, 1, 5, 5, 1, 1, 1, 1, 5, 5, 1, 1, 5, 5, 1, 1, 5, 5, 1, 1, 5];
-        scoreCard.score();
-        expect(scoreCard._score).toEqual(56);
-      });
-
-      it ('game of strikes scores correctly if extra bowl is entered', function () {
-        scoreCard._bowls = [10, 10, 10 ,10 ,10 ,10 ,10, 10 ,10 ,10 ,10 ,10, 5];
-        scoreCard.score();
-        expect(scoreCard._score).toEqual(300);
-      });
-
     });
 
   });
 
 });
-
-
-// it ("returns 'invalid number entered' if an individual bowl is more than 10", function () {
-//   expect(scoreCard.bowl(11)).toEqual('invalid number entered');
-// })
-//
-// it ("returns 'invalid number entered' if both bowls in a frame add up to more than 10", function () {
-//   scoreCard.bowl(6);
-//   expect(scoreCard.bowl(6)).toEqual('invalid number entered');
-// })

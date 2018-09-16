@@ -11,11 +11,11 @@ describe('BowlChecks', function() {
     });
 
     it ('display of knocked down pins in a frame is 0', function () {
-      expect(bowlChecks._display).toEqual(0);
+      expect(bowlChecks.display).toEqual(0);
     });
 
     it ('number of frame is 1', function () {
-      expect(bowlChecks._frame).toEqual(1);
+      expect(bowlChecks.frame).toEqual(1);
     });
 
   });
@@ -26,18 +26,18 @@ describe('BowlChecks', function() {
 
       it ('is added if strike is rolled', function () {
         bowlChecks.frameChecks(10);
-        expect(bowlChecks._frame).toEqual(2);
+        expect(bowlChecks.frame).toEqual(2);
       });
 
       it ('is added if spare is rolled', function () {
         bowlChecks.frameChecks(5);
         bowlChecks.frameChecks(5);
-        expect(bowlChecks._frame).toEqual(2);
+        expect(bowlChecks.frame).toEqual(2);
       });
 
       it ('is not added if if only one bowl of under 10 is rolled', function () {
         bowlChecks.frameChecks(5);
-        expect(bowlChecks._frame).toEqual(1);
+        expect(bowlChecks.frame).toEqual(1);
       });
     });
 
@@ -45,13 +45,13 @@ describe('BowlChecks', function() {
 
       it ('equals an X if strike is rolled', function () {
         bowlChecks.frameChecks(10);
-        expect(bowlChecks._display).toEqual('X');
+        expect(bowlChecks.display).toEqual('X');
       });
 
       it ('equals / if spare is rolled', function () {
         bowlChecks.frameChecks(5);
         bowlChecks.frameChecks(5);
-        expect(bowlChecks._display).toEqual('/');
+        expect(bowlChecks.display).toEqual('/');
       });
 
     });

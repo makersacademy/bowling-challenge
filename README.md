@@ -20,7 +20,24 @@ I want to see a running total of my score.
 git clone https://github.com/EsamAl-Dabagh/bowling-challenge.git
 cd bowling-challenge
 ```
-Then open `index.html` in your browser. 
+Then open `SpecRunner.html` in your browser and open up the console. 
+
+Create a new instance of Scorecard:
+
+```
+var scorecard = new Scorecard();
+```
+
+Add roll: 
+```
+scorecard.addRoll(5);
+scorecard.addRoll(3);
+```
+
+View current score:
+```
+scorecard.currentScore;
+```
 
 ### Domain Model
 

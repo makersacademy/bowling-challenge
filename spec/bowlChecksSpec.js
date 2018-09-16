@@ -20,35 +20,53 @@ describe('BowlChecks', function() {
 
   });
 
-  describe('checks', function() {
+  describe('frameChecks', function() {
 
-    it ('frame is added if strike is rolled', function () {
-      bowlChecks.checks(10);
-      expect(bowlChecks._frame).toEqual(2);
+    describe('frame', function() {
+
+      it ('is added if strike is rolled', function () {
+        bowlChecks.frameChecks(10);
+        expect(bowlChecks._frame).toEqual(2);
+      });
+
+      it ('is added if spare is rolled', function () {
+        bowlChecks.frameChecks(5);
+        bowlChecks.frameChecks(5);
+        expect(bowlChecks._frame).toEqual(2);
+      });
+
+      it ('is not added if if only one bowl of under 10 is rolled', function () {
+        bowlChecks.frameChecks(5);
+        expect(bowlChecks._frame).toEqual(1);
+      });
     });
 
-    it ('frame is added if spare is rolled', function () {
-      bowlChecks.checks(5);
-      bowlChecks.checks(5);
-      expect(bowlChecks._frame).toEqual(2);
+    describe('display', function() {
+
+      it ('equals an X if strike is rolled', function () {
+        bowlChecks.frameChecks(10);
+        expect(bowlChecks._display).toEqual('X');
+      });
+
+      it ('equals / if spare is rolled', function () {
+        bowlChecks.frameChecks(5);
+        bowlChecks.frameChecks(5);
+        expect(bowlChecks._display).toEqual('/');
+      });
+
     });
 
-    it ('frame is not added if if only one bowl of under 10 is rolled', function () {
-      bowlChecks.checks(5);
-      expect(bowlChecks._frame).toEqual(1);
-    });
+    describe('entered knocked pins number', function () {
 
-    it ('display equals an X if strike is rolled', function () {
-      bowlChecks.checks(10);
-      expect(bowlChecks._display).toEqual('X');
-    });
+      it ('returns a message and if knocked pins are over 10', function () {
+        expect(bowlChecks.frameChecks(11)).toEqual('knocked down pins number not valid');
+      });
 
-    it ('display equals / if spare is rolled', function () {
-      bowlChecks.checks(5);
-      bowlChecks.checks(5);
-      expect(bowlChecks._display).toEqual('/');
+      it ('returns a message and if both knocked pins in frame add up to over 10', function () {
+        bowlChecks._bowlOneKnockedPins = 5;
+        bowlChecks._bowlOneOfFrame = true;
+        expect(bowlChecks.frameChecks(6)).toEqual('knocked down pins number not valid');
+      });
     });
-
   });
-
 });

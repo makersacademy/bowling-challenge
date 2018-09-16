@@ -23,7 +23,7 @@ describe('features', function() {
     frame7 = new Frame();
     frame8 = new Frame();
     frame9 = new Frame();
-    frame10 = new Frame();
+    frame10 = new Finalframe();
   });
 
   describe('roll a frame and retrieve scores', function() {
@@ -287,7 +287,55 @@ describe('features', function() {
         scorecard.addFrame(frame10);
         expect(scorecard.frameTotal(8)).toEqual(240);
       });
-      // THIS IS WHERE IT BREAKS DOWN AND WE NEED TO LOOK AT THE FINAL FRAME FUNCTIONALITY!!
+      it('will record result of 270 in the 9th frame given all strikes in 10 frames', function() {
+        frame1.rollOne(10);
+        scorecard.addFrame(frame1);
+        frame2.rollOne(10);
+        scorecard.addFrame(frame2);
+        frame3.rollOne(10);
+        scorecard.addFrame(frame3);
+        frame4.rollOne(10);
+        scorecard.addFrame(frame4);
+        frame5.rollOne(10);
+        scorecard.addFrame(frame5);
+        frame6.rollOne(10);
+        scorecard.addFrame(frame6);
+        frame7.rollOne(10);
+        scorecard.addFrame(frame7);
+        frame8.rollOne(10);
+        scorecard.addFrame(frame8);
+        frame9.rollOne(10);
+        scorecard.addFrame(frame9);
+        frame10.rollOne(10);
+        scorecard.addFrame(frame10);
+        scorecard.frames[9].rollTwo(10);
+        expect(scorecard.frameTotal(9)).toEqual(270);
+      });
+      it('will record result of 300 in the 10th frame given all strikes', function() {
+        frame1.rollOne(10);
+        scorecard.addFrame(frame1);
+        frame2.rollOne(10);
+        scorecard.addFrame(frame2);
+        frame3.rollOne(10);
+        scorecard.addFrame(frame3);
+        frame4.rollOne(10);
+        scorecard.addFrame(frame4);
+        frame5.rollOne(10);
+        scorecard.addFrame(frame5);
+        frame6.rollOne(10);
+        scorecard.addFrame(frame6);
+        frame7.rollOne(10);
+        scorecard.addFrame(frame7);
+        frame8.rollOne(10);
+        scorecard.addFrame(frame8);
+        frame9.rollOne(10);
+        scorecard.addFrame(frame9);
+        frame10.rollOne(10);
+        scorecard.addFrame(frame10);
+        scorecard.frames[9].rollTwo(10);
+        scorecard.frames[9].rollThree(10);
+        expect(scorecard.frameTotal(10)).toEqual(300);
+      });
     });
 
     describe('testing spares logic - (pick up spare in every frame)', function() {
@@ -297,15 +345,6 @@ describe('features', function() {
         scorecard.addFrame(frame1);
         expect(scorecard.frameTotal(1)).toEqual(null);
       });
-
-      // does the frame need to be added to the scorecard???? to proceed with - i think maybe
-      // it('will record result of 15 for the 1st frame once player rolls a 5 on roll 1 of second frame', function() {
-      //   frame1.rollOne(5);
-      //   frame1.rollTwo(5);
-      //   scorecard.addFrame(frame1);
-      //   frame2.rollOne(5);
-      //   expect(scorecard.frameTotal(1)).toEqual(15);
-      // });
     });
   });
 });

@@ -69,4 +69,20 @@ describe('Final frame behaviour', function() {
     expect(finalFrame.results).toEqual([0,0]);
     expect(finalFrame.frameScore()).toEqual(0);
   });
+
+
+
+  it('max score per roll is 10 (strike)', function() {
+    expect(function() {finalFrame.rollOne(11)}).toThrowError("Invalid score value");
+  });
+  it('min score per roll is 0 (gutter ball)', function() {
+    expect(function() {finalFrame.rollOne(-1)}).toThrowError("Invalid score value");
+  });
+
+  it('will not allow a third roll if the frame is over', function() {
+    finalFrame.rollOne(2);
+    finalFrame.rollTwo(2);
+    expect(function() {finalFrame.rollThree(1)}).toThrowError("frame is complete");
+  });
+
 });

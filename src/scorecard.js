@@ -26,8 +26,19 @@ Scorecard.prototype.frameTotal = function(frameNumber) {
   var displayTotal = null;
 
 // this has to come first in the order
-  if(this.frames[x].results[0] === 10 && typeof this.frames[x + 1] === 'undefined') {
+  if(this.frames[x].results[0] === 10 && typeof this.frames[x + 1] === 'undefined' && this.frames.length < 10) {
     return displayTotal;
+  };
+
+  if(this.frames[x].results[0] === 10 && this.frames[x].results[1] === 10 && this.frames[x].results[2] === 10) {
+    displayTotal = this.frames[x].frameScore();
+    return displayTotal * frameNumber;
+  };
+
+
+  if(this.frames[x].results[0] === 10 && this.frames[x + 1].results[0] === 10 && this.frames[x + 1].results[1] === 10) {
+    displayTotal = this.frames[x].frameScore() + this.frames[x + 1].frameScore();
+    return displayTotal * frameNumber;
   };
 
 

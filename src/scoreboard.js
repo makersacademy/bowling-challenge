@@ -6,26 +6,11 @@ function Scoreboard() {
 };
 
 Scoreboard.prototype.firstRoll = function(number) {
-  if (number <= 10) {
-    this.scores[0] = number;
-    return console.log(this.scores);
-  } else {
-    throw "You can't knock down more than 10 pins!";
-  }
+  number <= 10 ? this.scores[0] = number : tenPinsError();
 };
 
 Scoreboard.prototype.secondRoll = function(number) {
-  if (this.scores[0] <= 5 && number <= (10-this.scores[0])) {
-     this.scores[1] = number;
-     return console.log(this.scores);
-  }
-  else if (this.scores[0] > 5 && number <= (10-this.scores[0])) {
-    this.scores[1] = number;
-    return console.log(this.scores);
-  }
-  else {
-    throw "You can't knock down more than 10 pins!";
-  }
+  number <= 10-this.scores[0] ? this.scores[1] = number : tenPinsError();
 };
 
 Scoreboard.prototype.rollScore = function() {
@@ -36,11 +21,13 @@ Scoreboard.prototype.rollScore = function() {
 
 Scoreboard.prototype.emptyScores = function() {
   this.scores = [];
-  return console.log(this.scores);
 };
 
 Scoreboard.prototype.newFrame = function() {
   var frame = this.rollScore();
   this.frames.push(frame);
-  return console.log(this.frames);
+};
+
+var tenPinsError = function () {
+  throw "You can't knock down more than 10 pins!";
 };

@@ -21,19 +21,13 @@ describe ('Scoreboard', function() {
   });
 
   describe('secondRoll', function() {
-    it('adds the score of the second roll, first roll > 5', function() {
+    it('adds the score of the second roll', function() {
       scoreboard.firstRoll(7);
       scoreboard.secondRoll(3);
       expect(scoreboard.scores).toContain(3);
     });
 
-    it('adds the score of the second roll, first roll < 5', function() {
-      scoreboard.firstRoll(3);
-      scoreboard.secondRoll(7);
-      expect(scoreboard.scores).toContain(7);
-    });
-
-    it('refuses to add a number above the first roll', function() {
+    it('refuses to add a second roll scoring more than 10', function() {
       expect(function() {
         scoreboard.firstRoll(9);
         scoreboard.secondRoll(3);

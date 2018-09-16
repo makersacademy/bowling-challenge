@@ -14,6 +14,13 @@ So that I can see how well I am doing
 I want to see a running total of my score. 
 ```
 
+### How to use
+
+```
+git clone https://github.com/EsamAl-Dabagh/bowling-challenge.git
+cd bowling-challenge
+```
+
 ### Domain Model
 
 ```
@@ -24,6 +31,9 @@ I want to see a running total of my score.
 | currentFrame                      |
 | currentGame                       |
 | frame                             |
+| rollNumber                        |
+| spare                             |
+| strike                            |
 | gameOver                          |
 | bonusBowl                         |
 + --------------------------------- +
@@ -33,6 +43,7 @@ I want to see a running total of my score.
 |                                   |
 | addRoll                           |
 | pushFrameToGame                   |
+| pushTenthFrameToGame              |
 | pushFrameToGameEnd                |
 | sumFrame                          |
 | endTheFrame                       |
@@ -46,9 +57,11 @@ I want to see a running total of my score.
 | setStrikeStatus                   |
 | theTenthFrame                     |
 | endGame                           |
+| reset                             |
 + --------------------------------- +
 
 ```
 
 ### Tests
-Test-Driven using Jasmine.
+Test-Driven using Jasmine. To run tests:
+* Open `SpecRunner.html` in your browser. 

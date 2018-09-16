@@ -19,8 +19,8 @@ I want to see a running total of my score.
 ```
 git clone https://github.com/EsamAl-Dabagh/bowling-challenge.git
 cd bowling-challenge
-
 ```
+Then open `index.html` in your browser. 
 
 ### Domain Model
 
@@ -69,3 +69,10 @@ cd bowling-challenge
 ### Tests
 Test-Driven using Jasmine. To run tests:
 * Open `SpecRunner.html` in your browser. 
+
+### To-Do
+* Extract functionality into separate classes:
+    * Frame
+    * Game
+    * CalculateScore
+* Fix issues with UI. 

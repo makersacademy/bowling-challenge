@@ -16,7 +16,9 @@ Bowling.prototype.roll = function(score){
 };
 
 Bowling.prototype.score = function(){
-  return this._calc_score();
+  this._calc_score();
+  this.bowling_score = [];
+  return this.total
 };
 
 Bowling.prototype.frame_roll = function(){
@@ -37,30 +39,17 @@ Bowling.prototype._clear_frame = function(){
 };
 
 Bowling.prototype._calc_score = function(){
-  var total = 0
   var new_score = this.bowling_score.concat.apply([], this.bowling_score);
   new_score.forEach(function(score){
-    total += score
-  });
+    this.total += score
+  }, this);
   if (new_score[new_score.length-3] === this.STRIKE){
-    total += new_score[new_score.length-2] + new_score[new_score.length-1]
+    this.total += new_score[new_score.length-2] + new_score[new_score.length-1]
+  };
+  if ((new_score[new_score.length-3] + new_score[new_score.length-4]) === this.STRIKE){
+    this.total += new_score[new_score.length-2]
   };
   this.score_card.push(new_score);
-  this.total += total
-  this.bowling_score = [];
-  return this.total
-};
-
-// Bowling.prototype._calc_strike = function(){
-//   var new_score = this.bowling_score.concat.apply([], this.bowling_score);
-//   if (new_score[new_score.length-3] === this.STRIKE){
-//     new_score[new_score.length-2] + new_score[new_score.length-1]
-//   };
-// };
-
-Bowling.prototype._calc_spare = function(){
-  var new_score = this.score_card.concat.apply([], this.score_card);
-  return new_score[new_score.length-2];
 };
 
 Bowling.prototype.strike = function(){

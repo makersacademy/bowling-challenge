@@ -11,8 +11,9 @@ At the moment, the program doesn't include the following functionalities:
 * Behavior of the 10th frame
 * Messages for Gutter and Perfect Games
 * A nice interface with jQuery
-* Set up [Travis CI](https://travis-ci.org) to run the tests
-* Add [ESLint](http://eslint.org/) to the codebase and make the code conform.
+* Set up [Travis CI](https://travis-ci.org) to run the tests  
+
+I also need to fix [ESLint](http://eslint.org/) as I have an error (`Parsing error: Parenthesized pattern`) when I'm trying to run it.
 
 ___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
 
@@ -36,7 +37,19 @@ So that I can improve myself,
 I want to see the total score of my game.
 ```
 
+## How to use it
 
+```
+git@github.com:ChocolatineMathou/bowling-challenge.git
+cd bowling-challenge
+open index.html
+```
+
+Open the console and try the different functions.
+
+## How to test it
+
+Once this project cloned, you just need to open `SpecRunner.html` in your favorite browser.
 
 
 ## Bowling — how does it work?
@@ -67,8 +80,6 @@ A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 str
 In the image below you can find some score examples.
 
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
 ## Code Review
 

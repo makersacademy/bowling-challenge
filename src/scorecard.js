@@ -11,11 +11,30 @@ Scorecard.prototype = {
   isFinalFrame: function() {
     return this.frames.length === 9
   },
-  finalScore: function() {
+  score: function() {
     var score = 0;     
-    this.frames.forEach(function(frame) {
-      score += frame.score; 
+    var self = this;
+    
+    this.frames.forEach(function(frame, i) {
+      score += frame.score;
+      if (frame.score === 10 ) {
+        score += self.getBonusScore(i)
+      }
     });
     return score;
-  }
+  },
+  getBonusScore: function(i) {
+    var bonus = 0;
+
+    bonus = this.frames[i+1].rolls[1]
+    if (this.frames[i].isStrike) {
+      if (this.frames[i+1].isStrike && i != 8) {
+        bonus += this.frames[i+2].rolls[1]
+      } else bonus += this.frames[i+1].rolls[2]
+      }
+      if (this.frames[i].rolls.length === 4) {
+        bonus += this.frames[9].rolls[3]
+      }
+    return bonus;
+    }
 };

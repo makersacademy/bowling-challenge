@@ -16,9 +16,8 @@ BowlingModel.prototype.play = function(pins) {
     }
     frame.addPins(pins);
     this._frameArray.push(frame);
-    this._currentFrame = frame;
   } else {
-    this._currentFrame.addPins(pins);
+    this._frameArray[this._frameArray.length - 1].addPins(pins);
   }
 };
 

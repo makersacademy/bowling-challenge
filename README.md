@@ -83,7 +83,7 @@ The web app is hosted on a Sinatra server using Rack. So to start the server ent
 
 Go to the `localhost:[PORTNUMBER]` to view the scorecard, you'll see the following screen:
 
-<p align="center"><img src="./public/images/first_view.png"/></p>
+<p align="center"><img width=20, src="./public/images/first_view.png"/></p>
 
 Enter the number of pins you knock down and then click the `Enter` button. The total score will update with every roll you enter. You can also see your score per frame (when you roll a strike or a spare the bonus points will be added when the following frames are completed).
 

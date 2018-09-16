@@ -11,7 +11,6 @@ function Frame() {
 Frame.prototype.bowl = function(pins) {
   if (!this.isEnd() && this._isValidBowl(pins)) {
     this.storeScore(pins)
-    this.isEnd()
     this._spareOrStrike();
   };
 };

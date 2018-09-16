@@ -31,6 +31,14 @@ describe('Card', function() {
   });
 
   describe('when the previous frame was a spare', function() {
+    it('changes the bonuses array', function() {
+      frame1.bowl(5)
+      frame1.bowl(5)
+      card.store(frame1)
+      expect(card.bonuses[1]).toEqual(1)
+    });
+
+    // is this a feature test?
     it('adds the next roll to its score', function() {
       frame1.bowl(5)
       frame1.bowl(5)
@@ -40,6 +48,10 @@ describe('Card', function() {
       card.store(frame2)
       expect(card.frames[0]).toContain(8)
     });
+  });
+
+  describe('when the previous frame was a strike', function() {
+    it('')
   });
   
 });

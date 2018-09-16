@@ -1,15 +1,15 @@
 function Card() {
-  this.framesPlayed = 0
   this.frames = []
   this.bonuses = [0, 0]
 };
 
 Card.prototype.store = function(frame) {
-  this.frames.push(frame.bowls)
-  // apply bonuses for the last frame before storing bonus for current frame
-  this.applyBonuses()
-  this.trackBonus(frame)
-  this.framesPlayed += 1
+  if (!this.isEnd()) {
+    this.frames.push(frame.bowls)
+    // apply bonuses for the last frame before storing bonus for current frame
+    this.applyBonuses()
+    this.trackBonus(frame)
+  }
 };
 
 Card.prototype.trackBonus = function(frame) {
@@ -52,4 +52,12 @@ Card.prototype.applyBonuses = function() {
     penultimateFrame.push(ultimateFrame[0])
     this.bonuses[0] = 1
   }
+};
+
+Card.prototype.isEnd = function() {
+  return (this.frames.length > 9 && this.isNoBonuses() )
+};
+
+Card.prototype.isNoBonuses = function() {
+  return (this.bonuses[0] === this.bonuses[1])
 };

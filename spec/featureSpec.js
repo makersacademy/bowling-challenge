@@ -345,6 +345,29 @@ describe('features', function() {
         scorecard.addFrame(frame1);
         expect(scorecard.frameTotal(1)).toEqual(null);
       });
+      it('will record a result of 15 for the first frame given we picked up the spare in frame one and then rolled a 5', function() {
+        frame1.rollOne(5);
+        frame1.rollTwo(5);
+        scorecard.addFrame(frame1);
+        frame2.rollOne(5);
+        scorecard.addFrame(frame2);
+        expect(scorecard.frameTotal(1)).toEqual(15);
+        scorecard.frames[1].rollTwo(5);
+        expect(scorecard.frameTotal(2)).toEqual(null);
+      });
+      it('will record a result of 30 in the second frame given we picked up a spare in frame two and then rolled a 5', function() {
+        frame1.rollOne(5);
+        frame1.rollTwo(5);
+        scorecard.addFrame(frame1);
+        frame2.rollOne(5);
+        frame2.rollTwo(5);
+        scorecard.addFrame(frame2);
+        frame3.rollOne(5);
+        scorecard.addFrame(frame3);
+        expect(scorecard.frameTotal(2)).toEqual(30);
+        scorecard.frames[2].rollTwo(5);
+        expect(scorecard.frameTotal(3)).toEqual(null);
+      });
     });
   });
 });

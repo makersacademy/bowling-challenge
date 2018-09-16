@@ -83,15 +83,15 @@ The web app is hosted on a Sinatra server using Rack. So to start the server ent
 
 Go to the `localhost:[PORTNUMBER]` to view the scorecard, you'll see the following screen:
 
-<p align="center"><img width=20, src="./public/images/first_view.png"/></p>
+<p align="center"><img width="400", src="./public/images/first_view.png"/></p>
 
 Enter the number of pins you knock down and then click the `Enter` button. The total score will update with every roll you enter. You can also see your score per frame (when you roll a strike or a spare the bonus points will be added when the following frames are completed).
 
 An example game:
-<p align="center"><img src="./public/images/example_game.png"/></p>
+<p align="center"><img width="400", src="./public/images/example_game.png"/></p>
 
 The maximum score you can achieve is also calculated correctly:
-<p align="center"><img src="./public/images/max_score.png"/></p>
+<p align="center"><img width="400", src="./public/images/max_score.png"/></p>
 
 
 ## Tests
@@ -100,7 +100,7 @@ Tests have been created in Jasmine for the JavaScript front-end. Tests can be ru
 `open SpecRunner.html`.
 
 All tests are passing:
-<p align="center"><img src="./public/images/jasmine_tests.png"/></p>
+<p align="center"><img width="400", src="./public/images/jasmine_tests.png"/></p>
 
 
 ## User Stories

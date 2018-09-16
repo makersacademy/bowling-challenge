@@ -42,6 +42,7 @@ cd bowling-challenge
 | Scorecard Prototype               |
 |                                   |
 | addRoll                           |
+| pushToFrame                       |
 | pushFrameToGame                   |
 | pushTenthFrameToGame              |
 | pushFrameToGameEnd                |
@@ -57,6 +58,9 @@ cd bowling-challenge
 | setStrikeStatus                   |
 | theTenthFrame                     |
 | endGame                           |
+| rollTooHighError                  |
+| frameTooHighError                 |
+| checkForIllegalInputs             |
 | reset                             |
 + --------------------------------- +
 

@@ -26,10 +26,7 @@ Scorecard.prototype.addRoll = function (number) {
       this.rollNumber++;
     }
 
-    if (number > 10) throw new Error(`This is 10-pin bowling, not ${number}-pin bowling!`)
-    if (this.currentFrame.length > 0 && this.frame != 10) {
-      if (number + this.currentFrame[0] > 10) throw new Error("Stop cheating...there aren't even that many pins!");
-    }
+    this.checkForIllegalInputs(number);
 
     if (this.frame === 10) {
       this.theTenthFrame(number);
@@ -68,7 +65,6 @@ Scorecard.prototype.checkForSpare = function () {
 }
 
 Scorecard.prototype.checkForStrike = function () {
-  
   if (this.strike > 0) {
     this.currentScore += this.currentFrame[0];
     this.strike--;
@@ -124,19 +120,15 @@ Scorecard.prototype.currentFrameSum = function () {
 Scorecard.prototype.theTenthFrame = function (number) {
 
   if (this.bonusRoll && this.currentFrame.length <= 3) {
-    this.currentFrame.push(number);
-    this.currentScore += number;
+    this.pushToFrame(number);
   } else if (number === 10 && this.currentFrame.length < 3) {
-    this.currentFrame.push(number);
-    this.currentScore += number;
+    this.pushToFrame(number);
     this.bonusRoll = true;
   } else if (this.currentFrame[0] + number === 10) {
-    this.currentFrame.push(number);
-    this.currentScore += number;
+    this.pushToFrame(number);
     this.bonusRoll = true;
   } else if (this.currentFrame.length < 2) {
-    this.currentFrame.push(number);
-    this.currentScore += number;
+    this.pushToFrame(number);
   } else {
     this.endGame();
   }
@@ -152,6 +144,26 @@ Scorecard.prototype.endGame = function () {
   this.currentFrame = [];
   this.bonusRoll = false;
   this.gameOver = true;
+}
+
+Scorecard.prototype.pushToFrame = function (number) {
+  this.currentFrame.push(number);
+  this.currentScore += number;
+}
+
+Scorecard.prototype.rollTooHighError = function (number) {
+  throw new Error(`This is 10-pin bowling, not ${number}-pin bowling!`)
+}
+
+Scorecard.prototype.frameTooHighError = function () {
+  throw new Error("Stop cheating...there aren't even that many pins!");
+}
+
+Scorecard.prototype.checkForIllegalInputs = function (number) {
+  if (number > 10) this.rollTooHighError(number);
+    if (this.currentFrame.length > 0 && this.frame != 10) {
+      if (number + this.currentFrame[0] > 10) this.frameTooHighError();
+    }
 }
 
 Scorecard.prototype.reset = function () {

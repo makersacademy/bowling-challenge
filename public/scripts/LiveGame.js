@@ -4,7 +4,7 @@ function liveGame() {
   this.score = 0;
 }
 
-function previousFrame() {
+function _previousFrame() {
   return $frames[$frames.length - 2];
 }
 
@@ -27,19 +27,42 @@ function _addRollSecond(pin) {
     `${$currentFrame.firstRoll}, ${$currentFrame.secondRoll}`
   );
   if ($frames.length == 1) _firstFrameScore();
-  if ($frames.length > 1) bonusCheck();
+  if ($frames.length == 2) _secondFrameScore();
+  if ($frames.length == 10) _finalFramescore();
+  if ($frames.length > 2 && $frames.length < 10) {
+    _previousFrame().isStrike() ? _doubleCheck() : _spareCheck();
+  }
   _clearFrame();
 }
 
-function bonusCheck() {
-  if (previousFrame().isStrike()) return _strikeScore();
-  if (previousFrame().isSpare()) return _spareScore();
-  $currentGame.score += $currentFrame.frameScore();
-  $(`#runningTotal${$frames.length}`).text($currentGame.score);
+function _doubleCheck() {
+  _isDouble() ? doubleScore() : _strikeScore();
+}
+
+function _spareCheck() {
+  _previousFrame().isSpare() ? _spareScore() : _noBonusScore();
+}
+
+function _isDouble() {
+  return (
+    $frames[$frames.length - 3].isStrike() &&
+    $frames[$frames.length - 2].isStrike()
+  );
 }
 
 function _firstFrameScore() {
   $currentGame.score = $currentFrame.frameScore();
+  $(`#runningTotal${$frames.length}`).text($currentGame.score);
+}
+
+function _secondFrameScore() {
+  _previousFrame().isStrike() ? _strikeScore() : _spareCheck();
+}
+
+function _finalFramescore() {}
+
+function _noBonusScore() {
+  $currentGame.score += $currentFrame.frameScore();
   $(`#runningTotal${$frames.length}`).text($currentGame.score);
 }
 
@@ -57,6 +80,16 @@ function _strikeScore() {
   );
   $currentGame.score += 2 * $currentFrame.frameScore();
   $(`#runningTotal${$frames.length}`).text($currentGame.score);
+}
+
+function doubleScore() {
+  $(`#runningTotal${$frames.length - 3}`).text(
+    parseInt($(`#runningTotal${$frames.length - 2}`).html(), 10) + 10
+  );
+  $(`#runningTotal${$frames.length - 1}`).text(
+    parseInt($(`#runningTotal${$frames.length - 1}`).html(), 10) + 10
+  );
+  $currentGame.score += 10;
 }
 
 function _clearFrame() {

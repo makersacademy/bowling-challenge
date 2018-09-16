@@ -18,15 +18,9 @@ describe('Card', function() {
   it('cannot hold more than 10 frames', function() {
     frame1.bowl(1)
     frame1.bowl(1)
-    for (i = 0; i < 10; i ++) {
+    for (i = 0; i < 11; i ++) {
       card.store(frame1)
     }
-    expect(card.frames.length).toEqual(10)
-    console.log(card.frames.length)
-    console.log(card.bonuses)
-    console.log(card.isEnd())
-    card.store(frame1)
-    console.log(card.frames)
     expect(card.frames.length).toEqual(10)
   });
 

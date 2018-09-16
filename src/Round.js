@@ -6,11 +6,10 @@ function Frame() {
   this.score = 0
   this.strike = false
   this.spare = false
-  this.end = false
 };
 
 Frame.prototype.bowl = function(pins) {
-  if (!this.end && this._isValidBowl(pins)) {
+  if (!this.isEnd() && this._isValidBowl(pins)) {
     this.storeScore(pins)
     this.isEnd()
     this._spareOrStrike();
@@ -42,7 +41,7 @@ Frame.prototype._spareOrStrike = function() {
 };
 
 Frame.prototype.isEnd = function() {
-  this.end = (this.score === 10 || this.bowls.length === 2)
+  return (this.score === 10 || this.bowls.length === 2)
 };
 
 Frame.prototype._isValidBowl = function(pins) {

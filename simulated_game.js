@@ -57,23 +57,50 @@ function SingleGutterFrames() {
 
 }
 
+function RandomFrames() {
+  frame1 = new Frame()
+  frame1.bowl(1)
+  frame1.bowl(2)
+
+  frame2 = new Frame()
+  frame2.bowl(1)
+  frame2.bowl(2)
+
+  frame3 = new Frame()
+  frame3.bowl(1)
+  frame3.bowl(2)
+
+  frame4 = new Frame()
+  frame4.bowl(1)
+  frame4.bowl(2)
+
+  frame5 = new Frame()
+  frame5.bowl(1)
+  frame5.bowl(2)
+}
+
 function Game() {
   game_card = new Card()
   GutterFrames()
   SpareFrames()
   StrikeFrames()
   SingleGutterFrames()
+  RandomFrames()
 
-  game_card.store(strike_frame1)
-  game_card.store(strike_frame2)
+  game_card.store(first_gutter_frame1)
+  game_card.store(gutter_frame1)
   game_card.store(spare_frame1)
   game_card.store(spare_frame2)
-  game_card.store(gutter_frame1)
+  game_card.store(gutter_frame2)
   game_card.store(second_gutter_frame1)
-  game_card.store(strike_frame3)
-  game_card.store(first_gutter_frame1)
+  game_card.store(frame1)
+  game_card.store(first_gutter_frame2)
   game_card.store(second_gutter_frame2)
-  game_card.store(spare_frame3)
+  game_card.store(strike_frame1)
+  game_card.store(strike_frame2)
+  game_card.store(frame2)
+  game_card.store(frame3)
+
 
 }
 

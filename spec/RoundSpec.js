@@ -16,7 +16,7 @@ describe('frame', function() {
   
     it('knows if the frame is over', function() {
       frame.bowl(10)
-      expect(frame.end).toBe(true)
+      expect(frame.isEnd()).toBe(true)
     });
   });
 

@@ -37,21 +37,24 @@ describe('Card', function() {
       card.store(frame1)
       expect(card.bonuses[1]).toEqual(1)
     });
-
-    // is this a feature test?
-    it('adds the next roll to its score', function() {
-      frame1.bowl(5)
-      frame1.bowl(5)
-      card.store(frame1)
-      frame2.bowl(8)
-      frame2.bowl(0)
-      card.store(frame2)
-      expect(card.frames[0]).toContain(8)
-    });
   });
 
   describe('when the previous frame was a strike', function() {
-    it('')
+    it('changes the bonuses array', function() {
+      frame1.bowl(10)
+      card.store(frame1)
+      expect(card.bonuses[1]).toEqual(2)
+    });
+    
+    describe('and the next frame is a strike', function() {
+      it('changes the bonuses array', function() {
+        frame1.bowl(10)
+        card.store(frame1)
+        frame2.bowl(10)
+        card.store(frame2)
+        expect(card.bonuses[0]).toEqual(1)
+      });
+    });
   });
   
 });

@@ -11,7 +11,7 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 ## How to use
 
 Copy the path of `ConsolePlay.html` into the client of your choice.
-Using console commands you can start a new scorecard and add bowls. The console logs currently in the `playGame.js` will output the resutls of each bowl.
+Using console commands you can start a new scorecard and add bowls. The console logs currently in the `playGame.js` will output the results of each bowl.
 
 #### Example
 

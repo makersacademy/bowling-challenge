@@ -1,0 +1,168 @@
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #fefef9;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='32' viewBox='0 0 16 32'%3E%3Cg fill='%239C92AC' fill-opacity='0.09'%3E%3Cpath fill-rule='evenodd' d='M0 24h4v2H0v-2zm0 4h6v2H0v-2zm0-8h2v2H0v-2zM0 0h4v2H0V0zm0 4h2v2H0V4zm16 20h-6v2h6v-2zm0 4H8v2h8v-2zm0-8h-4v2h4v-2zm0-20h-6v2h6V0zm0 4h-4v2h4V4zm-2 12h2v2h-2v-2zm0-8h2v2h-2V8zM2 8h10v2H2V8zm0 8h10v2H2v-2zm-2-4h14v2H0v-2zm4-8h6v2H4V4zm0 16h6v2H4v-2zM6 0h2v2H6V0zm0 24h2v2H6v-2z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+#wrapper {
+  margin: 0 auto;
+  width: 50%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 5%;
+  position: relative;
+}
+
+#title {
+  margin: 0 auto;
+  grid-column: 1 / 3;
+  font-size: 1.3em;
+}
+
+#title_bowling {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 0;
+  border-top: 10px solid #fed75a;
+}
+
+#title_scorecard {
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 0;
+  border-bottom: 10px solid #fed75a;
+}
+
+.userInput {
+  grid-column: 1 / 2;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+#inputTitle {
+  text-transform: uppercase;
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 1.3em;
+  display: block;
+  grid-column: 1 / 3;
+}
+
+#inputBox {
+  margin: 0;
+  width: 100%;
+  height: 40px;
+  padding: 0;
+  font-size: 2em;
+  font-weight: 500;
+  grid-column: 1 / 2;
+  box-sizing: border-box;
+  border: 2px solid #fed75a;
+}
+
+#inputBox:focus {
+  outline: none !important;
+  border: 3px solid #fed75a;
+}
+
+#submitRoll {
+  height: 40px;
+  font-size: 1em;
+  background-color: #fed75a;
+  /* margin-top: 2%; */
+  font-weight: bold;
+  border: none;
+  margin-left: 0;
+  grid-column: 2 / 3;
+}
+
+#currentScore {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  background-color: #fed75a;
+  width: 50%;
+  margin: 0 auto;
+  height: 80px;
+  padding: 1%;
+  margin-bottom: 20px;
+}
+
+#score-title {
+  margin-top: 3%;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+#score {
+  font-size: 2.7em;
+  text-align: center;
+  margin-top: 1%;
+  font-weight: bold;
+}
+
+.frame {
+  grid-column: 1 / 2;
+  border-top: 1px dashed #1f1e1c;
+  padding-top: 0;
+  margin-bottom: 4%; 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.frameTitle {
+  margin-top: 0;
+  margin-right: 5px;
+  grid-column: 1 / 3;
+  text-transform: uppercase;
+}
+
+#frame6 {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+#frame7 {
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
+}
+#frame8 {
+  grid-column: 2 / 3;
+  grid-row: 5 / 6;
+}
+#frame9 {
+  grid-column: 2 / 3;
+  grid-row: 6 / 7;
+}
+#frame10 {
+  grid-column: 2 / 3;
+  grid-row: 7 / 8;
+}
+
+#bonusRoll {
+  grid-column: 2 / 3;
+  grid-row: 8 / 9;
+}
+
+.rollInput {
+  grid-column: 3 / 4;
+  width: 100%;
+  /* height: 40px; */
+  padding: 0;
+  font-size: 2em;
+  font-weight: 500;
+  margin: 0;
+  text-align: center;
+}
+
+.rollInput:focus {
+  outline: none !important;
+  border: 3px solid #fed75a;
+}
+

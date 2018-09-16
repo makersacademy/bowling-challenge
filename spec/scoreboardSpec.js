@@ -35,38 +35,48 @@ describe ('Scoreboard', function() {
     });
   });
 
-  beforeEach(function() {
-    scoreboard.firstRoll(8);
-    scoreboard.secondRoll(2);
-  });
-
-  describe('rollScore', function() {
-
-    it('expects the array to have two items', function() {
-      expect(scoreboard.scores.length).toEqual(2);
-    });
-
-    it('sums the numbers inside the array', function() {
-      expect(scoreboard.rollScore()).toEqual(10);
-    });
-  });
-
-  describe('emptyScores', function() {
-    it('empties the scores array', function() {
-      scoreboard.emptyScores();
-      expect(scoreboard.scores.length).toEqual(0);
-    });
-  });
-
-  describe('newFrame', function() {
-
+  describe('everything is working', function() {
     beforeEach(function() {
-      scoreboard.rollScore();
+      scoreboard.firstRoll(8);
+      scoreboard.secondRoll(2);
     });
 
-    it('displays the score in a frame', function() {
-      scoreboard.newFrame();
-      expect(scoreboard.frames).toContain(10);
+    describe('rollScore', function() {
+      it('sums the numbers inside the array', function() {
+        expect(scoreboard.rollScore()).toEqual(10);
+      });
+    });
+
+    describe('emptyScores', function() {
+      it('empties the scores array', function() {
+        scoreboard.emptyScores();
+        expect(scoreboard.scores.length).toEqual(0);
+      });
+    });
+
+    describe('newFrame', function() {
+      beforeEach(function() {
+        scoreboard.rollScore();
+      });
+
+      it('displays the score in a frame', function() {
+        scoreboard.newFrame();
+        expect(scoreboard.frames).toContain(10);
+      });
+    });
+  });
+
+  describe('a condition is missing', function() {
+    beforeEach(function() {
+      scoreboard.firstRoll(8);
+    });
+
+    describe('rollScore', function() {
+      it('throws an error: a roll is missing in the array', function() {
+        expect(function() {
+          scoreboard.rollScore();
+        }).toThrow("Have you forgotten a roll?");
+      });
     });
   });
 });

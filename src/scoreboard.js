@@ -16,6 +16,8 @@ Scoreboard.prototype.secondRoll = function(number) {
 Scoreboard.prototype.rollScore = function() {
   if (this.scores.length == 2) {
     return this.scores.reduce((a,b) => a + b);
+  } else {
+    throw "Have you forgotten a roll?"
   }
 };
 

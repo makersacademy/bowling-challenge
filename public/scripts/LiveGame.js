@@ -36,7 +36,7 @@ function _addRollSecond(pin) {
 }
 
 function _doubleCheck() {
-  _isDouble() ? doubleScore() : _strikeScore();
+  _isDouble() ? _doubleScore() : _strikeScore();
 }
 
 function _spareCheck() {
@@ -44,15 +44,12 @@ function _spareCheck() {
 }
 
 function _isDouble() {
-  return (
-    $frames[$frames.length - 3].isStrike() &&
-    $frames[$frames.length - 2].isStrike()
-  );
+  return $frames[$frames.length - 3].isStrike() && _previousFrame().isStrike();
 }
 
 function _firstFrameScore() {
   $currentGame.score = $currentFrame.frameScore();
-  $(`#runningTotal${$frames.length}`).text($currentGame.score);
+  $(`#runningTotal1`).text($currentGame.score);
 }
 
 function _secondFrameScore() {
@@ -82,7 +79,7 @@ function _strikeScore() {
   $(`#runningTotal${$frames.length}`).text($currentGame.score);
 }
 
-function doubleScore() {
+function _doubleScore() {
   $(`#runningTotal${$frames.length - 3}`).text(
     parseInt($(`#runningTotal${$frames.length - 2}`).html(), 10) + 10
   );

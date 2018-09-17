@@ -80,13 +80,14 @@ function _strikeScore() {
 }
 
 function _doubleScore() {
-  $(`#runningTotal${$frames.length - 3}`).text(
-    parseInt($(`#runningTotal${$frames.length - 2}`).html(), 10) + 10
+  $(`#runningTotal${$frames.length - 2}`).text(
+    parseInt($(`#runningTotal${$frames.length - 2}`).text(), 10) + 10
   );
   $(`#runningTotal${$frames.length - 1}`).text(
-    parseInt($(`#runningTotal${$frames.length - 1}`).html(), 10) + 10
+    parseInt($(`#runningTotal${$frames.length - 1}`).text(), 10) + 20
   );
-  $currentGame.score += 10;
+  $currentGame.score += 30;
+  $(`#runningTotal${$frames.length}`).text($currentGame.score);
 }
 
 function _clearFrame() {

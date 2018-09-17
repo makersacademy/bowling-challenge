@@ -24,6 +24,18 @@ describe('Card', function() {
     expect(card.frames.length).toEqual(10)
   });
 
+  // wnat to use console.log but how to test?
+  describe('.score', function() {
+    it('outputs frame history and current score', function() {
+      frame1.bowl(2)
+      frame1.bowl(2)
+      card.store(frame1)
+      card.score()
+      expect(card.score()).toContain(4)
+      expect(card.score()).toContain([2, 2])
+    });
+  });
+
   describe('when a spare or strike frame is stored', function() {
     it('knows to add the next two rolls for a strike', function() {
       frame1.bowl(10)

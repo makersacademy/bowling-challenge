@@ -3,6 +3,10 @@ function Card() {
   this.bonuses = [0, 0]
 };
 
+// at the moment frame.bowls are stored in frames array
+// refactoring to store full frame instance should clean up card logic
+// and return us to SRC principle
+
 Card.prototype.store = function(frame) {
   if (!this._isEnd()) {
     this.frames.push(frame.bowls)
@@ -24,38 +28,32 @@ Card.prototype._trackBonus = function(frame) {
 
 Card.prototype._applyBonuses = function() {
 
-  // variables for the last three frames
-  ultimateFrame = this.frames[this.frames.length -1]
-  penultimateFrame = this.frames[this.frames.length -2]
-  antepenultimateFrame = this.frames[this.frames.length -3]
-
   // adds first bowl of recent round to frame two before,
   //   only happens when two strikes occur in a row
   if (this.bonuses[0]) {
-    antepenultimateFrame.push(ultimateFrame[0])
+    this._addBonusRoll(this._twoPreviousFrame(), this._firstBowl())
     this.bonuses[0] = 0
   }
 
-  // if previous frame was spare
-  //   adds first roll to previous frame
-  if (this.bonuses[1] === 1) {
-    penultimateFrame.push(ultimateFrame[0])
+  // if bonus is to be added to previous frame
+  if (this.bonuses[1]) {
+    // add first roll of current frame
+    this._addBonusRoll(this._previousFrame(), this._firstBowl())
     this.bonuses[1] = 0
-  }
-  // if prevous frame was strike and most recent was not
-  //   adds both rolls from recent frame
-  else if (this.bonuses[1] === 2 && ultimateFrame.length === 2) {
-    penultimateFrame.push(ultimateFrame[0])
-    penultimateFrame.push(ultimateFrame[1])
-    this.bonuses[1] = 0
-  }
-  // if previous frame was strike and most recent was strike
-  //   recent frames strike roll is pushed to previous frames score
-  //   next frames first roll will be added by the first if statement
-  else if (this.bonuses[1] === 2 && ultimateFrame.length === 1) {
-    penultimateFrame.push(ultimateFrame[0])
-    this.bonuses[0] = 1
-  }
+
+    // if a second roll needs to be added
+    if (this._isPreviousFrameStrike()) {
+      // and the current frame has two bowls
+      if (!this._isCurrentFrameStrike()) {
+        // add second roll
+        this._addBonusRoll(this._previousFrame(), this._secondBowl())
+        this.bonuses[1] = 0
+      } else {
+        // store reminder to add second roll
+        this.bonuses[0] = 1
+      };
+    };
+  };
 };
 
 Card.prototype._isEnd = function() {
@@ -71,5 +69,58 @@ Card.prototype._isNoBonuses = function() {
 Card.prototype._endGame = function() {
   while (this.frames.length > 10) {
     this.frames.pop()
-  }
+  };
+};
+
+Card.prototype.score = function() {
+  var score = 0
+  var frames = []
+  this.frames.forEach(function(frame) {
+    frames.push(frame)
+    frame.forEach(function(bowl) {
+      score += bowl
+    })
+  });
+  score = frames.push(score)
+  return frames
+};
+
+// You like functions?
+
+// bonus related functions
+
+Card.prototype._addBonusRoll = function(frame, bonus) {
+  frame.push(bonus)
+};
+
+Card.prototype._isPreviousFrameStrike = function() {
+  return (this._previousFrame()[0] === 10)
+};
+
+Card.prototype._isCurrentFrameStrike = function() {
+  return (this._mostRecentFrame()[0] === 10)
+};
+
+// functions for accessing 3 most recent frames
+
+Card.prototype._mostRecentFrame = function() {
+  return this.frames[this.frames.length - 1]
+};
+
+Card.prototype._previousFrame = function() {
+  return this.frames[this.frames.length - 2]
+};
+
+Card.prototype._twoPreviousFrame = function() {
+  return this.frames[this.frames.length - 3]
+};
+
+// functions accessing bowls to apply as bonuses
+
+Card.prototype._firstBowl = function() {
+  return this._mostRecentFrame()[0]
+};
+
+Card.prototype._secondBowl = function() {
+  return this._mostRecentFrame()[1]
 };

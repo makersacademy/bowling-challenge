@@ -1,0 +1,92 @@
+<!-- <!DOCTYPE html> -->
+<html>
+
+<head>
+  <script type="text/javascript" src="./public/scripts/jquery.min.js"></script>
+  <link rel="stylesheet" href="./public/styles/styles.css">
+  <script type="text/javascript" src="./public/scripts/Game.js"></script>
+  <script type="text/javascript" src="./public/scripts/Frame.js"></script>
+  <script type="text/javascript" src="./public/scripts/LiveGame.js"></script>
+</head>
+
+<body>
+  <script> 
+    $currentGame = new liveGame();
+    $currentFrame = new Frame();
+    $frames = [];
+  </script>
+
+  <br>
+  <br>
+  <br>
+  <div id="previousFrames"> </div>
+  <span id="game"></span>
+  <div id="pinButtons">
+    Pins Hit:
+    <button onclick="addRoll(0)">Gutter</button>
+    <button onclick="addRoll(1)">1</button>
+    <button onclick="addRoll(2)">2</button>
+    <button onclick="addRoll(3)">3</button>
+    <button onclick="addRoll(4)">4</button>
+    <button onclick="addRoll(5)">5</button>
+    <button onclick="addRoll(6)">6</button>
+    <button onclick="addRoll(7)">7</button>
+    <button onclick="addRoll(8)">8</button>
+    <button onclick="addRoll(9)">9</button>
+    <button onclick="addRoll(10)">10</button>
+  </div>
+  <br>
+  <br>
+  <div id="scorecard">
+    <table id="scorecardTable" class="scorecard" cellpadding="10" cellspacing="0">
+      <tr>
+        <th colspan="6">Frame1</th>
+        <th colspan="6">Frame2</th>
+        <th colspan="6">Frame3</th>
+        <th colspan="6">Frame4</th>
+        <th colspan="6">Frame5</th>
+        <th colspan="6">Frame6</th>
+        <th colspan="6">Frame7</th>
+        <th colspan="6">Frame8</th>
+        <th colspan="6">Frame9</th>
+        <th colspan="6">Frame10</th>
+      </tr>
+      <tr>
+        <td colspan='3'></td>
+        <td id="frame1" colspan='3'></td>
+        <td colspan='3'></td>
+        <td id="frame2" colspan='3'></td>
+        <td colspan='3'></td>
+        <td id="frame3" colspan='3'></td>
+        <td colspan='3'></td>
+        <td id="frame4" colspan='3'></td>
+        <td colspan='3'></td>
+        <td id="frame5" colspan='3'></td>
+        <td colspan='3'></td>
+        <td id="frame6" colspan='3'></td>
+        <td colspan='3'></td>
+        <td id="frame7" colspan='3'></td>
+        <td colspan='3'></td>
+        <td id="frame8" colspan='3'></td>
+        <td colspan='3'></td>
+        <td id="frame9" colspan='3'></td>
+        <td colspan='3'></td>
+        <td id="frame10" colspan='3'></td>
+      </tr>
+      <tr>
+        <td colspan='6' id="runningTotal1"></td>
+        <td colspan='6' id="runningTotal2"></td>
+        <td colspan='6' id="runningTotal3"></td>
+        <td colspan='6' id="runningTotal4"></td>
+        <td colspan='6' id="runningTotal5"></td>
+        <td colspan='6' id="runningTotal6"></td>
+        <td colspan='6' id="runningTotal7"></td>
+        <td colspan='6' id="runningTotal8"></td>
+        <td colspan='6' id="runningTotal9"></td>
+        <td colspan='6' id="runningTotal10"></td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>

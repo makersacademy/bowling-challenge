@@ -9,8 +9,10 @@ function _previousFrame() {
 }
 
 function addRoll(pin) {
-  if ($frames.length < 10) {
+  if ($frames.length < 9) {
     $currentFrame.firstRoll == null ? _addRollFirst(pin) : _addRollSecond(pin);
+  } else if ($frames.length == 9) {
+    addFinalFrame(pin);
   }
 }
 
@@ -28,11 +30,52 @@ function _addRollSecond(pin) {
   );
   if ($frames.length == 1) _firstFrameScore();
   if ($frames.length == 2) _secondFrameScore();
-  if ($frames.length == 10) _finalFramescore();
+  if ($frames.length == 10 && $currentFrame.noBonus() == false)
+    _finalFrameBonus();
+  if ($frames.length == 10 && $currentFrame.noBonus() == true) {
+    _previousFrame().isStrike() ? _doubleCheck() : _spareCheck();
+  }
   if ($frames.length > 2 && $frames.length < 10) {
     _previousFrame().isStrike() ? _doubleCheck() : _spareCheck();
   }
-  _clearFrame();
+  if ($frames.length < 10) _clearFrame();
+}
+
+function addFinalFrame(pin) {
+  $currentFrame.firstRoll == 10 ? _finalStrike() : null;
+  $currentFrame.firstRoll == null
+    ? _addRollFirstFinal(pin)
+    : _addRollSecondFinal(pin);
+}
+
+function _addRollFirstFinal(pin) {
+  if (pin == 10) return _finalStrike();
+  $currentFrame.firstRoll = pin;
+  $("#frame10").text(pin);
+}
+
+function _addRollSecondFinal(pin) {
+  if ($currentFrame.firstRoll + pin == 10) return _finalSpare();
+  $currentFrame.secondRoll = pin;
+  $("#frame10").text(`${$currentFrame.firstRoll}, ${pin}`);
+  $frames.push($currentFrame);
+  $currentGame.score += $currentFrame.frameScore();
+  $("#runningTotal10").text(`${$currentGame.score}`);
+}
+
+function _addRollThird(pin) {
+  firstRoll = $frames[9].firstRoll;
+  secondRoll = $frames[9].secondRoll;
+  $frames.splice(-1);
+  $currentFrame.firstRoll = firstRoll;
+  $currentFrame.secondRoll = secondRoll;
+  $currentFrame.thirdRoll = pin;
+  $frames.push($currentFrame);
+  $(`#frame${$frames.length + 1}`).text(
+    `${$currentFrame.firstRoll}, ${$currentFrame.secondRoll}, ${
+      $currentFrame.thirdRoll
+    }`
+  );
 }
 
 function _doubleCheck() {
@@ -55,8 +98,6 @@ function _firstFrameScore() {
 function _secondFrameScore() {
   _previousFrame().isStrike() ? _strikeScore() : _spareCheck();
 }
-
-function _finalFramescore() {}
 
 function _noBonusScore() {
   $currentGame.score += $currentFrame.frameScore();

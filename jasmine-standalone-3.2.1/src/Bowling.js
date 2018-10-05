@@ -1,17 +1,27 @@
 function Bowling(){
   this._frame_score = [];
-  this._frame_number = 0;
+  this._frame_number = 1;
+  this._roll_number = 1;
 };
 
-Bowling.prototype.roll = function (score){
+Bowling.prototype.roll_number = function(){
+ return this._roll_number;
+};
 
- this._frame_score.push(score)
-   if (score === 10){
-    this._frame_number += 1;
+Bowling.prototype.roll = function(score){
+ this._frame_score.push(score);
+
+  if (score === 10) {this._frame_number += 1;
   } else {
-    this._frame_number += 0.5;
-  };
+   if (this._roll_number === 1){
+    this._roll_number += 1;
+   } else if (this._roll_number === 2){
+     this._roll_number = 1;
+     this._frame_number += 1;
+   };
+ };
 };
+
 
 Bowling.prototype.frame_score = function(){
   function getSum(total, num) {

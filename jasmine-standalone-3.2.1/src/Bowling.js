@@ -4,7 +4,8 @@ function Bowling(){
 };
 
 Bowling.prototype.roll = function (score){
- this._frame_score.push(score);
+
+ this._frame_score.push(score)
    if (score === 10){
     this._frame_number += 1;
   } else {
@@ -13,9 +14,13 @@ Bowling.prototype.roll = function (score){
 };
 
 Bowling.prototype.frame_score = function(){
-  return this._frame_score;
+  function getSum(total, num) {
+      return total + num;
+  }
+
+  return this._frame_score.reduce(getSum);
 };
 
 Bowling.prototype.frame_number = function(){
   return this._frame_number;
-}
+};

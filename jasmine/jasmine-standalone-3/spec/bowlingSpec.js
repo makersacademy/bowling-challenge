@@ -5,9 +5,17 @@ describe ('Bowling', function () {
     bowling = new Bowling() ;
   });
 
-  it ('bowls a ball', function () {
-    // bowling.play(5)
-    expect(bowling.play(5)).toEqual(5);
+  describe('#play', function() {
+
+    it ('bowls a ball', function () {
+      expect(bowling.play(5)).toEqual(5);
+    });
+
+    // it ('sums the score so far', function () {
+    //   bowling.play(6);
+    //   expect(bowling.play(3)).to
+    // });
+
   });
 
 });

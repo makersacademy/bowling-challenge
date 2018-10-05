@@ -17,14 +17,6 @@ Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
-
 ### Optional Extras
 
 In any order you like:
@@ -42,36 +34,101 @@ learn Javascript conventions as you go along.
 
 The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
 
-### Spares
+Work on this challenge as conclusion of week 4, to work towards these goals:
 
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+* I version-control my projects
+* I use a methodical approach to solving problems
+* I test-drive my code
+* I can work to a specification
+* I create effective documentation
+* I can design and build user interfaces
+* I can write standards-compliant, clean object-oriented code
 
-### 10th frame
+Instructions to run this at home
+-----
 
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
 
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
+Notes on use
+------------------
+* 
+* 
 
-### Gutter Game
+STATUS
+-----
 
-A Gutter Game is when the player never hits a pin (20 zero scores).
+**Notes**
+```
 
-### Perfect Game
+```
 
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+**TO DO**
 
-In the image below you can find some score examples.
+- 
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
+includes
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
-## Code Review
+Unit tests
 
-In code review we'll be hoping to see:
+Feature tests
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+Coverage: 100%
+
+User stories
+-----
+```
+As a player,
+so that I know how long the game is,
+I want to see how many frames the game has
+
+As a player,
+so I know how many frames I have already played,
+I want to see which frame I'm currently playing
+
+As a player,
+so I know how many rolls are left in my frame,
+I want to see which roll I'm currently on
+
+
+As a player,
+to be assigned a score,
+I want to be able to record the number of pins I hit in each roll
+
+As a player,
+to know how well I'm playing,
+I want to receive a score according to the number of pins I hit in each frame
+
+As a player,
+to be rewarded for my skills,
+I want to be credited extra scores when I bowl a strike
+
+As a player,
+to be rewarded for my skills,
+I want to be credited extra scores when I bowl a spare
+
+As a player,
+so I don't have to remember my score,
+I want to see the history of my scores for each frame throughout the game
+
+As a player,
+so I can validate my score,
+I want to be able to see a history of the number of pins I hit throughout the game
+
+As a player,
+so that I know who's winnig the game,
+I want to see my running score (the sum of the score of my frames played so far)
+
+As a player,
+so that I know who has won,
+I want to see my overall score (the sum of the score of all my frames)
+
+```
+
+Domain Model
+
+
+
+Author
+-----
+Freya Becker [fbl11](https://github.com/fbl11/)

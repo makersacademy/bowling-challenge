@@ -10,3 +10,12 @@ describe('Gutter game', function () {
     expect(game.score).toEqual(0)
   })
 })
+
+describe('#makeNewFrame', function () {
+  var game = new Game
+
+  it('Makes a 1st frame for new Game', function () {
+    game.roll(4)
+    expect(game.frames.length).toEqual(1)
+  })
+})

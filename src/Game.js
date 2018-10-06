@@ -34,6 +34,7 @@ Game.prototype.isStrike = function(index) {
 
 Game.prototype.hasBonus = function() {
   rollIndex = this.rolls.length - 3;
+
   if (this.frames === 10) {
     if (this.isStrike(rollIndex) || this.isSpare(rollIndex)) {
       return true;
@@ -49,7 +50,6 @@ Game.prototype.score = function() {
    if (this.hasBonus()) {
      maxRolls -= 2;
    };
-
   for (var i = 0; i < maxRolls; i++) {
     if (this.isStrike(i)) {
       total += this.rolls[i] + this.rolls[i + 1] + this.rolls[i + 2];

@@ -101,4 +101,48 @@ describe('Bowling', function() {
       expect(game.score()).toEqual(300);
     });
   });
+
+  describe("#hasBonus", function() {
+    it("should return true when spare in frame 10", function() {
+      for (var i = 0; i <18; i++) {
+        game.roll(3);
+      };
+      game.roll(7);
+      game.roll(3);
+      expect(game.hasBonus()).toEqual(true);
+    });
+
+    it("should return false if no spare or strike in frame10", function() {
+      for (var i = 0; i < 20; i++) {
+        game.roll(4);
+      };
+      expect(game.hasBonus()).toEqual(false);
+    });
+  });
+
+  describe("game with all score variations", function() {
+    it("should score 110", function() {
+      game.roll(7);
+      game.roll(2);
+      game.roll(6);
+      game.roll(1);
+      game.roll(5);
+      game.roll(5);
+      game.roll(3);
+      game.roll(4);
+      game.roll(5);
+      game.roll(5);
+      game.roll(10);
+      game.roll(5);
+      game.roll(3);
+      game.roll(5);
+      game.roll(0);
+      game.roll(6);
+      game.roll(2);
+      game.roll(7);
+      game.roll(3);
+      game.roll(5);
+      expect(game.score()).toEqual(110);
+    });
+  });
 });

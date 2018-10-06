@@ -1,24 +1,27 @@
-describe('Game', function() {
+describe('Bowling', function() {
   var game;
 
   beforeEach(function() {
     game = new Game();
-    score = jasmine.createSpy('score',['roll', 'total'])
   });
 
-  describe('frame', function() {
-    it('players can get total of a frame', function(){
-      expect(game.totalFrame(2,3)).toEqual(5)
-    });
+  describe("Score", function() {
+    describe("should be able to call score at any time", function() {
+      it("after one roll", function() {
+        game.roll(5);
+        expect(game.score()).toEqual(5);
+      });
 
-    it('raises an error if user inserts numbers that totals > 10', function() {
-      expect(function() {game.totalFrame(10, 2)}).toThrow('Cannot score more than 10 per frame')
+      it("after a strike", function() {
+        game.roll(10);
+        expect(game.score()).toEqual(10);
+      });
+
+      it("after a spare", function() {
+        game.roll(5);
+        game.roll(5);
+        expect(game.score()).toEqual(10);
+      });
     });
   });
-
-  // describe('when rollone = 10', function() {
-  //   it('user cannot input rolltwo', function() {
-  //
-  //   });
-  // });
 });

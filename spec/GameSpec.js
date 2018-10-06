@@ -4,6 +4,13 @@ describe ("Game", function() {
     game = new Game();
   })
 
+
+  // describe ('roll'), function(){
+  //   it ("")
+  // }
+
+// I should take these bottom two tests out at some point
+
   describe ('totalScore', function(){
     it("has a starting score of 0", function(){
       expect(game._totalScore).toEqual(0);
@@ -15,6 +22,5 @@ describe ("Game", function() {
       expect(game._framesLeft).toEqual(10)
     })
   })
-
 
 });

@@ -2,12 +2,16 @@
 
 function Bowling() {
   this.score = 0;
-  this.frame = [];
+  this.rolls = [];
 }
 
-Bowling.prototype.play = function(pins) {
-  this.frame.push(pins);
-  return pins;
-  return this.frame;
-  console.log(this.frame);
+Bowling.prototype.roll = function(pins) {
+  this.rolls.push(pins);
+  return this.rolls;
+  console.log(this.rolls);
+};
+
+Bowling.prototype.getSum = function() {
+  return this.rolls.reduce();
+  // return getSum();
 };

@@ -1,21 +1,22 @@
-describe ('Bowling', function () {
-  var bowling;
+describe ('Bowling game', function () {
 
-  beforeEach(function() {
-    bowling = new Bowling() ;
+  var game;
+
+  beforeEach(function () {
+    game = new Bowling();
   });
 
-  describe('#play', function() {
-
+  describe('#roll', function() {
     it ('bowls a ball', function () {
-      expect(bowling.play(5)).toEqual(5);
+      expect(game.roll(5)).toEqual([5]);
     });
+  });
 
-    // it ('sums the score so far', function () {
-    //   bowling.play(6);
-    //   expect(bowling.play(3)).to
-    // });
-
+  describe('#getSum', function () {
+    it ('sums the score so far', function () {
+      game.roll(6);
+      expect(game.roll(3)).toEqual(9);
+    });
   });
 
 });

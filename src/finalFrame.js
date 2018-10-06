@@ -1,6 +1,6 @@
 function FinalFrame() {
   this.rolls = [];
-  this.strike = [false, false];
+  this.strikes = [false, false];
   this.spare = false;
   this.remaining = 10;
 }
@@ -11,7 +11,7 @@ FinalFrame.prototype.roll = function roll(score) {
   } else if (score > 10) {
     throw new Error('The score on one roll cannot be over 10.');
   } else if (score > this.remaining) {
-    throw new Error('You cannot knock down more pins than there are standing');
+    throw new Error('You cannot knock down more pins than there are standing.');
   }
   this.scoreRoll(score);
 };
@@ -28,9 +28,22 @@ FinalFrame.prototype.scoreRoll = function scoreRoll(score) {
 };
 
 FinalFrame.prototype.firstRoll = function firstRoll() {
-  console.log("hello");
+  if (this.rolls[0] === 10) {
+    this.strikes[0] = true;
+  } else {
+    this.remaining -= this.rolls[0]
+  }
 };
 
 FinalFrame.prototype.secondRoll = function secondRoll() {
-  console.log("hello");
+  if (this.rolls[1] === 10) {
+    this.strikes[1] = true;
+  } else if (this.rolls[0] + this.rolls[1] < 10) {
+    this.over = true;
+  } else if (this.rolls[0] + this.rolls[1] === 10) {
+    this.spare = true;
+    this.remaining = 10;
+  } else {
+    this.remaining -= this.rolls[1]
+  }
 };

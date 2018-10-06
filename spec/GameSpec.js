@@ -25,7 +25,6 @@ describe('Bowling', function() {
     });
   });
 
-
   describe("Gutter game", function() {
     it("all rolls are 0,should score 0", function() {
       for (var i = 0; i < 20; i++) {
@@ -44,11 +43,36 @@ describe('Bowling', function() {
     });
   });
 
+  describe("#isSpare", function() {
+    it("returns true if spare", function() {
+      game.roll(5);
+      game.roll(5);
+      game.roll(5);
+      expect(game.isSpare(0)).toEqual(true);
+    });
+
+    it("returns false if not spare", function() {
+      game.roll(5);
+      game.roll(3);
+      game.roll(1);
+      expect(game.isSpare(0)).toEqual(false);
+    });
+  });
+
   describe("Score if only a spare", function() {
     it("should score 20 if spare in frame1 and roll1 of frame2 hits 5 pins", function() {
       game.roll(5);
       game.roll(5);
       game.roll(5);
+      expect(game.score()).toEqual(20);
+    });
+  });
+
+  describe("Score if only a strike", function() {
+    it("should score 20 if strike followed by 2 rolls: 2 and 3", function() {
+      game.roll(10);
+      game.roll(2);
+      game.roll(3);
       expect(game.score()).toEqual(20);
     });
   });

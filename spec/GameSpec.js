@@ -33,4 +33,13 @@ describe('Bowling', function() {
       expect(game.score()).toEqual(0);
     });
   });
+
+  describe("Score if all rolls hit only 1 pin", function() {
+    it("should score 20", function() {
+      for (var i = 0; i <20; i++) {
+        game.roll(1);
+      }
+      expect(game.score()).toEqual(20);
+    });
+  });
 });

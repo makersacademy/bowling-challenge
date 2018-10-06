@@ -1,4 +1,4 @@
-describe ('Bowling game', function () {
+describe('Bowling game', function() {
 
   var game;
 
@@ -6,25 +6,34 @@ describe ('Bowling game', function () {
     game = new Bowling();
   });
 
-  describe('#roll', function() {
-    it ('bowls a ball', function () {
-      expect(game.roll(5)).toEqual([5]);
-    });
+  // it('bowls a ball', function() {
+  //   expect(game.roll(5)).toEqual([5]);
+  // });
+
+  it('can roll a total score for 20 bowls', function() {
+    for (var i = 0; i < 20; i++) {
+      game.roll(2);
+    }
+    expect(game.score()).toEqual(40);
   });
 
-  describe('#score', function() {
-    it('can roll a total score for 20 bowls', function () {
-      for (var i = 0; i < 20; i++) {
-        game.roll(2);
-      }
-      expect(game.score()).toEqual(40);
-    });
-    it('rolling a gutter score', function () {
-      for (var i = 0; i < 20; i++) {
-        game.roll(0);
-      }
-      expect(game.score()).toEqual(0);
-    });
-  })
+  it('rolling a gutter score', function() {
+    for (var i = 0; i < 20; i++) {
+      game.roll(0);
+    }
+    expect(game.score()).toEqual(0);
+  });
+
+  it('scoring a strike', function() {
+    game.roll(10);
+    game.roll(2);
+    game.roll(5);
+    game.roll(4);
+    game.roll(4);
+    for (var i = 0; i < 17; i++) {
+      game.roll(0);
+    }
+    expect(game.score()).toEqual(32);
+  });
 
 });

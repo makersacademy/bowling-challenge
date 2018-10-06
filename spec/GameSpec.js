@@ -24,18 +24,26 @@ describe("Game", function(){
     });
   });
 
-  // As a player
-  // So that I can keep track of a full game
-  // I can record my score for 10 frames
+  // // As a player
+  // // So that I can keep track of a full game
+  // // I can record my score for 10 frames
 
-  describe('10-frames', function () {
-    it('starts with ten frames', function () {
-      expect(game.frames().length).toBe(10);
-    });
-  });  
+  // describe('10-frames', function () {
+  //   it('starts with ten frames', function () {
+  //     expect(game.frames().length).toBe(10);
+  //   });
+  // });  
   
   // As a player
   // So that I can view game progress
   // I can see the full scorecard after adding a score
+
+  describe('adds score into into frame', function () {
+    it('add roll score into frame get total score', function () {
+      game.roll(3)
+      game.roll(6)
+      expect(game.frames()[1]).toContain(3, 6);
+    });
+  });  
   
 })

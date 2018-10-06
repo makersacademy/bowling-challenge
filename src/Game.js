@@ -5,17 +5,6 @@ function Game (){
   this._doubleBothRollsNextRound = false;
 };
 
-
-
-
-
-
-
-
-// Game.prototype.totalScore = function(){
-//   return this._totalScore;
-// };
-//
-// Game.prototype.framesLeft = function(){
-//   return this._framesLeft;
-// }
+Game.prototype.rollBall = function(){
+  return new Frame();
+};

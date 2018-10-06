@@ -1,26 +1,17 @@
 describe ("Game", function() {
   var game
+  var frame
   beforeEach(function(){
     game = new Game();
+    frame = new Frame();
   })
 
-
-  // describe ('roll'), function(){
-  //   it ("")
-  // }
-
-// I should take these bottom two tests out at some point
-
-  describe ('totalScore', function(){
-    it("has a starting score of 0", function(){
-      expect(game._totalScore).toEqual(0);
+  describe ('rollBall', function(){
+    it("creates a new frame class", function(){
+      expect(game.rollBall()).toEqual(frame);
     })
   })
 
-  describe ('framesLeft', function(){
-    it("has a starting number of 10", function(){
-      expect(game._framesLeft).toEqual(10)
-    })
-  })
+
 
 });

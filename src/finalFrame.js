@@ -47,3 +47,17 @@ FinalFrame.prototype.secondRoll = function secondRoll() {
     this.remaining -= this.rolls[1]
   }
 };
+
+FinalFrame.prototype.calculateScore = function calculateScore() {
+  if (this.strikes[0] === true) {
+    if (this.strikes[1] === true) {
+      return 30 + (this.rolls[2] * 3);
+    } else {
+      return 10 + (this.rolls[1] * 2) + (this.rolls[2] * 2);
+    }
+  } else if (this.spare == true) {
+      return 10 + (this.rolls[2] * 2);
+  } else {
+    return this.rolls[0] + this.rolls[1];
+  }
+};

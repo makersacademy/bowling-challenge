@@ -12,11 +12,4 @@ describe ('Bowling game', function () {
     });
   });
 
-  describe('#getSum', function () {
-    it ('sums the score so far', function () {
-      game.roll(6);
-      expect(game.roll(3)).toEqual(9);
-    });
-  });
-
 });

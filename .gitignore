@@ -4,4 +4,4 @@ MIT.LICENSE
 .eslintrc.json
 spec/PlayerSpec.js
 src/Player.js
-src/Songjs
+src/Song.js

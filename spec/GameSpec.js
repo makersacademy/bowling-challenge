@@ -24,4 +24,13 @@ describe('Bowling', function() {
       });
     });
   });
+
+  describe("Gutter game", function() {
+    it("all rolls are 0,should score 0", function() {
+      for (var i = 0; i < 20; i++) {
+        game.roll(0);
+      }
+      expect(game.score()).toEqual(0);
+    });
+  });
 });

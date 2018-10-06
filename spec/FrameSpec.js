@@ -9,6 +9,12 @@ describe ("Frame", function(){
        frame.calculate(5)
        expect(frame._frameScore).toEqual(5)
      })
+     it("descreases the rolls left by one", function(){
+       frame.calculate(4)
+       expect(frame._rollsLeft).toEqual(1)
+     })
    })
+
+
 
 });

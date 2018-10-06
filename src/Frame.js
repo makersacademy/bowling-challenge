@@ -8,4 +8,5 @@ function Frame (){
 
   Frame.prototype.calculate = function(user_input){
     this._frameScore += user_input
+    this._rollsLeft -= 1
   };

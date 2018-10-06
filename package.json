@@ -1,0 +1,33 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Makers Academy Week 5-6 Bowling Challenge",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonurry/bowling-challenge.git"
+  },
+  "keywords": [
+    "bowling",
+    "javascript",
+    "mvc",
+    "jasmine"
+  ],
+  "author": "Jon Urry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonurry/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/jonurry/bowling-challenge#readme",
+  "devDependencies": {
+    "eslint": "^5.6.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  }
+}

@@ -30,19 +30,24 @@ describe('Features', function(){
         })
     });
 
-    // describe('spare move', function(){
-    //     it('when total is 10 pins in two rolls it is a spare', function(){
-    //         bowling.currentMove(6);
-    //         bowling.currentMove(4);
-    //         // frame.firstRoll = 1;
-    //         // frame.secondRoll = 4;
-    //         expect(bowling._frames).toEqual([frame]);
-    //         //bowling.calculateScore();
-    //         bowling.currentMove(5);
-    //         bowling.currentMove(3);
-    //         bowling.calculateScore();
-    //         expect(bowling._totalScore).toEqual(23);
-    //     })
-    // })
-
+    describe('spare move', function(){
+        it('when total is 10 pins in two rolls it is a spare', function(){
+            bowling.currentMove(6); 
+            bowling.currentMove(4);
+            bowling.currentMove(5);
+            bowling.currentMove(3);
+            bowling.calculateScore();
+            expect(bowling._totalScore).toEqual(23);
+        })
+    })
+    describe('strike move', function(){
+        it('when 10 pins down in first roll it is a strike', function(){
+            bowling.currentMove(10); 
+            //bowling.currentMove(0);
+            bowling.currentMove(5);
+            bowling.currentMove(3);
+            bowling.calculateScore();
+            expect(bowling._totalScore).toEqual(26);
+        })
+    })
 });

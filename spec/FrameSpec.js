@@ -9,10 +9,23 @@ describe ("Frame", function(){
        frame.calculate(5)
        expect(frame._frameScore).toEqual(5)
      })
-     it("descreases the rolls left by one", function(){
-       frame.calculate(4)
+     it("calls descreaseRoll to descrease the amount of rolls left", function(){
+       frame.calculate(5)
+       expect(frame._rollsLeft).toEqual(1)
+     })
+   })
+
+   describe ("decreaseRoll", function(){
+     it("decreases the rolls left by one", function(){
+       frame.decreaseRoll()
        expect(frame._rollsLeft).toEqual(1)
      })
    })
 
 });
+
+// describe ("returnRollsLeft", function(){
+//   it("returns tolls left", function(){
+//     expect(frame.returnRollsLeft()).toEqual(2)
+//   })
+// })

@@ -5,6 +5,11 @@ function Game (){
   this._doubleBothRollsNextRound = false;
 };
 
-Game.prototype.rollBall = function(){
-  return new Frame();
-};
+Game.prototype.rollBall = function(userInput){
+  // if (currentFrame._rollsLeft === 0){
+  //   var currentFrame = new Frame(); //remember to pass in user_input
+  // } else {
+  //   currentFrame.calculate(5);
+
+  return new Frame()
+  };

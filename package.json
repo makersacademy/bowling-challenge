@@ -29,16 +29,21 @@
     "eslint": "^5.6.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
+    "grunt": "^1.0.3",
+    "grunt-contrib-jasmine": "^2.0.2",
     "grunt-template-jasmine-istanbul": "^0.5.0",
     "istanbul": "^0.4.5",
     "jasmine": "^3.2.0",
     "jasmine-console-reporter": "^3.1.0",
     "jasmine-node": "^2.0.1",
     "jasmine-supertest": "^1.0.0",
+    "jsdom": "^12.1.0",
     "supertest": "^3.3.0"
   },
   "dependencies": {
+    "chai": "^4.2.0",
     "express": "^4.16.3",
+    "jquery": "^3.3.1",
     "request": "^2.88.0"
   }
 }

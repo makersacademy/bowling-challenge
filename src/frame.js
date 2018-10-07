@@ -11,6 +11,11 @@ Frame.prototype.addScore = function (score) {
   this._closeFrameEarly()
 }
 
+Frame.prototype.calculateTotalScore = function () {
+  const REDUCER = (accumulator, eachRollScore) => accumulator + eachRollScore
+  return this.scores.reduce(REDUCER, 0)
+}
+
 Frame.prototype._closeFrameEarly = function () {
   if (this.scores.length === 2) {
     this._spareOrBetter()
@@ -23,8 +28,4 @@ Frame.prototype._spareOrBetter = function () {
   }
 }
 
-Frame.prototype.calculateTotalScore = function () {
-  const REDUCER = (accumulator, eachRollScore) => accumulator + eachRollScore
-  return this.scores.reduce(REDUCER, 0)
-}
 module.exports = Frame

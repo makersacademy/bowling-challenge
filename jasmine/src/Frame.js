@@ -5,7 +5,7 @@ function Frame() {
   // this._isStrike
   // this._isSpare
   // this._isLast
-  this._state = Symbol()
+  this._state = ''
 
 }
 
@@ -23,12 +23,12 @@ Frame.prototype = {
     // enterBonus: function () {},
 
   setState: function () {
-    if (this._isBonus()) {
-      this._state = Symbol('bonus')
-    } else if (this._isClosed()) {
-      this._state = Symbol('closed')
+    if (this._isClosed()) {
+      this._state = 'closed'
     } else if (this._isActive()) {
-      this._state = Symbol('active')
+      this._state = 'active'
+    } else if (this._isBonus()) {
+      this._state = 'bonus'
     }
   },
 
@@ -38,14 +38,15 @@ Frame.prototype = {
 
   _isClosed: function () {
     // strike
-    if (this._rolls[0] === 10 && this._rolls.length === 3) {
+    if (this._rolls.length === 3 && this._rolls[0] === 10) {
       return true
     // spare
-    } else if (this._rolls[0] + this._rolls[1] === 10 && this._rolls.length === 3) {
+    } else if (this._rolls.length === 3 && this._rolls[0] + this._rolls[1] === 10) {
       return true
-    }
     // regular frame
+    } else {
     return (this._rolls.length === 2 && this._rolls[0] + this._rolls[1] < 10)
+    }
   },
 
   _isBonus: function () {
@@ -58,31 +59,35 @@ Frame.prototype = {
   },
 
   _isActive: function () {
-    // if empty
+    // if first roll
     if (this._rolls.length === 0) {
       return true
-    // after one roll when roll was not a strike
-    } else if (this._rolls.length === 1 && this._rolls[0] !== 10 ) {
+    // if first roll was not a strike
+    } else if (this._rolls.length === 1 && this._rolls[0] < 10) {
       return true
+    } else {
+      return false
     }
   },
-
+  // refactor
   // isStrike: function () {
     
   // },
-
+  // refactor
   // isSpare: function () {
 
   // },
 
   _validateRoll: function (pins) {
-    let max = 10
-    
-    if (pins > max) {
+    // let max = 10
+    if (pins > 10) {
       throw _tooHigh
-    } else if (pins + this._rolls[0] > max ){
-      throw _tooMany
     }
+    // if (pins > max) {
+    //   throw _tooHigh
+    // } else if ((this.getState() !== 'bonus') && (pins + this._rolls[0]) > max ){
+    //   throw _tooMany
+    // }
   }
 
 }

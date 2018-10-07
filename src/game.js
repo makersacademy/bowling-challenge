@@ -9,6 +9,7 @@ function Game (frameClass = Frame) {
 }
 
 Game.prototype.roll = function (rollScore) {
+  this._isValidRoll(rollScore)
   this._makeNewFrame()
   this._increaseRollNumber(rollScore)
   this._sendFrames(rollScore)
@@ -39,6 +40,12 @@ Game.prototype._increaseRollNumber = function (rollScore) {
 Game.prototype._sendFrames = function (rollScore) {
   for (let eachFrame of this.frames) {
     eachFrame.addScore(rollScore)
+  }
+}
+
+Game.prototype._isValidRoll = function (input) {
+  if (isNaN(input)) {
+    throw 'Not a Number'
   }
 }
 

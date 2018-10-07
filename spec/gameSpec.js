@@ -41,6 +41,10 @@ describe('Game class', function() {
       }
       expect(game.totalScore()).toEqual(40)
     })
+
+    it('raises error for non-numeric inputs', function () {
+      expect(function() { game.roll("not_a_number") }).toThrow('Not a Number');
+    })
   })
 
   describe('#totalScore', function () {

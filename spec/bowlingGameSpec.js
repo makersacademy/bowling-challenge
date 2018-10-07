@@ -16,10 +16,15 @@ describe('bowlingGame',function() {
   describe('throw',function(){
     it('should add things into an array of all throws', function(){
       bowling.throw(2)
-      bowling.throw(10)
+      bowling.throw(9)
       bowling.throw(4)
       bowling.throw(6)
-      expect(bowling.allThrows).toEqual([2,10,4,6])
+      expect(bowling.allThrows).toEqual([2,9,4,6])
+    })
+
+    it('should add a 0 after a 10 to indicate a frame is over',function(){
+      bowling.throw(10)
+      expect(bowling.allThrows).toEqual([10,0])
     })
   })
 

@@ -7,4 +7,7 @@ function BowlingGame(name) {
 
 BowlingGame.prototype.throw = function (pins) {
   this.allThrows.push(pins)
+  if (pins == 10) {
+    this.allThrows.push(0)
+  }
 };

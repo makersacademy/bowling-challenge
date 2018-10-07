@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "nyc grunt",
+    "test": "jasmine",
     "lint": "eslint"
   },
   "repository": {

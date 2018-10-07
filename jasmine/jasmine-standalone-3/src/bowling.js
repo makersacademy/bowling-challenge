@@ -6,9 +6,13 @@ function Bowling() {
 };
 
 Bowling.prototype.roll = function (pins) {
+  // var int = parseInt(num, 10);
+  // var pins = num;
+  // console.log('this is the integer: ' + pins);
   this.rolls[this.counter] = pins;
   this.counter += 1;
   console.log(this.rolls);
+  console.log('roll number ' + this.counter);
 };
 
 Bowling.prototype.score = function () {

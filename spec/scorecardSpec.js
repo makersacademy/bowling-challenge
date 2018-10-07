@@ -1,4 +1,4 @@
-var Scorecard = require('../src/Scorecard.js');
+var Scorecard = require('../src/scorecard.js');
 
 
 describe('FinalFrame', function() {

@@ -85,6 +85,14 @@ Scorecard.prototype.allFrameScores = function allFrameScores() {
   return output;
 };
 
+Scorecard.prototype.totalScore = function totalScore() {
+  let output = 0;
+  for (var i = 0; i < 10; i++) {
+    output += this.calculateFrameScore(i);
+  }
+  return output;
+};
+
 // Export node module.
 if (typeof module !== 'undefined' && module.hasOwnProperty('exports')) {
   module.exports = Scorecard;

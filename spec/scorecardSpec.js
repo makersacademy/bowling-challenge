@@ -91,7 +91,7 @@ describe('FinalFrame', function() {
     scorecard.frames[1].rolls = []
     expect(scorecard.calculateStrikeScore(0)).toEqual(10);
   });
-  
+
   it('knows when a strike has been scored', function() {
     scorecard.frames[0].strike = true;
     spyOn(scorecard, 'calculateStrikeScore');
@@ -131,7 +131,7 @@ describe('FinalFrame', function() {
   });
 
   it('updates the current frame when a roll is entered', function() {
-    scorecard.frames[0] = jasmine.createSpyObj('fakeFrame', { 'roll': true });
+    scorecard.frames[0] = jasmine.createSpyObj('fakeFinalFrame', { 'roll': true });
     spyOn(scorecard, 'updateCurrentFrame')
     scorecard.enterRoll(4)
     expect(scorecard.updateCurrentFrame).toHaveBeenCalled()
@@ -146,5 +146,13 @@ describe('FinalFrame', function() {
     scorecard.frames[1].strike = true;
     scorecard.frames[2].rolls = [1,2];
     expect(scorecard.calculateStrikeScore(0)).toEqual(21)
+  });
+
+  it('calculates the total score for the game', function() {
+    for (var i = 0; i < 9; i++) {
+      scorecard.frames[i].rolls = [0,0]
+    }
+    scorecard.frames[9] = jasmine.createSpyObj('fakeFinalFrame', { 'calculateScore': 0 })
+    expect(scorecard.totalScore()).toEqual(0);
   })
 });

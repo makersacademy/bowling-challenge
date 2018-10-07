@@ -2,12 +2,18 @@ import { Scorecard } from '../src/scorecard.js';
 
 describe('Scorecard', function() {
   beforeEach(function() {
-    this.scorecard = new Scorecard();
+    this.frame1 = jasmine.createSpyObj('frame', ['bowl']);
+    this.scorecard = new Scorecard([this.frame1]);
   });
 
   describe('constructor', function() {
     it('should have an empty frames array', function() {
-      expect(this.scorecard.frames).toEqual([]);
+      let sc = new Scorecard();
+      expect(sc.frames).toEqual([]);
+    });
+
+    it('should have a pre-populated frames array', function() {
+      expect(this.scorecard.frames).toEqual([this.frame1]);
     });
 
     it('should have a totalScore of zero', function() {
@@ -17,60 +23,42 @@ describe('Scorecard', function() {
 
   describe('bowl', function() {
     describe('first bowl (not a strike)', function() {
-      beforeEach(function() {
+      it('should bowl the ball', function() {
         this.scorecard.bowl(4);
-      });
-      it('should create a new frame', function() {
-        expect(this.scorecard.frames.length).toEqual(1);
-      });
-
-      it('should have one entry in the frames array', function() {
-        expect(this.scorecard.frames[0].rolls.length).toEqual(1);
-      });
-
-      it('should record the number of pins knocked down', function() {
-        expect(this.scorecard.frames[0].rolls[0]).toEqual(4);
-      });
-
-      it('should not complete the frame', function() {
-        expect(this.scorecard.frames[0].complete).toEqual(false);
-      });
-
-      it('should have a total score of zero', function() {
-        expect(this.scorecard.totalScore).toEqual(0);
+        expect(this.scorecard.frames[0].bowl).toHaveBeenCalledWith(4);
       });
     });
 
-    describe('first bowl is a strike!', function() {
-      it('should create a new frame', function() {});
+    // describe('first bowl is a strike!', function() {
+    //   it('should create a new frame', function() {});
 
-      it('should record 10 pins knocked down', function() {});
+    //   it('should record 10 pins knocked down', function() {});
 
-      it('should complete the frame', function() {});
-    });
+    //   it('should complete the frame', function() {});
+    // });
 
-    describe('second bowl (not a spare)', function() {
-      it('should not create a new frame', function() {});
+    // describe('second bowl (not a spare)', function() {
+    //   it('should not create a new frame', function() {});
 
-      it('should record the number of pins knocked down', function() {});
+    //   it('should record the number of pins knocked down', function() {});
 
-      it('should have two entries in the frames array', function() {});
+    //   it('should have two entries in the frames array', function() {});
 
-      it('should complete the frame', function() {});
+    //   it('should complete the frame', function() {});
 
-      it('should update the total score', function() {});
-    });
+    //   it('should update the total score', function() {});
+    // });
 
-    describe('second bowl is a spare!', function() {
-      it('should not create a new frame', function() {});
+    // describe('second bowl is a spare!', function() {
+    //   it('should not create a new frame', function() {});
 
-      it('should record the number of pins knocked down', function() {});
+    //   it('should record the number of pins knocked down', function() {});
 
-      it('should have two entries in the frames array', function() {});
+    //   it('should have two entries in the frames array', function() {});
 
-      it('should not complete the frame', function() {});
+    //   it('should not complete the frame', function() {});
 
-      it('should not update the total score', function() {});
-    });
+    //   it('should not update the total score', function() {});
+    // });
   });
 });

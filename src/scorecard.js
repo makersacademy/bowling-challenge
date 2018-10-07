@@ -6,7 +6,7 @@ function createNewFrame() {
 }
 
 function gameHasStarted() {
-  return this.frames.count > 0;
+  return this.frames.length > 0;
 }
 
 function getCurrentFrame() {
@@ -34,7 +34,7 @@ function isTenthFrame() {
 }
 
 export class Scorecard {
-  constructor() {
+  constructor(frames = []) {
     // bind private functions to this class
     this.createNewFrame = createNewFrame.bind(this);
     this.gameHasStarted = gameHasStarted.bind(this);
@@ -42,7 +42,7 @@ export class Scorecard {
     this.lastFrame = lastFrame.bind(this);
     this.lastFrameIsOver = lastFrameIsOver.bind(this);
     this.isTenthFrame = isTenthFrame.bind(this);
-    this.frames = [];
+    this.frames = frames;
     this.totalScore = 0;
   }
 

@@ -1,3 +1,6 @@
+var FinalFrame = require('../src/finalFrame.js');
+
+
 describe('FinalFrame', function() {
   var fFrame;
 

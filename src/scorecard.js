@@ -49,23 +49,24 @@ Scorecard.prototype.calculateFrameScore = function calculateFrameScore(index) {
   } else if (this.frames[index].strike === true) {
     return this.calculateStrikeScore(index);
   } else {
-    return this.frames[index].rolls[0] + this.frames[index].rolls[1];
+    return (this.frames[index].rolls[0] || 0)
+      + (this.frames[index].rolls[1] || 0);
   }
 };
 
 Scorecard.prototype.calculateSpareScore = function calculateSpareScore(index) {
-  return 10 + this.frames[index + 1].rolls[0];
+  return 10 + (this.frames[index + 1].rolls[0] || 0);
 };
 
 Scorecard.prototype.calculateStrikeScore = function calculateStrikeScore(index) {
   if (index === 8){
-    return 10 + this.frames[9].rolls[0] + this.frames[9].rolls[0];
+    return 10 + (this.frames[9].rolls[0] || 0)  + (this.frames[9].rolls[0]|| 0);
   } else {
     if (this.frames[index + 1].strike === true) {
-      return 20 + this.frames[index + 2].rolls[0];
+      return 20 + (this.frames[index + 2].rolls[0] || 0);
     } else {
-      return 10 + + this.frames[index + 1].rolls[0]
-        + this.frames[index + 1].rolls[1];
+      return 10 + + (this.frames[index + 1].rolls[0] || 0)
+        + (this.frames[index + 1].rolls[1] || 0);
     }
   }
 };
@@ -81,3 +82,9 @@ Scorecard.prototype.allFrameScores = function allFrameScores() {
   }
   return output;
 };
+
+// Export node module.
+if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )
+{
+    module.exports = Scorecard;
+}

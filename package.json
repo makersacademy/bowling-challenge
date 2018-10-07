@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "./node_packages/.bin/jasmine-node spec",
+    "test": "nyc grunt",
     "lint": "eslint"
   },
   "repository": {
@@ -28,11 +28,17 @@
   "devDependencies": {
     "eslint": "^5.6.1",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0"
+    "eslint-plugin-import": "^2.14.0",
+    "grunt-template-jasmine-istanbul": "^0.5.0",
+    "istanbul": "^0.4.5",
+    "jasmine": "^3.2.0",
+    "jasmine-console-reporter": "^3.1.0",
+    "jasmine-node": "^2.0.1",
+    "jasmine-supertest": "^1.0.0",
+    "supertest": "^3.3.0"
   },
   "dependencies": {
     "express": "^4.16.3",
-    "jasmine-node": "^1.16.2",
     "request": "^2.88.0"
   }
 }

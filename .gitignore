@@ -5,3 +5,5 @@ MIT.LICENSE
 spec/PlayerSpec.js
 src/Player.js
 src/Song.js
+.nyc_output
+coverage

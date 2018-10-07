@@ -51,13 +51,19 @@ FinalFrame.prototype.secondRoll = function secondRoll() {
 FinalFrame.prototype.calculateScore = function calculateScore() {
   if (this.strikes[0] === true) {
     if (this.strikes[1] === true) {
-      return 30 + (this.rolls[2] * 3);
+      return 20 + (this.rolls[2] || 0);
     } else {
-      return 10 + (this.rolls[1] * 2) + (this.rolls[2] * 2);
+      return 10 + (this.rolls[1] || 0) + (this.rolls[2] || 0);
     }
   } else if (this.spare == true) {
-      return 10 + (this.rolls[2] * 2);
+      return 10 + (this.rolls[2] || 0);
   } else {
-    return this.rolls[0] + this.rolls[1];
+    return (this.rolls[0] || 0) + (this.rolls[1] || 0);
   }
 };
+
+// Export node module.
+if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )
+{
+    module.exports = FinalFrame;
+}

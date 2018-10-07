@@ -1,3 +1,6 @@
+var Scorecard = require('../src/Scorecard.js');
+
+
 describe('FinalFrame', function() {
   var scorecard;
   function fakeFrame() {

@@ -30,4 +30,258 @@
   
   // The frame score update after every next two rolls -->
 
+
+  <!-- CONSOLE -->
+<!-- 
+  game = new Game()
+// game.roll(10)
+// console.log('current frame number: ' + game._currentFrameNumber)
+// console.log('each frame roll: ')
+// console.log(game._frames)
+// console.log('each frame score: ')
+// console.log(game._frameScore)
+// console.log('totalscore: '+game.totalScore());
+// console.log('final score board')
+// console.log(game._totalScoreDisplay)
+// console.log('------------')
+
+// game.roll(10)
+// console.log('current frame number: ' + game._currentFrameNumber)
+// console.log('each frame roll: ')
+// console.log(game._frames)
+// console.log('each frame score: ')
+// console.log(game._frameScore)
+// console.log('totalscore: '+game.totalScore());
+// console.log('final score board')
+// console.log(game._totalScoreDisplay)
+// console.log('------------')
+
+// game.roll(10)
+// console.log('current frame number: ' + game._currentFrameNumber)
+// console.log('each frame roll: ')
+// console.log(game._frames)
+// console.log('each frame score: ')
+// console.log(game._frameScore)
+// console.log('totalscore: '+game.totalScore());
+// console.log('final score board')
+// console.log(game._totalScoreDisplay)
+// console.log('------------')
+
+// game.roll(10)
+// console.log('current frame number: ' + game._currentFrameNumber)
+// console.log('each frame roll: ')
+// console.log(game._frames)
+// console.log('each frame score: ')
+// console.log(game._frameScore)
+// console.log('totalscore: '+game.totalScore());
+// console.log('final score board')
+// console.log(game._totalScoreDisplay)
+// console.log('------------')
+
+// game.roll(10)
+// console.log('current frame number: ' + game._currentFrameNumber)
+// console.log('each frame roll: ')
+// console.log(game._frames)
+// console.log('each frame score: ')
+// console.log(game._frameScore)
+// console.log('totalscore: '+game.totalScore());
+// console.log('final score board')
+// console.log(game._totalScoreDisplay)
+// console.log('------------')
+
+// game.roll(10)
+// console.log('current frame number: ' + game._currentFrameNumber)
+// console.log('each frame roll: ')
+// console.log(game._frames)
+// console.log('each frame score: ')
+// console.log(game._frameScore)
+// console.log('totalscore: '+game.totalScore());
+// console.log('final score board')
+// console.log(game._totalScoreDisplay)
+// console.log('------------')
+
+// game.roll(10)
+// console.log('current frame number: ' + game._currentFrameNumber)
+// console.log('each frame roll: ')
+// console.log(game._frames)
+// console.log('each frame score: ')
+// console.log(game._frameScore)
+// console.log('totalscore: '+game.totalScore());
+// console.log('final score board')
+// console.log(game._totalScoreDisplay)
+// console.log('------------')
+
+// game.roll(10)
+// console.log('current frame number: ' + game._currentFrameNumber)
+// console.log('each frame roll: ')
+// console.log(game._frames)
+// console.log('each frame score: ')
+// console.log(game._frameScore)
+// console.log('totalscore: '+game.totalScore());
+// console.log('final score board')
+// console.log(game._totalScoreDisplay)
+// console.log('------------')
+
+// game.roll(10)
+// console.log('current frame number: ' + game._currentFrameNumber)
+// console.log('each frame roll: ')
+// console.log(game._frames)
+// console.log('each frame score: ')
+// console.log(game._frameScore)
+// console.log('totalscore: '+game.totalScore());
+// console.log('final score board')
+// console.log(game._totalScoreDisplay)
+// console.log('------------')
+
+// game.roll(10)
+// console.log('current frame number: ' + game._currentFrameNumber)
+// console.log('each frame roll: ')
+// console.log(game._frames)
+// console.log('each frame score: ')
+// console.log(game._frameScore)
+// console.log('totalscore: '+game.totalScore());
+// console.log('final score board')
+// console.log(game._totalScoreDisplay)
+// console.log('------------')
+
+
+//************************----------------------***********************
+
+
+
+game.roll(9)
+game.roll(0)
+console.log('current frame number: ' + game._currentFrameNumber)
+console.log('each frame roll: ')
+console.log(game._frames)
+console.log('each frame score: ')
+console.log(game._frameScore)
+console.log('totalscore: '+game.totalScore());
+console.log('final score board')
+console.log(game._totalScoreDisplay)
+console.log('------------')
+
+game.roll(4)
+game.roll(6)
+console.log('current frame number: ' + game._currentFrameNumber)
+console.log('each frame roll: ')
+console.log(game._frames)
+console.log('each frame score: ')
+console.log(game._frameScore)
+console.log('totalscore: '+game.totalScore());
+console.log('final score board')
+console.log(game._totalScoreDisplay)
+console.log('------------')
+
+game.roll(10)
+console.log('current frame number: ' + game._currentFrameNumber)
+console.log('each frame roll: ')
+console.log(game._frames)
+console.log('each frame score: ')
+console.log(game._frameScore)
+console.log('totalscore: '+game.totalScore());
+console.log('final score board')
+console.log(game._totalScoreDisplay)
+console.log('------------')
+
+game.roll(8)
+game.roll(1)
+console.log('current frame number: ' + game._currentFrameNumber)
+console.log('each frame roll: ')
+console.log(game._frames)
+console.log('each frame score: ')
+console.log(game._frameScore)
+console.log('totalscore: '+game.totalScore());
+console.log('final score board')
+console.log(game._totalScoreDisplay)
+console.log('------------')
+
+game.roll(5)
+game.roll(3)
+console.log('current frame number: ' + game._currentFrameNumber)
+console.log('each frame roll: ')
+console.log(game._frames)
+console.log('each frame score: ')
+console.log(game._frameScore)
+console.log('totalscore: '+game.totalScore());
+console.log('final score board')
+console.log(game._totalScoreDisplay)
+console.log('------------')
+
+game.roll(10)
+console.log('current frame number: ' + game._currentFrameNumber)
+console.log('each frame roll: ')
+console.log(game._frames)
+console.log('each frame score: ')
+console.log(game._frameScore)
+console.log('totalscore: '+game.totalScore());
+console.log('final score board')
+console.log(game._totalScoreDisplay)
+console.log('------------')
+
+game.roll(10)
+console.log('current frame number: ' + game._currentFrameNumber)
+console.log('each frame roll: ')
+console.log(game._frames)
+console.log('each frame score: ')
+console.log(game._frameScore)
+console.log('totalscore: '+game.totalScore());
+console.log('final score board')
+console.log(game._totalScoreDisplay)
+console.log('------------')
+
+game.roll(9)
+game.roll(1)
+console.log('current frame number: ' + game._currentFrameNumber)
+console.log('each frame roll: ')
+console.log(game._frames)
+console.log('each frame score: ')
+console.log(game._frameScore)
+console.log('totalscore: '+game.totalScore());
+console.log('final score board')
+console.log(game._totalScoreDisplay)
+console.log('------------')
+
+game.roll(5)
+game.roll(4)
+console.log('current frame number: ' + game._currentFrameNumber)
+console.log('each frame roll: ')
+console.log(game._frames)
+console.log('each frame score: ')
+console.log(game._frameScore)
+console.log('totalscore: '+game.totalScore());
+console.log('final score board')
+console.log(game._totalScoreDisplay)
+console.log('------------')
+
+game.roll(8)
+game.roll(1)
+console.log('current frame number: ' + game._currentFrameNumber)
+console.log('each frame roll: ')
+console.log(game._frames)
+console.log('each frame score: ')
+console.log(game._frameScore)
+console.log('totalscore: '+game.totalScore());
+console.log('final score board')
+console.log(game._totalScoreDisplay)
+console.log('------------')
+
+// ---------------**********************------------------*******************
+// game.roll(1)
+// game.roll(8)
+// game.roll(10)
+// game.roll(9)
+// game.roll(1)
+// game.roll(10)
+// game.roll(10)
+// game.roll(3)
+// game.roll(7)
+// game.roll(6)
+// game.roll(4)
+// game.roll(3)
+// game.roll(3)
+// game.roll(3)
+// game.roll(3)
+console.log(game.totalScore()) -->
+
     

@@ -1,5 +1,7 @@
-describe("Game", function(){
+'use strict';
 
+describe("Game", function(){
+  var game;
   beforeEach(function() {
     game = new Game();
   });

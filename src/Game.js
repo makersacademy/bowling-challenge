@@ -1,3 +1,5 @@
+'use strict';
+
 function Game (){
   this._frames = [[], [], [], [], [], [], [], [], [], [],[]]; //length 11 
   // this._frames = []

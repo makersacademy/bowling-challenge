@@ -33,8 +33,7 @@ Scorecard.prototype.updateCurrentFrame = function updateCurrentFrame() {
   if (currentFrame.over === true) {
     if (this.currentFrame === 9) {
       this.gameOver = true;
-    }
-    else {
+    } else {
       this.currentFrame += 1;
     }
   } else {
@@ -48,12 +47,12 @@ Scorecard.prototype.calculateFrameScore = function calculateFrameScore(index) {
   }
   if (this.frames[index].spare === true) {
     return this.calculateSpareScore(index);
-  } else if (this.frames[index].strike === true) {
-    return this.calculateStrikeScore(index);
-  } else {
-    return (this.frames[index].rolls[0] || 0)
-      + (this.frames[index].rolls[1] || 0);
   }
+  if (this.frames[index].strike === true) {
+    return this.calculateStrikeScore(index);
+  }
+  return (this.frames[index].rolls[0] || 0)
+    + (this.frames[index].rolls[1] || 0);
 };
 
 Scorecard.prototype.calculateSpareScore = function calculateSpareScore(index) {
@@ -63,14 +62,12 @@ Scorecard.prototype.calculateSpareScore = function calculateSpareScore(index) {
 Scorecard.prototype.calculateStrikeScore = function calculateStrikeScore(index) {
   if (index === 8) {
     return 10 + (this.frames[9].rolls[0] || 0) + (this.frames[9].rolls[1] || 0);
-  } else {
-    if (this.frames[index + 1].strike === true) {
-      return 20 + (this.frames[index + 2].rolls[0] || 0);
-    } else {
-      return 10 + (this.frames[index + 1].rolls[0] || 0)
-        + (this.frames[index + 1].rolls[1] || 0);
-    }
   }
+  if (this.frames[index + 1].strike === true) {
+    return 20 + (this.frames[index + 2].rolls[0] || 0);
+  }
+  return 10 + (this.frames[index + 1].rolls[0] || 0)
+    + (this.frames[index + 1].rolls[1] || 0);
 };
 
 Scorecard.prototype.calculateFinalFrame = function calculateFinalFrame() {
@@ -87,7 +84,7 @@ Scorecard.prototype.allFrameScores = function allFrameScores() {
 
 Scorecard.prototype.totalScore = function totalScore() {
   let output = 0;
-  for (var i = 0; i < 10; i++) {
+  for (let i = 0; i < 10; i += 1) {
     output += this.calculateFrameScore(i);
   }
   return output;

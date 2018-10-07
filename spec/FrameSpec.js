@@ -13,7 +13,10 @@ describe ("Frame", function(){
        frame.calculate(5)
        expect(frame._rollsLeft).toEqual(1)
      })
-
+    it("changes isStrike to true if userinput equals 10", function(){
+      frame.calculate(10)
+      expect(frame.isStrike).toEqual(true)
+    })
    })
 
    describe ("decreaseRoll", function(){

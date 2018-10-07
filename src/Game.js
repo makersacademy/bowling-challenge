@@ -7,6 +7,7 @@ function Game (){
 };
 
 Game.prototype.rollBall = function(userInput) {
+  this._isBonus()
   //easy enough to call to a method here that raises an error if game number is over 10
   //can refactor repeated line call to calculate
   if (this._currentFrame._rollsLeft === 0){
@@ -33,8 +34,14 @@ Game.prototype._newFrame = function() {
 
 Game.prototype._sendPointsToFrame = function(userInput) {
    //if () {
-      
+
      this._currentFrame.calculate(userInput)
   // }
 //  this._currentFrame.calculate(userInput, )
 };
+
+Game.prototype._isBonus = function() {
+  if (this._currentFrame.isStrike === true) {
+  this.doubleBothScoresNextRound = true
+  } 
+}

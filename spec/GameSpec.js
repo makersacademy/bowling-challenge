@@ -37,6 +37,11 @@ describe ("Game", function(){
       game.rollBall(5);
       expect(game.totalScore).toEqual(5) //same as before, I didn't test private total method directly
     })
+    it("calls to isBonus to check if last round was strike, and change doubleBothScoresNextRound to true if so", function(){
+      game.rollBall(10);
+      game.rollBall(2);
+      expect(game.doubleBothScoresNextRound).toEqual(true)
+    })
   })
 
 //I don't know if this is how I should test sendpointstoframe or if I should test it via roll method.

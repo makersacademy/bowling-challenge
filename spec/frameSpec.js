@@ -24,5 +24,11 @@ describe('Frame', function(){
     });
 
 
+    it('does not add more than 2 rolls to a frame', function(){
+      frame.addRoll(4);
+      frame.addRoll(5);
+      expect(function(){frame.addRoll(3)}).toThrowError('This frame already contains two rolls');
+      expect(frame.rolls).toEqual([4,5])
+    });
   });
 });

@@ -30,4 +30,25 @@ describe('Frame', function(){
       expect(frame.rolls).toEqual([4,5])
     });
   });
+
+  describe('total score', function(){
+    it('returns total score of current frame', function(){
+      frame.addRoll(3);
+      expect(frame.totalScore()).toEqual(3);
+    });
+
+    it('returns total score of current frame', function(){
+      frame.addRoll(5);
+      frame.addRoll(2);
+      expect(frame.totalScore()).toEqual(7);
+    });
+  });
+
+  // describe('is a spare', function(){
+  //   it('returns true if this frame is a spare', function(){
+  //     frame.addRoll(3);
+  //     frame.addRoll(7);
+  //     expect(frame.isASpare).toBe(true)
+  //   });
+  // });
 });

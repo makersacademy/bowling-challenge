@@ -10,4 +10,13 @@ Frame.prototype.addRoll = function(roll) {
   } else {
     throw new Error('This frame already contains two rolls');
   };
+
+Frame.prototype.totalScore = function() {
+  return this.rolls.reduce((a, b) => a + b, 0)
+};
+  // Frame.prototype.isASpare = function () {
+  //   if(this.rolls.reduce((a, b) => a + b, 0) === 10){
+  //     return true;
+  //   };
+  // };
 };

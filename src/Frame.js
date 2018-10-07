@@ -4,20 +4,22 @@ function Frame (){
   this.frameScore = 0;
   this._bonusCounter = 0;
   this.isStrike = false;
+  this.isSpare = false;
 };
 
   Frame.prototype.calculate = function(user_input){
     this._decreaseRoll()
-    if (user_input === 10){
-    this.frameScore += user_input;
-    this.isStrike = true
-    this._decreaseRoll();
-
-    } else {
-      this.frameScore += user_input
-    }
+    this._calculateIfStrike(user_input)
+    this.frameScore += user_input
   };
 
   Frame.prototype._decreaseRoll = function(){
     this._rollsLeft -= 1
   };
+
+  Frame.prototype._calculateIfStrike = function(user_input){
+    if (user_input === 10){
+      this.isStrike = true
+      this._decreaseRoll();
+    }
+ };

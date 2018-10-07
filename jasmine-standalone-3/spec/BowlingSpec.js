@@ -7,6 +7,11 @@ describe('BowlingGame', function(){
 
         bowling = new BowlingGame();
     });
+    function rollMany (n, pins) {
+		for (var i = 0; i < n; i++) {
+			bowling.currentMove(pins)
+		}
+	}
     describe('#getCurrentScore', function(){
         it('returns the current score of the user', function(){
             expect(bowling.getCurrentScore()).not.toBeUndefined;
@@ -49,5 +54,7 @@ describe('BowlingGame', function(){
             expect(bowling.gameOver()).toBe(true);
         })
     });
+
+
 
 });

@@ -11,6 +11,11 @@ describe('Features', function(){
         bowling = new BowlingGame();
         // player = new Player(frame);
     });
+    function rollMany (n, pins) {
+		for (var i = 0; i < n; i++) {
+			bowling.currentMove(pins)
+		}
+	}
     describe("BowlingGame", function(){
         it('should display a current score', function(){
             expect(bowling.getCurrentScore()).not.toBeUndefined;
@@ -105,21 +110,22 @@ describe('Features', function(){
 
     describe('perfect game', function(){
         it('perfect game gives max score of 300', function(){
-            bowling.currentMove(10);
-            bowling.currentMove(10);
-            bowling.currentMove(10);
-            bowling.currentMove(10);
-            bowling.currentMove(10);
-            bowling.currentMove(10);
-            bowling.currentMove(10);
-            bowling.currentMove(10);
-            bowling.currentMove(10);
-            bowling.currentMove(10);
+            rollMany(10, 10);
             bowling.addExtraRoll(9, 10);
             bowling.addExtraRoll(9, 10);
             bowling.calculateScore();
             expect(bowling._totalScore).toEqual(300);
 
         })
+    })
+
+    describe('gutter game', function(){
+        it("should handle gutter game", function() {
+            rollMany(20, 0);
+            bowling.calculateScore();
+           // expect(game.score()).to.equal(0);
+            expect(bowling._totalScore).toEqual(0);
+
+        });
     })
 });

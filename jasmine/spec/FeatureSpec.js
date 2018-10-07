@@ -21,7 +21,7 @@ describe('Features', function () {
 
   })
 // As a player, to be assigned a score, I want to be able to record the number of pins I hit in each roll in the correct frame
-  describe('rolls', function () {
+  describe('regular rolls', function () {
     it('allows the player to record the number of pins hit for each roll', function () {
       game.enterDroppedPins(5)
       expect(game._frames[0].getRolls()).toEqual([5])

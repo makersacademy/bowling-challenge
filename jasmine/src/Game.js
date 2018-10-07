@@ -8,16 +8,9 @@ function Game () {
 Game.prototype = {
 
   enterDroppedPins: function (number = 0) {
-    if (this._isFirst()) {
-      this.addFrame()
-    } else if (this._isLast()) {
-      throw _lastFrame
-    }
-    this._frames[0].enterRoll(number)
-  },
-
-  addFrame: function () {
-    this._frames.push(new Frame())
+    this._addFrameIfNecessary()
+    this._findActive().enterRoll(number)
+    this._findWaiting().forEach(function (frame){ frame.enterBonus(number) })
   },
 
   getCurrentFrame: function () { 
@@ -32,6 +25,30 @@ Game.prototype = {
     return this._droppedPins
   },
 
+  _addFrameIfNecessary: function () {
+    if (
+      this._isFirst() ||
+      (!this._isLast() && this._findActive() === undefined)
+    )
+      this._addFrame()
+  },
+
+  _addFrame: function () {
+    this._frames.push(new Frame())
+  },
+
+  _findActive: function () {
+    return this._frames.find(function (frame) {
+      return frame.getState() === 'active'
+    })
+  },
+
+  _findWaiting: function () {
+    return this._frames.filter(function (frame ) {
+      return frame.getState() === 'waiting'
+    })
+  },
+
   _isFirst: function () {
     return this._frames.length === 0
   },
@@ -42,6 +59,5 @@ Game.prototype = {
 
 }
 
-let _tooHigh = new Error('Enter a number between 1 and 10')
-let _tooMany = new Error('You cannot drop more than 10 pins in one frame')
 let _lastFrame = new Error('You cannot start a new frame')
+

@@ -27,7 +27,7 @@ describe('frame', function () {
   describe('enterBonus', function () {
     it('allows the game to record the number of dropped pins for each bonus roll', function () {
       frame.enterBonus(5)
-      expect(frame.getBonus()).toEqual([5])
+      expect(frame.getBonusRolls()).toEqual([5])
     })
     it('does not allow the game to enter numbers over 10', function () {
       expect(function () { frame.enterBonus(11) }).toThrowError('Enter a number between 1 and 10');

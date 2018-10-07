@@ -13,7 +13,6 @@ Frame.prototype = {
   enterRoll: function (pins) {
     this._validateRoll(pins)
     this._rolls.push(pins)
-
   },
 
   getRolls: function () {
@@ -25,7 +24,7 @@ Frame.prototype = {
     this._bonusRolls.push(pins)
   },
 
-  getBonus: function () {
+  getBonusRolls: function () {
     return this._bonusRolls
   },
 
@@ -88,3 +87,6 @@ Frame.prototype = {
   }
 
 }
+
+let _tooHigh = new Error('Enter a number between 1 and 10')
+let _tooMany = new Error('You cannot drop more than 10 pins in one frame')

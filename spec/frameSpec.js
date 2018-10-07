@@ -23,7 +23,6 @@ describe('Frame', function(){
       expect(frame.rolls).toEqual([4,5]);
     });
 
-
     it('does not add more than 2 rolls to a frame', function(){
       frame.addRoll(4);
       frame.addRoll(5);

@@ -11,10 +11,10 @@ describe ("Game", function(){
       expect(game.rollBall(5)).toEqual(game._currentFrame.calculate(5));
     })
 
-    it("creates a new Frame and saves it to currentFrame, if currentFrame has no rolls left, ensuring that the rolls are reset", function(){
+    it("calls to newFrame function if currentFrame has no rolls left, ensuring that the rolls are reset", function(){
       game.rollBall(2);
       game.rollBall(5);
-      game.rollBall(3)
+      game.rollBall(3);
       expect(game._currentFrame._rollsLeft).toEqual(1) //not a great test as it's testing actual Frame class, but best I could do to check it's new
     })
     it("still calls calculate on fresh currentFrame if no rolls left on previous frame", function(){
@@ -25,17 +25,17 @@ describe ("Game", function(){
 
     it("calls to descreaseFrames function to decreases the frames left", function(){
       //is this the right way to test this? As it's a private method, I guessed that it is.
-      //Otherwise, I would have created a new test for descreaseFrames and tested it directly
+      //Otherwise, I would have created a new test for increaseFrames and tested it directly
       game.rollBall(2);
       game.rollBall(3);
       game.rollBall(2);
-      expect(game._framesLeft).toEqual(9)
+      expect(game._frameNumber).toEqual(2)
     })
     it("calls to total function to add frameScore to total after a frame is done", function(){
       game.rollBall(2);
       game.rollBall(3);
-      game.rollBall(2);
-      expect(game.totalScore).toEqual(5)
+      game.rollBall(5);
+      expect(game.totalScore).toEqual(5) //same as before, I didn't test private total method directly
     })
   })
 

@@ -84,5 +84,29 @@ describe("Game", function(){
      
     });
   });
+
+  // As a Player
+  // So that I can see when I have scored a strike (scored 10 in the first roll of a frame)
+  // It is marked with an 'X' in the scorecard
+  
+
+  describe('Strike', function() {
+    it('changes frame after strike', function () {
+      game.roll(10);
+      expect(game._frames[1]).toContain(10);
+      expect(game._currentFrameNumber).toEqual(1);
+      game.roll(4)
+      expect(game._currentFrameNumber).toEqual(2);
+    });
+
+  // The frame score is not visible until the next two rolls are complete
+
+  //   it('updates frame score after strike', function () {
+  //     game.roll(10);
+  //     game.roll(10);
+  //     game.roll(10);
+  //     expect(game._totalScoreDisplay[1]).toContain(30);
+  //   });
+  });
   
 })

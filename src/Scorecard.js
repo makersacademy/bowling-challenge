@@ -23,6 +23,10 @@ Scorecard.prototype.addRoll = function(pins) {
   if (this.isCurrentFrameComplete() && !this.isGameComplete()) this._currentFrameNum += 1
 }
 
+Scorecard.prototype.nextRoll = function() {
+  return (this.isCurrentFrameNew()) ? 1 : 2 
+}
+
 Scorecard.prototype.currentFrame = function() {
   return this.frames[this.currentFrameNum()]
 }

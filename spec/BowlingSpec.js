@@ -1,6 +1,6 @@
 describe("Bowling", function() {
   var bowling;
-  var scorecard = jasmine.createSpyObj("scorecard",["addRoll", "currentScore", "currentFrame", "currentFrameNum"])
+  var scorecard = jasmine.createSpyObj("scorecard",["addRoll", "currentScore", "currentFrame", "currentFrameNum", "frames", "nextRoll"])
 
   beforeEach(function() {
     bowling = new Bowling(scorecard);
@@ -22,12 +22,23 @@ describe("Bowling", function() {
   });
 
   describe("showFrames", function() {
-    
+    it("should retrieve all frames from scorecard",function() {
+      var all_frames = jasmine.createSpy("all frames")
+      scorecard.frames = all_frames
+      expect(bowling.showFrames()).toEqual(all_frames)
+    })
+  })
+
+  describe("showNextRoll",function() {
+    it("should retrieve next roll from scorecard",function() {
+      var next_roll = 1
+      scorecard.nextRoll.and.returnValue(next_roll)
+      expect(bowling.showNextRoll()).toEqual(next_roll)
+    })
   })
 
   describe("showCurrentScore", function() {
     it("should retrieve current score from scorecard", function() {
-      scorecard.currentScore.and.returnValue(35)
       var currentScoreMock = scorecard.currentScore()
       expect(bowling.showCurrentScore()).toEqual(currentScoreMock)
     });

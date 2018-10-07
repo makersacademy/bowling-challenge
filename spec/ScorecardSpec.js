@@ -10,6 +10,16 @@ describe("Scorecard",function() {
     expect(scorecard.frames[12]).toEqual([null,null])
   })
 
+  describe("nextRoll",function(){
+    it("should return 1 when no roll has been made",function(){
+      expect(scorecard.nextRoll()).toEqual(1)
+    })
+    it("should return 2 when roll less than 10 has been made",function(){
+      scorecard.addRoll(3)
+      expect(scorecard.nextRoll()).toEqual(2)
+    })
+  })
+
   describe("addRoll",function(){
     it("should add roll to frames",function(){
       console.log(scorecard.frames)

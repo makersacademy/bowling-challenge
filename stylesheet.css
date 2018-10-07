@@ -1,3 +1,25 @@
 .game-stat {
   display: block;
 }
+
+.frame {
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.frame-11 {
+  color: lightgrey;
+}
+
+.frame-12 {
+  color: lightgrey;
+}
+
+.currentFrame {
+  border: 1px red solid;
+}
+
+.nextRoll {
+  color: green;
+}

@@ -6,6 +6,14 @@ Bowling.prototype.roll = function(pins) {
   this.scorecard.addRoll(pins)
 }
 
+Bowling.prototype.showNextRoll = function() {
+  return this.scorecard.nextRoll()
+}
+
+Bowling.prototype.showFrames = function() {
+  return this.scorecard.frames
+}
+
 Bowling.prototype.showCurrentScore = function() {
   return this.scorecard.currentScore()
 }

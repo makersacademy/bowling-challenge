@@ -44,11 +44,17 @@ describe('Frame', function(){
     });
   });
 
-  // describe('is a spare', function(){
-  //   it('returns true if this frame is a spare', function(){
-  //     frame.addRoll(3);
-  //     frame.addRoll(7);
-  //     expect(frame.isASpare).toBe(true)
-  //   });
-  // });
+  describe('is a spare', function(){
+    it('returns true if this frame is a spare', function(){
+      frame.addRoll(3);
+      frame.addRoll(7);
+      expect(frame.isASpare()).toBe(true)
+    });
+
+    it('returns false if this frame is not a spare', function(){
+      frame.addRoll(3);
+      frame.addRoll(3);
+      expect(frame.isASpare()).toBe(false)
+    });
+  });
 });

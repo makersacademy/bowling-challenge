@@ -14,9 +14,12 @@ Frame.prototype.addRoll = function(roll) {
 Frame.prototype.totalScore = function() {
   return this.rolls.reduce((a, b) => a + b, 0)
 };
-  // Frame.prototype.isASpare = function () {
-  //   if(this.rolls.reduce((a, b) => a + b, 0) === 10){
-  //     return true;
-  //   };
-  // };
+
+Frame.prototype.isASpare = function () {
+  if(this.totalScore() === 10) {
+    return true
+  } else {
+    return false
+  }
+};
 };

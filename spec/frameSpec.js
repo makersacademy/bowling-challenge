@@ -11,8 +11,18 @@ describe('Frame', function(){
     expect(frame.rolls).toEqual([]);
   });
 
-  it('can add a roll to a frame', function(){
-    frame.addRoll(3)
-    expect(frame.rolls).toEqual([3]);
+  describe('adding rolls', function(){
+    it('can add a roll to a frame', function(){
+      frame.addRoll(3)
+      expect(frame.rolls).toEqual([3]);
+    });
+
+    it('can add a second roll to a frame', function(){
+      frame.addRoll(4);
+      frame.addRoll(5);
+      expect(frame.rolls).toEqual([4,5]);
+    });
+
+
   });
 });

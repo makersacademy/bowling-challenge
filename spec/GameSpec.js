@@ -98,7 +98,7 @@ describe("Game", function(){
     it('changes frame after strike', function () {
       game.roll(10);
       expect(game._frames[1]).toContain(10);
-      expect(game._currentFrameNumber).toEqual(1);
+      expect(game._currentFrameNumber).toEqual(2);
       game.roll(4)
       expect(game._currentFrameNumber).toEqual(2);
     });

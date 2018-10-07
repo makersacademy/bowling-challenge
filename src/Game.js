@@ -16,14 +16,18 @@ Game.prototype = {
     return this._frames;
   },
 
+  frameScore: function(index){
+    return this._frameScore[index];
+  },
+
   roll : function(number){
     
-     //stike change frame number
-    if (this._frames[this._currentFrameNumber][0] === 10) { 
-      this._currentFrameNumber += 1;
-    } else if(this._frames[this._currentFrameNumber].length === 2) {
-      this._currentFrameNumber += 1;
-    }
+    //  //stike change frame number
+    // if (this._frames[this._currentFrameNumber][0] === 10) { 
+    //   this._currentFrameNumber += 1;
+    // } else if(this._frames[this._currentFrameNumber].length === 2) {
+    //   this._currentFrameNumber += 1;
+    // }
 
 
     this._frames[this._currentFrameNumber].push(number);
@@ -47,6 +51,16 @@ Game.prototype = {
       }
    }
     
+    //stike change frame number
+    if (this._frames[this._currentFrameNumber][0] === 10) { 
+      this._currentFrameNumber += 1;
+    } else if(this._frames[this._currentFrameNumber].length === 2) {
+      this._currentFrameNumber += 1;
+    }
+  },
+
+  getCurrentFrameNumber: function(){
+    return this._currentFrameNumber;
   },
 
   totalScore : function() {

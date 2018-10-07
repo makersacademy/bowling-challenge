@@ -21,6 +21,10 @@ describe("Bowling", function() {
     });
   });
 
+  describe("showFrames", function() {
+    
+  })
+
   describe("showCurrentScore", function() {
     it("should retrieve current score from scorecard", function() {
       scorecard.currentScore.and.returnValue(35)

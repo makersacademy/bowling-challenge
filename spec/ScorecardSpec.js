@@ -1,16 +1,18 @@
 describe("Scorecard",function() {
-  var scorecard;
+  var scorecard = null
 
   beforeEach(function() {
     scorecard = new Scorecard()
   })
 
-  it("should have empty frames", function() {
-    expect(scorecard.frames).toEqual({1: [null,null]})
+  it("should have 12 empty frames", function() {
+    expect(Object.keys(scorecard.frames).length).toEqual(12)
+    expect(scorecard.frames[12]).toEqual([null,null])
   })
 
   describe("addRoll",function(){
     it("should add roll to frames",function(){
+      console.log(scorecard.frames)
       scorecard.addRoll(5)
       expect(scorecard.frames[1][0]).toEqual(5)
     })
@@ -44,13 +46,6 @@ describe("Scorecard",function() {
     it("should return 2 when two rolls under 10 have been made",function(){
       scorecard.addRoll(5)
       scorecard.addRoll(3)
-      expect(scorecard.currentFrameNum()).toEqual(2)
-    })
-  })
-
-  describe("addNewFrame",function() {
-    it("should add new frame",function(){
-      scorecard.addNewFrame()
       expect(scorecard.currentFrameNum()).toEqual(2)
     })
   })
@@ -160,8 +155,6 @@ describe("Scorecard",function() {
     })
     it("should return 300 when you play a perfect game",function(){
       for (var i=1; i <= 12; i++) { scorecard.addRoll(10) }
-      console.log(scorecard.currentFrameNum())
-      console.log(scorecard.frames)
       expect(scorecard.currentScore()).toEqual(300)
     })
   })

@@ -28,4 +28,30 @@ describe('bowlingGame',function() {
     })
   })
 
+  describe('calculateScore',function(){
+    it('should add up the current Score based on a bowling game', function(){
+      bowling.allThrows = [10,0,4,5]
+      bowling.calculateScore();
+      expect(bowling.currentScore).toEqual(28)
+    })
+
+    it('should add up the current Score to equal 150', function(){
+      bowling.allThrows = [10,0,10,0,10,0,10,0,10,0,9,1,10,0,4,6]
+      bowling.calculateScore();
+      expect(bowling.currentScore).toEqual(150)
+    })
+
+    it('should add up the current Score to equal 48', function(){
+      bowling.allThrows = [1,2,3,4,5,5,6,1,2,3,7,3]
+      bowling.calculateScore();
+      expect(bowling.currentScore).toEqual(48)
+    })
+
+    it('should add up the current Score to equal 85', function(){
+      bowling.allThrows = [4,6,2,3,7,1,8,2,10,0,0,10,5,0]
+      bowling.calculateScore();
+      expect(bowling.currentScore).toEqual(85)
+    })
+  })
+
 })

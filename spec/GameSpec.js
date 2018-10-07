@@ -45,12 +45,11 @@ describe ("Game", function(){
   })
 
 //I don't know if this is how I should test sendpointstoframe or if I should test it via roll method.
-  // describe("sendPointsToFrame", function(){
-  //   it ("calls to calculate with doubleFirstScore equal to true as an argument, if doubleFirstScoreNextRound is equal to true", function(){
-  //     game.rollBall(2);
-  //     game.rollBall(8);
-  //     expect(game._sendPointsToFrame(5)).toEqual(game._currentFrame.calculate(5, true));
-  //   })
-  // })
-
+  describe("sendPointsToFrame", function(){
+    it ("sets the frame bonus counter to 2 if last frame was a strike", function(){
+      game.rollBall(10);
+      game.rollBall(5);
+      expect(game._currentFrame._bonusCounter).toEqual(2) //not great test as is testing actual bonusCounter
+    })
+  })
 });

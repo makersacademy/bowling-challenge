@@ -11,6 +11,7 @@ function Frame (){
     this._decreaseRoll()
     this._calculateIfStrike(user_input)
     this.frameScore += user_input
+    //now call to spare prototype, as frameScore is complete
   };
 
   Frame.prototype._decreaseRoll = function(){

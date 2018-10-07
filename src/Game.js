@@ -33,15 +33,16 @@ Game.prototype._newFrame = function() {
 }
 
 Game.prototype._sendPointsToFrame = function(userInput) {
-   //if () {
-
-     this._currentFrame.calculate(userInput)
-  // }
-//  this._currentFrame.calculate(userInput, )
+  if (this.doubleBothScoresNextRound === true) {
+    this._currentFrame._bonusCounter += 2
+    this._currentFrame.calculate(userInput)
+  } else {
+    this._currentFrame.calculate(userInput)
+  }
 };
 
 Game.prototype._isBonus = function() {
   if (this._currentFrame.isStrike === true) {
   this.doubleBothScoresNextRound = true
-  } 
+  }
 }

@@ -46,7 +46,10 @@ Work on this challenge as conclusion of week 4, to work towards these goals:
 
 Instructions to run this at home
 -----
-
+Using https://github.com/JamieMason/Jasmine-Matchers to add additional testing functionality
+```
+npm install jasmine-expect --save-dev
+```
 
 Notes on use
 ------------------
@@ -57,8 +60,9 @@ STATUS
 -----
 
 **Notes**
+Using https://github.com/JamieMason/Jasmine-Matchers to add additional testing functionality
 ```
-
+npm install jasmine-expect --save-dev
 ```
 
 **TO DO**
@@ -73,7 +77,7 @@ Unit tests
 Feature tests
 
 
-Coverage: 100%
+Coverage: %
 
 User stories
 -----
@@ -90,7 +94,6 @@ As a player,
 so I know how many rolls are left in my frame,
 I want to see which roll I'm currently on
 
-
 As a player,
 to be assigned a score,
 I want to be able to record the number of pins I hit in each roll
@@ -100,11 +103,11 @@ to know how well I'm playing,
 I want to receive a score according to the number of pins I hit in each frame
 
 As a player,
-to be rewarded for my skills,
+to be rewarded for my skill,
 I want to be credited extra scores when I bowl a strike
 
 As a player,
-to be rewarded for my skills,
+to be rewarded for my skill,
 I want to be credited extra scores when I bowl a spare
 
 As a player,

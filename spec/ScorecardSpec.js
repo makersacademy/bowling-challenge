@@ -119,4 +119,50 @@ describe("Scorecard",function() {
       expect(scorecard.isFrameSpare([10,null])).toEqual(false)
     })
   })
+
+  describe("frameScore",function(){
+    it("should return 0 when frame is empty",function(){
+      expect(scorecard.frameScore([null,null])).toEqual(0)
+    })
+    it("should return 5 if only one roll of 5 has been made",function(){
+      expect(scorecard.frameScore([5,null])).toEqual(5)
+    })
+    it("should return sum of two rolls",function(){
+      expect(scorecard.frameScore([5,3])).toEqual(8)
+    })
+  })
+
+  describe("currentScore",function() {
+    it("should return 0 when no rolls have been made",function(){
+      expect(scorecard.currentScore()).toEqual(0)
+    })
+    it("should return 5 when one roll of 5 has been made",function(){
+      scorecard.addRoll(5);
+      expect(scorecard.currentScore()).toEqual(5)
+    })
+    it("should return 8 when one roll of 5 and one of 3 have been made",function(){
+      scorecard.addRoll(5);
+      scorecard.addRoll(3);
+      expect(scorecard.currentScore()).toEqual(8)
+    })
+    it("should return 26 when a strike and a 5 and 3 has been rolled",function(){
+      scorecard.addRoll(10);
+      scorecard.addRoll(5);
+      scorecard.addRoll(3);
+      expect(scorecard.currentScore()).toEqual(26)
+    })
+    it("should return 23 when a spare and a 5 and 3 has been rolled",function(){
+      scorecard.addRoll(6);
+      scorecard.addRoll(4);
+      scorecard.addRoll(5);
+      scorecard.addRoll(3);
+      expect(scorecard.currentScore()).toEqual(23)
+    })
+    it("should return 300 when you play a perfect game",function(){
+      for (var i=1; i <= 12; i++) { scorecard.addRoll(10) }
+      console.log(scorecard.currentFrameNum())
+      console.log(scorecard.frames)
+      expect(scorecard.currentScore()).toEqual(300)
+    })
+  })
 })

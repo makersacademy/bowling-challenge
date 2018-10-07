@@ -7,7 +7,7 @@ describe ("Frame", function(){
    describe ('calculate', function(){
      it("adds the user's roll to the total score of that frame", function(){
        frame.calculate(5)
-       expect(frame._frameScore).toEqual(5)
+       expect(frame.frameScore).toEqual(5)
      })
      it("calls descreaseRoll to descrease the amount of rolls left", function(){
        frame.calculate(5)
@@ -23,9 +23,3 @@ describe ("Frame", function(){
    })
 
 });
-
-// describe ("returnRollsLeft", function(){
-//   it("returns tolls left", function(){
-//     expect(frame.returnRollsLeft()).toEqual(2)
-//   })
-// })

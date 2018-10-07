@@ -24,10 +24,18 @@ describe ("Game", function(){
     }) //vacuous test?
 
     it("calls to descreaseFrames function to decreases the frames left", function(){
+      //is this the right way to test this? As it's a private method, I guessed that it is.
+      //Otherwise, I would have created a new test for descreaseFrames and tested it directly
       game.rollBall(2);
       game.rollBall(3);
       game.rollBall(2);
-      expect(game._framesLeft).toEqual((9))
+      expect(game._framesLeft).toEqual(9)
+    })
+    it("calls to total function to add frameScore to total after a frame is done", function(){
+      game.rollBall(2);
+      game.rollBall(3);
+      game.rollBall(2);
+      expect(game.totalScore).toEqual(5)
     })
   })
 

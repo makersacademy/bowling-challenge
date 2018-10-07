@@ -6,6 +6,7 @@ function Game (frameClass = Frame) {
   this.frameClass = frameClass
   this.frames = []
   this.rolls = 0
+  this.pinsLeft = 10
 }
 
 Game.prototype.roll = function (rollScore) {
@@ -13,6 +14,7 @@ Game.prototype.roll = function (rollScore) {
   this._makeNewFrame()
   this._increaseRollNumber(rollScore)
   this._sendFrames(rollScore)
+  this._resetPins(rollScore)
 }
 
 Game.prototype.totalScore = function () {
@@ -43,9 +45,20 @@ Game.prototype._sendFrames = function (rollScore) {
   }
 }
 
-Game.prototype._isValidRoll = function (input) {
-  if (isNaN(input)) {
-    throw 'Not a Number'
+Game.prototype._isValidRoll = function (score) {
+  if (isNaN(score)) {
+    throw new Error('Not a Number')
+  }
+  if (score > this.pinsLeft) {
+    throw new Error('Not enough pins')
+  }
+}
+
+Game.prototype._resetPins = function (score) {
+  if (this.rolls % 2 === 0) {
+    this.pinsLeft = 10
+  } else {
+    this.pinsLeft -= score
   }
 }
 

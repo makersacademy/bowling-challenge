@@ -17,7 +17,7 @@ describe('Game class', function() {
     })
 
 
-    it('Makes a 1st frame for new Game', function () {
+    it('Makes a new frame for new Game', function () {
       game.roll(4)
       expect(game.frames.length).toEqual(1)
     })
@@ -43,7 +43,16 @@ describe('Game class', function() {
     })
 
     it('raises error for non-numeric inputs', function () {
-      expect(function() { game.roll("not_a_number") }).toThrow('Not a Number');
+      expect(function () { game.roll("not_a_number") }).toThrow('Not a Number')
+    })
+
+    it('raises an error if the input over 10', function () {
+      expect(function () { game.roll(12) }).toThrow('Not enough pins')
+    })
+
+    it('raises an error if the input exceeds number of pins left', function () {
+      game.roll(9)
+      expect(function () { game.roll(2) }).toThrow('Not enough pins')
     })
   })
 

@@ -3,7 +3,8 @@ $(document).ready(function(){
 
   $('.pin').on('click',function(data){
     bowling.throw(data.currentTarget.innerHTML);
+    $('#currentFrame').text("Frame Number:" + bowling.currentFrame);
+    $('#currentThrow').text("Throw number:" + bowling.currentThrow);
     console.log(bowling.allThrows);
-    console.log(data.currentTarget.innerHTML)
   });
 });

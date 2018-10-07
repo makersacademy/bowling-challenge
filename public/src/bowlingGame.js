@@ -2,12 +2,27 @@ function BowlingGame(name) {
   this.playerName = name
   this.currentScore = 0
   this.allThrows = []
+  this.currentFrame = 1
+  this.currentThrow = 1
 }
 
 BowlingGame.prototype.throw = function (pins) {
   this.allThrows.push(pins)
   if (pins == 10) {
     this.allThrows.push('x')
+    this.currentFrame += 1
+    this.currentthrow = 1
+  } else {
+    this.updateThrowFrame();
+  }
+};
+
+BowlingGame.prototype.updateThrowFrame = function () {
+  if (this.currentThrow == 2) {
+    this.currentThrow = 1
+    this.currentFrame += 1
+  } else {
+    this.currentThrow += 1
   }
 };
 

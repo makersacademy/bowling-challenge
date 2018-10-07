@@ -19,7 +19,12 @@ describe ("Frame", function(){
       expect(frame.isStrike).toEqual(true)
     })
     it("doubles the current score if doubleCounter is not 0", function(){
-      //I didn't test this because it relies on game class, needs stubs. 
+      //I didn't test this because it relies on game class, needs stubs.
+    })
+    it("changes isSpare to true if no rolls left and frameTotal is 10", function(){
+      frame.calculate(2);
+      frame.calculate(8);
+      expect(frame.isSpare).toEqual(true)
     })
    })
 

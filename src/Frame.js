@@ -8,6 +8,7 @@ function Frame (){
 };
 
   Frame.prototype.calculate = function(user_input){
+  // not sure it's possible to refactor this further
     this._decreaseRoll()
     this._calculateIfStrike(user_input)
     if (this._bonusCounter != 0) {
@@ -16,7 +17,8 @@ function Frame (){
     } else {
       this.frameScore += user_input
     }
-    //now call to spare prototype, as frameScore is complete
+
+    this._calculateIfSpare()
   };
 
   Frame.prototype._decreaseRoll = function(){
@@ -28,4 +30,10 @@ function Frame (){
       this.isStrike = true
       this._decreaseRoll();
     }
- };
+  };
+
+  Frame.prototype._calculateIfSpare = function() {
+    if ((this._rollsLeft === 0) && (this.frameScore === 10)){
+      this.isSpare = true;
+    }
+  };

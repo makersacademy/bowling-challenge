@@ -26,17 +26,21 @@ describe('frame', function () {
   })
 
   describe('has states', function () {
-    it('can set the state of a frame to active', function () {
-      frame.setState(Symbol('active'))
-      expect(frame.isActive()).toReturn(true)
+    it('set the state of a frame to active if it is current', function () {
+      frame.enterRoll(5)
+      frame.setState()
+      expect(frame.getState().toString()).toEqual('Symbol(active)')
     })
-    it('can set the state of a frame to closed', function () {
-      frame.setState(Symbol('closed'))
-      expect(frame.isClosed()).toReturn(true)
+    it('sets the state of a frame to closed if it is completed', function () {
+      frame.enterRoll(5)
+      frame.enterRoll(3)
+      frame.setState()
+      expect(frame.getState().toString()).toEqual('Symbol(closed)')
     })
-    it('can set the state a frame to open for bonus', function () {
-      frame.setState(Symbol('bonus'))
-      expect(frame.isBonus()).toReturn(true)
+    it('sets the state a frame to open for bonus after a strike of a spare', function () {
+      frame.enterRoll(10)
+      frame.setState()
+      expect(frame.getState().toString()).toEqual('Symbol(bonus)')
     })
   })
 

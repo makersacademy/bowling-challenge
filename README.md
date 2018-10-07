@@ -59,3 +59,54 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
+### User stories:
+
+User stories: 
+As a player, 
+So I can have fun, 
+I can enter my score of roll. 
+
+As a player,
+So I know when to stop,
+I can count the frame
+
+As a player,
+So I know when to stop,
+I can count the roll
+
+As a player, 
+So I can be average again, 
+I can enter a second roll in the same frame unless my first roll was a 10. 
+
+As a player,
+So I can brag, I want to see the score of my frame and the total. 
+
+As a player, 
+So I can be average,
+If my score is not equal to 10 and my roll isn’t a strike, add the two rolls.
+
+
+As a player
+So I know I win at life
+When I hit 10, I have a strike and my frame closes. 
+
+As a player,
+So I get my points calculated properly, 
+My frame is not calculated until the next turn is then is equal to 10 + sum of next frame unless I strike again. Be careful when strike after strike (max score 300)
+
+As a player,
+So I can lose hard ouch, 
+If my total score is 0 at the end, say “Gutter Game”.
+
+As a player, 
+So I get my points calculated properly, 
+If the sum of the two rounds is 10, my score isn’t calculated until the next roll of the next round, the sum is 10 + roll1_score
+
+As a player,
+So I can finish properly on round 10, 
+If I get a spare or a strike, I can roll the extra balls but never more than 3.
+
+10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
+1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
+
+

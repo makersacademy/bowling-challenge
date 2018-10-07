@@ -79,5 +79,26 @@ describe('Game class', function() {
       game.roll(0)
       expect(game.totalScore()).toEqual(73)
     })
+    describe('Gutter game', function () {
+      var game = new Game()
+
+      it('Scores Zero on a Gutter game', function () {
+        for (var i = 0; i < 20; i++) {
+          game.roll(0)
+        }
+        expect(game.totalScore()).toEqual(0)
+      })
+    })
+
+    describe('Perfect game', function () {
+      var game = new Game()
+
+      it('Scores 300 on a Perfect game', function () {
+        for (var i = 0; i < 29; i++) {
+          game.roll(10)
+        }
+        expect(game.totalScore()).toEqual(300)
+      })
+    })
   })
 })

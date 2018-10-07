@@ -93,8 +93,8 @@ describe("Scorecard",function() {
     })
     it("should return true when 10 frames have been played",function(){
       for (var i=1; i < 10; i++) { scorecard.addRoll(10) }
-      this.addRoll(5)
-      this.addRoll(3)
+      scorecard.addRoll(5)
+      scorecard.addRoll(3)
       expect(scorecard.isGameComplete()).toEqual(true)
     })
   })

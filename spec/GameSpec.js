@@ -37,10 +37,16 @@ describe ("Game", function(){
       game.rollBall(5);
       expect(game.totalScore).toEqual(5) //same as before, I didn't test private total method directly
     })
-    it("calls to isBonus to check if last round was strike, and change doubleBothScoresNextRound to true if so", function(){
+    it("checks if last round was strike, and changes doubleBothScoresNextRound to true if so", function(){
       game.rollBall(10);
       game.rollBall(2);
       expect(game.doubleBothScoresNextRound).toEqual(true)
+    })
+    it("checks if last round was spare, and changeds doubleFirstScoreNextRound to true if so", function(){
+      game.rollBall(8);
+      game.rollBall(2);
+      game.rollBall(1);
+      expect(game.doubleFirstScoreNextRound).toEqual(true)
     })
   })
 

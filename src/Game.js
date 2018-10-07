@@ -43,6 +43,8 @@ Game.prototype._sendPointsToFrame = function(userInput) { //could refactor into 
 
 Game.prototype._isBonus = function() {
   if (this._currentFrame.isStrike === true) {
-  this.doubleBothScoresNextRound = true
+    this.doubleBothScoresNextRound = true
+  } else if (this._currentFrame.isSpare === true){
+    this.doubleFirstScoreNextRound = true
   }
-}
+};

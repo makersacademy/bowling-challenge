@@ -13,6 +13,7 @@ Frame.prototype = {
   enterRoll: function (pins) {
     this._validateRoll(pins)
     this._rolls.push(pins)
+    this._setState()
   },
 
   getRolls: function () {
@@ -22,13 +23,14 @@ Frame.prototype = {
   enterBonus: function (pins) {
     this._validateRoll(pins)
     this._bonusRolls.push(pins)
+    this._setState()
   },
 
   getBonusRolls: function () {
     return this._bonusRolls
   },
 
-  setState: function () {
+  _setState: function () {
     if (this._isClosed()) {
       this._state = 'closed'
     } else if (this._isWaiting()) {

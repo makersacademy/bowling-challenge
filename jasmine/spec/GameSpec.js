@@ -103,7 +103,7 @@ describe('Game', function () {
       expect(waitingFrame.enterBonus).toHaveBeenCalledWith(5)
       expect(activeFrame.enterBonus).not.toHaveBeenCalledWith(5)
     })
-    it('adds regular pins to the "active" frame and bonus pins to a "waiting" frame', function () {
+    it('adds regular pins to the "active" frame and bonus pins to "waiting" frames', function () {
       game._frames = [activeFrame, waitingFrame]
       spyOn(activeFrame, "enterRoll")
       spyOn(waitingFrame, "enterBonus")

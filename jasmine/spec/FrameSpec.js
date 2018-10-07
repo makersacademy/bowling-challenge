@@ -19,6 +19,20 @@ describe('frame', function () {
     it('does not allow the game to enter numbers over 10', function () {
       expect(function () { frame.enterRoll(11) }).toThrowError('Enter a number between 1 and 10');
     })
+    it('updates the state of a frame to "waiting" after a strike', function () {
+      frame.enterRoll(10)
+      expect(frame.getState()).toEqual('waiting')
+    })
+    it('updates the state of a frame to "waiting" after a spare', function () {
+      frame.enterRoll(5)
+      frame.enterRoll(5)
+      expect(frame.getState()).toEqual('waiting')
+    })
+    it('updates the state of a regular frame to "closed" when the frame is complete', function () {
+      frame.enterRoll(4)
+      frame.enterRoll(3)
+      expect(frame.getState()).toEqual('closed')
+    })
     // it('does not allow the game to enter more than 10 pins in two rolls', function () {
     //   frame.enterRoll(5)
     //   expect(function () { frame.enterRoll(6) }).toThrowError('You cannot drop more than 10 pins in one frame');
@@ -32,9 +46,21 @@ describe('frame', function () {
     it('does not allow the game to enter numbers over 10', function () {
       expect(function () { frame.enterBonus(11) }).toThrowError('Enter a number between 1 and 10');
     })
+    it('updates the state of a strike frame to "closed" when the bonuses have been recorded', function () {
+      frame.enterRoll(10)
+      frame.enterBonus(3)
+      frame.enterBonus(5)
+      expect(frame.getState()).toEqual('closed')
+    })
+    it('updates the state of a spare frame to "closed" when the bonuses have been recorded', function () {
+      frame.enterRoll(5)
+      frame.enterRoll(5)
+      frame.enterBonus(6)
+      expect(frame.getState()).toEqual('closed')
+    })
   })
 
-  describe('setState', function () {
+  describe('_setState', function () {
     describe('state active', function () {
       it('sets the state of a new frame to "active"', function () {
         expect(frame.getState()).toEqual('active')
@@ -47,13 +73,13 @@ describe('frame', function () {
     describe('state waiting', function () {
       it('sets the state a frame to "waiting" after a "strike"', function () {
         frame.enterRoll(10)
-        frame.setState()
+        frame._setState()
         expect(frame.getState()).toEqual('waiting')
       })
       it('sets the state a frame to "waiting" after a "spare"', function () {
         frame.enterRoll(5)
         frame.enterRoll(5)
-        frame.setState()
+        frame._setState()
         expect(frame.getState()).toEqual('waiting')
       })
     })
@@ -61,21 +87,21 @@ describe('frame', function () {
       it('sets the state of a regular frame to "closed" after two regular rolls', function () {
         frame.enterRoll(5)
         frame.enterRoll(3)
-        frame.setState()
+        frame._setState()
         expect(frame.getState()).toEqual('closed')
       })
       it('sets the state of a "spare" frame to "closed" after two regular rolls and one bonus roll', function () {
         frame.enterRoll(5)
         frame.enterRoll(5)
         frame.enterBonus(4)
-        frame.setState()
+        frame._setState()
         expect(frame.getState()).toEqual('closed')
       })
       it('sets the state of a "strike" frame to "closed" after one regular roll and two bonus rolls', function () {
         frame.enterRoll(10)
         frame.enterBonus(5)
         frame.enterBonus(4)
-        frame.setState()
+        frame._setState()
         expect(frame.getState()).toEqual('closed')
       })
     })

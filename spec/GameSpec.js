@@ -101,12 +101,12 @@ describe("Game", function(){
 
   // The frame score is not visible until the next two rolls are complete
 
-  //   it('updates frame score after strike', function () {
-  //     game.roll(10);
-  //     game.roll(10);
-  //     game.roll(10);
-  //     expect(game._totalScoreDisplay[1]).toContain(30);
-  //   });
+    it('updates frame score after strike', function () {
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      expect(game._frameScore[1]).toEqual(30);
+    });
   });
   
 })

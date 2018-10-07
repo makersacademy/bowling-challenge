@@ -1,58 +1,26 @@
-describe("Player", function() {
-  var player;
-  var song;
+describe("Bowling", function() {
+  var bowling;
+  var scorecard = jasmine.createSpyObj("scorecard",["addRoll"])
+
 
   beforeEach(function() {
-    player = new Player();
-    song = new Song();
+    bowling = new Bowling(scorecard);
+
   });
 
-  it("should be able to play a Song", function() {
-    player.play(song);
-    expect(player.currentlyPlayingSong).toEqual(song);
-
-    //demonstrates use of custom matcher
-    expect(player).toBePlaying(song);
+  it("should be able to make a roll", function() {
+    expect(typeof bowling.roll).toEqual("function");
   });
 
-  describe("when song has been paused", function() {
-    beforeEach(function() {
-      player.play(song);
-      player.pause();
-    });
+  it("should have a scorecard", function() {
+    console.log(bowling)
+    expect(bowling.scorecard).toBeDefined()
+  })
 
-    it("should indicate that the song is currently paused", function() {
-      expect(player.isPlaying).toBeFalsy();
-
-      // demonstrates use of 'not' with a custom matcher
-      expect(player).not.toBePlaying(song);
-    });
-
-    it("should be possible to resume", function() {
-      player.resume();
-      expect(player.isPlaying).toBeTruthy();
-      expect(player.currentlyPlayingSong).toEqual(song);
-    });
-  });
-
-  // demonstrates use of spies to intercept and test method calls
-  it("tells the current song if the user has made it a favorite", function() {
-    spyOn(song, 'persistFavoriteStatus');
-
-    player.play(song);
-    player.makeFavorite();
-
-    expect(song.persistFavoriteStatus).toHaveBeenCalledWith(true);
-  });
-
-  //demonstrates use of expected exceptions
-  describe("#resume", function() {
-    it("should throw an exception if song is already playing", function() {
-      player.play(song);
-
-      expect(function() {
-        player.resume();
-      }).toThrowError("song is already playing");
+  describe("roll", function() {
+    it("should add bowl to scorecard", function() {
+      bowling.roll(5)
+      expect(scorecard.addRoll).toHaveBeenCalledWith(5)
     });
   });
 });

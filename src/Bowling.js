@@ -1,22 +1,7 @@
-function Player() {
+function Bowling(scorecard = new Scorecard()) {
+  this.scorecard = scorecard
 }
-Player.prototype.play = function(song) {
-  this.currentlyPlayingSong = song;
-  this.isPlaying = true;
-};
 
-Player.prototype.pause = function() {
-  this.isPlaying = false;
-};
-
-Player.prototype.resume = function() {
-  if (this.isPlaying) {
-    throw new Error("song is already playing");
-  }
-
-  this.isPlaying = true;
-};
-
-Player.prototype.makeFavorite = function() {
-  this.currentlyPlayingSong.persistFavoriteStatus(true);
-};
+Bowling.prototype.roll = function(pins) {
+  this.scorecard.addRoll(pins)
+}

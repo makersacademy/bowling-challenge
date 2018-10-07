@@ -5,6 +5,9 @@ export class Frame {
     this.outcome = '';
     this.rolls = [];
     this.score = 0;
-    this.scoreSoFar = 0;
+  }
+
+  bowl(pinsKnockedDown) {
+    this.rolls.push(pinsKnockedDown);
   }
 }

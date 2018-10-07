@@ -34,4 +34,20 @@ describe('BowlingGame', function(){
         })     
     });
 
+    describe('#isRollValid', function(){
+        it('decides whether the pin number entered is valid', function(){
+            bowling.currentMove(6);
+            frame = new Frame();
+            expect( function() { bowling.currentMove(5) }).toThrowError('only 10 pins per frame!');
+        })
+    });
+
+    describe('#gameOver',function(){
+        it('terminates the game after 10 frames', function(){
+            bowling._frames.length = 10;
+            bowling.currentMove(5);
+            expect(bowling.gameOver()).toBe(true);
+        })
+    });
+
 });

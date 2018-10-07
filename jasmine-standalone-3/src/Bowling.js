@@ -24,6 +24,7 @@ BowlingGame.prototype = {
         let frame;
         let pins;
         this.countRolls += 1;
+        if(this.isRollValid(pins_down)){
         if (this.countRolls === 1) { 
             this.addFrame(new Frame());
             frame = this._frames[this._frames.length - 1];
@@ -32,6 +33,7 @@ BowlingGame.prototype = {
             this._currentScore += pins_down;
             if(pins_down === 10) { this.countRolls = 0; } 
         } else {
+            if (pins_down + this._frames[this.lastIndex].firstRoll > 10 ) { throw new Error("only 10 pins per frame!"); }
             this._frames[this.lastIndex].secondRoll = pins_down;
              this.countRolls = 0;
              this._currentScore += pins_down;
@@ -41,13 +43,11 @@ BowlingGame.prototype = {
                 this.addExtraRoll(this.lastIndex,pins);
              }
          }
-        
+        }
     },
 
     addExtraRoll: function(index, pins){
-        console.log('Extra roll added');
         let frame = this._frames[index];
-        console.log(this.count)
         let pins_down = pins;
         if (pins_down === 10 && this._frames[index].firstRoll === 10 && this.count === 0) {
             this.count = 1;
@@ -135,6 +135,28 @@ BowlingGame.prototype = {
         }
         else if (frame._score === 10) { frame._output = 'spare';}
         else { frame._output = 'normal'; }  
-    }
+    },
+
+    isRollValid: function(pinsHit) {
+        let frame = this._frames[this._frames.length - 1];
+        this.lastIndex = this._frames.indexOf(frame);
+        if (pinsHit > 10) {
+          throw new Error("only 10 pins per frame!");
+          return false;
+        }else if(this._frames.length > 10){
+          this.gameover = true;
+        //   throw new Error("Game Over");
+          return false;
+        }else{
+          return true;
+        }
+      },
+      
+      gameOver: function (){
+        if (this._frames.length > 10){
+          return true;
+        }
+      }
+      
 
 };

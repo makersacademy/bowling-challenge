@@ -1,9 +1,30 @@
+"use strict";
+
 describe('Bowling', function() {
   var game;
 
   beforeEach(function() {
     game = new Game();
   });
+
+  describe("#roll", function() {
+    it("should be able to keep track of rolls", function() {
+      game.roll(5);
+      expect(game.rolls).toContain(5);
+    });
+  });
+
+  describe("#countFrame", function() {
+    it("keeps count of number of frames", function() {
+      game.roll(4);
+      game.roll(4);
+      game.roll(4);
+      game.roll(4);
+      game.roll(4);
+      game.roll(4);
+      expect(game.frames).toEqual(3);
+    });
+ });
 
   describe("Score", function() {
     describe("should be able to call score at any time", function() {

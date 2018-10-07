@@ -1,9 +1,11 @@
 'use strict';
 
 $( document ).ready(function() {
-  var game
+  var game;
   game = new Game();
 
   
+
+  $('#total-score').text(game.totalScore());
 
 });

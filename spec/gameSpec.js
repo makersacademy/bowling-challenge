@@ -55,5 +55,29 @@ describe('Game class', function() {
       game.roll(3)
       expect(game.totalScore()).toEqual(9)
     })
+
+    it('works for spares', function () {
+      game.roll(9)
+      game.roll(1)
+      game.roll(3)
+      expect(game.totalScore()).toEqual(16)
+    })
+
+    it('works for strikes', function () {
+      game.roll(10)
+      game.roll(10)
+      game.roll(5)
+      expect(game.totalScore()).toEqual(45)
+    })
+
+    it('works for multiple strikes and spares,', function () {
+      game.roll(10)
+      game.roll(10)
+      game.roll(5)
+      game.roll(5)
+      game.roll(9)
+      game.roll(0)
+      expect(game.totalScore()).toEqual(73)
+    })
   })
 })

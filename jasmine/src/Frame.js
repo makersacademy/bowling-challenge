@@ -2,33 +2,40 @@
 
 function Frame() {
   this._rolls = []
+  this._bonusRolls = []
   // this._isStrike
   // this._isSpare
   // this._isLast
-  this._state = ''
+  this._state = 'active'
 
 }
 
 Frame.prototype = {
-  getRolls: function () {
-    return this._rolls
-  },
-
+  // regular frame
   enterRoll: function (pins) {
     this._validateRoll(pins)
     this._rolls.push(pins)
 
   },
-    // if frame is spare or strike
-    // enterBonus: function () {},
+
+  getRolls: function () {
+    return this._rolls
+  },
+  // if frame is spare or strike
+  enterBonus: function (pins) {
+    this._validateRoll(pins)
+    this._bonusRolls.push(pins)
+  },
+
+  getBonus: function () {
+    return this._bonusRolls
+  },
 
   setState: function () {
     if (this._isClosed()) {
       this._state = 'closed'
-    } else if (this._isActive()) {
-      this._state = 'active'
-    } else if (this._isBonus()) {
-      this._state = 'bonus'
+    } else if (this._isWaiting()) {
+      this._state = 'waiting'
     }
   },
 
@@ -36,39 +43,31 @@ Frame.prototype = {
     return this._state
   },
 
-  _isClosed: function () {
-    // strike
-    if (this._rolls.length === 3 && this._rolls[0] === 10) {
-      return true
-    // spare
-    } else if (this._rolls.length === 3 && this._rolls[0] + this._rolls[1] === 10) {
-      return true
-    // regular frame
-    } else {
-    return (this._rolls.length === 2 && this._rolls[0] + this._rolls[1] < 10)
-    }
-  },
-
-  _isBonus: function () {
+  _isWaiting: function () {
     // if strike
-    if (this._rolls[0] === 10) {
+    if (this._bonusRolls.length < 2 && this._rolls[0] === 10) {
       return true
-    }
     // if spare
-    return this._rolls[0] + this._rolls[1] === 10
-  },
-
-  _isActive: function () {
-    // if first roll
-    if (this._rolls.length === 0) {
-      return true
-    // if first roll was not a strike
-    } else if (this._rolls.length === 1 && this._rolls[0] < 10) {
+    } else if (this._bonusRolls.length < 1 && this._rolls[0] + this._rolls[1] === 10) {
       return true
     } else {
       return false
     }
   },
+
+  _isClosed: function () {
+    // strike
+    if (this._bonusRolls.length === 2) {
+      return true
+    // spare
+    } else if (this._rolls.length === 2 && this._bonusRolls.length === 1) {
+      return true
+    // regular frame
+    } else {
+      return (this._rolls.length === 2 && this._rolls[0] + this._rolls[1] < 10)
+    }
+  },
+
   // refactor
   // isStrike: function () {
     

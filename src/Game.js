@@ -41,6 +41,7 @@ Game.prototype._sendPointsToFrame = function(userInput) {
   }
 };
 
+
 Game.prototype._isBonus = function() {
   if (this._currentFrame.isStrike === true) {
   this.doubleBothScoresNextRound = true

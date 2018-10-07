@@ -2,6 +2,7 @@ describe ("Frame", function(){
   var frame
   beforeEach(function(){
     frame = new Frame();
+    game = new Game();
   })
 
    describe ('calculate', function(){
@@ -16,6 +17,9 @@ describe ("Frame", function(){
     it("changes isStrike to true if userinput equals 10", function(){
       frame.calculate(10)
       expect(frame.isStrike).toEqual(true)
+    })
+    it("doubles the current score if doubleCounter is not 0", function(){
+      //I didn't test this because it relies on game class, needs stubs. 
     })
    })
 

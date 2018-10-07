@@ -7,10 +7,10 @@ function Frame (){
 };
 
   Frame.prototype.calculate = function(user_input){
-    this.decreaseRoll();
+    this._decreaseRoll();
     this._frameScore += user_input;
   };
 
-  Frame.prototype.decreaseRoll = function(){
+  Frame.prototype._decreaseRoll = function(){
     this._rollsLeft -= 1
   };

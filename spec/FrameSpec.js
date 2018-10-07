@@ -17,7 +17,7 @@ describe ("Frame", function(){
 
    describe ("decreaseRoll", function(){
      it("decreases the rolls left by one", function(){
-       frame.decreaseRoll()
+       frame._decreaseRoll()
        expect(frame._rollsLeft).toEqual(1)
      })
    })

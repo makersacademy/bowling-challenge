@@ -1,16 +1,21 @@
 function Game (){
-  this._totalScore = 0;
+  this.totalScore = 0;
   this._framesLeft = 10;
-  this._doubleFirstRollNextRound = false;
-  this._doubleBothRollsNextRound = false;
-  this.currentFrame = new Frame();
+  this.doubleFirstRollNextRound = false;
+  this.doubleBothRollsNextRound = false;
+  this._currentFrame = new Frame();
 };
 
 Game.prototype.rollBall = function(userInput) {
-  if (this.currentFrame._rollsLeft === 0){
-    this.currentFrame = new Frame();
-    this.currentFrame.calculate(userInput)
+  if (this._currentFrame._rollsLeft === 0){
+    this._currentFrame = new Frame();
+    this._currentFrame.calculate(userInput);
+    this._decreaseFrames();
   } else {
-     this.currentFrame.calculate(userInput);
+    this._currentFrame.calculate(userInput);
   }
+};
+
+Game.prototype._decreaseFrames = function() {
+  this._framesLeft -= 1
 };

@@ -32,13 +32,16 @@ Game.prototype._newFrame = function() {
   this._currentFrame = new Frame();
 }
 
-Game.prototype._sendPointsToFrame = function(userInput) { //could refactor into two method //can add more elsif here for if double first score is true
+Game.prototype._sendPointsToFrame = function(userInput) { //could refactor into two method
   if (this.doubleBothScoresNextRound === true) {
     this._currentFrame._bonusCounter += 2
     this._currentFrame.calculate(userInput)
-  } else {
+  } else if (this.doubleFirstScoreNextRound === true) {
+    this._currentFrame._bonusCounter += 1
     this._currentFrame.calculate(userInput)
-  }
+  } else {
+  this._currentFrame.calculate(userInput)
+}
 };
 
 Game.prototype._isBonus = function() {

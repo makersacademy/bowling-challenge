@@ -57,5 +57,11 @@ describe ("Game", function(){
       game.rollBall(5);
       expect(game._currentFrame._bonusCounter).toEqual(1) //not great test as is testing actual bonusCounter
     })
+    it ("sets the frame bonus counter to 1 if last frame was a spare", function(){
+      game.rollBall(8)
+      game.rollBall(2)
+      game.rollBall(5)
+      expect(game._currentFrame._bonusCounter).toEqual(0) //slightly vacuous test
+    })
   })
 });

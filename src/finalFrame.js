@@ -24,6 +24,8 @@ FinalFrame.prototype.scoreRoll = function scoreRoll(score) {
     this.secondRoll();
   } else if (this.rolls.length === 1) {
     this.firstRoll();
+  } else {
+    throw new Error('Incorrect rolls length.');
   }
 };
 
@@ -31,7 +33,7 @@ FinalFrame.prototype.firstRoll = function firstRoll() {
   if (this.rolls[0] === 10) {
     this.strikes[0] = true;
   } else {
-    this.remaining -= this.rolls[0]
+    this.remaining -= this.rolls[0];
   }
 };
 
@@ -44,7 +46,7 @@ FinalFrame.prototype.secondRoll = function secondRoll() {
     this.spare = true;
     this.remaining = 10;
   } else {
-    this.remaining -= this.rolls[1]
+    this.remaining -= this.rolls[1];
   }
 };
 
@@ -55,15 +57,14 @@ FinalFrame.prototype.calculateScore = function calculateScore() {
     } else {
       return 10 + (this.rolls[1] || 0) + (this.rolls[2] || 0);
     }
-  } else if (this.spare == true) {
-      return 10 + (this.rolls[2] || 0);
+  } else if (this.spare === true) {
+    return 10 + (this.rolls[2] || 0);
   } else {
     return (this.rolls[0] || 0) + (this.rolls[1] || 0);
   }
 };
 
 // Export node module.
-if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )
-{
-    module.exports = FinalFrame;
+if (typeof module !== 'undefined' && module.hasOwnProperty('exports')) {
+  module.exports = FinalFrame;
 }

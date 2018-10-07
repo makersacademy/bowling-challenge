@@ -37,7 +37,6 @@ Frame.prototype.scoreStrike = function scoreStrike() {
 };
 
 // Export node module.
-if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )
-{
-    module.exports = Frame;
+if (typeof module !== 'undefined' && module.hasOwnProperty('exports')) {
+  module.exports = Frame;
 }

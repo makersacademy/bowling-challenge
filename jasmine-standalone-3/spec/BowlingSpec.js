@@ -26,6 +26,7 @@ describe('BowlingGame', function(){
         it('calculates the total score', function(){
             frame.firstRoll = 1;
             frame.secondRoll = 4;
+            frame.extraRoll = 0;
             bowling.addFrame(frame);
             // bowling._frames = frame;
             bowling.calculateScore();

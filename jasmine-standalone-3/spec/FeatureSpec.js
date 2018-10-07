@@ -50,4 +50,76 @@ describe('Features', function(){
             expect(bowling._totalScore).toEqual(26);
         })
     })
+
+    describe('spare move in 10th frame', function(){
+        it('when spare moves happen in the last frame extraRoll is added', function(){
+            bowling.currentMove(1); 
+            bowling.currentMove(4);
+            bowling.currentMove(4);
+            bowling.currentMove(5);
+            bowling.currentMove(6);
+            bowling.currentMove(4);
+            bowling.currentMove(5);
+            bowling.currentMove(5);
+            bowling.currentMove(10);
+            bowling.currentMove(0);
+            bowling.currentMove(1);
+            bowling.currentMove(7);
+            bowling.currentMove(3);
+            bowling.currentMove(6);
+            bowling.currentMove(4);
+            bowling.currentMove(10);
+            bowling.currentMove(2);
+            bowling.currentMove(8);
+            bowling.addExtraRoll(9, 6);
+            bowling.calculateScore();
+            expect(bowling._totalScore).toEqual(133);
+        })
+    })
+
+    describe('spare move in 10th frame', function(){
+        it('when spare moves happen in the last frame extraRoll is added', function(){
+            bowling.currentMove(1); 
+            bowling.currentMove(4);
+            bowling.currentMove(4);
+            bowling.currentMove(5);
+            bowling.currentMove(6);
+            bowling.currentMove(4);
+            bowling.currentMove(5);
+            bowling.currentMove(5);
+            bowling.currentMove(10);
+            bowling.currentMove(0);
+            bowling.currentMove(1);
+            bowling.currentMove(7);
+            bowling.currentMove(3);
+            bowling.currentMove(6);
+            bowling.currentMove(4);
+            bowling.currentMove(10);
+            bowling.currentMove(10);
+            //bowling.currentMove(8);
+            bowling.addExtraRoll(9, 6);
+            bowling.calculateScore();
+            expect(bowling._totalScore).toEqual(133);
+        })
+    })
+
+    describe('perfect game', function(){
+        it('perfect game gives max score of 300', function(){
+            bowling.currentMove(10);
+            bowling.currentMove(10);
+            bowling.currentMove(10);
+            bowling.currentMove(10);
+            bowling.currentMove(10);
+            bowling.currentMove(10);
+            bowling.currentMove(10);
+            bowling.currentMove(10);
+            bowling.currentMove(10);
+            bowling.currentMove(10);
+            bowling.addExtraRoll(9, 10);
+            bowling.addExtraRoll(9, 10);
+            bowling.calculateScore();
+            expect(bowling._totalScore).toEqual(300);
+
+        })
+    })
 });

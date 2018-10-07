@@ -6,6 +6,7 @@ function Frame(){
     this._total = 0;
     this._score;
     this._output;
+    this.extraRoll =0;
     
 }
 

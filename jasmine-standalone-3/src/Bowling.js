@@ -8,6 +8,7 @@ function BowlingGame(){
     this._frames = [];
     this.countRolls = 0;
     this.lastIndex;
+    this.count = 0;
 }
 
 BowlingGame.prototype = {
@@ -21,6 +22,7 @@ BowlingGame.prototype = {
 
     currentMove: function(pins_down){
         let frame;
+        let pins;
         this.countRolls += 1;
         if (this.countRolls === 1) { 
             this.addFrame(new Frame());
@@ -34,43 +36,68 @@ BowlingGame.prototype = {
              this.countRolls = 0;
              this._currentScore += pins_down;
         };
+         if (this.lastIndex === 9) {
+             if ((this._frames[this.lastIndex].firstRoll === 10) || (this._currentScore === 10)){
+                this.addExtraRoll(this.lastIndex,pins);
+             }
+         }
         
     },
 
-    // calculateScore: function(){
-    //     for ( let i = 0 ; i < this._frames.length; i++){
-    //         let frame_obj = this._frames[i];
-    //         if(this.isAStrike())
-    //         this._totalScore += this._frames[i].firstRoll + this._frames[i].secondRoll;
-    //     }
-    // },
+    addExtraRoll: function(index, pins){
+        console.log('Extra roll added');
+        let frame = this._frames[index];
+        console.log(this.count)
+        let pins_down = pins;
+        if (pins_down === 10 && this._frames[index].firstRoll === 10 && this.count === 0) {
+            this.count = 1;
+            this._frames[index].secondRoll = 10;
+            this.addExtraRoll(index, pins);
+        }
+        else {
+            
+            this._frames[index].extraRoll = pins_down; 
+            // if (this.count === 1) { 
+            //     this._frames[index].extraRoll = pins_down; 
+            //  } else{
+            // this._frames[index].secondRoll = pins_down;  
+            //  }
+        }
+    },
 
     calculateScore: function(){
+        //let bonus;
+        let frames = this._frames;
         for ( let index = 0 ; index < this._frames.length; index++) {
             let frame = this._frames[index];
             let bonus = 0;
-            let frames = this._frames;
+            //let frames = this._frames;
             frame._score = frame.firstRoll + frame.secondRoll;
-            if(frames[index].firstRoll === 10) 
+            if(frames[index].firstRoll === 10 && index !== this._frames.length - 1) 
                 {
-                    bonus = frames[index+1].firstRoll === 10 ? 10 : frames[index+1].firstRoll +  frames[index+1].secondRoll;
-                    // if (frames[index+1].firstRoll === 10) {
-                    //   bonus = 10;
-                    //   this._totalScore = this._totalScore + frame._score + bonus;
-                    // } else {
-                    //   bonus = frames[index+1].firstRoll +  frames[index+1].secondRoll;
-                    //   this._totalScore = this._totalScore + frame._score + bonus;
-                    // };
-                    this._totalScore = this._totalScore + frame._score + bonus;
+                    if (frames[index+1].firstRoll === 10){
+                        if (index === this._frames.length - 2 && frames[index+1].secondRoll === 10) { 
+                            bonus = 20 ;
+                        } else {
+                            if(index < this._frames.length - 2){
+                                bonus = frames[index+2].firstRoll === 10 ? 20 : 10 + frames[index+2].firstRoll;  
+                            }
+                            else { bonus = 10;}
+                            }
+                    }
+                    else {
+                        bonus = frames[index+1].firstRoll +  frames[index+1].secondRoll;
+                    }
+                };
 
-                } else if (frame._score === 10) 
+            if (frame._score === 10 && frame.firstRoll !== 10 && index != 9) 
                 {
                     bonus = frames[index+1].firstRoll;
-                    this._totalScore = this._totalScore + frame._score + bonus;
+                    //this._totalScore = this._totalScore + frame._score + bonus;
                 }
-            else{
-            this._totalScore += this._frames[index].firstRoll + this._frames[index].secondRoll; + bonus;
-            }
+            
+            this._totalScore += this._frames[index].firstRoll + this._frames[index].secondRoll + this._frames[index].extraRoll + bonus;
+        
         }
     },
 

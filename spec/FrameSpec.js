@@ -5,7 +5,7 @@ describe ("Frame", function(){
   })
 
    describe ('calculate', function(){
-     it("adds the user's roll to the total score of that frame", function(){
+     it("adds only the user's roll score to the total score of that frame, if bonus counter is equal to 0 equal to false", function(){
        frame.calculate(5)
        expect(frame.frameScore).toEqual(5)
      })
@@ -13,6 +13,7 @@ describe ("Frame", function(){
        frame.calculate(5)
        expect(frame._rollsLeft).toEqual(1)
      })
+
    })
 
    describe ("decreaseRoll", function(){
@@ -22,6 +23,5 @@ describe ("Frame", function(){
      })
    })
 
-   
 
 });

@@ -1,19 +1,21 @@
 function Game (){
   this.totalScore = 0;
   this._frameNumber = 1;
-  this.doubleFirstRollNextRound = false;
-  this.doubleBothRollsNextRound = false;
+  this.doubleFirstScoreNextRound = false;
+  this.doubleBothScoresNextRound = false;
   this._currentFrame = new Frame();
 };
 
 Game.prototype.rollBall = function(userInput) {
+  //easy enough to call to a method here that raises an error if game number is over 10
+  //can refactor repeated line call to calculate
   if (this._currentFrame._rollsLeft === 0){
     this._total()
     this._newFrame()
-    this._currentFrame.calculate(userInput);
+    this._sendPointsToFrame(userInput)
     this._increaseFrameNumber();
   } else {
-    this._currentFrame.calculate(userInput);
+    this._sendPointsToFrame(userInput);
   }
 };
 
@@ -28,3 +30,11 @@ Game.prototype._total = function() {
 Game.prototype._newFrame = function() {
   this._currentFrame = new Frame();
 }
+
+Game.prototype._sendPointsToFrame = function(userInput) {
+   //if () {
+      
+     this._currentFrame.calculate(userInput)
+  // }
+//  this._currentFrame.calculate(userInput, )
+};

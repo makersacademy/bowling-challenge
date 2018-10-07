@@ -8,7 +8,9 @@ function Frame (){
 
   Frame.prototype.calculate = function(user_input){
     this._decreaseRoll();
-    this.frameScore += user_input;
+    if (this._bonusCounter === 0){
+      this.frameScore += user_input;
+    }
   };
 
   Frame.prototype._decreaseRoll = function(){

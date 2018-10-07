@@ -55,7 +55,7 @@ BowlingGame.prototype = {
             this.addExtraRoll(index, pins);
         }
         else {
-            
+
             this._frames[index].extraRoll = pins_down; 
             // if (this.count === 1) { 
             //     this._frames[index].extraRoll = pins_down; 
@@ -75,19 +75,20 @@ BowlingGame.prototype = {
             frame._score = frame.firstRoll + frame.secondRoll;
             if(frames[index].firstRoll === 10 && index !== this._frames.length - 1) 
                 {
-                    if (frames[index+1].firstRoll === 10){
-                        if (index === this._frames.length - 2 && frames[index+1].secondRoll === 10) { 
-                            bonus = 20 ;
-                        } else {
-                            if(index < this._frames.length - 2){
-                                bonus = frames[index+2].firstRoll === 10 ? 20 : 10 + frames[index+2].firstRoll;  
-                            }
-                            else { bonus = 10;}
-                            }
-                    }
-                    else {
-                        bonus = frames[index+1].firstRoll +  frames[index+1].secondRoll;
-                    }
+                    // if (frames[index+1].firstRoll === 10){
+                    //     if (index === this._frames.length - 2 && frames[index+1].secondRoll === 10) { 
+                    //         bonus = 20 ;
+                    //     } else {
+                    //         if(index < this._frames.length - 2){
+                    //             bonus = frames[index+2].firstRoll === 10 ? 20 : 10 + frames[index+2].firstRoll;  
+                    //         }
+                    //         else { bonus = 10;}
+                    //         }
+                    // }
+                    // else {
+                    //     bonus = frames[index+1].firstRoll +  frames[index+1].secondRoll;
+                    // }
+                    bonus = this.strikeBonus(index);
                 };
 
             if (frame._score === 10 && frame.firstRoll !== 10 && index != 9) 
@@ -101,7 +102,24 @@ BowlingGame.prototype = {
         }
     },
 
-    
+    strikeBonus: function(index){
+        let bonus;
+        let frames = this._frames;
+        if (frames[index+1].firstRoll === 10){
+            if (index === this._frames.length - 2 && frames[index+1].secondRoll === 10) { 
+                bonus = 20 ;
+            } else {
+                if(index < this._frames.length - 2){
+                    bonus = frames[index+2].firstRoll === 10 ? 20 : 10 + frames[index+2].firstRoll;  
+                }
+                else { bonus = 10;}
+                }
+        }
+        else {
+            bonus = frames[index+1].firstRoll +  frames[index+1].secondRoll;
+        }
+        return bonus;
+    },
       
     // roll: function(){
     //     let frame = this._frames[this._frames.length - 1];

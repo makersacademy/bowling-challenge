@@ -55,6 +55,12 @@ describe('FinalFrame', function() {
     expect(scorecard.allFrameScores()).toEqual([6,6,6,6,6,6,6,6,6,6])
   });
 
+
+  it("calculates score correctly when the next frame is not over", function() {
+    scorecard.frames[0].rolls = []
+    expect(scorecard.calculateFrameScore(0)).toEqual(0);
+  });
+
   it('calculates the score on a strike', function() {
     scorecard.frames[1].rolls = [3,3]
     expect(scorecard.calculateStrikeScore(0)).toEqual(16)
@@ -65,6 +71,27 @@ describe('FinalFrame', function() {
     expect(scorecard.calculateSpareScore(0)).toEqual(13)
   });
 
+  it('calculates the score on a spare when the next frame is not complete', function() {
+    scorecard.frames[1].rolls = [];
+    expect(scorecard.calculateSpareScore(0)).toEqual(10);
+  });
+
+  it('calculates the score on a strike in frame 9 correctly when frame 10 is incomplete', function() {
+    scorecard.frames[9].rolls = [];
+    expect(scorecard.calculateStrikeScore(8)).toEqual(10);
+  });
+
+  it('calculates consecutive strike score correctly if the index+2 frame is incomplete', function() {
+    scorecard.frames[1].strike = true;
+    scorecard.frames[2].rolls = [];
+    expect(scorecard.calculateStrikeScore(0)).toEqual(20);
+  });
+
+  it('calculates consecutive strike score correctly if the index+1 frame is incomplete', function() {
+    scorecard.frames[1].rolls = []
+    expect(scorecard.calculateStrikeScore(0)).toEqual(10);
+  });
+  
   it('knows when a strike has been scored', function() {
     scorecard.frames[0].strike = true;
     spyOn(scorecard, 'calculateStrikeScore');
@@ -84,6 +111,10 @@ describe('FinalFrame', function() {
     scorecard.updateCurrentFrame()
     expect(scorecard.currentFrame).toEqual(1)
   });
+
+  it("doesn't update the frame if the frame isn't over", function() {
+    expect(scorecard.updateCurrentFrame()).toEqual(false);
+  })
 
   it('knows when the game has ended', function() {
     scorecard.currentFrame = 9

@@ -37,6 +37,8 @@ Scorecard.prototype.updateCurrentFrame = function updateCurrentFrame() {
     else {
       this.currentFrame += 1;
     }
+  } else {
+    return false;
   }
 };
 

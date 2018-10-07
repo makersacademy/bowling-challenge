@@ -74,7 +74,9 @@ describe("Game", function(){
   // The second roll is marked with a '/' in the scorecard
   
   describe('Spare', function() {
-    it('shows currents total score', function () {
+
+    // The previous frame score update after next roll
+    it('shows updated frame score  after next roll on spare', function () {
       game.roll(2);
       game.roll(4);
       game.roll(5);
@@ -99,7 +101,7 @@ describe("Game", function(){
       expect(game._currentFrameNumber).toEqual(2);
     });
 
-  // The frame score is not visible until the next two rolls are complete
+  // The frame score update after every next two rolls
 
     it('updates frame score after strike', function () {
       game.roll(10);

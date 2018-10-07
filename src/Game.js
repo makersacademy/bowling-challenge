@@ -28,20 +28,18 @@ Game.prototype = {
 
     let frameSum = this._frames[this._currentFrameNumber].reduce(function(a, b){return a+b;}, 0);
     this._frameScore[this._currentFrameNumber] = frameSum;
+
     // spare
     let previousFrameScore = this._frameScore[this._currentFrameNumber - 1]
     let previousFrameRoll = this._frames[this._currentFrameNumber - 1][0];
-    if ( previousFrameScore === 10) {
-      this._frameScore[this._currentFrameNumber - 1] += number;
-    } else if(previousFrameRoll === 10){
+    if ( previousFrameScore === 10 || previousFrameRoll === 10) {
       this._frameScore[this._currentFrameNumber - 1] += number;
     }
 
-     //stike change frame score
-
-   if(this._currentFrameNumber > 2){
-    let latestRollFrame = this._frames[this._currentFrameNumber - 1][0];
-    let previousrollFrame = this._frames[this._currentFrameNumber - 2][0];
+    //stike change frame score
+    if(this._currentFrameNumber > 2){
+      let latestRollFrame = this._frames[this._currentFrameNumber - 1][0];
+      let previousrollFrame = this._frames[this._currentFrameNumber - 2][0];
       if ( latestRollFrame === 10 && previousrollFrame === 10) {
         this._frameScore[this._currentFrameNumber - 2] = previousrollFrame + latestRollFrame + this._frames[this._currentFrameNumber][0];
       }

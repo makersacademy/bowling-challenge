@@ -1,7 +1,7 @@
 'use strict';
 
 function Game (){
-  this._frames = [[], [], [], [], [], [], [], [], [], [],[]]; //length 11 
+  this._frames = [[], [], [], [], [], [], [], [], [], [],[]]; 
   // this._frames = []
   this._currentScore = 0
   this._currentFrameNumber = 1

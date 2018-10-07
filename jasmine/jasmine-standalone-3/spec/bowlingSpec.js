@@ -36,4 +36,14 @@ describe('Bowling game', function() {
     expect(game.score()).toEqual(32);
   });
 
+  it('rolling a spare', function () {
+  game.roll(4);
+  game.roll(6);
+  game.roll(9);
+  for (var i = 0; i < 17; i++) {
+    game.roll(0);
+  }
+  expect(game.score()).toEqual(28);
+  });
+
 });

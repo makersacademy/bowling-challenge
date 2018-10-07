@@ -19,11 +19,14 @@ Bowling.prototype.score = function () {
     if (this.rolls[rollsIndex] == 10) {
       matchResult += this.rolls[rollsIndex] + this.rolls[rollsIndex + 1] + this.rolls[rollsIndex + 2];
       rollsIndex++; // STRIKE!
+    } else if (this.rolls[rollsIndex] + this.rolls[rollsIndex + 1] == 10) {
+      matchResult += this.rolls[rollsIndex] + this.rolls[rollsIndex + 1] + this.rolls[rollsIndex + 2];
+      rollsIndex += 2; // SPARE!
     } else {
       matchResult += this.rolls[rollsIndex] + this.rolls[rollsIndex + 1];
       rollsIndex += 2; // NORMAL SCORE
-    };
-  };
+    }
+  }
 
   return matchResult;
 };

@@ -2,11 +2,19 @@ body {
   font-family: monospace;
 }
 
-table {
+#main-scoresheet {
   border: 2px solid black;
+}
+
+#name-heading {
+  width: 100px;
 }
 
 th, td {
   border: 1px solid black;
   text-align: center;
+}
+
+button {
+  margin: 10px;
 }

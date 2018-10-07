@@ -3,8 +3,6 @@
 function Frame() {
   this._rolls = []
   this._bonusRolls = []
-  // this._isStrike
-  // this._isSpare
   // this._isLast
   this._state = 'active'
 
@@ -45,37 +43,37 @@ Frame.prototype = {
 
   _isWaiting: function () {
     // if strike
-    if (this._bonusRolls.length < 2 && this._rolls[0] === 10) {
-      return true
+    if (this._isStrike()) {
+      return this._bonusRolls.length < 2
     // if spare
-    } else if (this._bonusRolls.length < 1 && this._rolls[0] + this._rolls[1] === 10) {
-      return true
+    } else if (this._isSpare()) {
+      return this._bonusRolls.length < 1
     } else {
       return false
     }
   },
 
   _isClosed: function () {
-    // strike
-    if (this._bonusRolls.length === 2) {
-      return true
     // spare
-    } else if (this._rolls.length === 2 && this._bonusRolls.length === 1) {
-      return true
+    if (this._isSpare()) {
+      return this._bonusRolls.length === 1
+    // strike
+    } else if (this._isStrike()) {
+      return this._bonusRolls.length === 2
     // regular frame
     } else {
-      return (this._rolls.length === 2 && this._rolls[0] + this._rolls[1] < 10)
+      return this._rolls.length === 2
     }
   },
 
   // refactor
-  // isStrike: function () {
-    
-  // },
+  _isStrike: function () {
+    return this._rolls[0] === 10
+  },
   // refactor
-  // isSpare: function () {
-
-  // },
+  _isSpare: function () {
+    return this._rolls[0] + this._rolls[1] === 10
+  },
 
   _validateRoll: function (pins) {
     // let max = 10

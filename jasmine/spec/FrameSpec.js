@@ -58,20 +58,20 @@ describe('frame', function () {
       })
     })
     describe('state closed', function () {
-      it('sets the state of a regular frame to "closed" after two rolls', function () {
+      it('sets the state of a regular frame to "closed" after two regular rolls', function () {
         frame.enterRoll(5)
         frame.enterRoll(3)
         frame.setState()
         expect(frame.getState()).toEqual('closed')
       })
-      it('sets the state of a "spare" frame to "closed" after three rolls', function () {
+      it('sets the state of a "spare" frame to "closed" after two regular rolls and one bonus roll', function () {
         frame.enterRoll(5)
         frame.enterRoll(5)
         frame.enterBonus(4)
         frame.setState()
         expect(frame.getState()).toEqual('closed')
       })
-      it('sets the state of a "strike" frame to "closed" after three rolls', function () {
+      it('sets the state of a "strike" frame to "closed" after one regular roll and two bonus rolls', function () {
         frame.enterRoll(10)
         frame.enterBonus(5)
         frame.enterBonus(4)

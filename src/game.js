@@ -17,8 +17,8 @@ Game.prototype.roll = function (rollScore) {
   this._resetPins(rollScore)
 }
 
-Game.prototype.totalScore = function () {
-  const REDUCER = (accumulator, eachFrame) => accumulator + eachFrame.totalScore()
+Game.prototype.calculateTotalScore = function () {
+  const REDUCER = (accumulator, eachFrame) => accumulator + eachFrame.calculateTotalScore()
   return this.frames.reduce(REDUCER, 0)
 }
 

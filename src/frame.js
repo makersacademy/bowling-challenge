@@ -18,12 +18,12 @@ Frame.prototype._closeFrameEarly = function () {
 }
 
 Frame.prototype._spareOrBetter = function () {
-  if (this.totalScore() < 10) {
+  if (this.calculateTotalScore() < 10) {
     this.scores.push(0)
   }
 }
 
-Frame.prototype.totalScore = function () {
+Frame.prototype.calculateTotalScore = function () {
   const REDUCER = (accumulator, eachRollScore) => accumulator + eachRollScore
   return this.scores.reduce(REDUCER, 0)
 }

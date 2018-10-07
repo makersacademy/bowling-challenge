@@ -28,14 +28,14 @@ describe('Frame Class', function () {
     })
   })
 
-  describe('#totalScore', function () {
+  describe('#calculateTotalScore', function () {
     var frame = new Frame
 
     it('sums the score array', function () {
       frame.addScore(7)
       frame.addScore(3)
       frame.addScore(10)
-      expect(frame.totalScore()).toEqual(20)
+      expect(frame.calculateTotalScore()).toEqual(20)
     })
   })
 })

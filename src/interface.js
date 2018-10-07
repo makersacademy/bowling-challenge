@@ -9,6 +9,8 @@ $('document').ready(function() {
     if (scorecard.gameOver === true) {
       $('#total9').text(scorecard.calculateFrameScore(9));
     }
+    $('#gameCompleted').text('Total points: '
+      + scorecard.totalScore());
     refreshGameOver();
     refreshPoints();
   }
@@ -44,6 +46,9 @@ $('document').ready(function() {
     }
     for (let i = 0; i < 3; i += 1) {
       $('#frame9roll' + i).text('')
+    }
+    for (let i = 0; i < 11; i += 1) {
+      $('#scored' + i).prop('disabled', false);
     }
   })
 

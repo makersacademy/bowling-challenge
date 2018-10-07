@@ -7,10 +7,10 @@ function Game (){
 };
 
 Game.prototype.rollBall = function(userInput) {
-//   if (this.currentFrame._rollsLeft === 0){
-//   this.currentFrame = new Frame(); //remember to pass in user_input   //might not need var here
-// } //else {
+  if (this.currentFrame._rollsLeft === 0){
+    this.currentFrame = new Frame();
+    this.currentFrame.calculate(userInput)
+  } else {
      this.currentFrame.calculate(userInput);
-  //   return new Frame();
-  // }
-  };
+  }
+};

@@ -1,5 +1,6 @@
 export class Frame {
   constructor() {
+    this.complete = false;
     this.note = '';
     this.outcome = '';
     this.rolls = [];

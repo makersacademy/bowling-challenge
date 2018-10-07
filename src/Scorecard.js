@@ -1,17 +1,16 @@
 function Scorecard() {
-  this.frames = {1: []}
+  this.frames = {1: [null,null]}
 }
 
 Scorecard.prototype.addRoll = function(pins) {
-  var second_roll = true
   if (this.isCurrentFrameNew()) {
-    if(pins == 10) { second_roll = false }
-    this.frames[this.currentFrameNum()] = [pins,second_roll]
+    this.frames[this.currentFrameNum()] = [pins,null]
   }
   else {
     this.frames[this.currentFrameNum()][1] = pins
   }
-  if (this.currentFrame()[1] !== true) { this.addNewFrame() }
+
+  if (this.isCurrentFrameComplete()) this.addNewFrame()
 }
 
 Scorecard.prototype.currentFrameNum = function() {
@@ -23,10 +22,30 @@ Scorecard.prototype.currentFrame = function() {
 }
 
 Scorecard.prototype.isCurrentFrameNew = function() {
-  if (this.currentFrame().length == 0) { return true }
+  if (this.currentFrame()[0] == null) { return true }
   else { return false }
 }
 
+Scorecard.prototype.isCurrentFrameComplete = function() {
+  if (this.currentFrame()[0] == 10) return true
+  if (this.currentFrame()[1] !== null ) return true
+  return false
+}
+
 Scorecard.prototype.addNewFrame = function() {
-  this.frames[this.currentFrameNum() + 1] = []
+  this.frames[this.currentFrameNum() + 1] = [null,null]
+}
+
+Scorecard.prototype.isGameComplete = function() {
+
+}
+
+Scorecard.prototype.isFrameStrike = function(frame) {
+  if (frame[0] == 10) return true
+  return false
+}
+
+Scorecard.prototype.isFrameSpare = function(frame) {
+  if (frame[0] + frame[1] === 10 && frame[1] !== null) return true
+  return false
 }

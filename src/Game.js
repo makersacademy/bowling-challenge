@@ -2,18 +2,18 @@
 
 function Game() {
   this.rolls = [];
-  this.frames = 0;
+  this.frameCount = 0;
 };
 
 Game.prototype.roll = function(pins) {
   this.rolls.push(pins);
-  this.countFrame(pins)
+  this.countFrame(pins);
 };
 
 Game.prototype.countFrame = function(pins) {
-  if (this.frames !== 10) {
+  if (this.frameCount !== 10) {
     if (pins === 10 || this.rolls.length % 2 === 0) {
-      this.frames += 1;
+      this.frameCount += 1;
     };
   };
 };
@@ -39,7 +39,7 @@ Game.prototype.isStrike = function(index) {
 Game.prototype.hasBonus = function() {
   var rollIndex = this.rolls.length - 3;
 
-  if (this.frames === 10) {
+  if (this.frameCount === 10) {
     if (this.isStrike(rollIndex) || this.isSpare(rollIndex)) {
       return true;
     };

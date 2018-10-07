@@ -22,7 +22,7 @@ describe('Bowling', function() {
       game.roll(4);
       game.roll(4);
       game.roll(4);
-      expect(game.frames).toEqual(3);
+      expect(game.frameCount).toEqual(3);
     });
  });
 

@@ -29,6 +29,11 @@ describe('Frame', function(){
       expect(function(){frame.addRoll(3)}).toThrowError('This frame already contains two rolls');
       expect(frame.rolls).toEqual([4,5])
     });
+
+    it('ends frame if first roll is a strike', function(){
+      frame.addRoll(10);
+      expect(frame.rolls).toEqual([10,0])
+    });
   });
 
   describe('total score', function(){
@@ -55,6 +60,18 @@ describe('Frame', function(){
       frame.addRoll(3);
       frame.addRoll(3);
       expect(frame.isASpare()).toBe(false)
+    });
+  });
+  describe('is a strike', function(){
+    it('returns true if this frame is a strike', function(){
+      frame.addRoll(10);
+      expect(frame.isAStrike()).toBe(true)
+    });
+
+    it('returns false if this frame is not a spare', function(){
+      frame.addRoll(3);
+      frame.addRoll(3);
+      expect(frame.isAStrike()).toBe(false)
     });
   });
 });

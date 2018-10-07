@@ -78,8 +78,8 @@ Game.prototype.setScore = function(val1,val2){
   this.getCurrentGame();
 }
 
-var game = new Game;
-
-game.newGame();
-game.getCurrentGame();
-game.setScore(1,2)
+// var game = new Game;
+//
+// game.newGame();
+// game.getCurrentGame();
+// game.setScore(1,2)

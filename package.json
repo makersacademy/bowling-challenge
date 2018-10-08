@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "lint": "eslint src/",
+    "lint": "eslint src/ spec/",
     "test": "node_modules/jasmine-node/bin/jasmine-node spec/ --verbose"
   },
   "repository": {

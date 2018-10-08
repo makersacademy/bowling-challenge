@@ -1,5 +1,5 @@
 var Game = require('../src/game')
-var Frame = require('../src/frame')
+
 
 describe('Game class', function() {
   describe('#roll', function () {

@@ -23,10 +23,7 @@ Pins.prototype._resetAfterStrike = function (score) {
   if (score === 10) {
     this.leftStanding = 10
     this.needReset = false
-    console.log(this.needReset)
   }
 }
-
-
 
 module.exports = Pins

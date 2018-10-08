@@ -42,7 +42,16 @@ $( document ).ready(function() {
       for(var j = 0;j < frames[i].length;j++){
         var rollVal = frames[i][j];
         var tableSelector = 'f' + i + 'r' + j;
-        $('#' + tableSelector).text(rollVal);
+        
+        if (rollVal === 10) {
+          $('#' + tableSelector).text("X");
+        } else if (game.frameScore(i) === 10){
+          $('#' + 'f' + i + 'r1').text('/');
+        }
+        else {
+          $('#' + tableSelector).text(rollVal);
+        }
+        
       }
       var frameScoreSelector = 'frame-score-' + i;
       var frameScore = game.frameScore(i);

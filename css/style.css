@@ -17,3 +17,7 @@ section#roll {
 section#score-card {
   margin: 4em
 }
+
+#total-score {
+  border-top: none;
+}

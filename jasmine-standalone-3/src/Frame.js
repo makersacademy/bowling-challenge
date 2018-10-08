@@ -13,7 +13,29 @@ function Frame(){
 Frame.prototype = {
     reset: function(){
 
-    }
+    },
+
+    isStrike: function(frame){
+        if(frame.firstRoll === 10) { return true; }
+    },
+
+    isSpare: function(frame){
+        if(frame._score === 10) { return true; }
+    },
+
+    frameScore: function(){
+        //let frame = this._frames[this._frames.length - 1];
+        let frame = this._frames[this.lastIndex];
+        frame._score = frame.firstRoll + frame.secondRoll;
+        //frame._output = frame.firstRoll === 10 ?
+        if(frame.firstRoll === 10) { 
+            frame._output = 'strike';
+        }
+        else if (frame._score === 10) { frame._output = 'spare';}
+        else { frame._output = 'normal'; }
+        return frame._score ; 
+    },
+
 
 
 }

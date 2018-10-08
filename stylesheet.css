@@ -8,6 +8,11 @@
   margin-right: 5px;
 }
 
+.frame-no {
+  text-align: center;
+  font-weight: bold;
+}
+
 .frame-11 {
   color: lightgrey;
 }

@@ -16,8 +16,19 @@ describe("Bowling", function() {
 
   describe("roll", function() {
     it("should add bowl to scorecard", function() {
+      scorecard.currentFrame.and.returnValue([null,null])
       bowling.roll(5)
       expect(scorecard.addRoll).toHaveBeenCalledWith(5)
+    });
+    it("should reject NaN", function() {
+      expect(bowling.roll("a")).toEqual("You need to put in a number")
+    });
+    it("should reject roll bigger than 10", function() {
+      expect(bowling.roll(13)).toEqual("You cannot roll more than 10")
+    });
+    it("should reject frame more than 10", function() {
+      scorecard.currentFrame.and.returnValue([8,null])
+      expect(bowling.roll(4)).toEqual("A frame cannot be more than 10")
     });
   });
 

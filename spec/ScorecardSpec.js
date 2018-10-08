@@ -7,7 +7,8 @@ describe("Scorecard",function() {
 
   it("should have 12 empty frames", function() {
     expect(Object.keys(scorecard.frames).length).toEqual(12)
-    expect(scorecard.frames[12]).toEqual([null,null])
+    expect(scorecard.frames[7]).toEqual([null,null])
+    expect(scorecard.frames[12]).toEqual([null])
   })
 
   describe("nextRoll",function(){
@@ -22,7 +23,6 @@ describe("Scorecard",function() {
 
   describe("addRoll",function(){
     it("should add roll to frames",function(){
-      console.log(scorecard.frames)
       scorecard.addRoll(5)
       expect(scorecard.frames[1][0]).toEqual(5)
     })
@@ -60,17 +60,13 @@ describe("Scorecard",function() {
     })
   })
 
-  describe("isCurrentFrameNew",function() {
+  describe("isFrameNew",function() {
     it("should return true when no roll has been made",function() {
-      expect(scorecard.isCurrentFrameNew()).toEqual(true)
+      expect(scorecard.isFrameNew(scorecard.frames[1])).toEqual(true)
     })
     it("should return false when one roll less than 10 has been made",function() {
       scorecard.addRoll(8)
-      expect(scorecard.isCurrentFrameNew()).toEqual(false)
-    })
-    it("should return true when one roll with 10 has been made",function() {
-      scorecard.addRoll(10)
-      expect(scorecard.isCurrentFrameNew()).toEqual(true)
+      expect(scorecard.isFrameNew(scorecard.frames[1])).toEqual(false)
     })
   })
 

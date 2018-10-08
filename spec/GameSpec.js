@@ -51,7 +51,7 @@ describe ("Game", function(){
   })
 
 //I don't know if this is how I should test sendpointstoframe or if I should test it via roll method.
-  describe("sendPointsToFrame", function(){
+  describe("sendBonuspoints", function(){
     it ("sets the frame bonus counter to 2 if last frame was a strike", function(){
       game.rollBall(10)
       game.rollBall(5);

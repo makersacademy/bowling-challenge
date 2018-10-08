@@ -20,7 +20,7 @@ Game.prototype.rollBall = function(userInput) {
     this._increaseFrameNumber();
     this._currentFrame.calculate(userInput)
   } else {
-    this._sendBonusPoints(userInput);
+    //this._sendBonusPoints(userInput);
     this._currentFrame.calculate(userInput)
   }
 };

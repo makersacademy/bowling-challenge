@@ -11,3 +11,11 @@ Game.prototype.addFrame = function (frame) {
     throw new Error('This game already has ten frames')
   };
 };
+
+Game.prototype.totalGameScore = function () {
+  var total = 0
+  this.frames.forEach(function(thisFrame) {
+    total += thisFrame.totalScore();
+  });
+  return total
+};

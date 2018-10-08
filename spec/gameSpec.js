@@ -3,10 +3,12 @@
 describe('Game',function(){
   var game;
   var frame;
+  var frame2;
 
   beforeEach(function(){
     game = new Game();
-    frame = jasmine.createSpyObj('frame',['rolls']);
+    frame = jasmine.createSpyObj('frame',['totalScore']);
+    frame2 = jasmine.createSpyObj('frame2',['totalScore']);
   });
 
   it('starts with no frames by default', function(){
@@ -30,6 +32,22 @@ describe('Game',function(){
         game.addFrame(frame);
       };
       expect(function(){game.addFrame(frame)}).toThrowError('This game already has ten frames');
+    });
+  });
+
+  describe('total game score', function(){
+    it('returns total score of current game', function(){
+      game.addFrame(frame);
+      frame.totalScore.and.returnValue(6)
+      expect(game.totalGameScore()).toEqual(6)
+    });
+
+    it('returns total score of current game', function(){
+      game.addFrame(frame);
+      game.addFrame(frame2);
+      frame.totalScore.and.returnValue(6)
+      frame2.totalScore.and.returnValue(7)
+      expect(game.totalGameScore()).toEqual(13)
     });
   });
 });

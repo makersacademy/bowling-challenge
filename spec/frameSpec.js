@@ -4,7 +4,7 @@ describe('Frame Class', function () {
   describe('#addScore', function () {
     var frame = new Frame()
 
-    beforeEach(function() {
+    beforeEach(function () {
       frame.scores = []
     })
 
@@ -29,7 +29,7 @@ describe('Frame Class', function () {
   })
 
   describe('#calculateTotalScore', function () {
-    var frame = new Frame
+    var frame = new Frame()
 
     it('sums the score array', function () {
       frame.addScore(7)

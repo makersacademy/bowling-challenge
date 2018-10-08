@@ -5,7 +5,7 @@ describe('Pins class', function () {
     var pins
 
     beforeEach(function () {
-      pins = new Pins
+      pins = new Pins()
     })
 
     it('reduces pins standing number by score', function () {
@@ -29,16 +29,16 @@ describe('Pins class', function () {
     var pins
 
     beforeEach(function () {
-      pins = new Pins
+      pins = new Pins()
     })
 
     it('raises an error if the input over 10', function () {
       expect(function () { pins.isImpossibleScore(12) }).toThrow('Not enough pins')
     })
 
-    xit('raises an error if the input exceeds number of pins left', function () {
-      game.roll(9)
-      expect(function () { game.isImpossibleScore(2) }).toThrow('Not enough pins')
+    it('raises an error if the input exceeds number of pins left', function () {
+      pins.managePins(9)
+      expect(function () { pins.isImpossibleScore(2) }).toThrow('Not enough pins')
     })
   })
 })

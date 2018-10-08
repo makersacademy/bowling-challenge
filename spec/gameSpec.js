@@ -1,7 +1,6 @@
 var Game = require('../src/game')
 
-
-describe('Game class', function() {
+describe('Game class', function () {
   describe('#roll', function () {
     // var frame = {
     //   inputScore: jasmine.createSpy('inputScore')
@@ -10,12 +9,11 @@ describe('Game class', function() {
     //   prototype: jasmine.createSpy('Prototype')
     //   // .and.returnValue("frame")
     // }
-    var game;
+    var game
 
-    beforeEach(function() {
-      game = new Game ()
+    beforeEach(function () {
+      game = new Game()
     })
-
 
     it('Makes a new frame for new Game', function () {
       game.roll(4)
@@ -43,7 +41,7 @@ describe('Game class', function() {
     })
 
     it('raises error for non-numeric inputs', function () {
-      expect(function () { game.roll("not_a_number") }).toThrow('Not a Number')
+      expect(function () { game.roll('not_a_number') }).toThrow('Not a Number')
     })
 
     it('raises an error if the input over 10', function () {
@@ -57,10 +55,10 @@ describe('Game class', function() {
   })
 
   describe('#calculateTotalScore', function () {
-    var game;
+    var game
 
-    beforeEach(function() {
-      game = new Game ()
+    beforeEach(function () {
+      game = new Game()
     })
     it('sums the score of all frames', function () {
       game.roll(3)

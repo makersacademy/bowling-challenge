@@ -1,38 +1,38 @@
 function Scorecard() {
-  this.frames = {
-    1: [null,null],
-    2: [null, null],
-    3: [null, null],
-    4: [null, null],
-    5: [null,null],
-    6: [null, null],
-    7: [null, null],
-    8: [null, null],
-    9: [null,null],
-    10: [null, null],
-    11: [null, null],
-    12: [null, null],
-  }
-  this._currentFrameNum = 1;
+  this.frames = [
+    [null,null],
+    [null, null],
+    [null, null],
+    [null, null],
+    [null,null],
+    [null, null],
+    [null, null],
+    [null, null],
+    [null,null],
+    [null, null],
+    [null, null],
+    [null, null],
+  ]
+  this._currentFrameIndex = 0;
 }
 
 Scorecard.prototype.addRoll = function(pins) {
   if (this.isGameComplete()) return false
-  if (this.isCurrentFrameNew()) { this.frames[this.currentFrameNum()] = [pins,null] }
-  else { this.frames[this.currentFrameNum()][1] = pins }
-  if (this.isCurrentFrameComplete() && !this.isGameComplete()) this._currentFrameNum += 1
+  if (this.isCurrentFrameNew()) { this.frames[this.currentFrameIndex()] = [pins,null] }
+  else { this.frames[this.currentFrameIndex()][1] = pins }
+  if (this.isCurrentFrameComplete() && !this.isGameComplete()) this._currentFrameIndex += 1
 }
 
 Scorecard.prototype.nextRoll = function() {
-  return (this.isCurrentFrameNew()) ? 1 : 2 
+  return (this.isCurrentFrameNew()) ? 1 : 2
 }
 
 Scorecard.prototype.currentFrame = function() {
-  return this.frames[this.currentFrameNum()]
+  return this.frames[this.currentFrameIndex()]
 }
 
-Scorecard.prototype.currentFrameNum = function() {
-  return this._currentFrameNum
+Scorecard.prototype.currentFrameIndex = function() {
+  return this._currentFrameIndex
 }
 
 Scorecard.prototype.isCurrentFrameNew = function() {
@@ -47,9 +47,9 @@ Scorecard.prototype.isCurrentFrameComplete = function() {
 }
 
 Scorecard.prototype.isGameComplete = function() {
-  if (this.currentFrameNum() == 10 && this.isCurrentFrameComplete() && !this.isFrameStrike(this.frames[10]) && !this.isFrameSpare(this.frames[10])) return true
-  if (this.currentFrameNum() == 11 && !this.isFrameStrike(this.frames[10]) && !this.isCurrentFrameNew()) return true
-  if (this.currentFrameNum() == 12 && !this.isCurrentFrameNew()) return true
+  if (this.currentFrameIndex() == 9 && this.isCurrentFrameComplete() && !this.isFrameStrike(this.frames[9]) && !this.isFrameSpare(this.frames[10])) return true
+  if (this.currentFrameIndex() == 10 && !this.isFrameStrike(this.frames[9]) && !this.isCurrentFrameNew()) return true
+  if (this.currentFrameIndex() == 11 && !this.isCurrentFrameNew()) return true
   return false
 }
 
@@ -68,14 +68,16 @@ Scorecard.prototype.frameScore = function(frame) {
 }
 
 Scorecard.prototype.currentScore = function() {
+  var array = [].concat.apply([], this.frames)
   var score = 0
-  for (var i = 1; i <= this.currentFrameNum() && i <= 10; i++) {
-    score += this.frameScore(this.frames[i])
-    if (this.isFrameStrike(this.frames[i]) && this.frames[i+1] !== undefined) {
-      score += this.frameScore(this.frames[i+1])
-      if (this.isFrameStrike(this.frames[i+1]) && this.frames[i+2] !== undefined) { score += this.frames[i+2][0] }
-    }
-    if (this.isFrameSpare(this.frames[i]) && this.frames[i+1] !== undefined) { score += this.frames[i+1][0] }
+  for (var i = 0; i < array.length && i < 20; i = i + 2) {
+    score += array[i] + array[i+1]
+    if (array[i] === 10) {
+      score += array[i+2]
+      if (array[i+2] === 10) { score += array[i+4] }
+      else { score += array[i+3] }
+     }
+    else if (array[i] + array[i+1] === 10) { score += array[i+2] }
   }
   return score
 }

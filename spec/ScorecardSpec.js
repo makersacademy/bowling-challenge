@@ -6,8 +6,8 @@ describe("Scorecard",function() {
   })
 
   it("should have 12 empty frames", function() {
-    expect(Object.keys(scorecard.frames).length).toEqual(12)
-    expect(scorecard.frames[12]).toEqual([null,null])
+    expect(scorecard.frames.length).toEqual(12)
+    expect(scorecard.frames[11]).toEqual([null,null])
   })
 
   describe("nextRoll",function(){
@@ -22,23 +22,23 @@ describe("Scorecard",function() {
 
   describe("addRoll",function(){
     it("should add roll to frames",function(){
-      console.log(scorecard.frames)
       scorecard.addRoll(5)
-      expect(scorecard.frames[1][0]).toEqual(5)
+      expect(scorecard.frames[0][0]).toEqual(5)
     })
     it("should add second roll to second slot in frame",function(){
       scorecard.addRoll(5)
       scorecard.addRoll(3)
-      expect(scorecard.frames[1]).toEqual([5,3])
+      expect(scorecard.frames[0]).toEqual([5,3])
     })
     it("moves on to next frame if first roll is 10",function(){
       scorecard.addRoll(10)
-      expect(scorecard.currentFrameNum()).toEqual(2)
+      expect(scorecard.currentFrameIndex()).toEqual(1)
     })
     it("should not be added if 10 frames have been completed",function(){
-      for (var i=1; i < 10; i++) { scorecard.addRoll(10) }
+      for (var i=0; i < 10; i++) { scorecard.addRoll(10) }
       scorecard.addRoll(5)
       scorecard.addRoll(3)
+      console.log(scorecard.frames)
       expect(scorecard.addRoll(4)).toEqual(false)
     })
   })
@@ -49,14 +49,14 @@ describe("Scorecard",function() {
     })
   })
 
-  describe("currentFrameNum",function() {
-    it("should return 1 when no roll has been made",function(){
-      expect(scorecard.currentFrameNum()).toEqual(1)
+  describe("currentFrameIndex",function() {
+    it("should return 0 when no roll has been made",function(){
+      expect(scorecard.currentFrameIndex()).toEqual(0)
     })
-    it("should return 2 when two rolls under 10 have been made",function(){
+    it("should return 1 when two rolls under 10 have been made",function(){
       scorecard.addRoll(5)
       scorecard.addRoll(3)
-      expect(scorecard.currentFrameNum()).toEqual(2)
+      expect(scorecard.currentFrameIndex()).toEqual(1)
     })
   })
 

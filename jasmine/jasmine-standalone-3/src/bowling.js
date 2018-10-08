@@ -3,6 +3,7 @@
 function Bowling() {
   this.rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   this.counter = 0;
+  // this.frame = 0;
 };
 
 Bowling.prototype.roll = function (pins) {

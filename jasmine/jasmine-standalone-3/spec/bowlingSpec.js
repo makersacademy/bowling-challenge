@@ -30,7 +30,7 @@ describe('Bowling game', function() {
     game.roll(5);
     game.roll(4);
     game.roll(4);
-    for (var i = 0; i < 17; i++) {
+    for (var i = 0; i < 15; i++) {
       game.roll(0);
     }
     expect(game.score()).toEqual(32);

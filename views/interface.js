@@ -10,7 +10,8 @@ $(document).ready(function() {
     event.preventDefault(); // what does this do?... stops page refresh?
     // game.roll($('#bowlButt').val());
     // game.roll($('Bowl').val());
-    game.roll(5); // *** HOW DO I PASS IN 'PINS' ***
+    var num = Number($('#bowlButt').val());
+    game.roll(num); // *** HOW DO I PASS IN 'PINS' ***
     $('#scorer').text(game.score());
   });
 

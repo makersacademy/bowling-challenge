@@ -3,11 +3,18 @@
 var Frame = require('./frame')
 var Pins = require('./pins')
 
-function Game (frameClass = Frame, pins = new Pins()) {
-  this.pins = pins
-  this.frameClass = frameClass
+function createFrameObject () {
+  new Frame()
+}
+function Game (args) {
+  if (args === undefined) args = {}
+  if (args.frameClass === undefined) args.frameClass = Frame
+  if (args.pins === undefined) args.pins = new Pins()
+
+  this.frameClass = args.frameClass
   this.frames = []
   this.needNewFrame = true
+  this.pins = args.pins
 }
 
 Game.prototype.roll = function (rollScore) {
@@ -58,15 +65,3 @@ Game.prototype._pins = function () {
 }
 
 module.exports = Game
-
-//
-// function Game (args) {
-//   if (args === undefined) args = {}
-//   if (args.frameClass === undefined) args.frameClass = Frame
-//   if (args.pins === undefined) args.pins = new Pins()
-//
-//   this.frameClass = args.frameClass
-//   this.frames = []
-//   this.rolls = 0
-//   this.pinsLeft = 10
-// }

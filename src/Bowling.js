@@ -26,5 +26,5 @@ Bowling.prototype.showCurrentFrame = function() {
 }
 
 Bowling.prototype.showCurrentFrameNum = function() {
-  return this.scorecard.currentFrameIndex() + 1
+  return this.scorecard.currentFrameNum()
 }

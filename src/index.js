@@ -21,12 +21,14 @@ $(document).ready(function() {
     })
   }
 
-  function placeError(msg) {
+  function showError(msg) {
+    $('#error').addClass('visible')
     $('#error').text(msg)
   }
 
   function removeError() {
-    $('#error').text('')
+    $('#error').removeClass('visible')
+    $('#error').addClass('hidden')
   }
 
   function removeFrames() {
@@ -37,22 +39,45 @@ $(document).ready(function() {
     $('#score').text(bowling.showCurrentScore())
   }
 
-  updateFrames()
-  updateScore()
+  //update current frame
+  function updateCurrentFrame() {
+    $('#frame-'+bowling.showCurrentFrameNum()-1).removeClass("currentFrame")
+    $('#frame-'+bowling.showCurrentFrameNum()).addClass("currentFrame")
+  }
 
-  //indicate current frame with red color
-  $('#frame-'+bowling.showCurrentFrameNum()).addClass("currentFrame")
+  //update current roll
+  function updateCurrentRoll() {
+    if (bowling.showNextRoll() === 1) {
+      $('#roll-'+bowling.showCurrentFrameNum() - 1 +'-2').removeClass("nextRoll")
+      $('#roll-'+bowling.showCurrentFrameNum()+'-1').addClass("nextRoll")
+    } else {
+      $('#roll-'+bowling.showCurrentFrameNum()+'-1').removeClass("nextRoll")
+      $('#roll-'+bowling.showCurrentFrameNum()+'-2').addClass("nextRoll")
+    }
+  }
 
-  //indicate current roll with green color
-  $('#roll-'+bowling.showCurrentFrameNum()+'-'+bowling.showNextRoll()).addClass("nextRoll")
+  function updateDisplays() {
+    updateFrames()
+    updateScore()
+    updateCurrentRoll()
+    updateCurrentFrame()
+  }
+
+  updateDisplays()
+
 
   //roll button
   $('#roll-btn').click(function(){
     removeError()
     var pins = parseInt($('#roll-value').val())
-    if (typeof(bowling.roll(pins)) === 'string') placeError(bowling.roll(pins))
+    if (typeof(bowling.roll(pins)) === 'string') showError(bowling.roll(pins))
     removeFrames()
-    updateFrames()
-    updateScore()
+    updateDisplays()
   })
+
+  //start new gram
+  $('.start-new').click(function(){
+    location.reload()
+  })
+
  })

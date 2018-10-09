@@ -1,13 +1,31 @@
+.bowling-form {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.currentFrame {
+  border: 2px red solid !important;
+}
+
 .error {
   color: red;
   border: 1px red solid;
-  
+
 }
 
 .frame {
+  border: 2px black solid;
   display: inline-block;
+  height: 100px;
   margin-left: 5px;
   margin-right: 5px;
+  padding: 3px;
+  vertical-align: top;
+}
+
+.frames {
+  padding-top: 5px;
+  padding-bottom: 10px;
 }
 
 .frame-no {
@@ -15,18 +33,24 @@
   font-weight: bold;
 }
 
-.frame-11 {
-  color: lightgrey;
+.hidden {
+  display: none;
 }
 
-.frame-12 {
+.inactive {
   color: lightgrey;
-}
-
-.currentFrame {
-  border: 1px red solid;
 }
 
 .nextRoll {
   color: green;
+}
+
+.score {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.visible {
+  display: block;
 }

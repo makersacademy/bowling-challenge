@@ -28,11 +28,11 @@ Scorecard.prototype.nextRoll = function() {
 }
 
 Scorecard.prototype.currentFrame = function() {
-  return this.frames[this.currentFrameIndex()]
+  return this.frames[this.currentFrameNum()]
 }
 
-Scorecard.prototype.currentFrameIndex = function() {
-  return this._currentFrameIndex
+Scorecard.prototype.currentFrameNum = function() {
+  return this._currentFrameNum
 }
 
 Scorecard.prototype.isFrameNew = function(frame) {

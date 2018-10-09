@@ -1,5 +1,7 @@
-.game-stat {
-  display: block;
+.error {
+  color: red;
+  border: 1px red solid;
+  
 }
 
 .frame {

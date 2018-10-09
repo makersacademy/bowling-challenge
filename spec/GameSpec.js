@@ -12,6 +12,10 @@ describe('Bowling', function() {
       game.roll(5);
       expect(game.rolls).toContain(5);
     });
+
+    it("throws an error if more than 10 pins", function() {
+      expect(function() {game.roll(11)}).toThrow('Invalid input!');
+    });
   });
 
   describe("#countFrame", function() {
@@ -140,6 +144,18 @@ describe('Bowling', function() {
       expect(game.hasBonus()).toEqual(false);
     });
   });
+
+  describe("#resetGame", function() {
+    it("should reset frame count and rolls to start new game",function () {
+      game.roll(3);
+      game.roll(4);
+      game.roll(5);
+      game.roll(2);
+      game.resetGame();
+      expect(game.frameCount).toEqual(0);
+      expect(game.rolls).toEqual([]);
+    })
+  })
 
   describe("game with all score variations", function() {
     it("should score 110", function() {

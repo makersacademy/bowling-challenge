@@ -6,6 +6,9 @@ function Game() {
 };
 
 Game.prototype.roll = function(pins) {
+  if (pins > 10) {
+    throw "Invalid input!";
+  };
   this.rolls.push(pins);
   this.countFrame(pins);
 };
@@ -65,4 +68,9 @@ Game.prototype.score = function() {
     };
   };
    return total;
+};
+
+Game.prototype.resetGame = function() {
+  this.rolls = [];
+  this.frameCount = 0;
 };

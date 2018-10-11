@@ -45,13 +45,22 @@ describe('Game class', function () {
     })
 
     it('raises an error if the input over 10', function () {
+      var pinsSpy = {
+        isImpossibleScore: function() {
+          console.log("Here is am")
+          throw 'Not enough pins'
+        }
+      }
+      var args = { pins: pinsSpy }
+      console.log(args.pins)
+      var game = new Game(args)
       expect(function () { game.roll(12) }).toThrow('Not enough pins')
     })
-
-    it('raises an error if the input exceeds number of pins left', function () {
-      game.roll(9)
-      expect(function () { game.roll(2) }).toThrow('Not enough pins')
-    })
+    // NOT SURE THIS TEST IS NEED ANYMORE: MAYBE KEEP IT FOR FEATURES?
+    // it('raises an error if the input exceeds number of pins left', function () {
+    //   game.roll(9)
+    //   expect(function () { game.roll(2) }).toThrow('Not enough pins')
+    // })
   })
 
   describe('#calculateTotalScore', function () {

@@ -40,9 +40,7 @@ Game.prototype._makeNewFrame = function () {
 }
 
 Game.prototype._toggleNeedNewFrame = function (rollScore) {
-  if (rollScore === 10) {
-    this.needNewFrame = true
-  } else {
+  if (rollScore !== 10) {
     this.needNewFrame = !this.needNewFrame
   }
 }

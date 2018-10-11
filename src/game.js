@@ -4,14 +4,14 @@ var Frame = require('./frame')
 var Pins = require('./pins')
 
 function createFrameObject () {
-  new Frame()
+  return new Frame()
 }
 function Game (args) {
   if (args === undefined) args = {}
-  if (args.frameClass === undefined) args.frameClass = Frame
+  if (args.frameFactory === undefined) args.frameFactory = createFrameObject
   if (args.pins === undefined) args.pins = new Pins()
 
-  this.frameClass = args.frameClass
+  this.frameFactory = args.frameFactory
   this.frames = []
   this.needNewFrame = true
   this.pins = args.pins
@@ -35,7 +35,7 @@ Game.prototype._makeNewFrame = function () {
     return
   }
   if (this.needNewFrame) {
-    this.frames.push(new this.frameClass())
+    this.frames.push(this.frameFactory())
   }
 }
 

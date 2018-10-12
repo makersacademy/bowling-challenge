@@ -2,6 +2,7 @@ function Bowling(){
   this._total_score = [];
   this._frame_number = 1;
   this._roll_number = 1;
+  this._frames = [[],[],[],[],[],[],[],[],[],[],[]]
 };
 
 Bowling.prototype.roll_number = function(){
@@ -12,25 +13,32 @@ Bowling.prototype.roll_number = function(){
 };
 
 Bowling.prototype.roll = function(score){
- this._total_score.push(score);
-
-  if (score === 10) {this._frame_number += 1;
-  } else {
-   if (this._roll_number === 1){
-    this._roll_number += 1;
-   } else if (this._roll_number === 2){
-     this._roll_number = 1;
-     this._frame_number += 1;
-   };
+  if (this._frame_number < 11) {
+    this._total_score.push(score);
+    this._frames[this._frame_number].push(score);
+    if (score === 10) {this._frame_number += 1;
+    } else {
+     if (this._roll_number === 1){
+      this._roll_number += 1;
+     } else if (this._roll_number === 2){
+       this._roll_number = 1;
+       this._frame_number += 1;
+     };
+  };
  };
 };
 
-Bowling.prototype.total_score = function(frame_number){
+Bowling.prototype.total_score = function(){
   function getSum(total, num) {
       return total + num;
   }
   return this._total_score.reduce(getSum);
 };
+
+Bowling.prototype.frame_score = function(){
+  console.log(this._frame_number)
+  return this._frames[this._frame_number - 1].reduce( (previousValue, currentValue) => previousValue + currentValue, 0);
+}
 
 Bowling.prototype.frame_number = function(){
   if (this._frame_number < 11)
@@ -43,4 +51,3 @@ Bowling.prototype.frame_number = function(){
 // Sanitize the input?
 // 10th frame: state of frames; using one big array with the score, but that includes a lot of if statements.
 // you can create different objects or 1 with different functions: different objects would be a Frame(), Bowling()...
-//

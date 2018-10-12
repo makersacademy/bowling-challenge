@@ -65,31 +65,31 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 User stories:
 As a player,
 So I can have fun,
-I can enter my score of roll.
+I can enter my score of roll. --done
 
 As a player,
 So I know when to stop,
-I can count the frame
+I can count the frame --done
 
 As a player,
 So I know when to stop,
-I can count the roll
+I can count the roll  -- done
 
 As a player,
 So I can be average again,
-I can enter a second roll in the same frame unless my first roll was a 10.
+I can enter a second roll in the same frame unless my first roll was a 10. --done
 
 As a player,
 So I can brag, I want to see the score of my frame and the total.
 
 As a player,
 So I can be average,
-If my score is not equal to 10 and my roll isn’t a strike, add the two rolls.
+If my score is not equal to 10 and my roll isn’t a strike, add the two rolls. --done
 
 
 As a player
 So I know I win at life
-When I hit 10, I have a strike and my frame closes.
+When I hit 10, I have a strike and my frame closes. -- done
 
 As a player,
 So I get my points calculated properly,

@@ -4,7 +4,10 @@ describe("Bowling", function(){
    var bowling = new Bowling;
    bowling.roll(5)
    bowling.roll(2)
+   console.log(bowling._frames)
+   console.log(bowling._frame_number)
    expect(bowling.total_score()).toEqual(7)
+   expect(bowling.frame_score()).toEqual(7)
  });
 
  it("calculates the score of the frame when spare",function(){
@@ -21,7 +24,6 @@ describe("Bowling", function(){
     bowling.roll(1)
     bowling.roll(1)
     expect(bowling.total_score(1)).toEqual(6)
-
  });
 
  it("counts the number of rounds no strike",function(){
@@ -61,5 +63,4 @@ describe("Bowling", function(){
    expect(bowling.frame_number()).toEqual("Game over")
    expect(bowling.roll_number()).toEqual("Game over")
  });
-
 });

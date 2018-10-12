@@ -29,7 +29,7 @@ Bowling.prototype.score = function () {
 
   for (var frame = 0; frame < 10; frame++) {
     if (this.rolls[rollsIndex] == 10) {
-      matchResult += this.rolls[rollsIndex] + this.rolls[rollsIndex + 1] + this.rolls[rollsIndex + 2];
+      matchResult += this.rolls[rollsIndex] + this.rolls[rollsIndex + 2] + this.rolls[rollsIndex + 3];
       rollsIndex++; // STRIKE!
     } else if (this.rolls[rollsIndex] + this.rolls[rollsIndex + 1] == 10) {
       matchResult += this.rolls[rollsIndex] + this.rolls[rollsIndex + 1] + this.rolls[rollsIndex + 2];

@@ -3,12 +3,16 @@
   <head>
     <title>Bowling Game</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="./frame.css"></script>
-    <script src='./src/Bowling.js'></script>
-    <script src='./interface.js'></script>
+
+    <script src='./jasmine-standalone-3/src/Bowling.js'></script>
+    <script src='./jasmine-standalone-3/src/interface.js'></script>
+    <script src='./jasmine-standalone-3/src/frame.js'></script>
+
+    <link rel="stylesheet" type="text/css" href="frame.css">
+    
   </head>
   <body>
-    <h1>Welcome to Bowling</h1>
+    <!-- <h1>Welcome to Bowling</h1>
     <div>
       Current Frame <span><label id='currentFrame'></label></span><br>
     </div>
@@ -28,10 +32,10 @@
         </table>
     </div>
   </body>
-</html>
+</html> -->
 
 
-<!-- <h1 class="title">Bowling Score Card</h1>
+<h1 class="title">Bowling Score Card</h1>
   <div id="buttons" class="buttons">
     Pins Hit:
     <button type="button" onclick="pinHit(0)"  class="btn btn-primary">Gutter</button>
@@ -87,7 +91,9 @@
   </table>
 </div>
 <h1 id="comments" class="notice"></h1>
+<!-- <input type ='text' id="extrarollinput" class="extrarollinput" placeholder="please enter pins" value=""></h1> -->
 <h1 id="gameover" class="notice"></h1>
 <h1 id="yourscore" class="final-score"></h1>
 <div id="playagain"></div>
-</html> -->
+</body>
+</html>

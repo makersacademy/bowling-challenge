@@ -47,13 +47,14 @@ describe('BowlingGame', function(){
         })
     });
 
-    describe('#gameOver',function(){
-        it('terminates the game after 10 frames', function(){
-            bowling._frames.length = 10;
-            bowling.currentMove(5);
-            expect(bowling.gameOver()).toBe(true);
-        })
-    });
+    // describe('#gameOver',function(){
+    //     it('terminates the game after 10 frames', function(){
+    //         bowling._frames.length = 10;
+    //         //bowling.isRollValid(5);
+    //         bowling.currentMove(5);
+    //         expect(bowling.gameOver()).toBe(true);
+    //     })
+    // });
 
 
 

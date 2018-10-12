@@ -10,6 +10,10 @@ function BowlingGame(){
     this._currentframe;
     this.lastIndex;
     this.count = 0;
+    this._score;
+    this.runScore = [];
+    this.frameScore = {1:[], 2:[], 3:[], 4:[], 5:[], 6:[], 7:[], 8:[], 9:[], 10:[]};
+
 }
 
 BowlingGame.prototype = {
@@ -24,17 +28,26 @@ BowlingGame.prototype = {
     currentMove: function(pins_down){
         let pins;
         this.countRolls += 1;
-        //if(this.isRollValid(pins_down)){
+        // this.isRollValid(pins_down);
+        // if(this.isRollValid(pins_down)){   
             if (this.countRolls === 1) { 
                 this.addFrame(new Frame());
                 this.setLastIndex();
                 this._frames[this.lastIndex].firstRoll = pins_down ;
+                if(this.lastIndex < 10) {
+                this.frameScore[this.lastIndex+1].push(pins_down);
+                }
+                //this.frameScore[this.lastIndex+1].push(pins_down);
                 this.setCurrentScore(pins_down);
                 //this._currentScore += pins_down;
                 if(pins_down === 10) { this.countRolls = 0; } 
             } else {
                 if (pins_down + this._frames[this.lastIndex].firstRoll > 10 ) { throw new Error("only 10 pins per frame!"); }
                 this._frames[this.lastIndex].secondRoll = pins_down;
+                //this.frameScore[this.lastIndex+1].push(pins_down);
+                if(this.lastIndex < 10) {
+                    this.frameScore[this.lastIndex+1].push(pins_down);
+                    }
                 this.countRolls = 0;
                 this.setCurrentScore(pins_down);
                 //this._currentScore += pins_down;
@@ -46,7 +59,7 @@ BowlingGame.prototype = {
             this.checkForPerfectGame(pins);
             //if((this._currentframe.isStrike(this._currentframe)) || (this._currentScore === 10)){ this.addExtraRoll(this.lastIndex, pins);}
          }
-       // }
+    //    }
     },
 
     setCurrentScore: function(pins_down){
@@ -59,20 +72,13 @@ BowlingGame.prototype = {
             }
     },
 
-    setLastIndex: function(){
-        let frame;
-        frame = this._frames[this._frames.length - 1];
-        this._currentframe = frame;
-        this.lastIndex = this._frames.indexOf(frame);
-    },
-
     addExtraRoll: function(index, pins){
         let frame = this._frames[index];
         let pins_down = pins;
         if (pins_down === 10 && this._frames[index].firstRoll === 10 && this.count === 0) {
             this.count = 1;
             this._frames[index].secondRoll = 10;
-            this.addExtraRoll(index, pins);
+           // this.addExtraRoll(index, pins);
         }
         else {
 
@@ -84,6 +90,35 @@ BowlingGame.prototype = {
             //  }
         }
     },
+
+    setLastIndex: function(){
+        let frame;
+        frame = this._frames[this._frames.length - 1];
+        this._currentframe = frame;
+        this.lastIndex = this._frames.indexOf(frame);
+    },
+
+    frameRunningScore: function(){
+        let frame = this._frames[this._frames.length - 1];
+        //let frame = this._frames[this.lastIndex];
+        frame._score = frame.firstRoll + frame.secondRoll;
+        
+        for(let i = 0; i < this._frames.length; i++){
+            if(this.runScore[i]){
+            //  this.runScore[i] = this._frames[this._frames.length - 1].firstRoll + this._frames[this._frames.length - 1].secondRoll
+              this.runScore[i] = frame._score;
+             }
+          }
+        //frame._output = frame.firstRoll === 10 ?
+        if(frame.firstRoll === 10) { 
+            frame._output = 'strike';
+        }
+        else if (frame._score === 10) { frame._output = 'spare';}
+        else { frame._output = 'normal'; }
+        return this._frames ; 
+    },
+
+    
 
     calculateScore: function(){
         //let bonus;
@@ -105,6 +140,7 @@ BowlingGame.prototype = {
                 }
             
             this._totalScore += this._frames[index].firstRoll + this._frames[index].secondRoll + this._frames[index].extraRoll + bonus;
+            //return this._totalScore;
         }
     },
 
@@ -142,11 +178,11 @@ BowlingGame.prototype = {
           return false;
         }else if(this._frames.length > 10){
           this.gameover = true;
-        //   throw new Error("Game Over");
+            //throw new Error("Game Over");
           return false;
         }else{
-            this.currentMove(pinsHit);
-          //return true;
+            //this.currentMove(pinsHit);
+          return true;
         }
       },
       

@@ -3,9 +3,8 @@ $(document).ready(function() {
   // var pins // need????
   $('#scorer').text(0);
   $('#pins').text(0);
-  // $('#pins').text(?????);
+  $('#ball').text(0);
   // $('#frame').text(????);
-  // $('#ball').text(????);
 
   $('#roller').submit(function(event){
     event.preventDefault(); // what does this do?... stops page refresh?
@@ -13,12 +12,14 @@ $(document).ready(function() {
     game.roll(num);
     $('#scorer').text(game.score());
     $('#pins').text(game.scorecard());
+    $('#ball').text(game.ball());
   });
 
   $('#reset').click(function(){ // put reset function in the logic instead?
     game = new Bowling();
     $('#scorer').text(game.score());
     $('#pins').text(0);
+    $('#ball').text(0);
   });
 
   // the below is to stop repetition...

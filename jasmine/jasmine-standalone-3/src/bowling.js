@@ -3,16 +3,24 @@
 function Bowling() {
   this.rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   this.counter = 0;
+  this.ballCount = 0;
   this.frameCount = 0;
-    // var ball = 0;
 };
 
 Bowling.prototype.roll = function (pins) {
   this.rolls[this.counter] = pins;
   this.counter += 1;
   console.log(this.rolls);
-  console.log('roll number ' + this.counter);
-  console.log('frame ' + this.frameCount);
+
+  if (this.ballCount >= 2) {
+    this.ballCount = 1;
+    console.log('ball ' + this.ballCount);
+  } else {
+    this.ballCount++;
+    console.log('ball ' + this.ballCount);
+  }
+
+  // console.log('frame ' + this.frameCount);
 };
 
 Bowling.prototype.score = function () {

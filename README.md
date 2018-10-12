@@ -2,6 +2,10 @@
 Bowling Challenge
 =================
 
+## Website link
+
+[BowlingScoreBoard](https://bowlingscoreboard.netlify.com/)
+
 ## The Task
 
 **THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
@@ -12,10 +16,9 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 
 ## Installation Steps
 1. Clone this repo
-2. Run in browser 
-`
-bowling-challenge/index.html
-`
+2. Run in browser `index.html`
+## Run the test
+1. Open the path `SpecRunner.html` in browser.
 
 ## Eslint
 1.  `cd` to the root directory of the repo

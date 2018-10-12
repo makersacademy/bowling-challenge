@@ -55,9 +55,7 @@ $( document ).ready(function() {
       }
       var frameScoreSelector = 'frame-score-' + i;
       var frameScore = game.frameScore(i);
-      if(frameScore !== 0){
         $('#' + frameScoreSelector).text(frameScore);
-      }
     }
     $('#total-score').text(game.totalScore());
     

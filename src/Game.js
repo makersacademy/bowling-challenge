@@ -21,15 +21,6 @@ Game.prototype = {
   },
 
   roll : function(number){
-    
-    //  //stike change frame number
-    // if (this._frames[this._currentFrameNumber][0] === 10) { 
-    //   this._currentFrameNumber += 1;
-    // } else if(this._frames[this._currentFrameNumber].length === 2) {
-    //   this._currentFrameNumber += 1;
-    // }
-
-
     this._frames[this._currentFrameNumber].push(number);
 
     let frameSum = this._frames[this._currentFrameNumber].reduce(function(a, b){return a+b;}, 0);

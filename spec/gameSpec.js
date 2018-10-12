@@ -46,9 +46,9 @@ describe('Game class', function () {
 
     it('raises an error if the input over 10', function () {
       var pinsSpy = {
-        isImpossibleScore: function() {
+        isImpossibleScore: function () {
           // console.log("Here is am")
-          throw 'Not enough pins'
+          throw new Error('Not enough pins')
         }
       }
       var args = { pins: pinsSpy }

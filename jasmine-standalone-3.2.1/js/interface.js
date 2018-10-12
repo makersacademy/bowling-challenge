@@ -3,6 +3,7 @@ $(document).ready(function(){
 
   $('#frame_number').text(bowling.frame_number());
   $('#roll_number').text(bowling.roll_number());
+  $('#frame_score').text(bowling.frame_score());
 
   $('#zero').click(function(){
     bowling.roll(0)
@@ -10,6 +11,8 @@ $(document).ready(function(){
     $('#total_score').text(bowling.total_score());
     $('#frame_number').text(bowling.frame_number());
     $('#roll_number').text(bowling.roll_number());
+    $('#frame_score').text(bowling.frame_score());
+
   });
 
   $('#one').click(function(){
@@ -18,6 +21,8 @@ $(document).ready(function(){
     $('#total_score').text(bowling.total_score());
     $('#frame_number').text(bowling.frame_number());
     $('#roll_number').text(bowling.roll_number());
+    $('#frame_score').text(bowling.frame_score());
+
   });
   $('#two').click(function(){
     bowling.roll(2)
@@ -25,6 +30,8 @@ $(document).ready(function(){
     $('#total_score').text(bowling.total_score());
     $('#frame_number').text(bowling.frame_number());
     $('#roll_number').text(bowling.roll_number());
+    $('#frame_score').text(bowling.frame_score());
+
   });
 
   $('#three').click(function(){
@@ -33,6 +40,8 @@ $(document).ready(function(){
     $('#total_score').text(bowling.total_score());
     $('#frame_number').text(bowling.frame_number());
     $('#roll_number').text(bowling.roll_number());
+    $('#frame_score').text(bowling.frame_score());
+
   });
 
   $('#four').click(function(){
@@ -41,6 +50,8 @@ $(document).ready(function(){
     $('#total_score').text(bowling.total_score());
     $('#frame_number').text(bowling.frame_number());
     $('#roll_number').text(bowling.roll_number());
+    $('#frame_score').text(bowling.frame_score());
+
   });
 
   $('#five').click(function(){
@@ -49,6 +60,8 @@ $(document).ready(function(){
     $('#total_score').text(bowling.total_score());
     $('#frame_number').text(bowling.frame_number());
     $('#roll_number').text(bowling.roll_number());
+    $('#frame_score').text(bowling.frame_score());
+
   });
 
   $('#six').click(function(){
@@ -57,6 +70,8 @@ $(document).ready(function(){
     $('#total_score').text(bowling.total_score());
     $('#frame_number').text(bowling.frame_number());
     $('#roll_number').text(bowling.roll_number());
+    $('#frame_score').text(bowling.frame_score());
+
   });
 
   $('#seven').click(function(){
@@ -65,6 +80,8 @@ $(document).ready(function(){
     $('#total_score').text(bowling.total_score());
     $('#frame_number').text(bowling.frame_number());
     $('#roll_number').text(bowling.roll_number());
+    $('#frame_score').text(bowling.frame_score());
+
   });
 
   $('#eight').click(function(){
@@ -73,6 +90,8 @@ $(document).ready(function(){
     $('#total_score').text(bowling.total_score());
     $('#frame_number').text(bowling.frame_number());
     $('#roll_number').text(bowling.roll_number());
+    $('#frame_score').text(bowling.frame_score());
+
   });
 
   $('#nine').click(function(){
@@ -81,6 +100,8 @@ $(document).ready(function(){
     $('#total_score').text(bowling.total_score());
     $('#frame_number').text(bowling.frame_number());
     $('#roll_number').text(bowling.roll_number());
+    $('#frame_score').text(bowling.frame_score());
+
   });
 
   $('#ten').click(function(){
@@ -89,5 +110,8 @@ $(document).ready(function(){
     $('#total_score').text(bowling.total_score());
     $('#frame_number').text(bowling.frame_number());
     $('#roll_number').text(bowling.roll_number());
+    $('#frame_score').text(bowling.frame_score());
+
   });
+
 });

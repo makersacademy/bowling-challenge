@@ -4,8 +4,7 @@ describe("Bowling", function(){
    var bowling = new Bowling;
    bowling.roll(5)
    bowling.roll(2)
-   console.log(bowling._frames)
-   console.log(bowling._frame_number)
+   console.log(bowling.frame_score())
    expect(bowling.total_score()).toEqual(7)
    expect(bowling.frame_score()).toEqual(7)
  });

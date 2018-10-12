@@ -36,9 +36,8 @@ Bowling.prototype.total_score = function(){
 };
 
 Bowling.prototype.frame_score = function(){
-  console.log(this._frame_number)
   return this._frames[this._frame_number - 1].reduce( (previousValue, currentValue) => previousValue + currentValue, 0);
-}
+};
 
 Bowling.prototype.frame_number = function(){
   if (this._frame_number < 11)

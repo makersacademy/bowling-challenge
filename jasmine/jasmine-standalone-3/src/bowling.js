@@ -3,17 +3,16 @@
 function Bowling() {
   this.rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   this.counter = 0;
-  // this.frame = 0;
+  this.frameCount = 0;
+    // var ball = 0;
 };
 
 Bowling.prototype.roll = function (pins) {
-  // var int = parseInt(num, 10);
-  // var pins = num;
-  // console.log('this is the integer: ' + pins);
   this.rolls[this.counter] = pins;
   this.counter += 1;
   console.log(this.rolls);
   console.log('roll number ' + this.counter);
+  console.log('frame ' + this.frameCount);
 };
 
 Bowling.prototype.score = function () {
@@ -34,4 +33,16 @@ Bowling.prototype.score = function () {
   }
 
   return matchResult;
+};
+
+Bowling.prototype.scorecard = function () {
+  return this.rolls;
+};
+
+Bowling.prototype.ball = function () {
+  return this.ballCount;
+};
+
+Bowling.prototype.frame = function () {
+  return this.frameCount;
 };

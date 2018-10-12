@@ -8,13 +8,13 @@
 
     <h1>BOWLING CHALLENGE!</h1>
     <br>
-    <h2>Score so far:</h2>
+    <h2>Total score so far:</h2>
     <h2 id="scorer">game.score</h2>
     <br>
     <br>
-    <h2>Type pins to bowl</h2>
+    <h2>Select pins to bowl (1-10)</h2>
     <form id="roller">
-      <input type="text" id="bowlButt">
+      <input type="number" id="bowlButt" min="1" max="10" step="1">
       <input type="submit" value="Bowl">
     </form>
     <br>
@@ -23,7 +23,8 @@
 
     <h3>Ball...</h3>
 
-    <h3>Pins log...</h3>
+    <h3>Pins scorecard...</h3>
+    <h3 id="pins">game.scorecard</h3>
 
     <br>
     <h3>Reset match:</h3>

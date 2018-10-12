@@ -22,7 +22,6 @@ Bowling.prototype.roll = function(score){
  };
 };
 
-
 Bowling.prototype.total_score = function(frame_number){
   function getSum(total, num) {
       return total + num;
@@ -33,3 +32,9 @@ Bowling.prototype.total_score = function(frame_number){
 Bowling.prototype.frame_number = function(){
   return this._frame_number;
 };
+
+// Regex: regular expressions, make the code a lot shorter. They tend to be hard to read.
+// Sanitize the input?
+// 10th frame: state of frames; using one big array with the score, but that includes a lot of if statements.
+// you can create different objects or 1 with different functions: different objects would be a Frame(), Bowling()...
+//

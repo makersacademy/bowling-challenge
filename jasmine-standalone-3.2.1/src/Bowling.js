@@ -36,7 +36,11 @@ Bowling.prototype.total_score = function(){
 };
 
 Bowling.prototype.frame_score = function(){
-  return this._frames[this._frame_number - 1].reduce( (previousValue, currentValue) => previousValue + currentValue, 0);
+  var frame_score = this._frames[this._frame_number - 1].reduce( (previousValue, currentValue) => previousValue + currentValue, 0);
+  if (frame_score === 10 && this._frames[this._frame_number - 1].length === 2) {return 10 + this._frames[this._frame_number][0]}
+  else {
+    return frame_score
+  };
 };
 
 Bowling.prototype.frame_number = function(){

@@ -14,7 +14,7 @@ describe("Bowling", function(){
    bowling.roll(4)
    bowling.roll(6)
    bowling.roll(6)
-   expect(bowling.total_score()).toEqual(16)
+   expect(bowling.frame_score()).toEqual(16)
  });
 
  it("only calculates the score of frame", function(){

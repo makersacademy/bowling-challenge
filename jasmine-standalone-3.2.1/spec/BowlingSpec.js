@@ -45,4 +45,21 @@ describe("Bowling", function(){
    expect(bowling.roll_number()).toEqual(2)
  });
 
+ it("stops the game after 10 frames", function(){
+   var bowling = new Bowling;
+   bowling.roll(10)
+   bowling.roll(10)
+   bowling.roll(10)
+   bowling.roll(10)
+   bowling.roll(10)
+   bowling.roll(10)
+   bowling.roll(10)
+   bowling.roll(10)
+   bowling.roll(10)
+   bowling.roll(10)
+   bowling.roll(5)
+   expect(bowling.frame_number()).toEqual("Game over")
+   expect(bowling.roll_number()).toEqual("Game over")
+ });
+
 });

@@ -5,7 +5,10 @@ function Bowling(){
 };
 
 Bowling.prototype.roll_number = function(){
- return this._roll_number;
+ if (this._frame_number < 11)
+   {return this._roll_number
+ } else {
+   return "Game over"};
 };
 
 Bowling.prototype.roll = function(score){
@@ -30,7 +33,10 @@ Bowling.prototype.total_score = function(frame_number){
 };
 
 Bowling.prototype.frame_number = function(){
-  return this._frame_number;
+  if (this._frame_number < 11)
+    {return this._frame_number
+  } else {
+    return "Game over"};
 };
 
 // Regex: regular expressions, make the code a lot shorter. They tend to be hard to read.

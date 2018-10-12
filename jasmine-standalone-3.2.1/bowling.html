@@ -1,18 +1,33 @@
 <DOCTYPE! html>
 <html>
+<head>
+<style>
+body {background-color: powderblue; text-align: center; margin-top: 100px;}
+h1   {color: grey;}
+</style>
+</head>
 
 <body>
-  <h2> Welcome to the bowling game </h2>
+  <h1> Welcome to the bowling game </h1>
 
-  Frame number: <span id=frame_number> #frame_number </span>,
-  Roll: <span id=roll_number> #roll_number </span>
+  <p>Frame number: <span id=frame_number> #frame_number </span>,
+  Roll: <span id=roll_number> #roll_number </span></p>
 
-  <form>
-  <br><label>Enter this roll score:</label>
-  <input type="text" id="pins" name="pins">
-  <input type="button" id="text_value" value="Go"/>
 
-  Your total score is currently: <span id=#total_score> 0 </span>
+  <p><br>Enter this roll score:</p>
+  <button type=button id="zero">0</button>
+  <button type=button id="one">1</button>
+  <button type=button id="two">2</button>
+  <button type=button id="three">3</button>
+  <button type=button id="four">4</button>
+  <button type=button id="five">5</button>
+  <button type=button id="six">6</button>
+  <button type=button id="seven">7</button>
+  <button type=button id="eight">8</button>
+  <button type=button id="nine">9</button>
+  <button type=button id="ten">10</button><br>
+
+  <p>Your total score is currently: <span id=total_score> 0 </span></p>
 
 
 

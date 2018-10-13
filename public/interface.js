@@ -2,13 +2,15 @@ $(document).ready(function(){
   var bowling = new BowlingGame;
 
   $('.pin').on('click',function(data){
-    $('#frame' + bowling.currentFrame + 'throw' + bowling.currentThrow).text(data.currentTarget.innerHTML)
-    strikeChangeToX(data.currentTarget.innerHTML);
-    spareChangeToSlash(data.currentTarget.innerHTML);
-    bowling.throw(data.currentTarget.innerHTML);
+    var throwToInteger = Number(data.currentTarget.innerHTML)
+    $('#frame' + bowling.currentFrame + 'throw' + bowling.currentThrow).text(throwToInteger)
+    strikeChangeToX(throwToInteger);
+    spareChangeToSlash(throwToInteger);
+    bowling.throw(throwToInteger);
     hideImpossibleThrows();
     $('#currentFrame').text("Frame Number:" + bowling.currentFrame);
     $('#currentThrow').text("Throw number:" + bowling.currentThrow);
+    bowling.calculateScore();
   });
 
   strikeChangeToX = function(strike) {

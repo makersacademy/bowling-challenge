@@ -7,14 +7,9 @@ function Frame(){
     this._score;
     this._output;
     this.extraRoll =0;
-    
 }
 
 Frame.prototype = {
-    reset: function(){
-
-    },
-
     isStrike: function(frame){
         if(frame.firstRoll === 10) { return true; }
     },
@@ -22,37 +17,6 @@ Frame.prototype = {
     isSpare: function(frame){
         if(frame._score === 10) { return true; }
     },
-
-    
-
-
-
 }
 
-    
-//     BowlingGame.prototype.currentMove = function(pins) {
-//         let frame;
-//         this.countRolls += 1;
-//         if ( this.isStrike() ) {
-//           this.strikeScoring(pins);
-//         } else if ( this.isSpare() ) {
-//           this.spareScoring(pins);
-//         } else {
-//           this.addToScore(pins);
-//           if ( this.isFirstRoll() ) {
-//             this.incrementRoll();
-//           } else {
-//             this.resetFrame(pins);
-//           }
-//         }
-//       };
-    
-// },
-//         isStrike(){
-//             frame = this._frames[this._frames.length - 1];
-//             if (frame.firstRoll === 10) { return true ;}
-//         }
 
-//     Game.prototype.isFirstRoll(){
-//         if(this.countRolls === 1) { return true; }
-//     }

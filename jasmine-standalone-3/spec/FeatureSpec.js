@@ -9,7 +9,7 @@ describe('Features', function(){
     beforeEach(function(){
         frame = new Frame();
         bowling = new BowlingGame();
-        // player = new Player(frame);
+
     });
     function rollMany (n, pins) {
 		for (var i = 0; i < n; i++) {
@@ -44,17 +44,17 @@ describe('Features', function(){
             bowling.calculateScore();
             expect(bowling._totalScore).toEqual(23);
         })
-    })
+    });
+
     describe('strike move', function(){
         it('when 10 pins down in first roll it is a strike', function(){
             bowling.currentMove(10); 
-            //bowling.currentMove(0);
             bowling.currentMove(5);
             bowling.currentMove(3);
             bowling.calculateScore();
             expect(bowling._totalScore).toEqual(26);
         })
-    })
+    });
 
     describe('spare move in 10th frame', function(){
         it('when spare moves happen in the last frame extraRoll is added', function(){
@@ -101,7 +101,6 @@ describe('Features', function(){
             bowling.currentMove(4);
             bowling.currentMove(10);
             bowling.currentMove(10);
-            //bowling.currentMove(8);
             bowling.addExtraRoll(9, 6);
             bowling.calculateScore();
             expect(bowling._totalScore).toEqual(133);
@@ -115,7 +114,6 @@ describe('Features', function(){
             bowling.addExtraRoll(9, 10);
             bowling.calculateScore();
             expect(bowling._totalScore).toEqual(300);
-
         })
     })
 
@@ -123,9 +121,7 @@ describe('Features', function(){
         it("should handle gutter game", function() {
             rollMany(20, 0);
             bowling.calculateScore();
-           // expect(game.score()).to.equal(0);
             expect(bowling._totalScore).toEqual(0);
-
         });
     })
 });

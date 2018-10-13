@@ -3,8 +3,6 @@ describe('BowlingGame', function(){
     var frame;
     beforeEach(function(){
         frame = jasmine.createSpyObj('frame', ['reset']);
-        //frame = jasmine.createSpyObj('frame',['isStormy']);
-
         bowling = new BowlingGame();
     });
     function rollMany (n, pins) {
@@ -33,7 +31,6 @@ describe('BowlingGame', function(){
             frame.secondRoll = 4;
             frame.extraRoll = 0;
             bowling.addFrame(frame);
-            // bowling._frames = frame;
             bowling.calculateScore();
             expect(bowling._totalScore).toEqual(5);
         })     
@@ -55,7 +52,4 @@ describe('BowlingGame', function(){
     //         expect(bowling.gameOver()).toBe(true);
     //     })
     // });
-
-
-
 });

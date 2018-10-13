@@ -10,7 +10,6 @@ $('#rollBall').submit(function(event){
 })
 
 
-
 function updateScores() {
   $('#gamescore').text(game.totalScore);
   $('#framescore').text(game._currentFrame.frameScore);

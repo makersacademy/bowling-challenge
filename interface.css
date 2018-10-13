@@ -1,0 +1,9 @@
+body {
+  background-image: url("sparkly background.jpg");
+  font-family: "Lucida Console", Monaco, monospace;
+  text-align: center;
+  outline-style: double;
+  max-width: 50%;
+  margin: auto;
+  padding-bottom: 20px
+}

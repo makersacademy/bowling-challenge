@@ -44,8 +44,12 @@ Bowling.prototype.score = function () {
   var matchResult = 0;
   var rollsIndex = 0;
   for (var frame = 0; frame < 10; frame++) {
-    if (this.rolls[rollsIndex] === 0 && this.rolls[rollsIndex + 1] === 10) {
-      matchResult += this.rolls[rollsIndex + 0] + this.rolls[rollsIndex + 1] + this.rolls[rollsIndex + 2] + this.rolls[rollsIndex + 3];
+
+    if (this.rolls[rollsIndex] === 10 && this.rolls[rollsIndex + 1] === 10) {
+      matchResult += this.rolls[rollsIndex] + this.rolls[rollsIndex + 2] + this.rolls[rollsIndex + 4];
+      rollsIndex += 2; // consecutive STRIKES!
+    } else if (this.rolls[rollsIndex] === 0 && this.rolls[rollsIndex + 1] === 10) {
+      matchResult += this.rolls[rollsIndex] + this.rolls[rollsIndex + 1] + this.rolls[rollsIndex + 2] + this.rolls[rollsIndex + 3];
       rollsIndex += 2; // 2nd ball of frame is a STRIKE followed by 1st ball STRIKE of next frame.
     } else if (this.rolls[rollsIndex] === 10) {
       matchResult += this.rolls[rollsIndex] + this.rolls[rollsIndex + 2] + this.rolls[rollsIndex + 3];

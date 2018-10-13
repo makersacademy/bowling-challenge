@@ -1,28 +1,36 @@
 function Frame() {
-  this.balls = [null, null];
+  this.rolls = [];
+  this.maxPins = 10;
   this.frameOver = false;
-}
 
-Frame.prototype.addBallScore = function(index,amount) {
-  this.balls[index] = amount;
-}
-
-Frame.prototype.validateBallTotal = function() {
-  var total = this.balls[0] + this.balls[1]
-  return this.balls.reduce((a, b) => a + b, 0) > 10 ? false : true;
-}
-
-Frame.prototype.addFrameToGame = function() {
-  if (!this.validateBallTotal()) {
-    throw "Not a valid score";
-  } else if (this.balls[0] === null || this.balls[1] === null) {
-    throw "Both scores must be present";
-  } else {
-    game.setScore(this.balls[0], this.balls[1]);
-    this.resetFrame();
+  this.addRoll = function(num) {
+    if (num > this.maxPins) {
+      throw new Error("Invalid input");
+      return;
+    }
+    if (this.isStrike(num)) {
+      this.rolls.push(num);
+    } else {
+      this.rolls.push(num);
+    }
   }
-}
 
-Frame.prototype.resetFrame = function() {
-  this.balls = [null, null];
+  this.isStrike = function(num) {
+    if (this.rolls.length === 0 && num === this.maxPins) {
+      this.frameOver = true;
+      return true;
+    }
+    return false;
+  }
+
+  this.isSpare = function() {
+    if (this.rolls.length === 2) {
+      let total = this.rolls[0] + this.rolls[1];
+      if (total === this.maxPins) {
+        this.frameOver = true;
+        return true;
+      }
+    }
+    return false;
+  }
 }

@@ -1,9 +1,9 @@
-function Game (){
+function Game (frame = new Frame()){
   this.totalScore = 0;
   this._frameNumber = 1;
   this.doubleFirstScoreNextRound = false;
   this.doubleBothScoresNextRound = false;
-  this._currentFrame = new Frame();
+  this._currentFrame = frame
 };
 
 

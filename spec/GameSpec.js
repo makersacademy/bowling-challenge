@@ -3,6 +3,7 @@ describe ("Game", function(){
   beforeEach(function(){
     game = new Game();
     frame = new Frame();
+
   })
 
   describe ('rollBall', function(){
@@ -12,6 +13,7 @@ describe ("Game", function(){
     })
 
     it("calls to newFrame function if currentFrame has no rolls left, ensuring that the rolls are reset", function(){
+
       game.rollBall(2);
       game.rollBall(5);
       game.rollBall(3);

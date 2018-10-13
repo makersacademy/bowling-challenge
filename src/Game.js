@@ -54,4 +54,8 @@ Game.prototype._isBonus = function() {
     this.doubleBothScoresNextRound = false
     this.doubleFirstScoreNextRound = false
   }
+
+  Game.prototype.test = function() {
+    return "test";
+  }
 };

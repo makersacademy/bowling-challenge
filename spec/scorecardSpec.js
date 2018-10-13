@@ -4,6 +4,12 @@ describe ('Scorecard', function() {
 
   var scorecard;
 
+  function playGame(rolls, knockedPins) {
+    for (var i = 0; i < rolls; i++) {
+    scorecard.roll(knockedPins);
+  }
+};
+
   beforeEach(function() {
     scorecard = new Scorecard();
   });
@@ -43,6 +49,14 @@ describe ('Scorecard', function() {
       scorecard.roll(4);
       scorecard.roll(6);
       expect(scorecard.isSpare()).toEqual(true);
+    });
+
+  });
+
+  describe ('#totalScore', function() {
+    it('calculates the total score of a game', function() {
+      playGame(20, 4);
+      expect(scorecard.totalScore()).toEqual(80);
     });
 
   });

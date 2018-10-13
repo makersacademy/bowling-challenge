@@ -26,3 +26,7 @@ Scorecard.prototype.isSpare = function() {
   var frameIndex = 0;
   return this.pointsTracker[frameIndex] + this.pointsTracker[frameIndex + 1] === 10;
 };
+
+Scorecard.prototype.totalScore = function() {
+  return this.pointsTracker.reduce((a, b) => a + b, 0);
+};

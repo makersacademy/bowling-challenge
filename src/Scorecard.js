@@ -5,7 +5,15 @@ function Scorecard() {
   this.frameScore = [];
 };
 
-Scorecard.prototype.roll = function (knockedPins) {
+Scorecard.prototype.roll = function(knockedPins) {
   this.currentRoll++;
   this.frameScore.push(knockedPins);
+};
+
+Scorecard.prototype.getFrameScore = function() {
+  return this.frameScore;
+};
+
+Scorecard.prototype.getCurrentRoll = function() {
+  return this.currentRoll;
 };

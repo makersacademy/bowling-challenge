@@ -3,12 +3,15 @@ var game = new Game();
 
 $('#gamescore').text(game.totalScore);
 
+$('#framescore').text(game._currentFrame.frameScore);
+
 $('#rollBall').submit(function(event){
   event.preventDefault();
-  var number = $('#number').val();
-  n = Number(number); //put this in logic
-  game.rollBall(n);
-  $('#gamescore').text(game.totalScore);
+  game.rollBall($('#number').val());
+  $('#gamescore').text(game.totalScore); //could refactor into a method
+  $('#framescore').text(game._currentFrame.frameScore);
 })
+
+
 
 })

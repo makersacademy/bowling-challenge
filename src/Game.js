@@ -8,6 +8,7 @@ function Game (){
 
 
 Game.prototype.rollBall = function(userInput) {
+  userInput = Number(userInput) //(how to refactor?)
    // I THINK THIS NEEDS TO BE CALLED SOMEWHERE ELSE. AND SOMETHING NEEDS TO SET IT BACK AGAIN
 
   //easy enough to call to a method here that raises an error if game number is over 10

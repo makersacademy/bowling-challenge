@@ -53,7 +53,7 @@ Game.prototype.score = function () {
 
   if (this.hasBonus()) {
     maxRolls -= 2
-  };
+  }
   for (var i = 0; i < maxRolls; i++) {
     if (this.isStrike(i)) {
       total += this.rolls[i] + this.rolls[i + 1] + this.rolls[i + 2]

@@ -1,5 +1,6 @@
 'use strict'
 /* global  Game */
+
 describe('Bowling', function () {
   var game
 

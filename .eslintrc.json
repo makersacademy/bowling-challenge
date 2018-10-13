@@ -1,6 +1,12 @@
 {
-  "extends": ["airbnb-base", "plugin:jasmine/recommended"],
+  "extends": "standard",
   "env": {
-    "jasmine": true
+    "browser": true,
+    "jasmine": true,
+    "node": true
+  },
+  "globals": {
+    "Frame": true,
+    "Scorecard": true
   }
 }

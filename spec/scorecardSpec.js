@@ -1,31 +1,31 @@
-describe('Scorecard', function() {
-  beforeEach(function() {
-    this.frame1 = jasmine.createSpyObj('frame', ['bowl']);
-    this.scorecard = new Scorecard([this.frame1]);
-  });
+describe('Scorecard', function () {
+  beforeEach(function () {
+    this.frame1 = jasmine.createSpyObj('frame', ['bowl'])
+    this.scorecard = new Scorecard([this.frame1])
+  })
 
-  describe('constructor', function() {
-    it('should have an empty frames array', function() {
-      let sc = new Scorecard();
-      expect(sc.frames).toEqual([]);
-    });
+  describe('constructor', function () {
+    it('should have an empty frames array', function () {
+      let sc = new Scorecard()
+      expect(sc.frames).toEqual([])
+    })
 
-    it('should have a pre-populated frames array', function() {
-      expect(this.scorecard.frames).toEqual([this.frame1]);
-    });
+    it('should have a pre-populated frames array', function () {
+      expect(this.scorecard.frames).toEqual([this.frame1])
+    })
 
-    it('should have a totalScore of zero', function() {
-      expect(this.scorecard.totalScore).toEqual(0);
-    });
-  });
+    it('should have a totalScore of zero', function () {
+      expect(this.scorecard.totalScore).toEqual(0)
+    })
+  })
 
-  describe('bowl', function() {
-    describe('first bowl (not a strike)', function() {
-      it('should bowl the ball', function() {
-        this.scorecard.bowl(4);
-        expect(this.scorecard.frames[0].bowl).toHaveBeenCalledWith(4);
-      });
-    });
+  describe('bowl', function () {
+    describe('first bowl (not a strike)', function () {
+      it('should bowl the ball', function () {
+        this.scorecard.bowl(4)
+        expect(this.scorecard.frames[0].bowl).toHaveBeenCalledWith(4)
+      })
+    })
 
     // describe('first bowl is a strike!', function() {
     //   it('should create a new frame', function() {});
@@ -58,5 +58,5 @@ describe('Scorecard', function() {
 
     //   it('should not update the total score', function() {});
     // });
-  });
-});
+  })
+})

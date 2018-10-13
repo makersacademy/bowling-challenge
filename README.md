@@ -1,7 +1,7 @@
 
 Bowling Challenge
 =================
-
+[travis](https://travis-ci.org/m-rcd/bowling-challenge.svg?branch=master)
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

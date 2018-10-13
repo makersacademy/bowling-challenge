@@ -10,34 +10,36 @@ function Bowling() {
 
 Bowling.prototype.roll = function (pins) {
   this.strikeFlag = false;
-  if (pins === 10 && this.ballCount === 2) { // ball 2 strike
-    this.rolls[this.counter] = pins;
-    this.counter += 1;
-    this.strikeFlag = true;
-    this.ballCount = 1;
-    this.frameCount += 1;
-    console.log(this.strikeFlag);
-  } else if (pins === 10 && this.ballCount === 1) { // ball 1 strike
-    this.rolls[this.counter] = pins;
-    this.counter += 2;
-    this.strikeFlag = true;
-    this.ballCount = 1;
-    this.frameCount += 1;
-    console.log(this.strikeFlag);
-  } else if (this.ballCount === 2) { // ball 2 normal score
-    this.rolls[this.counter] = pins;
-    this.counter += 1;
-    this.strikeFlag = false;
-    this.ballCount = 1;
-    this.frameCount += 1;
-    console.log(this.strikeFlag);
-  } else {
-    this.rolls[this.counter] = pins; // ball 1 normal score
-    this.counter += 1;
-    this.strikeFlag = false;
-    this.ballCount = 2;
-    console.log(this.strikeFlag);
-  }
+
+    if (pins === 10 && this.ballCount === 2) { // ball 2 strike
+      this.rolls[this.counter] = pins;
+      this.counter += 1;
+      this.strikeFlag = true;
+      this.ballCount = 1;
+      this.frameCount += 1;
+      console.log(this.strikeFlag);
+    } else if (pins === 10 && this.ballCount === 1) { // ball 1 strike
+      this.rolls[this.counter] = pins;
+      this.counter += 2;
+      this.strikeFlag = true;
+      this.ballCount = 1;
+      this.frameCount += 1;
+      console.log(this.strikeFlag);
+    } else if (this.ballCount === 2) { // ball 2 normal score
+      this.rolls[this.counter] = pins;
+      this.counter += 1;
+      this.strikeFlag = false;
+      this.ballCount = 1;
+      this.frameCount += 1;
+      console.log(this.strikeFlag);
+    } else {
+      this.rolls[this.counter] = pins; // ball 1 normal score
+      this.counter += 1;
+      this.strikeFlag = false;
+      this.ballCount = 2;
+      console.log(this.strikeFlag);
+    }
+
 };
 
 Bowling.prototype.score = function () {
@@ -76,3 +78,8 @@ Bowling.prototype.ball = function () {
 Bowling.prototype.frame = function () {
   return this.frameCount;
 };
+
+// Bowling.prototype.gameOver = function () {
+//   return "FINAL SCORE = " + this.score();
+//   return "GAME OVER";
+// };

@@ -1,14 +1,11 @@
 'use strict'
 
-var Frame = require('./frame')
+var frameFactory = require('./frame')
 var Pins = require('./pins')
 
-function createFrameObject () {
-  return new Frame()
-}
 function Game (args) {
   if (args === undefined) args = {}
-  if (args.frameFactory === undefined) args.frameFactory = createFrameObject
+  if (args.frameFactory === undefined) args.frameFactory = frameFactory
   if (args.pins === undefined) args.pins = new Pins()
 
   this.frameFactory = args.frameFactory

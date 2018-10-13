@@ -2,13 +2,6 @@ var Game = require('../src/game')
 
 describe('Game class', function () {
   describe('#roll', function () {
-    // var frame = {
-    //   inputScore: jasmine.createSpy('inputScore')
-    // }
-    // var frameClass = {
-    //   prototype: jasmine.createSpy('Prototype')
-    //   // .and.returnValue("frame")
-    // }
     var game
 
     beforeEach(function () {
@@ -47,20 +40,13 @@ describe('Game class', function () {
     it('raises an error if the input over 10', function () {
       var pinsSpy = {
         isImpossibleScore: function () {
-          // console.log("Here is am")
           throw new Error('Not enough pins')
         }
       }
       var args = { pins: pinsSpy }
-      console.log(args.pins)
       var game = new Game(args)
       expect(function () { game.roll(12) }).toThrow('Not enough pins')
     })
-    // NOT SURE THIS TEST IS NEED ANYMORE: MAYBE KEEP IT FOR FEATURES?
-    // it('raises an error if the input exceeds number of pins left', function () {
-    //   game.roll(9)
-    //   expect(function () { game.roll(2) }).toThrow('Not enough pins')
-    // })
   })
 
   describe('#calculateTotalScore', function () {
@@ -114,7 +100,7 @@ describe('Game class', function () {
       var game = new Game()
 
       it('Scores 300 on a Perfect game', function () {
-        for (var i = 0; i < 29; i++) {
+        for (var i = 0; i < 12; i++) {
           game.roll(10)
         }
         expect(game.calculateTotalScore()).toEqual(300)

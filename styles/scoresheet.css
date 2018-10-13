@@ -22,7 +22,7 @@ th, td {
   text-align: center;
 }
 
-button {
+.pin {
   height: 40px;
   width: 40px;
   font-size: 15px;
@@ -52,6 +52,22 @@ button:hover {
   justify-content: center;
 }
 
+#play-again {
+  height: 40px;
+  width: 100px;
+  font-size: 15px;
+  background-color: white;
+  color: black;
+  border: 2px solid #008CBA;
+  outline: none;
+  margin: 10px;
+  border-radius: 10%;
+}
+
+#play-again:hover {
+  background-color: #008CBA;
+  color: white;
+}
 
 .bg {
   /* background-image: url("../images/bowling-background.jpg"); */

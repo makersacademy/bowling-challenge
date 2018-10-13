@@ -1,7 +1,21 @@
 $(document).ready(function(){
   var bowling = new BowlingGame;
+  $('#play-again').hide();
+
+  $('#play-again').on('click',function(data){
+    bowling = new BowlingGame;
+    $('#play-again').hide();
+    for (var i = 0; i < 11; i++) {
+      $("#" + i + "pin").show()
+      $('#currentFrame').text("Frame Number:" + bowling.currentFrame);
+      $('#currentThrow').text("Throw number:" + bowling.currentThrow);
+      $('.frame').text('-');
+      $('.unusedframe').text('-');
+    }
+  })
 
   $('.pin').on('click',function(data){
+    console.log(bowling.allThrows);
     var throwToInteger = Number(data.currentTarget.innerHTML)
     $('#frame' + bowling.currentFrame + 'throw' + bowling.currentThrow).text(throwToInteger)
     strikeChangeToX(throwToInteger);
@@ -11,6 +25,7 @@ $(document).ready(function(){
     $('#currentFrame').text("Frame Number:" + bowling.currentFrame);
     $('#currentThrow').text("Throw number:" + bowling.currentThrow);
     bowling.calculateScore();
+    if (bowling.currentFrame > 10) gameOver();
   });
 
   strikeChangeToX = function(strike) {
@@ -41,6 +56,15 @@ $(document).ready(function(){
       for (var i = 0; i < 11; i++) {
         $("#" + i + "pin").show()
       }
+    }
+  }
+
+  gameOver = function() {
+    $('#play-again').show();
+    for (var i = 0; i < 11; i++) {
+      $("#" + i + "pin").hide()
+      $('#currentFrame').text("game over");
+      $('#currentThrow').text("game over");
     }
   }
 });

@@ -1,6 +1,5 @@
 $(document).ready(function() {
   var game = new Bowling();
-  // var pins // need????
   $('#scorer').text(0);
   $('#pins').text(0);
   $('#ball').text(1);
@@ -20,7 +19,7 @@ $(document).ready(function() {
     game = new Bowling();
     $('#scorer').text(game.score());
     $('#pins').text(0);
-    $('#ball').text(0);
+    $('#ball').text(1);
     $('#frame').text(1);
   });
 

@@ -1,53 +1,42 @@
-import { Frame } from './frame';
+function Scorecard(frames = []) {
+  this.frames = frames;
+  this.totalScore = 0;
+}
 
-function createNewFrame() {
+Scorecard.prototype._createNewFrame = function() {
   this.frames.push(new Frame());
-  return this.lastFrame();
-}
+  return this._lastFrame();
+};
 
-function gameHasStarted() {
+Scorecard.prototype._gameHasStarted = function() {
   return this.frames.length > 0;
-}
+};
 
-function getCurrentFrame() {
-  if (!this.gameHasStarted() || this.lastFrameIsOver()) {
-    return this.createNewFrame();
+Scorecard.prototype._getCurrentFrame = function() {
+  if (!this._gameHasStarted() || this._lastFrameIsOver()) {
+    return this._createNewFrame();
   }
-  return this.lastFrame();
-}
+  return this._lastFrame();
+};
 
-function lastFrame() {
+Scorecard.prototype._lastFrame = function() {
   return this.frames[this.frames.length - 1];
-}
+};
 
-function lastFrameIsOver() {
-  let lastFrame = this.lastFrame();
-  if (this.isTenthFrame) {
+Scorecard.prototype._lastFrameIsOver = function() {
+  let lastFrame = this._lastFrame();
+  if (this._isTenthFrame) {
     return false;
   } else {
     return lastFrame.complete || lastFrame.score === 10;
   }
-}
+};
 
-function isTenthFrame() {
+Scorecard.prototype._isTenthFrame = function() {
   return this.frames.length === 10;
-}
+};
 
-export class Scorecard {
-  constructor(frames = []) {
-    // bind private functions to this class
-    this.createNewFrame = createNewFrame.bind(this);
-    this.gameHasStarted = gameHasStarted.bind(this);
-    this.getCurrentFrame = getCurrentFrame.bind(this);
-    this.lastFrame = lastFrame.bind(this);
-    this.lastFrameIsOver = lastFrameIsOver.bind(this);
-    this.isTenthFrame = isTenthFrame.bind(this);
-    this.frames = frames;
-    this.totalScore = 0;
-  }
-
-  bowl(pinsKnockedDown) {
-    let currentFrame = this.getCurrentFrame();
-    currentFrame.bowl(pinsKnockedDown);
-  }
-}
+Scorecard.prototype.bowl = function(pinsKnockedDown) {
+  let currentFrame = this._getCurrentFrame();
+  currentFrame.bowl(pinsKnockedDown);
+};

@@ -1,5 +1,3 @@
-import { Scorecard } from '../src/scorecard.js';
-
 describe('Scorecard', function() {
   beforeEach(function() {
     this.frame1 = jasmine.createSpyObj('frame', ['bowl']);

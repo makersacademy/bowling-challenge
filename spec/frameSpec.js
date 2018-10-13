@@ -1,5 +1,3 @@
-import { Frame } from '../src/frame.js';
-
 describe('Frame', function() {
   beforeEach(function() {
     this.frame = new Frame();

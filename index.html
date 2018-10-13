@@ -7,7 +7,6 @@
 <body>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
- <!-- <section> -->
 
 Total Game Score: <span id=gamescore></span>
 
@@ -15,27 +14,16 @@ Total Game Score: <span id=gamescore></span>
 Roll The Ball:
 
 <form id="rollBall">
-  <input id="number" type="text" placeholder="Enter a number"></input>
+
+  <select id="number">
+    <option value="1">1</option>
+    <option value="2">2</option>    
+  </select>
+
   <input type="submit"></input>
 </form>
 
 </p>
-
-
-
- <!-- <select id="rollBall">
-
- <option value="1">1</option>
- <option value="2">2</option>
-
-
- </select>  -->
-
-
-
-
-
-<!-- </section> -->
 
 
 <script src="src/Game.js"></script>

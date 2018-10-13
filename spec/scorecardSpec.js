@@ -14,6 +14,12 @@ describe ('Scorecard', function() {
       expect(scorecard.frameScore).toEqual([4]);
     });
 
+    it('rolling the ball adds one count to currentRoll tracker', function() {
+      scorecard.roll(4);
+      scorecard.roll(5);
+      expect(scorecard.currentRoll).toEqual(2);
+    });
+
   });
 
 });

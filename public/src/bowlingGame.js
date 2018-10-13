@@ -8,7 +8,7 @@ function BowlingGame(name) {
 
 BowlingGame.prototype.throw = function (pins) {
   this.allThrows.push(pins)
-  if (pins == 10) {
+  if (pins == 10 && this.currentThrow == 1) {
     this.allThrows.push(null)
     this.currentFrame += 1
     this.currentthrow = 1

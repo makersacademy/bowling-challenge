@@ -14,16 +14,18 @@ $(document).ready(function(){
   });
 
   strikeChangeToX = function(strike) {
-    if (strike == 10) {
-      $('#frame' + bowling.currentFrame + 'throw2').text('X')
-      $('#frame' + bowling.currentFrame + 'throw1').text('_')
+    if (strike == 10 && bowling.currentThrow == 1) {
+      console.log("this should be happening");
+      $('#frame' + bowling.currentFrame + 'throw1').text('X')
+      $('#frame' + bowling.currentFrame + 'throw2').text('-')
+      $('#frame' + bowling.currentFrame + 'throw2').css('color','white')
     }
   }
 
   spareChangeToSlash = function(thisThrow) {
     if (bowling.currentThrow == 2) {
       var throws = bowling.allThrows.length
-      if (Number(bowling.allThrows[throws-1]) + Number(thisThrow) == 10) {
+      if (bowling.allThrows[throws-1] + thisThrow == 10 && bowling.allThrows[throws-1] !== 10) {
         $('#frame' + bowling.currentFrame + 'throw2').text('/')
       }
     }
@@ -31,9 +33,8 @@ $(document).ready(function(){
 
   hideImpossibleThrows = function() {
     var throws = bowling.allThrows.length
-    console.log(Number(bowling.allThrows[throws-1]));
     if (bowling.currentThrow == 2) {
-      for (var i = (10 - Number(bowling.allThrows[throws-1])+1) ; i < 11; i++) {
+      for (var i = (10 - (bowling.allThrows[throws-1])+1) ; i < 11; i++) {
         $("#" + i + "pin").hide()
       }
     } else {

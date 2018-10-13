@@ -5,9 +5,11 @@
     <title></title>
     <link rel="stylesheet" href="../styles/scoresheet.css">
   </head>
-  <body>
+  <body class="bg">
+    <span id="heading-span">
     <h1 id="currentFrame">Frame number: 1</h1>
     <h2 id="currentThrow">Throw number: 1</h2>
+    </span>
 
     <button class='pin' id="0pin">0</button>
     <button class='pin' id="1pin">1</button>
@@ -21,7 +23,7 @@
     <button class='pin' id="9pin">9</button>
     <button class='pin' id="10pin">10</button>
 
-
+    <div id="table-div">
     <table id="main-scoresheet">
       <tr>
         <th id="name-heading">Name</th>
@@ -38,18 +40,68 @@
       </tr>
       <tr>
         <td>Aidan</td>
-        <td><table><tr><th>-</th><th id="frame1throw1">-</th><th id="frame1throw2">-</th></tr></table>-</td>
-        <td><table><tr><th>-</th><th id="frame2throw1">-</th><th id="frame2throw2">-</th></tr></table>-</td>
-        <td><table><tr><th>-</th><th id="frame3throw1">-</th><th id="frame3throw2">-</th></tr></table>-</td>
-        <td><table><tr><th>-</th><th id="frame4throw1">-</th><th id="frame4throw2">-</th></tr></table>-</td>
-        <td><table><tr><th>-</th><th id="frame5throw1">-</th><th id="frame5throw2">-</th></tr></table>-</td>
-        <td><table><tr><th>-</th><th id="frame6throw1">-</th><th id="frame6throw2">-</th></tr></table>-</td>
-        <td><table><tr><th>-</th><th id="frame7throw1">-</th><th id="frame7throw2">-</th></tr></table>-</td>
-        <td><table><tr><th>-</th><th id="frame8throw1">-</th><th id="frame8throw2">-</th></tr></table>-</td>
-        <td><table><tr><th>-</th><th id="frame9throw1">-</th><th id="frame9throw2">-</th></tr></table>-</td>
-        <td><table><tr><th id="frame10throw1">-</th><th id="frame10throw2">-</th><th id="frame1throw3">-</th></tr></table>-</td>
+        <td>
+          <table><tr><th class="unusedframe">-</th>
+            <th id="frame1throw1">-</th>
+            <th id="frame1throw2">-</th>
+          </tr></table><span>-</span></td>
+
+        <td><table><tr>
+          <th class="unusedframe">-</th>
+          <th id="frame2throw1">-</th>
+          <th id="frame2throw2">-</th>
+        </tr></table>-</td>
+
+        <td><table><tr>
+          <th class="unusedframe">-</th>
+          <th id="frame3throw1">-</th>
+          <th id="frame3throw2">-</th>
+        </tr></table>-</td>
+
+        <td><table><tr>
+          <th class="unusedframe">-</th>
+          <th id="frame4throw1">-</th>
+          <th id="frame4throw2">-</th>
+        </tr></table>-</td>
+
+        <td><table><tr>
+          <th class="unusedframe">-</th>
+          <th id="frame5throw1">-</th>
+          <th id="frame5throw2">-</th>
+        </tr></table>-</td>
+
+        <td><table><tr>
+          <th class="unusedframe">-</th>
+          <th id="frame6throw1">-</th>
+          <th id="frame6throw2">-</th>
+        </tr></table>-</td>
+
+        <td><table><tr>
+          <th class="unusedframe">-</th>
+          <th id="frame7throw1">-</th>
+          <th id="frame7throw2">-</th>
+        </tr></table>-</td>
+
+        <td><table><tr>
+          <th class="unusedframe">-</th>
+          <th id="frame8throw1">-</th>
+          <th id="frame8throw2">-</th>
+        </tr></table>-</td>
+
+        <td><table><tr>
+          <th class="unusedframe">-</th>
+          <th id="frame9throw1">-</th>
+          <th id="frame9throw2">-</th>
+        </tr></table>-</td>
+
+        <td><table><tr>
+          <th id="frame10throw1">-</th>
+          <th id="frame10throw2">-</th>
+          <th id="frame10throw3">-</th>
+        </tr></table>-</td>
       </tr>
     </table>
+    </div>
     <script
     src="https://code.jquery.com/jquery-3.3.1.js"
     integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="

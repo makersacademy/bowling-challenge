@@ -9,6 +9,7 @@ describe('Game',function(){
     game = new Game();
     frame = jasmine.createSpyObj('frame',['totalFrameScore', 'isASpare', 'isAStrike']);
     frame2 = jasmine.createSpyObj('frame2',['totalFrameScore', 'isASpare', 'isAStrike', 'pinsFirstRoll']);
+    self = jasmine.createSpyObj('self', ['frameBonus'])
   });
 
   it('starts with no frames by default', function(){
@@ -35,20 +36,32 @@ describe('Game',function(){
     });
   });
 
-  describe('total game score', function(){
-    it('returns total score of current game', function(){
+  describe('current game score', function(){
+    it('returns total score of game even though only one roll', function(){
       game.addFrame(frame);
       frame.totalFrameScore.and.returnValue(6)
+      expect(game.frameBonus).toHaveBeenCalled
       expect(game.currentGameScore()).toEqual(6)
     });
 
-    it('returns total score of current game', function(){
+    it('returns total score of game (no bonuses implied)', function(){
       game.addFrame(frame);
       game.addFrame(frame2);
       frame.totalFrameScore.and.returnValue(6)
       frame2.totalFrameScore.and.returnValue(7)
+      expect(game.frameBonus).toHaveBeenCalled
       expect(game.currentGameScore()).toEqual(13)
     });
+
+    xit('returns total score of game with bonuses implied', function() {
+      game.addFrame(frame);
+      game.addFrame(frame2);
+      frame.totalFrameScore.and.returnValue(10)
+      game.frameBonus(frame).and.returnValue(3)
+      frame2.totalFrameScore.and.returnValue(7)
+      expect(game.currentGameScore()).toEqual(20)
+    });
+
   });
 
   describe('frameBonus', function(){

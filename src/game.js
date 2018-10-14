@@ -14,8 +14,9 @@ Game.prototype.addFrame = function (frame) {
 
 Game.prototype.currentGameScore = function () {
   var total = 0
+  var self = this
   this.frames.forEach(function(thisFrame) {
-    total += thisFrame.totalFrameScore();
+    total += (thisFrame.totalFrameScore() + self.frameBonus(thisFrame));
   });
   return total
 };

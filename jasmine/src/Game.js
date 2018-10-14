@@ -9,12 +9,18 @@ Game.prototype = {
 
   enterDroppedPins: function (number = 0) {
     this._addFrameIfNecessary()
-    this._findActive().enterRoll(number)
-    this._findWaiting().forEach(function (frame){ frame.enterBonus(number) })
+    this._findWaitingFrames().forEach(function (frame){
+      frame.enterBonus(number)
+    })
+    this._findActiveFrame().enterRoll(number)
   },
 
-  getCurrentFrame: function () { 
-    return this._currentFrame
+  getFrame: function (number) {
+    return this._frames[number - 1]
+  },
+
+  getCurrentFrameNumber: function () { 
+    return this._frames.length
   },
 
   getNumberOfFrames: function () {
@@ -22,13 +28,28 @@ Game.prototype = {
   },
 
   getDroppedPins: function () {
-    return this._droppedPins
+    return this._frames.map(function (frame) {
+      return frame.getRolls()
+    })
+  },
+  
+  getBonusRolls: function () {
+    return this._frames.map(function (frame) {
+      return frame.getBonus()
+    })
+  },
+
+  getCurrentScore: function () {
+    return this._frames.map(function (frame) {
+      return frame.calculateScore()}).reduce(function(acc, value){
+        return acc + value
+      },0)
   },
 
   _addFrameIfNecessary: function () {
     if (
       this._isFirst() ||
-      (!this._isLast() && this._findActive() === undefined)
+      (!this._isLast() && this._findActiveFrame() === undefined)
     )
       this._addFrame()
   },
@@ -37,14 +58,14 @@ Game.prototype = {
     this._frames.push(new Frame())
   },
 
-  _findActive: function () {
+  _findActiveFrame: function () {
     return this._frames.find(function (frame) {
       return frame.getState() === 'active'
     })
   },
 
-  _findWaiting: function () {
-    return this._frames.filter(function (frame ) {
+  _findWaitingFrames: function () {
+    return this._frames.filter(function (frame) {
       return frame.getState() === 'waiting'
     })
   },

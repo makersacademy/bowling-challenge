@@ -28,13 +28,52 @@ describe('Features', function () {
     })
   })
 
-// As a player, so I don't have to remember the number of pins I've previously hit, I want to see the history of my previous rolls.    
+// As a player, so I don't have to remember the number of pins I've previously hit, I want to see the history of my previous rolls.
+  describe('pin history', function () {
+    it('allows the player to see the history of previous rolls', function () {
+      game.enterDroppedPins(5)
+      game.enterDroppedPins(5)
+      game.enterDroppedPins(4)
+      game.enterDroppedPins(2)
+      expect(game.getDroppedPins()).toEqual([[5, 5], [4, 2]])
+    })
+    
+  })
+// As a player, so that I know who's winnig the game, I want to see my running score (the sum of the score of all my rolls)
+  describe('current score', function () {
+    it('allows the player to see their running score', function () {
+      game.enterDroppedPins(4)
+      game.enterDroppedPins(5)
+      game.enterDroppedPins(4)
+      game.enterDroppedPins(2)
+      expect(game.getCurrentScore()).toEqual(15)
+    })
+  })
+
+// As a player, to be rewarded for my skill, I want to be credited extra scores when I bowl a strike
+describe('scores strikes', function () {
+  it('rewards players with extra scores for a strike by adding the value of the subsequent two rolls', function () {
+    game.enterDroppedPins(10)
+    game.enterDroppedPins(5)
+    game.enterDroppedPins(4)
+    expect(game.getCurrentScore()).toEqual(28)
+  })
+})
+// As a player, to be rewarded for my skill, I want to be credited extra scorse when I bowl a spare
+  describe('scores spare', function () {
+    it('rewards players with extra scores for a strike by adding the value of the subsequent roll', function () {
+      game.enterDroppedPins(5)
+      game.enterDroppedPins(5)
+      game.enterDroppedPins(4)
+      expect(game.getCurrentScore()).toEqual(18)
+    })
+  })
+
 // As a player, to know how well I'm playing, I want to receive a score according to the number of pins I hit in each frame
 // As a player, so I don't have to remember my score, I want to see the history of my scores for each roll in each frame.
-// As a player, so that I know who's winnig the game, I want to see my running score (the sum of the score of all my rolls)
+
 // As a player, so that I know who has won, I want to see my overall score (the sum of the score of all my frames)
-// As a player, to be rewarded for my skill, I want to be credited extra scores when I bowl a strike
-// As a player, to be rewarded for my skill, I want to be credited extra scorse when I bowl a spare
+
 
 // As a player, I want to know which roll I'm currently on in each frame
 })

@@ -87,6 +87,14 @@ describe('Game', function () {
       game.enterDroppedPins()
       expect(game._frames.length).toEqual(game._numberOfFrames)
     })
+    it('adds regular pins to the "active" frame and bonus pins to "waiting" frames', function () {
+      game._frames = [activeFrame, waitingFrame]
+      spyOn(activeFrame, "enterRoll")
+      spyOn(waitingFrame, "enterBonus")
+      game.enterDroppedPins(5)
+      expect(waitingFrame.enterBonus).toHaveBeenCalledWith(5)
+      expect(activeFrame.enterRoll).toHaveBeenCalledWith(5)
+    })
     it('calls "enterRoll" to enter regular pins on a frame that is "active"', function() { 
       game._frames = [activeFrame, waitingFrame]
       spyOn(activeFrame, "enterRoll")
@@ -95,7 +103,7 @@ describe('Game', function () {
       expect(activeFrame.enterRoll).toHaveBeenCalledWith(5)
       expect(waitingFrame.enterRoll).not.toHaveBeenCalledWith(5)
     })
-    it('calls "enterBonus" to enter bonus pins on a frame that is "waiting"', function () {
+    it('calls "enterBonus" to enter bonus pins on a frame that is "waiting" (after strike / spare)', function () {
       game._frames = [waitingFrame, activeFrame]
       spyOn(activeFrame, "enterBonus")
       spyOn(waitingFrame, "enterBonus")
@@ -103,13 +111,14 @@ describe('Game', function () {
       expect(waitingFrame.enterBonus).toHaveBeenCalledWith(5)
       expect(activeFrame.enterBonus).not.toHaveBeenCalledWith(5)
     })
-    it('adds regular pins to the "active" frame and bonus pins to "waiting" frames', function () {
-      game._frames = [activeFrame, waitingFrame]
-      spyOn(activeFrame, "enterRoll")
-      spyOn(waitingFrame, "enterBonus")
+  })
+  describe('getCurrentScore', function () {
+    it('allows the player to see their running score', function () {
+      game.enterDroppedPins(4)
       game.enterDroppedPins(5)
-      expect(waitingFrame.enterBonus).toHaveBeenCalledWith(5)
-      expect(activeFrame.enterRoll).toHaveBeenCalledWith(5)
+      game.enterDroppedPins(4)
+      game.enterDroppedPins(2)
+      expect(game.getCurrentScore()).toEqual(15)
     })
   })
 

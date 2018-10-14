@@ -3,7 +3,6 @@
 function Frame() {
   this._rolls = []
   this._bonusRolls = []
-  // this._isLast
   this._state = 'active'
 
 }
@@ -26,20 +25,24 @@ Frame.prototype = {
     this._setState()
   },
 
-  getBonusRolls: function () {
+  getBonus: function () {
     return this._bonusRolls
   },
 
+  calculateScore: function () {
+    return this._calculateBonus() + this._calculateRolls()
+  },
+
+  getState: function () {
+    return this._state
+  },
+  // to indicate whether pins are bonus or regular, or frame is finished
   _setState: function () {
     if (this._isClosed()) {
       this._state = 'closed'
     } else if (this._isWaiting()) {
       this._state = 'waiting'
     }
-  },
-
-  getState: function () {
-    return this._state
   },
 
   _isWaiting: function () {
@@ -50,6 +53,7 @@ Frame.prototype = {
     } else if (this._isSpare()) {
       return this._bonusRolls.length < 1
     } else {
+    // for regular frame
       return false
     }
   },
@@ -67,11 +71,10 @@ Frame.prototype = {
     }
   },
 
-  // refactor
   _isStrike: function () {
     return this._rolls[0] === 10
   },
-  // refactor
+
   _isSpare: function () {
     return this._rolls[0] + this._rolls[1] === 10
   },
@@ -86,7 +89,19 @@ Frame.prototype = {
     // } else if ((this.getState() !== 'bonus') && (pins + this._rolls[0]) > max ){
     //   throw _tooMany
     // }
-  }
+  },
+
+  _calculateRolls: function () {
+    return this._rolls.reduce(function (accumulator, currentValue) {
+      return accumulator + currentValue
+    }, 0)
+  },
+
+  _calculateBonus: function () {
+    return this._bonusRolls.reduce(function (accumulator, currentValue) {
+      return accumulator + currentValue
+    }, 0)
+  },
 
 }
 

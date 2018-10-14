@@ -41,7 +41,7 @@ describe('frame', function () {
   describe('enterBonus', function () {
     it('allows the game to record the number of dropped pins for each bonus roll', function () {
       frame.enterBonus(5)
-      expect(frame.getBonusRolls()).toEqual([5])
+      expect(frame.getBonus()).toEqual([5])
     })
     it('does not allow the game to enter numbers over 10', function () {
       expect(function () { frame.enterBonus(11) }).toThrowError('Enter a number between 1 and 10');
@@ -104,6 +104,30 @@ describe('frame', function () {
         frame._setState()
         expect(frame.getState()).toEqual('closed')
       })
+    })
+  })
+  describe('calculateScore', function () {
+    it('calculates the current score of a game adding bonus rolls and regular rolls', function () {
+      frame.enterRoll(5)
+      frame.enterRoll(5)
+      frame.enterRoll(2)
+      frame.enterBonus(2)
+      frame.enterRoll(4)
+      expect(frame.calculateScore()).toEqual(18)
+    })
+  })
+  describe('_calculateRolls', function () {
+    it('calculates the current score of a game', function () {
+      frame.enterRoll(5)
+      frame.enterRoll(4)
+      expect(frame._calculateRolls()).toEqual(9)
+    })
+  })
+  describe('_calculateBonus', function () {
+    it('calculates the current score of a game', function () {
+      frame.enterBonus(5)
+      frame.enterBonus(4)
+      expect(frame._calculateBonus()).toEqual(9)
     })
   })
 

@@ -70,6 +70,16 @@ describe ('Scorecard', function() {
       expect(scorecard.totalScore()).toEqual(80);
     });
 
+    it('a perfect game scores 300 points', function() {
+      playGame(20, 10);
+      expect(scorecard.totalScore()).toEqual(300);
+    });
+
+    it('a gutter game scores 0 points', function() {
+      playGame(20, 0);
+      expect(scorecard.totalScore()).toEqual(0);
+    });
+
   });
 
 });

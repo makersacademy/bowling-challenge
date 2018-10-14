@@ -6,10 +6,10 @@ function BowlingGame(name) {
   this.currentThrow = 1
 }
 
-BowlingGame.prototype.throw = function (pins) {
-  this.allThrows.push(pins)
-  if (pins == 10 && this.currentThrow == 1) {
-    this.allThrows.push(null)
+BowlingGame.prototype.throw = function (frame) {
+  frame.isStrikeOrSpare();
+  this.allThrows[this.currentFrame-1] = frame
+  if (frame.strike) {
     this.currentFrame += 1
     this.currentthrow = 1
   } else {
@@ -48,5 +48,4 @@ BowlingGame.prototype.calculateScore = function () {
       }
     }
   }
-  console.log(this.currentScore)
 };

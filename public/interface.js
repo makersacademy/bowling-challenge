@@ -1,21 +1,20 @@
 var Game = require('./src/game')
 
-console.log("Write this")
-
 $(document).ready(function () {
-  $("#demo").html("Hello, World!");
 
   var game = new Game
-  console.log("document ready")
 
   $('#submit_score').on('click', function () {
-    console.log("ahahah")
-    var score = $('.score_input').val()
-    game.roll(score)
-    updateScore()
+    $('#input_score').val(function( index, value ) {
+      var score = Number(value)
+      game.roll(score)
+      updateScore()
+    })
   })
 
   function updateScore() {
-    $('#total_score').text(game.totalScore)
+    var gameScore = game.calculateTotalScore()
+    $('#total_score').text(gameScore)
   }
 })
+

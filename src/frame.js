@@ -7,14 +7,14 @@ function Frame () {
 }
 
 Frame.prototype._calculateOutcome = function (pinsKnockedDown) {
-  if (this.rolls.length === 0 && pinsKnockedDown === 10) {
-    return 'Strike'
-  }
-  if (pinsKnockedDown === 10) {
-    return 'Spare'
-  }
   if (pinsKnockedDown === 0) {
     return 'Bad luck'
+  }
+  if (pinsKnockedDown === 10) {
+    return 'Strike'
+  }
+  if (this.rolls.length !== 0 && this.rolls[0].pins + pinsKnockedDown === 10) {
+    return 'Spare'
   }
   return ''
 }

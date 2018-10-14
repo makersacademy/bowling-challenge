@@ -1,6 +1,10 @@
 describe('Scorecard', function () {
   beforeEach(function () {
-    this.frame1 = jasmine.createSpyObj('frame', ['bowl', 'setComplete'])
+    this.frame1 = jasmine.createSpyObj('frame', [
+      'bowl',
+      'rolls',
+      'setComplete'
+    ])
     this.scorecard = new Scorecard([this.frame1])
   })
 
@@ -28,29 +32,23 @@ describe('Scorecard', function () {
     })
 
     describe('first bowl is a strike!', function () {
-      beforeEach(function () {
-        this.scorecard.bowl(10)
-      })
       it('should bowl a strike', function () {
-        expect(this.frame1.bowl).toHaveBeenCalledWith(10)
-      })
-
-      it('should complete the frame', function () {
-        expect(this.frame1.setComplete).toHaveBeenCalled()
+        this.scorecard.bowl(10)
+        expect(this.scorecard.frames[0].bowl).toHaveBeenCalledWith(10)
       })
     })
 
-    describe('second bowl (not a spare)', function () {
-      it('should not create a new frame', function () {})
+    // describe('second bowl (not a spare)', function() {
+    //   it('should not create a new frame', function() {});
 
-      it('should record the number of pins knocked down', function () {})
+    //   it('should record the number of pins knocked down', function() {});
 
-      it('should have two entries in the frames array', function () {})
+    //   it('should have two entries in the frames array', function() {});
 
-      it('should complete the frame', function () {})
+    //   it('should complete the frame', function() {});
 
-      it('should update the total score', function () {})
-    })
+    //   it('should update the total score', function() {});
+    // });
 
     // describe('second bowl is a spare!', function() {
     //   it('should not create a new frame', function() {});

@@ -46,8 +46,8 @@ describe('Feature Tests', function () {
         expect(this.scorecard.frames.length).toEqual(1)
       })
 
-      it('should complete the frame', function () {
-        expect(this.frame.complete).toEqual(true)
+      it('should not complete the frame', function () {
+        expect(this.frame.complete).toEqual(false)
       })
 
       it('should record 10 pins knocked down', function () {
@@ -86,16 +86,31 @@ describe('Feature Tests', function () {
       })
     })
 
-    // describe('second bowl is a spare!', function () {
-    //   it('should not create a new frame', function () {});
+    describe('second bowl is a spare!', function () {
+      beforeEach(function () {
+        this.scorecard.bowl(2)
+        this.scorecard.bowl(8)
+        this.frame = this.scorecard.frames[0]
+      })
 
-    //   it('should record the number of pins knocked down', function () {});
+      it('should only have one frame', function () {
+        expect(this.scorecard.frames.length).toEqual(1)
+      })
 
-    //   it('should have two entries in the frames array', function () {});
+      it('should record the number of pins knocked down', function () {
+        expect(this.frame.rolls).toEqual([
+          { pins: 2, outcome: '' },
+          { pins: 8, outcome: 'Spare' }
+        ])
+      })
 
-    //   it('should not complete the frame', function () {});
+      it('should not complete the frame', function () {
+        expect(this.frame.complete).toEqual(false)
+      })
 
-    //   it('should not update the total score', function () {});
-    // });
+      it('should not have a frame score yet', function () {
+        expect(this.frame.score).toEqual(0)
+      })
+    })
   })
 })

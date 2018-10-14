@@ -7,6 +7,7 @@ describe('Feature Tests', function () {
     describe('first bowl (not a strike)', function () {
       beforeEach(function () {
         this.scorecard.bowl(4)
+        this.frame = this.scorecard.frames[0]
       })
 
       it('should create a new frame', function () {
@@ -14,19 +15,19 @@ describe('Feature Tests', function () {
       })
 
       it('should have one entry in the frames array', function () {
-        expect(this.scorecard.frames[0].rolls.length).toEqual(1)
+        expect(this.frame.rolls.length).toEqual(1)
       })
 
       it('should record the number of pins knocked down', function () {
-        expect(this.scorecard.frames[0].rolls[0]).toEqual(4)
+        expect(this.frame.rolls[0].pins).toEqual(4)
       })
 
       it('should not complete the frame', function () {
-        expect(this.scorecard.frames[0].complete).toEqual(false)
+        expect(this.frame.complete).toEqual(false)
       })
 
       it('should have a frame score of zero', function () {
-        expect(this.scorecard.frames[0].score).toEqual(0)
+        expect(this.frame.score).toEqual(0)
       })
 
       it('should have a total score of zero', function () {
@@ -34,13 +35,29 @@ describe('Feature Tests', function () {
       })
     })
 
-    // describe('first bowl is a strike!', function () {
-    //   it('should create a new frame', function () {});
+    describe('first bowl is a strike!', function () {
+      beforeEach(function () {
+        this.scorecard.bowl(10)
+        this.frame = this.scorecard.frames[0]
+        this.roll = this.frame.rolls[0]
+      })
 
-    //   it('should record 10 pins knocked down', function () {});
+      it('should create a new frame', function () {
+        expect(this.scorecard.frames.length).toEqual(1)
+      })
 
-    //   it('should complete the frame', function () {});
-    // });
+      it('should complete the frame', function () {
+        expect(this.frame.complete).toEqual(true)
+      })
+
+      it('should record 10 pins knocked down', function () {
+        expect(this.roll.pins).toEqual(10)
+      })
+
+      it('should have an outcome of Strike', function () {
+        expect(this.roll.outcome).toEqual('Strike')
+      })
+    })
 
     // describe('second bowl (not a spare)', function () {
     //   it('should not create a new frame', function () {});

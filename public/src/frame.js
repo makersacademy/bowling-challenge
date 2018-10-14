@@ -28,4 +28,8 @@ Frame.prototype._spareOrBetter = function () {
   }
 }
 
-module.exports = Frame
+function frameFactory () {
+  return new Frame()
+}
+
+module.exports = frameFactory

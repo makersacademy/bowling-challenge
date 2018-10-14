@@ -1,21 +1,12 @@
-var Game = require('../src/game')
-var Frame = require('../src/frame')
+var Game = require('../public/src/game')
 
-describe('Game class', function() {
+describe('Game class', function () {
   describe('#roll', function () {
-    // var frame = {
-    //   inputScore: jasmine.createSpy('inputScore')
-    // }
-    // var frameClass = {
-    //   prototype: jasmine.createSpy('Prototype')
-    //   // .and.returnValue("frame")
-    // }
-    var game;
+    var game
 
-    beforeEach(function() {
-      game = new Game ()
+    beforeEach(function () {
+      game = new Game()
     })
-
 
     it('Makes a new frame for new Game', function () {
       game.roll(4)
@@ -43,24 +34,26 @@ describe('Game class', function() {
     })
 
     it('raises error for non-numeric inputs', function () {
-      expect(function () { game.roll("not_a_number") }).toThrow('Not a Number')
+      expect(function () { game.roll('not_a_number') }).toThrow('Not a Number')
     })
 
     it('raises an error if the input over 10', function () {
+      var pinsSpy = {
+        isImpossibleScore: function () {
+          throw new Error('Not enough pins')
+        }
+      }
+      var args = { pins: pinsSpy }
+      var game = new Game(args)
       expect(function () { game.roll(12) }).toThrow('Not enough pins')
-    })
-
-    it('raises an error if the input exceeds number of pins left', function () {
-      game.roll(9)
-      expect(function () { game.roll(2) }).toThrow('Not enough pins')
     })
   })
 
   describe('#calculateTotalScore', function () {
-    var game;
+    var game
 
-    beforeEach(function() {
-      game = new Game ()
+    beforeEach(function () {
+      game = new Game()
     })
     it('sums the score of all frames', function () {
       game.roll(3)
@@ -107,7 +100,7 @@ describe('Game class', function() {
       var game = new Game()
 
       it('Scores 300 on a Perfect game', function () {
-        for (var i = 0; i < 29; i++) {
+        for (var i = 0; i < 12; i++) {
           game.roll(10)
         }
         expect(game.calculateTotalScore()).toEqual(300)

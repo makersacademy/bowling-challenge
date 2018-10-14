@@ -9,12 +9,15 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
     crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="../../css/style.css">
 
   <title>10 Pin Bowling</title>
 </head>
 
 <body>
-  <h1>10 Pin Bowling - Score Card</h1>
+  <h1>Ten Pin Bowling </h1>
+  <h2>Score Card</h2>
 
   <section id='count' role='group' aria-label='Toolbar with button group'>
     <input class="btn btn-outline-secondary" type="button" value="0" data-value=0>
@@ -28,9 +31,9 @@
     <input class="btn btn-outline-secondary" type="button" value="8" data-value=8>
     <input class="btn btn-outline-secondary" type="button" value="9" data-value=9>
     <input class="btn btn-outline-secondary" type="button" value="10" data-value=10>
-    <input class="btn btn-danger" type="reset" value="Reset">
+    <input class="btn btn-danger" type="button" value="New Game">
   </section>
-  <!-- check on disabled state to validate input -->
+
   <section id='scoresheet'>
     <table class="table table-bordered">
       <thead>
@@ -48,7 +51,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr id = 'rolls'>
+        <tr id='rolls'>
           <td colspan="3"></td><td colspan="3"></td>
           <td colspan="3"></td><td colspan="3"></td>
           <td colspan="3"></td><td colspan="3"></td>
@@ -71,6 +74,7 @@
           <td colspan="6"></td>
           <td colspan="6"></td>
           <td colspan="6"></td>
+          <td colspan="2">Frame Score</td>
         </tr>
         <tr id='total-score'>
           <td colspan="6"></td>
@@ -83,6 +87,7 @@
           <td colspan="6"></td>
           <td colspan="6"></td>
           <td colspan="6"></td>
+          <td colspan="2">Total Score</td>
         </tr>
       </tbody>
     </table>

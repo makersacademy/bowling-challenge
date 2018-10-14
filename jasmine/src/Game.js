@@ -12,7 +12,9 @@ Game.prototype = {
     this._findWaitingFrames().forEach(function (frame){
       frame.enterBonus(number)
     })
-    this._findActiveFrame().enterRoll(number)
+    if (this._findActiveFrame()) {
+      this._findActiveFrame().enterRoll(number)
+    }
   },
 
   getFrame: function (number) {

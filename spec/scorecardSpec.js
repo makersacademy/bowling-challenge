@@ -33,9 +33,15 @@ describe ('Scorecard', function() {
       expect(scorecard.isStrike()).toEqual(false);
     });
 
-    it('returns true when the first roll scores 10', function () {
+  });
+
+  describe ('#strikeBonus', function() {
+    it('calculates bonus points for scoring one strike in a game', function () {
       scorecard.roll(10);
-      expect(scorecard.isStrike()).toEqual(true);
+      scorecard.roll(5);
+      scorecard.roll(4);
+      playGame(16, 0);
+      expect(scorecard.totalScore()).toEqual(28);
     });
 
   });

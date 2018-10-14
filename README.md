@@ -19,6 +19,7 @@ Goals of feedback
 * I'd love some feedback on my use of spies and mocks.
 * I'd love some feedback on my "private methods" (not really private yet in javascript, only using naming conventions) and if I tested them right.
 * I know that I've left in some comments, but I think it will be helpful for me this week to look back at them.
+* Any other feedback is of course very welcome.
 
 What I think went well
 -----

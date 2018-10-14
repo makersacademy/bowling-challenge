@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>BowlingScoreCard</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Custom styles for this template go here -->
+    <link rel="stylesheet" href="css/style.css">
+    
+  </head>
+  <body>
+    <div class="container">
+      <section id='game-header'>  
+          <h1 class="font-weight-bold">BOWLING SCORE CARD</h1>
+      </section>
+
+      <section id="roll">
+        <label class="font-weight-bold text-danger">Hit Pin</label>
+        <input class="pin btn btn-primary" type="submit" value="Gutter" data-value=0>
+        <input class="pin btn btn-primary" type="submit" value="1" data-value=1>
+        <input class="pin btn btn-primary" type="submit" value="2" data-value=2>
+        <input class="pin btn btn-primary" type="submit" value="3" data-value=3>
+        <input class="pin btn btn-primary" type="submit" value="4" data-value=4>
+        <input class="pin btn btn-primary" type="submit" value="5" data-value=5>
+        <input class="pin btn btn-primary" type="submit" value="6" data-value=6>
+        <input class="pin btn btn-primary" type="submit" value="7" data-value=7>
+        <input class="pin btn btn-primary" type="submit" value="8" data-value=8>
+        <input class="pin btn btn-primary" type="submit" value="9" data-value=9>
+        <input class="pin btn btn-primary" type="submit" value="10" data-value=10>
+      </section>
+
+      <section id="score-card">
+          <table class="table table-bordered">
+              <thead class="thead-dark">
+                <!-- frames -->
+                <tr>
+                  <th scope="col">Frames </th>
+                  <th scope="col">1</th>
+                  <th scope="col">2</th>
+                  <th scope="col">3</th>
+                  <th scope="col">4</th>
+                  <th scope="col">5</th>
+                  <th scope="col">6</th>
+                  <th scope="col">7</th>
+                  <th scope="col">8</th>
+                  <th scope="col">9</th>
+                  <th scope="col">10</th>
+                  <th scope="col">Total Score</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <!-- rolls values -->
+                <tr>
+                  <th scope="row">Roll:</th>
+                  <td id="frame-1">
+                    <div class="row">
+                      <div id="f1r0"class="col"></div>
+                      <div id='f1r1'class="col"></div>
+                    </div>
+                  </td>
+
+                  <td id="frame-2">
+                      <div class="row">
+                        <div id="f2r0"class="col"></div>
+                        <div id='f2r1'class="col"></div>
+                    </div>
+                  </td>
+                  
+                  <td id="frame-3">
+                      <div class="row">
+                        <div id="f3r0"class="col"></div>
+                        <div id='f3r1'class="col"></div>
+                    </div>
+                  </td>
+
+                  <td id="frame-4">
+                      <div class="row">
+                        <div id="f4r0"class="col"></div>
+                        <div id='f4r1'class="col"></div>
+                    </div>
+                  </td>
+
+                  <td id="frame-5">
+                      <div class="row">
+                        <div id="f5r0"class="col"></div>
+                        <div id='f5r1'class="col"></div>
+                    </div>
+                  </td>
+
+                  <td id="frame-6">
+                      <div class="row">
+                        <div id="f6r0"class="col"></div>
+                        <div id='f6r1'class="col"></div>
+                    </div>
+                  </td>
+
+                  <td id="frame-7">
+                      <div class="row">
+                        <div id="f7r0"class="col"></div>
+                        <div id='f7r1'class="col"></div>
+                    </div>
+                  </td>
+
+                  <td id="frame-8">
+                      <div class="row">
+                        <div id="f8r0"class="col"></div>
+                        <div id='f8r1'class="col"></div>
+                    </div>
+                  </td>
+
+                  <td id="frame-9">
+                      <div class="row">
+                        <div id="f9r0"class="col"></div>
+                        <div id='f9r1'class="col"></div>
+                    </div>
+                  </td>
+
+                  <td id="frame-10">
+                      <div class="row">
+                        <div id="f10r0"class="col"></div>
+                        <div id='f10r1'class="col"></div>
+                    </div>
+                  </td>
+                </tr>
+
+                 <!-- total score -->
+                <tr>
+                  <th scope="row">Frame Score:</th>
+                  <td id="frame-score-1"></td>
+                  <td id="frame-score-2"></td>
+                  <td id="frame-score-3"></td>
+                  <td id="frame-score-4"></td>
+                  <td id="frame-score-5"></td>
+                  <td id="frame-score-6"></td>
+                  <td id="frame-score-7"></td>
+                  <td id="frame-score-8"></td>
+                  <td id="frame-score-9"></td>
+                  <td id="frame-score-10"></td>
+                  <td id="total-score"></td>
+                </tr>
+        
+              </tbody>
+            </table>
+      </section>
+    </div>
+    <!-- script file-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+    <script src="src/script.js"></script>
+    <script src="src/Game.js"></script>
+  </body>
+</html>

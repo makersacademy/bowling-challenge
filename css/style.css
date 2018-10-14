@@ -1,0 +1,23 @@
+body {
+  text-align: center;
+}
+
+.container {
+  margin-top: 3em;
+}
+
+section#game-header {
+  color: rgb(190, 7, 16);
+}
+
+section#roll {
+  margin-bottom: 20px;
+}
+
+section#score-card {
+  margin: 4em
+}
+
+#total-score {
+  border-top: none;
+}

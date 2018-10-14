@@ -33,13 +33,22 @@ describe ("Game", function(){
     })
 
     it("checks if this is the 10th frame, prints a message to signal end of game", function(){
-      spyOn(game, "_frameNumber").and.returnValue(10);
+    //  spyOn(game, "_frameNumber").and.returnValue(11);
+      game.rollBall(10)
+      //after the above we're on the second frame
+      game.rollBall(10)
+      game.rollBall(10)
+      game.rollBall(10)
+      game.rollBall(10)
+      game.rollBall(10)
+      game.rollBall(10)
+      game.rollBall(10)
+      game.rollBall(10)
       game.rollBall(1)
-      //don't know how to test that the extra roll total is added...
-      expect(game.message).toEqual("Game over!")
+      //don't know how to test that the extra roll total is added, so I can't test if stike or spare etc....
+      expect(game.message).toContain("Game over!")
     })
   })
-
 
   describe ("rollBall and sendBonuspoints, when context is Strike", function(){
 

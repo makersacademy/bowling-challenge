@@ -17,7 +17,7 @@ Game.prototype.rollBall = function(userInput) {
     this._isBonus()
     this._total()
     this._newFrame()
-    this._sendBonusPoints(userInput) //poss needs to be put somewhere else
+    this.sendBonusPoints(userInput) //poss needs to be put somewhere else
     this._increaseFrameNumber();
     this._currentFrame.calculate(userInput)
   } else {
@@ -38,7 +38,7 @@ Game.prototype._newFrame = function() {
   this._currentFrame = new Frame();
 }
 
-Game.prototype._sendBonusPoints = function(userInput) { //could refactor into two method
+Game.prototype.sendBonusPoints = function(userInput) { //could refactor into two method
   if (this.doubleBothScoresNextRound === true) {
     this._currentFrame._bonusCounter += 2
   } else if (this.doubleFirstScoreNextRound === true) {

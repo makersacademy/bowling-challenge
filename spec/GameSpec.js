@@ -36,10 +36,8 @@ describe ("Game", function(){
     it("calls to descreaseFrames function to decreases the frames left", function(){
       //is this the right way to test this? As it's a private method, I guessed that it is.
       //Otherwise, I would have created a new test for increaseFrames and tested it directly
-
-
-      game.rollBall(2);
-      game.rollBall(3);
+      mockFrame = jasmine.createSpy('mockFrame', {"_rollsLeft":0})
+      game = new Game(mockFrame)
       game.rollBall(2);
       expect(game._frameNumber).toEqual(2)
     })
@@ -60,8 +58,8 @@ describe ("Game", function(){
       expect(game.doubleBothScoresNextRound).toEqual(true)
     })
     it("checks if last round was spare, and changeds doubleFirstScoreNextRound to true if so", function(){
-      game.rollBall(8);
-      game.rollBall(2);
+      mockFrame = jasmine.createSpy('mockFrame', {"isSpare": true, "_rollsLeft": 0})
+      game = new Game(mockFrame)
       game.rollBall(1);
       expect(game.doubleFirstScoreNextRound).toEqual(true)
     })
@@ -70,15 +68,19 @@ describe ("Game", function(){
 //I don't know if this is how I should test sendpointstoframe or if I should test it via roll method.
   describe("sendBonuspoints", function(){
     it ("sets the frame bonus counter to 2 if last frame was a strike", function(){
-      game.rollBall(10)
+      mockFrame = jasmine.createSpy('mockFrame', {"isStrike": true, "_rollsLeft": 0})
+      game = new Game(mockFrame)
       game.rollBall(5);
       expect(game._currentFrame._bonusCounter).toEqual(1) //not great test as is testing actual bonusCounter
+      //still not sure how to test this
     })
+
     it ("sets the frame bonus counter to 1 if last frame was a spare", function(){
-      game.rollBall(8)
-      game.rollBall(2)
+      mockFrame = jasmine.createSpy('mockFrame', {"isSpare": true, "_rollsLeft": 0})
+      game = new Game(mockFrame)
       game.rollBall(5)
-      expect(game._currentFrame._bonusCounter).toEqual(0) //slightly vacuous test
+      expect(game._currentFrame._bonusCounter).toEqual(0) //slightly vacuous test, and not great as testing actual
+      //bonusCounter
     })
   })
 });

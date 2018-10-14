@@ -1,4 +1,4 @@
-var Game = require('../src/game')
+var Game = require('../public/src/game')
 
 describe('Game class', function () {
   describe('#roll', function () {

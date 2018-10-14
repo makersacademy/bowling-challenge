@@ -1,4 +1,4 @@
-var Pins = require('../src/pins')
+var Pins = require('../public/src/pins')
 
 describe('Pins class', function () {
   describe('#managePins', function () {

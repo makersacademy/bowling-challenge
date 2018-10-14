@@ -1,4 +1,4 @@
-var Frame = require('../src/frame')
+var Frame = require('../public/src/frame')
 
 describe('Frame Class', function () {
   describe('#addScore', function () {

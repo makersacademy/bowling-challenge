@@ -1,21 +1,29 @@
 $(document).ready( function() {
-  var table = new Table()
-  var game
-  var b
+  let table = new Table()
+  let frames
+  let indivframe
+  let score
   $('#create-table').click(function(){
     table.remove_table('#score-div')
-    game = new Game()
+    $('#result').hide()
+    $('#update').show()
+    $('#knocked-text').show()
+    indivframe = new indivFrame
+    frames = new Frames(indivframe)
+    score = new Score
     table.build_table('#score-div')
     table.build_header('#score-table')
   })
 
   $('#update').click(function(){
-	   game.play(parseInt($('#knocked-text').val()))
-     game.endTurn()
-     var a = game.bowlingAPI()
-     console.log(a.knocked)
-     console.log(game.round_score)
-     table.new_round(game.bowlingAPI())
-
+    let knocked = parseInt($('#knocked-text').val())
+    table.new_round({frame: frames.index, knocked: knocked})
+	  frames.add(knocked)
+    if (frames.isEnd()) {
+      $('#update').hide()
+      $('#knocked-text').hide()
+      $("#result").show()
+      $("#result").text("Game over! The score is " + score.result(frames.collection))
+    }
   })
 })

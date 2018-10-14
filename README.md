@@ -10,12 +10,15 @@ How to use
 * Run tests with Jasmine by typing open SpecRunner.html in the terminal
 * Copy the full path of index.html into the browser to interact with the apply
 
+Functionality 
+-----
+* It has the full functionality of a bowling score card according to the rules of bowling, apart from if you throw a strike in the 10th round. In that instance, it allows you to just keep playing forever...
 
 Goals of feedback
 -----
 * I'd love some feedback on my use of spies and mocks.
 * I'd love some feedback on my "private methods" (not really private yet in javascript, only using naming conventions) and if I tested them right.
-* I know that I've left in comments, but I think it will be helpful for me this week to look back at them.
+* I know that I've left in some comments, but I think it will be helpful for me this week to look back at them.
 
 What I think went well
 -----

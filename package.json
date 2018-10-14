@@ -1,0 +1,43 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "(A ten-pin bowling scorecard)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "lint": "eslint public/src/ spec/",
+    "test": "jest spec/ --verbose"
+  },
+  "jest": {
+    "preset": "jest-puppeteer"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonathanAndrews/bowling-challenge.git"
+  },
+  "author": " (Jonathan Andrews)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JonathanAndrews/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/JonathanAndrews/bowling-challenge#readme",
+  "devDependencies": {
+    "eslint": "^5.6.1",
+    "eslint-config-google": "^0.10.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "jest": "^23.6.0",
+    "jest-puppeteer": "^3.4.0",
+    "puppeteer": "^1.9.0",
+    "standard": "^12.0.1"
+  },
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
+  }
+}

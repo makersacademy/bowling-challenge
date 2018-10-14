@@ -14,12 +14,12 @@ Frame.prototype.addRoll = function(roll) {
     throw new Error('This frame already contains two rolls');
   };
 
-Frame.prototype.totalScore = function() {
+Frame.prototype.totalFrameScore = function() {
   return this.rolls.reduce((a, b) => a + b, 0)
 };
 
 Frame.prototype.isASpare = function () {
-  if(this.totalScore() === 10) {
+  if(this.totalFrameScore() === 10) {
     return true
   } else {
     return false
@@ -32,5 +32,9 @@ Frame.prototype.isAStrike = function () {
   } else {
     return false
   };
+};
+
+Frame.prototype.pinsFirstRoll = function () {
+  return this.rolls[0]
 };
 };

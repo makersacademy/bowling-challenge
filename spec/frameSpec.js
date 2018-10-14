@@ -39,13 +39,13 @@ describe('Frame', function(){
   describe('total score', function(){
     it('returns total score of current frame', function(){
       frame.addRoll(3);
-      expect(frame.totalScore()).toEqual(3);
+      expect(frame.totalFrameScore()).toEqual(3);
     });
 
     it('returns total score of current frame', function(){
       frame.addRoll(5);
       frame.addRoll(2);
-      expect(frame.totalScore()).toEqual(7);
+      expect(frame.totalFrameScore()).toEqual(7);
     });
   });
 
@@ -72,6 +72,14 @@ describe('Frame', function(){
       frame.addRoll(3);
       frame.addRoll(3);
       expect(frame.isAStrike()).toBe(false)
+    });
+  });
+
+  describe('pins first roll', function(){
+    it('returns the nummber of pins of the first roll', function(){
+      frame.addRoll(6);
+      frame.addRoll(3);
+      expect(frame.pinsFirstRoll()).toEqual(6)
     });
   });
 });

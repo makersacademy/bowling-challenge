@@ -7,8 +7,8 @@ describe('Game',function(){
 
   beforeEach(function(){
     game = new Game();
-    frame = jasmine.createSpyObj('frame',['totalScore']);
-    frame2 = jasmine.createSpyObj('frame2',['totalScore']);
+    frame = jasmine.createSpyObj('frame',['totalFrameScore', 'isASpare', 'isAStrike']);
+    frame2 = jasmine.createSpyObj('frame2',['totalFrameScore', 'isASpare', 'isAStrike', 'pinsFirstRoll']);
   });
 
   it('starts with no frames by default', function(){
@@ -38,16 +38,47 @@ describe('Game',function(){
   describe('total game score', function(){
     it('returns total score of current game', function(){
       game.addFrame(frame);
-      frame.totalScore.and.returnValue(6)
-      expect(game.totalGameScore()).toEqual(6)
+      frame.totalFrameScore.and.returnValue(6)
+      expect(game.currentGameScore()).toEqual(6)
     });
 
     it('returns total score of current game', function(){
       game.addFrame(frame);
       game.addFrame(frame2);
-      frame.totalScore.and.returnValue(6)
-      frame2.totalScore.and.returnValue(7)
-      expect(game.totalGameScore()).toEqual(13)
+      frame.totalFrameScore.and.returnValue(6)
+      frame2.totalFrameScore.and.returnValue(7)
+      expect(game.currentGameScore()).toEqual(13)
     });
   });
+
+  describe('frameBonus', function(){
+    it('returns bonus of current frame when not strike or spare', function(){
+      game.addFrame(frame);
+      game.addFrame(frame2);
+      frame.isASpare.and.returnValue(false)
+      frame.isAStrike.and.returnValue(false)
+      expect(game.frameBonus(frame)).toEqual(0)
+    });
+
+    it('returns bonus of current frame when strike', function(){
+      game.addFrame(frame);
+      game.addFrame(frame2);
+      frame.isASpare.and.returnValue(false)
+      frame.isAStrike.and.returnValue(true)
+      frame2.totalFrameScore.and.returnValue(8)
+      expect(frame2.totalFrameScore()).toHaveBeenCalled
+      expect(game.frameBonus(frame)).toEqual(8)
+    });
+
+    it('returns bonus of current frame when spare', function(){
+      game.addFrame(frame);
+      game.addFrame(frame2);
+      frame.isASpare.and.returnValue(true)
+      frame.isAStrike.and.returnValue(false)
+      frame2.pinsFirstRoll.and.returnValue(7)
+      expect(frame2.pinsFirstRoll()).toHaveBeenCalled
+      expect(game.frameBonus(frame)).toEqual(7)
+    });
+  });
+
 });

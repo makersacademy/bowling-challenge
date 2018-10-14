@@ -5,7 +5,7 @@ function Scorecard (frames = []) {
 
 Scorecard.prototype._createNewFrame = function () {
   this.frames.push(new Frame())
-  return this._lastFrame()
+  return this._currentFrame()
 }
 
 Scorecard.prototype._gameHasStarted = function () {
@@ -13,14 +13,32 @@ Scorecard.prototype._gameHasStarted = function () {
 }
 
 Scorecard.prototype._getCurrentFrame = function () {
-  if (!this._gameHasStarted() || this._lastFrame().complete) {
+  if (!this._gameHasStarted() || this._isCurrentFrameOver()) {
     return this._createNewFrame()
   }
-  return this._lastFrame()
+  return this._currentFrame()
 }
 
-Scorecard.prototype._lastFrame = function () {
+Scorecard.prototype._currentFrame = function () {
   return this.frames[this.frames.length - 1]
+}
+
+Scorecard.prototype._isCurrentFrameOver = function () {
+  let frame = this._currentFrame()
+  if (this._isTenthFrame()) {
+    return false
+    // if (
+    //   frame.rolls.length === 3 ||
+    //   (frame.rolls.length === 2 &&
+    //     (frame.rolls[0].outcome !== 'Strike' ||
+    //       frame.rolls[1].oucome !== 'Spare'))
+    // ) {
+    //   return true
+    // }
+  } else if (frame.rolls[0].outcome === 'Strike' || frame.rolls.length === 2) {
+    return true
+  }
+  return false
 }
 
 Scorecard.prototype._isTenthFrame = function () {

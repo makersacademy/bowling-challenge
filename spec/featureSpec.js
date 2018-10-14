@@ -59,17 +59,32 @@ describe('Feature Tests', function () {
       })
     })
 
-    // describe('second bowl (not a spare)', function () {
-    //   it('should not create a new frame', function () {});
+    describe('second bowl (not a spare)', function () {
+      beforeEach(function () {
+        this.scorecard.bowl(2)
+        this.scorecard.bowl(6)
+        this.frame = this.scorecard.frames[0]
+      })
 
-    //   it('should record the number of pins knocked down', function () {});
+      it('should only have one frame', function () {
+        expect(this.scorecard.frames.length).toEqual(1)
+      })
 
-    //   it('should have two entries in the frames array', function () {});
+      it('should record the number of pins knocked down', function () {
+        expect(this.frame.rolls).toEqual([
+          { pins: 2, outcome: '' },
+          { pins: 6, outcome: '' }
+        ])
+      })
 
-    //   it('should complete the frame', function () {});
+      it('should complete the frame', function () {
+        expect(this.frame.complete).toEqual(true)
+      })
 
-    //   it('should update the total score', function () {});
-    // });
+      it('should have a frame score of 8', function () {
+        expect(this.frame.score).toEqual(8)
+      })
+    })
 
     // describe('second bowl is a spare!', function () {
     //   it('should not create a new frame', function () {});

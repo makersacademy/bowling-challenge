@@ -40,17 +40,17 @@ describe('Scorecard', function () {
       })
     })
 
-    // describe('second bowl (not a spare)', function() {
-    //   it('should not create a new frame', function() {});
+    describe('second bowl (not a spare)', function () {
+      it('should not create a new frame', function () {})
 
-    //   it('should record the number of pins knocked down', function() {});
+      it('should record the number of pins knocked down', function () {})
 
-    //   it('should have two entries in the frames array', function() {});
+      it('should have two entries in the frames array', function () {})
 
-    //   it('should complete the frame', function() {});
+      it('should complete the frame', function () {})
 
-    //   it('should update the total score', function() {});
-    // });
+      it('should update the total score', function () {})
+    })
 
     // describe('second bowl is a spare!', function() {
     //   it('should not create a new frame', function() {});

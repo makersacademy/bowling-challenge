@@ -15,18 +15,6 @@ describe('Bowling', function () {
     })
   })
 
-  describe('#countFrame', function () {
-    it('keeps count of number of frames', function () {
-      game.roll(4)
-      game.roll(4)
-      game.roll(4)
-      game.roll(4)
-      game.roll(4)
-      game.roll(4)
-      expect(game.frameCount).toEqual(3)
-    })
-  })
-
   describe('Score', function () {
     describe('should be able to call score at any time', function () {
       it('after one roll', function () {
@@ -149,7 +137,8 @@ describe('Bowling', function () {
       game.roll(5)
       game.roll(2)
       game.resetGame()
-      expect(game.frameCount).toEqual(0)
+      expect(game.currentRoll).toEqual(1)
+      expect(game.currentFrame).toEqual(1)
       expect(game.rolls).toEqual([])
     })
   })

@@ -2,29 +2,21 @@
 <html>
   <head>
     <title>Bowling Scoreboard</title>
-
+    <link rel="stylesheet" href="./public/css/main.css">
   </head>
   <body>
 
     <section>
       <h1 class='scorecard'> Bowling Scorecard </h1>
-      <h2 class='frame'>Frame: <span id="frame-num">1</span></h2>
+      <div id='playername'>
       <h3 class='Entername'> Please enter your name </h3>
       <form  id='name' >
-        <input type="text" name="nameInput">
-        <button type="submit">Submit</button>
+        <input type="text" placeholder="Name" id="nameInput">
+        <button type="submit" id='namesub'>Submit</button>
       </form>
-
-      <h3 id='rollinput'> Enter your rolls</h3>
-      <form   class='roll1'  id="roll1">
-        <label for='roll1'> Roll One: </label>
-        <input type="number" id='rollOne' name="rollOne" max="10" min="0" >
-        <input id='rollonesub' type="submit" value="Submit">
-        <br></br><br><br>
-
-      </form>
-      <form   class='roll2'  id="roll2">
-        <label for='roll2'> Roll Two: </label>
+    </div>
+     <p> <h2 class='frame'>Frame: <span id="frame-num">1</span>  Roll: <span id="roll"> 1</span></h2> </p>
+      <form   class='rolls'  id="rolls">
         <button type="button" class="scoreButton" value = 0 id="0">0</button>
         <button type="button" class="scoreButton" value = 1 id="1">1</button>
         <button type="button" class="scoreButton" value = 2 id="2">2</button>
@@ -36,17 +28,14 @@
         <button type="button" class="scoreButton" value = 8 id="8">8</button>
         <button type="button" class="scoreButton" value = 9 id="9">9</button>
         <button type="button" class="scoreButton" value = 10 id="10">10</button>
-        <br></br><br><br>
-
+        <br><br>
       </form>
-      <input type='submit' value='Reset Game' id='reset'>
     </section>
     <section>
-      <h3 id="score">Score</h3>
       <p>
         <style>
         table, th, td {
-          border: 1px solid black;
+          border: 4px solid black;
           border-collapse: collapse;
         }
         th, td {
@@ -91,7 +80,7 @@
           <td id='F9r2'></td>
           <td id='F10r1'></td>
           <td id='F10r2'></td>
-          <td id='F10B'></td>
+          <td id='F10r3'></td>
           <td id='total'></td>
         </tr>
         <tr>
@@ -106,10 +95,12 @@
           <td id='totframe8' colspan="2"></td>
           <td id='totframe9' colspan="2"></td>
           <td id='totframe10' colspan="3"></td>
-          <td colspan="2"></td>
+          <td id='total' colspan="2"></td>
       </tr>
     </table>
     </section>
+    <input type='submit' value='Play again' id='reset' class='playagain'>
+    <h2 id='gamescore'> </h2>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="src/Game.js"></script>
     <script src='src/interface.js'></script>

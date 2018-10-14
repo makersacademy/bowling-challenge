@@ -2,19 +2,26 @@
 
 function Game () {
   this.rolls = []
-  this.frameCount = 0
+  this.currentFrame = 1
+  this.currentRoll = 1
 }
 
 Game.prototype.roll = function (pins) {
-  this.rolls.push(pins)
-  this.countFrame(pins)
-}
 
-Game.prototype.countFrame = function (pins) {
-  if (this.frameCount !== 10) {
-    if (pins === 10 || this.rolls.length % 2 === 0) {
-      this.frameCount += 1
+  this.rolls.push(pins)
+
+  if (this.currentFrame !== 10) {
+    if (pins === 10 && this.currentRoll === 1) {
+      this.currentFrame += 1
+      this.currentRoll = 1
+    } else if (this.currentRoll === 2) {
+      this.currentRoll = 1
+      this.currentFrame += 1
+    } else {
+      this.currentRoll += 1
     }
+  } else {
+    this.currentRoll += 1
   }
 }
 
@@ -39,7 +46,7 @@ Game.prototype.isStrike = function (index) {
 Game.prototype.hasBonus = function () {
   var rollIndex = this.rolls.length - 3
 
-  if (this.frameCount === 10) {
+  if (this.currentFrame === 10) {
     if (this.isStrike(rollIndex) || this.isSpare(rollIndex)) {
       return true
     }
@@ -69,5 +76,6 @@ Game.prototype.score = function () {
 
 Game.prototype.resetGame = function () {
   this.rolls = []
-  this.frameCount = 0
+  this.currentRoll = 1
+  this.currentFrame = 1
 }

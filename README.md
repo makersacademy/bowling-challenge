@@ -75,3 +75,19 @@ In code review we'll be hoping to see:
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+
+TO RUN THE BOWLING GAME:
+
+Run index.html in the Browser.
+It covers Perfect Game and Gutter Game.
+Each Frame is giving individual frame score, not the running score at the moment.
+
+
+Feature tests and unit tests are all green and passing.
+
+TO DO LIST:
+
+I have included Eslint but at the moment I am not sure whether I need to do something to make it work or is it already working.
+I need to set up [Travis CI](https://travis-ci.org) to run the tests.
+I am not using multiplayer at the moment.
+I have not used Frame class more, some refactoring is needed.

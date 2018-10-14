@@ -50,5 +50,6 @@ describe("BowlingScorer", function() {
     newGame.roll(9);
     newGame.roll(1);
     expect(newGame.score()).toEqual(29);
+
   })
 });

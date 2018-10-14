@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bowling Scores</title>
+    <link rel="stylesheet" type="text/css" href="public/styles.css">
+  </head>
+
+  <body>
+    <header>
+      <h1>Bowling Scores</h1>
+      <div class="site-container">
+        <form id="score-form" action="#">
+          Select frame:
+          <select name="frame">
+             <option value="1">1st frame</option>
+             <option value="2">2nd frame</option>
+             <option value="3">3rd frame</option>
+             <option value="4">4th frame</option>
+             <option value="5">5th frame</option>
+             <option value="6">6th frame</option>
+             <option value="7">7th frame</option>
+             <option value="8">8th frame</option>
+             <option value="9">9th frame</option>
+             <option value="10">10th frame</option>
+           </select>
+           <br>
+           Select roll:
+           <select name="roll">
+             <option value="1">1st roll</option>
+             <option value="2">2nd roll</option>
+           </select>
+           <br>
+           How many pins did you score?
+           <select name="pins">
+             <option value="1">1</option>
+             <option value="2">2</option>
+             <option value="3">3</option>
+             <option value="4">4</option>
+             <option value="5">5</option>
+             <option value="6">6</option>
+             <option value="7">7</option>
+             <option value="8">8</option>
+             <option value="9">9</option>
+             <option value="10">10</option>
+           </select>
+           <br>
+           <input id="submit-btn" type="submit" value="Submit">
+        </form>
+
+      </div>
+    </header>
+
+    <div class="site-container">
+      <table id='score-table'>
+    <tr>
+      <th>Frame</th>
+      <th>Roll</th>
+      <th>Pins</th>
+    </tr>
+    <tr>
+      <td>1st frame</td>
+      <td>1st roll</td>
+      <td id='1-1-pins'></td>
+    </tr>
+    <tr>
+      <td>1st frame</td>
+      <td>2nd roll</td>
+      <td id='1-2-pins'></td>
+    </tr>
+    <tr>
+      <td>2nd frame</td>
+      <td>1st roll</td>
+      <td id='2-1-pins'></td>
+    </tr>
+    <tr>
+      <td>2nd frame</td>
+      <td>2nd roll</td>
+      <td id='2-2-pins'></td>
+    </tr>
+    <tr>
+      <td>3rd frame</td>
+      <td>1st roll</td>
+      <td id='3-1-pins'></td>
+    </tr>
+    <tr>
+      <td>3rd frame</td>
+      <td>2nd roll</td>
+      <td id='3-2-pins'></td>
+    </tr>
+    <tr>
+      <td>4th frame</td>
+      <td>1st roll</td>
+      <td id='4-1-pins'></td>
+    </tr>
+    <tr>
+      <td>4th frame</td>
+      <td>2nd roll</td>
+      <td id='4-2-pins'></td>
+    </tr>
+      <tr>
+        <td>5th frame</td>
+        <td>1st roll</td>
+        <td id='5-1-pins'></td>
+      </tr>
+      <tr>
+        <td>5th frame</td>
+        <td>2nd roll</td>
+        <td id='5-2-pins'></td>
+      </tr>
+      <tr>
+        <td>6th frame</td>
+        <td>1st roll</td>
+        <td id='6-1-pins'></td>
+      </tr>
+      <tr>
+        <td>6th frame</td>
+        <td>2nd roll</td>
+        <td id='6-2-pins'></td>
+      </tr>
+      <tr>
+        <td>7th frame</td>
+        <td>1st roll</td>
+        <td id='7-1-pins'></td>
+      </tr>
+      <tr>
+        <td>7th frame</td>
+        <td>2nd roll</td>
+        <td id='7-2-pins'></td>
+      </tr>
+      <tr>
+        <td>8th frame</td>
+        <td>1st roll</td>
+        <td id='8-1-pins'></td>
+      </tr>
+      <tr>
+        <td>8th frame</td>
+        <td>2nd roll</td>
+        <td id='8-2-pins'></td>
+      </tr>
+      <tr>
+        <td>9th frame</td>
+        <td>1st roll</td>
+        <td id='9-1-pins'></td>
+      </tr>
+      <tr>
+        <td>9th frame</td>
+        <td>2nd roll</td>
+        <td id='9-2-pins'></td>
+      </tr>
+      <tr>
+        <td>10th frame</td>
+        <td>1st roll</td>
+        <td id='10-1-pins'></td>
+      </tr>
+      <tr>
+        <td>10th frame</td>
+        <td>2nd roll</td>
+        <td id='10-2-pins'></td>
+      </tr>
+
+  </table>
+    </div>
+
+    <div class="site-container">
+        <div id="total-score">And the total score is... <span> 0</span></div>
+    </div>
+
+
+      <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+      <script type='text/javascript' src='src/frame.js'></script>
+      <script type='text/javascript' src='src/game.js'></script>
+  </body>
+</html>

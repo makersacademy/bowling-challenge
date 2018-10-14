@@ -1,17 +1,18 @@
 $(document).ready(function(){
   var bowling = new BowlingGame;
   var frame = new Frames;
-  $('#play-again').hide();
+  $('#play-again').css('visibility','hidden');
 
   $('#play-again').on('click',function(data){
     bowling = new BowlingGame;
-    $('#play-again').hide();
+    $('#play-again').css('visibility','hidden');
     for (var i = 0; i < 11; i++) {
-      $("#" + i + "pin").show()
+      $("#" + i + "pin").css('visibility','visible')
       $('#currentFrame').text("Frame Number:" + bowling.currentFrame);
       $('#currentThrow').text("Throw number:" + bowling.currentThrow);
       $('.frame').text('-');
       $('.unusedframe').text('-');
+      $('.score').text('-');
     }
   })
 
@@ -31,11 +32,16 @@ $(document).ready(function(){
     $('#currentFrame').text("Frame Number:" + bowling.currentFrame);
     $('#currentThrow').text("Throw number:" + bowling.currentThrow);
     $('#currentThrow').text("Throw number:" + bowling.currentThrow);
-    // $('#score' + bowling.currentFrame).text(bowling.allThrows[bowling.currentThrow-1].score())
-    // console.log(bowling.allThrows[bowling.currentFrame-1]);
-    // $('#score' + (bowling.currentFrame-1)).text(bowling.allThrows[bowling.currentFrame-1].score())
+    var frameScore = [];
     for (var i = 0; i < bowling.allThrows.length; i++) {
-      console.log([bowling.allThrows[i].firstThrow,bowling.allThrows[i].secondThrow])
+      if (i == 0) {
+        frameScore[i] = (bowling.allThrows[i].scoreFrame(bowling.allThrows[i+1],bowling.allThrows[i+2]));
+      } else {
+        frameScore[i] = (bowling.allThrows[i].scoreFrame(bowling.allThrows[i+1],bowling.allThrows[i+2])) + frameScore[i-1]
+      }
+       if (bowling.currentThrow == 1) {
+         $('#score' + (i+1)).text(frameScore[i])
+       }
     }
     bowling.calculateScore();
     if (bowling.currentFrame > 10) gameOver();
@@ -62,19 +68,19 @@ $(document).ready(function(){
     var throws = bowling.allThrows.length
     if (bowling.currentThrow == 2) {
       for (var i = (10 - (bowling.allThrows[throws-1].firstThrow)+1) ; i < 11; i++) {
-        $("#" + i + "pin").hide()
+        $("#" + i + "pin").css('visibility','hidden')
       }
     } else {
       for (var i = 0; i < 11; i++) {
-        $("#" + i + "pin").show()
+        $("#" + i + "pin").css('visibility','visible')
       }
     }
   }
 
   gameOver = function() {
-    $('#play-again').show();
+    $('#play-again').css('visibility','visible');
     for (var i = 0; i < 11; i++) {
-      $("#" + i + "pin").hide()
+      $("#" + i + "pin").css('visibility','hidden')
       $('#currentFrame').text("game over");
       $('#currentThrow').text("game over");
     }

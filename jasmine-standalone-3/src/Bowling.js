@@ -113,6 +113,7 @@ BowlingGame.prototype = {
                 }
             
             this._totalScore += this._frames[index].firstRoll + this._frames[index].secondRoll + this._frames[index].extraRoll + bonus;
+            this.runScore.push(this._totalScore);
         }
     },
 

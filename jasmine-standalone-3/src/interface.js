@@ -4,6 +4,9 @@ $(document).ready(function(){
     var firstRoll;
     var runScore =[];
     var count =0;
+    var runScore = [];
+    var i =0;
+    var finalscore;
     pinHit = function(pins){
       if(game.isRollValid(pins) == false){
         comments.innerHTML = 'Invalid Roll - there are only ten frames!';
@@ -23,7 +26,17 @@ $(document).ready(function(){
            for(i = 0; i < 11; i++){
              elems[i].disabled = true;
            }
-        game.calculateScore();
+       
+        game._totalScore = 0;   
+        console.log(game._totalScore);
+        
+       //game._totalScore = finalscore
+
+        game.calculateScore(); 
+
+        let index = game._frames.length - 1
+      this["marker"+9].innerHTML = game._totalScore;
+
         let totalscore = game._totalScore ;
         yourscore.innerHTML = 'Your score: ' +" "+ totalscore;
         return;
@@ -38,7 +51,9 @@ $(document).ready(function(){
         for(i = 0; i < 11; i++){
           elems[i].disabled = true;
         }
+        game._totalScore = 0;
         game.calculateScore();
+        //finalscore = game._totalScore
         let totalscore = game._totalScore - pins;
         yourscore.innerHTML = 'Your score: ' +" "+ totalscore;
         return;
@@ -60,12 +75,26 @@ $(document).ready(function(){
       frame10.innerHTML = game.frameScore['10'];
     };
   
-    totalScore = function() {
+    totalScore = function() {  
+      // for(let i = 0; i < game._frames.length; i++){
+      //       runScore[i] = game._frames[i]['firstRoll']+game._frames[i]['secondRoll']
+      //        this["marker"+i].innerHTML = runScore[i]
+      //     //  yourscore.innerHTML = 'Your score: ' +" "+ totalscore;
+      //}
     
-      for(let i = 0; i < game._frames.length; i++){
-            runScore[i] = game._frames[i]['firstRoll']+game._frames[i]['secondRoll']
-             this["marker"+i].innerHTML = runScore[i]
-        }
+
+      game._totalScore = 0;
+      game.calculateScore();
+      runScore.push(game._totalScore);
+
+      //console.log(runScore);
+
+      let index = game._frames.length - 1
+      this["marker"+index].innerHTML = game._totalScore;
+      i++
+      
+            
+        
     };
 
   });

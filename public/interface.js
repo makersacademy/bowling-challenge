@@ -1,4 +1,7 @@
+var Game = require('./src/game')
+
 console.log("Write this")
+
 $(document).ready(function () {
   $("#demo").html("Hello, World!");
 

@@ -4,8 +4,8 @@ Bowling Challenge
 
 ## User Story
 
-`As an player`
-`So that I can measure my performance`
+`As an player`<br>
+`So that I can measure my performance`<br>
 `I want to track of my score according to the official rules.`
 
 ## Usage

@@ -60,7 +60,7 @@ describe ("Game", function(){
 
     it("checks if last round was strike, and changes doubleBothScoresNextRound to true if so", function(){
       game.rollBall(2);
-      expect(game.doubleBothScoresNextRound).toEqual(true)
+      expect(game.double2).toEqual(true)
     })
 
     it ("sets the frame bonus counter to 2 if last frame was a strike", function(){
@@ -85,7 +85,7 @@ describe ("Game", function(){
 
     it("checks if last round was spare, and changes doubleFirstScoreNextRound to true if so", function(){
       game.rollBall(1);
-      expect(game.doubleFirstScoreNextRound).toEqual(true)
+      expect(game.double1).toEqual(true)
     })
   })
 

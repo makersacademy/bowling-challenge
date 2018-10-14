@@ -11,7 +11,6 @@ $(document).ready(function() {
     updateScoresheetRolls()
     updateScoresheetFrameScore()
     updateScoresheetTotalScore()
-    console.log(game)
   })
   
   $('.btn:last').click(function() {
@@ -98,7 +97,6 @@ $(document).ready(function() {
 
     $('.btn-outline-secondary').each(function () {
       let _dataValue = parseInt($(this).attr('data-value'))
-      console.log(_dataValue)
       if (_dataValue > 10 - roll) {
         $(this).hide()
       }

@@ -62,10 +62,14 @@ function Game (frame = new Frame()){
   Game.prototype._ifTenth = function() {
     if ((this._frameNumber === 11) && (this._currentFrame.isSpare === true)){ //add else if for is spare
       this.totalScore += userInput
-      this.message = "Game over! Your total Game Score is " + this.totalScore.toString() + " out of 300 possible points! Please refresh the page to play again!"
+      this.message = "Game over! Your total Game Score is " + this.totalScore.toString() + " out of 300 possible points. Please refresh the page to play again!"
+    } else if ((this._frameNumber === 11) && (this._currentFrame.isStrike === true)){
+      this.totalScore +=userInput
+      this.message = "Game over! Your total Game Score is " + this.totalScore.toString() + " out of 300 possible points. Please refresh the page to play again!"
     } else if (this._frameNumber === 11) {
-      this.message = "Game over!"
+      this.message = "Game over! Your total Game Score is " + this.totalScore.toString() + " out of 300 possible points. Please refresh the page to play again!"
     }
+
   }
 
 

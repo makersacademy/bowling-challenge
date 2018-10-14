@@ -43,7 +43,8 @@ describe ("Game", function(){
       game.rollBall(10)
       game.rollBall(10)
       game.rollBall(10)
-      game.rollBall(10)
+      game.rollBall(8)
+      game.rollBall(1)
       game.rollBall(1)
       //don't know how to test that the extra roll total is added, so I can't test if stike or spare etc....
       expect(game.message).toContain("Game over!")

@@ -91,12 +91,12 @@ I concluded two things:
 
 ## The Stack
 
-Views: Embedded JavaScript
-Controller: Express
-Models: Node
+Views: Embedded JavaScript<br>
+Controller: Express<br>
+Models: Node<br>
 
-Unit Testing: Jest
-Feature Testing: Jest with Puppeteer
+Unit Testing: Jest<br>
+Feature Testing: Jest with Puppeteer<br>
 
 Linting: ESLint
 

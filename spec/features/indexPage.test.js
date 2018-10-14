@@ -1,5 +1,4 @@
 const expect = require('expect-puppeteer')
-// const puppeteer = require('puppeteer');
 
 describe('Homepage', function () {
 

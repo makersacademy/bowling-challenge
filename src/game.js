@@ -22,7 +22,9 @@ Game.prototype.currentGameScore = function () {
 };
 
 Game.prototype.frameBonus = function (frame) {
-  if (frame.isASpare()) {
+  if (this._nextFrame(frame) === undefined) {
+    return 0
+  } else if (frame.isASpare()) {
     return this._nextFrame(frame).pinsFirstRoll();
   } else if (frame.isAStrike()) {
     return this._nextFrame(frame).totalFrameScore();

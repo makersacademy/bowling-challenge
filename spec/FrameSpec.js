@@ -1,8 +1,8 @@
 describe ("Frame", function(){
   var frame
+  
   beforeEach(function(){
     frame = new Frame();
-    game = new Game(); //can probs take out
   })
 
    describe ('calculate', function(){
@@ -16,7 +16,7 @@ describe ("Frame", function(){
        frame.calculate(5)
        expect(frame._rollsLeft).toEqual(1)
      })
-     
+
     it("changes isStrike to true if userinput equals 10", function(){
       frame.calculate(10)
       expect(frame.isStrike).toEqual(true)

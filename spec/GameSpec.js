@@ -1,6 +1,5 @@
 
 describe ("Game", function(){
-  var frame
   var game
 
   describe ('rollBall', function(){
@@ -66,7 +65,7 @@ describe ("Game", function(){
       expect(game._currentFrame._bonusCounter).toEqual(0) //slightly vacuous test, and not great as testing actual
       //bonusCounter
     })
-    
+
     it("checks if last round was spare, and changeds doubleFirstScoreNextRound to true if so", function(){
       game.rollBall(1);
       expect(game.doubleFirstScoreNextRound).toEqual(true)

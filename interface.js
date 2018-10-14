@@ -14,7 +14,9 @@ function updateScores() {
   $('#gamescore').text(game.totalScore);
   $('#framescore').text(game._currentFrame.frameScore);
   $('#Frame-number').text(game._frameNumber);
+  $('#message').text(game.message);
 }
+
 
 
 })

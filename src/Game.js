@@ -4,24 +4,33 @@ function Game (frame = new Frame()){
   this.doubleFirstScoreNextRound = false;
   this.doubleBothScoresNextRound = false;
   this._currentFrame = frame
+  this.message = "something"
 };
 
 
 Game.prototype.rollBall = function(userInput) {
-  userInput = Number(userInput) //(how to refactor?)
-   // I THINK THIS NEEDS TO BE CALLED SOMEWHERE ELSE. AND SOMETHING NEEDS TO SET IT BACK AGAIN
+  userInput = Number(userInput)
+
 
   //easy enough to call to a method here that raises an error if game number is over 10
   //can refactor repeated line call to calculate
   if (this._currentFrame._rollsLeft === 0){
+
     this._isBonus()
     this._total()
-    this._newFrame()
-    this.sendBonusPoints(userInput) //poss needs to be put somewhere else
+
     this._increaseFrameNumber();
+
+    if ((this._frameNumber === 11) && (this._currentFrame.isSpare === true)){ //add else if for is spare
+      this.totalScore += userInput
+      this.message = "Game over! Your total Game Score is " + this.totalScore.toString() + " out of 300 possible points! Please refresh the page to play again!"
+    }
+
+    this._newFrame()
+    this.sendBonusPoints(userInput)
     this._currentFrame.calculate(userInput)
   } else {
-    //this._sendBonusPoints(userInput);
+
     this._currentFrame.calculate(userInput)
   }
 };
@@ -46,7 +55,7 @@ Game.prototype.sendBonusPoints = function(userInput) { //could refactor into two
 }
 };
 
-Game.prototype._isBonus = function() {
+Game.prototype._isBonus = function() { //I think this function is necessary because we will lose the information soon when we refresh frame.
   if (this._currentFrame.isStrike === true) {
     this.doubleBothScoresNextRound = true
   } else if (this._currentFrame.isSpare === true){
@@ -55,5 +64,8 @@ Game.prototype._isBonus = function() {
     this.doubleBothScoresNextRound = false
     this.doubleFirstScoreNextRound = false
   }
+
+
+
 
 };

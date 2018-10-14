@@ -10,7 +10,6 @@ function Game (frame = new Frame()){
 
   Game.prototype.rollBall = function(userInput) {
     userInput = Number(userInput)
-    //easy enough to call to a method here that raises an error if game number is over 10
     //can refactor repeated line call to calculate
     if (this._currentFrame._rollsLeft === 0){
 
@@ -41,7 +40,7 @@ function Game (frame = new Frame()){
     this._currentFrame = new Frame();
   }
 
-  Game.prototype.sendBonusPoints = function(userInput) { //could refactor into two method
+  Game.prototype.sendBonusPoints = function(userInput) { 
 
     if (this.double2 === true) {
       this._currentFrame._bonusCounter += 2

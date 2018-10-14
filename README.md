@@ -2,76 +2,101 @@
 Bowling Challenge
 =================
 
+## User Story
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+`As an player`
+`So that I can measure my performance`
+`I want to track of my score according to the official rules.`
 
-## The Task
+## Usage
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+Clone down the repo.
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+`git clone https://github.com/JonathanAndrews/bowling-challenge.git`
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+Install all dependencies.
 
-As usual please start by
+`npm install`
 
-* Forking this repo
+Start up the app.
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+`node app.js`
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+Run the tests.
 
-### Optional Extras
+`npm test`
 
-In any order you like:
+Hopefully all are green, then go to `http://localhost:3000/` in your browser.
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+## Screenshots
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+At `http://localhost:3000/` you will see a screen like this.
 
-## Bowling — how does it work?
+<img src="./readme_pics/freshPage.png" height="400"/>
 
-### Strikes
+You enter a score into the central input field and it will appear in the central Total Score field and in the 1st frame field in the bottom left hand corner.
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+<img src="./readme_pics/openingBowl.png" height="400"/>
 
-### Spares
+Scores are summed, and the Total Score field and the 1st frame field immediately update. Here the score is a spare.
 
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+<img src="./readme_pics/spare.png" height="400"/>
 
-### 10th frame
+The Spare receives bonus points from the next frame.
 
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
+<img src="./readme_pics/strike.png" height="400"/>
 
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
+The Strike receives bonus points from the next two frames.
 
-### Gutter Game
+<img src="./readme_pics/strikeBonuses.png" height="400"/>
 
-A Gutter Game is when the player never hits a pin (20 zero scores).
+12 Strikes is a perfect game totalling 300 points.
 
-### Perfect Game
+<img src="./readme_pics/perfect.png" height="400"/>
 
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
 
-In the image below you can find some score examples.
+## Strategy
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
+I built this web app back to front.
+I designed and coded the model and then connected it to a webapp.
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+I did this because the primary problem of the challenge is how to implement the bonus points scored after a Strike or Spare.
 
-## Code Review
+I have attempted in this challenge to engineer away most of the headaches associated with this.
 
-In code review we'll be hoping to see:
+I feel I have been relatively successful.  I do not have chains of nested if/else statements and I think the my solution is easy to understand.
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+The first thing I did was to write down the extreme cases:
+- a strike
+- a spare
+- a strike in the last frame
+- a perfect game
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+I concluded two things:
+1. All frames store either three scores or two scores, even for edge cases.
+2. A new frame is made every two bowls unless there is a strike, in which case a new frame is made immediately.
+
+## The Design
+
+1. So, I designed my frames to limited their own size to 3 scores.
+2. If the first two scores were less than 10 the frame put 0 into the final available slot.
+3. This meant that I could send the scores to all frames and only those with space would store the Roll score.
+
+4. With the frames controlling their own bonuses, the game code only focuses on when to make more frames.
+5. It makes a new frame if there is a strike.
+6. It makes a new frame if there have been two bowls since the last new frame.
+7. It stops making frames when there are ten frames.
+
+8. The last thing to do was to guard against user error.
+
+## The Stack
+
+Views: Embedded JavaScript
+Controller: Express
+Models: Node
+
+Unit Testing: Jest
+Feature Testing: Jest with Puppeteer
+
+Linting: ESLint
+

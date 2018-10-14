@@ -1,5 +1,9 @@
+
 describe ("Game", function(){
   var frame
+  var game
+  var mockFrame
+
   beforeEach(function(){
     game = new Game();
     frame = new Frame();
@@ -14,10 +18,10 @@ describe ("Game", function(){
 
     it("calls to newFrame function if currentFrame has no rolls left, ensuring that the rolls are reset", function(){
 
-      game.rollBall(2);
-      game.rollBall(5);
-      game.rollBall(3);
-      expect(game._currentFrame._rollsLeft).toEqual(1) //not a great test as it's testing actual Frame class, but best I could do to check it's new
+       mockFrame = jasmine.createSpy('mockFrame', { "_rollsLeft": 0})
+       game = new Game(mockFrame)
+       game.rollBall(3);
+       expect(game._currentFrame.frameScore).toEqual(3) //this tests that it's not mockFrame because mockFrame doesn't know this method  
     })
     it("still calls _sendPointsToFrame on fresh currentFrame if no rolls left on previous frame", function(){
       game.rollBall(2);

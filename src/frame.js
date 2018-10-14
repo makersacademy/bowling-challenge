@@ -12,6 +12,7 @@ Frame.prototype.addSecondRoll = function(roll) {
   } else {
     throw new Error('This frame already contains two rolls');
   };
+};
 
 Frame.prototype.totalFrameScore = function() {
   return this.rolls.reduce((a, b) => a + b, 0)
@@ -35,5 +36,4 @@ Frame.prototype.isAStrike = function () {
 
 Frame.prototype.pinsFirstRoll = function () {
   return this.rolls[0]
-};
 };

@@ -51,10 +51,15 @@ describe ('Scorecard', function() {
       expect(scorecard.isSpare()).toEqual(false);
     });
 
-    it('returns true if total of the frame score is 10', function () {
-      scorecard.roll(4);
-      scorecard.roll(6);
-      expect(scorecard.isSpare()).toEqual(true);
+  });
+
+  describe ('#spareBonus', function() {
+    it('calculates bonus points for scoring one spare in a game', function () {
+      scorecard.roll(5);
+      scorecard.roll(5);
+      scorecard.roll(3);
+      playGame(17, 0);
+      expect(scorecard.totalScore()).toEqual(16);
     });
 
   });

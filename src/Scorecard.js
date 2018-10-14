@@ -15,8 +15,11 @@ Scorecard.prototype.totalScore = function() {
 
   for(var frame = 0; frame < 10; frame++){
     if (this.isStrike(frameIndex)) {
-  			score += 10 + this.strikeBonus(frameIndex);
+  			score += 10 + this._strikeBonus(frameIndex);
   			frameIndex++;
+      } else if (this.isSpare(frameIndex)) {
+        score += 10 + this._spareBonus(frameIndex);
+        frameIndex += 2;
       } else {
         score += this.sumOfFrameScore(frameIndex);
         frameIndex += 2;
@@ -41,11 +44,14 @@ Scorecard.prototype.isStrike = function(frameIndex) {
   return this.pointsTracker[frameIndex] === 10;
 };
 
-Scorecard.prototype.strikeBonus = function(frameIndex) {
+Scorecard.prototype.isSpare = function(frameIndex) {
+  return this.pointsTracker[frameIndex] + this.pointsTracker[frameIndex + 1] === 10;
+};
+
+Scorecard.prototype._strikeBonus = function(frameIndex) {
   return this.pointsTracker[frameIndex + 1] + this.pointsTracker[frameIndex + 2];
 };
 
-Scorecard.prototype.isSpare = function() {
-  var frameIndex = 0;
-  return this.pointsTracker[frameIndex] + this.pointsTracker[frameIndex + 1] === 10;
+Scorecard.prototype._spareBonus = function(frameIndex) {
+  return this.pointsTracker[frameIndex + 2];
 };

@@ -23,7 +23,7 @@ Goals of feedback
 What I think went well
 -----
 
-* All my tests pass and I managed to research spies and doubles and used them to keep my tests isolated.
+* All my tests pass. I managed to research spies and doubles and used them to keep my tests isolated.
 * I'm really happy that almost all of the game works as it should according to the rules of bowling.
 * My first time using jquery by myself was successful.
 

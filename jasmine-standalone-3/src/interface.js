@@ -28,15 +28,9 @@ $(document).ready(function(){
            }
        
         game._totalScore = 0;   
-        console.log(game._totalScore);
-        
-       //game._totalScore = finalscore
-
         game.calculateScore(); 
-
         let index = game._frames.length - 1
-      this["marker"+9].innerHTML = game._totalScore;
-
+         this["marker"+9].innerHTML = game._totalScore;
         let totalscore = game._totalScore ;
         yourscore.innerHTML = 'Your score: ' +" "+ totalscore;
         return;
@@ -53,7 +47,6 @@ $(document).ready(function(){
         }
         game._totalScore = 0;
         game.calculateScore();
-        //finalscore = game._totalScore
         let totalscore = game._totalScore - pins;
         yourscore.innerHTML = 'Your score: ' +" "+ totalscore;
         return;
@@ -76,25 +69,12 @@ $(document).ready(function(){
     };
   
     totalScore = function() {  
-      // for(let i = 0; i < game._frames.length; i++){
-      //       runScore[i] = game._frames[i]['firstRoll']+game._frames[i]['secondRoll']
-      //        this["marker"+i].innerHTML = runScore[i]
-      //     //  yourscore.innerHTML = 'Your score: ' +" "+ totalscore;
-      //}
-    
-
       game._totalScore = 0;
       game.calculateScore();
       runScore.push(game._totalScore);
-
-      //console.log(runScore);
-
       let index = game._frames.length - 1
       this["marker"+index].innerHTML = game._totalScore;
       i++
-      
-            
-        
     };
 
   });

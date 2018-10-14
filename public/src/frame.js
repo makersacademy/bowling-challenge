@@ -32,5 +32,4 @@ function frameFactory () {
   return new Frame()
 }
 
-// module.exports = Frame
 module.exports = frameFactory

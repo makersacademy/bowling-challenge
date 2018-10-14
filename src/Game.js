@@ -3,7 +3,7 @@
 function Game () {
   this.rolls = []
   this.frameCount = 0
-};
+}
 
 Game.prototype.roll = function (pins) {
   this.rolls.push(pins)
@@ -14,16 +14,16 @@ Game.prototype.countFrame = function (pins) {
   if (this.frameCount !== 10) {
     if (pins === 10 || this.rolls.length % 2 === 0) {
       this.frameCount += 1
-    };
-  };
+    }
+  }
 }
 
 Game.prototype.isSpare = function (index) {
   if (index + 2 < this.rolls.length) {
     if (this.rolls[index] + this.rolls[index + 1] === 10) {
       return true
-    };
-  };
+    }
+  }
   return false
 }
 
@@ -31,8 +31,8 @@ Game.prototype.isStrike = function (index) {
   if (index + 2 < this.rolls.length) {
     if (this.rolls[index] === 10) {
       return true
-    };
-  };
+    }
+  }
   return false
 }
 
@@ -42,8 +42,8 @@ Game.prototype.hasBonus = function () {
   if (this.frameCount === 10) {
     if (this.isStrike(rollIndex) || this.isSpare(rollIndex)) {
       return true
-    };
-  };
+    }
+  }
   return false
 }
 
@@ -62,8 +62,8 @@ Game.prototype.score = function () {
       i++
     } else {
       total += this.rolls[i]
-    };
-  };
+    }
+  }
   return total
 }
 

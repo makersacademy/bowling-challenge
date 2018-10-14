@@ -32,7 +32,14 @@ describe ("Game", function(){
       expect(game.totalScore).toEqual(5) //same as before, I didn't test private total method directly
     })
 
-  });
+    it("checks if this is the 10th frame, prints a message to signal end of game", function(){
+      spyOn(game, "_frameNumber").and.returnValue(10);
+      game.rollBall(1)
+      //don't know how to test that the extra roll total is added...
+      expect(game.message).toEqual("Game over!")
+    })
+  })
+
 
   describe ("rollBall and sendBonuspoints, when context is Strike", function(){
 
@@ -66,11 +73,10 @@ describe ("Game", function(){
       //bonusCounter
     })
 
-    it("checks if last round was spare, and changeds doubleFirstScoreNextRound to true if so", function(){
+    it("checks if last round was spare, and changes doubleFirstScoreNextRound to true if so", function(){
       game.rollBall(1);
       expect(game.doubleFirstScoreNextRound).toEqual(true)
     })
-
   })
 
 });

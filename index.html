@@ -12,7 +12,7 @@
       <div class="site-container">
         <form id="score-form" action="#">
           Select frame:
-          <select name="frame">
+          <select name="frame" id="frame">
              <option value="1">1st frame</option>
              <option value="2">2nd frame</option>
              <option value="3">3rd frame</option>
@@ -26,13 +26,13 @@
            </select>
            <br>
            Select roll:
-           <select name="roll">
+           <select name="roll" id="roll">
              <option value="1">1st roll</option>
              <option value="2">2nd roll</option>
            </select>
            <br>
            How many pins did you score?
-           <select name="pins">
+           <select name="pins" id="pins">
              <option value="1">1</option>
              <option value="2">2</option>
              <option value="3">3</option>
@@ -170,5 +170,6 @@
       <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
       <script type='text/javascript' src='src/frame.js'></script>
       <script type='text/javascript' src='src/game.js'></script>
+            <script type='text/javascript' src='src/interface.js'></script>
   </body>
 </html>

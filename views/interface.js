@@ -14,7 +14,7 @@ $(document).ready(function() {
     //   $('#pins').text(game.scorecard());
     // } // this is if ball 1 on last frame is a STRIKE.
 
-    if (game.frameCount >= 10 && game.ballCount === 2) {
+    if (game.frameCount >= 10 && game.ballCount === 3) {
       game.roll(num);
       $('#pins').text(game.scorecard());
       $('#scorer').html("GAME OVER, FINAL SCORE " + game.score() + "<br/>(Please press -Reset- to restart)");

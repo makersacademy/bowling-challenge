@@ -2,39 +2,32 @@
 Bowling Challenge
 =================
 
+This is my attempt at solving the Bowling challenge for Week 5 of Makers Apprenticeship.
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
 
-## The Task
+What works?
+
+The JavaScript code lets a user enter its roll score. It works for 0-9 but I didn't implement the spare and strike rules yet.
+
+I have an array that calculates the sum of all the rolls. I did not implement how to calculate the sum of the frame as I got stuck. I was thinking about adding either a hash in javascript {first_roll: 10pts; second_roll: 5; etc...} or an array of array but I didn't have time to implement this yet.
+
+The game calculates the rolls and the frames. The code recognises that if you do a strike you don't have a second role. The game doesn't know about the 10th frame rules.
+
+I've implemented a simple html/jQuery page to make the game more visible.
+
+
+To do:
+- Try nested array for the total sum or a hash.
+- Stop the game when it reached 10 rounds.
+- Update score when strike/spare.
+- jQuery of input of the rolls score.
+- You can only score the remaining pins (if score is 4 - then max score is 6 )
+
+More information/instructions:
 
 **THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
-
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
-
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+It counts and sums the scores of a bowling game for one player (in JavaScript). A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
 ## Bowling — how does it work?
 
@@ -67,11 +60,52 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
-## Code Review
+### User stories:
 
-In code review we'll be hoping to see:
+User stories:
+As a player,
+So I can have fun,
+I can enter my score of roll. --done
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+As a player,
+So I know when to stop,
+I can count the frame --done
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+As a player,
+So I know when to stop,
+I can count the roll  -- done
+
+As a player,
+So I can be average again,
+I can enter a second roll in the same frame unless my first roll was a 10. --done
+
+As a player,
+So I can brag, I want to see the score of my frame and the total.
+
+As a player,
+So I can be average,
+If my score is not equal to 10 and my roll isn’t a strike, add the two rolls. --done
+
+
+As a player
+So I know I win at life
+When I hit 10, I have a strike and my frame closes. -- done
+
+As a player,
+So I get my points calculated properly,
+My frame is not calculated until the next turn is then is equal to 10 + sum of next frame unless I strike again. Be careful when strike after strike (max score 300)
+
+As a player,
+So I can lose hard ouch,
+If my total score is 0 at the end, say “Gutter Game”.
+
+As a player,
+So I get my points calculated properly,
+If the sum of the two rounds is 10, my score isn’t calculated until the next roll of the next round, the sum is 10 + roll1_score
+
+As a player,
+So I can finish properly on round 10,
+If I get a spare or a strike, I can roll the extra balls but never more than 3.
+
+10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
+1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).

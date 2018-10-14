@@ -15,7 +15,6 @@ $(document).ready(function(){
   })
 
   $('.pin').on('click',function(data){
-    console.log(bowling.allThrows);
     var throwToInteger = Number(data.currentTarget.innerHTML)
     $('#frame' + bowling.currentFrame + 'throw' + bowling.currentThrow).text(throwToInteger)
     strikeChangeToX(throwToInteger);
@@ -30,7 +29,6 @@ $(document).ready(function(){
 
   strikeChangeToX = function(strike) {
     if (strike == 10 && bowling.currentThrow == 1) {
-      console.log("this should be happening");
       $('#frame' + bowling.currentFrame + 'throw1').text('X')
       $('#frame' + bowling.currentFrame + 'throw2').text('-')
       $('#frame' + bowling.currentFrame + 'throw2').css('color','white')

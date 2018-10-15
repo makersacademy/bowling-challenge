@@ -1,5 +1,6 @@
 $(document).ready(function runDocument() {
   var game = new Game()
+  var frame = 0
 
   $('#namesub').on('click', function(event) {
     event.preventDefault()
@@ -23,8 +24,10 @@ $(document).ready(function runDocument() {
     }
 
     game.roll(input)
-
-    $('#totframe' + game.currentFrame).text(game.score())
+    if (input === 10 || game.currentRoll === 2) {
+      frame += 1
+    }
+    $('#totframe' + frame).text(game.score())
 
 
      if (game.currentFrame === 10 && game.currentRoll > 3) {
@@ -66,7 +69,9 @@ $(document).ready(function runDocument() {
     for (var i = 0; i < 11; i++) {
       $('#' + i).prop('disabled', false)
     }
+    frame = 0
      game.resetGame()
+
    })
 
    gameOver = function() {

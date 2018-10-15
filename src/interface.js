@@ -8,6 +8,7 @@ $(document).ready(function() {
     $('#' + frameValue + '-' + rollValue +  '-' + 'pins').text(pinsValue);
     updateFrame(frameValue, rollValue, pinsValue);
     updateTotalScore();
+    updateBonuses();
   });
 
   function updateFrame(frameValue, rollValue, pinsValue) {
@@ -24,4 +25,12 @@ $(document).ready(function() {
       let totalScore = game.currentGameScore();
       $('#total-score').text(totalScore);
    };
-});
+
+   function updateBonuses() {
+     game.frames.forEach(function(thisFrame) {
+       let frameBonus = game.frameBonus(thisFrame)
+       let frameValue = game.frames.indexOf(thisFrame) + 1
+       $('#frame-' + frameValue + '-bonus').text(frameBonus);
+     });
+   };
+ });

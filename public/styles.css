@@ -1,15 +1,44 @@
+body {
+    background: #fafbfc;
+    font-family: OpenSans, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.site-container {
+    margin: auto;
+    max-width: 1200px;
+    width: 80%;
+}
+
+#submit-btn {
+    background-color: #15c26b;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 1em 4em;
+    text-transform: uppercase;
+}
+
+#submit-btn:hover {
+    background-color: #12a159;
+}
+
+
+#response-container {
+    margin-top: 2em;
+}
+
 table {
+    border: 1px solid black;
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
 
 td, th {
-    border: 1px solid #dddddd;
+    border: 1px solid black;
     text-align: left;
     padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
 }

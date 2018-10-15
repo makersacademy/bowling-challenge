@@ -1,3 +1,5 @@
+var Scorecard = require('../src/scorecard.js')
+
 describe('Scorecard', function () {
   beforeEach(function () {
     this.frame1 = jasmine.createSpyObj('frame', [

@@ -1,3 +1,5 @@
+var Frame = require('./frame.js')
+
 function Scorecard (frames = []) {
   this.frames = frames
   this.totalScore = 0
@@ -111,4 +113,9 @@ Scorecard.prototype.bowl = function (pinsKnockedDown) {
   let currentFrame = this._getCurrentFrame()
   currentFrame.bowl(pinsKnockedDown)
   this._processFrames()
+}
+
+// Export node module.
+if (typeof module !== 'undefined' && module.hasOwnProperty('exports')) {
+  module.exports = Scorecard
 }

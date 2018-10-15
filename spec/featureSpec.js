@@ -1,3 +1,5 @@
+var Scorecard = require('../src/scorecard.js')
+
 describe('Feature Tests', function () {
   beforeEach(function () {
     this.scorecard = new Scorecard()

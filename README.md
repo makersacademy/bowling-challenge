@@ -40,4 +40,13 @@ A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 str
 
 Example
 ---
+![](images/firstscreen.png)
+
+# Gutter Game
+![](images/guttergame.png)
+
+# Perfect Game
+![](images/perfectgame.png)
+
+# Random game
 ![](images/example.png)

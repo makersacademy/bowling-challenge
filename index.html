@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bowling Scoreboard</title>
+    <link rel="stylesheet" href="./public/css/main.css">
+  </head>
+  <body>
+
+    <section>
+      <h1 class='scorecard'> Bowling Scorecard </h1>
+      <div id='playername'>
+      <h3 class='Entername'> Please enter your name </h3>
+      <form  id='name' >
+        <input type="text" placeholder="Name" id="nameInput">
+        <button type="submit" id='namesub'>Submit</button>
+      </form>
+    </div>
+     <p> <h2 class='frame'>Frame: <span id="frame-num">1</span>  Roll: <span id="roll"> 1</span></h2> </p>
+      <form   class='rolls'  id="rolls">
+        <button type="button" class="scoreButton" value = 0 id="0">0</button>
+        <button type="button" class="scoreButton" value = 1 id="1">1</button>
+        <button type="button" class="scoreButton" value = 2 id="2">2</button>
+        <button type="button" class="scoreButton" value = 3 id="3">3</button>
+        <button type="button" class="scoreButton" value = 4 id="4">4</button>
+        <button type="button" class="scoreButton" value = 5 id="5">5</button>
+        <button type="button" class="scoreButton" value = 6 id="6">6</button>
+        <button type="button" class="scoreButton" value = 7 id="7">7</button>
+        <button type="button" class="scoreButton" value = 8 id="8">8</button>
+        <button type="button" class="scoreButton" value = 9 id="9">9</button>
+        <button type="button" class="scoreButton" value = 10 id="10">10</button>
+        <br><br>
+      </form>
+    </section>
+    <section>
+      <p>
+        <style>
+        table, th, td {
+          border: 4px solid black;
+          border-collapse: collapse;
+        }
+        th, td {
+          padding: 15px;
+        }
+      </style>
+      <table class='scoretable' style="width:100%">
+        <tr>
+          <th id='name'>Name</th>
+          <th colspan="2">Frame 1</th>
+          <th colspan="2">Frame 2</th>
+          <th colspan="2">Frame 3</th>
+          <th colspan="2">Frame 4</th>
+          <th colspan="2">Frame 5</th>
+          <th colspan="2">Frame 6</th>
+          <th colspan="2">Frame 7</th>
+          <th colspan="2">Frame 8</th>
+          <th colspan="2">Frame 9</th>
+          <th colspan="3">Frame 10</th>
+          <th>Total</th>
+        </tr>
+        <tr id='rollsScore'>
+
+          <td id="nameTable"></td>
+          <td id="F1r1"></td>
+          <td id='F1r2'></td>
+          <td id='F2r1'></td>
+          <td id='F2r2'></td>
+          <td id='F3r1'></td>
+          <td id='F3r2'></td>
+          <td id='F4r1'></td>
+          <td id='F4r2'></td>
+          <td id='F5r1'></td>
+          <td id='F5r2'></td>
+          <td id='F6r1'></td>
+          <td id='F6r2'></td>
+          <td id='F7r1'></td>
+          <td id='F7r2'></td>
+          <td id='F8r1'></td>
+          <td id='F8r2'></td>
+          <td id='F9r1'></td>
+          <td id='F9r2'></td>
+          <td id='F10r1'></td>
+          <td id='F10r2'></td>
+          <td id='F10r3'></td>
+          <td id='total'></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td id='totframe1' colspan="2"></td>
+          <td id='totframe2' colspan="2"></td>
+          <td id='totframe3' colspan="2"></td>
+          <td id='totframe4' colspan="2"></td>
+          <td id='totframe5' colspan="2"></td>
+          <td id='totframe6' colspan="2"></td>
+          <td id='totframe7' colspan="2"></td>
+          <td id='totframe8' colspan="2"></td>
+          <td id='totframe9' colspan="2"></td>
+          <td id='totframe10' colspan="3"></td>
+          <td id='total' colspan="2"></td>
+      </tr>
+    </table>
+    </section>
+    <button type='submit' class='playagain' >Play again! </button>
+    <h2 id='gamescore'> </h2>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="src/Game.js"></script>
+    <script src='src/interface.js'></script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+.scorecard {
+  text-align: center;
+  font-size: 60px;
+  margin-top: -10px;
+}
+
+#playername {
+  text-align: center;
+}
+
+body {
+  background-image: url('bow.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.scoretable {
+  font-size: 25px
+}
+
+.frame {
+  text-align: center;
+  font-size: 40px;
+
+}
+
+#rollspan {
+  text-align: center;
+  font-size: 40px;
+}
+
+#rolls {
+  text-align: center;
+  font-size: 40px;
+}
+
+.Entername {
+  font-size: 30px;
+  margin-top: -10px;
+}
+
+#nameInput {
+  font-size: 20px;
+  text-align: center;
+}
+
+#namesub {
+  font-size: 20px;
+}
+
+.scoreButton {
+  font-size: 30px;
+}
+
+.playagain {
+  margin-top: 20px;
+  font-size: 25px;
+  text-align: center;
+  margin-left: 650px;
+}
+
+#gamescore {
+  font-size: 60px;
+  color: red;
+  text-align: center;
+}

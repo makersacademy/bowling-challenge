@@ -79,18 +79,6 @@ Frame.prototype = {
     return this._rolls[0] + this._rolls[1] === 10
   },
 
-  _validateRoll: function (pins) {
-    // let max = 10
-    if (pins > 10) {
-      throw _tooHigh
-    }
-    // if (pins > max) {
-    //   throw _tooHigh
-    // } else if ((this.getState() !== 'bonus') && (pins + this._rolls[0]) > max ){
-    //   throw _tooMany
-    // }
-  },
-
   _calculateRolls: function () {
     return this._rolls.reduce(function (accumulator, currentValue) {
       return accumulator + currentValue
@@ -103,6 +91,15 @@ Frame.prototype = {
     }, 0)
   },
 
+  // only necessary for console - web interface adds validation
+  _validateRoll: function (pins) {
+    if (pins > 10) {
+      throw _tooHigh
+    }
+    if (this._state === 'active' && this._rolls[0] + pins > 10){
+      throw _tooMany
+    }
+  }
 }
 
 let _tooHigh = new Error('Enter a number between 1 and 10')

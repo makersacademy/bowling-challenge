@@ -79,8 +79,5 @@ Game.prototype = {
   _isLast: function () {
     return this._frames.length === this._numberOfFrames
   }
-
+  
 }
-
-let _lastFrame = new Error('You cannot start a new frame')
-

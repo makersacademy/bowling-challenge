@@ -1,0 +1,29 @@
+<head>
+  <link rel="stylesheet" href="skeleton.css">
+</head>
+
+<body>
+  <form id="enter-throw">
+    <label for="next-throw">Pins hit:</label>
+    <input id="next-throw" name="next-throw" type="text" size="2" autofocus>
+    <input type="submit" value="Enter">
+  </form>
+
+  <table style="border: 1px solid black;">
+    <tr>
+      <% (1..10).each do |n| %>
+      <th colspan="2">F<%=n%></th>
+      <% end %>
+    </tr>
+    <tr>
+      <% (1..10).each do |n| %>
+      <td id="f<%= n %>-b1"></td>
+      <td id="f<%= n %>-b2"></td>
+      <% end %>
+    </tr>
+  </table>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="bowling.js"></script>
+  <script src="interface.js"></script>
+</body>

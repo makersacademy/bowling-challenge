@@ -1,0 +1,30 @@
+<html>
+<head>
+  <title>Bowling</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+  <!-- JS source files -->
+  <script type="text/javascript" src="src/index.js"></script>
+  <script type="text/javascript" src="src/bowling.js"></script>
+  <script type="text/javascript" src="src/scorecard.js"></script>
+
+</head>
+<body>
+  <h1>Bowling</h1>
+  <div class="score">
+    Score: <span id="score">
+  </div>
+  <div class="frames"></div>
+  <div id="bowling-form" class="bowling-form">
+    <input type="text" id="roll-value" placeholder="Pins hit">
+    <input type="submit" id="roll-btn" value="Roll">
+    <div id="error" class="error hidden"></div>
+  </div>
+  <button class='start-new' id='start-new'>Start new Game</button>
+</body>
+</html>

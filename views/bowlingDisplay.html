@@ -1,0 +1,35 @@
+<body style="text-align: center">
+  <script src="../jasmine/jasmine-standalone-3/src/bowling.js"></script>
+  <!-- <script src="jquery.js"></script> -->
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="interface.js"></script>
+
+  <div>
+
+    <h1>BOWLING CHALLENGE!</h1>
+    <br>
+    <h2>Total score so far:</h2>
+    <h2 id="scorer">game.score</h2>
+    <br>
+    <h2>Select pins to bowl (1-10)</h2>
+    <form id="roller">
+      <input type="number" id="bowlButt" min="0" max="10" step="1">
+      <input type="submit" value="Bowl">
+    </form>
+    <br>
+    <h3>Current frame...</h3>
+    <h3 id="frame">game.frame</h3>
+
+    <h3>Current ball...</h3>
+    <h3 id="ball">game.ball</h3>
+
+    <h3>Pins scorecard...</h3>
+    <h3 id="pins">game.scorecard</h3>
+
+    <br>
+    <h3>Reset match:</h3>
+    <button id="reset">Reset</button>
+
+  </div>
+
+</body>

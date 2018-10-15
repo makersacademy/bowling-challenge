@@ -34,6 +34,12 @@ Work on this challenge as conclusion of week 4, to work towards these goals:
 Instructions to run this at home
 -----
 
+To use the Scorecard from Github:
+
+```
+https://fbl11.github.io/bowling-challenge/jasmine/lib/index.html
+```
+
 To use the Scorecard:
 ```
 $ git clone https://github.com/fbl11/bowling-challenge
@@ -48,7 +54,6 @@ $ git clone https://github.com/fbl11/bowling-challenge
 $ cd bowling-challenge
 $ npm install jasmine-expect --save-dev
 $ open jasmine/SpecRunner.html
-
 ```
 
 STATUS

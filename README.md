@@ -40,4 +40,4 @@ A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 str
 
 Example
 ---
-![]('example.png')
+![](images/example.png)

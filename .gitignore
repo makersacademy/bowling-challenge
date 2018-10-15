@@ -2,4 +2,3 @@
 node_modules
 server.js
 feature/scorecardSpec.js
-src/interface.js

@@ -19,6 +19,7 @@ $(document).ready(function runDocument() {
 
     if ( input === 10 ) {
       $('#F' + game.currentFrame + 'r' + game.currentRoll).text('X')
+      $('#F' + game.currentFrame + 'r' + (game.currentRoll + 1 )).text('-')
     } else {
       $('#F' + game.currentFrame + 'r' + game.currentRoll).text(input)
     }

@@ -9,11 +9,11 @@ My initial first Friday thoughts were scrapped and I decided early on that the s
 
 Also, I was always going to tackle the anomaly scoring of the 10th frame once I had worked out the logic for frames 1-9. My thought being that I could push an extra zero on the array if certain 10th frame scoring conditions were met.
 
-After completing 1-9 my code looked simple and short, so at about this time I set up the front end with jQuery and HTML. This was a good point to do this as it game me a working visual picture of what I wanted and also helped me with further game logic.
+After completing the logic for frames 1-9 my code looked relatively simple and short, so at about this time I set up the front end with jQuery and HTML. This was a good point to do this as it gave me a working visual picture of what I wanted and also helped me foresee further game logic.
 
-The 10th frame logic seemed to make the volume of my code double as was a lot more work than expected. This is when I started to think about separate classes and/or methods (see ToDo) list below.
+The 10th frame work seemed to make the volume of my code double as there were more logic for this than expected. This is when I started to think about separate classes and/or methods (see ToDo list below).
 
-Ultimately a little more work is needed on the Game Over end of the frames.
+Ultimately, in terms of an MVP, a little more work is needed on the 10th frame and Game Over scenario.
 
 
 Instructions on running

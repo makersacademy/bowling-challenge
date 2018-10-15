@@ -11,7 +11,7 @@ Also, I was always going to tackle the anomaly scoring of the 10th frame once I 
 
 After completing the logic for frames 1-9 my code looked relatively simple and short, so at about this time I set up the front end with jQuery and HTML. This was a good point to do this as it gave me a working visual picture of what I wanted and also helped me foresee further game logic.
 
-The 10th frame work seemed to make the volume of my code double as there were more logic for this than expected. This is when I started to think about separate classes and/or methods (see ToDo list below).
+The 10th frame work seemed to make the volume of my code double as there were more logic for this than expected. This is when I started to think about separate classes and/or methods (see ToDo list below). As things stand, and on Code Review, my methods are a "single monolithic object(s) that does everything" - this would need a complete refactoring.
 
 Ultimately, in terms of an MVP, a little more work is needed on the 10th frame and Game Over scenario.
 
@@ -27,6 +27,18 @@ This front end should be pretty self explanatory with buttons and entry fields. 
 
 Gems used
 ---------
+Sinatra
+Rspec
+
+
+Jasmine testing
+
+
+Languages
+---------
+JS
+jquery
+HTML/CSS
 
 
 Credits
@@ -44,7 +56,8 @@ ToDo
 - 10th frame logic looks a bit "iffy" - needs looking at again.
 - add a raise error message if a 2 ball frame score of over 10 is attempted - currently it is limited to 1-10 pins "per bowl" via HTML coed/parameters.
 - possible further tests needed.
-- CSS, as currently just centred and text based - maybe pics and "Strike" effects.
+- CSS, as currently just centred and text based - maybe pics and "Strike" effects
+- Use JS-Bootstrap!!!... https://getbootstrap.com/
 
 
 Author

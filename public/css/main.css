@@ -53,8 +53,10 @@ body {
 }
 
 .playagain {
-  font-size: 70px;
+  margin-top: 20px;
+  font-size: 25px;
   text-align: center;
+  margin-left: 650px;
 }
 
 #gamescore {

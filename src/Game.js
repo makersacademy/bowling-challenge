@@ -7,16 +7,11 @@ function Game () {
 }
 
 Game.prototype.roll = function (pins) {
-
   this.rolls.push(pins)
-
   if (this.currentFrame !== 10) {
-    if (pins === 10 && this.currentRoll === 1) {
+    if ((pins === 10 && this.currentRoll === 1) || this.currentRoll === 2) {
       this.currentFrame += 1
       this.currentRoll = 1
-    } else if (this.currentRoll === 2) {
-      this.currentRoll = 1
-      this.currentFrame += 1
     } else {
       this.currentRoll += 1
     }

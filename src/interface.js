@@ -49,7 +49,7 @@ $(document).ready(function runDocument() {
     }
   }
 
-   $('#reset').click(function() {
+   $('.playagain').click(function() {
     for (var i = 0; i < 11; i++) {
       for (var j = 1; j <3; j++) {
         $('#F' + i + 'r' + j).text(' ')

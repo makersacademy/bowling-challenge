@@ -3,9 +3,7 @@ node_js:
   - "7"
 install:
   - npm install -g codecov
-  - npm install -g nyc
-
 
 script:
-  - npm run report-coverage
+  - istanbul cover node_modules\jasmine\bin\jasmine.js
   - codecov

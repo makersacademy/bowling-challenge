@@ -40,6 +40,7 @@
     "jasmine-node": "^2.0.1",
     "jasmine-supertest": "^1.0.0",
     "jsdom": "^12.1.0",
+    "nyc": "^13.1.0",
     "supertest": "^3.3.0"
   },
   "dependencies": {

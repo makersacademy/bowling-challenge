@@ -3,6 +3,8 @@ node_js:
   - "7"
 install:
   - npm install -g codecov
+  - npm install -g nyc
+
 
 script:
   - npm run report-coverage

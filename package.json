@@ -9,7 +9,7 @@
   "scripts": {
     "test": "jasmine",
     "lint": "eslint",
-    "report-coverage": "nyc report --reporter=text-lcov jasmine > coverage.lcov && codecov"
+    "report-coverage": "nyc --reporter=text-lcov jasmine | codecov" 
   },
   "repository": {
     "type": "git",

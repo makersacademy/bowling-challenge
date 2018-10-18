@@ -1,5 +1,6 @@
 
-# Bowling Challenge [![Build Status](https://travis-ci.com/camjw/bowling-challenge.svg?branch=master)](https://travis-ci.com/camjw/bowling-challenge) [![Coverage Status](https://coveralls.io/repos/github/camjw/bowling-challenge/badge.svg?branch=master)](https://coveralls.io/github/camjw/bowling-challenge?branch=master)
+# Bowling Challenge
+[![Build Status](https://travis-ci.com/camjw/bowling-challenge.svg?branch=master)](https://travis-ci.com/camjw/bowling-challenge) [![Coverage Status](https://coveralls.io/repos/github/camjw/bowling-challenge/badge.svg?branch=master)](https://coveralls.io/github/camjw/bowling-challenge?branch=master)
 
 This repository is a Javascript implementation of a bowling scorecard. The rules for bowling can be found [here](www.google.com).
 

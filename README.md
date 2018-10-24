@@ -15,7 +15,13 @@ I want to be able to keep track of my score according to the standard rules.
 
 ### Installation
 
-This app runs on Javascript, and uses Node.js to manage dependencies and run the tests. To install Node.js follow the instructions [here](https://nodejs.org/en/). Then install this app by cloning this repository using git and installing the dependencies. Run `npm install` from the root of the repository to do this.
+This app runs on Javascript, and uses Node.js to manage dependencies and run the tests. To install Node.js follow the instructions [here](https://nodejs.org/en/). Then install this app by cloning this repository using git and installing the dependencies. Run `npm install` from the root of the repository to do this. Specifically, run the rollowing commands:
+
+```sh
+git clone https://github.com/camjw/bowling-challenge.git
+npm install
+npm run
+```
 
 
 ### Running the tests

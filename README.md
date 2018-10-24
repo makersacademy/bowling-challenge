@@ -20,7 +20,7 @@ This app runs on Javascript, and uses Node.js to manage dependencies and run the
 ```sh
 git clone https://github.com/camjw/bowling-challenge.git
 npm install
-npm run
+chrome index.html
 ```
 
 

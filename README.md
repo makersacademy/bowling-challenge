@@ -1,6 +1,18 @@
-
 Bowling Challenge
 =================
+
+This is a JavaScript application for a bowling scorecard which counts and sums the scores of a bowling game for one player.
+
+## Instructions for Use
+
+1. Clone this repository
+```
+git clone https://github.com/melissasedgwick/bowling-challenge.git
+```
+2. Navigate into directory
+```
+cd bowling-challenge
+```
 
 
 * Challenge time: rest of the day and weekend.

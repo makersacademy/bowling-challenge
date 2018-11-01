@@ -38,7 +38,7 @@ I'd like to record the number of knocked down pins for each frame
 
 As a player
 So I can continue playing
-I'd like for the number of pins to be reset on each frame
+I'd like for the number of pins to be reset at the end of each frame
 
 As a player
 So I can earn extra points
@@ -64,3 +64,6 @@ As a player
 So I can see how well I've done
 I'd like to receive a perfect game if I roll 12 strikes
 ```
+
+#### CRC Cards ####
+![crc-cards](public/crc-cards.png)

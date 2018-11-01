@@ -12,7 +12,7 @@ describe('Game', function() {
     expect(game).toBeDefined();
   });
 
-  it('can record a role', function() {
+  it('can record a roll', function() {
     expect(game.recordRoll(8)).toEqual(8);
   });
 

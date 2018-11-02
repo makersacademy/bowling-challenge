@@ -3,7 +3,10 @@ function Frame(scores) {
   this.roll2 = scores[1] || null;
   this.isSpare;
   this.isStrike;
+  this.score;
+  this.bonus;
   this.calculateFrameType();
+  this.calculateFrameScore(scores);
 }
 
 Frame.prototype.calculateFrameType = function () {
@@ -13,3 +16,13 @@ Frame.prototype.calculateFrameType = function () {
     this.isSpare = true;
   }
 };
+
+Frame.prototype.calculateFrameScore = function (scores) {
+  this.score = scores.reduce(add, 0);
+};
+
+// Sum function
+
+function add(a, b) {
+    return a + b;
+}

@@ -8,11 +8,18 @@ describe('Score', function() {
 
   describe('calculateFrameScore', function() {
     it('returns the score for an open frame', function() {
-      expect(score.calculateFrameScore([regular_frame])).toEqual(7);
+      score.calculateFrameScore([regular_frame])
+      expect(regular_frame.score).toEqual(7);
     });
 
     it('returns the score for a spare frame', function() {
-      expect(score.calculateFrameScore([spare_frame, regular_frame])).toEqual(13);
+      score.calculateFrameScore([spare_frame, regular_frame])
+      expect(spare_frame.score).toEqual(13);
     });
+
+    // it('returns the score for a strike frame', function() {
+    //   score.calculateFrameScore([strike_frame, regular_frame])
+    //   expect(strike_frame.score).toEqual(24);
+    // });
   });
 });

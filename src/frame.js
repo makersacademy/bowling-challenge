@@ -4,6 +4,10 @@ function Frame() {
   this.rolls = [];
 }
 
+Frame.prototype.showRolls = function() {
+  return this.rolls
+};
+
 Frame.prototype.recordRoll = function(numberOfPins) {
   if (this.rolls.length >= 2) {
     throw "Limit of two rolls per frame";

@@ -8,6 +8,14 @@ describe('Frame', function() {
     frame = new Frame();
   });
 
+  describe('showRolls', function() {
+    it('returns the rolls for the frame', function() {
+      frame.recordRoll(6);
+      frame.recordRoll(2);
+      expect(frame.showRolls()).toEqual([6, 2]);
+    });
+  });
+
   describe('recordRoll', function() {
     it('can record a role', function() {
       expect(frame.recordRoll(8)).toEqual(8);
@@ -15,13 +23,13 @@ describe('Frame', function() {
 
     it('adds roll to frame', function() {
       frame.recordRoll(8);
-      expect(frame.rolls).toEqual([8]);
+      expect(frame.showRolls()).toEqual([8]);
     });
 
     it('can add two rolls to frame', function() {
       frame.recordRoll(8);
       frame.recordRoll(1);
-      expect(frame.rolls).toEqual([8, 1]);
+      expect(frame.showRolls()).toEqual([8, 1]);
     });
 
     it('raises error if rolling three times', function() {

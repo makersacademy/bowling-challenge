@@ -29,5 +29,14 @@ describe('Frame', function() {
       frame.recordRoll(1);
       expect(function(){frame.recordRoll(1)}).toThrow("Limit of two rolls per frame");
     });
+
+    it('raises error if number of pins is greater than 10', function() {
+      expect(function(){frame.recordRoll(12)}).toThrow("Maximum of 10 pins per roll");
+    });
+
+    it('raises error if total pins knocked down is more than 10', function() {
+      frame.recordRoll(9);
+      expect(function(){frame.recordRoll(2)}).toThrow("Limit of 10 pins knocked down per frame");
+    });
   });
 });

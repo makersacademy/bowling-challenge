@@ -3,8 +3,9 @@ function Game() {
   this.roll = 1;
   this.FRAMES = 10;
   this.rollsPerFrame = 2;
-  this.PINS = 10;
+  this.NUMBER_OF_PINS = 10;
   this.previousRoll = 0;
+  this.frame = 1;
 }
 
 Game.prototype.addScore = function ( score ) {
@@ -12,19 +13,13 @@ Game.prototype.addScore = function ( score ) {
     this.scores.push(score);
     this.previousRoll = score;
     this.roll = 2;
+    if (score === 10) this.frame++;
   } else if (this.roll === 2) {
-    if (this.previousRoll + score > 10) throw new Error("Number of pins in frame cannot be above 10.")
+    if (this.previousRoll + score > this.NUMBER_OF_PINS) throw new Error("Number of pins in frame cannot be above 10.")
     this.scores.push(score);
     this.previousRoll = score;
     this.roll = 1;
+    this.frame++;
   }
-  if (this.scores.length > (this.FRAMES * this.rollsPerFrame)) {
-    throw new Error("Cannot add more scores.")
-  };
+  if (this.scores.length > (this.FRAMES * this.rollsPerFrame)) throw new Error("Cannot add more scores.");
 };
-
-// Array prototype
-
-// Array.prototype.insert = function (index, item) {
-//   this.splice(index, 0, item);
-// };

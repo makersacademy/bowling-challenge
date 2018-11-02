@@ -15,7 +15,18 @@ describe('Game', function() {
     });
 
     it('has 10 pins per frame', function() {
-      expect(game.PINS).toEqual(10);
+      expect(game.NUMBER_OF_PINS).toEqual(10);
+    });
+
+    it('records the frame number', function() {
+      game.addScore(5);
+      game.addScore(5);
+      expect(game.frame).toEqual(2);
+    });
+
+    it('records the frame number when rolling a strike', function() {
+      game.addScore(10);
+      expect(game.frame).toEqual(2);
     });
   });
 

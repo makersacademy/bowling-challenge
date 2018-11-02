@@ -128,5 +128,13 @@ describe('Game', function() {
       expect(game.allFrames()[1]["score"]).toEqual(17);
       expect(game.score()).toEqual(47);
     });
+
+    it('adds strike bonus after three strikes', function() {
+      for (var i = 0; i < 3; i ++) { game.recordRoll(10) };
+      expect(game.allFrames()[0]["score"]).toEqual(30);
+      expect(game.allFrames()[1]["score"]).toEqual(20);
+      expect(game.allFrames()[2]["score"]).toEqual(10);
+      expect(game.score()).toEqual(60);
+    });
   });
 });

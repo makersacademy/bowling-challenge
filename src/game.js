@@ -28,13 +28,16 @@ Game.prototype.validateRoll = function(numberOfPins) {
 Game.prototype.checkFrame = function() {
   if (this._rollsThisFrame.length === 2 && this._scoreThisFrame < 10) {
     this.checkSpares()
+    this.checkStrikes()
     this.incrementFrame()
   } else if (this._rollsThisFrame.length === 2 && this._scoreThisFrame === 10) {
     this.checkSpares()
+    this.checkStrikes()
     this._rollsThisFrame[1] = '/';
     this.incrementFrame()
   } else if (this._rollsThisFrame[0] === 10) {
     this.checkSpares()
+    this.checkStrikes()
     this._rollsThisFrame[0] = 'X';
     this.incrementFrame()
   } else {
@@ -55,6 +58,16 @@ Game.prototype.checkSpares = function() {
     if (this.allFrames()[this._currentFrame - 2]["rolls"][1] === "/") {
       this.allFrames()[this._currentFrame - 2]["score"] += this._rollsThisFrame[0];
       this._totalScore += this._rollsThisFrame[0];
+    };
+  };
+};
+
+Game.prototype.checkStrikes = function() {
+  if (this._currentFrame > 1) {
+    console.log(this.allFrames()[this._currentFrame - 2]["rolls"])
+    if (this.allFrames()[this._currentFrame - 2]["rolls"][0] === "X") {
+      this.allFrames()[this._currentFrame - 2]["score"] += this._scoreThisFrame;
+      this._totalScore += this._scoreThisFrame;
     };
   };
 };

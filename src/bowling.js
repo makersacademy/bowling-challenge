@@ -4,4 +4,8 @@ var Bowling = function() {
 
 Bowling.prototype.returnScore = function() {
   return this.score
-}
+};
+
+Bowling.prototype.bowl = function(score) {
+  this.score += score
+};

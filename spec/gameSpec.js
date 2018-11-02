@@ -8,7 +8,6 @@ describe('Game', function() {
   });
 
   it('starts at frame 0', function() {
-    // game.newFrame()
     expect(game.getCurrentFrameNumber()).toEqual(0);
   });
 
@@ -20,24 +19,18 @@ describe('Game', function() {
 
   describe('frames < 10', function() {
 
-    it('After 2 bowls frames array has 2 frames in it', function() {
-      game.newFrame()
-      game.bowl(2)
-      game.bowl(3)
-      game.bowl(5)
-      expect(game.frames.length).toEqual(2)
-      // expect(game.getCurrentFrameNumber()).toEqual(2);
+    it('after 3 bowls current frame should be 2', function() {
+      for (var i = 0; i < 3; i++) {
+        game.bowl(2)
+      }
+      expect(game.getCurrentFrameNumber()).toEqual(2);
     });
 
-    it('after 2 bowls current frame should be 2', function() {
-      console.log(game.frames.length)
-      game.newFrame()
-      console.log(game.frames.length)
-      game.bowl(2)
-      game.bowl(3)
-      game.bowl(3)
-      console.log(game.frames.length)
-      expect(game.getCurrentFrameNumber()).toEqual(2);
+    it('after 9 bowls current frame should be 5', function() {
+      for (var i = 0; i < 9; i++) {
+        game.bowl(2)
+      }
+      expect(game.getCurrentFrameNumber()).toEqual(5);
     });
   });
 });

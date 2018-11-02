@@ -30,7 +30,7 @@ describe('Game', function() {
 
     it('raises error if total pins knocked down is more than 10', function() {
       game.recordRoll(9);
-      expect(function(){game.recordRoll(2)}).toThrow("Limit of 10 pins knocked down per frame");
+      expect(function(){game.recordRoll(2)}).toThrow("Maximum of 10 pins per frame");
     });
 
     it('checks frame after a roll', function() {

@@ -29,4 +29,12 @@ describe("BowlingGame", function() {
     expect(game.frameScores[0]).toEqual(13);
   });
 
+  it("should return running score at any moment", function() {
+    game.firstRoll(1);
+    game.secondRoll(9);
+    expect(game.totalScore).toEqual(0);
+    game.firstRoll(3);
+    expect(game.totalScore).toEqual(13);
+  });
+
 });

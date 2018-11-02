@@ -1,6 +1,7 @@
 function BowlingGame() {
   this.frameRolls = [];
   this.frameScores = [];
+  this.totalScore = 0;
 }
 
 BowlingGame.prototype.firstRoll = function(numberOfPins) {
@@ -10,7 +11,9 @@ BowlingGame.prototype.firstRoll = function(numberOfPins) {
   };
   this.firstRollValue = numberOfPins;
   if (this.lastFrame === "Spare") {
-    this.frameScores.push(10 + this.firstRollValue);
+    score = 10 + this.firstRollValue;
+    this.frameScores.push(score);
+    this.totalScore += score;
   }
 }
 
@@ -20,7 +23,9 @@ BowlingGame.prototype.secondRoll = function(numberOfPins) {
     this.frameRolls.push([this.firstRollValue, numberOfPins]);
   } else {
     this.frameRolls.push([this.firstRollValue, numberOfPins]);
-    this.frameScores.push(this.lastFrameScore());
+    score = this.lastFrameScore();
+    this.frameScores.push(score);
+    this.totalScore += score;
   }
 }
 

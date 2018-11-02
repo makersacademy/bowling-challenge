@@ -118,5 +118,15 @@ describe('Game', function() {
       expect(game.allFrames()[0]["score"]).toEqual(17);
       expect(game.score()).toEqual(24);
     });
+
+    it('adds strike bonus after two strikes', function() {
+      game.recordRoll(10);
+      game.recordRoll(10);
+      game.recordRoll(3);
+      game.recordRoll(4);
+      expect(game.allFrames()[0]["score"]).toEqual(23);
+      expect(game.allFrames()[1]["score"]).toEqual(17);
+      expect(game.score()).toEqual(47);
+    });
   });
 });

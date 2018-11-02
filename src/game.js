@@ -64,10 +64,19 @@ Game.prototype.checkSpares = function() {
 
 Game.prototype.checkStrikes = function() {
   if (this._currentFrame > 1) {
-    console.log(this.allFrames()[this._currentFrame - 2]["rolls"])
     if (this.allFrames()[this._currentFrame - 2]["rolls"][0] === "X") {
       this.allFrames()[this._currentFrame - 2]["score"] += this._scoreThisFrame;
       this._totalScore += this._scoreThisFrame;
+      this.checkPreviousStrikes()
+    };
+  };
+};
+
+Game.prototype.checkPreviousStrikes = function() {
+  if (this._currentFrame > 2) {
+    if (this.allFrames()[this._currentFrame - 3]["rolls"][0] === "X") {
+      this.allFrames()[this._currentFrame - 3]["score"] += this._rollsThisFrame[0];
+      this._totalScore += this._rollsThisFrame[0];
     };
   };
 };

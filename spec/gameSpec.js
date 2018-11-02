@@ -39,4 +39,32 @@ describe('Game', function() {
       expect(function(){game.recordRoll(2)}).toThrow("Limit of 10 pins knocked down per frame");
     });
   });
+
+  describe('checkFrame', function() {
+    it('increments frame if there have been two rolls', function() {
+      game.recordRoll(3);
+      game.recordRoll(4);
+      game.checkFrame();
+      expect(game.whichFrame()).toEqual(2);
+    });
+
+    it('does not increment frame if there have not been two rolls', function() {
+      game.recordRoll(8);
+      game.checkFrame();
+      expect(game.whichFrame()).toEqual(1);
+    });
+
+    it('clears rolls this frame if incrementing frame', function() {
+      game.recordRoll(3);
+      game.recordRoll(4);
+      game.checkFrame();
+      expect(game.thisFrame()).toEqual([]);
+    });
+
+    it('does not clear rolls this frame if not incrementing frame', function() {
+      game.recordRoll(3);
+      game.checkFrame();
+      expect(game.thisFrame()).toEqual([3]);
+    });
+  });
 });

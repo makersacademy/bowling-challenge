@@ -3,7 +3,7 @@
 function Game() {
   this._rollsThisFrame = []
   this._allFrames = []
-  this._currentFrame = 0
+  this._currentFrame = 1
   this._totalScore = 0
 }
 
@@ -29,10 +29,19 @@ Game.prototype.whichFrame = function() {
   return this._currentFrame;
 };
 
-Game.prototype.showFrames = function () {
+Game.prototype.showFrames = function() {
   return this._allFrames;
 };
 
-Game.prototype.thisFrame = function () {
+Game.prototype.thisFrame = function() {
   return this._rollsThisFrame;
+};
+
+Game.prototype.checkFrame = function() {
+  if (this._rollsThisFrame.length === 2) {
+    this._currentFrame++;
+    this._rollsThisFrame = [];
+  } else {
+    return;
+  };
 };

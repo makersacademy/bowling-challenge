@@ -1,0 +1,28 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "## Specification ## #### Bowling Rules ####",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "eslint": "^5.8.0"
+  },
+  "devDependencies": {
+    "jasmine": "^3.3.0"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aimeecraig/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aimeecraig/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/aimeecraig/bowling-challenge#readme"
+}

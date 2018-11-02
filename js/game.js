@@ -36,3 +36,10 @@ Game.prototype.newFrame = function () {
 Game.prototype.getCurrentFrameNumber = function () {
   return this.frames.length
 }
+
+Game.prototype.getCurrentScore = function () {
+  var pins_scores = this.frames.map(frame => {
+    return frame.getPinsScore()
+})
+  return pins_scores.reduce(function(a, b){return a+b;})
+}

@@ -3,6 +3,7 @@ function Frame ()
   this.bowls = []
   this.MAXIMUM_PINS = 10
   this.REGULAR_FRAMESIZE = 2
+  this.GUTTER_FRAME = 0
 }
 
 Frame.prototype.getbowls = function () {
@@ -13,7 +14,7 @@ Frame.prototype.bowl = function (pins) {
   if (this.isFrameOpen() === true ) {
     this.bowls.push(pins)
     if (pins === this.MAXIMUM_PINS) {
-      this.bowls.push(0)
+      this.bowls.push(this.GUTTER_FRAME)
     }
   }
   else {
@@ -34,7 +35,8 @@ Frame.prototype.getFrameSize = function () {
 }
 
 Frame.prototype.getPinsScore = function () {
-  return this.bowls[0] + this.bowls[1]
+  // return this.bowls[0] + this.bowls[1]
+  return this.bowls.reduce(function(a, b){return a+b;})
 }
 
 Frame.prototype.hasStrike = function () {

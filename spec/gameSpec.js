@@ -17,6 +17,31 @@ describe('Game', function() {
     expect(game.frames.length).toEqual(1)
   });
 
+  it('gets current score after 3 bowls', function() {
+    for (var i = 0; i < 3; i++) {
+      game.bowl(2)
+    }
+    expect(game.getCurrentScore()).toEqual(6);
+  });
+
+  it('gets current score after 10 bowls', function() {
+    for (var i = 0; i < 3; i++) {
+      game.bowl(2)
+      game.bowl(3)
+      game.bowl(4)
+    }
+      game.bowl(5)
+    expect(game.getCurrentScore()).toEqual(32);
+  });
+
+  it('gets current score after 3 bowls including strikes', function() {
+      game.bowl(10)
+    for (var i = 0; i < 2; i++) {
+      game.bowl(2)
+    }
+    expect(game.getCurrentScore()).toEqual(14);
+  });
+
 
   describe('frames < 10', function() {
 

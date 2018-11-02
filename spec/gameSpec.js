@@ -13,6 +13,10 @@ describe('Game', function() {
     it('has 2 rolls per frame', function() {
       expect(game.rollsPerFrame).toEqual(2);
     });
+
+    it('has 10 pins per frame', function() {
+      expect(game.PINS).toEqual(10);
+    });
   });
 
   describe('addScore', function() {

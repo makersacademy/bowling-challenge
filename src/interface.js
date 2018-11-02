@@ -69,11 +69,17 @@ $(document).ready(function(){
     updateTotal();
   });
 
-
+  $('#test').click(function(){
+    console.log(scorecard.seeArray());
+  });
 
 
   function updateTotal(){
     $('#runningTotal').text(scorecard.total);
+    for (var i = 1; i <= 20; i ++){
+      $('#move' + i).text(scorecard._scoreArray[i - 1]);
+    };
   };
+
 
 });

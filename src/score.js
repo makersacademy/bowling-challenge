@@ -1,7 +1,11 @@
 var Score = function(){
-  this.score = 0;
+  this.totalScore = 0;
 };
 
 Score.prototype.getScore = function () {
-  return this.score;
+  return this.totalScore;
+};
+
+Score.prototype.input = function (score) {
+  this.totalScore += score
 };

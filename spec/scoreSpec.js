@@ -7,12 +7,14 @@ describe("Score", function() {
 
   describe("getScore", function() {
     it("returns the current score", function () {
-      // arrange
-
-      // act
-
-      // assert
       expect(score.getScore()).toBe(0)
+    });
+  });
+
+  describe("inputScore", function() {
+    it("updates the users score", function(){
+      score.input(5)
+      expect(score.getScore()).toBe(5)
     });
   });
 });

@@ -31,11 +31,6 @@ describe('Game', function() {
   });
 
   describe('addScore', function() {
-    // it('adds a score to the array', function() {
-    //   game.addScore(7)
-    //   expect(game.scores[0]).toEqual(7);
-    // });
-
     it('limits the number of scores', function() {
       for (var i = 0; i < 10; i++) {
         game.addScore(10);
@@ -52,6 +47,14 @@ describe('Game', function() {
       game.addScore(5);
       game.addScore(3);
       expect(function() {game.addScore(8)}).not.toThrow(new Error("Number of pins in frame cannot be above 10."));
+    });
+  });
+
+  describe('pushFrame', function() {
+    it('creates a frame object and stores it in the scores array', function() {
+      game.addScore(4);
+      game.addScore(3);
+      expect(game.scores[0]).toEqual(jasmine.any(Frame));
     });
   });
 });

@@ -1,9 +1,9 @@
 describe('Frame', function() {
   var frame;
 
-  regular_frame = new Frame(3,4);
-  spare_frame = new Frame(5,5);
-  strike_frame = new Frame(10,0);
+  regular_frame = new Frame([3,4]);
+  spare_frame = new Frame([5,5]);
+  strike_frame = new Frame([10]);
 
   describe('initialize', function() {
     it('has two rolls', function() {

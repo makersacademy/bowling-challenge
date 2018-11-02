@@ -40,7 +40,7 @@ Game.prototype.nextFrame = function (score) {
 };
 
 Game.prototype.pushFrame = function (score) {
-  frame = new Frame(this.previousRoll, score);
+  frame = new Frame([this.previousRoll, score]);
   this.scores.push(frame);
 };
 

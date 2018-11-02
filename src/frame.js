@@ -1,6 +1,6 @@
-function Frame(roll1, roll2) {
-  this.roll1 = roll1;
-  this.roll2 = roll2;
+function Frame(scores) {
+  this.roll1 = scores[0];
+  this.roll2 = scores[1] || null;
   this.isSpare;
   this.isStrike;
   this.calculateFrameType();

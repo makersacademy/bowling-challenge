@@ -31,5 +31,10 @@ describe('Game', function() {
       }
       expect(function() {game.addScore(5)}).toThrow(new Error("Cannot add more scores."));
     });
+
+    it('limits the number of pins', function() {
+      game.addScore(7);
+      expect(function() {game.addScore(5)}).toThrow(new Error("Number of pins in frame is above 10."));
+    });
   });
 });

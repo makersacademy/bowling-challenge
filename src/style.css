@@ -1,7 +1,62 @@
-table, th, td {
-  border: 1px solid black;
+body {
+  text-align: center;
+  background-color: #FFAFF1;
+  color: #7F3172;
+  font-family: Papyrus, fantasy;
 }
 
 table {
   width: 100%;
+  border: 1px solid #7F3172;
+}
+
+h1 {
+  padding: 25px;
+}
+
+th {
+  height: 30px;
+  width: 120px;
+  padding: 0px;
+}
+
+td {
+  height: 30px;
+  width: 40px;
+  padding: 0px;
+}
+
+.head {
+  background-color: #FF7AE8;
+}
+
+.roll2 {
+  border-left: 1px solid #7F3172;
+  border-bottom: 1px solid #7F3172;
+}
+
+.btn {
+  color: #7F3172;
+  width: 98px;
+  height: 30px;
+  border-radius: 15px;
+  border: 1px solid #7F3172;
+}
+
+.btn:hover {
+  width: 98px;
+  height: 40px;
+  border: 1px solid #7F3172;
+  color: #FF7AE8;
+}
+
+.fbtn {
+  width: 88px;
+  height: 40px;
+  border-radius: 15px;
+  border: 1px solid #7F3172;
+}
+
+.fbtn:hover {
+  color: #FF7AE8;
 }

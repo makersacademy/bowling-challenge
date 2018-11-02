@@ -8,7 +8,11 @@ describe('Score', function() {
 
   describe('calculateFrameScore', function() {
     it('returns the score for an open frame', function() {
-      expect(score.calculateFrameScore(regular_frame)).toEqual(7);
+      expect(score.calculateFrameScore([regular_frame])).toEqual(7);
+    });
+
+    it('returns the score for a spare frame', function() {
+      expect(score.calculateFrameScore([spare_frame, regular_frame])).toEqual(13);
     });
   });
 });

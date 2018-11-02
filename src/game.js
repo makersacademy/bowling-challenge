@@ -1,12 +1,20 @@
 'use strict';
 
-function Game(frame = Frame) {
-  this.frames = []
-  for (var i = 0; i < 10; i++) {
-    this.frames.push(new frame);
-  };
+function Game() {
+  this._rollsThisFrame = []
+  this._allFrames = []
+  this._currentFrame = 0
 }
 
 Game.prototype.recordRoll = function(numberOfPins) {
+  if (this._rollsThisFrame.length >= 2) {
+    throw "Limit of two rolls per frame";
+  } else if (numberOfPins > 10) {
+    throw "Maximum of 10 pins per roll";
+  } else if (this._rollsThisFrame[0] + numberOfPins > 10) {
+    throw "Limit of 10 pins knocked down per frame";
+  } else {
+    this._rollsThisFrame.push(numberOfPins);
+  }
   return numberOfPins;
 };

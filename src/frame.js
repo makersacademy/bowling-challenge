@@ -7,5 +7,9 @@ Frame.prototype.getCurrentScore = function () {
 };
 
 Frame.prototype.calculateScore = function (roll1, roll2) {
-  this.currentScore = roll1 + roll2;
+  if(roll1 === 10) {
+    this.currentScore = 10
+  } else {
+    this.currentScore = roll1 + roll2;
+  }
 };

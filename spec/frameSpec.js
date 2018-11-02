@@ -17,5 +17,11 @@ describe("Frame", function() {
       expect(score.getCurrentScore()).toBe(6)
     });
 
+    it("adds the second roll as 0 if the first roll is 10", function() {
+      roll1.getRoll.and.callFake(function() {return 10})
+      roll1Score = roll1.getRoll()
+      score.calculateScore(roll1Score);
+      expect(score.getCurrentScore()).toBe(10)
+    });
   });
 });

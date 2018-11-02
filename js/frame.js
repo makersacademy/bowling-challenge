@@ -1,28 +1,32 @@
-function Frame ()
+function Frame (framenumber)
 {
-  this.bowls = []
+  this.framenumber = framenumber
+  this.rolls = []
   this.MAXIMUM_PINS = 10
   this.REGULAR_FRAMESIZE = 2
   this.GUTTER_FRAME = 0
+  this.BLANK_AFTER_STRIKE = -1
+  this.potentialbonus = [0,0]
 }
 
-Frame.prototype.getbowls = function () {
-  return this.bowls
+Frame.prototype.getrolls = function () {
+  return this.rolls
 }
 
-Frame.prototype.bowl = function (pins) {
+Frame.prototype.roll = function (pins) {
   if (this.isFrameOpen() === true ) {
-    this.bowls.push(pins)
+    this.rolls.push(pins)
     if (pins === this.MAXIMUM_PINS) {
-      this.bowls.push(this.GUTTER_FRAME)
+      this.rolls.push(this.BLANK_AFTER_STRIKE)
     }
   }
   else {
-    return "Only 2 bowls allowed"
+    return "Only 2 rolls allowed"
   }
 }
 
 Frame.prototype.isFrameOpen = function () {
+  // console.log(this.getFrameNumber())
   if (this.getFrameSize() === this.REGULAR_FRAMESIZE) {
     return false
   } else {
@@ -31,16 +35,16 @@ Frame.prototype.isFrameOpen = function () {
 }
 
 Frame.prototype.getFrameSize = function () {
-  return this.bowls.length
+  return this.rolls.length
 }
 
 Frame.prototype.getPinsScore = function () {
-  // return this.bowls[0] + this.bowls[1]
-  return this.bowls.reduce(function(a, b){return a+b;})
+  // return this.rolls[0] + this.rolls[1]
+  return this.rolls.reduce(function(a, b){return a+b;})
 }
 
 Frame.prototype.hasStrike = function () {
-  if (this.bowls[0] === this.MAXIMUM_PINS) {
+  if (this.rolls[0] === this.MAXIMUM_PINS) {
     return true
   } else {
     return false
@@ -53,4 +57,8 @@ if (this.hasStrike() === false && this.getPinsScore() === this.MAXIMUM_PINS) {
 } else {
   return false
 }
+}
+
+Frame.prototype.getFrameNumber = function () {
+  return this.framenumber
 }

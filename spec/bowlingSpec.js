@@ -28,4 +28,9 @@ describe("Bowling", function() {
     expect(bowling.returnScore()).toEqual(10)
   });
 
+  it('ends a round when all pins are knocked', function() {
+    bowling.bowl(10)
+    expect(bowling.returnRound()).toEqual(2)
+  });
+
 });

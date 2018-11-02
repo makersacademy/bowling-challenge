@@ -3,40 +3,23 @@ function BowlingGame() {
   this.frameScores = [];
 }
 
-BowlingGame.prototype.rolls = function() {
-  return this.frameRolls;
-}
-
-BowlingGame.prototype.setLastFrame = function(frame_result) {
-  this.lastFrame = frame_result;
-}
-
-BowlingGame.prototype.lastFrame = function() {
-  return this.lastFrame
-}
-
-BowlingGame.prototype.setLastRoll = function(numberOfPins) {
-  this.lastRoll = numberOfPins;
-}
-
-BowlingGame.prototype.lastRoll = function() {
-  return this.lastRoll;
-}
-
 BowlingGame.prototype.firstRoll = function(numberOfPins) {
   if (numberOfPins === 10) {
-    this.setLastFrame("Strike");
+    this.lastFrame = "Strike";
     this.frameRolls.push([numberOfPins, 0])
   };
-  this.firstRoll = numberOfPins;
+  this.firstRollValue = numberOfPins;
+  if (this.lastFrame === "Spare") {
+    this.frameScores.push(10 + this.firstRollValue);
+  }
 }
 
 BowlingGame.prototype.secondRoll = function(numberOfPins) {
-  if ((this.firstRoll + numberOfPins) === 10) {
-    this.setLastFrame("Spare");
-    this.frameRolls.push([this.firstRoll, numberOfPins]);
+  if ((this.firstRollValue + numberOfPins) === 10) {
+    this.lastFrame = "Spare";
+    this.frameRolls.push([this.firstRollValue, numberOfPins]);
   } else {
-    this.frameRolls.push([this.firstRoll, numberOfPins]);
+    this.frameRolls.push([this.firstRollValue, numberOfPins]);
     this.frameScores.push(this.lastFrameScore());
   }
 }

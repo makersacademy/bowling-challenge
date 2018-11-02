@@ -1,7 +1,7 @@
 'use strict';
 
-describe("Bowling", function() {
-  var bowling
+describe('Bowling', function() {
+  var bowling;
 
   beforeEach(function() {
     bowling = new Bowling();
@@ -16,7 +16,7 @@ describe("Bowling", function() {
     expect(bowling.returnScore()).toEqual(5)
   });
 
-  it('adds the score of a round (2 bowls)', function() {
+  it('adds the score of a frame (2 bowls)', function() {
     bowling.bowl(5)
     bowling.bowl(4)
     expect(bowling.returnScore()).toEqual(9)
@@ -30,7 +30,13 @@ describe("Bowling", function() {
 
   it('ends a round when all pins are knocked', function() {
     bowling.bowl(10)
-    expect(bowling.returnRound()).toEqual(2)
+    expect(bowling.returnFrame()).toEqual(2)
   });
+
+  it('ends a round after two rolls', function() {
+    bowling.bowl(1)
+    bowling.bowl(1)
+    expect(bowling.returnFrame()).toEqual(2)
+  })
 
 });

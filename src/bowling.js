@@ -1,17 +1,21 @@
 var Bowling = function() {
   this.score = 0;
-  this.round = 1;
+  this.frame = 1;
+  this.bowls = 2;
 };
 
 Bowling.prototype.returnScore = function() {
   return this.score;
 };
 
-Bowling.prototype.returnRound = function() {
-  return this.round;
-}
+Bowling.prototype.returnFrame = function() {
+  return this.frame;
+};
 
 Bowling.prototype.bowl = function(score) {
   this.score += score;
-  if(this.score === 10) { this.round += 1 }
+  this.bowls -= 1;
+  if((this.score === 10) || (this.bowls === 0)) {
+    this.frame += 1;
+  };
 };

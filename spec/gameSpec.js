@@ -21,7 +21,7 @@ describe('Game', function() {
     it('can add two rolls to frame', function() {
       game.recordRoll(8);
       game.recordRoll(1);
-      expect(game.allFrames()).toEqual([[8, 1]]);
+      expect(game.allFrames()[0]["rolls"]).toEqual([8, 1]);
     });
 
     it('raises error if number of pins is greater than 10', function() {
@@ -71,13 +71,24 @@ describe('Game', function() {
       game.recordRoll(2);
       game.recordRoll(4);
       game.checkFrame();
-      expect(game.allFrames()).toEqual([[2, 4]]);
+      expect(game.allFrames()).toEqual([{rolls: [2, 4], score: 6}]);
     });
 
-    it('icrements frame if roll was a strike', function() {
+    it('increments frame if roll was a strike', function() {
       game.recordRoll(10);
       game.checkFrame();
       expect(game.whichFrame()).toEqual(2);
+    });
+
+    it('adds strike as an X', function() {
+      game.recordRoll(10);
+      expect(game.allFrames()[0]["rolls"]).toEqual(["X"]);
+    });
+
+    it('adds spare as a /', function() {
+      game.recordRoll(9);
+      game.recordRoll(1);
+      expect(game.allFrames()[0]["rolls"]).toEqual([9, "/"]);
     });
   });
 });

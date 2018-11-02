@@ -15,13 +15,13 @@ describe('Game', function() {
 
     it('adds roll to current frame', function() {
       game.recordRoll(8);
-      expect(game._rollsThisFrame).toEqual([8]);
+      expect(game.thisFrame()).toEqual([8]);
     });
 
     it('can add two rolls to frame', function() {
       game.recordRoll(8);
       game.recordRoll(1);
-      expect(game._rollsThisFrame).toEqual([8, 1]);
+      expect(game.thisFrame()).toEqual([8, 1]);
     });
 
     it('raises error if rolling three times', function() {

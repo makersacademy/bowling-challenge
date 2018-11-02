@@ -57,4 +57,23 @@ describe('Game', function() {
       expect(game.scores[0]).toEqual(jasmine.any(Frame));
     });
   });
+
+  describe('calculateBonus', function() {
+    it('calculates a spare frame', function() {
+      game.addScore(5);
+      game.addScore(5);
+      game.addScore(5);
+      game.addScore(1);
+      game.calculateBonus();
+      expect(game.scores[0].bonus).toEqual(5);
+    });
+
+    it('calculates a strike frame', function() {
+      game.addScore(10);
+      game.addScore(5);
+      game.addScore(1);
+      game.calculateBonus();
+      expect(game.scores[0].bonus).toEqual(16);
+    });
+  });
 });

@@ -3,8 +3,9 @@ function Frame(scores) {
   this.roll2 = scores[1] || null;
   this.isSpare;
   this.isStrike;
-  this.score;
-  this.bonus;
+  this.score = 0;
+  this.bonus = 0;
+  this.totalScore;
   this.calculateFrameType();
   this.calculateFrameScore(scores);
 }

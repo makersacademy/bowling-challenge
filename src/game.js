@@ -40,8 +40,13 @@ Game.prototype.nextFrame = function (score) {
 };
 
 Game.prototype.pushFrame = function (score) {
-  frame = new Frame([this.previousRoll, score]);
-  this.scores.push(frame);
+  if (score === 10) {
+    frame = new Frame([score]);
+    this.scores.push(frame);
+  } else {
+    frame = new Frame([this.previousRoll, score]);
+    this.scores.push(frame);
+  }
 };
 
 Game.prototype.toggleRoll = function () {
@@ -49,5 +54,16 @@ Game.prototype.toggleRoll = function () {
     this.roll = 2;
   } else if (this.roll === 2) {
     this.roll = 1;
+  }
+};
+
+Game.prototype.calculateBonus = function () {
+  for (i = 0; i < this.scores.length; i++) {
+    if (this.scores[i].isSpare) {
+      this.scores[i].bonus = this.scores[i + 1].roll1;
+    } else if (this.scores[i].isStrike) {
+      this.scores[i].bonus += 10;
+      this.scores[i].bonus += this.scores[i + 1].roll1 + this.scores[i + 1].roll2;
+    }
   }
 };

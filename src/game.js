@@ -1,11 +1,11 @@
 function Game() {
-  this.scores = [];
-  this.roll = 1;
   this.NUMBER_OF_FRAMES = 10;
-  this.rollsPerFrame = 2;
   this.NUMBER_OF_PINS = 10;
-  this.previousRoll = 0;
   this.frame = 1;
+  this.roll = 1;
+  this.rollsPerFrame = 2;
+  this.previousRoll = 0;
+  this.scores = [];
 }
 
 Game.prototype.addScore = function ( score ) {

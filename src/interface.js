@@ -73,10 +73,8 @@ $(document).ready(function(){
     if(scorecard.total === 0){
       alert('Gutter Game!');
     };
+    alert('Well done you scored '+scorecard.total);
   });
-
-
-
 
   function updateTotal(){
     $('#runningTotal').text(scorecard.total);

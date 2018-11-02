@@ -46,6 +46,11 @@ describe('Frame', function() {
       expect(frame.hasSpare()).toEqual(true);
     });
 
+    it('sets the second bowl to 0 then a strike', function () {
+      frame.bowl(10)
+      expect(frame.isFrameOpen()).toEqual(false)
+    })
+
     it('raises an error when trying to bowl more than 2', function() {
       frame.bowl(1)
       frame.bowl(9)

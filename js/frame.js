@@ -1,6 +1,8 @@
 function Frame ()
 {
   this.bowls = []
+  this.MAXIMUM_PINS = 10
+  this.REGULAR_FRAMESIZE = 2
 }
 
 Frame.prototype.getbowls = function () {
@@ -10,6 +12,9 @@ Frame.prototype.getbowls = function () {
 Frame.prototype.bowl = function (pins) {
   if (this.isFrameOpen() === true ) {
     this.bowls.push(pins)
+    if (pins === this.MAXIMUM_PINS) {
+      this.bowls.push(0)
+    }
   }
   else {
     return "Only 2 bowls allowed"
@@ -17,7 +22,7 @@ Frame.prototype.bowl = function (pins) {
 }
 
 Frame.prototype.isFrameOpen = function () {
-  if (this.getFrameSize() === 2) {
+  if (this.getFrameSize() === this.REGULAR_FRAMESIZE) {
     return false
   } else {
     return true
@@ -33,7 +38,7 @@ Frame.prototype.getPinsScore = function () {
 }
 
 Frame.prototype.hasStrike = function () {
-  if (this.bowls[0] === 10) {
+  if (this.bowls[0] === this.MAXIMUM_PINS) {
     return true
   } else {
     return false
@@ -41,7 +46,7 @@ Frame.prototype.hasStrike = function () {
 }
 
 Frame.prototype.hasSpare = function () {
-if (this.hasStrike() === false && this.getPinsScore() === 10) {
+if (this.hasStrike() === false && this.getPinsScore() === this.MAXIMUM_PINS) {
   return true
 } else {
   return false

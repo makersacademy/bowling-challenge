@@ -38,6 +38,13 @@ describe('Game', function() {
       game.recordRoll(2);
       expect(game.whichFrame()).toEqual(2);
     });
+
+    it('adds roll to total score', function() {
+      game.recordRoll(5);
+      game.recordRoll(4);
+      game.recordRoll(3);
+      expect(game.score()).toEqual(12);
+    });
   });
 
   describe('checkFrame', function() {
@@ -89,6 +96,17 @@ describe('Game', function() {
       game.recordRoll(9);
       game.recordRoll(1);
       expect(game.allFrames()[0]["rolls"]).toEqual([9, "/"]);
+    });
+  });
+
+  describe('checkSpares', function() {
+    it('adds spare bonus', function() {
+      game.recordRoll(9);
+      game.recordRoll(1);
+      game.recordRoll(4);
+      game.recordRoll(2);
+      expect(game.allFrames()[0]["score"]).toEqual(14);
+      expect(game.score()).toEqual(20);
     });
   });
 });

@@ -26,22 +26,28 @@ describe("Frame", function() {
     expect( function(){ new Frame([1,1,3]); } ).toThrowError('Cannot have more than two bowls in a standard frame');
   });
 
-  it("should calculate the the bonus for a spare", function() {
+  it("should calculate the the bonus and total score for a spare", function() {
     spareFrame.calculateBonus(standardFrame, standardFrame)
     expect(spareFrame.bonus).toEqual(4)
+    expect(spareFrame.totalScore).toEqual(14)
     spareFrame.calculateBonus(strikeFrame, strikeFrame)
     expect(spareFrame.bonus).toEqual(10)
+    expect(spareFrame.totalScore).toEqual(20)
     spareFrame.calculateBonus(gutterFrame, gutterFrame)
     expect(spareFrame.bonus).toEqual(0)
+    expect(spareFrame.totalScore).toEqual(10)
   });
 
-  it("should calculate the the bonus for a strike", function() {
+  it("should calculate the the bonus and total score for a strike", function() {
     strikeFrame.calculateBonus(standardFrame, standardFrame)
     expect(strikeFrame.bonus).toEqual(9)
+    expect(strikeFrame.totalScore).toEqual(19)
     strikeFrame.calculateBonus(strikeFrame, strikeFrame)
     expect(strikeFrame.bonus).toEqual(20)
+    expect(strikeFrame.totalScore).toEqual(30)
     strikeFrame.calculateBonus(gutterFrame, gutterFrame)
     expect(strikeFrame.bonus).toEqual(0)
+    expect(strikeFrame.totalScore).toEqual(10)
   });
 
 

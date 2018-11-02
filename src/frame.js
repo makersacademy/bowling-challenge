@@ -2,7 +2,7 @@ var Frame = function(bowls) {
   this.bowls = bowls;
   this.frameScore;
   this.bonus;
-  this.TotalScore;
+  this.totalScore;
   this.score();
 }
 
@@ -33,13 +33,11 @@ Frame.prototype.calculateBonus = function(framePlusOne, framePlusTwo) {
     var nextFrames = framePlusOne.bowls.concat(framePlusTwo.bowls);
     this.bonus = nextFrames[0] + nextFrames[1];
   }
-
-
-
-
-
-
+  this._totalScores();
 };
+
+
+
 
 // ************* Private Functions ***********
 
@@ -50,6 +48,10 @@ Frame.prototype._isStrike = function(){
 Frame.prototype._isSpare = function(){
   return this.bowls[0] < 10 && sumArr(this.bowls) === 10;
 }
+
+Frame.prototype._totalScores = function(){
+  this.totalScore = this.frameScore + this.bonus;
+};
 
 // ********* Utility Functions *********
 

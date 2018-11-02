@@ -4,6 +4,10 @@ function Scorecard(){
   this.total = 0;
 }
 
+Scorecard.prototype.addZero = function () {
+  this.total +=0;
+};
+
 Scorecard.prototype.addOne = function () {
   this.total +=1;
 };

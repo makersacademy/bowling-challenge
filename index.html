@@ -2,10 +2,12 @@
 <html lang="en" dir="ltr">
   <head>
     <title>Bowling Score Card</title>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <link rel="stylesheet" href="src/style.css">
   </head>
   <body>
     <h1>Bowling Scorecard</h1>
+    <h2>Total score is: <span id="runningTotal"></span></h2>
     <button id=zero>0</button>
     <button id=one>1</button>
     <button id=two>2</button>
@@ -28,144 +30,146 @@
       </tr>
       <tr>
         <td>1</td>
-        <td></td>
-        <td></td>
+        <td>1</td>
+        <td><span id="frame1roll1"></span></td>
         <td></td>
         <td></td>
       </tr>
       <tr>
         <td>1</td>
-        <td></td>
-        <td></td>
+        <td>2</td>
+        <td><span id="frame1roll2"></span></td>
         <td></td>
         <td></td>
       </tr>
       <tr>
         <td>2</td>
-        <td></td>
-        <td></td>
+        <td>1</td>
+        <td><span id="frame2roll1"></span></td>
         <td></td>
         <td></td>
       </tr>
       <tr>
         <td>2</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td></td>
-        <td></td>
+        <td>2</td>
+        <td><span id="frame2roll2"></span></td>
         <td></td>
         <td></td>
       </tr>
       <tr>
         <td>3</td>
+        <td>1</td>
+        <td><span id="frame3roll1"></span></td>
         <td></td>
         <td></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>2</td>
+        <td><span id="frame3roll2"></span></td>
         <td></td>
         <td></td>
       </tr>
       <tr>
         <td>4</td>
-        <td></td>
-        <td></td>
+        <td>1</td>
+        <td><span id="frame4roll1"></span></td>
         <td></td>
         <td></td>
       </tr>
       <tr>
         <td>4</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td></td>
-        <td></td>
+        <td>2</td>
+        <td><span id="frame4roll2"></span></td>
         <td></td>
         <td></td>
       </tr>
       <tr>
         <td>5</td>
+        <td>1</td>
+        <td><span id="frame5roll1"></span></td>
         <td></td>
         <td></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>2</td>
+        <td><span id="frame5roll2"></span></td>
         <td></td>
         <td></td>
       </tr>
       <tr>
         <td>6</td>
-        <td></td>
-        <td></td>
+        <td>1</td>
+        <td><span id="frame6roll1"></span></td>
         <td></td>
         <td></td>
       </tr>
       <tr>
         <td>6</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>7</td>
-        <td></td>
-        <td></td>
+        <td>2</td>
+        <td><span id="frame6roll2"></span></td>
         <td></td>
         <td></td>
       </tr>
       <tr>
         <td>7</td>
+        <td>1</td>
+        <td><span id="frame7roll1"></span></td>
         <td></td>
         <td></td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>2</td>
+        <td><span id="frame7roll2"></span></td>
         <td></td>
         <td></td>
       </tr>
       <tr>
         <td>8</td>
-        <td></td>
-        <td></td>
+        <td>1</td>
+        <td><span id="frame8roll1"></span></td>
         <td></td>
         <td></td>
       </tr>
       <tr>
         <td>8</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>9</td>
-        <td></td>
-        <td></td>
+        <td>2</td>
+        <td><span id="frame8roll2"></span></td>
         <td></td>
         <td></td>
       </tr>
       <tr>
         <td>9</td>
+        <td>1</td>
+        <td><span id="frame9roll1"></span></td>
         <td></td>
         <td></td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>2</td>
+        <td><span id="frame9roll2"></span></td>
         <td></td>
         <td></td>
       </tr>
       <tr>
         <td>10</td>
-        <td></td>
-        <td></td>
+        <td>1</td>
+        <td><span id="frame10roll1"></span></td>
         <td></td>
         <td></td>
       </tr>
       <tr>
         <td>10</td>
-        <td></td>
-        <td></td>
+        <td>2</td>
+        <td><span id="frame10roll2"></span></td>
         <td></td>
         <td></td>
       </tr>
     </table>
+    <script src="src/bowling.js"></script>
+    <script src="src/interface.js"></script>
   </body>
 </html>

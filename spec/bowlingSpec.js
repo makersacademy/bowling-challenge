@@ -12,6 +12,11 @@ describe('Scorecard',function(){
     expect(scorecard.total).toEqual(0);
   });
 
+  it('adds 0 to the total',function(){
+    scorecard.addZero();
+    expect(scorecard.total).toEqual(0);
+  });
+
   it('adds 1 to the total',function(){
     scorecard.addOne();
     expect(scorecard.total).toEqual(1);

@@ -79,6 +79,16 @@ $(document).ready(function(){
     for (var i = 1; i <= 20; i ++){
       $('#move' + i).text(scorecard._scoreArray[i - 1]);
     };
+    $('#frame1').text(scorecard._scoreArray[0]+scorecard._scoreArray[1]);
+    $('#frame2').text(scorecard._scoreArray[2]+scorecard._scoreArray[3]);
+    $('#frame3').text(scorecard._scoreArray[4]+scorecard._scoreArray[5]);
+    $('#frame4').text(scorecard._scoreArray[6]+scorecard._scoreArray[7]);
+    $('#frame5').text(scorecard._scoreArray[8]+scorecard._scoreArray[9]);
+    $('#frame6').text(scorecard._scoreArray[10]+scorecard._scoreArray[11]);
+    $('#frame7').text(scorecard._scoreArray[12]+scorecard._scoreArray[13]);
+    $('#frame8').text(scorecard._scoreArray[14]+scorecard._scoreArray[15]);
+    $('#frame9').text(scorecard._scoreArray[16]+scorecard._scoreArray[17]);
+    $('#frame10').text(scorecard._scoreArray[18]+scorecard._scoreArray[19]);
   };
 
 

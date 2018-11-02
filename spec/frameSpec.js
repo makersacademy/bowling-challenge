@@ -9,5 +9,9 @@ describe('Frame', function() {
     it('with 2 rolls', function() {
       expect(frame.ROLLS).toEqual(2);
     });
+
+    it('with a rolls array', function() {
+      expect(frame.rolls_array).toEqual(Array());
+    });
   });
 });

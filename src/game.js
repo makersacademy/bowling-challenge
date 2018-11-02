@@ -21,7 +21,7 @@ Game.prototype.recordRoll = function(numberOfPins) {
 };
 
 Game.prototype.checkFrame = function() {
-  if (this._rollsThisFrame.length === 2) {
+  if (this._rollsThisFrame.length === 2 || this._rollsThisFrame[0] === 10) {
     this._allFrames.push(this._rollsThisFrame);
     this._currentFrame++;
     this._rollsThisFrame = [];

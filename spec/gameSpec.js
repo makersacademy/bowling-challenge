@@ -73,5 +73,11 @@ describe('Game', function() {
       game.checkFrame();
       expect(game.allFrames()).toEqual([[2, 4]]);
     });
+
+    it('icrements frame if roll was a strike', function() {
+      game.recordRoll(10);
+      game.checkFrame();
+      expect(game.whichFrame()).toEqual(2);
+    });
   });
 });

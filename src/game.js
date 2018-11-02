@@ -1,6 +1,7 @@
 function Game() {
   this.scores = [];
-  this.frames = 10;
+  this.FRAMES = 10;
+  this.rollsPerFrame = 2;
 }
 
 Game.prototype.addScore = function (score) {

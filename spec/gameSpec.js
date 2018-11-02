@@ -7,7 +7,11 @@ describe('Game', function() {
 
   describe('initialize', function() {
     it('has 10 frames', function() {
-      expect(game.frames).toEqual(10);
+      expect(game.FRAMES).toEqual(10);
+    });
+
+    it('has 2 rolls per frame', function() {
+      expect(game.rollsPerFrame).toEqual(2);
     });
   });
 

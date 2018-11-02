@@ -10,16 +10,19 @@ Game.prototype.bowl = function (pins) {
     // console.log("start game")
     this.newFrame()
     this.currentframe.bowl(pins)
-  }
-  else {
+  } else {
 
     if (this.currentframe.isFrameOpen() === true) {
       this.currentframe.bowl(pins)
     }
     else
     {
-      this.newFrame()
-      this.currentframe.bowl(pins)
+      if (this.currentframenumber === 10) {
+        return "10 frames already"
+      } else {
+        this.newFrame()
+        this.currentframe.bowl(pins)
+      }
     }
   }
 }

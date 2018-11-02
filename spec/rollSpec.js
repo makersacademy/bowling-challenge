@@ -10,5 +10,4 @@ describe("Roll", function() {
       expect(roll.getRoll(5)).toBe(5)
     });
   });
-
 });

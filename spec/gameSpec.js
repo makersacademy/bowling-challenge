@@ -26,7 +26,7 @@ describe('Game', function() {
     });
 
     it('limits the number of scores', function() {
-      for (var i = 0; i < 10; i++) {
+      for (var i = 0; i < 20; i++) {
         game.addScore(5);
       }
       expect(function() {game.addScore(5)}).toThrow(new Error("Cannot add more scores."));
@@ -34,7 +34,13 @@ describe('Game', function() {
 
     it('limits the number of pins', function() {
       game.addScore(7);
-      expect(function() {game.addScore(5)}).toThrow(new Error("Number of pins in frame is above 10."));
+      expect(function() {game.addScore(5)}).toThrow(new Error("Number of pins in frame cannot be above 10."));
+    });
+
+    it('limits the number of pins in a frame', function() {
+      game.addScore(5);
+      game.addScore(3);
+      expect(function() {game.addScore(8)}).not.toThrow(new Error("Number of pins in frame cannot be above 10."));
     });
   });
 });

@@ -80,7 +80,7 @@ Scorecard.prototype.frameOne = function () {
 };
 
 Scorecard.prototype.frameTwo = function () {
-  this.resultTwo = this._scoreArray[2]+this._scoreArray[3]+this.resultOne;
+  this.resultTwo = this._scoreArray[2]+this._scoreArray[3]+ this.resultOne;
   return this.resultTwo;
 };
 

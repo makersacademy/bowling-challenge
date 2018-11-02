@@ -69,9 +69,13 @@ $(document).ready(function(){
     updateTotal();
   });
 
-  $('#test').click(function(){
-    console.log(scorecard.seeArray());
+  $('#finish').click(function(){
+    if(scorecard.total === 0){
+      alert('Gutter Game!');
+    };
   });
+
+
 
 
   function updateTotal(){

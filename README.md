@@ -34,7 +34,7 @@ I'd like to record the number of knocked down pins for each roll
 
 As a player
 So I can see my score
-I'd like to record the number of knocked down pins for each frame
+I'd like to see the number of knocked down pins for each frame
 
 As a player
 So I can continue playing

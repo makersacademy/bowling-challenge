@@ -24,5 +24,12 @@ describe('Game', function() {
       game.addScore(7)
       expect(game.scores[0]).toEqual(7);
     });
+
+    it('limits the number of scores', function() {
+      for (var i = 0; i < 10; i++) {
+        game.addScore(5);
+      }
+      expect(function() {game.addScore(5)}).toThrow(new Error("Cannot add more scores."));
+    });
   });
 });

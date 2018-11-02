@@ -50,3 +50,43 @@ In the image below you can find some score examples.
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+
+## User stories
+
+```
+As a player
+I want to be able to enter the score of my rolls in a frame
+so that I can track my scores
+
+As a player
+I want to be able to see what frame I am on
+so that I can keep track of my progress
+
+As a player
+I want to be able to see a cumulative score of a game as I go
+so that I can see how well I am doing
+
+As a player
+I want to be able to enter when I have scored a strike
+so that I will be able to add bonuses
+
+As a player
+I want to be able to get bonus points when I have scored a strike
+so that my total score is calculated correctly
+
+As a player
+I want to get bonus points when I have scored a spare
+so that my total score is calculated correctly
+
+As a player
+I want to be able to enter the score for 10 frames
+so that I can complete the game
+
+As a player
+I want to be able to play 2 bonus balls in the 10th game if I have scored a strike
+so that my total score is calculated correctly
+
+As a player
+I want to be able to play 1 bonus ball in the 10th game if I have scored a spare
+so that my total score is calculated correctly
+```

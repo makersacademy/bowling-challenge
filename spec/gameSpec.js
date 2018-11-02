@@ -21,13 +21,7 @@ describe('Game', function() {
     it('can add two rolls to frame', function() {
       game.recordRoll(8);
       game.recordRoll(1);
-      expect(game.thisFrame()).toEqual([8, 1]);
-    });
-
-    it('raises error if rolling three times', function() {
-      game.recordRoll(6);
-      game.recordRoll(1);
-      expect(function(){game.recordRoll(1)}).toThrow("Limit of two rolls per frame");
+      expect(game.allFrames()).toEqual([[8, 1]]);
     });
 
     it('raises error if number of pins is greater than 10', function() {
@@ -37,6 +31,12 @@ describe('Game', function() {
     it('raises error if total pins knocked down is more than 10', function() {
       game.recordRoll(9);
       expect(function(){game.recordRoll(2)}).toThrow("Limit of 10 pins knocked down per frame");
+    });
+
+    it('checks frame after a roll', function() {
+      game.recordRoll(7);
+      game.recordRoll(2);
+      expect(game.whichFrame()).toEqual(2);
     });
   });
 
@@ -65,6 +65,13 @@ describe('Game', function() {
       game.recordRoll(3);
       game.checkFrame();
       expect(game.thisFrame()).toEqual([3]);
+    });
+
+    it('adds current frame to all frames', function() {
+      game.recordRoll(2);
+      game.recordRoll(4);
+      game.checkFrame();
+      expect(game.allFrames()).toEqual([[2, 4]]);
     });
   });
 });

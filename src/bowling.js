@@ -13,7 +13,5 @@ Bowling.prototype.returnRound = function() {
 
 Bowling.prototype.bowl = function(score) {
   this.score += score;
-  if(this.score === 10) {
-    this.round += 1;
-  }
+  if(this.score === 10) { this.round += 1 }
 };

@@ -3,11 +3,11 @@ var Frame = function(){
 };
 
 Frame.prototype.getCurrentScore = function () {
-  return this.currentScore
+  return this.currentScore;
 };
 
 Frame.prototype.calculateScore = function (roll1, roll2) {
-  if(roll1 === 10) {
+  if (roll1 === 10) {
     this.currentScore = 10
   } else {
     this.currentScore = roll1 + roll2;

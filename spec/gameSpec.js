@@ -11,7 +11,7 @@ describe("Game", function(){
       frame.getCurrentScore.and.callFake(function() {return 6})
       frameScore = frame.getCurrentScore();
 
-      game.updateScore(frameScore);
+      game.updateTotalScore(frameScore);
       expect(game.getTotalScore()).toBe(6);
     });
   });

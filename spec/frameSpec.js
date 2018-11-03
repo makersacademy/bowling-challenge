@@ -7,6 +7,12 @@ describe("Frame", function() {
     score = new Frame();
   });
 
+  describe("getCurrentScore", function() {
+    it("defaults to 0", function() {
+      expect(score.getCurrentScore()).toBe(0)
+    });
+  });
+
   describe("inputScore", function() {
     it("updates the users score", function(){
       roll1.getRoll.and.callFake(function() {return 4})

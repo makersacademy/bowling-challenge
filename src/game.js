@@ -6,6 +6,6 @@ Game.prototype.getTotalScore = function () {
   return this.totalScore;
 };
 
-Game.prototype.updateScore = function (frameScore) {
+Game.prototype.updateTotalScore = function (frameScore) {
   this.totalScore += frameScore
 };

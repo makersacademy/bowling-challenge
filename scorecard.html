@@ -1,1 +1,31 @@
-<h1>Welcome to Bowling!</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bowling</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src='src/game.js'></script>
+    <script src='src/roll.js'></script>
+    <script src='src/frame.js'></script>
+    <script src='src/interface.js'></script>
+    <link rel='stylesheet' type="text/css" href='style/stylesheet.css'></link>
+  </head>
+
+  <body>
+    <h1>Welcome to Bowling</h1>
+    <p class="numbers">What was your roll?<br><br>
+    <button value="0">Gutter!</button>
+    <button value="1">1</button>
+    <button value="2">2</button>
+    <button value="3">3</button>
+    <button value="4">4</button>
+    <button value="5">5</button>
+    <button value="6">6</button>
+    <button value="7">7</button>
+    <button value="8">8</button>
+    <button value="9">9</button>
+    <button value="10">Strike!</button><br>
+    Your score for this frame so far is: <span id='frame_score'></span>
+    </p>
+    <h4>Your total current score is <span id='current_score'></span> points</h4>
+  </body>
+</html>

@@ -1,3 +1,50 @@
 body{
   text-align: center;
 }
+
+h1{
+  font-family: monospace;
+  font-size: 3em;
+  color: crimson;
+}
+
+th{
+  font-family: monospace;
+  font-size: 1.5em;
+}
+
+td{
+  font-family: sans-serif;
+  font-size: 1em;
+}
+
+.enter_frame{
+  color: grey;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.score_card{
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-spacing: 8px;
+}
+
+select{
+  border-radius: 15px;
+  border-width: 2px;
+  background-color: darkgrey;
+  color: white;
+}
+
+input{
+  border-radius: 15px;
+  border-width: 2px;
+  border-color: darkgrey;
+  background-color: darkgrey;
+  color: white;
+}

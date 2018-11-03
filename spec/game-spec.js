@@ -50,12 +50,12 @@ describe ('Game', function () {
     })
 
     it('should not finish when less than 10 frames are completed', function () {
-      expect(game.checkFinished()).not.toBe(true)
+      expect(game.isFinished()).not.toEqual(true)
     })
 
     it('should finish when all 10 frames are completed', function () {
       game.addFrame(frame)
-      expect(game.checkFinished()).toBe(true)
+      expect(game.isFinished()).toEqual(true)
     })
   })
 })

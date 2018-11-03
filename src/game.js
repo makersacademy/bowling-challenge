@@ -20,12 +20,12 @@ Game.prototype.startNextFrame = function () {
 
 Game.prototype.addFrame = function(frame) {
   this._currentScore += frame.getScore()
-  if (!this.checkFinished()) {
+  if (!this.isFinished()) {
     this.startNextFrame()
   }
 }
 
-Game.prototype.checkFinished = function() {
+Game.prototype.isFinished = function() {
   if (this.getCurrentFrame() >= 10) {
     return this._finished = true
   }

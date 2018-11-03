@@ -18,11 +18,11 @@ Frame.prototype.calculateFrameType = function () {
   }
 };
 
+// Sum function
+
 Frame.prototype.calculateFrameScore = function (scores) {
   this.score = scores.reduce(add, 0);
 };
-
-// Sum function
 
 function add(a, b) {
     return a + b;

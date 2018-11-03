@@ -73,7 +73,17 @@ describe('Game', function() {
       game.addScore(5);
       game.addScore(1);
       game.calculateBonus();
-      expect(game.scores[0].bonus).toEqual(16);
+      expect(game.scores[0].bonus).toEqual(6);
+    });
+
+    it('calculates the total score for 2 strike frames in a row', function() {
+      game.addScore(10);
+      game.addScore(10);
+      game.addScore(1);
+      game.addScore(1);
+      game.calculateBonus();
+      expect(game.scores[0].bonus).toEqual(11);
+      expect(game.scores[1].bonus).toEqual(2);
     });
   });
 });

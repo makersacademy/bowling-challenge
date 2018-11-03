@@ -62,8 +62,11 @@ Game.prototype.calculateBonus = function () {
     if (this.scores[i].isSpare) {
       this.scores[i].bonus = this.scores[i + 1].roll1;
     } else if (this.scores[i].isStrike) {
-      this.scores[i].bonus += 10;
-      this.scores[i].bonus += this.scores[i + 1].roll1 + this.scores[i + 1].roll2;
+      if (this.scores[i + 1].roll2 === null) {
+        this.scores[i].bonus += this.scores[i + 1].roll1 + this.scores[i + 2].roll1;
+      } else {
+        this.scores[i].bonus += this.scores[i + 1].roll1 + this.scores[i + 1].roll2;
+      }
     }
   }
 };

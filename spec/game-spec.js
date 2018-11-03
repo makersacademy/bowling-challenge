@@ -40,4 +40,22 @@ describe ('Game', function () {
       expect(game.getCurrentFrame()).toEqual(2)
     })
   })
+
+  describe ('Finishing a game', function() {
+
+    beforeEach(function () {
+      for(i = 0; i < 8; i++) {
+        game.addFrame(frame)
+      }
+    })
+
+    it('should not finish when less than 10 frames are completed', function () {
+      expect(game.checkFinished()).not.toBe(true)
+    })
+
+    it('should finish when all 10 frames are completed', function () {
+      game.addFrame(frame)
+      expect(game.checkFinished()).toBe(true)
+    })
+  })
 })

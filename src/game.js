@@ -1,8 +1,9 @@
-"use strict";
+"use strict"
 
 function Game() {
   this._currentScore = 0
   this._currentFrame = 1
+  this._finished = false
 }
 
 Game.prototype.getCurrentScore = function () {
@@ -19,5 +20,15 @@ Game.prototype.startNextFrame = function () {
 
 Game.prototype.addFrame = function(frame) {
   this._currentScore += frame.getScore()
-  this.startNextFrame()
+  if (this.checkFinished() === true) {
+    return
+  } else {
+    this.startNextFrame()
+  }
+}
+
+Game.prototype.checkFinished = function() {
+  if (this.getCurrentFrame() >= 10) {
+    return this._finished = true
+  }
 }

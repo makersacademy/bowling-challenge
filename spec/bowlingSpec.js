@@ -29,7 +29,7 @@ describe("BowlingGame", function() {
     expect(game.totalScore).toEqual(13);
   });
 
-  it("can score a spare on first roll of next frame", function() {
+  it("can score a spare when followed by strike", function() {
     game.firstRoll(1);
     game.secondRoll(9);
     game.firstRoll(10);

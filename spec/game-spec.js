@@ -28,5 +28,11 @@ describe ('Game', function () {
       game.addFrame(frame)
       expect(game.getCurrentScore()).toEqual(8)
     })
+
+    it('does not increase game score if frame score is 0', function () {
+      frame.getScore.and.returnValue(0)
+      game.addFrame(frame)
+      expect(game.getCurrentScore()).toEqual(0)
+    })
   })
 })

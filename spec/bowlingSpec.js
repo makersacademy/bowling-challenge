@@ -29,13 +29,13 @@ describe("BowlingGame", function() {
     expect(game.totalScore).toEqual(13);
   });
 
-  // it("can score a spare on first roll of next frame", function() {
-  //   game.firstRoll(1);
-  //   game.secondRoll(9);
-  //   game.firstRoll(10);
-  //   expect(game.frameScores[0]).toEqual(20);
-  // });
-  //
+  it("can score a spare on first roll of next frame", function() {
+    game.firstRoll(1);
+    game.secondRoll(9);
+    game.firstRoll(10);
+    expect(game.totalScore).toEqual(20);
+  });
+
   it("should keep tally of total game score", function() {
     game.firstRoll(1);
     game.secondRoll(4);

@@ -4,8 +4,8 @@ function Frame() {
 Frame.prototype.setFirstRollValue = function(numberOfPins) {
   this.firstRollValue = numberOfPins;
   if (this.firstRollValue === 10) {
-    this.isStrike = true;
     this.secondRollValue = 0;
+    this.isStrike = true;
   }
 };
 

@@ -1,11 +1,14 @@
 function BowlingGame() {
   this.frameRolls = [];
-  // this.frameScores = [];
   this.totalScore = 0;
 }
 
 BowlingGame.prototype.lastFrame = function() {
   return this.frameRolls[this.frameRolls.length - 1];
+};
+
+BowlingGame.prototype.frameBeforeLast = function() {
+  return this.frameRolls[this.frameRolls.length - 2];
 };
 
 BowlingGame.prototype.firstRoll = function(numberOfPins) {
@@ -14,6 +17,13 @@ BowlingGame.prototype.firstRoll = function(numberOfPins) {
   this.currentFrame.setFirstRollValue(numberOfPins);
   if (this.currentFrame.isStrike === true) {
     this.frameRolls.push(this.currentFrame);
+    if (this.frameRolls.length > 1) {
+      if (this.frameBeforeLast().isSpare === true) {
+        debugger;
+        this.frameBeforeLast().setScore(20);
+        this.totalScore += this.frameBeforeLast().score;
+      }
+    }
   }
   if (this.frameRolls.length > 0) {
     if (this.lastFrame().isSpare === true) {
@@ -22,19 +32,7 @@ BowlingGame.prototype.firstRoll = function(numberOfPins) {
     }
   }
 };
-//     if (this.frameRolls[this.frameRolls.length - 2].isSpare === true) {
-//       score = 10 + numberofPins;
-//       this.frameScores.push(score);
-//       this.totalScore += score;
-//     }
-//   this.firstRollValue = numberOfPins;
-//   if (this.lastFrame === "Spare") {
-//     score = 10 + this.firstRollValue;
-//     this.frameScores.push(score);
-//     this.totalScore += score;
-//   }
-// };
-//
+
 BowlingGame.prototype.secondRoll = function(numberOfPins) {
   this.currentFrame.setSecondRollValue(numberOfPins);
   if (this.currentFrame.isSpare === true) {
@@ -46,10 +44,3 @@ BowlingGame.prototype.secondRoll = function(numberOfPins) {
     this.totalScore += this.currentFrame.score;
   }
 };
-// }
-//
-// BowlingGame.prototype.lastFrameScore = function() {
-//   const reducer = (accumulator, currentValue) => accumulator + currentValue;
-//   score = this.frameRolls[this.frameRolls.length - 1].reduce(reducer);
-//   return score;
-// }

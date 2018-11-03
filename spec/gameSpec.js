@@ -59,7 +59,7 @@ describe('Game', function() {
   });
 
   describe('calculateBonus', function() {
-    it('calculates a spare frame', function() {
+    it('calculates the bonus score for a spare frame', function() {
       game.addScore(5);
       game.addScore(5);
       game.addScore(5);
@@ -68,7 +68,7 @@ describe('Game', function() {
       expect(game.scores[0].bonus).toEqual(5);
     });
 
-    it('calculates a strike frame', function() {
+    it('calculates the bonus score for a strike frame', function() {
       game.addScore(10);
       game.addScore(5);
       game.addScore(1);
@@ -76,7 +76,7 @@ describe('Game', function() {
       expect(game.scores[0].bonus).toEqual(6);
     });
 
-    it('calculates the total score for 2 strike frames in a row', function() {
+    it('calculates the bonus score for 2 strike frames in a row', function() {
       game.addScore(10);
       game.addScore(10);
       game.addScore(1);
@@ -84,6 +84,18 @@ describe('Game', function() {
       game.calculateBonus();
       expect(game.scores[0].bonus).toEqual(11);
       expect(game.scores[1].bonus).toEqual(2);
+    });
+
+    it('calculates the bonus score for 3 strike frames in a row', function() {
+      game.addScore(10);
+      game.addScore(10);
+      game.addScore(10);
+      game.addScore(1);
+      game.addScore(1);
+      game.calculateBonus();
+      expect(game.scores[0].bonus).toEqual(20);
+      expect(game.scores[1].bonus).toEqual(11)
+      expect(game.scores[2].bonus).toEqual(2);
     });
   });
 });

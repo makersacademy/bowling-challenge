@@ -1,7 +1,10 @@
 describe ('Game', function () {
-  var game = new Game()
+  var game
+  var frame
 
   beforeEach(function () {
+    game = new Game ()
+    frame = jasmine.createSpyObj('frame', ['getScore'])
   })
 
   describe ('A bowling game', function () {
@@ -16,6 +19,14 @@ describe ('Game', function () {
     it('can start the next frame', function () {
       game.startNextFrame()
       expect(game.getCurrentFrame()).toEqual(2)
+    })
+  })
+
+  describe ('Adding a frame', function () {
+    it('increases the current score if the frame score > 0', function () {
+      frame.getScore.and.returnValue(8)
+      game.addFrame(frame)
+      expect(game.getCurrentScore()).toEqual(8)
     })
   })
 })

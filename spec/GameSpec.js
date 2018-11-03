@@ -35,4 +35,22 @@ describe("Game", function() {
     }
     expect(game.getCurrentScore()).toEqual(20);
   });
+
+  it("scores a game with one spare in the first frame and zeros for the remaining game as ten", function() {
+    game.roll(1);
+    game.roll(9);
+    for (var i = 0; i < 18; i++) {
+      game.roll(0);
+    }
+    expect(game.getCurrentScore()).toEqual(10);
+  });
+
+  it("scores a game with one spare in the first frame and ones for the remaining game as 29", function() {
+    game.roll(1);
+    game.roll(9);
+    for (var i = 0; i < 18; i++) {
+      game.roll(1);
+    }
+    expect(game.getCurrentScore()).toEqual(29);
+  });
 });

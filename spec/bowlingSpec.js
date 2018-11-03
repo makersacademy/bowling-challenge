@@ -2,9 +2,11 @@
 
 describe('Bowling', function() {
   var bowling;
+  var bowlingApp;
 
   beforeEach(function() {
     bowling = new Bowling();
+    bowlingApp = new BowlingApp();
   });
 
   it('starts with a score of zero', function() {

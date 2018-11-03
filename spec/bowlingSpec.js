@@ -28,15 +28,21 @@ describe('Bowling', function() {
     expect(bowling.returnScore()).toEqual(10)
   });
 
-  it('ends a round when all pins are knocked', function() {
+  it('ends a frame when all pins are knocked', function() {
     bowling.bowl(10)
     expect(bowling.returnFrame()).toEqual(2)
   });
 
-  it('ends a round after two rolls', function() {
+  it('ends a frame after two rolls', function() {
     bowling.bowl(1)
     bowling.bowl(1)
     expect(bowling.returnFrame()).toEqual(2)
+  });
+
+  it('resets to two rolls after a frame ends', function() {
+    bowling.bowl(1)
+    bowling.bowl(1)
+    expect(bowling.returnBowls()).toEqual(2)
   })
 
 });

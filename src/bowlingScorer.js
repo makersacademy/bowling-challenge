@@ -12,10 +12,15 @@ BowlingScorer.prototype.returnFrame = function() {
   return this.frame;
 };
 
+BowlingScorer.prototype.returnBowls = function() {
+  return this.bowls;
+}
+
 BowlingScorer.prototype.bowl = function(score) {
   this.score += score;
   this.bowls -= 1;
   if((this.score === 10) || (this.bowls === 0)) {
     this.frame += 1;
+    this.bowls = 2;
   };
 };

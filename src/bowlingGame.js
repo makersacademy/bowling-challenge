@@ -61,3 +61,7 @@ BowlingGame.prototype.secondRoll = function(numberOfPins) {
     }
   }
 };
+
+BowlingGame.prototype.bonusRoll = function(numberOfPins) {
+  this.totalScore += numberOfPins;
+}

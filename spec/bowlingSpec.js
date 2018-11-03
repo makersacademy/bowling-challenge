@@ -71,7 +71,7 @@ describe("BowlingGame", function() {
   });
 
   it("can score a gutter game", function() {
-    var i = 0;
+    var i = 1;
     while (i < 13) {
       game.firstRoll(0);
       game.secondRoll(0);
@@ -80,13 +80,13 @@ describe("BowlingGame", function() {
     expect(game.totalScore).toEqual(0);
   });
 
-  // it("can score a perfect game", function() {
-  //   var i = 0;
-  //   while (i < 13) {
-  //     game.firstRoll(10);
-  //     i ++;
-  //   };
-  //   expect(game.totalScore).toEqual(300);
-  // });
+  it("can score a perfect game", function() {
+    var i = 1;
+    while (i < 13) {
+      game.firstRoll(10);
+      i ++;
+    };
+    expect(game.totalScore).toEqual(300);
+  });
 
 });

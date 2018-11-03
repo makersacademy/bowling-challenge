@@ -1,10 +1,10 @@
-function Game() {
+function Game(scoreCard = new ScoreCard()) {
   this.STARTING_SCORE = 0;
   this.FIRST_FRAME = 1;
   this.runningScore = this.STARTING_SCORE;
   this.frameScore = 0;
   this.currentFrame = this.FIRST_FRAME;
-  this.scoreCard = [];
+  this.scoreCard = scoreCard;
 };
 
 Game.prototype.frame = function(a,b) {
@@ -16,11 +16,11 @@ Game.prototype.frame = function(a,b) {
 }
 
 Game.prototype._updateScoreCard = function() {
-  a = new Array();
-  a['frame'] = this.currentFrame;
-  a['frameScore'] = this.frameScore;
-  a['runningScore'] = this.runningScore;
-  this.scoreCard.push(a);
+  array = new Array();
+  array['frame'] = this.currentFrame;
+  array['frameScore'] = this.frameScore;
+  array['runningScore'] = this.runningScore;
+  this.scoreCard.card.push(array);
 }
 
 Game.prototype._updateCurrentFrame = function() {

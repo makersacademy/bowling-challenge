@@ -23,12 +23,6 @@ describe("Game", function() {
       expect(game.frame(4,1)).toEqual(5);
       expect(game.runningScore).toEqual(13);
     });
-    it("can recall the frame score for frame 1", function() {
-      expect(game.scoreCard[0].frameScore).toEqual(8)
-    });
-    it("can recall the running score for frame 1", function() {
-      expect(game.scoreCard[0].runningScore).toEqual(8)
-    });
   });
 
 })

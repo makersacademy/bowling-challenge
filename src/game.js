@@ -62,7 +62,7 @@ Game.prototype.calculateBonus = function () {
     if (this.scores[i].isSpare) {
       this.scores[i].bonus = this.scores[i + 1].roll1;
     } else if (this.scores[i].isStrike) {
-      if (this.scores[i + 1].roll2 === null) {
+      if (this.scores[i + 1].roll2 === undefined) {
         this.scores[i].bonus += this.scores[i + 1].roll1 + this.scores[i + 2].roll1;
       } else {
         this.scores[i].bonus += this.scores[i + 1].roll1 + this.scores[i + 1].roll2;
@@ -74,6 +74,13 @@ Game.prototype.calculateBonus = function () {
 Game.prototype.isGutterGame = function () {
   for (var i = 0; i < this.scores.length; i++) {
     if (this.scores[i].score > 0) return false;
+  }
+  return true;
+};
+
+Game.prototype.isPerfectGame = function () {
+  for (var i = 0; i < this.scores.length; i++) {
+    if (this.scores[i].isStrike === undefined) return false;
   }
   return true;
 };

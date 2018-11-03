@@ -115,4 +115,22 @@ describe('Game', function() {
       expect(game.isGutterGame()).toEqual(false);
     });
   });
+
+  describe('isPerfectGame', function() {
+    it('returns true if all frames are strikes', function() {
+      for (var i = 0; i < 10; i++) {
+        game.addScore(10);
+      }
+      expect(game.isPerfectGame()).toEqual(true);
+    });
+
+    it('returns false if at least 1 frame is not a strike', function() {
+      for (var i = 0; i < 9; i++) {
+        game.addScore(10);
+      }
+      game.addScore(1);
+      game.addScore(1);
+      expect(game.isPerfectGame()).toEqual(false);
+    });
+  });
 });

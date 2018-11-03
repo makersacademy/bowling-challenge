@@ -1,6 +1,6 @@
 function Frame(scores) {
   this.roll1 = scores[0];
-  this.roll2 = scores[1] || null;
+  this.roll2 = scores[1];
   this.isSpare;
   this.isStrike;
   this.score = 0;

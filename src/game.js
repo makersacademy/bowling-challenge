@@ -12,3 +12,7 @@ Game.prototype.getCurrentScore = function () {
 Game.prototype.getCurrentFrame = function () {
   return this._currentFrame
 }
+
+Game.prototype.startNextFrame = function () {
+  this._currentFrame++
+}

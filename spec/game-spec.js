@@ -12,5 +12,10 @@ describe ('Game', function () {
     it('should start at frame 1', function () {
       expect(game.getCurrentFrame()).toEqual(1)
     })
+
+    it('can start the next frame', function () {
+      game.startNextFrame()
+      expect(game.getCurrentFrame()).toEqual(2)
+    })
   })
 })

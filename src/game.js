@@ -70,3 +70,10 @@ Game.prototype.calculateBonus = function () {
     }
   }
 };
+
+Game.prototype.isGutterGame = function () {
+  for (var i = 0; i < this.scores.length; i++) {
+    if (this.scores[i].score > 0) return false;
+  }
+  return true;
+};

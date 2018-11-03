@@ -98,4 +98,21 @@ describe('Game', function() {
       expect(game.scores[2].bonus).toEqual(2);
     });
   });
+
+  describe('isGutterGame', function() {
+    it('returns true if 0 pins are knocked down across all frames', function() {
+      for (var i = 0; i < 20; i++) {
+        game.addScore(0);
+      }
+      expect(game.isGutterGame()).toEqual(true);
+    });
+
+    it('returns false if at least 1 pin is knocked down', function() {
+      for (var i = 0; i < 19; i++) {
+        game.addScore(0);
+      }
+      game.addScore(1);
+      expect(game.isGutterGame()).toEqual(false);
+    });
+  });
 });

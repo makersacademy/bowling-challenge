@@ -19,7 +19,6 @@ BowlingGame.prototype.firstRoll = function(numberOfPins) {
     this.frameRolls.push(this.currentFrame);
     if (this.frameRolls.length > 1) {
       if (this.frameBeforeLast().isSpare === true) {
-        debugger;
         this.frameBeforeLast().setScore(20);
         this.totalScore += this.frameBeforeLast().score;
       }
@@ -39,8 +38,15 @@ BowlingGame.prototype.secondRoll = function(numberOfPins) {
     this.frameRolls.push(this.currentFrame);
   } else {
     this.frameRolls.push(this.currentFrame);
-    // score = this.lastFrameScore();
-    // this.frameScores.push(score);
     this.totalScore += this.currentFrame.score;
+  }
+  if (this.frameRolls.length > 1) {
+    debugger;
+    if (this.frameBeforeLast().isStrike === true) {
+      if (this.lastFrame().isStrike === undefined) {
+        this.frameBeforeLast().setScore(10 + this.lastFrame().score);
+        this.totalScore += this.frameBeforeLast().score;
+      }
+    }
   }
 };

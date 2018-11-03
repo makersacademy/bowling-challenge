@@ -36,6 +36,13 @@ describe("BowlingGame", function() {
     expect(game.totalScore).toEqual(20);
   });
 
+  it("can score a strike when followed by two regular rolls", function() {
+    game.firstRoll(10);
+    game.firstRoll(1);
+    game.secondRoll(5);
+    expect(game.totalScore).toEqual(22);
+  });
+
   it("should keep tally of total game score", function() {
     game.firstRoll(1);
     game.secondRoll(4);

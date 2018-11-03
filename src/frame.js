@@ -6,7 +6,7 @@ var Frame = function(bowls) {
   this.score();
 }
 
-// **************** Class Functinos ******************
+// **************** Class Functions ******************
 
 Frame.prototype.score = function() {
 
@@ -35,9 +35,6 @@ Frame.prototype.calculateScore = function(framePlusOne, framePlusTwo) {
   }
   this._totalScores();
 };
-
-
-
 
 // ************* Private Functions ***********
 

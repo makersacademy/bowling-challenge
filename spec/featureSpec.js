@@ -15,4 +15,7 @@ describe('Feature Test:', function(){
     expect(john.getName()).toEqual("John");
   });
 
+  it('creates a game that has a scorecard that can provide scores',function(){
+    expect(game.getScorecard().getTotalScore()).toEqual(0);
+  });
 });

@@ -14,7 +14,7 @@ Frame.prototype.score = function() {
    throw new Error('Cannot have more than two bowls in a standard frame');
   };
 
-  var sum = sumArr(this.bowls)
+  var sum = sumArr(this.bowls);
 
   if(sum > 10) {
    throw new Error('Cannot knock down more than 10 pins in a single frame');
@@ -23,10 +23,10 @@ Frame.prototype.score = function() {
   this.frameScore = sum;
 };
 
-Frame.prototype.calculateBonus = function(framePlusOne, framePlusTwo) {
+Frame.prototype.calculateScore = function(framePlusOne, framePlusTwo) {
 
   if (framePlusOne.bowls.length === 0) {
-    this.bonus = 0
+    this.bonus = 0;
   } else if(this._isSpare()){
     this.bonus = framePlusOne.bowls[0];
   } else if(this._isStrike()){

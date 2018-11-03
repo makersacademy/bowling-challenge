@@ -1,12 +1,9 @@
 describe("Frame", function() {
-  var frameOne;
 
-  beforeEach(function() {
-    standardFrame = new Frame([4,5]);
-    spareFrame = new Frame([5,5]);
-    strikeFrame = new Frame([10]);
-    gutterFrame = new Frame([]);
-  });
+  standardFrame = new Frame([4,5]);
+  spareFrame = new Frame([5,5]);
+  strikeFrame = new Frame([10]);
+  gutterFrame = new Frame([]);
 
   it("totals the score from the two bowls in a single frame.", function() {
 
@@ -27,25 +24,25 @@ describe("Frame", function() {
   });
 
   it("should calculate the the bonus and total score for a spare", function() {
-    spareFrame.calculateBonus(standardFrame, standardFrame)
+    spareFrame.calculateScore(standardFrame, standardFrame)
     expect(spareFrame.bonus).toEqual(4)
     expect(spareFrame.totalScore).toEqual(14)
-    spareFrame.calculateBonus(strikeFrame, strikeFrame)
+    spareFrame.calculateScore(strikeFrame, strikeFrame)
     expect(spareFrame.bonus).toEqual(10)
     expect(spareFrame.totalScore).toEqual(20)
-    spareFrame.calculateBonus(gutterFrame, gutterFrame)
+    spareFrame.calculateScore(gutterFrame, gutterFrame)
     expect(spareFrame.bonus).toEqual(0)
     expect(spareFrame.totalScore).toEqual(10)
   });
 
   it("should calculate the the bonus and total score for a strike", function() {
-    strikeFrame.calculateBonus(standardFrame, standardFrame)
+    strikeFrame.calculateScore(standardFrame, standardFrame)
     expect(strikeFrame.bonus).toEqual(9)
     expect(strikeFrame.totalScore).toEqual(19)
-    strikeFrame.calculateBonus(strikeFrame, strikeFrame)
+    strikeFrame.calculateScore(strikeFrame, strikeFrame)
     expect(strikeFrame.bonus).toEqual(20)
     expect(strikeFrame.totalScore).toEqual(30)
-    strikeFrame.calculateBonus(gutterFrame, gutterFrame)
+    strikeFrame.calculateScore(gutterFrame, gutterFrame)
     expect(strikeFrame.bonus).toEqual(0)
     expect(strikeFrame.totalScore).toEqual(10)
   });

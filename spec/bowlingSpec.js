@@ -80,13 +80,13 @@ describe("BowlingGame", function() {
     expect(game.totalScore).toEqual(0);
   });
 
-  it("can score a perfect game", function() {
-    var i = 0;
-    while (i < 13) {
-      game.firstRoll(10);
-      i ++;
-    };
-    expect(game.totalScore).toEqual(300);
-  });
+  // it("can score a perfect game", function() {
+  //   var i = 0;
+  //   while (i < 13) {
+  //     game.firstRoll(10);
+  //     i ++;
+  //   };
+  //   expect(game.totalScore).toEqual(300);
+  // });
 
 });

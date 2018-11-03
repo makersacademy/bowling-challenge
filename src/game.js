@@ -10,14 +10,16 @@ function Game(scoreCard = new ScoreCard()) {
 Game.prototype.frame = function(a,b) {
     this._updateFrameScore(a,b);
     this._updateRunningScore(a,b);
-    this._updateScoreCard();
+    this._updateScoreCard(a,b);
     this._updateCurrentFrame();
     return this.frameScore;
 }
 
-Game.prototype._updateScoreCard = function() {
+Game.prototype._updateScoreCard = function(a,b) {
   array = new Array();
   array['frame'] = this.currentFrame;
+  array['bowl1'] = a;
+  array['bowl2'] = b;
   array['frameScore'] = this.frameScore;
   array['runningScore'] = this.runningScore;
   this.scoreCard.card.push(array);

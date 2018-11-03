@@ -1,20 +1,24 @@
 $(document).ready(function() {
 
-  var game = new Game();
+  var scorecard = new ScoreCard();
+  var game = new Game(scorecard);
 
   $('#frame_submit').click(function() {
     var bowl1 = Number($('#bowl1').val());
     var bowl2 = Number($('#bowl2').val());
     game.frame(bowl1 ,bowl2);
-    updateScoreCard(bowl1 ,bowl2);
+    updateScoreCard();
   });
 
-  function updateScoreCard(bowl1 ,bowl2) {
-    $('#frame1_bowl1').text(bowl1);
-    $('#frame1_bowl2').text(bowl2);
-    $('#frame1_score').text(game.scoreCard[0].frameScore);
-    $('#frame1_running_score').text(game.scoreCard[0].runningScore);
-    $('#frame1_notes').text('');
+  function updateScoreCard() {
+    for (var i=0; i<scorecard.card.length; i++) {
+      $('#frame'+i+'_bowl1').text(scorecard.card[i].bowl1);
+      $('#frame'+i+'_bowl2').text(scorecard.card[i].bowl2);
+      $('#frame'+i+'_score').text(scorecard.card[i].frameScore);
+      $('#frame'+i+'_running_score').text(scorecard.card[i].runningScore);
+      // $('#frame'+i+'_notes').text(scorecard.card[i].notes);
+    }
   };
+
 
 })

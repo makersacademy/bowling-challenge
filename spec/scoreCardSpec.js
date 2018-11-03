@@ -12,6 +12,8 @@ describe("ScoreCard", function() {
     beforeEach(function() {
       array = new Array();
       array['frame'] = 1;
+      array['bowl'] = 5;
+      array['bowl2'] = 3; 
       array['frameScore'] = 8;
       array['runningScore'] = 8;
       scoreCard.update(array)

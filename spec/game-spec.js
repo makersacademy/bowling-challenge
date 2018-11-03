@@ -34,5 +34,10 @@ describe ('Game', function () {
       game.addFrame(frame)
       expect(game.getCurrentScore()).toEqual(0)
     })
+
+    it('starts the next frame', function () {
+      game.addFrame(frame)
+      expect(game.getCurrentFrame()).toEqual(2)
+    })
   })
 })

@@ -19,4 +19,5 @@ Game.prototype.startNextFrame = function () {
 
 Game.prototype.addFrame = function(frame) {
   this._currentScore += frame.getScore()
+  this.startNextFrame()
 }

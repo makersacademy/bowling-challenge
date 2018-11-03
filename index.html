@@ -6,13 +6,45 @@
   </head>
   <body>
     <h1>Bowling Score Card</h1>
-    <table style="width:80%">
+    <table id="enter_frame">
+      <tr>
+      <td>Bowl 1</td>
+      <td><select id="bowl1">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select></td>
+      <td>Bowl 2</td>
+      <td><select id="bowl2">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select></td>
+      <td><input id="frame_submit" type="submit"></input></td>
+    </tr>
+    </table>
+    <table id="score_card" style="width:80%">
     <section id="headers">
       <tr>
         <th>Frame</th>
         <th>Bowl 1</th>
         <th>Bowl 2</th>
-        <th></th>
         <th>Frame Score</th>
         <th>Running Score</th>
         <th>Notes</th>
@@ -21,93 +53,83 @@
     <section id="frames">
       <tr>
         <td>1</td>
-        <td><input id="frame1_bowl1" type="text" placeholder="Number of pins"></input></td>
-        <td><input id="frame1_bowl2" type="text" placeholder="Number of pins"></input></td>
-        <td><input id="frame_submit" type="submit"></input></td>
-        <td><h3><span id="frame1_score"></span></h3></td>
-        <td><h3><span id="frame1_running_score"></span></h3></td>
-        <td><h3><span id="frame1_notes"></span></h3></td>
+        <td><span id="frame1_bowl1"></span></td>
+        <td><span id="frame1_bowl2"></span></td>
+        <td><span id="frame1_score"></span></td>
+        <td><span id="frame1_running_score"></span></td>
+        <td><span id="frame1_notes"></span></td>
       </tr>
       <tr>
         <td>2</td>
-        <td><input id="frame2_bowl1" type="text" placeholder="Number of pins"></input></td>
-        <td><input id="frame2_bowl2" type="text" placeholder="Number of pins"></input></td>
-        <td><input id="frame_submit" type="submit"></input></td>
-        <td><h3><span id="frame2_score"></span></h3></td>
-        <td><h3><span id="frame2_running_score"></span></h3></td>
-        <td><h3><span id="frame2_notes"></span></h3></td>
+        <td><span id="frame2_bowl1"></span></td>
+        <td><span id="frame2_bowl2"></span></td>
+        <td><span id="frame2_score"></span></td>
+        <td><span id="frame2_running_score"></span></td>
+        <td><span id="frame2_notes"></span></td>
       </tr>
       <tr>
         <td>3</td>
-        <td><input id="frame3_bowl1" type="text" placeholder="Number of pins"></input></td>
-        <td><input id="frame3_bowl2" type="text" placeholder="Number of pins"></input></td>
-        <td><input type="submit"></input></td>
-        <td><h3><span id="frame3_score"></span></h3></td>
-        <td><h3><span id="frame3_running_score"></span></h3></td>
-        <td><h3><span id="frame3_notes"></span></h3></td>
+        <td><span id="frame3_bowl1"></span></td>
+        <td><span id="frame3_bowl2"></span></td>
+        <td><span id="frame3_score"></span></td>
+        <td><span id="frame3_running_score"></span></td>
+        <td><span id="frame3_notes"></span></td>
       </tr>
       <tr>
         <td>4</td>
-        <td><input id="frame4_bowl1" type="text" placeholder="Number of pins"></input></td>
-        <td><input id="frame4_bowl2" type="text" placeholder="Number of pins"></input></td>
-        <td><input type="submit"></input></td>
-        <td><h3><span id="frame4_score"></span></h3></td>
-        <td><h3><span id="frame4_running_score"></span></h3></td>
-        <td><h3><span id="frame4_notes"></span></h3></td>
+        <td><span id="frame4_bowl1"></span></td>
+        <td><span id="frame4_bowl2"></span></td>
+        <td><span id="frame4_score"></span></td>
+        <td><span id="frame4_running_score"></span></td>
+        <td><span id="frame4_notes"></span></td>
       </tr>
       <tr>
         <td>5</td>
-        <td><input id="frame5_bowl1" type="text" placeholder="Number of pins"></input></td>
-        <td><input id="frame5_bowl2" type="text" placeholder="Number of pins"></input></td>
-        <td><input type="submit"></input></td>
-        <td><h3><span id="frame5_score"></span></h3></td>
-        <td><h3><span id="frame5_running_score"></span></h3></td>
-        <td><h3><span id="frame5_notes"></span></h3></td>
+        <td><span id="frame5_bowl1"></span></td>
+        <td><span id="frame5_bowl2"></span></td>
+        <td><span id="frame5_score"></span></td>
+        <td><span id="frame5_running_score"></span></td>
+        <td><span id="frame5_notes"></span></td>
       </tr>
       <tr>
         <td>6</td>
-        <td><input id="frame6_bowl1" type="text" placeholder="Number of pins"></input></td>
-        <td><input id="frame6_bowl2" type="text" placeholder="Number of pins"></input></td>
-        <td><input type="submit"></input></td>
-        <<td><h3><span id="frame6_score"></span></h3></td>
-        <td><h3><span id="frame6_running_score"></span></h3></td>
-        <td><h3><span id="frame6_notes"></span></h3></td>
+        <td><span id="frame6_bowl1"></span></td>
+        <td><span id="frame6_bowl2" ></span></td>
+        <<td><span id="frame6_score"></span></td>
+        <td><span id="frame6_running_score"></span></td>
+        <td><span id="frame6_notes"></span></td>
       </tr>
       <tr>
         <td>7</td>
-        <td><input id="frame7_bowl1" type="text" placeholder="Number of pins"></input></td>
-        <td><input id="frame7_bowl2" type="text" placeholder="Number of pins"></input></td>
-        <td><input type="submit"></input></td>
-        <td><h3><span id="frame7_score"></span></h3></td>
-        <td><h3><span id="frame7_running_score"></span></h3></td>
-        <td><h3><span id="frame7_notes"></span></h3></td>
+        <td><span id="frame7_bowl1" ></span></td>
+        <td><span id="frame7_bowl2" ></span></td>
+        <td><span id="frame7_score"></span></td>
+        <td><span id="frame7_running_score"></span></td>
+        <td><span id="frame7_notes"></span></td>
       </tr>
       <tr>
         <td>8</td>
-        <td><input id="frame8_bowl1" type="text" placeholder="Number of pins"></input></td>
-        <td><input id="frame8_bowl2" type="text" placeholder="Number of pins"></input></td>
-        <td><input type="submit"></input></td>
-        <td><h3><span id="frame8_score"></span></h3></td>
-        <td><h3><span id="frame8_running_score"></span></h3></td>
-        <td><h3><span id="frame8_notes"></span></h3></td>
+        <td><span id="frame8_bowl1" ></span></td>
+        <td><span id="frame8_bowl2" ></span></td>
+        <td><span id="frame8_score"></span></td>
+        <td><span id="frame8_running_score"></span></td>
+        <td><span id="frame8_notes"></span></td>
       </tr>
       <tr>
         <td>9</td>
-        <td><input id="frame9_bowl1" type="text" placeholder="Number of pins"></input></td>
-        <td><input id="frame9_bowl2" type="text" placeholder="Number of pins"></input></td>
-        <td><input type="submit"></input></td>
-        <td><h3><span id="frame9_score"></span></h3></td>
-        <td><h3><span id="frame9_running_score"></span></h3></td>
-        <td><h3><span id="frame9_notes"></span></h3></td>
+        <td><span id="frame9_bowl1" ></span></td>
+        <td><span id="frame9_bowl2" ></span></td>
+        <td><span id="frame9_score"></span></td>
+        <td><span id="frame9_running_score"></span></td>
+        <td><span id="frame9_notes"></span></td>
       </tr>
       <tr>
         <td>10</td>
-        <td><input id="frame10_bowl1" type="text" placeholder="Number of pins"></input></td>
-        <td><input id="frame10_bowl2" type="text" placeholder="Number of pins"></input></td>
-        <td><input type="submit"></input></td>
-        <td><h3><span id="frame10_score"></span></h3></td>
-        <td><h3><span id="frame10_running_score"></span></h3></td>
-        <td><h3><span id="frame10_notes"></span></h3></td>
+        <td><span id="frame10_bowl1" ></span></td>
+        <td><span id="frame10_bowl2" ></span></td>
+        <td><span id="frame10_score"></span></td>
+        <td><span id="frame10_running_score"></span></td>
+        <td><span id="frame10_notes"></span></td>
       </tr>
     </section>
     </table>

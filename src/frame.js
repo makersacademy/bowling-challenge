@@ -2,6 +2,8 @@ function Frame() {
   this.score = []
 }
 
-Frame.prototype.add = function (roll) {
-  this.score.push(roll)
+Frame.prototype.add = function (roll_score) {
+  var roll = new Roll()
+  roll.pins(roll_score)
+  this.score.push(roll.score)
 }

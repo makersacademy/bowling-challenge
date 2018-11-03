@@ -3,5 +3,5 @@ function Roll() {
 }
 
 Roll.prototype.pins = function (number) {
-  return this.score += number
+  return this.score = number
 };

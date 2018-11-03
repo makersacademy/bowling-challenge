@@ -1,77 +1,106 @@
-
-Bowling Challenge
-=================
+# Bowling Scorecard
 
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+## Model
 
-## The Task
+![Model Class Diagram](./images/model_class_diagram.png)
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+## USER STORIES
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+```txt
+As a user,
+So I can see my score,
+I want to enter my name.
+```
 
-As usual please start by
+```
+As a user,
+To save the game information,
+I want to enter the number of pins I've knocked down in a roll, the score.
+```
 
-* Forking this repo
+```txt
+As a user,
+So I can keep track of the progress of the game,
+I want to see the accumulated score up to a frame.
+```
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+```txt
+As a user,
+So I can keep track of the progress of the game,
+I want to see the number of pins I knocked down on each roll.
+```
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+```txt
+As a user,
+So I can keep track of the progress of the game,
+I want to see the rolls organized by frames.
+```
 
-### Optional Extras
+```txt
+As a user,
+So I can see the history of the game,
+I want to see the values for the previous rolls.
+```
 
-In any order you like:
+```txt
+As a user,
+So that I know how well I did,
+I want to see the total score.
+```
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+```txt
+As the Scoreboard,
+So that the information of the game is valid,
+I want to verify the values the User inputs.
+```
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+```txt
+As the Scoreboard,
+So that the game information is correct,
+I want to add the roll data to the correct frame.
+```
 
-## Bowling — how does it work?
+```txt
+As the Scoreboard,
+To follow the game rules,
+If the user hits 10 pins on the first roll of a frame, it's considered a Strike and the second roll of this frame is skipped, except if it's the 10th frame.
+```
 
-### Strikes
+```txt
+As the Scoreboard,
+To follow the game rules,
+If the user does *NOT* hit 10 pins on the first roll of a frame, he can do a second roll.
+```
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+```txt
+As the Scoreboard,
+To follow the game rules,
+If the user hits all the remaining pins on the second roll of a frame, it's considered a Spare.
+```
 
-### Spares
+```txt
+As the Scoreboard,
+To follow the game rules,
+If the user hits a Strike on the first roll of the 10th frame, he gets two extra rolls.
+```
 
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+```txt
+As the Scoreboard,
+To follow the game rules,
+If the user hits a Spare on the second roll of the 10th frame, he gets one extra roll.
+```
 
-### 10th frame
+```txt
+As the Scoreboard,
+To provide the correct score,
+If a frame is considered a Strike, the score from the next two rolls are added to that frame. 
+```
 
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
+```txt
+As the Scoreboard,
+To provide the correct score,
+If a frame is considered a Spare, the score from the next roll is added to that frame.
+```
 
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-### Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-### Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

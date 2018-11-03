@@ -59,6 +59,7 @@ describe("Game", function() {
       game.roll(1);
       game.roll(9);
     }
+    debugger;
     game.roll(1);
     expect(game.getCurrentScore()).toEqual(110);
   });

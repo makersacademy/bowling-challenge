@@ -30,6 +30,7 @@ Game.prototype.getCurrentScore = function() {
   var total = 0;
   this.frames.forEach(function(frame) {
     total += frame.frameTotal;
+    total += frame.bonusTotal;
   });
   return total;
 }
@@ -69,7 +70,7 @@ Game.prototype.checkIfRollWasSpare = function() {
 
 Game.prototype.addBonusScoreToPreviousFrame = function(rollToBeAdded) {
   var previousFrame = this.getPreviousFrame();
-  previousFrame.frameTotal += rollToBeAdded;
+  previousFrame.bonusTotal = rollToBeAdded;
 }
 
 Game.prototype.getPreviousFrame = function() {
@@ -79,6 +80,7 @@ Game.prototype.getPreviousFrame = function() {
 function Frame() {
   this.rollsArray = [0, 0];
   this.frameTotal = 0;
+  this.bonusTotal = 0;
   this.currentRollIndex = 0;
   this.rollsCount = 0;
 }

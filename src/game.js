@@ -20,9 +20,7 @@ Game.prototype.startNextFrame = function () {
 
 Game.prototype.addFrame = function(frame) {
   this._currentScore += frame.getScore()
-  if (this.checkFinished() === true) {
-    return
-  } else {
+  if (!this.checkFinished()) {
     this.startNextFrame()
   }
 }

@@ -1,8 +1,7 @@
 function Game() {
   this.frames = [];
   this.currentFrame = null;
-  this.watchingForSpares = false;
-  this.watchingForStrikes = false;
+  this.watchingForSpareBonus = false;
 }
 
 // this is called by the user
@@ -12,14 +11,17 @@ Game.prototype.roll = function(rollToBeAdded) {
     this.updateCurrentFrame();
   }
   this.currentFrame.addNewRoll(rollToBeAdded);
-  if (this.watchingForSpares) {
+
+  if (this.watchingForSpareBonus) {
     this.addBonusScoreToPreviousFrame(rollToBeAdded);
-    this.watchingForSpares = false;
+    this.watchingForSpareBonus = false;
   }
+
   console.log("current score " + this.getCurrentScore());
+
   if (this.isLastFrameDone()) {
     console.log(`Frame ${this.getFrameNumber(this.currentFrame)}: `, this.currentFrame);
-    this.checkForSpares();
+    this.checkIfRollWasSpare();
   }
 };
 
@@ -59,9 +61,9 @@ Game.prototype.getFrameIndex = function(frame) {
   return this.frames.indexOf(frame);
 }
 
-Game.prototype.checkForSpares = function() {
+Game.prototype.checkIfRollWasSpare = function() {
   if (this.currentFrame.frameTotal == 10) {
-    this.watchingForSpares = true;
+    this.watchingForSpareBonus = true;
   }
 }
 
@@ -87,8 +89,12 @@ Frame.prototype.addNewRoll = function(rollToBeAdded) {
     this.currentRollIndex = 1;
   } else {
     this.rollsArray[1] = rollToBeAdded;
-    this.frameTotal = this.rollsArray[0] + this.rollsArray[1];
     this.currentRollIndex = 0;
+    this.updateFrameTotal();
   }
   this.rollsCount++;
+}
+
+Frame.prototype.updateFrameTotal = function() {
+  this.frameTotal = this.rollsArray[0] + this.rollsArray[1];
 }

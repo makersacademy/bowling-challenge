@@ -45,12 +45,28 @@ describe("Game", function() {
     expect(game.getCurrentScore()).toEqual(10);
   });
 
-  it("scores a game with one spare in the first frame and ones for the remaining game as 29", function() {
+  it("scores a game with a 1-9 spare in the first frame and ones for the remaining game as 29", function() {
     game.roll(1);
     game.roll(9);
     for (var i = 0; i < 18; i++) {
       game.roll(1);
     }
     expect(game.getCurrentScore()).toEqual(29);
+  });
+
+  it("scores a game with a 1-9 spare in every frame as 110", function() {
+    for (var i = 0; i < 10; i++) {
+      game.roll(1);
+      game.roll(9);
+    }
+    game.roll(1);
+    expect(game.getCurrentScore()).toEqual(110);
+  });
+
+  xit("scores a perfect game as 300", function() {
+    for (var i = 0; i < 12; i++) {
+      game.roll(10);
+    }
+    expect(game.getCurrentScore()).toEqual(300);
   });
 });

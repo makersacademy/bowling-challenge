@@ -8,5 +8,9 @@ describe ('Game', function () {
     it('should have a current score', function () {
       expect(game.getCurrentScore()).toEqual(0)
     })
+
+    it('should start at frame 1', function () {
+      expect(game.getCurrentFrame()).toEqual(1)
+    })
   })
 })

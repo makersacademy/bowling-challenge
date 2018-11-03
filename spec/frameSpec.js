@@ -14,4 +14,9 @@ describe("Frame", function() {
     expect(frame.score).toEqual([5])
   })
 
+  it('should push a 2nd roll of 0 if the first roll in the frame was 10', function() {
+    frame.add(10)
+    expect(frame.score).toEqual([10, 0])
+  })
+
 });

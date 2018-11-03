@@ -15,6 +15,15 @@ BowlingGame.prototype.firstRoll = function(numberOfPins) {
   var frame = new Frame();
   this.currentFrame = frame;
   this.currentFrame.setFirstRollValue(numberOfPins);
+  if (this.frameRolls.length > 1) {
+    debugger;
+    if (this.frameBeforeLast().isStrike === true) {
+      if (this.lastFrame().isStrike === true) {
+        this.frameBeforeLast().setScore(20 + this.currentFrame.firstRollValue);
+        this.totalScore += this.frameBeforeLast().score;
+      }
+    }
+  }
   if (this.currentFrame.isStrike === true) {
     this.frameRolls.push(this.currentFrame);
     if (this.frameRolls.length > 1) {
@@ -41,7 +50,6 @@ BowlingGame.prototype.secondRoll = function(numberOfPins) {
     this.totalScore += this.currentFrame.score;
   }
   if (this.frameRolls.length > 1) {
-    debugger;
     if (this.frameBeforeLast().isStrike === true) {
       if (this.lastFrame().isStrike === undefined) {
         this.frameBeforeLast().setScore(10 + this.lastFrame().score);

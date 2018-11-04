@@ -12,14 +12,22 @@ Scorer.prototype.total = function() {
 };
 
 Scorer.prototype.scoreFrames = function() {
-  completeFrames = this.scores.length
-  if (this.scores.length % 2 === 1) {completeFrames -= 1}
-  for (i = 0; i < completeFrames; i += 2)
-    { this.frame_scores.push(this.scores[i] + this.scores[i+1]) }
+  frames = this.calculateFrames()
+  for (i = 0; i < frames * 2; i += 2)
+    { if(this.scores[i] != 10)
+      {this.frame_scores.push(this.scores[i] + this.scores[i+1]) }
+      else
+      { score = this.scoreStrike(i)
+        if (typeof score != "undefined") {this.frames_scores.push(score)}
+      }
+    };
 };
 
-sc = new Scorer
-sc.scores = [1,2]
-// console.log(this.scores)
-sc.scoreFrames()
-console.log(sc.frame_scores)
+Scorer.prototype.calculateFrames = function() {
+  return Math.floor(this.scores.length / 2)
+};
+
+Scorer.prototype.scoreStrike = function(strikePos) {
+  if ( this.scores.length >= strikePos + 3 )
+    {return this.scores[strikePos] + this.scores[strikePos+1] + this.scores[strikePos + 2] }
+};

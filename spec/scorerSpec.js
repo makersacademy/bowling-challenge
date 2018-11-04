@@ -28,10 +28,10 @@ describe("Scorer", function() {
     expect(scorer.frame_scores).toEqual([9]);
   });
 
-  // it("strikes are only calculated once two more rolls have been made", function() {
-  //   scorer.scores = [5,4,10,4]
-  //   scorer.scoreFrames()
-  //   expect(scorer.frame_scores).toEqual([9]);
-  // });
+  it("strikes are only calculated once two more rolls have been made", function() {
+    scorer.scores = [5,4,10,4]
+    scorer.scoreFrames()
+    expect(scorer.frame_scores).toEqual([9]);
+  });
 
 });

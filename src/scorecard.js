@@ -5,6 +5,7 @@ function Scorecard() {
 
 Scorecard.prototype.enterScore = function(score) {
   this.scores.push(score)
+  if (score === 10) { this.scores.push("-") }
   this.total += score
 };
 

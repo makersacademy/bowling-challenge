@@ -1,8 +1,6 @@
 var Frame = function(bowls) {
   this.bowls = bowls;
   this.frameScore = 0;
-  this.bonus = 0;
-  this.totalScore = 0;
   this.calculateScore();
 }
 
@@ -37,7 +35,7 @@ Frame.prototype.calculateScore = function(framePlusOne, framePlusTwo){
           nextBowls = framePlusOne.bowls;
         };
         for (i = 1; i === 2 || i < nextBowls.length; i++) {
-          this.bonus += nextBowls[i-1];
+          this.frameScore += nextBowls[i-1];
         }
       };
 

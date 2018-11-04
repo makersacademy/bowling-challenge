@@ -54,26 +54,22 @@ describe("Frame", function() {
 
     it("should return 19 (sum of two bowls in 2nd frame) when followed by standard frame", function() {
       strikeFrame.calculateScore(standardFrame);
-      expect(strikeFrame.bonus).toEqual(9);
-      expect(strikeFrame.totalScore).toEqual(19);
+      expect(strikeFrame.frameScore).toEqual(19);
     });
 
     it("should return 20 when followed by spare", function() {
       strikeFrame.calculateScore(spareFrame);
-      expect(strikeFrame.bonus).toEqual(10);
-      expect(strikeFrame.totalScore).toEqual(20);
+      expect(strikeFrame.frameScore).toEqual(20);
     });
 
     it("should return 30 when followed by two strikes", function(){
       strikeFrame.calculateScore(strikeFrame, strikeFrame);
-      expect(strikeFrame.bonus).toEqual(20);
-      expect(strikeFrame.totalScore).toEqual(30);
+      expect(strikeFrame.frameScore).toEqual(30);
     });
 
     it("should return 10 when followed by a gutter frame", function(){
       strikeFrame.calculateScore(gutterFrame);
-      expect(strikeFrame.bonus).toEqual(0);
-      expect(strikeFrame.totalScore).toEqual(10);
+      expect(strikeFrame.frameScore).toEqual(10);
     });
   });
 

@@ -46,11 +46,23 @@ describe ('Frame', function () {
     })
   })
 
-  describe('Calculating score', function () {
+  describe('Frame score', function () {
+    beforeEach(function () {
+      secondFrame = new Frame()
+      thirdFrame = new Frame()
+    })
+
     it('sums its bowls when there is no strike or spare', function () {
       frame.addBowl(5)
       frame.addBowl(2)
       expect(frame.getScore()).toEqual(7)
+    })
+
+    it('can calculate a spare bonus', function () {
+      frame.addBowl(5)
+      frame.addBowl(5)
+      secondFrame.addBowl(5)
+      expect(frame.getScore()).toEqual(15)
     })
   })
 })

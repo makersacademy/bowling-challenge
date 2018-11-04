@@ -4,9 +4,7 @@ function Frame() {
 }
 
 Frame.prototype.getScore = function () {
-  return this._bowls.reduce(function (total, bowl) {
-    return total + bowl
-  }, 0)
+  return this._sumOfBowls() + this._calculateBonus()
 }
 
 Frame.prototype.getBowls = function () {
@@ -26,5 +24,19 @@ Frame.prototype.isAStrike = function() {
 }
 
 Frame.prototype.isASpare = function () {
-  return this.getScore() === 10 && !this.isAStrike()
+  return this._sumOfBowls() === 10 && !this.isAStrike()
+}
+
+Frame.prototype._sumOfBowls = function () {
+  return this._bowls.reduce(function (total, bowl) {
+    return total + bowl
+  }, 0)
+}
+
+Frame.prototype._calculateBonus = function () {
+  if (this.isASpare()) {
+    return 5
+  } else {
+    return 0
+  }
 }

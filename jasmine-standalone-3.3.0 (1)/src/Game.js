@@ -21,16 +21,19 @@ function Game(){
     var score = 0;
 
     for(var i = 0; i < frames.length; i++) {
-      var frameScore = frames[i][0] + frames[i][1];
-      var isStrike = frames[i][0] === 10;
-      var isSpare = !isStrike && frameScore === 10;
+      var currentFrame = frames[i];
+      var nextFrame = frames[i+1];
+
+      var currentFrameScore = currentFrame[0] + currentFrame[1];
+      var isStrike = currentFrame[0] === 10;
+      var isSpare = !isStrike && currentFrameScore === 10;
 
       if (isStrike) {
-        score += frameScore + frames[i+1][0] + frames[i+1][1];
+        score += currentFrameScore + nextFrame[0] + nextFrame[1];
       } else if (isSpare) {
-        score += frameScore + frames[i+1][0];
+        score += currentFrameScore + nextFrame[0];
       } else {
-        score += frameScore;
+        score += currentFrameScore;
       }
     }
 

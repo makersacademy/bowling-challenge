@@ -50,22 +50,29 @@ describe ('Frame', function () {
 
   describe('Frame score', function () {
     beforeEach(function () {
-      frame.addBowl(5)
       secondFrame.addBowl(5)
     })
 
     it('sums its bowls when there is no strike or spare', function () {
+      frame.addBowl(5)
       frame.addBowl(2)
       expect(frame.getScore(secondFrame)).toEqual(7)
     })
 
     it('can calculate a spare bonus', function () {
       frame.addBowl(5)
+      frame.addBowl(5)
       expect(frame.getScore(secondFrame)).toEqual(15)
     })
 
     it('spare bonus will be 5 when next frame first roll is 5', function () {
       expect(frame._spareBonus(secondFrame)).toEqual(5)
+    })
+
+    it('can calculate a strike bonus', function () {
+      frame.addBowl(10)
+      secondFrame.addBowl(2)
+      expect(frame.getScore(secondFrame)).toEqual(17)
     })
   })
 })

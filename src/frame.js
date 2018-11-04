@@ -34,7 +34,9 @@ Frame.prototype._sumOfBowls = function () {
 }
 
 Frame.prototype._calculateBonus = function (secondFrame) {
-  if (this.isASpare()) {
+  if (this.isAStrike()) {
+    return 7
+  } else if (this.isASpare()) {
     return this._spareBonus(secondFrame)
   } else {
     return 0

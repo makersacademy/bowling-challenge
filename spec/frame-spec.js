@@ -25,6 +25,10 @@ describe ('Frame', function () {
       frame.addBowl(2)
       expect(frame.isFinished()).toBe(true)
     })
+
+    it('is not finished when it is started', function () {
+      expect(frame.isFinished()).not.toBe(true)
+    })
   })
 
   describe('Adding a bowl', function () {

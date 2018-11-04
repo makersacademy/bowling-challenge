@@ -3,8 +3,8 @@ function Frame() {
   this._score = 0
 }
 
-Frame.prototype.getScore = function () {
-  return this._sumOfBowls() + this._calculateBonus()
+Frame.prototype.getScore = function (secondFrame) {
+  return this._sumOfBowls() + this._calculateBonus(secondFrame)
 }
 
 Frame.prototype.getBowls = function () {
@@ -33,9 +33,9 @@ Frame.prototype._sumOfBowls = function () {
   }, 0)
 }
 
-Frame.prototype._calculateBonus = function () {
+Frame.prototype._calculateBonus = function (secondFrame) {
   if (this.isASpare()) {
-    return 5
+    return this._spareBonus(secondFrame)
   } else {
     return 0
   }

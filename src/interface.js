@@ -25,8 +25,12 @@ $(document).ready(function () {
   });
 
   function updateFrameText() {
-    $('#frame_number').text(game.frameNumber());
-  }
+    if(game.frameNumber() === 'Game over!') {
+      $('#frame_number').text(game.frameNumber());
+    } else {
+      $('#frame_number').text("The frame number is: " + game.frameNumber() + "/10");
+    }
+  };
 
   function frameScore() {
     frame.calculateScore(parseInt(newRoll1), parseInt(newRoll2));

@@ -15,5 +15,11 @@ describe ('Frame', function () {
     it('can store bowls', function () {
       expect(frame.getBowls()).toEqual([])
     })
+
+    it('calculates its score based on its bowls', function () {
+      frame.getBowls().push(5)
+      frame.getBowls().push(2)
+      expect(frame.getScore()).toEqual(7)
+    })
   })
 })

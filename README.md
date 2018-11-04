@@ -2,6 +2,20 @@
 
 This is a bowling scorecard application in JavaScript with the view to turn it into a web app in the future.
 
+## How to Use ##
+1. Open Terminal and clone the repository:
+```bash
+git clone https://github.com/aimeecraig/bowling-challenge.git
+```
+2. Change into the project directory:
+```bash
+cd bowling-challenge
+```
+3. Install the dependancies:
+```bash
+bundle install
+```
+
 ## Specification ##
 #### Bowling Rules ####
 

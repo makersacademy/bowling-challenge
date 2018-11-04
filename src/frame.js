@@ -40,3 +40,7 @@ Frame.prototype._calculateBonus = function () {
     return 0
   }
 }
+
+Frame.prototype._spareBonus = function (secondFrame) {
+  return secondFrame.getBowls()[0]
+}

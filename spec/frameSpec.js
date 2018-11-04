@@ -1,9 +1,14 @@
 describe("Frame", function() {
   var Frame = require("../lib/frame")
+  var Game = require("../lib/game")
   var frame;
+  var frameTwo;
+  var game;
 
   beforeEach(function() {
-    frame = new Frame
+    game = new Game;
+    frame = game.frames[0];
+    frameTwo = game.frames[1];
   });
 
   describe("total", function() {
@@ -50,7 +55,20 @@ describe("Frame", function() {
       frame.roll(5);
       frame.roll(5);
       expect(frame.bonusRolls).toEqual(1);
-    })
+    });
+    it("decreases by 1 after another roll", function() {
+      frame.roll(10);
+      frameTwo.roll(1);
+      expect(frame.bonusRolls).toEqual(1);
+    });
+  });
+
+  describe(".reduceBonus()", function() {
+    it("reduces bonusRolls by 1", function() {
+      frame.roll(10);
+      frame.reduceBonus();
+      expect(frame.bonusRolls).toEqual(1);
+    });
   });
 
   describe(".isComplete()", function() {

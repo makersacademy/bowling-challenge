@@ -7,7 +7,7 @@ function Game() {
 };
 
 Game.prototype.roll = function (pins) {
-  if (this.currentframenumber === 0) {
+  if (this.newGame() === true) {
     this.newFrame()
     this.currentframe.roll(pins)
   } else {
@@ -26,9 +26,18 @@ Game.prototype.roll = function (pins) {
   }
 }
 
+Game.prototype.newGame = function () {
+  // if (this.currentframenumber === 0) {
+  //   return true
+  // } else {
+  //   return false
+  // }
+  return (this.currentframenumber === 0) ? true : false
+}
+
 Game.prototype.newFrame = function () {
-  if (this.currentframenumber != 0) {
-    this.currentframe.finalIndexOfFrame = this.getAllRolls().length-1
+  if (this.newGame() === false) {
+    this.currentframe.setFinalIndexOfFrame(this.lastRollIndex())
   }
   this.setFrameChange()
   this.frames.push(this.currentframe)
@@ -41,22 +50,29 @@ Game.prototype.setFrameChange = function () {
 }
 
 Game.prototype.getCurrentScore = function () {
-  var realscores = this.getAllRolls().filter(function(x) { return x >= 0; });
-  return realscores.reduce(function(a, b){return a+b;})
+  // var realscores = this.getAllRolls().filter(function(x) { return x >= 0; });
+  return this.getAllRolls().reduce(function(a, b){return a+b;})
+}
+
+Game.prototype.getFrameRolls = function () {
+  return this.frames.map(frame => {
+    return frame.rolls
+})
+}
+
+Game.prototype.lastRollIndex = function () {
+  return this.getAllRolls().length - 1
 }
 
 Game.prototype.getAllRolls = function () {
-  var framerolls = this.frames.map(frame => {
-    return frame.rolls
-})
-return framerolls.reduce(function(prev, curr) {
+return this.getFrameRolls().reduce(function(prev, curr) {
   return prev.concat(curr);
 });
 }
 
 Game.prototype.getPotentialBonus = function (frame) {
-  var arr = []
-  arr.push(this.getAllRolls()[frame.finalIndexOfFrame+1])
-  arr.push(this.getAllRolls()[frame.finalIndexOfFrame+2])
-  return arr.reduce(function(a, b){return a+b;})
+  var bonus = []
+  bonus.push(this.getAllRolls()[frame.finalIndexOfFrame+1])
+  bonus.push(this.getAllRolls()[frame.finalIndexOfFrame+2])
+  return bonus.reduce(function(a, b){return a+b;})
 }

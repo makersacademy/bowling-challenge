@@ -83,7 +83,7 @@ describe('Frame', function() {
     it('raises an error when trying to roll more than 2', function() {
       frame.roll(1)
       frame.roll(9)
-      expect(frame.roll(2)).toEqual("Only 2 rolls allowed")
+      expect(frame.roll(2)).toEqual("Max. 2 rolls allowed")
     });
   });
 

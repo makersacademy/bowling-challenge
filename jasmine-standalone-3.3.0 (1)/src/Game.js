@@ -8,9 +8,10 @@ function Game(){
   this.roll = function(pins){
     rolls.push(pins)
 
+    var isBonusRoll = (frames.length === 10);
     var isStrike = (rolls[0] === 10);
-    if (isStrike) {
-      rolls.push(0); // skip second roll for strikes
+    if (isBonusRoll || isStrike) {
+      rolls.push(0); // skip second roll for strikes and bonus frame
     }
 
     var finishedFrame = (rolls.length === 2);

@@ -71,4 +71,52 @@ describe('Game', function(){
     expect(game.score()).toEqual(20);
   });
 
+  it('scores a mix of regular, spare and strikes', function(){
+    var game = new Game;
+    // frame 1
+    game.roll(1)
+    game.roll(4)
+    expect(game.score()).toEqual(5);
+
+    // frame 2
+    game.roll(4)
+    game.roll(5)
+    expect(game.score()).toEqual(14);
+
+    // frame 3
+    game.roll(6)
+    game.roll(4) // spare
+
+    // frame 4
+    game.roll(5)
+    game.roll(5) // spare
+
+    // frame 5
+    game.roll(10) // strike
+
+    // frame 6
+    game.roll(0)
+    game.roll(1)
+    expect(game.score()).toEqual(61);
+
+    // frame 7
+    game.roll(7)
+    game.roll(3) // spare
+
+    // frame 8
+    game.roll(6)
+    game.roll(4) // spare
+
+    // frame 9
+    game.roll(10) // strike
+
+    // frame 10
+    game.roll(2)
+    game.roll(8) // spare
+
+    // bonus roll because of the spare
+    game.roll(6)
+    expect(game.score()).toEqual(133);
+  });
+
 });

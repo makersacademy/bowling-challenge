@@ -14,11 +14,13 @@ $(document).ready(function () {
     if(frame.checkRolls() < 2){
       value = $(this).attr('id');
       newRoll1 = roll.getRoll(value);
+      showCurrentRoll();
       frame.addRoll();
       hideButtons();
     } else {
       value = $(this).attr('id');
       newRoll2 = roll.getRoll(value);
+      showCurrentRoll();
       frameScore();
       updateScore();
       updateFrameText();
@@ -26,6 +28,10 @@ $(document).ready(function () {
       showButtons();
     };
   });
+
+  function showCurrentRoll() {
+    $(`#roll${game.frameNumber()}`).text(roll.getRoll(value))
+  };
 
   function hideButtons() {
     findImpossibleRolls();

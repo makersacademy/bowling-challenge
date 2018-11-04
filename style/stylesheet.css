@@ -7,15 +7,33 @@ body {
   left: 10%;
   right: 10%;
   width: 80%;
+  background-color: #f9ccac;
+  color: 	#505050;
 }
 table {
   width: 100%;
+  background-color: #e0876a;
+  color: white;
 }
 
 table, th, td {
-  border: 1px solid black;
+  border: 1px solid white;
 }
 
 td {
   height: 4em;
+}
+
+button:active {
+  background-color: #e0876a;
+  border-color: none;
+  outline: none;
+}
+
+.first {
+  text-align: left;
+}
+
+.second {
+  text-align: right;
 }

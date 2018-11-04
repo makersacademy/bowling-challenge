@@ -15,4 +15,19 @@ describe("Game", function(){
       expect(game.getTotalScore()).toBe(6);
     });
   });
+
+  describe("frameNumber", function() {
+    it("starts at one", function() {
+      expect(game.frameNumber()).toBe(1)
+    });
+
+    it("tracks the frame number that the user is on", function(){
+      frame = jasmine.createSpyObj('frame', ['getCurrentScore'])
+      frame.getCurrentScore.and.callFake(function() {return 6})
+      frameScore = frame.getCurrentScore();
+
+      game.updateTotalScore(frameScore)
+      expect(game.frameNumber()).toBe(2);
+    });
+  });
 });

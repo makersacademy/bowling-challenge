@@ -8,15 +8,10 @@ var Frame = function(bowls) {
 
 
 Frame.prototype.calculateScore = function(framePlusOne, framePlusTwo){
-    if(this.bowls.length > 2) {
-     throw new Error('Cannot have more than two bowls in a standard frame');
-    };
+
+    this._validFrameChecks();
 
     var sum = sumArr(this.bowls);
-
-    if(sum > 10) {
-     throw new Error('Cannot knock down more than 10 pins in a single frame');
-    };
 
     this.frameScore = sum;
 
@@ -45,6 +40,18 @@ Frame.prototype.calculateScore = function(framePlusOne, framePlusTwo){
 };
 
 // ************* Private Functions ***********
+
+Frame.prototype._validFrameChecks = function(){
+  if(this.bowls.length > 2) {
+   throw new Error('Cannot have more than two bowls in a standard frame');
+  };
+
+  var pinTotal = sumArr(this.bowls);
+
+  if(pinTotal > 10) {
+   throw new Error('Cannot knock down more than 10 pins in a single frame');
+  };
+}
 
 Frame.prototype._isStrike = function(){
   return this.bowls[0] === 10;

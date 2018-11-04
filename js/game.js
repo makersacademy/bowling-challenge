@@ -70,9 +70,42 @@ Game.prototype.isFrameOpen = function (frame) {
   return frame.isFrameOpen()
 }
 
-Game.prototype.getPotentialBonus = function (frame) {
-  var bonus = []
-  bonus.push(this.getAllRolls()[frame.finalIndexOfFrame+1])
-  bonus.push(this.getAllRolls()[frame.finalIndexOfFrame+2])
-  return bonus.reduce(function(a, b){return a+b;})
+Game.prototype.getFrameBonus = function (frame) {
+  // console.log(this.getFrameBonusValues(frame))
+  return this.getFrameBonusValues(frame).reduce(function(a, b){return a+b;})
+}
+
+Game.prototype.getFrameBonusValues = function (frame) {
+  var bonus = [0,0]
+  console.log("plus 1")
+  console.log(isNaN(frame.finalIndexOfFrame+1))
+  console.log("plus 2")
+  console.log(isNaN(frame.finalIndexOfFrame+2))
+  if (frame.hasSpare()) {
+    bonus[0] = (this.getAllRolls()[frame.finalIndexOfFrame+1])
+    bonus[1] = 0
+  } else if (frame.hasStrike()) {
+    bonus[0] = (this.getAllRolls()[frame.finalIndexOfFrame+1])
+    bonus[1] = (this.getAllRolls()[frame.finalIndexOfFrame+2])
+  }
+  // else {
+  // bonus.push(0)
+  // }
+
+  return bonus
+}
+
+Game.prototype.calculateFrameTotalScore = function (frame) {
+  return  frame.getPinsScore() + this.getFrameBonus(frame)
+}
+
+Game.prototype.calculateGameTotalScore = function (frame) {
+  // console.log(this.getCurrentTotalScoreValues())
+  return this.getCurrentTotalScoreValues().reduce(function(a, b){return a+b;})
+}
+
+Game.prototype.getCurrentTotalScoreValues = function () {
+  return this.frames.map(frame => {
+    return this.calculateFrameTotalScore(frame)
+  })
 }

@@ -62,23 +62,89 @@ describe('Game', function() {
       game.enterRoll(10)
       game.enterRoll(2)
       game.enterRoll(3)
-    expect(game.getPotentialBonus(game.frames[0])).toEqual(5);
+    expect(game.getFrameBonus(game.frames[0])).toEqual(5);
   });
 
   it('calculates the bonus for frame 1 as 5 (frame 1 as a strike)', function() {
       game.enterRoll(10)
       game.enterRoll(10)
       game.enterRoll(3)
-    expect(game.getPotentialBonus(game.frames[0])).toEqual(13);
+    expect(game.getFrameBonus(game.frames[0])).toEqual(13);
   });
 
-  it('calculates the bonus for frame 1 as 5 (frame 1 as a strike)', function() {
+  it('calculates the bonus for frame 1 as 5 (frame 1 as a spare)', function() {
       game.enterRoll(1)
       game.enterRoll(9)
       game.enterRoll(3)
       game.enterRoll(3)
-    expect(game.getPotentialBonus(game.frames[0])).toEqual(6);
+    expect(game.getFrameBonus(game.frames[0])).toEqual(3);
   });
+
+  it('calculates the total for frame 1 as 5 (frame 1 as a spare)', function() {
+      game.enterRoll(1)
+      game.enterRoll(9)
+      game.enterRoll(3)
+      game.enterRoll(3)
+    expect(game.calculateFrameTotalScore(game.frames[0])).toEqual(13);
+  });
+
+  it('calculates the bonus for frame 1 as 5 (frame 1 as a strike)', function() {
+      game.enterRoll(10)
+      game.enterRoll(10)
+      game.enterRoll(3)
+    expect(game.calculateFrameTotalScore(game.frames[0])).toEqual(23);
+  });
+
+  it('gets current pin score after 3 rolls including strikes', function() {
+    game.enterRoll(10)
+    for (var i = 0; i < 2; i++) {
+      game.enterRoll(2)
+    }
+    game.enterRoll(5)
+    expect(game.calculateGameTotalScore()).toEqual(23);
+  });
+
+  it('gets current pin score after 6 rolls including strikes', function() {
+    game.enterRoll(10)
+    game.enterRoll(5)
+    game.enterRoll(4)
+    game.enterRoll(10)
+    game.enterRoll(5)
+    game.enterRoll(4)
+    // game.enterRoll(5)
+    expect(game.calculateGameTotalScore()).toEqual(56);
+  });
+
+  it('gets current pin score after 6 rolls including spare', function() {
+    game.enterRoll(4)
+    game.enterRoll(6)
+    game.enterRoll(5)
+    game.enterRoll(3)
+    game.enterRoll(5)
+    game.enterRoll(2)
+    // game.enterRoll(3)
+    // game.enterRoll(3)
+    expect(game.calculateGameTotalScore()).toEqual(30);
+  });
+
+  it('gets current pin score after 6 rolls including spare', function() {
+    game.enterRoll(4)
+    game.enterRoll(6)
+    game.enterRoll(10)
+    game.enterRoll(3)
+    game.enterRoll(2)
+    game.enterRoll(2)
+    // game.enterRoll(3)
+    // game.enterRoll(3)
+    expect(game.calculateGameTotalScore()).toEqual(42);
+  });
+
+  // it('gets current pin score after 5 frames - all strikes', function() {
+  //   for (var i = 0; i < 5; i++) {
+  //     game.enterRoll(10)
+  //   }
+  //   expect(game.calculateGameTotalScore()).toEqual(150);
+  // });
 
   describe('frames < 10', function() {
 

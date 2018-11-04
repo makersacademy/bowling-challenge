@@ -2,7 +2,6 @@
 
 function Game() {
   this._frames = []
-  this._currentScore = 0
   this._currentFrame = 1
   this._finished = false
 }
@@ -12,7 +11,9 @@ Game.prototype.getFrames = function () {
 }
 
 Game.prototype.getCurrentScore = function () {
-  return this._currentScore
+  return this._frames.reduce(function (total, frame) {
+    return total + bowl
+  }, 0)
 }
 
 Game.prototype.getCurrentFrame = function () {
@@ -23,15 +24,8 @@ Game.prototype.startNextFrame = function () {
   this._currentFrame++
 }
 
-Game.prototype.addFrame = function(frame) {
-  this._currentScore += frame.getScore()
-  if (!this.isFinished()) {
-    this.startNextFrame()
-  }
-}
-
 Game.prototype.isFinished = function() {
-  if (this.getCurrentFrame() >= 10) {
+  if (this.getFrames().length >= 10) {
     return this._finished = true
   }
 }

@@ -1,9 +1,11 @@
 describe("Frame", function() {
 
-  standardFrame = new Frame([4,5]);
-  spareFrame = new Frame([5,5]);
-  strikeFrame = new Frame([10]);
-  gutterFrame = new Frame([]);
+  beforeEach(function(){
+    standardFrame = new Frame([4,5]);
+    spareFrame = new Frame([5,5]);
+    strikeFrame = new Frame([10]);
+    gutterFrame = new Frame([]);
+  });
 
   it("totals the score from the two bowls in a single frame.", function() {
 
@@ -23,31 +25,59 @@ describe("Frame", function() {
     expect( function(){ new Frame([1,1,3]); } ).toThrowError('Cannot have more than two bowls in a standard frame');
   });
 
-  it("should calculate the the bonus and total score for a spare", function() {
-    spareFrame.calculateScore(standardFrame)
-    expect(spareFrame.bonus).toEqual(4);
-    expect(spareFrame.totalScore).toEqual(14);
-    spareFrame.calculateScore(strikeFrame);
-    expect(spareFrame.bonus).toEqual(10);
-    expect(spareFrame.totalScore).toEqual(20);
-    spareFrame.calculateScore(gutterFrame)
-    expect(spareFrame.bonus).toEqual(0)
-    expect(spareFrame.totalScore).toEqual(10)
+  describe("Caclulating Score for Spares", function(){
+
+    it("should return 14 when followed by standard frame", function() {
+      spareFrame.calculateScore(standardFrame);
+      expect(spareFrame.bonus).toEqual(4);
+      expect(spareFrame.totalScore).toEqual(14);
+    });
+
+    it("should return 15 (10 + first bowl of 2nd frame) when followed by another spare", function() {
+      spareFrame.calculateScore(spareFrame);
+      expect(spareFrame.bonus).toEqual(5);
+      expect(spareFrame.totalScore).toEqual(15);
+    });
+
+    it("should return 20 when followed by a strike", function(){
+      spareFrame.calculateScore(strikeFrame);
+      expect(spareFrame.bonus).toEqual(10);
+      expect(spareFrame.totalScore).toEqual(20);
+    });
+
+    it("should return 10 when followed by a gutter frame", function(){
+      spareFrame.calculateScore(gutterFrame);
+      expect(spareFrame.bonus).toEqual(0);
+      expect(spareFrame.totalScore).toEqual(10);
+    });
   });
 
-  it("should calculate the the bonus and total score for a strike", function() {
-    strikeFrame.calculateScore(standardFrame, standardFrame)
-    expect(strikeFrame.bonus).toEqual(9)
-    expect(strikeFrame.totalScore).toEqual(19)
-    strikeFrame.calculateScore(strikeFrame, strikeFrame)
-    expect(strikeFrame.bonus).toEqual(20)
-    expect(strikeFrame.totalScore).toEqual(30)
-    strikeFrame.calculateScore(gutterFrame, gutterFrame)
-    expect(strikeFrame.bonus).toEqual(0)
-    expect(strikeFrame.totalScore).toEqual(10)
+
+  describe("Caclulating Score for strikes", function(){
+
+    it("should return 19 (sum of two bowls in 2nd frame) when followed by standard frame", function() {
+      strikeFrame.calculateScore(standardFrame);
+      expect(strikeFrame.bonus).toEqual(9);
+      expect(strikeFrame.totalScore).toEqual(19);
+    });
+
+    it("should return 20 when followed by spare", function() {
+      strikeFrame.calculateScore(spareFrame);
+      expect(strikeFrame.bonus).toEqual(10);
+      expect(strikeFrame.totalScore).toEqual(20);
+    });
+
+    it("should return 30 when followed by two strikes", function(){
+      strikeFrame.calculateScore(strikeFrame, strikeFrame);
+      expect(strikeFrame.bonus).toEqual(20);
+      expect(strikeFrame.totalScore).toEqual(30);
+    });
+
+    it("should return 10 when followed by a gutter frame", function(){
+      strikeFrame.calculateScore(gutterFrame);
+      expect(strikeFrame.bonus).toEqual(0);
+      expect(strikeFrame.totalScore).toEqual(10);
+    });
   });
-
-
-
 
 });

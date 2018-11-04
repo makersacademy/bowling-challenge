@@ -23,15 +23,45 @@ describe("Scorer", function() {
   });
 
   it("strikes are only calculated once two more rolls have been made", function() {
-    scorer.scores = [5,4,10]
+    scorer.scores = [5,4,10,'-']
     scorer.scoreFrames()
     expect(scorer.frame_scores).toEqual([9]);
   });
 
   it("strikes are only calculated once two more rolls have been made", function() {
-    scorer.scores = [5,4,10,4]
+    scorer.scores = [5,4,10,'-',0]
     scorer.scoreFrames()
     expect(scorer.frame_scores).toEqual([9]);
+  });
+
+  it("strikes score 10 plus the addition of the next two rolls", function() {
+    scorer.scores = [5,4,10,'-',10,'-',10]
+    scorer.scoreFrames()
+    expect(scorer.frame_scores).toEqual([9,30]);
+  });
+
+  it("strikes score 10 plus the addition of the next two rolls", function() {
+    scorer.scores = [5,4,10,'-',2,0,10]
+    scorer.scoreFrames()
+    expect(scorer.frame_scores).toEqual([9,12,2]);
+  });
+
+  it("spares are only calculated once one more roll has been made", function() {
+    scorer.scores = [5,5]
+    scorer.scoreFrames()
+    expect(scorer.frame_scores).toEqual([]);
+  });
+
+  it("spares score 10 plus the addition of the next roll", function() {
+    scorer.scores = [6,4,2,1]
+    scorer.scoreFrames()
+    expect(scorer.frame_scores).toEqual([12,3]);
+  });
+
+  it("spares score 10 plus the addition of the next roll", function() {
+    scorer.scores = [6,4,7,3]
+    scorer.scoreFrames()
+    expect(scorer.frame_scores).toEqual([17]);
   });
 
 });

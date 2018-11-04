@@ -14,13 +14,13 @@ Scorer.prototype.total = function() {
 Scorer.prototype.scoreFrames = function() {
   frames = this.calculateFrames()
   for (i = 0; i < frames * 2; i += 2)
-    { if(this.scores[i] != 10)
-      {this.frame_scores.push(this.scores[i] + this.scores[i+1]) }
-      else
-      { score = this.scoreStrike(i)
-        if (typeof score != "undefined") {this.frames_scores.push(score)}
-      }
-    };
+    { combined_score = this.scores[i] + this.scores[i+1]
+    if(this.scores[i] === 10) {
+      score = this.scoreStrike(i)  }
+    else if (combined_score === 10) { score = this.scoreSpare(i) }
+    else { score = combined_score }
+    if (typeof score != "undefined" && score === score) {this.frame_scores.push(score) }
+  };
 };
 
 Scorer.prototype.calculateFrames = function() {
@@ -28,6 +28,22 @@ Scorer.prototype.calculateFrames = function() {
 };
 
 Scorer.prototype.scoreStrike = function(strikePos) {
-  if ( this.scores.length >= strikePos + 3 )
-    {return this.scores[strikePos] + this.scores[strikePos+1] + this.scores[strikePos + 2] }
+  remainingScores = this.scores.slice(strikePos + 1, this.scores.length)
+  filteredScores = remainingScores.filter(this._isScore)
+  if ( filteredScores.length >= 2 )
+    { return this.scores[strikePos] + filteredScores[0] + filteredScores[1] }
 };
+
+Scorer.prototype.scoreSpare = function(spareFramePos) {
+  if ( this.scores.length >= spareFramePos + 2 )
+    { return 10 + this.scores[spareFramePos + 2] }
+};
+
+Scorer.prototype._isScore = function(char) {
+  return char != "-"
+}
+
+sc = new Scorer
+sc.scores = [5,5]
+sc.scoreFrames()
+console.log(sc.frame_scores)

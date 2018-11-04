@@ -15,9 +15,14 @@ describe ('Frame', function () {
     })
 
     it('calculates its score based on its bowls', function () {
-      frame.getBowls().push(5)
-      frame.getBowls().push(2)
+      frame.addBowl(5)
+      frame.addBowl(2)
       expect(frame.getScore()).toEqual(7)
+    })
+
+    it('can add a bowl', function () {
+      frame.addBowl(5)
+      expect(frame.getBowls()).toEqual([5])
     })
   })
 })

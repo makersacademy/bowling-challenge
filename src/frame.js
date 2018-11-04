@@ -13,3 +13,7 @@ Frame.prototype.getScore = function () {
 Frame.prototype.getBowls = function () {
   return this._bowls
 }
+
+Frame.prototype.addBowl = function (pins) {
+  this.getBowls().push(pins)
+}

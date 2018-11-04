@@ -14,12 +14,6 @@ describe ('Frame', function () {
       expect(frame.getBowls()).toEqual([])
     })
 
-    it('calculates its score based on its bowls', function () {
-      frame.addBowl(5)
-      frame.addBowl(2)
-      expect(frame.getScore()).toEqual(7)
-    })
-
     it('is finished when two bowls are played', function () {
       frame.addBowl(5)
       frame.addBowl(2)
@@ -34,12 +28,18 @@ describe ('Frame', function () {
       frame.addBowl(10)
       expect(frame.isFinished()).toBe(true)
     })
-  })
 
-  describe('Adding a bowl', function () {
-    it("updates the frame's bowls", function () {
+    it("adds a bowl to update its bowls", function () {
       frame.addBowl(5)
       expect(frame.getBowls()).toEqual([5])
+    })
+  })
+
+  describe('Calculating score', function () {
+    it('sums its bowls when there is no strike or spare', function () {
+      frame.addBowl(5)
+      frame.addBowl(2)
+      expect(frame.getScore()).toEqual(7)
     })
   })
 })

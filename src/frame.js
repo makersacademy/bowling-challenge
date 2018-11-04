@@ -4,10 +4,9 @@ function Frame() {
 }
 
 Frame.prototype.getScore = function () {
-  var score = this._bowls.reduce(function (total, bowl) {
+  return this._bowls.reduce(function (total, bowl) {
     return total + bowl
   }, 0)
-  return score
 }
 
 Frame.prototype.getBowls = function () {

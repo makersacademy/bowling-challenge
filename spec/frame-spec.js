@@ -29,6 +29,11 @@ describe ('Frame', function () {
     it('is not finished when it is started', function () {
       expect(frame.isFinished()).not.toBe(true)
     })
+
+    it('is finished when a strike is played', function () {
+      frame.addBowl(10)
+      expect(frame.isFinished()).toBe(true)
+    })
   })
 
   describe('Adding a bowl', function () {

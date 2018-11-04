@@ -19,5 +19,5 @@ Frame.prototype.addBowl = function (pins) {
 }
 
 Frame.prototype.isFinished = function () {
-  return this._bowls.length > 1
+  return this._bowls.length > 1 || this._bowls.includes(10)
 }

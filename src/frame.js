@@ -1,6 +1,6 @@
 var Frame = function(bowls) {
   this.bowls = bowls;
-  this.frameScore = 0;
+  this.frameScore;
   this.calculateScore();
 }
 
@@ -8,29 +8,32 @@ var Frame = function(bowls) {
 
 
 Frame.prototype.calculateScore = function(framePlusOne, framePlusTwo){
+  // this._validFrameChecks();
+  var pinSum = sumArr(this.bowls);
 
-    this._validFrameChecks();
+  this.frameScore = pinSum;
 
-    var sum = sumArr(this.bowls);
-
-    this.frameScore = sum;
-
-    if (typeof framePlusOne != 'undefined' &&  framePlusOne.bowls.length > 0) {
-      if (this._isSpare()) {
-        this.frameScore += framePlusOne.bowls[0];
-      };
-      if (this._isStrike()) {
-        var nextBowls;
-        if (framePlusTwo != null) {
-          nextBowls = framePlusOne.bowls.concat(framePlusTwo.bowls);
-        } else {
-          nextBowls = framePlusOne.bowls;
-        };
-        for (i = 1; i === 2 || i < nextBowls.length; i++) {
-          this.frameScore += nextBowls[i-1];
-        }
-      }
+  if (typeof framePlusOne != 'undefined' &&  framePlusOne.bowls.length > 0) {
+    if (this._isSpare()) {
+      this.frameScore += framePlusOne.bowls[0];
     };
+    if (this._isStrike()) {
+      var nextBowls;
+      if (framePlusTwo != null) {
+        nextBowls = framePlusOne.bowls.concat(framePlusTwo.bowls);
+      } else {
+        nextBowls = framePlusOne.bowls;
+      };
+      for (i = 1; i <= 2 ; i++) {
+        console.log(i);
+        console.log(nextBowls);
+        this.frameScore += nextBowls[i-1];
+        console.log(this.frameScore);
+      };
+
+
+    };
+  };
 };
 
 // ************* Private Functions ***********

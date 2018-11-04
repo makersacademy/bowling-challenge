@@ -13,7 +13,7 @@ Game.prototype.generateTotalScore = function() {
   var total = 0;
 
   this.frames.forEach(function(frame) {
-    total += frame.frameScore;
+    total += frame.totalScore();
   });
 
   this.gameScore = total;

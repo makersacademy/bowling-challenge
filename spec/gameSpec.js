@@ -2,12 +2,7 @@ describe("Game", function() {
 
   beforeEach(function(){
     game = new Game();
-
-    frame = jasmine.createSpyObj('standardFrame', ['bowls', 'totalScore']);
-    frame.totalScore.and.returnValue(9);
-
-    standardFrame = new Frame([4,5]);
-
+    frame = jasmine.createSpyObj('frame', ['totalScore']);
   });
 
   it("can add a frame to the frames array", function() {
@@ -16,12 +11,11 @@ describe("Game", function() {
   });
 
   it("can return the totalscore for the game", function() {
-    game.addFrame(standardFrame);
-    game.addFrame(standardFrame);
-
+    game.addFrame(frame);
+    game.addFrame(frame);
+    frame.totalScore.and.returnValue(9);
     game.generateTotalScore();
     expect(game.gameScore).toEqual(18);
-    // expect(game.gameScore).toEqual(18);
   });
 
 });

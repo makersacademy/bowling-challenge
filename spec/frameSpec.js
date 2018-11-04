@@ -29,26 +29,23 @@ describe("Frame", function() {
 
     it("should return 14 when followed by standard frame", function() {
       spareFrame.calculateScore(standardFrame);
-      expect(spareFrame.bonus).toEqual(4);
-      expect(spareFrame.totalScore).toEqual(14);
+      expect(spareFrame.frameScore).toEqual(14);
     });
 
     it("should return 15 (10 + first bowl of 2nd frame) when followed by another spare", function() {
       spareFrame.calculateScore(spareFrame);
-      expect(spareFrame.bonus).toEqual(5);
-      expect(spareFrame.totalScore).toEqual(15);
+      expect(spareFrame.frameScore).toEqual(15);
     });
 
     it("should return 20 when followed by a strike", function(){
       spareFrame.calculateScore(strikeFrame);
-      expect(spareFrame.bonus).toEqual(10);
-      expect(spareFrame.totalScore).toEqual(20);
+      expect(spareFrame.frameScore).toEqual(20);
     });
 
     it("should return 10 when followed by a gutter frame", function(){
       spareFrame.calculateScore(gutterFrame);
-      expect(spareFrame.bonus).toEqual(0);
-      expect(spareFrame.totalScore).toEqual(10);
+
+      expect(spareFrame.frameScore).toEqual(10);
     });
   });
 

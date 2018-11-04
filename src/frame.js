@@ -23,21 +23,13 @@ Frame.prototype.calculateScore = function(framePlusOne, framePlusTwo){
     this.frameScore = sum;
 
     if (this._isSpare()) {
-      if (typeof framePlusOne === 'undefined') {
-        this.bonus = 0;
-      } else if (framePlusOne.bowls.length === 0) {
-        this.bonus = 0;
-      } else {
-        this.bonus = framePlusOne.bowls[0];
+      if (typeof framePlusOne != 'undefined' &&  framePlusOne.bowls.length > 0) {
+        this.frameScore += framePlusOne.bowls[0];
       }
     };
 
     if (this._isStrike()) {
-      if (typeof framePlusOne === 'undefined') {
-        this.bonus = 0;
-      } else if (framePlusOne.bowls.length === 0) {
-        this.bonus = 0;
-      } else{
+      if (typeof framePlusOne != 'undefined' &&  framePlusOne.bowls.length > 0) {
         var nextBowls;
         if (framePlusTwo != null) {
           nextBowls = framePlusOne.bowls.concat(framePlusTwo.bowls);

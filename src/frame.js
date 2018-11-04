@@ -31,7 +31,6 @@ Frame.prototype.calculateScore = function(framePlusOne, framePlusTwo){
         }
       }
     };
-    this._totalScores();
 };
 
 // ************* Private Functions ***********
@@ -55,10 +54,6 @@ Frame.prototype._isStrike = function(){
 Frame.prototype._isSpare = function(){
   return this.bowls[0] < 10 && sumArr(this.bowls) === 10;
 }
-
-Frame.prototype._totalScores = function(){
-  this.totalScore = this.frameScore + this.bonus;
-};
 
 // ********* Utility Functions *********
 

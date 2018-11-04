@@ -3,8 +3,6 @@ describe("Scorecard", function () {
 
   beforeEach(function() {
     scorecard = new Scorecard()
-    frame1 = new Frame()
-    frame2 = new Frame()
   });
 
   it('should default with no frames to score', function() {
@@ -12,38 +10,31 @@ describe("Scorecard", function () {
   });
 
   it('should add a frame to frames', function() {
-    frame1.add(3)
-    frame1.add(4)
-    scorecard.add(frame1.score)
-    expect(scorecard.frames).toEqual([frame1.score])
+    scorecard.add(3)
+    scorecard.add(4)
+    expect(scorecard.frames).toEqual([3, 4])
   });
 
   it('should show the sum of the first frame', function () {
-    frame1.add(3)
-    frame1.add(4)
-    scorecard.add(frame1.score)
+    scorecard.add(3)
+    scorecard.add(4)
     scorecard.sum()
     expect(scorecard.score).toEqual(7)
   });
 
   it('should show the sum of all frames', function () {
-    frame1.add(3)
-    frame1.add(4)
-    scorecard.add(frame1.score)
-    frame2.add(3)
-    frame2.add(4)
-    scorecard.add(frame2.score)
+    scorecard.add(3)
+    scorecard.add(4)
+    scorecard.add(3)
+    scorecard.add(4)
     scorecard.sum()
     expect(scorecard.score).toEqual(14)
   });
 
   it('should not show the sum of all frames if the last frame was a strike', function () {
-    frame1.add(3)
-    frame1.add(4)
-    scorecard.add(frame1.score)
-    frame2.add(10)
-    scorecard.add(frame2.score)
-    console.log(scorecard.frames)
+    scorecard.add(3)
+    scorecard.add(4)
+    scorecard.add(10)
     scorecard.sum()
     expect(scorecard.score).toEqual(7)
   })

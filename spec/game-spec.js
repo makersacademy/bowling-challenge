@@ -42,7 +42,6 @@ describe ('Game', function () {
   })
 
   describe ('Finishing a game', function() {
-
     beforeEach(function () {
       for(i = 0; i < 8; i++) {
         game.addFrame(frame)

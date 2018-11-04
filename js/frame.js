@@ -5,8 +5,7 @@ function Frame (framenumber)
   this.MAXIMUM_PINS = 10
   this.REGULAR_FRAMESIZE = 2
   this.GUTTER_FRAME = 0
-  this.BLANK_AFTER_STRIKE = -1
-  this.potentialbonus = [0,0]
+  this.finalIndexOfFrame
 }
 
 Frame.prototype.getrolls = function () {
@@ -14,10 +13,10 @@ Frame.prototype.getrolls = function () {
 }
 
 Frame.prototype.roll = function (pins) {
-  if (this.isFrameOpen() === true ) {
+  if (this.isFrameOpen() === true  ) {
     this.rolls.push(pins)
     if (pins === this.MAXIMUM_PINS) {
-      this.rolls.push(this.BLANK_AFTER_STRIKE)
+      // this.rolls.push(this.BLANK_AFTER_STRIKE)
     }
   }
   else {
@@ -26,8 +25,7 @@ Frame.prototype.roll = function (pins) {
 }
 
 Frame.prototype.isFrameOpen = function () {
-  // console.log(this.getFrameNumber())
-  if (this.getFrameSize() === this.REGULAR_FRAMESIZE) {
+  if (this.hasStrike() === true || this.getFrameSize() === this.REGULAR_FRAMESIZE) {
     return false
   } else {
     return true
@@ -57,6 +55,18 @@ if (this.hasStrike() === false && this.getPinsScore() === this.MAXIMUM_PINS) {
 } else {
   return false
 }
+}
+
+Frame.prototype.isValidRoll = function (pins) {
+  if (this.getFrameSize() > 0) {
+    if (this.getPinsScore() + pins > this.MAXIMUM_PINS){
+      return false
+    } else {
+      return true
+    }
+  } else {
+    return true
+  }
 }
 
 Frame.prototype.getFrameNumber = function () {

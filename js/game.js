@@ -1,5 +1,6 @@
 function Game() {
   this.currentframenumber = 0
+  this.previousframe
   this.currentframe
   this.frames = []
   this.MAXIMUMFRAMES = 10
@@ -10,7 +11,7 @@ Game.prototype.roll = function (pins) {
     this.newFrame()
     this.currentframe.roll(pins)
   } else {
-    if (this.currentframe.isFrameOpen() === true) {
+    if (this.currentframe.isFrameOpen() === true && this.currentframe.isValidRoll(pins) === true) {
       this.currentframe.roll(pins)
     }
     else
@@ -22,20 +23,22 @@ Game.prototype.roll = function (pins) {
         this.currentframe.roll(pins)
       }
     }
-    // console.log(this.currentframe.framenumber)
   }
 }
 
 Game.prototype.newFrame = function () {
-  this.currentframenumber += 1
-  this.currentframe = new Frame(this.currentframenumber)
+  if (this.currentframenumber != 0) {
+    this.currentframe.finalIndexOfFrame = this.getAllRolls().length-1
+  }
+  this.setFrameChange()
   this.frames.push(this.currentframe)
-
 }
 
-// Game.prototype.getCurrentFrameNumber = function () {
-//   return this.frames.length
-// }
+Game.prototype.setFrameChange = function () {
+  this.currentframenumber += 1
+  this.previousframe = this.currentframe
+  this.currentframe = new Frame(this.currentframenumber)
+}
 
 Game.prototype.getCurrentScore = function () {
   var realscores = this.getAllRolls().filter(function(x) { return x >= 0; });
@@ -50,16 +53,10 @@ return framerolls.reduce(function(prev, curr) {
   return prev.concat(curr);
 });
 }
-// Game.prototype.getFrameBowlIndexes = function (frame) {
-//   return [(frame.framenumber * 2)-1, frame.framenumber * 2]
-// }
 
-Game.prototype.setPotentialBonus_1 = function (frame, pins) {
-  frame.potentialbonus[0] = pins
-
-}
-
-Game.prototype.getPotentialBonus_1 = function (frame) {
-  return frame.potentialbonus
-
+Game.prototype.getPotentialBonus = function (frame) {
+  var arr = []
+  arr.push(this.getAllRolls()[frame.finalIndexOfFrame+1])
+  arr.push(this.getAllRolls()[frame.finalIndexOfFrame+2])
+  return arr.reduce(function(a, b){return a+b;})
 }

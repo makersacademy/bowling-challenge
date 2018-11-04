@@ -42,6 +42,44 @@ describe('Game', function() {
     expect(game.getCurrentScore()).toEqual(14);
   });
 
+  it('final frame pin index of previous frame is 1 after 3 rolls - no strikes', function() {
+    for (var i = 0; i < 3; i++) {
+      game.roll(2)
+    }
+    // console.log(game.previousframe)
+    expect(game.previousframe.finalIndexOfFrame).toEqual(1);
+  });
+
+  it('final frame pin index of previous frame is 0 after 3 rolls - 1 strike', function() {
+      game.roll(10)
+      game.roll(1)
+      game.roll(1)
+    // console.log(game.previousframe)
+    expect(game.previousframe.finalIndexOfFrame).toEqual(0);
+  });
+
+  it('calculates the bonus for frame 1 as 5 (frame 1 as a strike)', function() {
+      game.roll(10)
+      game.roll(2)
+      game.roll(3)
+    expect(game.getPotentialBonus(game.frames[0])).toEqual(5);
+  });
+
+  it('calculates the bonus for frame 1 as 5 (frame 1 as a strike)', function() {
+      game.roll(10)
+      game.roll(10)
+      game.roll(3)
+    expect(game.getPotentialBonus(game.frames[0])).toEqual(13);
+  });
+
+  it('calculates the bonus for frame 1 as 5 (frame 1 as a strike)', function() {
+      game.roll(1)
+      game.roll(9)
+      game.roll(3)
+      game.roll(3)
+    expect(game.getPotentialBonus(game.frames[0])).toEqual(6);
+  });
+
   describe('frames < 10', function() {
 
     it('after 3 rolls current frame should be 2', function() {
@@ -70,10 +108,9 @@ describe('Game', function() {
         game.roll(2)
         game.roll(3)
 
-      expect(game.getAllRolls()).toEqual([10, -1, 2, 3]);
+      expect(game.getAllRolls()).toEqual([10, 2, 3]);
     });
   });
-
 
   describe('frames = 10', function() {
 

@@ -33,6 +33,28 @@ describe('Frame', function() {
       expect(frame.getFrameSize()).toEqual(2);
     });
 
+    // it('sets the final roll of frame index to 1', function() {
+    //   frame.roll(1)
+    //   frame.roll(9)
+    //   expect(frame.finalIndexOfFrame).toEqual(1);
+    // });
+    //
+    // it('sets the final roll of frame index to 0', function() {
+    //   frame.roll(10)
+    //   // frame.roll(9)
+    //   expect(frame.finalIndexOfFrame).toEqual(0);
+    // });
+
+    it('roll is invalid', function() {
+      frame.roll(5)
+      expect(frame.isValidRoll(6)).toEqual(false);
+    });
+
+    it('roll is valid', function() {
+      frame.roll(5)
+      expect(frame.isValidRoll(5)).toEqual(true);
+    });
+
     it('closes frame', function() {
       frame.roll(1)
       frame.roll(9)
@@ -50,8 +72,11 @@ describe('Frame', function() {
       expect(frame.hasSpare()).toEqual(true);
     });
 
-    it('sets the second roll to 0 then a strike', function () {
+    it('frame not open when strike', function () {
       frame.roll(10)
+      // console.log(frame.hasStrike())
+      // console.log(frame.getFrameSize())
+      // console.log(frame.isFrameOpen())
       expect(frame.isFrameOpen()).toEqual(false)
     })
 

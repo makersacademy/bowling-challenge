@@ -6,24 +6,19 @@ function Game() {
   this.MAXIMUMFRAMES = 10
 };
 
-Game.prototype.roll = function (pins) {
-  if (this.newGame() === true) {
-    this.newFrame()
-    this.currentframe.roll(pins)
-  } else {
-    if (this.currentframe.isFrameOpen() === true && this.currentframe.isValidRoll(pins) === true) {
-      this.currentframe.roll(pins)
-    }
-    else
-    {
-      if (this.currentframenumber === 10) {
+Game.prototype.enterRoll = function (pins) {
+  if (this.isLastFrame()) {
         return "10 frames already"
-      } else {
-        this.newFrame()
-        this.currentframe.roll(pins)
-      }
-    }
   }
+  if (this.newGame() || !this.isFrameOpen(this.currentframe)) {
+    this.newFrame()
+  }
+  this.frameRoll(this.currentframe, pins)
+
+}
+
+Game.prototype.frameRoll = function (frame, pins) {
+  frame.roll(pins)
 }
 
 Game.prototype.newGame = function () {
@@ -32,7 +27,7 @@ Game.prototype.newGame = function () {
 
 Game.prototype.newFrame = function () {
   if (this.newGame() === false) {
-    this.currentframe.setFinalIndexOfFrame(this.lastRollIndex())
+    this.setFinalIndexOfFrame(this.currentframe, this.lastRollIndex())
   }
   this.setFrameChange()
   this.frames.push(this.currentframe)
@@ -43,15 +38,18 @@ Game.prototype.setFrameChange = function () {
   this.previousframe = this.currentframe
   this.currentframe = new Frame(this.currentframenumber)
 }
+Game.prototype.setFinalIndexOfFrame = function(frame, index) {
+  frame.setFinalIndexOfFrame(index)
+}
 
-Game.prototype.getCurrentScore = function () {
+Game.prototype.getCurrentPinsScore = function () {
   return this.getAllRolls().reduce(function(a, b){return a+b;})
 }
 
 Game.prototype.getFrameRolls = function () {
   return this.frames.map(frame => {
     return frame.rolls
-})
+  })
 }
 
 Game.prototype.lastRollIndex = function () {
@@ -62,6 +60,14 @@ Game.prototype.getAllRolls = function () {
 return this.getFrameRolls().reduce(function(prev, curr) {
   return prev.concat(curr);
 });
+}
+
+Game.prototype.isLastFrame = function () {
+  return this.currentframenumber === this.MAXIMUMFRAMES
+}
+
+Game.prototype.isFrameOpen = function (frame) {
+  return frame.isFrameOpen()
 }
 
 Game.prototype.getPotentialBonus = function (frame) {

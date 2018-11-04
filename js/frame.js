@@ -18,7 +18,7 @@ Frame.prototype.isFinalFrame = function () {
 }
 
 Frame.prototype.roll = function (pins) {
-  if (this.isFrameOpen() ) {
+  if (this.isFrameOpen()) {
     this.rolls.push(pins)
   }
   else {

@@ -18,14 +18,24 @@ describe ('Game', function () {
       expect(game.getCurrentScore()).toEqual(0)
     })
 
-    it('should start at frame 1', function () {
+    it('should start with a frame', function () {
       expect(game.getCurrentFrame()).toEqual(currentFrame)
     })
 
     it('can start the next frame', function () {
-      currentFrame.addBowl(5)
+      spyOn(currentFrame, 'getScore').and.returnValue(5)
       game.startNextFrame()
       expect(game.getCurrentFrame()).not.toEqual(currentFrame)
+    })
+  })
+
+  describe ('Calculating score', function () {
+    it('will return 10 when two frames have 5 points each', function () {
+      spyOn(currentFrame, 'getScore').and.returnValue(5)
+      game.startNextFrame()
+      var newCurrentFrame = game.getCurrentFrame()
+      spyOn(newCurrentFrame, 'getScore').and.returnValue(5)
+      expect(game.getCurrentScore()).toEqual(10)
     })
   })
 

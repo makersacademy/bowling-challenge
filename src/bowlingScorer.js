@@ -6,6 +6,9 @@ var BowlingScorer = function() {
   this.scoreChart = [];
 };
 
+// this.scoreChart should contain arrays for each frame
+// e.g. [[5,5],[5,5]...]
+
 BowlingScorer.prototype.returnScore = function() {
   return this.totalScore;
 };
@@ -27,7 +30,7 @@ BowlingScorer.prototype.bowl = function(score) {
   this.bowlsRemaining -= 1;
   if((this.frameScore === 10) || (this.bowlsRemaining === 0)) {
     this.scoreChart[this.frame-1] = this.frameScore;
-    this.frame += 1;
+    this.frame++;
     this.bowlsRemaining = 2;
     this.totalScore += this.frameScore;
     this.frameScore = 0;
@@ -35,5 +38,5 @@ BowlingScorer.prototype.bowl = function(score) {
 };
 
 BowlingScorer.prototype.updateScoreChart = function() {
-  this.scoreChart[this.frame] = this.frameScore; 
+  this.scoreChart[this.frame] = this.frameScore;
 };

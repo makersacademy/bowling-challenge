@@ -7,3 +7,9 @@ body {
   font-family: helvetica;
   font-weight: bold;
 };
+
+table {
+  width: 100%;
+  background-color: white;
+  border: 5px solid black;
+};

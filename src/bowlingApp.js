@@ -3,7 +3,10 @@ $(document).ready(function() {
   var bowlingScorer = new BowlingScorer();
 
   $("#score").text(bowlingScorer.returnScore());
-  
+  $("#frame").text(bowlingScorer.returnFrame());
+  $("#frame_1_score").text(bowlingScorer.returnFrameScore(1);
+
+
   $("#add_score_0").click(function() {
     bowlingScorer.bowl(0);
     $("#score").text(bowlingScorer.returnScore());
@@ -58,4 +61,7 @@ $(document).ready(function() {
     bowlingScorer.bowl(10);
     $("#score").text(bowlingScorer.returnScore());
   });
+
+
+  })
 });

@@ -9,14 +9,37 @@ describe('Frame', function() {
   });
 
   it('records a score for each ball thrown', function() {
-    frame.pins(4);
-    frame.pins(4);
-    expect(frame.getScore()).toEqual([4,4]);
+    frame.score(4);
+    frame.score(5);
+    expect(frame.ball1).toEqual(4);
+    expect(frame.ball2).toEqual(5);
   });
 
-  it('provides a total for the frame', function() {
-    frame.pins(3);
-    frame.pins(4);
-    expect(frame.sum()).toEqual(7);
+  it('stores both balls at the end of a frame', function() {
+    frame.score(4);
+    frame.score(5);
+    expect(frame.frame).toEqual([4,5]);
   });
+
+  it('ends the frame when a strike is made', function() {
+    frame.score(10);
+    expect(frame.frame).toEqual([10,0]);
+  })
+
+  it('records each frame', function() {
+    frame.score(4);
+    frame.score(5);
+    expect(frame.game).toEqual([[4,5]])
+  })
+
+  it('records many frames', function() {
+    frame.score(10);
+    frame.score(10);
+    frame.score(10);
+    console.log(frame.game);
+    expect(frame.game).toEqual([[10,0],[10,0],[10,0]])
+    console.log(frame.ball1);
+  })
+
+
 });

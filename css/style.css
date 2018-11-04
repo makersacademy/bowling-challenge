@@ -1,0 +1,8 @@
+table.scorecard {margin: 0 auto; width:80%; font-size:12px; border:1px solid; text-align: center; table-layout: fixed; margin-bottom: 40px;}
+table.scorecard th, tr, td {padding: 0; vertical-align: middle; font-family: Arial, Helvetica, sans-serif; text-align: center;}
+table.scorecard th {border-bottom:1px solid; background-color:#d3313a; height:30px; color: #fff}
+table.scorecard th:not(:last-child) {border-right:1px solid;}
+table.scorecard td {height:30px; background: rgba(255, 255, 255, 0.5);}
+table.scorecard tr td:not(:last-child) {border-right:1px solid;}
+table.scorecard tr:nth-child(2) td:nth-child(even) {border-bottom:1px solid;}
+table.scorecard tr:nth-child(2) td:last-child {border-bottom:1px solid;}

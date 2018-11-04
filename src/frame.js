@@ -1,49 +1,40 @@
 'use strict';
 
 function Frame() {
-  this.score = [];
+  this.throwId = 0;
+  this.availablePins = 10;
+  this.ball1 = 0;
+  this.ball2 = 0;
+  this.frame = [];
+  this.game = [];
 };
 
-Frame.prototype.pins = function (num) {
-  this.score.push(num);
+Frame.prototype.score = function (pinsDown) {
+  this.throwId ++;
+  if (this.throwId == 1) {
+    if (pinsDown == this.availablePins) {
+      this.ball1 += pinsDown
+      this.end();
+      this.start();
+    }
+    this.ball1 += pinsDown
+  }
+  else if (this.throwId == 2) {
+    this.ball2 += pinsDown
+    this.end();
+    this.start();
+  }
 };
 
-Frame.prototype.getScore = function () {
-  return this.score;
+Frame.prototype.end = function () {
+  this.frame.push(this.ball1);
+  this.frame.push(this.ball2);
+  this.game.push(this.frame);
 }
 
-Frame.prototype.sum = function() {
-  var tot = (this.score[0])+(this.score[1]);
-  return tot;
+Frame.prototype.start = function () {
+  this.throwId = 0;
+  this.availablePins = 10;
+  this.ball1 = 0;
+  this.ball2 = 0;
 }
-
-
-// function frameOneToNine() {
-//   var running_tally = []
-//   running_tally.push(document.getElementById("r"));
-//   var r1 = running_tally[0];
-//   var r2 = running_tally[1];
-//   var r3 = running_tally[2];
-//   var f;
-//
-//   if (r1 != 10 && r1 + r2 != 10) {
-//     f = r1 + r2
-//   } else {
-//     f = r1 + r2 + r3
-//   }
-// }
-
-
-
-// function frameTen() {
-//     var r1 = document.getElementById("r1");
-//     var r2 = document.getElementById("r2");
-//     var r3 = document.getElementById("r3");
-//     var f10;
-//     if (r1 + r2 >= 10) {
-//       f10 = r1 + r2 + r3;
-//     } else {
-//       f10 = r1 + r2
-//     }
-// }
-// running_tally.push(document.getElementById("r"));

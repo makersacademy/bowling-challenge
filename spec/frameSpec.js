@@ -30,4 +30,12 @@ describe("Frame", function() {
       expect(score.getCurrentScore()).toBe(10)
     });
   });
+
+  describe("checkRolls", function() {
+    it("checks the number of rolls in the frame", function() {
+      score.addRoll()
+      score.addRoll()
+      expect(score.checkRolls()).toBe(2)
+    });
+  });
 });

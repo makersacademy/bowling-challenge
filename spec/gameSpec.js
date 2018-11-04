@@ -32,7 +32,7 @@ describe('Game', function() {
 
   describe('addScore', function() {
     it('limits the number of scores', function() {
-      for (var i = 0; i < 10; i++) {
+      for (var i = 0; i < 12; i++) {
         game.addScore(10);
       }
       expect(function() {game.addScore(5)}).toThrow(new Error("Cannot add more scores."));
@@ -47,6 +47,33 @@ describe('Game', function() {
       game.addScore(5);
       game.addScore(3);
       expect(function() {game.addScore(8)}).not.toThrow(new Error("Number of pins in frame cannot be above 10."));
+    });
+
+    it('gives the player an extra roll on the 10th frame if they get a strike', function() {
+      for (var i = 0; i < 9; i++) {
+        game.addScore(10);
+      }
+      game.addScore(10);
+      game.addScore(3);
+      expect(function() {game.addScore(3)}).not.toThrow(new Error("Cannot add more scores."));
+    });
+
+    it('gives the player an extra roll on the 10th frame if they get a spare', function() {
+      for (var i = 0; i < 9; i++) {
+        game.addScore(10);
+      }
+      game.addScore(5);
+      game.addScore(5);
+      expect(function() {game.addScore(3)}).not.toThrow(new Error("Cannot add more scores."));
+    });
+
+    it("does not give the player an extra roll on the 10th frame if they don't get a strike or spare", function() {
+      for (var i = 0; i < 9; i++) {
+        game.addScore(10);
+      }
+      game.addScore(3);
+      game.addScore(3);
+      expect(function() {game.addScore(3)}).toThrow(new Error("Cannot add more scores."));
     });
   });
 
@@ -118,14 +145,14 @@ describe('Game', function() {
 
   describe('isPerfectGame', function() {
     it('returns true if all frames are strikes', function() {
-      for (var i = 0; i < 10; i++) {
+      for (var i = 0; i < 12; i++) {
         game.addScore(10);
       }
       expect(game.isPerfectGame()).toEqual(true);
     });
 
     it('returns false if at least 1 frame is not a strike', function() {
-      for (var i = 0; i < 9; i++) {
+      for (var i = 0; i < 10; i++) {
         game.addScore(10);
       }
       game.addScore(1);

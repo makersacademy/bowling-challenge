@@ -51,7 +51,6 @@ BowlingGame.prototype.secondRoll = function(numberOfPins) {
   if (this.frameRolls.length > 1) {
     if (this.frameBeforeLast().isStrike === true) {
       if (this.lastFrame().isSpare === true) {
-        debugger;
         this.frameBeforeLast().setScore(10 + this.lastFrame().firstRollValue + this.lastFrame().secondRollValue);
         this.totalScore += this.frameBeforeLast().score;
       } else if (this.lastFrame().isStrike === undefined) {

@@ -23,7 +23,7 @@ describe ('Frame', function () {
       expect(frame.isFinished()).toBe(true)
     })
 
-    it('is not finished when it is started', function () {
+    it('is not finished when it has just been created', function () {
       expect(frame.isFinished()).not.toBe(true)
     })
 
@@ -32,7 +32,7 @@ describe ('Frame', function () {
       expect(frame.isFinished()).toBe(true)
     })
 
-    it("adds a bowl to update its bowls", function () {
+    it('adds a bowl to update its bowls', function () {
       frame.addBowl(5)
       expect(frame.getBowls()).toEqual([5])
     })

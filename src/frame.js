@@ -1,6 +1,5 @@
 function Frame() {
   this._bowls = []
-  this._score = 0
 }
 
 Frame.prototype.getScore = function (secondFrame, thirdFrame) {
@@ -44,13 +43,17 @@ Frame.prototype._calculateBonus = function (secondFrame, thirdFrame) {
 }
 
 Frame.prototype._spareBonus = function (secondFrame) {
-  return secondFrame.getBowls()[0]
+  return secondFrame._firstBowl()
 }
 
 Frame.prototype._strikeBonus = function (secondFrame, thirdFrame) {
   if (secondFrame.isAStrike()) {
-    return secondFrame.getBowls()[0] + thirdFrame.getBowls()[0]
+    return secondFrame._firstBowl() + thirdFrame._firstBowl()
   } else {
     return secondFrame._sumOfBowls()
   }
+}
+
+Frame.prototype._firstBowl = function () {
+  return this.getBowls()[0]
 }

@@ -1,6 +1,6 @@
 var Game = function() {
   this.frames = [];
-  this.gameScore;
+  this.gameScore = 0;
 }
 
 // **************** Class Functinos ******************
@@ -10,19 +10,15 @@ Game.prototype.addFrame = function(frame) {
 };
 
 Game.prototype.generateTotalScore = function() {
-  var total = 0;
-  for (var i = 0; i < this.frames.length; i++) {
 
-    if (i+2 < this.frames.length ) {
-      this.frames[i].calculateScore(this.frames[i+1], this.frames[i+2]);
-    } else if (i+1 < this.frames.length) {
-      this.frames[i].calculateScore(this.frames[i+1]);
+  for (var i = 0; i < this.frames.length; i++) {
+    if (i + 2 < this.frames.length ) {
+      this.frames[i].calculateScore(this.frames[i + 1], this.frames[i + 2]);
+    } else if (i + 1 < this.frames.length) {
+      this.frames[i].calculateScore(this.frames[i + 1]);
     } else {
       this.frames[i].calculateScore();
     }
-
-    total += this.frames[i].frameScore;
+    this.gameScore += this.frames[i].frameScore;
   }
-
-  this.gameScore = total;
 };

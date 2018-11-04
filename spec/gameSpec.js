@@ -11,6 +11,7 @@ describe("Game", function() {
     expect(game.frames.length).toEqual(1);
   });
 
+  // unable to stub a class property
   // it("can return the totalscore for the game", function() {
   //   game.addFrame(strikeFrame);
   //   game.addFrame(standardFrame);

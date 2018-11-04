@@ -8,7 +8,7 @@ function Frame(scores) {
   this.bonus = 0;
   this.totalScore;
   this.calculateFrameType();
-  this.calculateFrameScore(scores);
+  // this.calculateFrameScore(scores);
 }
 
 Frame.prototype.calculateFrameType = function () {
@@ -21,10 +21,10 @@ Frame.prototype.calculateFrameType = function () {
 
 // Sum function
 
-Frame.prototype.calculateFrameScore = function (scores) {
-  this.score = scores.reduce(add, 0);
-};
-
-function add(a, b) {
-    return a + b;
-}
+// Frame.prototype.calculateFrameScore = function (scores) {
+//   this.score = scores.reduce(add, 0);
+// };
+// 
+// function add(a, b) {
+//     return a + b;
+// }

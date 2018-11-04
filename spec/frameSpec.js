@@ -12,7 +12,7 @@ describe('Frame', function() {
       expect(regular_frame.roll2).toEqual(4);
     });
 
-    it('allows up to 3 rolls if it is the 10th frame', function() {
+    it('allows up to 3 rolls', function() {
       expect(tenth_frame.roll3).toEqual(3);
     });
 
@@ -25,9 +25,9 @@ describe('Frame', function() {
     });
   });
 
-  describe('calculateFrameScore', function() {
-    it('calculates an open frame', function() {
-      expect(regular_frame.score).toEqual(7);
-    });
-  });
+  // describe('calculateFrameScore', function() {
+  //   it('calculates an open frame', function() {
+  //     expect(regular_frame.score).toEqual(7);
+  //   });
+  // });
 });

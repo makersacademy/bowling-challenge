@@ -5,11 +5,11 @@ function Game() {
   this.roll = 1;
   this.rollsPerFrame = 2;
   this.previousRoll;
-  this.scores = [];
+  this.scores = new Score();
   this.tenthFrameRolls = [];
 }
 
-Game.prototype.addScore = function ( score ) {
+Game.prototype.addScore = function (score) {
   if (this.frame === 11) throw new Error("Cannot add more scores.");
   if (this.frame < 10) {
     if (this.roll === 1) {
@@ -71,16 +71,16 @@ Game.prototype.nextFrame = function (score) {
 Game.prototype.pushFrame = function (score) {
   if (this.frame === 10) {
     frame = new Frame(score);
-    this.scores.push(frame);
+    this.scores.array.push(frame);
   } else if (this.frame === 1 && score === 10) {
     frame = new Frame([score]);
-    this.scores.push(frame);
+    this.scores.array.push(frame);
   } else if (score === 10) {
     frame = new Frame([score]);
-    this.scores.push(frame);
+    this.scores.array.push(frame);
   } else {
     frame = new Frame([this.previousRoll, score]);
-    this.scores.push(frame);
+    this.scores.array.push(frame);
   }
 };
 
@@ -93,35 +93,32 @@ Game.prototype.toggleRoll = function () {
 };
 
 Game.prototype.calculateBonus = function () {
-  for (i = 0; i < this.scores.length; i++) {
-    if (this.scores[i].isSpare) {
-      this.scores[i].bonus = this.scores[i + 1].roll1;
-    } else if (this.scores[i].isStrike) {
-      if (this.scores[i + 1].roll2 === undefined) {
-        this.scores[i].bonus += this.scores[i + 1].roll1 + this.scores[i + 2].roll1;
-      } else {
-        this.scores[i].bonus += this.scores[i + 1].roll1 + this.scores[i + 1].roll2;
-      }
-    }
-  }
+  this.scores.calculateBonus();
+  // for (i = 0; i < this.scores.array.length; i++) {
+  //   if (this.scores.array[i].isSpare) {
+  //     this.scores.array[i].bonus = this.scores.array[i + 1].roll1;
+  //   } else if (this.scores.array[i].isStrike) {
+  //     if (this.scores.array[i + 1].roll2 === undefined) {
+  //       this.scores.array[i].bonus += this.scores.array[i + 1].roll1 + this.scores.array[i + 2].roll1;
+  //     } else {
+  //       this.scores.array[i].bonus += this.scores.array[i + 1].roll1 + this.scores.array[i + 1].roll2;
+  //     }
+  //   }
+  // }
 };
 
 Game.prototype.isGutterGame = function () {
-  for (var i = 0; i < this.scores.length; i++) {
-    if (this.scores[i].score > 0) return false;
-  }
-  return true;
+  return this.scores.isGutterGame();
 };
 
 Game.prototype.isPerfectGame = function () {
-  for (var i = 0; i < this.scores.length; i++) {
-    if (this.scores[i].isStrike === undefined) return false;
-  }
-  if (this.scores[9].roll2 != 10) return false;
-  if (this.scores[9].roll3 != 10) return false;
-  return true;
+  return this.scores.isPerfectGame();
 };
 
-Game.prototype.endGame = function () {
-  score = new Score(this.scores);
+Game.prototype.calculateFrameScore = function () {
+  this.scores.calculateFrameScore();
+};
+
+Game.prototype.calculateBonus = function () {
+
 };

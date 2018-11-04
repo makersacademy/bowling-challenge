@@ -14,10 +14,9 @@ describe("Scorecard", function() {
     expect(sc.scores).toEqual([10,'-'])
   });
 
-  it("should be able to keep track of totals", function() {
-    sc.enterScore(5);
-    sc.enterScore(4);
-    expect(sc.total).toEqual(9);
+  it("doesn't add padding in the tenth frame", function() {
+    for (i = 0; i<10; i++) { sc.enterScore(10) }
+    expect(sc.scores).toEqual([10,'-',10,'-',10,'-',10,'-',10,'-',10,'-',10,'-',10,'-',10,'-',10])
   });
 
 });

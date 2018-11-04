@@ -6,21 +6,27 @@ function Scorer(scores) {
 
 Scorer.prototype.total = function() {
   sum = 0
-  for (i in this.scores) { sum += this.scores[i] }
-  if (this.scores.length % 2 === 1) { sum -= this.scores[this.scores.length -1] }
+  for (i in this.frame_scores) { sum += this.frame_scores[i] }
   return sum
 };
 
 Scorer.prototype.scoreFrames = function() {
   frames = this.calculateFrames()
-  for (i = 0; i < frames * 2; i += 2)
-    { combined_score = this.scores[i] + this.scores[i+1]
-    if(this.scores[i] === 10) {
-      score = this.scoreStrike(i)  }
-    else if (combined_score === 10) { score = this.scoreSpare(i) }
-    else { score = combined_score }
+  for (i = 0; i < frames * 2; i += 2) {
+    score = this.scoreRoll(i)
     if (typeof score != "undefined" && score === score) {this.frame_scores.push(score) }
   };
+};
+
+Scorer.prototype.scoreRoll = function(rollPos) {
+  combined_score = this.scores[rollPos] + this.scores[rollPos + 1]
+  if(this.scores[rollPos] === 10) {
+    score = this.scoreStrike(rollPos) }
+  else if (combined_score === 10) {
+    score = this.scoreSpare(rollPos) }
+  else {
+    score = combined_score }
+  return score
 };
 
 Scorer.prototype.calculateFrames = function() {
@@ -39,11 +45,9 @@ Scorer.prototype.scoreSpare = function(spareFramePos) {
     { return 10 + this.scores[spareFramePos + 2] }
 };
 
-Scorer.prototype._isScore = function(char) {
-  return char != "-"
-}
+Scorer.prototype._isScore = char => char != "-"
 
 sc = new Scorer
-sc.scores = [5,5]
+sc.scores = [1,2,3,4,5,5,4]
 sc.scoreFrames()
 console.log(sc.frame_scores)

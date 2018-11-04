@@ -9,6 +9,10 @@ describe ('Game', function () {
   })
 
   describe ('A bowling game', function () {
+    it('can store a list of frames', function () {
+      expect(game.getFrames()).toEqual([])
+    })
+
     it('should have a current score', function () {
       expect(game.getCurrentScore()).toEqual(0)
     })

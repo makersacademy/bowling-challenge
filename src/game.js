@@ -1,9 +1,14 @@
 "use strict"
 
 function Game() {
+  this._frames = []
   this._currentScore = 0
   this._currentFrame = 1
   this._finished = false
+}
+
+Game.prototype.getFrames = function () {
+  return this._frames
 }
 
 Game.prototype.getCurrentScore = function () {

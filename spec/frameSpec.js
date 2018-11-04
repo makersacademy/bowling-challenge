@@ -17,11 +17,14 @@ describe("Frame", function() {
     });
   });
 
-  describe(".roll()", function() {
+  describe(".add()", function() {
     it("adds value to total", function() {
-      frame.roll(5);
+      frame.add(5);
       expect(frame.total).toEqual(5);
     });
+  });
+
+  describe(".roll()", function() {
     it("adds roll to rolls", function() {
       frame.roll(5);
       expect(frame.rolls).toEqual(1);

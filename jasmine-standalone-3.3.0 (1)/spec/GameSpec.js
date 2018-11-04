@@ -43,4 +43,13 @@ describe('Game', function(){
     game.roll(1);
     expect(game.score()).toEqual(19);
   });
+
+  it('scores strike (10) bonus (3 + 5)', function(){
+    var game = new Game;
+    game.roll(10); // strike
+    game.roll(3);
+    game.roll(5);
+    expect(game.score()).toEqual(26);
+  });
+
 });

@@ -1,25 +1,33 @@
 function Game(){
   var rolls = [];
+  var frames = [];
 
   this.roll = function(pins){
     rolls.push(pins)
+
+    if(rolls.length === 2){
+      frames.push(rolls);
+      rolls = [];
+    }
   }
 
   this.score = function() {
-    var total = 0
 
-    for(var frame = 0; frame < rolls.length; frame += 2) {
-      var frameScore = rolls[frame] + rolls[frame+1]
+    var score = 0;
 
-      var isSpare = (frameScore === 10)
+    for(var i = 0; i < frames.length; i++) {
+      var frameScore = frames[i][0] + frames[i][1];
+      var isSpare = frameScore === 10;
 
-      if(isSpare) {
-        total += frameScore + rolls[frame+2]
+      if (isSpare) {
+        score += frameScore + frames[i+1][0];
       } else {
-        total += frameScore
+        score += frameScore;
       }
+
     }
 
-    return total
+    return score;
   }
+
 }

@@ -12,10 +12,16 @@ Scorecard.prototype.add = function (number) {
 
 Scorecard.prototype.sum = function () {
   if (this.frames[this.frames.length - 1] === 0 || this.frames[this.frames.length - 2] === 0) {
-    return this.score = this.frames.reduce(add) - 10;
+    return this.score = this.frames.reduce(add) - 10
   }
   if (this.frames[this.frames.length - 3] === 0) {
     return this.score = this.frames.reduce(add) + this.frames[this.frames.length - 1] + this.frames[this.frames.length - 2]
+  }
+  if (this.frames[this.frames.length - 1] + this.frames[this.frames.length - 2] == 10) {
+    return this.score = this.frames.reduce(add) - 10
+  }
+  if (this.frames[this.frames.length - 3] + this.frames[this.frames.length - 4] == 10) {
+    return this.score = this.frames.reduce(add) + this.frames[this.frames.length - 2]
   }
   this.score = this.frames.reduce(add)
 }

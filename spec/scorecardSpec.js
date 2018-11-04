@@ -39,4 +39,35 @@ describe("Scorecard", function () {
     expect(scorecard.score).toEqual(7)
   })
 
+  it('should show the sum including the strike and bonus after the next 2 rolls', function () {
+    scorecard.add(3)
+    scorecard.add(4)
+    scorecard.add(10)
+    scorecard.add(3)
+    scorecard.add(4)
+    scorecard.sum()
+    expect(scorecard.score).toEqual(31)
+  })
+
+  it('should not show the sum of all frames if the last frame was a spare', function () {
+    scorecard.add(3)
+    scorecard.add(4)
+    scorecard.add(5)
+    scorecard.add(5)
+    scorecard.sum()
+    expect(scorecard.score).toEqual(7)
+  })
+
+  it('should show the sum including the strike and bonus after the next 2 rolls', function () {
+    scorecard.add(3)
+    scorecard.add(4)
+    scorecard.add(5)
+    scorecard.add(5)
+    scorecard.add(3)
+    scorecard.add(4)
+    scorecard.sum()
+    expect(scorecard.score).toEqual(27)
+  })
+
+
 })

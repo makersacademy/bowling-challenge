@@ -8,29 +8,22 @@ $(document).ready(function () {
   updateScoreText();
   frameScoreText();
 
+  $('button').click(function() {
+    if(frame.checkRolls() === 0){
+      value = $(this).attr('value');
+      newRoll1 = roll.getRoll(value);
+      console.log("roll 1: ", newRoll1);
+      frame.addRoll();
+    } else {
+      value = $(this).attr('value');
+      newRoll2 = roll.getRoll(value);
+      console.log("roll 2: ", newRoll2);
+      frameScore();
+    };
+  });
 
-  $('button').one('click', function() {
-    value = $(this).attr('value');
-    newRoll1 = roll.getRoll(value);
-    console.log(1);
-
-    $('button').one('click', function() {
-    value = $(this).attr('value');
-    newRoll2 = roll.getRoll(value);
-    console.log(2);
-
-    frameScore();
-    frameScoreText();
-    console.log(3);
-
-    console.log("Click one", newRoll1)
-    console.log("Click two", newRoll2);
-    console.log(frameScoreText());
-  })
-});
-
-function frameScore() {
-    frame.calculateScore(parseInt(newRoll1, newRoll2));
+  function frameScore() {
+    frame.calculateScore(parseInt(newRoll1), parseInt(newRoll2));
     frameScoreText();
   };
 

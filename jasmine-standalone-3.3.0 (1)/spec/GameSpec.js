@@ -60,4 +60,15 @@ describe('Game', function(){
     expect(game.score()).toEqual(300);
   });
 
+  it('scores spare bonus in the 10th frame', function(){
+    var game = new Game;
+    for(i=0;i<18;i++){ // 9 frames
+      game.roll(0);
+    }
+    game.roll(1)
+    game.roll(9) // spare in the 10th frame
+    game.roll(10) // bonus roll
+    expect(game.score()).toEqual(20);
+  });
+
 });

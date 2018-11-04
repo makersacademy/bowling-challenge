@@ -26,13 +26,21 @@ describe('Game', function(){
     expect(game.score()).toEqual(9);
   });
 
-  it('scores spare bonus', function(){
+  it('scores spare (4 + 6) bonus (+ 5)', function(){
     var game = new Game;
-    game.roll(4); 
+    game.roll(4);
     game.roll(6); // spare
     game.roll(5);
     game.roll(1);
     expect(game.score()).toEqual(21);
   });
 
+  it('scores spare (0 + 10) bonus (+ 4)', function(){
+    var game = new Game;
+    game.roll(0);
+    game.roll(10); // spare
+    game.roll(4);
+    game.roll(1);
+    expect(game.score()).toEqual(19);
+  });
 });

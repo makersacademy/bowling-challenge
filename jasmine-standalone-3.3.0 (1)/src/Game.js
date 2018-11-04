@@ -12,7 +12,6 @@ function Game(){
   }
 
   this.score = function() {
-
     var score = 0;
 
     for(var i = 0; i < frames.length; i++) {

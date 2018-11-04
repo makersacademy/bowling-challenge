@@ -5,6 +5,7 @@ describe ('Game', function () {
   beforeEach(function () {
     game = new Game ()
     frame = jasmine.createSpyObj('frame', ['getScore'])
+    secondFrame = jasmine.createSpyObj('frame', ['getScore'])
   })
 
   describe ('A bowling game', function () {

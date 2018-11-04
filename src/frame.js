@@ -1,4 +1,5 @@
 function Frame() {
+  this._bowls = []
   this._score = 0
 }
 

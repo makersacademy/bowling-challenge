@@ -29,5 +29,14 @@ describe("Game", function(){
       game.updateTotalScore(frameScore)
       expect(game.frameNumber()).toBe(2);
     });
+
+    it("finsihes game after the 10th frame", function(){
+      frame = jasmine.createSpyObj('frame', ['getCurrentScore'])
+      frame.getCurrentScore.and.callFake(function() {return 6})
+      frameScore = frame.getCurrentScore();
+
+      for(i = 0; i < 10; i++) {game.updateTotalScore(frameScore)}
+      expect(game.frameNumber()).toBe("Game over!");
+    });
   });
 });

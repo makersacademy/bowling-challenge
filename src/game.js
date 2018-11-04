@@ -13,5 +13,9 @@ Game.prototype.updateTotalScore = function (frameScore) {
 };
 
 Game.prototype.frameNumber = function(){
+  if(this.frame > 10){
+    return "Game over!"
+  } else {
   return this.frame;
+ }
 };

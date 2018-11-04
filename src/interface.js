@@ -23,20 +23,20 @@ $(document).ready(function () {
       updateScore();
       updateFrameText();
       frame.addRoll();
-      hideButtons();
+      showButtons();
     };
   });
 
   function hideButtons() {
-    if(game.frameNumber() === 'Game over!') {
-      $('button').hide();
-    } else {
-      findImpossibleRolls();
-    };
+    findImpossibleRolls();
   };
 
   function showButtons() {
-    $('button').show();
+    if(game.frameNumber() === 'Game over!') {
+      $('button').hide();
+    } else {
+      $('button').show();
+    };
   };
 
   function findImpossibleRolls(){

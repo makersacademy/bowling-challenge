@@ -13,7 +13,7 @@ describe ('Frame', function () {
     })
 
     it('can store bowls', function () {
-      expect(frame._bowls).toEqual([])
+      expect(frame.getBowls()).toEqual([])
     })
   })
 })

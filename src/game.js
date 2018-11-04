@@ -1,29 +1,49 @@
 'use strict';
 
+var isOdd = function(x) { return x & 1; };
+
 function Game() {
-  this.NORMAL_FRAMES = 10
   this.rolls = []
-  this.bonus_frame = false
+  this.bonus_roll = false
+  this.id = 1
 };
 
 Game.prototype.roll = function (pins) {
 
-  if (this.rolls[19] + this.rolls[18] >= 10) {
-    this.bonus_frame = true
-  }
-    else this.bonus_frame = false;
   this.rolls.push(pins);
-
+  if(pins == 10 && isOdd(this.id)) {
+    if(this.id < 20) {
+      this.roll(0)
+      this.id ++;
+    }
+    this.id ++;
+  }
+  this.id ++;
 };
 
 Game.prototype.score = function () {
+  var result = 0
+  var rollId = 0
 
   for (var frameId = 0; frameId < 10; frameId++) {
-    result += this.rolls[rollId] + this.rolls[rollId + 1];
+    if(this.rolls[rollId] + this.rolls[rollId + 1] == 10 && this.bonus_roll == false) {
+      result += this.rolls[(rollId + 2)]
+      if(this.rolls[rollId] == 10) {
+        result += this.rolls[(rollId + 3)]
+      };
+    };
+    result += this.rolls[rollId] + this.rolls[rollId + 1]
     rollId += 2;
+  };
+
+
+  if (this.rolls[19] + this.rolls[18] >= 10) {
+    this.bonus_roll = true
   }
-  if (this.bonus_frame == true) {
-    result += this.rolls[20]
+  else this.bonus_roll = false;
+
+  if (this.bonus_roll == true) {
+    result += this.rolls[20];
   }
   return result;
 };

@@ -44,10 +44,21 @@ describe("Game", function() {
     });
   });
 
-  describe(".complete()", function() {
-    
+  describe(".isComplete()", function() {
+    it("returns false if any frame incomplete", function() {
+      for (var i = 0; i < 9; i++) {
+        game.roll(10);
+      };
+      expect(game.isComplete()).toEqual(false);
+    });
+
+    it("returns true if all frames complete", function() {
+      for (var i = 0; i < 10; i++) {
+        game.roll(2);
+        game.roll(4);
+      };
+      expect(game.isComplete()).toEqual(true);
+    });
   })
-
-
 
 });

@@ -1,6 +1,4 @@
 describe('Game', function() {
-  var game;
-
   beforeEach(function() {
     game = new Game();
   });
@@ -85,79 +83,14 @@ describe('Game', function() {
     });
   });
 
-  // describe('calculateBonus', function() {
-  //   it('calculates the bonus score for a spare frame', function() {
-  //     game.addScore(5);
-  //     game.addScore(5);
-  //     game.addScore(5);
-  //     game.addScore(1);
-  //     game.calculateBonus();
-  //     expect(game.scores.array[0].bonus).toEqual(5);
-  //   });
-  //
-  //   it('calculates the bonus score for a strike frame', function() {
-  //     game.addScore(10);
-  //     game.addScore(5);
-  //     game.addScore(1);
-  //     game.calculateBonus();
-  //     expect(game.scores.array[0].bonus).toEqual(6);
-  //   });
-  //
-  //   it('calculates the bonus score for 2 strike frames in a row', function() {
-  //     game.addScore(10);
-  //     game.addScore(10);
-  //     game.addScore(1);
-  //     game.addScore(1);
-  //     game.calculateBonus();
-  //     expect(game.scores.array[0].bonus).toEqual(11);
-  //     expect(game.scores.array[1].bonus).toEqual(2);
-  //   });
-  //
-  //   it('calculates the bonus score for 3 strike frames in a row', function() {
-  //     game.addScore(10);
-  //     game.addScore(10);
-  //     game.addScore(10);
-  //     game.addScore(1);
-  //     game.addScore(1);
-  //     game.calculateBonus();
-  //     expect(game.scores.array[0].bonus).toEqual(20);
-  //     expect(game.scores.array[1].bonus).toEqual(11)
-  //     expect(game.scores.array[2].bonus).toEqual(2);
-  //   });
-  // });
-
-  // describe('isGutterGame', function() {
-  //   it('returns true if 0 pins are knocked down across all frames', function() {
-  //     for (var i = 0; i < 20; i++) {
-  //       game.addScore(0);
-  //     }
-  //     expect(game.isGutterGame()).toEqual(true);
-  //   });
-  //
-  //   it('returns false if at least 1 pin is knocked down', function() {
-  //     for (var i = 0; i < 19; i++) {
-  //       game.addScore(0);
-  //     }
-  //     game.addScore(1);
-  //     expect(game.isGutterGame()).toEqual(false);
-  //   });
-  // });
-  //
-  // describe('isPerfectGame', function() {
-  //   it('returns true if all frames are strikes', function() {
+  // describe('totalScore', function() {
+  //   it('returns the total score of a game', function() {
   //     for (var i = 0; i < 12; i++) {
   //       game.addScore(10);
   //     }
-  //     expect(game.isPerfectGame()).toEqual(true);
-  //   });
-  //
-  //   it('returns false if at least 1 frame is not a strike', function() {
-  //     for (var i = 0; i < 10; i++) {
-  //       game.addScore(10);
-  //     }
-  //     game.addScore(1);
-  //     game.addScore(1);
-  //     expect(game.isPerfectGame()).toEqual(false);
+  //     game.calculateFrameScore();
+  //     game.calculateBonus();
+  //     expect(game.totalScore()).toEqual(300);
   //   });
   // });
 });

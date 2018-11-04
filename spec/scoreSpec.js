@@ -1,17 +1,16 @@
 describe('Score', function() {
   beforeEach(function() {
-    score = new Score();
-
-    regular_frame = jasmine.createSpyObj('regular_frame', ['roll1', 'roll2']);
+    regular_frame = jasmine.createSpyObj('regular_frame', ['roll1', 'roll2', 'bonus', 'totalScore']);
     regular_frame.roll1 = 4;
     regular_frame.roll2 = 3;
+    regular_frame.bonus = 0;
 
-    spare_frame = jasmine.createSpyObj('spare_frame', ['roll1', 'roll2', 'isSpare', 'bonus']);
+    spare_frame = jasmine.createSpyObj('spare_frame', ['roll1', 'roll2', 'isSpare', 'bonus', 'totalScore']);
     spare_frame.roll1 = 5;
     spare_frame.roll2 = 5;
     spare_frame.isSpare = true;
 
-    strike_frame = jasmine.createSpyObj('strike_frame', ['roll1', 'roll2', 'isStrike', 'bonus']);
+    strike_frame = jasmine.createSpyObj('strike_frame', ['roll1', 'roll2', 'isStrike', 'bonus', 'totalScore']);
     strike_frame.roll1 = 10;
     strike_frame.roll2 = undefined;
     strike_frame.isStrike = true;
@@ -35,17 +34,16 @@ describe('Score', function() {
     zero_frame = jasmine.createSpyObj('zero_frame', ['roll1', 'roll2'])
     zero_frame.roll1 = 0;
     zero_frame.roll2 = 0;
-
-    score.array.push(regular_frame, spare_frame, strike_frame, strike_frame2, strike_frame3, regular_frame, regular_frame);
-    score.calculateFrameScore();
-    score.calculateBonus();
-  });
-
-  afterEach(function() {
-    score.array = [];
   });
 
   describe('calculateFrameScores', function() {
+    beforeEach(function() {
+      score = new Score();
+
+      score.array.push(regular_frame, spare_frame, strike_frame, strike_frame2, strike_frame3, regular_frame, regular_frame);
+      score.calculateFrameScore();
+    });
+
     it('sets the score for an open frame', function() {
       expect(score.array[0].score).toEqual(7);
     });
@@ -65,6 +63,13 @@ describe('Score', function() {
   });
 
   describe('calculateBonus', function() {
+    beforeEach(function() {
+      score = new Score();
+
+      score.array.push(regular_frame, spare_frame, strike_frame, strike_frame2, strike_frame3, regular_frame, regular_frame);
+      score.calculateBonus();
+    });
+
     it('calculates the bonus score for a spare frame', function() {
       expect(score.array[1].bonus).toEqual(10);
     });
@@ -85,12 +90,41 @@ describe('Score', function() {
     });
   });
 
+  // describe('frameTotalScore', function() {
+  //   beforeEach(function() {
+  //     score = new Score();
+  //
+  //     score.array.push(regular_frame, spare_frame, strike_frame)
+  //     score.calculateFrameScore();
+  //     score.calculateBonus();
+  //     score.frameTotalScore();
+  //   });
+  //
+  //   it('returns the total score for all frames', function() {
+  //     expect(score.array[1].totalScore).toEqual(20);
+  //   });
+  // });
+  //
+  // describe('totalScore', function() {
+  //   beforeEach(function() {
+  //     score = new Score();
+  //     score.array.push(strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame_tenth);
+  //     score.calculateFrameScore();
+  //     score.calculateBonus();
+  //   });
+  //
+  //   it('returns the total score for a perfect game', function() {
+  //     score.frameTotalScore();
+  //     expect(score.totalScore()).toEqual(300);
+  //   });
+  // });
+
   describe('isGutterGame', function() {
     beforeEach(function() {
       gutter_game_true = new Score();
       gutter_game_false = new Score();
 
-      // Create a score array with 9 zero_frames
+      // Create a score array with 10 frames
       gutter_game_true.array.push(zero_frame, zero_frame, zero_frame, zero_frame, zero_frame, zero_frame, zero_frame, zero_frame, zero_frame, zero_frame)
       gutter_game_false.array.push(zero_frame, zero_frame, zero_frame, zero_frame, zero_frame, zero_frame, zero_frame, zero_frame, zero_frame, regular_frame)
     });
@@ -109,7 +143,7 @@ describe('Score', function() {
       perfect_game_true = new Score();
       perfect_game_false = new Score();
 
-      // Create a score array with 9 strike_frames
+      // Create a score array with 10 frames
       perfect_game_true.array.push(strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame_tenth)
       perfect_game_false.array.push(strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, regular_frame)
     });

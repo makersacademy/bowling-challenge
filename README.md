@@ -1,5 +1,7 @@
 # Bowling Challenge #
 
+This is a bowling scorecard application in JavaScript with the view to turn it into a web app in the future.
+
 ## Specification ##
 #### Bowling Rules ####
 
@@ -67,3 +69,5 @@ I'd like to receive a perfect game if I roll 12 strikes
 
 #### CRC Cards ####
 ![crc-cards](public/crc-cards.png)
+
+In the end I decided against having the Roll class as it would only be responsible for holding a single number which could be easily transferred to an attribute of the Frame class.

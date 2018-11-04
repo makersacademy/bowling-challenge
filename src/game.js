@@ -92,19 +92,18 @@ Game.prototype.toggleRoll = function () {
   }
 };
 
+// Score controls
+
+Game.prototype.calculateFrameScore = function () {
+  this.scores.calculateFrameScore();
+};
+
 Game.prototype.calculateBonus = function () {
   this.scores.calculateBonus();
-  // for (i = 0; i < this.scores.array.length; i++) {
-  //   if (this.scores.array[i].isSpare) {
-  //     this.scores.array[i].bonus = this.scores.array[i + 1].roll1;
-  //   } else if (this.scores.array[i].isStrike) {
-  //     if (this.scores.array[i + 1].roll2 === undefined) {
-  //       this.scores.array[i].bonus += this.scores.array[i + 1].roll1 + this.scores.array[i + 2].roll1;
-  //     } else {
-  //       this.scores.array[i].bonus += this.scores.array[i + 1].roll1 + this.scores.array[i + 1].roll2;
-  //     }
-  //   }
-  // }
+};
+
+Game.prototype.totalScore = function () {
+  return this.scores.totalScore();
 };
 
 Game.prototype.isGutterGame = function () {
@@ -113,12 +112,4 @@ Game.prototype.isGutterGame = function () {
 
 Game.prototype.isPerfectGame = function () {
   return this.scores.isPerfectGame();
-};
-
-Game.prototype.calculateFrameScore = function () {
-  this.scores.calculateFrameScore();
-};
-
-Game.prototype.calculateBonus = function () {
-
 };

@@ -1,5 +1,7 @@
 describe ('Frame', function () {
   var frame
+  var secondFrame
+  var thirdFrame
 
   beforeEach(function () {
     frame = new Frame()

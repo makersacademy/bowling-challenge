@@ -38,6 +38,11 @@ describe("Frame", function() {
       frame.roll(10);
       expect(frame.isComplete()).toEqual(true);
     });
+    it("adds its value to previous frame totals if they are due a bonus", function() {
+      frame.roll(10);
+      frameTwo.roll(5);
+      expect(frame.total).toEqual(15);
+    });
   });
 
   describe(".hasBonus()", function() {

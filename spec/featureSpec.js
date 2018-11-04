@@ -66,6 +66,24 @@ describe("Feature", function() {
     expect(game.gameScore).toEqual(0);
   });
 
+  it("strike, gutter, gutter frames - returns score of 10", function (){
+    game.addFrame(strikeFrame);
+    game.addFrame(gutterFrame);
+    game.addFrame(gutterFrame);
+    game.generateTotalScore();
+    expect(game.gameScore).toEqual(10);
+  });
+
+
+  it("strike, strike, gutter frames - returns score of 30", function (){
+  
+    game.addFrame(strikeFrame);
+    game.addFrame(strikeFrame);
+    game.addFrame(gutterFrame);
+    game.generateTotalScore();
+    expect(game.gameScore).toEqual(30);
+  });
+
 
 
 });

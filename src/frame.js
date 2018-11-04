@@ -9,9 +9,7 @@ var Frame = function(bowls) {
 
 Frame.prototype.calculateScore = function(framePlusOne, framePlusTwo){
   // this._validFrameChecks();
-  var pinSum = sumArr(this.bowls);
-
-  this.frameScore = pinSum;
+  this.frameScore = sumArr(this.bowls);
 
   if (typeof framePlusOne != 'undefined' &&  framePlusOne.bowls.length > 0) {
 
@@ -22,6 +20,7 @@ Frame.prototype.calculateScore = function(framePlusOne, framePlusTwo){
     if (this._isStrike()) {
       this._strikeBonus(framePlusOne, framePlusTwo);
     };
+
   };
 };
 
@@ -54,15 +53,12 @@ Frame.prototype._spareBonus = function(framePlusOne){
 Frame.prototype._strikeBonus = function(framePlusOne, framePlusTwo){
   var nextBowls;
 
-  if (framePlusTwo != null) {
+  if (typeof framePlusTwo != 'undefined') {
     nextBowls = framePlusOne.bowls.concat(framePlusTwo.bowls);
   } else {
     nextBowls = framePlusOne.bowls;
   };
-
-  for (i = 1; i <= 2 ; i++) {
-    console.log(i);
-    console.log(nextBowls);
+  for (i = 1; i <= 2 && i <= nextBowls.length; i++) {
     this.frameScore += nextBowls[i-1];
   };
 }

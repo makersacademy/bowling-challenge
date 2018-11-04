@@ -12,3 +12,8 @@ BowlingGame.prototype.getPlayer = function(){
 BowlingGame.prototype.getScorecard = function(){
   return this._scorecard;
 };
+
+BowlingGame.prototype.addNextRoll = function(pinsKnocked){
+  let roll = new Roll(pinsKnocked);
+  this._scorecard.getFrames()[0].addRoll(roll);
+};

@@ -18,4 +18,9 @@ describe('Feature Test:', function(){
   it('creates a game that has a scorecard that can provide scores',function(){
     expect(game.getScorecard().getTotalScore()).toEqual(0);
   });
+
+  it('update the total score when a new roll is added',function(){
+    game.addNextRoll(4);
+    expect(game.getScorecard().getTotalScore()).toEqual(4);
+  });
 });

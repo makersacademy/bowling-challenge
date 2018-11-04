@@ -20,7 +20,15 @@ describe ('Frame', function () {
       expect(frame.getScore()).toEqual(7)
     })
 
-    it('can add a bowl', function () {
+    it('is finished when two bowls are played', function () {
+      frame.addBowl(5)
+      frame.addBowl(2)
+      expect(frame.isFinished()).toBe(true)
+    })
+  })
+
+  describe('Adding a bowl', function () {
+    it("updates the frame's bowls", function () {
       frame.addBowl(5)
       expect(frame.getBowls()).toEqual([5])
     })

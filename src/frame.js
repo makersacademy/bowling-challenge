@@ -17,3 +17,7 @@ Frame.prototype.getBowls = function () {
 Frame.prototype.addBowl = function (pins) {
   this.getBowls().push(pins)
 }
+
+Frame.prototype.isFinished = function () {
+  return this._bowls.length > 1
+}

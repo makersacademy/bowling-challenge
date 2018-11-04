@@ -9,7 +9,8 @@ describe ('Frame', function () {
 
   describe('A frame', function () {
     it('should have a score', function () {
-      expect(frame.getScore(secondFrame)).toEqual(0)
+      expect(frame.getScore()).toEqual(0)
+      console.log(frame.getScore())
     })
 
     it('can store bowls', function () {
@@ -52,7 +53,7 @@ describe ('Frame', function () {
     it('sums its bowls when there is no strike or spare', function () {
       frame.addBowl(5)
       frame.addBowl(2)
-      expect(frame.getScore(secondFrame)).toEqual(7)
+      expect(frame.getScore()).toEqual(7)
     })
 
     it('can calculate a spare bonus', function () {

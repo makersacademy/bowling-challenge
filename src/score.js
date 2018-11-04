@@ -1,5 +1,5 @@
-function Score() {
-
+function Score(scores_array) {
+  this.scores_array = scores_array;
 }
 
 Score.prototype.calculateFrameScore = function (frames) {

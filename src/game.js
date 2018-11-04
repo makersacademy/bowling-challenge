@@ -121,3 +121,7 @@ Game.prototype.isPerfectGame = function () {
   if (this.scores[9].roll3 != 10) return false;
   return true;
 };
+
+Game.prototype.endGame = function () {
+  score = new Score(this.scores);
+};

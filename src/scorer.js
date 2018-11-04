@@ -42,3 +42,6 @@ Scorer.prototype.scoreSpare = function (sparePos) {
 Scorer.prototype._isScore = char => char !== '-'
 
 Scorer.prototype._calculateFrames = scores => Math.floor(scores.length / 2)
+
+
+// module.exports = Scorer();

@@ -1,5 +1,8 @@
 <head>
   <link href="scorecard.css" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="../src/scorecard.js"></script>
+  <script src="../src/scorer.js"></script>
 </head>
 
 <body>
@@ -18,16 +21,16 @@
 
       Input scores:<br>
 
-      <button class="button" oninvalid=""id='one' value ="1">1</button>
-      <button class="button" id='two' value ="2">2</button>
-      <button class="button" id='three' value ="3">3</button>
-      <button class="button" id='four' value ="4">4</button>
-      <button class="button" id='five' value ="5">5</button>
-      <button class="button" id='six' value ="6">6</button>
-      <button class="button" id='seven' value ="7">7</button>
-      <button class="button" id='eight' value ="8">8</button>
-      <button class="button" id='nine' value ="9">9</button>
-      <button class="button" id='ten' value ="10">10</button>
+      <button class="button" id='enterScore' value ="1">1</button>
+      <button class="button" id='enterScore' value ="2">2</button>
+      <button class="button" id='enterScore' value ="3">3</button>
+      <button class="button" id='enterScore' value ="4">4</button>
+      <button class="button" id='enterScore' value ="5">5</button>
+      <button class="button" id='enterScore' value ="6">6</button>
+      <button class="button" id='enterScore' value ="7">7</button>
+      <button class="button" id='enterScore' value ="8">8</button>
+      <button class="button" id='enterScore' value ="9">9</button>
+      <button class="button" id='enterScore' value ="10">10</button>
 
     </div>
 
@@ -71,10 +74,39 @@
         <td></td>
         <td></td>
       </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
 
     </table>
 
+  Score:
+  <span id="score"></span>
+
   </div>
+
+  <script>
+    $( document ).ready(function() {
+
+      var scorecard = new Scorecard
+
+      $( enterScore ).click(function( event ) {
+        $('#score').text($(this).attr("value"))
+
+      });
+    })
+
+  </script>
 
 
   </body>

@@ -9,7 +9,7 @@ $(document).ready(function () {
   frameScoreText();
 
   $('button').click(function() {
-    if(frame.checkRolls() === 0){
+    if(frame.checkRolls() < 2){
       value = $(this).attr('value');
       newRoll1 = roll.getRoll(value);
       console.log("roll 1: ", newRoll1);
@@ -19,6 +19,8 @@ $(document).ready(function () {
       newRoll2 = roll.getRoll(value);
       console.log("roll 2: ", newRoll2);
       frameScore();
+      updateScore();
+      frame.addRoll();
     };
   });
 
@@ -27,16 +29,18 @@ $(document).ready(function () {
     frameScoreText();
   };
 
-  function updateScoreText() {
-    $('#current_score').text(game.getTotalScore());
+  function updateScore() {
+    currentScore = frame.getCurrentScore()
+    game.updateTotalScore(currentScore)
+    updateScoreText();
   };
 
   function frameScoreText() {
     $('#frame_score').text(frame.getCurrentScore());
   };
 
-  function updateScore() {
-    currentScore = frame.getCurrentScore()
-    game.updateTotalScore(currentScore)
+  function updateScoreText() {
+    $('#current_score').text(game.getTotalScore());
   };
+
 });

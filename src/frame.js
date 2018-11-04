@@ -1,6 +1,6 @@
 var Frame = function(){
   this.currentScore = 0;
-  this.rollNumber = 0;
+  this.rollNumber = 1;
 };
 
 Frame.prototype.getCurrentScore = function () {
@@ -20,5 +20,9 @@ Frame.prototype.checkRolls = function () {
 };
 
 Frame.prototype.addRoll = function () {
+  if(this.rollNumber === 2) {
+    this.rollNumber = 1;
+  } else {
   ++ this.rollNumber;
+  }
 };

@@ -34,8 +34,13 @@ describe("Frame", function() {
   describe("checkRolls", function() {
     it("checks the number of rolls in the frame", function() {
       score.addRoll()
-      score.addRoll()
       expect(score.checkRolls()).toBe(2)
+    });
+
+    it("roll number cannot be over 2", function() {
+      score.addRoll()
+      score.addRoll()
+      expect(score.checkRolls()).toBe(1);
     });
   });
 });

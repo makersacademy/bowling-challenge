@@ -1,8 +1,8 @@
 var Frame = function(bowls) {
   this.bowls = bowls;
-  this.frameScore;
-  this.bonus;
-  this.totalScore;
+  this.frameScore = 0;
+  this.bonus = 0;
+  this.totalScore = 0;
   this.score();
 }
 
@@ -25,11 +25,11 @@ Frame.prototype.score = function() {
 
 Frame.prototype.calculateScore = function(framePlusOne, framePlusTwo) {
 
-  if (framePlusOne.bowls.length === 0) {
+  if (framePlusOne === null || framePlusOne.bowls.length === 0) {
     this.bonus = 0;
   } else if(this._isSpare()){
     this.bonus = framePlusOne.bowls[0];
-  } else if(this._isStrike()){
+  } else if(framePlusTwo != null && this._isStrike()){
     var nextFrames = framePlusOne.bowls.concat(framePlusTwo.bowls);
     this.bonus = nextFrames[0] + nextFrames[1];
   }

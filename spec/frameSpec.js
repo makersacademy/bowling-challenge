@@ -24,13 +24,13 @@ describe("Frame", function() {
   });
 
   it("should calculate the the bonus and total score for a spare", function() {
-    spareFrame.calculateScore(standardFrame, standardFrame)
-    expect(spareFrame.bonus).toEqual(4)
-    expect(spareFrame.totalScore).toEqual(14)
-    spareFrame.calculateScore(strikeFrame, strikeFrame)
-    expect(spareFrame.bonus).toEqual(10)
-    expect(spareFrame.totalScore).toEqual(20)
-    spareFrame.calculateScore(gutterFrame, gutterFrame)
+    spareFrame.calculateScore(standardFrame)
+    expect(spareFrame.bonus).toEqual(4);
+    expect(spareFrame.totalScore).toEqual(14);
+    spareFrame.calculateScore(strikeFrame);
+    expect(spareFrame.bonus).toEqual(10);
+    expect(spareFrame.totalScore).toEqual(20);
+    spareFrame.calculateScore(gutterFrame)
     expect(spareFrame.bonus).toEqual(0)
     expect(spareFrame.totalScore).toEqual(10)
   });

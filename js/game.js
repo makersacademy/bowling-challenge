@@ -27,11 +27,6 @@ Game.prototype.roll = function (pins) {
 }
 
 Game.prototype.newGame = function () {
-  // if (this.currentframenumber === 0) {
-  //   return true
-  // } else {
-  //   return false
-  // }
   return (this.currentframenumber === 0) ? true : false
 }
 
@@ -50,7 +45,6 @@ Game.prototype.setFrameChange = function () {
 }
 
 Game.prototype.getCurrentScore = function () {
-  // var realscores = this.getAllRolls().filter(function(x) { return x >= 0; });
   return this.getAllRolls().reduce(function(a, b){return a+b;})
 }
 

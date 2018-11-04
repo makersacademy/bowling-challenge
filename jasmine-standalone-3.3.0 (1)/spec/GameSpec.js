@@ -52,4 +52,12 @@ describe('Game', function(){
     expect(game.score()).toEqual(26);
   });
 
+  it('scores a perfect game (300 points)', function(){
+    var game = new Game;
+    for(i=0;i<12;i++){
+      game.roll(10);
+    }
+    expect(game.score()).toEqual(300);
+  });
+
 });

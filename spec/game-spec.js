@@ -6,7 +6,7 @@ describe ('Game', function () {
   beforeEach(function () {
     game = new Game()
     currentFrame = game.getCurrentFrame()
-    frame = jasmine.createSpyObj('frame', ['getScore'])
+    frame = jasmine.createSpyObj('frame', ['getScore', 'addBowl', 'isFinished'])
   })
 
   describe ('A bowling game', function () {
@@ -49,6 +49,15 @@ describe ('Game', function () {
       game.addBowl(5)
       game.addBowl(3)
       expect(game.getCurrentFrame()).not.toEqual(currentFrame)
+    })
+
+    it('throws an error if the game is finished', function () {
+      var i = 0
+      for(i = 0; i < 9; i++) {
+        game.getFrames().push(frame)
+      }
+      frame.isFinished.and.returnValue(true)
+      expect(function () { game.addBowl(5) }).toThrow('Game Over!')
     })
   })
 

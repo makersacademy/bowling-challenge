@@ -64,11 +64,16 @@ describe("Frame", function() {
     });
   });
 
-  describe(".reduceBonus()", function() {
+  describe(".expendBonus()", function() {
     it("reduces bonusRolls by 1", function() {
       frame.roll(10);
-      frame.reduceBonus();
+      frame.expendBonus(5);
       expect(frame.bonusRolls).toEqual(1);
+    });
+    it("adds value to total", function() {
+      frame.roll(10);
+      frame.expendBonus(5);
+      expect(frame.total).toEqual(15);
     });
   });
 

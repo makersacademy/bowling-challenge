@@ -22,7 +22,32 @@ describe("Game", function() {
       game.frames[0].roll(10);
       expect(game.currentFrame()).toBe(game.frames[1]);
     });
+  });
+
+  describe(".roll()", function() {
+    it("calls .roll on current frame", function() {
+      spyOn(game.currentFrame(), "roll")
+      game.roll(5);
+      expect(game.currentFrame().roll).toHaveBeenCalled();
+    });
+  });
+
+  describe(".total()", function() {
+    it("begins at 0", function() {
+      expect(game.total()).toEqual(0);
+    });
+    it("returns sum of all frame totals", function() {
+      game.roll(8);
+      game.roll(8);
+      game.roll(8);
+      expect(game.total()).toEqual(24);
+    });
+  });
+
+  describe(".complete()", function() {
+    
   })
+
 
 
 });

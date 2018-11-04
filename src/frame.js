@@ -46,3 +46,11 @@ Frame.prototype._calculateBonus = function (secondFrame) {
 Frame.prototype._spareBonus = function (secondFrame) {
   return secondFrame.getBowls()[0]
 }
+
+Frame.prototype._strikeBonus = function (secondFrame, thirdFrame) {
+  if (secondFrame.isAStrike()) {
+    return secondFrame.getBowls()[0] + thirdFrame.getBowls()[0]
+  } else {
+    return secondFrame._sumOfBowls()
+  }
+}

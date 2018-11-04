@@ -3,12 +3,14 @@ describe("Frame", function() {
   var Game = require("../lib/game")
   var frame;
   var frameTwo;
+  var finalFrame;
   var game;
 
   beforeEach(function() {
     game = new Game;
     frame = game.frames[0];
     frameTwo = game.frames[1];
+    finalFrame = game.frames[9];
   });
 
   describe("total", function() {
@@ -28,15 +30,6 @@ describe("Frame", function() {
     it("adds roll to rolls", function() {
       frame.roll(5);
       expect(frame.rolls).toEqual(1);
-    });
-    it("marks game as complete after two rolls", function() {
-      frame.roll(1);
-      frame.roll(1);
-      expect(frame.isComplete()).toEqual(true);
-    });
-    it("marks game as complete after strike", function() {
-      frame.roll(10);
-      expect(frame.isComplete()).toEqual(true);
     });
     it("adds its value to previous frame totals if they are due a bonus", function() {
       frame.roll(10);
@@ -83,11 +76,50 @@ describe("Frame", function() {
     it("is initially false", function() {
       expect(frame.isComplete()).toEqual(false);
     });
-    it("becomes true after two rolls", function() {
+    it("is false after one normal roll", function() {
+      frame.roll(3);
+      expect(frame.isComplete()).toEqual(false);
+    })
+    it("becomes true after two normal rolls", function() {
       frame.roll(1);
-      frame.roll(1);
+      frame.roll(2);
       expect(frame.isComplete()).toEqual(true);
     });
-  })
 
+    describe("for frames 1-9", function() {
+      it("becomes true after strike", function() {
+        frame.roll(10);
+        expect(frame.isComplete()).toEqual(true);
+      });
+      it("becomes true after spare", function() {
+        frame.roll(5);
+        frame.roll(5);
+        expect(frame.isComplete()).toEqual(true);
+      });
+    });
+
+    describe("for frame 10", function() {
+      it("remains false after strike", function() {
+        finalFrame.roll(10);
+        expect(finalFrame.isComplete()).toEqual(false);
+      });
+      it("remains false after spare", function() {
+        finalFrame.roll(5);
+        finalFrame.roll(5);
+        expect(finalFrame.isComplete()).toEqual(false);
+      });
+      it("returns true after three rolls following strike", function() {
+        finalFrame.roll(10);
+        finalFrame.roll(10);
+        finalFrame.roll(10);
+        expect(finalFrame.isComplete()).toEqual(true);
+      });
+      it("returns true after three rolls following spare", function() {
+        finalFrame.roll(5);
+        finalFrame.roll(5);
+        finalFrame.roll(5);
+        expect(finalFrame.isComplete()).toEqual(true);
+      });
+    });
+  });
 });

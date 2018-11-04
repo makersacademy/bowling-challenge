@@ -79,7 +79,17 @@ ROLL LOGIC
   - if total
 
 
-
+* HOW DO WE IMPLEMENT THE FINAL FRAME?
+  - can we override isComplete and say it's complete when (A) there have been two rolls AND there are no bonus rolls remaining OR (B) there have been three rolls
+    - complete after two normal rolls
+    - not complete after just one roll (need two)
+    - not complete after just spare, or strike (because bonus rolls remain)
+    - complete after strike and any two rolls, even if one is strike or they are spare (>=3)
+    - complete after spare and any roll, even if its a strike (>= 3)
+  - what about bonuses though?
+    - as it stands bonuses are assigned to all previous complete frames, so none would be assigned to this frame itself
+    - BUT maybe that's fine? because any extra rolls ARE the bonus
+      - I think this is true. I had worried that if you scored a strike in your second roll, that you had to add the value of the third roll to the frame twice (once for your first strike and once for your second) but that would allow 40 points in the frame and 310 overall which isn't a thing.
 
 
   - if frame < 10

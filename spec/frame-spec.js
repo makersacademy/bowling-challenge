@@ -33,6 +33,11 @@ describe ('Frame', function () {
       frame.addBowl(5)
       expect(frame.getBowls()).toEqual([5])
     })
+
+    it('can check whether it is a strike', function () {
+      frame.addBowl(10)
+      expect(frame.isAStrike()).toBe(true)
+    })
   })
 
   describe('Calculating score', function () {

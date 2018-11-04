@@ -14,24 +14,13 @@ Frame.prototype.calculateScore = function(framePlusOne, framePlusTwo){
   this.frameScore = pinSum;
 
   if (typeof framePlusOne != 'undefined' &&  framePlusOne.bowls.length > 0) {
+
     if (this._isSpare()) {
-      this.frameScore += framePlusOne.bowls[0];
+      this._spareBonus(framePlusOne);
     };
+
     if (this._isStrike()) {
-      var nextBowls;
-      if (framePlusTwo != null) {
-        nextBowls = framePlusOne.bowls.concat(framePlusTwo.bowls);
-      } else {
-        nextBowls = framePlusOne.bowls;
-      };
-      for (i = 1; i <= 2 ; i++) {
-        console.log(i);
-        console.log(nextBowls);
-        this.frameScore += nextBowls[i-1];
-        console.log(this.frameScore);
-      };
-
-
+      this._strikeBonus(framePlusOne, framePlusTwo);
     };
   };
 };
@@ -56,6 +45,26 @@ Frame.prototype._isStrike = function(){
 
 Frame.prototype._isSpare = function(){
   return this.bowls[0] < 10 && sumArr(this.bowls) === 10;
+}
+
+Frame.prototype._spareBonus = function(framePlusOne){
+  this.frameScore += framePlusOne.bowls[0];
+}
+
+Frame.prototype._strikeBonus = function(framePlusOne, framePlusTwo){
+  var nextBowls;
+
+  if (framePlusTwo != null) {
+    nextBowls = framePlusOne.bowls.concat(framePlusTwo.bowls);
+  } else {
+    nextBowls = framePlusOne.bowls;
+  };
+
+  for (i = 1; i <= 2 ; i++) {
+    console.log(i);
+    console.log(nextBowls);
+    this.frameScore += nextBowls[i-1];
+  };
 }
 
 // ********* Utility Functions *********

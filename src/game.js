@@ -9,6 +9,11 @@ Game.prototype.getFrames = function () {
   return this._frames
 }
 
+Game.prototype.addBowl = function (pins) {
+  this.getCurrentFrame().addBowl(pins)
+  this.getCurrentScore()
+}
+
 Game.prototype.getCurrentScore = function () {
   return this._frames.reduce(function (total, frame) {
     return total + frame.getScore()

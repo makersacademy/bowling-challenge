@@ -39,8 +39,16 @@ describe ('Game', function () {
     })
   })
 
+  describe('Adding a bowl', function () {
+    it('updates current score by the correct number of pins', function () {
+      game.addBowl(5)
+      expect(game.getCurrentScore()).toEqual(5)
+    })
+  })
+
   describe ('Finishing a game', function() {
     beforeEach(function () {
+      var i = 0
       for(i = 0; i < 8; i++) {
         game.getFrames().push(frame)
       }

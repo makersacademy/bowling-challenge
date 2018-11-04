@@ -44,6 +44,12 @@ describe ('Game', function () {
       game.addBowl(5)
       expect(game.getCurrentScore()).toEqual(5)
     })
+
+    it('starts next frame if current frame is finished', function () {
+      game.addBowl(5)
+      game.addBowl(3)
+      expect(game.getCurrentFrame()).not.toEqual(currentFrame)
+    })
   })
 
   describe ('Finishing a game', function() {

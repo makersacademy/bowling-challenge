@@ -12,6 +12,9 @@ Game.prototype.getFrames = function () {
 Game.prototype.addBowl = function (pins) {
   this.getCurrentFrame().addBowl(pins)
   this.getCurrentScore()
+  if (this.getCurrentFrame().isFinished() && !this.isFinished()) {
+    this.startNextFrame()
+  }
 }
 
 Game.prototype.getCurrentScore = function () {

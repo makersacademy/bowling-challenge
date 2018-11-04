@@ -2,6 +2,7 @@ function Scorecard() {
   this.scores = []
 };
 
+
 Scorecard.prototype.enterScore = function(score) {
   this.scores.push(score)
   if (score === 10 && this.scores.length <= 18) { this.scores.push("-") }

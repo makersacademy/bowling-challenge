@@ -11,26 +11,18 @@ Scorer.prototype.total = function() {
 };
 
 Scorer.prototype.scoreFrames = function() {
-  frames = this.calculateFrames()
+  frames = this._calculateFrames(this.scores)
   for (i = 0; i < frames * 2; i += 2) {
     score = this.scoreRoll(i)
-    if (typeof score != "undefined" && score === score) {this.frame_scores.push(score) }
+    if (score >= 0) {this.frame_scores.push(score) }
   };
 };
 
 Scorer.prototype.scoreRoll = function(rollPos) {
   combined_score = this.scores[rollPos] + this.scores[rollPos + 1]
-  if(this.scores[rollPos] === 10) {
-    score = this.scoreStrike(rollPos) }
-  else if (combined_score === 10) {
-    score = this.scoreSpare(rollPos) }
-  else {
-    score = combined_score }
-  return score
-};
-
-Scorer.prototype.calculateFrames = function() {
-  return Math.floor(this.scores.length / 2)
+  if(this.scores[rollPos] === 10) { return this.scoreStrike(rollPos) }
+  else if (combined_score === 10) { return this.scoreSpare(rollPos) }
+  return combined_score
 };
 
 Scorer.prototype.scoreStrike = function(strikePos) {
@@ -47,7 +39,4 @@ Scorer.prototype.scoreSpare = function(spareFramePos) {
 
 Scorer.prototype._isScore = char => char != "-"
 
-sc = new Scorer
-sc.scores = [1,2,3,4,5,5,4]
-sc.scoreFrames()
-console.log(sc.frame_scores)
+Scorer.prototype._calculateFrames = scores => Math.floor(scores.length / 2)

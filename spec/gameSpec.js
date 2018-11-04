@@ -107,7 +107,6 @@ describe('Game', function() {
         game.roll(10)
         game.roll(2)
         game.roll(3)
-
       expect(game.getAllRolls()).toEqual([10, 2, 3]);
     });
   });

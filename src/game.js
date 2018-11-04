@@ -1,8 +1,7 @@
 "use strict"
 
 function Game() {
-  this._frames = []
-  this._currentFrame = 1
+  this._frames = [new Frame()]
   this._finished = false
 }
 
@@ -12,16 +11,16 @@ Game.prototype.getFrames = function () {
 
 Game.prototype.getCurrentScore = function () {
   return this._frames.reduce(function (total, frame) {
-    return total + bowl
+    return total + frame.getScore()
   }, 0)
 }
 
 Game.prototype.getCurrentFrame = function () {
-  return this._currentFrame
+  return this._frames[this._frames.length - 1]
 }
 
 Game.prototype.startNextFrame = function () {
-  this._currentFrame++
+  this._frames.push(new Frame())
 }
 
 Game.prototype.isFinished = function() {

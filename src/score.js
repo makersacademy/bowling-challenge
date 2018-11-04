@@ -1,11 +1,10 @@
-function Score() {
-  this.array = [];
+function Score(array = []) {
+  this.array = array;
 }
 
 Score.prototype.calculateFrameScore = function() {
   for (var i = 0; i < this.array.length; i++) {
     this.array[i].score = this.array[i].roll1 + (this.array[i].roll2 || 0) + (this.array[i].roll3 || 0);
-    return this.array[i].score;
   }
 };
 
@@ -15,9 +14,9 @@ Score.prototype.calculateBonus = function () {
       this.array[i].bonus = this.array[i + 1].roll1;
     } else if (this.array[i].isStrike) {
       if (this.array[i + 1].roll2 === undefined) {
-        this.array[i].bonus += this.array[i + 1].roll1 + this.array[i + 2].roll1;
+        this.array[i].bonus = (this.array[i + 1].roll1 + this.array[i + 2].roll1);
       } else {
-        this.array[i].bonus += this.array[i + 1].roll1 + this.array[i + 1].roll2;
+        this.array[i].bonus = (this.array[i + 1].roll1 + this.array[i + 1].roll2);
       }
     }
   }

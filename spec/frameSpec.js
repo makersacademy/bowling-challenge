@@ -24,10 +24,4 @@ describe('Frame', function() {
       expect(strike_frame.isStrike).toEqual(true);
     });
   });
-
-  // describe('calculateFrameScore', function() {
-  //   it('calculates an open frame', function() {
-  //     expect(regular_frame.score).toEqual(7);
-  //   });
-  // });
 });

@@ -8,7 +8,7 @@ describe('Bowling', function() {
   });
 
   it('starts with a score of zero', function() {
-    expect(bowling.returnFrameScore(1)).toEqual(0)
+    expect(bowling.returnScore()).toEqual(0)
   });
 
   it('adds the score of a frame (2 bowls)', function() {
@@ -20,7 +20,7 @@ describe('Bowling', function() {
   it('adds ten if spare', function() {
     bowling.bowl(5)
     bowling.bowl(5)
-    expect(bowling.returnFrameScore()).toEqual(10)
+    expect(bowling.returnFrameScore(1)).toEqual(10)
   });
 
   it('ends a frame when all pins are knocked', function() {
@@ -46,6 +46,7 @@ describe('Bowling', function() {
       bowling.bowl(9)
       bowling.bowl(1)
       bowling.bowl(5)
+      bowling.bowl(1)
       expect(bowling.returnFrameScore(1)).toEqual(15)
     });
   });

@@ -24,3 +24,7 @@ Frame.prototype.isFinished = function () {
 Frame.prototype.isAStrike = function() {
   return this._bowls.includes(10)
 }
+
+Frame.prototype.isASpare = function () {
+  return this.getScore() === 10 && !this.isAStrike()
+}

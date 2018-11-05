@@ -1,5 +1,6 @@
 describe("Frame", function() {
 
+//Refactor so that this before each is in a spec helper
   beforeEach(function(){
     standardFrame = new Frame([4,5]);
     spareFrame = new Frame([5,5]);

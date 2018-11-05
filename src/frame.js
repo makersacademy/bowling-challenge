@@ -8,7 +8,9 @@ var Frame = function(bowls) {
 
 
 Frame.prototype.calculateScore = function(framePlusOne, framePlusTwo){
+  // Valid frame checks need refactoring so that it takes into account whether or not it is the final frame
   // this._validFrameChecks();
+
   this.frameScore = sumArr(this.bowls);
 
   if (typeof framePlusOne != 'undefined' &&  framePlusOne.bowls.length > 0) {

@@ -13,9 +13,17 @@ h1 {
 
 table {
   width: 90%;
+  height: 200px;
+  text-align: right;
+  font-size: 40px;
   background-color: white;
-  border: 2px solid black;
   empty-cells: show;
+}
+
+table, th, td {
+  border: 2px solid black;
+  border-collapse: collapse;
+  padding: 1.2%;
 }
 
 h2 {

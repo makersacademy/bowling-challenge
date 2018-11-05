@@ -3,13 +3,21 @@ body {
   background-repeat: no-repeat;
   background-size: 100%;
   background-color: #b2cecf;
-  text-align: center;
   font-family: helvetica;
   font-weight: bold;
-};
+}
+
+h1 {
+  text-align: center;
+}
 
 table {
-  width: 100%;
+  width: 90%;
   background-color: white;
-  border: 5px solid black;
-};
+  border: 2px solid black;
+  empty-cells: show;
+}
+
+h2 {
+  text-align: left;
+}

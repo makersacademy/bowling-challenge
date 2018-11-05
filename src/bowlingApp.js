@@ -4,7 +4,7 @@ $(document).ready(function() {
 
   $("#score").text(bowlingScorer.returnScore());
   $("#frame").text(bowlingScorer.returnFrame());
-  $("#frame_1_score").text(bowlingScorer.returnFrameScore(1);
+  $("#frame_1_score").text(bowlingScorer.returnFrameScore(1));
 
 
   $("#add_score_0").click(function() {
@@ -63,5 +63,4 @@ $(document).ready(function() {
   });
 
 
-  })
 });

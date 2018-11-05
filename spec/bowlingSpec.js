@@ -11,42 +11,54 @@ describe('Bowling', function() {
     expect(bowling.returnScore()).toEqual(0)
   });
 
-  it('adds the score of a frame (2 bowls)', function() {
-    bowling.bowl(5)
-    bowling.bowl(4)
-    expect(bowling.returnFrameScore(1)).toEqual(9)
+  it('keeps the score for a frame', function() {
+    bowling.firstBowl(5, 1)
+    bowling.secondBowl(4, 1)
+    expect(bowling.returnFrameScore(1)).toEqual([5,4])
+  });
+
+  it('totals the score for each frame', function() {
+    bowling.firstBowl(5, 1)
+    bowling.secondBowl(4, 1)
+    expect(bowling.returnFrameTotal(1)).toEqual(9)
   });
 
   it('adds ten if spare', function() {
-    bowling.bowl(5)
-    bowling.bowl(5)
+    bowling.firstBowl(5, 1)
+    bowling.secondBowl(5, 1)
     expect(bowling.returnFrameScore(1)).toEqual(10)
   });
 
   it('ends a frame when all pins are knocked', function() {
-    bowling.bowl(10)
+    bowling.firstBowl(10, 1)
     expect(bowling.returnFrame()).toEqual(2)
   });
 
   it('ends a frame after two rolls', function() {
-    bowling.bowl(1)
-    bowling.bowl(1)
+    bowling.firstBowl(1, 1)
+    bowling.secondBowl(1, 1)
     expect(bowling.returnFrame()).toEqual(2)
   });
 
-  it('resets to two bowls after a frame ends', function() {
-    bowling.bowl(1)
-    bowling.bowl(1)
-    expect(bowling.returnBowls()).toEqual(2)
+  it('resets frame after a frame ends', function() {
+    bowling.firstBowl(1, 1)
+    bowling.secondBowl(1, 1)
+    expect(bowling.returnRoll()).toEqual(1)
   });
+
+  it('knows what a spare is', function() {
+    bowling.firstBowl(9, 1)
+    bowling.secondBowl(1, 1)
+    expect(bowling.isSpare()).toEqual(true)
+  })
 
   describe('after a spare', function() {
 
     it('adds the next roll to the score of ten', function() {
-      bowling.bowl(9)
-      bowling.bowl(1)
-      bowling.bowl(5)
-      bowling.bowl(1)
+      bowling.firstBowl(9, 1)
+      bowling.secondBowl(1, 1)
+      bowling.firstBowl(5, 2)
+      bowling.secondBowl(1, 2)
       expect(bowling.returnFrameScore(1)).toEqual(15)
     });
   });

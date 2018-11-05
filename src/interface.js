@@ -13,8 +13,8 @@ $(document).ready(function () {
       value = $(this).attr('id');
       newRoll1 = roll.getRoll(value);
       showFirstRoll();
+      findImpossibleRolls();
       frame.addRoll();
-      hideButtons();
     } else {
       value = $(this).attr('id');
       newRoll2 = roll.getRoll(value);
@@ -32,11 +32,7 @@ $(document).ready(function () {
   };
 
   function showSecondRoll() {
-    $(`#secondRoll${game.frameNumber()}`).text(roll.getRoll(value))
-  };
-
-  function hideButtons() {
-    findImpossibleRolls();
+    $(`#secondRoll${game.getFrameNumber()}`).text(roll.getRoll(value))
   };
 
   function showButtons() {
@@ -48,9 +44,9 @@ $(document).ready(function () {
   };
 
   function findImpossibleRolls(){
-    impossibleRoll2 = frame.impossibleRolls(parseInt(newRoll1));
-    for(var r = 0; r < impossibleRoll2.length; r++) {
-    $(`#${impossibleRoll2[r]}`).hide();
+      impossibleRoll2 = frame.impossibleRolls(parseInt(newRoll1));
+      for(var r = 0; r < impossibleRoll2.length; r++) {
+      $(`#${impossibleRoll2[r]}`).hide();
     };
   };
 

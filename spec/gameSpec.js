@@ -18,7 +18,7 @@ describe("Game", function(){
 
   describe("frameNumber", function() {
     it("starts at one", function() {
-      expect(game.frameNumber()).toBe(1)
+      expect(game.getFrameNumber()).toBe(1)
     });
 
     it("tracks the frame number that the user is on", function(){
@@ -27,7 +27,7 @@ describe("Game", function(){
       frameScore = frame.getCurrentScore();
 
       game.updateTotalScore(frameScore)
-      expect(game.frameNumber()).toBe(2);
+      expect(game.getFrameNumber()).toBe(2);
     });
 
     it("finsihes game after the 10th frame", function(){
@@ -36,7 +36,7 @@ describe("Game", function(){
       frameScore = frame.getCurrentScore();
 
       for(i = 0; i < 10; i++) {game.updateTotalScore(frameScore)}
-      expect(game.frameNumber()).toBe("Game over!");
+      expect(game.getFrameNumber()).toBe("Game over!");
     });
   });
 });

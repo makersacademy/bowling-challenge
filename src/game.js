@@ -9,10 +9,10 @@ Game.prototype.getTotalScore = function () {
 
 Game.prototype.updateTotalScore = function (frameScore) {
   this.totalScore += frameScore
-  ++ this.frame;
+    ++ this.frame;
 };
 
-Game.prototype.frameNumber = function(){
+Game.prototype.getFrameNumber = function(){
   if(this.frame > 10){
     return "Game over!"
   } else {

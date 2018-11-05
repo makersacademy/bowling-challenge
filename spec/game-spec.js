@@ -30,12 +30,20 @@ describe ('Game', function () {
   })
 
   describe ('Calculating score', function () {
-    it('will return 10 when two frames have 5 points each', function () {
+    it('returns 10 when two frames have 5 points each', function () {
       spyOn(currentFrame, 'getScore').and.returnValue(5)
       game.startNextFrame()
       var newCurrentFrame = game.getCurrentFrame()
+
       spyOn(newCurrentFrame, 'getScore').and.returnValue(5)
       expect(game.getCurrentScore()).toEqual(10)
+    })
+
+    it('returns 26 when one frame is a spare the other scores 8', function () {
+      game.addBowl(5)
+      game.addBowl(5)
+      game.addBowl(8)
+      expect(game.getCurrentScore()).toEqual(26)
     })
   })
 

@@ -20,8 +20,8 @@ Game.prototype.addBowl = function (pins) {
 }
 
 Game.prototype.getCurrentScore = function () {
-  return this._frames.reduce(function (total, frame) {
-    return total + frame.getScore()
+  return this._frames.reduce(function (total, frame, index, frames) {
+    return total + frame.getScore(frames[index + 1], frames[index + 2])
   }, 0)
 }
 

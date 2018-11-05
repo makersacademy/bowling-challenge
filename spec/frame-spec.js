@@ -12,7 +12,6 @@ describe ('Frame', function () {
   describe('A frame', function () {
     it('should have a score', function () {
       expect(frame.getScore()).toEqual(0)
-      console.log(frame.getScore())
     })
 
     it('can store bowls', function () {

@@ -137,4 +137,72 @@ describe('Game', function() {
       expect(game.score()).toEqual(60);
     });
   });
+
+  describe('lastFrame', function() {
+    it('ends after two rolls if not strike or spare', function() {
+      for (var i = 0; i < 9; i++) {
+        game.recordRoll(5);
+        game.recordRoll(4);
+      };
+      game.recordRoll(3);
+      game.recordRoll(5);
+      expect(function(){game.recordRoll(2)}).toThrow("Game finished");
+    });
+
+    it('allows a third roll for a spare and adds bonus', function() {
+      for (var i = 0; i < 9; i++) {
+        game.recordRoll(5);
+        game.recordRoll(4);
+      };
+      game.recordRoll(9);
+      game.recordRoll(1);
+      game.recordRoll(5);
+      expect(game.allFrames()[9]["score"]).toEqual(15);
+      expect(game.score()).toEqual(96);
+    });
+
+    it('allows three rolls for a strike and adds bonus', function() {
+      for (var i = 0; i < 9; i++) {
+        game.recordRoll(5);
+        game.recordRoll(4);
+      };
+      game.recordRoll(10);
+      game.recordRoll(1);
+      game.recordRoll(1);
+      expect(game.allFrames()[9]["score"]).toEqual(12);
+      expect(game.score()).toEqual(93);
+    });
+
+    it('allows for three strikes', function() {
+      for (var i = 0; i < 9; i++) {
+        game.recordRoll(5);
+        game.recordRoll(4);
+      };
+      game.recordRoll(10);
+      game.recordRoll(10);
+      game.recordRoll(10);
+      expect(game.allFrames()[9]["score"]).toEqual(30);
+      expect(game.score()).toEqual(111);
+    });
+
+    it('adds strike bonus to previous rolls', function() {
+      for (var i = 0; i < 16; i++) {
+        game.recordRoll(0);
+      };
+      game.recordRoll(10);
+      game.recordRoll(10);
+      game.recordRoll(10);
+      game.recordRoll(10);
+      expect(game.allFrames()[8]["score"]).toEqual(30);
+      expect(game.allFrames()[9]["score"]).toEqual(30);
+      expect(game.score()).toEqual(60);
+    });
+
+    it('ends game after three rolls', function() {
+      for (var i = 0; i < 12; i++) {
+        game.recordRoll(10);
+      };
+      expect(function(){game.recordRoll(2)}).toThrow("Game finished");
+    });
+  });
 });

@@ -30,13 +30,41 @@ describe("Game", function(){
       expect(game.getFrameNumber()).toBe(2);
     });
 
-    it("finsihes game after the 10th frame", function(){
+    it("finishes game after the 10th frame", function(){
       frame = jasmine.createSpyObj('frame', ['getCurrentScore'])
       frame.getCurrentScore.and.callFake(function() {return 6})
       frameScore = frame.getCurrentScore();
 
       for(i = 0; i < 10; i++) {game.updateTotalScore(frameScore)}
       expect(game.getFrameNumber()).toBe("Game over!");
+    });
+  });
+
+  describe("lastFrame", function(){
+    it ("shows the score of the previous frame", function () {
+      frame1 = jasmine.createSpyObj('frame', ['getCurrentScore'])
+      frame1.getCurrentScore.and.callFake(function() {return 8})
+      frame1Score = frame1.getCurrentScore()
+      game.updateTotalScore(frame1Score)
+
+      frame2 = jasmine.createSpyObj('frame', ['getCurrentScore'])
+      frame2.getCurrentScore.and.callFake(function() {return 6})
+      frame2Score = frame2.getCurrentScore()
+
+      expect(game.lastFrame()).toBe(8)
+    });
+
+    it("adds the score of the current frame to the previous if it was a strike", function () {
+      frame1 = jasmine.createSpyObj('frame', ['getCurrentScore'])
+      frame1.getCurrentScore.and.callFake(function() {return 10})
+      frame1Score = frame1.getCurrentScore()
+      game.updateTotalScore(frame1Score)
+
+      frame2 = jasmine.createSpyObj('frame', ['getCurrentScore'])
+      frame2.getCurrentScore.and.callFake(function() {return 6})
+      frame2Score = frame2.getCurrentScore()
+
+      expect(game.lastFrame(frame2Score)).toBe(16)
     });
   });
 });

@@ -4,7 +4,16 @@ $(document).ready(function() {
 
   $("#score").text(bowlingScorer.returnScore());
   $("#frame").text(bowlingScorer.returnFrame());
-  $("#frame_1_score").text(bowlingScorer.returnFrameScore(1));
+  $("#frame_1_score").text(bowlingScorer.returnTotalScore());
+  $("#frame_2_score").text(bowlingScorer.returnFrameScore(2));
+  $("#frame_3_score").text(bowlingScorer.returnFrameScore(3));
+  $("#frame_4_score").text(bowlingScorer.returnFrameScore(4));
+  $("#frame_5_score").text(bowlingScorer.returnFrameScore(5));
+  $("#frame_6_score").text(bowlingScorer.returnFrameScore(6));
+  $("#frame_7_score").text(bowlingScorer.returnFrameScore(7));
+  $("#frame_8_score").text(bowlingScorer.returnFrameScore(8));
+  $("#frame_9_score").text(bowlingScorer.returnFrameScore(9));
+  $("#frame_10_score").text(bowlingScorer.returnFrameScore(10));
 
 
   $("#add_score_0").click(function() {

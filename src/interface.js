@@ -18,8 +18,8 @@ $(document).ready(function () {
     } else {
       value = $(this).attr('id');
       newRoll2 = roll.getRoll(value);
-      showSecondRoll();
       frameScore();
+      showSecondRoll();
       updateScore();
       updateFrameText();
       frame.addRoll();
@@ -28,15 +28,23 @@ $(document).ready(function () {
   });
 
   function showFirstRoll() {
-    $(`#roll${game.frameNumber()}`).text(roll.getRoll(value))
+    if(newRoll1 === '10') {
+      $(`#roll${game.getFrameNumber()}`).text("X")
+    } else {
+      $(`#roll${game.getFrameNumber()}`).text(roll.getRoll(value))
+    };
   };
 
   function showSecondRoll() {
-    $(`#secondRoll${game.getFrameNumber()}`).text(roll.getRoll(value))
+    if(frameScore() === '10') {
+      $(`#secondRoll${game.getFrameNumber()}`).text('/')
+    } else {
+      $(`#secondRoll${game.getFrameNumber()}`).text(roll.getRoll(value))
+    };
   };
 
   function showButtons() {
-    if(game.frameNumber() === 'Game over!') {
+    if(game.getFrameNumber() === 'Game over!') {
       $('button').hide();
     } else {
       $('button').show();
@@ -62,7 +70,7 @@ $(document).ready(function () {
   };
 
   function frameScoreText() {
-    $(`#frame_score${game.frameNumber()}`).text(frame.getCurrentScore());
+    $(`#frame_score${game.getFrameNumber()}`).text(frame.getCurrentScore());
   };
 
   function updateScoreText() {
@@ -70,8 +78,8 @@ $(document).ready(function () {
   };
 
   function updateFrameText() {
-    if(game.frameNumber() === 'Game over!') {
-      $('#frame_number').text(game.frameNumber());
+    if(game.getFrameNumber() === 'Game over!') {
+      $('#frame_number').text(game.getFrameNumber());
     };
   };
 });

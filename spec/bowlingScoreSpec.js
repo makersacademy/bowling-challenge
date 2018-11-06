@@ -15,6 +15,20 @@ describe('BowlingScore', function() {
   it('holds a frame', function() {
     expect(bowlingScore.frame1.getFrameNum()).toEqual(1);
   });
+
+  it('can access updated frame score', function() {
+    expect(bowlingScore.frame1Score[0]).toEqual(0);
+    expect(bowlingScore.frame1Score[1]).toEqual(0);
+    expect(bowlingScore.frame1Score[2]).toEqual('');
+  });
+
+  it('can update score array', function() {
+    expect(bowlingScore.scoreArray.length).toEqual(2);
+  });
+
+  it('can update score', function() {
+    expect(bowlingScore.getCurrentScore()).toEqual(0);
+  });
 });
 
 
@@ -37,6 +51,12 @@ describe('Frame', function() {
 
   it('will get a second roll, if the first is less than 10', function() {
     expect(frame.roll2.getRollScore()).toEqual(0)
+  });
+
+  it('updates frame score', function() {
+    expect(frame.getFrameScore()[0]).toEqual(0);
+    expect(frame.getFrameScore()[1]).toEqual(0);
+    expect(frame.getFrameScore()[2]).toEqual('');
   });
 });
 

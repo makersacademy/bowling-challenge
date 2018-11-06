@@ -14,16 +14,16 @@ describe('Bowling', function() {
   it('keeps the score for a frame', function() {
     bowling.firstBowl(5, 1)
     bowling.secondBowl(4, 1)
-    expect(bowling.returnFrameScore(1)).toEqual([5,4])
+    expect(bowling.returnFrameScore(1)).toEqual(9)
   });
 
   it('totals the score for each frame', function() {
     bowling.firstBowl(5, 1)
     bowling.secondBowl(4, 1)
-    expect(bowling.returnFrameTotal(1)).toEqual(9)
+    expect(bowling.returnFrameScore(1)).toEqual(9)
   });
 
-  it('adds ten if spare', function() {
+  it('does not immediately return score if spare', function() {
     bowling.firstBowl(5, 1)
     bowling.secondBowl(5, 1)
     expect(bowling.returnFrameScore(1)).toEqual(10)
@@ -40,17 +40,16 @@ describe('Bowling', function() {
     expect(bowling.returnFrame()).toEqual(2)
   });
 
-  it('resets frame after a frame ends', function() {
-    bowling.firstBowl(1, 1)
-    bowling.secondBowl(1, 1)
-    expect(bowling.returnRoll()).toEqual(1)
-  });
-
   it('knows what a spare is', function() {
     bowling.firstBowl(9, 1)
     bowling.secondBowl(1, 1)
-    expect(bowling.isSpare()).toEqual(true)
-  })
+    expect(bowling.isSpare(1)).toEqual(true)
+  });
+
+  it('knows what a strike is', function() {
+    bowling.firstBowl(10, 1)
+    expect(bowling.isStrike(1)).toEqual(true)
+  });
 
   describe('after a spare', function() {
 

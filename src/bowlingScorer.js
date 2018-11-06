@@ -1,9 +1,10 @@
 var BowlingScorer = function() {
   this.totalScore = 0;
   this.frameScore = [,];
+  this.frameTotal = 0;
   this.frame = 1;
   this.roll = 1;
-  this.scoreChart = [[],[],[],[],[],[],[],[],[],[]];
+  this.scoreChart = [ , , , , , , , , , ];
 };
                   // 1  2  3  4  5  6  7  8  9  10
 // this.scoreChart should contain arrays for each frame
@@ -21,32 +22,38 @@ BowlingScorer.prototype.returnRoll = function() {
   return this.roll;
 };
 
-BowlingScorer.prototype.returnFrameScore = function(frameNumber) {
-  return this.scoreChart[frameNumber-1];
+BowlingScorer.prototype.returnFrameScore = function(frame) {
+  return this.scoreChart[frame-1];
 };
 
-BowlingScorer.prototype.isSpare = function(frameNumber) {
-  return this.scoreChart[frameNumber-1][0] + this.scoreChart[frameNumber-1][1] === 10
+BowlingScorer.prototype.isSpare = function(frame) {
+  return(this.scoreChart[frame-1] === 10 && this.roll === 1)
+};
+
+BowlingScorer.prototype.isStrike = function(frame) {
+  return(this.scoreChart[frame-1] === 10 && this.roll === 2)
+};
+
+BowlingScorer.prototype.bowl = function(score) {
+  if(this.roll % 2 === 1) return this.firstBowl(score, this.frame);
+  else return this.secondBowl(score, this.frame);
 };
 
 BowlingScorer.prototype.firstBowl = function(score, frame) {
+  this.frameTotal = 0
   this.frameScore[0] = score;
-  this.scoreChart[frame-1][0] = score;
+  this.scoreChart[frame-1] = score;
   this.roll++;
+  if(this.frameScore[0] === 10) this.frame++
 };
-//   if((this.frameScore === 10) || (this.roll > 2)) {
-//     this.scoreChart[this.frame-1] = this.frameScore;
-//     this.frame++;
-//     this.roll = 1;
-//     this.totalScore += this.frameScore;
-//     this.frameScore = 0;
-//   };
-// };
 
 BowlingScorer.prototype.secondBowl = function(score, frame) {
   this.frameScore[1] = score;
-  this.scoreChart[frame-1][1] = score;
+  this.scoreChart[frame-1] += score;
   this.frame++;
+  this.totalScore += this.scoreChart[frame-1];
+  this.frameTotal = this.frameScore[0] + this.frameScore[1];
+  this.roll = 1
 };
 
 BowlingScorer.prototype.updateScoreChart = function() {

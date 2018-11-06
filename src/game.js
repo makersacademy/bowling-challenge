@@ -10,9 +10,12 @@ Game.prototype.getTotalScore = function () {
 };
 
 Game.prototype.updateTotalScore = function (frameScore) {
+  if(this.theLastFrame >= 10) {
+    this.totalScore += frameScore;
+  }
+  this.totalScore += frameScore;
   this.theLastFrame = frameScore;
-  this.totalScore += frameScore
-    ++ this.frame;
+  ++ this.frame;
 };
 
 Game.prototype.getFrameNumber = function(){
@@ -23,7 +26,7 @@ Game.prototype.getFrameNumber = function(){
   };
 };
 
-Game.prototype.lastFrame = function (frameScore) {
+Game.prototype.checkLastFrame = function (frameScore) {
   if(this.theLastFrame === 10) {
     this.theLastFrame += frameScore
   }

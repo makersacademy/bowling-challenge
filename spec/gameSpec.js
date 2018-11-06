@@ -40,7 +40,7 @@ describe("Game", function(){
     });
   });
 
-  describe("lastFrame", function(){
+  describe("checkLastFrame", function(){
     it ("shows the score of the previous frame", function () {
       frame1 = jasmine.createSpyObj('frame', ['getCurrentScore'])
       frame1.getCurrentScore.and.callFake(function() {return 8})
@@ -51,7 +51,9 @@ describe("Game", function(){
       frame2.getCurrentScore.and.callFake(function() {return 6})
       frame2Score = frame2.getCurrentScore()
 
-      expect(game.lastFrame()).toBe(8)
+      expect(game.checkLastFrame(frame2Score)).toBe(8)
+      game.updateTotalScore(frame2Score)
+      expect(game.getTotalScore()).toBe(14)
     });
 
     it("adds the score of the current frame to the previous if it was a strike", function () {
@@ -64,7 +66,9 @@ describe("Game", function(){
       frame2.getCurrentScore.and.callFake(function() {return 6})
       frame2Score = frame2.getCurrentScore()
 
-      expect(game.lastFrame(frame2Score)).toBe(16)
+      expect(game.checkLastFrame(frame2Score)).toBe(16)
+      game.updateTotalScore(frame2Score)
+      expect(game.getTotalScore()).toBe(22)
     });
   });
 });

@@ -20,7 +20,14 @@ describe('BowlingScorecard', function() {
 
 describe('Frame', function() {
 
+  var frame;
+
   beforeEach(function() {
-    frame = new Frame;
+    frame = new Frame(3, 5);
+  });
+
+  it('records the outcomes of bowls', function() {
+    expect(frame.getBowl1()).toEqual(3);
+    expect(frame.getBowl2()).toEqual(5);
   });
 });

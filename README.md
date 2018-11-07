@@ -13,6 +13,9 @@ Welcome to the bowling scorecard. Check out the instructions below to find out h
 ### Running the Tests
 Tests are written using jasmine. To run the test please open the `SpecRunner.html` file in your chosen browser.
 
+### Dependancies
+This program is written using JavaScript, jQuery, HTML, CSS and Jasmine as the testing framework.
+
 ### Approach to Solving this Kata
 I kept a methodical approach when solving this kata. I first created the JavaScript for a basic game. Then created an interface using HTML and jQuery. I then resolved edge cases around this for example, keeping track of the frame number, but telling the user that the  game is over after their 10th roll.
 

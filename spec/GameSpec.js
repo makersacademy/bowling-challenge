@@ -11,7 +11,11 @@ describe('Game', function() {
   });
 
   it('starts a game at bowl 1', function() {
-    expect(game.currentbowl).toEqual(1);
+    expect(game.currentBowl).toEqual(1);
+  });
+
+  it('has 10 pins for each frame', function() {
+    expect(game.framePins).toEqual(10);
   });
 
 });

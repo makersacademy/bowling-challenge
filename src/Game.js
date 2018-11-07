@@ -1,7 +1,13 @@
-"use strict";
+
  function Game() {
-  this._currentScore = 0
+  this.rollAccumulator = [0]
 }
  Game.prototype.getCurrentScore = function () {
-  return this._currentScore
+  var total = this.rollAccumulator.reduce(function(accumulator, currentValue) {
+    return accumulator + currentValue
+  });
+  return total;
 }
+  Game.prototype.roll = function (roll) {
+    this.rollAccumulator.push(roll);
+  }

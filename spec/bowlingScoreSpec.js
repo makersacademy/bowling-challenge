@@ -13,7 +13,14 @@ describe('BowlingScorecard', function() {
   });
 
   it('holds a frame', function() {
-    expect(bowlingScorecard.frame1).toBe(Object);
+    expect(bowlingScorecard.frame1 instanceof Frame).toBeTruthy();
     });
 
+});
+
+describe('Frame', function() {
+
+  beforeEach(function() {
+    frame = new Frame;
+  });
 });

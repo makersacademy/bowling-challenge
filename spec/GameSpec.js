@@ -18,4 +18,10 @@ describe('Game', function() {
     expect(game.framePins).toEqual(10);
   });
 
+  describe('bowl', function() {
+    it('decreses the framePins from number of pins', function() {
+      game.bowl(3);
+      expect(game.framePins).toEqual(7);
+    });
+
 });

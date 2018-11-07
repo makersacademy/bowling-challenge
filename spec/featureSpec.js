@@ -47,7 +47,6 @@ describe("Feature", function() {
     game.addFrame(strikeFrame);
     game.addFrame(finalFrame);
 
-
     game.generateTotalScore();
     expect(game.gameScore).toEqual(300);
   });

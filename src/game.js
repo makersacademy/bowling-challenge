@@ -16,7 +16,7 @@ Game.prototype.generateTotalScore = function() {
   for (var i = 0; i < this.frames.length; i++) {
     if ( i + 2 < this.frames.length ) {
       this.frames[i].calculateScore(this.frames[i + 1], this.frames[i + 2]);
-    } else if ( i + 1 < this.frames.length ) {
+    } else if (i + 1 < this.frames.length) {
       this.frames[i].calculateScore(this.frames[i + 1]);
     } else {
       this.frames[i].calculateScore();

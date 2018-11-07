@@ -55,10 +55,13 @@ Frame.prototype._spareBonus = function(framePlusOne){
 Frame.prototype._strikeBonus = function(framePlusOne, framePlusTwo){
   var nextBowls;
 
-  if (typeof framePlusTwo != 'undefined') {
-    nextBowls = framePlusOne.bowls.concat(framePlusTwo.bowls);
-  } else {
+
+
+  if (typeof framePlusTwo === 'undefined') {
     nextBowls = framePlusOne.bowls;
+
+  } else {
+    nextBowls = framePlusOne.bowls.concat(framePlusTwo.bowls);
   };
   for (i = 1; i <= 2 && i <= nextBowls.length; i++) {
     this.frameScore += nextBowls[i-1];

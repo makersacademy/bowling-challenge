@@ -28,12 +28,12 @@ describe("Frame", function() {
 
   describe("Caclulating Score for Spares", function(){
 
-    it("should return 14 when followed by standard frame", function() {
+    it("should return 14 (10 + 1st bowl of 2nd frame) when followed by standard frame", function() {
       spareFrame.calculateScore(standardFrame);
       expect(spareFrame.frameScore).toEqual(14);
     });
 
-    it("should return 15 (10 + first bowl of 2nd frame) when followed by another spare", function() {
+    it("should return 15 (10 + 1st bowl of 2nd frame) when followed by another spare", function() {
       spareFrame.calculateScore(spareFrame);
       expect(spareFrame.frameScore).toEqual(15);
     });

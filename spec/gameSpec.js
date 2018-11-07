@@ -21,7 +21,7 @@ describe("Game", function() {
     expect(strikeFrame.calculateScore).toBeDefined();
     standardFrame.frameScore.and.returnValue(9);
     // const spy = spyOnProperty(standardFrame, 'frameScore', 'get').and.returnValue(9);
-    expect(standardFrame.frameScore()).toBe(9);
+    expect(standardFrame.frameScore).toBe(9);
   });
 
 });

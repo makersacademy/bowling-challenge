@@ -61,6 +61,33 @@ describe ('Game', function () {
       }
       expect(game.getCurrentScore()).toEqual(0)
     })
+
+    it('returns correct score for a full game', function () {
+      console.log(game)
+      game.addBowl(1)
+      game.addBowl(4)
+      game.addBowl(4)
+      game.addBowl(5)
+      game.addBowl(6)
+      game.addBowl(4)
+      game.addBowl(5)
+      game.addBowl(5)
+      game.addBowl(10)
+      console.log(game.getCurrentScore())
+      game.addBowl(0)
+      game.addBowl(1)
+      console.log(game.getCurrentScore())
+      game.addBowl(7)
+      game.addBowl(3)
+      console.log(game.getCurrentScore())
+      game.addBowl(6)
+      game.addBowl(4)
+      console.log(game.getCurrentScore())
+      game.addBowl(10)
+      game.addBowl(2)
+      game.addBowl(8)
+      expect(game.getCurrentScore()).toEqual(127)
+    })
   })
 
   describe('Adding a bowl', function () {
@@ -88,8 +115,8 @@ describe ('Game', function () {
   describe ('Finishing a game', function() {
     beforeEach(function () {
       var i = 0
-      for(i = 0; i < 8; i++) {
-        game.getFrames().push(frame)
+      for(i = 0; i < 19; i++) {
+        game.addBowl(0)
       }
     })
 
@@ -98,7 +125,7 @@ describe ('Game', function () {
     })
 
     it('should finish when all 10 frames are completed', function () {
-      game.getFrames().push(frame)
+      game.addBowl(0)
       expect(game.isFinished()).toEqual(true)
     })
   })

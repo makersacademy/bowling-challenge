@@ -15,7 +15,7 @@ Game.prototype.addBowl = function (pins) {
   }
   this.getCurrentFrame().addBowl(pins)
   this.getCurrentScore()
-  if (this.getCurrentFrame().isFinished()) {
+  if (!this.isFinished() && this.getCurrentFrame().isFinished()) {
     this.startNextFrame()
   }
 }
@@ -37,7 +37,6 @@ Game.prototype.startNextFrame = function () {
 Game.prototype.isFinished = function() {
   if (this.getFrames().length >= 10 && this.getCurrentFrame().isFinished()) {
     this._finished = true
-    console.log(this)
     return this._finished
   }
 }

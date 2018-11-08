@@ -14,11 +14,17 @@ section#header {
   background-color: #BC2222;
   position: fixed;
   top: 0;
+  left: 0;
 }
 section#footer {
   position: fixed;
   bottom: 0;
+  left: 0;
   height: 15%;
   width: 100%;
   background-color: #BC2222;
+}
+section#scorecard {
+  margin-top: 20%;
+  text-align: center;
 }

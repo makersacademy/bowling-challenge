@@ -26,9 +26,13 @@ Game.prototype.getFrameNumber = function(){
   };
 };
 
-Game.prototype.checkLastFrame = function (frameScore) {
+Game.prototype.updateLastFrame = function (frameScore) {
   if(this.theLastFrame === 10) {
     this.theLastFrame += frameScore
   }
+};
+
+Game.prototype.checkLastFrame = function (frameScore) {
+  this.updateLastFrame(frameScore);
   return this.theLastFrame;
 };

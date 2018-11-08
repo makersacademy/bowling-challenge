@@ -65,7 +65,6 @@ describe("Game", function(){
       frame2 = jasmine.createSpyObj('frame', ['getCurrentScore'])
       frame2.getCurrentScore.and.callFake(function() {return 6})
       frame2Score = frame2.getCurrentScore()
-
       expect(game.checkLastFrame(frame2Score)).toBe(16)
       game.updateTotalScore(frame2Score)
       expect(game.getTotalScore()).toBe(22)

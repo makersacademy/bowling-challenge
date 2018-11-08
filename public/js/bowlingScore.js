@@ -2,11 +2,16 @@
 
 function BowlingScorecard() {
   this.score = 0;
-  this.frame1 = new Frame;
+  this.frameCounter = 0;
   };
 
   BowlingScorecard.prototype.getCurrentScore = function() {
     return this.score;
+  };
+
+  BowlingScorecard.prototype.setNewFrame = function(userInput1, userInput2) {
+    this.frame = new Frame(userInput1, userInput2);
+    this.frameCounter += 1;
   };
 
 

@@ -12,9 +12,19 @@ describe('BowlingScorecard', function() {
     expect(bowlingScorecard.getCurrentScore()).toEqual(0);
   });
 
+  it('has a frame counter', function() {
+    expect(bowlingScorecard.frameCounter).toEqual(0)
+  })
+
   it('holds a frame', function() {
-    expect(bowlingScorecard.frame1 instanceof Frame).toBeTruthy();
+    bowlingScorecard.setNewFrame(2, 3)
+    expect(bowlingScorecard.frame instanceof Frame).toBeTruthy();
+    expect(bowlingScorecard.frameCounter).toEqual(1)
+    expect(bowlingScorecard.frame.setBowl1Score()).toEqual(2)
+    expect(bowlingScorecard.frame.setBowl2Score()).toEqual(3)
     });
+  
+  
 
 });
 

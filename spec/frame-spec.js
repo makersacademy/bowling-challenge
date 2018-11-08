@@ -76,6 +76,7 @@ describe ('Frame', function () {
     })
 
     it('strike bonus will be 20 when next 2 frames are strikes', function () {
+      frame.addBowl(10)
       secondFrame.addBowl(10)
       thirdFrame.addBowl(10)
       expect(frame._strikeBonus(secondFrame, thirdFrame)).toEqual(20)

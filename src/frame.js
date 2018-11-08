@@ -36,7 +36,7 @@ Frame.prototype._calculateBonus = function (secondFrame, thirdFrame) {
   if (secondFrame === undefined) {
     return 0
   } else if (this.isAStrike()) {
-    return this._strikeBonus(secondFrame, thirdFrame)
+    return secondFrame._strikeBonus(thirdFrame)
   } else if (this.isASpare()) {
     return this._spareBonus(secondFrame)
   } else {
@@ -48,11 +48,13 @@ Frame.prototype._spareBonus = function (secondFrame) {
   return secondFrame._firstBowl()
 }
 
-Frame.prototype._strikeBonus = function (secondFrame, thirdFrame) {
-  if (secondFrame.isAStrike()) {
-    return secondFrame._firstBowl() + thirdFrame._firstBowl()
+Frame.prototype._strikeBonus = function (thirdFrame) {
+  if (this._sumOfBowls() == 0) {
+    return 0
+  } else if (thirdFrame === undefined || thirdFrame._firstBowl() === undefined) {
+    return this._sumOfBowls()
   } else {
-    return secondFrame._sumOfBowls()
+    return this._sumOfBowls() + thirdFrame._firstBowl()
   }
 }
 

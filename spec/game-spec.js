@@ -45,6 +45,14 @@ describe ('Game', function () {
       game.addBowl(8)
       expect(game.getCurrentScore()).toEqual(26)
     })
+
+    it('returns 60 for three consecutive strikes', function () {
+      var i = 0
+      for(i = 0; i < 3; i++) {
+        game.addBowl(10)
+      }
+      expect(game.getCurrentScore()).toEqual(60)
+    })
   })
 
   describe('Adding a bowl', function () {

@@ -1,0 +1,24 @@
+h1#title {
+  text-align: center;
+  font-family: 'Bungee Shade', cursive;
+  font-size: 60px;
+}
+h2#currentScore {
+  font-family: 'Bungee Shade', cursive;
+  margin-left: 20%;
+  font-size: 30px;
+}
+section#header {
+  height: 25%;
+  width: 100%;
+  background-color: #BC2222;
+  position: fixed;
+  top: 0;
+}
+section#footer {
+  position: fixed;
+  bottom: 0;
+  height: 15%;
+  width: 100%;
+  background-color: #BC2222;
+}

@@ -53,6 +53,14 @@ describe ('Game', function () {
       }
       expect(game.getCurrentScore()).toEqual(60)
     })
+
+    it('returns 0 for a gutter game', function () {
+      var i = 0
+      for(i = 0; i < 20; i++) {
+        game.addBowl(0)
+      }
+      expect(game.getCurrentScore()).toEqual(0)
+    })
   })
 
   describe('Adding a bowl', function () {

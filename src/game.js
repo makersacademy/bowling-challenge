@@ -1,4 +1,4 @@
-"use strict"
+'use strict'
 
 function Game() {
   this._frames = [new Frame()]

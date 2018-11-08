@@ -1,3 +1,5 @@
+'use strict'
+
 function Frame() {
   this._bowls = []
 }
@@ -33,7 +35,7 @@ Frame.prototype._sumOfBowls = function () {
 }
 
 Frame.prototype._calculateBonus = function (secondFrame, thirdFrame) {
-  if (secondFrame === undefined) {
+  if (!secondFrame) {
     return 0
   } else if (this.isStrike()) {
     return secondFrame._strikeBonus(thirdFrame)
@@ -45,24 +47,18 @@ Frame.prototype._calculateBonus = function (secondFrame, thirdFrame) {
 }
 
 Frame.prototype._spareBonus = function (secondFrame) {
-  if (secondFrame === undefined || secondFrame._firstBowl() === undefined) {
+  if (!secondFrame || !secondFrame._firstBowl()) {
     return 0
-  } else {
-    return secondFrame._firstBowl()
   }
+  return secondFrame._firstBowl()
 }
 
-Frame.prototype._strikeBonus = function (thirdFrame) {
-  if (this._sumOfBowls() == 0) {
-    return 0
-  } else if (thirdFrame === undefined || thirdFrame._firstBowl() === undefined) {
-    return this._sumOfBowls()
-  } else if (this.isStrike()) {
-    return this._sumOfBowls() + thirdFrame._firstBowl()
-  } else {
-    return this._sumOfBowls()
+Frame.prototype._strikeBonus = function(thirdFrame) {
+  if (this.isStrike() && !!thirdFrame && !!thirdFrame._firstBowl()) {
+    return this._sumOfBowls() + thirdFrame._firstBowl();
   }
-}
+  return this._sumOfBowls()
+};
 
 Frame.prototype._firstBowl = function () {
   return this.getBowls()[0]

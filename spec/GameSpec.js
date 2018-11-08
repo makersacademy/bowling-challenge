@@ -33,4 +33,12 @@ describe("Game", function() {
      }
      expect(game.getCurrentScore()).toEqual(60);
    })
+   it("adds next roll as bonus when a spare completed in first frame", function() {
+     game.roll(5);
+     game.roll(5);
+     for (var i = 0; i < 18; i++) {
+       game.roll(1);
+     }
+     expect(game.getCurrentScore()).toEqual(29)
+   })
  });

@@ -32,7 +32,7 @@ describe('BowlingScorecard', function() {
     expect(bowlingScorecard.frameCounter).toEqual(10);
     expect(bowlingScorecard.frame.setBowl1Score()).toEqual(4);
     expect(bowlingScorecard.frame.setBowl2Score()).toEqual('/');
-    expect(bowlingScorecard.frame.setBowl2Score()).toEqual(8);
+    expect(bowlingScorecard.frame.setBowl3Score()).toEqual(8);
     });
 });
 
@@ -63,13 +63,14 @@ describe('FinalFrame', function() {
   var frame;
 
   beforeEach(function() {
-    frame = new Frame(3, 5);
-    strike = new Frame(10,10);
-    spare = new Frame(6, 4, 2);
+    strike = new FinalFrame(10, 10, 10);
+    spare = new FinalFrame(6, 4, 2);
+    frame = new FinalFrame(3, 5);
   });
 
   it('gets a bowling score', function() {
     expect(strike.setBowl1Score()).toEqual('X');
+    expect(strike.setBowl2Score()).toEqual('X');
     expect(strike.setBowl3Score()).toEqual('X');
     expect(spare.setBowl1Score()).toEqual(6);
     expect(spare.setBowl2Score()).toEqual('/');

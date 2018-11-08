@@ -21,6 +21,24 @@ table th {
   border-left: none;
   border-bottom: none;
 }
+.scoreButton {
+  background-color: #BC2222;
+  color: white;
+  border: none;
+  font-size: 18px;
+  padding: 32px 16px;
+  border-radius: 10%;
+  box-shadow: 0 9px #999;
+  width: 80px;
+  font-family: 'Bungee Shade', cursive;
+}
+.scoreButton:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.scoreButton:focus {
+  outline: none;
+}
 tr#frameRow {
   height: 60px;
 }
@@ -49,6 +67,10 @@ section#footer {
   height: 15%;
   width: 100%;
   background-color: #BC2222;
+}
+section#scoreButtons {
+  margin-top: 3%;
+  text-align: center;
 }
 section#scorecard {
   margin-top: 20%;

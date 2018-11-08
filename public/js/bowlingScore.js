@@ -3,6 +3,7 @@
 function BowlingScorecard() {
   this.score = 0;
   this.frameCounter = 0;
+  this.scoreArray = []
   };
 
   BowlingScorecard.prototype.getCurrentScore = function() {
@@ -17,6 +18,14 @@ function BowlingScorecard() {
     if (this.frameCounter === 9) {
       this.frame = new FinalFrame(userInput1, userInput2, userInput3)
       this.frameCounter ++;
+    }
+  };
+
+  BowlingScorecard.prototype.updateScoreArray = function () {
+    this.scoreArray.push(this.frame.setBowl1Score());
+    this.scoreArray.push(this.frame.setBowl2Score());
+    if (this.frameCounter === 10) {
+    this.scoreArray.push(this.frame.setBowl3Score());
     }
   };
 

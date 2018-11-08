@@ -14,7 +14,7 @@ describe('BowlingScorecard', function() {
 
   it('has a frame counter', function() {
     expect(bowlingScorecard.frameCounter).toEqual(0);
-  })
+  });
 
   it('holds a frame', function() {
     bowlingScorecard.setNewFrame(2, 3)
@@ -34,7 +34,13 @@ describe('BowlingScorecard', function() {
     expect(bowlingScorecard.frame.setBowl2Score()).toEqual('/');
     expect(bowlingScorecard.frame.setBowl3Score()).toEqual(8);
     });
-});
+
+    it('updates the score array', function() {
+      bowlingScorecard.setNewFrame(2, 3);
+      bowlingScorecard.updateScoreArray();
+      expect(bowlingScorecard.scoreArray.length).toEqual(2);
+    });
+  });
 
 describe('Frame', function() {
 

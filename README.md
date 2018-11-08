@@ -16,6 +16,9 @@ Tests are written using jasmine. To run the test please open the `SpecRunner.htm
 ### Dependancies
 This program is written using JavaScript, jQuery, HTML, CSS and Jasmine as the testing framework.
 
+### Linting
+I have been using jslint as a linter, which can be installed using the command `npm install -g jshint` and run using `jshint src/frame.js`
+
 ### Approach to Solving this Kata
 I kept a methodical approach when solving this kata. I first created the JavaScript for a basic game. Then created an interface using HTML and jQuery. I then resolved edge cases around this for example, keeping track of the frame number, but telling the user that the  game is over after their 10th roll.
 

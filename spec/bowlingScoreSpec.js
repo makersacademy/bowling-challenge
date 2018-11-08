@@ -24,6 +24,17 @@ describe('BowlingScorecard', function() {
     expect(bowlingScorecard.frame.setBowl2Score()).toEqual(3)
     });
   
+  it('holds a final frame', function() {
+    for (var i = 0; i < 10; i++) {
+      bowlingScorecard.setNewFrame(4, 5)
+    }
+    expect()
+    expect(bowlingScorecard.frame instanceof LastFrame).toBeTruthy();
+    expect(bowlingScorecard.frameCounter).toEqual(10)
+    expect(bowlingScorecard.frame.setBowl1Score()).toEqual(4)
+    expect(bowlingScorecard.frame.setBowl2Score()).toEqual(5)
+    });
+  
   
 
 });

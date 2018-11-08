@@ -10,7 +10,10 @@ function BowlingScorecard() {
   };
 
   BowlingScorecard.prototype.setNewFrame = function(userInput1, userInput2) {
+    if(this.frameCounter < 9) {
     this.frame = new Frame(userInput1, userInput2);
+    } else { this.frame = new FinalFrame(userInput1, userInput2)
+    }
     this.frameCounter += 1;
   };
 

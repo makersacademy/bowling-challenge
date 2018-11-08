@@ -69,5 +69,30 @@ describe("Game", function(){
       game.updateTotalScore(frame2Score)
       expect(game.getTotalScore()).toBe(22)
     });
+
+  });
+
+  describe("strikeOrSpare", function(){
+    it("checks if the previous roll was a srike", function(){
+      frame = jasmine.createSpyObj('frame', ['isStrike', 'isSpare'])
+      frame.isStrike.and.callFake(function() {return true})
+      frame.isSpare.and.callFake(function() {return false})
+      console.log(frame.isStrike());
+      expect(game.strikeOrSpare(frame)).toBe(true)
+    });
+
+    it("checks if the previous roll was a spare", function(){
+      frame = jasmine.createSpyObj('frame', ['isStrike', 'isSpare'])
+      frame.isSpare.and.callFake(function() {return true})
+      frame.isStrike.and.callFake(function() {return false})
+      expect(game.strikeOrSpare(frame)).toBe(true)
+    });
+
+    it("checks the previous roll was not a spare", function(){
+      frame = jasmine.createSpyObj('frame', ['isStrike', 'isSpare'])
+      frame.isSpare.and.callFake(function() {return false})
+      frame.isStrike.and.callFake(function() {return false})
+      expect(game.strikeOrSpare(frame)).toBe(false)
+    });
   });
 });

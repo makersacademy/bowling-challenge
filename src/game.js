@@ -40,3 +40,9 @@ Game.prototype.checkLastFrame = function (frameScore) {
   this.updateLastFrame(frameScore);
   return this.theLastFrame;
 };
+
+Game.prototype.strikeOrSpare = function (frame) {
+  if (frame.isStrike()) return true;
+  if(frame.isSpare()) return true;
+  return false
+};

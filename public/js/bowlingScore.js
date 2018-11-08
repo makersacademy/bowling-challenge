@@ -11,20 +11,19 @@ function BowlingScorecard() {
   };
 
   BowlingScorecard.prototype.setNewFrame = function(userInput1, userInput2, userInput3) {
-    this.frameCounter += 1;
-    if (this.frameCounter < 9) {
-      this.frame = new Frame(userInput1, userInput2);
-    } 
     if (this.frameCounter === 9) {
       this.frame = new FinalFrame(userInput1, userInput2, userInput3)
+    } else {
+      this.frame = new Frame(userInput1, userInput2);
     }
+    this.frameCounter += 1;
   };
 
   BowlingScorecard.prototype.updateScoreArray = function () {
     this.scoreArray.push(this.frame.setBowl1Score());
     this.scoreArray.push(this.frame.setBowl2Score());
-    if (this.frameCounter === 9) {
-    this.scoreArray.push(this.frame.setBowl3Score());
+    if (this.frameCounter === 10) {
+      this.scoreArray.push(this.frame.setBowl3Score());
     }
   };
 

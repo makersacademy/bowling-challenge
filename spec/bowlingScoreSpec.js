@@ -45,10 +45,11 @@ describe('BowlingScorecard', function() {
     for (var i = 0; i < 9; i++) {
       bowlingScorecard.setNewFrame(4, 6);
       bowlingScorecard.updateScoreArray();
-    };
+    }
       bowlingScorecard.setNewFrame(4, 6, 8);
       bowlingScorecard.updateScoreArray();
       expect(bowlingScorecard.scoreArray.length).toEqual(21);
+      expect(bowlingScorecard.scoreArray.slice(-1)[0]).toEqual(8);
   });
 });
 

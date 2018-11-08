@@ -46,10 +46,28 @@ describe('BowlingScorecard', function() {
       bowlingScorecard.setNewFrame(4, 6);
       bowlingScorecard.updateScoreArray();
     }
-      bowlingScorecard.setNewFrame(4, 6, 8);
+    bowlingScorecard.setNewFrame(4, 6, 8);
+    bowlingScorecard.updateScoreArray();
+    expect(bowlingScorecard.scoreArray.length).toEqual(21);
+    expect(bowlingScorecard.scoreArray.slice(-1)[0]).toEqual(8);
+  });
+
+  it('score array holds strikes as well as spares and numbers', function() {
+    for (var i = 0; i < 4; i++) {
+      bowlingScorecard.setNewFrame(10);
       bowlingScorecard.updateScoreArray();
-      expect(bowlingScorecard.scoreArray.length).toEqual(21);
-      expect(bowlingScorecard.scoreArray.slice(-1)[0]).toEqual(8);
+      bowlingScorecard.setNewFrame(3, 5);
+      bowlingScorecard.updateScoreArray();
+    }
+    bowlingScorecard.setNewFrame(4, 6);
+    bowlingScorecard.updateScoreArray();
+    bowlingScorecard.setNewFrame(10, 10, 10);
+    bowlingScorecard.updateScoreArray();
+    expect(bowlingScorecard.scoreArray.length).toEqual(17);
+    expect(bowlingScorecard.scoreArray[0]).toEqual('X');
+    expect(bowlingScorecard.scoreArray[1]).toEqual(3);
+    expect(bowlingScorecard.scoreArray[13]).toEqual('/');
+    expect(bowlingScorecard.scoreArray.slice(-1)[0]).toEqual('X');
   });
 });
 

@@ -21,8 +21,10 @@ function BowlingScorecard() {
 
   BowlingScorecard.prototype.updateScoreArray = function () {
     this.scoreArray.push(this.frame.setBowl1Score());
+    if (this.frame.bowl1 < 10 || this.frameCounter === 10) {
     this.scoreArray.push(this.frame.setBowl2Score());
-    if (this.frameCounter === 10) {
+    }
+    if (this.frameCounter === 10 && this.frame.bowl1 + this.frame.bowl2 > 9) {
       this.scoreArray.push(this.frame.setBowl3Score());
     }
   };

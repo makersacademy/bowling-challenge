@@ -3,7 +3,8 @@ var Frame = function(){
   this.currentScore = 0;
   this.rollNumber = 1;
   this.secondRollImpossibilities = [];
-  this.strike = false
+  this.strike = false;
+  this.spare = false;
 };
 
 Frame.prototype.getCurrentScore = function () {
@@ -16,6 +17,7 @@ Frame.prototype.calculateScore = function (roll1, roll2) {
     this.strike = true;
   } else {
     this.currentScore = roll1 + roll2;
+    if(this.currentScore === MAXIMUM_SCORE) {this.spare = true;}
   }
 };
 
@@ -43,4 +45,8 @@ Frame.prototype.getImpossibleRolls = function() {
 
 Frame.prototype.isStrike = function () {
  return this.strike;
+};
+
+Frame.prototype.isSpare = function () {
+ return this.spare;
 };

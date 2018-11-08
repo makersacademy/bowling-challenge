@@ -64,4 +64,16 @@ describe("Frame", function() {
       expect(frame.isStrike()).toBe(false)
     });
   });
+
+  describe("isSpare", function() {
+    it ("determines that the user rolled a spare", function(){
+      frame.calculateScore(9, 1)
+      expect(frame.isSpare()).toBe(true)
+    });
+
+    it ("determines that the user has not rolled a spare", function(){
+      frame.calculateScore(4, 3)
+      expect(frame.isSpare()).toBe(false)
+    });
+  });
 });

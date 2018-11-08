@@ -29,6 +29,13 @@ function BowlingScorecard() {
     }
   };
 
+  BowlingScorecard.prototype.updateGameScore = function () {
+    this.updateScoreArray();
+    for (var i = 0; i < this.scoreArray.length; i++) {
+      this.score += this.scoreArray[i]
+    };
+  };
+
 
 
 function Frame(userInput1 = 1, userInput2 = 1) {

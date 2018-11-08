@@ -69,6 +69,14 @@ describe('BowlingScorecard', function() {
     expect(bowlingScorecard.scoreArray[13]).toEqual('/');
     expect(bowlingScorecard.scoreArray.slice(-1)[0]).toEqual('X');
   });
+
+  it('calculates a game score', function () {
+    bowlingScorecard.setNewFrame(3, 5);
+    bowlingScorecard.updateGameScore();
+    expect(bowlingScorecard.getCurrentScore()).toEqual(8)
+  });
+
+  
 });
 
 describe('Frame', function() {

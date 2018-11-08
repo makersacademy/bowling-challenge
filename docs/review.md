@@ -156,13 +156,13 @@ A function like the above can be refactored like so:
 Game.prototype.strikeBonus = function(index) {
   var bonus = this.frames[index+1].total;
   var frames = this.frames;
-  if (this.isAStrike(index+1)) {
-    bonus = isAStrike(index+2) ? 20 : 10 + this.frames[index+2].firstBowl;
+  if (this.isStrike(index+1)) {
+    bonus = isStrike(index+2) ? 20 : 10 + this.frames[index+2].firstBowl;
   }
   return bonus;
 }
 
-Game.prototype.isAStrike(index){
+Game.prototype.isStrike(index){
   return this.frames[index+1].outcome === 'X';
 }
 ```

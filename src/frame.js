@@ -15,15 +15,15 @@ Frame.prototype.addBowl = function (pins) {
 }
 
 Frame.prototype.isFinished = function () {
-  return this._bowls.length > 1 || this.isAStrike()
+  return this._bowls.length > 1 || this.isStrike()
 }
 
-Frame.prototype.isAStrike = function() {
+Frame.prototype.isStrike = function() {
   return this._bowls.includes(10)
 }
 
-Frame.prototype.isASpare = function () {
-  return this._sumOfBowls() === 10 && !this.isAStrike()
+Frame.prototype.isSpare = function () {
+  return this._sumOfBowls() === 10 && !this.isStrike()
 }
 
 Frame.prototype._sumOfBowls = function () {
@@ -35,9 +35,9 @@ Frame.prototype._sumOfBowls = function () {
 Frame.prototype._calculateBonus = function (secondFrame, thirdFrame) {
   if (secondFrame === undefined) {
     return 0
-  } else if (this.isAStrike()) {
+  } else if (this.isStrike()) {
     return secondFrame._strikeBonus(thirdFrame)
-  } else if (this.isASpare()) {
+  } else if (this.isSpare()) {
     return this._spareBonus(secondFrame)
   } else {
     return 0
@@ -57,7 +57,7 @@ Frame.prototype._strikeBonus = function (thirdFrame) {
     return 0
   } else if (thirdFrame === undefined || thirdFrame._firstBowl() === undefined) {
     return this._sumOfBowls()
-  } else if (this.isAStrike()) {
+  } else if (this.isStrike()) {
     return this._sumOfBowls() + thirdFrame._firstBowl()
   } else {
     return this._sumOfBowls()

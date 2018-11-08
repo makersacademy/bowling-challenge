@@ -40,13 +40,13 @@ describe ('Frame', function () {
 
     it('can check whether it is a strike', function () {
       frame.addBowl(10)
-      expect(frame.isAStrike()).toBe(true)
+      expect(frame.isStrike()).toBe(true)
     })
 
     it('can check whether it is a spare', function () {
       frame.addBowl(5)
       frame.addBowl(5)
-      expect(frame.isASpare()).toBe(true)
+      expect(frame.isSpare()).toBe(true)
     })
   })
 

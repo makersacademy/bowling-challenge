@@ -13,6 +13,9 @@ Frame.prototype.getBowls = function () {
 }
 
 Frame.prototype.addBowl = function (pins) {
+  if (this._sumOfBowls() + pins > 10) {
+    throw 'Invalid entry - there are only 10 pins!'
+  }
   this._bowls.push(pins)
 }
 

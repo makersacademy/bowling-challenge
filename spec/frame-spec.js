@@ -57,6 +57,12 @@ describe ('Frame', function () {
       expect(frame.getScore()).toEqual(7)
     })
 
+    it('can never be more than 10 if there is no strike or spare', function () {
+      var message = 'Invalid entry - there are only 10 pins!'
+      frame.addBowl(5)
+      expect(function () { frame.addBowl(6) }).toThrow(message)
+    })
+
     it('can calculate a spare bonus', function () {
       frame.addBowl(5)
       frame.addBowl(5)

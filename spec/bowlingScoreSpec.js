@@ -35,12 +35,22 @@ describe('BowlingScorecard', function() {
     expect(bowlingScorecard.frame.setBowl3Score()).toEqual(8);
     });
 
-    it('updates the score array', function() {
-      bowlingScorecard.setNewFrame(2, 3);
-      bowlingScorecard.updateScoreArray();
-      expect(bowlingScorecard.scoreArray.length).toEqual(2);
-    });
+  it('updates the score array', function() {
+    bowlingScorecard.setNewFrame(2, 3);
+    bowlingScorecard.updateScoreArray();
+    expect(bowlingScorecard.scoreArray.length).toEqual(2);
   });
+
+  it('updates score array to hold ten frames', function () {
+    for (var i = 0; i < 9; i++) {
+      bowlingScorecard.setNewFrame(4, 6);
+      bowlingScorecard.updateScoreArray();
+    };
+      bowlingScorecard.setNewFrame(4, 6, 8);
+      bowlingScorecard.updateScoreArray();
+      expect(bowlingScorecard.scoreArray.length).toEqual(21);
+  });
+});
 
 describe('Frame', function() {
 

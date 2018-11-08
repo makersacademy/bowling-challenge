@@ -44,12 +44,12 @@ describe("Frame", function() {
     });
   });
 
-  describe("impossibleRolls", function() {
-    it("determines the impossible options for the second roll", function () {
+  describe("getImpossibleRolls", function() {
+    it("shows the impossible options for the second roll", function () {
       roll1.getRoll.and.callFake(function() {return 2})
       roll1Score = roll1.getRoll()
 
-      expect(frame.impossibleRolls(roll1Score)).toEqual([9, 10])
+      expect(frame.getImpossibleRolls(roll1Score)).toEqual([9, 10])
     });
   });
 

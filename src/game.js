@@ -15,6 +15,10 @@ Game.prototype.updateTotalScore = function (frameScore) {
   }
   this.totalScore += frameScore;
   this.theLastFrame = frameScore;
+  this.addFrame();
+};
+
+Game.prototype.addFrame = function () {
   ++ this.frame;
 };
 

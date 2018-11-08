@@ -34,8 +34,12 @@ Frame.prototype.addRoll = function () {
 Frame.prototype.impossibleRolls = function(roll1Score) {
   maxRoll = (MAXIMUM_SCORE + 1) - roll1Score
   this.secondRollImpossibilities = Array(roll1Score).fill(maxRoll).map((x, y) => x + y)
-  return this.secondRollImpossibilities
 };
+
+Frame.prototype.getImpossibleRolls = function() {
+  this.impossibleRolls(roll1Score);
+  return this.secondRollImpossibilities
+}
 
 Frame.prototype.isStrike = function () {
  return this.strike;

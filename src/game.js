@@ -35,7 +35,7 @@ Game.prototype.startNextFrame = function () {
 }
 
 Game.prototype.isFinished = function() {
-  if (this.getFrames().length >= 10 && this.getCurrentFrame().isFinished()) {
+  if (this._frames.length >= 10 && this.getCurrentFrame().isFinished()) {
     this._finished = true
     return this._finished
   }

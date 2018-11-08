@@ -13,7 +13,7 @@ Frame.prototype.getBowls = function () {
 }
 
 Frame.prototype.addBowl = function (pins) {
-  this.getBowls().push(pins)
+  this._bowls.push(pins)
 }
 
 Frame.prototype.isFinished = function () {
@@ -61,5 +61,5 @@ Frame.prototype._strikeBonus = function(thirdFrame) {
 };
 
 Frame.prototype._firstBowl = function () {
-  return this.getBowls()[0]
+  return this._bowls[0]
 }

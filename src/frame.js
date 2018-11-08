@@ -2,6 +2,7 @@
 
 function Frame() {
   this._bowls = []
+  this.MAX_SCORE = 10
 }
 
 Frame.prototype.getScore = function (secondFrame, thirdFrame) {
@@ -13,7 +14,7 @@ Frame.prototype.getBowls = function () {
 }
 
 Frame.prototype.addBowl = function (pins) {
-  if (this._sumOfBowls() + pins > 10) {
+  if (this._sumOfBowls() + pins > this.MAX_SCORE) {
     throw 'Invalid entry - there are only 10 pins!'
   }
   this._bowls.push(pins)
@@ -24,11 +25,11 @@ Frame.prototype.isFinished = function () {
 }
 
 Frame.prototype.isStrike = function() {
-  return this._bowls.includes(10)
+  return this._bowls.includes(this.MAX_SCORE)
 }
 
 Frame.prototype.isSpare = function () {
-  return this._sumOfBowls() === 10 && !this.isStrike()
+  return this._sumOfBowls() === this.MAX_SCORE && !this.isStrike()
 }
 
 Frame.prototype._sumOfBowls = function () {

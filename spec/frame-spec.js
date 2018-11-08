@@ -14,6 +14,10 @@ describe ('Frame', function () {
       expect(frame.getScore()).toEqual(0)
     })
 
+    it('should have a max score of 10', function () {
+      expect(frame.MAX_SCORE).toEqual(10)
+    })
+
     it('can store bowls', function () {
       expect(frame.getBowls()).toEqual([])
     })

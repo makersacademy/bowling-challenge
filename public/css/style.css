@@ -1,0 +1,34 @@
+table {
+  width: 75%;
+  text-align: center;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+table, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th {
+	border-right: 1px solid black;
+}
+
+.frame-score {
+	border: none;
+	height: 1.3em;
+
+}
+
+.track-score {
+	height: 1.3em;
+    border: none;
+}
+
+.scoring-buttons {
+  text-align: center;
+  margin: 1em;
+}

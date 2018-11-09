@@ -3,7 +3,7 @@ body {
   margin: auto;
   text-align: center;
   position: fixed;
-  top: 20%;
+  top: 17%;
   left: 10%;
   right: 10%;
   width: 80%;
@@ -11,8 +11,16 @@ body {
   color: 	#3a3b3d;
 }
 
+p{
+  font-size: 1.5em;
+}
+
 h1{
   font-size: 5em;
+}
+
+h2{
+  font-size: 2em;
 }
 
 table {

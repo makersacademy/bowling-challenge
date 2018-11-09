@@ -10,10 +10,12 @@ Game.prototype.getTotalScore = function () {
   return this.totalScore;
 };
 
-Game.prototype.updateTotalScore = function (frame) {
+Game.prototype.updateTotalScore = function (frame, roll1) {
   frameScore = frame.getCurrentScore();
   if(this.theLastFrame === 'Strike') {
     this.totalScore += frameScore;
+  } else if(this.theLastFrame === 'Spare') {
+    this.totalScore += roll1
   }
   this.totalScore += frameScore;
   this.strikeOrSpare(frame);

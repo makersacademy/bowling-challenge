@@ -1,0 +1,120 @@
+section {
+  font-family: 'Bungee inline';
+
+}
+
+.low-usage {
+  color: green;
+}
+
+.medium-usage {
+  color: orange;
+}
+
+.high-usage {
+  color: red;
+}
+body {}
+
+span {
+  font-size: 20px;
+}
+.current-temperature {
+  font-size: 105px;
+}
+
+#scorecard_heading {
+  font-size: 40px;
+}
+
+table.scorecard {margin: 0 auto; width:80%; font-size:12px; border:1px solid; text-align: center; table-layout: fixed; margin-bottom: 40px;}
+table.scorecard th, tr, td {padding: 0; vertical-align: middle; text-align: center;}
+table.scorecard th {border-bottom:1px solid; background-color:#d3313a; height:30px; color: #fff}
+table.scorecard th:not(:last-child) {border-right:1px solid;}
+table.scorecard td {height:30px; background: rgba(255, 255, 255, 0.5);}
+table.scorecard tr td:not(:last-child) {border-right:1px solid;}
+table.scorecard tr:nth-child(2) td:nth-child(even) {border-bottom:1px solid;}
+table.scorecard tr:nth-child(2) td:last-child {border-bottom:1px solid;}
+
+#ct {
+  font-size: 20px;
+}
+
+#temperature-up {
+  background-color: #217524;
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius:50%;
+    width: 50px;
+    height: 50px;
+}
+
+#temperature-down {
+  background-color: #a42f26;
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius:50%;
+    width: 50px;
+    height: 50px;
+}
+
+#temperature-reset {
+  background-color: #4f4c8b;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#powersavingmode-on {
+  background-color: #933668;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#powersavingmode-off {
+  background-color: #b34747;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+
+}
+
+.power-saving {
+  font-family: 'Bungee Inline';
+  background-color: #ff3399;
+    border: none;
+    color: white;
+    padding: 15px 169px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}

@@ -146,6 +146,16 @@ describe('Game', function() {
 		expect(game.calculateGameTotalScore()).toEqual(42);
 	});
 
+  it('random with spare at end', function() {
+		for (var i = 0; i < 18; i++) {
+			game.enterRoll(2);
+		}
+    game.enterRoll(5);
+    game.enterRoll(5);
+    game.enterRoll(5);
+		expect(game.calculateGameTotalScore()).toEqual(51);
+	});
+
 	it('gutter game = 0', function() {
 		for (var i = 0; i < 10; i++) {
 			game.enterRoll(0);

@@ -127,9 +127,6 @@ describe('Frame', function() {
 			frame.roll(5);
 			frame.roll(5);
 			frame.roll(5);
-			// console.log(frame.isFinalFrame())
-			// console.log(frame.rolls)
-			// console.log(frame.hasSpare())
 			expect(frame.rolls.length).toEqual(2);
 		});
 	});

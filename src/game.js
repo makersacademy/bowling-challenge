@@ -21,6 +21,6 @@ Game.prototype.generateTotalScore = function() {
     } else {
       this.frames[i].calculateScore();
     }
-    this.gameScore += this.frames[i].frameScore;
+    this.gameScore += this.frames[i].score();
   }
 };

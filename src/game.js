@@ -9,7 +9,6 @@ function Game() {
 }
 
 Game.prototype.recordRoll = function(numberOfPins) {
-  console.log(this._allFrames);
   if (this._allFrames.length === 10) {
     throw "Game finished";
   } else if (this._currentFrame === 10) {

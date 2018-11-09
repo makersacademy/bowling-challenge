@@ -27,7 +27,10 @@ Frame.prototype.addBowl = function (pins) {
 }
 
 Frame.prototype.getScore = function (secondFrame, thirdFrame) {
-  return this._sumOfBowls() + this._calculateBonus(secondFrame, thirdFrame)
+  if (this._bowls.length > 0) {
+    return this._sumOfBowls() + this._calculateBonus(secondFrame, thirdFrame)
+  }
+  return 0
 }
 
 Frame.prototype._calculateBonus = function (secondFrame, thirdFrame) {

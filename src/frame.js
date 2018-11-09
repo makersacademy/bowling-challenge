@@ -38,7 +38,7 @@ Frame.prototype.impossibleRolls = function(roll1Score) {
   this.secondRollImpossibilities = Array(roll1Score).fill(maxRoll).map((x, y) => x + y);
 };
 
-Frame.prototype.getImpossibleRolls = function() {
+Frame.prototype.getImpossibleRolls = function(roll1Score) {
   this.impossibleRolls(roll1Score);
   return this.secondRollImpossibilities;
 };

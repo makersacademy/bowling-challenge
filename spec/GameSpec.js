@@ -40,4 +40,9 @@ describe("Game", function() {
      rollMany(0, 16);
      expect(game.score()).toBe(24)
    })
+
+   it("can roll a perfect game", function() {
+     rollMany(10, 12);
+     expect(game.score()).toBe(300)
+   })
  });

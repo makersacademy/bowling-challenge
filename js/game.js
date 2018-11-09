@@ -7,7 +7,7 @@ function Game() {
 };
 
 Game.prototype.enterRoll = function (pins) {
-  console.log("AAA")
+  // console.log("AAA")
   if (this.isLastFrame()) {
     // this.frameRoll(this.currentframe, pins)
     // console.log(this.currentframe.rolls)
@@ -124,7 +124,7 @@ Game.prototype.getFrameBonusValues = function (frame) {
     }
   }
   frame.setBonus(bonus)
-  console.log("frame bonus xxx: ", frame.framenumber, frame.getBonus())
+  // console.log("frame bonus xxx: ", frame.framenumber, frame.getBonus())
   return bonus
 }
 

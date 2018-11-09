@@ -62,6 +62,16 @@ Frame.prototype.roll = function (pins) {
 	}
 };
 
+Frame.prototype.formatRolls = function () {
+    if(this.hasStrike()){
+      return "X"
+    } else if (this.hasSpare()){
+      return [this.rolls[0],"/"]
+    }
+    return this.rolls
+
+}
+
 Frame.prototype.isFrameOpen = function () {
 	return (this.hasStrike() || this.maxRollsReached()) ? false : true;
 };

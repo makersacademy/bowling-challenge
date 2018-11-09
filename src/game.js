@@ -1,9 +1,9 @@
 var Game = function(){
     this.totalScore = 0;
     this.frame = 1;
-    this.theLastFrame;
+    this.theLastFrame = null;
     this.theLastFrameScore = 0;
-    this.currentFrame;
+    this.currentFrame = null;
 };
 
 Game.prototype.getTotalScore = function () {
@@ -15,7 +15,7 @@ Game.prototype.updateTotalScore = function (frame, roll1) {
   if(this.theLastFrame === 'Strike') {
     this.totalScore += frameScore;
   } else if(this.theLastFrame === 'Spare') {
-    this.totalScore += roll1
+    this.totalScore += roll1;
   }
   this.totalScore += frameScore;
   this.strikeOrSpare(frame);
@@ -29,15 +29,15 @@ Game.prototype.addFrame = function () {
 
 Game.prototype.getFrameNumber = function(){
   if(this.frame > 10){
-    return "Game over!"
+    return "Game over!";
   } else {
     return this.frame;
-  };
+  }
 };
 
 Game.prototype.updateLastFrame = function (frameScore) {
   if(this.theLastFrame === 'Strike') {
-    this.theLastFrameScore += frameScore
+    this.theLastFrameScore += frameScore;
   }
 };
 
@@ -49,5 +49,5 @@ Game.prototype.checkLastFrame = function (frameScore) {
 Game.prototype.strikeOrSpare = function (frame) {
   if (frame.isStrike()) return this.theLastFrame = 'Strike';
   if(frame.isSpare()) return this.theLastFrame = 'Spare';
-  return false
+  return false;
 };

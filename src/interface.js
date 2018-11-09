@@ -61,10 +61,10 @@ $(document).ready(function(){
   $('#finish').click(function(){
     if(scorecard.total === 0){
       alert('Gutter Game!');
-    } else if(scorecard._strikeArray.length === 10) {
-      alert('Well done you rolled the perfect game!');
+    } else if(scorecard._strikeArray.length === 12) {
+      alert('Well done you rolled the perfect game! Your total is 300!!!');
     } else {
-      alert('Well done you scored '+scorecard.total);
+      alert('Well done you scored '+scorecard.resultTen);
     };
   });
 
@@ -179,14 +179,14 @@ $(document).ready(function(){
       $('#move18').text(scorecard._scoreArray[17]);
     }
 
-    // frame 10
-
     $('#move19').text(scorecard._scoreArray[18]);
     if (scorecard._scoreArray[18]===10){
       $('#move20').text(scorecard._scoreArray[19]);
       $('#move21').text(scorecard._scoreArray[20]);
       $('#totalAmount').text(scorecard.resultTen);
-      if (scorecard._scoreArray[19]+scorecard._scoreArray[20]>=11){
+      if(scorecard._scoreArray[19]===10){
+        $('#move21').text(scorecard._scoreArray[20]);
+      } else if (scorecard._scoreArray[19]+scorecard._scoreArray[20]>=11){
         alert('Sorry try again, max pins in one frame is 10');
         scorecard._scoreArray.pop();
         $('#move21').text("");

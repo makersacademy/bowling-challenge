@@ -1,8 +1,6 @@
 $(document).ready(function(){
   var scorecard = new Scorecard();
 
-  $('#runningTotal').text(scorecard.total);
-
   $('#one').click(function(){
     scorecard.addOne();
     updateTotal();

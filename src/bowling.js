@@ -62,7 +62,11 @@ Scorecard.prototype.addTen = function () {
 
 Scorecard.prototype.frameOne = function () {
   this.resultOne = this._scoreArray[0]+this._scoreArray[1];
-  return this.resultOne;
+  if(isNaN(this.resultOne)){
+    return " ";
+  } else {
+    return this.resultOne;
+  }
 };
 
 Scorecard.prototype.frameTwo = function () {
@@ -76,7 +80,11 @@ Scorecard.prototype.frameTwo = function () {
     }
   }
   // returns total including bonus
-  return this.resultTwo;
+  if(isNaN(this.resultTwo)){
+    return " ";
+  } else {
+    return this.resultTwo;
+  }
 };
 
 Scorecard.prototype.frameThree = function () {
@@ -90,7 +98,11 @@ Scorecard.prototype.frameThree = function () {
     }
   }
   // returns total including bonus
-  return this.resultThree;
+  if(isNaN(this.resultThree)){
+    return " ";
+  } else {
+    return this.resultThree;
+  }
 };
 
 Scorecard.prototype.frameFour = function () {
@@ -104,7 +116,11 @@ Scorecard.prototype.frameFour = function () {
     }
   }
   // returns total including bonus
-  return this.resultFour;
+  if(isNaN(this.resultFour)){
+    return " ";
+  } else {
+    return this.resultFour;
+  }
 };
 
 Scorecard.prototype.frameFive = function () {
@@ -118,7 +134,11 @@ Scorecard.prototype.frameFive = function () {
     }
   }
   // returns total including bonus
-  return this.resultFive;
+  if(isNaN(this.resultFive)){
+    return " ";
+  } else {
+    return this.resultFive;
+  }
 };
 
 Scorecard.prototype.frameSix = function () {
@@ -132,7 +152,11 @@ Scorecard.prototype.frameSix = function () {
     }
   }
   // returns total including bonus
-  return this.resultSix;
+  if(isNaN(this.resultSix)){
+    return " ";
+  } else {
+    return this.resultSix;
+  }
 };
 
 Scorecard.prototype.frameSeven = function () {
@@ -146,7 +170,11 @@ Scorecard.prototype.frameSeven = function () {
     }
   }
   // returns total including bonus
-  return this.resultSeven;
+  if(isNaN(this.resultSeven)){
+    return " ";
+  } else {
+    return this.resultSeven;
+  }
 };
 
 Scorecard.prototype.frameEight = function () {
@@ -161,7 +189,11 @@ Scorecard.prototype.frameEight = function () {
 
   }
   // returns total including bonus
-  return this.resultEight;
+  if(isNaN(this.resultEight)){
+    return " ";
+  } else {
+    return this.resultEight;
+  }
 };
 
 Scorecard.prototype.frameNine = function () {
@@ -175,7 +207,11 @@ Scorecard.prototype.frameNine = function () {
     }
   }
   // returns total including bonus
-  return this.resultNine;
+  if(isNaN(this.resultNine)){
+    return " ";
+  } else {
+    return this.resultNine;
+  }
 };
 
 Scorecard.prototype.frameTen = function () {
@@ -192,5 +228,9 @@ Scorecard.prototype.frameTen = function () {
     this.resultTen = this.resultTen + this._scoreArray[20]
   }
   // returns total including bonus
-  return this.resultTen;
+  if(isNaN(this.resultTen)){
+    return " ";
+  } else {
+    return this.resultTen;
+  }
 };

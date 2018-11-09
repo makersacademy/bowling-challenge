@@ -6,10 +6,19 @@
     <div class="header">
       <h1>Bowling Challenge</h1>
     </div>
+    <style>
+      th {
+        min-width: 22px;
+        max-width: 22px;
+      }
+      td {
+        min-width: 44px;
+        max-width: 44px;
+      }
+    </style>
   </head>
   <body>
     <section>
-      <h2>Your current score is: <span id="score"></span></h2>
         <h3>Select the number of pins knocked down:</h3>
         <div>
           <button id="btn0" type="button" value="0" >0</button>
@@ -27,7 +36,7 @@
     </section>
     <section>
       <h2>Your rolls:</h2>
-      <table style="width:100%" class="table table-bordered">
+      <table class="table table-bordered">
         <thead>
           <th id="f1r1"></th>
           <th id="f1r2"></th>
@@ -63,6 +72,7 @@
           <td colspan="2">8</td>
           <td colspan="2">9</td>
           <td colspan="3">10</td>
+          <td id="score"></td>
         </tr>
       </table>
     </section>

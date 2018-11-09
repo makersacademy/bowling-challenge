@@ -71,7 +71,7 @@ $(document).ready(function() {
   });
 
   function hideImpossibleScores() {
-    console.log(bowling.getFrameScore(bowling.getCurrentFrame()-1))
+    console.log(bowling.getFrameScore()
   }
 
   function updateFrameScores() {

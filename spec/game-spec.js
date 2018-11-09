@@ -94,6 +94,7 @@ describe ('Game', function () {
     it('starts next frame if current frame is finished', function () {
       game.addBowl(5)
       game.addBowl(3)
+      game.addBowl(3)
       expect(game.getCurrentFrame()).not.toEqual(currentFrame)
     })
 

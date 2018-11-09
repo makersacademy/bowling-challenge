@@ -26,8 +26,16 @@ $(document).ready(function () {
   function updateScorecard() {
     var frameNumber = game._frames.length
     var bowls = game.getCurrentFrame().getBowls().join(', ')
-    console.log(game.getCurrentFrame().getBowls())
-    console.log(bowls)
     $(`#frame${frameNumber}`).text(bowls)
+    $('.frameScore').each(function () {
+      var frameNumber = parseInt($( this ).attr('id'))
+      try {
+        $( this ).text(game._frames[frameNumber].getScore(game._frames[frameNumber + 1], game._frames[frameNumber + 2]))
+        console.log(game._frames[frameNumber])
+      }
+      catch(error) {
+        $( this ).empty()
+      }
+    })
   }
 })

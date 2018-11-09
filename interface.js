@@ -6,6 +6,7 @@ $(document).ready(function () {
     var pins = parseInt($( event.target ).attr('value'))
     $('#error').empty()
     addBowl(pins)
+    updateScorecard()
     updateTotalScore()
   })
 
@@ -20,5 +21,13 @@ $(document).ready(function () {
     catch(error) {
       $('#error').text(error)
     }
+  }
+
+  function updateScorecard() {
+    var frameNumber = game._frames.length
+    var bowls = game.getCurrentFrame().getBowls().join(', ')
+    console.log(game.getCurrentFrame().getBowls())
+    console.log(bowls)
+    $(`#frame${frameNumber}`).text(bowls)
   }
 })

@@ -13,6 +13,7 @@ table th {
 .frame {
   border: 1px solid;
   border-top: none;
+  width: 50px;
 }
 .frameScore {
   height: 45px;

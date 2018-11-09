@@ -12,6 +12,11 @@ describe('Tests scoreCard', function() {
     for (var i = 0; i < n; i++) scorecard.roll(pins);
   }
 
+  function rollSpare() {
+    scorecard.roll(5);
+    scorecard.roll(5);
+  }
+
   it('expects scorecard to exist', function() {
     expect(scorecard instanceof Scorecard).toBeTruthy;
   });
@@ -26,15 +31,24 @@ describe('Tests scoreCard', function() {
     expect(scorecard.score()).toEqual(20);
   });
 
-  it('expects spare to be added to score', function() {
-    scorecard.roll(4);
-    scorecard.roll(6);
-    scorecard.roll(4);
-    scorecard.roll(6);
+  it('expects spare to add the next roll to current frame', function() {
+    rollSpare();
+    rollSpare();
     scorecard.roll(3);
     rollMany(15, 0);
-    expect(scorecard.score()).toEqual(30);
+    expect(scorecard.score()).toEqual(31);
   });
+
+  it('expects a strike to add the next 2 rolls to current frame', function() {
+    scorecard.roll(10);
+    scorecard.roll(10);
+    scorecard.roll(10);
+    scorecard.roll(3);
+    scorecard.roll(4);
+    rollMany(17, 0);
+    expect(scorecard.score()).toEqual(77);
+  });
+
 
 
 });

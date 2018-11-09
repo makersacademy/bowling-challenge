@@ -13,6 +13,7 @@ function Scorecard(){
   this.resultEight = 0;
   this.resultNine = 0;
   this.resultTine = 0;
+  this._strikeArray = [];
 }
 
 Scorecard.prototype.seeArray = function (){
@@ -69,10 +70,18 @@ Scorecard.prototype.addNine = function () {
   this._scoreArray.push(9);
 };
 
+
+
+
 Scorecard.prototype.addTen = function () {
   this.total +=10;
   this._scoreArray.push(10);
+  this._strikeArray.push('strike');
 };
+
+
+
+
 
 Scorecard.prototype.frameOne = function () {
   this.resultOne = this._scoreArray[0]+this._scoreArray[1];

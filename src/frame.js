@@ -26,6 +26,10 @@ Frame.prototype.calculateScore = function(framePlusOne, framePlusTwo){
   };
 };
 
+Frame.prototype.score = function(){
+  return this.frameScore
+};
+
 // ************* Private Functions ***********
 
 Frame.prototype._validFrameChecks = function(){

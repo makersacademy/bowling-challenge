@@ -26,6 +26,32 @@ describe("Frame", function() {
     expect( function(){ new Frame([1,1,3]); } ).toThrowError('Cannot have more than two bowls in a standard frame');
   });
 
+
+
+  describe("Score method returns frame score", function(){
+    // if calculate score is removed from initilize, the tests below stay as they are, otherwise need to remove the .caclulatescore line on each test
+
+    it("returns 9 for a standard frame", function() {
+      standardFrame.calculateScore();
+      expect(standardFrame.score()).toEqual(9);
+    });
+
+    it("returns 10 for a spare frame", function() {
+      spareFrame.calculateScore();
+      expect(spareFrame.score()).toEqual(10);
+    });
+
+    it("returns 10 for a spare frame", function() {
+      strikeFrame.calculateScore();
+      expect(strikeFrame.score()).toEqual(10);
+    });
+
+    it("returns 0 for a gutter frame", function() {
+      gutterFrame.calculateScore();
+      expect(gutterFrame.score()).toEqual(0);
+    });
+  });
+
   describe("Caclulating Score for Spares", function(){
 
     it("should return 14 (10 + 1st bowl of 2nd frame) when followed by standard frame", function() {

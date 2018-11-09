@@ -4,7 +4,13 @@ section {
 }
 @media only screen and (max-width: 600px) {
     body {
-        background-color: yellow;
+        /* background-color: yellow; */
+    }
+
+    .center {
+      width:300px;
+      padding: 10px;
+      margin: 10px;
     }
 }
 .center {
@@ -12,6 +18,7 @@ section {
    background-color: rgba(255,255,255,0.5);
    padding: 20px;
    margin: 40px;
+   font-size: 14px;
 
 
 }

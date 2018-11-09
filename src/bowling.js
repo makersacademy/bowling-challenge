@@ -15,10 +15,6 @@ Scorecard.prototype.endGame = function () {
   };
 };
 
-Scorecard.prototype.seeArray = function (){
-  return this._scoreArray;
-};
-
 Scorecard.prototype.addZero = function () {
   this._scoreArray.push(0);
 };

@@ -79,10 +79,6 @@ Scorecard.prototype.addTen = function () {
   this._strikeArray.push('strike');
 };
 
-
-
-
-
 Scorecard.prototype.frameOne = function () {
   this.resultOne = this._scoreArray[0]+this._scoreArray[1];
   return this.resultOne;

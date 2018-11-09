@@ -5,75 +5,56 @@ $(document).ready(function(){
 
   $('#one').click(function(){
     scorecard.addOne();
-    console.log("add one");
     updateTotal();
   });
 
   $('#two').click(function(){
     scorecard.addTwo();
-    console.log("add two");
     updateTotal();
   });
 
   $('#three').click(function(){
     scorecard.addThree();
-    console.log("add three");
     updateTotal();
   });
 
   $('#four').click(function(){
     scorecard.addFour();
-    console.log("add four");
     updateTotal();
   });
 
   $('#five').click(function(){
     scorecard.addFive();
-    console.log("add five");
     updateTotal();
   });
 
   $('#six').click(function(){
     scorecard.addSix();
-    console.log("add six");
     updateTotal();
   });
 
   $('#seven').click(function(){
     scorecard.addSeven();
-    console.log("add seven");
     updateTotal();
   });
 
   $('#eight').click(function(){
     scorecard.addEight();
-    console.log("add eight");
     updateTotal();
   });
 
   $('#nine').click(function(){
     scorecard.addNine();
-    console.log("add nine");
     updateTotal();
   });
-
-
-
-
 
   $('#strike').click(function(){
     scorecard.addTen();
-    console.log("add ten");
     updateTotal();
   });
 
-
-
-
-
   $('#zero').click(function(){
     scorecard.addZero();
-    console.log("add zero");
     updateTotal();
   });
 
@@ -198,17 +179,38 @@ $(document).ready(function(){
       $('#move18').text(scorecard._scoreArray[17]);
     }
 
+    // frame 10
+
     $('#move19').text(scorecard._scoreArray[18]);
-    $('#move20').text(scorecard._scoreArray[19]);
-    // Validates the roll cannot be more than 10
-    if(scorecard._scoreArray[18]+scorecard._scoreArray[19]>=11){
-      alert('Sorry try again, max pins in one frame is 10');
-      scorecard._scoreArray.pop();
-      $('#move20').text("");
+    if (scorecard._scoreArray[18]===10){
       $('#move20').text(scorecard._scoreArray[19]);
+      $('#move21').text(scorecard._scoreArray[20]);
+      $('#totalAmount').text(scorecard.resultTen);
+      if (scorecard._scoreArray[19]+scorecard._scoreArray[20]>=11){
+        alert('Sorry try again, max pins in one frame is 10');
+        scorecard._scoreArray.pop();
+        $('#move21').text("");
+        $('#move21').text(scorecard._scoreArray[20]);
+        $('#totalAmount').text(scorecard.resultTen);
+      }
+    } else {
+      $('#move20').text(scorecard._scoreArray[19]);
+      // Validates the roll cannot be more than 10
+      if(scorecard._scoreArray[19]===10){
+        $('#move21').text(scorecard._scoreArray[20]);
+      } else if (scorecard._scoreArray[18]+scorecard._scoreArray[19]===10) {
+        $('#move21').text(scorecard._scoreArray[20]);
+        $('#totalAmount').text(scorecard.resultTen);
+      }
+      if (scorecard._scoreArray[18]+scorecard._scoreArray[19]>=11){
+        alert('Sorry try again, max pins in one frame is 10');
+        scorecard._scoreArray.pop();
+        $('#move20').text("");
+        $('#move20').text(scorecard._scoreArray[19]);
+      }
+      $('#totalAmount').text(scorecard.resultTen);
     }
 
-    // not worked out 10th round bonus yet
 
     $('#frame1').text(scorecard.frameOne());
     $('#frame2').text(scorecard.frameTwo());

@@ -15,12 +15,21 @@ describe("ScoreLogic", function() {
   });
 
   describe("#isAStrike", function() {
-    it('returns true if the user scores a strike', function() {
+    it('returns true if the player scores a strike', function() {
       expect(scoreLogic.isAStrike(10,0)).toEqual(true);
     });
-    it('returns false if the user does not scores a strike', function() {
+    it('returns false if the player does not scores a strike', function() {
       expect(scoreLogic.isAStrike(5,2)).toEqual(false);
     });
+  });
+
+  describe("#isASpare", function() {
+    it('returns true if the player scores a spare', function() {
+      expect(scoreLogic.isASpare(5,5)).toEqual(true);
+    })
+    it('returns false if the player does not scores a spare', function() {
+      expect(scoreLogic.isASpare(5,1)).toEqual(false);
+    })
   });
 
 })

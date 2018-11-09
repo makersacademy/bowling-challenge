@@ -1,6 +1,8 @@
 # Bowling Challenge #
 
-This is a bowling scorecard application in JavaScript with the view to turn it into a web app in the future.
+This is a bowling scorecard application in JavaScript that integrates with a web application.
+
+![interface](public/interface.png)
 
 ## How to Use ##
 1. Open Terminal and clone the repository:
@@ -15,6 +17,21 @@ cd bowling-challenge
 ```bash
 bundle install
 ```
+4. Run the Jasmine tests to ensure code is functioning:
+```bash
+open SpecRunner.html
+```
+5. Open the web app:
+```bash
+open index.html
+```
+
+## Technologies ##
+* JavaScript
+* jQuery
+* Jasmine
+* CSS
+* HTML
 
 ## Specification ##
 #### Bowling Rules ####

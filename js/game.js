@@ -9,8 +9,20 @@ function Game() {
 Game.prototype.enterRoll = function (pins) {
   if (this.isLastFrame()) {
     if (this.currentframe.hasStrike()) {
+
+      // console.log("BONUS:" ,this.currentframe.frame_bonus)
+      // console.log("PREVIOUS BONUS:" ,this.previousframe.frame_bonus)
       this.currentframe.addBonus(pins)
-      console.log(this.currentframe.frame_bonus)
+      if (this.currentframe.frame_bonus[2] === 10){
+        // console.log("fdfdsfsfss")
+        this.previousframe.setBonus([10,10])
+      }
+      // if (this.currentframe.frame_bonus === [0,0,10,10]){
+      //   this.previousframe.setBonus([10,10])
+      // }
+      // console.log("BONUS x:" ,this.currentframe.frame_bonus)
+      // console.log("PREVIOUS BONUS x:" ,this.previousframe.frame_bonus)
+
     }
     console.log("last frame already")
         return "10 frames already"
@@ -82,26 +94,27 @@ Game.prototype.getFrameBonus = function (frame) {
 
 Game.prototype.getFrameBonusValues = function (frame) {
   var bonus = frame.frame_bonus
-  console.log("bonus: ", bonus)
+  // console.log("bonus: ", bonus)
   if (bonus != []) {
 
   if (frame.hasSpare()) {
     // console.log("sparebonus")
       if (!isNaN(this.getAllRolls()[frame.finalIndexOfFrame+1])) {
-        bonus.push(this.getAllRolls()[frame.finalIndexOfFrame+1]) }
-        bonus.push(0)
+        bonus[0]=(this.getAllRolls()[frame.finalIndexOfFrame+1]) }
+        bonus[1]=0
     } else if (frame.hasStrike()) {
       // console.log("strikebonus")
       // console.log(this.getAllRolls()[frame.finalIndexOfFrame+1])
       if (!isNaN(this.getAllRolls()[frame.finalIndexOfFrame+1])) {
-        bonus.push(this.getAllRolls()[frame.finalIndexOfFrame+1])
+        bonus[0]=(this.getAllRolls()[frame.finalIndexOfFrame+1])
       }
       if (!isNaN(this.getAllRolls()[frame.finalIndexOfFrame+2])) {
-      bonus.push(this.getAllRolls()[frame.finalIndexOfFrame+2])
+      bonus[1]=(this.getAllRolls()[frame.finalIndexOfFrame+2])
     }
     }
   }
   frame.setBonus(bonus)
+  console.log("frame bonus xxx: ", frame.framenumber, frame.getBonus())
   return bonus
 }
 

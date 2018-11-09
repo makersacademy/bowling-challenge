@@ -119,7 +119,7 @@ describe('Frame', function() {
 			frame.roll(5);
 			frame.roll(5);
 			frame.roll(5);
-			expect(frame.rolls).toEqual([5,5,5]);
+			expect(frame.rolls).toEqual([5,5]);
 		});
 		it('does not allow for 4 rolls on 10th frame when spare', function() {
 			frame.framenumber = 10;
@@ -130,7 +130,7 @@ describe('Frame', function() {
 			// console.log(frame.isFinalFrame())
 			// console.log(frame.rolls)
 			// console.log(frame.hasSpare())
-			expect(frame.rolls.length).toEqual(3);
+			expect(frame.rolls.length).toEqual(2);
 		});
 	});
 });

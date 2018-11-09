@@ -48,7 +48,10 @@ Frame.prototype.getMaxFrameSize = function () {
 Frame.prototype.roll = function (pins) {
 	if (this.isFrameOpen()) {
     if(this.isFinalFrame() && this.hasStrike()) {
-      console.log("fdsfdsfdsaf")
+      // console.log("fdsfdsfdsaf")
+      this.frame_bonus[0] = pins
+    } else if(this.isFinalFrame() && this.hasSpare()) {
+      // console.log("fdsfdsfdsaf")
       this.frame_bonus[0] = pins
     } else {
 		this.rolls.push(pins);

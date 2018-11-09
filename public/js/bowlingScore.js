@@ -52,6 +52,10 @@ function BowlingScorecard() {
       this.score -= this.frame.bowl3
       this.score -= this.frame.bowl3
     }
+    if (this.frame.bowl1 === 10 && this.frame.bowl2 < 10) {
+      this.score -= this.frame.bowl2
+      this.score -= this.frame.bowl3
+    }
     if (this.frame.bowl1 + this.frame.bowl2 === 10) {
       this.score -= this.frame.bowl3
     }
@@ -124,11 +128,14 @@ FinalFrame.prototype.setBowl2Score = function() {
   if (this.bowl1 < 10 && this.bowl1 + this.bowl2 === 10) {
     return '/';
   } 
-  if (this.bowl1 < 10) {
+  if (this.bowl1 < 10 && this.bowl1 + this.bowl2 < 10) {
     return this.bowl2;
   }
   if (this.bowl1 === 10 && this.bowl2 === 10) {
     return 'X'
+  }
+  if (this.bowl1 === 10 && this.bowl2 < 10) {
+    return this.bowl2
   }
 };
 
@@ -137,6 +144,9 @@ FinalFrame.prototype.setBowl3Score = function() {
     return 'X'
   }
   if (this.bowl1 === 10 && this.bowl2 === 10 && this.bowl3 < 10) {
+    return this.bowl3
+  }
+  if (this.bowl1 === 10 && this.bowl2 < 10 && this.bowl3 < 10) {
     return this.bowl3
   }
   if (this.bowl1 < 10 && this.bowl3 === 10) {

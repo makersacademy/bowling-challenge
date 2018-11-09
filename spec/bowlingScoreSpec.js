@@ -103,7 +103,7 @@ describe('BowlingScorecard', function() {
     expect(bowlingScorecard.getCurrentScore()).toEqual(10);
   });
    
-  it('calculates a a 300 game', function() {
+  it('calculates a 300 game', function() {
     for (var i = 0; i < 9; i++) {
       bowlingScorecard.setNewFrame(10);
       bowlingScorecard.updateGameScore();
@@ -111,6 +111,44 @@ describe('BowlingScorecard', function() {
     bowlingScorecard.setNewFrame(10, 10, 10)
     bowlingScorecard.updateGameScore();
     expect(bowlingScorecard.getCurrentScore()).toEqual(300);
+  });
+
+  it('calculates correct score when final frame has no bonus', function() {
+    for (var i = 0; i < 10; i++) {
+      bowlingScorecard.setNewFrame(3, 6);
+      bowlingScorecard.updateGameScore();
+    };
+    expect(bowlingScorecard.getCurrentScore()).toEqual(90);
+  });
+
+  it('calculates correct score when final frame has a spare', function() {
+    for (var i = 0; i < 9; i++) {
+      bowlingScorecard.setNewFrame(3, 6);
+      bowlingScorecard.updateGameScore();
+    };
+    bowlingScorecard.setNewFrame(4, 6, 2);
+    bowlingScorecard.updateGameScore();
+    expect(bowlingScorecard.getCurrentScore()).toEqual(93);
+  });
+
+  it('calculates correct score when final frame has one strike and no spare', function() {
+    for (var i = 0; i < 9; i++) {
+      bowlingScorecard.setNewFrame(3, 6);
+      bowlingScorecard.updateGameScore();
+    };
+    bowlingScorecard.setNewFrame(10, 6, 3);
+    bowlingScorecard.updateGameScore();
+    expect(bowlingScorecard.getCurrentScore()).toEqual(100);
+  });
+
+  it('calculates correct score when final frame has one strike and one spare', function() {
+    for (var i = 0; i < 9; i++) {
+      bowlingScorecard.setNewFrame(3, 6);
+      bowlingScorecard.updateGameScore();
+    };
+    bowlingScorecard.setNewFrame(10, 6, 4);
+    bowlingScorecard.updateGameScore();
+    expect(bowlingScorecard.getCurrentScore()).toEqual(101);
   });
 });
 

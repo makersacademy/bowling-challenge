@@ -7,9 +7,11 @@ function Game() {
   this.previousRoll;
   this.scores = new Score();
   this.tenthFrameRolls = [];
+  this.gameScore = 0;
 }
 
 Game.prototype.addScore = function (score) {
+  if (score > 10) throw new Error("Number of pins in frame cannot be above 10.")
   if (this.frame === 11) throw new Error("Cannot add more scores.");
   if (this.frame < 10) {
     if (this.roll === 1) {
@@ -103,7 +105,7 @@ Game.prototype.calculateBonus = function () {
 };
 
 Game.prototype.totalScore = function () {
-  return this.scores.totalScore();
+  this.gameScore += this.scores.totalScore();
 };
 
 Game.prototype.isGutterGame = function () {

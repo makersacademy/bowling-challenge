@@ -6,7 +6,7 @@ function Frame(scores) {
   this.isStrike;
   this.score = 0;
   this.bonus = 0;
-  this.frameScore;
+  this.frameScore = 0;
   this.calculateFrameType();
 }
 

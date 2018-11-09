@@ -84,6 +84,17 @@ describe('BowlingScorecard', function() {
     expect(bowlingScorecard.getCurrentScore()).toEqual(21)
   });
 
+  it('calculates a game score including spare and multiple strike bonuses', function() {
+    bowlingScorecard.setNewFrame(10);
+    bowlingScorecard.updateGameScore();
+    bowlingScorecard.setNewFrame(10);
+    bowlingScorecard.updateGameScore();
+    bowlingScorecard.setNewFrame(4, 6);
+    bowlingScorecard.updateGameScore();
+    bowlingScorecard.setNewFrame(3, 5);
+    bowlingScorecard.updateGameScore();
+    expect(bowlingScorecard.getCurrentScore()).toEqual(65);
+  });
 });
 
 describe('Frame', function() {

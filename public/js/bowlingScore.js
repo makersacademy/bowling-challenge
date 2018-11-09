@@ -23,12 +23,34 @@ function BowlingScorecard() {
     this.score = 0;
     this.updateScoreArray();
     for (var i = 0; i < this.scoreArray.length; i++) {
-      if (this.scoreArray[i] === '/') {
+      if (this.scoreArray[i] === 'X') {
+        this.addStrike(i)
+        console.log(this.score)
+      } else if (this.scoreArray[i] === '/') {
         this.addSpare(i)
+        console.log(this.score)
       } else {
         this.score += this.scoreArray[i]
+        console.log(this.score)
       }
     };
+  };
+
+  BowlingScorecard.prototype.addStrike = function (i) {
+    this.score += 10;
+    if (this.scoreArray[i+1] === 'X') {
+      this.score += 10;
+    } else if (this.scoreArray[i+1] >= 0) {
+      this.score += this.scoreArray[i+1];
+    }
+    if (this.scoreArray[i+2] === 'X') {
+    this.score += 10;
+    } else if (this.scoreArray[i+2] === '/') {
+    this.score += 10
+    this.score -= this.scoreArray[i+1]
+    } else if (this.scoreArray[i+2] >= 0) {
+    this.score += this.scoreArray[i+2];
+    }
   };
 
   BowlingScorecard.prototype.addSpare = function (i) {

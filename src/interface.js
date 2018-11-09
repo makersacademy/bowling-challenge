@@ -18,10 +18,10 @@ $(document).ready(function () {
     } else {
       value = $(this).attr('id');
       newRoll2 = roll.getRoll(value);
-      frameScore();
+      frameScoreText();
       showSecondRoll();
       updateScore();
-      updateFrameText();
+      isGameOver();
       frame.addRoll();
       showButtons();
     };
@@ -36,11 +36,7 @@ $(document).ready(function () {
   };
 
   function showSecondRoll() {
-    if(frameScore() === '10') {
-      $(`#secondRoll${game.getFrameNumber()}`).text('/')
-    } else {
-      $(`#secondRoll${game.getFrameNumber()}`).text(roll.getRoll(value))
-    };
+    $(`#secondRoll${game.getFrameNumber()}`).text(roll.getRoll(value))
   };
 
   function showButtons() {
@@ -52,24 +48,23 @@ $(document).ready(function () {
   };
 
   function findImpossibleRolls(){
-      impossibleRoll2 = frame.impossibleRolls(parseInt(newRoll1));
-      for(var r = 0; r < impossibleRoll2.length; r++) {
+    impossibleRoll2 = frame.getImpossibleRolls(parseInt(newRoll1));
+    for(var r = 0; r < impossibleRoll2.length; r++) {
       $(`#${impossibleRoll2[r]}`).hide();
     };
   };
 
-  function frameScore() {
+  function updateFrameScore() {
     frame.calculateScore(parseInt(newRoll1), parseInt(newRoll2));
-    frameScoreText();
   };
 
   function updateScore() {
-    currentScore = frame.getCurrentScore();
-    game.updateTotalScore(currentScore);
+    game.updateTotalScore(frame);
     updateScoreText();
   };
 
   function frameScoreText() {
+    updateFrameScore();
     $(`#frame_score${game.getFrameNumber()}`).text(frame.getCurrentScore());
   };
 
@@ -77,7 +72,7 @@ $(document).ready(function () {
     $('#current_score').text(game.getTotalScore());
   };
 
-  function updateFrameText() {
+  function isGameOver() {
     if(game.getFrameNumber() === 'Game over!') {
       $('#frame_number').text(game.getFrameNumber());
     };

@@ -16,18 +16,6 @@ describe("Frame", function() {
     expect(gutterFrame.frameScore).toEqual(0);
   });
 
-  xit("throws an error if more than 10 pins are knocked down in a standard frame.", function() {
-
-    expect( function(){ new Frame([9,9]); } ).toThrowError('Cannot knock down more than 10 pins in a single frame');
-  });
-
-  xit("throws an error if there is more than two bowls in a standard frame", function() {
-
-    expect( function(){ new Frame([1,1,3]); } ).toThrowError('Cannot have more than two bowls in a standard frame');
-  });
-
-
-
   describe("Score method returns frame score", function(){
     // if calculate score is removed from initilize, the tests below stay as they are, otherwise need to remove the .caclulatescore line on each test
 

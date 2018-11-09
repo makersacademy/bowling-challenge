@@ -1,0 +1,14 @@
+th {
+  min-width: 22px;
+  max-width: 22px;
+}
+td {
+  min-width: 44px;
+  max-width: 44px;
+}
+
+body {
+  background-image: url("bowling.png");
+  background-repeat: no-repeat;
+  background-size: auto;
+}

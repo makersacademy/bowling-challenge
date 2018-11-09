@@ -49,6 +49,12 @@ describe('Tests scoreCard', function() {
     expect(scorecard.score()).toEqual(77);
   });
 
+  it('checks for perfect score, all 10s', function() {
+    rollMany(12, 10);
+    expect(scorecard.score()).toEqual(300);
+  });
+
+
 
 
 });

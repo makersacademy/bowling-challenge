@@ -4,9 +4,9 @@ Bowling Challenge
 
 ## Todo
 
-- [ ] update generateTotalScore unit test to expect a method to be called rather than a property
-- [ ] create a frame.score() method
-- [ ] update generateTotalScore method to call a method rather than a property.
+- [x] update generateTotalScore unit test to expect a method to be called rather than a property
+- [x] create a frame.score() method
+- [x] update generateTotalScore method to call a method rather than a property.
 - [ ] add in game validation checks
 - [ ] add in frame validation checks
 - [ ] interface.js

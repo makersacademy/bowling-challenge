@@ -1,10 +1,6 @@
 # Bowling Challenge #
 
-<<<<<<< HEAD
 This is a bowling scorecard in JavaScript that integrates with a web application.
-=======
-This is a bowling scorecard application in JavaScript that integrates with a web application.
->>>>>>> 088c24f67dc30cff800958d8970c6ee9c17125a3
 
 ![interface](public/interface.png)
 

@@ -6,6 +6,7 @@ function Game() {
   this._allFrames = []
   this._currentFrame = 1
   this._totalScore = 0
+  this._allRolls = []
 }
 
 Game.prototype.recordRoll = function(numberOfPins) {
@@ -15,6 +16,7 @@ Game.prototype.recordRoll = function(numberOfPins) {
     this.lastFrame(numberOfPins);
   } else {
     this.validateRoll(numberOfPins);
+    this._allRolls.push(numberOfPins);
     this._rollsThisFrame.push(numberOfPins);
     this._scoreThisFrame += numberOfPins;
     this._totalScore += numberOfPins;
@@ -90,6 +92,7 @@ Game.prototype.checkPreviousStrikes = function() {
 Game.prototype.lastFrame = function(numberOfPins) {
   switch (this._rollsThisFrame.length) {
     case 0:
+      this._allRolls.push(numberOfPins);
       this._rollsThisFrame.push(numberOfPins);
       this._scoreThisFrame += numberOfPins;
       this._totalScore += numberOfPins;
@@ -100,6 +103,7 @@ Game.prototype.lastFrame = function(numberOfPins) {
       };
       break;
     case 1:
+      this._allRolls.push(numberOfPins);
       this._rollsThisFrame.push(numberOfPins);
       this._scoreThisFrame += numberOfPins;
       this._totalScore += numberOfPins;
@@ -118,6 +122,7 @@ Game.prototype.lastFrame = function(numberOfPins) {
       if (this._rollsThisFrame[0] + this._rollsThisFrame[1] < 10) {
         throw "Game finished";
       };
+      this._allRolls.push(numberOfPins);
       this._rollsThisFrame.push(numberOfPins);
       this._scoreThisFrame += numberOfPins;
       this._totalScore += numberOfPins;

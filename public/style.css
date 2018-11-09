@@ -12,3 +12,12 @@ body {
   background-repeat: no-repeat;
   background-size: auto;
 }
+
+table {
+  width: 100%;
+}
+
+.table-a, th, td, thead, tr {
+  border-collapse: collapse;
+  border: 2px solid black;
+}

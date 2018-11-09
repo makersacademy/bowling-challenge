@@ -76,7 +76,14 @@ describe('BowlingScorecard', function() {
     expect(bowlingScorecard.getCurrentScore()).toEqual(8)
   });
 
-  
+  it('calculates a game score including spare bonus', function () {
+    bowlingScorecard.setNewFrame(4, 6);
+    bowlingScorecard.updateGameScore();
+    bowlingScorecard.setNewFrame(3, 5);
+    bowlingScorecard.updateGameScore();
+    expect(bowlingScorecard.getCurrentScore()).toEqual(21)
+  });
+
 });
 
 describe('Frame', function() {

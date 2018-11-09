@@ -5,9 +5,6 @@ ScoreLogic.prototype._isNoMoreThanTen = function(a, b) {
   return ( a + b <= 10);
 }
 
-ScoreLogic.prototype._isNoLessThanZero = function(a, b) {
-  return ( a + b >= 0);
-}
 
 ScoreLogic.prototype._isAStrike = function(a, b) {
   return (a === 10);

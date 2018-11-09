@@ -1,5 +1,6 @@
 function Score(array = []) {
   this.array = array;
+  this.gameScore = 0;
 }
 
 Score.prototype.calculateFrameScore = function() {
@@ -13,7 +14,9 @@ Score.prototype.calculateBonus = function () {
     if (this.array[i].isSpare) {
       this.array[i].bonus = this.array[i + 1].roll1;
     } else if (this.array[i].isStrike) {
-      if (this.array[i + 1].roll2 !== undefined) {
+      if (this.array[i + 1] === undefined) {
+        break
+      } else if (this.array[i + 1].roll2 !== undefined) {
         this.array[i].bonus = (this.array[i + 1].roll1 + this.array[i + 1].roll2);
       } else {
         this.array[i].bonus = (this.array[i + 1].roll1 + this.array[i + 2].roll1);
@@ -24,16 +27,15 @@ Score.prototype.calculateBonus = function () {
 
 Score.prototype.frameTotalScore = function () {
   for (var i = 0; i < this.array.length; i++) {
-    this.array[i].totalScore = (this.array[i].score || 0) + (this.array[i].bonus || 0);
+    this.array[i].frameScore = (this.array[i].score || 0) + (this.array[i].bonus || 0);
   }
 };
 
 Score.prototype.totalScore = function () {
-  totalScore = 0;
   for (var i = 0; i < this.array.length; i++) {
-    totalScore += (this.array[i].totalScore || 0)
+    this.gameScore += (this.array[i].frameScore || 0)
   }
-  return totalScore;
+  return this.gameScore
 };
 
 Score.prototype.isGutterGame = function () {

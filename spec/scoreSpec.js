@@ -90,34 +90,35 @@ describe('Score', function() {
     });
   });
 
-  // describe('frameTotalScore', function() {
-  //   beforeEach(function() {
-  //     score = new Score();
-  //
-  //     score.array.push(regular_frame, spare_frame, strike_frame)
-  //     score.calculateFrameScore();
-  //     score.calculateBonus();
-  //     score.frameTotalScore();
-  //   });
-  //
-  //   it('returns the total score for all frames', function() {
-  //     expect(score.array[1].totalScore).toEqual(20);
-  //   });
-  // });
-  //
-  // describe('totalScore', function() {
-  //   beforeEach(function() {
-  //     score = new Score();
-  //     score.array.push(strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame_tenth);
-  //     score.calculateFrameScore();
-  //     score.calculateBonus();
-  //   });
-  //
-  //   it('returns the total score for a perfect game', function() {
-  //     score.frameTotalScore();
-  //     expect(score.totalScore()).toEqual(300);
-  //   });
-  // });
+  describe('frameTotalScore', function() {
+    beforeEach(function() {
+      score = new Score();
+
+      score.array.push(regular_frame, spare_frame, strike_frame)
+      score.calculateFrameScore();
+      score.calculateBonus();
+      score.frameTotalScore();
+    });
+
+    it('returns the total score for all frames', function() {
+      expect(score.array[1].frameScore).toEqual(20);
+    });
+  });
+
+  describe('totalScore', function() {
+    beforeEach(function() {
+      score = new Score();
+      score.array.push(strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame_tenth);
+      score.calculateFrameScore();
+      score.calculateBonus();
+    });
+
+    xit('returns the total score for a perfect game', function() {
+      score.frameTotalScore();
+      score.totalScore();
+      expect(score.gameScore).toEqual(300);
+    });
+  });
 
   describe('isGutterGame', function() {
     beforeEach(function() {

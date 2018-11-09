@@ -1,15 +1,15 @@
 describe('Frame', function() {
   var frame;
 
-  regular_frame = new Frame([3,4]);
+  open_frame = new Frame([3,4]);
   spare_frame = new Frame([5,5]);
   strike_frame = new Frame([10]);
   tenth_frame = new Frame([10,3,3]);
 
   describe('initialize', function() {
     it('has two rolls', function() {
-      expect(regular_frame.roll1).toEqual(3);
-      expect(regular_frame.roll2).toEqual(4);
+      expect(open_frame.roll1).toEqual(3);
+      expect(open_frame.roll2).toEqual(4);
     });
 
     it('allows up to 3 rolls', function() {

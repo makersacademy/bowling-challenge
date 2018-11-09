@@ -59,7 +59,7 @@ $(document).ready(function () {
   };
 
   function updateScore() {
-    game.updateTotalScore(frame);
+    game.updateTotalScore(frame, parseInt(newRoll1));
     updateScoreText();
   };
 

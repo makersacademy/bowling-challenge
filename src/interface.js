@@ -117,7 +117,7 @@ $(document).ready(function(){
     }
     // works out bonus for spare
     if(scorecard._scoreArray[0]+scorecard._scoreArray[1]===10){
-      $('#bonus1').text(scorecard._scoreArray[2]);
+      console.log('spare round 1');
     }
 
     $('#move5').text(scorecard._scoreArray[4]);
@@ -131,7 +131,7 @@ $(document).ready(function(){
     }
     // works out bonus for spare
     if(scorecard._scoreArray[2]+scorecard._scoreArray[3]===10){
-      $('#bonus2').text(scorecard._scoreArray[4]);
+      console.log('spare round 2');
     }
 
     $('#move7').text(scorecard._scoreArray[6]);
@@ -145,7 +145,7 @@ $(document).ready(function(){
     }
     // works out bonus for spare
     if(scorecard._scoreArray[4]+scorecard._scoreArray[5]===10){
-      $('#bonus3').text(scorecard._scoreArray[6]);
+      console.log('spare round 3');
     }
 
     $('#move9').text(scorecard._scoreArray[8]);
@@ -159,7 +159,7 @@ $(document).ready(function(){
     }
     // works out bonus for spare
     if(scorecard._scoreArray[6]+scorecard._scoreArray[7]===10){
-      $('#bonus4').text(scorecard._scoreArray[8]);
+      console.log('spare round 4');
     }
 
     $('#move11').text(scorecard._scoreArray[10]);
@@ -173,7 +173,7 @@ $(document).ready(function(){
     }
     // works out bonus for spare
     if(scorecard._scoreArray[8]+scorecard._scoreArray[9]===10){
-      $('#bonus5').text(scorecard._scoreArray[10]);
+      console.log('spare round 5');
     }
 
     $('#move13').text(scorecard._scoreArray[12]);
@@ -187,7 +187,7 @@ $(document).ready(function(){
     }
     // works out bonus for spare
     if(scorecard._scoreArray[10]+scorecard._scoreArray[11]===10){
-      $('#bonus6').text(scorecard._scoreArray[12]);
+      console.log('spare round 6');
     }
 
     $('#move15').text(scorecard._scoreArray[14]);
@@ -201,7 +201,7 @@ $(document).ready(function(){
     }
     // works out bonus for spare
     if(scorecard._scoreArray[12]+scorecard._scoreArray[13]===10){
-      $('#bonus7').text(scorecard._scoreArray[14]);
+      console.log('spare round 7');
     }
 
     $('#move17').text(scorecard._scoreArray[16]);
@@ -215,7 +215,7 @@ $(document).ready(function(){
     }
     // works out bonus for spare
     if(scorecard._scoreArray[14]+scorecard._scoreArray[5]===10){
-      $('#bonus8').text(scorecard._scoreArray[16]);
+      console.log('spare round 8');
     }
 
     $('#move19').text(scorecard._scoreArray[18]);
@@ -229,9 +229,9 @@ $(document).ready(function(){
     }
     // works out bonus for spare
     if(scorecard._scoreArray[16]+scorecard._scoreArray[17]===10){
-      $('#bonus9').text(scorecard._scoreArray[18]);
+      console.log('spare round 9');
     }
-    
+
     // not worked out 10th round bonus yet
 
     $('#frame1').text(scorecard.frameOne());

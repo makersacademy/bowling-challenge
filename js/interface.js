@@ -20,8 +20,8 @@ $('#score_head_1').attr('class', 'frame_selected');
     $('#score_'+game.currentframenumber+'').text(game.currentframe.formatRolls());
     $('#marker_'+game.currentframenumber+'').text(game.currentframe.getPinsScore());
     $('#current-score').text(game.calculateGameTotalScore());
-    console.log(game.currentframe.isFrameOpen())
-    console.log(game.currentframe.formatRolls())
+    // console.log(game.currentframe.isFrameOpen())
+    // console.log(game.currentframe.formatRolls())
     if(game.currentframe.isFrameOpen()){
     disableButtons(game.currentframe.remainingPins())
     } else {
@@ -53,7 +53,7 @@ $('#score_head_1').attr('class', 'frame_selected');
 
   $('.scorebuttons').on('click', function() {
     val = parseInt($(this).attr("value"))
-    console.log(val)
+    // console.log(val)
     game.enterRoll(val);
     $('#frame-number').text(game.currentframenumber);
     showScore()

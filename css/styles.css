@@ -2,7 +2,11 @@ section {
   font-family: 'Bungee inline';
 
 }
-
+@media only screen and (max-width: 600px) {
+    body {
+        background-color: yellow;
+    }
+}
 .center {
   background-color: #fff;
    background-color: rgba(255,255,255,0.5);
@@ -16,7 +20,7 @@ body {
   background-image: url("../images/Game-Sport-Bowling-Ball-2585600.jpg");
   background-size:cover;
   background-repeat: no-repeat;
-  background-color: 
+  /* background-color: */
 
 }
 
@@ -28,9 +32,9 @@ span {
   font-size: 40px;
 }
 
-table.scorecard {margin: 0 auto; width:80%; font-size:12px; border:1px solid; text-align: center; table-layout: fixed; margin-bottom: 40px;}
+table.scorecard {border-radius:6px; -moz-border-radius:6px;margin: 0 auto; width:80%; font-size:12px; border:1px solid; text-align: center; table-layout: fixed; margin-bottom: 40px;}
 table.scorecard th, tr, td {padding: 0; vertical-align: middle; text-align: center;}
-table.scorecard th {border-bottom:1px solid; background-color:rgb(102, 15, 8); height:30px; color: #fff}
+table.scorecard th {border-bottom:1px solid; background-color:rgb(162, 12, 0); height:30px; color: #fff}
 table.scorecard th:not(:last-child) {border-right:1px solid;}
 table.scorecard td {height:30px; background: rgba(255, 255, 255, 0.5);}
 table.scorecard tr td:not(:last-child) {border-right:1px solid;}
@@ -47,6 +51,7 @@ table.scorecard tr:nth-child(2) td:last-child {border-bottom:1px solid;}
   background-color: #0099cc;
   color: #ffffff;
   padding: 5px 10px;
+  margin: 5px 5px;
 }
 
 .scorebuttons:hover {

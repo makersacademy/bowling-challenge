@@ -207,6 +207,9 @@ Scorecard.prototype.frameTen = function () {
       this.resultTen = this.resultTen + this._scoreArray[19]
     }
   }
+  if(this._scoreArray[18]+this._scoreArray[19]>=10){
+    this.resultTen = this.resultTen + this._scoreArray[20]
+  }
   // returns total including bonus
   return this.resultTen;
 };

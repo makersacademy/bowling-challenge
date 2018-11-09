@@ -4,6 +4,22 @@
     bowling = new Bowling();
   });
 
+  it('tracks frames (1)', function() {
+    expect(bowling.getCurrentFrame()).toEqual(1)
+  });
+
+  it('tracks frames (2)', function() {
+    bowling.bowl(10)
+    expect(bowling.getCurrentFrame()).toEqual(2)
+  });
+
+  it('tracks frames (3)', function() {
+    bowling.bowl(10)
+    bowling.bowl(5)
+    bowling.bowl(4)
+    expect(bowling.getCurrentFrame()).toEqual(3)
+  });
+
   it('tracks Bowls (0)', function() {
     expect(bowling.getCurrentBowl()).toEqual(0)
   });

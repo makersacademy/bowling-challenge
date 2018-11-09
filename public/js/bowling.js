@@ -1,6 +1,7 @@
 function Bowling() {
   this.bowls = [];
   this.currentBowl = 0
+  this.currentFrame = 1;
 };
 
 Bowling.prototype.bowl = function (number) {
@@ -35,7 +36,9 @@ Bowling.prototype.bowl = function (number) {
     }
     this.currentBowl ++;
   }
-  console.log(this.bowls)
+  if (this.bowls.length % 2 === 0) {
+    this.currentFrame ++;
+  }
 };
 
 Bowling.prototype.getFrameScore = function (number) {
@@ -48,4 +51,8 @@ Bowling.prototype.getTotalScore = function () {
 
 Bowling.prototype.getCurrentBowl = function (number) {
   return this.currentBowl;
+};
+
+Bowling.prototype.getCurrentFrame = function (number) {
+  return this.currentFrame;
 };

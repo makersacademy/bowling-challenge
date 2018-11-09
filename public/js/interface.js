@@ -2,12 +2,14 @@ $(document).ready(function() {
   var bowling = new Bowling();
 
   $('#button0').click(function() {
+    hideImpossibleScores()
     bowling.bowl(0)
     $('#bowl1-bowl' + bowling.getCurrentBowl()).text('0')
     updateFrameScores();
   });
 
   $('#button1').click(function() {
+    hideImpossibleScores()
     bowling.bowl(1)
     $('#bowl1-bowl' + bowling.getCurrentBowl()).text('1')
     updateFrameScores();
@@ -67,6 +69,10 @@ $(document).ready(function() {
     $('#bowl1-bowl' + bowling.getCurrentBowl()).text('X')
     updateFrameScores();
   });
+
+  function hideImpossibleScores() {
+    console.log(bowling.getFrameScore(bowling.getCurrentFrame()-1))
+  }
 
   function updateFrameScores() {
     $('#frame1').text(bowling.getFrameScore(1));

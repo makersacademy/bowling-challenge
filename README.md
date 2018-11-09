@@ -13,6 +13,17 @@ git clone https://github.com/melissasedgwick/bowling-challenge.git
 ```
 cd bowling-challenge
 ```
+3. Run the application
+```
+open bowling-challenge.html
+```
+
+## Testing
+
+From the project directory, open SpecRunner
+```
+open SpecRunner.html
+```
 
 ## User Stories
 

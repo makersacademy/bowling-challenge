@@ -8,6 +8,11 @@ function Game() {
 
 Game.prototype.enterRoll = function (pins) {
   if (this.isLastFrame()) {
+    if (this.currentframe.hasStrike()) {
+      this.currentframe.addBonus(pins)
+      console.log(this.currentframe.frame_bonus)
+    }
+    console.log("last frame already")
         return "10 frames already"
   }
   if (this.newGame() || !this.isFrameOpen(this.currentframe)) {
@@ -76,22 +81,27 @@ Game.prototype.getFrameBonus = function (frame) {
 }
 
 Game.prototype.getFrameBonusValues = function (frame) {
-  var bonus = [0,0]
-  console.log("plus 1")
-  console.log(isNaN(frame.finalIndexOfFrame+1))
-  console.log("plus 2")
-  console.log(isNaN(frame.finalIndexOfFrame+2))
-  if (frame.hasSpare()) {
-    bonus[0] = (this.getAllRolls()[frame.finalIndexOfFrame+1])
-    bonus[1] = 0
-  } else if (frame.hasStrike()) {
-    bonus[0] = (this.getAllRolls()[frame.finalIndexOfFrame+1])
-    bonus[1] = (this.getAllRolls()[frame.finalIndexOfFrame+2])
-  }
-  // else {
-  // bonus.push(0)
-  // }
+  var bonus = frame.frame_bonus
+  console.log("bonus: ", bonus)
+  if (bonus != []) {
 
+  if (frame.hasSpare()) {
+    // console.log("sparebonus")
+      if (!isNaN(this.getAllRolls()[frame.finalIndexOfFrame+1])) {
+        bonus.push(this.getAllRolls()[frame.finalIndexOfFrame+1]) }
+        bonus.push(0)
+    } else if (frame.hasStrike()) {
+      // console.log("strikebonus")
+      // console.log(this.getAllRolls()[frame.finalIndexOfFrame+1])
+      if (!isNaN(this.getAllRolls()[frame.finalIndexOfFrame+1])) {
+        bonus.push(this.getAllRolls()[frame.finalIndexOfFrame+1])
+      }
+      if (!isNaN(this.getAllRolls()[frame.finalIndexOfFrame+2])) {
+      bonus.push(this.getAllRolls()[frame.finalIndexOfFrame+2])
+    }
+    }
+  }
+  frame.setBonus(bonus)
   return bonus
 }
 

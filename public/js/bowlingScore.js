@@ -25,15 +25,36 @@ function BowlingScorecard() {
     for (var i = 0; i < this.scoreArray.length; i++) {
       if (this.scoreArray[i] === 'X') {
         this.addStrike(i)
-        console.log(this.score)
       } else if (this.scoreArray[i] === '/') {
         this.addSpare(i)
-        console.log(this.score)
       } else {
         this.score += this.scoreArray[i]
-        console.log(this.score)
       }
     };
+  };
+
+  BowlingScorecard.prototype.updateScoreArray = function () {
+    this.scoreArray.push(this.frame.setBowl1Score());
+    if (this.frame.bowl1 < 10 || this.frameCounter === 10) {
+    this.scoreArray.push(this.frame.setBowl2Score());
+    }
+    if (this.frameCounter === 10 && this.frame.bowl1 + this.frame.bowl2 > 9) {
+      this.scoreArray.push(this.frame.setBowl3Score());
+    }
+    if (this.frameCounter === 10) {
+      this.FinalFrameBonusCorrection()
+    }
+  };
+
+  BowlingScorecard.prototype.FinalFrameBonusCorrection = function() {
+    if (this.frame.bowl1 === 10 && this.frame.bowl2 === 10) {
+      this.score -= this.frame.bowl2
+      this.score -= this.frame.bowl3
+      this.score -= this.frame.bowl3
+    }
+    if (this.frame.bowl1 + this.frame.bowl2 === 10) {
+      this.score -= this.frame.bowl3
+    }
   };
 
   BowlingScorecard.prototype.addStrike = function (i) {
@@ -60,16 +81,6 @@ function BowlingScorecard() {
       this.score += 10;
     } else if (this.scoreArray[i+1] >= 0) {
       this.score += this.scoreArray[i+1];
-    }
-  };
-
-  BowlingScorecard.prototype.updateScoreArray = function () {
-    this.scoreArray.push(this.frame.setBowl1Score());
-    if (this.frame.bowl1 < 10 || this.frameCounter === 10) {
-    this.scoreArray.push(this.frame.setBowl2Score());
-    }
-    if (this.frameCounter === 10 && this.frame.bowl1 + this.frame.bowl2 > 9) {
-      this.scoreArray.push(this.frame.setBowl3Score());
     }
   };
 
@@ -116,7 +127,7 @@ FinalFrame.prototype.setBowl2Score = function() {
   if (this.bowl1 < 10) {
     return this.bowl2;
   }
-  if (this.bowl1 = 10 && this.bowl2 === 10) {
+  if (this.bowl1 === 10 && this.bowl2 === 10) {
     return 'X'
   }
 };

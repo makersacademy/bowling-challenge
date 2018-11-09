@@ -95,6 +95,23 @@ describe('BowlingScorecard', function() {
     bowlingScorecard.updateGameScore();
     expect(bowlingScorecard.getCurrentScore()).toEqual(65);
   });
+
+  it('calculates a game score including strike bonuses and gutter balls', function() {
+    bowlingScorecard.setNewFrame(10);
+    bowlingScorecard.updateGameScore();
+    bowlingScorecard.setNewFrame(0, 0);
+    expect(bowlingScorecard.getCurrentScore()).toEqual(10);
+  });
+   
+  it('calculates a a 300 game', function() {
+    for (var i = 0; i < 9; i++) {
+      bowlingScorecard.setNewFrame(10);
+      bowlingScorecard.updateGameScore();
+    };
+    bowlingScorecard.setNewFrame(10, 10, 10)
+    bowlingScorecard.updateGameScore();
+    expect(bowlingScorecard.getCurrentScore()).toEqual(300);
+  });
 });
 
 describe('Frame', function() {

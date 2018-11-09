@@ -39,8 +39,12 @@ table th {
 .scoreButton:focus {
   outline: none;
 }
-tr#frameRow {
-  height: 60px;
+article#error {
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Bungee', cursive;
+  position: relative;
+  margin-top: 50px;
 }
 h1#title {
   text-align: center;
@@ -51,6 +55,9 @@ h2#currentScore {
   font-family: 'Bungee Shade', cursive;
   margin-left: 20%;
   font-size: 30px;
+}
+tr#frameRow {
+  height: 60px;
 }
 section#header {
   height: 25%;

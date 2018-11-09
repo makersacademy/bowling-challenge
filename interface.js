@@ -1,14 +1,24 @@
 $(document).ready(function () {
-  var game = new Game();
-  updateScore()
+  var game = new Game()
+  updateTotalScore()
 
   $(':button').click(function () {
     var pins = parseInt($( event.target ).attr('value'))
-    game.addBowl(pins)
-    updateScore()
+    $('#error').empty()
+    addBowl(pins)
+    updateTotalScore()
   })
 
-  function updateScore () {
+  function updateTotalScore () {
     $('#currentScore').text('score: ' + game.getCurrentScore())
+  }
+
+  function addBowl(pins) {
+    try {
+      game.addBowl(pins)
+    }
+    catch(error) {
+      $('#error').text(error)
+    }
   }
 })

@@ -42,6 +42,9 @@ describe("ScoreLogic", function() {
     it('returns spare if the player scores a spare', function() {
       expect(scoreLogic.frame(5,5)).toEqual("spare");
     });
+    it('returns continue if the player does not score a spare or a strike', function() {
+      expect(scoreLogic.frame(1,3)).toEqual("continue");
+    });
   });
 
 })

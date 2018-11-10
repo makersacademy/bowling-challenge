@@ -2,7 +2,7 @@ describe("Game", function() {
 
   var game = new Game();
 
-  describe("At the start of the game:", function () {
+  describe("#newGame:", function () {
     it("starts the game with a running score of 0", function() {
       expect(game.runningScore).toEqual(0);
     });

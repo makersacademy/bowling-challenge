@@ -14,18 +14,18 @@ Game.prototype.roll = function(roll) {
 
   this.currentFrame.addRoll(roll);
   this.currentFrame.rollIndex++;
-  if (this.currentFrame.getFrameScore() == 10 || this.currentFrame.rollIndex == 2) {
+  if (this.currentFrame.calculateFrameScore() == 10 || this.currentFrame.rollIndex == 2) {
     this.currentFrameIndex++;
   }
-  return this.score();
+  return this.calculateScore();
 };
 
-Game.prototype.score = function() {
+Game.prototype.calculateScore = function() {
   var total = 0;
   this.frames.forEach(function(frame) {
     if (frame.frameIndex > 9) {
     } else {
-      total += frame.getFrameScore();
+      total += frame.calculateFrameScore();
     }
   });
   return total;
@@ -42,7 +42,7 @@ Frame.prototype.addRoll = function(roll) {
   this.frameRolls[this.rollIndex] = roll;
 }
 
-Frame.prototype.getFrameScore = function() {
+Frame.prototype.calculateFrameScore = function() {
   if (this.frameRolls[0] == 10) {
     return this.frameRolls[0] + this.getNextFrame(this).frameRolls[0] + this.getNextFrame(this).frameRolls[1] + this.getNextNextFrame(this).frameRolls[0];
   } else if (this.frameRolls[0] + this.frameRolls[1] == 10) {

@@ -6,7 +6,7 @@ This is a fully-functioning bowling scorecard, built using JavaScript, JQuery, H
 ### My approach
 I created three types of objects for my app: `Game`, which keeps track of the total score and the current frame; `Frame`, which keeps an individual score and calculates its own bonuses for strikes and spares; and `FinalFrame`, which inherits from `Frame` and has different scoring rules. I used JQuery for the interface between UI and JavaScript, and Jasmine for testing.
 
-### Screenshots
+### Screenshots
 
 Here is the plain UI, pictured here as it is appears when loaded:
 ![image](./images/open-app.png)
@@ -23,7 +23,7 @@ The user cannot continue inputting scores after the game is finished:
 The game can be reset by using the `RESET` button at the bottom of the app.
 ![image](./images/reset.png)
 
-### Using the app
+### Using the app
 - Clone the repository
 - `open SpecRunner.html` to run the tests
 - `open scorecard.html` to open the app

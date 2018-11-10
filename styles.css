@@ -6,6 +6,8 @@ table {
   margin-left: 13%;
   border: 2px solid;
   border-color: #BC9437;
+  padding: 0;
+  border-spacing: 0;
 }
 table th {
   width: 100px;
@@ -58,8 +60,18 @@ h1#title {
 }
 h2#currentScore {
   font-family: 'Bungee Shade', cursive;
-  margin-left: 20%;
+  margin-left: 25%;
   font-size: 30px;
+  float: left;
+}
+h2#reset {
+  font-family: 'Bungee Shade', cursive;
+  margin-right: 25%;
+  font-size: 30px;
+  float: right;
+}
+h2#reset:hover {
+  color: white;
 }
 img#ball-image {
   z-index: -100;

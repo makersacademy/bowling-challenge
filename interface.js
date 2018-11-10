@@ -10,6 +10,17 @@ $(document).ready(function () {
     updateTotalScore()
   })
 
+  $('#reset').click(function () {
+    game = new Game()
+    updateTotalScore()
+    $('.frame').each(function() {
+      $(this).empty()
+    })
+    $('.frameScore').each(function() {
+      $(this).empty()
+    })
+  })
+
   function updateTotalScore () {
     $('#currentScore').text('score: ' + game.getCurrentScore())
   }

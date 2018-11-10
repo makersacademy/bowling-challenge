@@ -14,9 +14,13 @@ Frame.prototype._firstBowl = function () {
 }
 
 Frame.prototype._sumOfBowls = function () {
-  return this._bowls.reduce(function (total, bowl) {
-    return total + bowl
-  }, 0)
+  if (this.numberOfBowls() < 1) {
+    return 0
+  } else if (this.numberOfBowls() < 2) {
+    return this._firstBowl()
+  } else {
+    return this._firstBowl() + this._bowls[1]
+  }
 }
 
 Frame.prototype.addBowl = function (pins) {
@@ -27,7 +31,7 @@ Frame.prototype.addBowl = function (pins) {
 }
 
 Frame.prototype.getScore = function (secondFrame, thirdFrame) {
-  if (this._bowls.length > 0) {
+  if (this.numberOfBowls() > 0) {
     return this._sumOfBowls() + this._calculateBonus(secondFrame, thirdFrame)
   }
   return 0
@@ -68,5 +72,9 @@ Frame.prototype._spareBonus = function (secondFrame) {
 }
 
 Frame.prototype.isFinished = function () {
-  return this._bowls.length > 1 || this.isStrike()
+  return this.numberOfBowls() > 1 || this.isStrike()
+}
+
+Frame.prototype.numberOfBowls = function () {
+  return this._bowls.length
 }

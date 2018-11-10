@@ -89,7 +89,16 @@ describe ('Game', function () {
       game.addBowl(10)
       game.addBowl(2)
       game.addBowl(8)
-      expect(game.getCurrentScore()).toEqual(127)
+      game.addBowl(6)
+      expect(game.getCurrentScore()).toEqual(133)
+    })
+
+    it('returns a max score of 300 for 12 strikes', function () {
+      var i = 0
+      for(i = 0; i < 12; i++) {
+        game.addBowl(10)
+      }
+      expect(game.getCurrentScore()).toEqual(300)
     })
   })
 

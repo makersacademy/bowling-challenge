@@ -1,7 +1,7 @@
 body {
-  background-image: url("https://media.webiconspng.com/wp-content/uploads/2017/09/Bowling-PNG-Image-26813.png");
+  background: url("../images/bowling-background.png");
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: 106%;
   background-color: #b2cecf;
   font-family: helvetica;
   font-weight: bold;
@@ -14,13 +14,13 @@ h1 {
 table {
   width: 90%;
   height: 200px;
-  text-align: right;
   font-size: 40px;
   background-color: white;
   empty-cells: show;
 }
 
 table, th, td {
+  text-align: right;
   border: 2px solid black;
   border-collapse: collapse;
   padding: 1.2%;

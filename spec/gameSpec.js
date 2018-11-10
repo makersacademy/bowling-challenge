@@ -14,4 +14,15 @@ describe("Bowling", function() {
     game.roll(2);
     expect(game.totalScore()).toEqual(2);
   })
+
+  it('can roll a gutter game', function() {
+    rollMultiple(0, 20);
+    expect(game.totalScore()).toEqual(0);
+  })
+
+  var rollMultiple = function(pins, rolls) {
+    for (var i = 0; i < rolls; i++) {
+      game.roll(pins);
+    }
+  }
 })

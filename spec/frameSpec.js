@@ -40,4 +40,9 @@ describe("Frame", function() {
     expect(frame.score).toEqual(13);
   });
 
+  it("can record a bonus", function() {
+    frame.addBonus(8);
+    expect(frame.bonus).toEqual(8);
+  })
+
 });

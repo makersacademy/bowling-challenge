@@ -1,61 +1,86 @@
 function BowlingGame() {
-  this.frameRolls = [];
+  this.frames = [];
+  this.rolls = [];
   this.totalScore = 0;
 }
 
 BowlingGame.prototype.lastFrame = function() {
-  return this.frameRolls[this.frameRolls.length - 1];
+  return this.frames[this.frames.length - 1];
 };
 
 BowlingGame.prototype.frameBeforeLast = function() {
-  return this.frameRolls[this.frameRolls.length - 2];
+  return this.frames[this.frames.length - 2];
 };
 
-BowlingGame.prototype.firstRoll = function(numberOfPins) {
+BowlingGame.prototype.createFrame = function() {
   var frame = new Frame();
   this.currentFrame = frame;
+}
+
+BowlingGame.prototype.addFrame = function() {
+  this.frames.push(this.currentFrame);
+}
+
+BowlingGame.prototype.updateTotalScore = function(frame) {
+  this.totalScore += frame.score;
+}
+
+BowlingGame.prototype.scoreSpare = function() {
+  if (this.frames.length > 0) {
+    if (this.lastFrame().isSpare === true) {
+      // this.lastFrame().addBonus(this.currentFrame.firstRollValue);
+      // this.updateTotalScore(this.lastFrame());
+      this.lastFrame().setScore(10 + this.currentFrame.firstRollValue);
+      this.updateTotalScore(this.lastFrame());
+    }
+  }
+}
+
+BowlingGame.prototype.firstRoll = function(numberOfPins) {
+  this.createFrame();
   this.currentFrame.setFirstRollValue(numberOfPins);
-  if (this.frameRolls.length > 1) {
+
+  // update frame before last if it was a strike (and last frame was a strike)
+  if (this.frames.length > 1) {
     if (this.frameBeforeLast().isStrike === true) {
       if (this.lastFrame().isStrike === true) {
         this.frameBeforeLast().setScore(20 + this.currentFrame.firstRollValue);
-        this.totalScore += this.frameBeforeLast().score;
+        this.updateTotalScore(this.frameBeforeLast());
       }
     }
   }
+
+  // update frame before last if it was a strike (and this frame is a strike?)
   if (this.currentFrame.isStrike === true) {
-    this.frameRolls.push(this.currentFrame);
-    if (this.frameRolls.length > 1) {
+    this.addFrame();
+    if (this.frames.length > 1) {
       if (this.frameBeforeLast().isSpare === true) {
         this.frameBeforeLast().setScore(20);
-        this.totalScore += this.frameBeforeLast().score;
+        this.updateTotalScore(this.frameBeforeLast());
       }
     }
   }
-  if (this.frameRolls.length > 0) {
-    if (this.lastFrame().isSpare === true) {
-      this.lastFrame().setScore(10 + this.currentFrame.firstRollValue);
-      this.totalScore += this.lastFrame().score;
-    }
-  }
+
+  // scores previous frame if it's a spare
+  this.scoreSpare();
 };
 
 BowlingGame.prototype.secondRoll = function(numberOfPins) {
   this.currentFrame.setSecondRollValue(numberOfPins);
-  if (this.currentFrame.isSpare === true) {
-    this.frameRolls.push(this.currentFrame);
-  } else {
-    this.frameRolls.push(this.currentFrame);
-    this.totalScore += this.currentFrame.score;
+  this.addFrame();
+  if (this.currentFrame.isSpare !== true) {
+    this.updateTotalScore(this.currentFrame);
   }
-  if (this.frameRolls.length > 1) {
+
+  // update frame before last if it was a strike (and current frame is not a strike)
+  if (this.frames.length > 1) {
     if (this.frameBeforeLast().isStrike === true) {
       if (this.lastFrame().isSpare === true) {
         this.frameBeforeLast().setScore(10 + this.lastFrame().firstRollValue + this.lastFrame().secondRollValue);
         this.totalScore += this.frameBeforeLast().score;
       } else if (this.lastFrame().isStrike === undefined) {
         this.frameBeforeLast().setScore(10 + this.lastFrame().score);
-        this.totalScore += this.frameBeforeLast().score;
+        this.updateTotalScore(this.frameBeforeLast());
       }
     }
   }

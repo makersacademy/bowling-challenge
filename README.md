@@ -1,4 +1,4 @@
-
+[![Build Status](https://travis-ci.org/MHUS25/bowling-challenge.svg?branch=master)](https://travis-ci.org/MHUS25/bowling-challenge)
 Bowling Challenge
 =================
 

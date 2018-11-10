@@ -15,6 +15,7 @@ describe("RunningScore", function() {
   });
 
   describe("Spares:", function () {
+    var runningScore = new RunningScore;
     it("updates the spares score when a player scores a spare", function() {
       runningScore.spareOrStrike('Spare');
       expect(runningScore.spares).toEqual(1);
@@ -27,6 +28,7 @@ describe("RunningScore", function() {
   });
 
   describe("Strikes:", function () {
+    var runningScore = new RunningScore;
     it("updates the strikes score when a player scores a strike", function() {
       runningScore.spareOrStrike('Strike');
       expect(runningScore.strikes).toEqual(1);
@@ -39,9 +41,10 @@ describe("RunningScore", function() {
   })
 
   describe("No strikes or spares:", function() {
+    var runningScore = new RunningScore;
     it("updates the frame score to an integer when no strikes or spares are rolled", function() {
       runningScore.updateRuningScore(2,5);
-      expect(runningScore.score).toEqual(35);
+      expect(runningScore.score).toEqual(7);
     });
   });
 

@@ -11,7 +11,9 @@ function Frame(scoreCard = new ScoreCard(), frameScore = new FrameScore(), runni
 
 Frame.prototype.information = function(a,b) {
     this._updateCurrentScore(a,b);
+    console.log("current runningScore" + this.currentRunningScore)
     this._updateRunningScore(a,b);
+    console.log("new runningScore" + this.currentRunningScore)
     this._updateScoreCard(a,b);
     this._updateCurrentFrame();
 }
@@ -23,10 +25,8 @@ Frame.prototype._updateCurrentScore = function(a,b) {
 Frame.prototype._updateRunningScore = function(a,b) {
   if (this.currentScore === ("Spare" || "Strike")) {
     this.runningScore.spareOrStrike(this.currentScore);
-    this.currentRunningScore = this.runningScore.score
   } else {
-    this.runningScore.updateRuningScore(a,b);
-    this.currentRunningScore = this.runningScore.score
+    this.currentRunningScore = this.runningScore.updateRuningScore(a,b);
   }
 }
 

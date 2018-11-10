@@ -18,7 +18,6 @@ describe("Frame", function() {
     var frame = new Frame();
     it("on the first frame it returns the frame score 8 and updates the running score to 8", function(){
       frame.information(3,5)
-      debugger
       expect(frame.currentScore).toEqual(8);
       expect(frame.currentRunningScore).toEqual(8);
     });
@@ -43,7 +42,7 @@ describe("Frame", function() {
       frame.information(2,4)
       expect(frame.currentScore).toEqual(6);
       expect(frame.currentRunningScore).toEqual(18);
-    })
+    });
   });
 
 })

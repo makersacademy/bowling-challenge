@@ -19,6 +19,14 @@ FinalFrame.prototype.isFinished = function () {
   }
 }
 
+FinalFrame.prototype.addBowl = function (pins) {
+  if (this._firstBowl() + pins > this.STRIKE_SCORE && this._bowls.length < 2 && 
+    !this.isStrike()) {
+    throw 'Invalid entry - there are only 10 pins!'
+  }
+  this._bowls.push(pins)
+}
+
 FinalFrame.prototype.getScore = function () {
   return this._bowls.reduce(function (total, bowl) {
     return total + bowl
@@ -30,7 +38,8 @@ FinalFrame.prototype.isStrike = function () {
 }
 
 FinalFrame.prototype.isSpare = function () {
-  return this._firstBowl() + this._bowls[1] === this.STRIKE_SCORE && !this.isStrike()
+  return this._firstBowl() + this._bowls[1] === this.STRIKE_SCORE &&
+    !this.isStrike()
 }
 
 FinalFrame.prototype._isMaxBowls = function () {

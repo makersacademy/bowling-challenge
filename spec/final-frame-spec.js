@@ -34,6 +34,12 @@ describe ('Final Frame', function () {
       finalFrame.addBowl(2)
       expect(finalFrame.isFinished()).toBe(false)
     })
+
+    it('cannot score more than 10 with 2 normal bowls', function () {
+      message = 'Invalid entry - there are only 10 pins!'
+      finalFrame.addBowl(8)
+      expect(function () { finalFrame.addBowl(3) }).toThrow(message)
+    })
   })
 
   describe("The final frame's score", function () {

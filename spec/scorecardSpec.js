@@ -45,7 +45,7 @@ describe('Tests scoreCard', function() {
     scorecard.roll(10);
     scorecard.roll(3);
     scorecard.roll(4);
-    rollMany(17, 0);
+    rollMany(16, 0);
     expect(scorecard.score()).toEqual(77);
   });
 

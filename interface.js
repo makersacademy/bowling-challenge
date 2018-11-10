@@ -83,26 +83,26 @@ $(document).ready(function() {
   }
 
   function updateFrameRolls() {
-    $('#frame1-roll1').text(scorecard.frames[0]);
-    $('#frame1-roll2').text(scorecard.frames[1]);
-    $('#frame2-roll1').text(scorecard.frames[2]);
-    $('#frame2-roll2').text(scorecard.frames[3]);
-    $('#frame3-roll1').text(scorecard.frames[4]);
-    $('#frame3-roll2').text(scorecard.frames[5]);
-    $('#frame4-roll1').text(scorecard.frames[6]);
-    $('#frame4-roll2').text(scorecard.frames[7]);
-    $('#frame5-roll1').text(scorecard.frames[8]);
-    $('#frame5-roll2').text(scorecard.frames[9]);
-    $('#frame6-roll1').text(scorecard.frames[10]);
-    $('#frame6-roll2').text(scorecard.frames[11]);
-    $('#frame7-roll1').text(scorecard.frames[12]);
-    $('#frame7-roll2').text(scorecard.frames[13]);
-    $('#frame8-roll1').text(scorecard.frames[14]);
-    $('#frame8-roll2').text(scorecard.frames[15]);
-    $('#frame9-roll1').text(scorecard.frames[16]);
-    $('#frame9-roll2').text(scorecard.frames[17]);
-    $('#frame10-roll1').text(scorecard.frames[18]);
-    $('#frame10-roll2').text(scorecard.frames[19]);
+    $('#frame1-roll1').text(scorecard.frames[0][0]);
+    $('#frame1-roll2').text(scorecard.frames[0][1]);
+    $('#frame2-roll1').text(scorecard.frames[1][0]);
+    $('#frame2-roll2').text(scorecard.frames[1][1]);
+    $('#frame3-roll1').text(scorecard.frames[2][0]);
+    $('#frame3-roll2').text(scorecard.frames[2][1]);
+    $('#frame4-roll1').text(scorecard.frames[3][0]);
+    $('#frame4-roll2').text(scorecard.frames[3][1]);
+    $('#frame5-roll1').text(scorecard.frames[4][0]);
+    $('#frame5-roll2').text(scorecard.frames[4][1]);
+    $('#frame6-roll1').text(scorecard.frames[5][0]);
+    $('#frame6-roll2').text(scorecard.frames[5][1]);
+    $('#frame7-roll1').text(scorecard.frames[6][0]);
+    $('#frame7-roll2').text(scorecard.frames[6][1]);
+    $('#frame8-roll1').text(scorecard.frames[7][0]);
+    $('#frame8-roll2').text(scorecard.frames[7][1]);
+    $('#frame9-roll1').text(scorecard.frames[8][0]);
+    $('#frame9-roll2').text(scorecard.frames[8][1]);
+    $('#frame10-roll1').text(scorecard.frames[9][0]);
+    $('#frame10-roll2').text(scorecard.frames[9][1]);
   }
 
 })

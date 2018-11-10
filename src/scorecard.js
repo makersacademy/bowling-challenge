@@ -21,16 +21,16 @@ Scorecard.prototype.add = function (number) {
 }
 
 Scorecard.prototype.sum = function () {
-  if (this.lastArrayinArray[this.lastArrayinArray.length - 2] === 10 && this.bonus.length === 0) {
+  if (this.lastArrayinArray[this.lastArrayinArray.length - 2] === 10 && this.bonus.length === 0 && this.frames.length < 10) {
     return this.score = this.frames.flat().reduce(add) - 10
   }
-  if (this.lastArrayinArray[this.lastArrayinArray.length - 2] === 10) {
+  if (this.lastArrayinArray[this.lastArrayinArray.length - 2] === 10 && this.frames.length < 10) {
     return this.score = this.frames.flat().reduce(add) - 10 + this.bonus.flat().reduce(add)
   }
-  if (((this.lastArrayinArray[this.lastArrayinArray.length - 1] + this.lastArrayinArray[this.lastArrayinArray.length - 2]) === 10) && this.bonus.length === 0) {
+  if (((this.lastArrayinArray[this.lastArrayinArray.length - 1] + this.lastArrayinArray[this.lastArrayinArray.length - 2]) === 10) && this.bonus.length === 0 && this.frames.length < 10) {
     return this.score = this.frames.flat().reduce(add) - 10
   }
-  if ((this.lastArrayinArray[this.lastArrayinArray.length - 1] +  this.lastArrayinArray[this.lastArrayinArray.length - 2]) === 10) {
+  if ((this.lastArrayinArray[this.lastArrayinArray.length - 1] +  this.lastArrayinArray[this.lastArrayinArray.length - 2]) === 10 && this.frames.length < 10) {
     return this.score = this.frames.flat().reduce(add) - 10 + this.bonus.flat().reduce(add)
   }
   if (this.bonus.length === 0) {

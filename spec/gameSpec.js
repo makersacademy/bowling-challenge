@@ -7,6 +7,6 @@ describe("Bowling", function() {
 
   it('can track rolls', function () {
     game.roll(1)
-    expect(game.rolls).toEqual(1);
+    expect(game.rolls).toEqual([1]);
   })
 })

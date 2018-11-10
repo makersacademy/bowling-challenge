@@ -8,6 +8,7 @@ function Game() {
   this.scores = new Score();
   this.tenthFrameRolls = [];
   this.gameScore = 0;
+  this.previousRolls = [];
 }
 
 Game.prototype.addScore = function (score) {
@@ -50,6 +51,7 @@ Game.prototype.startFrame = function ( score ) {
       this.toggleRoll();
     }
   }
+  this.previousRolls.push(score);
 };
 
 Game.prototype.finishFrame = function ( score ) {
@@ -63,6 +65,7 @@ Game.prototype.finishFrame = function ( score ) {
     this.toggleRoll();
     this.nextFrame(score);
   }
+  this.previousRolls.push(score)
 };
 
 Game.prototype.nextFrame = function (score) {

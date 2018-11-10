@@ -25,6 +25,13 @@ describe("Bowling", function() {
     expect(game.totalScore()).toEqual(20);
   })
 
+  it('returns true if spare is scored', function() {
+    game.roll(5);
+    game.roll(5);
+    game.roll(1);
+    expect(game.isSpare()).toBe(true);
+  })
+
   var rollMultiple = function(pins, rolls) {
     for (var i = 0; i < rolls; i++) {
       game.roll(pins);

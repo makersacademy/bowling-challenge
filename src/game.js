@@ -10,14 +10,15 @@ Game.prototype.totalScore = function() {
   var total = 0
   var rollNum = this.rolls.length
   for (var i = 0; i < rollNum; i++) {
-    if (this.isSpare(i)) {
+    if (this.isStrike(i)) {
       total += (this.rolls[i] + this.rolls[i + 1] + this.rolls[i + 2]);
-      console.log(total)
+    } else if (this.isSpare(i)) {
+      total += (this.rolls[i] + this.rolls[i + 1] + this.rolls[i + 2]);
       i++
     } else {
       total += this.rolls[i];
     }
-  };
+  }
   return total
 }
 

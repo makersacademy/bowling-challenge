@@ -1,9 +1,15 @@
 $(document).ready(function() {
   var scorecard = new Scorecard();
 
+  $('#roll-score-0').click(function() {
+    scorecard.add(0);
+    scorecard.sum();
+    updateTotalScore()
+    updateFrameRolls()
+  })
+
   $('#roll-score-1').click(function() {
     scorecard.add(1);
-    console.log(scorecard.frames[0])
     scorecard.sum();
     updateTotalScore()
     updateFrameRolls()

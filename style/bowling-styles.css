@@ -26,6 +26,40 @@ table, th, td {
   padding: 1.2%;
 }
 
+th {
+  height: 60px;
+}
+
+td {
+  font-size: 20px;
+  width: 50px;
+  /* height: 50px; */
+}
+
 h2 {
   text-align: left;
+}
+
+.bowling_man {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  margin: 20px;
+  width: 300px;
+}
+
+.bowling_pin {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  margin: 20px;
+  width: 100px;
+}
+
+.frame_number {
+  height: 90px;
+}
+
+.scores {
+  height: 50px;
 }

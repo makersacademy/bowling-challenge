@@ -4,7 +4,7 @@ function Game() {
 }
 
 Game.prototype.setup = function() {
-  for (var i = 0; i < 12; i++) {
+  for (var i = 0; i < 14; i++) {
     this.frames.push(new Frame(this, i));
   }
 }
@@ -17,12 +17,7 @@ Game.prototype.roll = function(roll) {
   if (this.currentFrame.getFrameScore() == 10 || this.currentFrame.rollIndex == 2) {
     this.currentFrameIndex++;
   }
-
-  console.log("currentFrame.getFrameScore()", this.currentFrame.getFrameScore());
-  console.log("currentFrame.rollIndex", this.currentFrame.rollIndex);
-  console.log("currentFrameIndex", this.currentFrameIndex);
-  console.log("score()", this.score());
-  console.log("----------------------");
+  return this.score();
 };
 
 Game.prototype.score = function() {

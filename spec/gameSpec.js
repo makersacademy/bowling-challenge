@@ -29,14 +29,14 @@ describe("Bowling", function() {
     game.roll(5);
     game.roll(5);
     game.roll(1);
-    expect(game.isSpare()).toBe(true);
+    expect(game.isSpare(0)).toBe(true);
   })
 
   it('returns false if not a spare', function() {
     game.roll(5);
     game.roll(4);
     game.roll(1);
-    expect(game.isSpare()).toBe(false);
+    expect(game.isSpare(0)).toBe(false);
   })
 
   it('can calculate score of spare frame', function() {

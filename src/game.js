@@ -9,14 +9,19 @@ Game.prototype.roll = function (pins) {
 Game.prototype.totalScore = function() {
   var total = 0
   var rollNum = this.rolls.length
-  for (i = 0; i < rollNum; i++) {
-    total += this.rolls[i];
+  for (var i = 0; i < rollNum; i++) {
+    if (this.isSpare(i)) {
+      total += (this.rolls[i] + this.rolls[i + 1] + this.rolls[i + 2]);
+      console.log(total)
+      i++
+    } else {
+      total += this.rolls[i];
+    }
   };
-  return total;
+  return total
 }
 
-Game.prototype.isSpare = function() {
-  var index = 0
+Game.prototype.isSpare = function(index) {
   if (this.rolls[index] + this.rolls[index + 1] === 10) {
     return true
   } else {

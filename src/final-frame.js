@@ -1,3 +1,5 @@
+'use strict'
+
 function FinalFrame () {
   Frame.call(this)
   this.STRIKE_SCORE = 10
@@ -30,8 +32,6 @@ FinalFrame.prototype.isSpare = function () {
 }
 
 FinalFrame.prototype.isFinished = function () {
-  if (this.isStrike() || this.isSpare()) {
-    return this.numberOfBowls() > 2
-  }
+  if (this.isStrike() || this.isSpare()) { return this.numberOfBowls() > 2 }
   return this.numberOfBowls() > 1
 }

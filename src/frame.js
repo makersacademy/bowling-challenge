@@ -13,6 +13,10 @@ Frame.prototype._firstBowl = function () {
   return this._bowls[0]
 }
 
+Frame.prototype.numberOfBowls = function () {
+  return this._bowls.length
+}
+
 Frame.prototype._sumOfBowls = function () {
   if (this.numberOfBowls() < 1) { return 0 }
   if (this.numberOfBowls() < 2) { return this._firstBowl() }
@@ -62,8 +66,4 @@ Frame.prototype._spareBonus = function (secondFrame) {
 
 Frame.prototype.isFinished = function () {
   return this.numberOfBowls() > 1 || this.isStrike()
-}
-
-Frame.prototype.numberOfBowls = function () {
-  return this._bowls.length
 }

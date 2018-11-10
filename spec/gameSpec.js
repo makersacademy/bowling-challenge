@@ -47,6 +47,32 @@ describe("Bowling", function() {
     expect(game.totalScore()).toEqual(12);
   })
 
+  it('returns true if strike scored', function() {
+    game.roll(10);
+    game.roll(1);
+    game.roll(2);
+    expect(game.isStrike(0)).toBe(true);
+  })
+
+  it('returns false if strike scored', function() {
+    game.roll(7);
+    game.roll(1);
+    game.roll(2);
+    expect(game.isStrike(0)).toBe(false);
+  })
+
+  it('calculates the score of strike frame', function() {
+    game.roll(10);
+    game.roll(1);
+    game.roll(2);
+    rollMultiple(0, 15);
+    expect(game.totalScore()).toEqual(16);
+  })
+
+  it('can calculate score of strike frame', function() {
+
+  })
+
   var rollMultiple = function(pins, rolls) {
     for (var i = 0; i < rolls; i++) {
       game.roll(pins);

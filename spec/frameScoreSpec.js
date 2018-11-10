@@ -16,7 +16,7 @@ describe("FrameScore", function() {
   });
 
   describe("Spares", function () {
-    it("updates the spares score when a player score a spare", function() {
+    it("updates the spares score when a player scores a spare", function() {
       frameScore.score(4,6);
       expect(frameScore.spares).toEqual(1);
     });
@@ -29,5 +29,20 @@ describe("FrameScore", function() {
       expect(frameScore.frameScore).toEqual(19);
     });
   });
+
+  describe("Strikes", function () {
+    it("updates the strikes score when a player scores a strike", function() {
+      frameScore.score(10,0);
+      expect(frameScore.strikes).toEqual(1);
+    });
+    it("updates the frame score to equal 'Strike'", function() {
+      expect(frameScore.frameScore).toEqual('Strike');
+    });
+    it("on the next turn, it calculates the frame score, and strikes equal 0 again", function() {
+      frameScore.score(3,6);
+      expect(frameScore.strikes).toEqual(0);
+      expect(frameScore.frameScore).toEqual(28);
+    });
+  })
 
 })

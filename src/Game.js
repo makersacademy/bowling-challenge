@@ -7,7 +7,7 @@ Game.prototype.setup = function() {
   for (var i = 0; i < 14; i++) {
     this.frames.push(new Frame(this, i));
   }
-}
+};
 
 Game.prototype.roll = function(roll) {
   this.currentFrame = this.frames[this.currentFrameIndex];
@@ -40,7 +40,7 @@ function Frame(game, frameIndex) {
 
 Frame.prototype.addRoll = function(roll) {
   this.frameRolls[this.rollIndex] = roll;
-}
+};
 
 Frame.prototype.calculateFrameScore = function() {
   if (this.frameRolls[0] == 10) {
@@ -50,12 +50,12 @@ Frame.prototype.calculateFrameScore = function() {
   } else {
     return this.frameRolls[0] + this.frameRolls[1];
   }
-}
+};
 
 Frame.prototype.getNextFrame = function(frame) {
   return this.game.frames[this.frameIndex + 1];
-}
+};
 
 Frame.prototype.getNextNextFrame = function(frame) {
   return this.game.frames[this.frameIndex + 2];
-}
+};

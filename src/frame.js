@@ -1,9 +1,11 @@
 function Frame() {
   this.bonus = 0;
+  this.points = 0;
 }
 
 Frame.prototype.setFirstRollValue = function(numberOfPins) {
   this.firstRollValue = numberOfPins;
+  this.points += numberOfPins;
   if (this.firstRollValue === 10) {
     this.setStrike();
   }
@@ -11,6 +13,7 @@ Frame.prototype.setFirstRollValue = function(numberOfPins) {
 
 Frame.prototype.setSecondRollValue = function(numberOfPins) {
   this.secondRollValue = numberOfPins;
+  this.points += numberOfPins;
   if ((this.firstRollValue + this.secondRollValue) === 10) {
     this.setSpare();
   } else {
@@ -33,8 +36,9 @@ Frame.prototype.setSpare = function() {
 
 Frame.prototype.addBonus = function(numberOfPins) {
   this.bonus += numberOfPins;
+  this.score += this.bonus;
 }
 
 Frame.prototype.calculateFrameScore = function() {
-  this.score = this.firstRollValue + this.secondRollValue + this.bonus;
+  this.score = this.points + this.bonus;
 }

@@ -28,10 +28,11 @@ BowlingGame.prototype.updateTotalScore = function(frame) {
 BowlingGame.prototype.scoreSpare = function() {
   if (this.frames.length > 0) {
     if (this.lastFrame().isSpare === true) {
-      // this.lastFrame().addBonus(this.currentFrame.firstRollValue);
-      // this.updateTotalScore(this.lastFrame());
-      this.lastFrame().setScore(10 + this.currentFrame.firstRollValue);
+      this.lastFrame().addBonus(this.currentFrame.firstRollValue);
+      this.lastFrame().calculateFrameScore();
       this.updateTotalScore(this.lastFrame());
+      // this.lastFrame().setScore(10 + this.currentFrame.firstRollValue);
+      // this.updateTotalScore(this.lastFrame());
     }
   }
 }

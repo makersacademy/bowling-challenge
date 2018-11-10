@@ -1,48 +1,49 @@
 describe("FrameScore", function() {
 
-  var scoreLogic = new ScoreLogic;
-  var frameScore = new FrameScore(scoreLogic);
+  var frameScore = new FrameScore();
 
-  describe("#newFrameScore", function () {
-    it("starts a new game with strikes equalling 0", function() {
-      expect(frameScore.strikes).toEqual(0);
+  describe("#isMoreThanTen", function () {
+    it('returns true if the sum of the two numbers is greater than 10', function() {
+      expect(frameScore._isMoreThanTen(4,7)).toEqual(true);
     });
-    it("starts a new game with spares equalling 0", function() {
-      expect(frameScore.spares).toEqual(0);
+    it('returns false if the sum of the two numbers is less than 10', function() {
+      expect(frameScore._isMoreThanTen(1,7)).toEqual(false);
     });
-    it("starts a new game with frame score equalling 0", function() {
-      expect(frameScore._currentScore).toEqual(0);
+    it('returns false if the sum of the two numbers is equal to 10', function() {
+      expect(frameScore._isMoreThanTen(10,0)).toEqual(false);
     });
   });
 
-  describe("Spares:", function () {
-    it("updates the spares score when a player scores a spare", function() {
-      frameScore.score('Spare');
-      expect(frameScore.spares).toEqual(1);
+  describe("#isAStrike", function() {
+    it('returns true if the player scores a strike', function() {
+      expect(frameScore._isAStrike(10,0)).toEqual(true);
     });
-    it("on the next turn, it calculates the running score, and spares equal 0 again", function() {
-      frameScore.continue(4,1);
-      expect(frameScore.spares).toEqual(0);
-      expect(frameScore._currentScore).toEqual(19);
+    it('returns false if the player does not scores a strike', function() {
+      expect(frameScore._isAStrike(5,2)).toEqual(false);
     });
   });
 
-  describe("Strikes:", function () {
-    it("updates the strikes score when a player scores a strike", function() {
-      frameScore.score('Strike');
-      expect(frameScore.strikes).toEqual(1);
-    });
-    it("on the next turn, it calculates the frame score, and strikes equal 0 again", function() {
-      frameScore.continue(3,6);
-      expect(frameScore.strikes).toEqual(0);
-      expect(frameScore._currentScore).toEqual(28);
-    });
-  })
+  describe("#isASpare", function() {
+    it('returns true if the player scores a spare', function() {
+      expect(frameScore._isASpare(5,5)).toEqual(true);
+    })
+    it('returns false if the player does not scores a spare', function() {
+      expect(frameScore._isASpare(5,1)).toEqual(false);
+    })
+  });
 
-  describe("No strikes or spares:", function() {
-    it("updates the frame score to an integer when no strikes or spares are rolled", function() {
-      frameScore.continue(2,5);
-      expect(frameScore._currentScore).toEqual(35);
+  describe("#frame", function() {
+    it('throws an error if the player enters an incorrect score', function() {
+      expect(function() {frameScore.frame(5,7);}).toThrow("Incorrect score entered.")
+    });
+    it('returns strike if the player scores a strike', function() {
+      expect(frameScore.frame(10,0)).toEqual("Strike");
+    });
+    it('returns spare if the player scores a spare', function() {
+      expect(frameScore.frame(5,5)).toEqual("Spare");
+    });
+    it('returns the sum of the bowls if the player does not score a spare or a strike', function() {
+      expect(frameScore.frame(1,3)).toEqual(4);
     });
   });
 

@@ -1,12 +1,12 @@
-function Frame(scoreCard = new ScoreCard(), frameScore = new FrameScore(), scoreLogic = new ScoreLogic()) {
+function Frame(scoreCard = new ScoreCard(), frameScore = new FrameScore(), runningScore = new RunningScore()) {
   this.STARTING_SCORE = 0
   this.FIRST_FRAME = 1
-  this.runningScore = this.STARTING_SCORE
+  this.currentRunningScore = this.STARTING_SCORE
   this.currentScore = this.STARTING_SCORE
   this.currentFrame = this.FIRST_FRAME
   this.scoreCard = scoreCard
   this.frameScore = frameScore
-  this.scoreLogic = scoreLogic
+  this.runningScore = runningScore
 };
 
 Frame.prototype.information = function(a,b) {
@@ -17,17 +17,18 @@ Frame.prototype.information = function(a,b) {
 }
 
 Frame.prototype._updateCurrentScore = function(a,b) {
-  this.currentScore = this.scoreLogic.frame(a,b)
+  this.currentScore = this.frameScore.frame(a,b)
 }
 
 Frame.prototype._updateRunningScore = function(a,b) {
-  if (Number.isInteger(this.currentScore)) {
-    this.frameScore.continue(a,b);
-    this.runningScore = this.frameScore._currentScore
+  if (this.currentScore === ("Spare" || "Strike")) {
+    this.runningScore.spareOrStrike(this.currentScore);
+    this.currentRunningScore = this.runningScore.score
   } else {
-    this.frameScore.score(this.currentScore);
-    this.runningScore = this.frameScore._currentScore
-  }}
+    this.runningScore.updateRuningScore(a,b);
+    this.currentRunningScore = this.runningScore.score
+  }
+}
 
 Frame.prototype._updateCurrentFrame = function() {
   this.currentFrame ++ ;
@@ -39,6 +40,6 @@ Frame.prototype._updateScoreCard = function(a,b) {
   array['bowl1'] = a;
   array['bowl2'] = b;
   array['currentScore'] = this.currentScore;
-  array['runningScore'] = (Number.isInteger(this.currentScore) ? this.runningScore : "");
+  array['runningScore'] = (Number.isInteger(this.currentScore) ? this.currentRunningScore : "");
   this.scoreCard.card.push(array);
 }

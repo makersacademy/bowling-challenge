@@ -10,6 +10,7 @@ $(document).ready(function() {
       if (lastRoll === 'second') {
         game.firstRoll(rollValue);
         $(`#${frame}_1`).text(`${rollValue}`);
+        $(`#game_total`).text(`${game.totalScore}`);
         if (rollValue === 10) {
           lastRoll = "second";
           frame ++;
@@ -23,6 +24,7 @@ $(document).ready(function() {
         game.secondRoll(rollValue);
         $(`#${frame}_2`).text(`${rollValue}`);
         $(`#total_${frame}`).text(`${game.totalScore}`);
+        $(`#game_total`).text(`${game.totalScore}`);
         lastRoll = "second";
         frame ++;
         $("button").show();
@@ -32,7 +34,7 @@ $(document).ready(function() {
             var idClicked = e.target.id;
             var rollValue = Number(idClicked);
             game.firstRoll(rollValue);
-            $("#game-log").append("<p>Bonus roll: " + rollValue + " Total score: " + game.totalScore +"</p>");
+            $(`#game_total`).text(`${game.totalScore}`);
             frame ++;
           }
     } else if (frame === 12) {
@@ -40,7 +42,7 @@ $(document).ready(function() {
             var idClicked = e.target.id;
             var rollValue = Number(idClicked);
             game.firstRoll(rollValue);
-            $("#game-log").append("<p>Bonus roll: " + rollValue + " Total score: " + game.totalScore + "</p>");
+            $(`#game_total`).text(`${game.totalScore}`);
             frame ++;
           }
       }

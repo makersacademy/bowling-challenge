@@ -36,6 +36,10 @@ h2 {
 h3 {
   color: #00CFFA;
 }
+table {
+  width: 100%;
+  table-layout: fixed;
+}
 .neon {
   transform: translate(-50%, -50%);
   margin: 0;

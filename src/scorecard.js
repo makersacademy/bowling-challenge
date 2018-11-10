@@ -5,6 +5,10 @@ function Scorecard() {
   this.frame = new Frame()
   this.secondLastFrame = 0
   this.lastFrame = 0
+  this.secondLastFrameRoll1 = 0
+  this.secondLastFrameRoll2 = 0
+  this.lastFrameRoll1 = 0
+  this.lastFrameRoll2 = 0
 }
 
 Scorecard.prototype.add = function (number) {
@@ -14,8 +18,12 @@ Scorecard.prototype.add = function (number) {
     this.frame.score = []
     if (this.frames.length > 1) {
       this.secondLastFrame = this.frames[this.frames.length - 2]
+      this.secondLastFrameRoll1 = this.secondLastFrame[this.secondLastFrame.length - 2]
+      this.secondLastFrameRoll2 = this.secondLastFrame[this.secondLastFrame.length - 1]
     }
     this.lastFrame = this.frames[this.frames.length - 1]
+    this.lastFrameRoll1 = this.lastFrame[this.lastFrame.length - 2]
+    this.lastFrameRoll2 = this.lastFrame[this.lastFrame.length - 1]
     this._addBonus()
   }
 }
@@ -40,28 +48,28 @@ Scorecard.prototype.sum = function () {
 }
 
 Scorecard.prototype._addBonus = function () {
-  if (this.secondLastFrame[this.secondLastFrame.length - 2] === 10) {
+  if (this.secondLastFrameRoll1 === 10) {
     return this.bonus.push(this.lastFrame)
   }
-  if ((this.secondLastFrame[this.secondLastFrame.length - 1] + this.secondLastFrame[this.secondLastFrame.length - 2]) === 10) {
-    this.bonus.push(this.lastFrame[this.lastFrame.length - 2])
+  if ((this.secondLastFrameRoll2 + this.secondLastFrameRoll1) === 10) {
+    this.bonus.push(this.lastFrameRoll1)
   }
 }
 
 Scorecard.prototype._isFirstStrike = function () {
-  return this.lastFrame[this.lastFrame.length - 2] === 10 && this.bonus.length === 0 && this.frames.length < 10
+  return this.lastFrameRoll1 === 10 && this.bonus.length === 0 && this.frames.length < 10
 }
 
 Scorecard.prototype._isNotFirstStrike = function () {
-  return this.lastFrame[this.lastFrame.length - 2] === 10 && this.frames.length < 10
+  return this.lastFrameRoll1 === 10 && this.frames.length < 10
 }
 
 Scorecard.prototype._isFirstSpare = function () {
-  return ((this.lastFrame[this.lastFrame.length - 1] + this.lastFrame[this.lastFrame.length - 2]) === 10) && this.bonus.length === 0 && this.frames.length < 10
+  return (this.lastFrameRoll2 + this.lastFrameRoll1) === 10 && this.bonus.length === 0 && this.frames.length < 10
 }
 
 Scorecard.prototype._isNotFirstSpare = function () {
-  return (this.lastFrame[this.lastFrame.length - 1] +  this.lastFrame[this.lastFrame.length - 2]) === 10 && this.frames.length < 10
+  return (this.lastFrameRoll2 + this.lastFrameRoll1) === 10 && this.frames.length < 10
 }
 
 

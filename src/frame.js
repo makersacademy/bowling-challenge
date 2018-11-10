@@ -1,6 +1,6 @@
 'use strict'
 
-function Frame() {
+function Frame () {
   this._bowls = []
   this.MAX_SCORE = 10
 }
@@ -25,7 +25,8 @@ Frame.prototype._sumOfBowls = function () {
 
 Frame.prototype.addBowl = function (pins) {
   if (this._sumOfBowls() + pins > this.MAX_SCORE) {
-    throw 'Invalid entry - there are only 10 pins!'
+    var error = 'Invalid entry - there are only 10 pins!'
+    throw error
   }
   this._bowls.push(pins)
 }
@@ -49,7 +50,7 @@ Frame.prototype._calculateBonus = function (secondFrame, thirdFrame) {
   }
 }
 
-Frame.prototype.isStrike = function() {
+Frame.prototype.isStrike = function () {
   return this._bowls.includes(this.MAX_SCORE)
 }
 
@@ -57,12 +58,12 @@ Frame.prototype.isSpare = function () {
   return this._sumOfBowls() === this.MAX_SCORE && !this.isStrike()
 }
 
-Frame.prototype._strikeBonus = function(thirdFrame) {
+Frame.prototype._strikeBonus = function (thirdFrame) {
   if (this.isStrike() && !!thirdFrame && !!thirdFrame._firstBowl()) {
-    return this._sumOfBowls() + thirdFrame._firstBowl();
+    return this._sumOfBowls() + thirdFrame._firstBowl()
   }
   return this._sumOfBowls()
-};
+}
 
 Frame.prototype._spareBonus = function (secondFrame) {
   if (!secondFrame || !secondFrame._firstBowl()) {

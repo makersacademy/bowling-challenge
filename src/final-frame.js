@@ -1,4 +1,4 @@
-function FinalFrame() {
+function FinalFrame () {
   Frame.call(this)
   this.STRIKE_SCORE = 10
 }
@@ -15,7 +15,8 @@ FinalFrame.prototype.getScore = function () {
 FinalFrame.prototype.addBowl = function (pins) {
   if (this._firstBowl() + pins > this.STRIKE_SCORE && this._bowls.length < 2 &&
     !this.isStrike()) {
-    throw 'Invalid entry - there are only 10 pins!'
+    var error = 'Invalid entry - there are only 10 pins!'
+    throw error
   }
   this._bowls.push(pins)
 }

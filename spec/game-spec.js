@@ -1,4 +1,4 @@
-describe ('Game', function () {
+describe('Game', function () {
   var game
   var frame
   var currentFrame
@@ -9,7 +9,7 @@ describe ('Game', function () {
     frame = jasmine.createSpyObj('frame', ['getScore', 'addBowl', 'isFinished'])
   })
 
-  describe ('A bowling game', function () {
+  describe('A bowling game', function () {
     it('can store a list of frames', function () {
       expect(game.getFrames()).toEqual([currentFrame])
     })
@@ -30,14 +30,14 @@ describe ('Game', function () {
 
     it('starts a final frame for the 10th frame', function () {
       var i = 0
-      for(i = 0; i < 10; i++) {
+      for (i = 0; i < 10; i++) {
         game.addBowl(10)
       }
       expect(game.getCurrentFrame()).toEqual(jasmine.any(FinalFrame))
     })
   })
 
-  describe ('Calculating score', function () {
+  describe('Calculating score', function () {
     it('returns 10 when two frames have 5 points each', function () {
       spyOn(currentFrame, 'getScore').and.returnValue(5)
       game.startNextFrame()
@@ -56,7 +56,7 @@ describe ('Game', function () {
 
     it('returns 60 for three consecutive strikes', function () {
       var i = 0
-      for(i = 0; i < 3; i++) {
+      for (i = 0; i < 3; i++) {
         game.addBowl(10)
       }
       expect(game.getCurrentScore()).toEqual(60)
@@ -64,7 +64,7 @@ describe ('Game', function () {
 
     it('returns 0 for a gutter game', function () {
       var i = 0
-      for(i = 0; i < 20; i++) {
+      for (i = 0; i < 20; i++) {
         game.addBowl(0)
       }
       expect(game.getCurrentScore()).toEqual(0)
@@ -95,7 +95,7 @@ describe ('Game', function () {
 
     it('returns a max score of 300 for 12 strikes', function () {
       var i = 0
-      for(i = 0; i < 12; i++) {
+      for (i = 0; i < 12; i++) {
         game.addBowl(10)
       }
       expect(game.getCurrentScore()).toEqual(300)
@@ -117,7 +117,7 @@ describe ('Game', function () {
 
     it('throws an error if the game is finished', function () {
       var i = 0
-      for(i = 0; i < 9; i++) {
+      for (i = 0; i < 9; i++) {
         game.getFrames().push(frame)
       }
       frame.isFinished.and.returnValue(true)
@@ -125,10 +125,10 @@ describe ('Game', function () {
     })
   })
 
-  describe ('Finishing a game', function() {
+  describe('Finishing a game', function () {
     beforeEach(function () {
       var i = 0
-      for(i = 0; i < 19; i++) {
+      for (i = 0; i < 19; i++) {
         game.addBowl(0)
       }
     })

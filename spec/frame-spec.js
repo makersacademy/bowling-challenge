@@ -1,4 +1,4 @@
-describe ('Frame', function () {
+describe('Frame', function () {
   var frame
   var secondFrame
   var thirdFrame

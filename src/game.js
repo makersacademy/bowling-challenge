@@ -1,6 +1,4 @@
-'use strict'
-
-function Game() {
+function Game () {
   this._frames = [new Frame()]
   this._finished = false
 }
@@ -14,7 +12,7 @@ Game.prototype.getCurrentFrame = function () {
 }
 
 Game.prototype.startNextFrame = function () {
-  if (this._frames.length === 9) {    
+  if (this._frames.length === 9) {
     this._frames.push(new FinalFrame())
   } else {
     this._frames.push(new Frame())
@@ -29,7 +27,8 @@ Game.prototype.getCurrentScore = function () {
 
 Game.prototype.addBowl = function (pins) {
   if (this.isFinished()) {
-    throw 'Game Over!'
+    var error = 'Game Over!'
+    throw error
   } else if (this.getCurrentFrame().isFinished()) {
     this.startNextFrame()
   }
@@ -37,7 +36,7 @@ Game.prototype.addBowl = function (pins) {
   this.getCurrentScore()
 }
 
-Game.prototype.isFinished = function() {
+Game.prototype.isFinished = function () {
   if (this._frames.length >= 10 && this.getCurrentFrame().isFinished()) {
     this._finished = true
     return this._finished

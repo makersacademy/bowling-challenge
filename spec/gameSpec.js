@@ -28,14 +28,12 @@ describe("Bowling", function() {
   it('returns true if spare is scored', function() {
     game.roll(5);
     game.roll(5);
-    game.roll(1);
     expect(game.isSpare(0)).toBe(true);
   })
 
   it('returns false if not a spare', function() {
     game.roll(5);
     game.roll(4);
-    game.roll(1);
     expect(game.isSpare(0)).toBe(false);
   })
 
@@ -49,15 +47,12 @@ describe("Bowling", function() {
 
   it('returns true if strike scored', function() {
     game.roll(10);
-    game.roll(1);
-    game.roll(2);
     expect(game.isStrike(0)).toBe(true);
   })
 
-  it('returns false if strike scored', function() {
+  it('returns false if strike not scored', function() {
     game.roll(7);
     game.roll(1);
-    game.roll(2);
     expect(game.isStrike(0)).toBe(false);
   })
 

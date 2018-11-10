@@ -36,6 +36,12 @@ describe("ScoreLogic", function() {
     it('throws an error if the player enters an incorrect score', function() {
       expect(function() {scoreLogic.frame(5,7);}).toThrow("Incorrect score entered.")
     });
+    it('returns strike if the player scores a strike', function() {
+      expect(scoreLogic.frame(10,0)).toEqual("strike");
+    });
+    it('returns spare if the player scores a spare', function() {
+      expect(scoreLogic.frame(5,5)).toEqual("spare");
+    });
   });
 
 })

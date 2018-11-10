@@ -16,19 +16,12 @@ ScoreLogic.prototype._isASpare = function(a, b) {
 
 ScoreLogic.prototype.frame = function(a, b) {
   if (!this._isNoMoreThanTen(a,b)) {
-    throw "Incorrect score entered.";
+    throw 'Incorrect score entered.';
+  }
+  else if (this._isAStrike(a,b)) {
+    return 'strike';
+  }
+  else if (this._isASpare(a,b)) {
+    return 'spare';
   }
 }
-
-
-// FizzBuzz.prototype.fizzBuzz = function(number) {
-//     if (this.isDivisibleByFifteen(number)) {
-//       return 'fizzbuzz';
-//     } else if (this.isDivisibleByFive(number)) {
-//       return 'buzz';
-//     } else if (this.isDivisibleByThree(number)) {
-//       return 'fizz';
-//     } else {
-//       return number;
-//     }
-// };

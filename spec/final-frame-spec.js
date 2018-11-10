@@ -26,8 +26,21 @@ describe ('Final Frame', function () {
     it('is not finished if a strike is played then another shot', function () {
       finalFrame.addBowl(10)
       finalFrame.addBowl(5)
-      console.log(finalFrame.isStrike())
       expect(finalFrame.isFinished()).toBe(false)
+    })
+
+    it('is not finished if a spare is played', function () {
+      finalFrame.addBowl(8)
+      finalFrame.addBowl(2)
+      expect(finalFrame.isFinished()).toBe(false)
+    })
+  })
+
+  describe("The final frame's score", function () {
+    it('should be 8 when 2x 4 pins are bowled', function () {
+      finalFrame.addBowl(4)
+      finalFrame.addBowl(3)
+      expect(finalFrame.getScore()).toEqual(7)
     })
   })
 })

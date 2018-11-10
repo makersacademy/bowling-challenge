@@ -28,6 +28,12 @@ describe ('Frame', function () {
       expect(frame.isFinished()).toBe(true)
     })
 
+    it('can return the quantity of bowls', function () {
+      frame.addBowl(5)
+      frame.addBowl(2)
+      expect(frame.numberOfBowls()).toEqual(2)
+    })
+
     it('is not finished when it has just been created', function () {
       expect(frame.isFinished()).not.toBe(true)
     })

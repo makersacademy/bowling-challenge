@@ -7,16 +7,10 @@ function FinalFrame() {
 FinalFrame.prototype = Object.create(Frame.prototype)
 FinalFrame.prototype.constructor = FinalFrame
 
-FinalFrame.prototype.isFinished = function () {
-  if (this.isStrike()) {
-    return this._isMaxBowls()
-  } else if (this.isSpare()) {
-    return this._isMaxBowls()
-  } else if (this._bowls.length > 1) {
-    return true
-  } else {
-    return false
-  }
+FinalFrame.prototype.getScore = function () {
+  return this._bowls.reduce(function (total, bowl) {
+    return total + bowl
+  }, 0)
 }
 
 FinalFrame.prototype.addBowl = function (pins) {
@@ -25,12 +19,6 @@ FinalFrame.prototype.addBowl = function (pins) {
     throw 'Invalid entry - there are only 10 pins!'
   }
   this._bowls.push(pins)
-}
-
-FinalFrame.prototype.getScore = function () {
-  return this._bowls.reduce(function (total, bowl) {
-    return total + bowl
-  }, 0)
 }
 
 FinalFrame.prototype.isStrike = function () {
@@ -42,6 +30,14 @@ FinalFrame.prototype.isSpare = function () {
     !this.isStrike()
 }
 
-FinalFrame.prototype._isMaxBowls = function () {
-  return this._bowls.length > 2
+FinalFrame.prototype.isFinished = function () {
+  if (this.isStrike()) {
+    return this.numberOfBowls() > 2
+  } else if (this.isSpare()) {
+    return this.numberOfBowls() > 2
+  } else if (this._bowls.length > 1) {
+    return true
+  } else {
+    return false
+  }
 }

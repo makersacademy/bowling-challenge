@@ -26,12 +26,8 @@ Game.prototype.getCurrentScore = function () {
 }
 
 Game.prototype.addBowl = function (pins) {
-  if (this.isFinished()) {
-    var error = 'Game Over!'
-    throw error
-  } else if (this.getCurrentFrame().isFinished()) {
-    this.startNextFrame()
-  }
+  if (this.isFinished()) { throw 'Game Over!' }
+  if (this.getCurrentFrame().isFinished()) { this.startNextFrame() }
   this.getCurrentFrame().addBowl(pins)
   this.getCurrentScore()
 }

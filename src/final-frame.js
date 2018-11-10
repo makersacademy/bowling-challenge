@@ -15,8 +15,7 @@ FinalFrame.prototype.getScore = function () {
 FinalFrame.prototype.addBowl = function (pins) {
   if (this._firstBowl() + pins > this.STRIKE_SCORE && this._bowls.length < 2 &&
     !this.isStrike()) {
-    var error = 'Invalid entry - there are only 10 pins!'
-    throw error
+    throw 'Invalid entry - there are only 10 pins!'
   }
   this._bowls.push(pins)
 }
@@ -31,11 +30,8 @@ FinalFrame.prototype.isSpare = function () {
 }
 
 FinalFrame.prototype.isFinished = function () {
-  if (this.isStrike()) {
+  if (this.isStrike() || this.isSpare()) {
     return this.numberOfBowls() > 2
-  } else if (this.isSpare()) {
-    return this.numberOfBowls() > 2
-  } else {
-    return this.numberOfBowls() > 1
   }
+  return this.numberOfBowls() > 1
 }

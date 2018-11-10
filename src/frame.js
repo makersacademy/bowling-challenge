@@ -14,19 +14,14 @@ Frame.prototype._firstBowl = function () {
 }
 
 Frame.prototype._sumOfBowls = function () {
-  if (this.numberOfBowls() < 1) {
-    return 0
-  } else if (this.numberOfBowls() < 2) {
-    return this._firstBowl()
-  } else {
-    return this._firstBowl() + this._bowls[1]
-  }
+  if (this.numberOfBowls() < 1) { return 0 }
+  if (this.numberOfBowls() < 2) { return this._firstBowl() }
+  return this._firstBowl() + this._bowls[1]
 }
 
 Frame.prototype.addBowl = function (pins) {
   if (this._sumOfBowls() + pins > this.MAX_SCORE) {
-    var error = 'Invalid entry - there are only 10 pins!'
-    throw error
+    throw 'Invalid entry - there are only 10 pins!'
   }
   this._bowls.push(pins)
 }
@@ -39,15 +34,10 @@ Frame.prototype.getScore = function (secondFrame, thirdFrame) {
 }
 
 Frame.prototype._calculateBonus = function (secondFrame, thirdFrame) {
-  if (!secondFrame) {
-    return 0
-  } else if (this.isStrike()) {
-    return secondFrame._strikeBonus(thirdFrame)
-  } else if (this.isSpare()) {
-    return this._spareBonus(secondFrame)
-  } else {
-    return 0
-  }
+  if (!secondFrame) { return 0 }
+  if (this.isStrike()) { return this._strikeBonus(secondFrame, thirdFrame) }
+  if (this.isSpare()) { return secondFrame._spareBonus(secondFrame) }
+  return 0
 }
 
 Frame.prototype.isStrike = function () {
@@ -58,17 +48,15 @@ Frame.prototype.isSpare = function () {
   return this._sumOfBowls() === this.MAX_SCORE && !this.isStrike()
 }
 
-Frame.prototype._strikeBonus = function (thirdFrame) {
-  if (this.isStrike() && !!thirdFrame && !!thirdFrame._firstBowl()) {
-    return this._sumOfBowls() + thirdFrame._firstBowl()
+Frame.prototype._strikeBonus = function (secondFrame, thirdFrame) {
+  if (secondFrame.isStrike() && thirdFrame && thirdFrame._firstBowl()) {
+    return secondFrame._sumOfBowls() + thirdFrame._firstBowl()
   }
-  return this._sumOfBowls()
+  return secondFrame._sumOfBowls()
 }
 
 Frame.prototype._spareBonus = function (secondFrame) {
-  if (!secondFrame || !secondFrame._firstBowl()) {
-    return 0
-  }
+  if (!secondFrame._firstBowl()) { return 0 }
   return secondFrame._firstBowl()
 }
 

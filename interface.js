@@ -9,7 +9,7 @@ $(document).ready(function() {
       var rollValue = Number(idClicked);
       if (lastRoll === 'second') {
         game.firstRoll(rollValue);
-        $("#game-log").append("<p>Frame:" + frame + " First roll: " + rollValue + " Total score: " + game.totalScore + "</p>");
+        $(`#${frame}_1`).text(`${rollValue}`);
         if (rollValue === 10) {
           lastRoll = "second";
           frame ++;
@@ -21,7 +21,8 @@ $(document).ready(function() {
         }
       } else {
         game.secondRoll(rollValue);
-        $("#game-log").append("<p>Frame:" + frame + " Second roll: " + rollValue + " Total score: " + game.totalScore + "</p>");
+        $(`#${frame}_2`).text(`${rollValue}`);
+        $(`#total_${frame}`).text(`${game.totalScore}`);
         lastRoll = "second";
         frame ++;
         $("button").show();

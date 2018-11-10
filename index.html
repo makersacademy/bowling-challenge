@@ -8,22 +8,94 @@
     <script src="src/bowlingGame.js"></script>
     <script src="src/frame.js"></script>
     <script src="interface.js"></script>
-    <!-- <link rel="stylesheet" href="public/styles.css"> -->
+    <link rel="stylesheet" href="public/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Codystar:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Exo+2:100" rel="stylesheet">
   </head>
   <body>
-    <h2>Bowling Game</h2>
-    <h3>Click number of pins knocked down:</h3>
-    <button id="0" value="0">0</button>
-    <button id="1" value="1">1</button>
-    <button id="2" value="2">2</button>
-    <button id="3" value="3">3</button>
-    <button id="4" value="4">4</button>
-    <button id="5" value="5">5</button>
-    <button id="6" value="6">6</button>
-    <button id="7" value="7">7</button>
-    <button id="8" value="8">8</button>
-    <button id="9" value="9">9</button>
-    <button id="10" value="10">10</button>
-    <p id="game-log"></p>
+    <div class="top">
+      <h1 class="neon" data-text="[Neon-Light]">lucky Strike</h1>
+      <h2 class="neon">bowling alley</h2>
+    <div>
+    <div class="center">
+      <table style="width:100%">
+        <caption>Scorecard:</caption>
+        <tr>
+          <th colspan="2">1</th>
+          <th colspan="2">2</th>
+          <th colspan="2">3</th>
+          <th colspan="2">4</th>
+          <th colspan="2">5</th>
+          <th colspan="2">6</th>
+          <th colspan="2">7</th>
+          <th colspan="2">8</th>
+          <th colspan="2">9</th>
+          <th colspan="2">10</th>
+          <th colspan="2">Game</th>
+        </tr>
+        <tr>
+          <td id='1_1'>x</td>
+          <td id="1_2">x</td>
+          <td id="2_1">x</td>
+          <td id="2_2">x</td>
+          <td id="3_1">x</td>
+          <td id="3_2">x</td>
+          <td id="4_1">x</td>
+          <td id="4_2">x</td>
+          <td id="5_1">x</td>
+          <td id="5_2">x</td>
+          <td id="6_1">x</td>
+          <td id="6_2">x</td>
+          <td id="7_1">x</td>
+          <td id="7_2">x</td>
+          <td id="8_1">x</td>
+          <td id="8_2">x</td>
+          <td id="9_1">x</td>
+          <td id="9_2">x</td>
+          <td id="10_1">x</td>
+          <td id="10_2">x</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td id="total_1">x</td>
+          <td></td>
+          <td id="total_2">x</td>
+          <td></td>
+          <td id="total_3">x</td>
+          <td></td>
+          <td id="total_4">x</td>
+          <td></td>
+          <td id="total_5">x</td>
+          <td></td>
+          <td id="total_6">x</td>
+          <td></td>
+          <td id="total_7">x</td>
+          <td></td>
+          <td id="total_8">x</td>
+          <td></td>
+          <td id="total_9">x</td>
+          <td></td>
+          <td id="total_10">x</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+    <div class="bottom">
+      <h3>Click to knock down pins:</h3>
+      <button id="0" value="0">0</button>
+      <button id="1" value="1">1</button>
+      <button id="2" value="2">2</button>
+      <button id="3" value="3">3</button>
+      <button id="4" value="4">4</button>
+      <button id="5" value="5">5</button>
+      <button id="6" value="6">6</button>
+      <button id="7" value="7">7</button>
+      <button id="8" value="8">8</button>
+      <button id="9" value="9">9</button>
+      <button id="10" value="10">10</button>
+    </div>
   </body>
 </html>

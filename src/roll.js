@@ -1,6 +1,5 @@
 function Roll(){
 this.rolls = [];
-this.totalFrame = 10;
 };
  Roll.prototype.firstRoll = function(first) {
   this.rolls.push(first);
@@ -20,8 +19,4 @@ Roll.prototype.isStrike = function() {
 };
  Roll.prototype.isSpare = function() {
   if (this.rolls[0] + this.rolls[1] === 10) return true;
-};
-
-Roll.prototype.getCurrentFrame = function() {
-  return this.totalFrame;
 };

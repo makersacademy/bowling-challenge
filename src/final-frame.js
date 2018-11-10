@@ -1,6 +1,5 @@
 function FinalFrame() {
   Frame.call(this)
-  this.MAX_SCORE = 30
   this.STRIKE_SCORE = 10
 }
 
@@ -35,9 +34,7 @@ FinalFrame.prototype.isFinished = function () {
     return this.numberOfBowls() > 2
   } else if (this.isSpare()) {
     return this.numberOfBowls() > 2
-  } else if (this._bowls.length > 1) {
-    return true
   } else {
-    return false
+    return this.numberOfBowls() > 1
   }
 }

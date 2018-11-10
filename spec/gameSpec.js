@@ -69,6 +69,11 @@ describe("Bowling", function() {
     expect(game.totalScore()).toEqual(16);
   })
 
+  it('can calculate score for perfect game', function() {
+    rollMultiple(10, 12);
+    expect(game.totalScore()).toEqual(300);
+  })
+
   var rollMultiple = function(pins, rolls) {
     for (var i = 0; i < rolls; i++) {
       game.roll(pins);

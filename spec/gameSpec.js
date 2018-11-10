@@ -39,6 +39,14 @@ describe("Bowling", function() {
     expect(game.isSpare()).toBe(false);
   })
 
+  it('can calculate score of spare frame', function() {
+    game.roll(5);
+    game.roll(5);
+    game.roll(1);
+    rollMultiple(0, 16);
+    expect(game.totalScore()).toEqual(12);
+  })
+
   var rollMultiple = function(pins, rolls) {
     for (var i = 0; i < rolls; i++) {
       game.roll(pins);

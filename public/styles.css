@@ -39,6 +39,24 @@ h3 {
 table {
   width: 100%;
   table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0.5rem;
+  empty-cells: hide;
+  border: 1px solid white;
+}
+tr {
+  height: 40px;
+}
+th {
+  border: 1px solid white;
+}
+.second_roll {
+  border-left: 1px solid white;
+  border-bottom: 1px solid white;
+  border-right: 1px solid white;
+}
+.frame_total {
+  border-right: 1px solid white;
 }
 .neon {
   transform: translate(-50%, -50%);

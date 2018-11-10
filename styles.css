@@ -5,15 +5,19 @@ table {
   border-radius: 5px;
   margin-left: 13%;
   border: 2px solid;
+  border-color: #BC9437;
 }
 table th {
   width: 100px;
   border: 1px solid;
+  font-family: 'Bungee', cursive;
+  border-color: #BC9437;
 }
 .frame {
   border: 1px solid;
   border-top: none;
   width: 50px;
+  border-color: #BC9437;
 }
 .frameScore {
   height: 45px;
@@ -21,10 +25,10 @@ table th {
   border-top: none;
   border-left: none;
   border-bottom: none;
+  border-color: #BC9437;
 }
 .scoreButton {
-  background-color: #BC2222;
-  color: white;
+  background-color: #F1BE47;
   border: none;
   font-size: 18px;
   padding: 32px 16px;
@@ -57,16 +61,26 @@ h2#currentScore {
   margin-left: 20%;
   font-size: 30px;
 }
+img#ball-image {
+  z-index: -100;
+  position: fixed;
+  right: 20px;
+  bottom: 120px;
+  opacity: 0.5;
+}
 tr#frameRow {
   height: 60px;
 }
 section#header {
   height: 25%;
   width: 100%;
-  background-color: #BC2222;
+  background-color: #F1BE47;
   position: fixed;
   top: 0;
   left: 0;
+  border-style: solid;
+  border-width: 0px 0px 4px 0px;
+  border-color: #BC9437;
 }
 section#footer {
   position: fixed;
@@ -74,7 +88,11 @@ section#footer {
   left: 0;
   height: 15%;
   width: 100%;
-  background-color: #BC2222;
+  background-color: #F1BE47;
+  border-style: solid;
+  border-width: 4px 0px 0px 0px;
+  border-color: #BC9437;
+  display: block;
 }
 section#scoreButtons {
   margin-top: 3%;

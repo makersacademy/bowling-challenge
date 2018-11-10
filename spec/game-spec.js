@@ -27,6 +27,14 @@ describe ('Game', function () {
       game.startNextFrame()
       expect(game.getCurrentFrame()).not.toEqual(currentFrame)
     })
+
+    it('starts a final frame for the 10th frame', function () {
+      var i = 0
+      for(i = 0; i < 10; i++) {
+        game.addBowl(10)
+      }
+      expect(game.getCurrentFrame()).toEqual(jasmine.any(FinalFrame))
+    })
   })
 
   describe ('Calculating score', function () {

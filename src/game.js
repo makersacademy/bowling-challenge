@@ -14,7 +14,11 @@ Game.prototype.getCurrentFrame = function () {
 }
 
 Game.prototype.startNextFrame = function () {
-  this._frames.push(new Frame())
+  if (this._frames.length === 9) {    
+    this._frames.push(new FinalFrame())
+  } else {
+    this._frames.push(new Frame())
+  }
 }
 
 Game.prototype.getCurrentScore = function () {

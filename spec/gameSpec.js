@@ -32,6 +32,13 @@ describe("Bowling", function() {
     expect(game.isSpare()).toBe(true);
   })
 
+  it('returns false if not a spare', function() {
+    game.roll(5);
+    game.roll(4);
+    game.roll(1);
+    expect(game.isSpare()).toBe(false);
+  })
+
   var rollMultiple = function(pins, rolls) {
     for (var i = 0; i < rolls; i++) {
       game.roll(pins);

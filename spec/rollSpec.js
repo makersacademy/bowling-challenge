@@ -32,4 +32,10 @@ it('Checks if the first roll is Strike', function() {
    expect(roll.isSpare()).toBe(true);
  });
 
+describe('frame', function() {
+ it('maximum frame is 10', function() {
+   expect(roll.getCurrentFrame()).toEqual(10);
+ });
+
+});
 });

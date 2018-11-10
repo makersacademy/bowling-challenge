@@ -22,5 +22,12 @@ describe ('Final Frame', function () {
       finalFrame.addBowl(10)
       expect(finalFrame.isFinished()).toBe(false)
     })
+
+    it('is not finished if a strike is played then another shot', function () {
+      finalFrame.addBowl(10)
+      finalFrame.addBowl(5)
+      console.log(finalFrame.isStrike())
+      expect(finalFrame.isFinished()).toBe(false)
+    })
   })
 })

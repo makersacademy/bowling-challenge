@@ -19,6 +19,12 @@ FinalFrame.prototype.isFinished = function () {
   }
 }
 
+FinalFrame.prototype.getScore = function () {
+  return this._bowls.reduce(function (total, bowl) {
+    return total + bowl
+  }, 0)
+}
+
 FinalFrame.prototype.isStrike = function () {
   return this._bowls.includes(this.STRIKE_SCORE)
 }

@@ -42,5 +42,12 @@ describe ('Final Frame', function () {
       finalFrame.addBowl(3)
       expect(finalFrame.getScore()).toEqual(7)
     })
+
+    it('should be 15 when a spare is played then a 5', function () {
+      finalFrame.addBowl(5)
+      finalFrame.addBowl(5)
+      finalFrame.addBowl(5)
+      expect(finalFrame.getScore()).toEqual(15)
+    })
   })
 })

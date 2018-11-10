@@ -19,5 +19,7 @@ Game.prototype.isSpare = function() {
   var index = 0
   if (this.rolls[index] + this.rolls[index + 1] === 10) {
     return true
+  } else {
+    return false
   }
 }

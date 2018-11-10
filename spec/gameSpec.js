@@ -20,6 +20,11 @@ describe("Bowling", function() {
     expect(game.totalScore()).toEqual(0);
   })
 
+  it('can score a game of all ones', function() {
+    rollMultiple(1, 20);
+    expect(game.totalScore()).toEqual(20);
+  })
+
   var rollMultiple = function(pins, rolls) {
     for (var i = 0; i < rolls; i++) {
       game.roll(pins);

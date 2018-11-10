@@ -17,7 +17,7 @@ describe("RunningScore", function() {
   describe("Spares:", function () {
     var runningScore = new RunningScore;
     it("updates the spares score when a player scores a spare", function() {
-      runningScore.spareOrStrike('Spare');
+      runningScore.spareOrStrike('Spare',5,5);
       expect(runningScore.spares).toEqual(1);
     });
     it("on the next turn, it calculates the running score, and spares equal 0 again", function() {
@@ -30,7 +30,7 @@ describe("RunningScore", function() {
   describe("Strikes:", function () {
     var runningScore = new RunningScore;
     it("updates the strikes score when a player scores a strike", function() {
-      runningScore.spareOrStrike('Strike');
+      runningScore.spareOrStrike('Strike',10,0);
       expect(runningScore.strikes).toEqual(1);
     });
     it("on the next turn, it calculates the frame score, and strikes equal 0 again", function() {
@@ -45,6 +45,16 @@ describe("RunningScore", function() {
     it("updates the frame score to an integer when no strikes or spares are rolled", function() {
       runningScore.updateRuningScore(2,5);
       expect(runningScore.score).toEqual(7);
+    });
+  });
+
+  describe("#allBowls", function() {
+    var runningScore = new RunningScore;
+    it("stores all bowls during a game", function() {
+      runningScore.updateRuningScore(2,5);
+      runningScore.updateRuningScore(9,1);
+      runningScore.updateRuningScore(10,0);
+      expect(runningScore.allBowls).toEqual([2,5,9,1,10]);
     });
   });
 

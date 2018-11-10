@@ -4,9 +4,11 @@ function RunningScore() {
   this.strikes = this.DEFAULT_VALUE
   this.spares = this.DEFAULT_VALUE
   this.score = this.STARTING_SCORE
+  this.allBowls = []
 };
 
-RunningScore.prototype.spareOrStrike = function(frameInformation) {
+RunningScore.prototype.spareOrStrike = function(frameInformation, a, b) {
+  this._updateAllBowls(a,b);
   if (frameInformation == "Spare") {
     this.spares ++ ;
   }
@@ -16,6 +18,7 @@ RunningScore.prototype.spareOrStrike = function(frameInformation) {
 }
 
 RunningScore.prototype.updateRuningScore = function (a,b) {
+  this._updateAllBowls(a,b);
   if (this.strikes > this.DEFAULT_VALUE) {
     this.score += ((this.strikes * 10 + a + b) + (a + b))
     this.strikes = this.DEFAULT_VALUE
@@ -29,4 +32,9 @@ RunningScore.prototype.updateRuningScore = function (a,b) {
     this.score += (a + b)
     return this.score
   }
+}
+
+RunningScore.prototype._updateAllBowls = function (a,b) {
+  if (a !== 0) this.allBowls.push(a);
+  if (b !== 0) this.allBowls.push(b);
 }

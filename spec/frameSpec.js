@@ -1,8 +1,8 @@
 describe("Frame", function() {
 
-// var scoreCardSpy = new ScoreCard()
-// var frameScoreSpy = jasmine.createSpyObj('frameScoreSpy', ['frame'])
-// var runningScoreSpy = jasmine.createSpyObj('runningScoreSpy', ['spareOrStrike'], ['updateRuningScore'])
+var scoreCardSpy = jasmine.createSpyObj('scoreCardSpy', [''])
+var frameScoreSpy = jasmine.createSpyObj('frameScoreSpy', ['frame'])
+var runningScoreSpy = jasmine.createSpyObj('runningScoreSpy', ['spareOrStrike'], ['updateRuningScore'])
 
   describe("#newFrame:", function () {
     var frame = new Frame();
@@ -43,6 +43,23 @@ describe("Frame", function() {
       expect(frame.currentScore).toEqual(6);
       expect(frame.currentRunningScore).toEqual(18);
     });
+  });
+
+  describe("Strike:", function() {
+    var frame = new Frame();
+    it("on the first frame the frame score is 'strike' and the running score is not updated ", function() {
+      frame.information(10,0)
+      expect(frame.currentScore).toEqual('Strike');
+      expect(frame.currentRunningScore).toEqual(0);
+    });
+    it("on the second frame the frame score is 6 and the running score is 18", function() {
+      frame.information(2,4)
+      expect(frame.currentScore).toEqual(6);
+      expect(frame.currentRunningScore).toEqual(22);
+    });
+  });
+
+  describe("Multiple stikes:", function() {
   });
 
 })

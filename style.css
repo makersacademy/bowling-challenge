@@ -1,0 +1,48 @@
+h1 {
+  color: #c06c84;
+  font-size: 300%
+}
+body {
+  text-align: center;
+  font-family: futura;
+  color: #bca3b2;
+  background-color: #444444;
+  font-size: 150%
+}
+
+p {
+  text-align: center;
+  font-family: futura;
+    font-size: 150%;
+    color: #f3d8e1;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Raleway|Spicy+Rice');
+
+button {
+  height: 50px;
+  width: 50px;
+  border-radius: 10%;
+  font-family: 'Raleway', sans-serif;
+  font-size: 90%;
+  font-weight: bold;
+  background-color: #f3d8e1;
+  color: #444444;
+
+}
+
+button#new-game {
+  height: 30px;
+  width: 200px;
+  border-radius: 0;
+  font-family: futura;
+  font-size: 60%;
+  background-color: #f3d8e1;
+}
+
+button#new-game:hover{transform: scale(1.1);}
+
+th {
+  color: #c06c84;
+
+}

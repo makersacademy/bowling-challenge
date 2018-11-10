@@ -31,11 +31,11 @@ BowlingGame.prototype.score = function(frame) {
   //helper methods for score function
 
   function isStrike() {
-    return game.rolls[rollIndex] == 10
+    return game.rolls[rollIndex] == 10;
   }
 
   function isSpare() {
-    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] == 10
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] == 10;
   }
 
   function getStrikeScore() {

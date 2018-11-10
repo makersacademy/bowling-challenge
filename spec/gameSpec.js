@@ -69,6 +69,27 @@ describe("Bowling", function() {
     expect(game.totalScore()).toEqual(300);
   })
 
+  it('returns true if strike scored in tenth frame', function() {
+    rollMultiple(0, 18);
+    game.roll(10);
+    game.roll(0);
+    expect(game.isBonusFrame()).toBe(true)
+  })
+
+  it('returns true if spare scored in tenth frame', function() {
+    rollMultiple(0, 18);
+    game.roll(5);
+    game.roll(5);
+    expect(game.isBonusFrame()).toBe(true)
+  })
+
+  it('returns false if strike or spare not scored in tenth frame', function() {
+    rollMultiple(0, 18);
+    game.roll(4);
+    game.roll(1)
+    expect(game.isBonusFrame()).toBe(false)
+  })
+
   var rollMultiple = function(pins, rolls) {
     for (var i = 0; i < rolls; i++) {
       game.roll(pins);

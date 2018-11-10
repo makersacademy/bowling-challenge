@@ -1,13 +1,22 @@
 function Game() {
   this.rolls = [];
   this.currentFrame = 1;
+  this.bowlNumber = 1
 }
 
 Game.prototype.roll = function(pins) {
   this.rolls.push(pins);
-  if (this.currentFrame === 10) {
+// if you are not in 10th frame and you score either a strike or it is your
+// second roll, reset the bowl number to 1
+  if (this.currentFrame != 10) {
+    if ((pins === 10 && this.bowlNumber === 1) || (this.bowlNumber === 2)) {
+      this.currentFrame += 1
+      this.bowlNumber = 1
+    } else {
+      this.bowlNumber += 1
+    }
   } else {
-    this.currentFrame += 1
+    this.bowlNumber += 1
   }
 }
 
@@ -47,8 +56,9 @@ Game.prototype.isStrike = function(index) {
 }
 
 Game.prototype.isBonusFrame = function() {
+  var rollNum = this.rolls.length - 2
   if (this.currentFrame === 10) {
-    if (this.isStrike(10) || this.isSpare(10)) {
+    if (this.isStrike(rollNum) || this.isSpare(rollNum)) {
     return true
     };
   }

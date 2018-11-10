@@ -45,4 +45,11 @@ describe("FrameScore", function() {
     });
   })
 
+  describe("No spares or strikes", function() {
+    it("updates the frame score to an integer when no strikes or spares are rolled", function() {
+      frameScore.score(2,5);
+      expect(frameScore.frameScore).toEqual(7);
+    });
+  });
+
 })

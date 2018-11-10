@@ -29,6 +29,6 @@ FrameScore.prototype.continue = function (a,b) {
     this.frameScore = (this.spares * 10 + a) + (a + b)
     this.spares = 0
   } else {
-    return a + b
+    this.frameScore = a + b
   }
 }

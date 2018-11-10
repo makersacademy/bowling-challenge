@@ -7,7 +7,9 @@
     "doc": "docs",
     "lib": "lib"
   },
-  "dependencies": {},
+  "dependencies": {
+    "codecov": "^3.1.0"
+  },
   "devDependencies": {
     "eslint": "^5.9.0"
   },

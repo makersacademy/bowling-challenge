@@ -10,25 +10,29 @@ Game.prototype.setup = function() {
 };
 
 Game.prototype.roll = function(roll) {
-  this.currentFrame = this.frames[this.currentFrameIndex];
-
+  this.updateCurrentFrame();
   this.currentFrame.addRoll(roll);
-  this.currentFrame.rollIndex++;
-  if (this.currentFrame.calculateFrameScore() == 10 || this.currentFrame.rollIndex == 2) {
-    this.currentFrameIndex++;
+  this.currentFrame.updateRollIndex();
+  if (this.currentFrame.isStrike() || this.currentFrame.isDone()) {
+    this.updateCurrentFrameIndex();
   }
   return this.calculateScore();
 };
 
 Game.prototype.calculateScore = function() {
   var total = 0;
-  this.frames.forEach(function(frame) {
-    if (frame.frameIndex > 9) {
-    } else {
-      total += frame.calculateFrameScore();
-    }
-  });
+  for (var i = 0; i < 10; i++) {
+    total += this.frames[i].calculateFrameScore();
+  }
   return total;
+};
+
+Game.prototype.updateCurrentFrame = function() {
+  this.currentFrame = this.frames[this.currentFrameIndex];
+};
+
+Game.prototype.updateCurrentFrameIndex = function() {
+  this.currentFrameIndex += 1;
 };
 
 function Frame(game, frameIndex) {
@@ -43,12 +47,12 @@ Frame.prototype.addRoll = function(roll) {
 };
 
 Frame.prototype.calculateFrameScore = function() {
-  if (this.frameRolls[0] == 10) {
-    return this.frameRolls[0] + this.getNextFrame(this).frameRolls[0] + this.getNextFrame(this).frameRolls[1] + this.getNextNextFrame(this).frameRolls[0];
-  } else if (this.frameRolls[0] + this.frameRolls[1] == 10) {
-    return this.frameRolls[0] + this.frameRolls[1] + this.getNextFrame(this).frameRolls[0];
+  if (this.isStrike()) {
+    return this.calculateStrikeScore();
+  } else if (this.isSpare()) {
+    return this.calculateSpareScore();
   } else {
-    return this.frameRolls[0] + this.frameRolls[1];
+    return this.calculateScore();
   }
 };
 
@@ -58,4 +62,32 @@ Frame.prototype.getNextFrame = function(frame) {
 
 Frame.prototype.getNextNextFrame = function(frame) {
   return this.game.frames[this.frameIndex + 2];
+};
+
+Frame.prototype.updateRollIndex = function() {
+  this.rollIndex += 1;
+};
+
+Frame.prototype.isStrike = function() {
+  return this.frameRolls[0] == 10;
+};
+
+Frame.prototype.isDone = function() {
+  return this.rollIndex == 2;
+};
+
+Frame.prototype.isSpare = function() {
+  return this.frameRolls[0] + this.frameRolls[1] == 10;
+};
+
+Frame.prototype.calculateStrikeScore = function() {
+  return this.frameRolls[0] + this.getNextFrame(this).frameRolls[0] + this.getNextFrame(this).frameRolls[1] + this.getNextNextFrame(this).frameRolls[0];
+};
+
+Frame.prototype.calculateSpareScore = function() {
+  return this.frameRolls[0] + this.frameRolls[1] + this.getNextFrame(this).frameRolls[0];
+};
+
+Frame.prototype.calculateScore = function() {
+  return this.frameRolls[0] + this.frameRolls[1];
 };

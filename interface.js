@@ -24,18 +24,21 @@ $(document).ready(function () {
   }
 
   function updateScorecard() {
-    var frameNumber = game._frames.length
+    var frameNumber = game.getFrames().length
     var bowls = game.getCurrentFrame().getBowls().join(', ')
     $(`#frame${frameNumber}`).text(bowls)
+    updateFrameScores()
+  }
+
+  function updateFrameScores() {
     $('.frameScore').each(function () {
-      var frameNumber = parseInt($( this ).attr('id'))
+      var frameNumber = parseInt($(this).attr('id'))
       try {
-        $( this ).text(game._frames[frameNumber].getScore(game._frames[frameNumber + 1], game._frames[frameNumber + 2]))
-        console.log(game._frames[frameNumber])
+        $(this).text(game.getFrames()[frameNumber].getScore(
+          game.getFrames()[frameNumber + 1], game.getFrames()[frameNumber + 2]
+        ))
       }
-      catch(error) {
-        $( this ).empty()
-      }
+      catch { $(this).empty() }
     })
   }
 })

@@ -3,7 +3,7 @@ $(document).ready(function () {
   updateTotalScore()
 
   $(':button').click(function () {
-    var pins = parseInt($( event.target ).attr('value'))
+    var pins = parseInt($(event.target).attr('value'))
     $('#error').empty()
     addBowl(pins)
     updateScorecard()
@@ -13,10 +13,10 @@ $(document).ready(function () {
   $('#reset').click(function () {
     game = new Game()
     updateTotalScore()
-    $('.frame').each(function() {
+    $('.frame').each(function () {
       $(this).empty()
     })
-    $('.frameScore').each(function() {
+    $('.frameScore').each(function () {
       $(this).empty()
     })
   })
@@ -25,31 +25,31 @@ $(document).ready(function () {
     $('#currentScore').text('score: ' + game.getCurrentScore())
   }
 
-  function addBowl(pins) {
+  function addBowl (pins) {
     try {
       game.addBowl(pins)
-    }
-    catch(error) {
+    } catch (error) {
       $('#error').text(error)
     }
   }
 
-  function updateScorecard() {
+  function updateScorecard () {
     var frameNumber = game.getFrames().length
     var bowls = game.getCurrentFrame().getBowls().join(', ')
     $(`#frame${frameNumber}`).text(bowls)
     updateFrameScores()
   }
 
-  function updateFrameScores() {
+  function updateFrameScores () {
     $('.frameScore').each(function () {
       var frameNumber = parseInt($(this).attr('id'))
       try {
         $(this).text(game.getFrames()[frameNumber].getScore(
           game.getFrames()[frameNumber + 1], game.getFrames()[frameNumber + 2]
         ))
+      } catch (error) {
+        $(this).empty()
       }
-      catch { $(this).empty() }
     })
   }
 })

@@ -21,16 +21,16 @@ Scorecard.prototype.add = function (number) {
 }
 
 Scorecard.prototype.sum = function () {
-  if (this.lastArrayinArray[this.lastArrayinArray.length - 2] === 10 && this.bonus.length === 0 && this.frames.length < 10) {
+  if (this._isFirstStrike()) {
     return this.score = this.frames.flat().reduce(add) - 10
   }
-  if (this.lastArrayinArray[this.lastArrayinArray.length - 2] === 10 && this.frames.length < 10) {
+  if (this._isNotFirstStrike()) {
     return this.score = this.frames.flat().reduce(add) - 10 + this.bonus.flat().reduce(add)
   }
-  if (((this.lastArrayinArray[this.lastArrayinArray.length - 1] + this.lastArrayinArray[this.lastArrayinArray.length - 2]) === 10) && this.bonus.length === 0 && this.frames.length < 10) {
+  if (this._isFirstSpare()) {
     return this.score = this.frames.flat().reduce(add) - 10
   }
-  if ((this.lastArrayinArray[this.lastArrayinArray.length - 1] +  this.lastArrayinArray[this.lastArrayinArray.length - 2]) === 10 && this.frames.length < 10) {
+  if (this._isNotFirstSpare()) {
     return this.score = this.frames.flat().reduce(add) - 10 + this.bonus.flat().reduce(add)
   }
   if (this.bonus.length === 0) {
@@ -46,6 +46,22 @@ Scorecard.prototype._addBonus = function () {
   if ((this.secondLastArrayinArray[this.secondLastArrayinArray.length - 1] + this.secondLastArrayinArray[this.secondLastArrayinArray.length - 2]) === 10) {
     this.bonus.push(this.lastArrayinArray[this.lastArrayinArray.length - 2])
   }
+}
+
+Scorecard.prototype._isFirstStrike = function () {
+  return this.lastArrayinArray[this.lastArrayinArray.length - 2] === 10 && this.bonus.length === 0 && this.frames.length < 10
+}
+
+Scorecard.prototype._isNotFirstStrike = function () {
+  return this.lastArrayinArray[this.lastArrayinArray.length - 2] === 10 && this.frames.length < 10
+}
+
+Scorecard.prototype._isFirstSpare = function () {
+  return ((this.lastArrayinArray[this.lastArrayinArray.length - 1] + this.lastArrayinArray[this.lastArrayinArray.length - 2]) === 10) && this.bonus.length === 0 && this.frames.length < 10
+}
+
+Scorecard.prototype._isNotFirstSpare = function () {
+  return (this.lastArrayinArray[this.lastArrayinArray.length - 1] +  this.lastArrayinArray[this.lastArrayinArray.length - 2]) === 10 && this.frames.length < 10
 }
 
 

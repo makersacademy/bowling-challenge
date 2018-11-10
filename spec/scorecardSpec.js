@@ -93,5 +93,4 @@ describe("Scorecard", function () {
     expect(scorecard.score).toEqual(28)
   })
 
-
 })

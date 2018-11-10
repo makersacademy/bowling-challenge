@@ -55,5 +55,12 @@ describe ('Final Frame', function () {
       finalFrame.addBowl(5)
       expect(finalFrame.getScore()).toEqual(15)
     })
+
+    it('should be 30 for 3x strikes', function () {
+      finalFrame.addBowl(10)
+      finalFrame.addBowl(10)
+      finalFrame.addBowl(10)
+      expect(finalFrame.getScore()).toEqual(30)
+    })
   })
 })

@@ -12,6 +12,6 @@ describe("Bowling", function() {
 
   it('can track the total score of the game', function() {
     game.roll(2);
-    expect(game.totalScore).toEqual(2);
+    expect(game.totalScore()).toEqual(2);
   })
 })

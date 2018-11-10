@@ -28,3 +28,12 @@ Game.prototype.isSpare = function(index) {
     return false
   }
 }
+
+Game.prototype.isStrike = function (index) {
+  if (this.rolls[index] === 10) {
+    return true
+  } else {
+    return false
+  }
+
+};

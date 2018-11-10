@@ -69,10 +69,6 @@ describe("Bowling", function() {
     expect(game.totalScore()).toEqual(16);
   })
 
-  it('can calculate score of strike frame', function() {
-
-  })
-
   var rollMultiple = function(pins, rolls) {
     for (var i = 0; i < rolls; i++) {
       game.roll(pins);

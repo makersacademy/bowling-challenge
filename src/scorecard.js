@@ -13,33 +13,23 @@ function Scorecard() {
 
 Scorecard.prototype.add = function (number) {
   this.frame.add(number)
-  if (this.frame.score.length === 2) {
+  if (this._isFrameComplete()) {
     this.frames.push(this.frame.score)
     this.frame.score = []
-    if (this.frames.length > 1) {
+    if (this._isScorecardLongerThan1()) {
       this._updateSecondLastFrame()
     }
-      this._updateLastFrame()
+    this._updateLastFrame()
     this._addBonus()
   }
 }
 
 Scorecard.prototype.sum = function () {
-  if (this._isFirstStrike()) {
-    return this.score = this.frames.flat().reduce(add) - 10
-  }
-  if (this._isNotFirstStrike()) {
-    return this.score = this.frames.flat().reduce(add) - 10 + this.bonus.flat().reduce(add)
-  }
-  if (this._isFirstSpare()) {
-    return this.score = this.frames.flat().reduce(add) - 10
-  }
-  if (this._isNotFirstSpare()) {
-    return this.score = this.frames.flat().reduce(add) - 10 + this.bonus.flat().reduce(add)
-  }
-  if (this.bonus.length === 0) {
-    return this.score = this.frames.flat().reduce(add)
-  }
+  if (this._isFirstStrike()) return this.score = this.frames.flat().reduce(add) - 10
+  if (this._isNotFirstStrike()) return this.score = this.frames.flat().reduce(add) - 10 + this.bonus.flat().reduce(add)
+  if (this._isFirstSpare()) return this.score = this.frames.flat().reduce(add) - 10
+  if (this._isNotFirstSpare()) return this.score = this.frames.flat().reduce(add) - 10 + this.bonus.flat().reduce(add)
+  if (this.bonus.length === 0) return this.score = this.frames.flat().reduce(add)
   this.score = this.frames.flat().reduce(add) + this.bonus.flat().reduce(add)
 }
 
@@ -78,6 +68,14 @@ Scorecard.prototype._updateLastFrame = function () {
   this.lastFrame = this.frames[this.frames.length - 1]
   this.lastFrameRoll1 = this.lastFrame[this.lastFrame.length - 2]
   this.lastFrameRoll2 = this.lastFrame[this.lastFrame.length - 1]
+}
+
+Scorecard.prototype._isFrameComplete = function () {
+  return this.frame.score.length === 2
+}
+
+Scorecard.prototype._isScorecardLongerThan1 = function () {
+  return this.frames.length > 1
 }
 
 

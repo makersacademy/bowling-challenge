@@ -19,4 +19,9 @@ describe("Frame", function() {
     expect(frame.score).toEqual([10, 0])
   })
 
+  it('should not be able to add a number that is not between 0 and 10', function () {
+    frame.add(15)
+    expect(frame.score).toEqual([])
+  })
+
 });

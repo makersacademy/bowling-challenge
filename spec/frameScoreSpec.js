@@ -11,44 +11,38 @@ describe("FrameScore", function() {
       expect(frameScore.spares).toEqual(0);
     });
     it("starts a new game with frame score equalling 0", function() {
-      expect(frameScore.currentScore).toEqual(0);
+      expect(frameScore._currentScore).toEqual(0);
     });
   });
 
   describe("Spares:", function () {
     it("updates the spares score when a player scores a spare", function() {
-      frameScore.score(4,6);
+      frameScore.score('Spare');
       expect(frameScore.spares).toEqual(1);
     });
-    it("updates the frame score to equal 'Spare'", function() {
-      expect(frameScore.currentScore).toEqual('Spare');
-    });
-    it("on the next turn, it calculates the frame score, and spares equal 0 again", function() {
-      frameScore.score(4,1);
+    it("on the next turn, it calculates the running score, and spares equal 0 again", function() {
+      frameScore.continue(4,1);
       expect(frameScore.spares).toEqual(0);
-      expect(frameScore.currentScore).toEqual(19);
+      expect(frameScore._currentScore).toEqual(19);
     });
   });
 
   describe("Strikes:", function () {
     it("updates the strikes score when a player scores a strike", function() {
-      frameScore.score(10,0);
+      frameScore.score('Strike');
       expect(frameScore.strikes).toEqual(1);
     });
-    it("updates the frame score to equal 'Strike'", function() {
-      expect(frameScore.currentScore).toEqual('Strike');
-    });
     it("on the next turn, it calculates the frame score, and strikes equal 0 again", function() {
-      frameScore.score(3,6);
+      frameScore.continue(3,6);
       expect(frameScore.strikes).toEqual(0);
-      expect(frameScore.currentScore).toEqual(28);
+      expect(frameScore._currentScore).toEqual(28);
     });
   })
 
   describe("No strikes or spares:", function() {
     it("updates the frame score to an integer when no strikes or spares are rolled", function() {
-      frameScore.score(2,5);
-      expect(frameScore.currentScore).toEqual(7);
+      frameScore.continue(2,5);
+      expect(frameScore._currentScore).toEqual(35);
     });
   });
 

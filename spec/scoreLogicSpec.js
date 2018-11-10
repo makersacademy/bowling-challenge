@@ -37,13 +37,13 @@ describe("ScoreLogic", function() {
       expect(function() {scoreLogic.frame(5,7);}).toThrow("Incorrect score entered.")
     });
     it('returns strike if the player scores a strike', function() {
-      expect(scoreLogic.frame(10,0)).toEqual("strike");
+      expect(scoreLogic.frame(10,0)).toEqual("Strike");
     });
     it('returns spare if the player scores a spare', function() {
-      expect(scoreLogic.frame(5,5)).toEqual("spare");
+      expect(scoreLogic.frame(5,5)).toEqual("Spare");
     });
-    it('returns continue if the player does not score a spare or a strike', function() {
-      expect(scoreLogic.frame(1,3)).toEqual("continue");
+    it('returns the sum of the bowls if the player does not score a spare or a strike', function() {
+      expect(scoreLogic.frame(1,3)).toEqual(4);
     });
   });
 

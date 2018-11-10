@@ -18,11 +18,11 @@ ScoreLogic.prototype.frame = function(a, b) {
     throw 'Incorrect score entered.';
   }
   else if (this._isAStrike(a,b)) {
-    return 'strike';
+    return 'Strike';
   }
   else if (this._isASpare(a,b)) {
-    return 'spare';
+    return 'Spare';
   } else {
-    return 'continue';
+    return (a + b) ;
   }
 }

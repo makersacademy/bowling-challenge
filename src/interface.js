@@ -14,7 +14,7 @@ $(document).ready(function() {
     for (var i=0; i<scorecard.card.length; i++) {
       $('#frame'+i+'_bowl1').text(scorecard.card[i].bowl1);
       $('#frame'+i+'_bowl2').text(scorecard.card[i].bowl2);
-      $('#frame'+i+'_score').text(scorecard.card[i].frameScore);
+      $('#frame'+i+'_score').text(scorecard.card[i].currentScore);
       $('#frame'+i+'_running_score').text(scorecard.card[i].runningScore);
     }
   };

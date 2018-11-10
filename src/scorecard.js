@@ -17,13 +17,9 @@ Scorecard.prototype.add = function (number) {
     this.frames.push(this.frame.score)
     this.frame.score = []
     if (this.frames.length > 1) {
-      this.secondLastFrame = this.frames[this.frames.length - 2]
-      this.secondLastFrameRoll1 = this.secondLastFrame[this.secondLastFrame.length - 2]
-      this.secondLastFrameRoll2 = this.secondLastFrame[this.secondLastFrame.length - 1]
+      this._updateSecondLastFrame()
     }
-    this.lastFrame = this.frames[this.frames.length - 1]
-    this.lastFrameRoll1 = this.lastFrame[this.lastFrame.length - 2]
-    this.lastFrameRoll2 = this.lastFrame[this.lastFrame.length - 1]
+      this._updateLastFrame()
     this._addBonus()
   }
 }
@@ -70,6 +66,18 @@ Scorecard.prototype._isFirstSpare = function () {
 
 Scorecard.prototype._isNotFirstSpare = function () {
   return (this.lastFrameRoll2 + this.lastFrameRoll1) === 10 && this.frames.length < 10
+}
+
+Scorecard.prototype._updateSecondLastFrame = function () {
+  this.secondLastFrame = this.frames[this.frames.length - 2]
+  this.secondLastFrameRoll1 = this.secondLastFrame[this.secondLastFrame.length - 2]
+  this.secondLastFrameRoll2 = this.secondLastFrame[this.secondLastFrame.length - 1]
+}
+
+Scorecard.prototype._updateLastFrame = function () {
+  this.lastFrame = this.frames[this.frames.length - 1]
+  this.lastFrameRoll1 = this.lastFrame[this.lastFrame.length - 2]
+  this.lastFrameRoll2 = this.lastFrame[this.lastFrame.length - 1]
 }
 
 

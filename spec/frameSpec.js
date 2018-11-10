@@ -11,7 +11,7 @@ describe("Frame", function() {
     });
   });
 
-  describe("The first two frames:", function () {
+  describe("No strikes or spares:", function () {
     it("on the first frame it returns the frame score 8 and updates the running score to 8", function(){
       frame.information(3,5)
       expect(frame.runningScore).toEqual(8);
@@ -24,6 +24,19 @@ describe("Frame", function() {
       expect(frame.currentScore).toEqual(5);
       expect(frame.runningScore).toEqual(13);
     });
+  });
+
+  describe("Spare:", function() {
+    it("on the third frame the frame score is 'strike' and the running score is not updated ", function() {
+      frame.information(5,5)
+      expect(frame.currentScore).toEqual('Spare');
+      expect(frame.runningScore).toEqual(13);
+    });
+    it("on the fourth frame the frame score is 6 and the running score is 31", function() {
+      frame.information(2,4)
+      expect(frame.currentScore).toEqual(6);
+      expect(frame.runningScore).toEqual(31);
+    })
   });
 
 })

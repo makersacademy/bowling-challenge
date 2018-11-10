@@ -16,12 +16,15 @@ Frame.prototype.information = function(a,b) {
 }
 
 Frame.prototype._updateCurrentScore = function(a,b) {
-  this.frameScore.score(a,b);
-  this.currentScore = this.frameScore.frameScore
+  this.currentScore = this.frameScore.score(a,b)
 }
 
 Frame.prototype._updateRunningScore = function(a,b) {
+  if (this.currentScore === 'Spare') {
+    // Running score is not updated
+  } else {
   this.runningScore += (a+b);
+  }
 }
 
 Frame.prototype._updateCurrentFrame = function() {
@@ -34,6 +37,6 @@ Frame.prototype._updateScoreCard = function(a,b) {
   array['bowl1'] = a;
   array['bowl2'] = b;
   array['currentScore'] = this.currentScore;
-  array['runningScore'] = this.runningScore;
+  array['runningScore'] = (Number.isInteger(this.currentScore) ? this.runningScore : "");
   this.scoreCard.card.push(array);
 }

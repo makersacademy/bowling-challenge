@@ -83,14 +83,16 @@ describe('Game', function() {
     });
   });
 
-  // describe('totalScore', function() {
-  //   it('returns the total score of a game', function() {
-  //     for (var i = 0; i < 12; i++) {
-  //       game.addScore(10);
-  //     }
-  //     game.calculateFrameScore();
-  //     game.calculateBonus();
-  //     expect(game.totalScore()).toEqual(300);
-  //   });
-  // });
+  describe('totalScore', function() {
+    it('returns the total score of a game', function() {
+      for (var i = 0; i < 12; i++) {
+        game.addScore(10);
+      }
+      game.calculateFrameScore();
+      game.calculateBonus();
+      game.frameTotalScore();
+      game.gameTotalScore();
+      expect(game.gameScore).toEqual(300);
+    });
+  });
 });

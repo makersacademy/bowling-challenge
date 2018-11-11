@@ -1,52 +1,117 @@
-var Game = function() {
-  this.rolls = [];
-  this.currentRoll = 0;
-  this.currentScore = 0
+"use strict";
+
+function Game() {
+  this._frame = 1;
+  this._roll = 1;
+  this._rollScore1 = 0;
+  this._rollScore2 = 0;
+  this._totalScore = 0;
+  this._currentKnockdown = 0;
+  this._standingPins = 10;
+  this._bonus = "";
+  this._gameOver ="";
+  this._maxRounds = 10;
+ };
+
+Game.prototype.bowl = function() {
+  this.rollScoreMethod();
+  this.frameAndRoll();
+  };
+
+Game.prototype.rollScoreMethod = function(){
+  this._currentKnockdown = this.pinsKnockdown();
+  if(this._roll === 1){
+    this._rollScore1 = this._currentKnockdown;
+  } else {
+    this._rollScore2 = this._currentKnockdown;
+  }
+  this.remainingPins();
 };
 
-Game.prototype.roll = function (pins) {
-  this.rolls.push(pins);
-  this.currentRoll++
+Game.prototype.pinsKnockdown = function(){
+  return Math.floor(Math.random() * (this._standingPins + 1));
 };
 
-Game.prototype.score = function () {
-  var result = 0;
-  var frameIndex = 0;
-  var self = this;
+Game.prototype.remainingPins = function(){
+  this._standingPins -= this._currentKnockdown;
+};
 
-  for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
-    if (isStrike()) {
-      result += getStrikeScore();
-      frameIndex++;
-    } else if (isSpare()) {
-      result += getSpareScore();
-      frameIndex += 2;
-    } else {
-      result += getNormalScore();
-      frameIndex += 2;
-    }
+Game.prototype.frameAndRoll = function(){
+  this.endGameCheck();
+  if(this._frame < this._maxRounds) {
+    this.frameIncrement();
+    this.rollAlternate();
   }
-  return result;
+};
 
-  function isStrike() {
-    return self.rolls[frameIndex] == 10
+Game.prototype.endGameCheck = function(){
+  if(this._frame === 10){
+    this._rollScore1 =this.pinsKnockdown();
+    this._rollScore2 = 0;
+    this._standingPins = 0;
+    this._maxRounds = 10;
+    this._gameOver = ("Game Over! Press new game to start again :)");
   }
+};
 
-  function isSpare() {
-    return self.rolls[frameIndex] + self.rolls[frameIndex + 1] == 10;
+Game.prototype.frameIncrement = function(){
+  if(this._roll === 2 || this._standingPins === 0){
+    this._frame ++;
+    this.totalScoreUpdate();
   }
+};
 
-  function getStrikeScore() {
-    return self.rolls[frameIndex] + self.rolls[frameIndex + 1] + self.rolls[frameIndex + 2];
-  }
+Game.prototype.totalScoreUpdate = function(){
+  this._totalScore += (this._rollScore1 + this._rollScore2);
+  this.checkBonus();
+  this.strikeOrSpare();
+};
 
-  function getSpareScore() {
-    return self.rolls[frameIndex] + self.rolls[frameIndex + 1] + self.rolls[frameIndex + 2];
+Game.prototype.checkBonus = function(){
+  if (this._bonus === "Strike!") {
+    this._totalScore += (this._rollScore1 + this._rollScore2);
+  } else if (this._bonus === "Spare!") {
+    this._totalScore += this._rollScore1;
   }
+  this._bonus = "";
+};
 
-  function getNormalScore() {
-    return self.rolls[frameIndex] + self.rolls[frameIndex + 1];
+Game.prototype.strikeOrSpare = function(){
+  if (this._rollScore1 === 10) {
+    this._bonus = "Strike!";
+  } else if (this._rollScore1 + this._rollScore2 === 10) {
+    this._bonus = "Spare!";
   }
-  self.currentScore = score;
-  return score;
+};
+
+// End of the game, reset frame, reset roll
+
+Game.prototype.rollAlternate = function(){
+  if(this._roll === 1 && this._standingPins > 0){
+    this._roll = 2;
+  } else {
+    this._roll = 1;
+    this.frameReset();
+  }
+};
+
+Game.prototype.frameReset = function(){
+  this._rollScore1 = 0;
+  this._rollScore2 = 0;
+  this._currentKnockdown = 0;
+  this._standingPins = 10;
+  this._maxRounds = 10;
+};
+
+Game.prototype.newGame = function(){
+  this._frame = 1;
+  this._roll = 1;
+  this._rollScore1 = 0;
+  this._rollScore2 = 0;
+  this._totalScore = 0;
+  this._currentKnockdown = 0;
+  this._standingPins = 10;
+  this._bonus = "";
+  this._maxRounds = 10;
+  this._gameOver ="";
 };

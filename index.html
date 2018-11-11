@@ -1,36 +1,32 @@
 <!DOCTYPE html>
-<htmml>
-  <head>
-    <title>Bowling Game</title>
+<html>
+    <head>
+        <title>Bowling </title>
+            <script src="https://code.jquery.com/jquery-3.3.0.min.js"></script>
+            <script src="src/Game.js"></script>
+            <script src='src/GameInterface.js'></script>
 
-    <!-- <link rel='stylesheet' href='./public/css/bootstrap-responsive.css'>
-    <link rel='stylesheet' href='./public/css/bootstrap.css'> -->
-  </head>
+    <body>            <!-- <center> -->
+      <h1 id="bowling">Welcome to BowlingScore.com!</h1>
+        <h2 class="top" > Total score : </h2 ><h2  class="top" id='total_score'></h2>
 
-  <body>
-    <h1> Bowling Game </h1>
+        <div>
+            <h2 class="top"> Current frame : </h2><h2 class="top" id='current_frame'></h2>
+            <h2 class="top"> Current roll : </h2><h2 class="top"  id='current_roll'></h2>
+        </div>
+            <h2 class="top"  id='bonus'></h2>
 
-    <section>
-      <h2> Final Score: <span id="current-score"></span> </h2>
-      <h3> Current Roll: <span id="current-roll"></span></h2>
+        <div class ='button'>
+            <button id='bowl'>Bowl</button>
+            <button id='new_game'>New Game</button>
+        </div>
 
-      <button id="zero-pins">0</button>
-      <button id="one-pin">1</button>
-      <button id="two-pins">2</button>
-      <button id="three-pins">3</button>
-      <button id="four-pins">4</button>
-      <button id="five-pins">5</button>
-      <button id="six-pins">6</button>
-      <button id="seven-pins">7</button>
-      <button id="eight-pins">8</button>
-      <button id="nine-pins">9</button>
-      <button id="ten-pins">10</button>
-
-    </section>
-
-    <script src="src/Game.js"></script>
-    <script src="jquery-3.3.1.min.js"></script>
-    <script src="src/GameInterface.js"></script>
-
-  </body>
-</htmml>
+        <div>
+            <h2 class="top1"> Roll 1: </h2><h2 class="top1" id='roll_1'></h2>
+            <h2 class="top1"> Roll 2: </h2><h2 class="top1" id='roll_2'></h2>
+            <h2 class="top1"> You have </h2><h2 class="top1" id='error'></h2><h2 class="top1">more pins to hit</h2>
+        </div>
+            <h2 class="top" id='test'></h2>
+        <div></div>
+    </body>
+</html>

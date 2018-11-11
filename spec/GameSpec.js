@@ -1,48 +1,96 @@
-describe("Game", function() {
+describe("#Games features", function(){"use strict";
+
   var game;
-   beforeEach(function() {
+
+  beforeEach(function(){
     game = new Game();
   });
 
-   it("can roll a gutter game", function() {
-     rollMany(0, 20)
-     expect(game.score()).toBe(0);
-   });
-   it("can return all ones", function() {
-     rollMany(1, 20)
-     expect(game.score()).toBe(20)
-   })
-   it("returns a score of 1 when player scores 1", function() {
-     game.roll(1)
-     for (var i = 0; i < 19; i++) {
-       game.roll(0);
-     }
-     expect(game.score()).toEqual(1);
-   });
+  describe("#bowl functionality", function(){
 
-     var rollMany = function(pins, rolls) {
-       for (var i = 0; i < rolls; i++) {
-         game.roll(pins);
-       }
-     }
-   it("can roll a spare", function() {
-     game.roll(5);
-     game.roll(5);
-     game.roll(3);
-     rollMany(0, 17);
-     expect(game.score()).toBe(16)
-   })
+    it("pinsKnockdown method generates number between 0 and 10 ", function(){
+      spyOn(game, 'pinsKnockdown').and.returnValue(3);
+      expect(game.pinsKnockdown()).toEqual(3);
+    });
 
-   it("can roll a strike", function() {
-     game.roll(10);
-     game.roll(4);
-     game.roll(3);
-     rollMany(0, 16);
-     expect(game.score()).toBe(24)
-   })
+    it("checks if is a strike", function(){
+      spyOn(game, 'pinsKnockdown').and.returnValue(10);
+      game.bowl();
+      expect(game._bonus).toEqual("Strike!");
+    });
 
-   it("can roll a perfect game", function() {
-     rollMany(10, 12);
-     expect(game.score()).toBe(300)
-   })
- });
+    it("checks if is a spare", function(){
+      spyOn(game, 'pinsKnockdown').and.returnValues(5, 5);
+      game.bowl();
+      game.bowl();
+      expect(game._bonus).toEqual("Spare!");
+    });
+
+    it("records correct total score", function(){
+      game._totalScore = 0;
+      spyOn(game, 'pinsKnockdown').and.returnValues(5, 2);
+      game.bowl();
+      game.bowl();
+      expect(game._totalScore).toEqual(7);
+    });
+
+    it("adds correct amount to score when a strike is recoreded", function(){
+      spyOn(game, 'pinsKnockdown').and.returnValues(10, 2, 7);
+      game.bowl();
+      game.bowl();
+      game.bowl();
+      expect(game._totalScore).toEqual(28);
+  });
+
+  it("adds correct amount to score when a spare is recoreded", function(){
+    spyOn(game, 'pinsKnockdown').and.returnValues(5, 5, 5, 2);
+    game.bowl();
+    game.bowl();
+    game.bowl();
+    game.bowl();
+    expect(game._totalScore).toEqual(22);
+  });
+  });
+
+
+describe("#frame/roll functionality", function(){
+
+  it("alternates roll count", function(){
+    game.rollAlternate();
+    expect(game._roll).toEqual(2);
+    game.rollAlternate();
+    expect(game._roll).toEqual(1);
+  });
+
+  it("increments frame ", function(){
+    game._standingPins = 0;
+    game.frameIncrement();
+    expect(game._frame).toEqual(2);
+  });
+
+  it("manages frame and roll logic", function(){
+    game._standingPins = 0;
+    game.frameAndRoll();
+    expect(game._frame).toEqual(2);
+    expect(game._roll).toEqual(1);
+  });
+});
+
+  it("frame specific variables are reset at a new frame", function(){
+    spyOn(game, 'pinsKnockdown').and.returnValues(3, 4);
+    game.bowl();
+    game.bowl();
+    expect(game._rollScore1).toEqual(0);
+    expect(game._rollScore2).toEqual(0);
+    expect(game._currentKnockdown).toEqual(0);
+    expect(game._standingPins).toEqual(10);
+  });
+
+  it("resets frame and roll on new game", function(){
+      game._frame = 10;
+      game._roll = 2;
+      game.newGame();
+      expect(game._frame).toEqual(1);
+      expect(game._frame).toEqual(1);
+  });
+});

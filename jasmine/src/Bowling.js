@@ -3,34 +3,53 @@
 function Bowling() {
   this.hello = 'Hello World';
   this.score = 0;
+  this.totalScore = 0;
   this.roll = 1
   this.frameNum = 1;
   this.strikeFrame = 10;
   this.MAXSCORE = 300;
-  this.scoreBoard = [,,,,,,,,,];
-  this.frame = [,];
+  this.scoreBoard = [];
+  this.frame = [];
 }
 
 Bowling.prototype.returnScore = function() {
-  return this.score;
+  return this.totalScore;
 };
 
 Bowling.prototype.returnFrame = function() {
-  return this.frameNum;
+  return this.frame;
+};
+
+Bowling.prototype.returnScoreBoard = function() {
+  return this.scoreBoard;
 };
 
 Bowling.prototype.isStrike = function() {
-  this.score = (this.strikeFrame + this.score) + (this.score)
+  if (this.score === this.strikeFrame) {
+    this.strikeFrame + this.totalScore;
+  };
 };
+
+Bowling.prototype.upScoreBoard = function() {
+    this.scoreBoard.push(this.frame);
+    this.frame = [];
+  };
 
 Bowling.prototype.upScore = function(points) {
   if (this.score <= this.MAXSCORE) {
-    this.score += points;
+    this.totalScore = this.score += points;
   };
 
+
   if (this.frameNum === 1) {
-    this.frameNum = 2
+    this.frame[0] = this.score;
+    this.frameNum = 2;
+    this.isStrike();
+    this.score = 0;
   } else {
+    this.frame[1] = this.score;
+    this.upScoreBoard();
     this.frameNum = 1
+    this.score = 0;
   };
 };

@@ -14,7 +14,7 @@ describe("Bowling", function() {
   });
 
   it("score starts at zero", function() {
-    expect(bowling.returnScore()).toEqual(0);
+    expect(bowling.score).toEqual(0);
   });
 
   it("Strike frame score is 10", function() {
@@ -28,20 +28,32 @@ describe("Bowling", function() {
 
   it("adds one to the frame when a ball is rolled", function() {
     bowling.upScore(1);
-    expect(bowling.returnFrame()).toEqual(2);
+    expect(bowling.frameNum).toEqual(2);
   });
 
   it("returns frame to 1 on second bowl", function() {
     bowling.upScore(1);
     bowling.upScore(1);
-    expect(bowling.returnFrame()).toEqual(1);
+    expect(bowling.frameNum).toEqual(1);
   });
 
   it('scores correctly for a strike', function() {
     bowling.upScore(2);
     bowling.upScore(4);
-    bowling.isStrike();
+    bowling.upScore(10);
     expect(bowling.returnScore()).toEqual(22);
   });
 
+  it('adds two rolls to the frame', function() {
+    bowling.upScore(2);
+    bowling.upScore(4);
+    expect(bowling.returnFrame()).toEqual([2,4]);
+  });
+
+  it('goes to the next frame after two rolls', function() {
+    bowling.upScore(2);
+    bowling.upScore(4);
+    bowling.upScore(6);
+    expect(bowling.returnScoreBoard()).toEqual([[2,4]]);
+  });
 });

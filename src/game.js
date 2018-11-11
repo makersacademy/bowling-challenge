@@ -1,6 +1,6 @@
 function Game() {
   this.frames = []
-  this.currentFrameNumber = 0;
+  this.currentFrameNumber = 0
   this.bonus = []
 }
 
@@ -42,4 +42,12 @@ Game.prototype.scoreSpare = function() {
     this.lastFrame().addBonus(this.bonus[0])
     this.lastFrame().recordScore()
   }
+}
+
+Game.prototype.calculateTotalScore = function() {
+  this.totalScore = this.frames.map(frame => frame['score']).reduce(add, 0)
+}
+
+Game.prototype.totalScore = function() {
+  return this.totalScore
 }

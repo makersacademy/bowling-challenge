@@ -24,12 +24,13 @@ describe("Game", function() {
     frame = game.currentFrame()
     expect(frame.score).toEqual(6)
   })
-  // 
-  // it("can keep track of total game score", function() {
-  //   game.bowl(1)
-  //   game.bowl(5)
-  //   expect(game.totalScore).toEqual(5)
-  // })
+
+  it("can keep track of total game score", function() {
+    game.bowl(1)
+    game.bowl(5)
+    game.calculateTotalScore();
+    expect(game.totalScore).toEqual(6)
+  })
 
   it("can score a spare on first roll of next frame", function() {
     game.bowl(1)

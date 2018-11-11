@@ -1,6 +1,7 @@
 $(document).ready(function () {
   var game = new Game();
-  var frame = new Frame();
+  var currentFrame = new Frame();
+  var previousFrames = [];
   var roll = new Roll();
   var newRoll1;
   var newRoll2;
@@ -9,20 +10,21 @@ $(document).ready(function () {
   updateScoreText();
 
   $('button').click(function() {
-    if(frame.checkRolls() < 2){
+    if(currentFrame.checkRolls() < 2){
       value = $(this).attr('id');
       newRoll1 = roll.getRoll(value);
       showFirstRoll();
       findImpossibleRolls();
-      frame.addRoll();
+      currentFrame.addRoll();
     } else {
       value = $(this).attr('id');
       newRoll2 = roll.getRoll(value);
+      addPreviousFrame();
       frameScoreText();
       showSecondRoll();
       updateScore();
       isGameOver();
-      frame.addRoll();
+      currentFrame.addRoll();
       showButtons();
     };
   });
@@ -52,29 +54,35 @@ $(document).ready(function () {
     };
   };
 
+  function addPreviousFrame() {
+    previousFrames.push(game.strikeOrSpare(currentFrame));
+  };
+
   function findImpossibleRolls(){
-    impossibleRoll2 = frame.getImpossibleRolls(parseInt(newRoll1));
+    impossibleRoll2 = currentFrame.getImpossibleRolls(parseInt(newRoll1));
     for(var r = 0; r < impossibleRoll2.length; r++) {
       $(`#${impossibleRoll2[r]}`).hide();
     };
   };
 
   function updateFrameScore() {
-    frame.calculateScore(parseInt(newRoll1), parseInt(newRoll2));
+    currentFrame.calculateScore(parseInt(newRoll1), parseInt(newRoll2));
   };
 
   function updateScore() {
-    game.updateTotalScore(frame, parseInt(newRoll1));
+    game.updateTotalScore(currentFrame, parseInt(newRoll1));
     updateScoreText();
   };
 
   function frameScoreText() {
     updateFrameScore();
     frameNumber = game.getFrameNumber()
-    if(game.checkLastFrame() === 10){
-      $(`#frame_score${frameNumber - 1}`).text(10 + frame.getCurrentScore());
+    if(previousFrames[previousFrames.length-1] === 'Strike' ){
+      $(`#frame_score${frameNumber - 1}`).text(10 + currentFrame.getCurrentScore());
+    } else if(previousFrames[previousFrames.length-1] === 'Spare' ){
+      $(`#frame_score${frameNumber - 1}`).text(10 + parseInt(newRoll1));
     }
-    $(`#frame_score${frameNumber}`).text(frame.getCurrentScore());
+    $(`#frame_score${frameNumber}`).text(currentFrame.getCurrentScore());
   };
 
   function updateScoreText() {

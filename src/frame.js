@@ -17,6 +17,8 @@ Frame.prototype.calculateScore = function (roll1, roll2) {
     this.strike = true;
   } else {
     this.currentScore = roll1 + roll2;
+    this.strike = false;
+    this.spare = false;
     if(this.currentScore === MAXIMUM_SCORE) {this.spare = true;}
   }
 };

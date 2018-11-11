@@ -56,7 +56,7 @@ describe("Game", function(){
       frame2.isStrike.and.callFake(function() {return false})
       frame2.isSpare.and.callFake(function() {return false})
 
-      expect(game.checkLastFrame(frame2)).toBe(8)
+      expect(game.checkLastFrameScore(frame2)).toBe(8)
       game.updateTotalScore(frame2)
       expect(game.getTotalScore()).toBe(14)
     });

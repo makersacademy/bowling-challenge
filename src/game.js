@@ -41,11 +41,11 @@ Game.prototype.updateLastFrame = function (frameScore) {
   }
 };
 
-Game.prototype.updateLastFrame = function (frameScore) {
+Game.prototype.updateLastFrameScore = function (frameScore) {
   this.updateLastFrame(frameScore);
 };
 
-Game.prototype.checkLastFrame = function (frameScore) {
+Game.prototype.checkLastFrameScore = function (frameScore) {
   return this.theLastFrameScore;
 };
 

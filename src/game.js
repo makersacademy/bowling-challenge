@@ -3,7 +3,7 @@ function Game() {
   this.currentFrame = 1
   this.currentBowl = 1
   this.bowlingPins = 10
-  // var score = new Score();
+  
 };
  Game.prototype.bowl = function(pins) {
   this.currentBowl ++

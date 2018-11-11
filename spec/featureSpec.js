@@ -30,4 +30,10 @@ describe('Feature Test:', function(){
     game.addNextRoll(4);
     expect(game.getScorecard().getFrames()[0].getRolls().length).toEqual(2);
   });
+
+  it("a frame should have 1 roll if it's a strike",function(){
+    game.addNextRoll(10);
+    game.addNextRoll(2);
+    expect(game.getScorecard().getFrames()[0].getRolls().length).toEqual(1);
+  });
 });

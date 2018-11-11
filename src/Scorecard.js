@@ -19,6 +19,10 @@ Scorecard.prototype.getFrames = function() {
   return this._frames;
 };
 
+Scorecard.prototype.getLastFrame = function() {
+  return this._frames.length == 0 ? null : this._frames[this._frames.length - 1];
+};
+
 Scorecard.prototype.createNewFrame = function() {
   let frame = new Frame();
   this._frames.push(frame);

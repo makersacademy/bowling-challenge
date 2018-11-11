@@ -3,6 +3,8 @@
 describe('Frame', function(){
   var frame;
 
+  let KNOCKED_FOUR_PINS = 4;
+
   beforeEach(function(){
     frame = new Frame();
   });
@@ -15,17 +17,19 @@ describe('Frame', function(){
 
   describe('getRolls', function(){
     it('can return the rolls', function(){
-      let ROLL = { score: 6 };
-      frame.addRoll(ROLL);
-      expect(frame.getRolls()[0]).toEqual(ROLL);
+      let roll_4 = jasmine.createSpyObj('roll', ['getScore']);
+      roll_4.getScore.and.callFake(function() { return KNOCKED_FOUR_PINS; });
+      frame.addRoll(roll_4);
+      expect(frame.getRolls()[0]).toEqual(roll_4);
     });
   });
 
   describe('isIncomplete', function(){
-    it("it shows if a frame is incomplete",function(){
-      let ROLL = { score: 6 };
-      frame.addRoll(ROLL);
-      expect(frame.isIncomplete()).toEqual(true); 
+    it("it shows if a frame is not complete", function(){
+      let roll_4 = jasmine.createSpyObj('roll', ['getScore']);
+      roll_4.getScore.and.callFake(function() { return KNOCKED_FOUR_PINS; });
+      frame.addRoll(roll_4);
+      expect(frame.isComplete()).toEqual(false); 
     });
   });
 });

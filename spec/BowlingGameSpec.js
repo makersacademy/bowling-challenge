@@ -14,15 +14,16 @@ describe('BowlingGame', function(){
     player = jasmine.createSpyObj('player', ['getName']);
     player.getName.and.callFake(function() {return "John"; });
 
-    firstFrame = jasmine.createSpyObj('frame', ['addRoll', 'getRoll', 'isIncomplete']);
+    firstFrame = jasmine.createSpyObj('frame', ['addRoll', 'getRoll', 'isComplete']);
     firstFrame.getRoll.and.callFake(function(_) { return []; });
-    firstFrame.isIncomplete.and.callFake(function(_) { return true; });
+    firstFrame.isComplete.and.callFake(function(_) { return false; });
 
     roll_4 = jasmine.createSpyObj('roll', ['getScore']);
     roll_4.getScore.and.callFake(function() { return KNOCKED_FOUR_PINS; });
 
-    scorecard = jasmine.createSpyObj('scorecard', ['getTotalScore', 'getFrames']);
+    scorecard = jasmine.createSpyObj('scorecard', ['getTotalScore', 'getFrames', 'getLastFrame']);
     scorecard.getFrames.and.callFake(function() { return [firstFrame]; });
+    scorecard.getLastFrame.and.callFake(function() { return firstFrame; });
 
     spyOn(window, 'Scorecard').and.callFake(function() {
       return scorecard;

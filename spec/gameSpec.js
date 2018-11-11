@@ -45,13 +45,15 @@ describe("Game", function() {
     game.bowl(10);
     expect(game.frames[0].score).toEqual(20);
   });
-  //
-  // it("can score a strike when followed by two regular rolls", function() {
-  //   game.firstRoll(10);
-  //   game.firstRoll(1);
-  //   game.secondRoll(5);
-  //   expect(game.totalScore).toEqual(22);
-  // });
+
+  it("can score a strike when followed by two regular rolls", function() {
+    game.bowl(10);
+    game.bowl(1);
+    game.bowl(5);
+    game.calculateTotalScore();
+    expect(game.frames[0].score).toEqual(16);
+    expect(game.totalScore).toEqual(22);
+  });
   //
   // it("can score a strike when followed by another strike and another roll", function () {
   //   game.firstRoll(10);
@@ -73,22 +75,16 @@ describe("Game", function() {
   //   game.secondRoll(8);
   //   expect(game.totalScore).toEqual(20);
   // });
-  //
-  // it("should keep tally of total game score", function() {
-  //   game.firstRoll(1);
-  //   game.secondRoll(4);
-  //   expect(game.totalScore).toEqual(5);
-  // });
-  //
-  // it("can score a gutter game", function() {
-  //   var i = 1;
-  //   while (i < 13) {
-  //     game.firstRoll(0);
-  //     game.secondRoll(0);
-  //     i ++;
-  //   };
-  //   expect(game.totalScore).toEqual(0);
-  // });
+
+  it("can score a gutter game", function() {
+    var i = 1;
+    while (i < 21) {
+      game.bowl(0);
+      i ++;
+    };
+    game.calculateTotalScore();
+    expect(game.totalScore).toEqual(0);
+  });
   //
   // it("can score a perfect game", function() {
   //   var i = 1;

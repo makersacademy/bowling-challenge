@@ -18,7 +18,7 @@ Game.prototype.bowl = function(pins) {
   if (this.frames.length >= 2) {
     this.recordBonus(pins)
     this.scoreSpare()
-    // this.scoreStrike()
+    this.scoreStrike()
   }
 }
 
@@ -40,6 +40,13 @@ Game.prototype.lastFrame = function() {
 Game.prototype.scoreSpare = function() {
   if (this.lastFrame().isSpare === true) {
     this.lastFrame().addBonus(this.bonus[0])
+    this.lastFrame().recordScore()
+  }
+}
+
+Game.prototype.scoreStrike = function() {
+  if (this.lastFrame().isStrike === true && this.currentFrame().isFinished() === true) {
+    this.lastFrame().addBonus(this.bonus.reduce(add, 0))
     this.lastFrame().recordScore()
   }
 }

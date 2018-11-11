@@ -14,7 +14,7 @@ describe("#Bowling Game", function(){"use strict";
     });
 
     it("Can tell if there's a strike", function(){
-      spyOn(game, 'pinsKnockdown').and.returnValue(10);
+      spyOn(game, 'pinsKnockdown').and.returnValues(10);
       game.bowl();
       expect(game._bonus).toEqual("Strike!");
     });
@@ -50,7 +50,39 @@ describe("#Bowling Game", function(){"use strict";
     game.bowl();
     expect(game._totalScore).toEqual(22);
   });
-  });
+
+  it("Can score a gutter game", function() {
+    spyOn(game, 'pinsKnockdown').and.returnValue(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    game.bowl();
+    game.bowl();
+    game.bowl();
+    game.bowl();
+    game.bowl();
+    game.bowl();
+    game.bowl();
+    game.bowl();
+    game.bowl();
+    game.bowl();
+    expect(game._totalScore).toEqual(0);
+  })
+
+  it("Can score a perfect game", function() {
+    spyOn(game, 'pinsKnockdown').and.returnValues(10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+    game.bowl();
+    game.bowl();
+    game.bowl();
+    game.bowl();
+    game.bowl();
+    game.bowl();
+    game.bowl();
+    game.bowl();
+    game.bowl();
+    game.bowl();
+    game.bowl();
+    game.bowl();
+    expect(game._totalScore).toEqual(300);
+  })
+});
 
 
 describe("#frames", function(){

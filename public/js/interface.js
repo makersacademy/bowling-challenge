@@ -1,7 +1,11 @@
 $(document).ready(function() {
   var bowling = new Bowling();
+  $('.strike').hide();
+  $('.no-score').hide();
 
   $('#button0').click(function() {
+    $('.no-score').show();
+    $('.strike').hide();
     console.log(bowling.bowl(0));
     $('#bowl1-bowl' + bowling.getCurrentBowl()).text('0')
     showAllButtons();
@@ -9,6 +13,8 @@ $(document).ready(function() {
   });
 
   $('#button1').click(function() {
+    $('.no-score').hide();
+    $('.strike').hide();
     if (bowling.getBowlsCount() % 2 === 0) {
       t = bowling.bowl(1)[0]
       console.log(t);
@@ -22,6 +28,8 @@ $(document).ready(function() {
   });
 
   $('#button2').click(function() {
+    $('.no-score').hide();
+    $('.strike').hide();
     if (bowling.getBowlsCount() % 2 === 0) {
       hideImpossibleScores(bowling.bowl(2))
     } else {
@@ -33,6 +41,8 @@ $(document).ready(function() {
   });
 
   $('#button3').click(function() {
+    $('.no-score').hide();
+    $('.strike').hide();
     if (bowling.getBowlsCount() % 2 === 0) {
       hideImpossibleScores(bowling.bowl(3))
     } else {
@@ -44,6 +54,8 @@ $(document).ready(function() {
   });
 
   $('#button4').click(function() {
+    $('.no-score').hide();
+    $('.strike').hide();
     if (bowling.getBowlsCount() % 2 === 0) {
       hideImpossibleScores(bowling.bowl(4))
     } else {
@@ -55,6 +67,8 @@ $(document).ready(function() {
   });
 
   $('#button5').click(function() {
+    $('.no-score').hide();
+    $('.strike').hide();
     if (bowling.getBowlsCount() % 2 === 0) {
       hideImpossibleScores(bowling.bowl(5))
     } else {
@@ -66,6 +80,8 @@ $(document).ready(function() {
   });
 
   $('#button6').click(function() {
+    $('.no-score').hide();
+    $('.strike').hide();
     if (bowling.getBowlsCount() % 2 === 0) {
       hideImpossibleScores(bowling.bowl(6))
     } else {
@@ -77,6 +93,8 @@ $(document).ready(function() {
   });
 
   $('#button7').click(function() {
+    $('.no-score').hide();
+    $('.strike').hide();
     if (bowling.getBowlsCount() % 2 === 0) {
       hideImpossibleScores(bowling.bowl(7))
     } else {
@@ -88,6 +106,8 @@ $(document).ready(function() {
   });
 
   $('#button8').click(function() {
+    $('.no-score').hide();
+    $('.strike').hide();
     if (bowling.getBowlsCount() % 2 === 0) {
       hideImpossibleScores(bowling.bowl(8))
     } else {
@@ -99,6 +119,8 @@ $(document).ready(function() {
   });
 
   $('#button9').click(function() {
+    $('.no-score').hide();
+    $('.strike').hide();
     if (bowling.getBowlsCount() % 2 === 0) {
       hideImpossibleScores(bowling.bowl(9))
     } else {
@@ -110,6 +132,7 @@ $(document).ready(function() {
   });
 
   $('#button10').click(function() {
+    $('.no-score').hide();
     bowling.bowl(10)
     if (bowling.getCurrentBowl() < 19) {
       $('#bowl1-bowl' + (bowling.getCurrentBowl() - 1)).text('-')
@@ -117,6 +140,7 @@ $(document).ready(function() {
     } else {
       $('#bowl1-bowl' + bowling.getCurrentBowl()).text('X')
     }
+    $('.strike').show();
     showAllButtons();
     updateFrameScores();
   });
@@ -151,6 +175,12 @@ $(document).ready(function() {
     }
     if (isNaN(bowling.getTotalScore()) === false) {
       $('#frame10').text(bowling.getTotalScore());
+    }
+
+    if (isNaN(bowling.getFrameScore(10)) === false) {
+      if (bowling.getFrameScore(10) < 10) {
+        $('#bowl1-bowl21').text('-')
+      }
     }
   }
 

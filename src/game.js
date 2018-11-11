@@ -3,12 +3,12 @@ function Game() {
   this.currentFrame = 1
   this.currentBowl = 1
   this.bowlingPins = 10
-  this.score = 0
+  this.totalScore = 0
 
 };
 
  Game.prototype.bowl = function(pins) {
-  var score
+  var totalScore
   this.currentBowl ++
   this.bowlingPins -= pins
   this.calculateFrame(pins);
@@ -21,5 +21,5 @@ function Game() {
   };
 };
 Game.prototype.bowlingScore = function (pins) {
-  this.score += pins;
+  this.totalScore += pins;
 };

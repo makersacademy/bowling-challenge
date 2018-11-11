@@ -2,7 +2,8 @@
 <html>
   <head>
     <title>Bowling</title>
-    <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
+    <div ></div>
+    <link href="https://fonts.googleapis.com/css?family=Fascinate+Inline" rel="stylesheet">
     <script src="jquery-3.3.1.min.js"></script>
     <script src='src/game.js'></script>
     <script src='src/roll.js'></script>
@@ -12,96 +13,103 @@
   </head>
 
   <body>
-    <h1>Welcome to Bowling</h1>
-    <p>What was your roll?<br><br>
-    <button id="0">Gutter!</button>
-    <button id="1">1</button>
-    <button id="2">2</button>
-    <button id="3">3</button>
-    <button id="4">4</button>
-    <button id="5">5</button>
-    <button id="6">6</button>
-    <button id="7">7</button>
-    <button id="8">8</button>
-    <button id="9">9</button>
-    <button id="10">Strike!</button><br>
-    <span id='frame_number'></span>
-    </p>
-    <table>
-      <tr>
-        <th>1</th>
-        <th>2</th>
-        <th>3</th>
-        <th>4</th>
-        <th>5</th>
-        <th>6</th>
-        <th>7</th>
-        <th>8</th>
-        <th>9</th>
-        <th>10</th>
-      </tr>
-      <tr>
-        <td>
-          <span class='first' id='roll1'></span>
-          <span class='second' id='secondRoll1'></span>
-          <br>
-          <span id='frame_score1'></span>
-        </td>
-        <td>
-          <span class='first' id='roll2'></span>
-          <span class='second' id='secondRoll2'></span>
-          <br>
-          <span id='frame_score2'></span>
-        </td>
-        <td>
-          <span class='first' id='roll3'></span>
-          <span class='second' id='secondRoll3'></span>
-          <br>
-          <span id='frame_score3'></span>
-        </td>
-        <td>
-          <span class='first' id='roll4'></span>
-          <span class='second' id='secondRoll4'></span>
-          <br>
-          <span id='frame_score4'></span>
-        </td>
-        <td>
-          <span class='first' id='roll5'></span>
-          <span class='second' id='secondRoll5'></span>
-          <br>
-          <span id='frame_score5'></span>
-        </td>
-        <td><span class='first' id='roll6'></span>
-          <span class='second' id='secondRoll6'></span>
-          <br>
-          <span id='frame_score6'></span>
-        </td>
-        <td>
-          <span class='first' id='roll7'></span>
-          <span class='second' id='secondRoll7'></span>
-          <br>
-          <span id='frame_score7'></span>
-        </td>
-        <td>
-          <span class='first' id='roll8'></span>
-          <span class='second' id='secondRoll8'></span>
-          <br>
-          <span id='frame_score8'></span>
-        </td>
-        <td>
-          <span class='first' id='roll9'></span>
-          <span class='second' id='secondRoll9'></span>
-          <br>
-          <span id='frame_score9'></span>
-        </td>
-        <td>
-          <span class='first' id='roll10'></span>
-          <span class='second' id='secondRoll10'></span>
-          <br>
-          <span id='frame_score10'></span>
-        </td>
-      </tr>
-    </table>
-    <h2>Your total score is: <span id='current_score'></span> points</h2>
+    <div id="main">
+      <div id="background"></div>
+      <div id="contents">
+
+
+      <h1>Welcome to Bowling</h1>
+      <p>What was your roll?<br><br>
+      <button id="0">Gutter!</button>
+      <button id="1">1</button>
+      <button id="2">2</button>
+      <button id="3">3</button>
+      <button id="4">4</button>
+      <button id="5">5</button>
+      <button id="6">6</button>
+      <button id="7">7</button>
+      <button id="8">8</button>
+      <button id="9">9</button>
+      <button id="10">Strike!</button><br>
+      <span id='frame_number'></span>
+      </p>
+      <table>
+        <tr>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+          <th>5</th>
+          <th>6</th>
+          <th>7</th>
+          <th>8</th>
+          <th>9</th>
+          <th>10</th>
+        </tr>
+        <tr>
+          <td>
+            <span class='first' id='roll1'></span>
+            <span class='second' id='secondRoll1'></span>
+            <br>
+            <span id='frame_score1'></span>
+          </td>
+          <td>
+            <span class='first' id='roll2'></span>
+            <span class='second' id='secondRoll2'></span>
+            <br>
+            <span id='frame_score2'></span>
+          </td>
+          <td>
+            <span class='first' id='roll3'></span>
+            <span class='second' id='secondRoll3'></span>
+            <br>
+            <span id='frame_score3'></span>
+          </td>
+          <td>
+            <span class='first' id='roll4'></span>
+            <span class='second' id='secondRoll4'></span>
+            <br>
+            <span id='frame_score4'></span>
+          </td>
+          <td>
+            <span class='first' id='roll5'></span>
+            <span class='second' id='secondRoll5'></span>
+            <br>
+            <span id='frame_score5'></span>
+          </td>
+          <td><span class='first' id='roll6'></span>
+            <span class='second' id='secondRoll6'></span>
+            <br>
+            <span id='frame_score6'></span>
+          </td>
+          <td>
+            <span class='first' id='roll7'></span>
+            <span class='second' id='secondRoll7'></span>
+            <br>
+            <span id='frame_score7'></span>
+          </td>
+          <td>
+            <span class='first' id='roll8'></span>
+            <span class='second' id='secondRoll8'></span>
+            <br>
+            <span id='frame_score8'></span>
+          </td>
+          <td>
+            <span class='first' id='roll9'></span>
+            <span class='second' id='secondRoll9'></span>
+            <br>
+            <span id='frame_score9'></span>
+          </td>
+          <td>
+            <span class='first' id='roll10'></span>
+            <span class='second' id='secondRoll10'></span>
+            <br>
+            <span id='frame_score10'></span>
+          </td>
+        </tr>
+      </table>
+      <h2>Your total score is: <span id='current_score'></span> points</h2>
+    </div>
+    </div>
   </body>
 </html>

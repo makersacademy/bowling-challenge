@@ -1,32 +1,50 @@
-body {
-  font-family: 'Bangers', cursive;
+#main {
+  position: relative;
+}
+
+#background {
+  background-image: url("brick.jpg");
+  height:50em;
+  width: 90em;
+  opacity: 0.8;
+
+  -webkit-filter: blur(1px);
+  -moz-filter: blur(1px);
+  -o-filter: blur(1px);
+  -ms-filter: blur(1px);
+  filter: blur(1px);
+}
+
+#contents {
+  font-family: 'Fascinate Inline', cursive;
   margin: auto;
   text-align: center;
-  position: fixed;
-  top: 17%;
+  position: absolute;
+  top: 9%;
   left: 10%;
   right: 10%;
   width: 80%;
-  background-color: #f9ccac;
-  color: 	#3a3b3d;
+  color: 	#2b2a2a;
 }
 
 p{
-  font-size: 1.5em;
+  font-size: 2.5em;
 }
 
 h1{
   font-size: 5em;
+  color: 	#f9ebea;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #f70f07, 0 0 30px #f70f07, 0 0 40px #f70f07, 0 0 55px #f70f07, 0 0 75px #f70f07;
 }
 
 h2{
-  font-size: 2em;
+  font-size: 2.2em;
 }
 
 table {
   width: 100%;
-  background-color: #e0876a;
-  color: white;
+  background-color: #f92d22;
+  color: #f7d9d9;
 }
 
 table, th, td {
@@ -38,10 +56,12 @@ td {
 }
 
 button{
-  font-family: 'Bangers', cursive;
+  font-family: 'Fascinate Inline', cursive;
+  color: #2b2a2a;
+}
 
 button:active {
-  background-color: #e0876a;
+  background-color: #f92d22;
   border-color: none;
   outline: none;
 }

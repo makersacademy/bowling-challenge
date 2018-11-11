@@ -1,6 +1,7 @@
 $(document).ready(function () {
   var game = new Game()
   updateTotalScore()
+  game.startNextFrame()
 
   $(':button').click(function () {
     var pins = parseInt($(event.target).attr('value'))

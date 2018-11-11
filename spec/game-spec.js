@@ -5,6 +5,7 @@ describe('Game', function () {
 
   beforeEach(function () {
     game = new Game()
+    game.startNextFrame()
     currentFrame = game.getCurrentFrame()
     frame = jasmine.createSpyObj('frame', ['getScore', 'addBowl', 'isFinished'])
   })

@@ -1,5 +1,5 @@
 function Game () {
-  this._frames = [new Frame()]
+  this._frames = []
   this._finished = false
 }
 

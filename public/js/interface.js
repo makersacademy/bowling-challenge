@@ -26,17 +26,19 @@ $( document ).ready(function() {
     $('#frame10_roll2').text(bowlingGame.previousRolls[19])
   };
 
-  // function hideButtons() {
-  //   if (bowlingGame.roll = 2) {
-  //     $('button').hide();
-  //   } else {
-  //
-  //   }
-  // }
-
   function dislayFrameTotal() {
-    index = bowlingGame.frame - 1
-    $('#frame1_total').text(bowlingGame.scores.array[index].frameScore)
+    bowlingGame.calculateFrameScore();
+    bowlingGame.calculateBonus();
+    $('#frame1_total').text(bowlingGame.scores.array[0].frameScore)
+    $('#frame2_total').text(bowlingGame.scores.array[1].frameScore)
+    $('#frame3_total').text(bowlingGame.scores.array[2].frameScore)
+    $('#frame4_total').text(bowlingGame.scores.array[3].frameScore)
+    $('#frame5_total').text(bowlingGame.scores.array[4].frameScore)
+    $('#frame6_total').text(bowlingGame.scores.array[5].frameScore)
+    $('#frame7_total').text(bowlingGame.scores.array[6].frameScore)
+    $('#frame8_total').text(bowlingGame.scores.array[7].frameScore)
+    $('#frame9_total').text(bowlingGame.scores.array[8].frameScore)
+    $('#frame10_total').text(bowlingGame.scores.array[9].frameScore)
   }
 
   // function gameTotal() {

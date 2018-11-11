@@ -107,8 +107,13 @@ Game.prototype.calculateBonus = function () {
   this.scores.calculateBonus();
 };
 
-Game.prototype.totalScore = function () {
-  this.gameScore += this.scores.totalScore();
+Game.prototype.frameTotalScore = function () {
+  this.scores.frameTotalScore();
+};
+
+Game.prototype.gameTotalScore = function () {
+  this.scores.gameTotalScore();
+  this.gameScore = this.scores.gameScore;
 };
 
 Game.prototype.isGutterGame = function () {

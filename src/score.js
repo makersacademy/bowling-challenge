@@ -5,37 +5,40 @@ function Score(array = []) {
 
 Score.prototype.calculateFrameScore = function() {
   for (var i = 0; i < this.array.length; i++) {
-    this.array[i].score = this.array[i].roll1 + (this.array[i].roll2 || 0) + (this.array[i].roll3 || 0);
+    this.array[i].baseScore = (this.array[i].roll1 || 0) + (this.array[i].roll2 || 0) + (this.array[i].roll3 || 0);
   }
 };
 
 Score.prototype.calculateBonus = function () {
   for (i = 0; i < this.array.length; i++) {
     if (this.array[i].isSpare) {
-      this.array[i].bonus = this.array[i + 1].roll1;
+      this.array[i].bonusScore = this.array[i + 1].roll1;
     } else if (this.array[i].isStrike) {
       if (this.array[i + 1] === undefined) {
         break
       } else if (this.array[i + 1].roll2 !== undefined) {
-        this.array[i].bonus = (this.array[i + 1].roll1 + this.array[i + 1].roll2);
+        this.array[i].bonusScore = (this.array[i + 1].roll1 + this.array[i + 1].roll2);
       } else {
-        this.array[i].bonus = (this.array[i + 1].roll1 + this.array[i + 2].roll1);
+        this.array[i].bonusScore = (this.array[i + 1].roll1 + this.array[i + 2].roll1);
       }
+    } else {
+      this.array[i].bonusScore = 0;
     }
   }
 };
 
 Score.prototype.frameTotalScore = function () {
   for (var i = 0; i < this.array.length; i++) {
-    this.array[i].frameScore = (this.array[i].score || 0) + (this.array[i].bonus || 0);
+    this.array[i].frameScore = (this.array[i].baseScore || 0) + (this.array[i].bonusScore || 0);
   }
 };
 
-Score.prototype.totalScore = function () {
+Score.prototype.gameTotalScore = function () {
+  var total = 0;
   for (var i = 0; i < this.array.length; i++) {
-    this.gameScore += (this.array[i].frameScore || 0)
+    total = total + (this.array[i].frameScore || 0)
   }
-  return this.gameScore
+  this.gameScore += total;
 };
 
 Score.prototype.isGutterGame = function () {

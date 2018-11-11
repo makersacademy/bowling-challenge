@@ -6,10 +6,11 @@ body {
   font-family: 'Exo 2', sans-serif;
 }
 .top {
-  padding: 20px;
+  height: 300px;
 }
 .center {
-  padding: 300px;
+  padding-top: 300px;
+  padding-bottom: 50px;
   color: white;
   text-align: center;
 }
@@ -17,14 +18,14 @@ body {
   margin: auto;
   width: 60%;
   text-align: center;
+  height: 100px;
 }
 h1 {
-  font-size: 80px;
   font-family: 'Codystar', cursive;
   position: absolute;
   top: 20%;
   left: 50%;
-  font-size: 6em;
+  font-size: 5em;
 }
 h2 {
   font-size: 3em;
@@ -37,7 +38,8 @@ h3 {
   color: #00CFFA;
 }
 table {
-  width: 100%;
+  width: 80%;
+  margin: auto;
   table-layout: fixed;
   border-collapse: collapse;
   border-spacing: 0.5rem;

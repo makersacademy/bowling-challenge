@@ -43,8 +43,8 @@ Game.prototype.frameBeforeLast = function() {
 }
 
 Game.prototype.scoreSpare = function() {
-  if (this.lastFrame().isSpare === true) {
-    this.lastFrame().addBonus(this.bonus[0])
+  if (this.lastFrame().isSpare === true && this.lastFrame().score === 0) {
+    this.lastFrame().addBonus(this.bonus[this.bonus.length - 1])
     this.lastFrame().recordScore()
   }
 }

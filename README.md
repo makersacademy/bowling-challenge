@@ -1,17 +1,24 @@
 ### Intro
 
-This is a bowling scorecard. User inputs the value of each roll, and the scorecard keeps score.
+This is a bowling scorecard. User inputs the value of each roll, and the scorecard keeps score. This was created for a weekend project during weeks 5 and 6 of Makers Academy.
+
+![game screenshot](/public/images/scorecard_screenshot.png)
 
 ### How to Run It
 
 Fork and clone this repo.  Open index.html in your browser. Enjoy!
-To run tests, open SpenRunner.html in your browser.
+
+### Testing
+
+To run tests, open SpecRunner.html in your browser. Your screen should look like this:
+
+![tests screenshot](/public/images/test_results.png)
 
 ### Technologies used and my approach to the challenge
 
 The scorecard is created using JavaScript and JQuery. Tests are written using Jasmine.
 
-The business logic is limited to distinguishing first from second roll, and scoring each frame and the total according to the rules. I've written additional logic into the interface to limit number of frames and bonus rolls.
+The business log adds frames to the game and keeps score. I've written additional logic into the interface to limit number of frames and bonus rolls.
 
 ### Bowling — how does it work?
 

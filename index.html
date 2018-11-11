@@ -109,6 +109,7 @@
       var game = new Game;
       var bowlOne;
       var bowlTwo;
+      var output;
 
       function setBowl(){
         if (typeof bowlOne === 'undefined') {
@@ -125,21 +126,25 @@
         }
       }
 
+      function setOutput(){
+        if (bowl === '10') {
+          output = 'x'
+        } else if (parseInt(bowlOne) + parseInt(bowlTwo) === 10) {
+          output = '/'
+        } else {
+          output = bowl
+        }
+      }
+
 
       $('button').click(function() {
         bowl = $(this).text();
         setBowl()
         incrementBowlCounter();
+        setOutput();
 
 
-          var output;
-          if (bowl === '10') {
-            output = 'x'
-          } else if (parseInt(bowlOne) + parseInt(bowlTwo) === 10) {
-            output = '/'
-          } else {
-            output = bowl
-          }
+
 
           $('#bowl-' + bowlCounter).text(output);
 

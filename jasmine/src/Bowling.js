@@ -3,9 +3,12 @@
 function Bowling() {
   this.hello = 'Hello World';
   this.score = 0;
-  this.frame = 1;
+  this.roll = 1
+  this.frameNum = 1;
   this.strikeFrame = 10;
-
+  this.MAXSCORE = 300;
+  this.scoreBoard = [,,,,,,,,,];
+  this.frame = [,];
 }
 
 Bowling.prototype.returnScore = function() {
@@ -13,14 +16,21 @@ Bowling.prototype.returnScore = function() {
 };
 
 Bowling.prototype.returnFrame = function() {
-  return this.frame;
+  return this.frameNum;
 };
 
-Bowling.prototype.upScore = function() {
-  this.score += 1;
-  if (this.frame === 1) {
-    this.frame = 2
+Bowling.prototype.isStrike = function() {
+  this.score = (this.strikeFrame + this.score) + (this.score)
+};
+
+Bowling.prototype.upScore = function(points) {
+  if (this.score <= this.MAXSCORE) {
+    this.score += points;
+  };
+
+  if (this.frameNum === 1) {
+    this.frameNum = 2
   } else {
-    this.frame = 1
+    this.frameNum = 1
   };
 };

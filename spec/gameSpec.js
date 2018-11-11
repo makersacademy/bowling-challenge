@@ -54,27 +54,28 @@ describe("Game", function() {
     expect(game.frames[0].score).toEqual(16);
     expect(game.totalScore).toEqual(22);
   });
-  //
-  // it("can score a strike when followed by another strike and another roll", function () {
-  //   game.firstRoll(10);
-  //   game.firstRoll(10);
-  //   game.firstRoll(5);
-  //   expect(game.totalScore).toEqual(25);
-  // });
-  //
-  // it("can score a strike when followed by two strikes", function() {
-  //   game.firstRoll(10);
-  //   game.firstRoll(10);
-  //   game.firstRoll(10);
-  //   expect(game.totalScore).toEqual(30);
-  // })
-  //
-  // it("can score a strike when followed by a spare", function() {
-  //   game.firstRoll(10);
-  //   game.firstRoll(2);
-  //   game.secondRoll(8);
-  //   expect(game.totalScore).toEqual(20);
-  // });
+
+  it("can score a strike when followed by another strike and another roll", function () {
+    game.bowl(10);
+    game.bowl(10);
+    game.bowl(5);
+    expect(game.frames[0].score).toEqual(25);
+  });
+
+  it("can score a strike when followed by two strikes", function() {
+    game.bowl(10);
+    game.bowl(10);
+    game.bowl(10);
+    expect(game.frames[0].score).toEqual(30);
+  })
+
+  it("can score a strike when followed by a spare", function() {
+    game.bowl(10);
+    game.bowl(2);
+    game.bowl(8);
+    game.calculateTotalScore();
+    expect(game.frames[0].score).toEqual(20);
+  });
 
   it("can score a gutter game", function() {
     var i = 1;
@@ -85,11 +86,11 @@ describe("Game", function() {
     game.calculateTotalScore();
     expect(game.totalScore).toEqual(0);
   });
-  //
+  // 
   // it("can score a perfect game", function() {
   //   var i = 1;
   //   while (i < 13) {
-  //     game.firstRoll(10);
+  //     game.bowl(10);
   //     i ++;
   //   };
   //   expect(game.totalScore).toEqual(300);

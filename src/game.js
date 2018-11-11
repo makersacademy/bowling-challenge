@@ -11,7 +11,8 @@ Game.prototype.addFrame = function() {
 }
 
 Game.prototype.bowl = function(pins) {
-  if (this.frames.length === 0 || this.currentFrame().isFinished() === true) {
+  if (this.frames.length === 0 ||
+    this.currentFrame().isFinished() === true) {
     this.addFrame();
   }
   this.currentFrame().roll(pins);
@@ -37,6 +38,10 @@ Game.prototype.lastFrame = function() {
   return this.frames[this.frames.length - 2]
 }
 
+Game.prototype.frameBeforeLast = function() {
+  return this.frames[this.frames.length - 3]
+}
+
 Game.prototype.scoreSpare = function() {
   if (this.lastFrame().isSpare === true) {
     this.lastFrame().addBonus(this.bonus[0])
@@ -45,16 +50,21 @@ Game.prototype.scoreSpare = function() {
 }
 
 Game.prototype.scoreStrike = function() {
-  if (this.lastFrame().isStrike === true && this.currentFrame().isFinished() === true) {
+  if (this.lastFrame().isStrike === true
+  && this.currentFrame().isFinished() === true
+  && this.currentFrame().isStrike === false) {
     this.lastFrame().addBonus(this.bonus.reduce(add, 0))
     this.lastFrame().recordScore()
   }
+  if (this.frames.length >= 3) {
+    if (this.lastFrame().isStrike === true
+    && this.frameBeforeLast().isStrike === true) {
+      this.frameBeforeLast().addBonus(this.bonus.reduce(add, 0))
+      this.frameBeforeLast().recordScore();
+    }
+  }
 }
-
+// this will only work if there are no frames with no scores!
 Game.prototype.calculateTotalScore = function() {
   this.totalScore = this.frames.map(frame => frame['score']).reduce(add, 0)
-}
-
-Game.prototype.totalScore = function() {
-  return this.totalScore
 }

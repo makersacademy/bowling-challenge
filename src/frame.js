@@ -7,17 +7,25 @@ function Frame() {
 
 Frame.prototype.roll = function(pins) {
   this.rolls.push(pins)
-  if (pins === 10) {
-    this.rolls.push(0)
-    this.isStrike = true
-  }
-  if (pins < 10 && this.points() === 10) {
-    this.isSpare = true
-  }
+  this.recordStrike(pins)
+  this.recordSpare(pins)
   if (this.isFinished() === true) {
     if (this.isStrike === false && this.isSpare === false) {
       this.recordScore();
     }
+  }
+}
+
+Frame.prototype.recordStrike = function(pins) {
+  if (pins === 10) {
+    this.rolls.push(0)
+    this.isStrike = true
+  }
+}
+
+Frame.prototype.recordSpare = function(pins) {
+  if (pins < 10 && this.points() === 10) {
+    this.isSpare = true
   }
 }
 
@@ -27,14 +35,6 @@ Frame.prototype.firstRoll = function() {
 
 Frame.prototype.secondRoll = function() {
   return this.rolls[1]
-}
-
-Frame.prototype.isStrike = function() {
-  return this.isStrike
-}
-
-Frame.prototype.isSpare = function() {
-  return this.isSpare
 }
 
 Frame.prototype.points = function() {
@@ -47,10 +47,6 @@ function add(a, b) {
 
 Frame.prototype.addBonus = function(pins) {
   this.bonus += pins;
-}
-
-Frame.prototype.score = function() {
-  return this.score
 }
 
 Frame.prototype.isFinished = function() {

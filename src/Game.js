@@ -47,10 +47,18 @@ Game.prototype.frameAndRoll = function(){
 };
 
 Game.prototype.endGameCheck = function(){
-  if(this._frame === 10){
-    this._firstRollScore = this.pinsKnockdown(pins);
-    this._secondRollScore = 0;
+  if (this._frame === 10 && this._firstRollScore === 10) {
+    this._maxRounds += 2
+  }
+  else if(this._frame === 10 && (this._firstRollScore + this.secondRollScore === 10)){
+    this._maxRounds += 1
+  }
+  else if(this._frame === 10) {
+    // this._firstRollScore = this.rollScoreMethod();
+    // this.totalScoreUpdate;
+    // this._secondRollScore = this.rollScoreMethod();
     this._standingPins = 0;
+    this.totalScoreUpdate;
     this._maxRounds = 10;
     this._gameOver = ("Game Over! Press new game to start again :)");
   }
@@ -85,6 +93,12 @@ Game.prototype.strikeOrSpare = function(){
     this._bonus = "Spare!";
   }
 };
+
+// Game.prototype.bonusRound = function() {
+//   if (this._frame === 10 && this._firstRollScore === 10){
+//     this._maxRounds += 2
+//   }
+// };
 
 
 Game.prototype.rollAlternate = function(){

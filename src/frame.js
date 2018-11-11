@@ -1,44 +1,66 @@
 function Frame() {
+  this.rolls = [];
   this.bonus = 0;
-  this.points = 0;
+  this.isStrike = false;
+  this.isSpare = false;
 }
 
-Frame.prototype.setFirstRollValue = function(numberOfPins) {
-  this.firstRollValue = numberOfPins;
-  this.points += numberOfPins;
-  if (this.firstRollValue === 10) {
-    this.setStrike();
+Frame.prototype.roll = function(pins) {
+  this.rolls.push(pins)
+  if (pins === 10) {
+    this.rolls.push(0)
+    this.isStrike = true
   }
-};
+  if (pins < 10 && this.points() === 10) {
+    this.isSpare = true
+  }
+  if (this.isFinished() === true) {
+    if (this.isStrike === false && this.isSpare === false) {
+      this.recordScore();
+    }
+  }
+}
 
-Frame.prototype.setSecondRollValue = function(numberOfPins) {
-  this.secondRollValue = numberOfPins;
-  this.points += numberOfPins;
-  if ((this.firstRollValue + this.secondRollValue) === 10) {
-    this.setSpare();
+Frame.prototype.firstRoll = function() {
+  return this.rolls[0]
+}
+
+Frame.prototype.secondRoll = function() {
+  return this.rolls[1]
+}
+
+Frame.prototype.isStrike = function() {
+  return this.isStrike
+}
+
+Frame.prototype.isSpare = function() {
+  return this.isSpare
+}
+
+Frame.prototype.points = function() {
+  return this.rolls.reduce(add, 0)
+}
+
+function add(a, b) {
+    return a + b
+}
+
+Frame.prototype.addBonus = function(pins) {
+  this.bonus += pins;
+}
+
+Frame.prototype.score = function() {
+  return this.score
+}
+
+Frame.prototype.isFinished = function() {
+  if (this.rolls.length === 2) {
+    return true
   } else {
-    this.calculateFrameScore();
+    return false
   }
-};
-
-Frame.prototype.setScore = function(numberOfPins) {
-  this.score = numberOfPins;
-};
-
-Frame.prototype.setStrike = function() {
-  this.secondRollValue = 0;
-  this.isStrike = true;
 }
 
-Frame.prototype.setSpare = function() {
-  this.isSpare = true;
-}
-
-Frame.prototype.addBonus = function(numberOfPins) {
-  this.bonus += numberOfPins;
-  this.score += this.bonus;
-}
-
-Frame.prototype.calculateFrameScore = function() {
-  this.score = this.points + this.bonus;
+Frame.prototype.recordScore = function() {
+  this.score = this.points() + this.bonus
 }

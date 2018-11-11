@@ -36,7 +36,12 @@ $(document).ready(function () {
   };
 
   function showSecondRoll() {
-    $(`#secondRoll${game.getFrameNumber()}`).text(roll.getRoll(value))
+    score = parseInt(newRoll1) + parseInt(newRoll2);
+    if(score === 10){
+      $(`#secondRoll${game.getFrameNumber()}`).text('/')
+    } else {
+      $(`#secondRoll${game.getFrameNumber()}`).text(roll.getRoll(value))
+    }
   };
 
   function showButtons() {
@@ -65,7 +70,11 @@ $(document).ready(function () {
 
   function frameScoreText() {
     updateFrameScore();
-    $(`#frame_score${game.getFrameNumber()}`).text(frame.getCurrentScore());
+    frameNumber = game.getFrameNumber()
+    if(game.checkLastFrame() === 10){
+      $(`#frame_score${frameNumber - 1}`).text(10 + frame.getCurrentScore());
+    }
+    $(`#frame_score${frameNumber}`).text(frame.getCurrentScore());
   };
 
   function updateScoreText() {

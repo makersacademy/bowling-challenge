@@ -39,11 +39,3 @@ Game.prototype.calculateFrame = function () {
 Game.prototype.bowlingScore = function (pins) {
   this.totalScore += pins;
 };
-
-
-// Game.prototype.calculateFinalScore = function () {
-//   var self = this;
-//   this.gameScore.forEach(function(frame) {
-//     self.totalScore += (frame[0] + frame[1]);
-//   });  //this will calculate the bowling score for pins knocked down
-// });

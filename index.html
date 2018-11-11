@@ -136,31 +136,29 @@
         }
       }
 
+      function addFrameToGame(){
+        if (typeof bowlTwo !== 'undefined'){
+          game.addFrame(new Frame([parseInt(bowlOne), parseInt(bowlTwo)]))
+          bowlOne = undefined
+          bowlTwo = undefined
+        }
+        if (bowlOne === '10'){
+          game.addFrame(new Frame([parseInt(bowlOne)]))
+          bowlOne = undefined
+        }
+      }
+
 
       $('button').click(function() {
         bowl = $(this).text();
         setBowl()
+        // function needed to disable buttons
         incrementBowlCounter();
         setOutput();
+        $('#bowl-' + bowlCounter).text(output);
+        addFrameToGame();
 
 
-
-
-          $('#bowl-' + bowlCounter).text(output);
-
-
-          if (typeof bowlTwo !== 'undefined'){
-
-            game.addFrame(new Frame([parseInt(bowlOne), parseInt(bowlTwo)]))
-            bowlOne = undefined
-            bowlTwo = undefined
-
-          }
-
-          if (bowlOne === '10'){
-            game.addFrame(new Frame([parseInt(bowlOne)]))
-            bowlOne = undefined
-          }
 
           $('#total-score').text(game.gameScore);
 

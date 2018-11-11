@@ -36,8 +36,7 @@ describe('Game', function() {
     it('adds the bowl score to the score total', function() {
       game.bowl(3);
       game.bowl(4);
-      expect(game.score).toEqual(7);
+      expect(game.bowlingScore).toEqual(7);
     });
   });
-
 });

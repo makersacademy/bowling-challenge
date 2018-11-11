@@ -1,4 +1,4 @@
-describe("#Games features", function(){"use strict";
+describe("#Bowling Game", function(){"use strict";
 
   var game;
 
@@ -6,27 +6,27 @@ describe("#Games features", function(){"use strict";
     game = new Game();
   });
 
-  describe("#bowl functionality", function(){
+  describe("#bowling rules", function(){
 
     it("pinsKnockdown method generates number between 0 and 10 ", function(){
       spyOn(game, 'pinsKnockdown').and.returnValue(3);
       expect(game.pinsKnockdown()).toEqual(3);
     });
 
-    it("checks if is a strike", function(){
+    it("Can tell if there's a strike", function(){
       spyOn(game, 'pinsKnockdown').and.returnValue(10);
       game.bowl();
       expect(game._bonus).toEqual("Strike!");
     });
 
-    it("checks if is a spare", function(){
+    it("Can tell if there's a spare", function(){
       spyOn(game, 'pinsKnockdown').and.returnValues(5, 5);
       game.bowl();
       game.bowl();
       expect(game._bonus).toEqual("Spare!");
     });
 
-    it("records correct total score", function(){
+    it("Can calculate score", function(){
       game._totalScore = 0;
       spyOn(game, 'pinsKnockdown').and.returnValues(5, 2);
       game.bowl();
@@ -34,7 +34,7 @@ describe("#Games features", function(){"use strict";
       expect(game._totalScore).toEqual(7);
     });
 
-    it("adds correct amount to score when a strike is recoreded", function(){
+    it("Understands bonus rules with strike", function(){
       spyOn(game, 'pinsKnockdown').and.returnValues(10, 2, 7);
       game.bowl();
       game.bowl();
@@ -42,7 +42,7 @@ describe("#Games features", function(){"use strict";
       expect(game._totalScore).toEqual(28);
   });
 
-  it("adds correct amount to score when a spare is recoreded", function(){
+  it("Understands bonus rules with spare", function(){
     spyOn(game, 'pinsKnockdown').and.returnValues(5, 5, 5, 2);
     game.bowl();
     game.bowl();
@@ -53,22 +53,22 @@ describe("#Games features", function(){"use strict";
   });
 
 
-describe("#frame/roll functionality", function(){
+describe("#frames", function(){
 
-  it("alternates roll count", function(){
+  it("Understands alternation", function(){
     game.rollAlternate();
     expect(game._roll).toEqual(2);
     game.rollAlternate();
     expect(game._roll).toEqual(1);
   });
 
-  it("increments frame ", function(){
+  it("Updates frame ", function(){
     game._standingPins = 0;
     game.frameIncrement();
     expect(game._frame).toEqual(2);
   });
 
-  it("manages frame and roll logic", function(){
+  it("Understands how frame/roll relationship works", function(){
     game._standingPins = 0;
     game.frameAndRoll();
     expect(game._frame).toEqual(2);
@@ -76,17 +76,17 @@ describe("#frame/roll functionality", function(){
   });
 });
 
-  it("frame specific variables are reset at a new frame", function(){
+  it("Reset at a new frame", function(){
     spyOn(game, 'pinsKnockdown').and.returnValues(3, 4);
     game.bowl();
     game.bowl();
-    expect(game._rollScore1).toEqual(0);
-    expect(game._rollScore2).toEqual(0);
+    expect(game._firstRollScore).toEqual(0);
+    expect(game._secondRollScore).toEqual(0);
     expect(game._currentKnockdown).toEqual(0);
     expect(game._standingPins).toEqual(10);
   });
 
-  it("resets frame and roll on new game", function(){
+  it("Can reset on New Game", function(){
       game._frame = 10;
       game._roll = 2;
       game.newGame();

@@ -3,8 +3,8 @@
 function Game() {
   this._frame = 1;
   this._roll = 1;
-  this._rollScore1 = 0;
-  this._rollScore2 = 0;
+  this._firstRollScore = 0;
+  this._secondRollScore = 0;
   this._totalScore = 0;
   this._currentKnockdown = 0;
   this._standingPins = 10;
@@ -21,9 +21,9 @@ Game.prototype.bowl = function() {
 Game.prototype.rollScoreMethod = function(){
   this._currentKnockdown = this.pinsKnockdown();
   if(this._roll === 1){
-    this._rollScore1 = this._currentKnockdown;
+    this._firstRollScore = this._currentKnockdown;
   } else {
-    this._rollScore2 = this._currentKnockdown;
+    this._secondRollScore = this._currentKnockdown;
   }
   this.remainingPins();
 };
@@ -46,8 +46,8 @@ Game.prototype.frameAndRoll = function(){
 
 Game.prototype.endGameCheck = function(){
   if(this._frame === 10){
-    this._rollScore1 =this.pinsKnockdown();
-    this._rollScore2 = 0;
+    this._firstRollScore =this.pinsKnockdown();
+    this._secondRollScore = 0;
     this._standingPins = 0;
     this._maxRounds = 10;
     this._gameOver = ("Game Over! Press new game to start again :)");
@@ -62,29 +62,28 @@ Game.prototype.frameIncrement = function(){
 };
 
 Game.prototype.totalScoreUpdate = function(){
-  this._totalScore += (this._rollScore1 + this._rollScore2);
+  this._totalScore += (this._firstRollScore + this._secondRollScore);
   this.checkBonus();
   this.strikeOrSpare();
 };
 
 Game.prototype.checkBonus = function(){
   if (this._bonus === "Strike!") {
-    this._totalScore += (this._rollScore1 + this._rollScore2);
+    this._totalScore += (this._firstRollScore + this._secondRollScore);
   } else if (this._bonus === "Spare!") {
-    this._totalScore += this._rollScore1;
+    this._totalScore += this._firstRollScore;
   }
   this._bonus = "";
 };
 
 Game.prototype.strikeOrSpare = function(){
-  if (this._rollScore1 === 10) {
+  if (this._firstRollScore === 10) {
     this._bonus = "Strike!";
-  } else if (this._rollScore1 + this._rollScore2 === 10) {
+  } else if (this._firstRollScore + this._secondRollScore === 10) {
     this._bonus = "Spare!";
   }
 };
 
-// End of the game, reset frame, reset roll
 
 Game.prototype.rollAlternate = function(){
   if(this._roll === 1 && this._standingPins > 0){
@@ -96,8 +95,8 @@ Game.prototype.rollAlternate = function(){
 };
 
 Game.prototype.frameReset = function(){
-  this._rollScore1 = 0;
-  this._rollScore2 = 0;
+  this._firstRollScore = 0;
+  this._secondRollScore = 0;
   this._currentKnockdown = 0;
   this._standingPins = 10;
   this._maxRounds = 10;
@@ -106,8 +105,8 @@ Game.prototype.frameReset = function(){
 Game.prototype.newGame = function(){
   this._frame = 1;
   this._roll = 1;
-  this._rollScore1 = 0;
-  this._rollScore2 = 0;
+  this._firstRollScore = 0;
+  this._secondRollScore = 0;
   this._totalScore = 0;
   this._currentKnockdown = 0;
   this._standingPins = 10;

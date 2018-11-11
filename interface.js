@@ -89,4 +89,8 @@ $(document).ready(function() {
     $('#total').text(game.score());
   };
 
+  $('#new-game').click(function() {
+    location.reload();
+  });
+
 });

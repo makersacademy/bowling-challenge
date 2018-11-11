@@ -24,7 +24,7 @@ describe("Game", function() {
     frame = game.currentFrame()
     expect(frame.score).toEqual(6)
   })
-
+  // 
   // it("can keep track of total game score", function() {
   //   game.bowl(1)
   //   game.bowl(5)
@@ -38,12 +38,12 @@ describe("Game", function() {
     expect(game.frames[0].score).toEqual(11)
   })
 
-  // it("can score a spare when followed by strike", function() {
-  //   game.bowl(1);
-  //   game.bowl(9);
-  //   game.bowl(10);
-  //   expect(game.frames[0].score).toEqual(20);
-  // });
+  it("can score a spare when followed by strike", function() {
+    game.bowl(1);
+    game.bowl(9);
+    game.bowl(10);
+    expect(game.frames[0].score).toEqual(20);
+  });
   //
   // it("can score a strike when followed by two regular rolls", function() {
   //   game.firstRoll(10);

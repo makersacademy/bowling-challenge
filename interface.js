@@ -4,51 +4,61 @@ $(document).ready(function() {
   $('#1').click(function() {
     game.roll(1);
     updateScores();
+    updateTotalScore();
   });
 
   $('#2').click(function() {
     game.roll(2);
     updateScores();
+    updateTotalScore();
   });
 
   $('#3').click(function() {
     game.roll(3);
     updateScores();
+    updateTotalScore();
   });
 
   $('#4').click(function() {
     game.roll(4);
     updateScores();
+    updateTotalScore();
   });
 
   $('#5').click(function() {
     game.roll(5);
     updateScores();
+    updateTotalScore();
   });
 
   $('#6').click(function() {
     game.roll(6);
     updateScores();
+    updateTotalScore();
   });
 
   $('#7').click(function() {
     game.roll(7);
     updateScores();
+    updateTotalScore();
   });
 
   $('#8').click(function() {
     game.roll(8);
     updateScores();
+    updateTotalScore();
   });
 
   $('#9').click(function() {
     game.roll(9);
     updateScores();
+    updateTotalScore();
   });
 
   $('#10').click(function() {
     game.roll(10);
     updateScores();
+    updateTotalScore();
   });
 
   function updateScores() {
@@ -72,6 +82,11 @@ $(document).ready(function() {
     $('#frame8roll1').text(game.rolls[17])
     $('#frame9roll0').text(game.rolls[18])
     $('#frame9roll1').text(game.rolls[19])
+    $('#frame9roll2').text(game.rolls[20])
+  };
+
+  function updateTotalScore() {
+    $('#total').text(game.score());
   };
 
 });

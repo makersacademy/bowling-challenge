@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </head>
+  <body>
+
+    <div class="container">
+      <h1 id='bowling-scorecard'>Bowling Scorecard</h1>
+
+      <table style="width:70%">
+        <tr>
+          <th style="text-align:center">Frame</th>
+          <th style="text-align:center">Roll 1</th>
+          <th style="text-align:center">Roll 2</th>
+          <th style="text-align:center">Roll 3</th>
+          <th style="text-align:center">Score</th>
+          <th style="text-align:center">Total Score</th>
+        </tr>
+        <tr>
+          <td style="text-align:center">Frame 1</td>
+          <td style="text-align:center" id='frame-1-roll-1'></td>
+          <td style="text-align:center" id='frame-1-roll-2'></td>
+          <td></td>
+          <td style="text-align:center" id='frame-1-score'></td>
+          <td style="text-align:center" id='total-score'></td>
+        </tr>
+        <tr>
+          <td style="text-align:center">Frame 2</td>
+          <td style="text-align:center" id='frame-2-roll-1'></td>
+          <td style="text-align:center" id='frame-2-roll-2'></td>
+          <td></td>
+          <td style="text-align:center" id='frame-2-score'></td>
+        </tr>
+        <tr>
+          <td style="text-align:center">Frame 3</td>
+          <td style="text-align:center" id='frame-3-roll-1'></td>
+          <td style="text-align:center" id='frame-3-roll-2'></td>
+          <td></td>
+          <td style="text-align:center" id='frame-3-score'></td>
+        </tr>
+        <tr>
+          <td style="text-align:center">Frame 4</td>
+          <td style="text-align:center" id='frame-4-roll-1'></td>
+          <td style="text-align:center" id='frame-4-roll-2'></td>
+          <td></td>
+          <td style="text-align:center" id='frame-4-score'></td>
+        </tr>
+        <tr>
+          <td style="text-align:center">Frame 5</td>
+          <td style="text-align:center" id='frame-5-roll-1'></td>
+          <td style="text-align:center" id='frame-5-roll-2'></td>
+          <td></td>
+          <td style="text-align:center" id='frame-5-score'></td>
+        </tr>
+        <tr>
+          <td style="text-align:center">Frame 6</td>
+          <td style="text-align:center" id='frame-6-roll-1'></td>
+          <td style="text-align:center" id='frame-6-roll-2'></td>
+          <td></td>
+          <td style="text-align:center" id='frame-6-score'></td>
+        </tr>
+        <tr>
+          <td style="text-align:center">Frame 7</td>
+          <td style="text-align:center" id='frame-7-roll-1'></td>
+          <td style="text-align:center" id='frame-7-roll-2'></td>
+          <td></td>
+          <td style="text-align:center" id='frame-7-score'></td>
+        </tr>
+        <tr>
+          <td style="text-align:center">Frame 8</td>
+          <td style="text-align:center" id='frame-8-roll-1'></td>
+          <td style="text-align:center" id='frame-8-roll-2'></td>
+          <td></td>
+          <td style="text-align:center" id='frame-8-score'></td>
+        </tr>
+        <tr>
+          <td style="text-align:center">Frame 9</td>
+          <td style="text-align:center" id='frame-9-roll-1'></td>
+          <td style="text-align:center" id='frame-9-roll-2'></td>
+          <td></td>
+          <td style="text-align:center" id='frame-9-score'></td>
+        </tr>
+        <tr>
+          <td style="text-align:center">Frame 10</td>
+          <td style="text-align:center" id='frame-10-roll-1'></td>
+          <td style="text-align:center" id='frame-10-roll-2'></td>
+          <td style="text-align:center" id='frame-10-roll-3'></td>
+          <td style="text-align:center" id='frame-10-score'></td>
+        </tr>
+      </table>
+
+      <button type="button" id="0" value='0'>0</button>
+      <button type="button" id="1" value='1'>1</button>
+      <button type="button" id="2" value='2'>2</button>
+      <button type="button" id="3" value='3'>3</button>
+      <button type="button" id="4" value='4'>4</button>
+      <button type="button" id="5" value='5'>5</button>
+      <button type="button" id="6" value='6'>6</button>
+      <button type="button" id="7" value='7'>7</button>
+      <button type="button" id="8" value='8'>8</button>
+      <button type="button" id="9" value='9'>9</button>
+      <button type="button" id="10" value='10'>10</button>
+    </div>
+
+
+
+
+
+    <script src="js/jquery.js"></script>
+    <script src="src/Frame.js"></script>
+    <script src="src/FinalFrame.js"></script>
+    <script src="src/Game.js"></script>
+    <script src="js/IndexJQuery.js"></script>
+  </body>
+</html>

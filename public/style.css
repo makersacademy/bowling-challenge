@@ -1,12 +1,3 @@
-th {
-  min-width: 22px;
-  max-width: 22px;
-}
-td {
-  min-width: 44px;
-  max-width: 44px;
-}
-
 body {
   background-image: url("bowling.png");
   background-repeat: no-repeat;
@@ -15,9 +6,25 @@ body {
 
 table {
   width: 100%;
+  height: 20px;
 }
 
-.table-a, th, td, thead, tr {
+.table-a, tr, thead {
+  border-collapse: collapse;
+  border: 2px solid black;
+}
+
+th {
+  min-width: 22px;
+  max-width: 22px;
+  height: 50px;
+  border-collapse: collapse;
+  border: 2px solid black;
+}
+td {
+  min-width: 44px;
+  max-width: 44px;
+  height: 50px;
   border-collapse: collapse;
   border: 2px solid black;
 }

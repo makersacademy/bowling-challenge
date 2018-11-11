@@ -38,22 +38,22 @@ describe("Bowling", function() {
   });
 
   it('scores correctly for a strike', function() {
+    bowling.upScore(10);
     bowling.upScore(2);
     bowling.upScore(4);
-    bowling.upScore(10);
     expect(bowling.returnScore()).toEqual(22);
   });
 
   it('adds two rolls to the frame', function() {
     bowling.upScore(2);
     bowling.upScore(4);
-    expect(bowling.returnFrame()).toEqual([2,4]);
+    expect(bowling.returnScoreBoard()).toContain([2,4]);
   });
 
   it('goes to the next frame after two rolls', function() {
     bowling.upScore(2);
     bowling.upScore(4);
     bowling.upScore(6);
-    expect(bowling.returnScoreBoard()).toEqual([[2,4]]);
+    expect(bowling.returnScoreBoard()).toContain([2,4], [6]);
   });
 });

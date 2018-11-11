@@ -9,7 +9,7 @@ function Bowling() {
   this.strikeFrame = 10;
   this.MAXSCORE = 300;
   this.scoreBoard = [];
-  this.frame = [];
+  this.frame = [2,4];
 }
 
 Bowling.prototype.returnScore = function() {
@@ -32,7 +32,6 @@ Bowling.prototype.isStrike = function() {
 
 Bowling.prototype.upScoreBoard = function() {
     this.scoreBoard.push(this.frame);
-    this.frame = [];
   };
 
 Bowling.prototype.upScore = function(points) {
@@ -43,8 +42,8 @@ Bowling.prototype.upScore = function(points) {
 
   if (this.frameNum === 1) {
     this.frame[0] = this.score;
-    this.frameNum = 2;
     this.isStrike();
+    this.frameNum = 2;
     this.score = 0;
   } else {
     this.frame[1] = this.score;

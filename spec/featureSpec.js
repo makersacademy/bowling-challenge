@@ -45,4 +45,24 @@ describe('Feature Test:', function(){
     expect(game.getScorecard().getScores()[0]).toEqual(13);
   });
 
+  it("twelve strikes is 300 points",function(){
+    for(var i = 0; i< 12; ++i) {
+      game.addNextRoll(10);
+    }
+    expect(game.getScorecard().getTotalScore()).toEqual(300);
+  });
+
+  it("twelve strikes should be 10 frames",function(){
+    for(var i = 0; i< 12; ++i) {
+      game.addNextRoll(10);
+    }
+    expect(game.getScorecard().getFrames().length).toEqual(10);
+  });
+
+  it("the last frame of twelve strikes should have three rolls",function(){
+    for(var i = 0; i< 12; ++i) {
+      game.addNextRoll(10);
+    }
+    expect(game.getScorecard().getFrames()[9].getRolls().length).toEqual(3);
+  });
 });

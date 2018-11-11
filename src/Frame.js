@@ -12,14 +12,24 @@ Frame.prototype.getRolls = function(){
   return this._rolls;
 };
 
-Frame.prototype.isComplete = function(){
+Frame.prototype.isComplete = function(index){
   // No rolls
   if(this._rolls.length == 0) return false;
 
-  // One roll but not a strike
-  if(this._rolls.length == 1 && this._rolls[0].getScore() != 10) return false;
+  var complete = true;
 
-  return true;
+  // 10th frame has special rules
+  if(index == 9 && this._rolls.length < 3) {
+    if(this._rolls[0].getScore() == 10) complete = false;
+    if(this._rolls.length == 2) {
+      let score = this._rolls[0].getScore() + this._rolls[1].getScore();
+      if(score == 10) complete = false;
+    }
+  } else if(this._rolls.length == 1 && this._rolls[0].getScore() != 10) {
+      complete = false;
+  }
+
+  return complete;
 };
 
 Frame.prototype.isStrike = function(){

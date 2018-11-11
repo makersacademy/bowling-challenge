@@ -28,21 +28,26 @@ Scorecard.prototype.createNewFrame = function() {
 
 Scorecard.prototype.calculateFrameScore = function(frameIndex) {
   let frame = this._frames[frameIndex];
-  if(!frame.isComplete()) return null;
+  if(!frame.isComplete(frameIndex)) return null;
 
   var score = null;
   var bonusScore = null;
-  if(frame.isStrike()) {
-    bonusScore = this.getTwoRollsScore(frameIndex + 1);
-  } else if(frame.isSpare()) {
-    bonusScore = this.getOneRollScore(frameIndex + 1);
+  if(frameIndex == 9) {
+    let rolls = frame.getRolls();
+    score =  rolls[0].getScore() + rolls[1].getScore();
+    if(rolls.length > 2) score += rolls[2].getScore();
   } else {
-    score = this.getTwoRollsScore(frameIndex);
+    if(frame.isStrike()) {
+      bonusScore = this.getTwoRollsScore(frameIndex + 1);
+    } else if(frame.isSpare()) {
+      bonusScore = this.getOneRollScore(frameIndex + 1);
+    } else {
+      score = this.getTwoRollsScore(frameIndex);
+    }
+    if(bonusScore != null) {
+      score = 10 + bonusScore;
+    }
   }
-  if(bonusScore != null) {
-    score = 10 + bonusScore;
-  }
-
   return score;
 };
 
@@ -51,15 +56,22 @@ Scorecard.prototype.getTwoRollsScore = function(frameIndex) {
   var frame = this._frames[frameIndex];
   var score = null;
 
-  if(frame.isStrike()) {
-    let bonusScore = getOneRollScore(frameIndex + 1);
-    if(bonusScore != null) {
-      score = 10 + bonusScore;
+  if(frameIndex == 9) {
+    let rolls = frame.getRolls();
+    if(rolls.length > 1) {
+      score = rolls[0].getScore() + rolls[1].getScore();
     }
   } else {
-    let rolls = frame.getRolls();
-    if(rolls.length >= 2) {
-      score = rolls[0].getScore() + rolls[1].getScore();
+    if(frame.isStrike()) {
+      var bonusScore = this.getOneRollScore(frameIndex + 1);
+      if(bonusScore != null) {
+        score = 10 + bonusScore;
+      }
+    } else {
+      let rolls = frame.getRolls();
+      if(rolls.length >= 2) {
+        score = rolls[0].getScore() + rolls[1].getScore();
+      }
     }
   }
   return score;

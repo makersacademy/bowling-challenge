@@ -29,7 +29,7 @@ Game.prototype.currentFrame = function() {
 
 Game.prototype.recordBonus = function(pins) {
   if (this.bonus.length >= 2) {
-    this.bonus.shift
+    this.bonus.shift()
   }
   this.bonus.push(pins)
 }
@@ -65,6 +65,6 @@ Game.prototype.scoreStrike = function() {
   }
 }
 // this will only work if there are no frames with no scores!
-Game.prototype.calculateTotalScore = function() {
-  this.totalScore = this.frames.map(frame => frame['score']).reduce(add, 0)
+Game.prototype.totalScore = function() {
+  return this.frames.map(frame => frame['score']).reduce(add, 0)
 }

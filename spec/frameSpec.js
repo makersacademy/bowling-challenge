@@ -7,13 +7,13 @@ describe("Frame", function() {
 
   it("can record a roll", function() {
     frame.roll(1);
-    expect(frame.firstRoll()).toEqual(1);
+    expect(frame.rolls[0]).toEqual(1);
   });
 
   it("can record two rolls", function() {
     frame.roll(1);
     frame.roll(2);
-    expect(frame.secondRoll()).toEqual(2);
+    expect(frame.rolls[1]).toEqual(2);
   });
 
   it("can record a strike", function() {

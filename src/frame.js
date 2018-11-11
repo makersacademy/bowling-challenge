@@ -3,6 +3,7 @@ function Frame() {
   this.bonus = 0;
   this.isStrike = false;
   this.isSpare = false;
+  this.score = 0;
 }
 
 Frame.prototype.roll = function(pins) {
@@ -27,14 +28,6 @@ Frame.prototype.recordSpare = function(pins) {
   if (pins < 10 && this.points() === 10) {
     this.isSpare = true
   }
-}
-
-Frame.prototype.firstRoll = function() {
-  return this.rolls[0]
-}
-
-Frame.prototype.secondRoll = function() {
-  return this.rolls[1]
 }
 
 Frame.prototype.points = function() {

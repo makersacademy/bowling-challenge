@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var game = new BowlingGame();
+  var game = new Game();
   var frame = 1;
   var lastRoll = "second";
 
@@ -8,8 +8,8 @@ $(document).ready(function() {
       var idClicked = e.target.id;
       var rollValue = Number(idClicked);
       if (lastRoll === 'second') {
-        game.firstRoll(rollValue);
-        $("#game-log").append("<p>Frame:" + frame + " First roll: " + rollValue + " Total score: " + game.totalScore + "</p>");
+        game.bowl(rollValue);
+        $("#game-log").append("<p>Frame:" + frame + " First roll: " + rollValue + " Total score: " + game.totalScore() + "</p>");
         if (rollValue === 10) {
           lastRoll = "second";
           frame ++;
@@ -20,8 +20,8 @@ $(document).ready(function() {
           }
         }
       } else {
-        game.secondRoll(rollValue);
-        $("#game-log").append("<p>Frame:" + frame + " Second roll: " + rollValue + " Total score: " + game.totalScore + "</p>");
+        game.bowl(rollValue);
+        $("#game-log").append("<p>Frame:" + frame + " Second roll: " + rollValue + " Total score: " + game.totalScore() + "</p>");
         lastRoll = "second";
         frame ++;
         $("button").show();
@@ -30,16 +30,16 @@ $(document).ready(function() {
           if (game.lastFrame().isSpare === true || game.lastFrame().isStrike === true) {
             var idClicked = e.target.id;
             var rollValue = Number(idClicked);
-            game.firstRoll(rollValue);
-            $("#game-log").append("<p>Bonus roll: " + rollValue + " Total score: " + game.totalScore +"</p>");
+            game.bowl(rollValue);
+            $("#game-log").append("<p>Bonus roll: " + rollValue + " Total score: " + game.totalScore() +"</p>");
             frame ++;
           }
     } else if (frame === 12) {
           if (game.lastFrame().isStrike === true) {
             var idClicked = e.target.id;
             var rollValue = Number(idClicked);
-            game.firstRoll(rollValue);
-            $("#game-log").append("<p>Bonus roll: " + rollValue + " Total score: " + game.totalScore + "</p>");
+            game.bowl(rollValue);
+            $("#game-log").append("<p>Bonus roll: " + rollValue + " Total score: " + game.totalScore() + "</p>");
             frame ++;
           }
       }

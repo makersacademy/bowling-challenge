@@ -28,8 +28,7 @@ describe("Game", function() {
   it("can keep track of total game score", function() {
     game.bowl(1)
     game.bowl(5)
-    game.calculateTotalScore();
-    expect(game.totalScore).toEqual(6)
+    expect(game.totalScore()).toEqual(6)
   })
 
   it("can score a spare on first roll of next frame", function() {
@@ -50,9 +49,9 @@ describe("Game", function() {
     game.bowl(10);
     game.bowl(1);
     game.bowl(5);
-    game.calculateTotalScore();
+    // game.calculateTotalScore();
     expect(game.frames[0].score).toEqual(16);
-    expect(game.totalScore).toEqual(22);
+    expect(game.totalScore()).toEqual(22);
   });
 
   it("can score a strike when followed by another strike and another roll", function () {
@@ -73,7 +72,7 @@ describe("Game", function() {
     game.bowl(10);
     game.bowl(2);
     game.bowl(8);
-    game.calculateTotalScore();
+    // game.calculateTotalScore();
     expect(game.frames[0].score).toEqual(20);
   });
 
@@ -83,17 +82,16 @@ describe("Game", function() {
       game.bowl(0);
       i ++;
     };
-    game.calculateTotalScore();
-    expect(game.totalScore).toEqual(0);
+    expect(game.totalScore()).toEqual(0);
   });
-  // 
-  // it("can score a perfect game", function() {
-  //   var i = 1;
-  //   while (i < 13) {
-  //     game.bowl(10);
-  //     i ++;
-  //   };
-  //   expect(game.totalScore).toEqual(300);
-  // });
+
+  it("can score a perfect game", function() {
+    var i = 1;
+    while (i < 13) {
+      game.bowl(10);
+      i ++;
+    };
+    expect(game.totalScore()).toEqual(300);
+  });
 
 });

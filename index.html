@@ -107,46 +107,48 @@
     <script>
       var bowlCounter = 0;
       var game = new Game;
-      var bowlOne;
-      var bowlTwo;
+      bowls = [];
       var output;
 
-      function setBowl(){
-        if (typeof bowlOne === 'undefined') {
-          bowlOne = bowl;
-          } else {
-          bowlTwo = bowl;
-      		}
+      function addBowl(bowl){
+        bowls.push(bowl);
       };
 
       function incrementBowlCounter(){
         bowlCounter++
-        if (bowl === '10') {
+        if (bowls[0] === '10') {
           bowlCounter++
         }
       }
 
       function setOutput(){
-        if (bowl === '10') {
-          output = 'x'
-        } else if (parseInt(bowlOne) + parseInt(bowlTwo) === 10) {
-          output = '/'
+        if (bowls.length === 3) {
+          if (bowls[2] === '10') {
+            output = 'x'
+          } else {
+            output = bowl;
+          }
+        } else if (bowls[0] === '10') {
+          output = 'x';
+        } else if (parseInt(bowls[0]) + parseInt(bowls[1]) === 10) {
+          output = '/';
         } else {
-          output = bowl
+          output = bowl;
         }
       }
 
       function addFrameToGame(){
-        if (typeof bowlTwo !== 'undefined'){
-          game.addFrame(new Frame([parseInt(bowlOne), parseInt(bowlTwo)]))
-          bowlOne = undefined
-          bowlTwo = undefined
+        if (bowls.length === 2){
+          game.addFrame(new Frame([parseInt(bowls[0]), parseInt(bowls[1])]))
+          bowls = [];
         }
-        if (bowlOne === '10'){
-          game.addFrame(new Frame([parseInt(bowlOne)]))
-          bowlOne = undefined
+        if (bowls[0] === '10'){
+          game.addFrame(new Frame([parseInt(bowls[0])]));
+          bowls = [];
         }
+
       }
+
       function showScoreForSingleBowl(){
         $('#bowl-' + bowlCounter).text(output);
       }
@@ -163,12 +165,11 @@
       }
 
       function isFinalFrame(){
-        bowlCounter >= 19;
+        return bowlCounter >= 18;
       }
 
       function isSecondBowl(){
-
-      return  bowlCounter % 2 != 0;
+        return  bowlCounter % 2 != 0;
       }
 
       function resetAllButtons(){
@@ -182,25 +183,55 @@
       }
 
       function enableDisableButtons(){
-        if (isSecondBowl()) {
-          var remainingPins = 10 - bowlOne;
+        if (isSecondBowl() && bowls[0] != 10) {
+          var remainingPins = 10 - bowls[0];
           disableButtons(remainingPins)
         } else{
           resetAllButtons()
         }
       }
 
+      function BonusBowl(){
+        return bowls[0] === 10 || bowls[0] + bowls[1] ===10
+      }
+
 
       $('button').click(function() {
         bowl = $(this).text();
-        setBowl()
-        incrementBowlCounter();
-        enableDisableButtons()
-        setOutput();
-        showScoreForSingleBowl();
-        addFrameToGame();
+        if (isFinalFrame()) {
+          addBowl(bowl)
+          bowlCounter++;
+          enableDisableButtons();
+          setOutput();
+          showScoreForSingleBowl();
+          if (bowls.length === 2 && bowls[0] + bowls[1] < 10 ) {
+            addFrameToGame();
+          }
+          if (bowls.length === 3) {
+            game.addFrame(new Frame([parseInt(bowls[0]),
+             parseInt(bowls[1]),
+            parseInt(bowls[2])
+            ]
+            ))
+          }
+
+        } else {
+          addBowl(bowl)
+          incrementBowlCounter();
+          enableDisableButtons();
+          setOutput();
+          showScoreForSingleBowl();
+          addFrameToGame();
+        }
+
         updateFrameScores();
         updateTotalScore();
+
+        if (game.frames.length === 10) {
+          $('button').prop('disabled', true);
+        }
+
+
       });
 
     </script>

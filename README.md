@@ -2,6 +2,17 @@
 Bowling Challenge
 =================
 
+- [The Task](#the-task)
+  * [Optional Extras](#optional-extras)
+- [Bowling — how does it work?](#bowling---how-does-it-work-)
+- [User stories](#user-stories)
+- [My approach](#my-approach)
+  * [Things I want to look at/fix](#things-i-want-to-look-at-fix)
+  * [Technologies used](#technologies-used)
+- [Setup instructions](#setup-instructions)
+  * [To run the app:](#to-run-the-app-)
+  * [To run tests:](#to-run-tests-)
+
 ## The Task
 
 **THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
@@ -90,3 +101,42 @@ As a player
 I want to be able to play 1 bonus ball in the 10th game if I have scored a spare
 so that my total score is calculated correctly
 ```
+
+## My approach
+
+I really enjoyed the challenge of working in javascript after such a short time.  And actually found the hardest thing about this to be the logic of the scoring rather than having to use javascript.
+
+For a long time I was fixated on having frame 10 allow for 3 rolls but then this broke my bonus calculation.  Last minute I rearranged this to have frame 10 function the same as the other frames, but just to allow for a bonus to be set manually rather than automatically as with the other frames
+
+I am pleased with the way I have done the interface - with the buttons and table being created programatically rather than being part of the html - was good practice in using jquery
+
+### Things I want to look at/fix
+
+The scorecard works pretty consistently.  Some final things I want to do:
+- make the front end responsive
+- have messaging around the end of game, when getting a strike and spare
+- there may be an issue if you score a 0 on your first bonus of frame 10 so need to fix that
+
+### Technologies used
+- javascript
+- JQuery
+- HTML
+- CSS
+- Jasmine
+- eslint (a tiny bit)
+
+## Setup instructions
+
+### To run the app:
+
+  ```
+ run index.html in a browser
+ ```
+
+ You can try it out at https://clarejolly.github.io/bowling-challenge/index.html
+
+### To run tests:
+
+ ```
+ run SpecRunner.html in a browser
+ ```

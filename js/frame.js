@@ -6,6 +6,7 @@ function Frame (framenumber)
 	this.MAXIMUM_PINS = 10;
 	this.REGULAR_FRAMESIZE = 2;
 	this.FINAL_BONUS_FRAMESIZE = 3;
+  this.MAX_BONUS = 2;
 	this.GUTTER_FRAME = 0;
 	this.frame_bonus = [0,0];
 	this.finalIndexOfFrame;
@@ -31,27 +32,25 @@ Frame.prototype.isFinalFrame = function () {
 	return (this.framenumber === this.FRAME_MAX) ? true : false;
 };
 
-Frame.prototype.getMaxFrameSize = function () {
-	if(!this.isFinalFrame()) {
-		return this.REGULAR_FRAMESIZE;
-	}
-	if(this.hasStrike()){
-		this.framesize = this.FINAL_BONUS_FRAMESIZE;
-		return this.FINAL_BONUS_FRAMESIZE;
-	}
-	if(this.hasSpare()){
-		this.framesize = this.FINAL_BONUS_FRAMESIZE;
-		return this.FINAL_BONUS_FRAMESIZE;
-	}
-};
+// Frame.prototype.getMaxFrameSize = function () {
+// 	if(!this.isFinalFrame()) {
+// 		return this.REGULAR_FRAMESIZE;
+// 	}
+// 	if(this.hasStrike()){
+// 		this.framesize = this.FINAL_BONUS_FRAMESIZE;
+// 		return this.FINAL_BONUS_FRAMESIZE;
+// 	}
+// 	if(this.hasSpare()){
+// 		this.framesize = this.FINAL_BONUS_FRAMESIZE;
+// 		return this.FINAL_BONUS_FRAMESIZE;
+// 	}
+// };
 
 Frame.prototype.roll = function (pins) {
 	if (this.isFrameOpen()) {
     if(this.isFinalFrame() && this.hasStrike()) {
-      // console.log("fdsfdsfdsaf")
       this.frame_bonus[0] = pins
     } else if(this.isFinalFrame() && this.hasSpare()) {
-      // console.log("fdsfdsfdsaf")
       this.frame_bonus[0] = pins
     } else {
 		this.rolls.push(pins);
@@ -69,7 +68,6 @@ Frame.prototype.formatRolls = function () {
       return [this.rolls[0],"/"]
     }
     return this.rolls
-
 }
 
 Frame.prototype.isFrameOpen = function () {
@@ -97,7 +95,7 @@ Frame.prototype.maxPinsReached = function () {
 };
 
 Frame.prototype.maxRollsReached = function () {
-	return (this.getFrameSize() === this.getMaxFrameSize()) ? true : false;
+	return (this.getFrameSize() === this.REGULAR_FRAMESIZE) ? true : false;
 };
 
 Frame.prototype.isValidRoll = function (pins) {

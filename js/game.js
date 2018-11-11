@@ -7,33 +7,31 @@ function Game() {
 };
 
 Game.prototype.enterRoll = function (pins) {
-  // console.log("AAA")
+console.log("BONUS:" ,this.currentframe)
+  if (this.isLastFrame() && !this.isFrameOpen(this.currentframe)
+            && this.currentframe.hasStrike() )
+            {
+              if (this.currentframe.frame_bonus.length <= 4) {
+              this.currentframe.addBonus(pins)
+            }
+            if (this.currentframe.frame_bonus[2] === 10){
+              this.previousframe.setBonus([10,10])
+            }
+            }
+
+  if (this.isLastFrame() && !this.isFrameOpen(this.currentframe)
+            && this.currentframe.hasSpare() )
+            {
+              console.log("BONUS:" ,this.currentframe.frame_bonus)
+              console.log("PREVIOUS BONUS:" ,this.previousframe.frame_bonus)
+              this.currentframe.addBonus(pins)
+              this.previousframe.setBonus([pins,0])
+              console.log("BONUS x:" ,this.currentframe.frame_bonus)
+              console.log("PREVIOUS BONUS x:" ,this.previousframe.frame_bonus)
+
+            }
   if (this.isLastFrame()) {
-    // this.frameRoll(this.currentframe, pins)
-    // console.log(this.currentframe.rolls)
-    if (this.currentframe.hasStrike()) {
-      this.currentframe.addBonus(pins)
-      if (this.currentframe.frame_bonus[2] === 10){
-        this.previousframe.setBonus([10,10])
-      }
-    }
 
-    if (this.currentframe.hasSpare()) {
-
-      console.log("BONUS:" ,this.currentframe.frame_bonus)
-      console.log("PREVIOUS BONUS:" ,this.previousframe.frame_bonus)
-      this.currentframe.addBonus(pins)
-      // if (this.currentframe.frame_bonus[2] === pins){
-        // console.log("fdfdsfsfss")
-        this.previousframe.setBonus([pins,0])
-      // }
-      // if (this.currentframe.frame_bonus === [0,0,10,10]){
-      //   this.previousframe.setBonus([10,10])
-      // }
-      console.log("BONUS x:" ,this.currentframe.frame_bonus)
-      console.log("PREVIOUS BONUS x:" ,this.previousframe.frame_bonus)
-
-    }
     console.log("last frame already")
         return "10 frames already"
   }

@@ -3,7 +3,7 @@ $(document).ready(function() {
 
 scorebuttons_div
 var i;
-$('#scorebuttons_div').append("<button class='scorebuttons' id='0' value='0'>0</button>")
+$('#scorebuttons_div').append("<button class='scorebuttons' id='score_btn_0' value='0'>0</button>")
 for (i = 1; i < 11; i++) {
 
   $('#scorebuttons_div').append("<button class='scorebuttons' id='score_btn_"+i+"' value='"+i+"'>"+i+"</button>")
@@ -13,20 +13,20 @@ for (i = 1; i < 11; i++) {
 
 }
 $('#score_head_1').attr('class', 'frame_selected');
-  // updateTemperature();
 
   function showScore(pin) {
-    // $('#score_'+game.currentframenumber+'').text(game.currentframe.rolls);
     $('#score_'+game.currentframenumber+'').text(game.currentframe.formatRolls());
     $('#marker_'+game.currentframenumber+'').text(game.currentframe.getPinsScore());
     $('#current-score').text(game.calculateGameTotalScore());
-    // console.log(game.currentframe.isFrameOpen())
-    // console.log(game.currentframe.formatRolls())
     if(game.currentframe.isFrameOpen()){
     disableButtons(game.currentframe.remainingPins())
     } else {
       enableButtons()
       resetFormatting()
+    }
+    if(game.calculateGameTotalScore() === 300) {
+      disableButtons(-1)
+      // $('#score_btn_0').prop('disabled', true);
     }
   }
 
@@ -53,13 +53,16 @@ $('#score_head_1').attr('class', 'frame_selected');
 
   $('.scorebuttons').on('click', function() {
     val = parseInt($(this).attr("value"))
-    // console.log(val)
     game.enterRoll(val);
     $('#frame-number').text(game.currentframenumber);
     showScore()
-    if(game.currentframe.isFrameOpen()){ frametext = game.currentframenumber } else {frametext = game.currentframenumber+1}
+    if(game.currentframe.isFrameOpen() || game.currentframe.isFinalFrame()){ frametext = game.currentframenumber } else {frametext = game.currentframenumber+1}
     $('#frame-number').text(frametext);
     $('#score_head_'+frametext+'').attr('class', 'frame_selected');
+    if (game.currentframe.isFinalFrame() && !game.currentframe.isFrameOpen()
+  && game.currentframe.hasStrike()){
+      $('#enter_pins_message').text("How many did you get for your bonus?")
+    }
 
 
   });

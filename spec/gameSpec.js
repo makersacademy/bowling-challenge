@@ -24,6 +24,13 @@ describe('Game', function() {
 		expect(game.currentframenumber).toEqual(10);
 	});
 
+  it('11 strikes is not 11 frames', function() {
+		for (var i = 0; i < 11; i++) {
+			game.enterRoll(10);
+		}
+		expect(game.currentframenumber).toEqual(10);
+	});
+
 	it('gets current pin score after 3 rolls', function() {
 		for (var i = 0; i < 3; i++) {
 			game.enterRoll(2);
@@ -72,34 +79,11 @@ describe('Game', function() {
 		expect(game.getFrameBonus(game.frames[0])).toEqual(5);
 	});
 
-	it('calculates the bonus for frame 1 as 5 (frame 1 as a strike)', function() {
-		game.enterRoll(10);
-		game.enterRoll(10);
-		game.enterRoll(3);
-		expect(game.getFrameBonus(game.frames[0])).toEqual(13);
-	});
-
 	it('calculates the bonus for frame 1 as 5 (frame 1 as a spare)', function() {
-		game.enterRoll(1);
-		game.enterRoll(9);
-		game.enterRoll(3);
-		game.enterRoll(3);
-		expect(game.getFrameBonus(game.frames[0])).toEqual(3);
-	});
-
-	it('calculates the total for frame 1 as 5 (frame 1 as a spare)', function() {
-		game.enterRoll(1);
-		game.enterRoll(9);
-		game.enterRoll(3);
-		game.enterRoll(3);
-		expect(game.calculateFrameTotalScore(game.frames[0])).toEqual(13);
-	});
-
-	it('calculates the bonus for frame 1 as 5 (frame 1 as a strike)', function() {
-		game.enterRoll(10);
-		game.enterRoll(10);
-		game.enterRoll(3);
-		expect(game.calculateFrameTotalScore(game.frames[0])).toEqual(23);
+    for (var i = 0; i < 3; i++) {
+			game.enterRoll(5);
+		}
+		expect(game.getFrameBonus(game.frames[0])).toEqual(5);
 	});
 
 	it('gets current pin score after 3 rolls including strikes', function() {
@@ -134,17 +118,6 @@ describe('Game', function() {
 		expect(game.calculateGameTotalScore()).toEqual(30);
 	});
 
-	it('gets current pin score after 6 rolls including spare', function() {
-		game.enterRoll(4);
-		game.enterRoll(6);
-		game.enterRoll(10);
-		game.enterRoll(3);
-		game.enterRoll(2);
-		game.enterRoll(2);
-		// game.enterRoll(3)
-		// game.enterRoll(3)
-		expect(game.calculateGameTotalScore()).toEqual(42);
-	});
 
   it('random with spare at end', function() {
 		for (var i = 0; i < 18; i++) {

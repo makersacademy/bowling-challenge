@@ -51,6 +51,26 @@ describe('Bowling', function() {
     expect(bowling.isStrike(1)).toEqual(true)
   });
 
+  // describe('on the tenth frame', function() {
+  //   beforeEach(function() {
+  //     var num = 1
+  //     while (num < 19) {
+  //       bowling.bowl(5)
+  //       num++
+  //     }
+  //   });
+  //
+  //   it('gives three bowls if spare', function() {
+  //     bowling.bowl(9)
+  //     bowling.bowl(1)
+  //     expect(bowling.)
+  //   });
+  //   it('gives three bowls if strike', function() {
+  //     bowling.bowl(10)
+  //     expect(bowling.)
+  //   });
+  // });
+
   describe('after a spare', function() {
     beforeEach(function() {
       bowling.bowl(9)
@@ -70,7 +90,7 @@ describe('Bowling', function() {
       bowling.bowl(10)
     });
 
-    it('moves to the next frame', function() {
+    it('moves straight to the next frame', function() {
       expect(bowling.frame).toEqual(2)
     });
 

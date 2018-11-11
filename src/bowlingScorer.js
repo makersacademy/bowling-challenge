@@ -62,3 +62,7 @@ BowlingScorer.prototype.updateScoreChart = function() {
 BowlingScorer.prototype.isLastFrame = function() {
   return this.frame === 10
 };
+
+// BowlingScorer.prototype.isOver = function() {
+//
+// };

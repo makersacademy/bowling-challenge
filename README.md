@@ -2,7 +2,7 @@
 
 This is a bowling scorecard. User inputs the value of each roll, and the scorecard keeps score. This was created for a weekend project during weeks 5 and 6 of Makers Academy.
 
-![game screenshot](/public/images/scorecard_screenshot.png)
+![game screenshot](/public/images/scorecard_screenshot.jpg)
 
 ### How to Run It
 

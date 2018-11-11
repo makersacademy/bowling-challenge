@@ -19,6 +19,9 @@ function Game() {
   if (this.currentBowl == 2) {
     this.currentFrame ++
   };
+  if (this.currentFrame == 11) {
+      alert(`GAME OVER! Final Score is: ${this.totalScore}`);
+    };
 };
 Game.prototype.bowlingScore = function (pins) {
   this.totalScore += pins;

@@ -6,45 +6,39 @@ function Game() {
   this.MAXIMUMFRAMES = 10
 };
 
+
 Game.prototype.enterRoll = function (pins) {
-console.log("BONUS:" ,this.currentframe)
-  if (this.isLastFrame() && !this.isFrameOpen(this.currentframe)
-            && this.currentframe.hasStrike() )
-            {
-              if (this.currentframe.frame_bonus.length <= 4) {
-              this.currentframe.addBonus(pins)
-            }
-            if (this.currentframe.frame_bonus[2] === 10){
-              this.previousframe.setBonus([10,10])
-            }
-            }
-
-  if (this.isLastFrame() && !this.isFrameOpen(this.currentframe)
-            && this.currentframe.hasSpare() )
-            {
-              console.log("BONUS:" ,this.currentframe.frame_bonus)
-              console.log("PREVIOUS BONUS:" ,this.previousframe.frame_bonus)
-              this.currentframe.addBonus(pins)
-              this.previousframe.setBonus([pins,0])
-              console.log("BONUS x:" ,this.currentframe.frame_bonus)
-              console.log("PREVIOUS BONUS x:" ,this.previousframe.frame_bonus)
-
-            }
-  if (this.isLastFrame()) {
-
-    console.log("last frame already")
-        return "10 frames already"
-  }
   if (this.newGame() || !this.isFrameOpen(this.currentframe)) {
     this.newFrame()
   }
+  if (this.isLastFrame() && !this.isFrameOpen(this.currentframe)) {
+    this.finalBonusRoll(pins)
+  }
   this.frameRoll(this.currentframe, pins)
+}
 
+Game.prototype.finalBonusRoll = function (pins) {
+
+  if(this.currentframe.hasStrike()) {
+    if (this.currentframe.frame_bonus[0] != 0){
+    this.currentframe.frame_bonus[1] = pins
+  }
+  else
+  {
+    this.currentframe.frame_bonus[0] = pins
+    this.previousframe.frame_bonus[1] = pins
+  }}
+  if(this.currentframe.hasSpare()) {
+    this.currentframe.frame_bonus[0] = pins
+  }
+
+  // console.log(this.currentframe.frame_bonus)
 }
 
 Game.prototype.frameRoll = function (frame, pins) {
-  frame.roll(pins)
+  frame.addRoll(pins)
 }
+
 
 Game.prototype.newGame = function () {
   return (this.currentframenumber === 0) ? true : false
@@ -54,8 +48,10 @@ Game.prototype.newFrame = function () {
   if (this.newGame() === false) {
     this.setFinalIndexOfFrame(this.currentframe, this.lastRollIndex())
   }
-  this.setFrameChange()
-  this.frames.push(this.currentframe)
+  if (this.currentframenumber < 10) {
+    this.setFrameChange()
+    this.frames.push(this.currentframe)
+  }
 }
 
 Game.prototype.setFrameChange = function () {
@@ -66,15 +62,12 @@ Game.prototype.setFrameChange = function () {
 Game.prototype.setFinalIndexOfFrame = function(frame, index) {
   frame.setFinalIndexOfFrame(index)
 }
-
-Game.prototype.getCurrentPinsScore = function () {
-  return this.getAllRolls().reduce(function(a, b){return a+b;})
+Game.prototype.isLastFrame = function () {
+  return this.currentframenumber === this.MAXIMUMFRAMES
 }
 
-Game.prototype.getFrameRolls = function () {
-  return this.frames.map(frame => {
-    return frame.rolls
-  })
+Game.prototype.isFrameOpen = function (frame) {
+  return frame.isFrameOpen()
 }
 
 Game.prototype.lastRollIndex = function () {
@@ -87,12 +80,15 @@ return this.getFrameRolls().reduce(function(prev, curr) {
 });
 }
 
-Game.prototype.isLastFrame = function () {
-  return this.currentframenumber === this.MAXIMUMFRAMES
-}
+Game.prototype.getFrameRolls = function () {
+  return this.frames.map(frame => {
+    return frame.rolls
+  })
 
-Game.prototype.isFrameOpen = function (frame) {
-  return frame.isFrameOpen()
+
+}
+Game.prototype.getCurrentPinsScore = function () {
+  return this.getAllRolls().reduce(function(a, b){return a+b;})
 }
 
 Game.prototype.getFrameBonus = function (frame) {
@@ -102,32 +98,26 @@ Game.prototype.getFrameBonus = function (frame) {
 
 Game.prototype.getFrameBonusValues = function (frame) {
   var bonus = frame.frame_bonus
-  // console.log("bonus: ", bonus)
-  if (bonus != []) {
+
+  if (frame.hasStrike()) {
+    if (!isNaN(this.getAllRolls()[frame.finalIndexOfFrame+1])) {
+      bonus[0] = (this.getAllRolls()[frame.finalIndexOfFrame+1])
+    }
+    if (!isNaN(this.getAllRolls()[frame.finalIndexOfFrame+2])) {
+      bonus[1] = (this.getAllRolls()[frame.finalIndexOfFrame+2])
+    }
+  }
 
   if (frame.hasSpare()) {
     // console.log("sparebonus")
       if (!isNaN(this.getAllRolls()[frame.finalIndexOfFrame+1])) {
-        bonus[0]=(this.getAllRolls()[frame.finalIndexOfFrame+1]) }
-        bonus[1]=0
-    } else if (frame.hasStrike()) {
-      // console.log("strikebonus")
-      // console.log(this.getAllRolls()[frame.finalIndexOfFrame+1])
-      if (!isNaN(this.getAllRolls()[frame.finalIndexOfFrame+1])) {
         bonus[0]=(this.getAllRolls()[frame.finalIndexOfFrame+1])
       }
-      if (!isNaN(this.getAllRolls()[frame.finalIndexOfFrame+2])) {
-      bonus[1]=(this.getAllRolls()[frame.finalIndexOfFrame+2])
+        bonus[1]=0
     }
-    }
-  }
-  frame.setBonus(bonus)
-  // console.log("frame bonus xxx: ", frame.framenumber, frame.getBonus())
-  return bonus
-}
 
-Game.prototype.calculateFrameTotalScore = function (frame) {
-  return  frame.getPinsScore() + this.getFrameBonus(frame)
+  frame.setBonus(bonus)
+  return bonus
 }
 
 Game.prototype.calculateGameTotalScore = function (frame) {
@@ -139,4 +129,8 @@ Game.prototype.getCurrentTotalScoreValues = function () {
   return this.frames.map(frame => {
     return this.calculateFrameTotalScore(frame)
   })
+}
+
+Game.prototype.calculateFrameTotalScore = function (frame) {
+  return  frame.getPinsScore() + this.getFrameBonus(frame)
 }

@@ -13,34 +13,34 @@ Bowling.prototype.bowl = function (number) {
       this.bowls.push(number)
       this.currentBowl ++;
     }
-    if (this.bowls[this.bowls.length - 3] + this.bowls[this.bowls.length - 2] === 10 && this.bowls[this.bowls.length - 2] != 0 && this.bowls[this.bowls.length - 3] != 0) {
-      this.bowls[this.bowls.length - 2] += number;
+    if (this.getFrameScore(this.currentFrame - 1) === 10 && this.bowls[this.bowls.length - 2] != 0 && this.bowls[this.bowls.length - 3] != 0) {
+      this.bowls[this.bowls.length - 3] += number;
     }
-    if (this.bowls[this.bowls.length - 3] === 10) {
+    if (this.bowls[this.bowls.length - 3] === 10 && this.bowls[this.bowls.length - 2] === 0) {
       this.bowls[this.bowls.length - 3] += number;
     }
     if (this.bowls[this.bowls.length - 4] >= 10 && this.bowls[this.bowls.length - 3] === 0) {
       this.bowls[this.bowls.length - 4] += number;
     }
-    if (this.bowls[this.bowls.length - 5] === 20 ) {
+    if (this.bowls[this.bowls.length - 5] === 20 && this.bowls[this.bowls.length - 2] === 0) {
       this.bowls[this.bowls.length - 5] += number;
     }
-    if (this.bowls[this.bowls.length - 6] === 20 ) {
+    if (this.bowls[this.bowls.length - 6] === 20 && this.bowls[this.bowls.length - 3] === 0) {
       this.bowls[this.bowls.length - 6] += number;
     }
   } else {
     this.bowls.push(number)
-    if (this.bowls[this.bowls.length - 3] + this.bowls[this.bowls.length - 2] === 10 && this.bowls[this.bowls.length - 2] != 0 && this.bowls[this.bowls.length - 3] != 0) {
-      this.bowls[this.bowls.length - 2] += number;
+    if (this.getFrameScore(this.currentFrame - 1) === 10 && this.bowls[this.bowls.length - 2] != 0 && this.bowls[this.bowls.length - 3] != 0 && this.currentFrame === 10) {
+      this.bowls[this.bowls.length - 3] += number;
     }
     if (this.bowls[this.bowls.length - 4] >= 10 && this.bowls[this.bowls.length - 3] === 0) {
       this.bowls[this.bowls.length - 4] += number;
     }
-    if (this.bowls[this.bowls.length - 5] === 20 ) {
+    if (this.bowls[this.bowls.length - 5] === 20 && (this.bowls[this.bowls.length - 2] === 0 || this.bowls[this.bowls.length - 2] === 10)) {
       this.bowls[this.bowls.length - 5] += number;
     }
-    if (this.bowls[this.bowls.length - 6] === 20 ) {
-      this.bowls[this.bowls.length - 6] += number;
+    if (this.bowls[this.bowls.length - 2] === 0 && this.getFrameScore(this.currentFrame - 1)) {
+      this.bowls[this.bowls.length - 3] += number;
     }
     this.currentBowl ++;
   }

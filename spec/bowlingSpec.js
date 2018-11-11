@@ -85,6 +85,14 @@
     expect(bowling.getFrameScore(1)).toEqual(17)
   });
 
+  it('strike - gets a frame 1 score of 20', function() {
+    bowling.bowl(10)
+    bowling.bowl(9)
+    bowling.bowl(1)
+    bowling.bowl(5)
+    expect(bowling.getFrameScore(1)).toEqual(20)
+  });
+
   it('strike - gets a frame 2 score of 27', function() {
     bowling.bowl(3)
     bowling.bowl(4)
@@ -149,7 +157,7 @@
     expect(bowling.getFrameScore(5)).toEqual(17)
   });
 
-  it('The perfect games', function() {
+  it('The perfect game', function() {
     bowling.bowl(10)
     bowling.bowl(10)
     bowling.bowl(10)
@@ -163,6 +171,48 @@
     bowling.bowl(10)
     bowling.bowl(10)
     expect(bowling.getTotalScore()).toEqual(300)
+  });
+
+  it('Frame 10 - correct scoring (1)', function() {
+    bowling.bowl(10)
+    bowling.bowl(10)
+    bowling.bowl(10)
+    bowling.bowl(10)
+    bowling.bowl(10)
+    bowling.bowl(10)
+    bowling.bowl(10)
+    bowling.bowl(10)
+    bowling.bowl(9)
+    bowling.bowl(1)
+    bowling.bowl(6)
+    bowling.bowl(4)
+    bowling.bowl(6)
+    expect(bowling.getTotalScore()).toEqual(261)
+  });
+
+  it('Frame 10 - correct scoring (2)', function() {
+    bowling.bowl(5)
+    bowling.bowl(5)
+    bowling.bowl(3)
+    bowling.bowl(5)
+    bowling.bowl(8)
+    bowling.bowl(2)
+    bowling.bowl(1)
+    bowling.bowl(5)
+    bowling.bowl(8)
+    bowling.bowl(2)
+    bowling.bowl(3)
+    bowling.bowl(5)
+    bowling.bowl(7)
+    bowling.bowl(3)
+    bowling.bowl(2)
+    bowling.bowl(5)
+    bowling.bowl(7)
+    bowling.bowl(3)
+    bowling.bowl(5)
+    bowling.bowl(5)
+    bowling.bowl(5)
+    expect(bowling.getTotalScore()).toEqual(108)
   });
 
   it('The total score of 94', function() {
@@ -186,6 +236,50 @@
     bowling.bowl(3)
     bowling.bowl(3)
     expect(bowling.getTotalScore()).toEqual(94)
+  });
+
+  it('The total score of 174', function() {
+    bowling.bowl(5)
+    bowling.bowl(3)
+    bowling.bowl(6)
+    bowling.bowl(2)
+    bowling.bowl(10)
+    bowling.bowl(8)
+    bowling.bowl(2)
+    bowling.bowl(5)
+    bowling.bowl(3)
+    bowling.bowl(7)
+    bowling.bowl(3)
+    bowling.bowl(7)
+    bowling.bowl(1)
+    bowling.bowl(10)
+    bowling.bowl(10)
+    bowling.bowl(10)
+    bowling.bowl(10)
+    bowling.bowl(10)
+    expect(bowling.getTotalScore()).toEqual(174)
+  });
+
+  it('The total score of 132', function() {
+    bowling.bowl(2)
+    bowling.bowl(4)
+    bowling.bowl(7)
+    bowling.bowl(3)
+    bowling.bowl(5)
+    bowling.bowl(5)
+    bowling.bowl(10)
+    bowling.bowl(10)
+    bowling.bowl(6)
+    bowling.bowl(3)
+    bowling.bowl(8)
+    bowling.bowl(0)
+    bowling.bowl(10)
+    bowling.bowl(0)
+    bowling.bowl(0)
+    bowling.bowl(10)
+    bowling.bowl(7)
+    bowling.bowl(2)
+    expect(bowling.getTotalScore()).toEqual(132)
   });
 
   it('Testing all frame scores', function() {

@@ -21,3 +21,11 @@ Frame.prototype.isComplete = function(){
 
   return true;
 };
+
+Frame.prototype.isStrike = function(){
+  return this._rolls.length == 1 && this._rolls[0].getScore() == 10;
+}
+
+Frame.prototype.isSpare = function(){
+  return this._rolls.length == 2 && ( this._rolls[0].getScore() + this._rolls[1].getScore() ) == 10;
+}

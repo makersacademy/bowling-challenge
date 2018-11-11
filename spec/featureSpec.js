@@ -21,6 +21,7 @@ describe('Feature Test:', function(){
 
   it('update the total score when a new roll is added',function(){
     game.addNextRoll(4);
+    game.addNextRoll(0);
     expect(game.getScorecard().getTotalScore()).toEqual(4);
   });
 
@@ -36,4 +37,12 @@ describe('Feature Test:', function(){
     game.addNextRoll(2);
     expect(game.getScorecard().getFrames()[0].getRolls().length).toEqual(1);
   });
+
+  it("the points of the next roll should be added to a frame that is a spare",function(){
+    game.addNextRoll(8);
+    game.addNextRoll(2);
+    game.addNextRoll(3);
+    expect(game.getScorecard().getScores()[0]).toEqual(13);
+  });
+
 });

@@ -5,12 +5,10 @@ function Scorecard() {
 };
 
 Scorecard.prototype.getTotalScore = function() {
+  let scores = this.getScores();
   var totalScore = 0;
-  for(var frame in this._frames) {
-    let rolls = this.getFrames()[frame].getRolls();
-    for(var roll in rolls) {
-      totalScore += rolls[roll].getScore();
-    }
+  if(scores.length > 0) {
+    totalScore =  scores[scores.length-1];
   }
   return totalScore;
 };
@@ -28,18 +26,57 @@ Scorecard.prototype.createNewFrame = function() {
   this._frames.push(frame);
 };
 
+Scorecard.prototype.calculateFrameScore = function(frameIndex) {
+  let frame = this._frames[frameIndex];
+  if(!frame.isComplete()) return null;
+
+  var score = null;
+  var bonusScore = null;
+  if(frame.isStrike()) {
+    bonusScore = this.getTwoRollsScore(frameIndex + 1);
+  } else if(frame.isSpare()) {
+    bonusScore = this.getOneRollScore(frameIndex + 1);
+  } else {
+    score = this.getTwoRollsScore(frameIndex);
+  }
+  if(bonusScore != null) {
+    score = 10 + bonusScore;
+  }
+
+  return score;
+};
+
+Scorecard.prototype.getTwoRollsScore = function(frameIndex) {
+  if(this._frames.length <= frameIndex) return null;
+  var frame = this._frames[frameIndex];
+  var score = null;
+
+  if(frame.isStrike()) {
+    let bonusScore = getOneRollScore(frameIndex + 1);
+    if(bonusScore != null) {
+      score = 10 + bonusScore;
+    }
+  } else {
+    let rolls = frame.getRolls();
+    if(rolls.length >= 2) {
+      score = rolls[0].getScore() + rolls[1].getScore();
+    }
+  }
+  return score;
+};
+
+Scorecard.prototype.getOneRollScore = function(frameIndex) {
+  if(this._frames.length <= frameIndex) return null;
+  var frame = this._frames[frameIndex];
+  return frame.getRolls()[0].getScore();
+};
+
 Scorecard.prototype.getScores = function() {
   var scores = [];
-  for(var frame in this._frames) {
-    let rolls = this.getFrames()[frame].getRolls();
-    if (rolls.length != 2) {
-      break;
-    }
-    var roll_score = 0;
-    for(var roll in rolls) {
-      roll_score += rolls[roll].getScore();
-    }
-    scores.push(roll_score);
+  var score = 0;
+  for(var index = 0; index < this._frames.length; ++index) {
+    score += this.calculateFrameScore(index);
+    scores.push(score);
   }
   return scores;
 };

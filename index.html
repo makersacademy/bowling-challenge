@@ -113,24 +113,25 @@
       function setBowl(){
         if (typeof bowlOne === 'undefined') {
           bowlOne = bowl;
-
           } else {
           bowlTwo = bowl;
       		}
+      };
 
+      function incrementBowlCounter(){
+        bowlCounter++
+        if (bowl === '10') {
+          bowlCounter++
+        }
       }
 
 
       $('button').click(function() {
         bowl = $(this).text();
         setBowl()
+        incrementBowlCounter();
 
 
-          bowlCounter++
-          if (bowl === '10') {
-            bowlCounter++
-
-          }
           var output;
           if (bowl === '10') {
             output = 'x'

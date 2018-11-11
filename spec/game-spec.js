@@ -122,7 +122,7 @@ describe('Game', function () {
         game.getFrames().push(frame)
       }
       frame.isFinished.and.returnValue(true)
-      expect(function () { game.addBowl(5) }).toThrow('Game Over!')
+      expect(function () { game.addBowl(5) }).toThrow('Cannot add bowl - game over!')
     })
   })
 

@@ -94,6 +94,23 @@
     expect(bowling.getFrameScore(2)).toEqual(27)
   });
 
+  it('strike - gets a frame 2 score of 17', function() {
+    bowling.bowl(3)
+    bowling.bowl(4)
+    bowling.bowl(10)
+    bowling.bowl(4)
+    bowling.bowl(3)
+    expect(bowling.getFrameScore(2)).toEqual(17)
+  });
+
+  it('strike - gets a frame 2 score of 17 (v2)', function() {
+    bowling.bowl(10)
+    bowling.bowl(10)
+    bowling.bowl(4)
+    bowling.bowl(3)
+    expect(bowling.getFrameScore(2)).toEqual(17)
+  });
+
   it('strike - gets a frame 1 score of 30', function() {
     bowling.bowl(10)
     bowling.bowl(10)
@@ -201,5 +218,10 @@
     expect(bowling.getFrameScore(8)).toEqual(7)
     expect(bowling.getFrameScore(9)).toEqual(8)
     expect(bowling.getFrameScore(10)).toEqual(6)
+  });
+
+  it('possibleScores() - bowl an 8 making the possible scores to be all numbers above 2', function() {
+    bowling.bowl(8)
+    expect(bowling.impossibleScores()).toEqual([3, 4, 5, 6, 7, 8, 9, 10])
   });
 });

@@ -152,6 +152,12 @@
         $('#total-score').text(game.gameScore);
       }
 
+      function updateFrameScores(){
+        for (var i = 1; i <= game.frames.length; i++) {
+          $('#frame-'+ i + '-score').text(game.frames[i-1].frameScore);
+        }
+      }
+
 
       $('button').click(function() {
         bowl = $(this).text();
@@ -162,13 +168,11 @@
         $('#bowl-' + bowlCounter).text(output);
         addFrameToGame();
         updateTotalScore();
+        updateFrameScores();
 
 
 
 
-          for (var i = 1; i <= game.frames.length; i++) {
-            $('#frame-'+ i + '-score').text(game.frames[i-1].frameScore);
-          }
       });
 
     </script>

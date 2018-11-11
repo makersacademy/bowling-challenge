@@ -2,6 +2,9 @@
 Bowling Challenge
 =================
 
+You can try it out at https://clarejolly.github.io/bowling-challenge/index.html
+
+
 - [The Task](#the-task)
   * [Optional Extras](#optional-extras)
 - [Bowling — how does it work?](#bowling---how-does-it-work-)
@@ -103,6 +106,8 @@ so that my total score is calculated correctly
 ```
 
 ## My approach
+
+You can try it out at https://clarejolly.github.io/bowling-challenge/index.html
 
 I really enjoyed the challenge of working in javascript after such a short time.  And actually found the hardest thing about this to be the logic of the scoring rather than having to use javascript.
 

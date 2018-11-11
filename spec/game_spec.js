@@ -7,8 +7,12 @@ describe('Frame of Bowling test score system', function(){
     game = new Scorecard();
   });
 
+  it("Gutter game", function(){
+    game.roll(20, 0);
+    expect(game.score()).toBe(0);
+  });
+
   it('can roll a ball', function() {
-		game.roll
 		expect(game.score()).toEqual(10);
 	});
 

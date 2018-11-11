@@ -1,5 +1,7 @@
 "use strict";
 
+var pins = 0
+
 function Game() {
   this._frame = 1;
   this._roll = 1;
@@ -46,7 +48,7 @@ Game.prototype.frameAndRoll = function(){
 
 Game.prototype.endGameCheck = function(){
   if(this._frame === 10){
-    this._firstRollScore =this.pinsKnockdown(pins);
+    this._firstRollScore = this.pinsKnockdown(pins);
     this._secondRollScore = 0;
     this._standingPins = 0;
     this._maxRounds = 10;

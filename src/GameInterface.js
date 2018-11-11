@@ -2,6 +2,11 @@ $(document).ready(function() {
   var game = new Game();
   gameFunctionality();
 
+  $('#zero').click(function() {
+    pins = 0
+    game.bowl();
+    gameFunctionality();
+  });
   $('#one').click(function() {
     pins = 1
     game.bowl();

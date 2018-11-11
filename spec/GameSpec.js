@@ -14,7 +14,7 @@ describe("#Bowling Game", function(){"use strict";
     });
 
     it("Can tell if there's a strike", function(){
-      spyOn(game, 'pinsKnockdown').and.returnValue(10);
+      spyOn(game, 'pinsKnockdown').and.returnValues(10);
       game.bowl();
       expect(game._bonus).toEqual("Strike!");
     });

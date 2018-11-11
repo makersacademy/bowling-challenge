@@ -8,7 +8,7 @@ describe('Frame of Bowling test score system', function(){
   });
 
   it('can roll a ball', function() {
-		//rollPins(10, 0);
+		game.roll
 		expect(game.score()).toEqual(10);
 	});
 

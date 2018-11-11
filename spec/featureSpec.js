@@ -23,4 +23,11 @@ describe('Feature Test:', function(){
     game.addNextRoll(4);
     expect(game.getScorecard().getTotalScore()).toEqual(4);
   });
+
+  it('a frame should have maximum 2 rolls',function(){
+    game.addNextRoll(4);
+    game.addNextRoll(4);
+    game.addNextRoll(4);
+    expect(game.getScorecard().getFrames()[0].getRolls().length).toEqual(2);
+  });
 });

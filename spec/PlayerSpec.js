@@ -8,7 +8,9 @@ describe('Player', function(){
     player = new Player(playername)
   });
 
-  it('has a name', function(){
-    expect(player.getName()).toEqual(playername);
+  describe('getName', function(){
+    it('returns the name', function(){
+      expect(player.getName()).toEqual(playername);
+    });
   });
 });

@@ -14,25 +14,49 @@ describe('Scorecard', function(){
     scorecard = new Scorecard();
   });
 
-  it('has a total score initially equal to zero', function(){
-    expect(scorecard.getTotalScore()).toEqual(0);
+  describe("createNewFrame", function(){
+    it('creates a new frame', function(){
+      scorecard.createNewFrame();
+      expect(Frame).toHaveBeenCalled();
+    });
   });
 
-  it('has 10 frames', function(){
-    expect(scorecard.getFrames().length).toEqual(10);
+  describe('getTotalScore', function(){
+    
+    it('has a total score initially equal to zero', function(){
+      expect(scorecard.getTotalScore()).toEqual(0);
+    });
+
+    it('calculates the total score based on the frames and rolls', function(){
+      let roll_1 = jasmine.createSpyObj('roll', ['getScore']);
+      roll_1.getScore.and.callFake(function() { return 4; });
+
+      let roll_2 = jasmine.createSpyObj('roll', ['getScore']);
+      roll_2.getScore.and.callFake(function() { return 3; });
+
+      let full_rolls = [ roll_1, roll_2 ];
+      scorecard.createNewFrame();
+      scorecard.getFrames()[0].getRolls.and.callFake(function() { return full_rolls; });
+
+      expect(scorecard.getTotalScore()).toEqual(7);
+    });
   });
 
-  it('calculates the total score based on the frames and rolls', function(){
-    let roll_1 = jasmine.createSpyObj('roll', ['getScore']);
-    roll_1.getScore.and.callFake(function() { return 4; });
+  describe('getScores', function(){
+    it("returns the scores by frame",function(){
+      let roll_1 = jasmine.createSpyObj('roll', ['getScore']);
+      roll_1.getScore.and.callFake(function() { return 4; });
 
-    let roll_2 = jasmine.createSpyObj('roll', ['getScore']);
-    roll_2.getScore.and.callFake(function() { return 3; });
+      let roll_2 = jasmine.createSpyObj('roll', ['getScore']);
+      roll_2.getScore.and.callFake(function() { return 3; });
 
-    let full_rolls = [ roll_1, roll_2 ];
-    scorecard.getFrames()[0].getRolls.and.callFake(function() { return full_rolls; });
+      let full_rolls = [ roll_1, roll_2 ];
+      scorecard.createNewFrame();
+      scorecard.getFrames()[0].getRolls.and.callFake(function() { return full_rolls; });
 
-    expect(scorecard.getTotalScore()).toEqual(7);
+      let score_array = [7];
+      expect(scorecard.getScores()).toEqual(score_array);
+    });
   });
 
 });

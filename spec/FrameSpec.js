@@ -6,14 +6,26 @@ describe('Frame', function(){
   beforeEach(function(){
     frame = new Frame();
   });
-
-  it('can add rolls', function(){
-    expect(frame.addRoll).toBeDefined();
+  
+  describe('addRoll', function(){
+    it('can add rolls', function(){
+      expect(frame.addRoll).toBeDefined();
+    });
   });
 
-  it('can return the rolls', function(){
-    let ROLL = { score: 6 };
-    frame.addRoll(ROLL);
-    expect(frame.getRolls()[0]).toEqual(ROLL);
+  describe('getRolls', function(){
+    it('can return the rolls', function(){
+      let ROLL = { score: 6 };
+      frame.addRoll(ROLL);
+      expect(frame.getRolls()[0]).toEqual(ROLL);
+    });
+  });
+
+  describe('isIncomplete', function(){
+    it("it shows if a frame is incomplete",function(){
+      let ROLL = { score: 6 };
+      frame.addRoll(ROLL);
+      expect(frame.isIncomplete()).toEqual(true); 
+    });
   });
 });

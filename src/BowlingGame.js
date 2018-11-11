@@ -15,5 +15,18 @@ BowlingGame.prototype.getScorecard = function(){
 
 BowlingGame.prototype.addNextRoll = function(pinsKnocked){
   let roll = new Roll(pinsKnocked);
-  this._scorecard.getFrames()[0].addRoll(roll);
+  let frames = this._scorecard.getFrames()
+  if (frames.length == 0) {
+    this._scorecard.createNewFrame();
+  }
+  frames = this._scorecard.getFrames();
+  let last_frame = frames[frames.length - 1];
+  if (last_frame.isIncomplete()){
+    last_frame.addRoll(roll);
+  } else {
+    this._scorecard.createNewFrame();
+    frames = this._scorecard.getFrames();
+    last_frame = frames[frames.length - 1];
+    last_frame.addRoll(roll)
+  }
 };

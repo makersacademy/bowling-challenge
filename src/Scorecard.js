@@ -2,9 +2,6 @@
 
 function Scorecard() {
   this._frames = [];
-  for(var i = 0; i < 10; ++i) {
-    this._frames[i] = new Frame();
-  };
 };
 
 Scorecard.prototype.getTotalScore = function() {
@@ -20,4 +17,25 @@ Scorecard.prototype.getTotalScore = function() {
 
 Scorecard.prototype.getFrames = function() {
   return this._frames;
+};
+
+Scorecard.prototype.createNewFrame = function() {
+  let frame = new Frame();
+  this._frames.push(frame);
+};
+
+Scorecard.prototype.getScores = function() {
+  var scores = [];
+  for(var frame in this._frames) {
+    let rolls = this.getFrames()[frame].getRolls();
+    if (rolls.length != 2) {
+      break;
+    }
+    var roll_score = 0;
+    for(var roll in rolls) {
+      roll_score += rolls[roll].getScore();
+    }
+    scores.push(roll_score);
+  }
+  return scores;
 };

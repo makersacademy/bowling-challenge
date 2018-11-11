@@ -8,7 +8,9 @@ describe('Roll', function(){
     roll = new Roll(SCORE);
   });
 
-  it('can return the score', function(){
-    expect(roll.getScore()).toEqual(SCORE);
+  describe('getScore', function(){
+    it('can return the score', function(){
+      expect(roll.getScore()).toEqual(SCORE);
+    });
   });
 });

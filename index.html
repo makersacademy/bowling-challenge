@@ -18,17 +18,17 @@
     <main role="main" class="container">
 
       <div class="buttons text-center py-2">
-        <button class="btn btn-primary" type="submit">0</button>
-        <button class="btn btn-primary" type="submit">1</button>
-        <button class="btn btn-primary" type="submit">2</button>
-        <button class="btn btn-primary" type="submit">3</button>
-        <button class="btn btn-primary" type="submit">4</button>
-        <button class="btn btn-primary" type="submit">5</button>
-        <button class="btn btn-primary" type="submit">6</button>
-        <button class="btn btn-primary" type="submit">7</button>
-        <button class="btn btn-primary" type="submit">8</button>
-        <button class="btn btn-primary" type="submit">9</button>
-        <button class="btn btn-primary" type="submit">10</button>
+        <button class="btn btn-primary" id="button-0" type="submit">0</button>
+        <button class="btn btn-primary" id="button-1" type="submit">1</button>
+        <button class="btn btn-primary" id="button-2" type="submit">2</button>
+        <button class="btn btn-primary" id="button-3" type="submit">3</button>
+        <button class="btn btn-primary" id="button-4" type="submit">4</button>
+        <button class="btn btn-primary" id="button-5" type="submit">5</button>
+        <button class="btn btn-primary" id="button-6" type="submit">6</button>
+        <button class="btn btn-primary" id="button-7" type="submit">7</button>
+        <button class="btn btn-primary" id="button-8" type="submit">8</button>
+        <button class="btn btn-primary" id="button-9" type="submit">9</button>
+        <button class="btn btn-primary" id="button-10" >10</button>
 
       </div>
 
@@ -166,18 +166,41 @@
         bowlCounter >= 19;
       }
 
+      function isSecondBowl(){
+
+      return  bowlCounter % 2 != 0;
+      }
+
+      function resetAllButtons(){
+        $('button').prop('disabled', false);
+      }
+
+      function disableButtons(remainingPins){
+        for (var i = remainingPins + 1; i <= 10; i++) {
+          $('#button-' + i).prop('disabled', true);
+        }
+      }
+
+      function enableDisableButtons(){
+        if (isSecondBowl()) {
+          var remainingPins = 10 - bowlOne;
+          disableButtons(remainingPins)
+        } else{
+          resetAllButtons()
+        }
+      }
+
 
       $('button').click(function() {
         bowl = $(this).text();
         setBowl()
-        // function needed to disable buttons
         incrementBowlCounter();
+        enableDisableButtons()
         setOutput();
         showScoreForSingleBowl();
         addFrameToGame();
-        updateTotalScore();
         updateFrameScores();
-
+        updateTotalScore();
       });
 
     </script>

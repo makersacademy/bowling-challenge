@@ -7,10 +7,20 @@ $(document).ready(function() {
     if (roll === "Start Again") {
       location.reload();
     } else {
-      game.recordRoll(parseInt(roll));
-      updateScore();
-      displayInFrame(game._currentFrame);
+      try {
+        game.recordRoll(parseInt(roll));
+        updateScore();
+        displayInFrame(game._currentFrame);
+        $('#error').text('')
+      } catch(err) {
+        $('#error').text('Invalid throw')
+      };
     };
+  });
+
+  $('button').error(function() {
+    console.log('ERROR FOUND')
+    $('#error').text('Error')
   });
 
   function updateScore() {

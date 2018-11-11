@@ -147,6 +147,10 @@
           bowlOne = undefined
         }
       }
+      function showScoreForSingleBowl(){
+        $('#bowl-' + bowlCounter).text(output);
+      }
+
 
       function updateTotalScore(){
         $('#total-score').text(game.gameScore);
@@ -165,7 +169,7 @@
         // function needed to disable buttons
         incrementBowlCounter();
         setOutput();
-        $('#bowl-' + bowlCounter).text(output);
+        showScoreForSingleBowl();
         addFrameToGame();
         updateTotalScore();
         updateFrameScores();

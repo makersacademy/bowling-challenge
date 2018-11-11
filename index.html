@@ -162,6 +162,10 @@
         }
       }
 
+      function isFinalFrame(){
+        bowlCounter >= 19;
+      }
+
 
       $('button').click(function() {
         bowl = $(this).text();
@@ -173,9 +177,6 @@
         addFrameToGame();
         updateTotalScore();
         updateFrameScores();
-
-
-
 
       });
 

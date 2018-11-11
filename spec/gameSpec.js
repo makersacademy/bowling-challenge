@@ -37,10 +37,10 @@ describe("Game", function() {
       expect(game.total()).toEqual(0);
     });
     it("returns sum of all frame totals", function() {
-      game.roll(8);
-      game.roll(8);
-      game.roll(8);
-      expect(game.total()).toEqual(24);
+      game.roll(4);
+      game.roll(4);
+      game.roll(4);
+      expect(game.total()).toEqual(12);
     });
   });
 

@@ -77,6 +77,38 @@ describe("Frame", function() {
     });
   });
 
+  describe(".accepts()", function() {
+    it("returns true if value doesn't take total above 10", function() {
+      expect(frame.accepts(5)).toEqual(true);
+    });
+    it("returns false if value greater than 10", function() {
+      expect(frame.accepts(11)).toEqual(false);
+    });
+    it("returns false if value less than 0", function() {
+      expect(frame.accepts(-1)).toEqual(false);
+    });
+    it("returns false if value is not an integer", function() {
+      expect(frame.accepts("string")).toEqual(false);
+    });
+    describe("for first nine frames", function() {
+      it("returns false if value takes total above 10", function() {
+        frame.roll(4);
+        expect(frame.accepts(7)).toEqual(false);
+      });
+    });
+    describe("for final frame", function() {
+      it("returns true if value takes total above 10 after a strike", function() {
+        finalFrame.roll(10);
+        expect(finalFrame.accepts(10)).toEqual(true);
+      });
+      it("returns false if value takes total above 20 after a strike and a sub-10 roll", function() {
+        finalFrame.roll(10);
+        finalFrame.roll(5);
+        expect(finalFrame.accepts(6)).toEqual(false);
+      });
+    });
+  });
+
   describe(".isComplete()", function() {
     it("is initially false", function() {
       expect(frame.isComplete()).toEqual(false);

@@ -1,0 +1,67 @@
+body {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  background-color: cornsilk;
+  font-family: helvetica;
+}
+
+h1 {
+  background-color: brown;
+  color: gold;
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 15px;
+}
+
+table {
+  margin: auto;
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+
+th {
+  padding: 10px;
+  column-span: 5;
+  width: 10px;
+  text-align: center;
+  color: gold;
+}
+
+td {
+  padding: 10px;
+  column-span: 5;
+  width: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+input {
+  border-radius: 5px;
+}
+
+input[type=submit] {
+  background-color: gold;
+  font-weight: bold;
+}
+
+.selected {
+  background-color: gold;
+}
+
+.main {
+  background-color: brown;
+  padding: 10px;
+  margin: 5px;
+  border: 2px solid black;
+  border-radius: 15px;
+}
+
+#value-error {
+  color: cornsilk;
+}
+
+#complete-message {
+  color: cornsilk;
+}

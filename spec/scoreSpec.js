@@ -107,10 +107,6 @@ describe('Score', function() {
 
   describe('gameTotalScore', function() {
     beforeEach(function() {
-      // score = new Score();
-      // score.array.push(strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame, strike_frame_tenth);
-      // score.calculateFrameScore();
-      // score.calculateBonus();
       gameTotal = new Game();
       for (var i = 0; i < 12; i++) {
         gameTotal.addScore(10);

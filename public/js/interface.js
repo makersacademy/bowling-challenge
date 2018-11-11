@@ -4,6 +4,20 @@ $( document ).ready(function() {
   // Functions Start
 
   function updateScores() {
+    calculations();
+    updateRolls();
+    updateFrameTotal();
+    updateGameTotal();
+  };
+
+  function calculations() {
+    bowlingGame.calculateFrameScore();
+    bowlingGame.calculateBonus();
+    bowlingGame.frameTotalScore();
+    bowlingGame.gameTotalScore();
+  }
+
+  function updateRolls() {
     $('#frame1_roll1').text(bowlingGame.previousRolls[0])
     $('#frame1_roll2').text(bowlingGame.previousRolls[1])
     $('#frame2_roll1').text(bowlingGame.previousRolls[2])
@@ -24,11 +38,10 @@ $( document ).ready(function() {
     $('#frame9_roll2').text(bowlingGame.previousRolls[17])
     $('#frame10_roll1').text(bowlingGame.previousRolls[18])
     $('#frame10_roll2').text(bowlingGame.previousRolls[19])
-  };
+    $('#frame10_roll3').text(bowlingGame.previousRolls[20])
+  }
 
-  function dislayFrameTotal() {
-    bowlingGame.calculateFrameScore();
-    bowlingGame.calculateBonus();
+  function updateFrameTotal() {
     $('#frame1_total').text(bowlingGame.scores.array[0].frameScore)
     $('#frame2_total').text(bowlingGame.scores.array[1].frameScore)
     $('#frame3_total').text(bowlingGame.scores.array[2].frameScore)
@@ -41,11 +54,9 @@ $( document ).ready(function() {
     $('#frame10_total').text(bowlingGame.scores.array[9].frameScore)
   }
 
-  // function gameTotal() {
-  //   bowlingGame.calculateFrameScore();
-  //   bowlingGame.calculateBonus();
-  //   $( '#gameTotal' ).text(bowlingGame.gameScore);
-  // }
+  function updateGameTotal() {
+    $( '#gameTotal' ).text(bowlingGame.gameScore);
+  }
 
   // Functions End
 
@@ -56,6 +67,5 @@ $( document ).ready(function() {
       alert(err.message)
     }
     updateScores();
-    dislayFrameTotal();
   });
 });

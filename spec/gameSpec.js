@@ -8,9 +8,9 @@ describe('Game', function() {
       expect(game.NUMBER_OF_FRAMES).toEqual(10);
     });
 
-    it('has 2 rolls per frame', function() {
-      expect(game.rollsPerFrame).toEqual(2);
-    });
+    // it('has 2 rolls per frame', function() {
+    //   expect(game.rollsPerFrame).toEqual(2);
+    // });
 
     it('has 10 pins per frame', function() {
       expect(game.NUMBER_OF_PINS).toEqual(10);

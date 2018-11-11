@@ -38,7 +38,7 @@ Score.prototype.gameTotalScore = function () {
   for (var i = 0; i < this.array.length; i++) {
     total = total + (this.array[i].frameScore || 0)
   }
-  this.gameScore += total;
+  this.gameScore = total;
 };
 
 Score.prototype.isGutterGame = function () {

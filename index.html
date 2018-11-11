@@ -109,17 +109,23 @@
       var game = new Game;
       var bowlOne;
       var bowlTwo;
-      $('button').click(function() {
 
-  		  bowl = $(this).text();
+      function setBowl(){
+        if (typeof bowlOne === 'undefined') {
+          bowlOne = bowl;
 
-          if (typeof bowlOne === 'undefined') {
-    			  bowlOne = bowl;
-
-            } else {
-      			bowlTwo = bowl;
-
+          } else {
+          bowlTwo = bowl;
       		}
+
+      }
+
+
+      $('button').click(function() {
+        bowl = $(this).text();
+        setBowl()
+
+
           bowlCounter++
           if (bowl === '10') {
             bowlCounter++

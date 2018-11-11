@@ -8,7 +8,7 @@ Welcome to the bowling scorecard. Check out the instructions below to find out h
 * Note that each frame takes 2 rolls these rolls will be shown in your scorecard. The left is the first roll and the right is the second
 * A frame total is calculated once you have inputed your 2 rolls
 
-![Alt text](/assets/bowling.png)
+![Alt text](/assets/bowling-game.png)
 
 * A running total will be calculated after that
 * Once you have played 10 rolls, the game will end

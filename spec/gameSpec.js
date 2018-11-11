@@ -37,19 +37,12 @@ describe("Game", function() {
     game.bowl(1)
     expect(game.frames[0].score).toEqual(11)
   })
-  //
-  // it("can score a spare on first roll of next frame", function() {
-  //   game.firstRoll(1);
-  //   game.secondRoll(9);
-  //   game.firstRoll(3);
-  //   expect(game.totalScore).toEqual(13);
-  // });
-  //
+
   // it("can score a spare when followed by strike", function() {
-  //   game.firstRoll(1);
-  //   game.secondRoll(9);
-  //   game.firstRoll(10);
-  //   expect(game.totalScore).toEqual(20);
+  //   game.bowl(1);
+  //   game.bowl(9);
+  //   game.bowl(10);
+  //   expect(game.frames[0].score).toEqual(20);
   // });
   //
   // it("can score a strike when followed by two regular rolls", function() {

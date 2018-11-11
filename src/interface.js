@@ -3,10 +3,14 @@ $(document).ready(function() {
   updateScore();
 
   $('button').click(function() {
-     roll = ($(this).text());
-     game.recordRoll(parseInt(roll));
-     updateScore();
-     displayInFrame(game._currentFrame);
+    roll = ($(this).text());
+    if (roll === "Start Again") {
+      location.reload();
+    } else {
+      game.recordRoll(parseInt(roll));
+      updateScore();
+      displayInFrame(game._currentFrame);
+    };
   });
 
   function updateScore() {

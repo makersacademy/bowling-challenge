@@ -9,7 +9,8 @@ $(document).ready(function() {
       var rollValue = Number(idClicked);
       if (lastRoll === 'second') {
         game.bowl(rollValue);
-        $("#game-log").append("<p>Frame:" + frame + " First roll: " + rollValue + " Total score: " + game.totalScore() + "</p>");
+        $(`#${frame}_1`).text(`${rollValue}`);
+        $(`#game_total`).text(`${game.totalScore}`);
         if (rollValue === 10) {
           lastRoll = "second";
           frame ++;
@@ -21,7 +22,9 @@ $(document).ready(function() {
         }
       } else {
         game.bowl(rollValue);
-        $("#game-log").append("<p>Frame:" + frame + " Second roll: " + rollValue + " Total score: " + game.totalScore() + "</p>");
+        $(`#${frame}_2`).text(`${rollValue}`);
+        $(`#total_${frame}`).text(`${game.totalScore}`);
+        $(`#game_total`).text(`${game.totalScore}`);
         lastRoll = "second";
         frame ++;
         $("button").show();
@@ -31,7 +34,7 @@ $(document).ready(function() {
             var idClicked = e.target.id;
             var rollValue = Number(idClicked);
             game.bowl(rollValue);
-            $("#game-log").append("<p>Bonus roll: " + rollValue + " Total score: " + game.totalScore() +"</p>");
+            $(`#game_total`).text(`${game.totalScore}`);
             frame ++;
           }
     } else if (frame === 12) {
@@ -39,7 +42,7 @@ $(document).ready(function() {
             var idClicked = e.target.id;
             var rollValue = Number(idClicked);
             game.bowl(rollValue);
-            $("#game-log").append("<p>Bonus roll: " + rollValue + " Total score: " + game.totalScore() + "</p>");
+            $(`#game_total`).text(`${game.totalScore}`);
             frame ++;
           }
       }

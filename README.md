@@ -18,7 +18,7 @@ To run tests, open SpecRunner.html in your browser. Your screen should look like
 
 The scorecard is created using JavaScript and JQuery. Tests are written using Jasmine.
 
-The business log adds frames to the game and keeps score. I've written additional logic into the interface to limit number of frames and bonus rolls.
+The business logic adds frames to the game and keeps score. I've written additional logic into the interface to limit number of frames and bonus rolls.
 
 ### Bowling — how does it work?
 

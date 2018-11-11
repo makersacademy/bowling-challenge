@@ -9,9 +9,11 @@ var Game = function() {
 
 Game.prototype.addFrame = function(frame) {
   this.frames.push(frame)
+  this.generateTotalScore()
 };
 
 Game.prototype.generateTotalScore = function() {
+  this.gameScore = 0;
 
   for (var i = 0; i < this.frames.length; i++) {
     if ( i + 2 < this.frames.length ) {
@@ -21,6 +23,7 @@ Game.prototype.generateTotalScore = function() {
     } else {
       this.frames[i].calculateScore();
     }
+
     this.gameScore += this.frames[i].score();
   }
 };

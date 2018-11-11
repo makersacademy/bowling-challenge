@@ -1,6 +1,12 @@
 $(document).ready(function() {
   var game = new BowlingGame();
 
+  $('#0').click(function() {
+    game.roll(0);
+    updateScores();
+    updateTotalScore();
+  });
+
   $('#1').click(function() {
     game.roll(1);
     updateScores();

@@ -148,6 +148,10 @@
         }
       }
 
+      function updateTotalScore(){
+        $('#total-score').text(game.gameScore);
+      }
+
 
       $('button').click(function() {
         bowl = $(this).text();
@@ -157,10 +161,10 @@
         setOutput();
         $('#bowl-' + bowlCounter).text(output);
         addFrameToGame();
+        updateTotalScore();
 
 
 
-          $('#total-score').text(game.gameScore);
 
           for (var i = 1; i <= game.frames.length; i++) {
             $('#frame-'+ i + '-score').text(game.frames[i-1].frameScore);

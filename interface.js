@@ -34,6 +34,7 @@ $(document).ready(function() {
             var idClicked = e.target.id;
             var rollValue = Number(idClicked);
             game.bowl(rollValue);
+            $(`#10_2`).text(`${rollValue}`);
             $(`#game_total`).text(`${game.totalScore()}`);
             frame ++;
           }
@@ -42,6 +43,7 @@ $(document).ready(function() {
             var idClicked = e.target.id;
             var rollValue = Number(idClicked);
             game.bowl(rollValue);
+            $(`#10_3`).text(`${rollValue}`);
             $(`#game_total`).text(`${game.totalScore()}`);
             frame ++;
           }

@@ -66,5 +66,8 @@ Game.prototype.scoreStrike = function() {
 }
 // this will only work if there are no frames with no scores!
 Game.prototype.totalScore = function() {
-  return this.frames.map(frame => frame['score']).reduce(add, 0)
+  return this.scores().reduce(add, 0)
+}
+Game.prototype.scores = function() {
+  return this.frames.map(frame => frame['score'])
 }

@@ -34,8 +34,6 @@ function incrementBowlCounter(){
   }
 }
 
-
-
 function enableDisableButtons(){
   if (_isFinalFrame()) {
     if (bowls[bowls.length-1] !== 10) {

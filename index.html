@@ -133,17 +133,17 @@
 
     function incrementBowlCounter(){
       bowlCounter++;
-      if (!isFinalFrame() && bowls[0] === 10) {
+      if (!_isFinalFrame() && bowls[0] === 10) {
         bowlCounter++;
       }
     }
 
     function enableDisableButtons(){
-      if (isSecondBowl() && bowls[0] != 10) {
+      if (_isSecondBowl() && bowls[0] != 10) {
         var remainingPins = 10 - bowls[0];
-        disableButtons(remainingPins)
+        _disableButtons(remainingPins)
       } else{
-        resetAllButtons()
+        _resetAllButtons()
       }
     }
 
@@ -168,7 +168,7 @@
     }
 
     function addFrameToGame(){
-      if (isFinalFrame()) {
+      if (_isFinalFrame()) {
         if (bowls.length === 2 && bowls[0] + bowls[1] < 10 ) {
           game.addFrame(new Frame([bowls[0], bowls[1]]))
         }
@@ -205,19 +205,19 @@
     }
 
     // Supporting Functions
-    function isFinalFrame(){
+    function _isFinalFrame(){
       return bowlCounter > 18;
     }
 
-    function isSecondBowl(){
+    function _isSecondBowl(){
       return  bowlCounter % 2 != 0;
     }
 
-    function resetAllButtons(){
+    function _resetAllButtons(){
       $('button').prop('disabled', false);
     }
 
-    function disableButtons(remainingPins){
+    function _disableButtons(remainingPins){
       for (var i = remainingPins + 1; i <= 10; i++) {
         $('#button-' + i).prop('disabled', true);
       }

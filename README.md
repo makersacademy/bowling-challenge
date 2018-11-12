@@ -3,7 +3,7 @@
 
 ## Model
 
-![Model Class Diagram](./images/model_class_diagram.png)
+![Model Class Diagram](./images/ScoreCard.png)
 
 
 ## USER STORIES

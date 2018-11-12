@@ -1,4 +1,13 @@
+"use strict";
+
 describe("Feature", function() {
+
+  var game;
+  var standardFrame;
+  var spareFrame;
+  var strikeFrame;
+  var gutterFrame;
+  var finalFrame;
 
   beforeEach(function(){
     game = new Game();

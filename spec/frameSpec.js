@@ -1,4 +1,11 @@
+"use strict";
+
 describe("Frame", function() {
+
+  var standardFrame;
+  var spareFrame;
+  var strikeFrame;
+  var gutterFrame;
 
   beforeEach(function(){
     standardFrame = new Frame([4,5]);

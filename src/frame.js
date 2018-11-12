@@ -1,3 +1,5 @@
+"use strict";
+
 var Frame = function(bowls) {
   this.bowls = bowls;
   this.frameScore;
@@ -50,13 +52,14 @@ Frame.prototype._strikeBonus = function(framePlusOne, framePlusTwo){
   } else {
     nextBowls = framePlusOne.bowls.concat(framePlusTwo.bowls);
   };
+  var i;
   for (i = 1; i <= 2 && i <= nextBowls.length; i++) {
     this.frameScore += nextBowls[i-1];
   };
 }
 
 // ********* Utility Functions *********
-
+var sumArr;
 sumArr = function(arr){
   var sum = arr.reduce(add, 0);
 

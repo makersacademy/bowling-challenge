@@ -1,7 +1,10 @@
+"use strict";
+
 // ***************** variables ***************************
 var game = new Game;
 var bowlCounter = 0;
-bowls = [];
+var bowls = [];
+var bowl;
 var output;
 
 // *************** game interaction *********************

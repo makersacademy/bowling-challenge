@@ -1,3 +1,5 @@
+"use strict";
+
 var Game = function() {
   this.frames = [];
   this.gameScore = 0;

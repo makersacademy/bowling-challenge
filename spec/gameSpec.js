@@ -1,4 +1,10 @@
+"use strict";
+
 describe("Game", function() {
+
+  var game;
+  var standardFrame;
+  var strikeFrame;
 
   beforeEach(function(){
     game = new Game();

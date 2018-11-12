@@ -38,7 +38,7 @@ describe("Game", function(){
       frame.isStrike.and.callFake(function() {return false})
       frame.isSpare.and.callFake(function() {return false})
 
-      for(i = 0; i < 10; i++) {game.updateTotalScore(frame)}
+      for(var i = 0; i < 10; i++) {game.updateTotalScore(frame)}
       expect(game.getFrameNumber()).toBe("Game over!");
     });
   });

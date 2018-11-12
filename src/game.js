@@ -6,9 +6,6 @@ var Game = function() {
 }
 
 // **************** Class Functinos ******************
-
-// Needs some validation check for number of frames not exceeding 10, total score not exceeding 300.
-
 Game.prototype.addFrame = function(frame) {
   this.frames.push(frame);
   this.generateTotalScore();

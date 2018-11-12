@@ -7,7 +7,7 @@ var bowls = [];
 var bowl;
 var output;
 
-// *************** game interaction *********************
+// ******************** Events ***************************
 $('button').click(function() {
   bowl = $(this).text();
   addBowl(bowl);
@@ -22,7 +22,6 @@ $('button').click(function() {
 });
 
 // ******************* Function ************************
-
 function addBowl(bowl){
   bowls.push(parseInt(bowl));
 };

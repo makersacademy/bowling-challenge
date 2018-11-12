@@ -7,7 +7,6 @@ var Frame = function(bowls) {
 }
 
 // **************** Class Functions ******************
-
 Frame.prototype.calculateScore = function(framePlusOne, framePlusTwo){
 
   this.frameScore = sumArr(this.bowls);
@@ -30,7 +29,6 @@ Frame.prototype.score = function(){
 };
 
 // ************* Private Functions ***********
-
 Frame.prototype._isStrike = function(){
   return this.bowls[0] === 10;
 }

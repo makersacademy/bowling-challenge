@@ -97,8 +97,6 @@ describe('Game', function() {
     for (var i = 0; i < 12; i++) {
       game.enterRoll(10);
     }
-    console.log(game.frames);
-    // console.log("frame 1 bonus", game.frames[0].frame_bonus)
     expect(game.calculateGameTotalScore()).toEqual(300);
   });
 

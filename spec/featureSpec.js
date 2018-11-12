@@ -35,16 +35,10 @@ describe("Feature", function() {
   });
 
   it("Perfect Game - Retuns score of 300", function (){
-    // Refactor into a loop
-    game.addFrame(strikeFrame);
-    game.addFrame(strikeFrame);
-    game.addFrame(strikeFrame);
-    game.addFrame(strikeFrame);
-    game.addFrame(strikeFrame);
-    game.addFrame(strikeFrame);
-    game.addFrame(strikeFrame);
-    game.addFrame(strikeFrame);
-    game.addFrame(strikeFrame);
+    var times = 9;
+    for(var i=0; i < times; i++){
+        game.addFrame(strikeFrame);
+    }
     game.addFrame(finalFrame);
 
     game.generateTotalScore();
@@ -52,17 +46,10 @@ describe("Feature", function() {
   });
 
   it("Gutter Game - returns score of 0", function (){
-    // Refactor into loop
-    game.addFrame(gutterFrame);
-    game.addFrame(gutterFrame);
-    game.addFrame(gutterFrame);
-    game.addFrame(gutterFrame);
-    game.addFrame(gutterFrame);
-    game.addFrame(gutterFrame);
-    game.addFrame(gutterFrame);
-    game.addFrame(gutterFrame);
-    game.addFrame(gutterFrame);
-    game.addFrame(gutterFrame);
+    var times = 9;
+    for(var i=0; i < times; i++){
+      game.addFrame(gutterFrame);
+    }
 
     game.generateTotalScore();
     expect(game.gameScore).toEqual(0);
@@ -85,7 +72,5 @@ describe("Feature", function() {
     game.generateTotalScore();
     expect(game.gameScore).toEqual(30);
   });
-
-
 
 });

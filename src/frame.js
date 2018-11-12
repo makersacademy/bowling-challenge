@@ -44,8 +44,6 @@ Frame.prototype._spareBonus = function(framePlusOne){
 Frame.prototype._strikeBonus = function(framePlusOne, framePlusTwo){
   var nextBowls;
 
-
-
   if (typeof framePlusTwo === 'undefined') {
     nextBowls = framePlusOne.bowls;
 

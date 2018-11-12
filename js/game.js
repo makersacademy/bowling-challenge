@@ -31,8 +31,6 @@ Game.prototype.finalBonusRoll = function (pins) {
   if(this.currentframe.hasSpare()) {
     this.currentframe.frame_bonus[0] = pins
   }
-
-  // console.log(this.currentframe.frame_bonus)
 }
 
 Game.prototype.frameRoll = function (frame, pins) {
@@ -109,7 +107,6 @@ Game.prototype.getFrameBonusValues = function (frame) {
   }
 
   if (frame.hasSpare()) {
-    // console.log("sparebonus")
       if (!isNaN(this.getAllRolls()[frame.finalIndexOfFrame+1])) {
         bonus[0]=(this.getAllRolls()[frame.finalIndexOfFrame+1])
       }
@@ -121,7 +118,6 @@ Game.prototype.getFrameBonusValues = function (frame) {
 }
 
 Game.prototype.calculateGameTotalScore = function (frame) {
-  // console.log(this.getCurrentTotalScoreValues())
   return this.getCurrentTotalScoreValues().reduce(function(a, b){return a+b;})
 }
 

@@ -11,7 +11,6 @@ function Frame (framenumber)
 	this.GUTTER_FRAME = 0;
 	this.frame_bonus = [0,0];
 	this.finalIndexOfFrame;
-	// this.framesize = this.REGULAR_FRAMESIZE;
 }
 
 Frame.prototype.getrolls = function () {

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <title>Moishe' Bowl's</title>
+    <!-- <script src="/bowling.css"></script> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="src/interface.js"></script>
+<script src="src/frame.js"></script>
+</head>
+<body>
+
+<%=@total%>
+<%= @scores %>
+<%= @roll %>
+      <h1 class="pb-2 pl-2"> Score card</h1>
+      <div class="pb-2 pl-2">
+      <button class="btn btn-outline-danger" id='1' type="number" name="1" value="1">1</button>
+
+      <button class="btn btn-outline-danger"id="2" type="number" name="2" value="2">2</button>
+
+      <button class="btn btn-outline-danger"id='3' type="number" name="3" value="3">3</button>
+
+      <button class="btn btn-outline-danger" id='4'type="number" name="4" value="4">4</button>
+
+      <button class="btn btn-outline-warning" id='5'type="number" name="5" value="5">5</button>
+
+      <button class="btn btn-outline-dark" id='6'type="number" name="6" value="6">6</button>
+
+      <button class="btn btn-outline-dark" id='7'type="number" name="7" value="7">7</button>
+
+      <button class="btn btn-outline-dark" id='8'type="number" name="8" value="8">8</button>
+
+      <button class="btn btn-outline-dark" id='9'type="number" name="9" value="9">9</button>
+
+      <button class="btn btn-outline-success" id='10'type="number" name="10" value="10">10</button>
+  </div>
+      <div class="table-responsive">
+        <table class="table">
+           <thead class="thead-dark"
+<tr>
+        <th colspan="2"> 1</th>
+        <th colspan="2"> 2</th>
+        <th colspan="2"> 3</th>
+        <th colspan="2"> 4</th>
+        <th colspan="2"> 5</th>
+        <th colspan="2"> 6</th>
+        <th colspan="2"> 7</th>
+        <th colspan="2"> 8</th>
+        <th colspan="2"> 9</th>
+        <th colspan="3"> 10</th>
+        <th colspan="1"> Total Score</th>
+</tr>
+</thead>
+<tbody class="thead-light">
+<tr>
+
+
+  <td id='roll_0'></td>
+  <td id='roll_1'></td>
+  <!--  frame 1-->
+  <td id='roll_2'></td>
+  <td id='roll_3'></td>
+    <!--  frame 2-->
+  <td id='roll_4'></td>
+  <td id='roll_5'></td>
+    <!--  frame 3-->
+  <td id='roll_6'></td>
+  <td id='roll_7'></td>
+    <!--  frame 4-->
+  <td id='roll_8'></td>
+  <td id='roll_9'></td>
+    <!--  frame 5-->
+  <td id='roll_10'></td>
+  <td id='roll_11'></td>
+    <!--  frame 6-->
+  <td id='roll_12'></td>
+  <td id='roll_13'></td>
+    <!--  frame 7-->
+  <td id='roll_14'></td>
+  <td id='roll_15'></td>
+    <!--  frame 8-->
+  <td id='roll_16'></td>
+  <td id='roll_17'></td>
+    <!--  frame 9-->
+  <td id='roll_18'></td>
+  <td id='roll_19'></td>
+  <td id='roll_20'></td>
+    <!--  frame 10-->
+  <td id='ts'></td>    <!--  Total score-->
+</tr>
+
+
+
+    </tbody>
+   </table>
+ </div>
+
+ <div id="welcome" class="alert alert-info">
+    <strong>Welcome!</strong>
+  </div>
+ <div id="strike" class="alert alert-success">
+    <strong>Strike</strong>
+    <p><img src="strike.gif" width="320" height="240"><p>
+
+  </div>
+
+  <div id="poor" class="alert alert-danger">
+     <p><strong>Poor</strong><p>
+       <img src="poor.gif" width="320" height="240">
+   </div>
+
+   <div id="average" class="alert alert-warning">
+      <p><strong>Average</strong><p>
+      <img src="average.gif" width="320" height="240">
+    </div>
+
+
+</body>
+</html>

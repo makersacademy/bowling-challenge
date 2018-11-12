@@ -2,67 +2,67 @@ $(document).ready(function() {
   var frame = new Frame();
 
   $('#0').click(function() {
-    frame.bowl(0);
+    frame.roll(0);
     updateScores();
     updateTotalScore();
   });
 
   $('#1').click(function() {
-    frame.bowl(1);
+    frame.roll(1);
     updateScores();
     updateTotalScore();
   });
 
   $('#2').click(function() {
-    frame.bowl(2);
+    frame.roll(2);
     updateScores();
     updateTotalScore();
   });
 
   $('#3').click(function() {
-    frame.bowl(3);
+    frame.roll(3);
     updateScores();
     updateTotalScore();
   });
 
   $('#4').click(function() {
-    frame.bowl(4);
+    frame.roll(4);
     updateScores();
     updateTotalScore();
   });
 
   $('#5').click(function() {
-    frame.bowl(5);
+    frame.roll(5);
     updateScores();
     updateTotalScore();
   });
 
   $('#6').click(function() {
-    frame.bowl(6);
+    frame.roll(6);
     updateScores();
     updateTotalScore();
   });
 
   $('#7').click(function() {
-    frame.bowl(7);
+    frame.roll(7);
     updateScores();
     updateTotalScore();
   });
 
   $('#8').click(function() {
-    frame.bowl(8);
+    frame.roll(8);
     updateScores();
     updateTotalScore();
   });
 
   $('#9').click(function() {
-    frame.bowl(9);
+    frame.roll(9);
     updateScores();
     updateTotalScore();
   });
 
   $('#10').click(function() {
-    frame.bowl(10);
+    frame.roll(10);
     updateScores();
     updateTotalScore();
   });

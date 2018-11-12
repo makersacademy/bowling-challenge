@@ -11,8 +11,6 @@ describe("Game", function() {
     expect(game.frames.length).toEqual(1);
   });
 
-  // unable to stub a class property
-  // Either need to work out how to stub class properties or create a method to return frame score
   it("can return the totalscore for the game", function() {
     game.addFrame(strikeFrame);
     game.addFrame(standardFrame);

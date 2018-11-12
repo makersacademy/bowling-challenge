@@ -1,6 +1,5 @@
 describe("Feature", function() {
 
-//Refactor so that this before each is in a spec helper
   beforeEach(function(){
     game = new Game();
     standardFrame = new Frame([4,5]);
@@ -65,7 +64,6 @@ describe("Feature", function() {
 
 
   it("strike, strike, gutter frames - returns score of 30", function (){
-
     game.addFrame(strikeFrame);
     game.addFrame(strikeFrame);
     game.addFrame(gutterFrame);

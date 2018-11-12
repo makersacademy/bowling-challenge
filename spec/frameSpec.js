@@ -1,6 +1,5 @@
 describe("Frame", function() {
 
-//Refactor so that this before each is in a spec helper
   beforeEach(function(){
     standardFrame = new Frame([4,5]);
     spareFrame = new Frame([5,5]);
@@ -17,7 +16,6 @@ describe("Frame", function() {
   });
 
   describe("Score method returns frame score", function(){
-    // if calculate score is removed from initilize, the tests below stay as they are, otherwise need to remove the .caclulatescore line on each test
 
     it("returns 9 for a standard frame", function() {
       standardFrame.calculateScore();

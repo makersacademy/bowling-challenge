@@ -1,4 +1,4 @@
-Frame.prototype.appendFrame = function(){
+Game.prototype.appendFrame = function(){
   this.frames = frames || 10;
   if ((this.frames < 1) || (this.frames > 10)) { throw 'Invalid number of frames'}
   if (this.frames === 1) {

@@ -14,12 +14,11 @@ Frame.prototype.getCurrentScore = function () {
 Frame.prototype.calculateScore = function (roll1, roll2) {
   if (roll1 === MAXIMUM_SCORE) {
     this.currentScore = MAXIMUM_SCORE;
-    this.strike = true;
+    this._setStrike();
   } else {
     this.currentScore = roll1 + roll2;
-    this.strike = false;
-    this.spare = false;
-    if(this.currentScore === MAXIMUM_SCORE) {this.spare = true;}
+    this._resetSpareAndStrike();
+    if(this.currentScore === MAXIMUM_SCORE) this._setSpare();
   }
 };
 
@@ -35,13 +34,8 @@ Frame.prototype.addRoll = function () {
   }
 };
 
-Frame.prototype.impossibleRolls = function(roll1Score) {
-  maxRoll = (MAXIMUM_SCORE + 1) - roll1Score;
-  this.secondRollImpossibilities = Array(roll1Score).fill(maxRoll).map((x, y) => x + y);
-};
-
 Frame.prototype.getImpossibleRolls = function(roll1Score) {
-  this.impossibleRolls(roll1Score);
+  this._impossibleRolls(roll1Score);
   return this.secondRollImpossibilities;
 };
 
@@ -51,4 +45,23 @@ Frame.prototype.isStrike = function () {
 
 Frame.prototype.isSpare = function () {
  return this.spare;
+};
+
+
+Frame.prototype._impossibleRolls = function(roll1Score) {
+  maxRoll = (MAXIMUM_SCORE + 1) - roll1Score;
+  this.secondRollImpossibilities = Array(roll1Score).fill(maxRoll).map((x, y) => x + y);
+};
+
+Frame.prototype._setStrike = function () {
+  this.strike = true;
+};
+
+Frame.prototype._setSpare = function () {
+  this.spare = true;
+};
+
+Frame.prototype._resetSpareAndStrike = function () {
+  this.strike = false;
+  this.spare = false;
 };

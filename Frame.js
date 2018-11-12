@@ -1,6 +1,5 @@
 Frame = function(){
-   this._currentScore = 0;
-
+  this._currentScore = 0;
   this._pins = 0;
   this._bowls = ['null', 'null'];
   this._bowlIndex = 0;

@@ -83,6 +83,8 @@ The scorecard works pretty consistently.  Some final things I want to do:
 - make the front end responsive
 - have messaging around the end of game, when getting a strike and spare
 - there may be an issue if you score a 0 on your first bonus of frame 10 so need to fix that
+- looking into coverage checking of tests
+- mocking in tests
 
 ### Technologies used
 - javascript

@@ -2,16 +2,13 @@
 Bowling Challenge
 =================
 
-## Todo
-
-- [x] update generateTotalScore unit test to expect a method to be called rather than a property
-- [x] create a frame.score() method
-- [x] update generateTotalScore method to call a method rather than a property.
-- [x] add in game validation checks
-- [x] add in frame validation checks
-- [ ] interface.js
+## Installation/Usage Instructions
+* Clone this project.
+* Open index.html to run the app.
+* Open SpecRunner.html to run tests.
 
 
+## The Challenge
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README

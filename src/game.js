@@ -8,10 +8,12 @@ var Game = function() {
 // **************** Class Functinos ******************
 Game.prototype.addFrame = function(frame) {
   this.frames.push(frame);
-  this.generateTotalScore();
+  this._generateTotalScore();
 };
 
-Game.prototype.generateTotalScore = function() {
+
+// **************** Private Functinos ******************
+Game.prototype._generateTotalScore = function() {
   this.gameScore = 0;
 
   for (var i = 0; i < this.frames.length; i++) {

@@ -18,11 +18,10 @@ describe("Game", function() {
   });
 
   it("can return the totalscore for the game", function() {
-    game.addFrame(strikeFrame);
-    game.addFrame(standardFrame);
     strikeFrame.score.and.returnValue(19);
     standardFrame.score.and.returnValue(9);
-    game.generateTotalScore();
+    game.addFrame(strikeFrame);
+    game.addFrame(standardFrame);
     expect(game.gameScore).toBe(28);
   });
 

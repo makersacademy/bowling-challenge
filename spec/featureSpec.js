@@ -20,7 +20,6 @@ describe("Feature", function() {
 
   it("A single frame can be added to game", function() {
     game.addFrame(standardFrame);
-    game.generateTotalScore();
     expect(game.frames.length).toEqual(1);
     expect(game.gameScore).toEqual(9);
     expect(game.frames.length).toEqual(1);
@@ -29,7 +28,6 @@ describe("Feature", function() {
   it("Spare frame followed by standard frame to have score of 23 (10 + first bowl of 2nd frame + total score of 2nd frame)", function() {
     game.addFrame(spareFrame);
     game.addFrame(standardFrame);
-    game.generateTotalScore();
     expect(game.frames.length).toEqual(2);
     expect(game.gameScore).toEqual(23);
   });
@@ -37,7 +35,6 @@ describe("Feature", function() {
   it("Strike frame followed by standard frame to have score of 28 (10 + 2 bowls of 2nd frame + score of 2nd frame)", function() {
     game.addFrame(strikeFrame);
     game.addFrame(standardFrame);
-    game.generateTotalScore();
     expect(game.frames.length).toEqual(2);
     expect(game.gameScore).toEqual(28);
   });
@@ -49,7 +46,6 @@ describe("Feature", function() {
     }
     game.addFrame(finalFrame);
 
-    game.generateTotalScore();
     expect(game.gameScore).toEqual(300);
   });
 
@@ -59,7 +55,6 @@ describe("Feature", function() {
       game.addFrame(gutterFrame);
     }
 
-    game.generateTotalScore();
     expect(game.gameScore).toEqual(0);
   });
 
@@ -67,7 +62,6 @@ describe("Feature", function() {
     game.addFrame(strikeFrame);
     game.addFrame(gutterFrame);
     game.addFrame(gutterFrame);
-    game.generateTotalScore();
     expect(game.gameScore).toEqual(10);
   });
 
@@ -76,7 +70,6 @@ describe("Feature", function() {
     game.addFrame(strikeFrame);
     game.addFrame(strikeFrame);
     game.addFrame(gutterFrame);
-    game.generateTotalScore();
     expect(game.gameScore).toEqual(30);
   });
 

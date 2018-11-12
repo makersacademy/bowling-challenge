@@ -21,7 +21,7 @@ $('button').click(function() {
   endGame();
 });
 
-// ******************* Function ************************
+// ******************* Functions ************************
 function addBowl(bowl){
   bowls.push(parseInt(bowl));
 };

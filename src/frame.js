@@ -22,13 +22,14 @@ Frame.prototype.calculateScore = function(framePlusOne, framePlusTwo){
     };
 
   };
+  
 };
 
 Frame.prototype.score = function(){
   return this.frameScore
 };
 
-// ************* Private Functions ***********
+// ************* Private Functions *****************
 Frame.prototype._isStrike = function(){
   return this.bowls[0] === 10;
 }

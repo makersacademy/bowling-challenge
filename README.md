@@ -3,6 +3,7 @@ Welcome to the bowling scorecard. Check out the instructions below to find out h
 
 ### How to Play
 * Clone this repo using the command `git clone https://github.com/Caitlin-cooling/bowling-challenge.git`
+* `cd bowling-challenge`
 * Run the `scorecard.html` file in your chosen browser
 * Click the buttons to register the roll that you made. After your first roll the unavailable buttons for your second roll will be removed. Then select your second roll to complete the frame
 * Your 2 rolls will be shown in your scorecard along with the frame total score. The left is the first roll and the right is the second. The number on the line below is your frame score

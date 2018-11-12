@@ -1,0 +1,112 @@
+<head>
+  <link href="scorecard.css" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="../src/scorecard.js"></script>
+  <script src="../src/scorer.js"></script>
+</head>
+
+<body>
+  <p id="title">
+    <img src="../images/BowlingIcon.png" alt="Bowling Icon"
+    style="width:40px;height:40px;">
+    Welcome to your bowling scorecard! <img src="../images/BowlingIcon.png" alt="Bowling Icon"
+    style="width:40px;height:40px;">
+  </p>
+
+  <br>
+
+  <div id="scorecardView">
+
+    <div id="scorecardbuttons">
+
+      Input scores:<br>
+
+      <button class="button" id='enterScore' value ="1">1</button>
+      <button class="button" id='enterScore' value ="2">2</button>
+      <button class="button" id='enterScore' value ="3">3</button>
+      <button class="button" id='enterScore' value ="4">4</button>
+      <button class="button" id='enterScore' value ="5">5</button>
+      <button class="button" id='enterScore' value ="6">6</button>
+      <button class="button" id='enterScore' value ="7">7</button>
+      <button class="button" id='enterScore' value ="8">8</button>
+      <button class="button" id='enterScore' value ="9">9</button>
+      <button class="button" id='enterScore' value ="10">10</button>
+
+    </div>
+
+    <table style="width:80%" id='scorecard'>
+      <tr>
+        <th>Frame One</th>
+        <th>Frame Two</th>
+        <th>Frame Three</th>
+        <th>Frame Four</th>
+        <th>Frame Five</th>
+        <th>Frame Six</th>
+        <th>Frame Seven</th>
+        <th>Frame Eight</th>
+        <th>Frame Nine</th>
+        <th>Frame Ten</th>
+        <th>Total</th>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>0</td>
+        <td>0</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+
+    </table>
+
+  Score:
+  <span id="score"></span>
+
+  </div>
+
+  <script>
+    $( document ).ready(function() {
+
+      var scorecard = new Scorecard
+
+      $( enterScore ).click(function( event ) {
+        $('#score').text($(this).attr("value"))
+
+      });
+    })
+
+  </script>
+
+
+  </body>

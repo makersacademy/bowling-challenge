@@ -1,0 +1,59 @@
+* {
+  font-family: "Gill Sans";
+  background-color: rgb(255,255,255);
+}
+
+#title {
+  font-weight: bold;
+  font-size: 28px;
+  text-align: center;
+  background-color: rgb(255,255,255);
+  color: rgb(42,62,80);
+  font: "Gill Sans";
+  padding-top: 30px;
+  padding-right: 5px;
+  padding-bottom: 30px;
+  padding-left: 5px;
+
+}
+
+table {
+  border-collapse: collapse;
+  border: 1px solid black;
+  color: black;
+  border-color: black;
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
+  text-align: center;
+}
+
+tr
+	{
+    border: 1px solid black;
+		background-color:green;
+		color:black;
+	}
+
+#scorecardView {
+  padding-top: 30px;
+  padding-right: 5px;
+  padding-bottom: 30px;
+  padding-left: 5px;
+  background-color: rgb(109,188,219);
+
+}
+
+
+#scorecardbuttons {
+
+  background-color: rgb(109,188,219);
+  padding: 30px;
+
+}
+
+.button {
+  background-color: rgb(252,67,73);
+  color: white;
+  font-size: 20px;
+}

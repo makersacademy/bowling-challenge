@@ -45,7 +45,6 @@ describe("Feature", function() {
         game.addFrame(strikeFrame);
     }
     game.addFrame(finalFrame);
-
     expect(game.gameScore).toEqual(300);
   });
 
@@ -54,7 +53,6 @@ describe("Feature", function() {
     for(var i=0; i < times; i++){
       game.addFrame(gutterFrame);
     }
-
     expect(game.gameScore).toEqual(0);
   });
 
@@ -64,7 +62,6 @@ describe("Feature", function() {
     game.addFrame(gutterFrame);
     expect(game.gameScore).toEqual(10);
   });
-
 
   it("strike, strike, gutter frames - returns score of 30", function (){
     game.addFrame(strikeFrame);

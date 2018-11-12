@@ -22,7 +22,7 @@ Frame.prototype.calculateScore = function(framePlusOne, framePlusTwo){
     };
 
   };
-  
+
 };
 
 Frame.prototype.score = function(){
@@ -50,7 +50,8 @@ Frame.prototype._strikeBonus = function(framePlusOne, framePlusTwo){
 
   } else {
     nextBowls = framePlusOne.bowls.concat(framePlusTwo.bowls);
-  };
+  }
+  
   var i;
   for (i = 1; i <= 2 && i <= nextBowls.length; i++) {
     this.frameScore += nextBowls[i-1];

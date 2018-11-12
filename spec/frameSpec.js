@@ -64,7 +64,6 @@ describe("Frame", function() {
 
     it("should return 10 when followed by a gutter frame", function(){
       spareFrame.calculateScore(gutterFrame);
-
       expect(spareFrame.frameScore).toEqual(10);
     });
   });

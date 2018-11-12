@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>Bowling Score Card</title>
+    <link rel="stylesheet" type="text/css" href="styling/style.css">
+  </head>
+  <body>
+    <h1>Bowling Score Card</h1>
+    <img src="https://ae01.alicdn.com/kf/HTB1PRdDlxPI8KJjSspfq6ACFXXat/DIY-frame-BOWLING-ball-game-classic-bowl-sports-cloth-silk-art-wall-poster-and-prints.jpg_640x640.jpg"
+  width=300 height=200>
+    <table class="enter_frame">
+      <tr>
+      <th>Bowl 1</th>
+      <td><select id="bowl1">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select></td>
+      <th>Bowl 2</th>
+      <td><select id="bowl2">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select></td>
+      <td><input id="frame_submit" type="submit"></input></td>
+    </tr>
+    </table>
+    <table class="score_card">
+    <section id="headers">
+      <tr>
+        <th>Frame</th>
+        <th>Bowl 1</th>
+        <th>Bowl 2</th>
+        <th>Frame Score</th>
+        <th>Running Score</th>
+      </tr>
+    </section>
+    <section id="frames">
+      <tr>
+        <td>1</td>
+        <td><span id="frame0_bowl1"></span></td>
+        <td><span id="frame0_bowl2"></span></td>
+        <td><span id="frame0_score"></span></td>
+        <td><span id="frame0_running_score"></span></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><span id="frame1_bowl1"></span></td>
+        <td><span id="frame1_bowl2"></span></td>
+        <td><span id="frame1_score"></span></td>
+        <td><span id="frame1_running_score"></span></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><span id="frame2_bowl1"></span></td>
+        <td><span id="frame2_bowl2"></span></td>
+        <td><span id="frame2_score"></span></td>
+        <td><span id="frame2_running_score"></span></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><span id="frame3_bowl1"></span></td>
+        <td><span id="frame3_bowl2"></span></td>
+        <td><span id="frame3_score"></span></td>
+        <td><span id="frame3_running_score"></span></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><span id="frame4_bowl1"></span></td>
+        <td><span id="frame4_bowl2"></span></td>
+        <td><span id="frame4_score"></span></td>
+        <td><span id="frame4_running_score"></span></td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td><span id="frame5_bowl1"></span></td>
+        <td><span id="frame5_bowl2" ></span></td>
+        <td><span id="frame5_score"></span></td>
+        <td><span id="frame5_running_score"></span></td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td><span id="frame6_bowl1" ></span></td>
+        <td><span id="frame6_bowl2" ></span></td>
+        <td><span id="frame6_score"></span></td>
+        <td><span id="frame6_running_score"></span></td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td><span id="frame7_bowl1" ></span></td>
+        <td><span id="frame7_bowl2" ></span></td>
+        <td><span id="frame7_score"></span></td>
+        <td><span id="frame7_running_score"></span></td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td><span id="frame8_bowl1" ></span></td>
+        <td><span id="frame8_bowl2" ></span></td>
+        <td><span id="frame8_score"></span></td>
+        <td><span id="frame8_running_score"></span></td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td><span id="frame9_bowl1" ></span></td>
+        <td><span id="frame9_bowl2" ></span></td>
+        <td><span id="frame9_score"></span></td>
+        <td><span id="frame9_running_score"></span></td>
+      </tr>
+    </section>
+    </table>
+    <script src="src/jquery-3.3.1.js"></script>
+    <script src="src/interface.js"></script>
+    <script src="src/scoreCard.js"></script>
+    <script src="src/runningScore.js"></script>
+    <script src="src/frameScore.js"></script>
+    <script src="src/frame.js"></script>
+  </body>
+</html>

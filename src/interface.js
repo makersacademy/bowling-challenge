@@ -34,12 +34,26 @@ function incrementBowlCounter(){
   }
 }
 
+
+
 function enableDisableButtons(){
-  if (_isSecondBowl() && bowls[0] != 10) {
-    var remainingPins = 10 - bowls[0];
-    _disableButtons(remainingPins);
+  if (_isFinalFrame()) {
+    if (bowls[bowls.length-1] !== 10) {
+      var remainingPins = 10 - bowls[bowls.length-1];
+      _disableButtons(remainingPins);
+    }
+
+    if (bowls[0] + bowls [1] === 10) {
+      _resetAllButtons();
+    }
+
   } else{
-    _resetAllButtons();
+    if (_isSecondBowl() && bowls[0] != 10) {
+      var remainingPins = 10 - bowls[0];
+      _disableButtons(remainingPins);
+    } else{
+      _resetAllButtons();
+    }
   }
 }
 
@@ -50,7 +64,7 @@ function setOutput(){
     } else {
       output = bowl;
     }
-  } else if (bowls[0] === 10) {
+  } else if (bowls.length === 1 && bowls[0] === 10) {
     output = 'x';
   } else if (bowls[0] + bowls[1] === 10) {
     output = '/';

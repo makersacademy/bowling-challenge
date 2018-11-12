@@ -44,7 +44,7 @@ $(document).ready(function () {
 
   function updateFrameScores () {
     $('.frameScore').each(function () {
-      var frameNumber = parseInt($(this).attr('frameNumber'))
+      var frameNumber = $(this).attr('frameNumber')
       $(this).text(game.getFrames()[frameNumber].getScore(
         game.getFrames()[frameNumber + 1], game.getFrames()[frameNumber + 2]
       ))

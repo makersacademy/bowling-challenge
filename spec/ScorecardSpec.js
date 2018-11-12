@@ -95,23 +95,6 @@ describe('Scorecard', function(){
     });
   });
 
-  describe('calculateFrameScore', function(){
-    it("returns the scores of a frame",function(){
-      let roll_1 = jasmine.createSpyObj('roll', ['getScore']);
-      roll_1.getScore.and.callFake(function() { return 4; });
-
-      let roll_2 = jasmine.createSpyObj('roll', ['getScore']);
-      roll_2.getScore.and.callFake(function() { return 3; });
-
-      let full_rolls = [ roll_1, roll_2 ];
-      scorecard.createNewFrame();
-      scorecard.getFrames()[0].getRolls.and.callFake(function() { return full_rolls; });
-      isFrameComplete = true;
-
-      expect(scorecard.calculateFrameScore(0)).toEqual(7);
-    });
-  });
-
   describe('getTwoRollsScore', function(){
     it("returns the scores the next two rolls",function(){
       let roll_1 = jasmine.createSpyObj('roll', ['getScore']);

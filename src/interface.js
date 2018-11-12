@@ -35,9 +35,10 @@ function incrementBowlCounter(){
 }
 
 function enableDisableButtons(){
+  var remainingPins;
   if (_isFinalFrame()) {
     if (bowls[bowls.length-1] !== 10) {
-      var remainingPins = 10 - bowls[bowls.length-1];
+      remainingPins = 10 - bowls[bowls.length-1];
       _disableButtons(remainingPins);
     }
 
@@ -47,7 +48,7 @@ function enableDisableButtons(){
 
   } else{
     if (_isSecondBowl() && bowls[0] != 10) {
-      var remainingPins = 10 - bowls[0];
+      remainingPins = 10 - bowls[0];
       _disableButtons(remainingPins);
     } else{
       _resetAllButtons();

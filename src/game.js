@@ -16,17 +16,23 @@ Game.prototype.roll = function (pins) {
       this.roll(0)
       this.id ++;
     }
-    this.id ++;
   }
   this.id ++;
+
+  if (this.rolls[19] + this.rolls[18] >= 10) {
+    this.bonus_roll = true
+  }
+  else {
+    this.bonus_roll = false
+  };
 };
 
-Game.prototype.score = function () {
+Game.prototype.getScore = function () {
   var result = 0
   var rollId = 0
 
   for (var frameId = 0; frameId < 10; frameId++) {
-    if(this.rolls[rollId] + this.rolls[rollId + 1] == 10 && this.bonus_roll == false) {
+    if(((this.rolls[rollId]) + (this.rolls[rollId + 1]) == 10) && this.bonus_roll == false) {
       result += this.rolls[(rollId + 2)]
       if(this.rolls[rollId] == 10) {
         result += this.rolls[(rollId + 3)]
@@ -35,12 +41,6 @@ Game.prototype.score = function () {
     result += this.rolls[rollId] + this.rolls[rollId + 1]
     rollId += 2;
   };
-
-
-  if (this.rolls[19] + this.rolls[18] >= 10) {
-    this.bonus_roll = true
-  }
-  else this.bonus_roll = false;
 
   if (this.bonus_roll == true) {
     result += this.rolls[20];

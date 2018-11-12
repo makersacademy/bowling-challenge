@@ -1,3 +1,8 @@
+I have made several attempts at this challenge, the closest I was able to get,
+was a calculator which worked effectively, except for scoring consecutive Strikes
+and therefore a perfect game.
+
+
 
 Bowling Challenge
 =================

@@ -16,7 +16,7 @@ describe("Game", function() {
     game.addFrame(standardFrame);
     strikeFrame.score.and.returnValue(19);
     standardFrame.score.and.returnValue(9);
-    game.generateTotalScore()
+    game.generateTotalScore();
     expect(game.gameScore).toBe(28);
   });
 

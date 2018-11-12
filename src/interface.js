@@ -34,16 +34,16 @@ function incrementBowlCounter(){
 function enableDisableButtons(){
   if (_isSecondBowl() && bowls[0] != 10) {
     var remainingPins = 10 - bowls[0];
-    _disableButtons(remainingPins)
+    _disableButtons(remainingPins);
   } else{
-    _resetAllButtons()
+    _resetAllButtons();
   }
 }
 
 function setOutput(){
   if (bowls.length === 3) {
     if (bowls[2] === 10) {
-      output = 'x'
+      output = 'x';
     } else {
       output = bowl;
     }
@@ -63,15 +63,15 @@ function showScoreForSingleBowl(){
 function addFrameToGame(){
   if (_isFinalFrame()) {
     if (bowls.length === 2 && bowls[0] + bowls[1] < 10 ) {
-      game.addFrame(new Frame([bowls[0], bowls[1]]))
+      game.addFrame(new Frame([bowls[0], bowls[1]]));
     }
     if (bowls.length === 3) {
-      game.addFrame(new Frame([bowls[0], bowls[1], bowls[2]]))
+      game.addFrame(new Frame([bowls[0], bowls[1], bowls[2]]));
     }
   }
   else{
     if (bowls.length === 2){
-      game.addFrame(new Frame([bowls[0], bowls[1]]))
+      game.addFrame(new Frame([bowls[0], bowls[1]]));
       bowls = [];
     }
     if (bowls[0] === 10){

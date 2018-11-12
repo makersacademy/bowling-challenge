@@ -6,7 +6,7 @@ describe("Feature", function() {
     spareFrame = new Frame([5,5]);
     strikeFrame = new Frame([10]);
     gutterFrame = new Frame([]);
-    finalFrame = new Frame([10,10,10])
+    finalFrame = new Frame([10,10,10]);
   });
 
   it("A single frame can be added to game", function() {

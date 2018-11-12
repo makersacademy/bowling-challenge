@@ -8,8 +8,8 @@ var Game = function() {
 // Needs some validation check for number of frames not exceeding 10, total score not exceeding 300.
 
 Game.prototype.addFrame = function(frame) {
-  this.frames.push(frame)
-  this.generateTotalScore()
+  this.frames.push(frame);
+  this.generateTotalScore();
 };
 
 Game.prototype.generateTotalScore = function() {

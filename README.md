@@ -1,3 +1,11 @@
+My first attempt at this challenge is saved in the '1st attempt' folder. I was able to get the basic adding and displaying of 2 rolls per frame but could not come up with the logic required to include spares and strikes. I found Uncle Bobs Bowling Kata (http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata) after looking through the rubric so started again and followed this to create the tests and and game score logic, by converting it to JS. Then I put my original design around it. There were issues along the way with the output as a NaN but was able to overcome these eventually.
+
+To use:
+git clone https://github.com/davidbest1882/bowling-challenge.git
+$ cd bowling-challenge
+$ open index.html
+
+
 
 Bowling Challenge
 =================

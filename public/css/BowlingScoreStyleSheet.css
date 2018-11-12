@@ -1,0 +1,25 @@
+#title-box {
+font-size: 400%;
+text-align: center;
+color: yellow;
+}
+
+body {
+  font-size: 25%;
+  text-align: center;
+  color: yellow;
+  background-image: url('../images/BowlingBackground.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: absolute;
+  margin: 0;
+  left: 0;
+  bottom: 0px;
+}
+
+#completed-frames {
+  font-size: 10%;
+  text-align: center;
+  color: yellow;
+}
+

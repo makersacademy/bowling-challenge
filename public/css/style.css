@@ -47,6 +47,11 @@ th {
   border-bottom: 3px solid black;
 }
 
+td {
+	min-width: 30px;
+  max-width: 30px;
+}
+
 .frame-score {
 	border: none;
 	height: 1.3em;
@@ -64,14 +69,16 @@ th {
 }
 
 .strike {
-    display: block;
-    position: relative;
-    margin: 30px 10px;
-    margin-left: auto;
-    margin-right: auto;
+  border-radius: 100%;
+  display: block;
+  position: relative;
+  margin: 30px 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .no-score {
+    border-radius: 1100%;
     display: block;
     position: relative;
     margin: 30px 10px;

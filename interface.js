@@ -14,6 +14,7 @@ $(document).ready(function () {
   $('#reset').click(function () {
     game = new Game()
     updateTotalScore()
+    game.startNextFrame()
     $('.frame').each(function () {
       $(this).empty()
     })

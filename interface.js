@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var game = new BowlingGame();
+  var frame = new Frame();
 
   $('#0').click(function() {
     frame.bowl(0);

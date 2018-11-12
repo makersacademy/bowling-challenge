@@ -61,5 +61,4 @@ Frame.prototype.bowl = function() {
   return this;
 };
 
-
 };

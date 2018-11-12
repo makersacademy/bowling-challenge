@@ -147,7 +147,7 @@ $(document).ready(function() {
     $.getJSON({
            type: "get",
            url: "/get-scores",
-          success: 'scores',
+          data: 'scores'
 
     });
 

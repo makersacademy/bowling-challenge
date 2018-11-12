@@ -11,9 +11,8 @@ $(document).ready(function() {
         game.recordRoll(parseInt(roll));
         updateScore();
         displayInFrame(game._currentFrame);
-        $('#error').text('')
       } catch(err) {
-        $('#error').text('Invalid throw')
+        alert("Invalid bowl")
       };
     };
   });

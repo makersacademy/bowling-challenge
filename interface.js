@@ -44,14 +44,10 @@ $(document).ready(function () {
 
   function updateFrameScores () {
     $('.frameScore').each(function () {
-      var frameNumber = parseInt($(this).attr('id'))
-      try {
-        $(this).text(game.getFrames()[frameNumber].getScore(
-          game.getFrames()[frameNumber + 1], game.getFrames()[frameNumber + 2]
-        ))
-      } catch (error) {
-        $(this).empty()
-      }
+      var frameNumber = parseInt($(this).attr('frameNumber'))
+      $(this).text(game.getFrames()[frameNumber].getScore(
+        game.getFrames()[frameNumber + 1], game.getFrames()[frameNumber + 2]
+      ))
     })
   }
 })

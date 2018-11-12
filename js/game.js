@@ -90,7 +90,6 @@ Game.prototype.getCurrentPinsScore = function () {
 }
 
 Game.prototype.getFrameBonus = function (frame) {
-  // console.log(this.getFrameBonusValues(frame))
   return this.getFrameBonusValues(frame).reduce(function(a, b){return a+b;})
 }
 

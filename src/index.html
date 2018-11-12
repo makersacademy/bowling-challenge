@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html id="page" lang="en">
+<head>
+  <title>Bowling Scorecard</title>
+</head>
+<body>
+  <h1>Bowling Scorecard</h1>
+    Pins
+    <select name="pins" id='pins'>
+      <option selected='selected' value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+  <input type="submit" value="Submit" id="submit">
+</form>
+<table class='scorecard'>
+  <section id="headers">
+    <tr>
+      <th id='name'>Frame</th>
+      <th id='roll1'>Bowl 1</th>
+      <th id='roll2'>Bowl 2</th>
+      <th id='frame_total'>Frame Total</th>
+      <th id='total_score'>Running Total</th>
+    </tr>
+  </section>
+  <section id="frames">
+      <tr>
+        <td>1</td>
+        <td id="f1b1"></td>
+        <td id="f1b2"></td>
+        <td id="f1ft"></td>
+        <td id="f1rt"></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td id="f2b1"></td>
+        <td id="f2b2"></td>
+        <td id="f2ft"></td>
+        <td id="f2rt"></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td id="f3b1"></td>
+        <td id="f3b2"></td>
+        <td id="f3ft"></td>
+        <td id="f3rt"></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td id="f4b1"></td>
+        <td id="f4b2"></td>
+        <td id="f4ft"></td>
+        <td id="f4rt"></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td id="f5b1"></td>
+        <td id="f5b2"></td>
+        <td id="f5ft"></td>
+        <td id="f5rt"></td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td id="f6b1"></td>
+        <td id="f6b2"></td>
+        <td id="f6ft"></td>
+        <td id="f6rt"></td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td id="f7b1"></td>
+        <td id="f7b2"></td>
+        <td id="f7ft"></td>
+        <td id="f7rt"></td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td id="f8b1"></td>
+        <td id="f8b2"></td>
+        <td id="f8ft"></td>
+        <td id="f8rt"></td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td id="f9b1"></td>
+        <td id="f9b2"></td>
+        <td id="f9ft"></td>
+        <td id="f9rt"></td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td id="f10b1"></td>
+        <td id="f10b2"></td>
+        <td id="f10ft"></td>
+        <td id="f10rt"></td>
+      </tr>
+    </table>
+  <script src="game.js"></script>
+  <script src="jquery-3.3.1.js"></script>
+  <script src="interface.js"></script>
+</body>
+</html>

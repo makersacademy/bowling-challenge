@@ -90,6 +90,7 @@ describe("Bowling", function() {
     expect(game.isBonusFrame()).toBe(false)
   })
 
+
   var rollMultiple = function(pins, rolls) {
     for (var i = 0; i < rolls; i++) {
       game.roll(pins);

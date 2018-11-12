@@ -6,8 +6,6 @@ function Game() {
 
 Game.prototype.roll = function(pins) {
   this.rolls.push(pins);
-// if you are not in 10th frame and you score either a strike or it is your
-// second roll, reset the bowl number to 1
   if (this.currentFrame != 10) {
     if ((pins === 10 && this.bowlNumber === 1) || (this.bowlNumber === 2)) {
       this.currentFrame += 1
@@ -24,7 +22,7 @@ Game.prototype.totalScore = function() {
   var total = 0
   var rollNum = this.rolls.length
   if (this.isBonusFrame()) {
-    rollNum -= 2;
+    rollNum -= 2
   }
   for (var i = 0; i < rollNum; i++) {
     if (this.isStrike(i)) {
@@ -60,7 +58,7 @@ Game.prototype.isBonusFrame = function() {
   if (this.currentFrame === 10) {
     if (this.isStrike(rollNum) || this.isSpare(rollNum)) {
     return true
-    };
+    }
   }
   return false;
 };

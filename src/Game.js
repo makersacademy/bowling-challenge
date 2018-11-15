@@ -47,19 +47,18 @@ Game.prototype.frameAndRoll = function(){
 };
 
 Game.prototype.endGameCheck = function(){
-  if (this._frame === 10 && this._firstRollScore === 10) {
-    this._maxRounds += 2
-  }
-  else if(this._frame === 10 && (this._firstRollScore + this.secondRollScore === 10)){
-    this._maxRounds += 1
-  }
-  else if(this._frame === 10) {
-    // this._firstRollScore = this.rollScoreMethod();
-    // this.totalScoreUpdate;
-    // this._secondRollScore = this.rollScoreMethod();
+  this.bonusRound()
+  if(this._frame === 10 && this._maxRounds === 10) {
+    // this._firstRollScore = this.bowl();
+    this._secondRollScore = this.pinsKnockdown(pins);
+    this.totalScoreUpdate();
     this._standingPins = 0;
-    this.totalScoreUpdate;
-    this._maxRounds = 10;
+    // this.totalScoreUpdate;
+    // // this.totalScoreUpdate;
+    // // this._secondRollScore = this.rollScoreMethod();
+
+    // this.totalScoreUpdate;
+    // this._maxRounds = 10;
     this._gameOver = ("Game Over! Press new game to start again :)");
   }
 };
@@ -94,11 +93,16 @@ Game.prototype.strikeOrSpare = function(){
   }
 };
 
-// Game.prototype.bonusRound = function() {
-//   if (this._frame === 10 && this._firstRollScore === 10){
-//     this._maxRounds += 2
-//   }
-// };
+Game.prototype.bonusRound = function() {
+  if (this._frame === 10 && this._firstRollScore === 10) {
+    this._maxRounds += 2
+  }
+  else if(this._frame === 10 && (this._firstRollScore + this.secondRollScore === 10)){
+    this._maxRounds += 1
+  }
+  else { this._maxRounds += 0 }
+  return this._maxRounds
+};
 
 
 Game.prototype.rollAlternate = function(){
@@ -115,7 +119,7 @@ Game.prototype.frameReset = function(){
   this._secondRollScore = 0;
   this._currentKnockdown = 0;
   this._standingPins = 10;
-  this._maxRounds = 10;
+  // this._maxRounds = 10;
 };
 
 Game.prototype.newGame = function(){

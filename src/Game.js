@@ -48,8 +48,9 @@ Game.prototype.frameAndRoll = function(){
 
 Game.prototype.endGameCheck = function(){
   this.bonusRound()
-  if(this._frame === 10 && this._maxRounds === 10) {
+  if(this._frame === this._maxRounds) {
     // this._firstRollScore = this.bowl();
+    if(this._firstRollScore != 10) {
     this._secondRollScore = this.pinsKnockdown(pins);
     this.totalScoreUpdate();
     this._standingPins = 0;
@@ -60,7 +61,12 @@ Game.prototype.endGameCheck = function(){
     // this.totalScoreUpdate;
     // this._maxRounds = 10;
     this._gameOver = ("Game Over! Press new game to start again :)");
+  } else {
+    this.totalScoreUpdate();
+    this._standingPins = 0;
+    this._gameOver = ("Game Over! Press new game to start again :)");
   }
+}
 };
 
 Game.prototype.frameIncrement = function(){
@@ -78,7 +84,18 @@ Game.prototype.totalScoreUpdate = function(){
 
 Game.prototype.checkBonus = function(){
   if (this._bonus === "Strike!") {
+    if (this._firstRollScore != 10 && (this._frame === 11|| this._frame === 12)) {
     this._totalScore += (this._firstRollScore + this._secondRollScore);
+    } else if (this._frame === 12 && this._firstRollScore === 10) {
+     this._totalScore += 0
+    } else if (this._frame === 11 && this._firstRollScore === 10) {
+      this._totalScore += 20
+    } else {
+    this._totalScore += (this._firstRollScore + this._secondRollScore)
+      if (this._firstRollScore === 10) {
+        this._totalScore += 10
+      }
+    }
   } else if (this._bonus === "Spare!") {
     this._totalScore += this._firstRollScore;
   }

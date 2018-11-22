@@ -1,6 +1,8 @@
-function Game () {
+function Game (frameConstructor = Frame, finalFrameConstructor = FinalFrame) {
   this._frames = []
   this._finished = false
+  this.frameConstructor = frameConstructor
+  this.finalFrameConstructor = finalFrameConstructor
 }
 
 Game.prototype.getFrames = function () {
@@ -13,9 +15,9 @@ Game.prototype.getCurrentFrame = function () {
 
 Game.prototype.startNextFrame = function () {
   if (this._frames.length === 9) {
-    this._frames.push(new FinalFrame())
+    this._frames.push(new this.finalFrameConstructor())
   } else {
-    this._frames.push(new Frame())
+    this._frames.push(new this.frameConstructor())
   }
 }
 

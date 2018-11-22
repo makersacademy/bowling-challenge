@@ -12,7 +12,7 @@ $(document).ready(function () {
   })
 
   $('#reset').click(function () {
-    game = new Game()
+    game = new Game(Frame, FinalFrame)
     updateTotalScore()
     game.startNextFrame()
     $('.frame').each(function () {

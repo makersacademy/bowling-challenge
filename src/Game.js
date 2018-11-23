@@ -40,13 +40,14 @@ function Game (frame = new Frame()){
     this._currentFrame = new Frame();
   }
 
-  Game.prototype.sendBonusPoints = function(userInput) { 
+  Game.prototype.sendBonusPoints = function(userInput) {
 
     if (this.double2 === true) {
       this._currentFrame._bonusCounter += 2
 
     } else if (this.double1 === true) {
       this._currentFrame._bonusCounter += 1
+    
   }
   };
 

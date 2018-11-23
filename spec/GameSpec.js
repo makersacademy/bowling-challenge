@@ -5,7 +5,17 @@ describe ("Game", function(){
   describe ('rollBall', function(){
 
     beforeEach(function(){
-      mockFrame = jasmine.createSpy('mockFrame', { "frameScore": 5, "_rollsLeft": 0})
+      mockFrame = jasmine.createSpy('mockFrame', { "frameScore": 5, "_rollsLeft": 0, "calculate": function() {} })
+      // {
+      //   frameScore: 5,
+      //   _rollsLeft: 0,
+      //   calculate: function() {
+      //
+      //   }
+    //  }
+     spyOn(mockFrame.calculate).andReturn(5)
+    //  expect(mockFrame.calculate).toHaveBeenCalledWith(5)
+      //console.log("I'm in the the beforeEach!"); //this prints out in the console when run TESTS, not app
       game = new Game(mockFrame);
     })
 

@@ -24,7 +24,7 @@ This program is written using JavaScript, jQuery, HTML, CSS and Jasmine as the t
 I have been using jslint as a linter, which can be installed using the command `npm install -g jshint` and run using `jshint src/frame.js`
 
 ### Approach to Solving this Kata
-I kept a methodical approach when solving this kata. I first created the JavaScript for a basic game. Then created an interface using HTML and jQuery. I then resolved edge cases around this for example, keeping track of the frame number, but telling the user that the  game is over after their 10th roll.
+I kept a methodical approach when solving this kata. I first created the JavaScript for a basic game. Then created an interface using HTML and jQuery. I then resolved edge cases around this for example, keeping track of the frame number, but telling the user that the  game is over after their 10th roll and bonus points for a strike or a spare.
 
 After this I did some CSS to create a scorecard and style the interface. Next, I created the logic for the edge cases; when a user rolled a spare or a strike.
 

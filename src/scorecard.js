@@ -20,18 +20,22 @@ function Scorecard(){
   Scorecard.prototype.updateScoreAfterBowl = function(bowl_score) {
     this.isStrike(bowl_score);
     this.isSpare(bowl_score);
-  if(this.getCurrentBowlsInFrame() === 1) {
-    this.secondScoreInFrame = bowl_score;
-    this.currentScore += bowl_score;
-    this.updateBowlsInFrame();
-    this.postBowlCheck();
 
-  }
   if(this.getCurrentBowlsInFrame() === 0) {
     this.firstScoreInFrame = bowl_score;
     this.currentScore += bowl_score;
     this.updateBowlsInFrame();
   }
+  else if (this.getCurrentBowlsInFrame() === 1) {
+    this.secondScoreInFrame = bowl_score;
+    this.currentScore += bowl_score;
+    this.updateBowlsInFrame();
+    this.postBowlCheck();
+    this.resetFrameScores();
+  }
+  // else {
+  //     frame 10 'stuff'
+  // }
 
   }
   Scorecard.prototype.getSecondBowlRequired = function() {

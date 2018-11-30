@@ -32,8 +32,7 @@ describe('Scorecard', function() {
   it('has a score of 12 after a strike, 1 then 0', function() {
     scorecard.updateScoreAfterBowl(10);
     scorecard.updateScoreAfterBowl(1);
-    scorecard.updateScoreAfterBowl(1);
+    scorecard.updateScoreAfterBowl(0);
     expect(scorecard.getCurrentScore()).toEqual(12);
   });
-
 });

@@ -13,10 +13,38 @@
     <script src="src/interface.js"></script>
   </head>
   <body>
-    <section class="scorecard">
-    </section>
     <section class="controls">
-      <button type="button" id="button">Click Me!</button>
+      <input type="text" id="score-input"><br>
+      <button type="button" id="score-button">Click Me!</button>
+    </section>
+    <section class="scores">
+      <table id="scorecard">
+        <thead>
+          <tr>
+            <th>Frame</th>
+            <th>Roll</th>
+            <th>Knocked down pins</th>
+            <th>Total score</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>5</td>
+            <td>5</td>
+            <td>n/a</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>3</td>
+            <td>4</td>
+            <td>4</td>
+            <td>n/a</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
   </body>
 </html>

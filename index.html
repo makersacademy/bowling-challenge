@@ -95,6 +95,11 @@
       scorecard.currentFrame;
     document.getElementById("current_roll").innerHTML =
       scorecard.currentRoll;
+    for(i=1; i<=scorecard.currentFrame; i++) {
+      frameScoreID = "f" + i + "s";
+      document.getElementById(frameScoreID).innerHTML =
+        scorecard.frameScore(i);
+    }
   };
 </script>
 </body>

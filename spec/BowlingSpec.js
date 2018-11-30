@@ -8,21 +8,23 @@ describe('Bowling', function() {
     bowling = new Bowling();
   });
 
+  var rollMany = function(pins, rolls) {
+    for (var i = 0; i < rolls; i++) {
+      bowling.roll(pins)
+    }
+  };
+
   it('checks that a frame exists', function() {
     expect(bowling.getFrame()).toEqual([]);
   });
 
   it('checks that you can roll a gutter game', function() {
-    for (var i = 0; i < 20; i++) {
-      bowling.roll(0)
-    }
+    rollMany(0, 20)
     expect(bowling.score()).toEqual(0)
   });
 
   it('checks that you can roll a all ones game', function() {
-    for (var i = 0; i < 20; i++) {
-      bowling.roll(1)
-    }
+    rollMany(1, 20)
     expect(bowling.score()).toEqual(20)
   });
 

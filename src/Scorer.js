@@ -9,13 +9,19 @@ function Scorer() {
 
 Scorer.prototype.addScore = function(number) {
   if(this.isGameStarted === false) { this.setupGame() }
-  if(this.whatFrameIsit().isFinished === true) { this.frames.push(new Frame()) }
-
+  this.whatFrameIsIt().addRoll(number)
+  if(this.whatFrameIsIt().isFinished === true) { this.newFrame() }
 }
 
 Scorer.prototype.setupGame = function() {
   this.isGameStarted = true;
   this.frames.push(new Frame());
+}
+
+Scorer.prototype.newFrame = function() {
+  this.frames.push(new Frame())
+  this.currentFrame += 1
+  if(this.currentFrame === 9) { this.frames[9].special = 'final' }
 }
 
 Scorer.prototype.currentScore = function() {

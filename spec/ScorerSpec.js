@@ -18,8 +18,22 @@ describe("Scorer", function() {
   describe("addScore", function() {
     it("adds a score which is put in an initial frame", function() {
       scorer.addScore(1);
-      expect(scorer.currentScore()).toEqual(0);
-      expect(scorer.frames[1].firstRoll).toHaveBeenCalledWith(1);
+      expect(scorer.frames[0].firstRoll).toEqual(1);
+      scorer.addScore(2);
+      expect(scorer.frames[0].secondRoll).toEqual(2);
     });
+
+    it("adds two rolls and makes a new frame", function() {
+      scorer.addScore(1);
+      scorer.addScore(2);
+      expect(scorer.frames.length).toEqual(2);
+    })
+
+    it("recognises the final frame and sets its special", function() {
+      for(var i = 0; i < 9; i++) {
+        scorer.addScore(10);
+      }
+      expect(scorer.frames[9].special).toEqual('final')
+    })
   });
 })

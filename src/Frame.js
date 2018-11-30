@@ -3,16 +3,14 @@
 function Frame() {
   this.firstRoll = undefined
   this.secondRoll = undefined
+  this.thirdRoll = undefined
   this.special = undefined
   this.isFinished = false
 }
 
 Frame.prototype.addRoll = function(number) {
-  if(this.firstRoll === undefined) {
-    this.addFirstRoll(number)
-  } else {
-    this.addSecondRoll(number)
-  }
+  if(this.special === 'final') { return this.addFinalRolls(number) }
+  this.firstRoll === undefined ? this.addFirstRoll(number) : this.addSecondRoll(number)
   if(this.special === 'strike' || this.secondRoll !== undefined) {
     this.isFinished = true
   }
@@ -33,5 +31,22 @@ Frame.prototype.strike = function() {
 }
 
 Frame.prototype.spare = function() {
-  if(this.firstRoll + this.secondRoll === 10) {this.special = 'spare'}
+  this.firstRoll + this.secondRoll === 10 ? this.special = 'spare' : this.special = false
+}
+
+Frame.prototype.addFinalRolls = function(number) {
+  if(this.firstRoll === undefined) { return this.firstRoll = number }
+  if(this.secondRoll === undefined) {
+    this.secondRoll = number;
+    if(this.endGame() === true) {
+      return this.isFinished = true
+    }
+  } else {
+    this.thirdRoll = number;
+    this.isFinished = true;
+  }
+}
+
+Frame.prototype.endGame = function() {
+  if(this.firstRoll + this.secondRoll < 10) { return true }
 }

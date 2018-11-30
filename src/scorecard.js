@@ -20,12 +20,12 @@ function Scorecard(){
   Scorecard.prototype.updateScoreAfterBowl = function(bowl_score) {
     this.isStrike(bowl_score);
     this.isSpare(bowl_score);
-
   if(this.getCurrentBowlsInFrame() === 1) {
     this.secondScoreInFrame = bowl_score;
     this.currentScore += bowl_score;
     this.updateBowlsInFrame();
     this.postBowlCheck();
+
   }
   if(this.getCurrentBowlsInFrame() === 0) {
     this.firstScoreInFrame = bowl_score;
@@ -44,6 +44,7 @@ function Scorecard(){
   Scorecard.prototype.updateFrame = function() {
       if(this.getCurrentBowlsInFrame() === 2) {
        this.frame += 1;
+       this.resetFrameScores;
       }
   }
   Scorecard.prototype.updateBowlsInFrame = function() {
@@ -67,6 +68,7 @@ function Scorecard(){
   Scorecard.prototype.resetFrameScores = function() {
     this.firstScoreInFrame = 0;
     this.secondScoreInFrame = 0;
+    this.currentBowlsInFrame = 0;
   }
 
   Scorecard.prototype.isStrike = function(bowl_score) {

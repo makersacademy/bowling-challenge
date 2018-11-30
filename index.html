@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta>
+    <title></title>
+    <script src="src/bowling.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <style media="screen">
+      body {
+        background-image: url("https://wallpapermemory.com/uploads/429/bowling-background-hd-1280x800-247063.jpg");
+
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      table, th, td {
+        background-color: rgb(209, 62, 62, 0.4);
+        border: solid white;
+        border-width: 1px;
+        border-collapse: collapse;
+      }
+      th, td {
+        padding: 15px;
+      }
+      .result {
+        padding: 30px
+        color: white;
+      }
+      h1 {
+        text-align: center;
+        color: white;
+      }
+      form {
+        padding-top: 20px;
+        margin: 0 auto;
+        width: 250px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to Crazy Bowling</h1>
+    <table style="width:100%">
+      <tr>
+        <th id="frame_1" colspan="2"></th>
+        <th id="frame_2" colspan="2"></th>
+        <th id="frame_3" colspan="2"></th>
+        <th id="frame_4" colspan="2"></th>
+        <th id="frame_5" colspan="2"></th>
+        <th id="frame_6" colspan="2"></th>
+        <th id="frame_7" colspan="2"></th>
+        <th id="frame_8" colspan="2"></th>
+        <th id="frame_9" colspan="2"></th>
+        <th id="frame_10" colspan="2"></th>
+      </tr>
+      <tr>
+        <tr>
+          <th id="score_1">score: </th>
+          <th id="score_2">score: </th>
+          <th id="score_3">score: </th>
+          <th id="score_4">score: </th>
+          <th id="score_5">score: </th>
+          <th id="score_6">score: </th>
+          <th id="score_7">score: </th>
+          <th id="score_8">score: </th>
+          <th id="score_9">score: </th>
+          <th id="score_10">score: </th>
+          <th id="score_11">score: </th>
+          <th id="score_12">score: </th>
+          <th id="score_13">score: </th>
+          <th id="score_14">score: </th>
+          <th id="score_15">score: </th>
+          <th id="score_16">score: </th>
+          <th id="score_17">score: </th>
+          <th id="score_18">score: </th>
+          <th id="score_19">score: </th>
+          <th id="score_20">score: </th>
+        </tr>
+        <tr>
+          <th id="total_1" class="result" colspan="2"></th>
+          <th id="total_2" class="result" colspan="2"></th>
+          <th id="total_3" class="result" colspan="2"></th>
+          <th id="total_4" class="result" colspan="2"></th>
+          <th id="total_5" class="result" colspan="2"></th>
+          <th id="total_6" class="result" colspan="2"></th>
+          <th id="total_7" class="result" colspan="2"></th>
+          <th id="total_8" class="result" colspan="2"></th>
+          <th id="total_9" class="result" colspan="2"></th>
+          <th id="total_10" class="result" colspan="2"></th>
+        </tr>
+    </table>
+    <form class="" action="index.html" method="post">
+      <input id="enter_score" type="text" name="score" value="">
+      <button id="save_score" type="button" name="save_score">Go</button>
+    </form>
+  </body>
+</html>

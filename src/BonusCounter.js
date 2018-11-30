@@ -1,6 +1,7 @@
 "use strict"
 
-function BonusCounter(life) {
+function BonusCounter(frame, life) {
+  this.frame = frame;
   this.life = life;
   this.bonus = 0;
 };

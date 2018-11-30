@@ -21,30 +21,31 @@ describe("Scorecard", function() {
       scorecard.recordScore(3);
       expect(scorecard.readScores(1, 2)).toEqual(3);
     });
-    it("goes to the next frame after 2 rolls", function() {
-      scorecard.recordScore(5);
-      scorecard.recordScore(3);
-      scorecard.recordScore(7);
-      expect(scorecard.readScores(2, 1)).toEqual(7);
-    });
-    it("goes straight to the next frame after a strike", function() {
-      scorecard.recordScore(10);
-      scorecard.recordScore(6);
-      expect(scorecard.readScores(2, 1)).toEqual(6);
-    });
     it("does not allow a frame total greater than 10", function() {
       var outOfPins = "Frame total would exceed 10";
       scorecard.recordScore(6);
       expect(function() {scorecard.recordScore(5)}).toThrow(outOfPins);
     });
-    it("does not accept more scores after the 10th frame", function() {
-      var gameOver = "All frames have been completed";
-      for(var i=1; i<10; i++) {
+
+    describe("recording to the correct frame", function() {
+      it("goes to the next frame after 2 rolls", function() {
+        scorecard.recordScore(5);
+        scorecard.recordScore(3);
+        scorecard.recordScore(7);
+        expect(scorecard.readScores(2, 1)).toEqual(7);
+      });
+      it("goes straight to the next frame after a strike", function() {
         scorecard.recordScore(10);
-      }
-      scorecard.recordScore(0);
-      scorecard.recordScore(0);
-      expect(function() {scorecard.recordScore(5)}).toThrow(gameOver);
+        scorecard.recordScore(6);
+        expect(scorecard.readScores(2, 1)).toEqual(6);
+      });
+      it("does not accept more scores after the 10th frame", function() {
+        var gameOver = "All frames have been completed";
+        for(var i=1; i<=20; i++) {
+          scorecard.recordScore(0);
+        }
+        expect(function() {scorecard.recordScore(5)}).toThrow(gameOver);
+      });
     });
   });
 
@@ -64,10 +65,18 @@ describe("Scorecard", function() {
       scorecard.recordScore(5);
       expect(scorecard.frameScore(1)).toEqual(8);
     });
-    it("returns the score for an earlier strike", function() {
+  });
+
+  describe("strikes", function() {
+    it("reserves space for the bonus", function() {
       scorecard.recordScore(10);
-      scorecard.recordScore(5);
-      expect(scorecard.frameScore(1)).toEqual(10);
+      expect(scorecard.readScores(1,3)).toEqual("S");
+    });
+    it("returns the score including bonuses after 2 rolls", function() {
+      scorecard.recordScore(10);
+      scorecard.recordScore(4);
+      scorecard.recordScore(3);
+      expect(scorecard.frameScore(1)).toEqual(17);
     });
   });
 });

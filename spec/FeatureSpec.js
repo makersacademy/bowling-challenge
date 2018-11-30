@@ -20,12 +20,12 @@ describe('feature test', function() {
     scorer.secondBowl(5)
     expect(scorer.secondBowlScore).toEqual(5);
   });
-
-  it("should be able to calculate the score of both bowls", function() {
-    scorer.firstBowl(5);
-    scorer.secondBowl(5)
-    expect(scorer.total).toEqual(10);
-  });
+  // 
+  // it("should be able to calculate the score of both bowls", function() {
+  //   scorer.firstBowl(5);
+  //   scorer.secondBowl(5)
+  //   expect(scorer.total).toEqual(10);
+  // });
 
   // it("should be able to calculate the score of multiple frames")
 });

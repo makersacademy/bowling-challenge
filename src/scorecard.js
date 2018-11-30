@@ -8,3 +8,6 @@ function Scorecard() {
 	this.strike = false;
 };
 
+Scorecard.prototype.input_score = function(pins_downed){
+	this.current_frame_score += pins_downed;
+};

@@ -14,6 +14,11 @@ describe("scorecard", function() {
   	expect(scorecard.spare).toEqual(false);
   	expect(scorecard.strike).toEqual(false);
   });
+
+  it("A user can input a score", function() {
+  	scorecard.input_score(6);
+  	expect(scorecard.current_frame_score).toEqual(6);
+  });
 });
 
 

@@ -54,5 +54,14 @@ describe("Frame", function() {
       frame.addRoll(1);
       expect(frame.isFinished).toBe(true);
     });
+
+    it('adds three scores of 10 at the end', function() {
+      frame.special = 'final'
+      frame.addRoll(10);
+      frame.addRoll(10);
+      frame.addRoll(10);
+      expect(frame.isFinished).toBe(true);
+      expect(frame.thirdRoll).toEqual(10);
+    })
   });
 })

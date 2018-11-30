@@ -35,5 +35,13 @@ describe("Scorer", function() {
       }
       expect(scorer.frames[9].special).toEqual('final')
     })
+
+    it("can't add more than 10 frames after adding 12 strikes", function() {
+      for(var i = 0; i < 12; i++) {
+        scorer.addScore(10);
+      }
+      expect(scorer.frames[9].isFinished).toBe(true);
+      expect( function() { scorer.addScore(1) }).toThrow('game over!')
+    })
   });
 })

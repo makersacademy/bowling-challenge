@@ -8,8 +8,10 @@ function Scorer() {
 }
 
 Scorer.prototype.addScore = function(number) {
+  if(this.isGameOver()) { throw 'game over!' }
   if(this.isGameStarted === false) { this.setupGame() }
   this.whatFrameIsIt().addRoll(number)
+  if(this.isGameOver()) { return }
   if(this.whatFrameIsIt().isFinished === true) { this.newFrame() }
 }
 
@@ -33,4 +35,9 @@ Scorer.prototype.currentScore = function() {
 
 Scorer.prototype.whatFrameIsIt = function() {
   return this.frames[this.currentFrame]
+}
+
+Scorer.prototype.isGameOver = function() {
+  if(this.currentFrame === 9 && this.frames[this.currentFrame].isFinished) { return true }
+  return false;
 }

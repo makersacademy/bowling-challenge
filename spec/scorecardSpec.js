@@ -38,6 +38,12 @@ describe("scorecard", function() {
   	scorecard.input_score(10);
   	expect(scorecard.strike).toEqual(true);
   });
+
+  it("Scorecard knows when a player has bowled a spare", function(){
+  	scorecard.input_score(9);
+  	scorecard.input_score(1);
+  	expect(scorecard.spare).toEqual(true);
+  });
 });
 
 

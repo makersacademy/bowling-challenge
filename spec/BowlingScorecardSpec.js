@@ -39,7 +39,7 @@ describe('BowlingScorecard', function(){
       scorecard.enterBowl(9);
       scorecard.enterBowl(1);
     });
-    it('adds the next bowl to the frame score', function(){
+    it('adds the next bowl to the frameScore', function(){
       scorecard.enterBowl(4);
       console.log(scorecard.scores);
       expect(scorecard.scores.frame1['frameScore']).toEqual(14);

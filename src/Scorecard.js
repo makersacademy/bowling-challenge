@@ -28,7 +28,6 @@ Scorecard.prototype.frameScore = function(frame) {
   } else {
     switch(this._scoresList[frame - 1].length) {
       case 1:
-        console.log(this._scoresList[frame - 1]);
         return this._scoresList[frame - 1][0];
       case 2:
         return this._scoresList[frame - 1][0] +

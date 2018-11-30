@@ -84,29 +84,6 @@
 </p>
 
 <script src="src/Scorecard.js"></script>
-<script>
-  scorecard = new Scorecard;
-  function record(value) {
-    frameID = "f" + scorecard.currentFrame;
-    rollID = "r" + scorecard.currentRoll;
-    try {
-      scorecard.recordScore(value);
-    }
-    catch(error) {
-      alert(error);
-      exit;
-    }
-    document.getElementById(frameID + rollID).innerHTML = value;
-    document.getElementById("current_frame").innerHTML =
-      scorecard.currentFrame;
-    document.getElementById("current_roll").innerHTML =
-      scorecard.currentRoll;
-    for(i=1; i<=scorecard.currentFrame; i++) {
-      frameScoreID = "f" + i + "s";
-      document.getElementById(frameScoreID).innerHTML =
-        scorecard.frameScore(i);
-    }
-  };
-</script>
+<script src="src/Controller.js"></script>
 </body>
 </html>

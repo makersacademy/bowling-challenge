@@ -10,4 +10,12 @@ function Scorecard() {
 
 Scorecard.prototype.input_score = function(pins_downed){
 	this.current_frame_score += pins_downed;
+	this.update_roll_number();
+};
+
+Scorecard.prototype.update_roll_number = function(){
+	this.roll_number ++
+	if (this.roll_number > 2) {
+		this.roll_number = 1
+	}
 };

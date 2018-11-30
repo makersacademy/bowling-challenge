@@ -19,6 +19,14 @@ describe("scorecard", function() {
   	scorecard.input_score(6);
   	expect(scorecard.current_frame_score).toEqual(6);
   });
+
+  it("Scorecard roll_number resets after 2", function(){
+  	scorecard.input_score(9);
+  	scorecard.input_score(0);
+  	expect(scorecard.roll_number).toEqual(2);
+  	scorecard.input_score(3);
+  	expect(scorecard.roll_number).toEqual(1);
+  });
 });
 
 

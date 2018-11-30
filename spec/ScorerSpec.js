@@ -1,3 +1,5 @@
+'use strict';
+
 describe("Scorer", function() {
   var scorer;
   var frame;

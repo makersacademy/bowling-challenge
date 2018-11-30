@@ -14,6 +14,7 @@ Scorecard.prototype.input_score = function(pins_downed){
 	this.check_spare();
 	this.update_roll_number();
 	this.update_frame_number();
+	this.reset_current_frame();
 };
 
 Scorecard.prototype.update_roll_number = function(){
@@ -35,4 +36,8 @@ Scorecard.prototype.check_strike = function(pins_downed){
 
 Scorecard.prototype.check_spare = function(){
 	this.current_frame_score == 10 ? this.spare = true : this.spare;
+};
+
+Scorecard.prototype.reset_current_frame = function(){
+	this.roll_number == 2 ? this.current_frame_score = 0 : this.current_frame_score;
 };

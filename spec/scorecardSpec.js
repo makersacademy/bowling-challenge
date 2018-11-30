@@ -44,6 +44,13 @@ describe("scorecard", function() {
   	scorecard.input_score(1);
   	expect(scorecard.spare).toEqual(true);
   });
+
+  it("Current_frame_score resets every 2 rolls", function(){
+  	scorecard.input_score(7);
+  	scorecard.input_score(2);
+  	scorecard.input_score(6);
+  	expect(scorecard.current_frame_score).toEqual(6);
+  });
 });
 
 

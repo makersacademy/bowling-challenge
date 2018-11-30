@@ -87,10 +87,14 @@
 <script>
   scorecard = new Scorecard;
   function record(value) {
-    frameID = "f" + scorecard.currentFrame.toString();
-    rollID = "r" + scorecard.currentRoll.toString();
+    frameID = "f" + scorecard.currentFrame;
+    rollID = "r" + scorecard.currentRoll;
     scorecard.recordScore(value);
     document.getElementById(frameID + rollID).innerHTML = value;
+    document.getElementById("current_frame").innerHTML =
+      scorecard.currentFrame;
+    document.getElementById("current_roll").innerHTML =
+      scorecard.currentRoll;
   };
 </script>
 </body>

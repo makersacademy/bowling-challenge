@@ -70,16 +70,25 @@
 
 <p>
   Select score for Frame <span id="current_frame">1</span> Roll <span id="current_roll">1</span>:
-  <button id="score1" value=1>1</button>
-  <button id="score2" value=2>2</button>
-  <button id="score3" value=3>3</button>
-  <button id="score4" value=4>4</button>
-  <button id="score5" value=5>5</button>
-  <button id="score6" value=6>6</button>
-  <button id="score7" value=7>7</button>
-  <button id="score8" value=8>8</button>
-  <button id="score9" value=9>9</button>
-  <button id="score10" value=10>10</button>
+  <button id="score1" onclick="record(1)">1</button>
+  <button id="score2" onclick="record(2)">2</button>
+  <button id="score3" onclick="record(3)">3</button>
+  <button id="score4" onclick="record(4)">4</button>
+  <button id="score5" onclick="record(5)">5</button>
+  <button id="score6" onclick="record(6)">6</button>
+  <button id="score7" onclick="record(7)">7</button>
+  <button id="score8" onclick="record(8)">8</button>
+  <button id="score9" onclick="record(9)">9</button>
+  <button id="score10" onclick="record(10)">10</button>
 </p>
+
+<script src="jquery.js"></script>
+<script src="src/Scorecard.js"></script>
+<script>
+  scorecard = new Scorecard;
+  function record(value) {
+    scorecard.recordScore(value);
+  };
+</script>
 </body>
 </html>

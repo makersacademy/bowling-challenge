@@ -1,6 +1,6 @@
 'use strict';
 
-describe("Feature Tests" function() {
+describe("Feature Tests", function() {
   var scorer;
 
   beforeEach(function() {
@@ -12,5 +12,5 @@ describe("Feature Tests" function() {
     scorer.addScore(1);
     expect(scorer.isGameStarted).toBe(true);
     expect(scorer.score).toEqual(2);
-  })
+  });
 })

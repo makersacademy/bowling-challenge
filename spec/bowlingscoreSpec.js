@@ -1,3 +1,1 @@
-describe('BowlingScoreCard',function(){
-
-})
+describe('BowlingScoreCard', () => {});

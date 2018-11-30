@@ -3,8 +3,83 @@
 <head>
   <meta charset="UTF-8">
   <title>Bowling scorecard</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+<h1>Bowling scorecard</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th>Frame 1</th>
+    <th>Frame 2</th>
+    <th>Frame 3</th>
+    <th>Frame 4</th>
+    <th>Frame 5</th>
+    <th>Frame 6</th>
+    <th>Frame 7</th>
+    <th>Frame 8</th>
+    <th>Frame 9</th>
+    <th>Frame 10</th>
+  </tr>
+  <tr>
+    <th>Roll 1</th>
+    <td id="f1r1"></td>
+    <td id="f2r1"></td>
+    <td id="f3r1"></td>
+    <td id="f4r1"></td>
+    <td id="f5r1"></td>
+    <td id="f6r1"></td>
+    <td id="f7r1"></td>
+    <td id="f8r1"></td>
+    <td id="f9r1"></td>
+    <td id="f10r1"></td>
+  </tr>
+  <tr>
+    <th>Roll 2</th>
+    <td id="f1r2"></td>
+    <td id="f2r2"></td>
+    <td id="f3r2"></td>
+    <td id="f4r2"></td>
+    <td id="f5r2"></td>
+    <td id="f6r2"></td>
+    <td id="f7r2"></td>
+    <td id="f8r2"></td>
+    <td id="f9r2"></td>
+    <td id="f10r2"></td>
+    <td style="width:0px"></td>
+    <th>Total</th>
+  </tr>
+  <tr>
+    <th>Score</th>
+    <td id="f1s"></td>
+    <td id="f2s"></td>
+    <td id="f3s"></td>
+    <td id="f4s"></td>
+    <td id="f5s"></td>
+    <td id="f6s"></td>
+    <td id="f7s"></td>
+    <td id="f8s"></td>
+    <td id="f9s"></td>
+    <td id="f10s"></td>
+    <td style="width:0px"></td>
+    <td id="total"</td>
+  </tr>
+</table>
+
+<p>
+  Select score for Frame <span id="current_frame">1</span> Roll <span id="current_roll">1</span>:
+  <button id="score1" value=1>1</button>
+  <button id="score2" value=2>2</button>
+  <button id="score3" value=3>3</button>
+  <button id="score4" value=4>4</button>
+  <button id="score5" value=5>5</button>
+  <button id="score6" value=6>6</button>
+  <button id="score7" value=7>7</button>
+  <button id="score8" value=8>8</button>
+  <button id="score9" value=9>9</button>
+  <button id="score10" value=10>10</button>
+</p>
 </body>
 </html>

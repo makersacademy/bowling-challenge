@@ -1,0 +1,84 @@
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+}
+
+input[type="text"] {
+  width: 10px;
+
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 100px 92px 92px 92px 92px 92px 92px 92px 92px 92px 137px;
+  grid-template-rows: 25px 60px;
+}
+
+.heading {
+  border: solid;
+  border-width: 1px;
+  text-align: center;
+  vertical-align: center;
+}
+
+.frame_line {
+  border: solid;
+  border-width: 1px;
+  text-align: center;
+  vertical-align: center;
+}
+
+.frame_inside_grid {
+  display: grid;
+  grid-template-columns: 45px 45px;
+  grid-template-rows: 30px 28px;
+}
+
+.frame10_inside_grid {
+  display: grid;
+  grid-template-columns: 45px 45px 45px;
+  grid-template-rows: 30px 28px;
+}
+
+.frame_bowl1 {
+  border-bottom: solid;
+  border-right: solid;
+  border-width: 1px;
+  text-align: center;
+  vertical-align: center;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.frame_bowl2 {
+  border-bottom: solid;
+  border-width: 1px;
+  text-align: center;
+  vertical-align: center;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.frame_score {
+  text-align: center;
+  vertical-align: center;
+  grid-column: 1 / 3;
+  grid-row: 2;
+}
+
+.frame_bowl3 {
+  border-bottom: solid;
+  border-left: solid;
+  border-width: 1px;
+  text-align: center;
+  vertical-align: center;
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.frame10_score {
+  text-align: center;
+  vertical-align: center;
+  grid-column: 1 / 4;
+  grid-row: 2;
+}

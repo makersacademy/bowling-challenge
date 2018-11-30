@@ -18,4 +18,18 @@ describe("Bonus Counter", function() {
       expect(bonusCounter.life).toEqual(1);
     });
   });
+
+  describe("counting bonuses", function() {
+    it("has zero score to begin with", function() {
+      bonusCounter = new BonusCounter(2);
+      expect(bonusCounter.bonus).toEqual(0);
+    });
+    it("increases the bonus amount by the given value", function() {
+      bonusCounter = new BonusCounter(2);
+      bonusCounter.add(3);
+      expect(bonusCounter.bonus).toEqual(3);
+      bonusCounter.add(5);
+      expect(bonusCounter.bonus).toEqual(8);
+    });
+  });
 });

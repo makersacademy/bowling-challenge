@@ -33,6 +33,11 @@ describe("scorecard", function() {
   	scorecard.input_score(1);
   	expect(scorecard.frame_number).toEqual(2);
   });
+
+  it("Scorecard knows when player has bowled a strike", function(){
+  	scorecard.input_score(10);
+  	expect(scorecard.strike).toEqual(true);
+  });
 });
 
 

@@ -9,6 +9,7 @@ function Scorecard() {
 };
 
 Scorecard.prototype.input_score = function(pins_downed){
+	this.check_strike(pins_downed)
 	this.current_frame_score += pins_downed;
 	this.update_roll_number();
 	this.update_frame_number();
@@ -25,4 +26,8 @@ Scorecard.prototype.update_frame_number = function(){
 	if(this.roll_number == 2){
 		this.frame_number ++;
 	}
+};
+
+Scorecard.prototype.check_strike = function(pins_downed){
+	pins_downed == 10 ? this.strike = true : this.strike ;
 };

@@ -4,7 +4,7 @@ function Scorecard() {
   this._scoresList = [];
   this.currentFrame = 1;
   this.currentRoll = 1;
-}
+};
 Scorecard.prototype.recordScore = function(score) {
   this._validateFrame(score);
   this._scoresList[this.currentFrame - 1][this.currentRoll - 1] = score;
@@ -42,4 +42,4 @@ Scorecard.prototype._calculateFrameTotal = function(frame) {
       return this._scoresList[frame - 1][0] +
         this._scoresList[frame - 1][1];
   }
-}
+};

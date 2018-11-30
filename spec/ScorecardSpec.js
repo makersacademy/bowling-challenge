@@ -32,6 +32,11 @@ describe("Scorecard", function() {
       scorecard.recordScore(6);
       expect(scorecard.readScores(2, 1)).toEqual(6);
     });
+    it("does not allow a frame total greater than 10", function() {
+      var error = "Frame total would exceed 10";
+      scorecard.recordScore(6);
+      expect(function() {scorecard.recordScore(5)}).toThrow(error);
+    });
   });
 
   describe("scoring frames", function() {
@@ -39,20 +44,17 @@ describe("Scorecard", function() {
       scorecard.recordScore(5);
       expect(scorecard.frameScore(1)).toEqual(5);
     });
-
     it("returns the total frame score after 2 rolls", function() {
       scorecard.recordScore(4);
       scorecard.recordScore(3);
       expect(scorecard.frameScore(1)).toEqual(7);
     });
-
     it("returns a score from earlier than the current frame", function() {
       scorecard.recordScore(2);
       scorecard.recordScore(6);
       scorecard.recordScore(5);
       expect(scorecard.frameScore(1)).toEqual(8);
     });
-
     it("returns the score for an earlier strike", function() {
       scorecard.recordScore(10);
       scorecard.recordScore(5);

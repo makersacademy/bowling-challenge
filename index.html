@@ -89,7 +89,13 @@
   function record(value) {
     frameID = "f" + scorecard.currentFrame;
     rollID = "r" + scorecard.currentRoll;
-    scorecard.recordScore(value);
+    try {
+      scorecard.recordScore(value);
+    }
+    catch(error) {
+      alert(error);
+      exit;
+    }
     document.getElementById(frameID + rollID).innerHTML = value;
     document.getElementById("current_frame").innerHTML =
       scorecard.currentFrame;

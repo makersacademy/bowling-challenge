@@ -23,11 +23,16 @@ describe('BowlingScorecard', function(){
       scorecard.enterBowl(5);
       expect(scorecard.scores.frame1['frameScore']).toEqual(19);
     });
-    it('can add 2 bowls if the second bowl is a strike', function(){
+    it('can add 2 bowls to frameScore if the second bowl is a strike', function(){
       scorecard.enterBowl(10);
       scorecard.enterBowl(5);
       expect(scorecard.scores.frame1['frameScore']).toEqual(25);
-    })
+    });
+    it('can add 2 bowls to frameScore if bowl 3 strikes in a row', function(){
+      scorecard.enterBowl(10);
+      scorecard.enterBowl(10);
+      expect(scorecard.scores.frame1['frameScore']).toEqual(30);
+    });
   });
   describe('spare is bowled', function(){
     beforeEach(function(){

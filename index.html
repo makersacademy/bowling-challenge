@@ -70,6 +70,7 @@
 
 <p>
   Select score for Frame <span id="current_frame">1</span> Roll <span id="current_roll">1</span>:
+  <button id="score0" onclick="record(0)">0</button>
   <button id="score1" onclick="record(1)">1</button>
   <button id="score2" onclick="record(2)">2</button>
   <button id="score3" onclick="record(3)">3</button>
@@ -82,12 +83,14 @@
   <button id="score10" onclick="record(10)">10</button>
 </p>
 
-<script src="jquery.js"></script>
 <script src="src/Scorecard.js"></script>
 <script>
   scorecard = new Scorecard;
   function record(value) {
+    frameID = "f" + scorecard.currentFrame.toString();
+    rollID = "r" + scorecard.currentRoll.toString();
     scorecard.recordScore(value);
+    document.getElementById(frameID + rollID).innerHTML = value;
   };
 </script>
 </body>

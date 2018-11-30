@@ -33,9 +33,18 @@ describe("Scorecard", function() {
       expect(scorecard.readScores(2, 1)).toEqual(6);
     });
     it("does not allow a frame total greater than 10", function() {
-      var error = "Frame total would exceed 10";
+      var outOfPins = "Frame total would exceed 10";
       scorecard.recordScore(6);
-      expect(function() {scorecard.recordScore(5)}).toThrow(error);
+      expect(function() {scorecard.recordScore(5)}).toThrow(outOfPins);
+    });
+    it("does not accept more scores after the 10th frame", function() {
+      var gameOver = "All frames have been completed";
+      for(var i=1; i<10; i++) {
+        scorecard.recordScore(10);
+      }
+      scorecard.recordScore(0);
+      scorecard.recordScore(0);
+      expect(function() {scorecard.recordScore(5)}).toThrow(gameOver);
     });
   });
 

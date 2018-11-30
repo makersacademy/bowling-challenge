@@ -1,7 +1,10 @@
-scorecard = new Scorecard;
+"use strict"
+
+var scorecard = new Scorecard;
 
 function record(rolledScore) {
-  frameRollID = "f" + scorecard.currentFrame + "r" + scorecard.currentRoll;
+  var frameRollID =
+    "f" + scorecard.currentFrame + "r" + scorecard.currentRoll;
   try {
     scorecard.recordScore(rolledScore);
     updateDisplay(frameRollID, rolledScore)
@@ -17,8 +20,8 @@ function updateDisplay(frameRollID, rolledScore) {
     scorecard.currentFrame;
   document.getElementById("current_roll").innerHTML =
     scorecard.currentRoll;
-  for(i=1; i<=scorecard.currentFrame; i++) {
-    frameScoreID = "f" + i + "s";
+  for(var i=1; i<=10; i++) {
+    var frameScoreID = "f" + i + "s";
     document.getElementById(frameScoreID).innerHTML =
       scorecard.frameScore(i);
   }

@@ -33,4 +33,30 @@ describe("Scorecard", function() {
       expect(scorecard.readScores(2, 1)).toEqual(6);
     });
   });
+
+  describe("scoring frames", function() {
+    it("returns the partial frame score after 1 roll", function() {
+      scorecard.recordScore(5);
+      expect(scorecard.frameScore(1)).toEqual(5);
+    });
+
+    it("returns the total frame score after 2 rolls", function() {
+      scorecard.recordScore(4);
+      scorecard.recordScore(3);
+      expect(scorecard.frameScore(1)).toEqual(7);
+    });
+
+    it("returns a score from earlier than the current frame", function() {
+      scorecard.recordScore(2);
+      scorecard.recordScore(6);
+      scorecard.recordScore(5);
+      expect(scorecard.frameScore(1)).toEqual(8);
+    });
+
+    it("returns the score for an earlier strike", function() {
+      scorecard.recordScore(10);
+      scorecard.recordScore(5);
+      expect(scorecard.frameScore(1)).toEqual(10);
+    });
+  });
 });

@@ -18,7 +18,7 @@ describe("Game", function() {
     game.calculateFramePoints(5);
     game.updateFrame();
     game.calculateFramePoints(3);
-    // console.log("points (8)" + game.current_frame_points);
+    // console.log("points (8)" + game.currentFramePoints);
     expect(game.getFramePoints()).toEqual(8);
   });
 
@@ -29,6 +29,30 @@ describe("Game", function() {
     game.updateFrame();
     game.calculateFramePoints(4);
     expect(game.getFramePoints()).toEqual(4);
+  });
+
+  it("adds bonus for a strike", function() {
+    game.calculateFramePoints(10);
+    game.updateFrame();
+    game.calculateFramePoints(2);
+    game.updateFrame();
+    game.calculateFramePoints(2);
+    game.updateFrame();
+    expect(game.frameScores[1]).toEqual(14);
+    expect(game.frameScores[2]).toEqual(4);
+  });
+
+  it("adds bonus for a spare", function() {
+    game.calculateFramePoints(5);
+    game.updateFrame();
+    game.calculateFramePoints(5);
+    game.updateFrame();
+    game.calculateFramePoints(2);
+    game.updateFrame();
+    game.calculateFramePoints(2);
+    game.updateFrame();
+    expect(game.frameScores[1]).toEqual(12);
+    expect(game.frameScores[2]).toEqual(4);
   });
 
 });

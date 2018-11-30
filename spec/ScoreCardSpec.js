@@ -16,7 +16,16 @@ describe("ScoreCard", function() {
     expect(scoreCard.frameNumber).toEqual(2);
   });
 
-  it("can record the final score", function() {
+  it("should record the pins knocked down", function() {
+    scoreCard.addScore(2);
+    scoreCard.addScore(3);
+    scoreCard.addScore(4);
+    scoreCard.addScore(5);
+    expectedResult = [ [2,3],[4,5],[],[],[],[],[],[],[],[] ];
+    expect(scoreCard.pinsKnockedDown).toEqual(expectedResult);
+  })
+
+  it("should give a sum of score", function() {
     var i;
     for (i = 0; i < 20; i++) {
       scoreCard.addScore(2);

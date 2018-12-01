@@ -10,6 +10,6 @@ Game.prototype.roll = function(frame) {
   this._frames.push(frame);
 };
 
-Game.prototype.score = function() {
+Game.prototype.finalScore = function() {
   return this._frames.reduce(function(a, b) { return a + b; }, 0);
 };

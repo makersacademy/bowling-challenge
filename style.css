@@ -1,0 +1,71 @@
+button
+{
+  color: yellow;
+  background-color: black;
+
+}
+
+.buttons
+{
+  width: 80px;
+  height: 80px;
+  font-size: 40px;
+  border-color: red;
+  border-width: 5px;
+  border-radius: 40px;
+  text-align: center;
+  -webkit-box-shadow: 6px -14px 216px 0px rgba(255,8,8,1);
+  -moz-box-shadow: 6px -14px 216px 0px rgba(255,8,8,1);
+  box-shadow: 6px -14px 216px 0px rgba(255,8,8,1);
+  margin-left: 20px;
+}
+
+#numbers_top
+{
+  margin-top: 40px;
+  margin-left: 350px;
+}
+
+#numbers_bottom
+{
+  margin-top: 15px;
+  margin-left: 420px;
+
+}
+
+#container_frames
+{
+  height: 200px;
+  width: 200px;
+
+}
+
+.frame {
+  background-color: black;
+  color: yellow;
+  height: 200px;
+  text-align: right;
+  padding: 10px 3px;
+  border: 2px solid red;
+  box-shadow: 1px 1px 1px #1e1e1e
+
+}
+
+.roll,
+.last_frame_roll {
+  color: black;
+  background-color: yellow;
+  border: 2px solid red;
+  text-align: right;
+  padding: 5px;
+  margin-top: 12px;
+  text-align: center;
+}
+#main {
+  margin-left: 100px;
+}
+
+#scoreboard
+{
+  margin-top: 200px;
+}

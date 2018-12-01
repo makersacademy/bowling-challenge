@@ -6,8 +6,8 @@ describe("Frame", function() {
     frame = new Frame();
   });
 
-  it('has 10 pins by default', function() {
-    expect(frame.showPins()).toEqual(10);
+  it('score is 0 by default', function() {
+    expect(frame.score()).toEqual(0);
   });
 
 });

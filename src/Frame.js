@@ -1,7 +1,7 @@
 function Frame() {
-  this._pins = 10;
+  this._score = 0;
 }
 
-Frame.prototype.showPins = function () {
-  return this._pins;
+Frame.prototype.score = function () {
+  return this._score;
 };

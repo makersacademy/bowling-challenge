@@ -1,9 +1,11 @@
+
+
 describe('Bowling', function(){
 
   describe('a game', function(){
     beforeEach(function(){
       game = new Game();
-      frame = new Frame();
+      frame = new Frame(game.frame);
       //Add 2 frames
       for(var i = 0; i < 2; i++){
         game.addFrame(frame)
@@ -23,7 +25,16 @@ describe('Bowling', function(){
   describe('a frame', function(){
 
     beforeEach(function(){
-      frame = new Frame();
+      game = new Game();
+      for(var i = 0; i < 2; i++){
+        game.addFrame(frame)
+      }
+      frame = new Frame(game.frame);
+    });
+
+    it('has a frame number equal to the current game frame number', function(){
+      expect(frame.frame).toEqual(game.frame);
+      expect(frame.frame).toEqual(3);
     });
 
     it('can return the score from the first turn', function(){
@@ -43,6 +54,26 @@ describe('Bowling', function(){
       expect(frame.total).toEqual(6);
     });
 
+  });
+
+  describe('is_strike', function(){
+
+    beforeEach(function(){
+      game = new Game();
+      frame = new Frame();
+    });
+
+    it('can determine if score 1 is a strike', function(){
+      frame.firstTurn = "x"
+      expect(is_strike(frame.firstTurn)).toBe(true);
+    });
+  });
+
+  describe('is_spare', function(){
+    it('can determine if the second turn is a spare', function(){
+      frame.secondTurn = "/"
+      expect(is_spare(frame.secondTurn)).toBe(true);
+    });
   });
 
 });

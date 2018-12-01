@@ -9,7 +9,8 @@ Game.prototype.addFrame = function (frame) {
 };
 
 
-var Frame = function(){
+var Frame = function(frame){
+  this.frame = frame
   this.firstTurn = 0;
   this.secondTurn = 0;
   this.total = 0;
@@ -25,4 +26,20 @@ Frame.prototype.addSecondScore = function (num) {
 
 Frame.prototype.addTotal = function () {
   this.total = (this.firstTurn + this.secondTurn);
+};
+
+is_strike = function (firstTurn) {
+  if (firstTurn === "x") {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+is_spare = function (secondTurn) {
+  if (secondTurn === "/") {
+    return true;
+  } else {
+    return false;
+  }
 };

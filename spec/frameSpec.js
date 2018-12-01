@@ -3,6 +3,7 @@
 describe('Frame', function() {
   var frame;
   var frame2;
+  var frame3;
   var game;
 
   beforeEach(function() {
@@ -66,5 +67,66 @@ describe('Frame', function() {
     frame2 = new Frame();
     frame2.update(2, 5);
     expect(frame.calcScore(frame2)).toEqual(12);
+  });
+
+  it('can calculate the bonus of a double strike', function () {
+    frame.update(10, 0);
+    frame2 = new Frame();
+    frame2.update(10, 0);
+    frame3 = new Frame()
+    frame3.update(5, 4)
+    expect(frame.calcBonus(frame2, frame3)).toEqual(15);
+  });
+
+  it('can calculate the score of a double strike', function () {
+    frame.update(10, 0);
+    frame2 = new Frame();
+    frame2.update(10, 0);
+    frame3 = new Frame()
+    frame3.update(5, 4)
+    expect(frame.calcScore(frame2, frame3)).toEqual(25);
+  });
+
+  it('can calculate the bonus of a triple strike', function () {
+    frame.update(10, 0);
+    frame2 = new Frame();
+    frame2.update(10, 0);
+    frame3 = new Frame()
+    frame3.update(10, 0)
+    expect(frame.calcBonus(frame2, frame3)).toEqual(20);
+  });
+
+  it('can calculate the score of a triple strike', function () {
+    frame.update(10, 0);
+    frame2 = new Frame();
+    frame2.update(10, 0);
+    frame3 = new Frame()
+    frame3.update(10, 0)
+    expect(frame.calcScore(frame2, frame3)).toEqual(30);
+  });
+
+  it ("calculates the bonus for a strike in the final frame", function(){
+    frame.rolls = [10, 10, 10];
+    expect(frame.calcBonus()).toEqual(0);
+  });
+
+  it ("calculates the score for a strike in the final frame", function(){
+    frame.rolls = [10, 10, 10];
+    expect(frame.calcScore()).toEqual(30);
+  });
+
+  it ("calculates the bonus for a spare in the final frame", function(){
+    frame.rolls = [3, 7, 6];
+    expect(frame.calcBonus()).toEqual(0);
+  });
+
+  it ("calculates the score for a spare in the final frame", function(){
+    frame.rolls = [3, 7, 6];
+    expect(frame.calcScore()).toEqual(16);
+  });
+
+  it ("calculates the bonus for final frame without spare or strike", function(){
+    frame.rolls = [3, 4];
+    expect(frame.calcBonus()).toEqual(0);
   });
 });

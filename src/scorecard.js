@@ -53,26 +53,3 @@ Scorecard.prototype.bonus_score = function(){
     }
   }
 };
-
-var scorecard = new Scorecard();
-
-scorecard.calculate_score(10, 0);
-scorecard.calculate_score(6, 3);
-console.log(scorecard.frame_score[0]);
-console.log(scorecard.frame_score[1]);
-
-
-
-
-
-Game.prototype.isSpare = function(frameIndex){
-  return this.rolls[frameIndex] + this.rolls[frameIndex + 1] === 10;
-};
-
-Game.prototype.strikeBonus = function(frameIndex){
-  return this.rolls[frameIndex + 1] + this.rolls[frameIndex + 2];
-};
-
-Game.prototype.spareBonus = function(frameIndex){
-  return this.rolls[frameIndex + 2];
-};

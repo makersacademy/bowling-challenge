@@ -26,13 +26,20 @@ Score.prototype.scoresIntoFrames = function(frame, bowl, score) {
   });
 }
 
+Score.prototype.scoreCalculation = function() {
+  for (var number = 0; number < this.frames.length; number++) {
+    this.score += this.frames[number]['bowl1'] + this.frames[number]['bowl2']
+  }
+
+};
+
 Score.prototype.searchFrames = function (frame, bowl) {
-  for (var i = 0; i < this.frames.length; i++) {
-      if (this.frames[i]['frame'] === frame) {
+  for (var number = 0; number < this.frames.length; number++) {
+      if (this.frames[number]['frame'] === frame) {
         if (bowl === 1) {
-          return this.frames[i]['bowl1'];
+          return this.frames[number]['bowl1'];
         } else if (bowl === 2) {
-          return this.frames[i]['bowl2'];
+          return this.frames[number]['bowl2'];
         }
       }
   }

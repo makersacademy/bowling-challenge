@@ -13,5 +13,11 @@ describe('Frame', function() {
     expect(frame.score).toEqual([2]);
   });
 
+  it('will add a second roll to the score', function() {
+    frame.roll(2);
+    frame.roll(3);
+    expect(frame.score).toEqual([2,3]);
+  });
+
 
 });

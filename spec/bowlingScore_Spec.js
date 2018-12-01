@@ -27,4 +27,21 @@ describe('Bowling', function() {
       expect(score.searchFrames(1, 2)).toEqual(9);
     });
   });
+
+  describe('#isStrike', function() {
+    it('identifies that a strike happened in last bowl', function() {
+      score.scoresIntoFrames(1, 1, 10);
+      expect(score.isStrike(1, 1)).toEqual(true);
+    });
+
+    it('identifies no strike happened in last bowl', function() {
+      score.scoresIntoFrames(1, 1, 3);
+      expect(score.isStrike(1, 1)).toEqual(false);
+    });
+
+  });
+
+  
+
+
 });

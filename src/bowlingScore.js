@@ -34,3 +34,9 @@ Score.prototype.searchFrames = function (frame, bowl) {
   }
   return null;
 }
+
+Score.prototype.isStrike = function(frame, bowl){
+  if (this.searchFrames(frame, bowl) === 10) {
+    return true
+  } return false
+};

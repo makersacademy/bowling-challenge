@@ -17,6 +17,14 @@ describe('Bowling', function() {
       score.scoresIntoFrames(5, 2, 8);
       expect(score.frames[4]['bowl2']).toBe(8);
     });
+
+    it('throws error if invalid scores', function() {
+      score.scoresIntoFrames(1,1,8);
+      score.scoresIntoFrames(1,2,3)
+      expect(function() {
+      score.scoresIntoFrames(1,2,3)
+      }).toThrowError('Invalid score')
+    });
   });
 
   describe('#searchFrames', function() {

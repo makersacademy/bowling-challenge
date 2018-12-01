@@ -1,7 +1,8 @@
 'use strict'
 
 var Score = function () {
-  this.frames =[
+  this.score = 0
+  this.frames = [
   {frame: 1, bowl1: 0, bowl2: 0}, {frame: 2, bowl1: 0, bowl2: 0},
   {frame: 3, bowl1: 0, bowl2: 0}, {frame: 4, bowl1: 0, bowl2: 0},
   {frame: 5, bowl1: 0, bowl2: 0}, {frame: 6, bowl1: 0, bowl2: 0},
@@ -11,6 +12,9 @@ var Score = function () {
 };
 
 Score.prototype.scoresIntoFrames = function(frame, bowl, score) {
+  if (this._validScore(frame) === false) {
+    throw new Error('Invalid score');
+  }
   this.frames.map(f => {
     if (f.frame === frame) {
       if (bowl === 1) {
@@ -35,16 +39,23 @@ Score.prototype.searchFrames = function (frame, bowl) {
   return null;
 }
 
-Score.prototype._isStrike = function(frame){
+Score.prototype._isStrike = function(frame) {
   if (this.searchFrames(frame, 1) === 10) {
     return true
   } return false
 };
 
-Score.prototype._isSpare = function(frame){
+Score.prototype._isSpare = function(frame) {
   if (this.searchFrames(frame, 1) < 10) {
     if (this.searchFrames(frame, 1) + this.searchFrames(frame, 2) === 10) {
     return true
     }
   } return false
+};
+
+Score.prototype._validScore = function(frame) {
+  if (this.searchFrames(frame, 1) + this.searchFrames(frame, 2) <= 10) {
+    return true
+  } return false
+
 };

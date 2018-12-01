@@ -1,13 +1,15 @@
 var Game = function(){
   this.frame = 1;
+  this.turn = 1;
+  this.total = 0
   this.scoreTable = [];
 };
 
 Game.prototype.addFrame = function (frame) {
-  this.scoreTable.push(frame)
+  this.total += frame.total;
+  this.scoreTable.push(frame);
   this.frame ++
 };
-
 
 var Frame = function(frame){
   this.frame = frame

@@ -4,7 +4,6 @@
     <meta>
     <title></title>
     <script src="src/bowling.js" type="text/javascript"></script>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style media="screen">
       body {
@@ -42,6 +41,11 @@
       }
       #player_name {
         border-bottom: none;
+      }
+      button {
+
+        margin: 30px auto;
+        display: block;
       }
     </style>
   </head>
@@ -101,8 +105,11 @@
     </table>
     <h2>Enter your score below</h2>
     <form class="" action="index.html" method="post">
-      <input id="enter_score" type="text" name="score" value="">
-      <button id="save_score" type="button" name="save_score">Go <i class="fas fa-bowling-ball"></i></button>
+      <input id="enter-score" type="text" name="score" value="">
+      <!-- <button id="save-score" type="button" name="button">Go <i class="fas fa-bowling-ball"></i></button> -->
     </form>
+    <button id="save-score" type="button" name="button">Go <i class="fas fa-bowling-ball"></i></button>
   </body>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="interface.js" type="text/javascript"></script>
 </html>

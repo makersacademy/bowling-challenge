@@ -51,6 +51,29 @@ describe("scorecard", function() {
   	scorecard.input_score(6);
   	expect(scorecard.current_frame_score).toEqual(6);
   });
+
+  describe("Calculating score", function(){
+  	it("Player bowls a spare", function(){
+  		scorecard.input_score(7);
+  		scorecard.input_score(3);
+  		scorecard.input_score(5);
+  		expect(scorecard.frame_score[1]).toEqual(15);
+  		expect(scorecard.current_frame_score).toEqual(5);
+  	});
+  });
+});
+
+describe("Frame", function(){
+	var frame
+
+	beforeEach(function() {
+    frame = new Frame();
+  });
+
+  it("Should have roll attributes", function(){
+  	expect(frame.first_roll).toEqual(null);
+  	expect(frame.second_roll).toEqual(null);
+  });
 });
 
 

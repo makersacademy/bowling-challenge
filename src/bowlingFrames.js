@@ -17,4 +17,4 @@ function findObjectByKey(key, value) {
 
 var obj = findObjectByKey('frame', 1);
 
-console.log(obj)
+console.log(obj['frame'] === 1)

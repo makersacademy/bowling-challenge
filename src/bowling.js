@@ -51,6 +51,7 @@ return score // returning value of total rools
 
 Bowling.prototype.alertIfFramesFinished = function ()  {
   if(rools.length === 20 || rools.length > 20) {
+    rools.push(0)
     $("#numbers").hide();
     $('#test').text("your score is : ");
     $('#test').append(this.score());

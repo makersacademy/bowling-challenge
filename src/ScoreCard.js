@@ -9,23 +9,27 @@ function ScoreCard () {
 ScoreCard.prototype.addScore = function(pins) {
   this.pinsKnockedDown[this.frameNumber-1].push(pins);
   this.addBonus(pins);
-  if (this.rollNumber == 1) {
-    if (pins == 10) {
-      this.frameNumber ++;
-      this.bonusRolls = 2;
-    } else {
-      this.rollNumber ++;
-    };
-  } else {
-    this.frameNumber ++;
-    this.rollNumber = 1;
-  };
+  this.updateProperties(pins);
 };
 
 ScoreCard.prototype.addBonus = function(pins) {
   if (this.bonusRolls > 0) {
     this.bonusPins[this.frameNumber-2] += pins
     this.bonusRolls --;
+  };
+};
+
+ScoreCard.prototype.updateProperties = function(pins) {
+  if (this.rollNumber == 1) {
+    if (pins == 10) {
+      this.frameNumber ++;
+      this.bonusRolls += 2;
+    } else {
+      this.rollNumber ++;
+    };
+  } else {
+    this.frameNumber ++;
+    this.rollNumber = 1;
   };
 };
 

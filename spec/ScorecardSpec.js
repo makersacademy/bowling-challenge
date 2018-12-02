@@ -15,7 +15,7 @@ describe('Scorecard:', function() {
     });
 
     it('_frames is empty', function() {
-      expect(game._frames).toEqual([[],[],[],[],[],[],[],[],[],[]]);
+      expect(game._frames).toEqual([]);
     });
   });
 
@@ -35,7 +35,7 @@ describe('Scorecard:', function() {
 
     it('after one throw, _scores records result, _frames is empty', function() {
       expect(game._scores).toEqual([4]);
-      expect(game._frames).toEqual([[],[],[],[],[],[],[],[],[],[]]);
+      expect(game._frames).toEqual([]);
     });
 
     it('after multiple throws, _frames records the running total', function() {
@@ -58,7 +58,7 @@ describe('Scorecard:', function() {
     });
 
     it('_frames does not total the scores', function() {
-      expect(game._frames[0]).toEqual(NaN);
+      expect(game._frames[0]).toEqual(undefined);
     });
 
     it('after one more throw, _frames shows the running total', function() {
@@ -78,13 +78,24 @@ describe('Scorecard:', function() {
     });
 
     it('_frames does not total the scores', function() {
-      expect(game._frames[0]).toEqual(NaN);
+      expect(game._frames[0]).toEqual(undefined);
     });
 
     it('after two more throws, _frames shows the running total', function() {
       game.throw(10);
       game.throw(10);
       expect(game._frames[0]).toEqual(30);
+    });
+  });
+
+  describe('Display:', function() {
+
+    it('_display holds correct symbols for 0, spare, and strike', function() {
+      game.throw(10);
+      game.throw(0);
+      game.throw(10);
+      game.throw(4);
+      expect(game._display).toEqual(["", "X", "-", "/", 4])
     });
   });
 });

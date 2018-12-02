@@ -1,6 +1,7 @@
 function Scorecard() {
   this._scores = [];
-  this._frames = [[],[],[],[],[],[],[],[],[],[]]
+  this._frames = [];
+  this._display = [];
 };
 
 Scorecard.prototype.even = function(something) {
@@ -15,6 +16,7 @@ Scorecard.prototype.throw = function(pinsDown) {
   }
   else { this._scores.push(pinsDown); }
   this.eachFrame();
+  this.toDisplay(pinsDown);
 };
 
 Scorecard.prototype.eachFrame = function() {
@@ -33,7 +35,31 @@ Scorecard.prototype.eachFrame = function() {
       }
       hold += this._scores[i];
       index = (i / 2) - 0.5;
-      this._frames[index] = hold;
+      if (isNaN(hold)) {}
+      else { this._frames[index] = hold; }
     }
   }
+};
+
+Scorecard.prototype.toDisplay = function(pinsDown) {
+  if (
+    (this._display.length == 18 && pinsDown == 10) || 
+    (this._display.length == 19 && pinsDown == 10) ||
+    (this._display.length == 20 && pinsDown == 10)) {
+    this._display.push("X");
+  }
+  else if (this.even(this._display.length) && pinsDown == 10) {
+    this._display.push("");
+    this._display.push("X");
+  }
+  else if (
+    this.even(this._scores.length)
+    && 
+    (this._scores[this._scores.length - 2] + this._scores[this._scores.length - 1] == 10)) {
+      this._display.push("/");
+    }
+  else if (pinsDown == 0) {
+    this._display.push("-");
+  }
+  else { this._display.push(pinsDown); }
 };

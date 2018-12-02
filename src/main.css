@@ -1,0 +1,106 @@
+/* #region Grid Setup */
+
+.player-name-header { grid-area: PNH; }
+.player-name { grid-area: PNN; }
+.frame-1 { grid-area: FFA; }
+.frame-2 { grid-area: FFB; }
+.frame-3 { grid-area: FFC; }
+.frame-4 { grid-area: FFD; }
+.frame-5 { grid-area: FFE; }
+.frame-6 { grid-area: FFF; }
+.frame-7 { grid-area: FFG; }
+.frame-8 { grid-area: FFH; }
+.frame-9 { grid-area: FFI; }
+.frame-0 { grid-area: FFJ; }
+.frame-1-ball-1 { grid-area: FAA; }
+.frame-1-ball-2 { grid-area: FAB; }
+.frame-2-ball-1 { grid-area: FBA; }
+.frame-2-ball-2 { grid-area: FBB; }
+.frame-3-ball-1 { grid-area: FCA; }
+.frame-3-ball-2 { grid-area: FCB; }
+.frame-4-ball-1 { grid-area: FDA; }
+.frame-4-ball-2 { grid-area: FDB; }
+.frame-5-ball-1 { grid-area: FEA; }
+.frame-5-ball-2 { grid-area: FEB; }
+.frame-6-ball-1 { grid-area: DFA; }
+.frame-6-ball-2 { grid-area: DFB; }
+.frame-7-ball-1 { grid-area: FGA; }
+.frame-7-ball-2 { grid-area: FGB; }
+.frame-8-ball-1 { grid-area: FHA; }
+.frame-8-ball-2 { grid-area: FHB; }
+.frame-9-ball-1 { grid-area: FIA; }
+.frame-9-ball-2 { grid-area: FIB; }
+.frame-0-ball-1 { grid-area: FJA; }
+.frame-0-ball-2 { grid-area: FJB; }
+.frame-0-ball-3 { grid-area: FJC; }
+.frame-1-total { grid-area: FTA; }
+.frame-2-total { grid-area: FTB; }
+.frame-3-total { grid-area: FTC; }
+.frame-4-total { grid-area: FTD; }
+.frame-5-total { grid-area: FTE; }
+.frame-6-total { grid-area: FTF; }
+.frame-7-total { grid-area: FTG; }
+.frame-8-total { grid-area: FTH; }
+.frame-9-total { grid-area: FTI; }
+.frame-0-total { grid-area: FTJ; }
+
+.scorecard {
+  display: grid;
+  grid-template-areas:
+  'PNH PNH PNH PNH FFA FFA FFB FFB FFC FFC FFD FFD FFE FFE FFF FFF FFG FFG FFH FFH FFI FFI FFJ FFJ FFJ'
+  'PNN PNN PNN PNN FAA FAB FBA FBB FCA FCB FDA FDB FEA FEB DFA DFB FGA FGB FHA FHB FIA FIB FJA FJB FJC'
+  'PNN PNN PNN PNN FTA FTA FTB FTB FTC FTC FTD FTD FTE FTE FTF FTF FTG FTG FTH FTH FTI FTI FTJ FTJ FTJ';
+}
+
+/* #endregion */
+
+body, input {
+  font-family: Helvetica Neue;
+  font-size: 30px;
+  font-weight: 100;
+}
+
+input {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+}
+
+p {
+  text-align: center;
+}
+
+.player-name-header, div[class^='frame'] {
+  line-height: 50px;
+}
+
+.player-name {
+  line-height: 100px;
+}
+
+div {
+  border-style: solid;
+  border-color: #000000;
+  border-width: 0px;
+}
+
+div[class^='frame'] {
+  text-align: center;
+  border-left-width: 1px;
+}
+
+div[class$='ball-2'], div[class$='ball-3'] {
+  border-bottom-width: 1px;
+}
+
+.scorecard {
+  border-width: 1px;
+}
+
+.top-row {
+  border-bottom-width: 1px;
+}
+
+div[class^='player'] {
+  padding-left: 10px;
+}

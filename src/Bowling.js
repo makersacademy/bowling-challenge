@@ -14,17 +14,34 @@ Bowling.prototype.score = function () {
   var game = this;
 
   for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
-    if (isSpare()) {
+    if (isStrike()) {
+      result += strikeScore();
+      rollIndex++
+    } else if (isSpare()) {
       result += spareScore();
-    } else {
+      rollIndex += 2
+    } else if (isNormal()) {
       result += normalScore();
+      rollIndex += 2
     }
-    rollIndex += 2;
   }
+
   return result;
+
+  function isStrike() {
+    return game.frame[rollIndex] === 10
+  }
 
   function isSpare() {
     return game.frame[rollIndex] + game.frame[rollIndex + 1] === 10
+  }
+
+  function isNormal() {
+    return game.frame[rollIndex] + game.frame[rollIndex + 1] < 10
+  }
+
+  function strikeScore() {
+    return game.frame[rollIndex] + game.frame[rollIndex + 1] + game.frame[rollIndex + 2]
   }
 
   function spareScore() {

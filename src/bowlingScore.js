@@ -2,9 +2,6 @@
 
 var Score = function () {
   this.result = 0
-  this.strike = 'no'
-  this.spare = 'no'
-  this.ten = 'no'
   this.frames = [ ]
 };
 
@@ -44,44 +41,39 @@ Score.prototype.searchFrames = function (frame, bowl) {
   return null;
 }
 
-Score.prototype.strikeOrSpare = function(frame, bowl) {
-  if(this.searchFrames(frame, 1) === 10) {
-    return true
-  } else if (this.searchFrames(frame, 1) + this.searchFrames(frame, 2) === 10) {
-    return true
-  } else {
-    return false
-  }
-}
+
 
 Score.prototype.gameScoring = function() {
   for (var number = 1; number < this.frames.length + 1; number++) {
     if (isNaN(this.searchFrames(number, 1)) === true){
       continue
     }
-    if (number === 10 && (this.searchFrames(number, 1) + this.searchFrames(number, 2) > 0)) {
+    if (number === 10) {
       this.frameTenProcess(number)
       continue
     }
     if (this.strikeOrSpare(number, 1) === true || this.strikeOrSpare(number, 2) === true) {
-      if (this.searchFrames(number, 1) === 10) {
-        this.strikeProcess(number)
-        continue
-      } else if (this.searchFrames(number, 1) + this.searchFrames(number, 2) === 10) {
-        this.spareProcess(number)
-        continue
-      }
-    } else if (this.searchFrames(number, 1) + this.searchFrames(number, 2) != 10) {
-      this.result += (this.searchFrames(number, 1) + this.searchFrames(number, 2))
+      this.strikeOrSpareScoring(number)
       continue
-    } else {
+    } else if (this.wholeFrame(number) != 10) {
+      this.result += this.wholeFrame(number)
+      continue
     }
   }
 }
 
 
-Score.prototype.strikeProcess = function(frame) {
+Score.prototype.strikeOrSpareScoring = function(frame) {
+  if (this.searchFrames(frame, 1) === 10) {
+    this.strikeProcess(frame)
+    return
+  } else if (this.searchFrames(frame, 1) + this.searchFrames(frame, 2) === 10) {
+    this.spareProcess(frame)
+    return
+  }
+}
 
+Score.prototype.strikeProcess = function(frame) {
   if (frame < 10 && this.searchFrames(frame + 1, 1) + this.searchFrames(frame + 2, 1) === 20) {
     this.result += 30
     return
@@ -89,21 +81,9 @@ Score.prototype.strikeProcess = function(frame) {
     this.result += (10 + this.searchFrames(frame + 1, 1) + this.searchFrames(frame + 2, 1))
     return
   } else if (frame < 10 && this.searchFrames(frame + 1, 1) < 10 && this.searchFrames(frame + 1, 2) < 10) {
-    this.result += (10 + this.searchFrames(frame + 1, 1) + this.searchFrames(frame + 1, 2))
+    this.result += (this.wholeFrame(frame + 1) + 10)
     return
-  } else if (frame === 9 && this.searchFrames(frame +1, 1) === 10) {
-    this.result += (10 + this.searchFrames(frame + 1, 1) + this.searchFrames(frame + 1, 2))
-    return
-
-  } else if (frame === 9) {
-    if (this.searchFrames(frame + 1, 1) === 10) {
-      this.result += (10 + this.searchFrames(frame + 1, 1) + this.searchFrames(frame + 1, 2))
-      this.result += (this.searchFrames(frame + 1, 1) + this.searchFrames(frame + 1, 2))
-      return
-    } else {
-      this.result += (10 + this.searchFrames(frame + 1, 1) + this.searchFrames(frame + 1, 2))
     }
-  }
 }
 
 Score.prototype.spareProcess = function(frame) {
@@ -112,17 +92,42 @@ Score.prototype.spareProcess = function(frame) {
 
 Score.prototype.frameTenProcess = function(frame) {
   if (this.searchFrames(frame, 1) === 10 && this.searchFrames(frame, 2) === 10) {
-    this.result += 10
-  }
-   if (this.searchFrames(frame, 1) === 10) {
-    this.result += (10 + this.searchFrames(frame, 2) + this.searchFrames(frame, 3))
+    this.result += (20 + this.searchFrames(frame, 2) + this.searchFrames(frame, 3))
+  } else if (this.searchFrames(frame, 1) === 10) {
+  this.result += (10 + this.searchFrames(frame, 2) + this.searchFrames(frame, 3))
   } else if (isNaN(this.searchFrames(frame, 3)) === false) {
-    this.result += (this.searchFrames(frame, 1) + this.searchFrames(frame, 2) + this.searchFrames(frame, 3))
-  } else if (this.searchFrames(frame, 1) + this.searchFrames(frame, 2) + this.searchFrames(frame, 3) === 30) {
-
-    this.result += 30
+      this.result += (this.searchFrames(frame, 1) + this.searchFrames(frame, 2) + this.searchFrames(frame, 3))
   } else {
-
-    this.result += (this.searchFrames(frame, 1) + this.searchFrames(frame, 2))
+    this.result += (this.wholeFrame(frame))
   }
+}
+
+Score.prototype.strikeOrSpare = function(frame, bowl) {
+  if(this.searchFrames(frame, 1) === 10) {
+    return true
+  } else if (this.wholeFrame(frame) === 10) {
+    return true
+  } else {
+    return false
+  }
+}
+
+// Score.prototype.nextFrameBowl1 = function(frame) {
+//   return this.searchFrames(frame, 1)
+// }
+//
+// Score.prototype.nextFrameBowl2 = function(frame) {
+//   return this.searchFrames(frame, 2)
+// }
+
+Score.prototype.wholeFrame = function(frame) {
+  return this.searchFrames(frame, 1) + this.searchFrames(frame, 2)
+}
+
+Score.prototype.frame10 = function(frame) {
+  if (frame === 10) return true
+}
+
+Score.prototype.invaildNumber = function(frame) {
+
 }

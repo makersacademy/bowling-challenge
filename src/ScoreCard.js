@@ -28,6 +28,9 @@ ScoreCard.prototype.updateProperties = function(pins) {
       this.rollNumber ++;
     };
   } else {
+    if (this.pinsKnockedDown[this.frameNumber-1][0] + pins == 10) {
+      this.bonusRolls ++;
+    }
     this.frameNumber ++;
     this.rollNumber = 1;
   };

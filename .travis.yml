@@ -7,3 +7,4 @@ install:
 
 script:
   - codecov
+  - npm test

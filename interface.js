@@ -3,6 +3,7 @@ var button = new Buttons();
 var roll = 1;
 
 $(document).ready(function() {
+  $('#gamefinished').hide();
   $('#button1').click(function() {
   game.alertIfFramesFinished();
   game.returnPinNumber(1);
@@ -70,6 +71,10 @@ $(document).ready(function() {
   game.alertIfFramesFinished();
   game.returnPinNumber(10);
   pickedNumberToFrame(10);
+});
+
+$('#gamefinished').click(function() {
+    window.location.reload();
 });
 
 function pickedNumberToFrame(number){

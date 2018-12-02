@@ -23,6 +23,7 @@ Game.prototype.applyStrikeBonuses = function (i) {
   } else {
     this.scoreTable[i].total += (this.scoreTable[i+1].total);
   }
+  game.scoreTable[i].bonusApplied = true;
   if (this.scoreTable[i-1] === undefined) {
     return;
   } else {
@@ -30,24 +31,19 @@ Game.prototype.applyStrikeBonuses = function (i) {
   }
 };
 
-// Game.prototype.applySpareBonuses = function (running_total) {
-//   if (this.scoreTable[i+1] === undefined) {
-//     break;
-//   } else {
-//     this.scoreTable[i].total += (this.scoreTable[i+1].firstTurn + running_total);
-//   }
-//   return running_total;
-// };
-
-Game.prototype.calculateScores = function () {
-  for (var i = 0; i < game.scoreTable.length; i++) {
-    if (game.scoreTable[i].firstTurn === "x"){
-      game.applyStrikeBonuses(i);
-    // } else if (game.scoreTable[i].secondTurn === "/") {
-    //   game.applySpareBonuses();
-    } else {
-      game.applyStandardScoring(i);
-    }
+Game.prototype.applySpareBonuses = function (i) {
+  if (this.scoreTable[i+1] === undefined) {
+    return;
+  } else if (this.scoreTable[i+1].firstTurn === "x") {
+    this.scoreTable[i].total += 10;
+  } else {
+    this.scoreTable[i].total += this.scoreTable[i+1].firstTurn;
+  }
+  game.scoreTable[i].bonusApplied = true;
+  if (this.scoreTable[i-1] === undefined) {
+    return;
+  } else {
+    this.scoreTable[i].total += this.scoreTable[i-1].total;
   }
 };
 
@@ -59,10 +55,23 @@ Game.prototype.applyStandardScoring = function (i) {
   }
 };
 
+Game.prototype.calculateScores = function () {
+  for (var i = 0; i < game.scoreTable.length; i++) {
+    if (game.scoreTable[i].firstTurn === "x" && game.scoreTable[i].bonusApplied === false){
+      game.applyStrikeBonuses(i);
+    } else if (game.scoreTable[i].secondTurn === "/" && game.scoreTable[i].bonusApplied === false) {
+      game.applySpareBonuses(i);
+    } else {
+      game.applyStandardScoring(i);
+    }
+  }
+};
+
 var Frame = function(frame){
   this.frame = frame
   this.firstTurn = 0;
   this.secondTurn = 0;
+  this.bonusApplied = false;
   this.total = 0;
 };
 
@@ -76,8 +85,9 @@ Frame.prototype.addFirstScore = function (score) {
   }
 };
 
-Frame.prototype.addSecondScore = function (num) {
-  this.secondTurn = num;
+Frame.prototype.addSecondScore = function (score) {
+  this.secondTurn = score;
+  this.addTotal();
 };
 
 Frame.prototype.addTotal = function () {

@@ -84,7 +84,7 @@ describe('Bowling', function(){
 
   });
 
-  describe('is_strike', function(){
+  describe('#is_strike', function(){
 
     beforeEach(function(){
       game = new Game();
@@ -97,18 +97,21 @@ describe('Bowling', function(){
     });
   });
 
-  describe('is_spare', function(){
+  describe('#is_spare', function(){
     it('can determine if the second turn is a spare', function(){
       frame.secondTurn = "/"
       expect(is_spare(frame.secondTurn)).toBe(true);
     });
   });
 
-  describe('strike_scoring', function(){
+  describe('#calculateScores', function(){
 
-    it('can add the next score to previous frame as a strike bonus', function(){
+    beforeEach(function(){
       game = new Game();
       frame = new Frame(game.frame);
+    });
+
+    it('can add the next score to previous frame as a strike bonus', function(){
       frame.addFirstScore('x');
       game.addFrame(frame);
       frame2 = new Frame(game.frame);
@@ -120,24 +123,44 @@ describe('Bowling', function(){
       expect(game.scoreTable[0].total).toEqual(17);
     });
 
-    it('can add the correct bonuses for getting a strikes', function(){
-      game = new Game();
-      frame = new Frame(game.frame);
+    it('can add the correct bonuses for getting strikes', function(){
       frame.addFirstScore('x');
       game.addFrame(frame);
+      game.calculateScores();
       frame2 = new Frame(game.frame);
       frame2.addFirstScore('x');
       game.addFrame(frame2);
       game.calculateScores();
       frame3 = new Frame(game.frame);
-      frame3.firstTurn = 3;
-      frame3.secondTurn = 4;
+      frame3.addFirstScore(3);
+      frame3.addSecondScore(4);
       frame3.addTotal();
       game.addFrame(frame3);
       game.calculateScores();
       expect(game.scoreTable[0].total).toEqual(27);
       expect(game.scoreTable[1].total).toEqual(44);
       expect(game.scoreTable[2].total).toEqual(51);
+    });
+
+    it('can add the correct bonuses for getting spares', function(){
+      frame.addFirstScore(5);
+      frame.addSecondScore('/');
+      game.addFrame(frame);
+      game.calculateScores();
+      frame2 = new Frame(game.frame);
+      frame2.addFirstScore(2);
+      frame2.addSecondScore('/');
+      game.addFrame(frame2);
+      game.calculateScores();
+      frame3 = new Frame(game.frame);
+      frame3.addFirstScore(3);
+      frame3.addSecondScore(4);
+      frame3.addTotal();
+      game.addFrame(frame3);
+      game.calculateScores();
+      expect(game.scoreTable[0].total).toEqual(12);
+      expect(game.scoreTable[1].total).toEqual(25);
+      expect(game.scoreTable[2].total).toEqual(32);
     });
   });
 

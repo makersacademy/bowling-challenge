@@ -4,9 +4,9 @@ function Updater() {
 Updater.prototype.update = function(frames) {
     frames.forEach(function(frame, index){
         var next = frames[index + 1];
+        var nextNext = frames[index +2];
         if (frame.isStrike()) {
             if (next.isStrike()){
-                var nextNext = frames[index +2];
                 if (nextNext.getFirstScore() !== null) {
                     var score = frame.getFirstScore() +
                                 next.getFirstScore() +

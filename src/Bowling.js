@@ -11,14 +11,28 @@ Bowling.prototype.roll = function (pins) {
 Bowling.prototype.score = function () {
   var result = 0;
   var rollIndex = 0;
+  var game = this;
 
   for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
-    if (this.frame[rollIndex] + this.frame[rollIndex + 1] === 10) {
-      result += this.frame[rollIndex] + this.frame[rollIndex + 1] + this.frame[rollIndex + 2];
+    if (isSpare()) {
+      result += spareScore();
     } else {
-      result += this.frame[rollIndex] + this.frame[rollIndex + 1];
+      result += normalScore();
     }
     rollIndex += 2;
   }
   return result;
+
+  function isSpare() {
+    return game.frame[rollIndex] + game.frame[rollIndex + 1] === 10
+  }
+
+  function spareScore() {
+    return game.frame[rollIndex] + game.frame[rollIndex + 1] + game.frame[rollIndex + 2]
+  }
+
+  function normalScore() {
+    return game.frame[rollIndex] + game.frame[rollIndex + 1]
+  }
+
 };

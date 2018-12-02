@@ -4,22 +4,24 @@
     <title>Bowling</title>
     <script src="src/bowling.js"></script>
     <script src="jquery.js"></script>
+    <script src="src/buttons.js"></script>
     <script src="interface.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
   <body>
 
-      <div id="numbers_top">
+      <div>
+        <h1 id="header">★彡 𝐵𝑜𝓌𝓁𝒾𝓃𝑔 𝒮𝒸𝑜𝓇𝑒 𝒞𝒶𝓁𝒸𝓊𝓁𝒶𝓉𝑜𝓇 彡★</h1>
+      </div>
+
+      <div id="numbers">
         <button class="buttons" id="button1">1</button>
         <button class="buttons" id="button2">2</button>
         <button class="buttons" id="button3">3</button>
         <button class="buttons" id="button4">4</button>
         <button class="buttons" id="button5">5</button>
         <button class="buttons" id="button6">6</button>
-      </div>
-
-      <div id="numbers_bottom">
         <button class="buttons" id="button7">7</button>
         <button class="buttons" id="button8">8</button>
         <button class="buttons" id="button9">9</button>
@@ -30,7 +32,7 @@
       <h1 id="test"> </h1>
       </div>
 
-    
+
       <section id="scoreboard" class="row">
 
         <div id="main" class="col-xs-4 col-md-1 col-xs-offset-2 col-md-offset-1 frame">
@@ -39,7 +41,7 @@
             <div id="roll1" class="col-xs-4 col-md-6 col-xs-offset-4 col-md-offset-0 roll empty">-</div>
             <div id="roll2" class="col-xs-4 col-md-6 roll empty">-</div>
           </div>
-          <div class="row score total1"></div>
+          <div id="row-score-total1" class="row-score-total">hahaha</div>
         </div>
 
         <div class="col-md-1 col-xs-4 frame">
@@ -48,7 +50,7 @@
             <div id="roll3" class="col-xs-4 col-md-6  col-xs-offset-4 col-md-offset-0 roll empty">-</div>
             <div id="roll4" class="col-xs-4 col-md-6 roll empty">-</div>
           </div>
-          <div class="row score total2"></div>
+          <div id="row-score-total2" class="row-score-total"></div>
         </div>
 
         <div class="col-xs-4 col-md-1 col-md-offset-0 col-xs-offset-2 frame">
@@ -57,7 +59,7 @@
             <div id="roll5" class="col-xs-4 col-md-6 col-xs-offset-4 col-md-offset-0 roll empty">-</div>
             <div id="roll6" class="col-xs-4 col-md-6 roll empty">-</div>
           </div>
-          <div class="row score total3"></div>
+          <div id="row-score-total3" class="row-score-total"></div>
         </div>
 
         <div class="col-xs-4 col-md-1 frame">
@@ -66,7 +68,7 @@
             <div id="roll7" class="col-xs-4 col-md-6 col-xs-offset-4 col-md-offset-0 roll empty">-</div>
             <div id="roll8" class="col-xs-4 col-md-6 roll empty">-</div>
           </div>
-          <div class="row score total4"></div>
+          <div id="row-score-total4" class="row-score-total"></div>
         </div>
 
         <div class="col-xs-4 col-md-1 col-xs-offset-2 col-md-offset-0 frame">
@@ -75,7 +77,7 @@
             <div id="roll9" class="col-xs-4 col-md-6 col-xs-offset-4 col-md-offset-0 roll empty">-</div>
             <div id="roll10" class="col-xs-4 col-md-6 roll empty">-</div>
           </div>
-          <div class="row score total5"></div>
+          <div id="row-score-total5" class="row-score-total"></div>
         </div>
 
         <div class="col-xs-4 col-md-1 frame">
@@ -84,7 +86,7 @@
             <div id="roll11" class="col-xs-4 col-md-6 col-xs-offset-4 col-md-offset-0 roll empty">-</div>
             <div id="roll12" class="col-xs-4 col-md-6 roll empty">-</div>
           </div>
-          <div class="row score total6"></div>
+          <div id="row-score-total6" class="row-score-total"></div>
         </div>
 
         <div class="col-xs-4 col-md-1 col-md-offset-0 col-xs-offset-2 frame">
@@ -93,7 +95,7 @@
             <div id="roll13" class="col-xs-4 col-md-6 col-xs-offset-4 col-md-offset-0 roll empty">-</div>
             <div id="roll14" class="col-xs-4 col-md-6 roll empty">-</div>
           </div>
-          <div class="row score total7"></div>
+          <div id="row-score-total7" class="row-score-total"></div>
         </div>
 
         <div class="col-xs-4 col-md-1 frame">
@@ -102,7 +104,7 @@
             <div id="roll15" class="col-xs-4 col-md-6 col-xs-offset-4 col-md-offset-0 roll empty">-</div>
             <div id="roll16" class="col-xs-4 col-md-6 roll empty">-</div>
           </div>
-          <div class="row score total8"></div>
+          <div id="row-score-total8" class="row-score-total"></div>
         </div>
 
         <div class="col-xs-4 col-md-1 col-xs-offset-2 col-md-offset-0 frame">
@@ -111,7 +113,7 @@
             <div id="roll17" class="col-xs-4 col-md-6 col-xs-offset-4 col-md-offset-0 roll empty">-</div>
             <div id="roll18" class="col-xs-4 col-md-6 roll empty">-</div>
           </div>
-          <div class="row score total9"></div>
+          <div id="row-score-total9" class="row-score-total"></div>
         </div>
 
         <div class="col-xs-4 col-md-1 frame">
@@ -121,10 +123,14 @@
             <div id="roll20" class="col-xs-3 col-md-4 last_frame_roll empty">-</div>
             <div id="roll21" class="col-xs-3 col-md-4 last_frame_roll empty">-</div>
           </div>
-          <div class="row score total10"></div>
+          <div id="row-score-total10" class="row-score-total"></div>
         </div>
 
       </section>
+
+      <div id="footer">
+        Develop: Javascript, JQuery, HTML and CSS. Testing: Jasmine and Jasmine-JQuery &copy; Mateusz Stacel.
+      </div>
 
 
 

@@ -1,8 +1,21 @@
+body
+{
+  background-image: url("img/background.png");
+}
+
 button
 {
   color: yellow;
   background-color: black;
+  cursor: pointer;
+}
 
+button:hover
+{
+  background-color: yellow;
+  color: red;
+  text-decoration: underline;
+  opacity: 0.7;
 }
 
 .buttons
@@ -20,23 +33,30 @@ button
   margin-left: 20px;
 }
 
-#numbers_top
+#header
 {
-  margin-top: 40px;
-  margin-left: 350px;
+  text-align: center;
+  margin-top: 90px;
+  color: white;
+  font-size: 65px;
+  -webkit-box-shadow: 6px -14px 216px 0px rgba(255,8,8,1);
+  -moz-box-shadow: 6px -14px 216px 0px rgba(255,8,8,1);
+  box-shadow: 6px -14px 216px 0px rgba(255,8,8,1);
+  text-shadow: 2px 2px #ff0000;
 }
 
-#numbers_bottom
+#numbers
 {
-  margin-top: 15px;
-  margin-left: 420px;
-
+  margin-top: 30px;
+  margin-left: 110px;
 }
+
 
 #container_frames
 {
   height: 200px;
   width: 200px;
+
 
 }
 
@@ -47,7 +67,7 @@ button
   text-align: right;
   padding: 10px 3px;
   border: 2px solid red;
-  box-shadow: 1px 1px 1px #1e1e1e
+
 
 }
 
@@ -60,6 +80,7 @@ button
   padding: 5px;
   margin-top: 12px;
   text-align: center;
+
 }
 #main {
   margin-left: 100px;
@@ -67,5 +88,29 @@ button
 
 #scoreboard
 {
-  margin-top: 200px;
+  margin-top: 100px;
+  opacity: 0.8;
+}
+#footer
+{
+  margin-top: 50px;
+  clear: both;
+  color: black;
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+}
+#test
+{
+    margin-top: 50px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 70px;
+
+text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;
+}
+.row-score-total
+{
+  margin-top: 40px;
+  text-align: center;
 }

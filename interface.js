@@ -1,93 +1,88 @@
 var game = new Bowling();
+var button = new Buttons();
+var roll = 1;
 
 $(document).ready(function() {
   $('#button1').click(function() {
   game.alertIfFramesFinished();
   game.returnPinNumber(1);
-  game.pickedNumberToFrame(1);
-  game.statusButtons(1);
-
-
-});
+  pickedNumberToFrame(1);
+  button.statusButtons(1);
 });
 
-$(document).ready(function() {
   $('#button2').click(function() {
   game.alertIfFramesFinished();
   game.returnPinNumber(2);
-  game.pickedNumberToFrame(2);
-  game.statusButtons(2);
-});
+  pickedNumberToFrame(2);
+  button.statusButtons(2);
 });
 
-$(document).ready(function() {
   $('#button3').click(function() {
   game.alertIfFramesFinished();
   game.returnPinNumber(3);
-  game.pickedNumberToFrame(3);
-  game.statusButtons(3);
-});
+  pickedNumberToFrame(3);
+  button.statusButtons(3);
 });
 
-$(document).ready(function() {
   $('#button4').click(function() {
   game.alertIfFramesFinished();
   game.returnPinNumber(4);
-  game.pickedNumberToFrame(4);
-  game.statusButtons(4);
-});
+  pickedNumberToFrame(4);
+  button.statusButtons(4);
 });
 
-$(document).ready(function() {
   $('#button5').click(function() {
   game.alertIfFramesFinished();
   game.returnPinNumber(5);
-  game.pickedNumberToFrame(5);
-  game.statusButtons(5);
-});
+  pickedNumberToFrame(5);
+  button.statusButtons(5);
 });
 
-$(document).ready(function() {
   $('#button6').click(function() {
   game.alertIfFramesFinished();
   game.returnPinNumber(6);
-  game.pickedNumberToFrame(6);
-  game.statusButtons(6);
-});
+  pickedNumberToFrame(6);
+  button.statusButtons(6);
 });
 
-$(document).ready(function() {
   $('#button7').click(function() {
   game.alertIfFramesFinished();
   game.returnPinNumber(7);
-  game.pickedNumberToFrame(7);
-  game.statusButtons(7);
-});
+  pickedNumberToFrame(7);
+  button.statusButtons(7);
 });
 
-$(document).ready(function() {
   $('#button8').click(function() {
   game.alertIfFramesFinished();
   game.returnPinNumber(8);
-  game.pickedNumberToFrame(8);
-  game.statusButtons(8);
-});
+  pickedNumberToFrame(8);
+  button.statusButtons(8);
 });
 
-$(document).ready(function() {
   $('#button9').click(function() {
   game.alertIfFramesFinished();
   game.returnPinNumber(9);
-  game.pickedNumberToFrame(9);
-  game.statusButtons(9);
-});
+  pickedNumberToFrame(9);
+  button.statusButtons(9);
 });
 
-$(document).ready(function() {
   $('#button10').click(function() {
   game.alertIfFramesFinished();
   game.returnPinNumber(10);
-  game.pickedNumberToFrame(10);
-
+  pickedNumberToFrame(10);
 });
+
+function pickedNumberToFrame(number){
+  if(number === 10) {  //if rolled number is Strike then print "-" and push 0 to array score will looks like : X, -
+    $('#roll'+roll+'').text(number);
+    roll = roll + 1
+    $('#roll'+roll+'').text("-");
+    roll = roll + 1
+  }else if(roll === 21) {
+    $('#roll21').text("-");
+  }else if(number != 10) {
+    $('#roll'+roll+'').text(number);
+    roll = roll + 1
+  };
+};
 });

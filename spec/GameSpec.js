@@ -33,6 +33,19 @@ describe("Game", function() {
     expect(game.score()).toEqual(12);
   });
 
+  it('calculates a game with two spares', function(){
+    game.roll(5);
+    game.roll(5);
+    game.roll(1);
+    game.roll(0);
+    game.roll(5);
+    game.roll(5);
+    game.roll(1);
+    game.roll(0);
+    multiRoll(12, 0);
+    expect(game.score()).toEqual(24);
+  });
+
   it('calculates a game with one strike', function(){
     game.roll(10);
     game.roll("X");
@@ -41,7 +54,7 @@ describe("Game", function() {
     expect(game.score()).toEqual(12);
   });
 
-  it('calculates a game with 2 strikes', function(){
+  it('calculates a game with non-consecutive strikes', function(){
     game.roll(10);
     game.roll("X");
     game.roll(5);
@@ -53,10 +66,24 @@ describe("Game", function() {
     expect(game.score()).toEqual(34);
   });
 
+  it('calculates a game with consecutive strikes', function(){
+    game.roll(10);
+    game.roll("X");
+    game.roll(10);
+    game.roll("X");
+    game.roll(5);
+    game.roll(0);
+    multiRoll(14, 0);
+    console.log(game._frames)
+    expect(game.score()).toEqual(45);
+  });
+
+
   function multiRoll(amount, pins) {
     var i;
     for (i = 0; i < amount; i++) {
       game.roll(pins);
     };
   };
+
 });

@@ -11,20 +11,30 @@ Game.prototype.roll = function(pins) {
   this._frames.push(pins);
 };
 
+// refactor into frame class...
 Game.prototype.score = function() {
   var index = 0;
   var i;
   for (var i = 0; i < 10; i++) {
     frame = [this._frames[index], this._frames[index+1]]
     nextFrame = [this._frames[index+2], this._frames[index+3]]
+    nextButOneFrame = [this._frames[index+4], this._frames[index+5]]
     if (this._isASpare(frame)) {
       this._score += (10 + nextFrame[0]);
       index += 2;
     } else if (this._isAStrike(frame)) {
-      this._score += (10 + nextFrame.reduce(add, 0));
-      index += 2;
+      if (this._isAStrike(nextFrame) && this._isAStrike(nextButOneFrame)) {
+        this._score += 30;
+        index += 2;
+      } else if (this._isAStrike(nextFrame)) {
+        this._score += (20 + nextButOneFrame[0]);
+        index += 2;
+      } else {
+        this._score += (10 + nextFrame[0] + nextFrame[1]);
+        index += 2;
+      }
     } else {
-      this._score += frame.reduce(add, 0);
+      this._score += (frame[0] + frame[1]);
       index += 2;
     }
   }

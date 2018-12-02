@@ -55,4 +55,16 @@ describe("Game", function() {
     expect(game.frameScores[2]).toEqual(4);
   });
 
+  it("calculates total points", function() {
+    game.calculateFramePoints(5);
+    game.updateFrame();
+    game.calculateFramePoints(5);
+    game.updateFrame();
+    game.calculateFramePoints(2);
+    game.updateFrame();
+    game.calculateFramePoints(2);
+    game.updateFrame();
+    expect(game.total()).toEqual(16);
+  });
+
 });

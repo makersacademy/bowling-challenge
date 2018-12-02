@@ -57,3 +57,4 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 * calculates scores without bonuses
 * adds bonus for strike (10 pins knocked in first roll)
 * adds bonus for a spare (10 pins knocked with the two rolls of a frame)
+* calculates total

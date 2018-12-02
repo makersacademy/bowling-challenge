@@ -5,6 +5,7 @@ function Game() {
   this.frameScores = [0];
   this.bonus = [null];
   this.spareBonus = 0;
+  this.totalpoints = 0;
 }
 
 Game.prototype.getFramePoints = function () {
@@ -47,7 +48,7 @@ Game.prototype.finishFrame = function() {
   this.currentFramePoints = 0;
   this.currentFrame += 1;
   this.roll = 1;
-}
+};
 
 Game.prototype.setBonus = function(pins, framePoints) {
   if (pins === 10) {
@@ -79,4 +80,13 @@ Game.prototype.updatePreviousFrame = function() {
   } else {
     this.frameScores[this.currentFrame - 1] += this.frameScores[this.currentFrame];
   }
+};
+
+Game.prototype.total = function() {
+  this.totalpoints = 0;
+   var that = this;
+   this.frameScores.forEach(function(value) {
+     that.totalpoints += value;
+   });
+   return this.totalpoints;
 };

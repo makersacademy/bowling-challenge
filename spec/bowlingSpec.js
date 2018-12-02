@@ -19,14 +19,14 @@ describe('ScoreCard', function() {
     });
   });
 
-  // describe('record the score of one frame', function() {
-  //   it('adds roll one and roll two to the frame score array', function() {
-  //     expect(scoreCard.roll).toEqual(0);
-  //     scoreCard.frameOne();
-  //     expect(scoreCard.roll).toEqual(1);
-  //
-  //   });
-  // });
+  describe('record the score of one frame', function() {
+    it('adds roll one and roll two to the frame score array', function() {
+      expect(scoreCard.rollTwo).toEqual(0);
+      scoreCard.frameOne();
+      expect(scoreCard.rollTwo).toEqual(1);
+      expect(scoreCard.frameScore).toEqual([1, 1])
+    });
+  });
 
 
 });

@@ -1,7 +1,8 @@
 
 Bowling Challenge
 =================
-
+How to run?
+- Clone the repo and open `index.html` to run the app locally.
 
 ![Pictures of UI](img/bowling.png)
 

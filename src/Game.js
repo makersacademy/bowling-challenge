@@ -12,6 +12,12 @@ Game.prototype.roll = function(pins) {
 };
 
 Game.prototype.score = function() {
-  this._score = this._frames.reduce((a, b) => a + b, 0);
+  this._calculateScore();
   return this._score;
 };
+
+Game.prototype._calculateScore = function() {
+  this._score = this._frames.reduce( function(frame, score){
+    return frame + score
+  });
+}

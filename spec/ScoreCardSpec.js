@@ -5,7 +5,7 @@ describe("ScoreCard", function() {
     scoreCard = new ScoreCard();
   });
 
-  it("rolls should update the rollNumber and frameNumber", function() {
+  it("should update the rollNumber and frameNumber", function() {
     expect(scoreCard.rollNumber).toEqual(1);
     expect(scoreCard.frameNumber).toEqual(1);
     scoreCard.addScore(2);
@@ -25,11 +25,22 @@ describe("ScoreCard", function() {
     expect(scoreCard.pinsKnockedDown).toEqual(expectedResult);
   })
 
-  it("should give a sum of score", function() {
-    var i;
-    for (i = 0; i < 20; i++) {
+  it("should calculate the score", function() {
+    for (var i = 0; i < 20; i++) {
       scoreCard.addScore(2);
     };
-    expect(scoreCard.sumOfPins()).toEqual(40);
+    expect(scoreCard.calculateScore()).toEqual(40);
   });
+
+  it("strike should add bonus of next two rolls when strike", function() {
+    scoreCard.addScore(10);
+    expect(scoreCard.rollNumber).toEqual(1);
+    expect(scoreCard.frameNumber).toEqual(2);
+    expect(scoreCard.bonusRolls).toEqual(2);
+    scoreCard.addScore(3);
+    expect(scoreCard.bonusRolls).toEqual(1);
+    scoreCard.addScore(4);
+    expect(scoreCard.bonusRolls).toEqual(0);
+    expext(scoreCard.calculateScore).toEqual(24);
+  })
 });

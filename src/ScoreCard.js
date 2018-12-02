@@ -2,7 +2,7 @@ function ScoreCard () {
   this.frameNumber = 1;
   this.rollNumber = 1;
   this.pinsKnockedDown = [ [],[],[],[],[],[],[],[],[],[] ];
-  this.bonusRolls = 0;
+  this.bonusTrackers = [];
   this.bonusPins = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 };
 
@@ -13,23 +13,29 @@ ScoreCard.prototype.addScore = function(pins) {
 };
 
 ScoreCard.prototype.addBonus = function(pins) {
-  if (this.bonusRolls > 0) {
-    this.bonusPins[this.frameNumber-2] += pins
-    this.bonusRolls --;
+  for (var i = 0; i < this.bonusTrackers.length; i++) {
+    this.addBonus2(this.bonusTrackers[i], pins)
   };
 };
+
+ScoreCard.prototype.addBonus2 = function(bonusTracker, pins) {
+  if (bonusTracker.counter > 0) {
+    this.bonusPins[bonusTracker.frameRolledOn-1] += pins
+  };
+};
+
 
 ScoreCard.prototype.updateProperties = function(pins) {
   if (this.rollNumber == 1) {
     if (pins == 10) {
+      this.bonusTrackers.push(new BonusTracker(this.frameNumber, 2))
       this.frameNumber ++;
-      this.bonusRolls += 2;
     } else {
       this.rollNumber ++;
     };
   } else {
     if (this.pinsKnockedDown[this.frameNumber-1][0] + pins == 10) {
-      this.bonusRolls ++;
+      this.bonusTrackers.push(new BonusTracker(this.frameNumber, 2))
     }
     this.frameNumber ++;
     this.rollNumber = 1;

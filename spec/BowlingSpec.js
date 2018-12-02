@@ -40,4 +40,9 @@ describe('Bowling', function() {
     expect(bowling.score()).toEqual(26);
   });
 
+  it('can roll a perfect game', function() {
+    rollMany(10, 12);
+    expect(bowling.score()).toEqual(300);
+  });
+
 });

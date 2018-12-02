@@ -15,6 +15,18 @@ describe("Updater", function() {
       expect(updater).toEqual(jasmine.any(Updater));
     });
 
+    it("can calculate regular rolls", function() {
+        setFrameScore(2, 4, 0);
+        setFrameScore(3, 6, 1);
+        setFrameScore(3, 4, 2);
+        setFrameScore(3, 2, 3);
+        updater.update(frames);
+        expect(frames[0].getFinalFrameScore()).toBe(6);
+        expect(frames[1].getFinalFrameScore()).toBe(9);
+        expect(frames[2].getFinalFrameScore()).toBe(7);
+        expect(frames[3].getFinalFrameScore()).toBe(5);
+    });
+
 
     it("can calculate a strike followed by a roll", function() {
         setFrameScore(10, 0, 0);
@@ -28,6 +40,13 @@ describe("Updater", function() {
         setFrameScore(4, 6, 1);
         updater.update(frames);
         expect(frames[0].getFinalFrameScore()).toBe(14);
+    });
+
+    it("can calculate a spare followed by a strike", function() {
+        setFrameScore(3, 7, 0);
+        setFrameScore(10,0, 1);
+        updater.update(frames);
+        expect(frames[0].getFinalFrameScore()).toBe(20);
     });
 
     it("calculate a strike followed by a strike", function(){

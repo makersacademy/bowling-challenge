@@ -50,3 +50,8 @@ BowlingGame.prototype.score = function(frame) {
     return game.rolls[rollIndex] + game.rolls[rollIndex + 1];
   }
 };
+
+// Export node module.
+if (typeof module !== 'undefined' && module.hasOwnProperty('exports')) {
+  module.exports = BowlingGame
+}

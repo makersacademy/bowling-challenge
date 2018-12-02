@@ -1,4 +1,5 @@
 'use strict';
+var BowlingGame = require('../src/BowlingGame.js')
 
 describe('game', function() {
 

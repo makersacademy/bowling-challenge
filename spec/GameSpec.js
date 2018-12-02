@@ -33,13 +33,19 @@ describe("Game", function() {
     expect(game.score()).toEqual(12);
   });
 
+  it('calculates a game with one strike', function(){
+    game.roll(10);
+    game.roll("X");
+    game.roll(1);
+    multiRoll(17, 0);
+    expect(game.score()).toEqual(12);
+  });
+
   function multiRoll(amount, pins) {
     var i;
     for (i = 0; i < amount; i++) {
       game.roll(pins);
     };
   };
-
-  it
 
 });

@@ -19,7 +19,7 @@ function Frame(){
 };
 
 Frame.prototype.total = function(){
-  this.score += this.first_roll += this.second_roll;
+  this.score += this.first_roll + this.second_roll;
 };
 
 Frame.prototype.check_strike = function(){
@@ -45,11 +45,12 @@ Scorecard.prototype.calculate_score = function(roll_1, roll_2){
 
 Scorecard.prototype.bonus_score = function(){
   if(this.frame_number > 0){
-    var previous = this.frame_score[this.frame_number-1]
-    console.log(previous.is_strike)
-    if(previous.is_strike){
-      previous.score += current_frame.first_roll;
-      previous.score += current_frame.second_roll;
+    for(i = 1; i < this.frame_score.length; i++){
+      var previous = this.frame_score[this.frame_number-i]
+      if(previous.is_strike){
+        previous.score += current_frame.first_roll;
+        previous.score += current_frame.second_roll;
+      }
     }
   }
 };

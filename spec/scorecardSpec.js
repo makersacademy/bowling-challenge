@@ -40,6 +40,20 @@ describe("scorecard", function() {
   		scorecard.calculate_score(6, 3);
   		expect(scorecard.frame_score[0].score).toEqual(19);
   	});
+
+  	it("Player bowls two strikes in a row", function(){
+  		scorecard.calculate_score(10, 0);
+  		scorecard.calculate_score(10, 0);
+  		expect(scorecard.frame_score[0].score).toEqual(20);
+  	})
+
+  	it("Player bowls three strikes in a row", function(){
+  		scorecard.calculate_score(10, 0);
+  		scorecard.calculate_score(10, 0);
+  		scorecard.calculate_score(10, 0);
+  		expect(scorecard.frame_score[0].score).toEqual(30);
+  		expect(scorecard.frame_score[1].score).toEqual(20);
+  	})
   });
 });
 

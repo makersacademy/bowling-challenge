@@ -2,30 +2,34 @@
 
 describe('Bowling', function() {
 
-  var bowling;
+  var game;
 
-  beforeEach(function() {
-    bowling = new Bowling();
+  beforeEach(function () {
+    game = new Bowling();
   });
 
-  var rollMany = function(pins, rolls) {
+  var rollMany = function (pins, rolls) {
     for (var i = 0; i < rolls; i++) {
-      bowling.roll(pins)
+      game.roll(pins)
     }
   };
 
-  it('checks that a frame exists', function() {
-    expect(bowling.getFrame()).toEqual([]);
-  });
-
-  it('checks that you can roll a gutter game', function() {
+  it('can roll a gutter game', function () {
     rollMany(0, 20)
-    expect(bowling.score()).toEqual(0)
+    expect(game.score()).toEqual(0)
   });
 
-  it('checks that you can roll a all ones game', function() {
+  it('can roll a game with all ones', function () {
     rollMany(1, 20)
-    expect(bowling.score()).toEqual(20)
+    expect(game.score()).toEqual(20)
   });
+
+  // it('can roll a spare', function () {
+  //   game.roll(5);
+  //   game.roll(5);
+  //   game.roll(3);
+  //   rollMany(0, 17);
+  //   expect(game.score()).toEqual(16);
+  // });
 
 });

@@ -1,13 +1,25 @@
-describe('Bowling', function() {
-  var bowling;
+describe('ScoreCard', function() {
+  var scoreCard;
 
   beforeEach(function(){
-    bowling = new Bowling();
+    scoreCard = new ScoreCard();
   });
 
-  describe('default ball value', function() {
-    it('initializes each ball to default to zero before each throw', function() {
-      expect(bowling.ball).toEqual(0);
+  describe('default roll value', function() {
+    it('initializes each roll to default to zero before each throw', function() {
+      expect(scoreCard.roll).toEqual(0);
     });
   });
+
+  describe('record first roll', function() {
+    it('adds first roll to first frame', function() {
+      expect(scoreCard.roll).toEqual(0);
+      scoreCard.frameOne();
+      expect(scoreCard.roll).toEqual(1);
+      console.log(scoreCard.roll)
+    });
+  });
+
+
+
 });

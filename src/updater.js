@@ -1,7 +1,4 @@
 function Updater() {
-    this.STRIKE_STEP = 2;
-    this.SPARE_STEP  = 1;
-
 }
 
 Updater.prototype.update = function(frames) {

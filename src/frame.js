@@ -18,3 +18,6 @@ Frame.prototype.getSecondScore = function(){
     return this.first;
 }
 
+Frame.prototype.randomScore = function(){
+    return Math.floor(Math.random() * 6) + 1
+}

@@ -17,7 +17,16 @@ describe('Frame', function(){
         it('should store second score value',function(){
             frame.setSecondScore(2);
             secondScore = frame.getSecondScore();
-            expect(firstScore).toEqual(2);
+            expect(secondScore).toEqual(2);
+        });
+
+    });
+    
+    describe('randomScore method', function(){
+
+        it('should return random value between 1 and 10',function(){
+            spyOn(Math, 'random').and.returnValue(1);
+            expect(frame.randomScore()).toEqual(7);
         });
 
     });

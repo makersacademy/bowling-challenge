@@ -55,7 +55,7 @@ describe("Game", function() {
     expect(game.frameScores[2]).toEqual(4);
   });
 
-  it("calculates total points", function() {
+  it("calculates total score", function() {
     game.calculateFramePoints(5);
     game.updateFrame();
     game.calculateFramePoints(5);

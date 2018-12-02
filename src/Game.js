@@ -29,14 +29,10 @@ Game.prototype.calculateFramePoints = function (pins) {
 };
 
 Game.prototype.updateFrame =  function () {
-  if (this.roll == 1) {
+  if (this.roll == 2 || this.bonus[this.currentFrame] === "strike") {
+    this.finishFrame();
+  } else if (this.roll == 1) {
     this.roll += 1;
-    if (this.bonus[this.currentFrame] === "strike") {
-      this.finishFrame();
-    }
-
-  } else if (this.roll == 2) {
-      this.finishFrame();
   }
 };
 

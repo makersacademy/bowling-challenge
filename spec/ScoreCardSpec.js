@@ -41,6 +41,6 @@ describe("ScoreCard", function() {
     expect(scoreCard.bonusRolls).toEqual(1);
     scoreCard.addScore(4);
     expect(scoreCard.bonusRolls).toEqual(0);
-    expext(scoreCard.calculateScore).toEqual(24);
+    expect(scoreCard.calculateScore()).toEqual(24);
   })
 });

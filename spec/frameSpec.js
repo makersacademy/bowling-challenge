@@ -3,13 +3,12 @@ describe('Frame', function(){
 
     beforeEach(function(){
         frame = new Frame();
-        frame.setFirstScore(2);
+        frame.setFirstScore(3);
     });
 
     it('should store first score value',function(){
-        frame.setFirstScore(2);
         firstScore = frame.getFirstScore();
-        expect(firstScore).toEqual(2);
+        expect(firstScore).toEqual(3);
     });
 
     describe('first score value exists', function(){
@@ -27,6 +26,17 @@ describe('Frame', function(){
         it('should return random value between 1 and 10',function(){
             spyOn(Math, 'random').and.returnValue(1);
             expect(frame.randomScore()).toEqual(7);
+        });
+
+    });
+
+    describe('score method', function(){
+
+        it('should store random value between 1 and 10 into secondScore', function(){
+            spyOn(Math, 'floor').and.returnValue(1);
+            expect(frame.getFirstScore()).toEqual(3);
+            frame.score();
+            expect(frame.getSecondScore()).toEqual(2);
         });
 
     });

@@ -1,0 +1,23 @@
+{
+  "name": "bowling",
+  "version": "1.0.0",
+  "description": ".json file for bowling",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kirillzabrodin/bowling-challenge.git"
+  },
+  "author": "Kirill",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kirillzabrodin/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/kirillzabrodin/bowling-challenge#readme"
+}

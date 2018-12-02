@@ -1,15 +1,17 @@
 function Game() {
   this._frames = [];
+  this._score = 0;
 }
 
-Game.prototype.showFrames = function () {
+Game.prototype.frames = function() {
   return this._frames;
 };
 
-Game.prototype.roll = function(frame) {
-  this._frames.push(frame);
+Game.prototype.roll = function(pins) {
+  this._frames.push(pins);
 };
 
-Game.prototype.finalScore = function() {
-  return this._frames.reduce(function(a, b) { return a + b; }, 0);
+Game.prototype.score = function() {
+  this._score = this._frames.reduce((a, b) => a + b, 0);
+  return this._score;
 };

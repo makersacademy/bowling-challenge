@@ -1,11 +1,20 @@
 function Frame() {
-    this.first;
+    this.first == null;
 }
 
-Frame.prototype.setFirst = function(value){
+Frame.prototype.setFirstScore = function(value){
     this.first = value;
 }
 
-Frame.prototype.getFirst = function(){
+Frame.prototype.getFirstScore = function(){
     return this.first;
 }
+
+Frame.prototype.setSecondScore = function(value){
+    this.first = value;
+}
+
+Frame.prototype.getSecondScore = function(){
+    return this.first;
+}
+

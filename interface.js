@@ -4,11 +4,14 @@ var roll = 1;
 
 $(document).ready(function() {
   $('#gamefinished').hide();
+  $('#numbers').hide();
+  $('#numbers').show(800);
   $('#button1').click(function() {
   game.alertIfFramesFinished();
   game.returnPinNumber(1);
   pickedNumberToFrame(1);
   button.statusButtons(1);
+
 });
 
   $('#button2').click(function() {
@@ -90,4 +93,5 @@ function pickedNumberToFrame(number){
     roll = roll + 1
   };
 };
+
 });

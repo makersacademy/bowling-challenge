@@ -47,7 +47,7 @@ describe("Frame", function() {
         expect(frame.getFinalFrameScore()).toEqual("pending");
     });
 
-    it("it will return a number between 0-9 from getFinalFrameScore() if first and second scores add up to less than ten", function(){
+    it("will return a number between 0-9 from getFinalFrameScore() if first and second scores add up to less than ten", function(){
         frame.setFirstScore(3);
         frame.setSecondScore(6);
         expect(frame.getFinalFrameScore()).toEqual(9);
@@ -59,10 +59,30 @@ describe("Frame", function() {
         expect(frame.isFinalised()).toEqual(true);
     });
 
-    it("it will return true from isFinialised() if setFinalFrameScore() has been called", function(){
+    it("will return true from isFinialised() if setFinalFrameScore() has been called", function(){
         frame.setFinalFrameScore(22);
         expect(frame.isFinalised()).toEqual(true);
     });
+
+    it("can say that it is a regular frame (i.e. not a strike or spare)", function(){
+        frame.setFirstScore(3);
+        frame.setSecondScore(4);
+        expect(frame.isRegular()).toEqual(true);
+    });
+
+
+    it("will return false from isRegular() if it is a strike", function(){
+        frame.setFirstScore(10);
+        expect(frame.isRegular()).toEqual(false);
+    });
+
+    it("will return false from isRegular() if it is a spare", function(){
+        frame.setFirstScore(3);
+        frame.setSecondScore(7);
+        expect(frame.isRegular()).toEqual(false);
+    });
+
+
 
     it("will return false from isFinialised() if isSpare() or isStrike() returns true and setFinalFrameScore() has not been called ", function() {
         frame.spare = true;

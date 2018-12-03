@@ -4,6 +4,7 @@ describe('Frame', function(){
     beforeEach(function(){
         frame = new Frame();
         frame.setFirstScore(3);
+        spyOn(Math, 'floor').and.returnValue(1);
     });
 
     it('should store first score value',function(){
@@ -24,8 +25,7 @@ describe('Frame', function(){
     describe('randomScore method', function(){
 
         it('should return random value between 1 and 10',function(){
-            spyOn(Math, 'random').and.returnValue(1);
-            expect(frame.randomScore()).toEqual(7);
+            expect(frame.randomScore()).toEqual(2);
         });
 
     });
@@ -33,7 +33,7 @@ describe('Frame', function(){
     describe('score method', function(){
 
         it('should store random value between 1 and 10 into secondScore', function(){
-            spyOn(Math, 'floor').and.returnValue(1);
+            
             expect(frame.getFirstScore()).toEqual(3);
             frame.score();
             expect(frame.getSecondScore()).toEqual(2);
@@ -41,10 +41,23 @@ describe('Frame', function(){
 
     });
 
-    it('should return whether or not score is a strike or not', function(){
-        spyOn(Math, 'floor').and.returnValue(9);
-        frame.score();
-        expect(frame.isStrike()).toEqual(true);
+    describe('should return true or false',function(){
+
+        it('score/roll is a strike', function(){
+            frame.setSecondScore(10);
+            expect(frame.isStrike()).toEqual(true);
+        });
+    
+        it('score/roll is a spare', function(){
+            frame.setFirstScore(1);
+            expect(frame.isSpare()).toEqual(true);
+        });
+    
+        it('score/roll is a miss', function(){
+            frame.setSecondScore(0);
+            expect(frame.isMiss()).toEqual(true);
+        });    
+
     });
 
 });

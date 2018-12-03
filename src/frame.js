@@ -34,3 +34,11 @@ Frame.prototype.randomScore = function(){
 Frame.prototype.isStrike = function(){
     return ((this.getFirstScore() == 10 || this.getSecondScore() == 10) ? true : false);
 }
+
+Frame.prototype.isSpare = function(){
+    return ((this.isStrike() == false && this.isMiss() == false) ? true : false);
+}
+
+Frame.prototype.isMiss = function(){
+    return ((this.getFirstScore() == 0 || this.getSecondScore() == 0) ? true : false);
+}

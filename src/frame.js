@@ -5,11 +5,13 @@ function Frame() {
 }
 
 Frame.prototype.score = function(){
+    
    if ((typeof this.getFirstScore()) != 'undefined'){
        this.setSecondScore(this.randomScore());
    }else {
         this.setFirstScore(this.randomScore()); 
    }
+   console.log(this.getFirstScore());
 }
 
 Frame.prototype.setFirstScore = function(value){
@@ -45,8 +47,8 @@ Frame.prototype.isMiss = function(){
 }
 
 Frame.prototype.totalScore = function(){
-    this.total += isNaN(this.getFirstScore()) ? null : this.getFirstScore();
-    this.total += isNaN(this.getSecondScore()) ? null : this.getSecondScore();
+    this.total += (isNaN(this.getFirstScore()) ? null : this.getFirstScore());
+    this.total += (isNaN(this.getSecondScore()) ? null : this.getSecondScore());
     
     return this.total;
 }

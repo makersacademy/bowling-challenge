@@ -16,7 +16,7 @@ BowlingScoreCard.prototype.setFrames = function(frame){
 
 BowlingScoreCard.prototype.currrentFrameIndex = function(){
     return this.getFrames().findIndex(function(frame) {
-        return (typeof frame.getFirstScore() == 'undefined');
+        return (typeof frame.getSecondScore() == 'undefined');
     });
 }
 
@@ -29,3 +29,18 @@ BowlingScoreCard.prototype.updatePreviousFrame = function(previousFrame,currentF
     }
 }
 
+
+BowlingScoreCard.prototype.roll = function(n){
+    for(var i = 0; i < n; i++){
+        var currentFrameIndex = this.currrentFrameIndex();
+	
+        var currentFrame = this.getFrames()[currentFrameIndex];
+        currentFrame.score();
+        
+        
+        if (currentFrameIndex != 0){
+            var previousFrame = this.getFrames()[currentFrameIndex-1];
+            this.updatePreviousFrame(previousFrame, currentFrame)
+        }
+    }
+}

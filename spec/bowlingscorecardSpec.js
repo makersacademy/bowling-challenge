@@ -22,8 +22,11 @@ describe('BowlingScoreCard', function(){
         for(var i = 1; i < 11; i++ ){
             frames.push(frame);
         }
+
         scoreCard.getFrames.and.returnValue(frames);
         frames = scoreCard.getFrames();
+
+        spyOn(Math, 'floor').and.returnValue(1);
     });
 
     it('set up game with 10 frames', function(){
@@ -60,6 +63,13 @@ describe('BowlingScoreCard', function(){
             expect(frame.totalScore).toHaveBeenCalled();
         });
         
+    });
+
+    describe('roll method', function(){
+
+        it("is defined", function() {
+            expect(scoreCard.roll).not.toBeUndefined();
+        });
     });
 
 });

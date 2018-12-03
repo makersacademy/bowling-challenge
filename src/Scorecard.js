@@ -14,11 +14,13 @@ Scorecard.prototype.recordScore = function(score) {
     // create a placeholder "S" for the bonus
     this._scoresList[this.currentFrame - 1][2] = "S";
     // add a bonus counter for this frame to the list
-    this.bonusCounters.push(
-      new BonusCounter(this.currentFrame, 2)
-    );
+    this.bonusCounters.push(new BonusCounter(this.currentFrame, 2));
     this.currentFrame ++;
   } else if(this.currentRoll === 2) {
+    if(score + this._scoresList[this.currentFrame - 1][0] === 10) {
+      this._scoresList[this.currentFrame - 1][2] = "sp";
+      this.bonusCounters.push(new BonusCounter(this.currentFrame, 1));
+    };
     this.currentFrame ++;
     this.currentRoll = 1;
   } else {
@@ -65,11 +67,17 @@ Scorecard.prototype._calculateFrameTotal = function(frame) {
       return this._scoresList[frame - 1][0] +
         this._scoresList[frame - 1][1];
     case 3:
-      if(this._scoresList[frame - 1][2] == "S") {
+      if(this._scoresList[frame - 1][2] === "S") {
         return "S";
+      } else if(this._scoresList[frame - 1][2] === "sp") {
+        return "sp"
       } else {
-        return this._scoresList[frame - 1][0] +
+        var total = this._scoresList[frame - 1][0] +
           this._scoresList[frame - 1][2];
+        if(this._scoresList[frame - 1][1] != null) {
+          total += this._scoresList[frame - 1][1];
+        }
+        return total;
       }
   }
 };

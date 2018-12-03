@@ -79,4 +79,18 @@ describe("Scorecard", function() {
       expect(scorecard.frameScore(1)).toEqual(17);
     });
   });
+
+  describe("spares", function() {
+    it("reserves space for the bonus", function() {
+      scorecard.recordScore(4);
+      scorecard.recordScore(6);
+      expect(scorecard.readScores(1,3)).toEqual("sp");
+    });
+    it("returns the score including bonuses after 1 roll", function() {
+      scorecard.recordScore(4);
+      scorecard.recordScore(6);
+      scorecard.recordScore(3);
+      expect(scorecard.frameScore(1)).toEqual(13);
+    });
+  });
 });

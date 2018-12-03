@@ -42,3 +42,8 @@ Frame.prototype.isSpare = function(){
 Frame.prototype.isMiss = function(){
     return ((this.getFirstScore() == 0 || this.getSecondScore() == 0) ? true : false);
 }
+
+Frame.prototype.total = function(){
+    return (this.getFirstScore() + this.getSecondScore());
+}
+

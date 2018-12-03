@@ -33,7 +33,6 @@ describe('Frame', function(){
     describe('score method', function(){
 
         it('should store random value between 1 and 10 into secondScore', function(){
-            
             expect(frame.getFirstScore()).toEqual(3);
             frame.score();
             expect(frame.getSecondScore()).toEqual(2);
@@ -57,6 +56,22 @@ describe('Frame', function(){
             frame.setSecondScore(0);
             expect(frame.isMiss()).toEqual(true);
         });    
+
+    });
+
+    describe('total method',function(){
+
+        it('should return total score of 5 for frame',function(){
+            frame.score();
+            expect(frame.total()).toEqual(5);
+        });
+
+        it('should return total score of 10 for frame',function(){
+            Math.floor.and.returnValue(6);
+            frame.score();
+            expect(frame.total()).toEqual(10);
+        });
+        
 
     });
 

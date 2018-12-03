@@ -7,14 +7,6 @@ describe("Scorer", function() {
     scorer = new Scorer();
   })
 
-  describe("setupGame", function() {
-    it("starts a game and adds a new frame to the mix", function() {
-      scorer.setupGame();
-      expect(scorer.isGameStarted).toBe(true);
-      expect(scorer.frames.length).toEqual(1);
-    })
-  })
-
   describe("addScore", function() {
     it("adds a score which is put in an initial frame", function() {
       scorer.addScore(1);
@@ -26,7 +18,7 @@ describe("Scorer", function() {
     it("adds two rolls and makes a new frame", function() {
       scorer.addScore(1);
       scorer.addScore(2);
-      expect(scorer.frames.length).toEqual(2);
+      expect(scorer.currentFrame).toEqual(1);
     })
 
     it("recognises the final frame and sets its special", function() {

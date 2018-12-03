@@ -11,7 +11,6 @@ Frame.prototype.score = function(){
    }else {
         this.setFirstScore(this.randomScore()); 
    }
-   console.log(this.getFirstScore());
 }
 
 Frame.prototype.setFirstScore = function(value){

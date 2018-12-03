@@ -12,13 +12,14 @@ describe('BowlingScoreCard', function(){
     beforeEach(function(){
         scoreCard = new BowlingScoreCard();
 
-        frame = jasmine.createSpyObj('frame', ['getFirstScore','findIndex','isStrike','isSpare','totalScore']);
-        frame.getFirstScore.and.returnValue(undefined);
+        frame = jasmine.createSpyObj('frame', ['getFirstScore','getSecondScore','findIndex','isStrike','isSpare','totalScore']);
+        frame.getSecondScore.and.returnValue(undefined);
         frame.findIndex.and.returnValue([]);
 
         spyOn(scoreCard, ['getFrames']);
 
         frames = [];
+
         for(var i = 1; i < 11; i++ ){
             frames.push(frame);
         }
@@ -44,7 +45,7 @@ describe('BowlingScoreCard', function(){
 
     });
 
-    it('get current frame',function(){
+    it('get current frame', function(){
         expect(scoreCard.currrentFrameIndex()).toEqual(0);
     });
 
@@ -53,11 +54,11 @@ describe('BowlingScoreCard', function(){
             scoreCard.updatePreviousFrame(frame,frame);
             expect(frame.isStrike).toHaveBeenCalled();
         });
-        it('should call isSpare',function(){
+        it('should call isSpare', function(){
             scoreCard.updatePreviousFrame(frame,frame)
             expect(frame.isSpare).toHaveBeenCalled();
         });
-        it('should call totalScore',function(){
+        it('should call totalScore', function(){
             frame.isSpare.and.returnValue(true);
             scoreCard.updatePreviousFrame(frame,frame)
             expect(frame.totalScore).toHaveBeenCalled();

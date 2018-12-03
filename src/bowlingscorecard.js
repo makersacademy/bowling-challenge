@@ -29,7 +29,6 @@ BowlingScoreCard.prototype.updatePreviousFrame = function(previousFrame,currentF
     }
 }
 
-
 BowlingScoreCard.prototype.roll = function(n){
     for(var i = 0; i < n; i++){
         var currentFrameIndex = this.currrentFrameIndex();

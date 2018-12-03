@@ -19,6 +19,7 @@
         border: solid white;
         border-width: 1px;
         border-collapse: collapse;
+        margin-bottom: 10px;
       }
       th, td {
         padding: 15px;
@@ -30,6 +31,23 @@
       h1 {
         text-align: center;
         color: white;
+        margin-bottom: 5%;
+      }
+      .glow {
+        font-size: 80px;
+        color: #fff;
+        text-align: center;
+        -webkit-animation: glow 1s ease-in-out infinite alternate;
+        -moz-animation: glow 1s ease-in-out infinite alternate;
+        animation: glow 1s ease-in-out infinite alternate;
+      }
+      @-webkit-keyframes glow {
+        from {
+           text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+        }
+        to {
+          text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+        }
       }
       h2 {
         text-align: center;
@@ -39,68 +57,77 @@
         margin: 0 auto;
         width: 250px;
       }
+      #enter-score {
+        display: block;
+        margin: 0 auto;
+        border-radius: 12px;
+      }
       #player_name {
         border-bottom: none;
       }
       button {
-
         margin: 30px auto;
         display: block;
+        background-color: rgb(10, 87, 204);
+        font-size: 16px;
+        color: white;
+        border-radius: 12px;
+        border-color: rgb(10, 87, 204, 0.8);
       }
     </style>
   </head>
   <body>
-    <h1>Welcome to Crrraaazzzyyy Bowling</h1>
+    <h1 class="glow">Welcome to Crrraaazzzyyy Bowling</h1>
     <table style="width:100%">
-      <tr>
-        <th id="player_1">Player 1</th>
-        <th id="frame_1" colspan="2">Frame 1</th>
-        <th id="frame_2" colspan="2">Frame 2</th>
-        <th id="frame_3" colspan="2">Frame 3</th>
-        <th id="frame_4" colspan="2">Frame 4</th>
-        <th id="frame_5" colspan="2">Frame 5</th>
-        <th id="frame_6" colspan="2">Frame 6</th>
-        <th id="frame_7" colspan="2">Frame 7</th>
-        <th id="frame_8" colspan="2">Frame 8</th>
-        <th id="frame_9" colspan="2">Frame 9</th>
-        <th id="frame_10" colspan="2">Frame 10</th>
-        <th id="player_1">Total Score</th>
+      <tr id="row-1">
+        <th id="player-1">Player 1</th>
+        <th id="frame-1" colspan="2">Frame 1</th>
+        <th id="frame-2" colspan="2">Frame 2</th>
+        <th id="frame-3" colspan="2">Frame 3</th>
+        <th id="frame-4" colspan="2">Frame 4</th>
+        <th id="frame-5" colspan="2">Frame 5</th>
+        <th id="frame-6" colspan="2">Frame 6</th>
+        <th id="frame-7" colspan="2">Frame 7</th>
+        <th id="frame-8" colspan="2">Frame 8</th>
+        <th id="frame-9" colspan="2">Frame 9</th>
+        <th id="frame-10" colspan="2">Frame 10</th>
+        <th id="total-score">Total Score</th>
       </tr>
         <tr>
           <td rowspan="2"> </td>
-          <th id="score_1"></th>
-          <th id="score_2"></th>
-          <th id="score_3"></th>
-          <th id="score_4"></th>
-          <th id="score_5"></th>
-          <th id="score_6"></th>
-          <th id="score_7"></th>
-          <th id="score_8"></th>
-          <th id="score_9"></th>
-          <th id="score_10"></th>
-          <th id="score_11"></th>
-          <th id="score_12"></th>
-          <th id="score_13"></th>
-          <th id="score_14"></th>
-          <th id="score_15"></th>
-          <th id="score_16"></th>
-          <th id="score_17"></th>
-          <th id="score_18"></th>
-          <th id="score_19"></th>
-          <th id="score_20"></th>
+          <th id="score-1"></th>
+          <th id="score-2"></th>
+          <th id="score-3"></th>
+          <th id="score-4"></th>
+          <th id="score-5"></th>
+          <th id="score-6"></th>
+          <th id="score-7"></th>
+          <th id="score-8"></th>
+          <th id="score-9"></th>
+          <th id="score-10"></th>
+          <th id="score-11"></th>
+          <th id="score-12"></th>
+          <th id="score-13"></th>
+          <th id="score-14"></th>
+          <th id="score-15"></th>
+          <th id="score-16"></th>
+          <th id="score-17"></th>
+          <th id="score-18"></th>
+          <th id="score-19"></th>
+          <th id="score-20"></th>
           <td rowspan="2"> </td>
         </tr>
         <tr>
-          <th id="total_1" class="result" colspan="2"></th>
-          <th id="total_2" class="result" colspan="2"></th>
-          <th id="total_3" class="result" colspan="2"></th>
-          <th id="total_4" class="result" colspan="2"></th>
-          <th id="total_5" class="result" colspan="2"></th>
-          <th id="total_6" class="result" colspan="2"></th>
-          <th id="total_7" class="result" colspan="2"></th>
-          <th id="total_8" class="result" colspan="2"></th>
-          <th id="total_9" class="result" colspan="2"></th>
-          <th id="total_10" class="result" colspan="2"></th>
+          <th id="total-1" class="result" colspan="2"></th>
+          <th id="total-2" class="result" colspan="2"></th>
+          <th id="total-3" class="result" colspan="2"></th>
+          <th id="total-4" class="result" colspan="2"></th>
+          <th id="total-5" class="result" colspan="2"></th>
+          <th id="total-6" class="result" colspan="2"></th>
+          <th id="total-7" class="result" colspan="2"></th>
+          <th id="total-8" class="result" colspan="2"></th>
+          <th id="total-9" class="result" colspan="2"></th>
+          <th id="total-10" class="result" colspan="2"></th>
         </tr>
     </table>
     <h2>Enter your score below</h2>

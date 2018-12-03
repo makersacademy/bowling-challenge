@@ -30,3 +30,7 @@ Frame.prototype.getSecondScore = function(){
 Frame.prototype.randomScore = function(){
     return Math.floor(Math.random() * 6) + 1
 }
+
+Frame.prototype.isStrike = function(){
+    return ((this.getFirstScore() == 10 || this.getSecondScore() == 10) ? true : false);
+}

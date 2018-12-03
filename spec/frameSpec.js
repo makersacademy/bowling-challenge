@@ -41,4 +41,10 @@ describe('Frame', function(){
 
     });
 
+    it('should return whether or not score is a strike or not', function(){
+        spyOn(Math, 'floor').and.returnValue(9);
+        frame.score();
+        expect(frame.isStrike()).toEqual(true);
+    });
+
 });

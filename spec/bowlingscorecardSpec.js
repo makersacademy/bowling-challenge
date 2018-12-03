@@ -3,7 +3,6 @@ describe('BowlingScoreCard', function(){
     var frames;
 
     beforeEach(function(){
-        spyOn(Math, 'floor').and.returnValue(1);
         scoreCard = new BowlingScoreCard();
         frames = scoreCard.getFrames();
     });
@@ -12,6 +11,16 @@ describe('BowlingScoreCard', function(){
         frames = scoreCard.getFrames();
         expect(frames.length).toEqual(0);
     });
+
+    it('set up game with 10 frames', function(){
+        scoreCard.setFrames();
+        expect(frames.length).toEqual(10);
+    });
+
+    describe('roll method', function(){
+
+    });
+
 
 
 });

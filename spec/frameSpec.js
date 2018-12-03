@@ -7,14 +7,14 @@ describe('Frame', function(){
         spyOn(Math, 'floor').and.returnValue(1);
     });
 
-    it('should store first score value',function(){
+    it('should store first score value', function(){
         firstScore = frame.getFirstScore();
         expect(firstScore).toEqual(3);
     });
 
     describe('first score value exists', function(){
 
-        it('should store second score value',function(){
+        it('should store second score value', function(){
             frame.setSecondScore(2);
             secondScore = frame.getSecondScore();
             expect(secondScore).toEqual(2);
@@ -40,7 +40,7 @@ describe('Frame', function(){
 
     });
 
-    describe('should return true or false',function(){
+    describe('should return true or false', function(){
 
         it('score/roll is a strike', function(){
             frame.setSecondScore(10);
@@ -51,7 +51,7 @@ describe('Frame', function(){
             frame.setFirstScore(1);
             expect(frame.isSpare()).toEqual(true);
         });
-    
+
         it('score/roll is a miss', function(){
             frame.setSecondScore(0);
             expect(frame.isMiss()).toEqual(true);
@@ -59,19 +59,23 @@ describe('Frame', function(){
 
     });
 
-    describe('total method',function(){
+    describe('total method', function(){
 
-        it('should return total score of 5 for frame',function(){
+        it('should return total score of 5 for frame', function(){
             frame.score();
-            expect(frame.total()).toEqual(5);
+            expect(frame.totalScore()).toEqual(5);
         });
 
-        it('should return total score of 10 for frame',function(){
+        it('should return total score of 10 for frame', function(){
             Math.floor.and.returnValue(6);
             frame.score();
-            expect(frame.total()).toEqual(10);
+            expect(frame.totalScore()).toEqual(10);
         });
-        
+
+        it('should return total score of 10 for frame', function(){
+            frame.setFirstScore(10);
+            expect(frame.totalScore()).toEqual(10);
+        });
 
     });
 

@@ -1,6 +1,7 @@
 function Frame() {
     this.first;
     this.second;
+    this.total = 0;
 }
 
 Frame.prototype.score = function(){
@@ -43,7 +44,10 @@ Frame.prototype.isMiss = function(){
     return ((this.getFirstScore() == 0 || this.getSecondScore() == 0) ? true : false);
 }
 
-Frame.prototype.total = function(){
-    return (this.getFirstScore() + this.getSecondScore());
+Frame.prototype.totalScore = function(){
+    this.total += isNaN(this.getFirstScore()) ? 0 : this.getFirstScore();
+    this.total += isNaN(this.getSecondScore()) ? 0 : this.getSecondScore();
+    
+    return this.total;
 }
 

@@ -2,7 +2,26 @@
 Bowling Challenge
 =================
 
+User Stories
 
+As a bowler
+So that I can keep score of my game
+I want to record my game scores in a scorecard app.
+
+As a bowler
+So that I can see how my game is progressing
+I want to be able to see my current total.
+
+As a bowler
+So that I can show off to my friends
+I want my scorecard to show when I score Strikes or Spares
+
+
+
+
+
+
+=================
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README

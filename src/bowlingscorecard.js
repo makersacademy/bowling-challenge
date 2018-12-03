@@ -14,3 +14,8 @@ BowlingScoreCard.prototype.setFrames = function(){
     }
 }
 
+BowlingScoreCard.prototype.currrentFrameIndex = function(){
+    return this.getFrames().findIndex(function(frame) {
+        return (typeof frame.getFirstScore() == 'undefined');
+    });
+}

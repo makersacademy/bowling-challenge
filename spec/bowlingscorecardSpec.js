@@ -7,20 +7,19 @@ describe('BowlingScoreCard', function(){
         frames = scoreCard.getFrames();
     });
 
-    it('should start with 0 frames', function(){
-        frames = scoreCard.getFrames();
-        expect(frames.length).toEqual(0);
-    });
-
     it('set up game with 10 frames', function(){
+        expect(frames.length).toEqual(0);
         scoreCard.setFrames();
         expect(frames.length).toEqual(10);
     });
 
-    describe('roll method', function(){
+    describe('currrentFrameIndex method', function(){
+
+        it('gets the index of the current frame of the game',function(){
+            scoreCard.setFrames();
+            expect(scoreCard.currrentFrameIndex()).toEqual(0);
+        });
 
     });
-
-
 
 });

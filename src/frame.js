@@ -45,8 +45,8 @@ Frame.prototype.isMiss = function(){
 }
 
 Frame.prototype.totalScore = function(){
-    this.total += isNaN(this.getFirstScore()) ? 0 : this.getFirstScore();
-    this.total += isNaN(this.getSecondScore()) ? 0 : this.getSecondScore();
+    this.total += isNaN(this.getFirstScore()) ? null : this.getFirstScore();
+    this.total += isNaN(this.getSecondScore()) ? null : this.getSecondScore();
     
     return this.total;
 }

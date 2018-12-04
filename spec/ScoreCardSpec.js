@@ -36,22 +36,22 @@ describe("ScoreCard", function() {
     scoreCard.addScore(10);
     expect(scoreCard.rollNumber).toEqual(1);
     expect(scoreCard.frameNumber).toEqual(2);
-    expect(scoreCard.bonusRolls).toEqual(2);
+    expect(scoreCard.bonusTrackers[0].counter).toEqual(2);
     scoreCard.addScore(3);
-    expect(scoreCard.bonusRolls).toEqual(1);
+    expect(scoreCard.bonusTrackers[0].counter).toEqual(1);
     scoreCard.addScore(4);
-    expect(scoreCard.bonusRolls).toEqual(0);
+    expect(scoreCard.bonusTrackers[0].counter).toEqual(0);
     expect(scoreCard.calculateScore()).toEqual(24);
   });
 
   it("spare should add bonus of next roll", function() {
     scoreCard.addScore(6);
     scoreCard.addScore(4);
-    expect(scoreCard.bonusRolls).toEqual(1);
+    expect(scoreCard.bonusTrackers[0].counter).toEqual(1);
     scoreCard.addScore(3);
-    expect(scoreCard.bonusRolls).toEqual(0);
+    expect(scoreCard.bonusTrackers[0].counter).toEqual(0);
     scoreCard.addScore(4);
-    expect(scoreCard.bonusRolls).toEqual(0);
+    expect(scoreCard.bonusTrackers[0].counter).toEqual(0);
     expect(scoreCard.calculateScore()).toEqual(20);
   })
 });

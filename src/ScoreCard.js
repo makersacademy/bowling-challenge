@@ -14,16 +14,12 @@ ScoreCard.prototype.addScore = function(pins) {
 
 ScoreCard.prototype.addBonus = function(pins) {
   for (var i = 0; i < this.bonusTrackers.length; i++) {
-    this.addBonus2(this.bonusTrackers[i], pins)
+    if (this.bonusTrackers[i].counter > 0) {
+      this.bonusPins[this.bonusTrackers[i].frameRolledOn-1] += pins
+      this.bonusTrackers[i].counter --;
+    };
   };
 };
-
-ScoreCard.prototype.addBonus2 = function(bonusTracker, pins) {
-  if (bonusTracker.counter > 0) {
-    this.bonusPins[bonusTracker.frameRolledOn-1] += pins
-  };
-};
-
 
 ScoreCard.prototype.updateProperties = function(pins) {
   if (this.rollNumber == 1) {
@@ -35,8 +31,8 @@ ScoreCard.prototype.updateProperties = function(pins) {
     };
   } else {
     if (this.pinsKnockedDown[this.frameNumber-1][0] + pins == 10) {
-      this.bonusTrackers.push(new BonusTracker(this.frameNumber, 2))
-    }
+      this.bonusTrackers.push(new BonusTracker(this.frameNumber, 1))
+    };
     this.frameNumber ++;
     this.rollNumber = 1;
   };

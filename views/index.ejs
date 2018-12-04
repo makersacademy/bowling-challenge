@@ -11,15 +11,15 @@
 
   <table style="border: 1px solid black;">
     <tr>
-      <% (1..10).each do |n| %>
-      <th colspan="2">F<%=n%></th>
-      <% end %>
+      <% for (i = 1; i <= 10; i++) { %>
+      <th colspan="2">F<%=i%></th>
+      <% } %>
     </tr>
     <tr>
-      <% (1..10).each do |n| %>
-      <td id="f<%= n %>-b1"></td>
-      <td id="f<%= n %>-b2"></td>
-      <% end %>
+      <% for (i = 1; i <= 10; i++) { %>
+      <td id="f<%= i %>-b1"></td>
+      <td id="f<%= i %>-b2"></td>
+      <% } %>
     </tr>
   </table>
 

@@ -93,6 +93,17 @@ describe("Scorecard", function() {
       expect(score.scores[9][4]).toEqual(1);
     })
 
+    it("can display a total score", function () {
+        var i;
+        for (i = 1; i < 11; i++) {
+            score.updateScore(i,1,10);
+            }
+            score.updateScore(10,2,10);
+            score.updateScore(10,3,10);
+            console.log(JSON.stringify(score.scores));
+        expect(score.total).toEqual(300);
+        score.totalScore ();
+    })
 
 
 

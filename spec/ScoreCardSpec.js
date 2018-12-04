@@ -21,9 +21,9 @@ describe("ScoreCard", function() {
     scoreCard.addScore(3);
     scoreCard.addScore(4);
     scoreCard.addScore(5);
-    expectedResult = [ [2,3],[4,5],[],[],[],[],[],[],[],[] ];
-    expect(scoreCard.pinsKnockedDown).toEqual(expectedResult);
-  })
+    pins = [ [2,3],[4,5],[],[],[],[],[],[],[],[] ];
+    expect(scoreCard.pinsKnockedDown).toEqual(pins);
+  });
 
   it("should calculate the score", function() {
     for (var i = 0; i < 20; i++) {
@@ -53,5 +53,42 @@ describe("ScoreCard", function() {
     scoreCard.addScore(4);
     expect(scoreCard.bonusTrackers[0].counter).toEqual(0);
     expect(scoreCard.calculateScore()).toEqual(20);
+  });
+
+  describe("during the 10th frame", function() {
+
+    beforeEach(function() {
+      for (var i = 0; i < 18; i++) {
+        scoreCard.addScore(4);
+      };
+    });
+
+    it("spare allows one additional roll, which can only count for bonus", function() {
+      for (var i = 0; i < 3; i++) {
+        scoreCard.addScore(5);
+      };
+      pins = [ [4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[5,5] ];
+      bonus = [0, 0, 0, 0, 0, 0, 0, 0, 0, 5];
+      expect(scoreCard.pinsKnockedDown).toEqual(pins);
+      expect(scoreCard.calculateScore()).toEqual(87);
+    });
+
+    it("strike allows two additional rolls, which only count for bonus", function() {
+      scoreCard.addScore(10);
+      scoreCard.addScore(4);
+      scoreCard.addScore(4);
+      pins = [ [4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[10] ];
+      bonus = [0, 0, 0, 0, 0, 0, 0, 0, 0, 8];
+      expect(scoreCard.pinsKnockedDown).toEqual(pins);
+      expect(scoreCard.bonusPins).toEqual(bonus);
+      expect(scoreCard.calculateScore()).toEqual(90);
+    });
+  });
+
+  it("a perfect game should equal 300", function() {
+    for (var i = 0; i < 12; i++) {
+      scoreCard.addScore(10);
+    };
+    expect(scoreCard.calculateScore()).toEqual(300);
   })
 });

@@ -43,7 +43,6 @@ ScoreCard.prototype.updateProperties = function(pins) {
     };
     this.frameNumber ++;
     this.rollNumber = 1;
-<<<<<<< HEAD
   };
 };
 
@@ -64,8 +63,6 @@ ScoreCard.prototype.tenthFrame = function(pins) {
     if (this.pinsKnockedDown[this.frameNumber-1][0] + pins == 10) {
       this.bonusTrackers.push(new BonusTracker(this.frameNumber, 1))
     };
-=======
->>>>>>> f9f5f30a3228a4550e13c0f21080103555f6dbe5
   };
   this.rollNumber ++;
 };
@@ -89,7 +86,7 @@ ScoreCard.prototype.tenthFrame = function(pins) {
     };
   };
   this.rollNumber ++;
-}
+};
 
 ScoreCard.prototype.calculateScore = function(toFrame = 10) {  // calculates all frames by default
   var score = 0;

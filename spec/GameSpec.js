@@ -5,30 +5,20 @@ describe ("Game", function(){
   describe ('rollBall', function(){
 
     beforeEach(function(){
-      mockFrame = jasmine.createSpy('mockFrame', { "frameScore": 5, "_rollsLeft": 0, "calculate": function() {} })
-      // {
-      //   frameScore: 5,
-      //   _rollsLeft: 0,
-      //   calculate: function() {
-      //
-      //   }
-    //  }
-     spyOn(mockFrame.calculate).andReturn(5)
-    //  expect(mockFrame.calculate).toHaveBeenCalledWith(5)
-      //console.log("I'm in the the beforeEach!"); //this prints out in the console when run TESTS, not app
-      game = new Game(mockFrame);
-    })
+    mockFrame = jasmine.createSpy('mockFrame', { "frameScore": 5, "_rollsLeft": 0})
+    game = new Game(mockFrame);
+  })
 
-    it("calls _sendPointsToFrame on currentFrame attribute if there are still rolls left on that frame", function(){
-      //Didn't mock frame class here as couldn't work out how to create spy for function which
-      //has arguments. Calculate takes an argument.
-      expect(game.rollBall(5)).toEqual(game._currentFrame.calculate(5));
-    })
+  it("calls _sendPointsToFrame on currentFrame attribute if there are still rolls left on that frame", function(){
+    //Didn't mock frame class here as couldn't work out how to create spy for function which
+    //has arguments. Calculate takes an argument.
+    expect(game.rollBall(5)).toEqual(game._currentFrame.calculate(5));
+  })
 
-    it("calls to newFrame function if currentFrame has no rolls left, ensuring that the rolls are reset", function(){
-       game.rollBall(3);
-       expect(game._currentFrame.frameScore).toEqual(3) //this tests that it's not mockFrame because mockFrame doesn't know this method
-    })
+  it("calls to newFrame function if currentFrame has no rolls left, ensuring that the rolls are reset", function(){
+     game.rollBall(3);
+     expect(game._currentFrame.frameScore).toEqual(3) //this tests that it's not mockFrame because mockFrame doesn't know this method
+  })
 
     it("calls to descreaseFrames function to decreases the frames left", function(){
       //is this the right way to test this? As it's a private method, I guessed that it is.

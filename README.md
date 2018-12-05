@@ -20,7 +20,9 @@ Functionality
 * It has the full functionality of a bowling score card according to the rules of bowling, apart from if you throw a strike in the 10th round. In that instance, it allows you to just keep playing forever...
 * Here's a picture of it in action, and while some might think the background is tacky, they would be wrong. 
 
-![screen shot 2018-12-05 at 18 04 12](https://user-images.githubusercontent.com/42243785/49534382-45e3df00-f8b9-11e8-98ce-f0d9e688777d.png)
+
+![screen shot 2018-12-05 at 18 15 25](https://user-images.githubusercontent.com/42243785/49534625-de7a5f00-f8b9-11e8-9795-de670286cdf3.png)
+
 
 
 * Here are my beautiful tests passing...

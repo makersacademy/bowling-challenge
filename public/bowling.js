@@ -8,15 +8,12 @@ function Game() {
 };
 
 Game.prototype.addThrow = function(pins) {
+  if (isNaN(pins) || pins === '') throw('#addThrow() needs numerical input');
   this.throws[this.currentBowl] = pins;
 };
 
 Game.prototype.nextBowl = function() {
-  // rounds.forEach(function(round, i) {
-  //    if (this.currentBowl == round) {
-  //      this.currentBowl = rounds[i+1];
-  //      return;
-  //    }
-  //  })
   this.currentBowl = this.rounds.shift();
 };
+
+module.exports = Game;

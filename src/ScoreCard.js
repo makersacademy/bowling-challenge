@@ -43,7 +43,31 @@ ScoreCard.prototype.updateProperties = function(pins) {
     };
     this.frameNumber ++;
     this.rollNumber = 1;
+<<<<<<< HEAD
   };
+};
+
+ScoreCard.prototype.tenthFrame = function(pins) {
+  var tenthFrameTotal = 0;
+  tenthFrameTotal += this.pinsKnockedDown[9].reduce(function(a,b) {
+    return a + b
+  }, 0);
+  if (tenthFrameTotal < 10) {
+    this.addPins(pins);
+  };
+  this.addPinsToBonusScore(pins);
+  if (this.rollNumber == 1) {
+    if (pins == 10) {
+      this.bonusTrackers.push(new BonusTracker(this.frameNumber, 2))
+    };
+  } else if (this.rollNumber == 2) {
+    if (this.pinsKnockedDown[this.frameNumber-1][0] + pins == 10) {
+      this.bonusTrackers.push(new BonusTracker(this.frameNumber, 1))
+    };
+=======
+>>>>>>> f9f5f30a3228a4550e13c0f21080103555f6dbe5
+  };
+  this.rollNumber ++;
 };
 
 ScoreCard.prototype.tenthFrame = function(pins) {
@@ -65,7 +89,7 @@ ScoreCard.prototype.tenthFrame = function(pins) {
     };
   };
   this.rollNumber ++;
-};
+}
 
 ScoreCard.prototype.calculateScore = function(toFrame = 10) {  // calculates all frames by default
   var score = 0;

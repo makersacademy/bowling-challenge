@@ -10,11 +10,25 @@ How to use
 * Run tests with Jasmine by typing open SpecRunner.html in the terminal
 * Copy the full path of index.html into the browser to interact with the apply
 
+Aim of the Project
+-----
+
+The project is a bowling score card in Javascript. This was a weekend Challenge from Makers Academy. Here is the master branch, which details the criteria https://github.com/makersacademy/bowling-challenge
+
 Functionality 
 -----
 * It has the full functionality of a bowling score card according to the rules of bowling, apart from if you throw a strike in the 10th round. In that instance, it allows you to just keep playing forever...
+* Here's a picture of it in action, and while some might think the background is tacky, they would be wrong. 
 
-Goals of feedback
+![screen shot 2018-12-05 at 18 04 12](https://user-images.githubusercontent.com/42243785/49534382-45e3df00-f8b9-11e8-98ce-f0d9e688777d.png)
+
+
+* Here are my beautiful tests passing...
+
+![screen shot 2018-12-05 at 18 08 15](https://user-images.githubusercontent.com/42243785/49534495-8f342e80-f8b9-11e8-95de-9a52df747eeb.png)
+
+
+Goals of feedback from Tutors
 -----
 * I'd love some feedback on my use of spies and mocks.
 * I'd love some feedback on my "private methods" (not really private yet in javascript, only using naming conventions) and if I tested them right.
@@ -24,6 +38,7 @@ Goals of feedback
 What I think went well
 -----
 
+* For my first solo project in Javascript, I'm happy with it. 
 * All my tests pass. I managed to research spies and doubles and used them to keep my tests isolated.
 * I'm really happy that almost all of the game works as it should according to the rules of bowling.
 * My first time using jquery by myself was successful.
@@ -38,7 +53,7 @@ What I found challenging
 
 What I would do if I had more time
 ------
-* Download lint and make my code beautiful
+* Download a linter and make my code beautiful
 
 
 What I want to improve on

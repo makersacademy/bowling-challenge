@@ -10,6 +10,7 @@ $(document).ready( function() {
     $('#submit').click( function() {
       var roll = game.roll;
       var frame = game.currentFrame;
+      var previousFrame = game.currentFrame - 1;
       $('#f' + frame +'r'+ roll).text(pins);
       game.calculateFramePoints(pins);
       console.log('Pins:' + pins);
@@ -19,12 +20,18 @@ $(document).ready( function() {
       $('#f' + frame).text(game.frameScores[game.currentFrame]);
       console.log('current frame score from array:' + game.frameScores[game.currentFrame]);
 
-      $('#totalscore').text(game.total());
-      game.updateFrame();
+
+
+      game.updateFrames();
       console.log('frame no after update:' + game.currentFrame);
       console.log('roll after update:' + game.roll);
       console.log('frame points:' + game.getFramePoints());
       console.log('array:' + game.frameScores);
+
+      console.log('previousFrame:' + previousFrame);
+      console.log('previousFrame score:' + game.frameScores[previousFrame]);
+      $('#f' + previousFrame).text(game.frameScores[previousFrame]);
+      $('#totalscore').text(game.total());
   });
 
 });

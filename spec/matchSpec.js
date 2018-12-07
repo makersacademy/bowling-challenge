@@ -49,8 +49,10 @@ describe('Match', function() {
 
   })
 
-  describe('roundCheck', function() {
-    it('checks how many rounds have been played, if 10 have been played it returns total score')
-  })
+  // describe('finalRoundCheck', function() {
+  //   it('if 10 have been played without finishing on a strike or spare return finalScore', function() {
+  //
+  //   })
+  // })
 
 })

@@ -1,4 +1,5 @@
 var Game = require('../src/game.js');
+var TenthFrame = require('../src/tenthFrame.js');
 
 describe("Game", function() {
 
@@ -10,7 +11,13 @@ describe("Game", function() {
       expect(game).toEqual(jasmine.any(Game));
     });
 
-    it("is can add a new Frame to its internal array of frames", function() {
+    it("is initialised with ten empty frames", function() {
+      console.log(game.frames);
+      expect(game.frames.length).toEqual(10);
+    });
+
+    it("its last frame should be of type 'tenthFrame'", function() {
+      expect(game.frames.pop()).toEqual(jasmine.any(TenthFrame));
     });
 
     xit("can return a represetative data structure with the current state of the game", function() {

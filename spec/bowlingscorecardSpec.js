@@ -12,10 +12,10 @@ describe('BowlingScoreCard', function(){
     beforeEach(function(){
         scoreCard = new BowlingScoreCard();
 
-        frame = jasmine.createSpyObj('frame', ['getFirstScore','getSecondScore','findIndex','isStrike','isSpare','totalScore']);
+        frame = jasmine.createSpyObj('frame', ['getFirstScore','getSecondScore','findIndex','isStrike','isSpare','totalScore','complete']);
         frame.getSecondScore.and.returnValue(undefined);
         frame.findIndex.and.returnValue([]);
-
+        frame.complete.and.returnValue(false);
         spyOn(scoreCard, ['getFrames']);
 
         frames = [];

@@ -7,9 +7,9 @@ function Frame() {
 Frame.prototype.score = function(){
     
    if ((typeof this.getFirstScore()) != 'undefined'){
-       this.setSecondScore(this.randomScore());
+       this.setSecondScore(this.randomScore((10 - this.getFirstScore())));
    }else {
-        this.setFirstScore(this.randomScore()); 
+        this.setFirstScore(this.randomScore(10)); 
    }
 }
 
@@ -29,8 +29,8 @@ Frame.prototype.getSecondScore = function(){
     return this.second;
 }
 
-Frame.prototype.randomScore = function(){
-    return Math.floor(Math.random() * 6) + 1
+Frame.prototype.randomScore = function(max){
+    return Math.floor(Math.random() * max) + 1
 }
 
 Frame.prototype.isStrike = function(){
@@ -38,17 +38,31 @@ Frame.prototype.isStrike = function(){
 }
 
 Frame.prototype.isSpare = function(){
-    return ((this.isStrike() == false && this.isMiss() == false) ? true : false);
+    if (this.isStrike() == false && this.isMiss() == false && (this.getFirstScore() + this.getSecondScore()) == 10){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
 Frame.prototype.isMiss = function(){
     return ((this.getFirstScore() == 0 || this.getSecondScore() == 0) ? true : false);
 }
 
-Frame.prototype.totalScore = function(){
-    this.total += (isNaN(this.getFirstScore()) ? null : this.getFirstScore());
-    this.total += (isNaN(this.getSecondScore()) ? null : this.getSecondScore());
-    
-    return this.total;
+Frame.prototype.complete = function(){
+    if(this.isStrike() == true || !isNaN(this.getSecondScore())){
+        return true;
+    }else{
+        return false;
+    }
 }
 
+Frame.prototype.updateTotal = function () {
+    this.total = this.getFirstScore() + this.getSecondScore();
+}
+
+Frame.prototype.totalScore = function(){
+    this.total = (isNaN(this.getFirstScore()) ? null : this.getFirstScore()) + (isNaN(this.getSecondScore()) ? null : this.getSecondScore());
+    return this.total;
+}

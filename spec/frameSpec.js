@@ -25,7 +25,7 @@ describe('Frame', function(){
     describe('randomScore method', function(){
 
         it('should return random value between 1 and 10',function(){
-            expect(frame.randomScore()).toEqual(2);
+            expect(frame.randomScore(10)).toEqual(2);
         });
 
     });
@@ -40,15 +40,33 @@ describe('Frame', function(){
 
     });
 
+
+    describe('complete method', function () {
+
+        it('should return true when frame is complete from strike', function () {
+            frame.setFirstScore(10);
+            expect(frame.complete()).toEqual(true);
+        });
+        it('should return true when frame is complete from spare', function () {
+            frame.setFirstScore(1);
+            frame.setSecondScore(9);
+            expect(frame.complete()).toEqual(true);
+        });
+
+    });
+
+
     describe('should return true or false', function(){
 
         it('score/roll is a strike', function(){
+            frame.setFirstScore(10);
             frame.setSecondScore(10);
             expect(frame.isStrike()).toEqual(true);
         });
     
         it('score/roll is a spare', function(){
             frame.setFirstScore(1);
+            frame.setSecondScore(9);
             expect(frame.isSpare()).toEqual(true);
         });
 

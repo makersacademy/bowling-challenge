@@ -11,7 +11,9 @@ describe("Game", function() {
 
   it("calculates points for the current frame after the 1st roll", function() {
     game.calculateFramePoints(5);
+    game.updateFrame();
     expect(game.getFramePoints()).toEqual(5);
+    expect(game.total()).toEqual(5);
   });
 
   it("calculates points for the current frame after the 2nd roll", function() {

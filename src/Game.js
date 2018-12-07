@@ -17,17 +17,20 @@ Game.prototype.getCurrentFramePoints = function () {
 };
 
 Game.prototype.getPreviousFramePoints = function () {
-  return this.frameScores[this.currentFrame];
+  return this.frameScores[this.currentFrame - 1];
 };
 
-Game.prototype.calculateFramePoints = function (pins) {
+Game.prototype.calculateFramePoints = function (pins_string) {
+  var pins = Number(pins_string);
   this.currentFramePoints += pins;
   this.setBonus(pins,this.currentFramePoints);
   if (this.isPreviousBonusSpare() == true) {
     this.storeSpareBonus(pins);
   }
+  console.log('cfp form update f:' + this.currentFramePoints);
+  this.frameScores[this.currentFrame] = this.currentFramePoints;
 };
-
+//change function name
 Game.prototype.updateFrame =  function () {
   if (this.roll == 2 || this.bonus[this.currentFrame] === "strike") {
     this.finishFrame();
@@ -37,7 +40,6 @@ Game.prototype.updateFrame =  function () {
 };
 
 Game.prototype.finishFrame = function() {
-  this.frameScores.push(this.currentFramePoints);
   if (this.bonus[this.currentFrame - 1] !== null) {
     this.updatePreviousFrame();
   }

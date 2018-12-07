@@ -94,7 +94,7 @@ Scorecard.prototype._calculateFrameTotal = function(frame) {
 Scorecard.prototype.totalScore = function() {
   var scorecard = this;
   var total = 0;
-  for(var i=1; i<scorecard.currentFrame; i++) {
+  for(var i=1; (i<scorecard.currentFrame && i<=10); i++) {
     if(typeof(scorecard._calculateFrameTotal(i)) == "number") {
       total += scorecard._calculateFrameTotal(i);
     }

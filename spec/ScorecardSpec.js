@@ -107,7 +107,7 @@ describe("Scorecard", function() {
       scorecard.recordScore(3);
       expect(scorecard.totalScore()).toEqual(81);
     });
-    it("ignores frames that area waiting for bonuses", function() {
+    it("ignores frames that are waiting for bonuses", function() {
       scorecard.recordScore(10);
       expect(scorecard.totalScore()).toEqual(0);
       scorecard.recordScore(4);

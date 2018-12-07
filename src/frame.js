@@ -33,11 +33,7 @@ Frame.prototype.getFirstScore = function(score){
 }
 
 Frame.prototype.getSecondScore = function(score){
-    if (this.getFirstScore() === this.STRIKE_SCORE) {
-        return null;
-    } else {
-        return this.secondScore;
-    }
+    return this.secondScore;
 }
 
 Frame.prototype.getFinalFrameScore = function() {

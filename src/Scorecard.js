@@ -11,15 +11,19 @@ Scorecard.prototype.recordScore = function(score) {
   this._scoresList[this.currentFrame - 1][this.currentRoll - 1] = score;
   this.updateBonuses(score);
   if(score === 10) {
+    if(this.currentFrame <= 10) {
+      // add a bonus counter for this frame to the list
+      this.bonusCounters.push(new BonusCounter(this.currentFrame, 2));
+    }
     // create a placeholder "S" for the bonus
     this._scoresList[this.currentFrame - 1][2] = "S";
-    // add a bonus counter for this frame to the list
-    this.bonusCounters.push(new BonusCounter(this.currentFrame, 2));
     this.currentFrame ++;
   } else if(this.currentRoll === 2) {
     if(score + this._scoresList[this.currentFrame - 1][0] === 10) {
       this._scoresList[this.currentFrame - 1][2] = "sp";
-      this.bonusCounters.push(new BonusCounter(this.currentFrame, 1));
+      if(this.currentFrame <= 10) {
+        this.bonusCounters.push(new BonusCounter(this.currentFrame, 1));
+      }
     };
     this.currentFrame ++;
     this.currentRoll = 1;
@@ -28,7 +32,7 @@ Scorecard.prototype.recordScore = function(score) {
   }
 };
 Scorecard.prototype._validateFrame = function(score) {
-  if(this.currentFrame > 10) {
+  if(this.currentFrame > 10 && this.bonusCounters.length === 0) {
     throw "All frames have been completed";
   } else if(this._scoresList[this.currentFrame - 1] === undefined) {
     this._scoresList[this.currentFrame - 1] = [];

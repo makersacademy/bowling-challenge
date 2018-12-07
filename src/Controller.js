@@ -15,7 +15,9 @@ function record(rolledScore) {
 };
 
 function updateDisplay(frameRollID, rolledScore) {
-  document.getElementById(frameRollID).innerHTML = rolledScore;
+  if(document.getElementById(frameRollID) != null) {
+    document.getElementById(frameRollID).innerHTML = rolledScore;
+  }
   document.getElementById("current_frame").innerHTML =
     scorecard.currentFrame;
   document.getElementById("current_roll").innerHTML =

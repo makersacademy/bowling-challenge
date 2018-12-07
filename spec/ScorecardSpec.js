@@ -39,13 +39,6 @@ describe("Scorecard", function() {
         scorecard.recordScore(6);
         expect(scorecard.readScores(2, 1)).toEqual(6);
       });
-      it("does not accept more scores after the 10th frame", function() {
-        var gameOver = "All frames have been completed";
-        for(var i=1; i<=20; i++) {
-          scorecard.recordScore(0);
-        }
-        expect(function() {scorecard.recordScore(5)}).toThrow(gameOver);
-      });
     });
   });
 
@@ -91,6 +84,37 @@ describe("Scorecard", function() {
       scorecard.recordScore(6);
       scorecard.recordScore(3);
       expect(scorecard.frameScore(1)).toEqual(13);
+    });
+  });
+
+  describe("after the tenth frame", function() {
+    it("does not accept regular scores after the 10th frame", function() {
+      var gameOver = "All frames have been completed";
+      for(var i=1; i<=20; i++) {
+        scorecard.recordScore(0);
+      }
+      expect(function() {scorecard.recordScore(5)}).toThrow(gameOver);
+    });
+    it("allows rolling for strike bonuses and records them", function() {
+      var gameOver = "All frames have been completed";
+      for(var i=1; i<=10; i++) {
+        scorecard.recordScore(10);
+      }
+      scorecard.recordScore(4);
+      scorecard.recordScore(6);
+      expect(scorecard.frameScore(10)).toEqual(20);
+      expect(function() {scorecard.recordScore(0)}).toThrow(gameOver);
+    });
+    it("allows rolling for spare bonuses and records them", function() {
+      var gameOver = "All frames have been completed";
+      for(var i=1; i<=9; i++) {
+        scorecard.recordScore(10);
+      }
+      scorecard.recordScore(9);
+      scorecard.recordScore(1);
+      scorecard.recordScore(10);
+      expect(scorecard.frameScore(10)).toEqual(20);
+      expect(function() {scorecard.recordScore(0)}).toThrow(gameOver);
     });
   });
 });

@@ -27,7 +27,7 @@ The score for each ball rolled is recorded individually and displayed on the sco
 
 When the player gets a strike or spare, the bonuses are tracked by temporary JS objects. Each tracker object records the frame it relates to, and is updated by the scorecard after each subsequent roll. Once it has received the correct number of follow-up rolls, the bonus is recorded and the object is discarded.
 
-If a strike or spare is recorded in the 10th frame, the scorecard will accept as many additional scores as are necessary to calculate the bonus correctly; the results of the extra rolls are not displayed, but the totals are updated as appropriate. Currently the scorecard requests scores for the 11th/12th/13th frames in this scenario which is somewhat misleading!
+If a strike or spare is recorded in the 10th frame, the scorecard will accept as many additional scores as are necessary to calculate the bonus correctly. A simple line of text confirms the bonus scores.
 
 #### Wish list
 

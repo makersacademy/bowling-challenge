@@ -19,7 +19,15 @@ function updateDisplay(frameRollID, rolledScore) {
     document.getElementById(frameRollID).innerHTML = rolledScore;
   }
   if(scorecard.currentFrame > 10) {
-    console.log(scorecard.bonusCounters.length)
+    if(scorecard.currentFrame > 11 || scorecard.currentRoll > 1) {
+      if(document.getElementById("bonus_1").innerHTML === "") {
+        document.getElementById("bonus_1").innerHTML =
+          "First bonus roll scored " + rolledScore
+      } else {
+        document.getElementById("bonus_2").innerHTML =
+          "Second bonus roll scored " + rolledScore
+      }
+    }
     if(scorecard.bonusCounters.length === 0) {
       document.getElementById("prompt_for_input").innerHTML = ""
     } else {

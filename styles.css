@@ -18,8 +18,11 @@ th, td {
   width: 60px;
   height: 40px;
 }
+div {
+  padding: 10px;
+}
 p {
-  padding: 40px;
+  margin: 30px;
 }
 button {
   width: 35px;

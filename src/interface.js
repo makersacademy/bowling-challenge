@@ -3,6 +3,7 @@ $(document).ready( function() {
   var game = new Game();
   var pins;
 
+
     $("select.pins").change( function() {
       pins = $(this).children("option:selected").val();
     });
@@ -30,6 +31,10 @@ $(document).ready( function() {
       console.log('previousFrame score:' + game.frameScores[previousFrame]);
       $('#f' + previousFrame).text(game.frameScores[previousFrame]);
       $('#totalscore').text(game.total());
+
+      if (game.currentFrame > 11) {
+        $('#pin-selection').text('You finished the game');
+      }
   });
 
 });

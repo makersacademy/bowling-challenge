@@ -12,6 +12,7 @@ $(document).ready( function() {
       var roll = game.roll;
       var frame = game.currentFrame;
       var previousFrame = game.currentFrame - 1;
+      pins = pins || 0;
       $('#f' + frame +'r'+ roll).text(pins);
       game.calculateFramePoints(pins);
       console.log('Pins:' + pins);

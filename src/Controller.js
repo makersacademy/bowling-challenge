@@ -20,12 +20,10 @@ function updateDisplay(frameRollID, rolledScore) {
   }
   if(scorecard.currentFrame > 10) {
     if(scorecard.currentFrame > 11 || scorecard.currentRoll > 1) {
-      if(document.getElementById("bonus_1").innerHTML === "") {
-        document.getElementById("bonus_1").innerHTML =
-          "First bonus roll scored " + rolledScore
+      if(document.getElementById("f10r2").innerHTML === "") {
+        document.getElementById("f10r2").innerHTML = rolledScore
       } else {
-        document.getElementById("bonus_2").innerHTML =
-          "Second bonus roll scored " + rolledScore
+        document.getElementById("f10r3").innerHTML = rolledScore
       }
     }
     if(scorecard.bonusCounters.length === 0) {

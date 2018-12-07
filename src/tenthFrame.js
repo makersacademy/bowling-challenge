@@ -44,7 +44,16 @@ TenthFrame.prototype.getBonusScore = function(score){
 }
 
 TenthFrame.prototype.getFinalFrameScore = function(score){
-    return this.firstScore + this.secondScore + this.bonusScore;
+    this.finalFrameScore =  (this.firstScore + this.secondScore + this.bonusScore);
+    return this.finalFrameScore;
+}
+
+TenthFrame.prototype.isStrike = function() {
+    return this.strike;
+}
+
+TenthFrame.prototype.isSpare = function() {
+    return this.spare;
 }
 
 

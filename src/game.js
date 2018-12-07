@@ -19,6 +19,18 @@ Game.prototype.createFrames = function(){
   this.addFrame(new TenthFrame());
 }
 
+Game.prototype.getFrame = function(frameIndex) {
+  return this.frames[frameIndex];
+}
+
+Game.prototype.setFirstScore = function(frameIndex, score) {
+  this.getFrame(frameIndex).setFirstScore(score);
+}
+
+Game.prototype.setSecondScore = function(frameIndex, score) {
+  this.getFrame(frameIndex).setSecondScore(score);
+}
+
 if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )
 {
     module.exports = Game;

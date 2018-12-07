@@ -6,21 +6,7 @@ describe("Scorecard", function() {
     scorecard = new Scorecard;
   });
 
-  it("starts at Frame 1, Roll 1", function() {
-    expect(scorecard.currentFrame).toEqual(1);
-    expect(scorecard.currentRoll).toEqual(1);
-  });
-
   describe("recording scores", function() {
-    it("returns the score of the first roll", function() {
-      scorecard.recordScore(5);
-      expect(scorecard.readScores(1, 1)).toEqual(5);
-    });
-    it("returns the score of the second roll", function() {
-      scorecard.recordScore(5);
-      scorecard.recordScore(3);
-      expect(scorecard.readScores(1, 2)).toEqual(3);
-    });
     it("does not allow a frame total greater than 10", function() {
       var outOfPins = "Frame total would exceed 10";
       scorecard.recordScore(6);
@@ -113,16 +99,13 @@ describe("Scorecard", function() {
   });
 
   describe("calculating the overall total score", function() {
-    it("returns the total score for all frames", function() {
-      for(var i=1; i<=10; i++) {
+    it("returns the total score for all completed frames", function() {
+      for(var i=1; i<=9; i++) {
         scorecard.recordScore(4);
         scorecard.recordScore(5);
       }
-      expect(scorecard.totalScore()).toEqual(90);
-    });
-    it("ignores incomplete frames", function() {
-      scorecard.recordScore(4);
-      expect(scorecard.totalScore()).toEqual(0);
+      scorecard.recordScore(3);
+      expect(scorecard.totalScore()).toEqual(81);
     });
     it("ignores frames that area waiting for bonuses", function() {
       scorecard.recordScore(10);

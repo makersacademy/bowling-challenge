@@ -33,8 +33,8 @@ Following this structure should also make it fairly trivial to add more players 
 This change is to bring the display in line with standard formats, in particular showing 3 balls for the 10th frame.
 
 | Frame 1 | Frame 2 | ... | Frame 9 | Frame 10 |
-|  :---:  |  :---:  |:---:|  :---:  |  :---:   |
-|   `|`   |   `|`   | ... |   `|`   | `|`  `|` |
-| [score] | [score] | ... | [score] | [score]  |
+|  :---:  |  :---:  |:---:|  :---:  |   :---:  |
+|    ¦    |    ¦    | ... |    ¦    | ¦ &nbsp; &nbsp; &nbsp; ¦ |
+| (score) | (score) | ... | (score) |  (score) |
 
 Strikes should be displayed as an `X` and the second ball of a spare should be shown as `/`.

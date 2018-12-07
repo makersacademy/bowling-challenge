@@ -64,6 +64,7 @@ Scorecard.prototype.frameScore = function(frame) {
   }
 };
 Scorecard.prototype._calculateFrameTotal = function(frame) {
+  if(this._scoresList[frame - 1] == null) { return "" }
   switch(this._scoresList[frame - 1].length) {
     case 1:
       return this._scoresList[frame - 1][0];
@@ -84,4 +85,14 @@ Scorecard.prototype._calculateFrameTotal = function(frame) {
         return total;
       }
   }
+};
+Scorecard.prototype.totalScore = function() {
+  var scorecard = this;
+  var total = 0;
+  for(var i=1; i<scorecard.currentFrame; i++) {
+    if(typeof(scorecard._calculateFrameTotal(i)) == "number") {
+      total += scorecard._calculateFrameTotal(i);
+    }
+  }
+  return total;
 };

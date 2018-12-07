@@ -27,4 +27,6 @@ function updateDisplay(frameRollID, rolledScore) {
     document.getElementById(frameScoreID).innerHTML =
       scorecard.frameScore(i);
   }
+  document.getElementById("total").innerHTML =
+    scorecard.totalScore();
 }

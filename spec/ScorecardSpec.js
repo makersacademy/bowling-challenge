@@ -117,4 +117,27 @@ describe("Scorecard", function() {
       expect(function() {scorecard.recordScore(0)}).toThrow(gameOver);
     });
   });
+
+  describe("calculating the overall total score", function() {
+    it("returns the total score for all frames", function() {
+      for(var i=1; i<=10; i++) {
+        scorecard.recordScore(4);
+        scorecard.recordScore(5);
+      }
+      expect(scorecard.totalScore()).toEqual(90);
+    });
+    it("ignores incomplete frames", function() {
+      scorecard.recordScore(4);
+      expect(scorecard.totalScore()).toEqual(0);
+    });
+    it("ignores frames that area waiting for bonuses", function() {
+      scorecard.recordScore(10);
+      expect(scorecard.totalScore()).toEqual(0);
+      scorecard.recordScore(4);
+      scorecard.recordScore(6);
+      expect(scorecard.totalScore()).toEqual(20);
+      scorecard.recordScore(3);
+      expect(scorecard.totalScore()).toEqual(33);
+    });
+  });
 });

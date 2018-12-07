@@ -1,6 +1,5 @@
 function Frame() {
-  this.roundScoreArray = []
-
+  this.roundScoreArray = [];
   // Could pass in a function for round type - if last round then have own function
 
 }

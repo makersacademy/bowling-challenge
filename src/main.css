@@ -45,7 +45,7 @@
 .frame-0-total { grid-area: FTJ; }
 
 .scorecard {
-  display: grid;
+  display: inline-grid;
   grid-template-areas:
   'PNH PNH PNH PNH FFA FFA FFB FFB FFC FFC FFD FFD FFE FFE FFF FFF FFG FFG FFH FFH FFI FFI FFJ FFJ FFJ'
   'PNN PNN PNN PNN FAA FAB FBA FBB FCA FCB FDA FDB FEA FEB DFA DFB FGA FGB FHA FHB FIA FIB FJA FJB FJC'
@@ -60,6 +60,12 @@ body, input {
   font-weight: 100;
 }
 
+div {
+  border-style: solid;
+  border-color: #000000;
+  border-width: 0px;
+}
+
 input {
   border: 0px;
   margin: 0px;
@@ -70,18 +76,20 @@ p {
   text-align: center;
 }
 
-.player-name-header, div[class^='frame'] {
+div[class$='ball-2'], div[class$='ball-3'] {
+  border-bottom-width: 1px;
+}
+
+div[class^='frame'], .player-name-header {
   line-height: 50px;
 }
 
-.player-name {
-  line-height: 100px;
+div[class$='ball-1'], div[class$='ball-2'], div[class$='ball-3'], div[class$='total'], .top-row {
+  height: 50px;
 }
 
-div {
-  border-style: solid;
-  border-color: #000000;
-  border-width: 0px;
+div[class$='ball-1'], div[class$='ball-2'], div[class$='ball-3'] {
+  width: 50px;
 }
 
 div[class^='frame'] {
@@ -89,8 +97,12 @@ div[class^='frame'] {
   border-left-width: 1px;
 }
 
-div[class$='ball-2'], div[class$='ball-3'] {
-  border-bottom-width: 1px;
+div[class^='player'] {
+  padding-left: 10px;
+}
+
+.player-name {
+  line-height: 100px;
 }
 
 .scorecard {
@@ -99,8 +111,4 @@ div[class$='ball-2'], div[class$='ball-3'] {
 
 .top-row {
   border-bottom-width: 1px;
-}
-
-div[class^='player'] {
-  padding-left: 10px;
 }

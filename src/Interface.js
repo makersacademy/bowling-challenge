@@ -40,6 +40,11 @@ $(document).ready(function() {
   $('#nin').click(function() { game.throw(9); card.toDisplay(9); });
   $('#ten').click(function() { game.throw(10); card.toDisplay(10); });
 
+  // $('#new').click(function() {
+  //   var $new_game = $('.this').clone();
+  //   $('.that').html($new_game);
+  // });
+
   $(document).on('click', function() {
     $('.frame-1-ball-1').text(card._display[0]);
     $('.frame-1-ball-2').text(card._display[1]);

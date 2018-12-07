@@ -3,30 +3,54 @@ function Scorecard() {
   this._frames = [];
 };
 
-Scorecard.prototype.throw = function(pinsDown) {
-  if (this._scores.length % 2 == 0 && pinsDown == 10) {
-    this._scores.push(pinsDown, 0);
-  }
-  else { this._scores.push(pinsDown); }
-  this.eachFrame();
+Scorecard.prototype.throw = function(pinsKnockedDown) {
+  var itsTheFirstThrowOfAFrame = (this._scores.length % 2 == 0);
+  var theyKnockDownTenPins = (pinsKnockedDown == 10);
+
+  if (itsTheFirstThrowOfAFrame && theyKnockDownTenPins) { this.recordsAStrike(); }
+  else { this.recordsNumberOf(pinsKnockedDown); }
+  this.thenTalliesTheScoreAtTheEndOfEachFrame();
 };
 
-Scorecard.prototype.eachFrame = function() {
-  var hold = 0, i;
-  for (i = 0; i < this._scores.length; i++) {
-    if (i % 2 == 0) { hold += this._scores[i]; }
-    else { 
-      if (this._scores[i - 1] == 10) {
-        hold += this._scores[i + 1];
-        if (this._scores[i + 1] == 10) { hold += this._scores[i + 3]; }
-        else { hold += this._scores[i + 2]; }
+Scorecard.prototype.thenTalliesTheScoreAtTheEndOfEachFrame = function() {
+  var i, hold = 0;
+  var numberOfThrowsSoFar = (this._scores.length);
+  
+  for (i = 0; i < numberOfThrowsSoFar; i++) {
+    var itsTheFirstScoreOfTheFrame = (i % 2 == 0);
+    var theFirstScoreOfTheFrame = this._scores[i - 1];
+    var theSecondScoreOfTheFrame = thatScore = (this._scores[i]);
+    var theScoreFromTheFirstThrowOfTheNextFrame = (this._scores[i + 1]);
+    var theScoreFromTheSecondThrowOfTheNextFrame = (this._scores[i + 2]);
+    var theScoreFromTheThrowAfterThat = (this._scores[i + 3]);
+    var theyScoredASpareThisFrame = (theFirstScoreOfTheFrame + theSecondScoreOfTheFrame == 10);
+    var theyScoredAStrikeThisFrame = (theFirstScoreOfTheFrame == 10);
+    var thatWasAlsoAStrike = (theScoreFromTheFirstThrowOfTheNextFrame == 10);
+
+    if (itsTheFirstScoreOfTheFrame) { hold += thatScore; }
+    else { hold += theSecondScoreOfTheFrame;
+      if (theyScoredAStrikeThisFrame) { hold += theScoreFromTheFirstThrowOfTheNextFrame;
+        if (thatWasAlsoAStrike) { hold += theScoreFromTheThrowAfterThat; }
+        else { hold += theScoreFromTheSecondThrowOfTheNextFrame; }
       }
-      else if ((this._scores[i - 1] + this._scores[i]) == 10) {
-        hold += this._scores[i + 1];
-      }
-      hold += this._scores[i];
-      index = (i / 2) - 0.5;
-      if (!isNaN(hold)) { this._frames[index] = hold; }
+      else if (theyScoredASpareThisFrame) { hold += theScoreFromTheFirstThrowOfTheNextFrame; }
+      if (!isNaN(hold)) { this.recordsTheTallyAtTheEndOfThisFrameAs(hold, i); }
     }
   }
+};
+
+Scorecard.prototype.recordsAStrike = function() {
+  this._scores.push(10, 0);
+};
+
+Scorecard.prototype.recordsNumberOf = function(pinsKnockedDown) {
+  this._scores.push(pinsKnockedDown);
+};
+
+Scorecard.prototype.recordsTheTallyAtTheEndOfThisFrameAs = function(hold, i) {
+  this._frames[(i / 2) - 0.5] = hold;
+};
+
+function allBonusScoresHaveBeenAddedTo(hold) {
+  !isNaN(hold);
 };

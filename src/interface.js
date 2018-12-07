@@ -20,8 +20,6 @@ $(document).ready( function() {
       $('#f' + frame).text(game.frameScores[game.currentFrame]);
       console.log('current frame score from array:' + game.frameScores[game.currentFrame]);
 
-
-
       game.updateFrames();
       console.log('frame no after update:' + game.currentFrame);
       console.log('roll after update:' + game.roll);

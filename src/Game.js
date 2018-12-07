@@ -30,9 +30,15 @@ Game.prototype.calculateFramePoints = function (pins_string) {
 };
 
 Game.prototype.updateFrames =  function () {
+  // if (this.bonus[10] == 'strike' || this.bonus[10] == 'spare') {
+  //   this.roll = 3;
+  //   this.currentFrame = 11;
+  // }
+
   if (this.bonus[this.currentFrame - 1] !== null) {
     this.updatePreviousFrame();
   }
+
   if (this.roll == 2 || this.bonus[this.currentFrame] === "strike") {
     this.finishFrame();
   } else if (this.roll == 1) {
@@ -68,7 +74,6 @@ Game.prototype.isPreviousBonusSpare = function() {
 };
 
 Game.prototype.updatePreviousFrame = function() {
-
   if (this.isPreviousBonusSpare() !== true || this.roll !== 2) {
     this.frameScores[this.currentFrame - 1] += this.bonusPoints;
   };

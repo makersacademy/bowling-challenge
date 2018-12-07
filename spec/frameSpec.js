@@ -33,7 +33,7 @@ describe("Frame", function() {
     it("will not allow the second score to be entered if the first score was a stike", function() {
         frame.setFirstScore(10);
         var errorMessage =  frame.setSecondScore(3);
-        expect(errorMessage).toEqual("No second score as first score was a strike!");
+        expect(errorMessage).toEqual(null);
         expect(frame.getSecondScore()).toEqual(null);
     });
 

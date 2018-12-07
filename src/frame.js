@@ -17,7 +17,7 @@ Frame.prototype.setFirstScore = function(score){
 
 Frame.prototype.setSecondScore = function(score){
     if (this.isStrike()) {
-        return "No second score as first score was a strike!";
+        return null;
     } else {
         if(score + this.getFirstScore() === this.STRIKE_SCORE) {
             this.spare = true;

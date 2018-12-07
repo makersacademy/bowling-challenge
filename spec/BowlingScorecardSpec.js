@@ -4,9 +4,10 @@ describe('BowlingScorecard', function(){
     scorecard = new BowlingScorecard();
     scorecard.enterPlayer('Matt');
   });
-  it('tallies up framescore after second bowl', function(){
+  it('tallies up framescore at the end of the next frame', function(){
     scorecard.enterBowl(5);
     scorecard.enterBowl(4);
+    scorecard.enterBowl(10);
     expect(scorecard.scores.frame1['frameScore']).toEqual(9);
   });
   describe('strike is bowled', function(){
@@ -41,7 +42,6 @@ describe('BowlingScorecard', function(){
     });
     it('adds the next bowl to the frameScore', function(){
       scorecard.enterBowl(4);
-      console.log(scorecard.scores);
       expect(scorecard.scores.frame1['frameScore']).toEqual(14);
     });
   });

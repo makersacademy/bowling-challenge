@@ -1,5 +1,3 @@
-
-
 describe('Bowling', function(){
 
   describe('a game', function(){

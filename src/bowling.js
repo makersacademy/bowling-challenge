@@ -52,6 +52,7 @@ Game.prototype.applyStandardScoring = function (i) {
     return;
   } else {
     this.scoreTable[i].total += this.scoreTable[i-1].total;
+    game.scoreTable[i].bonusApplied = true;
   }
 };
 
@@ -61,7 +62,7 @@ Game.prototype.calculateScores = function () {
       game.applyStrikeBonuses(i);
     } else if (game.scoreTable[i].secondTurn === "/" && game.scoreTable[i].bonusApplied === false) {
       game.applySpareBonuses(i);
-    } else {
+    } else if (game.scoreTable[i].bonusApplied === false) {
       game.applyStandardScoring(i);
     }
   }
@@ -81,12 +82,16 @@ Frame.prototype.addFirstScore = function (score) {
     this.secondTurn = '-';
     this.addTotal();
   } else {
-    this.firstTurn = score;
+    this.firstTurn = parseInt(score);
   }
 };
 
 Frame.prototype.addSecondScore = function (score) {
-  this.secondTurn = score;
+  if (score === '/') {
+    this.secondTurn = score;
+  } else {
+    this.secondTurn = parseInt(score);
+  }
   this.addTotal();
 };
 

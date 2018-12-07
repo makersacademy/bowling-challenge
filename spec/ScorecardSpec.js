@@ -43,20 +43,14 @@ describe("Scorecard", function() {
   });
 
   describe("scoring frames", function() {
-    it("returns the partial frame score after 1 roll", function() {
+    it("returns null for incomplete frames", function() {
       scorecard.recordScore(5);
-      expect(scorecard.frameScore(1)).toEqual(5);
+      expect(scorecard.frameScore(1)).toBeNull();
     });
     it("returns the total frame score after 2 rolls", function() {
       scorecard.recordScore(4);
       scorecard.recordScore(3);
       expect(scorecard.frameScore(1)).toEqual(7);
-    });
-    it("returns a score from earlier than the current frame", function() {
-      scorecard.recordScore(2);
-      scorecard.recordScore(6);
-      scorecard.recordScore(5);
-      expect(scorecard.frameScore(1)).toEqual(8);
     });
   });
 

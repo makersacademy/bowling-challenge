@@ -64,7 +64,12 @@ Scorecard.prototype.frameScore = function(frame) {
   }
 };
 Scorecard.prototype._calculateFrameTotal = function(frame) {
-  if(this._scoresList[frame - 1] == null) { return "" }
+  if(this._scoresList[frame - 1] == null) {
+    return null
+  }
+  if(this.currentRoll === 2 && frame === this.currentFrame) {
+    return null
+  }
   switch(this._scoresList[frame - 1].length) {
     case 1:
       return this._scoresList[frame - 1][0];

@@ -49,10 +49,29 @@ describe('Match', function() {
 
   })
 
-  // describe('finalRoundCheck', function() {
-  //   it('if 10 have been played without finishing on a strike or spare return finalScore', function() {
-  //
-  //   })
-  // })
+  describe('addToRunningScoreArray', function() {
+    it('pushed the running score to an array' , function() {
+      for (var i = 0; i < 10; i++) {
+        match.playFrame(3, 4);
+      }
+
+      expect(match.runningScoreArray).toEqual([7, 14, 21, 28, 35, 42, 49, 56, 63, 70])
+
+    })
+  })
+
+  describe('finalRoundCheck', function() {
+    it('if 10 have been played without finishing on a strike or spare return finalScore', function() {
+
+      for (var i = 0; i < 10; i++) {
+        match.playFrame(3, 4);
+      }
+      // 
+      // var rounds = match.roundCount;
+      // var framesArray = match.runningFrameScores;
+
+    expect(match.finalRoundCheck()).toEqual(70)
+    })
+  })
 
 })

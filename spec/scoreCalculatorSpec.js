@@ -2,9 +2,11 @@
 
 describe('ScoreCalculator', function() {
   var scoreCalculator;
+  var match
 
   beforeEach(function(){
     scoreCalculator = new ScoreCalculator();
+    match = new Match();
   });
 
   describe('sumRoundScore', function(){
@@ -15,7 +17,6 @@ describe('ScoreCalculator', function() {
 
   describe('totalScore', function() {
     it('returns the total score for the match if there are no spares or strikes', function() {
-      var match = new Match()
 
       for (var i = 0; i < 10; i++) {
         match.playFrame(3, 4);
@@ -29,7 +30,6 @@ describe('ScoreCalculator', function() {
     })
 
     it('returns the total score for the match if there are spares and strikes', function() {
-      var match = new Match()
 
       match.playFrame(1, 2);
       match.playFrame(4, 3);
@@ -53,7 +53,6 @@ describe('ScoreCalculator', function() {
 
   describe('doubleRoundsAfterStrikes', function() {
     it ('returns an array of the rounds that come after strikes', function() {
-      var match = new Match()
 
       match.playFrame(4, 5);
       match.playFrame(10);
@@ -70,7 +69,6 @@ describe('ScoreCalculator', function() {
 
   describe('doubleRollsAfterSpares', function() {
     it ('returns an array of the rounds that come after spare', function() {
-      var match = new Match()
 
       match.playFrame(5, 5);
       match.playFrame(2, 4);

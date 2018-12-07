@@ -15,3 +15,15 @@ Frame.prototype.playRound = function(roll1, roll2 = undefined) {
   return this.roundScoreArray;
 
 };
+
+Frame.prototype.isItAStrike = function(frameArray) {
+  return frameArray.includes(10)
+}
+
+Frame.prototype.isItASpare = function(frameArray) {
+  var scoreCalculator = new ScoreCalculator
+
+  if ((frameArray.indexOf(10) === -1) && (scoreCalculator.sumRoundScore(frameArray) === 10)) {
+    return true
+  }
+}

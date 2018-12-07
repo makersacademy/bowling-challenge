@@ -1,7 +1,7 @@
 'use strict'
 
 function ScoreCalculator() {
-
+  var runningScoreArray = [];
 }
 
 ScoreCalculator.prototype.sumRoundScore = function(array) {
@@ -57,4 +57,10 @@ ScoreCalculator.prototype.doubleRollsAfterSpares = function(runningFrameScores, 
     }
   });
   return spareRoundsAccountedFor;
+}
+
+ScoreCalculator.prototype.addToRunningScoreArray = function(runningFrameScores, strikeRounds, spareRounds) {
+  var totalScoreSoFar = this.totalScore(runningFrameScores, strikeRounds, spareRounds);
+
+  this.runningScoreArray.push(totalScoreSoFar)
 }

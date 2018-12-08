@@ -74,10 +74,21 @@ describe("Game", function() {
     game.roll(5);
     game.roll(0);
     multiRoll(14, 0);
-    console.log(game._frames)
     expect(game.score()).toEqual(45);
   });
 
+  it('calculates a perfect game', function(){
+    perfectGame();
+    expect(game.score()).toEqual(300);
+  });
+
+  function perfectGame() {
+    var i;
+    for (i = 0; i < 12; i++) {
+      game.roll(10);
+      game.roll("X");
+    };
+  };
 
   function multiRoll(amount, pins) {
     var i;

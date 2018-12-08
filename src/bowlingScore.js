@@ -1,5 +1,3 @@
-'use strict'
-
 var Score = function () {
   this.result = 0
   this.frames = [ ]
@@ -13,14 +11,12 @@ Score.prototype.createsFrames = function () {
 
 Score.prototype.scoresIntoFrames = function (frame, bowl, score) {
   this.frames.map(f => {
-    if (f.frame === frame) {
-      if (bowl === 1) {
-        f.bowl1 = score
-      } else if (bowl === 2) {
-        f.bowl2 = score
-      } else if (bowl === 3) {
-        f.bowl3 = score
-      }
+    if (f.frame === frame && bowl === 1) {
+      f.bowl1 = score
+    } else if (f.frame === frame && bowl === 2) {
+      f.bowl2 = score
+    } else if (f.frame === frame && bowl === 3) {
+      f.bowl3 = score
     }
   })
 }
@@ -43,28 +39,18 @@ Score.prototype.searchFrames = function (frame, bowl) {
 Score.prototype.gameScoring = function () {
   for (var number = 1; number < this.frames.length + 1; number++) {
     if (isNaN(this.searchFrames(number, 1)) === true) {
-      continue
-    }
-    if (number === 10) {
+    } else if (this.frameTen(number) === true) {
       this.frameTenProcess(number)
-      continue
-    }
-    if (this.strikeOrSpare(number, 1) === true || this.strikeOrSpare(number, 2) === true) {
+    } else if (this.strikeOrSpare(number) === true) {
       this.strikeOrSpareScoring(number)
-      continue
-    } else if (this.wholeFrame(number) !== 10) {
+    } else {
       this.result += this.wholeFrame(number)
-      continue
     }
   }
 }
 
 Score.prototype.strikeOrSpareScoring = function (frame) {
-  if (this.searchFrames(frame, 1) === 10) {
-    this.strikeProcess(frame)
-  } else if (this.searchFrames(frame, 1) + this.searchFrames(frame, 2) === 10) {
-    this.spareProcess(frame)
-  }
+  this.isStrike(frame) ? this.strikeProcess(frame) : this.spareProcess(frame)
 }
 
 Score.prototype.strikeProcess = function (frame) {
@@ -85,7 +71,7 @@ Score.prototype.spareProcess = function (frame) {
 }
 
 Score.prototype.frameTenProcess = function (frame) {
-  if (this.searchFrames(frame, 1) === 10 && this.searchFrames(frame, 2) === 10) {
+  if (this.searchFrames(frame, 1) + this.searchFrames(frame, 2) === 20) {
     this.result += (20 + this.searchFrames(frame, 2) + this.searchFrames(frame, 3))
   } else if (this.searchFrames(frame, 1) === 10) {
     this.result += (10 + this.searchFrames(frame, 2) + this.searchFrames(frame, 3))
@@ -96,7 +82,7 @@ Score.prototype.frameTenProcess = function (frame) {
   }
 }
 
-Score.prototype.strikeOrSpare = function (frame, bowl) {
+Score.prototype.strikeOrSpare = function (frame) {
   if (this.searchFrames(frame, 1) === 10 || this.wholeFrame(frame) === 10) {
     return true
   } return false
@@ -106,18 +92,12 @@ Score.prototype.wholeFrame = function (frame) {
   return this.searchFrames(frame, 1) + this.searchFrames(frame, 2)
 }
 
-Score.prototype.frame10 = function (frame) {
+Score.prototype.frameTen = function (frame) {
   if (frame === 10) return true
 }
 
 Score.prototype.isStrike = function (frame) {
   if (this.searchFrames(frame, 1) === 10) {
-    return true
-  } return false
-}
-
-Score.prototype.isSpare = function (frame) {
-  if (this.wholeFrame(frame) === 10) {
     return true
   } return false
 }

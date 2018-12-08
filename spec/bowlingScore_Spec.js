@@ -1,9 +1,11 @@
+/* eslint-disable */
+
 describe('Bowling', function() {
 
-  var score;
+  var score
 
   beforeEach(function() {
-    score = new Score();
+    score = new Score()
   });
 
   describe('#scoresIntoFrames', function() {

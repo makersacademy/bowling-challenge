@@ -40,7 +40,7 @@ TenthFrame.prototype.getSecondScore = function(score){
 }
 
 TenthFrame.prototype.getBonusScore = function(score){
-    return this.secondScore;
+    return this.bonusScore;
 }
 
 TenthFrame.prototype.getFinalFrameScore = function(score){

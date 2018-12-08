@@ -3,6 +3,14 @@ var Frame = require('../src/frame.js');
 var TenthFrame = require('../src/tenthFrame.js');
 
 describe("Updater", function() {
+    var perfectRoundUpToRoundNine = [[10, 0],[10, 0], [10, 0],
+                                     [10, 0], [10, 0], [10, 0],
+                                     [10, 0], [10, 0], [10, 0]];
+
+    var regularRoundUpToRoundNine = [[10, 0],[10, 0], [2, 3],
+                                     [10, 0], [10, 0], [2, 3],
+                                     [10, 0], [10, 0], [2, 3]];
+
 
     beforeEach(function() {
       updater = new Updater();
@@ -60,14 +68,14 @@ describe("Updater", function() {
     });
 
     it("Can calcalculate a stike in the tenth round", function(){
-        setFirstNineRounds();
+        setFramesScores(regularRoundUpToRoundNine);
         setTenthRound(10, 7, 3);
         updater.update(frames);
         expect(frames[9].getFinalFrameScore()).toBe(20);
     });
 
     it("Can calcalculate a spare in the tenth round", function(){
-        setFirstNineRounds();
+        setFramesScores(regularRoundUpToRoundNine);
         setTenthRound(5, 5, 4);
         updater.update(frames);
         expect(frames[9].getFinalFrameScore()).toBe(14);
@@ -75,14 +83,14 @@ describe("Updater", function() {
 
 
     it("Can calcalculate a spare in the tenth round", function(){
-        setFirstNineRounds();
+        setFramesScores(regularRoundUpToRoundNine);
         setTenthRound(5, 5, 4);
         updater.update(frames);
         expect(frames[9].getFinalFrameScore()).toBe(14);
     });
 
     it("Can calculate the final score in ninth frame spare", function(){
-        setFirstNineRounds();
+        setFramesScores(regularRoundUpToRoundNine);
         setFrameScore(2, 8, 8);
         setTenthRound( 5, 3, 2);
         updater.update(frames);
@@ -90,23 +98,28 @@ describe("Updater", function() {
     });
 
     it("Can calculate the final score in ninth frame strike", function(){
-        setFirstNineRounds();
+        setFramesScores(perfectRoundUpToRoundNine);
         setFrameScore(10, 0, 8);
-        setTenthRound( 5, 3, 0);
+        setTenthRound(5, 3, 0);
         updater.update(frames);
         expect(frames[8].getFinalFrameScore()).toBe(18);
     });
 
-    function setFirstNineRounds() {
-        setFrameScore(10, 0, 0);
-        setFrameScore(10, 0, 1);
-        setFrameScore(2, 3, 2);
-        setFrameScore(10, 0, 3);
-        setFrameScore(10, 0, 4);
-        setFrameScore(2, 3, 5);
-        setFrameScore(10, 0, 6);
-        setFrameScore(10, 0, 7);
-        setFrameScore(2, 3, 8);
+    it("It can calculate the correct scores for a perfect game", function(){
+        setFramesScores(perfectRoundUpToRoundNine);
+        setTenthRound(10, 10, 10);
+        updater.update(frames);
+        var count = 0
+        frames.forEach(function(frame){
+            count += frame.getFinalFrameScore();
+        });
+        expect(count).toEqual(300);
+    });
+
+    function setFramesScores(framesScores) {
+        framesScores.forEach(function(frameScore, index) {
+             setFrameScore(frameScore[0], frameScore[1], index)
+        });
     }
 
     function setTenthRound(first, second, bonus) {

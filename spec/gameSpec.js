@@ -25,20 +25,24 @@ describe("Game", function() {
       expect(game.getFrame(9)).toEqual(jasmine.any(TenthFrame));
     });
 
-    it("Can set the first score of a given round", function(){
+    it("Can set the first score of a given frame", function(){
       game.setFirstScore(2, 5);
       expect(game.getFrame(2).getFirstScore()).toEqual(5);
     });
 
-    it("Can set the second score of a given round", function(){
+    it("Can set the second score of a given frame", function(){
       game.setSecondScore(2, 5);
       expect(game.getFrame(2).getSecondScore()).toEqual(5);
     });
 
-    it("it can calculate the correct total score for a game", function() {
+    it("Can set the bonus score of the tenth frame", function(){
+      game.setFirstScore(9, 10);
+      game.setSecondScore(9, 3);
+      game.setBonusScore(5);
+      expect(game.getFrame(9).getBonusScore()).toEqual(5);
     });
 
-    xit("can return a represetative data structure with the current state of the game", function() {
+    it("can return a represetative data structure with the current state of the game", function() {
     });
 
     xit("it can update frames with a frameUpdaterService", function() {

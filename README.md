@@ -13,5 +13,6 @@ game.roll(10);
 game.roll('X')  // fill in an 'X' after your strike!     
 game.roll(4);
 game.roll(5);  // keep going until you have played 10 frames!   
+...
 game.score();  // to return your score!   
 ```

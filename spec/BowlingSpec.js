@@ -10,6 +10,7 @@ describe('Bowling', function(){
         frame.addSecondScore(5);
         frame.addTotal();
         game.addFrame(frame)
+        game.calculateScores();
       }
     });
 
@@ -22,7 +23,7 @@ describe('Bowling', function(){
     });
 
     it('can return the cumulative total', function(){
-      expect(game.total).toEqual(18);
+      expect(game.scoreTable[2].total).toEqual(18);
     });
 
   });
@@ -186,4 +187,24 @@ describe('Bowling', function(){
     });
   });
 
+  describe('#overCheck', function(){
+
+    beforeEach(function(){
+      game = new Game();
+      for (var i = 0; i < 11; i++) {
+        frame = new Frame(game.frame);
+        frame.addFirstScore(5);
+        frame3.addSecondScore(4);
+        frame3.addTotal();
+        game.addFrame(frame);
+        game.calculateScores();
+        game.overCheck();
+      }
+    });
+
+    it('sets the gameOver status to true once all turns are taken', function(){
+      expect(game.gameOver).toBe(true);
+    });
+
+  });
 });

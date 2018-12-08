@@ -1,14 +1,27 @@
 var Game = function(){
   this.frame = 1;
   this.turn = 1;
-  this.total = 0
+  this.gameOver = false;
   this.scoreTable = [];
 };
 
 Game.prototype.addFrame = function (frame) {
-  this.total += frame.total;
   this.scoreTable.push(frame);
   this.frame ++
+};
+
+Game.prototype.updateTotal = function () {
+  for (var i = 0; i < this.scoreTable.length; i++) {
+    this.total += this.scoreTable[i].total
+  }
+};
+
+Game.prototype.addPrevious = function (i) {
+  if (this.scoreTable[i-1] === undefined) {
+    return;
+  } else {
+    this.scoreTable[i].total += this.scoreTable[i-1].total;
+  }
 };
 
 Game.prototype.applyStrikeBonuses = function (i) {
@@ -24,11 +37,7 @@ Game.prototype.applyStrikeBonuses = function (i) {
     this.scoreTable[i].total += (this.scoreTable[i+1].total);
   }
   game.scoreTable[i].bonusApplied = true;
-  if (this.scoreTable[i-1] === undefined) {
-    return;
-  } else {
-    this.scoreTable[i].total += this.scoreTable[i-1].total;
-  }
+  this.addPrevious(i);
 };
 
 Game.prototype.applySpareBonuses = function (i) {
@@ -40,15 +49,12 @@ Game.prototype.applySpareBonuses = function (i) {
     this.scoreTable[i].total += this.scoreTable[i+1].firstTurn;
   }
   game.scoreTable[i].bonusApplied = true;
-  if (this.scoreTable[i-1] === undefined) {
-    return;
-  } else {
-    this.scoreTable[i].total += this.scoreTable[i-1].total;
-  }
+  this.addPrevious(i);
 };
 
 Game.prototype.applyStandardScoring = function (i) {
   if (this.scoreTable[i-1] === undefined) {
+    game.scoreTable[i].bonusApplied = true;
     return;
   } else {
     this.scoreTable[i].total += this.scoreTable[i-1].total;
@@ -65,6 +71,13 @@ Game.prototype.calculateScores = function () {
     } else if (game.scoreTable[i].bonusApplied === false) {
       game.applyStandardScoring(i);
     }
+  }
+};
+
+Game.prototype.overCheck = function () {
+  if (game.frame === 12) {
+    game.gameOver = true;
+    alert("Game Over, thanks for playing, now get of my propety")
   }
 };
 

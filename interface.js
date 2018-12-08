@@ -2,29 +2,32 @@ var game = new Game();
 var frame = new Frame(game.frame);
 
 $("#save-score").on('click', function(){
-    if (game.turn % 2 != 0) {
-      frame.addFirstScore(($("#enter-score").val()));
-      if (frame.firstTurn == "x") {
-        displayScore(frame.firstTurn)
+  if (game.gameOver != true) {
+    score = ($("#enter-score").val());
+    if (score === "x" || score === "/" || score < 10) {
+      if (game.turn % 2 != 0) {
+        frame.addFirstScore(($("#enter-score").val()));
+        if (frame.firstTurn == "x") {
+          applyStrikeFormat();
+        } else {
+          displayScore(frame.firstTurn)
+        }
         game.turn ++
-        displayScore(frame.secondTurn)
-        game.addFrame(frame);
-        game.calculateScores();
-        frame = new Frame(game.frame)
-        displayTotal();
+      } else {
+        secondTurn();
+        game.overCheck();
       }
-      displayScore(frame.firstTurn)
-      game.turn ++
     } else {
-      frame.addSecondScore(($("#enter-score").val()));
-      displayScore(frame.secondTurn)
-      game.turn ++
-      game.addFrame(frame);
-      game.calculateScores();
-      frame = new Frame(game.frame)
-      displayTotal();
+      alert("Please enter a valid score: 1-9 or 'x' or '/'")
     }
+  } else {
+    alert("Game over, click restart to play another")
+  }
 });
+
+
+
+
 
 displayScore = function(turn){
   $('#score-' + game.turn.toString()).text(turn);
@@ -38,22 +41,69 @@ displayTotal = function(){
   }
 };
 
-firstTurn = function(){
-
-};
 
 secondTurn = function(){
-
+  scoreGuard();
+  frame.addSecondScore(($("#enter-score").val()));
+  displayScore(frame.secondTurn)
+  game.turn ++
+  game.addFrame(frame);
+  game.calculateScores();
+  frame = new Frame(game.frame)
+  displayTotal();
 };
 
-strike_format = function(){
-
+applyStrikeFormat = function(){
+  displayScore(frame.firstTurn)
+  game.turn ++
+  displayScore("-")
+  game.addFrame(frame);
+  game.calculateScores();
+  frame = new Frame(game.frame)
+  displayTotal();
 };
 
-test_data = function(){
-  console.log("Frame: " + game.frame);
-  console.log("Turn: " + game.turn);
-  for(var i = 0; i < game.scoreTable.length; i++){
-    console.log("Frame " + i + ": " + game.scoreTable[i].total);
+
+frame10 = function(){
+  if (frame.firstTurn === "x") {
+
+  } else if (true) {
+
+  }
+};
+
+reset = function(){
+  clearScores();
+  clearFrameTotals();
+  newGame();
+};
+
+clearScores = function(){
+  for (var i = 0; i < 20; i++) {
+    displayScore = function(turn){
+      $('#score-' + i.toString()).text();
+    };
+  }
+};
+
+clearFrameTotals = function(){
+  for (var i = 0; i < 10; i++) {
+    displayScore = function(turn){
+      $('#score-' + i.toString()).text();
+    };
+  }
+};
+
+newGame = function(){
+  var game = new Game();
+  var frame = new Frame(game.frame);
+};
+
+scoreGuard = function(){
+  score = ($("#enter-score").val());
+  if (score === '/') {
+    return;
+  } else if ((score + frame.firstTurn) < 10) {
+    alert("Score can not exceed 10, please try again")
   }
 };

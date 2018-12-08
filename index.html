@@ -93,7 +93,7 @@
         <th id="frame-10" colspan="2">Frame 10</th>
         <th id="total-score">Total Score</th>
       </tr>
-        <tr>
+        <tr id="row-2">
           <td id="name" rowspan="2"> </td>
           <th id="score-1"></th>
           <th id="score-2"></th>
@@ -132,7 +132,7 @@
     </table>
     <h2>Enter your score below</h2>
     <form class="" action="index.html" method="post">
-      <input id="enter-score" type="text" name="score" value="">
+      <input id="enter-score" type="text" onfocus="this.value=''" name="score" value="">
     </form>
     <button id="save-score" type="button" name="button">Go <i class="fas fa-bowling-ball"></i></button>
   </body>

@@ -1,9 +1,10 @@
 Bowling Challenge
 =================
+
 ## How to use  
 `git clone git@github.com:chrisjgilbert/bowling-challenge.git`   
-`open SpecRunner.html` to view the tests.  
-If you want to fill in your scores...
+`cd bowling-challenge`
+`open SpecRunner.html` to view Jasmine tests.  
 ```
 game = new Game();   
 game.roll(4);   

@@ -23,5 +23,12 @@ describe ('bowling', function() {
     expect(game.gameScore()).toEqual(8)
   });
 
+  it('can roll a ball and hit pins', function() {
+    game.roll(5);
+    game.roll(5);
+    game.roll(5);
+    for(var i = 0; i < 18; i++) { game.roll(0) }
+    expect(game.gameScore()).toEqual(20)
+  });
 
 });

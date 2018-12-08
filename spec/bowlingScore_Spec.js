@@ -22,22 +22,22 @@ describe('Bowling', function() {
     });
   });
 
-  describe('#strikeOrSpare', function() {
+  describe('#_strikeOrSpare', function() {
     it('identifies a strike', function() {
       score.createsFrames()
       score.scoresIntoFrames(1, 1, 10);
-      expect(score.strikeOrSpare(1,1)).toBe(true);
+      expect(score._strikeOrSpare(1,1)).toBe(true);
     });
     it('doesnt identifiy a strike or spare', function() {
       score.createsFrames()
       score.scoresIntoFrames(1, 1, 4);
-      expect(score.strikeOrSpare(1,1)).toBe(false);
+      expect(score._strikeOrSpare(1,1)).not.toBe(true);
     });
     it('identifies spare', function() {
       score.createsFrames()
       score.scoresIntoFrames(1, 1, 5);
       score.scoresIntoFrames(1, 2, 5);
-      expect(score.strikeOrSpare(1,1)).toBe(true);
+      expect(score._strikeOrSpare(1,1)).toBe(true);
     });
   });
 

@@ -32,10 +32,9 @@ BowlingScoreCard.prototype.updatePreviousFrame = function(previousFrame,currentF
     }
 }
 
-BowlingScoreCard.prototype.roll = function(n){
+BowlingScoreCard.prototype.roll = function(n = 1){
     for(var i = 0; i < n; i++){
         var currentFrameIndex = this.currrentFrameIndex();
-	
         var currentFrame = this.getFrames()[currentFrameIndex];
         currentFrame.score();
 

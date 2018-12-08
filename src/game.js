@@ -40,10 +40,11 @@ Game.prototype.setBonusScore = function(score) {
 
 Game.prototype.getTotal = function() {
   this.update();
-  var total = 0
+  var total = 0;
   this.frames.forEach(function(frame){
     total += frame.getFinalFrameScore();
   });
+  return total;
 }
 
 Game.prototype.addFrame = function(frame){

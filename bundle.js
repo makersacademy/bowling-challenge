@@ -32,7 +32,6 @@ function drawTable(game) {
 }
 
 $(document).ready(function(){
-  console.clear();
   var game = new Game();
   $('#bowlingTable').prepend(drawTable(game));
   $('#enter_score').click(function(){
@@ -40,13 +39,12 @@ $(document).ready(function(){
      game.inputScore(score);
      $('#bowlingTable').children().remove();
      $('#bowlingTable').prepend(drawTable(game));
+     $('#total').text(game.getTotal());
   });
 
   $("#num_input").on("focus", function() {
       $(this).val("");
   });
-
-
 });
 
 },{"./src/frame.js":3,"./src/game.js":4,"./src/tenthFrame.js":5,"./src/updater.js":6,"jquery":2}],2:[function(require,module,exports){
@@ -10532,10 +10530,11 @@ Game.prototype.setBonusScore = function(score) {
 
 Game.prototype.getTotal = function() {
   this.update();
-  var total = 0
+  var total = 0;
   this.frames.forEach(function(frame){
     total += frame.getFinalFrameScore();
   });
+  return total;
 }
 
 Game.prototype.addFrame = function(frame){

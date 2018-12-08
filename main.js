@@ -31,7 +31,6 @@ function drawTable(game) {
 }
 
 $(document).ready(function(){
-  console.clear();
   var game = new Game();
   $('#bowlingTable').prepend(drawTable(game));
   $('#enter_score').click(function(){
@@ -39,11 +38,10 @@ $(document).ready(function(){
      game.inputScore(score);
      $('#bowlingTable').children().remove();
      $('#bowlingTable').prepend(drawTable(game));
+     $('#total').text(game.getTotal());
   });
 
   $("#num_input").on("focus", function() {
       $(this).val("");
   });
-
-
 });

@@ -123,5 +123,17 @@ describe("Game", function() {
       expect(game.getFrame(9).getFirstScore()).toEqual(1);
       expect(game.getFrame(9).getSecondScore()).toEqual(4);
     });
+
+    it("can return the total of a game", function(){
+      game.inputScore(10); // 1
+      game.inputScore(2);  // 2
+      game.inputScore(4);
+      game.inputScore(8);  // 3
+      game.inputScore(2);
+      game.inputScore(3);  // 4
+      game.inputScore(3);
+
+      expect(game.getTotal()).toEqual(41);
+    });
 });
 

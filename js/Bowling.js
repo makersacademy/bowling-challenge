@@ -1,6 +1,5 @@
 function Bowling(){
   this.rolls = [];
-  this.score = 0;
 };
 
 
@@ -9,6 +8,7 @@ Bowling.prototype.roll = function (pins) {
 };
 
 Bowling.prototype.gameScore = function () {
-  this.score = (accumulator, currentValue) => accumulator + currentValue;
-  return this.rolls.reduce(this.score);
+  var score = 0;
+  for(var i = 0; i < 20; i++) {score += this.rolls[i]}
+  return score;
 };

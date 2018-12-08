@@ -1,6 +1,7 @@
 function Game() {
   this._frames = [];
   this._score = 0;
+  this._rolls = 0;
 }
 
 Game.prototype.frames = function() {
@@ -12,13 +13,12 @@ Game.prototype.roll = function(pins) {
 };
 
 Game.prototype.score = function() {
-  index = 0;
   var i;
   for (var i = 0; i < 10; i++) {
 
-    frame = this._getFrame(index);
-    nextFrame = this._getNextFrame(index);
-    nextButOneFrame = this._getNextButOneFrame(index);
+    frame = this._getFrame();
+    nextFrame = this._getNextFrame();
+    nextButOneFrame = this._getNextButOneFrame();
 
     if (this._isASpare(frame)) {
       this._spareScore(frame, nextFrame);
@@ -32,16 +32,16 @@ Game.prototype.score = function() {
   return this._score;
 }
 
-Game.prototype._getFrame = function(index) {
-  return [this._frames[index], this._frames[index+1]];
+Game.prototype._getFrame = function() {
+  return [this._frames[this._rolls], this._frames[this._rolls+1]];
 };
 
-Game.prototype._getNextFrame = function(index) {
-  return [this._frames[index+2], this._frames[index+3]];
+Game.prototype._getNextFrame = function() {
+  return [this._frames[this._rolls+2], this._frames[this._rolls+3]];
 };
 
-Game.prototype._getNextButOneFrame = function(index) {
-  return [this._frames[index+4], this._frames[index+5]];
+Game.prototype._getNextButOneFrame = function() {
+  return [this._frames[this._rolls+4], this._frames[this._rolls+5]];
 };
 
 Game.prototype._isASpare = function(frame) {
@@ -78,5 +78,5 @@ Game.prototype._regularScore = function(frame) {
 };
 
 Game.prototype._incrementIndex = function() {
-  index += 2;
+  this._rolls += 2;
 };

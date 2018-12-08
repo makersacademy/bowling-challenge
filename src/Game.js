@@ -15,32 +15,26 @@ Game.prototype.roll = function(pins) {
 Game.prototype.score = function() {
   var i;
   for (var i = 0; i < 10; i++) {
-
-    frame = this._getFrame();
-    nextFrame = this._getNextFrame();
-    nextButOneFrame = this._getNextButOneFrame();
-
-    if (this._isASpare(frame)) {
-      this._spareScore(frame, nextFrame);
-    } else if (this._isAStrike(frame)) {
-      this._strikeScore(frame, nextFrame, nextButOneFrame)
+    if (this._isASpare(this._currentFrame())) {
+      this._spareScore(this._nextFrame());
+    } else if (this._isAStrike(this._currentFrame())) {
+      this._strikeScore(this._nextFrame(), this._nextButOneFrame());
     } else {
-      this._regularScore(frame);
+      this._regularScore(this._currentFrame());
     }
   }
-
   return this._score;
 }
 
-Game.prototype._getFrame = function() {
+Game.prototype._currentFrame = function() {
   return [this._frames[this._rolls], this._frames[this._rolls+1]];
 };
 
-Game.prototype._getNextFrame = function() {
+Game.prototype._nextFrame = function() {
   return [this._frames[this._rolls+2], this._frames[this._rolls+3]];
 };
 
-Game.prototype._getNextButOneFrame = function() {
+Game.prototype._nextButOneFrame = function() {
   return [this._frames[this._rolls+4], this._frames[this._rolls+5]];
 };
 
@@ -48,7 +42,7 @@ Game.prototype._isASpare = function(frame) {
   if (frame[0] + frame[1] === 10) return true;
 };
 
-Game.prototype._spareScore = function(frame, nextFrame) {
+Game.prototype._spareScore = function(nextFrame) {
   this._score += (10 + nextFrame[0]);
   this._incrementRolls();
 };
@@ -57,7 +51,7 @@ Game.prototype._isAStrike = function(frame) {
   if (frame[0] === 10) return true;
 };
 
-Game.prototype._strikeScore = function(frame, nextFrame, nextButOneFrame) {
+Game.prototype._strikeScore = function(nextFrame, nextButOneFrame) {
   if (this._isATripleStrike(nextFrame, nextButOneFrame)) {
     this._score += 30;
   } else if (this._isAStrike(nextFrame)) {

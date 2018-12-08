@@ -2,6 +2,7 @@ function Game() {
   this._frames = [];
   this._score = 0;
   this._rolls = 0;
+  this._gameLength = 10;
 }
 
 Game.prototype.frames = function() {
@@ -14,7 +15,7 @@ Game.prototype.roll = function(pins) {
 
 Game.prototype.score = function() {
   var i;
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < this._gameLength; i++) {
     if (this._isASpare(this._currentFrame())) {
       this._spareScore(this._nextFrame());
     } else if (this._isAStrike(this._currentFrame())) {
@@ -52,9 +53,9 @@ Game.prototype._isAStrike = function(frame) {
 };
 
 Game.prototype._strikeScore = function(nextFrame, nextButOneFrame) {
-  if (this._isATripleStrike(nextFrame, nextButOneFrame)) {
+  if (this._isATripleStrike()) {
     this._score += 30;
-  } else if (this._isAStrike(nextFrame)) {
+  } else if (this._isADoubleStrike()) {
     this._score += (20 + nextButOneFrame[0]);
   } else {
     this._score += (10 + nextFrame[0] + nextFrame[1]);
@@ -62,8 +63,12 @@ Game.prototype._strikeScore = function(nextFrame, nextButOneFrame) {
   this._incrementRolls();
 };
 
-Game.prototype._isATripleStrike = function(nextFrame, nextButOneFrame) {
-  if (this._isAStrike(nextFrame) && this._isAStrike(nextButOneFrame)) return true;
+Game.prototype._isATripleStrike = function() {
+  if (this._isAStrike(this._nextFrame()) && this._isAStrike(this._nextButOneFrame())) return true;
+};
+
+Game.prototype._isADoubleStrike = function() {
+  if (this._isAStrike(this._currentFrame()) && this._isAStrike(this._nextFrame())) return true;
 };
 
 Game.prototype._regularScore = function(frame) {

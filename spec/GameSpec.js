@@ -15,6 +15,10 @@ describe("Game", function() {
     expect(game.frames()).toEqual([]);
   });
 
+  it('the game length is 10 frames', function(){
+    expect(game._gameLength).toEqual(10);
+  });
+
   it('calculates a gutter game', function(){
     multiRoll(20, 0);
     expect(game.score()).toEqual(0);

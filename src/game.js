@@ -1,6 +1,11 @@
-'use strict';
-
 function Game(){
-  this.DEFAULT_NUMBER_0F_FRAMES = 10;
-  this.frames = this.DEFAULT_NUMBER_0F_FRAMES;
+  this.frames = [];
 }
+
+Game.prototype.addFrame = function (firstroll, secondroll) {
+  if (this.frames.length < 9 ) {
+    frame = new Frame();
+    frame.update(firstroll, secondroll);
+    this.frames.push(frame);
+}
+};

@@ -1,9 +1,7 @@
-'use strict';
-
 function Frame(){
   this.rolls = [0, 0];
   this.MAX_ROLL = 10;
-  this.totalScore = 0
+  this.totalScore = 0;
 }
 
 Frame.prototype.getRoll = function(number) {

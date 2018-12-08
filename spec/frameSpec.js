@@ -1,5 +1,3 @@
-'use strict';
-
 describe('Frame', function() {
   var frame;
   var frame2;
@@ -73,8 +71,8 @@ describe('Frame', function() {
     frame.update(10, 0);
     frame2 = new Frame();
     frame2.update(10, 0);
-    frame3 = new Frame()
-    frame3.update(5, 4)
+    frame3 = new Frame();
+    frame3.update(5, 4);
     expect(frame.calcBonus(frame2, frame3)).toEqual(15);
   });
 
@@ -82,8 +80,8 @@ describe('Frame', function() {
     frame.update(10, 0);
     frame2 = new Frame();
     frame2.update(10, 0);
-    frame3 = new Frame()
-    frame3.update(5, 4)
+    frame3 = new Frame();
+    frame3.update(5, 4);
     expect(frame.calcScore(frame2, frame3)).toEqual(25);
   });
 
@@ -91,8 +89,8 @@ describe('Frame', function() {
     frame.update(10, 0);
     frame2 = new Frame();
     frame2.update(10, 0);
-    frame3 = new Frame()
-    frame3.update(10, 0)
+    frame3 = new Frame();
+    frame3.update(10, 0);
     expect(frame.calcBonus(frame2, frame3)).toEqual(20);
   });
 
@@ -100,8 +98,8 @@ describe('Frame', function() {
     frame.update(10, 0);
     frame2 = new Frame();
     frame2.update(10, 0);
-    frame3 = new Frame()
-    frame3.update(10, 0)
+    frame3 = new Frame();
+    frame3.update(10, 0);
     expect(frame.calcScore(frame2, frame3)).toEqual(30);
   });
 

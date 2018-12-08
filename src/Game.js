@@ -50,7 +50,7 @@ Game.prototype._isASpare = function(frame) {
 
 Game.prototype._spareScore = function(frame, nextFrame) {
   this._score += (10 + nextFrame[0]);
-  this._incrementIndex();
+  this._incrementRolls();
 };
 
 Game.prototype._isAStrike = function(frame) {
@@ -65,7 +65,7 @@ Game.prototype._strikeScore = function(frame, nextFrame, nextButOneFrame) {
   } else {
     this._score += (10 + nextFrame[0] + nextFrame[1]);
   }
-  this._incrementIndex();
+  this._incrementRolls();
 };
 
 Game.prototype._isATripleStrike = function(nextFrame, nextButOneFrame) {
@@ -74,9 +74,9 @@ Game.prototype._isATripleStrike = function(nextFrame, nextButOneFrame) {
 
 Game.prototype._regularScore = function(frame) {
   this._score += (frame[0] + frame[1]);
-  this._incrementIndex();
+  this._incrementRolls();
 };
 
-Game.prototype._incrementIndex = function() {
+Game.prototype._incrementRolls = function() {
   this._rolls += 2;
 };

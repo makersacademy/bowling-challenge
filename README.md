@@ -1,7 +1,9 @@
 Bowling Challenge
 =================
 ## How to use  
-`open SpecRunner.html` to view the tests  
+`git clone git@github.com:chrisjgilbert/bowling-challenge.git`   
+`open SpecRunner.html` to view the tests.  
+If you want to fill in your scores...
 ```
 game = new Game();   
 game.roll(4);   

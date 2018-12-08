@@ -4,19 +4,19 @@ var Score = function () {
 }
 
 Score.prototype.createsFrames = function () {
-  for (var x = 0; x < 10; x++) {
-    this.frames[x] = { frame: x + 1 }
+  for (var number = 0; number < 10; number++) {
+    this.frames[number] = { frame: number + 1 }
   }
 }
 
 Score.prototype.scoresIntoFrames = function (frame, bowl, score) {
-  this.frames.map(f => {
-    if (f.frame === frame && bowl === 1) {
-      f.bowl1 = score
-    } else if (f.frame === frame && bowl === 2) {
-      f.bowl2 = score
-    } else if (f.frame === frame && bowl === 3) {
-      f.bowl3 = score
+  this.frames.map(number => {
+    if (number.frame === frame && bowl === 1) {
+      number.bowl1 = score
+    } else if (number.frame === frame && bowl === 2) {
+      number.bowl2 = score
+    } else if (number.frame === frame && bowl === 3) {
+      number.bowl3 = score
     }
   })
 }

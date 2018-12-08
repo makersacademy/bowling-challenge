@@ -5,10 +5,48 @@ var TenthFrame = require('./src/tenthFrame.js');
 var Updater = require('./src/updater.js');
 var $ = require('jquery');
 
-$(document).ready(function(){
-  var game = new Game();
+function drawTable(game) {
+  var tableHeaders = "<tr>";
+  var firstAndSecondScores = "<tr>";
+  var finalScores = "<tr>";
+  var rowEnder = '</tr>';
+  var table = "";
+  var totalScore = "";
+  game.frames.forEach(function(frame, index){
+     if (!(frame instanceof TenthFrame)) {
+        tableHeaders += '<th class="tg-0lax" colspan="2">' + (index + 1) +'</th>';
+        firstAndSecondScores += '<td class="tg-0lax firstScore">' + frame.getFirstScore() + '</td>' +
+                                '<td class="tg-0lax secondScore">' + frame.getSecondScore() + '</td>';
+        finalScores += '<td class="tg-0lax finalScore" colspan="2">' + frame.getFinalFrameScore() + '</td>';
+     } else {
+        tableHeaders += '<th class="tg-0lax" colspan="3">' + (index + 1) +'</th>';
+        firstAndSecondScores += '<td class="tg-0lax firstScore">' + frame.getFirstScore() + '</td>' +
+                                '<td class="tg-0lax secondScore">' + frame.getSecondScore() + '</td>' +
+                                '<td class="tg-0lax bonusScore">' + frame.getBonusScore() + '</td>';
+        finalScores += '<td class="tg-0lax finalScore" colspan="3">' + frame.getFinalFrameScore(); + '</td>';
+     }
+  });
 
-  alert(game);
+  table = tableHeaders + rowEnder + firstAndSecondScores + rowEnder + finalScores + rowEnder;
+  return table;
+}
+
+$(document).ready(function(){
+  console.clear();
+  var game = new Game();
+  $('#bowlingTable').prepend(drawTable(game));
+  $('#enter_score').click(function(){
+     var score = parseInt($('#num_input').val());
+     game.inputScore(score);
+     $('#bowlingTable').children().remove();
+     $('#bowlingTable').prepend(drawTable(game));
+  });
+
+  $("#num_input").on("focus", function() {
+      $(this).val("");
+  });
+
+
 });
 
 },{"./src/frame.js":3,"./src/game.js":4,"./src/tenthFrame.js":5,"./src/updater.js":6,"jquery":2}],2:[function(require,module,exports){
@@ -10418,7 +10456,7 @@ Frame.prototype.getSecondScore = function(score){
 
 Frame.prototype.getFinalFrameScore = function() {
     if (!this.isFinalised()) {
-        return "pending";
+        return null;
     } else {
       return this.finalFrameScore;
     }
@@ -10460,6 +10498,8 @@ function Game() {
   this.frames = []
   this.createFrames();
   this.updater = new Updater();
+  this.increment = 0;
+  this.tenthFrameIncrement = 0;
 }
 
 Game.prototype.addFrame = function(frame){
@@ -10496,6 +10536,68 @@ Game.prototype.getTotal = function() {
   this.frames.forEach(function(frame){
     total += frame.getFinalFrameScore();
   });
+}
+
+Game.prototype.addFrame = function(frame){
+  this.frames.push(frame);
+}
+
+Game.prototype.inputScore = function(score){
+   var currentFrame = this.getFrame(this.increment);
+   if (this.increment == 9) {
+       if (currentFrame.getFinalFrameScore == null) {
+          return "Game has finished!";
+       }
+
+       if (currentFrame.getFirstScore() == null) {
+           currentFrame.setFirstScore(score);
+           this.update();
+           return;
+       }
+
+       if (currentFrame.getSecondScore() == null) {
+           currentFrame.setSecondScore(score);
+           this.update();
+           return;
+       }
+
+       if (currentFrame.isStrike() || currentFrame.isSpare()) {
+           currentFrame.setBonusScore(score);
+           this.update();
+           return;
+       }
+       this.update();
+   }
+
+   if (currentFrame.getFirstScore() == null) {
+       currentFrame.setFirstScore(score);
+       this.update();
+       return;
+   }
+
+   if (currentFrame.isStrike()) {
+       this.increment += 1;
+       currentFrame = this.getFrame(this.increment);
+       currentFrame.setFirstScore(score);
+       this.update();
+       return;
+   }
+
+   if (!currentFrame.isStrike()) {
+      currentFrame.setSecondScore(score)
+      this.increment += 1;
+      this.update();
+      return;
+   }
+   this.update();
+}
+
+Game.prototype.createFrames = function(){
+  for (var i = 0; i < 9; i++) {
+     var frame = new Frame();
+     this.addFrame(frame);
+  }
+  this.addFrame(new TenthFrame());
 }
 
 Game.prototype.update = function() {
@@ -10566,8 +10668,6 @@ TenthFrame.prototype.isSpare = function() {
     return this.spare;
 }
 
-
-
 if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )
 {
     module.exports = TenthFrame;
@@ -10581,64 +10681,81 @@ function Updater() {
 }
 
 Updater.prototype.update = function(frames) {
+    var that = this;
     frames.forEach(function(frame, index){
        if (index == 8){
-            var next = frames[index + 1];
-            if (frame.isStrike()) {
-                if (next.isStrike()){
-                    if (next.getSecondScore() !== null) {
-                        var score = frame.getFirstScore() +
-                                    next.getFirstScore() +
-                                    next.getSecondScore();
-                        frame.setFinalFrameScore(score);
-                    }
-                } else {
-                    if (next.getFirstScore() !== null) {
-                        var score = frame.getFirstScore() +
-                                    next.getFirstScore() +
-                                    next.getSecondScore();
-                        frame.setFinalFrameScore(score);
-                    }
-                }
-            } else if (frame.isSpare()) {
-                if (next.getFirstScore() !== null) {
-                    var score = frame.getFirstScore() +
-                                frame.getSecondScore() +
-                                next.getFirstScore();
-                    frame.setFinalFrameScore(score);
-                }
-            }
+            that.updateNinthFrame(that, frame, index, frames);
         } else if (!(frame instanceof TenthFrame)) {
-            var next = frames[index + 1];
-            var nextNext = frames[index + 2];
-            if (frame.isStrike()) {
-                if (next.isStrike()){
-                    if (nextNext.getFirstScore() !== null) {
-                        var score = frame.getFirstScore() +
-                                    next.getFirstScore() +
-                                    nextNext.getFirstScore();
-                        frame.setFinalFrameScore(score);
-                    }
-                } else {
-                    if (next.getFirstScore() !== null) {
-                        var score = frame.getFirstScore() +
-                                    next.getFirstScore() +
-                                    next.getSecondScore();
-                        frame.setFinalFrameScore(score);
-                    }
-                }
-            } else if (frame.isSpare()) {
-                if (next.getFirstScore() !== null) {
-                    var score = frame.getFirstScore() +
-                                frame.getSecondScore() +
-                                next.getFirstScore();
-                    frame.setFinalFrameScore(score);
-                }
-            }
+            that.updateRegularFrame(that, frame, index, frames);
         }
     });
-
 }
+
+Updater.prototype.updateRegularFrame = function(that, frame, index, frames){
+    var next = frames[index + 1];
+    var nextNext = frames[index + 2];
+    if (frame.isStrike()) {
+        if (next.isStrike()){
+          that.updateStrikeScoreInNextFrameIsStrike(frame, next, nextNext);
+        } else {
+          that.updateStrike(frame, next);
+        }
+    } else if (frame.isSpare()) {
+       that.updateSpare(frame, next);
+    }
+}
+
+Updater.prototype.updateNinthFrame = function(that, frame, index, frames){
+    var next = frames[index + 1];
+    if (frame.isStrike()) {
+        if (next.isStrike()){
+            if (next.getSecondScore() !== null) {
+                that.updateNinthFrameScore(frame, next);
+            }
+        } else {
+            if (next.getFirstScore() !== null) {
+                that.updateNinthFrameScore(frame, next);
+            }
+        }
+    } else if (frame.isSpare()) {
+        that.updateSpare(frame, next);
+    }
+}
+
+Updater.prototype.updateSpare = function(frame, next) {
+    if (next.getFirstScore() !== null) {
+        var score = frame.getFirstScore() +
+                    frame.getSecondScore() +
+                    next.getFirstScore();
+        frame.setFinalFrameScore(score);
+    }
+}
+
+Updater.prototype.updateStrike = function(frame, next) {
+    if (next.getFirstScore() !== null) {
+          var score = frame.getFirstScore() +
+                      next.getFirstScore() +
+                      next.getSecondScore();
+          frame.setFinalFrameScore(score);
+     }
+}
+
+Updater.prototype.updateStrikeScoreInNextFrameIsStrike = function(frame, next, nextNext){
+    if (nextNext.getFirstScore() !== null) {
+        var score = frame.getFirstScore() +
+                    next.getFirstScore() +
+                    nextNext.getFirstScore();
+        frame.setFinalFrameScore(score);
+    }
+}
+
+Updater.prototype.updateNinthFrameScore = function(frame, next){
+    var score = frame.getFirstScore() +
+                next.getFirstScore() +
+                next.getSecondScore();
+    frame.setFinalFrameScore(score);
+}
+
 
 if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )
 {

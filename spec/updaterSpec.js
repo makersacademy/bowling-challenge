@@ -11,6 +11,10 @@ describe("Updater", function() {
                                      [10, 0], [10, 0], [2, 3],
                                      [10, 0], [10, 0], [2, 3]];
 
+    var regularRoundUpToRoundNineTwo = [[10, 0],[1, 3], [3, 7],
+                                        [5, 0], [10, 0], [6, 3],
+                                        [0, 6], [1, 8], [3, 3]];
+    var partialGame = regularRoundUpToRoundNineTwo.slice(0,6);
 
     beforeEach(function() {
       updater = new Updater();
@@ -115,6 +119,28 @@ describe("Updater", function() {
         });
         expect(count).toEqual(300);
     });
+
+    it("can calculate a normal game correctly", function(){
+        setFramesScores(regularRoundUpToRoundNineTwo);
+        setTenthRound(10, 2, 4);
+        updater.update(frames);
+        var count = 0
+        frames.forEach(function(frame){
+            count += frame.getFinalFrameScore();
+        });
+        expect(count).toEqual(103);
+    });
+
+     it("can calculate a partial game correctly", function(){
+        setFramesScores(partialGame);
+        updater.update(frames);
+        var count = 0
+        frames.forEach(function(frame){
+            count += frame.getFinalFrameScore();
+        });
+        expect(count).toEqual(66);
+    });
+
 
     function setFramesScores(framesScores) {
         framesScores.forEach(function(frameScore, index) {

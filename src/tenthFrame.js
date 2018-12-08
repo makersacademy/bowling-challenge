@@ -56,8 +56,6 @@ TenthFrame.prototype.isSpare = function() {
     return this.spare;
 }
 
-
-
 if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )
 {
     module.exports = TenthFrame;

@@ -38,7 +38,7 @@ Frame.prototype.getSecondScore = function(score){
 
 Frame.prototype.getFinalFrameScore = function() {
     if (!this.isFinalised()) {
-        return "pending";
+        return null;
     } else {
       return this.finalFrameScore;
     }

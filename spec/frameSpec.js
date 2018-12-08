@@ -43,8 +43,8 @@ describe("Frame", function() {
         expect(frame.isSpare()).toEqual(true);
     });
 
-    it("will return 'pending' from getFinalFrameScore() if finalised() returns false", function() {
-        expect(frame.getFinalFrameScore()).toEqual("pending");
+    it("will return null from getFinalFrameScore() if finalised() returns false", function() {
+        expect(frame.getFinalFrameScore()).toEqual(null);
     });
 
     it("will return a number between 0-9 from getFinalFrameScore() if first and second scores add up to less than ten", function(){

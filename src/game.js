@@ -6,6 +6,8 @@ function Game() {
   this.frames = []
   this.createFrames();
   this.updater = new Updater();
+  this.increment = 0;
+  this.tenthFrameIncrement = 0;
 }
 
 Game.prototype.addFrame = function(frame){
@@ -42,6 +44,68 @@ Game.prototype.getTotal = function() {
   this.frames.forEach(function(frame){
     total += frame.getFinalFrameScore();
   });
+}
+
+Game.prototype.addFrame = function(frame){
+  this.frames.push(frame);
+}
+
+Game.prototype.inputScore = function(score){
+   var currentFrame = this.getFrame(this.increment);
+   if (this.increment == 9) {
+       if (currentFrame.getFinalFrameScore == null) {
+          return "Game has finished!";
+       }
+
+       if (currentFrame.getFirstScore() == null) {
+           currentFrame.setFirstScore(score);
+           this.update();
+           return;
+       }
+
+       if (currentFrame.getSecondScore() == null) {
+           currentFrame.setSecondScore(score);
+           this.update();
+           return;
+       }
+
+       if (currentFrame.isStrike() || currentFrame.isSpare()) {
+           currentFrame.setBonusScore(score);
+           this.update();
+           return;
+       }
+       this.update();
+   }
+
+   if (currentFrame.getFirstScore() == null) {
+       currentFrame.setFirstScore(score);
+       this.update();
+       return;
+   }
+
+   if (currentFrame.isStrike()) {
+       this.increment += 1;
+       currentFrame = this.getFrame(this.increment);
+       currentFrame.setFirstScore(score);
+       this.update();
+       return;
+   }
+
+   if (!currentFrame.isStrike()) {
+      currentFrame.setSecondScore(score)
+      this.increment += 1;
+      this.update();
+      return;
+   }
+   this.update();
+}
+
+Game.prototype.createFrames = function(){
+  for (var i = 0; i < 9; i++) {
+     var frame = new Frame();
+     this.addFrame(frame);
+  }
+  this.addFrame(new TenthFrame());
 }
 
 Game.prototype.update = function() {

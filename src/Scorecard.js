@@ -12,6 +12,14 @@ Scorecard.prototype.throw = function(pinsKnockedDown) {
   this.thenTalliesTheScoreAtTheEndOfEachFrame();
 };
 
+Scorecard.prototype.recordsAStrike = function() {
+  this._scores.push(10, 0);
+};
+
+Scorecard.prototype.recordsNumberOf = function(pinsKnockedDown) {
+  this._scores.push(pinsKnockedDown);
+};
+
 Scorecard.prototype.thenTalliesTheScoreAtTheEndOfEachFrame = function() {
   var i, hold = 0;
   var numberOfThrowsSoFar = (this._scores.length);
@@ -39,18 +47,6 @@ Scorecard.prototype.thenTalliesTheScoreAtTheEndOfEachFrame = function() {
   }
 };
 
-Scorecard.prototype.recordsAStrike = function() {
-  this._scores.push(10, 0);
-};
-
-Scorecard.prototype.recordsNumberOf = function(pinsKnockedDown) {
-  this._scores.push(pinsKnockedDown);
-};
-
 Scorecard.prototype.recordsTheTallyAtTheEndOfThisFrameAs = function(hold, i) {
   this._frames[(i / 2) - 0.5] = hold;
-};
-
-function allBonusScoresHaveBeenAddedTo(hold) {
-  !isNaN(hold);
 };

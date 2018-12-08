@@ -8,8 +8,7 @@ describe('Scorecard:', function() {
     game = new Scorecard();
   });
 
-  describe('At the start of a game:', function() {
-    
+  describe('new:', function() {
     it('_scores is empty', function() {
       expect(game._scores).toEqual([]);
     });
@@ -19,75 +18,68 @@ describe('Scorecard:', function() {
     });
   });
 
-  describe('Throws:', function() {
-
-    beforeEach(function(){
-      game.throw(4);
-    });
-
-    it('after one throw, _scores records result, _frames is empty', function() {
-      expect(game._scores).toEqual([4]);
-      expect(game._frames).toEqual([]);
-    });
-
-    it('after multiple throws, _frames records the running total', function() {
-      game.throw(4);
-      game.throw(4);
-      game.throw(4);
-      expect(game._frames[1]).toEqual(16);
-    });
-  });
-  
-  describe('Spares:', function() {
-
-    beforeEach(function(){
-      game.throw(0);
+  describe('.throw:', function() {
+    it('calls .recordsAStrike if 10 is entered on the first throw of a frame', function() {
       game.throw(10);
-    });
-
-    it('_scores records the scores seperately', function() {
-      expect(game._scores).toEqual([0,10]);
-    });
-
-    it('_frames does not total the scores', function() {
-      expect(game._frames[0]).toEqual(undefined);
-    });
-
-    it('after one more throw, _frames shows the running total', function() {
-      game.throw(10);
-      expect(game._frames[0]).toEqual(20);
-    })
-  });
-
-  describe('Strikes:', function() {
-
-    beforeEach(function(){
-      game.throw(10);
-    });
-    
-    it('_scores records two scores (10, and 0)', function() {
       expect(game._scores).toEqual([10,0]);
     });
 
-    it('_frames does not total the scores', function() {
-      expect(game._frames[0]).toEqual(undefined);
+    it('calls .recordsNumerOf(pinsKnockedDown) for all other numbers', function() {
+      game.throw(5);
+      expect(game._scores).toEqual([5]);
     });
 
-    it('after two more throws, _frames shows the running total', function() {
-      game.throw(10);
-      game.throw(10);
-      expect(game._frames[0]).toEqual(30);
+    it('calls .thenTalliesTheScoreAtTheEndOfEachFrame', function() {
+      game.throw(3);
+      game.throw(4);
+      expect(game._frames).toEqual([7]);
     });
   });
 
-  xdescribe('Display:', function() {
+  describe('.recordsAStrike:', function() {
+    it('10, and 0 have been added to _scores', function() {
+      game.recordsAStrike();
+      expect(game._scores).toEqual([10,0]);
+    });
+  });
 
-    it('_display holds correct symbols for 0, spare, and strike', function() {
-      game.throw(10);
-      game.throw(0);
-      game.throw(10);
-      game.throw(4);
-      expect(game._display).toEqual(["", "X", "-", "/", 4])
+  describe('.recordsNumberOf(pinsKnockedDown):', function() {
+    it('5 has been added to _scores', function() {
+      game.recordsNumberOf(5);
+      expect(game._scores).toEqual([5]);
+    });
+  });
+
+  describe('.thenTalliesTheScoreAtTheEndOfEachFrame:', function() {
+    it('the scores from a non-strike/non-spare frame are tallied and added to _frames', function() {
+      game._scores.push(3, 4);
+      game.thenTalliesTheScoreAtTheEndOfEachFrame();
+      expect(game._frames).toEqual([7]);
+    });
+
+    it('the scores from a spare frame are tallied after one more throw', function() {
+      game._scores.push(5, 5, 5);
+      game.thenTalliesTheScoreAtTheEndOfEachFrame();
+      expect(game._frames).toEqual([15]);
+    });
+
+    it('the scores from a strike frame are talled after two more throws', function() {
+      game._scores.push(10, 0, 10, 0, 10, 0);
+      game.thenTalliesTheScoreAtTheEndOfEachFrame();
+      expect(game._frames).toEqual([30]);
+    });
+
+    it('calls .recordsTheTallyAtTheEndOfThisFrameAs(hold, i)', function() {
+      game._scores.push(10, 0, 10, 0, 10, 0);
+      game.thenTalliesTheScoreAtTheEndOfEachFrame();
+      expect(game._frames).toEqual([30]);
+    });
+  });
+
+  describe('.recordsTheTallyAtTheEndOfThisFrameAs(hold, i)', function() {
+    it('adds the tally being held to _frames', function() {
+      game.recordsTheTallyAtTheEndOfThisFrameAs(7, 1);
+      expect(game._frames).toEqual([7]);
     });
   });
 });

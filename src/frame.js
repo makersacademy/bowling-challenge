@@ -19,12 +19,12 @@ Frame.prototype.setSecondScore = function(score){
     if (this.isStrike()) {
         return null;
     } else {
-        if(score + this.getFirstScore() === this.STRIKE_SCORE) {
+        if((score + this.getFirstScore()) === this.STRIKE_SCORE) {
             this.spare = true;
-        } else {
-            this.finalised = true;
         }
+        this.finalised = true;
         this.secondScore = score;
+        this.setFinalFrameScore(this.getFirstScore() + this.getSecondScore());
     }
 }
 
@@ -37,20 +37,16 @@ Frame.prototype.getSecondScore = function(score){
 }
 
 Frame.prototype.getFinalFrameScore = function() {
-    if (!this.finalised) {
+    if (!this.isFinalised()) {
         return "pending";
     } else {
-      if (this.getSecondScore() !== null) {
-          this.setFinalFrameScore(this.getFirstScore() + this.getSecondScore());
-          return this.finalFrameScore;
-      }
       return this.finalFrameScore;
     }
 }
 
 Frame.prototype.setFinalFrameScore = function(score) {
     this.finalised = true;
-    this.secondScore = null;
+    // this.secondScore = null;
     this.finalFrameScore = score;
 }
 

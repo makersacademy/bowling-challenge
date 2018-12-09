@@ -4,7 +4,6 @@ function Frame () {
   this.total = 0
 };
 
-Frame.prototype.roll = function() {
-  
-
-}
+Frame.prototype.roll = function(pins) {
+  this.total += pins;
+};

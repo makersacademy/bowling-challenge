@@ -1,21 +1,18 @@
 var game = new Game();
 var frame = new Frame(game.frame);
 
+$("#new-game").on('click', function(){
+  reset();
+});
+
 $("#save-score").on('click', function(){
   if (game.gameOver != true) {
     score = ($("#enter-score").val());
-    if (score === "x" || score === "/" || score < 10) {
-      if (game.turn % 2 != 0) {
-        frame.addFirstScore(($("#enter-score").val()));
-        if (frame.firstTurn == "x") {
-          applyStrikeFormat();
-        } else {
-          displayScore(frame.firstTurn)
-        }
-        game.turn ++
-      } else {
-        secondTurn();
-        game.overCheck();
+    if (isScoreValid(score)) {
+      if (game.frame > 10 && game.gameOver === false) {
+        playLastFrame();
+      }else {
+        play();
       }
     } else {
       alert("Please enter a valid score: 1-9 or 'x' or '/'")
@@ -23,14 +20,16 @@ $("#save-score").on('click', function(){
   } else {
     alert("Game over, click restart to play another")
   }
+  finalTotal();
 });
 
 
-
-
-
 displayScore = function(turn){
-  $('#score-' + game.turn.toString()).text(turn);
+  if (game.frame < 11) {
+    $('#score-' + game.turn.toString()).text(turn);
+  } else {
+    finalBonusDisplay();
+  }
 };
 
 displayTotal = function(){
@@ -41,6 +40,29 @@ displayTotal = function(){
   }
 };
 
+finalTotal = function(){
+  if (game.gameOver === true) {
+    $('#final-total').text(game.scoreTable[9].total);
+  }
+};
+
+play = function(){
+  if (game.turn % 2 != 0) {
+    firstTurn();
+  } else {
+    secondTurn();
+  }
+};
+
+firstTurn = function(){
+  frame.addFirstScore(($("#enter-score").val()));
+  if (frame.firstTurn === "x") {
+    applyStrikeFormat();
+  } else {
+    displayScore(frame.firstTurn)
+  }
+  game.turn ++
+};
 
 secondTurn = function(){
   scoreGuard();
@@ -64,39 +86,83 @@ applyStrikeFormat = function(){
 };
 
 
-frame10 = function(){
-  if (frame.firstTurn === "x") {
-
-  } else if (true) {
-
+playLastFrame = function(){
+  if (game.scoreTable[9].firstTurn === "x") {
+    if (score != "x"){
+      playOn();
+    } else {
+      lastFrameStrike();
+    }
+  } else if (game.scoreTable[9].secondTurn === "/") {
+    lastFrameSpare();
   }
+  game.overCheck();
+};
+
+playOn = function(score){
+  if (game.turn % 2 != 0) {
+    frame.addFirstScore(($("#enter-score").val()));
+    game.turn ++
+  } else {
+    frame.addSecondScore(($("#enter-score").val()));
+    game.addFrame(frame);
+    game.calculateScores();
+    displayTotal();
+  }
+  finalBonusDisplay()
+}
+
+lastFrameStrike = function(score){
+  frame.addFirstScore(($("#enter-score").val()));
+  finalBonusDisplay();
+  game.addFrame(frame);
+  game.calculateScores();
+  displayTotal();
+};
+
+lastFrameSpare = function(score){
+  frame.addFirstScore(($("#enter-score").val()));
+  finalBonusDisplay();
+  game.addFrame(frame);
+  game.calculateScores();
+  displayTotal();
+};
+
+finalBonusDisplay = function(){
+  $("#score-20").append("  [" + score + "]  ")
 };
 
 reset = function(){
   clearScores();
   clearFrameTotals();
-  newGame();
+  game = new Game();
+  frame = new Frame(game.frame);
 };
 
 clearScores = function(){
-  for (var i = 0; i < 20; i++) {
-    displayScore = function(turn){
-      $('#score-' + i.toString()).text();
-    };
+  for (var i = 0; i < 21; i++) {
+    $('#score-' + i.toString()).empty();
   }
 };
 
 clearFrameTotals = function(){
-  for (var i = 0; i < 10; i++) {
-    displayScore = function(turn){
-      $('#score-' + i.toString()).text();
-    };
+  for (var i = 0; i < 11; i++) {
+    $('#total-' + i.toString()).empty();
   }
+  $('#final-total').empty();
 };
 
 newGame = function(){
   var game = new Game();
   var frame = new Frame(game.frame);
+};
+
+isScoreValid = function(score){
+  if (score === "x" || score === "/" || score < 10){
+    return true;
+  } else {
+    return false;
+  }
 };
 
 scoreGuard = function(){

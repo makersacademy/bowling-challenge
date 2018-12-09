@@ -3,7 +3,6 @@ describe('Bowling', function(){
   describe('a game', function(){
     beforeEach(function(){
       game = new Game();
-      //Add 2 frames
       for(var i = 0; i < 3; i++){
         frame = new Frame(game.frame)
         frame.addFirstScore(1);
@@ -191,11 +190,11 @@ describe('Bowling', function(){
 
     beforeEach(function(){
       game = new Game();
-      for (var i = 0; i < 11; i++) {
+      for (var i = 0; i < 9; i++) {
         frame = new Frame(game.frame);
         frame.addFirstScore(5);
-        frame3.addSecondScore(4);
-        frame3.addTotal();
+        frame.addSecondScore(4);
+        frame.addTotal();
         game.addFrame(frame);
         game.calculateScores();
         game.overCheck();
@@ -203,8 +202,95 @@ describe('Bowling', function(){
     });
 
     it('sets the gameOver status to true once all turns are taken', function(){
+      frame = new Frame(game.frame);
+      frame.addFirstScore(5);
+      frame.addSecondScore(4);
+      frame.addTotal();
+      game.addFrame(frame);
+      game.calculateScores();
+      game.overCheck();
       expect(game.gameOver).toBe(true);
     });
+
+    it('works for strikes in the final frame', function(){
+      frame = new Frame(game.frame);
+      frame.addFirstScore("x"); // Frame 10
+      frame.addTotal();
+      game.addFrame(frame);
+      game.calculateScores();
+      frame.addFirstScore("x"); // Bonus - using frame 11 (not seen)
+      frame.addTotal();
+      game.addFrame(frame);
+      game.calculateScores();
+      frame.addFirstScore("x"); // Bonus - using frame 12 (not seen)
+      frame.addTotal();
+      game.addFrame(frame);
+      game.calculateScores();
+      game.overCheck();
+      expect(game.gameOver).toBe(true);
+    });
+
+    it('works for spares in the final frame', function(){
+      frame = new Frame(game.frame);
+      frame.addFirstScore(5);  // Frame 10
+      frame.addSecondScore("/");
+      frame.addTotal();
+      game.addFrame(frame);
+      game.calculateScores();
+      game.overCheck();
+      frame = new Frame(game.frame);
+      frame.addFirstScore(5);  // Bonus - using frame 11 (not seen)
+      game.addFrame(frame);
+      game.calculateScores();
+      game.overCheck();
+      expect(game.gameOver).toBe(true);
+    });
+
+    it('enables frame 10 score to be correctly calculated', function(){
+      frame = new Frame(game.frame);
+      frame.addFirstScore(5);
+      frame.addSecondScore(4);
+      frame.addTotal();
+      game.addFrame(frame);
+      game.calculateScores();
+      game.overCheck();
+      expect(game.scoreTable[9].total).toEqual(90);
+    });
+
+    it('frame 10 bonuses are correct for strikes', function(){
+      frame = new Frame(game.frame);
+      frame.addFirstScore("x"); // Frame 10
+      frame.addTotal();
+      game.addFrame(frame);
+      game.calculateScores();
+      frame.addFirstScore("x"); // Bonus - using frame 11 (not seen)
+      frame.addTotal();
+      game.addFrame(frame);
+      game.calculateScores();
+      frame.addFirstScore("x"); // Bonus - using frame 12 (not seen)
+      frame.addTotal();
+      game.addFrame(frame);
+      game.calculateScores();
+      game.overCheck();
+      expect(game.scoreTable[9].total).toEqual(111);
+    });
+
+    it('frame 10 bonuses are correct for a spare', function(){
+      frame = new Frame(game.frame);
+      frame.addFirstScore(5);  // Frame 10
+      frame.addSecondScore("/");
+      frame.addTotal();
+      game.addFrame(frame);
+      game.calculateScores();
+      game.overCheck();
+      frame = new Frame(game.frame);
+      frame.addFirstScore(5);  // Bonus - using frame 11 (not seen)
+      game.addFrame(frame);
+      game.calculateScores();
+      game.overCheck();
+      expect(game.scoreTable[9].total).toEqual(96);
+    });
+
 
   });
 });

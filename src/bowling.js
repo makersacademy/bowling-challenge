@@ -75,9 +75,10 @@ Game.prototype.calculateScores = function () {
 };
 
 Game.prototype.overCheck = function () {
-  if (game.frame === 12) {
+  if (game.scoreTable[9] === undefined) {
+    return;
+  } else if (game.scoreTable[9].bonusApplied === true) {
     game.gameOver = true;
-    alert("Game Over, thanks for playing, now get of my propety")
   }
 };
 
@@ -90,7 +91,9 @@ var Frame = function(frame){
 };
 
 Frame.prototype.addFirstScore = function (score) {
-  if (score === 'x') {
+  if (score === "/"){
+    alert("'/' can only be entered on the second go")
+  } else if (score === 'x') {
     this.firstTurn = score;
     this.secondTurn = '-';
     this.addTotal();

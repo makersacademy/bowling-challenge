@@ -74,6 +74,14 @@
         border-radius: 12px;
         border-color: rgb(10, 87, 204, 0.8);
       }
+      #score-20 {
+        width: auto;
+      }
+      #final-total{
+        font-size: 40px;
+        font-weight: bold;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
@@ -115,7 +123,7 @@
           <th id="score-18"></th>
           <th id="score-19"></th>
           <th id="score-20"></th>
-          <td rowspan="2"> </td>
+          <td id="final-total"rowspan="2"> </td>
         </tr>
         <tr>
           <th id="total-1" class="result" colspan="2"></th>
@@ -135,6 +143,7 @@
       <input id="enter-score" type="text" onfocus="this.value=''" name="score" value="">
     </form>
     <button id="save-score" type="button" name="button">Go <i class="fas fa-bowling-ball"></i></button>
+    <button id="new-game" type="button" name="button">Reset <i class="fas fa-bowling-ball"></i></button>
   </body>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="interface.js" type="text/javascript"></script>

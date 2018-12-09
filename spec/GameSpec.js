@@ -51,4 +51,10 @@ describe('Frame', function(){
     expect(function(){ frame.bowl(4); }).toThrow(new Error('Too many bowls!'));
   });
 
+  it('should total the score for a frame', function(){
+    frame.bowl(2);
+    frame.bowl(3);
+    expect(frame.score).toEqual(5);
+  });
+
 });

@@ -9,6 +9,7 @@ function Game(){
 function Frame(){
   this.pinsUp = 10;
   this.bowlCount = 0;
+  this.score = 0;
 };
 
 Frame.prototype.bowl = function (pins) {
@@ -16,4 +17,5 @@ Frame.prototype.bowl = function (pins) {
   if (pins > this.pinsUp) { throw new Error ('Too many pins!'); }
   this.pinsUp -= pins;
   this.bowlCount += 1;
+  this.score += pins;
 };

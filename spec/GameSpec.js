@@ -29,11 +29,9 @@ describe('Game', function() {
 
 describe('Frame', function(){
 
-  var game;
   var frame;
 
   beforeEach(function(){
-    game = new Game;
     frame = new Frame;
   });
 
@@ -60,6 +58,13 @@ describe('Frame', function(){
     frame.bowl(2);
     frame.bowl(3);
     expect(frame.score).toEqual(5);
+  });
+
+  it('should know when the frame is finished', function(){
+    expect(frame.isOver()).toEqual(false);
+    frame.bowl(2);
+    frame.bowl(3);
+    expect(frame.isOver()).toEqual(true);
   });
 
 });

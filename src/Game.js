@@ -23,3 +23,11 @@ Frame.prototype.bowl = function (pins) {
   this.bowlCount += 1;
   this.score += pins;
 };
+
+Frame.prototype.isOver = function () {
+  if (this.bowlCount >= 2 || this.pinsUp === 0) {
+    return true;
+  } else {
+    return false;
+  }
+};

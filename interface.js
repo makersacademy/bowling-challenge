@@ -65,7 +65,7 @@ firstTurn = function(){
 };
 
 secondTurn = function(){
-  scoreGuard();
+  scoreGuard(score);
   frame.addSecondScore(($("#enter-score").val()));
   displayScore(frame.secondTurn)
   game.turn ++
@@ -165,11 +165,14 @@ isScoreValid = function(score){
   }
 };
 
-scoreGuard = function(){
+scoreGuard = function(score){
   score = ($("#enter-score").val());
-  if (score === '/') {
+  if (score === 'x' || score === '/') {
     return;
-  } else if ((score + frame.firstTurn) < 10) {
+  } else if (score > 10) {
+    alert("Score can not exceed 10, please try again")
+  }
+  else if ((score + frame.firstTurn) > 10) {
     alert("Score can not exceed 10, please try again")
   }
 };

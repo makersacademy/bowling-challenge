@@ -1,4 +1,4 @@
-rvm:
-  - 2.5.1
-script:
-  - bundle exec rspec spec
+language: node_js
+node_js:
+  - "iojs"
+  - "7"

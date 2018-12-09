@@ -11,7 +11,9 @@
     "test": "jest spec/ --verbose"
   },
   "jest": {
-    "preset": "jest-puppeteer"
+    "preset": "jest-puppeteer",
+    "verbose": true,
+    "collectCoverage": true
   },
   "repository": {
     "type": "git",

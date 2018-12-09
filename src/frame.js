@@ -29,6 +29,7 @@ Frame.prototype.setSecondScore = function(value){
 Frame.prototype.getSecondScore = function(){
     return this.second;
 }
+
 Frame.prototype.getTotal = function(){
     return this.total;
 }

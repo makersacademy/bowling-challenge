@@ -12,11 +12,16 @@ describe('BowlingScoreCard', function(){
     beforeEach(function(){
         scoreCard = new BowlingScoreCard();
 
-        frame = jasmine.createSpyObj('frame', ['getFirstScore','getSecondScore','findIndex','isStrike','isSpare','totalScore','complete','getTotal']);
+        frame = jasmine.createSpyObj('frame', ['getFirstScore',
+            'getSecondScore', 'findIndex', 'isStrike',
+            'isSpare','totalScore','complete',
+            'getTotal', 'score']);
+
         frame.getSecondScore.and.returnValue(undefined);
         frame.findIndex.and.returnValue([]);
         frame.complete.and.returnValue(false);
         frame.getTotal.and.returnValue(10);
+        frame.isStrike.and.returnValue(false);
 
         spyOn(scoreCard, ['getFrames']);
 
@@ -38,17 +43,17 @@ describe('BowlingScoreCard', function(){
         expect(scoreCard.frames.length).toEqual(10);
     });
 
-    describe('currrentFrameIndex method', function(){
+    describe('currentFrameIndex method', function(){
 
         it('gets the index of the current frame of the game',function(){
             frame.getFirstScore.and.returnValue(undefined);
-            expect(scoreCard.currrentFrameIndex()).toEqual(0);
+            expect(scoreCard.currentFrameIndex()).toEqual(0);
         });
 
     });
 
     it('get current frame', function(){
-        expect(scoreCard.currrentFrameIndex()).toEqual(0);
+        expect(scoreCard.currentFrameIndex()).toEqual(0);
     });
 
     describe('updatePreviousFrame method', function(){
@@ -74,6 +79,11 @@ describe('BowlingScoreCard', function(){
             expect(scoreCard.roll).not.toBeUndefined();
         });
 
+        it("throws error when game is complete", function() {
+            frame.complete.and.returnValue(true);
+            var testError = () => {scoreCard.roll(21)};
+            expect(testError).toThrow("Game is complete!");
+        });
         
     });
 

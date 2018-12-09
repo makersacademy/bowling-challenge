@@ -12,7 +12,7 @@ BowlingScoreCard.prototype.setFrames = function(){
     }
 }
 
-BowlingScoreCard.prototype.currrentFrameIndex = function(){
+BowlingScoreCard.prototype.currentFrameIndex = function(){
     return this.getFrames().findIndex(function(frame) {
         // below i call frame.complete because what if the first value is a strike
         // then i have to get the first frame where the second score is undefined
@@ -35,10 +35,11 @@ BowlingScoreCard.prototype.roll = function(n = 1){
         if (this.getFrames()[9].complete() == true){
             throw "Game is complete!";
         }
-        var currentFrameIndex = this.currrentFrameIndex();
-        var currentFrame = this.getFrames()[currentFrameIndex];
-        currentFrame.score();
 
+        var currentFrameIndex = this.currentFrameIndex();
+        var currentFrame = this.getFrames()[currentFrameIndex];
+
+        currentFrame.score();
         currentFrame.totalScore();
 
         if (currentFrameIndex != 0){

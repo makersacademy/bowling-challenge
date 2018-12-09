@@ -127,4 +127,9 @@ describe('Frame', function() {
     frame.rolls = [3, 4];
     expect(frame.calcBonus()).toEqual(0);
   });
+
+  it ("calculates the score for final frame without spare or strike", function(){
+    frame.rolls = [3, 4,];
+    expect(frame.calcScore()).toEqual(7);
+  });
 });

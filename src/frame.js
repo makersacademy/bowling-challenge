@@ -18,9 +18,14 @@ Frame.prototype.getAllRolls = function () {
 };
 
 Frame.prototype._rollSum = function () {
-  return this.rolls.reduce(function (total, roll) {
-    return total + roll;
-  });
+  if (this.rolls[2] == undefined) {
+    return this.rolls[0] + this.rolls[1];
+
+  } else {
+      return this.rolls.reduce(function (total, roll) {
+      return total + roll;
+    });
+  }
 };
 
 Frame.prototype._isStrike = function () {
@@ -60,7 +65,7 @@ Frame.prototype.calcSpareBonus = function (nextFrame) {
 
 Frame.prototype.calcScore = function (nextFrame, frameAfterNext) {
   if (nextFrame == undefined) {
-      this.score = this._rollSum() + this.calcBonus();
+      this.score = this._rollSum();
   } else {
       this.score =  this._rollSum() + this.calcBonus(nextFrame, frameAfterNext);
   }

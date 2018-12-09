@@ -8,7 +8,6 @@ function Game() {
   this.updater = new Updater();
   this.increment = 0;
   this.createFrames();
-  this.totals = [];
 }
 
 Game.prototype.addFrame = function(frame){

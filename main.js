@@ -52,14 +52,6 @@ function deNullify(score) {
    }
 }
 
-function runningTotal(game, index) {
-   if (index < game.totals.length) {
-       return game.totals[index];
-   } else {
-       return "";
-   }
-}
-
 $(document).ready(function(){
   var game = new Game();
   $('#bowlingTable').prepend(drawTable(game));

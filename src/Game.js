@@ -6,6 +6,10 @@ function Game(){
   this.frames = [];
 };
 
+Game.prototype.start = function (frame) {
+  this.frames[this.currentFrame] = (new frame);
+};
+
 function Frame(){
   this.pinsUp = 10;
   this.bowlCount = 0;

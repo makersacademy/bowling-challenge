@@ -12,12 +12,17 @@ describe('Game', function() {
     expect(game.currentFrame).toEqual(1);
   });
 
-  it('should start with a score of 0', function(){
+  it('should start with a total score of 0', function(){
     expect(game.totalScore).toEqual(0);
   });
 
   it('should accept an empty list of frames', function(){
     expect(game.frames).toEqual([]);
+  });
+
+  it('should be able to start a new frame', function(){
+    game.start(Frame);
+    expect(game.frames[1].pinsUp).toEqual(10);
   });
 
 });

@@ -16,7 +16,7 @@ Game.prototype.addFrame = function(frame){
 
 Game.prototype.createFrames = function(){
   for (var i = 0; i < 9; i++) {
-     this.addFrame(new Framei());
+     this.addFrame(new Frame());
   }
   this.addFrame(new TenthFrame());
 }
@@ -94,14 +94,6 @@ Game.prototype.inputScore = function(score){
       return;
    }
    this.update();
-}
-
-Game.prototype.createFrames = function(){
-  for (var i = 0; i < 9; i++) {
-     var frame = new Frame();
-     this.addFrame(frame);
-  }
-  this.addFrame(new TenthFrame());
 }
 
 Game.prototype.update = function() {

@@ -1,8 +1,20 @@
 
 Bowling Challenge
 =================
+Welcome to my attempt at the bowling challenge, conducted during my time at Makers Academy.
 
+This web app has been produced in javascript, using jasmine to TDD the production of its classes.
 
+Notes on the functionality
+--------------------------
+The bowling app is fully functioning, however requesting the app to bowl an impossible number of pins (i.e. if your first bowl is a 7 and you second is >3) an error will be raised in the console. This will **not** be shown on the webpage.
+
+Notes on the presentation
+--------------------------
+The web app is currently unfinished. Although the functionality is working (your bowling score will be calculated correctly), the design is half complete.
+
+Maker's Readme
+-------------
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README

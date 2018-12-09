@@ -73,5 +73,43 @@ describe("First bowl", function() {
     expect(game.score[2]).toEqual(60)
   });
 
+  it("12 strikes", function() {
+    game.bowl(10)
+    game.bowl(10)
+    game.bowl(10)
+    game.bowl(10)
+    game.bowl(10)
+    game.bowl(10)
+    game.bowl(10)
+    game.bowl(10)
+    game.bowl(10)
+    game.bowl(10)
+    game.bowl(10)
+    game.bowl(10)
+    expect(game.score[9]).toEqual(300)
+  })
+  it ("error thrown after 12 strikes on 13th bowl", function() {
+    game.bowl(10)
+    game.bowl(10)
+    game.bowl(10)
+    game.bowl(10)
+    game.bowl(10)
+    game.bowl(10)
+    game.bowl(10)
+    game.bowl(10)
+    game.bowl(10)
+    game.bowl(10)
+    game.bowl(10)
+    game.bowl(10)
+    expect( function(){ game.bowl(10); } ).toThrow();
+  })
+
+  it("the frame numnber increases correctly - changes at start of bowl", function() {
+    game.bowl(10)
+    game.bowl(10)
+    game.bowl(10)
+    expect(game.currentFrame().frameNumber).toEqual(3)
+  });
+
 
 });

@@ -8,6 +8,8 @@ describe('Game', function() {
     game = new Game;
   });
 
-
+  it('should start at frame 1', function(){
+    expect(game.currentFrame).toEqual(1);
+  });
 
 });

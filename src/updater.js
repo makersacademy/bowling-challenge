@@ -17,37 +17,50 @@ Updater.prototype.updateFrame = function(that, frame, index, frames){
     var next = frames[index + 1];
     var nextNext = frames[index + 2];
     if (frame.isStrike()) {
-        if (next.isStrike()){
-          that.updateStrikeIfNextFrameIsStrike(frame, next, nextNext, index);
-        } else {
-          that.updateStrike(frame, next);
-        }
+       that.updateStrike(frame, next, nextNext, index);
     } else if (frame.isSpare()) {
        that.updateSpare(frame, next);
     }
 }
 
 Updater.prototype.updateSpare = function(frame, next) {
+  this.setSpareFrameScore(frame, next);
+}
+
+
+Updater.prototype.updateStrike = function(frame, next, nextNext, index) {
+  if (next.isStrike()) {
+      if (index === 8) {
+         this.setStrikeFrameScore(frame, next);
+         return;
+      } else {
+          this.setStrikeStrikeFrameScore(frame, next, nextNext);
+      }
+
+  } else {
+       this.setStrikeFrameScore(frame, next);
+  }
+
+}
+
+Updater.prototype.setSpareFrameScore = function(frame, next) {
         frame.setFinalFrameScore(frame.getFirstScore() +
                                  frame.getSecondScore() +
                                  next.getFirstScore());
 }
 
-Updater.prototype.updateStrike = function(frame, next) {
-          frame.setFinalFrameScore(frame.getFirstScore() +
-                                   next.getFirstScore() +
-                                   next.getSecondScore());
+Updater.prototype.setStrikeFrameScore = function(frame, next) {
+    frame.setFinalFrameScore(frame.getFirstScore() +
+                               next.getFirstScore() +
+                               next.getSecondScore());
+
 }
 
-Updater.prototype.updateStrikeIfNextFrameIsStrike = function(frame, next, nextNext, index){
-    if (index === 8) {
-       this.updateStrike(frame, next);
-       return;
-    } else {
-        frame.setFinalFrameScore(frame.getFirstScore() +
-                                 next.getFirstScore() +
-                                 nextNext.getFirstScore());
-    }
+Updater.prototype.setStrikeStrikeFrameScore = function(frame, next, nextNext) {
+          frame.setFinalFrameScore(frame.getFirstScore() +
+                                   next.getFirstScore() +
+                                   nextNext.getFirstScore());
+
 }
 
 if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )

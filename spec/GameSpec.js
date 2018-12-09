@@ -41,4 +41,8 @@ describe('Frame', function(){
     expect(frame.pinsUp).toEqual(2);
   });
 
+  it('should throw an error if passing too many pins', function(){
+    expect(function(){ frame.bowl(11); }).toThrow(new Error('Too many pins!'));
+  });
+
 });

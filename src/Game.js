@@ -11,5 +11,6 @@ function Frame(){
 };
 
 Frame.prototype.bowl = function (pins) {
+  if (pins > this.pinsUp) { throw new Error ('Too many pins!'); }
   this.pinsUp -= pins;
 };

@@ -65,6 +65,15 @@ describe('Frame', function(){
     frame.bowl(2);
     frame.bowl(3);
     expect(frame.isOver()).toEqual(true);
+    frame = new Frame;
+    expect(frame.isOver()).toEqual(false);
+    frame.bowl(10);
+    expect(frame.isOver()).toEqual(true);
+  });
+
+  it('should record strikes', function(){
+    frame.bowl(10);
+    expect(frame.isStrike()).toEqual(true);
   });
 
 });

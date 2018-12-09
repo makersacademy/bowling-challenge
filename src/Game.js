@@ -31,3 +31,11 @@ Frame.prototype.isOver = function () {
     return false;
   }
 };
+
+Frame.prototype.isStrike = function () {
+  if (this.bowlCount === 1 && this.score === 10 ) {
+    return true;
+  } else {
+    return false;
+  }
+};

@@ -25,6 +25,15 @@ describe('Game', function() {
     expect(game.frames[1].pinsUp).toEqual(10);
   });
 
+  it('should update previous frame score on a spare', function(){
+    game.start(Frame);
+    game.frames[1].bowl(5);
+    game.frames[1].bowl(5);
+    game.start(Frame);
+    game.frames[2].bowl(10);
+    expect(game.frames[1].score).toEqual(20);
+  });
+
 });
 
 describe('Frame', function(){
@@ -74,6 +83,12 @@ describe('Frame', function(){
   it('should record strikes', function(){
     frame.bowl(10);
     expect(frame.isStrike()).toEqual(true);
+  });
+
+  it('should record spares', function(){
+    frame.bowl(5);
+    frame.bowl(5);
+    expect(frame.isSpare()).toEqual(true);
   });
 
 });

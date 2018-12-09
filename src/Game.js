@@ -8,6 +8,7 @@ function Game(){
 
 Game.prototype.start = function (frame) {
   this.frames[this.currentFrame] = (new frame);
+  this.currentFrame++;
 };
 
 function Frame(){
@@ -34,6 +35,14 @@ Frame.prototype.isOver = function () {
 
 Frame.prototype.isStrike = function () {
   if (this.bowlCount === 1 && this.score === 10 ) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+Frame.prototype.isSpare = function () {
+  if (this.bowlCount === 2 && this.score === 10 ) {
     return true;
   } else {
     return false;

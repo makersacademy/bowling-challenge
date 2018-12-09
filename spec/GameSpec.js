@@ -13,7 +13,7 @@ describe('Game', function() {
   });
 
   it('should start with a score of 0', function(){
-    expect(game.score).toEqual(0);
+    expect(game.totalScore).toEqual(0);
   });
 
   it('should accept an empty list of frames', function(){
@@ -43,6 +43,12 @@ describe('Frame', function(){
 
   it('should throw an error if passing too many pins', function(){
     expect(function(){ frame.bowl(11); }).toThrow(new Error('Too many pins!'));
+  });
+
+  it('should accept a maximum of 2 bowls', function(){
+    frame.bowl(2);
+    frame.bowl(3);
+    expect(function(){ frame.bowl(4); }).toThrow(new Error('Too many bowls!'));
   });
 
 });

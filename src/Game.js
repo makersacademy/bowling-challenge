@@ -27,7 +27,7 @@ Game.prototype.calculateFramePoints = function (pins_string) {
   this.bonusPoints = pins;
   console.log('cfp form update f:' + this.currentFramePoints);
   this.frameScores[this.currentFrame] = this.currentFramePoints;
-};
+}
 
 Game.prototype.updateFrames =  function () {
   // if (this.bonus[10] == 'strike' || this.bonus[10] == 'spare') {
@@ -54,6 +54,8 @@ Game.prototype.finishFrame = function() {
 };
 
 Game.prototype.setBonus = function(pins, framePoints) {
+  console.log(pins);
+  console.log(framePoints);
   if (pins === 10) {
     this.bonus[this.currentFrame] = "strike";
   } else if (framePoints === 10) {

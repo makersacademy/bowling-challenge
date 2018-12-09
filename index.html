@@ -1,0 +1,125 @@
+<html>
+<head>
+  <script src="src/game.js"></script>
+  <script src="src/frame.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+  <style>
+    body {
+      text-align: center;
+      padding: 0px
+    }
+    table {
+      margin-top: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #333; /* Lighten up font color */
+      font-family: Helvetica, Arial, sans-serif; /* Nicer font */
+      width: 640px;
+      border-collapse:
+      collapse; border-spacing: 0;
+    }
+    #vimeo-wrapper {
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      z-index: -99;
+      padding: 0;
+      margin: 0;
+    }
+    #vimeo-wrapper iframe {
+      /* height: 100%;
+      min-height: 100%; */
+      min-width:100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    td, th { border: 1px solid #CCC; height: 30px; vertical-align: middle; } /* Make cells a bit taller */
+
+    th {
+        background: #F3F3F3; /* Light grey background */
+        font-weight: bold; /* Make sure they're bold */
+    }
+
+    td {
+        background: #FAFAFA; /* Lighter grey background */
+        text-align: center; /* Center our text */
+    }
+  </style>
+
+</head>
+<body>
+  <div id="vimeo-wrapper" style="">
+    <!-- <video id="vidtest" autoplay>
+      <source src="https://player.vimeo.com/video/25931145?autoplay=1&muted=1">
+    </video> -->
+    <iframe src="https://player.vimeo.com/video/25931145?autoplay=1&muted=1" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+    </iframe>
+  </div>
+  <select name="pins" id="pins" placeholder="number of pins">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select>
+  <input type="submit" value="submit" id="submit">
+
+  <table id='score'>
+
+  </table>
+<script>
+  var game = new Game
+
+  $('#submit').click(function() {
+    game.bowl(parseInt($('#pins').val()))
+    updateScoreCard()
+  })
+  function updateScoreCard() {
+    // $('#score').html("<table>")
+    $('#score').html("  <tr>")
+    $('#score').append("    <th>Frame</th>")
+    $('#score').append("    <th>Bowl</th>")
+    $('#score').append("    <th>Score</th>")
+    $('#score').append("    <th>Total Score</th>")
+    $('#score').append("  </tr>")
+    for (frameNumber = 0; frameNumber < game.frames.length; frameNumber++)
+    {
+
+        $.each(game.frames[frameNumber].getScore(),function(bowlNumber, value) {
+          var score = value == '10' ? "X" : value
+          $('#score').append("  <tr>")
+          $('#score').append("    <td>" + (frameNumber + 1)  + "</td>")
+          $('#score').append("    <td>" + (bowlNumber + 1) + "</td>")
+          $('#score').append("    <td>"+score+"</td>")
+          var total = game.frames[frameNumber].frameComplete() &&  game.frames[frameNumber].bowlsToDouble == 0 && (bowlNumber + 1) == game.frames[frameNumber].numberOfBowls()  ? game.score[frameNumber] : ""
+          $('#score').append("    <td>"+total+"</td>")
+          $('#score').append("  </tr>")
+        });
+
+    }
+
+
+    }
+
+  $(document).ready(function () {
+    updateScoreCard()
+  });
+
+
+
+</script>
+<script async src="https://www.youtube.com/iframe_api"></script>
+<script>
+
+ // Written by @labnol
+</script>
+
+</body>
+</html>

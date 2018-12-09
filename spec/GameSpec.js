@@ -12,4 +12,8 @@ describe('Game', function() {
     expect(game.currentFrame).toEqual(1);
   });
 
+  it('should start with a score of 0', function(){
+    expect(game.score).toEqual(0);
+  });
+
 });

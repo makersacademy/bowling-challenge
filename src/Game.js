@@ -1,19 +1,23 @@
 'use strict';
 
 function Game(){
-  this.currentFrame = 1;
+  this.currentFrame = 0;
   this.totalScore = 0;
   this.frames = [];
+  var i;
+  for (i = 0; i < 10; i++) {
+    this.frames.push(new Frame);
+  }
 };
 
 Game.prototype.start = function (frame) {
   this.frames[this.currentFrame] = (new frame);
-  this.currentFrame++;
 };
 
 Game.prototype.newFrame = function () {
   this.start(Frame);
 };
+
 
 
 function Frame(){

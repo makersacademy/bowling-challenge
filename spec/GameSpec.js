@@ -9,34 +9,15 @@ describe('Game', function() {
   });
 
   it('should start at frame 1', function(){
-    expect(game.currentFrame).toEqual(1);
+    expect(game.currentFrame).toEqual(0);
   });
 
   it('should start with a total score of 0', function(){
     expect(game.totalScore).toEqual(0);
   });
 
-  it('should accept an empty list of frames', function(){
-    expect(game.frames).toEqual([]);
-  });
-
-  it('should be able to start a new frame', function(){
-    game.start(Frame);
-    expect(game.frames[1].pinsUp).toEqual(10);
-  });
-
-  // it('should update previous frame score on a spare', function(){
-  //   game.start(Frame);
-  //   game.frames[1].bowl(5);
-  //   game.frames[1].bowl(5);
-  //   game.start(Frame);
-  //   game.frames[2].bowl(10);
-  //   expect(game.frames[1].score).toEqual(20);
-  // });
-
-  it('should begin a new frame', function(){
-    game.newFrame();
-    expect(game.frames[1].pinsUp).toEqual(10);
+  it('should initialise with a list of 10 frames', function(){
+    expect(game.frames.length).toEqual(10);
   });
 
 });

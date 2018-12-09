@@ -100,3 +100,6 @@ Feature Testing: Jest with Puppeteer<br>
 
 Linting: ESLint
 
+## The Testing
+
+<img src="./readme_pics/tests.png"/>

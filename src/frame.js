@@ -1,7 +1,7 @@
 function Frame(){
   this.rolls = [0, 0];
   this.MAX_ROLL = 10;
-  this.totalScore = 0;
+  this.score = 0;
 }
 
 Frame.prototype.getRoll = function(number) {
@@ -60,9 +60,9 @@ Frame.prototype.calcSpareBonus = function (nextFrame) {
 
 Frame.prototype.calcScore = function (nextFrame, frameAfterNext) {
   if (nextFrame == undefined) {
-      this.totalScore = this._rollSum() + this.calcBonus();
+      this.score = this._rollSum() + this.calcBonus();
   } else {
-      this.totalScore =  this._rollSum() + this.calcBonus(nextFrame, frameAfterNext);
+      this.score =  this._rollSum() + this.calcBonus(nextFrame, frameAfterNext);
   }
-  return this.totalScore;
+  return this.score;
 };

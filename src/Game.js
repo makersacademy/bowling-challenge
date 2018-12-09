@@ -5,3 +5,11 @@ function Game(){
   this.score = 0;
   this.frames = [];
 };
+
+function Frame(){
+  this.pinsUp = 10;
+};
+
+Frame.prototype.bowl = function (pins) {
+  this.pinsUp -= pins;
+};

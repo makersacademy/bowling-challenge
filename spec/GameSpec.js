@@ -21,3 +21,24 @@ describe('Game', function() {
   });
 
 });
+
+describe('Frame', function(){
+
+  var game;
+  var frame;
+
+  beforeEach(function(){
+    game = new Game;
+    frame = new Frame;
+  });
+
+  it('should start with 10 pins up', function(){
+    expect(frame.pinsUp).toEqual(10);
+  });
+
+  it('should accept a bowl to reduce pinsUp', function(){
+    frame.bowl(8);
+    expect(frame.pinsUp).toEqual(2);
+  });
+
+});

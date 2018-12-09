@@ -28,7 +28,7 @@ $(document).ready(function(){
            var total = game.frames[i - 1].total;
            $(firstScore).text(game.frames[i-1].getFirstScore());
            $(secondScore).text(game.frames[i-1].getSecondScore());
-           console.log(total);
+           
            if(total == 0){
                total = ''
            };

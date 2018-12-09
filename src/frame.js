@@ -7,6 +7,7 @@ function Frame() {
 Frame.prototype.score = function(){
     
    if ((typeof this.getFirstScore()) != 'undefined'){
+       // second score is based off of how many pins are left over from the first roll
        this.setSecondScore(this.randomScore((10 - this.getFirstScore())));
    }else {
         this.setFirstScore(this.randomScore(10)); 
@@ -56,10 +57,6 @@ Frame.prototype.complete = function(){
     }else{
         return false;
     }
-}
-
-Frame.prototype.updateTotal = function () {
-    this.total = this.getFirstScore() + this.getSecondScore();
 }
 
 Frame.prototype.totalScore = function(){

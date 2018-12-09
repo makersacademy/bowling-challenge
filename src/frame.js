@@ -46,7 +46,6 @@ Frame.prototype.getFinalFrameScore = function() {
 
 Frame.prototype.setFinalFrameScore = function(score) {
     this.finalised = true;
-    // this.secondScore = null;
     this.finalFrameScore = score;
 }
 

@@ -18,18 +18,17 @@ function drawTable(game) {
   var runningTotal = null;
   game.frames.forEach(function(frame, index){
      runningTotal += frame.getFinalFrameScore();
-    console.log(runningTotal);
      if (!(frame instanceof TenthFrame)) {
-        tableHeaders += '<th class="tg-0lax" colspan="2">' + (index + 1) +'</th>';
-        firstAndSecondScores += '<td class="tg-0lax firstScore">' + deNullify(frame.getFirstScore()) + '</td>' +
-                                '<td class="tg-0lax secondScore">' + xOrSlash(frame) + '</td>';
-        finalScores += '<td class="tg-0lax finalScore" colspan="2">' + blockRunningTotal(runningTotal, frame) + '</td>';
+        tableHeaders += '<th scope="col" colspan="2">' + (index + 1) +'</th>';
+        firstAndSecondScores += '<td>' + deNullify(frame.getFirstScore()) + '</td>' +
+                                '<td>' + xOrSlash(frame) + '</td>';
+        finalScores += '<td colspan="2">' + blockRunningTotal(runningTotal, frame) + '</td>';
      } else {
-        tableHeaders += '<th class="tg-0lax" colspan="3">' + (index + 1) +'</th>';
-        firstAndSecondScores += '<td class="tg-0lax firstScore">' + deNullify(frame.getFirstScore()) + '</td>' +
-                                '<td class="tg-0lax secondScore">' + deNullify(frame.getSecondScore()) + '</td>' +
-                                '<td class="tg-0lax bonusScore">' + deNullify( frame.getBonusScore()) + '</td>';
-        finalScores += '<td class="tg-0lax finalScore" colspan="3">' + blockRunningTotal(runningTotal, frame) + '</td>';
+        tableHeaders += '<th scope="col" colspan="3">' + (index + 1) +'</th>';
+        firstAndSecondScores += '<td>' + deNullify(frame.getFirstScore()) + '</td>' +
+                                '<td>' + deNullify(frame.getSecondScore()) + '</td>' +
+                                '<td>' + deNullify( frame.getBonusScore()) + '</td>';
+        finalScores += '<td colspan="3">' + blockRunningTotal(runningTotal, frame) + '</td>';
      }
   });
 

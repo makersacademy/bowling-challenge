@@ -8,6 +8,7 @@ function Game() {
   this.updater = new Updater();
   this.increment = 0;
   this.createFrames();
+  this.totals = [];
 }
 
 Game.prototype.addFrame = function(frame){
@@ -66,7 +67,7 @@ Game.prototype.inputScore = function(score){
            this.update();
            return;
        }
-       this.update();
+
    }
 
    if (currentFrame.getFirstScore() == null) {
@@ -89,7 +90,7 @@ Game.prototype.inputScore = function(score){
       this.update();
       return;
    }
-   this.update();
+
 }
 
 if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )

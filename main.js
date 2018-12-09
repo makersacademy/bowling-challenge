@@ -15,17 +15,18 @@ function drawTable(game) {
   var rowEnder = '</tr>';
   var table = "";
   game.frames.forEach(function(frame, index){
+
      if (!(frame instanceof TenthFrame)) {
         tableHeaders += '<th class="tg-0lax" colspan="2">' + (index + 1) +'</th>';
         firstAndSecondScores += '<td class="tg-0lax firstScore">' + deNullify(frame.getFirstScore()) + '</td>' +
                                 '<td class="tg-0lax secondScore">' + xOrSlash(frame) + '</td>';
-        finalScores += '<td class="tg-0lax finalScore" colspan="2">' + deNullify(game.getTotal()) + '</td>';
+        finalScores += '<td class="tg-0lax finalScore" colspan="2">' + deNullify(frame.getFinalFrameScore());+ '</td>';
      } else {
         tableHeaders += '<th class="tg-0lax" colspan="3">' + (index + 1) +'</th>';
         firstAndSecondScores += '<td class="tg-0lax firstScore">' + deNullify(frame.getFirstScore()) + '</td>' +
                                 '<td class="tg-0lax secondScore">' + deNullify(frame.getSecondScore()) + '</td>' +
                                 '<td class="tg-0lax bonusScore">' + deNullify( frame.getBonusScore()) + '</td>';
-        finalScores += '<td class="tg-0lax finalScore" colspan="3">' + deNullify(game.getTotal()); + '</td>';
+        finalScores += '<td class="tg-0lax finalScore" colspan="3">' + deNullify(frame.getFinalFrameScore()); + '</td>';
      }
   });
 
@@ -44,7 +45,19 @@ function xOrSlash(frame) {
 }
 
 function deNullify(score) {
-   return score ? score : " ";
+   if (score == 0) {
+      return '0';
+   } else {
+     return (score) ? score : " ";
+   }
+}
+
+function runningTotal(game, index) {
+   if (index < game.totals.length) {
+       return game.totals[index];
+   } else {
+       return "";
+   }
 }
 
 $(document).ready(function(){
@@ -53,7 +66,6 @@ $(document).ready(function(){
   $('#enter_score').click(function(){
      var score = parseInt($('#num_input').val());
      game.inputScore(score);
-
      $('#bowlingTable').children().remove();
      $('#bowlingTable').prepend(drawTable(game));
   });

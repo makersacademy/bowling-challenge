@@ -20,15 +20,15 @@ function drawTable(game) {
      runningTotal += frame.getFinalFrameScore();
      if (!(frame instanceof TenthFrame)) {
         tableHeaders += '<th scope="col" colspan="2">' + (index + 1) +'</th>';
-        firstAndSecondScores += '<td>' + deNullify(frame.getFirstScore()) + '</td>' +
-                                '<td>' + xOrSlash(frame) + '</td>';
-        finalScores += '<td colspan="2">' + blockRunningTotal(runningTotal, frame) + '</td>';
+        firstAndSecondScores += '<td scope="row">' + deNullify(frame.getFirstScore()) + '</td>' +
+                                '<td scope="row">' + xOrSlash(frame) + '</td>';
+        finalScores += '<td colspan="2">' + prepareRunningTotal(runningTotal, frame) + '</td>';
      } else {
         tableHeaders += '<th scope="col" colspan="3">' + (index + 1) +'</th>';
-        firstAndSecondScores += '<td>' + deNullify(frame.getFirstScore()) + '</td>' +
-                                '<td>' + deNullify(frame.getSecondScore()) + '</td>' +
-                                '<td>' + deNullify( frame.getBonusScore()) + '</td>';
-        finalScores += '<td colspan="3">' + blockRunningTotal(runningTotal, frame) + '</td>';
+        firstAndSecondScores += '<td scope="row">' + deNullify(frame.getFirstScore()) + '</td>' +
+                                '<td scope="row">' + deNullify(frame.getSecondScore()) + '</td>' +
+                                '<td scope="row">' + deNullify( frame.getBonusScore()) + '</td>';
+        finalScores += '<td colspan="3">' + prepareRunningTotal(runningTotal, frame) + '</td>';
      }
   });
 
@@ -54,7 +54,7 @@ function deNullify(score) {
    }
 }
 
-function blockRunningTotal(runningTotal, frame) {
+function prepareRunningTotal(runningTotal, frame) {
    if (frame.getFinalFrameScore() == null) {
        return "";
    } else {

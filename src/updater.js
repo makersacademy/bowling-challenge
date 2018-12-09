@@ -23,11 +23,6 @@ Updater.prototype.updateFrame = function(that, frame, index, frames){
     }
 }
 
-Updater.prototype.updateSpare = function(frame, next) {
-  this.setSpareFrameScore(frame, next);
-}
-
-
 Updater.prototype.updateStrike = function(frame, next, nextNext, index) {
   if (next.isStrike()) {
       if (index === 8) {
@@ -36,31 +31,32 @@ Updater.prototype.updateStrike = function(frame, next, nextNext, index) {
       } else {
           this.setStrikeStrikeFrameScore(frame, next, nextNext);
       }
-
   } else {
        this.setStrikeFrameScore(frame, next);
   }
 
 }
 
+Updater.prototype.updateSpare = function(frame, next) {
+    this.setSpareFrameScore(frame, next);
+}
+
 Updater.prototype.setSpareFrameScore = function(frame, next) {
-        frame.setFinalFrameScore(frame.getFirstScore() +
-                                 frame.getSecondScore() +
-                                 next.getFirstScore());
+    frame.setFinalFrameScore(frame.getFirstScore() +
+                             frame.getSecondScore() +
+                             next.getFirstScore());
 }
 
 Updater.prototype.setStrikeFrameScore = function(frame, next) {
     frame.setFinalFrameScore(frame.getFirstScore() +
                                next.getFirstScore() +
                                next.getSecondScore());
-
 }
 
 Updater.prototype.setStrikeStrikeFrameScore = function(frame, next, nextNext) {
-          frame.setFinalFrameScore(frame.getFirstScore() +
-                                   next.getFirstScore() +
-                                   nextNext.getFirstScore());
-
+    frame.setFinalFrameScore(frame.getFirstScore() +
+                             next.getFirstScore() +
+                             nextNext.getFirstScore());
 }
 
 if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )

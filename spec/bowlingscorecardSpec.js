@@ -73,13 +73,11 @@ describe('BowlingScoreCard', function(){
         it("is defined", function() {
             expect(scoreCard.roll).not.toBeUndefined();
         });
+
+        
     });
 
     describe('total method', function(){
-
-        it("is defined", function() {
-            expect(scoreCard.total()).not.toBeUndefined();
-        });
 
         it("returns game total of 100", function() {
             expect(scoreCard.total()).toEqual(100);

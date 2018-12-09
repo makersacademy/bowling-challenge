@@ -6,21 +6,6 @@ describe('Frame', function(){
         frame.setFirstScore(3);
         spyOn(Math, 'floor').and.returnValue(1);
     });
-
-    it('should store first score value', function(){
-        firstScore = frame.getFirstScore();
-        expect(firstScore).toEqual(3);
-    });
-
-    describe('first score value exists', function(){
-
-        it('should store second score value', function(){
-            frame.setSecondScore(2);
-            secondScore = frame.getSecondScore();
-            expect(secondScore).toEqual(2);
-        });
-
-    });
     
     describe('randomScore method', function(){
 

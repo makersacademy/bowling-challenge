@@ -11,6 +11,7 @@
 #frame-7 { grid-area: FFH; }
 #frame-8 { grid-area: FFI; }
 #frame-9 { grid-area: FFJ; }
+
 #player-name { grid-area: PNN; }
 #ball-0 { grid-area: FAA; }
 #ball-1 { grid-area: FAB; }
@@ -44,10 +45,15 @@
 #total-8 { grid-area: FTI; }
 #total-9 { grid-area: FTJ; }
 
-.scorecard {
+.fields {
   display: inline-grid;
   grid-template-areas:
-  'PNH PNH PNH PNH FFA FFA FFB FFB FFC FFC FFD FFD FFE FFE FFF FFF FFG FFG FFH FFH FFI FFI FFJ FFJ FFJ'
+  'PNH PNH PNH PNH FFA FFA FFB FFB FFC FFC FFD FFD FFE FFE FFF FFF FFG FFG FFH FFH FFI FFI FFJ FFJ FFJ';
+}
+
+.player {
+  display: inline-grid;
+  grid-template-areas:
   'PNN PNN PNN PNN FAA FAB FBA FBB FCA FCB FDA FDB FEA FEB DFA DFB FGA FGB FHA FHB FIA FIB FJA FJB FJC'
   'PNN PNN PNN PNN FTA FTA FTB FTB FTC FTC FTD FTD FTE FTE FTF FTF FTG FTG FTH FTH FTI FTI FTJ FTJ FTJ';
 }
@@ -61,6 +67,11 @@
   border-right-width: 1px;
 }
 
+#frame-0, #frame-1, #frame-2, #frame-3, #frame-4, #frame-5, 
+#frame-6, #frame-7, #frame-8 {
+  width: 121px;
+}
+
 .title, div[id^='frame'], .first-ball, .next-ball, .last-ball, div[id^='total'] {
   text-align: center;
 }
@@ -70,18 +81,18 @@
   line-height: 50px;
 }
 
+.first-ball, .next-ball, .last-ball {
+  width: 60px;
+}
+
 body, input {
   font-family: Helvetica Neue;
   font-size: 30px;
   font-weight: 100;
 }
 
-.first-ball, .next-ball, .last-ball {
-  width: 50px;
-}
-
-div[id^='player'], input {
-  width: 300px;
+#player-name-header, #player-name, input {
+  width: 370px;
 }
 
 div {
@@ -90,24 +101,29 @@ div {
   border-width: 0px;
 }
 
-.the-full-page {
-  width: 1383px;
-}
-
 .title {
   line-height: 100px;
 }
 
-.scorecard {
+#frame-9 {
+  width: 182px;
+}
+
+.fields {
   border-width: 1px;
 }
 
-.top-row {
+.player {
+  border-right-width: 1px;
   border-bottom-width: 1px;
+  border-left-width: 1px;
+}
+
+.top-row {
   line-height: 50px;
 }
 
-div[id^='player'] {
+#player-name-header, #player-name {
   padding-left: 10px;
 }
 

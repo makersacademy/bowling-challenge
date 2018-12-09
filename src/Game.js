@@ -11,6 +11,11 @@ Game.prototype.start = function (frame) {
   this.currentFrame++;
 };
 
+Game.prototype.newFrame = function () {
+  this.start(Frame);
+};
+
+
 function Frame(){
   this.pinsUp = 10;
   this.bowlCount = 0;

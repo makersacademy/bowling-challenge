@@ -25,13 +25,18 @@ describe('Game', function() {
     expect(game.frames[1].pinsUp).toEqual(10);
   });
 
-  it('should update previous frame score on a spare', function(){
-    game.start(Frame);
-    game.frames[1].bowl(5);
-    game.frames[1].bowl(5);
-    game.start(Frame);
-    game.frames[2].bowl(10);
-    expect(game.frames[1].score).toEqual(20);
+  // it('should update previous frame score on a spare', function(){
+  //   game.start(Frame);
+  //   game.frames[1].bowl(5);
+  //   game.frames[1].bowl(5);
+  //   game.start(Frame);
+  //   game.frames[2].bowl(10);
+  //   expect(game.frames[1].score).toEqual(20);
+  // });
+
+  it('should begin a new frame', function(){
+    game.newFrame();
+    expect(game.frames[1].pinsUp).toEqual(10);
   });
 
 });

@@ -12,6 +12,14 @@ The player enters their name where is says to.
 
 They then click the numbered buttons to record the number of pins knocked down.
 
+### Testing
+
+All code has been tested with Jasmine. To test on your own machine:
+
+```git clone git@github.com:alittlecross/bowling-challenge.git```
+
+Then run `SpecRunner.html` from that folder.
+
 ## Bowling — how does it work?
 
 ### Strikes

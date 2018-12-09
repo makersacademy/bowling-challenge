@@ -35,13 +35,6 @@ describe("Game", function() {
       expect(game.getFrame(2).getSecondScore()).toEqual(5);
     });
 
-    it("Can set the bonus score of the tenth frame", function(){
-      game.setFirstScore(9, 10);
-      game.setSecondScore(9, 3);
-      game.setBonusScore(5);
-      expect(game.getFrame(9).getBonusScore()).toEqual(5);
-    });
-
     it("can correctly update frames with an input score method", function(){
       game.inputScore(10); // 1
       game.inputScore(2);  // 2

@@ -16,8 +16,7 @@ Game.prototype.addFrame = function(frame){
 
 Game.prototype.createFrames = function(){
   for (var i = 0; i < 9; i++) {
-     var frame = new Frame();
-     this.addFrame(frame);
+     this.addFrame(new Framei());
   }
   this.addFrame(new TenthFrame());
 }
@@ -32,10 +31,6 @@ Game.prototype.setFirstScore = function(frameIndex, score) {
 
 Game.prototype.setSecondScore = function(frameIndex, score) {
   this.getFrame(frameIndex).setSecondScore(score);
-}
-
-Game.prototype.setBonusScore = function(score) {
-  this.getFrame(9).setBonusScore(score);
 }
 
 Game.prototype.getTotal = function() {

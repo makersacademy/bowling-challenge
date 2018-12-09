@@ -1,48 +1,48 @@
 /* #region Grid Setup */
 
-.player-name-header { grid-area: PNH; }
-.player-name { grid-area: PNN; }
-.frame-1 { grid-area: FFA; }
-.frame-2 { grid-area: FFB; }
-.frame-3 { grid-area: FFC; }
-.frame-4 { grid-area: FFD; }
-.frame-5 { grid-area: FFE; }
-.frame-6 { grid-area: FFF; }
-.frame-7 { grid-area: FFG; }
-.frame-8 { grid-area: FFH; }
-.frame-9 { grid-area: FFI; }
-.frame-0 { grid-area: FFJ; }
-.frame-1-ball-1 { grid-area: FAA; }
-.frame-1-ball-2 { grid-area: FAB; }
-.frame-2-ball-1 { grid-area: FBA; }
-.frame-2-ball-2 { grid-area: FBB; }
-.frame-3-ball-1 { grid-area: FCA; }
-.frame-3-ball-2 { grid-area: FCB; }
-.frame-4-ball-1 { grid-area: FDA; }
-.frame-4-ball-2 { grid-area: FDB; }
-.frame-5-ball-1 { grid-area: FEA; }
-.frame-5-ball-2 { grid-area: FEB; }
-.frame-6-ball-1 { grid-area: DFA; }
-.frame-6-ball-2 { grid-area: DFB; }
-.frame-7-ball-1 { grid-area: FGA; }
-.frame-7-ball-2 { grid-area: FGB; }
-.frame-8-ball-1 { grid-area: FHA; }
-.frame-8-ball-2 { grid-area: FHB; }
-.frame-9-ball-1 { grid-area: FIA; }
-.frame-9-ball-2 { grid-area: FIB; }
-.frame-0-ball-1 { grid-area: FJA; }
-.frame-0-ball-2 { grid-area: FJB; }
-.frame-0-ball-3 { grid-area: FJC; }
-.frame-1-total { grid-area: FTA; }
-.frame-2-total { grid-area: FTB; }
-.frame-3-total { grid-area: FTC; }
-.frame-4-total { grid-area: FTD; }
-.frame-5-total { grid-area: FTE; }
-.frame-6-total { grid-area: FTF; }
-.frame-7-total { grid-area: FTG; }
-.frame-8-total { grid-area: FTH; }
-.frame-9-total { grid-area: FTI; }
-.frame-0-total { grid-area: FTJ; }
+#player-name-header { grid-area: PNH; }
+#frame-0 { grid-area: FFA; }
+#frame-1 { grid-area: FFB; }
+#frame-2 { grid-area: FFC; }
+#frame-3 { grid-area: FFD; }
+#frame-4 { grid-area: FFE; }
+#frame-5 { grid-area: FFF; }
+#frame-6 { grid-area: FFG; }
+#frame-7 { grid-area: FFH; }
+#frame-8 { grid-area: FFI; }
+#frame-9 { grid-area: FFJ; }
+#player-name { grid-area: PNN; }
+#ball-0 { grid-area: FAA; }
+#ball-1 { grid-area: FAB; }
+#ball-2 { grid-area: FBA; }
+#ball-3 { grid-area: FBB; }
+#ball-4 { grid-area: FCA; }
+#ball-5 { grid-area: FCB; }
+#ball-6 { grid-area: FDA; }
+#ball-7 { grid-area: FDB; }
+#ball-8 { grid-area: FEA; }
+#ball-9 { grid-area: FEB; }
+#ball-10 { grid-area: DFA; }
+#ball-11 { grid-area: DFB; }
+#ball-12 { grid-area: FGA; }
+#ball-13 { grid-area: FGB; }
+#ball-14 { grid-area: FHA; }
+#ball-15 { grid-area: FHB; }
+#ball-16 { grid-area: FIA; }
+#ball-17 { grid-area: FIB; }
+#ball-18 { grid-area: FJA; }
+#ball-19 { grid-area: FJB; }
+#ball-20 { grid-area: FJC; }
+#total-0 { grid-area: FTA; }
+#total-1 { grid-area: FTB; }
+#total-2 { grid-area: FTC; }
+#total-3 { grid-area: FTD; }
+#total-4 { grid-area: FTE; }
+#total-5 { grid-area: FTF; }
+#total-6 { grid-area: FTG; }
+#total-7 { grid-area: FTH; }
+#total-8 { grid-area: FTI; }
+#total-9 { grid-area: FTJ; }
 
 .scorecard {
   display: inline-grid;
@@ -54,10 +54,34 @@
 
 /* #endregion */
 
+#player-name-header, #frame-0, #frame-1, #frame-2, #frame-3, 
+#frame-4, #frame-5, #frame-6, #frame-7, #frame-8, #total-0,
+#total-1, #total-2, #total-3, #total-4, #total-5, #total-6, 
+#total-7, #total-8 {
+  border-right-width: 1px;
+}
+
+.title, div[id^='frame'], .first-ball, .next-ball, .last-ball, div[id^='total'] {
+  text-align: center;
+}
+
+.top-row, .first-ball, .next-ball, .last-ball, div[id^='total'] {
+  height: 50px;
+  line-height: 50px;
+}
+
 body, input {
   font-family: Helvetica Neue;
   font-size: 30px;
   font-weight: 100;
+}
+
+.first-ball, .next-ball, .last-ball {
+  width: 50px;
+}
+
+div[id^='player'], input {
+  width: 300px;
 }
 
 div {
@@ -66,42 +90,11 @@ div {
   border-width: 0px;
 }
 
-input {
-  border: 0px;
-  margin: 0px;
-  padding: 0px;
+.the-full-page {
+  width: 1383px;
 }
 
-p {
-  text-align: center;
-}
-
-div[class$='ball-2'], div[class$='ball-3'] {
-  border-bottom-width: 1px;
-}
-
-div[class^='frame'], .player-name-header {
-  line-height: 50px;
-}
-
-div[class$='ball-1'], div[class$='ball-2'], div[class$='ball-3'], div[class$='total'], .top-row {
-  height: 50px;
-}
-
-div[class$='ball-1'], div[class$='ball-2'], div[class$='ball-3'] {
-  width: 50px;
-}
-
-div[class^='frame'] {
-  text-align: center;
-  border-left-width: 1px;
-}
-
-div[class^='player'] {
-  padding-left: 10px;
-}
-
-.player-name {
+.title {
   line-height: 100px;
 }
 
@@ -110,5 +103,32 @@ div[class^='player'] {
 }
 
 .top-row {
+  border-bottom-width: 1px;
+  line-height: 50px;
+}
+
+div[id^='player'] {
+  padding-left: 10px;
+}
+
+#player-name {
+  height: 100px;
+  border-right-width: 1px;
+  line-height: 100px;
+}
+
+input {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.next-ball {
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+}
+
+.last-ball {
   border-bottom-width: 1px;
 }

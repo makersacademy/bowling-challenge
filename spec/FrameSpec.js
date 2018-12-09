@@ -22,4 +22,15 @@ describe('Frame', function() {
     expect(frame.rolls).toEqual(1);
   });
 
+  it('the frame is complete after two rolls', function() {
+    frame.addRoll()
+    frame.addRoll()
+    expect(frame.isOver()).toBe(true);
+  });
+
+  it('the frame is complete when 10 is reached', function() {
+    frame.addScore(10)
+    expect(frame.isOver()).toBe(true);
+  });
+
 });

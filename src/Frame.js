@@ -11,4 +11,8 @@ Frame.prototype.addScore = function(score) {
 
 Frame.prototype.addRoll = function() {
   this.rolls ++;
-}
+};
+
+Frame.prototype.isOver = function() {
+  return this.rolls >= 2 || this.total >= 10;
+};

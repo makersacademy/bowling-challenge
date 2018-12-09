@@ -51,7 +51,7 @@ BowlingScoreCard.prototype.roll = function(n = 1){
 BowlingScoreCard.prototype.total = function(){
     var total = 0;
     for(var i = 0; i < 10; i++){
-        total += this.getFrames()[i].totalScore();
+        total += this.getFrames()[i].getTotal();
     }
     return total;
 }

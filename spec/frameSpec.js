@@ -62,6 +62,11 @@ describe('Frame', function(){
 
     });
 
+    it('should return the total of a frame',function(){
+        frame.total = 5;
+        expect(frame.getTotal()).toEqual(5);
+    });
+
     describe('total method', function(){
 
         it('should return total score of 5 for frame', function(){

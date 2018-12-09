@@ -102,3 +102,8 @@ body, html {
     font-size: 400px;
     background-color: bisque;
 }
+
+#roll_times_container{
+    font-size:50px;
+    background-color: bisque;
+}

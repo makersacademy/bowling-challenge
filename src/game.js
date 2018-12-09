@@ -14,8 +14,8 @@ $(document).ready(function(){
     }
 
 
-   function roll(){
-       game.roll();
+   function roll(n){
+       game.roll(n);
        update();    
    }
 
@@ -61,11 +61,14 @@ $(document).ready(function(){
 
     $("#roll_button").click(function () {
         try {
-            roll();
+            var n = $('#roll_times').val();
+            roll(n);
         }
         catch(e) {
+            update();
+            console.log(game.frames);
             $("#roll_container").append("<div id='gameTotal'>Total: " + game.total() + "</div>");
-            $("#roll_button,#roll_times").remove();
+            $("#roll_button,#roll_times, #roll_times_container").remove();
             alert('Game is over!');
         }
     });

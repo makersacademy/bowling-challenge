@@ -10688,11 +10688,7 @@ Updater.prototype.updateFrame = function(that, frame, index, frames){
     var nextNext = frames[index + 2];
     if (frame.isStrike()) {
         if (next.isStrike()){
-            if ((next.getSecondScore() !== null)) {
-               that.updateStrike(frame, next);
-            } else {
-               that.updateStrikeIfNextFrameIsStrike(frame, next, nextNext);
-            }
+          that.updateStrikeIfNextFrameIsStrike(frame, next, nextNext, index);
         } else {
           that.updateStrike(frame, next);
         }
@@ -10710,15 +10706,16 @@ Updater.prototype.updateSpare = function(frame, next) {
 }
 
 Updater.prototype.updateStrike = function(frame, next) {
-    if (next.getFirstScore()) {
           frame.setFinalFrameScore(frame.getFirstScore() +
                                    next.getFirstScore() +
                                    next.getSecondScore());
-     }
 }
 
-Updater.prototype.updateStrikeIfNextFrameIsStrike = function(frame, next, nextNext){
-    if (nextNext.getFirstScore()) {
+Updater.prototype.updateStrikeIfNextFrameIsStrike = function(frame, next, nextNext, index){
+    if (index === 8) {
+       this.updateStrike(frame, next);
+       return;
+    } else {
         frame.setFinalFrameScore(frame.getFirstScore() +
                                  next.getFirstScore() +
                                  nextNext.getFirstScore());

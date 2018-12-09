@@ -1,5 +1,10 @@
 'use strict';
 
 function Frame () {
-  this.pins = 10
+  this.total = 0
 };
+
+Frame.prototype.roll = function() {
+  
+
+}

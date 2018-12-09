@@ -41,7 +41,7 @@ describe('Display:', function() {
 
     it('calls .recordsNumberOf(pinsKnockedDown):', function() {
       display.toDisplay(5);
-      expect(display._display).toEqual([]);
+      expect(display._display).toEqual([5]);
     });
   });
 

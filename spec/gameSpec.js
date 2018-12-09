@@ -25,16 +25,6 @@ describe("Game", function() {
       expect(game.getFrame(9)).toEqual(jasmine.any(TenthFrame));
     });
 
-    it("Can set the first score of a given frame", function(){
-      game.setFirstScore(2, 5);
-      expect(game.getFrame(2).getFirstScore()).toEqual(5);
-    });
-
-    it("Can set the second score of a given frame", function(){
-      game.setSecondScore(2, 5);
-      expect(game.getFrame(2).getSecondScore()).toEqual(5);
-    });
-
     it("can correctly update frames with an input score method", function(){
       game.inputScore(10); // 1
       game.inputScore(2);  // 2

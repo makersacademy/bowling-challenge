@@ -10510,6 +10510,7 @@ var Frame = require('../src/frame.js');
 var TenthFrame = require('../src/tenthFrame.js');
 var Updater = require('../src/updater.js');
 
+// TODO get reat of those set Methods that duplicate frame behaviour
 function Game() {
   this.frames = []
   this.createFrames();
@@ -10524,26 +10525,13 @@ Game.prototype.addFrame = function(frame){
 
 Game.prototype.createFrames = function(){
   for (var i = 0; i < 9; i++) {
-     var frame = new Frame();
-     this.addFrame(frame);
+     this.addFrame(new Frame());
   }
   this.addFrame(new TenthFrame());
 }
 
 Game.prototype.getFrame = function(frameIndex) {
   return this.frames[frameIndex];
-}
-
-Game.prototype.setFirstScore = function(frameIndex, score) {
-  this.getFrame(frameIndex).setFirstScore(score);
-}
-
-Game.prototype.setSecondScore = function(frameIndex, score) {
-  this.getFrame(frameIndex).setSecondScore(score);
-}
-
-Game.prototype.setBonusScore = function(score) {
-  this.getFrame(9).setBonusScore(score);
 }
 
 Game.prototype.getTotal = function() {
@@ -10607,14 +10595,6 @@ Game.prototype.inputScore = function(score){
       return;
    }
    this.update();
-}
-
-Game.prototype.createFrames = function(){
-  for (var i = 0; i < 9; i++) {
-     var frame = new Frame();
-     this.addFrame(frame);
-  }
-  this.addFrame(new TenthFrame());
 }
 
 Game.prototype.update = function() {
@@ -10700,42 +10680,27 @@ function Updater() {
 Updater.prototype.update = function(frames) {
     var that = this;
     frames.forEach(function(frame, index){
-       if (index == 8){
-            that.updateNinthFrame(that, frame, index, frames);
-        } else if (!(frame instanceof TenthFrame)) {
-            that.updateRegularFrame(that, frame, index, frames);
+        if (index !== 9) {
+            that.updateFrame(that, frame, index, frames);
         }
     });
 }
 
-Updater.prototype.updateRegularFrame = function(that, frame, index, frames){
+Updater.prototype.updateFrame = function(that, frame, index, frames){
     var next = frames[index + 1];
     var nextNext = frames[index + 2];
     if (frame.isStrike()) {
         if (next.isStrike()){
-          that.updateStrikeScoreInNextFrameIsStrike(frame, next, nextNext);
+            if ((next.getSecondScore() !== null)) {
+               that.updateStrike(frame, next);
+            } else {
+               that.updateStrikeIfNextFrameIsStrike(frame, next, nextNext);
+            }
         } else {
           that.updateStrike(frame, next);
         }
     } else if (frame.isSpare()) {
        that.updateSpare(frame, next);
-    }
-}
-
-Updater.prototype.updateNinthFrame = function(that, frame, index, frames){
-    var next = frames[index + 1];
-    if (frame.isStrike()) {
-        if (next.isStrike()){
-            if (next.getSecondScore() !== null) {
-                that.updateNinthFrameScore(frame, next);
-            }
-        } else {
-            if (next.getFirstScore() !== null) {
-                that.updateNinthFrameScore(frame, next);
-            }
-        }
-    } else if (frame.isSpare()) {
-        that.updateSpare(frame, next);
     }
 }
 
@@ -10757,7 +10722,7 @@ Updater.prototype.updateStrike = function(frame, next) {
      }
 }
 
-Updater.prototype.updateStrikeScoreInNextFrameIsStrike = function(frame, next, nextNext){
+Updater.prototype.updateStrikeIfNextFrameIsStrike = function(frame, next, nextNext){
     if (nextNext.getFirstScore() !== null) {
         var score = frame.getFirstScore() +
                     next.getFirstScore() +
@@ -10765,14 +10730,6 @@ Updater.prototype.updateStrikeScoreInNextFrameIsStrike = function(frame, next, n
         frame.setFinalFrameScore(score);
     }
 }
-
-Updater.prototype.updateNinthFrameScore = function(frame, next){
-    var score = frame.getFirstScore() +
-                next.getFirstScore() +
-                next.getSecondScore();
-    frame.setFinalFrameScore(score);
-}
-
 
 if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )
 {

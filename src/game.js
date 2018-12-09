@@ -2,6 +2,7 @@ var Frame = require('../src/frame.js');
 var TenthFrame = require('../src/tenthFrame.js');
 var Updater = require('../src/updater.js');
 
+// TODO get reat of those set Methods that duplicate frame behaviour
 function Game() {
   this.frames = []
   this.createFrames();
@@ -23,14 +24,6 @@ Game.prototype.createFrames = function(){
 
 Game.prototype.getFrame = function(frameIndex) {
   return this.frames[frameIndex];
-}
-
-Game.prototype.setFirstScore = function(frameIndex, score) {
-  this.getFrame(frameIndex).setFirstScore(score);
-}
-
-Game.prototype.setSecondScore = function(frameIndex, score) {
-  this.getFrame(frameIndex).setSecondScore(score);
 }
 
 Game.prototype.getTotal = function() {

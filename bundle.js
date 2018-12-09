@@ -10516,7 +10516,6 @@ function Game() {
   this.createFrames();
   this.updater = new Updater();
   this.increment = 0;
-  this.tenthFrameIncrement = 0;
 }
 
 Game.prototype.addFrame = function(frame){

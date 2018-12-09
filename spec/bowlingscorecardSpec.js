@@ -16,6 +16,8 @@ describe('BowlingScoreCard', function(){
         frame.getSecondScore.and.returnValue(undefined);
         frame.findIndex.and.returnValue([]);
         frame.complete.and.returnValue(false);
+        frame.totalScore.and.returnValue(10);
+
         spyOn(scoreCard, ['getFrames']);
 
         frames = [];
@@ -71,6 +73,18 @@ describe('BowlingScoreCard', function(){
         it("is defined", function() {
             expect(scoreCard.roll).not.toBeUndefined();
         });
+    });
+
+    describe('total method', function(){
+
+        it("is defined", function() {
+            expect(scoreCard.total()).not.toBeUndefined();
+        });
+
+        it("returns game total of 100", function() {
+            expect(scoreCard.total()).toEqual(100);
+        });
+
     });
 
 });

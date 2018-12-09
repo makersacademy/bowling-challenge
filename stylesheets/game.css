@@ -97,3 +97,8 @@ body, html {
     color: wheat;
     left: -13px;
 }
+
+#gameTotal{
+    font-size: 400px;
+    background-color: bisque;
+}

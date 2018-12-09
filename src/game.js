@@ -28,7 +28,7 @@ $(document).ready(function(){
            var total = game.frames[i - 1].total;
            $(firstScore).text(game.frames[i-1].getFirstScore());
            $(secondScore).text(game.frames[i-1].getSecondScore());
-           
+
            if(total == 0){
                total = ''
            };
@@ -38,7 +38,6 @@ $(document).ready(function(){
            isStrikeDisplay(index, i);
            isSpareDisplay(index, i);
        }
-       console.log(game.frames);
    }
 
     function isStrikeDisplay(index,i){
@@ -58,8 +57,17 @@ $(document).ready(function(){
     function isMissDisplay(index, i) {
     }
 
+
+
     $("#roll_button").click(function () {
-        roll();
+        try {
+            roll();
+        }
+        catch(e) {
+            $("#roll_container").append("<div id='gameTotal'>Total: " + game.total() + "</div>");
+            $("#roll_button,#roll_times").remove();
+            alert('Game is over!');
+        }
     });
 
 });

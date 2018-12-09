@@ -32,6 +32,9 @@ BowlingScoreCard.prototype.updatePreviousFrame = function(previousFrame,currentF
 
 BowlingScoreCard.prototype.roll = function(n = 1){
     for(var i = 0; i < n; i++){
+        if (this.getFrames()[9].complete() == true){
+            throw "Game is complete!";
+        }
         var currentFrameIndex = this.currrentFrameIndex();
         var currentFrame = this.getFrames()[currentFrameIndex];
         currentFrame.score();
@@ -43,4 +46,12 @@ BowlingScoreCard.prototype.roll = function(n = 1){
             this.updatePreviousFrame(previousFrame, currentFrame)
         }
     }
+}
+
+BowlingScoreCard.prototype.total = function(){
+    var total = 0;
+    for(var i = 0; i < 10; i++){
+        total += this.getFrames()[i].totalScore();
+    }
+    return total;
 }

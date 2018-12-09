@@ -5,9 +5,9 @@ var Updater = require('../src/updater.js');
 // TODO get reat of those set Methods that duplicate frame behaviour
 function Game() {
   this.frames = []
-  this.createFrames();
   this.updater = new Updater();
   this.increment = 0;
+  this.createFrames();
 }
 
 Game.prototype.addFrame = function(frame){
@@ -36,6 +36,10 @@ Game.prototype.getTotal = function() {
 
 Game.prototype.addFrame = function(frame){
   this.frames.push(frame);
+}
+
+Game.prototype.update = function() {
+  this.updater.update(this.frames);
 }
 
 Game.prototype.inputScore = function(score){
@@ -86,10 +90,6 @@ Game.prototype.inputScore = function(score){
       return;
    }
    this.update();
-}
-
-Game.prototype.update = function() {
-  this.updater.update(this.frames);
 }
 
 if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )

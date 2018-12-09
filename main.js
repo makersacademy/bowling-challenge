@@ -14,7 +14,6 @@ function drawTable(game) {
   var finalScores = "<tr>";
   var rowEnder = '</tr>';
   var table = "";
-  var totalScore = "";
   game.frames.forEach(function(frame, index){
      if (!(frame instanceof TenthFrame)) {
         tableHeaders += '<th class="tg-0lax" colspan="2">' + (index + 1) +'</th>';
@@ -48,14 +47,13 @@ function deNullify(score) {
    return score ? score : " ";
 }
 
-
 $(document).ready(function(){
   var game = new Game();
-
   $('#bowlingTable').prepend(drawTable(game));
   $('#enter_score').click(function(){
      var score = parseInt($('#num_input').val());
      game.inputScore(score);
+
      $('#bowlingTable').children().remove();
      $('#bowlingTable').prepend(drawTable(game));
   });

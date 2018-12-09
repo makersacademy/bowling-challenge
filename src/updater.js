@@ -32,29 +32,26 @@ Updater.prototype.updateFrame = function(that, frame, index, frames){
 }
 
 Updater.prototype.updateSpare = function(frame, next) {
-    if (next.getFirstScore() !== null) {
-        var score = frame.getFirstScore() +
-                    frame.getSecondScore() +
-                    next.getFirstScore();
-        frame.setFinalFrameScore(score);
+    if (next.getFirstScore()) {
+        frame.setFinalFrameScore(frame.getFirstScore() +
+                                 frame.getSecondScore() +
+                                 next.getFirstScore());
     }
 }
 
 Updater.prototype.updateStrike = function(frame, next) {
-    if (next.getFirstScore() !== null) {
-          var score = frame.getFirstScore() +
-                      next.getFirstScore() +
-                      next.getSecondScore();
-          frame.setFinalFrameScore(score);
+    if (next.getFirstScore()) {
+          frame.setFinalFrameScore(frame.getFirstScore() +
+                                   next.getFirstScore() +
+                                   next.getSecondScore());
      }
 }
 
 Updater.prototype.updateStrikeIfNextFrameIsStrike = function(frame, next, nextNext){
-    if (nextNext.getFirstScore() !== null) {
-        var score = frame.getFirstScore() +
-                    next.getFirstScore() +
-                    nextNext.getFirstScore();
-        frame.setFinalFrameScore(score);
+    if (nextNext.getFirstScore()) {
+        frame.setFinalFrameScore(frame.getFirstScore() +
+                                 next.getFirstScore() +
+                                 nextNext.getFirstScore());
     }
 }
 

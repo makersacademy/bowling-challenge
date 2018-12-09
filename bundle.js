@@ -15,7 +15,6 @@ function drawTable(game) {
   var finalScores = "<tr>";
   var rowEnder = '</tr>';
   var table = "";
-  var totalScore = "";
   game.frames.forEach(function(frame, index){
      if (!(frame instanceof TenthFrame)) {
         tableHeaders += '<th class="tg-0lax" colspan="2">' + (index + 1) +'</th>';
@@ -49,14 +48,13 @@ function deNullify(score) {
    return score ? score : " ";
 }
 
-
 $(document).ready(function(){
   var game = new Game();
-
   $('#bowlingTable').prepend(drawTable(game));
   $('#enter_score').click(function(){
      var score = parseInt($('#num_input').val());
      game.inputScore(score);
+
      $('#bowlingTable').children().remove();
      $('#bowlingTable').prepend(drawTable(game));
   });
@@ -10513,9 +10511,9 @@ var Updater = require('../src/updater.js');
 // TODO get reat of those set Methods that duplicate frame behaviour
 function Game() {
   this.frames = []
-  this.createFrames();
   this.updater = new Updater();
   this.increment = 0;
+  this.createFrames();
 }
 
 Game.prototype.addFrame = function(frame){
@@ -10544,6 +10542,10 @@ Game.prototype.getTotal = function() {
 
 Game.prototype.addFrame = function(frame){
   this.frames.push(frame);
+}
+
+Game.prototype.update = function() {
+  this.updater.update(this.frames);
 }
 
 Game.prototype.inputScore = function(score){
@@ -10594,10 +10596,6 @@ Game.prototype.inputScore = function(score){
       return;
    }
    this.update();
-}
-
-Game.prototype.update = function() {
-  this.updater.update(this.frames);
 }
 
 if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )
@@ -10704,29 +10702,26 @@ Updater.prototype.updateFrame = function(that, frame, index, frames){
 }
 
 Updater.prototype.updateSpare = function(frame, next) {
-    if (next.getFirstScore() !== null) {
-        var score = frame.getFirstScore() +
-                    frame.getSecondScore() +
-                    next.getFirstScore();
-        frame.setFinalFrameScore(score);
+    if (next.getFirstScore()) {
+        frame.setFinalFrameScore(frame.getFirstScore() +
+                                 frame.getSecondScore() +
+                                 next.getFirstScore());
     }
 }
 
 Updater.prototype.updateStrike = function(frame, next) {
-    if (next.getFirstScore() !== null) {
-          var score = frame.getFirstScore() +
-                      next.getFirstScore() +
-                      next.getSecondScore();
-          frame.setFinalFrameScore(score);
+    if (next.getFirstScore()) {
+          frame.setFinalFrameScore(frame.getFirstScore() +
+                                   next.getFirstScore() +
+                                   next.getSecondScore());
      }
 }
 
 Updater.prototype.updateStrikeIfNextFrameIsStrike = function(frame, next, nextNext){
-    if (nextNext.getFirstScore() !== null) {
-        var score = frame.getFirstScore() +
-                    next.getFirstScore() +
-                    nextNext.getFirstScore();
-        frame.setFinalFrameScore(score);
+    if (nextNext.getFirstScore()) {
+        frame.setFinalFrameScore(frame.getFirstScore() +
+                                 next.getFirstScore() +
+                                 nextNext.getFirstScore());
     }
 }
 

@@ -21,7 +21,7 @@ Updater.prototype.updateFrame = function(that, frame, index, frames){
             if ((next.getSecondScore() !== null)) {
                that.updateStrike(frame, next);
             } else {
-               that.updateStrikeScoreInNextFrameIsStrike(frame, next, nextNext);
+               that.updateStrikeIfNextFrameIsStrike(frame, next, nextNext);
             }
         } else {
           that.updateStrike(frame, next);
@@ -49,7 +49,7 @@ Updater.prototype.updateStrike = function(frame, next) {
      }
 }
 
-Updater.prototype.updateStrikeScoreInNextFrameIsStrike = function(frame, next, nextNext){
+Updater.prototype.updateStrikeIfNextFrameIsStrike = function(frame, next, nextNext){
     if (nextNext.getFirstScore() !== null) {
         var score = frame.getFirstScore() +
                     next.getFirstScore() +

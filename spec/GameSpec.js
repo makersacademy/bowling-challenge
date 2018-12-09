@@ -16,4 +16,8 @@ describe('Game', function() {
     expect(game.score).toEqual(0);
   });
 
+  it('should accept an empty list of frames', function(){
+    expect(game.frames).toEqual([]);
+  });
+
 });

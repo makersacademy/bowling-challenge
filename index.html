@@ -3,6 +3,10 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="public/scorecard.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js">
+    </script>
+    <script src="src/bowlingCard.js"></script>
+    <script src="js/interface.js"></script>
     <title>Bowling Scorecard</title>
   </head>
   <body>
@@ -19,13 +23,12 @@
       <div class="heading">9</div>
       <div class="heading">10</div>
 
-      <div class="score_line">
-        <div class="frame_line"></div>
-        <div class="frame_line">
+        <div class="player"></div>
+        <div class="frame1">
           <div class="frame_inside_grid">
-            <div class="frame_bowl1"></div>
-            <div class="frame_bowl2"></div>
-            <div class="frame_score"></div>
+            <div class="frame1_bowl1"></div>
+            <div class="frame1_bowl2"></div>
+            <div class="frame1_score"></div>
           </div>
         </div>
         <div class="frame_line">
@@ -89,9 +92,26 @@
             <div class="frame10_score"></div>
           </div>
         </div>
-      </div>
-      
   </div>
+  <br>
+  <form class="name">
+    Enter player name: <input type="text" id="player_name">
+    <input type="submit">
+  </form>
+
+    <div hidden class="enter-score">
+      <p>Enter score:</p>
+      <input type="submit" class="bowl-1" value="1">
+      <input type="submit" class="bowl-2" value="2">
+      <input type="submit" class="bowl-3" value="3">
+      <input type="submit" class="bowl-4" value="4">
+      <input type="submit" class="bowl-5" value="5">
+      <input type="submit" class="bowl-6" value="6">
+      <input type="submit" class="bowl-7" value="7">
+      <input type="submit" class="bowl-8" value="8">
+      <input type="submit" class="bowl-9" value="9">
+      <input type="submit" class="bowl-10" value="strike">
+    </div>
 
   </body>
 </html>

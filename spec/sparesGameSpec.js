@@ -1,4 +1,4 @@
-describe('Mock game - perfect game', function(){
+describe('Mock game - spares game', function(){
   //Play full game of bolwing
   sparesCard = new BowlingCard();
   sparesCard.enterScore(5);

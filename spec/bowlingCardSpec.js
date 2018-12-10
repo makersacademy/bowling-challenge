@@ -29,17 +29,17 @@ describe('Bowling Card', function(){
     });
   });
   describe('frameScores', function(){
-    // it('calculates frame scores after each frame', function(){
-    //   bowlingCard.enterScore(3);
-    //   bowlingCard.enterScore(5);
-    //   expect(bowlingCard.frameScores[0]).toEqual(8);
-    // });
-    // it('adds next roll after a spare', function(){
-    //   bowlingCard.enterScore(5);
-    //   bowlingCard.enterScore(5);
-    //   bowlingCard.enterScore(3);
-    //   expect(bowlingCard.frameScores[0]).toEqual(13);
-    // });
+    it('calculates frame scores after each frame', function(){
+      bowlingCard.enterScore(3);
+      bowlingCard.enterScore(5);
+      expect(bowlingCard.frameScores[0]).toEqual(8);
+    });
+    it('adds next roll after a spare', function(){
+      bowlingCard.enterScore(5);
+      bowlingCard.enterScore(5);
+      bowlingCard.enterScore(3);
+      expect(bowlingCard.frameScores[0]).toEqual(13);
+    });
     it('calculates 3 strikes in a row', function(){
       bowlingCard.enterScore(10);
       bowlingCard.enterScore(10);

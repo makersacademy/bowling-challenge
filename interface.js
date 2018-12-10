@@ -169,10 +169,10 @@ scoreGuard = function(score){
   score = ($("#enter-score").val());
   if (score === 'x' || score === '/') {
     return;
-  } else if (score > 10) {
+  } else if (parseInt(score) > 10) {
     alert("Score can not exceed 10, please try again")
   }
-  else if ((score + frame.firstTurn) > 10) {
+  else if ((parseInt(score) + frame.firstTurn) > 10) {
     alert("Score can not exceed 10, please try again")
   }
 };

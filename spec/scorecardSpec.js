@@ -102,7 +102,6 @@ describe("Scorecard", function() {
             score.updateScore(10,3,10);
             console.log(JSON.stringify(score.scores));
         expect(score.total).toEqual(300);
-        score.totalScore ();
     })
 
 

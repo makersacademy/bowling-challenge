@@ -20,6 +20,26 @@ describe('Game', function() {
     expect(game.frames.length).toEqual(10);
   });
 
+  it('should move to the next frame if finished current frame', function(){
+    game.frames[game.currentFrame].bowl(10);
+    game.nextFrame();
+    expect(game.currentFrame).toEqual(1);
+  });
+
+  it('should throw error if next frame called in unfinished frame', function(){
+    expect(function(){ game.nextFrame(); }).toThrow(new Error('Too early!'));
+  });
+
+  it('should keep a running total of the score', function(){
+    game.frames[game.currentFrame].bowl(2);
+    game.frames[game.currentFrame].bowl(3);
+    game.nextFrame();
+    game.frames[game.currentFrame].bowl(4);
+    game.frames[game.currentFrame].bowl(5);
+    game.nextFrame();
+    expect(game.totalScore).toEqual(14);
+  });
+
 });
 
 describe('Frame', function(){

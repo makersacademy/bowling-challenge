@@ -10,12 +10,13 @@ function Game(){
   }
 };
 
-Game.prototype.start = function (frame) {
-  this.frames[this.currentFrame] = (new frame);
-};
-
-Game.prototype.newFrame = function () {
-  this.start(Frame);
+Game.prototype.nextFrame = function () {
+  if (this.frames[this.currentFrame].isOver() === true) {
+    this.totalScore += this.frames[this.currentFrame].score;
+    this.currentFrame++;
+  } else {
+    throw new Error ('Too early!')
+  }
 };
 
 

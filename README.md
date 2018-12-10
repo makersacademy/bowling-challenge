@@ -2,8 +2,31 @@
 Bowling Challenge
 =================
 
+User Stories
 
-* Challenge time: rest of the day and weekend.
+As a bowler
+So that I can keep score of my game
+I want to record my game scores in a scorecard app.
+
+As a bowler
+So that I can see how my game is progressing
+I want to be able to see my current total.
+
+As a bowler
+So that I can show off to my friends
+I want my scorecard to show when I score Strikes or Spares
+
+`Scorecard` has a function called #`scores` that stores tiered arrays as a property. Each sub-array has this index allocation:
+
+Array index   | 0 | 1 | 2 | 3 | 4
+---------|---|---|---|---|---
+Used for | Flagging a Strike | 1st Roll | 2nd Roll | Bonus Roll (only in 10th Frame) | Flagging a Spare
+Value | 0 = false or 1 = true | 0 to 10 | 0 to 10 | 0 to 10 | 0 = false or 1 = true
+
+
+---
+* Challenge time: rest of the day and weeken
+d.
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README
 * If you have a partial solution, **still check in a partial solution**

@@ -2,28 +2,35 @@
 
 describe('feature test', function() {
 
-  var scorer;
+  var gameScorer;
+  var frameScorer;
+  var game;
 
   beforeEach(function() {
-    scorer = new Scorer();
-  });
+    gameScorer = new GameScorer();
+    frameScorer = new FrameScorer();
+    game = new Game();
+    });
+
 
   describe("scorecard features", function() {
     it("as a user i want to be able to calculate  \
     the score of my first bowl", function() {
-      scorer.firstBowl(5);
-      expect(scorer.firstBowlScore).toEqual(5);
+      frameScorer.updateFirstBowlScore(5);
+      expect(frameScorer.firstBowlScore).toEqual(5);
     });
   });
 
   it("should be able to calculate the score of users second bowl", function() {
-    scorer.secondBowl(5);
-    expect(scorer.secondBowlScore).toEqual(5);
+    frameScorer.updateSecondBowlScore(5);
+    expect(frameScorer.secondBowlScore).toEqual(5);
   });
 
   it("should be able to calculate the score of both bowls", function() {
-    scorer.firstBowl(5);
-    scorer.secondBowl(5)
-    expect(scorer.total).toEqual(10);
+    frameScorer.updateFirstBowlScore(5)
+    frameScorer.updateSecondBowlScore(5)
+    gameScorer.calculateFirstBowlScore(game, frameScorer)
+    gameScorer.calculateSecondBowlScore(game, frameScorer)
+    expect(gameScorer.total).toEqual(10);
   });
 });

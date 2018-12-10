@@ -3,6 +3,15 @@ Bowling Challenge
 =================
 
 
+Consists of 3 classes:
+
+1. Game class that uses strike, spare, firststrike and secondstrike variables to keep track of previous frames strikes and spares.
+
+2. GameScorer class that calculates the running total for the game.
+
+3. FrameScorer class that calculates the score for each frame in the game.
+
+
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README

@@ -57,10 +57,6 @@ Frame.prototype.isSpare = function() {
     return this.spare;
 }
 
-Frame.prototype.isRegular = function() {
-    return !(this.spare || this.strike);
-}
-
 Frame.prototype.isFinalised = function() {
     return this.finalised;
 }

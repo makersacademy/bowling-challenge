@@ -64,26 +64,6 @@ describe("Frame", function() {
         expect(frame.isFinalised()).toEqual(true);
     });
 
-    it("can say that it is a regular frame (i.e. not a strike or spare)", function(){
-        frame.setFirstScore(3);
-        frame.setSecondScore(4);
-        expect(frame.isRegular()).toEqual(true);
-    });
-
-
-    it("will return false from isRegular() if it is a strike", function(){
-        frame.setFirstScore(10);
-        expect(frame.isRegular()).toEqual(false);
-    });
-
-    it("will return false from isRegular() if it is a spare", function(){
-        frame.setFirstScore(3);
-        frame.setSecondScore(7);
-        expect(frame.isRegular()).toEqual(false);
-    });
-
-
-
     it("will return false from isFinialised() if isSpare() or isStrike() returns true and setFinalFrameScore() has not been called ", function() {
         frame.spare = true;
         expect(frame.isFinalised()).toEqual(false);

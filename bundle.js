@@ -10503,10 +10503,6 @@ Frame.prototype.isSpare = function() {
     return this.spare;
 }
 
-Frame.prototype.isRegular = function() {
-    return !(this.spare || this.strike);
-}
-
 Frame.prototype.isFinalised = function() {
     return this.finalised;
 }
@@ -10521,7 +10517,6 @@ var Frame = require('../src/frame.js');
 var TenthFrame = require('../src/tenthFrame.js');
 var Updater = require('../src/updater.js');
 
-// TODO get reat of those set Methods that duplicate frame behaviour
 function Game() {
   this.frames = []
   this.updater = new Updater();

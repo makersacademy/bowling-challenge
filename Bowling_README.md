@@ -35,6 +35,7 @@ I want to be able to reset the game once the game is over
 
 ```
 
+
 ## Technology used
 
 - Jasmine for testing
@@ -43,6 +44,26 @@ I want to be able to reset the game once the game is over
 - CSS to style the page
 - Jquery to add features such as adding scores to the table, resetting the game etc.
 - Font Awesome CDN for icons
+
+
+## How to use
+To use the bowling app you will first need to clone this repository using:
+
+```
+git clone https://github.com/Ajay233/bowling-challenge.git
+```
+
+Then, while in the bowling_challenge directory use:
+```
+open index.html
+```
+
+
+## How to play
+
+- To play a game you will need to enter either a number between 1-9, "x" for a strike or "/" for a spare.
+- Once the 10th frame and any subsequent bonus goes have been played, the game will prevent you from playing another game unless you click the reset button.
+
 
 ## Below are screenshots of the finished app
 

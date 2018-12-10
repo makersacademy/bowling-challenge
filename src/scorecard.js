@@ -34,3 +34,13 @@
   Scorecard.prototype.addFrame = function() {
     this.frames.push(new Frame())
   }
+
+  Scorecard.prototype.getScoreToFrame = function(frameNumber) {
+    var score = 0
+    var loopvar
+    for (loopvar = 0; loopvar <= frameNumber; loopvar++) {
+      console.log(this.frames[loopvar].getFrameScore())
+      score += this.frames[loopvar].getFrameScore()
+    }
+    return score
+  }

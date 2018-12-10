@@ -4,22 +4,20 @@ $(document).ready(function() {
   $('#score-button').on('click', function() {
     score = parseInt( $('#score-input').val() )
     scorecard.addScore(score)
-    // addInputScore(scorecard)
-    insertScore(scorecard)
+    updateScores(scorecard)
   })
 })
 
-function addInputScore(scorecard) {
-  $("#scorecard tbody tr").remove()
+function updateScores(scorecard) {
   $.each(scorecard.frames, function(index, frame) {
-    console.log(frame)
-    $("#scorecard tbody")
-      .append($('<tr id="' + index + '">')
-          .append($('<td>').text(index + 1))
-          .append($('<td>').text('roll'))
-          .append($('<td>').text('pins'))
-          .append($('<td>').text(frame.getFrameScore()))
-          .append($('<td>').text('notes'))
-      )
+    var frameNumber = index + 1
+    replace = '#frame-' + frameNumber + '-score'
+    $(replace).text(scorecard.getScoreToFrame(index))
+    console.log(replace)
+    $.each(frame.rolls, function(index, roll) {
+      rollNumber = index + 1
+      replace = '#frame-' + frameNumber + "-roll-" + rollNumber
+      $(replace).text(roll.score)
+    })
   })
 }

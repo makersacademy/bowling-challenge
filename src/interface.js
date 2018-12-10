@@ -1,5 +1,4 @@
 $(document).ready( function() {
-
   var game = new Game();
   var pins;
 
@@ -14,8 +13,8 @@ $(document).ready( function() {
       pins = pins || 0;
       $('#f' + frame +'r'+ roll).text(pins);
       game.calculateFramePoints(pins);
-      // console.log('frame no before update:' + game.currentFrame);
-      // console.log('roll before update:' + game.roll);
+      console.log('frame no before update:' + game.currentFrame);
+      console.log('roll before update:' + game.roll);
 
       $('#f' + frame).text(game.frameScores[game.currentFrame]);
 
@@ -24,15 +23,15 @@ $(document).ready( function() {
       // console.log('roll after update:' + game.roll);
       // console.log('frame points:' + game.getFramePoints());
       // console.log('array:' + game.frameScores);
-
+      //
       // console.log('previousFrame:' + previousFrame);
       // console.log('previousFrame score:' + game.frameScores[previousFrame]);
       $('#f' + previousFrame).text(game.frameScores[previousFrame]);
       $('#totalscore').text(game.total());
 
-      console.log('bonus array' + game.bonus);
-      console.log('bonus previousFrame ' + game.bonus[game.currentFrame - 1] );
-      console.log('frame: ' + game.currentFrame);
+      // console.log('bonus array' + game.bonus);
+      // console.log('bonus previousFrame ' + game.bonus[game.currentFrame - 1] );
+      // console.log('frame: ' + game.currentFrame);
       removeDropDownList();
     });
 

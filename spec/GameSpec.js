@@ -40,6 +40,15 @@ describe('Game', function() {
     expect(game.totalScore).toEqual(14);
   });
 
+  it('should add a bonus after a spare', function(){
+    game.frames[game.currentFrame].bowl(5);
+    game.frames[game.currentFrame].bowl(5);
+    game.nextFrame();
+    game.frames[game.currentFrame].bowl(10);
+    game.nextFrame();
+    expect(game.totalScore).toEqual(30);
+  });
+
 });
 
 describe('Frame', function(){

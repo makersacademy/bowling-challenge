@@ -20,6 +20,7 @@ function Frame(){
 
 Frame.prototype.total = function(){
   this.score += this.first_roll + this.second_roll;
+  this.score = Math.min(0, Math.max(30, this.score));
 };
 
 Frame.prototype.check_strike = function(){

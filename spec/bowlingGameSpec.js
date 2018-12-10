@@ -1,25 +1,28 @@
 'use strict';
 
 describe('Bowling Game', function() {
-  it('can create a bowling game', function() {
-    var game = new BowlingGame();
+
+  var game;
+
+  beforeEach(function() {
+    game = new BowlingGame();
   });
 
   //player never hits a pin (20 zero scores)
   it('can roll a gutter game', function() {
-    var game = new BowlingGame();
-    for(var i = 0; i < 20; i++) {
-      game.roll(0);
-    }
+    rollMore(0, 10);
     expect(game.score()).toBe(0);
   });
 
   it('can roll ones', function() {
-    var game = new BowlingGame();
-    for(var i = 0; i < 20; i ++) {
-      game.roll(1);
+    rollMore(1, 10);
     }
-    expect(game.score()).toBe(20);
+    expect(game.score()).toBe(10);
   });
 
+  var rollMore = function(pins, rolls) {
+    for (var i = 0; i < rolls; i++) {
+      game.roll(pins);
+    }
+  };
 });

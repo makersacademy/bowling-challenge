@@ -1,40 +1,49 @@
 function Game() {
-  this.cur_frame = 1;
+  this.cur_frame = 0;
+  this.cur_roll = 0
   this.ary = [];
   this.wholeGame = [];
   this.totalScore = 0;
+  this.score;
+  this.pinsDown;
 }
 
 Game.prototype.knockDown = function(pins) {
-  var pinsDown = 0;
+  this.pinsDown = 0;
+  this.isNewFrame();
   this.ary.push(pins);
   if (this.isFrameEnd()) {
     for (var i=0; i<this.ary.length; i++) {
-      pinsDown += this.ary[i];
+      this.pinsDown += this.ary[i];
     }
-  this.wholeGame.push(this.ary);
-  this.ary = [];
-  this.cur_frame++;
-  return pinsDown; 
+    this.wholeGame.push(this.ary);
+    this.ary = [];
   }
+  this.cur_roll += 1
+  return this.pinsDown = pins; 
+};
+
+Game.prototype.isNewFrame = function() {
+  if (!this.ary[0] && this.ary[0]!==0){this.cur_frame++; this.cur_roll = 0};
 };
 
 Game.prototype.frameScore = function(frameNo) {
-  var score = 0;
+  score = 0;
+  var indexNo = frameNo - 1; // the index no of this frame in the wholeGame ary
   if (frameNo === 10) {
-    for (var i=0; i<this.wholeGame[frameNo-1].length; i++) {
-      score += this.wholeGame[frameNo-1][i]
+    for (var i=0; i<this.wholeGame[indexNo].length; i++) {
+      score += this.wholeGame[indexNo][i]
     }
   }
   else {
-    if (this.wholeGame[frameNo-1][0] === 10) {
-      (this.wholeGame[frameNo][1])? score += 10 + this.wholeGame[frameNo][0] + this.wholeGame[frameNo][1] : score += 20 + this.wholeGame[frameNo + 1][0]
+    if (this.isStrike(this.wholeGame[indexNo])) {
+      (this.isStrike(this.wholeGame[indexNo+1]))? score += 20 + this.wholeGame[indexNo+2][0] : score += 10 + this.wholeGame[indexNo+1][0] + this.wholeGame[indexNo+1][1]
     }
     else {
-      score += (this.wholeGame[(frameNo - 1)][0] + this.wholeGame[(frameNo - 1)][1]);
+      this.score += (this.wholeGame[(indexNo)][0] + this.wholeGame[(indexNo)][1]);
       if (score < 10) {score}
       else if (score === 10) {
-        score += this.wholeGame[frameNo][0]
+        score += this.wholeGame[indexNo+1][0]
       } 
     }
   }
@@ -54,10 +63,6 @@ Game.prototype.isFrameEnd = function() {
   }
 }
 
-Game.prototype.isStrike = function() {
-  return (this.ary[0] === 10);
-};
-
-Game.prototype.isSpare = function() {
-  return (this.ary[0] + this.ary[1] === 10);
-};
+Game.prototype.isStrike = function(ary) {
+  return (ary[0] === 10);
+}

@@ -14,7 +14,7 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 
 In any order you like:
 
-* Create a nice interactive animated interface with jQuery.
+* Create a nice interactive animated interface with jQuery
 * Set up [Travis CI](https://travis-ci.org) to run your tests.
 * Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
 
@@ -52,9 +52,14 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
-# Features
+## Features
 
 * calculates scores without bonuses
 * adds bonus for strike (10 pins knocked in first roll)
 * adds bonus for a spare (10 pins knocked with the two rolls of a frame)
 * calculates total
+* remove drop down list at the end of the Game
+
+### To do
+* hide select options based on number of pins knocked
+* refactoring

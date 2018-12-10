@@ -23,11 +23,9 @@ Game.prototype.getPreviousFramePoints = function () {
 
 Game.prototype.calculateFramePoints = function (pins_string) {
   this.pins = Number(pins_string);
-  console.log('pins: ' + this.pins)
   this.currentFramePoints += this.pins;
   this.setBonus(this.pins,this.currentFramePoints);
   this.bonusPoints = this.pins;
-  console.log('cfp form update f:' + this.currentFramePoints);
   this.frameScores[this.currentFrame] = this.currentFramePoints;
 }
 
@@ -53,8 +51,6 @@ Game.prototype.finishFrame = function() {
 };
 
 Game.prototype.setBonus = function(pins, framePoints) {
-  console.log(pins);
-  console.log(framePoints);
   if (pins === 10) {
     this.bonus[this.currentFrame] = "strike";
   } else if (framePoints === 10) {
@@ -90,11 +86,8 @@ Game.prototype.total = function() {
 };
 
 function hideSelectOptions(pins) {
-  console.log("goes to hideSelect " + pins)
 
   for (var i = 0; i <= pins; i++) {
-    console.log("goes to for loop")
-    console.log(i);
     $('.pins').find('option:eq(' + (11 - i) + ')').hide();
   }
 }

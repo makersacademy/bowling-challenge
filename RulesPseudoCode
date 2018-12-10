@@ -1,0 +1,37 @@
+//Create hashes and elements as we go through
+if tracker[0] != 10 { //if not in the tenth frame
+  if (isFirstBowl) {
+    if (isStrike){ //strike
+      tracker = [2,1];
+      frame1.bonus = 'strike';
+    } else {
+      tracker = [1,2];
+    }
+  } else if (isSpare) { //spare
+    tracker = [2,1];
+    frame1.bonus = 'spare';
+  } else {//second bowl, no spare
+    tracker = [2,1];
+  }
+}
+else { //tenth frame
+  if (isStrike) { //strike
+    if (tracker[1] < 3) { tracker = [10,++]; }
+    if (frame10.bonus ==='') {frame10.bonus = 'strike' + tracker[1];}
+  } else if (isSpare){
+    if (tracker[1] < 3) { tracker = [10,++]; }
+    if (frame10.bonus ==='') {frame10.bonus = 'strike' + tracker[1];}
+  } else if (tracker[1] == 1) {
+      tracker = [10,++];
+  } else if (tracker[1] == 2 & bonus != '') {
+      tracker = [10,++];
+  } else {
+    score;
+  }
+}
+//Check for bonuses
+if (tracker[0] > 1) {
+  if (scores['frame'+tracker[0]-1][bonus] != ''){
+
+  }
+}

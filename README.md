@@ -1,6 +1,11 @@
 
-Bowling Challenge
+Bowling Scorecard
 =================
+
+This is a frontend Bowling Scorecard app created using JavaScript and JQuery and tested with Jasmine.
+
+
+
 
 
 * Challenge time: rest of the day and weekend.

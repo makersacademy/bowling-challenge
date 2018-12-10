@@ -1,0 +1,85 @@
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  font-size: 14pt;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 120px 102px 102px 102px 102px 102px 102px 102px 102px 102px 152px;
+  grid-template-rows: 40px 80px;
+}
+
+.heading {
+  padding-top: 8px;
+  font-size: 16pt;
+  border: solid;
+  border-width: 1px;
+  text-align: center;
+}
+.player {
+  padding-top: 25px;
+  font-size: 16pt;
+  border: solid;
+  border-width: 1px;
+  text-align: center;
+}
+.frame1, .frame_line {
+  border: solid;
+  border-width: 1px;
+  text-align: center;
+}
+
+.frame_inside_grid {
+  display: grid;
+  grid-template-columns: 50px 50px;
+  grid-template-rows: 40px 38px;
+}
+
+.frame10_inside_grid {
+  display: grid;
+  grid-template-columns: 50px 50px 50px;
+  grid-template-rows: 40px 38px;
+}
+
+.frame1_bowl1, .frame_bowl1 {
+  border-bottom: solid;
+  border-right: solid;
+  border-width: 1px;
+  text-align: center;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.frame1_bowl2, .frame_bowl2 {
+  border-bottom: solid;
+  border-width: 1px;
+  text-align: center;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.frame_score {
+  text-align: center;
+  grid-column: 1 / 3;
+  grid-row: 2;
+}
+
+.frame_bowl3 {
+  border-bottom: solid;
+  border-left: solid;
+  border-width: 1px;
+  text-align: center;
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.frame10_score {
+  text-align: center;
+  grid-column: 1 / 4;
+  grid-row: 2;
+}
+
+/* .enter-score {
+  visibility: hidden;
+} */

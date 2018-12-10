@@ -52,6 +52,11 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
+## How to use
+1. Download/clone this repo
+2. Open index.html in a browser
+
+
 ## Features
 
 * calculates scores without bonuses

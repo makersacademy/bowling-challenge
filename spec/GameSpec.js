@@ -49,6 +49,15 @@ describe('Game', function() {
     expect(game.totalScore).toEqual(30);
   });
 
+  it('should add a bonus after a strike', function(){
+    game.frames[game.currentFrame].bowl(10);
+    game.nextFrame();
+    game.frames[game.currentFrame].bowl(4);
+    game.frames[game.currentFrame].bowl(4);
+    game.nextFrame();
+    expect(game.totalScore).toEqual(26);
+  });
+
 });
 
 describe('Frame', function(){

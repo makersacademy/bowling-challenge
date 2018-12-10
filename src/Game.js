@@ -13,6 +13,7 @@ function Game(){
 Game.prototype.nextFrame = function () {
   if (this.frames[this.currentFrame].isOver() === true) {
     this.totalScore += this._spareBonus();
+    this.totalScore += this._strikeBonus();
     this.totalScore += this.frames[this.currentFrame].score;
     this.currentFrame++;
   } else {
@@ -21,11 +22,18 @@ Game.prototype.nextFrame = function () {
 };
 
 Game.prototype._spareBonus = function () {
-  if (typeof this.frames[this.currentFrame-1] === 'undefined') {
-    return 0;
-  }
+  if (typeof this.frames[this.currentFrame-1] === 'undefined') { return 0; }
   if (this.frames[this.currentFrame-1].isSpare() == true) {
     return this.frames[this.currentFrame].firstBowl;
+  } else {
+    return 0;
+  }
+};
+
+Game.prototype._strikeBonus = function () {
+  if (typeof this.frames[this.currentFrame-1] === 'undefined') { return 0; }
+  if (this.frames[this.currentFrame-1].isStrike() == true) {
+    return (this.frames[this.currentFrame].firstBowl) + (this.frames[this.currentFrame].secondBowl);
   } else {
     return 0;
   }

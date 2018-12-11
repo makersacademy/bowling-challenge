@@ -24,7 +24,7 @@ describe("Calculator", function() {
       expect(calculator.eachScore).toEqual([3, 7])
     })
 
-    it("works out the score for a strike", function() {
+    it("works out the score for a spare", function() {
       scorer.addScore(5);
       scorer.addScore(5);
       calculator.scoreGame();
@@ -32,6 +32,24 @@ describe("Calculator", function() {
       scorer.addScore(5);
       calculator.scoreGame();
       expect(calculator.eachScore).toEqual([15])
+    })
+
+    it("works out the score for a strike", function() {
+      scorer.addScore(10);
+      calculator.scoreGame();
+      expect(calculator.eachScore).toEqual([])
+      scorer.addScore(5);
+      calculator.scoreGame();
+      expect(calculator.eachScore).toEqual([])
+      scorer.addScore(4);
+      calculator.scoreGame();
+      expect(calculator.eachScore).toEqual([19, 9])
+    })
+
+    it("works out the score for a full game rolling 1 each time", function() {
+      for (var i = 0; i < 20; i++) { scorer.addScore(1) }
+      calculator.scoreGame();
+      expect(calculator.eachScore).toEqual([2,2,2,2,2,2,2,2,2,2])
     })
   })
 

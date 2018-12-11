@@ -18,6 +18,7 @@ Game.prototype.knockDown = function(pins) {
     }
     this.wholeGame.push(this.ary);
     this.ary = [];
+
   }
   this.cur_roll += 1
   return this.pinsDown = pins; 
@@ -28,27 +29,32 @@ Game.prototype.isNewFrame = function() {
 };
 
 Game.prototype.frameScore = function(frameNo) {
-  score = 0;
+  this.score = 0;
   var indexNo = frameNo - 1; // the index no of this frame in the wholeGame ary
   if (frameNo === 10) {
     for (var i=0; i<this.wholeGame[indexNo].length; i++) {
-      score += this.wholeGame[indexNo][i]
+      this.score += this.wholeGame[indexNo][i]
     }
   }
   else {
     if (this.isStrike(this.wholeGame[indexNo])) {
-      (this.isStrike(this.wholeGame[indexNo+1]))? score += 20 + this.wholeGame[indexNo+2][0] : score += 10 + this.wholeGame[indexNo+1][0] + this.wholeGame[indexNo+1][1]
+      (this.isStrike(this.wholeGame[indexNo+1]) && !this.wholeGame[indexNo+1][1])? 
+      this.score += 20 + this.wholeGame[indexNo+2][0] : this.score += 10 + this.wholeGame[indexNo+1][0] + this.wholeGame[indexNo+1][1]
     }
     else {
       this.score += (this.wholeGame[(indexNo)][0] + this.wholeGame[(indexNo)][1]);
-      if (score < 10) {score}
-      else if (score === 10) {
-        score += this.wholeGame[indexNo+1][0]
+      if (this.score < 10) {this.score}
+      else if (this.score === 10) {
+        this.score += this.wholeGame[indexNo+1][0]
       } 
     }
   }
-  this.totalScore += score;
-  return score;
+  // this.totalScore += this.score;
+  return this.score;
+};
+
+Game.prototype.accumScore = function(frameNo) {
+  return this.totalScore += this.frameScore(frameNo);
 };
 
 Game.prototype.isFrameEnd = function() {
@@ -61,6 +67,7 @@ Game.prototype.isFrameEnd = function() {
   else if (this.cur_frame === 10){
     return (this.ary.length >= 3)
   }
+  else {throw new Error ("game ended")}
 }
 
 Game.prototype.isStrike = function(ary) {

@@ -5,9 +5,10 @@ $(document).ready(function () {
   for (let i = 0; i < 11; i += 1) {
     $('#score' + i).click(function () {
       game.knockDown(i);
-      $('.test_1').text(game.cur_frame);
-      $('.test_2').text(game.cur_roll);
       markInput();
+      frScore();
+      accumScore();
+      hideButton();
     })
   };
 
@@ -17,10 +18,18 @@ $(document).ready(function () {
     $('#frame' + cur_frame + "_r" + cur_roll).text(game.pinsDown);
   }
 
-  // function eachScore(){
-  //   var cur_frame = game.cur_frame;
-  //   $('#frameScore' + cur_frame).text(game.frameScore(cur_frame));
-  // }
+  function frScore(){
+    for (let i = 1; i < 11; i++) {
+      $('#frameScore' + i).text(game.frameScore(i));
+    }
+  }
+
+  function accumScore(){
+    for (let i = 1; i < 11; i++) {
+      $('#totalScore' + i).text(game.accumScore(i));
+    }
+  }
+
 
 
 

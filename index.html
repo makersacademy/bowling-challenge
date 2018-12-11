@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>Bowling scorecard</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<!-- <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script> -->
+<script src="jquery.js"></script>
+<script src="src/Game.js"></script>
+<script src="src/interface.js"></script>
+</head>
+<body>
+  <h1>Bowling scorecard</h1>
+
+<div id="pin-selection">
+  <p>Select number of pins knocked:
+    <select class="pins">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+  </select>
+</p>
+  <button id="submit">Submit</button>
+</div>
+
+<br/>
+<br/>
+<br/>
+<table border="1" cellpadding="2">
+  <tr>
+    <th scope="col" colspan="2">Frame 1</th>
+    <th scope="col" colspan="2">Frame 2</th>
+    <th scope="col" colspan="2">Frame 3</th>
+    <th scope="col" colspan="2">Frame 4</th>
+    <th scope="col" colspan="2">Frame 5</th>
+    <th scope="col" colspan="2">Frame 6</th>
+    <th scope="col" colspan="2">Frame 7</th>
+    <th scope="col" colspan="2">Frame 8</th>
+    <th scope="col" colspan="2">Frame 9</th>
+    <th scope="col" colspan="3">Frame 10</th>
+  </tr>
+  <tr>
+    <td id="f1r1">&nbsp;</td>
+    <td id="f1r2">&nbsp;</td>
+    <td id="f2r1">&nbsp;</td>
+    <td id="f2r2">&nbsp;</td>
+    <td id="f3r1">&nbsp;</td>
+    <td id="f3r2">&nbsp;</td>
+    <td id="f4r1">&nbsp;</td>
+    <td id="f4r2">&nbsp;</td>
+    <td id="f5r1">&nbsp;</td>
+    <td id="f5r2">&nbsp;</td>
+    <td id="f6r1">&nbsp;</td>
+    <td id="f6r2">&nbsp;</td>
+    <td id="f7r1">&nbsp;</td>
+    <td id="f7r2">&nbsp;</td>
+    <td id="f8r1">&nbsp;</td>
+    <td id="f8r2">&nbsp;</td>
+    <td id="f9r1">&nbsp;</td>
+    <td id="f9r2">&nbsp;</td>
+    <td id="f10r1">&nbsp;</td>
+    <td id="f10r2">&nbsp;</td>
+    <td id="f11r1">&nbsp;</td>
+  </tr>
+  <tr>
+    <td scope="col" colspan="2" id="f1">&nbsp;</td>
+    <td scope="col" colspan="2" id="f2">&nbsp;</td>
+    <td scope="col" colspan="2" id="f3">&nbsp;</td>
+    <td scope="col" colspan="2" id="f4">&nbsp;</td>
+    <td scope="col" colspan="2" id="f5">&nbsp;</td>
+    <td scope="col" colspan="2" id="f6">&nbsp;</td>
+    <td scope="col" colspan="2" id="f7">&nbsp;</td>
+    <td scope="col" colspan="2" id="f8">&nbsp;</td>
+    <td scope="col" colspan="2" id="f9">&nbsp;</td>
+    <td scope="col" colspan="3" id="f10">&nbsp;</td>
+  </tr>
+</table>
+
+
+<p>Total score: <span id="totalscore">0</span></p>
+
+
+</body>
+</html>

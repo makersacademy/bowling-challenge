@@ -38,7 +38,7 @@ Frame.prototype.addFinalRolls = function(number) {
   if(this.firstRoll === undefined) { return this.firstRoll = number }
   if(this.secondRoll === undefined) {
     this.secondRoll = number;
-    this.isFinished = this.endGame(); 
+    this.isFinished = this.endGame();
   } else {
     this.thirdRoll = number;
     this.isFinished = true;

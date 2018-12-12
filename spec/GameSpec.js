@@ -58,6 +58,28 @@ describe('Game', function() {
     expect(game.totalScore).toEqual(26);
   });
 
+  it('should have a final frame with its own rules', function(){
+    expect(game.frames[9]).toEqual(new FinalFrame);
+  });
+
+describe('FinalFrame', function(){
+
+  var finalFrame;
+
+  beforeEach(function(){
+    finalFrame = new FinalFrame;
+  });
+
+  it('should add a third roll after 2 strikes', function(){
+    finalFrame.bowl(10);
+    finalFrame.bowl(10);
+    finalFrame.bowl(9);
+    expect(finalFrame.thirdBowl).toEqual(9);
+  });
+
+});
+
+
 });
 
 describe('Frame', function(){

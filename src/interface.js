@@ -6,9 +6,11 @@ $(document).ready(function () {
     $('#score' + i).click(function () {
       game.knockDown(i);
       markInput();
+      console.log("haha");
       frScore();
+      finalFrScore();
+      console.log("helo");
       accumScore();
-      hideButton();
     })
   };
 
@@ -19,9 +21,13 @@ $(document).ready(function () {
   }
 
   function frScore(){
-    for (let i = 1; i < 11; i++) {
+    for (let i = 1; i < 10; i++) {
       $('#frameScore' + i).text(game.frameScore(i));
     }
+  }
+
+  function finalFrScore() {
+    $('#frameScore10').text(game.finalFrScore())
   }
 
   function accumScore(){
@@ -30,6 +36,16 @@ $(document).ready(function () {
     }
   }
 
+  // $("#hide").click(function(){
+  //   var cur_roll = game.cur_roll;
+  //   if (cur_roll == 1) {$("#score0").hide();}
+  //   else {$("#score0").show();}
+  // });
+
+  // function(){
+  //   var cur_roll = game.cur_roll;
+  //   if (cur_roll ==) {}
+  // }
 
 
 

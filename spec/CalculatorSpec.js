@@ -51,6 +51,12 @@ describe("Calculator", function() {
       calculator.scoreGame();
       expect(calculator.eachScore).toEqual([2,2,2,2,2,2,2,2,2,2])
     })
+
+    it("works out the score for a full game of strikes", function() {
+      for (var i = 0; i < 12; i++) { scorer.addScore(10) }
+      calculator.scoreGame();
+      expect(calculator.eachScore).toEqual([30,30,30,30,30,30,30,30,30,30]);
+    })
   })
 
 })

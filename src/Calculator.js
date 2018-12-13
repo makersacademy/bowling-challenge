@@ -8,11 +8,12 @@ function Calculator() {
 
 Calculator.prototype.scoreGame = function() {
   this.eachScore = []
-  for(var i = 0; i < 10; i++) {
-    var frame = this.currentGame.frames[i]
-    if(this.isntFrameOver(frame, i)) { return }
-    if(this.cantScore(frame, i)) { return }
-    this.eachScore.push(this.frameScore(frame, i))
+  var i = 0;
+  var frame = this.currentGame.frames[i];
+  while (i < 10 && frame.isFinished && !this.cantScore(frame, i)){
+    this.eachScore.push(this.frameScore(frame, i));
+    i ++;
+    frame = this.currentGame.frames[i];
   }
 }
 
@@ -44,36 +45,20 @@ Calculator.prototype.spareScore = function(frame, index) {
   return(10 + this.currentGame.frames[index+1].firstRoll)
 }
 
-Calculator.prototype.isntFrameOver = function(frame, index) {
-  if(frame.isFinished === false) { return true }
-  if(index === 9 && frame.secondRoll === undefined) { return true }
-  if(index === 9 && frame.firstRoll + frame.secondRoll >= 10 && frame.thirdRoll === undefined) { return true }
-}
-
 Calculator.prototype.cantScore = function(frame, index) {
   var frames = this.currentGame.frames
+  var nextFrame = frames[index+1];
   if(frame.special === 'spare') {
-    if(frames[index+1].firstRoll === undefined) {
-      return true
-    } else {
-      return false
-    }
+    return (nextFrame.firstRoll === undefined);
   } else if(frame.special === 'strike') {
-    if(frames[index+1].special === 'strike') {
-      if(frames[index+2].firstRoll === undefined) {
-        return true
-      } else {
-        return false
-      }
-    } else if(frames[index+1].secondRoll === undefined) {
-      return true
-    } else {
-      return false
+    if(nextFrame.special === 'strike') {
+      return (frames[index+2].firstRoll === undefined);
     }
-  } else {
-    return false
+    return (nextFrame.secondRoll === undefined)
   }
+  return false
 }
+
 Calculator.prototype.calcTotalScore = function() {
   if(this.eachScore.length === 0) {
     return 0

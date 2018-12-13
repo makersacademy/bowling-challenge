@@ -74,3 +74,10 @@ Calculator.prototype.cantScore = function(frame, index) {
     return false
   }
 }
+Calculator.prototype.calcTotalScore = function() {
+  if(this.eachScore.length === 0) {
+    return 0
+  } else {
+    return this.eachScore.reduce((x, y) => x + y);
+  }
+}

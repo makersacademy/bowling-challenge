@@ -60,4 +60,24 @@ describe("Calculator", function() {
 
   })
 
+  describe("totalScore", function() {
+    it("shows 0 when there's no bowling done yet", function() {
+      expect(calculator.calcTotalScore()).toEqual(0)
+    })
+
+    it("shows 1 when there's 2 bad shots played", function() {
+      scorer.addScore(1);
+      scorer.addScore(0);
+      calculator.scoreGame();
+      expect(calculator.calcTotalScore()).toEqual(1)
+    })
+
+    it("works out the total score for a game of nearly all strikes", function() {
+      for (var i = 0; i < 11; i++) { scorer.addScore(10) }
+      scorer.addScore(9);
+      calculator.scoreGame();
+      expect(calculator.calcTotalScore()).toEqual(299)
+    })
+  })
+
 })

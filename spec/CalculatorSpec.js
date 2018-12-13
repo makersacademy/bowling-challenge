@@ -57,6 +57,7 @@ describe("Calculator", function() {
       calculator.scoreGame();
       expect(calculator.eachScore).toEqual([30,30,30,30,30,30,30,30,30,30]);
     })
+
   })
 
 })

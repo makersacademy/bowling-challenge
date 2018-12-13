@@ -59,7 +59,13 @@ Calculator.prototype.cantScore = function(frame, index) {
       return false
     }
   } else if(frame.special === 'strike') {
-    if(frames[index+1].secondRoll === undefined && frames[index+2].firstRoll === undefined) {
+    if(frames[index+1].special === 'strike') {
+      if(frames[index+2].firstRoll === undefined) {
+        return true
+      } else {
+        return false
+      }
+    } else if(frames[index+1].secondRoll === undefined) {
       return true
     } else {
       return false

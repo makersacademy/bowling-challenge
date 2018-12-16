@@ -24,13 +24,15 @@ Game.prototype.knockDown = function(pins) {
 };
 
 Game.prototype.updateFrame = function() {
-  if (!this.frameRecord[0] && this.frameRecord[0]!==0){this.cur_frame++; this.cur_roll = 0};
+  if (!this.frameRecord[0] && this.frameRecord[0]!==0){
+    this.cur_frame++; 
+    this.cur_roll = 0;
+  };
 };
 
 Game.prototype.frameScore = function(frameNo) {
   this.score = 0;
   var index = frameNo - 1; // the index no of this frame in the gameRecord ary
-  if (frameNo === 10) {this.finalFrScore()}
   if (this.isStrike(this.gameRecord[index])) {this.strikeBonus(index);}
   else {
     this.score += (this.gameRecord[(index)][0] + this.gameRecord[(index)][1]);
@@ -43,9 +45,11 @@ Game.prototype.frameScore = function(frameNo) {
 };
 
 Game.prototype.finalFrScore = function() {
+  this.score = 0;
   for (var i=0; i<this.gameRecord[9].length; i++) {
     this.score += this.gameRecord[9][i]
   }
+  return this.score;
 };
 
 Game.prototype.strikeBonus = function(index) {
@@ -57,7 +61,8 @@ Game.prototype.strikeBonus = function(index) {
 };
 
 Game.prototype.accumScore = function(frameNo) {
-  return this.totalScore += this.frameScore(frameNo);
+  if (frameNo===10) {return this.totalScore += this.finalFrScore()}
+  else {return this.totalScore += this.frameScore(frameNo)}
 };
 
 Game.prototype.isFrameEnd = function() {

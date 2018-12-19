@@ -53,12 +53,13 @@ describe('Game',function(){
       expect(game.currentGameScore()).toEqual(13)
     });
 
-    xit('returns total score of game with bonuses implied', function() {
+    it('returns total score of game with bonuses implied', function() {
       game.addFrame(frame);
       game.addFrame(frame2);
       frame.totalFrameScore.and.returnValue(10)
-      game.frameBonus(frame).and.returnValue(3)
+      frame.isASpare.and.returnValue(true)
       frame2.totalFrameScore.and.returnValue(7)
+      frame2.pinsFirstRoll.and.returnValue(3)
       expect(game.currentGameScore()).toEqual(20)
     });
 

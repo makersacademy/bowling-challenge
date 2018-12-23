@@ -1,8 +1,10 @@
 
 Bowling Challenge
 =================
-How to run?
-- Clone the repo and open `index.html` to run the app locally.
+## Deployed on Heroku
+
+[Heroku](https://rock--paper-scissors-app.herokuapp.com/)
+
 
 ![Pictures of UI](img/bowling.png)
 

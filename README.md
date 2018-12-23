@@ -1,9 +1,9 @@
 
 Bowling Challenge
 =================
-## Deployed on Heroku
+#### Deployed on Heroku
 
-[Heroku](https://rock--paper-scissors-app.herokuapp.com/)
+[Heroku](https://bowlling-score-calculator.herokuapp.com/)
 
 
 ![Pictures of UI](img/bowling.png)

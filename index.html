@@ -2,41 +2,87 @@
 <html>
     <head>
         <title>Bowling </title>
-            <script src="https://code.jquery.com/jquery-3.3.0.min.js"></script>
-            <script src="src/Game.js"></script>
-            <script src='src/GameInterface.js'></script>
-
+        <link rel='stylesheet' type='text/css' href='./style.css'>
     <body>
       <h1 id="bowling">Welcome to BowlingScore.com!</h1>
-        <h2 class="top" > Total score: <span id='total_score'></h2>
+      <article id="error"></article>
 
-        <div>
+      <section id='scorecard'>
+        <table>
+          <tr>
+            <th colspan='2'>1</th>
+            <th colspan='2'>2</th>
+            <th colspan='2'>3</th>
+            <th colspan='2'>4</th>
+            <th colspan='2'>5</th>
+            <th colspan='2'>6</th>
+            <th colspan='2'>7</th>
+            <th colspan='2'>8</th>
+            <th colspan='2'>9</th>
+            <th colspan='2'>10</th>
+          </tr>
+          <tr>
+            <td colspan='1'></td><td class='frame' id='frame1' colspan='1'></td>
+            <td colspan='1'></td><td class='frame' id='frame2' colspan='1'></td>
+            <td colspan='1'></td><td class='frame' id='frame3' colspan='1'></td>
+            <td colspan='1'></td><td class='frame' id='frame4' colspan='1'></td>
+            <td colspan='1'></td><td class='frame' id='frame5' colspan='1'></td>
+            <td colspan='1'></td><td class='frame' id='frame6' colspan='1'></td>
+            <td colspan='1'></td><td class='frame' id='frame7' colspan='1'></td>
+            <td colspan='1'></td><td class='frame' id='frame8' colspan='1'></td>
+            <td colspan='1'></td><td class='frame' id='frame9' colspan='1'></td>
+            <td colspan='1'></td><td class='frame' id='frame10' colspan='1'></td>
+          </tr>
+          <tr>
+            <td colspan='2' class='frameScore' frameNo=0></td>
+            <td colspan='2' class='frameScore' frameNo=1></td>
+            <td colspan='2' class='frameScore' frameNo=2></td>
+            <td colspan='2' class='frameScore' frameNo=3></td>
+            <td colspan='2' class='frameScore' frameNo=4></td>
+            <td colspan='2' class='frameScore' frameNo=5></td>
+            <td colspan='2' class='frameScore' frameNo=6></td>
+            <td colspan='2' class='frameScore' frameNo=7></td>
+            <td colspan='2' class='frameScore' frameNo=8></td>
+            <td colspan='2' class='frameScore' frameNo=9></td>
+          </tr>
+        </table>
+      </section>
+
+        <!-- <div>
             <h2 class="top"> Current frame : <span id='current_frame'></h2>
             <h2 class="top"> Current roll : <span class="top"  id='current_roll'></h2>
-        </div>
-            <h2 class="top"  id='bonus'></h2>
+        </div> -->
 
-        <div class ='button'>
-            <button id='zero'>0</button>
-            <button id='one'>1</button>
-            <button id='two'>2</button>
-            <button id='three'>3</button>
-            <button id='four'>4</button>
-            <button id='five'>5</button>
-            <button id='six'>6</button>
-            <button id='seven'>7</button>
-            <button id='eight'>8</button>
-            <button id='nine'>9</button>
-            <button id='ten'>10</button>
-            <button id='new_game'>New Game</button>
-        </div>
+        <section id='roll'>
+          <div class='button'>
+              <button id='zero' class='scoreButton' value=0>0</button>
+              <button id='one' class='scoreButton' value=1>1</button>
+              <button id='two' class='scoreButton' value=2>2</button>
+              <button id='three' class='scoreButton' value=3>3</button>
+              <button id='four' class='scoreButton' value=4>4</button>
+              <button id='five' class='scoreButton' value=5>5</button>
+              <button id='six' class='scoreButton' value=6>6</button>
+              <button id='seven' class='scoreButton' value=7>7</button>
+              <button id='eight' class='scoreButton' value=8>8</button>
+              <button id='nine' class='scoreButton' value=9>9</button>
+              <button id='ten' class='scoreButton' value=10>10</button>
+          </div>
+        </section>
 
-        <div>
+        <section id='footer'>
+          <h2 id='currentScore' > Total score: <span id='total_score'></h2>
+          <!-- <h2 class="top1"> You have <span class="top1" id='error'></span> more pins to hit for this frame</h2> -->
+          <button id='new_game'>New Game</button>
+        </section>
+
+        <!-- <div>
             <h2 class="top1"> Roll 1: <span class="top1" id='roll_1'></h2>
             <h2 class="top1"> Roll 2: <span class="top1" id='roll_2'></h2>
-            <h2 class="top1"> You have <span class="top1" id='error'></span> more pins to hit</h2>
-        </div>
-            <h2 class="top" id='test'></h2>
-        <div></div>
+        </div> -->
     </body>
+    <script src="./jquery-3.3.1.min.js"></script>
+    <script src="src/Frame.js"></script>
+    <script src="src/FinalFrame.js"></script>
+    <script src="src/Game.js"></script>
+    <script src='./GameInterface.js'></script>
 </html>

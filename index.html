@@ -5,7 +5,7 @@
   <title>Bowling Scorecard</title>
 </head>
 
-<body>
+<body class="game">
 
   <span class="border"></span>
 
@@ -25,12 +25,9 @@
     <button type="button" id="score10">10</button>
   </div>
 
-  <button id="hide">button</button>
-  <p id="test"></p>
-
   <div id='bowling'>
 
-  <table class='frame_table' border="1">
+  <table id='frame_table' border="1">
     <tr>
       <th colspan='6'> </th>
       <th colspan='6'>Frame 1</th>
@@ -46,7 +43,8 @@
     </tr>
 
     <tr>
-      <td colspan="6">Knock Down</td>
+      <th colspan="6">Knock Down</th>
+      
       <td id="frame1_r1" colspan='3'></td><td id="frame1_r2" colspan='3'></td>
       <td id="frame2_r1" colspan='3'></td><td id="frame2_r2" colspan='3'></td>
       <td id="frame3_r1" colspan='3'></td><td id="frame3_r2" colspan='3'></td>
@@ -59,10 +57,11 @@
       <td id="frame10_r1" colspan='2'></td>
       <td id="frame10_r2" colspan='2'></td>
       <td id="frame10_r3" colspan='2'></td>
+      
     </tr>
 
     <tr>
-      <td colspan='6'>Frame Score</td>
+      <th colspan='6'>Frame Score</th>
       <td colspan='6' id="frameScore1"></td>
       <td colspan='6' id="frameScore2"></td>
       <td colspan='6' id="frameScore3"></td>
@@ -76,7 +75,7 @@
     </tr>
 
     <tr>
-      <td colspan='6'>Accum. Score</td>
+      <th colspan='6'>Accum. Score</th>
       <td colspan='6' id="totalScore1"></td>
       <td colspan='6' id="totalScore2"></td>
       <td colspan='6' id="totalScore3"></td>
@@ -93,7 +92,8 @@
   </div>
 
   <div>
-    <h2 id='gameCompleted'></h2>
+    <h2 id='gameOver'></h2>
+    <button id='resetGame'>Re-Start!</button>
   </div>
 
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>

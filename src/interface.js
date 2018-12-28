@@ -4,11 +4,13 @@ $(document).ready(function () {
 
   for (let i = 0; i < 11; i += 1) {
     $('#score' + i).click(function () {
+      console.log(game);
       markInput(i);
       frScore();
       finalFrScore();
       accumScore();
-      // disableButtons(i);
+      disableButtons(i);
+      gameOver();
     })
   };
 
@@ -37,19 +39,38 @@ $(document).ready(function () {
     }
   }
 
+  function disableButtons (num) {
+    if (game.cur_roll == 2 && num !== 10) {
+      var to_disable = 11 - num;
+      for (let i = to_disable; i <= 11; i++) {
+        $('#score' + i).hide();
+      }
+    } else {
+      for (var i = 0; i < 11; i++) {
+        $('#score' + i).show();
+      }
+    }
+  }
 
-  // function disableButtons (num) {
-  //   var to_disable = 11 - num;
-  //   console.log(to_disable)
-  //   for (let i = to_disable; i <= 11; i++) {
-  //     $('#score' + i).hide();
-  //   }
-  // }
+  function gameOver() {
+    if (game.gameRecord[9]) {
+      $('#gameOver').text('Game Over!')
+    }
+  }
 
-  // $("#hide").click(function(){
-  //   var cur_roll = game.cur_roll;
-  //   if (cur_roll == 1) {$("#score0").hide();}
-  //   else {$("#score0").show();}
-  // });
+  $('#resetGame').click(function(){
+    resetGame();
+    $('#frame_table td').empty()
+    console.log(true);
+  })
+
+  function resetGame() {
+    game.cur_frame = 1;
+    game.cur_roll = 1
+    game.frameRecord = [];
+    game.gameRecord = [];
+    game.totalScore = [];
+  }
+
 
 })

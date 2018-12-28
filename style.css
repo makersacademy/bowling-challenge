@@ -1,25 +1,30 @@
-body {
-  font-family: 'Arial', sans-serif;
-}
+
 table {
+  align: center;
   border-radius: 5px;
   margin-left: 13%;
+  margin-right: 13%;
   border: 2px solid;
-  border-color: #BC9437;
+  border-color: #db0c08;
   padding: 0;
   border-spacing: 0;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 table th {
   width: 100px;
   border: 1px solid;
-  font-family: 'Arial', cursive;
-  border-color: #BC9437;
+  font-family: 'Caveat', cursive;
+  border-color: #db0c08;
 }
 .frame {
   border: 1px solid;
   border-top: none;
   width: 50px;
-  border-color: #BC9437;
+  height: 50px;
+  border-color: #1852af;
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
 }
 .frameScore {
   height: 45px;
@@ -27,28 +32,61 @@ table th {
   border-top: none;
   border-left: none;
   border-bottom: none;
-  border-color: #BC9437;
+  border-color: #1852af;
+  font-family: 'Caveat', cursive;
+  font-size: 30px;
+
 }
 .scoreButton {
+  height: 30px;
+  width: 8.5%;
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+
 }
-.scoreButton:active {
+
+.scoreButton:hover {
+  height: 30px;
+  width: 8.5%;
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  background-color: #1852af;
+  color: white;
 }
-.scoreButton:focus {
-}
+
 article#error {
 
 }
 h1#title {
   text-align: center;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Orbitron', sans-serif;
   font-size: 60px;
 }
-h2#currentScore {
+
+section#roll {
+  margin-right: 13%;
+  margin-left: 13%;
 }
 
-
-tr#frameRow {
+section#footer {
+  text-align: center;
+  font-family: 'Caveat', cursive;
 }
-section#header {
 
+button#new_game {
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  height: 40px;
+  width: 100px;
+}
+
+button#new_game:hover {
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  height: 40px;
+  width: 100px;
+  background-color: #db0c08;
+  color: white;
 }

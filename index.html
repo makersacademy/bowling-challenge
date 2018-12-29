@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Bowling </title>
-      <link href="https://fonts.googleapis.com/css?family=Caveat|Orbitron" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Caveat|Orbitron" rel="stylesheet">
         <link rel='stylesheet' type='text/css' href='./style.css'>
     <body>
       <h1 id="title">Welcome to BowlingScore.com!</h1>
@@ -49,41 +49,29 @@
         </table>
       </section>
 
-        <!-- <div>
-            <h2 class="top"> Current frame : <span id='current_frame'></h2>
-            <h2 class="top"> Current roll : <span class="top"  id='current_roll'></h2>
-        </div> -->
-
         <section id='roll'>
-          <div class='button'>
-              <button id='zero' class='scoreButton' value=0>0</button>
-              <button id='one' class='scoreButton' value=1>1</button>
-              <button id='two' class='scoreButton' value=2>2</button>
-              <button id='three' class='scoreButton' value=3>3</button>
-              <button id='four' class='scoreButton' value=4>4</button>
-              <button id='five' class='scoreButton' value=5>5</button>
-              <button id='six' class='scoreButton' value=6>6</button>
-              <button id='seven' class='scoreButton' value=7>7</button>
-              <button id='eight' class='scoreButton' value=8>8</button>
-              <button id='nine' class='scoreButton' value=9>9</button>
-              <button id='ten' class='scoreButton' value=10>10</button>
-          </div>
+              <button id='btn0' class='scoreButton' value=0>0</button>
+              <button id='btn1' class='scoreButton' value=1>1</button>
+              <button id='btn2' class='scoreButton' value=2>2</button>
+              <button id='btn3' class='scoreButton' value=3>3</button>
+              <button id='btn4' class='scoreButton' value=4>4</button>
+              <button id='btn5' class='scoreButton' value=5>5</button>
+              <button id='btn6' class='scoreButton' value=6>6</button>
+              <button id='btn7' class='scoreButton' value=7>7</button>
+              <button id='btn8' class='scoreButton' value=8>8</button>
+              <button id='btn9' class='scoreButton' value=9>9</button>
+              <button id='btn10' class='scoreButton' value=10>10</button>
         </section>
 
         <section id='footer'>
           <h2 id='currentScore' > Total score: <span id='total_score'></h2>
-          <!-- <h2 class="top1"> You have <span class="top1" id='error'></span> more pins to hit for this frame</h2> -->
           <button id='new_game'>New Game</button>
         </section>
 
-        <!-- <div>
-            <h2 class="top1"> Roll 1: <span class="top1" id='roll_1'></h2>
-            <h2 class="top1"> Roll 2: <span class="top1" id='roll_2'></h2>
-        </div> -->
     </body>
-    <script src="./jquery-3.3.1.min.js"></script>
-    <script src="src/Frame.js"></script>
-    <script src="src/FinalFrame.js"></script>
-    <script src="src/Game.js"></script>
-    <script src='./GameInterface.js'></script>
+    <script src="./lib/jquery-3.3.1.min.js"></script>
+    <script src="./src/Frame.js"></script>
+    <script src="./src/FinalFrame.js"></script>
+    <script src="./src/Game.js"></script>
+    <script src='./src/GameInterface.js'></script>
 </html>

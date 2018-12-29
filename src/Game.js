@@ -1,8 +1,8 @@
-function Game (frameConstructor = Frame, finalFrameConstructor = FinalFrame) {
+function Game (frame = Frame, finalFrame = FinalFrame) {
   this._frames = []
   this._finished = false
-  this.frameConstructor = frameConstructor
-  this.finalFrameConstructor = finalFrameConstructor
+  this.frame = frame
+  this.finalFrame = finalFrame
 }
 
 Game.prototype.getFrames = function () {
@@ -15,9 +15,9 @@ Game.prototype.getCurrentFrame = function () {
 
 Game.prototype.startNextFrame = function () {
   if (this._frames.length === 9) {
-    this._frames.push(new this.finalFrameConstructor())
+    this._frames.push(new this.finalFrame())
   } else {
-    this._frames.push(new this.frameConstructor())
+    this._frames.push(new this.frame())
   }
 }
 
@@ -28,9 +28,12 @@ Game.prototype.getCurrentScore = function () {
 }
 
 Game.prototype.bowl = function (pins) {
-  if (this.isFinished()) { throw 'Your game is over. Please press "New Game" to start over.' }
-  if (this.getCurrentFrame().isFinished()) { this.startNextFrame() }
-  this.getCurrentFrame().addBowl(pins)
+  if (this.isFinished()) {
+    throw 'Your game is over. Please press "New Game" to start over.'
+  } else if (this.getCurrentFrame().isFinished()) {
+    this.startNextFrame()
+  }
+  this.getCurrentFrame().bowl(pins)
   this.getCurrentScore()
 }
 

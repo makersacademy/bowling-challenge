@@ -14,10 +14,10 @@ FinalFrame.prototype.getScore = function () {
   }, 0)
 }
 
-FinalFrame.prototype.addBowl = function (pins) {
+FinalFrame.prototype.bowl = function (pins) {
   if (this._firstBowl() + pins > this.STRIKE && this._bowlPair.length < 2 &&
     !this.isStrike()) {
-    throw `You can't knock over more than ${STRIKE} pins!`
+    throw `You can't knock over more than ${this.STRIKE} pins!`
   }
   this._bowlPair.push(pins)
 }

@@ -18,30 +18,36 @@ Frame.prototype.numberOfBowls = function () {
 }
 
 Frame.prototype._sumOfBowlPair = function () {
-  if (this.numberOfBowls() < 1) { return 0 }
-  if (this.numberOfBowls() < 2) { return this._firstBowl() }
-  return this._firstBowl() + this._bowlPair[1]
+  if (this.numberOfBowls() == 0) {
+    return 0
+  } else if (this.numberOfBowls() == 1) {
+    return this._firstBowl()
+  } else {
+    return this._firstBowl() + this._bowlPair[1]
+  }
 }
 
-Frame.prototype.addBowl = function (pins) {
+Frame.prototype.bowl = function (pins) {
   if (this._sumOfBowlPair() + pins > this.MAXIMUM_PINS) {
-    throw `You can't knock over more than ${MAXIMUM_PINS} pins!`
+    throw `You can't knock over more than ${this.MAXIMUM_PINS} pins!`
   }
   this._bowlPair.push(pins)
 }
 
-Frame.prototype.getScore = function (secondFrame, thirdFrame) {
-  if (this.numberOfBowls() > 0) {
-    return this._sumOfBowlPair() + this._calculateBonus(secondFrame, thirdFrame)
-  }
-  return 0
+Frame.prototype.getScore = function (nextFrame, nextNextFrame) {
+  return this._sumOfBowlPair() + this._calculateBonus(nextFrame, nextNextFrame)
 }
 
-Frame.prototype._calculateBonus = function (secondFrame, thirdFrame) {
-  if (!secondFrame) { return 0 }
-  if (this.isStrike()) { return this._strikeBonus(secondFrame, thirdFrame) }
-  if (this.isSpare()) { return secondFrame._spareBonus(secondFrame) }
-  return 0
+Frame.prototype._calculateBonus = function (nextFrame, nextNextFrame) {
+  if (!nextFrame) {
+    return 0
+  } else if (this.isStrike()) {
+    return this._strikeBonus(nextFrame, nextNextFrame)
+  } else if (this.isSpare()) {
+    return nextFrame._spareBonus(nextFrame)
+  } else {
+    return 0
+  }
 }
 
 Frame.prototype.isStrike = function () {
@@ -52,16 +58,20 @@ Frame.prototype.isSpare = function () {
   return this._sumOfBowlPair() === this.MAXIMUM_PINS && !this.isStrike()
 }
 
-Frame.prototype._strikeBonus = function (secondFrame, thirdFrame) {
-  if (secondFrame.isStrike() && thirdFrame && thirdFrame._firstBowl()) {
-    return secondFrame._sumOfBowlPair() + thirdFrame._firstBowl()
+Frame.prototype._strikeBonus = function (nextFrame, nextNextFrame) {
+  if (nextFrame.isStrike() && nextNextFrame && nextNextFrame._firstBowl()) {
+    return nextFrame._sumOfBowlPair() + nextNextFrame._firstBowl()
+  } else {
+    return nextFrame._sumOfBowlPair()
   }
-  return secondFrame._sumOfBowlPair()
 }
 
-Frame.prototype._spareBonus = function (secondFrame) {
-  if (!secondFrame._firstBowl()) { return 0 }
-  return secondFrame._firstBowl()
+Frame.prototype._spareBonus = function (nextFrame) {
+  if (!nextFrame._firstBowl()) {
+    return 0
+  } else {
+    return nextFrame._firstBowl()
+  }
 }
 
 Frame.prototype.isFinished = function () {

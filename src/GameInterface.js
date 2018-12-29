@@ -8,8 +8,8 @@ $(document).ready(function() {
     var pins = parseInt($(event.target).attr('value'))
     $('#error').empty()
     bowl(pins)
-    updateScoreCard()
     updateTotalScore()
+    updateScoreCard()
   })
 
   $('#new_game').click(function() {
@@ -25,7 +25,7 @@ $(document).ready(function() {
   })
 
   function updateTotalScore() {
-    $('#currentScore').text('Total score: ' + game.getCurrentScore())
+    $('#currentScore').text('Current score: ' + game.getCurrentScore())
   }
 
   function bowl(pins) {

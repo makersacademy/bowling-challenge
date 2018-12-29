@@ -7,99 +7,102 @@
 
 <body class="game">
 
-  <span class="border"></span>
+  <h1> 
+    <img src="./public/bowling.jpg" id="pin_ball"> 
+    Bowling Scorecard 
+  </h1>
 
-  <h1> Bowling Scorecard </h1>
+  <div class="app">
 
-  <div class='score_selection'>
-    <button type="button" id="score0">0</button>
-    <button type="button" id="score1">1</button>
-    <button type="button" id="score2">2</button>
-    <button type="button" id="score3">3</button>
-    <button type="button" id="score4">4</button>
-    <button type="button" id="score5">5</button>
-    <button type="button" id="score6">6</button>
-    <button type="button" id="score7">7</button>
-    <button type="button" id="score8">8</button>
-    <button type="button" id="score9">9</button>
-    <button type="button" id="score10">10</button>
-  </div>
+    <div class='score_selection'>
+      <button class="numbers" id="score0">0</button>
+      <button class="numbers" id="score1">1</button>
+      <button class="numbers" id="score2">2</button>
+      <button class="numbers" id="score3">3</button>
+      <button class="numbers" id="score4">4</button>
+      <button class="numbers" id="score5">5</button>
+      <button class="numbers" id="score6">6</button>
+      <button class="numbers" id="score7">7</button>
+      <button class="numbers" id="score8">8</button>
+      <button class="numbers" id="score9">9</button>
+      <button class="numbers" id="score10">10</button>
+    </div>
 
-  <div id='bowling'>
+    <table id='frame_table'>
+      <tr>
+        <th colspan='6'> </th>
+        <th colspan='6'>Frame 1</th>
+        <th colspan='6'>Frame 2</th>
+        <th colspan='6'>Frame 3</th>
+        <th colspan='6'>Frame 4</th>
+        <th colspan='6'>Frame 5</th>
+        <th colspan='6'>Frame 6</th>
+        <th colspan='6'>Frame 7</th>
+        <th colspan='6'>Frame 8</th>
+        <th colspan='6'>Frame 9</th>
+        <th colspan='6'>Frame 10</th>
+      </tr>
 
-  <table id='frame_table' border="1">
-    <tr>
-      <th colspan='6'> </th>
-      <th colspan='6'>Frame 1</th>
-      <th colspan='6'>Frame 2</th>
-      <th colspan='6'>Frame 3</th>
-      <th colspan='6'>Frame 4</th>
-      <th colspan='6'>Frame 5</th>
-      <th colspan='6'>Frame 6</th>
-      <th colspan='6'>Frame 7</th>
-      <th colspan='6'>Frame 8</th>
-      <th colspan='6'>Frame 9</th>
-      <th colspan='6'>Frame 10</th>
-    </tr>
+      <tr>
+        <th colspan="6">Knock Down</th>
+        
+        <td id="frame1_r1" colspan='3'></td><td id="frame1_r2" colspan='3'></td>
+        <td id="frame2_r1" colspan='3'></td><td id="frame2_r2" colspan='3'></td>
+        <td id="frame3_r1" colspan='3'></td><td id="frame3_r2" colspan='3'></td>
+        <td id="frame4_r1" colspan='3'></td><td id="frame4_r2" colspan='3'></td>
+        <td id="frame5_r1" colspan='3'></td><td id="frame5_r2" colspan='3'></td>
+        <td id="frame6_r1" colspan='3'></td><td id="frame6_r2" colspan='3'></td>
+        <td id="frame7_r1" colspan='3'></td><td id="frame7_r2" colspan='3'></td>
+        <td id="frame8_r1" colspan='3'></td><td id="frame8_r2" colspan='3'></td>
+        <td id="frame9_r1" colspan='3'></td><td id="frame9_r2" colspan='3'></td>
+        <td id="frame10_r1" colspan='2'></td>
+        <td id="frame10_r2" colspan='2'></td>
+        <td id="frame10_r3" colspan='2'></td>
+        
+      </tr>
 
-    <tr>
-      <th colspan="6">Knock Down</th>
-      
-      <td id="frame1_r1" colspan='3'></td><td id="frame1_r2" colspan='3'></td>
-      <td id="frame2_r1" colspan='3'></td><td id="frame2_r2" colspan='3'></td>
-      <td id="frame3_r1" colspan='3'></td><td id="frame3_r2" colspan='3'></td>
-      <td id="frame4_r1" colspan='3'></td><td id="frame4_r2" colspan='3'></td>
-      <td id="frame5_r1" colspan='3'></td><td id="frame5_r2" colspan='3'></td>
-      <td id="frame6_r1" colspan='3'></td><td id="frame6_r2" colspan='3'></td>
-      <td id="frame7_r1" colspan='3'></td><td id="frame7_r2" colspan='3'></td>
-      <td id="frame8_r1" colspan='3'></td><td id="frame8_r2" colspan='3'></td>
-      <td id="frame9_r1" colspan='3'></td><td id="frame9_r2" colspan='3'></td>
-      <td id="frame10_r1" colspan='2'></td>
-      <td id="frame10_r2" colspan='2'></td>
-      <td id="frame10_r3" colspan='2'></td>
-      
-    </tr>
+      <tr>
+        <th colspan='6'>Frame Score</th>
+        <td colspan='6' id="frameScore1"></td>
+        <td colspan='6' id="frameScore2"></td>
+        <td colspan='6' id="frameScore3"></td>
+        <td colspan='6' id="frameScore4"></td>
+        <td colspan='6' id="frameScore5"></td>
+        <td colspan='6' id="frameScore6"></td>
+        <td colspan='6' id="frameScore7"></td>
+        <td colspan='6' id="frameScore8"></td>
+        <td colspan='6' id="frameScore9"></td>
+        <td colspan='6' id="frameScore10"></td>
+      </tr>
 
-    <tr>
-      <th colspan='6'>Frame Score</th>
-      <td colspan='6' id="frameScore1"></td>
-      <td colspan='6' id="frameScore2"></td>
-      <td colspan='6' id="frameScore3"></td>
-      <td colspan='6' id="frameScore4"></td>
-      <td colspan='6' id="frameScore5"></td>
-      <td colspan='6' id="frameScore6"></td>
-      <td colspan='6' id="frameScore7"></td>
-      <td colspan='6' id="frameScore8"></td>
-      <td colspan='6' id="frameScore9"></td>
-      <td colspan='6' id="frameScore10"></td>
-    </tr>
+      <tr>
+        <th colspan='6'>Accum. Score</th>
+        <td colspan='6' id="totalScore1"></td>
+        <td colspan='6' id="totalScore2"></td>
+        <td colspan='6' id="totalScore3"></td>
+        <td colspan='6' id="totalScore4"></td>
+        <td colspan='6' id="totalScore5"></td>
+        <td colspan='6' id="totalScore6"></td>
+        <td colspan='6' id="totalScore7"></td>
+        <td colspan='6' id="totalScore8"></td>
+        <td colspan='6' id="totalScore9"></td>
+        <td colspan='6' id="totalScore10"></td>
+      </tr>
+    </table>
+    
 
-    <tr>
-      <th colspan='6'>Accum. Score</th>
-      <td colspan='6' id="totalScore1"></td>
-      <td colspan='6' id="totalScore2"></td>
-      <td colspan='6' id="totalScore3"></td>
-      <td colspan='6' id="totalScore4"></td>
-      <td colspan='6' id="totalScore5"></td>
-      <td colspan='6' id="totalScore6"></td>
-      <td colspan='6' id="totalScore7"></td>
-      <td colspan='6' id="totalScore8"></td>
-      <td colspan='6' id="totalScore9"></td>
-      <td colspan='6' id="totalScore10"></td>
-    </tr>
-
-  </table>
-  </div>
-
-  <div>
-    <h2 id='gameOver'></h2>
     <button id='resetGame'>Re-Start!</button>
+    <img src="./public/bowling_cartoon.png" id="man_ball">
+    <h2 id='gameOver'></h2>
+
   </div>
+ 
+ 
 
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="src/Game.js"></script>
   <script src="src/interface.js"></script>
-
+  
 
 
 </body>

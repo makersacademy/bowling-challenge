@@ -66,8 +66,8 @@ Game.prototype.spareBonus = function(index) {
 
 Game.prototype.strikeBonus = function(index) {
   if (!this.gameRecord[index+1]) {return}
-  var nextFrame = this.gameRecord[index+1];
-  this.isStrike(nextFrame)? this.doubleStrikeBonue(index) : this.score += 10 + nextFrame[0] + nextFrame[1]
+  var nextFr = this.gameRecord[index+1];
+  this.isStrike(nextFr)? this.doubleStrikeBonue(index) : this.score += 10 + nextFr[0] + nextFr[1]
 };
 
 Game.prototype.doubleStrikeBonue = function(index) {

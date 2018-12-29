@@ -55,13 +55,13 @@ $(document).ready(function () {
   function gameOver() {
     if (game.gameRecord[9]) {
       $('#gameOver').text('Game Over!')
-    }
+    } 
   }
 
   $('#resetGame').click(function(){
     resetGame();
     $('#frame_table td').empty()
-    console.log(true);
+    console.log("game restart");
   })
 
   function resetGame() {
@@ -70,7 +70,6 @@ $(document).ready(function () {
     game.frameRecord = [];
     game.gameRecord = [];
     game.totalScore = [];
+    $('#gameOver').hide();
   }
-
-
 })

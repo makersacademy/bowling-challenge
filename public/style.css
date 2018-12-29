@@ -1,0 +1,98 @@
+body {
+  background-image: url(./gre_white.png);
+  background-position: center;
+  height: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-size: 20px;
+}
+h1 {
+  background-image: url(./pins.png);
+  font-size: 50px;
+  color: grey;
+  width: 80%;
+  padding: 10px;
+  margin: 10px;
+  border: 0.1em solid transparent;
+  border-image: url('./yel_pink.png') 25 25 25 25 round stretch;
+}
+
+.score_selection {
+  padding: 10px;
+  text-align: left;
+}
+
+.numbers {
+  background-color: transparent;
+  color: black;
+  font-size: 15px;
+  border: 2px solid #845252;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.numbers:hover {
+  background-color: #e7e7e7;
+}
+
+.app {
+/*  background-image: url(./table.png); 
+  height: 100%; */
+}
+
+table {
+  margin: 10px;
+  min-width: 1000px;  
+  min-height: 130px;
+  border:2px solid #4056A1;
+}
+
+td {
+  border: 1px solid black;
+  text-align: center;
+}
+
+th {
+  border: 1px solid black;
+}
+
+#resetGame {
+  text-align: left;
+  float: left;
+  background:transparent;
+  padding:1rem 1rem;
+  margin:10px;
+  transition:all .5s ease;
+  color:#41403E;
+  font-size:20px;
+  letter-spacing:1px;
+  outline:none;
+  box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  border:dashed 2px #41403E;
+}
+
+#resetGame:hover {
+ box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
+} 
+
+#pin_ball {
+  max-width: 60px;
+  height: auto;
+}
+
+#man_ball {
+  text-align: left;
+  float: left;
+  max-width: 50px;
+  height: auto;
+  margin:10px;
+}
+
+h2 {
+  padding: 10px;
+  margin: 10px;
+}

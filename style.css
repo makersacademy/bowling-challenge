@@ -55,7 +55,10 @@ table th {
 }
 
 article#error {
-
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20px;
+  color: #db0c08;
 }
 h1#title {
   text-align: center;

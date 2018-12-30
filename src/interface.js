@@ -6,7 +6,6 @@ $(document).ready(function () {
 
   for (let i = 0; i < 11; i += 1) {
     $('#score' + i).click(function () {
-      console.log(game)
       markInput(i)
       frScore()
       finalFrScore()
@@ -61,6 +60,7 @@ $(document).ready(function () {
   }
 
   $('#resetGame').click(function () {
+    console.log(game.gameRecord)
     resetGame()
     $('#frame_table td').empty()
     console.log('game restart')

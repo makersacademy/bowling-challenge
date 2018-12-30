@@ -1,3 +1,6 @@
+/* eslint-disable camelcase */
+/* global Game:true */
+
 $(document).ready(function () {
   var game = new Game()
 
@@ -21,7 +24,7 @@ $(document).ready(function () {
 
   function frScore () {
     for (let i = 1; i < 10; i++) {
-      if ($.trim($('#frameScore' + i).html()) == '') {
+      if ($.trim($('#frameScore' + i).html()) === '') {
         $('#frameScore' + i).text(game.frameScore(i))
       }
     }
@@ -39,7 +42,7 @@ $(document).ready(function () {
   }
 
   function disableButtons (num) {
-    if (game.cur_roll == 2 && num !== 10) {
+    if (game.cur_roll === 2 && num !== 10) {
       var to_disable = 11 - num
       for (let i = to_disable; i <= 11; i++) {
         $('#score' + i).hide()
@@ -72,3 +75,5 @@ $(document).ready(function () {
     $('#gameOver').hide()
   }
 })
+
+/* eslint-enable camelcase */

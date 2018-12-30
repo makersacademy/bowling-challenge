@@ -4,7 +4,7 @@ function Game () {
   this.frameRecord = []
   this.gameRecord = []
   this.totalScore = []
-  this.score
+  this.cur_score = 0
 }
 
 Game.prototype.knockDown = function (pins) {
@@ -24,27 +24,35 @@ Game.prototype.resetFrame = function () {
 }
 
 Game.prototype.frameScore = function (frameNo) {
-  this.score = 0
+  this.cur_score = 0
   var index = frameNo - 1
-  if (this.isStrike(this.gameRecord[index])) { this.strikeBonus(index) } else if (this.isSpare(this.gameRecord[index])) { this.spareBonus(index) } else { this.noBonus(index) }
-  if (this.score === 0) {} else {
-    this.totalScore.push(this.score)
-    return this.score
+  if (!this.gameRecord[index]) { return }
+  if (this.gameRecord[index].reduce((a, b) => a + b) === 0) { // handle 0 0 score
+    this.totalScore.push(0)
+    return 0
+  } else if (this.isStrike(this.gameRecord[index])) { // handle strike
+    this.strikeBonus(index)
+  } else if (this.isSpare(this.gameRecord[index])) { // handle spare
+    this.spareBonus(index)
+  } else { this.noBonus(index) }
+  if (this.cur_score === 0) {} else { // handle rest
+    this.totalScore.push(this.cur_score)
+    return this.cur_score
   }
 }
 
 Game.prototype.finalFrScore = function () {
-  this.score = 0
+  this.cur_score = 0
   for (var i = 0; this.gameRecord[9][i]; i++) {
-    this.score += this.gameRecord[9][i]
+    this.cur_score += this.gameRecord[9][i]
   }
-  this.totalScore.push(this.score)
-  return this.score
+  this.totalScore.push(this.cur_score)
+  return this.cur_score
 }
 
 Game.prototype.accumScore = function (frameNo) {
   var frameAccum = 0
-  if (!this.totalScore[frameNo - 1]) { return }
+  if (!this.totalScore[frameNo - 1] && this.totalScore[frameNo - 1] !== 0) { return }
   for (var i = 0; i < frameNo; i++) {
     frameAccum += this.totalScore[i]
   }
@@ -52,30 +60,29 @@ Game.prototype.accumScore = function (frameNo) {
 }
 
 Game.prototype.noBonus = function (index) {
-  if (!this.gameRecord[index]) { return }
-  this.score += (this.gameRecord[(index)][0] + this.gameRecord[(index)][1])
+  this.cur_score += (this.gameRecord[(index)].reduce((a, b) => a + b))
 }
 
 Game.prototype.spareBonus = function (index) {
   if (!this.gameRecord[index + 1]) { return }
-  this.score += 10 + this.gameRecord[index + 1][0]
+  this.cur_score += 10 + this.gameRecord[index + 1][0]
 }
 
 Game.prototype.strikeBonus = function (index) {
   if (!this.gameRecord[index + 1]) { return }
   var nextFr = this.gameRecord[index + 1]
-  this.isStrike(nextFr) ? this.doubleStrikeBonue(index) : this.score += 10 + nextFr[0] + nextFr[1]
+  this.isStrike(nextFr) ? this.doubleStrikeBonue(index) : this.cur_score += 10 + nextFr[0] + nextFr[1]
 }
 
 Game.prototype.doubleStrikeBonue = function (index) {
-  if (index === 8) { this.score += 20 + this.gameRecord[9][1] }
-  if (!this.gameRecord[index + 2]) {} else { this.score += 20 + this.gameRecord[index + 2][0] }
+  if (index === 8) { this.cur_score += 20 + this.gameRecord[9][1] }
+  if (!this.gameRecord[index + 2]) {} else { this.cur_score += 20 + this.gameRecord[index + 2][0] }
 }
 
 Game.prototype.isFrameEnd = function (frameNo) {
   if (frameNo < 10) {
     return (this.frameRecord[0] === 10 || this.frameRecord.length >= 2)
-  } else if (frameNo === 10 && (this.frameRecord[0] + this.frameRecord[1] < 10)) {
+  } else if (frameNo === 10 && (this.frameRecord.reduce((a, b) => a + b) < 10)) {
     return (this.frameRecord.length >= 2)
   } else if (frameNo === 10) {
     return (this.frameRecord.length >= 3)

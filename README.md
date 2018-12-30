@@ -33,7 +33,7 @@ Tests are performed with Jasmine. To run the test just open the `SpecRunner.html
 ### Game record
 
 Each frame is stored as an array and the game record is an array of 10 frames. A specific frame can be search by using the index number of the frame `index = frameNo - 1` in the game record. Not the best approch to complete the task:  
-- Many (too many?) validations to ensure the reqired frame exist to avoid `undefine` error  
+- Many (too many?) validations to ensure the required frame exist to avoid `undefine` error  
 - `frameNo - 1`, `index + 1`, `index + 2` are all over the code logic:
 
 ```javascript
@@ -68,12 +68,12 @@ function disableButtons (num) {
 }
 ```
 This is the interface when the buttons are hidden according to the method:
-![Hide button](images/hidebutton.png)
+![Hide button](images/button.png)
 
 ## Improvement
 
 There are several areas where this project could be improved. These are not limited to:
-- Test coverage: monitor test coverage to this repository
+- Test coverage: monitor the test coverage to this repository
 - End game status: recognize a perfect game and gutter game at the end
 - Styling: can always do better
 

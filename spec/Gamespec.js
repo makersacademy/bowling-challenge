@@ -1,6 +1,5 @@
 /* global Game:true */
 /* global i:true */
-var Game = require("../../src/Game.js")
 
 describe('Game', function () {
   var game

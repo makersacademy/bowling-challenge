@@ -80,3 +80,12 @@ Bonuses for strikes and spares are automatically worked out for the user.  To re
 ![Ten Pin Score Example](images/Game_over.png)
 
 When the game is over, if the user tries to enter another score they will be notified that the game is over and that they will have to reset the game to play again.  To do so, the user just has to click the "reset" button and the table will be cleared and the game and all scores will be wiped so a fresh game can begin.
+
+## Updates/Bug Fixes
+- The case of strike input no longer affects scoring i.e. you can now enter either a lower case or upper case "x" and the scoring works as normal.
+- Rules have been added to the app view so the user can refer to them without having to leave the page.
+- Some small styling changes have been implemented so that when scores are added, the user will not have to scroll down the page to click the "Go" and "Restart" buttons.
+- The "Reset" button has been renamed to "Restart", matching the end of game pop up notice which prompts the user to click "Restart" to play a new game.
+
+
+The app has been deployed to Surge, so you can try out the app by visiting:  https://crraazzzybowling.surge.sh

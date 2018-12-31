@@ -6,6 +6,7 @@
     <script src="src/bowling.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style media="screen">
+
       body {
         background-image: url("https://wallpapermemory.com/uploads/429/bowling-background-hd-1280x800-247063.jpg");
 
@@ -57,6 +58,24 @@
         margin: 0 auto;
         width: 250px;
       }
+      #start{
+        font-size: 35px;
+      }
+      #rules{
+        font-size: 35px;
+      }
+      #rules-list{
+        margin: auto;
+        text-align: center;
+        margin-bottom: 30px;
+        background-color: rgb(10, 10, 10, 0.6);
+        border-radius: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 70%;
+        border-style: ridge;
+        font-size: 20px;
+      }
       #enter-score {
         display: block;
         margin: 0 auto;
@@ -68,7 +87,6 @@
         border-bottom: none;
       }
       button {
-        margin: 30px auto;
         display: block;
         background-color: rgb(10, 87, 204);
         font-size: 16px;
@@ -76,6 +94,8 @@
         border-radius: 12px;
         border-color: rgb(10, 87, 204, 0.8);
         padding: 12px 28px;
+        margin: 30px 10px;
+        float: left;
       }
       #score-20 {
         width: auto;
@@ -84,6 +104,12 @@
         font-size: 40px;
         font-weight: bold;
         text-align: center;
+      }
+      .container{
+        display: inline-block;
+      }
+      #numbers, #strike, #spare{
+        font-size: 20px;
       }
     </style>
   </head>
@@ -141,12 +167,22 @@
           <th id="total-10" class="result" colspan="2"></th>
         </tr>
     </table>
-    <h1>Enter your score below</h1>
+    <h2 id= "rules" class="glow">The rules:</h2>
+    <div id="rules-list">
+      <li>Enter a number from <strong id="numbers" class = glow>1-9</strong></li>
+      <li>If you knock down the remaining pins on your second go, enter " <strong id="spare" class="glow">/</strong> " in the input box to denote a spare</li>
+      <li>If you knock all pins down on your first go, you get a strike so you'll need to enter a lower case " <strong id="strike" class="glow">x</strong> " in the input box</li>
+    </div>
+    <h2 id = "start" class="glow">Enter your score below</h2>
     <form class="" action="index.html" method="post">
       <input id="enter-score" type="text" onfocus="this.value=''" name="score" value="">
     </form>
-    <button id="save-score" type="button" name="button">Go <i class="fas fa-bowling-ball"></i></button>
-    <button id="new-game" type="button" name="button">Reset <i class="fas fa-bowling-ball"></i></button>
+    <center>
+    <div class="container">
+      <button id="save-score" type="button" name="button">Go <i class="fas fa-bowling-ball"></i></button>
+      <button id="new-game" type="button" name="button">Restart <i class="fas fa-bowling-ball"></i></button>
+    </div>
+    </center>
   </body>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="interface.js" type="text/javascript"></script>

@@ -56,7 +56,7 @@ play = function(){
 
 firstTurn = function(){
   frame.addFirstScore(($("#enter-score").val()));
-  if (frame.firstTurn === "x") {
+  if (frame.firstTurn === "x" || frame.firstTurn === "X") {
     applyStrikeFormat();
   } else {
     displayScore(frame.firstTurn)
@@ -87,8 +87,8 @@ applyStrikeFormat = function(){
 
 
 playLastFrame = function(){
-  if (game.scoreTable[9].firstTurn === "x") {
-    if (score != "x"){
+  if (game.scoreTable[9].firstTurn === "x" || game.scoreTable[9].firstTurn === "X") {
+    if (score != "x" || score != "X"){
       playOn();
     } else {
       lastFrameStrike();
@@ -158,7 +158,7 @@ newGame = function(){
 };
 
 isScoreValid = function(score){
-  if (score === "x" || score === "/" || score < 10){
+  if (score === "x" || score === "X" || score === "/" || score < 10){
     return true;
   } else {
     return false;
@@ -167,7 +167,7 @@ isScoreValid = function(score){
 
 scoreGuard = function(score){
   score = ($("#enter-score").val());
-  if (score === 'x' || score === '/') {
+  if (score === 'x' || score === 'X' || score === '/') {
     return;
   } else if (parseInt(score) > 10) {
     alert("Score can not exceed 10, please try again")

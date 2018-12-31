@@ -34,8 +34,8 @@ Game.prototype.frameScore = function (frameNo) {
     this.strikeBonus(index)
   } else if (this.isSpare(this.gameRecord[index])) { // handle spare
     this.spareBonus(index)
-  } else { this.noBonus(index) }
-  if (this.cur_score === 0) {} else { // handle rest
+  } else { this.noBonus(index) } // handle rest
+  if (this.cur_score === 0) {} else { // if: strick or spare, return and handle when required frame available
     this.totalScore.push(this.cur_score)
     return this.cur_score
   }

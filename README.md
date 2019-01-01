@@ -58,6 +58,7 @@ Then, while in the bowling_challenge directory use:
 open index.html
 ```
 
+Alternatively, the app has been deployed to Surge, so you can try out the app by visiting:  https://crraazzzybowling.surge.sh
 
 ## How to play
 

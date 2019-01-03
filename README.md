@@ -25,4 +25,4 @@
 * The tenth frame is complete after two rolls if there are no bonus rolls earned for that frame; otherwise after three rolls.
 
 ## Self-evaluation
-* If I had more time with this project, I would endeavour primarily to improve the styling, primarily by making the UI closer to a real-life bowling scorecard, and potentially by adding a visual representation of the number of pins standing.
+* If I had more time with this project, I would improve the styling, primarily by making the UI closer to a real-life bowling scorecard, and potentially by adding a visual representation of the number of pins standing.

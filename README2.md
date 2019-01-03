@@ -1,4 +1,4 @@
-##User Stories
+## User Stories
 
 As a player     
 So I can keep the score of a game of bowling      

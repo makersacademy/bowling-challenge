@@ -20,19 +20,22 @@ Tests are written using jasmine. To run the test please open the `SpecRunner.htm
 ![alt text](/assets/tests.png)
 
 ### Dependancies
-This program is written using JavaScript, jQuery, HTML, CSS and Jasmine as the testing framework.
+This program is written using JavaScript (ES2015), jQuery, HTML, CSS and Jasmine as the testing framework.
 
 ### Linting
-I have been using jslint as a linter, which can be installed using the command `npm install -g jshint` and run using `jshint src/frame.js`
+I have been using jslint as a linter, which can be installed using the command `npm install -g jshint` and run using `jshint src/[file name]`
 
 ### Approach to Solving this Kata
+I test drove the JavaScript in this program using Jasmine.
+
 I kept a methodical approach when solving this kata. I first created the JavaScript for a basic game. Then created an interface using HTML and jQuery. I then resolved edge cases around this for example, keeping track of the frame number, but telling the user that the  game is over after their 10th roll and bonus points for a strike or a spare.
 
 After this I did some CSS to create a scorecard and style the interface. Next, I created the logic for the edge cases; when a user rolled a spare or a strike.
 
-I test drove the JavaScript in this program using Jasmine.
-
 I decided that to get the most out if this exercise, I wanted to focus on creating a product that used most of the rules of bowling, but also had a user friendly interface. This allowed me to practise JavaScript, jQuery, CSS and HTML.
+
+### Architecture
+This is a single page app. The page `scorecard.html` is updated using jQuery handled in `src/interface.js`. Classes are contained in `src` file. All tests are in `spec` folder and stylesheet is in the `style` folder.
 
 ### Known issues
 Currently if you input a strike, the game is still expecting a second roll input. As the maximum score is 10, the only possibility is for this to be a gutter ball. Please note that this does not effect your score, and you will still receive bonus points for a strike.

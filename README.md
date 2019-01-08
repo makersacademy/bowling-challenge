@@ -17,6 +17,8 @@ Welcome to the bowling scorecard. Check out the instructions below to find out h
 ### Running the Tests
 Tests are written using jasmine. To run the test please open the `SpecRunner.html` file in your chosen browser.
 
+![alt text](/assets/tests.png)
+
 ### Dependancies
 This program is written using JavaScript, jQuery, HTML, CSS and Jasmine as the testing framework.
 

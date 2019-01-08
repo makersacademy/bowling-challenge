@@ -6,7 +6,7 @@ How to use
 -----
 
 * Clone this file
-* Install Jasmine following these instructions https://github.com/jasmine/jasmine
+* Run $ bundle install 
 * Run tests with Jasmine by typing open SpecRunner.html in the terminal
 * Copy the full path of index.html into the browser to use the app
 

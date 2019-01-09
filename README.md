@@ -8,10 +8,10 @@ Type 'open SpecRunner.html' in your terminal to view test results
 Type 'index.html' in your terminal to view the program in your browser
 
 # Prerequisites
-The below need to be installed to run the program:
+The below command needs to be run in the terminal:
 
-- Jquery (https://jquery.com/download/)
-- Node (https://nodejs.org/en/download/)
+- 'npm install'
+
 
 # Running the tests
 The testing framework for this program is jasmine
@@ -22,7 +22,7 @@ The tests test the frame and scorecard functions return the values expected when
 e.g. scorecardSpec-test-1 tests that when you create the variable scorecard which is a new Scorecard function it has a default this.frames which is an empty array
 
 # Deployment
-To deploy the program type 'index.html' in your terminal and enter your score for each roll via pressing the buttons that correspond to the score
+To deploy the program type 'open index.html' in your terminal and enter your score for each roll via pressing the buttons that correspond to the score
 
 You will only see the frame's individual scores once the whole frame has been rolled
 

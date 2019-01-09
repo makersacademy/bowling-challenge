@@ -38,6 +38,6 @@ I decided that to get the most out if this exercise, I wanted to focus on creati
 This is a single page app. The page `scorecard.html` is updated using jQuery handled in `src/interface.js`. Classes are contained in `src` file. All tests are in `spec` folder and stylesheet is in the `style` folder.
 
 ### Known issues
-Currently if you input a strike, the game is still expecting a second roll input. As the maximum score is 10, the only possibility is for this to be a gutter ball. Please note that this does not effect your score, and you will still receive bonus points for a strike.
+* Currently if you input a strike, the game is still expecting a second roll input. As the maximum score is 10, the only possibility is for this to be a gutter ball. Please note that this does not effect your score, and you will still receive bonus points for a strike.
 
-Currently if your 10th roll is a strike or a spare you will not receive bonus points.
+* Currently if your 10th roll is a strike or a spare you will not receive extra bonus points.

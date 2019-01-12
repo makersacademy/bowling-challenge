@@ -42,28 +42,48 @@ Score.prototype.gameScoring = function () {
     } else if (this._frameTen(number)) {
       this._frameTenScoring(number)
     } else if (this._strikeOrSpare(number)) {
-      this._isStrike(number) ? this._strikeScoring(number) : this._spareScoring(number)
-    } else { this.result += this._wholeFrame(number) }
+      this._isStrike(number)
+        ? this._strikeScoring(number)
+        : this._spareScoring(number)
+    } else {
+      this.result += this._wholeFrame(number)
+    }
   }
 }
 
 Score.prototype._frameTenScoring = function (frame) {
   if (this.searchFrames(frame, 1) + this.searchFrames(frame, 2) === 20) {
-    this.result += (20 + this.searchFrames(frame, 2) + this.searchFrames(frame, 3))
+    this.result +=
+      20 + this.searchFrames(frame, 2) + this.searchFrames(frame, 3)
   } else if (this.searchFrames(frame, 1) === 10) {
-    this.result += (10 + this.searchFrames(frame, 2) + this.searchFrames(frame, 3))
+    this.result +=
+      10 + this.searchFrames(frame, 2) + this.searchFrames(frame, 3)
   } else if (isNaN(this.searchFrames(frame, 3)) === false) {
-    this.result += (this.searchFrames(frame, 1) + this.searchFrames(frame, 2) + this.searchFrames(frame, 3))
-  } else { this.result += (this._wholeFrame(frame)) }
+    this.result +=
+      this.searchFrames(frame, 1) +
+      this.searchFrames(frame, 2) +
+      this.searchFrames(frame, 3)
+  } else {
+    this.result += this._wholeFrame(frame)
+  }
 }
 
 Score.prototype._strikeScoring = function (frame) {
-  if (this.searchFrames(frame + 1, 1) + this.searchFrames(frame + 2, 1) === 20) {
+  if (
+    this.searchFrames(frame + 1, 1) + this.searchFrames(frame + 2, 1) ===
+    20
+  ) {
     this.result += 30
-  } else if (this.searchFrames(frame + 1, 1) === 10 && this.searchFrames(frame + 2, 1) < 10) {
-    this.result += (20 + this.searchFrames(frame + 2, 1))
-  } else if (this.searchFrames(frame + 1, 1) < 10 && this.searchFrames(frame + 1, 2) < 10) {
-    this.result += (this._wholeFrame(frame + 1) + 10)
+  } else if (
+    this.searchFrames(frame + 1, 1) === 10 &&
+    this.searchFrames(frame + 2, 1) < 10
+  ) {
+    this.result += 20 + this.searchFrames(frame + 2, 1)
+  } else if (
+    this.searchFrames(frame + 1, 1) < 10 &&
+    this.searchFrames(frame + 1, 2) < 10
+  ) {
+    this.result += this._wholeFrame(frame + 1) + 10
   }
 }
 
@@ -72,7 +92,7 @@ Score.prototype._spareScoring = function (frame) {
 }
 
 Score.prototype._strikeOrSpare = function (frame) {
-  if (this.searchFrames(frame, 1) === 10 || this._wholeFrame(frame) === 10) return true
+  if (this.searchFrames(frame, 1) === 10 || this._wholeFrame(frame) === 10) { return true }
 }
 
 Score.prototype._wholeFrame = function (frame) {

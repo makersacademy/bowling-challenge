@@ -1,0 +1,78 @@
+<head>
+  <link rel = "stylesheet" type = "text/css" href = "lib/css/style.css" />
+</head>
+<body>
+  <h1> Bowling Scorecard</h1>
+
+  <div class="main">
+    <table>
+      <tr>
+        <th>One</th>
+        <th>Two</th>
+        <th>Three</th>
+        <th>Four</th>
+        <th>Five</th>
+        <th>Six</th>
+        <th>Seven</th>
+        <th>Eight</th>
+        <th>Nine</th>
+        <th>Ten</th>
+        <th>Total</th>
+      </tr>
+      <tr>
+        <td id="frame-1">
+          <p id="total-1"></p>
+        </td>
+        <td id="frame-2">
+          <p id="total-2"></p>
+        </td>
+        <td id="frame-3">
+          <p id="total-3"></p>
+        </td>
+        <td id="frame-4">
+          <p id="total-4"></p>
+        </td>
+        <td id="frame-5">
+          <p id="total-5"></p>
+        </td>
+        <td id="frame-6">
+          <p id="total-6"></p>
+        </td>
+        <td id="frame-7">
+          <p id="total-7"></p>
+        </td>
+        <td id="frame-8">
+          <p id="total-8"></p>
+        </td>
+        <td id="frame-9">
+          <p id="total-9"></p>
+        </td>
+        <td id="frame-10">
+          <p id="total-10"></p>
+        </td>
+        <td>
+          <p id="grand-total" style="column-span: 2"></p>
+        </td>
+      </tr>
+    </table>
+
+    <form id="score-form">
+      <input type="text" id="score-input">
+      <input type="submit" value="Submit">
+      <p id="value-error" style= "display: none">Please enter a valid number of pins.</p>
+    </form>
+
+    <form id="restart-form">
+      <input type="submit" value="Restart Game">
+    </form>
+
+    <div>
+      <h2 id="complete-message"></h2>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="./lib/js/frame.js"></script>
+  <script src="./lib/js/game.js"></script>
+  <script src="./lib/js/script.js"></script>
+</body>

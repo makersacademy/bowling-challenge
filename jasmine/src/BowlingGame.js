@@ -1,4 +1,5 @@
 "use strict"
 
-function BowlingGame() {
+class BowlingGame {
+
 }

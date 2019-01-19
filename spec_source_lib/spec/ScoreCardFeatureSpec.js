@@ -1,9 +1,10 @@
 describe("ScoreCard", function() {
   var score_card;
-  
+  var score;
 
   beforeEach(function() {
     score_card = new ScoreCard();
+    score = new Score(0);
   });
 
   it("should be complete after the 20 throws of a gutter game", function() {
@@ -14,6 +15,8 @@ describe("ScoreCard", function() {
     
   });
 })
+
+
 
 //   describe("when song has been paused", function() {
 //     beforeEach(function() {

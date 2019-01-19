@@ -6,4 +6,4 @@ function Score(score) {
 
 Score.prototype.score = () => {
   return this.userInput;
-}
+}	

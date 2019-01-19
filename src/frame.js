@@ -11,4 +11,8 @@ class Frame {
   getRoll1() {
     return this.roll1
   }
+
+  isASpare() {
+    return this.addScore() === 10 ? true : false
+  }
 }

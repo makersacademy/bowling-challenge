@@ -17,8 +17,8 @@ class Game {
     let total = 0
     let arr = this.getFrames()
     arr.forEach(function(frame, index, framearray) {
-      if(frame.addScore() === 10) {
-        total += (framearray[index+1].getRoll1() + 10)
+      if(frame.isASpare()) {
+        total += framearray[index+1].getRoll1() + 10
       } else {
         total += frame.addScore()  
       }

@@ -19,4 +19,9 @@ describe("Frame", function() {
     let frame = new Frame(1, 6);
     expect(frame.getRoll1()).toEqual(1)
   })
+
+  it("Knows if frame is a spare", function() {
+    let frame = new Frame(3, 7);
+    expect(frame.isASpare()).toEqual(true)
+  })
 })

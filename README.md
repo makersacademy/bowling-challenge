@@ -1,4 +1,5 @@
 
+```
                                         (O)           (O)
                                         ||     (O)    ||
    .----.                               ||     ||     ||
@@ -7,7 +8,7 @@
   \      /                            |    | :    : |    |
  __`----'______________________________\__/__|    |__\__/____pjb
                                               \__/
-
+```
 ------------------------------------------------
 
 Bowling Challenge
@@ -32,10 +33,10 @@ To run the tests you should run: `open SpecRunner.html` which will run the tests
 
 To use the app you should run: `open BowlingChallenge.html`, right click anywhere on the page, click 'inspect' and visit the 'console' tab which will allow you to enter the following commands:
 
-*`game = new Game()` - creates a new scorecard
-*`game.addFrame(roll1, roll2)` - Adds a new frame with your rolls. Replace roll1 and roll2 with the number of pins you knock down on each roll. Note: Individually, not cumulative. Eg. game.addFrame(4, 6) would be a Spare. 
-*`game.addFrame(roll1, roll2, roll3)` - If you're skilled enough to score 2 strikes in the final frame, simply replace roll3 with the pins knocked down in your final roll to add it to the total. 
-*`game.totalScore()` - Calculates and returns the total you scored in your game.
+* `game = new Game()` - creates a new scorecard
+* `game.addFrame(roll1, roll2)` - Adds a new frame with your rolls. Replace roll1 and roll2 with the number of pins you knock down on each roll. Note: Individually, not cumulative. Eg. game.addFrame(4, 6) would be a Spare. 
+* `game.addFrame(roll1, roll2, roll3)` - If you're skilled enough to score 2 strikes in the final frame, simply replace roll3 with the pins knocked down in your final roll to add it to the total. 
+* `game.totalScore()` - Calculates and returns the total you scored in your game.
 
 A sample game may look like this:
 

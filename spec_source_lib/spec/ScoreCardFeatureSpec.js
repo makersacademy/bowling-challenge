@@ -7,13 +7,11 @@ describe("ScoreCard", function() {
   });
 
   it("should be complete after the 20 throws of a gutter game", function() {
-    player.play(song);
-    expect(player.currentlyPlayingSong).toEqual(song);  
+    
   });
 
   it("should return a score of 0 for a gutter game", function() {
-    player.play(song);
-    expect(player.currentlyPlayingSong).toEqual(song);    
+    
   });
 })
 

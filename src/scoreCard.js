@@ -3,7 +3,11 @@ class ScoreCard {
 
   }
 
-  totalscore() {
+  totalScore() {
     return 0
+  }
+
+  isComplete() {
+    return true
   }
 }

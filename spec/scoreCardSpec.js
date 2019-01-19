@@ -1,7 +1,16 @@
 describe('ScoreCard', function(){
+  describe('Feature - Gutter Game', function(){
 
-  it('Feature - Gutter Game', function(){
-    scorecard = new ScoreCard();
-    expect(scorecard.totalscore()).toEqual(0);
-  });
+    beforeEach( () => {
+      scorecard = new ScoreCard();
+    });
+
+    it('Returns a total score of 0', function(){
+      expect(scorecard.totalScore()).toEqual(0);
+    });
+
+    it('Game is fully completed', function(){
+      expect(scorecard.isComplete()).toEqual(true);
+    });
+  })
 })

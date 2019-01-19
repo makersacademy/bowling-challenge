@@ -8,20 +8,22 @@ describe('Scoresheet', function () {
     scoresheet = new Scoresheet()
   })
 
-  it('is not complete by default', function () {
-    expect(scoresheet.isComplete).toEqual(false)
-  })
+  describe('by default', function () {
+    it('is not complete', function () {
+      expect(scoresheet.isComplete).toEqual(false)
+    })
 
-  it('is has a final score of 0 by default', function () {
-    expect(scoresheet.finalScore).toEqual(0)
-  })
+    it('has a final score of 0', function () {
+      expect(scoresheet.finalScore).toEqual(0)
+    })
 
-  it('has 0 rolls by default', function () {
-    expect(scoresheet.rollCount).toEqual(0)
-  })
+    it('has 0 rolls', function () {
+      expect(scoresheet.rollCount).toEqual(0)
+    })
 
-  it('last frame was not a spare by default', function () {
-    expect(scoresheet.wasSpare).toEqual(false)
+    it('the last frame was not a spare', function () {
+      expect(scoresheet.wasSpare).toEqual(false)
+    })
   })
 
   describe('#roll', function () {
@@ -37,12 +39,31 @@ describe('Scoresheet', function () {
 
       expect(scoresheet.isComplete).toBeTruthy()
     })
+  })
 
-    it('adds the roll amount to the finalScore', function () {
-      scoresheet.roll(5)
-      scoresheet.roll(0)
+  describe('#updateFrame', function () {
+    it('adds the current roll to the frame score', function () {
+      scoresheet.updateFrame(1)
+      expect(scoresheet.currentFrame).toEqual([1])
+    })
 
-      expect(scoresheet.finalScore).toEqual(5)
+    describe('when the frame is complete', function () {
+      beforeEach(function () {
+        scoresheet.currentFrame = [1]
+        scoresheet.updateFrame(9)
+      })
+
+      it('adds the frame score to the finalScore', function () {
+        expect(scoresheet.finalScore).toEqual(10)
+      })
+
+      it('changes wasSpare to true when the frame is a spare', function () {
+        expect(scoresheet.wasSpare).toBeTruthy()
+      })
+
+      it('clears currentFrame', function () {
+        expect(scoresheet.currentFrame).toEqual([])
+      })
     })
   })
 

@@ -10,12 +10,22 @@ class Scoresheet {
   }
 
   roll (currentRoll) {
-    let cr = currentRoll
+    this.calculateSpareBonus(currentRoll)
+    this.updateFrame(currentRoll)
+
+    this.rollCount += 1
+    if (this.rollCount === 20) { this.isComplete = true }
+    return this.finalScore
+  }
+
+  calculateSpareBonus (currentRoll) {
     if (this.wasSpare === true) {
-      this.finalScore += cr
+      this.finalScore += currentRoll
       this.wasSpare = false
     }
+  }
 
+  updateFrame (currentRoll) {
     this.currentFrame.push(currentRoll)
 
     if (this.isFrameComplete() === true) {
@@ -24,10 +34,6 @@ class Scoresheet {
       this.finalScore += score
       this.currentFrame = []
     }
-
-    this.rollCount += 1
-    if (this.rollCount === 20) { this.isComplete = true }
-    return this.finalScore
   }
 
   isFrameComplete () {

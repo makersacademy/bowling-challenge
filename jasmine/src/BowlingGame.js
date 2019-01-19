@@ -1,3 +1,4 @@
-function BowlingGame() {
+"use strict"
 
+function BowlingGame() {
 }

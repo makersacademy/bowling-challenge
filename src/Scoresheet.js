@@ -8,6 +8,6 @@ class Scoresheet {
   }
 
   roll () {
-
+    this.rollCount += 1
   }
 }

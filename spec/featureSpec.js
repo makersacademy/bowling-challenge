@@ -18,4 +18,9 @@ describe("Features", function() {
     fullGame(0,0)
     expect(game.totalScore()).toEqual(0);
   });
+
+  it("Playing a 'normal game' should return total score", function() {
+    fullGame(1,1)
+    expect(game.totalScore()).toEqual(20);
+  })
 })

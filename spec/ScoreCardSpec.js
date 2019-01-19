@@ -5,12 +5,16 @@ let scorecard;
     scorecard = new Scorecard();
   });
 
-  it("rolls 20 times, scorecard.complete = true, score = 0", 
+  it("rolls 1 time(s), scorecard.finished = true", 
   () => {
-  scorecard.rollBall(0)
-  scorecard.addScore
-  scorecard.complete
-    expect(scorecard).toEqual(true)
-
-  })
+    scorecard.rollBall(0)
+    scorecard.addScore
+    scorecard.isComplete()
+      expect(scorecard.finishedGame).toEqual(true)
+  });
+  
+  it("rolls once to give score", () => {
+    scorecard.rollBall(0)
+    expect(scorecard.currentScores).toEqual([0])
+  });
 });

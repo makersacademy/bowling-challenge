@@ -1,19 +1,30 @@
 class Scorecard {
   
-  constructor() {
-    this.currentScore = []
+  constructor(finishedGame = false) {
+    this.currentScores = []
+    this.finishedGame = finishedGame
   };
 
   rollBall(numberOfPins) {
-    let total = this.currentScore
+    let total = this.currentScores
     total.push(numberOfPins)
-    return total
+    return numberOfPins
   };
 
   addScore(){
-    var sum = this.currentScore.reduce((accumulator, currentValue) => {
+    var sum = this.currentScores.reduce((accumulator, currentValue) => {
         return accumulator + currentValue;
       }, 0);
-        return sum
+        return sum;
   };
+
+  isComplete(){
+    if (this.currentScores.length >= 1) {
+      return this.finishedGame = true
+    } else {
+      return this.finishedGame = false
+    };
+
+  };
+
 };

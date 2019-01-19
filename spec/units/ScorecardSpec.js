@@ -7,4 +7,11 @@ describe('Scorecard', () => {
     var scorecard = new Scorecard();
     expect(scorecard instanceof Scorecard).toBe(true)
   })
+
+  describe('#recordFrameScore()', () => {
+    it('responds to .recordFrameScore()', () => {
+      var scorecard = new Scorecard();
+      expect(scorecard.recordFrameScore).toBeDefined()
+    })
+  })
 })

@@ -3,3 +3,6 @@
 function Scorecard () {
 
 }
+
+Scorecard.prototype.recordFrameScore = () => {
+}

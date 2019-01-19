@@ -7,14 +7,19 @@ describe("ScoreCard", function() {
     score = new Score(10);
   });
 
-  it("should be able to store and return score of roll", function() {
+  it("should store and return score of roll", function() {
     score_card.roll(score.score);
     expect(score_card.currentScore()).toEqual(10);
   });
 
-  it("should be able to store and return multiple roll scores", function() {
+  it("should store and return multiple roll scores", function() {
     score_card.roll(score.score);
     expect(score_card.currentScore()).toEqual(10);
+  });
+
+  it("should keep track of player rolls", function() {
+    score_card.roll(score.score);
+    expect(score_card.rollsTook()).toEqual(1);
   });
 
 })

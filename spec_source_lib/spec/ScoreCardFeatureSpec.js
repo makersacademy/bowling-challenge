@@ -7,13 +7,17 @@ describe("ScoreCard", function() {
     score = new Score(0);
   });
 
-  it("should be complete after the 20 throws of a gutter game", function() {
-    
+  it("should return a score of 0 for a gutter game", function() {
+    for ( var i = 0; i < 20; i++ ) {
+    score_card.roll(score.score)
+    }
+    expect(score_card.currentScore()).toEqual(0);
   });
 
-  it("should return a score of 0 for a gutter game", function() {
-    
-  });
+  // it("should be complete after the 20 throws of a gutter game", function() {
+
+  // });
+
 })
 
 

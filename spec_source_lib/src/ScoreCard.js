@@ -2,6 +2,7 @@
 
 function ScoreCard() {
   this.scoreArray = [];
+  this.rollsTaken = 0;
 }
 
 ScoreCard.prototype.currentScore = function() {
@@ -9,10 +10,13 @@ ScoreCard.prototype.currentScore = function() {
 }
 
 ScoreCard.prototype.roll = function(score) {
+  ++ this.rollsTaken;
   return this.scoreArray.push(score);
 }
 
-
+ScoreCard.prototype.rollsTook = function() {
+  return this.rollsTaken;
+}
 
 
 

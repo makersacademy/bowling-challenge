@@ -9,7 +9,7 @@ describe('Scoresheet', function () {
   })
 
   it('is not complete by default', function () {
-    expect(scoresheet.isComplete).toBeFalsy()
+    expect(scoresheet.isComplete).toEqual(false)
   })
 
   it('is has a final score of 0 by default', function () {
@@ -18,6 +18,10 @@ describe('Scoresheet', function () {
 
   it('has 0 rolls by default', function () {
     expect(scoresheet.rollCount).toEqual(0)
+  })
+
+  it('last frame was not a spare by default', function () {
+    expect(scoresheet.wasSpare).toEqual(false)
   })
 
   describe('#roll', function () {

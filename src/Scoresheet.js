@@ -6,13 +6,15 @@ class Scoresheet {
     this.finalScore = 0
     this.rollCount = 0
     this.currentFrame = []
+    this.wasSpare = false
   }
 
   roll (currentRoll) {
     this.rollCount += 1
     this.currentFrame.push(currentRoll)
-    this.finalScore += currentRoll
     if (this.isSpare()) { this.finalScore += currentRoll }
+    if (this.isFrameComplete()) { this.currentFrame = [] }
+    this.finalScore += currentRoll
     if (this.rollCount === 20) { this.isComplete = true }
     return currentRoll
   }

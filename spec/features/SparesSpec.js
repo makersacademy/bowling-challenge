@@ -12,9 +12,9 @@ describe('One spare, two frames', function () {
     scoresheet.roll(1)
     scoresheet.roll(9)
 
-    scoresheet.roll(9)
+    scoresheet.roll(7)
     scoresheet.roll(0)
 
-    expect(scoresheet.finalScore).toEqual(28)
+    expect(scoresheet.finalScore).toEqual(24)
   })
 })

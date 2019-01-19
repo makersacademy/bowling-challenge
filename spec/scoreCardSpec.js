@@ -1,9 +1,12 @@
 describe('ScoreCard', function(){
   describe('Feature - Gutter Game', function(){
 
+    var scorecard;
+    var frame;
+
     beforeEach( () => {
       scorecard = new ScoreCard();
-      frame1 = new Frame();
+      frame = new Frame();
     });
 
     it('Starts with 0 frames', function(){
@@ -11,8 +14,15 @@ describe('ScoreCard', function(){
     });
 
     it('Adds a frame to the game', function(){
-      scorecard.addFrame(frame1)
-      expect(scorecard.frames).toContain(frame1);
+      scorecard.addFrame(frame)
+      expect(scorecard.frames).toContain(frame);
+    });
+
+    it('Adds multiple frames to the game', function(){
+      scorecard.addFrame(frame)
+      scorecard.addFrame(frame)
+      scorecard.addFrame(frame)
+      expect(scorecard.frames).toEqual([frame, frame, frame]);
     });
 
     it('Returns a total score of 0', function(){

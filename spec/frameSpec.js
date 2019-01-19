@@ -1,10 +1,12 @@
 describe('Frame', function(){
 
+  var frame
+
   beforeEach( () => {
-    frame1 = new Frame();
+    frame = new Frame();
   });
 
-  it('Make a new instance of Bike', function(){
-    expect(frame1 instanceof Frame).toBeTruthy();
+  it('Make a new instance of Frame', function(){
+    expect(frame instanceof Frame).toBeTruthy();
   });
 })

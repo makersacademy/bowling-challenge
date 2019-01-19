@@ -7,4 +7,9 @@ describe('Frame', () => {
     var frame = new Frame()
     expect(frame instanceof Frame).toBe(true)
   })
+
+  it('responds to .roll()', () => {
+    var frame = new Frame()
+    expect(frame.roll).toBeDefined()
+  })
 })

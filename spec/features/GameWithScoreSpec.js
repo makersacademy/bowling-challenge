@@ -5,12 +5,12 @@ describe('Game', function() {
     game = new Game()
   });
 
-  it('a user scores 0 for a full gutter game', function () {
+  it('a game can be played and scored without spares or strikes', function() {
     for (let i = 0; i < 20; i++) {
-      game.bowl(0);
+      game.bowl(5);
     };
 
     expect(game.isOver).toBe(true);
-    expect(game.finalScore).toEqual(0);
+    expect(game.finalScore).toEqual(100);
   });
 });

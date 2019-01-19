@@ -14,6 +14,11 @@ describe('Game', function() {
     expect(game.currentRoll).toBe(2);
   });
 
+  it('game.bowl changes the current score', function() {
+    game.bowl(5);
+    expect(game.currentScore).toBe(5);
+  });
+
   it('game.status checks if game has ended', function() {
     game.status();
     expect(game.isOver).toBe(false)

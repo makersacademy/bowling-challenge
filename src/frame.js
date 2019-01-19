@@ -1,5 +1,5 @@
 class Frame {
-  constructor(roll1, roll2, roll3=0){
+  constructor(roll1, roll2=0, roll3=0){
     this.roll1 = roll1;
     this.roll2 = roll2;
     this.roll3 = roll3

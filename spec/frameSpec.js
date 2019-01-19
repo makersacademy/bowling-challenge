@@ -45,4 +45,9 @@ describe("Frame", function() {
     expect(frame.calcBonus()).toEqual(30)
   })
 
+  it("Takes a default argument in roll 2 to account for strikes", function() {
+    let frame = new Frame(10);
+    expect(frame.addScore()).toEqual(10)
+  })
+
 })

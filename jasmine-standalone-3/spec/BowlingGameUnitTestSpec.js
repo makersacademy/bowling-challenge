@@ -20,7 +20,7 @@ it('should contain the scores of multiple frames', function () {
 
 it ('should update frame number after 2 rolls', function () {
      play.score(1)
-     game.knockDown(4)
+     game.score(4)
      expect(play.frame).toEqual(2)
    });
 

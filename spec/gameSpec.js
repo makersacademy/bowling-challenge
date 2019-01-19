@@ -31,7 +31,7 @@ describe("Game", function() {
   })
 
   it("Can total up the scores inside the frames array", function() {
-    fullGame(0,0)
-    expect(game.totalScore()).toEqual(0)
+    fullGame(2,3)
+    expect(game.totalScore()).toEqual(50)
   })
 })

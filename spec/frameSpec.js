@@ -34,4 +34,15 @@ describe("Frame", function() {
     let frame = new Frame(10, 0);
     expect(frame.isAStrike()).toEqual(true)
   })
+
+  it("Knows if this is a bonus round", function() {
+    let frame = new Frame(10, 10, 10);
+    expect(frame.isABonus()).toEqual(true)
+  })
+
+  it("Calculates bonus score", function() {
+    let frame = new Frame(10, 10, 10);
+    expect(frame.calcBonus()).toEqual(30)
+  })
+
 })

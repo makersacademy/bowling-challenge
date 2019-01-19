@@ -37,4 +37,9 @@ describe("Features", function() {
     game.addFrame(1, 1);
     expect(game.totalScore()).toEqual(14)
   })
+
+  it("The Final Frame should allow up to three rolls if player scores strikes", function() {
+    game.addFrame(10,10,10);
+    expect(game.totalScore()).toEqual(30)
+  })
 })

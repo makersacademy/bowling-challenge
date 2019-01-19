@@ -1,13 +1,17 @@
 class ScoreCard {
   constructor() {
-
+    this.frames = [];
   }
 
   totalScore() {
-    return 0
+    return 0;
   }
 
   isComplete() {
-    return true
+    return true;
+  }
+
+  addFrame(frame) {
+    this.frames.push(frame);
   }
 }

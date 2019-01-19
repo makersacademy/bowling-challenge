@@ -3,6 +3,16 @@ describe('ScoreCard', function(){
 
     beforeEach( () => {
       scorecard = new ScoreCard();
+      frame1 = new Frame();
+    });
+
+    it('Starts with 0 frames', function(){
+      expect(scorecard.frames).toEqual([]);
+    });
+
+    it('Adds a frame to the game', function(){
+      scorecard.addFrame(frame1)
+      expect(scorecard.frames).toContain(frame1);
     });
 
     it('Returns a total score of 0', function(){

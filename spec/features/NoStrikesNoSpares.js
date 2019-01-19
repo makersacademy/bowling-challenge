@@ -1,10 +1,11 @@
 'use strict'
+/* global describe, it, expect, beforeEach, Scoresheet */
 
-describe ('No strikes or spares', function () {
+describe('No strikes or spares', function () {
   let scoresheet
 
-  beforeEach (function () {
-    scoresheet = new Scoresheet
+  beforeEach(function () {
+    scoresheet = new Scoresheet()
   })
 
   it('A user rolls 3 20 times and the final score is 60', function () {

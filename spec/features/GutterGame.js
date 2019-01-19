@@ -1,10 +1,11 @@
 'use strict'
+/* global describe, it, expect, beforeEach, Scoresheet */
 
-describe ('Gutter game', function () {
+describe('Gutter game', function () {
   let scoresheet
 
-  beforeEach (function () {
-    scoresheet = new Scoresheet
+  beforeEach(function () {
+    scoresheet = new Scoresheet()
   })
 
   it('A user rolls 0 20 times and the final score is 0', function () {

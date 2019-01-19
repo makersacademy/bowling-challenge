@@ -1,10 +1,11 @@
 'use strict'
+/* global describe, it, expect, beforeEach, Scoresheet */
 
-describe ('Scoresheet', function () {
+describe('Scoresheet', function () {
   let scoresheet
 
-  beforeEach (function () {
-    scoresheet = new Scoresheet
+  beforeEach(function () {
+    scoresheet = new Scoresheet()
   })
 
   it('is not complete by default', function () {

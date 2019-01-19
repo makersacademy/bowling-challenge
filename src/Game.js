@@ -8,9 +8,6 @@ Game.prototype.addFrameScore = function(framescore) {
 };
 
 Game.prototype.calculateOverallScore = function() {
-    for(var i in this.frameScores) { this.overallScore += this.frameScores[i]; }
+    for(var i in this.framesScores) { this.overallScore += this.framesScores[i]; }
     return this.overallScore;
  };
-
-// function to push the frameScores to the Game
-// checks if the game is over? - check lenght of the frames array

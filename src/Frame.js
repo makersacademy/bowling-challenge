@@ -11,7 +11,3 @@ Frame.prototype.calculateFrameScore = function() {
   for(var i in this.rolls) { this.score += this.rolls[i]; }
   return this.score;
 };
-
-//
-// - rolls
-// - calculates the score after the two rolls

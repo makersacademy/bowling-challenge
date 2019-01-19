@@ -15,9 +15,10 @@ describe("Game", function() {
     expect(game.framesScores).toContain(6);
   });
 
-  it("calculates the final score of all the frames", function() {
-    for (var i = 0; i < 9; i++) { game.framesScores[i] = 0 };
-     expect(game.calculateOverallScore()).toEqual(0);
+  it("calculates the overall score of the frames", function() {
+    for (var i = 0; i < 10; i++) { game.framesScores[i] = 6 };
+     expect(game.calculateOverallScore()).toEqual(60);
   });
+
 
 });

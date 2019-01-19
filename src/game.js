@@ -19,6 +19,8 @@ class Game {
     arr.forEach(function(frame, index, framearray) {
       if(frame.isASpare()) {
         total += framearray[index+1].getRoll1() + 10
+      } else if (frame.isAStrike()) {
+        total += framearray[index+1].addScore() + 10
       } else {
         total += frame.addScore()  
       }

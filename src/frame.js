@@ -13,6 +13,10 @@ class Frame {
   }
 
   isASpare() {
-    return this.addScore() === 10 ? true : false
+    return this.addScore() === 10 && this.getRoll1() !== 10 ? true : false
+  }
+
+  isAStrike() {
+    return this.getRoll1() === 10 ? true : false
   }
 }

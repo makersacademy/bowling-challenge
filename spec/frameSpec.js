@@ -24,4 +24,14 @@ describe("Frame", function() {
     let frame = new Frame(3, 7);
     expect(frame.isASpare()).toEqual(true)
   })
+
+  it("knows a spare from a strike", function() {
+    let frame = new Frame(10, 0);
+    expect(frame.isASpare()).toEqual(false)
+  })
+
+  it("Knows if frame is a strike", function() {
+    let frame = new Frame(10, 0);
+    expect(frame.isAStrike()).toEqual(true)
+  })
 })

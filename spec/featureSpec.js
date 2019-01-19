@@ -31,4 +31,10 @@ describe("Features", function() {
     game.addFrame(1, 1);
     expect(game.totalScore()).toEqual(13);
   })
+
+  it("Scoring a 'strike' should return bonus points", function() {
+    game.addFrame(10, 0);
+    game.addFrame(1, 1);
+    expect(game.totalScore()).toEqual(14)
+  })
 })

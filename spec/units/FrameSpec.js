@@ -5,13 +5,12 @@
 describe('Frame', () => {
   let frame;
 
-  beforeEach( () => {
+  beforeEach(() => {
     frame = new Frame();
-  });
+  })
 
   describe('#roll()', () => {
     it('responds to .roll()', () => {
-      var frame = new Frame()
       expect(frame.roll).toBeDefined()
     })
   })

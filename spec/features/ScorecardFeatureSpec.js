@@ -9,6 +9,7 @@ describe('Scorecard', () => {
       frame.roll(0)
       frame.roll(0)
       let frameScore = frame.calculateFrameScore()
+      let totalScore = scorecard.calculateTotal()
     })
   })
 })

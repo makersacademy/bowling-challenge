@@ -6,7 +6,7 @@ describe("Score", function() {
     new_score = new Score(9);
   });
 
-  it("should be able to store the score of a roll", function() {
+  it("should be able to store roll score input by user", function() {
     expect(new_score.score).toEqual(9);  
   });
 

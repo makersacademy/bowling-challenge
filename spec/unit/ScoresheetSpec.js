@@ -41,6 +41,18 @@ describe('Scoresheet', function () {
     })
   })
 
+  describe('#calculateSpareBonus', function () {
+    describe('if the previous frame was a spare', function () {
+      it('immediately adds the currentRoll to the finalScore', function () {
+        scoresheet.finalScore = 10
+        scoresheet.wasSpare = true
+        scoresheet.calculateSpareBonus(9)
+
+        expect(scoresheet.finalScore).toEqual(19)
+      })
+    })
+  })
+
   describe('#updateFrame', function () {
     it('adds the current roll to the frame score', function () {
       scoresheet.updateFrame(1)

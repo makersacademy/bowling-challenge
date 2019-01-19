@@ -39,4 +39,16 @@ describe('Scoresheet', function () {
       expect(scoresheet.finalScore).toEqual(5)
     })
   })
+
+  describe('#isSpare', function () {
+    it('checks to see if the currentFrame is a spare', function () {
+      scoresheet.currentFrame = [1, 9]
+      expect(scoresheet.isSpare()).toBeTruthy()
+    })
+
+    it('checks to see if the currentFrame is not a spare', function () {
+      scoresheet.currentFrame = [1, 8]
+      expect(scoresheet.isSpare()).toBeFalsy()
+    })
+  })
 })

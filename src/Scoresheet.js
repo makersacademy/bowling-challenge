@@ -5,12 +5,21 @@ class Scoresheet {
     this.isComplete = false
     this.finalScore = 0
     this.rollCount = 0
+    this.currentFrame = []
   }
 
-  roll (nrOfPins) {
+  roll (currentRoll) {
     this.rollCount += 1
-    this.finalScore += nrOfPins
+    this.currentFrame.push(currentRoll)
+    this.finalScore += currentRoll
+    if (this.isSpare()) { this.finalScore += currentRoll }
     if (this.rollCount === 20) { this.isComplete = true }
-    return nrOfPins
+    return currentRoll
+  }
+
+  isSpare () {
+    const reducer = (accumulator, currentValue) => accumulator + currentValue
+    let frameScore = this.currentFrame.reduce(reducer)
+    return (frameScore === 10 ? true : false)
   }
 }

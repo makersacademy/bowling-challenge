@@ -12,4 +12,13 @@ class Game {
     this.frames.push(frame)
     return frame
   }
+
+  totalScore() {
+    let total = 0
+    let arr = this.getFrames()
+    arr.forEach(function(frame) {
+      total += frame.addScore()
+    })
+    return total
+  }
 }

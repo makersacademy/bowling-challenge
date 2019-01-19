@@ -8,7 +8,7 @@ describe('Gutter game', function () {
     scoresheet = new Scoresheet()
   })
 
-  it('A user rolls 0 20 times and the final score is 0', function () {
+  it('A user rolls 0, 20 times and the final score is 0', function () {
     for (let i = 1; i <= 20; i++) {
       scoresheet.roll(0)
     }

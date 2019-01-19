@@ -18,5 +18,9 @@ describe("FullGame", function() {
     expect(fullgame.totalGameScore()).toEqual(0);
   });
 
+  it ("It is a perfect game", function() {
+    makeFrames([10,0]);
+    expect(fullgame.totalGameScore()).toEqual(300);
+  });
 
 });

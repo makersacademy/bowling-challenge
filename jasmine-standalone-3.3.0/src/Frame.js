@@ -12,3 +12,11 @@ Frame.prototype.oneframeScore = function() {
     return score + score;
   })
 }
+
+Frame.prototype.bonusScore = function(){
+  return 0;
+}
+
+Frame.prototype.totalscore = function(frame2, frame3) {
+  return this.bonusScore(frame2,frame3) + this.oneframeScore();
+}

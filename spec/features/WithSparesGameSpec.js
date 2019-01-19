@@ -1,7 +1,7 @@
 'use strict'
 /* global describe, it, expect, beforeEach, Scoresheet */
 
-describe('With Spares', function () {
+describe('With spares game', function () {
   let scoresheet
 
   beforeEach(function () {

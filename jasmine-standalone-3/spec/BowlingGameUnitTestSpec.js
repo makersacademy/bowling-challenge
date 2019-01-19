@@ -18,4 +18,10 @@ it('should contain the scores of multiple frames', function () {
   expect(play.total).toContain(9, 5);
 });
 
+it ('should update frame number after 2 rolls', function () {
+     play.score(1)
+     game.knockDown(4)
+     expect(play.frame).toEqual(2)
+   });
+
 });

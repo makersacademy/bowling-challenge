@@ -3,7 +3,7 @@ Bowling Challenge
 =================
 #### Deployed on Heroku
 
-[Heroku](https://tic-tac--toe.herokuapp.com/)
+[Heroku](https://bowlling-score-calculator.herokuapp.com/)
 
 
 ![Pictures of UI](img/bowling.png)

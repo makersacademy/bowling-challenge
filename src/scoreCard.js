@@ -12,6 +12,11 @@ class ScoreCard {
   }
 
   addFrame(frame) {
-    this.frames.push(frame);
+    if (this.frames.length < 10 ) {
+      this.frames.push(frame);
+    } else {
+      throw new Error('This game already has 10 frames');
+    };
   }
 }
+

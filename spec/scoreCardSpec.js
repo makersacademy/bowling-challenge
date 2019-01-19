@@ -6,7 +6,7 @@ describe('ScoreCard', function(){
 
     beforeEach( () => {
       scorecard = new ScoreCard();
-      frame = new Frame();
+      frame = jasmine.createSpy('frame')
     });
 
     it('Starts with 0 frames', function(){
@@ -23,6 +23,13 @@ describe('ScoreCard', function(){
       scorecard.addFrame(frame)
       scorecard.addFrame(frame)
       expect(scorecard.frames).toEqual([frame, frame, frame]);
+    });
+
+    it('Limits game to 10 frames', function(){
+      for (var i = 0; i < 10; i++) {
+        scorecard.addFrame(frame);
+      };
+      expect(scorecard.addFrame(frame)).toThrowError('This game already has 10 frames');
     });
 
     it('Returns a total score of 0', function(){

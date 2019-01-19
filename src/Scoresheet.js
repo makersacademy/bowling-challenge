@@ -11,5 +11,6 @@ class Scoresheet {
     this.rollCount += 1
     this.finalScore += nrOfPins
     if (this.rollCount === 20) { this.isComplete = true }
+    return nrOfPins
   }
 }

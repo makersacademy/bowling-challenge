@@ -9,4 +9,11 @@ describe('Frame', () => {
       expect(frame.roll).toBeDefined()
     })
   })
+
+  describe('#score()', () => {
+    it('responds to .score()', () => {
+      var frame = new Frame()
+      expect(frame.score).toBeDefined()
+    })
+  })
 })

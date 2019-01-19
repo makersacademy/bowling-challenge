@@ -3,5 +3,8 @@
 function Frame () {
 }
 
-Frame.prototype.roll = function () {
+Frame.prototype.roll = () => {
+}
+
+Frame.prototype.score = () => {
 }

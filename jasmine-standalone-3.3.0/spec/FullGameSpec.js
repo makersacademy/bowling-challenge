@@ -15,7 +15,7 @@ describe("FullGame", function() {
 
   it("It is a gutter game, roll zero 20 times!", function() {
     makeFrames([0,0]);
-    expect(fullgame.totalScore()).toEqual(0);
+    expect(fullgame.totalGameScore()).toEqual(0);
   });
 
 

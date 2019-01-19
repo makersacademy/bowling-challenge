@@ -4,11 +4,12 @@ describe("ScoreCard", function() {
 
   beforeEach(function() {
     score_card = new ScoreCard();
+    score = 10;
   });
 
   it("should be able to store the score of a roll", function() {
     score_card.roll(score)
-    expect(score_card.score).toEqual(score);  
+    expect(score_card.score_so_far).toEqual(score);  
   });
 
 })

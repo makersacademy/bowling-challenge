@@ -1,12 +1,23 @@
 'use strict'
 
 function ScoreCard() {
-  this.score = [];
+  this.scoreArray = [];
 }
 
-ScoreCard.prototype.score = () => {
-  return this.score;
+ScoreCard.prototype.currentScore = function() {
+  return this.scoreArray.reduce((sum, current) => sum + current, 0); 
 }
+
+ScoreCard.prototype.roll = function(score) {
+  return this.scoreArray.push(score);
+}
+
+
+
+
+
+
+
 
 // function Player() {
 // }

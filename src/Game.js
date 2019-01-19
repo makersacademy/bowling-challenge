@@ -7,14 +7,14 @@ class Game {
 
   bowl(pinsDown) {
     this.currentRoll++;
-    this.gameStatus();
+    this.status();
   };
 
-  gameStatus() {
-    this.currentRoll >= 20 ? this.gameOver(true) : this.gameOver(false);
+  status() {
+    this.currentRoll >= 20 ? this.finish(true) : this.finish(false);
   };
 
-  gameOver(bool) {
+  finish(bool) {
     if(bool === true) { this.isOver = true }
   }
 }

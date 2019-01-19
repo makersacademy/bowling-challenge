@@ -15,12 +15,12 @@ describe('Game', function() {
   });
 
   it('game.status checks if game has ended', function() {
-    game.gameStatus();
+    game.status();
     expect(game.isOver).toBe(false)
   });
 
   it('game.gameOver() will say when the game is over', function() {
-    game.gameOver(true);
+    game.finish(true);
     expect(game.isOver).toBe(true);
   });
 });

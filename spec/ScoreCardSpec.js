@@ -8,7 +8,7 @@ let scorecard;
   it("rolls 20 times, scorecard.complete = true, score = 0", 
   () => {
   scorecard.rollBall(0)
-  scorecard.finalScore
+  scorecard.addScore
   scorecard.complete
     expect(scorecard).toEqual(true)
 

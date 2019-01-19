@@ -1,17 +1,13 @@
-class Airport {
+class BowlingGame {
 
-constructor(capacity) {
-  this.capacity = capacity
-  this.planes = [];
+  constructor() {
+    this.total = [];
+  };
+
+  score(num) {
+  this.total.push(num)
+  return num
 };
 
 
-land(plane) {
-  this.planes.push(plane);
-  return this.planes;
-};
-
-takeOff(plane) {
-  this.planes.pop();
-};
 };

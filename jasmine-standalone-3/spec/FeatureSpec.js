@@ -8,7 +8,7 @@ describe('BowlingGame', function () {
   });
 
   it('should display number of pins knocked over', function () {
-  expect(play.numofpins(0)).toEqual(0)
+  expect(play.score(0)).toEqual(0)
 });
 
 });

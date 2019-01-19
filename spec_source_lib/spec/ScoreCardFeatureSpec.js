@@ -15,7 +15,7 @@ describe("ScoreCard", function() {
     player.play(song);
     expect(player.currentlyPlayingSong).toEqual(song);    
   });
-
+})
 
 //   describe("when song has been paused", function() {
 //     beforeEach(function() {

@@ -4,7 +4,9 @@ function ScoreCard() {
   this.score = [];
 }
 
-
+ScoreCard.prototype.score = () => {
+  return this.score;
+}
 
 // function Player() {
 // }
@@ -28,3 +30,5 @@ function ScoreCard() {
 // Player.prototype.makeFavorite = function() {
 //   this.currentlyPlayingSong.persistFavoriteStatus(true);
 // };
+
+

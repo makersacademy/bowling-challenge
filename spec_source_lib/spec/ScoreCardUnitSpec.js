@@ -7,6 +7,8 @@ describe("ScoreCard", function() {
   });
 
   it("should be able to store the score of a roll", function() {
-    player.play(song);
-    expect(player.currentlyPlayingSong).toEqual(song);  
+    score_card.roll(score)
+    expect(score_card.score).toEqual(score);  
   });
+
+})

@@ -10,6 +10,14 @@ describe("Features", function() {
     }
   }    
 
+  function perfectGame() {
+    if (counter < 9){
+      counter++
+      game.addFrame(10, 0)
+      perfectGame()
+    }
+  }
+
   beforeEach(function() {
     game = new Game();
   });
@@ -41,5 +49,12 @@ describe("Features", function() {
   it("The Final Frame should allow up to three rolls if player scores strikes", function() {
     game.addFrame(10,10,10);
     expect(game.totalScore()).toEqual(30)
+  })
+
+  it("Awards 300 points if user scores a perfect game", function() {
+    counter = 0
+    perfectGame()
+    game.addFrame(10,10,10);
+    expect(game.totalScore()).toEqual(300)
   })
 })

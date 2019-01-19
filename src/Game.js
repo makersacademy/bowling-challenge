@@ -3,6 +3,10 @@ function Game(){
   this.overallScore = 0;
 };
 
+Game.prototype.addFrameScore = function(framescore) {
+  this.framesScores.push(framescore);
+};
+
 Game.prototype.calculateOverallScore = function() {
     for(var i in this.frameScores) { this.overallScore += this.frameScores[i]; }
     return this.overallScore;

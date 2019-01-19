@@ -13,6 +13,6 @@ describe ('Gutter game', function () {
     }
 
     expect(scoresheet.isComplete).toBeTruthy()
-    expect(scoresheet.score).toEqual(0)
+    expect(scoresheet.finalScore).toEqual(0)
   })
 })

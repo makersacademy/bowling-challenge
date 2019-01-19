@@ -7,4 +7,8 @@ class Frame {
   addScore() {
     return this.roll1 + this.roll2
   }
+
+  getRoll1() {
+    return this.roll1
+  }
 }

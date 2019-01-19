@@ -15,12 +15,20 @@ describe("Features", function() {
   });
 
   it("Playing a 'gutter game' should return score of 0", function() {
+    counter = 0
     fullGame(0,0)
     expect(game.totalScore()).toEqual(0);
   });
 
   it("Playing a 'normal game' should return total score", function() {
+    counter = 0
     fullGame(1,1)
     expect(game.totalScore()).toEqual(20);
+  })
+
+  it("Scoring a 'spare' should return bonus points", function() {
+    game.addFrame(0, 10);
+    game.addFrame(1, 1);
+    expect(game.totalScore()).toEqual(13);
   })
 })

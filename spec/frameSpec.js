@@ -6,12 +6,17 @@ describe("Frame", function() {
   });
 
   it("Can create a frame class", function() {
-    let gutterFrame = new Frame(0, 0)
+    let gutterFrame = new Frame(0, 0);
     expect(gutterFrame instanceof Frame).toBe(true);
   });
 
   it("Can add up two rolls in a frame", function() {
-    let frame = new Frame(1, 3)
-    expect(frame.addScore()).toEqual(4)
+    let frame = new Frame(1, 3);
+    expect(frame.addScore()).toEqual(4);
+  })
+
+  it("Can return just roll1", function() {
+    let frame = new Frame(1, 6);
+    expect(frame.getRoll1()).toEqual(1)
   })
 })

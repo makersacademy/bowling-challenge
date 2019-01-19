@@ -51,4 +51,16 @@ describe('Scoresheet', function () {
       expect(scoresheet.isSpare()).toBeFalsy()
     })
   })
+
+  describe('#isFrameComplete', function () {
+    it('checks to see if the current frame is complete', function () {
+      scoresheet.currentFrame = [0, 0]
+      expect(scoresheet.isFrameComplete()).toBeTruthy()
+    })
+
+    it('checks to see if the current frame is incomplete', function () {
+      scoresheet.currentFrame = [0]
+      expect(scoresheet.isFrameComplete()).toBeFalsy()
+    })
+  })
 })

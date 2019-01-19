@@ -22,4 +22,8 @@ class Scoresheet {
     let frameScore = this.currentFrame.reduce(reducer)
     return (frameScore === 10 ? true : false)
   }
+
+  isFrameComplete () {
+    return (this.currentFrame.length === 2 ? true : false)
+  }
 }

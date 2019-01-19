@@ -32,5 +32,10 @@ describe ('Scoresheet', function () {
 
       expect(scoresheet.isComplete).toBeTruthy()
     })
+
+    it('adds the roll amount to the finalScore', function () {
+      scoresheet.roll(5)
+      expect(scoresheet.finalScore).toEqual(5)
+    })
   })
 })

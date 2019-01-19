@@ -1,77 +1,92 @@
+# Bowling-Challenge
 
-Bowling Challenge
-=================
+## User stories
+```
+As a user
+I want to be able to enter a score
+
+As a user
+If I don't get a strike on my first go
+I want to be able to enter a score for my second turn
+
+As a user
+If I don't get a strike or a half strike after to turns in a frame
+I want to be able to see the total of my 2 scores for the frame
+
+As a user
+If I get a strike in a frame
+I want the strike bonus to be added to my score for that frame
+
+As a user
+If I get a half strike in a frame
+I want the half strike bonus to be added to my score for that frame
+
+As a user
+If I am on fire and keep rolling strikes, so I keep within the rules
+I don't want the score for a frame to exceed 30
+
+As a user
+So that I don't have to keep track of frames
+I want the game to automatically end after frame 10
+
+As a user
+So that I can play multiple games
+I want to be able to reset the game once the game is over
+
+```
 
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+## Technology used
 
-## The Task
+- Jasmine for testing
+- Javascript to create classes and methods
+- html to create the layout of the user interface
+- CSS to style the page
+- Jquery to add features such as adding scores to the table, resetting the game etc.
+- Font Awesome CDN for icons
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+## How to use
+To use the bowling app you will first need to clone this repository using:
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+```
+git clone https://github.com/Ajay233/bowling-challenge.git
+```
 
-As usual please start by
+Then, while in the bowling_challenge directory use:
+```
+open index.html
+```
 
-* Forking this repo
+Alternatively, the app has been deployed to Surge, so you can try out the app by visiting:  https://crraazzzybowling.surge.sh
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+## How to play
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+- To play a game you will need to enter either a number between 1-9, "x" for a strike or "/" for a spare.
+- Once the 10th frame and any subsequent bonus goes have been played, the game will prevent you from playing another game unless you click the reset button.
 
-### Optional Extras
 
-In any order you like:
+## Below are screenshots of the finished app
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+![Ten Pin Score Example](images/ready_to_begin.png)
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+The app includes a bowling score table modelled after the tables used in bowling alley scoring systems.  I have included an input box for the user to input their scores.  Scores will be either 1-9, "x" for a strike, or "/" for a half strike.
 
-## Bowling — how does it work?
 
-### Strikes
+![Ten Pin Score Example](images/scoring.png)
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+Bonuses for strikes and spares are automatically worked out for the user.  To replicate the scoring systems in bowling alleys, I have prevented scores from being shown until the relevant bonuses have been applied.
 
-### Spares
 
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+![Ten Pin Score Example](images/Game_over.png)
 
-### 10th frame
+When the game is over, if the user tries to enter another score they will be notified that the game is over and that they will have to reset the game to play again.  To do so, the user just has to click the "reset" button and the table will be cleared and the game and all scores will be wiped so a fresh game can begin.
 
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
+## Updates/Bug Fixes
+- The case of strike input no longer affects scoring i.e. you can now enter either a lower case or upper case "x" and the scoring works as normal.
+- Rules have been added to the app view so the user can refer to them without having to leave the page.
+- Some small styling changes have been implemented so that when scores are added, the user will not have to scroll down the page to click the "Go" and "Restart" buttons.
+- The "Reset" button has been renamed to "Restart", matching the end of game pop up notice which prompts the user to click "Restart" to play a new game.
 
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
 
-### Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-### Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+The app has been deployed to Surge, so you can try out the app by visiting:  https://crraazzzybowling.surge.sh

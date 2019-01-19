@@ -37,7 +37,7 @@ class Scoresheet {
   }
 
   isFrameComplete () {
-    return (this.currentFrame.length === 2 ? true : false)
+    return (this.currentFrame.length === 2)
   }
 
   calculateFrameScore () {

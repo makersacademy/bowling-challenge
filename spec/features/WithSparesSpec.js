@@ -8,7 +8,7 @@ describe('With spares', function () {
     scoresheet = new Scoresheet()
   })
 
-  it('A user rolls a (1, 9) spare then a (7, 0) and the current score is 24', function () {
+  it('A user rolls a spare then a (7, 0) and the current score is 24', function () {
     scoresheet.roll(1)
     scoresheet.roll(9)
 

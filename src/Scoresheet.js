@@ -10,22 +10,32 @@ class Scoresheet {
   }
 
   roll (currentRoll) {
-    this.rollCount += 1
-    this.currentFrame.push(currentRoll)
-    if (this.isSpare()) { this.finalScore += currentRoll }
-    if (this.isFrameComplete()) { this.currentFrame = [] }
-    this.finalScore += currentRoll
-    if (this.rollCount === 20) { this.isComplete = true }
-    return currentRoll
-  }
+    let cr = currentRoll
+    if (this.wasSpare === true) {
+      this.finalScore += cr
+      this.wasSpare = false
+    }
 
-  isSpare () {
-    const reducer = (accumulator, currentValue) => accumulator + currentValue
-    let frameScore = this.currentFrame.reduce(reducer)
-    return (frameScore === 10 ? true : false)
+    this.currentFrame.push(currentRoll)
+
+    if (this.isFrameComplete() === true) {
+      let score = this.calculateFrameScore()
+      if (score === 10) { this.wasSpare = true }
+      this.finalScore += score
+      this.currentFrame = []
+    }
+
+    this.rollCount += 1
+    if (this.rollCount === 20) { this.isComplete = true }
+    return this.finalScore
   }
 
   isFrameComplete () {
     return (this.currentFrame.length === 2 ? true : false)
+  }
+
+  calculateFrameScore () {
+    const reducer = (accumulator, currentValue) => accumulator + currentValue
+    return this.currentFrame.reduce(reducer)
   }
 }

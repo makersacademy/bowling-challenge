@@ -40,19 +40,16 @@ describe('Scoresheet', function () {
 
     it('adds the roll amount to the finalScore', function () {
       scoresheet.roll(5)
+      scoresheet.roll(0)
+
       expect(scoresheet.finalScore).toEqual(5)
     })
   })
 
-  describe('#isSpare', function () {
+  describe('#calculateFrameScore', function () {
     it('checks to see if the currentFrame is a spare', function () {
       scoresheet.currentFrame = [1, 9]
-      expect(scoresheet.isSpare()).toBeTruthy()
-    })
-
-    it('checks to see if the currentFrame is not a spare', function () {
-      scoresheet.currentFrame = [1, 8]
-      expect(scoresheet.isSpare()).toBeFalsy()
+      expect(scoresheet.calculateFrameScore()).toEqual(10)
     })
   })
 

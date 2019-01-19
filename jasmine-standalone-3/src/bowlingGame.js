@@ -9,5 +9,9 @@ class BowlingGame {
   return num
 };
 
+  totalScore() {
+    return this.total
+  };
+
 
 };

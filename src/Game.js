@@ -26,13 +26,13 @@ Game.prototype.calculateScores = function() {
      var next_frame = this.allFrames[i+1];
      var next_next_frame = this.allFrames[i+2];
      var score = 0;
-     if (current_frame.isStrike()) {
+     if (current_frame.isStrike() && i!=9) {
         if (next_frame.isStrike()) {
             if (next_next_frame.isStrike()) {
             score = current_frame.calculateScore() + next_frame.calculateScore() + next_next_frame.calculateScore();
             } else { score = current_frame.calculateScore() + next_frame.calculateScore() + next_next_frame.rolls[0] };
          } else { score = current_frame.calculateScore() + next_frame.calculateScore() };
-      } else if (current_frame.isSpare()) { score = current_frame.calculateScore() + next_frame.rolls[0];
+      } else if (current_frame.isSpare() && i!=9) { score = current_frame.calculateScore() + next_frame.rolls[0];
       } else { score = current_frame.calculateScore() };
     this.framesScores.push(score);
    };
@@ -40,8 +40,14 @@ Game.prototype.calculateScores = function() {
 };
 
 Game.prototype.calculateOverallScore = function() {
-  for (let i in this.framesScores) {
+  for (i=0; i < this.framesScores.length; i++) {
     this.overallScore += this.framesScores[i];
   }
-  return this.overallScore;
+  return (this.overallScore + this.addExtraBonus());
+};
+
+Game.prototype.addExtraBonus = function() {
+  if (this.allFrames[9].isStrike())
+    { return 20 };
+  return 0;
 };

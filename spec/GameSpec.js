@@ -19,4 +19,10 @@ describe("Game", function() {
     expect(game.calculateOverallScore()).toEqual(95);
   });
 
+  it("adds the extra bonus if the 10th frame is a strike", function () {
+    game.allFrames = game.loadFrames([3,5,10,5,5,3,5,6,2,2,3,5,4,7,1,7,1,10]);
+    game.calculateScores();
+    expect(game.calculateOverallScore()).toEqual(117);
+  });
+
 });

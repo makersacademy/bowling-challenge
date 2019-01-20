@@ -39,12 +39,17 @@ describe ("BowlingGame", function() {
   })
 
   describe("A strike can be rolled", function() {
-    it("rolls a 10", function() {
+    it("rolls a 10, then doubles the next frame", function() {
       game.roll(10);
       game.roll(3);
       game.roll(6);
       rollX(0, 16);
-      expect(game.score()).toBe(27)
+      expect(game.score()).toBe(28)
+    })
+    it("rolls a 10, then gutters everything else", function() {
+      game.roll(10);
+      rollX(0, 18);
+      expect(game.score()).toBe(10)
     })
   })
 

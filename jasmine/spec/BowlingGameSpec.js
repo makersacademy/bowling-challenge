@@ -13,11 +13,11 @@ describe ("BowlingGame", function() {
     game.roll(pins)
   }
 
-  describe ("Initialisation", function () {
-  it ("creates a bowling game", function() {
-    game
-  })
-})
+//   describe ("Initialisation", function () {
+//   it ("creates a bowling game", function() {
+//     game
+//   })
+// })
 
   describe("Gutter game", function() {
     it("can roll a gutter game", function() {

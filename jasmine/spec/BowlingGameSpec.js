@@ -53,4 +53,14 @@ describe ("BowlingGame", function() {
     })
   })
 
+  describe("A spare can be rolled", function() {
+    it("rolls a spare frame, then doubles the next roll", function() {
+    game.roll(5);
+    game.roll(5);
+    game.roll(9);
+    rollX(0, 17);
+    expect(game.score()).toBe(28)
+    })
+  })
+
 })

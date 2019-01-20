@@ -26,6 +26,14 @@ describe ("BowlingGame", function() {
       }
       expect(game.score()).toBe(20)
     })
+
+    it("Every pin is a 4", function() {
+      var game = new BowlingGame();
+      for (var i = 0; i < 20; i++) {
+        game.roll(4);
+      }
+      expect(game.score()).toBe(80)
+    })
   })
 
 })

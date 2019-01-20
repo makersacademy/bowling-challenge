@@ -1,30 +1,33 @@
 class Scorecard {
   
-  constructor(finishedGame = false) {
-    this.currentScores = []
-    this.finishedGame = finishedGame
+  constructor(frameLength) {
+    this.info = {
+      'numOfFrames' : [],
+      'currentScores' : [] 
+    }
+    this.frameLength = frameLength || 10
   };
 
-  rollBall(numberOfPins) {
-    let total = this.currentScores
-    total.push(numberOfPins)
+  receiveFrame(addFrame) {
+    this.info.numOfFrames.push(addFrame);
+    return addFrame
+  };
+
+  bowlToScore(numberOfPins){
+    this.info.currentScores.push(numberOfPins);
     return numberOfPins
   };
 
   addScore(){
-    var sum = this.currentScores.reduce((accumulator, currentValue) => {
+    let sum = this.currentScores.reduce((accumulator, currentValue) => {
         return accumulator + currentValue;
       }, 0);
         return sum;
   };
 
-  isComplete(){
-    if (this.currentScores.length >= 1) {
-      return this.finishedGame = true
-    } else {
-      return this.finishedGame = false
-    };
-
+  isGameOver(){
+   if (this.info.numOfFrames.length === this.frameLength ) {return true }
+    return false
   };
 
 };

@@ -3,18 +3,22 @@ let scorecard;
 
   beforeEach( () => {
     scorecard = new Scorecard();
+    console.log(scorecard)
   });
 
-  it("rolls 1 time(s), scorecard.finished = true", 
-  () => {
-    scorecard.rollBall(0)
-    scorecard.addScore
-    scorecard.isComplete()
-      expect(scorecard.finishedGame).toEqual(true)
+  it("knows when game is over", () => {
+    for (var i = 0; i < 10; i++ ) {
+      scorecard.receiveFrame([3,4]);
+    }
+    expect(scorecard.isGameOver()).toBe(true)
+  });
+
+  it('the cumulative score after each frame', function() {
+    scorecard.bowlToScore(8);
+    scorecard.bowlToScore(5);
+
+    expect(scorecard.info.currentScores).toEqual([8, 5]);
   });
   
-  it("rolls once to give score", () => {
-    scorecard.rollBall(0)
-    expect(scorecard.currentScores).toEqual([0])
-  });
 });
+

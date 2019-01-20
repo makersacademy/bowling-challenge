@@ -30,7 +30,6 @@ Frame.prototype.spare = function() {
   return this.oneframeScore() == 10
 }
 
-
 Frame.prototype.bonusforSpare = function() {
   return this.roll[0]
 }

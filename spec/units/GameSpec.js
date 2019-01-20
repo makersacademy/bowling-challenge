@@ -35,9 +35,9 @@ describe("Game", function() {
 	});
 
 	describe("#bowl", function () {
-		it("#bowl adds 2 scores to the frame", function() {
+		it("#bowl adds scores to the frame", function() {
 			game.bowl(5, 4);
-			expect(game.frames[0]).toEqual([5, 4]);
+			expect(game.frames[0]).toEqual([5, 4, 0]);
 		});
 	});
 

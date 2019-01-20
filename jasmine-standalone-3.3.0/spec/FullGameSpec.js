@@ -19,13 +19,14 @@ describe("FullGame", function() {
     expect(fullgame.totalGameScore()).toEqual(0);
   });
 
-  it ("It is a perfect game, (no strike spare bonuses)", function() {
-    makeFrames([10,0]);
-    expect(fullgame.totalGameScore()).toEqual(100);
-  });
-
   it ("Is a normal game", function() {
     makeFrames([2,3])
     expect(fullgame.totalGameScore()).toEqual(50)
-  })
+  });
+
+  it ("It is a game with spares", function() {
+    makeFrames([7,3], [2,3])
+    expect(fullgame.totalGameScore()).toEqual(158)
+  });
+
 });

@@ -5,7 +5,7 @@
 describe('Scorecard', () => {
   let scorecard;
   let frame;
-  
+
   beforeEach( () => {
     scorecard = new Scorecard();
     frame = new Frame();
@@ -21,7 +21,7 @@ describe('Scorecard', () => {
   })
 
   describe('#calculateTotal()', () => {
-    it('calculates the total score of frame', () => {
+    it('calculates the total score of the game', () => {
       scorecard.recordFrameScore(frame)
       scorecard.calculateTotal()
       expect(scorecard._score).toEqual(0)

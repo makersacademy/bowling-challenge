@@ -16,9 +16,13 @@ describe("Frame", function() {
     expect(new_score.score()).toEqual(8);  
   });
 
-  it("should be able to store single roll score (strike) input by user", function() {
+  it("should store single roll score (strike) input by user", function() {
     strike_score = new Frame(10, 0)
     expect(strike_score.score()).toEqual(10);  
   });
+
+  it("should raise error is user enters score > 10", function() {
+    expect(function() { error_score = new Frame(9,2); }).toThrow("Invalid score! Can't knock down more than 10 per frame");  
+  });  
 
 })

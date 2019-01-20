@@ -1,77 +1,53 @@
+# Bowling Challenge
 
-Bowling Challenge
-=================
-
-
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
-
-## The Task
-
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
-
-Count and sum the scores of a bowling game for one player (in JavaScript).
+A browser console app of a scorecard that can count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by
 
-* Forking this repo
+## Getting Started
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+1. Clone this repo `git clone git@github.com:Sindex42/bowling-challenge.git`
+2. Change directory `cd bowling-challenge`
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
 
-### Optional Extras
+## Running the tests
 
-In any order you like:
+1. Open the SpecRunner file in your browser `open SpecRunner.html`
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+## Usage
 
-## Bowling — how does it work?
+All interaction with the program is through the console
 
-### Strikes
+1. Open the developer console in your browser, e.g. in Chrome:  
+  `ctrl + shift + J` (windows) or 
+ `cmd + option + J` (mac)
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+2. Create a new scoresheet `scoresheet = new Scoresheet`
 
-### Spares
+3. Make a new roll `scoresheet.roll([your roll])`
 
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
 
-### 10th frame
+## Approach
 
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
+1. A passing a feature test for a gutter game (20, '0' rolls resulting in a final score of 0). Completing this first meant that a user could complete a game and that the rolling function was working properly.
 
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
+2. A passing test for a complete game containing neither strikes nor spares as calculating the bonus points would introduce complications.
 
-### Gutter Game
+3. Implement the scoring and tracking of a single spare as I felt they were contained to a single frame more easily.
 
-A Gutter Game is when the player never hits a pin (20 zero scores).
+4. Expand the game to be able to handle any number of spares.
 
-### Perfect Game
+5. Implement the scoring and tracking of a single strike which would hopefully use a similar structure.
 
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
 
-In the image below you can find some score examples.
+## Future direction
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
+* Consecutive strikes: My current implementation of strikes does not easily allow the tracking of scores needed for consecutive ones.
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+* Bonus rolls in the 10th frame
 
-## Code Review
+* Extracting a Frame class: After implementing spares, I found that I needed to heavily refactor my code as it was getting hard to read. I also took the opportunity to improve weak tests and remove the redundant ones. This made it clear that having a separate class for frames would both make my code adhere to single responsibility principles better and would facilitate the implementation of consecutive strikes. 
 
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+* Input sanitation: My current program assumes the user will always input a valid roll. Especially when it comes to completing frames with the remaining pins for a spare to occur.

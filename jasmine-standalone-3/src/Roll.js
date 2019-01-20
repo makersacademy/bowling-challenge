@@ -1,3 +1,3 @@
-function Message(rollvalue) {
+function Roll(rollvalue) {
   this.rollvalue = rollvalue
 }

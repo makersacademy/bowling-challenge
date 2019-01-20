@@ -10,7 +10,7 @@ describe('Frame', () => {
       expect(frame._score).toEqual([0, 0])
     })
 
-    it('maximum rolls per frame is 3', () => {
+    it('maximum rolls per frame is 2', () => {
       var frame = new Frame();
       frame.roll(0)
       frame.roll(0)

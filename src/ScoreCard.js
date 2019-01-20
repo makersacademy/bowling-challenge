@@ -1,11 +1,12 @@
 class Scorecard {
   
-  constructor(frameLength) {
+  constructor(frameLength, rollLength) {
     this.info = {
       'numOfFrames' : [],
       'currentScores' : [] 
     }
     this.frameLength = frameLength || 10
+    this.rollLength = rollLength || 20
   };
 
   receiveFrame(addFrame) {
@@ -25,9 +26,15 @@ class Scorecard {
         return sum;
   };
 
-  isGameOver(){
+  isGameOverByFrames(){
    if (this.info.numOfFrames.length === this.frameLength ) {return true }
-    return false
+    return false;
+  };
+
+  isGameOverByRolls() {
+    if (this.info.currentScores.length === this.rollLength){return true}
+    else  {
+      return false}
   };
 
 };

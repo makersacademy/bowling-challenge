@@ -32,6 +32,12 @@ describe("Game", function() {
       game.bowl(4, 0);
       expect(game.calculateScore()).toEqual(18);
     })
+
+    it('adds spare bonus', function() {
+      game.bowl(10, 0);
+      game.bowl(4, 4);
+      expect(game.calculateScore()).toEqual(26);
+    })
 	});
 
 	describe("#bowl", function () {

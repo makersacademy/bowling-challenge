@@ -3,7 +3,7 @@ class Game {
 		this.isOver = false;
 		this.finalScore = null;
 		this.frames = [];
-		this.currentScore = 0;
+		this.runningTotal = 0;
 	}
 
 	bowl(pinsDown1, pinsDown2, pinsDown3 = 0) {
@@ -16,7 +16,7 @@ class Game {
 	}
 
 	status() {
-		if(this.frames.length === 10) {
+		if(this.currentFrame() === 10) {
 			this.finish(true);
 		}
 	}
@@ -32,30 +32,35 @@ class Game {
 	isSpare(index) {
 		let frame = this.frames;
 		if(this.currentFrame() === 10) {
-			return frame[index][0] + 10;
+			this.runningTotal += frame[index][0] + 10;
 		} else {
-			console.log('LOADS OF TIMES')
-			return frame[index + 1][0] + 10;
+			this.runningTotal += frame[index + 1][0] + 10;
 		}
+	}
+
+	isStrike(index){
+		let frame = this.frames;
+			this.runningTotal += frame[index+1][0] + frame[index+1][1] + 10
 	}
 
 	calculateScore() {
 		const _this = this;
-		let runningTotal = 0;
 		let frame = this.frames;
 
 		frame.forEach(function(frameScore, index) {
 			let total = frameScore.reduce((score, pins) => score + pins);
 
-			if(total === 10) {
-				runningTotal += _this.isSpare(index);
+			if(frameScore[0] === 10) {
+				_this.isStrike(index);
+			} else if(total === 10) {
+				_this.isSpare(index);
 			} else {
 				frameScore.forEach(function(pinsDown) {
-					runningTotal += pinsDown;
+					_this.runningTotal += pinsDown;
 				});
 			}
 		});
-		this.currentScore = runningTotal;
-		return runningTotal;
+
+		return this.runningTotal;
 	}
 }

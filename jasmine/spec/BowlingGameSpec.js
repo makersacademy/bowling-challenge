@@ -38,4 +38,14 @@ describe ("BowlingGame", function() {
     })
   })
 
+  describe("A strike can be rolled", function() {
+    it("rolls a 10", function() {
+      game.roll(10);
+      game.roll(3);
+      game.roll(6);
+      rollX(0, 16);
+      expect(game.score()).toBe(27)
+    })
+  })
+
 })

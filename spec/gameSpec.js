@@ -9,4 +9,16 @@ describe  ('Game', function() {
     for(let i = 0; i < 20; i++) { bowling.roll(0) }
     expect(bowling.getScore()).toEqual(0)
   })
+
+  it('can score 20 points', function() {
+    for(let i = 0; i < 20; i++) { bowling.roll(1) }
+    expect(bowling.getScore()).toEqual(20)
+  })
+
+  it('can roll multiple balls and succesfully accumulate points', function() {
+    bowling.roll(4)
+    bowling.roll(3)
+    for(let i = 0; i < 18; i++) { bowling.roll(0) }
+    expect(bowling.getScore()).toEqual(7)
+  })
 })

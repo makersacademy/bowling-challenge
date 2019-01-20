@@ -12,7 +12,14 @@ class ScoreCard {
   };
 
   roll(num) {
-    if (this.mode === 'finished') {
+    if (this.mode === 'extra 1') {;
+      this.mode = 'finished'; 
+      this.smallFrameArray.push(num);
+      this.frameComplete = true;
+    } else if (this.mode === 'extra 2') {
+      this.mode = 'extra 1';
+      this.smallFrameArray.push(num);
+    } else if (this.mode === 'finished') {
       throw "Game is Over";
     } else {
       this.smallFrameArray.push(num);
@@ -31,13 +38,16 @@ class ScoreCard {
         this.mode = 'extra 1';
       };
       this.rollCount ++;
-      this.counter();
     };
+    this.counter();
   };
 
   counter() {
     if (this.rollCount === 3 ) {
       this.frameComplete = true;
+    };
+    if (this.mode === 'extra 1' || this.mode === 'extra 2') {
+      this.frameComplete = false;
     };
     if (this.frameComplete === true) {
       if (this.strikeMode === true) {

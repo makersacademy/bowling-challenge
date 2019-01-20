@@ -10,7 +10,9 @@ describe ('10th frame', function () {
       scorecard.roll(1);
     };
     scorecard.roll(10);
+    expect(scorecard.frameCount).toEqual(10)
     scorecard.roll(3);
+    expect(scorecard.frameCount).toEqual(10)
     scorecard.roll(5);
     expect(scorecard.total).toEqual(36)
   });

@@ -9,7 +9,7 @@ describe ('Gutter Game', function () {
     for (i=0; i<20; i++) {
       scorecard.roll(0)
     };
-    expect(scorecard.isComplete()).toBeTrue()
-    expect(scoresheet.score).toEqual(0)
+    expect(scorecard.isComplete()).toBe(true)
+    expect(scorecard.score).toEqual(0)
   });
 });

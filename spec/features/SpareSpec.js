@@ -11,7 +11,6 @@ describe ('Spares', function () {
     scorecard.roll(2);
     scorecard.roll(2);
 
-    expect(scorecard.isComplete()).toBe(false)
     expect(scorecard.total).toEqual(16)
     expect(scorecard.frameCount).toEqual(3)
   });

@@ -6,23 +6,12 @@ describe ('ScoreCard', function () {
   });
 
   describe ('#beginning', function () {
-    it('starts incomplete', function () {
-      expect(scorecard.isComplete()).toBe(false);
-    });
-
     it('starts with a score of 0', function () {
       expect(scorecard.total).toEqual(0)
     });
   });
 
   describe ('#roll', function () {
-    it('20 rolls completes scorecard and roll count functions', function () {
-      for (i=0; i<20; i++) {
-        scorecard.roll(0);
-      };
-      expect(scorecard.isComplete()).toBe(true);
-    });
-
     it('scorecard counts roll numbers', function () {
       scorecard.roll(8);
       scorecard.roll(3);
@@ -62,4 +51,13 @@ describe ('ScoreCard', function () {
     });
   });
 
+  describe ('#finished', function () {
+
+    it('does not allow you to roll when game is over', function () {
+      for (i=0; i<20; i++) {
+        scorecard.roll(0);
+      };
+    expect(function() {scorecard.roll(4)}).toThrow('Game is Over')
+    });
+  });
 });

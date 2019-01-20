@@ -12,24 +12,26 @@ class ScoreCard {
   };
 
   roll(num) {
-    this.smallFrameArray.push(num);
-    if (this.rollCount === 1 && num === 10) {
-      this.mode = 'strike';
-      this.frameComplete = true;
-    };
-    var z = num + this.smallFrameArray[0];
-    if (this.rollCount === 2 && z === 10) {
-      this.mode = 'spare';
-    };
-    this.rollCount ++;
-    this.counter();
-  };
-
-  isComplete() {
-    if (this.frameCount < 11) {
-      return false;
+    if (this.mode === 'finished') {
+      throw "Game is Over";
     } else {
-      return true;
+      this.smallFrameArray.push(num);
+      if (this.rollCount === 1 && num === 10) {
+        this.mode = 'strike';
+        this.frameComplete = true;
+      };
+      var z = num + this.smallFrameArray[0];
+      if (this.rollCount === 2 && z === 10) {
+        this.mode = 'spare';
+      };
+      if (this.mode === 'strike' && this.frameCount === 10) {
+        this.mode = 'extra 2';
+      }; 
+      if (this.mode === 'spare' && this.frameCount === 10) {
+        this.mode = 'extra 1';
+      };
+      this.rollCount ++;
+      this.counter();
     };
   };
 
@@ -67,6 +69,9 @@ class ScoreCard {
     this.smallFrameArray = [];
     this.rollCount = 1;
     this.frameComplete = false
+    if (this.frameCount === 11) {
+      this.mode = 'finished';
+    };
   };
 
   score() {

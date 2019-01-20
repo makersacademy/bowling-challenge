@@ -1,9 +1,5 @@
 describe('Game features', function() {
-  let game;
-
-  beforeEach(function () {
-    game = new Game()
-  });
+  let game = new Game;
 
   it('a game can be played and scored without spares or strikes', function() {
     for (let i = 0; i < 20; i++) {

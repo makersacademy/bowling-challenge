@@ -1,0 +1,12 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scorecard.js",
+  "scripts": {
+    "lint": "eslint",
+    "test": "jasmine"  
+  },
+  "author": "",
+  "license": "ISC"
+}

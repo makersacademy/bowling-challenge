@@ -14,9 +14,12 @@ describe("ScoreCard", function() {
     expect(score_card.currentScore()).toEqual(0);
   });
 
-  // it("should be complete after the 20 throws of a gutter game", function() {
-
-  // });
+  it("should be complete after the 20 throws of a gutter game", function() {
+    for ( var i = 0; i < 20; i++ ) {
+    score_card.roll(score.score)
+    }
+    expect(score_card.gutterGame(20,0)).toEqual(true);
+  });
 
 })
 

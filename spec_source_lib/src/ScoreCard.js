@@ -3,6 +3,7 @@
 function ScoreCard() {
   this.scoreArray = [];
   this.rollsTaken = 0;
+  this.isComplete = false;
 }
 
 ScoreCard.prototype.currentScore = function() {
@@ -17,6 +18,18 @@ ScoreCard.prototype.roll = function(score) {
 ScoreCard.prototype.rollsTook = function() {
   return this.rollsTaken;
 }
+
+ScoreCard.prototype.gutterGame = function(rollsTook, currentScore) {
+  if (rollsTook == 20 && currentScore == 0) {
+    return this.gameComplete();
+  }
+}
+
+ScoreCard.prototype.gameComplete = function() {
+  return this.isComplete = true;
+}
+
+
 
 
 

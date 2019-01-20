@@ -14,12 +14,4 @@ describe('Frame', () => {
       expect(frame.roll).toBeDefined()
     })
   })
-
-  describe('#calculateFrameScore()', () => {
-    it('returns 0 after player rolls two gutter balls', () => {
-      frame.roll(0)
-      frame.roll(0)
-      expect(frame.calculateFrameScore()).toEqual(0)
-    })
-  })
 })

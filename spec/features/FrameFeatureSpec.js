@@ -7,7 +7,7 @@ describe('Frame', () => {
       var frame = new Frame();
       frame.roll(0)
       frame.roll(0)
-      expect(frame.calculateFrameScore()).toEqual(0)
+      expect(frame._score).toEqual([0, 0])
     })
   })
 })

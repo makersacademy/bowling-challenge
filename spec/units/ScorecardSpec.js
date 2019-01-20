@@ -3,21 +3,28 @@
 'use strict'
 
 describe('Scorecard', () => {
+  let scorecard;
+  let frame;
+  
+  beforeEach( () => {
+    scorecard = new Scorecard();
+    frame = new Frame();
+    frame.roll(0)
+    frame.roll(0)
+  });
+
   describe('#recordFrameScore()', () => {
     it('records the score of a frame', () => {
-      var scorecard = new Scorecard();
-      let frame = new Frame();
-      frame.roll(0)
-      frame.roll(0)
       scorecard.recordFrameScore(frame)
       expect(scorecard._frameScores).toEqual([[0, 0]])
     })
   })
 
   describe('#calculateTotal()', () => {
-    it('responds to .calculateTotal()', () => {
-      var scorecard = new Scorecard();
-      expect(scorecard.calculateTotal).toBeDefined()
+    it('calculates the total score of frame', () => {
+      scorecard.recordFrameScore(frame)
+      scorecard.calculateTotal()
+      expect(scorecard._score).toEqual(0)
     })
   })
 })

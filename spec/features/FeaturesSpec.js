@@ -40,7 +40,6 @@ describe("Game Logic", function() {
       frame.roll(3);
       game.allFrames.push(frame);
     };
-    console.log(game.allFrames);
     game.calculateScores();
     expect(game.calculateOverallScore()).toEqual(133);
   });
@@ -56,13 +55,12 @@ describe("Game Logic", function() {
       game.allFrames.push(frame);
     };
 
-      frame = new Frame();
-      frame.roll(10);
-      game.allFrames.push(frame);
+    frame = new Frame();
+    frame.roll(10);
+    game.allFrames.push(frame);
 
-      game.calculateScores();
-      game.addExtraBonus();
-      expect(game.calculateOverallScore()).toEqual(84);
+    game.calculateScores();
+    expect(game.calculateOverallScore()).toEqual(84);
   });
 
   it("calculates a player's score when the 10th frame is a spare", function() {
@@ -74,15 +72,28 @@ describe("Game Logic", function() {
       game.allFrames.push(frame);
     };
 
-      frame = new Frame();
-      frame.roll(5);
-      frame.roll(5);
-      game.allFrames.push(frame);
+    frame = new Frame();
+    frame.roll(5);
+    frame.roll(5);
+    game.allFrames.push(frame);
 
-      game.calculateScores();
-      game.addExtraBonus();
-      expect(game.calculateOverallScore()).toEqual(74);
+    game.calculateScores();
+    expect(game.calculateOverallScore()).toEqual(74);
   });
 
+  // Perfect game
+
+  it("calculates the score for a perfect game", function() {
+
+  for (var i = 0; i < 10; i++) {
+    frame = new Frame();
+    frame.roll(10);
+    game.allFrames.push(frame);
+  };
+
+   console.log(game.allFrames);
+
+    expect(game.calculateOverallScore()).toEqual(300);
+  });
 
 });

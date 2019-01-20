@@ -18,6 +18,14 @@ Game.prototype.loadFrames = function(list_of_scores) {
   return this.allFrames;
 };
 
+Game.prototype.isPerfectGame = function() {
+  var perfectGame = 0;
+  for (i = 0; i < 10; i++) {
+    if (this.allFrames[i].rolls[0] === 10) { perfectGame += 1 };
+  };
+ return perfectGame;
+};
+
 Game.prototype.calculateScores = function() {
   for (i = 0; i < 10; i++) {
     let currentFrame = this.allFrames[i];
@@ -27,6 +35,7 @@ Game.prototype.calculateScores = function() {
     if (currentFrame.isStrike() && i!=9) {
       if (nextFrame.isStrike()) {
         if (nextNextFrame.isStrike()) {
+          console.log(currentFrame.calculateScore());
           score = currentFrame.calculateScore() + nextFrame.calculateScore() + nextNextFrame.calculateScore();
         } else {
           score = currentFrame.calculateScore() + nextFrame.calculateScore() + nextNextFrame.rolls[0];
@@ -45,6 +54,7 @@ Game.prototype.calculateScores = function() {
 };
 
 Game.prototype.calculateOverallScore = function() {
+  if (this.isPerfectGame() === 10) { return 300 };
   for (i=0; i < this.framesScores.length; i++) {
     this.overallScore += this.framesScores[i];
   }

@@ -16,7 +16,7 @@ describe('Scorecard', () => {
   describe('#recordFrameScore()', () => {
     it('will not allow more than 10 frames to be recorded', () => {
       var times = 10;
-      for(var i=0; i < times; i++){
+      for(var i = 0; i < times; i++) {
         scorecard.recordFrameScore(frame)
       }
       var error = 'Cannot record frame: 10 frames already recorded'

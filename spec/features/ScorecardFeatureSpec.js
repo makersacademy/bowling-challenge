@@ -22,4 +22,15 @@ describe('Scorecard', () => {
       expect(scorecard._score).toEqual(1)
     })
   })
+
+  describe('#gutter game', () => {
+    it('calculates the score as 0 after 10 gutter frames', () => {
+      var times = 10;
+      for(var i = 0; i < times; i++) {
+        scorecard.recordFrameScore(frame)
+      }
+    scorecard.calculateTotal()
+    expect(scorecard._score).toEqual(0)
+    })
+  })
 })

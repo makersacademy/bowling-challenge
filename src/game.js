@@ -9,6 +9,7 @@ class Game {
 
   addFrame(roll1, roll2, roll3=0) {
     let frame = new Frame(roll1, roll2, roll3)
+    if(frame.roll3 !==0 && this.getFrames().length < 9) throw "Bonus game is in frame 10 only!"
     this.frames.push(frame)
     return frame
   }

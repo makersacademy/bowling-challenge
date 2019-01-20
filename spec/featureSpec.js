@@ -47,8 +47,10 @@ describe("Features", function() {
   })
 
   it("The Final Frame should allow up to three rolls if player scores strikes", function() {
+    counter = 0
+    fullGame(1,1)
     game.addFrame(10,10,10);
-    expect(game.totalScore()).toEqual(30)
+    expect(game.totalScore()).toEqual(50)
   })
 
   it("Awards 300 points if user scores a perfect game", function() {

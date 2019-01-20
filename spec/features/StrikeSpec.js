@@ -12,7 +12,7 @@ describe ('Strikes', function () {
 
     expect(scorecard.isComplete()).toBe(false)
     expect(scorecard.score).toEqual(28)
-    expect(scorecard.frame).toEqual(3)
+    expect(scorecard.frameCount).toEqual(3)
     expect(scorecard.rollCount).toEqual(1)
   });
 });

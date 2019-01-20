@@ -20,7 +20,6 @@ describe ('ScoreCard', function () {
       for (i=0; i<20; i++) {
         scorecard.roll(0);
       };
-      expect(scorecard.count).toEqual(20);
       expect(scorecard.isComplete()).toBe(true);
     });
 

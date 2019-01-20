@@ -14,5 +14,6 @@ Scorecard.prototype.recordFrameScore = function (frame) {
 }
 
 Scorecard.prototype.calculateTotal = function () {
-  return this._score = ((this._frameScores[0][0] + this._frameScores[0][1]))
+  const sum = [].concat(...this._frameScores).reduce((acc, curr) => acc + curr)
+  return this._score = sum
 }

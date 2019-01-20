@@ -10,6 +10,6 @@ describe ('Gutter Game', function () {
       scorecard.roll(0);
     };
     expect(scorecard.isComplete()).toBe(true)
-    expect(scorecard.score).toEqual(0)
+    expect(scorecard.total).toEqual(0)
   });
 });

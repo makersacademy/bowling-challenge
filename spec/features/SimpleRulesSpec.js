@@ -10,6 +10,6 @@ describe ('Simple Rules', function () {
       scorecard.roll(5);
     };
     expect(scorecard.isComplete()).toBe(true)
-    expect(scorecard.score).toEqual(100)
+    expect(scorecard.total).toEqual(100)
   });
 });

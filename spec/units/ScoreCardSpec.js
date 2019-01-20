@@ -11,7 +11,7 @@ describe ('ScoreCard', function () {
     });
 
     it('starts with a score of 0', function () {
-      expect(scorecard.score).toEqual(0)
+      expect(scorecard.total).toEqual(0)
     });
   });
 
@@ -26,18 +26,18 @@ describe ('ScoreCard', function () {
     it('scorecard counts roll numbers', function () {
       scorecard.roll(8);
       scorecard.roll(3);
-      expect(scorecard.score).toEqual(11);
+      expect(scorecard.total).toEqual(11);
     });
     
     it('score accounts for strikes', function () {
       scorecard.roll(10);
       scorecard.roll(6);
       scorecard.roll(2);
-      expect(scorecard.score).toEqual(26);
+      expect(scorecard.total).toEqual(26);
     });
   });
 
-  decribe ('#Frames', function () {
+  describe ('#Frames', function () {
 
     it('frame accounts for strikes', function () {
       scorecard.roll(10);

@@ -11,7 +11,7 @@ describe ('Strikes', function () {
     scorecard.roll(1);
 
     expect(scorecard.isComplete()).toBe(false)
-    expect(scorecard.score).toEqual(28)
+    expect(scorecard.total).toEqual(28)
     expect(scorecard.frameCount).toEqual(3)
     expect(scorecard.rollCount).toEqual(1)
   });

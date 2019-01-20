@@ -1,5 +1,6 @@
-class Scorecard {
+class ScoreCard {
   constructor () {
+    this.isComplete = false;
   };
   
 };

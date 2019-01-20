@@ -2,10 +2,10 @@ describe ('ScoreCard', function () {
   var scorecard;
 
   beforeEach (function () {
-    scorecard = new ScoreCard;
+    scorecard = new ScoreCard();
   });
 
   it('starts incomplete', function () {
-    expect(scorecard.isComplete()).toBeFalse();
+    expect(scorecard.isComplete).toBe(false);
   });
 });

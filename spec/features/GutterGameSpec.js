@@ -2,7 +2,7 @@ describe ('Gutter Game', function () {
   var scorecard;
   
   beforeEach (function () {
-    scorecard = new ScoreCard;
+    scorecard = new ScoreCard();
   });
 
   it('If a user rolls only 0s, the final score should be 0', function () {

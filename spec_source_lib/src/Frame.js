@@ -10,4 +10,4 @@ function Frame(roll1, roll2) {
 
 Frame.prototype.score = function(){
   return (this.roll1 + this.roll2);
-}	
+}

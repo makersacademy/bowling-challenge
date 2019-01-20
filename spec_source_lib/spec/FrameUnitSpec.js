@@ -1,11 +1,9 @@
 describe("Frame - Unit Tests", function() {
   var new_score;
   
-
   beforeEach(function() {
     new_score = new Frame(6, 2);
   });
-
   
   it("stores two rolls", function() {
     expect(new_score.roll1).toEqual(6);

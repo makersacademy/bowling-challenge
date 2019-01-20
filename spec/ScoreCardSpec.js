@@ -13,24 +13,19 @@ let scorecard;
   });
 
   it("Gutter game by bowling 20 '0s' ", () => {
-    scorecard.bowlToScore(0), scorecard.bowlToScore(0), scorecard.bowlToScore(0), scorecard.bowlToScore(0), scorecard.bowlToScore(0),
-    scorecard.bowlToScore(0), scorecard.bowlToScore(0), scorecard.bowlToScore(0), scorecard.bowlToScore(0), scorecard.bowlToScore(0),
-    scorecard.bowlToScore(0), scorecard.bowlToScore(0), scorecard.bowlToScore(0), scorecard.bowlToScore(0), scorecard.bowlToScore(0),
-    scorecard.bowlToScore(0), scorecard.bowlToScore(0), scorecard.bowlToScore(0), scorecard.bowlToScore(0), scorecard.bowlToScore(0),
+    scorecard.bowlToScore(0, 0), scorecard.bowlToScore(0, 0), scorecard.bowlToScore(0, 0), scorecard.bowlToScore(0, 0), scorecard.bowlToScore(0, 0),
+    scorecard.bowlToScore(0, 0), scorecard.bowlToScore(0, 0), scorecard.bowlToScore(0, 0), scorecard.bowlToScore(0, 0), scorecard.bowlToScore(0, 0),
     expect(scorecard.isGameOverByRolls()).toBe(true)
   })
 
   it('cumulative score after each frame', () => {
-    scorecard.bowlToScore(8);
-    scorecard.bowlToScore(5);
-    expect(scorecard.info.currentScores).toEqual([8, 5]);
+    scorecard.bowlToScore(8, 5);
+    expect(scorecard.infoArrays.currentScores).toEqual([8, 5]);
   });
   
   it(" adds score from each bowl", () => {
-    scorecard.bowlToScore(5)
-    scorecard.bowlToScore(4)
+    scorecard.bowlToScore(5, 4)
     expect(scorecard.accumScore()).toEqual(9)
-
   })
   
 });

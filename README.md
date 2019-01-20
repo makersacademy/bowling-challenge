@@ -1,12 +1,10 @@
 
-Bowling Challenge
+Bowling Scorecard
 =================
 
 ## The Task
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. THE USER INPUTS THE ROLLS.**
-
-Counts and sums up the scores of a bowling game for one player (in JavaScript).
+Counts and sums up the scores of a bowling game for one player (in JavaScript). The user is the one inputing the rolls.
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 

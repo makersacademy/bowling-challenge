@@ -11,20 +11,33 @@ class BowlingGame {
     var game = this;
 
    for(var frameNum = 0; frameNum < 10; frameNum++) {
-     //calculating a spare whole frame plus next roll 
-     if(isSpare()) {
-      result += getSpareScore() ;
+     //strike at first will equal the 10 + total of next 2 rolls
+     if(isStrike()) {
+       result += getStrikeScore();
+       rollNum ++;
+        //calculating a spare whole frame plus next roll 
+     } else if(isSpare()) {
+       result += getSpareScore();
+       rollNum += 2;
     } else {
       result += getNormalScore();
+      //2 rolls in each frame 
+      rollNum += 2;
     }
-      rollNum += 2; //2 rolls in each frame 
+       
   }
    return result; 
   
+   function isStrike() {
+    return game.rolls[rollNum] == 10
+  }
    function isSpare() {
      return game.rolls[rollNum] + game.rolls[rollNum + 1] == 10
    }
-
+   
+   function getStrikeScore() {
+    return game.rolls[rollNum] + game.rolls[rollNum + 1] + game.rolls[rollNum + 2]
+   }
    function getSpareScore() {
     return game.rolls[rollNum] + game.rolls[rollNum + 1] + game.rolls[rollNum + 2]
    }

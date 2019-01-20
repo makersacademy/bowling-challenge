@@ -36,7 +36,7 @@ it("can roll a strike", function(){
   game.roll(10)
   game.roll(4)
   game.roll(5)
-  for(var i=0; i < 17; i ++){
+  for(var i=0; i < 16; i ++){
     game.roll(0);
   }
   expect(game.getScore()).toEqual(28)

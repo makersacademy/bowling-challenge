@@ -21,4 +21,12 @@ describe  ('Game', function() {
     for(let i = 0; i < 18; i++) { bowling.roll(0) }
     expect(bowling.getScore()).toEqual(7)
   })
+
+  it('can earn bonus in case of spare', function() {
+    bowling.roll(5)
+    bowling.roll(5)
+    bowling.roll(5)
+    for(let i = 0; i < 18; i++) { bowling.roll(0) }
+    expect(bowling.getScore()).toEqual(20)
+  })
 })

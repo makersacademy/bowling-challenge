@@ -33,15 +33,15 @@ class Game {
 		let frame = this.frames;
 
 		frame.forEach(function(frameScore, index) {
-			frameScore.forEach(function(pinsDown) {
+			let total = frameScore.reduce((score, pins) => score + pins)
 
-				if(frameScore.reduce((score, pins) => score + pins) === 10) {
-					runningTotal += pinsDown + frame[index + 1][0];
-				} else {
-					runningTotal += pinsDown;
-				}
-
+			if(total === 10) {
+				runningTotal += frame[index + 1][0] + 10;
+			} else {
+				frameScore.forEach(function(pinsDown) {
+				runningTotal += pinsDown;
 			})
+			}
 		})
 		return runningTotal;
 	}

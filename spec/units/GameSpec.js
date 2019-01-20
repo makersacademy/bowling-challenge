@@ -10,6 +10,11 @@ describe("Game", function() {
 	});
 
 	describe("#calculateScore", function () {
+    it("#calculateScore tells you the score", function() {
+      game.bowl(2, 0);
+      expect(game.calculateScore()).toEqual(2);
+    });
+
 		it("#calculateScore tells you the score", function() {
 			game.bowl(2, 1);
 			expect(game.calculateScore()).toEqual(3);
@@ -25,7 +30,7 @@ describe("Game", function() {
     it('adds spare bonus', function() {
       game.bowl(5, 5);
       game.bowl(4, 0);
-      expect(game.calculateScore()).toEqual(19);
+      expect(game.calculateScore()).toEqual(18);
     })
 	});
 

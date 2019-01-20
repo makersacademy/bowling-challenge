@@ -24,6 +24,10 @@ describe('Scoresheet', function () {
     it('the last frame was not a spare', function () {
       expect(scoresheet.wasSpare).toEqual(false)
     })
+
+    it('the last frame was not a strike', function () {
+      expect(scoresheet.wasStrike).toEqual(false)
+    })
   })
 
   describe('#roll', function () {
@@ -79,13 +83,6 @@ describe('Scoresheet', function () {
     })
   })
 
-  describe('#calculateFrameScore', function () {
-    it('checks to see if the currentFrame is a spare', function () {
-      scoresheet.currentFrame = [1, 9]
-      expect(scoresheet.calculateFrameScore()).toEqual(10)
-    })
-  })
-
   describe('#isFrameComplete', function () {
     it('checks to see if the current frame is complete', function () {
       scoresheet.currentFrame = [0, 0]
@@ -95,6 +92,13 @@ describe('Scoresheet', function () {
     it('checks to see if the current frame is incomplete', function () {
       scoresheet.currentFrame = [0]
       expect(scoresheet.isFrameComplete()).toBeFalsy()
+    })
+  })
+
+  describe('#strikeCheck', function () {
+    it('checks to see if the roll was a strike', function () {
+      scoresheet.roll(10)
+      expect(scoresheet.isStrike).toBeTruthy()
     })
   })
 })

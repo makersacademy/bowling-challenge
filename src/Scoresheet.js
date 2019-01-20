@@ -7,6 +7,7 @@ class Scoresheet {
     this.rollCount = 0
     this.currentFrame = []
     this.wasSpare = false
+    this.wasStrike = false
   }
 
   roll (currentRoll) {
@@ -29,7 +30,7 @@ class Scoresheet {
     this.currentFrame.push(currentRoll)
 
     if (this.isFrameComplete() === true) {
-      let score = this.calculateFrameScore()
+      let score = this.currentFrame.reduce((score, pins) => score + pins)
       if (score === 10) { this.wasSpare = true }
       this.finalScore += score
       this.currentFrame = []
@@ -40,8 +41,7 @@ class Scoresheet {
     return (this.currentFrame.length === 2)
   }
 
-  calculateFrameScore () {
-    const reducer = (accumulator, currentValue) => accumulator + currentValue
-    return this.currentFrame.reduce(reducer)
+  isStrike (currentRoll) {
+    if (currentRoll === 10) { this.wasStrike = true}
   }
 }

@@ -2,6 +2,7 @@
 
 function Scorecard () {
   this._frameScores = [] 
+  this._score = 0
 }
 
 Scorecard.prototype.frameScores = () => {
@@ -9,9 +10,9 @@ Scorecard.prototype.frameScores = () => {
 }
 
 Scorecard.prototype.recordFrameScore = function (frame) {
-  let frameScore = frame._score
-  return this._frameScores.push(frameScore)
+  return this._frameScores.push(frame._score)
 }
 
-Scorecard.prototype.calculateTotal = () => {
+Scorecard.prototype.calculateTotal = function () {
+  return this._score = ((this._frameScores[0][0] + this._frameScores[0][1]))
 }

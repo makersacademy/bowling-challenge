@@ -30,4 +30,11 @@ describe('Game Scorecard', function() {
     }
     expect(game.score()).toBeGreaterThan(25)
   })
+
+  it('rolls a perfect game', function() {
+    for(var i = 0; i < 10; i++) {
+      game.roll(strike)
+    }
+    expect(game.score()).toBe(300)
+  })
 })

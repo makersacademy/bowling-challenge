@@ -9,6 +9,6 @@ FullGame.prototype.bowl = function(number) {
 
 FullGame.prototype.totalGameScore = function() {
   return this.frames.reduce(function(score, frame, index, frames){
-    return score + frame.totalscore(frames[index + 1], frames[index + 2])
+    return score + frame.totalscore(frames[1], frames[2])
   },0)
 }

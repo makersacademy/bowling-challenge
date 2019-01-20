@@ -3,12 +3,11 @@ let scorecard;
 
   beforeEach( () => {
     scorecard = new Scorecard();
-    console.log(scorecard)
   });
 
   it("knows when game is over", () => {
     for (var i = 0; i < 10; i++ ) {
-      scorecard.receiveFrame([3,4]);
+      scorecard.receiveFrame([3]);
     }
     expect(scorecard.isGameOverByFrames()).toBe(true)
   });

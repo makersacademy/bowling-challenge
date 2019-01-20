@@ -41,22 +41,24 @@ describe("Game - No Strikes or Spares Feature Test", function() {
 
 })
 
-describe("Game - One Strike Feature Test", function() {
-  var game;
-  var score;
+// next Feature test written below, was going to implement simple strike bonus scoring
 
-  beforeEach(function() {
-    game = new Game();
-    score = new Frame(2, 6);
-    strike_score = new Frame(10, 0)
-  });
+// describe("Game - One Strike Feature Test", function() {
+//   var game;
+//   var score;
 
-  it("returns score of 90 if 1 strike at start & all other frames' score 8", function() {
-    game.roll(strike_score.score())
-    for ( var i = 0; i < 9; i++ ) {
-    game.roll(score.score())
-    }
-    expect(game.currentScore()).toEqual(90);
-  });
+//   beforeEach(function() {
+//     game = new Game();
+//     score = new Frame(2, 6);
+//     strike_score = new Frame(10, 0)
+//   });
 
-})
+//   it("returns score of 90 if 1 strike at start & all other frames' score 8", function() {
+//     game.roll(strike_score.score())
+//     for ( var i = 0; i < 9; i++ ) {
+//     game.roll(score.score())
+//     }
+//     expect(game.currentScore()).toEqual(90);
+//   });
+
+// })

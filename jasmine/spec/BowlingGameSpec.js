@@ -63,4 +63,11 @@ describe ("BowlingGame", function() {
     })
   })
 
+  describe("A perfect game can be rolled", function() {
+    it("rolls 12 strikes and generates a score of 300", function() {
+      rollX(10, 12);
+      expect(game.score()).toBe(300)
+    })
+  })
+
 })

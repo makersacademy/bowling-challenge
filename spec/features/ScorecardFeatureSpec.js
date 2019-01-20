@@ -8,8 +8,8 @@ describe('Scorecard', () => {
       let frame = new Frame();
       frame.roll(0)
       frame.roll(0)
-      let frameScore = frame.calculateFrameScore()
       let totalScore = scorecard.calculateTotal()
+      expect(totalScore).toEqual(0)
     })
   })
 })

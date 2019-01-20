@@ -13,5 +13,16 @@ describe('Scorecard', () => {
       var scorecard = new Scorecard();
       expect(scorecard.recordFrameScore).toBeDefined()
     })
+
+    it('records the score of a frame', () => {
+      var scorecard = new Scorecard();
+      let frame = new Frame();
+      frame.roll(3)
+      frame.roll(2)
+      scorecard.recordFrameScore(frame)
+      console.log(frame._score)
+      console.log(scorecard)
+      expect(scorecard._frameScores).toContain(frame._score)
+    })
   })
 })

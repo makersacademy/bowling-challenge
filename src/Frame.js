@@ -5,7 +5,7 @@ function Frame () {
 }
 
 Frame.prototype.score = () => {
-  return this._score = []
+  return this._score
 }
 
 Frame.prototype.roll = function (Number) {

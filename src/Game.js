@@ -32,6 +32,10 @@ class Game {
 	}
 
 	finish(bool) {
-		if(bool === true) { this.isOver = true; }
+		if(bool === true) {
+			this.isOver = true;
+			this.finalScore = this.currentScore();
+			return this.finalScore;
+		}
 	}
 }

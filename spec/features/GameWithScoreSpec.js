@@ -7,7 +7,7 @@ describe('Game features', function() {
 
   it('a game can be played and scored without spares or strikes', function() {
     for (let i = 0; i < 20; i++) {
-      game.bowl(1);
+      game.bowl(1, 1);
     };
 
     expect(game.isOver).toBe(true);

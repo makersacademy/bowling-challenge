@@ -7,7 +7,7 @@ describe('Game features', function() {
 
   it('a user scores 0 for a full gutter game', function () {
     for (let i = 0; i < 20; i++) {
-      game.bowl(0);
+      game.bowl(0, 0);
     }
 
     expect(game.isOver).toBe(true);

@@ -2,15 +2,21 @@
 
 describe ("BowlingGame", function() {
 
+  var game;
+
+  beforeEach(function() {
+    game = new BowlingGame();
+  })
+
+
   describe ("Initialisation", function () {
   it ("creates a bowling game", function() {
-    var game = new BowlingGame();
+    game
   })
 })
 
   describe("Gutter game", function() {
     it("can roll a gutter game", function() {
-      var game = new BowlingGame();
       for (var i = 0; i < 20; i++) {
         game.roll(0);
       }
@@ -20,7 +26,6 @@ describe ("BowlingGame", function() {
 
   describe("Specific scores", function() {
     it("Every pin is a 1", function() {
-      var game = new BowlingGame();
       for (var i = 0; i < 20; i++) {
         game.roll(1);
       }
@@ -28,7 +33,6 @@ describe ("BowlingGame", function() {
     })
 
     it("Every pin is a 4", function() {
-      var game = new BowlingGame();
       for (var i = 0; i < 20; i++) {
         game.roll(4);
       }

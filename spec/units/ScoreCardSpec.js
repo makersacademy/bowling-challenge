@@ -5,12 +5,14 @@ describe ('ScoreCard', function () {
     scorecard = new ScoreCard();
   });
 
-  it('starts incomplete', function () {
-    expect(scorecard.isComplete()).toBe(false);
-  });
+  describe ('#beginning', function () {
+    it('starts incomplete', function () {
+      expect(scorecard.isComplete()).toBe(false);
+    });
 
-  it('starts with a score of 0', function () {
-    expect(scorecard.score).toEqual(0)
+    it('starts with a score of 0', function () {
+      expect(scorecard.score).toEqual(0)
+    });
   });
 
   describe ('#roll', function () {
@@ -27,5 +29,30 @@ describe ('ScoreCard', function () {
       scorecard.roll(3);
       expect(scorecard.score).toEqual(11);
     });
+    
+    it('score accounts for strikes', function () {
+      scorecard.roll(10);
+      scorecard.roll(6);
+      scorecard.roll(2);
+      expect(scorecard.score).toEqual(26);
+    });
   });
+
+  decribe ('#Frames', function () {
+
+    it('frame accounts for strikes', function () {
+      scorecard.roll(10);
+      scorecard.roll(3);
+      scorecard.roll(4);
+      expect(scorecard.frameCount).toEqual(3);
+    });
+
+    it('frame functions', function () {
+      for (i=0; i<10; i++) {
+        scorecard.roll(0);
+      };
+    expect(scorecard.frameCount).toEqual(6);
+    });
+  });
+
 });

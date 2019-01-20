@@ -29,4 +29,12 @@ describe  ('Game', function() {
     for(let i = 0; i < 18; i++) { bowling.roll(0) }
     expect(bowling.getScore()).toEqual(20)
   })
+
+  it('can get bonus in case of strike', function() {
+    bowling.roll(10);
+    bowling.roll(5);
+    bowling.roll(5);
+    for(let i = 0; i < 18; i++) { bowling.roll(0) }
+    expect(bowling.getScore()).toEqual(30);
+  })
 })

@@ -41,12 +41,17 @@ class Game {
 	isStrike(index){
 		let frame = this.frames;
 
-		if(frame[index + 1][0] === 10) {
-			this.runningTotal += frame[index+1][0] + frame[index+2][0] + 10;
-		} else {
-			this.runningTotal += frame[index+1][0] + frame[index+1][1] + 10;
-		}
-	}
+		switch(index) {
+			case index < 8 :
+				if(frame[index + 1][0] === 10) {
+					this.runningTotal += frame[index+1][0] + frame[index+2][0] + 10;
+				} else {
+					this.runningTotal += frame[index+1][0] + frame[index+1][1] + 10;
+				}
+			case index === 8 :
+					this.runningTotal += frame[index + 1][0] + frame[index + 1][1] + 10;
+				}
+			}
 
 	calculateScore() {
 		const _this = this;

@@ -61,6 +61,15 @@ describe("Game", function() {
       game.bowl(4, 4);
       expect(game.calculateScore()).toEqual(26);
     })
+
+    it('adds final frame strike bonus', function() {
+      for (let i = 0; i < 8; i++) {
+        game.bowl(0, 0);
+      }
+      game.bowl(10, 0);
+      game.bowl(1, 1);
+      expect(game.calculateScore()).toEqual(14);
+    })
 	});
 
 	describe("#bowl", function () {

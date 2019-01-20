@@ -6,21 +6,20 @@ class ScoreCard {
     this.frameComplete = false;
     this.bigFrameArray = [];
     this.smallFrameArray = [];
-    this.strike = false;
-    this.strikeMode = false;
-    this.spare = false;
+    this.mode = 'none';
+    this.strikeMode = false;;
     this.spareMode = false;
   };
 
   roll(num) {
     this.smallFrameArray.push(num);
     if (this.rollCount === 1 && num === 10) {
-      this.strike = true;
+      this.mode = 'strike';
       this.frameComplete = true;
     };
     var z = num + this.smallFrameArray[0];
     if (this.rollCount === 2 && z === 10) {
-      this.spare = true;
+      this.mode = 'spare';
     };
     this.rollCount ++;
     this.counter();
@@ -42,12 +41,12 @@ class ScoreCard {
       if (this.strikeMode === true) {
         this.smallFrameArray[0] *= 2;
         this.smallFrameArray[1] *= 2;
-        this.strike = false;
+        this.mode = 'none';
         this.strikeMode = false;
       };
       if (this.spareMode === true) {
         this.smallFrameArray[0] *= 2;
-        this.spare = false;
+        this.mode = 'none';
         this.spareMode = false;
       };
       this.score();
@@ -56,10 +55,10 @@ class ScoreCard {
       this.smallFrameArray = [];
       this.rollCount = 1;
       this.frameComplete = false
-      if (this.strike === true) {
+      if (this.mode === 'strike') {
         this.strikeMode = true;
       };
-      if (this.spare === true) {
+      if (this.mode === 'spare') {
         this.spareMode = true;
       };
       return this.total;

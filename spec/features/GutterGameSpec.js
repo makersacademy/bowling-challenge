@@ -7,7 +7,7 @@ describe ('Gutter Game', function () {
 
   it('If a user rolls only 0s, the final score should be 0', function () {
     for (i=0; i<20; i++) {
-      scorecard.roll(0)
+      scorecard.roll(0);
     };
     expect(scorecard.isComplete()).toBe(true)
     expect(scorecard.score).toEqual(0)

@@ -10,7 +10,12 @@ Scorecard.prototype.frameScores = () => {
 }
 
 Scorecard.prototype.recordFrameScore = function (frame) {
-  return this._frameScores.push(frame._score)
+  if (this._frameScores.length >= 10) {
+    let error = 'Cannot record frame: 10 frames already recorded'
+    throw new Error(error)
+  } else {
+    return this._frameScores.push(frame._score)
+  }
 }
 
 Scorecard.prototype.calculateTotal = function () {

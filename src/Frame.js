@@ -1,7 +1,5 @@
 function Frame() {
-  // the two rolls will go in this.rolls
   this.rolls = [];
-  // this.score calculates the sum of the elements in the this.rolls array
   this.score = 0;
 };
 
@@ -30,5 +28,4 @@ Frame.prototype.calculateScore = function() {
     this.score += this.rolls[i]
   };
   return this.score;
-
-  };
+};

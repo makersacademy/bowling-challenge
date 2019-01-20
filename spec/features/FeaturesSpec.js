@@ -45,7 +45,7 @@ describe("Game Logic", function() {
     expect(game.calculateOverallScore()).toEqual(133);
   });
 
-  // Game with the 10th frame extra bonus included - when the 10th is a strike
+  // Game with the 10th frame extra bonus included
 
   it("calculates a player's score when the 10th frame is a strike", function() {
 
@@ -64,5 +64,25 @@ describe("Game Logic", function() {
       game.addExtraBonus();
       expect(game.calculateOverallScore()).toEqual(84);
   });
+
+  it("calculates a player's score when the 10th frame is a spare", function() {
+
+    for (var i = 0; i < 9; i++) {
+      frame = new Frame();
+      frame.roll(3);
+      frame.roll(3);
+      game.allFrames.push(frame);
+    };
+
+      frame = new Frame();
+      frame.roll(5);
+      frame.roll(5);
+      game.allFrames.push(frame);
+
+      game.calculateScores();
+      game.addExtraBonus();
+      expect(game.calculateOverallScore()).toEqual(74);
+  });
+
 
 });

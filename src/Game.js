@@ -47,7 +47,10 @@ Game.prototype.calculateOverallScore = function() {
 };
 
 Game.prototype.addExtraBonus = function() {
-  if (this.allFrames[9].isStrike())
-    { return 20 };
+  if (this.allFrames[9].isStrike()) {
+    return 20;
+  } else if (this.allFrames[9].isSpare()) {
+    return 10;
+  };
   return 0;
 };

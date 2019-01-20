@@ -37,4 +37,11 @@ describe  ('Game', function() {
     for(let i = 0; i < 18; i++) { bowling.roll(0) }
     expect(bowling.getScore()).toEqual(30);
   })
+
+  it('can win a perfect game with the score of 300 points', function() {
+    for(let i = 0; i < 10; i++) { bowling.roll(10) }
+    bowling.roll(10);
+    bowling.roll(10);
+    expect(bowling.getScore()).toEqual(300)
+  })
 })

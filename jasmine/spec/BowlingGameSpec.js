@@ -18,4 +18,14 @@ describe ("BowlingGame", function() {
     })
   })
 
+  describe("Specific scores", function() {
+    it("Every pin is a 1", function() {
+      var game = new BowlingGame();
+      for (var i = 0; i < 20; i++) {
+        game.roll(1);
+      }
+      expect(game.score()).toBe(20)
+    })
+  })
+
 })

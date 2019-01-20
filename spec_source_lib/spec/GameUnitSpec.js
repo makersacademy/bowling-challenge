@@ -4,21 +4,21 @@ describe("Game", function() {
 
   beforeEach(function() {
     game = new Game();
-    roll_score = new Frame(10);
+    roll_score = new Frame(5,5);
   });
 
-  it("should store and return score of roll", function() {
-    game.roll(roll_score.score)
+  it("should store and return score of a frame", function() {
+    game.roll(roll_score.score());
     expect(game.currentScore()).toEqual(10);
   });
 
   it("should store and return multiple roll scores", function() {
-    game.roll(roll_score.score);
+    game.roll(roll_score.score());
     expect(game.currentScore()).toEqual(10);
   });
 
   it("should keep track of player rolls", function() {
-    game.roll(roll_score.score);
+    game.roll(roll_score.score());
     expect(game.rollsTook()).toEqual(1);
   });
 

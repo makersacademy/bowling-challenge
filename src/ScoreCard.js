@@ -49,12 +49,7 @@ class ScoreCard {
         this.mode = 'none';
         this.spareMode = false;
       };
-      this.score();
-      this.bigFrameArray.push(this.smallFrameArray);
-      this.frameCount ++;
-      this.smallFrameArray = [];
-      this.rollCount = 1;
-      this.frameComplete = false
+      this.reset();
       if (this.mode === 'strike') {
         this.strikeMode = true;
       };
@@ -63,6 +58,15 @@ class ScoreCard {
       };
       return this.total;
     };
+  };
+
+  reset() {
+    this.score();
+    this.bigFrameArray.push(this.smallFrameArray);
+    this.frameCount ++;
+    this.smallFrameArray = [];
+    this.rollCount = 1;
+    this.frameComplete = false
   };
 
   score() {

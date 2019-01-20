@@ -1,7 +1,7 @@
 'use strict'
 
 function Scorecard () {
-  this._frameScores = [] 
+  this._frameScores = []
   this._score = 0
 }
 

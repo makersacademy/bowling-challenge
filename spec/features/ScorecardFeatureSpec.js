@@ -3,13 +3,14 @@
 
 describe('Scorecard', () => {
   describe('#gutter frame score recorded in scoreCard', () => {
-    it('player misses the pins with 2 roles', () => {
+    it('calculates the score as 0 after gutter ball frame', () => {
       var scorecard = new Scorecard();
       let frame = new Frame();
       frame.roll(0)
       frame.roll(0)
-      let totalScore = scorecard.calculateTotal()
-      expect(totalScore).toEqual(0)
+      scorecard.recordFrameScore(frame)
+      scorecard.calculateTotal()
+      expect(scorecard._score).toEqual(0)
     })
   })
 })

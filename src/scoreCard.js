@@ -1,8 +1,9 @@
 class ScoreCard {
-  constructor() {
+  constructor(frame = new Frame()) {
     this.frames = [];
     this.score = 0;
   }
+
 
   addFrame(frame) {
     if (this.frameNumber() < 10 ) {
@@ -18,9 +19,9 @@ class ScoreCard {
 
   currentScore() {
     let total = 0;
-    let frame = this.frames;
-    frame.forEach(function(frames) {
-      frames.forEach(function(bowls) {
+    let frames = this.frames;
+    frames.forEach(function(frame) {
+      frame.forEach(function(bowls) {
         total += bowls;
       })
     })

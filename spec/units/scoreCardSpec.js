@@ -2,10 +2,15 @@ describe('ScoreCard', function(){
 
     var scorecard;
     var frame;
+    var frameStrike;
+    var frameAverage;
 
     beforeEach( () => {
       scorecard = new ScoreCard();
-      frame = jasmine.createSpy('frame')
+      frame = jasmine.createSpy('frame');
+      frameStrike = new Frame([10]);
+      frameAverage = new Frame([5, 2]);
+
     });
 
     it('Starts with 0 frames', function(){
@@ -17,8 +22,8 @@ describe('ScoreCard', function(){
     });
 
     it('Adds a frame to the game', function(){
-      scorecard.addFrame(frame)
-      expect(scorecard.frames).toContain(frame);
+      scorecard.addFrame([5, 2])
+      expect(scorecard.frames).toContain([5, 2]);
     });
 
     it('Adds multiple frames to the game', function(){
@@ -46,5 +51,11 @@ describe('ScoreCard', function(){
       scorecard.addFrame(frame);
       expect(scorecard.isComplete()).toEqual(false);
     });
+
+    it('Calculates bonus for a strike', function(){
+      scorecard.addFrame([10]);
+      scorecard.addFrame([5, 2]);
+      expect(scorecard.currentScore()).toEqual(24);
+    })
 
 })

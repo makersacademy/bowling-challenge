@@ -20,4 +20,8 @@ describe('Game', ()=> {
     expect(game.score(20)).toEqual(20);
   });
 
+  it('player starts the game from frame 1', ()=>{
+    expect(game.frame()).toEqual(1);
+  });
+
 }); // end of describe 'Game'

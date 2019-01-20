@@ -32,12 +32,21 @@ describe('ScoreCard', function(){
       expect(scorecard.addFrame(frame)).toThrowError('This game already has 10 frames');
     });
 
-    it('Returns a total score of 0', function(){
+    it('Game is incomplete', function(){
+      scorecard.addFrame(frame);
+      expect(scorecard.isComplete()).toEqual(false);
+    });
+
+    it('Game is completed ', function(){
+      for (var i = 0; i < 10; i++) {
+        scorecard.addFrame(frame);
+      };
+      expect(scorecard.isComplete()).toEqual(true);
+    });
+
+    it('Returns the total score for the Game', function(){
       expect(scorecard.totalScore()).toEqual(0);
     });
 
-    it('Game is fully completed', function(){
-      expect(scorecard.isComplete()).toEqual(true);
-    });
   })
 })

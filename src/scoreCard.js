@@ -8,7 +8,11 @@ class ScoreCard {
   }
 
   isComplete() {
-    return true;
+    if (this.frames.length === 10 ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   addFrame(frame) {

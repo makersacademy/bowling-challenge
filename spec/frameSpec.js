@@ -22,9 +22,11 @@ describe('Frame', function(){
       expect(frame.bowls).toEqual([6, 3]);
     });
 
+    
+
     it('Returns the total score for the frame', function(){
       frame.addBowl(3);
-      expect(frame.frameScore).toEqual(9);
+      expect(frame.frameScore()).toEqual(9);
     });
 
 

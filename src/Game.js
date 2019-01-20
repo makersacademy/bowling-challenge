@@ -1,22 +1,18 @@
 class Game {
-  constructor() {
-    this.isOver = false;
-    this.currentRoll = 1;
-    this.currentScore = 0;
-    this.finalScore = 0;
-  };
+	constructor(scorecard = new Scorecard) {
+		this.isOver = false;
+		this.currentScore = 0;
+		this.finalScore = 0;
+		this.scorecard = scorecard;
+	}
 
-  bowl(pinsDown) {
-    this.currentScore += pinsDown;
-    this.currentRoll++;
-    this.status();
-  };
+	bowl(pinsDown1, pinsDown2) {
+		this.scorecard.frames.push(pinsDown1, pinsDown2);
+		this.currentRoll++;
+		// this.status();
+	}
 
-  status() {
-    this.currentRoll >= 20 ? this.finish(true) : this.finish(false);
-  };
-
-  finish(bool) {
-    if(bool === true) { this.isOver = true }
-  }
+	finish(bool) {
+		if(bool === true) { this.isOver = true; }
+	}
 }

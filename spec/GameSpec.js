@@ -1,7 +1,12 @@
 describe('Game', ()=> {
 
+  var game;
+
+  beforeEach( ()=> {
+    game = new Game();
+  });
+
   it('player rolls a gutter game', ()=> {
-    var game = new Game();
     for (var i = 0; i < 20; i++) {
       game.roll(0);
     }
@@ -9,7 +14,6 @@ describe('Game', ()=> {
   });
 
   it('player rolls all ones', ()=> {
-    var game = new Game();
     for (var i = 0; i < 20; i++) {
       game.roll(1);
     }

@@ -1,31 +1,31 @@
 'use strict'
 
-function ScoreCard() {
-  this.scoreArray = [];
+function Game() {
+  this.gameScores = [];
   this.rollsTaken = 0;
   this.isComplete = false;
 }
 
-ScoreCard.prototype.currentScore = function() {
-  return this.scoreArray.reduce((sum, current) => sum + current, 0); 
+Game.prototype.currentScore = function() {
+  return this.gameScores.reduce((sum, current) => sum + current, 0); 
 }
 
-ScoreCard.prototype.roll = function(score) {
+Game.prototype.roll = function(score) {
   ++ this.rollsTaken;
-  return this.scoreArray.push(score);
+  return this.gameScores.push(score);
 }
 
-ScoreCard.prototype.rollsTook = function() {
+Game.prototype.rollsTook = function() {
   return this.rollsTaken;
 }
 
-ScoreCard.prototype.gutterGame = function(rollsTook, currentScore) {
+Game.prototype.gutterGame = function(rollsTook, currentScore) {
   if (rollsTook == 20 && currentScore == 0) {
     return this.gameComplete();
   }
 }
 
-ScoreCard.prototype.gameComplete = function() {
+Game.prototype.gameComplete = function() {
   return this.isComplete = true;
 }
 

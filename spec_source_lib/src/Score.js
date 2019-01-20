@@ -1,9 +1,9 @@
 'use strict'
 
-function Score(score) {
+function Frame(score) {
   this.score = score;
 }
 
-Score.prototype.score = () => {
-  return this.userInput;
+Frame.prototype.score = () => {
+  return this.score;
 }	

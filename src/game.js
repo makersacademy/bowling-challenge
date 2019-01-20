@@ -1,17 +1,21 @@
 class Game {
   constructor() {
-    this.frames = []
+    this.rolls = []
   }
 
   roll(pins) {
-    this.frames.push(pins)
+    this.rolls.push(pins)
   }
 
   score() {
     var total = 0
     for(var i = 0; i < 20; i++) {
-      total += this.frames[i]
+      total += this.rolls[i]
     }
     return total
   }
+
+  // strike() {
+  //   this.rolls.push(30)
+  // }
 }

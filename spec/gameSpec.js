@@ -24,17 +24,11 @@ describe('Game Scorecard', function() {
     expect(game.score()).toBe(20)
   })
 
-  it('can roll a game of random scores', function() {
-    for(var i = 0; i < 20; i++) {
-      game.roll(Math.floor((Math.random() * 20) + 1))
-    }
-    expect(game.score()).toBeGreaterThan(25)
-  })
 
-  it('rolls a perfect game', function() {
-    for(var i = 0; i < 10; i++) {
-      game.roll(strike)
-    }
-    expect(game.score()).toBe(300)
-  })
+  // it('rolls a perfect game', function() {
+  //   for(var i = 0; i < 10; i++) {
+  //     game.strike()
+  //   }
+  //   expect(game.score()).toBe(300)
+  // })
 })

@@ -20,14 +20,6 @@ Game.prototype.loadFrames = function(list_of_scores) {
   return this.allFrames;
 };
 
-Game.prototype.isPerfectGame = function() {
-  var perfectGame = 0;
-  for (i = 0; i < 10; i++) {
-    if (this.allFrames[i].rolls[0] === 10) { perfectGame += 1 };
-  };
- return perfectGame;
-};
-
 Game.prototype.calculateScores = function() {
   for (i = 0; i < 10; i++) {
     let currentFrame = this.allFrames[i];

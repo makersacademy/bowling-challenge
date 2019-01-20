@@ -8,5 +8,5 @@ describe('Roll', function() {
 
   it('returns a roll', function() {
       expect(roll.rollvalue).toBe(6);
-    });
+  });
 });

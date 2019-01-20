@@ -83,22 +83,29 @@ describe('Scoresheet', function () {
     })
   })
 
-  describe('#isFrameComplete', function () {
+  describe('#_isFrameComplete', function () {
     it('checks to see if the current frame is complete', function () {
       scoresheet.currentFrame = [0, 0]
-      expect(scoresheet.isFrameComplete()).toBeTruthy()
+      expect(scoresheet._isFrameComplete()).toBeTruthy()
     })
 
     it('checks to see if the current frame is incomplete', function () {
       scoresheet.currentFrame = [0]
-      expect(scoresheet.isFrameComplete()).toBeFalsy()
+      expect(scoresheet._isFrameComplete()).toBeFalsy()
     })
   })
 
-  describe('#strikeCheck', function () {
+  describe('#checkStrike', function () {
     it('checks to see if the roll was a strike', function () {
-      scoresheet.roll(10)
-      expect(scoresheet.isStrike).toBeTruthy()
+      scoresheet.checkStrike(10)
+      expect(scoresheet.wasStrike).toBeTruthy()
+    })
+  })
+
+  describe('#checkSpare', function () {
+    it('checks to see if the roll was a strike', function () {
+      scoresheet.checkSpare(10)
+      expect(scoresheet.wasSpare).toBeTruthy()
     })
   })
 })

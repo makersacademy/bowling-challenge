@@ -29,19 +29,23 @@ class Scoresheet {
   updateFrame (currentRoll) {
     this.currentFrame.push(currentRoll)
 
-    if (this.isFrameComplete() === true) {
+    if (this._isFrameComplete() === true) {
       let score = this.currentFrame.reduce((score, pins) => score + pins)
-      if (score === 10) { this.wasSpare = true }
+      this.checkSpare(score)
       this.finalScore += score
       this.currentFrame = []
     }
   }
 
-  isFrameComplete () {
+  _isFrameComplete () {
     return (this.currentFrame.length === 2)
   }
 
-  isStrike (currentRoll) {
-    if (currentRoll === 10) { this.wasStrike = true}
+  checkStrike (currentRoll) {
+    if (currentRoll === 10) { this.wasStrike = true }
+  }
+
+  checkSpare (score) {
+    if (score === 10) { this.wasSpare = true }
   }
 }

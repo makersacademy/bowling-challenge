@@ -33,7 +33,30 @@ describe("Game", function() {
       expect(game.calculateScore()).toEqual(18);
     })
 
-    it('adds spare bonus', function() {
+    it('adds strike bonus', function() {
+      game.bowl(10, 0);
+      game.bowl(4, 4);
+      expect(game.calculateScore()).toEqual(26);
+    })
+
+    it('caters for double strikes', function() {
+      game.bowl(10, 0);
+      game.bowl(10, 0);
+      game.bowl(4, 4);
+      expect(game.calculateScore()).toEqual(50);
+    })
+
+    it('caters for triple strikes', function() {
+      game.bowl(10, 0);
+      game.bowl(10, 0);
+      game.bowl(10, 0);
+      game.bowl(4, 4);
+      game.bowl(4, 4);
+      game.bowl(4, 4);
+      expect(game.calculateScore()).toEqual(96);
+    })
+
+    it('adds final frame strike bonus', function() {
       game.bowl(10, 0);
       game.bowl(4, 4);
       expect(game.calculateScore()).toEqual(26);

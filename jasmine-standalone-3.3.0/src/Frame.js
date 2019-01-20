@@ -16,7 +16,7 @@ Frame.prototype.oneframeScore = function() {
 Frame.prototype.bonusScore = function(){
   return 0;
 }
-
+// assumes bonus score is zero
 Frame.prototype.totalscore = function(frame2, frame3) {
   return this.bonusScore(frame2,frame3) + this.oneframeScore();
 }

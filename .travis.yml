@@ -3,5 +3,5 @@ language:
 install:
   - npm install -g codecov
 script:
-  - istanbul cover ./node_modules/jasmine/bin/jasmine.js
+  - open SpecRunner.html
   - codecov

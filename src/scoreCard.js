@@ -1,7 +1,7 @@
 class ScoreCard {
   constructor() {
     this.frames = [];
-    this.score = this.currentScore();
+    this.score = 0;
   }
 
   addFrame(frame) {
@@ -29,6 +29,7 @@ class ScoreCard {
 
   isComplete() {
     if (this.frames.length === 10 ) {
+      this.score = this.currentScore()
       return true;
     } else {
       return false;

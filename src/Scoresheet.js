@@ -13,8 +13,9 @@ class Scoresheet {
   roll (currentRoll) {
     this.calculateSpareBonus(currentRoll)
     this.updateFrame(currentRoll)
+    this.checkStrike(currentRoll)
 
-    this.rollCount += 1
+    this.rollCount++
     if (this.rollCount === 20) { this.isComplete = true }
     return this.finalScore
   }
@@ -26,13 +27,21 @@ class Scoresheet {
     }
   }
 
+  calculateStrikeBonus (frameScore) {
+    if (this.wasStrike === true) {
+      this.finalScore += frameScore
+      this.wasStrike = false
+    }
+  }
+
   updateFrame (currentRoll) {
     this.currentFrame.push(currentRoll)
 
     if (this._isFrameComplete() === true) {
-      let score = this.currentFrame.reduce((score, pins) => score + pins)
-      this.checkSpare(score)
-      this.finalScore += score
+      let frameScore = this.currentFrame.reduce((score, pins) => score + pins)
+      this.checkSpare(frameScore)
+      this.calculateStrikeBonus(frameScore)
+      this.finalScore += frameScore
       this.currentFrame = []
     }
   }
@@ -42,7 +51,12 @@ class Scoresheet {
   }
 
   checkStrike (currentRoll) {
-    if (currentRoll === 10) { this.wasStrike = true }
+    if (currentRoll === 10) {
+      this.wasStrike = true
+      this.rollCount++
+      this.finalScore += 10
+      this.currentFrame = []
+    }
   }
 
   checkSpare (score) {

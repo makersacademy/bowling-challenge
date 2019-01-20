@@ -57,6 +57,18 @@ describe('Scoresheet', function () {
     })
   })
 
+  describe('#calculateStrikeBonus', function () {
+    describe('if the previous frame was a strike', function () {
+      it('immediately adds the frame score to the finalScore', function () {
+        scoresheet.finalScore = 10
+        scoresheet.wasStrike = true
+        scoresheet.calculateStrikeBonus(9)
+
+        expect(scoresheet.finalScore).toEqual(19)
+      })
+    })
+  })
+
   describe('#updateFrame', function () {
     it('adds the current roll to the frame score', function () {
       scoresheet.updateFrame(1)

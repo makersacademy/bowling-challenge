@@ -27,6 +27,8 @@ Tests:
 1. run open SpecRunner.html in the terminal
 2. a window will open containing the below
 
+![Tests Jasmine](https://github.com/AlinaGoaga/bowling-challenge/blob/master/tests_passing.jpeg)
+
 ## Bowling — how does it work?
 
 ### Strikes

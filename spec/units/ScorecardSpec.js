@@ -14,11 +14,6 @@ describe('Scorecard', () => {
   });
 
   describe('#recordFrameScore()', () => {
-    it('records the score of a frame', () => {
-      scorecard.recordFrameScore(frame)
-      expect(scorecard._frameScores).toEqual([[0, 0]])
-    })
-
     it('will not allow more than 10 frames to be recorded', () => {
       var times = 10;
       for(var i=0; i < times; i++){

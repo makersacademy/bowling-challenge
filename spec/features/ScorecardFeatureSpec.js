@@ -12,14 +12,6 @@ describe('Scorecard', () => {
     frame.roll(0)
   });
 
-  describe('#gutter frames', () => {
-    it('calculates the score as 0 after gutter ball frame', () => {
-      scorecard.recordFrameScore(frame)
-      scorecard.calculateTotal()
-      expect(scorecard._score).toEqual(0)
-    })
-  })
-
   describe('#non gutter frames', () => {
     it('calculates the score as 1 after 2 frames', () => {
       let frameOne = new Frame();

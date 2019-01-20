@@ -10,4 +10,8 @@ describe('Frame', function() {
     expect(frame1.framenumber).toBe(1);
   });
 
+  it('starts with roll number zero', function() {
+    expect(frame1.rollnumber).toBe(0);
+  });
+
 });

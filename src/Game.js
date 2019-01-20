@@ -1,10 +1,13 @@
 class Game{
 
   roll(pinsDown){
+    this.score(pinsDown);
   };
 
-  score(){
-    return 0;
+  score(pinsDown){
+    var totalScore = 0;
+    totalScore += pinsDown;
+    return totalScore;
   };
 
 }; // end of class

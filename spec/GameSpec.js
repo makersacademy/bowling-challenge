@@ -5,7 +5,7 @@ describe('Game', ()=> {
     for (var i = 0; i < 20; i++) {
       game.roll(0);
     }
-    expect(game.score()).toEqual(0);
+    expect(game.score(0)).toEqual(0);
   });
 
   it('player rolls all ones', ()=> {
@@ -13,7 +13,7 @@ describe('Game', ()=> {
     for (var i = 0; i < 20; i++) {
       game.roll(1);
     }
-    expect(game.score()).toEqual(20);
+    expect(game.score(20)).toEqual(20);
   });
 
 }); // end of describe 'Game'

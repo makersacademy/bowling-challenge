@@ -11,19 +11,21 @@ describe('Game Scorecard', function() {
   })
 
   it('rolls a gutter game', function() {
-    for(var i = 0; i < 20; i++) {
-      game.roll(0)
-    }
+    rollMany(0, 20)
+      // game.roll(0)
     expect(game.score()).toBe(0)
   })
 
   it('can roll a game of ones', function() {
-    for(var i = 0; i < 20; i++) {
-      game.roll(1)
-    }
+    rollMany(1, 20)
+      // game.roll(1)
     expect(game.score()).toBe(20)
   })
 
+  var rollMany = function (pins, rolls) {
+    for (var i = 0; i < rolls; i++)
+    game.roll(pins)
+  }
 
   // it('rolls a perfect game', function() {
   //   for(var i = 0; i < 10; i++) {

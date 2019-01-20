@@ -4,13 +4,15 @@ function Game() {
   this.overallScore = 0;
 };
 
-// example list_of_scores = [3,5,10,5,5,3,5,6,2,2,3,5,4,7,1,7,1,6,2]
+// example list_of_scores = [3,5,10,5,5,3,5,6,2,2,3,5,4,7,1,7,1,10,2,5] - 11 frames
+// example list_of_scores = [3,5,10,5,5,3,5,6,2,2,3,5,4,7,1,7,1,5,5,3] - 11 frames
+// example list_of_scores = [3,5,10,5,5,3,5,6,2,2,3,5,4,7,1,7,1,10,10,3] - 12 frames
 
 Game.prototype.loadFrames = function(list_of_scores) {
   while (list_of_scores.length != 0) {
     frame = new Frame();
     frame.roll(list_of_scores.shift());
-    if (!frame.isComplete()) {
+    if (!frame.isComplete() && list_of_scores.length!=0 ) {
       frame.roll(list_of_scores.shift());
     };
     this.allFrames.push(frame);
@@ -32,7 +34,7 @@ Game.prototype.calculateScores = function() {
     let nextFrame = this.allFrames[i+1];
     let nextNextFrame = this.allFrames[i+2];
     let score = 0;
-    if (currentFrame.isStrike() && i!=9) {
+    if (currentFrame.isStrike()) {
       if (nextFrame.isStrike()) {
         if (nextNextFrame.isStrike()) {
           console.log(currentFrame.calculateScore());
@@ -43,7 +45,7 @@ Game.prototype.calculateScores = function() {
       } else {
         score = currentFrame.calculateScore() + nextFrame.calculateScore();
       };
-    } else if (currentFrame.isSpare() && i!=9) {
+    } else if (currentFrame.isSpare()) {
       score = currentFrame.calculateScore() + nextFrame.rolls[0];
     } else {
       score = currentFrame.calculateScore();
@@ -54,18 +56,8 @@ Game.prototype.calculateScores = function() {
 };
 
 Game.prototype.calculateOverallScore = function() {
-  if (this.isPerfectGame() === 10) { return 300 };
   for (i=0; i < this.framesScores.length; i++) {
     this.overallScore += this.framesScores[i];
   }
-  return (this.overallScore + this.addExtraBonus());
-};
-
-Game.prototype.addExtraBonus = function() {
-  if (this.allFrames[9].isStrike()) {
-    return 20;
-  } else if (this.allFrames[9].isSpare()) {
-    return 10;
-  };
-  return 0;
+  return (this.overallScore);
 };

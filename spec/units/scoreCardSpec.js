@@ -1,5 +1,4 @@
 describe('ScoreCard', function(){
-  describe('Feature - Gutter Game', function(){
 
     var scorecard;
     var frame;
@@ -48,16 +47,4 @@ describe('ScoreCard', function(){
       expect(scorecard.isComplete()).toEqual(false);
     });
 
-    it('Game is completed ', function(){
-      for (var i = 0; i < 10; i++) {
-        scorecard.addFrame(frame);
-      };
-      expect(scorecard.isComplete()).toEqual(true);
-    });
-
-    it('Returns the total score for the Game', function(){
-      expect(scorecard.totalScore()).toEqual(0);
-    });
-
-  })
 })

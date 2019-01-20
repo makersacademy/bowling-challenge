@@ -1,11 +1,11 @@
 class ScoreCard {
   constructor() {
     this.frames = [];
-    this.score = 0;
+    this.score = this.currentScore();
   }
 
   addFrame(frame) {
-    if (this.frames.length < 10 ) {
+    if (this.frameNumber() < 10 ) {
       this.frames.push(frame);
     } else {
       throw new Error('This game already has 10 frames');
@@ -16,13 +16,15 @@ class ScoreCard {
     return this.frames.length;
   }
 
-  totalScore() {
-    var total = 0
-    //var self = this
-    this.frames.forEach(function(thisFrame) {
-      total += (thisFrame.frameScore());
-    });
-  return total
+  currentScore() {
+    let total = 0;
+    let frame = this.frames;
+    frame.forEach(function(frames) {
+      frames.forEach(function(bowls) {
+        total += bowls;
+      })
+    })
+  return total;
   }
 
   isComplete() {

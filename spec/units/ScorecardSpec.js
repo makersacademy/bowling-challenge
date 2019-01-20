@@ -13,4 +13,11 @@ describe('Scorecard', () => {
       expect(scorecard._frameScores).toContain(frame._score)
     })
   })
+  
+  describe('#calculateTotal()', () => {
+    it('responds to .calculateTotal()', () => {
+      var scorecard = new Scorecard();
+      expect(scorecard.calculateTotal).toBeDefined()
+    })
+  })
 })

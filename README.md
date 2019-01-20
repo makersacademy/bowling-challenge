@@ -2,22 +2,30 @@
 Bowling Scorecard
 =================
 
-## The Task
+## The Task 
 
 Counts and sums up the scores of a bowling game for one player (in JavaScript). The user is the one inputing the rolls.
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-### Optional Extras
+## My approach
 
-In any order you like:
+The game works as intended - I would like to refactor the calculateScores method in Game as it's quite challenging to read (even though I've tried to use suggestive variable names to make it easier to go throgh).
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+I've aimed for good test coverage which helped quite a bit when I kept on adjusting the code towards the end to properly manage the 10th frame and its bonuses.
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+ESLint is also installed - there are a few warnings left around the lenght of some of the lines. 
+I've tried running Travis as well but faced some challenges configuring it so will need to come back to that. 
+
+## Running the app and tests
+
+App: 
+1. clone the repo : git@github.com:AlinaGoaga/bowling-challenge.git and cd into the project
+2. play around with it in the console
+
+Tests: 
+1. run open SpecRunner.html in the terminal
+2. a window will open containing the below
 
 ## Bowling — how does it work?
 

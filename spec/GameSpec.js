@@ -20,5 +20,9 @@ describe("Game", function() {
      expect(game.calculateOverallScore()).toEqual(60);
   });
 
+  it("generates all the frames", function() {
+     expect(game.loadFrames([3,5,10,5,5,3,5,6,2,2,3,5,4,7,1,7,1,6,2]).length).toEqual(10);
+  });
+
 
 });

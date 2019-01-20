@@ -21,10 +21,11 @@ Frame.prototype.roll = function(pins_hit) {
 };
 
 Frame.prototype.isComplete = function() {
-   return (this.rolls.length === 2);
+  return (this.rolls.length === 2);
 };
 
 Frame.prototype.calculateScore = function() {
-  for(var i in this.rolls) { this.score += this.rolls[i]; }
-  return this.score;
-};
+  for (let i in this.rolls) {
+    this.score += this.rolls[i];}
+    return this.score;
+  };

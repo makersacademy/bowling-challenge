@@ -9,7 +9,15 @@ class Game {
 
   getScore() {
     let score = 0;
-    for (let i = 0; i < 20; i++) { score += this.rolls[i] }
+    let roll = 0;
+    for(let frames = 0; frames < 10; frames++) {
+      if (this.rolls[roll] + this.rolls[roll+1] === 10) {
+        score += this.rolls[roll] + this.rolls[roll+1] + this.rolls[roll+2]
+      } else {
+        score += this.rolls[roll] + this.rolls[roll+1]
+      }
+      roll += 2
+    }
     return score;
   }
 }

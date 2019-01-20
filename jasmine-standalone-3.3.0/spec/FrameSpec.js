@@ -4,21 +4,20 @@ describe("Frame", function() {
   var frame2;
   var frame3;
 
-
-  function makeFrame(array) {
-     return new Frame(array);
-   }
+  function createFrame(array) {
+    return new Frame(array);
+  }
 
   it("Get the score from one frame", function() {
-    frame1 = makeFrame([4,2]);
-    expect(frame1.oneframeScore().toEqual(6);
+    frame1 = createFrame([4,2]);
+    expect(frame1.oneframeScore()).toEqual(6);
   });
 
+  it("Get score from two frames, no bunus", function() {
+    frame1 = createFrame([1,3]);
+    frame2 = createFrame([0,0]);
+    expect(frame1.totalscore()).toEqual(4);
+  });
 
-  it("Get score from two frames", function() {
-    frame1 = makeFrame([4,2])
-    frame2 = makeFrame([2,2])
-    expect(frame1.totalscore(frame2)).toEqual(10);
-  })
 
 });

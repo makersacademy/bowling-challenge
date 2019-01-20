@@ -8,8 +8,8 @@ var Frame = function(rolls) {
 
 
 Frame.prototype.oneframeScore = function() {
-  return this.rolls.reduce(function(score, score) {
-    return score + score;
+  return this.rolls.reduce(function(score1, score2) {
+    return score1 + score2;
   })
 }
 

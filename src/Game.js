@@ -10,4 +10,8 @@ class Game{
     return totalScore;
   };
 
+  frame(){
+    return 1;
+  };
+
 }; // end of class

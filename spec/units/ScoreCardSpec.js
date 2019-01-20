@@ -35,12 +35,14 @@ describe ('ScoreCard', function () {
       scorecard.roll(2);
       expect(scorecard.total).toEqual(26);
     });
+
     it('score accounts for spares', function () {
       scorecard.roll(5);
       scorecard.roll(5);
       scorecard.roll(4);
       scorecard.roll(3);
       expect(scorecard.total).toEqual(21);
+    });
   });
 
   describe ('#Frames', function () {

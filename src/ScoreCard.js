@@ -1,7 +1,7 @@
 class Scorecard {
   
   constructor(frameLength, rollLength, frame = new Frame()) {
-    this.frame = frame;
+    this.newFrame = frame;
     this.info = {
       'numOfFrames' : [],
       'currentScores' : [] 
@@ -20,7 +20,7 @@ class Scorecard {
     return numberOfPins
   };
 
-  addScore(){
+  accumScore(){
     let sum = this.info.currentScores.reduce((accumulator, currentValue) => {
         return accumulator + currentValue;
       }, 0);

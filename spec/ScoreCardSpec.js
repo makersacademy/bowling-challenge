@@ -26,5 +26,12 @@ let scorecard;
     expect(scorecard.info.currentScores).toEqual([8, 5]);
   });
   
+  it(" adds score from each bowl", () => {
+    scorecard.bowlToScore(5)
+    scorecard.bowlToScore(4)
+    expect(scorecard.accumScore()).toEqual(9)
+
+  })
+  
 });
 

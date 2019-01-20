@@ -1,5 +1,5 @@
 class Frame {
-  constructor(rolls) {
-    this.rolls = rolls
+  constructor() {
+    this.scoreRecord = []
   };
 };

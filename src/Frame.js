@@ -25,7 +25,10 @@ Frame.prototype.isComplete = function() {
 };
 
 Frame.prototype.calculateScore = function() {
+  this.score = 0;
   for (let i in this.rolls) {
-    this.score += this.rolls[i];}
-    return this.score;
+    this.score += this.rolls[i]
+  };
+  return this.score;
+
   };

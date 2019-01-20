@@ -22,6 +22,14 @@ describe('Game Scorecard', function() {
     expect(game.score()).toBe(20)
   })
 
+  it('can roll a spare', function() {
+    game.roll(4)
+    game.roll(6)
+    game.roll(5)
+    rollMany(0, 17)
+    expect(game.score()).toBe(20)
+  })
+
   var rollMany = function (pins, rolls) {
     for (var i = 0; i < rolls; i++)
     game.roll(pins)

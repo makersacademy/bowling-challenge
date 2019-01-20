@@ -1,4 +1,4 @@
-describe("Game", function() {
+describe("Game - Unit Tests", function() {
   var game;
   var roll_score;
 

@@ -37,4 +37,14 @@ describe('With strikes', function () {
     expect(scoresheet.isComplete).toBeTruthy()
     expect(scoresheet.finalScore).toEqual(118)
   })
+
+  it('A user rolls consecutive strikes then a (2, 7) and the current score is 50', function () {
+    scoresheet.roll(10)
+    scoresheet.roll(10)
+
+    scoresheet.roll(2)
+    scoresheet.roll(7)
+
+    expect(scoresheet.finalScore).toEqual(50)
+  })
 })

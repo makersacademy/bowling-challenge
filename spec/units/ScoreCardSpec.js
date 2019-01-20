@@ -14,12 +14,18 @@ describe ('ScoreCard', function () {
   });
 
   describe ('#roll', function () {
-    it('20 rolls completes scorecard', function () {
-      for (let i=0; i<20; i++) {
+    it('20 rolls completes scorecard and roll count functions', function () {
+      for (i=0; i<20; i++) {
         scorecard.roll(0);
       };
       expect(scorecard.count).toEqual(20);
       expect(scorecard.isComplete()).toBe(true);
+    });
+
+    it('scorecard counts roll numbers', function () {
+      scorecard.roll(8);
+      scorecard.roll(3);
+      expect(scorecard.score).toEqual(11);
     });
   });
 });

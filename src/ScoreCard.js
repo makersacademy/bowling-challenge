@@ -5,7 +5,8 @@ class ScoreCard {
   };
 
   roll(num) {
-    this.count ++
+    this.count ++;
+    this.score += num;
   };
 
   isComplete() {

@@ -64,4 +64,35 @@ describe ("BowlingGame", function() {
 		});
 	});
 
+	describe("Edge case endgame", function() {
+		it("rolls a strike then a spare in the final frame", function() {
+			rollX(0, 18);
+			game.roll(10);
+			game.roll(5);
+			game.roll(5);
+			expect(game.score()).toBe(20);
+		});
+
+		it("rolls a complete game", function() {
+			game.roll(0);
+			game.roll(2);
+			game.roll(10);
+			game.roll(10);
+			game.roll(2);
+			game.roll(3);
+			game.roll(9);
+			game.roll(0);
+			game.roll(8);
+			game.roll(2);
+			game.roll(10);
+			game.roll(0);
+			game.roll(0);
+			game.roll(1);
+			game.roll(2);
+			game.roll(3);
+			game.roll(4);
+			expect(game.score()).toBe(93);
+	});
+
+});
 });

@@ -1,6 +1,7 @@
 class Game {
   constructor() {
     this.frames = []
+    const allPinsDown = 10
   }
 
   getFrames() {
@@ -21,13 +22,17 @@ class Game {
       if(frame.isABonus()) {
         total += frame.calcBonus()
       } else if (frame.isASpare()) {
-        total += framearray[index+1].getRoll1() + 10
+        total += framearray[index+1].getRoll1() + frame.addScore()
       } else if (frame.isAStrike()) {
-        total += framearray[index+1].addScore() + 10
+          if (framearray[index+1].isAStrike()) { 
+            total+= framearray[index+1].addScore() + frame.getRoll1() + framearray[index+2].getRoll1()
+          } else {
+            total += framearray[index+1].addScore() + frame.getRoll1()
+          }
       } else {
         total += frame.addScore()  
       }
     })
-    return total === 220 ? 300 : total
+    return total
   }
 }

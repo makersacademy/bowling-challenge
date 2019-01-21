@@ -29,6 +29,9 @@ function Game() {
         if(framelist[i-1].scoreroll1() == 10) {
           score += 2*framelist[i].scoreroll1() + 2*framelist[i].scoreroll2();
         }
+        else if(framelist[i-1].scoreroll1() + framelist[i-1].scoreroll2()== 10) {
+          score += 2*framelist[i].scoreroll1() + framelist[i].scoreroll2();
+        }
         else {
           score += framelist[i].scoreroll1() + framelist[i].scoreroll2();
         }

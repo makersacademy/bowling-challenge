@@ -60,6 +60,15 @@ describe('Game', function() {
       game.framelist()[1].addroll(2)
       expect(game.total_score()).toBe(18)
     });
+
+    it ('doubles next rolls if half strike', function() {
+      game.framelist()[0].addroll(5)
+      game.framelist()[0].addroll(5)
+      game.framelist()[1].addroll(2)
+      game.framelist()[1].addroll(2)
+      expect(game.total_score()).toBe(16)
+    });
+
   });
 
 });

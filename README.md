@@ -1,10 +1,16 @@
-  _ 0
+
+```
+_ 0
 o'-/-\--------------------------------------------
   |\                                           . o
   / |       '.                             . o . o
              .'                              o . o
             '                                    o
 __________________________________________________
+```
+
+
+
 
 Bowling Challenge
 =================
@@ -12,6 +18,8 @@ Bowling Challenge
 ## Technologies used
 
 Javascript - implementation of the scorecard
+Jasmine - testing framework
+ESlint - linter
 
 ## Instructions
 
@@ -34,7 +42,7 @@ $ open SpecRunner.html
 
 ## Project Review
 
-This is an unfinished piece of work, and as such there are many areas for improvement.
+This is an unfinished piece of work, and as such there are many areas for improvement. Full strike functionality is working, along with bonus points for the final frame, although I havent tested it with various results so there's a chance of bugs.
 
 ### Implementation
 
@@ -44,7 +52,7 @@ This is an unfinished piece of work, and as such there are many areas for improv
 
 ### Testing 
 
-- Test coverage is ok - one feature and one unit test failing (the ones which I am working on the functionality of), and I have tested a variety of possibilities
+- Testing perhaps not quite as robust as I'd like - I feel like there's scope for errors in the logic at the moment (full strike functionality only finalised at 9am on Monday)
 - No tests exist for certain edge cases, however: too many pins knocked down, final frame with a spare, perhaps more
 
 ### Delivery
@@ -76,6 +84,7 @@ I feel like this code looks more like something I was producing in the precourse
 
 ## Appendix
 
+```
 
 
                                        (O)           (O)
@@ -87,6 +96,7 @@ I feel like this code looks more like something I was producing in the precourse
 __`----'______________________________\__/__|    |__\__/____    
                                              \__/
 
+```
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own
@@ -161,6 +171,9 @@ In code review we'll be hoping to see:
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
 
+```
+
+
          ,ad88ba,
        ,dP'    `Yb,
        8"        "8
@@ -193,3 +206,4 @@ I8                      8I
       `Y8baaaaaad8P'
       
       
+```

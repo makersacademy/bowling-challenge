@@ -1,17 +1,23 @@
-// function showMessage() {
-//   const message = "testing esLint and jasmine";
-//   for ( let i = 0; i < 5; i++ ) {
-//     // eslint-disable-next-line no-console
-//     console.log(message);
-//   }
-// }
-//
-// showMessage();
-class Scorecard {
+class ScoreCard {
+
   constructor() {
     this._rolls = [];
+    this._ended = false;
+    this._score = 0;
+    this._frame = 0;
   }
-  function roll(pins) {
-    this._rolls.push(pins)
+
+  isComplete() {
+    if (this._frame < 20) {
+      return false;
+    } else {
+      return true;
+    }
   }
+  
+  roll(score) {
+    this._frame ++;
+    this._rolls.push(score);
+  }
+
 }

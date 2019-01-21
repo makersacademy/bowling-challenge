@@ -21,5 +21,10 @@ describe('Frame', () => {
       var error = 'Cannot record roll: roll must be an number'
       expect(function() { frame.roll('hello') }).toThrow(new Error(error))
     })
+
+    it('throws error if number rolled is less than 0', () => {
+      var error = 'Cannot record roll: roll must be between 0-10'
+      expect(function() { frame.roll(-1) }).toThrow(new Error(error))
+    })
   })
 })

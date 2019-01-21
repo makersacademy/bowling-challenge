@@ -30,11 +30,11 @@ I want to be able to calculate my final score
 * $ `open index.html` 
 * Navigate to the console to calculate a game of bowling 
 
-##Testing 
+## Testing 
 * BDD completed with [Jasmine](https://jasmine.github.io/)
 * `open SpecRunner.html`
 
-![testing images](images/bowling_challenge_tests)
+![testing images](images/bowling_challenge_tests.png)
 
 ## Bowling Rules
 

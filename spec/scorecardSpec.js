@@ -51,6 +51,14 @@ describe ('ScoreCard', function(){
     });
   });
 
-
+  describe("perfect game", function(){
+    it('player play a perfect game with a score of 300', function(){
+      for (let s = 0; s < 10; s++){
+        scoreCard.roll(10)};
+      scoreCard.roll(10);
+      scoreCard.roll(10);
+      expect(scoreCard.score()).toEqual(300);
+    });
+  });
 
 });

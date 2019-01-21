@@ -9,16 +9,11 @@ Frame.prototype.score = () => {
 }
 
 Frame.prototype.roll = function (Number) {
-  if (isNaN(Number)) {
-    let errorOne = 'Cannot record roll: roll must be an number'
-    throw new Error(errorOne)
-  } else if (Number < 0 || Number > 10) {
-    let errorTwo = 'Cannot record roll: roll must be between 0-10'
-    throw new Error(errorTwo)
-  } else if (this._score.length >= 2) {
-    let errorThree = 'Cannot record more rolls: maximum rolls per frame is 2'
-    throw new Error(errorThree)
-  } else {
+  let errorOne = 'Cannot record roll: roll must be an number'
+  let errorTwo = 'Cannot record roll: roll must be between 0-10'
+  let errorThree = 'Cannot record more rolls: maximum rolls per frame is 2'
+  if (isNaN(Number)) throw new Error(errorOne)
+  if (Number < 0 || Number > 10) throw new Error(errorTwo)
+  if (this._score.length >= 2) throw new Error(errorThree)
   return this._score.push(Number)
-  }
 }

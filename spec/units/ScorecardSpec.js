@@ -9,8 +9,8 @@ describe('Scorecard', () => {
   beforeEach( () => {
     scorecard = new Scorecard();
     frame = new Frame();
-    frame.roll(0)
-    frame.roll(0)
+    frame.roll(5)
+    frame.roll(5)
   });
 
   describe('#recordFrameScore()', () => {
@@ -28,7 +28,16 @@ describe('Scorecard', () => {
     it('calculates the total score of the game', () => {
       scorecard.recordFrameScore(frame)
       scorecard.calculateTotal()
-      expect(scorecard._score).toEqual(0)
+      expect(scorecard._score).toEqual(10)
     })
+
+//     it('calculates score after 2 frames where the 1st frame was a Spare', () => {
+//       scorecard.recordFrameScore(frame)
+//       let frameTwo = new Frame();
+//       frameTwo.roll(5)
+//       frameTwo.roll(5)
+//       scorecard.calculateTotal()
+//       expect(scorecard._score).toEqual(25)
+//     })
   })
 })

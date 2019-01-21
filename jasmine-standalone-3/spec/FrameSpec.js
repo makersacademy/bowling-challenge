@@ -52,12 +52,18 @@ describe('Frame', function() {
     it('now has roll number 1', function() {
       expect(frame1.rollnumber()).toBe(1)
     });
+  });
 
-    /*beforeEach(function() {
-      frame1.addrole(3);
+  describe('adding second role', function() {
+
+    beforeEach(function() {
+      frame1.addroll(3);
+      frame1.addroll(6);
     });
 
-    it('now has roll number 2')*/
+    it('now has roll number 2', function() {
+      expect(frame1.rollnumber()).toBe(2)
+    });
 
   });
 

@@ -32,9 +32,10 @@ function Frame(framenumber) {
   }
 
   this.addroll = function(rollscore) {
-    roll = new Roll(rollscore);
-    this._addscorerole1(roll.rollvalue);
-    this._addrollnumber();
+      roll = new Roll(rollscore);
+      this._addscorerole1(roll.rollvalue);
+      this._addrollnumber();
+    
   }
 
 }

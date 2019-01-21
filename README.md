@@ -16,7 +16,8 @@ A Gutter Game: when the player never hits a pin (20 zero scores).
 
 ### Scoring Game
 
-A player can record scores of more than zero with a roll.
+A player can record scores of more than zero with a roll. Non numbers and
+numbers not in the range 0-10 are not accepted.
 
 ### Game complete
 
@@ -24,16 +25,20 @@ A player cannot record more than 10 frames per scorecard
 
 ### Calculate total
 
-A player can calculate their total score at any point using .calculateTotal
+A player can calculate their total non bonus score at any point using
+  .calculateNormalPoints()
+
+### Calculate bonus points from Spares
+
+A player can calculate their bonus points by calling .calculateBonusPoints()
+between recording frames
 
 ## Further work
 --------------
 Incorporate the following features:
 ### Strikes
-### Spares
 ### 10th frame
 ### Perfect Game
-### Account for more edge cases
 
 ## More info
 -----------

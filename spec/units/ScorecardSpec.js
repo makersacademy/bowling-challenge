@@ -24,11 +24,23 @@ describe('Scorecard', () => {
     })
   })
 
-  describe('#calculateTotal()', () => {
-    it('calculates the total score of the game', () => {
+  describe('#calculateNormalPoints()', () => {
+    it('calculates the total non-bonus points', () => {
       scorecard.recordFrameScore(frame)
       scorecard.calculateNormalPoints()
       expect(scorecard._normalPoints).toEqual(10)
+    })
+  })
+
+  describe('#calculateBonusPoints()', () => {
+    it('calculates the bonus points following spares', () => {
+      scorecard.recordFrameScore(frame)
+      let frameTwo = new Frame();
+      frameTwo.roll(7)
+      frameTwo.roll(3)
+      scorecard.recordFrameScore(frameTwo)
+      scorecard.calculateBonusPoints()
+      expect(scorecard._bonusPoints).toEqual(7)
     })
   })
 })

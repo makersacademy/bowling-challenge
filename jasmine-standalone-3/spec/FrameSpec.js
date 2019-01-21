@@ -96,7 +96,14 @@ describe('Frame', function() {
 
     it("allows second roll if strike is rolled", function() {
       frame10.addroll(10);
-      expect(frame10.rollnumber()).toBe(1);
+      frame10.addroll(8)
+      expect(frame10.scoreroll2()).toBe(8);
+    });
+
+    it("second roll can proceed if no strike rolled", function() {
+     frame10.addroll(2);
+     frame10.addroll(4);
+     expect(frame10.scoreroll2()).toBe(4);
     });
   });
 });

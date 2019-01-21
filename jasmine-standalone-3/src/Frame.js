@@ -39,7 +39,14 @@ function Frame(framenumber) {
         var roll = new Roll(rollscore);
         this._addscoreroll1(roll.rollvalue);
         this._addrollnumber();
-      }  
+      }
+
+      else if(rollnumber == 1) {
+        var roll = new Roll(rollscore);
+        this._addscoreroll2(roll.rollvalue);
+        this._addrollnumber();
+      }
+      
     }
 
     else if(rollnumber== 0 && rollscore == 10) {

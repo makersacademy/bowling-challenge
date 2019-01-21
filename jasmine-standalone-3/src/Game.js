@@ -39,6 +39,11 @@ function Game() {
       else {
         score += framelist[i].scoreroll1() + framelist[i].scoreroll2();
       }
+      if (i>1) {
+        if(framelist[i-1].scoreroll1() == 10 && framelist[i-2].scoreroll1() == 10)  {
+          score += framelist[i].scoreroll1()
+        }
+      }
     }
     return score
   }

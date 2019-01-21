@@ -83,6 +83,14 @@ describe('Game', function() {
       game.framelist()[9].addroll(10)
       expect(game.total_score()).toBe(30)
     });
+
+    it("doubles two consequetive rolls if you strike twice", function() {
+      game.add_frame();
+      game.framelist()[0].addroll(10)
+      game.framelist()[1].addroll(10)
+      game.framelist()[2].addroll(10)
+      expect(game.total_score()).toBe(60)
+    });
   });
 
 });

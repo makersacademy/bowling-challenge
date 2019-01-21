@@ -69,6 +69,20 @@ describe('Game', function() {
       expect(game.total_score()).toBe(16)
     });
 
+    it ("adds three roll scores if in 10th frame", function() {
+      game.add_frame();
+      game.add_frame();
+      game.add_frame();
+      game.add_frame();
+      game.add_frame();
+      game.add_frame();
+      game.add_frame();
+      game.add_frame();
+      game.framelist()[9].addroll(10)
+      game.framelist()[9].addroll(10)
+      game.framelist()[9].addroll(10)
+      expect(game.total_score()).toBe(30)
+    });
   });
 
 });

@@ -33,7 +33,7 @@ function Game() {
           score += 2*framelist[i].scoreroll1() + framelist[i].scoreroll2();
         }
         else {
-          score += framelist[i].scoreroll1() + framelist[i].scoreroll2();
+          score += framelist[i].scoreroll1() + framelist[i].scoreroll2() +  framelist[i].scoreroll3();
         }
       }
       else {

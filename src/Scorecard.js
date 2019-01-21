@@ -3,8 +3,6 @@
 function Scorecard () {
   this._frameScores = []
   this._normalPoints = 0
-  // this._bonusPoints = 0
-  // this._totalPoints = 0
 }
 
 Scorecard.prototype.frameScores = () => {
@@ -18,12 +16,5 @@ Scorecard.prototype.recordFrameScore = function (frame) {
 }
 
 Scorecard.prototype.calculateNormalPoints = function () {
-  const sum = [].concat(...this._frameScores).reduce((acc, curr) => acc + curr)
-  return this._normalPoints = sum
+  return this._normalPoints = [].concat(...this._frameScores).reduce((acc, curr) => acc + curr)
 }
-
-// Scorecard.prototype.calculateBonus = function () {
-  // const scoreList = [].concat(...this._frameScores)
-  // if (scoreList[0] + scoreList[1] === 10)
-    // this._bonus += scoreList[5]
-// }

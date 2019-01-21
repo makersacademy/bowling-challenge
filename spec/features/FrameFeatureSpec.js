@@ -2,13 +2,13 @@
 'use strict'
 
 describe('Frame', () => {
-  let frame;
+  let frame
 
-  beforeEach( () => {
+  beforeEach(() => {
     frame = new Frame();
     frame.roll(0)
     frame.roll(0)
-  });
+  })
 
   describe('#gutter frame', () => {
     it('player misses the pins with 2 roles', () => {

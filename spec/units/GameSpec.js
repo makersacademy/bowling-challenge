@@ -10,66 +10,66 @@ describe("Game", function() {
 	});
 
 	describe("#calculateScore", function () {
-    it("#calculateScore tells you the score", function() {
-      game.bowl(2, 0);
-      expect(game.calculateScore()).toEqual(2);
-    });
+		it("#calculateScore tells you the score", function() {
+			game.bowl(2, 0);
+			expect(game.calculateScore()).toEqual(2);
+		});
 
 		it("#calculateScore tells you the score", function() {
 			game.bowl(2, 1);
 			expect(game.calculateScore()).toEqual(3);
 		});
 
-    it("#calculateScore tells you the score for multiple frames", function() {
-      game.bowl(2, 1);
-      game.bowl(8, 1);
-      game.bowl(2, 5);
-      expect(game.calculateScore()).toEqual(19);
-    });
+		it("#calculateScore tells you the score for multiple frames", function() {
+			game.bowl(2, 1);
+			game.bowl(8, 1);
+			game.bowl(2, 5);
+			expect(game.calculateScore()).toEqual(19);
+		});
 
-    it('adds spare bonus', function() {
-      game.bowl(5, 5);
-      game.bowl(4, 0);
-      expect(game.calculateScore()).toEqual(18);
-    })
+		it("adds spare bonus", function() {
+			game.bowl(5, 5);
+			game.bowl(4, 0);
+			expect(game.calculateScore()).toEqual(18);
+		});
 
-    it('adds strike bonus', function() {
-      game.bowl(10, 0);
-      game.bowl(4, 4);
-      expect(game.calculateScore()).toEqual(26);
-    })
+		it("adds strike bonus", function() {
+			game.bowl(10, 0);
+			game.bowl(4, 4);
+			expect(game.calculateScore()).toEqual(26);
+		});
 
-    it('caters for double strikes', function() {
-      game.bowl(10, 0);
-      game.bowl(10, 0);
-      game.bowl(4, 4);
-      expect(game.calculateScore()).toEqual(50);
-    })
+		it("caters for double strikes", function() {
+			game.bowl(10, 0);
+			game.bowl(10, 0);
+			game.bowl(4, 4);
+			expect(game.calculateScore()).toEqual(50);
+		});
 
-    it('caters for triple strikes', function() {
-      game.bowl(10, 0);
-      game.bowl(10, 0);
-      game.bowl(10, 0);
-      game.bowl(4, 4);
-      game.bowl(4, 4);
-      game.bowl(4, 4);
-      expect(game.calculateScore()).toEqual(96);
-    })
+		it("caters for triple strikes", function() {
+			game.bowl(10, 0);
+			game.bowl(10, 0);
+			game.bowl(10, 0);
+			game.bowl(4, 4);
+			game.bowl(4, 4);
+			game.bowl(4, 4);
+			expect(game.calculateScore()).toEqual(96);
+		});
 
-    it('adds final frame strike bonus', function() {
-      game.bowl(10, 0);
-      game.bowl(4, 4);
-      expect(game.calculateScore()).toEqual(26);
-    })
+		it("adds final frame strike bonus", function() {
+			game.bowl(10, 0);
+			game.bowl(4, 4);
+			expect(game.calculateScore()).toEqual(26);
+		});
 
-    it('adds final frame strike bonus', function() {
-      for (let i = 0; i < 8; i++) {
-        game.bowl(0, 0);
-      }
-      game.bowl(10, 0);
-      game.bowl(1, 1);
-      expect(game.calculateScore()).toEqual(14);
-    })
+		it("adds final frame strike bonus", function() {
+			for (let i = 0; i < 7; i++) {
+				game.bowl(0, 0);
+			}
+			game.bowl(10, 0);
+			game.bowl(1, 1);
+			expect(game.calculateScore()).toEqual(14);
+		});
 	});
 
 	describe("#bowl", function () {

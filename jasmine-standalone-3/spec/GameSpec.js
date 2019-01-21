@@ -39,4 +39,20 @@ describe('Game', function() {
     });
   });
 
+  describe('total_score', function() {
+
+    beforeEach(function() {
+      game.add_frame();
+      game.add_frame();
+    });
+
+    it ('adds the score of two frames', function() {
+      game.framelist()[0].addroll(2)
+      game.framelist()[0].addroll(2)
+      game.framelist()[1].addroll(2)
+      game.framelist()[1].addroll(2)
+      expect(game.total_score()).toBe(8)
+    });
+  });
+
 });

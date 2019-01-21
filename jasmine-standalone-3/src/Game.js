@@ -20,4 +20,13 @@ function Game() {
   this.framelist = function() {
     return framelist
   }
+
+  this.total_score = function() {
+    var score = 0;
+    var arrayLength = framelist.length;
+    for (var i = 0; i < arrayLength; i++) {
+      score += framelist[i].scoreroll1() + framelist[i].scoreroll2();
+    }
+    return score
+  }
 }

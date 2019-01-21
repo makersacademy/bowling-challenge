@@ -2,9 +2,11 @@
 Bowling Challenge
 =================
 
+## Description
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
 ## User Stories
+The program was created to satisfy the below user stories 
 ```
 As a user 
 So that I can calculate my score
@@ -22,28 +24,19 @@ As a user
 So that I can calculate my score
 I want to be able to calculate my final score 
 ```
+## Installation
+* $ `git clone git@github.com:CazaBelle/bowling-challenge.git`
+* $ `cd bowling-challenge`
+* $ `open index.html` 
+* Navigate to the console to calculate a game of bowling 
 
+##Testing 
+* BDD completed with [Jasmine](https://jasmine.github.io/)
+* `open SpecRunner.html`
 
-## The Task
+![testing images](images/bowling_challenge_tests)
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
-
-Count and sum the scores of a bowling game for one player (in JavaScript).
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
-
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
-
-## Bowling — how does it work?
+## Bowling Rules
 
 ### Strikes
 
@@ -74,11 +67,18 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
-## Code Review
+### Extension
 
-In code review we'll be hoping to see:
+* A nice interactive animated interface with jQuery.
+* Set up [Travis CI](https://travis-ci.org) to run the tests.
+* Add [ESLint](http://eslint.org/) to the codebase 
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+### Contributions
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+* [David Donahue](https://www.youtube.com/watch?v=-qA_MjNmpVU)
+
+
+
+
+
+

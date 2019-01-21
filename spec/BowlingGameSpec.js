@@ -42,14 +42,11 @@ it("can roll a strike", function(){
   expect(game.getScore()).toEqual(28)
 });
 
-
-
-
-// it("can roll a perfect game", function(){
-//   for(var i = 0; i < 12; i++){
-//     scorecard.roll(10);
-//   }
-//   expect(scorecard.getTotal()).toEqual(300);
-// });
+it("can roll a perfect game", function(){
+  for(var i = 0; i < 12; i++){
+    game.roll(10);
+  }
+  expect(game.getScore()).toEqual(300);
+});
 
 });

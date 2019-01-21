@@ -11,9 +11,9 @@ function Frame(framenumber) {
    return rollnumber;
   }
 
-  var scoreroll1
+  var scoreroll1 = 0
 
-  var scoreroll2
+  var scoreroll2 = 0
 
   this._addscoreroll1 = function(rollscore) {
     scoreroll1 = rollscore;
@@ -33,7 +33,14 @@ function Frame(framenumber) {
 
   this.addroll = function(rollscore) {
 
-    if(rollnumber == 0) {
+    if(rollnumber== 0 && rollscore == 10) {
+      var roll = new Roll(rollscore);
+      this._addscoreroll1(roll.rollvalue);
+      this._addrollnumber();
+      this._addrollnumber();
+    }
+
+    else if(rollnumber == 0) {
       var roll = new Roll(rollscore);
       this._addscoreroll1(roll.rollvalue);
       this._addrollnumber();

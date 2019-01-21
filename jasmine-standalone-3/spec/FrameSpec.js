@@ -50,7 +50,7 @@ describe('Frame', function() {
     });
 
     it('now has roll number 1', function() {
-      expect(frame1.rollnumber()).toBe(1)
+      expect(frame1.rollnumber()).toBe(1);
     });
   });
 
@@ -62,16 +62,28 @@ describe('Frame', function() {
     });
 
     it('now has roll number 2', function() {
-      expect(frame1.rollnumber()).toBe(2)
+      expect(frame1.rollnumber()).toBe(2);
     });
 
     it('now has scoreroll2 of 3', function() {
-      expect(frame1.scoreroll2()).toBe(3)
+      expect(frame1.scoreroll2()).toBe(3);
     });
 
     it('returns Frame complete if add 3rd roll', function() {
-      expect(frame1.addroll(1)).toBe('Frame Complete')
+      expect(frame1.addroll(1)).toBe('Frame Complete');
     });
+  });
+
+  describe('when strike rolled', function() {
+
+    beforeEach(function() {
+      frame1.addroll(10);
+    });
+
+    it('now has roll number 2', function() {
+      expect(frame1.rollnumber()).toBe(2);
+    });
+
   });
 
 });

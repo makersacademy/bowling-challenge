@@ -18,8 +18,8 @@ describe('Scorecard', () => {
       frameOne.roll(0)
       frameOne.roll(1)
       scorecard.recordFrameScore(frameOne)
-      scorecard.calculateTotal()
-      expect(scorecard._score).toEqual(1)
+      scorecard.calculateNormalPoints()
+      expect(scorecard._normalPoints).toEqual(1)
     })
   })
 
@@ -29,8 +29,8 @@ describe('Scorecard', () => {
       for(var i = 0; i < times; i++) {
         scorecard.recordFrameScore(frame)
       }
-    scorecard.calculateTotal()
-    expect(scorecard._score).toEqual(0)
+    scorecard.calculateNormalPoints()
+    expect(scorecard._normalPoints).toEqual(0)
     })
   })
 })

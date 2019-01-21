@@ -27,8 +27,8 @@ describe('Scorecard', () => {
   describe('#calculateTotal()', () => {
     it('calculates the total score of the game', () => {
       scorecard.recordFrameScore(frame)
-      scorecard.calculateTotal()
-      expect(scorecard._score).toEqual(10)
+      scorecard.calculateNormalPoints()
+      expect(scorecard._normalPoints).toEqual(10)
     })
 
 //     it('calculates score after 2 frames where the 1st frame was a Spare', () => {

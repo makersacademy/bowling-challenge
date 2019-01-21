@@ -6,4 +6,7 @@ function Game() {
     return framenumber;
   }
 
+  this.add_frame = function() {
+    framenumber += 1
+  }
 }

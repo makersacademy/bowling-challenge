@@ -10,13 +10,15 @@ describe('Game', function() {
     expect(game.framenumber()).toBe(0)
   });
 
-  /*describe('add_frame', function() {
+  describe('add_frame', function() {
 
     beforeEach(function() {
       game.add_frame();
     });
 
-    it
-  });*/
+    it ("changes framenumber to 1", function() {
+      expect(game.framenumber()).toBe(1);
+    });
+  });
 
 });

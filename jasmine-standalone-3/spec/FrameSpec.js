@@ -3,11 +3,11 @@ describe('Frame', function() {
   var frame1;
 
   beforeEach(function() {
-    frame1 = new Frame(1);
+    frame1 = new Frame(0);
   });
 
   it('returns frame number', function() {
-    expect(frame1.framenumber).toBe(1);
+    expect(frame1.framenumber).toBe(0);
   });
 
   it('starts with roll number zero', function() {
@@ -86,4 +86,17 @@ describe('Frame', function() {
 
   });
 
+  describe('tenth frame behavior', function() {
+
+    var frame10
+
+    beforeEach(function() {
+      frame10 = new Frame(9);
+    });
+
+    it("allows second roll if strike is rolled", function() {
+      frame10.addroll(10);
+      expect(frame10.rollnumber()).toBe(1);
+    });
+  });
 });

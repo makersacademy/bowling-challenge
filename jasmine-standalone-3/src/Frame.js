@@ -33,7 +33,16 @@ function Frame(framenumber) {
 
   this.addroll = function(rollscore) {
 
-    if(rollnumber== 0 && rollscore == 10) {
+    if(framenumber == 9) {
+
+      if(rollnumber == 0) {
+        var roll = new Roll(rollscore);
+        this._addscoreroll1(roll.rollvalue);
+        this._addrollnumber();
+      }  
+    }
+
+    else if(rollnumber== 0 && rollscore == 10) {
       var roll = new Roll(rollscore);
       this._addscoreroll1(roll.rollvalue);
       this._addrollnumber();

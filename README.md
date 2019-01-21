@@ -21,6 +21,8 @@ Javascript - implementation of the scorecard
 Jasmine - testing framework
 ESlint - linter
 
+
+
 ## Instructions
 
 Clone this GitHub repo and open the index.html in a web browser.

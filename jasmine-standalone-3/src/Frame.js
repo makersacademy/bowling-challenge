@@ -23,7 +23,7 @@ function Frame(framenumber) {
 
   this.addroll = function(rollscore) {
     this._addscore(rollscore)
-
+    this._addrollnumber()
   }
 
 }

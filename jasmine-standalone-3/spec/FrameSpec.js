@@ -44,6 +44,9 @@ describe('Frame', function() {
       expect(frame1.score()).toBe(6);
     });
 
+    it('now has roll number 1', function() {
+      expect(frame1.rollnumber()).toBe(1)
+    });
 
   });
 

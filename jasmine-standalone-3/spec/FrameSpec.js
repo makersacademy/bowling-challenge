@@ -15,17 +15,24 @@ describe('Frame', function() {
   });
 
   it('starts with score zero', function() {
-    expect(frame1.score).toBe(0);
+    expect(frame1.score()).toBe(0);
   });
 
   describe('_addrollnumber', function() {
 
-    it('can add add to roll number', function() {
+    it('can add to roll number', function() {
       frame1._addrollnumber();
       expect(frame1.rollnumber()).toBe(1);
     });
   });
 
+  describe('_addscore', function() {
+
+    it('can add to score', function() {
+      frame1._addscore(6);
+      expect(frame1.score()).toBe(6);
+    });
+  });
   /*describe('addroll'), function() {
 
     beforeEach(function() {

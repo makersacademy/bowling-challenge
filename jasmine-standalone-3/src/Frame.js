@@ -9,8 +9,16 @@ function Frame(framenumber) {
 
   this.rollnumber = function() {
    return rollnumber;
- }
+  }
 
-  this.score = 0
+  var score = 0
+
+  this._addscore = function(rollscore) {
+    score += rollscore;
+  }
+
+  this.score = function() {
+    return score;
+  }
 
 }

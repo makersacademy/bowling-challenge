@@ -1,7 +1,7 @@
 describe('Game features', function() {
   let game = new Game;
 
-  it('Full game with strikes', function() {
+  it('A perfect game', function() {
     for (let i = 0; i < 9; i++) {
       game.bowl(10, 10);
     }

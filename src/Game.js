@@ -42,14 +42,22 @@ class Game {
 		let frame = this.frames;
 
 		switch(index) {
-			case index < 8 :
+			case 8 :
+				this.runningTotal += frame[index + 1][0] + frame[index + 1][1] + 10;
+				break;
+
+			case 9 :
+				this.runningTotal += frame[index][0] + frame[index][0] + 10;
+
+			default :
 				if(frame[index + 1][0] === 10) {
 					this.runningTotal += frame[index+1][0] + frame[index+2][0] + 10;
 				} else {
+					console.log(frame[index + 1][0])
 					this.runningTotal += frame[index+1][0] + frame[index+1][1] + 10;
 				}
-			case index === 8 :
-					this.runningTotal += frame[index + 1][0] + frame[index + 1][1] + 10;
+				break;
+
 				}
 			}
 

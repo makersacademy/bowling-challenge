@@ -53,6 +53,10 @@ describe("Features", function() {
     expect(game.totalScore()).toEqual(50)
   })
 
+  it("Throws an error if you try to apply a bonus game before the 10th frame", function() {
+    expect(function(){game.addFrame(10,10,10)}).toThrow("Bonus game is in frame 10 only!")
+  })
+
   it("Awards 300 points if user scores a perfect game", function() {
     counter = 0
     perfectGame()

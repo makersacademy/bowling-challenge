@@ -114,11 +114,11 @@ describe('Frame', function() {
      expect(frame10.scoreroll2()).toBe(4);
     });
 
-    /*it("allows third roll if two strikes are rolled", function() {
+    it("allows third roll if two strikes are rolled", function() {
       frame10.addroll(10);
       frame10.addroll(10);
       frame10.addroll(10);
       expect(frame10.scoreroll3()).toBe(10);
-    });*/
+    });
   });
 });

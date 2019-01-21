@@ -57,6 +57,12 @@ function Frame(framenumber) {
         this._addrollnumber();
       }
 
+      else if(rollnumber == 2 && scoreroll1 == 10 && scoreroll2 == 10) {
+        var roll = new Roll(rollscore);
+        this._addscoreroll3(roll.rollvalue);
+        this._addrollnumber();
+      }
+
     }
 
     else if(rollnumber== 0 && rollscore == 10) {

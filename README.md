@@ -2,6 +2,8 @@
 Bowling Challenge
 =================
 
+* Submitted a pull request but still a work-in-progress.
+* Need to include strike and spare.
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

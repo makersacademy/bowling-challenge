@@ -39,4 +39,18 @@ describe ('ScoreCard', function(){
       expect(scoreCard.score()).toEqual(16);
     });
   });
+
+  describe("strike", function(){
+    it('the player score a bonus when do a strike = 10 pins knocked in the 1st roll of a frame', function(){
+      scoreCard.roll(10);
+      scoreCard.roll(2);
+      scoreCard.roll(3);
+      for (let s = 0; s < 18; s++){
+        scoreCard.roll(0)};
+      expect(scoreCard.score()).toEqual(20);
+    });
+  });
+
+
+
 });

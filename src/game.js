@@ -10,16 +10,29 @@ class Game {
   score() {
     var total = 0
     var rollNumber = 0
+    var game = this
 
     for(var frameNumber = 0; frameNumber < 10; frameNumber++) {
-      if (this.rolls[rollNumber] + this.rolls[rollNumber + 1] == 10) {
-        total += this.rolls[rollNumber] + this.rolls[rollNumber + 1] + this.rolls[rollNumber + 2]
+      if (spare()) {
+        total += game.rolls[rollNumber] + game.rolls[rollNumber + 1] + game.rolls[rollNumber + 2]
       } else {
-      total += this.rolls[rollNumber] + this.rolls[rollNumber + 1]
+      total += game.rolls[rollNumber] + game.rolls[rollNumber + 1]
     }
       rollNumber += 2
     }
     return total
+
+    function spare() {
+      return game.rolls[rollNumber] + game.rolls[rollNumber + 1] == 10
+    }
+
+    function spareScore() {
+      return game.rolls[rollNumber] + game.rolls[rollNumber + 1] + game.rolls[rollNumber + 2]
+    }
+
+    function normalScore() {
+      return game.rolls[rollNumber] + game.rolls[rollNumber + 1]
+    }
   }
 
   // strike() {

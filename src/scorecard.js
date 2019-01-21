@@ -8,9 +8,15 @@ class ScoreCard {
   };
 
   score(){
-    let s = 0
-    for (let i = 0; i < 20; i++){
-      s += this.rolls[i]
+    let s = 0;
+    let r = 0;
+    for (let frames = 0; frames < 10; frames++){
+      if(this.rolls[r] + this.rolls[r+1] === 10){
+        s += this.rolls[r] + this.rolls[r+1] + this.rolls[r+2]
+      } else {
+        s += this.rolls[r] + this.rolls[r+1]
+      };
+      r += 2;
     };
     return s;
   };

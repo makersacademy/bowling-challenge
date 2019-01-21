@@ -2,7 +2,7 @@ describe ('ScoreCard', function(){
   let scoreCard;
 
   beforeEach(function() {
-    scoreCard = new ScoreCard() ;
+    scoreCard = new ScoreCard();
   });
 
   describe ("Gutter Game", function(){
@@ -19,6 +19,7 @@ describe ('ScoreCard', function(){
         scoreCard.roll(1)};
       expect(scoreCard.score()).toEqual(20);
     });
+
     it('the player can play 1 frame of 2 rolls and accumulate their points', function(){
       scoreCard.roll(2);
       scoreCard.roll(4);
@@ -29,14 +30,13 @@ describe ('ScoreCard', function(){
   });
 
   describe("spare", function(){
-    it('the player score a bonus when do a spare = 10 pins knocked in 2 rolls of the same frame'function(){
+    it('the player score a bonus when do a spare = 10 pins knocked in 2 rolls of the same frame', function(){
       scoreCard.roll(4);
       scoreCard.roll(6);
       scoreCard.roll(3);
-      for (let s = 0, s < 18; s++){
+      for (let s = 0; s < 18; s++){
         scoreCard.roll(0)};
       expect(scoreCard.score()).toEqual(16);
     });
   });
-
 });

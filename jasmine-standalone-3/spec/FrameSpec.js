@@ -127,5 +127,11 @@ describe('Frame', function() {
       frame10.addroll(10);
       expect(frame10.scoreroll3()).toBe(10);
     });
+
+    it("returns frame complete if rolls finished", function() {
+      frame10.addroll(7);
+      frame10.addroll(2);
+      expect(frame10.addroll(4)).toBe('Frame Complete');
+    });
   });
 });

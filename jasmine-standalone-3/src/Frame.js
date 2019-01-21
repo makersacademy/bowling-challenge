@@ -69,6 +69,10 @@ function Frame(framenumber) {
         this._addrollnumber();
       }
 
+      else {
+        return "Frame Complete"
+      }
+
     }
 
     else if(rollnumber== 0 && rollscore == 10) {
@@ -90,7 +94,7 @@ function Frame(framenumber) {
       this._addrollnumber();
     }
 
-    else if(rollnumber == 2) {
+    else {
       return "Frame Complete"
     }
   }

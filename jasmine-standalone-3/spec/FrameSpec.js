@@ -31,19 +31,33 @@ describe('Frame', function() {
     });
   });
 
+  describe('_addscorerole2', function() {
+
+    it('can add to score', function() {
+      frame1._addscorerole2(3);
+      expect(frame1.scorerole2()).toBe(3);
+    });
+  });
+
   describe('addroll', function() {
 
     beforeEach(function() {
       frame1.addroll(6);
     });
 
-    it('now has score of 6', function() {
+    it('now has scorerole1 of 6', function() {
       expect(frame1.scorerole1()).toBe(6);
     });
 
     it('now has roll number 1', function() {
       expect(frame1.rollnumber()).toBe(1)
     });
+
+    /*beforeEach(function() {
+      frame1.addrole(3);
+    });
+
+    it('now has roll number 2')*/
 
   });
 

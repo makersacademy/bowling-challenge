@@ -14,7 +14,7 @@ describe ('ScoreCard', function(){
   });
 
   describe ("Accumulating point", function(){
-    it('the player can score an amount of 5 points', function(){
+    it('the player can score an amount of 20 points', function(){
       for (let s = 0; s < 20; s++){
         scoreCard.roll(1)};
       expect(scoreCard.score()).toEqual(20);
@@ -25,6 +25,17 @@ describe ('ScoreCard', function(){
       for (let s = 0; s < 18; s++){
         scoreCard.roll(0)};
       expect(scoreCard.score()).toEqual(6);
+    });
+  });
+
+  describe("spare", function(){
+    it('the player score a bonus when do a spare = 10 pins knocked in 2 rolls of the same frame'function(){
+      scoreCard.roll(4);
+      scoreCard.roll(6);
+      scoreCard.roll(3);
+      for (let s = 0, s < 18; s++){
+        scoreCard.roll(0)};
+      expect(scoreCard.score()).toEqual(16);
     });
   });
 

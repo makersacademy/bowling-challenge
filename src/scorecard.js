@@ -3,11 +3,11 @@ class ScoreCard {
     this.rolls = [];
   };
 
-  roll(nPins) {
+  roll(nPins){
     this.rolls.push(nPins);
   };
 
-  score() {
+  score(){
     let s = 0
     for (let i = 0; i < 20; i++){
       s += this.rolls[i]

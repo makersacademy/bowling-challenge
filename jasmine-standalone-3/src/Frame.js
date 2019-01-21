@@ -11,31 +11,43 @@ function Frame(framenumber) {
    return rollnumber;
   }
 
-  var scorerole1
+  var scoreroll1
 
-  var scorerole2
+  var scoreroll2
 
-  this._addscorerole1 = function(rollscore) {
-    scorerole1 = rollscore;
+  this._addscoreroll1 = function(rollscore) {
+    scoreroll1 = rollscore;
   }
 
-  this._addscorerole2 = function(rollscore) {
-    scorerole2 = rollscore;
+  this._addscoreroll2 = function(rollscore) {
+    scoreroll2 = rollscore;
   }
 
-  this.scorerole1 = function() {
-    return scorerole1;
+  this.scoreroll1 = function() {
+    return scoreroll1;
   }
 
-  this.scorerole2 = function() {
-    return scorerole2;
+  this.scoreroll2 = function() {
+    return scoreroll2;
   }
 
   this.addroll = function(rollscore) {
-      roll = new Roll(rollscore);
-      this._addscorerole1(roll.rollvalue);
+
+    if(rollnumber == 0) {
+      var roll = new Roll(rollscore);
+      this._addscoreroll1(roll.rollvalue);
       this._addrollnumber();
-    
+    }
+
+    else if(rollnumber == 1) {
+      var roll = new Roll(rollscore);
+      this._addscoreroll2(roll.rollvalue);
+      this._addrollnumber();
+    }
+
+    else if(rollnumber == 2) {
+      return "Frame Complete"
+    }
   }
 
 }

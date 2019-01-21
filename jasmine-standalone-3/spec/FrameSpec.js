@@ -23,19 +23,19 @@ describe('Frame', function() {
     });
   });
 
-  describe('_addscorerole1', function() {
+  describe('_addscoreroll1', function() {
 
     it('can add to score', function() {
-      frame1._addscorerole1(6);
-      expect(frame1.scorerole1()).toBe(6);
+      frame1._addscoreroll1(6);
+      expect(frame1.scoreroll1()).toBe(6);
     });
   });
 
-  describe('_addscorerole2', function() {
+  describe('_addscoreroll2', function() {
 
     it('can add to score', function() {
-      frame1._addscorerole2(3);
-      expect(frame1.scorerole2()).toBe(3);
+      frame1._addscoreroll2(3);
+      expect(frame1.scoreroll2()).toBe(3);
     });
   });
 
@@ -45,8 +45,8 @@ describe('Frame', function() {
       frame1.addroll(6);
     });
 
-    it('now has scorerole1 of 6', function() {
-      expect(frame1.scorerole1()).toBe(6);
+    it('now has scoreroll1 of 6', function() {
+      expect(frame1.scoreroll1()).toBe(6);
     });
 
     it('now has roll number 1', function() {
@@ -57,14 +57,21 @@ describe('Frame', function() {
   describe('adding second role', function() {
 
     beforeEach(function() {
-      frame1.addroll(3);
       frame1.addroll(6);
+      frame1.addroll(3);
     });
 
     it('now has roll number 2', function() {
       expect(frame1.rollnumber()).toBe(2)
     });
 
+    it('now has scoreroll2 of 3', function() {
+      expect(frame1.scoreroll2()).toBe(3)
+    });
+
+    it('returns Frame complete if add 3rd roll', function() {
+      expect(frame1.addroll(1)).toBe('Frame Complete')
+    });
   });
 
 });

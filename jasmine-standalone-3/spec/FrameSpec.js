@@ -11,20 +11,29 @@ describe('Frame', function() {
   });
 
   it('starts with roll number zero', function() {
-    expect(frame1.rollnumber).toBe(0);
+    expect(frame1.rollnumber()).toBe(0);
   });
 
   it('starts with score zero', function() {
     expect(frame1.score).toBe(0);
   });
 
+  describe('_addrollnumber', function() {
 
-/*
-  describe('addroll'), function() {
+    it('can add add to roll number', function() {
+      frame1._addrollnumber();
+      expect(frame1.rollnumber()).toBe(1);
+    });
+  });
+
+  /*describe('addroll'), function() {
 
     beforeEach(function() {
-      frame1 = new Frame(1);
+      frame1.addroll;
     });
+
+  it('now has score of 1', function() {
+    expet
 
 
   });*/

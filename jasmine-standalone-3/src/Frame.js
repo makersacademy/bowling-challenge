@@ -1,5 +1,16 @@
 function Frame(framenumber) {
   this.framenumber = framenumber
-  this.rollnumber = 0
+
+  var rollnumber = 0
+
+  this._addrollnumber = function() {
+    rollnumber += 1;
+  }
+
+  this.rollnumber = function() {
+   return rollnumber;
+ }
+
   this.score = 0
+
 }

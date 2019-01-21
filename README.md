@@ -18,7 +18,9 @@ Bowling Challenge
 ## Technologies used
 
 Javascript - implementation of the scorecard
+
 Jasmine - testing framework
+
 ESlint - linter
 
 

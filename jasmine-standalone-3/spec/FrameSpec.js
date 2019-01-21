@@ -33,16 +33,18 @@ describe('Frame', function() {
       expect(frame1.score()).toBe(6);
     });
   });
-  /*describe('addroll'), function() {
+
+  describe('addroll', function() {
 
     beforeEach(function() {
-      frame1.addroll;
+      frame1.addroll(6);
     });
 
-  it('now has score of 1', function() {
-    expet
+    it('now has score of 6', function() {
+      expect(frame1.score()).toBe(6);
+    });
 
 
-  });*/
+  });
 
 });

@@ -21,4 +21,9 @@ function Frame(framenumber) {
     return score;
   }
 
+  this.addroll = function(rollscore) {
+    this._addscore(rollscore)
+
+  }
+
 }

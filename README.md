@@ -33,6 +33,7 @@ Incorporate the following features:
 ### Spares
 ### 10th frame
 ### Perfect Game
+### Account for more edge cases
 
 ## More info
 -----------
@@ -58,8 +59,7 @@ cd bowling-challenge
 ----------
 To view the test results run `open -a "Google Chrome" SpecRunner.html` whilst
 in the project repo. Replace `Google Chrome` with your preferred browser.
-Currently all tests passing for a gutter game, with some edge cases also
-covered.
+Currently all tests passing for a gutter game.
 
 ## Technologies Used
 --------------------

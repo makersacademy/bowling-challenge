@@ -39,6 +39,14 @@ describe('Frame', function() {
     });
   });
 
+  describe('_addscoreroll3', function() {
+
+    it('can add to score', function() {
+      frame1._addscoreroll3(5);
+      expect(frame1.scoreroll3()).toBe(5);
+    });
+  });
+
   describe('addroll', function() {
 
     beforeEach(function() {
@@ -96,7 +104,7 @@ describe('Frame', function() {
 
     it("allows second roll if strike is rolled", function() {
       frame10.addroll(10);
-      frame10.addroll(8)
+      frame10.addroll(8);
       expect(frame10.scoreroll2()).toBe(8);
     });
 
@@ -105,5 +113,12 @@ describe('Frame', function() {
      frame10.addroll(4);
      expect(frame10.scoreroll2()).toBe(4);
     });
+
+    /*it("allows third roll if two strikes are rolled", function() {
+      frame10.addroll(10);
+      frame10.addroll(10);
+      frame10.addroll(10);
+      expect(frame10.scoreroll3()).toBe(10);
+    });*/
   });
 });

@@ -11,19 +11,19 @@ function Frame(framenumber) {
    return rollnumber;
   }
 
-  var score = 0
+  var scorerole1
 
-  this._addscore = function(rollscore) {
-    score += rollscore;
+  this._addscorerole1 = function(rollscore) {
+    scorerole1 = rollscore;
   }
 
-  this.score = function() {
-    return score;
+  this.scorerole1 = function() {
+    return scorerole1;
   }
 
   this.addroll = function(rollscore) {
     roll = new Roll(rollscore)
-    this._addscore(roll.rollvalue)
+    this._addscorerole1(roll.rollvalue)
     this._addrollnumber()
   }
 

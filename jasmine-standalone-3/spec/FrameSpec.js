@@ -14,9 +14,6 @@ describe('Frame', function() {
     expect(frame1.rollnumber()).toBe(0);
   });
 
-  it('starts with score zero', function() {
-    expect(frame1.score()).toBe(0);
-  });
 
   describe('_addrollnumber', function() {
 
@@ -26,11 +23,11 @@ describe('Frame', function() {
     });
   });
 
-  describe('_addscore', function() {
+  describe('_addscorerole1', function() {
 
     it('can add to score', function() {
-      frame1._addscore(6);
-      expect(frame1.score()).toBe(6);
+      frame1._addscorerole1(6);
+      expect(frame1.scorerole1()).toBe(6);
     });
   });
 
@@ -41,7 +38,7 @@ describe('Frame', function() {
     });
 
     it('now has score of 6', function() {
-      expect(frame1.score()).toBe(6);
+      expect(frame1.scorerole1()).toBe(6);
     });
 
     it('now has roll number 1', function() {

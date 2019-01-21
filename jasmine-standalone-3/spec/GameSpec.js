@@ -19,6 +19,10 @@ describe('Game', function() {
     it ("changes framenumber to 1", function() {
       expect(game.framenumber()).toBe(1);
     });
+
+    it ("adds frame to frame list", function() {
+      expect(game.framelist()[0].framenumber).toBe(0)
+    });
   });
 
 });

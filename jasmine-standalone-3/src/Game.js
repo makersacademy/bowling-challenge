@@ -9,9 +9,12 @@ function Game() {
   }
 
   this.add_frame = function() {
+
+    if (framenumber < 10) {
     frame = new Frame(framenumber)
     framelist.push(frame)
     framenumber += 1
+    }
   }
 
   this.framelist = function() {

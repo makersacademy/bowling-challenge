@@ -1,5 +1,4 @@
-
-#Bowling Challenge#
+# Bowling Challenge #
 
 ![bowling ASCII](https://user-images.githubusercontent.com/43742795/51447391-9ef6bd80-1d15-11e9-9878-96abb0d39038.png)
 

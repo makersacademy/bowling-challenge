@@ -13,12 +13,17 @@ class Game {
     var game = this
 
     for(var frameNumber = 0; frameNumber < 10; frameNumber++) {
-      if (spare()) {
-        total += game.rolls[rollNumber] + game.rolls[rollNumber + 1] + game.rolls[rollNumber + 2]
+      if (strike()) {
+        total += strikeScore()
+        rollNumber += 1
+      } else if (spare()) {
+        total += spareScore()
+        rollNumber += 2
       } else {
-      total += game.rolls[rollNumber] + game.rolls[rollNumber + 1]
-    }
+      total += normalScore()
       rollNumber += 2
+
+      }
     }
     return total
 
@@ -32,6 +37,14 @@ class Game {
 
     function normalScore() {
       return game.rolls[rollNumber] + game.rolls[rollNumber + 1]
+    }
+
+    function strike() {
+      return game.rolls[rollNumber] == 10
+    }
+
+    function strikeScore() {
+      return game.rolls[rollNumber] + game.rolls[rollNumber + 1] + game.rolls[rollNumber + 2]
     }
   }
 

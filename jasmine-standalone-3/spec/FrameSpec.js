@@ -120,5 +120,12 @@ describe('Frame', function() {
       frame10.addroll(10);
       expect(frame10.scoreroll3()).toBe(10);
     });
+
+    it("allows third roll if half strike", function() {
+      frame10.addroll(5);
+      frame10.addroll(5);
+      frame10.addroll(10);
+      expect(frame10.scoreroll3()).toBe(10);
+    });
   });
 });

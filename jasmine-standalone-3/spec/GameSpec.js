@@ -53,6 +53,13 @@ describe('Game', function() {
       game.framelist()[1].addroll(2)
       expect(game.total_score()).toBe(8)
     });
+
+    it ('doubles next two if rolls strike', function() {
+      game.framelist()[0].addroll(10)
+      game.framelist()[1].addroll(2)
+      game.framelist()[1].addroll(2)
+      expect(game.total_score()).toBe(18)
+    });
   });
 
 });

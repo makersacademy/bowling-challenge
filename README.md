@@ -1,77 +1,98 @@
 
-Bowling Challenge
-=================
+#Bowling Challenge#
+
+![bowling ASCII](https://user-images.githubusercontent.com/43742795/51447391-9ef6bd80-1d15-11e9-9878-96abb0d39038.png)
 
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+The challenge is to build a bowling scorecard (not a game), in Javascript.
 
-## The Task
+## The rules ##
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+A bowling game consists of 10 frames in which the player tries to knock down the 10 pins.<br/>
+In every frame the player can roll one or two times. The actual number depends on strikes and spares.<br/>
+The score of a frame is the number of knocked down pins plus bonuses for strikes and spares.
+After every frame the 10 pins are reset.<br/>
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+* Strikes
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+The player has a strike if he knocks down all 10 pins with the first roll in a frame.<br/>
+The frame ends immediately (no second roll due to no pins to hit left).<br/>
+The bonus for that frame is the number of pins knocked down by the next two rolls.<br/>
+That would be the next frame, unless the player rolls another strike.
 
-As usual please start by
+* Spares
 
-* Forking this repo
+The player has a spare if the knocks down all 10 pins with the two rolls of a frame.<br/>
+The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+* 10th frame
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus.<br/>
+But they can never roll more than 3 balls in the 10th frame.<br/>
+The additional roll only count for the bonus not for the regular frame count.
 
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
-
-## Bowling — how does it work?
-
-### Strikes
-
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
-
-### Spares
-
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-### 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-### Gutter Game
+* Gutter Game
 
 A Gutter Game is when the player never hits a pin (20 zero scores).
 
-### Perfect Game
+* Perfect Game
 
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame).<br/>
+The Perfect Game scores 300 points.
 
 In the image below you can find some score examples.
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
-## Code Review
+## How to use ##
 
-In code review we'll be hoping to see:
+1. clone the repo<br/>
+Under the repo name click *clone or download*<br/>
+Click on *use HTTPs*, copy the clone URL of the repo<br/>
+In the terminal go on the working directory where you want the cloned directory to be<br/>
+Use the `git clone` command and paste the clone URL then press enter :
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+```shell
+$ git clone https://github.com/your-username/your-repositary.git
+```
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+2. On your local machine go inside of the *bowling-challenge* directory :
+
+```shell
+$ cd bowling-challenge
+```
+3. You can see the different files by using the `ls` command :<br/>
+
+```shell
+$ ls
+```
+
+4. You can open the *.js* file that you want to read and change the code in your text editor or using `vim` :
+
+```shell
+$ vim wanted_file.js
+```
+Or you can just read the contains of it from the command line with `cat` :
+
+```shell
+$ cat wanted_file.js
+```
+
+## Run the tests ##
+
+1. On your command line, from your root directory, use the `pwd` command to see the path of your *html* file:
+
+```shell
+$ pwd
+$ /Users/yourUsername/Desktop/directory-of-your-project/bowling-challenge
+```
+
+2. In your browser copy and past this path, and add at the end of it */SpecRunner.html* <br/>
+The page will be displayed on your browser.
+
+3. If you use google chrome you can also open the page on your browser directly from your command line from your root directory, by using the command `open -a “Google Chrome” SpecRunner.html` :
+
+```shell
+$ open -a “Google Chrome” SpecRunner.html
+```
+The page with the test results will be opened on your browser.

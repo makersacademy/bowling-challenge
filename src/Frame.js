@@ -12,7 +12,7 @@ Frame.prototype.roll = function (Number) {
   if (isNaN(Number)) {
     let errorOne = 'Cannot record roll: roll must be an number'
     throw new Error(errorOne)
-  } else if (Number < 0) {
+  } else if (Number < 0 || Number > 10) {
     let errorTwo = 'Cannot record roll: roll must be between 0-10'
     throw new Error(errorTwo)
   } else if (this._score.length >= 2) {

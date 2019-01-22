@@ -25,8 +25,6 @@ Scorecard.prototype.calculateBonusPoints = function () {
   let previousScore = this._frameScores[previousFrame][0] + this._frameScores[previousFrame][1]
   if (previousScore === 10) {
     this._bonusPoints += this._frameScores[currentFrame][0]
-  } else {
-    return
   }
 }
 

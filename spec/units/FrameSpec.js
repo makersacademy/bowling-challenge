@@ -17,6 +17,12 @@ describe('Frame', () => {
       expect(function () { frame.roll(0) }).toThrow(new Error(error))
     })
 
+    it('throws error if second roll attempted after a strike', () => {
+      frame.roll(10)
+      var error = 'Cannot roll agian: first roll was a strike'
+      expect(function () { frame.roll(4) }).toThrow(new Error(error))
+    })
+
     it('throws error if NaN is input instead of number', () => {
       var error = 'Cannot record roll: roll must be an number'
       expect(function () { frame.roll('hello') }).toThrow(new Error(error))

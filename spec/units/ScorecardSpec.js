@@ -6,6 +6,8 @@ describe('Scorecard', () => {
   let scorecard
   let frame
   let frameTwo
+  let frameThree
+  let frameFour
 
   beforeEach(() => {
     scorecard = new Scorecard()
@@ -36,16 +38,24 @@ describe('Scorecard', () => {
       expect(scorecard._bonusPoints).toEqual(7)
     })
 
-    it('calculates the bonus points following a strike', () => {
+    it('calculates the bonus points after consecutive strikes', () => {
       frame = new Frame();
       frame.roll(10)
       frame.roll(0)
       scorecard.recordFrameScore(frame)
       frameTwo = new Frame();
-      frameTwo.roll(2)
-      frameTwo.roll(2)
+      frameTwo.roll(10)
+      frameTwo.roll(0)
       scorecard.recordFrameScore(frameTwo)
-      expect(scorecard._bonusPoints).toEqual(4)
+      frameThree = new Frame();
+      frameThree.roll(10)
+      frameThree.roll(0)
+      scorecard.recordFrameScore(frameThree)
+      frameFour = new Frame();
+      frameFour.roll(10)
+      frameFour.roll(0)
+      scorecard.recordFrameScore(frameThree)
+      expect(scorecard._bonusPoints).toEqual(30)
     })
   })
 

@@ -17,9 +17,9 @@ describe('Frame', () => {
       expect(function () { frame.roll(0) }).toThrow(new Error(error))
     })
 
-    it('throws error if second roll attempted after a strike', () => {
+    it('throws error if zero not recorded after a strike', () => {
       frame.roll(10)
-      var error = 'Cannot roll agian: first roll was a strike'
+      var error = 'Cannot record number: roll after strike must be 0'
       expect(function () { frame.roll(4) }).toThrow(new Error(error))
     })
 

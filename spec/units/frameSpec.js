@@ -27,9 +27,12 @@ describe('Frame', function(){
   });
 
   it('Prevents player from having 3 bowls per frame, excluding final frame', function(){
-    frame.addBowl(0);
-    frame.addBowl(0);
-    expect(frame.addBowl(0)).toThrow(new Error('2 bowls completed! Third bowl denied.'));
+    
+    expect(function() { 
+      frame.addBowl(0); 
+      frame.addBowl(0);
+      frame.addBowl(0);
+    }).toThrow('2 bowls completed! Third bowl denied.');
   });
 
   it('Returns the total score for the frame', function(){
@@ -38,7 +41,7 @@ describe('Frame', function(){
   });
 
   it('Prevents a second bowl if first bowl was a strike', function(){
-    expect(frameX.addBowl(6)).toThrow(new Error('Strike! Second bowl denied.'));
+    expect(function() { frameX.addBowl(6) }).toThrow('Strike! Second bowl denied.');
   })
 
   it('Returns true if Strike Frame', function(){

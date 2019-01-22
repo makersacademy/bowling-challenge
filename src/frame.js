@@ -6,9 +6,9 @@ class Frame {
 
   addBowl(secondBowl) {
     if (this.bowls[0] === 10) {
-      throw new Error('Strike! Second bowl denied.');
+      throw 'Strike! Second bowl denied.';
     } else if (this.bowls.length >= 2) {
-      throw new Error('2 bowls completed! Third bowl denied.');
+      throw '2 bowls completed! Third bowl denied.';
     } else {
       this.bowls.push(secondBowl);
     }

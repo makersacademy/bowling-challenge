@@ -41,11 +41,13 @@ describe('ScoreCard', function(){
     });
 
     it('Limits game to 10 frames', function(){
-      for (var i = 0; i < 10; i++) {
+      
+      expect(function() { for (var i = 0; i < 12; i++) {
         scorecard.addFrame(frame);
-      };
-      expect(scorecard.addFrame(frame)).toThrow(new Error('This game already has 10 frames'));
+      }; }).toThrow('This game already has 10 frames');
     });
+
+    //function() { scorecard.addFrame(frame); } 
 
     it('Game is incomplete', function(){
       scorecard.addFrame(frame);

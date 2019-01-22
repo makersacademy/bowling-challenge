@@ -9,7 +9,7 @@ class ScoreCard {
     if (this.frameNumber() < 10 ) {
       this.frames.push(frame);
     } else {
-      throw new Error('This game already has 10 frames');
+      throw 'This game already has 10 frames';
     };
   }
 

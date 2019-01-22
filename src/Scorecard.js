@@ -22,13 +22,7 @@ Scorecard.prototype.recordFrameScore = function (frame) {
     this._bonusPoints += frame._score[0]
   }
 
-  if (frame._score[0] === 10) {
-    this._frameStatus = 'strike'
-  } else if ((frame._score[0] + frame._score[1]) === 10) {
-    this._frameStatus = 'spare'
-  } else {
-    this._frameStatus = 'normal'
-  }
+  this._frameStatus = (frame._score[0] === 10) ? 'strike' : (((frame._score[0] + frame._score[1]) === 10) ? 'spare' : 'normal')
   this._frameScores.push(frame._score)
 }
 

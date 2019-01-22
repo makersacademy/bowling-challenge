@@ -8,7 +8,7 @@ describe('Scorecard', () => {
   let frameTwo
 
   beforeEach(() => {
-    scorecard = new Scorecard();
+    scorecard = new Scorecard()
   })
 
   describe('#recordFrameScore()', () => {
@@ -32,10 +32,20 @@ describe('Scorecard', () => {
       frameTwo = new Frame();
       frameTwo.roll(7)
       frameTwo.roll(1)
-      console.log(frameTwo[0])
       scorecard.recordFrameScore(frameTwo)
-      console.log(frameTwo[0])
       expect(scorecard._bonusPoints).toEqual(7)
+    })
+
+    it('calculates the bonus points following a strike', () => {
+      frame = new Frame();
+      frame.roll(10)
+      frame.roll(0)
+      scorecard.recordFrameScore(frame)
+      frameTwo = new Frame();
+      frameTwo.roll(2)
+      frameTwo.roll(2)
+      scorecard.recordFrameScore(frameTwo)
+      expect(scorecard._bonusPoints).toEqual(4)
     })
   })
 
@@ -49,33 +59,4 @@ describe('Scorecard', () => {
       expect(scorecard._normalPoints).toEqual(10)
     })
   })
-
-  // describe('#calculateBonusPoints()', () => {
-  //   it('calculates the bonus points following spares', () => {
-  //     frame = new Frame();
-  //     frame.roll(5)
-  //     frame.roll(5)
-  //     scorecard.recordFrameScore(frame)
-  //     frameTwo = new Frame();
-  //     frameTwo.roll(7)
-  //     frameTwo.roll(3)
-  //     scorecard.recordFrameScore(frameTwo)
-  //     scorecard.calculateBonusPoints()
-  //     expect(scorecard._bonusPoints).toEqual(7)
-  //   })
-
-    // it('calcualtes the bonus points following a strike', () => {
-    //   frame = new Frame();
-    //   frame.roll(10)
-    //   frame.roll(0)
-    //   scorecard.recordFrameScore(frame)
-    //   console.log(scorecard._frameScores)
-    //   frameTwo = new Frame();
-    //   frameTwo.roll = (2)
-    //   frameTwo.roll = (2)
-    //   scorecard.recordFrameScore(frameTwo)
-    //   scorecard.calculateBonusPoints()
-    //   expect(scorecard._bonusPoints).toEqual(4)
-    // })
-  // })
 })

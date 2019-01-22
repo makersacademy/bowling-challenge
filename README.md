@@ -12,32 +12,31 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 -----------------
 ### Gutter Game
 
-A Gutter Game: when the player never hits a pin (20 zero scores).
+The scoredcard records a total of zero when a player throws 20 gutter balls
 
-### Scoring Game
+### Scoring Rules Implemented
 
-A player can record scores of more than zero with a roll. Non numbers and
-numbers not in the range 0-10 are not accepted.
+- Only record scores of 0-10
+- Non numbers and numbers not in the range 0-10 are not accepted
+- Only 0 can be recorded following a strike
+- Only 2 rolls can be recorded per frame
+
+### Calculate bonus points from after Strikes & Spares
+
+The scorecard keeps track off bonus points due to Strikes & Spares
+
+### Calculate total
+
+The scorecard can calculate the total score of a player's game
 
 ### Game complete
 
 A player cannot record more than 10 frames per scorecard
 
-### Calculate total
-
-A player can calculate their total non bonus score at any point using
-  .calculateNormalPoints()
-
-### Calculate bonus points from Spares
-
-A player can calculate their bonus points by calling .calculateBonusPoints()
-between recording frames
-
 ## Further work
 --------------
 Incorporate the following features:
-### Strikes
-### 10th frame
+### 10th frame bonus rolls
 ### Perfect Game
 
 ## More info
@@ -63,8 +62,8 @@ cd bowling-challenge
 ## Testing
 ----------
 To view the test results run `open -a "Google Chrome" SpecRunner.html` whilst
-in the project repo. Replace `Google Chrome` with your preferred browser.
-Currently all tests passing for a gutter game.
+in the project repo. Replace `Google Chrome` with your preferred browser. All tests 
+passing.
 
 ## Technologies Used
 --------------------

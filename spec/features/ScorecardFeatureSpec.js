@@ -6,8 +6,8 @@ describe('Scorecard', () => {
   let frame
 
   beforeEach(() => {
-    scorecard = new Scorecard();
-    frame = new Frame();
+    scorecard = new Scorecard()
+    frame = new Frame()
     frame.roll(0)
     frame.roll(0)
   })

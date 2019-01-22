@@ -38,6 +38,18 @@ describe('Scorecard', () => {
       expect(scorecard._bonusPoints).toEqual(7)
     })
 
+    it('calculates the bonus points following a strike', () => {
+      frame = new Frame();
+      frame.roll(10)
+      frame.roll(0)
+      scorecard.recordFrameScore(frame)
+      frameTwo = new Frame();
+      frameTwo.roll(2)
+      frameTwo.roll(2)
+      scorecard.recordFrameScore(frameTwo)
+      expect(scorecard._bonusPoints).toEqual(4)
+    })
+
     it('calculates the bonus points after consecutive strikes', () => {
       frame = new Frame();
       frame.roll(10)
@@ -55,7 +67,7 @@ describe('Scorecard', () => {
       frameFour.roll(10)
       frameFour.roll(0)
       scorecard.recordFrameScore(frameThree)
-      expect(scorecard._bonusPoints).toEqual(30)
+      expect(scorecard._bonusPoints).toEqual(60)
     })
   })
 

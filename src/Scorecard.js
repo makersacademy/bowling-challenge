@@ -32,5 +32,3 @@ Scorecard.prototype.calculateTotal = function () {
   this._normalPoints = [].concat(...this._frameScores).reduce((acc, curr) => acc + curr)
   this._total = (this._normalPoints + this._bonusPoints)
 }
-
-

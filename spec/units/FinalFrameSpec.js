@@ -7,4 +7,11 @@ describe('Final Frame', () => {
     var finalFrame = new FinalFrame()
     expect(finalFrame instanceof FinalFrame).toBe(true)
   })
+
+  describe('#roll()', () => {
+    it('.roll can be called on final frame', () => {
+      var finalFrame = new FinalFrame()
+      expect(finalFrame.roll).toBeDefined()
+    })
+  })
 })

@@ -13,6 +13,7 @@ describe('Full Game Outcomes', () => {
   let frameEight
   let frameNine
   let frameTen
+  let finalFrame
 
   beforeEach(() => {
     scorecard = new Scorecard()
@@ -57,9 +58,10 @@ describe('Full Game Outcomes', () => {
       frameNine.roll(0)
       frameNine.roll(0)
       scorecard.recordFrameScore(frameNine)
-      frameTen.roll(0)
-      frameTen.roll(0)
-      scorecard.recordFrameScore(frameTen)
+      finalFrame = new FinalFrame()
+      finalFrame.roll(0)
+      finalFrame.roll(0)
+      scorecard.recordFrameScore(finalFrame)
       scorecard.calculateTotal()
       expect(scorecard._total).toEqual(0)
     })

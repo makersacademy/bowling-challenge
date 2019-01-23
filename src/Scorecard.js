@@ -4,6 +4,8 @@ function Scorecard () {
   this._frameScores = []
   this._frameStatus = 'normal'
   this._bonusPoints = 0
+  this._normalPoints = 0
+  this._total = 0
 }
 
 Scorecard.prototype.frameScores = () => {
@@ -26,6 +28,9 @@ Scorecard.prototype.recordFrameScore = function (frame) {
   this._frameScores.push(frame._score)
 }
 
-Scorecard.prototype.calculateNormalPoints = function () {
+Scorecard.prototype.calculateTotal = function () {
   this._normalPoints = [].concat(...this._frameScores).reduce((acc, curr) => acc + curr)
+  this._total = (this._normalPoints + this._bonusPoints)
 }
+
+

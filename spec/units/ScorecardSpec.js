@@ -77,7 +77,7 @@ describe('Scorecard', () => {
       frame.roll(5)
       frame.roll(5)
       scorecard.recordFrameScore(frame)
-      scorecard.calculateNormalPoints()
+      scorecard.calculateTotal()
       expect(scorecard._normalPoints).toEqual(10)
     })
   })

@@ -24,5 +24,11 @@ describe('Final Frame', () => {
       var error = 'Cannot record roll: roll must be between 0-10'
       expect(function () { finalFrame.roll(11) }).toThrow(new Error(error))
     })
+
+    it('records the rolls', () => {
+      finalFrame.roll(2)
+      finalFrame.roll(2)
+      expect(finalFrame._score).toEqual([2, 2])
+    })
   })
 })

@@ -10,7 +10,7 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 
 ## My approach
 
-The game works as intended - I would like to refactor the calculateScores method in Game as it's quite challenging to read (even though I've tried to use suggestive variable names to make it easier to go throgh).
+The game works as intended - I would like to refactor the calculateScores method in Game as it's quite challenging to read (even though I've tried to use suggestive variable names to make it easier to go throgh). The refactoring would involve some of the code moving to the Frame class which would in turn mean that Frame would have to be made aware of the full array that Game is receiving (not ideal). One option would be to use one class (the code was initially split into two classes to meet the single responsibility principle).
 
 I've aimed for good test coverage which helped quite a bit when I kept on adjusting the code towards the end to properly manage the 10th frame and its bonuses.
 

@@ -14,5 +14,13 @@ let scorecard;
     scorecard.addFrame(3, 5)
     expect(scorecard.accumScore()).toEqual(8)
   })
+
+  it("calculates a gutter game", () => {
+    scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0)
+    scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0)
+    scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0)
+    scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0)
+    expect(scorecard.accumScore()).toEqual(0)
+  })
 });
 

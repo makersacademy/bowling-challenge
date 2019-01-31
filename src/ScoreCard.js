@@ -3,12 +3,13 @@ class Scorecard {
   constructor() {
     this.frame = [];
     this.frameNumber = 0
-    this.rollnumber = 0
+    this.rollNumber = 0
   };
 
   addFrame(roll1, roll2) {
     this.frame.push(roll1, roll2)
     this.frameNumber += 1
+    this.rollNumber += 2
     return roll1 + roll2
   }
 
@@ -54,11 +55,9 @@ class Scorecard {
     function getNormalScore() {
       return game.frame[rollIndex] + game.frame[rollIndex + 1];
     }
+    
   }
   
-
-  
-
   totalScore(){
     let sum = this.frame.reduce((accumVal, currentValue) => {
         return accumVal + currentValue;

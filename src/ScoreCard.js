@@ -1,7 +1,7 @@
 class Scorecard {
 
   constructor() {
-    this.frame = []
+    this.frame = [];
     this.frameNumber = 0
     this.rollnumber = 0
   };
@@ -12,20 +12,32 @@ class Scorecard {
     return roll1 + roll2
   }
 
-  score() {
-    let result = 0;
-    let rollIndex = 0
 
+  score() {
+    var result = 0;
+    var rollIndex = 0
+
+    var game = this;
     for (var indexOfFrame = 0; indexOfFrame < 10; indexOfFrame++) {
-      if (this.frame[rollIndex] + this.frame[rollIndex + 1] === 10) {
+
+      if (isSpare()) {
           result += this.frame[rollIndex] + this.frame[rollIndex + 1] + this.frame[rollIndex + 2]
       } else { 
           result += this.frame[rollIndex] + this.frame[rollIndex + 1]
       }
       rollIndex += 2
     }
-    return result
+    
+    return result;
+
+    function isSpare() {
+      return game.frame[rollIndex] + game.frame[rollIndex + 1] === 10;
+    }
+
+    
   }
+  
+
   
 
   totalScore(){

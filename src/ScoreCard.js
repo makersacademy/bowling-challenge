@@ -14,11 +14,19 @@ class Scorecard {
 
   score() {
     let result = 0;
-    for (var i = 0; i < 20; i++) {
-      result += this.frame[i]
+    let rollIndex = 0
+
+    for (var indexOfFrame = 0; indexOfFrame < 10; indexOfFrame++) {
+      if (this.frame[rollIndex] + this.frame[rollIndex + 1] === 10) {
+          result += this.frame[rollIndex] + this.frame[rollIndex + 1] + this.frame[rollIndex + 2]
+      } else { 
+          result += this.frame[rollIndex] + this.frame[rollIndex + 1]
+      }
+      rollIndex += 2
     }
     return result
   }
+  
 
   totalScore(){
     let sum = this.frame.reduce((accumVal, currentValue) => {

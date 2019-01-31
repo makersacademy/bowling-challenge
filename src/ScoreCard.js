@@ -21,7 +21,7 @@ class Scorecard {
     for (var indexOfFrame = 0; indexOfFrame < 10; indexOfFrame++) {
 
       if (isSpare()) {
-          result += this.frame[rollIndex] + this.frame[rollIndex + 1] + this.frame[rollIndex + 2]
+          result += getSpareScore()
       } else { 
           result += this.frame[rollIndex] + this.frame[rollIndex + 1]
       }
@@ -34,7 +34,9 @@ class Scorecard {
       return game.frame[rollIndex] + game.frame[rollIndex + 1] === 10;
     }
 
-    
+    function getSpareScore() {
+      return game.frame[rollIndex] + game.frame[rollIndex + 1] + game.frame[rollIndex + 2]
+    }
   }
   
 

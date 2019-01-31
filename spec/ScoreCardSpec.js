@@ -9,5 +9,10 @@ let scorecard;
     scorecard.addFrame(5, 4)
     expect(scorecard.frame).toEqual([5, 4])
   })
+
+  it("looks to see if scorecard accumulates values", () => {
+    scorecard.addFrame(3, 5)
+    expect(scorecard.accumScore()).toEqual(8)
+  })
 });
 

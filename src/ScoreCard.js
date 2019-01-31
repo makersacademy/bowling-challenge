@@ -2,12 +2,13 @@ class Scorecard {
 
   constructor() {
     this.frame = []
-    this.frameNumber = 1
-    this.rollnumber = null
+    this.frameNumber = 0
+    this.rollnumber = 0
   };
 
   addFrame(roll1, roll2) {
     this.frame.push(roll1, roll2)
+    this.frameNumber += 1
     return roll1, roll2
   }
 
@@ -18,14 +19,5 @@ class Scorecard {
         return sum;
   };
 
-  updateFrame() {
-    // if the number of rolls is equal to 2, then add a frame
-    if (this.frame.length >= 2 ) {
-      return this.frameNumber ++;
-    }
-    // needs to return or give another frame based on 2 rolls.
-  }
-
-  
 
 };

@@ -11,9 +11,7 @@ let scorecard;
   })
 
   it("can add all 2s", () => {
-    for (var i = 0; i < 20; i++) {
-      scorecard.addFrame(2, 0)
-    }
+    rollMany(2, 0, 20)
     expect(scorecard.score()).toBe(20)
   })
 
@@ -23,9 +21,7 @@ let scorecard;
   })
 
   it("calculates a gutter game", () => {
-    for (var i = 0; i < 20; i++) {
-      scorecard.addFrame(0,0)
-    }
+    rollMany(0, 0, 20)
     expect(scorecard.totalScore()).toEqual(0)
   })
 
@@ -35,6 +31,11 @@ let scorecard;
     expect(scorecard.frameNumber).toEqual(2)
   })
 
+  var rollMany = (pin1, pin2, rolls) => {
+    for (var i = 0; i < rolls; i++) {
+      scorecard.addFrame(pin1, pin2);
+    }
+  }
  
 });
 

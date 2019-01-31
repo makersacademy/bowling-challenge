@@ -10,6 +10,13 @@ let scorecard;
     expect(scorecard.frame).toEqual([5, 4])
   })
 
+  it("can add all 2s", () => {
+    for (var i = 0; i < 20; i++) {
+      scorecard.addFrame(2, 0)
+    }
+    expect(scorecard.score()).toBe(20)
+  })
+
   it("looks to see if scorecard accumulates values", () => {
     scorecard.addFrame(3, 5)
     expect(scorecard.totalScore()).toEqual(8)

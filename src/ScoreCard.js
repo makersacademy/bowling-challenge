@@ -12,6 +12,14 @@ class Scorecard {
     return roll1 + roll2
   }
 
+  score() {
+    let result = 0;
+    for (var i = 0; i < 20; i++) {
+      result += this.frame[i]
+    }
+    return result
+  }
+
   totalScore(){
     let sum = this.frame.reduce((accumVal, currentValue) => {
         return accumVal + currentValue;

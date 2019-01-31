@@ -38,6 +38,13 @@ let scorecard;
     expect(scorecard.score()).toBe(19)
   })
 
+  it("can roll a strike", () => {
+    scorecard.addFrame(10, 0)
+    scorecard.addFrame(4, 3)
+    rollMany(0, 0, 16)
+    expect(scorecard.score()).toBe(24)
+  })
+
   var rollMany = (pin1, pin2, rolls) => {
     for (var i = 0; i < rolls; i++) {
       scorecard.addFrame(pin1, pin2);

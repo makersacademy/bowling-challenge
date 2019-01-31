@@ -23,7 +23,7 @@ class Scorecard {
       if (isSpare()) {
           result += getSpareScore()
       } else { 
-          result += this.frame[rollIndex] + this.frame[rollIndex + 1]
+          result += getNormalScore()
       }
       rollIndex += 2
     }
@@ -36,6 +36,10 @@ class Scorecard {
 
     function getSpareScore() {
       return game.frame[rollIndex] + game.frame[rollIndex + 1] + game.frame[rollIndex + 2]
+    }
+
+    function getNormalScore() {
+      return game.frame[rollIndex] + game.frame[rollIndex + 1]
     }
   }
   

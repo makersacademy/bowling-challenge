@@ -16,10 +16,9 @@ let scorecard;
   })
 
   it("calculates a gutter game", () => {
-    scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0)
-    scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0)
-    scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0)
-    scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0)
+    for (var i = 0; i < 20; i++) {
+      scorecard.addFrame(0,0)
+    }
     expect(scorecard.totalScore()).toEqual(0)
   })
 
@@ -29,8 +28,6 @@ let scorecard;
     expect(scorecard.frameNumber).toEqual(2)
   })
 
-  // it("tracks number of rolls", () => {
-  //   scorecard.add
-  // })
+ 
 });
 

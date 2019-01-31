@@ -2,6 +2,7 @@ class Scorecard {
 
   constructor() {
     this.frame = []
+    this.frameNumber = 2
   };
 
   addFrame(roll1, roll2) {
@@ -15,5 +16,7 @@ class Scorecard {
       }, 0);
         return sum;
   };
+
+  
 
 };

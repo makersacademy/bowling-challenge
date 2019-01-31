@@ -22,5 +22,11 @@ let scorecard;
     scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0)
     expect(scorecard.accumScore()).toEqual(0)
   })
+
+  it("tracks number of frames", () => {
+    scorecard.addFrame(4, 4)
+    scorecard.addFrame(3, 6)
+    expect(scorecard.frameNumber).toEqual(2)
+  })
 });
 

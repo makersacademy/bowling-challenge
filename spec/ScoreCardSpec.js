@@ -25,6 +25,7 @@ let scorecard;
 
   it("tracks number of frames", () => {
     scorecard.addFrame(4, 4)
+    scorecard.updateFrame() 
     scorecard.addFrame(3, 6)
     expect(scorecard.frameNumber).toEqual(2)
   })

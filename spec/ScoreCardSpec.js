@@ -12,7 +12,7 @@ let scorecard;
 
   it("looks to see if scorecard accumulates values", () => {
     scorecard.addFrame(3, 5)
-    expect(scorecard.accumScore()).toEqual(8)
+    expect(scorecard.totalScore()).toEqual(8)
   })
 
   it("calculates a gutter game", () => {
@@ -20,7 +20,7 @@ let scorecard;
     scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0)
     scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0)
     scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0), scorecard.addFrame(0, 0)
-    expect(scorecard.accumScore()).toEqual(0)
+    expect(scorecard.totalScore()).toEqual(0)
   })
 
   it("tracks number of frames", () => {
@@ -30,7 +30,7 @@ let scorecard;
   })
 
   // it("tracks number of rolls", () => {
-
+  //   scorecard.add
   // })
 });
 

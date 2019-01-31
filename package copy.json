@@ -1,0 +1,22 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "eslint_run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelnguyen974/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michaelnguyen974/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/michaelnguyen974/bowling-challenge#readme"
+}

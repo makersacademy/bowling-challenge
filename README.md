@@ -40,8 +40,8 @@ A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 str
 :memo: Getting started
 ------
 
-1. Clone this repo 'git clone git@github.com:emanuelegorga/bowling-challenge.git'
-2. Change directory 'bowling-challenge'
+1. Clone this repo `git clone git@github.com:emanuelegorga/bowling-challenge.git`
+2. Change directory `bowling-challenge`
 
 Run the tests
 ------

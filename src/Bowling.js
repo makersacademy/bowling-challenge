@@ -6,6 +6,7 @@ function Bowling () {
 
 Bowling.prototype.roll = function (pins) {
 	this.frame.push(pins);
+	return pins;
 };
 
 Bowling.prototype.score = function () {

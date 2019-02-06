@@ -1,0 +1,24 @@
+.rectangle {
+  width: 150px;
+  height: 64px;
+  border:1px solid #000;
+  text-align: center;
+}
+
+.row {
+  display: table;
+  display: flex;
+  justify-content: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.square {
+  width: 75px;
+  height: 32px;
+  border:1px solid #000;
+  text-align: center;
+}

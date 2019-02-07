@@ -2,7 +2,6 @@
 
 function Frame () {
   this.frameResults = []
-  this.frameTotal = 0
 };
 
 Frame.prototype.isStrike = function (arr) {
@@ -19,6 +18,18 @@ Frame.prototype.isSpare = function (arr) {
   } else {
     return false
   };
+}
+
+Frame.prototype.scoreFrame = function (frame1, frame2) {
+  var frameTotal
+  if (this.isStrike(frame1)) {
+    frameTotal = frame1[0] + frame1[1] + frame2[0] + frame2[1]
+  } else if (this.isSpare(frame1)) {
+    frameTotal = frame1[0] + frame1[1] + frame2[0]
+  } else {
+    frameTotal = frame1[0] + frame1[1]
+  }
+  return frameTotal
 }
 
 module.exports = Frame

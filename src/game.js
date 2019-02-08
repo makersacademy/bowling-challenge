@@ -17,10 +17,16 @@ Game.prototype.frameAdd = function (frameArr) {
 
 Game.prototype.calculate = function (frameNumber) {
   var frame = new Frame()
+  // console.log(this.frameNumber)
   if (this.frameNumber === 0) {
     this.score += frame.frameScore(this.frameResults[frameNumber])
   } else if (this.frameNumber === 9) {
-    // Endgame
+    this.score += frame.frameScore(this.frameResults[frameNumber])
+    // if (frame.isStrike(this.frameResults[this.lastFrameNumber])) {
+    //   // Endgame strike
+    // } else if (frame.isSpare(this.frameResults[this.lastFrameNumber])) {
+    //   // Endgame spare
+    // }
   } else {
     this.score += frame.frameScore(this.frameResults[frameNumber])
     if (frame.isStrike(this.frameResults[this.lastFrameNumber])) {
@@ -29,6 +35,7 @@ Game.prototype.calculate = function (frameNumber) {
       this.score += frame.spareBonus(this.frameResults[this.lastFrameNumber])
     }
   }
+  console.log(this.score)
 }
 
 Game.prototype._incrementFrame = function () {

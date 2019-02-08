@@ -10,4 +10,21 @@ describe('Game', function () {
     game = new Game()
   })
 
+  // it('scores an easy game correctly', function () {
+  //   expect(game.totalScore([[3, 7], [3, 7], [3, 7], [3, 7], [3, 7], [3, 7], [3, 7], [3, 7], [3, 7], [3, 7]])).toEqual(100)
+  // })
+
+  // it('scores an easy game correctly via bowl', function () {
+  //   game.bowl([3, 7])
+  //   game.bowl([3, 7])
+  //   game.bowl([3, 7])
+  //   game.bowl([3, 7])
+  //   game.bowl([3, 7])
+  //   game.bowl([3, 7])
+  //   game.bowl([3, 7])
+  //   game.bowl([3, 7])
+  //   game.bowl([3, 7])
+  //   game.bowl([3, 7])
+  //   expect(game.score).toEqual(100)
+  // })
 })

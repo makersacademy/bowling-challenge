@@ -32,4 +32,22 @@ Frame.prototype.scoreFrame = function (frame1, frame2) {
   return frameTotal
 }
 
+Frame.prototype.frameScore = function (frame) {
+  var frameTotal = frame[0] + frame[1]
+  return frameTotal
+}
+
+Frame.prototype.strikeBonus = function (frame) {
+  var frameBonus = this.frameScore(frame)
+  return frameBonus
+} 
+
+Frame.prototype.spareBonus = function (frame) {
+  var frameBonus = frame[0]
+  return frameBonus
+} 
+
+// create bonus instead of 2 frame logic
+
+
 module.exports = Frame

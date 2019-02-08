@@ -53,4 +53,17 @@ describe('Frame', function () {
   it('scores a spare followed by a spare correctly', function () {
     expect(frame.scoreFrame([3, 7], [3, 7])).toEqual(13)
   })
+
+  it('scores a spare followed by a spare correctly', function () {
+    expect(frame.frameScore([3, 7])).toEqual(10)
+  })
+
+  it('scores a spare followed by a spare correctly', function () {
+    expect(frame.spareBonus([3, 7])).toEqual(3)
+  })
+
+  it('scores a spare followed by a spare correctly', function () {
+    expect(frame.strikeBonus([3, 7])).toEqual(10)
+  })
+
 })

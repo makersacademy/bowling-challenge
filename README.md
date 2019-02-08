@@ -13,7 +13,7 @@ How to use
 Aim of the Project
 -----
 
-The project is a bowling score card in Javascript. This was a weekend Challenge from Makers Academy. Here is the master branch, which details the criteria https://github.com/makersacademy/bowling-challenge
+The project is a bowling score card in JavaScript. This was a weekend Challenge from Makers Academy. Here is the master branch, which details the criteria https://github.com/makersacademy/bowling-challenge
 
 Functionality 
 -----
@@ -33,14 +33,14 @@ Functionality
 Goals of feedback from Tutors 
 -----
 * I'd love some feedback on my use of spies and mocks.
-* I'd love some feedback on my "private methods" (not really private yet in Javascript, only using naming conventions) and if I tested them right.
+* I'd love some feedback on my "private methods" (not really private yet in JavaScript, only using naming conventions) and if I tested them right.
 * I know that I've left in some comments, but I think it will be helpful for me to look back at them.
 * Any other feedback is of course very welcome.
 
 What I think went well
 -----
 
-* For my first solo project in Javascript, I'm happy with it. 
+* For my first solo project in JavaScript, I'm happy with it. 
 * All my tests pass. I managed to research spies and doubles and used them to keep my tests isolated.
 * I'm really happy that almost all of the game works as it should, according to the rules of bowling. 
 * My first time using jQuery by myself was successful.
@@ -56,7 +56,7 @@ What I would do if I had more time
 ------
 * Download a linter and make my code beautiful
 * Sort out the bug that happens if you roll a strike in the tenth round. 
-* Research how to feature test Javascript
+* Research how to feature test JavaScript
 
 
 What I want to improve on

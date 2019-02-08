@@ -82,9 +82,14 @@ describe("Scorecard", function() {
     }
     scorecard.record("X");
     scorecard.record("X");
+    console.log(scorecard.score());
     expect(function(){scorecard.record("5")}).not.toThrow(new Error ("Game is over"));
     expect(function(){scorecard.record("5")}).toThrow(new Error ("Game is over"));
     expect(scorecard.lastFrame()).toEqual(["X","X","5"]);
+  });
+
+  it("throws an error if a player scores a / on first roll of frame",function(){
+    expect(function(){scorecard.record("/")}).toThrow(new Error ("invalid spare"))
   });
 
   //frame number may not add to more than 10

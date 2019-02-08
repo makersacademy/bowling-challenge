@@ -1,6 +1,5 @@
 function Scorecard(){
   this._scorecard = new Array();
-  console.log(this);
 }
 
 Scorecard.prototype._isValidRoll = function(roll){
@@ -10,11 +9,16 @@ Scorecard.prototype._isValidRoll = function(roll){
   return (isNum || isStrikeOrSpare) && isOneChar;
 }
 
+Scorecard.prototype._isValidSpare = function(){
+  return this._scorecard.length > 0 ? (this.lastFrame().length > 0) : false
+}
+
 
 
 Scorecard.prototype.lastFrame = function(){
   return this._scorecard[this._scorecard.length-1]
 }
+
 
 Scorecard.prototype._isGameOver = function(){
   if((this._scorecard.length === 10) && (this.lastFrame().length >= 2)){
@@ -37,6 +41,7 @@ Scorecard.prototype._isLastFrameFinished = function(){
 Scorecard.prototype.record = function(score){
   if(this._isGameOver()){throw new Error("Game is over")}
   if(!this._isValidRoll(score)){throw new Error("invalid character")};
+  if(score === "/" && !this._isValidSpare()){throw new Error("invalid spare")};
   if(this._scorecard.length === 0){
     this._scorecard.push([score]);
     return this._scorecard

@@ -37,4 +37,21 @@ describe('Game', function () {
     game.frameAdd([3, 7])
     expect(game.frameNumber).toEqual(1)
   })
+
+  it('calculates the score on first frame', function () {
+    game.frameAdd([3, 3])
+    expect(game.score).toEqual(6)
+  })
+
+  it('calculates the score on first frame strike, normal second frame', function () {
+    game.frameAdd([10, 0])
+    game.frameAdd([3 ,3])
+    expect(game.score).toEqual(26)
+  })
+
+  it('calculates the score on first frame spare, normal second frame', function () {
+    game.frameAdd([3, 7])
+    game.frameAdd([3, 3])
+    expect(game.score).toEqual(19)
+  })
 })

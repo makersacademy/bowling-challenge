@@ -1,8 +1,15 @@
-function $(x) {return document.getElementById(x);}
+function logic(){
+	
+}
+
+
+
+
+module.exports = logic;
 
 // Facts: 21 balls total;
 // Highest score 300 -> 12 strikes
-// 
+// Maximum throws == 21 -> this includes an extra throw on the 10th frame (first throw of 10th frame == strike)
 
 // The player has a strike if he knocks down all 10 pins with the first roll in a frame. 
 // The frame ends immediately (since there are no pins left for a second roll). 

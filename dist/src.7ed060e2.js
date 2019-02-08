@@ -108,6 +108,22 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 function $(x) {
   return document.getElementById(x);
 }
+
+function myFunc() {
+  var c = document.getElementById('grid-container').children;
+  var i;
+
+  for (i = 0; i < c.length; i + 2) {
+    c[i].style.backgroundColor = "red";
+  }
+
+  var b = document.getElementById('grid-container').children;
+  var k;
+
+  for (k = 1; k < b.length; k + 2) {
+    c[k].style.backgroundColor = "yellow";
+  }
+}
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

@@ -93,12 +93,14 @@ describe("Scorecard", function() {
   });
 
 
-  it("can evaluate a strike",function(){
+  it("can evaluate a spare",function(){
     scorecard.record("5");
     scorecard.record("/");
     scorecard.record("5");
-    expect(scorecard.score()).toEqual([15,20]);
+    scorecard.record("4");
+    expect(scorecard.score()).toEqual([15,24]);
   });
+  //handle incomplete frames
   //frame number may not add to more than 10
   //may not strike on turn 2
   //may not spare on turn 1

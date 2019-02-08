@@ -1,4 +1,4 @@
-describe("Player", function() {
+describe("", function() {
   var player;
   var song;
 

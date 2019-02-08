@@ -25,7 +25,6 @@ describe('Game', function () {
   })
 
   it('scores a game with strikes and spares correctly via frameAdd', function () {
-    console.log('this one:')
     game.frameAdd([3, 3])
     game.frameAdd([3, 3])
     game.frameAdd([3, 7])
@@ -37,7 +36,21 @@ describe('Game', function () {
     game.frameAdd([3, 3])
     game.frameAdd([3, 3])
     expect(game.score).toEqual(87)
-    console.log('end')
+  })
+
+  it('scores a game with strikes and spares in end game correctly via frameAdd', function () {
+    game.frameAdd([3, 3])
+    game.frameAdd([3, 3])
+    game.frameAdd([3, 7])
+    game.frameAdd([3, 3])
+    game.frameAdd([10, 0])
+    game.frameAdd([3, 3])
+    game.frameAdd([10, 0])
+    game.frameAdd([3, 3])
+    game.frameAdd([3, 3])
+    game.frameAdd([10, 0])
+    game.frameAdd([5, 5])
+    expect(game.score).toEqual(87)
   })
 
   it('adds a frame to the game', function () {
@@ -58,7 +71,7 @@ describe('Game', function () {
   it('calculates the score on first frame strike, normal second frame', function () {
     game.frameAdd([10, 0])
     game.frameAdd([3, 3])
-    expect(game.score).toEqual(26)
+    expect(game.score).toEqual(22)
   })
 
   it('calculates the score on first frame spare, normal second frame', function () {

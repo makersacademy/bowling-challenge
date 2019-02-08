@@ -33,8 +33,7 @@ Game.prototype.calculate = function (frameNumber) {
 
 Game.prototype._incrementFrame = function () {
   this.frameNumber += 1
-  this.lastFrameNumber +=1
+  this.lastFrameNumber += 1
 }
-
 
 module.exports = Game

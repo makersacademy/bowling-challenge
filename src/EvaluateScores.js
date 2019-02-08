@@ -11,12 +11,15 @@ EvaluateScore.prototype.go = function(){
     if(frame.includes("/")){
       score_array.push(this._handleSpare(i)+lastTotal);
     }else{
-    var firstRoll = parseInt(frame[0]);
-    var secondRoll = parseInt(frame[1]);
-    score_array.push(firstRoll+secondRoll+lastTotal);
-  }
+      score_array.push(this._handleNumbers(i)+lastTotal);
+    }
   }
   return score_array;
+}
+EvaluateScore.prototype._handleNumbers = function(frameindex){
+  var firstRoll = parseInt(this._scorecard[frameindex][0]);
+  var secondRoll = parseInt(this._scorecard[frameindex][1]);
+  return firstRoll + secondRoll
 }
 
 EvaluateScore.prototype._handleSpare = function(frameindex){

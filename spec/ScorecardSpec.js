@@ -100,6 +100,7 @@ describe("Scorecard", function() {
     scorecard.record("4");
     expect(scorecard.score()).toEqual([15,24]);
   });
+  //Handle most recent frame (strikeetc) having nothing to evaluate to
   //handle incomplete frames
   //frame number may not add to more than 10
   //may not strike on turn 2

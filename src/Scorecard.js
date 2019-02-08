@@ -18,21 +18,34 @@ Scorecard.prototype.lastFrame = function(){
 
 Scorecard.prototype._isGameOver = function(){
   if((this._scorecard.length === 10) && (this.lastFrame().length >= 2)){
-    return true
+    return this._isLastFrameFinished()
   }else{
     return false
   };
 }
 
+Scorecard.prototype._isLastFrameFinished = function(){
+  if(this.lastFrame().length >= 3){
+    return true
+  }else if(this.lastFrame().includes("/")||this.lastFrame().includes("X")){
+    return false
+  } else {
+  return true
+  };
+}
+
 Scorecard.prototype.record = function(score){
-  console.log(this._isGameOver());
   if(this._isGameOver()){throw new Error("Game is over")}
   if(!this._isValidRoll(score)){throw new Error("invalid character")};
   if(this._scorecard.length === 0){
     this._scorecard.push([score]);
     return this._scorecard
   }else if(this.lastFrame().length === 2){
+    if (this._scorecard.length == 10){
+      this.lastFrame().push(score);
+    } else {
     this._scorecard.push([score])
+  }
     return this._scorecard
   }else if(this.lastFrame().length === 1){
     this._scorecard[this._scorecard.length-1].push(score);

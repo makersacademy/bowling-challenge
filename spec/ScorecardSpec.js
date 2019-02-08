@@ -16,6 +16,7 @@ describe("Scorecard", function() {
     scorecard.record("5");
     scorecard.record("4");
     console.log(scorecard.lastFrame());
+    console.log(scorecard._scorecard.length)
     scorecard.record("6");
     scorecard.record("2");
     expect(scorecard.see()).toEqual([["5","4"],["6","2"]]);
@@ -52,7 +53,17 @@ describe("Scorecard", function() {
       scorecard.record("4");
     }
     expect(function(){scorecard.record("5")}).toThrow(new Error ("Game is over"))
-  })
+  });
+
+  it("allows one more roll on frame 10 if frame 10 had a spare or strike", function(){
+    for(var i = 1; i <= 10; i++){
+      scorecard.record("4");
+      scorecard.record("/");
+    }
+    expect(function(){scorecard.record("5")}).not.toThrow(new Error ("Game is over"));
+    expect(function(){scorecard.record("5")}).toThrow(new Error ("Game is over"));
+    expect(scorecard.lastFrame()).toEqual(["4","/","5"]);
+  });
 
   //frame number may not add to more than 10
   //may not strike on turn 2

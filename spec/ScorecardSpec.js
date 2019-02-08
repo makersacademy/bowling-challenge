@@ -21,5 +21,33 @@ describe("Scorecard", function() {
     expect(scorecard.score()).toEqual([9,17]);
   });
 
+  it("can record a spare",function(){
+    scorecard.record("5");
+    scorecard.record("/");
+    expect(scorecard.see()).toEqual([["5","/"]]);
+  });
+
+  it("can record a strike",function(){
+    scorecard.record("5");
+    scorecard.record("/");
+    expect(scorecard.see()).toEqual([["5","/"]]);
+  });
+
+  it("throws an error if given invalid roll",function(){
+    expect(function(){scorecard.record("a")}).toThrow(
+      new Error("invalid character")
+    );
+    expect(function(){scorecard.record("24")}).toThrow(
+      new Error("invalid character")
+    );
+    expect(function(){scorecard.record("10")}).toThrow(
+      new Error("invalid character")
+    );
+  });
+
+
+
+  //can calculate
+
 
 });

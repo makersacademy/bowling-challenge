@@ -3,11 +3,19 @@ function Scorecard(){
   console.log(this);
 }
 
+Scorecard.prototype._isValidRoll = function(roll){
+  var isNum = /^\d+$/.test(roll);
+  var isOneChar = roll.length === 1;
+  var isStrikeOrSpare = (roll === "/") || (roll === "X");
+  return (isNum || isStrikeOrSpare) && isOneChar;
+}
+
 Scorecard.prototype.lastFrame = function(){
   return this._scorecard[this._scorecard.length-1]
 }
 
 Scorecard.prototype.record = function(score){
+  if(!this._isValidRoll(score)){throw new Error("invalid character")};
   if(this._scorecard.length === 0){
     this._scorecard.push([score]);
     return this._scorecard

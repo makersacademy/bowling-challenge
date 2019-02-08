@@ -17,4 +17,8 @@ Game.prototype.totalScore = function (gameArr) {
   return this.score
 }
 
+Game.prototype.frameAdd = function (frameArr) {
+  this.frameResults.push(frameArr)
+}
+
 module.exports = Game

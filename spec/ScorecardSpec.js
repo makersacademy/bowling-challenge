@@ -92,11 +92,22 @@ describe("Scorecard", function() {
     expect(function(){scorecard.record("/")}).toThrow(new Error ("invalid spare"))
   });
 
+
+  it("can evaluate a strike",function(){
+    scorecard.record("5");
+    scorecard.record("/");
+    scorecard.record("5");
+    expect(scorecard.score()).toEqual([15,20]);
+  });
   //frame number may not add to more than 10
   //may not strike on turn 2
   //may not spare on turn 1
-
+  //strike makes next roll null, unless frame 10
+  //strike([frame])
   //can calculate
+
+  // "/".absolute value = 10-sameframe[0]
+  // "X".absolute value = 10
 
 
 });

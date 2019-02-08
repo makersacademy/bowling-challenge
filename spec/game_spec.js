@@ -30,6 +30,11 @@ describe('Game', function () {
 
   it('adds a frame to the game', function () {
     game.frameAdd([3, 7])
-    expect(game.frameResults).toEqual[ [ 3, 7 ] ]
+    expect(game.frameResults).toEqual([ [ 3, 7 ] ])
+  })
+
+  it('increments the frame counter', function () {
+    game.frameAdd([3, 7])
+    expect(game.frameNumber).toEqual(1)
   })
 })

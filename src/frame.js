@@ -1,7 +1,6 @@
 'use strict'
 
 function Frame () {
-  this.frameResults = []
 };
 
 Frame.prototype.isStrike = function (arr) {

@@ -17,7 +17,4 @@ Game.prototype.totalScore = function (gameArr) {
   return this.score
 }
 
-
-
-
 module.exports = Game

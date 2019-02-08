@@ -23,11 +23,11 @@ Frame.prototype.isSpare = function (arr) {
 Frame.prototype.scoreFrame = function (frame1, frame2) {
   var frameTotal
   if (this.isStrike(frame1)) {
-    frameTotal = frame1[0] + frame1[1] + frame2[0] + frame2[1]
+    frameTotal = this.frameScore(frame1) + this.strikeBonus(frame2)
   } else if (this.isSpare(frame1)) {
-    frameTotal = frame1[0] + frame1[1] + frame2[0]
+    frameTotal = this.frameScore(frame1) + this.spareBonus(frame2)
   } else {
-    frameTotal = frame1[0] + frame1[1]
+    frameTotal = this.frameScore(frame1)
   }
   return frameTotal
 }

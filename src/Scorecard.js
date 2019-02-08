@@ -29,7 +29,8 @@ Scorecard.prototype.score = function(){
   this._scorecard.forEach(function(frame,i){
     var firstRoll = parseInt(frame[0]);
     var secondRoll = parseInt(frame[1]);
-    score_array.push([firstRoll+secondRoll]);
+    var lastTotal = i === 0 ? 0 :  score_array[i-1]
+    score_array.push(firstRoll+secondRoll+lastTotal);
   })
   return score_array;
 }

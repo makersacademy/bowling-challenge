@@ -1,23 +1,20 @@
 function Scorecard(){
   this._scorecard = new Array();
+  console.log(this);
+}
+
+Scorecard.prototype.lastFrame = function(){
+  return this._scorecard[this._scorecard.length-1]
 }
 
 Scorecard.prototype.record = function(score){
   if(this._scorecard.length === 0){
-    console.log("undef was called")
-    this._scorecard.push([score])
-    console.log(this._scorecard[0]);
-    console.log(this._scorecard[this._scorecard.length-1])
+    this._scorecard.push([score]);
     return this._scorecard
-  };
-  if(this._scorecard[this._scorecard.length-1].length === 2){
-    console.log("length 2 was called")
+  }else if(this.lastFrame().length === 2){
     this._scorecard.push([score])
     return this._scorecard
-  };
-  if(this._scorecard[this._scorecard.length-1].length === 1){
-    console.log("i was called")
-    console.log(this._scorecard.last);
+  }else if(this.lastFrame().length === 1){
     this._scorecard[this._scorecard.length-1].push(score);
     return this._scorecard;
   };

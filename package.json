@@ -1,0 +1,33 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jest",
+    "dev": "parcel views/index.html",
+    "build": "parcel build index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vaithschmitz/bowling-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vaithschmitz/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/vaithschmitz/bowling-challenge#readme",
+  "devDependencies": {
+    "jest-cli": "^24.1.0",
+    "nodemon": "^1.18.9",
+    "parcel-bundler": "^1.11.0"
+  },
+  "dependencies": {
+    "jshint": "^2.10.1"
+  }
+}

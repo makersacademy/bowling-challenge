@@ -20,6 +20,12 @@ describe('Features', function () {
       frame1.setFrameComplete();
       expect(frame1.isComplete()).toEqual(false)
   })
+  it('can set a frame complete if there were two throws that do not add up to 10', function () {
+      frame1.rolls[0] = 2;
+      frame1.rolls[1] = 4;
+      frame1.setFrameComplete();
+      expect(frame1.isComplete()).toEqual(true)
+  })
 })
 
 describe('Unit tests', function () {

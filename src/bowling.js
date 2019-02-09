@@ -24,5 +24,7 @@ Frame.prototype.setFrameComplete = function () {
 	this.addScore();
     if(this.score === 10) {
         this.frameCompletionStatus = true;    }
-
+    else if(this.rolls[0] !== 10 && this.rolls[1] !== null) {
+        this.frameCompletionStatus = true;
+    }
 }

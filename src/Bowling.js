@@ -4,7 +4,7 @@ class Bowling {
     this.frame = 0
     this.roll = 0
     this.frameScore = 0
-    this.gameScore = 0
+    this._gameScore = {}
     this.scorecardComplete = false
     this.spare = false
   }
@@ -29,8 +29,8 @@ class Bowling {
 
   endFrame () {
     this.roll = 0
+    this._gameScore[this.frame] = this.frameScore
     this.frame++
-    this.gameScore += this.frameScore
     this.frameScore = 0
     this.checkGameEnd()
   }
@@ -43,6 +43,14 @@ class Bowling {
 
   endGame () {
     this.scorecardComplete = true
+  }
+
+  gameScore () {
+    let total = 0
+    Object.keys(this._gameScore).forEach(num => {
+      total += this._gameScore[num]
+    })
+    return total
   }
 }
 

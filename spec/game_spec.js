@@ -52,5 +52,17 @@ describe("BowlingGame", function() {
       game.play(10)
       expect(game.play(5, 3)).toEqual(26)
     });
+
+    it('should return hidden bonus', function(){
+      game.play(4, 6)
+      game.play(5, 5)
+      expect(game.bonus).toEqual(25)
+    });
+
+    it('should return hidden score', function(){
+      game.play(4, 6)
+      game.play(5, 5)
+      expect(game.score).toEqual(0)
+    });
   });
 });

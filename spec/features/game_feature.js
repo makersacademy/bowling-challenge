@@ -48,7 +48,7 @@ describe("Features - BowlingGame", function() {
     expect(game.score).toEqual(63)
   });
 
-  it("can play a game with spares and strikes showing always the score - tenth frame plays normal", function() {
+  it("can play a game with spares and strikes keeping the hidden score - tenth frame plays normal", function() {
     game.play(3, 7);
     expect(game.score).toEqual(0)
     game.play(1, 1);

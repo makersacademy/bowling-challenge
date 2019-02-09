@@ -21,6 +21,7 @@ describe('Game', function () {
     game.frameAdd([3, 3])
     game.frameAdd([3, 3])
     game.frameAdd([3, 3])
+    expect(game.frameScores).toEqual([ 6, 6, 6, 6, 6, 6, 6, 6, 6, 6 ])
     expect(game.totalScore).toEqual(60)
   })
 
@@ -35,6 +36,7 @@ describe('Game', function () {
     game.frameAdd([3, 3])
     game.frameAdd([3, 3])
     game.frameAdd([3, 3])
+    expect(game.frameScores).toEqual([ 6, 6, 13, 6, 16, 6, 16, 6, 6, 6 ])
     expect(game.totalScore).toEqual(87)
   })
 
@@ -50,6 +52,7 @@ describe('Game', function () {
     game.frameAdd([3, 3])
     game.frameAdd([10, 0])
     game.frameAdd([5, 5])
+    expect(game.frameScores).toEqual([ 6, 6, 13, 6, 16, 6, 16, 6, 6, 20 ])
     expect(game.totalScore).toEqual(101)
   })
 
@@ -64,6 +67,7 @@ describe('Game', function () {
     game.frameAdd([0, 0])
     game.frameAdd([0, 0])
     game.frameAdd([0, 0])
+    expect(game.frameScores).toEqual([ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ])
     expect(game.totalScore).toEqual(0)
   })
 
@@ -79,6 +83,7 @@ describe('Game', function () {
     game.frameAdd([10, 0])
     game.frameAdd([10, 0])
     game.frameAdd([10, 10])
+    console.log(game.frameScores)
     expect(game.totalScore).toEqual(300)
   })
 
@@ -94,6 +99,7 @@ describe('Game', function () {
     game.frameAdd([5, 5])
     game.frameAdd([5, 5])
     game.frameAdd([5, 5])
+    expect(game.frameScores).toEqual([ 15, 15, 15, 15, 15, 15, 15, 15, 15, 15 ])
     expect(game.totalScore).toEqual(150)
   })
 
@@ -109,6 +115,7 @@ describe('Game', function () {
     game.frameAdd([10, 0])
     game.frameAdd([10, 0])
     game.frameAdd([10, 10])
+    expect(game.frameScores).toEqual([ 30, 20, 15, 20, 30, 20, 15, 20, 20, 30 ])
     expect(game.totalScore).toEqual(220)
   })
 

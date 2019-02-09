@@ -17,7 +17,7 @@ function Game () {
 
 Game.prototype.frameAdd = function (frameArr) {
   this.frameResults.push(frameArr)
-  this.calculate2(this.frameNumber)
+  this.calculate()
   this._incrementFrame()
   this.totalScore = this.frameScores.reduce(add)
 }
@@ -25,36 +25,20 @@ Game.prototype.frameAdd = function (frameArr) {
 Game.prototype.calculate = function () {
   var frame = new Frame()
   if (this.frameNumber === 0) {
-    this.totalScore += frame.frameScore(this.frameResults[this.frameNumber])
-  } else if (this.framenumber === 1) {
-    this.totalScore += frame.frameScore(this.frameResults[this.frameNumber])
+    this.frameScores[this.frameNumber] += frame.frameScore(this.frameResults[this.frameNumber])
+  } else if (this.frameNumber === 1) {
+    this.frameScores[this.frameNumber] += frame.frameScore(this.frameResults[this.frameNumber])
     this._bonusCalc()
   } else if (this.frameNumber === 10) {
     this._bonusCalc()
   } else {
-    this.totalScore += frame.frameScore(this.frameResults[this.frameNumber])
+    this.frameScores[this.frameNumber] += frame.frameScore(this.frameResults[this.frameNumber])
     this._bonusCalc()
     this._doubleStrikeCalc()
   }
 }
 
-Game.prototype.calculate2 = function () {
-  var frame = new Frame()
-  if (this.frameNumber === 0) {
-    this.frameScores[this.frameNumber] += frame.frameScore(this.frameResults[this.frameNumber])
-  } else if (this.framenumber === 1) {
-    this.frameScores[this.frameNumber] += frame.frameScore(this.frameResults[this.frameNumber])
-    this._bonusCalc2()
-  } else if (this.frameNumber === 10) {
-    this._bonusCalc2()
-  } else {
-    this.frameScores[this.frameNumber] += frame.frameScore(this.frameResults[this.frameNumber])
-    this._bonusCalc2()
-    this._doubleStrikeCalc()
-  }
-}
-
-Game.prototype._bonusCalc2 = function () {
+Game.prototype._bonusCalc = function () {
   var frame = new Frame()
   if (frame.isStrike(this.frameResults[this.lastFrameNumber])) {
     this.frameScores[this.lastFrameNumber] += frame.strikeBonus(this.frameResults[this.frameNumber])
@@ -63,25 +47,16 @@ Game.prototype._bonusCalc2 = function () {
   }
 }
 
+Game.prototype._doubleStrikeCalc = function () {
+  var frame = new Frame()
+  if (frame.isStrike(this.frameResults[this.lastFrameNumber]) && frame.isStrike(this.frameResults[this.lastFrameNumber - 1])) {
+    this.frameScores[this.lastFrameNumber - 1] += 10
+  }
+}
+
 Game.prototype._incrementFrame = function () {
   this.frameNumber += 1
   this.lastFrameNumber += 1
-}
-
-Game.prototype._bonusCalc = function () {
-  var frame = new Frame()
-  if (frame.isStrike(this.frameResults[this.lastFrameNumber])) {
-    this.totalScore += frame.strikeBonus(this.frameResults[this.frameNumber])
-  } else if (frame.isSpare(this.frameResults[this.lastFrameNumber])) {
-    this.totalScore += frame.spareBonus(this.frameResults[this.frameNumber])
-  }
-}
-
-Game.prototype._doubleStrikeCalc = function () {
-  var frame = new Frame()
-  if (frame.isStrike(this.frameResults[this.frameNumber]) && frame.isStrike(this.frameResults[this.lastFrameNumber])) {
-    this.totalScore += 10
-  }
 }
 
 module.exports = Game

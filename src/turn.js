@@ -1,4 +1,5 @@
-function Turn(firstBowl, secondBowl = 0) {
-  this.firstBowl = firstBowl
-  this.secondBowl = secondBowl
+function Turn(firstBowl, secondBowl = 0, thirdBowl = null) {
+  this.firstBowl = firstBowl;
+  this.secondBowl = secondBowl;
+  this.thirdBowl = thirdBowl;
 }

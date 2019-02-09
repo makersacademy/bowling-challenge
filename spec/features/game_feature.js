@@ -48,7 +48,7 @@ describe("Features - BowlingGame", function() {
     expect(game.score).toEqual(63)
   });
 
-  it("can play a game with spares and strikes keeping the hidden score - tenth frame plays normal", function() {
+  it("can play a game with spares and strikes keeping the hidden score - tenth frame without bonus", function() {
     game.play(3, 7);
     expect(game.score).toEqual(0)
     game.play(1, 1);
@@ -73,35 +73,25 @@ describe("Features - BowlingGame", function() {
 
   it("can play a perfect game", function() {
     game.play(10);
-    console.log(game.bonus)
     expect(game.score).toEqual(0)
     game.play(10);
-    console.log(game.bonus)
     expect(game.score).toEqual(0)
     game.play(10);
-    console.log(game.bonus)
     expect(game.score).toEqual(0)
     game.play(10);
-    console.log(game.bonus)
     expect(game.score).toEqual(0)
     game.play(10);
-    console.log(game.bonus)
     expect(game.score).toEqual(0)
     game.play(10);
-    console.log(game.bonus)
     expect(game.score).toEqual(0)
     game.play(10);
-    console.log(game.bonus)
     expect(game.score).toEqual(0)
     game.play(10);
-    console.log(game.bonus)
     expect(game.score).toEqual(0)
     game.play(10);
-    console.log(game.bonus)
     expect(game.score).toEqual(0)
-    game.play(10);
-    console.log(game.bonus)
-    expect(game.score).toEqual(290)
+    game.play(10, 10, 10);
+    expect(game.score).toEqual(300)
   });
 
 });

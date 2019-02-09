@@ -6,21 +6,23 @@ class BowlingGame {
     this.bonus = 0
   }
 
-  play(firstBowl, secondBowl = 0) {
+  play(firstBowl, secondBowl = 0, thirdBowl = null) {
     this.previousTurnBonus(firstBowl, secondBowl);
     this.pastTwoStrikes(firstBowl);
-    if (this.strikeOrSpare(firstBowl, secondBowl)) {
-      this.addBonus(firstBowl, secondBowl);
-    } else {
-      this.countScore(firstBowl, secondBowl);
-    }
-    this.enterTurn(firstBowl, secondBowl);
-    if (this.turns.length === 10) {this.countScore(0)}
+    this.bonusCheck(firstBowl, secondBowl)
+    this.enterTurn(firstBowl, secondBowl, thirdBowl)
+    this.checkIfTenthFrame(firstBowl, secondBowl, thirdBowl)
     return this.score
   }
 
-  enterTurn(firstBowl, secondBowl) {
-    var turn = new Turn(firstBowl, secondBowl);
+  checkIfTenthFrame(firstBowl, secondBowl, thirdBowl = 0) {
+    if (this.turns.length === 10) {
+      this.countScore(thirdBowl)
+    }
+  }
+
+  enterTurn(firstBowl, secondBowl = 0, thirdBowl = null) {
+    var turn = new Turn(firstBowl, secondBowl, thirdBowl);
     this.turns.push(turn);
   }
 
@@ -30,15 +32,23 @@ class BowlingGame {
     this.bonus = 0;
   }
 
-  strikeOrSpare(firstBowl, secondBowl) {
+  strikeOrSpare(firstBowl, secondBowl = 0) {
     return (this.strike(firstBowl) || this.spare(firstBowl, secondBowl))
+  }
+
+  bonusCheck(firstBowl, secondBowl = 0) {
+    if (this.strikeOrSpare(firstBowl, secondBowl)) {
+      this.addBonus(firstBowl, secondBowl);
+    } else {
+      this.countScore(firstBowl, secondBowl);
+    }
   }
 
   addBonus(firstBowl, secondBowl = 0) {
     this.bonus += (firstBowl + secondBowl);
   }
 
-  previousTurnBonus(firstBowl, secondBowl) {
+  previousTurnBonus(firstBowl, secondBowl = 0) {
     if (this.turns.length > 0) {
       if (this.strike(this.lastTurnFirstBowl(), this.lastTurnSecondBowl())) {
         this.addBonus(firstBowl, secondBowl);
@@ -60,7 +70,7 @@ class BowlingGame {
     return firstBowl === 10
   }
 
-  spare(firstBowl, secondBowl) {
+  spare(firstBowl, secondBowl = 0) {
     return firstBowl + secondBowl === 10 && firstBowl != 10
   }
 

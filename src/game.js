@@ -7,13 +7,15 @@ class BowlingGame {
   }
 
   play(firstBowl, secondBowl = 0) {
-    this.previousTurnBonus(firstBowl, secondBowl)
+    this.previousTurnBonus(firstBowl, secondBowl);
+    this.pastTwoStrikes(firstBowl);
     if (this.strikeOrSpare(firstBowl, secondBowl)) {
-      this.addBonus(firstBowl, secondBowl)
+      this.addBonus(firstBowl, secondBowl);
     } else {
-      this.countScore(firstBowl, secondBowl)
+      this.countScore(firstBowl, secondBowl);
     }
-    this.enterTurn(firstBowl, secondBowl)
+    this.enterTurn(firstBowl, secondBowl);
+    if (this.turns.length === 10) {this.countScore(0)}
     return this.score
   }
 
@@ -22,7 +24,7 @@ class BowlingGame {
     this.turns.push(turn);
   }
 
-  countScore(firstBowl, secondBowl) {
+  countScore(firstBowl, secondBowl = 0) {
     this.score += (firstBowl + secondBowl);
     this.score += this.bonus;
     this.bonus = 0;
@@ -32,7 +34,7 @@ class BowlingGame {
     return (this.strike(firstBowl) || this.spare(firstBowl, secondBowl))
   }
 
-  addBonus(firstBowl, secondBowl) {
+  addBonus(firstBowl, secondBowl = 0) {
     this.bonus += (firstBowl + secondBowl);
   }
 
@@ -42,6 +44,14 @@ class BowlingGame {
         this.addBonus(firstBowl, secondBowl);
       } else if (this.spare(this.lastTurnFirstBowl(), this.lastTurnSecondBowl())) {
         this.addBonus(firstBowl, 0);
+      }
+    }
+  }
+
+  pastTwoStrikes(firstBowl) {
+    if (this.turns.length >= 2) {
+      if (this.strike(this.lastTurnFirstBowl(), this.lastTurnSecondBowl()) && this.strike(this.secondLastTurnFirstBowl(), this.secondLastTurnSecondBowl())) {
+        this.addBonus(firstBowl);
       }
     }
   }
@@ -60,6 +70,14 @@ class BowlingGame {
 
   lastTurnSecondBowl() {
     return this.turns[(this.turns.length -1)].secondBowl
+  }
+
+  secondLastTurnFirstBowl() {
+    return this.turns[(this.turns.length -2)].firstBowl
+  }
+
+  secondLastTurnSecondBowl() {
+    return this.turns[(this.turns.length -2)].secondBowl
   }
 
 }

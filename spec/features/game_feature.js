@@ -58,17 +58,50 @@ describe("Features - BowlingGame", function() {
     game.play(10);
     expect(game.score).toEqual(13)
     game.play(3, 4);
-    expect(game.score).toEqual(57)
+    expect(game.score).toEqual(60)
     game.play(10);
-    expect(game.score).toEqual(57)
+    expect(game.score).toEqual(60)
     game.play(8, 0);
-    expect(game.score).toEqual(83)
+    expect(game.score).toEqual(86)
     game.play(3, 7);
-    expect(game.score).toEqual(83)
+    expect(game.score).toEqual(86)
     game.play(10);
-    expect(game.score).toEqual(83)
+    expect(game.score).toEqual(86)
     game.play(2, 4);
-    expect(game.score).toEqual(125)
+    expect(game.score).toEqual(128)
+  });
+
+  it("can play a perfect game", function() {
+    game.play(10);
+    console.log(game.bonus)
+    expect(game.score).toEqual(0)
+    game.play(10);
+    console.log(game.bonus)
+    expect(game.score).toEqual(0)
+    game.play(10);
+    console.log(game.bonus)
+    expect(game.score).toEqual(0)
+    game.play(10);
+    console.log(game.bonus)
+    expect(game.score).toEqual(0)
+    game.play(10);
+    console.log(game.bonus)
+    expect(game.score).toEqual(0)
+    game.play(10);
+    console.log(game.bonus)
+    expect(game.score).toEqual(0)
+    game.play(10);
+    console.log(game.bonus)
+    expect(game.score).toEqual(0)
+    game.play(10);
+    console.log(game.bonus)
+    expect(game.score).toEqual(0)
+    game.play(10);
+    console.log(game.bonus)
+    expect(game.score).toEqual(0)
+    game.play(10);
+    console.log(game.bonus)
+    expect(game.score).toEqual(290)
   });
 
 });

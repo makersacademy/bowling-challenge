@@ -4,4 +4,5 @@ function ScoreCard () {
 
 function Frame () {
     this.score = 0
+    this.rolls = [0, 0]
 }

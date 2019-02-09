@@ -18,4 +18,7 @@ describe('Unit tests', function () {
   it('frames can be generated and hold a score', function () {
     expect(frame1.score).toEqual(0);
   })
+  it('frames hold an array of two rolls', function () {
+      expect(frame1.rolls).toEqual([0,0]);
+  })
 })

@@ -1,4 +1,4 @@
-describe('BowlingGame', function() {
+describe('BowlingGutterGame', function() {
   
   var game = new Game;
 

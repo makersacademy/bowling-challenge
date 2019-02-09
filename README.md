@@ -3,6 +3,15 @@ Bowling Challenge
 =================
 
 
+
+Feature tests - Gutter Game
+```
+As a player, 
+If is roll 20 times and don't hit any pins,
+I should finish with 0 points in the 10th frame
+
+```
+
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README

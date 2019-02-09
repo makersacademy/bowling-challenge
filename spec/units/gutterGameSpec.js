@@ -1,5 +1,5 @@
 var BowlingGame = require('../../src/BowlingGame.js')
-console.log(BowlingGame)
+
 describe('BowlingGame', function() {
 
   var bowlingGame;

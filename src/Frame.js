@@ -16,9 +16,11 @@ class Frame {
   }
 
   add (number) {
-    if (this._complete && this.isSpare()) {
+    if (this.complete() && this.isSpare()) {
       this._spareCalculation(number)
       return
+    } else if (this.complete() && this.isStrike()) {
+      this._strikeCalculation(number)
     }
     this._score.push(number)
     this.roll += 1
@@ -30,6 +32,10 @@ class Frame {
   }
 
   firstRoll () {
+    return this._score[0]
+  }
+
+  secondRoll () {
     return this._score[0]
   }
 
@@ -48,6 +54,13 @@ class Frame {
     }
   }
 
+  _strikeCalculation (number) {
+    if (this._bonus <= 1) {
+      this.addBonusScore(number)
+      this._bonus += 1
+    }
+  }
+
   isSpare () {
     return this._spare
   }
@@ -57,7 +70,10 @@ class Frame {
   }
 
   _checkFrameEnd () {
-    if (this.score() === 10) {
+    if (this.score() === 10 && this.roll === 1) {
+      this._strike = true
+      this._complete = true
+    } else if (this.score() === 10) {
       this._spare = true
       this._complete = true
     } else if (this.roll === 2) {

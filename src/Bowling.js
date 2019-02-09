@@ -4,14 +4,8 @@ let Frame = require('../src/Frame')
 class Bowling {
   constructor () {
     this.frame = 0
-    this.roll = 0
-    this.frameScore = 0
-    this._gameScore = {}
     this.scorecardComplete = false
-    this.spare = false
-    this.strike = false
     this._frames = []
-    this._score = 0
     this._newFrame()
   }
 
@@ -27,7 +21,7 @@ class Bowling {
     if (this._frames.length >= 2) {
       this._addSpareBonus()
     } else if (this._frames.length >= 3) {
-      // this._addStrikeBonus()
+      this._addStrikeBonus()
     }
     this.checkGameEnd()
   }
@@ -61,22 +55,23 @@ class Bowling {
     if (!previousFrame.isSpare()) {
       return
     }
-    let firstRollCurrentFrame = this._currentFrame().firstRoll()
-    previousFrame.add(firstRollCurrentFrame)
+    previousFrame.add(this._currentFrame().firstRoll())
   }
 
-  // _addStrikeBonus () {
-  //   if (this.scorecardComplete) {
-  //     return
-  //   }
-  //   let secondLastFrame = this._previousFrame(2)
-  //   if (!secondLastFrame.isStrike()) {
-  //     return
-  //   }
-  //   let lastFrame = this._previousFrame(1)
-  //
-  //
-  // }
+  _addStrikeBonus () {
+    let secondLastFrame = this._previousFrame(2)
+    if (!secondLastFrame.isStrike()) {
+      return
+    }
+    let lastFrame = this._previousFrame(1)
+    if (lastFrame.isStrike()) {
+      secondLastFrame.add(lastFrame.firstRoll())
+      secondLastFrame.add(this._currentFrame().firstRoll())
+    } else {
+      secondLastFrame.add(lastFrame.firstRoll())
+      secondLastFrame.add(lastFrame.secondRoll())
+    }
+  }
 
   _currentFrame () {
     return this._frames[this._frames.length - 1]

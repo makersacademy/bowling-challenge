@@ -37,7 +37,7 @@ describe('Bowling', function () {
 
   it('should reset the frameScore to zero after each frame', function () {
     enterScores(1, 2)
-    expect(bowling.frameScore).toEqual(0)
+    expect(bowling._currentFrame().score()).toEqual(0)
   })
 
   it('should add gameScore from each frame', function () {
@@ -51,12 +51,6 @@ describe('Bowling', function () {
       expect(bowling._previousFrame().isSpare()).toEqual(true)
     })
 
-    it('should reset the spare flag after one roll', function () {
-      enterScores(5, 2)
-      enterScores(1, 1)
-      expect(bowling.spare).toEqual(false)
-    })
-
     it('should calculate spares correctly', function () {
       enterScores(5, 2)
       enterScores(2, 2)
@@ -64,10 +58,10 @@ describe('Bowling', function () {
     })
   })
 
-  describe('strikes are calculated correctly', function () {
+  describe('strikes are recognised', function () {
     it('should track whether a strike has been struck', function () {
       enterScores(10, 1)
-      expect(bowling.strike).toEqual(true)
+      expect(bowling._previousFrame().isStrike()).toEqual(true)
     })
   })
 })

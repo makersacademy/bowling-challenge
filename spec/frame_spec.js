@@ -30,30 +30,6 @@ describe('Frame', function () {
     expect(frame.isSpare([10, 0])).toEqual(false)
   })
 
-  it('scores an easy frame correctly', function () {
-    expect(frame.scoreFrame([3, 4], [0, 0])).toEqual(7)
-  })
-
-  it('scores a pair of easy frames correctly', function () {
-    expect(frame.scoreFrame([3, 4], [3, 3])).toEqual(7)
-  })
-
-  it('scores a strike followed by an easy frame correctly', function () {
-    expect(frame.scoreFrame([10, 0], [3, 4])).toEqual(17)
-  })
-
-  it('scores a spare followed by an easy frame correctly', function () {
-    expect(frame.scoreFrame([3, 7], [3, 4])).toEqual(13)
-  })
-
-  it('scores a strike followed by a strike correctly', function () {
-    expect(frame.scoreFrame([10, 0], [10, 0])).toEqual(20)
-  })
-
-  it('scores a spare followed by a spare correctly', function () {
-    expect(frame.scoreFrame([3, 7], [3, 7])).toEqual(13)
-  })
-
   it('scores a spare followed by a spare correctly', function () {
     expect(frame.frameScore([3, 7])).toEqual(10)
   })

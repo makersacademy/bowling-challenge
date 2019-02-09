@@ -19,18 +19,6 @@ Frame.prototype.isSpare = function (arr) {
   };
 }
 
-Frame.prototype.scoreFrame = function (frame1, frame2) {
-  var frameTotal
-  if (this.isStrike(frame1)) {
-    frameTotal = this.frameScore(frame1) + this.strikeBonus(frame2)
-  } else if (this.isSpare(frame1)) {
-    frameTotal = this.frameScore(frame1) + this.spareBonus(frame2)
-  } else {
-    frameTotal = this.frameScore(frame1)
-  }
-  return frameTotal
-}
-
 Frame.prototype.frameScore = function (frame) {
   var frameTotal = frame[0] + frame[1]
   return frameTotal
@@ -45,7 +33,5 @@ Frame.prototype.spareBonus = function (frame) {
   var frameBonus = frame[0]
   return frameBonus
 }
-
-// create bonus instead of 2 frame logic
 
 module.exports = Frame

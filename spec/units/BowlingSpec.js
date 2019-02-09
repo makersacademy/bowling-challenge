@@ -77,7 +77,7 @@ describe('Bowling', function () {
       expect(bowling.gameScore()).toEqual(74)
     })
 
-    it('calculates strikes followed by a spare correctly', function() {
+    it('calculates strikes followed by a spare correctly', function () {
       enterScores(10, 1)
       enterScores(6, 1)
       enterScores(4, 1)
@@ -85,5 +85,13 @@ describe('Bowling', function () {
       expect(bowling.gameScore()).toEqual(39)
     })
 
+    it('calculates a spare-strike-spare combo correctly', function () {
+      enterScores(5, 2)
+      enterScores(10, 1)
+      enterScores(7, 1)
+      enterScores(3, 1)
+      enterScores(1, 2)
+      expect(bowling.gameScore()).toEqual(53)
+    })
   })
 })

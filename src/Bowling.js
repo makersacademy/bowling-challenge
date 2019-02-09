@@ -14,10 +14,16 @@ class Bowling {
     if (this._currentFrame().complete()) {
       this.endFrame()
     }
+    // if (this._frames.length === 10) {
+    //   this.endFrame()
+    // }
   }
 
   endFrame () {
-    this.frame++
+    if (!this.scorecardComplete) {
+      this.frame++
+    }
+
     if (this._frames.length >= 2) {
       this._addSpareBonus()
     }
@@ -29,6 +35,7 @@ class Bowling {
 
   checkGameEnd () {
     if (this.frame === 10) {
+      // this.endFrame()
       this.endGame()
     } else {
       this._newFrame()
@@ -40,6 +47,9 @@ class Bowling {
   }
 
   endGame () {
+    if (this._frames[9].secondRoll()) {
+      this.tidyUp()
+    }
     this.scorecardComplete = true
   }
 
@@ -49,6 +59,11 @@ class Bowling {
       score += num.score()
     })
     return score
+  }
+
+  tidyUp () {
+    // this._addSpareBonus()
+    this._addFinalStrikeBonus()
   }
 
   _addSpareBonus () {
@@ -72,6 +87,15 @@ class Bowling {
       secondLastFrame.add(lastFrame.firstRoll())
       secondLastFrame.add(lastFrame.secondRoll())
     }
+  }
+
+  _addFinalStrikeBonus () {
+    let previousFrame = this._previousFrame(1)
+    if (!previousFrame.isStrike()) {
+      return
+    }
+    previousFrame.add(this._currentFrame().firstRoll())
+    previousFrame.add(this._currentFrame().secondRoll())
   }
 
   _currentFrame () {

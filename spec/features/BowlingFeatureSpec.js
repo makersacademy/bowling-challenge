@@ -44,12 +44,33 @@ describe('Bowling', function () {
   })
 
   it('should record an all strikes game correctly', function () {
-    enterScores(10, 18)
+    enterScores(10, 9)
     expect(bowling.scorecardComplete).toEqual(false)
-    expect(bowling.gameScore()).toEqual(240)
-    enterScores(10, 2)
+    expect(bowling.gameScore()).toEqual(230)
     enterScores(10, 1)
+    enterScores(10, 2)
     expect(bowling.scorecardComplete).toEqual(true)
     expect(bowling.gameScore()).toEqual(300)
+  })
+
+  it('should match the scoring of the example game', function () {
+    enterScores(1, 1)
+    enterScores(4, 2)
+    enterScores(5, 1)
+    enterScores(6, 1)
+    enterScores(4, 1) // spare
+    enterScores(5, 2) // spare
+    enterScores(10, 1) // strike
+    enterScores(0, 1)
+    enterScores(1, 1)
+    enterScores(7, 1)
+    enterScores(3, 1)
+    enterScores(6, 1)
+    enterScores(4, 1)
+    enterScores(10, 1)
+    enterScores(2, 1)
+    enterScores(8, 1)
+    enterScores(6, 1)
+    expect(bowling.gameScore()).toEqual(133)
   })
 })

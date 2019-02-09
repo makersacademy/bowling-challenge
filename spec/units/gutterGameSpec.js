@@ -15,6 +15,7 @@ describe('BowlingGame', function() {
   });
 
   it('game has an initial score of 0 and frame 0', function() {
+    expect(bowlingGame.isInPlay).toEqual(false)
     expect(bowlingGame.score).toEqual(0)
     expect(bowlingGame.frame).toEqual(0)
   });
@@ -36,5 +37,12 @@ describe('BowlingGame', function() {
     rolls(0, 3)
     expect(bowlingGame.frame).toEqual(2)
     expect(bowlingGame.score).toEqual(0)
+  });
+
+  it('game finishes after the 10th roll', function() {
+    rolls(0, 20)
+    expect(bowlingGame.frame).toEqual(10)
+    expect(bowlingGame.score).toEqual(0)
+    expect(bowlingGame.isInPlay).toEqual(false)
   });
 });

@@ -15,7 +15,7 @@ class Frame {
   }
 
   add (number) {
-    if (this.roll === 2) {
+    if (this._complete) {
       this.addBonusScore(number)
       return
     }

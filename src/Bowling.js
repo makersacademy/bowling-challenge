@@ -17,7 +17,7 @@ class Bowling {
 
   enterScore (number) {
     this._currentFrame().add(number)
-    if (this._currentFrameComplete()) {
+    if (this._currentFrame().complete()) {
       this.endFrame()
     }
   }
@@ -39,8 +39,7 @@ class Bowling {
   }
 
   currentFrameNumber () {
-    let number = this._currentFrame().number()
-    return number
+    return this._currentFrame().number()
   }
 
   endGame () {
@@ -77,10 +76,6 @@ class Bowling {
 
   _newFrame () {
     this._frames.push(new Frame(this.frame))
-  }
-
-  _currentFrameComplete () {
-    return this._currentFrame().complete()
   }
 }
 

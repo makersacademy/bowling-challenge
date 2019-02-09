@@ -1,3 +1,4 @@
+'use strict'
 
 describe('Features', () => {
   const ScoreCard = require('../src/scoreCard')
@@ -33,14 +34,26 @@ describe('Features', () => {
   // });
 
   it('can score a game with 1 strike', () =>{
-    for(let i = 1 ; i < 6 ; i++){
-      return scoreCard.recordScore(i, 1, 1);
+    scoreCard.recordScore(1, 1, 1);
+    scoreCard.recordScore(1, 10, 0);
+    // scoreCard.recordScore(1, 1, 1);
+    // scoreCard.recordScore(1, 1, 1);
+    // scoreCard.recordScore(1, 1, 1);
+    // scoreCard.recordScore(1, 1, 1);
+    // scoreCard.recordScore(1, 1, 1);
+    // scoreCard.recordScore(1, 1, 1);
+    // scoreCard.recordScore(1, 1, 1);
+    // scoreCard.recordScore(1, 1, 1);
+    for(let i = 3 ; i < 11 ; i++){
+      scoreCard.recordScore(i, 1, 1);
     }
-    scoreCard.recordScore(6, 10, 0);
-    for(let i = 7; i < 11; i++){
-      return scoreCard.recordScore(i, 1, 1);
-    }
+    
+    expect(scoreCard.experiment()).toEqual(30);
     expect(scoreCard.finalScore()).toEqual(30);
   });
+
+
+
+
 
 });

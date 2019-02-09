@@ -37,5 +37,14 @@ describe('Unit tests', function () {
       frame1.rolls[1] = 2;
       expect(function (){frame1.addScore()} ).toThrow(new Error("Score error: rolls cannot add up to more than 10"))
   })
+  it('has a test to see if a frame is complete', function () {
+      expect(frame1.isComplete()).toEqual(false)
+  })
+
+  it('can set a frame complete', function () {
+      frame1.setFrameComplete()
+      expect(frame1.isComplete()).toEqual(true)
+
+  })
 
 })

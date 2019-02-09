@@ -1,0 +1,66 @@
+body {
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border: 1.5px solid #fff;
+  margin-bottom: 15px;
+}
+
+thead {
+  background-color: darkred;
+}
+
+th {
+  border: 1px solid #fff;
+}
+
+td, th {
+  text-align: center;
+  height: 25px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.topRight,.topRightTen, .finalScore {
+  border: 1px solid #fff;
+}
+
+.bottomScore {
+  border-right: 1px solid #fff;
+}
+
+.btnNumber {
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+  text-align: center;
+  background-color:#9933CC;
+  border-color:#9933CC;
+  color: yellow;
+}
+
+.btnNumber:hover {
+  color: #fff;
+  background-color: #822bad;
+  border-color: #7a29a3;
+}
+
+.btnNumber:focus,.btnNumber.focus {
+  outline:none;
+  outline-color: red;
+}
+
+.btnNew:hover {
+  background-color: #ffc3bc;
+}
+
+#tableDiv {
+  background-color: grey;
+  max-width: 75%;
+  margin: auto;
+  margin-top: 15px;
+}

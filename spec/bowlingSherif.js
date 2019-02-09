@@ -2,8 +2,8 @@
 
 var Bowling = require('../src/bowling');
 
-describe('Testing if', function(){
-  it('jasmine is st', function(){
-
+describe('scoreboard', function() {
+  it('can take numbers from player', function() {
+    
   });
 });

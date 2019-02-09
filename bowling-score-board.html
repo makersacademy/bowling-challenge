@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/cyborg/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+  </head>
+  <body>
+    <h1>Your Bowling Scoreboard</h1>
+    <div id="pinsHit">
+      <button type="button" class="btnNumber" id="btn1">1</button>
+      <button type="button" class="btnNumber" id="btn2">2</button>
+      <button type="button" class="btnNumber" id="btn3">3</button>
+      <button type="button" class="btnNumber" id="btn4">4</button>
+      <button type="button" class="btnNumber" id="btn5">5</button>
+      <button type="button" class="btnNumber" id="btn6">6</button>
+      <button type="button" class="btnNumber" id="btn7">7</button>
+      <button type="button" class="btnNumber" id="btn8">8</button>
+      <button type="button" class="btnNumber" id="btn9">9</button>
+      <button type="button" class="btnNumber" id="btn10">10</button>
+    </div>
+
+    <nav id="tableDiv">
+      <table class="">
+        <thead>
+          <tr>
+            <th colspan=2>Frame 1</th>
+            <th colspan=2>Frame 2</th>
+            <th colspan=2>Frame 3</th>
+            <th colspan=2>Frame 4</th>
+            <th colspan=2>Frame 5</th>
+            <th colspan=2>Frame 6</th>
+            <th colspan=2>Frame 7</th>
+            <th colspan=2>Frame 8</th>
+            <th colspan=2>Frame 9</th>
+            <th colspan=3>Frame 10</th>
+            <th colspan=2>Final Score</th>
+            <th colspan=2>Max Possible</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="">
+            <td class="topLeft" id="f11"></td>
+            <td class="topRight" id="f12"></td>
+            <td class="topLeft" id="f21"></td>
+            <td class="topRight" id="f22"></td>
+            <td class="topLeft" id="f31"></td>
+            <td class="topRight" id="f32"></td>
+            <td class="topLeft" id="f41"></td>
+            <td class="topRight" id="f42"></td>
+            <td class="topLeft" id="f51"></td>
+            <td class="topRight" id="f52"></td>
+            <td class="topLeft" id="f61"></td>
+            <td class="topRight" id="f62"></td>
+            <td class="topLeft" id="f71"></td>
+            <td class="topRight" id="f72"></td>
+            <td class="topLeft" id="f81"></td>
+            <td class="topRight" id="f82"></td>
+            <td class="topLeft" id="f91"></td>
+            <td class="topRight" id="f92"></td>
+            <td class="topLeft" id="ff1"></td>
+            <td class="topRightTen" id="ff2"></td>
+            <td class="topRightTen" id="ff3"></td>
+
+            <td class="finalScore" colspan=2; rowspan=2;></td>
+            <td class="finalScore"  colspan=2; rowspan=2;></td>
+          </tr>
+          <tr>
+            <td class="bottomScore" colspan=2;></td>
+            <td class="bottomScore" colspan=2;></td>
+            <td class="bottomScore" colspan=2;></td>
+            <td class="bottomScore" colspan=2;></td>
+            <td class="bottomScore" colspan=2;></td>
+            <td class="bottomScore" colspan=2;></td>
+            <td class="bottomScore" colspan=2;></td>
+            <td class="bottomScore" colspan=2;></td>
+            <td class="bottomScore" colspan=2;></td>
+            <td class="bottomScore" colspan=3;></td>
+          </tr>
+        </tbody>
+      </table>
+    </nav>
+    <div id="newGameDiv">
+      <button type="button" class="btnNew" id="btnNew">New Game</button>
+    </div>
+  </body>
+</html>

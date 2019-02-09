@@ -16,13 +16,13 @@ describe('Bowling', function () {
     bowling = new Bowling()
   })
 
-  it('should begin the game on frame 1', function () {
-    expect(bowling.frame).toEqual(1)
+  it('should begin the game on frame 0', function () {
+    expect(bowling.frame).toEqual(0)
   })
 
   it('should count frames as scores are input', function () {
     enterScores(0, 4)
-    expect(bowling.frame).toEqual(3)
+    expect(bowling.frame).toEqual(2)
   })
 
   it('should not mark the game complete until after 20 rolls', function () {
@@ -38,5 +38,10 @@ describe('Bowling', function () {
   it('should reset the frameScore to zero after each frame', function () {
     enterScores(1, 2)
     expect(bowling.frameScore).toEqual(0)
+  })
+
+  it('should add gameScore from each frame', function() {
+    enterScores(2, 4)
+    expect(bowling.gameScore).toEqual(8)
   })
 })

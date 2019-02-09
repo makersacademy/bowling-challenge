@@ -1,7 +1,7 @@
 'use strict'
 class Bowling {
   constructor () {
-    this.frame = 1
+    this.frame = 0
     this.roll = 0
     this.frameScore = 0
     this.gameScore = 0
@@ -25,7 +25,7 @@ class Bowling {
   endFrame () {
     this.roll = 0
     this.frame++
-    this.gameScore = this.frameScore
+    this.gameScore += this.frameScore
     this.frameScore = 0
     this.checkGameEnd()
   }

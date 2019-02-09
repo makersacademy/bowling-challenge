@@ -13,6 +13,9 @@ bowling: function(){
   var frame = new Frame(number)
   this.frames.push(frame);
 },
+addingscore: function(score) {
+  this.score += score
+},
 totalBowlingscore: function () {
   return this.frames.reduce(function(score, frame, index, frames){
     return score + frame.scoringtotal(frames[index + 1], frames[index + 2])

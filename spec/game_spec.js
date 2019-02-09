@@ -19,4 +19,13 @@ describe("BowlingGame", function() {
     expect(game.score).toEqual(0)
   });
 
+  it("returns the score after one normal turn", function() {
+    expect(game.play(3, 4)).toEqual(7)
+  });
+
+  it("updates the score after second normal turn", function() {
+    game.play(9, 0)
+    expect(game.play(3, 4)).toEqual(16)
+  });
+
 });

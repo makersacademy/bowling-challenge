@@ -6,6 +6,7 @@ CheckRoll.prototype.run = function(roll){
   if(!this._isValidRoll(roll)){throw new Error("invalid character")}
   switch(roll){
     case "/": if(!this._isValidSpare()){throw new Error("illegal spare")};
+    case "X": if(!this._isValidStrike()){throw new Error("illegal strike")};
   };
   return 0
 }
@@ -19,6 +20,10 @@ CheckRoll.prototype._isValidRoll = function(roll){
 
 CheckRoll.prototype._isValidSpare = function(){
   return this._scorecard.length > 0 ? (this.lastFrame().length != 2) : false
+}
+
+CheckRoll.prototype._isValidStrike = function(){
+  return this._scorecard.length > 0 ? (this.lastFrame().length > 1) : true
 }
 
 CheckRoll.prototype.lastFrame = function(){

@@ -37,5 +37,26 @@ describe("CheckRoll",function(){
     expect(function(){checkRoll.run("/")}).not.toThrow(
       new Error("illegal spare")
     );
-  })
+  });
+    it("raises an error for illegal strikes",function(){
+      checkRoll._scorecard = [[1]]
+      expect(function(){checkRoll.run("X")}).toThrow(
+        new Error("illegal strike")
+      );
+      checkRoll._scorecard = [[1,3],[4]]
+      expect(function(){checkRoll.run("X")}).toThrow(
+        new Error("illegal strike")
+      );
+    });
+    it("doesn't raise error for legal strikes",function(){
+      checkRoll._scorecard = []
+      expect(function(){checkRoll.run("X")}).not.toThrow(
+        new Error("illegal strike")
+      );
+      checkRoll._scorecard = [[1,2],[3,5]];
+      expect(function(){checkRoll.run("X")}).not.toThrow(
+        new Error("illegal strike")
+      );
+    });
+    //raise error for exceeding 9
 });

@@ -45,20 +45,29 @@ describe('Bowling', function () {
     expect(bowling.gameScore()).toEqual(8)
   })
 
-  it('should track whether a spare has been struck', function () {
-    enterScores(5, 2)
-    expect(bowling.spare).toEqual(true)
+  describe('spares are calculated correctly', function () {
+    it('should track whether a spare has been struck', function () {
+      enterScores(5, 2)
+      expect(bowling.spare).toEqual(true)
+    })
+
+    it('should reset the spare flag after one roll', function () {
+      enterScores(5, 2)
+      enterScores(1, 1)
+      expect(bowling.spare).toEqual(false)
+    })
+
+    it('should calculate spares correctly', function () {
+      enterScores(5, 2)
+      enterScores(2, 2)
+      expect(bowling.gameScore()).toEqual(16)
+    })
   })
 
-  it('should reset the spare flag after one roll', function () {
-    enterScores(5, 2)
-    enterScores(1, 1)
-    expect(bowling.spare).toEqual(false)
-  })
-
-  it('should calculate spares correctly', function () {
-    enterScores(5, 2)
-    enterScores(2, 2)
-    expect(bowling.gameScore()).toEqual(16)
+  xdescribe('strikes are calculated correctly', function () {
+    it('should track whether a strike has been struck', function () {
+      enterScores(10, 1)
+      expect(bowling.strike).toEqual(true)
+    })
   })
 })

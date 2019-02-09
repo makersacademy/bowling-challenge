@@ -7,6 +7,7 @@ class Bowling {
     this._gameScore = {}
     this.scorecardComplete = false
     this.spare = false
+    this.strike = false
   }
 
   enterScore (number) {

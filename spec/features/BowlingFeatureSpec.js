@@ -42,4 +42,15 @@ describe('Bowling', function () {
     expect(bowling.scorecardComplete).toEqual(true)
     expect(bowling.gameScore()).toEqual(150)
   })
+
+  xit('should record an all strikes game correctly', function () {
+    enterScores(10, 9)
+    expect(bowling.scorecardComplete).toEqual(false)
+    expect(bowling.gameScore()).toEqual(240)
+    enterScores(10, 1)
+    enterScores(10, 1)
+    enterScores(10, 1)
+    expect(bowling.scorecardComplete).toEqual(true)
+    expect(bowling.gameScore()).toEqual(300)
+  })
 })

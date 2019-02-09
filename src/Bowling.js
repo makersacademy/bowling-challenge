@@ -43,7 +43,11 @@ class Bowling {
   }
 
   gameScore () {
-    this._frames.reduce((a, b) => a + b, 0)
+    let score = 0
+    this._frames.forEach(function (num) {
+      score += num.score()
+    })
+    return score
   }
 
   addSpareBonus (num) {

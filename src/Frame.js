@@ -24,6 +24,10 @@ class Frame {
     return this._frameNumber
   }
 
+  score () {
+    return this._score
+  }
+
   _checkFrameEnd () {
     if (this._score === 10) {
       this._spare = true

@@ -24,4 +24,11 @@ describe('SingleStrikeBowlingGame', function() {
     expect(bowlingGame.score).toEqual(30)
     expect(bowlingGame.frame).toEqual(5)
   });
+
+  it('strikes cause frame to end', function() {
+    bowlingGame.roll(10)
+    bowlingGame.roll(3)
+    expect(bowlingGame.frame).toEqual(2)
+  });
+
 }); 

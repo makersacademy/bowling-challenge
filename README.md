@@ -1,20 +1,21 @@
-
 Bowling Scorecard
 =================
 
-## The Task
+## About the app
 
-Counts and sums up the scores of a bowling game for one player (in JavaScript). The user is the one inputing the rolls.
+Counts and sums up the scores of a bowling game for one player. The user is the one inputing the rolls.
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-## My approach
-
 The Game class receives an array of scores containing all of the player's rolls. It then uses the class Frame to generate the individual frames and calculate the score for each, followed by the overall score.
 
-I've aimed for good test coverage which helped when I kept on adjusting the code towards the end to properly manage the 10th frame and its bonuses.
+## Testing and code quality checks
 
-ESLint is also installed - there are a few warnings left around the length of some of the lines.
+The app has been test driven using Jasmine. Both feature and unit tests are incorporated.
+
+ESlint has been used for identifying and reporting on patterns found in ECMAScript/JavaScript code, with the goal of making code more consistent and avoiding bugs.  
+
+![Tests Jasmine](https://github.com/AlinaGoaga/bowling-challenge/blob/master/BC_TestsPassing.jpeg)
 
 ## Running the app and tests
 
@@ -25,8 +26,6 @@ App:
 Tests:
 1. run open SpecRunner.html in the terminal
 2. a window will open containing the below
-
-![Tests Jasmine](https://github.com/AlinaGoaga/bowling-challenge/blob/master/tests_passing.jpeg)
 
 ## Bowling — how does it work?
 

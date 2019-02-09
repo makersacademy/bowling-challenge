@@ -2,6 +2,34 @@
 Bowling Challenge
 =================
 
+```
+As a player
+so I can record my score
+I want to calculate the total of a gutter run
+```
+
+```
+As a player
+so I can record my score
+I want to calculate the total score with no spares
+```
+
+```
+As a player
+so I can record my score
+I want to calculate the total score with spares
+```
+
+```
+As a player
+so I can record my score
+I want to calculate the total score with additional balls on 10th frame
+```
+
+
+Makers notes
+============
+
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

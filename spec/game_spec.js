@@ -50,7 +50,7 @@ describe('Game', function () {
     game.frameAdd([3, 3])
     game.frameAdd([10, 0])
     game.frameAdd([5, 5])
-    expect(game.score).toEqual(87)
+    expect(game.score).toEqual(101)
   })
 
   it('adds a frame to the game', function () {

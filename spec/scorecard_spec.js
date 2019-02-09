@@ -35,6 +35,16 @@ describe('scorecard', function(){
     expect(card.total_score_display()).toEqual(30);
   });
 
+  it('clears the scorecard', function(){
+    for (var i of Array(10).keys()){
+      card.record_first(1);
+      card.record_second(2);
+      card.frame_score_display();
+    };
+    card.clear();
+    expect(card.total_score_display()).toEqual(0);
+  });
+
 
 
 

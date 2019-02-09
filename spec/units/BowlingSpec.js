@@ -48,7 +48,7 @@ describe('Bowling', function () {
   describe('spares are calculated correctly', function () {
     it('should track whether a spare has been struck', function () {
       enterScores(5, 2)
-      expect(bowling.spare).toEqual(true)
+      expect(bowling._getLastFrame().isSpare()).toEqual(true)
     })
 
     it('should reset the spare flag after one roll', function () {

@@ -8,5 +8,9 @@ function Frame () {
 }
 
 Frame.prototype.addScore = function () {
-    this.score = this.rolls[0] + this.rolls[1];
+    if(this.score = this.rolls[0] + this.rolls[1] > 10)
+    {
+        throw new Error("Score error: rolls cannot add up to more than 10");
+    } else
+        this.score = this.rolls[0] + this.rolls[1];
 }

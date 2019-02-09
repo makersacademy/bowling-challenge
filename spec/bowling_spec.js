@@ -32,5 +32,10 @@ describe('Unit tests', function () {
       frame1.addScore()
       expect(frame1.score).toEqual(5);
   })
+  it('each frame rolls can not add up to more than 10', function () {
+      frame1.rolls[0] = 9;
+      frame1.rolls[1] = 2;
+      expect(function (){frame1.addScore()} ).toThrow(new Error("Score error: rolls cannot add up to more than 10"))
+  })
 
 })

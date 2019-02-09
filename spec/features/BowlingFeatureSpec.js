@@ -32,4 +32,10 @@ describe('Bowling', function () {
     expect(bowling.scorecardComplete).toEqual(true)
     expect(bowling.gameScore).toEqual(58)
   })
+
+  it('should calculate spares correctly', function () {
+    enterScores(5, 2)
+    enterScores(2, 2)
+    expect(bowling.gameScore).toEqual(16)
+  })
 })

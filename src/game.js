@@ -20,14 +20,10 @@ Game.prototype.calculate = function (frameNumber) {
   if (this.frameNumber === 0) {
     this.score += frame.frameScore(this.frameResults[frameNumber])
   } else if (this.frameNumber === 10) {
-    this._endFrameScore()
+    this._bonusCalc()
   } else {
     this.score += frame.frameScore(this.frameResults[this.frameNumber])
-    if (frame.isStrike(this.frameResults[this.lastFrameNumber])) {
-      this.score += frame.strikeBonus(this.frameResults[this.frameNumber])
-    } else if (frame.isSpare(this.frameResults[this.lastFrameNumber])) {
-      this.score += frame.spareBonus(this.frameResults[this.frameNumber])
-    }
+    this._bonusCalc()
   }
 }
 
@@ -36,7 +32,7 @@ Game.prototype._incrementFrame = function () {
   this.lastFrameNumber += 1
 }
 
-Game.prototype._endFrameScore = function () {
+Game.prototype._bonusCalc = function () {
   var frame = new Frame()
   if (frame.isStrike(this.frameResults[this.lastFrameNumber])) {
     this.score += frame.strikeBonus(this.frameResults[this.frameNumber])

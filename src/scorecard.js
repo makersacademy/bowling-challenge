@@ -27,7 +27,11 @@ return this.frame_score;
 
 Scorecard.prototype.total_score_display = function(){
   var sum = this.total_score_array.reduce((a,b) => a + b, 0);
-  return sum;
+  if (sum > 0) {
+    return sum;
+  } else {
+    return 'Gutter Game';
+  };
 };
 
 Scorecard.prototype.clear = function(){

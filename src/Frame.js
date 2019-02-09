@@ -28,6 +28,10 @@ class Frame {
     return this._score
   }
 
+  strike () {
+    return this._strike
+  }
+
   isSpare () {
     return this._spare
   }

@@ -25,7 +25,9 @@ class Bowling {
   endFrame () {
     this.frame++
     this.checkGameEnd()
-    // this._addSpareBonus()
+    if (this._frames.length >= 2) {
+      this._addSpareBonus()
+    }
   }
 
   checkGameEnd () {
@@ -53,12 +55,21 @@ class Bowling {
     return score
   }
 
+  _addSpareBonus () {
+    let previousFrame = this._previousFrame(1)
+    if (!previousFrame.strike()) {
+      return
+    }
+    let currentFrameScore = this._currentFrame().score()
+    previousFrame.addBonusScore(currentFrameScore)
+  }
+
   _currentFrame () {
     return this._frames[this._frames.length - 1]
   }
 
-  _getPenultimateFrame () {
-    return this._frames[this._frames.length - 2]
+  _previousFrame (num = 1) {
+    return this._frames[this._frames.length - (num + 1)]
   }
 
   _newFrame () {

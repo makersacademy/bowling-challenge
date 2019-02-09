@@ -1,5 +1,4 @@
 function Frame () {
-
 }
 
 
@@ -18,4 +17,4 @@ function Frame () {
       return this.bowl.reduce(function(score,score) {
         return score + score
       })
-    }, 
+    },

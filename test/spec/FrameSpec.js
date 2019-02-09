@@ -26,14 +26,13 @@ describe("Frame", function() {
     fullgame.bowling(frame)
     }
   fullgame.bowling(frame 10 || frame)
-  }
+  })
 
   it("Shows score of zero if you dont hit a single pin all game", function(){
     bowlingFrames([0,0])
     expect(fullgame.currentScore()).toEqual(0);
   });
 });
-
 
   it("Get the score from one frame", function() {
     frame1 = makeFrame([5,4]);

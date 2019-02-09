@@ -1,0 +1,67 @@
+.container {
+	 display: flex;
+   flex-direction: row;
+   align-content: space-between;
+   margin-top: -10px;
+}
+.frame {
+  height: 250px;
+  width: 200px;
+  border: 3px solid white;
+  border-radius: 5px;
+  background-color: mediumaquamarine;
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr 5fr 1fr;
+  grid-template-rows: 4fr 7fr 2fr 7fr 2fr;
+  align-items: stretch;
+}
+.m1{
+  background: transparent;
+  grid-area: 1/1/2/6;
+  display: flex;
+}
+.m2 {
+  background: inherit;
+  grid-area: 1/2/2/5;
+  margin: 0 auto;
+  font-size: 25px;
+}
+.m3 {
+  background: inherit;
+  grid-area: 2/5/6/6;
+}
+
+.roll1{
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+  grid-area: 2/2/3/3;
+}
+
+.roll2{
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+  grid-area: 2/4/3/5;
+}
+
+.score{
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+  grid-area: 4/2/5/5;
+}
+.card {
+  margin: 0 auto;
+}
+.card-text {
+  font-size: 40px;
+}
+
+img {
+  max-height: 230px;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}

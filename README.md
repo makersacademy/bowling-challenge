@@ -33,31 +33,67 @@ My approach to the challenge:
 
 ``As a user,
 
-So I can keep a track of the game,
+So I can keep a track of the game
 
 I would like to record a number of pins I've
- knocked on scorecard``
+ knocked on scorecard```
 
 
 ``As a user,
 
-So I know how many points I've scored,
+So I know how many points I've scored
 
 I would like to see the score at the end of each frame``
 
 
 ``As a user,
 
-So I know how good or bad I did this time,
+So I know how good or bad I did this time
 
 I would like to see the total score at the end of the game``
 
 
 ``As a user,
 
-So I can enjoy the experience and play again,
+So I can enjoy the experience and play again
 
 I would like to be able to use scorecard for new game``
+
+**My advanced stories**
+
+``As a user,
+
+When I play the whole game but never hit any pin
+
+I want to see a 'Gutter Game'``
+
+
+``As a user,
+
+When I knock down all 10 pins with the first roll in a frame
+
+Frame ends and strike bonus will be added to my score``
+
+
+``As a user,
+
+When I knock down 10 pins within one frame
+
+Spare bonus will be added to my score``
+
+
+``As a user,
+
+When I roll a strike or spare in the 10th frame
+
+I can roll up to 3 additional balls and receive due bonus``
+
+
+``As a user,
+
+When I roll 12 perfect strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame)
+
+The Perfect Game gives me 300 points``
 
 
 ----

@@ -19,4 +19,23 @@ describe("CheckRoll",function(){
       new Error("invalid character")
     );
   });
+  it("Raises an error for illegal spares",function(){
+    expect(function(){checkRoll.run("/")}).toThrow(
+      new Error("illegal spare")
+    );
+    checkRoll._scorecard = [[5,4],[3,5]]
+    expect(function(){checkRoll.run("/")}).toThrow(
+      new Error("illegal spare")
+    );
+  })
+  it("Doesn't raise error for legal spares", function(){
+    checkRoll._scorecard =[[1]]
+    expect(function(){checkRoll.run("/")}).not.toThrow(
+      new Error("illegal spare")
+    );
+    checkRoll._scorecard =[[1,3],[5]]
+    expect(function(){checkRoll.run("/")}).not.toThrow(
+      new Error("illegal spare")
+    );
+  })
 });

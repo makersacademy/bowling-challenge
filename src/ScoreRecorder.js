@@ -17,16 +17,7 @@ ScoreRecorder.prototype.roll = function(score){
       return this._scorecard;
     }
   }else if(this._scorecard.length === 9 && this.lastFrame().length == 2){
-    console.log("in the last frame")
-    console.log(this._scorecard.length)
-    this._scorecard.forEach(function(obj){
-      console.log(obj);
-    });
-    console.log(this._scorecard)
-    console.log("that was supposed to be round 10")
-    //last frame
     this._scorecard.push([score]);
-    console.log(this.lastFrame())
   }else if(this._scorecard.length >= 10){
     if(this._isGameOver()){throw new Error("Game is over")}
     this._scorecard[this._scorecard.length - 1].push(score);

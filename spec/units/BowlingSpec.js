@@ -50,9 +50,15 @@ describe('Bowling', function () {
     expect(bowling.spare).toEqual(true)
   })
 
-  xit('should reset the spare flag after one roll', function () {
+  it('should reset the spare flag after one roll', function () {
     enterScores(5, 2)
     enterScores(1, 1)
     expect(bowling.spare).toEqual(false)
+  })
+
+  it('should calculate spares correctly', function () {
+    enterScores(5, 2)
+    enterScores(2, 2)
+    expect(bowling.gameScore()).toEqual(16)
   })
 })

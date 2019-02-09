@@ -13,6 +13,7 @@ class Bowling {
     this.frameScore += number
     this.roll++
     if (this.spare) {
+      this.addSpareBonus(number)
       this.spare = false
     }
     this.checkFrameEnd()
@@ -51,6 +52,10 @@ class Bowling {
       total += this._gameScore[num]
     })
     return total
+  }
+
+  addSpareBonus (num) {
+    this._gameScore[this.frame - 1] += num
   }
 }
 

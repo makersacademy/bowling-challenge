@@ -33,9 +33,13 @@ describe('Bowling', function () {
     expect(bowling.gameScore()).toEqual(58)
   })
 
-  xit('should calculate spares correctly', function () {
+  it('should record an all spares game correctly', function () {
+    enterScores(5, 18)
+    expect(bowling.scorecardComplete).toEqual(false)
+    expect(bowling.gameScore()).toEqual(130)
     enterScores(5, 2)
-    enterScores(2, 2)
-    expect(bowling.gameScore()).toEqual(16)
+    enterScores(5, 1)
+    expect(bowling.scorecardComplete).toEqual(true)
+    expect(bowling.gameScore()).toEqual(150)
   })
 })

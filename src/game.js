@@ -1,7 +1,8 @@
-class Game {
+class BowlingGame {
 
   constructor(turns) {
     this.turns = [];
+    this.score = 0
   }
 
   play(firstBowl, secondBowl) {

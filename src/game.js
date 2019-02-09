@@ -13,6 +13,7 @@ function Game () {
   this.totalScore = 0
   this.frameNumber = 0
   this.lastFrameNumber = -1
+  this.secondLastFrameNumber = -2
 };
 
 Game.prototype.frameAdd = function (frameArr) {
@@ -25,17 +26,21 @@ Game.prototype.frameAdd = function (frameArr) {
 Game.prototype.calculate = function () {
   var frame = new Frame()
   if (this.frameNumber === 0) {
-    this.frameScores[this.frameNumber] += frame.frameScore(this.frameResults[this.frameNumber])
+    this._baseCalc()
   } else if (this.frameNumber === 1) {
-    this.frameScores[this.frameNumber] += frame.frameScore(this.frameResults[this.frameNumber])
+    this._baseCalc()
     this._bonusCalc()
   } else if (this.frameNumber === 10) {
     this._bonusCalc()
   } else {
-    this.frameScores[this.frameNumber] += frame.frameScore(this.frameResults[this.frameNumber])
+    this._baseCalc()
     this._bonusCalc()
     this._doubleStrikeCalc()
   }
+}
+
+Game.prototype._baseCalc = function() {
+  this.frameScores[this.frameNumber] += frame.frameScore(this.frameResults[this.frameNumber])
 }
 
 Game.prototype._bonusCalc = function () {
@@ -49,14 +54,15 @@ Game.prototype._bonusCalc = function () {
 
 Game.prototype._doubleStrikeCalc = function () {
   var frame = new Frame()
-  if (frame.isStrike(this.frameResults[this.lastFrameNumber]) && frame.isStrike(this.frameResults[this.lastFrameNumber - 1])) {
-    this.frameScores[this.lastFrameNumber - 1] += 10
+  if (frame.isStrike(this.frameResults[this.lastFrameNumber]) && frame.isStrike(this.frameResults[this.secondLastFrameNumber])) {
+    this.frameScores[this.secondLastFrameNumber] += 10
   }
 }
 
 Game.prototype._incrementFrame = function () {
   this.frameNumber += 1
   this.lastFrameNumber += 1
+  this.secondLastFrameNumber += 1
 }
 
 module.exports = Game

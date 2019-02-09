@@ -26,6 +26,9 @@ class ScoreCard {
     const result = scores.map(
       x => {
         if(x[1] === 10){
+          if(scores[scores.indexOf(x) + 1][1] === 10){
+            return 10 + scores[scores.indexOf(x) + 1][1] + scores[scores.indexOf(x) + 1][2] + scores[scores.indexOf(x) + 2][1];
+          }
           return 10 + scores[scores.indexOf(x) + 1][1] + scores[scores.indexOf(x) + 1][2];
         } else {
           return x[1] + x[2];

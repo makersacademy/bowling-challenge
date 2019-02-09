@@ -39,7 +39,7 @@ describe('Bowling', function () {
 
   it('should reset the frameScore to zero after each frame', function () {
     let i
-    for (i = 0; i < 3; i++) {
+    for (i = 0; i < 2; i++) {
       bowling.enterScore(1)
     }
     expect(bowling.frameScore).toEqual(0)

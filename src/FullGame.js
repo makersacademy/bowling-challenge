@@ -20,7 +20,7 @@ totalBowlingscore: function () {
 }
 
 
-
+// const arrSum = arr => arr.reduce((a,b) => a + b, 0)
 //.reduce Js
 ///arr.reduce(callback[, initialValue])
 //ParametersSection

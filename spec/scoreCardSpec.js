@@ -37,5 +37,21 @@ describe('ScoreCard', () => {
     });
   });
 
+  describe('finalScore', () =>{
+    it('throws an error if game is not yet complete', () => {
+      scoreCard.recordScore(1, 1, 1);
+      expect(() => {
+        scoreCard.finalScore()
+      }).toThrow();
+    });
+
+    it('returns the final score in a game without strikes or spares', () => {
+      for(let i = 1 ; i < 11 ; i++){
+        return scoreCard.recordScore(i, 1, 1);
+      }
+      expect(scoreCard.finalScore()).toEqual(20);
+    });
+  });
+
 
 });

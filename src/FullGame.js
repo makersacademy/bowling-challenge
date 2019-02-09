@@ -18,7 +18,7 @@ addingscore: function(score) {
 },
 totalBowlingscore: function () {
   return this.frames.reduce(function(score, frame, index, frames){
-    return score + frame.scoringtotal(frames[index + 1], frames[index + 2])
+    return score + frame.totalBowlingscore(frames[index + 1], frames[index + 2])
   },0)
 }
 

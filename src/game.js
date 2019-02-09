@@ -8,7 +8,7 @@ class BowlingGame {
 
   play(firstBowl, secondBowl = 0) {
     this.previousTurnBonus(firstBowl, secondBowl)
-    if (this.deservesBonus(firstBowl, secondBowl)) {
+    if (this.strikeOrSpare(firstBowl, secondBowl)) {
       this.addBonus(firstBowl, secondBowl)
     } else {
       this.countScore(firstBowl, secondBowl)
@@ -28,7 +28,7 @@ class BowlingGame {
     this.bonus = 0;
   }
 
-  deservesBonus(firstBowl, secondBowl) {
+  strikeOrSpare(firstBowl, secondBowl) {
     return (this.strike(firstBowl) || this.spare(firstBowl, secondBowl))
   }
 

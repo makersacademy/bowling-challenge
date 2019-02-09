@@ -42,10 +42,10 @@ describe("BowlingGame", function() {
       expect(game.spare(4, 1)).toEqual(false)
     });
 
-    it('should confirm true for deservesBonus', function(){
-      expect(game.deservesBonus(7, 3)).toEqual(true)
-      expect(game.deservesBonus(10, 0)).toEqual(true)
-      expect(game.deservesBonus(1, 3)).toEqual(false)
+    it('should confirm true for strikeOrSpare', function(){
+      expect(game.strikeOrSpare(7, 3)).toEqual(true)
+      expect(game.strikeOrSpare(10, 0)).toEqual(true)
+      expect(game.strikeOrSpare(1, 3)).toEqual(false)
     });
 
     it('should add bonus for a strike', function(){

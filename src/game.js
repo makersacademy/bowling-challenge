@@ -60,9 +60,28 @@ Game.prototype._doubleStrikeCalc = function () {
 }
 
 Game.prototype._incrementFrame = function () {
-  this.frameNumber += 1
-  this.lastFrameNumber += 1
-  this.secondLastFrameNumber += 1
+  this.frameNumber++
+  this.lastFrameNumber++
+  this.secondLastFrameNumber++
 }
+
+// Game.prototype.roll = function (pinsHit) {
+//   this.rolls.push(pinsHit)
+//   if (this.frameNumber === 9) {
+//     this.frameResults[this.frameNumber].push(pinsHit)
+//     this.calculate()
+//   } else if (pinsHit === 10) {
+//     this.frameResults[this.frameNumber] = [10, 0]
+//     this.calculate()
+//     this._incrementFrame()
+//   } else if (this.frameResults[this.frameNumber].length === 0 || undefined) {
+//     this.frameResults[this.frameNumber] = [pinsHit, 0]
+//   } else {
+//     this.frameResults[this.frameNumber][1] = pinsHit
+//     this.calculate()
+//     this._incrementFrame()
+//   }
+//   this.totalScore = this.frameScores.reduce(add)
+// }
 
 module.exports = Game

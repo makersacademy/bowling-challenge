@@ -5,22 +5,16 @@ var Game = require('../src/game')
 
 describe('Game', function () {
   var game
+  var i
 
   beforeEach(function () {
     game = new Game()
   })
 
   it('scores an easy game correctly via frameAdd', function () {
-    game.frameAdd([3, 3])
-    game.frameAdd([3, 3])
-    game.frameAdd([3, 3])
-    game.frameAdd([3, 3])
-    game.frameAdd([3, 3])
-    game.frameAdd([3, 3])
-    game.frameAdd([3, 3])
-    game.frameAdd([3, 3])
-    game.frameAdd([3, 3])
-    game.frameAdd([3, 3])
+    for (i = 0; i < 10; i++) {
+      game.frameAdd([3, 3])
+    }
     expect(game.frameScores).toEqual([ 6, 6, 6, 6, 6, 6, 6, 6, 6, 6 ])
     expect(game.totalScore).toEqual(60)
   })
@@ -57,48 +51,26 @@ describe('Game', function () {
   })
 
   it('scores a gutter game correctly', function () {
-    game.frameAdd([0, 0])
-    game.frameAdd([0, 0])
-    game.frameAdd([0, 0])
-    game.frameAdd([0, 0])
-    game.frameAdd([0, 0])
-    game.frameAdd([0, 0])
-    game.frameAdd([0, 0])
-    game.frameAdd([0, 0])
-    game.frameAdd([0, 0])
-    game.frameAdd([0, 0])
+    for (i = 0; i < 10; i++) {
+      game.frameAdd([0, 0])
+    }
     expect(game.frameScores).toEqual([ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ])
     expect(game.totalScore).toEqual(0)
   })
 
   it('scores a perfect game correctly', function () {
-    game.frameAdd([10, 0])
-    game.frameAdd([10, 0])
-    game.frameAdd([10, 0])
-    game.frameAdd([10, 0])
-    game.frameAdd([10, 0])
-    game.frameAdd([10, 0])
-    game.frameAdd([10, 0])
-    game.frameAdd([10, 0])
-    game.frameAdd([10, 0])
-    game.frameAdd([10, 0])
+    for (i = 0; i < 10; i++) {
+      game.frameAdd([10, 0])
+    }
     game.frameAdd([10, 10])
     expect(game.frameScores).toEqual([ 30, 30, 30, 30, 30, 30, 30, 30, 30, 30 ])
     expect(game.totalScore).toEqual(300)
   })
 
   it('scores a game of spares game correctly', function () {
-    game.frameAdd([5, 5])
-    game.frameAdd([5, 5])
-    game.frameAdd([5, 5])
-    game.frameAdd([5, 5])
-    game.frameAdd([5, 5])
-    game.frameAdd([5, 5])
-    game.frameAdd([5, 5])
-    game.frameAdd([5, 5])
-    game.frameAdd([5, 5])
-    game.frameAdd([5, 5])
-    game.frameAdd([5, 5])
+    for (i = 0; i < 11; i++) {
+      game.frameAdd([5, 5])
+    }
     expect(game.frameScores).toEqual([ 15, 15, 15, 15, 15, 15, 15, 15, 15, 15 ])
     expect(game.totalScore).toEqual(150)
   })

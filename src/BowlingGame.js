@@ -12,10 +12,7 @@ function BowlingGame() {
     this.checkFramesToStartOrEndGame();
     this.score += score;
     this.countRollNumber();
-    if (this._rollNum === 1 && this.isInPlay){ 
-      this.frame += 1
-    }
-    
+    this.increaseFrameNum();
   };
 
   BowlingGame.prototype.checkFramesToStartOrEndGame = function() {
@@ -31,6 +28,12 @@ function BowlingGame() {
 
   BowlingGame.prototype.countRollNumber = function() {
     this._rollNum < 2 ? this._rollNum += 1 : this._rollNum = 1;
+  }
+  
+  BowlingGame.prototype.increaseFrameNum = function() {
+    if (this._rollNum === 1 && this.isInPlay) {
+      this.frame += 1;
+    }
   }
 
 module.exports = BowlingGame

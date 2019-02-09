@@ -2,7 +2,7 @@
 Bowling Scorecard
 =================
 
-## The Task 
+## The Task
 
 Counts and sums up the scores of a bowling game for one player (in JavaScript). The user is the one inputing the rolls.
 
@@ -10,20 +10,19 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 
 ## My approach
 
-The game works as intended - I would like to refactor the calculateScores method in Game as it's quite challenging to read (even though I've tried to use suggestive variable names to make it easier to go throgh). The refactoring would involve some of the code moving to the Frame class which would in turn mean that Frame would have to be made aware of the full array that Game is receiving (not ideal). One option would be to use one class (the code was initially split into two classes to meet the single responsibility principle).
+The Game class receives an array of scores containing all of the player's rolls. It then uses the class Frame to generate the individual frames and calculate the score for each, followed by the overall score.
 
-I've aimed for good test coverage which helped quite a bit when I kept on adjusting the code towards the end to properly manage the 10th frame and its bonuses.
+I've aimed for good test coverage which helped when I kept on adjusting the code towards the end to properly manage the 10th frame and its bonuses.
 
-ESLint is also installed - there are a few warnings left around the lenght of some of the lines. 
-I've tried running Travis as well but faced some challenges configuring it so will need to come back to that. 
+ESLint is also installed - there are a few warnings left around the length of some of the lines.
 
 ## Running the app and tests
 
-App: 
-1. clone the repo : git@github.com:AlinaGoaga/bowling-challenge.git and cd into the project
+App:
+1. clone the repo and cd into the project
 2. play around with it in the console
 
-Tests: 
+Tests:
 1. run open SpecRunner.html in the terminal
 2. a window will open containing the below
 

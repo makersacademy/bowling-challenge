@@ -26,22 +26,7 @@ Game.prototype.calculateScores = function() {
     let nextFrame = this.allFrames[i+1];
     let nextNextFrame = this.allFrames[i+2];
     let score = 0;
-    if (currentFrame.isStrike()) {
-      if (nextFrame.isStrike()) {
-        if (nextNextFrame.isStrike()) {
-          console.log(currentFrame.calculateScore());
-          score = currentFrame.calculateScore() + nextFrame.calculateScore() + nextNextFrame.calculateScore();
-        } else {
-          score = currentFrame.calculateScore() + nextFrame.calculateScore() + nextNextFrame.rolls[0];
-        };
-      } else {
-        score = currentFrame.calculateScore() + nextFrame.calculateScore();
-      };
-    } else if (currentFrame.isSpare()) {
-      score = currentFrame.calculateScore() + nextFrame.rolls[0];
-    } else {
-      score = currentFrame.calculateScore();
-    };
+    score = checkForStrike(currentFrame, nextFrame, nextNextFrame);
     this.framesScores.push(score);
   };
   return this.framesScores;
@@ -53,3 +38,30 @@ Game.prototype.calculateOverallScore = function() {
   }
   return (this.overallScore);
 };
+
+
+  var nextNextStrike = (currentFrame, nextFrame, nextNextFrame) => {
+    if (nextNextFrame.isStrike()) {
+      return currentFrame.calculateScore() + nextFrame.calculateScore() + nextNextFrame.calculateScore();
+    } else {
+      return currentFrame.calculateScore() + nextFrame.calculateScore() + nextNextFrame.rolls[0];
+    }
+  }
+
+  var nextStrike = (currentFrame, nextFrame, nextNextFrame) => {
+    if (nextFrame.isStrike()) {
+      return nextNextStrike(currentFrame, nextFrame, nextNextFrame)
+    } else {
+      return currentFrame.calculateScore() + nextFrame.calculateScore();
+    };
+  }
+
+  var checkForStrike = (currentFrame, nextFrame, nextNextFrame) => {
+    if (currentFrame.isStrike()) {
+      return nextStrike(currentFrame, nextFrame, nextNextFrame)
+    } else if (currentFrame.isSpare()) {
+      return currentFrame.calculateScore() + nextFrame.rolls[0];
+    } else {
+      return currentFrame.calculateScore();
+    };
+}

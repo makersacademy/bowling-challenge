@@ -11,10 +11,16 @@ describe('Features', () => {
     for(let i = 1 ; i < 11 ; i++){
       return scoreCard.recordScore(i, 0, 0);
     };
-    expect(scoreCard.isGameComplete).toEqual(true);
-    expect(scoreCard.totalScore).toEqual(0);
+    expect(scoreCard.isGameComplete()).toEqual(true);
+    expect(scoreCard.totalScore()).toEqual(0);
   });
 
-  // it('')
+  it('can score a game without any strikes or spares accurately', () => {
+    for(let i = 1 ; i < 11 ; i++){
+      return scoreCard.recordScore(i, 2, 3);
+    };
+    expect(scoreCard.isGameComplete()).toEqual(true);
+    expect(scoreCard.finalScore()).toEqual(50);
+  });
 
 });

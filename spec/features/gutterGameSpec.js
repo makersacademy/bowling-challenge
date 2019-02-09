@@ -1,13 +1,15 @@
+let BowlingGame = require('../../src/BowlingGame.js')
+
 describe('BowlingGutterGame', function() {
   
-  var game = new Game;
+  let bowlinggame = new BowlingGame();
 
   it('Gutter Game has score 0 and finishes in the 10th frame', function() {
     for (i = 0; i <= 20; i++) {
-      game.roll(0);
+      bowlinggame.roll(0);
     }
-    expect(game.score).toEqual(0)
-    expect(game.frame).toEqual(10)
+    expect(bowlinggame.score).toEqual(0)
+    expect(bowlinggame.frame).toEqual(10)
   });
 });
 

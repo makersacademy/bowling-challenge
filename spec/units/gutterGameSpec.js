@@ -1,14 +1,16 @@
-describe('BowlingGutterGame', function() {
+let BowlingGame = require('../../src/BowlingGame.js')
+console.log(BowlingGame)
+describe('BowlingGame', function() {
 
-  var game;
+  let bowlinggame;
 
   beforeEach(function() {
-    game = new Game
+    bowlinggame = new BowlingGame()
   });
 
   it('game has an initial score of 0 in frame 1', function() {
-    expect(game.score).toEqual(0)
-    expect(game.frame).toEqual(1)
+    expect(bowlinggame.score).toEqual(0)
+    expect(bowlinggame.frame).toEqual(1)
   });
 
 });

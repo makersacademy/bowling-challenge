@@ -3,7 +3,7 @@ function CheckRoll(scorecard) {
 }
 
 CheckRoll.prototype.lastFrame = function(){
-  return this._scorecard[this._scorecard.length-1]
+  return this._scorecard.length > 0 ? this._scorecard[this._scorecard.length-1] : []
 }
 
 

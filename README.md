@@ -10,14 +10,26 @@ As a player,
 If is roll 20 times and don't hit any pins,
 I should finish with 0 points in the 10th frame
 
-```
+As a player,
+If I roll 20 times with no strikes or spares,
+My final score should be the total or all the points for each roll
 
-Unit Tests - Gutter game
+
+As a player,
+If I score spares, 
+My bonus points should be the number of pins knocked down by the next roll
+
+```
+nit Tests - Gutter game
 
 ```
 As a player, 
 So I can start playing the game fairly, 
 I want to start with an initial score of 0 on frame 1
+
+As a player,
+If I don't score any points on any rolls,
+I should finish with no scores
 
 ```
 

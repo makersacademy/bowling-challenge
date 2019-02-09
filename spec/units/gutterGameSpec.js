@@ -14,8 +14,11 @@ describe('BowlingGame', function() {
     bowlingGame = new BowlingGame()
   });
 
-  it('game has an initial score of 0 and frame 0', function() {
+  it('game is initally not in play', function() { 
     expect(bowlingGame.isInPlay).toEqual(false)
+  });
+
+  it('game has an initial score of 0 and frame 0', function() {
     expect(bowlingGame.score).toEqual(0)
     expect(bowlingGame.frame).toEqual(0)
   });

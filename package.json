@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Estevenson1994/bowling-challenge#readme",
   "devDependencies": {
-    "jasmine": "^3.3.1"
+    "jasmine": "^3.3.1",
+    "jasmine-spec-reporter": "^4.2.1"
   }
 }

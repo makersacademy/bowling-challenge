@@ -1,8 +1,14 @@
-let BowlingGame = require('../../src/BowlingGame.js')
+var BowlingGame = require('../../src/BowlingGame.js')
 console.log(BowlingGame)
 describe('BowlingGame', function() {
 
-  let bowlingGame;
+  var bowlingGame;
+
+  var rolls = function(score, numOfRolls) {
+    for (i = 0; i < numOfRolls; i++) {
+      bowlingGame.roll(score)
+    };
+  };
 
   beforeEach(function() {
     bowlingGame = new BowlingGame()
@@ -16,6 +22,12 @@ describe('BowlingGame', function() {
 
   it('game has a score of 0 after first roll of 0', function() {
     bowlingGame.roll(0);
+    expect(bowlingGame.frame).toEqual(1)
+    expect(bowlingGame.score).toEqual(0)
+  });
+ 
+  it('game has score of 0 after 2 rolls of 0 points', function() {
+    rolls(0, 2);
     expect(bowlingGame.frame).toEqual(1)
     expect(bowlingGame.score).toEqual(0)
   });

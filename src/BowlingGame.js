@@ -10,10 +10,10 @@ function BowlingGame() {
 
   BowlingGame.prototype.roll = function(score) {
     if (this.frame < 10){
-      this.isInPlay = true
+      this.startGame();
     }
     else {
-      this.isInPlay = false
+      this.endGame();
     }
 
     this.score += score;
@@ -28,6 +28,13 @@ function BowlingGame() {
       this.frame += 1
     }
     
-};
+  };
 
+
+  BowlingGame.prototype.startGame = function() {
+    this.isInPlay = true
+  }
+  BowlingGame.prototype.endGame = function() {
+    this.isInPlay = false
+  }
 module.exports = BowlingGame

@@ -15,9 +15,13 @@ class Frame {
   }
 
   add (number) {
-    if (this._complete) {
-      this.addBonusScore(number)
-      return
+    if (this._complete && this.isSpare()) {
+      if (this._score.length === 3) {
+        return
+      } else {
+        this.addBonusScore(number)
+        return
+      }
     }
     this._score.push(number)
     this.roll += 1
@@ -42,6 +46,10 @@ class Frame {
 
   isSpare () {
     return this._spare
+  }
+
+  isStrike () {
+    return this._strike
   }
 
   _checkFrameEnd () {

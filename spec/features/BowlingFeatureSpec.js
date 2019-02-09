@@ -43,7 +43,7 @@ describe('Bowling', function () {
     expect(bowling.gameScore()).toEqual(150)
   })
 
-  xit('should record an all strikes game correctly', function () {
+  it('should record an all strikes game correctly', function () {
     enterScores(10, 9)
     expect(bowling.scorecardComplete).toEqual(false)
     expect(bowling.gameScore()).toEqual(240)

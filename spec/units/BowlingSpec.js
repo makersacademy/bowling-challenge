@@ -64,7 +64,7 @@ describe('Bowling', function () {
     })
   })
 
-  xdescribe('strikes are calculated correctly', function () {
+  describe('strikes are calculated correctly', function () {
     it('should track whether a strike has been struck', function () {
       enterScores(10, 1)
       expect(bowling.strike).toEqual(true)

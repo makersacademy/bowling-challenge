@@ -26,6 +26,8 @@ class Bowling {
     this.frame++
     if (this._frames.length >= 2) {
       this._addSpareBonus()
+    } else if (this._frames.length >= 3) {
+      // this._addStrikeBonus()
     }
     this.checkGameEnd()
   }
@@ -55,16 +57,26 @@ class Bowling {
   }
 
   _addSpareBonus () {
-    if (this.scorecardComplete) {
-      return
-    }
     let previousFrame = this._previousFrame(1)
     if (!previousFrame.isSpare()) {
       return
     }
     let firstRollCurrentFrame = this._currentFrame().firstRoll()
-    previousFrame.addBonusScore(firstRollCurrentFrame)
+    previousFrame.add(firstRollCurrentFrame)
   }
+
+  // _addStrikeBonus () {
+  //   if (this.scorecardComplete) {
+  //     return
+  //   }
+  //   let secondLastFrame = this._previousFrame(2)
+  //   if (!secondLastFrame.isStrike()) {
+  //     return
+  //   }
+  //   let lastFrame = this._previousFrame(1)
+  //
+  //
+  // }
 
   _currentFrame () {
     return this._frames[this._frames.length - 1]

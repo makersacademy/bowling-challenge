@@ -6,16 +6,21 @@ class Bowling {
     this.frameScore = 0
     this.gameScore = 0
     this.scorecardComplete = false
+    this.spare = false
   }
 
   enterScore (number) {
     this.frameScore += number
     this.roll++
+    if (this.spare) {
+      this.spare = false
+    }
     this.checkFrameEnd()
   }
 
   checkFrameEnd () {
     if (this.frameScore === 10) {
+      this.spare = true
       this.endFrame()
     } else if (this.roll === 2) {
       this.endFrame()

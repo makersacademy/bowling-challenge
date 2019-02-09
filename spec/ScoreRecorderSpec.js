@@ -25,7 +25,7 @@ describe("ScoreRecorder",function(){
   });
   it("can record a strike",function(){
     scoreRecorder.roll("X");
-    expect(scorecard).toEqual(["X",null])
+    expect(scorecard).toEqual([["X",null]])
   })
   it("throws an error if given invalid roll",function(){
     expect(function(){scoreRecorder.roll("a")}).toThrow(

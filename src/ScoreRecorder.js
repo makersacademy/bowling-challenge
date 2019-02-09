@@ -5,16 +5,17 @@ ScoreRecorder.prototype.roll = function(score){
   if(!this._isValidRoll(score)){throw new Error("invalid character")};
   if(score === "/" && !this._isValidSpare()){throw new Error("invalid spare")};
   if(!(this._scorecard.length == 9 && this.lastFrame().length == 2)&&this._scorecard.length < 10){
-    if(this._scorecard.length === 0){//refactor this all
-      this._scorecard.push([score]);
-      return this._scorecard
-    }else if(this.lastFrame().length === 2){
-      this._scorecard.push([score])
-      return this._scorecard
-    }else if(this.lastFrame().length === 1){
-      this._scorecard[this._scorecard.length-1].push(score);
+    switch(true){
+      case this._scorecard.length === 0:
+        score === "X" ? this._scorecard.push([score, null]) : this._scorecard.push([score]);
+        return this._scorecard
+      case this.lastFrame().length === 2:
+        score === "X" ? this._scorecard.push([score, null]) : this._scorecard.push([score]);
+        return this._scorecard
+      case this.lastFrame().length === 1:
+        this._scorecard[this._scorecard.length-1].push(score);
       return this._scorecard;
-    };
+    }
   }else if(this._scorecard.length === 9 && this.lastFrame().length == 2){
     console.log("in the last frame")
     console.log(this._scorecard.length)
@@ -44,7 +45,7 @@ ScoreRecorder.prototype._isValidSpare = function(){
 }
 
 ScoreRecorder.prototype._isValidStrike = function(){
-  return this._scorecard.length > 0 ? (this.lastFrame().length > 1) : false
+  return this._scorecard.length > 0 ? (this.lastFrame().length > 1) : true
 }
 
 

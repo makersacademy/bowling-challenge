@@ -1,3 +1,5 @@
+"use strict";
+
 describe("Features - BowlingGame", function() {
   var game;
 
@@ -94,7 +96,7 @@ describe("Features - BowlingGame", function() {
     expect(game.score).toEqual(300)
   });
 
-  it("can play a spare in tenth frame", function() {
+  it("can play a spare in tenth frame with first and second bowls", function() {
     game.play(10);
     expect(game.score).toEqual(0)
     game.play(10);
@@ -117,7 +119,7 @@ describe("Features - BowlingGame", function() {
     expect(game.score).toEqual(273)
   });
 
-  it("can play a spare in tenth frame", function() {
+  it("can play a spare in tenth frame with second and third bowl", function() {
     game.play(10);
     expect(game.score).toEqual(0)
     game.play(10);

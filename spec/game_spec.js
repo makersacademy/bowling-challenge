@@ -1,3 +1,5 @@
+"use strict";
+
 describe("BowlingGame", function() {
   var game;
 
@@ -15,10 +17,6 @@ describe("BowlingGame", function() {
   });
 
   describe('#countScore', () => {
-    it("has a score 0 at game start", function() {
-      expect(game.score).toEqual(0)
-    });
-
     it("returns the score after one normal turn", function() {
       expect(game.play(3, 4)).toEqual(7)
     });

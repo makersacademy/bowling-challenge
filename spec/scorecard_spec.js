@@ -54,7 +54,11 @@ describe('scorecard', function(){
     expect(card.total_score_display()).toMatch('Gutter Game');
   });
 
-
+  it('ends a frame after a strike',function(){
+    card.record_first(10)
+    card.strike();
+    expect(card.pins_knocked_two).toEqual(0);
+  });
 
 
 

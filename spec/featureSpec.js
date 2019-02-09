@@ -23,4 +23,13 @@ describe('Features', () => {
     expect(scoreCard.finalScore()).toEqual(50);
   });
 
+  it('can score a game with that starts with a strike', () => {
+    scoreCard.recordScore(1, 10, 0);
+    for(let i = 1 ; i < 10 ; i++){
+      return scoreCard.recordScore(2, 1, 1);
+    }
+    expect(scoreCard.scoreArray).toEqual([ [1, 10, 0], [2, 1, 1] ]);
+    expect(scoreCard.finalScore()).toEqual(14);
+  });
+
 });

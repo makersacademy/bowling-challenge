@@ -21,19 +21,27 @@ describe('Bowling', function () {
     expect(bowling.frame).toEqual(3)
   })
 
-  it('should not mark the game complete until after 20 frames', function () {
+  it('should not mark the game complete until after 20 rolls', function () {
     let i
     for (i = 0; i < 4; i++) {
       bowling.enterScore(0)
     }
-    expect(bowling.scorecardComplete).toEqual(false)
+    expect(bowling.scorecardComplete()).toEqual(false)
   })
 
-  it('should mark the game complete after 20 frames', function () {
+  it('should mark the game complete after 20 rolls', function () {
     let i
     for (i = 0; i < 20; i++) {
       bowling.enterScore(0)
     }
-    expect(bowling.scorecardComplete).toEqual(true)
+    expect(bowling.scorecardComplete()).toEqual(true)
+  })
+
+  it('should reset the frameScore to zero after each frame', function () {
+    let i
+    for (i = 0; i < 3; i++) {
+      bowling.enterScore(1)
+    }
+    expect(bowling.frameScore).toEqual(0)
   })
 })

@@ -3,7 +3,7 @@
 class Frame {
   constructor (num) {
     this._frameNumber = num
-    this._score = 0
+    this._score = []
     this.roll = 0
     this._spare = false
     this._strike = false
@@ -15,7 +15,11 @@ class Frame {
   }
 
   add (number) {
-    this._score += number
+    if (this.roll === 2) {
+      this.addBonusScore(number)
+      return
+    }
+    this._score.push(number)
     this.roll += 1
     this._checkFrameEnd()
   }
@@ -24,12 +28,16 @@ class Frame {
     return this._frameNumber
   }
 
-  score () {
-    return this._score
+  firstRoll () {
+    return this._score[0]
   }
 
-  strike () {
-    return this._strike
+  score () {
+    let score = 0
+    this._score.forEach(function (num) {
+      score += num
+    })
+    return score
   }
 
   isSpare () {
@@ -37,7 +45,7 @@ class Frame {
   }
 
   _checkFrameEnd () {
-    if (this._score === 10) {
+    if (this.score() === 10) {
       this._spare = true
       this._complete = true
     } else if (this.roll === 2) {
@@ -46,7 +54,7 @@ class Frame {
   }
 
   addBonusScore (num) {
-    this._score += num
+    this._score.push(num)
   }
 }
 

@@ -17,17 +17,17 @@ class Bowling {
 
   enterScore (number) {
     this._currentFrame().add(number)
-    if (this._lastFrameComplete()) {
+    if (this._currentFrameComplete()) {
       this.endFrame()
     }
   }
 
   endFrame () {
     this.frame++
-    this.checkGameEnd()
     if (this._frames.length >= 2) {
       this._addSpareBonus()
     }
+    this.checkGameEnd()
   }
 
   checkGameEnd () {
@@ -56,12 +56,15 @@ class Bowling {
   }
 
   _addSpareBonus () {
-    let previousFrame = this._previousFrame(1)
-    if (!previousFrame.strike()) {
+    if (this.scorecardComplete) {
       return
     }
-    let currentFrameScore = this._currentFrame().score()
-    previousFrame.addBonusScore(currentFrameScore)
+    let previousFrame = this._previousFrame(1)
+    if (!previousFrame.isSpare()) {
+      return
+    }
+    let firstRollCurrentFrame = this._currentFrame().firstRoll()
+    previousFrame.addBonusScore(firstRollCurrentFrame)
   }
 
   _currentFrame () {
@@ -76,7 +79,7 @@ class Bowling {
     this._frames.push(new Frame(this.frame))
   }
 
-  _lastFrameComplete () {
+  _currentFrameComplete () {
     return this._currentFrame().complete()
   }
 }

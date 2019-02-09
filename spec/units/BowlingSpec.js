@@ -44,4 +44,17 @@ describe('Bowling', function () {
     }
     expect(bowling.frameScore).toEqual(0)
   })
+
+  it('should mark a frame complete after 2 rolls', function () {
+    let i
+    for (i = 0; i < 3; i++) {
+      bowling.enterScore(0)
+    }
+    expect(bowling.frameComplete).toEqual(true)
+  })
+
+  it('should not mark a frame complete after 1 roll', function () {
+    bowling.enterScore(0)
+    expect(bowling.frameComplete).toEqual(false)
+  })
 })

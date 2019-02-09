@@ -50,25 +50,23 @@ describe("Features - BowlingGame", function() {
 
   it("can play a game with spares and strikes showing always the score - tenth frame plays normal", function() {
     game.play(3, 7);
-    console.log(game.score)
     expect(game.score).toEqual(0)
     game.play(1, 1);
-    console.log(game.score)
     expect(game.score).toEqual(13)
     game.play(10);
-    expect(game.score).toEqual(23)
+    expect(game.score).toEqual(13)
     game.play(10);
-    expect(game.score).toEqual(43)
+    expect(game.score).toEqual(13)
     game.play(3, 4);
     expect(game.score).toEqual(57)
     game.play(10);
-    expect(game.score).toEqual(67)
+    expect(game.score).toEqual(57)
     game.play(8, 0);
     expect(game.score).toEqual(83)
     game.play(3, 7);
-    expect(game.score).toEqual(93)
+    expect(game.score).toEqual(83)
     game.play(10);
-    expect(game.score).toEqual(113)
+    expect(game.score).toEqual(83)
     game.play(2, 4);
     expect(game.score).toEqual(125)
   });

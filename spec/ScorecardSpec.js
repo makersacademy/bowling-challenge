@@ -63,19 +63,21 @@ describe("Scorecard", function() {
   });
 
   it("allows one more roll on frame 10 if frame 10 had a strike", function(){
-    for(var i = 1; i <= 10; i++){
+    for(var i = 1; i <= 9; i++){
       scorecard.record.roll("4");
-      scorecard.record.roll("X");
+      scorecard.record.roll("5");
     }
+    scorecard.record.roll("X");
+    scorecard.record.roll("3");
     expect(function(){scorecard.record.roll("5")}).not.toThrow(new Error ("Game is over"));
     expect(function(){scorecard.record.roll("5")}).toThrow(new Error ("Game is over"));
-    expect(scorecard.lastFrame()).toEqual(["4","X","5"]);
+    expect(scorecard.lastFrame()).toEqual(["X","3","5"]);
   });
 
   it("allows one more roll on frame 10 if frame 10 had two strikes", function(){
     for(var i = 1; i <= 9; i++){
       scorecard.record.roll("4");
-      scorecard.record.roll("X");
+      scorecard.record.roll("5");
     }
     scorecard.record.roll("X");
     scorecard.record.roll("X");

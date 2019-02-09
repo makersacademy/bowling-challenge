@@ -59,18 +59,19 @@ describe("ScoreRecorder",function(){
 
   it("allows one more roll on frame 10 if frame 10 had a strike", function(){
     for(var i = 1; i <= 10; i++){
-      scoreRecorder.roll("4");
+      console.log("butwhy")
       scoreRecorder.roll("X");
     }
+    scoreRecorder.roll("3");
     expect(function(){scoreRecorder.roll("5")}).not.toThrow(new Error ("Game is over"));
     expect(function(){scoreRecorder.roll("5")}).toThrow(new Error ("Game is over"));
-    expect(scorecard[scorecard.length-1]).toEqual(["4","X","5"]);
+    expect(scorecard[scorecard.length-1]).toEqual(["X","3","5"]);
   });
 
   it("allows one more roll on frame 10 if frame 10 had two strikes", function(){
     for(var i = 1; i <= 9; i++){
       scoreRecorder.roll("4");
-      scoreRecorder.roll("X");
+      scoreRecorder.roll("5");
     }
     scoreRecorder.roll("X");
     scoreRecorder.roll("X");

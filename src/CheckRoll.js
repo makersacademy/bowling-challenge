@@ -4,9 +4,15 @@ function CheckRoll(scorecard) {
 
 CheckRoll.prototype.run = function(roll){
   if(!this._isValidRoll(roll)){throw new Error("invalid character")}
+  console.log("here");
+  console.log(roll)
   switch(roll){
     case "/": if(!this._isValidSpare()){throw new Error("illegal spare")};
+    break;
     case "X": if(!this._isValidStrike()){throw new Error("illegal strike")};
+    break;
+    default: return 0;
+    break;
   };
   return 0
 }

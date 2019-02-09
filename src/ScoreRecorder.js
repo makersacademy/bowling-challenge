@@ -4,7 +4,15 @@ function ScoreRecorder(scorecard){
 ScoreRecorder.prototype.roll = function(score){
   if(!this._isValidRoll(score)){throw new Error("invalid character")};
   if(score === "/" && !this._isValidSpare()){throw new Error("invalid spare")};
-  if(!(this._scorecard.length == 9 && this.lastFrame().length == 2)&&this._scorecard.length < 10){
+  if(this._scorecard.length >= 10){
+    if(this._isGameOver()){throw new Error("Game is over")}
+    this._scorecard[this._scorecard.length - 1].push(score);
+  }else if(this._scorecard.length === 9 && this.lastFrame().length == 2){
+    this._scorecard.push([score]);
+  }
+  else if(!(this._scorecard.length == 9 && this.lastFrame().length == 2)&&this._scorecard.length < 10){
+    console.log(this._scorecard)
+    new CheckRoll(this._scorecard).run(score)
     switch(true){
       case this._scorecard.length === 0:
         score === "X" ? this._scorecard.push([score, null]) : this._scorecard.push([score]);
@@ -14,13 +22,8 @@ ScoreRecorder.prototype.roll = function(score){
         return this._scorecard
       case this.lastFrame().length === 1:
         this._scorecard[this._scorecard.length-1].push(score);
-      return this._scorecard;
+        return this._scorecard;
     }
-  }else if(this._scorecard.length === 9 && this.lastFrame().length == 2){
-    this._scorecard.push([score]);
-  }else if(this._scorecard.length >= 10){
-    if(this._isGameOver()){throw new Error("Game is over")}
-    this._scorecard[this._scorecard.length - 1].push(score);
   };
 };
 

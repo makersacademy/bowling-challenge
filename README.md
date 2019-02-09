@@ -1,7 +1,17 @@
-
-Bowling Challenge
+=================
+Bowling Challenge - README
 =================
 
+User stories created from the instructions.
+
+As a user,
+So I can keep track of the game at each roll,
+I would like to record knocked pins on a card.
+
+
+=================
+Bowling Challenge - Instructions
+=================
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

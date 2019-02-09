@@ -32,22 +32,31 @@ My approach to the challenge:
 **My basic stories:**
 
 ``As a user,
-So I can keep a track of the game
-I would like to record a number of pins I've knocked on scorecard``
+
+So I can keep a track of the game,
+
+I would like to record a number of pins I've
+ knocked on scorecard``
 
 
 ``As a user,
-So I know how many points I've scored
+
+So I know how many points I've scored,
+
 I would like to see the score at the end of each frame``
 
 
 ``As a user,
-So I know how good or bad I did this time
+
+So I know how good or bad I did this time,
+
 I would like to see the total score at the end of the game``
 
 
 ``As a user,
-So I can enjoy the experience and play again
+
+So I can enjoy the experience and play again,
+
 I would like to be able to use scorecard for new game``
 
 

@@ -87,7 +87,7 @@ describe("Scorecard", function() {
   });
 
   it("throws an error if a player scores a / on first roll of frame",function(){
-    expect(function(){scorecard.record.roll("/")}).toThrow(new Error ("invalid spare"))
+    expect(function(){scorecard.record.roll("/")}).toThrow(new Error ("illegal spare"))
   });
 
 

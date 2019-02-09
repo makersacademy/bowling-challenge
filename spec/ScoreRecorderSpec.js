@@ -81,13 +81,13 @@ describe("ScoreRecorder",function(){
   });
 
   it("throws an error if a player scores a / on first roll of frame",function(){
-    expect(function(){scoreRecorder.roll("/")}).toThrow(new Error ("invalid spare"))
+    expect(function(){scoreRecorder.roll("/")}).toThrow(new Error ("illegal spare"))
 
   });
   it("throws an error if a player scores a / on first roll of frame",function(){
     scoreRecorder.roll("4");
     scoreRecorder.roll("/");
-    expect(function(){scoreRecorder.roll("/")}).toThrow(new Error ("invalid spare"))
+    expect(function(){scoreRecorder.roll("/")}).toThrow(new Error ("illegal spare"))
 
   });
 

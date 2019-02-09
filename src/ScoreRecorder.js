@@ -2,8 +2,6 @@ function ScoreRecorder(scorecard){
   this._scorecard = scorecard;
 }
 ScoreRecorder.prototype.roll = function(score){
-  if(!this._isValidRoll(score)){throw new Error("invalid character")};
-  if(score === "/" && !this._isValidSpare()){throw new Error("invalid spare")};
   if(this._scorecard.length >= 10){
     if(this._isGameOver()){throw new Error("Game is over")}
     this._scorecard[this._scorecard.length - 1].push(score);

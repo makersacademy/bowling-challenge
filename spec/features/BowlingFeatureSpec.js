@@ -5,16 +5,20 @@ let Bowling = require('../../src/Bowling.js')
 describe('Bowling', function () {
   let bowling
 
+  let enterScores = function (score, repeats) {
+    let i
+    for (i = 0; i < repeats; i++) {
+      bowling.enterScore(score)
+    }
+  }
+
   beforeEach(function () {
     bowling = new Bowling()
   })
 
   it('should record a gutter game correctly', function () {
-    let i
-    for (i = 0; i < 20; i++) {
-      bowling.enterScore(0)
-    }
+    enterScores(0, 20)
     expect(bowling.scorecardComplete).toEqual(true)
-    expect(bowling.score).toEqual(0)
+    expect(bowling.gameScore).toEqual(0)
   })
 })

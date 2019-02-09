@@ -31,4 +31,10 @@ describe('BowlingGame', function() {
     expect(bowlingGame.frame).toEqual(1)
     expect(bowlingGame.score).toEqual(0)
   });
+  
+  it('game has score of 0, and frame is 2 after three rolls', function() {
+    rolls(0, 3)
+    expect(bowlingGame.frame).toEqual(2)
+    expect(bowlingGame.score).toEqual(0)
+  });
 });

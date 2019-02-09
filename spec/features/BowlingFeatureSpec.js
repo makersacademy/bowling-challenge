@@ -21,4 +21,15 @@ describe('Bowling', function () {
     expect(bowling.scorecardComplete).toEqual(true)
     expect(bowling.gameScore).toEqual(0)
   })
+
+  it('should record a no strikes or spares game correctly', function () {
+    enterScores(3, 8)
+    enterScores(0, 2)
+    enterScores(4, 8)
+    expect(bowling.scorecardComplete).toEqual(false)
+    expect(bowling.gameScore).toEqual(56)
+    enterScores(1, 2)
+    expect(bowling.scorecardComplete).toEqual(true)
+    expect(bowling.gameScore).toEqual(58)
+  })
 })

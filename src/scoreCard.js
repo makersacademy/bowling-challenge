@@ -19,13 +19,23 @@ class ScoreCard {
     return total;
   }
 
+  experiment(){
+    const scores = this.scoreArray;
+    const result = scores.map(
+      x => x[1] === 10 ? 
+        10 + scores[scores.indexOf(x) + 1][1] + scores[scores.indexOf(x) + 1][2] : (x[1] + x[2]) 
+    );
+    return result.reduce((sum, num) => sum + num);
+  }
+
+
   isGameComplete(){
     return this.scoreArray.length >= this.MAXIMUM_FRAMES;
   }
 
   finalScore(){
     if (isGameComplete() === true){
-      return totalScore();
+      return experiment();
     } else {
       throw 'error';
     }

@@ -1,14 +1,15 @@
 
 class ScoreCard {
+
   constructor(){
-    this.score = 0;
+    this.finalScore = 0;
     this.scoreArray = [];
     this.MAXIMUM_FRAMES = 10;
   }
 
   recordScore(frameNumber, rollOne = 0, rollTwo = 0){
     const frameArray = [frameNumber, rollOne, rollTwo];
-    this.scoreArray.push(frameArray);    
+    this.scoreArray.push(frameArray);  
   }
 
   totalScore(){
@@ -20,6 +21,14 @@ class ScoreCard {
 
   isGameComplete(){
     return this.scoreArray.length >= this.MAXIMUM_FRAMES;
+  }
+
+  finalScore(){
+    if (isGameComplete() === true){
+      return totalScore();
+    } else {
+      throw 'error';
+    }
   }
 
 }

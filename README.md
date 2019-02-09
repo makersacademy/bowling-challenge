@@ -12,6 +12,15 @@ I should finish with 0 points in the 10th frame
 
 ```
 
+Unit Tests - Gutter game
+
+```
+As a player, 
+So I can start playing the game fairly, 
+I want to start with an initial score of 0 on frame 1
+
+```
+
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README

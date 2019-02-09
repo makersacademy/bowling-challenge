@@ -30,8 +30,8 @@ A simplified illustration of the expected  responsibility of each class in a bow
 
 | Class | Method |
 |:----|:----|
-|Frame| countRolls, countScore|
-|Score| countPins, checkBonus|
+|Game| countRolls, countScore, checkBonus|
+|Score| countPins|
 
 2) constraints:
 

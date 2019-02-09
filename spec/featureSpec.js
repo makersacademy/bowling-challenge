@@ -35,15 +35,7 @@ describe('Features', () => {
 
   it('can score a game with 1 strike', () =>{
     scoreCard.recordScore(1, 1, 1);
-    scoreCard.recordScore(1, 10, 0);
-    // scoreCard.recordScore(1, 1, 1);
-    // scoreCard.recordScore(1, 1, 1);
-    // scoreCard.recordScore(1, 1, 1);
-    // scoreCard.recordScore(1, 1, 1);
-    // scoreCard.recordScore(1, 1, 1);
-    // scoreCard.recordScore(1, 1, 1);
-    // scoreCard.recordScore(1, 1, 1);
-    // scoreCard.recordScore(1, 1, 1);
+    scoreCard.recordScore(2, 10, 0);
     for(let i = 3 ; i < 11 ; i++){
       scoreCard.recordScore(i, 1, 1);
     }
@@ -51,8 +43,17 @@ describe('Features', () => {
     expect(scoreCard.experiment()).toEqual(30);
     expect(scoreCard.finalScore()).toEqual(30);
   });
-
-
+  
+  it('can score a game with 2 consecutive strikes', () =>{
+    scoreCard.recordScore(1, 1, 1);
+    scoreCard.recordScore(2, 10, 0);
+    scoreCard.recordScore(3, 10, 0);
+    for(let i = 4 ; i < 11 ; i++){
+      scoreCard.recordScore(i, 1, 1);
+    }
+    expect(scoreCard.experiment()).toEqual(49);
+    expect(scoreCard.finalScore()).toEqual(49);
+  });
 
 
 

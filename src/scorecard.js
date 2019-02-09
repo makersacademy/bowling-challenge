@@ -2,7 +2,6 @@ function Scorecard(){
   this.pins_knocked_one = 0;
   this.pins_knocked_two = 0;
   this.frame_score = 0;
-
   this.total_score_array = [];
 };
 
@@ -37,4 +36,9 @@ Scorecard.prototype.total_score_display = function(){
 Scorecard.prototype.clear = function(){
   var clean = this.total_score_array.length = 0;
   return clean;
+};
+
+Scorecard.prototype.strike = function(){
+  this.pins_knocked_two = 0;
+  return this.pins_knocked_two;
 };

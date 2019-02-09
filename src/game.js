@@ -18,12 +18,12 @@ function Game () {
 
 Game.prototype.frameAdd = function (frameArr) {
   this.frameResults.push(frameArr)
-  this.calculate()
+  this._calculate()
   this._incrementFrame()
   this.totalScore = this.frameScores.reduce(add)
 }
 
-Game.prototype.calculate = function () {
+Game.prototype._calculate = function () {
   if (this.frameNumber === 0) {
     this._baseCalc()
   } else if (this.frameNumber === 1) {
@@ -39,7 +39,7 @@ Game.prototype.calculate = function () {
   }
 }
 
-Game.prototype._baseCalc = function() {
+Game.prototype._baseCalc = function () {
   this.frameScores[this.frameNumber] += frame.frameScore(this.frameResults[this.frameNumber])
 }
 
@@ -52,7 +52,7 @@ Game.prototype._bonusCalc = function () {
 }
 
 Game.prototype._doubleStrikeCalc = function () {
-  if (this.frameNumber != 10 && frame.isStrike(this.frameResults[this.lastFrameNumber]) && frame.isStrike(this.frameResults[this.secondLastFrameNumber])) {
+  if (this.frameNumber !== 10 && frame.isStrike(this.frameResults[this.lastFrameNumber]) && frame.isStrike(this.frameResults[this.secondLastFrameNumber])) {
     this.frameScores[this.secondLastFrameNumber] += 10
   } else if (this.frameNumber === 10 && frame.isStrike(this.frameResults[this.frameNumber]) && frame.isStrike(this.frameResults[this.lastFrameNumber])) {
     this.frameScores[this.secondLastFrameNumber] += 10

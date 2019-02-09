@@ -41,7 +41,7 @@ ScoreRecorder.prototype._isValidRoll = function(roll){
 }
 
 ScoreRecorder.prototype._isValidSpare = function(){
-  return this._scorecard.length > 0 ? (this.lastFrame().length > 0) : false
+  return this._scorecard.length > 0 ? (this.lastFrame().length != 2) : false
 }
 
 ScoreRecorder.prototype._isValidStrike = function(){

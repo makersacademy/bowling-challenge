@@ -1,0 +1,25 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shendidy/bowling-challenge.git"
+  },
+  "author": "Sherif Shendidy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shendidy/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/Shendidy/bowling-challenge#readme",
+  "dependencies": {
+    "jasmine": "^3.3.1"
+  }
+}

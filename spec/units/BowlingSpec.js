@@ -58,10 +58,32 @@ describe('Bowling', function () {
     })
   })
 
-  describe('strikes are recognised', function () {
+  describe('strikes are calculated correctly', function () {
     it('should track whether a strike has been struck', function () {
       enterScores(10, 1)
       expect(bowling._previousFrame().isStrike()).toEqual(true)
     })
+
+    it('it should calculate standalone strikes correctly', function () {
+      enterScores(10, 1)
+      enterScores(3, 2)
+      enterScores(4, 2)
+      expect(bowling.gameScore()).toEqual(30)
+    })
+
+    it('calculates sequential strikes correctly', function () {
+      enterScores(10, 3)
+      enterScores(2, 4)
+      expect(bowling.gameScore()).toEqual(74)
+    })
+
+    it('calculates strikes followed by a spare correctly', function() {
+      enterScores(10, 1)
+      enterScores(6, 1)
+      enterScores(4, 1)
+      enterScores(3, 2)
+      expect(bowling.gameScore()).toEqual(39)
+    })
+
   })
 })

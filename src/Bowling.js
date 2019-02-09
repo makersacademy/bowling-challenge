@@ -20,7 +20,8 @@ class Bowling {
     this.frame++
     if (this._frames.length >= 2) {
       this._addSpareBonus()
-    } else if (this._frames.length >= 3) {
+    }
+    if (this._frames.length >= 3) {
       this._addStrikeBonus()
     }
     this.checkGameEnd()

@@ -21,6 +21,7 @@ class Frame {
       return
     } else if (this.complete() && this.isStrike()) {
       this._strikeCalculation(number)
+      return
     }
     this._score.push(number)
     this.roll += 1
@@ -36,7 +37,7 @@ class Frame {
   }
 
   secondRoll () {
-    return this._score[0]
+    return this._score[1]
   }
 
   score () {

@@ -42,7 +42,16 @@ describe('scorecard', function(){
       card.frame_score_display();
     };
     card.clear();
-    expect(card.total_score_display()).toEqual(0);
+    expect(card.total_score_display()).toContain([]);
+  });
+
+  it('displays a Gutter Game when no pins were hit', function(){
+    for (var i of Array(10).keys()){
+      card.record_first(0);
+      card.record_second(0);
+      card.frame_score_display();
+    };
+    expect(card.total_score_display()).toMatch('Gutter Game');
   });
 
 

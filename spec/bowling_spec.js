@@ -2,10 +2,23 @@ describe('Features', function () {
   var scorecard;
   beforeEach(function() {
     scorecard = new ScoreCard();
+    frame1 = new Frame();
   });
 
   it('scorecard total starts at 0', function () {
     expect(scorecard.totalScore).toEqual(0);
+  })
+
+  it('can set a frame complete if score adds up to 10', function (){
+     frame1.rolls[0] = 5;
+     frame1.rolls[1] = 5;
+     frame1.setFrameComplete();
+     expect(frame1.isComplete()).toEqual(true)
+  })
+  it('does not set a frame complete if there is a throw to be played and score is not equal to 10', function (){
+      frame1.rolls[0] = 5;
+      frame1.setFrameComplete();
+      expect(frame1.isComplete()).toEqual(false)
   })
 })
 
@@ -19,7 +32,7 @@ describe('Unit tests', function () {
     expect(frame1.score).toEqual(0);
   })
   it('frames hold an array of two rolls', function () {
-      expect(frame1.rolls).toEqual([0,0]);
+      expect(frame1.rolls).toEqual([null, null]);
   })
   it('can accept new values to the rolls', function () {
       frame1.rolls[0] = 2;
@@ -42,6 +55,7 @@ describe('Unit tests', function () {
   })
 
   it('can set a frame complete', function () {
+      frame1.rolls[0] = 10;
       frame1.setFrameComplete()
       expect(frame1.isComplete()).toEqual(true)
 

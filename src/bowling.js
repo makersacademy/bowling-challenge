@@ -4,7 +4,7 @@ function ScoreCard () {
 
 function Frame () {
 	this.score = 0
-	this.rolls = [0, 0]
+	this.rolls = [null, null]
 	this.frameCompletionStatus = false
 }
 
@@ -21,6 +21,8 @@ Frame.prototype.isComplete = function () {
 }
 
 Frame.prototype.setFrameComplete = function () {
-	this.frameCompletionStatus = true
-    
+	this.addScore();
+    if(this.score === 10) {
+        this.frameCompletionStatus = true;    }
+
 }

@@ -19,31 +19,41 @@ describe("CheckRoll",function(){
       new Error("invalid character")
     );
   });
+  it("Raises an error if roll makes frame total larger than 9",function(){
+    checkRoll._scorecard = [["6"]];
+    expect(function(){checkRoll.run("6")}).toThrow(
+      new Error("illegal score")
+    );
+    checkRoll._scorecard = [["6","/"],["4"]]
+    expect(function(){checkRoll.run("8")}).toThrow(
+      new Error("illegal score")
+    );
+  })
   it("Raises an error for illegal spares",function(){
     expect(function(){checkRoll.run("/")}).toThrow(
       new Error("illegal spare")
     );
-    checkRoll._scorecard = [[5,4],[3,5]]
+    checkRoll._scorecard = [["5","4"],["3","5"]]
     expect(function(){checkRoll.run("/")}).toThrow(
       new Error("illegal spare")
     );
   })
   it("Doesn't raise error for legal spares", function(){
-    checkRoll._scorecard =[[1]]
+    checkRoll._scorecard =[["1"]]
     expect(function(){checkRoll.run("/")}).not.toThrow(
       new Error("illegal spare")
     );
-    checkRoll._scorecard =[[1,3],[5]]
+    checkRoll._scorecard =[["1","3"],["5"]]
     expect(function(){checkRoll.run("/")}).not.toThrow(
       new Error("illegal spare")
     );
   });
     it("raises an error for illegal strikes",function(){
-      checkRoll._scorecard = [[1]]
+      checkRoll._scorecard = [["1"]]
       expect(function(){checkRoll.run("X")}).toThrow(
         new Error("illegal strike")
       );
-      checkRoll._scorecard = [[1,3],[4]]
+      checkRoll._scorecard = [["1","3"],["4"]]
       expect(function(){checkRoll.run("X")}).toThrow(
         new Error("illegal strike")
       );
@@ -53,7 +63,7 @@ describe("CheckRoll",function(){
       expect(function(){checkRoll.run("X")}).not.toThrow(
         new Error("illegal strike")
       );
-      checkRoll._scorecard = [[1,2],[3,5]];
+      checkRoll._scorecard = [["1","2"],["3","5"]];
       expect(function(){checkRoll.run("X")}).not.toThrow(
         new Error("illegal strike")
       );

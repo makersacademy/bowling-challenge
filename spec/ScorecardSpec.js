@@ -90,6 +90,12 @@ describe("Scorecard", function() {
     expect(function(){scorecard.record.roll("/")}).toThrow(new Error ("illegal spare"))
   });
 
+  it("throws an error if a player inputs scores in a single frame which add to more than 10",
+    function(){
+      scorecard.record.roll("6");
+      expect(function(){scorecard.record.roll("6")}).toThrow(new Error("illegal score"));
+    });
+
 
   it("can evaluate a spare",function(){
     scorecard.record.roll("5");

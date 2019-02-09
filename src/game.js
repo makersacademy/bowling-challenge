@@ -53,7 +53,7 @@ class BowlingGame {
       if (this.strike(this.lastTurnFirstBowl(), this.lastTurnSecondBowl())) {
         this.addBonus(firstBowl, secondBowl);
       } else if (this.spare(this.lastTurnFirstBowl(), this.lastTurnSecondBowl())) {
-        this.addBonus(firstBowl, 0);
+        this.addBonus(firstBowl);
       }
     }
   }

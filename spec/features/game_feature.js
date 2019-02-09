@@ -94,4 +94,50 @@ describe("Features - BowlingGame", function() {
     expect(game.score).toEqual(300)
   });
 
+  it("can play a spare in tenth frame", function() {
+    game.play(10);
+    expect(game.score).toEqual(0)
+    game.play(10);
+    expect(game.score).toEqual(0)
+    game.play(10);
+    expect(game.score).toEqual(0)
+    game.play(10);
+    expect(game.score).toEqual(0)
+    game.play(10);
+    expect(game.score).toEqual(0)
+    game.play(10);
+    expect(game.score).toEqual(0)
+    game.play(10);
+    expect(game.score).toEqual(0)
+    game.play(10);
+    expect(game.score).toEqual(0)
+    game.play(10);
+    expect(game.score).toEqual(0)
+    game.play(3, 7, 10);
+    expect(game.score).toEqual(273)
+  });
+
+  it("can play a spare in tenth frame", function() {
+    game.play(10);
+    expect(game.score).toEqual(0)
+    game.play(10);
+    expect(game.score).toEqual(0)
+    game.play(10);
+    expect(game.score).toEqual(0)
+    game.play(10);
+    expect(game.score).toEqual(0)
+    game.play(10);
+    expect(game.score).toEqual(0)
+    game.play(10);
+    expect(game.score).toEqual(0)
+    game.play(10);
+    expect(game.score).toEqual(0)
+    game.play(10);
+    expect(game.score).toEqual(0)
+    game.play(10);
+    expect(game.score).toEqual(0)
+    game.play(10, 7, 3);
+    expect(game.score).toEqual(287)
+  });
+
 });

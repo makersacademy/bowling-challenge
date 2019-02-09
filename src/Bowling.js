@@ -1,4 +1,6 @@
 'use strict'
+let Frame = require('../src/Frame')
+
 class Bowling {
   constructor () {
     this.frame = 0
@@ -8,32 +10,20 @@ class Bowling {
     this.scorecardComplete = false
     this.spare = false
     this.strike = false
+    this._frames = []
+    this._score = 0
+    this._newFrame()
   }
 
   enterScore (number) {
-    this.frameScore += number
-    this.roll++
-    if (this.spare) {
-      this.addSpareBonus(number)
-      this.spare = false
-    }
-    this.checkFrameEnd()
-  }
-
-  checkFrameEnd () {
-    if (this.frameScore === 10) {
-      this.spare = true
-      this.endFrame()
-    } else if (this.roll === 2) {
+    this._currentFrame().add(number)
+    if (this._lastFrameComplete()) {
       this.endFrame()
     }
   }
 
   endFrame () {
-    this.roll = 0
-    this._gameScore[this.frame] = this.frameScore
     this.frame++
-    this.frameScore = 0
     this.checkGameEnd()
   }
 
@@ -43,20 +33,40 @@ class Bowling {
     }
   }
 
+  currentFrameNumber () {
+    let number = this._currentFrame().number()
+    return number
+  }
+
   endGame () {
     this.scorecardComplete = true
   }
 
   gameScore () {
-    let total = 0
-    Object.keys(this._gameScore).forEach(num => {
-      total += this._gameScore[num]
-    })
-    return total
+    this._frames.reduce((a, b) => a + b, 0)
   }
 
   addSpareBonus (num) {
-    this._gameScore[this.frame - 1] += num
+    this._gameScore[this._frames.length - 1] += num
+  }
+
+  _getLastFrame () {
+    return this._frames[this._frames.length - 1]
+  }
+
+  _newFrame () {
+    this._frames.push(new Frame(this.frame))
+  }
+
+  _lastFrameComplete () {
+    return this._getLastFrame().complete()
+  }
+
+  _currentFrame () {
+    if (this._lastFrameComplete()) {
+      this._newFrame()
+    }
+    return this._getLastFrame()
   }
 }
 

@@ -30,9 +30,8 @@ describe("Scorecard", function() {
   });
 
   it("can record a strike",function(){
-    scorecard.record("5");
-    scorecard.record("/");
-    expect(scorecard.see()).toEqual([["5","/"]]);
+    scorecard.record("X");
+    expect(scorecard.see()).toEqual([["X",null]]);
   });
 
   it("throws an error if given invalid roll",function(){

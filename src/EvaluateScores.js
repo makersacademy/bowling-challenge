@@ -4,9 +4,8 @@ function EvaluateScore(scorecard){
 
 EvaluateScore.prototype.go = function(){
   score_array = []
-
   for(var i = 0; i < this._scorecard.length; ++i){
-    frame = this._scorecard[i];
+    var frame = this._scorecard[i];
     var lastTotal = i === 0 ? 0 :  score_array[i-1]
     if(frame.includes("/")){
       score_array.push(this._handleSpare(i)+lastTotal);
@@ -19,7 +18,7 @@ EvaluateScore.prototype.go = function(){
 EvaluateScore.prototype._handleNumbers = function(frameindex){
   var firstRoll = parseInt(this._scorecard[frameindex][0]);
   var secondRoll = parseInt(this._scorecard[frameindex][1]);
-  return firstRoll + secondRoll
+  return firstRoll + secondRoll;
 }
 
 EvaluateScore.prototype._handleSpare = function(frameindex){

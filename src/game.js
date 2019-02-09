@@ -5,7 +5,7 @@ var Frame = require('../src/frame')
 var add = (a, b) =>
   a + b
 
-
+var frame = new Frame()
 
 function Game () {
   this.frameResults = []
@@ -24,7 +24,6 @@ Game.prototype.frameAdd = function (frameArr) {
 }
 
 Game.prototype.calculate = function () {
-  var frame = new Frame()
   if (this.frameNumber === 0) {
     this._baseCalc()
   } else if (this.frameNumber === 1) {
@@ -32,6 +31,7 @@ Game.prototype.calculate = function () {
     this._bonusCalc()
   } else if (this.frameNumber === 10) {
     this._bonusCalc()
+    this._doubleStrikeCalc()
   } else {
     this._baseCalc()
     this._bonusCalc()
@@ -44,7 +44,6 @@ Game.prototype._baseCalc = function() {
 }
 
 Game.prototype._bonusCalc = function () {
-  var frame = new Frame()
   if (frame.isStrike(this.frameResults[this.lastFrameNumber])) {
     this.frameScores[this.lastFrameNumber] += frame.strikeBonus(this.frameResults[this.frameNumber])
   } else if (frame.isSpare(this.frameResults[this.lastFrameNumber])) {
@@ -53,8 +52,9 @@ Game.prototype._bonusCalc = function () {
 }
 
 Game.prototype._doubleStrikeCalc = function () {
-  var frame = new Frame()
-  if (frame.isStrike(this.frameResults[this.lastFrameNumber]) && frame.isStrike(this.frameResults[this.secondLastFrameNumber])) {
+  if (this.frameNumber != 10 && frame.isStrike(this.frameResults[this.lastFrameNumber]) && frame.isStrike(this.frameResults[this.secondLastFrameNumber])) {
+    this.frameScores[this.secondLastFrameNumber] += 10
+  } else if (this.frameNumber === 10 && frame.isStrike(this.frameResults[this.frameNumber]) && frame.isStrike(this.frameResults[this.lastFrameNumber])) {
     this.frameScores[this.secondLastFrameNumber] += 10
   }
 }

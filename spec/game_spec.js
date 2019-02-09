@@ -83,7 +83,7 @@ describe('Game', function () {
     game.frameAdd([10, 0])
     game.frameAdd([10, 0])
     game.frameAdd([10, 10])
-    console.log(game.frameScores)
+    expect(game.frameScores).toEqual([ 30, 30, 30, 30, 30, 30, 30, 30, 30, 30 ])
     expect(game.totalScore).toEqual(300)
   })
 
@@ -103,20 +103,20 @@ describe('Game', function () {
     expect(game.totalScore).toEqual(150)
   })
 
-  it('scores a game of spares game correctly', function () {
-    game.frameAdd([10, 0])
-    game.frameAdd([10, 0])
-    game.frameAdd([5, 5])
-    game.frameAdd([5, 5])
-    game.frameAdd([10, 0])
-    game.frameAdd([10, 0])
-    game.frameAdd([5, 5])
+  it('scores the example correctly', function () {
+    game.frameAdd([1, 4])
+    game.frameAdd([4, 5])
+    game.frameAdd([6, 4])
     game.frameAdd([5, 5])
     game.frameAdd([10, 0])
+    game.frameAdd([0, 1])
+    game.frameAdd([7, 3])
+    game.frameAdd([6, 4])
     game.frameAdd([10, 0])
-    game.frameAdd([10, 10])
-    expect(game.frameScores).toEqual([ 30, 20, 15, 20, 30, 20, 15, 20, 20, 30 ])
-    expect(game.totalScore).toEqual(220)
+    game.frameAdd([2, 8])
+    game.frameAdd([6, 0])
+    expect(game.frameScores).toEqual([ 5, 9, 15, 20, 11, 1, 16, 20, 20, 16 ])
+    expect(game.totalScore).toEqual(133)
   })
 
   it('adds a frame to the game', function () {

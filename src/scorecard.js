@@ -29,3 +29,8 @@ Scorecard.prototype.total_score_display = function(){
   var sum = this.total_score_array.reduce((a,b) => a + b, 0);
   return sum;
 };
+
+Scorecard.prototype.clear = function(){
+  var clean = this.total_score_array.length = 0;
+  return clean;
+};

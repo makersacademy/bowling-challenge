@@ -23,6 +23,10 @@ describe("ScoreRecorder",function(){
     scoreRecorder.roll("/");
     expect(scorecard).toEqual([["5","/"]]);
   });
+  it("can record a strike",function(){
+    scoreRecorder.roll("X");
+    expect(scorecard).toEqual(["X",null])
+  })
   it("throws an error if given invalid roll",function(){
     expect(function(){scoreRecorder.roll("a")}).toThrow(
       new Error("invalid character")

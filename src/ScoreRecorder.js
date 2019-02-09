@@ -2,24 +2,35 @@ function ScoreRecorder(scorecard){
   this._scorecard = scorecard;
 }
 ScoreRecorder.prototype.roll = function(score){
-  if(this._isGameOver()){throw new Error("Game is over")}
   if(!this._isValidRoll(score)){throw new Error("invalid character")};
   if(score === "/" && !this._isValidSpare()){throw new Error("invalid spare")};
-  if(this._scorecard.length === 0){
+  if(!(this._scorecard.length == 9 && this.lastFrame().length == 2)&&this._scorecard.length < 10){
+    if(this._scorecard.length === 0){//refactor this all
+      this._scorecard.push([score]);
+      return this._scorecard
+    }else if(this.lastFrame().length === 2){
+      this._scorecard.push([score])
+      return this._scorecard
+    }else if(this.lastFrame().length === 1){
+      this._scorecard[this._scorecard.length-1].push(score);
+      return this._scorecard;
+    };
+  }else if(this._scorecard.length === 9 && this.lastFrame().length == 2){
+    console.log("in the last frame")
+    console.log(this._scorecard.length)
+    this._scorecard.forEach(function(obj){
+      console.log(obj);
+    });
+    console.log(this._scorecard)
+    console.log("that was supposed to be round 10")
+    //last frame
     this._scorecard.push([score]);
-    return this._scorecard
-  }else if(this.lastFrame().length === 2){
-    if (this._scorecard.length == 10){
-      this.lastFrame().push(score);
-    } else {
-    this._scorecard.push([score])
-  }
-    return this._scorecard
-  }else if(this.lastFrame().length === 1){
-    this._scorecard[this._scorecard.length-1].push(score);
-    return this._scorecard;
+    console.log(this.lastFrame())
+  }else if(this._scorecard.length >= 10){
+    if(this._isGameOver()){throw new Error("Game is over")}
+    this._scorecard[this._scorecard.length - 1].push(score);
   };
-}
+};
 
 ScoreRecorder.prototype._isValidRoll = function(roll){
   var isNum = /^\d+$/.test(roll);
@@ -32,6 +43,9 @@ ScoreRecorder.prototype._isValidSpare = function(){
   return this._scorecard.length > 0 ? (this.lastFrame().length > 0) : false
 }
 
+ScoreRecorder.prototype._isValidStrike = function(){
+  return this._scorecard.length > 0 ? (this.lastFrame().length > 1) : false
+}
 
 
 ScoreRecorder.prototype.lastFrame = function(){

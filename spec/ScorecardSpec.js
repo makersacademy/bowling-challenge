@@ -15,8 +15,6 @@ describe("Scorecard", function() {
   it("can record more than one turn", function(){
     scorecard.record.roll("5");
     scorecard.record.roll("4");
-    console.log(scorecard.lastFrame());
-    console.log(scorecard._scorecard.length)
     scorecard.record.roll("6");
     scorecard.record.roll("2");
     expect(scorecard.see()).toEqual([["5","4"],["6","2"]]);
@@ -81,7 +79,6 @@ describe("Scorecard", function() {
     }
     scorecard.record.roll("X");
     scorecard.record.roll("X");
-    console.log(scorecard.score());
     expect(function(){scorecard.record.roll("5")}).not.toThrow(new Error ("Game is over"));
     expect(function(){scorecard.record.roll("5")}).toThrow(new Error ("Game is over"));
     expect(scorecard.lastFrame()).toEqual(["X","X","5"]);

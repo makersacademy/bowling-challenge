@@ -8,6 +8,7 @@ class Frame {
     this._spare = false
     this._strike = false
     this._complete = false
+    this._bonus = 0
   }
 
   complete () {
@@ -16,12 +17,8 @@ class Frame {
 
   add (number) {
     if (this._complete && this.isSpare()) {
-      if (this._score.length === 3) {
-        return
-      } else {
-        this.addBonusScore(number)
-        return
-      }
+      this._spareCalculation(number)
+      return
     }
     this._score.push(number)
     this.roll += 1
@@ -42,6 +39,13 @@ class Frame {
       score += num
     })
     return score
+  }
+
+  _spareCalculation (number) {
+    if (this._bonus === 0) {
+      this.addBonusScore(number)
+      this._bonus += 1
+    }
   }
 
   isSpare () {

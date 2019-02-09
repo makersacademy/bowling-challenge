@@ -40,6 +40,10 @@ class Frame {
       this._complete = true
     }
   }
+
+  addBonusScore (num) {
+    this._score += num
+  }
 }
 
 module.exports = Frame

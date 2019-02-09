@@ -25,11 +25,14 @@ class Bowling {
   endFrame () {
     this.frame++
     this.checkGameEnd()
+    // this._addSpareBonus()
   }
 
   checkGameEnd () {
     if (this.frame === 10) {
       this.endGame()
+    } else {
+      this._newFrame()
     }
   }
 
@@ -50,12 +53,12 @@ class Bowling {
     return score
   }
 
-  addSpareBonus (num) {
-    this._gameScore[this._frames.length - 1] += num
+  _currentFrame () {
+    return this._frames[this._frames.length - 1]
   }
 
-  _getLastFrame () {
-    return this._frames[this._frames.length - 1]
+  _getPenultimateFrame () {
+    return this._frames[this._frames.length - 2]
   }
 
   _newFrame () {
@@ -63,14 +66,7 @@ class Bowling {
   }
 
   _lastFrameComplete () {
-    return this._getLastFrame().complete()
-  }
-
-  _currentFrame () {
-    if (this._lastFrameComplete()) {
-      this._newFrame()
-    }
-    return this._getLastFrame()
+    return this._currentFrame().complete()
   }
 }
 

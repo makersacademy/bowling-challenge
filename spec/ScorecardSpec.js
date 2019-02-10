@@ -15,4 +15,16 @@ describe("Scorecard",function(){
       [[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4]]
     )
   })
+  it("can record a strike", function(){
+    scorecard.record.roll(3);
+    scorecard.record.roll(4);
+    scorecard.record.roll(10);
+    scorecard.record.roll(5);
+    scorecard.record.roll(2);
+    expect(scorecard.display()).toEqual(
+      [[3,4],[10],[5,2]]
+    )
+  });
 })
+//cant exceed 10 frames
+//cant exceed 10 points

@@ -13,7 +13,13 @@ ScoreRecorder.prototype.lastFrame = function(){
 
 ScoreRecorder.prototype.roll = function(roll){
   if(this.lastFrame().length === 1){
-    this.lastFrame().push(roll);
+    switch(this.lastFrame()[0]){
+      case 10:
+        this._scorecard.push([roll]);
+        break;
+      default:
+        this.lastFrame().push(roll);
+    }
   }else{
     this._scorecard.push([roll]);
   }

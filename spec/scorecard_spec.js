@@ -102,8 +102,12 @@ describe('scorecard', function(){
     card.spare_bonus();
     expect(card.spare_bonus()).toEqual(2);
   });
-  
 
+  it('makes a way for the new spare bonus to be calculated', function(){
+    card.sp_bonus = [5];
+    card.clear_bonus()
+    expect(card.sp_bonus).toEqual([]);
+  });
 
 
 

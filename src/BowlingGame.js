@@ -20,8 +20,8 @@ var scoreCard = [];
         this.calcStrikeScore();
         this.turn += 1;
       }
-      else if (this.rolls[this.turn] + this.rolls[this.turn +1] === 10) {
-        this.score += (this.rolls[this.turn] + this.rolls[this.turn + 1] + this.rolls[this.turn + 2]);
+      else if (this.turnIsSpare()) {
+        this.calcSpareScore();
         this.turn += 2;
       }
       else {
@@ -35,6 +35,9 @@ var scoreCard = [];
    return this.rolls[this.turn] === 10;
   }
 
+  BowlingGame.prototype.turnIsSpare = function() {
+   return (this.rolls[this.turn] + this.rolls[this.turn + 1])  === 10;
+  }
   BowlingGame.prototype.calcStrikeScore = function() {
     this.score += (this.rolls[this.turn] + this.rolls[this.turn + 1] + this.rolls[this.turn + 2]);
   }
@@ -42,4 +45,8 @@ var scoreCard = [];
  BowlingGame.prototype.calcRegularScore = function() {
     this.score += this.rolls[this.turn] + this.rolls[this.turn + 1];
  } 
+
+  BowlingGame.prototype.calcSpareScore = function() {
+    this.score += (this.rolls[this.turn] + this.rolls[this.turn + 1] + this.rolls[this.turn + 2]);
+  }
 module.exports = BowlingGame

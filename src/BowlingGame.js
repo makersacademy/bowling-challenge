@@ -20,4 +20,5 @@ var scoreCard = [];
       rollNum += 2;
     }
   }
+
 module.exports = BowlingGame

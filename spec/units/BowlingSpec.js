@@ -95,6 +95,13 @@ describe('Bowling', function () {
     })
   })
 
+  it('should stop the user going more than two times in round 10 if no spare or strike', function () {
+    enterScores(3, 20)
+    expect(bowling.gameScore()).toEqual(60)
+    enterScores(3, 1)
+    expect(bowling.gameScore()).toEqual(60)
+  })
+
   it('returns only completed frames', function () {
     enterScores(5, 1)
     let incompleteFrames = false

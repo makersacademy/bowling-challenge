@@ -1,7 +1,7 @@
 function ScoreRecorder(scorecard){
   this._scorecard = scorecard;
+  this.check = new CheckRoll(scorecard);
 }
-
 
 ScoreRecorder.prototype.lastFrame = function(){
   if (this._scorecard.length > 0){
@@ -12,6 +12,7 @@ ScoreRecorder.prototype.lastFrame = function(){
 }
 
 ScoreRecorder.prototype.roll = function(roll){
+  this.check.roll(roll)
   if(this.lastFrame().length === 1){
     switch(this.lastFrame()[0]){
       case 10:

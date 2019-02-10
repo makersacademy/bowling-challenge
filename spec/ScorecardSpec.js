@@ -24,7 +24,16 @@ describe("Scorecard",function(){
     expect(scorecard.display()).toEqual(
       [[3,4],[10],[5,2]]
     )
+    scorecard.record.roll(10);
+    scorecard.record.roll(5);
+    expect(scorecard.display()).toEqual(
+      [[3,4],[10],[5,2],[10],[5]]
+    )
   });
+  it("throws a score error if roll exceeds 10",function(){
+    expect(function(){scorecard.record.roll(11)}).toThrow(new Error("score error"))
+  });
+  //frame exceeds 10
 })
 //cant exceed 10 frames
 //cant exceed 10 points

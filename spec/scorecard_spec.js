@@ -60,8 +60,30 @@ describe('scorecard', function(){
     expect(card.pins_knocked_two).toEqual(0);
   });
 
+  it('calculates bonus points correctly', function(){
+    card.bonus = [];
+    card.record_first(10);
+    card.strike();
+    card.frame_score_display();
+    card.record_first(2);
+    card.record_second(3);
+    card.frame_score_display();
+    card.strike_bonus();
+    expect(card.strike_bonus()).toEqual(5);
+  });
 
+  it('adds bonus points after a strike', function(){
+    card.bonus = [];
+    card.record_first(10);
+    card.strike();
+    card.frame_score_display();
+    card.record_first(2);
+    card.record_second(3);
+    card.frame_score_display();
+    card.strike_bonus();
+    expect(card.total_score_array.reduce((a,b) => a + b, 0)).toEqual(20)
 
+  });
 
 
 

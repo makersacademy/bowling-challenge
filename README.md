@@ -29,12 +29,13 @@ My approach to the challenge:
 
 **My basic stories:**
 
+
+
 ```As a user,
 
 So I can keep a track of the game
 
-I would like to record a number of pins I've
- knocked on scorecard```
+I would like to record a number of pins I've knocked on scorecard```
 
 
 ```As a user,

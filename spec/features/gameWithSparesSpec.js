@@ -22,4 +22,11 @@ describe('BowlingGameWithStrikes', function() {
     bowlingGame.calculateScore()
     expect(bowlingGame.score).toEqual(16)
   });
+
+  it('Game with 9 spares has score of 136', function() {
+    rolls(5, 18)
+    rolls(2,2)
+    bowlingGame.calculateScore()
+    expect(bowlingGame.score).toEqual(136)
+  });  
 });

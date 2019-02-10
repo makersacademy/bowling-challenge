@@ -104,6 +104,14 @@ describe("Scorecard", function() {
     scorecard.record.roll("4");
     expect(scorecard.score()).toEqual([15,24]);
   });
+
+  it("can evaluate a strike",function(){
+    scorecard.record.roll("X");
+    scorecard.record.roll("5");
+    scorecard.record.roll("4");
+    expect(scorecard.score()).toEqual([19,28]);
+
+  })
   //Handle most recent frame (strikeetc) having nothing to evaluate to
   //handle incomplete frames
   //frame number may not add to more than 10

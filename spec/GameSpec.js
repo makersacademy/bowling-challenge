@@ -27,7 +27,7 @@ describe("Game", function() {
         currentFrame = new Frame();
         currentFrame.recordRoll(1)
         currentFrame.recordRoll(1)
-        game.recordFrame(frame.Score());
+        game.recordFrame(currentFrame.score());
     }
     expect(game.finalScore()).toEqual(20);
   });

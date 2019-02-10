@@ -1,11 +1,15 @@
 'use strict';
 
 function Frame() {
-  var frameScore = [];
+  this.rolls = [];
 }
 
+Frame.prototype.recordRoll = function(score) {
+  this.rolls.push(score);
+};
+
 Frame.prototype.score = function() {
-  return frameScore.reduce((a,b) => a + b, 0)
+  return this.rolls.reduce((a,b) => a + b, 0)
 };
 
 

@@ -15,7 +15,7 @@ This project uses Jasmine (installed via npm) for testing. To run the test suite
 
 ## Approach
 
-⚠️**Please Note**:⚠️ This project is only partially complete (as of February 10, 2019). This is a very rudimentary version of the brief. I have started refactoring into multiple classes locally (`scoreCard, frame, firstRoll, secondRoll`) howevever I have not pushed these changes up (in order to create a successful pull request).
+⚠️**Please Note**: This project is only partially complete (as of February 10, 2019). This is a very rudimentary version of the brief. I have started refactoring into multiple classes locally (`scoreCard, frame, firstRoll, secondRoll`) howevever I have not pushed these changes up (in order to create a successful pull request).
 
 I've tried to follow a strict TDD process throughout writing this, although I felt the '_writing only enough code to make the tests pass_' approach led me to painting myself into a corner where re-starting was more practical than re-factoring. I'm unsure about where domain modeling should trump over the `red-green-refactor` approach. 
 

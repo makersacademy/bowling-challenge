@@ -2,16 +2,33 @@
 Bowling Challenge
 =================
 
+## Setup
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+1. Clone or Fork the repo (eg: `git clone https://github.com/nkhil/bowling-challenge.git`)
+2. CD into the directory (eg: `cd bowling-challenge`)
+3. Install dependencies via `npm install` (you will need node for this).
+4. Use any modern browser to open the `index.html` file from the `./public` folder
+
+## Testing
+
+This project uses Jasmine for testing. To run the test suite, please run `npm test`.
+
+## Approach
+
+⚠️**Please Note**:⚠️ This project is only partially complete (as of February 10, 2019). This is a very rudimentary version of the brief. I have started refactoring into multiple classes locally (`scoreCard, frame, firstRoll, secondRoll`) howevever this is not part of the repo. 
+
+I've tried to follow a strict TDD process throughout writing this, although I felt the '_writing only enough code to make the tests pass_' approach led me to painting myself into a corner where re-starting was more practical than re-factoring. I'm unsure about where domain modeling should trump over the `red-green-refactor` approach. 
+
+
+### Application data flow
+
+1. The scores are input by the user using `<select>` dropdowns and clicking on 'submit'. Currently, it will throw an alert if a player selects a second roll after a strike, however, there are many edge cases that will currently be accepted without an error (for eg: changing a previous round, adding a score that adds up to more than 10 etc). 
+2. This data is intercepted by the `interface.js` file, via `eventListeners` placed on all forms that are listening for the submit. **Note** that this has been written in vanilla JS (and not JQuery as suggested in the walkthroughs). 
+3. `interface.js` initialises an instance of the business logic (`ScoreCard`) and passes in the score via the `scoreCard.recordScore()` function (which stores it in `scoreCard.scoreArray`).
+4. The score is then rendered out (or not) to the UI using the results of the `scoreCard.experiment()` function (yes, its named extremely poorly). If it's a strike, or a spare, it will wait till the next roll has been entered before rendering out the score. 
+
 
 ## The Task
-
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 

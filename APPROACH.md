@@ -17,6 +17,8 @@ last ball was a spare,
 the last ball was a strike,
 or two balls ago there was a strike.
 
+*do you always assume 20 balls or do you skip balls for strikes*
+
 ## Class Diagram
 
 - Game
@@ -28,8 +30,15 @@ or two balls ago there was a strike.
 or?
 
 - Game
+  - starts game
+  - ends game
+  - calculates finalScore
 - Frame
+  - *frame number* ? or ^?
+  - calculates frameScore
+  -
 - Ball ?
+  - *ball number* ? or ^?
 
 ## USER STORIES
 

@@ -9,6 +9,9 @@ function Game () {
 
 
 Game.prototype.getTotalScore = function () {
+// if(this.frameNumber = 0){
+//   return this._score
+// }
     var total
     total = this.rolls.reduce((acc, val) => {
     return acc + val;
@@ -34,4 +37,18 @@ if(this.frame.length === 2 && this.frameNumber < 10) {
   this.frame.push(pins)
   this.rolls.push(pins)
   // this._score += pins
+};
+
+Game.prototype.isStrike = function () {
+  if(this.frame[0] === 10){
+    return true
+  }
+  return false
+};
+
+Game.prototype.isSpare = function () {
+  if(this.frame[0] + this.frame[1] === 10){
+    return true
+  }
+  return false
 };

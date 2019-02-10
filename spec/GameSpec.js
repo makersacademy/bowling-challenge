@@ -22,14 +22,15 @@ describe('Game', function() {
   });
 
   it('counts score after each roll', function (){
-    game.roll(5);
+    game.roll(3);
     game.roll(4);
-    expect(game.getTotalScore()).toEqual(9);
+    expect(game.getTotalScore()).toEqual(7);
   });
 
   it('counts frame number', function () {
     game.newFrame()
-    expect(game.frameNumber).toEqual(1)
+    game.newFrame()
+    expect(game.frameNumber).toEqual(2)
   });
 
   it('resets frame score in a new frame', function () {
@@ -46,9 +47,9 @@ describe('Game', function() {
   });
 
   it('lists knocked down pins for all rolls', function () {
-    game.roll(1)
+    game.roll(0)
     game.roll(3)
-    expect(game.rolls).toEqual([1,3]);
+    expect(game.rolls).toEqual([0,3]);
   });
 
   it('can roll three times at last frame', function () {
@@ -57,6 +58,19 @@ describe('Game', function() {
     game.roll(2)
     game.roll(3)
     expect(function(){game.roll(1)}).toThrowError('You can only roll three times on the last frame')
+  });
+
+  describe('Counts bonuses', function () {
+    it('is a strike', function () {
+      game.roll(10)
+      expect(game.isStrike()).toBe(true)
+    });
+
+    it('is a spare', function () {
+      game.roll(5)
+      game.roll(5)
+      expect(game.isSpare()).toBe(true)
+    });
   });
 
 });

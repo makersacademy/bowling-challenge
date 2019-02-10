@@ -1,5 +1,5 @@
 "use strict";
 
 function Scorecard() {
-  this.scorecard
+  this.scorecard = []
 }

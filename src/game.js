@@ -5,8 +5,7 @@ class BowlingGame {
   constructor(turns) {
     this.turns = [];
     this.score = 0
-    // this.bonus = 0
-    this.scorecard = [];
+    this.scorecard = new Scorecard().scorecard;
   }
 
   play(firstBowl, secondBowl = 0, thirdBowl = null) {
@@ -31,22 +30,7 @@ class BowlingGame {
 
   countScore(firstBowl, secondBowl = 0) {
     this.score += (firstBowl + secondBowl);
-    // this.score += this.bonus;
-    // this.bonus = 0;
   }
-
-
-  // bonusCheck(firstBowl, secondBowl = 0) {
-  //   if (this.strikeOrSpare(firstBowl, secondBowl)) {
-  //     this.addBonus(firstBowl, secondBowl);
-  //   } else {
-  //     this.countScore(firstBowl, secondBowl);
-  //   }
-  // }
-
-  // addBonus(firstBowl, secondBowl = 0) {
-  //   this.bonus += (firstBowl + secondBowl);
-  // }
 
   previousTurnBonus(firstBowl, secondBowl = 0) {
     if (this.lastTurn()) {

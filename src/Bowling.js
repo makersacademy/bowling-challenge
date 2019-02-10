@@ -75,7 +75,7 @@ class Bowling {
     if (!previousFrame.isSpare()) {
       return
     }
-    previousFrame.add(this._currentFrame().firstRoll())
+    previousFrame._addSpareBonusScore(this._currentFrame().firstRoll())
   }
 
   _addStrikeBonus () {
@@ -84,12 +84,16 @@ class Bowling {
       return
     }
     let lastFrame = this._previousFrame(1)
+    this._calculateStrikeBonus(this._currentFrame(), lastFrame, secondLastFrame)
+  }
+
+  _calculateStrikeBonus (currentFrame, lastFrame, secondLastFrame) {
     if (lastFrame.isStrike()) {
-      secondLastFrame.add(lastFrame.firstRoll())
-      secondLastFrame.add(this._currentFrame().firstRoll())
+      secondLastFrame._addStrikeBonusScore(lastFrame.firstRoll())
+      secondLastFrame._addStrikeBonusScore(this._currentFrame().firstRoll())
     } else {
-      secondLastFrame.add(lastFrame.firstRoll())
-      secondLastFrame.add(lastFrame.secondRoll())
+      secondLastFrame._addStrikeBonusScore(lastFrame.firstRoll())
+      secondLastFrame._addStrikeBonusScore(lastFrame.secondRoll())
     }
   }
 

@@ -12,9 +12,12 @@ describe('ScoreCard', () => {
   })
 
   it('logs the frame', () => {
-    const frame = jasmine.createSpyObj('frame', { outcome: [1, 1] })
+    const frame = jasmine.createSpyObj('frame', {
+      outcome: [1, 1],
+      outcomeType: 'open'
+    })
     scoreCard.logFrame(frame)
-    expect(scoreCard._frames).toContain(frame)
+    expect(scoreCard._lastFrame).toEqual(frame)
   })
 
   it('has a default score of 0', () => {
@@ -22,8 +25,84 @@ describe('ScoreCard', () => {
   })
 
   it('can calculate score', () => {
-    const frame = jasmine.createSpyObj('frame', { outcome: [1, 1] })
+    const frame = jasmine.createSpyObj('frame', {
+      outcome: [1, 1],
+      outcomeType: 'open'
+    })
     scoreCard.logFrame(frame)
     expect(scoreCard.score()).toEqual(2)
+  })
+
+  it('can calculate score', () => {
+    const frame = jasmine.createSpyObj('frame', {
+      outcome: [1, 1],
+      outcomeType: 'open'
+    })
+
+    scoreCard.logFrame(frame)
+    expect(scoreCard.score()).toEqual(2)
+  })
+
+  it('calculates score correctly when last frame has a spare', () => {
+    const frame1 = jasmine.createSpyObj('frame', {
+      outcome: [5, 5],
+      outcomeType: 'spare'
+    })
+    const frame2 = jasmine.createSpyObj('frame', {
+      outcome: [3, 3],
+      outcomeType: 'open'
+    })
+
+    scoreCard.logFrame(frame1)
+    scoreCard.logFrame(frame2)
+
+    expect(scoreCard.score()).toEqual(19)
+  })
+
+  it('calculates score correctly when last frame has a strike', () => {
+    const frame1 = jasmine.createSpyObj('frame', {
+      outcome: [10],
+      outcomeType: 'strike'
+    })
+    const frame2 = jasmine.createSpyObj('frame', {
+      outcome: [3, 3],
+      outcomeType: 'spare'
+    })
+
+    scoreCard.logFrame(frame1)
+    scoreCard.logFrame(frame2)
+
+    expect(scoreCard.score()).toEqual(22)
+  })
+
+  it('calculates score correctly with strikes, spares, and opens', () => {
+    const frame1 = jasmine.createSpyObj('frame', {
+      outcome: [10],
+      outcomeType: 'strike'
+    })
+    const frame2 = jasmine.createSpyObj('frame', {
+      outcome: [3, 3],
+      outcomeType: 'open'
+    })
+    const frame3 = jasmine.createSpyObj('frame', {
+      outcome: [3, 3],
+      outcomeType: 'open'
+    })
+    const frame4 = jasmine.createSpyObj('frame', {
+      outcome: [3, 7],
+      outcomeType: 'spare'
+    })
+    const frame5 = jasmine.createSpyObj('frame', {
+      outcome: [3, 4],
+      outcomeType: 'open'
+    })
+
+    scoreCard.logFrame(frame1)
+    scoreCard.logFrame(frame2)
+    scoreCard.logFrame(frame3)
+    scoreCard.logFrame(frame4)
+    scoreCard.logFrame(frame5)
+
+    expect(scoreCard.score()).toEqual(48)
   })
 })

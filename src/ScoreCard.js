@@ -1,31 +1,46 @@
 class ScoreCard {
   constructor () {
-    this._frames = []
-    this._lastFrameOutcome = null
+    this._lastFrame = null
     this._score = 0
   }
 
   logFrame (frame) {
-    this._frames.push(frame)
-    this._score += frame.outcome()[0] + frame.outcome()[1]
-  }
-
-  lastFrameOutcome () {
-    const frame = this._frames[this._frames.length - 1]
-    if (frame.outcome()[0] === 10) {
-      return 'strike'
-    } else if (frame.outcome()[0] + frame.outcome()[1] === 10) {
-      return 'spare'
-    } else {
-      return 'open'
-    }
+    this._updateScore(frame)
+    this._lastFrame = frame
   }
 
   score () {
-    // return this._frames
-    //   .map(frame => frame.outcome()[0] + frame.outcome()[1])
-    //   .reduce((sum, currentValue) => sum + currentValue)
     return this._score
+  }
+
+  _updateScore (frame) {
+    const bonus = this._lastFrame ? this._calculateBonus(frame) : 0
+    this._score += this._calculateFramePoints(frame) + bonus
+  }
+
+  _calculateBonus (frame) {
+    const lastFrameOutcome = this._lastFrame.outcomeType()
+
+    switch (lastFrameOutcome) {
+      case 'strike':
+        return this._calculateStrikeBonus(frame)
+      case 'spare':
+        return this._calculateSpareBonus(frame)
+      default:
+        return 0
+    }
+  }
+
+  _calculateFramePoints (frame) {
+    return frame.outcome()[0] + (frame.outcome()[1] || 0)
+  }
+
+  _calculateStrikeBonus (frame) {
+    return frame.outcome()[0] + frame.outcome()[1]
+  }
+
+  _calculateSpareBonus (frame) {
+    return frame.outcome()[0]
   }
 }
 

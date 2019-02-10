@@ -61,8 +61,11 @@ Scorecard.prototype.strike_bonus = function(){
 };
 
 Scorecard.prototype.clear_bonus = function(){
-  this.st_bonus = [];
-  return this.st_bonus;
+  if (this.st_bonus[0] != null) {
+    return this.st_bonus = [];
+  } else if (this.sp_bonus[0] != null) {
+    return this.sp_bonus = [];
+  }
 };
 
 Scorecard.prototype.spare_bonus = function(){

@@ -4,14 +4,21 @@ function Game(){
   this.points = []
 };
 
-Game.prototype.roll = function(roll_points) {
-  this.points.push(roll_points)
+Game.prototype.roll = function(rollPoints) {
+  this.points.push(rollPoints)
 };
 
 Game.prototype.score = function() {
-  var result = 0
-  for (var i = 0; i < 20; i++) {
-    result += this.points[i]
+  var finalScore = 0;
+  var pointsIndex = 0;
+  for (var frame = 0; frame < 10; frame++) {
+    if (this.points[pointsIndex] + this.points[pointsIndex + 1] === 10) {
+      finalScore += this.points[pointsIndex] + this.points[pointsIndex + 1] + this.points[pointsIndex + 2];
+    }
+    else {
+      finalScore += this.points[pointsIndex] + this.points[pointsIndex + 1];
+    }
+    pointsIndex += 2;
   }
-  return result;
+  return finalScore;
 };

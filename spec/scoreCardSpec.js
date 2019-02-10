@@ -9,23 +9,8 @@ describe('ScoreCard', () => {
 
   describe('recordScore', () => {
     it('adds the current frame to scorecard.scoreArray', () => {
-      scoreCard.recordScore(1, 2, 8);
-      expect(scoreCard.scoreArray).toEqual([ [1, 2, 8] ]);
-    });
-  });
-
-  describe('totalScore', () => {
-    it('calculates the total score', () => {
-      for(let i = 1 ; i < 11 ; i++){
-        return scoreCard.recordScore(i, 1, 1)
-      }
-      expect(scoreCard.totalScore()).toEqual(20)
-    })
-
-    it('calculates the total score after every frame', () => {
-      scoreCard.recordScore(1, 2, 3);
-      expect(scoreCard.isGameComplete()).toEqual(false);
-      expect(scoreCard.totalScore()).toEqual(5)
+      scoreCard.recordScore(2, 8);
+      expect(scoreCard.scoreArray).toEqual([ [2, 8, 0] ]);
     });
   });
 

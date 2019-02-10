@@ -40,6 +40,10 @@ class Frame {
     return this._score[1]
   }
 
+  thirdRoll () {
+    return this._score[2]
+  }
+
   frameScore () {
     let score = 0
     this._score.forEach(function (num) {

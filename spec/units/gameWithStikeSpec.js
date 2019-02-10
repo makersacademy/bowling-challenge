@@ -50,4 +50,13 @@ describe('StrikeBowlingGame', function() {
     bowlingGame.roll(2)
     expect(bowlingGame.score).toEqual(20)
   });
+
+  it ('two strikes in a row has includes bonus points', function() {
+    bowlingGame.roll(10)
+    bowlingGame.roll(10)
+    bowlingGame.roll(4)
+    bowlingGame.roll(2)
+    expect(bowlingGame.score).toEqual(46)
+  });
+
 }); 

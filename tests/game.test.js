@@ -20,15 +20,32 @@ describe('Initializer', () => {
   })
 })
 
-describe('Frame', ()=>{
-	  let game;
+describe('Pins', () =>{
+	let game;
 
   beforeEach(() => {
     game = new Game
   });
 
-	it('expect recorded score to deduct number of pins', ()=>{
-	game.record(3);
-	expect(game.pins).toBe(7);
-});
+  it('recorded score deducts number of pins', ()=>{
+		game.record(3);
+		expect(game.pins).toBe(7);
+	});
+
+	it('strike advances frame', ()=>{
+		game.frame = 4;
+		game.record(10);
+		expect(game.frame).toBe(5)
+	});
 })
+
+describe('Frame', ()=>{
+	let game;
+
+  beforeEach(() => {
+    game = new Game
+  });
+
+
+})
+

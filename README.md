@@ -40,6 +40,7 @@ Technical issues I was not able to solve in the time we had:
 - Make ESLint aware of files that only become available in the browser (re. `interface.js`'s use of `Bowling`) - I had to mute it on lines 3 and 14 instead.
 - Deal with dependencies arising from `node` more elegantly - currently using `browserify` but having to manage a `bundle.js` file is a pain.
 - Event looping is currently bundled up in other methods (e.g. `enterScore()` can trigger `endFrame()`). I was unable to work out how to orchestrate things and have jasmine input when required.
+- I populated a results table by looping through it which necessitated having the same IDs, albeit under different sub-headings. My linter complained heavily about duplicate IDs, but how else could this be solved?
 
 Project structure
 ============

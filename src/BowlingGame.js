@@ -13,11 +13,17 @@ var scoreCard = [];
 
 
   BowlingGame.prototype.calculateScore = function() {
-    var rollNum = 0;
+    var turn = 0;
     
     for (var frameNum = 1; frameNum <= 10; frameNum ++) {
-      this.score += this.rolls[rollNum] + this.rolls[rollNum + 1];
-      rollNum += 2;
+      if (this.rolls[turn] == 10){
+        this.score += (this.rolls[turn] + this.rolls[turn + 1] + this.rolls[turn + 2])
+        turn += 1;
+      }
+      else {
+        this.score += this.rolls[turn] + this.rolls[turn + 1];
+        turn += 2;
+      }
     }
   }
 

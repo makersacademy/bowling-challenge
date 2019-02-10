@@ -27,8 +27,10 @@ Game.prototype.newFrame = function () {
 
 Game.prototype.roll = function (pins) {
 if(this.frame.length === 2 && this.frameNumber < 10) {
-  throw new Error('You can only roll twice within a frame');
-  }
+  throw new Error('You have already rolled twice, please start a new frame.');
+} else if (this.frame.length === 3 && this.frameNumber === 10) {
+  throw new Error('You can only roll three times on the last frame');
+}
   this.frame.push(pins)
   this.rolls.push(pins)
   // this._score += pins

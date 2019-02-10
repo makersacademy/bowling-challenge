@@ -23,7 +23,8 @@ describe('Game', function() {
 
   it('counts score after each roll', function (){
     game.roll(5);
-    expect(game.getTotalScore()).toEqual(5);
+    game.roll(4);
+    expect(game.getTotalScore()).toEqual(9);
   });
 
   it('counts frame number', function () {
@@ -41,13 +42,21 @@ describe('Game', function() {
     game.newFrame()
     game.roll(1)
     game.roll(3)
-    expect(function(){game.roll(2)}).toThrowError('You can only roll twice within a frame')
+    expect(function(){game.roll(2)}).toThrowError('You have already rolled twice, please start a new frame.')
   });
 
   it('lists knocked down pins for all rolls', function () {
     game.roll(1)
     game.roll(3)
     expect(game.rolls).toEqual([1,3]);
+  });
+
+  it('can roll three times at last frame', function () {
+    game.frameNumber = 10
+    game.roll(1)
+    game.roll(2)
+    game.roll(3)
+    expect(function(){game.roll(1)}).toThrowError('You can only roll three times on the last frame')
   });
 
 });

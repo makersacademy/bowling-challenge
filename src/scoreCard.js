@@ -2,41 +2,66 @@
 class ScoreCard {
 
   constructor(){
-    // this.finalScore = 0;
     this.scoreArray = [];
     this.MAXIMUM_FRAMES = 10;
+    this.gameScore = null;
+    this.frames = [
+      frame1 = new Frame(this),
+      frame2 = new Frame(this),
+      frame3 = new Frame(this),
+      frame4 = new Frame(this),
+      frame5 = new Frame(this),
+      frame6 = new Frame(this),
+      frame7 = new Frame(this),
+      frame8 = new Frame(this),
+      frame9 = new Frame(this),
+      frame10 = new LastFrame(this)
+    ];
   }
 
-  recordScore(frameNumber, rollOne = 0, rollTwo = 0){
-    const frameArray = [frameNumber, rollOne, rollTwo];
+  recordScore(frameNumber, rollOne = 0, rollTwo = 0, rollThree = 0){
+    const frameArray = [frameNumber, rollOne, rollTwo, rollThree];
     this.scoreArray.push(frameArray);  
-    // console.log('scoresArray.....')
-    // console.log(this.scoreArray);
   }
 
-  totalScore(){
-    const scores = this.scoreArray;
-    const total = scores.map(score => score[1] + score[2] )
-      .reduce( (sum, num) => sum + num );
-    return total;
-  }
+  // experiment(){
+  //   const scores = this.scoreArray;    
+  //   const result = scores.map(
+  //     x => {
+  //       this.handleFrameTen(scores, x);
+  //       if(x[1] === 10){
+  //         if(scores[scores.indexOf(x) + 1][1] === 10){
+  //           return 10 + scores[scores.indexOf(x) + 1][1] + scores[scores.indexOf(x) + 1][2] + scores[scores.indexOf(x) + 2][1];
+  //         }
+  //         return 10 + scores[scores.indexOf(x) + 1][1] + scores[scores.indexOf(x) + 1][2];
+  //       } else if(x[1] + x[2] === 10 && x[2] != 0){
+  //         if(scores[scores.indexOf(x) + 1]){ 
+  //           return 10 + scores[scores.indexOf(x) + 1][1]; 
+  //         }
+          
+  //       } else {
+  //         return x[1] + x[2];
+  //       }
+  //     }
+  //   );
+  //   return result.reduce((sum, num) => sum + num);
+  // }
 
-  experiment(){
-    const scores = this.scoreArray;    
-    const result = scores.map(
-      x => {
-        if(x[1] === 10){
-          if(scores[scores.indexOf(x) + 1][1] === 10){
-            return 10 + scores[scores.indexOf(x) + 1][1] + scores[scores.indexOf(x) + 1][2] + scores[scores.indexOf(x) + 2][1];
-          }
-          return 10 + scores[scores.indexOf(x) + 1][1] + scores[scores.indexOf(x) + 1][2];
-        } else {
-          return x[1] + x[2];
-        }
-      }
-    );
-    return result.reduce((sum, num) => sum + num);
-  }
+  // handleFrameTen(scores, x){
+  //   if(scores.indexOf(x) === 9){
+  //     if(x[1] === 10) {
+  //       if(x[2] === 10){
+  //         if(x[3] === 10){
+  //           return 30;
+  //         } else {
+  //           return x[1] + x[2] + x[3];
+  //         }
+  //       }
+  //     } else if(x[1] + x[2] == 10 && x[2] != 0){
+  //       return x[1] + x[2] + x[3];
+  //     } 
+  //   } 
+  // }
 
   finalScore(){
     if(this.isGameComplete()){
@@ -48,10 +73,8 @@ class ScoreCard {
 
 
   isGameComplete(){
-    return this.scoreArray.length >= this.MAXIMUM_FRAMES;
-  }
-
-  
+    return this.scoreArray.length === this.MAXIMUM_FRAMES;
+  }  
 
 }
 

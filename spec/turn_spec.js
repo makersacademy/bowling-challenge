@@ -17,18 +17,14 @@ describe("Turn", function() {
     expect(striketurn.isStrike()).toEqual(true)
     expect(spareturn.isStrike()).toEqual(false)
     expect(anotherturn.isStrike()).toEqual(false)
+    expect(striketurn.printStrike()).toEqual('X')
   });
 
   it('should confirm if it\'s a spare', function(){
     expect(spareturn.isSpare()).toEqual(true)
     expect(turnofones.isSpare()).toEqual(false)
     expect(striketurn.isSpare()).toEqual(false)
-  });
-
-  it('should confirm true for strikeOrSpare', function(){
-    expect(striketurn.isStrikeOrSpare()).toEqual(true)
-    expect(spareturn.isStrikeOrSpare()).toEqual(true)
-    expect(turnofones.isStrikeOrSpare()).toEqual(false)
+    expect(spareturn.printSpare()).toEqual('7, /')
   });
 
 });

@@ -37,4 +37,10 @@ describe('SingleStrikeBowlingGame', function() {
     bowlingGame.roll(3)
     expect(bowlingGame.frame).toEqual(3)
   });
+  
+  it('roll after strike has rollnum of 1', function() {
+    bowlingGame.roll(10)
+    bowlingGame.roll(1)
+    expect(bowlingGame._rollNum).toEqual(1)
+  });
 }); 

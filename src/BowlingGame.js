@@ -31,7 +31,15 @@ var scoreCard = [];
   }
 
   BowlingGame.prototype.countRollNumber = function() {
-    this._rollNum < 2 ? this._rollNum += 1 : this._rollNum = 1;
+    if (this._turn !== 0 && scoreCard[this._turn -1].knockedPins === 10) {
+      this.rollNum = 1;
+    }
+    else if (this._rollNum < 2) {
+      this._rollNum += 1;
+    }
+    else {
+      this._rollNum = 1;
+    }
   }
   
   BowlingGame.prototype.increaseFrameNum = function(score) {

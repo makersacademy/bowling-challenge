@@ -4,7 +4,7 @@ function Scorecard(){
   this.frame_score = 0;
   this.total_score_array = [];
 
-  this.bonus = []
+  this.bonus = [];
 };
 
 var number_one;
@@ -23,9 +23,9 @@ Scorecard.prototype.record_second = function(number_two){
 };
 
 Scorecard.prototype.frame_score_display = function(){
-this.frame_score = (this.pins_knocked_one + this.pins_knocked_two);
-this.total_score_array.push(this.frame_score);
-return this.frame_score;
+  this.frame_score = (this.pins_knocked_one + this.pins_knocked_two);
+  this.total_score_array.push(this.frame_score);
+  return this.frame_score;
 };
 
 Scorecard.prototype.total_score_display = function(){
@@ -38,8 +38,8 @@ Scorecard.prototype.total_score_display = function(){
 };
 
 Scorecard.prototype.clear = function(){
-  var clean = this.total_score_array.length = 0;
-  return clean;
+  this.total_score_array = [];
+  return this.total_score_array;
 };
 
 Scorecard.prototype.strike = function(){
@@ -49,10 +49,15 @@ Scorecard.prototype.strike = function(){
 };
 
 Scorecard.prototype.strike_bonus = function(){
-if (this.bonus[0] == 10) {
-  var bonus_score = this.bonus[2] + this.bonus[3];
-}
+  if (this.bonus[0] == 10) {
+    var bonus_score = this.bonus[2] + this.bonus[3];
+  }
   this.frame_score += bonus_score;
   this.total_score_array.push(bonus_score);
   return bonus_score;
+};
+
+Scorecard.prototype.clear_bonus = function(){
+  this.bonus = [];
+  return this.bonus;
 };

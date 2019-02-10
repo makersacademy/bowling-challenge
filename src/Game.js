@@ -1,23 +1,19 @@
 'use strict'
 
 function Game () {
-  this.frameNumber = 0
+  this.MAXIMUM_PINS = 10
+  this.frameNumber = 1
   this._score = 0
   this.frame = []
   this.rolls = []
+  this.frameLog = []
+  this.frameScore = []
 };
 
 
 Game.prototype.getTotalScore = function () {
-// if(this.frameNumber = 0){
-//   return this._score
-// }
-    var total
-    total = this.rolls.reduce((acc, val) => {
-    return acc + val;
-  });
-  return this._score += total
-};
+  return this._score
+}
 
 Game.prototype.getCurrentFrame = function () {
   return this.frame
@@ -25,18 +21,30 @@ Game.prototype.getCurrentFrame = function () {
 
 Game.prototype.newFrame = function () {
   this.frame = []
-  this.frameNumber += 1
+  return this.frameNumber += 1
+};
+
+Game.prototype.endFrame = function () {
+  this.frameLog.push(this.frame)
+  var total
+  total = this.frame.reduce((acc, val) => {
+    return acc + val;
+  });
+  this.frameScore.push(total)
 };
 
 Game.prototype.roll = function (pins) {
-if(this.frame.length === 2 && this.frameNumber < 10) {
-  throw new Error('You have already rolled twice, please start a new frame.');
-} else if (this.frame.length === 3 && this.frameNumber === 10) {
-  throw new Error('You can only roll three times on the last frame');
-}
+  if(pins > this.MAXIMUM_PINS) {
+    throw new Error ('You can only knock 10 pins in a roll.')
+  }
+  if(this.frame.length === 2 && this.frameNumber < 10) {
+    throw new Error('You have already rolled twice, please start a new frame.');
+  } else if (this.frame.length === 3 && this.frameNumber === 10) {
+    throw new Error('You can only roll three times on the last frame');
+  }
   this.frame.push(pins)
   this.rolls.push(pins)
-  // this._score += pins
+  this._score += pins
 };
 
 Game.prototype.isStrike = function () {

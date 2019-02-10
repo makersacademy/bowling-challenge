@@ -1,9 +1,7 @@
 language: node_js
 node_js:
-- "0.12"
-before install:
-- "npm install --save-dev jasmine"
-- "node node_modules/jasmine/bin/jasmine init"
+- "iojs"
+- "7"
 
 script:
 - "npm test"

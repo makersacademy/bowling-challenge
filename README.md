@@ -16,12 +16,20 @@ Features
 - `ESLint` used with `javascript standard` profile - all passing.
 - `Jasmine` used for unit and feature tests. 
 
+User experience
+=====
+
+The user interface is basic but functional:
+
+![](images/example_with_spare_and_strike.png)
+
 Missing features / bugs etc.
 =====
 
 - The game does not announce victory, although the score stops tallying correctly.
-- There is zero validation on user input at present.
+- There is zero validation on user input at present (so e.g. the user can input >10 pins).
 - The event loop behind the scenes is still slightly creaky, hence there is a 'frame 11' created behind the scenes. Needs some more thought and refactoring.
+- There is no rules prompting for users - e.g. they must know to press the submit button again for bonus shots.
  
 Technical issues I was not able to solve in the time we had:
 ====
@@ -54,9 +62,21 @@ This week has felt a bit like I was stabbing in the dark with a bunch of technol
  
 Instructions for use
 ===
-TBC
 
+**As an end user: **
 
+- No setup is required
+- Clone the directory
+- Open `src/bowling.html` and play. (`browserify` has been used in standalone moded to bundle the required javascript) 
+ 
+**As a developer: **
+
+- Install `npm` using your usual package manager
+- Execute `npm install` in the project root to download the dependencies in `package.json`
+- Execute `npm run lint` to run the `ESLint` package (`javascript-standard` profile)
+- Execute `npm test` to run the `Jasmine` tests
+- NB: If you make any changes to the source files, you need to run `browserify src/Bowling.js --s Bowling >  src/bundle.js` from the project root to generate an updated javascript bundle for the browser.
+- NB2: If this is done, in order to pass the lint tests, add a `/*eslint-disable*/` to line 1 of `bundle.js` as the generated javascript is not compliant.
 
 Bowling Challenge
 =================

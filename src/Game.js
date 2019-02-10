@@ -9,8 +9,11 @@ function Game () {
 
 
 Game.prototype.getTotalScore = function () {
-
-  return this._score
+    var total
+    total = this.rolls.reduce((acc, val) => {
+    return acc + val;
+  });
+  return this._score += total
 };
 
 Game.prototype.getCurrentFrame = function () {
@@ -23,10 +26,10 @@ Game.prototype.newFrame = function () {
 };
 
 Game.prototype.roll = function (pins) {
-if(this.frame.length >= 2 && this.frameNumber < 10){
+if(this.frame.length === 2 && this.frameNumber < 10) {
   throw new Error('You can only roll twice within a frame');
   }
   this.frame.push(pins)
   this.rolls.push(pins)
-  this._score += pins
+  // this._score += pins
 };

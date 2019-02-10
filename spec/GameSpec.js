@@ -11,7 +11,7 @@ describe('Game', function() {
     expect(game.frameNumber).toEqual(0);
   });
 
-  it('a game starts from zero score in a new game', function(){
+  it('starts from zero score in a new game', function(){
     expect(game.getTotalScore()).toEqual(0);
   });
 
@@ -41,9 +41,7 @@ describe('Game', function() {
     game.newFrame()
     game.roll(1)
     game.roll(3)
-    var fNumber = this.frameNumber
-    console.log(fNumber)
-    expect(game.roll(4)).toThrowError('You can only roll twice within a frame')
+    expect(function(){game.roll(2)}).toThrowError('You can only roll twice within a frame')
   });
 
   it('lists knocked down pins for all rolls', function () {

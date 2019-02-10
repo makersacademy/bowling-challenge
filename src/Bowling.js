@@ -53,6 +53,10 @@ class Bowling {
     return score
   }
 
+  getCompleteFrames () {
+    return this._frames.filter(frame => frame.isComplete() === true)
+  }
+
   _currentFrame () {
     return this._frames[this._frames.length - 1]
   }

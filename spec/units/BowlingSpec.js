@@ -94,4 +94,15 @@ describe('Bowling', function () {
       expect(bowling.gameScore()).toEqual(53)
     })
   })
+
+  it('returns only completed frames', function () {
+    let incompleteFrames = false
+    let frames = bowling.getCompleteFrames()
+    frames.forEach(function (frame) {
+      if (!frame.isComplete()) {
+        incompleteFrames = true
+      }
+    })
+    expect(incompleteFrames).toEqual(false)
+  })
 })

@@ -16,7 +16,7 @@ var scoreCard = [];
     this.countRollNumber();
     this.increaseFrameNum(score);
     this.addScoreToScoreCard(score);
-    this._turn+= 1;
+    this._turn += 1;
   };
 
   BowlingGame.prototype.checkFramesToStartOrEndGame = function() {
@@ -31,7 +31,7 @@ var scoreCard = [];
   }
 
   BowlingGame.prototype.countRollNumber = function() {
-    if (this._turn !== 0 && scoreCard[this._turn -1].knockedPins === 10) {
+    if (this.lastTurnIsStrike()) {
       this.rollNum = 1;
     }
     else if (this._rollNum < 2) {
@@ -43,7 +43,7 @@ var scoreCard = [];
   }
   
   BowlingGame.prototype.increaseFrameNum = function(score) {
-    if (this._turn !== 0 && scoreCard[this._turn -1].knockedPins === 10) {
+    if (this.lastTurnIsStrike()) {
       this.frame += 1
     }
     else if (this._rollNum === 1 && this.isInPlay) {
@@ -57,6 +57,14 @@ var scoreCard = [];
     scoreCard[this._turn].roll = this._rollNum;
     scoreCard[this._turn].knockedPins = score;
     scoreCard[this._turn].totalScore = this.score;
+  }
+
+  BowlingGame.prototype.lastTurnKnockedPins = function() {
+    return scoreCard[this._turn - 1].knockedPins;
+  }
+
+  BowlingGame.prototype.lastTurnIsStrike = function() {
+    return this._turn !== 0 && this.lastTurnKnockedPins() === 10; 
   }
 
 module.exports = BowlingGame

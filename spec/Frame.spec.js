@@ -13,16 +13,16 @@ describe('Frame', () => {
 
   it('returns the outcome type of strike', () => {
     const frame = new Frame([10])
-    expect(frame.outcomeType()).toEqual('strike')
+    expect(frame.type()).toEqual('strike')
   })
 
   it('returns the outcome type of spare', () => {
     const frame = new Frame([3, 7])
-    expect(frame.outcomeType()).toEqual('spare')
+    expect(frame.type()).toEqual('spare')
   })
 
   it('returns the outcome type of open', () => {
     const frame = new Frame([3, 3])
-    expect(frame.outcomeType()).toEqual('open')
+    expect(frame.type()).toEqual('open')
   })
 })

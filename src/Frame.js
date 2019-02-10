@@ -3,11 +3,11 @@ class Frame {
     this._rolls = rolls
 
     if (rolls[0] === 10) {
-      this._outcomeType = 'strike'
+      this._type = 'strike'
     } else if (rolls[0] + rolls[1] === 10) {
-      this._outcomeType = 'spare'
+      this._type = 'spare'
     } else {
-      this._outcomeType = 'open'
+      this._type = 'open'
     }
   }
 
@@ -15,8 +15,8 @@ class Frame {
     return this._rolls
   }
 
-  outcomeType () {
-    return this._outcomeType
+  type () {
+    return this._type
   }
 }
 

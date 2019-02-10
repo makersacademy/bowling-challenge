@@ -12,6 +12,9 @@ describe("Ball", function() {
     expect(ball.roll()).toEqual(0);
   });
 
+  it("can roll to score", function() {
+    expect(ball.roll(3)).toEqual(3);
+  });
 
 
 });

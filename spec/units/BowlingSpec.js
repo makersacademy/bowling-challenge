@@ -96,6 +96,7 @@ describe('Bowling', function () {
   })
 
   it('returns only completed frames', function () {
+    enterScores(5, 1)
     let incompleteFrames = false
     let frames = bowling.getCompleteFrames()
     frames.forEach(function (frame) {

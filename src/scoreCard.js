@@ -6,24 +6,30 @@ class ScoreCard {
     this.MAXIMUM_FRAMES = 10;
     this.gameScore = null;
     this.frameScoresArray = [];
-    this.frames = [
-      frame1 = new Frame(this),
-      frame2 = new Frame(this),
-      frame3 = new Frame(this),
-      frame4 = new Frame(this),
-      frame5 = new Frame(this),
-      frame6 = new Frame(this),
-      frame7 = new Frame(this),
-      frame8 = new Frame(this),
-      frame9 = new Frame(this),
-      frame10 = new LastFrame(this)
-    ];
+    // this.frames = [
+    //   frame1 = new Frame(this),
+    //   frame2 = new Frame(this),
+    //   frame3 = new Frame(this),
+    //   frame4 = new Frame(this),
+    //   frame5 = new Frame(this),
+    //   frame6 = new Frame(this),
+    //   frame7 = new Frame(this),
+    //   frame8 = new Frame(this),
+    //   frame9 = new Frame(this),
+    //   frame10 = new LastFrame(this)
+    // ];
   }
 
-  recordScore(frameNumber, rollOne = 0, rollTwo = 0, rollThree = 0){
-    const frameArray = [frameNumber, rollOne, rollTwo, rollThree];
+  recordScore(rollOne = 0, rollTwo = 0, rollThree = 0){
+    const frameArray = [rollOne, rollTwo, rollThree];
     this.scoreArray.push(frameArray);  
   }
+
+  // recordScore(frameNumber, firstRoll, secondRoll){
+  //   frameNumber.firstRoll = firstRoll;
+  //   frameNumber.secondRoll = secondRoll;
+
+  // }
   
   frameScores(){
     const frameScores = this.frameScoresArray;
@@ -38,46 +44,57 @@ class ScoreCard {
     return frameScores.reduce((sum, num) => sum + num);
   }
 
-  // experiment(){
-  //   const scores = this.scoreArray;    
-  //   const result = scores.map(
-  //     x => {
-  //       this.handleFrameTen(scores, x);
-  //       if(x[1] === 10){
-  //         if(scores[scores.indexOf(x) + 1][1] === 10){
-  //           return 10 + scores[scores.indexOf(x) + 1][1] + scores[scores.indexOf(x) + 1][2] + scores[scores.indexOf(x) + 2][1];
-  //         }
-  //         return 10 + scores[scores.indexOf(x) + 1][1] + scores[scores.indexOf(x) + 1][2];
-  //       } else if(x[1] + x[2] === 10 && x[2] != 0){
-  //         if(scores[scores.indexOf(x) + 1]){ 
-  //           return 10 + scores[scores.indexOf(x) + 1][1]; 
-  //         }
+  experiment(){
+    const scores = this.scoreArray;    
+    const result = scores.map(
+      x => {
+        if(scores.indexOf(x) === 9){
+          if(x[0] === 10) {
+            if(x[1] === 10){
+              if(x[2] === 10){
+                return 30;
+              } else {
+                return x[0] + x[1] + x[2];
+              }
+            }
+          } else if(x[0] + x[1] == 10 && x[1] != 0){
+            return x[0] + x[1] + x[2];
+          } 
+        } 
+        if(x[0] === 10 && scores[scores.indexOf(x) + 1]){          
+          if(scores[scores.indexOf(x) + 1][0] === 10){
+            return 10 + scores[scores.indexOf(x) + 1][0] + scores[scores.indexOf(x) + 1][1] + scores[scores.indexOf(x) + 2][0];
+          }
+          return 10 + scores[scores.indexOf(x) + 1][0] + scores[scores.indexOf(x) + 1][1];         
+
+        } else if(x[0] + x[1] === 10 && x[1] != 0){
+          if(scores[scores.indexOf(x) + 1]){ 
+            return 10 + scores[scores.indexOf(x) + 1][0]; 
+          }
           
-  //       } else {
-  //         return x[1] + x[2];
-  //       }
-  //     }
-  //   );
-  //   return result.reduce((sum, num) => sum + num);
-  // }
+        } else {
+          return x[0] + x[1];
+        }
+      }
+    );
+    return result.reduce((sum, num) => sum + num);
+  }
 
-  // handleFrameTen(scores, x){
-  //   if(scores.indexOf(x) === 9){
-  //     if(x[1] === 10) {
-  //       if(x[2] === 10){
-  //         if(x[3] === 10){
-  //           return 30;
-  //         } else {
-  //           return x[1] + x[2] + x[3];
-  //         }
-  //       }
-  //     } else if(x[1] + x[2] == 10 && x[2] != 0){
-  //       return x[1] + x[2] + x[3];
-  //     } 
-  //   } 
-  // }
-
-
+  handleFrameTen(scores, x){
+    if(scores.indexOf(x) === 9){
+      if(x[0] === 10) {
+        if(x[1] === 10){
+          if(x[2] === 10){
+            return 30;
+          } else {
+            return x[0] + x[1] + x[2];
+          }
+        }
+      } else if(x[0] + x[1] == 10 && x[1] != 0){
+        return x[0] + x[1] + x[2];
+      } 
+    } 
+  }
 
   isGameComplete(){
     return this.scoreArray.length === this.MAXIMUM_FRAMES;

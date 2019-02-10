@@ -32,7 +32,6 @@ class Bowling {
 
   checkGameEnd () {
     if (this.frame === 10) {
-      // this.endFrame()
       this.endGame()
     } else {
       this._newFrame()
@@ -75,7 +74,7 @@ class Bowling {
     if (!previousFrame.isSpare()) {
       return
     }
-    previousFrame._addSpareBonusScore(this._currentFrame().firstRoll())
+    previousFrame.add(this._currentFrame().firstRoll())
   }
 
   _addStrikeBonus () {
@@ -89,11 +88,11 @@ class Bowling {
 
   _calculateStrikeBonus (currentFrame, lastFrame, secondLastFrame) {
     if (lastFrame.isStrike()) {
-      secondLastFrame._addStrikeBonusScore(lastFrame.firstRoll())
-      secondLastFrame._addStrikeBonusScore(this._currentFrame().firstRoll())
+      secondLastFrame.add(lastFrame.firstRoll())
+      secondLastFrame.add(this._currentFrame().firstRoll())
     } else {
-      secondLastFrame._addStrikeBonusScore(lastFrame.firstRoll())
-      secondLastFrame._addStrikeBonusScore(lastFrame.secondRoll())
+      secondLastFrame.add(lastFrame.firstRoll())
+      secondLastFrame.add(lastFrame.secondRoll())
     }
   }
 

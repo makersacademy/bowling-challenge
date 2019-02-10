@@ -89,19 +89,13 @@ class Frame {
   }
 
   _checkSpare () {
-    if (this.isStrike()) {
-      return
-    }
-    if (this.frameScore() === 10) {
+    if (!this.isStrike() && this.frameScore() === 10) {
       this._spare = true
       this._complete = true
     }
   }
 
   _checkRollsFinished () {
-    if (this.isStrike() || this.isSpare()) {
-      return
-    }
     if (this.roll === 2) {
       this._complete = true
     }

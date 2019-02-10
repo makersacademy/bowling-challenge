@@ -58,9 +58,9 @@ describe('Bowling', function () {
     enterScores(4, 2)
     enterScores(5, 1)
     enterScores(6, 1)
-    enterScores(4, 1) // spare
-    enterScores(5, 2) // spare
-    enterScores(10, 1) // strike
+    enterScores(4, 1)
+    enterScores(5, 2)
+    enterScores(10, 1)
     enterScores(0, 1)
     enterScores(1, 1)
     enterScores(7, 1)

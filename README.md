@@ -19,7 +19,7 @@ Features
 User experience
 =====
 
-The user interface is basic but functional:
+The user interface is basic but functional. 'Bonus' scores for strikes and spares are shown in column 2/3. 
 
 ![](images/example_with_spare_and_strike.png)
 
@@ -30,6 +30,7 @@ Missing features / bugs etc.
 - There is zero validation on user input at present (so e.g. the user can input >10 pins).
 - The event loop behind the scenes is still slightly creaky, hence there is a 'frame 11' created behind the scenes. Needs some more thought and refactoring.
 - There is no rules prompting for users - e.g. they must know to press the submit button again for bonus shots.
+- I wasn't able to fully separate out bonus scores from 'normal' scores as much as I would like without introducing different bugs. 
  
 Technical issues I was not able to solve in the time we had:
 ====
@@ -67,7 +68,7 @@ Instructions for use
 
 - No setup is required
 - Clone the directory
-- Open `src/bowling.html` and play. (`browserify` has been used in standalone moded to bundle the required javascript) 
+- Open `src/bowling.html` and play. (`browserify` has been used in standalone mode to bundle the required javascript) 
  
 **As a developer: **
 

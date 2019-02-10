@@ -20,6 +20,10 @@ var scoreCard = [];
         this.calcStrikeScore();
         this.turn += 1;
       }
+      else if (this.rolls[this.turn] + this.rolls[this.turn +1] === 10) {
+        this.score += (this.rolls[this.turn] + this.rolls[this.turn + 1] + this.rolls[this.turn + 2]);
+        this.turn += 2;
+      }
       else {
         this.calcRegularScore();
         this.turn += 2;

@@ -9,7 +9,7 @@ describe("Ball", function() {
   });
 
   it("can roll gutter ball", function() {
-    expect(ball.roll()).toEqual(0);
+    expect(ball.roll(0)).toEqual(0);
   });
 
   it("can roll to score", function() {

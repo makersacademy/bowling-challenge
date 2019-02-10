@@ -2,6 +2,6 @@
 
 function Ball() {}
 
-Ball.prototype.roll = function() {
-  return 0
+Ball.prototype.roll = function(pins) {
+  return pins
 };

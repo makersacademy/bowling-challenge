@@ -2,11 +2,9 @@
 
 describe('Game', function() {
   var game;
-  //var frame;
 
   beforeEach(function() {
     game = new Game();
-    //frame = jasmine.createSpyObj('frame',['roll','getCurrentScore']);
   });
 
   it('there is no frame by default', function () {
@@ -37,6 +35,21 @@ describe('Game', function() {
     game.roll(10)
     game.newFrame()
     expect(game.getCurrentFrame()).toEqual([]);
+  });
+
+  it('allows only two rolls in each frame', function () {
+    game.newFrame()
+    game.roll(1)
+    game.roll(3)
+    var fNumber = this.frameNumber
+    console.log(fNumber)
+    expect(game.roll(4)).toThrowError('You can only roll twice within a frame')
+  });
+
+  it('lists knocked down pins for all rolls', function () {
+    game.roll(1)
+    game.roll(3)
+    expect(game.rolls).toEqual([1,3]);
   });
 
 });

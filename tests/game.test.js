@@ -32,11 +32,6 @@ describe('Pins', () =>{
 		expect(game.pins).toBe(7);
 	});
 
-	it('strike advances frame', ()=>{
-		game.frame = 4;
-		game.record(10);
-		expect(game.frame).toBe(5)
-	});
 })
 
 describe('Frame', ()=>{
@@ -46,6 +41,18 @@ describe('Frame', ()=>{
     game = new Game
   });
 
+  it('strike advances frame', ()=>{
+		game.frame = 4;
+		game.record(10);
+		expect(game.frame).toBe(5)
+	});
+
+  it('frame advances after 2 balls', ()=>{
+  	game.frame = 4;
+  	game.record(3);
+  	game.record(5);
+  	expect(game.frame).toBe(5);
+  });
 
 })
 

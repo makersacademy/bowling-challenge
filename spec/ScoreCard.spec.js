@@ -16,4 +16,10 @@ describe('ScoreCard', () => {
     scoreCard.logFrame(frame)
     expect(scoreCard._frames).toContain(frame)
   })
+
+  it('can calculate score', () => {
+    const frame = jasmine.createSpyObj('frame', { outcome: [1, 1] })
+    scoreCard.logFrame(frame)
+    expect(scoreCard.score()).toEqual(2)
+  })
 })

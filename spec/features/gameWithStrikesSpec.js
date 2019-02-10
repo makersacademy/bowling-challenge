@@ -14,8 +14,6 @@ describe('BowlingGameWithStrikes', function() {
     rolls(3, 10)
     bowlingGame.roll(10)
     rolls(3, 8)
-    expect(bowlingGame.frame).toEqual(10)
     expect(bowlingGame.score).toEqual(70)
-    expect(bowlingGame.isInPlay).toEqual(false)
   });
 });

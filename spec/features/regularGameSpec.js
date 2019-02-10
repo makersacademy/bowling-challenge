@@ -26,7 +26,6 @@ describe('BowlingRegularGame', function() {
     bowlingGame.roll(8)
     bowlingGame.roll(1)
     expect(bowlingGame.score).toEqual(71)
-    expect(bowlingGame.frame).toEqual(10)
   });
 });
   

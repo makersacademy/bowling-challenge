@@ -51,6 +51,14 @@ describe('StrikeBowlingGame', function() {
     expect(bowlingGame.score).toEqual(20)
   });
 
+  it ('is in frame 3 after two strikes and one regular rolls', function() {
+    bowlingGame.roll(10)
+    bowlingGame.roll(10)
+    bowlingGame.roll(2)
+    expect(bowlingGame.frame).toEqual(3)
+    expect(bowlingGame._rollNum).toEqual(1)
+  });
+
   it ('two strikes in a row has includes bonus points', function() {
     bowlingGame.roll(10)
     bowlingGame.roll(10)

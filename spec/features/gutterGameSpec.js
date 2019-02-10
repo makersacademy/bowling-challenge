@@ -9,7 +9,6 @@ describe('BowlingGutterGame', function() {
       bowlingGame.roll(0);
     }
     expect(bowlingGame.score).toEqual(0)
-    expect(bowlingGame.frame).toEqual(10)
   });
 });
 

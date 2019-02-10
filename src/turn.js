@@ -6,10 +6,6 @@ function Turn(firstBowl, secondBowl = 0, thirdBowl = null) {
   this.thirdBowl = thirdBowl;
 }
 
-Turn.prototype.isStrikeOrSpare = function() {
-    return (this.isStrike() || this.isSpare())
-  }
-
 Turn.prototype.isStrike = function() {
   return this.firstBowl === 10
 }

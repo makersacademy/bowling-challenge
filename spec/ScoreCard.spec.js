@@ -11,4 +11,9 @@ describe('ScoreCard', () => {
     expect(scoreCard.logFrame).toBeDefined()
   })
 
+  it('logs the frame', () => {
+    const frame = jasmine.createSpy('frame')
+    scoreCard.logFrame(frame)
+    expect(scoreCard._frames).toContain(frame)
+  })
 })

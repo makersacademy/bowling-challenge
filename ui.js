@@ -36,6 +36,10 @@ $(document).ready(function(){
   $('#ten').click(function(){
     helper(10);
   });
+  $('#play_again'). click(function(){
+    location. reload(true);
+   });
+
 
   function helper(number){
 
@@ -132,6 +136,7 @@ $(document).ready(function(){
       clicks += 1;
       $('#b_box_f10').text(card.frame_score_display());
       $('#total').text(card.total_score_display());
+      $("#play_again").html( "<button type='button' class='btn btn-outline-warning btn-block'>Play again</button>" );
     }
   };
 

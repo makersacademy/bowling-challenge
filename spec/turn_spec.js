@@ -24,7 +24,7 @@ describe("Turn", function() {
     expect(spareturn.isSpare()).toEqual(true)
     expect(turnofones.isSpare()).toEqual(false)
     expect(striketurn.isSpare()).toEqual(false)
-    expect(spareturn.printSpare()).toEqual('7, /')
+    expect(spareturn.printSpare()).toEqual('/')
   });
 
 });

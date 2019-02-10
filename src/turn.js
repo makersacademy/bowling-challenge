@@ -22,6 +22,6 @@ Turn.prototype.isSpare = function() {
 
 Turn.prototype.printSpare = function() {
   if (this.isSpare){
-    return `${this.firstBowl}, /`
+    return '/'
   }
 }

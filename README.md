@@ -1,18 +1,6 @@
 Bowling Challenge
 =================
-88                                         88 88                          
-88                                         88 ""                          
-88                                         88                             
-88,dPPYba,   ,adPPYba,  8b      db      d8 88 88 8b,dPPYba,   ,adPPYb,d8  
-88P'    "8a a8"     "8a `8b    d88b    d8' 88 88 88P'   `"8a a8"    `Y88  
-88       d8 8b       d8  `8b  d8'`8b  d8'  88 88 88       88 8b       88  
-88b,   ,a8" "8a,   ,a8"   `8bd8'  `8bd8'   88 88 88       88 "8a,   ,d88  
-8Y"Ybbd8"'   `"YbbdP"'      YP      YP     88 88 88       88  `"YbbdP"Y8  
-                                                              aa,    ,88  
-                                                               "Y8bbdP"
 
-
-------
 My approach to the challenge:
 
 * Use a board to list all the ideas, draft diagrams - brain storming session
@@ -35,24 +23,24 @@ My approach to the challenge:
 
 So I can keep a track of the game
 
-I would like to record a number of pins I've knocked on scorecard```
+I would like to record a number of pins I've knocked on scorecard
 
 
-```As a user,
+As a user,
 
 So I know how many points I've scored
 
-I would like to see the score at the end of each frame```
+I would like to see the score at the end of each frame
 
 
-```As a user,
+As a user,
 
 So I know how good or bad I did this time
 
-I would like to see the total score at the end of the game```
+I would like to see the total score at the end of the game
 
 
-```As a user,
+As a user,
 
 So I can enjoy the experience and play again
 
@@ -66,17 +54,17 @@ I would like to be able to use scorecard for new game```
 
 When I play the whole game but never hit any pin
 
-I want to see a 'Gutter Game' ```
+I want to see a 'Gutter Game'
 
 
-```As a user,
+As a user,
 
 When I knock down all 10 pins with the first roll in a frame
 
-Frame ends and strike bonus will be added to my score```
+Frame ends and strike bonus will be added to my score
 
 
-```As a user,
+As a user,
 
 When I knock down 10 pins within one frame
 
@@ -90,10 +78,10 @@ Spare bonus will be added to my score```
 
 When I roll a strike or spare in the 10th frame
 
-I can roll up to 3 additional balls and receive due bonus```
+I can roll up to 3 additional balls and receive due bonus
 
 
-```As a user,
+As a user,
 
 When I roll 12 perfect strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame)
 

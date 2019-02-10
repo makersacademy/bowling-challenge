@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --verbose",
     "dev": "parcel views/index.html",
     "build": "parcel build index.js"
   },

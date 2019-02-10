@@ -18,5 +18,17 @@ describe('Initializer', () => {
   it('start with score of 0', ()=>{
   	expect(game.score).toBe(0);
   })
+})
 
+describe('Frame', ()=>{
+	  let game;
+
+  beforeEach(() => {
+    game = new Game
+  });
+
+	it('expect recorded score to deduct number of pins', ()=>{
+	game.record(3);
+	expect(game.pins).toBe(7);
+});
 })

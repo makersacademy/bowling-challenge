@@ -5,6 +5,10 @@ class Game {
   	this.score = 0;
   }
 
+  record(val){
+  	this.pins -= val 
+  }
+
 
 
 }

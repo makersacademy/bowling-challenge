@@ -11,21 +11,19 @@ class Frame {
     this._bonus = 0
   }
 
-  complete () {
+  isComplete () {
     return this._complete
   }
 
   add (number) {
-    if (this.complete() && this.isSpare()) {
-      this._spareCalculation(number)
+    if (this.isComplete() && this.isSpare()) {
+      this._addSpareBonusScore(number)
       return
-    } else if (this.complete() && this.isStrike()) {
-      this._strikeCalculation(number)
+    } else if (this.isComplete() && this.isStrike()) {
+      this._addStrikeBonusScore(number)
       return
     }
-    this._score.push(number)
-    this.roll += 1
-    this._checkFrameEnd()
+    this._addRoutineScore(number)
   }
 
   number () {
@@ -40,26 +38,12 @@ class Frame {
     return this._score[1]
   }
 
-  score () {
+  frameScore () {
     let score = 0
     this._score.forEach(function (num) {
       score += num
     })
     return score
-  }
-
-  _spareCalculation (number) {
-    if (this._bonus === 0) {
-      this.addBonusScore(number)
-      this._bonus += 1
-    }
-  }
-
-  _strikeCalculation (number) {
-    if (this._bonus <= 1) {
-      this.addBonusScore(number)
-      this._bonus += 1
-    }
   }
 
   isSpare () {
@@ -70,19 +54,60 @@ class Frame {
     return this._strike
   }
 
+  _addRoutineScore (number) {
+    this._score.push(number)
+    this.roll += 1
+    this._checkFrameEnd()
+  }
+
+  _addSpareBonusScore (number) {
+    if (this._bonus === 0) {
+      this._addBonusScore(number)
+      this._bonus += 1
+    }
+  }
+
+  _addStrikeBonusScore (number) {
+    if (this._bonus <= 1) {
+      this._addBonusScore(number)
+      this._bonus += 1
+    }
+  }
+
   _checkFrameEnd () {
-    if (this.score() === 10 && this.roll === 1) {
+    this._checkStrike()
+    this._checkSpare()
+    this._checkRollsFinished()
+  }
+
+  _checkStrike () {
+    if (this.frameScore() === 10 && this.roll === 1) {
       this._strike = true
       this._complete = true
-    } else if (this.score() === 10) {
+      return true
+    }
+  }
+
+  _checkSpare () {
+    if (this.isStrike()) {
+      return
+    }
+    if (this.frameScore() === 10) {
       this._spare = true
-      this._complete = true
-    } else if (this.roll === 2) {
       this._complete = true
     }
   }
 
-  addBonusScore (num) {
+  _checkRollsFinished () {
+    if (this.isStrike() || this.isSpare()) {
+      return
+    }
+    if (this.roll === 2) {
+      this._complete = true
+    }
+  }
+
+  _addBonusScore (num) {
     this._score.push(num)
   }
 }

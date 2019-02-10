@@ -17,27 +17,27 @@ describe('Bowling', function () {
   })
 
   it('should begin the game on frame 0', function () {
-    expect(bowling.currentFrameNumber()).toEqual(0)
+    expect(bowling._currentFrame().number()).toEqual(0)
   })
 
   it('should count frames as scores are input', function () {
     enterScores(0, 4)
-    expect(bowling.currentFrameNumber()).toEqual(2)
+    expect(bowling._currentFrame().number()).toEqual(2)
   })
 
-  it('should not mark the game complete until after 20 rolls', function () {
+  it('should not mark the game isComplete until after 20 rolls', function () {
     enterScores(0, 4)
     expect(bowling.scorecardComplete).toEqual(false)
   })
 
-  it('should mark the game complete after 20 rolls', function () {
+  it('should mark the game isComplete after 20 rolls', function () {
     enterScores(0, 20)
     expect(bowling.scorecardComplete).toEqual(true)
   })
 
   it('should reset the frameScore to zero after each frame', function () {
     enterScores(1, 2)
-    expect(bowling._currentFrame().score()).toEqual(0)
+    expect(bowling._currentFrame().frameScore()).toEqual(0)
   })
 
   it('should add gameScore from each frame', function () {

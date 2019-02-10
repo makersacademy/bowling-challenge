@@ -31,17 +31,7 @@ function updateFrameNumber () {
 }
 
 function updateRollNumber () {
-  $('#roll-number').text(getCurrentRoll())
-}
-
-function getCurrentRoll () {
-  if (bowling._currentFrame().firstRoll() && bowling._currentFrame().secondRoll()) {
-    return 'Bonus Roll'
-  } else if (bowling._currentFrame().firstRoll()) {
-    return 'Roll 2'
-  } else {
-    return 'Roll 1'
-  }
+  $('#roll-number').text(bowling.getCurrentRoll())
 }
 
 function populateTable () {

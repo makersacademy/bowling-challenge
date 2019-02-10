@@ -1,3 +1,62 @@
+Colin's Bowling Challenge
+=============
+
+Welcome to my rather scrappy bowling challenge. This proved much more complicated than expected and while I did try and
+stick to TDD, the code ended up pretty messy. I've refactored the worst of it away, but it's not pretty. 
+ 
+I also encountered a world of technical issues, largely due to my unfamiliarity with javascript (new to it this week). More on that below. 
+
+Features
+=====
+
+- Functioning bowling game.
+- All bowling edge cases are working (gutter games, all-strike games, all-spare games, combinations etc.).
+- Round 10 is also implemented in the UI - bonus balls for strikes and spares are counted.
+- `JQuery` basic user interface, showing a table of results, scores and strike/spare symbols.
+- `ESLint` used with `javascript standard` profile - all passing.
+- `Jasmine` used for unit and feature tests. 
+
+Missing features / bugs etc.
+=====
+
+- The game does not announce victory, although the score stops tallying correctly.
+- There is zero validation on user input at present.
+- The event loop behind the scenes is still slightly creaky, hence there is a 'frame 11' created behind the scenes. Needs some more thought and refactoring.
+ 
+Technical issues I was not able to solve in the time we had:
+====
+
+- Jasmine helper methods in a separate file (I had to duplicate `enterScores` in both spec files...)
+- Travis tests triggering when I create a PR on github
+- Make ESLint aware of files that only become available in the browser (re. `interface.js`'s use of `Bowling`) - I had to mute it on lines 3 and 14 instead.
+- Deal with dependencies arising from `node` more elegantly - currently using `browserify` but having to manage a `bundle.js` file is a pain.
+- Event looping is currently bundled up in other methods (e.g. `enterScore()` can trigger `endFrame()`). I was unable to work out how to orchestrate things and have jasmine input when required.
+
+Project structure
+============
+
+- `spec/features/BowlingFeatureSpec.js` and `spec/units/BowlingSpec.js` contain the two jasmine test files.
+- `src/Bowling.js` coordinates events and creates new frames when needed.
+- `src/Frame.js` contains all the information about an individual frame and makes decisions about the status of frames.
+- `src/interface.js` connects the game to the UI and populates the dynamic sections of the page.
+- `src/bowling.hmtl` is the front-end to the game. 
+- `bundle.js` is the javascript produced by `Browserify`; necessary to make the node app run in the browser.
+
+Technical feedback welcomed...
+====
+
+This week has felt a bit like I was stabbing in the dark with a bunch of technologies I was new to, so any feedback would be very welcome. In particular...
+
+- Would it be better practice to have another class orchestrating the overall program logic?
+    - If so, how can jasmine coordinate with this, when it needs to enter numbers?
+    - Currently, this difficulty has led to events being triggered by existing methods within `Bowling.js` as a side-effect - e.g. `enterScore` triggers `endFrame`.
+- Some of the missing orchestration has been placed within `interface.js` because it's triggered by user interaction. Is this appropriate?
+ 
+Instructions for use
+===
+TBC
+
+
 
 Bowling Challenge
 =================

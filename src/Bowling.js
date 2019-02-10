@@ -57,6 +57,16 @@ class Bowling {
     return this._frames.filter(frame => frame.isComplete() === true)
   }
 
+  getCurrentRoll () {
+    if (this._currentFrame().firstRoll() && this._currentFrame().secondRoll()) {
+      return 'Bonus Roll'
+    } else if (this._currentFrame().firstRoll()) {
+      return 'Roll 2'
+    } else {
+      return 'Roll 1'
+    }
+  }
+
   _currentFrame () {
     return this._frames[this._frames.length - 1]
   }

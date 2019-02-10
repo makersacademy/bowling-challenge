@@ -29,4 +29,11 @@ describe('BowlingGameWithStrikes', function() {
     bowlingGame.calculateScore()
     expect(bowlingGame.score).toEqual(40)
   });
+
+  it('Game with 9 strikes not in final round has score of 250', function() {
+    rolls(10, 9)
+    rolls(2, 2)
+    bowlingGame.calculateScore()
+    expect(bowlingGame.score).toEqual(250)
+  });
 });

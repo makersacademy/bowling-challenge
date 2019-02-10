@@ -1,6 +1,6 @@
 var BowlingGame = require('../../src/BowlingGame.js')
 
-describe('SingleStrikeBowlingGame', function() {
+describe('StrikeBowlingGame', function() {
 
   var bowlingGame;
 
@@ -42,5 +42,12 @@ describe('SingleStrikeBowlingGame', function() {
     bowlingGame.roll(10)
     bowlingGame.roll(1)
     expect(bowlingGame._rollNum).toEqual(1)
+  });
+  
+  it ('roll after strike includes bonus points', function() {
+    bowlingGame.roll(10)
+    bowlingGame.roll(3)
+    bowlingGame.roll(2)
+    expect(bowlingGame.score).toEqual(20)
   });
 }); 

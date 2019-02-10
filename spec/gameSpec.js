@@ -14,4 +14,10 @@ describe('Game', function(){
       expect(game.score()).toBe(0);
     });
 
+    it('can roll a game of 2s', function(){
+      for (var i = 0; i < 20; i++) {
+        game.roll(2) };
+        expect(game.score()).toBe(40);
+    });
+
 });

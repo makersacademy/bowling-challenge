@@ -22,8 +22,8 @@ I've tried to follow a strict TDD process throughout writing this, although I fe
 
 ### Application data flow
 
-1. The scores are input by the user using `<select>` dropdowns and clicking on 'submit'. Currently, it will throw an alert if a player selects a second roll after a strike, however, there are many edge cases that will currently be accepted without an error (for eg: changing a previous round, adding a score that adds up to more than 10 etc). 
-2. This data is intercepted by the `interface.js` file, via `eventListeners` placed on all forms that are listening for the submit. **Note** that this has been written in vanilla JS (and not JQuery as suggested in the walkthroughs). 
+1. The scores are input by the user using `<select>` dropdowns and clicking on 'submit' on the `index.html` file. Currently, it will throw an alert if a player selects a second roll after a strike, however, there are many edge cases that will currently be accepted without an error (for eg: changing a previous round, adding a score that adds up to more than 10 etc). 
+2. This data is intercepted by the `interface.js` file, via `eventListeners` placed on all forms that are listening for the submit. **Note** that this has been written in vanilla JS (and not JQuery as suggested). 
 3. `interface.js` initialises an instance of the business logic (`ScoreCard`) and passes in the score via the `scoreCard.recordScore()` function (which stores it in `scoreCard.scoreArray`).
 4. The score is then rendered out (or not) to the UI using the results of the `scoreCard.experiment()` function (yes, its named extremely poorly). If it's a strike, or a spare, it will wait till the next roll has been entered before rendering out the score. 
 

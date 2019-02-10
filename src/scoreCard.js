@@ -5,6 +5,7 @@ class ScoreCard {
     this.scoreArray = [];
     this.MAXIMUM_FRAMES = 10;
     this.gameScore = null;
+    this.frameScoresArray = [];
     this.frames = [
       frame1 = new Frame(this),
       frame2 = new Frame(this),
@@ -22,6 +23,19 @@ class ScoreCard {
   recordScore(frameNumber, rollOne = 0, rollTwo = 0, rollThree = 0){
     const frameArray = [frameNumber, rollOne, rollTwo, rollThree];
     this.scoreArray.push(frameArray);  
+  }
+  
+  frameScores(){
+    const frameScores = this.frameScoresArray;
+    this.frames.forEach(frame => {
+      const frameScore = frame.frameScore
+      frameScore === null ? frameScores.push(0) : frameScores.push(frameScore);
+    });
+  }
+  
+  finalScore(){
+    const frameScores = this.frameScoresArray;
+    return frameScores.reduce((sum, num) => sum + num);
   }
 
   // experiment(){
@@ -63,13 +77,6 @@ class ScoreCard {
   //   } 
   // }
 
-  finalScore(){
-    if(this.isGameComplete()){
-      return this.experiment();
-    } else {
-      throw error;
-    }
-  }
 
 
   isGameComplete(){

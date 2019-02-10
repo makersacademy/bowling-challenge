@@ -30,7 +30,7 @@ describe("Features - BowlingGame", function() {
     expect(game.score).toEqual(63)
   });
 
-  it("can play a game with spares and strikes keeping the hidden score - tenth frame without bonus", function() {
+  it("can play a game with spares and strikes without hidden score - tenth frame without bonus", function() {
     game.play(3, 7);
     expect(game.score).toEqual(10)
     game.play(1, 1);
@@ -121,17 +121,5 @@ describe("Features - BowlingGame", function() {
     game.play(10, 7, 3);
     expect(game.score).toEqual(287)
   });
-
-  // describe('#scorecard', () => {
-  //   it('should print the points correctly', function() {
-  //     game.play(7, 3)
-  //     expect(game.scorecard[0]).toEqual(null)
-  //     game.play(10)
-  //     expect(game.scorecard[0]).toEqual(20)
-  //     expect(game.scorecard[1]).toEqual(null)
-  //     game.play(3, 5)
-  //     expect(game.scorecard[1]).toEqual(38)
-  //   });
-  // });
 
 });

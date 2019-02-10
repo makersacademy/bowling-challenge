@@ -23,7 +23,9 @@ class Frame {
       this._addStrikeBonusScore(number)
       return
     }
-    this._addRoutineScore(number)
+    if (!this.isComplete()) {
+      this._addRoutineScore(number)
+    }
   }
 
   number () {

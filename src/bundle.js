@@ -54,6 +54,10 @@ class Bowling {
     return score
   }
 
+  getCompleteFrames () {
+    return this._frames.filter(frame => frame.isComplete() === true)
+  }
+
   _currentFrame () {
     return this._frames[this._frames.length - 1]
   }
@@ -135,7 +139,9 @@ class Frame {
       this._addStrikeBonusScore(number)
       return
     }
-    this._addRoutineScore(number)
+    if (!this.isComplete()) {
+      this._addRoutineScore(number)
+    }
   }
 
   number () {

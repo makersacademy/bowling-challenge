@@ -9,7 +9,19 @@
 <script src="bundle.js"></script>
 <script src="interface.js"></script>
 <h1>Welcome to the bowling scorecard!</h1>
-<h2>Current total is <span id="game-total"></span>. Current frame is <span id="frame-number"></span></h2>
+<h2>Current total is <span id="game-total"></span>. Frames completed: <span id="frame-number"></span></h2>
+
+Valid input only please, there is zero sanity checking :)
+<br>
+<br>
+Please enter your roll here: (<span id="roll-number"></span>)
+<form id="input-roll">
+    <input id="current-roll" type="text" placeholder="Enter valid roll">
+    <input type="submit" value="Submit">
+</form>
+Don't forget to take your bonus rolls in round 10!
+
+
 
 <table>
     <tr id="title">
@@ -19,66 +31,70 @@
         <th>Total</th>
     </tr>
     <tr id="1">
-        <td id="frame">1</td>
+        <td id="frame"></td>
         <td id="roll-1"></td>
         <td id="roll-2"></td>
         <td id="total"></td>
     </tr>
     <tr id="2">
-        <td>2</td>
+        <td id="frame"></td>
         <td id="roll-1"></td>
         <td id="roll-2"> </td>
         <td id="total"> </td>
     </tr>
     <tr id="3">
-        <td>3</td>
+        <td id="frame"></td>
         <td id="roll-1"></td>
         <td id="roll-2"> </td>
         <td id="total"></td>
     </tr>
     <tr id="4">
-        <td>4</td>
+        <td id="frame"></td>
         <td id="roll-1"></td>
         <td id="roll-2"> </td>
         <td id="total"></td>
     </tr>
     <tr id="5">
-        <td>5</td>
+        <td id="frame"></td>
         <td id="roll-1"></td>
         <td id="roll-2"> </td>
         <td id="total"></td>
     </tr>
     <tr id="6">
-        <td>6</td>
+        <td id="frame"></td>
         <td id="roll-1"></td>
         <td id="roll-2"> </td>
         <td id="total"></td>
     </tr>
     <tr id="7">
-        <td>7</td>
+        <td id="frame"></td>
         <td id="roll-1"></td>
         <td id="roll-2"> </td>
         <td id="total"></td>
     </tr>
     <tr id="8">
-        <td>8</td>
+        <td id="frame"></td>
         <td id="roll-1"></td>
         <td id="roll-2"> </td>
         <td id="total"></td>
     </tr>
     <tr id="9">
-        <td>9</td>
+        <td id="frame"></td>
         <td id="roll-1"></td>
         <td id="roll-2"> </td>
         <td id="total"></td>
     </tr>
     <tr id="10">
-        <td>10</td>
+        <td id="frame"></td>
         <td id="roll-1"></td>
         <td id="roll-2"> </td>
         <td id="total"></td>
     </tr>
 </table>
+
+<form id="reset">
+    <input type="submit" value="Reset Game">
+</form>
 
 </body>
 </html>

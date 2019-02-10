@@ -3,22 +3,55 @@
 let bowling = new Bowling()
 
 $(document).ready(function () {
+  updateAll()
+  $('#input-roll').submit(function (event) {
+    event.preventDefault()
+    let roll = parseInt($('#current-roll').val())
+    bowling.enterScore(roll)
+    updateAll()
+  })
+  $('#reset').submit(function (event) {
+    bowling = new Bowling()
+  })
+})
+
+function updateAll () {
   updateGameScore()
   updateFrameNumber()
+  updateRollNumber()
   populateTable()
-})
+}
 
 function updateGameScore () {
   $('#game-total').text(bowling.gameScore())
 }
 
 function updateFrameNumber () {
-  $('#frame-number').text(bowling.frame + 1)
+  $('#frame-number').text(bowling.frame)
+}
+
+function updateRollNumber () {
+  $('#roll-number').text(getCurrentRoll())
+}
+
+function getCurrentRoll () {
+  if (bowling._currentFrame().firstRoll() && bowling._currentFrame().secondRoll()) {
+    return 'Bonus Roll'
+  } else if (bowling._currentFrame().firstRoll()) {
+    return 'Roll 2'
+  } else {
+    return 'Roll 1'
+  }
 }
 
 function populateTable () {
-  let frames = bowling.
-  // ($('#1').find('#frame')).text('')
+  let frames = bowling.getCompleteFrames()
+  frames.forEach(function (frame) {
+    $('#' + (frame.number() + 1)).find('#frame').text(frame.number() + 1)
+    $('#' + (frame.number() + 1)).find('#roll-1').text(frame.firstRoll())
+    $('#' + (frame.number() + 1)).find('#roll-2').text(frame.secondRoll())
+    $('#' + (frame.number() + 1)).find('#total').text(frame.frameScore())
+  })
 }
 
 // 'use strict';

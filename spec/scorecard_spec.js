@@ -85,6 +85,11 @@ describe('scorecard', function(){
 
   });
 
+  it('makes a way for the new bonus to be calculated', function(){
+    card.bonus = [5];
+    card.clear_bonus()
+    expect(card.bonus).toEqual([]);
+  });
 
 
 

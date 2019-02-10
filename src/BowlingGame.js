@@ -3,6 +3,7 @@
 function BowlingGame() {
     this.rolls = [];
     this.score = 0;
+    this.turn = 0;
   }
 
 var scoreCard = [];
@@ -13,16 +14,15 @@ var scoreCard = [];
 
 
   BowlingGame.prototype.calculateScore = function() {
-    var turn = 0;
     
     for (var frameNum = 1; frameNum <= 10; frameNum ++) {
-      if (this.rolls[turn] == 10){
-        this.score += (this.rolls[turn] + this.rolls[turn + 1] + this.rolls[turn + 2])
-        turn += 1;
+      if (this.rolls[this.turn] === 10){
+        this.score += (this.rolls[this.turn] + this.rolls[this.turn + 1] + this.rolls[this.turn + 2])
+        this.turn += 1;
       }
       else {
-        this.score += this.rolls[turn] + this.rolls[turn + 1];
-        turn += 2;
+        this.score += this.rolls[this.turn] + this.rolls[this.turn + 1];
+        this.turn += 2;
       }
     }
   }

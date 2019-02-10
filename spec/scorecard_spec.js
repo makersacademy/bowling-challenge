@@ -60,7 +60,7 @@ describe('scorecard', function(){
     expect(card.pins_knocked_two).toEqual(0);
   });
 
-  it('calculates bonus points correctly', function(){
+  it('calculates strike bonus points correctly', function(){
     card.bonus = [];
     card.record_first(10);
     card.strike();
@@ -85,11 +85,25 @@ describe('scorecard', function(){
 
   });
 
-  it('makes a way for the new bonus to be calculated', function(){
-    card.bonus = [5];
+  it('makes a way for the new strike bonus to be calculated', function(){
+    card.st_bonus = [5];
     card.clear_bonus()
-    expect(card.bonus).toEqual([]);
+    expect(card.st_bonus).toEqual([]);
   });
+
+  it('calculates spare bonus points correctly', function(){
+    card.sp_bonus = [];
+    card.record_first(5);
+    card.record_second(5);
+    card.frame_score_display();
+    card.record_first(2);
+    card.record_second(3);
+    card.frame_score_display();
+    card.spare_bonus();
+    expect(card.spare_bonus()).toEqual(2);
+  });
+  
+
 
 
 

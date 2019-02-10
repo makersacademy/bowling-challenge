@@ -1,11 +1,18 @@
-function logic(){
-	
+class Game {
+  constructor(frameNum, pins, score){
+  	this.frame =1;
+  	this.pins = 10;
+  	this.score = 0;
+  }
+
+
+
 }
 
 
 
 
-module.exports = logic;
+module.exports = Game;
 
 // Facts: 21 balls total;
 // Highest score 300 -> 12 strikes
@@ -29,3 +36,9 @@ module.exports = logic;
 
 //     10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
 //     1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
+
+// A Gutter Game is when the player never hits a pin (20 zero scores).
+
+// ### Perfect Game
+
+// A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.

@@ -3,5 +3,5 @@ function ScoreRecorder(scorecard){
 }
 
 ScoreRecorder.prototype.roll = function(roll){
-  this._scorecard.push(roll)
+  this._scorecard.push([roll]);
 }

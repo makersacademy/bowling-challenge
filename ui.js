@@ -3,6 +3,9 @@ $(document).ready(function(){
   var card = new Scorecard();
   var clicks = 0;
 
+  $('#zero').click(function(){
+    helper(0);
+  });
   $('#one').click(function(){
     helper(1);
   });

@@ -6,7 +6,7 @@
   "author": "Ibrahim Butt <ibrahimbutt@me.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jasmine"
+    "test": "yarn jasmine"
   },
   "devDependencies": {
     "eslint": "^5.13.0",

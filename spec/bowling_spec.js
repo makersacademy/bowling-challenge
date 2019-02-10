@@ -5,6 +5,18 @@ describe('Features', function () {
     frame1 = new Frame();
   });
 
+ function setUpFramesForTest() {
+      frame2 = new Frame();
+      frame3 = new Frame();
+      frame4 = new Frame();
+      frame5 = new Frame();
+      frame6 = new Frame();
+      frame7 = new Frame();
+      frame8 = new Frame();
+      frame9 = new Frame();
+      frame10 = new Frame();
+  }
+
   it('scorecard total starts at 0', function () {
     expect(scorecard.totalScore).toEqual(0);
   })
@@ -25,6 +37,40 @@ describe('Features', function () {
       frame1.rolls[1] = 4;
       frame1.setFrameComplete();
       expect(frame1.isComplete()).toEqual(true)
+  })
+  it('can add up the score of a gutter game that results in a zero score.', function () {
+      setUpFramesForTest();
+      frame1.rolls[0] = 0;
+      frame1.rolls[1] = 0;
+      frame1.setFrameComplete();
+      frame2.rolls[0] = 0;
+      frame2.rolls[1] = 0;
+      frame2.setFrameComplete();
+      frame3.rolls[0] = 0;
+      frame3.rolls[1] = 0;
+      frame3.setFrameComplete();
+      frame4.rolls[0] = 0;
+      frame4.rolls[1] = 0;
+      frame4.setFrameComplete();
+      frame5.rolls[0] = 0;
+      frame5.rolls[1] = 0;
+      frame5.setFrameComplete();
+      frame6.rolls[0] = 0;
+      frame6.rolls[1] = 0;
+      frame6.setFrameComplete();
+      frame7.rolls[0] = 0;
+      frame7.rolls[1] = 0;
+      frame7.setFrameComplete();
+      frame8.rolls[0] = 0;
+      frame8.rolls[1] = 0;
+      frame8.setFrameComplete();
+      frame9.rolls[0] = 0;
+      frame9.rolls[1] = 0;
+      frame9.setFrameComplete();
+      frame10.rolls[0] = 0;
+      frame10.rolls[1] = 0;
+      frame10.setFrameComplete();
+      expect(scorecard.totalScore).toEqual(0);
   })
 })
 
@@ -64,7 +110,6 @@ describe('Unit tests', function () {
       frame1.rolls[0] = 10;
       frame1.setFrameComplete()
       expect(frame1.isComplete()).toEqual(true)
-
   })
 
 })

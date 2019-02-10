@@ -16,15 +16,26 @@ var scoreCard = [];
   BowlingGame.prototype.calculateScore = function() {
     
     for (var frameNum = 1; frameNum <= 10; frameNum ++) {
-      if (this.rolls[this.turn] === 10){
-        this.score += (this.rolls[this.turn] + this.rolls[this.turn + 1] + this.rolls[this.turn + 2])
+      if (this.turnIsStrike()){
+        this.calcStrikeScore();
         this.turn += 1;
       }
       else {
-        this.score += this.rolls[this.turn] + this.rolls[this.turn + 1];
+        this.calcRegularScore();
         this.turn += 2;
       }
     }
   }
+  
+  BowlingGame.prototype.turnIsStrike = function() {
+   return this.rolls[this.turn] === 10;
+  }
 
+  BowlingGame.prototype.calcStrikeScore = function() {
+    this.score += (this.rolls[this.turn] + this.rolls[this.turn + 1] + this.rolls[this.turn + 2]);
+  }
+
+ BowlingGame.prototype.calcRegularScore = function() {
+    this.score += this.rolls[this.turn] + this.rolls[this.turn + 1];
+ } 
 module.exports = BowlingGame

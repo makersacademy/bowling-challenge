@@ -4,7 +4,8 @@ function Scorecard(){
   this.frame_score = 0;
   this.total_score_array = [];
 
-  this.bonus = [];
+  this.st_bonus = [];
+  this.sp_bonus = [];
 };
 
 var number_one;
@@ -12,13 +13,15 @@ var number_two;
 
 Scorecard.prototype.record_first = function(number_one){
   this.pins_knocked_one = number_one;
-  this.bonus.push(this.pins_knocked_one);
+  this.st_bonus.push(this.pins_knocked_one);
+  this.sp_bonus.push(this.pins_knocked_one);
   return this.pins_knocked_one;
 };
 
 Scorecard.prototype.record_second = function(number_two){
   this.pins_knocked_two = number_two;
-  this.bonus.push(this.pins_knocked_two);
+  this.st_bonus.push(this.pins_knocked_two);
+  this.sp_bonus.push(this.pins_knocked_two);
   return this.pins_knocked_two;
 };
 
@@ -44,13 +47,13 @@ Scorecard.prototype.clear = function(){
 
 Scorecard.prototype.strike = function(){
   this.pins_knocked_two = 0;
-  this.bonus.push(this.pins_knocked_two);
+  this.st_bonus.push(this.pins_knocked_two);
   return this.pins_knocked_two;
 };
 
 Scorecard.prototype.strike_bonus = function(){
-  if (this.bonus[0] == 10) {
-    var bonus_score = this.bonus[2] + this.bonus[3];
+  if (this.st_bonus[0] == 10) {
+    var bonus_score = this.st_bonus[2] + this.st_bonus[3];
   }
   this.frame_score += bonus_score;
   this.total_score_array.push(bonus_score);
@@ -58,6 +61,15 @@ Scorecard.prototype.strike_bonus = function(){
 };
 
 Scorecard.prototype.clear_bonus = function(){
-  this.bonus = [];
-  return this.bonus;
+  this.st_bonus = [];
+  return this.st_bonus;
+};
+
+Scorecard.prototype.spare_bonus = function(){
+  if (this.sp_bonus[0] == 5 && this.sp_bonus[1] == 5) {
+    var bonus_score = this.sp_bonus[2];
+  }
+  this.total_score_array.push(bonus_score);
+  this.frame_score += bonus_score;
+  return bonus_score;
 };

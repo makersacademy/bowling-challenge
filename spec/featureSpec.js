@@ -34,8 +34,7 @@ describe('Features', () => {
   // });
 
   it('can score a game with 1 strike', () =>{
-    scoreCard.recordScore(1, 1, 1);
-    scoreCard.recordScore(2, 10, 0);
+    scoreCard.recordScore(10, 0);
     for(let i = 3 ; i < 11 ; i++){
       scoreCard.recordScore(i, 1, 1);
     }

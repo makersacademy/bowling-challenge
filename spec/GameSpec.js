@@ -84,33 +84,18 @@ describe('Game', function() {
   });
 
   describe('Counts bonuses', function () {
-  //   it('is a strike', function () {
-  //     game.roll(10)
-  //     expect(game.isStrike()).toBe(true)
-  //   });
-  //
-  //   it('is a spare', function () {
-  //     game.roll(5)
-  //     game.roll(5)
-  //     expect(game.isSpare()).toBe(true)
-  //   });
 
     it('gives bonus if previous frame is a strike', function () {
       game.roll(5)
       game.roll(5)
-      // game.roll(10)
       game.endFrame()
       game.newFrame()
       game.roll(1)
       game.roll(4)
       game.endFrame()
-      // console.log(game.bonusLog)
-      // console.log(game.frameLog)
-      // console.log(game.frameNumber)
-      console.log(game._spareBonus())
 
-
-      expect(game.frameLog.length).toEqual(2)
+      expect(game._spareBonus()).toEqual(true)
+      expect(game._strikeBonus()).toEqual(false)
       // game._spareBonus()
       // expect(game.frameScore[0]).toEqual(11)
     });

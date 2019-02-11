@@ -61,19 +61,16 @@ Game.prototype.roll = function (pins) {
 
 Game.prototype._strikeBonus = function () {
 // need to check for previous frame, to get bonus
-  if(this.frame[0] === 10){
+var checker = this.frameLog;
+  if(checker[this.frameNumber-2][0] === 10){
     return true
   }
   return false
 };
 
 Game.prototype._spareBonus = function () {
-  // console.log('this is the frame log...');
-  // console.log(this.frameLog);
-  // console.log(this.frameNumber);
-  console.log(this.frameLog[this.frameNumber-2][0])
-  console.log(this.frameLog[this.frameNumber-2][1])
-  if(this.frameLog[this.frameNumber-2][0] + this.framelog[this.frameNumber-2][1] === 10) {
+  var checker = this.frameLog;
+  if(checker[this.frameNumber-2][0] + checker[this.frameNumber-2][1] === 10) {
     return true
   }
   return false

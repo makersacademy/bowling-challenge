@@ -22,4 +22,11 @@ describe('Bowling Game', function () {
     rollMultiple(1, 20);
     expect(game.score()).toBe(20);
   });
+  // it('can roll a spare ball', function () {
+  //   game.roll(7);
+  //   game.roll(3);
+  //   game.roll(6);
+  //   rollMultiple(0, 17);
+  //   expect(game.score()).toBe(22);
+  // });
 });

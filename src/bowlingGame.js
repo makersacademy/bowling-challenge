@@ -11,8 +11,15 @@ BowlingGame.prototype = {
   },
   score: function () {
     var results = 0;
-    for (var i = 0; i < 20; i++) {
-      results += this.rolls[i];
+    var rollIndex = 0;
+    for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
+      if
+      (this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10) {
+        results += this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+      } else {
+        results += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+      }
+      rollIndex += 2;
     }
     return results;
   }

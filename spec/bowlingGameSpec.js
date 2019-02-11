@@ -29,4 +29,11 @@ describe('Bowling Game', function () {
     rollMultiple(0, 17);
     expect(game.score()).toBe(22);
   });
+  it('can roll a strike', function () {
+    game.roll(10);
+    game.roll(3);
+    game.roll(6);
+    rollMultiple(0, 17);
+    expect(game.score()).toBe(28);
+  });
 });

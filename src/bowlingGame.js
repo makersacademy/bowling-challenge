@@ -12,12 +12,23 @@ BowlingGame.prototype = {
   score: function () {
     var results = 0;
     var rollIndex = 0;
+    var game = this;
+
+    function isSpare () {
+      return (game.rolls[rollIndex] + game.rolls[rollIndex + 1] === 10);
+    }
+    function getSpareScore () {
+      return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
+    }
+    function getNormalScore () {
+      return game.rolls[rollIndex] + game.rolls[rollIndex + 1];
+    }
+
     for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
-      if
-      (this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10) {
-        results += this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+      if (isSpare()) {
+        results += getSpareScore();
       } else {
-        results += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+        results += getNormalScore();
       }
       rollIndex += 2;
     }

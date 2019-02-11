@@ -2,7 +2,7 @@
 // spec/bowlingGame.js
 
 describe('Bowling Game', function () {
-  it('create a bowling game', function () {
+  beforeEach(function () {
     var game = new BowlingGame();
   });
 

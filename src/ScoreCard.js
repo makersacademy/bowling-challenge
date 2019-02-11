@@ -1,11 +1,15 @@
+const Frame = require('./Frame.js')
+
 class ScoreCard {
-  constructor () {
+  constructor (frame = Frame) {
     this._lastFrame = null
     this._currentFrame = null
     this._score = 0
+    this._FrameClass = frame
   }
 
-  logFrame (frame) {
+  logFrame (rolls) {
+    const frame = this._FrameClass.new(rolls)
     this._lastFrame = this._currentFrame
     this._currentFrame = frame
 
@@ -18,17 +22,11 @@ class ScoreCard {
 
   _updateScore () {
     const bonus = this._lastFrame ? this._calculateBonus() : 0
-    this._score += this._calculateFramePoints(this._currentFrame) + bonus
+    this._score += this._calculateFramePoints() + bonus
   }
 
   _calculateBonus (frame) {
     const lastFrameOutcome = this._lastFrame.type()
-
-    // return lastFrameOutcome === 'strike'
-    //   ? this._calculateStrikeBonus(frame)
-    //   : lastFrameOutcome === 'spare'
-    //     ? this._calculateSpareBonus(frame)
-    //     : 0
 
     switch (lastFrameOutcome) {
       case 'strike':

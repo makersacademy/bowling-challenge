@@ -1,4 +1,4 @@
-const Frame = require('../src/Frame')
+const Frame = require('../../src/Frame')
 
 describe('Frame', () => {
   it('stores the rolls', () => {

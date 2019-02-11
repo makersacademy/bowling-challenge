@@ -11,6 +11,10 @@ class Frame {
     }
   }
 
+  static new (rolls) {
+    return new Frame(rolls)
+  }
+
   outcome () {
     return this._rolls
   }

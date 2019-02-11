@@ -8,6 +8,7 @@ function Game () {
   this.rolls = []
   this.frameLog = []
   this.frameScore = []
+  this.bonusLog = [0,0]
 };
 
 
@@ -26,11 +27,16 @@ Game.prototype.newFrame = function () {
 
 Game.prototype.endFrame = function () {
   this.frameLog.push(this.frame)
+
   var total
   total = this.frame.reduce((acc, val) => {
     return acc + val;
   });
   this.frameScore.push(total)
+  //
+  // if (this._strikeBonus() === true){
+  //   this.frameScore[this.frameNumber-2] + total
+  // }
 };
 
 Game.prototype.roll = function (pins) {
@@ -43,19 +49,31 @@ Game.prototype.roll = function (pins) {
     throw new Error('You can only roll three times on the last frame');
   }
   this.frame.push(pins)
-  this.rolls.push(pins)
+  // this.rolls.push(pins)
   this._score += pins
+
+  if(this._strikeBonus === true){
+    this.bonusLog.push('strike')
+  };
 };
 
-Game.prototype.isStrike = function () {
+
+
+Game.prototype._strikeBonus = function () {
+// need to check for previous frame, to get bonus
   if(this.frame[0] === 10){
     return true
   }
   return false
 };
 
-Game.prototype.isSpare = function () {
-  if(this.frame[0] + this.frame[1] === 10){
+Game.prototype._spareBonus = function () {
+  // console.log('this is the frame log...');
+  // console.log(this.frameLog);
+  // console.log(this.frameNumber);
+  console.log(this.frameLog[this.frameNumber-2][0])
+  console.log(this.frameLog[this.frameNumber-2][1])
+  if(this.frameLog[this.frameNumber-2][0] + this.framelog[this.frameNumber-2][1] === 10) {
     return true
   }
   return false

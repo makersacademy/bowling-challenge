@@ -17,6 +17,7 @@
   <body>
     <h1>Your Bowling Scoreboard</h1>
     <div id="pinsHit">
+      <button type="button" class="btnNumber" id="btn0">0</button>
       <button type="button" class="btnNumber" id="btn1">1</button>
       <button type="button" class="btnNumber" id="btn2">2</button>
       <button type="button" class="btnNumber" id="btn3">3</button>
@@ -43,8 +44,8 @@
             <th colspan=2>Frame 8</th>
             <th colspan=2>Frame 9</th>
             <th colspan=3>Frame 10</th>
+            <!--<th colspan=2>Max Possible</th>-->
             <th colspan=2>Final Score</th>
-            <th colspan=2>Max Possible</th>
           </tr>
         </thead>
         <tbody>
@@ -71,20 +72,20 @@
             <td class="topRightTen" id="ff2"></td>
             <td class="topRightTen" id="ff3"></td>
 
-            <td class="finalScore" colspan=2; rowspan=2;></td>
+            <!--<td class="maxScore" colspan=2; rowspan=2;></td>-->
             <td class="finalScore"  colspan=2; rowspan=2;></td>
           </tr>
           <tr>
-            <td class="bottomScore" colspan=2;></td>
-            <td class="bottomScore" colspan=2;></td>
-            <td class="bottomScore" colspan=2;></td>
-            <td class="bottomScore" colspan=2;></td>
-            <td class="bottomScore" colspan=2;></td>
-            <td class="bottomScore" colspan=2;></td>
-            <td class="bottomScore" colspan=2;></td>
-            <td class="bottomScore" colspan=2;></td>
-            <td class="bottomScore" colspan=2;></td>
-            <td class="bottomScore" colspan=3;></td>
+            <td class="bottomScore"  id="fs1" colspan=2;></td>
+            <td class="bottomScore"  id="fs2" colspan=2;></td>
+            <td class="bottomScore"  id="fs3" colspan=2;></td>
+            <td class="bottomScore"  id="fs4" colspan=2;></td>
+            <td class="bottomScore"  id="fs5" colspan=2;></td>
+            <td class="bottomScore"  id="fs6" colspan=2;></td>
+            <td class="bottomScore"  id="fs7" colspan=2;></td>
+            <td class="bottomScore"  id="fs8" colspan=2;></td>
+            <td class="bottomScore"  id="fs9" colspan=2;></td>
+            <td class="bottomScore"  id="fs10" colspan=3;></td>
           </tr>
         </tbody>
       </table>

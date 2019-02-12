@@ -35,7 +35,6 @@ Game.prototype.endFrame = function () {
     return acc + val;
   });
   this.frameScore.push(total)
-
 };
 
 Game.prototype.roll = function (pins) {

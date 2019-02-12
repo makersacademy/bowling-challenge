@@ -4,25 +4,28 @@ function Frame() {
   this.MAX_SCORE = 10;
   this.rolls = [];
   this.rollCount = 0;
-  this.frameCount = 0;
 }
 
-Frame.prototype.recordRoll = function(score) {
-  this.rolls.push(score);
+Frame.prototype.roll = function(pins) {
+  console.log(this.score())
+  if (this.rollCount > 1) {
+    //
+    return this.rolls
+  }
+  else if (this.score() >= this.MAX_SCORE) {
+    //
+    return this.rolls
+  }
+  this.rolls.push(pins);
   this.rollCount += 1;
-  if (this.score >= this.MAX_SCORE) {
-    return this.score
-    this.frameCount += 1;
-  }
-  else if (this.rollCount > 1) {
-    return this.score
-    this.frameCount += 1;
-  }
+  console.log("Pass -")
+  console.log(this.rollCount)
+  console.log("Roll Array -")
+  console.log(this.rolls)
 };
 
 Frame.prototype.score = function() {
   return this.rolls.reduce((a,b) => a + b, 0)
-  // + this.strikeBonus()
 };
 
 // Frame.prototype.strikeBonus = function() {
@@ -32,3 +35,8 @@ Frame.prototype.score = function() {
 //     return 0
 //   }
 // };
+
+// if (this.score >= this.MAX_SCORE) {
+//   this.score()
+// }
+// else

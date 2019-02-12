@@ -35,6 +35,7 @@ Game.prototype.endFrame = function () {
     return acc + val;
   });
   this.frameScore.push(total)
+
 };
 
 Game.prototype.roll = function (pins) {
@@ -56,10 +57,10 @@ Game.prototype.countBonus = function () {
   var getBonus = this.frameScore;
   if (this._strikeBonus() === true){
   return getBonus[getBonus.length-2] += getBonus[getBonus.length-1];
-};
-// else if (this._spareBonus() === true) {
-//
-// };
+} else if (this._spareBonus() === true) {
+return getBonus[getBonus.length-2] += this.frameLog[this.frameLog.length-1][0];
+} else
+return
 };
 
 Game.prototype._strikeBonus = function () {

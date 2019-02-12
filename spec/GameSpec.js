@@ -78,6 +78,7 @@ describe('Game', function() {
     game.roll(3)
     game.roll(5)
     game.endFrame()
+    game.countBonus()
     expect(game.frameScore).toEqual([8,8]);
   });
 
@@ -91,9 +92,11 @@ describe('Game', function() {
       game.roll(1)
       game.roll(4)
       game.endFrame()
-
+      game.countBonus()
       expect(game._spareBonus()).toEqual(true)
       expect(game._strikeBonus()).toEqual(false)
+      expect(game.frameScore).toEqual([11,5])
+      expect(game.getTotalScore()).toEqual(16)
     });
 
     it('can check if previous frame is a strike', function () {
@@ -107,7 +110,8 @@ describe('Game', function() {
 
       expect(game._spareBonus()).toEqual(false)
       expect(game._strikeBonus()).toEqual(true)
-      expect(game.frameScore).toEqual([15,5])
+      // expect(game.frameScore).toEqual([15,5])
+      expect(game.getTotalScore()).toEqual(20)
     });
 
   });

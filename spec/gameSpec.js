@@ -66,4 +66,10 @@ describe('Game', function(){
       expect(game.score()).toBe(79)
     });
 
+    it('can calculate a perfect score', function() {
+      for (var i = 0; i < 12; i++) {
+        game.roll(10) };
+        expect(game.score()).toBe(300)
+    });
+
 });

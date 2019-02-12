@@ -21,3 +21,15 @@ describe("Frame", function() {
     frame.recordRoll(2)
     expect(frame.score()).toEqual(3);
   });
+
+  // The bonus for that frame is the number of pins
+  // knocked down by the next two rolls
+  // Unit Test 4
+  it("can calculate strike bonus", function() {
+    frame.recordRoll(10)
+    frame.recordRoll(10)
+    frame.recordRoll(10)
+    expect(frame.score()).toEqual(30);
+  });
+
+});

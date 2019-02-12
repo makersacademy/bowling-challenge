@@ -1,42 +1,40 @@
-'use strict';
-
-function Game(){
-  this.points = []
-  this.pointsIndex = 0
-  this.STRIKE = 10
-  this.SPARE = 10
-};
+function Game() {
+  this.points = [];
+  this.pointsIndex = 0;
+  this.STRIKE = 10;
+  this.SPARE = 10;
+}
 
 Game.prototype.roll = function(rollPoints) {
-  this.points.push(rollPoints)
+  this.points.push(rollPoints);
 };
 
 Game.prototype.score = function() {
-  var finalScore = 0
+  let finalScore = 0;
 
-  for (var frame = 0; frame < 10; frame++) {
-    if(this.isStrike()) {
+  for (let frame = 0; frame < 10; frame += 1) {
+    if (this.isStrike()) {
       finalScore += this.strikeScore();
-        this.pointsIndex += 1;
-    }
-    else if(this.isSpare()) {
+      this.pointsIndex += 1;
+    } else if (this.isSpare()) {
       finalScore += this.spareScore();
       this.pointsIndex += 2;
-    }
-    else {
+    } else {
       finalScore += this.otherScore();
       this.pointsIndex += 2;
-    };
-  };
+    }
+  }
   return finalScore;
 };
 
 Game.prototype.isSpare = function() {
-  return this.points[this.pointsIndex] + this.points[this.pointsIndex + 1] === this.SPARE;
+  return this.points[this.pointsIndex]
+  + this.points[this.pointsIndex + 1] === this.SPARE;
 };
 
 Game.prototype.spareScore = function() {
-  return this.points[this.pointsIndex] + this.points[this.pointsIndex + 1] + this.points[this.pointsIndex + 2];
+  return this.points[this.pointsIndex] + this.points[this.pointsIndex + 1]
+  + this.points[this.pointsIndex + 2];
 };
 
 Game.prototype.isStrike = function() {
@@ -44,7 +42,8 @@ Game.prototype.isStrike = function() {
 };
 
 Game.prototype.strikeScore = function() {
-  return this.points[this.pointsIndex] + this.points[this.pointsIndex + 1] + this.points[this.pointsIndex + 2];
+  return this.points[this.pointsIndex] + this.points[this.pointsIndex + 1]
+  + this.points[this.pointsIndex + 2];
 };
 
 Game.prototype.otherScore = function() {

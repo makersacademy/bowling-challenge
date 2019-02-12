@@ -56,4 +56,14 @@ describe('Game', function(){
       expect(game.score()).toBe(54)
     });
 
+    it('can calculate the score of a game with strikes', function() {
+      game.roll(10);
+      game.roll(10);
+      game.roll(5);
+      game.roll(3);
+      for (var i = 0; i < 14; i++) {
+        game.roll(2) };
+      expect(game.score()).toBe(79)
+    });
+
 });

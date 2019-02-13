@@ -4,10 +4,28 @@ EvaluateScore.prototype.scorecard = function(scorecard){
   var returnArray = [0]
 
   for (var i = 0; i < scorecard.length; i++){
-    returnArray.push(
-      returnArray[returnArray.length-1] + arraySum(scorecard[i])
-    )
+
+    if(arraySum(scorecard[i])<10){
+
+      returnArray.push(
+        returnArray[returnArray.length-1] + arraySum(scorecard[i])
+      )
+    }else{
+
+        switch (scorecard[i].length) {
+          case 2:
+            returnArray.push(
+              returnArray[returnArray.length-1] + (10 + scorecard[i+1][0])
+            )
+            break;
+          case 1:
+            break;
+          default:
+
+        }
+      }
   }
+
 
   returnArray.shift()
   return returnArray

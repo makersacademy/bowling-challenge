@@ -61,7 +61,7 @@ describe("FrameScore", () => {
     game = new Game();
   });
 
-  it("frames are scored", () => {
+  it("no spare / no strike score", () => {
     game.index = 3;
     game.record(4);
     game.record(3);
@@ -70,5 +70,16 @@ describe("FrameScore", () => {
     game.record(3);
     game.record(3);
     expect(game.score).toEqual([7,6]);
+  });
+
+  it('spare score', () => {
+    game.index = 3;
+    game.record(4);
+    game.record(6);
+
+    game.index = 4;
+    game.record(3);
+    game.record(3);
+    expect(game.score).toEqual([13,3]);
   });
 });

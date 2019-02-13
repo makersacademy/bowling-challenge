@@ -21,4 +21,8 @@ describe("EvaluateScoreSpec",function(){
   it ("can evaluate a strike with a strike score ahead",function(){
     expect(evaluateScore.scorecard([[1,9],[10],[10],[5,5]])).toEqual([20,45,65,75])
   })
+
+  it ("evaluates an incomplete strike as 10 until it's completed",function(){
+    expect(evaluateScore.scorecard([[1,9],[10]])).toEqual([20,30])
+  })
 })

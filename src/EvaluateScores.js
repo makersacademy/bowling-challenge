@@ -19,9 +19,13 @@ EvaluateScore.prototype.scorecard = function(scorecard){
             }
             break;
           case 1:
-            roll1 = scorecard[i+1][0]
-            roll2 = (scorecard[i+1][1] === undefined ? scorecard[i+2][0] : scorecard[i+1][1])
-            returnArray.push(returnArray[returnArray.length-1] + roll1 + roll2 + 10)
+            try{
+              roll1 = scorecard[i+1][0]
+              roll2 = (scorecard[i+1][1] === undefined ? scorecard[i+2][0] : scorecard[i+1][1])
+              returnArray.push(returnArray[returnArray.length-1] + roll1 + roll2 + 10)
+            }catch(Error){
+              returnArray.push(returnArray[returnArray.length-1] + 10)
+            }
             break;
           default:
         }
@@ -30,7 +34,6 @@ EvaluateScore.prototype.scorecard = function(scorecard){
   returnArray.shift()
   return returnArray
 }
-//isCompletedStrike(index,scorecard)
 
 function arraySum(array) {
   var sum = 0

@@ -14,4 +14,11 @@ describe("EvaluateScoreSpec",function(){
   it ("evaluates a spare as 10 if subsequent frame is yet to be rolled",function(){
     expect(evaluateScore.scorecard([[1,9],[5,3],[5,5]])).toEqual([15,23,33])
   })
+
+  it ("can evaluate a strike with regular scores ahead",function(){
+    expect(evaluateScore.scorecard([[1,9],[10],[5,5]])).toEqual([20,40,50])
+  })
+  it ("can evaluate a strike with a strike score ahead",function(){
+    expect(evaluateScore.scorecard([[1,9],[10],[10],[5,5]])).toEqual([20,45,65,75])
+  })
 })

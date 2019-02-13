@@ -11,10 +11,6 @@ describe('Initializer', () => {
     expect(game.pins).toBe(10);
   });
 
-  it('start at frame 1', ()=>{
-  	expect(game.frame).toBe(1);
-  });
-
   it('start with score of 0', ()=>{
   	expect(game.score).toBe(0);
   })
@@ -31,7 +27,12 @@ describe('Pins', () =>{
 		game.record(3);
 		expect(game.pins).toBe(7);
 	});
-
+  
+  it('new frame resets pins', () =>{
+    game.record(4);
+    game.record(6);
+    expect(game.pins).toBe(10)
+  })
 })
 
 describe('Frame', ()=>{
@@ -42,16 +43,16 @@ describe('Frame', ()=>{
   });
 
   it('strike advances frame', ()=>{
-		game.frame = 4;
+		game.index = 4;
 		game.record(10);
-		expect(game.frame).toBe(5)
+		expect(game.index).toBe(5)
 	});
 
   it('frame advances after 2 balls', ()=>{
-  	game.frame = 4;
+  	game.index = 4;
   	game.record(3);
   	game.record(5);
-  	expect(game.frame).toBe(5);
+  	expect(game.index).toBe(5);
   });
 
 })

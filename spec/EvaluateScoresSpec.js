@@ -11,4 +11,7 @@ describe("EvaluateScoreSpec",function(){
   it ("can evaluate a spare with scores ahead", function(){
     expect(evaluateScore.scorecard([[1,9],[5,3]])).toEqual([15,23])
   })
+  it ("evaluates a spare as 10 if subsequent frame is yet to be rolled",function(){
+    expect(evaluateScore.scorecard([[1,9],[5,3],[5,5]])).toEqual([15,23,33])
+  })
 })

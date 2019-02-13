@@ -2,7 +2,9 @@
 
 function Scorecard() {
   this.frames = [];
+  this.currentFrame = new Frame();
   // this.score = 0
+  // var currentFrame = new Frame();
 
 }
 
@@ -23,10 +25,25 @@ Scorecard.prototype.total = function(frames) {
   return score
 };
 
-// Scorecard.prototype.turn = function(pins) {
-//   var currentFrame = new Frame()
-//   currentFrame
-// };
+Scorecard.prototype.turn = function(pins) {
+  // console.log("pins = " + pins)
+  // console.log("pins = " + this.currentFrame.roll(pins))
+  if (this.currentFrame.roll(pins) != false) {
+    this.frames.push(this.currentFrame.roll(pins))
+    this.currentFrame = new Frame()
+  }
+};
+
+Scorecard.prototype.frameResult = function(frameN) {
+  console.log([[1,2],[3,4]])
+  console.log("frameN-1")
+  console.log(this.frames)
+  console.log("^^^^")
+  console.log(this.frames[frameN-1])
+  console.log("^^^^")
+  console.log("^^^^")
+  return this.frames[frameN - 1].reduce((a,b) => a + b, 0)
+};
 
 
 // array.reduce((a,b) => a + b, 0)

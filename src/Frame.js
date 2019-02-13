@@ -7,7 +7,7 @@ function Frame() {
 }
 
 Frame.prototype.roll = function(pins) {
-  console.log(this.score())
+  // console.log(this.score())
   if (this.rollCount > 1) {
     //
     return this.rolls
@@ -18,10 +18,11 @@ Frame.prototype.roll = function(pins) {
   }
   this.rolls.push(pins);
   this.rollCount += 1;
-  console.log("Pass -")
-  console.log(this.rollCount)
-  console.log("Roll Array -")
-  console.log(this.rolls)
+  // console.log("Pass -")
+  // console.log(this.rollCount)
+  // console.log("Roll Array -")
+  // console.log(this.rolls)
+  return false
 };
 
 Frame.prototype.score = function() {

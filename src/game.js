@@ -11,20 +11,22 @@ Game.prototype.addFrame = function () {
 };
 
 Game.prototype.addBowl = function (score) {
-  var frame = this.currentFrameIndex()
-  if (this.frames[frame][0].length == 2) {
+  if (this._isFrameComplete()) {
     this.addFrame();
     this.addBowl(score);
   } else {
-    this.frames[frame][0].push(score)
+    this.frames[this.currentFrameIndex()][0].push(score)
   }
 };
 
 Game.prototype.gameOver = function () {
-  var frame = this.currentFrameIndex()
-  if (frame == 9 && this.frames[frame][0].length == 2) {
+  if (this.currentFrameIndex() == 9 && this._isFrameComplete()) {
     return true;
   } else {
     return false;
   }
+};
+
+Game.prototype._isFrameComplete = function () {
+  return this.frames[this.currentFrameIndex()][0].length == 2;
 };

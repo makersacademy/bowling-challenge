@@ -90,6 +90,9 @@ function BowlingGame() {
     if (this.turn > 1 && this.scoreCard[this.turn - 2].pinsKnocked === 10) {
       this.runningTotal += pinsKnocked
     }
+    if (this.turn > 1 && this.rollNum === 1 && (this.scoreCard[this.turn -1].pinsKnocked + this.scoreCard[this.turn - 2].pinsKnocked) === 10 ) {
+      this.runningTotal += pinsKnocked
+    }
   }
 
   BowlingGame.prototype.addScoreToCard = function(pinsKnocked) {

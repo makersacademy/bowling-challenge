@@ -11,14 +11,20 @@ I want to add the list of bowlers
 
 ```
 As a bowler
-So that I can work out I can play a frame
-I want to record the number of pins I knocked down
+So that I can keep track of what happened during a game
+I want to record the number of pins I knocked down during a frame
+```
+
+```
+As a bowler
+So that I can play a game of bowling without knowing rules
+I want this app to indicate the next event expected by implication
 ```
 
 ```
 As a bowler
 So that I can keep an eye on the game's progress
-I want to be able to see the result of each frame
+I want to be able to see the current status of each frame
 ```
 
 ```

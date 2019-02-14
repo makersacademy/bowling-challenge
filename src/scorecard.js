@@ -15,9 +15,13 @@ function ScoreCard() {
   function calculateScore(round) {
     let score = 0;
     for (i = 0; i <= round; i++) {
-        if (scoreTracker[i][0] === 10) {
+        if (scoreTracker[i].length === 1) {
           score += 0;
-        } else if ( i !== 0 && scoreTracker[i - 1][0] === 10 ) {
+        } else if (scoreTracker[i][0] + scoreTracker[i][1] === 10) {
+          score += 0;
+        } else if (i !== 0 && scoreTracker[i - 1][0] + scoreTracker[i - 1][1] === 10) {
+          score += (10 + scoreTracker[i][0]) + scoreTracker[i][0] + scoreTracker[i][1];
+        } else if ( i !== 0 && scoreTracker[i - 1].length === 1 ) {
           score += (scoreTracker[i][0] + scoreTracker[i][1] + 10) + (scoreTracker[i][0] + scoreTracker[i][1]);
         } else {
         score += (scoreTracker[i][0] + scoreTracker[i][1]);

@@ -25,12 +25,6 @@ describe("ScoreCard", function() {
         expect(scorecard.scoreTracker[0]).toEqual([3,6]);
       });
 
-      it("shouldn't let you add a score if the first one is a stirke", function() {
-        scorecard.add(10, 0);
-        scorecard.add(6, 0);
-        expect(scorecard.scoreTracker[0]).toEqual([10,0]);
-      });
-
     });
 
     describe("calculating scores", function() {
@@ -51,7 +45,7 @@ describe("ScoreCard", function() {
         expect(scorecard.calculateScore(2)).toEqual(6);
       });
 
-      it("if there is a strike score should't be added on till next round", function() {
+      it("should't add the score be added on till next round for a strike", function() {
         scorecard.add(1, 0);
         scorecard.add(1, 0);
         scorecard.add(10, 1);
@@ -59,14 +53,31 @@ describe("ScoreCard", function() {
         expect(scorecard.calculateScore(1)).toEqual(2);
       });
 
-      it("if there is a strike score should't be added on till next round", function() {
+      it("shouldn't add the score should't be added on till next round for a strike", function() {
         scorecard.add(1, 0);
         scorecard.add(1, 0);
         scorecard.add(10, 1);
-        scorecard.add(0, 1);
         scorecard.add(1, 2);
         scorecard.add(1, 2);
         expect(scorecard.calculateScore(2)).toEqual(16);
+      });
+
+      it("should't add the score be added on till next round for a spare", function() {
+        scorecard.add(1, 0);
+        scorecard.add(1, 0);
+        scorecard.add(9, 1);
+        scorecard.add(1, 1);
+        expect(scorecard.calculateScore(1)).toEqual(2);
+      });
+
+      it("shouldn't add the score should't be added on till next round for a spare", function() {
+        scorecard.add(1, 0);
+        scorecard.add(1, 0);
+        scorecard.add(9, 1);
+        scorecard.add(1, 1);
+        scorecard.add(1, 2);
+        scorecard.add(1, 2);
+        expect(scorecard.calculateScore(2)).toEqual(15);
       });
 
     });

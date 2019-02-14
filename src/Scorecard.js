@@ -1,5 +1,5 @@
 function Scorecard () {
-  // this.totalScore = 0
+  this.totalScore = 0
   this.frameNumber = 1
   this.frames = []
 }

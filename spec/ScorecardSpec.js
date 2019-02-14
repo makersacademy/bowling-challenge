@@ -15,6 +15,10 @@ describe('Scorecard', function() {
     it('begins with an empty array of frames', function() {
       expect(scorecard.frames).toEqual([])
     });
+
+    it('has a starting total score of 0', function() {
+      expect(scorecard.totalScore).toEqual(0)
+    })
   });
 
   describe('#rollOne', function() {
@@ -36,4 +40,6 @@ describe('Scorecard', function() {
       expect(frameOne.rollTwoScore).toHaveBeenCalledWith(2)
     });
   });
+
+  describe('')
 });

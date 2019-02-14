@@ -1,6 +1,5 @@
 describe('Bowling game', function(){
   var game
-
   beforeEach(function(){
     game = new Game
   })
@@ -10,18 +9,22 @@ describe('Bowling game', function(){
   })
 
   it ('confirms if the score entered is a strike', function(){
-    expect(game.is_it_a_strike(10)).toEqual(true)
+    expect(game.strike(10)).toEqual(true)
   })
 
-  it ('adds a pins hit to the scores entered array', function(){
+  it ('adds a number of pins hit to frames,scores array if it is not a strike', function(){
     game.roll(3)
-    expect(game.scores_entered).toEqual([3])
+    expect(game.frame_input[1][0]).toEqual(3)
+  })
+
+  it ('confirms that the frame is complete if it has 2 scores inside it', function(){
+    game.frame_input = {1:[1,2]}
+    expect(game.frame_complete()).toEqual(true)
   })
 
   it ('should add up scores inside the scores_entered array', function(){
-    game.roll(3)
-    game.roll(5)
-    expect(game.score_sum()).toEqual(8)
+    game.frame_input = {1:[1,2]}
+    expect(game.score_sum()).toEqual(3)
   })
 
 })

@@ -1,28 +1,42 @@
 function Game () {
-  this.scores_entered = []
   this.frame = 1
+  this.frame_input = {1:[],2:[],3:[],4:[],5:[],6:[],7:[],8:[],9:[],10:[]}
   this.pins_standing = 10
   this.turn = 1
 };
 
 
-Game.prototype.is_it_a_strike = function(pins_hit){
-  if(pins_hit === 10 && this.turn == 1){return true}
-}
-
 Game.prototype.roll = function(pins_hit){
-  if (this.is_it_a_strike && this.turn <=2) {
-    this.scores_entered.push(pins_hit);
+  if(this.strike(pins_hit)) {
+    // this.bonus()
+  }
+  else if (pins_hit < 10 && this.turn <=2) {
+    this.frame_input[this.frame].push(pins_hit);
     this.pins_standing-=pins_hit;
     this.turn++
-  }
-  else if (this.is_it_a_strike) {
-    this.scores_entered
+      if (this.frame_complete()) {this.frame++; this.turn = 1; this.pins_standing = 10}
   }
 
 }
 
 Game.prototype.score_sum =function(){
-  return this.scores_entered.reduce((a,b) => a+b,0)
+  return this.frame_input[this.frame].reduce((a,b) => a+b,0)
 }
-// Game.prototype.bonus = function(){}
+
+Game.prototype.frame_complete = function(){
+  if(this.frame_input[this.frame].length === 2){return true}
+  else{return false}
+}
+
+Game.prototype.strike = function(pins_hit){
+ if(pins_hit === 10 && this.turn === 1){return true}
+}
+
+// Game.prototype.bonus = function(){
+// }
+// Game.strike_calc = function(){
+// }
+// Game.spare_calc = function(){
+// }
+// Game.valid_input = function(){
+// }

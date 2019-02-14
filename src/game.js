@@ -5,5 +5,10 @@ function Game() {
 
 Game.prototype.addFrame = function () {
   this.currentFrame += 1
-  this.frames.push([this.currentFrame,[null,null]])
+  this.frames.push([this.currentFrame,[]])
+};
+
+Game.prototype.addBowl = function (score) {
+  this.frames[0][1].push(score)
+  console.log(this);
 };

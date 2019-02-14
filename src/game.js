@@ -1,5 +1,5 @@
 function Game() {
-  this.frames = []
+  this.frames = [[]]
 }
 
 Game.prototype.currentFrameIndex = function () {

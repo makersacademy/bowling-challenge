@@ -26,7 +26,7 @@ function playerScoreCard() {
         if (currentStrike) { score += 0; } else
         if (currentSpare) { score += 0 } else
         if (previousSpare) { score += 10 + scoreTracker[i][0] + standardScore } else
-        if (previousStrike) { score += standardScore + 10 + standardScore } else
+        if (previousStrike) { score += (standardScore * 2) + 10 } else
         { score += standardScore }
     };
     return score;

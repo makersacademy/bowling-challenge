@@ -33,3 +33,7 @@ Frame.prototype.markComplete = function(runningTotal) {
     this.isComplete = false;
   }
 };
+
+Frame.prototype.returnIsComplete = function() {
+  return this.isComplete
+};

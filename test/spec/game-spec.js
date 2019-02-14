@@ -32,14 +32,14 @@
     it('adds first bowl to the frame', function () {
       game.addFrame();
       game.addBowl(6);
-      expect(game.frames[0]).toEqual([[6]])
+      expect(game.frames[0]).toEqual([6])
     })
 
     it('adds second bowl to the frame', function () {
       game.addFrame();
       game.addBowl(6);
       game.addBowl(3);
-      expect(game.frames[0]).toEqual([[6, 3]])
+      expect(game.frames[0]).toEqual([6, 3])
     })
 
     it('creates a new frame on the third bowl, and adds bowl to the new frame', function () {
@@ -47,7 +47,7 @@
       game.addBowl(6);
       game.addBowl(3);
       game.addBowl(4);
-      expect(game.frames[1]).toEqual([[4]])
+      expect(game.frames[1]).toEqual([4])
     })
   })
 
@@ -55,7 +55,7 @@
     beforeEach(function () {
       game = new Game()
     });
-    
+
     it('can check if the game is over', function () {
       for (var i = 0; i < 10; i++) {
         game.addFrame();

@@ -15,7 +15,7 @@ Game.prototype.addBowl = function (score) {
     this.addFrame();
     this.addBowl(score);
   } else {
-    this.frames[this.currentFrameIndex()][0].push(score)
+    this.frames[this.currentFrameIndex()].push(score)
   }
 };
 
@@ -28,5 +28,5 @@ Game.prototype.gameOver = function () {
 };
 
 Game.prototype._isFrameComplete = function () {
-  return this.frames[this.currentFrameIndex()][0].length == 2;
+  return this.frames[this.currentFrameIndex()].length == 2;
 };

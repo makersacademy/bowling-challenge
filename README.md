@@ -4,15 +4,28 @@ BowlApp ReadMe
 ## User Stories
 
 ```
-As a user
-so that I can begin a game
-I want to add the list of players
+As a bowler
+So that I can begin a game
+I want to add the list of bowlers
 ```
 
+```
+As a bowler
+So that I can work out I can play a frame
+I want to record the number of pins I knocked down
+```
 
+```
+As a bowler
+So that I can keep an eye on the game's progress
+I want to be able to see the result of each frame
+```
 
-
-
+```
+As a bowler
+So that I know who won
+I want to be able to see each player's score at game end
+```
 
 Bowling Challenge
 =================

@@ -1,10 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+<script src="jquery-3.3.1.js"></script>
+<script src="jQuery/scorecard.js"></script>
+<script src="src/playerScoreCard.js"></script>
   <head>
     <meta charset="utf-8">
+      <link rel="stylesheet" type="text/css" href="public/diveme.css">
     <title>Bowling scorecard</title>
   </head>
   <body>
+    <div>
+      <form>
+        <input id="roundSelector" type="text" placeholder="round number">
+      </form>
+
+      <form>
+        <input id="firstBowl" type="text" placeholder="first bowl">
+      </form>
+
+      <form>
+        <input id="secondBowl" type="text" placeholder="second bowl">
+      </form>
+
+      <button type="button" name="submitRound" id="submitRound">ok</button>
+
+    </div>
+
+      <div>
+        <div id="test">Round 1<span id="round1Score"> -   </span></div>
+        <div>Round 2<span id="round2Score">   -   </span></div>
+        <div>Round 3<span id="round3Score">   -   </span></div>
+        <div>Round 4<span id="round4Score">   -   </span></div>
+        <div>Round 5<span id="round5Score">   -   </span></div>
+        <div>Round 6<span id="round6Score">   -   </span></div>
+        <div>Round 7<span></span></div>
+        <div>Round 8<span></span></div>
+        <div>Round 9<span></span></div>
+        <div>Round 10<span></span></div>
+      </div>
 
   </body>
 </html>

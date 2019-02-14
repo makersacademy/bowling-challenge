@@ -14,13 +14,13 @@
 
     it('can add a frame', function () {
       game.addFrame();
-      expect(game.frames).toEqual([[[]]])
+      expect(game.frames).toEqual([[]])
     });
 
     it('can add more frames', function () {
       game.addFrame();
       game.addFrame();
-      expect(game.frames).toContain([[]])
+      expect(game.frames).toEqual([[],[]])
     });
   });
 

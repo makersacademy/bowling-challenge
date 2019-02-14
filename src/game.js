@@ -7,7 +7,7 @@ Game.prototype.currentFrameIndex = function () {
 }
 
 Game.prototype.addFrame = function () {
-  this.frames.push([[]])
+  this.frames.push([])
 };
 
 Game.prototype.addBowl = function (score) {

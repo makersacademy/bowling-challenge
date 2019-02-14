@@ -6,13 +6,15 @@ function BowlingGame() {
     this.turn = 0;
     this.frame = 0;
     this.runningTotal = 0;
+    this.rollNum = 0;
   }
 
 var scoreCard = [];
 
   BowlingGame.prototype.roll = function(pinsKnocked) {
     this.rolls.push(pinsKnocked);
-    this.frame += 1
+    this.rollNum += 1
+    this.calcFrame()
   }
 
 
@@ -51,5 +53,11 @@ var scoreCard = [];
 
   BowlingGame.prototype.calcSpareScore = function() {
     this.score += (this.rolls[this.turn] + this.rolls[this.turn + 1] + this.rolls[this.turn + 2]);
+  }
+
+  BowlingGame.prototype.calcFrame = function() {
+    if (this.rollNum === 1){
+      this.frame += 1
+    }
   }
 module.exports = BowlingGame

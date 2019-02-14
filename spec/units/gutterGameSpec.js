@@ -1,6 +1,6 @@
 var BowlingGame = require('../../src/BowlingGame.js')
 
-describe('StrikeBowlingGame', function() {
+describe('GutterBowlingGame', function() {
 
   var bowlingGame;
 
@@ -22,9 +22,27 @@ it('game has an initial frame of 0', function() {
   expect(bowlingGame.frame).toEqual(0) 
   });
 
-it('game has frame 1 ater first roll', function() {
+it('game has an initial rollNum of 0', function() {
+  expect(bowlingGame.rollNum).toEqual(0) 
+  });
+
+it('game has frame 1 after first roll', function() {
   bowlingGame.roll(0)
   expect(bowlingGame.frame).toEqual(1) 
   });
 
+it('game has rollNum 1 after first roll', function() {
+  bowlingGame.roll(0)
+  expect(bowlingGame.rollNum).toEqual(1)
+  });
+
+it('game has frame 1 after second  roll', function() {
+  rolls(0, 2)
+  expect(bowlingGame.frame).toEqual(1) 
+  });
+
+it('game has rollNum 2 after second roll', function() {
+  rolls(0, 2)
+  expect(bowlingGame.rollNum).toEqual(2)
+  });
 });

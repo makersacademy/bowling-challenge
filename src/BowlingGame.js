@@ -15,11 +15,8 @@ function BowlingGame() {
     this.rolls.push(pinsKnocked);
     this.calcRollNum()
     this.calcFrame()
-    this.scoreCard[this.turn] = {};
-    this.scoreCard[this.turn].frame = this.frame;
-    this.scoreCard[this.turn].rollNum = this.rollNum;
-    this.scoreCard[this.turn].pinsKnocked = pinsKnocked;
-    this.scoreCard[this.turn].score = this.runningTotal;
+    this.runningTotal += pinsKnocked;
+    this.addScoreToCard(pinsKnocked)
   }
 
 
@@ -74,5 +71,15 @@ function BowlingGame() {
       this.rollNum = 1
     }
   }
+
+  BowlingGame.prototype.addScoreToCard = function(pinsKnocked) {
+    this.scoreCard[this.turn] = {};
+    this.scoreCard[this.turn].frame = this.frame;
+    this.scoreCard[this.turn].rollNum = this.rollNum;
+    this.scoreCard[this.turn].pinsKnocked = pinsKnocked;
+    this.scoreCard[this.turn].score = this.runningTotal;
+    this.turn += 1;
+  }
+    
    
 module.exports = BowlingGame

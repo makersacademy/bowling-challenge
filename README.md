@@ -1,3 +1,18 @@
+BowlApp ReadMe
+==============
+
+## User Stories
+
+```
+As a user
+so that I can begin a game
+I want to add the list of players
+```
+
+
+
+
+
 
 Bowling Challenge
 =================

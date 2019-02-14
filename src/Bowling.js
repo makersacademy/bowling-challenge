@@ -1,22 +1,13 @@
-function Player () {
-}
-Player.prototype.play = function (song) {
-  this.currentlyPlayingSong = song
-  this.isPlaying = true
-}
+function Game () {
+  this.game_frames = [1,2,3,4,5,6,7,8,9,10]
+  this.scores_entered = []
+};
 
-Player.prototype.pause = function () {
-  this.isPlaying = false
-}
 
-Player.prototype.resume = function () {
-  if (this.isPlaying) {
-    throw new Error('song is already playing')
-  }
-
-  this.isPlaying = true
+Game.prototype.is_it_a_strike = function(score){
+  if(score === 10){return true}
 }
 
-Player.prototype.makeFavorite = function () {
-  this.currentlyPlayingSong.persistFavoriteStatus(true)
+Game.prototype.roll = function(pins_hit){
+  this.scores_entered.push(pins_hit)
 }

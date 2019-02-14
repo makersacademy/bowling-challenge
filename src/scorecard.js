@@ -9,11 +9,25 @@ Scorecard.prototype.firstThrow = function(score) {
 }
 
 Scorecard.prototype.secondThrow = function(score) {
-  this._secondThrow = score;
+  let pinsRemaining = 10 - this._firstThrow
+  if (this._firstThrow + score > 10) {
+    throw new Error(`There are only ${pinsRemaining} pins Pins remaining`)
+  }
+  else {this._secondThrow = score};
+}
+
+Scorecard.prototype.resetThrows = function() {
+  this._firstThrow = 0;
+  this._secondThrow = 0;
 }
 
 Scorecard.prototype.addToFrames = function() {
   this._allFrames.push([this._firstThrow, this._secondThrow])
+  console.log(this._firstThrow)
+  console.log(this._secondThrow)
+  this.resetThrows();
+  console.log(this._firstThrow)
+  console.log(this._secondThrow)
 }
 
 Scorecard.prototype.recordStrike = function() {

@@ -65,4 +65,11 @@ describe('Scorecard:', function() {
     })
   })
 
+  describe('#error', function() {
+    it('should throw an error if second throw exceeds remaining pins', function() {
+      scorecard.firstThrow(6);
+      expect(function () { scorecard.secondThrow(5) }).toThrowError('There are only 4 pins Pins remaining')
+    })
+  })
+
 });

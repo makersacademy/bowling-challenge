@@ -29,7 +29,6 @@ function incrementCounters() {
     displayScore();
     turnCounter = 1;
     frameCounter++;
-
   }
 }
 
@@ -42,4 +41,16 @@ function displayScore() {
   let score = scorecard.calculateTotal();
   let idToChange = `f${frameCounter}total`
   document.getElementById(idToChange).innerHTML = score;
+}
+
+function spare() {
+
+}
+
+function strike() {
+
+}
+
+function frameTen() {
+
 }

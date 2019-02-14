@@ -24,5 +24,22 @@ function displayThrow(number) {
 
 function incrementCounters() {
   turnCounter ++;
-  if (turnCounter === 3) { turnCounter = 1; frameCounter++; }
+  if (turnCounter === 3) {
+    calculateScore();
+    displayScore();
+    turnCounter = 1;
+    frameCounter++;
+
+  }
+}
+
+function calculateScore() {
+  scorecard.addToFrames();
+  scorecard.calculateBasic(frameCounter - 1);
+}
+
+function displayScore() {
+  let score = scorecard.calculateTotal();
+  let idToChange = `f${frameCounter}total`
+  document.getElementById(idToChange).innerHTML = score;
 }

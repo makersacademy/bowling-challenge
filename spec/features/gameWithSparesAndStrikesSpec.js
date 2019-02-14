@@ -33,8 +33,7 @@ describe('BowlingGameWithStrikes', function() {
     bowlingGame.roll(10)
     bowlingGame.roll(2)
     bowlingGame.roll(2)
-    bowlingGame.calculateScore()
-    expect(bowlingGame.score).toEqual(115)
+    expect(bowlingGame.runningTotal).toEqual(115)
   });
 });
 

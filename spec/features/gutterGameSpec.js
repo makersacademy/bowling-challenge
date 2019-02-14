@@ -8,7 +8,7 @@ describe('BowlingGutterGame', function() {
     for (i = 0; i <= 20; i++) {
       bowlingGame.roll(0);
     }
-    expect(bowlingGame.score).toEqual(0)
+    expect(bowlingGame.runningTotal).toEqual(0)
   });
 });
 

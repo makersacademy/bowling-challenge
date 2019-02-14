@@ -21,13 +21,19 @@ describe("ROLL", function() {
 
     describe("Special scores", function() {
       it("should record strike as a note", function() {
-        expect(roll10.notes).toEqual("Stike");
+        expect(roll10.notes).toEqual("Strike");
       });
 
       it("should 0 score as a note", function() {
         expect(roll0.notes).toEqual("Unlucky");
       });
     });
+
+    describe("Accessing score", function() {
+      it("should return", function() {
+        expect(roll5.returnScore()).toEqual(roll5.score);
+      });
+    } )
   });
 
   // describe("Track roll within frame", function() {

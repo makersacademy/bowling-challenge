@@ -39,4 +39,22 @@ describe('StrikeBowlingGame', function() {
     expect(bowlingGame.scoreCard[10].frame).toEqual(10)
     expect(bowlingGame.scoreCard[10].rollNum).toEqual(2)
   });
+
+  it('if strike is scored in the 10th frame, game is not complete after first bonus roll', function() {
+    rolls(0,18)
+    bowlingGame.roll(10)
+    bowlingGame.roll(1)
+    expect(bowlingGame.isComplete).toEqual(false)
+    expect(bowlingGame.frame).toEqual(10)
+    expect(bowlingGame.rollNum).toEqual(2)
+  });
+
+  it('if strike is scored in the 10th frame, game is complete after second bonus roll', function() {
+    rolls(0,18)
+    bowlingGame.roll(10)
+    rolls(0,2)
+    expect(bowlingGame.isComplete).toEqual(true)
+    expect(bowlingGame.frame).toEqual(10)
+    expect(bowlingGame.rollNum).toEqual(3)
+  });
 });

@@ -2,7 +2,6 @@
 
 function BowlingGame() {
     this.rolls = []
-    this.score = 0
     this.turn = 0
     this.frame = 0
     this.runningTotal = 0
@@ -12,12 +11,26 @@ function BowlingGame() {
   }
 
   BowlingGame.prototype.roll = function(pinsKnocked) {
-    this.rolls.push(pinsKnocked)
+    if (this.frame !== 10) {
+      this.rollNormalFrame(pinsKnocked)
+    }
+    else {
+      this.rollFinalFrame(pinsKnocked)
+    }
+  }
+
+  BowlingGame.prototype.rollFinalFrame = function(pinsKnocked) {
+    this.calcFinalFrameRollNum()
+    this.calcFinalFrame()
+    this.calcFinalFrameTotal(pinsKnocked)
+    this.addScoreToCard(pinsKnocked)
+  }
+
+  BowlingGame.prototype.rollNormalFrame = function(pinsKnocked) {
     this.calcRollNum()
     this.calcFrame(pinsKnocked)
     this.calcRunningTotal(pinsKnocked)
     this.addScoreToCard(pinsKnocked)
-    this.checkGameIsComplete()
   }
 
   BowlingGame.prototype.calcFrame = function(pinsKnocked) {
@@ -28,8 +41,12 @@ function BowlingGame() {
       this.frame += 1
     } 
   }
+  
+  BowlingGame.prototype.calcFinalFrame = function() {
+    this.frame = 10
+  }
 
-  BowlingGame.prototype.calcRollNum = function(pinsKnocked) {
+  BowlingGame.prototype.calcRollNum = function() {
     if (this.rollNum === 0) {
       this.rollNum += 1
     }
@@ -40,19 +57,39 @@ function BowlingGame() {
       this.rollNum += 1
     }
   }
+  
+  BowlingGame.prototype.calcFinalFrameRollNum = function() {
+    if (this.scoreCard[this.turn - 1].frame === 9) {
+      this.rollNum = 1
+    }
+    else {
+      this.rollNum += 1
+    }
+  }
 
   BowlingGame.prototype.calcRunningTotal = function(pinsKnocked) {
-    this.runningTotal += pinsKnocked;
-    if (this.turn !== 0 && this.lastTurnIsStrike()) {
+    this.runningTotal += pinsKnocked
+    if (this.turn !== 0 && this.rollNum !== 3 && this.lastTurnIsStrike()) {
       this.runningTotal += pinsKnocked
     }
-    if (this.turn > 1 && this.secondLastTurnIsStrike()) {
+    if (this.turn > 1 && this.rollNum !== 3 && this.secondLastTurnIsStrike()) {
       this.runningTotal += pinsKnocked
     }
     if (this.turn > 1 && this.lastFrameIsSpare()) {
       this.runningTotal += pinsKnocked
     }
   }
+
+  BowlingGame.prototype.calcFinalFrameTotal = function(pinsKnocked) {
+    this.runningTotal += pinsKnocked
+    if (this.rollNum < 3 && this.secondLastTurnIsStrike()) {
+      this.runningTotal += pinsKnocked
+    }
+    else if (this.rollNum < 2 && this.lastTurnIsStrike()) {
+      this.runningTotal += pinsKnocked
+    }
+  } 
+
 
   BowlingGame.prototype.lastTurnIsStrike = function() {
     return  this.scoreCard[this.turn - 1].pinsKnocked === 10

@@ -90,4 +90,13 @@ describe ('Feature Tests', function() {
       expect(scorecard.totalScore).toEqual(30)
     });
   });
+
+  // describe('a perfect game', function() {
+  //   it('has a score of 300', function() {
+  //     for (var i = 0; i < 11; i++) {
+  //       scorecard.rollOne(10)
+  //     }
+  //     expect(scorecard.totalScore).toEqual(300)
+  //   });
+  // });
 });

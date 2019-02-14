@@ -19,13 +19,13 @@ Scorecard.prototype.rollTwo = function (rollScore) {
 
 Scorecard.prototype._calculateScore = function () {
   var scoringFrame = this.frames.length - 1
-  while (scoringFrame >= this.scores.length - 1) {
+  while (this.frames.length > this.scores.length) {
     var frame = this.frames[scoringFrame]
     if (this._wasASpare(frame)) {
-      frame.addBonus(this.frames[scoringFrame+ 1].rollOne)
+      this._calculateSpareBonus(frame)
     }
     if (this._wasAStrike(frame)) {
-      frame.addBonus(this.frames[scoringFrame+ 1].rollOne + this.frames[scoringFrame+ 1].rollTwo)
+      this._calculateStrikeBonus(frame)
     }
     this.totalScore += frame.frameScore()
     this.scores.push(frame.frameScore())
@@ -34,10 +34,24 @@ Scorecard.prototype._calculateScore = function () {
 };
 
 Scorecard.prototype._wasASpare = function (frame) {
-  console.log("testing for spare")
   return (frame.rollOne + frame.rollTwo === 10) && (frame.rollOne != 10)
 }
 
 Scorecard.prototype._wasAStrike = function (frame) {
   return frame.rollOne === 10
+}
+
+Scorecard.prototype._calculateSpareBonus = function (frame) {
+  var nextFrame = this.frames[frame.frameNumber]
+  frame.addBonus(nextFrame.rollOne)
+}
+
+Scorecard.prototype._calculateStrikeBonus = function (frame) {
+  var nextFrame = this.frames[frame.frameNumber]
+  var nextNextFrame = this.frames[frame.frameNumber + 1]
+  if (nextFrame.rollTwo === null) {
+    frame.addBonus(nextFrame.rollOne + nextNextFrame.rollOne)
+  } else {
+  frame.addBonus(nextFrame.rollOne + nextFrame.rollTwo)
+  }
 }

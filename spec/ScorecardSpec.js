@@ -57,11 +57,11 @@ describe('Scorecard', function() {
   })
 
   describe('a round with a spare', function() {
-    // it('won\'t add a score to the total score at the end of the second roll if it was a spare', function() {
-    //   scorecard.rollOne(2)
-    //   scorecard.rollTwo(8)
-    //   expect(scorecard.totalScore).toEqual(0)
-    // })
+    it('won\'t add a score to the total score at the end of the second roll if it was a spare', function() {
+      scorecard.rollOne(2)
+      scorecard.rollTwo(8)
+      expect(scorecard.totalScore).toEqual(0)
+    })
 
     it('calculates the spare bonus correctly', function() {
       scorecard.rollOne(2)
@@ -69,6 +69,36 @@ describe('Scorecard', function() {
       scorecard.rollOne(2)
       scorecard.rollTwo(0)
       expect(scorecard.totalScore).toEqual(14)
+    })
+  })
+
+  describe('a round with a strike', function() {
+    it('calculates the strike bonus correctly when a strike is rolled on the first turn', function() {
+      scorecard.rollOne(10)
+      scorecard.rollOne(2)
+      scorecard.rollTwo(7)
+      expect(scorecard.totalScore).toEqual(28)
+    })
+
+    it('calculates the strike bonus correctly when a strike is rolled on the third turn', function() {
+      scorecard.rollOne(2)
+      scorecard.rollTwo(7)
+      scorecard.rollOne(2)
+      scorecard.rollTwo(7)
+      scorecard.rollOne(10)
+      scorecard.rollOne(2)
+      scorecard.rollTwo(2)
+      expect(scorecard.totalScore).toEqual(36)
+    })
+
+    it('calculates the strike bonus correctly when two strikes are rolled in a row', function() {
+      scorecard.rollOne(10)
+      scorecard.rollOne(10)
+      scorecard.rollOne(5)
+      scorecard.rollTwo(5)
+      scorecard.rollOne(7)
+      scorecard.rollTwo(0)
+      expect(scorecard.totalScore).toEqual(69)
     })
   })
 });

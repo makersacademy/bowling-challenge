@@ -67,12 +67,22 @@ function BowlingGame() {
   }
 
   BowlingGame.prototype.calcRollNum = function(pinsKnocked) {
-    if (this.rollNum < 2 && pinsKnocked !== 10 ) {
+    if (this.rollNum === 0) {
+      this.rollNum += 1
+    }
+    else if (this.lastTurnIsStrike()) {
+      this.rollNum = 1
+    }
+    else if (this.rollNum < 2) {
       this.rollNum += 1
     }
     else {
       this.rollNum = 1
     }
+  }
+
+  BowlingGame.prototype.lastTurnIsStrike = function() {
+    return this.scoreCard[this.turn - 1].pinsKnocked === 10;
   }
 
   BowlingGame.prototype.calcRunningTotal = function(pinsKnocked) {

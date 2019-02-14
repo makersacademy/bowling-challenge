@@ -14,8 +14,8 @@ function BowlingGame() {
   BowlingGame.prototype.roll = function(pinsKnocked) {
     this.rolls.push(pinsKnocked);
     this.calcRollNum()
-    this.calcFrame()
-    this.runningTotal += pinsKnocked;
+    this.calcFrame(pinsKnocked)
+    this.calcRunningTotal(pinsKnocked)
     this.addScoreToCard(pinsKnocked)
   }
 
@@ -57,18 +57,31 @@ function BowlingGame() {
     this.score += (this.rolls[this.turn] + this.rolls[this.turn + 1] + this.rolls[this.turn + 2]);
   }
 
-  BowlingGame.prototype.calcFrame = function() {
-    if (this.rollNum === 1) {
+  BowlingGame.prototype.calcFrame = function(pinsKnocked) {
+    if (pinsKnocked === 10){
+      this.frame += 1
+    }
+    else if (this.rollNum === 1) {
       this.frame += 1
     } 
   }
 
-  BowlingGame.prototype.calcRollNum = function() {
-    if (this.rollNum < 2 ) {
+  BowlingGame.prototype.calcRollNum = function(pinsKnocked) {
+    if (this.rollNum < 2 && pinsKnocked !== 10 ) {
       this.rollNum += 1
     }
     else {
       this.rollNum = 1
+    }
+  }
+
+  BowlingGame.prototype.calcRunningTotal = function(pinsKnocked) {
+    this.runningTotal += pinsKnocked;
+    if (this.turn !== 0 && this.scoreCard[this.turn - 1].pinsKnocked  === 10) {
+      this.runningTotal += pinsKnocked
+    }
+    if (this.turn > 1 && this.scoreCard[this.turn - 2].pinsKnocked === 10) {
+      this.runningTotal += pinsKnocked
     }
   }
 

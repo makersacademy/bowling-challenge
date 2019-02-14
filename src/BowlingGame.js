@@ -13,7 +13,7 @@ var scoreCard = [];
 
   BowlingGame.prototype.roll = function(pinsKnocked) {
     this.rolls.push(pinsKnocked);
-    this.rollNum += 1
+    this.calcRollNum()
     this.calcFrame()
   }
 
@@ -56,8 +56,18 @@ var scoreCard = [];
   }
 
   BowlingGame.prototype.calcFrame = function() {
-    if (this.rollNum === 1){
+    if (this.rollNum === 1) {
       this.frame += 1
+    } 
+  }
+
+  BowlingGame.prototype.calcRollNum = function() {
+    if (this.rollNum < 2 ) {
+      this.rollNum += 1
+    }
+    else {
+      this.rollNum = 1
     }
   }
+   
 module.exports = BowlingGame

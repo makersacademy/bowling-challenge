@@ -45,4 +45,9 @@ it('game has rollNum 2 after second roll', function() {
   rolls(0, 2)
   expect(bowlingGame.rollNum).toEqual(2)
   });
+
+it('game has rollNum 1 after third roll', function() {
+  rolls(0, 3)
+  expect(bowlingGame.rollNum).toEqual(1)
+  });
 });

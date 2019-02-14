@@ -24,6 +24,7 @@ function BowlingGame() {
     this.calcFinalFrame()
     this.calcFinalFrameTotal(pinsKnocked)
     this.addScoreToCard(pinsKnocked)
+    this.checkGameIsComplete()
   }
 
   BowlingGame.prototype.rollNormalFrame = function(pinsKnocked) {
@@ -114,6 +115,15 @@ function BowlingGame() {
 
   BowlingGame.prototype.checkGameIsComplete = function() {
     if (this.frame === 10 && this.rollNum === 2) {
+      this.isComplete = true
+    }
+  }
+  
+  BowlingGame.prototype.checkGameIsComplete = function(pinsKnocked) {
+    if (this.rollNum === 2 && pinsKnocked !== 10 && this.scoreCard[this.turn - 1].pinsKnocked + pinsKnocked !== 10 && this.lastTurnIsStrike === false) {
+      this.isComplete = true
+    }
+    else if (this.rollNum === 3) {
       this.isComplete = true
     }
   }

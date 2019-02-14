@@ -1,4 +1,4 @@
-// Stores no more than two scores
+// Stores no more than two scores and returns them in an array
 function Frame () {
     this.throws = []
 }

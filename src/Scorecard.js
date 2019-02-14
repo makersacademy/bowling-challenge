@@ -4,6 +4,7 @@ function Scorecard () {
   this.frames = []
 }
 
-Scorecard.prototype.rollOne = function (rollScore) {
-
+Scorecard.prototype.rollOne = function (rollScore, frame = new Frame(frameNumber)) {
+  this.frames.push(frame)
+  frame.rollOneScore(rollScore)
 };

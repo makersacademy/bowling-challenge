@@ -17,10 +17,15 @@ describe('Scorecard', function() {
     });
   });
 
-  describe('updating frame scores', function() {
+  describe('#rollOne', function() {
     it('sends the current frame a method to update the roll 1 score', function() {
-      scorecard.rollOne(2)
+      scorecard.rollOne(2, frameOne)
       expect(frameOne.rollOneScore).toHaveBeenCalledWith(2)
+    })
+
+    it('adds a new frame to the frames array', function() {
+      scorecard.rollOne(2, frameOne)
+      expect(scorecard.frames).toContain(frameOne)
     })
   })
 });

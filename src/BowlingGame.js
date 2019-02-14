@@ -78,23 +78,16 @@ function BowlingGame() {
     }
   }
 
-//  BowlingGame.prototype.lastTurnIsStrike = function() {
-//    return this.scoreCard[this.turn - 1].pinsKnocked === 10;
-//  }
-
   BowlingGame.prototype.calcRunningTotal = function(pinsKnocked) {
     this.runningTotal += pinsKnocked;
     if (this.turn !== 0 && this.lastTurnIsStrike()) {
       this.runningTotal += pinsKnocked
-      console.log(1)
     }
     if (this.turn > 1 && this.secondLastTurnIsStrike()) {
       this.runningTotal += pinsKnocked
-      console.log(2)
     }
     if (this.turn > 1 && this.lastFrameIsSpare()) {
       this.runningTotal += pinsKnocked
-      console.log(3)
     }
   }
 

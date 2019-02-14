@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<scrip src="js/interface.js"></script>
 <script src="src/Bowling.js"></script>
 
 <head>
@@ -10,17 +12,17 @@
 
 <div id="buttons" class="buttons">
   Pins Hit:
-<button type="button" onclick="roll(0)"  class="score btn">0</button>
-<button type="button" onclick="roll(1)"  class="score btn">1</button>
-<button type="button" onclick="roll(2)"  class="score btn">2</button>
-<button type="button" onclick="roll(3)"  class="score btn">3</button>
-<button type="button" onclick="roll(4)"  class="score btn">4</button>
-<button type="button" onclick="roll(5)"  class="score btn">5</button>
-<button type="button" onclick="roll(6)"  class="score btn">6</button>
-<button type="button" onclick="roll(7)"  class="score btn">7</button>
-<button type="button" onclick="roll(8)"  class="score btn">8</button>
-<button type="button" onclick="roll(9)"  class="score btn">9</button>
-<button type="button" onclick="roll(10)"  class="score btn">10</button>
+<button type="button" id="0"  class="score btn">0</button>
+<button type="button" id="0"   class="score btn">1</button>
+<button type="button" id="2"  class="score btn">2</button>
+<button type="button" id="3"  class="score btn">3</button>
+<button type="button" id="4"  class="score btn">4</button>
+<button type="button" id="5"  class="score btn">5</button>
+<button type="button" id="6"  class="score btn">6</button>
+<button type="button" id="7"  class="score btn">7</button>
+<button type="button" id="8"  class="score btn">8</button>
+<button type="button" id="9"  class="score btn">9</button>
+<button type="button" id="10"  class="score btn">10</button>
 </div>
 
 
@@ -39,27 +41,27 @@
      <th colspan="3">Frame 10</th>
    </tr>
    <tr>
-     <td>Roll 1</td>
-     <td>Roll 2</td>
-     <td>Roll 1</td>
-     <td>Roll 2</td>
-     <td>Roll 1</td>
-     <td>Roll 2</td>
-     <td>Roll 1</td>
-     <td>Roll 2</td>
-     <td>Roll 1</td>
-     <td>Roll 2</td>
-     <td>Roll 1</td>
-     <td>Roll 2</td>
-     <td>Roll 1</td>
-     <td>Roll 2</td>
-     <td>Roll 1</td>
-     <td>Roll 2</td>
-     <td>Roll 1</td>
-     <td>Roll 2</td>
-     <td>Roll 1</td>
-     <td>Roll 2</td>
-     <td>Roll 3</td>
+     <td id="f1r1"></td>
+     <td id="f1r2">Roll 2</td>
+     <td id="f2r1">Roll 1</td>
+     <td id="f2r2">Roll 2</td>
+     <td id="f3r1">Roll 1</td>
+     <td id="f3r2">Roll 2</td>
+     <td id="f4r1">Roll 1</td>
+     <td id="f4r2">Roll 2</td>
+     <td id="f5r1">Roll 1</td>
+     <td id="f5r2">Roll 2</td>
+     <td id="f6r1">Roll 1</td>
+     <td id="f6r2">Roll 2</td>
+     <td id="f7r1">Roll 1</td>
+     <td id="f7r2">Roll 2</td>
+     <td id="f8r1">Roll 1</td>
+     <td id="f8r2">Roll 2</td>
+     <td id="f9r1">Roll 1</td>
+     <td id="f9r2">Roll 2</td>
+     <td id="f10r1">Roll 1</td>
+     <td id="f10r2">Roll 2</td>
+     <td id="f10r3">Roll 3</td>
    </tr>
    <tr>
      <th colspan="2">score1</th>

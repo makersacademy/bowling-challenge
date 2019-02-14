@@ -27,4 +27,10 @@ describe('Bowling game', function(){
     expect(game.score_sum()).toEqual(3)
   })
 
+  it ('should calculate score for the frame', function(){
+    game.frame_input={1:[1,2],2:[3,4]}
+    game.score_for_output()
+    expect(game.frame_output[1]).toEqual([3])
+  })
+
 })

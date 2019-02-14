@@ -18,7 +18,7 @@ describe("PLAYER", function() {
 
     it("should not detract from remaining frames", function() {
       spyOn(Frame.prototype, "returnIsComplete").and.returnValue(false);
-      player.updateCurrentFrame();
+      player.enterRoll(1);
       expect(player.remainingFrames).toEqual(12);
     });
   });
@@ -26,8 +26,26 @@ describe("PLAYER", function() {
   describe("*Frame is complete*", function() {
     it("should detract one from remaining frames", function() {
       spyOn(Frame.prototype, "returnIsComplete").and.returnValue(true);
-      player.updateCurrentFrame();
+      player.enterRoll(1);
       expect(player.remainingFrames).toEqual(11);
     });
   });
+
+  describe("GameOver", function(){
+    it("should return true if no remaining frames", function(){
+      spyOn(Frame.prototype, "returnIsComplete").and.returnValue(true);
+      player.enterRoll(1);
+      player.enterRoll(1);
+      player.enterRoll(1);
+      player.enterRoll(1);
+      player.enterRoll(1);
+      player.enterRoll(1);
+      player.enterRoll(1);
+      player.enterRoll(1);
+      player.enterRoll(1);
+      player.enterRoll(1);
+      player.enterRoll(1);
+      expect(player.remainingFrames).toEqual(0)
+    })
+  })
 });

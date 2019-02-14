@@ -1,6 +1,4 @@
-function Roll() {
-  this.score;
-}
+function Roll() {}
 
 Roll.prototype.enterRoll = function(score) {
   this.score = score;

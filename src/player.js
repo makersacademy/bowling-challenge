@@ -5,21 +5,24 @@ function Player(name) {
   this.currentFrame = new Frame();
 }
 
-Player.prototype.updateCurrentFrame = function() {
-  if (this.currentFrame.returnIsComplete() === true) {
-    this.remainingFrames -= 1;
-  }
-};
-
 Player.prototype.enterRoll = function(score) {
-  this.currentFrame.returnIsComplete()
-    ? this.newFrame(score)
-    : this.currentFrame.enterRoll(score);
+  if (this.currentFrame.returnIsComplete())
+    { this._storeCurrentFrame()
+      this._newFrame(score)
+      this._reduceRemainingFrames() }
+  else{ this.currentFrame.enterRoll(score)};
 };
 
-Player.prototype.newFrame = function(score) {
+Player.prototype._newFrame = function(score) {
   frame = new Frame();
   frame.enterRoll(score);
-  this.frames.push(this.currentFrame);
   this.currentFrame = frame;
+};
+
+Player.prototype._storeCurrentFrame = function(){
+  this.frames.push(this.currentFrame)
+}
+
+Player.prototype._reduceRemainingFrames = function() {
+    this.remainingFrames -= 1;
 };

@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function pinHit(number) {
   logThrow(number);
   displayInputLogic(number);
+  console.log(scorecard._score)
 }
 
 function logThrow(number) {
@@ -69,6 +70,7 @@ function displayScore(turn) {
 
 function displayScoreLogic() {
   // frameCounter starts at 2
+  updateStrikesAndSpares()
   if (scorecard.strikeWasScored(frameCounter - 2) || scorecard.spareWasScored(frameCounter - 2)) {
       displayScore(frameCounter); // If spare was scored, just display the score.
       }
@@ -76,15 +78,13 @@ function displayScoreLogic() {
       calculateScore(frameCounter); // Calculate Score
       displayScore(frameCounter); // Display Score
     }
-  updateStrikesAndSpares()
+
   }
 
 function updateStrikesAndSpares() {
   if (frameCounter > 2) {
     if (scorecard.strikeWasScored(frameCounter - 3) || scorecard.spareWasScored(frameCounter - 3)) {
       calculateScore(frameCounter - 1); // Calculate Score
-      console.log(frameCounter);
-      console.log(frameCounter - 1);
       displayScore(frameCounter - 1);
     }
   }

@@ -6,8 +6,8 @@ describe('Scorecard:', function() {
   });
 
   describe('#new:', function() {
-    it('_score initializes as empty', function() {
-      expect(scorecard._score).toEqual([]);
+    it('_score initializes with 0', function() {
+      expect(scorecard._score).toEqual([0]);
     });
     it('_allFrames initializes as empty', function() {
       expect(scorecard._allFrames).toEqual([]);
@@ -59,17 +59,17 @@ describe('Scorecard:', function() {
     it('scores a BASIC frame', function() {
       scorecard._allFrames = [[5,4], [7, 1]]
       scorecard.calculateBasic(0);
-      expect(scorecard._score[0]).toEqual(9);
+      expect(scorecard._score[1]).toEqual(9);
     })
     it('scores a SPARE frame', function() {
       scorecard._allFrames = [[4,6], [7, 1]]
       scorecard.calculateSpare(0);
-      expect(scorecard._score[0]).toEqual(17);
+      expect(scorecard._score[1]).toEqual(17);
     })
     it('scores a STRIKE frame', function() {
       scorecard._allFrames = [[10,0], [7, 2]]
       scorecard.calculateStrike(0);
-      expect(scorecard._score[0]).toEqual(19);
+      expect(scorecard._score[1]).toEqual(19);
     })
     it('scores TOTAL SCORE', function() {
       scorecard._score = [15, 9, 20, 3, 4, 8, 12, 19, 20, 8]
@@ -81,19 +81,19 @@ describe('Scorecard:', function() {
       scorecard._allFrames = [[5,4], [7, 1], [5, 5]]
       scorecard.calculateWhich(0);
       scorecard.calculateWhich(1);
-      expect(scorecard._score[0]).toEqual(9);
+      expect(scorecard._score[1]).toEqual(9);
     })
     it('auto calculates a SPARE frame', function() {
       scorecard._allFrames = [[5,4], [7, 3], [5, 5]]
       scorecard.calculateWhich(0);
       scorecard.calculateWhich(1);
-      expect(scorecard._score[1]).toEqual(15);
+      expect(scorecard._score[2]).toEqual(15);
     })
     it('auto calculates a STRIKE frame', function() {
       scorecard._allFrames = [[5,4], [10, 0], [7, 2]]
       scorecard.calculateWhich(0);
       scorecard.calculateWhich(1);
-      expect(scorecard._score[1]).toEqual(19);
+      expect(scorecard._score[2]).toEqual(19);
     })
   })
 

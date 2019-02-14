@@ -4,6 +4,8 @@ function BowlingGame() {
     this.rolls = [];
     this.score = 0;
     this.turn = 0;
+    this.frame = 0;
+    this.runningTotal = 0;
   }
 
 var scoreCard = [];

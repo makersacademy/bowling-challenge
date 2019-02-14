@@ -39,6 +39,20 @@ describe("PLAYER", function() {
     })
   });
 
+  describe("Bonus points", function(){
+    sparePlayer = new Player
+    it('should add points of next roll to spare score', function() {
+      sparePlayer.enterRoll(3)
+      sparePlayer.enterRoll(7)
+      sparePlayer.enterRoll(4)
+      sparePlayer.enterRoll(4)
+      // console.log(sparePlayer);
+      expect(sparePlayer.frames[0].score).toEqual(14)
+      // expect(sparePlayer.totalScore).toEqual(10 + sparePlayer.current_frame.score)
+      expect(sparePlayer.totalScore).toEqual(22)
+    })
+  })
+
   // describe("GameOver", function(){
   //   it("should return true if no remaining frames", function(){
   //     spyOn(Frame.prototype, "returnIsComplete").and.returnValue(true);

@@ -57,7 +57,6 @@ describe("FRAME", function() {
 
       describe("*Frame notes*", function(){
         it('should record a strike', function(){
-          console.log(frame0);
           expect(frame0.notes).toEqual("Unlucky")
         });
       });

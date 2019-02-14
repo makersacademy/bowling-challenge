@@ -1,7 +1,7 @@
-describe("ScoreCard", function() {
+describe("playerScoreCard", function() {
 
   beforeEach(function() {
-    scorecard = new ScoreCard();
+    scorecard = new playerScoreCard();
   });
 
     describe("initization", function() {
@@ -79,6 +79,10 @@ describe("ScoreCard", function() {
         scorecard.add(1, 2);
         expect(scorecard.calculateScore(2)).toEqual(15);
       });
+
+    });
+
+    describe("calculating last round", function() {
 
     });
 

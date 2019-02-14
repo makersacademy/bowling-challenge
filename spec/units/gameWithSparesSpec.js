@@ -14,7 +14,7 @@ describe('GutterBowlingGame', function() {
     bowlingGame = new BowlingGame()
   });
 
-it('game has score of 12 after one spare and two 1\'s', function() {
+it('game has score of 12 after one spare and two 1s', function() {
   bowlingGame.roll(2)
   bowlingGame.roll(8)
   rolls(1,2)

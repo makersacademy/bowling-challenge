@@ -20,7 +20,7 @@ describe('StrikeBowlingGame', function() {
     expect(bowlingGame.frame).toEqual(2)
   });
 
-  it('after one strike score is caculated correctly', function() {
+  it('after one strike score is calculated correctly', function() {
     bowlingGame.roll(10)
     rolls(1,2)
     expect(bowlingGame.runningTotal).toEqual(14)

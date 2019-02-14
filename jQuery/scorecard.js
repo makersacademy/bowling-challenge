@@ -4,8 +4,16 @@ $(document).ready(function() {
   let round = 0;
   let bowl = 1;
 
-  $('#1pin').click(function() {
+  $('#0pin').click(function() {
+    scorecard.add(0, round);
+    $(`#round${round + 1}Score`).text(scorecard.calculateScore(round));
+    if (scorecard.scoreTracker[round].length === 2) { round +=1 };
+    if (bowl === 2) { $("#pinButtons").show().children().show()};
+    bowl += 1;
+    if (bowl === 3) { bowl = 1 }
+  });
 
+  $('#1pin').click(function() {
     scorecard.add(1, round);
     $(`#round${round + 1}Score`).text(scorecard.calculateScore(round));
     if (scorecard.scoreTracker[round].length === 2) { round +=1 };

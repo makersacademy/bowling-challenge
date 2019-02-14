@@ -7,19 +7,24 @@ function BowlingGame() {
     this.frame = 0;
     this.runningTotal = 0;
     this.rollNum = 0;
+    this.scoreCard = [];
   }
 
-var scoreCard = [];
 
   BowlingGame.prototype.roll = function(pinsKnocked) {
     this.rolls.push(pinsKnocked);
     this.calcRollNum()
     this.calcFrame()
+    this.scoreCard[this.turn] = {};
+    this.scoreCard[this.turn].frame = this.frame;
+    this.scoreCard[this.turn].rollNum = this.rollNum;
+    this.scoreCard[this.turn].pinsKnocked = pinsKnocked;
+    this.scoreCard[this.turn].score = this.runningTotal;
   }
 
 
   BowlingGame.prototype.calculateScore = function() {
-    
+    this.turn = 0;
     for (var frameNum = 1; frameNum <= 10; frameNum ++) {
       if (this.turnIsStrike()){
         this.calcStrikeScore();

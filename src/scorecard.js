@@ -1,5 +1,5 @@
 function Scorecard() {
-  this._score = [];
+  this._score = [0];
   this._allFrames = [];
 }
 

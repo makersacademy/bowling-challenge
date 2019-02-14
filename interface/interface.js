@@ -7,12 +7,8 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function pinHit(number) {
-  console.log(turnCounter)
   logThrow(number);
   displayInputLogic(number);
-  scoreLogic();
-
-  console.log(scorecard._allFrames);
 }
 
 function logThrow(number) {
@@ -30,14 +26,19 @@ function displayInputLogic(number) {
     incrementCounters(); // Sets to turn 2
     displayThrow("X"); // Displays X in Corner
     incrementCounters(); // Sets to turn 1
+    displayScoreLogic();
   } else if (scorecard._firstThrow + scorecard._secondThrow === 10) {
     displayThrow("/"); // Displays X in Corner
     incrementCounters(); // Sets to turn 2
     scorecard.addToFrames(); //Working
+    displayScoreLogic();
   } else if (turnCounter === 2) {
     scorecard.addToFrames();
     displayThrow(number);
     incrementCounters();
+    console.log(scorecard._allFrames)
+    displayScoreLogic();
+
   } else {
     displayThrow(number); // Displays Number
     incrementCounters(); // Sets to turn 2
@@ -60,40 +61,26 @@ function displayThrow(number) {
 function scoreLogic() {}
 
 function calculateScore() {
-  scorecard.calculateWhich(frameCounter - 1);
+  scorecard.calculateWhich(frameCounter - 2);
 }
 
 function displayScore() {
   let score = scorecard.calculateTotal();
-  let idToChange = `f${frameCounter}total`;
+  let idToChange = `f${frameCounter - 1}total`;
   document.getElementById(idToChange).innerHTML = score;
 }
 
-// function displayScoreLogic() {
-//     if (strikewasScored() || sparewasScored())
-//     {
-//       displayScore
-//     }
-//
-//     displayScore()
-// }
-//
-// function strikeWasScored() {
-//     let firstThrow = scorecard._allFrames[turn - 1][0]
-//     if(firstThrow === 10)
-//     {
-//       return true;
-//     }
-// }
-//
-// function spareWasScored() {
-//     let firstThrow = scorecard._allFrames[turn - 1][0]
-//     let firstThrow = scorecard._allFrames[turn - 1][1]
-//   if(firstThrow + secondThrow === 10) {
-//     return false;
-//   }
-// }
-//
-// function strike() {}
-//
-// function frameTen() {}
+function displayScoreLogic() {
+    if (scorecard.strikeWasScored(frameCounter - 2) || scorecard.spareWasScored(frameCounter - 2))
+    {
+      displayScore()
+
+    } else {
+      calculateScore()
+      displayScore()
+      }
+    }
+
+function strike() {}
+
+function frameTen() {}

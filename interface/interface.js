@@ -8,48 +8,70 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function pinHit(number) {
   if (turnCounter === 1) {
+    // If Turn 1
     scorecard.firstThrow(number);
-    displayThrow(number);
-    incrementCounters();
+    if (scorecard.strikeCheck(scorecard._firstThrow)) {
+      ifStrike();
+    } else {
+      displayAndIncrement(number);
+    }
   } else {
+    // If Turn 2
     scorecard.secondThrow(number);
-    displayThrow(number);
-    incrementCounters();
+    if (scorecard.spareCheck(scorecard._firstThrow, scorecard._secondThrow)) {
+      ifSpare()
+    } else {
+    displayAndIncrement(number);
   }
+  }
+}
+
+function ifStrike() {
+  scorecard.recordStrike();
+  displayThrow(frameCounter, 2, "X");
+  updateScores();
+  frameCounter++;
+}
+
+function ifSpare() {
+  displayThrow(frameCounter, 2, "/");
+  incrementCounters();
+}
+
+function displayAndIncrement(number) {
+  displayThrow(frameCounter, turnCounter, number);
+  incrementCounters();
 }
 
 function incrementCounters() {
   turnCounter++;
   if (turnCounter === 3) {
-    scorecard.addToFrames()
-    displayScores()
+    scorecard.addToFrames();
+    updateScores();
     turnCounter = 1;
     frameCounter++;
   }
 }
 
-function displayThrow(number) {
-  let idToChange = `f${frameCounter}t${turnCounter}`;
+function displayThrow(frame, turn, number) {
+  let idToChange = `f${frame}t${turn}`;
   document.getElementById(idToChange).innerHTML = number;
 }
 
 function displayScores() {
-  scorecard.updateScores()
-  updateTotal()
   for (var i = 1; i <= 10; i++) {
-    let idToChange = `f${i}total`;
-    document.getElementById(idToChange).innerHTML = scorecard._score[i - 1]
+    let score = scorecard._score[i - 1]
+    if (typeof score === "undefined") { score = "" }
+    document.getElementById(`f${i}total`).innerHTML = score
   }
 }
 
 function updateTotal() {
-  document.getElementById('total').innerHTML = scorecard.calculateTotal()
+  scorecard.updateScores();
+  document.getElementById("total").innerHTML = scorecard.calculateTotal();
 }
 
-// function displayScore() {
-//   scorecard.updateScores()
-//   let score = scorecard.calculateTotal();
-//   console.log(`f${frameCounter}total`);
-//   let idToChange = `f${frameCounter}total`;
-//   document.getElementById(idToChange).innerHTML = score;
-// }
+function updateScores() {
+  updateTotal()
+  displayScores()
+}

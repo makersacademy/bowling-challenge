@@ -23,9 +23,9 @@ function playerScoreCard() {
         let previousSpare = i !== 0 && scoreTracker[i - 1][0] + scoreTracker[i - 1][1] === 10;
         let standardScore = scoreTracker[i][0] + scoreTracker[i][1];
 
-        if (currentStrike) { score += 0; } else
         if (currentSpare) { score += 0 } else
         if (previousSpare) { score += 10 + scoreTracker[i][0] + standardScore } else
+        if (currentStrike) { score += 0; } else
         if (previousStrike) { score += (standardScore * 2) + 10 } else
         { score += standardScore }
     };

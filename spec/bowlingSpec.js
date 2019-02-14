@@ -85,7 +85,7 @@ describe("playerScoreCard", function() {
     describe("calculating last round", function() {
 
       it("should calculate the last rounds score", function () {
-        
+
       });
 
     });

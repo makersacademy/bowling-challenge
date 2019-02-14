@@ -1671,7 +1671,7 @@ pre code {
 }
 
 /* Modified Table */
-#player {
+#player, #total {
   border: 1px solid #333;
   font-size: 50px;
 }
@@ -1679,7 +1679,7 @@ pre code {
   border-left: 1px solid #333;
 }
 
-#f1t2, #f2t2, #f3t2, #f4t2, #f5t2, #f6t2, #f7t2, #f8t2, #f9t2, #f10t2 {
+#f1t2, #f2t2, #f3t2, #f4t2, #f5t2, #f6t2, #f7t2, #f8t2, #f9t2, #f10t2, #f10t3 {
   border: 1px solid #333;
   background-color: #FEFABE;
 }

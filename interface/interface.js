@@ -7,45 +7,22 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function pinHit(number) {
-  logThrow(number);
-  displayInputLogic(number);
-}
-
-function logThrow(number) {
   if (turnCounter === 1) {
     scorecard.firstThrow(number);
-  } else {
-    scorecard.secondThrow(number);
-  }
-}
-
-function displayInputLogic(number) {
-  if (scorecard._firstThrow === 10) {
-    scorecard.recordStrike(); // Pushes [10, 0]
-    scorecard.resetThrows(); // Empties throws
-    incrementCounters(); // Sets to turn 2
-    displayThrow("X"); // Displays X in Corner
-    incrementCounters(); // Sets to turn 1
-    displayScoreLogic();
-  } else if (scorecard._firstThrow + scorecard._secondThrow === 10) {
-    displayThrow("/"); // Displays X in Corner
-    incrementCounters(); // Sets to turn 2
-    scorecard.addToFrames(); //Working
-    displayScoreLogic();
-  } else if (turnCounter === 2) {
-    scorecard.addToFrames();
     displayThrow(number);
     incrementCounters();
-    displayScoreLogic();
   } else {
-    displayThrow(number); // Displays Number
-    incrementCounters(); // Sets to turn 2
+    scorecard.secondThrow(number);
+    displayThrow(number);
+    incrementCounters();
   }
 }
 
 function incrementCounters() {
   turnCounter++;
   if (turnCounter === 3) {
+    scorecard.addToFrames()
+    displayScores()
     turnCounter = 1;
     frameCounter++;
   }
@@ -56,41 +33,23 @@ function displayThrow(number) {
   document.getElementById(idToChange).innerHTML = number;
 }
 
-function calculateScore(turn) {
-  scorecard.calculateWhich(turn - 2);
+function displayScores() {
+  scorecard.updateScores()
+  updateTotal()
+  for (var i = 1; i <= 10; i++) {
+    let idToChange = `f${i}total`;
+    document.getElementById(idToChange).innerHTML = scorecard._score[i - 1]
+  }
 }
 
-function displayScore(turn) {
-  let score = scorecard.calculateTotal();
-  let idToChange = `f${turn - 1}total`;
-  document.getElementById(idToChange).innerHTML = score;
+function updateTotal() {
+  document.getElementById('total').innerHTML = scorecard.calculateTotal()
 }
 
-function displayScoreLogic() {
-  updateStrikesAndSpares();
-  if ( // First frame is a Strike/Spare
-    scorecard.strikeWasScored(frameCounter - 2) ||
-    scorecard.spareWasScored(frameCounter - 2)
-  ) {
-    displayScore(frameCounter); // If spare was scored, just display the score.
-  } else {
-    calculateScore(frameCounter); // Calculate Score
-    displayScore(frameCounter); // Display Score
-  }
-}
-function updateStrikesAndSpares() {
-  if (frameCounter > 2) { // Any frame after the first
-    if (
-      scorecard.strikeWasScored(frameCounter - 3) ||
-      scorecard.spareWasScored(frameCounter - 3)
-    ) {
-      calculateScore(frameCounter - 1); // Calculate Score
-      displayScore(frameCounter - 1);
-    }
-  }
-  }
-
-function frameTen() {
-  if (frameCounter == 11) {
-  }
-}
+// function displayScore() {
+//   scorecard.updateScores()
+//   let score = scorecard.calculateTotal();
+//   console.log(`f${frameCounter}total`);
+//   let idToChange = `f${frameCounter}total`;
+//   document.getElementById(idToChange).innerHTML = score;
+// }

@@ -1,5 +1,5 @@
 function Scorecard() {
-  this._score = [1];
+  this._score = [0];
   this._allFrames = [];
 }
 
@@ -32,79 +32,82 @@ Scorecard.prototype.recordStrike = function() {
 };
 
 // Logic Checks
-Scorecard.prototype.spareWasScored = function(turn) {
-  let firstThrow = this._allFrames[turn][0];
-  let secondThrow = this._allFrames[turn][1];
-  if (firstThrow != 10 && firstThrow + secondThrow === 10) { return true }
+// Scorecard.prototype.spareWasScored = function(turn) {
+//   let firstThrow = this._allFrames[turn][0];
+//   let secondThrow = this._allFrames[turn][1];
+//   if (firstThrow != 10 && firstThrow + secondThrow === 10) { return true }
+// }
+//
+// Scorecard.prototype.strikeWasScored = function(turn) {
+//   let firstThrow = this._allFrames[turn][0];
+//   if (firstThrow === 10) { return true; }
+// }
+//
+// Scorecard.prototype.doubleStrikeWasScored = function(turn) {
+//   let firstThrow = this._allFrames[turn - 1][0];
+//   let secondThrow = this._allFrames[turn][0]
+//   if (firstThrow === 10 && secondThrow === 10) { return true; }
+// }
+//
+// Scorecard.prototype.tripleStrikeWasScored = function(turn) {
+//   let firstThrow = this._allFrames[turn - 2][0];
+//   let secondThrow = this._allFrames[turn - 1][0]
+//   let thirdThrow = this._allFrames[turn][0]
+//   if (firstThrow === 10 && secondThrow === 10 && thirdThrow === 10) { return true; }
+// }
+//
+//
+// // Calculate Scores
+// Scorecard.prototype.calculateBasic = function(turn) {
+//   let throws = this._allFrames[turn];
+//   this._score.push(throws.reduce((total, amount) => total + amount));
+// };
+//
+// Scorecard.prototype.calculateSpare = function(turn) {
+//   let throws = this._allFrames[turn];
+//   throws.push(this._allFrames[turn + 1][0]);
+//   this._score.push(throws.reduce((total, amount) => total + amount));
+// };
+//
+// Scorecard.prototype.calculateStrike = function(turn) {
+//   let throws = this._allFrames[turn];
+//   throws.push(this._allFrames[turn + 1][0]);
+//   throws.push(this._allFrames[turn + 1][1]);
+//   this._score.push(throws.reduce((total, amount) => total + amount));
+// };
+//
+// Scorecard.prototype.calculateDoubleStrike = function(turn) {
+//   let throws = this._allFrames[turn];
+//   throws.push(this._allFrames[turn - 1][0]);
+//   throws.push(this._allFrames[turn + 1][0]);
+//   // console.log(throws);
+//   this._score.push(throws.reduce((total, amount) => total + amount));
+// }
+//
+// Scorecard.prototype.calculateTripleStrike = function(turn) {
+//   this._score.push(30);
+// }
+
+// Scorecard.prototype.calculateWhich = function(turn) {
+//   if (this.spareWasScored(turn)) {
+//     this.calculateSpare(turn);
+//   // } else if (this.doubleStrikeWasScored(turn)) {
+//   //   this.calculateDoubleStrike(turn);
+//   } else if (this.strikeWasScored(turn)) {
+//     this.calculateStrike(turn);
+//   } else {
+//     this.calculateBasic(turn);
+//   }
+// };
+
+// Logic Checks
+Scorecard.prototype.strikeCheck = function (number1, number2) {
+  if (number1 === 10) { return true }
 }
 
-Scorecard.prototype.strikeWasScored = function(turn) {
-  let firstThrow = this._allFrames[turn][0];
-  if (firstThrow === 10) { return true; }
+Scorecard.prototype.spareCheck = function (number1, number2) {
+  if (number1 != 10 && number1 + number2 === 10) { return true }
 }
-
-Scorecard.prototype.doubleStrikeWasScored = function(turn) {
-  let firstThrow = this._allFrames[turn - 1][0];
-  let secondThrow = this._allFrames[turn][0]
-  if (firstThrow === 10 && secondThrow === 10) { return true; }
-}
-
-Scorecard.prototype.tripleStrikeWasScored = function(turn) {
-  let firstThrow = this._allFrames[turn - 2][0];
-  let secondThrow = this._allFrames[turn - 1][0]
-  let thirdThrow = this._allFrames[turn][0]
-  if (firstThrow === 10 && secondThrow === 10 && thirdThrow === 10) { return true; }
-}
-
-
-// Calculate Scores
-Scorecard.prototype.calculateBasic = function(turn) {
-  let throws = this._allFrames[turn];
-  this._score.push(throws.reduce((total, amount) => total + amount));
-};
-
-Scorecard.prototype.calculateSpare = function(turn) {
-  let throws = this._allFrames[turn];
-  throws.push(this._allFrames[turn + 1][0]);
-  this._score.push(throws.reduce((total, amount) => total + amount));
-};
-
-Scorecard.prototype.calculateStrike = function(turn) {
-  let throws = this._allFrames[turn];
-  throws.push(this._allFrames[turn + 1][0]);
-  throws.push(this._allFrames[turn + 1][1]);
-  this._score.push(throws.reduce((total, amount) => total + amount));
-};
-
-Scorecard.prototype.calculateDoubleStrike = function(turn) {
-  let throws = this._allFrames[turn];
-  throws.push(this._allFrames[turn - 1][0]);
-  throws.push(this._allFrames[turn + 1][0]);
-  // console.log(throws);
-  this._score.push(throws.reduce((total, amount) => total + amount));
-}
-
-Scorecard.prototype.calculateTripleStrike = function(turn) {
-  this._score.push(30);
-}
-
-Scorecard.prototype.calculateTotal = function(turn) {
-  allScores = this._score;
-  let total = allScores.reduce((total, amount) => total + amount);
-  return total;
-};
-
-Scorecard.prototype.calculateWhich = function(turn) {
-  if (this.spareWasScored(turn)) {
-    this.calculateSpare(turn);
-  // } else if (this.doubleStrikeWasScored(turn)) {
-  //   this.calculateDoubleStrike(turn);
-  } else if (this.strikeWasScored(turn)) {
-    this.calculateStrike(turn);
-  } else {
-    this.calculateBasic(turn);
-  }
-};
 
 Scorecard.prototype.updateScores = function() {
   for (var i = 0; i < this._allFrames.length; i++) {
@@ -116,7 +119,7 @@ Scorecard.prototype.updateScores = function() {
     // [[10,0], [5, 3], [3, 2]]
     if (i === 0)
       {
-        if(firstScore === 10 || firstScore + secondScore === 10) {
+        if(this.strikeCheck(firstScore) || this.spareCheck(firstScore, secondScore)) {
           this._score[i] = 0;
           console.log(`This score became: ${this._score[i]}`)
         } else {
@@ -128,18 +131,23 @@ Scorecard.prototype.updateScores = function() {
         let lastFirstScore = this._allFrames[i-1][0]
         let lastSecondScore = this._allFrames[i-1][1]
         console.log(`Last:${lastFirstScore} + ${lastSecondScore}`)
-        if(lastFirstScore === 10 && firstScore != 10) {
+        // If last score has was a stike and current is not a Strike
+        if(this.strikeCheck(lastFirstScore) && !this.strikeCheck(firstScore)) {
           this._score[i-1] = lastFirstScore + firstScore + secondScore; // Strike
           console.log(`Last score became: ${this._score[i-1]}`) //Strike
         }
-        else if (lastFirstScore != 10 && lastFirstScore + lastSecondScore === 10) {
+        // If last score was a spare and current is not a Strike
+        else if (this.spareCheck(lastFirstScore, lastSecondScore))  {
           this._score[i-1] = lastFirstScore + lastSecondScore + firstScore; //Spare
           console.log(`Last score became: ${this._score[i-1]}`)
         }
-        if(firstScore === 10 || firstScore + secondScore === 10) {
+        // Current score is a Strike or Spare
+        if(this.strikeCheck(firstScore) || this.spareCheck(firstScore, secondScore)) {
           this._score[i] = 0;
           console.log(`This score became: ${this._score[i]}`)
-        } else {
+        }
+        // Anything else
+          else {
           this._score[i] = (firstScore + secondScore);
           console.log(`This score became: ${this._score[i]}`)
         }
@@ -147,13 +155,24 @@ Scorecard.prototype.updateScores = function() {
       if (i > 1) {
         let lastLastFirstScore = this._allFrames[i-2][0]
         let lastFirstScore = this._allFrames[i-1][0]
-        if (lastLastFirstScore === 10 && lastFirstScore === 10 && firstScore === 10) {
+          // Triple Strike
+        if (this.strikeCheck(lastLastFirstScore) && this.strikeCheck(lastFirstScore) && this.strikeCheck(firstScore)) {
           this._score[i-2] = 30;
+          console.log(`The score from 2 turns ago became: ${this._score[i-2]}`)
         }
+        // Double Strike following anything else
         if (lastLastFirstScore === 10 && lastFirstScore === 10 && firstScore != 10)
           this._score[i-2] = 20 + firstScore;
+      }
+      if (i === 9) {
 
       }
     }
     console.log(this._score)
   }
+
+  Scorecard.prototype.calculateTotal = function(turn) {
+    allScores = this._score;
+    let total = allScores.reduce((total, amount) => total + amount);
+    return total;
+  };

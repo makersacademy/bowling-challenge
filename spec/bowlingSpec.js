@@ -80,6 +80,14 @@ describe("playerScoreCard", function() {
         expect(scorecard.calculateScore(2)).toEqual(15);
       });
 
+      it("shouldn add multiple strikes", function() {
+        scorecard.add(0, 0);
+        scorecard.add(0, 0);
+        scorecard.add(10, 1);
+        scorecard.add(10, 2);
+        expect(scorecard.calculateScore(2)).toEqual(15);
+      });
+
     });
 
     describe("calculating last round", function() {

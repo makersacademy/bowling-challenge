@@ -189,7 +189,7 @@ $(document).ready(function() {
 
     if (scorecard.scoreTracker[round].length === 2) { round +=1 };
     bowl += 1;
-    
+
     if (bowl === 3) { bowl = 1 }
   });
 
@@ -219,12 +219,18 @@ $(document).ready(function() {
 
   $('#10pin').click(function() {
     scorecard.add(10, round);
-    if (bowl === 1) { $(`#round${round + 1}FirstBowl`).text("X") };
+
+    if (bowl === 1) {
+     $(`#round${round + 1}FirstBowl`).text(10);
+     $(`#round${round + 1}Score`).text(scorecard.calculateScore(round));
+    };
+
     if (bowl === 2) {
       $("#pinButtons").show().children().show();
       $(`#round${round + 1}SecondBowl`).text(10)
       $(`#round${round + 1}Score`).text(scorecard.calculateScore(round));
     }
+
     if (scorecard.scoreTracker[round].length === 2) { round +=1 };
     bowl = 1
   });

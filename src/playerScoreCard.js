@@ -6,8 +6,8 @@ function playerScoreCard() {
   };
 
   function add(score, round) {
-      if (scoreTracker[round] === []) { scoreTracker[round].push(score) } else
-      if (scoreTracker[round][0] === 10) { scoreTracker[round].push(0) } else {
+      if (scoreTracker[round].length === 0 && score === 10) {
+        scoreTracker[round].push(score, 0) } else {
         scoreTracker[round].push(score);
       };
   };
@@ -17,17 +17,15 @@ function playerScoreCard() {
 
     for (i = 0; i <= round; i++) {
 
-        let currentStrike = scoreTracker[i].length === 1;
-        let previousStrike = i !== 0 && scoreTracker[i - 1].length === 1;
+        let previousStrike = i !== 0 && scoreTracker[i - 1][0] === 10;
         let currentSpare = scoreTracker[i][0] + scoreTracker[i][1] === 10;
         let previousSpare = i !== 0 && scoreTracker[i - 1][0] + scoreTracker[i - 1][1] === 10;
         let standardScore = scoreTracker[i][0] + scoreTracker[i][1];
 
+        if (previousStrike) { score += (standardScore * 2) + 10;} else
+        if (previousSpare) { score += 10 + scoreTracker[i][0] + standardScore} else
         if (currentSpare) { score += 0 } else
-        if (previousSpare) { score += 10 + scoreTracker[i][0] + standardScore } else
-        if (currentStrike) { score += 0; } else
-        if (previousStrike) { score += (standardScore * 2) + 10 } else
-        { score += standardScore }
+        { score += standardScore}
     };
     return score;
   };

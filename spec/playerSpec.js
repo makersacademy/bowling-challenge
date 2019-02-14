@@ -35,7 +35,6 @@ describe("PLAYER", function() {
     })
 
     it('should keep track of total score', function(){
-      console.log(player.frames);
       expect(player.totalScore).toEqual(3)
     })
   });

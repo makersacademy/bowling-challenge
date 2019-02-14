@@ -3,6 +3,7 @@ function Frame() {
   this.isComplete = false;
   this.maxRolls = 2;
   this.score = 0
+  this.notes
 }
 
 Frame.prototype.enterRoll = function(score) {
@@ -10,6 +11,7 @@ Frame.prototype.enterRoll = function(score) {
   roll.enterRoll(score);
   this._storeRolls(roll);
   this._countRemainingRolls()
+  this._addNotes();
 };
 
 Frame.prototype._storeRolls = function(roll) {
@@ -36,3 +38,12 @@ Frame.prototype._markComplete = function() {
 Frame.prototype.returnIsComplete = function() {
   return this.isComplete
 };
+
+Frame.prototype._addNotes = function() {
+  if(this.rolls[0].notes === "Strike") //|| this.rolls[0].notes === "Strike" )
+  { this.notes = "Strike" }
+  else if (this.score >= 10)
+  {this.notes = "Spare" }
+  else if (this.score === 0)
+  {this.notes = "Unlucky" }
+}

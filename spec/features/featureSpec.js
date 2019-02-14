@@ -1,7 +1,7 @@
 // WIP - to be replaced by html functionality later
 
 describe("GAME (SinglePlayer)", function() {
-  describe("Calculate roll", function() {
+  describe("Calculate normal scores", function() {
     let player2 = new Player("Name2");
 
     it("Save first roll score", function() {
@@ -28,6 +28,18 @@ describe("GAME (SinglePlayer)", function() {
     it("Returns running total of completed frames", function(){
       expect(player2.totalScore).toEqual(5)
     })
+
+  })
+
+  describe("Calculate bonus scores", function() {
+    player2 = new Player("Fresh Player");
+
+    // it("Adds bonus points after spare", function(){
+    //   player2.enterRoll(5)
+    //   player2.enterRoll(5)
+    //   player2.enterRoll(3)
+    //   expect(player2.totalScore).toEqual(16)
+    // })
 
   });
 

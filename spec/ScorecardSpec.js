@@ -3,7 +3,7 @@ describe('Scorecard', function() {
 
   beforeEach(function(){
     scorecard = new Scorecard();
-    frameOne = jasmine.createSpyObj('frameOne', ['rollOneScore', 'rollTwoScore'])
+    frameOne = jasmine.createSpyObj('frameOne', ['rollOneScore', 'rollTwoScore', 'frameScore'])
 
   });
 
@@ -41,5 +41,34 @@ describe('Scorecard', function() {
     });
   });
 
-  describe('')
+  describe('calculating running score', function() {
+    it('in the first frame it calculates after the 2nd roll if there are no spares or strikes', function() {
+      scorecard.rollOne(2)
+      scorecard.rollTwo(2)
+      expect(scorecard.totalScore).toEqual(4)
+    });
+  });
+
+  describe('keeping track of frames', function() {
+    it('increases the frame number by 1 when a new frame starts', function() {
+      scorecard.rollOne(2)
+      expect(scorecard.frameNumber).toEqual(2)
+    })
+  })
+
+  describe('a round with a spare', function() {
+    // it('won\'t add a score to the total score at the end of the second roll if it was a spare', function() {
+    //   scorecard.rollOne(2)
+    //   scorecard.rollTwo(8)
+    //   expect(scorecard.totalScore).toEqual(0)
+    // })
+
+    it('calculates the spare bonus correctly', function() {
+      scorecard.rollOne(2)
+      scorecard.rollTwo(8)
+      scorecard.rollOne(2)
+      scorecard.rollTwo(0)
+      expect(scorecard.totalScore).toEqual(14)
+    })
+  })
 });

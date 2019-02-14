@@ -19,6 +19,10 @@ describe('Scorecard', function() {
     it('has a starting total score of 0', function() {
       expect(scorecard.totalScore).toEqual(0)
     })
+
+    // it('starts with roll number 1', function() {
+    //   expect(scorecard.rollNumber).toEqual(null)
+    // })
   });
 
   describe('#rollOne', function() {
@@ -99,6 +103,16 @@ describe('Scorecard', function() {
       scorecard.rollOne(7)
       scorecard.rollTwo(0)
       expect(scorecard.totalScore).toEqual(69)
+    })
+  })
+
+  describe('preventing a user from entering more than 10 frames', function() {
+    it('should throw an error', function() {
+      for (var i = 0; i < 10; i++) {
+        scorecard.rollOne(1)
+        scorecard.rollTwo(1)
+      }
+      expect( function(){ scorecard.rollOne(1); } ).toThrow(new Error("Cannot enter more than 10 frames"))
     })
   })
 });

@@ -91,12 +91,13 @@ describe ('Feature Tests', function() {
     });
   });
 
-  // describe('a perfect game', function() {
-  //   it('has a score of 300', function() {
-  //     for (var i = 0; i < 11; i++) {
-  //       scorecard.rollOne(10)
-  //     }
-  //     expect(scorecard.totalScore).toEqual(300)
-  //   });
-  // });
+  describe('a perfect game', function() {
+    it('has a score of 300', function() {
+      for (var i = 0; i < 10; i++) {
+        scorecard.rollOne(10)
+      }
+      scorecard.lastRoundStrike(10, 10)
+      expect(scorecard.totalScore).toEqual(300)
+    });
+  });
 });

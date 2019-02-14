@@ -31,4 +31,12 @@ describe('StrikeBowlingGame', function() {
     rolls(1,2)
     expect(bowlingGame.rollNum).toEqual(2)
   });
+
+  it('after 9 strikes and 2 scores of 0, score is 240 with frame 10 and rollNum 2', function() {
+    rolls(10, 9)
+    rolls(0, 2)
+    expect(bowlingGame.scoreCard[10].score).toEqual(240)
+    expect(bowlingGame.scoreCard[10].frame).toEqual(10)
+    expect(bowlingGame.scoreCard[10].rollNum).toEqual(2)
+  });
 });

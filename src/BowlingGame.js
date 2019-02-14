@@ -70,14 +70,11 @@ function BowlingGame() {
     if (this.rollNum === 0) {
       this.rollNum += 1
     }
-    else if (this.lastTurnIsStrike()) {
+    else if (this.lastTurnIsStrike() || this.rollNum === 2) {
       this.rollNum = 1
-    }
-    else if (this.rollNum < 2) {
-      this.rollNum += 1
     }
     else {
-      this.rollNum = 1
+      this.rollNum += 1
     }
   }
 

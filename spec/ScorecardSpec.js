@@ -28,4 +28,12 @@ describe('Scorecard', function() {
       expect(scorecard.frames).toContain(frameOne)
     })
   })
+
+  describe('#rollTwo', function() {
+    it('sends the current frame a method to update the roll 2 score', function() {
+      scorecard.rollOne(2, frameOne)
+      scorecard.rollTwo(2)
+      expect(frameOne.rollTwoScore).toHaveBeenCalledWith(2)
+    });
+  });
 });

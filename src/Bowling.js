@@ -1,13 +1,28 @@
 function Game () {
-  this.game_frames = [1,2,3,4,5,6,7,8,9,10]
   this.scores_entered = []
+  this.frame = 1
+  this.pins_standing = 10
+  this.turn = 1
 };
 
 
-Game.prototype.is_it_a_strike = function(score){
-  if(score === 10){return true}
+Game.prototype.is_it_a_strike = function(pins_hit){
+  if(pins_hit === 10 && this.turn == 1){return true}
 }
 
 Game.prototype.roll = function(pins_hit){
-  this.scores_entered.push(pins_hit)
+  if (this.is_it_a_strike && this.turn <=2) {
+    this.scores_entered.push(pins_hit);
+    this.pins_standing-=pins_hit;
+    this.turn++
+  }
+  else if (this.is_it_a_strike) {
+    this.scores_entered
+  }
+
 }
+
+Game.prototype.score_sum =function(){
+  return this.scores_entered.reduce((a,b) => a+b,0)
+}
+// Game.prototype.bonus = function(){}

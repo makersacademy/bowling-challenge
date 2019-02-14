@@ -26,7 +26,6 @@ Frame.prototype.countRemainingRolls = function() {
   }
 };
 
-
 Frame.prototype.markComplete = function(runningTotal) {
   if (runningTotal >= 10) {
     this.isComplete = true;

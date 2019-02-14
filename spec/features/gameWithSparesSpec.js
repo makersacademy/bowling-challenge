@@ -1,6 +1,6 @@
 var BowlingGame = require('../../src/BowlingGame.js')
 
-describe('BowlingGameWithStrikes', function() {
+describe('BowlingGameWithSpares', function() {
   
   var bowlingGame; 
   
@@ -23,8 +23,21 @@ describe('BowlingGameWithStrikes', function() {
   });
 
   it('Game with 9 spares has score of 136', function() {
-    rolls(5, 18)
+    rolls(5,18)
     rolls(2,2)
     expect(bowlingGame.runningTotal).toEqual(136)
   });  
+  
+  it('Game with spare in the last round isnt complete after second roll', function() {
+    rolls(0,18)
+    rolls(5,2)
+    expect(bowlingGame.isComplete).toEqual(false)
+  });
+
+  it('Game with spare in the last round isnt complete after second roll', function() {
+    rolls(0,18)
+    rolls(5,2)
+    rolls(0,1)
+    expect(bowlingGame.isComplete).toEqual(true)
+  });
 });

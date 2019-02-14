@@ -1,7 +1,6 @@
 'use strict';
 
 function BowlingGame() {
-    this.rolls = []
     this.turn = 0
     this.frame = 0
     this.runningTotal = 0
@@ -11,20 +10,14 @@ function BowlingGame() {
   }
 
   BowlingGame.prototype.roll = function(pinsKnocked) {
-    if (this.frame !== 10) {
-      this.rollNormalFrame(pinsKnocked)
-    }
-    else {
-      this.rollFinalFrame(pinsKnocked)
-    }
+    this.frame !== 10 ? this.rollNormalFrame(pinsKnocked) : this.rollFinalFrame(pinsKnocked)
   }
 
   BowlingGame.prototype.rollFinalFrame = function(pinsKnocked) {
     this.calcFinalFrameRollNum()
-    this.calcFinalFrame()
     this.calcFinalFrameTotal(pinsKnocked)
+    this.checkGameIsComplete(pinsKnocked)
     this.addScoreToCard(pinsKnocked)
-    this.checkGameIsComplete()
   }
 
   BowlingGame.prototype.rollNormalFrame = function(pinsKnocked) {
@@ -35,18 +28,11 @@ function BowlingGame() {
   }
 
   BowlingGame.prototype.calcFrame = function(pinsKnocked) {
-    if (pinsKnocked === 10){
+    if (pinsKnocked === 10 || this.rollNum === 1 ){
       this.frame += 1
     }
-    else if (this.rollNum === 1) {
-      this.frame += 1
-    } 
   }
   
-  BowlingGame.prototype.calcFinalFrame = function() {
-    this.frame = 10
-  }
-
   BowlingGame.prototype.calcRollNum = function() {
     if (this.rollNum === 0) {
       this.rollNum += 1
@@ -120,7 +106,8 @@ function BowlingGame() {
   }
   
   BowlingGame.prototype.checkGameIsComplete = function(pinsKnocked) {
-    if (this.rollNum === 2 && pinsKnocked !== 10 && this.scoreCard[this.turn - 1].pinsKnocked + pinsKnocked !== 10 && this.lastTurnIsStrike === false) {
+    if (this.rollNum === 2 && pinsKnocked !== 10 && this.scoreCard[this.turn - 1].pinsKnocked + pinsKnocked !== 10 && this.lastTurnIsStrike() === false){
+      console.log(this.scoreCard[this.turn - 1].pinsKnocked)
       this.isComplete = true
     }
     else if (this.rollNum === 3) {

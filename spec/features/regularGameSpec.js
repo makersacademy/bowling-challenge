@@ -26,6 +26,7 @@ describe('BowlingRegularGame', function() {
     bowlingGame.roll(8)
     bowlingGame.roll(1)
     expect(bowlingGame.runningTotal).toEqual(71)
+    expect(bowlingGame.isComplete).toEqual(true)
   });
 });
   

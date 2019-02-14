@@ -1,6 +1,6 @@
 var BowlingGame = require('../../src/BowlingGame.js')
 
-describe('BowlingGameWithStrikes', function() {
+describe('BowlingGameSpaes', function() {
 
   var bowlingGame;
 

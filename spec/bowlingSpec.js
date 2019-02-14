@@ -59,6 +59,16 @@ describe("ScoreCard", function() {
         expect(scorecard.calculateScore(1)).toEqual(2);
       });
 
+      it("if there is a strike score should't be added on till next round", function() {
+        scorecard.add(1, 0);
+        scorecard.add(1, 0);
+        scorecard.add(10, 1);
+        scorecard.add(0, 1);
+        scorecard.add(1, 2);
+        scorecard.add(1, 2);
+        expect(scorecard.calculateScore(2)).toEqual(16);
+      });
+
     });
 
 });

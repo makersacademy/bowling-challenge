@@ -1,16 +1,46 @@
-describe('FRAME', function(){
-  describe('New frame', function(){
-    it('should add first roll to array', function() {
-      let frame = new Frame
-      // spyOn(Roll, 'new').and.returnValue(new Roll)
-      // expect(frame.rolls).toEqual([roll])
-    })
+describe("FRAME", function() {
+  describe("*First roll is 5*", function() {
+    let frame = new Frame();
+    frame.enterRoll(5);
 
-    it('should record roll number', function() {
-      let frame = new Frame
-      // spyOn(Roll, 'score').and.returnValue(5)
-      // expect(frame.rolls).toEqual([roll])
-     })
+    describe("New frame", function() {
+      it("should create first roll and add to array", function() {
+        expect(frame.rolls[0]).toEqual(jasmine.any(Object));
+        expect(frame.rolls.constructor).toEqual(Array);
+      });
+    });
 
-  })
-})
+    describe("*No second roll*", function(){
+      describe("#isComplete", function() {
+        it("should be false", function() {
+          spyOn(Roll.prototype, "returnScore").and.returnValue(5);
+          expect(frame.isComplete).toEqual(false);
+        });
+      });
+    });
+
+    describe("*Second roll is 3*", function(){
+      describe("#isComplete", function() {
+        it("should be true", function() {
+          frame.enterRoll(3)
+          spyOn(Roll.prototype, "returnScore").and.returnValue(3);
+          frame.countRemainingRolls();
+          expect(frame.isComplete).toEqual(true);
+        });
+      });
+    });
+  });
+
+  describe("*First roll is 10*", function() {
+    let frame = new Frame();
+    frame.enterRoll(10);
+
+    describe("#isComplete", function() {
+      it("should be true", function() {
+        spyOn(Roll.prototype, "returnScore").and.returnValue(10);
+        frame.countRemainingRolls();
+        expect(frame.isComplete).toEqual(true);
+      });
+    });
+  });
+});

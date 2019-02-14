@@ -54,13 +54,3 @@ game.addFrame(1, 2)
 game.addFrame(10, 10, 4) - Bonus round adds 24 points for cumulative strikes
 game.totalScore() - returns 114 as your total score
 ```
-
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

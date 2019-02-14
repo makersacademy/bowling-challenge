@@ -41,5 +41,13 @@
       game.addBowl(3);
       expect(game.frames[0]).toEqual([1,[6, 3]])
     })
+
+    it('creates a new frame on the third bowl, and adds bowl to the new frame', function () {
+      game.addFrame();
+      game.addBowl(6);
+      game.addBowl(3);
+      game.addBowl(4);
+      expect(game.frames[1]).toEqual([2,[4]])
+    })
   })
 })();

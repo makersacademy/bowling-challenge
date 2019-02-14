@@ -9,6 +9,11 @@ Game.prototype.addFrame = function () {
 };
 
 Game.prototype.addBowl = function (score) {
-  this.frames[(this.currentFrame - 1)][1].push(score)
-  console.log(this);
+  var frame = this.currentFrame - 1
+  if (this.frames[frame][1].length == 2) {
+    this.addFrame();
+    this.addBowl(score);
+  } else {
+    this.frames[frame][1].push(score)
+  }
 };

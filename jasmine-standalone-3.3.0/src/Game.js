@@ -1,4 +1,5 @@
 // Calls the appropriate function at each point in the game
+// Retains and updates score table: .frames
 function Game () {
     this.frames = {}
 }

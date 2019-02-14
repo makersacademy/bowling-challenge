@@ -14,6 +14,10 @@ describe('GutterBowlingGame', function() {
     bowlingGame = new BowlingGame()
   });
 
+ it('game is not complete at the start of the game', function() {
+    expect(bowlingGame.isComplete).toEqual(false)
+  }); 
+
   it('game has an initial score of 0', function() {
       expect(bowlingGame.runningTotal).toEqual(0)
     });

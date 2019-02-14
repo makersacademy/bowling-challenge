@@ -8,6 +8,7 @@ function BowlingGame() {
     this.runningTotal = 0
     this.rollNum = 0
     this.scoreCard = []
+    this.isComplete = false
   }
 
   BowlingGame.prototype.roll = function(pinsKnocked) {
@@ -16,6 +17,7 @@ function BowlingGame() {
     this.calcFrame(pinsKnocked)
     this.calcRunningTotal(pinsKnocked)
     this.addScoreToCard(pinsKnocked)
+    this.checkGameIsComplete()
   }
 
   BowlingGame.prototype.calcFrame = function(pinsKnocked) {
@@ -71,6 +73,12 @@ function BowlingGame() {
     this.scoreCard[this.turn].pinsKnocked = pinsKnocked
     this.scoreCard[this.turn].score = this.runningTotal
     this.turn += 1
+  }
+
+  BowlingGame.prototype.checkGameIsComplete = function() {
+    if (this.frame === 10 && this.rollNum === 2) {
+      this.isComplete = true
+    }
   }
    
 module.exports = BowlingGame

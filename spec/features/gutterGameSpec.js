@@ -9,6 +9,7 @@ describe('BowlingGutterGame', function() {
       bowlingGame.roll(0);
     }
     expect(bowlingGame.runningTotal).toEqual(0)
+    expect(bowlingGame.isComplete).toEqual(true)
   });
 });
 

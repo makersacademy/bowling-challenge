@@ -24,6 +24,9 @@ Scorecard.prototype._calculateScore = function () {
     if (this._wasASpare(frame)) {
       frame.addBonus(this.frames[scoringFrame+ 1].rollOne)
     }
+    if (this._wasAStrike(frame)) {
+      frame.addBonus(this.frames[scoringFrame+ 1].rollOne + this.frames[scoringFrame+ 1].rollTwo)
+    }
     this.totalScore += frame.frameScore()
     this.scores.push(frame.frameScore())
     scoringFrame--

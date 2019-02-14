@@ -61,4 +61,33 @@ describe ('Feature Tests', function() {
       expect(scorecard.totalScore).toEqual(29)
     });
   });
+
+  describe('a game with multiple spares', function() {
+    it('has a score of 38', function() {
+      scorecard.rollOne(4)
+      scorecard.rollTwo(6)
+      for (var i = 0; i < 3; i++) {
+        scorecard.rollOne(1)
+        scorecard.rollTwo(1)
+      }
+      scorecard.rollOne(4)
+      scorecard.rollTwo(6)
+      for (var i = 0; i < 5; i++) {
+        scorecard.rollOne(1)
+        scorecard.rollTwo(1)
+      }
+      expect(scorecard.totalScore).toEqual(38)
+    });
+  });
+
+  describe('a game with a strike', function() {
+    it('has a score of 38', function() {
+      scorecard.rollOne(10)
+      for (var i = 0; i < 9; i++) {
+        scorecard.rollOne(1)
+        scorecard.rollTwo(1)
+      }
+      expect(scorecard.totalScore).toEqual(30)
+    });
+  });
 });

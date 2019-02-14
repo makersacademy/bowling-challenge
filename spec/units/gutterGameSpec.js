@@ -66,4 +66,10 @@ describe('GutterBowlingGame', function() {
     expect(bowlingGame.scoreCard[0].pinsKnocked).toEqual(0)
     expect(bowlingGame.scoreCard[0].rollNum).toEqual(1)
   });
+
+  it('scorecard has 20 entries after 20 rolls', function () {
+    rolls(0,20)
+    expect(bowlingGame.scoreCard.length).toEqual(20)
+  });
+
 });

@@ -34,4 +34,9 @@ describe("Game", function() {
     fullGame(2,3)
     expect(game.totalScore()).toEqual(50)
   })
+
+  it("Throws descriptive error if running totalScore() too early", function() {
+    game.addFrame(10)
+    expect(function(){game.totalScore()}).toThrow("Play another frame to apply your strike/spare bonus")
+  })
 })

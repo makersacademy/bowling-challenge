@@ -1,7 +1,6 @@
 class Game {
   constructor() {
     this.frames = []
-    const allPinsDown = 10
   }
 
   getFrames() {
@@ -15,11 +14,18 @@ class Game {
     return frame
   }
 
+  noStrikeSpareBonus() {
+    let array = this.getFrames()
+    let last = array.slice().pop()
+    return array.length <=9 && (last.isAStrike() || last.isASpare()) ? true : false
+  }
+
   totalScore() {
     let total = 0
     let arr = this.getFrames()
+    if(this.noStrikeSpareBonus() === true) throw "Play another frame to apply your strike/spare bonus"
     arr.forEach(function(frame, index, framearray) {
-      if(frame.isABonus()) {
+      if(frame .isABonus()) {
         total += frame.calcBonus()
       } else if (frame.isASpare()) {
         total += framearray[index+1].getRoll1() + frame.addScore()

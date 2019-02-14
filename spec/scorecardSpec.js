@@ -94,24 +94,32 @@ describe('Scorecard:', function() {
       scorecard._allFrames = [[5,4], [7, 1], [5, 5]]
       scorecard.calculateWhich(0);
       scorecard.calculateWhich(1);
-            console.log(scorecard._score)
       expect(scorecard._score[1]).toEqual(9);
     })
     it('auto calculates a SPARE frame', function() {
       scorecard._allFrames = [[5,4], [7, 3], [5, 5]]
       scorecard.calculateWhich(0);
       scorecard.calculateWhich(1);
-      console.log(scorecard._score)
       expect(scorecard._score[2]).toEqual(15);
     })
     it('auto calculates a STRIKE frame', function() {
       scorecard._allFrames = [[5,4], [10, 0], [7, 2]]
       scorecard.calculateWhich(0);
       scorecard.calculateWhich(1);
-            console.log(scorecard._score)
       expect(scorecard._score[2]).toEqual(19);
     })
   })
+
+  describe('#updateScores', function() {
+    it('should update scores in the scores array', function() {
+      scorecard._allFrames = [[10,0], [10, 0], [10, 0], [5,5], [8, 0], [9, 1], [1,5], [10, 0], [5, 5], [5, 0]]
+      scorecard.updateScores();
+
+      expect(5).toEqual(5)
+    })
+  })
+
+
 
   describe('#error', function() {
     it('should throw an error if second throw exceeds remaining pins', function() {

@@ -1,5 +1,5 @@
 function Scorecard() {
-  this._score = [0];
+  this._score = [1];
   this._allFrames = [];
 }
 
@@ -80,7 +80,7 @@ Scorecard.prototype.calculateDoubleStrike = function(turn) {
   let throws = this._allFrames[turn];
   throws.push(this._allFrames[turn - 1][0]);
   throws.push(this._allFrames[turn + 1][0]);
-  console.log(throws);
+  // console.log(throws);
   this._score.push(throws.reduce((total, amount) => total + amount));
 }
 
@@ -105,3 +105,45 @@ Scorecard.prototype.calculateWhich = function(turn) {
     this.calculateBasic(turn);
   }
 };
+
+Scorecard.prototype.updateScores = function() {
+  for (var i = 0; i < this._allFrames.length; i++) {
+    // console.log(this._score)
+    var firstScore = this._allFrames[i][0]
+    var secondScore = this._allFrames[i][1]
+    console.log(`Turn:${i}`)
+    console.log(`Current:${firstScore} + ${secondScore}`)
+    // [[10,0], [5, 3], [3, 2]]
+    if (i === 0)
+      {
+        if(firstScore === 10 || firstScore + secondScore === 10) {
+          this._score[i] = 0;
+          console.log(`This score became: ${this._score[i]}`)
+        } else {
+          this._score[i] = (firstScore + secondScore);
+          console.log(`This score became: ${this._score[i]}`)
+        }
+      }
+      if (i > 0) {
+        let lastFirstScore = this._allFrames[i-1][0]
+        let lastSecondScore =this._allFrames[i-1][1]
+        console.log(`Last:${lastFirstScore} + ${lastSecondScore}`)
+        if(lastFirstScore === 10 && firstScore != 10) {
+          this._score[i-1] = lastFirstScore + firstScore + secondScore; // Strike
+          console.log(`Last score became: ${this._score[i-1]}`) //Strike
+        }
+        else if (lastFirstScore + lastSecondScore === 10) {
+          this._score[i-1] = lastFirstScore + lastSecondScore + firstScore; //Spare
+          console.log(`Last score became: ${this._score[i-1]}`)
+        }
+        if(firstScore === 10 || firstScore + secondScore === 10) {
+          this._score[i] = 0;
+          console.log(`This score became: ${this._score[i]}`)
+        } else {
+          this._score[i] = (firstScore + secondScore);
+          console.log(`This score became: ${this._score[i]}`)
+        }
+        }
+    }
+    console.log(this._score)
+  }

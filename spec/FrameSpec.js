@@ -10,18 +10,18 @@ describe("Frame", function() {
   });
 
   // Unit Test 2
-  it("can record the score of a roll", function() {
+  xit("can record the score of a roll", function() {
     frame.roll(3)
     expect(frame.rolls.pop()).toEqual(3);
   });
 
-  it("ends frame after 2 rolls", function() {
+  xit("ends frame after 2 rolls", function() {
     frame.roll(3)
     frame.roll(3)
     expect(frame.roll(3)).toEqual([3,3]);
   });
 
-  it("ends frame after strike", function() {
+  xit("ends frame after strike", function() {
     frame.roll(10)
     expect(frame.roll(1)).toEqual([10]);
   });

@@ -126,13 +126,13 @@ Scorecard.prototype.updateScores = function() {
       }
       if (i > 0) {
         let lastFirstScore = this._allFrames[i-1][0]
-        let lastSecondScore =this._allFrames[i-1][1]
+        let lastSecondScore = this._allFrames[i-1][1]
         console.log(`Last:${lastFirstScore} + ${lastSecondScore}`)
         if(lastFirstScore === 10 && firstScore != 10) {
           this._score[i-1] = lastFirstScore + firstScore + secondScore; // Strike
           console.log(`Last score became: ${this._score[i-1]}`) //Strike
         }
-        else if (lastFirstScore + lastSecondScore === 10) {
+        else if (lastFirstScore != 10 && lastFirstScore + lastSecondScore === 10) {
           this._score[i-1] = lastFirstScore + lastSecondScore + firstScore; //Spare
           console.log(`Last score became: ${this._score[i-1]}`)
         }
@@ -144,6 +144,16 @@ Scorecard.prototype.updateScores = function() {
           console.log(`This score became: ${this._score[i]}`)
         }
         }
+      if (i > 1) {
+        let lastLastFirstScore = this._allFrames[i-2][0]
+        let lastFirstScore = this._allFrames[i-1][0]
+        if (lastLastFirstScore === 10 && lastFirstScore === 10 && firstScore === 10) {
+          this._score[i-2] = 30;
+        }
+        if (lastLastFirstScore === 10 && lastFirstScore === 10 && firstScore != 10)
+          this._score[i-2] = 20 + firstScore;
+
+      }
     }
     console.log(this._score)
   }

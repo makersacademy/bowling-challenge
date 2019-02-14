@@ -112,7 +112,7 @@ describe('Scorecard:', function() {
 
   describe('#updateScores', function() {
     it('should update scores in the scores array', function() {
-      scorecard._allFrames = [[10,0], [10, 0], [10, 0], [5,5], [8, 0], [9, 1], [1,5], [10, 0], [5, 5], [5, 0]]
+      scorecard._allFrames = [[10,0], [10, 0], [10, 0], [10,0], [10, 0], [10, 0], [9,1], [5, 4], [5, 5], [8, 0]]
       scorecard.updateScores();
 
       expect(5).toEqual(5)

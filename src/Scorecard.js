@@ -25,6 +25,12 @@ Scorecard.prototype.lastRoundStrike = function (rollOne, rollTwo) {
   this._calculateScore()
 }
 
+Scorecard.prototype.lastRoundSpare = function (rollOne) {
+  var frame = this.frames[this.frames.length - 1]
+  frame.addBonus(rollOne)
+  this._calculateScore()
+}
+
 Scorecard.prototype._calculateScore = function () {
   var scoringFrame = this.frames.length - 1
   while (this.frames.length > this.scores.length) {

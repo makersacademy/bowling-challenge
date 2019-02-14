@@ -100,4 +100,17 @@ describe ('Feature Tests', function() {
       expect(scorecard.totalScore).toEqual(300)
     });
   });
+
+  describe('finishing on a spare', function() {
+    it('has a score of 32', function() {
+      for (var i = 0; i < 9; i++) {
+        scorecard.rollOne(1)
+        scorecard.rollTwo(1)
+      }
+      scorecard.rollOne(5)
+      scorecard.rollTwo(5)
+      scorecard.lastRoundSpare(4)
+      expect(scorecard.totalScore).toEqual(32)
+    });
+  });
 });

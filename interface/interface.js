@@ -36,9 +36,8 @@ function displayInputLogic(number) {
     scorecard.addToFrames();
     displayThrow(number);
     incrementCounters();
-    console.log(scorecard._allFrames)
+    console.log(scorecard._allFrames);
     displayScoreLogic();
-
   } else {
     displayThrow(number); // Displays Number
     incrementCounters(); // Sets to turn 2
@@ -58,10 +57,8 @@ function displayThrow(number) {
   document.getElementById(idToChange).innerHTML = number;
 }
 
-function scoreLogic() {}
-
-function calculateScore() {
-  scorecard.calculateWhich(frameCounter - 2);
+function calculateScore(turn) {
+  scorecard.calculateWhich(turn);
 }
 
 function displayScore() {
@@ -71,16 +68,21 @@ function displayScore() {
 }
 
 function displayScoreLogic() {
-    if (scorecard.strikeWasScored(frameCounter - 2) || scorecard.spareWasScored(frameCounter - 2))
-    {
-      displayScore()
+  // frameCounter starts at 2
+  if (scorecard.strikeWasScored(frameCounter - 2) || scorecard.spareWasScored(frameCounter - 2)) {
+      displayScore(); // If spare was scored, just display the score.
+      }
+    else {
+      calculateScore(frameCounter - 2); // Calculate Score
+      displayScore(); // Display Score
+    }
+    updateStrikesAndSpares();
+  }
 
-    } else {
-      calculateScore()
-      displayScore()
+function updateStrikesAndSpares() {
+  if (frameCounter > 2) {
+    if (scorecard.strikeWasScored(frameCounter - 3) || scorecard.spareWasScored(frameCounter - 3)) {
+        calculateScore(frameCounter - 3); // Calculate Score}
       }
     }
-
-function strike() {}
-
-function frameTen() {}
+}

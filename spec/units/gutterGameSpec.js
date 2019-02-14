@@ -50,4 +50,11 @@ it('game has rollNum 1 after third roll', function() {
   rolls(0, 3)
   expect(bowlingGame.rollNum).toEqual(1)
   });
+
+it('game has rollNum 2, frame 10 and score of 0 after 20 rolls of 0', function () {
+  rolls(0,20)
+  expect(bowlingGame.frame).toEqual(10)
+  expect(bowlingGame.runningTotal).toEqual(0)
+  expect(bowlingGame.rollNum).toEqual(2)
+ }); 
 });

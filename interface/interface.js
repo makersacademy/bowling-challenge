@@ -58,31 +58,34 @@ function displayThrow(number) {
 }
 
 function calculateScore(turn) {
-  scorecard.calculateWhich(turn);
+  scorecard.calculateWhich(turn - 2);
 }
 
-function displayScore() {
+function displayScore(turn) {
   let score = scorecard.calculateTotal();
-  let idToChange = `f${frameCounter - 1}total`;
+  let idToChange = `f${turn - 1}total`;
   document.getElementById(idToChange).innerHTML = score;
 }
 
 function displayScoreLogic() {
   // frameCounter starts at 2
   if (scorecard.strikeWasScored(frameCounter - 2) || scorecard.spareWasScored(frameCounter - 2)) {
-      displayScore(); // If spare was scored, just display the score.
+      displayScore(frameCounter); // If spare was scored, just display the score.
       }
     else {
-      calculateScore(frameCounter - 2); // Calculate Score
-      displayScore(); // Display Score
+      calculateScore(frameCounter); // Calculate Score
+      displayScore(frameCounter); // Display Score
     }
-    updateStrikesAndSpares();
+  updateStrikesAndSpares()
   }
 
 function updateStrikesAndSpares() {
   if (frameCounter > 2) {
     if (scorecard.strikeWasScored(frameCounter - 3) || scorecard.spareWasScored(frameCounter - 3)) {
-        calculateScore(frameCounter - 3); // Calculate Score}
-      }
+      calculateScore(frameCounter - 1); // Calculate Score
+      console.log(frameCounter);
+      console.log(frameCounter - 1);
+      displayScore(frameCounter - 1);
     }
+  }
 }

@@ -69,11 +69,31 @@ function displayScore() {
   document.getElementById(idToChange).innerHTML = score;
 }
 
-function spare() {
-  scorecard.calculateWhich(frameCounter - 1);
-  display;
-}
-
-function strike() {}
-
-function frameTen() {}
+// function displayScoreLogic() {
+//     if (strikewasScored() || sparewasScored())
+//     {
+//       displayScore
+//     }
+//
+//     displayScore()
+// }
+//
+// function strikeWasScored() {
+//     let firstThrow = scorecard._allFrames[turn - 1][0]
+//     if(firstThrow === 10)
+//     {
+//       return true;
+//     }
+// }
+//
+// function spareWasScored() {
+//     let firstThrow = scorecard._allFrames[turn - 1][0]
+//     let firstThrow = scorecard._allFrames[turn - 1][1]
+//   if(firstThrow + secondThrow === 10) {
+//     return false;
+//   }
+// }
+//
+// function strike() {}
+//
+// function frameTen() {}

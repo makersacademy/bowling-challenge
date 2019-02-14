@@ -43,6 +43,18 @@ describe('Scorecard:', function() {
     })
   })
 
+  describe('#logic:', function() {
+    it('returns true if a strike was scored', function() {
+      scorecard._allFrames = [[10, 0]]
+      expect(scorecard.strikeWasScored(0)).toEqual(true);
+    })
+    it('returns true if a spare was scored', function() {
+      scorecard._allFrames = [[6, 4]]
+      expect(scorecard.spareWasScored(0)).toEqual(true);
+    })
+  })
+
+
   describe('#score:', function() {
     it('scores a BASIC frame', function() {
       scorecard._allFrames = [[5,4], [7, 1]]

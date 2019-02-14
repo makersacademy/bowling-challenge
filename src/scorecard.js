@@ -31,6 +31,18 @@ Scorecard.prototype.recordStrike = function() {
   this._allFrames.push([10, 0]);
 };
 
+// Logic Checks
+Scorecard.prototype.spareWasScored = function(turn) {
+  let firstThrow = this._allFrames[turn][0];
+  let secondThrow = this._allFrames[turn][1];
+  if (firstThrow != 10 && firstThrow + secondThrow === 10) { return true }
+}
+
+Scorecard.prototype.strikeWasScored = function(turn) {
+  let firstThrow = this._allFrames[turn][0];
+  if (firstThrow === 10) { return true; }
+}
+
 // Calculate Scores
 Scorecard.prototype.calculateBasic = function(turn) {
   let throws = this._allFrames[turn];
@@ -59,9 +71,9 @@ Scorecard.prototype.calculateTotal = function(turn) {
 Scorecard.prototype.calculateWhich = function(turn) {
   let firstThrow = this._allFrames[turn][0];
   let secondThrow = this._allFrames[turn][1];
-  if (firstThrow != 10 && firstThrow + secondThrow === 10) {
+  if (this.spareWasScored(turn)) {
     this.calculateSpare(turn);
-  } else if (firstThrow === 10) {
+  } else if (this.strikeWasScored(turn)) {
     this.calculateStrike(turn);
   } else {
     this.calculateBasic(turn);

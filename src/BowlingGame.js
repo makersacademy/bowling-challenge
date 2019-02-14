@@ -12,6 +12,7 @@ var scoreCard = [];
 
   BowlingGame.prototype.roll = function(pinsKnocked) {
     this.rolls.push(pinsKnocked);
+    this.frame += 1
   }
 
 

@@ -16,7 +16,6 @@ describe('BowlingPerfectGame', function() {
 
  it('Perfect game scores 300 points', function() {
     rolls(10, 12)
-    bowlingGame.calculateScore()
     expect(bowlingGame.runningTotal).toEqual(300)
   });
 }); 

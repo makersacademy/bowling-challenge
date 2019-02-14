@@ -43,6 +43,20 @@ Scorecard.prototype.strikeWasScored = function(turn) {
   if (firstThrow === 10) { return true; }
 }
 
+Scorecard.prototype.doubleStrikeWasScored = function(turn) {
+  let firstThrow = this._allFrames[turn - 1][0];
+  let secondThrow = this._allFrames[turn][0]
+  if (firstThrow === 10 && secondThrow === 10) { return true; }
+}
+
+Scorecard.prototype.tripleStrikeWasScored = function(turn) {
+  let firstThrow = this._allFrames[turn - 2][0];
+  let secondThrow = this._allFrames[turn - 1][0]
+  let thirdThrow = this._allFrames[turn][0]
+  if (firstThrow === 10 && secondThrow === 10 && thirdThrow === 10) { return true; }
+}
+
+
 // Calculate Scores
 Scorecard.prototype.calculateBasic = function(turn) {
   let throws = this._allFrames[turn];
@@ -62,6 +76,18 @@ Scorecard.prototype.calculateStrike = function(turn) {
   this._score.push(throws.reduce((total, amount) => total + amount));
 };
 
+Scorecard.prototype.calculateDoubleStrike = function(turn) {
+  let throws = this._allFrames[turn];
+  throws.push(this._allFrames[turn - 1][0]);
+  throws.push(this._allFrames[turn + 1][0]);
+  console.log(throws);
+  this._score.push(throws.reduce((total, amount) => total + amount));
+}
+
+Scorecard.prototype.calculateTripleStrike = function(turn) {
+  this._score.push(30);
+}
+
 Scorecard.prototype.calculateTotal = function(turn) {
   allScores = this._score;
   let total = allScores.reduce((total, amount) => total + amount);
@@ -69,10 +95,10 @@ Scorecard.prototype.calculateTotal = function(turn) {
 };
 
 Scorecard.prototype.calculateWhich = function(turn) {
-  let firstThrow = this._allFrames[turn][0];
-  let secondThrow = this._allFrames[turn][1];
   if (this.spareWasScored(turn)) {
     this.calculateSpare(turn);
+  // } else if (this.doubleStrikeWasScored(turn)) {
+  //   this.calculateDoubleStrike(turn);
   } else if (this.strikeWasScored(turn)) {
     this.calculateStrike(turn);
   } else {

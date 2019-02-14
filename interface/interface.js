@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function() {
 function pinHit(number) {
   logThrow(number);
   displayInputLogic(number);
-  console.log(scorecard._score)
 }
 
 function logThrow(number) {
@@ -37,7 +36,6 @@ function displayInputLogic(number) {
     scorecard.addToFrames();
     displayThrow(number);
     incrementCounters();
-    console.log(scorecard._allFrames);
     displayScoreLogic();
   } else {
     displayThrow(number); // Displays Number
@@ -69,23 +67,30 @@ function displayScore(turn) {
 }
 
 function displayScoreLogic() {
-  // frameCounter starts at 2
-  updateStrikesAndSpares()
-  if (scorecard.strikeWasScored(frameCounter - 2) || scorecard.spareWasScored(frameCounter - 2)) {
-      displayScore(frameCounter); // If spare was scored, just display the score.
-      }
-    else {
-      calculateScore(frameCounter); // Calculate Score
-      displayScore(frameCounter); // Display Score
-    }
-
+  updateStrikesAndSpares();
+  if ( // First frame is a Strike/Spare
+    scorecard.strikeWasScored(frameCounter - 2) ||
+    scorecard.spareWasScored(frameCounter - 2)
+  ) {
+    displayScore(frameCounter); // If spare was scored, just display the score.
+  } else {
+    calculateScore(frameCounter); // Calculate Score
+    displayScore(frameCounter); // Display Score
   }
-
+}
 function updateStrikesAndSpares() {
-  if (frameCounter > 2) {
-    if (scorecard.strikeWasScored(frameCounter - 3) || scorecard.spareWasScored(frameCounter - 3)) {
+  if (frameCounter > 2) { // Any frame after the first
+    if (
+      scorecard.strikeWasScored(frameCounter - 3) ||
+      scorecard.spareWasScored(frameCounter - 3)
+    ) {
       calculateScore(frameCounter - 1); // Calculate Score
       displayScore(frameCounter - 1);
     }
+  }
+  }
+
+function frameTen() {
+  if (frameCounter == 11) {
   }
 }

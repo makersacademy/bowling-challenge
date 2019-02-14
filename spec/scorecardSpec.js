@@ -48,6 +48,14 @@ describe('Scorecard:', function() {
       scorecard._allFrames = [[10, 0]]
       expect(scorecard.strikeWasScored(0)).toEqual(true);
     })
+    it('returns true if a double strike was scored', function() {
+      scorecard._allFrames = [[10, 0], [10, 0]]
+      expect(scorecard.doubleStrikeWasScored(1)).toEqual(true);
+    })
+    it('returns true if a triple strike was scored', function() {
+      scorecard._allFrames = [[10, 0], [10, 0], [10, 0]]
+      expect(scorecard.doubleStrikeWasScored(2)).toEqual(true);
+    })
     it('returns true if a spare was scored', function() {
       scorecard._allFrames = [[6, 4]]
       expect(scorecard.spareWasScored(0)).toEqual(true);
@@ -71,6 +79,11 @@ describe('Scorecard:', function() {
       scorecard.calculateStrike(0);
       expect(scorecard._score[1]).toEqual(19);
     })
+    it('scores a DOUBLESTRIKE frame', function() {
+      scorecard._allFrames = [[10,0], [10,0], [6,0]]
+      scorecard.calculateDoubleStrike(1);
+      expect(scorecard._score[1]).toEqual(26);
+    })
     it('scores TOTAL SCORE', function() {
       scorecard._score = [15, 9, 20, 3, 4, 8, 12, 19, 20, 8]
       expect(scorecard.calculateTotal()).toEqual(118)
@@ -81,18 +94,21 @@ describe('Scorecard:', function() {
       scorecard._allFrames = [[5,4], [7, 1], [5, 5]]
       scorecard.calculateWhich(0);
       scorecard.calculateWhich(1);
+            console.log(scorecard._score)
       expect(scorecard._score[1]).toEqual(9);
     })
     it('auto calculates a SPARE frame', function() {
       scorecard._allFrames = [[5,4], [7, 3], [5, 5]]
       scorecard.calculateWhich(0);
       scorecard.calculateWhich(1);
+      console.log(scorecard._score)
       expect(scorecard._score[2]).toEqual(15);
     })
     it('auto calculates a STRIKE frame', function() {
       scorecard._allFrames = [[5,4], [10, 0], [7, 2]]
       scorecard.calculateWhich(0);
       scorecard.calculateWhich(1);
+            console.log(scorecard._score)
       expect(scorecard._score[2]).toEqual(19);
     })
   })

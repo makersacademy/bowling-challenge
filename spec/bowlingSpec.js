@@ -28,7 +28,7 @@ describe("playerScoreCard", function() {
     });
 
     describe("calculating scores", function() {
-
+      
       it("should calculate 2 scores from a round", function() {
         scorecard.add(3, 0);
         scorecard.add(6, 0);
@@ -49,7 +49,6 @@ describe("playerScoreCard", function() {
         scorecard.add(1, 0);
         scorecard.add(1, 0);
         scorecard.add(10, 1);
-        scorecard.add(1, 1);
         expect(scorecard.calculateScore(1)).toEqual(2);
       });
 
@@ -80,22 +79,34 @@ describe("playerScoreCard", function() {
         expect(scorecard.calculateScore(2)).toEqual(15);
       });
 
-      it("shouldn add multiple strikes", function() {
+      it("should add multiple strikes", function() {
         scorecard.add(0, 0);
         scorecard.add(0, 0);
         scorecard.add(10, 1);
         scorecard.add(10, 2);
-        expect(scorecard.calculateScore(2)).toEqual(15);
+        expect(scorecard.calculateScore(2)).toEqual(30);
       });
 
-    });
-
-    describe("calculating last round", function() {
-
-      it("should calculate the last rounds score", function () {
-
+      it("should add multiple spares", function() {
+        scorecard.add(5, 0);
+        scorecard.add(5, 0);
+        scorecard.add(5, 1);
+        scorecard.add(5, 1);
+        scorecard.add(5, 2);
+        scorecard.add(5, 2);
+        expect(scorecard.calculateScore(2)).toEqual(30);
       });
 
+
+
     });
+    //
+    // describe("calculating last round", function() {
+    //
+    //   it("should calculate the last rounds score", function () {
+    //
+    //   });
+    //
+    // });
 
 });

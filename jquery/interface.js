@@ -212,7 +212,8 @@ $(document).ready(function() {
         if (turn === 1) {
           game.roll(10)
           $(`#f${frame}r${turn}`).text(game.frame_input[frame])
-          turn++}
+          frame++
+        }
         else {
           game.roll(10)
           $(`#f${frame}r${turn}`).text(game.frame_input[frame][1])

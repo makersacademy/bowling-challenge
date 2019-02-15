@@ -34,6 +34,9 @@ window.onload = function() {
         let frameRows = []
         for(i = 0; i < Object.keys(game.frames).length; i++) {
             //Add a long string to frameRows which will be used to draw and label the table
+
+            // NEXT TASK!
+            // Replace frame name with actual frame content
             frameRows.push(
                 '<tr>' +
                     '<td id="name-' + Object.keys(game.frames)[i] + '">' + Object.keys(game.frames)[i] + '</td>' +

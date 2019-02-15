@@ -37,8 +37,11 @@ Game.prototype.sum_all_points=function(){
 }
 
 Game.prototype.pending_bonus=function(){
+  //finds the frame where strike was registered
   if(this.frame_output[this.frame-2][0] === "calculating"){
+    //changes output of calculating to strikes score
     this.frame_output[this.frame-2][0] = 10 + this.frame_output[this.frame-1][0]
+    //puts strikes score into all points array
     this.all_points.push(this.frame_output[this.frame-2][0])
   }
 }

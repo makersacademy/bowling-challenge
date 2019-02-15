@@ -34,4 +34,16 @@ describe("Game", function(){
       game.roll(0)};
     expect(game.score()).toEqual(24);
   });
+
+  it ("can handle Perfect Game", function () {
+    for (i = 0; i < 12; i++) {
+      game.roll(10)};
+    expect(game.score()).toEqual(300);
+  });
+
+  it ("can handle all Spares", function() {
+    for (i = 0; i < 21; i++) {
+      game.roll(5)};
+    expect(game.score()).toEqual(150);
+  });
 });

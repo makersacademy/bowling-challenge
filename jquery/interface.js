@@ -1,19 +1,27 @@
 $(document).ready(function() {
   var game = new Game()
-  var frame = 1
   var turn = 1
-  
+  var frame = 1
+
     $('#0').click(function() {
       game.roll(0)
-      $(`#f${game.frame}r${game.turn}`).text(game.frame_input[game.frame])
+      $(`#f${game.frame}r${turn}`).text(game.frame_input[game.frame])
     })
 
     $('#1').click(function(){
-        game.roll(1)
-        $(`#f${game.frame}r${game.turn}`).text(game.frame_input[game.frame])
-        console.log(game.turn)
-        console.log(game.frame)
+        if (turn === 1) {
+          game.roll(1)
+          $(`#f${frame}r${turn}`).text(game.frame_input[frame])
+          turn++
+        }
+        else {
+          game.roll(1)
+          $(`#f${frame}r${turn}`).text(game.frame_input[frame][1])
+          turn = 1
+          frame++
+        }
       })
+
     })
 
 

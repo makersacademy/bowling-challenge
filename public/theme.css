@@ -1,5 +1,28 @@
+@font-face {
+font-family: 'Alba';
+font-style: normal;
+font-weight: normal;
+src: local('Alba'), url('ALBA____.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Alba Matter';
+font-style: normal;
+font-weight: normal;
+src: local('Alba Matter'), url('ALBAM___.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Alba Super';
+font-style: normal;
+font-weight: normal;
+src: local('Alba Super'), url('ALBAS___.woff') format('woff');
+}
+
 body {
-  font-family: "Roboto";
+  font-family: "Alba Super";
   background-image: url("bowling.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
@@ -24,11 +47,20 @@ body {
 } */
 
 .button {
-  display: inline-block;
-  height: 35px;
-  width: 35px;
-  border-radius: 50%;
-  border: 1px solid red;
+  background: transparent;
+}
+
+#0pin {
+  position:absolute;
+  background: transparent;
+  border: none;
+}
+
+#selectPinNumber {
+  font-family: 'Alba';
+  color: white;
+  font-size: 30px;
+  margin: 10px;
 }
 
 .output {
@@ -38,7 +70,7 @@ body {
   height: 300px;
   margin: 0;
   position: absolute;
-  top: 35%;
+  top: 40%;
   left: 35%;
   opacity: 0.7;
 }

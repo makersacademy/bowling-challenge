@@ -70,7 +70,7 @@ describe("PLAYER", function() {
 
   // describe("GameOver", function(){
   //   it("should return true if no remaining frames", function(){
-  //     spyOn(Frame.prototype, "returnIsComplete").and.returnValue(true);
+  //     spyOn(Frame.prototype, "returnIscdComplete").and.returnValue(true);
   //     player.enterRoll(1);
   //     player.enterRoll(1);
   //     player.enterRoll(1);

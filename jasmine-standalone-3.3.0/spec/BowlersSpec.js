@@ -10,7 +10,14 @@ describe('Bowlers', function() {
     })
 
     it('should accept no more than 8 players', function() {
-        for(i = 0; i < 9; i++) { bowlers.add('Foo') }
+        let playerNames = ["Foo", "Bar", "Baz", "Qux", "Quux", "Corge", "Uier", "Grault", "Garply"]
+        for(i = 0; i < 9; i++) { bowlers.add(playerNames[i]) }
         expect(bowlers.all.length).toEqual(8)
+    })
+
+    it('should only accept unique player names', function() {
+        bowlers.add('Foo')
+        bowlers.add('Foo')
+        expect(bowlers.all).toEqual(['Foo'])
     })
 })

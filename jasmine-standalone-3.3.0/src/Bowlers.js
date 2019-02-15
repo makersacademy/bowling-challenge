@@ -12,5 +12,13 @@ Bowlers.prototype.add = function(name) {
             console.log(error)
         }
     }
+    else if(this.all.includes(name)) {
+        try { 
+            throw new Error ("Each bowler must have a unique user name")
+        }
+        catch(error) {
+            console.log(error)
+        }
+    }
     else { this.all.push(name) }
 }

@@ -1,3 +1,8 @@
-table, th, td {
-  border: 1px solid black;
+body {
+  font-family: "Lato", sans-serif;
+  background-image: url("bowling.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: 50% 25%;
+  opacity: 0;
 }

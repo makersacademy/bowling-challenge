@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function pinHit(number) {
-  if (frameCounter === 10) {
+  if (frameCounter > 9) {
     turnTenRules(number);
   } else {
     if (turnCounter === 1) {
@@ -84,55 +84,66 @@ function updateScores() {
     // console.log(`f${frameCounter}t${turnCounter}`);
 
 function turnTenRules(number) {
-  var extraTurn = false;
   if (turnCounter === 1) {
     // If Turn 1
     scorecard.firstThrow(number);
     // If Strike, display Strike and trigger extra turn
-    if (scorecard.strikeCheck(scorecard._firstThrow)) {
+    if (scorecard.strikeCheck(number)) {
       displayThrow(frameCounter, turnCounter, "X");
-      extraTurn = true;
     // Else Display Number
     } else {
       displayThrow(frameCounter, turnCounter, number);
     }
+    console.log("Turn 1 Push")
+    scorecard._allFrames[9] = [number]
   } // End of Turn 1 Check
   if (turnCounter === 2) {
     // If Turn 2
     scorecard.secondThrow(number);
     // If Strike, display Strike and trigger extra turn
-    if (scorecard.strikeCheck(scorecard._secondThrow)) {
+    if (scorecard.strikeCheck(number)) {
+      console.log(`Strike At: f${frameCounter}t${turnCounter}`);
       displayThrow(frameCounter, turnCounter, "X");
-      extraTurn = true;
     }
       // If Spare, display Spare and trigger extra turn
       else if (scorecard.spareCheck(scorecard._firstThrow, scorecard._secondThrow)) {
+      console.log(`Spare At: f${frameCounter}t${turnCounter}`);
       displayThrow(frameCounter, turnCounter, "/");
-      extraTurn = true;
       // Else Display Number
     } else {
       displayThrow(frameCounter, turnCounter, number);
   }
     // Add to Frame and Update Scores after Turn 2
-    scorecard.addToFrames()
-    updateScores()
+    console.log("Turn 2 Push")
+    scorecard._allFrames[9].push(number)
   } // End of Turn 2 Check
-    // If Turn 3 was triggered
-    if (extraTurn === true && turnCounter === 3) {
+    // If Turn 3 was trigger, Strike/Spare on previous rolls
+    if (turnCounter >= 3) {
+      if (
+        scorecard._allFrames[9][0] === 10 ||
+        scorecard._allFrames[9][1] === 10 ||
+        scorecard._allFrames[9][0] + scorecard._allFrames[9][1] === 10)  {
     // If Strike, display Strike
-    if (scorecard.strikeCheck(scorecard._secondThrow)) {
+    if (scorecard.strikeCheck(number)) {
+        console.log(`Third Turn Strike At: f${frameCounter}t${turnCounter}`);
         displayThrow(frameCounter, turnCounter, "X");
     }
     // Else display number
     else {
+      console.log(`Third Turn Normal: f${frameCounter}t${turnCounter}`);
         displayThrow(frameCounter, turnCounter, number);
     }
     // Push extra turn score to existing array
+    console.log("Turn 3 Push")
+    console.log(`${turnCounter}`)
     scorecard._allFrames[9].push(number);
-    // Update Scores
     updateScores()
   }
-  // After each turn, increment Turn
-  turnCounter++;
-  console.log(scorecard._scores)
+}
+  // After each turn, increment Turn and update Scores
+  console.log(`Score For: ${turnCounter}`)
+  console.log(scorecard._allFrames)
+  console.log(scorecard._score)
+  updateScores()
+    turnCounter++
 }

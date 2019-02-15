@@ -32,7 +32,7 @@ Scorecard.prototype.recordStrike = function () {
 }
 
 // Logic Checks
-Scorecard.prototype.strikeCheck = function (number1, number2) {
+Scorecard.prototype.strikeCheck = function (number1) {
   if (number1 === 10) {
     return true
   }
@@ -126,7 +126,7 @@ Scorecard.prototype.updateScores = function () {
         this.setScore(i, firstScore + secondScore);
       }
     }
-  } console.log(this._score)
+  }
 }
 
 Scorecard.prototype.calculateTotal = function (turn) {

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Bowling Scorecard</title>
+    <script src = "src/roll.js"></script>
+    <script src = "src/frame.js"></script>
+    <script src = "src/player.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <script src = "interface.js"></script>
+  </head>
+  <body>
+<h1> Bowl me over </h1>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black; }
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black; font-weight:bold; }
+.tg .tg-0lax{text-align:center;vertical-align:center}
+.tg .tg-0pky{border-color:inherit;text-align:center;vertical-align:center}
+.button {
+   font-size: 20px;
+   padding: 10px, 20px;
+   cursor: pointer;
+   width: 75px;
+   margin: 10px;
+   align: center;
+   -webkit-border-radius: 5px;
+ }
+
+ .button:hover {
+   background-color: pink;
+   color: white;
+ }
+@media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;}}</style>
+
+<h2> Enter your score: </h2>
+
+<button class="button" id ="0" type="button" name="0"> None :( </button>
+<button class="button" id ="1" type="button" name="1"> 1 </button>
+<button class="button" id ="2" type="button" name="2"> 2 </button>
+<button class="button" id ="3" type="button" name="3"> 3 </button>
+<button class="button" id ="4" type="button" name="4"> 4 </button>
+<button class="button" id ="5" type="button" name="5"> 5 </button>
+<button class="button" id ="6" type="button" name="6"> 6 </button>
+<button class="button" id ="7" type="button" name="7"> 7 </button>
+<button class="button" id ="8" type="button" name="8"> 8 </button>
+<button class="button" id ="9" type="button" name="9"> 9 </button>
+<button class="button" id ="10" type="button" name="10"> STRIKE! </button>
+
+<h2> Scorecard: </h2>
+
+<div class="tg-wrap"><table class="tg">
+  <tr>
+    <th class="tg-0lax"></th>
+    <th class="tg-0lax" colspan="3">Frame 1</th>
+    <th class="tg-0lax" colspan="3">Frame 2</th>
+    <th class="tg-0lax" colspan="3">Frame 3</th>
+    <th class="tg-0lax" colspan="3">Frame 4</th>
+    <th class="tg-0lax" colspan="3">Frame 5</th>
+    <th class="tg-0lax" colspan="3">Frame 6</th>
+    <th class="tg-0lax" colspan="3">Frame 7</th>
+    <th class="tg-0lax" colspan="3">Frame 8</th>
+    <th class="tg-0lax" colspan="3">Frame 9</th>
+    <th class="tg-0lax" colspan="3">Frame 10</th>
+    <th class="tg-0lax"></th>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Name</td>
+    <td class="tg-0lax">Roll 1</td>
+    <td class="tg-0pky">Roll 2</td>
+    <td class="tg-0pky">Total</td>
+
+    <td class="tg-0pky">Roll 1</td>
+    <td class="tg-0pky">Roll 2</td>
+    <td class="tg-0lax">Total</td>
+
+    <td class="tg-0lax">Roll 1</td>
+    <td class="tg-0lax">Roll 2</td>
+    <td class="tg-0lax">Total</td>
+
+    <td class="tg-0lax">Roll 1</td>
+    <td class="tg-0lax">Roll 2</td>
+    <td class="tg-0lax">Total</td>
+
+    <td class="tg-0lax">Roll 1</td>
+    <td class="tg-0lax">Roll 2</td>
+    <td class="tg-0lax">Total</td>
+
+    <td class="tg-0lax">Roll 1</td>
+    <td class="tg-0pky">Roll 2</td>
+    <td class="tg-0pky">Total</td>
+
+    <td class="tg-0pky">Roll 1</td>
+    <td class="tg-0pky">Roll 2</td>
+    <td class="tg-0lax">Total</td>
+
+    <td class="tg-0lax">Roll 1</td>
+    <td class="tg-0lax">Roll 2</td>
+    <td class="tg-0lax">Total</td>
+
+    <td class="tg-0lax">Roll 1</td>
+    <td class="tg-0lax">Roll 2</td>
+    <td class="tg-0lax">Total</td>
+
+    <td class="tg-0lax">Roll 1</td>
+    <td class="tg-0lax">Roll 2</td>
+    <td class="tg-0lax">Total</td>
+
+    <td class="tg-0lax">Running Total</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax" rowspan="2" id ="name"></td>
+    <td class="tg-0lax" id="F1R1"></td>
+    <td class="tg-0lax" id="F1R2"></td>
+    <td class="tg-0lax" id="F1T"></td>
+
+    <td class="tg-0lax" id="F2R1"></td>
+    <td class="tg-0lax" id="F2R2"></td>
+    <td class="tg-0lax" id="F2T"></td>
+
+    <td class="tg-0lax" id="F3R1"></td>
+    <td class="tg-0lax" id="F3R2"></td>
+    <td class="tg-0lax" id="F3T"></td>
+
+    <td class="tg-0lax" id="F4R1"></td>
+    <td class="tg-0lax" id="F4R2"></td>
+    <td class="tg-0lax" id="F4T"></td>
+
+    <td class="tg-0lax" id="F5R1"></td>
+    <td class="tg-0lax" id="F5R2"></td>
+    <td class="tg-0lax" id="F5T"></td>
+
+    <td class="tg-0lax" id="F6R1"></td>
+    <td class="tg-0lax" id="F6R2"></td>
+    <td class="tg-0lax" id="F6T"></td>
+
+    <td class="tg-0lax" id="F7R1"></td>
+    <td class="tg-0lax" id="F7R2"></td>
+    <td class="tg-0lax" id="F7T"></td>
+
+    <td class="tg-0lax" id="F8R1"></td>
+    <td class="tg-0lax" id="F8R2"></td>
+    <td class="tg-0lax" id="F8T"></td>
+
+    <td class="tg-0lax" id="F9R1"></td>
+    <td class="tg-0lax" id="F9R2"></td>
+    <td class="tg-0lax" id="F9T"></td>
+
+    <td class="tg-0lax" id="F10R1"></td>
+    <td class="tg-0lax" id="F10R2"></td>
+    <td class="tg-0lax" id="F10T"></td>
+
+
+    <td class="tg-0lax" id="total"></td>
+  </tr>
+
+  <tr>
+    <!-- <td class="tg-0lax"></td> -->
+    <td class="tg-0lax" colspan="3" id = "Notes1"></td>
+    <td class="tg-0lax" colspan="3"id = "Notes2"></td>
+    <td class="tg-0lax" colspan="3"id = "Notes3"></td>
+    <td class="tg-0lax" colspan="3" id = "Notes4"></td>
+    <td class="tg-0lax" colspan="3"id = "Notes5"></td>
+    <td class="tg-0lax" colspan="3"id = "Notes6"></td>
+    <td class="tg-0lax" colspan="3"id = "Notes7"></td>
+    <td class="tg-0lax" colspan="3"id = "Notes8"></td>
+    <td class="tg-0lax" colspan="3"id = "Notes9"></td>
+    <td class="tg-0lax" colspan="3"id = "Notes10"></td>
+
+    <td class="tg-0lax"></td>
+  </tr>
+
+</table></div>
+
+
+
+  </body>
+</html>

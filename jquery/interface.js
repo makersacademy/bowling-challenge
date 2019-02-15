@@ -13,11 +13,8 @@ $(document).ready(function() {
         game.roll(0)
         $(`#f${frame}r${turn}`).text(game.frame_input[frame][1])
         turn = 1
-        $(`#sc${frame}`).text(game.frame_output[frame][0])
+        $(`#sc${frame}`).text(game.sum_all_points())
         frame++
-        console.log(game.frame_output[frame])
-        game.check_for_bonus()
-        update_scores()
       }
     })
 
@@ -32,11 +29,11 @@ $(document).ready(function() {
           game.roll(1)
           $(`#f${frame}r${turn}`).text(game.frame_input[frame][1])
           turn = 1
-          $(`#sc${frame}`).text(game.frame_output[frame][0])
+          $(`#sc${frame}`).text(game.sum_all_points())
+          game.pending_bonus()
           frame++
           $("#buttons").show().children().show();
-          game.check_for_bonus()
-          update_scores()
+          // game.pending_bonus()
         }
     })
 
@@ -52,7 +49,7 @@ $(document).ready(function() {
           game.roll(2)
           $(`#f${frame}r${turn}`).text(game.frame_input[frame][1])
           turn = 1
-          $(`#sc${frame}`).text(game.frame_output[frame][0])
+          $(`#sc${frame}`).text(game.sum_all_points())
           frame++
           $("#buttons").show().children().show();
         }
@@ -71,7 +68,7 @@ $(document).ready(function() {
           game.roll(3)
           $(`#f${frame}r${turn}`).text(game.frame_input[frame][1])
           turn = 1
-          $(`#sc${frame}`).text(game.frame_output[frame][0])
+          $(`#sc${frame}`).text(game.sum_all_points())
           frame++
           $("#buttons").show().children().show();
         }
@@ -91,7 +88,7 @@ $(document).ready(function() {
           game.roll(4)
           $(`#f${frame}r${turn}`).text(game.frame_input[frame][1])
           turn = 1
-          $(`#sc${frame}`).text(game.frame_output[frame][0])
+          $(`#sc${frame}`).text(game.sum_all_points())
           frame++
           $("#buttons").show().children().show();
         }
@@ -112,7 +109,7 @@ $(document).ready(function() {
           game.roll(5)
           $(`#f${frame}r${turn}`).text(game.frame_input[frame][1])
           turn = 1
-          $(`#sc${frame}`).text(game.frame_output[frame][0])
+          $(`#sc${frame}`).text(game.sum_all_points())
           frame++
           $("#buttons").show().children().show();
         }
@@ -134,7 +131,7 @@ $(document).ready(function() {
           game.roll(6)
           $(`#f${frame}r${turn}`).text(game.frame_input[frame][1])
           turn = 1
-          $(`#sc${frame}`).text(game.frame_output[frame][0])
+          $(`#sc${frame}`).text(game.sum_all_points())
           frame++
           $("#buttons").show().children().show();
         }
@@ -157,7 +154,7 @@ $(document).ready(function() {
           game.roll(7)
           $(`#f${frame}r${turn}`).text(game.frame_input[frame][1])
           turn = 1
-          $(`#sc${frame}`).text(game.frame_output[frame][0])
+          $(`#sc${frame}`).text(game.sum_all_points())
           frame++
           $("#buttons").show().children().show();
         }
@@ -181,7 +178,7 @@ $(document).ready(function() {
           game.roll(8)
           $(`#f${frame}r${turn}`).text(game.frame_input[frame][1])
           turn = 1
-          $(`#sc${frame}`).text(game.frame_output[frame][0])
+          $(`#sc${frame}`).text(game.sum_all_points())
           frame++
           $("#buttons").show().children().show();
         }
@@ -206,7 +203,7 @@ $(document).ready(function() {
           game.roll(9)
           $(`#f${frame}r${turn}`).text(game.frame_input[frame][1])
           turn = 1
-          $(`#sc${frame}`).text(game.frame_output[frame][0])
+          $(`#sc${frame}`).text(game.sum_all_points())
           frame++
           $("#buttons").show().children().show();
         }
@@ -216,21 +213,17 @@ $(document).ready(function() {
         if (turn === 1) {
           game.roll(10)
           $(`#f${frame}r${turn}`).text(game.frame_input[frame])
-          $(`#sc${frame}`).text(game.frame_output[frame][0])
+          $(`#sc${frame}`).text("bonus to be added")
           frame++
         }
         else {
           game.roll(10)
           $(`#f${frame}r${turn}`).text(game.frame_input[frame][1])
           turn = 1
-          $(`#sc${frame}`).text(game.frame_output[frame][0])
+          $(`#sc${frame}`).text(game.sum_all_points())
           frame++
           $("#buttons").show().children().show();
         }
     })
-
-    function update_scores() {
-      location.reload();
-    }
 
 })

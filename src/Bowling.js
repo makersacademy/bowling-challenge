@@ -32,18 +32,15 @@ Game.prototype.roll = function(pins_hit){
 }
 
 
-
-// Game.prototype.sum_all_points=function(){
-//   return this.frame_output[this.frame].reduce((a,b) => a+b,0)
-// }
-
-Game.prototype.check_for_bonus=function(){
-  if(this.frame_output[this.frame-2][0] === "calculating"){
-    this.frame_output[this.frame-2][0] = 10 + this.frame_output[this.frame-1][0]}
+Game.prototype.sum_all_points=function(){
+  return this.all_points.reduce((a,b) => a+b,0)
 }
 
-Game.prototype.increment_turn=function(){
-  this.turn++
+Game.prototype.pending_bonus=function(){
+  if(this.frame_output[this.frame-2][0] === "calculating"){
+    this.frame_output[this.frame-2][0] = 10 + this.frame_output[this.frame-1][0]
+    this.all_points.push(this.frame_output[this.frame-2][0])
+  }
 }
 
 Game.prototype.score_for_output=function(){
@@ -63,3 +60,7 @@ Game.prototype.frame_complete = function(){
 Game.prototype.strike = function(pins_hit){
  if(pins_hit === 10 && this.turn === 1){return true}
 }
+
+// Game.prototype.increment_turn=function(){
+//   this.turn++
+// }

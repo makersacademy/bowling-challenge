@@ -6,6 +6,7 @@ $(document).ready(function() {
   function refreshData(frame, roll) {
     rollData();
     fillFrameScore();
+    fillRunningTotal();
     addNotes();
 
     function rollData() {
@@ -19,9 +20,18 @@ $(document).ready(function() {
     }
 
     function fillFrameScore() {
-      // console.log(player.frames[0].score);
-      $(`#F${frame}T`).text(player.frames[frame - 1].score);
-    }
+      $(`#F${frame}T`).text(returnFrameScore());
+
+      function returnFrameScore() {
+        return player.frames[frame - 1]
+          ? player.frames[frame - 1].score
+          : player.currentFrame.score;
+      }
+     }
+
+    function fillRunningTotal() {
+      $(`#total`).text(player.totalScore);
+     }
 
     function addNotes() {
       $(`#Notes${frame}`).text(player.frames[frame - 1].notes);

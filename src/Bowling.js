@@ -35,6 +35,9 @@ Game.prototype.roll = function(pins_hit){
 //   }
 // }
 
+Game.prototype.increment_turn=function(){
+  this.turn++
+}
 
 Game.prototype.score_for_output=function(){
     this.frame_output[this.frame].push(this.score_sum())

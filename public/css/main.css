@@ -14,7 +14,3 @@ input {
 #summarise {
     display: none;
 }
-
-button {
-    pointer-events: none;
-  }

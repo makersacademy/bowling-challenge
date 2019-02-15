@@ -4,7 +4,7 @@ function Game () {
   this.frame_output = {1:[],2:[],3:[],4:[],5:[],6:[],7:[],8:[],9:[],10:[]}
   this.pins_standing = 10
   this.turn = 1
-  this.all_points = 0
+  this.all_points = []
 };
 
 
@@ -20,16 +20,27 @@ Game.prototype.roll = function(pins_hit){
     this.frame_input[this.frame].push(pins_hit);
     this.pins_standing-=pins_hit;
     this.turn++
-      if (this.frame_complete()) {this.turn = 1; this.pins_standing = 10, this.score_for_output(); this.frame++;}
+      if (this.frame_complete()) {
+        this.turn = 1;
+        this.pins_standing = 10;
+        this.score_for_output();
+        this.all_points.push(this.score_sum());
+        this.frame++;
+      }
   }
 
 }
+
+
+
+// Game.prototype.sum_all_points=function(){
+//   return this.frame_output[this.frame].reduce((a,b) => a+b,0)
+// }
 
 Game.prototype.check_for_bonus=function(){
   if(this.frame_output[this.frame-2][0] === "calculating"){
     this.frame_output[this.frame-2][0] = 10 + this.frame_output[this.frame-1][0]}
 }
-
 
 Game.prototype.increment_turn=function(){
   this.turn++

@@ -17,6 +17,7 @@ $(document).ready(function() {
         frame++
         console.log(game.frame_output[frame])
         game.check_for_bonus()
+        update_scores()
       }
     })
 
@@ -35,6 +36,7 @@ $(document).ready(function() {
           frame++
           $("#buttons").show().children().show();
           game.check_for_bonus()
+          update_scores()
         }
     })
 
@@ -227,8 +229,8 @@ $(document).ready(function() {
         }
     })
 
-    // function update_scores(){
-    //
-    // }
+    function update_scores() {
+      location.reload();
+    }
 
 })

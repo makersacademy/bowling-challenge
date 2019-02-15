@@ -4,6 +4,38 @@ var frameCounter = 1
 
 document.addEventListener('DOMContentLoaded', function () {})
 
+document.getElementById('f10total').addEventListener('DOMSubtreeModified', function() {
+  showSection('gameOver')
+  showSection('playAgain-button')
+})
+
+document.getElementById('playAgain').addEventListener('click', function() {
+  hideSection('gameOver')
+  hideSection('playAgain-button')
+  location.reload();
+})
+
+function showSection(id) {
+  var x = document.getElementById(id)
+  x.style.display = 'block';
+}
+
+function hideSection(id) {
+  var x = document.getElementById(id)
+  x.style.display = 'none';
+}
+
+
+
+function printError(text) {
+  document.getElementById('error').innerHTML += text;
+}
+
+window.onerror = function() {
+    alert('Not enough pins left! Select a lower number!');
+    return true;
+}
+
 function pinHit (number) {
   if (frameCounter > 9) {
     turnTenRules(number)

@@ -19,9 +19,8 @@ Pins Hit:
 <button type="button" onclick="pinHit(7)"  class="btn btn-info">7</button>
 <button type="button" onclick="pinHit(8)"  class="btn btn-success">8</button>
 <button type="button" onclick="pinHit(9)"  class="btn btn-success">9</button>
-<button type="button" onclick="pinHit(10)"  class="btn btn-success">10</button>
+<button type="button" onclick="pinHit(10)"  class="btn btn-success">Strike!</button>
 </div>
-<h2 id="error">Error Message</h2>
 
 <table class="table table-hover">
   <thead>
@@ -79,10 +78,10 @@ Pins Hit:
       <th id="f10total" scope="row" colspan="3"></th>
     </tr>
     </table>
-<h2 id="comments" class="notice">Comments</h1>
-<h2 id="gameover" class="notice">Game Over</h1>
-<h2 id="yourscore" class="final-score">Score</h1>
-<h2 id="playagain">Play Again</div>
+<h2 id="gameOver" class="notice" style="display: none">Game Over :(</h1>
+  <div id="playAgain-button" style="display: none">
+<button id ="playAgain" type="button" class="btn btn-success">Play Again?</button>
+</div>
 </body>
 <footer>
     <script src="./src/scorecard.js"></script>

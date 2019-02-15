@@ -81,46 +81,46 @@ function updateScores () {
   updateTotal()
   displayScores()
 }
-
-function turnTenRules (number) {
-  var maxTurns = 2
-  if (turnCounter === 1) {
-    scorecard.firstThrow(number)
-    if (scorecard.strikeCheck(number)) {
-      // If Strike
-      displayThrow(frameCounter, turnCounter, 'X')
-      maxTurns = 3
-      updateScores()
-    }
-    // Then
-    scorecard._allFrames.push([number])
-    console.log(scorecard._allFrames)
-  } // Turn 1 If End
-  if (turnCounter === 2) {
-    scorecard.secondThrow(number)
-    if (scorecard.strikeCheck(number)) {
-      // If Strike
-      displayThrow(frameCounter, turnCounter, 'X')
-      maxTurns = 3
-    } else if (
-      scorecard.spareCheck(scorecard._firstThrow, scorecard._secondThrow)
-    ) {
-      displayThrow(frameCounter, turnCounter, '/')
-      maxTurns = 3
-      updateScores()
-    }
-  } // Turn 2 If End
-  // Then
-  scorecard._allFrames[9].push(number)
-  if (turnCounter === 3) {
-    if (scorecard.strikeCheck(number)) {
-      // If Strike
-      displayThrow(frameCounter, turnCounter, 'Z')
-    }
-    scorecard._allFrames[9].push(number)
-    updateScores()
-  }
-  if (turnCounter <= maxTurns) {
-    turnCounter++
-  }
-}
+//
+// function turnTenRules (number) {
+//   var maxTurns = 2
+//   if (turnCounter === 1) {
+//     scorecard.firstThrow(number)
+//     if (scorecard.strikeCheck(number)) {
+//       // If Strike
+//       displayThrow(frameCounter, turnCounter, 'X')
+//       maxTurns = 3
+//       updateScores()
+//     }
+//     // Then
+//     scorecard._allFrames.push([number])
+//     console.log(scorecard._allFrames)
+//   } // Turn 1 If End
+//   if (turnCounter === 2) {
+//     scorecard.secondThrow(number)
+//     if (scorecard.strikeCheck(number)) {
+//       // If Strike
+//       displayThrow(frameCounter, turnCounter, 'X')
+//       maxTurns = 3
+//     } else if (
+//       scorecard.spareCheck(scorecard._firstThrow, scorecard._secondThrow)
+//     ) {
+//       displayThrow(frameCounter, turnCounter, '/')
+//       maxTurns = 3
+//       updateScores()
+//     }
+//   } // Turn 2 If End
+//   // Then
+//   scorecard._allFrames[9].push(number)
+//   if (turnCounter === 3) {
+//     if (scorecard.strikeCheck(number)) {
+//       // If Strike
+//       displayThrow(frameCounter, turnCounter, 'Z')
+//     }
+//     scorecard._allFrames[9].push(number)
+//     updateScores()
+//   }
+//   if (turnCounter <= maxTurns) {
+//     turnCounter++
+//   }
+// }

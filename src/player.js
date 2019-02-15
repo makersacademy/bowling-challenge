@@ -13,7 +13,7 @@ Player.prototype.enterRoll = function(score) {
     this._newFrame(score);
     this._reduceRemainingFrames();
   }
-  this._refreshTotalScore();
+  this._refreshFrameScore();
 };
 
 Player.prototype._newFrame = function(score) {
@@ -28,16 +28,22 @@ Player.prototype._reduceRemainingFrames = function() {
   this.remainingFrames -= 1;
 };
 
-Player.prototype._refreshTotalScore = function() {
-  this.totalScore = 0;
+Player.prototype._refreshFrameScore = function() {
   this.frames.forEach(frame => {
     if (this.frames.indexOf(frame) > 0) {
       var prevFrame = this.frames[this.frames.length - 2];
       this._recordBonusPoints(frame, prevFrame);
-      this.totalScore += prevFrame.bonusScore;
     }
-    this.totalScore += frame.score;
+    this._refreshTotalScore()
   });
+};
+
+Player.prototype._refreshTotalScore = function () {
+  this.totalScore = 0;
+  this.frames.forEach(frame => {
+    this.totalScore += frame.score
+    if(frame.bonusScore) {this.totalScore += frame.bonusScore}
+  })
 };
 
 Player.prototype._recordBonusPoints = function (frame, prevFrame) {
@@ -46,11 +52,22 @@ Player.prototype._recordBonusPoints = function (frame, prevFrame) {
 };
 
 Player.prototype._calculateBonus = function(frame, prevFrame) {
-  if (prevFrame.notes === "Spare") {
+  let prevprevFrame = this.frames[this.frames.length - 3]
+  switch (prevFrame.notes) {
+    case "Spare":
     return frame.rolls[0].score;
-  } else if (prevFrame.notes === "Strike") {
-    return frame.score;
-  } else {
-    return 0;
+    break;
+    case "Strike":
+    triple = this._tripleBonusCheck(frame, prevFrame, prevprevFrame)
+    return frame.score
+    break;
+    default:
+    return 0
   }
+};
+
+Player.prototype._tripleBonusCheck = function(frame,prevFrame,prevprevFrame) {
+  if(prevprevFrame && prevprevFrame.notes === "Strike") {
+    prevprevFrame.bonusScore = (frame.score + prevFrame.score)
+}
 };

@@ -13,6 +13,8 @@ $(document).ready(function() {
     rollData();
     fillFrameScore();
     fillRunningTotal();
+    bonusRefresher(frame);
+    bonusRefresher(frame-1);
 
     function rollData() {
       $(`#F${frame + 1}R${roll + 1}`).text(returnRollScore());
@@ -26,7 +28,6 @@ $(document).ready(function() {
 
     function fillFrameScore() {
       $(`#F${frame + 1}T`).text(returnFrameScore());
-      addBonustoPrev();
 
       function returnFrameScore() {
         return player.frames[frame]
@@ -37,18 +38,19 @@ $(document).ready(function() {
           $(`#Notes${frame + 1}`).text(player.frames[frame].notes);
         }
       }
-      function addBonustoPrev() {
-        if (player.frames[frame - 1] && player.frames[frame - 1].bonusScore) {
-          combinedScore =
-            player.frames[frame - 1].score +
-            player.frames[frame - 1].bonusScore;
-          $(`#F${frame}T`).text(combinedScore);
-        }
-      }
     }
 
     function fillRunningTotal() {
       $(`#total`).text(player.totalScore);
+    }
+
+    function bonusRefresher(frame) {
+      if (player.frames[frame - 1] && player.frames[frame - 1].bonusScore) {
+        let combinedScore =
+          player.frames[frame - 1].score +
+          player.frames[frame - 1].bonusScore;
+        $(`#F${frame}T`).text(combinedScore);
+      }
     }
   }
 

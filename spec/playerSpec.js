@@ -51,7 +51,7 @@ describe("PLAYER", function() {
       expect(sparePlayer.totalScore).toEqual(22)
     })
 
-    it('should add points of next roll to strike score', function() {
+    it('should add points of next 2 rolls to strike score', function() {
       strikePlayer.enterRoll(10)
       strikePlayer.enterRoll(4)
       strikePlayer.enterRoll(2)
@@ -64,7 +64,17 @@ describe("PLAYER", function() {
       doubleStrike.enterRoll(10)
       doubleStrike.enterRoll(4)
       doubleStrike.enterRoll(2)
-      expect(doubleStrike.totalScore).toEqual(42)
+      console.log(doubleStrike);
+      expect(doubleStrike.totalScore).toEqual(48)
+    })
+
+    it('should add next TWO BOWLS to bonus points, even if strikes', function(){
+      tripleStrike = new Player
+      tripleStrike.enterRoll(10)
+      tripleStrike.enterRoll(10)
+      tripleStrike.enterRoll(10)
+      expect(tripleStrike.totalScore).toEqual(60)
+      expect(tripleStrike.frames[0].bonusScore).toEqual(20)
     })
   })
 

@@ -25,13 +25,7 @@ function hideSection(id) {
   x.style.display = 'none';
 }
 
-
-
-function printError(text) {
-  document.getElementById('error').innerHTML += text;
-}
-
-window.onerror = function() {
+window.onerror = function(message) {
     alert('Not enough pins left! Select a lower number!');
     return true;
 }

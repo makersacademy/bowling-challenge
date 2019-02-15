@@ -4,7 +4,7 @@ function Game () {
   this.frame_output = {1:[],2:[],3:[],4:[],5:[],6:[],7:[],8:[],9:[],10:[]}
   this.pins_standing = 10
   this.turn = 1
-  this.bonuses = 0
+  this.all_points = 0
 };
 
 
@@ -26,8 +26,8 @@ Game.prototype.roll = function(pins_hit){
 }
 
 Game.prototype.check_for_bonus=function(){
-  if(this.frame === 3 && this.frame_output[this.frame-2][0] === "calculating")
-    {console.log("found it")}
+  if(this.frame_output[this.frame-2][0] === "calculating"){
+    this.frame_output[this.frame-2][0] = 10 + this.frame_output[this.frame-1][0]}
 }
 
 

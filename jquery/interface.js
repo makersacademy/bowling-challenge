@@ -34,6 +34,7 @@ $(document).ready(function() {
           $(`#sc${frame}`).text(game.frame_output[frame][0])
           frame++
           $("#buttons").show().children().show();
+          game.check_for_bonus()
         }
     })
 
@@ -225,4 +226,9 @@ $(document).ready(function() {
           $("#buttons").show().children().show();
         }
     })
+
+    // function update_scores(){
+    //
+    // }
+
 })

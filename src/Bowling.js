@@ -10,10 +10,11 @@ function Game () {
 Game.prototype.roll = function(pins_hit){
 
    if(this.strike(pins_hit)) {
-   this.frame_input[this.frame].push("X")
-   this.frame_output[this.frame].push("calculating")
-   var strikes_frame = this.frame
-   this.frame++
+     this.frame_input[this.frame].push("X")
+     this.frame_output[this.frame].push("calculating")
+     var strikes_frame = this.frame
+     this.frame++
+     //push 10+frame_input[strikes_frame+1]
   }
 
   // else if (this.frame_output.find("X")===true) {

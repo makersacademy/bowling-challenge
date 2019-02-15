@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<scrip src="js/interface.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="jquery/interface.js"></script>
 <script src="src/Bowling.js"></script>
 
+<scrip
 <head>
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
@@ -13,7 +14,7 @@
 <div id="buttons" class="buttons">
   Pins Hit:
 <button type="button" id="0"  class="score btn">0</button>
-<button type="button" id="0"   class="score btn">1</button>
+<button type="button" id="1"   class="score btn">1</button>
 <button type="button" id="2"  class="score btn">2</button>
 <button type="button" id="3"  class="score btn">3</button>
 <button type="button" id="4"  class="score btn">4</button>
@@ -25,6 +26,7 @@
 <button type="button" id="10"  class="score btn">10</button>
 </div>
 
+<h2 id="output"></h2>
 
 <div id='scorecard'>
  <table id='scorecardTable' class='scorecard'>
@@ -42,7 +44,7 @@
    </tr>
    <tr>
      <td id="f1r1"></td>
-     <td id="f1r2">Roll 2</td>
+     <td id="f1r2"></td>
      <td id="f2r1">Roll 1</td>
      <td id="f2r2">Roll 2</td>
      <td id="f3r1">Roll 1</td>

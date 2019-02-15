@@ -6,17 +6,17 @@ function Scorecard () {
 }
 
 Scorecard.prototype.rollOne = function (rollScore, frame = new Frame(this.frameNumber)) {
-  if (this.frameNumber >= 11) { throw new Error("Cannot enter more than 10 frames") }
+  if (this.frameNumber >= 11) { throw new Error('Cannot enter more than 10 frames') }
   this.frameNumber++
   this.frames.push(frame)
   frame.rollOneScore(rollScore)
-};
+}
 
 Scorecard.prototype.rollTwo = function (rollScore) {
   var frame = this.frames[this.frames.length - 1]
   frame.rollTwoScore(rollScore)
-  if(!this._wasASpare(frame)) { this._calculateScore() };
-};
+  if (!this._wasASpare(frame)) { this._calculateScore() };
+}
 
 Scorecard.prototype.lastRoundStrike = function (rollOne, rollTwo) {
   var frame = this.frames[this.frames.length - 1]
@@ -35,28 +35,23 @@ Scorecard.prototype._calculateScore = function () {
   var scoringFrame = this.frames.length - 1
   while (this.frames.length > this.scores.length) {
     var frame = this.frames[scoringFrame]
-    if (scoringFrame != 9) {
-      if (this._wasASpare(frame)) {
-        this._calculateSpareBonus(frame)
-      }
-      if (this._wasAStrike(frame)) {
-        this._calculateStrikeBonus(frame)
-      }
-    }
+    if (scoringFrame !== 9) { this._addBonus(frame) }
     this.totalScore += frame.frameScore()
     this.scores.push(frame.frameScore())
     scoringFrame--
-    console.log(this.frames.length)
-    console.log(this.scores.length)
   }
-};
+}
+
+Scorecard.prototype._addBonus = function (frame) {
+  if (this._wasASpare(frame)) { this._calculateSpareBonus(frame) }
+  if (this._wasAStrike(frame)) { this._calculateStrikeBonus(frame) }
+}
 
 Scorecard.prototype._wasASpare = function (frame) {
-  return (frame.rollOne + frame.rollTwo === 10) && (frame.rollOne != 10)
+  return (frame.rollOne + frame.rollTwo === 10) && (frame.rollOne !== 10)
 }
 
 Scorecard.prototype._wasAStrike = function (frame) {
-  console.log(frame)
   return frame.rollOne === 10
 }
 
@@ -73,6 +68,6 @@ Scorecard.prototype._calculateStrikeBonus = function (frame) {
   } else if (nextFrame.rollTwo === null) {
     frame.addBonus(nextFrame.rollOne + nextFrame.bonus)
   } else {
-  frame.addBonus(nextFrame.rollOne + nextFrame.rollTwo)
+    frame.addBonus(nextFrame.rollOne + nextFrame.rollTwo)
   }
 }

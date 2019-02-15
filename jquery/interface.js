@@ -7,12 +7,16 @@ $(document).ready(function() {
       if (turn === 1) {
         game.roll(0)
         $(`#f${frame}r${turn}`).text(game.frame_input[frame])
-        turn++}
+        turn++
+      }
       else {
         game.roll(0)
         $(`#f${frame}r${turn}`).text(game.frame_input[frame][1])
         turn = 1
-        frame++}
+        $(`#sc${frame}`).text(game.frame_output[frame][0])
+        frame++
+        console.log(game.frame_output[frame])
+      }
     })
 
     $('#1').click(function(){
@@ -26,6 +30,7 @@ $(document).ready(function() {
           game.roll(1)
           $(`#f${frame}r${turn}`).text(game.frame_input[frame][1])
           turn = 1
+          $(`#sc${frame}`).text(game.frame_output[frame][0])
           frame++
           $("#buttons").show().children().show();
         }
@@ -43,6 +48,7 @@ $(document).ready(function() {
           game.roll(2)
           $(`#f${frame}r${turn}`).text(game.frame_input[frame][1])
           turn = 1
+          $(`#sc${frame}`).text(game.frame_output[frame][0])
           frame++
           $("#buttons").show().children().show();
         }
@@ -61,6 +67,7 @@ $(document).ready(function() {
           game.roll(3)
           $(`#f${frame}r${turn}`).text(game.frame_input[frame][1])
           turn = 1
+          $(`#sc${frame}`).text(game.frame_output[frame][0])
           frame++
           $("#buttons").show().children().show();
         }
@@ -80,6 +87,7 @@ $(document).ready(function() {
           game.roll(4)
           $(`#f${frame}r${turn}`).text(game.frame_input[frame][1])
           turn = 1
+          $(`#sc${frame}`).text(game.frame_output[frame][0])
           frame++
           $("#buttons").show().children().show();
         }
@@ -100,6 +108,7 @@ $(document).ready(function() {
           game.roll(5)
           $(`#f${frame}r${turn}`).text(game.frame_input[frame][1])
           turn = 1
+          $(`#sc${frame}`).text(game.frame_output[frame][0])
           frame++
           $("#buttons").show().children().show();
         }
@@ -121,6 +130,7 @@ $(document).ready(function() {
           game.roll(6)
           $(`#f${frame}r${turn}`).text(game.frame_input[frame][1])
           turn = 1
+          $(`#sc${frame}`).text(game.frame_output[frame][0])
           frame++
           $("#buttons").show().children().show();
         }
@@ -143,6 +153,7 @@ $(document).ready(function() {
           game.roll(7)
           $(`#f${frame}r${turn}`).text(game.frame_input[frame][1])
           turn = 1
+          $(`#sc${frame}`).text(game.frame_output[frame][0])
           frame++
           $("#buttons").show().children().show();
         }
@@ -166,6 +177,7 @@ $(document).ready(function() {
           game.roll(8)
           $(`#f${frame}r${turn}`).text(game.frame_input[frame][1])
           turn = 1
+          $(`#sc${frame}`).text(game.frame_output[frame][0])
           frame++
           $("#buttons").show().children().show();
         }
@@ -190,6 +202,7 @@ $(document).ready(function() {
           game.roll(9)
           $(`#f${frame}r${turn}`).text(game.frame_input[frame][1])
           turn = 1
+          $(`#sc${frame}`).text(game.frame_output[frame][0])
           frame++
           $("#buttons").show().children().show();
         }
@@ -204,6 +217,7 @@ $(document).ready(function() {
           game.roll(10)
           $(`#f${frame}r${turn}`).text(game.frame_input[frame][1])
           turn = 1
+          $(`#sc${frame}`).text(game.frame_output[frame][0])
           frame++
           $("#buttons").show().children().show();
         }

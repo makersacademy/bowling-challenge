@@ -11,7 +11,7 @@ Scorecard.prototype.firstThrow = function (score) {
 Scorecard.prototype.secondThrow = function (score) {
   let pinsRemaining = 10 - this._firstThrow
   if (this._firstThrow + score > 10) {
-    // throw new Error(`There are only ${pinsRemaining} pins Pins remaining`);
+    throw new Error(`There are only ${pinsRemaining} pins Pins remaining`)
   } else {
     this._secondThrow = score
   }
@@ -80,7 +80,7 @@ Scorecard.prototype.updateScores = function () {
         this.strikeCheck(firstScore) ||
         this.spareCheck(firstScore, secondScore)
       ) {
-          this.setScore(i, 0)
+        this.setScore(i, 0)
       }
       // Anything else
       else {
@@ -111,19 +111,19 @@ Scorecard.prototype.updateScores = function () {
       let lastFirstScore = this._allFrames[i - 1][0]
       // Triple Strike
       if (
-      this.strikeCheck(lastFirstScore) &&
+        this.strikeCheck(lastFirstScore) &&
       this.strikeCheck(firstScore) &&
       this.strikeCheck(secondScore)
       ) {
-      this.setScore(i - 1, 30)
+        this.setScore(i - 1, 30)
       }
       // Checks in this frame
-      if ( this.strikeCheck(firstScore) ||
+      if (this.strikeCheck(firstScore) ||
       this.spareCheck(firstScore, secondScore)) {
         var thirdScore = this._allFrames[i][2]
-        this.setScore(i, firstScore + secondScore + thirdScore);
+        this.setScore(i, firstScore + secondScore + thirdScore)
       } else {
-        this.setScore(i, firstScore + secondScore);
+        this.setScore(i, firstScore + secondScore)
       }
     }
   }

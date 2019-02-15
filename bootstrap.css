@@ -70,9 +70,14 @@ hr {
   overflow: visible;
 }
 
+
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 150px;
 }
 
 p {
@@ -362,6 +367,7 @@ h1, h2, h3, h4, h5, h6,
   font-family: "Cabin Sketch", cursive;
   font-weight: 500;
   line-height: 1.2;
+  text-align: center;
 }
 
 h1, .h1 {
@@ -10589,8 +10595,15 @@ a.text-dark:hover, a.text-dark:focus {
   text-decoration: none;
 }
 
+#buttons {
+  text-align: center;
+  margin: 25px;
+}
+
 button, input, optgroup, select, textarea {
   font-family: "Neucha", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 2px;
+  float: center;
 }
 
 blockquote {

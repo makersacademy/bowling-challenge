@@ -14,9 +14,8 @@ body {
  font-size: 16px;
  padding: 10px, 20px;
  cursor: pointer;
- width: 75px;
+ width: 85px;
  margin: 10px;
- align: center;
  -webkit-border-radius: 5px;
  font-family: inherit;
 }
@@ -29,6 +28,7 @@ body {
 .hidden {
  visibility: hidden;
  height: 0px;
+ column-width: 0px;
 }
 
 .visible {

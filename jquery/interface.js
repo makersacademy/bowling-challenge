@@ -16,6 +16,7 @@ $(document).ready(function() {
         $(`#sc${frame}`).text(game.frame_output[frame][0])
         frame++
         console.log(game.frame_output[frame])
+        game.check_for_bonus()
       }
     })
 
@@ -212,6 +213,7 @@ $(document).ready(function() {
         if (turn === 1) {
           game.roll(10)
           $(`#f${frame}r${turn}`).text(game.frame_input[frame])
+          $(`#sc${frame}`).text(game.frame_output[frame][0])
           frame++
         }
         else {

@@ -16,4 +16,5 @@ describe("Game", function(){
       game.roll(1)};
       expect(game.score()).toEqual(20);
   });
+  
 });

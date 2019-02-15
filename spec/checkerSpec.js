@@ -27,6 +27,11 @@ describe("Checker:", function() {
   });
 
   describe("#lastRolls:", function() {
+    it("returns true if currentRollisStrikeorSpare", function() {
+      expect(checker.currentRollStrikeOrSpare(10, 0)).toEqual(true);
+      expect(checker.currentRollStrikeOrSpare(5, 5)).toEqual(true);
+      expect(checker.currentRollStrikeOrSpare(0, 5)).toEqual(false);
+    });
     it("returns true if previous score was a Strike and current isn't", function() {
       expect(checker.lastRollStrikeThisRollNot(10, 5)).toEqual(true);
       expect(checker.lastRollStrikeThisRollNot(5, 5)).toEqual(false);

@@ -9,7 +9,7 @@ Checker.prototype.strikeCheck = function(firstScore) {
 };
 
 Checker.prototype.spareCheck = function(firstScore, secondScore) {
-  if (firstScore != 10 && firstScore + secondScore === 10) {
+  if (firstScore !== 10 && firstScore + secondScore === 10) {
     return true;
   } else {
     return false;
@@ -31,6 +31,17 @@ Checker.prototype.firstRollStrikeOrSpare = function(
   }
 };
 
+Checker.prototype.currentRollStrikeOrSpare = function(firstScore, secondScore) {
+  if (
+    this.strikeCheck(firstScore) ||
+    this.spareCheck(firstScore, secondScore)
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 Checker.prototype.lastRollStrikeThisRollNot = function(
   lastFirstScore,
   firstScore
@@ -42,22 +53,34 @@ Checker.prototype.lastRollStrikeThisRollNot = function(
   }
 };
 
-Checker.prototype.lastTwoStrikesThisRollNot = function(lastLastFirstScore, lastFirstScore, firstScore) {
-  if (this.strikeCheck(lastLastFirstScore) &&
+Checker.prototype.lastTwoStrikesThisRollNot = function(
+  lastLastFirstScore,
+  lastFirstScore,
+  firstScore
+) {
+  if (
+    this.strikeCheck(lastLastFirstScore) &&
     this.strikeCheck(lastFirstScore) &&
-    !this.strikeCheck(firstScore)) {
-      return true
-    } else {
-      return false
-    }
-}
+    !this.strikeCheck(firstScore)
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};
 
-Checker.prototype.tripleStrike = function(lastLastFirstScore, lastFirstScore, firstScore) {
-  if (this.strikeCheck(lastLastFirstScore) &&
+Checker.prototype.tripleStrike = function(
+  lastLastFirstScore,
+  lastFirstScore,
+  firstScore
+) {
+  if (
+    this.strikeCheck(lastLastFirstScore) &&
     this.strikeCheck(lastFirstScore) &&
-    this.strikeCheck(firstScore)) {
-      return true
-    } else {
-      return false
-    }
-}
+    this.strikeCheck(firstScore)
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};

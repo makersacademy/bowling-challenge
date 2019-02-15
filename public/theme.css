@@ -1,8 +1,44 @@
 body {
-  font-family: "Lato", sans-serif;
+  font-family: "Roboto";
   background-image: url("bowling.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: 50% 25%;
-  opacity: 0;
+}
+
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+#title {
+  color: black;
+  font-size: 40px;
+}
+
+/* #pinButtons {
+  margin: auto;
+  position: absolute;
+  align: center;
+} */
+
+.button {
+  display: inline-block;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  border: 1px solid red;
+}
+
+.output {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  width: 600px;
+  height: 300px;
+  margin: 0;
+  position: absolute;
+  top: 35%;
+  left: 35%;
+  opacity: 0.7;
 }

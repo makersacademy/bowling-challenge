@@ -23,18 +23,34 @@ window.onload = function() {
         When user clicks Begin Game
             Hide get-bowlers section
             Show play-game section
-            Create the frames display
+            Begin game with players(setting up frames)
+            Create frames display
     */
     document.getElementById('begin-game').addEventListener('click', function(event) {
         document.getElementById('get-bowlers').style.display = 'none';
         document.getElementById('play-game').style.display = 'block';
-        /*
-            Set innerHtml of #frames to
-            A table with 11 rows, and a row for each bowler
-            Give each cell an identifying id e.g. name-foo; foo-f01; foo-f02
-                first ensure that bowlers script rejects duplicate names
-                this is to allow JS to find cells and update contents when input is given
-        */
+        // Begin game with all bowlers
+        game.begin(bowlers.all)
+        let frameRows = []
+        for(i = 0; i < Object.keys(game.frames).length; i++) {
+            //Add a long string to frameRows which will be used to draw and label the table
+            frameRows.push(
+                '<tr>' +
+                    '<td id="name-' + Object.keys(game.frames)[i] + '">' + Object.keys(game.frames)[i] + '</td>' +
+                    '<td id="' + Object.keys(game.frames)[i] + '-f01">' + Object.keys(game.frames)[i].toLowerCase() + '-f01</td>' +
+                    '<td id="' + Object.keys(game.frames)[i] + '-f02">' + Object.keys(game.frames)[i].toLowerCase()+ '-f02</td>' +
+                    '<td id="' + Object.keys(game.frames)[i] + '-f03">' + Object.keys(game.frames)[i].toLowerCase()+ '-f03</td>' +
+                    '<td id="' + Object.keys(game.frames)[i] + '-f04">' + Object.keys(game.frames)[i].toLowerCase()+ '-f04</td>' +
+                    '<td id="' + Object.keys(game.frames)[i] + '-f05">' + Object.keys(game.frames)[i].toLowerCase()+ '-f05</td>' +
+                    '<td id="' + Object.keys(game.frames)[i] + '-f06">' + Object.keys(game.frames)[i].toLowerCase()+ '-f06</td>' +
+                    '<td id="' + Object.keys(game.frames)[i] + '-f07">' + Object.keys(game.frames)[i].toLowerCase()+ '-f07</td>' +
+                    '<td id="' + Object.keys(game.frames)[i] + '-f08">' + Object.keys(game.frames)[i].toLowerCase()+ '-f08</td>' +
+                    '<td id="' + Object.keys(game.frames)[i] + '-f09">' + Object.keys(game.frames)[i].toLowerCase()+ '-f09</td>' +
+                    '<td id="' + Object.keys(game.frames)[i] + '-f10">' + Object.keys(game.frames)[i].toLowerCase()+ '-f10</td>' +
+                '</tr>'
+            )
+        }
+        document.getElementById('frames').innerHTML = "<table>" + frameRows.join("") + "</table>";
         /*
             Set innerHtml of #frames current player's name (have Game function figure this out)
         */

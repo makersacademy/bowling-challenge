@@ -11,6 +11,15 @@ input {
     display: none;
 }
 
+#frames {
+    width: 100%;
+}
+
+#frames td, #frames th {
+    border: 1px solid black;
+}
+
+
 #summarise {
     display: none;
 }

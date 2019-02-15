@@ -24,8 +24,6 @@ function playerScoreCard() {
         let previousSpare = (i !== 0) && (scoreTracker[i - 1][0] + scoreTracker[i - 1][1] === 10);
         let standardScore = (scoreTracker[i][0] + scoreTracker[i][1]);
 
-
-
         if (currentSpare && previousSpare) { score += 10 + scoreTracker[i][0]; console.log('cpsp') } else
         if (currentStrike && previousStrike) { score += (standardScore * 2) + 10; console.log('cpst') } else
         if (currentStrike) {score += 0; console.log('st')} else
@@ -34,7 +32,6 @@ function playerScoreCard() {
         if (previousSpare) { score += 10 + scoreTracker[i][0] + standardScore; console.log('psp')} else
         { score += standardScore; console.log('n')}
     };
-
 
     return score;
   };

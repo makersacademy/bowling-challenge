@@ -11,9 +11,9 @@ Game.prototype.score = function () {
   var rollIndex = 0;
   for (i = 0; i < 10; i++) {
     if (this.isSpare(rollIndex)) {
-      total += 10 + this._rolls[rollIndex + 2];
+      total += this.spareScore(rollIndex);
     } else {
-      total += this._rolls[rollIndex] + this._rolls[rollIndex + 1];
+      total += this.frameScore(rollIndex);
     };
     rollIndex += 2;
   };
@@ -22,4 +22,12 @@ Game.prototype.score = function () {
 
 Game.prototype.isSpare = function(rollIndex) {
   return this._rolls[rollIndex] + this._rolls[rollIndex + 1] === 10;
+};
+
+Game.prototype.spareScore = function(rollIndex) {
+  return 10 + this._rolls[rollIndex + 2];
+};
+
+Game.prototype.frameScore = function(rollIndex) {
+  return this._rolls[rollIndex] + this._rolls[rollIndex + 1];
 };

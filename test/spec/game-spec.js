@@ -8,43 +8,58 @@
   });
 
   describe('When the game is created', function () {
-    it('has a frames array with 1 frame', function () {
-      expect(game.frames).toContain([]);
+    it('has default frames const', function () {
+      expect(game.DEFAULT_FRAMES.length).toEqual(10);
     });
 
-    it('can add a frame', function () {
-      game.addFrame();
-      expect(game.frames).toEqual([[],[]])
-    });
+    it('has frames equal to the default frames', function () {
+      expect(game.frames).toEqual(game.DEFAULT_FRAMES)
+    })
+
+    it('has current frame of 1', function () {
+      expect(game.currentFrame).toEqual(1)
+    })
+
+    it('has current bowl of 1', function () {
+      expect(game.currentBowl).toEqual(1)
+    })
+
+    it('has a total of zero', function () {
+      expect(game.total).toEqual(0)
+    })
+
+    it('has a lastTwoBowls property', function () {
+      expect(game.lastTwoBowls).toEqual([0,0])
+    })
   })
 
   describe('When playing the game', function () {
-    it('adds first bowl to the frame', function () {
-      game.addBowl(6);
+    beforeEach(function () {
+      game.addBowl(6)
+    })
+    it('adds first bowl to first frame', function () {
       expect(game.frames[0]).toEqual([6])
+      expect(game.currentBowl).toEqual(2)
     })
 
-    it('adds second bowl to the frame', function () {
-      game.addBowl(6);
+    it('adds second bowl to first frame, and moves the frame on', function () {
       game.addBowl(3);
       expect(game.frames[0]).toEqual([6, 3])
+      expect(game.currentBowl).toEqual(1)
+      expect(game.currentFrame).toEqual(2)
     })
 
-    it('creates a new frame on the third bowl, and adds bowl to the new frame', function () {
-      game.addBowl(6);
+    it('adds the third bowl to the second frame', function () {
       game.addBowl(3);
       game.addBowl(4);
       expect(game.frames[1]).toEqual([4])
     })
-  })
 
-  describe('When game is over', function () {
-    it('can check if the game is over', function () {
-      for (var i = 0; i < 10; i++) {
-        game.addBowl(6);
-        game.addBowl(3);
-      }
-      expect(game.gameOver()).toEqual(true)
+    it('records the last two bowls', function () {
+      game.addBowl(3);
+      expect(game.lastTwoBowls).toEqual([6,3])
+      game.addBowl(4)
+      expect(game.lastTwoBowls).toEqual([3,4])
     })
   })
 })();

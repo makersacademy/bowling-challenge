@@ -101,23 +101,23 @@ Scorecard.prototype.updateScores = function () {
       }
       // Double Strike following anything else
       if (
-        lastLastFirstScore === 10 &&
-        lastFirstScore === 10 &&
-        firstScore != 10
+        this.strikeCheck(lastLastFirstScore) &&
+        this.strikeCheck(lastFirstScore) &&
+        !this.strikeCheck(firstScore)
       ) { this.setScore(i - 2, 20 + firstScore) }
     }
     if (i === 9) {
       // Checks in last frame {
       let lastFirstScore = this._allFrames[i - 1][0]
-    // Triple Strike
-    if (
+      // Triple Strike
+      if (
       this.strikeCheck(lastFirstScore) &&
       this.strikeCheck(firstScore) &&
       this.strikeCheck(secondScore)
       ) {
       this.setScore(i - 1, 30)
       }
-      // Checks in last frame
+      // Checks in this frame
       if ( this.strikeCheck(firstScore) ||
       this.spareCheck(firstScore, secondScore)) {
         var thirdScore = this._allFrames[i][2]
@@ -125,18 +125,6 @@ Scorecard.prototype.updateScores = function () {
       } else {
         this.setScore(i, firstScore + secondScore);
       }
-      //
-      // }
-      // let lastLastFirstScore = this._allFrames[i - 2][0]
-      // let lastFirstScore = this._allFrames[i - 1][0]
-      // // Triple Strike
-      // if (
-      //   this.strikeCheck(lastLastFirstScore) &&
-      //   this.strikeCheck(lastFirstScore) &&
-      //   this.strikeCheck(firstScore)
-      // ) {
-      //   this._score[i - 1] = 30
-      // }
     }
   } console.log(this._score)
 }

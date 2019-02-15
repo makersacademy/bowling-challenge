@@ -65,7 +65,7 @@ describe('Scorecard:', function () {
         [9, 1],
         [0, 0],
         [5, 4],
-        [8, 0],
+        [5, 5],
         [10, 5, 5]
       ]
       scorecard.updateScores()
@@ -77,9 +77,9 @@ describe('Scorecard:', function () {
       expect(scorecard._score[5]).toEqual(10)
       expect(scorecard._score[6]).toEqual(0)
       expect(scorecard._score[7]).toEqual(9)
-      expect(scorecard._score[8]).toEqual(8)
+      expect(scorecard._score[8]).toEqual(20)
       expect(scorecard._score[9]).toEqual(20)
-      expect(scorecard.calculateTotal()).toEqual(136)
+      expect(scorecard.calculateTotal()).toEqual(148)
     })
     it('should update scores in the scores array for a game with no strikes or spares', function () {
       scorecard._allFrames = [

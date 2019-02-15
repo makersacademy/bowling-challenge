@@ -7,13 +7,13 @@ describe("PLAYER", function() {
 
   describe("*Frame is not complete*", function() {
     it("should start with 12 rounds", function() {
-      expect(player.remainingFrames).toEqual(12);
+      expect(player.remainingFrames).toEqual(10);
     });
 
     it("should not detract from remaining frames", function() {
       spyOn(Frame.prototype, "returnIsComplete").and.returnValue(false);
       player.enterRoll(1);
-      expect(player.remainingFrames).toEqual(12);
+      expect(player.remainingFrames).toEqual(10);
     });
   });
 
@@ -21,7 +21,7 @@ describe("PLAYER", function() {
     it("should detract one from remaining frames", function() {
       spyOn(Frame.prototype, "returnIsComplete").and.returnValue(true);
       player.enterRoll(2);
-      expect(player.remainingFrames).toEqual(11);
+      expect(player.remainingFrames).toEqual(9);
     });
 
     it("should create a new frame if existing is complete", function() {
@@ -42,21 +42,29 @@ describe("PLAYER", function() {
   describe("Bonus points", function(){
     sparePlayer = new Player
     strikePlayer = new Player
+
     it('should add points of next roll to spare score', function() {
       sparePlayer.enterRoll(3)
       sparePlayer.enterRoll(7)
       sparePlayer.enterRoll(4)
       sparePlayer.enterRoll(4)
-      expect(sparePlayer.frames[0].score).toEqual(14)
       expect(sparePlayer.totalScore).toEqual(22)
     })
 
-    it('should add points of next roll to spare score', function() {
+    it('should add points of next roll to strike score', function() {
       strikePlayer.enterRoll(10)
       strikePlayer.enterRoll(4)
       strikePlayer.enterRoll(2)
-      expect(strikePlayer.frames[0].score).toEqual(16)
       expect(strikePlayer.totalScore).toEqual(22)
+    })
+
+    it('should not add next round\'s bonus points to strike score', function() {
+      doubleStrike = new Player("doublestrike")
+      doubleStrike.enterRoll(10)
+      doubleStrike.enterRoll(10)
+      doubleStrike.enterRoll(4)
+      doubleStrike.enterRoll(2)
+      expect(doubleStrike.totalScore).toEqual(42)
     })
   })
 

@@ -49,6 +49,24 @@ describe("GAME (SinglePlayer)", function() {
       strike.enterRoll(3)
       expect(strike.totalScore).toEqual(26)
     })
-
   });
+
+  // describe("Final round", function() {
+  //   describe("Game over", function() {
+  //     it("should declare game over after the 10 round", function() {
+  //       perfect = new Player("perfect");
+  //       perfect.enterRoll(10)
+  //       perfect.enterRoll(10)
+  //       perfect.enterRoll(10)
+  //       perfect.enterRoll(10)
+  //       perfect.enterRoll(10)
+  //       perfect.enterRoll(10)
+  //       perfect.enterRoll(10)
+  //       perfect.enterRoll(10)
+  //       perfect.enterRoll(10)
+  //       perfect.enterRoll(10)
+  //       perfect.enterRoll(10)
+  //     })
+  //   })
+  // })
 });

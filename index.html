@@ -3,29 +3,77 @@
   <head>
     <meta charset="utf-8">
     <title>Bowling Scoreboard</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <header>
-      Bowling Scoreboard
-    </header>
+    <header>Bowling Scoreboard</header>
 
-    <table>
-      <tr id="frame-title">
-        <th>1</th>
-        <th>2</th>
-        <th>3</th>
-        <th>4</th>
-        <th>5</th>
-        <th>6</th>
-        <th>7</th>
-        <th>8</th>
-        <th>9</th>
-        <th>10</th>
+    <table id="frames-table">
+      <tr>
+        <th colspan="2">Frame 1</th>
+        <th colspan="2">Frame 2</th>
+        <th colspan="2">Frame 3</th>
+        <th colspan="2">Frame 4</th>
+        <th colspan="2">Frame 5</th>
+        <th colspan="2">Frame 6</th>
+        <th colspan="2">Frame 7</th>
+        <th colspan="2">Frame 8</th>
+        <th colspan="2">Frame 9</th>
+        <th colspan="3">Frame 10</th>
+        <th colspan="1">Total:</th>
       </tr>
-      <tr id="frame-scores">
-        
+
+      <tr id="frame-single-bowls">
+        <td id="frame1-bowl1">5</td>
+        <td id="frame1-bowl2">5</td>
+        <td id="frame2-bowl1">5</td>
+        <td id="frame2-bowl2">5</td>
+        <td id="frame3-bowl1">5</td>
+        <td id="frame3-bowl2">5</td>
+        <td id="frame4-bowl1">5</td>
+        <td id="frame4-bowl2">5</td>
+        <td id="frame5-bowl1">5</td>
+        <td id="frame5-bowl2">5</td>
+        <td id="frame6-bowl1">5</td>
+        <td id="frame6-bowl2">5</td>
+        <td id="frame7-bowl1">5</td>
+        <td id="frame7-bowl2">5</td>
+        <td id="frame8-bowl1">5</td>
+        <td id="frame8-bowl2">5</td>
+        <td id="frame9-bowl1">5</td>
+        <td id="frame9-bowl2">5</td>
+        <td id="frame10-bowl1">5</td>
+        <td id="frame10-bowl2">5</td>
+        <td id="frame10-bowl3">5</td>
+        <td id="total" rowspan="2">131</td>
+      </tr>
+
+      <tr>
+        <td colspan="2" id="frame1-score">F1 scr</td>
+        <td colspan="2" id="frame2-score">F2 scr</td>
+        <td colspan="2" id="frame3-score">F1 scr</td>
+        <td colspan="2" id="frame4-score">F1 scr</td>
+        <td colspan="2" id="frame5-score">F1 scr</td>
+        <td colspan="2" id="frame6-score">F1 scr</td>
+        <td colspan="2" id="frame7-score">F1 scr</td>
+        <td colspan="2" id="frame8-score">F1 scr</td>
+        <td colspan="2" id="frame9-score">F1 scr</td>
+        <td colspan="3" id="frame10-score">F1 scr</td>
       </tr>
     </table>
 
+    <section id="score-buttons">
+      <button id="bowl0" onclick="addBowl(0)">0</button>
+      <button id="bowl1" onclick="addBowl(1)">1</button>
+      <button id="bowl2" onclick="addBowl(2)">2</button>
+      <button id="bowl3" onclick="addBowl(3)">3</button>
+      <button id="bowl4" onclick="addBowl(4)">4</button>
+      <button id="bowl5" onclick="addBowl(5)">5</button>
+      <button id="bowl6" onclick="addBowl(6)">6</button>
+      <button id="bowl7" onclick="addBowl(7)">7</button>
+      <button id="bowl8" onclick="addBowl(8)">8</button>
+      <button id="bowl9" onclick="addBowl(9)">9</button>
+      <button id="bowl10" onclick="addBowl(10)">10</button>
+    </section>
   </body>
 </html>

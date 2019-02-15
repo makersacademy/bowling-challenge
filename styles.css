@@ -1,0 +1,40 @@
+* {
+  font-family: sans-serif;
+  padding: 5px;
+}
+
+header {
+  text-align: center;
+  font-size: 36px;
+}
+
+table {
+  margin: 0px auto;
+}
+
+table th, tr, td {
+  border: 1px solid black;
+  text-align: center;
+  width: 30px;
+}
+
+#score-buttons {
+  text-align: center;
+}
+
+#score-buttons button {
+  text-align: center;
+  font-size: 14px;
+  height: 40px;
+  width: 48px;
+  cursor: pointer;
+  font-weight: bold;
+  border: 2px solid;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+#total-score {
+  font-size: 24px;
+  text-align: center;
+}

@@ -3,6 +3,7 @@ function Scorecard () {
   this.frameNumber = 1
   this.frames = []
   this.scores = []
+  this.rollNumber = 1
 }
 
 Scorecard.prototype.rollOne = function (rollScore, frame = new Frame(this.frameNumber)) {
@@ -10,12 +11,14 @@ Scorecard.prototype.rollOne = function (rollScore, frame = new Frame(this.frameN
   this.frameNumber++
   this.frames.push(frame)
   frame.rollOneScore(rollScore)
+  if (rollScore != 10) { this.rollNumber = 2 }
 }
 
 Scorecard.prototype.rollTwo = function (rollScore) {
   var frame = this.frames[this.frames.length - 1]
   frame.rollTwoScore(rollScore)
   if (!this._wasASpare(frame)) { this._calculateScore() };
+  this.rollNumber = 1
 }
 
 Scorecard.prototype.lastRoundStrike = function (rollOne, rollTwo) {

@@ -23,9 +23,20 @@ window.onload = function() {
         When user clicks Begin Game
             Hide get-bowlers section
             Show play-game section
+            Create the frames display
     */
     document.getElementById('begin-game').addEventListener('click', function(event) {
         document.getElementById('get-bowlers').style.display = 'none';
         document.getElementById('play-game').style.display = 'block';
+        /*
+            Set innerHtml of #frames to
+            A table with 11 rows, and a row for each bowler
+            Give each cell an identifying id e.g. name-foo; foo-f01; foo-f02
+                first ensure that bowlers script rejects duplicate names
+                this is to allow JS to find cells and update contents when input is given
+        */
+        /*
+            Set innerHtml of #frames current player's name (have Game function figure this out)
+        */
     })
 }

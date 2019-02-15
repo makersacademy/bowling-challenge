@@ -3,7 +3,7 @@ function Player(name) {
   this.remainingFrames = 12;
   this.frames = [];
   this.currentFrame = new Frame();
-  this.totalScore
+  this.totalScore;
 }
 
 Player.prototype.enterRoll = function(score) {
@@ -29,23 +29,22 @@ Player.prototype._reduceRemainingFrames = function() {
 };
 
 Player.prototype._refreshTotalScore = function() {
-  this.totalScore = 0
-  var prevFrame
-  var lastIndex = this.frames.length-1
+  this.totalScore = 0;
   this.frames.forEach(frame => {
-    if (this.frames.indexOf(frame) > 0)
-      {
-        var prevFrame = this.frames[lastIndex -1]
-        this._addBonusPoints(frame, prevFrame)
-      }
-    this.totalScore += frame.score
-  })
-
+    if (this.frames.indexOf(frame) > 0) {
+      var prevFrame = this.frames[this.frames.length - 2];
+      this._addBonusPoints(frame, prevFrame);
+    }
+    this.totalScore += frame.score;
+  });
 };
 
 Player.prototype._addBonusPoints = function(frame, prevFrame) {
-  if(prevFrame.notes === "Spare")
-  { prevFrame.score += frame.rolls[0].score
-  this.totalScore += frame.rolls[0].score}
-
+  if (prevFrame.notes === "Spare") {
+    prevFrame.score += frame.rolls[0].score;
+    this.totalScore += frame.rolls[0].score;
+  } else if (prevFrame.notes === "Strike") {
+    prevFrame.score += frame.score;
+    this.totalScore += frame.score;
+  }
 };

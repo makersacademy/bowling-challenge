@@ -32,21 +32,23 @@ describe("GAME (SinglePlayer)", function() {
   })
 
   describe("Calculate bonus scores", function() {
-    player2 = new Player("Fresh Player");
+    spare = new Player("Spare");
+    strike = new Player("Strike");
 
-    // it("Adds bonus points after spare", function(){
-    //   player2.enterRoll(5)
-    //   player2.enterRoll(5)
-    //   player2.enterRoll(3)
-    //   expect(player2.totalScore).toEqual(16)
-    // })
+    it("Adds bonus points after spare", function(){
+      spare.enterRoll(5)
+      spare.enterRoll(5)
+      spare.enterRoll(3)
+      spare.enterRoll(2)
+      expect(spare.totalScore).toEqual(18)
+    })
+
+    it("Adds bonus points after strike", function(){
+      strike.enterRoll(10)
+      strike.enterRoll(5)
+      strike.enterRoll(3)
+      expect(strike.totalScore).toEqual(26)
+    })
 
   });
-
-  // describe("Bonus points", function() {
-  //
-  // }
-
-
-  // });
 });

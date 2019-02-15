@@ -41,15 +41,22 @@ describe("PLAYER", function() {
 
   describe("Bonus points", function(){
     sparePlayer = new Player
+    strikePlayer = new Player
     it('should add points of next roll to spare score', function() {
       sparePlayer.enterRoll(3)
       sparePlayer.enterRoll(7)
       sparePlayer.enterRoll(4)
       sparePlayer.enterRoll(4)
-      // console.log(sparePlayer);
       expect(sparePlayer.frames[0].score).toEqual(14)
-      // expect(sparePlayer.totalScore).toEqual(10 + sparePlayer.current_frame.score)
       expect(sparePlayer.totalScore).toEqual(22)
+    })
+
+    it('should add points of next roll to spare score', function() {
+      strikePlayer.enterRoll(10)
+      strikePlayer.enterRoll(4)
+      strikePlayer.enterRoll(2)
+      expect(strikePlayer.frames[0].score).toEqual(16)
+      expect(strikePlayer.totalScore).toEqual(22)
     })
   })
 

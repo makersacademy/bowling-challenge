@@ -2,37 +2,16 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css" type="text/css"></link>
     <title>Bowling Scorecard</title>
     <script src = "src/roll.js"></script>
     <script src = "src/frame.js"></script>
     <script src = "src/player.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
     <script src = "interface.js"></script>
   </head>
   <body>
 <h1> Bowl me over </h1>
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black; }
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black; font-weight:bold; }
-.tg .tg-0lax{text-align:center;vertical-align:center}
-.tg .tg-0pky{border-color:inherit;text-align:center;vertical-align:center}
-.button {
-   font-size: 20px;
-   padding: 10px, 20px;
-   cursor: pointer;
-   width: 75px;
-   margin: 10px;
-   align: center;
-   -webkit-border-radius: 5px;
- }
-
- .button:hover {
-   background-color: pink;
-   color: white;
- }
-@media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;}}</style>
 
 <h2> Enter your score: </h2>
 
@@ -50,6 +29,9 @@
 
 <h2> Scorecard: </h2>
 
+<div id="warning" class="hidden"> Ooops - there aren't that many pins! Try again :) </div>
+<br>
+
 <div class="tg-wrap"><table class="tg">
   <tr>
     <th class="tg-0lax"></th>
@@ -66,46 +48,46 @@
     <th class="tg-0lax"></th>
   </tr>
   <tr>
-    <td class="tg-0pky">Name</td>
-    <td class="tg-0lax">Roll 1</td>
-    <td class="tg-0pky">Roll 2</td>
-    <td class="tg-0pky">Total</td>
+    <th class="tg-0pky">Name</th>
+    <th class="tg-0lax">Roll 1</th>
+    <th class="tg-0pky">Roll 2</th>
+    <th class="tg-0pky">Total</th>
 
-    <td class="tg-0pky">Roll 1</td>
-    <td class="tg-0pky">Roll 2</td>
-    <td class="tg-0lax">Total</td>
+    <th class="tg-0lax">Roll 1</th>
+    <th class="tg-0pky">Roll 2</th>
+    <th class="tg-0pky">Total</th>
 
-    <td class="tg-0lax">Roll 1</td>
-    <td class="tg-0lax">Roll 2</td>
-    <td class="tg-0lax">Total</td>
+    <th class="tg-0lax">Roll 1</th>
+    <th class="tg-0pky">Roll 2</th>
+    <th class="tg-0pky">Total</th>
 
-    <td class="tg-0lax">Roll 1</td>
-    <td class="tg-0lax">Roll 2</td>
-    <td class="tg-0lax">Total</td>
+    <th class="tg-0lax">Roll 1</th>
+    <th class="tg-0pky">Roll 2</th>
+    <th class="tg-0pky">Total</th>
 
-    <td class="tg-0lax">Roll 1</td>
-    <td class="tg-0lax">Roll 2</td>
-    <td class="tg-0lax">Total</td>
+    <th class="tg-0lax">Roll 1</th>
+    <th class="tg-0pky">Roll 2</th>
+    <th class="tg-0pky">Total</th>
 
-    <td class="tg-0lax">Roll 1</td>
-    <td class="tg-0pky">Roll 2</td>
-    <td class="tg-0pky">Total</td>
+    <th class="tg-0lax">Roll 1</th>
+    <th class="tg-0pky">Roll 2</th>
+    <th class="tg-0pky">Total</th>
 
-    <td class="tg-0pky">Roll 1</td>
-    <td class="tg-0pky">Roll 2</td>
-    <td class="tg-0lax">Total</td>
+    <th class="tg-0lax">Roll 1</th>
+    <th class="tg-0pky">Roll 2</th>
+    <th class="tg-0pky">Total</th>
 
-    <td class="tg-0lax">Roll 1</td>
-    <td class="tg-0lax">Roll 2</td>
-    <td class="tg-0lax">Total</td>
+    <th class="tg-0lax">Roll 1</th>
+    <th class="tg-0pky">Roll 2</th>
+    <th class="tg-0pky">Total</th>
 
-    <td class="tg-0lax">Roll 1</td>
-    <td class="tg-0lax">Roll 2</td>
-    <td class="tg-0lax">Total</td>
+    <th class="tg-0lax">Roll 1</th>
+    <th class="tg-0pky">Roll 2</th>
+    <th class="tg-0pky">Total</th>
 
-    <td class="tg-0lax">Roll 1</td>
-    <td class="tg-0lax">Roll 2</td>
-    <td class="tg-0lax">Total</td>
+    <th class="tg-0lax">Roll 1</th>
+    <th class="tg-0pky">Roll 2</th>
+    <th class="tg-0pky">Total</th>
 
     <td class="tg-0lax">Running Total</td>
   </tr>

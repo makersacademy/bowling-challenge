@@ -4,10 +4,21 @@ $(document).ready(function() {
   $(".button").click(function(event) {
     let frame = player.frames.length;
     let roll = player.currentFrame.rolls.length;
+    let rollNumber = parseInt(this.id)
 
-    player.enterRoll(parseInt(this.id));
-    refreshData(frame, roll);
+    possible = checkIfPossible(roll, rollNumber)
+    if(possible) {
+      warning.className = "hidden";
+      player.enterRoll(rollNumber);
+      refreshData(frame, roll);
+    } else {
+      warning.className = "visible";
+    }
   });
+
+  function checkIfPossible(roll, rollNumber) {
+    return roll === 0 || rollNumber + player.currentFrame.rolls[0].score <= 10
+  }
 
   function refreshData(frame, roll) {
     rollData();

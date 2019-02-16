@@ -5,6 +5,7 @@ function Frame() {
 }
 
 Frame.prototype.showTotalPoints = function () {
+  this.calculateTotalPoints();
   return this._totalPoints;
 };
 

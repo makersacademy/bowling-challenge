@@ -30,10 +30,15 @@ Game.prototype.inputBallValue= function (value, frame = new Frame()) {
   else {
     this._scorecard[this.showFrameCount() - 1].updateBallTwo(value);
     this._ballNumber --;
+    this.calculateTotalPoints();
     this._frameCount ++;
   };
 };
 
 Game.prototype.inputFrameToScorecard = function (frame) {
   this._scorecard.push(frame);
+};
+
+Game.prototype.calculateTotalPoints = function () {
+    this._totalPoints += this._scorecard[this.showFrameCount() - 1].showTotalPoints();
 };

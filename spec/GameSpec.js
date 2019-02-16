@@ -5,8 +5,8 @@ describe("Game", function() {
 
   beforeEach(function() {
     game = new Game();
-    frame = jasmine.createSpyObj('frame', ['updateBallOne', 'updateBallTwo']);
-    frame2 = jasmine.createSpyObj('frame2', ['updateBallOne', 'updateBallTwo']);
+    frame = jasmine.createSpyObj('frame', ['updateBallOne', 'updateBallTwo', 'showTotalPoints']);
+    frame2 = jasmine.createSpyObj('frame2', ['updateBallOne', 'updateBallTwo', 'showTotalPoints']);
   });
 
   it("should start with total points 0", function() {
@@ -39,6 +39,12 @@ describe("Game", function() {
     game.inputBallValue(3, frame);
     game.inputBallValue(6, frame);
     expect(frame.updateBallTwo).toHaveBeenCalled();
+  });
+
+  it("should update the total score of the frame the Frame function", function() {
+    game.inputBallValue(3, frame);
+    game.inputBallValue(6, frame);
+    expect(frame.showTotalPoints).toHaveBeenCalled();
   });
 
 });

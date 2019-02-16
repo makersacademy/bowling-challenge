@@ -60,6 +60,9 @@ ScoreCard.prototype.listEnsuingScores = function(frameIndex) {
 };
 
 
-ScoreCard.prototype.pushAllElements = function() {
-
+ScoreCard.prototype.pushAllElements = function(array1, array2) {
+  var i;
+  for (i = 0; i < array2.length; i++) {
+      array1.push(array2[i]);
+  }
 };

@@ -4,7 +4,7 @@ describe('Game', function() {
     game = new Game();
   });
   it('has no frames by default', function() {
-    expect(game.frames).to Equal([]);
+    expect(game._frames).toEqual([]);
   });
 
 })

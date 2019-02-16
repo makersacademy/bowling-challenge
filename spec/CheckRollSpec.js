@@ -9,6 +9,25 @@ describe("CheckRoll",function(){
     checkRoll = new CheckRoll([[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4]])
     expect(function(){checkRoll.roll(5)}).toThrow(new Error("game is over"));
   })
+  it("doesn't throws game over error on frame 10 turn 3 if theres a previous spare",function(){
+    checkRoll = new CheckRoll([[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,6]])
+    expect(function(){checkRoll.roll(5)}).not.toThrow(new Error("game is over"));
+    expect(function(){checkRoll.roll(5)}).not.toThrow(new Error("frame score error"));
+
+  })
+  it("doesn't throws game over error/frame error on frame 10 turn 2 if theres a previous strike",function(){
+    checkRoll = new CheckRoll([[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[10]])
+    expect(function(){checkRoll.roll(5)}).not.toThrow(new Error("game is over"))
+    expect(function(){checkRoll.roll(5)}).not.toThrow(new Error("frame score error"));
+  })
+
+  it("doesn't throws game over error/frame error on frame 10 turn 3 if theres a previous two strikes",function(){
+    checkRoll = new CheckRoll([[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[10,10]])
+    expect(function(){checkRoll.roll(5)}).not.toThrow(new Error("game is over"))
+    expect(function(){checkRoll.roll(5)}).not.toThrow(new Error("frame score error"));
+    checkRoll.roll(13);
+  })
+
   it("throws 'score error' if roll greater than 10",function(){
     expect(function(){checkRoll.roll(11)}).toThrow(new Error("score error"));
     expect(function(){checkRoll.roll(20)}).toThrow(new Error("score error"));

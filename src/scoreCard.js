@@ -27,33 +27,35 @@ ScoreCard.prototype.allFrames = function() {
 }
 
 ScoreCard.prototype.calculateStrikeBonuses = function() {
-  var allFrames = this._game.frames
-
   var i;
-  for (i = 0; i < allFrames.length; i++) {
-    var currentFrame = allFrames[i]
-    var nextFrame = allFrames[i+1]
-    var nextNextFrame = allFrames[i+2]
-
-    var listOfEnsuingScores = []
-
-    if (typeof nextFrame != 'undefined') {
-      var j;
-      for (j = 0; j < nextFrame._scores.length; j++) {
-        listOfEnsuingScores.push(nextFrame._scores[j])
-      }
-    }
-
-    if (typeof nextNextFrame != 'undefined') {
-      var k;
-      for (k = 0; k < nextNextFrame._scores.length; k++) {
-        listOfEnsuingScores.push(nextNextFrame._scores[k])
-      }
-    }
-
+  for (i = 0; i < this.allFrames().length; i++) {
+    var currentFrame = this.allFrames()[i]
     if (currentFrame.IsAStrike()) {
-      currentFrame._strikeBonusRollsScores.push(listOfEnsuingScores[0])
-      currentFrame._strikeBonusRollsScores.push(listOfEnsuingScores[1])
+      currentFrame._strikeBonusRollsScores.push(this.listEnsuingScores(i)[0])
+      currentFrame._strikeBonusRollsScores.push(this.listEnsuingScores(i)[1])
     }
   }
+}
+
+ScoreCard.prototype.listEnsuingScores = function(indexOfCurrentFrame) {
+  var currentFrame = this.allFrames()[indexOfCurrentFrame]
+  var nextFrame = this.allFrames()[indexOfCurrentFrame+1]
+  var nextNextFrame = this.allFrames()[indexOfCurrentFrame+2]
+  var scoreList = []
+
+  if (typeof nextFrame != 'undefined') {
+    var j;
+    for (j = 0; j < nextFrame._scores.length; j++) {
+      scoreList.push(nextFrame._scores[j])
+    }
+  }
+
+  if (typeof nextNextFrame != 'undefined') {
+    var k;
+    for (k = 0; k < nextNextFrame._scores.length; k++) {
+      scoreList.push(nextNextFrame._scores[k])
+    }
+  }
+
+  return scoreList
 }

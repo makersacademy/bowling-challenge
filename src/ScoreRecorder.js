@@ -26,6 +26,7 @@ ScoreRecorder.prototype.roll = function(roll){
       this._scorecard.push([roll]);
     }
   }else{
+    this.check.tenthFrameRoll check
     this._scorecard[9].push(roll);
   }
 };

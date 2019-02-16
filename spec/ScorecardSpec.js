@@ -87,7 +87,14 @@ describe("Scorecard",function(){
       [30,60,90,120,150,180,210,240,270,300]
     )
   })
-  it("can handle edge case: invalid strike in 10th frame")
+  it("can handle edge case: invalid strike in 10th frame",function(){
+    for(var i = 1; i <= 10; i++){
+      scorecard.record.roll(10);
+    };
+    scorecard.record.roll(4);
+    expect(function(){scorecard.record.roll(10)}).toThrow(new Error("frame score error"));
+  })
+
   it("can handle edge case: invalid total in 10th frame")
 })
 //cant exceed 10 frames

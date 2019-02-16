@@ -23,39 +23,43 @@ ScoreCard.prototype.total = function() {
 };
 
 ScoreCard.prototype.allFrames = function() {
-  return this._game.frames
-}
+    return this._game.frames;
+};
 
 ScoreCard.prototype.calculateStrikeBonuses = function() {
-  var i;
-  for (i = 0; i < this.allFrames().length; i++) {
-    var currentFrame = this.allFrames()[i]
-    if (currentFrame.IsAStrike()) {
-      currentFrame._strikeBonusRollsScores.push(this.listEnsuingScores(i)[0])
-      currentFrame._strikeBonusRollsScores.push(this.listEnsuingScores(i)[1])
+    var i;
+    for (i = 0; i < this.allFrames().length; i++) {
+        var currentFrame = this.allFrames()[i];
+        if (currentFrame.IsAStrike()) {
+            currentFrame._strikeBonusRollsScores.push(this.listEnsuingScores(i)[0]);
+            currentFrame._strikeBonusRollsScores.push(this.listEnsuingScores(i)[1]);
+        }
     }
-  }
-}
+};
 
-ScoreCard.prototype.listEnsuingScores = function(indexOfCurrentFrame) {
-  var currentFrame = this.allFrames()[indexOfCurrentFrame]
-  var nextFrame = this.allFrames()[indexOfCurrentFrame+1]
-  var nextNextFrame = this.allFrames()[indexOfCurrentFrame+2]
-  var scoreList = []
+ScoreCard.prototype.listEnsuingScores = function(frameIndex) {
+    var nextFrame = this.allFrames()[frameIndex+1];
+    var nextNextFrame = this.allFrames()[frameIndex+2];
+    var scoreList = [];
 
-  if (typeof nextFrame != 'undefined') {
-    var j;
-    for (j = 0; j < nextFrame._scores.length; j++) {
-      scoreList.push(nextFrame._scores[j])
+    if (typeof nextFrame != 'undefined') {
+        var j;
+        for (j = 0; j < nextFrame._scores.length; j++) {
+            scoreList.push(nextFrame._scores[j]);
+        }
     }
-  }
 
-  if (typeof nextNextFrame != 'undefined') {
-    var k;
-    for (k = 0; k < nextNextFrame._scores.length; k++) {
-      scoreList.push(nextNextFrame._scores[k])
+    if (typeof nextNextFrame != 'undefined') {
+        var k;
+        for (k = 0; k < nextNextFrame._scores.length; k++) {
+            scoreList.push(nextNextFrame._scores[k]);
+        }
     }
-  }
 
-  return scoreList
-}
+    return scoreList;
+};
+
+
+ScoreCard.prototype.pushAllElements = function() {
+
+};

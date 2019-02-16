@@ -13,20 +13,20 @@ Frame.prototype.roll = function(score) {
     }
     this._scores.push(score);
     if (score == 10) {
-      this._numberOfRolls = 1;
-      this._IsStrike = true;
-    };
+        this._numberOfRolls = 1;
+        this._IsStrike = true;
+    }
 };
 
 Frame.prototype.IsAStrike = function() {
-  return this._IsStrike;
-}
+    return this._IsStrike;
+};
 
 Frame.prototype.sumStrikeBonusRollsScores = function() {
-  var accumulator = 0;
-  var i;
-  for (i = 0; i < this._strikeBonusRollsScores.length; i++) {
-    accumulator + this._strikeBonusRollsScores[i]
-  }
-  return accumulator
-}
+    var accumulator = 0;
+    var i;
+    for (i = 0; i < this._strikeBonusRollsScores.length; i++) {
+        accumulator + this._strikeBonusRollsScores[i];
+    }
+    return accumulator;
+};

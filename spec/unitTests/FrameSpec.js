@@ -44,4 +44,8 @@ describe('Frame', function() {
     expect(frame.IsAStrike()).toBe(true)
   })
 
+  it('has a default bonus of 0', function() {
+    expect(frame.sumStrikeBonusRollsScores()).toEqual(0)
+  });
+
 });

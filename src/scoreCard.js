@@ -38,18 +38,13 @@ ScoreCard.prototype.calculateStrikeBonuses = function() {
 };
 
 ScoreCard.prototype.listEnsuingScores = function(frameIndex) {
-    var nextFrame = this.allFrames()[frameIndex+1];
-    var nextNextFrame = this.allFrames()[frameIndex+2];
     var scoreList = [];
-
-    if (typeof nextFrame != 'undefined') {
-        this.pushAllElements(scoreList, nextFrame.scores)
-    }
-
-    if (typeof nextNextFrame != 'undefined') {
-        this.pushAllElements(scoreList, nextNextFrame.scores)
-    }
-
+    var i;
+    for (i = frameIndex + 1; i < frameIndex + 3; i++) {
+        if (typeof this.allFrames()[i] != 'undefined') {
+          this.pushAllElements(scoreList, this.allFrames()[i].scores)
+        }
+    };
     return scoreList;
 };
 

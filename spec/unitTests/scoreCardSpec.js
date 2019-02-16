@@ -26,6 +26,4 @@ describe('ScoreCard', function() {
 
   });
 
-  describe()
-
 });

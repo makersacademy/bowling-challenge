@@ -52,3 +52,4 @@ A simplified illustration of the expected  responsibility of each class in a bow
 - start the game by `game.roll(pins)`, enter the number of pins knocked down at (pins);
 - Each frame allows only maximum of two roll, unless at 10th frame. An error message will show if attempts third roll within a frame.
 - Type `game.endFrame()` to end a frame and followed by `game.newFrame()` to start a new frame. Roll again and repeat same steps until you reach 10th frame.
+- from 2nd frame onwards, user can use `game.countBonus()` after `game.endFrame()` to claim the strike bonus or spare bonus. 

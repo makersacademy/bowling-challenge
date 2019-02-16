@@ -29,12 +29,18 @@ Game.prototype.newFrame = function () {
 
 Game.prototype.endFrame = function () {
   this.frameLog.push(this._frame)
+  console.log(this.frameLog);
+  // if(this.frameNumber >= 2 ) {
+  //   this.countBonus()
+  //   console.log("After bonus  " + this.frameLog)
+  // };
 
   var total
   total = this._frame.reduce((acc, val) => {
     return acc + val;
   });
   this.frameScore.push(total)
+
 };
 
 Game.prototype.roll = function (pins) {
@@ -53,13 +59,17 @@ Game.prototype.roll = function (pins) {
 
 
 Game.prototype.countBonus = function () {
+  console.log("frame number: " + this.frameNumber)
   var getBonus = this.frameScore;
+  console.log("before Bonus  " + this.frameLog)
+
   if (this._strikeBonus() === true){
-  return getBonus[getBonus.length-2] += getBonus[getBonus.length-1];
+  getBonus[getBonus.length-2] += getBonus[getBonus.length-1];
+  console.log("Inside count Bonus  " + this.frameLog);
 } else if (this._spareBonus() === true) {
-return getBonus[getBonus.length-2] += this.frameLog[this.frameLog.length-1][0];
-} else
-return
+  getBonus[getBonus.length-2] += this.frameLog[this.frameLog.length-1][0];
+    console.log("Inside count Bonus  " + this.frameLog);
+}
 };
 
 Game.prototype._strikeBonus = function () {

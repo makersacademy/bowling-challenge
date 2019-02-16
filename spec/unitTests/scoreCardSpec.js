@@ -8,6 +8,10 @@ describe('ScoreCard', function() {
 
   describe('#sum', function() {
 
+    it('can return one number not in an array', function() {
+      expect(scoreCard.sum(1)).toEqual(1)
+    })
+
     it('can sum two numbers in an array', function() {
       expect(scoreCard.sum([1, 2])).toEqual(3)
     })

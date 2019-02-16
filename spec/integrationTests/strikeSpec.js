@@ -41,10 +41,6 @@ describe('Strikes', function() {
         it('ScoreCard correctly calculates the strike bonuses when there are indeed strikes', function() {
             doOneGameWithStrikes(game)
             scoreCard.calculateStrikeBonuses()
-            var i;
-            for (i = 0; i < 10; i++) {
-              console.log(scoreCard.allFrames()[i]._strikeBonusRollsScores)
-            };
             expect(game.frames[0].sumStrikeBonusRollsScores()).toEqual(7)
             expect(game.frames[1].sumStrikeBonusRollsScores()).toEqual(0)
             expect(game.frames[2].sumStrikeBonusRollsScores()).toEqual(0)
@@ -57,6 +53,11 @@ describe('Strikes', function() {
             expect(game.frames[9].sumStrikeBonusRollsScores()).toEqual(0)
         });
 
+    });
+
+    it('Returns the correct overall game score for a game with strikes.', function() {
+        doOneGameWithStrikes(game)
+        expect(scoreCard.total()).toEqual(10+3+4+5+1+2+3+4+5+1+2+10+10+2+3+4+5+7+12+5)
     });
 
 });

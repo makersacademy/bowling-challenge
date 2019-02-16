@@ -5,6 +5,9 @@ function ScoreCard(constructorFunction = Game) {
 }
 
 ScoreCard.prototype.sum = function(array) {
+    if (typeof array == 'number') {
+      return array
+    }
     var accumulator = 0;
     var i;
     for (i = 0; i < array.length; i++) {
@@ -14,10 +17,13 @@ ScoreCard.prototype.sum = function(array) {
 };
 
 ScoreCard.prototype.total = function() {
+    this.calculateStrikeBonuses()
     var accumulator = 0;
     var i;
     for (i = 0; i < 10; i++) {
-        accumulator += this.sum(this._game.frames[i].scores);
+        console.log(accumulator)
+        accumulator += this.sum(this.allFrames()[i].scores);
+        accumulator += this.sum(this.allFrames()[i].sumStrikeBonusRollsScores());
     }
     return accumulator;
 };

@@ -17,5 +17,10 @@ describe('Frame', function() {
       frame.addRoll(4);
       expect(frame._rolls).toEqual([5,4]);
     })
+    it('throws error when rolling a third time', function() {
+      frame.addRoll(5);
+      frame.addRoll(4);
+      expect(function(){frame.addRoll(1)}).toThrowError('Already rolled twice!');
+    })
   })
 })

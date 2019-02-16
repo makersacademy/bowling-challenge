@@ -25,4 +25,10 @@ describe("EvaluateScoreSpec",function(){
   it ("evaluates an incomplete strike as 10 until it's completed",function(){
     expect(evaluateScore.scorecard([[1,9],[10]])).toEqual([20,30])
   })
+
+  it ("can evaluate a game with 9 frames",function(){
+    expect(evaluateScore.scorecard([[10],[7,3],[9,0],[10],[0,8],[8,2],[0,6],[10],[3,6]])).toEqual(
+      [20,39,48,66,74,84,90,109,118]
+    )
+  });
 })

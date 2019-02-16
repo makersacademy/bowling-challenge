@@ -1,4 +1,4 @@
-Bowling Scorecard
+Bowling Scorecard <a href="https://codeclimate.com/github/AlinaGoaga/BowlingScorecard/maintainability"><img src="https://api.codeclimate.com/v1/badges/ff3831ef5ce5bc3b8170/maintainability" /></a>
 =================
 
 ## About the app

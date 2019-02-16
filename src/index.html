@@ -1,88 +1,92 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset='utf-8' />
-  <title>Bowling Scorecard</title>
-  <link rel='stylesheet' type='text/css' media='screen' href='main.css' />
-  <script src='Scorecard.js'></script>
-  <script src='Display.js'></script>
-  <script src='https://code.jquery.com/jquery-3.3.1.js'></script>
-  <script src='Interface.js'></script>
-</head>
-<body>
-  <div class='the-full-page'>
-    
-    <div class='title'>
-      Bowling Scorecard
-    </div>
 
-    <div class='fields' >
-      <div class='top-row' id='player-name-header'>Player</div>
-      <div class='top-row' id='frame-0'>1</div>
-      <div class='top-row' id='frame-1'>2</div>
-      <div class='top-row' id='frame-2'>3</div>
-      <div class='top-row' id='frame-3'>4</div>
-      <div class='top-row' id='frame-4'>5</div>
-      <div class='top-row' id='frame-5'>6</div>
-      <div class='top-row' id='frame-6'>7</div>
-      <div class='top-row' id='frame-7'>8</div>
-      <div class='top-row' id='frame-8'>9</div>
-      <div class='top-row' id='frame-9'>10</div>
-    </div>
+  <head>
+    <meta charset='utf-8' />
+    <title>Bowling Scorecard</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/main.css' />
+    <script src='js/Scorecard.js'></script>
+    <script src='js/Display.js'></script>
+    <script src='https://code.jquery.com/jquery-3.3.1.js'></script>
+    <script src='js/Interface.js'></script>
+  </head>
 
-    <div class='players'>
-      <div class='player' id='player-1'>
-        <div class='bottom-row' id='player-name'><input type='text' placeholder='Enter your name'></input></div>
-        <div class='first-ball' id='ball-0'></div>
-        <div class='next-ball' id='ball-1'></div>
-        <div class='first-ball' id='ball-2'></div>
-        <div class='next-ball' id='ball-3'></div>
-        <div class='first-ball' id='ball-4'></div>
-        <div class='next-ball' id='ball-5'></div>
-        <div class='first-ball' id='ball-6'></div>
-        <div class='next-ball' id='ball-7'></div>
-        <div class='first-ball' id='ball-8'></div>
-        <div class='next-ball' id='ball-9'></div>
-        <div class='first-ball' id='ball-10'></div>
-        <div class='next-ball' id='ball-11'></div>
-        <div class='first-ball' id='ball-12'></div>
-        <div class='next-ball' id='ball-13'></div>
-        <div class='first-ball' id='ball-14'></div>
-        <div class='next-ball' id='ball-15'></div>
-        <div class='first-ball' id='ball-16'></div>
-        <div class='next-ball' id='ball-17'></div>
-        <div class='first-ball' id='ball-18'></div>
-        <div class='next-ball' id='ball-19'></div>
-        <div class='last-ball' id='ball-20'></div>
-        <div class='bottom-row' id='total-0'></div>
-        <div class='bottom-row' id='total-1'></div>
-        <div class='bottom-row' id='total-2'></div>
-        <div class='bottom-row' id='total-3'></div>
-        <div class='bottom-row' id='total-4'></div>
-        <div class='bottom-row' id='total-5'></div>
-        <div class='bottom-row' id='total-6'></div>
-        <div class='bottom-row' id='total-7'></div>
-        <div class='bottom-row' id='total-8'></div>
-        <div class='bottom-row' id='total-9'></div>
+  <body>
+    <div class='the-full-page'>
+      
+      <div class='title'>
+        Bowling Scorecard
       </div>
-    </div>
 
-    <div class='buttons'>
-      <button hidden class='button' type='button'>0</button>
-      <button hidden class='button' type='button'>1</button>
-      <button hidden class='button' type='button'>2</button>
-      <button hidden class='button' type='button'>3</button>
-      <button hidden class='button' type='button'>4</button>
-      <button hidden class='button' type='button'>5</button>
-      <button hidden class='button' type='button'>6</button>
-      <button hidden class='button' type='button'>7</button>
-      <button hidden class='button' type='button'>8</button>
-      <button hidden class='button' type='button'>9</button>
-      <button hidden class='button' type='button'>10</button>
-      <button class='new' type='button'>Add another player</button>
-      <button class='start' type='button'>Start game</button>
-    </div>
+      <div class='fields' >
+        <div class='top-row' id='player-name-header'>Player</div>
+        <div class='top-row' id='frame-0'>1</div>
+        <div class='top-row' id='frame-1'>2</div>
+        <div class='top-row' id='frame-2'>3</div>
+        <div class='top-row' id='frame-3'>4</div>
+        <div class='top-row' id='frame-4'>5</div>
+        <div class='top-row' id='frame-5'>6</div>
+        <div class='top-row' id='frame-6'>7</div>
+        <div class='top-row' id='frame-7'>8</div>
+        <div class='top-row' id='frame-8'>9</div>
+        <div class='top-row' id='frame-9'>10</div>
+      </div>
 
-  </div>
-</body>
+      <div class='players'>
+        <div class='player' id='player-1'>
+          <div class='bottom-row' id='player-name'>
+            <input type='text' placeholder='Enter your name'></input>
+          </div>
+          <div class='first-ball' id='ball-0'></div>
+          <div class='next-ball' id='ball-1'></div>
+          <div class='first-ball' id='ball-2'></div>
+          <div class='next-ball' id='ball-3'></div>
+          <div class='first-ball' id='ball-4'></div>
+          <div class='next-ball' id='ball-5'></div>
+          <div class='first-ball' id='ball-6'></div>
+          <div class='next-ball' id='ball-7'></div>
+          <div class='first-ball' id='ball-8'></div>
+          <div class='next-ball' id='ball-9'></div>
+          <div class='first-ball' id='ball-10'></div>
+          <div class='next-ball' id='ball-11'></div>
+          <div class='first-ball' id='ball-12'></div>
+          <div class='next-ball' id='ball-13'></div>
+          <div class='first-ball' id='ball-14'></div>
+          <div class='next-ball' id='ball-15'></div>
+          <div class='first-ball' id='ball-16'></div>
+          <div class='next-ball' id='ball-17'></div>
+          <div class='first-ball' id='ball-18'></div>
+          <div class='next-ball' id='ball-19'></div>
+          <div class='last-ball' id='ball-20'></div>
+          <div class='bottom-row' id='total-0'></div>
+          <div class='bottom-row' id='total-1'></div>
+          <div class='bottom-row' id='total-2'></div>
+          <div class='bottom-row' id='total-3'></div>
+          <div class='bottom-row' id='total-4'></div>
+          <div class='bottom-row' id='total-5'></div>
+          <div class='bottom-row' id='total-6'></div>
+          <div class='bottom-row' id='total-7'></div>
+          <div class='bottom-row' id='total-8'></div>
+          <div class='bottom-row' id='total-9'></div>
+        </div>
+      </div>
+
+      <div class='buttons'>
+        <button hidden class='button' type='button'>0</button>
+        <button hidden class='button' type='button'>1</button>
+        <button hidden class='button' type='button'>2</button>
+        <button hidden class='button' type='button'>3</button>
+        <button hidden class='button' type='button'>4</button>
+        <button hidden class='button' type='button'>5</button>
+        <button hidden class='button' type='button'>6</button>
+        <button hidden class='button' type='button'>7</button>
+        <button hidden class='button' type='button'>8</button>
+        <button hidden class='button' type='button'>9</button>
+        <button hidden class='button' type='button'>10</button>
+        <button class='new' type='button'>Add another player</button>
+        <button class='start' type='button'>Start game</button>
+      </div>
+
+    </div>
+  </body>
 </html>

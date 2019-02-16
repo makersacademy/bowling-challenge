@@ -6,17 +6,17 @@ You can try out the scorecard [here](https://htmlpreview.github.io/?https://gith
 
 It should look like this:
 
-![Bowling Scorecard](images/bowlingScorecard-1.png)
+![a-blank](images/a-blank.png)
 
 Clicking `Add another player` will append an additional line to the scorecard.
 
-![Bowling Scorecard](images/bowlingScorecard-2.png)
+![b-duo](images/b-duo.png)
 
 The player enters their name where is says to.
 
 Clicking `Start game` will highlight whose turn it is to throw.
 
-![Bowling Scorecard](images/bowlingScorecard-3.png)
+![c-start](images/c-start.png)
 
 They then click the numbered buttons to record the number of pins knocked down.
 

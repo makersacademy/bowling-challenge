@@ -6,3 +6,7 @@ function Frame() {
 Frame.prototype.showTotalPoints = function () {
   return this._totalPoints;
 };
+
+Frame.prototype.showBallOne = function () {
+  return this._ballOne;
+};

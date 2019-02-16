@@ -26,7 +26,7 @@ Frame.prototype.sumStrikeBonusRollsScores = function() {
     var accumulator = 0;
     var i;
     for (i = 0; i < this._strikeBonusRollsScores.length; i++) {
-        accumulator + this._strikeBonusRollsScores[i];
+        accumulator += this._strikeBonusRollsScores[i];
     }
     return accumulator;
 };

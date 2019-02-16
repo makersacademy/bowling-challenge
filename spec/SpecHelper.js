@@ -14,12 +14,12 @@ beforeEach(function () {
   });
 });
 
-function do_one_game_without_strikes_or_spares(game) {
+function doOneGameWithoutStrikesOrSpares(game) {
   var basicGameWithoutStrikesOrSpares = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5];
   game.run(basicGameWithoutStrikesOrSpares);
 }
 
-function do_one_game_with_strikes(game) {
+function doOneGameWithStrikes(game) {
   var gameWithStrikes = [10, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 10, 10, 2, 3, 4, 5]
   game.run(gameWithStrikes)
 }

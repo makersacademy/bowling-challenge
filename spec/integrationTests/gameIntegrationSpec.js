@@ -13,7 +13,7 @@ describe('Game', function() {
       for (i = 0; i < 10; i++) {
         spyOn(game.frames[i], 'roll').and.callThrough();
       }
-      do_one_game_with_strikes(game)
+      doOneGameWithStrikes(game)
 
       expect(game.frames[0].roll).toHaveBeenCalledWith(10)
       expect(game.frames[1].roll).toHaveBeenCalledWith(3)

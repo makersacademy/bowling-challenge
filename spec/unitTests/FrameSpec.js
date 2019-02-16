@@ -41,4 +41,13 @@ describe('Frame', function() {
     expect(frame.sumStrikeBonusRollsScores()).toEqual(0)
   });
 
+  describe('#sumStrikeBonusRollsScores', function() {
+
+    it('returns the sum of the strike bonuses', function() {
+        frame._strikeBonusRollsScores = [2, 5]
+        expect(frame.sumStrikeBonusRollsScores()).toEqual(7)
+    });
+
+  });
+
 });

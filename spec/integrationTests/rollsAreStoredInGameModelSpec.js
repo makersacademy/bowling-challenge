@@ -1,4 +1,4 @@
-describe('Game', function() {
+describe('Rolls are stored in a game model', function() {
 
   var game;
 
@@ -7,7 +7,7 @@ describe('Game', function() {
   });
 
   it('should know the values for each roll of each frame', function() {
-    do_one_game_without_strikes_or_spares(game)
+    doOneGameWithoutStrikesOrSpares(game)
 
     expect(game.frames[0].scores[0]).toEqual(1)
     expect(game.frames[0].scores[1]).toEqual(2)

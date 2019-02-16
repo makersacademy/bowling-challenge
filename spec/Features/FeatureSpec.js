@@ -1,0 +1,3 @@
+describe("Game Scorecard", function() {
+
+});

@@ -13,15 +13,19 @@ ScoreRecorder.prototype.lastFrame = function(){
 
 ScoreRecorder.prototype.roll = function(roll){
   this.check.roll(roll)
-  if(this.lastFrame().length === 1){
-    switch(this.lastFrame()[0]){
-      case 10:
-        this._scorecard.push([roll]);
-        break;
-      default:
-        this.lastFrame().push(roll);
+  if(this._scorecard.length < 10){
+    if(this.lastFrame().length === 1){
+      switch(this.lastFrame()[0]){
+        case 10:
+          this._scorecard.push([roll]);
+          break;
+        default:
+          this.lastFrame().push(roll);
+      }
+    }else{
+      this._scorecard.push([roll]);
     }
   }else{
-    this._scorecard.push([roll]);
+    this._scorecard[9].push(roll);
   }
 };

@@ -4,6 +4,10 @@ function Frame() {
 
 Frame.prototype = {
   addRoll: function(roll) {
-    this._rolls.push(roll);
+    if (this._rolls.length < 2) {
+      this._rolls.push(roll);
+    } else {
+      throw new Error('Already rolled twice!')
+    };
   }
 }

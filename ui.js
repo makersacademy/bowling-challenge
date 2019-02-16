@@ -88,11 +88,25 @@ $(document).ready(function(){
 
   function helper(number){
 
+    //first frame
+
     if (clicks == 0){
-      buttons();
-      card.record_first(number);
-      $('#s_box1_f1').text(`${number}`)
-      clicks += 1;
+
+
+      if (number == 10){
+        card.record_first(number);
+        card.record_second(0);
+        $('#s_box1_f1').text(`${number}`)
+        $('#s_box2_f1').text(0)
+        $('#b_box_f1').text(card.frame_score_display());
+        clicks += 2;
+        buttons();
+      } else {
+        card.record_first(number);
+        $('#s_box1_f1').text(`${number}`)
+        clicks += 1;
+      }
+
 
     } else if (clicks == 1) {
       buttons();
@@ -101,6 +115,7 @@ $(document).ready(function(){
       clicks += 1;
       $('#b_box_f1').text(card.frame_score_display());
 
+    //second frame
 
     } else if (clicks == 2) {
       card.record_first(number);
@@ -130,6 +145,7 @@ $(document).ready(function(){
       $('#s_box1_f4').text(`${number}`)
       clicks += 1;
     } else if (clicks == 7) {
+      buttons();
       card.record_second(number);
       $('#s_box2_f4').text(`${number}`)
       clicks += 1;
@@ -139,6 +155,7 @@ $(document).ready(function(){
       $('#s_box1_f5').text(`${number}`)
       clicks += 1;
     } else if (clicks == 9) {
+      buttons();
       card.record_second(number);
       $('#s_box2_f5').text(`${number}`)
       clicks += 1;
@@ -148,6 +165,7 @@ $(document).ready(function(){
       $('#s_box1_f6').text(`${number}`)
       clicks += 1;
     } else if (clicks == 11) {
+      buttons();
       card.record_second(number);
       $('#s_box2_f6').text(`${number}`)
       clicks += 1;
@@ -157,6 +175,7 @@ $(document).ready(function(){
       $('#s_box1_f7').text(`${number}`)
       clicks += 1;
     } else if (clicks == 13) {
+      buttons();
       card.record_second(number);
       $('#s_box2_f7').text(`${number}`)
       clicks += 1;
@@ -166,6 +185,7 @@ $(document).ready(function(){
       $('#s_box1_f8').text(`${number}`)
       clicks += 1;
     } else if (clicks == 15) {
+      buttons();
       card.record_second(number);
       $('#s_box2_f8').text(`${number}`)
       clicks += 1;
@@ -175,6 +195,7 @@ $(document).ready(function(){
       $('#s_box1_f9').text(`${number}`)
       clicks += 1;
     } else if (clicks == 17) {
+      buttons();
       card.record_second(number);
       $('#s_box2_f9').text(`${number}`)
       clicks += 1;
@@ -184,6 +205,7 @@ $(document).ready(function(){
       $('#s_box1_f10').text(`${number}`)
       clicks += 1;
     } else if (clicks == 19) {
+      buttons();
       card.record_second(number);
       $('#s_box2_f10').text(`${number}`)
       clicks += 1;

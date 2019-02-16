@@ -44,12 +44,12 @@ Scorecard.prototype.clear = function(){
   this.total_score_array = [];
   return this.total_score_array;
 };
-
-Scorecard.prototype.strike = function(){
-  this.pins_knocked_two = 0;
-  this.st_bonus.push(this.pins_knocked_two);
-  return this.pins_knocked_two;
-};
+// test will fail but this seems to be redundant
+// Scorecard.prototype.strike = function(){
+//   this.pins_knocked_two = 0;
+//   this.st_bonus.push(this.pins_knocked_two);
+//   return this.pins_knocked_two;
+// };
 
 Scorecard.prototype.strike_bonus = function(){
   if (this.st_bonus[0] == 10) {

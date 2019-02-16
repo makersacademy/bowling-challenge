@@ -54,6 +54,35 @@ describe("Scorecard", function() {
     expect(scorecard.frameResult(2)).toEqual(20);
   });
 
+  it("can run 10th frame", function() {
+    for (var i = 0; i < 18; i++) {
+      scorecard.turn(1);
+    }
+    scorecard.turn(10);
+    scorecard.turn(1);
+    scorecard.turn(1);
+    expect(scorecard.getFrames()[9]).toEqual([10, 1, 1]);
+  });
+
+  it("can score 10th frame - Spare", function() {
+    for (var i = 0; i < 18; i++) {
+      scorecard.turn(1);
+    }
+    scorecard.turn(5);
+    scorecard.turn(5);
+    scorecard.turn(1);
+    expect(scorecard.frameResult(10)).toEqual(11);
+  });
+
+  it("can score 10th frame - Strike", function() {
+    for (var i = 0; i < 18; i++) {
+      scorecard.turn(1);
+    }
+    scorecard.turn(10);
+    scorecard.turn(1);
+    scorecard.turn(1);
+    expect(scorecard.frameResult(10)).toEqual(12);
+  });
 
 
 });

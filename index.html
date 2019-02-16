@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Thermostat</title>
+    <title>Bowling</title>
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
     <section>
-      <h1 id="temperature"></h1>
+      <h1> Score Card</h1>
+      <div class="container">
+        <div>
+        You are at frame <b><span id="frame-number"></span><b>
+        </div>
+        <h3> Total Score: </h3>
+        <h2 id="total-score"></h2>
       <p>
-        <button id="temperature-up">+</button>
-        <button id="temperature-down">-</button>
-        <button id="temperature-reset">reset</button>
-        power saving mode is <span id="power-saving-status">on</span>
-        <button id="powersaving-on">Power Saving Mode on</button>
-        <button id="powersaving-off">Power Saving Mode off</button>
+        <!-- Enter pins knocked down -->
+        <button id="roll">Roll</button>
+        <br>
+        <button id="new-frame">New Frame</button>
+        <button id="end-frame">End Frame</button>
+        <button id="count-bonus">Count Bonus</button>
       </p>
+      </div>
     </section>
     <script src="src/Game.js"></script>
     <script src="jQuery.js"></script>

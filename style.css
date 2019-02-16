@@ -1,5 +1,72 @@
 body{
+  /* background: url('https://fonts.googleapis.com/css?family=Josefin+Slab:400,700') */
   background-image: url("http://actrightelectrical.com.au/wp-content/uploads/2018/04/bowling-sunshine-coast.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  margin-top: 50px;
+}
+
+h2,h3,p{
+  color: black;
+  text-align: center;
+  margin:2px;
+}
+
+table{
+
+}
+
+button{
+  outline:none;
+  height: 30px;
+  text-align: center;
+  display: inline-block;
+  width: auto;
+  border-radius:10px;
+  background: #f44336;
+  border: 1px solid white;
+  color: white;
+  letter-spacing:1px;
+  text-shadow:0;
+  transition-duration: 0.2s;
+}
+button:hover{
+  background-color: white;
+  border: 1px solid #f44336;
+  color: #f44336;
+}
+
+.container{
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  width: 70%;
+  margin: auto;
+}
+
+#navbar {
+  z-index: 1;
+  border-bottom: 1px solid lightgray;
+  align: center;
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  color: black;
+  height: 80px;
+}
+
+#navbar .contentholder {
+  display: inline-block;
+  text-align: left;
+  position: static;
+  width: 1000px;
+  height: 100%;
+  background-color: white;
 }

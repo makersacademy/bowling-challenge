@@ -11,9 +11,9 @@ describe('Game', function() {
     expect(game.frameNumber).toEqual(1);
   });
 
-  // it('starts from zero score in a new game', function(){
-  //   expect(game.getTotalScore()).toEqual(0);
-  // });
+  it('starts from zero score in a new game', function(){
+    expect(game.getTotalScore()).toEqual(0);
+  });
 
   // it('counts pins knocked down in a frame', function(){
   //   game.roll(5);

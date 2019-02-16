@@ -1,15 +1,28 @@
-function Game() {
+function Scorecard() {
   this.points = [];
   this.pointsIndex = 0;
   this.STRIKE = 10;
   this.SPARE = 10;
 }
 
-Game.prototype.roll = function(rollPoints) {
+Scorecard.prototype.roll = function(rollPoints) {
   this.points.push(rollPoints);
 };
 
-Game.prototype.score = function() {
+Scorecard.prototype.framescore = function() {
+  let frametotal = 0;
+
+  if (this.isStrike()) {
+    frametotal += this.strikeScore();
+  } else if (this.isSpare()) {
+    frametotal += this.spareScore();
+  } else {
+    frametotal += this.otherScore();
+  }
+  return frametotal;
+};
+
+Scorecard.prototype.totalscore = function() {
   let finalScore = 0;
 
   for (let frame = 0; frame < 10; frame += 1) {
@@ -27,25 +40,25 @@ Game.prototype.score = function() {
   return finalScore;
 };
 
-Game.prototype.isSpare = function() {
+Scorecard.prototype.isSpare = function() {
   return this.points[this.pointsIndex]
   + this.points[this.pointsIndex + 1] === this.SPARE;
 };
 
-Game.prototype.spareScore = function() {
+Scorecard.prototype.spareScore = function() {
   return this.points[this.pointsIndex] + this.points[this.pointsIndex + 1]
   + this.points[this.pointsIndex + 2];
 };
 
-Game.prototype.isStrike = function() {
-  return this.points[this.pointsIndex] === 10;
+Scorecard.prototype.isStrike = function() {
+  return this.points[this.pointsIndex] === this.STRIKE;
 };
 
-Game.prototype.strikeScore = function() {
+Scorecard.prototype.strikeScore = function() {
   return this.points[this.pointsIndex] + this.points[this.pointsIndex + 1]
   + this.points[this.pointsIndex + 2];
 };
 
-Game.prototype.otherScore = function() {
+Scorecard.prototype.otherScore = function() {
   return this.points[this.pointsIndex] + this.points[this.pointsIndex + 1];
 };

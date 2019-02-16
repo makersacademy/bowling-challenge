@@ -17,7 +17,7 @@ ScoreCard.prototype.total = function() {
     var accumulator = 0;
     var i;
     for (i = 0; i < 10; i++) {
-        accumulator += this.sum(this._game.frames[i]._scores);
+        accumulator += this.sum(this._game.frames[i].scores);
     }
     return accumulator;
 };
@@ -44,15 +44,15 @@ ScoreCard.prototype.listEnsuingScores = function(frameIndex) {
 
     if (typeof nextFrame != 'undefined') {
         var j;
-        for (j = 0; j < nextFrame._scores.length; j++) {
-            scoreList.push(nextFrame._scores[j]);
+        for (j = 0; j < nextFrame.scores.length; j++) {
+            scoreList.push(nextFrame.scores[j]);
         }
     }
 
     if (typeof nextNextFrame != 'undefined') {
         var k;
-        for (k = 0; k < nextNextFrame._scores.length; k++) {
-            scoreList.push(nextNextFrame._scores[k]);
+        for (k = 0; k < nextNextFrame.scores.length; k++) {
+            scoreList.push(nextNextFrame.scores[k]);
         }
     }
 

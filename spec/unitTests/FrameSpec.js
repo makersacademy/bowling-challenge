@@ -10,7 +10,7 @@ describe('Frame', function() {
     frame.roll(3)
     frame.roll(2)
     final = [3, 2]
-    expect(frame._scores).toEqual(final)
+    expect(frame.scores).toEqual(final)
   });
 
   it('should have a default of two rolls', function() {
@@ -24,12 +24,12 @@ describe('Frame', function() {
   it('has only one roll total if the first roll is 10 (a strike)', function() {
     frame.roll(10)
     expect(frame._numberOfRolls).toEqual(1)
-    expect(frame._scores.length).toEqual(1)
+    expect(frame.scores.length).toEqual(1)
     expect(function() {
       frame.roll(3)
     }).toThrow(new Error('No more rolls this frame.'))
     expect(frame._numberOfRolls).toEqual(1)
-    expect(frame._scores.length).toEqual(1)
+    expect(frame.scores.length).toEqual(1)
   });
 
   it('IsAStrike if first roll is 10', function() {

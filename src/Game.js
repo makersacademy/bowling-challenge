@@ -12,7 +12,7 @@ function Game(constructorFunction = Frame) {
 Game.prototype.roll = function(score) {
     var i = 0;
     for (i = 0; i < this.frames.length; i++) {
-        if (this.frames[i]._scores.length < this.frames[i]._numberOfRolls) {
+        if (this.frames[i].scores.length < this.frames[i]._numberOfRolls) {
             this.frames[i].roll(score);
             break;
         }

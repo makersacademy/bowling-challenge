@@ -16,14 +16,14 @@ Game.prototype.begin = function(players) {
 /*
     Display frame function
         Have this here instead of in Interface as window.onload = function() {} wrapping Interface breaks Jasmine
-
-    Present [1] through [9] as "1/" through "9/"
-    Present [10] as "X"
-    Present [0,9] through [9, 0] as "0/9" through "9/0"
-    Present [0, 10] through [9,1] as "/"
+    Take an array of throw scores and return an expressive string
 */
 Game.prototype.presentFrame = function(frameThrows) {
-    if (frameThrows == [10]) { return 'X' }
+    if (frameThrows[0] === 10) { return 'X' }
+    else if ( frameThrows[0] + frameThrows[1] === 10 ) { return '/' }
+    else if ( frameThrows.length === 2 ) { return frameThrows[0] + ',' + frameThrows[1] }
+    else if ( frameThrows.length === 1 ) { return frameThrows[0] + ',' }
+    else { return ',' }
 }
 
 /*

@@ -47,6 +47,7 @@ $(document).ready(function(){
       card.record_first(number);
       $('#s_box1_f1').text(`${number}`)
       clicks += 1;
+
     } else if (clicks == 1) {
       card.record_second(number);
       $('#s_box2_f1').text(`${number}`)
@@ -62,6 +63,8 @@ $(document).ready(function(){
       $('#s_box2_f2').text(`${number}`)
       clicks += 1;
       $('#b_box_f2').text(card.frame_score_display());
+
+
         // ------------------------------------------
     } else if (clicks == 4) {
       card.record_first(number);
@@ -139,9 +142,6 @@ $(document).ready(function(){
       $("#play_again").html( "<button type='button' class='btn btn-outline-warning btn-block'>Play again</button>" );
     }
   };
-
-
-
 
 
 });

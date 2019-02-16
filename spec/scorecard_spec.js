@@ -61,7 +61,7 @@ describe('scorecard', function(){
   });
 
   it('calculates strike bonus points correctly', function(){
-    card.bonus = [];
+    card.st_bonus = [];
     card.record_first(10);
     card.strike();
     card.frame_score_display();
@@ -73,7 +73,7 @@ describe('scorecard', function(){
   });
 
   it('adds bonus points after a strike', function(){
-    card.bonus = [];
+    card.st_bonus = [];
     card.record_first(10);
     card.strike();
     card.frame_score_display();

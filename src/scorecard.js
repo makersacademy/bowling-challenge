@@ -24,13 +24,13 @@ Scorecard.prototype.record_second = function(number_two){
   this.sp_bonus.push(this.pins_knocked_two);
   return this.pins_knocked_two;
 };
-
+// ----
 Scorecard.prototype.frame_score_display = function(){
   this.frame_score = (this.pins_knocked_one + this.pins_knocked_two);
   this.total_score_array.push(this.frame_score);
-  return this.frame_score;
+  return this.total_score_array.reduce((a,b) => a + b, 0);
 };
-
+// ----
 Scorecard.prototype.total_score_display = function(){
   var sum = this.total_score_array.reduce((a,b) => a + b, 0);
   if (sum > 0) {

@@ -23,14 +23,27 @@ I want to calculate the total score with spares
 ```
 As a player
 so I can record my score
+I want to calculate the total score with strikes
+```
+
+```
+As a player
+so I can record my score
 I want to calculate the total score with additional balls on 10th frame
 ```
 
-Planned process
+```
+As a player
+so I can record my score
+I want to see a total for each frame
+```
+
+My process
 =============
 
-- Research how ten pin bowling scoring works
-- Write user stories
+- Researched how ten pin bowling scoring works
+- Wrote user stories
+- Feeling uncomfortable with javascript syntax after only using it for a few days, I thought about how I would approach this problem using Ruby and used that to guide my approach.  
 
 
 

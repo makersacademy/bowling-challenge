@@ -9,7 +9,7 @@ Scorecard.prototype.roll = function(rollPoints) {
   this.points.push(rollPoints);
 };
 
-Scorecard.prototype.framescore = function() {
+Scorecard.prototype.framescore = function(points) {
   let frametotal = 0;
 
   if (this.isStrike()) {

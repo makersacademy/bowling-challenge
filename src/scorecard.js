@@ -89,10 +89,37 @@ Scorecard.prototype.clear_bonus = function(){
 };
 
 Scorecard.prototype.spare_bonus = function(){
-  if (this.sp_bonus[0] == 5 && this.sp_bonus[1] == 5) {
+
+  if (this.sp_bonus[0] + this.sp_bonus[1] == 10) {
     var bonus_score = this.sp_bonus[2];
+    this.total_score_array.push(bonus_score);
+    this.frame_score += bonus_score;
+    this.sp_bonus.splice(0,2)
+    // this.sp_bonus = [];
+  } else if (this.sp_bonus[0] + this.sp_bonus[1] != 10) {
+    this.sp_bonus.splice(0,2)
+  // } else if (this.sp_bonus[4] + this.sp_bonus[5] == 10) {
+  //   var bonus_score = this.sp_bonus[6];
+  // } else if (this.sp_bonus[6] + this.sp_bonus[7] == 10) {
+  //   var bonus_score = this.sp_bonus[8];
+  // } else if (this.sp_bonus[8] + this.sp_bonus[9] == 10) {
+  //   var bonus_score = this.sp_bonus[10];
+  // } else if (this.sp_bonus[10] + this.sp_bonus[11] == 10) {
+  //   var bonus_score = this.sp_bonus[12];
+  // } else if (this.sp_bonus[12] + this.sp_bonus[13] == 10) {
+  //   var bonus_score = this.sp_bonus[14];
+  // } else if (this.sp_bonus[14] + this.sp_bonus[15] == 10) {
+  //   var bonus_score = this.sp_bonus[16];
+  // } else if (this.sp_bonus[16] + this.sp_bonus[17] == 10) {
+  //   var bonus_score = this.sp_bonus[18];
+  // } else if (this.sp_bonus[19] + this.sp_bonus[20] == 10) {
+  //   var bonus_score = this.sp_bonus[21];
+  //
+
+    // this.total_score_array.push(bonus_score);
+    // this.frame_score += bonus_score;
+    // this.sp_bonus = [];
   }
-  this.total_score_array.push(bonus_score);
-  this.frame_score += bonus_score;
-  return bonus_score;
+  // this.sp_bonus = [];
+  // return bonus_score;
 };

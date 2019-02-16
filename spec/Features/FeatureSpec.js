@@ -20,4 +20,8 @@ describe("Game Scorecard", function() {
     expect(game.showFrameCount()).toEqual(0);
   });
 
+  it("should start with a scorecard as an empty array", function() {
+    expect(game.showScorecard()).toEqual([]);
+  });
+
 });

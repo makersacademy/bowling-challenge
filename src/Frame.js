@@ -10,4 +10,7 @@ Frame.prototype.roll = function(score) {
         throw new Error('No more rolls this frame.');
     }
     this._scores.push(score);
+    if (score == 10) {
+      this._number_of_rolls = 1
+    };
 };

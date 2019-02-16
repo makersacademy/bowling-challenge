@@ -50,4 +50,11 @@ describe('Frame', function () {
       expect(frame.frameScore()).toEqual(9)
     })
   })
+
+  describe('roll 1 + roll 2 can\'t sum to more than 10', function() {
+    it('throws an error when the sum of two balls is mor than 10', function() {
+      frame.rollOneScore(5)
+      expect(function () { frame.rollTwoScore(6) }).toThrow(new Error('You can\'t knock down more than 10 pins'))
+    })
+  })
 })

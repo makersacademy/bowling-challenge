@@ -6,6 +6,18 @@ function Scorecard () {
   this.rollNumber = 1
 }
 
+Scorecard.prototype.rollBall = function (rollScore) {
+  if (this.frameNumber === 11 && this.rollNumber === 1) { this.finalRound(rollScore) }
+  else if (this.rollNumber === 1) { this.rollOne(rollScore) }
+  else { this.rollTwo(rollScore) }
+};
+
+Scorecard.prototype.finalRound = function (rollScore) {
+  if (this._wasASpare(this.frames[9])) { this.lastRoundSpare(rollScore) }
+  else if (this._wasAStrike(this.frames[9])) { this.lastRoundStrike(rollScore) }
+  else { throw new Error('Cannot enter more than 10 frames') }
+};
+
 Scorecard.prototype.rollOne = function (rollScore, frame = new Frame(this.frameNumber)) {
   if (this.frameNumber >= 11) { throw new Error('Cannot enter more than 10 frames') }
   this.frameNumber++
@@ -21,17 +33,21 @@ Scorecard.prototype.rollTwo = function (rollScore) {
   this.rollNumber = 1
 }
 
-Scorecard.prototype.lastRoundStrike = function (rollOne, rollTwo) {
-  var frame = this.frames[this.frames.length - 1]
-  frame.addBonus(rollOne)
-  frame.addBonusTwo(rollTwo)
-  this._calculateScore()
+Scorecard.prototype.lastRoundStrike = function (rollScore) {
+  var frame = this.frames[9]
+  if (frame.bonus === null) { frame.addBonus(rollScore) }
+  else {
+    frame.addBonusTwo(rollScore)
+    this._calculateScore()
+    this.frameNumber++
+  }
 }
 
 Scorecard.prototype.lastRoundSpare = function (rollOne) {
   var frame = this.frames[this.frames.length - 1]
   frame.addBonus(rollOne)
   this._calculateScore()
+  this.frameNumber++
 }
 
 Scorecard.prototype._calculateScore = function () {

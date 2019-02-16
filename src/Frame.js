@@ -11,6 +11,7 @@ Frame.prototype.rollOneScore = function (rollScore) {
 }
 
 Frame.prototype.rollTwoScore = function (rollScore) {
+  if (this.rollOne + rollScore > 10)  { throw new Error('You can\'t knock down more than 10 pins') }
   this.rollTwo = rollScore
 }
 

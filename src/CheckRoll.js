@@ -7,6 +7,12 @@ CheckRoll.prototype.roll = function(roll){
   if(!this._isFameWithinTen(roll)){throw new Error("frame score error")};
 }
 
+CheckRoll.prototype.tenthFrameRoll = function(roll){
+  var currentFrameTotal = arraySum(this._scorecard[9]);
+  maxRoll = 10 - (currentFrameTotal%10);
+  if(roll > maxRoll){throw new Error("frame score error")};
+}
+
 CheckRoll.prototype._isValidInput = function(roll){
   return Number.isInteger(roll) && roll <= 10;
 }

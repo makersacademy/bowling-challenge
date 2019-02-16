@@ -54,6 +54,15 @@ describe("CheckRoll",function(){
   })
 
 });
+
+describe("CheckRoll.tenthFrameRoll",function(){
+  it("can handle edge cases", function(){
+    checkRoll = new CheckRoll([[10],[10],[10],[10],[10],[10],[10],[10],[10],[10,5]])
+    expect(function(){checkRoll.tenthFrameRoll(10)}).toThrow(new Error("frame score error"))
+    expect(function(){checkRoll.tenthFrameRoll(6)}).toThrow(new Error("frame score error"))
+    expect(function(){checkRoll.tenthFrameRoll(5)}).not.toThrow(new Error("frame score error"))
+  })
+})
 // limit = lastframe.length == 2 ? 10 : 10 - lastFrame()[0]
 
 //valid roll : integer and r<10

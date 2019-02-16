@@ -26,4 +26,14 @@ describe('ScoreCard', function() {
 
   });
 
+  describe('#pushAllElements', function(array1, array2) {
+
+    it('cycles through array2\'s elements and pushes them to array1', function() {
+      var newArray = scoreCard.pushAllElements([0, 1, 2, 3, 4], [5, 6, 7, 8, 9])
+      var expectation = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+      expect(newArray).toEqual(expectation)
+    });
+
+  });
+
 });

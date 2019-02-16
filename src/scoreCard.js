@@ -31,8 +31,7 @@ ScoreCard.prototype.calculateStrikeBonuses = function() {
     for (i = 0; i < this.allFrames().length; i++) {
         var currentFrame = this.allFrames()[i];
         if (currentFrame.IsAStrike()) {
-            currentFrame._strikeBonusRollsScores.push(this.listEnsuingScores(i)[0]);
-            currentFrame._strikeBonusRollsScores.push(this.listEnsuingScores(i)[1]);
+            currentFrame._strikeBonusRollsScores.push(this.listEnsuingScores(i)[0], this.listEnsuingScores(i)[1]);
         }
     }
 };
@@ -42,16 +41,16 @@ ScoreCard.prototype.listEnsuingScores = function(frameIndex) {
     var i;
     for (i = frameIndex + 1; i < frameIndex + 3; i++) {
         if (typeof this.allFrames()[i] != 'undefined') {
-          this.pushAllElements(scoreList, this.allFrames()[i].scores)
+            this.pushAllElements(scoreList, this.allFrames()[i].scores);
         }
-    };
+    }
     return scoreList;
 };
 
 
 ScoreCard.prototype.pushAllElements = function(array1, array2) {
-  var i;
-  for (i = 0; i < array2.length; i++) {
-      array1.push(array2[i]);
-  }
+    var i;
+    for (i = 0; i < array2.length; i++) {
+        array1.push(array2[i]);
+    }
 };

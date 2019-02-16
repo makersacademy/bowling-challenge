@@ -6,7 +6,7 @@ describe('ScoreCard', function() {
     scoreCard = new ScoreCard();
   });
 
-  describe('.sum', function() {
+  describe('#sum', function() {
 
     it('can sum two numbers in an array', function() {
       expect(scoreCard.sum([1, 2])).toEqual(3)

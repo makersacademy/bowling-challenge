@@ -21,3 +21,35 @@ ScoreCard.prototype.total = function() {
     }
     return accumulator;
 };
+
+ScoreCard.prototype.calculateStrikeBonuses = function() {
+  var allFrames = this._game._frames
+
+  var i;
+  for (i = 0; i < allFrames.length; i++) {
+    var currentFrame = allFrames[i]
+    var nextFrame = allFrames[i+1]
+    var nextNextFrame = allFrames[i+2]
+
+    var listOfEnsuingScores = []
+
+    if (typeof nextFrame != 'undefined') {
+      var j;
+      for (j = 0; j < nextFrame._scores.length; j++) {
+        listOfEnsuingScores.push(nextFrame._scores[j])
+      }
+    }
+
+    if (typeof nextNextFrame != 'undefined') {
+      var k;
+      for (k = 0; k < nextNextFrame._scores.length; k++) {
+        listOfEnsuingScores.push(nextNextFrame._scores[k])
+      }
+    }
+
+    if (currentFrame.IsAStrike()) {
+      currentFrame._strikeBonusRollsScores.push(listOfEnsuingScores[0])
+      currentFrame._strikeBonusRollsScores.push(listOfEnsuingScores[1])
+    }
+  }
+}

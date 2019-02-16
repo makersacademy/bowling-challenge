@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 function Frame(number_of_rolls = 2) {
     this._number_of_rolls = number_of_rolls;

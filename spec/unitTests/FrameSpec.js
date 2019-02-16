@@ -39,4 +39,9 @@ describe('Frame', function() {
     expect(frame._scores.length).toEqual(1)
   });
 
+  it('IsAStrike if first roll is 10', function() {
+    frame.roll(10)
+    expect(frame.IsAStrike()).toBe(true)
+  })
+
 });

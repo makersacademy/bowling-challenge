@@ -3,6 +3,7 @@
 function Frame(number_of_rolls = 2) {
     this._number_of_rolls = number_of_rolls;
     this._scores = [];
+    this.IsStrike = false;
 }
 
 Frame.prototype.roll = function(score) {
@@ -11,6 +12,11 @@ Frame.prototype.roll = function(score) {
     }
     this._scores.push(score);
     if (score == 10) {
-      this._number_of_rolls = 1
+      this._number_of_rolls = 1;
+      this.IsStrike = true;
     };
 };
+
+Frame.prototype.IsAStrike = function() {
+  return this.IsStrike;
+}

@@ -116,10 +116,6 @@ div {
   border-width: 1px;
 }
 
-.top-row {
-  line-height: 50px;
-}
-
 #frame-9 {
   width: 182px;
 }
@@ -160,4 +156,88 @@ input {
 .current-with-border {
   border-bottom-width: 1px;
   border-color: #ddeeff;
+}
+
+@media screen and (max-width: 1678px) {
+
+  #frame-0, #frame-1, #frame-2, #frame-3, #frame-4, #frame-5, 
+  #frame-6, #frame-7, #frame-8 {
+    width: 101px;
+  }
+
+  .top-row, .first-ball, .next-ball, .last-ball, div[id^='total'] {
+    height: 40px;
+    line-height: 40px;
+  }
+
+  .first-ball, .next-ball, .last-ball {
+    width: 50px;
+  }
+
+  body, input {
+    font-size: 25px;
+  }
+
+  #player-name-header, #player-name {
+    width: 310px;
+  }
+
+  .title {
+    line-height: 80px;
+  }
+
+  #frame-9 {
+    width: 152px;
+  }
+
+  #player-name {
+    height: 80px;
+    line-height: 80px;
+  }
+
+  input {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 1408px) {
+
+  #frame-0, #frame-1, #frame-2, #frame-3, #frame-4, #frame-5, 
+  #frame-6, #frame-7, #frame-8 {
+    width: 81px;
+  }
+
+  .top-row, .first-ball, .next-ball, .last-ball, div[id^='total'] {
+    height: 30px;
+    line-height: 30px;
+  }
+
+  .first-ball, .next-ball, .last-ball {
+    width: 40px;
+  }
+
+  body, input {
+    font-size: 20px;
+  }
+
+  #player-name-header, #player-name {
+    width: 250px;
+  }
+
+  .title {
+    line-height: 70px;
+  }
+
+  #frame-9 {
+    width: 122px;
+  }
+
+  #player-name {
+    height: 60px;
+    line-height: 60px;
+  }
+
+  input {
+    width: 240px;
+  }
 }

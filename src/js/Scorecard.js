@@ -1,3 +1,5 @@
+'use strict'
+
 function Scorecard () {
   this._scores = []
   this._frames = []

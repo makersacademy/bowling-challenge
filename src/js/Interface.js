@@ -1,10 +1,13 @@
+'use strict'
+
 // setup
-var s1 = new Scorecard()
-var d1 = new Display()
-var scorecard = s1
-var display = d1
-var player = 1
-var players = 1
+var scorecards = []
+var displays = []
+scorecards.push(new Scorecard())
+displays.push(new Display())
+var playerNumber = 1
+var scorecard = scorecards[playerNumber - 1]
+var display = displays[playerNumber - 1]
 var ball = 0
 var total = 0
 
@@ -12,20 +15,22 @@ $(document).ready(function () {
   // add a new player row
   $('.new').click(function () {
     $('.players .player').last().clone().appendTo('.players')
-    players += 1
-    eval(`s${players}= new Scorecard()`)
-    eval(`d${players}= new Display()`)
-    $('.players .player').last().attr('id', `player-${players}`)
+    scorecards.push(new Scorecard())
+    displays.push(new Display())
+    $('.players .player').last().find('.bottom-row input').val('')
+    $('.players .player').last().attr('id', `player-${scorecards.length}`)
   })
+
   // start the game
   $('.start').click(function () {
     $('.new').hide()
     $('.start').hide()
     $('.button').show()
-    $(`#player-${player} #ball-${ball}`).addClass('current-with-border')
-    $(`#player-${player} #ball-${ball + 1}`).addClass('current')
-    $(`#player-${player} #total-${total}`).addClass('current')
+    $(`#player-${playerNumber} #ball-${ball}`).addClass('current-with-border')
+    $(`#player-${playerNumber} #ball-${ball + 1}`).addClass('current')
+    $(`#player-${playerNumber} #total-${total}`).addClass('current')
   })
+
   // clicking a number button
   $('.button').click(function () {
     var whichButton = $(this).text()
@@ -34,31 +39,31 @@ $(document).ready(function () {
     scorecard.throw(buttonValue)
     display.toDisplay(buttonValue)
     // remove frame highlight
-    $(`#player-${player} #ball-${ball}`).removeClass('current-with-border')
-    $(`#player-${player} #ball-${ball + 1}`).removeClass('current')
+    $(`#player-${playerNumber} #ball-${ball}`).removeClass('current-with-border')
+    $(`#player-${playerNumber} #ball-${ball + 1}`).removeClass('current')
     if (total === 9) {
-      $(`#player-${player} #ball-${ball + 2}`).removeClass('current')
+      $(`#player-${playerNumber} #ball-${ball + 2}`).removeClass('current')
     }
-    $(`#player-${player} #total-${total}`).removeClass('current')
+    $(`#player-${playerNumber} #total-${total}`).removeClass('current')
 
     var frameComplete = (scorecard._scores.length % 2 === 0)
     var tenthFrameComplete = (scorecard._frames[9] !== undefined)
-    var notTheLastPlayer = (player < players)
+    var notTheLastPlayer = (playerNumber < scorecards.length)
     var notTheTenthFrame = (scorecard._scores.length < 19)
     // move to the the next player or back to the first
     if (notTheTenthFrame && frameComplete) {
       if (notTheLastPlayer) {
-        player += 1
+        playerNumber += 1
       } else {
-        player = 1
+        playerNumber = 1
         ball += 2
         total += 1
       }
     } else if (tenthFrameComplete) {
       if (notTheLastPlayer) {
-        player += 1
+        playerNumber += 1
       } else {
-        player = 1
+        playerNumber = 1
         ball += 2
         total += 1
       }
@@ -66,16 +71,16 @@ $(document).ready(function () {
     // check if the game is over
     if (total < 10) {
       // add frame highlight
-      $(`#player-${player} #ball-${ball}`).addClass('current-with-border')
-      $(`#player-${player} #ball-${ball + 1}`).addClass('current')
+      $(`#player-${playerNumber} #ball-${ball}`).addClass('current-with-border')
+      $(`#player-${playerNumber} #ball-${ball + 1}`).addClass('current')
       if (total === 9) {
-        $(`#player-${player} #ball-${ball + 2}`).addClass('current')
+        $(`#player-${playerNumber} #ball-${ball + 2}`).addClass('current')
       }
-      $(`#player-${player} #total-${total}`).addClass('current')
+      $(`#player-${playerNumber} #total-${total}`).addClass('current')
     }
     // switch to the correct scorecard
-    scorecard = eval('s' + player)
-    display = eval('d' + player)
+    scorecard = scorecards[playerNumber - 1]
+    display = displays[playerNumber - 1]
     // hide and unhide buttons according to situation
     if (scorecard._frames[9] !== undefined) {
       $('.button').hide()
@@ -87,14 +92,14 @@ $(document).ready(function () {
   })
 
   $(document).on('click', function () {
-    var player, ball, total
+    var player, b, t
     // display each players scorecard
-    for (player = 1; player <= players; player++) {
-      for (ball = 0; ball < 21; ball++) {
-        $(`#player-${player} #ball-${ball}`).text(eval(`d${player}._display[ball]`))
+    for (player = 1; player <= scorecards.length; player++) {
+      for (b = 0; b < 21; b++) {
+        $(`#player-${player} #ball-${b}`).text(displays[player - 1]._display[b])
       }
-      for (total = 0; total < 10; total++) {
-        $(`#player-${player} #total-${total}`).text(eval(`s${player}._frames[total]`))
+      for (t = 0; t < 10; t++) {
+        $(`#player-${player} #total-${t}`).text(scorecards[player - 1]._frames[t])
       }
     }
   })

@@ -1,3 +1,5 @@
+'use strict'
+
 function Display () {
   this._display = []
 }

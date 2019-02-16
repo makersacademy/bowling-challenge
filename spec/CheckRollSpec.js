@@ -25,7 +25,6 @@ describe("CheckRoll",function(){
     checkRoll = new CheckRoll([[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[10,10]])
     expect(function(){checkRoll.roll(5)}).not.toThrow(new Error("game is over"))
     expect(function(){checkRoll.roll(5)}).not.toThrow(new Error("frame score error"));
-    checkRoll.roll(13);
   })
 
   it("throws 'score error' if roll greater than 10",function(){

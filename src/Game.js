@@ -3,7 +3,6 @@ function Game() {
   this._frameCount = 0;
   this._ballNumber = 1;
   this._scorecard = [];
-
 }
 
 Game.prototype.showTotalPoints = function () {
@@ -20,4 +19,14 @@ Game.prototype.showBallNumber = function () {
 
 Game.prototype.showScorecard= function () {
   return this._scorecard;
+};
+
+Game.prototype.inputBallValue= function (value) {
+  if (this.showBallNumber() == 1){
+    this.inputFrameToScorecard(new Frame());
+  };
+};
+
+Game.prototype.inputFrameToScorecard = function (frame) {
+  this._scorecard.push(frame);
 };

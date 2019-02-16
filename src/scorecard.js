@@ -45,19 +45,38 @@ Scorecard.prototype.clear = function(){
   return this.total_score_array;
 };
 // test will fail but this seems to be redundant
-// Scorecard.prototype.strike = function(){
-//   this.pins_knocked_two = 0;
-//   this.st_bonus.push(this.pins_knocked_two);
-//   return this.pins_knocked_two;
-// };
+Scorecard.prototype.strike = function(){
+  this.pins_knocked_two = 0;
+  this.st_bonus.push(this.pins_knocked_two);
+  return this.pins_knocked_two;
+};
 
 Scorecard.prototype.strike_bonus = function(){
-  if (this.st_bonus[0] == 10) {
+  if (this.st_bonus[0] == 10 && this.st_bonus[2] != 10) {
     var bonus_score = this.st_bonus[2] + this.st_bonus[3];
+  } else if (this.st_bonus[2] == 10 && this.st_bonus[4] != 10){
+    var bonus_score = this.st_bonus[4] + this.st_bonus[5];
+  } else if (this.st_bonus[4] == 10 && this.st_bonus[6] != 10){
+    var bonus_score = this.st_bonus[6] + this.st_bonus[7];
+  } else if (this.st_bonus[6] == 10 && this.st_bonus[8] != 10){
+    var bonus_score = this.st_bonus[8] + this.st_bonus[9];
+  } else if (this.st_bonus[8] == 10 && this.st_bonus[10] != 10){
+    var bonus_score = this.st_bonus[10] + this.st_bonus[11];
+  } else if (this.st_bonus[10] == 10 && this.st_bonus[12] != 10){
+    var bonus_score = this.st_bonus[12] + this.st_bonus[13];
+  } else if (this.st_bonus[12] == 10 && this.st_bonus[14] != 10){
+    var bonus_score = this.st_bonus[14] + this.st_bonus[15];
+  } else if (this.st_bonus[14] == 10 && this.st_bonus[16] != 10){
+    var bonus_score = this.st_bonus[16] + this.st_bonus[17];
+  } else if (this.st_bonus[16] == 10 && this.st_bonus[18] != 10){
+    var bonus_score = this.st_bonus[18] + this.st_bonus[19];
   }
+
   this.frame_score += bonus_score;
   this.total_score_array.push(bonus_score);
-  return bonus_score;
+  console.log(this.st_bonus);
+  this.st_bonus = [];
+  // return bonus_score;
 };
 
 Scorecard.prototype.clear_bonus = function(){

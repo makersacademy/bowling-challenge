@@ -94,6 +94,7 @@ $(document).ready(function(){
      $(bbox).text(card.frame_score_display());
      clicks += 2;
      buttons();
+
     } else {
      card.record_first(number);
      $(box1).text(`${number}`)
@@ -101,7 +102,7 @@ $(document).ready(function(){
    }
   }
 
-  function score(card,bbox){
+  function strike_score(card,bbox){
     if (card.st_bonus[0] == 10){
      card.strike_bonus();
      $(bbox).text(card.frame_score_display());
@@ -133,7 +134,7 @@ $(document).ready(function(){
       card.record_second(number);
       $('#s_box2_f2').text(`${number}`)
       clicks += 1;
-      score(card,'#b_box_f2');
+      strike_score(card,'#b_box_f2');
       card.clear_bonus();
 
       //third frame
@@ -145,7 +146,7 @@ $(document).ready(function(){
       card.record_second(number);
       $('#s_box2_f3').text(`${number}`)
       clicks += 1;
-      score(card,'#b_box_f3');
+      strike_score(card,'#b_box_f3');
       card.clear_bonus();
 
      //fourth frame
@@ -157,7 +158,7 @@ $(document).ready(function(){
       card.record_second(number);
       $('#s_box2_f4').text(`${number}`)
       clicks += 1;
-      score(card,'#b_box_f4');
+      strike_score(card,'#b_box_f4');
       card.clear_bonus();
 
       //fifth frame
@@ -169,7 +170,7 @@ $(document).ready(function(){
       card.record_second(number);
       $('#s_box2_f5').text(`${number}`)
       clicks += 1;
-      score(card,'#b_box_f5');
+      strike_score(card,'#b_box_f5');
       card.clear_bonus();
 
      //sixth frame
@@ -181,7 +182,7 @@ $(document).ready(function(){
       card.record_second(number);
       $('#s_box2_f6').text(`${number}`)
       clicks += 1;
-      score(card,'#b_box_f6');
+      strike_score(card,'#b_box_f6');
       card.clear_bonus();
 
       //sevent frame
@@ -193,7 +194,7 @@ $(document).ready(function(){
       card.record_second(number);
       $('#s_box2_f7').text(`${number}`)
       clicks += 1;
-      score(card,'#b_box_f7');
+      strike_score(card,'#b_box_f7');
       card.clear_bonus();
 
      //eight frame
@@ -205,7 +206,7 @@ $(document).ready(function(){
       card.record_second(number);
       $('#s_box2_f8').text(`${number}`)
       clicks += 1;
-      score(card,'#b_box_f8');
+      strike_score(card,'#b_box_f8');
       card.clear_bonus();
 
       //nineth frame
@@ -217,7 +218,7 @@ $(document).ready(function(){
       card.record_second(number);
       $('#s_box2_f9').text(`${number}`)
       clicks += 1;
-      score(card,'#b_box_f9');
+      strike_score(card,'#b_box_f9');
       card.clear_bonus();
 
      //tenth frame
@@ -229,7 +230,7 @@ $(document).ready(function(){
       card.record_second(number);
       $('#s_box2_f10').text(`${number}`)
       clicks += 1;
-      score(card,'#b_box_f10');
+      strike_score(card,'#b_box_f10');
       card.clear_bonus();
 
       $('#total').text(card.total_score_display());

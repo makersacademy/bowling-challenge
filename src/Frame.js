@@ -23,3 +23,8 @@ Frame.prototype.updateBallOne = function (value) {
 Frame.prototype.updateBallTwo = function (value) {
   this._ballTwo = value;
 };
+
+Frame.prototype.calculateTotalPoints = function () {
+  this._totalPoints += this._ballOne;
+  this._totalPoints += this._ballTwo;
+};

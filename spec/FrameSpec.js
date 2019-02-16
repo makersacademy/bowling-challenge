@@ -27,4 +27,12 @@ describe("Frame", function() {
     frame.updateBallTwo(6)
     expect(frame.showBallTwo()).toEqual(6);
   });
+
+  it("should calculate the total points of the frame", function() {
+    frame.updateBallOne(7);
+    frame.updateBallTwo(2);
+    frame.calculateTotalPoints();
+    expect(frame._totalPoints).toEqual(9);
+  });
+
 });

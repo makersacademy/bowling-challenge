@@ -18,7 +18,7 @@ Game.prototype.begin = function(players) {
         Have this here instead of in Interface as window.onload = function() {} wrapping Interface breaks Jasmine
     Take an array of throw scores and return an expressive string
 */
-Game.prototype.presentFrame = function(frameThrows) {
+Game.prototype.presentThrows = function(frameThrows) {
     if (frameThrows[0] === 10) { return 'X' }
     else if ( frameThrows[0] + frameThrows[1] === 10 ) { return '/' }
     else if ( frameThrows.length === 2 ) { return frameThrows[0] + ',' + frameThrows[1] }
@@ -28,6 +28,14 @@ Game.prototype.presentFrame = function(frameThrows) {
 
 Game.prototype.currentBowler = function() {
     return Object.keys(this.frames)[0]
+}
+
+Game.prototype.currentFrame = function () {
+    return 0
+}
+
+Game.prototype.presentCurrentFrame = function () {
+    return Object.keys(this.frames)[0] + '-f' + 0
 }
 
 /*

@@ -6,12 +6,12 @@ function Scorecard() {
   this.currentFrame = new Frame();
 }
 
-Scorecard.prototype.total = function(frames) {
-  var score = 0
-  frames.forEach(function(element) {
-    score = score + element.reduce((a,b) => a + b, 0)
-  });
-  return score
+Scorecard.prototype.total = function() {
+  var finalFrames = []
+  for (var i = 0; i < this.frames.length; i++) {
+    finalFrames.push(this.frameResult(i+1))
+  }
+  return finalFrames.reduce((a,b) => a + b, 0)
 };
 
 Scorecard.prototype.turn = function(pins) {
@@ -22,20 +22,18 @@ Scorecard.prototype.turn = function(pins) {
     } else {
       this.currentFrame = new Frame();
     }
-    // console.log("framesArray = " + this.frames )
-    // console.log("frame 10 = " + this.frames[9] )
   }
 };
 
 Scorecard.prototype.frameResult = function(frameNumber) {
   var frameSum = this.frameSum(frameNumber)
-  console.log("frameSum = " + frameSum )
   var nextTwoFrames = [this.frames[frameNumber], this.frames[frameNumber+1]].flat()
-console.log("nextTwoFrames = " + nextTwoFrames )
+  var rollPlusOne = nextTwoFrames[0] = nextTwoFrames[0] || 0
+  var rollPlusTwo = nextTwoFrames[1] = nextTwoFrames[1] || 0
   if (this.isStrike(frameNumber)) {
-    return frameSum + nextTwoFrames[0] + nextTwoFrames[1]
+    return frameSum + rollPlusOne + rollPlusTwo
   } else if (this.isSpare(frameNumber)) {
-    return frameSum + nextTwoFrames[0]
+    return frameSum + rollPlusOne
   } else {
     return frameSum
   }

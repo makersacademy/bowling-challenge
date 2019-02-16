@@ -10,11 +10,17 @@ describe("Scorecard", function() {
   });
 
   it("gutter game score is zero", function() {
-    expect(scorecard.total([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).toEqual(0);
+    for (var i = 0; i < 20; i++) {
+      scorecard.turn(0);
+    }
+    expect(scorecard.total()).toEqual(0);
   });
 
   it("1 pin per roll scores 20", function() {
-    expect(scorecard.total([[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1]])).toEqual(20);
+    for (var i = 0; i < 20; i++) {
+      scorecard.turn(1);
+    }
+    expect(scorecard.total()).toEqual(20);
   });
 
   it("calculate score for 1st frame", function() {
@@ -82,6 +88,13 @@ describe("Scorecard", function() {
     scorecard.turn(1);
     scorecard.turn(1);
     expect(scorecard.frameResult(10)).toEqual(12);
+  });
+
+  it("can score the perfect game", function() {
+    for (var i = 0; i < 12; i++) {
+      scorecard.turn(10);
+    }
+    expect(scorecard.total()).toEqual(300);
   });
 
 

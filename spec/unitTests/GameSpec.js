@@ -8,7 +8,7 @@ describe('Game', function() {
   });
 
   it('should have 10 frames', function() {
-    expect(game._frames.length).toEqual(10);
+    expect(game.frames.length).toEqual(10);
   });
 
 });

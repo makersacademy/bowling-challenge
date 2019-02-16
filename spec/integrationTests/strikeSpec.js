@@ -16,18 +16,17 @@ describe('ScoreCard', function() {
 
     describe('#calculateStrikeBonuses', function() {
 
-
     it('Frames keep track of the next two roll scores', function() {
       do_one_game_with_strikes(scoreCard._game)
       scoreCard.calculateStrikeBonuses()
       firstFrameExpectation = [3, 4]
-      expect(scoreCard._game._frames[0]._strikeBonusRollsScores).toEqual(firstFrameExpectation)
+      expect(scoreCard._game.frames[0]._strikeBonusRollsScores).toEqual(firstFrameExpectation)
       seventhFrameExpectation = [10, 2]
-      expect(scoreCard._game._frames[6]._strikeBonusRollsScores).toEqual(seventhFrameExpectation)
+      expect(scoreCard._game.frames[6]._strikeBonusRollsScores).toEqual(seventhFrameExpectation)
       eighthFrameExpectation = [2, 3]
-      expect(scoreCard._game._frames[7]._strikeBonusRollsScores).toEqual(eighthFrameExpectation)
+      expect(scoreCard._game.frames[7]._strikeBonusRollsScores).toEqual(eighthFrameExpectation)
       ninthFrameExpectation = []
-      expect(scoreCard._game._frames[8]._strikeBonusRollsScores).toEqual(ninthFrameExpectation)
+      expect(scoreCard._game.frames[8]._strikeBonusRollsScores).toEqual(ninthFrameExpectation)
     });
 
   });

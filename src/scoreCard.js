@@ -17,13 +17,13 @@ ScoreCard.prototype.total = function() {
     var accumulator = 0;
     var i;
     for (i = 0; i < 10; i++) {
-        accumulator += this.sum(this._game._frames[i]._scores);
+        accumulator += this.sum(this._game.frames[i]._scores);
     }
     return accumulator;
 };
 
 ScoreCard.prototype.calculateStrikeBonuses = function() {
-  var allFrames = this._game._frames
+  var allFrames = this._game.frames
 
   var i;
   for (i = 0; i < allFrames.length; i++) {

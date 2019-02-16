@@ -30,5 +30,10 @@ describe("EvaluateScoreSpec",function(){
     expect(evaluateScore.scorecard([[10],[7,3],[9,0],[10],[0,8],[8,2],[0,6],[10],[3,6]])).toEqual(
       [20,39,48,66,74,84,90,109,118]
     )
-  });
+  })
+  it("can evaluate a perfect game",function(){
+      expect(evaluateScore.scorecard([[10],[10],[10],[10],[10],[10],[10],[10],[10],[10,10,10]])).toEqual(
+      [30,60,90,120,150,180,210,240,270,300]
+      )
+  })
 })

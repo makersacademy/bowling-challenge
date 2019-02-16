@@ -23,6 +23,7 @@ describe("Scorecard",function(){
       [[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4]]
     )
   })
+
   it("throws an error if an attempt is made to record a roll after game is over",function(){
     for( var i = 1; i < 21; i++){
       scorecard.record.roll(4)
@@ -86,6 +87,8 @@ describe("Scorecard",function(){
       [30,60,90,120,150,180,210,240,270,300]
     )
   })
+  it("can handle edge case: invalid strike in 10th frame")
+  it("can handle edge case: invalid total in 10th frame")
 })
 //cant exceed 10 frames
 //cant exceed 10 points

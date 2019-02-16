@@ -43,33 +43,44 @@ describe('Features', function () {
       frame1.rolls[0] = 0;
       frame1.rolls[1] = 0;
       frame1.setFrameComplete();
+      scorecard.totalScore += frame1.score
       frame2.rolls[0] = 0;
       frame2.rolls[1] = 0;
       frame2.setFrameComplete();
+      scorecard.totalScore += frame2.score
       frame3.rolls[0] = 0;
       frame3.rolls[1] = 0;
       frame3.setFrameComplete();
+      scorecard.totalScore += frame3.score
       frame4.rolls[0] = 0;
       frame4.rolls[1] = 0;
       frame4.setFrameComplete();
+      scorecard.totalScore += frame4.score
       frame5.rolls[0] = 0;
       frame5.rolls[1] = 0;
       frame5.setFrameComplete();
+      scorecard.totalScore += frame5.score
       frame6.rolls[0] = 0;
       frame6.rolls[1] = 0;
       frame6.setFrameComplete();
+      scorecard.totalScore += frame6.score
       frame7.rolls[0] = 0;
       frame7.rolls[1] = 0;
       frame7.setFrameComplete();
+      scorecard.totalScore += frame7.score
       frame8.rolls[0] = 0;
       frame8.rolls[1] = 0;
       frame8.setFrameComplete();
+      scorecard.totalScore += frame8.score
       frame9.rolls[0] = 0;
       frame9.rolls[1] = 0;
       frame9.setFrameComplete();
+      scorecard.totalScore += frame9.score
       frame10.rolls[0] = 0;
       frame10.rolls[1] = 0;
       frame10.setFrameComplete();
+      scorecard.totalScore += frame10.score
+
       expect(scorecard.totalScore).toEqual(0);
   })
 })

@@ -17,4 +17,9 @@ describe("Frame", function() {
   it("should start with ball two equalling 0", function() {
     expect(frame.showBallTwo()).toEqual(0);
   });
+
+  it("should update the value of ball one", function() {
+    frame.updateBallOne(4)
+    expect(frame.showBallOne()).toEqual(4);
+  });
 });

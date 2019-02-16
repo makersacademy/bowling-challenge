@@ -2,6 +2,7 @@
 // Retains and updates score table: .frames
 function Game () {
     this.frames = {}
+    this.currentFrameIndex = 0
 }
 
 Game.prototype.begin = function(players) {
@@ -13,10 +14,22 @@ Game.prototype.begin = function(players) {
     }
 }
 
+Game.prototype.currentBowler = function() {
+    return Object.keys(this.frames)[0]
+}
+
+Game.prototype.returnCurrentFrameIndex = function () {
+    return this.currentFrameIndex
+}
+
+Game.prototype.takeThrow = function(pinsBowled) {
+    this.frames[this.currentBowler()][this.returnCurrentFrameIndex()].addScore(pinsBowled)
+}
+
 /*
     Display frame function
-        Have this here instead of in Interface as window.onload = function() {} wrapping Interface breaks Jasmine
-    Take an array of throw scores and return an expressive string
+        This here instead of in Interface as window.onload = function() {} wrapping Interface breaks Jasmine
+    Take an array of throw scores and return a legible string
 */
 Game.prototype.presentThrows = function(frameThrows) {
     if (frameThrows[0] === 10) { return 'X' }
@@ -26,20 +39,7 @@ Game.prototype.presentThrows = function(frameThrows) {
     else { return ',' }
 }
 
-Game.prototype.currentBowler = function() {
-    return Object.keys(this.frames)[0]
-}
-
-Game.prototype.currentFrame = function () {
-    return 0
-}
-
 Game.prototype.presentCurrentFrame = function () {
     return Object.keys(this.frames)[0] + '-f' + 0
 }
 
-/*
-    Add scores to each frame - receiveThrow(0through10)
-    Know when to give the frame to the next player
-    Pass these scores to the gameResults data object
-*/

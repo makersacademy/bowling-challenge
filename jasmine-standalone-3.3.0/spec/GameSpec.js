@@ -45,10 +45,10 @@ describe('Game', function() {
         })
     })
 
-    describe('currentFrame', function() {
+    describe('returnCurrentFrameIndex', function() {
         it('should return 0 at game start', function() {
             game.begin([])
-            expect(game.currentFrame()).toBe(0)
+            expect(game.returnCurrentFrameIndex()).toBe(0)
         })
     })
 
@@ -56,6 +56,14 @@ describe('Game', function() {
         it('should return a string identifying the table cell next to require updating at game start', function() {
             game.begin(['Foo'])
             expect(game.presentCurrentFrame()).toBe('Foo-f0')
+        })
+    })
+
+    describe('takeThrow', function() {
+        it("should, when running for the first time, take it's argument and push it into the first bowler's first frame's throw array", function() {
+            game.begin(['Foo'])
+            game.takeThrow(0)
+            expect(game.frames['Foo'][0]['throws']).toContain(0)
         })
     })
 })

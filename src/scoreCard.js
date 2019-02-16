@@ -22,6 +22,10 @@ ScoreCard.prototype.total = function() {
     return accumulator;
 };
 
+ScoreCard.prototype.allFrames = function() {
+  return this._game.frames
+}
+
 ScoreCard.prototype.calculateStrikeBonuses = function() {
   var allFrames = this._game.frames
 

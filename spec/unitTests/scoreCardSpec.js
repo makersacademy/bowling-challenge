@@ -18,4 +18,12 @@ describe('ScoreCard', function() {
 
   });
 
+  describe('#allFrames', function() {
+
+    it('returns all the frames of the game', function() {
+      expect(scoreCard.allFrames()).toEqual(scoreCard._game.frames)
+    });
+
+  });
+
 });

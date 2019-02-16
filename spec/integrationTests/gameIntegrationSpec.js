@@ -36,4 +36,18 @@ describe('Game', function() {
 
   });
 
+  describe ('#run', function() {
+
+    it('performs an entire game based on an array of all the rolls', function() {
+      var basicGameWithoutStrikesOrSpares = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5];
+      spyOn(game, 'roll').and.callThrough();
+      game.run(basicGameWithoutStrikesOrSpares);
+      var frameThreeScores = [2, 3];
+      expect(game.frames[3].scores).toEqual(frameThreeScores);
+      var frameEightScores = [2, 3];
+      expect(game.frames[8].scores).toEqual(frameEightScores);
+    });
+
+  });
+
 });

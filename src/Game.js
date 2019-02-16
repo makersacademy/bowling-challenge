@@ -18,3 +18,10 @@ Game.prototype.roll = function(score) {
         }
     }
 };
+
+Game.prototype.run = function(allRolls) {
+    var i = 0;
+    for (i = 0; i < allRolls.length; i++) {
+        this.roll(allRolls[i])
+    }
+}

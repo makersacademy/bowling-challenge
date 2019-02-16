@@ -18,24 +18,17 @@ Scorecard.prototype.turn = function(pins) {
   if (this.currentFrame.roll(pins) != false) {
     this.frames.push(this.currentFrame.getRolls())
     this.currentFrame = new Frame();
-    // console.log("frame complete framesArray = " + this.frames)
-  } else {
-    // console.log("frames incomplete framesArray = " + this.frames)
-  }
+  } 
 };
 
 Scorecard.prototype.frameResult = function(frameNumber) {
   var frameSum = this.frameSum(frameNumber)
-  // console.log("frames array = " + this.frames)
-  // console.log(this.frames[frameNumber])
-  // console.log("^")
   var nextTwoFrames = [this.frames[frameNumber], this.frames[frameNumber+1]].flat()
-  // console.log("next2frames = " + nextTwoFrames)
-  // console.log("frameSum = " + frameSum)
-  // console.log("frameLength = " + this.frames[frameNumber - 1].length)
+
   if (this.isStrike(frameNumber)) {
-    // console.log("identified strike")
     return frameSum + nextTwoFrames[0] + nextTwoFrames[1]
+  } else if (this.isSpare(frameNumber)) {
+    return frameSum + nextTwoFrames[0]
   } else {
     return frameSum
   }

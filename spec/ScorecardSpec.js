@@ -45,6 +45,15 @@ describe("Scorecard", function() {
     expect(scorecard.frameResult(1)).toEqual(12);
   });
 
+  it("calculate score for a spare", function() {
+    scorecard.turn(3);
+    scorecard.turn(3);
+    scorecard.turn(5);
+    scorecard.turn(5);
+    scorecard.turn(10);
+    expect(scorecard.frameResult(2)).toEqual(20);
+  });
+
 
 
 });

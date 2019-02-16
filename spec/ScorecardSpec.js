@@ -70,6 +70,14 @@ describe("Scorecard",function(){
       [[10],[10],[10],[10],[10],[10],[10],[10],[10],[10,5,4]]
     )
   })
+  it("can evaluate a perfect game",function(){
+    for(var i = 1; i <= 12; i++){
+      scorecard.record.roll(10);
+    };
+    expect(scorecard.evaluate()).toEqual(
+      [30,60,90,120,150,180,210,240,270,300]
+    )
+  })
 })
 //cant exceed 10 frames
 //cant exceed 10 points

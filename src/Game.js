@@ -25,6 +25,11 @@ Game.prototype.inputBallValue= function (value, frame = new Frame()) {
   if (this.showBallNumber() == 1){
     this.inputFrameToScorecard(frame);
     this._scorecard[this.showFrameCount() - 1].updateBallOne(value);
+    this._ballNumber ++;
+  }
+  else {
+    this._scorecard[this.showFrameCount() - 1].updateBallTwo(value);
+    this._ballNumber --;
   };
 };
 

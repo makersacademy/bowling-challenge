@@ -5,7 +5,7 @@ describe("Game", function() {
 
   beforeEach(function() {
     game = new Game();
-    frame = jasmine.createSpyObj('frame', ['updateBallOne']);
+    frame = jasmine.createSpyObj('frame', ['updateBallOne', 'updateBallTwo']);
   });
 
   it("should start with total points 0", function() {
@@ -32,6 +32,12 @@ describe("Game", function() {
   it("should update the value of ball one with in the Frame function", function() {
     game.inputBallValue(3, frame);
     expect(frame.updateBallOne).toHaveBeenCalled();
+  });
+
+  it("should update the value of ball two with in the Frame function", function() {
+    game.inputBallValue(3, frame);
+    game.inputBallValue(6, frame);
+    expect(frame.updateBallTwo).toHaveBeenCalled();
   });
 
 });

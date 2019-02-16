@@ -39,6 +39,16 @@ window.onload = function() {
         DisplayCurrentBowler()
     })
 
+    for(i = 0; i < 10; i++) {
+        let pinsBowledButton = document.getElementsByClassName('pins-bowled-button')[i]
+        pinsBowledButton.addEventListener('click', function(event) {
+            game.takeThrow(pinsBowledButton.value)
+            
+            DisplayFrames()
+            DisplayCurrentBowler()
+        })
+    }
+
     // Helper functions
     function DisplayFrames() {
         // frameRows becomes array of html strings each of which can display a row in frames table

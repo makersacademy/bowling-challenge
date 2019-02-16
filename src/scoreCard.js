@@ -50,7 +50,7 @@ ScoreCard.prototype.calculateSpareBonuses = function() {
             currentFrame._spareBonusRollsScore = this.listEnsuingScores(i)[0];
         }
     }
-    console.log(currentFrame._spareBonusRollsScore)
+    console.log(currentFrame._spareBonusRollsScore);
 };
 
 ScoreCard.prototype.listEnsuingScores = function(frameIndex) {

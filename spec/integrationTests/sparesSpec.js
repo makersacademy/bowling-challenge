@@ -25,29 +25,29 @@ describe('Spares', function() {
         });
 
         it('ScoreCard correctly calculates the spare bonuses when there are indeed spares', function() {
-          game.run(
-            [1, 9,
-            2, 8,
-            1, 1,
-            5, 5,
-            1, 1,
-            0, 10,
-            0, 8,
-            5, 5,
-            0, 0,
-            1, 1]
-          );
-          scoreCard.calculateSpareBonuses();
-          expect(game.frames[0]._spareBonusRollsScore).toEqual(2);
-          expect(game.frames[1]._spareBonusRollsScore).toEqual(1);
-          expect(game.frames[2]._spareBonusRollsScore).toEqual(0);
-          expect(game.frames[3]._spareBonusRollsScore).toEqual(1);
-          expect(game.frames[4]._spareBonusRollsScore).toEqual(0);
-          expect(game.frames[5]._spareBonusRollsScore).toEqual(0);
-          expect(game.frames[6]._spareBonusRollsScore).toEqual(0);
-          expect(game.frames[7]._spareBonusRollsScore).toEqual(0);
-          expect(game.frames[8]._spareBonusRollsScore).toEqual(0);
-          expect(game.frames[9]._spareBonusRollsScore).toEqual(0);
+            game.run(
+                [1, 9,
+                    2, 8,
+                    1, 1,
+                    5, 5,
+                    1, 1,
+                    0, 10,
+                    0, 8,
+                    5, 5,
+                    0, 0,
+                    1, 1]
+            );
+            scoreCard.calculateSpareBonuses();
+            expect(game.frames[0]._spareBonusRollsScore).toEqual(2);
+            expect(game.frames[1]._spareBonusRollsScore).toEqual(1);
+            expect(game.frames[2]._spareBonusRollsScore).toEqual(0);
+            expect(game.frames[3]._spareBonusRollsScore).toEqual(1);
+            expect(game.frames[4]._spareBonusRollsScore).toEqual(0);
+            expect(game.frames[5]._spareBonusRollsScore).toEqual(0);
+            expect(game.frames[6]._spareBonusRollsScore).toEqual(0);
+            expect(game.frames[7]._spareBonusRollsScore).toEqual(0);
+            expect(game.frames[8]._spareBonusRollsScore).toEqual(0);
+            expect(game.frames[9]._spareBonusRollsScore).toEqual(0);
         });
 
     });

@@ -18,9 +18,9 @@ Frame.prototype.roll = function(score) {
         this._numberOfRolls = 1;
         this._IsStrike = true;
     } else if (this.scores.length == 2) {
-          if ((this.scores[0] + this.scores[1]) == 10) {
-              this._IsSpare = true;
-          }
+        if ((this.scores[0] + this.scores[1]) == 10) {
+            this._IsSpare = true;
+        }
     }
 };
 

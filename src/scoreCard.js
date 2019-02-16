@@ -43,17 +43,11 @@ ScoreCard.prototype.listEnsuingScores = function(frameIndex) {
     var scoreList = [];
 
     if (typeof nextFrame != 'undefined') {
-        var j;
-        for (j = 0; j < nextFrame.scores.length; j++) {
-            scoreList.push(nextFrame.scores[j]);
-        }
+        this.pushAllElements(scoreList, nextFrame.scores)
     }
 
     if (typeof nextNextFrame != 'undefined') {
-        var k;
-        for (k = 0; k < nextNextFrame.scores.length; k++) {
-            scoreList.push(nextNextFrame.scores[k]);
-        }
+        this.pushAllElements(scoreList, nextNextFrame.scores)
     }
 
     return scoreList;

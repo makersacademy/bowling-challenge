@@ -22,4 +22,9 @@ describe("Frame", function() {
     frame.updateBallOne(4)
     expect(frame.showBallOne()).toEqual(4);
   });
+
+  it("should update the value of ball two", function() {
+    frame.updateBallTwo(6)
+    expect(frame.showBallTwo()).toEqual(6);
+  });
 });

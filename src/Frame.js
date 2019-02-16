@@ -19,3 +19,7 @@ Frame.prototype.showBallTwo = function () {
 Frame.prototype.updateBallOne = function (value) {
   this._ballOne = value;
 };
+
+Frame.prototype.updateBallTwo = function (value) {
+  this._ballTwo = value;
+};

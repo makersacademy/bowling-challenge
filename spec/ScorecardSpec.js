@@ -40,6 +40,36 @@ describe("Scorecard",function(){
     expect(function(){scorecard.record.roll(11)}).toThrow(new Error("score error"))
   });
   //frame exceeds 10
+  it("can record a perfect game",function(){
+    for(var i = 1; i <= 12; i++){
+      scorecard.record.roll(10);
+    };
+    expect(scorecard.display()).toEqual(
+      [[10],[10],[10],[10],[10],[10],[10],[10],[10],[10,10,10]]
+    )
+  })
+  it("can record 10th frame spare edge case game",function(){
+    for(var i = 1; i <= 9; i++){
+      scorecard.record.roll(10);
+    };
+    scorecard.record.roll(5);
+    scorecard.record.roll(5);
+    scorecard.record.roll(4)
+    expect(scorecard.display()).toEqual(
+      [[10],[10],[10],[10],[10],[10],[10],[10],[10],[5,5,4]]
+    )
+  })
+  it("can record 10th frame strike edge case game",function(){
+    for(var i = 1; i <= 9; i++){
+      scorecard.record.roll(10);
+    };
+    scorecard.record.roll(10);
+    scorecard.record.roll(5);
+    scorecard.record.roll(4);
+    expect(scorecard.display()).toEqual(
+      [[10],[10],[10],[10],[10],[10],[10],[10],[10],[10,5,4]]
+    )
+  })
 })
 //cant exceed 10 frames
 //cant exceed 10 points

@@ -3,6 +3,10 @@ function Scorecard(){
   this.record = new ScoreRecorder(this._scorecard)
 }
 
+Scorecard.prototype.evaluate = function(){
+  return (new EvaluateScore).scorecard(this._scorecard)
+}
+
 Scorecard.prototype.display = function(){
   return this._scorecard;
 }

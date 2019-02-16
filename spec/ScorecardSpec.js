@@ -11,6 +11,14 @@ describe("Scorecard",function(){
     for( var i = 1; i < 21; i++){
       scorecard.record.roll(4)
     }
+    expect(scorecard.evaluate()).toEqual(
+      [8,16,24,32,40,48,56,64,72,80]
+    )
+  })
+  it("can evaluate an entire game", function(){
+    for( var i = 1; i < 21; i++){
+      scorecard.record.roll(4)
+    }
     expect(scorecard.display()).toEqual(
       [[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4]]
     )

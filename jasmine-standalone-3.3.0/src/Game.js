@@ -26,8 +26,12 @@ Game.prototype.presentFrame = function(frameThrows) {
     else { return ',' }
 }
 
+Game.prototype.currentBowler = function() {
+    return Object.keys(this.frames)[0]
+}
+
 /*
-    Add scores to each frame
+    Add scores to each frame - receiveThrow(0through10)
     Know when to give the frame to the next player
     Pass these scores to the gameResults data object
 */

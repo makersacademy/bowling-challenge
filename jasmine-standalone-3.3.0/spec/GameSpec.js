@@ -39,5 +39,12 @@ describe('Game', function() {
         })
     })
 
+    describe('currentBowler', function() {
+        it('should begin with the first bowler entered', function() {
+            game.begin(['Foo'])
+            expect(game.currentBowler()).toBe('Foo')
+        })
+    })
+
     // Test add stuff to frame function
 })

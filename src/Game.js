@@ -1,6 +1,7 @@
 function Game() {
   this._totalPoints = 0;
   this._frameCount = 0;
+  this._ballNumber = 1;
 }
 
 Game.prototype.showTotalPoints = function () {
@@ -9,4 +10,8 @@ Game.prototype.showTotalPoints = function () {
 
 Game.prototype.showFrameCount = function () {
   return this._frameCount;
+};
+
+Game.prototype.showBallNumber = function () {
+  return this._ballNumber;
 };

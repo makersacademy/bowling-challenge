@@ -16,4 +16,8 @@ describe("Game Scorecard", function() {
     expect(game.showFrameCount()).toEqual(0);
   });
 
+  it("should start with ball number equalling 1", function() {
+    expect(game.showFrameCount()).toEqual(0);
+  });
+
 });

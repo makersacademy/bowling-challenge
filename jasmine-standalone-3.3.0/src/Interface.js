@@ -56,5 +56,6 @@ window.onload = function() {
         /*
             Set innerHtml of #frames current player's name (have Game function figure this out)
         */
+       document.getElementById('current-player-name').innerText = game.currentBowler() + "'s turn"
     })
 }

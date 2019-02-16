@@ -19,6 +19,11 @@ input {
     border: 1px solid black;
 }
 
+.pins-bowled-button {
+    border-radius: 50%;
+    width: 4ch;
+    text-align: center;
+}
 
 #summarise {
     display: none;

@@ -1,14 +1,14 @@
 describe('Game', function() {
 
-  var game;
+    var game;
 
-  beforeEach(function() {
-    function mockConstructorFunction() {}
-    game = new Game(mockConstructorFunction)
-  });
+    beforeEach(function() {
+        function mockConstructorFunction() {}
+        game = new Game(mockConstructorFunction);
+    });
 
-  it('should have 10 frames', function() {
-    expect(game.frames.length).toEqual(10);
-  });
+    it('should have 10 frames', function() {
+        expect(game.frames.length).toEqual(10);
+    });
 
 });

@@ -6,7 +6,7 @@ function ScoreCard(constructorFunction = Game) {
 
 ScoreCard.prototype.sum = function(array) {
     if (typeof array == 'number') {
-      return array
+        return array;
     }
     var accumulator = 0;
     var i;
@@ -17,11 +17,11 @@ ScoreCard.prototype.sum = function(array) {
 };
 
 ScoreCard.prototype.total = function() {
-    this.calculateStrikeBonuses()
+    this.calculateStrikeBonuses();
     var accumulator = 0;
     var i;
     for (i = 0; i < 10; i++) {
-        console.log(accumulator)
+        console.log(accumulator);
         accumulator += this.sum(this.allFrames()[i].scores);
         accumulator += this.sum(this.allFrames()[i].sumStrikeBonusRollsScores());
     }
@@ -40,6 +40,17 @@ ScoreCard.prototype.calculateStrikeBonuses = function() {
             currentFrame._strikeBonusRollsScores.push(this.listEnsuingScores(i)[0], this.listEnsuingScores(i)[1]);
         }
     }
+};
+
+ScoreCard.prototype.calculateSpareBonuses = function() {
+    var i;
+    for (i = 0; i < this.allFrames().length; i++) {
+        var currentFrame = this.allFrames()[i];
+        if (currentFrame.IsASpare()) {
+            currentFrame._spareBonusRollsScore = this.listEnsuingScores(i)[0];
+        }
+    }
+    console.log(currentFrame._spareBonusRollsScore)
 };
 
 ScoreCard.prototype.listEnsuingScores = function(frameIndex) {

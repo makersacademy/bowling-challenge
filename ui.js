@@ -126,8 +126,15 @@ $(document).ready(function(){
       card.record_second(number);
       $('#s_box2_f2').text(`${number}`)
       clicks += 1;
-      $('#b_box_f2').text(card.frame_score_display());
+    
+      if (card.st_bonus[0] == 10){
+        card.strike_bonus();
+        $('#b_box_f2').text(card.frame_score_display());
+        card.clear_bonus();
 
+      } else {
+        $('#b_box_f2').text(card.frame_score_display());
+      }
 
         // ------------------------------------------
     } else if (clicks == 4) {

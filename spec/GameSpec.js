@@ -6,6 +6,7 @@ describe("Game", function() {
   beforeEach(function() {
     game = new Game();
     frame = jasmine.createSpyObj('frame', ['updateBallOne', 'updateBallTwo']);
+    frame2 = jasmine.createSpyObj('frame2', ['updateBallOne', 'updateBallTwo']);
   });
 
   it("should start with total points 0", function() {

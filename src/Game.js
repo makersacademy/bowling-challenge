@@ -30,6 +30,7 @@ Game.prototype.inputBallValue= function (value, frame = new Frame()) {
   else {
     this._scorecard[this.showFrameCount() - 1].updateBallTwo(value);
     this._ballNumber --;
+    this._frameCount ++;
   };
 };
 

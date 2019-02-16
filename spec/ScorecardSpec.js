@@ -15,6 +15,12 @@ describe("Scorecard",function(){
       [[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4]]
     )
   })
+  it("throws an error if an attempt is made to record a roll after game is over",function(){
+    for( var i = 1; i < 21; i++){
+      scorecard.record.roll(4)
+    }
+    expect(function(){scorecard.record.roll(5)}).toThrow(new Error("game is over"))
+  })
   it("can record a strike", function(){
     scorecard.record.roll(3);
     scorecard.record.roll(4);

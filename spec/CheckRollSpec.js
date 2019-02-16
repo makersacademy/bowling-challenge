@@ -5,6 +5,10 @@ describe("CheckRoll",function(){
     scorecard = []
     checkRoll = new CheckRoll(scorecard);
   })
+  it("throws game over error if rolling on a finished game",function(){
+    checkRoll = new CheckRoll([[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4],[4,4]])
+    expect(function(){checkRoll.roll(5)}).toThrow(new Error("game is over"));
+  })
   it("throws 'score error' if roll greater than 10",function(){
     expect(function(){checkRoll.roll(11)}).toThrow(new Error("score error"));
     expect(function(){checkRoll.roll(20)}).toThrow(new Error("score error"));

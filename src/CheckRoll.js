@@ -2,6 +2,7 @@ function CheckRoll(scorecard){
   this._scorecard = scorecard;
 }
 CheckRoll.prototype.roll = function(roll){
+  if(this._isGameOver()){throw new Error("game is over")}
   if(!this._isValidInput(roll)){throw new Error("score error")};
   if(!this._isFameWithinTen(roll)){throw new Error("frame score error")};
 }
@@ -22,4 +23,21 @@ CheckRoll.prototype.lastFrame = function(){
   }else{
     return []
   }
+}
+
+CheckRoll.prototype._isGameOver = function() {
+  if(this._scorecard.length >= 10){
+    switch (this._scorecard[this._scorecard.length-1].length) {
+      case 1:
+        return false
+        break;
+      case 2:
+        return arraySum(this._scorecard[this._scorecard.length-1]) >= 10 ? false : true;
+        break;
+      case 3:
+        return true;
+        break;
+    }
+  }
+  return false
 }

@@ -13,4 +13,8 @@ describe("Frame", function() {
   it("should start with ball one equalling 0", function() {
     expect(frame.showBallOne()).toEqual(0);
   });
+
+  it("should start with ball two equalling 0", function() {
+    expect(frame.showBallTwo()).toEqual(0);
+  });
 });

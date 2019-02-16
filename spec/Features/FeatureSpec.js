@@ -12,4 +12,8 @@ describe("Game Scorecard", function() {
     expect(game.showTotalPoints()).toEqual(0);
   });
 
+  it("should start with frame count equalling 0", function() {
+    expect(game.showFrameCount()).toEqual(0);
+  });
+
 });

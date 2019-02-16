@@ -1,7 +1,5 @@
 'use strict'
 
-let Bowling = require('../../src/Bowling.js')
-
 describe('Bowling', function () {
   let bowling
 
@@ -13,7 +11,7 @@ describe('Bowling', function () {
   }
 
   beforeEach(function () {
-    bowling = new Bowling()
+    bowling = new Bowling()   // eslint-disable-line
   })
 
   it('should record a gutter game correctly', function () {

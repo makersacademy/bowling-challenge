@@ -37,12 +37,13 @@ function updateRollNumber () {
 function populateTable () {
   let frames = bowling.getCompleteFrames()
   frames.forEach(function (frame) {
-    $('#' + (frame.number() + 1)).find('#frame').text(frame.number() + 1)
-    $('#' + (frame.number() + 1)).find('#roll-1').text(frame.firstRoll())
-    $('#' + (frame.number() + 1)).find('#roll-2').text(frame.secondRoll())
-    $('#' + (frame.number() + 1)).find('#roll-3').text(frame.thirdRoll())
-    $('#' + (frame.number() + 1)).find('#total').text(frame.frameScore())
-    $('#' + (frame.number() + 1)).find('#symbol').text(getSymbol(frame))
+    let $getframe = $('#' + (frame.number() + 1))
+    $getframe.find('.frame').text(frame.number() + 1)
+    $getframe.find('.roll-1').text(frame.firstRoll())
+    $getframe.find('.roll-2').text(frame.secondRoll())
+    $getframe.find('.roll-3').text(frame.thirdRoll())
+    $getframe.find('.total').text(frame.frameScore())
+    $getframe.find('.symbol').text(getSymbol(frame))
   })
 }
 

@@ -1,6 +1,6 @@
 'use strict'
 
-class Frame {
+class Frame {   // eslint-disable-line
   constructor (num) {
     this._frameNumber = num
     this._score = []
@@ -8,7 +8,7 @@ class Frame {
     this._spare = false
     this._strike = false
     this._complete = false
-    this._bonus = 0
+    this._bonusCount = 0
   }
 
   isComplete () {
@@ -67,16 +67,16 @@ class Frame {
   }
 
   _addSpareBonusScore (number) {
-    if (this._bonus === 0) {
+    if (this._bonusCount === 0) {
       this._addBonusScore(number)
-      this._bonus += 1
+      this._bonusCount += 1
     }
   }
 
   _addStrikeBonusScore (number) {
-    if (this._bonus <= 1) {
+    if (this._bonusCount <= 1) {
       this._addBonusScore(number)
-      this._bonus += 1
+      this._bonusCount += 1
     }
   }
 
@@ -111,5 +111,3 @@ class Frame {
     this._score.push(num)
   }
 }
-
-module.exports = Frame

@@ -1,7 +1,7 @@
 'use strict'
-let Frame = require('../src/Frame')
+// let Frame = require('../src/Frame')
 
-class Bowling {
+class Bowling {  // eslint-disable-line
   constructor () {
     this.frame = 0
     this.scorecardComplete = false
@@ -76,7 +76,7 @@ class Bowling {
   }
 
   _newFrame () {
-    this._frames.push(new Frame(this.frame))
+    this._frames.push(new Frame(this.frame))   // eslint-disable-line
   }
 
   _isLastBallRolled () {
@@ -119,5 +119,3 @@ class Bowling {
     previousFrame.add(this._currentFrame().secondRoll())
   }
 }
-
-module.exports = Bowling

@@ -1,11 +1,25 @@
-Getting started
-===============
+Bowling Challenge
+=================
+
+#Getting started
+
 - git clone https://github.com/brookewoolley/bowling-challenge
 - bundle install
 - To run tests open SpecRunner.html
 
-Bowling Challenge
-=================
+Notes
+=====
+- I wrote the user stories below to guide my tests.
+- I have included all my logic in a single Scorecard 'class' as everything seems relevant to that class but I would be interested to hear what others think.
+- I created a simple UI but it doesn't currently do anything!  
+- I started to try to implement jQuery in the interface but felt like I didn't know where to start so have spent some time this second weekend working through codecademy's jQuery course.
+- I suspect my logic may need some further work for it to be useful re the UI.
+- Hope I can complete the UI at some point.
+
+![ui](https://github.com/brookewoolley/bowling-challenge/blob/master/images/ui.png)
+
+User Stories
+============
 
 ```
 As a player
@@ -42,17 +56,6 @@ As a player
 so I can record my score
 I want to see a total for each frame
 ```
-
-My process
-=============
-
-- Researched how ten pin bowling scoring works
-- Wrote user stories
-- Feeling uncomfortable with javascript syntax after only using it for a few days, I thought about how I would approach this problem using Ruby and used that to guide my approach.  
-- When happy with my logic I put together a simple UI.
-- Started trying to implement jQuery in the interface but felt I haven't actually learnt enough to successfully implement it so have spent some time this second weekend working through codecademy's jQuery course.
-
-![ui](https://github.com/brookewoolley/bowling-challenge/blob/master/images/ui.png)
 
 Makers notes
 ============

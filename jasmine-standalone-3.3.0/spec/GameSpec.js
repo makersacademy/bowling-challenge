@@ -65,5 +65,47 @@ describe('Game', function() {
             game.takeThrow(0)
             expect(game.frames['Foo'][0]['throws']).toContain(0)
         })
+
+        it('should increment bowler frame index if first throw is less than 10', function() {
+            game.begin(['Foo'])
+            game.takeThrow(0)
+            expect(game.currentBowlersFrameIndex).toEqual(1)
+        })
+
+        it('should not change frame index if first throw is 10', function() {
+            game.begin(['Foo'])
+            game.takeThrow(10)
+            expect(game.currentBowlersFrameIndex).toEqual(0)
+        })
+
+        it('should reset bowler frame index after bowler finishes in frame', function(){
+            game.begin(['Foo'])
+            game.takeThrow(0)
+            game.takeThrow(0)
+            expect(game.currentBowlersFrameIndex).toEqual(0)
+        })
+
+        it('should allow the bowler to play his second frame is his first throw is not a strike', function(){
+            game.begin(['Foo', 'Bar'])
+            game.takeThrow(0)
+            expect(game.currentBowler()).toEqual('Foo')
+        })
+
+        it('should change the current bowler to the next after the frame', function() {
+            game.begin(['Foo', 'Bar'])
+            game.takeThrow(10)
+            expect(game.currentBowler()).toBe('Bar')
+        })
+
+        it("should change the current bowler to the first after the last bowler's turn", function() {
+            game.begin(['Foo', 'Bar'])
+            game.takeThrow(10)
+            game.takeThrow(10)
+            expect(game.currentBowler()).toBe('Foo')
+        })
+
+        it('should increment the current frame if everyone has had their throw', function() {
+
+        })
     })
 })

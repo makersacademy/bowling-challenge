@@ -32,6 +32,7 @@ Game.prototype.inputBallValue= function (value, frame = new Frame()) {
   }
   else {
     this._scorecard[this.showFrameCount() - 1].updateBallTwo(value);
+    this.bonusCheck();
     this._ballNumber --;
     this.calculateTotalPoints();
     this._frameCount ++;
@@ -44,4 +45,13 @@ Game.prototype.inputFrameToScorecard = function (frame) {
 
 Game.prototype.calculateTotalPoints = function () {
     this._totalPoints += this._scorecard[this.showFrameCount() - 1].showTotalPoints();
+};
+
+Game.prototype.bonusCheck = function () {
+  if (this.showFrameCount() > 1){
+    var currentFrame = (this.showFrameCount() - 1);
+    if (( this._scorecard[currentFrame - 1].showBallOne() ) + ( this._scorecard[currentFrame - 1].showBallTwo() ) === 10 ) {
+      this._scorecard[currentFrame - 1].addBonusScore(this._scorecard[currentFrame].showBallOne());
+    };
+  };
 };

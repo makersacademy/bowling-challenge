@@ -2,6 +2,7 @@ function Frame() {
   this._totalPoints = 0;
   this._ballOne = 0;
   this._ballTwo = 0;
+  this._bonus = 0;
 }
 
 Frame.prototype.showTotalPoints = function () {
@@ -15,6 +16,10 @@ Frame.prototype.showBallOne = function () {
 
 Frame.prototype.showBallTwo = function () {
   return this._ballTwo;
+};
+
+Frame.prototype.showBonus = function () {
+  return this._bonus;
 };
 
 Frame.prototype.updateBallOne = function (value) {
@@ -31,4 +36,9 @@ Frame.prototype.updateBallTwo = function (value) {
 Frame.prototype.calculateTotalPoints = function () {
   this._totalPoints += this._ballOne;
   this._totalPoints += this._ballTwo;
+  this._totalPoints += this._bonus;
+};
+
+Frame.prototype.addBonusScore = function (value) {
+  this._bonus = value;
 };

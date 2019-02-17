@@ -5,8 +5,8 @@ describe("Game", function() {
 
   beforeEach(function() {
     game = new Game();
-    frame = jasmine.createSpyObj('frame', ['updateBallOne', 'updateBallTwo', 'showTotalPoints']);
-    frame2 = jasmine.createSpyObj('frame2', ['updateBallOne', 'updateBallTwo', 'showTotalPoints']);
+    frame = jasmine.createSpyObj('frame', ['updateBallOne', 'updateBallTwo', 'showTotalPoints', 'addBonusScore', 'showBallOne', 'showBallTwo']);
+    frame2 = jasmine.createSpyObj('frame2', ['updateBallOne', 'updateBallTwo', 'showTotalPoints', 'addBonusScore', 'showBallOne', 'showBallTwo']);
   });
 
   it("should start with total points 0", function() {
@@ -54,4 +54,14 @@ describe("Game", function() {
     expect(function() {game.inputBallValue(0);} ).toThrow(new Error("You have completed ypur scorecard - start a new game."));
   });
 
+  it("should give a bonus of the next ball if a spare", function(){
+    game.inputBallValue(3, frame);
+    (frame.showBallOne).and.returnValue(3);
+    game.inputBallValue(7, frame);
+    (frame.showBallTwo).and.returnValue(7);
+    game.inputBallValue(6, frame2);
+    (frame2.showBallOne).and.returnValue(6);
+    game.inputBallValue(2, frame2);
+    expect(frame.addBonusScore).toHaveBeenCalled();
+  });
 });

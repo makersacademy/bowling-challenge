@@ -40,4 +40,13 @@ describe("Frame", function() {
     expect(function() {frame.updateBallTwo(7);} ).toThrow(new Error("There are not enough pins left standing! Check your input."));
   });
 
+  it("should start with bonus of 0", function() {
+    expect(frame.showBonus()).toEqual(0);
+  });
+
+  it("should update the bonus score", function() {
+    frame.addBonusScore(6);
+    expect(frame.showBonus()).toEqual(6);
+  });
+
 });

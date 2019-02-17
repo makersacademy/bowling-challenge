@@ -57,4 +57,11 @@ describe('Frame', function() {
       expect(frame.isAStrike()).toBe(false);
     })
   })
+  describe('pinsFirstRoll', function(){
+    it('returns number of pins from first roll', function(){
+      frame.addRoll(5);
+      frame.addRoll(4);
+      expect(frame.pinsFirstRoll()).toEqual(5);
+    })
+  })
 })

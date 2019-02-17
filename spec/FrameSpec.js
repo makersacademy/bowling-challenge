@@ -22,6 +22,10 @@ describe('Frame', function() {
       frame.addRoll(4);
       expect(function(){frame.addRoll(1)}).toThrowError('Already rolled twice!');
     })
+    it('stops rolling if first roll is a strike', function() {
+      frame.addRoll(10);
+      expect(frame._rolls).toEqual([10,0]);
+    })
   })
   describe('score', function() {
     it('returns total score of current frame', function() {
@@ -40,6 +44,17 @@ describe('Frame', function() {
       frame.addRoll(5);
       frame.addRoll(4);
       expect(frame.isASpare()).toBe(false);
+    })
+  })
+  describe('isAStrike', function() {
+    it('returns true', function() {
+      frame.addRoll(10);
+      expect(frame.isAStrike()).toBe(true);
+    })
+    it('returns false', function() {
+      frame.addRoll(5);
+      frame.addRoll(4);
+      expect(frame.isAStrike()).toBe(false);
     })
   })
 })

@@ -65,7 +65,7 @@ Game.prototype.takeThrow = function(pinsBowled) {
 */
 Game.prototype.presentThrows = function(frameThrows) {
     if (frameThrows[0] == 10) { return 'X' }
-    else if ( frameThrows[0] + frameThrows[1] == 10 ) { return '/' }
+    else if ( parseInt(frameThrows[0]) + parseInt(frameThrows[1]) == 10 ) { return '/' }
     else if ( frameThrows.length === 2 ) { return frameThrows[0] + ',' + frameThrows[1] }
     else if ( frameThrows.length === 1 ) { return frameThrows[0] + ',' }
     else { return ',' }

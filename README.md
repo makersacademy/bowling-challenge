@@ -1,6 +1,64 @@
-
 Bowling Challenge
 =================
+
+# Getting started
+
+- git clone https://github.com/brookewoolley/bowling-challenge
+- bundle install
+- To run tests open SpecRunner.html
+
+Notes
+=====
+- I wrote the user stories below to guide my tests.
+- I have included all my logic in a single Scorecard 'class' as everything seems relevant to that class but I would be interested to hear what others think.
+- I created a simple UI but it doesn't currently do anything!  
+- I started to try to implement jQuery in the interface but felt like I didn't know where to start so have spent some time this second weekend working through codecademy's jQuery course.
+- I suspect my logic may need some further work for it to be useful re the UI.
+- Hope I can complete the UI at some point.
+
+![ui](https://github.com/brookewoolley/bowling-challenge/blob/master/images/ui.png)
+
+User Stories
+============
+
+```
+As a player
+so I can record my score
+I want to calculate the total of a gutter run
+```
+
+```
+As a player
+so I can record my score
+I want to calculate the total score with no spares
+```
+
+```
+As a player
+so I can record my score
+I want to calculate the total score with spares
+```
+
+```
+As a player
+so I can record my score
+I want to calculate the total score with strikes
+```
+
+```
+As a player
+so I can record my score
+I want to calculate the total score with additional balls on 10th frame
+```
+
+```
+As a player
+so I can record my score
+I want to see a total for each frame
+```
+
+Makers notes
+============
 
 
 * Challenge time: rest of the day and weekend.

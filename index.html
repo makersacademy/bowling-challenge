@@ -12,6 +12,25 @@
       <hr>
       <h2>Hello {{yourName}}! Let's go bowling! 🎳</h2>
     </div>
+    <div id="input-bar">
+      <!-- <form ng-submit="todoList.addTodo()">
+        <input type="text" ng-model="todoList.todoText"  size="30"
+               placeholder="add new todo here">
+        <input class="btn-primary" type="submit" value="add">
+      </form> -->
+      <form ng-submit="scorecard.addRoll()">
+        <input type="integer" ng-model="scorecardRoll" value="0">
+        <input class="btn-primary" type="submit" value="0">
+      </form>
+      <form ng-submit="scorecard.addRoll()">
+        <input type="integer" ng-model="scorecardRoll" value="5">
+        <input class="btn-primary" type="submit" value="5">
+      </form>
+      <form ng-submit="scorecard.addRoll()">
+        <input type="integer" ng-model="scorecardRoll" value="10">
+        <input class="btn-primary" type="submit" value="10">
+      </form>
+    </div>
   </body>
 </html>
 

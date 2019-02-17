@@ -1,43 +1,30 @@
+# Bowling Challenge
 
-Bowling Challenge
-=================
+This is my solution to the bowling kata challenge. Although this is a working program, I am aware much more work is needed in refactoring to get follow better OOP. I found it difficult to see the benefits here on where to extract things into separate classes and so feedback would be greatly appreciated on this.
 
+## Instructions for use
 
+- Clone project
+- Run `npm install` to download dependencies
+- Open `bowlingGame.html` to play
+- Run `npm test` to run the tests
 
-Feature tests - Gutter Game
-```
-As a player, 
-If is roll 20 times and don't hit any pins,
-I should finish with 0 points in the 10th frame
+## Features
 
-As a player,
-If I roll 20 times with no strikes or spares,
-My final score should be the total or all the points for each roll
+- A working bowling game including calculation for all strikes and spares, and bonus rounds.
+- Basic UI implementation using JQuery
+- `ESLint` used with `javascript standard` profile
+- `Jasmine` used to test
 
+When using the UI, the user will select the button of how many pins are knocked down:
 
-As a player,
-If I score spares, 
-My bonus points should be the number of pins knocked down by the next roll
+![Screenshot](https://imgur.com/a/xC8KDAp)
 
-```
-nit Tests - Gutter game
-
-```
-As a player, 
-So I can start playing the game fairly, 
-I want to start with an initial score of 0 on frame 1
-
-As a player,
-If I don't score any points on any rolls,
-I should finish with no scores
-
-```
-
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+- Challenge time: rest of the day and weekend.
+- Feel free to use google, your notes, books, etc. but work on your own
+- If you refer to the solution of another coach or student, please put a link to that in your README
+- If you have a partial solution, **still check in a partial solution**
+- You must submit a pull request to this repo with your code by 9am Monday week
 
 ## The Task
 
@@ -49,19 +36,19 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 
 As usual please start by
 
-* Forking this repo
+- Forking this repo
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+- Finally submit a pull request before Monday week at 9am with your solution or partial solution. However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. And since next week is lab week you have a full extra week to work on this.
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+**_STRONG HINT, IGNORE AT YOUR PERIL:_** Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
 
 ### Optional Extras
 
 In any order you like:
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+- Create a nice interactive animated interface with jQuery.
+- Set up [Travis CI](https://travis-ci.org) to run your tests.
+- Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
 
 You might even want to start with ESLint early on in your work — to help you
 learn Javascript conventions as you go along.
@@ -101,7 +88,7 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 In code review we'll be hoping to see:
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+- All tests passing
+- The code is elegant: every class has a clear responsibility, methods are short etc.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+Reviewers will potentially be using this [code review rubric](docs/review.md). Note that referring to this rubric in advance may make the challenge somewhat easier. You should be the judge of how much challenge you want.

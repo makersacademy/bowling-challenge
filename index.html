@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="public/style.css">
     <title>Bowling Scorecard</title>
   </head>
   <body>
@@ -24,7 +24,84 @@
         <button type="button" onclick="pinHit(9)"  class="btn btn-primary">9</button>
         <button type="button" onclick="pinHit(10)"  class="btn btn-primary">10</button>
       </div>
-      <div id='scorecard'>
+      <br>
+      <div id="scorecard" class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th><span style="float: left;">FRAME: </span></th>
+              <th colspan="2">1</th>
+              <th colspan="2">2</th>
+              <th colspan="2">3</th>
+              <th colspan="2">4</th>
+              <th colspan="2">5</th>
+              <th colspan="2">6</th>
+              <th colspan="2">7</th>
+              <th colspan="2">8</th>
+              <th colspan="2">9</th>
+              <th colspan="2">10</th>
+            </tr
+            <tr>
+              <th><span style="float: left;">ROLL: </span></th>
+              <th>1</th>
+              <th>2</th>
+              <th>1</th>
+              <th>2</th>
+              <th>1</th>
+              <th>2</th>
+              <th>1</th>
+              <th>2</th>
+              <th>1</th>
+              <th>2</th>
+              <th>1</th>
+              <th>2</th>
+              <th>1</th>
+              <th>2</th>
+              <th>1</th>
+              <th>2</th>
+              <th>1</th>
+              <th>2</th>
+              <th>1</th>
+              <th>2</th>
+            </tr>
+            <tr>
+              <th><span style="float: left;">PINS HIT: </span></th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th><span style="float: left;">SCORE: </span></th>
+              <td colspan="2"></td>
+              <td colspan="2"></td>
+              <td colspan="2"></td>
+              <td colspan="2"></td>
+              <td colspan="2"></td>
+              <td colspan="2"></td>
+              <td colspan="2"></td>
+              <td colspan="2"></td>
+              <td colspan="2"></td>
+              <td colspan="2"></td>
+            </tr>
+          </thead>
+        </table>
       </div>
     </div>
     <script src="src/Game.js"></script>

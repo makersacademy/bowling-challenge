@@ -30,4 +30,16 @@ describe('Frame', function() {
       expect(frame.score()).toBe(8);
     });
   })
+  describe('isASpare', function() {
+    it('checks if frame is a spare', function() {
+      frame.addRoll(5);
+      frame.addRoll(5);
+      expect(frame.isASpare()).toBe(true);
+    })
+    it('returns false if frame is not a spare', function() {
+      frame.addRoll(5);
+      frame.addRoll(4);
+      expect(frame.isASpare()).toBe(false);
+    })
+  })
 })

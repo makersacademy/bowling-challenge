@@ -47,12 +47,21 @@ describe('ScoreCard', function() {
             expect(scoreCard.isGutterGame()).toBe(true)
         });
 
-        it('does not falsely register a gutter game when the game simply has not yet accrued points', function() {
+        it('does not falsely register a gutter game when the game simply has not yet finished', function() {
             var i;
             for (i = 0; i < 5; i++) {
               scoreCard.allFrames()[i].scores = [0, 0]
             };
             expect(scoreCard.total()).toEqual(0)
+            expect(scoreCard.isGutterGame()).toBe(false)
+        });
+
+        it('does not falsely register a gutter game when only one of the scores per frame is 0', function() {
+            var i;
+            for (i = 0; i < 10; i++) {
+              scoreCard.allFrames()[i].scores = [0, 5]
+            };
+            expect(scoreCard.total()).toEqual(50)
             expect(scoreCard.isGutterGame()).toBe(false)
         });
     });

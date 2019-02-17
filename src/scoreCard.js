@@ -76,7 +76,7 @@ ScoreCard.prototype.isGutterGame = function() {
     var i;
     for (i = 0; i < 10; i++) {
         var bothZero = [0, 0];
-        if ((this.allFrames()[i].scores[0] != 0) && (this.allFrames()[i].scores[1] != 0)) {
+        if ((this.allFrames()[i].scores[0] != 0) || (this.allFrames()[i].scores[1] != 0)) {
             return false
         }
     };

@@ -13,16 +13,12 @@ Frame.prototype.roll = function(score) {
         throw new Error('No more rolls this frame.');
     }
     this.scores.push(score);
-    if (this.IsAStrike()) {
+    if (this.IsTenthFrame()) {
+        if (this.IsASpare() || this.IsAStrike()) {
+            this._numberOfRolls = 3;
+        }
+    } else if (this.IsAStrike()) {
         this._numberOfRolls = 1;
-        if (this.IsTenthFrame()) {
-            this._numberOfRolls = 3;
-        }
-    } else if (this.IsASpare()) {
-        this._IsSpare = true;
-        if (this.IsTenthFrame()) {
-            this._numberOfRolls = 3;
-        }
     }
 };
 

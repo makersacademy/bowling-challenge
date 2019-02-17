@@ -24,6 +24,9 @@ Frame.prototype.roll = function(score) {
     } else if (this.scores.length == 2) {
         if ((this.scores[0] + this.scores[1]) == 10) {
             this._IsSpare = true;
+            if (this.IsTenthFrame()) {
+                this._numberOfRolls = 3;
+            }
         }
     }
 };

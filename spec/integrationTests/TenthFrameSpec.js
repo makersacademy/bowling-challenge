@@ -34,4 +34,17 @@ describe('Tenth Frame', function() {
         expect(scoreCard.allFrames()[9]._numberOfRolls).toEqual(3)
     });
 
+    it('Tenth frame becomes 3 _numberOfRolls if a spare happens', function() {
+        expect(scoreCard.allFrames()[9]._numberOfRolls).toEqual(2)
+        gameUpToSpareOnTenthFrame = [1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 5, 5]
+        game.run(gameUpToSpareOnTenthFrame)
+        expect(scoreCard.allFrames()[9]._numberOfRolls).toEqual(3)
+    });
+
+    it('Tenth frame stays at 2 _numberOfRolls if no strike or spare happens', function() {
+        expect(scoreCard.allFrames()[9]._numberOfRolls).toEqual(2)
+        doOneGameWithoutStrikesOrSpares(game)
+        expect(scoreCard.allFrames()[9]._numberOfRolls).toEqual(2)
+    });
+
 });

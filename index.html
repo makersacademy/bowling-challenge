@@ -1,35 +1,94 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="scorecardApp">
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular.min.js"></script>
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap-combined.min.css">
+    <script src="scorecardController.js"></script>
+    <link rel="stylesheet" href="./scorecard.css">
+
   </head>
   <body>
-    <h1>Bowling Scorecard</h1>
-    <div>
-      <label>Name:</label>
-      <input type="text" ng-model="yourName" placeholder="Enter a name here">
-      <hr>
-      <h2>Hello {{yourName}}! Let's go bowling! 🎳</h2>
-    </div>
-    <div id="input-bar">
-      <!-- <form ng-submit="todoList.addTodo()">
-        <input type="text" ng-model="todoList.todoText"  size="30"
-               placeholder="add new todo here">
-        <input class="btn-primary" type="submit" value="add">
-      </form> -->
-      <form ng-submit="scorecard.addRoll()">
-        <input type="integer" ng-model="scorecardRoll" value="0">
-        <input class="btn-primary" type="submit" value="0">
-      </form>
-      <form ng-submit="scorecard.addRoll()">
-        <input type="integer" ng-model="scorecardRoll" value="5">
-        <input class="btn-primary" type="submit" value="5">
-      </form>
-      <form ng-submit="scorecard.addRoll()">
-        <input type="integer" ng-model="scorecardRoll" value="10">
-        <input class="btn-primary" type="submit" value="10">
-      </form>
+    <div ng-controller="scorecardController as bowlingScorecard" class="container">
+      <h1>Bowling Scorecard</h1>
+      <div>
+        <label>Name:</label>
+        <input type="text" ng-model="yourName" placeholder="Enter a name here">
+        <hr>
+        <h2>Hello {{yourName}}! Let's go bowling! 🎳</h2>
+      </div>
+      <div id="input-bar">
+        <!-- <form ng-submit="todoList.addTodo()">
+          <input type="text" ng-model="todoList.todoText"  size="30"
+                 placeholder="add new todo here">
+          <input class="btn-primary" type="submit" value="add">
+        </form> -->
+        <form ng-submit="scorecard.addRoll() ng-style="inputBar"">
+          <input type="hidden" ng-model="scorecardRoll" value="0">
+          <input ng-click="bowlingScorecard.rollZero()" class="btn-primary" type="submit" value="0">
+        </form>
+        <form ng-submit="scorecard.addRoll() ng-style="inputBar"">
+          <input type="hidden" ng-model="scorecardRoll" value="5">
+          <input class="btn-primary" type="submit" value="5">
+        </form>
+        <form ng-submit="scorecard.addRoll() ng-style="inputBar"">
+          <input type="hidden" ng-model="scorecardRoll" value="10" >
+          <input class="btn-primary" type="submit" value="10">
+        </form>
+      </div>
+      <div class="">
+        <table class="table table-bordered table-dark">
+          <thead>
+            <tr>
+              <th scope="col" colspan="2">1</th>
+              <th scope="col" colspan="2">2</th>
+              <th scope="col" colspan="2">3</th>
+              <th scope="col" colspan="2">4</th>
+              <th scope="col" colspan="2">5</th>
+              <th scope="col" colspan="2">6</th>
+              <th scope="col" colspan="2">7</th>
+              <th scope="col" colspan="2">8</th>
+              <th scope="col" colspan="2">9</th>
+              <th scope="col" colspan="2">10</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td> {{bowlingScorecard.scores}}</td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+            </tr>
+            <tr>
+              <td colspan="2"> </td>
+              <td colspan="2"> </td>
+              <td colspan="2"> </td>
+              <td colspan="2"> </td>
+              <td colspan="2"> </td>
+              <td colspan="2"> </td>
+              <td colspan="2"> </td>
+              <td colspan="2"> </td>
+              <td colspan="2"> </td>
+              <td colspan="2"> </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </body>
 </html>

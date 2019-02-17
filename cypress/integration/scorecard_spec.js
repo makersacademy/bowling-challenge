@@ -19,4 +19,9 @@ describe('Bowling Scorecard', function() {
     // cy.contains('9').click()
     cy.contains('10').click()
   })
+
+  it('can view empty scorecard', function() {
+    cy.visit('./')
+    
+  })
 })

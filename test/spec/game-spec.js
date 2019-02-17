@@ -24,10 +24,6 @@
       expect(game.currentBowl).toEqual(1)
     })
 
-    it('has a total of zero', function () {
-      expect(game.total).toEqual(0)
-    })
-
     it('stores all of the bowls', function () {
       expect(game.allBowls).toEqual([])
     })
@@ -62,14 +58,13 @@
       for (var i = 0; i < 20; i++) {
         game.addBowl(0)
       }
-      expect(game.total).toEqual(0);
+      expect(game.calculateTotal()).toEqual(0);
     })
 
     it('can bowl all 1s', function () {
       for (var i = 0; i < 20; i++) {
         game.addBowl(1)
       }
-      expect(game.total).toEqual(20)
       expect(game.calculateTotal()).toEqual(20)
     })
   })

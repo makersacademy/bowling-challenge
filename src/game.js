@@ -3,7 +3,6 @@ function Game() {
   this.frames = this.DEFAULT_FRAMES;
   this.currentFrame = 1;
   this.currentBowl = 1;
-  this.total = 0;
   this.allBowls = [];
 }
 
@@ -23,14 +22,6 @@ Game.prototype._updateTurn = function() {
   } else {
     this.currentFrame++;
     this.currentBowl = 1;
-    this.total += this.lastFrameScore();
-  }
-};
-
-Game.prototype.lastFrameScore = function() {
-  var lastFrame = this.frames[this._currentFrameIndex() - 1];
-  if (lastFrame.length == 2) {
-    return lastFrame.reduce((a, b) => a + b);
   }
 };
 

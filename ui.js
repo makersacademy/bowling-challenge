@@ -111,7 +111,6 @@ $(document).ready(function(){
     }
   }
 
-
   function helper(number){
 
     //first frame
@@ -127,8 +126,6 @@ $(document).ready(function(){
       card.clear_bonus();
       console.log(card.sp_bonus);
 
-
-
      //second frame
     } else if (clicks == 2) {
       conditions(number,'#s_box1_f2','#s_box2_f2','#b_box_f2');
@@ -142,11 +139,6 @@ $(document).ready(function(){
       strike_score(card,'#b_box_f2');
       console.log(card.sp_bonus);
       card.clear_bonus();
-      // console.log(card.frame_score)
-      // card.spare_bonus();
-      // console.log(card.frame_score);
-      // $('#b_box_f2').text(card.total_score_array.reduce((a,b) => a + b, 0));
-      // console.log(card.sp_bonus);
 
       //third frame
     } else if (clicks == 4){
@@ -157,10 +149,7 @@ $(document).ready(function(){
       card.record_second(number);
       $('#s_box2_f3').text(`${number}`)
       clicks += 1;
-
-
       card.spare_bonus();
-
       strike_score(card,'#b_box_f3');
       console.log(card.sp_bonus);
       card.clear_bonus();
@@ -253,6 +242,8 @@ $(document).ready(function(){
     } else if (clicks == 18) {
       conditions(number,'#s_box1_f10','#s_box2_f10','#b_box_f10');
 
+      $('#total').text(card.total_score_array.reduce((a,b) => a + b, 0));
+
     } else if (clicks == 19) {
       buttons();
       card.record_second(number);
@@ -262,10 +253,34 @@ $(document).ready(function(){
       strike_score(card,'#b_box_f10');
       console.log(card.sp_bonus);
       card.clear_bonus();
-
+      console.log(card.total_score_array);
       $('#total').text(card.total_score_display());
       $("#play_again").html( "<button type='button' class='btn btn-outline-warning btn-block'>Play again</button>" );
+
+      // 10th frame
+    } else if (card.total_score_array.reduce((a,b) => a + b, 0) == 100) {
+
+      if (clicks == 20){
+        card.record_first(number);
+        // console.log(card.pins_knocked_two);
+        $('#s_box1_f10').text(`${number}`)
+        clicks += 1;
+        console.log(clicks)
+      }
+      $('#b_box_f10').text(card.frame_score_display());
+      $('#total').text(card.total_score_array.reduce((a,b) => a + b, 0));
+
+    } else if (clicks == 21) {
+      card.record_second(number);
+      // console.log(card.pins_knocked_two);
+      $('#s_box2_f10').text(`${number}`)
+      clicks += 1;
+      console.log(clicks)
+      console.log(card.total_score_array);
+      $('#b_box_f10').text(card.frame_score_display());
+      $('#total').text(card.total_score_array.reduce((a,b) => a + b, 0));
     }
+
   };
 
 });

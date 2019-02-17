@@ -15,5 +15,18 @@ Game.prototype = {
       total += thisFrame.frameScore();
     });
     return total
+  },
+  frameBonus: function(frame) {
+    if (frame.isASpare()) {
+      return this._nextFrame(frame).pinsFirstRoll();
+    } else if (frame.isAStrike()) {
+      return this._nextFrame(frame).frameScore();
+    } else {
+      return 0
+    }
+  },
+  _nextFrame: function(frame) {
+    var nextIndex = this._frames.indexOf(frame) + 1
+    return this._frames[nextIndex]
   }
 }

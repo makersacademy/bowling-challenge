@@ -3,8 +3,6 @@
 function Frame(numberOfRolls = 2) {
     this._numberOfRolls = numberOfRolls;
     this.scores = [];
-    this._IsStrike = false;
-    this._IsSpare = false;
     this._IsTenthFrame = false;
     this._strikeBonusRollsScores = [];
     this._spareBonusRollsScore = 0;
@@ -15,28 +13,25 @@ Frame.prototype.roll = function(score) {
         throw new Error('No more rolls this frame.');
     }
     this.scores.push(score);
-    if (this.scores[0] == 10) {
+    if (this.IsAStrike()) {
         this._numberOfRolls = 1;
-        this._IsStrike = true;
         if (this.IsTenthFrame()) {
             this._numberOfRolls = 3;
         }
-    } else if (this.scores.length == 2) {
-        if ((this.scores[0] + this.scores[1]) == 10) {
-            this._IsSpare = true;
-            if (this.IsTenthFrame()) {
-                this._numberOfRolls = 3;
-            }
+    } else if (this.IsASpare()) {
+        this._IsSpare = true;
+        if (this.IsTenthFrame()) {
+            this._numberOfRolls = 3;
         }
     }
 };
 
 Frame.prototype.IsAStrike = function() {
-    return this._IsStrike;
+    return this.scores[0] == 10
 };
 
 Frame.prototype.IsASpare = function() {
-    return this._IsSpare;
+    return ((this.scores.length == 2) && (this.scores[0] + this.scores[1] == 10));
 };
 
 Frame.prototype.IsTenthFrame = function() {

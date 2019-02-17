@@ -1,0 +1,27 @@
+<h1> scorecard </h1>
+<script type="text/javascript" src="EvaluateScores.js"></script>
+<script type="text/javascript" src="CheckRoll.js"></script>
+<script type="text/javascript" src="ScoreRecorder.js"></script>
+<script type="text/javascript" src="Scorecard.js"></script>
+<script type="text/javascript" src="jquery-3.3.1.js"></script>
+
+<button id="5" name="5"></button>
+<input type="text">
+<div id="score">
+  hi
+</div>
+
+<script type="text/javascript">
+scorecard = new Scorecard();
+scorecard.record.roll(4)
+scorecard.record.roll(5)
+
+console.log(scorecard.display())
+document.getElementById("score").innerHTML = scorecard.display().toString();
+$( document ).ready(function() {
+  $("#5").click(function( event ) {
+    scorecard.record.roll(5)
+    document.getElementById("score").innerHTML = scorecard.display().toString();
+  });
+});
+</script>

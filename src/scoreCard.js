@@ -18,12 +18,13 @@ ScoreCard.prototype.sum = function(array) {
 
 ScoreCard.prototype.total = function() {
     this.calculateStrikeBonuses();
+    this.calculateSpareBonuses();
     var accumulator = 0;
     var i;
     for (i = 0; i < 10; i++) {
-        console.log(accumulator);
         accumulator += this.sum(this.allFrames()[i].scores);
         accumulator += this.sum(this.allFrames()[i].sumStrikeBonusRollsScores());
+        accumulator += this.sum(this.allFrames()[i]._spareBonusRollsScore);
     }
     return accumulator;
 };
@@ -50,7 +51,6 @@ ScoreCard.prototype.calculateSpareBonuses = function() {
             currentFrame._spareBonusRollsScore = this.listEnsuingScores(i)[0];
         }
     }
-    console.log(currentFrame._spareBonusRollsScore);
 };
 
 ScoreCard.prototype.listEnsuingScores = function(frameIndex) {

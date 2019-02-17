@@ -13,4 +13,10 @@ describe('ScoreCard', function() {
         );
     });
 
+    it('returns the total score for a game with strikes and spares', function() {
+        doOneGameWithStrikesAndSpares(scoreCard._game);
+        expect(scoreCard.total()).toEqual(
+          1+9+10+3+7+4+4+9+0+0+10+0+0+6+4+10+5+4+3+7+5+4+4+0+10
+        );
+    });
 });

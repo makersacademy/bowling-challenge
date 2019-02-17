@@ -23,19 +23,27 @@ Game.prototype.showScorecard= function () {
 
 Game.prototype.inputBallValue= function (value, frame = new Frame()) {
   if (this.showFrameCount() > 10){
-    throw new Error("You have completed ypur scorecard - start a new game.");
+    throw new Error("You have completed your scorecard - start a new game.");
   }
-  if (this.showBallNumber() == 1){
-    this.inputFrameToScorecard(frame);
-    this._scorecard[this.showFrameCount() - 1].updateBallOne(value);
-    this._ballNumber ++;
+  if (this.showFrameCount() === 10) {
+    if ( (this.showBallNumber() === 3) && (this._scorecard[this.showFrameCount() - 1].showBallOne() + this._scorecard[this.showFrameCount() - 1].showBallTwo() < 10) ) {
+      throw new Error("You have completed your scorecard - start a new game.");
+    }
+    this.finalFrame(value);
   }
-  else {
-    this._scorecard[this.showFrameCount() - 1].updateBallTwo(value);
-    this.bonusCheck();
-    this._ballNumber --;
-    this._frameCount ++;
-  };
+  if (this.showFrameCount() <= 9) {
+    if (this.showBallNumber() === 1){
+      this.inputFrameToScorecard(frame);
+      this._scorecard[this.showFrameCount() - 1].updateBallOne(value);
+      this._ballNumber ++;
+    }
+    else {
+      this._scorecard[this.showFrameCount() - 1].updateBallTwo(value);
+      this.bonusCheck();
+      this._ballNumber --;
+      this._frameCount ++;
+    }
+  }
 };
 
 Game.prototype.inputFrameToScorecard = function (frame) {
@@ -66,4 +74,22 @@ Game.prototype.bonusCheck = function () {
       };
       this.calculateTotalPoints(this.showFrameCount() - 1);
     };
+  };
+
+  Game.prototype.finalFrame = function (value, finalFrame = new FinalFrame()) {
+    if (this.showBallNumber() == 1){
+      this.inputFrameToScorecard(finalFrame);
+      this._scorecard[this.showFrameCount() - 1].updateBallOne(value);
+      this._ballNumber ++;
+    }
+    else if (this.showBallNumber() == 2){
+      this._scorecard[this.showFrameCount() - 1].updateBallTwo(value);
+      this._ballNumber ++;
+      if (this._scorecard[this.showFrameCount() - 1].showBallOne() + this._scorecard[this.showFrameCount() - 1].showBallTwo() < 10) {
+        this.calculateTotalPoints(this.showFrameCount() - 1);
+    }
+  } else {
+      this._scorecard[this.showFrameCount() - 1].updateBonus(value);
+      this.calculateTotalPoints(this.showFrameCount() - 1);
+    }
   };

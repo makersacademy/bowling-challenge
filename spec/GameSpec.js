@@ -45,7 +45,7 @@ describe("Game", function() {
     for (var i = 0; i < 20; i++) {
       game.inputBallValue(0);
     };
-    expect(function() {game.inputBallValue(0);} ).toThrow(new Error("You have completed ypur scorecard - start a new game."));
+    expect(function() {game.inputBallValue(0);} ).toThrow(new Error("You have completed your scorecard - start a new game."));
   });
 
   it("should give a bonus of the next ball if a spare", function(){
@@ -58,6 +58,22 @@ describe("Game", function() {
     (frame2.showBallTwo).and.returnValue(2);
     game.inputBallValue(2, frame2);
     expect(frame.addBonusScore).toHaveBeenCalled();
+  });
+
+  it("should be possible to throw a bonus ball if you get a spare in the final frame", function(){
+    var scoreArray = [3, 7, 7, 2, 5, 4, 10, null, 10, null, 6, 4, 1, 9, 6, 2, 8, 1, 6, 4, 6]
+    for (var i = 0; i < scoreArray.length; i++) {
+      game.inputBallValue(scoreArray[i])
+    }
+    expect(game.showTotalPoints()).toEqual(141);
+  });
+
+  it("should be possible to throw two bonus ball if you get a strike in throw of the final frame", function(){
+    var scoreArray = [3, 7, 7, 2, 5, 4, 10, null, 10, null, 6, 4, 1, 9, 6, 2, 8, 1, 10, 4, 6]
+    for (var i = 0; i < scoreArray.length; i++) {
+      game.inputBallValue(scoreArray[i])
+    }
+    expect(game.showTotalPoints()).toEqual(145);
   });
 
 });

@@ -26,26 +26,10 @@ describe('Feature Tests', function () {
 
   describe('a game with no spares or strikes but different scores each roll', function () {
     it('has a score of 51', function () {
-      scorecard.rollBall(1)
-      scorecard.rollBall(3)
-      scorecard.rollBall(4)
-      scorecard.rollBall(2)
-      scorecard.rollBall(3)
-      scorecard.rollBall(3)
-      scorecard.rollBall(7)
-      scorecard.rollBall(0)
-      scorecard.rollBall(0)
-      scorecard.rollBall(1)
-      scorecard.rollBall(5)
-      scorecard.rollBall(3)
-      scorecard.rollBall(1)
-      scorecard.rollBall(1)
-      scorecard.rollBall(2)
-      scorecard.rollBall(1)
-      scorecard.rollBall(5)
-      scorecard.rollBall(0)
-      scorecard.rollBall(8)
-      scorecard.rollBall(1)
+      array = [1, 3, 4, 2, 3, 3, 7, 0, 0, 1, 5, 3, 1, 1, 2, 1, 5, 0, 8, 1]
+      for (var i = 0; i < array.length; i++) {
+        scorecard.rollBall(array[i])
+      }
       expect(scorecard.totalScore).toEqual(51)
     })
   })
@@ -115,25 +99,10 @@ describe('Feature Tests', function () {
 
   describe('a game with a variety of spares and strikes', function () {
     it('has a score of 133', function () {
-      scorecard.rollBall(1)
-      scorecard.rollBall(4)
-      scorecard.rollBall(4)
-      scorecard.rollBall(5)
-      scorecard.rollBall(6)
-      scorecard.rollBall(4)
-      scorecard.rollBall(5)
-      scorecard.rollBall(5)
-      scorecard.rollBall(10)
-      scorecard.rollBall(0)
-      scorecard.rollBall(1)
-      scorecard.rollBall(7)
-      scorecard.rollBall(3)
-      scorecard.rollBall(6)
-      scorecard.rollBall(4)
-      scorecard.rollBall(10)
-      scorecard.rollBall(2)
-      scorecard.rollBall(8)
-      scorecard.rollBall(6)
+      array = [1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6]
+      for (var i = 0; i < array.length; i++) {
+        scorecard.rollBall(array[i])
+      }
       expect(scorecard.totalScore).toEqual(133)
     })
   })

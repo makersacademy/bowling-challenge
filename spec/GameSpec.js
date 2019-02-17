@@ -51,7 +51,7 @@ describe("Game", function() {
     for (var i = 0; i < 20; i++) {
       game.inputBallValue(0);
     };
-  expect(function() {game.inputBallValue(0);} ).toThrow(new Error("You have completed ypur scorecard - start a new game."));
-});
+    expect(function() {game.inputBallValue(0);} ).toThrow(new Error("You have completed ypur scorecard - start a new game."));
+  });
 
 });

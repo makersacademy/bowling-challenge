@@ -27,6 +27,9 @@ Frame.prototype.IsAStrike = function() {
 };
 
 Frame.prototype.IsASpare = function() {
+    if (this.IsAStrike()) {
+        return false;
+    }
     return ((this.scores.length == 2) && (this.scores[0] + this.scores[1] == 10));
 };
 

@@ -35,7 +35,7 @@ ScoreCard.prototype.allFrames = function() {
 
 ScoreCard.prototype.calculateStrikeBonuses = function() {
     var i;
-    for (i = 0; i < this.allFrames().length; i++) {
+    for (i = 0; i < this.allFrames().length - 1; i++) {
         var currentFrame = this.allFrames()[i];
         if (currentFrame.IsAStrike()) {
             currentFrame._strikeBonusRollsScores.push(this.listEnsuingScores(i)[0], this.listEnsuingScores(i)[1]);
@@ -45,7 +45,7 @@ ScoreCard.prototype.calculateStrikeBonuses = function() {
 
 ScoreCard.prototype.calculateSpareBonuses = function() {
     var i;
-    for (i = 0; i < this.allFrames().length; i++) {
+    for (i = 0; i < this.allFrames().length - 1; i++) {
         var currentFrame = this.allFrames()[i];
         if (currentFrame.IsASpare()) {
             currentFrame._spareBonusRollsScore = this.listEnsuingScores(i)[0];

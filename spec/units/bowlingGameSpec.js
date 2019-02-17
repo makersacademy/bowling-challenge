@@ -72,4 +72,10 @@ describe("BowlingGame", function() {
     rolls(1, 1);
     expect(bowlingGame.runningTotal).toEqual(0);
   });
+  it("Error is thrown if too many pins are knocked in second roll", function() {
+    bowlingGame.roll(9);
+    expect(function() {
+      bowlingGame.roll(9);
+    }).toThrow(new Error("Too many pins"));
+  });
 });

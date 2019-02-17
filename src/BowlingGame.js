@@ -18,17 +18,34 @@ BowlingGame.prototype.roll = function(pinsKnocked) {
 };
 
 BowlingGame.prototype.rollFinalFrame = function(pinsKnocked) {
-  this.calcFinalFrameRollNum();
-  this.calcFinalFrameTotal(pinsKnocked);
-  this.checkGameIsComplete(pinsKnocked);
-  this.addScoreToCard(pinsKnocked);
+  if (this.isTooManyPins(pinsKnocked)) {
+    throw new Error("Too many pins");
+  } else {
+    this.calcFinalFrameRollNum();
+    this.calcFinalFrameTotal(pinsKnocked);
+    this.checkGameIsComplete(pinsKnocked);
+    this.addScoreToCard(pinsKnocked);
+  }
 };
 
 BowlingGame.prototype.rollNormalFrame = function(pinsKnocked) {
-  this.calcRollNum();
-  this.calcFrame(pinsKnocked);
-  this.calcRunningTotal(pinsKnocked);
-  this.addScoreToCard(pinsKnocked);
+  if (this.isTooManyPins(pinsKnocked)) {
+    throw new Error("Too many pins");
+  } else {
+    this.calcRollNum();
+    this.calcFrame(pinsKnocked);
+    this.calcRunningTotal(pinsKnocked);
+    this.addScoreToCard(pinsKnocked);
+  }
+};
+
+BowlingGame.prototype.isTooManyPins = function(pinsKnocked) {
+  return (
+    this.rollNum !== 0 &&
+    this.scoreCard[this.turn - 1].rollNum === 1 &&
+    this.lastTurnIsStrike() === false &&
+    pinsKnocked + this.scoreCard[this.turn - 1].pinsKnocked > 10
+  );
 };
 
 BowlingGame.prototype.calcFrame = function(pinsKnocked) {
@@ -57,12 +74,24 @@ BowlingGame.prototype.calcFinalFrameRollNum = function() {
 
 BowlingGame.prototype.calcRunningTotal = function(pinsKnocked) {
   this.runningTotal += pinsKnocked;
+  this.calcLastTurnStrikeBonus(pinsKnocked);
+  this.calcSecondLastStrikeBonus(pinsKnocked);
+  this.calcSpareBonus(pinsKnocked);
+};
+
+BowlingGame.prototype.calcLastTurnStrikeBonus = function(pinsKnocked) {
   if (this.turn !== 0 && this.rollNum !== 3 && this.lastTurnIsStrike()) {
     this.runningTotal += pinsKnocked;
   }
+};
+
+BowlingGame.prototype.calcSecondLastStrikeBonus = function(pinsKnocked) {
   if (this.turn > 1 && this.rollNum !== 3 && this.secondLastTurnIsStrike()) {
     this.runningTotal += pinsKnocked;
   }
+};
+
+BowlingGame.prototype.calcSpareBonus = function(pinsKnocked) {
   if (this.turn > 1 && this.lastFrameIsSpare()) {
     this.runningTotal += pinsKnocked;
   }
@@ -103,23 +132,32 @@ BowlingGame.prototype.addScoreToCard = function(pinsKnocked) {
   this.turn += 1;
 };
 
-BowlingGame.prototype.checkGameIsComplete = function() {
-  if (this.frame === 10 && this.rollNum === 2) {
+BowlingGame.prototype.checkGameIsComplete = function(pinsKnocked) {
+  if (
+    this.isFinalRollNoBonus() &&
+    this.isNotStrike(pinsKnocked) &&
+    this.isNotBonusSpare(pinsKnocked) &&
+    this.lastTurnIsStrike() === false
+  ) {
+    this.isComplete = true;
+  } else if (this.isFinalBonusRoll()) {
     this.isComplete = true;
   }
 };
 
-BowlingGame.prototype.checkGameIsComplete = function(pinsKnocked) {
-  if (
-    this.rollNum === 2 &&
-    pinsKnocked !== 10 &&
-    this.scoreCard[this.turn - 1].pinsKnocked + pinsKnocked !== 10 &&
-    this.lastTurnIsStrike() === false
-  ) {
-    this.isComplete = true;
-  } else if (this.rollNum === 3) {
-    this.isComplete = true;
-  }
+BowlingGame.prototype.isFinalBonusRoll = function() {
+  return this.rollNum === 3;
+};
+
+BowlingGame.prototype.isNotBonusSpare = function(pinsKnocked) {
+  return this.scoreCard[this.turn - 1].pinsKnocked + pinsKnocked !== 10;
+};
+BowlingGame.prototype.isNotStrike = function(pinsKnocked) {
+  return pinsKnocked !== 10;
+};
+
+BowlingGame.prototype.isFinalRollNoBonus = function() {
+  return this.rollNum === 2;
 };
 
 module.exports = BowlingGame;

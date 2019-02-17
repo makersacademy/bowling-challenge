@@ -105,7 +105,9 @@ describe('Game', function() {
         })
 
         it('should increment the current frame if everyone has had their throw', function() {
-
+            game.begin(['Foo'])
+            game.takeThrow(10)
+            expect(game.returnCurrentFrameIndex()).toBe(1)
         })
     })
 })

@@ -36,19 +36,25 @@ Game.prototype.takeThrow = function(pinsBowled) {
         if it's first throw
             if strike
                 advance to next player
+                    if next player is first player advance game to next frame
             else
                 advance currentBowlersFrameIndex
         else it's second throw
             reset currentBowlersFrameIndex
             advance to next player
+                if next player is first player advance game to next frame
     */
     if (this.currentBowlersFrameIndex === 0) {
-        if (pinsBowled == '10') { this._advanceBowlerIndex() }
+        if (pinsBowled == '10') {
+            this._advanceBowlerIndex()
+            if (this.currentBowler() == this.bowlers[0]) { this.currentFrameIndex += 1 }
+        }
         else { this.currentBowlersFrameIndex = 1 }
     }
     else {
         this.currentBowlersFrameIndex = 0
         this._advanceBowlerIndex()
+        if (this.currentBowler() == this.bowlers[0]) { this.currentFrameIndex += 1 }
     }
 }
 
@@ -58,8 +64,8 @@ Game.prototype.takeThrow = function(pinsBowled) {
     Take an array of throw scores and return a legible string
 */
 Game.prototype.presentThrows = function(frameThrows) {
-    if (frameThrows[0] === 10) { return 'X' }
-    else if ( frameThrows[0] + frameThrows[1] === 10 ) { return '/' }
+    if (frameThrows[0] == 10) { return 'X' }
+    else if ( frameThrows[0] + frameThrows[1] == 10 ) { return '/' }
     else if ( frameThrows.length === 2 ) { return frameThrows[0] + ',' + frameThrows[1] }
     else if ( frameThrows.length === 1 ) { return frameThrows[0] + ',' }
     else { return ',' }

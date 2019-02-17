@@ -3,8 +3,13 @@ td:hover {
   color: #000000;
 }
 
+
+
 #score-buttons {
-  padding: 25px
+  padding: 25px;
+  margin: 0 auto;
+  text-align: left;
+  width: 800px;
 }
 
 /*!
@@ -95,6 +100,7 @@ hr {
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
+  text-align: center;
 }
 
 p {

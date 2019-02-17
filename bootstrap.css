@@ -3,13 +3,25 @@ td:hover {
   color: #000000;
 }
 
+td {
+  color: white;
+}
 
+
+
+body {
+  background-image: url("bowling.jpg")
+}
 
 #score-buttons {
   padding: 25px;
   margin: 0 auto;
-  text-align: left;
+  text-align: center;
   width: 800px;
+}
+
+table {
+  color: white;
 }
 
 /*!
@@ -26,6 +38,8 @@ td:hover {
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 @import url("https://fonts.googleapis.com/css?family=News+Cycle:400,700");
+@import url("https://fonts.googleapis.com/css?family=Lobster");
+
 :root {
   --blue: #EB6864;
   --indigo: #6610f2;
@@ -53,7 +67,8 @@ td:hover {
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family:'Lobster', Georgia, Times, serif;
+  /* --font-family-san  s-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -101,6 +116,8 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
   text-align: center;
+  font-family:'Lobster', Georgia, Times, serif;
+
 }
 
 p {
@@ -233,6 +250,9 @@ table {
   border-collapse: collapse;
   text-align: center;
   vertical-align: middle;
+  height: 150px;
+  background-color: rgba(0,0,0,.7);
+  width: 50%;
 }
 
 caption {
@@ -245,6 +265,7 @@ caption {
 
 th {
   text-align: inherit;
+  color: white;
 }
 
 label {
@@ -389,13 +410,16 @@ template {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
-  font-family: "News Cycle", "Arial Narrow Bold", sans-serif;
-  font-weight: 700;
+  margin-top: 4rem;
+  font-family:'Lobster', Georgia, Times, serif;
+  font-weight: 1000;
   line-height: 1.1;
+  color: white;
+  font-size: 50px;
 }
 
 h1, .h1 {
-  font-size: 2.5rem;
+  font-size: 4rem;
 }
 
 h2, .h2 {
@@ -1686,9 +1710,12 @@ pre code {
 }
 
 .table {
-  width: 100%;
+  width: 85%;
   margin-bottom: 1rem;
   color: #222;
+  padding: 25px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .table th,

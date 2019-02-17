@@ -47,4 +47,11 @@ describe("Game", function() {
     expect(frame.showTotalPoints).toHaveBeenCalled();
   });
 
+  it("should not be possible to start an 11th frame", function(){
+    for (var i = 0; i < 20; i++) {
+      game.inputBallValue(0);
+    };
+  expect(function() {game.inputBallValue(0);} ).toThrow(new Error("You have completed ypur scorecard - start a new game."));
+});
+
 });

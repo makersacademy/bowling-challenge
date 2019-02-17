@@ -22,6 +22,9 @@ Game.prototype.showScorecard= function () {
 };
 
 Game.prototype.inputBallValue= function (value, frame = new Frame()) {
+  if (this.showFrameCount() > 10){
+    throw new Error("You have completed ypur scorecard - start a new game.");
+  }
   if (this.showBallNumber() == 1){
     this.inputFrameToScorecard(frame);
     this._scorecard[this.showFrameCount() - 1].updateBallOne(value);

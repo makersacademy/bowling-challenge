@@ -35,4 +35,9 @@ describe("Frame", function() {
     expect(frame._totalPoints).toEqual(9);
   });
 
+  it("should not be possible to input a ball two value which will total over 10 when added to ball one", function() {
+    frame.updateBallOne(7);
+    expect(function() {frame.updateBallTwo(7);} ).toThrow(new Error("There are not enough pins left standing! Check your input."));
+  });
+
 });

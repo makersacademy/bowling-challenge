@@ -22,6 +22,9 @@ Frame.prototype.updateBallOne = function (value) {
 };
 
 Frame.prototype.updateBallTwo = function (value) {
+  if (this._ballOne + value > 10){
+    throw new Error("There are not enough pins left standing! Check your input.");
+}
   this._ballTwo = value;
 };
 

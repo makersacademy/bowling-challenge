@@ -28,8 +28,8 @@
       expect(game.total).toEqual(0)
     })
 
-    it('has a lastTwoBowls property', function () {
-      expect(game.lastTwoBowls).toEqual([0,0])
+    it('stores all of the bowls', function () {
+      expect(game.allBowls).toEqual([])
     })
   })
 
@@ -38,6 +38,7 @@
       game.addBowl(6)
     })
     it('adds first bowl to first frame', function () {
+      expect(game.allBowls).toContain(6)
       expect(game.frames[0]).toEqual([6])
       expect(game.currentBowl).toEqual(2)
     })
@@ -54,12 +55,22 @@
       game.addBowl(4);
       expect(game.frames[1]).toEqual([4])
     })
+  })
 
-    it('records the last two bowls', function () {
-      game.addBowl(3);
-      expect(game.lastTwoBowls).toEqual([6,3])
-      game.addBowl(4)
-      expect(game.lastTwoBowls).toEqual([3,4])
+  describe('Different games', function () {
+    it('can bowl a gutter game', function () {
+      for (var i = 0; i < 20; i++) {
+        game.addBowl(0)
+      }
+      expect(game.total).toEqual(0);
+    })
+
+    it('can bowl all 1s', function () {
+      for (var i = 0; i < 20; i++) {
+        game.addBowl(1)
+      }
+      expect(game.total).toEqual(20)
+      expect(game.calculateTotal()).toEqual(20)
     })
   })
 })();

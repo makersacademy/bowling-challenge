@@ -3,8 +3,8 @@ function Game() {
   this.frames = this.DEFAULT_FRAMES;
   this.currentFrame = 1;
   this.currentBowl = 1;
-  this.lastTwoBowls = [0, 0];
   this.total = 0;
+  this.allBowls = [];
 }
 
 Game.prototype._currentFrameIndex = function() {
@@ -13,13 +13,8 @@ Game.prototype._currentFrameIndex = function() {
 
 Game.prototype.addBowl = function(score) {
   this.frames[this._currentFrameIndex()].push(score);
+  this.allBowls.push(score);
   this._updateTurn();
-  this._setLastTwoBowls(score);
-};
-
-Game.prototype._setLastTwoBowls = function(score) {
-  this.lastTwoBowls.shift();
-  this.lastTwoBowls.push(score);
 };
 
 Game.prototype._updateTurn = function() {
@@ -37,4 +32,12 @@ Game.prototype.lastFrameScore = function() {
   if (lastFrame.length == 2) {
     return lastFrame.reduce((a, b) => a + b);
   }
+};
+
+Game.prototype.calculateTotal = function() {
+  var total = 0;
+  for (var i = 0; i < 20; i++) {
+    total += this.allBowls[i];
+  }
+  return total;
 };

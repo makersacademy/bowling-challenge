@@ -53,6 +53,14 @@ describe('Strikes', function() {
             expect(game.frames[9].sumStrikeBonusRollsScores()).toEqual(0);
         });
 
+        it('does not persist previously calculated bonuses between calculations (avoid bug where each call of calculateSpareBonuses adds more and more bonuses)', function() {
+            doOneGameWithStrikes(game);
+            scoreCard.calculateStrikeBonuses();
+            scoreCard.calculateStrikeBonuses();
+            scoreCard.calculateStrikeBonuses();
+            expect(scoreCard.total()).toEqual(10+3+4+5+1+2+3+4+5+1+2+10+10+2+3+4+5+7+12+5);
+        });
+
     });
 
     it('Returns the correct overall game score for a game with strikes.', function() {

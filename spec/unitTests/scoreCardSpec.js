@@ -44,7 +44,7 @@ describe('ScoreCard', function() {
               scoreCard.allFrames()[i].scores = [0, 0]
             };
             expect(scoreCard.total()).toEqual(0)
-            expect(scoreCard.isGutterGame()).toBe(true)
+            expect(scoreCard.IsGutterGame()).toBe(true)
         });
 
         it('does not falsely register a gutter game when the game simply has not yet finished', function() {
@@ -53,7 +53,7 @@ describe('ScoreCard', function() {
               scoreCard.allFrames()[i].scores = [0, 0]
             };
             expect(scoreCard.total()).toEqual(0)
-            expect(scoreCard.isGutterGame()).toBe(false)
+            expect(scoreCard.IsGutterGame()).toBe(false)
         });
 
         it('does not falsely register a gutter game when only one of the scores per frame is 0', function() {
@@ -62,7 +62,29 @@ describe('ScoreCard', function() {
               scoreCard.allFrames()[i].scores = [0, 5]
             };
             expect(scoreCard.total()).toEqual(50)
-            expect(scoreCard.isGutterGame()).toBe(false)
+            expect(scoreCard.IsGutterGame()).toBe(false)
         });
     });
+
+    describe('#IsPerfectGame', function() {
+        it('can detect a perfect game', function() {
+            var i;
+            for (i = 0; i < 9; i++) {
+              scoreCard.allFrames()[i].scores = [10, 10]
+            };
+            scoreCard.allFrames()[9].scores = [10, 10, 10]
+            expect(scoreCard.IsPerfectGame()).toBe(true)
+        });
+
+        it('awards 300 points', function() {
+            var i;
+            for (i = 0; i < 9; i++) {
+              scoreCard.allFrames()[i].scores = [10]
+            };
+            scoreCard.allFrames()[9].scores = [10, 10, 10]
+            console.log(scoreCard.total())
+            expect(scoreCard.total()).toEqual(300)
+        });
+    });
+
 });

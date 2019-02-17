@@ -34,6 +34,7 @@ ScoreCard.prototype.allFrames = function() {
 };
 
 ScoreCard.prototype.calculateStrikeBonuses = function() {
+    this.removeStrikeBonuses()
     var i;
     for (i = 0; i < this.allFrames().length - 1; i++) {
         var currentFrame = this.allFrames()[i];
@@ -42,6 +43,17 @@ ScoreCard.prototype.calculateStrikeBonuses = function() {
         }
     }
 };
+
+ScoreCard.prototype.removeStrikeBonuses = function() {
+    var i;
+    for (i = 0; i < this.allFrames().length - 1; i++) {
+        var currentFrame = this.allFrames()[i];
+        if (currentFrame.IsAStrike()) {
+            currentFrame._strikeBonusRollsScores = [];
+            console.log(currentFrame._strikeBonusRollsScores)
+        }
+    }
+}
 
 ScoreCard.prototype.calculateSpareBonuses = function() {
     var i;
@@ -72,7 +84,7 @@ ScoreCard.prototype.pushAllElements = function(array1, array2) {
     }
 };
 
-ScoreCard.prototype.isGutterGame = function() {
+ScoreCard.prototype.IsGutterGame = function() {
     var i;
     for (i = 0; i < 10; i++) {
         var bothZero = [0, 0];
@@ -80,5 +92,19 @@ ScoreCard.prototype.isGutterGame = function() {
             return false
         }
     };
+    return true
+};
+
+ScoreCard.prototype.IsPerfectGame = function() {
+    var i;
+    for (i = 0; i < 9; i++) {
+        var bothZero = [0, 0];
+        if ((this.allFrames()[i].scores[0] != 10)) {
+            return false
+        }
+    };
+    if ((this.allFrames()[9].scores[0] != 10) && (this.allFrames()[9].scores[1] != 10) && (this.allFrames()[9].scores[2] != 10)) {
+        return false
+    }
     return true
 };

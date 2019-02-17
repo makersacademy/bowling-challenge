@@ -7,6 +7,7 @@ function Game(constructorFunction = Frame) {
         var newFrame = new constructorFunction;
         this.frames.push(newFrame);
     }
+    this.frames[9]._IsTenthFrame = true
 }
 
 Game.prototype.roll = function(score) {

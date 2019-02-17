@@ -5,6 +5,7 @@ function Frame(numberOfRolls = 2) {
     this.scores = [];
     this._IsStrike = false;
     this._IsSpare = false;
+    this._IsTenthFrame = false;
     this._strikeBonusRollsScores = [];
     this._spareBonusRollsScore = 0;
 }
@@ -30,6 +31,10 @@ Frame.prototype.IsAStrike = function() {
 
 Frame.prototype.IsASpare = function() {
     return this._IsSpare;
+};
+
+Frame.prototype.IsTenthFrame = function() {
+    return this._IsTenthFrame;
 };
 
 Frame.prototype.sumStrikeBonusRollsScores = function() {

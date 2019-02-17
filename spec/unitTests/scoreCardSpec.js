@@ -65,6 +65,4 @@ describe('ScoreCard', function() {
             expect(scoreCard.isGutterGame()).toBe(false)
         });
     });
-
-
 });

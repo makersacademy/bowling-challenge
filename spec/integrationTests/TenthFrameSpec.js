@@ -17,6 +17,7 @@ describe('Tenth Frame', function() {
 
     beforeEach(function() {
         scoreCard = new ScoreCard();
+        game = scoreCard._game
     });
 
     describe('#IsTenthFrame', function() {
@@ -24,6 +25,13 @@ describe('Tenth Frame', function() {
             expect(scoreCard.allFrames()[8].IsTenthFrame()).toBe(false)
             expect(scoreCard.allFrames()[9].IsTenthFrame()).toBe(true)
         });
+    });
+
+    it('Tenth frame becomes 3 _numberOfRolls if a strike happens', function() {
+        expect(scoreCard.allFrames()[9]._numberOfRolls).toEqual(2)
+        gameUpToStrikeOnTenthFrame = [1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 10]
+        game.run(gameUpToStrikeOnTenthFrame)
+        expect(scoreCard.allFrames()[9]._numberOfRolls).toEqual(3)
     });
 
 });

@@ -14,5 +14,12 @@ Frame.prototype = {
     return this._rolls.reduce(function (accumulator, currentValue) {
       return accumulator + currentValue;
     }, 0);
+  },
+  isASpare: function() {
+    if (this.score() === 10) {
+      return true;
+    } else {
+      return false;
+    };
   }
 }

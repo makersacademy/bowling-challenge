@@ -9,5 +9,10 @@ Frame.prototype = {
     } else {
       throw new Error('Already rolled twice!')
     };
+  },
+  score: function() {
+    return this._rolls.reduce(function (accumulator, currentValue) {
+      return accumulator + currentValue;
+    }, 0);
   }
 }

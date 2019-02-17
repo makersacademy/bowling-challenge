@@ -1,3 +1,8 @@
+Getting started
+===============
+- git clone https://github.com/david-mears/MakersBnB/
+- bundle install
+- To run tests open SpecRunner.html
 
 Bowling Challenge
 =================
@@ -44,8 +49,10 @@ My process
 - Researched how ten pin bowling scoring works
 - Wrote user stories
 - Feeling uncomfortable with javascript syntax after only using it for a few days, I thought about how I would approach this problem using Ruby and used that to guide my approach.  
+- When happy with my logic I put together a simple UI.
+- Started trying to implement jQuery in the interface but felt I haven't actually learnt enough to successfully implement it so have spent some time this second weekend working through codecademy's jQuery course.
 
-
+![alt text](https://github.com/brookewoolley/bowling-challenge/tree/master/images/ui.png "UI for bowling challenge")
 
 Makers notes
 ============

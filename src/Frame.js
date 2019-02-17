@@ -4,7 +4,10 @@ function Frame() {
 
 Frame.prototype = {
   addRoll: function(roll) {
-    if (this._rolls.length < 2) {
+    if (this._rolls.length === 0 && roll === 10) {
+      this._rolls.push(10);
+      this._rolls.push(0);
+    } else if (this._rolls.length < 2) {
       this._rolls.push(roll);
     } else {
       throw new Error('Already rolled twice!')
@@ -17,6 +20,13 @@ Frame.prototype = {
   },
   isASpare: function() {
     if (this.score() === 10) {
+      return true;
+    } else {
+      return false;
+    };
+  },
+  isAStrike: function() {
+    if (this._rolls[0] === 10) {
       return true;
     } else {
       return false;

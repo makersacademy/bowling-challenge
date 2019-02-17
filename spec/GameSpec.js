@@ -41,12 +41,6 @@ describe("Game", function() {
     expect(frame.updateBallTwo).toHaveBeenCalled();
   });
 
-  it("should update the total score of the frame the Frame function", function() {
-    game.inputBallValue(3, frame);
-    game.inputBallValue(6, frame);
-    expect(frame.showTotalPoints).toHaveBeenCalled();
-  });
-
   it("should not be possible to start an 11th frame", function(){
     for (var i = 0; i < 20; i++) {
       game.inputBallValue(0);
@@ -57,10 +51,11 @@ describe("Game", function() {
   it("should give a bonus of the next ball if a spare", function(){
     game.inputBallValue(3, frame);
     (frame.showBallOne).and.returnValue(3);
-    game.inputBallValue(7, frame);
     (frame.showBallTwo).and.returnValue(7);
+    game.inputBallValue(7, frame);
     game.inputBallValue(6, frame2);
     (frame2.showBallOne).and.returnValue(6);
+    (frame2.showBallTwo).and.returnValue(2);
     game.inputBallValue(2, frame2);
     expect(frame.addBonusScore).toHaveBeenCalled();
   });

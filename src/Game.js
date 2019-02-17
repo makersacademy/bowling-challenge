@@ -34,7 +34,6 @@ Game.prototype.inputBallValue= function (value, frame = new Frame()) {
     this._scorecard[this.showFrameCount() - 1].updateBallTwo(value);
     this.bonusCheck();
     this._ballNumber --;
-    this.calculateTotalPoints();
     this._frameCount ++;
   };
 };
@@ -43,15 +42,23 @@ Game.prototype.inputFrameToScorecard = function (frame) {
   this._scorecard.push(frame);
 };
 
-Game.prototype.calculateTotalPoints = function () {
-    this._totalPoints += this._scorecard[this.showFrameCount() - 1].showTotalPoints();
+Game.prototype.calculateTotalPoints = function (index) {
+    this._totalPoints += this._scorecard[index].showTotalPoints();
 };
 
 Game.prototype.bonusCheck = function () {
-  if (this.showFrameCount() > 1){
     var currentFrame = (this.showFrameCount() - 1);
-    if (( this._scorecard[currentFrame - 1].showBallOne() ) + ( this._scorecard[currentFrame - 1].showBallTwo() ) === 10 ) {
-      this._scorecard[currentFrame - 1].addBonusScore(this._scorecard[currentFrame].showBallOne());
+    var previousFrame = (currentFrame - 1);
+    console.log(this._scorecard[currentFrame].showBallTwo());
+    if ((this._scorecard[currentFrame].showBallOne() + this._scorecard[currentFrame].showBallTwo() < 10) ) {
+      console.log(this._scorecard[currentFrame])
+
+      while ( (this._scorecard[previousFrame]) && (this._scorecard[previousFrame].showBallOne() ) + ( this._scorecard[previousFrame].showBallTwo() ) === 10 ) {
+        this._scorecard[previousFrame].addBonusScore(this._scorecard[currentFrame].showBallOne());
+        this.calculateTotalPoints(previousFrame);
+        previousFrame --;
+        currentFrame --;
+      };
+      this.calculateTotalPoints(this.showFrameCount() - 1);
     };
-  };
 };

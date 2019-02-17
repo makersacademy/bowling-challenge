@@ -241,7 +241,7 @@ $(document).ready(function(){
      //tenth frame
     } else if (clicks == 18) {
       conditions(number,'#s_box1_f10','#s_box2_f10','#b_box_f10');
-
+      console.log(clicks);
       $('#total').text(card.total_score_array.reduce((a,b) => a + b, 0));
 
     } else if (clicks == 19) {
@@ -256,29 +256,74 @@ $(document).ready(function(){
       console.log(card.total_score_array);
       $('#total').text(card.total_score_display());
       $("#play_again").html( "<button type='button' class='btn btn-outline-warning btn-block'>Play again</button>" );
-
-      // 10th frame
+      console.log(clicks);
+      // 10th frame <- Needs refactoring
     } else if (card.total_score_array.reduce((a,b) => a + b, 0) == 100) {
 
       if (clicks == 20){
         card.record_first(number);
-        // console.log(card.pins_knocked_two);
         $('#s_box1_f10').text(`${number}`)
         clicks += 1;
-        console.log(clicks)
       }
       $('#b_box_f10').text(card.frame_score_display());
       $('#total').text(card.total_score_array.reduce((a,b) => a + b, 0));
+      console.log(clicks);
 
     } else if (clicks == 21) {
+
+      console.log(clicks);
       card.record_second(number);
-      // console.log(card.pins_knocked_two);
       $('#s_box2_f10').text(`${number}`)
       clicks += 1;
-      console.log(clicks)
-      console.log(card.total_score_array);
+      card.total_score_array.pop();
       $('#b_box_f10').text(card.frame_score_display());
       $('#total').text(card.total_score_array.reduce((a,b) => a + b, 0));
+      buttons();
+      console.log(clicks);
+
+      //new
+    } else if (clicks == 22) {
+
+      $('#s_box1_f10').text(`${number}`)
+      card.total_score_array.push(number);
+      clicks += 1;
+      $('#b_box_f10').text(card.total_score_array.reduce((a,b) => a + b, 0));
+      $('#total').text(card.total_score_array.reduce((a,b) => a + b, 0));
+
+      if (card.total_score_array.length == 12 && card.total_score_array.reduce((a,b) => a + b, 0) == 120) {
+        $('#total').text('Perfect Game 300 points');
+        $("#play_again").html( "<button type='button' class='btn btn-outline-warning btn-block'>Play again</button>" );
+        $('#ten, #nine, #eight, #seven, #six, #five, #four, #three, #two, #one, #zero').attr('class','disabled');
+        $('#ten, #nine, #eight, #seven, #six, #five, #four, #three, #two, #one, #zero').text('');
+      }
+
+    } else if (clicks == 23) {
+      console.log(card.total_score_array);
+      $('#s_box2_f10').text(`${number}`)
+      card.total_score_array.push(number);
+      clicks += 1;
+      $('#b_box_f10').text(card.total_score_array.reduce((a,b) => a + b, 0));
+      $('#total').text(card.total_score_array.reduce((a,b) => a + b, 0));
+      buttons();
+
+    } else if (clicks == 24) {
+
+      $('#s_box1_f10').text(`${number}`)
+      card.total_score_array.push(number);
+      clicks += 1;
+      $('#b_box_f10').text(card.total_score_array.reduce((a,b) => a + b, 0));
+      $('#total').text(card.total_score_array.reduce((a,b) => a + b, 0));
+
+    } else if (clicks == 25) {
+      $('#s_box2_f10').text(`${number}`)
+      card.total_score_array.push(number);
+      clicks += 1;
+      $('#b_box_f10').text(card.total_score_array.reduce((a,b) => a + b, 0));
+      $('#total').text(card.total_score_array.reduce((a,b) => a + b, 0));
+
+      $("#play_again").html( "<button type='button' class='btn btn-outline-warning btn-block'>Play again</button>" );
+      $('#ten, #nine, #eight, #seven, #six, #five, #four, #three, #two, #one, #zero').attr('class','disabled');
+      $('#ten, #nine, #eight, #seven, #six, #five, #four, #three, #two, #one, #zero').text('');
     }
 
   };

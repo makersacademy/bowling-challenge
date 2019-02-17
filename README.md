@@ -18,7 +18,7 @@ This is my solution to the bowling kata challenge. Although this is a working pr
 
 When using the UI, the user will select the button of how many pins are knocked down:
 
-![Screenshot](https://i/imgur.com/xC8KDAp.png)
+![Screenshot](https://i.imgur.com/X89rnFN.png)
 
 - Challenge time: rest of the day and weekend.
 - Feel free to use google, your notes, books, etc. but work on your own

@@ -1,9 +1,11 @@
 describe('Game', function() {
   var game;
   var frame;
+  var frame2;
   beforeEach(function(){
     game = new Game();
-    frame = jasmine.createSpy('frame');
+    frame = jasmine.createSpyObj('frame', ['frameScore']);
+    frame2 = jasmine.createSpyObj('frame', ['frameScore']);
   });
   it('has no frames by default', function() {
     expect(game._frames).toEqual([]);
@@ -18,6 +20,15 @@ describe('Game', function() {
         game.addFrame(frame)
       }
       expect(function(){game.addFrame(frame)}).toThrowError('Cannot add more frames!');
+    })
+  })
+  describe('total score', function() {
+    it('returns score', function() {
+      game.addFrame(frame);
+      game.addFrame(frame2);
+      frame.frameScore.and.returnValue(9);
+      frame2.frameScore.and.returnValue(4);
+      expect(game.gameScore()).toEqual(13);
     })
   })
 })

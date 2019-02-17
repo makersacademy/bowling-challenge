@@ -31,7 +31,7 @@ describe('Frame', function() {
     it('returns total score of current frame', function() {
       frame.addRoll(5);
       frame.addRoll(3);
-      expect(frame.score()).toBe(8);
+      expect(frame.frameScore()).toBe(8);
     });
   })
   describe('isASpare', function() {

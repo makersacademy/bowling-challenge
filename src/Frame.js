@@ -13,13 +13,13 @@ Frame.prototype = {
       throw new Error('Already rolled twice!')
     };
   },
-  score: function() {
+  frameScore: function() {
     return this._rolls.reduce(function (accumulator, currentValue) {
       return accumulator + currentValue;
     }, 0);
   },
   isASpare: function() {
-    if (this.score() === 10) {
+    if (this.frameScore() === 10) {
       return true;
     } else {
       return false;

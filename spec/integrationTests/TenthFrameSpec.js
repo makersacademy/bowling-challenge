@@ -62,7 +62,7 @@ describe('Tenth Frame', function() {
     it('returns the total score for a game with strikes and spares and a spare in the tenth frame', function() {
         var complexGame = [1, 9, 2, 8, 3, 7, 10, 10, 10, 0, 0, 0, 10, 6, 4, 9, 1, 3]
         scoreCard._game.run(complexGame)
-        expect(scoreCard.total()).toEqual(1+9+2+8+3+7+10+10+10+0+0+0+10+6+4+9+1+3+2+3+10+10+10+10+0+0+0+6+10)
+        expect(scoreCard.total()).toEqual(1+9+2+8+3+7+10+10+10+0+0+0+10+6+4+9+1+3+2+3+10+10+10+10+0+0+0+6+9)
     });
 
 });

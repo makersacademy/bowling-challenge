@@ -1,34 +1,53 @@
 # Bowling Challenge
 
-This challenge was to create a scorecard to count and sum the scores of a bowling game, for one player, in JavaScript.
+Makers Week 5 (Friday) - This project is a web app to count and sum the scores of a bowling game using JavaScript.
+Initially for one player, extended to allow for any number of players.
 
-You can try out the scorecard [here](https://htmlpreview.github.io/?https://github.com/alittlecross/bowling-challenge/blob/master/src/index.html).
+## Getting started
 
-It should look like this:
+In the location of your choice, in Terminal:
+
+`git clone git@github.com:alittlecross/bowling-scorecard-challenge.git`
+
+`cd` into the `bowling-scorecard-challenge` folder.
+
+In that location, in Terminal:
+
+`open src/index.html`
+
+You should see this page:
 
 ![a-blank](images/a-blank.png)
 
-Clicking `Add another player` will append an additional line to the scorecard.
+Clicking `Add another player` will append an additional line to the scorecard:
 
 ![b-duo](images/b-duo.png)
 
-The player enters their name where is says to.
+The player(s) enters their name beside each scorecard line.
 
-Clicking `Start game` will highlight whose turn it is to throw.
+Clicking `Start game` will highlight whose turn it is to throw:
 
 ![c-start](images/c-start.png)
 
-They then click the numbered buttons to record the number of pins knocked down.
+Click the numbered buttons to record the number of pins knocked down.
 
 ### Testing
 
-All code has been tested with Jasmine. To test on your own machine:
+In that same location, in Terminal:
 
-```git clone git@github.com:alittlecross/bowling-challenge.git```
+`open SpecRunner.html`
 
-Then run `SpecRunner.html` from that folder.
+## Linting
 
-## Bowling — how does it work?
+Assuming you have Node.js and NPM installed, in that same location, in Terminal:
+
+`npm install`
+
+In that same location, in Terminal:
+
+`./node_modules/.bin/eslint src`
+
+## Bowling rules taken from Makers bowling-challenge readme.md
 
 ### Strikes
 
@@ -52,9 +71,3 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 ### Perfect Game
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-## Still To Do
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.

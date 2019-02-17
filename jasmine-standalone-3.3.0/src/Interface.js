@@ -39,11 +39,11 @@ window.onload = function() {
         DisplayCurrentBowler()
     })
 
-    for(i = 0; i < 10; i++) {
+    for(i = 0; i < 11; i++) {
         let pinsBowledButton = document.getElementsByClassName('pins-bowled-button')[i]
         pinsBowledButton.addEventListener('click', function(event) {
             game.takeThrow(pinsBowledButton.value)
-            
+
             DisplayFrames()
             DisplayCurrentBowler()
         })

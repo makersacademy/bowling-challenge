@@ -36,7 +36,7 @@ Scorecard.prototype.total_score_display = function(){
   if (sum > 0) {
     return sum;
   } else {
-    return 'Gutter Game';
+    return ' Gutter Game ';
   };
 };
 

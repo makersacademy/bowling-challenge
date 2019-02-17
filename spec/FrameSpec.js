@@ -23,4 +23,11 @@ describe('Frame', function() {
       expect(function(){frame.addRoll(1)}).toThrowError('Already rolled twice!');
     })
   })
+  describe('score', function() {
+    it('returns total score of current frame', function() {
+      frame.addRoll(5);
+      frame.addRoll(3);
+      expect(frame.score()).toBe(8);
+    });
+  })
 })

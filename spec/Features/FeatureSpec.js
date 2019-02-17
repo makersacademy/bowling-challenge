@@ -43,5 +43,12 @@ describe("Game Scorecard", function() {
     expect(game.showTotalPoints()).toEqual(109)
   });
 
+  it("should return total score for a non-gutter game with bonuses for double strikes", function(){
+    var scoreArray = [3, 7, 7, 2, 5, 4, 10, null, 10, null, 6, 4, 1, 9, 6, 2, 8, 1, 6, 0]
+    for (var i = 0; i < scoreArray.length; i++) {
+      game.inputBallValue(scoreArray[i])
+    }
+    expect(game.showTotalPoints()).toEqual(131)
+  });
 
 });

@@ -52,7 +52,11 @@ Game.prototype.bonusCheck = function () {
     if ((this._scorecard[currentFrame].showBallOne() + this._scorecard[currentFrame].showBallTwo() < 10) ) {
       while ( (this._scorecard[previousFrame]) && (this._scorecard[previousFrame].showBallOne() ) + ( this._scorecard[previousFrame].showBallTwo() ) === 10 ) {
         if (this._scorecard[previousFrame].showBallOne() === 10) {
+          if (this._scorecard[currentFrame].showBallTwo() === null) {
+            this._scorecard[previousFrame].addBonusScore(this._scorecard[currentFrame].showBallOne() + this._scorecard[currentFrame + 1].showBallOne());
+          } else {
             this._scorecard[previousFrame].addBonusScore(this._scorecard[currentFrame].showBallOne() + this._scorecard[currentFrame].showBallTwo());
+          }
         } else {
           this._scorecard[previousFrame].addBonusScore(this._scorecard[currentFrame].showBallOne());
         };

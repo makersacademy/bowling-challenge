@@ -20,6 +20,7 @@ function updateAll () {
   updateFrameNumber()
   updateRollNumber()
   populateTable()
+  clearForm()
 }
 
 function updateGameScore () {
@@ -53,4 +54,8 @@ function getSymbol (frame) {
   } else if (frame.isSpare()) {
     return '/'
   }
+}
+
+function clearForm () {
+  $('#current-roll').val('')
 }

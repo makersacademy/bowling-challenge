@@ -37,5 +37,26 @@ describe('Bowling Scoreboard', function () {
       addManyBowls(1, 20)
       expect(game.calculateTotal()).toEqual(20)
     })
+
+    it('can bowl a spare', function () {
+      game.addBowl(5)
+      game.addBowl(5)
+      game.addBowl(2)
+      addManyBowls(0, 17)
+      expect(game.calculateTotal()).toEqual(14)
+    })
+
+    it('can bowl a strike', function () {
+      game.addBowl(10)
+      game.addBowl(4)
+      game.addBowl(3)
+      addManyBowls(0, 17)
+      expect(game.calculateTotal()).toEqual(24)
+    })
+
+    it('can bowl a perfect game', function () {
+      addManyBowls(10, 12)
+      expect(game.calculateTotal()).toEqual(300)
+    })
   })
 })

@@ -59,4 +59,5 @@ describe("Game", function() {
     game.inputBallValue(2, frame2);
     expect(frame.addBonusScore).toHaveBeenCalled();
   });
+
 });

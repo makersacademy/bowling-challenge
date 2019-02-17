@@ -11,11 +11,11 @@ describe("Frame", function() {
   });
 
   it("should start with ball one equalling 0", function() {
-    expect(frame.showBallOne()).toEqual(0);
+    expect(frame.showBallOne()).toEqual(null);
   });
 
   it("should start with ball two equalling 0", function() {
-    expect(frame.showBallTwo()).toEqual(0);
+    expect(frame.showBallTwo()).toEqual(null);
   });
 
   it("should update the value of ball one", function() {

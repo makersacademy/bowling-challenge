@@ -1,7 +1,7 @@
 function Frame() {
   this._totalPoints = 0;
-  this._ballOne = 0;
-  this._ballTwo = 0;
+  this._ballOne = null;
+  this._ballTwo = null;
   this._bonus = 0;
 }
 

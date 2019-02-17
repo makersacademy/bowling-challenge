@@ -49,16 +49,17 @@ Game.prototype.calculateTotalPoints = function (index) {
 Game.prototype.bonusCheck = function () {
     var currentFrame = (this.showFrameCount() - 1);
     var previousFrame = (currentFrame - 1);
-    console.log(this._scorecard[currentFrame].showBallTwo());
     if ((this._scorecard[currentFrame].showBallOne() + this._scorecard[currentFrame].showBallTwo() < 10) ) {
-      console.log(this._scorecard[currentFrame])
-
       while ( (this._scorecard[previousFrame]) && (this._scorecard[previousFrame].showBallOne() ) + ( this._scorecard[previousFrame].showBallTwo() ) === 10 ) {
-        this._scorecard[previousFrame].addBonusScore(this._scorecard[currentFrame].showBallOne());
+        if (this._scorecard[previousFrame].showBallOne() === 10) {
+            this._scorecard[previousFrame].addBonusScore(this._scorecard[currentFrame].showBallOne() + this._scorecard[currentFrame].showBallTwo());
+        } else {
+          this._scorecard[previousFrame].addBonusScore(this._scorecard[currentFrame].showBallOne());
+        };
         this.calculateTotalPoints(previousFrame);
         previousFrame --;
         currentFrame --;
       };
       this.calculateTotalPoints(this.showFrameCount() - 1);
     };
-};
+  };

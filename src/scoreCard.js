@@ -71,3 +71,14 @@ ScoreCard.prototype.pushAllElements = function(array1, array2) {
         array1.push(array2[i]);
     }
 };
+
+ScoreCard.prototype.isGutterGame = function() {
+    var i;
+    for (i = 0; i < 10; i++) {
+        var bothZero = [0, 0];
+        if ((this.allFrames()[i].scores[0] != 0) && (this.allFrames()[i].scores[1] != 0)) {
+            return false
+        }
+    };
+    return true
+};

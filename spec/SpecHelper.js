@@ -28,3 +28,8 @@ function doOneGameWithStrikesAndSpares(game) {
   var gameWithStrikesAndSpares = [1, 9, 10, 3, 7, 4, 4, 9, 0, 0, 10, 0, 0, 6, 4, 10, 5, 4];
     game.run(gameWithStrikesAndSpares);
 }
+
+function doOneGameWithSpares(game) {
+  var gameWithSpares = [1, 9, 0, 10, 3, 7, 4, 4, 9, 0, 0, 10, 0, 0, 6, 4, 1, 9, 5, 4];
+    game.run(gameWithSpares);
+}

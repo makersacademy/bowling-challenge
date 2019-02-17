@@ -52,9 +52,9 @@ describe('Spares', function() {
 
     });
 
-    it('Returns the correct overall game score for a game with strikes.', function() {
-        doOneGameWithStrikes(game);
-        expect(scoreCard.total()).toEqual(10+3+4+5+1+2+3+4+5+1+2+10+10+2+3+4+5+7+12+5);
+    it('Returns the correct overall game score for a game with spares.', function() {
+        doOneGameWithSpares(game);
+        expect(scoreCard.total()).toEqual(1+9+0+10+3+7+4+4+9+0+0+10+0+0+6+4+1+9+5+4+0+3+4+0+1+5);
     });
 
 });

@@ -69,6 +69,29 @@ When I roll 12 perfect strikes (10 regular strikes and 2 strikes for the bonus i
 The Perfect Game gives me 300 points
 ```
 
+---
+## Some screenshots:
+
+**Scorecard**
+
+![Scorecard](images/1.png)
+
+**Strike**
+
+![Strike](images/2.png)
+
+**Spare**
+
+![Spare](images/3.png)
+
+**Gutter Game**
+
+![Gutter Game](images/4.png)
+
+**Perfect Game**
+
+![Perfect Game](images/5.png)
+
 ----
 ## The Task
 

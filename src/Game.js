@@ -8,5 +8,12 @@ Game.prototype = {
     } else {
       throw new Error('Cannot add more frames!');
     }
+  },
+  gameScore: function() {
+    var total = 0;
+    this._frames.forEach(function(thisFrame) {
+      total += thisFrame.frameScore();
+    });
+    return total
   }
 }

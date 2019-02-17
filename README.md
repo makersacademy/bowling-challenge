@@ -1,6 +1,6 @@
 Getting started
 ===============
-- git clone https://github.com/david-mears/MakersBnB/
+- git clone https://github.com/brookewoolley/bowling-challenge
 - bundle install
 - To run tests open SpecRunner.html
 
@@ -52,7 +52,7 @@ My process
 - When happy with my logic I put together a simple UI.
 - Started trying to implement jQuery in the interface but felt I haven't actually learnt enough to successfully implement it so have spent some time this second weekend working through codecademy's jQuery course.
 
-![alt text](https://github.com/brookewoolley/bowling-challenge/tree/master/images/ui.png "UI for bowling challenge")
+![ui](https://github.com/brookewoolley/bowling-challenge/blob/master/images/ui.png)
 
 Makers notes
 ============

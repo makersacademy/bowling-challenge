@@ -1,0 +1,71 @@
+</doctypehtml>
+<html>
+<head>
+  <style>
+}
+table.scorecard {margin: 0 auto; width:80%; font-size:10px; border:1px solid; text-align: center; table-layout: fixed; margin-bottom: 400px;}
+table.scorecard th, tr, td {padding: 5; vertical-align: middle; font-family: Arial, Helvetica, sans-serif; text-align: center;}
+table.scorecard th {border-bottom:1px solid; background-color:black; height:30px; color: white; font-size:16px; padding:5px}
+table.scorecard th:not(:last-child) {border-right:1px solid;}
+table.scorecard td {height:30px; background: white;}
+table.scorecard tr td {border-right:1px solid;}
+table.scorecard tr td:first-child {border-left:1px solid;}
+table.scorecard tr:nth-child(2) td:nth-child(even) {border-bottom:1px solid;}
+table.scorecard tr:nth-child(3) td {border-bottom:1px solid;}
+  </style>
+</head>
+<body>
+
+  <div id='scorecard'>
+    <center>
+      <h1>Keep your Bowling Score!</h1><br>
+    <table id='scorecardTable' class='scorecard' cellpadding='1' cellspacing='0'>
+      <tr>
+        <th colspan='4'>Frame 1</th>
+        <th colspan='4'>Frame 2</th>
+        <th colspan='4'>Frame 3</th>
+        <th colspan='4'>Frame 4</th>
+        <th colspan='4'>Frame 5</th>
+        <th colspan='4'>Frame 6</th>
+        <th colspan='4'>Frame 7</th>
+        <th colspan='4'>Frame 8</th>
+        <th colspan='4'>Frame 9</th>
+        <th colspan='4'>Frame 10</th>
+        <th colspan='4'>LIVE SCORE</th>
+      </tr>
+      <tr>
+        <td colspan='3'></td><td id="frame1"></td>
+        <td colspan='3'></td><td id="frame2"></td>
+        <td colspan='3'></td><td id="frame3"></td>
+        <td colspan='3'></td><td id="frame4"></td>
+        <td colspan='3'></td><td id="frame5"></td>
+        <td colspan='3'></td><td id="frame6"></td>
+        <td colspan='3'></td><td id="frame7"></td>
+        <td colspan='3'></td><td id="frame8"></td>
+        <td colspan='3'></td><td id="frame9"></td>
+        <td colspan='3'></td><td id="frame10"></td>
+        <td colspan='4'id="score"></td>
+      </tr>
+      <tr>
+        <td colspan='4'id="marker1"></td>
+        <td colspan='4'id="marker2"></td>
+        <td colspan='4'id="marker3"></td>
+        <td colspan='4'id="marker4"></td>
+        <td colspan='4'id="marker5"></td>
+        <td colspan='4'id="marker6"></td>
+        <td colspan='4'id="marker7"></td>
+        <td colspan='4'id="marker8"></td>
+        <td colspan='4'id="marker9"></td>
+        <td colspan='4'id="marker10"></td>
+        <td colspan='4'id="score"></td>
+      </tr>
+    </table>
+  </center>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="../src/scorecard.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

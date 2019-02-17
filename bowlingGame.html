@@ -2,52 +2,6 @@
 <html>
   <head>
     <style>
-      .item1 {
-        grid-area: one;
-      }
-      .item2 {
-        grid-area: two;
-      }
-      .item3 {
-        grid-area: three;
-      }
-      .item4 {
-        grid-area: four;
-      }
-      .item5 {
-        grid-area: five;
-      }
-      .item6 {
-        grid-area: six;
-      }
-      .item7 {
-        grid-area: seven;
-      }
-      .item8 {
-        grid-area: eight;
-      }
-      .item9 {
-        grid-area: nine;
-      }
-      .item10 {
-        grid-area: ten;
-      }
-
-      .grid-container {
-        display: grid;
-        grid-template-areas: "one two three four five six seven eight nine ten";
-        grid-gap: 10px;
-        background-color: #2196f3;
-        padding: 10px;
-      }
-
-      .grid-container > div {
-        background-color: rgba(255, 255, 255, 0.8);
-        text-align: center;
-        padding: 20px 0;
-        font-size: 30px;
-      }
-
       .button {
         height: 25px;
         width: 50px;
@@ -58,6 +12,7 @@
     <h1>Welcome to the Bowling Game</h1>
     <h2>Please choose your next roll:</h2>
     <div>
+      <button class="button" value="0">0</button>
       <button class="button" value="1">1</button>
       <button class="button" value="2">2</button>
       <button class="button" value="3">3</button>
@@ -70,20 +25,33 @@
       <button class="button" value="10">10</button>
     </div>
     <br />
-    <div class="grid-container">
-      <div class="item1"></div>
-      <div class="item2"></div>
-      <div class="item3"></div>
-      <div class="item4"></div>
-      <div class="item5"></div>
-      <div class="item6"></div>
-      <div class="item7"></div>
-      <div class="item8"></div>
-      <div class="item9"></div>
-      <div class="item10"></div>
-    </div>
+
+    <div id="0"></div>
+    <div id="1"></div>
+    <div id="2"></div>
+    <div id="3"></div>
+    <div id="4"></div>
+    <div id="5"></div>
+    <div id="6"></div>
+    <div id="7"></div>
+    <div id="8"></div>
+    <div id="9"></div>
+    <div id="10"></div>
+    <div id="11"></div>
+    <div id="12"></div>
+    <div id="13"></div>
+    <div id="14"></div>
+    <div id="15"></div>
+    <div id="16"></div>
+    <div id="17"></div>
+    <div id="18"></div>
+    <div id="19"></div>
+    <div id="20"></div>
+    <div id="21"></div>
 
     <h2 class="totalScore"></h2>
+    <br />
+    <button id="reset">reset</button>
     <script src="src/bowlingGame.js"></script>
     <script src="jquery.js"></script>
     <script src="script.js"></script>

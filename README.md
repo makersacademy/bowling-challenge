@@ -12,9 +12,11 @@ Features
 - Functioning bowling game.
 - All bowling edge cases are working (gutter games, all-strike games, all-spare games, combinations etc.).
 - Round 10 is also implemented in the UI - bonus balls for strikes and spares are counted.
+- `NodeJS` and `ExpressJS` used to serve the site. 
 - `JQuery` basic user interface, showing a table of results, scores and strike/spare symbols.
 - `ESLint` used with `javascript standard` profile - all passing.
 - `Jasmine` used for unit and feature tests. 
+- `Cypress` used for integration testing of the interface.
 
 User experience
 =====
@@ -36,16 +38,18 @@ Technical issues I was not able to solve in the time we had:
 ====
 
 - Jasmine helper methods in a separate file (I had to duplicate `enterScores` in both spec files...)
-- Travis tests triggering when I create a PR on github
+- Travis tests triggering when I create a PR on github (maybe not turned on for the repo?)
 - Make ESLint aware of files that only become available in the browser (re. `interface.js`'s use of `Bowling`) - I had to mute it on lines 3 and 14 instead.
-- Deal with dependencies arising from `node` more elegantly - currently using `browserify` but having to manage a `bundle.js` file is a pain.
+- Deal with dependencies arising from `node` more elegantly - currently a choice between using `browserify` and `require` statements or requiring files directly in the html. Having to manage a `bundle.js` file is a pain.
+- Couldn't work out how to get `jasmine-cli` to work without `require` statements, although all tests work fine in the SpecRunner, because they share context.
 - Event looping is currently bundled up in other methods (e.g. `enterScore()` can trigger `endFrame()`). I was unable to work out how to orchestrate things and have jasmine input when required.
-- I populated a results table by looping through it which necessitated having the same IDs, albeit under different sub-headings. My linter complained heavily about duplicate IDs, but how else could this be solved?
+    - Following discussion with Sam Jones (coach), he felt that because the functionality was delegated, it wasn't a problem. 
 
 Project structure
 ============
 
 - `spec/features/BowlingFeatureSpec.js` and `spec/units/BowlingSpec.js` contain the two jasmine test files.
+- `cypress/integration/interface.spec.js` contains the Cypress end to end test file.
 - `src/Bowling.js` coordinates events and creates new frames when needed.
 - `src/Frame.js` contains all the information about an individual frame and makes decisions about the status of frames.
 - `src/interface.js` connects the game to the UI and populates the dynamic sections of the page.
@@ -60,7 +64,6 @@ This week has felt a bit like I was stabbing in the dark with a bunch of technol
 - Would it be better practice to have another class orchestrating the overall program logic?
     - If so, how can jasmine coordinate with this, when it needs to enter numbers?
     - Currently, this difficulty has led to events being triggered by existing methods within `Bowling.js` as a side-effect - e.g. `enterScore` triggers `endFrame`.
-- Some of the missing orchestration has been placed within `interface.js` because it's triggered by user interaction. Is this appropriate?
  
 Instructions for use
 ===
@@ -69,16 +72,18 @@ Instructions for use
 
 - No setup is required
 - Clone the directory
-- Open `src/bowling.html` and play. (`browserify` has been used in standalone mode to bundle the required javascript) 
+- Open `src/bowling.html` and play. ~~(`browserify` has been used in standalone mode to bundle the required javascript)~~
  
 **As a developer: **
 
 - Install `npm` using your usual package manager
 - Execute `npm install` in the project root to download the dependencies in `package.json`
 - Execute `npm run lint` to run the `ESLint` package (`javascript-standard` profile)
-- Execute `npm test` to run the `Jasmine` tests
-- NB: If you make any changes to the source files, you need to run `browserify src/Bowling.js --s Bowling >  src/bundle.js` from the project root to generate an updated javascript bundle for the browser.
-- NB2: If this is done, in order to pass the lint tests, add a `/*eslint-disable*/` to line 1 of `bundle.js` as the generated javascript is not compliant.
+- Open `SpecRunner.html` in your browser from the project root to run the unit tests. (NB: using the cli will fail due to dependency issues)
+- Run `$(npm bin)/cypress open` to launch the end-to-end testing gui and select `interface.test.js` from the bottom.  
+- ~~Execute `npm test` to run the `Jasmine` tests~~
+- ~~NB: If you make any changes to the source files, you need to run `browserify src/Bowling.js --s Bowling >  src/bundle.js` from the project root to generate an updated javascript bundle for the browser.~~
+- ~~NB2: If this is done, in order to pass the lint tests, add a `/*eslint-disable*/` to line 1 of `bundle.js` as the generated javascript is not compliant.~~
 
 Bowling Challenge
 =================

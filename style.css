@@ -1,0 +1,75 @@
+body {
+  font-family: sans-serif;
+  font-size: 14px;
+  text-align: center;
+}
+
+.tg {
+  border-collapse: collapse;
+  border-spacing: 0;
+  padding: 10px 5px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: pink;
+}
+.tg td {
+  padding: 10px 5px;
+  border-style: dashed;
+  border-width: 1px;
+  border-color: pink;
+}
+.tg th {
+  padding: 10px 5px;
+  border-style: solid;
+  border-width: 1px;
+  font-weight: bold;
+  border-color: pink;
+}
+.tg .tg-0lax {
+  text-align: center;
+  vertical-align: center;
+}
+.tg .tg-0pky {
+  border-color: inherit;
+  text-align: center;
+  vertical-align: center;
+}
+
+.button {
+  font-size: 16px;
+  cursor: pointer;
+  width: 85px;
+  margin: 10px;
+  -webkit-border-radius: 5px;
+  font-family: inherit;
+}
+
+.button:hover {
+  background-color: pink;
+  color: white;
+}
+
+.hidden {
+  visibility: hidden;
+  height: 0px;
+  column-width: 0px;
+}
+
+.visible {
+  visibility: visible;
+}
+
+@media screen and (max-width: 767px) {
+  .tg {
+    width: auto !important;
+  }
+  .tg col {
+    width: auto !important;
+  }
+  .tg-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}

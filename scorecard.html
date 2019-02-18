@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css" type="text/css"></link>
+    <title>Bowling Scorecard</title>
+    <script src = "src/roll.js"></script>
+    <script src = "src/frame.js"></script>
+    <script src = "src/player.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src = "interface.js"></script>
+  </head>
+  <body>
+<h1> Bowl me over </h1>
+
+<h2> Enter your score: </h2>
+
+<button class="button" id ="0" type="button" name="0"> None :( </button>
+<button class="button" id ="1" type="button" name="1"> 1 </button>
+<button class="button" id ="2" type="button" name="2"> 2 </button>
+<button class="button" id ="3" type="button" name="3"> 3 </button>
+<button class="button" id ="4" type="button" name="4"> 4 </button>
+<button class="button" id ="5" type="button" name="5"> 5 </button>
+<button class="button" id ="6" type="button" name="6"> 6 </button>
+<button class="button" id ="7" type="button" name="7"> 7 </button>
+<button class="button" id ="8" type="button" name="8"> 8 </button>
+<button class="button" id ="9" type="button" name="9"> 9 </button>
+<button class="button" id ="10" type="button" name="10"> STRIKE! </button>
+
+<h2> Scorecard: </h2>
+
+<div id="warning" class="hidden" style="color: red font-size: 30px;"> Ooops - there aren't that many pins! Try again :) </div>
+<br>
+
+<div class="tg-wrap"><table class="tg">
+  <tr>
+    <th class="tg-0lax"></th>
+    <th class="tg-0lax" colspan="3">Frame 1</th>
+    <th class="tg-0lax" colspan="3">Frame 2</th>
+    <th class="tg-0lax" colspan="3">Frame 3</th>
+    <th class="tg-0lax" colspan="3">Frame 4</th>
+    <th class="tg-0lax" colspan="3">Frame 5</th>
+    <th class="tg-0lax" colspan="3">Frame 6</th>
+    <th class="tg-0lax" colspan="3">Frame 7</th>
+    <th class="tg-0lax" colspan="3">Frame 8</th>
+    <th class="tg-0lax" colspan="3">Frame 9</th>
+    <th class="tg-0lax" colspan="3">Frame 10</th>
+    <!-- for bonus -->
+    <th class="hidden" name="extra"> Bonus </th>
+    <th class="hidden" name="extra"> Bonus </th>
+    <!-- end bonus -->
+    <th class="tg-0lax"></th>
+  </tr>
+  <tr>
+    <th class="tg-0pky">Name</th>
+    <th class="tg-0lax">1</th>
+    <th class="tg-0pky">2</th>
+    <th class="tg-0pky">Total</th>
+
+    <th class="tg-0lax">1</th>
+    <th class="tg-0pky">2</th>
+    <th class="tg-0pky">Total</th>
+
+    <th class="tg-0lax">1</th>
+    <th class="tg-0pky">2</th>
+    <th class="tg-0pky">Total</th>
+
+    <th class="tg-0lax">1</th>
+    <th class="tg-0pky">2</th>
+    <th class="tg-0pky">Total</th>
+
+    <th class="tg-0lax">1</th>
+    <th class="tg-0pky">2</th>
+    <th class="tg-0pky">Total</th>
+
+    <th class="tg-0lax">1</th>
+    <th class="tg-0pky">2</th>
+    <th class="tg-0pky">Total</th>
+
+    <th class="tg-0lax">1</th>
+    <th class="tg-0pky">2</th>
+    <th class="tg-0pky">Total</th>
+
+    <th class="tg-0lax">1</th>
+    <th class="tg-0pky">2</th>
+    <th class="tg-0pky">Total</th>
+
+    <th class="tg-0lax">1</th>
+    <th class="tg-0pky">2</th>
+    <th class="tg-0pky">Total</th>
+
+    <th class="tg-0lax">1</th>
+    <th class="tg-0pky">2</th>
+    <th class="tg-0pky">Total</th>
+    <!-- for bonus rolls  -->
+    <th class="hidden" name="extra"> 1</th>
+    <th class="hidden" name="extra"> 2</th>
+    <!-- end bonus rolls -->
+    <th class="tg-0lax">Running Total</th>
+  </tr>
+  <tr>
+    <td class="tg-0lax" rowspan="2" id ="name"></td>
+    <td class="tg-0lax" id="F1R1"></td>
+    <td class="tg-0lax" id="F1R2"></td>
+    <td class="tg-0lax" id="F1T"></td>
+
+    <td class="tg-0lax" id="F2R1"></td>
+    <td class="tg-0lax" id="F2R2"></td>
+    <td class="tg-0lax" id="F2T"></td>
+
+    <td class="tg-0lax" id="F3R1"></td>
+    <td class="tg-0lax" id="F3R2"></td>
+    <td class="tg-0lax" id="F3T"></td>
+
+    <td class="tg-0lax" id="F4R1"></td>
+    <td class="tg-0lax" id="F4R2"></td>
+    <td class="tg-0lax" id="F4T"></td>
+
+    <td class="tg-0lax" id="F5R1"></td>
+    <td class="tg-0lax" id="F5R2"></td>
+    <td class="tg-0lax" id="F5T"></td>
+
+    <td class="tg-0lax" id="F6R1"></td>
+    <td class="tg-0lax" id="F6R2"></td>
+    <td class="tg-0lax" id="F6T"></td>
+
+    <td class="tg-0lax" id="F7R1"></td>
+    <td class="tg-0lax" id="F7R2"></td>
+    <td class="tg-0lax" id="F7T"></td>
+
+    <td class="tg-0lax" id="F8R1"></td>
+    <td class="tg-0lax" id="F8R2"></td>
+    <td class="tg-0lax" id="F8T"></td>
+
+    <td class="tg-0lax" id="F9R1"></td>
+    <td class="tg-0lax" id="F9R2"></td>
+    <td class="tg-0lax" id="F9T"></td>
+
+    <td class="tg-0lax" id="F10R1"></td>
+    <td class="tg-0lax" id="F10R2"></td>
+    <td class="tg-0lax" id="F10T"></td>
+    <!-- for bonus rolls:  -->
+    <td class="hidden" id="F11R1" name="extra"></td>
+    <td class="hidden" id="F11R2" name="extra"></td>
+    <!-- end bonus rolls -->
+    <td class="tg-0lax" id="total"></td>
+  </tr>
+
+  <tr>
+    <td class="tg-0lax" colspan="3" id = "Notes1"></td>
+    <td class="tg-0lax" colspan="3"id = "Notes2"></td>
+    <td class="tg-0lax" colspan="3"id = "Notes3"></td>
+    <td class="tg-0lax" colspan="3" id = "Notes4"></td>
+    <td class="tg-0lax" colspan="3"id = "Notes5"></td>
+    <td class="tg-0lax" colspan="3"id = "Notes6"></td>
+    <td class="tg-0lax" colspan="3"id = "Notes7"></td>
+    <td class="tg-0lax" colspan="3"id = "Notes8"></td>
+    <td class="tg-0lax" colspan="3"id = "Notes9"></td>
+    <td class="tg-0lax" colspan="3"id = "Notes10"></td>
+    <!-- for bonus rolls:  -->
+    <td class="hidden" colspan="1"id = "Notes11" name="extra"></td>
+    <td class="hidden" colspan="1"id = "Notes12" name="extra"></td>
+    <!-- end bonus rolls -->
+    <td class="tg-0lax"></td>
+  </tr>
+
+</table>
+</div>
+<br>
+<div id="gameover" class="hidden" style = "color:blue font-size: 30px;"> Game Over! </div>
+<br>
+<br>
+
+
+  </body>
+</html>

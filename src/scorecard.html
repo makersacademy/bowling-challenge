@@ -16,46 +16,43 @@
 <button id="8" name="8">8</button>
 <button id="9" name="9">9</button>
 <button id="10" name="10">10</button>
-<div id="score">
-  hi
-</div>
 
 <table class="rolls">
   <tr>
-    <td>1st</td>
-    <td>2nd</td>
-    <td>3rd</td>
-    <td>4th</td>
-    <td>5th</td>
-    <td>6th</td>
-    <td>7th</td>
-    <td>8th</td>
-    <td>9th</td>
-    <td>10th</td>
-    <td>11th</td>
-    <td>12th</td>
-    <td>13th</td>
-    <td>14th</td>
-    <td>15th</td>
-    <td>16th</td>
-    <td>17th</td>
-    <td>18th</td>
-    <td>19th</td>
-    <td>20th</td>
+    <td id="r1">1st</td>
+    <td id="r2">2nd</td>
+    <td id="r3">3rd</td>
+    <td id="r4">4th</td>
+    <td id="r5">5th</td>
+    <td id="r6">6th</td>
+    <td id="r7">7th</td>
+    <td id="r8">8th</td>
+    <td id="r9">9th</td>
+    <td id="r10">10th</td>
+    <td id="r11">11th</td>
+    <td id="r12">12th</td>
+    <td id="r13">13th</td>
+    <td id="r14">14th</td>
+    <td id="r15">15th</td>
+    <td id="r16">16th</td>
+    <td id="r17">17th</td>
+    <td id="r18">18th</td>
+    <td id="r19">19th</td>
+    <td id="r20">20th</td>
   </tr>
 </table>
 <table class="scores">
   <tr>
-    <td>1st</td>
-    <td>2nd</td>
-    <td>3rd</td>
-    <td>4th</td>
-    <td>5th</td>
-    <td>6th</td>
-    <td>7th</td>
-    <td>8th</td>
-    <td>9th</td>
-    <td>10th</td>
+    <td id="s1">1st</td>
+    <td id="s2">2nd</td>
+    <td id="s3">3rd</td>
+    <td id="s4">4th</td>
+    <td id="s5">5th</td>
+    <td id="s6">6th</td>
+    <td id="s7">7th</td>
+    <td id="s8">8th</td>
+    <td id="s9">9th</td>
+    <td id="s10">10th</td>
   </tr>
 </table>
 
@@ -72,4 +69,5 @@ $( document ).ready(function() {
     document.getElementById("score").innerHTML = scorecard.display().toString();
   });
 });
+//do it by looping through and checking for strikes and spares.
 </script>

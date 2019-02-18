@@ -68,6 +68,12 @@ As a user,
 When I roll 12 perfect strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame)
 The Perfect Game gives me 300 points
 ```
+---
+## How to test the app:
+
+1. Clone the repository: git clone https://github.com/KrzysztofBalejko/bowling-challenge.git
+
+2. Run index.html in your browser
 
 ---
 ## Some screenshots:

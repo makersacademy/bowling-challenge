@@ -16,7 +16,7 @@ body {
 }
 .tg td {
   padding: 10px 5px;
-  border-style: solid;
+  border-style: dashed;
   border-width: 1px;
   border-color: pink;
 }

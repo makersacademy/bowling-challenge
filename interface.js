@@ -6,6 +6,7 @@ $(document).ready(function() {
     let roll = player.currentFrame.rolls.length;
     let rollNumber = parseInt(this.id);
     let possible = checkIfPossible(roll, rollNumber);
+
     if (possible) {
       warning.className = "hidden";
       player.enterRoll(rollNumber);
@@ -23,9 +24,10 @@ $(document).ready(function() {
     function calculateBonusRound(frame) {
       if (
         player.remainingFrames === 0 &&
-        ((player.frames[frame - 1].notes === "Strike" &&
+        player.frames[frame].notes &&
+        ((player.frames[frame].notes === "Strike" &&
           player.frames.length <= 12) ||
-          (player.frames[frame - 1].notes === "Spare" &&
+          (player.frames[frame].notes === "Spare" &&
             player.frames.length <= 11))
       ) {
         addBonusRound(frame);
@@ -62,6 +64,10 @@ $(document).ready(function() {
         return frameComplete()
           ? player.currentFrame.rolls[0].score
           : player.frames[frame].rolls[roll].score;
+
+            function frameComplete() {
+              return player.currentFrame.rolls[0] ? true : false;
+            }
       }
     }
 
@@ -90,9 +96,5 @@ $(document).ready(function() {
         $(`#F${frame}T`).text(combinedScore);
       }
     }
-  }
-
-  function frameComplete() {
-    return player.currentFrame.rolls[0] ? true : false;
   }
 });

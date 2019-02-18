@@ -1,0 +1,15 @@
+table {
+  width: 800px;
+  border: 3px solid black;
+  padding: 0px
+}
+.rolls tr td:nth-of-type(2n) {
+    width: 5%;
+    border-right: 3px solid black;
+    border-left: 1px solid grey;
+}
+.scores tr td{
+    width: 10%;
+    border-right: 3px solid black;
+    border-left: 3px solid white;
+}

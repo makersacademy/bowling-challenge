@@ -221,13 +221,14 @@ $(document).ready(function() {
     scorecard.add(10, round);
 
     if (bowl === 1) {
-     $(`#round${round + 1}FirstBowl`).text(10);
+     $(`#round${round + 1}FirstBowl`).text("-");
+     $(`#round${round + 1}SecondBowl`).text("X")
      $(`#round${round + 1}Score`).text(scorecard.calculateScore(round));
     };
 
     if (bowl === 2) {
       $("#pinButtons").show().children().show();
-      $(`#round${round + 1}SecondBowl`).text(10)
+      $(`#round${round + 1}SecondBowl`).text("/")
       $(`#round${round + 1}Score`).text(scorecard.calculateScore(round));
     }
 

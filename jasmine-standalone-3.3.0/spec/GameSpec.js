@@ -110,4 +110,21 @@ describe('Game', function() {
             expect(game.returnCurrentFrameIndex()).toBe(1)
         })
     })
+
+    describe('over', function() {
+        it('returns false when game not over', function() {
+            game.begin(['Foo'])
+            expect(game.over()).toBe(false)
+        })
+        it('returns false when game not over', function() {
+            game.begin(['Foo'])
+            for(i = 0; i < 9; i++) { game.takeThrow('10') }
+            expect(game.over()).toBe(false)
+        })
+        it('returns true when game not over', function() {
+            game.begin(['Foo'])
+            for(i = 0; i < 10; i++) { game.takeThrow('10') }
+            expect(game.over()).toBe(true)
+        })
+    })
 })

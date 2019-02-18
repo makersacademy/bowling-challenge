@@ -8,6 +8,7 @@ function Game () {
     this.currentBowlerIndex = 0
     // Indicate which turn the bowler is taking out of first and second in frame
     this.currentBowlersFrameIndex = 0
+    this.gameFinished = false
 }
 
 Game.prototype.begin = function(players) {
@@ -31,7 +32,8 @@ Game.prototype.returnCurrentFrameIndex = function () {
 Game.prototype.takeThrow = function(pinsBowled) {
     // Add score to current frame for current bowler
     this.frames[this.currentBowler()][this.returnCurrentFrameIndex()].addScore(pinsBowled)
-
+    // BOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOKMARKIO!!!!!!!!!!!!!
+    this._gameShouldEnd()
     /*
         if it's first throw
             if strike
@@ -58,6 +60,10 @@ Game.prototype.takeThrow = function(pinsBowled) {
     }
 }
 
+Game.prototype.over = function() {
+    return this.gameFinished
+}
+
 /*
     Display frame function
         This here instead of in Interface as window.onload = function() {} wrapping Interface breaks Jasmine
@@ -78,4 +84,11 @@ Game.prototype.presentCurrentFrame = function () {
 Game.prototype._advanceBowlerIndex = function() {
     if (this.currentBowlerIndex < this.bowlers.length - 1) { this.currentBowlerIndex ++ }
     else { this.currentBowlerIndex = 0 }
+}
+
+Game.prototype._gameShouldEnd = function() {
+    if (this.currentFrameIndex === 9) {
+        if (this.currentBowlerIndex === this.bowlers.length - 1) { this.gameFinished = true }
+    }
+    // if last frame, last player, set flag to indicate that game should end before
 }

@@ -28,6 +28,10 @@ Bonus rounds -- needs fixing (and moving to object functionality)
 * Extra roll for strike in first bonus roll
 * Total score accounts for these
 
+Full game
 * Add end of game notes for gutter game and perfect game
+* Allow name entry and multiplayer
+
+Other
 * Set up [Travis CI](https://travis-ci.org) to run your tests.
 * Add [ESLint](http://eslint.org/) to your codebase and make your code conform.

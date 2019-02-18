@@ -29,7 +29,7 @@
 
 <h2> Scorecard: </h2>
 
-<div id="warning" class="hidden"> Ooops - there aren't that many pins! Try again :) </div>
+<div id="warning" class="hidden" style="color: red font-size: 30px;"> Ooops - there aren't that many pins! Try again :) </div>
 <br>
 
 <div class="tg-wrap"><table class="tg">
@@ -46,55 +46,55 @@
     <th class="tg-0lax" colspan="3">Frame 9</th>
     <th class="tg-0lax" colspan="3">Frame 10</th>
     <!-- for bonus -->
-    <th class="hidden">Bonus</th>
-    <th class="hidden">Bonus</th>
+    <th class="hidden" name="extra">Bonus</th>
+    <th class="hidden" name="extra">Bonus</th>
     <!-- end bonus -->
     <th class="tg-0lax"></th>
   </tr>
   <tr>
     <th class="tg-0pky">Name</th>
-    <th class="tg-0lax">Roll 1</th>
-    <th class="tg-0pky">Roll 2</th>
+    <th class="tg-0lax">1</th>
+    <th class="tg-0pky">2</th>
     <th class="tg-0pky">Total</th>
 
-    <th class="tg-0lax">Roll 1</th>
-    <th class="tg-0pky">Roll 2</th>
+    <th class="tg-0lax">1</th>
+    <th class="tg-0pky">2</th>
     <th class="tg-0pky">Total</th>
 
-    <th class="tg-0lax">Roll 1</th>
-    <th class="tg-0pky">Roll 2</th>
+    <th class="tg-0lax">1</th>
+    <th class="tg-0pky">2</th>
     <th class="tg-0pky">Total</th>
 
-    <th class="tg-0lax">Roll 1</th>
-    <th class="tg-0pky">Roll 2</th>
+    <th class="tg-0lax">1</th>
+    <th class="tg-0pky">2</th>
     <th class="tg-0pky">Total</th>
 
-    <th class="tg-0lax">Roll 1</th>
-    <th class="tg-0pky">Roll 2</th>
+    <th class="tg-0lax">1</th>
+    <th class="tg-0pky">2</th>
     <th class="tg-0pky">Total</th>
 
-    <th class="tg-0lax">Roll 1</th>
-    <th class="tg-0pky">Roll 2</th>
+    <th class="tg-0lax">1</th>
+    <th class="tg-0pky">2</th>
     <th class="tg-0pky">Total</th>
 
-    <th class="tg-0lax">Roll 1</th>
-    <th class="tg-0pky">Roll 2</th>
+    <th class="tg-0lax">1</th>
+    <th class="tg-0pky">2</th>
     <th class="tg-0pky">Total</th>
 
-    <th class="tg-0lax">Roll 1</th>
-    <th class="tg-0pky">Roll 2</th>
+    <th class="tg-0lax">1</th>
+    <th class="tg-0pky">2</th>
     <th class="tg-0pky">Total</th>
 
-    <th class="tg-0lax">Roll 1</th>
-    <th class="tg-0pky">Roll 2</th>
+    <th class="tg-0lax">1</th>
+    <th class="tg-0pky">2</th>
     <th class="tg-0pky">Total</th>
 
-    <th class="tg-0lax">Roll 1</th>
-    <th class="tg-0pky">Roll 2</th>
+    <th class="tg-0lax">1</th>
+    <th class="tg-0pky">2</th>
     <th class="tg-0pky">Total</th>
     <!-- for bonus rolls  -->
-    <th class="hidden">Extra</th>
-    <th class="hidden">Extra</th>
+    <th class="hidden" name="extra">Extra</th>
+    <th class="hidden" name="extra">Extra</th>
     <!-- end bonus rolls -->
     <th class="tg-0lax">Running Total</th>
   </tr>
@@ -140,8 +140,8 @@
     <td class="tg-0lax" id="F10R2"></td>
     <td class="tg-0lax" id="F10T"></td>
     <!-- for bonus rolls:  -->
-    <td class="hidden" id="F10R3"></td>
-    <td class="hidden" id="F10R4"></td>
+    <td class="hidden" id="F11R1" name="extra"></td>
+    <td class="hidden" id="F11R2" name="extra"></td>
     <!-- end bonus rolls -->
     <td class="tg-0lax" id="total"></td>
   </tr>
@@ -158,14 +158,18 @@
     <td class="tg-0lax" colspan="3"id = "Notes9"></td>
     <td class="tg-0lax" colspan="3"id = "Notes10"></td>
     <!-- for bonus rolls:  -->
-    <td class="hidden" colspan="1"id = "Notes11"></td>
-    <td class="hidden" colspan="1"id = "Notes12"></td>
+    <td class="hidden" colspan="1"id = "Notes11" name="extra"></td>
+    <td class="hidden" colspan="1"id = "Notes12" name="extra"></td>
     <!-- end bonus rolls -->
     <td class="tg-0lax"></td>
   </tr>
 
-</table></div>
-
+</table>
+</div>
+<br>
+<div id="gameover" class="hidden" style = "color:blue font-size: 30px;"> Game Over! </div>
+<br>
+<br>
 
 
   </body>

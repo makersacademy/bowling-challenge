@@ -29,70 +29,53 @@ describe("PLAYER", function() {
       expect(player.frames.length).toEqual(1);
     });
 
-    it('should record complete frames in array', function(){
-       expect(player.frames[0]).toEqual(jasmine.any(Object));
-       expect(player.frames.constructor).toEqual(Array);
-    })
+    it("should record complete frames in array", function() {
+      expect(player.frames[0]).toEqual(jasmine.any(Object));
+      expect(player.frames.constructor).toEqual(Array);
+    });
 
-    it('should keep track of total score', function(){
-      expect(player.totalScore).toEqual(3)
-    })
+    it("should keep track of total score", function() {
+      expect(player.totalScore).toEqual(3);
+    });
   });
 
-  describe("Bonus points", function(){
-    sparePlayer = new Player
-    strikePlayer = new Player
+  describe("Bonus points", function() {
+    sparePlayer = new Player();
+    strikePlayer = new Player();
 
-    it('should add points of next roll to spare score', function() {
-      sparePlayer.enterRoll(3)
-      sparePlayer.enterRoll(7)
-      sparePlayer.enterRoll(4)
-      sparePlayer.enterRoll(4)
-      expect(sparePlayer.totalScore).toEqual(22)
-    })
+    it("should add points of next roll to spare score", function() {
+      sparePlayer.enterRoll(3);
+      sparePlayer.enterRoll(7);
+      sparePlayer.enterRoll(4);
+      sparePlayer.enterRoll(4);
+      expect(sparePlayer.totalScore).toEqual(22);
+    });
 
-    it('should add points of next 2 rolls to strike score', function() {
-      strikePlayer.enterRoll(10)
-      strikePlayer.enterRoll(4)
-      strikePlayer.enterRoll(2)
-      expect(strikePlayer.totalScore).toEqual(22)
-    })
+    it("should add points of next 2 rolls to strike score", function() {
+      strikePlayer.enterRoll(10);
+      strikePlayer.enterRoll(4);
+      strikePlayer.enterRoll(2);
+      expect(strikePlayer.totalScore).toEqual(22);
+    });
 
-    it('should not add next round\'s bonus points to strike score', function() {
-      doubleStrike = new Player("doublestrike")
-      doubleStrike.enterRoll(10)
-      doubleStrike.enterRoll(10)
-      doubleStrike.enterRoll(4)
-      doubleStrike.enterRoll(2)
+    it("should not add next round's bonus points to strike score", function() {
+      doubleStrike = new Player("doublestrike");
+      doubleStrike.enterRoll(10);
+      doubleStrike.enterRoll(10);
+      doubleStrike.enterRoll(4);
+      doubleStrike.enterRoll(2);
       console.log(doubleStrike);
-      expect(doubleStrike.totalScore).toEqual(48)
-    })
+      expect(doubleStrike.totalScore).toEqual(48);
+    });
 
-    it('should add next TWO BOWLS to bonus points, even if strikes', function(){
-      tripleStrike = new Player
-      tripleStrike.enterRoll(10)
-      tripleStrike.enterRoll(10)
-      tripleStrike.enterRoll(10)
-      expect(tripleStrike.totalScore).toEqual(60)
-      expect(tripleStrike.frames[0].bonusScore).toEqual(20)
-    })
-  })
+    it("should add next TWO BOWLS to bonus points, even if strikes", function() {
+      tripleStrike = new Player();
+      tripleStrike.enterRoll(10);
+      tripleStrike.enterRoll(10);
+      tripleStrike.enterRoll(10);
+      expect(tripleStrike.totalScore).toEqual(60);
+      expect(tripleStrike.frames[0].bonusScore).toEqual(20);
+    });
+  });
 
-  // describe("GameOver", function(){
-  //   it("should return true if no remaining frames", function(){
-  //     spyOn(Frame.prototype, "returnIscdComplete").and.returnValue(true);
-  //     player.enterRoll(1);
-  //     player.enterRoll(1);
-  //     player.enterRoll(1);
-  //     player.enterRoll(1);
-  //     player.enterRoll(1);
-  //     player.enterRoll(1);
-  //     player.enterRoll(1);
-  //     player.enterRoll(1);
-  //     player.enterRoll(1);
-  //     player.enterRoll(1);
-  //     player.enterRoll(1);
-  //     expect(player.remainingFrames).toEqual(0)
-  //   })
-  // })
 });

@@ -40,7 +40,7 @@ Frame.prototype.returnIsComplete = function() {
 };
 
 Frame.prototype._addNotes = function() {
-  if(this.rolls[0].notes === "Strike") //|| this.rolls[0].notes === "Strike" )
+  if(this.rolls[0].notes === "Strike") 
   { this.notes = "Strike" }
   else if (this.score >= 10)
   {this.notes = "Spare" }

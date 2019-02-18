@@ -4,7 +4,6 @@ function Player(name) {
   this.frames = [];
   this.currentFrame = new Frame();
   this.totalScore;
-  // this.extraRolls
 }
 
 Player.prototype.enterRoll = function(score) {
@@ -15,9 +14,6 @@ Player.prototype.enterRoll = function(score) {
     this._reduceRemainingFrames();
   }
   this._refreshFrameScore();
-  // if there are 0 frames: was last frame.notes a strike or spare? if so + 1
-  // this.remainingFrames === 0 ?
-  // }
 };
 
 Player.prototype._newFrame = function(score) {

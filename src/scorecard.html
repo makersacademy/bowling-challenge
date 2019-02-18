@@ -1,10 +1,13 @@
 <h1> scorecard </h1>
 <link rel="stylesheet" type="text/css" href="../public/style.css">
+
+<script type="text/javascript" src="ScreenDisplay.js"></script>
 <script type="text/javascript" src="EvaluateScores.js"></script>
 <script type="text/javascript" src="CheckRoll.js"></script>
 <script type="text/javascript" src="ScoreRecorder.js"></script>
 <script type="text/javascript" src="Scorecard.js"></script>
 <script type="text/javascript" src="jquery-3.3.1.js"></script>
+<script type="text/javascript" src="pagehandler.js"></script>
 
 <button id="1" name="1">1</button>
 <button id="2" name="2">2</button>
@@ -17,9 +20,11 @@
 <button id="9" name="9">9</button>
 <button id="10" name="10">10</button>
 
+<div id="hi">hi</div>
+
 <table class="rolls">
   <tr>
-    <td id="r1">1st</td>
+    <td id="r1" name="r1">1st</td>
     <td id="r2">2nd</td>
     <td id="r3">3rd</td>
     <td id="r4">4th</td>
@@ -55,19 +60,3 @@
     <td id="s10">10th</td>
   </tr>
 </table>
-
-<script type="text/javascript">
-scorecard = new Scorecard();
-scorecard.record.roll(4)
-scorecard.record.roll(5)
-
-console.log(scorecard.display())
-document.getElementById("score").innerHTML = scorecard.display().toString();
-$( document ).ready(function() {
-  $("#5").click(function( event ) {
-    scorecard.record.roll(5)
-    document.getElementById("score").innerHTML = scorecard.display().toString();
-  });
-});
-//do it by looping through and checking for strikes and spares.
-</script>

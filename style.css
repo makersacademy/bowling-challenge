@@ -18,7 +18,7 @@ h1 {
 h2,h3,p{
   color: black;
   text-align: center;
-  margin:2px;
+  margin:5px;
   animation-name: text;
   animation-duration: 5s;
   animation-iteration-count: infinite;

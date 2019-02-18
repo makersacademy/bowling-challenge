@@ -12,20 +12,29 @@ $(document).ready(function(){
   };
 
   frameScore = function() {
-    frame1.innerHTML = game.frameLog['0'];
-    frame2.innerHTML = game.frameLog['1'];
-    frame3.innerHTML = game.frameLog['2'];
-    frame4.innerHTML = game.frameLog['3'];
-    frame5.innerHTML = game.frameLog['4'];
-    frame6.innerHTML = game.frameLog['5'];
-    frame7.innerHTML = game.frameLog['6'];
-    frame8.innerHTML = game.frameLog['7'];
-    frame9.innerHTML = game.frameLog['8'];
-    frame10.innerHTML = game.frameLog['9'];
-    // same as getElementByID("frame1").innerHTML
+    for (let i = 1 ; i < 11 ; i ++){
+    // write a condition to display only when frameLog is not empty
+    //   if (game.frameLog[i-'1'] === null ) {
+    //     game.frameLog[i-'1'] = 0;
+    // };
+    document.getElementById('frame'+i).innerHTML = game.frameLog[i-'1'];
+    };
+    // frame1.innerHTML = game.frameLog['0'];
+    // frame2.innerHTML = game.frameLog['1'];
+    // frame3.innerHTML = game.frameLog['2'];
+    // frame4.innerHTML = game.frameLog['3'];
+    // frame5.innerHTML = game.frameLog['4'];
+    // frame6.innerHTML = game.frameLog['5'];
+    // frame7.innerHTML = game.frameLog['6'];
+    // frame8.innerHTML = game.frameLog['7'];
+    // frame9.innerHTML = game.frameLog['8'];
+    // frame10.innerHTML = game.frameLog['9'];
   };
 
   totalScore = function (){
+    // for (let i = 1 ; i < 11 ; i ++){
+    // document.getElementById('marker'+i).innerHTML = game.frameScore[i+'1'];
+    // };
     marker0.innerHTML = game.frameScore['1'];
     marker1.innerHTML = game.frameScore['2'];
     marker2.innerHTML = game.frameScore['3'];

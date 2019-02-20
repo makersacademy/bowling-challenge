@@ -5,7 +5,7 @@ function Game () {
   this.frameNumber = 1
   this._score = 0
   this._frame = []
-  this.frameLog = []
+  this.frameLog = [[0,0]]
   this.frameScore = [0]
 };
 
@@ -66,7 +66,7 @@ Game.prototype.countBonus = function () {
   // console.log("before Bonus  " + this.frameLog)
 
   if (this._strikeBonus() === true){
-  getBonus[getBonus.length-2] += getBonus[getBonus.length-1];
+  getBonus[getBonus.length-2] += getBonus[getBonus.length];
   // console.log("Inside count Bonus  " + this.frameLog);
 } else if (this._spareBonus() === true) {
   getBonus[getBonus.length-2] += this.frameLog[this.frameLog.length-1][0];
@@ -77,7 +77,7 @@ Game.prototype.countBonus = function () {
 Game.prototype._strikeBonus = function () {
 // need to check for previous frame, to get bonus
 var checker = this.frameLog;
-  if(checker[this.frameNumber-2][0] === 10){
+  if(checker[this.frameNumber-1][0] === 10){
     return true
   }
   return false
@@ -85,7 +85,7 @@ var checker = this.frameLog;
 
 Game.prototype._spareBonus = function () {
   var checker = this.frameLog;
-  if(checker[this.frameNumber-2][0] + checker[this.frameNumber-2][1] === 10) {
+  if(checker[this.frameNumber-1][0] + checker[this.frameNumber-1][1] === 10) {
     return true
   }
   return false

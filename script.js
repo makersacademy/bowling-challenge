@@ -5,6 +5,8 @@ $(document).ready(function(){
     game.roll(pins);
     if (game._frame.length == 2){
       game.endFrame();
+      game.countBonus();
+      game.newFrame();
     };
     frameScore();
     totalScore();
@@ -17,7 +19,7 @@ $(document).ready(function(){
     //   if (game.frameLog[i-'1'] === null ) {
     //     game.frameLog[i-'1'] = 0;
     // };
-    document.getElementById('frame'+i).innerHTML = game.frameLog[i-'1'];
+    document.getElementById('frame'+i).innerHTML = game.frameLog[i];
     };
     // frame1.innerHTML = game.frameLog['0'];
     // frame2.innerHTML = game.frameLog['1'];
@@ -35,16 +37,16 @@ $(document).ready(function(){
     // for (let i = 1 ; i < 11 ; i ++){
     // document.getElementById('marker'+i).innerHTML = game.frameScore[i+'1'];
     // };
-    marker0.innerHTML = game.frameScore['1'];
-    marker1.innerHTML = game.frameScore['2'];
-    marker2.innerHTML = game.frameScore['3'];
-    marker3.innerHTML = game.frameScore['4'];
-    marker4.innerHTML = game.frameScore['5'];
-    marker5.innerHTML = game.frameScore['6'];
-    marker6.innerHTML = game.frameScore['7'];
-    marker7.innerHTML = game.frameScore['8'];
-    marker8.innerHTML = game.frameScore['9'];
-    marker9.innerHTML = game.frameScore['10'];
+    marker1.innerHTML = game.frameScore['1'];
+    marker2.innerHTML = game.frameScore['2'];
+    marker3.innerHTML = game.frameScore['3'];
+    marker4.innerHTML = game.frameScore['4'];
+    marker5.innerHTML = game.frameScore['5'];
+    marker6.innerHTML = game.frameScore['6'];
+    marker7.innerHTML = game.frameScore['7'];
+    marker8.innerHTML = game.frameScore['8'];
+    marker9.innerHTML = game.frameScore['9'];
+    marker10.innerHTML = game.frameScore['10'];
 
   }
 

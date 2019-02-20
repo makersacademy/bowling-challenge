@@ -32,8 +32,6 @@ if(this.frameNumber < 10) {
 Game.prototype.endFrame = function () {
   this.frameLog.push(this._frame)
   console.log(this.frameLog);
-  // if(this.frameNumber >= 2 ) {
-  //   this.countBonus()
   //   console.log("After bonus  " + this.frameLog)
   // };
 
@@ -46,7 +44,7 @@ Game.prototype.endFrame = function () {
 };
 
 Game.prototype.roll = function (pins) {
-  if(pins > this.MAXIMUM_PINS) {
+  if(this._frame[0] + pins > this.MAXIMUM_PINS) {
     throw new Error ('You can only knock 10 pins in a roll.')
   }
   if(this._frame.length === 2 && this.frameNumber < 10) {

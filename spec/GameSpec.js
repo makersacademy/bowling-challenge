@@ -28,11 +28,12 @@ describe('Game', function() {
     game.endFrame();
     expect(game.frameLog[1]).toEqual([5,4]);
   });
-  //
-  // it('can only knock 10 pins maximum', function(){
-  //   expect(function(){game.roll(11)}).toThrowError('You can only knock 10 pins in a roll.')
-  // });
-  //
+
+  it('can only knock 10 pins maximum within a frame', function(){
+    game.roll(6);
+    expect(function(){game.roll(5)}).toThrowError('You can only knock 10 pins in a roll.')
+  });
+
   it('counts score after each roll', function (){
     game.roll(3);
     game.roll(4);

@@ -62,14 +62,14 @@ Game.prototype.roll = function (pins) {
 
 Game.prototype.countBonus = function () {
   // console.log("frame number: " + this.frameNumber)
-  var getBonus = this.frameScore;
+  var frameScore = this.frameScore;
   // console.log("before Bonus  " + this.frameLog)
 
   if (this._strikeBonus() === true){
-  getBonus[getBonus.length-2] += getBonus[getBonus.length];
+  frameScore[frameScore.length-2] += frameScore[frameScore.length-1];
   // console.log("Inside count Bonus  " + this.frameLog);
 } else if (this._spareBonus() === true) {
-  getBonus[getBonus.length-2] += this.frameLog[this.frameLog.length-1][0];
+  frameScore[frameScore.length-2] += this.frameLog[this.frameLog.length-1][0];
     // console.log("Inside count Bonus  " + this.frameLog);
 }
 };

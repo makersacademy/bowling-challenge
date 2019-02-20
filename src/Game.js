@@ -49,7 +49,11 @@ Game.prototype.roll = function (pins) {
   }
   if(this._frame.length === 2 && this.frameNumber < 10) {
     throw new Error('You have already rolled twice, please start a new frame.');
-  } else if (this._frame.length === 3 && this.frameNumber === 10) {
+  }
+  // if (this._frame){
+  //
+  // }
+    else if (this._frame.length === 3 && this.frameNumber === 10) {
     throw new Error('You can only roll three times on the last frame');
   }
   this._frame.push(pins)
@@ -87,4 +91,12 @@ Game.prototype._spareBonus = function () {
     return true
   }
   return false
+
+  // Game.prototype.newGame = function () {
+  //   this.frameNumber = 1
+  //   this._score = 0
+  //   this._frame = []
+  //   this.frameLog = [[0,0]]
+  //   this.frameScore = [0]
+  // }
 };

@@ -12,6 +12,24 @@ $('#frame-number').text(game.frameNumber);
       $('#frame-number').text(game.frameNumber);
 
     };
+    if (pins === 10 && frameNumber < 10) {
+      game.endFrame();
+      game.countBonus();
+      game.newFrame();
+    };
+    if (game.frameNumber===10) {
+      if (pins === 10){
+        if (game._frame.length == 3){
+          game.endFrame();
+          game.countBonus();
+      } else if (game._frame.length == 2){
+        game.endFrame();
+        game.countBonus();
+      }
+    };
+      frame10.innerHTML = game.frameLog[10];
+      marker10.innerHTML = game.frameScore[10];
+    };
     frameScore();
     totalScore();
     $('#total-score').text(game.getTotalScore());
@@ -28,5 +46,9 @@ $('#frame-number').text(game.frameNumber);
     document.getElementById('marker'+i).innerHTML = game.frameScore[i];
     };
   };
+
+  // $('#new-game').click(function(){
+  //   game.newGame();
+  // });
 
 });

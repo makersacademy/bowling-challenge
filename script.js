@@ -1,16 +1,20 @@
 $(document).ready(function(){
   var game = new Game();
 
+$('#frame-number').text(game.frameNumber);
+
   pinHit = function(pins){
     game.roll(pins);
     if (game._frame.length == 2){
       game.endFrame();
       game.countBonus();
       game.newFrame();
+      $('#frame-number').text(game.frameNumber);
+
     };
     frameScore();
     totalScore();
-    $('#total-score').text(game._score);
+    $('#total-score').text(game.getTotalScore());
   };
 
   frameScore = function() {
@@ -21,16 +25,6 @@ $(document).ready(function(){
     // };
     document.getElementById('frame'+i).innerHTML = game.frameLog[i];
     };
-    // frame1.innerHTML = game.frameLog['0'];
-    // frame2.innerHTML = game.frameLog['1'];
-    // frame3.innerHTML = game.frameLog['2'];
-    // frame4.innerHTML = game.frameLog['3'];
-    // frame5.innerHTML = game.frameLog['4'];
-    // frame6.innerHTML = game.frameLog['5'];
-    // frame7.innerHTML = game.frameLog['6'];
-    // frame8.innerHTML = game.frameLog['7'];
-    // frame9.innerHTML = game.frameLog['8'];
-    // frame10.innerHTML = game.frameLog['9'];
   };
 
   totalScore = function (){
@@ -50,9 +44,4 @@ $(document).ready(function(){
 
   }
 
-  $('#frame-number').text(game.frameNumber);
-  $('#new-frame').click(function(){
-    game.newFrame();
-    $('#frame-number').text(game.frameNumber)
-  });
 });

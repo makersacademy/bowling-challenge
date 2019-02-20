@@ -75,7 +75,7 @@ Game.prototype.countBonus = function () {
 };
 
 Game.prototype._strikeBonus = function () {
-// need to check for previous frame, to get bonus
+// check from previous frame, to get bonus
 var checker = this.frameLog;
   if(checker[this.frameNumber-1][0] === 10){
     return true

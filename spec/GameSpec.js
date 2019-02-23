@@ -60,12 +60,18 @@ describe('Game', function() {
     expect(function(){game.roll(2)}).toThrowError('You have already rolled twice, please start a new frame.')
   });
 
-  it('can only roll three times at last frame', function () {
+  it('can roll three times in last frame if it was a strike', function () {
     game.frameNumber = 10
-    game.roll(1)
+    game.roll(10)
     game.roll(2)
     game.roll(3)
-    expect(function(){game.roll(1)}).toThrowError('You can only roll three times on the last frame')
+    expect(function(){game.roll(1)}).toThrowError('You can only roll three times on the last frame if you had a strike')
+  });
+  it('cannot roll three times in last frame if no bonus', function () {
+    game.frameNumber = 10
+    game.roll(2)
+    game.roll(3)
+    expect(function(){game.roll(1)}).toThrowError('You cannot roll three times in the last frame if no bonus.')
   });
   //
   // it('save each frame ', function () {

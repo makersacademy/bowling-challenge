@@ -47,20 +47,33 @@ Game.prototype.roll = function (pins) {
   if(this._frame[0] + pins > this.MAXIMUM_PINS) {
     throw new Error ('You can only knock 10 pins in a roll.')
   }
-  if(this._frame.length === 2 && this.frameNumber < 10) {
+  if(this._frame.length === 2) {
     throw new Error('You have already rolled twice, please start a new frame.');
   }
-  // if (this._frame){
-  //
+  if (this._frame[0] === 10 && this.frameNumber === 10) {
+    return this.frameTen();
+  };
+  //   else if (this._frame.length === 3 && this.frameNumber === 10) {
+  //   throw new Error('You can only roll three times on the last frame');
   // }
-    else if (this._frame.length === 3 && this.frameNumber === 10) {
-    throw new Error('You can only roll three times on the last frame');
-  }
   this._frame.push(pins)
   this._score += pins
 
 };
 
+Game.prototype.frameTen = function (pins) {
+  if (this._frame[0] !== 10) {
+    if(this._frame.length === 2) {
+      throw new Error('You cannot roll three times in the last frame if no bonus.');
+    }
+  }
+  if(this._frame[0] + this._frame[1] + pins > this.MAXIMUM_PINS) {
+    throw new Error ('You can only knock 10 pins in a roll.')
+  }
+  this._frame.push(pins)
+  this._score += pins
+
+};
 
 Game.prototype.countBonus = function () {
   // console.log("frame number: " + this.frameNumber)

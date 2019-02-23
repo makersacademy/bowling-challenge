@@ -53,7 +53,7 @@ The user interface contains button
 <b> User Interface</b>
 Click the buttons for pins knocked down. Notice, you will not be able to knock down bore than 10 pins in the same frame. The frame number and total score will be displayed at the top of the scorecard, and new frame will be automatically generated after 2 rolls. The score card shows total score of the frame and the pins knocked down from each roll is showed on right-top corner. Bonus point will be updated to the corresponding frame score (one frame before). Refresh the page for a new game.
 
-![User Interface](./images/Screenshot_UI.png)
+![User Interface](./images/Screenshot_UI02.png)
 
 
 <b> Business Logic</b>

@@ -1,40 +1,31 @@
-
-Bowling Challenge
+Bowling Scorecard <a href="https://codeclimate.com/github/AlinaGoaga/BowlingScorecard/maintainability"><img src="https://api.codeclimate.com/v1/badges/ff3831ef5ce5bc3b8170/maintainability" /></a>
 =================
 
+## About the app
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
-
-## The Task
-
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
-
-Count and sum the scores of a bowling game for one player (in JavaScript).
+Counts and sums up the scores of a bowling game for one player. The user is the one inputing the rolls.
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by
+The Game class receives an array of scores containing all of the player's rolls. It then uses the class Frame to generate the individual frames and calculate the score for each, followed by the overall score.
 
-* Forking this repo
+## Testing and code quality checks
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+The app has been test driven using Jasmine. Both feature and unit tests are incorporated.
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+ESlint has been used for identifying and reporting on patterns found in ECMAScript/JavaScript code, with the goal of making code more consistent and avoiding bugs.  
 
-### Optional Extras
+![Tests Jasmine](https://github.com/AlinaGoaga/bowling-challenge/blob/master/BC_TestsPassing.jpeg)
 
-In any order you like:
+## Running the app and tests
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+App:
+1. clone the repo and cd into the project
+2. play around with it in the console
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+Tests:
+1. run open SpecRunner.html in the terminal
+2. a window will open containing the below
 
 ## Bowling — how does it work?
 
@@ -66,12 +57,3 @@ In the image below you can find some score examples.
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

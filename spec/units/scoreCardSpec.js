@@ -47,17 +47,8 @@ describe('ScoreCard', function(){
       }; }).toThrow('This game already has 10 frames');
     });
 
-    //function() { scorecard.addFrame(frame); } 
-
     it('Game is incomplete', function(){
       scorecard.addFrame(frame);
       expect(scorecard.isComplete()).toEqual(false);
     });
-
-    it('Calculates bonus for a strike', function(){
-      scorecard.addFrame([10]);
-      scorecard.addFrame([5, 2]);
-      expect(scorecard.currentScore()).toEqual(24);
-    })
-
 })

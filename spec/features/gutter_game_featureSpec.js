@@ -15,5 +15,4 @@ describe('Feature - Gutter Game', function(){
     expect(scorecard.isComplete()).toEqual(true);
     expect(scorecard.score).toEqual(0);
   });
-
 });

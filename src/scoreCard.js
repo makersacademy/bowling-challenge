@@ -4,7 +4,6 @@ class ScoreCard {
     this.score = 0;
   }
 
-
   addFrame(frame) {
     if (this.frameNumber() < 10 ) {
       this.frames.push(frame);
@@ -25,18 +24,17 @@ class ScoreCard {
         total += bowls;
       })
     })
-  return total;
+    return total;
   }
 
   isComplete() {
-    if (this.frames.length === 10 ) {
-      this.score = this.currentScore()
-      return true;
-    } else {
-      return false;
-    }
+    return this.frames.length === 10
   }
 
-  
+  finalScore() {
+    this.isComplete()
+    this.score = this.currentScore()
+    return this.score;
+  } 
 }
 

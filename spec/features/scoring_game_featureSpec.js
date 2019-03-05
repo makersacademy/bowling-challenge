@@ -12,8 +12,6 @@ describe('Feature - Scoring Game', function(){
     for (var i = 0; i < 10; i++) {
       scorecard.addFrame([5, 3]);
     };
-    expect(scorecard.isComplete()).toEqual(true);
-    expect(scorecard.score).toEqual(80);
+    expect(scorecard.finalScore()).toEqual(80);
   });
-
 });

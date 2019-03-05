@@ -23,19 +23,11 @@ class Frame {
   }
 
   isAStrike() {
-    if (this.bowls[0] === 10) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.bowls[0] === 10
   }
 
   isASpare() {
-    if (this.frameScore() === 10 && this.bowls.length === 2) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.frameScore() === 10 && this.bowls.length === 2
   }
 
   firstBowl() {

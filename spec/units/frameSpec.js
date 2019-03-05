@@ -6,11 +6,6 @@ describe('Frame', function(){
   beforeEach( () => {
     frame = new Frame(0);
     frameX = new Frame(10)
-    //bowl = jasmine.createSpy('bowl')
-  });
-
-  it('Make a new instance of Frame', function(){
-    expect(frame instanceof Frame).toBeTruthy();
   });
 
   it('Starts with first bowl score', function(){
@@ -51,8 +46,5 @@ describe('Frame', function(){
   it('Returns true if Spare Frame', function(){
     frame.addBowl(10);
     expect(frame.isASpare()).toEqual(true)
-  })
-
-
-  
+  }) 
 })

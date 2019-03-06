@@ -20,7 +20,7 @@ class Game {
         totalScore += this.scoreNonFirstRoll(i)
       }
       else {
-        totalScore += this.frameList[i].scoreroll1() + this.frameList[i].scoreroll2();
+        totalScore += this.scoreFirstRoll(i)
       }
       if (i>1) {
         if(this.frameList[i-1].scoreroll1() == 10 && this.frameList[i-2].scoreroll1() == 10)  {
@@ -41,5 +41,9 @@ class Game {
     else {
       return this.frameList[i].scoreroll1() + this.frameList[i].scoreroll2() +  this.frameList[i].scoreroll3();
     }
+  }
+
+  scoreFirstRoll(i) {
+    return this.frameList[i].scoreroll1() + this.frameList[i].scoreroll2();
   }
 }

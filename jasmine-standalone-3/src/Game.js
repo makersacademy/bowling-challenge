@@ -17,21 +17,19 @@ class Game {
     var arrayLength = this.frameList.length;
     for (var i = 0; i < arrayLength; i++) {
       if (i > 0) {
-        totalScore += this.scoreNonFirstRoll(i)
+        totalScore += this.scoreNonFirstFrame(i)
       }
       else {
-        totalScore += this.scoreFirstRoll(i)
+        totalScore += this.scoreFirstFrame(i)
       }
       if (i>1) {
-        if(this.frameList[i-1].scoreroll1() == 10 && this.frameList[i-2].scoreroll1() == 10)  {
-          totalScore += this.frameList[i].scoreroll1()
-        }
+        totalScore += this.addScoreFromThirdFrame(i)
       }
     }
     return totalScore
   }
 
-  scoreNonFirstRoll(i) {
+  scoreNonFirstFrame(i) {
     if(this.frameList[i-1].scoreroll1() == 10) {
       return 2*this.frameList[i].scoreroll1() + 2*this.frameList[i].scoreroll2() + this.frameList[i].scoreroll3();
     }
@@ -43,7 +41,15 @@ class Game {
     }
   }
 
-  scoreFirstRoll(i) {
+  scoreFirstFrame(i) {
     return this.frameList[i].scoreroll1() + this.frameList[i].scoreroll2();
+  }
+
+  addScoreFromThirdFrame(i) {
+    if(this.frameList[i-1].scoreroll1() == 10 && this.frameList[i-2].scoreroll1() == 10)  {
+      return this.frameList[i].scoreroll1()
+    } else {
+      return 0
+    }
   }
 }

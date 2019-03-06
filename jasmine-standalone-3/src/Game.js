@@ -1,53 +1,41 @@
-function Game() {
+class Game {
 
-  var  framenumber = 0;
-
-  var  framelist  = [];
-
-  this.framenumber = function() {
-    return framenumber;
+  constructor() {
+    this.frameNumber = 0
+    this.frameList = []
   }
 
-  this.add_frame = function(frame = new Frame(framenumber)) {
-
-    if (framenumber < 10) {
-    framelist.push(frame)
-    framenumber += 1
+  addFrame(frame = new Frame(this.frameNumber)) {
+    if (this.frameNumber < 10) {
+    this.frameList.push(frame)
+    this.frameNumber += 1
     }
   }
 
-  this.framelist = function() {
-    return framelist
-  }
-
-  this.total_score = function() {
-    var score = 0;
-    var arrayLength = framelist.length;
+  totalScore()  {
+    this.totalscore = 0;
+    var arrayLength = this.frameList.length;
     for (var i = 0; i < arrayLength; i++) {
       if (i > 0) {
-        if(framelist[i-1].scoreroll1() == 10) {
-          score += 2*framelist[i].scoreroll1() + 2*framelist[i].scoreroll2() + framelist[i].scoreroll3();
+        if(this.frameList[i-1].scoreroll1() == 10) {
+          this.totalscore += 2*this.frameList[i].scoreroll1() + 2*this.frameList[i].scoreroll2() + this.frameList[i].scoreroll3();
         }
-        else if(framelist[i-1].scoreroll1() + framelist[i-1].scoreroll2()== 10) {
-          score += 2*framelist[i].scoreroll1() + framelist[i].scoreroll2() + framelist[i].scoreroll3();
+        else if(this.frameList[i-1].scoreroll1() + this.frameList[i-1].scoreroll2()== 10) {
+          this.totalscore += 2*this.frameList[i].scoreroll1() + this.frameList[i].scoreroll2() + this.frameList[i].scoreroll3();
         }
         else {
-          score += framelist[i].scoreroll1() + framelist[i].scoreroll2() +  framelist[i].scoreroll3();
+          this.totalscore += this.frameList[i].scoreroll1() + this.frameList[i].scoreroll2() +  this.frameList[i].scoreroll3();
         }
       }
       else {
-        score += framelist[i].scoreroll1() + framelist[i].scoreroll2();
+        this.totalscore += this.frameList[i].scoreroll1() + this.frameList[i].scoreroll2();
       }
       if (i>1) {
-        if(framelist[i-1].scoreroll1() == 10 && framelist[i-2].scoreroll1() == 10)  {
-          score += framelist[i].scoreroll1()
+        if(this.frameList[i-1].scoreroll1() == 10 && this.frameList[i-2].scoreroll1() == 10)  {
+          this.totalscore += this.frameList[i].scoreroll1()
         }
       }
     }
-    return score
+    return this.totalscore
   }
-
-  // this._scoreFirstTurn = function() {
-  //   score += framelist[i].scoreroll1() + framelist[i].scoreroll2();
-  // }
 }

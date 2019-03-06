@@ -8,10 +8,9 @@ function Game() {
     return framenumber;
   }
 
-  this.add_frame = function() {
+  this.add_frame = function(frame = new Frame(framenumber)) {
 
     if (framenumber < 10) {
-    frame = new Frame(framenumber)
     framelist.push(frame)
     framenumber += 1
     }
@@ -27,10 +26,10 @@ function Game() {
     for (var i = 0; i < arrayLength; i++) {
       if (i > 0) {
         if(framelist[i-1].scoreroll1() == 10) {
-          score += 2*framelist[i].scoreroll1() + 2*framelist[i].scoreroll2();
+          score += 2*framelist[i].scoreroll1() + 2*framelist[i].scoreroll2() + framelist[i].scoreroll3();
         }
         else if(framelist[i-1].scoreroll1() + framelist[i-1].scoreroll2()== 10) {
-          score += 2*framelist[i].scoreroll1() + framelist[i].scoreroll2();
+          score += 2*framelist[i].scoreroll1() + framelist[i].scoreroll2() + framelist[i].scoreroll3();
         }
         else {
           score += framelist[i].scoreroll1() + framelist[i].scoreroll2() +  framelist[i].scoreroll3();
@@ -47,4 +46,8 @@ function Game() {
     }
     return score
   }
+
+  // this._scoreFirstTurn = function() {
+  //   score += framelist[i].scoreroll1() + framelist[i].scoreroll2();
+  // }
 }

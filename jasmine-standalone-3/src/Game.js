@@ -46,10 +46,14 @@ class Game {
   }
 
   addScoreFromThirdFrame(i) {
-    if(this.frameList[i-1].scoreroll1() == 10 && this.frameList[i-2].scoreroll1() == 10)  {
+    if(this.twoStrikesInRow(i))  {
       return this.frameList[i].scoreroll1()
     } else {
       return 0
     }
+  }
+
+  twoStrikesInRow(i) {
+    return this.frameList[i-1].scoreroll1() == 10 && this.frameList[i-2].scoreroll1() == 10
   }
 }

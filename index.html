@@ -7,53 +7,33 @@
     <title>Bowling</title>
   </head>
   <body>
-    hello world
+    hello bowling world
 
   <div class="container">
-    <div id="headerRow"class="row">
-      <div class="col-sm">
-        Turn
-      </div>
-      <div class="col-sm">
-        First Roll
-      </div>
-      <div class="col-sm">
-        Second Roll
-      </div>
-      <div class="col-sm">
-        Extras
-      </div>
-    </div>
-
-    <div id="row1" class="row">
-      <div class="col-sm">
-        1
-      </div>
-      <div class="col-sm">
-        <input type="text" id="one-first">
-      </div>
-      <div class="col-sm">
-        <input type="text" id="one-second">
-      </div>
-      <div class="col-sm">
-
-      </div>
-    </div>
-
-    <div id="row2" class="row">
-      <div class="col-sm">
-        2
-      </div>
-      <div class="col-sm">
-        <input type="text" id="two-first">
-      </div>
-      <div class="col-sm">
-        <input type="text" id="two-second">
-      </div>
-      <div class="col-sm">
-
-      </div>
-    </div>
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Turn</th>
+          <th scope="col">First</th>
+          <th scope="col">Second</th>
+          <th scope="col">Extra</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

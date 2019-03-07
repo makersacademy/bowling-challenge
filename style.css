@@ -11,3 +11,7 @@ input[type="text"]{
   text-align: center;
   size: 10;
 }
+
+table[class="table table-bordered table-hover"]{
+  text-align: center;
+}

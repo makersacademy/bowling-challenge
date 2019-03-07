@@ -5,4 +5,16 @@ describe('Frame', function() {
     expect(frame.score).toEqual(8);
   });
 
+  it('scores 10 for strike', function() {
+    var frame = new Frame(10,0);
+    expect(frame.isAStrike).toBe(true);
+    expect(frame.score).toEqual(10);
+  });
+
+  it('scores 10 for a spare', function() {
+    var frame = new Frame(5,5);
+    expect(frame.isASpare).toBe(true);
+    expect(frame.score).toEqual(10);
+  });
+
 });

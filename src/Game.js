@@ -1,12 +1,19 @@
 function Game() {
+
   this.score = 0;
-  this.frames = Array(11);
+  this.frames = Array();
 }
 
-Game.prototype.scoreFrame = function() {
-  var total = 0;
+Game.prototype.addFrame = function(firstRoll, secondRoll) {
+  
+  var frame = new Frame(firstRoll, secondRoll);
 
-  for(var frame = 0; frame <= frames.length; frame++) {
-    total += this.frames[frame];
-  }
+  this.frames.push(frame);
+}
+
+Game.prototype.scoreGame = function() {
+
+  this.frames.forEach(function(frame) {
+    this.score += frame.score;
+  });
 }

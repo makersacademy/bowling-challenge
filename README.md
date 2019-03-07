@@ -2,8 +2,8 @@
 
 // There are 3 elements to this challenge.
 
-// The first is how to store the data.
-// There are 10 frames so my data structure should have 10 elements
+/ The first is how to store the data.
+/ There are 10 frames so my data structure should have 10 elements
 // Each frame has 2 possible turns, with the 10th turn having an additional option of a 3rd turn.
 // Each frame has 10 pins so the data structure should hold the number of pins knocked down on
 // each of the available turns.

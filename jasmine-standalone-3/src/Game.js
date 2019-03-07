@@ -31,10 +31,10 @@ class Game {
 
   scoreNonFirstFrame(i) {
     if(this.strikeBefore(i)) {
-      return this.strikedoubleScore(i)
+      return this.strikeDoubleScore(i)
     }
     else if(this.halfStrikeBefore(i)) {
-      return 2*this.frameList[i].scoreroll1() + this.frameList[i].scoreroll2() + this.frameList[i].scoreroll3();
+      return this.halfStrikeDoubleScore(i)
     }
     else {
       return this.frameList[i].scoreroll1() + this.frameList[i].scoreroll2() +  this.frameList[i].scoreroll3();
@@ -65,7 +65,11 @@ class Game {
     return this.frameList[i-1].scoreroll1() + this.frameList[i-1].scoreroll2()== 10
   }
 
-  strikedoubleScore(i) {
+  strikeDoubleScore(i) {
     return 2*this.frameList[i].scoreroll1() + 2*this.frameList[i].scoreroll2() + this.frameList[i].scoreroll3();
+  }
+
+  halfStrikeDoubleScore(i) {
+    return 2*this.frameList[i].scoreroll1() + this.frameList[i].scoreroll2() + this.frameList[i].scoreroll3();
   }
 }

@@ -13,11 +13,11 @@
  - a flag if it is a strike.
  - This should be populated as the game unfolds and the total score calculated
 
-// The second element of the challenge is the rules of the game
-// Strike: If all 10 pins are knocked down in the first turn then it is a strike.
-//  There is no second turn and the strike flag is set
-//  Unless this is the 10th turn in which case 2 further turns are allowed
-// Spare: If all 10 pins are knocked down in the 2 turns then the spare flag is set
+## The second element of the challenge is the rules of the game
+- Strike: If all 10 pins are knocked down in the first turn then it is a strike.
+  - There is no second turn and the strike flag is set
+  - Unless this is the 10th turn in which case 2 further turns are allowed
+- Spare: If all 10 pins are knocked down in the 2 turns then the spare flag is set
 
 // The third element of the challenge is how to calculate the score
 // The score is calculated cumulatively based on the number of pins that have been knocked down.

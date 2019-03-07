@@ -49,21 +49,29 @@ class Frame {
     if(this.rollnumber== 0 && rollscore == 10) {
       this.addRollStrike(rollscore)
     } else if(this.rollnumber == 0) {
-      this.scoreroll1 = rollscore
-      this.rollnumber += 1;
+      this.addFirstRoll(rollscore)
     } else if(this.rollnumber == 1) {
-      this.scoreroll2 = rollscore
-      this.rollnumber += 1;
-    }
-
-    else {
+      this.addSecondRoll(rollscore)
+    } else {
       return "Frame Complete"
     }
   }
 
-  addScoreStrike(rollscore) {
+  addRollStrike(rollscore) {
     this.scoreroll1 = rollscore
     this.rollnumber += 2;
   }
+
+  addFirstRoll(rollscore) {
+    this.scoreroll1 = rollscore
+    this.rollnumber += 1;
+  }
+
+  addSecondRoll(rollscore) {
+    this.scoreroll2 = rollscore
+    this.rollnumber += 1;
+  }
+
+
 
 }

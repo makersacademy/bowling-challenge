@@ -46,7 +46,7 @@ class Frame {
   }
 
   notLastFrame(rollscore) {
-    if(this.rollnumber== 0 && rollscore == 10) {
+    if(this.strike(rollscore)) {
       this.addRollStrike(rollscore)
     } else if(this.rollnumber == 0) {
       this.addFirstRoll(rollscore)
@@ -55,6 +55,10 @@ class Frame {
     } else {
       return "Frame Complete"
     }
+  }
+
+  strike(rollscore) {
+    return this.rollnumber== 0 && rollscore == 10
   }
 
   addRollStrike(rollscore) {

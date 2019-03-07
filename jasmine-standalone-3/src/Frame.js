@@ -21,26 +21,12 @@ class Frame {
 
   lastFrame(rollscore) {
     if(this.rollnumber == 0) {
-      this.scoreroll1 = rollscore;
-      this.rollnumber += 1;
-    }
-
-    else if(this.rollnumber == 1) {
-      this.scoreroll2 = rollscore;
-      this.rollnumber += 1;
-    }
-
-    else if(this.rollnumber == 2 && this.scoreroll1 == 10 && this.scoreroll2 == 10) {
-      this.scoreroll3 = rollscore;
-      this.rollnumber += 1;
-    }
-
-    else if(this.rollnumber == 2 && (this.scoreroll1 + this.scoreroll2) == 10 && !(this.scoreroll1 == 10)) {
-      this.scoreroll3 = rollscore;
-      this.rollnumber += 1;
-    }
-
-    else {
+      this.addFirstRoll(rollscore)
+    } else if(this.rollnumber == 1) {
+      this.addSecondRoll(rollscore)
+    } else if(this.twoFinalStrikes() || this.finalHalfStrike()) {
+      this.addThirdRoll(rollscore)
+    } else {
       return "Frame Complete"
     }
   }
@@ -61,6 +47,14 @@ class Frame {
     return this.rollnumber== 0 && rollscore == 10
   }
 
+  twoFinalStrikes() {
+    return this.rollnumber == 2 && this.scoreroll1 == 10 && this.scoreroll2 == 10
+  }
+
+  finalHalfStrike() {
+    return this.rollnumber == 2 && (this.scoreroll1 + this.scoreroll2) == 10
+  }
+
   addRollStrike(rollscore) {
     this.scoreroll1 = rollscore
     this.rollnumber += 2;
@@ -76,6 +70,10 @@ class Frame {
     this.rollnumber += 1;
   }
 
+  addThirdRoll(rollscore) {
+    this.scoreroll3 = rollscore;
+    this.rollnumber += 1;
+  }
 
 
 }

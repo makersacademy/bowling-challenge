@@ -33,7 +33,7 @@ class Game {
     if(this.strikeBefore(i)) {
       return 2*this.frameList[i].scoreroll1() + 2*this.frameList[i].scoreroll2() + this.frameList[i].scoreroll3();
     }
-    else if(this.frameList[i-1].scoreroll1() + this.frameList[i-1].scoreroll2()== 10) {
+    else if(this.halfStrikeBefore(i)) {
       return 2*this.frameList[i].scoreroll1() + this.frameList[i].scoreroll2() + this.frameList[i].scoreroll3();
     }
     else {
@@ -59,5 +59,9 @@ class Game {
 
   strikeBefore(i) {
     return this.frameList[i-1].scoreroll1() == 10
+  }
+
+  halfStrikeBefore(i) {
+    return this.frameList[i-1].scoreroll1() + this.frameList[i-1].scoreroll2()== 10
   }
 }

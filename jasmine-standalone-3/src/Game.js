@@ -30,7 +30,7 @@ class Game {
   }
 
   scoreNonFirstFrame(i) {
-    if(this.frameList[i-1].scoreroll1() == 10) {
+    if(this.strikeBefore(i)) {
       return 2*this.frameList[i].scoreroll1() + 2*this.frameList[i].scoreroll2() + this.frameList[i].scoreroll3();
     }
     else if(this.frameList[i-1].scoreroll1() + this.frameList[i-1].scoreroll2()== 10) {
@@ -55,5 +55,9 @@ class Game {
 
   twoStrikesInRow(i) {
     return this.frameList[i-1].scoreroll1() == 10 && this.frameList[i-2].scoreroll1() == 10
+  }
+
+  strikeBefore(i) {
+    return this.frameList[i-1].scoreroll1() == 10
   }
 }

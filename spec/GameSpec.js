@@ -6,8 +6,8 @@ describe('Game', function() {
     game = new Game;
   });
 
-  it('is created with 10 empty frames', function() {
-    expect(game.frames.length).toEqual(10);
+  it('is created with 11 empty frames (10 regular, one bonus)', function() {
+    expect(game.frames.length).toEqual(11);
   });
 
   it('scores a gutter game', function() {

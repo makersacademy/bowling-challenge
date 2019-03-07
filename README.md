@@ -22,8 +22,8 @@
 ## The third element of the challenge is how to calculate the score
 - The score is calculated cumulatively based on the number of pins that have been knocked down.
 - There are some additional rules that affect the score
- - If the player has a strike then the next 2 turns are counted twice
- - If the player scores a spare then the next turn is counted twice
- - If the player scores 12 strikes then their score is 300
+  - If the player has a strike then the next 2 turns are counted twice
+  - If the player scores a spare then the next turn is counted twice
+  - If the player scores 12 strikes then their score is 300
 
 Note that a score of 0 is a GUTTER score and a score of 300 is a PERFECT score

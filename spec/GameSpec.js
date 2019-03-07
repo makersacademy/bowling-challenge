@@ -10,4 +10,20 @@ describe('Game', function() {
     expect(game.frames.length).toEqual(10);
   });
 
+  it('scores a gutter game', function() {
+    game.frames = [
+      [0],[0],
+      [0],[0],
+      [0],[0],
+      [0],[0],
+      [0],[0],
+      [0],[0],
+      [0],[0],
+      [0],[0],
+      [0],[0],
+      [0],[0]
+    ]
+    expect(game.score).toEqual(0);
+  });
+
 });

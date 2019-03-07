@@ -19,12 +19,11 @@
   - Unless this is the 10th turn in which case 2 further turns are allowed
 - Spare: If all 10 pins are knocked down in the 2 turns then the spare flag is set
 
-// The third element of the challenge is how to calculate the score
-// The score is calculated cumulatively based on the number of pins that have been knocked down.
-// There are some additional rules that affect the score
-// 1. If the player has a strike then the next 2 turns are counted twice
-// 2. If the player scores a spare then the next turn is counted twice
-// 3. If the player scores 12 strikes then their score is 300
+## The third element of the challenge is how to calculate the score
+- The score is calculated cumulatively based on the number of pins that have been knocked down.
+- There are some additional rules that affect the score
+ - If the player has a strike then the next 2 turns are counted twice
+ - If the player scores a spare then the next turn is counted twice
+ - If the player scores 12 strikes then their score is 300
 
-// Note that a score of 0 is a GUTTER score 
-// and a score of 300 is a PERFECT score
+Note that a score of 0 is a GUTTER score and a score of 300 is a PERFECT score

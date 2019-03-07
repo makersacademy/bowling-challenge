@@ -1,68 +1,41 @@
-function Frame(framenumber) {
-  this.framenumber = framenumber
+class Frame {
 
-  var rollnumber = 0
-
-  this._addrollnumber = function() {
-    rollnumber += 1;
+  constructor(framenumber) {
+    this.framenumber = framenumber
+    this.scoreroll1 = 0
+    this.scoreroll2 = 0
+    this.scoreroll3 = 0
+    this.rollnumber = 0
   }
 
-  this.rollnumber = function() {
-   return rollnumber;
-  }
+  // var rollnumber = 0
+  //
+  // this._addrollnumber = function() {
+  //   rollnumber += 1;
+  // }
 
-  var scoreroll1 = 0
+  addroll(rollscore) {
 
-  var scoreroll2 = 0
+    if(this.framenumber == 9) {
 
-  var scoreroll3 = 0
-
-  this._addscoreroll1 = function(rollscore) {
-    scoreroll1 = rollscore;
-  }
-
-  this._addscoreroll2 = function(rollscore) {
-    scoreroll2 = rollscore;
-  }
-
-  this._addscoreroll3 = function(rollscore) {
-    scoreroll3 = rollscore;
-  }
-
-  this.scoreroll1 = function() {
-    return scoreroll1;
-  }
-
-  this.scoreroll2 = function() {
-    return scoreroll2;
-  }
-
-  this.scoreroll3 = function() {
-    return scoreroll3;
-  }
-
-  this.addroll = function(rollscore) {
-
-    if(framenumber == 9) {
-
-      if(rollnumber == 0) {
-        this._addscoreroll1(rollscore);
-        this._addrollnumber();
+      if(this.rollnumber == 0) {
+        this.scoreroll1 = rollscore;
+        this.rollnumber += 1;
       }
 
-      else if(rollnumber == 1) {
-        this._addscoreroll2(rollscore);
-        this._addrollnumber();
+      else if(this.rollnumber == 1) {
+        this.scoreroll2 = rollscore;
+        this.rollnumber += 1;
       }
 
-      else if(rollnumber == 2 && scoreroll1 == 10 && scoreroll2 == 10) {
-        this._addscoreroll3(rollscore);
-        this._addrollnumber();
+      else if(this.rollnumber == 2 && this.scoreroll1 == 10 && this.scoreroll2 == 10) {
+        this.scoreroll3 = rollscore;
+        this.rollnumber += 1;
       }
 
-      else if(rollnumber == 2 && (scoreroll1 + scoreroll2) == 10 && !(scoreroll1 == 10)) {
-        this._addscoreroll3(rollscore);
-        this._addrollnumber();
+      else if(this.rollnumber == 2 && (this.scoreroll1 + this.scoreroll2) == 10 && !(this.scoreroll1 == 10)) {
+        this.scoreroll3 = rollscore;
+        this.rollnumber += 1;
       }
 
       else {
@@ -71,20 +44,19 @@ function Frame(framenumber) {
 
     }
 
-    else if(rollnumber== 0 && rollscore == 10) {
-      this._addscoreroll1(rollscore);
-      this._addrollnumber();
-      this._addrollnumber();
+    else if(this.rollnumber== 0 && rollscore == 10) {
+      this.scoreroll1 = rollscore
+      this.rollnumber += 2;
     }
 
-    else if(rollnumber == 0) {
-      this._addscoreroll1(rollscore);
-      this._addrollnumber();
+    else if(this.rollnumber == 0) {
+      this.scoreroll1 = rollscore
+      this.rollnumber += 1;
     }
 
-    else if(rollnumber == 1) {
-      this._addscoreroll2(rollscore);
-      this._addrollnumber();
+    else if(this.rollnumber == 1) {
+      this.scoreroll2 = rollscore
+      this.rollnumber += 1;
     }
 
     else {

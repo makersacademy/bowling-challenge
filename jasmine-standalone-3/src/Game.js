@@ -42,38 +42,38 @@ class Game {
   }
 
   _scoreFirstFrame(i) {
-    return this.frameList[i].scoreroll1() + this.frameList[i].scoreroll2();
+    return this.frameList[i].scoreroll1 + this.frameList[i].scoreroll2;
   }
 
   _addScoreFromThirdFrame(i) {
     if(this._twoStrikesInRow(i))  {
-      return this.frameList[i].scoreroll1()
+      return this.frameList[i].scoreroll1
     } else {
       return 0
     }
   }
 
   _twoStrikesInRow(i) {
-    return this.frameList[i-1].scoreroll1() == 10 && this.frameList[i-2].scoreroll1() == 10
+    return this.frameList[i-1].scoreroll1 == 10 && this.frameList[i-2].scoreroll1 == 10
   }
 
   _strikeBefore(i) {
-    return this.frameList[i-1].scoreroll1() == 10
+    return this.frameList[i-1].scoreroll1 == 10
   }
 
   _halfStrikeBefore(i) {
-    return this.frameList[i-1].scoreroll1() + this.frameList[i-1].scoreroll2()== 10
+    return this.frameList[i-1].scoreroll1 + this.frameList[i-1].scoreroll2== 10
   }
 
   _strikeDoubleScore(i) {
-    return 2*this.frameList[i].scoreroll1() + 2*this.frameList[i].scoreroll2() + this.frameList[i].scoreroll3();
+    return 2*this.frameList[i].scoreroll1 + 2*this.frameList[i].scoreroll2 + this.frameList[i].scoreroll3;
   }
 
   _halfStrikeDoubleScore(i) {
-    return 2*this.frameList[i].scoreroll1() + this.frameList[i].scoreroll2() + this.frameList[i].scoreroll3();
+    return 2*this.frameList[i].scoreroll1 + this.frameList[i].scoreroll2 + this.frameList[i].scoreroll3;
   }
 
   _noStrikeScore(i) {
-    return this.frameList[i].scoreroll1() + this.frameList[i].scoreroll2() +  this.frameList[i].scoreroll3();
+    return this.frameList[i].scoreroll1 + this.frameList[i].scoreroll2 +  this.frameList[i].scoreroll3;
   }
 }

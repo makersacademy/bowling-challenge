@@ -1,17 +1,17 @@
 # Bowling Challenge
 
-- There are 3 elements to this challenge.
+## There are 3 elements to this challenge.
 
 - The first is how to store the data.
-/ There are 10 frames so my data structure should have 10 elements
-// Each frame has 2 possible turns, with the 10th turn having an additional option of a 3rd turn.
-// Each frame has 10 pins so the data structure should hold the number of pins knocked down on
-// each of the available turns.
-// Each frame also has a number of states assigned depending on the number of pins knocked down.
-// The data structure should be an array of 10 items, one for each turn
-// The items in the array are the first, second and third turns, a flag if it is a spare and
-// a flag if it is a strike.
-// This should be populated as the game unfolds and the total score calculated
+  There are 10 frames so my data structure should have 10 elements
+  Each frame has 2 possible turns, with the 10th turn having an additional option of a 3rd turn.
+  Each frame has 10 pins so the data structure should hold the number of pins knocked down on
+  each of the available turns.
+  Each frame also has a number of states assigned depending on the number of pins knocked down.
+  The data structure should be an array of 10 items, one for each turn
+  The items in the array are the first, second and third turns, a flag if it is a spare and
+  a flag if it is a strike.
+  This should be populated as the game unfolds and the total score calculated
 
 // The second element of the challenge is the rules of the game
 // Strike: If all 10 pins are knocked down in the first turn then it is a strike.

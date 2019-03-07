@@ -47,15 +47,11 @@ class Frame {
 
   notLastFrame(rollscore) {
     if(this.rollnumber== 0 && rollscore == 10) {
-      this.addScoreStrike(rollscore)
-    }
-
-    else if(this.rollnumber == 0) {
+      this.addRollStrike(rollscore)
+    } else if(this.rollnumber == 0) {
       this.scoreroll1 = rollscore
       this.rollnumber += 1;
-    }
-
-    else if(this.rollnumber == 1) {
+    } else if(this.rollnumber == 1) {
       this.scoreroll2 = rollscore
       this.rollnumber += 1;
     }

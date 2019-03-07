@@ -17,4 +17,9 @@ describe('Frame', function() {
     expect(frame.score).toEqual(10);
   });
 
+  it('scores zero for two gutter balls (0,0)', function() {
+    var frame = new Frame(0,0);
+    expect(frame.score).toEqual(0);
+  });
+
 });

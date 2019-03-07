@@ -17,59 +17,63 @@ class Game {
     var arrayLength = this.frameList.length;
     for (var i = 0; i < arrayLength; i++) {
       if (i > 0) {
-        totalScore += this.scoreNonFirstFrame(i)
+        totalScore += this._scoreNonFirstFrame(i)
       }
       else {
-        totalScore += this.scoreFirstFrame(i)
+        totalScore += this._scoreFirstFrame(i)
       }
       if (i>1) {
-        totalScore += this.addScoreFromThirdFrame(i)
+        totalScore += this._addScoreFromThirdFrame(i)
       }
     }
     return totalScore
   }
 
-  scoreNonFirstFrame(i) {
-    if(this.strikeBefore(i)) {
-      return this.strikeDoubleScore(i)
+  _scoreNonFirstFrame(i) {
+    if(this._strikeBefore(i)) {
+      return this._strikeDoubleScore(i)
     }
-    else if(this.halfStrikeBefore(i)) {
-      return this.halfStrikeDoubleScore(i)
+    else if(this._halfStrikeBefore(i)) {
+      return this._halfStrikeDoubleScore(i)
     }
     else {
-      return this.frameList[i].scoreroll1() + this.frameList[i].scoreroll2() +  this.frameList[i].scoreroll3();
+      return this._noStrikeScore(i)
     }
   }
 
-  scoreFirstFrame(i) {
+  _scoreFirstFrame(i) {
     return this.frameList[i].scoreroll1() + this.frameList[i].scoreroll2();
   }
 
-  addScoreFromThirdFrame(i) {
-    if(this.twoStrikesInRow(i))  {
+  _addScoreFromThirdFrame(i) {
+    if(this._twoStrikesInRow(i))  {
       return this.frameList[i].scoreroll1()
     } else {
       return 0
     }
   }
 
-  twoStrikesInRow(i) {
+  _twoStrikesInRow(i) {
     return this.frameList[i-1].scoreroll1() == 10 && this.frameList[i-2].scoreroll1() == 10
   }
 
-  strikeBefore(i) {
+  _strikeBefore(i) {
     return this.frameList[i-1].scoreroll1() == 10
   }
 
-  halfStrikeBefore(i) {
+  _halfStrikeBefore(i) {
     return this.frameList[i-1].scoreroll1() + this.frameList[i-1].scoreroll2()== 10
   }
 
-  strikeDoubleScore(i) {
+  _strikeDoubleScore(i) {
     return 2*this.frameList[i].scoreroll1() + 2*this.frameList[i].scoreroll2() + this.frameList[i].scoreroll3();
   }
 
-  halfStrikeDoubleScore(i) {
+  _halfStrikeDoubleScore(i) {
     return 2*this.frameList[i].scoreroll1() + this.frameList[i].scoreroll2() + this.frameList[i].scoreroll3();
+  }
+
+  _noStrikeScore(i) {
+    return this.frameList[i].scoreroll1() + this.frameList[i].scoreroll2() +  this.frameList[i].scoreroll3();
   }
 }

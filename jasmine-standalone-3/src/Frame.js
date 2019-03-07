@@ -47,8 +47,7 @@ class Frame {
 
   notLastFrame(rollscore) {
     if(this.rollnumber== 0 && rollscore == 10) {
-      this.scoreroll1 = rollscore
-      this.rollnumber += 2;
+      this.addScoreStrike(rollscore)
     }
 
     else if(this.rollnumber == 0) {
@@ -64,6 +63,11 @@ class Frame {
     else {
       return "Frame Complete"
     }
+  }
+
+  addScoreStrike(rollscore) {
+    this.scoreroll1 = rollscore
+    this.rollnumber += 2;
   }
 
 }

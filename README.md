@@ -1,6 +1,6 @@
-# Bowling Challenge
+## Bowling Challenge
 
-## There are 3 elements to this challenge.
+# There are 3 elements to this challenge.
 
 # The first is how to store the data.
  - There are 10 frames so my data structure should have 10 elements

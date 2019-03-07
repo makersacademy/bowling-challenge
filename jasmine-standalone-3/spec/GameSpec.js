@@ -21,7 +21,6 @@ describe('Game', function() {
     });
 
     it ("adds frame to frame list", function() {
-      console.log(game.frameList)
       expect(game.frameList[0].framenumber).toBe(0)
     });
 

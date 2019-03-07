@@ -10,5 +10,10 @@ describe("Scorer", function() {
     expect(scorer.rolls.one.first).toEqual(null);
   });
 
+  it("stores roll values", function() {
+    scorer.score("one","first",5)
+    expect(scorer.rolls.one.first).toEqual(5)
+  })
+
 
 });

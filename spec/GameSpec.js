@@ -12,6 +12,13 @@ describe('Game', function() {
     expect(game.frames.length).toEqual(1);
   });
 
+  it('adds the score for the next roll for a spare', function() {
+    game.addFrame(5,5); // spare
+    game.addFrame(3,0);
+    game.scoreGame();
+    expect(game.score).toEqual(16);
+  });
+
   it('scores a gutter game (no points scored at all) as zero', function() {
     for(var i = 0; i <= 9; i++) {
       game.addFrame(0,0);

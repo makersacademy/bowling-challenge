@@ -1,4 +1,22 @@
+This is the Makers week 5 weekend challenge (details below)
 
+Requirements
+------------
+* The game is played by 1 player.
+* The player keys the number of pins knocked down after each bowl.
+* The game consists of 10 frames.
+* The player may bowl 1 or 2 bowls for each frame, depending on whether the first bowl is a strike.
+* The score for each frame is calculated from 4 parts: the 1st bowl, the 2nd bowl, bonus 1 and bonus 2.
+* If the player bowls a strike (10) on the first bowl, then then 2nd bowl is not used but both bonus 1 and bonus 2 will be included in the total score for the frame.
+* If the player does not bowl a strike on the first bowl (<10) then they bowl the 2nd bowl.
+* If the player gets a spare on the second bowl (bowl 1 + bowl 2 = 10) then bonus 1 will be included in the total score for the frame. (Bonus 2 will not be used)
+* Bonus 1 is the number of pins knocked down by the next bowl (the first bowl of the next frame).
+* Bonus 2 is the number of pins knocked down by the 2 next bowl (either the 2nd bowl of the next frame, or the first bowl of the 2nd next frame if the next frame is a strike).
+* The the player scores < 10 with the 2 bowls for a frame, then the score is simply the number of pins knocked down by bowl 1 + bowl2.
+
+
+
+----------------------------------------------------------------------------------------------
 Bowling Challenge
 =================
 

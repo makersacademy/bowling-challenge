@@ -40,6 +40,7 @@ describe('Game', function() {
     for(var i = 0; i <= 9; i++) {
       game.addFrame(10,0);
     }
+    game.frames[9].addBonusRoll(10);
     console.log(game.frames);
     game.scoreGame();
     expect(game.frames.length).toEqual(10);

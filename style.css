@@ -15,3 +15,7 @@ input[type="text"]{
 table[class="table table-bordered table-hover"]{
   text-align: center;
 }
+
+input[class="rollScoreBox"]{
+  width: 70px;
+}

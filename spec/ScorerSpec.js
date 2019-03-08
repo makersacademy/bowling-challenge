@@ -12,7 +12,7 @@ describe("Scorer", function() {
   it("stores roll values", function() {
     scorer.storeScore(5,"1-1")
     expect(scorer.rolls[1][1]).toEqual(5)
-  })
+  });
 
   it("calculates score from a spare", function() {
     scorer.storeScore(5,"1-1")
@@ -20,7 +20,16 @@ describe("Scorer", function() {
     scorer.storeScore(5,"2-1")
     scorer.spareCalculator()
     expect(scorer.rolls[1].bonus).toEqual(5)
-  })
+  });
+
+  it("calcualtes score from a strike within sequential frames", function() {
+    scorer.storeScore(10,"1-1")
+    scorer.storeScore(0,"1-2")
+    scorer.storeScore(5,"2-1")
+    scorer.storeScore(2,"2-2")
+    scorer.spareCalculator()
+    expect(scorer.rolls[1].bonus).toEqual(7)
+  });
 
 
 });

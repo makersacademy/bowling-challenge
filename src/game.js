@@ -1,1 +1,1 @@
-// var Frame = require('../src/frame');
+function Game() {}

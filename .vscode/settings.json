@@ -1,0 +1,26 @@
+{
+    "eslint.enable": true,
+    "eslint.options": {
+        "extensions": [
+            ".html",
+            ".js",
+            ".vue",
+            ".jsx",
+            ".json"
+        ]
+    },
+    "eslint.validate": [
+      {
+      "language": "html",
+      "autoFix": true
+      },
+      {
+        "language": "javascript",
+        "autoFix": true
+      },
+    ],
+    "editor.formatOnSave": false,
+
+    "editor.tabSize": 2,
+    "editor.acceptSuggestionOnCommitCharacter": false
+  }

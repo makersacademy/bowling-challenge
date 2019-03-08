@@ -22,4 +22,9 @@ describe('Frame', function() {
     expect(frame.score).toEqual(0);
   });
 
+  it('can detect an open frame', function(){
+    var frame = new Frame(4,3);
+    expect(frame.isAnOpenFrame).toBe(true);
+  });
+
 });

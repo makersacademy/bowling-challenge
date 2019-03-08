@@ -21,7 +21,7 @@ describe('Game', function() {
 
   it('adds the score for the next two rolls for a strike', function() {
     game.addFrame(10,0); // strike (10) + 3 + 4 = 17
-    game.addFrame(3,4); // 7, total = 24
+    game.addFrame(3,4); // 7, total = 24    
     game.scoreGame();
     expect(game.score).toEqual(24);
   });
@@ -41,7 +41,7 @@ describe('Game', function() {
       game.addFrame(10,0);
     }
     game.frames[9].addBonusRoll(10);
-    console.log(game.frames);
+    // console.log(game.frames);
     game.scoreGame();
     expect(game.frames.length).toEqual(10);
     expect(game.score).toEqual(300);

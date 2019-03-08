@@ -15,6 +15,8 @@ Game.prototype.scoreGame = function() {
   
   for(var thisFrame = 0; thisFrame < this.frames.length; thisFrame++) {
 
+    console.log('scoring frame #' + thisFrame);
+
     // base score
     this.score += this.frames[thisFrame].score;
 
@@ -22,6 +24,7 @@ Game.prototype.scoreGame = function() {
     if (thisFrame < 9) {
 
       if (this.frames[thisFrame].isAStrike) { // strike
+        console.log("frame " + thisFrame + " is a strike!");
         
         // is the next frame a strike?
         if (this.frames[thisFrame+1].isAStrike) {
@@ -29,23 +32,28 @@ Game.prototype.scoreGame = function() {
           console.log('next frame is a strike');
           this.score += this.frames[thisFrame+1].score;
 
-        } else { 
+        } else if (this.frames[thisFrame+1].isASpare) { 
           
           // spare
+          this.score += this.frames[thisFrame+1].rolls[0];
+          this.score += this.frames[thisFrame+1].rolls[1];
+
+        } else if (this.frames[thisFrame+1].isAnOpenFrame) {
+
+          console.log('the next frame is an frame...');
           this.score += this.frames[thisFrame+1].rolls[0];
           this.score += this.frames[thisFrame+1].rolls[1];
         }
 
       } else if (this.frames[thisFrame].isASpare) { 
-        
+        console.log('look at spares...');
         // sapre
         this.score += this.frames[thisFrame+1].rolls[0];
-      }
 
-    } else if (thisFrame == 9) {
+      } 
 
+    } else {
       // last frame
-      
     } 
   }
 

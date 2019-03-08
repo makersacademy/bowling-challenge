@@ -10,8 +10,9 @@ function Frame(firstRoll, secondRoll) {
 }
 
 Frame.prototype.scoreFrame = function() {
-  this.score += this.rolls[0];
-  this.score += this.rolls[1];
+  for(var roll = 0; roll < this.rolls.length; roll++) { 
+    this.score += this.rolls[roll];
+  }
 
   if(this.rolls[0] == 10) {
     this.isAStrike = true;

@@ -17,6 +17,7 @@ describe('Game', function() {
       game.addFrame(0,0);
     }
     game.scoreGame();
+    expect(game.gutterGame).toBe(true);
     expect(game.frames.length).toEqual(10);
     expect(game.score).toEqual(0);
   });
@@ -25,6 +26,7 @@ describe('Game', function() {
     for(var i = 0; i <= 11; i++) {
       game.addFrame(10,0);
     }
+    console.log(game.frames);
     game.scoreGame();
     expect(game.frames.length).toEqual(12);
     expect(game.score).toEqual(300);

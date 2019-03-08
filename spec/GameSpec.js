@@ -37,12 +37,12 @@ describe('Game', function() {
   });
 
   it('scores 300 points for a perfect game (10 strikes, plus 2 bonus strikes)', function() {
-    for(var i = 0; i <= 11; i++) {
+    for(var i = 0; i <= 9; i++) {
       game.addFrame(10,0);
     }
     console.log(game.frames);
     game.scoreGame();
-    expect(game.frames.length).toEqual(12);
+    expect(game.frames.length).toEqual(10);
     expect(game.score).toEqual(300);
   });
 

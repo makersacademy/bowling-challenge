@@ -14,22 +14,24 @@ Game.prototype.addFrame = function(firstRoll, secondRoll) {
 Game.prototype.scoreGame = function() {
   for(var i = 0; i < this.frames.length; i++) {
 
-    if (this.frames[i].isAStrike && i < 10) {
+    // base score
+    this.score += this.frames[i].score;
+
+    // bonuses
+    if (this.frames[i].isAStrike && i < 9) { // strike
 
       // is the next frame a strike?
       if (this.frames[i+1].isAStrike) {
         this.score += this.frames[i+1].score;
-      } else {
+      } else { // spare
         this.score += this.frames[i+1].rolls[0];
         this.score += this.frames[i+1].rolls[1];
       }
 
-    } else if (this.frames[i].isASpare) {
+    } else if (this.frames[i].isASpare) { // sapre
 
       this.score += this.frames[i+1].rolls[0];
     }
-
-    this.score += this.frames[i].score;
   }
 
   this.score == 0 ? this.gutterGame = true : this.gutterGame = false;

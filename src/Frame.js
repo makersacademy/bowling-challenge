@@ -5,7 +5,7 @@ function Frame(firstRoll, secondRoll) {
   this.isAStrike = false;
   this.isASpare = false;
   this.isAnOpenFrame = false;
-  
+
   this.scoreFrame();
 }
 
@@ -20,4 +20,8 @@ Frame.prototype.scoreFrame = function() {
   } else {
     this.isAnOpenFrame = true;
   }
+}
+
+Frame.prototype.addBonusRoll = function(rollScore) {
+  this.rolls.push(rollScore);
 }

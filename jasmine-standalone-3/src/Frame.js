@@ -11,66 +11,66 @@ class Frame {
   addroll(rollscore) {
 
     if(this.framenumber == 9) {
-       return this.lastFrame(rollscore)
+       return this._lastFrame(rollscore)
     }
 
     else {
-      return this.notLastFrame(rollscore)
+      return this._notLastFrame(rollscore)
     }
   }
 
-  lastFrame(rollscore) {
+  _lastFrame(rollscore) {
     if(this.rollnumber == 0) {
-      this.addFirstRoll(rollscore)
+      this._addFirstRoll(rollscore)
     } else if(this.rollnumber == 1) {
-      this.addSecondRoll(rollscore)
-    } else if(this.twoFinalStrikes() || this.finalHalfStrike()) {
-      this.addThirdRoll(rollscore)
+      this._addSecondRoll(rollscore)
+    } else if(this._twoFinalStrikes() || this._finalHalfStrike()) {
+      this._addThirdRoll(rollscore)
     } else {
       return "Frame Complete"
     }
   }
 
-  notLastFrame(rollscore) {
-    if(this.strike(rollscore)) {
-      this.addRollStrike(rollscore)
+  _notLastFrame(rollscore) {
+    if(this._strike(rollscore)) {
+      this._addRollStrike(rollscore)
     } else if(this.rollnumber == 0) {
-      this.addFirstRoll(rollscore)
+      this._addFirstRoll(rollscore)
     } else if(this.rollnumber == 1) {
-      this.addSecondRoll(rollscore)
+      this._addSecondRoll(rollscore)
     } else {
       return "Frame Complete"
     }
   }
 
-  strike(rollscore) {
+  _strike(rollscore) {
     return this.rollnumber== 0 && rollscore == 10
   }
 
-  twoFinalStrikes() {
+  _twoFinalStrikes() {
     return this.rollnumber == 2 && this.scoreroll1 == 10 && this.scoreroll2 == 10
   }
 
-  finalHalfStrike() {
+  _finalHalfStrike() {
     return this.rollnumber == 2 && (this.scoreroll1 + this.scoreroll2) == 10
   }
 
-  addRollStrike(rollscore) {
+  _addRollStrike(rollscore) {
     this.scoreroll1 = rollscore
     this.rollnumber += 2;
   }
 
-  addFirstRoll(rollscore) {
+  _addFirstRoll(rollscore) {
     this.scoreroll1 = rollscore
     this.rollnumber += 1;
   }
 
-  addSecondRoll(rollscore) {
+  _addSecondRoll(rollscore) {
     this.scoreroll2 = rollscore
     this.rollnumber += 1;
   }
 
-  addThirdRoll(rollscore) {
+  _addThirdRoll(rollscore) {
     this.scoreroll3 = rollscore;
     this.rollnumber += 1;
   }

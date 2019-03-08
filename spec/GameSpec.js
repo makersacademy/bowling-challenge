@@ -19,6 +19,13 @@ describe('Game', function() {
     expect(game.score).toEqual(16);
   });
 
+  it('adds the score for the next two rolls for a strike', function() {
+    game.addFrame(10,0); // strike (10) + 3 + 4 = 17
+    game.addFrame(3,4); // 7, total = 24
+    game.scoreGame();
+    expect(game.score).toEqual(24);
+  });
+
   it('scores a gutter game (no points scored at all) as zero', function() {
     for(var i = 0; i <= 9; i++) {
       game.addFrame(0,0);

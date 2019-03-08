@@ -16,8 +16,13 @@ Game.prototype.scoreGame = function() {
 
     if (this.frames[i].isAStrike && i < 10) {
 
-      this.score += this.frames[i+1].score;
-      this.score += this.frames[i+2].score;
+      // is the next frame a strike?
+      if (this.frames[i+1].isAStrike) {
+        this.score += this.frames[i+1].score;
+      } else {
+        this.score += this.frames[i+1].rolls[0];
+        this.score += this.frames[i+1].rolls[1];
+      }
 
     } else if (this.frames[i].isASpare) {
 
@@ -26,6 +31,6 @@ Game.prototype.scoreGame = function() {
 
     this.score += this.frames[i].score;
   }
-  
+
   this.score == 0 ? this.gutterGame = true : this.gutterGame = false;
 }

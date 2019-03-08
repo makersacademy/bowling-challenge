@@ -9,11 +9,13 @@ Game.prototype.addFrame = function(firstRoll, secondRoll) {
   var frame = new Frame(firstRoll, secondRoll);
 
   this.frames.push(frame);
+
 }
 
 Game.prototype.scoreGame = function() {
 
-  this.frames.forEach(function(frame) {
-    this.score += frame.score;
-  });
+  for(var i = 0; i < this.frames.length; i++) {
+    console.log(this.frames[i].score);
+    this.score += this.frames[i].score;
+  }
 }

@@ -8,6 +8,7 @@ describe('Game', function() {
 
   it('can add a frame to a game', function() {
     game.addFrame(3,3);
+    game.scoreGame();
     expect(game.frames.length).toEqual(1);
   });
 
@@ -15,8 +16,18 @@ describe('Game', function() {
     for(var i = 0; i <= 9; i++) {
       game.addFrame(0,0);
     }
+    game.scoreGame();
     expect(game.frames.length).toEqual(10);
     expect(game.score).toEqual(0);
+  });
+
+  it('scores 300 points for a perfect game (10 strikes, plus 2 bonus strikes)', function() {
+    for(var i = 0; i <= 11; i++) {
+      game.addFrame(10,0);
+    }
+    game.scoreGame();
+    expect(game.frames.length).toEqual(12);
+    expect(game.score).toEqual(300);
   });
 
 });

@@ -32,3 +32,22 @@ Note that a score of 0 is a GUTTER score and a score of 300 is a PERFECT score
 ## The forth element is the user interface.
 - This is a score card and not a bowling game so the user should be able to enter the number
   of pins knocked down and the program will recalculate the total, giving a final score at the end.
+
+## User Stories
+- The maximum score for the first try in a frame is 10 frame
+- It is not possible to have a negative score
+- The player should not be able to enter a second score in a frame if the first score was 10
+- The maximum score for the second try is 10 minus the score in the first try
+- It should not be possible to enter a third score in a frame
+- The player should only be able to play 10 frames if the first score on the tenth frame is not 10
+- If the first score on the tenth frame is 10 then the player gets to play one more try if this try doesn't score 10.
+- If the first try on the eleventh frame is 10 then the player gets to try again
+- If the first try on the eleventh frame is not 10 then the game is over
+
+- If a 10 is scored on the first try then that frame is a strike
+- If the first and second tries add up to 10 then that frame is a spare
+
+- The score is the cumulative total of the tries
+- If the last frame was a strike then then both tries on the next frame are doubled
+- If the last frame was a spare then then the first try on the next frame is doubled
+- If the total score = 120 then it is a perfect score and the score is set to 300

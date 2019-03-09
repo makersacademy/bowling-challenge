@@ -107,11 +107,11 @@ describe('game', function() {
             expect(game.getTotalScore()).toEqual(42);
         });
 
-        // it('scores a perfect game (12 strikes) as 300', function() {
-        //     for (var i = 0; i < 12; i++) {
-        //         game.roll(10);
-        //     }
-        //     expect(game.getTotalScore()).toEqual(300);
-        // });
+        it('scores a perfect game (12 strikes) as 300', function() {
+            for (var i = 0; i < 12; i++) {
+                game.roll(10);
+            }
+            expect(game.getTotalScore()).toEqual(300);
+        });
     });
 });

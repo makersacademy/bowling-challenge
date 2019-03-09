@@ -27,8 +27,10 @@ Game.prototype.roll = function(pins) {
     var frame = this.frames[this.currentFrame]
     if (this.currentBowl === 1) {
         frame.firstBowl(pins);
-    } else {
+    } else if (this.currentBowl === 2) {
         frame.secondBowl(pins);
+    } else {
+        frame.thirdBowl(pins)
     }
     this.giveBonuses(pins);
     this.setNextBowl(frame)

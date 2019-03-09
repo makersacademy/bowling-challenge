@@ -10,7 +10,7 @@ $(document).ready(function() {
 
   $("input[type='text']").on('input', function() {
       scorecard.calculateTotalScore()
-      $("#scoreShow").text(scorecard.totalScore)
+      $("#scoreShow").text("Your score is: " + scorecard.totalScore)
   });
 
 

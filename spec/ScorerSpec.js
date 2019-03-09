@@ -6,7 +6,7 @@ describe("Scorer", function() {
   });
 
   it("creates empty json to hold roll values", function() {
-    expect(scorer.rolls[1]).toEqual(null);
+    expect(scorer.rolls[1]).toEqual(0);
   });
 
   it("creates empty json to hold bonus values", function() {

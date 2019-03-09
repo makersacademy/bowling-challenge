@@ -27,6 +27,7 @@ Array.prototype.sum = function(){
 
 Frame.prototype.bowlValidation = function(pins){
   if (pins > 10) {throw new Error('You cannot knock more than 10 pins down!'); }
+  if (pins < 0) {throw new Error('Negative Number!'); }
 };
 
 };

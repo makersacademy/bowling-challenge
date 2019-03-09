@@ -17,4 +17,7 @@ describe('Frame', function(){
     expect(function(){frame.bowl(11)}).toThrowError('You cannot knock more than 10 pins down!')
   })
 
+  it('cannot knock less than 0 pins in one frame', function(){
+    expect(function(){frame.bowl(-1)}).toThrowError('Negative Number!')
+  })
 });

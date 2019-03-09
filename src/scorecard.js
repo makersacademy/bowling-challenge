@@ -46,7 +46,7 @@ function showScores() {
     bowl2 = game.frames[game.currentFrame].bowl2;
     if (bowl1 + bowl2 == 10) {
       $( scoreBoxId ).text("/");
-    } else if (bowl2 = 10) {
+    } else if (bowl2 == 10) {
       $( scoreBoxId ).text("X");
     } else {
       $( scoreBoxId ).text(bowl1);

@@ -4,7 +4,9 @@ $(document).ready(function() {
   var roll1, roll2;
   var currentFrame = 1;
 
-  $.updateScorecard = function() {}
+  $.updateScorecard = function() {
+    $('#score').text(game.score);
+  }
 
   $('#addFrame').click(function() {
     
@@ -16,6 +18,7 @@ $(document).ready(function() {
       // update score row?
       currentFrame++;
     } else {
+      game.scoreGame();
       $.updateScorecard();
     }
 

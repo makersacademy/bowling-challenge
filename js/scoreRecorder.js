@@ -3,13 +3,10 @@ $(document).ready(function() {
   var scorecard = new Scorer()
 
   $("input[type='text']").on('input', function() {
-      scorecard.storeScore(this.value,this.id)
+      scorecard.storeScore(this.value,this.id);
       scorecard.bonusCalculator();
       scorecard.updatedBonusNotes();
-  });
-
-  $("input[type='text']").on('input', function() {
-      scorecard.calculateTotalScore()
+      scorecard.calculateTotalScore();
       $("#scoreShow").text("Your score is: " + scorecard.totalScore)
   });
 

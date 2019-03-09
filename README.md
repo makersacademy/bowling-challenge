@@ -11,8 +11,8 @@ Requirements
 * If the player does not bowl a strike on the first bowl (<10) then they bowl the 2nd bowl.
 * If the player gets a spare on the second bowl (bowl 1 + bowl 2 = 10) then bonus 1 will be included in the total score for the frame. (Bonus 2 will not be used)
 * Bonus 1 is the number of pins knocked down by the next bowl (the first bowl of the next frame).
-* Bonus 2 is the number of pins knocked down by the 2 next bowl (either the 2nd bowl of the next frame, or the first bowl of the 2nd next frame if the next frame is a strike).
-* The the player scores < 10 with the 2 bowls for a frame, then the score is simply the number of pins knocked down by bowl 1 + bowl2.
+* Bonus 2 is the number of pins knocked down by the 2nd next bowl (either the 2nd bowl of the next frame, or the first bowl of the 2nd next frame if the next frame is a strike).
+* If the player scores < 10 with the 2 bowls for a frame, then the score is simply the number of pins knocked down by bowl 1 + bowl2.
 
 
 

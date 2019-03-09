@@ -1,9 +1,10 @@
-function Frame() {
+function Frame(finalFrame) {
     this.bowl1 = 0;
     this.bowl2 = 0;
     this.bonus = 0;
     this.bonusesToCome = 0;
     this.secondBowlAllowed = true;
+    this.finalFrame = finalFrame;
 };
 
 Frame.prototype.getTotal = function() {
@@ -23,7 +24,9 @@ Frame.prototype.secondBowl = function(pins) {
 Frame.prototype.checkIfStrike = function() {
     if (this.bowl1 == 10) {
         this.bonusesToCome = 2;
-        this.secondBowlAllowed = false;
+        if (!this.finalFrame) {
+            this.secondBowlAllowed = false;
+        }
     }
 };
 

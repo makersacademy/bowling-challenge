@@ -1,6 +1,6 @@
 describe('frame', function() {
     beforeEach(function() {
-        frame = new Frame();
+        frame = new Frame(false);
     });
 
     it('has a total that starts at 0', function() {
@@ -43,7 +43,7 @@ describe('frame', function() {
         expect(frame.isAwaitingBonus()).toEqual(true);
     });
 
-    it('prevents a 2nd bowl if 1st bowl is a strike', function() {
+    it('prevents a 2nd bowl if 1st bowl is a strike and not the last frame', function() {
         frame.firstBowl(10);
         expect(frame.secondBowlAllowed).toEqual(false);
     });
@@ -51,6 +51,12 @@ describe('frame', function() {
     it('allows a 2nd bowl if 1st bowl is not a strike', function() {
         frame.firstBowl(10);
         expect(frame.secondBowlAllowed).toEqual(false);
+    });
+
+    it('allows a 2nd bowl if 1st bowl is a strike but it is the last frame', function() {
+        var frame = new Frame(true)
+        frame.firstBowl(10);
+        expect(frame.secondBowlAllowed).toEqual(true);
     });
 
 });

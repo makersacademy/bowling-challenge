@@ -19,6 +19,7 @@ describe('game', function() {
             expect(game.currentFrame).toEqual(1);
             expect(game.currentBowl).toEqual(1);
         });
+
     });
 
     describe('scoring', function() {

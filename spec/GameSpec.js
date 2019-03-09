@@ -9,10 +9,10 @@ describe('Game', function() {
     frame = new Frame(pins_standing);
     game = new Game();
     pins_standing = new Pin();
+    game.start();
   });
 
 it('should contain 10 frames in a new game', function() {
-  game.start();
   expect(game.frames.length).toEqual(10);
 });
 
@@ -21,7 +21,6 @@ it('starts with a total score of 0', function(){
 });
 
 it('adds the scores of two bowl in a frame', function(){
-  game.start();
   game.frames[0].bowl(1);
   game.frames[0].bowl(4);
   game.pushTotalForFrame();
@@ -29,7 +28,6 @@ it('adds the scores of two bowl in a frame', function(){
 });
 
 it('adds the scores of many frames for a player', function(){
-  game.start();
   game.frames[0].bowl(1);
   game.frames[0].bowl(4);
   game.frames[3].bowl(1);
@@ -41,7 +39,6 @@ it('adds the scores of many frames for a player', function(){
 });
 
 it('keeps track of frame scores bowls', function(){
-  game.start();
   game.frames[0].bowl(1);
   game.frames[0].bowl(4);
   game.frames[3].bowl(1);
@@ -53,7 +50,6 @@ it('keeps track of frame scores bowls', function(){
 });
 
 it('knows which frame it is in', function(){
-  game.start();
   game.frames[0].bowl(1);
   game.frames[0].bowl(4);
   game.pushTotalForFrame();
@@ -62,10 +58,12 @@ it('knows which frame it is in', function(){
 
 
 it('knows which frame it is in', function(){
-  game.start();
   game.pushTotalForFrame();
   expect(game.frameNumber).toEqual(1)
 });
 
-
+// it('player cannot knock more than 10 pins down in a bowl', function(){
+// //this might have to be moved to the frame class
+//   expect(function(){game.frames[0].bowl(11)})
+// });
 });

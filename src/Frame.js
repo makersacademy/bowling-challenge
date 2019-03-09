@@ -11,7 +11,7 @@ for (i=0; i < 10; i++){
 //
 //
 Frame.prototype.bowl = function(pins_hit){
-
+  this.bowlValidation(pins_hit);
   if (this.score.length < this.FRAMESIZE){
     this.pins.splice(0,pins_hit);
     this.score.push(pins_hit);
@@ -24,4 +24,9 @@ Array.prototype.sum = function(){
   for (var i =0, L = this.length, sum = 0; i < L; sum +=this[i++]);
   return sum;
 };
+
+Frame.prototype.bowlValidation = function(pins){
+  if (pins > 10) {throw new Error('You cannot knock more than 10 pins down!'); }
+};
+
 };

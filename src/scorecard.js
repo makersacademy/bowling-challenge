@@ -8,6 +8,9 @@ function showScores() {
   // show previous frames
   for (i = 0; i < game.currentFrame; i++) {
     f = i + 1
+    scoreBoxId = "#score" + f;
+    frameScore = game.frames[i].getTotal();
+    $( scoreBoxId ).text(frameScore);
     scoreBoxId = "#frame" + f + "bowl" + 1;
     bowl1 = game.frames[i].bowl1;
     if (bowl1 == 10) {
@@ -36,18 +39,30 @@ function showScores() {
     }
   }
 
-  if (game.currentBowl > 2) {
+  // show final frame
+  if (game.currentBowl > 2 || game.gameOver) {
     f = game.currentFrame + 1;
     scoreBoxId = "#frame" + f + "bowl" + 2;
     bowl2 = game.frames[game.currentFrame].bowl2;
     if (bowl1 + bowl2 == 10) {
       $( scoreBoxId ).text("/");
+    } else if (bowl2 = 10) {
+      $( scoreBoxId ).text("X");
     } else {
       $( scoreBoxId ).text(bowl1);
     }
   }
 
-  // show 3rd bowl of last frame
+  if (game.gameOver && game.frames[game.currentFrame].thirdBowlAllowed) {
+    f = game.currentFrame + 1;
+    scoreBoxId = "#frame" + f + "bowl" + 3;
+    bowl3 = game.frames[game.currentFrame].bowl3;
+    if (bowl3 = 10) {
+      $( scoreBoxId ).text("X");
+    } else {
+      $( scoreBoxId ).text(bowl3);
+    }
+  }
 }
 
 $( "#save" ).click(function(){

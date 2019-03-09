@@ -23,14 +23,23 @@ describe('frame', function() {
         expect(frame.getTotal()).toEqual(7);
     });
 
-    it('awaits a bonus if a spare (bowl1 + bowl2 = 10)', function() {
+    it('awaits only 1 bonus if a spare (bowl1 + bowl2 = 10)', function() {
         frame.firstBowl(9);
         frame.secondBowl(1);
-        expect(frame.isAwaitingBonus).toEqual(true);
+        expect(frame.isAwaitingBonus()).toEqual(true);
+        frame.addBonus(2);
+        expect(frame.isAwaitingBonus()).toEqual(false);
     });
 
     it('stores a bonus', function() {
+        frame.firstBowl(10);
         frame.addBonus(2);
         expect(frame.bonus).toEqual(2);
+    });
+
+    it('awaits 2 bonuses if a strike (bowl1 = 10)', function() {
+        frame.firstBowl(10);
+        frame.addBonus(1);
+        expect(frame.isAwaitingBonus()).toEqual(true);
     });
 });

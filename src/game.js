@@ -40,7 +40,7 @@ Game.prototype.giveBonuses = function(pins) {
     };
 
     var prevFrame = this.frames[this.currentFrame - 1];
-    if (prevFrame.isAwaitingBonus) {
+    if (prevFrame.isAwaitingBonus()) {
         prevFrame.addBonus(pins)
     }
 };

@@ -14,7 +14,7 @@ describe("Scorer", function() {
   });
 
   it("creates empty json to hold notes values", function() {
-    expect(scorer.notes[1]).toEqual(null);
+    expect(scorer.notes[1]).toEqual("");
   });
 
   it("stores roll values", function() {

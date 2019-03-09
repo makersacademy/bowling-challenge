@@ -5,6 +5,7 @@ describe('Scorecard', function () {
 
   beforeEach(function () {
     mockFrameClass = function() {}
+    mockFrameClass.prototype.isScoreFinalised = function() { return true }
     scorecard = new Scorecard(mockFrameClass)
   })
 
@@ -21,6 +22,12 @@ describe('Scorecard', function () {
         mockFrameClass.prototype.isFinished = function() { return true }
         expect(scorecard.roll(7).currentFrame).toEqual(scorecard.frames[1])
       })
+    })
+
+    it('should return the last frame with a finalised score', function () {
+      mockFrameClass.prototype.isFinished = function() { return false }
+
+      expect(scorecard.roll(7).lastScoredFrame).toEqual(scorecard.frames[0])
     })
   })
 })

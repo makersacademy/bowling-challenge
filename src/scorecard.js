@@ -13,7 +13,13 @@ Scorecard.prototype.roll = function (noOfPins) {
     this.frames.push(new this.Frame())
   }
 
+  const reversedFrames = this.frames.reverse();
+  const lastScoredFrame = reversedFrames.find((frame) => { 
+    return frame.isScoreFinalised() === true 
+  })
+
   return {
-    currentFrame: this.currentFrame()
+    currentFrame: this.currentFrame(),
+    lastScoredFrame: lastScoredFrame
   }
 }

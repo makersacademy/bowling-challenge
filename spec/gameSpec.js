@@ -37,6 +37,16 @@ describe('game', function() {
             expect(game.currentBowl).toEqual(3);
         });
 
+        it('ends with a 3rd roll on the final frame if it is allowed (after a spare on 2nd bowl)', function() {
+            for (var i = 0; i < 9; i++) {
+                game.roll(10);
+            }
+            game.roll(2);
+            game.roll(8);
+            expect(game.currentFrame).toEqual(9);
+            expect(game.currentBowl).toEqual(3);
+        });
+
     });
 
     describe('scoring', function() {

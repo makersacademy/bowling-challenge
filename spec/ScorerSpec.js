@@ -52,8 +52,24 @@ describe("Scorer", function() {
     scorer.storeScore(0,20)
     scorer.storeScore(3,21)
     scorer.storeScore(4,22)
+    scorer.spareCalculator()
     scorer.calculateTotalScore()
     expect(scorer.totalScore).toEqual(17)
+  })
+
+  it("calculates correct maximum score of 300", function() {
+    var i
+    for (i = 1; i < 21; i++) {
+    if (i % 2 > 0) {
+      scorer.storeScore(10,i)
+    } else {
+      scorer.storeScore(0,i)
+    }}
+    scorer.storeScore(10,21)
+    scorer.storeScore(10,22)
+    scorer.spareCalculator()
+    scorer.calculateTotalScore()
+    expect(scorer.totalScore).toEqual(300)
   })
 
 

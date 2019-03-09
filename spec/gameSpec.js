@@ -33,4 +33,12 @@ describe('game', function() {
     //     game.roll(3);
     //     expect(game.getTotalScore()).toEqual(17);
     // });
+
+    it('checks whether the 1st frame is awaiting a bonus after the 1st bowl of the 2nd frame', function() {
+        spyOn(game, 'giveBonuses');
+        game.roll(9);
+        game.roll(1);
+        game.roll(2);
+        expect(game.giveBonuses).toHaveBeenCalled();
+    });
 });

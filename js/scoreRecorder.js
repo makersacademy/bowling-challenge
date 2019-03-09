@@ -4,6 +4,7 @@ $(document).ready(function() {
 
   $("input[type='text']").on('input', function() {
       scorecard.storeScore(this.value,this.id);
+      scorecard.removeNullsFromRolls();
       scorecard.bonusCalculator();
       scorecard.updatedBonusNotes();
       scorecard.calculateTotalScore();

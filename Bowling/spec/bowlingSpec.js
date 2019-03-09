@@ -21,6 +21,9 @@ describe('Bowling Scorecard', () => {
     //   expect(frame).toEqual(jasmine.any(Frame));
     // });
 
-    expect(bowling.frames[0] instanceof Frame).toBeTruthy();
+    // eslint-disable-next-line no-restricted-syntax
+    for (const frame of bowling.frames) {
+      expect(frame instanceof Frame).toBeTruthy();
+    }
   });
 });

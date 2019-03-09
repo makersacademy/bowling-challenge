@@ -32,5 +32,9 @@ Frame.prototype.score = function () {
 }
 
 Frame.prototype.isFinished = function () {
-  return this.rolls.length == 2 || this.hadStrike()
+  if (this.number === 10 && (this.hadStrike() || this.hadSpare())) {
+    return this.rolls.length == 3
+  } else {
+    return this.rolls.length == 2 || this.hadStrike()
+  }
 }

@@ -58,4 +58,16 @@ describe('Frame', function () {
       })
     })
   })
+
+  describe('Given it is the 10th frame', function () {
+    it('should be finished after THREE rolls if that frame had a strike or spare', function () {
+      frame = new Frame(10)
+      frame.addRoll(10)
+      frame.addRoll(5)
+      expect(frame.isFinished()).toEqual(false)
+      
+      frame.addRoll(5)
+      expect(frame.isFinished()).toEqual(true)
+    })
+  })
 })

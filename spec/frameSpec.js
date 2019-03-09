@@ -42,4 +42,14 @@ describe('frame', function() {
         frame.addBonus(1);
         expect(frame.isAwaitingBonus()).toEqual(true);
     });
+
+    it('prevents a 2nd bowl if 1st bowl is a strike', function() {
+        frame.firstBowl(10);
+        expect(frame.secondBowlAllowed).toEqual(false);
+    });
+
+    it('allows a 2nd bowl if 1st bowl is not a strike', function() {
+        frame.firstBowl(10);
+        expect(frame.secondBowlAllowed).toEqual(false);
+    });
 });

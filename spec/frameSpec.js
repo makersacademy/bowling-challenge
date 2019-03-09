@@ -4,6 +4,12 @@ describe('Frame', function () {
     frame = new Frame()
   })
 
+  it('should be finished after two rolls', function () {
+    frame.addRoll(3)
+    frame.addRoll(2)
+    expect(frame.isFinished()).toEqual(true)
+  })
+
   describe('Given frame had only normal rolls (IE non-strikes, spares)', function () {
     it('frame score should equal total number of pins hit in frame', function () {
       frame.addRoll(3)

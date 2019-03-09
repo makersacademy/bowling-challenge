@@ -18,3 +18,7 @@ Frame.prototype.score = function () {
 
   return score
 }
+
+Frame.prototype.isFinished = function () {
+  return this.rolls.length == 2
+}

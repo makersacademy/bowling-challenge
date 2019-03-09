@@ -23,9 +23,14 @@ Game.prototype.getTotalScore = function() {
 
 Game.prototype.roll = function(pins) {
     if (this.currentBowl === 1) {
-        this.frames[this.currentFrame].firstBowl(pins);
+        var frame = this.frames[this.currentFrame];
+        frame.firstBowl(pins);
         this.giveBonuses(pins);
-        this.currentBowl = 2;
+        if (frame.secondBowlAllowed) {
+            this.currentBowl = 2; 
+        } else {
+            this.currentFrame += 1; // TO DO: if it is the last frame
+        }
     } else {
         this.frames[this.currentFrame].secondBowl(pins);
         this.currentBowl = 1;

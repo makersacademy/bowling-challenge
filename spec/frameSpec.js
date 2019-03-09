@@ -85,4 +85,12 @@ describe('frame', function() {
         frame.secondBowl(4);
         expect(frame.isAwaitingBonus()).toEqual(false);
     });
+
+    it('saves the score of the 3rd bowl as a bonus', function() {
+        var frame = new Frame(true)
+        frame.firstBowl(6);
+        frame.secondBowl(4);
+        frame.thirdBowl(5);
+        expect(frame.bonus).toEqual(5);
+    });
 });

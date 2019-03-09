@@ -22,6 +22,10 @@ Frame.prototype.secondBowl = function(pins) {
     this.checkIfSpare();
 };
 
+Frame.prototype.thirdBowl = function(pins) {
+    this.bonus = pins;
+};
+
 Frame.prototype.checkIfStrike = function() {
     if (this.bowl1 == 10) {
         if (this.finalFrame) {

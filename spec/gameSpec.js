@@ -106,5 +106,12 @@ describe('game', function() {
             game.roll(3);
             expect(game.getTotalScore()).toEqual(42);
         });
+
+        // it('scores a perfect game (12 strikes) as 300', function() {
+        //     for (var i = 0; i < 12; i++) {
+        //         game.roll(10);
+        //     }
+        //     expect(game.getTotalScore()).toEqual(300);
+        // });
     });
 });

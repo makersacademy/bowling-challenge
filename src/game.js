@@ -50,7 +50,7 @@ Game.prototype.setNextBowl = function(frame) {
     } else if (frame.thirdBowlAllowed) {    
         this.currentBowl = 3;
     } else {
-        this.currentFrame += 1; // TO DO: if it is the last frame
+        this.currentFrame += 1; 
         this.currentBowl = 1;
     }
 };

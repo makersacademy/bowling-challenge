@@ -3,12 +3,12 @@
 describe('Game', function() {
   var frame;
   var game;
-  var pin;
+  var pins_standing;
 
   beforeEach(function() {
-    frame = new Frame();
+    frame = new Frame(pins_standing);
     game = new Game();
-    pin = new Pin();
+    pins_standing = new Pin();
   });
 
 it('should contain 10 frames in a new game', function() {

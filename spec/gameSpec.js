@@ -14,10 +14,18 @@ describe('game', function() {
             expect(game.currentBowl).toEqual(1);
         });
 
-        it('skips the 2nd bowl of a frame if it is not allowed (a strike)', function() {
+        it('skips the 2nd bowl of a frame if it is not allowed (a strike but not last frame)', function() {
             game.roll(10);
             expect(game.currentFrame).toEqual(1);
             expect(game.currentBowl).toEqual(1);
+        });
+
+        it('does not skip the 2nd bowl if it is allowed in the final frame (after a strike)', function() {
+            for (var i = 0; i < 10; i++) {
+                game.roll(10);
+            }
+            expect(game.currentFrame).toEqual(9);
+            expect(game.currentBowl).toEqual(2);
         });
 
     });

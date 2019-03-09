@@ -6,10 +6,12 @@ function Game() {
 
 Game.prototype.initializeFrames = function() {
     array = []
-    for (var i = 0; i < 10; i++) {
-        frame = new Frame();
+    for (var i = 0; i < 9; i++) {
+        frame = new Frame(false);
         array.push(frame);
     }
+    frame = new Frame(true);
+    array.push(frame);
     return array;
 };
 

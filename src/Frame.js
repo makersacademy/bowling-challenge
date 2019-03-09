@@ -46,4 +46,8 @@ Frame.prototype.sparePins = function(pins_hit){
   return pins
 };
 
+Frame.prototype.isSpare = function(){
+  return (this.score.sum() === 10 && this.score[0]!=10)
+};
+
 };

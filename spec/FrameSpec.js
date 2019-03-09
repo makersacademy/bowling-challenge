@@ -51,6 +51,7 @@ describe('Frame', function(){
   it('should know when Spare is bowled', function(){
     frame.bowl(3)
     frame.bowl(7)
+    expect(frame.isSpare()).toEqual(true)
     //spare is when the second roll knocks all remaining pins down
   });
 });

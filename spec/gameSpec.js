@@ -63,5 +63,12 @@ describe('game', function() {
             game.roll(2);
             expect(game.giveBonuses).toHaveBeenCalled();
         }); 
+
+        it('has a score that is the total of the frame scores (20 after frame1 was a strike and frame2 was 2 + 3)', function() {
+            game.roll(10);
+            game.roll(2);
+            game.roll(3);
+            expect(game.getTotalScore()).toEqual(20);
+        });
     });
 });

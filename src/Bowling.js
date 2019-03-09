@@ -4,11 +4,12 @@ function Bowling() {
   this.currentFrame = []
   this.gameScore = 0
   this.firstTryOfFrame = true
+  this.gameOver = false
 }
 
 Bowling.prototype.addFrame = function() {
-  var frameTry = [0,0]
-  this.gameTries.push(frameTry);
+  // var frameTry = [0,0]
+  // this.gameTries.push(frameTry);
 };
 
 Bowling.prototype.showFrames = function() {
@@ -37,13 +38,11 @@ Bowling.prototype.addScore = function(score) {
 
 Bowling.prototype.updateFirstTry = function(score) {
   this.currentFrame[0] = score
-  console.log(this.currentFrame[0]);
   this.updateTry(score)
 };
 
 Bowling.prototype.updateSecondTry = function(score) {
   this.currentFrame[1] = score
-  console.log(this.currentFrame[1]);
   this.updateTry(score)
   this.gameTries.push(this.currentFrame);
   this.currentFrame = []
@@ -62,22 +61,11 @@ Bowling.prototype.checkStatus = function() {
   else if ((this.currentFrame[0] + this.currentFrame[1]) == 10)
     {this.frameStatus = "Spare"}
   else
-    {this.frameStatus = "Play"}
+    {
+     this.frameStatus = "Play"
+     if (this.gameTries.length == 10)
+       {this.gameOver = true;}
+    }
+    // console.log(this.frameStatus);
+    // console.log(this.gameTries.length);
 };
-
-// Bowling.prototype.playAFrame = function() {
-//   this.addFrame.();
-//   this.addScore.();
-//
-// };
-// Player.prototype.resume = function() {
-//   if (this.isPlaying) {
-//     throw new Error("song is already playing");
-//   }
-//
-//   this.isPlaying = true;
-// };
-//
-// Player.prototype.makeFavorite = function() {
-//   this.currentlyPlayingSong.persistFavoriteStatus(true);
-// };

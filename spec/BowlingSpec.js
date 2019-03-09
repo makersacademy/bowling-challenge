@@ -44,11 +44,37 @@ describe("The Bowling Score Card", function() {
       game.addScore(4)
       expect(game.frameStatus).toEqual('Play');
     });
-    it("if the first and second goes add up to more than 10 then tan error message is given", function() {
+    it("if the first and second goes add up to more than 10 then then error message is given", function() {
       game.addFrame()
       game.addScore(3)
       expect(function() {game.addScore(8);
       }).toThrowError('total frame score can not be greater than 10');
+    });
+  });
+
+  describe("the whole game tests", function() {
+    it("there are at least 10 frames in a game", function() {
+      game.addFrame()
+      game.addScore(3)
+      expect(game.gameOver).toBe(false);
+      });
+    it("when 10 frames have been played the game is over if the last try was not a Strike or Spare", function() {
+      game.addFrame()
+      var i;
+      for (i = 0; i < 11; i++) {
+        game.addScore(1);
+        game.addScore(2);
+      }
+      expect(game.gameOver).toBe(true);
+    });
+    it("if the last try was a Spare, the game is not over", function() {
+      game.addFrame()
+      var i;
+      for (i = 0; i < 19; i++) {
+        game.addScore(1);
+      }
+      game.addScore(9);
+      expect(game.gameOver).toBe(false);
     });
   });
 });

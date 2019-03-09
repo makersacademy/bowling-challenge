@@ -4,7 +4,7 @@ $(document).ready(function() {
 
   $("input[type='text']").on('input', function() {
       scorecard.storeScore(this.value,this.id)
-      scorecard.spareCalculator();
+      scorecard.bonusCalculator();
       scorecard.updatedBonusNotes();
   });
 

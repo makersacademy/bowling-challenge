@@ -10,7 +10,7 @@ describe("Scorer", function() {
   });
 
   it("creates empty json to hold bonus values", function() {
-    expect(scorer.bonus[1]).toEqual(null);
+    expect(scorer.bonus[1]).toEqual(0);
   });
 
   it("creates empty json to hold notes values", function() {
@@ -26,7 +26,7 @@ describe("Scorer", function() {
     scorer.storeScore(5,1)
     scorer.storeScore(5,2)
     scorer.storeScore(5,3)
-    scorer.spareCalculator()
+    scorer.bonusCalculator()
     expect(scorer.bonus[1]).toEqual(5)
   });
 
@@ -35,7 +35,7 @@ describe("Scorer", function() {
     scorer.storeScore(0,2)
     scorer.storeScore(5,3)
     scorer.storeScore(2,4)
-    scorer.spareCalculator()
+    scorer.bonusCalculator()
     expect(scorer.bonus[1]).toEqual(7)
   });
 
@@ -52,7 +52,7 @@ describe("Scorer", function() {
     scorer.storeScore(0,20)
     scorer.storeScore(3,21)
     scorer.storeScore(4,22)
-    scorer.spareCalculator()
+    scorer.bonusCalculator()
     scorer.calculateTotalScore()
     expect(scorer.totalScore).toEqual(17)
   })
@@ -67,7 +67,7 @@ describe("Scorer", function() {
     }}
     scorer.storeScore(10,21)
     scorer.storeScore(10,22)
-    scorer.spareCalculator()
+    scorer.bonusCalculator()
     scorer.calculateTotalScore()
     expect(scorer.totalScore).toEqual(300)
   })

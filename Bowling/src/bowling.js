@@ -1,19 +1,15 @@
-function Frame() {
-  this.frameNumber;
+function Frame(frameNumber) {
+  this.frameNumber = frameNumber;
 }
 
 function Bowling() {
   this.totalScore = 0;
   this.frames = new Array(10);
-
-
-  // this.frames.forEach((frame) => {
-  //   frame.frameNumber = this.frames.indexOf(frame);
-  // });
+  this.populateFrames();
 }
 
-Bowling.prototype.populateFrames = function () {
-  this.frames.forEach((frame) => {
-    frame = new Frame()
-  })
+Bowling.prototype.populateFrames = function populateFrames() {
+  for (let index = 0; index < this.frames.length; index++) {
+    this.frames[index].frameNumber = new Frame(index + 1);
+  }
 };

@@ -1,5 +1,5 @@
 plugins:
-  - react
+  # - react
   - jasmine
 env:
   browser: true
@@ -18,4 +18,8 @@ parserOptions:
   ecmaVersion: 2018
   sourceType: module
 
-rules: { semi: 2 }
+rules:
+  semi: "error"
+  
+# semi: [2, "always", { "omitLastInOneLineBlock": true}]
+# no-plusplus: [2, { allowForLoopAfterthoughts: true }]

@@ -13,7 +13,10 @@ describe('Bowling Scorecard', () => {
 
   it('a bowling game consists of 10 frames', () => {
     expect(framesArray.length).toEqual(10);
-    expect(framesArray.every(frame => frame instanceof Frame)).toBeTruthy();
+    // expect(framesArray.every(frame => frame instanceof Frame)).toBeTruthy();
+    for (const frame of bowling.frames) {
+      expect(frame instanceof Frame).toBeTruthy();
+    }
   });
 
   it('every Frame is numbered', () => {

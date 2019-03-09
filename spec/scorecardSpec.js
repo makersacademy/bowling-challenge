@@ -30,7 +30,7 @@ describe('Scorecard', function () {
 
     
     it('should return the total running scores for each frame with a finalised score', function () {
-      expect(scorecard.roll(7).runningScores).toEqual([25, 25])
+      expect(scorecard.roll(7).runningScores).toEqual([25, 50])
     })
 
     describe('Given frame for previous roll had NOT finished', function() {

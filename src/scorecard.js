@@ -17,12 +17,13 @@ Scorecard.prototype.currentFrame = function () {
 }
 
 Scorecard.prototype.runningScores = function () {
-  results = this.frames.map((frame) => { 
+  let runningScore = 0
+  return this.frames.map((frame) => { 
     if (frame.isScoreFinalised()) {
-      return frame.score()
+      runningScore += frame.score()
+      return runningScore
     }
   })
-  return results
 }
 
 Scorecard.prototype.addRollToUnfinalisedScores = function (noOfPins) {

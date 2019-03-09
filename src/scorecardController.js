@@ -3,7 +3,7 @@ $(document).ready(function() {
 
   const addRollToView = (currentFrame) => {
     $("#scorecardRows").append(
-      `<tr id="scorecardRow${currentFrame.number}Roll${currentFrame.rolls.length}">
+      `<tr class="scorecard-row${currentFrame.number}">
         <td>${currentFrame.number}</td>
         <td>${currentFrame.rolls.length}</td>
         <td>${currentFrame.rolls[currentFrame.rolls.length - 1]}</td>
@@ -14,7 +14,7 @@ $(document).ready(function() {
 
   const updateRunningScores = (runningScores) => {
     runningScores.forEach(function(runningScore, index) {
-      $(`#scorecardRow${index + 1}Roll2 .finalScoreCol`).text(runningScore)
+      const rowsForFrame = $(`.scorecard-row${index + 1}`).last().children().last().text(runningScore)
     })
   }
 

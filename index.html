@@ -7,7 +7,7 @@
   </head>
   <body>
     <div class="title">BOWLING  SCORECARD</div>
-    <form>
+    
     <div id="scorecard" class="scorecard">
         <span class="frame1">Frame 1</span>
         <span class="frame2">Frame 2</span>
@@ -21,47 +21,50 @@
         <span class="frame10">Frame 10</span>
         <span class="totalHeader">TOTAL</span>
     
-        <input type="text" id="frame1bowl1" class="frame1bowl1" size="2"/>
-        <input type="text" id="frame1bowl2" class="frame1bowl2" size="2"/>
-        <input type="text" id="frame2bowl1" class="frame2bowl1" size="2"/>
-        <input type="text" id="frame2bowl2" class="frame2bowl2" size="2"/>
-        <input type="text" id="frame3bowl1" class="frame3bowl1" size="2"/>
-        <input type="text" id="frame3bowl2" class="frame3bowl2" size="2"/>
-        <input type="text" id="frame4bowl1" class="frame4bowl1" size="2"/>
-        <input type="text" id="frame4bowl2" class="frame4bowl2" size="2"/>
-        <input type="text" id="frame5bowl1" class="frame5bowl1" size="2"/>
-        <input type="text" id="frame5bowl2" class="frame5bowl2" size="2"/>
-        <input type="text" id="frame6bowl1" class="frame6bowl1" size="2"/>
-        <input type="text" id="frame6bowl2" class="frame6bowl2" size="2"/>
-        <input type="text" id="frame7bowl1" class="frame7bowl1" size="2"/>
-        <input type="text" id="frame7bowl2" class="frame7bowl2" size="2"/>
-        <input type="text" id="frame8bowl1" class="frame8bowl1" size="2"/>
-        <input type="text" id="frame8bowl2" class="frame8bowl2" size="2"/>
-        <input type="text" id="frame9bowl1" class="frame9bowl1" size="2"/>
-        <input type="text" id="frame9bowl2" class="frame9bowl2" size="2"/>
-        <input type="text" id="frame10bowl1" class="frame10bowl1" size="2"/>
-        <input type="text" id="frame10bowl2" class="frame10bowl2" size="2"/>
-        <input type="text" id="frame10bowl3" class="frame10bowl3" size="2"/>
+        <span id="frame1bowl1" class="frame1bowl1"></span>
+        <span id="frame1bowl2" class="frame1bowl2"></span>
+        <span id="frame2bowl1" class="frame2bowl1"></span>
+        <span id="frame2bowl2" class="frame2bowl2"></span>
+        <span id="frame3bowl1" class="frame3bowl1"></span>
+        <span id="frame3bowl2" class="frame3bowl2"></span>
+        <span id="frame4bowl1" class="frame4bowl1"></span>
+        <span id="frame4bowl2" class="frame4bowl2"></span>
+        <span id="frame5bowl1" class="frame5bowl1"></span>
+        <span id="frame5bowl2" class="frame5bowl2"></span>
+        <span id="frame6bowl1" class="frame6bowl1"></span>
+        <span id="frame6bowl2" class="frame6bowl2"></span>
+        <span id="frame7bowl1" class="frame7bowl1"></span>
+        <span id="frame7bowl2" class="frame7bowl2"></span>
+        <span id="frame8bowl1" class="frame8bowl1"></span>
+        <span id="frame8bowl2" class="frame8bowl2"></span>
+        <span id="frame9bowl1" class="frame9bowl1"></span>
+        <span id="frame9bowl2" class="frame9bowl2"></span>
+        <span id="frame10bowl1" class="frame10bowl1"></span>
+        <span id="frame10bowl2" class="frame10bowl2"></span>
+        <span id="frame10bowl3" class="frame10bowl3"></span>
        
-        <span i="score1" class="score1">0</span>
-        <span i="score2" class="score2">0</span>
-        <span i="score3" class="score3">0</span>
-        <span i="score4" class="score4">0</span>
-        <span i="score5" class="score5">0</span>
-        <span i="score6" class="score6">0</span>
-        <span i="score7" class="score7">0</span>
-        <span i="score8" class="score8">0</span>
-        <span i="score9" class="score9">0</span>
-        <span i="score10" class="score10">0</span>
-        <span i="totalScore" class="totalScore">0</span>
+        <span id="score1" class="score1">0</span>
+        <span id="score2" class="score2">0</span>
+        <span id="score3" class="score3">0</span>
+        <span id="score4" class="score4">0</span>
+        <span id="score5" class="score5">0</span>
+        <span id="score6" class="score6">0</span>
+        <span id="score7" class="score7">0</span>
+        <span id="score8" class="score8">0</span>
+        <span id="score9" class="score9">0</span>
+        <span id="score10" class="score10">0</span>
+        <span id="totalScore" class="totalScore"></span>
 
     </div>
-    <button>SAVE</button>
+
+    <form>
+      <label for="pins">How many pins were knocked down?   </label>
+      <input id="pins" class="pins" type="number" min="0" max="10"/>
+      <button type="button" id="save">SAVE</button>
     </form>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="src/scorecard.js"></script>
     <script src="src/game.js"></script>
     <script src="src/frame.js"></script>
-    <!-- <script src="src/frame.js"></script> -->
+    <script src="src/scorecard.js"></script>
   </body>
 </html>

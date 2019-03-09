@@ -86,126 +86,168 @@ font-size:44px;
 }
 
 .frame1bowl1 { 
+border: 1px solid #999999;
+background-color: #cccccc;
 grid-column-start: 1; 
 grid-column-end: 2; 
 grid-row-start: 2; 
 grid-row-end: 3; 
 }
 .frame1bowl2 { 
+border: 1px solid #999999;
+background-color: #cccccc;
 grid-column-start: 2; 
 grid-column-end: 3; 
 grid-row-start: 2; 
 grid-row-end: 3; 
 }
 .frame2bowl1 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
 grid-column-start: 3; 
 grid-column-end: 4; 
 grid-row-start: 2; 
 grid-row-end: 3; 
 }
 .frame2bowl2 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
 grid-column-start: 4; 
 grid-column-end: 5; 
 grid-row-start: 2; 
 grid-row-end: 3; 
 }
 .frame3bowl1 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
 grid-column-start: 5; 
 grid-column-end: 6; 
 grid-row-start: 2; 
 grid-row-end: 3; 
 }
 .frame3bowl2 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
 grid-column-start: 6; 
 grid-column-end: 7; 
 grid-row-start: 2; 
 grid-row-end: 3; 
 }
 .frame4bowl1 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
 grid-column-start: 7; 
 grid-column-end: 8; 
 grid-row-start: 2; 
 grid-row-end: 3; 
 }
 .frame4bowl2 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
 grid-column-start: 8; 
 grid-column-end: 9; 
 grid-row-start: 2; 
 grid-row-end: 3; 
 }
 .frame5bowl1 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
 grid-column-start: 9; 
 grid-column-end: 10; 
 grid-row-start: 2; 
 grid-row-end: 3; 
 }
 .frame5bowl2 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
 grid-column-start: 10; 
 grid-column-end: 11; 
 grid-row-start: 2; 
 grid-row-end: 3; 
 }
 .frame6bowl1 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
 grid-column-start: 11; 
 grid-column-end: 12; 
 grid-row-start: 2; 
 grid-row-end: 3; 
 }
 .frame6bowl2 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
 grid-column-start: 12; 
 grid-column-end: 13; 
 grid-row-start: 2; 
 grid-row-end: 3; 
 }
 .frame7bowl1 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
 grid-column-start: 13; 
 grid-column-end: 14; 
 grid-row-start: 2; 
 grid-row-end: 3; 
 }
 .frame7bowl2 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
 grid-column-start: 14; 
 grid-column-end: 15; 
 grid-row-start: 2; 
 grid-row-end: 3; 
 }
 .frame8bowl1 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
 grid-column-start: 15; 
 grid-column-end: 16; 
 grid-row-start: 2; 
 grid-row-end: 3; 
 }
 .frame8bowl2 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
 grid-column-start: 16; 
 grid-column-end: 17; 
 grid-row-start: 2; 
 grid-row-end: 3; 
 }
 .frame9bowl1 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
 grid-column-start: 17; 
 grid-column-end: 18; 
 grid-row-start: 2; 
 grid-row-end: 3; 
 }
 .frame9bowl2 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
 grid-column-start: 18; 
 grid-column-end: 19; 
 grid-row-start: 2; 
 grid-row-end: 3; 
 }
 .frame10bowl1 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
 grid-column-start: 19; 
 grid-column-end: 20; 
 grid-row-start: 2; 
 grid-row-end: 3; 
 }
 .frame10bowl2 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
 grid-column-start: 20; 
 grid-column-end: 21; 
 grid-row-start: 2; 
 grid-row-end: 3; 
 }
 .frame10bowl3 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
 grid-column-start: 21; 
 grid-column-end: 22; 
 grid-row-start: 2; 
@@ -291,13 +333,12 @@ grid-row-end: 4;
     text-align: right;
     }
         
-input[type="text"]
+input[type="number"]
 {
     font-size:24px;
 }
-input:disabled,
-input[disabled]{
-  border: 1px solid #999999;
-  background-color: #cccccc;
-  color: #666666;
+
+label
+{
+    font-size:20px;
 }

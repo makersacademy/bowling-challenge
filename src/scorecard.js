@@ -1,22 +1,22 @@
 $( document ).ready(function(){
-    document.getElementById("frame1bowl2").disabled = true;
-    document.getElementById("frame2bowl1").disabled = true;
-    document.getElementById("frame2bowl2").disabled = true;
-    document.getElementById("frame3bowl1").disabled = true;
-    document.getElementById("frame3bowl2").disabled = true;
-    document.getElementById("frame4bowl1").disabled = true;
-    document.getElementById("frame4bowl2").disabled = true;
-    document.getElementById("frame5bowl1").disabled = true;
-    document.getElementById("frame5bowl2").disabled = true;
-    document.getElementById("frame6bowl1").disabled = true;
-    document.getElementById("frame6bowl2").disabled = true;
-    document.getElementById("frame7bowl1").disabled = true;
-    document.getElementById("frame7bowl2").disabled = true;
-    document.getElementById("frame8bowl1").disabled = true;
-    document.getElementById("frame8bowl2").disabled = true;
-    document.getElementById("frame9bowl1").disabled = true;
-    document.getElementById("frame9bowl2").disabled = true;
-    document.getElementById("frame10bowl1").disabled = true;
-    document.getElementById("frame10bowl2").disabled = true;
-    document.getElementById("frame10bowl3").disabled = true;
-  });
+   game = new Game();
+});
+
+function showScores() {
+  $( "#totalScore" ).text(game.getTotalScore());
+  for (i = 0; i <= game.currentFrame; i++) {
+    if (game.currentBowl > 1) {
+      f = i + 1
+      scoreBoxId = "#frame" + f + "bowl" + 1;
+      score = game.frames[i].bowl1;
+      $( scoreBoxId ).text(score);
+    }
+  }
+  // TO DO: final frame extra score
+}
+
+$( "#save" ).click(function(){
+  pins = parseInt(document.getElementById("pins").value);
+  game.roll(pins);
+  showScores();
+});

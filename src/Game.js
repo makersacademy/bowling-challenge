@@ -3,6 +3,7 @@ function Game(){
    this.frameScores = [];
    this.frameNumber = 1;
    this.score = 0;
+   this.bonuses = [];
 
 Game.prototype.start = function() {
   for (var i=0; i < 10; i ++){
@@ -21,8 +22,12 @@ for (var i=0; i < 10; i ++){
 // Game.prototype.frameValidation = function(frame) {
 //   if (frame > 10){throw new Error('This Game is Over!'); }
 // };
-Game.prototype.strikeCalculator = function(){
-  this.score = this.score + 10 + this.frameScores
+Game.prototype.applyBonuses = function(){
+  for (var i = 0; i < 9; i ++) {
+    if(this.frames[i].isSpare()){
+      this.bonuses.push(this.frames[i + 1].score[0])}
+      this.bonusScore = this.bonuses.sum();
+  }
 };
 
 

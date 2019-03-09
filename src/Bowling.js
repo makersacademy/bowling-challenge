@@ -23,23 +23,16 @@ Bowling.prototype.showFrames = function() {
 
 Bowling.prototype.addScore = function(score) {
   // debugger
-  if (score > 10)
-  {
-    throw new Error('score entered can not be greater than 10');
-  }
+  if (score < 0)
+  { throw new Error('score entered must be greater than 0');}
+  else if (score > 10)
+    {throw new Error('score entered can not be greater than 10');}
   else if (this.firstTryOfFrame)
-  {
-    // debugger
-    this.updateFirstTry(score);
-  }
+    {this.updateFirstTry(score);}
   else if ((score + this.currentFrame[0]) > 10)
-  {
-    throw new Error('total frame score can not be greater than 10');
-  }
-  else {
-    // debugger
-    this.updateSecondTry(score);
-  }
+    {throw new Error('total frame score can not be greater than 10');}
+  else
+    {this.updateSecondTry(score);}
 };
 
 Bowling.prototype.updateFirstTry = function(score) {

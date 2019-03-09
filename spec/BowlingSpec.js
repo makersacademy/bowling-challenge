@@ -17,6 +17,11 @@ describe("The Bowling Score Card", function() {
       game.addScore(7)
       expect(game.gameScore).toEqual(7);
     });
+    it("a negative score gives an error message is given", function() {
+      game.addFrame()
+      expect(function() {game.addScore(-3);
+      }).toThrowError('score entered must be greater than 0');
+    });
     it("a score over 10 an error message is given", function() {
       game.addFrame()
       expect(function() {game.addScore(11);

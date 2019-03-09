@@ -1,8 +1,10 @@
 describe('Bowling Scorecard', () => {
-  var bowling;
+  let bowling;
+  let framesArray;
 
   beforeEach(() => {
     bowling = new Bowling();
+    framesArray = bowling.frames;
   });
 
   it('.totalScore tracks total score, and starts at 0', () => {
@@ -10,20 +12,11 @@ describe('Bowling Scorecard', () => {
   });
 
   it('a bowling game consists of 10 frames', () => {
-    expect(bowling.frames.length).toEqual(10);
+    expect(framesArray.length).toEqual(10);
+    expect(framesArray.every(frame => frame instanceof Frame)).toBeTruthy();
+  });
 
-    // expect(bowling.frames.reduce(
-    //   (accumulator, current) => accumulator && (current instanceof Frame), true))
-    //   .toBeTruthy();
+  it('every Frame is numbered', () => {
 
-    // allFrames.forEach((frame) => {
-    //   console.log(frame);
-    //   expect(frame).toEqual(jasmine.any(Frame));
-    // });
-
-    // eslint-disable-next-line no-restricted-syntax
-    for (const frame of bowling.frames) {
-      expect(frame instanceof Frame).toBeTruthy();
-    }
   });
 });

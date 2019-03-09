@@ -5,7 +5,9 @@ describe("Frame",function(){
       var second ;
       var frame = new Frame(first,second);
       expect(frame.first_role).toEqual(first);
+      expect(frame.showFirst()).toEqual(first);
       expect(frame.second_role).toEqual(second);
+      expect(frame.showSecond()).toEqual(second);
     });
   });
   describe("Every frame can understand if it is sapre or strike.",function(){

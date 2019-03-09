@@ -12,3 +12,11 @@ Frame.prototype._isSpare = function(){
     return(true)
   }else{return(false)};
 }
+
+Frame.prototype.showFirst = function(){
+  return(this.first_role);
+}
+
+Frame.prototype.showSecond = function(){
+  return(this.second_role);
+}

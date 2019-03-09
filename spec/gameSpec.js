@@ -47,6 +47,40 @@ describe('game', function() {
             expect(game.currentBowl).toEqual(3);
         });
 
+        it('is over after 2nd bowl of last frame if frame not a strike or spare', function() {
+            for (var i = 0; i < 9; i++) {
+                game.roll(10);
+            }
+            game.roll(2);
+            expect(game.gameOver).toEqual(false);
+            game.roll(2);
+            expect(game.gameOver).toEqual(true);
+        });
+
+        it('is over after 3rd bowl of last frame if frame had a strike', function() {
+            for (var i = 0; i < 9; i++) {
+                game.roll(10);
+            }
+            game.roll(10);
+            expect(game.gameOver).toEqual(false);
+            game.roll(10);
+            expect(game.gameOver).toEqual(false);
+            game.roll(10);
+            expect(game.gameOver).toEqual(true);
+        });
+
+        it('is over after 3rd bowl of last frame if frame had a spare', function() {
+            for (var i = 0; i < 9; i++) {
+                game.roll(10);
+            }
+            game.roll(2);
+            expect(game.gameOver).toEqual(false);
+            game.roll(8);
+            expect(game.gameOver).toEqual(false);
+            game.roll(10);
+            expect(game.gameOver).toEqual(true);
+        });
+
     });
 
     describe('scoring', function() {

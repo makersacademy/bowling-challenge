@@ -2,6 +2,7 @@ function Game() {
     this.frames = this.initializeFrames();
     this.currentFrame = 0;
     this.currentBowl = 1;
+    this.gameOver = false;
 };
 
 Game.prototype.initializeFrames = function() {
@@ -47,10 +48,14 @@ Game.prototype.giveBonuses = function(pins) {
 };
 
 Game.prototype.setNextBowl = function(frame) {
-    if ((this.currentBowl === 1) && (frame.secondBowlAllowed)) {
+    if ((this.currentBowl == 1) && (frame.secondBowlAllowed)) {
         this.currentBowl = 2; 
-    } else if (frame.thirdBowlAllowed) {    
-        this.currentBowl = 3;
+    } else if (frame.finalFrame) {
+        if (this.currentBowl == 2 && frame.thirdBowlAllowed) {    
+            this.currentBowl = 3;
+        } else {
+            this.gameOver = true;
+        }
     } else {
         this.currentFrame += 1; 
         this.currentBowl = 1;
@@ -62,3 +67,4 @@ Game.prototype.giveBonus = function(frame, pins) {
         frame.addBonus(pins)
     }
 };
+

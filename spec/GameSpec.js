@@ -16,6 +16,10 @@ it('should contain 10 frames in a new game', function() {
   expect(game.frames.length).toEqual(10);
 });
 
+it('starts with a total score of 0', function(){
+  expect(game.totalScore.sum()).toEqual(0);
+});
+
 it('adds the scores of two bowl in a frame', function(){
   game.start();
   game.frames[0].bowl(1);
@@ -62,4 +66,6 @@ it('knows which frame it is in', function(){
   game.pushTotalForFrame();
   expect(game.frameNumber).toEqual(1)
 });
+
+
 });

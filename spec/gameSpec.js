@@ -17,4 +17,12 @@ describe('game', function() {
         game.roll(4);
         expect(game.getTotalScore()).toEqual(7);
     });
+
+    it('has a score that is the total of the frame scores (12 after frame1 was 7 and frame2 was 5)', function() {
+        game.roll(3);
+        game.roll(4);
+        game.roll(1);
+        game.roll(4);
+        expect(game.getTotalScore()).toEqual(12);
+    });
 });

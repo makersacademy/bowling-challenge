@@ -1,5 +1,5 @@
 body {
-    background-color: #B59DA4
+    background-color: #E01A4F
   }
 
   .title {
@@ -290,4 +290,10 @@ grid-row-end: 4;
 input[type="text"]
 {
     font-size:24px;
+}
+input:disabled,
+input[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
 }

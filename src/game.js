@@ -10,3 +10,11 @@ Game.prototype.initializeFrames = function() {
     }
     return array;
 };
+
+Game.prototype.getTotalScore = function() {
+    total = 0;
+    for (var i = 0; i < this.frames.length; i++) {
+        total += this.frames[i].getTotal();
+    }
+    return total;
+};

@@ -66,4 +66,11 @@ describe('frame', function() {
         expect(frame.thirdBowlAllowed).toEqual(true);
     });
 
+    it('allows a 3rd bowl in last frame if 2nd bowl was a spare', function() {
+        var frame = new Frame(true)
+        frame.firstBowl(1);
+        frame.secondBowl(9);
+        expect(frame.thirdBowlAllowed).toEqual(true);
+    });
+
 });

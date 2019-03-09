@@ -35,7 +35,11 @@ Frame.prototype.checkIfStrike = function() {
 
 Frame.prototype.checkIfSpare = function() {
     if (this.bowl1 + this.bowl2 === 10) {
-        this.bonusesToCome = 1;
+        if (this.finalFrame) {
+            this.thirdBowlAllowed = true;
+        } else {
+            this.bonusesToCome = 1;
+        }
     } 
 };
 

@@ -39,6 +39,14 @@ describe("Scorer", function() {
     expect(scorer.bonus[1]).toEqual(7)
   });
 
+  it("calculates game total", function() {
+    scorer.storeScore(5,1)
+    scorer.storeScore(4,2)
+    scorer.storeScore(5,3)
+    scorer.calculateTotalScore()
+    expect(scorer.totalScore).toEqual(14)
+  })
+
 
 
 

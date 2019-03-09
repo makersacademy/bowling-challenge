@@ -54,4 +54,11 @@ describe('Frame', function(){
     expect(frame.isSpare()).toEqual(true)
     //spare is when the second roll knocks all remaining pins down
   });
+
+  it('rolls additional bowls if strike or spare is bowled in the 10th frame', function(){
+    frame.bowl(1)
+    frame.bowl(9)
+    frame.bonusBowl(10)
+    expect(frame.score.sum()).toEqual(20)
+  });
 });

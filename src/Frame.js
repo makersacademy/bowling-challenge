@@ -50,4 +50,13 @@ Frame.prototype.isSpare = function(){
   return (this.score.sum() === 10 && this.score[0]!=10)
 };
 
+Frame.prototype.bonusBowl = function(pins_hit){
+  if(this.score.length === 2 && (this.isSpare() || this.isStrike())){
+    this.score.push(pins_hit);
+  } else {
+    return ('Game Over');
+  };
+
+};
+
 };

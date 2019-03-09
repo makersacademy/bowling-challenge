@@ -10,6 +10,7 @@ function Frame(firstRoll, secondRoll) {
 }
 
 Frame.prototype.scoreFrame = function() {
+  
   for(var roll = 0; roll < this.rolls.length; roll++) { 
     this.score += this.rolls[roll];
   }

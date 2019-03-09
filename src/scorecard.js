@@ -4,22 +4,39 @@ function Scorecard(Frame) {
   this.frames = [frame]
 }
 
+Scorecard.prototype.newFrameIfCurrFrameFinished = function () {
+  if (this.currentFrame().isFinished()) {
+    this.frames.push(new this.Frame())
+  }
+}
+
 Scorecard.prototype.currentFrame = function () {
   return this.frames[this.frames.length - 1]
 }
 
-Scorecard.prototype.roll = function (noOfPins) {
-  if (this.currentFrame().isFinished()) {
-    this.frames.push(new this.Frame())
-  }
-
-  const reversedFrames = this.frames.reverse();
-  const lastScoredFrame = reversedFrames.find((frame) => { 
-    return frame.isScoreFinalised() === true 
+Scorecard.prototype.runningScores = function () {
+  return this.frames.map((frame) => { 
+    if (frame.isScoreFinalised()) {
+      return frame.score
+    }
   })
+}
+
+Scorecard.prototype.addRollToUnfinalisedScores = function (noOfPins) {
+  this.frames.forEach((frame) => { 
+    if (frame.isScoreFinalised() === false) {
+      frame.addRoll(noOfPins)
+    }
+  })
+}
+
+Scorecard.prototype.roll = function (noOfPins) {
+  this.addRollToUnfinalisedScores(noOfPins)
+
+  this.newFrameIfCurrFrameFinished()
 
   return {
     currentFrame: this.currentFrame(),
-    lastScoredFrame: lastScoredFrame
+    runningScores: this.runningScores()
   }
 }

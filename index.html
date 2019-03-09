@@ -11,13 +11,14 @@
     hello bowling world
 
   <div class="container">
-    <table class="table table-bordered table-hover">
+    <table id="scoreTable" class="table table-bordered table-hover">
       <thead class="thead-dark">
         <tr>
           <th scope="col">Turn</th>
           <th scope="col">First</th>
           <th scope="col">Second</th>
           <th scope="col">Extra</th>
+          <th scope="col">Note</th>
         </tr>
       </thead>
       <tbody>
@@ -25,7 +26,8 @@
           <th scope="row">1</th>
           <td><input class="rollScoreBox" type="text" id="1-1" min="0" max="10"></td>
           <td><input class="rollScoreBox" type="text" id="1-2"></td>
-          <td><input class="rollScoreBox" type="text" id="1-bonus"></td>
+          <td id="1-bonus"></td>
+          <td id="1-note"></td>
         </tr>
         <tr>
           <th scope="row">2</th>
@@ -35,21 +37,21 @@
         </tr>
         <tr>
           <th scope="row">3</th>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
+          <td><input class="rollScoreBox" type="text" id="3-1"></td>
+          <td><input class="rollScoreBox" type="text" id="3-2"></td>
+          <td><input class="rollScoreBox" type="text" id="3-bonus"></td>
         </tr>
         <tr>
           <th scope="row">4</th>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
+          <td><input class="rollScoreBox" type="text" id="4-1"></td>
+          <td><input class="rollScoreBox" type="text" id="4-2"></td>
+          <td><input class="rollScoreBox" type="text" id="4-bonus"></td>
         </tr>
         <tr>
           <th scope="row">5</th>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
+          <td><input class="rollScoreBox" type="text" id="5-1"></td>
+          <td><input class="rollScoreBox" type="text" id="5-2"></td>
+          <td><input class="rollScoreBox" type="text" id="5-bonus"></td>
         </tr>
         <tr>
           <th scope="row">6</th>

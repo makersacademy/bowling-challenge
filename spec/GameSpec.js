@@ -55,4 +55,11 @@ it('knows which frame it is in', function(){
   game.pushTotalForFrame();
   expect(game.frameNumber).toEqual(2)
 });
+
+
+it('knows which frame it is in', function(){
+  game.start();
+  game.pushTotalForFrame();
+  expect(game.frameNumber).toEqual(1)
+});
 });

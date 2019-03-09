@@ -12,9 +12,11 @@ Game.prototype.start = function() {
 Game.prototype.pushTotalForFrame = function(){
 //sum elements of this.frames
 for (var i=0; i < 10; i ++){
-  this.totalScore.push(this.frames[i].score.sum())};
-  this.frameNumber +=1;
+  this.totalScore.push(this.frames[i].score.sum())
+  this.frameNumber = this.totalScore.indexOf(this.frames[i].score.sum())+ 1;
 };
+};
+
 
 };
 

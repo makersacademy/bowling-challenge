@@ -1,0 +1,38 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "interface.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "dependencies": {
+    "codecov": "^3.1.0"
+  },
+  "devDependencies": {
+    "coveralls": "^3.0.2",
+    "dotenv": "^6.1.0",
+    "eslint": "^5.9.0",
+    "grunt": "^1.0.3",
+    "grunt-cli": "^1.3.2",
+    "grunt-contrib-jasmine": "^2.0.2",
+    "jasmine": "^3.3.0",
+    "nyc": "^13.1.0"
+  },
+  "scripts": {
+    "test": "jasmine",
+    "lint": "eslint",
+    "report-coverage": "codecov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MHUS25/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MHUS25/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/MHUS25/bowling-challenge#readme"
+}

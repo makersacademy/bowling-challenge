@@ -32,6 +32,18 @@ Frame.prototype.bowlValidation = function(pins){
 
 Frame.prototype.bowlStrike = function() {
   this.score.push(10);
+  this.pins.splice(0,10);
+  this.score.length == this.FRAMESIZE;
+  return ('Strike!');
+};
+
+Frame.prototype.isStrike = function(){
+  return (this.score[0] === 10)
+};
+
+Frame.prototype.sparePins = function(pins_hit){
+  pins = 10 - pins_hit;
+  return pins
 };
 
 };

@@ -22,22 +22,14 @@ Game.prototype.getTotalScore = function() {
 };
 
 Game.prototype.roll = function(pins) {
+    var frame = this.frames[this.currentFrame]
     if (this.currentBowl === 1) {
-        var frame = this.frames[this.currentFrame];
         frame.firstBowl(pins);
-        this.giveBonuses(pins);
-        if (frame.secondBowlAllowed) {
-            this.currentBowl = 2; 
-        } else {
-            this.currentFrame += 1; // TO DO: if it is the last frame
-        }
     } else {
-        this.frames[this.currentFrame].secondBowl(pins);
-        this.giveBonuses(pins);
-        this.currentBowl = 1;
-        this.currentFrame += 1;
-        // TO DO: if it is the last frame
+        frame.secondBowl(pins);
     }
+    this.giveBonuses(pins);
+    this.setNextBowl(frame)
 };
 
 Game.prototype.giveBonuses = function(pins) {
@@ -48,5 +40,15 @@ Game.prototype.giveBonuses = function(pins) {
     var prevFrame = this.frames[this.currentFrame - 1];
     if (prevFrame.isAwaitingBonus()) {
         prevFrame.addBonus(pins)
+    }
+    //TO DO: checking if frame before previous needs a bonus
+};
+
+Game.prototype.setNextBowl = function(frame) {
+    if ((this.currentBowl === 1) && (frame.secondBowlAllowed)) {
+        this.currentBowl = 2; 
+    } else {
+        this.currentFrame += 1; // TO DO: if it is the last frame
+        this.currentBowl = 1;
     }
 };

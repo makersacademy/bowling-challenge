@@ -52,4 +52,5 @@ describe('frame', function() {
         frame.firstBowl(10);
         expect(frame.secondBowlAllowed).toEqual(false);
     });
+
 });

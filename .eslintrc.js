@@ -16,7 +16,8 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    semi: [2, 'always', { "omitLastInOneLineBlock": true}],
+    semi: [2, 'always',],
+    // semi: [2, 'always', { "omitLastInOneLineBlock": true}],
     'no-plusplus': [2, { allowForLoopAfterthoughts: true }]
   },
 };

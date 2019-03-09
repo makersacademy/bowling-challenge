@@ -1,5 +1,6 @@
 function Frame(frameNumber) {
   this.frameNumber = frameNumber;
+  this.rolls = [];
 }
 
 function Bowling() {
@@ -8,8 +9,17 @@ function Bowling() {
   this.populateFrames();
 }
 
+Bowling.prototype.addRoll = function addRoll({ frame, pinsDown }) {
+  const framesArray = this.frames;
+  const arrayIndex = frame - 1;
+  const rollsArray = framesArray[arrayIndex].rolls;
+  rollsArray.push(pinsDown);
+};
+
 Bowling.prototype.populateFrames = function populateFrames() {
-  for (let index = 0; index < this.frames.length; index++) {
-    this.frames[index].frameNumber = new Frame(index + 1);
+  const framesArray = this.frames;
+
+  for (let index = 0; index < framesArray.length; index++) {
+    framesArray[index] = new Frame(index + 1);
   }
 };

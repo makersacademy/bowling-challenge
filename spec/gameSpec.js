@@ -28,6 +28,15 @@ describe('game', function() {
             expect(game.currentBowl).toEqual(2);
         });
 
+        it('ends with a 3rd roll on the final frame if it is allowed (after a strike on 1st bowl)', function() {
+            for (var i = 0; i < 10; i++) {
+                game.roll(10);
+            }
+            game.roll(2);
+            expect(game.currentFrame).toEqual(9);
+            expect(game.currentBowl).toEqual(3);
+        });
+
     });
 
     describe('scoring', function() {

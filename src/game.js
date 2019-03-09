@@ -47,6 +47,8 @@ Game.prototype.giveBonuses = function(pins) {
 Game.prototype.setNextBowl = function(frame) {
     if ((this.currentBowl === 1) && (frame.secondBowlAllowed)) {
         this.currentBowl = 2; 
+    } else if (frame.thirdBowlAllowed) {    
+        this.currentBowl = 3;
     } else {
         this.currentFrame += 1; // TO DO: if it is the last frame
         this.currentBowl = 1;

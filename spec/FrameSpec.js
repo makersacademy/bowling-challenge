@@ -20,4 +20,9 @@ describe('Frame', function(){
   it('cannot knock less than 0 pins in one frame', function(){
     expect(function(){frame.bowl(-1)}).toThrowError('Negative Number!')
   })
+
+  it('can bowl a strike', function(){
+    frame.bowlStrike();
+    expect(frame.score).toContain(10)
+  });
 });

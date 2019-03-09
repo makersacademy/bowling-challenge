@@ -30,4 +30,8 @@ Frame.prototype.bowlValidation = function(pins){
   if (pins < 0) {throw new Error('Negative Number!'); }
 };
 
+Frame.prototype.bowlStrike = function() {
+  this.score.push(10);
+};
+
 };

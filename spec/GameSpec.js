@@ -17,14 +17,14 @@ it('should contain 10 frames in a new game', function() {
 });
 
 it('starts with a total score of 0', function(){
-  expect(game.totalScore.sum()).toEqual(0);
+  expect(game.frameScores.sum()).toEqual(0);
 });
 
 it('adds the scores of two bowl in a frame', function(){
   game.frames[0].bowl(1);
   game.frames[0].bowl(4);
   game.pushTotalForFrame();
-  expect(game.totalScore[0]).toEqual(5);
+  expect(game.frameScores[0]).toEqual(5);
 });
 
 it('adds the scores of many frames for a player', function(){
@@ -35,7 +35,7 @@ it('adds the scores of many frames for a player', function(){
   game.frames[6].bowl(2);
   game.frames[6].bowl(2);
   game.pushTotalForFrame();
-  expect(game.totalScore.sum()).toEqual(14);
+  expect(game.frameScores.sum()).toEqual(14);
 });
 
 it('keeps track of frame scores bowls', function(){
@@ -46,7 +46,7 @@ it('keeps track of frame scores bowls', function(){
   game.frames[6].bowl(2);
   game.frames[6].bowl(2);
   game.pushTotalForFrame();
-  expect(game.totalScore).toEqual([5,0,0,5,0,0,4,0,0,0]);
+  expect(game.frameScores).toEqual([5,0,0,5,0,0,4,0,0,0]);
 });
 
 it('knows which frame it is in', function(){
@@ -62,8 +62,10 @@ it('knows which frame it is in', function(){
   expect(game.frameNumber).toEqual(1)
 });
 
-// it('player cannot knock more than 10 pins down in a bowl', function(){
-// //this might have to be moved to the frame class
-//   expect(function(){game.frames[0].bowl(11)})
+// it('cannot contain more than 10 frames in 1 game', function(){
+//   // expect(game.frames[10].bowl(1)).toBeUndefined()
+//   // expect(function(){ game.frames[10].bowl(1) }).toThrowError('This Game is Over!')
 // });
+
+
 });

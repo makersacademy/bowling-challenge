@@ -47,6 +47,15 @@ describe("Scorer", function() {
     expect(scorer.totalScore).toEqual(14)
   })
 
+  it("adds two extra scores to rolls data structure when 19th is a strike", function() {
+    scorer.storeScore(10,19)
+    scorer.storeScore(0,20)
+    scorer.storeScore(3,21)
+    scorer.storeScore(4,22)
+    scorer.calculateTotalScore()
+    expect(scorer.totalScore).toEqual(17)
+  })
+
 
 
 

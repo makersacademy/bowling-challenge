@@ -1,12 +1,14 @@
 function Scorecard(Frame) {
   this.Frame = Frame
-  const frame = new Frame()
+  const frameNumber = 1
+  const frame = new Frame(frameNumber)
   this.frames = [frame]
 }
 
 Scorecard.prototype.newFrameIfCurrFrameFinished = function () {
   if (this.currentFrame().isFinished()) {
-    this.frames.push(new this.Frame())
+    const frameNumber = this.frames.length + 1
+    this.frames.push(new this.Frame(frameNumber))
   }
 }
 
@@ -15,11 +17,12 @@ Scorecard.prototype.currentFrame = function () {
 }
 
 Scorecard.prototype.runningScores = function () {
-  return this.frames.map((frame) => { 
+  results = this.frames.map((frame) => { 
     if (frame.isScoreFinalised()) {
-      return frame.score
+      return frame.score()
     }
   })
+  return results
 }
 
 Scorecard.prototype.addRollToUnfinalisedScores = function (noOfPins) {
@@ -31,9 +34,9 @@ Scorecard.prototype.addRollToUnfinalisedScores = function (noOfPins) {
 }
 
 Scorecard.prototype.roll = function (noOfPins) {
-  this.addRollToUnfinalisedScores(noOfPins)
-
   this.newFrameIfCurrFrameFinished()
+
+  this.addRollToUnfinalisedScores(noOfPins)
 
   return {
     currentFrame: this.currentFrame(),

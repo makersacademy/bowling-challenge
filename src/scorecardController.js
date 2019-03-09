@@ -1,5 +1,28 @@
 $(document).ready(function() {
+  const scorecard = new Scorecard(Frame)
+
+  const addRollToView = (currentFrame) => {
+    $("#scorecardRows").append(
+      `<tr id="scorecardRow${currentFrame.number}Roll${currentFrame.rolls.length}">
+        <td>${currentFrame.number}</td>
+        <td>${currentFrame.rolls.length}</td>
+        <td>${currentFrame.rolls[currentFrame.rolls.length - 1]}</td>
+        <td class="finalScoreCol"></td>
+      </tr>`
+    )
+  }
+
+  const updateRunningScores = (runningScores) => {
+    runningScores.forEach(function(runningScore, index) {
+      $(`#scorecardRow${index + 1}Roll2 .finalScoreCol`).text(runningScore)
+    })
+  }
+
   $('#addRoll').on('click', function() {
-    scorecard.roll($('#rollValue').val())
+    const rollValue = parseInt($('#rollValue').val(),10)
+    const scorecardValues = scorecard.roll(rollValue)
+
+    addRollToView(scorecardValues.currentFrame)
+    updateRunningScores(scorecardValues.runningScores)
   })
 })

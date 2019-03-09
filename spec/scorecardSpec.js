@@ -9,7 +9,7 @@ describe('Scorecard', function () {
     const stubAddRoll = (noOfPins) => { addRollCalls.push(noOfPins) }
 
     mockFrameClass = function() {
-      this.score = 25
+      this.score = () => 25
       this.addRoll = stubAddRoll
     }
 
@@ -25,7 +25,7 @@ describe('Scorecard', function () {
 
       scorecard.roll(7)
 
-      expect(addRollCalls).toEqual([7]);
+      expect(addRollCalls).toEqual([7, 7]);
     })
 
     

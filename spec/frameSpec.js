@@ -1,8 +1,13 @@
 
 describe('Frame', function () {
   beforeEach(function () {
-    frame = new Frame()
+    frame = new Frame(1)
   })
+
+  it('should return frame number', function () {
+    expect(frame.number).toEqual(1)
+  })
+
 
   it('should be finished after two rolls', function () {
     frame.addRoll(3)

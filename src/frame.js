@@ -1,5 +1,6 @@
-function Frame() {
+function Frame(number) {
   this.rolls = []
+  this.number = number
 }
 
 Frame.prototype.addRoll = function (noOfPins) {

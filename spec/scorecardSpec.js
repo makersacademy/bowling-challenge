@@ -2,19 +2,25 @@
 describe('Scorecard', function () {
   let scorecard
   let mockFrameClass
-  let addRollCalls
+  let frameAddRollSpy
 
-  beforeEach(function () {
-    addRollCalls = []
-    const stubAddRoll = (noOfPins) => { addRollCalls.push(noOfPins) }
-
-    mockFrameClass = function() {
+  function newMockFrameClass() {
+    const frameAddRollSpy = []
+    const stubAddRoll = (noOfPins) => { frameAddRollSpy.push(noOfPins) }
+  
+    const mockFrameClass = function() {
       this.score = () => 25
       this.addRoll = stubAddRoll
     }
 
     mockFrameClass.prototype.isScoreFinalised = function() { return true }
     mockFrameClass.prototype.isFinished = function() { return true }
+
+    return { frameAddRollSpy, mockFrameClass }
+  }
+
+  beforeEach(function () {
+    ({ frameAddRollSpy, mockFrameClass } = newMockFrameClass())
 
     scorecard = new Scorecard(mockFrameClass)
   })
@@ -25,7 +31,7 @@ describe('Scorecard', function () {
 
       scorecard.roll(7)
 
-      expect(addRollCalls).toEqual([7, 7]);
+      expect(frameAddRollSpy).toEqual([7, 7]);
     })
 
     

@@ -26,19 +26,19 @@ describe('game', function() {
         expect(game.getTotalScore()).toEqual(12);
     });
 
-    // it('has a score that is the total of the frame scores (17 after frame1 was a spare and frame2 was 2 + 3)', function() {
-    //     game.roll(9);
-    //     game.roll(1);
-    //     game.roll(2);
-    //     game.roll(3);
-    //     expect(game.getTotalScore()).toEqual(17);
-    // });
-
     it('checks whether the 1st frame is awaiting a bonus after the 1st bowl of the 2nd frame', function() {
         spyOn(game, 'giveBonuses');
         game.roll(9);
         game.roll(1);
         game.roll(2);
         expect(game.giveBonuses).toHaveBeenCalled();
+    });
+
+    it('has a score that is the total of the frame scores (17 after frame1 was a spare and frame2 was 2 + 3)', function() {
+        game.roll(9);
+        game.roll(1);
+        game.roll(2);
+        game.roll(3);
+        expect(game.getTotalScore()).toEqual(17);
     });
 });

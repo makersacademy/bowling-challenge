@@ -1,7 +1,7 @@
 function Game() {
     this.frames = this.initializeFrames();
     this.currentFrame = 0;
-    this.currentBowl = 0;
+    this.currentBowl = 1;
 };
 
 Game.prototype.initializeFrames = function() {
@@ -40,7 +40,7 @@ Game.prototype.giveBonuses = function(pins) {
     };
 
     var prevFrame = this.frames[this.currentFrame - 1];
-    if (prevFrame.awaitingBonuses) {
+    if (prevFrame.isAwaitingBonus) {
         prevFrame.addBonus(pins)
     }
 };

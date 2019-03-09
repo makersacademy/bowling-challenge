@@ -6,7 +6,7 @@ function Frame() {
 };
 
 Frame.prototype.getTotal = function() {
-    return this.bowl1 + this.bowl2;
+    return this.bowl1 + this.bowl2 + this.bonus;
 };
 
 Frame.prototype.firstBowl = function(pins) {

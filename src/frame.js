@@ -4,6 +4,7 @@ function Frame(finalFrame) {
     this.bonus = 0;
     this.bonusesToCome = 0;
     this.secondBowlAllowed = true;
+    this.thirdBowlAllowed = false;
     this.finalFrame = finalFrame;
 };
 
@@ -23,11 +24,13 @@ Frame.prototype.secondBowl = function(pins) {
 
 Frame.prototype.checkIfStrike = function() {
     if (this.bowl1 == 10) {
-        this.bonusesToCome = 2;
-        if (!this.finalFrame) {
+        if (this.finalFrame) {
+            this.thirdBowlAllowed = true;
+        } else {
+            this.bonusesToCome = 2;  // TO DO: no bonuses on final frame
             this.secondBowlAllowed = false;
         }
-    }
+    } 
 };
 
 Frame.prototype.checkIfSpare = function() {

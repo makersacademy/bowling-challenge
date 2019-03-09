@@ -13,5 +13,11 @@ $(document).ready(function() {
       $("#scoreShow").text("Your score is: " + scorecard.totalScore)
   });
 
+  $("#strikeExtraRolls").hide();
+  $("#spareExtraRoll").hide();
+
+  jQuery('#note-10').bind('DOMSubtreeModified',function(event) {
+    $("#strikeExtraRolls").toggle();
+  });
 
 });

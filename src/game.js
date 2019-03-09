@@ -33,6 +33,7 @@ Game.prototype.roll = function(pins) {
         }
     } else {
         this.frames[this.currentFrame].secondBowl(pins);
+        this.giveBonuses(pins);
         this.currentBowl = 1;
         this.currentFrame += 1;
         // TO DO: if it is the last frame

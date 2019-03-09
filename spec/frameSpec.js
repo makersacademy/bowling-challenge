@@ -39,6 +39,17 @@ describe('Frame', function () {
         frame.addRoll(10)
         frame.addRoll(10)
         expect(frame.isScoreFinalised()).toEqual(false)
+
+        frame.addRoll(10)
+        expect(frame.isScoreFinalised()).toEqual(true)
+      })
+    })
+
+    describe('And that frame had a spare', function () {
+      it('frame score should only be finalised after three rolls', function () {
+        frame.addRoll(5)
+        frame.addRoll(5)
+        expect(frame.isScoreFinalised()).toEqual(false)
         
         frame.addRoll(10)
         expect(frame.isScoreFinalised()).toEqual(true)

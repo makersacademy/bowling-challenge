@@ -8,7 +8,7 @@ Frame.prototype.addRoll = function (noOfPins) {
 }
 
 Frame.prototype.isScoreFinalised = function () {
-  if (this.rolls[0] === 10) {
+  if (this.rolls[0] === 10 || (this.rolls[0] + this.rolls[1] === 10)) {
     return this.rolls.length == 3
   }
   return this.rolls.length == 2

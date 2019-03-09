@@ -1,11 +1,10 @@
 function Frame() {
-    this.total = 0;
     this.bowl1 = 0;
     this.bowl2 = 0;
 };
 
 Frame.prototype.getTotal = function() {
-    return this.total;
+    return this.bowl1 + this.bowl2;
 };
 
 Frame.prototype.firstBowl = function(pins) {

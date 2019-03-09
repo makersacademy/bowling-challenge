@@ -1,6 +1,7 @@
 function Frame() {
     this.bowl1 = 0;
     this.bowl2 = 0;
+    this.bonus = 0;
     this.isAwaitingBonus = false;
 };
 
@@ -23,4 +24,8 @@ Frame.prototype.checkIfSpare = function() {
     } else {
         this.isAwaitingBonus = false;
     }
+};
+
+Frame.prototype.addBonus = function(pins) {
+    this.bonus += pins
 };

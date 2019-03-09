@@ -28,4 +28,9 @@ describe('frame', function() {
         frame.secondBowl(1);
         expect(frame.isAwaitingBonus).toEqual(true);
     });
+
+    it('stores a bonus', function() {
+        frame.addBonus(2);
+        expect(frame.bonus).toEqual(2);
+    });
 });

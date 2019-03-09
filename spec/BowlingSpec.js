@@ -32,13 +32,18 @@ describe("The Bowling Score Card", function() {
       game.addScore(10)
       expect(game.frameStatus).toEqual('Strike');
     });
-    it("if the first and second goes add up to 10 then the game has status of 'Spare'", function() {
+    it("if the game has status of 'Strike' then there is no second try and the player moves onto the next frame", function() {
+      game.addFrame()
+      game.addScore(10)
+      expect(game.gameTries.length).toEqual(1);
+    });
+    it("if the first and second scores add up to 10 then the game has status of 'Spare'", function() {
       game.addFrame()
       game.addScore(3)
       game.addScore(7)
       expect(game.frameStatus).toEqual('Spare');
     });
-    it("if the first and second goes don't add up to 10 then the game has status of 'Play'", function() {
+    it("if the first and second scores don't add up to 10 then the game has status of 'Play'", function() {
       game.addFrame()
       game.addScore(3)
       game.addScore(4)
@@ -58,7 +63,7 @@ describe("The Bowling Score Card", function() {
       game.addScore(3)
       expect(game.gameOver).toBe(false);
       });
-    it("when 10 frames have been played the game is over if the last try was not a Strike or Spare", function() {
+    it("when 10 frames have been played the game is over if the last try was not a Strike", function() {
       game.addFrame()
       var i;
       for (i = 0; i < 11; i++) {
@@ -67,14 +72,43 @@ describe("The Bowling Score Card", function() {
       }
       expect(game.gameOver).toBe(true);
     });
-    it("if the last try was a Spare, the game is not over", function() {
+    it("if the last try was a Strike, the game is not over", function() {
       game.addFrame()
       var i;
-      for (i = 0; i < 19; i++) {
+      for (i = 0; i < 18; i++) {
         game.addScore(1);
       }
-      game.addScore(9);
+      game.addScore(10);
       expect(game.gameOver).toBe(false);
+    });
+    it("if the last try was a Strike, there is one more frame allowed", function() {
+      game.addFrame()
+      var i;
+      for (i = 0; i < 18; i++) {
+        game.addScore(1);
+      }
+      game.addScore(10);
+      game.addScore(2);
+      expect(game.gameScore).toEqual(30);
+    });
+    it("if the bonus frame was also a Strike, there is one more frame allowed", function() {
+      game.addFrame()
+      var i;
+      for (i = 0; i < 18; i++) {
+        game.addScore(1);
+      }
+      game.addScore(10);
+      game.addScore(10);
+      game.addScore(2);
+      expect(game.gameScore).toEqual(40);
+    });
+    it("if all 12 frames were Strikes,then the game is perfect and the score is 300", function() {
+      game.addFrame()
+      var i;
+      for (i = 0; i < 12; i++) {
+        game.addScore(10);
+      }
+      expect(game.gameScore).toEqual(300);
     });
   });
 });

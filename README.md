@@ -51,3 +51,16 @@ Note that a score of 0 is a GUTTER score and a score of 300 is a PERFECT score
 - If the last frame was a strike then then both tries on the next frame are doubled
 - If the last frame was a spare then then the first try on the next frame is doubled
 - If the total score = 120 then it is a perfect score and the score is set to 300
+
+## Data Structures
+Each frame is an array of length 2, for each score.
+As the scores are entered they are checked to be valid and the game status is changed from 'Play',
+to 'Spare' or Strike' as necessary.
+
+If the frame is valid then it it pushed onto the game array, which is an array of array score pairs.
+If the frame is a 'Strike' then the incomplete array is pushed onto the game array and the game moves on.
+
+If the game array is length 10 then 10 frames have been played and unless the last frame is a 'Strike' then the game is over.
+If the last game is a 'Strike' then a further frame can be played, if this too is a 'Strike' then one final frame can be played.
+
+The score is calculated as play continues.

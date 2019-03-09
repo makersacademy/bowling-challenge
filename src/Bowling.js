@@ -44,28 +44,39 @@ Bowling.prototype.updateFirstTry = function(score) {
 Bowling.prototype.updateSecondTry = function(score) {
   this.currentFrame[1] = score
   this.updateTry(score)
+  this.nextFrame()
+};
+
+Bowling.prototype.nextFrame = function() {
   this.gameTries.push(this.currentFrame);
   this.currentFrame = []
 };
 
 Bowling.prototype.updateTry = function(score) {
-  this.gameScore += score
+  this.updateScore(score);
   this.checkStatus();
   this.firstTryOfFrame = !this.firstTryOfFrame
+};
+
+Bowling.prototype.updateScore = function(score) {
+  this.gameScore += score
+  if (this.gameScore == 120)
+  { this.gameScore = 300}
 };
 
 Bowling.prototype.checkStatus = function() {
   // debugger
   if (this.firstTryOfFrame && this.currentFrame[0] == 10)
-    {this.frameStatus = "Strike"}
+    {
+      this.frameStatus = "Strike"
+      this.nextFrame()
+     }
   else if ((this.currentFrame[0] + this.currentFrame[1]) == 10)
     {this.frameStatus = "Spare"}
   else
-    {
-     this.frameStatus = "Play"
-     if (this.gameTries.length == 10)
-       {this.gameOver = true;}
-    }
+    {this.frameStatus = "Play"}
+  if (this.gameTries.length == 10 && this.frameStatus != "Strike")
+    {this.gameOver = true;}
     // console.log(this.frameStatus);
     // console.log(this.gameTries.length);
 };

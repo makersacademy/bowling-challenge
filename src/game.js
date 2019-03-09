@@ -33,15 +33,13 @@ Game.prototype.roll = function(pins) {
 };
 
 Game.prototype.giveBonuses = function(pins) {
-    if (this.currentFrame == 0) {
-        return
-    };
-
-    var prevFrame = this.frames[this.currentFrame - 1];
-    if (prevFrame.isAwaitingBonus()) {
-        prevFrame.addBonus(pins)
+    for (var i = 1; i <= 2; i++) {
+        frameIdx = this.currentFrame - i;
+        if (frameIdx >= 0) {
+            prevFrame = this.frames[frameIdx];
+            this.giveBonus(prevFrame, pins)
+        }
     }
-    //TO DO: checking if frame before previous needs a bonus
 };
 
 Game.prototype.setNextBowl = function(frame) {
@@ -50,5 +48,11 @@ Game.prototype.setNextBowl = function(frame) {
     } else {
         this.currentFrame += 1; // TO DO: if it is the last frame
         this.currentBowl = 1;
+    }
+};
+
+Game.prototype.giveBonus = function(frame, pins) {
+    if (frame.isAwaitingBonus()) {
+        frame.addBonus(pins)
     }
 };

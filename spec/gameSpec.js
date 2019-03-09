@@ -70,5 +70,13 @@ describe('game', function() {
             game.roll(3);
             expect(game.getTotalScore()).toEqual(20);
         });
+
+        it('has a score that is the total of the frame scores (42 if first 2 frames are strikes and frame3 was 2 + 3', function() {
+            game.roll(10);
+            game.roll(10);
+            game.roll(2);
+            game.roll(3);
+            expect(game.getTotalScore()).toEqual(42);
+        });
     });
 });

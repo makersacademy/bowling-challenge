@@ -27,7 +27,7 @@ Frame.prototype.checkIfStrike = function() {
         if (this.finalFrame) {
             this.thirdBowlAllowed = true;
         } else {
-            this.bonusesToCome = 2;  // TO DO: no bonuses on final frame
+            this.bonusesToCome = 2;  
             this.secondBowlAllowed = false;
         }
     } 

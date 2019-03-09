@@ -73,4 +73,16 @@ describe('frame', function() {
         expect(frame.thirdBowlAllowed).toEqual(true);
     });
 
+    it('does not await bonuses after a strike in the final frame as the 2nd and 3rd rolls cover it', function() {
+        var frame = new Frame(true)
+        frame.firstBowl(10);
+        expect(frame.isAwaitingBonus()).toEqual(false);
+    });
+
+    it('does not await bonuses after a spare in the final frame as the 3rd roll covers it', function() {
+        var frame = new Frame(true)
+        frame.firstBowl(6);
+        frame.secondBowl(4);
+        expect(frame.isAwaitingBonus()).toEqual(false);
+    });
 });

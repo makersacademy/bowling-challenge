@@ -48,5 +48,11 @@ it('keeps track of frame scores bowls', function(){
   expect(game.totalScore).toEqual([5,0,0,5,0,0,4,0,0,0]);
 });
 
-
+it('knows which frame it is in', function(){
+  game.start();
+  game.frames[0].bowl(1);
+  game.frames[0].bowl(4);
+  game.pushTotalForFrame();
+  expect(game.frameNumber).toEqual(2)
+});
 });

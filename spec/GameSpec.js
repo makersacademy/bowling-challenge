@@ -24,7 +24,7 @@ it('adds the scores of two bowl in a frame', function(){
   expect(game.totalScore[0]).toEqual(5);
 });
 
-it('adds the scores of many frames', function(){
+it('adds the scores of many frames for a player', function(){
   game.start();
   game.frames[0].bowl(1);
   game.frames[0].bowl(4);
@@ -35,5 +35,18 @@ it('adds the scores of many frames', function(){
   game.pushTotalForFrame();
   expect(game.totalScore.sum()).toEqual(14);
 });
+
+it('keeps track of frame scores bowls', function(){
+  game.start();
+  game.frames[0].bowl(1);
+  game.frames[0].bowl(4);
+  game.frames[3].bowl(1);
+  game.frames[3].bowl(4);
+  game.frames[6].bowl(2);
+  game.frames[6].bowl(2);
+  game.pushTotalForFrame();
+  expect(game.totalScore).toEqual([5,0,0,5,0,0,4,0,0,0]);
+});
+
 
 });

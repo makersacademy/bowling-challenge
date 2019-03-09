@@ -4,5 +4,11 @@ describe("Count",function(){
       var count = new Count();
       expect(count.array).toEqual([]);
     });
+    it("When a frame is added, it will be in count's array",function(){
+      var frame ;
+      var count = new Count();
+      count.add(frame);
+      expect(count.array).toContain(frame);
+    });
   });
 });

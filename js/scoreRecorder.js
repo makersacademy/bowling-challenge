@@ -14,7 +14,6 @@ $(document).ready(function() {
   });
 
   $("#strikeExtraRolls").hide();
-  $("#spareExtraRoll").hide();
 
   jQuery('#note-10').bind('DOMSubtreeModified',function(event) {
     $("#strikeExtraRolls").toggle();

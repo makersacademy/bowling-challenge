@@ -19,3 +19,11 @@ table[class="table table-bordered table-hover"]{
 input[class="rollScoreBox"]{
   width: 70px;
 }
+
+h2 {
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}

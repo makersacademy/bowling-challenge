@@ -7,6 +7,7 @@ function Game() {
 }
 
 Game.prototype.addFrame = function(firstRoll, secondRoll) {
+  console.log('adding frame (' + firstRoll + ',' + secondRoll + ')');
   var frame = new Frame(firstRoll, secondRoll);
   this.frames.push(frame);
 }

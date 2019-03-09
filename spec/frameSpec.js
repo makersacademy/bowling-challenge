@@ -22,4 +22,10 @@ describe('frame', function() {
         frame.secondBowl(4);
         expect(frame.getTotal()).toEqual(7);
     });
+
+    it('awaits a bonus if a spare (bowl1 + bowl2 = 10)', function() {
+        frame.firstBowl(9);
+        frame.secondBowl(1);
+        expect(frame.isAwaitingBonus).toEqual(true);
+    });
 });

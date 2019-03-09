@@ -30,12 +30,19 @@ describe("Count",function(){
     });
     it("If all the frames are normal, the score will be the sum.",function(){
       frame = new Frame(1,2);
-      frame2 = new Frame(5,6);
+      frame2 = new Frame(5,4);
       count.add(frame);
       count.add(frame2);
-      expect(count.scoreCounting()).toEqual(14);
-
+      expect(count.scoreCounting()).toEqual(12);
     });
+    it("If there is a spare frame, the score counting will be ok.",function(){
+      frame = new Frame(3,7);
+      frame2 = new Frame(5,4);
+      count.add(frame);
+      count.add(frame2);
+      expect(count.scoreCounting()).toEqual(24);
+    });
+
 
   });
 });

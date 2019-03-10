@@ -40,6 +40,12 @@ function showScores() {
   }
 
   // show final frame
+  if (game.gameOver) {
+    scoreBoxId = "#score10";
+    frameScore = game.frames[9].getTotal();
+    $( scoreBoxId ).text(frameScore);
+  }
+  
   if (game.currentBowl > 2 || game.gameOver) {
     f = game.currentFrame + 1;
     scoreBoxId = "#frame" + f + "bowl" + 2;

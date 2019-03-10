@@ -4,14 +4,80 @@
     <meta charset="utf-8">
     <title></title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="first.json"></script>
     <script>
-      $(document).ready(function() {
-
+      $(document).ready(function(){
+        $("#first-role").change(function() {
+	        var $dropdown = $(this);
+	        var key = $dropdown.val();
+		      var vals = [];
+		      switch(key) {
+		    	  case '0':
+			    	  vals = object.zero.split(",");
+				      break;
+			      case '1':
+			    	  vals = object.one.split(",");
+			  	    break;
+			      case '2':
+			   	    vals = object.two.split(",");
+              break;
+            case '3':
+              vals = object.three.split(",");
+              break;
+            case '4':
+              vals = object.four.split(",");
+              break;
+            case '5':
+              vals = object.five.split(",");
+              break;
+            case '6':
+              vals = object.six.split(",");
+              break;
+            case '7':
+              vals = object.seven.split(",");
+              break;
+            case '8':
+              vals = object.eight.split(",");
+              break;
+            case '9':
+              vals = object.nine.split(",");
+              break;
+            case '10':
+              vals = object.ten.split(",");
+              break;
+          }
+		      var $secondChoice = $("#second-role");
+		      $secondChoice.empty();
+		      $.each(vals, function(index, value) {
+            $secondChoice.append("<option>" + value + "</option>");
+	       });
+	      });
       });
     </script>
   </head>
   <body>
 
-
+    <h1> Please choose the first role. </h1>
+    <select id="first-role">
+     <option selected value="base">Please Select your first role.</option>
+     <option value="0">0</option>
+     <option value="1">1</option>
+     <option value="2">2</option>
+     <option value="3">3</option>
+     <option value="4">4</option>
+     <option value="5">5</option>
+     <option value="6">6</option>
+     <option value="7">7</option>
+     <option value="8">8</option>
+     <option value="9">9</option>
+     <option value="10">10</option>
+   </select>
+   <br>
+   <h1> Please choose the second role. </h1>
+   <select id="second-role">
+     <option>Please choose the second role.</option>
+   </select>
+   <br><br><br>
+   <button type="button"> Submit</button>
   </body>
 </html>

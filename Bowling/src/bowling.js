@@ -5,7 +5,6 @@ function sumArray(accumulator, currentValue) {
 }
 
 function frameIsFull(frame, index) {
-  console.log(index);
   return ((index === 9) && (frame.rolls.length < 3))
       || ((index !== 9) && (frame.isStrike() && (frame.isSpare())));
 }
@@ -16,12 +15,10 @@ function Frame(frameNumber) {
 }
 
 Frame.prototype.isStrike = function isStrike() {
-  // return ((this.rolls[0] === TEN_PINS) && (this.rolls.length === 1));
   return (this.rolls[0] === TEN_PINS);
 };
 
 Frame.prototype.isSpare = function isSpare() {
-  // return ((this.rolls[0] + this.rolls[1] === TEN_PINS) && (this.rolls.length === 2));
   return (this.rolls[0] + this.rolls[1] === TEN_PINS);
 };
 
@@ -41,13 +38,13 @@ Bowling.prototype.populateFrames = function populateFrames() {
 
 
 Bowling.prototype.fullFrames = function fullFrames() {
-  console.log(this.frames.filter(frameIsFull));
-  return this.frames.filter(frameIsFull);
+  return this.frames.filter(frameIsFull).length;
 };
 
 // Maybe frame parameter can have a default value:
 // frame = this.frames.filter(f => f.rolls.length >= 2).length
-Bowling.prototype.addRoll = function addRoll({ frame = 1 + this.fullFrames(), pinsDown }) {
+Bowling.prototype.addRoll = function addRoll({ frame = this.fullFrames(), pinsDown }) {
+  console.log(frame);
   const framesArray = this.frames;
   const framesArrayIndex = frame - 1;
   const rollsArray = framesArray[framesArrayIndex].rolls;
@@ -68,15 +65,12 @@ Bowling.prototype.addRoll = function addRoll({ frame = 1 + this.fullFrames(), pi
   if ((frame < 10) && framesArray[frame].isStrike()) {
     // console.error(`IT WAS A STRIKE`);
   } else if ((frame < 10) && pinsRangeError) {
-    // console.error(`Error: Cannot knock ${pinsDown} down if only ${TEN_PINS - rollTotal} remain.`);
+    // console.error(`Input Error: Cannot knock ${pinsDown} down if only ${TEN_PINS - rollTotal} remain.`);
   } else if (rollTotal === TEN_PINS && frame < 10) {
     // console.error('Error: All pins already down in this frame.');
   } else if ((rollsArray.length === maxRolls)) {
     // console.error('Error: Out of rolls.');
   } else {
-    console.log(rollsArray.length);
-    console.log(maxRolls);
-    console.log(this.frames);
     rollsArray.push(pinsDown);
   }
 };

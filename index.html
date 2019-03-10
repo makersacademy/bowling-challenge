@@ -5,8 +5,23 @@
     <title></title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="first.json"></script>
+    <script type="text/javascript" src = "src/Count.js"> </script>
+    <script type="text/javascript" src= "src/Frames.js"> </script>
     <script>
       $(document).ready(function(){
+        var round = 1 ;
+        count = new Count();
+        $("#submit").on('click',function(){
+          round = round +1 ;
+          count.array.pop();
+          var frame = new Frame(parseInt($("#first-role").val()),parseInt($("#second-role").val()));
+          count.add(frame);
+          var empty_frame = new Frame(0,0);
+          count.add(empty_frame);
+          $("#round").text("The current round is "+ round);
+          score = count.scoreCounting();
+          $("#score").text("Current score is  " + score);
+        });
         $("#first-role").change(function() {
 	        var $dropdown = $(this);
 	        var key = $dropdown.val();
@@ -56,7 +71,10 @@
     </script>
   </head>
   <body>
-    <p> </p>
+    <p id="round"> Round one </p>
+    <br>
+    <hr>
+    <p id="score"> current score is zero </p>
 
     <h1> How many pins was hit in the first role? </h1>
     <select id="first-role">

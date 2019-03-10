@@ -15,10 +15,12 @@ function Bowling() {
   this.gameFrames = []
   this.currentFrame = new Frame()
   this.gameScore = 0
-  this.bonusCount = 0
+  // this.bonusCount = 0
   this.firstTryOfFrame = true
   this.gameOver = false
   this.bonusTime = false
+  // this.spareMultiplier = 1
+  this.lastStatus = 'Open'
 }
 
 Bowling.prototype.addScore = function(score) {
@@ -53,63 +55,37 @@ Bowling.prototype.updateSecondScore = function(score) {
   this.currentFrame.secondScore = score
   this.currentFrame.setStatus();
   this.nextFrame()
-  // KM Need to calculate the score
 };
-// KM Bowling.prototype.updateBonusScore = function(score) {
-//   this.currentFrame.firstScore = score
-//   this.updateTry(score)
-// //   this.nextFrame()
-// };
-// Bowling.prototype.updateTry = function(score) {
-//   // KM this.updateScore(score);
-//   this.currentFrame.setStatus();
-//   if (this.currentFrame.frameStatus != "Strike")
-//   {
-//     this.firstTryOfFrame = !this.firstTryOfFrame
-//   }
-// };
+
 Bowling.prototype.nextFrame = function() {
   this.gameFrames.push(this.currentFrame);
   if (!this.gameOver)
-  {this.checkGameOverStatus()}
-  this.currentFrame = new Frame()
-  this.firstTryOfFrame = true
-  this.updateScore()
+  {
+    this.checkGameOverStatus()}
+    this.currentFrame = new Frame()
+    this.firstTryOfFrame = true
+    this.updateScore()
 };
 
-Bowling.prototype.updateScore = function(score) {
-  // debugger
-  // console.log('Game so far ',this.gameScore);
-  // this.gameScore += score
-  // console.log('Adding ',score);
-  // if (this.bonusCount > 0)
-  // {
-  //   console.log(this.currentFrame.frameStatus," ",score);
-  //   if (!this.gameOver)
-  //   {
-  //       this.gameScore += score
-  //   }
-  //
-  //   this.bonusCount -= 1
-  // }
-  // console.log('Score now ',this.gameScore);
-  var frames = this.gameFrames.length
-  var i;
-  this.gameScore = 0
-  multiplier = 1
-  for (i = 0; i < frames; i++) {
-    this.gameScore += multiplier*(this.gameFrames[i].firstScore);
-    this.gameScore += multiplier*(this.gameFrames[i].secondScore);
-    if (this.gameFrames[i].frameStatus == 'Strike')
-      {multiplier++}
-    else if (multiplier > 1)
-      {multiplier--}
+Bowling.prototype.updateScore = function() {
+  var i = this.gameFrames.length - 1
+  console.log(this.lastStatus,' ',this.gameScore);
+  this.gameScore += this.gameFrames[i].firstScore;
+  this.gameScore += this.gameFrames[i].secondScore;
+  if (this.lastStatus == 'Strike')
+  {
+    this.gameScore += this.gameFrames[i].firstScore;
+    this.gameScore += this.gameFrames[i].secondScore;
   }
+  else if (this.lastStatus == 'Spare')
+  {
+    this.gameScore += this.gameFrames[i].firstScore;
+  }
+  console.log(this.lastStatus,' ',this.gameScore);
+  this.lastStatus = this.gameFrames[i].frameStatus
 };
-
 
 Bowling.prototype.checkGameOverStatus = function(){
-  // debugger
   if (this.gameFrames.length == 10 )
   {
     this.gameOver = true;
@@ -119,7 +95,5 @@ Bowling.prototype.checkGameOverStatus = function(){
       this.bonusTime = true
       this.bonusCount = 1
     }
-  }    // debugger
-  console.log(this.currentFrame.frameStatus);
-  // console.log(this.gameTries);
+  }
 };

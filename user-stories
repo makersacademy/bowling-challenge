@@ -1,0 +1,16 @@
+As a bowler,
+I want to be able to input my scores
+
+As a bowler,
+If I don't strike on the first go,
+I want to roll again
+
+As a bowler,
+If I knock down 10 pins in the first frame,
+I have hit spare and I get bonus points from
+the first roll in the next round
+
+As a bowler,
+If I knock down 10 pins on the first roll,
+I have hit strike and I get bonus points from
+both rolls in the next frame

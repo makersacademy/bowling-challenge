@@ -1,10 +1,15 @@
-describe('Bowling', function(){
+describe('Scorecard', function(){
 
   beforeEach(function(){
-    bowling = new Bowling()
+    scorecard = new Scorecard()
   })
-  it ('should have a starting score of zero', function(){
-    expect(bowling.score).toEqual(0)
+  it ('should have a starting score of zero', function() {
+    expect(scorecard.totalScore).toEqual(0)
   })
+
+  it ('should be an empty scorecard', function() {
+    expect(scorecard.frames).toEqual([]);
+  })
+
 
 })

@@ -1,3 +1,4 @@
-function Bowling() {
-  this.score = 0
+function Scorecard() {
+  this.totalScore = 0
+  this.frames = []
 }

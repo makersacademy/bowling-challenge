@@ -97,7 +97,7 @@
        <option value="10">10</option>
       </select>
       <br><br><br>
-      <button type="button" id="strike-submit"> Submit </button>
+      <button type="button" id="striking"> Submit </button>
     </div>
 
     <div class = "final">
@@ -135,6 +135,18 @@
           $("#scoree").text(amended_score);
           $(".final").show();
           $(".hidden-spare").hide();
+        });
+        $("#striking").on("click",function(){
+          count.array.pop();
+          frame = new Frame(parseInt($("#extra-strike-first").val()),parseInt($("#extra-strike-second").val()));
+          count.add(frame);
+          var empty_frame = new Frame(0,0);
+          count.add(empty_frame);
+          final_score = count.scoreCounting()-parseInt($("#extra-strike-first").val())- parseInt($("#extra-strike-second").val());
+          $("#playing").hide();
+          $("#scoree").text(final_score);
+          $(".final").show();
+          $(".hidden-strike").hide();
         });
         $("#first-role").change(function() {
 	        var $dropdown = $(this);

@@ -13,7 +13,12 @@ Bowling.prototype.addRoll = function addRoll({ frame, pinsDown }) {
   const framesArray = this.frames;
   const arrayIndex = frame - 1;
   const rollsArray = framesArray[arrayIndex].rolls;
-  rollsArray.push(pinsDown);
+
+  if (rollsArray.includes(10)) {
+    console.error('Error: Previous roll was a strike! You probably mean to record a new Frame.');
+  } else {
+    rollsArray.push(pinsDown);
+  }
 };
 
 Bowling.prototype.populateFrames = function populateFrames() {

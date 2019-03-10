@@ -22,5 +22,5 @@ open SpecRunner.html
 var bowling = new Bowling()
 ```
 
-![Creating a new Bowling Scorecard](./Bowling/images/new_Bowling.png)
+![Creating a new Bowling Scorecard](./Bowling/images/new_bowling.png)
 

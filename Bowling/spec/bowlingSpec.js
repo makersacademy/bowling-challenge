@@ -38,7 +38,7 @@ describe('Bowling Scorecard', () => {
     expect(rollsArray[rollsArray.length - 1]).toEqual(pinsDowned);
   });
 
-  it('when 10 pins already down, can\'t record another roll on that frame', () => {
+  it('Unless 10th frame: when 10 pins already down, can\'t record another roll on that frame', () => {
     const f1RollsArray = framesArray[0].rolls;
     const f2RollsArray = framesArray[1].rolls;
 

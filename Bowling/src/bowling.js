@@ -18,8 +18,8 @@ Bowling.prototype.addRoll = function addRoll({ frame, pinsDown }) {
   const arrayIndex = frame - 1;
   const rollsArray = framesArray[arrayIndex].rolls;
 
-  if (rollsArray.includes(10)) {
-    console.error('Error: Previous roll was a strike! You probably mean to record a new Frame.');
+  if (frame !== 10 && rollsArray.reduce(sumArray, 0) === 10) {
+    console.error('Error: All pins already down in this frame.');
   } else {
     rollsArray.push(pinsDown);
   }

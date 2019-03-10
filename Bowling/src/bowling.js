@@ -44,7 +44,6 @@ Bowling.prototype.fullFrames = function fullFrames() {
 // Maybe frame parameter can have a default value:
 // frame = this.frames.filter(f => f.rolls.length >= 2).length
 Bowling.prototype.addRoll = function addRoll({ frame = this.fullFrames(), pinsDown }) {
-  console.log(frame);
   const framesArray = this.frames;
   const framesArrayIndex = frame - 1;
   const rollsArray = framesArray[framesArrayIndex].rolls;

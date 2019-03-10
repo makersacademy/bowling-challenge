@@ -22,8 +22,10 @@ Bowling.prototype.populateFrames = function populateFrames() {
     framesArray[index] = new Frame(index + 1);
   }
 };
-
-Bowling.prototype.addRoll = function addRoll({ frame, pinsDown }) {
+// Maybe frame parameter can have a default value:
+// frame = this.frames.filter(f => f.rolls.length >= 2).length
+Bowling.prototype.addRoll = function addRoll({ frame = 1 + this.frames.filter(f => f.rolls.length >= 2).length, pinsDown }) {
+  console.log(frame)
   const framesArray = this.frames;
   const arrayIndex = frame - 1;
   const rollsArray = framesArray[arrayIndex].rolls;
@@ -54,7 +56,7 @@ Bowling.prototype.addRoll = function addRoll({ frame, pinsDown }) {
 
 Bowling.prototype.score = function score() {
   
-}
+};
 
 Frame.prototype.isStrike = function isStrike() {
   return (this.rolls[0] === TEN_PINS);

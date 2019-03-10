@@ -9,6 +9,15 @@ function Frame(frameNumber) {
   this.rolls = [];
 }
 
+Frame.prototype.isStrike = function isStrike() {
+  return (this.rolls[0] === TEN_PINS);
+};
+
+Frame.prototype.isSpare = function isSpare() {
+  const rollTotal = this.rolls.reduce(sumArray, 0);
+  return ((rollTotal === TEN_PINS) && (this.rolls.length === 2));
+};
+
 function Bowling() {
   this.totalScore = 0;
   this.frames = new Array(10);
@@ -25,10 +34,10 @@ Bowling.prototype.populateFrames = function populateFrames() {
 // Maybe frame parameter can have a default value:
 // frame = this.frames.filter(f => f.rolls.length >= 2).length
 Bowling.prototype.addRoll = function addRoll({ frame = 1 + this.frames.filter(f => f.rolls.length >= 2).length, pinsDown }) {
-  console.log(frame)
+
   const framesArray = this.frames;
-  const arrayIndex = frame - 1;
-  const rollsArray = framesArray[arrayIndex].rolls;
+  const framesArrayIndex = frame - 1;
+  const rollsArray = framesArray[framesArrayIndex].rolls;
   const rollTotal = rollsArray.reduce(sumArray, 0);
   const pinsRangeError = ((rollTotal + pinsDown) > TEN_PINS);
 
@@ -58,11 +67,3 @@ Bowling.prototype.score = function score() {
   
 };
 
-Frame.prototype.isStrike = function isStrike() {
-  return (this.rolls[0] === TEN_PINS);
-};
-
-Frame.prototype.isSpare = function isSpare() {
-  const rollTotal = this.rolls.reduce(sumArray, 0);
-  return ((rollTotal === TEN_PINS) && (this.rolls.length === 2));
-};

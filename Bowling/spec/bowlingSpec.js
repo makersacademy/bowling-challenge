@@ -71,10 +71,32 @@ describe('Bowling Scorecard', () => {
   });
 
   it('frames 1-9 allow maximum 2 rolls', () => {
-    bowling.addRoll({ frame: 3, pinsDown: 8 });
+    const frame3Rolls = framesArray[3].rolls;
 
-    bowling.addRoll({ frame: 3, pinsDown: 4 });
+    bowling.addRoll({ frame: 4, pinsDown: 2 });
+    bowling.addRoll({ frame: 4, pinsDown: 4 });
+    bowling.addRoll({ frame: 4, pinsDown: 3 });
 
-    expect(framesArray[3].rolls.length).toEqual(2);
+    expect(frame3Rolls.length).toEqual(2);
+  });
+
+  it('frame 10 allows 3 rolls if there was a Strike', () => {
+    const frame10Rolls = framesArray[9].rolls;
+
+    bowling.addRoll({ frame: 10, pinsDown: 10 });
+    bowling.addRoll({ frame: 10, pinsDown: 10 });
+    bowling.addRoll({ frame: 10, pinsDown: 10 });
+    bowling.addRoll({ frame: 10, pinsDown: 10 });
+    expect(frame10Rolls.length).toEqual(3);
+  });
+
+  it('frame 10 allows 3 rolls if there was a Spare', () => {
+    const frame10Rolls = framesArray[9].rolls;
+
+    bowling.addRoll({ frame: 10, pinsDown: 6 });
+    bowling.addRoll({ frame: 10, pinsDown: 4 });
+    bowling.addRoll({ frame: 10, pinsDown: 10 });
+    bowling.addRoll({ frame: 10, pinsDown: 10 });
+    expect(frame10Rolls.length).toEqual(3);
   });
 });

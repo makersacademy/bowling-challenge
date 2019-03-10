@@ -22,20 +22,23 @@ Bowling.prototype.addRoll = function addRoll({ frame, pinsDown }) {
   const rollTotal = rollsArray.reduce(sumArray, 0);
   const pinsRangeError = ((rollTotal + pinsDown) > TEN_PINS);
 
-  let maxRolls;
+  let maxRolls = 2;
 
   if (frame > 10) {
     throw new RangeError(`Cannot have frame ${frame}. A bowling game is 10 frames.`);
   }
 
-  if (frame < 10) { maxRolls = 2; } else { maxRolls = 3; }
-
-  if (pinsRangeError) {
-    console.error(`Error: Cannot have knocked ${pinsDown} down when only ${TEN_PINS-rollTotal} remain.`);
+  if (frame === 10) {
+    if (framesArray[9].isStrike()) { maxRolls = 3; }
+    if (framesArray[9].isSpare()) { maxRolls = 3; }
   }
 
-  if ((frame !== 10) && (rollsArray.reduce(sumArray, 0) === TEN_PINS)) {
+  if (pinsRangeError && frame < 10) {
+    console.error(`Error: Cannot knock ${pinsDown} down if only ${TEN_PINS - rollTotal} remain.`);
+  } else if (rollTotal === TEN_PINS && frame < 10) {
     console.error('Error: All pins already down in this frame.');
+  } else if (rollsArray.length >= maxRolls) {
+    console.error('Error: Out of rolls.');
   } else {
     rollsArray.push(pinsDown);
   }
@@ -54,5 +57,6 @@ Frame.prototype.isStrike = function isStrike() {
 };
 
 Frame.prototype.isSpare = function isSpare() {
-  return (this.rolls.reduce(sumArray, 0) === TEN_PINS);
+  const rollTotal = this.rolls.reduce(sumArray, 0);
+  return ((rollTotal === TEN_PINS) && (this.rolls.length === 2));
 };

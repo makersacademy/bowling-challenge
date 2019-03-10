@@ -34,13 +34,7 @@ describe('Scorecard', function() {
       expect(scorecard.isEven(1)).toEqual(false)
     })
 
-    // it("calculates the score of the first frame", function () {
-    //   scorecard.roll(1)
-    //   scorecard.roll(8)
-    //   scorecard.roll(5)
-    //   expect(scorecard.frame).toEqual(9)
-    //
-    // })
+
 
 
 }) // last brackets

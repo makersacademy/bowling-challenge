@@ -42,7 +42,49 @@ describe("Count",function(){
       count.add(frame2);
       expect(count.scoreCounting()).toEqual(24);
     });
+    it("If there is a strike , the score counting will be ok.",function(){
+      frame = new Frame(10,0);
+      frame2 = new Frame(5,4);
+      count.add(frame);
+      count.add(frame2);
+      expect(count.scoreCounting()).toEqual(28);
+    });
 
+    it("If there is two strike after each other, counting is ok",function(){
+      frame = new Frame(10,0);
+      frame2= new Frame(10,0);
+      frame3 = new Frame(5,4);
+      count.add(frame);
+      count.add(frame2);
+      count.add(frame3);
+      expect(count.scoreCounting()).toEqual(53);
+    });
 
+    it("if there are three strikes after each other",function(){
+      var frame = new Frame(10,0);
+      var frame2 = new Frame(2,3);
+      var i ;
+      for(i=0; i<3;i++){ count.add(frame)}
+      count.add(frame2);
+      expect(count.scoreCounting()).toEqual(72);
+    });
+    it("if there is a strike after a spare",function(){
+      var frame1 = new Frame(3,7);
+      var frame2 = new Frame(10,0);
+      var frame3 = new Frame(3,4);
+      count.add(frame1);
+      count.add(frame2);
+      count.add(frame3);
+      expect(count.scoreCounting()).toEqual(44);
+    });
+    it("if there is a spare after strike",function(){
+      var frame1 = new Frame(10,0);
+      var frame2 = new Frame(3,7);
+      var frame3 = new Frame(4,3);
+      count.add(frame1);
+      count.add(frame2);
+      count.add(frame3);  
+      expect(count.scoreCounting()).toEqual(41);
+    });
   });
 });

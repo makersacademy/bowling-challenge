@@ -4,18 +4,25 @@ function sumArray(accumulator, currentValue) {
   return accumulator + currentValue;
 }
 
+function frameIsFull(frame, index) {
+  console.log(index);
+  return ((index === 9) && (frame.rolls.length < 3))
+      || ((index !== 9) && (frame.isStrike() && (frame.isSpare())));
+}
+
 function Frame(frameNumber) {
   this.frameNumber = frameNumber;
   this.rolls = [];
 }
 
 Frame.prototype.isStrike = function isStrike() {
+  // return ((this.rolls[0] === TEN_PINS) && (this.rolls.length === 1));
   return (this.rolls[0] === TEN_PINS);
 };
 
 Frame.prototype.isSpare = function isSpare() {
-  const rollTotal = this.rolls.reduce(sumArray, 0);
-  return ((rollTotal === TEN_PINS) && (this.rolls.length === 2));
+  // return ((this.rolls[0] + this.rolls[1] === TEN_PINS) && (this.rolls.length === 2));
+  return (this.rolls[0] + this.rolls[1] === TEN_PINS);
 };
 
 function Bowling() {
@@ -31,10 +38,16 @@ Bowling.prototype.populateFrames = function populateFrames() {
     framesArray[index] = new Frame(index + 1);
   }
 };
+
+
+Bowling.prototype.fullFrames = function fullFrames() {
+  console.log(this.frames.filter(frameIsFull));
+  return this.frames.filter(frameIsFull);
+};
+
 // Maybe frame parameter can have a default value:
 // frame = this.frames.filter(f => f.rolls.length >= 2).length
-Bowling.prototype.addRoll = function addRoll({ frame = 1 + this.frames.filter(f => f.rolls.length >= 2).length, pinsDown }) {
-
+Bowling.prototype.addRoll = function addRoll({ frame = 1 + this.fullFrames(), pinsDown }) {
   const framesArray = this.frames;
   const framesArrayIndex = frame - 1;
   const rollsArray = framesArray[framesArrayIndex].rolls;
@@ -52,13 +65,18 @@ Bowling.prototype.addRoll = function addRoll({ frame = 1 + this.frames.filter(f 
     if (framesArray[9].isSpare()) { maxRolls = 3; }
   }
 
-  if (pinsRangeError && frame < 10) {
-    console.error(`Error: Cannot knock ${pinsDown} down if only ${TEN_PINS - rollTotal} remain.`);
+  if ((frame < 10) && framesArray[frame].isStrike()) {
+    // console.error(`IT WAS A STRIKE`);
+  } else if ((frame < 10) && pinsRangeError) {
+    // console.error(`Error: Cannot knock ${pinsDown} down if only ${TEN_PINS - rollTotal} remain.`);
   } else if (rollTotal === TEN_PINS && frame < 10) {
-    console.error('Error: All pins already down in this frame.');
-  } else if (rollsArray.length >= maxRolls) {
-    console.error('Error: Out of rolls.');
+    // console.error('Error: All pins already down in this frame.');
+  } else if ((rollsArray.length === maxRolls)) {
+    // console.error('Error: Out of rolls.');
   } else {
+    console.log(rollsArray.length);
+    console.log(maxRolls);
+    console.log(this.frames);
     rollsArray.push(pinsDown);
   }
 };

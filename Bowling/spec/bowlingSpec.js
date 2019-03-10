@@ -99,4 +99,8 @@ describe('Bowling Scorecard', () => {
     bowling.addRoll({ frame: 10, pinsDown: 10 });
     expect(frame10Rolls.length).toEqual(3);
   });
+
+  it('able to addRoll by just supplying pinsDowned', () => {
+    
+  });
 });

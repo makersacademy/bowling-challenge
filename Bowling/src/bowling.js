@@ -32,3 +32,11 @@ Bowling.prototype.populateFrames = function populateFrames() {
     framesArray[index] = new Frame(index + 1);
   }
 };
+
+Frame.prototype.isStrike = function isStrike() {
+  return (this.rolls[0] === 10);
+};
+
+Frame.prototype.isSpare = function isSpare() {
+  return (this.rolls.reduce(sumArray, 0) === 10);
+};

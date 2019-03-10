@@ -69,4 +69,12 @@ describe('Bowling Scorecard', () => {
     bowling.addRoll({ frame: 2, pinsDown: 4 });
     expect(frame2Rolls.length).toEqual(2);
   });
+
+  it('frames 1-9 allow maximum 2 rolls', () => {
+    bowling.addRoll({ frame: 3, pinsDown: 8 });
+
+    bowling.addRoll({ frame: 3, pinsDown: 4 });
+
+    expect(framesArray[3].rolls.length).toEqual(2);
+  });
 });

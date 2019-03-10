@@ -45,7 +45,7 @@ function showScores() {
     frameScore = game.frames[9].getTotal();
     $( scoreBoxId ).text(frameScore);
   }
-  
+
   if (game.currentBowl > 2 || game.gameOver) {
     f = game.currentFrame + 1;
     scoreBoxId = "#frame" + f + "bowl" + 2;
@@ -55,15 +55,15 @@ function showScores() {
     } else if (bowl2 == 10) {
       $( scoreBoxId ).text("X");
     } else {
-      $( scoreBoxId ).text(bowl1);
+      $( scoreBoxId ).text(bowl2);
     }
   }
 
   if (game.gameOver && game.frames[game.currentFrame].thirdBowlAllowed) {
     f = game.currentFrame + 1;
     scoreBoxId = "#frame" + f + "bowl" + 3;
-    bowl3 = game.frames[game.currentFrame].bowl3;
-    if (bowl3 = 10) {
+    bowl3 = game.frames[game.currentFrame].bonus;
+    if (bowl3 == 10) {
       $( scoreBoxId ).text("X");
     } else {
       $( scoreBoxId ).text(bowl3);

@@ -1,10 +1,14 @@
 function Scorecard() {
   this.score = []
   this.frames = [[], [], [], [], [], [], [], [], [], []]
-  this.roll = 0
+  this.pinsDown = 0
   // this.roll2 = 0
 }
 
 Scorecard.prototype.roll = function(pinsDown) {
-  this.roll = pinsDown
+  this.pinsDown = pinsDown
 };
+
+Scorecard.prototype.eachFrame = function() {
+  this.score.push(this.pinsDown)
+}

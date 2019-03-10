@@ -1,3 +1,7 @@
+function sumArray(accumulator, currentValue) {
+  return accumulator + currentValue;
+}
+
 function Frame(frameNumber) {
   this.frameNumber = frameNumber;
   this.rolls = [];

@@ -67,13 +67,9 @@ it('adds next bowl to bonus score if spare is bowled', function(){
   game.frames[0].bowl(7);
   game.frames[1].bowl(1);
   game.frames[1].bowl(0);
-  game.applyBonuses();
+  game.bonusScores();
   expect(game.bonusScore).toEqual(1);
 });
-// it('cannot contain more than 10 frames in 1 game', function(){
-//   // expect(game.frames[10].bowl(1)).toBeUndefined()
-//   // expect(function(){ game.frames[10].bowl(1) }).toThrowError('This Game is Over!')
-// });
 
 
 });

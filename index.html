@@ -7,20 +7,134 @@
     <script type="text/javascript" src="first.json"></script>
     <script type="text/javascript" src = "src/Count.js"> </script>
     <script type="text/javascript" src= "src/Frames.js"> </script>
+    <style>
+      div.hidden-spare {
+        display : none;
+        }
+      div.hidden-strike{
+        display : none;
+      }
+      div.final{
+        display : none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="playing">
+
+      <p id="round"> Round one </p>
+      <br>
+      <hr>
+      <p id="score"> current score is zero </p>
+      <h1> How many pins was hit in the first role? </h1>
+      <select id="first-role">
+       <option selected value="base">Please Select your first role.</option>
+       <option value="0">0</option>
+       <option value="1">1</option>
+       <option value="2">2</option>
+       <option value="3">3</option>
+       <option value="4">4</option>
+       <option value="5">5</option>
+       <option value="6">6</option>
+       <option value="7">7</option>
+       <option value="8">8</option>
+       <option value="9">9</option>
+       <option value="10">10</option>
+      </select>
+      <br>
+      <h1> How many pins was hit in the second role. </h1>
+      <select id="second-role">
+        <option>How many pins was hit in the second role.</option>
+      </select>
+      <br><br><br>
+      <button type="button" id="submit"> Submit</button>
+    </div>
+    <div class="hidden-spare">
+      <select id="extra-spare-role">
+       <option selected value="base">Please Select the award role.</option>
+       <option value="0">0</option>
+       <option value="1">1</option>
+       <option value="2">2</option>
+       <option value="3">3</option>
+       <option value="4">4</option>
+       <option value="5">5</option>
+       <option value="6">6</option>
+       <option value="7">7</option>
+       <option value="8">8</option>
+       <option value="9">9</option>
+       <option value="10">10</option>
+      </select>
+      <br><br><br>
+      <button type="button" id="spare-submit"> Submit </button>
+    </div>
+    <div class="hidden-strike">
+      <select id="extra-strike-first">
+       <option selected value="base">Please Select the award role.</option>
+       <option value="0">0</option>
+       <option value="1">1</option>
+       <option value="2">2</option>
+       <option value="3">3</option>
+       <option value="4">4</option>
+       <option value="5">5</option>
+       <option value="6">6</option>
+       <option value="7">7</option>
+       <option value="8">8</option>
+       <option value="9">9</option>
+       <option value="10">10</option>
+      </select>
+      <select id="extra-strike-second">
+       <option selected value="base">Please Select the award role.</option>
+       <option value="0">0</option>
+       <option value="1">1</option>
+       <option value="2">2</option>
+       <option value="3">3</option>
+       <option value="4">4</option>
+       <option value="5">5</option>
+       <option value="6">6</option>
+       <option value="7">7</option>
+       <option value="8">8</option>
+       <option value="9">9</option>
+       <option value="10">10</option>
+      </select>
+      <br><br><br>
+      <button type="button" id="strike-submit"> Submit </button>
+    </div>
+
+    <div class = "final">
+      <h1> The final score is <section id="scoree">ZERO</section> </h1>
+    </div>
     <script>
       $(document).ready(function(){
         var round = 1 ;
         count = new Count();
         $("#submit").on('click',function(){
-          round = round +1 ;
-          count.array.pop();
-          var frame = new Frame(parseInt($("#first-role").val()),parseInt($("#second-role").val()));
-          count.add(frame);
-          var empty_frame = new Frame(0,0);
-          count.add(empty_frame);
-          $("#round").text("The current round is "+ round);
-          score = count.scoreCounting();
-          $("#score").text("Current score is  " + score);
+          if(count.array.length < 11){
+            round = round +1 ;
+            count.array.pop();
+            var frame = new Frame(parseInt($("#first-role").val()),parseInt($("#second-role").val()));
+            count.add(frame);
+            var empty_frame = new Frame(0,0);
+            count.add(empty_frame);
+            $("#round").text("The current round is "+ round);
+            score = count.scoreCounting();
+            $("#score").text("Current score is  " + score);}else if(count.array[9]._isStrike() === true){
+              $("#playing").hide();
+              $(".hidden-strike").show();
+          }else if(count.array[9]._isSpare() === true){
+            $("#playing").hide();
+            $(".hidden-spare").show();
+          }else{
+            $("#playing").hide();
+            $("#scoree").text(count.scoreCounting());
+            $(".final").show();
+          }
+        });
+        $("#spare-submit").on("click",function(){
+          var amended_score = count.scoreCounting()+parseInt($("#extra-spare-role").val());
+          $("#playing").hide();
+          $("#scoree").text(amended_score);
+          $(".final").show();
+          $(".hidden-spare").hide();
         });
         $("#first-role").change(function() {
 	        var $dropdown = $(this);
@@ -69,34 +183,5 @@
 	      });
       });
     </script>
-  </head>
-  <body>
-    <p id="round"> Round one </p>
-    <br>
-    <hr>
-    <p id="score"> current score is zero </p>
-
-    <h1> How many pins was hit in the first role? </h1>
-    <select id="first-role">
-     <option selected value="base">Please Select your first role.</option>
-     <option value="0">0</option>
-     <option value="1">1</option>
-     <option value="2">2</option>
-     <option value="3">3</option>
-     <option value="4">4</option>
-     <option value="5">5</option>
-     <option value="6">6</option>
-     <option value="7">7</option>
-     <option value="8">8</option>
-     <option value="9">9</option>
-     <option value="10">10</option>
-   </select>
-   <br>
-   <h1> How many pins was hit in the second role. </h1>
-   <select id="second-role">
-     <option>How many pins was hit in the second role.</option>
-   </select>
-   <br><br><br>
-   <button type="button" id="submit"> Submit</button>
   </body>
 </html>

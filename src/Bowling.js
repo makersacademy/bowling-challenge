@@ -9,11 +9,8 @@ Scorecard.prototype.roll = function(pinsDown) {
   this.pinsDown = pinsDown
   this.scores.push(pinsDown)
 };
-//
-// Scorecard.prototype.eachFrame = function() {
-//   var i = 0
-//   for (i = 0, i < 12, i ++) {
-//     // scorecard.roll(pinsDown)
-//     this.scores[i].push(this.pinsDown)
-//   }
-// }''
+
+Scorecard.prototype.isEven = function(length) {
+  if (length % 2 == 0) {return true}
+  else {return false}
+}

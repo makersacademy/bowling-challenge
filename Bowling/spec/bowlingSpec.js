@@ -38,6 +38,17 @@ describe('Bowling Scorecard', () => {
     expect(rollsArray[rollsArray.length - 1]).toEqual(pinsDowned);
   });
 
+  it('knows if a frame was Strike', () => {
+    bowling.addRoll({ frame: 10, pinsDown: 10 });
+    expect(framesArray[9].isStrike()).toBeTruthy();
+  });
+
+  it('knows if a frame was Spare', () => {
+    bowling.addRoll({ frame: 10, pinsDown: 6 });
+    bowling.addRoll({ frame: 10, pinsDown: 4 });
+    expect(framesArray[9].isSpare()).toBeTruthy();
+  });
+
   it('Unless 10th frame: when 10 pins already down, can\'t record another roll on that frame', () => {
     const frame1Rolls = framesArray[0].rolls;
     const frame2Rolls = framesArray[1].rolls;
@@ -57,21 +68,5 @@ describe('Bowling Scorecard', () => {
     expect(frame2Rolls.length).toEqual(2);
     bowling.addRoll({ frame: 2, pinsDown: 4 });
     expect(frame2Rolls.length).toEqual(2);
-  });
-
-  it('knows if a frame was Strike', () => {
-    bowling.addRoll({ frame: 10, pinsDown: 10 });
-    expect(framesArray[9].isStrike()).toBeTruthy();
-  });
-
-  it('knows if a frame was Spare', () => {
-    bowling.addRoll({ frame: 10, pinsDown: 6 });
-    bowling.addRoll({ frame: 10, pinsDown: 4 });
-    expect(framesArray[9].isSpare()).toBeTruthy();
-  });
-
-  it('know that knocking over all 10 pins of a frame in 2 rolls is a "spare"', () => {
-    bowling.addRoll({ frame: 1, pinsDown: 9 });
-    bowling.addRoll({ frame: 1, pinsDown: 9 });
   });
 });

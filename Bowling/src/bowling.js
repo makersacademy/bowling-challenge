@@ -1,3 +1,5 @@
+const TEN_PINS = 10;
+
 function sumArray(accumulator, currentValue) {
   return accumulator + currentValue;
 }
@@ -18,7 +20,7 @@ Bowling.prototype.addRoll = function addRoll({ frame, pinsDown }) {
   const arrayIndex = frame - 1;
   const rollsArray = framesArray[arrayIndex].rolls;
 
-  if (frame !== 10 && rollsArray.reduce(sumArray, 0) === 10) {
+  if (frame !== 10 && rollsArray.reduce(sumArray, 0) === TEN_PINS) {
     console.error('Error: All pins already down in this frame.');
   } else {
     rollsArray.push(pinsDown);
@@ -34,9 +36,9 @@ Bowling.prototype.populateFrames = function populateFrames() {
 };
 
 Frame.prototype.isStrike = function isStrike() {
-  return (this.rolls[0] === 10);
+  return (this.rolls[0] === TEN_PINS);
 };
 
 Frame.prototype.isSpare = function isSpare() {
-  return (this.rolls.reduce(sumArray, 0) === 10);
+  return (this.rolls.reduce(sumArray, 0) === TEN_PINS);
 };

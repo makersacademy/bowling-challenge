@@ -48,8 +48,8 @@ describe('Scorecard', function() {
          scorecard.firstRoll(1)
          scorecard.secondRoll(9)
          scorecard.eachFrame()
-         scorecard.runningTotal()
-         expect(scorecard.score).toEqual(10)
+         expect(scorecard.frame).toEqual([10, 0])
+
 
        })
 

@@ -1,6 +1,5 @@
 function Scorecard() {
   this.totalScore = 0
-  this.score = 0
   this.allFrames = [[], [], [], [], [], [], [], [], [], []]
   this.frame = []
   this.roll1 = 0
@@ -31,8 +30,3 @@ Scorecard.prototype.eachFrame = function() {
         this.allFrames[0].push(this.frame)
       }
   };
-
-
-Scorecard.prototype.runningTotal = function() {
-  this.score = this.frame[0] + this.frame[1]
-}

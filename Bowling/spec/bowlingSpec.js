@@ -80,7 +80,7 @@ describe('Bowling Scorecard', () => {
     expect(frame3Rolls.length).toEqual(2);
   });
 
-  it('frame 10 allows 3 rolls if there was a Strike', () => {
+  it('frame 10 allows 3 rolls if frame is a Strike', () => {
     const frame10Rolls = framesArray[9].rolls;
 
     bowling.addRoll({ frame: 10, pinsDown: 10 });
@@ -90,7 +90,7 @@ describe('Bowling Scorecard', () => {
     expect(frame10Rolls.length).toEqual(3);
   });
 
-  it('frame 10 allows 3 rolls if there was a Spare', () => {
+  it('frame 10 allows 3 rolls if frame is a Spare', () => {
     const frame10Rolls = framesArray[9].rolls;
 
     bowling.addRoll({ frame: 10, pinsDown: 6 });

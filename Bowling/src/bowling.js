@@ -15,6 +15,14 @@ function Bowling() {
   this.populateFrames();
 }
 
+Bowling.prototype.populateFrames = function populateFrames() {
+  const framesArray = this.frames;
+
+  for (let index = 0; index < framesArray.length; index++) {
+    framesArray[index] = new Frame(index + 1);
+  }
+};
+
 Bowling.prototype.addRoll = function addRoll({ frame, pinsDown }) {
   const framesArray = this.frames;
   const arrayIndex = frame - 1;
@@ -44,13 +52,9 @@ Bowling.prototype.addRoll = function addRoll({ frame, pinsDown }) {
   }
 };
 
-Bowling.prototype.populateFrames = function populateFrames() {
-  const framesArray = this.frames;
-
-  for (let index = 0; index < framesArray.length; index++) {
-    framesArray[index] = new Frame(index + 1);
-  }
-};
+Bowling.prototype.score = function score() {
+  
+}
 
 Frame.prototype.isStrike = function isStrike() {
   return (this.rolls[0] === TEN_PINS);

@@ -16,6 +16,12 @@ Scorecard.prototype.secondRoll = function(pinsDown) {
 }
 
 Scorecard.prototype.eachFrame = function() {
-  this.frame.push(this.roll1)
-  this.frame.push(this.roll2)
+  if (this.roll1 == 10) {
+    this.roll12 = 0
+    this.frame.push(10)
+    this.frame.push(0)
+  } else {
+    this.frame.push(this.roll1)
+    this.frame.push(this.roll2)
+  }
 }

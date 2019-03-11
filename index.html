@@ -108,7 +108,7 @@
         var round = 1 ;
         count = new Count();
         $("#submit").on('click',function(){
-          if(count.array.length < 11){
+
             round = round +1 ;
             count.array.pop();
             var frame = new Frame(parseInt($("#first-role").val()),parseInt($("#second-role").val()));
@@ -117,7 +117,9 @@
             count.add(empty_frame);
             $("#round").text("The current round is "+ round);
             score = count.scoreCounting();
-            $("#score").text("Current score is  " + score);}else if(count.array[9]._isStrike() === true){
+            $("#score").text("Current score is  " + score);
+            if(count.array.length === 11){
+            if(count.array[9]._isStrike() === true){
               $("#playing").hide();
               $(".hidden-strike").show();
           }else if(count.array[9]._isSpare() === true){
@@ -127,7 +129,7 @@
             $("#playing").hide();
             $("#scoree").text(count.scoreCounting());
             $(".final").show();
-          }
+          }}
         });
         $("#spare-submit").on("click",function(){
           var amended_score = count.scoreCounting()+parseInt($("#extra-spare-role").val());

@@ -1,3 +1,24 @@
+#In this challenge, we are going to stimulate a bowling scorecard.
+
+It will be done by Javascript and it is front end.
+
+Two classes are defined.
+
+The first one has the responsibility to make every frame with two roles.
+it is called "Frame.js".
+
+The second class has the responsibility to count the whole points of the frames.
+
+
+## The extra things need to be done.
+
+1. There is a lot of coding inside the html. In fact, they are related to the
+condition when the tenth round is spare or strike. They should be done in the
+count class, so it needs to be refactored.
+
+2. There should be a lot of css things to make the interface beautiful.
+
+## You can find the rules of the game in the following text.
 
 Bowling Challenge
 =================

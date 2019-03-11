@@ -100,7 +100,7 @@ describe('Bowling Scorecard', () => {
     expect(frame10Rolls.length).toEqual(3);
   });
 
-  it('able to addRoll by just supplying pinsDowned', () => {
+  xit('WORK IN PROGRESS: able to addRoll by just supplying pinsDowned', () => {
     
   });
 });

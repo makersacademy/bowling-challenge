@@ -1,4 +1,4 @@
-#In this challenge, we are going to stimulate a bowling scorecard.
+# In this challenge, we are going to stimulate a bowling scorecard.
 
 It will be done by Javascript and it is front end.
 

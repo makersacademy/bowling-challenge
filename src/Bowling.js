@@ -15,12 +15,11 @@ function Bowling() {
   this.gameFrames = []
   this.currentFrame = new Frame()
   this.gameScore = 0
-  // this.bonusCount = 0
   this.firstTryOfFrame = true
   this.gameOver = false
   this.bonusTime = false
-  // this.spareMultiplier = 1
   this.lastStatus = 'Open'
+  this.strikeCarryOver = false
 }
 
 Bowling.prototype.addScore = function(score) {
@@ -57,6 +56,19 @@ Bowling.prototype.updateSecondScore = function(score) {
   this.nextFrame()
 };
 
+Bowling.prototype.updateBonusScore = function(score) {
+  if (this.lastStatus == 'Spare')
+  {
+    this.currentFrame.firstScore = score
+    this.gameScore += this.currentFrame.firstScore
+    this.bonusTime = false
+  } else if (this.lastStatus == 'Strike')
+  {
+    this.lastStatus = 'Spare'
+    this.currentFrame.secondScore = score
+    this.gameScore += this.currentFrame.firstScore
+  }
+};
 Bowling.prototype.nextFrame = function() {
   this.gameFrames.push(this.currentFrame);
   if (!this.gameOver)
@@ -72,18 +84,28 @@ Bowling.prototype.updateScore = function() {
   console.log(this.lastStatus,' ',this.gameScore);
   this.gameScore += this.gameFrames[i].firstScore;
   this.gameScore += this.gameFrames[i].secondScore;
-  if (this.lastStatus == 'Strike')
+  if (this.lastStatus == 'Strike' &&
+      this.frameStatus != 'Strike')
   {
     this.gameScore += this.gameFrames[i].firstScore;
     this.gameScore += this.gameFrames[i].secondScore;
   }
-  else if (this.lastStatus == 'Spare')
+  else if (this.lastStatus == 'Strike' &&
+           this.frameStatus == 'Strike')
   {
     this.gameScore += this.gameFrames[i].firstScore;
+    this.strikeCarryOver = true
+  }
+  else if (this.lastStatus == 'Spare' ||
+          this.strikeCarryOver)
+  {
+    this.gameScore += this.gameFrames[i].firstScore;
+    this.strikeCarryOver = false
   }
   console.log(this.lastStatus,' ',this.gameScore);
   this.lastStatus = this.gameFrames[i].frameStatus
 };
+
 
 Bowling.prototype.checkGameOverStatus = function(){
   if (this.gameFrames.length == 10 )
@@ -93,7 +115,6 @@ Bowling.prototype.checkGameOverStatus = function(){
         this.currentFrame.frameStatus == "Spare")
     {
       this.bonusTime = true
-      this.bonusCount = 1
     }
   }
 };

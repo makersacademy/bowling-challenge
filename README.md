@@ -65,9 +65,13 @@ To view the test results run `open -a "Google Chrome" SpecRunner.html` whilst
 in the project repo. Replace `Google Chrome` with your preferred browser. All tests 
 passing.
 
-## Technologies Used
+## Technologies used
 --------------------
-- Javascript:             https://www.javascript.com/
-- Jasmine standalone:     https://github.com/jasmine/jasmine
-- ESLint:                 https://eslint.org/
-- Google Chrome:          https://www.google.com/chrome/
+
+Tech | Description
+------------- | -------------
+[Javascript](https://www.javascript.com/) | Main language
+[Jasmine](https://github.com/jasmine/jasmine) | Open source javascript testing
+framework
+[ESLint]( https://eslint.org/) | Javascript linter
+[Google Chrome](https://www.google.com/chrome/) | Internet browser

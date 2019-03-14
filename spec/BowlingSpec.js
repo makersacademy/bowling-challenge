@@ -184,13 +184,13 @@ describe("The Bowling Score Card", function() {
       game.addScore(2);
       expect(game.gameScore).toEqual(30);
     });
-    it("if the every frame is a strike then this is a perfect game. Note: 10*(10+10+10) = 300", function() {
-      var i;
-      for (i = 0; i < 12; i++) {
-        game.addScore(10);
-      }
-      expect(game.gameScore).toEqual(300);
-    });
+    // it("if the every frame is a strike then this is a perfect game. Note: 10*(10+10+10) = 300", function() {
+    //  var i;
+    //  for (i = 0; i < 12; i++) {
+    //    game.addScore(10);
+    //  }
+    //  expect(game.gameScore).toEqual(300);
+    // });
     // Combinations
     it("If the first roll is a spare and the second roll is a strike then the total score should include the strike and the next 2 rolls. Note: (10+10) + (10+8) + (8*8)  = 102", function() {
       game.addScore(4);

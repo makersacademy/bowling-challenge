@@ -2,10 +2,11 @@
 <html>
   <head>
     <title>Bowling</title>
+    <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <section>
+    <div class="wrapper">
       <h1> THAT'S HOW I ROLL</h1>
       <div class="container">
         <h3>
@@ -14,6 +15,7 @@
           <h3> Total Score: </h3>
           <h2 id="total-score"></h2>
           <br>
+          <h2 id="error-message"></h2>
           <p>
             Pins Hit:
             <button type="button" onclick="pinHit(0)" >Gutter</button>
@@ -70,7 +72,7 @@
           </table>
           <!-- <button id="new-game" margin="50%">New Game</button> -->
         </div>
-      </section>
+      </div>
       <script src="src/Game.js"></script>
       <script src="jQuery.js"></script>
       <script src="script.js"></script>

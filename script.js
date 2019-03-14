@@ -5,6 +5,7 @@ $('#frame-number').text(game.frameNumber);
 
   pinHit = function(pins){
     game.roll(pins);
+
     if (game._frame.length == 2){
       game.endFrame();
       game.countBonus();
@@ -17,17 +18,17 @@ $('#frame-number').text(game.frameNumber);
       game.countBonus();
       game.newFrame();
     };
-    if (game.frameNumber===10 ) {
-      if (pins === 10){
-        if (game._frame.length == 3){
-          game.endFrame();
-          game.countBonus();
-        }
+    if (game.frameNumber === 10 ) {
+      // if (pins === 10){
+      //   if (game._frame.length == 3){
+      //     game.endFrame();
+      //     game.countBonus();
+      //   }
         if (game._frame.length == 2){
           game.endFrame();
           game.countBonus();
         }
-      };
+      // };
       frame10.innerHTML = game.frameLog[10];
       marker10.innerHTML = game.frameScore[10];
     };

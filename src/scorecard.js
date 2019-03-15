@@ -52,25 +52,22 @@ function showScores() {
 
 function showPastFramesScores() {
   for (i = 0; i < game.currentFrame; i++) {
+    // frame score
     f = i + 1
     scoreBoxId = "#score" + f;
     frameScore = game.frames[i].getTotal();
     $( scoreBoxId ).text(frameScore);
+    // bowl 1 score
     scoreBoxId = "#frame" + f + "bowl" + 1;
     bowl1 = game.frames[i].bowl1;
-    if (bowl1 == 10) {
-      $( scoreBoxId ).text("X");
-    } else {
-      $( scoreBoxId ).text(bowl1);
+    bowl1score = (bowl1 == 10) ? "X" : bowl1
+    $( scoreBoxId ).text(bowl1score);
+    //bowl2 score
+    if (bowl1 != 10) {
       scoreBoxId = "#frame" + f + "bowl" + 2;
       bowl2 = game.frames[i].bowl2;
-      // if (bowl1 + bowl2 == 10) {
-      //   $( scoreBoxId ).text("/");
-      // } else {
-      //   $( scoreBoxId ).text(bowl2);
-      // }
-      score = (bowl1 + bowl2 == 10) ? "/" : bowl2
-      $( scoreBoxId ).text(score);
+      bowl2score = (bowl1 + bowl2 == 10) ? "/" : bowl2
+      $( scoreBoxId ).text(bowl2score);
     }
   }
 }

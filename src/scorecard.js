@@ -64,11 +64,13 @@ function showPastFramesScores() {
       $( scoreBoxId ).text(bowl1);
       scoreBoxId = "#frame" + f + "bowl" + 2;
       bowl2 = game.frames[i].bowl2;
-      if (bowl1 + bowl2 == 10) {
-        $( scoreBoxId ).text("/");
-      } else {
-        $( scoreBoxId ).text(bowl2);
-      }
+      // if (bowl1 + bowl2 == 10) {
+      //   $( scoreBoxId ).text("/");
+      // } else {
+      //   $( scoreBoxId ).text(bowl2);
+      // }
+      score = (bowl1 + bowl2 == 10) ? "/" : bowl2
+      $( scoreBoxId ).text(score);
     }
   }
 }

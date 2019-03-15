@@ -11,7 +11,7 @@ function showScores() {
     f = game.currentFrame + 1;
     scoreBoxId = "#frame" + f + "bowl" + 1;
     bowl1 = game.frames[game.currentFrame].bowl1;
-    $( scoreBoxId ).text(bowl1Display(bowl1));
+    $( scoreBoxId ).text(scoreOrStrike(bowl1));
   }
 
   // show final frame
@@ -27,10 +27,8 @@ function showScores() {
     bowl2 = game.frames[game.currentFrame].bowl2;
     if (bowl1 + bowl2 == 10) {
       $( scoreBoxId ).text("/");
-    } else if (bowl2 == 10) {
-      $( scoreBoxId ).text("X");
     } else {
-      $( scoreBoxId ).text(bowl2);
+      $( scoreBoxId ).text(scoreOrStrike(bowl2));
     }
   }
 
@@ -56,7 +54,7 @@ function showPastFramesScores() {
     // bowl 1 score
     scoreBoxId = "#frame" + f + "bowl" + 1;
     bowl1 = game.frames[i].bowl1;
-    $( scoreBoxId ).text(bowl1Display(bowl1));
+    $( scoreBoxId ).text(scoreOrStrike(bowl1));
     //bowl2 score
     if (bowl1 != 10) {
       scoreBoxId = "#frame" + f + "bowl" + 2;
@@ -67,7 +65,7 @@ function showPastFramesScores() {
   }
 }
 
-function bowl1Display(bowl1) {
+function scoreOrStrike(bowl1) {
  return (bowl1 == 10) ? "X" : bowl1
 }
 

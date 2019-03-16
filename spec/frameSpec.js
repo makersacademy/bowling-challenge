@@ -36,6 +36,10 @@ describe('Frame', function(){
        expect(frame.score()).toEqual(0);
      });
 
+     it('can be passed two rolls', function(){
+       frame.rolls(5,9)
+       expect(frame.score()).toEqual(14);
+     });
 
   });
 });

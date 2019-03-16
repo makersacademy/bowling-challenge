@@ -15,6 +15,7 @@ function ScoreCard () {
 
 ScoreCard.prototype.frameRolls = function (roll1, roll2) {
   this.frames[this.currentFrame].rolls(roll1, roll2);
+  this.frames[this.currentFrame].whichFrame = this.currentFrame + 1;
   this.currentFrame += 1;
 };
 

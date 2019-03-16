@@ -34,7 +34,16 @@ describe('ScoreCard', function(){
       scoreCard.frameRolls(9,1);
       scoreCard.frameRolls(4,3);
       scoreCard.frameRolls(1,1);
-      expect(scoreCard.score()).toEqual(23)
+      expect(scoreCard.score()).toEqual(23);
+
+    });
+
+    it('ScoreCard correctly updates the Frame number', function(){
+      scoreCard.frameRolls(1,3);
+      scoreCard.frameRolls(9,1);
+      scoreCard.frameRolls(4,3);
+      scoreCard.frameRolls(1,1);
+      expect(scoreCard.frames[3].whichFrame).toEqual(4)
     });
 
   });

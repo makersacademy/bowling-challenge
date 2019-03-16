@@ -8,17 +8,16 @@ function showScores() {
 
   // show current frame
   if (game.currentBowl > 1) {
-    f = game.currentFrame + 1;
-    scoreBoxId = "#frame" + f + "bowl" + 1;
-    bowl1 = game.frames[game.currentFrame].bowl1;
-    $( scoreBoxId ).text(scoreOrStrike(bowl1));
+    // f = game.currentFrame + 1;
+    // scoreBoxId = "#frame" + f + "bowl" + 1;
+    // bowl1 = game.frames[game.currentFrame].bowl1;
+    // $( scoreBoxId ).text(scoreOrStrike(bowl1));
+    displayBowl1ForFrame(game.currentFrame + 1)
   }
 
   // show final frame
   if (game.gameOver) {
-    scoreBoxId = "#score10";
-    frameScore = game.frames[9].getTotal();
-    $( scoreBoxId ).text(frameScore);
+    displayScoreForFrame(10);
   }
 
   if (game.currentBowl > 2 || game.gameOver) {
@@ -39,16 +38,10 @@ function showScores() {
 
 function showPastFramesScores() {
   for (i = 0; i < game.currentFrame; i++) {
-    // frame score
-    f = i + 1
-    scoreBoxId = "#score" + f;
-    frameScore = game.frames[i].getTotal();
-    $( scoreBoxId ).text(frameScore);
-    // bowl 1 score
-    scoreBoxId = "#frame" + f + "bowl" + 1;
-    bowl1 = game.frames[i].bowl1;
-    $( scoreBoxId ).text(scoreOrStrike(bowl1));
+    displayScoreForFrame(i + 1)
+    displayBowl1ForFrame(i + 1)
     //bowl2 score
+    f = i + 1
     if (!isStrike(bowl1)) {
       scoreBoxId = "#frame" + f + "bowl" + 2;
       bowl2 = game.frames[i].bowl2;
@@ -71,6 +64,18 @@ function isStrike(bowl) {
 
 function isSpare(bowl1, bowl2) {
   return (bowl1 + bowl2 == 10) ? true : false
+}
+
+function displayScoreForFrame(frame) {
+  scoreBoxId = "#score" + frame;
+  frameScore = game.frames[frame - 1].getTotal();
+  $( scoreBoxId ).text(frameScore);
+}
+
+function displayBowl1ForFrame(frame) {
+  scoreBoxId = "#frame" + frame + "bowl" + 1;
+  bowl1 = game.frames[frame - 1].bowl1;
+  $( scoreBoxId ).text(scoreOrStrike(bowl1));
 }
 
 $( "#save" ).click(function(){

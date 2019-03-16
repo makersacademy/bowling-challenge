@@ -40,6 +40,18 @@ describe('Bowling', function() {
       }
     }
 
+    it('can roll a spare', function() {
+      bowling.roll(5)
+      bowling.roll(5)
+      bowling.roll(3)
+      var i
+      for (i = 0; i < 17; i ++ ) {
+      bowling.roll(0)
+      }
+      bowling.score()
+      expect(bowling.result).toEqual(16)
+    })
+
 
 
 

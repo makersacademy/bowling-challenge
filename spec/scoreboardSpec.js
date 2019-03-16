@@ -61,7 +61,6 @@ it('checking if spare works', function(){
 });
 
 it('produces a score', function() {
-  console.log('---')
   scores.bowl1(5)
   scores.bowl1(2)
   scores.bowl1(5)
@@ -74,5 +73,25 @@ it('produces a score', function() {
   expect(scores.result).toEqual(14)
 });
 
+it('produces a score with strike' , function () {
+  scores.bowl1(5)
+  scores.bowl1(2)
+  scores.bowl1(10)
+  scores.bowl1(5)
+  scores.bowl1(2)
+  scores.results()
+  expect(scores.result).toEqual(31)
+});
+
+it('produces a score with a spare' , function () {
+    console.log('---')
+    scores.bowl1(5)
+    scores.bowl1(2)
+    scores.bowl1(3)
+    scores.bowl1(7)
+    scores.bowl1(4)
+    scores.results()
+    expect(scores.result).toEqual(25)
+});
 
 });

@@ -18,24 +18,26 @@ scoreCard.prototype.bowl1 = function (scoreone) {
   {return "give strike or score?"};
   this.turn ++
 };
-//
-// scoreCard.prototype.bowl2 = function (scoretwo) {
-//   this.scoretwo = scoretwo
-//   if (this.scoreone + this.scoretwo == 10)
-//   {this.score1.push('/')}
-//   else if (scoretwo < 10)
-//   {this.score1.push(scoretwo)}
-//   else
-//   {return "give strike or score?"};
-//
-//   this.turn ++
-// };
 
 
 scoreCard.prototype.results = function () {
-// this.result = this.score1[0] + this.score1[1] + this.score1[2] + this.score1[3]
-var i;
-for (i = 0; i < this.score1.length; i++) {
-  this.result += this.score1[i];
-}
+  var p;
+  for (p = 0; p < this.score1.length; p++) {
+    if (this.score1[p] == '-') {
+      this.result += 0
+    }
+    else if (this.score1[p] == 'X') {
+      this.score1[p] = 10
+      this.score1[p] += (this.score1[p+2] + this.score1[p+3]);
+      this.result += this.score1[p]
+      }
+    else if (this.score1[p] == '/') {
+        this.score1[p] = (10 - this.score1[p-1]);
+        this.score1[p] += this.score1[p+1];
+        this.result += this.score1[p]
+      }
+    else {
+      this.result += this.score1[p];
+    };
+  };
 };

@@ -2,6 +2,7 @@ function Bowling() {
   this.rolls = []
   this.result = 0
   this.rollIndex = 0
+  this.frameIndex = 0
 }
 
 Bowling.prototype.roll = function(pinsDown) {
@@ -10,19 +11,27 @@ Bowling.prototype.roll = function(pinsDown) {
 }
 
 Bowling.prototype.score = function() {
-  // var result = 0
-  var frameIndex = 0
-  var rollIndex = 0
+  for (this.frameIndex = 0; this.frameIndex < 10; this.frameIndex ++) {
 
-  for (frameIndex = 0; frameIndex < 10; frameIndex ++) {
-
-    if (this.rolls[rollIndex] + this.rolls[rollIndex + 1] == 10) {
-      this.result += this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+    if (this.isSpare()) {
+      this.result += this.spareScore();
     } else {
-        this.result += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+        this.result += this.normalScore();
       }
-  rollIndex += 2;
+  this.rollIndex += 2;
   }
   return this.result
   console.log(this.result)
+}
+
+Bowling.prototype.isSpare = function() {
+    return this.rolls[this.rollIndex] + this.rolls[this.rollIndex + 1] == 10
+}
+
+Bowling.prototype.spareScore = function() {
+    return this.result += this.rolls[this.rollIndex] + this.rolls[this.rollIndex + 1] + this.rolls[this.rollIndex + 2];
+}
+
+Bowling.prototype.normalScore = function() {
+  return this.rolls[this.rollIndex] + this.rolls[this.rollIndex + 1];
 }

@@ -27,20 +27,11 @@ function showFinalFrame() {
   if (game.gameOver) {
     displayScoreForFrame(10);
   }
-
   if (game.currentBowl > 2 || game.gameOver) {
-    f = game.currentFrame + 1;
-    scoreBoxId = "#frame" + f + "bowl" + 2;
-    bowl2 = game.frames[game.currentFrame].bowl2;
-    score = isSpare(bowl1, bowl2) ? "/" : scoreOrStrike(bowl2)
-    $( scoreBoxId ).text(score);
+    displayBowl2ForFinalFrame()
   }
-
-  if (game.gameOver && game.frames[game.currentFrame].thirdBowlAllowed) {
-    f = game.currentFrame + 1;
-    scoreBoxId = "#frame" + f + "bowl" + 3;
-    bowl3 = game.frames[game.currentFrame].bonus;
-    $( scoreBoxId ).text(scoreOrStrike(bowl3)); // TO DO - if 10, 5, 5 it should display /
+  if (game.gameOver && game.frames[9].thirdBowlAllowed) {
+    displayBowl3ForFinalFrame()
   }
 }
 
@@ -79,6 +70,20 @@ function displayBow12ForFrame(frame) {
     bowl2 = game.frames[frame - 1].bowl2;
     $( scoreBoxId ).text(scoreOrSpare(bowl1, bowl2));
   }
+}
+
+function displayBowl2ForFinalFrame() {
+  scoreBoxId = "#frame" + 10 + "bowl" + 2;
+  bowl1 = game.frames[9].bowl1;
+  bowl2 = game.frames[9].bowl2;
+  score = isSpare(bowl1, bowl2) ? "/" : scoreOrStrike(bowl2)
+  $( scoreBoxId ).text(score);
+}
+
+function displayBowl3ForFinalFrame() {
+  scoreBoxId = "#frame" + 10 + "bowl" + 3;
+  bowl3 = game.frames[9].bonus;
+  $( scoreBoxId ).text(scoreOrStrike(bowl3)); // TO DO - if 10, 5, 5 it should display /
 }
 
 $( "#save" ).click(function(){

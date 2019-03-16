@@ -1,4 +1,4 @@
-This is the Makers week 5 weekend challenge (details below) to implement a 10-pin bowling scoreboard in Javascript.
+This is the Makers week 5 and 6 weekend challenge (details below) to implement a 10-pin bowling scoreboard in Javascript.
 
 To run
 ------
@@ -34,12 +34,12 @@ My Approach
 * Learnt a bit about Javascript spies.
 * Used JQuery and Javascript to tie the html to the classes
 * Updated tests and classes 
+* Refactored to break down the logic for displaying scores that was in a very large method with some repetition.
 
 If had more time I would...
 ---------------------------
-* Validate the input (e.g. can currently enter more than 10 pins in a frame)
-* Refactor the Jquery/Javascript that displays the scores to remove repetition in the code. 
-* Refactor the Jquery/Javascript to prevent totals being refreshed when haven't changed?  (Consider whether the inefficiency of that is preferable to more complex code)
+* Validate the input (e.g. user can currently enter more than 10 pins in a frame)
+* Refactor the Jquery/Javascript to prevent totals being refreshed when they haven't changed?  (Consider whether the inefficiency of that is preferable to more complex code)
 * Reconsider the responsibilities of the game and frame class that relate to the flow of the game as it feels like they are doing similar things in managing whether a 2nd/3rd bowl is required.
 
 

@@ -1,5 +1,6 @@
 function Frame(){
-  this.myscore = [0,0];
-  this.whichFrame = "Unassigned"
-  this.frameType = "Natural"
+  this.myRolls = [0,0];
+  this.whichFrame = 1;
+  this.frameType = "Natural";
+  this.myScore = 0;
 }

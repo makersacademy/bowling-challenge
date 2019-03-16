@@ -8,7 +8,7 @@ describe('ScoreCard', function(){
        scoreCard = new ScoreCard();
      })
 
-    it('Has an internal array called Frames', function(){
+    it('Has an internal array called frames', function(){
       expect(scoreCard.frames).toEqual([f1,f2,f3,f4,f5,f6,f7,f8,f9,f10]);
     });
 

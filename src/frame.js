@@ -16,3 +16,13 @@ Frame.prototype.rolls = function (roll1, roll2) {
   this.myRolls[1] = roll2;
   console.log(`Your rolls for this frame are ${roll1} and ${roll2}.`)
 };
+
+Frame.prototype.whatsMyBonus = function () {
+  if (this.myRolls[0] == 10) {
+    return "Strike frame"
+  } else if (this.myRolls[0] + this.myRolls[1] == 10) {
+    return "Spare frame"
+  } else {
+    return "Natural frame"
+  }
+};

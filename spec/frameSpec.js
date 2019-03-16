@@ -28,7 +28,7 @@ describe('Frame', function(){
 
   describe('Frame methods', function(){
 
-    beforeEach(function(){
+     beforeEach(function(){
        frame = new Frame();
      })
 
@@ -41,5 +41,16 @@ describe('Frame', function(){
        expect(frame.score()).toEqual(14);
      });
 
+     it('can work out what bonus to apply - Spare frame', function(){
+       frame.rolls(1,9)
+       expect(frame.whatsMyBonus()).toEqual("Spare frame")
+     });
+
+     it('can work out what bonus to apply - Strike frame', function(){
+       frame.rolls(10,0)
+       expect(frame.whatsMyBonus()).toEqual("Strike frame")
+     });
+
   });
+
 });

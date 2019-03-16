@@ -55,14 +55,17 @@ function showPastFramesScores() {
     if (bowl1 != 10) {
       scoreBoxId = "#frame" + f + "bowl" + 2;
       bowl2 = game.frames[i].bowl2;
-      bowl2score = (bowl1 + bowl2 == 10) ? "/" : bowl2
-      $( scoreBoxId ).text(bowl2score);
+      $( scoreBoxId ).text(scoreOrSpare(bowl1, bowl2));
     }
   }
 }
 
-function scoreOrStrike(pins) {
- return (pins == 10) ? "X" : pins
+function scoreOrStrike(bowl) {
+ return (bowl == 10) ? "X" : bowl
+}
+
+function scoreOrSpare(bowl1, bowl2) {
+  return (bowl1 + bowl2 == 10) ? "/" : bowl2
 }
 
 $( "#save" ).click(function(){

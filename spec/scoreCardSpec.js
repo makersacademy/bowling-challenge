@@ -29,8 +29,12 @@ describe('ScoreCard', function(){
       expect(scoreCard.frames[3].myRolls).toEqual([1,1]);
     });
 
-    it('Will tell you want the current total score is', function(){
-      expect
+    it('Will tell you what the current total score is', function(){
+      scoreCard.frameRolls(1,3);
+      scoreCard.frameRolls(9,1);
+      scoreCard.frameRolls(4,3);
+      scoreCard.frameRolls(1,1);
+      expect(scoreCard.score()).toEqual(23)
     });
 
   });

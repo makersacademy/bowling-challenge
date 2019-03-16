@@ -17,3 +17,11 @@ ScoreCard.prototype.frameRolls = function (roll1, roll2) {
   this.frames[this.currentFrame].rolls(roll1, roll2);
   this.currentFrame += 1;
 };
+
+ScoreCard.prototype.score = function () {
+  let runningTotal = 0;
+  this.frames.forEach(function(frame){
+    runningTotal += frame.score();
+  })
+  return runningTotal;
+};

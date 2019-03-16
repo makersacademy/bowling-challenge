@@ -25,18 +25,15 @@ function showScores() {
     f = game.currentFrame + 1;
     scoreBoxId = "#frame" + f + "bowl" + 2;
     bowl2 = game.frames[game.currentFrame].bowl2;
-    if (bowl1 + bowl2 == 10) {
-      $( scoreBoxId ).text("/");
-    } else {
-      $( scoreBoxId ).text(scoreOrStrike(bowl2));
-    }
+    score = isSpare(bowl1, bowl2) ? "/" : scoreOrStrike(bowl2)
+    $( scoreBoxId ).text(score);
   }
 
   if (game.gameOver && game.frames[game.currentFrame].thirdBowlAllowed) {
     f = game.currentFrame + 1;
     scoreBoxId = "#frame" + f + "bowl" + 3;
     bowl3 = game.frames[game.currentFrame].bonus;
-    $( scoreBoxId ).text(scoreOrStrike(bowl3));
+    $( scoreBoxId ).text(scoreOrStrike(bowl3)); // TO DO - if 10, 5, 5 it should display /
   }
 }
 
@@ -65,11 +62,15 @@ function scoreOrStrike(bowl) {
 }
 
 function scoreOrSpare(bowl1, bowl2) {
-  return (bowl1 + bowl2 == 10) ? "/" : bowl2
+  return isSpare(bowl1, bowl2) ? "/" : bowl2
 }
 
 function isStrike(bowl) {
   return (bowl == 10) ? true : false 
+}
+
+function isSpare(bowl1, bowl2) {
+  return (bowl1 + bowl2 == 10) ? true : false
 }
 
 $( "#save" ).click(function(){

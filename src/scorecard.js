@@ -5,13 +5,25 @@ $( document ).ready(function(){
 function showScores() {
   $( "#totalScore" ).text(game.getTotalScore());
   showPastFramesScores();
+  showCurrentFrame()
+  showFinalFrame()
+}
 
-  // show current frame
+function showPastFramesScores() {
+  for (i = 0; i < game.currentFrame; i++) {
+    displayScoreForFrame(i + 1)
+    displayBowl1ForFrame(i + 1)
+    displayBow12ForFrame(i + 1)
+  }
+}
+
+function showCurrentFrame() {
   if (game.currentBowl > 1) {
     displayBowl1ForFrame(game.currentFrame + 1)
   }
+}
 
-  // show final frame
+function showFinalFrame() {
   if (game.gameOver) {
     displayScoreForFrame(10);
   }
@@ -29,14 +41,6 @@ function showScores() {
     scoreBoxId = "#frame" + f + "bowl" + 3;
     bowl3 = game.frames[game.currentFrame].bonus;
     $( scoreBoxId ).text(scoreOrStrike(bowl3)); // TO DO - if 10, 5, 5 it should display /
-  }
-}
-
-function showPastFramesScores() {
-  for (i = 0; i < game.currentFrame; i++) {
-    displayScoreForFrame(i + 1)
-    displayBowl1ForFrame(i + 1)
-    displayBow12ForFrame(i + 1)
   }
 }
 

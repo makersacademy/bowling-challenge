@@ -52,7 +52,7 @@ function showPastFramesScores() {
     bowl1 = game.frames[i].bowl1;
     $( scoreBoxId ).text(scoreOrStrike(bowl1));
     //bowl2 score
-    if (bowl1 != 10) {
+    if (!isStrike(bowl1)) {
       scoreBoxId = "#frame" + f + "bowl" + 2;
       bowl2 = game.frames[i].bowl2;
       $( scoreBoxId ).text(scoreOrSpare(bowl1, bowl2));

@@ -25,4 +25,17 @@ describe('Frame', function(){
     });
 
   });
+
+  describe('Frame methods', function(){
+
+    beforeEach(function(){
+       frame = new Frame();
+     })
+
+     it('will calculate the frame score with score function', function(){
+       expect(frame.score()).toEqual(0);
+     });
+
+
+  });
 });

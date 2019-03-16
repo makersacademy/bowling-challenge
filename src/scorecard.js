@@ -36,11 +36,7 @@ function showScores() {
     f = game.currentFrame + 1;
     scoreBoxId = "#frame" + f + "bowl" + 3;
     bowl3 = game.frames[game.currentFrame].bonus;
-    if (bowl3 == 10) {
-      $( scoreBoxId ).text("X");
-    } else {
-      $( scoreBoxId ).text(bowl3);
-    }
+    $( scoreBoxId ).text(scoreOrStrike(bowl3));
   }
 }
 
@@ -65,8 +61,8 @@ function showPastFramesScores() {
   }
 }
 
-function scoreOrStrike(bowl1) {
- return (bowl1 == 10) ? "X" : bowl1
+function scoreOrStrike(pins) {
+ return (pins == 10) ? "X" : pins
 }
 
 $( "#save" ).click(function(){

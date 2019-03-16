@@ -1,20 +1,15 @@
-describe('scoreCard', function(){
+describe('ScoreCard', function(){
 
   var scoreCard
 
-  describe('Initialization check', function(){
+  describe('Initial setup state', function(){
 
-    it('Is actually a class', function(){
-      scoreCard = new ScoreCard();
-    });
-
-  });
-
-  describe('Internal array of Frame objects', function(){
+    beforeEach(function(){
+       scoreCard = new ScoreCard();
+     })
 
     it('Has an internal array called Frames', function(){
-      scoreCard = new ScoreCard();
-      expect(scoreCard.frames).toEqual([frame1,frame2,frame3,frame4,frame5,frame6,frame7,frame8,frame9,frame10]);
+      expect(scoreCard.frames).toEqual([f1,f2,f3,f4,f5,f6,f7,f8,f9,f10]);
     });
 
   });

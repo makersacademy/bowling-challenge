@@ -1,13 +1,13 @@
 function ScoreCard () {
-  frame1 = new Frame();
-  frame2 = new Frame();
-  frame3 = new Frame();
-  frame4 = new Frame();
-  frame5 = new Frame();
-  frame6 = new Frame();
-  frame7 = new Frame();
-  frame8 = new Frame();
-  frame9 = new Frame();
-  frame10 = new Frame();
-  this.frames = [frame1,frame2,frame3,frame4,frame5,frame6,frame7,frame8,frame9,frame10]
+  f1 = new Frame();
+  f2 = new Frame();
+  f3 = new Frame();
+  f4 = new Frame();
+  f5 = new Frame();
+  f6 = new Frame();
+  f7 = new Frame();
+  f8 = new Frame();
+  f9 = new Frame();
+  f10 = new Frame();
+  this.frames = [f1,f2,f3,f4,f5,f6,f7,f8,f9,f10]
 }

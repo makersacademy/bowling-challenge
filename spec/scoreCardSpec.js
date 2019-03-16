@@ -10,4 +10,13 @@ describe('scoreCard', function(){
 
   });
 
+  describe('Internal array of Frame objects', function(){
+
+    it('Has an internal array called Frames', function(){
+      scoreCard = new ScoreCard();
+      expect(scoreCard.frames).toEqual([]);
+    });
+
+  });
+
 });

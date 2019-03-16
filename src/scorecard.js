@@ -61,11 +61,15 @@ function showPastFramesScores() {
 }
 
 function scoreOrStrike(bowl) {
- return (bowl == 10) ? "X" : bowl
+ return isStrike(bowl) ? "X" : bowl
 }
 
 function scoreOrSpare(bowl1, bowl2) {
   return (bowl1 + bowl2 == 10) ? "/" : bowl2
+}
+
+function isStrike(bowl) {
+  return (bowl == 10) ? true : false 
 }
 
 $( "#save" ).click(function(){

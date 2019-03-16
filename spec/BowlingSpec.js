@@ -18,4 +18,14 @@ describe('Bowling', function() {
         expect(bowling.rolls[2]).toEqual(1)
       })
 
+      it('can score a gutter game', function() {
+        var i
+        for (i = 0; i < 20; i ++ ) {
+        bowling.roll(0)
+        }
+        bowling.score()
+        expect(bowling.result).toEqual(0)
+      })
+
+
 }) // last brackets

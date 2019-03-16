@@ -27,5 +27,20 @@ describe('Bowling', function() {
         expect(bowling.result).toEqual(0)
       })
 
+      it('can score a whole game of ones', function() {
+        rollMany(1, 20)
+        bowling.score()
+        expect(bowling.result).toEqual(20)
+      })
+
+      var rollMany = function(pinsDown, rolls) {
+          var i
+          for (i = 0; i < rolls; i ++) {
+            bowling.roll(pinsDown)
+      }
+    }
+
+
+
 
 }) // last brackets

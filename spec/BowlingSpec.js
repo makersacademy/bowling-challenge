@@ -6,16 +6,16 @@ describe('Bowling', function() {
   })
 
       it ('starts as an empty scorecard', function() {
-      expect(bowling.rolls).toEqual([])
+      expect(bowling._rolls).toEqual([])
       })
 
       it('can roll three ones', function() {
         bowling.roll(1)
         bowling.roll(1)
         bowling.roll(1)
-        expect(bowling.rolls[0]).toEqual(1)
-        expect(bowling.rolls[1]).toEqual(1)
-        expect(bowling.rolls[2]).toEqual(1)
+        expect(bowling._rolls[0]).toEqual(1)
+        expect(bowling._rolls[1]).toEqual(1)
+        expect(bowling._rolls[2]).toEqual(1)
       })
 
       it('can score a gutter game', function() {
@@ -24,13 +24,13 @@ describe('Bowling', function() {
         bowling.roll(0)
         }
         bowling.score()
-        expect(bowling.result).toEqual(0)
+        expect(bowling._result).toEqual(0)
       })
 
       it('can score a whole game of ones', function() {
         rollMany(1, 20)
         bowling.score()
-        expect(bowling.result).toEqual(20)
+        expect(bowling._result).toEqual(20)
       })
 
       var rollMany = function(pinsDown, rolls) {
@@ -49,7 +49,7 @@ describe('Bowling', function() {
       bowling.roll(0)
       }
       bowling.score()
-      expect(bowling.result).toEqual(16)
+      expect(bowling._result).toEqual(16)
     })
 
 

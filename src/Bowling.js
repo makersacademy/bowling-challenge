@@ -1,37 +1,37 @@
 function Bowling() {
-  this.rolls = []
-  this.result = 0
-  this.rollIndex = 0
-  this.frameIndex = 0
+  this._rolls = []
+  this._result = 0
+  this._rollIndex = 0
+  this._frameIndex = 0
 }
 
 Bowling.prototype.roll = function(pinsDown) {
-  this.rolls.push(pinsDown);
-  console.log(this.rolls)
+  this._rolls.push(pinsDown);
+  console.log(this._rolls)
 }
 
 Bowling.prototype.score = function() {
-  for (this.frameIndex = 0; this.frameIndex < 10; this.frameIndex ++) {
+  for (this._frameIndex = 0; this._frameIndex < 10; this._frameIndex ++) {
 
     if (this.isSpare()) {
-      this.result += this.spareScore();
+      this._result += this.spareScoring();
     } else {
-        this.result += this.normalScore();
+        this._result += this.basicScoring();
       }
-  this.rollIndex += 2;
+  this._rollIndex += 2;
   }
-  return this.result
-  console.log(this.result)
+  return this._result
+  console.log(this._result)
 }
 
 Bowling.prototype.isSpare = function() {
-    return this.rolls[this.rollIndex] + this.rolls[this.rollIndex + 1] == 10
+    return this._rolls[this._rollIndex] + this._rolls[this._rollIndex + 1] == 10
 }
 
-Bowling.prototype.spareScore = function() {
-    return this.result += this.rolls[this.rollIndex] + this.rolls[this.rollIndex + 1] + this.rolls[this.rollIndex + 2];
+Bowling.prototype.spareScoring = function() {
+    return this._result += this._rolls[this._rollIndex] + this._rolls[this._rollIndex + 1] + this._rolls[this._rollIndex + 2];
 }
 
-Bowling.prototype.normalScore = function() {
-  return this.rolls[this.rollIndex] + this.rolls[this.rollIndex + 1];
+Bowling.prototype.basicScoring = function() {
+  return this._rolls[this._rollIndex] + this._rolls[this._rollIndex + 1];
 }

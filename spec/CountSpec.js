@@ -83,8 +83,26 @@ describe("Count",function(){
       var frame3 = new Frame(4,3);
       count.add(frame1);
       count.add(frame2);
-      count.add(frame3);  
+      count.add(frame3);
       expect(count.scoreCounting()).toEqual(41);
     });
+  });
+  describe("We will use the doubles to check the methods",function(){
+    var count ;
+    beforeEach(function(){
+      count = new Count ;
+    });
+    it("a normal score of a frame can be calculated correctly",function(){
+      var frame;
+      frame={
+        showFirst: function(){},
+        showSecond: function(){}
+      }
+      spyOn(frame, 'showFirst').and.returnValue(3);
+      spyOn(frame, 'showSecond').and.returnValue(5);
+      count.add(frame);
+      expect(count.normal_score(count.array[0])).toEqual(8);
+    });
+
   });
 });

@@ -107,30 +107,30 @@
       $(document).ready(function(){
         var round = 1 ;
         count = new Count();
+  
         $("#submit").on('click',function(){
-
-            round = round +1 ;
-            count.array.pop();
-            var frame = new Frame(parseInt($("#first-role").val()),parseInt($("#second-role").val()));
-            count.add(frame);
-            var empty_frame = new Frame(0,0);
-            count.add(empty_frame);
-            $("#round").text("The current round is "+ round);
-            score = count.scoreCounting();
-            $("#score").text("Current score is  " + score);
-            if(count.array.length === 11){
+          round = round +1 ;
+          count.emptyFrameDeleting();
+          var frame = new Frame(parseInt($("#first-role").val()),parseInt($("#second-role").val()));
+          count.add(frame);
+          count.emptyFrameAdding();
+          $("#round").text("The current round is "+ round);
+          score = count.scoreCounting();
+          $("#score").text("Current score is  " + score);
+          if(count._isFull() === true){
             if(count.array[9]._isStrike() === true){
               $("#playing").hide();
               $(".hidden-strike").show();
-          }else if(count.array[9]._isSpare() === true){
-            $("#playing").hide();
-            $(".hidden-spare").show();
-          }else{
-            $("#playing").hide();
-            $("#scoree").text(count.scoreCounting());
-            $(".final").show();
-          }}
+              }else if(count.array[9]._isSpare() === true){
+                $("#playing").hide();
+                $(".hidden-spare").show();
+                }else{
+                  $("#playing").hide();
+                  $("#scoree").text(count.scoreCounting());
+                  $(".final").show();
+                }};
         });
+
         $("#spare-submit").on("click",function(){
           var amended_score = count.scoreCounting()+parseInt($("#extra-spare-role").val());
           $("#playing").hide();
@@ -138,6 +138,7 @@
           $(".final").show();
           $(".hidden-spare").hide();
         });
+
         $("#striking").on("click",function(){
           count.array.pop();
           frame = new Frame(parseInt($("#extra-strike-first").val()),parseInt($("#extra-strike-second").val()));
@@ -150,6 +151,7 @@
           $(".final").show();
           $(".hidden-strike").hide();
         });
+
         $("#first-role").change(function() {
 	        var $dropdown = $(this);
 	        var key = $dropdown.val();

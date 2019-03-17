@@ -24,7 +24,7 @@ Count.prototype.scoreCounting = function(){
 }
 
 Count.prototype._isFull = function(){
-  if(this.array.length === 10){
+  if(this.array.length === 11){
     return true;
   }else{
     return false;
@@ -34,4 +34,15 @@ Count.prototype._isFull = function(){
 Count.prototype.emptyFrameAdding = function(){
   var frame = new Frame(0,0);
   this.array.push(frame);
+}
+
+Count.prototype.emptyFrameDeleting = function(){
+  this.array.pop();
+}
+
+Count.prototype._isTenthSpare = function(){
+  if(this.array[9]._isSpare()===true){return true};
+}
+Count.prototype._isTenthStrike = function(){
+  if(this.array[9]._isStrike()===true){return true};
 }

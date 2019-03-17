@@ -158,11 +158,35 @@ describe("Count",function(){
       for(var i=0; i < 10; i++){
         count.add(frame);
       };
+      expect(count._isFull()).toEqual(false);
+      count.add(frame);
       expect(count._isFull()).toEqual(true);
     });
     it("Adding a frame with no pins to end of count's array helps counting scores",function(){
       count.emptyFrameAdding();
       expect(count.array.length).toEqual(1);
+    });
+    it("Deleting the empty array at the end of the count array",function(){
+      count.emptyFrameAdding();
+      expect(count.array.length).toEqual(1);
+      count.emptyFrameDeleting();
+      expect(count.array.length).toEqual(0);
+    });
+    it("We can check if the tenth frame is spare",function(){
+      var frame = { _isSpare: function(){}};
+      spyOn(frame, '_isSpare').and.returnValue(true);
+      for(var i=0; i < 10; i++){
+        count.add(frame);
+      };
+      expect(count._isTenthSpare()).toEqual(true);
+    });
+    it("We can check if the tenth frame is strike",function(){
+      var frame = { _isStrike: function(){}};
+      spyOn(frame, '_isStrike').and.returnValue(true);
+      for(var i=0; i < 10; i++){
+        count.add(frame);
+      };
+      expect(count._isTenthStrike()).toEqual(true);
     });
   });
 });

@@ -15,6 +15,18 @@ open SpecRunner.html
 
 ## Usage
 
+---
+
+### A summary
+
+- Create a new Bowling object: `var bowling = new Bowling()`
+- Add a roll: `bowling.addRoll({frame: 1, pinsDown: 4})`
+- Get the score at any point: `bowling.totalScore();`
+
+Further details on the methods follows.
+
+---
+
 ### Creating a new Bowling Scorecard
 
 ```javascript
@@ -67,7 +79,7 @@ bowling.addRoll({frame: 3, pinsDown: 1})
 
 ![Adding a Spare](./Bowling/images/addRoll_Spare.png)
 
-#### Strike on last frame awards 2 bonus rolls
+### Strike on last frame awards 2 bonus rolls
 
 ```javascript
 bowling.addRoll({frame: 10, pinsDown: 10}) // a Strike is recorded
@@ -78,7 +90,7 @@ bowling.addRoll({frame: 10, pinsDown: 10}) // Second bonus roll
 
 ![Strike on last frame awards 2 bonus rolls](./Bowling/images/last_frame_Strike.png)
 
-#### Spare on last frame awards 1 bonus roll
+### Spare on last frame awards 1 bonus roll
 
 ```javascript
 bowling.addRoll({frame: 10, pinsDown: 9})
@@ -89,7 +101,7 @@ bowling.addRoll({frame: 10, pinsDown: 10}) // Bonus roll
 
 ![Spare on last frame awards bonus roll](./Bowling/images/last_frame_Spare.png)
 
-#### Can get the total score at any point
+### Can get the total score at any point
 
 ```javascript
 bowling.addRoll({frame: 1, pinsDown: 9})

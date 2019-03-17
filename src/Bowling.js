@@ -28,6 +28,7 @@ Bowling.prototype.isSpare = function() {
     return this._rolls[this._rollIndex] + this._rolls[this._rollIndex + 1] == 10
 }
 
+
 Bowling.prototype.spareScoring = function() {
     return this._result += this._rolls[this._rollIndex] + this._rolls[this._rollIndex + 1] + this._rolls[this._rollIndex + 2];
 }

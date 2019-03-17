@@ -45,13 +45,19 @@ describe('Bowling', function() {
       bowling.roll(5)
       bowling.roll(3)
       var i
-      for (i = 0; i < 17; i ++ ) {
+      for (i = 0; i < 17; i ++) {
       bowling.roll(0)
       }
       bowling.score()
       expect(bowling._result).toEqual(16)
     })
 
+    it('can roll a perfect game', function() {
+    rollMany(10, 12)
+    bowling.score()
+    expect(bowling._result).toEqual(300)
+
+    })
 
 
 

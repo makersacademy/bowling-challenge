@@ -103,6 +103,57 @@ describe("Count",function(){
       count.add(frame);
       expect(count.normal_score(count.array[0])).toEqual(8);
     });
+    it("if a frame is a spare, the first role of next round added",function(){
+      frame1={
+        showFirst: function(){},
+        showSecond: function(){},
+        _isSpare: function(){},
+        _isStrike: function(){}
+      }
+      spyOn(frame1, 'showFirst').and.returnValue(2);
+      spyOn(frame1, 'showSecond').and.returnValue(5);
+      spyOn(frame1, '_isSpare').and.returnValue(true);
+      spyOn(frame1, '_isStrike').and.returnValue(false);
+      frame2={
+        showFirst: function(){},
+        showSecond: function(){},
+        _isSpare: function(){},
+        _isStrike: function(){},
+      }
+      spyOn(frame2, 'showFirst').and.returnValue(2);
+      spyOn(frame2, 'showSecond').and.returnValue(5);
+      spyOn(frame2, '_isSpare').and.returnValue(false);
+      spyOn(frame2, '_isStrike').and.returnValue(false);
+      count.add(frame1);
+      count.add(frame2);
+      expect(count.scoreCounting()).toEqual(16);
+    });
+    it("If a frame is a strike, the two next roles are added",function(){
+      frame1={
+        showFirst: function(){},
+        showSecond: function(){},
+        _isSpare: function(){},
+        _isStrike: function(){}
+      }
+      spyOn(frame1, 'showFirst').and.returnValue(2);
+      spyOn(frame1, 'showSecond').and.returnValue(5);
+      spyOn(frame1, '_isSpare').and.returnValue(false);
+      spyOn(frame1, '_isStrike').and.returnValue(true);
+      frame2={
+        showFirst: function(){},
+        showSecond: function(){},
+        _isSpare: function(){},
+        _isStrike: function(){},
+      }
+      spyOn(frame2, 'showFirst').and.returnValue(2);
+      spyOn(frame2, 'showSecond').and.returnValue(5);
+      spyOn(frame2, '_isSpare').and.returnValue(false);
+      spyOn(frame2, '_isStrike').and.returnValue(false);
+      count.add(frame1);
+      count.add(frame2);
+      expect(count.scoreCounting()).toEqual(21);
+    });
+
 
   });
 });

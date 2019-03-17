@@ -56,18 +56,16 @@ Bowling.prototype.addRoll = function addRoll({ frame = this.countFullFrames(), p
   const currentIndex = frame - 1;
   const rollsArray = this.framesArray[currentIndex].rolls;
   const rollTotal = rollsArray.reduce(sumArray, 0);
+  const pinsDownValid = ((rollTotal + pinsDown) <= TEN_PINS);
+  const rollsRemain = rollsArray.length < maxRolls;
+  const notStrike = !this.framesArray[currentIndex].isStrike();
 
-  const pinsRangeError = ((rollTotal + pinsDown) > TEN_PINS);
-
-  if ((frame < 10) && this.framesArray[frame].isStrike()) {
-    // console.error(`IT WAS A STRIKE`);
-  } else if ((frame < 10) && pinsRangeError) {
-    // console.error(`Input Error: Cannot knock ${pinsDown} down if only ${TEN_PINS - rollTotal} remain.`);
-  } else if (rollTotal === TEN_PINS && frame < 10) {
-    // console.error('Error: All pins already down in this frame.');
-  } else if ((rollsArray.length === maxRolls)) {
-    // console.error('Error: Out of rolls.');
-  } else {
+  if (frame < 10) {
+    if (rollsRemain && pinsDownValid && notStrike) {
+      rollsArray.push(pinsDown);
+      this.scoreFrame(currentIndex, pinsDown);
+    }
+  } else if (rollsRemain) {
     rollsArray.push(pinsDown);
     this.scoreFrame(currentIndex, pinsDown);
   }

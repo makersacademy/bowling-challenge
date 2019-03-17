@@ -3,6 +3,15 @@
   text-align: center;
 }
 
+input {
+  padding: 2px 1px;
+  line-height: 1px;
+  border-width: 0px;
+  border: none;
+  text-align: center;
+  size: 10;
+}
+
 input[type="text"]{
   padding: 2px 1px;
   line-height: 1px;

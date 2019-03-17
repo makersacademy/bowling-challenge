@@ -72,7 +72,4 @@ describe("Scorer", function() {
     expect(scorer.totalScore).toEqual(300)
   })
 
-
-
-
 });

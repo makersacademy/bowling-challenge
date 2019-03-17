@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   var scorecard = new Scorer()
 
-  $("input[type='text']").on('input', function() {
+  $("input[type='number']").on('input', function() {
       scorecard.storeScore(this.value,this.id);
       scorecard.removeNullsFromRolls();
       scorecard.bonusCalculator();

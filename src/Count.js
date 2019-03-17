@@ -30,3 +30,8 @@ Count.prototype._isFull = function(){
     return false;
   }
 }
+
+Count.prototype.emptyFrameAdding = function(){
+  var frame = new Frame(0,0);
+  this.array.push(frame);
+}

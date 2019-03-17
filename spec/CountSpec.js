@@ -160,5 +160,9 @@ describe("Count",function(){
       };
       expect(count._isFull()).toEqual(true);
     });
+    it("Adding a frame with no pins to end of count's array helps counting scores",function(){
+      count.emptyFrameAdding();
+      expect(count.array.length).toEqual(1);
+    });
   });
 });

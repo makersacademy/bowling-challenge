@@ -20,6 +20,8 @@ Count.prototype.scoreCounting = function(){
     }else{score = score + this.array[counter+1].showFirst() + this.array[counter+1].showSecond()};
   };
   };
+  if(this._isTenthSpare === true || this._isTenthSpare === true){
+    score = score - this.normal_score(this.array[9])};
   return(score);
 }
 

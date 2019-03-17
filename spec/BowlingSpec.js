@@ -5,17 +5,8 @@ describe('Bowling', function() {
     bowling = new Bowling()
   })
 
-      it ('starts as an empty scorecard', function() {
+      it('starts as an empty scorecard', function() {
       expect(bowling._rolls).toEqual([])
-      })
-
-      it('can roll three ones', function() {
-        bowling.roll(1)
-        bowling.roll(1)
-        bowling.roll(1)
-        expect(bowling._rolls[0]).toEqual(1)
-        expect(bowling._rolls[1]).toEqual(1)
-        expect(bowling._rolls[2]).toEqual(1)
       })
 
       it('can score a gutter game', function() {
@@ -23,14 +14,14 @@ describe('Bowling', function() {
         for (i = 0; i < 20; i ++ ) {
         bowling.roll(0)
         }
-        bowling.score()
-        expect(bowling._result).toEqual(0)
+        // bowling.score()
+        expect(bowling.score()).toEqual(0)
       })
 
       it('can score a whole game of ones', function() {
         rollMany(1, 20)
-        bowling.score()
-        expect(bowling._result).toEqual(20)
+        // bowling.score()
+        expect(bowling.score()).toEqual(20)
       })
 
       var rollMany = function(pinsDown, rolls) {
@@ -40,7 +31,7 @@ describe('Bowling', function() {
       }
     }
 
-    it('can roll a spare', function() {
+    it('can score a spare', function() {
       bowling.roll(5)
       bowling.roll(5)
       bowling.roll(3)
@@ -48,17 +39,16 @@ describe('Bowling', function() {
       for (i = 0; i < 17; i ++) {
       bowling.roll(0)
       }
-      bowling.score()
-      expect(bowling._result).toEqual(16)
+      // bowling.score()
+      expect(bowling.score()).toEqual(16)
     })
 
-    it('can roll a perfect game', function() {
-    rollMany(10, 12)
-    bowling.score()
-    expect(bowling._result).toEqual(300)
-
-    })
-
-
+    // it('can score a perfect game', function() {
+    // rollMany(10, 12)
+    // bowling.score()
+    // expect(bowling._result).toEqual(300)
+    //
+    // })
+    //
 
 }) // last brackets

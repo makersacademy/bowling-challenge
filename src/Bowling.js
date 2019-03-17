@@ -1,38 +1,56 @@
 function Bowling() {
   this._rolls = []
-  this._result = 0
-  this._rollIndex = 0
-  this._frameIndex = 0
+}
+
+Bowling.prototype.rollMany = function(pins, rolls) {
+  var i
+  for (i = 0; i < rolls; i ++) {
+    this.roll(pins)
+  }
 }
 
 Bowling.prototype.roll = function(pinsDown) {
   this._rolls.push(pinsDown);
-  console.log(this._rolls)
+  console.log("These are the rolls " + this._rolls)
 }
 
 Bowling.prototype.score = function() {
-  for (this._frameIndex = 0; this._frameIndex < 10; this._frameIndex ++) {
+  var result = 0
+  var rollIndex = 0
+  var game = this
 
-    if (this.isSpare()) {
-      this._result += this.spareScoring();
-    } else {
-        this._result += this.basicScoring();
-      }
-  this._rollIndex += 2;
+for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
+  if (isStrike()) {
+    result += strikeScoring()
+    rollIndex ++
+  } else if (isSpare()) {
+    result += spareScoring()
+    rollIndex += 2
+  } else {
+    result += basicScoring()
+    rollIndex += 2
+    }
   }
-  return this._result
-  console.log(this._result)
-}
+  return result
+  console.log("this is the result HOORAY " + result)
 
-Bowling.prototype.isSpare = function() {
-    return this._rolls[this._rollIndex] + this._rolls[this._rollIndex + 1] == 10
-}
+  function isSpare() {
+    return game._rolls[rollIndex] + game._rolls[rollIndex + 1] == 10
+    }
 
+  function spareScoring() {
+    return game._rolls[rollIndex] + game._rolls[rollIndex + 1] + game._rolls[rollIndex + 2];
+    }
 
-Bowling.prototype.spareScoring = function() {
-    return this._result += this._rolls[this._rollIndex] + this._rolls[this._rollIndex + 1] + this._rolls[this._rollIndex + 2];
-}
+  function basicScoring() {
+    return game._rolls[rollIndex] + game._rolls[rollIndex + 1];
+  }
 
-Bowling.prototype.basicScoring = function() {
-  return this._rolls[this._rollIndex] + this._rolls[this._rollIndex + 1];
-}
+  function isStrike() {
+    return game._rolls[rollIndex] == 10
+  }
+
+  function strikeScoring() {
+    return game._rolls[rollIndex] + game._rolls[rollIndex + 1] + game._rolls[rollIndex + 2];
+  }
+    };

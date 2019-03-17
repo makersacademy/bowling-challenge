@@ -1,41 +1,41 @@
+/* eslint-disable no-underscore-dangle */
 function Bowling() {
-  this._rolls = []
+  this._rolls = [];
 }
 
-Bowling.prototype.rollMany = function(pins, rolls) {
-  var i
-  for (i = 0; i < rolls; i ++) {
-    this.roll(pins)
+Bowling.prototype.rollMany = function (pins, rolls) {
+  for (let i = 0; i < rolls; i++) {
+    this.roll(pins);
   }
-}
+};
 
-Bowling.prototype.roll = function(pinsDown) {
+Bowling.prototype.roll = function (pinsDown) {
   this._rolls.push(pinsDown);
-  console.log("These are the rolls " + this._rolls)
-}
+  console.log(`These are the rolls ${this._rolls}`);
+};
 
-Bowling.prototype.score = function() {
-  var result = 0
-  var rollIndex = 0
-  var game = this
+Bowling.prototype.score = function () {
+  let result = 0;
+  let rollIndex = 0;
+  const game = this;
 
-for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
+for (let frameIndex = 0; frameIndex < 10; frameIndex++) {
   if (isStrike()) {
-    result += strikeScoring()
-    rollIndex ++
+    result += strikeScoring();
+    rollIndex++;
   } else if (isSpare()) {
-    result += spareScoring()
-    rollIndex += 2
+    result += spareScoring();
+    rollIndex += 2;
   } else {
-    result += basicScoring()
-    rollIndex += 2
+    result += basicScoring();
+    rollIndex += 2;
     }
   }
-  return result
-  console.log("this is the result HOORAY " + result)
+  console.log(`This is the result ${result}`);
+  return result;
 
   function isSpare() {
-    return game._rolls[rollIndex] + game._rolls[rollIndex + 1] == 10
+    return game._rolls[rollIndex] + game._rolls[rollIndex + 1] === 10;
     }
 
   function spareScoring() {
@@ -47,7 +47,7 @@ for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
   }
 
   function isStrike() {
-    return game._rolls[rollIndex] == 10
+    return game._rolls[rollIndex] === 10;
   }
 
   function strikeScoring() {

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Bowling score card</title>
+    <script src="js/lib/jquery-3.3.1.min.js"></script>
+    <script src="js/frame.js"></script>
+    <%# <script src="js/game.js"></script> %>
+    <%# <script src="js/scoreCardPersister.js"></script> %>
+    <script src="js/scoreCardController.js"></script>
+    <script src="js/index.js"></script>
+    <link rel = "stylesheet"
+      type = "text/css"
+      href = "style/style.css" />
+  </head>
+  <body>
+    <h1>Bowling score card...</h1>
+    <%# <img src="skittles.jpg" alt="Skittles" height="10%" width="10%"> %>
+
+    <div>
+      <form class="" action="index.html" method="post">
+        <table border=1>
+          <thead>
+            <tr>
+              <th>
+                Frame
+              </th>
+              <th>
+                Roll 1
+              </th>
+              <th>
+                Roll 2
+              </th>
+              <th>
+                Special
+              </th>
+              <th>
+                Total
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% (1..10).to_a.each do |frame| %>
+              <tr>
+                <td>
+                  <div class="frameNumber">
+                    <%= frame.to_s %>
+                  </div>
+                </td>
+                <td>
+                  <input type="text" size="10" placeholder="Roll 1" class="roll1">
+                </td>
+                <td>
+                  <input type="text" size="10" placeholder="Roll 2" class="roll2">
+                </td>
+                <td>
+                  <div class="specialRoll"></div>
+                </td>
+                <td>
+                  <div class="total"></div>
+                </td>
+              </tr>
+              <% end %>
+              <tr>
+                <td>
+                </td>
+                <td>
+                  <input type="text" size="10" placeholder="Roll 1" class="roll1">
+                </td>
+                <td>
+                  <input type="text" size="10" placeholder="Roll 2" class="roll2">
+                </td>
+                <td>
+                  <div class="specialRoll"></div>
+                </td>
+                <td>
+                  <div class="total"></div>
+                </td>
+              </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+    <div>
+      <h2>You score: []</h2>
+    </div>
+  </body>
+</html>

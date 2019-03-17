@@ -1,16 +1,16 @@
 function Frame() {
   this.scoreCard = [
-    {'roll1': null, 'roll2': null, 'special': null, 'total': null},
-    {'roll1': null, 'roll2': null, 'special': null, 'total': null},
-    {'roll1': null, 'roll2': null, 'special': null, 'total': null},
-    {'roll1': null, 'roll2': null, 'special': null, 'total': null},
-    {'roll1': null, 'roll2': null, 'special': null, 'total': null},
-    {'roll1': null, 'roll2': null, 'special': null, 'total': null},
-    {'roll1': null, 'roll2': null, 'special': null, 'total': null},
-    {'roll1': null, 'roll2': null, 'special': null, 'total': null},
-    {'roll1': null, 'roll2': null, 'special': null, 'total': null},
-    {'roll1': null, 'roll2': null, 'special': null, 'total': null},
-    {'roll1': null, 'roll2': null, 'total': null}
+    {'roll1': 0, 'roll2': 0, 'special': null, 'total': 0},
+    {'roll1': 0, 'roll2': 0, 'special': null, 'total': 0},
+    {'roll1': 0, 'roll2': 0, 'special': null, 'total': 0},
+    {'roll1': 0, 'roll2': 0, 'special': null, 'total': 0},
+    {'roll1': 0, 'roll2': 0, 'special': null, 'total': 0},
+    {'roll1': 0, 'roll2': 0, 'special': null, 'total': 0},
+    {'roll1': 0, 'roll2': 0, 'special': null, 'total': 0},
+    {'roll1': 0, 'roll2': 0, 'special': null, 'total': 0},
+    {'roll1': 0, 'roll2': 0, 'special': null, 'total': 0},
+    {'roll1': 0, 'roll2': 0, 'special': null, 'total': 0},
+    {'roll1': 0, 'roll2': 0, 'total': 0}
   ]
 }
 
@@ -50,10 +50,12 @@ Frame.prototype.sumCurrent = function(frame) {
   this.scoreCard[e]['total'] = currentFrame + prevTotals
 };
 
+
 Frame.prototype.sumStrike = function(strikeFrame) {
   nextRoll1 = this.scoreCard[strikeFrame]['roll1']
   nextRoll2 = this.scoreCard[strikeFrame]['roll2']
   return nextRoll1 + nextRoll2
+  console.log(nextRoll1 + nextRoll2)
 };
 
 Frame.prototype.sumSpare = function(spareFrame) {

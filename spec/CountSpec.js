@@ -153,7 +153,12 @@ describe("Count",function(){
       count.add(frame2);
       expect(count.scoreCounting()).toEqual(21);
     });
-
-
+    it("When ten frames in the count array, it will be full",function(){
+      var frame;
+      for(var i=0; i < 10; i++){
+        count.add(frame);
+      };
+      expect(count._isFull()).toEqual(true);
+    });
   });
 });

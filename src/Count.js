@@ -22,3 +22,11 @@ Count.prototype.scoreCounting = function(){
   };
   return(score);
 }
+
+Count.prototype._isFull = function(){
+  if(this.array.length === 10){
+    return true;
+  }else{
+    return false;
+  }
+}

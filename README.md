@@ -86,7 +86,7 @@ Reviewers will potentially be using this [code review rubric](docs/review.md).  
 * to run the jasmine tests, open the SpecRunner.html file in your browser.
 * once the code is working, with an interface, I will update this section with instructions on how to actually play the game.
 
-## Code Review
+## How to use
 
 * The interface is not working yet.
 * All tests are passing. To run the test, copy the full path of the SpecRunner.html file and paste in the your web browser.

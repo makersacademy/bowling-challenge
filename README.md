@@ -114,6 +114,12 @@ bowling.totalScore();
 
 ![Scoring is possible at any point](./Bowling/images/scoring.png)
 
+## Development Approach
+
+I wrote out a "perfect game" scorecard so that I could understand how bonuses were applied:
+
+![Scorecard for a perfect game](./Bowling/images/perfect_game.png)
+
 ## Further work
 
 - _Work in progress:_ Refactor `addRoll()` for more intelligent data entry, allowing it to work just by passing the number of pins knocked down

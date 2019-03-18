@@ -1,0 +1,4 @@
+exclude_paths:
+ - "lib/jasmine-3.3.0/jasmine.js"
+ - "lib/jasmine-3.3.0/jasmine-html.js"
+ - "lib/jasmine-jquery.js"

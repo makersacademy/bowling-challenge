@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome To Ten Pin Bowling</title>
+    <link rel = "stylesheet" type = "text/css" href = "css/style.css" </link>
+  </head>
+  <body>
+    <div class="title">Welcome To Ten Pin Bowling</div>
+    <form>
+      <label for="pins">Enter pins knocked down</label>
+      <input id="pins" class="pins" type="number" min="0" max="10"/>
+      <button type="button" id="save">PLAY</button>
+    </form>
+    <div id="scorecard" class="scorecard">
+        <span class="frame1">Frame 1</span>
+        <span class="frame2">Frame 2</span>
+        <span class="frame3">Frame 3</span>
+        <span class="frame4">Frame 4</span>
+        <span class="frame5">Frame 5</span>
+        <span class="frame6">Frame 6</span>
+        <span class="frame7">Frame 7</span>
+        <span class="frame8">Frame 8</span>
+        <span class="frame9">Frame 9</span>
+        <span class="frame10">Frame 10</span>
+        <span class="totalHeader">TOTAL</span>
+
+        <span id="frame1roll1" class="frame1roll1"></span>
+        <span id="frame1roll2" class="frame1roll2"></span>
+        <span id="frame2roll1" class="frame2roll1"></span>
+        <span id="frame2roll2" class="frame2roll2"></span>
+        <span id="frame3roll1" class="frame3roll1"></span>
+        <span id="frame3roll2" class="frame3roll2"></span>
+        <span id="frame4roll1" class="frame4roll1"></span>
+        <span id="frame4roll2" class="frame4roll2"></span>
+        <span id="frame5roll1" class="frame5roll1"></span>
+        <span id="frame5roll2" class="frame5roll2"></span>
+        <span id="frame6roll1" class="frame6roll1"></span>
+        <span id="frame6roll2" class="frame6roll2"></span>
+        <span id="frame7roll1" class="frame7roll1"></span>
+        <span id="frame7roll2" class="frame7roll2"></span>
+        <span id="frame8roll1" class="frame8roll1"></span>
+        <span id="frame8roll2" class="frame8bowl2"></span>
+        <span id="frame9roll1" class="frame8roll2"></span>
+        <span id="frame9roll2" class="frame9roll2"></span>
+        <span id="frame10roll1" class="frame10roll1"></span>
+        <span id="frame10roll2" class="frame10roll2"></span>
+        <span id="frame10roll3" class="frame10roll3"></span>
+
+        <span id="score1" class="score1"></span>
+        <span id="score2" class="score2"></span>
+        <span id="score3" class="score3"></span>
+        <span id="score4" class="score4"></span>
+        <span id="score5" class="score5"></span>
+        <span id="score6" class="score6"></span>
+        <span id="score7" class="score7"></span>
+        <span id="score8" class="score8"></span>
+        <span id="score9" class="score9"></span>
+        <span id="score10" class="score10"></span>
+        <span id="totalScore" class="totalScore"></span>
+
+    </div>
+
+    <script src="src/jquery-3.3.1.min.js"></script>
+    <script src="src/Game.js"></script>
+    <script src="src/Frame.js"></script>
+    <script src="src/scorecard.js"></script>
+  </body>
+</html>

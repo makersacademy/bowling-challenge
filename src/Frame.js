@@ -1,60 +1,47 @@
-function Frame(pins_standing){
-  this.score = [];
-  this.pins = []; //start with 10 pins for each frame
-  this.FRAMESIZE = 2;
+function Frame(finalFrame) {
+this._frameRoll1Score = 0;
+this._frameRoll2Score = 0;
+this._frameRoll3Score = 0;
+this._bonusScore = 0;
+this._strike = false;
+this._done = false;
+this._spare = false;
+this._finalFrame = finalFrame;
+this._rollNumber = 0;
 
-for (i=0; i < 10; i++){
-  this.pins.push(pins_standing)
-}//each frame starts with 10 pins. Put 10 pins into 10 arrays 10 times
-
-//
-//
-//
-Frame.prototype.bowl = function(pins_hit){
-  this.bowlValidation(pins_hit);
-  if (this.score.length < this.FRAMESIZE){
-    this.pins.splice(0,pins_hit);
-    this.score.push(pins_hit);
+Frame.prototype.totalScoreForFrame = function(){
+  if (this._done) {
+    return this._frameRoll1Score + this._frameRoll2Score + this._frameRoll3Score + this._bonusScore;
   }
-  else
-  return('frame completed')
-};
-//
-Array.prototype.sum = function(){
-  for (var i =0, L = this.length, sum = 0; i < L; sum +=this[i++]);
-  return sum;
+  return 0;
 };
 
-Frame.prototype.bowlValidation = function(pins){
-  if (pins > 10) {throw new Error('You cannot knock more than 10 pins down!'); }
-  if (pins < 0) {throw new Error('Negative Number!'); }
-};
+Frame.prototype.roll = function(pins_hit) {
+  if (!this._done) {
 
-Frame.prototype.bowlStrike = function() {
-  this.score.push(10);
-  this.pins.splice(0,10);
-  this.score.length == this.FRAMESIZE;
-  return ('Strike!');
-};
+    if (this._rollNumber === 0) {
+        this._frameRoll1Score = pins_hit;
 
-Frame.prototype.isStrike = function(){
-  return (this.score[0] === 10)
-};
+        if (this._frameRoll1Score >= 10) {
+          this._strike = true;
+           this._done = true;
+         };
 
-Frame.prototype.sparePins = function(pins_hit){
-  pins = 10 - pins_hit;
-  return pins
-};
+    } else if (this._rollNumber === 1) {
+        this._frameRoll2Score = pins_hit;
+        this._done = true;
+        if (this._frameRoll1Score + this._frameRoll2Score >= 10) {
+          this._spare = true;
+        };
+    } else {
+      this._frameRoll3Score = pins_hit;
+      this._done = true;
+    };
+    this._rollNumber +=1;
+  };
 
-Frame.prototype.isSpare = function(){
-  return (this.score.sum() === 10 && this.score[0]!=10)
-};
-
-Frame.prototype.bonusBowl = function(pins_hit){
-  if(this.score.length === 2 && (this.isSpare() || this.isStrike())){
-    this.score.push(pins_hit);
-  } else {
-    return ('Game Over');
+  if ((this._strike || this._spare) && (this._finalFrame) && (this._rollNumber < 3)) {
+    this._done = false;
   };
 
 };

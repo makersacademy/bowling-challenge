@@ -18,12 +18,7 @@ $(document).ready(function() {
   jQuery('#note-10').bind('DOMSubtreeModified',function(event) {
     if ($('#note-10').text() == "Strike") {
       $("#ExtraRolls").show();
-    }
-  });
-
-  // show bonus rolls if user total is 10 for last frame
-  jQuery('#note-10').bind('DOMSubtreeModified',function(event) {
-    if ($('#note-10').text() == "Spare") {
+    } else if ($('#note-10').text() == "Spare") {
       $("#ExtraRolls").show();
       $("#ExtraRoll-2").hide();
     }

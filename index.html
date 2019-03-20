@@ -15,7 +15,7 @@
     <table id="scoreTable" class="table table-bordered table-hover">
       <thead class="thead-dark">
         <tr>
-          <th scope="col">Turn</th>
+          <th scope="col">Frame</th>
           <th scope="col">First</th>
           <th scope="col">Second</th>
           <th scope="col">Extra</th>
@@ -88,15 +88,15 @@
         </tr>
         <tr>
           <th scope="row">10</th>
-          <td><input class="rollScoreBox" type="number" min=0 max=10 id="19"></td>
-          <td><input class="rollScoreBox" type="number" min=0 max=10 id="20"></td>
+          <td><input class="rollScoreBox" type="number" min=0 max=10 id="19" name="final-frame-1"></td>
+          <td><input class="rollScoreBox" type="number" min=0 max=10 id="20" name="final-frame-2"></td>
           <td id="bonus-10"></td>
           <td id="note-10"></td>
         </tr>
-        <tr id="strikeExtraRolls">
+        <tr id="ExtraRolls">
           <th scope="row">extra rolls</th>
-          <td><input class="rollScoreBox" type="number" min=0 max=10 id="21"></td>
-          <td><input class="rollScoreBox" type="number" min=0 max=10 id="22"></td>
+          <td id="ExtraRoll-1"><input class="rollScoreBox" type="number" min=0 max=10 id="21"></td>
+          <td id="ExtraRoll-2"><input class="rollScoreBox" type="number" min=0 max=10 id="22"></td>
         </tr>
       </tbody>
     </table>
@@ -106,7 +106,6 @@
   <div>
     <h2 id="scoreShow"></h2>
   </div>
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

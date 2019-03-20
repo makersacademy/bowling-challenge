@@ -11,10 +11,22 @@ $(document).ready(function() {
       $("#scoreShow").text("Your score is: " + scorecard.totalScore)
   });
 
-  $("#strikeExtraRolls").hide();
+// hide fields for bonus rolls by default
+  $("#ExtraRolls").hide();
 
+// show bonus rolls if user total is 10 for last frame
   jQuery('#note-10').bind('DOMSubtreeModified',function(event) {
-    $("#strikeExtraRolls").toggle();
+    if ($('#note-10').text() == "Strike") {
+      $("#ExtraRolls").show();
+    }
+  });
+
+  // show bonus rolls if user total is 10 for last frame
+  jQuery('#note-10').bind('DOMSubtreeModified',function(event) {
+    if ($('#note-10').text() == "Spare") {
+      $("#ExtraRolls").show();
+      $("#ExtraRoll-2").hide();
+    }
   });
 
 });

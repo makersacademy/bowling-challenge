@@ -10,7 +10,7 @@ describe("Scorer", function() {
   });
 
   it("creates empty json to hold bonus values", function() {
-    expect(scorer.bonus[1]).toEqual(0);
+    expect(scorer.bonus[1]).toEqual(null);
   });
 
   it("creates empty json to hold notes values", function() {
@@ -55,6 +55,15 @@ describe("Scorer", function() {
     scorer.bonusCalculator()
     scorer.calculateTotalScore()
     expect(scorer.totalScore).toEqual(17)
+  })
+
+  it("adds one extra score to rolls data structure when last frame is a spare", function() {
+    scorer.storeScore(5,19)
+    scorer.storeScore(5,20)
+    scorer.storeScore(3,21)
+    scorer.bonusCalculator()
+    scorer.calculateTotalScore()
+    expect(scorer.totalScore).toEqual(13)
   })
 
   it("calculates correct maximum score of 300", function() {

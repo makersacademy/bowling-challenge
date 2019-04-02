@@ -1,6 +1,6 @@
 # Bowling Challenge
 
-This is my solution to the bowling kata challenge. Although this is a working program, I am aware much more work is needed in refactoring to get follow better OOP. I found it difficult to see the benefits here on where to extract things into separate classes and so feedback would be greatly appreciated on this.
+This is my solution to the bowling kata challenge.
 
 ## Instructions for use
 

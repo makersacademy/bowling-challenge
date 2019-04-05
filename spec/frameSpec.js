@@ -17,4 +17,9 @@ describe('Frame', function(){
     frame.recordScore(4);
     expect(frame.isComplete()).toBe(true);
   });
+
+  it("doesn't add further scores to the frame after completion", function(){
+    for(i=0; i<3; i++) { frame.recordScore(3); }
+    expect(frame.balls.length).not.toBe(3);
+  });
 });

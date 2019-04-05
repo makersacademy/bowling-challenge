@@ -5,8 +5,10 @@ function Frame(){
 
 
 Frame.prototype.recordScore = function(score){
-  this.balls.push(score);
-  if (this.balls.length === 2) { this.completed = true; }
+  if (this.completed != true){
+    this.balls.push(score);
+    if (this.balls.length === 2) { this.completed = true; }
+  }
 };
 
 Frame.prototype.isComplete = function(){

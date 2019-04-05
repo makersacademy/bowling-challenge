@@ -19,5 +19,7 @@ describe('Score', function() {
     expect(bowlingcard.total()).toEqual(6)
   });
 
-
+  it('has a currentFrame score that starts at 0', function() {
+    expect(bowlingcard.currentFrame).toEqual(0)
+  });
 });

@@ -113,8 +113,10 @@ Once I understood the user stories, I modelled the objects and their methods, us
   - If it is a strike, it will hold the first bonus point
   - The frame in which the bonus started accruing
 
-
-
+## Let's TDD
+- Next I started to build my code using TDD. Or so I thought. I went straight to unit tests, first to set up the initial game and then second to start building frames
+- About an hour into my merry TDD process, Ed posted in the slack channel a recommendation to write a feature test for the gutter game first. Doh! Feature tests!!
+- As it turned out, a bit of my game spec seems to be a bit of a feature test anyway but my next step was to build the proper feature test. It's now late on Friday and I am having a little sulk that I completely forgot about feature tests... Maybe time for bed!!! 
 
 ****
 

@@ -1,5 +1,5 @@
-Bowling Score
-=============
+Bowling Scorecard
+=================
 
 ## Description
 
@@ -40,7 +40,7 @@ This JavaScript app simulates a bowling scorecard, allowing a user to enter thei
 
 #### Problem breakdown
 
-[Problem breakdown and models](https://github.com/mattTea/bowling-challenge/blob/master/problem/problem_breakdown.md)
+[Problem breakdown and models](https://github.com/mattTea/bowling-challenge/blob/master/problem/problem-breakdown.md)
 
 (Link to problem breakdown, with requirements, user stories and models)
 

@@ -13,4 +13,15 @@ describe('Game', function(){
     game.recordBall(4);
     expect(game.gameTotal).toEqual(7);
   })
+
+  it('returns an incomplete game at the start', function(){
+    expect(game.isComplete()).toBe(false);
+  });
+
+  // it("can see that the game is complete after 20 rolls", function(){
+  //   for(i=0; i<20; i++){
+  //     game.recordBall(0);
+  //   }
+  //   expect(game.isComplete()).toBe(true);
+  // });
 });

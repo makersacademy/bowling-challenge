@@ -10,6 +10,6 @@ Score.prototype.add = function(number) {
   this.currentScore += number;
 };
 
-// Score.prototype.currentBowl = function(go1, go2) {
-//   this.currentFrame += (go1 + go2);
-// };
+Score.prototype.currentBowl = function(go1, go2) {
+  this.currentFrame += (go1 + go2);
+};

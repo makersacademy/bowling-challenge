@@ -14,4 +14,10 @@ describe('Score', function() {
     expect(bowlingcard.total()).toEqual(0);
   });
 
+  it('adds a number to the score', function() {
+    bowlingcard.add(6)
+    expect(bowlingcard.total()).toEqual(6)
+  });
+
+
 });

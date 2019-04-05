@@ -3,5 +3,5 @@ function Game() {
 };
 
 Game.prototype.recordBall = function(score){
-  return score;
+  return this.gameTotal += score;
 };

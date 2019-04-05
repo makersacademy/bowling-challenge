@@ -1,5 +1,124 @@
+# The Bowling Challenge
 
-Bowling Challenge
+This weekend (and next) the focus is on JavaScript. This is a totally new language and concept for me. My weekend challenge will be focusing on what have I learned about JavaScript this week, and how can I continue to use the same process to learn more about it. The challenge itself this week is complex so I am going to focus on understanding the business logic first, implementing the user interface second.
+
+## Technologies used
+
+- JavaScript for most of the functionality
+- HTML and CSS for the web page
+- Jasmine for the tests
+- ESLint for the linter
+
+## Setting up the project
+- `git clone `
+- `bundle install`
+- `npm i -g eslint` to install the linter
+
+## Using the project
+
+#### To run the project
+
+- `open -a "Google Chrome" index.html` in the console
+
+#### To run tests
+
+- To run Jasmine tests, type `open -a "Google Chrome" SpecRunner.html` into the console
+
+#### To run the linter (eslint)
+
+- To run the linter, type `eslint lib/**` (this might need double quotes around the folder)
+
+
+## My approach
+
+After some very basic setup of a git repo so that I can make notes and feel ready to build, the first step this week was for me to understand the rules of bowling and model how that all works.
+
+### User Stories
+
+I extracted the following user stories:
+
+```
+As a player
+So that I can record my turn at bowling
+I want to be able to enter the number I scored on a roll of the ball"
+
+As a player
+So that I can see what I scored for the frame
+I want to be able to enter up to two rolls for the frame"
+
+As a player
+So that I can correctly score my turns
+I want to be limited to only one entry if I score a strike"
+
+As a player
+So that I don't incorrectly enter information
+I want to be restricted to entering a maximum of 10 points for one frame"
+
+As a player
+So that I can see how I am doing
+I want to be able to see my current score at all times"
+
+As a player
+So that I can see how I am doing
+I want to be able to see the score for each frame"
+
+As a player
+So that I can see the correct score
+I want bonus points to be added for a strike"
+
+As a player
+So that I can see the correct score
+I want bonus points to be added for a spare"
+
+As a player
+So that I can end the game on a high
+I want to be able to enter up to 3 rolls on the final frame"
+
+As a player
+So that I can see the correct score
+I want the points to be added correctly for a final frame"
+
+As a player
+So that I can see how many pins I could knock down
+I want to be able to see how many pins are still remaining in the current frame"
+
+As a player
+So that I don't feel especially bad about my bowling
+I want to see an amusing animation when I score zero for the whole game"
+
+As a player
+So that I feel really good about winning
+I want to see a celebratory animation when I score strikes on every ball for the game"
+```
+
+### Objects
+
+Once I understood the user stories, I modelled the objects and their methods, using a sequence diagram (which I abandoned because it didn't seem to tell me much) and then a class diagram. **INSERT LINK**
+
+- Game object - to control the overall scorecard
+- Frame object - to control the score per frame
+- Bonus object - to keep track of required bonus points because of a strike or a spare
+
+### Data structures
+
+- The game holds:
+  - A list of frames for the game
+  - A list of currently active bonus objects
+- A frame holds:
+  - Details of the balls rolled and the scores for those
+  - A frame total which will include bonus points
+  - The number of pins left in the frame so we can check that the player doesn't exceed 10
+- A bonus holds:
+  - The type of bonus - strike or spare
+  - If it is a strike, it will hold the first bonus point
+  - The frame in which the bonus started accruing
+
+
+
+
+****
+
+THE ORIGINAL Bowling Challenge
 =================
 
 

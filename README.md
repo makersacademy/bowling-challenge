@@ -55,4 +55,6 @@ Testing:
 Eslint
 Rubocop
 
-## Approach [link]
+## Approach
+
+[Read here](https://github.com/micosmin/bowling-challenge/blob/master/APPROACH.md)

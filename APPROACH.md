@@ -2,7 +2,7 @@
 
 As a player  
 So that I can keep track of my bowling score  
-I want to record the number of pins knocked down
+I want to record the number of pins knocked down in a frame
 
 As a player  
 So that I can start a game  
@@ -36,7 +36,8 @@ As a player
 So that I can start a new game  
 I want to be able to push a restart button
 
-Bonus:
+**Bonus:**
+
 As a player  
 So that I can keep track of my bowling score  
 I want to record a spare
@@ -55,9 +56,10 @@ I want to record a split in the pins - O around the number of pins left
 
 # Business Logic
 
-Game has 10 Frames
+Game has 10 Frames  
 Each frame has 2 rolls
-Frame 10 Strike
+
+if at Frame 10 you get a strike you get:
 
 - 2 bonus rolls
   - if both rolls are strikes
@@ -159,4 +161,4 @@ Initialization:
 
 As a player  
 So that I can keep track of my bowling score  
-I want to record the score of each roll
+I want to record the number of pins knocked down in a frame

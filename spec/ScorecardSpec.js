@@ -4,6 +4,7 @@ describe("Scorecard", function() {
     scorecard.frames = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     expect(scorecard.isComplete()).toEqual(true);
   });
+  
   it("shows total score of zero", function() {
     var scorecard = new Scorecard;
     var fakeFrame = {

@@ -6,10 +6,11 @@ function Scorecard(){
 }
 
 Scorecard.prototype.roll = function(pins) {
-  if (pins === 0) return pins
+  return this.score += pins
 }
 
 Scorecard.prototype.total = function(){
+  this.isComplete()
   return this.score
 }
 

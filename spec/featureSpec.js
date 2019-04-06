@@ -1,18 +1,7 @@
 'use strict'
 
-// # pseudocode
-
-// scorecard = new Scorecard()
-
-// 20.times do
-//   scorecard.roll(0)
-// end
-
-// assertEquals(scorecard.total(), 0)
-// assertEquals(scorecard.isComplete(), true)
-
 describe('Feature test', function(){
-  let scorecard
+  var scorecard
   beforeEach(function(){
     scorecard = new Scorecard()
   })
@@ -26,5 +15,18 @@ describe('Feature test', function(){
       expect(scorecard.isComplete()).toBe(true)
     })
   })
+
+
+  describe('one frame game', function(){
+
+    it('gives accumulative total score', function(){
+      scorecard.roll(5)
+      scorecard.roll(4)
+      scorecard.roll(6)
+      expect(scorecard.total()).toEqual(15)
+      expect(scorecard.isComplete()).toBe(true)
+    })
+  })
+  
 
 })

@@ -12,7 +12,7 @@ describe("Scorecard", function(){
     it("Has a score of 0 if 20 gutterballs", function() {
       for (var i = 0; i < 20; i++)
         scorecard.roll(0);
-      expect(scorecard.total()).toEqual(0);
+      expect(scorecard.total).toEqual(0);
     });
   });
 
@@ -27,7 +27,7 @@ describe("Scorecard", function(){
   describe(".frame", function(){
     it("Knows what frame we are on", function() {
       scorecard.frame(2);
-    expect(scorecard.frame()).toEqual(2);
+    expect(scorecard.frame()).toEqual([2]);
     });
   });
 });

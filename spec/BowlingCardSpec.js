@@ -24,9 +24,27 @@ describe("Scorecard", function(){
     });
   });
   
+  describe(".turn", function(){
+    it("keeps track of the two turns per frame - if not a strike", function(){
+      expect(scorecard.turn).toEqual(1)
+        scorecard.roll();
+      expect(scorecard.turn).toEqual(2)
+        scorecard.roll();
+      expect(scorecard.turn).toEqual(1)
+    });
+  });
+
+
   describe(".frame", function(){
     it("Knows what frame we are on", function() {
-    expect(scorecard.frame).toEqual(1);
+      expect(scorecard.frame).toEqual(1);
+    });
+    it("Increments up if i have rolled twice", function () {
+      scorecard.roll();
+      console.log(scorecard.roll);
+      scorecard.roll();
+      console.log(scorecard.roll);
+      expect(scorecard.frame).toEqual(2);
     });
   });
 });

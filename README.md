@@ -45,8 +45,8 @@ So that I can keep track of the frame I am on,
 I want to be told what frame I am on.
 
 * 4
-As a player in a bowling game, 
-So that I can 
+As a player in a bowling game,
+
 
 ---
 

@@ -1,7 +1,10 @@
 function Game() {
   this.rollHistory = {
-    1: [], 2: [] , 3: [], 4:[], 5:[], 6: [], 7: [], 8: [], 9: [], 10: [], 11:[]
+    1: [], 2: [] , 3: [], 4: [], 5: [], 6: [], 7: [], 8: [], 9: [], 10: [], 11:[]
   };
+  this.scoreCard = {
+    1: "", 2: "", 3: "", 4: "", 5: "", 6: "", 7: "", 8: "", 9: "", 10: ""
+  }
 
 };
 
@@ -18,6 +21,37 @@ Game.prototype.roll = function (score) {
       break;
     };
   };
+};
+
+Game.prototype.score = function () {
+  for (var i = 1; i <= 10; i++) {
+    if (this.rollHistory[i].length === 2) {
+      this.scoreCard[i] = this.rollHistory[i][0] + this.rollHistory[i][1];
+    } else if (this.rollHistory[i][0] === 10) {
+      this.scoreCard[i] = this.rollHistory[i][0];
+    };
+  };
+  for (var i = 1; i <= 9; i++) {
+    var nextTwoFrames = this.rollHistory[i + 1].concat(this.rollHistory[i + 2]);
+    if (this.rollHistory[i][0] === 10) {
+      this.scoreCard[i] += (nextTwoFrames[0] + nextTwoFrames[1]);
+    } else if (this.rollHistory[i][0] + this.rollHistory[i][1] === 10) {
+      this.scoreCard[i] += nextTwoFrames[0]
+    };
+  };
+  if (this.rollHistory[10][0] === 10) {
+    this.scoreCard[10] += (this.rollHistory[11][0] + this.rollHistory[11][1]);
+  } else if (this.rollHistory[10][0] + this.rollHistory[10][1] === 10) {
+    this.scoreCard[10] += this.rollHistory[11][0];
+  };
+};
+
+Game.prototype.accumulate = function (frame) {
+  var cumulativeScore = 0
+  for (var i = 1; i <= frame; i++) {
+    cumulativeScore += this.scoreCard[i];
+  };
+  return cumulativeScore;
 };
 
 Game.prototype._isNormalFrame = function (i) {

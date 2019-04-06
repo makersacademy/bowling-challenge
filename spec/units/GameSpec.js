@@ -83,6 +83,82 @@ describe("Game", function() {
       expect(game.rollHistory[11]).toEqual([8, 1]);
     });
 
+    it("registers a perfect game", function() {
+      for (var i = 0; i < 12; i++) {
+        rollStrike();
+      }
+      expect(game.rollHistory[11]).toEqual([10, 10]);
+    });
+
+  });
+
+  it("should contain a scoreCard object", function() {
+    expect(game.scoreCard).toEqual({
+      1: "", 2: "", 3: "", 4: "", 5: "", 6: "", 7: "", 8: "", 9: "", 10: ""
+    });
+  });
+
+  describe('#score', function() {
+
+    it("scores the scoreCard after a normal frame", function () {
+      rollFrame();
+      game.score();
+      expect(game.scoreCard[1]).toEqual(9);
+    });
+
+    it("adds bonus points after a strike", function () {
+      rollStrike();
+      rollFrame();
+      rollFrame();
+      game.score();
+      expect(game.scoreCard[1]).toEqual(19);
+    });
+
+    it("adds bonus points after a spare", function () {
+      rollSpare();
+      rollFrame();
+      game.score();
+      expect(game.scoreCard[1]).toEqual(18);
+    });
+
+    it("adds bonus points after a spare on the 10th frame", function () {
+      for (var i = 0; i < 9; i++) {
+        rollFrame();
+      }
+      rollSpare();
+      rollFrame();
+      game.score();
+      expect(game.scoreCard[10]).toEqual(18);
+    });
+
+    it("adds bonus points after a strike on the 10th frame", function () {
+      for (var i = 0; i < 9; i++) {
+        rollFrame();
+      }
+      rollStrike();
+      rollFrame();
+      game.score();
+      expect(game.scoreCard[10]).toEqual(19);
+    });
+
+    it("scores a turkey", function () {
+      for (var i = 0; i < 3; i++) {
+        rollStrike();
+      }
+      game.score();
+      expect(game.scoreCard[1]).toEqual(30);
+    });
+
+  });
+
+  describe("#accumulate", function () {
+    it("provides the cumulative score at a given frame", function () {
+      for (var i = 0; i < 10; i++) {
+        rollFrame();
+      };
+      game.score();
+      expect(game.accumulate(5)).toEqual(45);
+    });
   });
 
 });

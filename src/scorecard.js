@@ -3,15 +3,28 @@
 function Scorecard(){
   this._complete = false
   this.score = 0
+  this._pinsDown = []
 }
 
 Scorecard.prototype.roll = function(pins) {
-  return this.score += pins
+  this._pinsDown.push(pins)
+  // return this.score += pins
 }
 
 Scorecard.prototype.total = function(){
-  this.isComplete()
+  var i = 0
+  for(var frame = 0; frame < 10; frame++) {
+    if (this._pinsDown[i] + this._pinsDown[i+1] === 10) {
+      this.score += 10 + this._pinsDown[i+2]
+      i+=2
+    } else {
+      this.score += this._pinsDown[i] + this._pinsDown[i+1]
+      i+=2
+    }
+  }
   return this.score
+  // this.isComplete()
+  // return this.score 
 }
 
 Scorecard.prototype.isComplete = function(){

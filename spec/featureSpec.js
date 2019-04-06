@@ -1,6 +1,7 @@
 'use strict'
 
 describe('Feature test', function(){
+
   var scorecard
   beforeEach(function(){
     scorecard = new Scorecard()
@@ -14,12 +15,21 @@ describe('Feature test', function(){
     })
   })
 
-
   describe('one frame game', function(){
     it('gives accumulative total score', function(){
       roll(20,4)
       expect(scorecard.total()).toEqual(80)
       expect(scorecard.isComplete()).toBe(true)
+    })
+  })
+
+  describe('spare game', function(){
+    it('gives accumulative total', function(){
+      scorecard.roll(3)
+      scorecard.roll(7)
+      scorecard.roll(6)
+      roll(18,0)
+      expect(scorecard.total()).toEqual(22)
     })
   })
 

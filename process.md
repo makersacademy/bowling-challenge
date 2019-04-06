@@ -12,3 +12,6 @@
 Examples:
 - Two scores cant add > 10
 - Score 2 = 0 if score 1 = 10
+
+
+- Going to be difficult to deal with arrays within array. 

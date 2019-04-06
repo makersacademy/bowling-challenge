@@ -16,7 +16,12 @@ Scorecard.prototype.total = function(){
     if (this.isSpare(i)) {
       this.score += 10 + this._pinsDown[i+2]
       i+=2
-    } else {
+    }  
+    else if (this._pinsDown[i] === 10) {
+      this.score += 10 + this._pinsDown[i+1] + this._pinsDown[i+2] 
+      i++
+    }
+    else {
       this.score += this._pinsDown[i] + this._pinsDown[i+1]
       i+=2
     }

@@ -34,6 +34,17 @@ describe('Feature test', function(){
     })
   })
 
+  describe('strike game', function(){
+    it('gives accumulative total', function(){
+      scorecard.roll(10)
+      scorecard.roll(4)
+      scorecard.roll(3)
+      roll(18,0)
+      expect(scorecard.total()).toEqual(24)
+      expect(scorecard.isComplete()).toBe(true)
+    })
+  })
+
   function roll(times,pins) {
     for (var i = 0; i < times; i++) {
       scorecard.roll(pins)

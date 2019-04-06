@@ -54,3 +54,23 @@ I want to see my running total score for the game (when I have not score any str
 ## Logic models
 
 ## Data flow models
+
+
+
+### Ed's Tips for the bowling scorecard challenge.
+
+1. Ignore interface, focus on TDDing the logic.
+
+2. The first test you write: a simple feature test that completes a score card with gutter balls.
+```
+# pseudocode
+
+scorecard = new Scorecard()
+
+20.times do
+  scorecard.roll(0)
+end
+
+assertEquals(scorecard.total(), 0)
+assertEquals(scorecard.isComplete(), true)
+```

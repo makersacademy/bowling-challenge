@@ -40,3 +40,23 @@ Frame.prototype = {
 }
 
 
+// original (too big) first feature test
+
+describe("Gutter game", function() {
+  it("returns complete game after 10 frames", function() {
+    scorecard = new Scorecard;
+    // frame = new Frame;
+    
+    frameNumber = 1;
+    pinsScored = 0;
+    for (frameNumber; frameNumber == 10; frameNumber++) {
+      frame = new Frame;
+      frame.enterFirstRollScore(pinsScored);
+      frame.enterSecondRollScore(pinsScored);
+      scorecard.frames.push(frame);
+    }
+    expect(scorecard.isComplete).toBe(true);
+    // expect(scorecard.Score).toEqual(0);
+  });
+  
+});

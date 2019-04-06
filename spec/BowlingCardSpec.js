@@ -8,19 +8,25 @@ describe("Scorecard", function(){
     scorecard = new Scorecard()
   });
 
-  describe("New Scorecard", function(){
+  describe(".total", function(){
     it("Has a score of 0 if 20 gutterballs", function() {
       for (var i = 0; i < 20; i++)
         scorecard.roll(0);
       expect(scorecard.total()).toEqual(0);
     });
+  });
+
+  describe(".roll", function(){
     it("Expects the game to be complete if 20 balls are guttered", function() {
       for (var i = 0; i < 20; i++)
         scorecard.roll(0);
-    expect(scorecard.isComplete()).toEqual(true);
+      expect(scorecard.isComplete()).toEqual(true);
     });
-    it("Knows what frame we are on", function () {
-        scorecard.frame(2);
+  });
+  
+  describe(".frame", function(){
+    it("Knows what frame we are on", function() {
+      scorecard.frame(2);
     expect(scorecard.frame()).toEqual(2);
     });
   });

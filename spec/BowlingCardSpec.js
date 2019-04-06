@@ -26,8 +26,7 @@ describe("Scorecard", function(){
   
   describe(".frame", function(){
     it("Knows what frame we are on", function() {
-      scorecard.frame(2);
-    expect(scorecard.frame()).toEqual([2]);
+    expect(scorecard.frame).toEqual(1);
     });
   });
 });

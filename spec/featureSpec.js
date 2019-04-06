@@ -3,18 +3,19 @@ describe("Feature test:", function() {
   var frame;
 
   beforeEach(function() {
-    scoreCard = Object.create(ScoreCard);
+    scoreCard = new ScoreCard();
     frame = new Frame();
   });
 
   describe("gutter game", function() {
     it("returns a total score of 0 after 10 frames", function() {
+      frame.roll(0);
+      frame.roll(0);
       for (let i = 0; i < 10; i++) {
-        frame.roll(0);
-        frame.roll(0);
         scoreCard.addFrameRolls(frame.rolls);
       }
       expect(scoreCard.seeRolls().length).toEqual(10);
+      expect(scoreCard.totalScore()).toEqual(0);
     });
   });
 });

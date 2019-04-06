@@ -8,9 +8,7 @@ describe('Feature test', function(){
 
   describe('gutter balls', function(){
     it('gives zero score', function(){
-      for (var i = 0; i < 21; i++) {
-        scorecard.roll(0)
-      }
+      roll(20,0)
       expect(scorecard.total()).toEqual(0)
       expect(scorecard.isComplete()).toBe(true)
     })
@@ -18,15 +16,16 @@ describe('Feature test', function(){
 
 
   describe('one frame game', function(){
-
     it('gives accumulative total score', function(){
-      scorecard.roll(5)
-      scorecard.roll(4)
-      scorecard.roll(6)
-      expect(scorecard.total()).toEqual(15)
+      roll(20,4)
+      expect(scorecard.total()).toEqual(80)
       expect(scorecard.isComplete()).toBe(true)
     })
   })
-  
 
+  function roll(times,pins) {
+    for (var i = 0; i < times; i++) {
+      scorecard.roll(pins)
+    }
+  }
 })

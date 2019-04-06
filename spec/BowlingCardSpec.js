@@ -20,7 +20,7 @@ describe("Scorecard", function(){
     it("Expects the game to be complete if 20 balls are guttered", function() {
       for (var i = 0; i < 20; i++)
         scorecard.roll(0);
-      expect(scorecard.isComplete()).toEqual(true);
+      expect(scorecard.isComplete).toEqual(true);
     });
   });
   

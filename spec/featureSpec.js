@@ -39,6 +39,13 @@ describe('Feature test', function(){
     })
   })
 
+  describe('perfect game', function(){
+    it('gives accumulative total', function(){
+      scorecard.roll([10,10, 10,10, 10,10, 10,10, 10,10, 10,10, 10,10, 10,10, 10,10])
+      expect(scorecard.total()).toEqual(300)
+      expect(scorecard.isComplete()).toBe(true)
+    })
+  })
   // function roll(pins) {
   //   for (var i = 0; i < pins.length; i++) {
   //     scorecard.roll(pins[i])

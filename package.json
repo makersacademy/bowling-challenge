@@ -1,0 +1,31 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "## Project",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/micosmin/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/micosmin/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/micosmin/bowling-challenge#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "eslint": "^5.16.0",
+    "express": "^4.16.4",
+    "request": "^2.88.0",
+    "requests": "^0.2.2"
+  }
+}

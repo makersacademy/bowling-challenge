@@ -24,4 +24,21 @@ describe('Game', function(){
     }
     expect(game.isComplete()).toBe(true);
   });
+
+  it("can see that all frames are complete after 20 rolls of zero", function(){
+    for(i=0; i<20; i++){
+      console.log("turn " + i);
+      game.recordBall(0);
+    }
+    expect(game.frames.slice(-1)[0].isComplete()).toBe(true);
+  });
+
+  it("records two frames in a row correctly", function(){
+    for(i=0; i<4 ;i++) {
+      game.recordBall(4);
+    }
+    expect(game.isComplete()).toBe(false);
+    expect(game.gameTotal).toEqual(16);
+    expect(game.frames.length).toEqual(2);
+  });
 });

@@ -1,34 +1,40 @@
 function Game() {
-  this.gameTotal = 0;
   this.complete = false;
-  frames = [];
+  this.frames = [];
+  this.gameTotal = 0;
 };
 
 Game.prototype.recordBall = function(score) {
-  if (frames.length === 10) { return this.complete = true; }
 
-  if (frames.length === 0) {
-    createNewFrame(score);
+  if(this.complete === true) { return this.gameTotal; }
+
+  if (this.frames.length === 0) {
+    this.frames.push(createNewFrame(score, this.frames));
     return this.gameTotal += score;
   }
 
-  if (frames.slice(-1)[0].isComplete() == false) {
-    addToFrame(score);
+  if (this.frames.slice(-1)[0].isComplete() == false) {
+    addToFrame(score, this.frames.slice(-1)[0]);
+    if (this.frames.length === 10 && this.frames.slice(-1)[0].isComplete() == true) {
+      this.complete = true;
+    }
     return this.gameTotal += score;
   }
   else {
-    createNewFrame(score);
+    this.frames.push(createNewFrame(score));
+    if (this.frames.length === 10 && this.frames.slice(-1)[0].isComplete() == true) {
+      this.complete = true;
+    }
+    return this.gameTotal += score;
   }
 
-  function createNewFrame(score) {
+  function createNewFrame(score, frames) {
     frame = new Frame();
-    frame.recordScore(score);
-    frames.push(frame);
+    return frame.recordScore(score);
   };
 
-  function addToFrame(score) {
-    currentFrame = frames.slice(-1)[0];
-    currentFrame.recordScore(score);
+  function addToFrame(score, frame) {
+    frame.recordScore(score);
   };
 
 };

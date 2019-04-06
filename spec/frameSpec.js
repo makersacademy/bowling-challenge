@@ -32,5 +32,4 @@ describe('Frame', function(){
     });
   });
 
-
 });

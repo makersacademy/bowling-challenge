@@ -18,10 +18,10 @@ describe('Game', function(){
     expect(game.isComplete()).toBe(false);
   });
 
-  // it("can see that the game is complete after 20 rolls", function(){
-  //   for(i=0; i<20; i++){
-  //     game.recordBall(0);
-  //   }
-  //   expect(game.isComplete()).toBe(true);
-  // });
+  it("can see that the game is complete after 20 rolls of zero", function(){
+    for(i=0; i<20; i++){
+      game.recordBall(0);
+    }
+    expect(game.isComplete()).toBe(true);
+  });
 });

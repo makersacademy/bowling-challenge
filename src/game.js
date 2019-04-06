@@ -15,16 +15,14 @@ Game.prototype.recordBall = function(score) {
 
   if (this.frames.slice(-1)[0].isComplete() == false) {
     addToFrame(score, this.frames.slice(-1)[0]);
-    if (this.frames.length === 10 && this.frames.slice(-1)[0].isComplete() == true) {
-      this.complete = true;
-    }
+    this.complete = checkEndOfGame(this.frames);
+
     return this.gameTotal += score;
   }
   else {
     this.frames.push(createNewFrame(score));
-    if (this.frames.length === 10 && this.frames.slice(-1)[0].isComplete() == true) {
-      this.complete = true;
-    }
+    this.complete = checkEndOfGame(this.frames);
+    
     return this.gameTotal += score;
   }
 
@@ -36,6 +34,12 @@ Game.prototype.recordBall = function(score) {
   function addToFrame(score, frame) {
     frame.recordScore(score);
   };
+
+  function checkEndOfGame(frames) {
+    if (frames.length === 10 && frames.slice(-1)[0].isComplete() == true) {
+      return true;
+    } else { return false; }
+  }
 
 };
 

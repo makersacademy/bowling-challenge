@@ -6,6 +6,8 @@
 
 var Frame = function() {
   this.rolls = [];
+  this.strike = false;
+  this.spare = false;
 };
 
 Frame.prototype.roll = function(roll) {
@@ -73,4 +75,4 @@ console.log(scoreTracker.totalScore()); //gets a total from the score sheet
 // create temporary bonus to keep track of next frame
 // roll 1 frame 1
 // 5
-// add to bonus and update frame1 roll 1 score
+// add to bonus and update frame1 roll 1 score Frame 1 {roll1: 15}

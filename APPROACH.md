@@ -162,3 +162,9 @@ Initialization:
 As a player  
 So that I can keep track of my bowling score  
 I want to record the number of pins knocked down in a frame
+
+1. Create a feature test for the abovoe user story
+2. Test drive development of score card and frame objects and corresponding method for keeping track of rolls and adding them to a rollSheet to compute final score
+3. Create test for preventing an 11 Frame from being added
+
+

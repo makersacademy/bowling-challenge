@@ -9,8 +9,10 @@ ScoreCard.prototype.totalScore = function() {
 };
 
 ScoreCard.prototype.addFrameRolls = function(rolls) {
-  if (rolls) {
+  if (rolls && this.rollsSheet.length < 10) {
     this.rollsSheet.push(rolls);
+  } else {
+    throw new Error("Illegal move");
   }
 };
 

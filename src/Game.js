@@ -13,6 +13,9 @@ Game.prototype.roll = function (score) {
     } else if (i === 11 && this.rollHistory[i - 1].length === 2 && (this.rollHistory[i - 1][0] + this.rollHistory[i - 1][1]) === 10 && this.rollHistory[i].length === 0) {
       this.rollHistory[i].push(score);
       break;
+    } else if (i === 11 && this.rollHistory[i - 1][0] === 10 && this.rollHistory[i].length < 2) {
+      this.rollHistory[i].push(score);
+      break;
     };
   };
 };

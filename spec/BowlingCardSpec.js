@@ -19,5 +19,9 @@ describe("Scorecard", function(){
         scorecard.roll(0);
     expect(scorecard.isComplete()).toEqual(true);
     });
+    it("Knows what frame we are on", function () {
+        scorecard.frame(2);
+    expect(scorecard.frame()).toEqual(2);
+    });
   });
 });

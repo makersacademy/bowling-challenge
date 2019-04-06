@@ -11,4 +11,12 @@ Scorecard.prototype = {
       return false;
     }
   },
+  totalScore: function() {
+    var total = 0;
+    for (var i = 0; i < this.frames.length; i++) {
+      var frameScore = this.frames[i].totalScore;
+      total = total + frameScore;
+    }
+    return total;
+  },
 }

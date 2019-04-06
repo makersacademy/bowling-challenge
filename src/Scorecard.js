@@ -6,6 +6,6 @@ Scorecard.prototype.takeFrames = function (frame) {
   this.frames.push(frame);
 };
 
-function Frame() {
-
+function Frame(score1, score2) {
+  this.turn = [score1, score2];
 };

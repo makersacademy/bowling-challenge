@@ -6,7 +6,7 @@ describe('Scorecard', function() {
 
   beforeEach(function(){
     scorecard = new Scorecard();
-    frame = new Frame();
+    frame = new Frame(1,2);
   })
 
   it('frames is empty as default', function() {

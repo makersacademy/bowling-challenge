@@ -2,7 +2,7 @@
 Bowling Challenge
 =================
 
-<img src="https://github.com/WardahTarar/bowling-challenge/blob/master/images/bowling.jpg" width=450>
+<img src="https://github.com/WardahTarar/bowling-challenge/blob/master/images/bowling.jpg" width=500>
 
 ## How to set up
 - git clone https://github.com/WardahTarar/bowling-challenge
@@ -49,3 +49,4 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 ### Perfect Game
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+

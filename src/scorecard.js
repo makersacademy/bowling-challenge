@@ -8,13 +8,12 @@ function Scorecard(){
 
 Scorecard.prototype.roll = function(pins) {
   this._pinsDown.push(pins)
-  // return this.score += pins
 }
 
 Scorecard.prototype.total = function(){
   var i = 0
   for(var frame = 0; frame < 10; frame++) {
-    if (this._pinsDown[i] + this._pinsDown[i+1] === 10) {
+    if (this.isSpare(i)) {
       this.score += 10 + this._pinsDown[i+2]
       i+=2
     } else {
@@ -22,9 +21,12 @@ Scorecard.prototype.total = function(){
       i+=2
     }
   }
+  this.isComplete()
   return this.score
-  // this.isComplete()
-  // return this.score 
+}
+
+Scorecard.prototype.isSpare = function(i){
+  return this._pinsDown[i] + this._pinsDown[i+1] === 10
 }
 
 Scorecard.prototype.isComplete = function(){

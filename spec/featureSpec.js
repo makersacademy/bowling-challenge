@@ -30,6 +30,7 @@ describe('Feature test', function(){
       scorecard.roll(6)
       roll(18,0)
       expect(scorecard.total()).toEqual(22)
+      expect(scorecard.isComplete()).toBe(true)
     })
   })
 

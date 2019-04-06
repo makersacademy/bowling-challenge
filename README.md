@@ -1,77 +1,87 @@
-
 Bowling Challenge
-=================
+==================
 
+[Placeholder for Travis CI badge]
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+## I documented my approach in 'kd_approach.md' <---- Please read me! :)
+- I documented and explained the processes and approaches I used for this challenge
 
-## The Task
+The app is available here:
+[INSERT LINK]
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+**To improve my project, next time I would like to:**
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+Next time I come round to looking at this I want to:
+
+- 
+
+## Introduction to the project
+
+This project is part of Week 5 and 6 of the Makers Academy 12-week software engineering programme. 
+
+The aim of this project is to build a bowling scorecard using JavaScript. The bowling score will enable a simple count and sum the scores of a bowling game for one player.
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by
+## Motivation: What are my goals for this project?
 
-* Forking this repo
+#### For this challenge, I am specifically targeting the following Makers Academy goals:
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+- I write code which is easy to change
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+#### Relating to the above high-level goals, I would like to:
 
-### Optional Extras
+- Document and explain the processes and approaches I used
 
-In any order you like:
+> This is presented in: 'kd_approach.md'.
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+Concrete things
+- Apply the Jasmine JS testing framework
+- Build a user interface to add to the business logic (model of bowling scorecard) to enable interaction with underlying logic.
+- Manipuate the Document Object Model (DOM) using JavaScript and jQuery to create the user interactions and link to the business logic.
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+Concepts
+- Understand constructor and prototype patterns for JavaScript
+- Implement closure patterns to make object properties private
 
-## Bowling — how does it work?
+Processes
+- Use test-driven development to test-drive the app. I will be applying the Jasmine JS testing framework for my JavaScript. I would like to apply the use of Capybara for feature testing the user flow.
+- Break down the requirements into business logic model, representing simple model of bowling scorecard and iterate to create an initial MVP and add to that MVP by creating a user interface.
 
-### Strikes
+Behaviours/mindset
+- Take a step back to understand how the user journey might work
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+## Tech/Framework Used
 
-### Spares
+Jasmine will be used as the testing framework for JavaScript.
 
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+>"Jasmine is a behavior-driven development framework for testing JavaScript code. It does not depend on any other JavaScript frameworks. It does not require a DOM. And it has a clean, obvious syntax so that you can easily write tests." 
 
-### 10th frame
+See documentation:
+https://jasmine.github.io/
 
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
+As a final step, I will explore options for hosting my web app. 
 
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
+## Code Style
 
-### Gutter Game
+I used `ESLint` as a guide.
 
-A Gutter Game is when the player never hits a pin (20 zero scores).
+## How to use the app
 
-### Perfect Game
+The app is available here:
 
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+I decided to host the app using .... The app was deployed using  ......
 
-In the image below you can find some score examples.
+## Images/Screenshots
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
+## Getting started
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+`git clone https://github.com/kimdiep/bowling-challenge.git`
 
-## Code Review
+## Running tests
 
-In code review we'll be hoping to see:
+Tests can be run from the root directory using:
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+`open SpecRunner.html`
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+This will open the SpecRunner.html file in a web browser.

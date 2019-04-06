@@ -5,7 +5,7 @@ describe("Scorecard", function() {
     expect(scorecard.isComplete()).toEqual(true);
   });
   
-  it("shows total score of zero", function() {
+  it("shows total score of zero for gutter game", function() {
     var scorecard = new Scorecard;
     var fakeFrame = {
       totalScore: 0

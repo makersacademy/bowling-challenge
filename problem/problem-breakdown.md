@@ -26,7 +26,7 @@ I want to enter the number of pins I knock down with a single roll into a scorec
 Objects | Messages
 --------------- | --------------------
 Player | 
-Scorecard | enterRollScore
+Frame | enterFirstRollScore
 
 
 ```
@@ -37,6 +37,13 @@ As a player,
 so that I don't have to calculate my score,
 I want to see my total score for a frame (when I have not knocked all pins down).
 ```
+
+Objects | Messages
+--------------- | --------------------
+Player | 
+Frame | enterFirstRollScore
+Frame | enterSecondRollScore
+Frame | calculateFrameScore
 
 **NEXT add guards against adding in scores of more that 10 (single roll) and combined rolls**
 

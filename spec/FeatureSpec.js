@@ -42,7 +42,7 @@ describe("Roll Feature", function() {
 
   // As a player,
   // so that I don't have to calculate my score,
-  // I want to see my total score for a frame (when I have not knocked all pins down).
+  // I want to see my current total score for a frame when I have made both rolls.
 
   it("adds second roll score to frame total", function() {
     var frame = new Frame;

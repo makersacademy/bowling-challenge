@@ -29,8 +29,15 @@ depends on strikes and spares. The score of a frame is the number of knocked
 down pins plus bonuses for strikes and spares. After every frame the 10 pins are
 reset.
 
-* 1
+* 1 
+As a player in a bowling game,
+So that I know when the game is over,
+I want my game to end when I thrown enough balls.
+
 * 2
+As a player in a bowling game,
+So that I can record my score,
+I want all my turns points to be totalled up.
 
 ---
 
@@ -89,8 +96,8 @@ In any order you like:
 
 An apple macbook was used to write code using VSCode as an editor and;
 
-* Ruby was used as the main language.
-* RSpec used for testing.
+* Javascript was used as the main language.
+* Jasmine 3.4.0 was used for testing.
 
 ### Code style
 

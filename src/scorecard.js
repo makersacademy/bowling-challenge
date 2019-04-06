@@ -7,7 +7,7 @@ function Scorecard(){
 }
 
 Scorecard.prototype.roll = function(pins) {
-  this._pinsDown.push(pins)
+  this._pinsDown = pins
 }
 
 Scorecard.prototype.total = function(){
@@ -17,7 +17,7 @@ Scorecard.prototype.total = function(){
       this.score += 10 + this._pinsDown[i+2]
       i+=2
     }  
-    else if (this._pinsDown[i] === 10) {
+    else if (this.isStrike(i)) {
       this.score += 10 + this._pinsDown[i+1] + this._pinsDown[i+2] 
       i++
     }
@@ -32,6 +32,10 @@ Scorecard.prototype.total = function(){
 
 Scorecard.prototype.isSpare = function(i){
   return this._pinsDown[i] + this._pinsDown[i+1] === 10
+}
+
+Scorecard.prototype.isStrike = function(i){
+  return this._pinsDown[i] === 10
 }
 
 Scorecard.prototype.isComplete = function(){

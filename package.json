@@ -1,0 +1,25 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Scorecard",
+  "main": "interface.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "no test specified"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hybridbad/bowling-challenge.git"
+  },
+  "author": "James Davies",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hybridbad/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/hybridbad/bowling-challenge#readme",
+  "devDependencies": {
+
+  }
+}

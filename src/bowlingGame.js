@@ -12,11 +12,17 @@ bowlingGame.prototype.addPlayers = function(playerName){
 bowlingGame.prototype.addFrames = function(frame){
     if (_isNotValidFrame(frame)){   
         return 'Error: Frame has incorrect values';
+    } else if(_isLastFrame(this.frame)) {
+        return 'Error: Game over';
     } else {
         this.frame.push(frame);
     }
     this.setTotal(frame);
     this.setState(frame);
+};
+
+bowlingGame.prototype.lastFrame = function(){
+
 };
 
 bowlingGame.prototype.setTotal = function(frame){
@@ -42,6 +48,10 @@ function getSum(total, num) {
 
 function _isNotValidFrame(frame){
     if (frame.reduce(getSum) > 10) { return true; }
+}
+
+function _isLastFrame(frame){
+    if (frame.length >= 10){ return true; }
 }
 
 function _isEqualToTen(frame){

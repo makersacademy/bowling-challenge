@@ -121,4 +121,15 @@ describe("Javascript bowling score keeper: ", function(){
             expect(game.score).toBe(49);
         });
     });
+
+    describe("#last frame- ", function(){
+
+        it("ends game at last frame", function(){
+            for(var i=0; i < 10; i++){
+            game.addFrames(frameSeven);
+            }
+            expect(game.addFrames(frameSeven)).toContain('Error: Game over');
+        });
+
+    });
 });

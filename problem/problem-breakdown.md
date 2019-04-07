@@ -79,7 +79,7 @@ Scorecard | captureFrame
 
 1. Adds a new frame to a scorecard
 2. Prevents more than 10 frames in a scorecard
-3. Completes scorecard when 10th frame is added
+3. Completes scorecard when 10th frame added
 
 ------
 

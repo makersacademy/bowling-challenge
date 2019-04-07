@@ -150,8 +150,8 @@ assertEquals(scorecard.isComplete(), true)
 
 - Player
   Manages: 
-  - User input of number of pins rolled
-  - Decides on type: e.g. strike, spare, gutter etc.
+  - [X] User input of number of pins rolled
+  - [X] Decides on type: e.g. strike, spare, gutter etc.
 
 - BowlingGame
   Manages:

@@ -3,11 +3,17 @@ describe('Frame feature tests', function () {
     Scorecard = require('../../src/Scorecard')
     Frame = require('../../src/Frame')
   }
-  var scorecard
+  var scorecard, rollGutterballs
 
   beforeEach(function () {
     scorecard = new Scorecard()
   })
+
+  rollGutterballs = function (n) {
+    for (var i = 0; i < n; i++) {
+      scorecard.roll(0)
+    }
+  }
 
   describe('After no rolls', function () {
     it('The game should have no frames', function () {
@@ -16,43 +22,43 @@ describe('Frame feature tests', function () {
   })
 
   describe('After 1 gutterball', function () {
+    beforeEach(function () {
+      rollGutterballs(1)
+    })
+
     it('The game should have 1 frame', function () {
-      scorecard.roll(0)
       expect(scorecard.frames.length).toBe(1)
     })
 
     it('The frame should not be complete', function () {
-      scorecard.roll(0)
       expect(scorecard.frames[0].isComplete()).toBe(false)
     })
   })
 
   describe('After 2 gutterballs', function () {
+    beforeEach(function () {
+      rollGutterballs(2)
+    })
+
     it('The game should have 1 frame', function () {
-      scorecard.roll(0)
-      scorecard.roll(0)
       expect(scorecard.frames.length).toBe(1)
     })
 
     it('The frame should be complete', function () {
-      scorecard.roll(0)
-      scorecard.roll(0)
       expect(scorecard.frames[0].isComplete()).toBe(true)
     })
   })
 
   describe('After 3 gutterballs', function () {
+    beforeEach(function () {
+      rollGutterballs(3)
+    })
+
     it('The game should have 2 frames', function () {
-      for (var i = 0; i < 3; i++) {
-        scorecard.roll(0)
-      }
       expect(scorecard.frames.length).toBe(2)
     })
 
     it('The second frame should not be complete', function () {
-      for (var i = 0; i < 3; i++) {
-        scorecard.roll(0)
-      }
       expect(scorecard.frames[1].isComplete()).toBe(false)
     })
   })

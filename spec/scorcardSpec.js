@@ -18,14 +18,47 @@ describe('Scorecard', function(){
       scorecard.recordFrame(1, 5, 6);
       expect(scorecard.isComplete()).toBe(false);
     })
+
+    it('returns true on complete game', function(){
+      for(var i = 1; i < 11; i++){
+        scorecard.recordFrame(i, 0, 1)
+      }
+      expect(scorecard.isComplete()).toBe(true);
+    })
+
+    it('wont record more than 10 frames', function(){
+      for(var i = 1; i < 12; i++){
+        scorecard.recordFrame(i, 0, 1)
+      }
+      expect(scorecard.gameScores.length).toBe(10);
+    })
+  });
+
+  describe('calculating total of frames', function(){
+    
+    it('one frame total', function(){
+      scorecard.recordFrame(1, 5, 5);
+      expect(scorecard.total()).toBe(10);
+    })
+
+    it('complete game with 1 point per frame total to be 10', function(){
+      for(var i = 1; i < 11; i++){
+        scorecard.recordFrame(i, 0, 1)
+      }
+      expect(scorecard.total()).toBe(10);
+    })
   });
 
   describe('gutter game', function(){
-
-    it('gutter game total should be zero', function(){
-      expect(scorecard.isComplete()).toBe(true);
-    })
     
+    it('gutter game total should be zero', function(){
+      for(var i = 1; i < 11; i++){
+        scorecard.recordFrame(i, 0, 0)
+      }
+      expect(scorecard.isComplete()).toBe(true);
+      expect(scorecard.total()).toBe(0);
+    })
+
   });
 
 });

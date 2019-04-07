@@ -6,11 +6,23 @@ class Scorecard {
 
   recordFrame(frameNo, rollOne = 0, rollTwo = 0) {
     const FRAME = [frameNo, rollOne, rollTwo];
-    this.gameScores.push(FRAME);
+    if (!this.isComplete()) {this.gameScores.push(FRAME)};
   }
 
   isComplete(){
     return this.gameScores.length >= this.MAX_FRAMES;
+  }
+
+  clearGame(){
+    if (this.isComplete()){
+      this.gameScores.length = 0;
+    }
+  }
+
+  total(){
+    const TOTAL = this.gameScores.map(score => score[1] + score[2]).reduce(
+      (sum, num) => sum + num);
+    return TOTAL;
   }
 
 }

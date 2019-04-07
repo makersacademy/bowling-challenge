@@ -135,9 +135,38 @@ Score is: 0
 
 ##### OBJECTS/FUNCTIONS (MODEL)
 
+```
+# pseudocode
+
+scorecard = new Scorecard()
+
+20.times do
+  scorecard.roll(0)
+end
+
+assertEquals(scorecard.total(), 0)
+assertEquals(scorecard.isComplete(), true)
+```
+
+- Player
+  Manages: 
+  - User input of number of pins rolled
+  - Decides on type: e.g. strike, spare, gutter etc.
+
+- BowlingGame
+  Manages:
+  - Keeping track of frame e.g. frame i
+  - Keeping track of roll number
+
+- Scorecard
+  Manages:
+  - Score array
+  - Scoring mechanism
 
 
 ##### USER JOURNEY
+
+Player input number of pins rolled, decides whether it is strike, spare, gutter etc., bowling game manages the frame and roll number and whilst, delegating to scoring mechanism to decide how to score. Score is input into score array on scorecard.
 
 
 ##### TEST CASES

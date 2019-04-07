@@ -2,7 +2,9 @@ describe('Feature tests', function () {
   var Scorecard = require('../../lib/Scorecard')
   var scorecard
 
-  scorecard = new Scorecard()
+  beforeEach(function() {
+    scorecard = new Scorecard()
+  })
 
   describe('20 gutter balls in a row', function () {
     it('The game should be complete with a score of 0', function () {
@@ -23,6 +25,14 @@ describe('Feature tests', function () {
 
       expect(scorecard.isComplete()).toBe(false)
       expect(scorecard.total()).toBe(0)
+    })
+  })
+
+  describe('Frames', function () {
+    describe('After no rolls', function () {
+      it('The game should have no frames', function () {
+        expect(scorecard.frames.length).toBe(0)
+      })
     })
   })
 })

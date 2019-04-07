@@ -8,11 +8,10 @@ Scorecard.prototype = {
   constructor: Scorecard,
 
   roll: function () {
-    if ((this.frames.length === 0) ||
-        (this.frames[this.frames.length - 1].length === 2)) {
-      this.frames.push([null])
+    if ((this.frames.length === 0) || (this._latestFrame().isComplete())) {
+      this.frames.push(new Frame())
     } else {
-      this.frames[this.frames.length - 1].push(null)
+      this._latestFrame().complete()
     }
     this._rolls++
   },
@@ -23,7 +22,13 @@ Scorecard.prototype = {
 
   isComplete: function () {
     return (this._rolls === 20)
+  },
+
+  _latestFrame: function () {
+    return this.frames[this.frames.length - 1]
   }
 }
 
-module.exports = Scorecard
+if (typeof module !== 'undefined') {
+  module.exports = Scorecard
+}

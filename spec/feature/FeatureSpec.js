@@ -1,8 +1,11 @@
 describe('Feature tests', function () {
-  var Scorecard = require('../../lib/Scorecard')
+  if (typeof require !== 'undefined') {
+    Scorecard = require('../../src/Scorecard')
+    Frame = require('../../src/Frame')
+  }
   var scorecard
 
-  beforeEach(function() {
+  beforeEach(function () {
     scorecard = new Scorecard()
   })
 
@@ -40,6 +43,11 @@ describe('Feature tests', function () {
         scorecard.roll(0)
         expect(scorecard.frames.length).toBe(1)
       })
+
+      it('The frame should not be complete', function () {
+        scorecard.roll(0)
+        expect(scorecard.frames[0].isComplete()).toBe(false)
+      })
     })
 
     describe('After 2 gutterballs', function () {
@@ -47,6 +55,12 @@ describe('Feature tests', function () {
         scorecard.roll(0)
         scorecard.roll(0)
         expect(scorecard.frames.length).toBe(1)
+      })
+
+      it('The frame should be complete', function () {
+        scorecard.roll(0)
+        scorecard.roll(0)
+        expect(scorecard.frames[0].isComplete()).toBe(true)
       })
     })
 
@@ -56,6 +70,13 @@ describe('Feature tests', function () {
           scorecard.roll(0)
         }
         expect(scorecard.frames.length).toBe(2)
+      })
+
+      it('The second frame should not be complete', function () {
+        for (var i = 0; i < 3; i++) {
+          scorecard.roll(0)
+        }
+        expect(scorecard.frames[1].isComplete()).toBe(false)
       })
     })
   })

@@ -11,8 +11,9 @@ Scorecard.prototype.takeFrames = function (frame) {
 };
 
 Scorecard.prototype.scoreGame = function() {
+  // need to make this process a loop, test for multiple frames
   const scoreArray = this.frames[0];
-  return this.sumArray(scoreArray); 
+  return this.sumArray(scoreArray);
 };
 
 Scorecard.prototype.sumArray = function (array) {

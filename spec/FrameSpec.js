@@ -91,6 +91,15 @@ describe('Frame', function () {
       frame.addRoll(10)
       expect(frame.isComplete()).toBe(true)
     })
+
+    it('if no rolls are recorded, the frame is not complete', function () {
+      expect(frame.isComplete()).toBe(false)
+    })
+
+    it('if one roll less than 10 is recorded, the frame is not complete', function () {
+      frame.addRoll(9)
+      expect(frame.isComplete()).toBe(false)
+    })
   })
 
 })

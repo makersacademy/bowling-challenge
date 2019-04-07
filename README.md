@@ -31,7 +31,14 @@ This weekend (and next) the focus is on JavaScript. This is a totally new langua
 ## Limitations
 
 - This project is not finished. After many hours of trying to get this all to work, it doesn't! :-)
-- You can play bowling through index.html as long as you don't expect bonus points when you score a spare or a strike, or expect any special behaviour in frame 10. In fact the interface only allows you to play up to frame 4.
+- You can play bowling through index.html as long as you don't expect any special behaviour in frame 10.
+
+### Still to do
+- Stop user being able to enter ball 2 in the interface if they've scored a strike
+- Make the interface clearer that a strike or spare has been scored
+- Build functionality for frame 10 with the additional ball
+- Make the user interface pretty
+- Do all the normal refactoring for single responsibility!!
 
 ## My approach
 

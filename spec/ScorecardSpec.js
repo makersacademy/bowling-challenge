@@ -19,7 +19,7 @@ describe('Scorecard', function() {
   });
 
   describe('#takeFrames', function() {
-    var testFrame;
+
     it('accepts 10 frames', function() {
       for(var i=0; i < 10; i++){
         scorecard.takeFrames(frame)
@@ -38,13 +38,14 @@ describe('Scorecard', function() {
 
   });
 
-  // describe('#scoreGame', function() {
-  //   it('tots up basic scores', function() {
-  //     game = [[1,1], [1,2], [1,3], [1,4], [1,5], [1,6], [1,7], [1,8], [2,1], [2,2]]
-  //     scorecard.scoreGame(game);
-  //     expect(scorecard.scoreGame(game)).toEqual('Test')
-  //     expect(scorecard.score).toEqual(51);
-  //   });
-  // });
+  describe('#scoreGame', function() {
+    var scorecard = new Scorecard;
+    var frame1 = [2,3]
+    it('tots up score', function() {
+      scorecard.takeFrames(frame1);
+      expect(scorecard.scoreGame()).toEqual(5);
+      // expect(scorecard.score).toEqual(5);
+    });
+  });
 
 });

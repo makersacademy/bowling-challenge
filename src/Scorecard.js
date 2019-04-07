@@ -10,6 +10,13 @@ Scorecard.prototype.takeFrames = function (frame) {
   this.frames.push(frame)
 };
 
-Scorecard.prototype.scoreGame = function(game) {
-  return game;
+Scorecard.prototype.scoreGame = function() {
+  const scoreArray = this.frames[0];
+  return this.sumArray(scoreArray); 
+};
+
+Scorecard.prototype.sumArray = function (array) {
+  return array.reduce(function(a,b) {
+    return a + b;
+  }, 0);
 };

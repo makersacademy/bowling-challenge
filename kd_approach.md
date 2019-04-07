@@ -151,16 +151,20 @@ assertEquals(scorecard.isComplete(), true)
 - Player
   Manages: 
   - [X] User input of number of pins rolled
-  - [X] Decides on type: e.g. strike, spare, gutter etc.
 
 - BowlingGame
   Manages:
-  - Keeping track of frame e.g. frame i
+  - [X] Keeping track of frame e.g. frame i
   - Keeping track of roll number
+  - Game start
+  - Game stop
+  - 10th frame management
+  - Decides on type: e.g. strike, spare, gutter etc. (?)
 
 - Scorecard
   Manages:
   - Score array
+  - All Pin rolls
   - Scoring mechanism
 
 

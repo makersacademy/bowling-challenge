@@ -1,4 +1,5 @@
-function BowlingGame(player) {
+function BowlingGame(player, scoreCard) {
+  this.scoreCard = scoreCard;
   this.player = player;
   this.rollNumber = 0;
   this.frameNumber = 1;
@@ -11,6 +12,12 @@ BowlingGame.prototype.frame = function(playerRoll) {
     return this.frameNumber;
   }
 };
+
+
+
+
+
+
 
 
 

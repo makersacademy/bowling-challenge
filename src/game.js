@@ -30,7 +30,13 @@ Game.prototype.manageFrame = function() {
 };
 
 Game.prototype.isFrameOver = function() {
-  return this.currentFrame().rolls().length === 2;
+  if(this.currentFrame().score() == 10) {
+    return true;
+  } else if(this.currentFrame().rolls().length === 2) {
+    return true
+  } else {
+    return false
+  }
 };
 
 Game.prototype.isGameOver = function() {

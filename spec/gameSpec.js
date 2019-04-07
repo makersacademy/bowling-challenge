@@ -39,12 +39,16 @@ describe('Game', function() {
     });
   });
   describe('.isFrameOver', function() {
-    it('should show false when frame ongoing', function() {
+    it('should show false when only 1 roll and not strike', function() {
       spyOn(Frame.prototype, 'rolls').and.returnValue([3]);
       expect(game.isFrameOver()).toEqual(false)
     });
-    it('should show true when frame ended', function() {
+    it('should show true when 2 rolls completed', function() {
       spyOn(Frame.prototype, 'rolls').and.returnValue([3, 3]);
+      expect(game.isFrameOver()).toEqual(true)
+    });
+    it('should show true when strike scored', function() {
+      spyOn(Frame.prototype, 'score').and.returnValue(10);
       expect(game.isFrameOver()).toEqual(true)
     });
   });

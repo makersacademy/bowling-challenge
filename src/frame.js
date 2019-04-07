@@ -31,7 +31,14 @@ Frame.prototype.addRoll = function(roll) {
 };
 
 Frame.prototype.calcBonus = function() {
-  if(this._rolls.length === 2 && this._score === 10) {
-    this._bonus = 'spare';
+  if(this._score === 10) {
+    switch(this._rolls.length) {
+      case 1:
+        this._bonus = 'strike'
+        break;
+      case 2:
+        this._bonus = 'spare'
+      default:
+    };
   }
-}
+};

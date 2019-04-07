@@ -57,5 +57,11 @@ describe('Frame', function() {
       frame.calcBonus();
       expect(frame.bonus()).toEqual('spare');
     })
+    it('should change _bonus to strike when strike is scored', function() {
+      frame._rolls = [10];
+      frame._score = 10;
+      frame.calcBonus();
+      expect(frame.bonus()).toEqual('strike');
+    })
   });
 });

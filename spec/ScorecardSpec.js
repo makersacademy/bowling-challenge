@@ -38,4 +38,14 @@ describe("Scorecard", function() {
       "Scorecard already contains the maximum 10 frames.")
     );
   });
+
+  it("completes when 10th frame is added", function() {
+    scorecard.frames = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    expect(scorecard.isComplete()).toEqual(false);
+    fakeFrame = {
+      totalScore: 5
+    }
+    scorecard.captureFrame(fakeFrame);
+    expect(scorecard.isComplete()).toEqual(true);
+  });
 });

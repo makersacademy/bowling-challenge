@@ -8,7 +8,7 @@ describe('Scoring', function () {
   beforeEach(function () {
     scorecard = new Scorecard()
   })
-  
+
   describe('I start a game with a gutterball', function () {
     it("The frame's first roll is 0", function () {
       scorecard.roll(0)

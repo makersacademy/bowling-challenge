@@ -1,6 +1,5 @@
 function Scorecard () {
   this._total = 0
-  this._rolls = 0
   this.frames = []
 }
 
@@ -14,7 +13,6 @@ Scorecard.prototype = {
     } else {
       this._latestFrame().roll2 = roll
     }
-    this._rolls++
   },
 
   total: function () {
@@ -22,7 +20,7 @@ Scorecard.prototype = {
   },
 
   isComplete: function () {
-    return (this._rolls === 20)
+    return ((this.frames.length === 10) && (this._latestFrame().isComplete()))
   },
 
   _latestFrame: function () {

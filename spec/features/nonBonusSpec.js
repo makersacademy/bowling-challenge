@@ -1,4 +1,4 @@
-describe("A game with no 10 scores", function(){
+describe("Game with no bonus points", function(){
   it("Rolls a non-10 score every frame", function(){
     game = new Game();
     for(let i=0; i<20; i++){

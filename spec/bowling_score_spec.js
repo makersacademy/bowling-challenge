@@ -1,14 +1,21 @@
-// describe('Bowling_score', function() {
+describe('Bowling_score', function() {
   
-//   var bowling_score;
+  var game;
   
-//   beforeEach(function() {
-//     bowling_score = new Bowling_score();
+  beforeEach(function() {
+    game = new Bowling_score();
     
-//   });
+  });
 
-//   it("should be able to show the current score to 0", function() {
-//     expect( bowling_score ).toEqual(0);
-//   });
+  it("shows the result of the basic game", function() {
+    var frame;
+    for ( var i = 0; i < 10; i++ ){
+      frame = new Frame();
+      frame.roll(0);
+      frame.roll(0);
+      game.input_frame(frame);
+    }
+    expect( game.score() ).toEqual(0);
+  });
   
-// });
+});

@@ -21,7 +21,7 @@ var Frame = function() {
     return frame;
   }
 
-  this.isStrike = function total(){
+  this.isStrike = function isStrike(){
     return roll_number == 1 && this.total() == MAX_PINS;
     // if ( roll_number == 1 && this.total() == MAX_PINS ) {
     //   return true;
@@ -29,7 +29,7 @@ var Frame = function() {
     // return false;
   }
 
-  this.isSpare = function total(){
+  this.isSpare = function isSpare(){
     return roll_number !== 1 && this.total() == MAX_PINS;
     // if ( roll_number !== 1 && this.total() == MAX_PINS ) {
     //   return true;

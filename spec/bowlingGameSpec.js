@@ -1,4 +1,10 @@
 describe("Javascript bowling score keeper: ", function(){
+    var frameSeven, frameEleven, frameSpare, frameStrike;
+
+    frameSeven = [5, 2];
+    frameEleven = [5, 6];
+    frameSpare = [5, 5];
+    frameStrike = [10, 0];
 
     beforeEach(function() {
         game = new bowlingGame();
@@ -31,29 +37,29 @@ describe("Javascript bowling score keeper: ", function(){
     describe("#frame- ", function(){
 
         it("can add frames", function(){
-            var frames = [[4, 2], [3, 1]];
+            var frames = [frameSeven, frameEleven];
             game.addFrames(frames);
-            expect(game.frame).toContain([[4, 2], [3, 1]]);
+            expect(game.frame).toContain([frameSeven, frameEleven]);
         });
 
         it("throws an error if frame score is over 10", function(){
-            var frame = [7, 4];
+            var frame = frameEleven;
             expect(game.addFrames(frame)).toContain("Error: Frame has incorrect values");
         });
 
         it("checks if frame contains a spare", function(){
-            var frame = [5, 5];
+            var frame = frameSpare;
             expect(_isEqualToTen(frame)).toBe(true);
         });
 
         it("checks if frame does not contain a spare", function(){
-            var frame = [5, 6];
+            var frame = frameEleven;
             expect(_isEqualToTen(frame)).toBe(false);
         });
 
         it("checks if one value is enough to pass", function(){
-            var frame = [10, 0];
+            var frame = frameStrike;
             expect(_isEqualToTen(frame)).toBe(true);
-        })
+        });
     });
 });

@@ -30,7 +30,6 @@ describe('Frame', function () {
   describe('.addRoll', function () {
     describe('on a new frame', function () {
       it('records the first roll', function () {
-        console.log(frame)
         frame.addRoll(2)
         expect(frame.roll1).toEqual(2)
       })

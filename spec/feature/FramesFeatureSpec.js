@@ -5,15 +5,15 @@ describe('Frame feature tests', function () {
   }
   var scorecard, rollGutterballs
 
-  beforeEach(function () {
-    scorecard = new Scorecard()
-  })
-
   rollGutterballs = function (n) {
     for (var i = 0; i < n; i++) {
       scorecard.roll(0)
     }
   }
+
+  beforeEach(function () {
+    scorecard = new Scorecard()
+  })
 
   describe('After no rolls', function () {
     it('The game should have no frames', function () {

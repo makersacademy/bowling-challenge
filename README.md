@@ -9,7 +9,6 @@ This JavaScript app simulates a bowling scorecard, allowing a user to enter thei
 ### Technologies used
 
 - JavaScript
-- jQuery
 - Jasmine
 
 
@@ -61,8 +60,9 @@ scorecard;
 
 After forking and cloning repo, open the path to `SpecRunner.html` in your browser.
 
+------
 
-#### Problem breakdown
+## Problem breakdown
 
 Links to requirements and problem breakdown, and models
 

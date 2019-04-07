@@ -10,6 +10,7 @@ Frame.prototype = {
     if (pins > 10) {
       throw new Error("A maximum of 10 can be scored per frame.")
     } else {
+      // this.addToScorecard()
       this.firstRollScore = pins;
       this.totalScore = pins;
     }
@@ -27,5 +28,9 @@ Frame.prototype = {
   calculateTotalScore: function() {
     this.totalScore = this.firstRollScore + this.secondRollScore;
     return this.totalScore;
+  },
+
+  addToScorecard: function(scorecard = new Scorecard) {
+    scorecard.captureFrame(this);
   },
 }

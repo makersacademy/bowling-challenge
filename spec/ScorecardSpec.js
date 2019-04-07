@@ -15,4 +15,13 @@ describe("Scorecard", function() {
     }
     expect(scorecard.totalScore()).toEqual(0);
   });
+
+  it("captures frame when played", function() {
+    var scorecard = new Scorecard;
+    fakeFrame = {
+      totalScore: 5
+    }
+    scorecard.captureFrame(fakeFrame);
+    expect(scorecard.frames.length).toEqual(1);
+  });
 });

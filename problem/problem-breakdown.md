@@ -28,6 +28,7 @@ Objects | Messages
 Player | 
 Frame | enterFirstRollScore
 
+------
 
 ```
 User story: Calculate simple frame score
@@ -45,6 +46,7 @@ Frame | enterFirstRollScore
 Frame | enterSecondRollScore
 Frame | calculateFrameScore
 
+------
 
 ```
 User story: Prevent invalid scores
@@ -55,6 +57,30 @@ so that scores are accurate,
 I want to be prevented from entering invalid scores per roll and frame.
 ```
 
+------
+
+```
+User story: Add frames to scorecard
+-----------------------------------
+
+As a player,
+so that I can see the current progress of the game,
+I want each frame to be added to the scorecard as it is started.
+```
+
+Objects | Messages
+--------------- | --------------------
+Player | 
+Frame | enterFirstRollScore
+Frame | enterSecondRollScore
+Frame | calculateFrameScore
+Frame | addToScorecard
+
+1. Adds a new frame to a scorecard
+2. Prevents more than 10 frames in a scorecard
+3. Completed scorecard when 10 are added
+
+------
 
 ```
 User story: Calculate simple running total for game

@@ -11,6 +11,7 @@ Scorecard.prototype = {
       return false;
     }
   },
+
   totalScore: function() {
     var total = 0;
     for (var i = 0; i < this.frames.length; i++) {
@@ -18,5 +19,10 @@ Scorecard.prototype = {
       total = total + frameScore;
     }
     return total;
+  },
+
+  // need to add unit test for this -> double Frame in the scorecard spec
+  captureFrame: function(frame = new Frame) {
+    this.frames.push(frame);
   },
 }

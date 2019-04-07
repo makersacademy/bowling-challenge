@@ -1,16 +1,17 @@
 describe("Javascript bowling score keeper: ", function(){
-    describe("#game- ", function(){
 
-        beforeEach(function() {
-            game = new bowlingGame();
-        });
+    beforeEach(function() {
+        game = new bowlingGame();
+    });
+
+    describe("#game- ", function(){
 
         it("starts a new game", function(){
             expect(game.score).toBe(0);
         });
 
         it("keeps track of frames", function(){
-            expect(game.frame).toBe(0);
+            expect(game.frame.length).toBe(0);
         });
 
         it("stores name of 1 player", function(){
@@ -24,6 +25,20 @@ describe("Javascript bowling score keeper: ", function(){
             game.addPlayers('Homer Simpson');
             game.addPlayers('Fred Flintstone');
             expect(game.players).toEqual(['Mr the Dude', 'Al Bundy', 'Homer Simpson', 'Fred Flintstone']);
+        });
+    });
+
+    describe("#frame- ", function(){
+
+        it("can add frames", function(){
+            var frames = [[4, 2], [3, 1]];
+            game.addFrames(frames);
+            expect(game.frame).toContain([[4, 2], [3, 1]]);
+        });
+
+        it("throws a error if frame score is over 10", function(){
+            var frame = [7, 4];
+            expect(game.addFrames(frame)).toContain("Error: Frame has incorrect values");
         });
     });
 });

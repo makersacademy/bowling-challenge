@@ -49,6 +49,11 @@ describe("Javascript bowling score keeper: ", function(){
         it("checks if frame does not contain a spare", function(){
             var frame = [5, 6];
             expect(_isEqualToTen(frame)).toBe(false);
+        });
+
+        it("checks if one value is enough to pass", function(){
+            var frame = [10, 0];
+            expect(_isEqualToTen(frame)).toBe(true);
         })
     });
 });

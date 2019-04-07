@@ -1,4 +1,4 @@
-
+/* eslint-disable */
 describe('Scorecard', function(){
 
   var scorecard;

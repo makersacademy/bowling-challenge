@@ -6,10 +6,7 @@
 
 3. A `frame` allows a maximum of **2** `rolls`, except the 10th frame which may allow a maximum of **3** `rolls`
 
-4. Scoring... (to follow)
-
-
-
+4. [Scoring rules](https://github.com/mattTea/bowling-challenge/blob/master/README.md#rules), including `strikes`, `spares` and the 10th frame
 
 
 ## User stories
@@ -154,38 +151,21 @@ Scorecard | captureFrame
 Scorecard | calculateTotalScore
 
 1. Check to see if previous frame scored a strike (after second frame roll)
-2. If yes, add both roll scores of current frame to bonus of previous frame
+  - If yes, add both roll scores of current frame to bonus of previous frame
 
-3. Check to see if previous frame scored a strike (after first frame roll)
+_(TODO...)_
+2. Check to see if previous frame scored a strike (after first frame roll)
   - If yes, was the frame before that one a strike?
   - If yes, add current frame (1st roll) score and prev frame strike score (10) to bonus of prev.prev[index-2] frame
 
 ------
 
-**Don't forget 10th frame weirdness!**
-
-
-
-## Logic models
-
-## Data flow models
-
-
-
-### Ed's Tips for the bowling scorecard challenge.
-
-1. Ignore interface, focus on TDDing the logic.
-
-2. The first test you write: a simple feature test that completes a score card with gutter balls.
+_(TODO...)_
 ```
-# pseudocode
+User story: Capture bonuses in 10th frame
+-----------------------------------------
 
-scorecard = new Scorecard()
-
-20.times do
-  scorecard.roll(0)
-end
-
-assertEquals(scorecard.total(), 0)
-assertEquals(scorecard.isComplete(), true)
+As a player,
+so that my final score is correctly captured,
+I want to be able to play and record bonus rolls in the 10th frame. 
 ```

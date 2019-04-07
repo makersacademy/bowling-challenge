@@ -54,6 +54,15 @@ describe('Frame', function () {
       })
     })
 
+    describe('if the second roll brings the total to more than 10', function () {
+      it('raises an error', function () {
+        frame.addRoll(5)
+        expect(function () {
+          frame.addRoll(6)
+        }).toThrow(new Error('Could not record roll. Frame total would be more than 10.'))
+      })
+    })
+
     describe('if two rolls have been recorded', function () {
       it('raises an error', function () {
         frame.addRoll(1)

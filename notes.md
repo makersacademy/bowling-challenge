@@ -1,13 +1,5 @@
 # Bowling challenge notes
 
-## TDD sequence
-
-Frames
-1. start with no frames
-2. one gutterball creates a frame
-3. two gutterballs, still only one frame
-
-
 ## Ed's Tips for bowling scorecard challenge
 
 1. Ignore interface, focus on TDDing the logic.
@@ -24,3 +16,7 @@ end
 assertEquals(scorecard.total(), 0)
 assertEquals(scorecard.isComplete(), true)
 ```
+## Notes
+
+- I was having real trouble deciding what was an acceptance test and what was a unit test. At the moment I've hardly got any unit tests for my Scorecard. In fact I think I've got none. All the testing for that is in my so-called feature tests. But really, I think they're more like unit tests, not acceptance tests.
+- Are you not ever allowed to write a unit test without it being driven by an acceptance test?

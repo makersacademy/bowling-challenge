@@ -7,6 +7,9 @@ Scorecard.prototype = {
   constructor: Scorecard,
 
   roll: function (roll) {
+    if (this._invalidInput(roll)) {
+      throw new Error('Could not record roll. Invalid input.')
+    }
     if ((this.frames.length === 0) || (this._latestFrame().isComplete())) {
       this.frames.push(new Frame())
     }
@@ -23,6 +26,14 @@ Scorecard.prototype = {
 
   _latestFrame: function () {
     return this.frames[this.frames.length - 1]
+  },
+
+  _invalidInput: function (input) {
+    if ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].includes(input)) {
+      return false
+    } else {
+      return true
+    }
   }
 }
 

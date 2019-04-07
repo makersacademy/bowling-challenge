@@ -21,6 +21,9 @@ Frame.prototype = {
     if (this.roll1 === null) {
       this.roll1 = roll
     } else {
+      if (this.roll1 + roll > 10) {
+        throw new Error('Could not record roll. Frame total would be more than 10.')
+      }
       this.roll2 = roll
     }
   }

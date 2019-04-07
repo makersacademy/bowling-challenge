@@ -1,5 +1,6 @@
 describe("Scorecard", function() {
   var scorecard;
+  var fakeFrame;
 
   beforeEach(function() {
     scorecard = new Scorecard;
@@ -11,7 +12,7 @@ describe("Scorecard", function() {
   });
   
   it("shows total score of zero for gutter game", function() {
-    var fakeFrame = {
+    fakeFrame = {
       totalScore: 0
     }
     for (var i = 0; i < 10; i++) {
@@ -26,5 +27,15 @@ describe("Scorecard", function() {
     }
     scorecard.captureFrame(fakeFrame);
     expect(scorecard.frames.length).toEqual(1);
+  });
+
+  it("throws error if > 10 frames added", function() {
+    scorecard.frames = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    fakeFrame = {
+      totalScore: 5
+    }
+    expect(function() { scorecard.captureFrame(fakeFrame) }).toThrow(new Error(
+      "Scorecard already contains the maximum 10 frames.")
+    );
   });
 });

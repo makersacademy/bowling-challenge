@@ -22,6 +22,10 @@ Scorecard.prototype = {
   },
 
   captureFrame: function(frame = new Frame) {
-    this.frames.push(frame);
+    if (this.frames.length === 10) {
+      throw new Error("Scorecard already contains the maximum 10 frames.");
+    } else {
+      this.frames.push(frame);
+    }
   },
 }

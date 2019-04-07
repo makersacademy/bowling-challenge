@@ -32,6 +32,7 @@ describe('Scorecard', function(){
       }
       expect(scorecard.gameScores.length).toBe(10);
     })
+
   });
 
   describe('calculating total of frames', function(){
@@ -60,5 +61,16 @@ describe('Scorecard', function(){
     })
 
   });
+
+  describe('new game', function(){
+
+    it('clear game function empties frames', function(){
+      for(var i = 1; i < 11; i++){
+        scorecard.recordFrame(i, 0, 0)
+      }
+      scorecard.clearGame();
+      expect(scorecard.gameScores.length).toBe(0);
+    })
+  })
 
 });

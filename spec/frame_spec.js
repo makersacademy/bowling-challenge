@@ -1,0 +1,56 @@
+describe('Bowling frame', function() {
+  
+  var frame;
+  
+  beforeEach(function() {
+    frame = new Frame();
+    
+  });
+
+  it("shows the result of the roll in case of gutter roll", function() {
+    frame.roll(0);
+    expect( frame.total() ).toEqual(0);
+  });
+  
+  it("shows the result in case of knocking down 5 pins", function() {
+    frame.roll(5);
+    expect( frame.total() ).toEqual(5);
+  });
+
+  it("shows the total of the 2 rolls of a frame", function() {
+    frame.roll(1);
+    frame.roll(2);
+    expect( frame.total() ).toEqual(3);
+  });
+
+  it("the total of the 2 rolls of a frame can not exceed 10", function() {
+    frame.roll(5);
+    frame.roll(6);
+    expect( frame.total() ).toEqual(10);
+  });
+
+  it("is a strike when player knocks down 10 pines the first roll", function() {
+    frame.roll(10);
+    expect( frame.isStrike() ).toBe(true);
+  });
+
+  it("is a spare when player knocks down 10 pines between the first and the second roll", function() {
+    frame.roll(2);
+    frame.roll(8);
+    expect( frame.isSpare() ).toBe(true);
+  });
+
+  it("is not a spare when player knocks down less than 10 pines between the first and the second roll", function() {
+    frame.roll(2);
+    frame.roll(6);
+    expect( frame.isSpare() ).toBe(false);
+  });
+
+  it("only allows player to play 2 rolls in a frame", function() {
+    frame.roll(1);
+    frame.roll(2);
+    frame.roll(3);
+    expect( frame.total() ).toEqual(3);
+  });
+
+});

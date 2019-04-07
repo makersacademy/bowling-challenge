@@ -9,7 +9,8 @@ describe('Frame', function () {
     frame = new Frame()
   })
 
-  describe('initialisation', function () {
+  // these are bad i think - testing state not behaviour?
+  xdescribe('initialisation', function () {
     describe('.roll1', function () {
       it('a new frame has no first roll', function () {
         expect(frame.roll1).toEqual(null)
@@ -56,7 +57,7 @@ describe('Frame', function () {
       })
     })
 
-    describe('if the second roll brings the total to more than 10', function () {
+    describe('if the second roll would bring the total to more than 10', function () {
       it('raises an error', function () {
         frame.addRoll(5)
         expect(function () {
@@ -65,7 +66,7 @@ describe('Frame', function () {
       })
     })
 
-    describe('if two rolls have been recorded', function () {
+    describe('if two rolls have already been recorded', function () {
       it('raises an error', function () {
         frame.addRoll(1)
         frame.addRoll(1)

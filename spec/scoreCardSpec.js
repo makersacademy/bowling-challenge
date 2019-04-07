@@ -2,27 +2,42 @@
 
 describe("ScoreCard", function () {
   var game;
-  var player;
   var card;
+  var frame;
 
   beforeEach(function() {
-    player = new Player();
-    game = new BowlingGame(player);
+    frame = new Frame();
+    game = new BowlingGame(frame);
     card = new ScoreCard;
   });
   
   describe('pinRoll', function () {
 
-    it("records a pin roll of the player", function () {
-      card.pinRoll(player.roll(10))
+    it("records a pin roll of the frame", function () {
+      card.pinRoll(frame.playRoll(10))
       expect(card.pinsRolled).toEqual([10]);
     });
 
-    it("records multiple pin rolls of the player", function () {
-      card.pinRoll(player.roll(5))
-      card.pinRoll(player.roll(10))
+    it("records multiple pin rolls of the frame", function () {
+      card.pinRoll(frame.playRoll(5))
+      card.pinRoll(frame.playRoll(10))
       expect(card.pinsRolled).toEqual([5,10]);
     });
+
+    it("player plays a Gutter Game - player rolls over 0 pins - score card records pins rolled", function () {
+      card.pinRoll(frame.playRoll(0))
+      card.pinRoll(frame.playRoll(0))
+      card.pinRoll(frame.playRoll(0))
+      card.pinRoll(frame.playRoll(0))
+      card.pinRoll(frame.playRoll(0))
+      card.pinRoll(frame.playRoll(0))
+      card.pinRoll(frame.playRoll(0))
+      card.pinRoll(frame.playRoll(0))
+      card.pinRoll(frame.playRoll(0))
+      card.pinRoll(frame.playRoll(0))
+      expect(card.pinsRolled).toEqual([0,0,0,0,0,0,0,0,0,0]);
+    });
+
   });
 
 });

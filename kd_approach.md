@@ -115,15 +115,7 @@ With my notes, I will go through the TDD process.
 - CODE IMPLEMENTATION
 - FEATURE TEST
 
-
-### USER STORY 1
-
-### Gutter Game
-
-USER STORY
-> As a player
-when I roll 0 for every frame
-I play a gutter game
+### DOMAIN MODEL
 
 #### TECHNICAL IMPLEMENTATION
 
@@ -150,7 +142,16 @@ assertEquals(scorecard.isComplete(), true)
 
 - Player
   Manages: 
-  - [X] User input of number of pins rolled
+  - [X] User input of number of pins rolled (???)
+
+Justification: Useful if the one-player scorecard is expanded to two-player scorecards
+
+- Frame
+- [X] User input of number of pins rolled - play?
+  - Manages pins rolled by the player in a frame
+  - Determines the type: strike, spare, normal
+
+Once `player` plays a roll, the frame will determine the score, it will determine the overall type for the frame. The frame tracking is delegated to the `BowlingGame` object.`BowlingGame` manages the 10th frame management. `ScoreCard` manages the scoring mechanism.
 
 - BowlingGame
   Manages:
@@ -159,26 +160,81 @@ assertEquals(scorecard.isComplete(), true)
   - Game start
   - Game stop
   - 10th frame management
-  - Decides on type: e.g. strike, spare, gutter etc. (?)
 
 - Scorecard
   Manages:
   - Score array
-  - All Pin rolls
+  - frameRolls
   - Scoring mechanism
 
 
 ##### USER JOURNEY
 
-Player input number of pins rolled, decides whether it is strike, spare, gutter etc., bowling game manages the frame and roll number and whilst, delegating to scoring mechanism to decide how to score. Score is input into score array on scorecard.
+Player input number of pins rolled, the frame will determine the score, it will determine the overall type for the frame. The frame tracking is delegated to the `BowlingGame` object.`BowlingGame` manages the 10th frame management. `ScoreCard` manages the scoring mechanism, user sees the number of pins rolled and score for the frame in the user interface.
+
+
+### USER STORY 1
+
+### Gutter Game
+
+USER STORY
+> As a player
+when I roll 0 for every frame
+I play a gutter game
 
 
 ##### TEST CASES
 
-1. 
+1.  score with gutter game
+2.  
 
 ---
 
+### USER STORY 2
+
+> As a player
+when I knock down all 10 pins on the first roll of a frame
+I score a strike
+
+B/A/C:
+GIVEN: The player knocks down all 10 pins on the first roll of a frame (e.g. frame i)
+WHEN: A strike is scored
+THEN: The frame ends
+
+GIVEN: The player knocks down all 10 pins on the first roll of frame i
+WHEN: A strike is scored
+THEN: Combined total number of pins knocked down by the next two rolls (of frame i+1) will be added onto the total of frame i (10) to get y
+
+Calculation:
+ frame i score = (frame i-1 score) + y
+ frame i+1 score = (frame i score) + (total number of pins knocked down by the next two rolls (of frame i+1))
+
+##### TEST CASES
+
+
+### USER STORY 3
+
+### SPARES
+
+The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+
+USER STORY
+> As a player
+when I knock down all 10 pins with two rolls of a frame
+I score a spare
+
+B/A/C:
+GIVEN: The player knocks down all 10 pins with two rolls of a frame
+WHEN: A spare is scored
+THEN: The frame ends
+
+GIVEN: The player knocks down all 10 pins with two rolls of a frame
+WHEN: A spare is scored
+THEN: The total number of pins knocked down by the next roll (frame i+1) is added onto the total for frame i (10) to get y
+
+Calculation:
+ frame i score = (frame i-1 score) + y
+ frame i+1 score = (frame i score) + (total number of pins knocked down by the first roll (of frame i+1))
 
 
 

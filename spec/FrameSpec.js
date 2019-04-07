@@ -10,10 +10,6 @@ describe('Frame', function () {
   })
 
   describe('initialisation', function () {
-    it('a new frame is not complete', function () {
-      expect(frame.isComplete()).toBe(false)
-    })
-
     describe('.roll1', function () {
       it('a new frame has no first roll', function () {
         expect(frame.roll1).toEqual(null)

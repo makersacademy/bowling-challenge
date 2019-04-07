@@ -1,6 +1,8 @@
-// describe('Scorecard', function () {
-//   var Scorecard = require('../lib/Scorecard')
+describe('Scorecard', function () {
+  var scorecard
 
-//   scorecard = new Scorecard()
+  if (typeof(require) !== 'undefined') {
+    Scorecard = require('../src/Scorecard')
+  }
 
-// })
+})

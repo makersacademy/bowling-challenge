@@ -21,7 +21,6 @@ Scorecard.prototype = {
     return total;
   },
 
-  // need to add unit test for this -> double Frame in the scorecard spec
   captureFrame: function(frame = new Frame) {
     this.frames.push(frame);
   },

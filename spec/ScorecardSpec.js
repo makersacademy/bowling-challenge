@@ -1,12 +1,16 @@
 describe("Scorecard", function() {
+  var scorecard;
+
+  beforeEach(function() {
+    scorecard = new Scorecard;
+  });
+  
   it("records game as complete when 10 frames have been bowled", function() {
-    var scorecard = new Scorecard;
     scorecard.frames = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     expect(scorecard.isComplete()).toEqual(true);
   });
   
   it("shows total score of zero for gutter game", function() {
-    var scorecard = new Scorecard;
     var fakeFrame = {
       totalScore: 0
     }
@@ -17,7 +21,6 @@ describe("Scorecard", function() {
   });
 
   it("captures frame when played", function() {
-    var scorecard = new Scorecard;
     fakeFrame = {
       totalScore: 5
     }

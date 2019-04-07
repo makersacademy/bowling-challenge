@@ -64,13 +64,11 @@ describe("Feature: Adds frames to scorecard", function() {
   it("adds frames to scorecard", function() {
     var scorecard = new Scorecard;
     var frame1 = new Frame();
-    frame1.enterFirstRollScore(4);
+    frame1.enterFirstRollScore(4, scorecard);
     frame1.enterSecondRollScore(3);
-    scorecard.captureFrame(frame1);
     var frame2 = new Frame();
-    frame2.enterFirstRollScore(7);
+    frame2.enterFirstRollScore(7, scorecard);
     frame2.enterSecondRollScore(2);
-    scorecard.captureFrame(frame2);
     expect(scorecard.frames.length).toEqual(2);
   });
 });

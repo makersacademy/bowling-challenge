@@ -6,11 +6,11 @@ function Frame() {
 
 Frame.prototype = {
   constructor: Frame,
-  enterFirstRollScore: function(pins) {
+  enterFirstRollScore: function(pins, scorecard = new Scorecard) {
     if (pins > 10) {
       throw new Error("A maximum of 10 can be scored per frame.")
     } else {
-      // this.addToScorecard()
+      this.addToScorecard(scorecard)
       this.firstRollScore = pins;
       this.totalScore = pins;
     }
@@ -30,7 +30,7 @@ Frame.prototype = {
     return this.totalScore;
   },
 
-  addToScorecard: function(scorecard = new Scorecard) {
+  addToScorecard: function(scorecard) {
     scorecard.captureFrame(this);
   },
 }

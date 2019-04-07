@@ -1,12 +1,12 @@
 describe("Frame", function() {
   var frame;
   var scorecard;
-  // scorecard = jasmine.createSpyObj('scorecard', ['frames'])
+  scorecard = jasmine.createSpyObj('scorecard', ['captureFrame'])
 
   describe("when user throws a simple 2 roll frame", function() {
     beforeEach(function() {
       frame = new Frame();
-      frame.enterFirstRollScore(6);
+      frame.enterFirstRollScore(6, scorecard);
     });
     
     it("captures score of first roll", function() {
@@ -28,8 +28,6 @@ describe("Frame", function() {
     });
 
     it("adds frame to scorecard when started", function() {
-      scorecard = jasmine.createSpyObj('scorecard', ['captureFrame'])
-      frame.addToScorecard(scorecard);
       expect(scorecard.captureFrame).toHaveBeenCalledWith(frame);
     });
   });

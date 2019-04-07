@@ -24,7 +24,7 @@ The scorecard will keep track of the score :)
 
 The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
 
-USER STORY
+USER STORY 2
 > As a player
 when I knock down all 10 pins on the first roll of a frame
 I score a strike
@@ -47,7 +47,7 @@ Calculation:
 
 The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
 
-USER STORY
+USER STORY 3
 > As a player
 when I knock down all 10 pins with two rolls of a frame
 I score a spare
@@ -89,7 +89,7 @@ THEN: The player can roll additional balls for bonus
 
 A Gutter Game is when the player never hits a pin (20 zero scores).
 
-USER STORY
+USER STORY 1
 > As a player
 when I roll 0 for every frame
 I play a gutter game
@@ -142,21 +142,21 @@ assertEquals(scorecard.isComplete(), true)
 
 - Player
   Manages: 
-  - [X] User input of number of pins rolled (???)
+  - [X] User input of number of pins rolled (??? - refactored this and included in frame object)
 
 Justification: Useful if the one-player scorecard is expanded to two-player scorecards
 
 - Frame
-- [X] User input of number of pins rolled - play?
-  - Manages pins rolled by the player in a frame
-  - Determines the type: strike, spare, normal
+  - [X] User input of number of pins rolled - play?
+  - [X] Manages pins rolled by the player in a frame
+  - [X] Determines the type: strike, spare, normal
 
 Once `player` plays a roll, the frame will determine the score, it will determine the overall type for the frame. The frame tracking is delegated to the `BowlingGame` object.`BowlingGame` manages the 10th frame management. `ScoreCard` manages the scoring mechanism.
 
 - BowlingGame
   Manages:
   - [X] Keeping track of frame e.g. frame i
-  - Keeping track of roll number
+  - Keeping track of roll number(???)
   - Game start
   - Game stop
   - 10th frame management
@@ -164,7 +164,6 @@ Once `player` plays a roll, the frame will determine the score, it will determin
 - Scorecard
   Manages:
   - Score array
-  - frameRolls
   - Scoring mechanism
 
 
@@ -182,27 +181,25 @@ USER STORY
 when I roll 0 for every frame
 I play a gutter game
 
-
 ##### TEST CASES
 
 1.  score with gutter game
-2.  
 
 ---
 
 ### USER STORY 2
 
-> As a player
+> [X] As a player
 when I knock down all 10 pins on the first roll of a frame
 I score a strike
 
 B/A/C:
-GIVEN: The player knocks down all 10 pins on the first roll of a frame (e.g. frame i)
-WHEN: A strike is scored
-THEN: The frame ends
+[X] GIVEN: The player knocks down all 10 pins on the first roll of a frame (e.g. frame i)
+[X] WHEN: A strike is scored
+[X] THEN: The frame ends
 
-GIVEN: The player knocks down all 10 pins on the first roll of frame i
-WHEN: A strike is scored
+[X] GIVEN: The player knocks down all 10 pins on the first roll of frame i
+[X] WHEN: A strike is scored
 THEN: Combined total number of pins knocked down by the next two rolls (of frame i+1) will be added onto the total of frame i (10) to get y
 
 Calculation:
@@ -219,17 +216,17 @@ Calculation:
 The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
 
 USER STORY
-> As a player
+[X] > As a player
 when I knock down all 10 pins with two rolls of a frame
 I score a spare
 
 B/A/C:
-GIVEN: The player knocks down all 10 pins with two rolls of a frame
-WHEN: A spare is scored
-THEN: The frame ends
+[X] GIVEN: The player knocks down all 10 pins with two rolls of a frame
+[X] WHEN: A spare is scored
+[X] THEN: The frame ends
 
-GIVEN: The player knocks down all 10 pins with two rolls of a frame
-WHEN: A spare is scored
+[X] GIVEN: The player knocks down all 10 pins with two rolls of a frame
+[X] WHEN: A spare is scored
 THEN: The total number of pins knocked down by the next roll (frame i+1) is added onto the total for frame i (10) to get y
 
 Calculation:

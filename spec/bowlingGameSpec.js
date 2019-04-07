@@ -6,26 +6,14 @@ describe("BowlingGame", function () {
 
   beforeEach(function() {
     frame = new Frame();
-    game = new BowlingGame(frame);
+    game = new BowlingGame();
   });
   
-  describe('frameNumber', function () {
-    it("goes to the next frame if the player rolls a strike on first roll", function () {
-      game.frame(frame.roll(10));
-      expect(game.frameNumber).toEqual(2);
+  describe('addFrame', function () {
+    it("adds a new frame", function () {
+      game.addFrame(frame);
+      expect(game.frames).toEqual([frame]);
     });
-
-    it("stays on the same frame if the player rolls > 0 and < 10 pins", function () {
-      game.frame(frame.roll(5));
-      expect(game.frameNumber).toEqual(1);
-    });
-
-    it("stops at the 10th frame", function () {
-      game.frameNumber += 9;
-      game.frame(frame.roll(10));
-      expect(game.frameNumber).toEqual(10);
-    });
-
   });
 
 });

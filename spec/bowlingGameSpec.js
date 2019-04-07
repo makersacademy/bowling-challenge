@@ -13,8 +13,17 @@ describe("Javascript bowling score keeper: ", function(){
 
         it("stores name of 1 player", function(){
             game = new bowlingGame();
-            game.addPlayers('theDude');
-            expect(game.players[0]).toBe('theDude');
+            game.addPlayers('Mr the Dude');
+            expect(game.players[0]).toBe('Mr the Dude');
+        });
+
+        it("stores a string of names", function(){
+            game = new bowlingGame();
+            game.addPlayers('Mr the Dude');
+            game.addPlayers('Al Bundy');
+            game.addPlayers('Homer Simpson');
+            game.addPlayers('Fred Flintstone');
+            expect(game.players).toEqual(['Mr the Dude', 'Al Bundy', 'Homer Simpson', 'Fred Flintstone'])
         });
     });
 });

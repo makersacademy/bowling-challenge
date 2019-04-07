@@ -1,6 +1,10 @@
 describe('Feature Test', function() {
 
-  var scorecard = new Scorecard;
+  var scorecard;
+
+  beforeEach(function() {
+    scorecard = new Scorecard;
+  });
 
   describe('Gutter Game', function() {
 
@@ -21,6 +25,16 @@ describe('Feature Test', function() {
       expect(scorecard.total()).toEqual(80);
       expect(scorecard.isComplete()).toEqual(true);
     });
-  })
+  });
+
+  describe('partially complete no strikes or spares game', function() {
+    it('hits fewer than 5 pins on each roll for 6 frames', function() {
+      for (i = 1; i <= 12; i++) {
+        scorecard.roll(4);
+      }
+      expect(scorecard.total()).toEqual(48);
+      expect(scorecard.isComplete()).toEqual(false);
+    })
+  });
 
 });

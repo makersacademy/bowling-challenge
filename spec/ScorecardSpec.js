@@ -1,12 +1,12 @@
 describe('Scorecard', function() {
 
-  var scorecard = new Scorecard;
+  var scorecard;
+
+  beforeEach(function() {
+    scorecard = new Scorecard;
+  });
 
   describe('Gutter Game', function() {
-
-    it('returns 0 for the roll', function() {
-      expect(scorecard.roll(0)).toEqual(0);
-    });
 
     it('returns 0 for the total', function() {
       for (i = 1; i <= 20; i++) {
@@ -16,7 +16,7 @@ describe('Scorecard', function() {
     });
 
     it('returns true for the game being complete', function() {
-      for (i = 1; i <= 10; i++) {
+      for (i = 1; i <= 20; i++) {
         scorecard.roll(0);
       }
       expect(scorecard.isComplete()).toEqual(true);
@@ -25,16 +25,35 @@ describe('Scorecard', function() {
 
   describe('no strikes or spares complete game', function() {
 
-    it('returns 4 for the roll', function() {
-      expect(scorecard.roll(4)).toEqual(4);
-    });
-
-    it('returns 80 for the total', function() {
+    it('returns 80 for the total for 20 rolls hitting 4 pins', function() {
       for (i = 1; i <= 20; i++) {
         scorecard.roll(4);
       }
       expect(scorecard.total()).toEqual(80);
     });
 
-  })
-})
+  });
+
+  describe('no strikes or spares incomplete game', function() {
+
+    it('completes frame when two rolls have been entered and resets frame', function() {
+      scorecard.roll(4);
+      scorecard.roll(4);
+      expect(scorecard.frame).toEqual(['a', 'b']);
+    });
+
+    it('returns 48 for the total for 12 rolls hitting 4 pins', function() {
+      for (i = 1; i <= 12; i++) {
+        scorecard.roll(4);
+      }
+      expect(scorecard.total()).toEqual(48);
+    });
+
+    it('returns false for #isComplete function', function() {
+      for (i = 1; i <= 12; i++) {
+        scorecard.roll(4);
+      }
+      expect(scorecard.isComplete()).toEqual(false);
+    });
+  });
+});

@@ -17,6 +17,15 @@ describe("Player", function () {
     it("returns the rollType - gutter - if the user knocked down no pins", function () {
       expect(player.rollType(0)).toEqual("gutter");
     });
+
+    it("returns the rollType - normal - if the user knocked down pins > 0 and pins < 10", function () {
+      expect(player.rollType(5)).toEqual("normal");
+    });
+
+    it("returns the rollType - strike - if the user knocked down 10 pins", function () {
+      expect(player.rollType(10)).toEqual("strike");
+    });
+
   });
 
 });

@@ -22,10 +22,23 @@ describe('Frame', function() {
       frame.addRoll(2);
       expect(frame._score).toEqual(9);
     });
-    it('should throw exception when roll will increase sum of rolls to > 10', function() {
+    it('should throw exception when roll will increase sum of rolls to > 10 & not final frame)', function() {
       expect(function() {
-        frame.addRoll(5); frame.addRoll(6);
+        frame.addRoll(5, 1);
+        frame.addRoll(6, 1);
       }).toThrow(new Error('Input Error: Cannot knock down more than 10 Pins per frame!'));
+    });
+    it('should not throw exception when roll will increase sum of rolls to > 10 & final frame', function() {
+      expect(function() {
+        frame.addRoll(10, 10);
+        frame.addRoll(6, 10);
+        frame.addRoll(2, 10);
+      }).not.toThrow(new Error('Input Error: Cannot knock down more than 10 Pins per frame!'));
+    });
+    it('should throw exception when roll > 10', function() {
+      expect(function() {
+        frame.addRoll(11, 1);
+      }).toThrow(new Error('Input Error: Cannot knock down more than 10 Pins in a roll!'));
     });
   });
 
@@ -56,6 +69,12 @@ describe('Frame', function() {
       frame._score = 10;
       frame.calcBonus();
       expect(frame.bonus()).toEqual('spare');
+    })
+    it('should change _bonus to strike when strike is scored', function() {
+      frame._rolls = [10];
+      frame._score = 10;
+      frame.calcBonus();
+      expect(frame.bonus()).toEqual('strike');
     })
     it('should change _bonus to strike when strike is scored', function() {
       frame._rolls = [10];

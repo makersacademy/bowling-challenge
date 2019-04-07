@@ -6,7 +6,7 @@ describe('Game', function() {
     it('should call addRoll on current frame when called', function() {
       spyOn(Frame.prototype, 'addRoll')
       game.roll(0);
-      expect(Frame.prototype.addRoll).toHaveBeenCalledWith(0)
+      expect(Frame.prototype.addRoll).toHaveBeenCalledWith(0, 1)
     });
   });
 
@@ -178,6 +178,22 @@ describe('Game', function() {
       game.frames = [frame1, frame2];
       game.addChainStrikeBonus();
       expect(frame1.bonus).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('.manageFinalFrame', function() {
+    it('should set isInPlay to false when currentFrame has 2 rolls which sum to < 10 ', function() {
+      var frame1 = jasmine.createSpyObj(Frame, {
+        'bonus': 'none',
+      });
+      var frame2 = jasmine.createSpyObj(Frame, {
+        'bonus': 'none',
+        'rolls': [3, 3],
+        'score': 6
+      });
+      game.frames = [frame1, frame2];
+      game.manageFinalFrame();
+      expect(game.isInPlay).toEqual(false);
     });
   });
 });

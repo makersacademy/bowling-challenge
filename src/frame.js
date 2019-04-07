@@ -21,12 +21,14 @@ Frame.prototype.bonus = function() {
   return this._bonus;
 };
 
-Frame.prototype.addRoll = function(roll) {
-  if(this._score + roll <= 10) {
+Frame.prototype.addRoll = function(roll, frameIndex) {
+  if(roll > 10) {
+    throw new Error('Input Error: Cannot knock down more than 10 Pins in a roll!')
+  } else if(this._score + roll > 10 && frameIndex !== 10) {
+    throw new Error('Input Error: Cannot knock down more than 10 Pins per frame!')
+  } else {
     this._rolls.push(roll);
     this._score += roll;
-  } else {
-    throw new Error('Input Error: Cannot knock down more than 10 Pins per frame!')
   }
 };
 

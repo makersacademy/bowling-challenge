@@ -10,6 +10,10 @@ Frame.prototype.collectPins = function(pins) {
   this.pinsRolled.push(pins);
 };
 
+Frame.prototype.normalRolls = function() {
+  return this.pinsRolled.length == 2 && this.score() < 10;
+};
+
 Frame.prototype.strike = function() {
   return this.pinsRolled[0] === 10;
 };

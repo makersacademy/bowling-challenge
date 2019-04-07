@@ -25,6 +25,18 @@ describe("Frame", function () {
     
   });
 
+  describe('normalRolls', function () {
+
+    it("returns normalRolls if both rolls in a frame rolls less than 10 pins", function () {
+      frame.roll(3);
+      frame.roll(5);
+      frame.collectPins(3);
+      frame.collectPins(5);
+      expect(frame.normalRolls()).toEqual(true);
+    });
+
+  });
+
   describe('strike', function () {
 
     it("returns a strike if first roll in a frame rolls over 10 pins", function () {

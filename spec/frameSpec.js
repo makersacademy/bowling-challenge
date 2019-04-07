@@ -7,10 +7,22 @@ describe("Frame", function () {
     frame = new Frame();
   });
 
-  describe('playRolls', function () {
-    it("returns the number of pins player rolled over", function () {
-      expect(frame.playRoll(5)).toEqual(5);
+  describe('rolls', function () {
+
+    it("returns the number of pins rolled over in a roll", function () {
+      expect(frame.roll(5)).toEqual(5);
     });
+
+  });
+
+  describe('collectPins', function () {
+
+    it("collects pins rolled over in a roll", function () {
+      frame.roll(5);
+      frame.collectPins(5);
+      expect(frame.pinsRolled).toEqual([5]);
+    });
+    
   });
 
 });

@@ -1,7 +1,11 @@
 function Frame() {
-  this.rolls = [];
+  this.pinsRolled = [];
 };
 
-Frame.prototype.playRoll = function(pins) {
+Frame.prototype.roll = function(pins) {
   return pins;
+};
+
+Frame.prototype.collectPins = function(pins) {
+  this.pinsRolled.push(pins);
 };

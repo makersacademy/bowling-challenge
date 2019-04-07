@@ -14,27 +14,27 @@ describe("ScoreCard", function () {
   describe('pinRoll', function () {
 
     it("records a pin roll of the frame", function () {
-      card.pinRoll(frame.playRoll(10))
+      card.pinRoll(frame.roll(10))
       expect(card.pinsRolled).toEqual([10]);
     });
 
     it("records multiple pin rolls of the frame", function () {
-      card.pinRoll(frame.playRoll(5))
-      card.pinRoll(frame.playRoll(10))
+      card.pinRoll(frame.roll(5))
+      card.pinRoll(frame.roll(10))
       expect(card.pinsRolled).toEqual([5,10]);
     });
 
     it("player plays a Gutter Game - player rolls over 0 pins - score card records pins rolled", function () {
-      card.pinRoll(frame.playRoll(0))
-      card.pinRoll(frame.playRoll(0))
-      card.pinRoll(frame.playRoll(0))
-      card.pinRoll(frame.playRoll(0))
-      card.pinRoll(frame.playRoll(0))
-      card.pinRoll(frame.playRoll(0))
-      card.pinRoll(frame.playRoll(0))
-      card.pinRoll(frame.playRoll(0))
-      card.pinRoll(frame.playRoll(0))
-      card.pinRoll(frame.playRoll(0))
+      card.pinRoll(frame.roll(0))
+      card.pinRoll(frame.roll(0))
+      card.pinRoll(frame.roll(0))
+      card.pinRoll(frame.roll(0))
+      card.pinRoll(frame.roll(0))
+      card.pinRoll(frame.roll(0))
+      card.pinRoll(frame.roll(0))
+      card.pinRoll(frame.roll(0))
+      card.pinRoll(frame.roll(0))
+      card.pinRoll(frame.roll(0))
       expect(card.pinsRolled).toEqual([0,0,0,0,0,0,0,0,0,0]);
     });
 

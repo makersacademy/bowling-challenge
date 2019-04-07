@@ -20,7 +20,7 @@ describe("Feature: Gutter game", function() {
       frame.totalScore = 0;
       scorecard.frames.push(frame);
     }
-    expect(scorecard.totalScore()).toEqual(0);
+    expect(scorecard.calculateTotalScore()).toEqual(0);
   });
 });
 
@@ -70,5 +70,25 @@ describe("Feature: Adds frames to scorecard", function() {
     frame2.enterFirstRollScore(7, scorecard);
     frame2.enterSecondRollScore(2);
     expect(scorecard.frames.length).toEqual(2);
+  });
+});
+
+
+// User story: Calculate running total for game
+
+// As a player,
+// so that I don't have to calculate a running total,
+// I want to see my running total score for the game.
+
+describe("Feature: Shows running total", function() {
+  it("displays combined total of all frames added", function() {
+    var scorecard = new Scorecard;
+    var frame1 = new Frame;
+    var frame2 = new Frame;
+    frame1.enterFirstRollScore(5, scorecard);
+    frame1.enterSecondRollScore(4);
+    frame2.enterFirstRollScore(2, scorecard);
+    frame2.enterSecondRollScore(6);
+    expect(scorecard.calculateTotalScore()).toEqual(17);
   });
 });

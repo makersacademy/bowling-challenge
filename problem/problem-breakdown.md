@@ -84,14 +84,31 @@ Scorecard | captureFrame
 ------
 
 ```
-User story: Calculate simple running total for game
------------------------------------------------------
+User story: Calculate running total for game
+--------------------------------------------
 
 As a player,
 so that I don't have to calculate a running total,
-I want to see my running total score for the game (when I have not score any strikes or spares).
+I want to see my running total score for the game.
 
 ```
+
+Objects | Messages
+--------------- | --------------------
+Player | 
+Frame | enterFirstRollScore
+Frame | enterSecondRollScore
+Frame | calculateFrameScore
+Frame | addToScorecard
+Scorecard | captureFrame
+Scorecard | calculateTotalScore
+
+1. Sum frame totals at any point in game
+
+------
+
+**Then next, look at capturing a bonus score for a frame**
+
 
 
 ## Logic models

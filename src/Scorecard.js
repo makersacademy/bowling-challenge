@@ -12,7 +12,7 @@ Scorecard.prototype = {
     }
   },
 
-  totalScore: function() {
+  calculateTotalScore: function() {
     var total = 0;
     for (var i = 0; i < this.frames.length; i++) {
       var frameScore = this.frames[i].totalScore;

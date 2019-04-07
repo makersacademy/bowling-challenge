@@ -19,13 +19,19 @@ describe('Frame', function(){
       expect(frame.isComplete()).toBe(true);
     });
 
+    it("updates the frame total correctly", function(){
+      frame.recordScore(3);
+      frame.recordScore(4);
+      expect(frame.frameTotal).toEqual(7);
+    });
+
     it("doesn't add further scores to the frame after completion", function(){
       for(i=0; i<3; i++) { frame.recordScore(3); }
       expect(frame.balls.length).not.toBe(3);
     });
   });
 
-  describe("adding a strike", function(){
+  describe("adding a strike", function() {
     it("sets the frame to complete after first roll of a strike", function(){
       frame.recordScore(10);
       expect(frame.isComplete()).toBe(true);

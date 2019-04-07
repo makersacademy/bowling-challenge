@@ -4,7 +4,7 @@ describe("Gutter game", function(){
     for(i=0; i<20; i++){
       game.recordBall(0);
     }
-    expect(game.gameTotal).toEqual(0);
+    expect(game.calculateTotal()).toEqual(0);
     expect(game.isComplete()).toEqual(true);
   });
 
@@ -14,7 +14,7 @@ describe("Gutter game", function(){
       game.recordBall(0);
     }
     game.recordBall(5);
-    expect(game.gameTotal).toEqual(0);
+    expect(game.calculateTotal()).toEqual(0);
     expect(game.isComplete()).toEqual(true);
   });
 });

@@ -90,7 +90,7 @@ Game.prototype.addBonus = function() {
 Game.prototype.addFinalBonus = function() {
   var lastFrame = this.lastFrame();
   if(lastFrame.bonus() === 'strike') {
-    lastFrame.addToScore(this.currentFrame().rolls()[0]);
+    lastFrame.addToScore(this.currentFrame().rolls()[1]);
   }
 };
 Game.prototype.addChainStrikeBonus = function() {

@@ -27,6 +27,45 @@ describe('Frame', function () {
     })
   })
 
+  describe('.addRoll', function () {
+    describe('on a new frame', function () {
+      it('records the first roll', function () {
+        console.log(frame)
+        frame.addRoll(2)
+        expect(frame.roll1).toEqual(2)
+      })
+
+      it('leaves the second roll empty', function () {
+        frame.addRoll(2)
+        expect(frame.roll2).toEqual(null)
+      })
+    })
+
+    describe('if one roll has been recorded', function () {
+      it('records the second roll', function () {
+        frame.addRoll(2)
+        frame.addRoll(5)
+        expect(frame.roll2).toEqual(5)
+      })
+
+      it('leaves the first roll as it is', function () {
+        frame.addRoll(2)
+        frame.addRoll(5)
+        expect(frame.roll1).toEqual(2)
+      })
+    })
+
+    describe('if two rolls have been recorded', function () {
+      it('raises an error', function () {
+        frame.addRoll(1)
+        frame.addRoll(1)
+        expect(function () {
+          frame.addRoll(1)
+        }).toThrow(new Error('Could not record roll. Frame is complete.'))
+      })
+    })
+  })
+
   describe('.isComplete', function () {
     it('if two rolls are recorded the frame is complete', function () {
       frame.roll1 = 0

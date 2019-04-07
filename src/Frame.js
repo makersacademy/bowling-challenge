@@ -12,6 +12,17 @@ Frame.prototype = {
     } else {
       return false
     }
+  },
+
+  addRoll: function (roll) {
+    if (this.isComplete()) {
+      throw new Error('Could not record roll. Frame is complete.')
+    }
+    if (this.roll1 === null) {
+      this.roll1 = roll
+    } else {
+      this.roll2 = roll
+    }
   }
 }
 

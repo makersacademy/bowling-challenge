@@ -1,6 +1,7 @@
 function Frame() {
   this.firstRollScore = 0;
   this.secondRollScore = 0;
+  this.bonusScore = 0;
   this.totalScore = 0;
   this.spareFlag = false;
 }
@@ -12,9 +13,14 @@ Frame.prototype = {
       throw new Error("A maximum of 10 can be scored per frame.")
     } else {
       this.addToScorecard(scorecard)
-      this.checkForSpare(scorecard);
+      if (this.checkForSpare(scorecard)) {
+        var i = scorecard.frames.indexOf(this);
+        // console.log(scorecard.frames);
+        scorecard.frames[i - 1].bonusScore += pins;
+        scorecard.frames[i - 1].calculateTotalScore();
+      }
       this.firstRollScore = pins;
-      this.totalScore = pins;
+      this.calculateTotalScore();
     }
   },
 
@@ -23,7 +29,7 @@ Frame.prototype = {
       throw new Error("A maximum of 10 can be scored per frame.")
     } else {
       this.secondRollScore = pins;
-      this.totalScore = this.firstRollScore + pins;
+      this.calculateTotalScore();
     }
     if (this.totalScore === 10) {
       this.spareFlag = true;
@@ -31,7 +37,7 @@ Frame.prototype = {
   },
 
   calculateTotalScore: function() {
-    this.totalScore = this.firstRollScore + this.secondRollScore;
+    this.totalScore = this.firstRollScore + this.secondRollScore + this.bonusScore;
     return this.totalScore;
   },
 
@@ -40,6 +46,6 @@ Frame.prototype = {
   },
 
   checkForSpare: function(scorecard) {
-    scorecard.isPreviousFrameSpare(this);
+    return scorecard.isPreviousFrameSpare(this);
   }
 }

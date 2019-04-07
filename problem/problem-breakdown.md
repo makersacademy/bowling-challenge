@@ -127,8 +127,8 @@ Frame | calculateSpareBonus
 Scorecard | captureFrame
 Scorecard | calculateTotalScore
 
-1. Check to see if previous frame scored a spare (add flag on spare frame)
-2. (if yes) Add first roll of current frame to bonusScore of previous frame.
+1. Check to see if previous frame scored a spare
+2. If previous frame scored a spare add first roll of current frame to bonusScore of previous frame.
 
 ------
 

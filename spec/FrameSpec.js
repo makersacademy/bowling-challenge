@@ -65,5 +65,18 @@ describe("Frame", function() {
       frame.enterSecondRollScore(4);
       expect(frame.spareFlag).toBe(true);
     });
+
+    it("adds bonus to spare frame total score", function() {
+      frame1 = new Frame;
+      frame2 = new Frame;
+      scorecard = jasmine.createSpyObj('scorecard', ['captureFrame', 'isPreviousFrameSpare']);
+      scorecard.frames = [frame1, frame2];
+      frame1.enterFirstRollScore(6, scorecard);
+      frame1.enterSecondRollScore(4);
+      scorecard.isPreviousFrameSpare.and.returnValue(true);
+      frame2.enterFirstRollScore(5, scorecard);
+      expect(frame1.bonusScore).toEqual(5);
+      expect(frame1.totalScore).toEqual(15);
+    });
   });
 });

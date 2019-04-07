@@ -9,11 +9,9 @@ Scorecard.prototype = {
 
   roll: function (roll) {
     if ((this.frames.length === 0) || (this._latestFrame().isComplete())) {
-      var frame = new Frame()
-      frame.roll1 = roll
-      this.frames.push(frame)
+      this.frames.push(new Frame())
+      this._latestFrame().roll1 = roll
     } else {
-      this._latestFrame().complete()
       this._latestFrame().roll2 = roll
     }
     this._rolls++

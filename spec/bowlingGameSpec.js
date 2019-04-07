@@ -57,4 +57,13 @@ describe("Javascript bowling score keeper: ", function(){
             expect(_isEqualToTen(frameStrike)).toBe(true);
         });
     });
+
+    describe("#spare- ", function(){
+        it("recognizes spare in a frame", function(){
+            game.addFrames(frameSeven);
+            game.addFrames(frameSeven);
+            game.addFrames(frameSpare);
+            expect(game.state).toBe('spare')
+        });
+    });
 });

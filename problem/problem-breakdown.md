@@ -15,7 +15,7 @@
 ## User stories
 
 ```
-User story 1: Enter roll score
+User story: Enter roll score
 ------------------------------
 
 As a player,
@@ -30,7 +30,7 @@ Frame | enterFirstRollScore
 
 
 ```
-User story 2: Calculate simple frame score
+User story: Calculate simple frame score
 ------------------------------------------
 
 As a player,
@@ -45,10 +45,19 @@ Frame | enterFirstRollScore
 Frame | enterSecondRollScore
 Frame | calculateFrameScore
 
-**NEXT add guards against adding in scores of more that 10 (single roll) and combined rolls**
 
 ```
-User story 3: Calculate simple running total for game
+User story: Prevent invalid scores
+------------------------------------
+
+As a player,
+so that scores are accurate,
+I want to be prevented from entering invalid scores per roll and frame.
+```
+
+
+```
+User story: Calculate simple running total for game
 -----------------------------------------------------
 
 As a player,

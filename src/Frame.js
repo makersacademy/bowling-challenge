@@ -7,12 +7,21 @@ function Frame() {
 Frame.prototype = {
   constructor: Frame,
   enterFirstRollScore: function(pins) {
-    this.firstRollScore = pins;
-    this.totalScore = pins;
+    if (pins > 10) {
+      throw new Error("A maximum of 10 can be scored per frame.")
+    } else {
+      this.firstRollScore = pins;
+      this.totalScore = pins;
+    }
   },
+
   enterSecondRollScore: function(pins) {
-    this.secondRollScore = pins;
-    this.totalScore = this.firstRollScore + pins;
+    if (this.firstRollScore + pins > 10) {
+      throw new Error("A maximum of 10 can be scored per frame.")
+    } else {
+      this.secondRollScore = pins;
+      this.totalScore = this.firstRollScore + pins;
+    }
   },
 
   calculateTotalScore: function() {

@@ -33,25 +33,24 @@ describe('Game', function(){
   });
 
   it("records two frames in a row correctly", function(){
-    console.log(game);
     for(let i=0; i<4; i++) {
       game.recordBall(4);
     }
-    console.log(game);
     expect(game.isComplete()).toBe(false);
     expect(game.calculateTotal()).toEqual(16);
     expect(game.frames.length).toEqual(2);
   });
 
-  // describe("adding a spare", function(){
-  //   it("records 10 for the frame at first but then updates the frame with the next points as bonus", function(){
-  //     game.recordBall(3);
-  //     game.recordBall(7);
-  //     expect(game.calculateTotal()).toEqual(10);
-  //     expect(game.bonuses.length).toEqual(1);
-  //     game.recordBall(7);
-  //     expect(game.calculateTotal()).toEqual(24);
-  //     expect(game.frames[0].frameTotal).toEqual(17);
-  //   });
-  // });
+
+    it("records 10 for the frame at first but then updates the frame with the next points as bonus", function(){
+      game.recordBall(3);
+      game.recordBall(7);
+      expect(game.calculateTotal()).toEqual(10);
+      expect(game.bonuses.length).toEqual(1);
+      game.recordBall(7);
+      expect(game.calculateTotal()).toEqual(24);
+      console.log(game.frames);
+      expect(game.frames[0].frameTotal).toEqual(17);
+    });
+
 });

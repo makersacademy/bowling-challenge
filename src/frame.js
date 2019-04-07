@@ -3,10 +3,6 @@ function Frame() {
 };
 
 Frame.prototype.roll = function(pins) {
-  return pins;
-};
-
-Frame.prototype.collectPins = function(pins) {
   this.pinsRolled.push(pins);
 };
 

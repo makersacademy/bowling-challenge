@@ -25,4 +25,14 @@ describe("Frame", function () {
     
   });
 
+  describe('strike', function () {
+
+    it("returns a strike if first roll in a frame rolls over 10 pins", function () {
+      frame.roll(10);
+      frame.collectPins(10);
+      expect(frame.strike()).toEqual(true);
+    });
+
+  });
+
 });

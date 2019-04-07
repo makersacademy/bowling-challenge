@@ -5,19 +5,24 @@ function Game() {
 }
 
 Game.prototype.roll = function (pins) {
-  this.manageFrame();
-  this.currentFrame().addRoll(pins);
-  if(this.isGameOver) {
-    this.isInPlay = false;
+  if(this.isInPlay){
+    this.currentFrame().addRoll(pins);
+    this.manageFrame();
   }
 };
 
-Game.prototype.score = function () {
-  return this.currentScore;
+Game.prototype.totalScore = function () {
+  var score = 0;
+  this.frames.forEach(function(frame) {
+    score += frame.score();
+  });
+  return score;
 };
 
 Game.prototype.manageFrame = function() {
-  if(this.isFrameOver()) {
+  if(this.isGameOver()){
+    this.isInPlay = false;
+  } else if(this.isFrameOver()) {
     this.frames.push(new Frame)
   };
 };

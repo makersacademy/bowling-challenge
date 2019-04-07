@@ -12,6 +12,6 @@ describe('Frame', function() {
   it('should calculate a frame total score when totalScore is called', function() {
     frame.addRoll(7);
     frame.addRoll(2);
-    expect(frame.totalScore()).toEqual(9);
+    expect(frame.score()).toEqual(9);
   })
 });

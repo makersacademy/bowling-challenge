@@ -6,7 +6,7 @@ Frame.prototype.addRoll = function(roll) {
   this._rolls.push(roll);
 }
 
-Frame.prototype.totalScore = function() {
+Frame.prototype.score = function() {
   return this._rolls.reduce(function(a, b) { return a + b; }, 0);
 }
 

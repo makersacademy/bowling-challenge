@@ -20,7 +20,9 @@ bowlingGame.prototype.addFrames = function(frame){
 };
 
 bowlingGame.prototype.setTotal = function(frame){
-    if (this.state === 'spare'){
+    if (this.state === 'strike'){
+        this.score = this.score + frame.reduce(getSum);
+    }else if (this.state === 'spare'){
         this.score = this.score + frame[0];
     }
     this.score = this.score + frame.reduce(getSum);

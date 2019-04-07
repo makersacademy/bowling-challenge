@@ -4,7 +4,7 @@ describe("Javascript bowling score keeper: ", function(){
     frameSeven = [5, 2];
     frameEleven = [5, 6];
     frameSpare = [5, 5];
-    frameStrike = [10, 0];
+    frameStrike = [10];
 
     beforeEach(function() {
         game = new bowlingGame();
@@ -60,8 +60,6 @@ describe("Javascript bowling score keeper: ", function(){
 
     describe("#spare- ", function(){
         it("recognizes spare in a frame", function(){
-            game.addFrames(frameSeven);
-            game.addFrames(frameSeven);
             game.addFrames(frameSpare);
             expect(game.state).toBe('spare');
         });
@@ -92,6 +90,35 @@ describe("Javascript bowling score keeper: ", function(){
             game.addFrames(frameSeven);
             game.addFrames(frameSeven);
             expect(game.score).toBe(21);
+        });
+    });
+
+    describe("#strike- ", function(){
+
+        it('can recognise a strike in a frame', function(){
+            game.addFrames(frameStrike);
+            expect(game.state).toBe('strike');
+        });
+
+        it("totals strike correctly", function(){
+            game.addFrames(frameStrike);
+            game.addFrames(frameSeven);
+            expect(game.score).toBe(24);
+        });
+
+        it("handles multiple strike correctly", function(){
+            game.addFrames(frameStrike);
+            game.addFrames(frameSeven);
+            game.addFrames(frameStrike);
+            game.addFrames(frameSeven);
+            expect(game.score).toBe(48);
+        });
+
+        xit("handles 2 strike after each other", function(){
+            game.addFrames(frameStrike);
+            game.addFrames(frameStrike);
+            game.addFrames(frameSeven);
+            expect(game.score).toBe(49);
         });
     });
 });

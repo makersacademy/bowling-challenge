@@ -7,6 +7,7 @@ Frames
 2. one gutterball creates a frame
 3. two gutterballs, still only one frame
 
+
 ## Ed's Tips for bowling scorecard challenge
 
 1. Ignore interface, focus on TDDing the logic.

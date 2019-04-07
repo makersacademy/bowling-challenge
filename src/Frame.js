@@ -1,5 +1,7 @@
 function Frame () {
   this.completionStatus = false
+  this.roll1 = null
+  this.roll2 = null
 }
 
 Frame.prototype = {

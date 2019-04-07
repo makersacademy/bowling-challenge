@@ -9,4 +9,16 @@ describe('Frame', function () {
       expect(frame.isComplete()).toBe(false)
     })
   })
+
+  describe('.roll1', function () {
+    it('returns "null" for a new frame', function () {
+      expect(frame.roll1).toEqual(null)
+    })
+  })
+
+  describe('.roll2', function () {
+    it('returns "null" for a new frame', function () {
+      expect(frame.roll2).toEqual(null)
+    })
+  })
 })

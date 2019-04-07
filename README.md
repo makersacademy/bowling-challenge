@@ -12,3 +12,4 @@
     - `eslint-plugin-jasmine`
     - `jasmine` - command line jasmine
     - `jasmine-terminal-reporter` - enhanced jasmine test output in the terminal
+    - `nyc` - test coverage. run with `node_modules/.bin/nyc jasmine`

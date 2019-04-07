@@ -15,14 +15,6 @@ describe("Scorecard", function(){
       expect(scorecard.total).toEqual(0);
     });
   });
-
-  describe(".roll", function(){
-    it("Expects the game to be complete if 20 balls are guttered", function() {
-      for (var i = 0; i < 20; i++)
-        scorecard.roll(0);
-      expect(scorecard.isComplete).toEqual(true);
-    });
-  });
   
   describe(".turn", function(){
     it("keeps track of the two turns per frame - if not a strike", function(){
@@ -46,4 +38,6 @@ describe("Scorecard", function(){
       expect(scorecard.frame).toEqual(2);
     });
   });
+
+
 });

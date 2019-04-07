@@ -32,21 +32,25 @@ reset.
 * 1
 As a player in a bowling game,
 So that I know when the game is over,
-I want my game to end when I thrown enough balls.
+I want my game to end when I have thrown my last ball.
 
 * 2
 As a player in a bowling game,
 So that I can record my score,
-I want all my turns points to be totalled up.
+I want all the points in my turns to be totalled up.
 
-* 3 
+* 3
 As a player in a bowling game,
-So that I can keep track of the frame I am on,
-I want to be told what frame I am on.
+So that I can compare myself to others,
+I want a to see what my score if after each frame.
 
 * 4
 As a player in a bowling game,
-
+-- want to get my bonus points -- if i get a strike.
+-- want to get my bonus points -- if i get a spare.
+-- want to take an extra turn if i get a strike or a spare in the 10th frame.
+-- I dont want to roll a second ball if I scored a strike in the first ball of a frame.
+-- I want to thrown two balls per frame, unless i score a strike.
 
 ---
 

@@ -25,6 +25,12 @@ describe('Frame', function () {
         expect(frame.roll2).toEqual(null)
       })
     })
+
+    describe('.score', function () {
+      it('a new frame has no score', function () {
+        expect(frame.score).toEqual(null)
+      })
+    })
   })
 
   describe('.addRoll', function () {
@@ -86,4 +92,5 @@ describe('Frame', function () {
       expect(frame.isComplete()).toBe(true)
     })
   })
+
 })

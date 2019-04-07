@@ -1,6 +1,7 @@
 function Frame () {
   this.roll1 = null
   this.roll2 = null
+  this.score = null
 }
 
 Frame.prototype = {

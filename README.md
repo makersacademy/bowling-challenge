@@ -26,8 +26,12 @@ This weekend (and next) the focus is on JavaScript. This is a totally new langua
 
 #### To run the linter (eslint)
 
-- To run the linter, type `eslint lib/**` (this might need double quotes around the folder)
+- To run the linter, type `eslint src/**`
 
+## Limitations
+
+- This project is not finished. After many hours of trying to get this all to work, it doesn't! :-)
+- You can play bowling through index.html as long as you don't expect bonus points when you score a spare or a strike, or expect any special behaviour in frame 10. In fact the interface only allows you to play up to frame 4.
 
 ## My approach
 
@@ -108,7 +112,7 @@ Once I understood the user stories, I modelled the objects and their methods, us
   - Details of the balls rolled and the scores for those
   - A frame total which will include bonus points
   - The number of pins left in the frame so we can check that the player doesn't exceed 10
-- A bonus holds:
+- A bonus is made up of: (a bonus is stored as a hash object)
   - The type of bonus - strike or spare
   - If it is a strike, it will hold the first bonus point
   - The frame in which the bonus started accruing
@@ -116,7 +120,8 @@ Once I understood the user stories, I modelled the objects and their methods, us
 ## Let's TDD
 - Next I started to build my code using TDD. Or so I thought. I went straight to unit tests, first to set up the initial game and then second to start building frames
 - About an hour into my merry TDD process, Ed posted in the slack channel a recommendation to write a feature test for the gutter game first. Doh! Feature tests!!
-- As it turned out, a bit of my game spec seems to be a bit of a feature test anyway but my next step was to build the proper feature test. It's now late on Friday and I am having a little sulk that I completely forgot about feature tests... Maybe time for bed!!! 
+- As it turned out, a bit of my game spec seems to be a bit of a feature test anyway but my next step was to build the proper feature test. It's now late on Friday and I am having a little sulk that I completely forgot about feature tests... Maybe time for bed!!!
+
 
 ****
 

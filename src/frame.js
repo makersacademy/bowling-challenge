@@ -5,7 +5,7 @@ function Frame(){
   this.completed = false;
   this.STRIKE = 10;
   this.frameTotal = 0;
-};
+}
 
 Frame.prototype.recordScore = function(score){
   if (this.completed != true) {

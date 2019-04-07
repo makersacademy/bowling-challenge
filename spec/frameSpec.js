@@ -26,7 +26,7 @@ describe('Frame', function(){
     });
 
     it("doesn't add further scores to the frame after completion", function(){
-      for(i=0; i<3; i++) { frame.recordScore(3); }
+      for(let i=0; i<3; i++) { frame.recordScore(3); }
       expect(frame.balls.length).not.toBe(3);
     });
   });

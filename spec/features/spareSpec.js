@@ -1,7 +1,7 @@
 describe("Scoring spares", function(){
   it("correctly allows a spare to be scored on one occasion", function(){
     game = new Game();
-    for(i=0; i<10; i++){
+    for(let i=0; i<10; i++){
       game.recordBall(3);
     }
     expect(game.calculateTotal()).toEqual(30);

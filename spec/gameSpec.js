@@ -19,14 +19,14 @@ describe('Game', function(){
   });
 
   it("can see that the game is complete after 20 rolls of zero", function(){
-    for(i=0; i<20; i++){
+    for(let i=0; i<20; i++){
       game.recordBall(0);
     }
     expect(game.isComplete()).toBe(true);
   });
 
   it("can see that all frames are complete after 20 rolls of zero", function(){
-    for(i=0; i<20; i++){
+    for(let i=0; i<20; i++){
       game.recordBall(0);
     }
     expect(game.frames.slice(-1)[0].isComplete()).toBe(true);
@@ -34,7 +34,7 @@ describe('Game', function(){
 
   it("records two frames in a row correctly", function(){
     console.log(game);
-    for(i=0; i<4; i++) {
+    for(let i=0; i<4; i++) {
       game.recordBall(4);
     }
     console.log(game);

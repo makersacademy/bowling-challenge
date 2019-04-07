@@ -76,8 +76,13 @@ describe('Frame', function () {
 
   describe('.isComplete', function () {
     it('if two rolls are recorded the frame is complete', function () {
-      frame.roll1 = 0
-      frame.roll2 = 0
+      frame.addRoll(1)
+      frame.addRoll(1)
+      expect(frame.isComplete()).toBe(true)
+    })
+
+    it('if the first roll is 10, the frame is complete', function () {
+      frame.addRoll(10)
       expect(frame.isComplete()).toBe(true)
     })
   })

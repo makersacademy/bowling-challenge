@@ -7,11 +7,13 @@ Frame.prototype = {
   constructor: Frame,
 
   isComplete: function () {
+    if (this.roll1 === 10) {
+      return true
+    }
     if ((this.roll1 !== null) && (this.roll2 !== null)) {
       return true
-    } else {
-      return false
     }
+    return false
   },
 
   addRoll: function (roll) {

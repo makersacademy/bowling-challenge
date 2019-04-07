@@ -32,4 +32,12 @@ describe('Example rolls', function () {
       expect(scorecard.total()).toBe(0)
     })
   })
+
+  describe('A strike followed by 18 gutterballs', function () {
+    it('The game should be complete', function () {
+      scorecard.roll(10)
+      rollGutterballs(18)
+      expect(scorecard.isComplete()).toBe(true)
+    })
+  })
 })

@@ -2,6 +2,7 @@ function Frame() {
   this._rolls = [];
   this._score = 0;
   this._bonus = 'none';
+  this.isOver = false;
 };
 
 

@@ -27,6 +27,7 @@ Game.prototype.manageFrame = function() {
     else if(this.isGameOver()){
     this.isInPlay = false;
   } else if(this.isFrameOver()) {
+    this.currentFrame().isOver = true;
     this.currentFrame().calcBonus();
     this.addBonus();
     this.addChainStrikeBonus();

@@ -136,4 +136,48 @@ describe('Game', function() {
       expect(frame1.addToScore).toHaveBeenCalledWith(9);
     });
   });
+
+  describe('.addChainStrikeBonus', function() {
+    it('should call addToScore on two frames back if previous two frames have bonus = strike', function() {
+      var frame1 = jasmine.createSpyObj(Frame, {
+        'bonus': 'strike',
+        'addToScore': ''
+      });
+      var frame2 = jasmine.createSpyObj(Frame, {
+        'bonus': 'strike'
+      });
+      var frame3 = jasmine.createSpyObj(Frame, {
+        'rolls': [4, 5]
+      });
+      game.frames = [frame1, frame2, frame3];
+      game.addChainStrikeBonus();
+      expect(frame1.addToScore).toHaveBeenCalledWith(4);
+    });
+    it('should not call addToScore on two frames back if previous frame has bonus = none/spare', function() {
+      var frame1 = jasmine.createSpyObj(Frame, {
+        'bonus': 'strike',
+        'addToScore': ''
+      });
+      var frame2 = jasmine.createSpyObj(Frame, {
+        'bonus': 'spare'
+      });
+      var frame3 = jasmine.createSpyObj(Frame, {
+        'rolls': [4, 5]
+      });
+      game.frames = [frame1, frame2, frame3];
+      game.addChainStrikeBonus();
+      expect(frame1.addToScore).not.toHaveBeenCalled();
+    });
+    it('should do nothing when only two frames exist', function() {
+      var frame1 = jasmine.createSpyObj(Frame, {
+        'bonus': 'strike',
+      });
+      var frame2 = jasmine.createSpyObj(Frame, {
+        'bonus': 'spare'
+      });
+      game.frames = [frame1, frame2];
+      game.addChainStrikeBonus();
+      expect(frame1.bonus).not.toHaveBeenCalled();
+    });
+  });
 });

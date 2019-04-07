@@ -25,6 +25,7 @@ Game.prototype.manageFrame = function() {
   } else if(this.isFrameOver()) {
     this.currentFrame().calcBonus();
     this.addBonus();
+    this.addChainStrikeBonus();
     this.frames.push(new Frame)
   };
 };
@@ -62,6 +63,15 @@ Game.prototype.addBonus = function() {
         lastFrame.addToScore(this.currentFrame().score());
         break;
       default:
+    }
+  }
+};
+Game.prototype.addChainStrikeBonus = function() {
+  var oneFrameAgo = this.lastFrame();
+  var twoFramesAgo = this.frames[this.frames.length - 3];
+  if(typeof(twoFramesAgo) !== 'undefined'){
+    if(twoFramesAgo.bonus() === 'strike' && oneFrameAgo.bonus() === 'strike') {
+      twoFramesAgo.addToScore(this.currentFrame().rolls()[0]);
     }
   }
 };

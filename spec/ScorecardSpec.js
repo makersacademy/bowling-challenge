@@ -39,7 +39,7 @@ describe('Scorecard', function() {
     it('completes frame when two rolls have been entered and resets frame', function() {
       scorecard.roll(4);
       scorecard.roll(4);
-      expect(scorecard.frame).toEqual(['a', 'b']);
+      expect(scorecard.frame).toEqual(['x', 0]);
     });
 
     it('returns 48 for the total for 12 rolls hitting 4 pins', function() {
@@ -55,5 +55,27 @@ describe('Scorecard', function() {
       }
       expect(scorecard.isComplete()).toEqual(false);
     });
+  });
+
+  describe('hits strike on first roll', function() {
+    it('completes a game', function() {
+      scorecard.roll(10);
+      expect(scorecard.frame).toEqual(['x', 0]);
+    });
+
+    it('calculates strike bonus and adds to total', function() {
+      scorecard.roll(10);
+      scorecard.roll(3);
+      scorecard.roll(3);
+      expect(scorecard.total()).toEqual(22);
+    });
+
+    it('calculates strike bonus', function() {
+      scorecard.roll(10);
+      scorecard.roll(3);
+      scorecard.roll(3);
+      expect(scorecard.strikeBonus()).toEqual(6);
+    });
+
   });
 });

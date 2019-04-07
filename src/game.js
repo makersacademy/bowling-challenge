@@ -23,6 +23,8 @@ Game.prototype.manageFrame = function() {
   if(this.isGameOver()){
     this.isInPlay = false;
   } else if(this.isFrameOver()) {
+    this.currentFrame().calcBonus();
+    this.addBonus();
     this.frames.push(new Frame)
   };
 };
@@ -37,4 +39,20 @@ Game.prototype.isGameOver = function() {
 
 Game.prototype.currentFrame = function() {
   return this.frames[this.frames.length - 1];
+};
+
+Game.prototype.lastFrame = function() {
+  return this.frames[this.frames.length - 2];
+};
+
+Game.prototype.addBonus = function() {
+  var lastFrame = this.lastFrame();
+  if(typeof(lastFrame) !== 'undefined') {
+    switch (lastFrame.bonus()) {
+      case 'spare':
+        lastFrame.addToScore(this.currentFrame().rolls()[0]);
+        break;
+      default:
+    }
+  }
 };

@@ -1,6 +1,24 @@
 function Frame() {
   this._rolls = [];
   this._score = 0;
+  this._bonus = 'none';
+};
+
+
+Frame.prototype.score = function() {
+  return this._score;
+};
+
+Frame.prototype.addToScore = function(value) {
+  this._score += value;
+};
+
+Frame.prototype.rolls = function() {
+  return this._rolls;
+};
+
+Frame.prototype.bonus = function() {
+  return this._bonus;
 };
 
 Frame.prototype.addRoll = function(roll) {
@@ -12,10 +30,8 @@ Frame.prototype.addRoll = function(roll) {
   }
 };
 
-Frame.prototype.score = function() {
-  return this._score;
-};
-
-Frame.prototype.rolls = function() {
-  return this._rolls;
-};
+Frame.prototype.calcBonus = function() {
+  if(this._rolls.length === 2 && this._score === 10) {
+    this._bonus = 'spare';
+  }
+}

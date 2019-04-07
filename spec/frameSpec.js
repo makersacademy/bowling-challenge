@@ -8,6 +8,9 @@ describe('Frame', function() {
   it('should have have _score set to 0 when initialized', function() {
     expect(frame._score).toEqual(0);
   })
+  it('should have have _bonus set to none when initialized', function() {
+    expect(frame._bonus).toEqual('none');
+  })
 
   describe('.addRoll', function() {
     it('should push a roll to rolls array', function() {
@@ -27,10 +30,32 @@ describe('Frame', function() {
   });
 
   describe('.score', function() {
-    it('should return score when score is called', function() {
+    it('should return _score when score is called', function() {
       frame.addRoll(7);
       frame.addRoll(2);
       expect(frame.score()).toEqual(9);
+    })
+  });
+
+  describe('.addToScore', function() {
+    it('should add argument to _score', function() {
+      frame.addToScore(4)
+      expect(frame.score()).toEqual(4);
+    })
+  });
+
+  describe('.bonus', function() {
+    it('should return _bonus when bonus is called', function() {
+      expect(frame.bonus()).toEqual('none');
+    })
+  });
+
+  describe('.calcBonus', function() {
+    it('should change _bonus to spare when spare is scored', function() {
+      frame._rolls = [5, 5];
+      frame._score = 10;
+      frame.calcBonus();
+      expect(frame.bonus()).toEqual('spare');
     })
   });
 });

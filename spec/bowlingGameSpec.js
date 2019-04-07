@@ -37,29 +37,24 @@ describe("Javascript bowling score keeper: ", function(){
     describe("#frame- ", function(){
 
         it("can add frames", function(){
-            var frames = [frameSeven, frameEleven];
-            game.addFrames(frames);
+            game.addFrames([frameSeven, frameEleven]);
             expect(game.frame).toContain([frameSeven, frameEleven]);
         });
 
         it("throws an error if frame score is over 10", function(){
-            var frame = frameEleven;
-            expect(game.addFrames(frame)).toContain("Error: Frame has incorrect values");
+            expect(game.addFrames(frameEleven)).toContain("Error: Frame has incorrect values");
         });
 
         it("checks if frame contains a spare", function(){
-            var frame = frameSpare;
-            expect(_isEqualToTen(frame)).toBe(true);
+            expect(_isEqualToTen(frameSpare)).toBe(true);
         });
 
         it("checks if frame does not contain a spare", function(){
-            var frame = frameEleven;
-            expect(_isEqualToTen(frame)).toBe(false);
+            expect(_isEqualToTen(frameEleven)).toBe(false);
         });
 
         it("checks if one value is enough to pass", function(){
-            var frame = frameStrike;
-            expect(_isEqualToTen(frame)).toBe(true);
+            expect(_isEqualToTen(frameStrike)).toBe(true);
         });
     });
 });

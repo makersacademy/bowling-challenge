@@ -107,7 +107,34 @@ Scorecard | calculateTotalScore
 
 ------
 
-**Then next, look at capturing a bonus score for a frame**
+```
+User story: Capture bonus score for spare frame
+-----------------------------------------------
+
+As a player,
+so that I see the accurate score after a spare,
+I want my bonus added to my spare frame.
+```
+
+Objects | Messages
+--------------- | --------------------
+Player | 
+Frame | enterFirstRollScore
+Frame | enterSecondRollScore
+Frame | calculateFrameScore
+Frame | addToScorecard
+Frame | calculateSpareBonus
+Scorecard | captureFrame
+Scorecard | calculateTotalScore
+
+1. Check to see if previous frame scored a spare (add flag on spare frame)
+2. (if yes) Add first roll of current frame to bonusScore of previous frame.
+
+------
+
+
+
+**Don't forget 10th frame weirdness!**
 
 
 

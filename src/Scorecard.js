@@ -28,4 +28,15 @@ Scorecard.prototype = {
       this.frames.push(frame);
     }
   },
+
+  // add unit test
+  isPreviousFrameSpare: function(frame) {
+    if (this.frames.length > 1) {
+      var i = this.frames.indexOf(frame);
+      var isSpare = this.frames[i - 1].spareFlag;
+      return isSpare;
+    } else {
+      return false;
+    }
+  }
 }

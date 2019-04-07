@@ -2,6 +2,7 @@ function Frame() {
   this.firstRollScore = 0;
   this.secondRollScore = 0;
   this.totalScore = 0;
+  this.spareFlag = false;
 }
 
 Frame.prototype = {
@@ -11,6 +12,7 @@ Frame.prototype = {
       throw new Error("A maximum of 10 can be scored per frame.")
     } else {
       this.addToScorecard(scorecard)
+      this.checkForSpare(scorecard);
       this.firstRollScore = pins;
       this.totalScore = pins;
     }
@@ -23,6 +25,9 @@ Frame.prototype = {
       this.secondRollScore = pins;
       this.totalScore = this.firstRollScore + pins;
     }
+    if (this.totalScore === 10) {
+      this.spareFlag = true;
+    }
   },
 
   calculateTotalScore: function() {
@@ -33,4 +38,8 @@ Frame.prototype = {
   addToScorecard: function(scorecard) {
     scorecard.captureFrame(this);
   },
+
+  checkForSpare: function(scorecard) {
+    scorecard.isPreviousFrameSpare(this);
+  }
 }

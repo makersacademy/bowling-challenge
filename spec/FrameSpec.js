@@ -1,11 +1,11 @@
 describe("Frame", function() {
   var frame;
   var scorecard;
-  scorecard = jasmine.createSpyObj('scorecard', ['captureFrame'])
 
   describe("when user throws a simple 2 roll frame", function() {
     beforeEach(function() {
-      frame = new Frame();
+      frame = new Frame;
+      scorecard = jasmine.createSpyObj('scorecard', ['captureFrame', 'isPreviousFrameSpare']);
       frame.enterFirstRollScore(6, scorecard);
     });
     
@@ -34,7 +34,7 @@ describe("Frame", function() {
   
   describe("when user enters an invalid score", function() {
     beforeEach(function() {
-      frame = new Frame();
+      frame = new Frame;
     });
     
     it("throws error if 11 is entered for first frame roll", function() {
@@ -48,6 +48,22 @@ describe("Frame", function() {
       expect(function(){ frame.enterSecondRollScore(5) }).toThrow(
         new Error("A maximum of 10 can be scored per frame.")
       );
+    });
+  });
+
+  describe("when calculating bonus scores", function() {
+    it("checks if previous frame scored a spare", function() {
+      frame = new Frame;
+      scorecard = jasmine.createSpyObj('scorecard', ['captureFrame', 'isPreviousFrameSpare']);
+      frame.enterFirstRollScore(5, scorecard);
+      expect(scorecard.isPreviousFrameSpare).toHaveBeenCalledWith(frame);
+    });
+
+    it("flags frame as spare when spare is scored", function() {
+      frame = new Frame;
+      frame.enterFirstRollScore(6);
+      frame.enterSecondRollScore(4);
+      expect(frame.spareFlag).toBe(true);
     });
   });
 });

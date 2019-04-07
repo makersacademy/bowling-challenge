@@ -123,5 +123,17 @@ describe('Game', function() {
       game.addBonus();
       expect(frame1.bonus).not.toHaveBeenCalled();
     });
+    it('should call addToScore on previous frame if previous frame has bonus = strike', function() {
+      var frame1 = jasmine.createSpyObj(Frame, {
+        'bonus': 'strike',
+        'addToScore': ''
+      });
+      var frame2 = jasmine.createSpyObj(Frame, {
+        'score': 9
+      });
+      game.frames = [frame1, frame2];
+      game.addBonus();
+      expect(frame1.addToScore).toHaveBeenCalledWith(9);
+    });
   });
 });

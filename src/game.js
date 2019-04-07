@@ -58,6 +58,9 @@ Game.prototype.addBonus = function() {
       case 'spare':
         lastFrame.addToScore(this.currentFrame().rolls()[0]);
         break;
+      case 'strike':
+        lastFrame.addToScore(this.currentFrame().score());
+        break;
       default:
     }
   }

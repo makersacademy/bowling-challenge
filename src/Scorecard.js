@@ -38,5 +38,16 @@ Scorecard.prototype = {
     } else {
       return false;
     }
+  },
+
+  // add unit test
+  isPreviousFrameStrike: function(frame) {
+    if (this.frames.length > 1) {
+      var i = this.frames.indexOf(frame);
+      var isStrike = this.frames[i - 1].strikeFlag;
+      return isStrike;
+    } else {
+      return false;
+    }
   }
 }

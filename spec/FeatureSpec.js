@@ -33,7 +33,8 @@ describe("Feature: Gutter game", function() {
 describe("Feature: Roll", function() {
   it("captures first roll score", function() {
     var frame = new Frame();
-    frame.enterFirstRollScore(5);
+    var scorecard = new Scorecard;
+    frame.enterFirstRollScore(5, scorecard);
     expect(frame.totalScore).toEqual(5);
   });
 
@@ -46,9 +47,10 @@ describe("Feature: Roll", function() {
 
   it("adds second roll score to frame total", function() {
     var frame = new Frame();
-    frame.enterFirstRollScore(5);
+    var scorecard = new Scorecard;
+    frame.enterFirstRollScore(5, scorecard);
     expect(frame.totalScore).toEqual(5);
-    frame.enterSecondRollScore(3);
+    frame.enterSecondRollScore(3, scorecard);
     expect(frame.totalScore).toEqual(8);
   });
 });
@@ -65,10 +67,10 @@ describe("Feature: Adds frames to scorecard", function() {
     var scorecard = new Scorecard;
     var frame1 = new Frame();
     frame1.enterFirstRollScore(4, scorecard);
-    frame1.enterSecondRollScore(3);
+    frame1.enterSecondRollScore(3, scorecard);
     var frame2 = new Frame();
     frame2.enterFirstRollScore(7, scorecard);
-    frame2.enterSecondRollScore(2);
+    frame2.enterSecondRollScore(2, scorecard);
     expect(scorecard.frames.length).toEqual(2);
   });
 });
@@ -86,9 +88,9 @@ describe("Feature: Shows running total", function() {
     var frame1 = new Frame;
     var frame2 = new Frame;
     frame1.enterFirstRollScore(5, scorecard);
-    frame1.enterSecondRollScore(4);
+    frame1.enterSecondRollScore(4, scorecard);
     frame2.enterFirstRollScore(2, scorecard);
-    frame2.enterSecondRollScore(6);
+    frame2.enterSecondRollScore(6, scorecard);
     expect(scorecard.calculateTotalScore()).toEqual(17);
   });
 });
@@ -106,9 +108,29 @@ describe("Feature: Captures bonus for spare frame", function() {
     var frame1 = new Frame;
     var frame2 = new Frame;
     frame1.enterFirstRollScore(6, scorecard);
-    frame1.enterSecondRollScore(4);
+    frame1.enterSecondRollScore(4, scorecard);
     frame2.enterFirstRollScore(5, scorecard);
     expect(frame1.bonusScore).toEqual(5);
     expect(frame1.totalScore).toEqual(15);
   });
 });
+
+
+// User story: Capture bonus score for strike frame
+// ------------------------------------------------
+// As a player,
+// so that I see the accurate score after a strike,
+// I want my bonus added to my strike frame.
+
+describe("Feature: Captures bonus for strike frame", function() {
+  it("adds bonus score to strike frame total", function() {
+    var scorecard = new Scorecard;
+    var frame1 = new Frame;
+    var frame2 = new Frame;
+    frame1.enterFirstRollScore(10, scorecard);
+    frame2.enterFirstRollScore(5, scorecard);
+    frame2.enterSecondRollScore(4, scorecard);
+    expect(frame1.bonusScore).toEqual(9);
+    expect(frame1.totalScore).toEqual(19);
+  });
+})

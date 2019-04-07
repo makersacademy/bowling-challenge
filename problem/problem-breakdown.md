@@ -132,7 +132,35 @@ Scorecard | calculateTotalScore
 
 ------
 
+```
+User story: Capture bonus score for strike frame
+------------------------------------------------
 
+As a player,
+so that I see the accurate score after a strike,
+I want my bonus added to my strike frame.
+```
+
+Objects | Messages
+--------------- | --------------------
+Player | 
+Frame | enterFirstRollScore
+Frame | enterSecondRollScore
+Frame | calculateFrameScore
+Frame | addToScorecard
+Frame | calculateSpareBonus
+Frame | calculateStrikeBonus
+Scorecard | captureFrame
+Scorecard | calculateTotalScore
+
+1. Check to see if previous frame scored a strike (after second frame roll)
+2. If yes, add both roll scores of current frame to bonus of previous frame
+
+3. Check to see if previous frame scored a strike (after first frame roll)
+  - If yes, was the frame before that one a strike?
+  - If yes, add current frame (1st roll) score and prev frame strike score (10) to bonus of prev.prev[index-2] frame
+
+------
 
 **Don't forget 10th frame weirdness!**
 

@@ -34,5 +34,29 @@ describe('Feature tests', function () {
         expect(scorecard.frames.length).toBe(0)
       })
     })
+
+    describe('After 1 gutterball', function () {
+      it('The game should have 1 frame', function () {
+        scorecard.roll(0)
+        expect(scorecard.frames.length).toBe(1)
+      })
+    })
+
+    describe('After 2 gutterballs', function () {
+      it('The game should have 1 frame', function () {
+        scorecard.roll(0)
+        scorecard.roll(0)
+        expect(scorecard.frames.length).toBe(1)
+      })
+    })
+
+    describe('After 3 gutterballs', function () {
+      it('The game should have 2 frames', function () {
+        for (var i = 0; i < 3; i++) {
+          scorecard.roll(0)
+        }
+        expect(scorecard.frames.length).toBe(2)
+      })
+    })
   })
 })

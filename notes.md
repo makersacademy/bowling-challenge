@@ -1,7 +1,11 @@
 # Bowling challenge notes
 
-## User stories
+## TDD sequence
 
+Frames
+1. start with no frames
+2. one gutterball creates a frame
+3. two gutterballs, still only one frame
 
 ## Ed's Tips for bowling scorecard challenge
 

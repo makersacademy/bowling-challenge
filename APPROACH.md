@@ -5,6 +5,14 @@ So that I can keep track of my bowling score
 I want to record the number of pins knocked down in a frame
 
 As a player  
+So that I can keep track of my bowling score  
+I want to record a strike
+
+As a player  
+So that I can keep track of my bowling score  
+I want to record a spare
+
+As a player  
 So that I can start a game  
 I want to register my name
 
@@ -159,12 +167,27 @@ Initialization:
 
 ## User story 1
 
-As a player  
-So that I can keep track of my bowling score  
-I want to record the number of pins knocked down in a frame
+> As a player  
+> So that I can keep track of my bowling score  
+> I want to record the number of pins knocked down in a frame
 
 1. Create a feature test for the abovoe user story
 2. Test drive development of score card and frame objects and corresponding method for keeping track of rolls and adding them to a rollSheet to compute final score
-3. Create test for preventing an 11 Frame from being added
+3. Create test for preventing an 11th Frame from being added
+4. Feature and unit test for a normal game: no strikes, no spares
 
+## User story 2
 
+> As a player  
+> So that I can keep track of my bowling score  
+> I want to record a strike
+
+<!-- Next:
+Frame rolls can only accept 2 rolls unles it is the 10th frame, and last 2 rolls have been a strike -->
+
+**Dependency Injection**
+
+- Dependency between Game and ScoreCard
+- Pass dependencies directly into the constructor
+
+[JS Dependency Injection](https://dev.to/azure/dependency-injection-in-javascript-101-2b1e)

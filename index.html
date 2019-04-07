@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Score Card</title>
+    <script src="src/frame.js"></script>
+    <script src="src/game.js"></script>
+    <script src="src/scoreCard.js"></script>
+  </head>
+  <body>
+    <script>
+      var scoreCard = new ScoreCard();
+      var game = new Game(scoreCard);
+      console.log(game);
+      console.log(game.seeRolls());
+      console.log(game.scoreCards.seeRolls());
+    </script>
+  </body>
+</html>

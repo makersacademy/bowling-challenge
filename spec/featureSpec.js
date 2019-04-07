@@ -1,10 +1,19 @@
 describe("Feature test:", function() {
-  var scoreCard;
   var frame;
+  var scoreCard;
+  var game;
 
   beforeEach(function() {
-    scoreCard = new ScoreCard();
     frame = new Frame();
+    scoreCard = new ScoreCard();
+    game = new Game(scoreCard);
+  });
+
+  describe("new game", function() {
+    it("has an empty score card", function() {
+      expect(game.start()).toBe(true); //works
+      expect(game.seeRolls()).toEqual([]);
+    });
   });
 
   describe("gutter game", function() {
@@ -33,21 +42,15 @@ describe("Feature test:", function() {
   });
 
   describe("Normal game: no strikes, no spares", function() {
-    it("User can input 20 rolls and get a total", function() {
-      //Arrange
-      let randomNumber1 = Math.floor(Math.random() * 10 + 1);
-      let randomNumber2 = Math.floor(Math.random() * 10 + 1);
-
-      //Act
-      frame.roll(randomNumber1);
-      frame.roll(randomNumber2);
+    it("Score card accepts 20 rolls and returns a total", function() {
+      frame.roll(2);
+      frame.roll(7);
 
       for (let i = 0; i < 10; i++) {
         scoreCard.addFrameRolls(frame.rolls);
       }
 
-      //Assert
-      let total = (randomNumber1 + randomNumber2) * 10;
+      let total = (2 + 7) * 10;
       expect(scoreCard.totalScore()).toEqual(total);
     });
   });

@@ -8,10 +8,22 @@ var Frame = function() {
   this.rolls = [];
   this.strike = false;
   this.spare = false;
+  this.rollCount = 0;
+  this.frameNumber = 0;
 };
 
 Frame.prototype.roll = function(roll) {
-  this.rolls.push(roll);
+  if (rolls[0] == 10) {
+    //first roll is 10
+    this.strike = true;
+  }
+
+  if (this.rollCount < 2) {
+    this.rolls.push(roll);
+  } else {
+    new Error("No more rolls allowed");
+  }
+  this.rollCount += 1;
 };
 
 Frame.prototype.getFrameRolls = function() {
@@ -26,6 +38,7 @@ Frame.prototype.getFrameScore = function() {
 var scoreTracker = {
   rollsSheet: [],
   scoreSheet: [],
+  strikeCounter: 0,
   addFrameRolls: function(rolls) {
     this.rollsSheet.push(rolls);
   },

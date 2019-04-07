@@ -35,18 +35,12 @@ describe("ScoreCard", function() {
   });
 
   describe("Normal game: no strikes, no spares", function() {
-    it("User can input 20 rolls and get a total", function() {
-      //Arrange
-      let randomNumber1 = Math.floor(Math.random() * 10 + 1);
-      let randomNumber2 = Math.floor(Math.random() * 10 + 1);
-
-      //Act
+    it("Score card accepts 20 rolls and returns a total", function() {
       for (let i = 0; i < 10; i++) {
-        scoreCard.addFrameRolls([randomNumber1, randomNumber2]);
+        scoreCard.addFrameRolls([2, 7]);
       }
 
-      //Assert
-      let total = (randomNumber1 + randomNumber2) * 10;
+      let total = (2 + 7) * 10;
       expect(scoreCard.totalScore()).toEqual(total);
     });
   });

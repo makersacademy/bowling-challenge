@@ -35,4 +35,52 @@ describe("Frame", function () {
 
   });
 
+  describe('spare', function () {
+
+    it("returns a spare if player knocks down all 10 pins with two rolls of a frame", function () {
+      frame.roll(6);
+      frame.roll(4);
+      frame.collectPins(6);
+      frame.collectPins(4);
+      expect(frame.spare()).toEqual(true);
+    });
+
+  });
+
+  describe('score', function () {
+
+    it("returns the score of the frame in the scenario of a strike", function () {
+      frame.roll(10);
+      frame.collectPins(10);
+      expect(frame.strike()).toEqual(true);
+      expect(frame.score()).toEqual(10);
+    });
+
+    it("returns the score of the frame in the scenario of a spare", function () {
+      frame.roll(6);
+      frame.roll(4);
+      frame.collectPins(6);
+      frame.collectPins(4);
+      expect(frame.spare()).toEqual(true);
+      expect(frame.score()).toEqual(10);
+    });
+    
+    it("returns the score of the frame in the scenario of a gutter", function () {
+      frame.roll(0);
+      frame.roll(0);
+      frame.collectPins(0);
+      frame.collectPins(0);
+      expect(frame.score()).toEqual(0);
+    });
+
+    it("returns the score of the frame in the scenario of normal rolls", function () {
+      frame.roll(3);
+      frame.roll(5);
+      frame.collectPins(3);
+      frame.collectPins(5);
+      expect(frame.score()).toEqual(8);
+    });
+
+  });
+
 });

@@ -1,32 +1,35 @@
-"use strict"
+'use strict';
 
-// the master class
-function Scorecard () {
+function Scorecard() {
   this.total = 0;
   this.frame = 1;
   this.turn = 1;
-};
+}
 
 // this represents the score on each roll of the ball.
 Scorecard.prototype.roll = function() {
   if (this.turn === 1) {
-    this.turn = 2
-  } else { 
-    this.turn = 1
-    this.frame += 1
-      if (this.frame == 10) {
-        this.isComplete = true
-      };
+    this.turn = 2;
+  } else {
+    this.turn = 1;
+    // end the game if we are at the 10th frame.
+    if (this.frame == 10) {
+      this.isComplete = true;
     };
+    this.isComplete;
+    this.frame += 1;
+  };
 };
 
-// this represent whether game is over. 
+// this represent whether game is over.
 Scorecard.prototype.isComplete = function() {
-  if (this.frame = 11) { 
-    return true
-//PROBABLY GOING TO NEED A FUNCTION HERE TO PRINT SCORES IF THE GAME HAS ENDED.
-
+  if (this.frame = 11) {
+    // if game has ended print the total score and end the game.
+    console.log(this.total);
+    return true;
   } else {
-    return false
+    // else print the score and keep iterating up frames.
+    console.log(this.total);
+    return false;
   };
 };

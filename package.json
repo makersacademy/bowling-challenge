@@ -1,0 +1,34 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "First version of the bowling challenge",
+  "main": "1",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JRRS1982/bowling-challenge.git"
+  },
+  "author": "Jeremy Smith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JRRS1982/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/JRRS1982/bowling-challenge#readme",
+  "keywords": [
+    "the",
+    "bowling",
+    "chanllenge",
+    "package"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-google": "^0.12.0"
+  }
+}

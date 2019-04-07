@@ -34,15 +34,14 @@ describe("Scorecard", function(){
     });
   });
 
-
   describe(".frame", function(){
     it("Knows what frame we are on", function() {
       expect(scorecard.frame).toEqual(1);
     });
     it("Increments up if i have rolled twice", function () {
-      scorecard.roll();
+      scorecard.roll(0);
       console.log(scorecard.roll);
-      scorecard.roll();
+      scorecard.roll(0);
       console.log(scorecard.roll);
       expect(scorecard.frame).toEqual(2);
     });

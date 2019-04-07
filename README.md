@@ -29,7 +29,7 @@ depends on strikes and spares. The score of a frame is the number of knocked
 down pins plus bonuses for strikes and spares. After every frame the 10 pins are
 reset.
 
-* 1 
+* 1
 As a player in a bowling game,
 So that I know when the game is over,
 I want my game to end when I thrown enough balls.
@@ -107,19 +107,22 @@ An apple macbook was used to write code using VSCode as an editor and;
 
 * Javascript was used as the main language.
 * Jasmine 3.4.0 was used for testing.
+* ESLint was used for style checking.
 
 ### Code style
 
-ESLint was used for linting and stylying the code.
+ESLint was used for linting and stylying the code. To run the lint locally enter ($ ./node_modules/.bin/eslint) in the terminal, after installing dependencies (Node.js) and creating the eslintrc.js file by entering ($ npm install eslint --save-dev) to the terminal. Please see here for further info:
+
+https://github.com/eslint/eslint
 
 ### Tests
 
 A TDD process was used in the development of this project, please see the
-attached RSpec files for details of the testing that was carried out.
+attached Jasmine files for details of the testing that was carried out.
 
 ## Installation
 
-Ruby v 2.5.0 was used in the construction of the project, if gems were used,
+Javascript was used in the construction of the project, if gems were used,
 please find attached a gem file listing those gems for installation.
 
 ## API Reference
@@ -128,7 +131,7 @@ No API used in this project.
 
 ## How to use
 
-You should be able to run the code via irb.
+You should be able to run the code in the console of a web browser, such as chrome. 
 
 ## Credits
 

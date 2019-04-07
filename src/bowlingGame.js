@@ -2,7 +2,7 @@ function bowlingGame() {
     this.score = 0;
     this.frame = [];
     this.players = [];
-    this.state = '';
+    this.state = 'normal';
 }
 
 bowlingGame.prototype.addPlayers = function(playerName){
@@ -15,7 +15,15 @@ bowlingGame.prototype.addFrames = function(frame){
     } else {
         this.frame.push(frame);
     }
+    this.setTotal(frame);
     this.setState(frame);
+};
+
+bowlingGame.prototype.setTotal = function(frame){
+    if (this.state === 'spare'){
+        this.score = this.score + frame[0];
+    }
+    this.score = this.score + frame.reduce(getSum);
 };
 
 bowlingGame.prototype.setState = function(values){

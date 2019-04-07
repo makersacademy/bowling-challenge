@@ -63,7 +63,35 @@ describe("Javascript bowling score keeper: ", function(){
             game.addFrames(frameSeven);
             game.addFrames(frameSeven);
             game.addFrames(frameSpare);
-            expect(game.state).toBe('spare')
+            expect(game.state).toBe('spare');
+        });
+
+        it("totals spare correctly", function(){
+            game.addFrames(frameSpare);
+            game.addFrames(frameSeven);
+            expect(game.score).toBe(22);
+        });
+
+        it("handles multiple spares correctly", function(){
+            game.addFrames(frameSpare);
+            game.addFrames(frameSeven);
+            game.addFrames(frameSpare);
+            game.addFrames(frameSeven);
+            expect(game.score).toBe(44);
+        });
+
+        it("handles 3 spares after each other", function(){
+            game.addFrames(frameSpare);
+            game.addFrames(frameSpare);
+            game.addFrames(frameSpare);
+            expect(game.score).toBe(40);
+        });
+
+        it("totals with no spares", function(){
+            game.addFrames(frameSeven);
+            game.addFrames(frameSeven);
+            game.addFrames(frameSeven);
+            expect(game.score).toBe(21);
         });
     });
 });

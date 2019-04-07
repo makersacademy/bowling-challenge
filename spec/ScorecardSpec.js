@@ -9,7 +9,7 @@ describe('Scorecard', function() {
     });
 
     it('returns 0 for the total', function() {
-      for (i = 1; i <= 10; i++) {
+      for (i = 1; i <= 20; i++) {
         scorecard.roll(0);
       }
       expect(scorecard.total()).toEqual(0);
@@ -22,4 +22,19 @@ describe('Scorecard', function() {
       expect(scorecard.isComplete()).toEqual(true);
     });
   });
+
+  describe('no strikes or spares complete game', function() {
+
+    it('returns 4 for the roll', function() {
+      expect(scorecard.roll(4)).toEqual(4);
+    });
+
+    it('returns 80 for the total', function() {
+      for (i = 1; i <= 20; i++) {
+        scorecard.roll(4);
+      }
+      expect(scorecard.total()).toEqual(80);
+    });
+
+  })
 })

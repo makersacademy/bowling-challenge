@@ -5,6 +5,7 @@ Bowling Scorecard
 
 This JavaScript app simulates a bowling scorecard, allowing a user to enter their scores per roll, and calculating the running total.
 
+------
 
 ### Technologies used
 
@@ -23,7 +24,6 @@ This JavaScript app simulates a bowling scorecard, allowing a user to enter thei
 
 - Strike bonus for when 2 previous frames have been strikes
 - 10th frame bonuses
-- Check possible frame misalignment of strike bonus
 
 ------
 
@@ -33,32 +33,89 @@ This JavaScript app simulates a bowling scorecard, allowing a user to enter thei
 
 2. `git clone git@github.com:<userName>/bowling-challenge` onto your local machine
 
-
-## To use app
-
-```javascript
-scorecard = new Scorecard;
-
-frame1 = new Frame;
-
-frame1.enterFirstRollScore(5, scorecard);
-frame1.enterSecondRollScore(3, scorecard);
-
-scorecard;
-// => Scorecard {frames: Array(1)}
-//      frames: Array(1)
-//          0: Frame
-//              bonusScore: 0
-//              firstRollScore: 5
-//              secondRollScore: 4
-//              spareFlag: false
-//              strikeFlag: false
-```
-
+------
 
 ## To run tests
 
 After forking and cloning repo, open the path to `SpecRunner.html` in your browser.
+
+------
+
+## To use app
+
+Example console commands showing scoring variations and strike/spare bonuses...
+
+```javascript
+scorecard = new Scorecard
+
+frame1 = new Frame
+frame1.enterFirstRollScore(10, scorecard) // <- strike
+
+frame2 = new Frame
+frame2.enterFirstRollScore(6, scorecard)
+frame2.enterSecondRollScore(2, scorecard)
+
+frame3 = new Frame
+frame3.enterFirstRollScore(10, scorecard) // <- strike
+
+frame4 = new Frame
+frame4.enterFirstRollScore(6, scorecard)
+frame4.enterSecondRollScore(4, scorecard) // <- spare
+
+frame5 = new Frame
+frame5.enterFirstRollScore(4, scorecard)
+frame5.enterSecondRollScore(3, scorecard)
+
+scorecard
+// returns...
+Scorecard {frames: Array(5)}
+  frames: Array(5)
+    0: Frame
+      bonusScore: 8
+      firstRollScore: 10
+      secondRollScore: 0
+      spareFlag: false
+      strikeFlag: true
+      totalScore: 18
+      __proto__: Object
+    1: Frame
+      bonusScore: 0
+      firstRollScore: 6
+      secondRollScore: 2
+      spareFlag: false
+      strikeFlag: false
+      totalScore: 8
+      __proto__: Object
+    2: Frame
+      bonusScore: 10
+      firstRollScore: 10
+      secondRollScore: 0
+      spareFlag: false
+      strikeFlag: true
+      totalScore: 20
+      __proto__: Object
+    3: Frame
+      bonusScore: 4
+      firstRollScore: 6
+      secondRollScore: 4
+      spareFlag: true
+      strikeFlag: false
+      totalScore: 14
+      __proto__: Object
+    4: Frame
+      bonusScore: 0
+      firstRollScore: 4
+      secondRollScore: 3
+      spareFlag: false
+      strikeFlag: false
+      totalScore: 7
+      __proto__: Object
+    length: 5
+
+scorecard.calculateTotalScore()
+// => 67
+
+```
 
 ------
 

@@ -36,16 +36,20 @@ Scorecard.prototype = {
   },
 
   _updateFrameScores: function () {
-    console.log('inside update frame scores')
     var latest, previous
     this._updateCurrentFrameIfRequired()
 
-    if (this._previousRollIsSpare()) {
+    if (this._lastButOneRollIsASpare()) {
       previous = this._previousFrame()
       latest = this._latestFrame()
       previous.score = previous.roll1 + previous.roll2 + latest.roll1
     }
 
+    if (this._lastButTwoRollIsAStrike()) {
+      previous = this._previousFrame()
+      latest = this._latestFrame()
+      previous.score = previous.roll1 + latest.roll1 + latest.roll2
+    }
   },
 
   _updateCurrentFrameIfRequired: function () {
@@ -59,12 +63,28 @@ Scorecard.prototype = {
     }
   },
 
-  _previousRollIsSpare: function () {
+  _lastButOneRollIsASpare: function () {
+    // surely we can refactor this
     var previousFrame
     if (!this._latestFrame().isComplete()) {
       if (this.frames.length > 1) {
         previousFrame = this._previousFrame()
-        if (previousFrame.roll1 + previousFrame.roll2 == 10) {
+        if (previousFrame.roll2 !== null) {
+          if (previousFrame.roll1 + previousFrame.roll2 == 10) {
+            return true
+          }
+        }
+      }
+    }
+    return false
+  },
+
+  _lastButTwoRollIsAStrike: function () {
+    var oneFrameAgo, twoFramesAgo
+    if(this._latestFrame().isComplete()) {
+      if(this.frames.length > 1) {
+        oneFrameAgo = this._previousFrame()
+        if (oneFrameAgo.roll1 === 10) {
           return true
         }
       }

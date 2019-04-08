@@ -33,6 +33,21 @@ describe('Scorecard', function () {
         scorecard.roll(1)
         expect(scorecard.frames[0].score).toBe(11)
       })
+
+      // also test this works when the next roll is a strike
+    })
+
+    describe('If a frame is a strike', function () {
+      it('It is scored on the next but one roll', function () {
+        scorecard.roll(10)
+        scorecard.roll(1)
+        expect(scorecard.frames[0].score).toBe(null)
+        scorecard.roll(1)
+        expect(scorecard.frames[0].score).toBe(12)
+      })
+
+      // also test if this works for two strikes in a row
+      // also test for strike followed by spare
     })
   })
 })

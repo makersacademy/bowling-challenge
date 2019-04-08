@@ -1,5 +1,8 @@
 # Project title
 
+Incomplete: please see prior commit which was passing tests prior to refactor of 
+roll and frame.
+
 Bowling challenge: Count and sum the scores of a bowling game for one player
 (in JavaScript).
 
@@ -23,10 +26,10 @@ I will include diagrams clearly labelled within the root folder.
 
 ## User Stories
 
-A bowling game consists of 10 frames in which the player tries to knock down the
+A bowling game consists of 10 frames in which the player tries to knock down the 
 10 pins. In every frame the player can roll one or two times. The actual number
-depends on strikes and spares. The score of a frame is the number of knocked
-down pins plus bonuses for strikes and spares. After every frame the 10 pins are
+depends on strikes and spares. The score of a frame is the number of knocked 
+down pins plus bonuses for strikes and spares. After every frame the 10 pins are 
 reset.
 
 * 1
@@ -52,9 +55,9 @@ As a player in a bowling game,
 -- I dont want to roll a second ball if I scored a strike in the first ball of a frame.
 -- I want to thrown two balls per frame, unless i score a strike.
 
----
-
 ## Bowling: how does it work
+
+Will be run from the browser console once complete.
 
 ### Strikes
 
@@ -86,7 +89,8 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 
 ### Perfect Game
 
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 
+strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
 
 In the image below you can find some score examples.
 
@@ -135,7 +139,9 @@ No API used in this project.
 
 ## How to use
 
-You should be able to run the code in the console of a web browser, such as chrome. 
+You should be able to run the code in the console of a web browser, such as
+chrome. Currently please revert to the prior commit, which was passing tests
+before I began refactoring out roll and frame.
 
 ## Credits
 

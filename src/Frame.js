@@ -14,16 +14,23 @@ Frame.prototype = {
       throw new Error("A maximum of 10 can be scored per frame.")
     } else {
       this.addToScorecard(scorecard)
+      this.firstRollScore = pins;
+      if (pins === 10) {
+        this.strikeFlag = true;
+      }
+      this.calculateTotalScore();
       if (this.checkForSpare(scorecard)) {
         var i = scorecard.frames.indexOf(this);
         scorecard.frames[i - 1].bonusScore += pins;
         scorecard.frames[i - 1].calculateTotalScore();
       }
-      this.firstRollScore = pins;
-      this.calculateTotalScore();
-    }
-    if (pins === 10) {
-      this.strikeFlag = true;
+      if (this.checkForPreviousFrameStrike(scorecard)) {
+        if (this.checkForStrikeTwoFramesPrevious(scorecard)) {
+          var i = scorecard.frames.indexOf(this)
+          scorecard.frames[i - 2].bonusScore += (pins + 10);
+          scorecard.frames[i - 2].calculateTotalScore();
+        }
+      }
     }
   },
 
@@ -31,17 +38,16 @@ Frame.prototype = {
     if (this.firstRollScore + pins > 10) {
       throw new Error("A maximum of 10 can be scored per frame.")
     } else {
+      this.secondRollScore = pins;
+      this.calculateTotalScore();
+      if (this.totalScore === 10) {
+        this.spareFlag = true;
+      }
       if(this.checkForPreviousFrameStrike(scorecard)) {
         var i = scorecard.frames.indexOf(this);
         scorecard.frames[i - 1].bonusScore += (pins + this.firstRollScore);
         scorecard.frames[i - 1].calculateTotalScore();
       }
-      
-      this.secondRollScore = pins;
-      this.calculateTotalScore();
-    }
-    if (this.totalScore === 10) {
-      this.spareFlag = true;
     }
   },
 
@@ -60,5 +66,9 @@ Frame.prototype = {
 
   checkForPreviousFrameStrike: function(scorecard) {
     return scorecard.isPreviousFrameStrike(this);
+  },
+
+  checkForStrikeTwoFramesPrevious: function(scorecard) {
+    return scorecard.isTwoFramesPreviousStrike(this);
   }
 }

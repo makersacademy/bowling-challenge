@@ -5,7 +5,14 @@ describe("Frame", function() {
   describe("when user throws a simple 2 roll frame", function() {
     beforeEach(function() {
       frame = new Frame;
-      scorecard = jasmine.createSpyObj('scorecard', ['captureFrame', 'isPreviousFrameSpare', 'isPreviousFrameStrike']);
+      scorecard = jasmine.createSpyObj(
+        'scorecard', [
+          'captureFrame',
+          'isPreviousFrameSpare',
+          'isPreviousFrameStrike',
+          'isTwoFramesPreviousStrike'
+        ]
+      );
       frame.enterFirstRollScore(6, scorecard);
     });
     
@@ -35,6 +42,14 @@ describe("Frame", function() {
   describe("when user enters an invalid score", function() {
     beforeEach(function() {
       frame = new Frame;
+      scorecard = jasmine.createSpyObj(
+        'scorecard', [
+          'captureFrame',
+          'isPreviousFrameSpare',
+          'isPreviousFrameStrike',
+          'isTwoFramesPreviousStrike'
+        ]
+      );
     });
     
     it("throws error if 11 is entered for first frame roll", function() {
@@ -53,7 +68,14 @@ describe("Frame", function() {
 
   describe("when calculating bonus scores", function() {
     beforeEach(function() {
-      scorecard = jasmine.createSpyObj('scorecard', ['captureFrame', 'isPreviousFrameSpare', 'isPreviousFrameStrike']);
+      scorecard = jasmine.createSpyObj(
+        'scorecard', [
+          'captureFrame',
+          'isPreviousFrameSpare',
+          'isPreviousFrameStrike',
+          'isTwoFramesPreviousStrike'
+        ]
+      );
       frame = new Frame;
     });
     
@@ -80,7 +102,7 @@ describe("Frame", function() {
     });
 
     describe("when calculating strike bonus", function() {
-      it("checks if previous frame scored a strike", function() {
+      it("checks if previous frame scored a strike, on second roll", function() {
         frame.enterFirstRollScore(5, scorecard);
         frame.enterSecondRollScore(4, scorecard);
         expect(scorecard.isPreviousFrameStrike).toHaveBeenCalledWith(frame);
@@ -96,9 +118,19 @@ describe("Frame", function() {
         scorecard.frames = [frame, frame2];
         frame.enterFirstRollScore(10, scorecard);
         frame2.enterFirstRollScore(5, scorecard);
-        scorecard.isPreviousFrameStrike.and.returnValue(true)
+        scorecard.isPreviousFrameStrike.and.returnValue(true);
         frame2.enterSecondRollScore(4, scorecard);
         expect(frame.bonusScore).toEqual(9)
+      });
+
+      it("checks if previous 2 frames scored a strike, on first roll", function() {
+        frame.enterFirstRollScore(10, scorecard);
+        frame2 = new Frame;
+        frame2.enterFirstRollScore(10, scorecard);
+        frame3 = new Frame;
+        scorecard.isPreviousFrameStrike.and.returnValue(true);
+        frame3.enterFirstRollScore(3, scorecard);
+        expect(scorecard.isTwoFramesPreviousStrike).toHaveBeenCalledWith(frame3);
       });
     });
   });

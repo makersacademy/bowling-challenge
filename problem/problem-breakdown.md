@@ -153,7 +153,6 @@ Scorecard | calculateTotalScore
 1. Check to see if previous frame scored a strike (after second frame roll)
   - If yes, add both roll scores of current frame to bonus of previous frame
 
-_(TODO...)_
 2. Check to see if previous frame scored a strike (after first frame roll)
   - If yes, was the frame before that one a strike?
   - If yes, add current frame (1st roll) score and prev frame strike score (10) to bonus of prev.prev[index-2] frame

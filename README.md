@@ -49,44 +49,35 @@ Example console commands showing scoring variations and strike/spare bonuses...
 scorecard = new Scorecard
 
 frame1 = new Frame
-frame1.enterFirstRollScore(10, scorecard) // <- strike
+frame1.enterFirstRollScore(10, scorecard)
 
 frame2 = new Frame
-frame2.enterFirstRollScore(6, scorecard)
-frame2.enterSecondRollScore(2, scorecard)
+frame2.enterFirstRollScore(10, scorecard)
 
 frame3 = new Frame
-frame3.enterFirstRollScore(10, scorecard) // <- strike
+frame3.enterFirstRollScore(6, scorecard)
+frame3.enterSecondRollScore(6, scorecard)
+// => Frame.js:39 Uncaught Error: A maximum of 10 can be scored per frame.
+
+frame3.enterSecondRollScore(4, scorecard)
 
 frame4 = new Frame
-frame4.enterFirstRollScore(6, scorecard)
-frame4.enterSecondRollScore(4, scorecard) // <- spare
-
-frame5 = new Frame
-frame5.enterFirstRollScore(4, scorecard)
-frame5.enterSecondRollScore(3, scorecard)
+frame4.enterFirstRollScore(7, scorecard)
+frame4.enterSecondRollScore(1, scorecard)
 
 scorecard
 // returns...
-Scorecard {frames: Array(5)}
-  frames: Array(5)
+Scorecard {frames: Array(4)}
+  frames: Array(4)
     0: Frame
-      bonusScore: 8
+      bonusScore: 16
       firstRollScore: 10
       secondRollScore: 0
       spareFlag: false
       strikeFlag: true
-      totalScore: 18
+      totalScore: 26
       __proto__: Object
     1: Frame
-      bonusScore: 0
-      firstRollScore: 6
-      secondRollScore: 2
-      spareFlag: false
-      strikeFlag: false
-      totalScore: 8
-      __proto__: Object
-    2: Frame
       bonusScore: 10
       firstRollScore: 10
       secondRollScore: 0
@@ -94,28 +85,29 @@ Scorecard {frames: Array(5)}
       strikeFlag: true
       totalScore: 20
       __proto__: Object
-    3: Frame
-      bonusScore: 4
+    2: Frame
+      bonusScore: 7
       firstRollScore: 6
       secondRollScore: 4
       spareFlag: true
       strikeFlag: false
-      totalScore: 14
+      totalScore: 17
       __proto__: Object
-    4: Frame
+    3: Frame
       bonusScore: 0
-      firstRollScore: 4
-      secondRollScore: 3
+      firstRollScore: 7
+      secondRollScore: 1
       spareFlag: false
       strikeFlag: false
-      totalScore: 7
+      totalScore: 8
       __proto__: Object
-    length: 5
+    length: 4
 
 scorecard.calculateTotalScore()
-// => 67
+// => 71
 
 ```
+
 
 ------
 

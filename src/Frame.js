@@ -21,5 +21,9 @@ Frame.prototype = {
     } else {
       return true
     }
+  },
+
+  score: function() {
+    return this.firstRoll + this.secondRoll;
   }
 }

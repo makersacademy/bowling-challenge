@@ -38,6 +38,14 @@ describe("Frame", function() {
       frame.roll(3);
       expect(frame.isComplete()).toEqual(false);
     });
-  })
+  });
+
+  describe('#score', function() {
+    it('calculates the score for the frame', function() {
+      frame.roll(3);
+      frame.roll(5);
+      expect(frame.score()).toEqual(8)
+    })
+  });
 
 })

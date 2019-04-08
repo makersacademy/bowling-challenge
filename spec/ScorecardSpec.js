@@ -36,12 +36,6 @@ describe('Scorecard', function() {
 
   describe('no strikes or spares incomplete game', function() {
 
-    it('completes frame when two rolls have been entered and resets frame', function() {
-      scorecard.roll(4);
-      scorecard.roll(4);
-      expect(scorecard.frame).toEqual(['x', 0]);
-    });
-
     it('returns 48 for the total for 12 rolls hitting 4 pins', function() {
       for (i = 1; i <= 12; i++) {
         scorecard.roll(4);

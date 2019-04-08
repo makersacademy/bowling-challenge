@@ -1,7 +1,8 @@
-function Scorecard () {
-  this.frame = ['x', 0];
+function Scorecard (frame = Frame) {
+  this.frame = frame;
   this.framesTotal = 10;
   this.frameLog = [];
+  this._score = 0
   this.frameNumber = 1;
 }
 
@@ -10,23 +11,20 @@ Scorecard.prototype = {
   constructor: Scorecard,
 
   roll: function(pins) {
-    if (this.frame[0] === 'x') {
-      this.frame[0] = pins;
-    } else {
-      this.frame[1] = pins;
-      this.completeFrame();
+    this._startNewFrame();
+    this._currentFrame().roll(pins);
+    this._updateScore();
+  },
+
+  _updateScore: function() {
+    if (this._currentFrame().isComplete() === true) {
+      this._score += (this._currentFrame().score());
+      this.frameNumber += 1;
     }
   },
 
-  completeFrame: function() {
-    this.frameLog.push(this.frame);
-    this.frame = ['x', 0];
-    this.frameNumber += 1;
-
-  },
-
   total: function() {
-    return this.frameLog.flat().reduce(function(acc, val) { return acc + val; }, 0);
+    return this._score
   },
 
   isComplete: function() {
@@ -37,5 +35,14 @@ Scorecard.prototype = {
     }
   },
 
+  _startNewFrame: function() {
+    if (this.frameLog.length === 0 || this._currentFrame().isComplete()) {
+      this.frameLog.push(new this.frame());
+    }
+  },
+
+  _currentFrame: function() {
+    return this.frameLog[this.frameLog.length - 1]
+  },
 
 };

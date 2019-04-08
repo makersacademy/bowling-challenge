@@ -8,6 +8,10 @@ Frame.prototype = {
   constructor: Frame,
 
   roll: function(pins) {
-    this.firstRoll = pins;
+    if (this.firstRoll === null) {
+      this.firstRoll = pins;
+    } else {
+      this.secondRoll = pins;
+    }    
   }
 }

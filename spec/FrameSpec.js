@@ -16,4 +16,11 @@ describe("Frame", function() {
     expect(frame.firstRoll).toEqual(3);
     expect(frame.secondRoll).toEqual(null);
   });
+
+  it('can add second roll', function() {
+    frame.roll(3);
+    frame.roll(6);
+    expect(frame.firstRoll).toEqual(3);
+    expect(frame.secondRoll).toEqual(6);
+  });
 })

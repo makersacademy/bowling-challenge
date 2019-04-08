@@ -22,7 +22,6 @@ This JavaScript app simulates a bowling scorecard, allowing a user to enter thei
 
 #### Outstanding TODOs
 
-- Strike bonus for when 2 previous frames have been strikes
 - 10th frame bonuses
 
 ------

@@ -1,6 +1,5 @@
 describe("Scorecard", function() {
   var scorecard;
-  var frame;
   var fakeFrame = {
     totalScore: 5
   };
@@ -39,5 +38,36 @@ describe("Scorecard", function() {
     expect(scorecard.isComplete()).toEqual(false);
     scorecard.captureFrame(fakeFrame);
     expect(scorecard.isComplete()).toEqual(true);
+  });
+
+  it("checks if previous frame was a spare", function() {
+    var fakeSpareFrame = {
+      spareFlag: true
+    };
+    scorecard.frames.push(fakeSpareFrame);
+    scorecard.frames.push(fakeFrame);
+    expect(scorecard.isPreviousFrameSpare(fakeFrame)).toBe(true);
+  });
+
+  it("checks if previous frame was a strike", function() {
+    var fakeStrikeFrame = {
+      strikeFlag: true
+    };
+    scorecard.frames.push(fakeStrikeFrame);
+    scorecard.frames.push(fakeFrame);
+    expect(scorecard.isPreviousFrameStrike(fakeFrame)).toBe(true);
+  });
+
+  it("checks if previous frame was a strike", function() {
+    var fakeStrikeFrame = {
+      strikeFlag: true
+    };
+    var fakeFrame3 = {
+      totalScore: 5
+    };
+    scorecard.frames.push(fakeStrikeFrame);
+    scorecard.frames.push(fakeFrame);
+    scorecard.frames.push(fakeFrame3);
+    expect(scorecard.isTwoFramesPreviousStrike(fakeFrame3)).toBe(true);
   });
 });

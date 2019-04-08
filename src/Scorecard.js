@@ -29,7 +29,6 @@ Scorecard.prototype = {
     }
   },
 
-  // add unit test
   isPreviousFrameSpare: function(frame) {
     if (this.frames.length > 1) {
       var i = this.frames.indexOf(frame);
@@ -40,7 +39,6 @@ Scorecard.prototype = {
     }
   },
 
-  // add unit test
   isPreviousFrameStrike: function(frame) {
     if (this.frames.length > 1) {
       var i = this.frames.indexOf(frame);
@@ -51,7 +49,6 @@ Scorecard.prototype = {
     }
   },
 
-  // add unit test
   isTwoFramesPreviousStrike: function(frame) {
     if (this.frames.length > 2) {
       var i = this.frames.indexOf(frame);

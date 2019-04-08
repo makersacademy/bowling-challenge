@@ -1,6 +1,6 @@
-function Scorecard () {
-  this._total = 0
+function Scorecard (frame = Frame) {
   this.frames = []
+  this.frameConstructor = frame
 }
 
 Scorecard.prototype = {
@@ -10,10 +10,17 @@ Scorecard.prototype = {
     this._throwErrorIfInvalidInput(roll)
     this._startNewFrameIfRequired()
     this._latestFrame().addRoll(roll)
+    this._updateFrameScores()
   },
 
   total: function () {
-    return 0
+    total = 0
+    this.frames.forEach(function (frame) {
+      if (frame.score !== null) {
+        total += frame.score
+      }
+    })
+    return total
   },
 
   isComplete: function () {
@@ -24,9 +31,24 @@ Scorecard.prototype = {
     return this.frames[this.frames.length - 1]
   },
 
+  _updateFrameScores: function () {
+    this._updateCurrentFrame()
+  },
+
+  _updateCurrentFrame: function () {
+    var latestFrame = this._latestFrame()
+    if (latestFrame.isComplete()) {
+      if (latestFrame.roll2 !== null) {
+        if (latestFrame.roll1 + latestFrame.roll2 < 10) {
+          latestFrame.score = latestFrame.roll1 + latestFrame.roll2
+        }
+      }
+    }
+  },
+
   _startNewFrameIfRequired: function () {
     if ((this.frames.length === 0) || (this._latestFrame().isComplete())) {
-      this.frames.push(new Frame())
+      this.frames.push(new this.frameConstructor())
     }
   },
 

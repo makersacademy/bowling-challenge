@@ -34,7 +34,7 @@ describe('Example rolls', function () {
   })
 
   describe('Roll 3 20 times', function () {
-    xit('The game should be complete with a score of 60', function () {
+    it('The game should be complete with a score of 60', function () {
       multipleRolls(3, 20)
       expect(scorecard.isComplete()).toBe(true)
       expect(scorecard.total()).toBe(60)

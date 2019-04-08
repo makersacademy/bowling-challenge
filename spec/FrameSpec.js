@@ -6,21 +6,38 @@ describe("Frame", function() {
     frame = new Frame();
   });
 
-  it('has two rolls', function() {
-    expect(frame.firstRoll).toEqual(null);
-    expect(frame.secondRoll).toEqual(null);
+  describe('#roll', function() {
+    it('has two rolls', function() {
+      expect(frame.firstRoll).toEqual(null);
+      expect(frame.secondRoll).toEqual(null);
+    });
+
+    it('can add one roll', function() {
+      frame.roll(3);
+      expect(frame.firstRoll).toEqual(3);
+      expect(frame.secondRoll).toEqual(null);
+    });
+
+    it('can add second roll', function() {
+      frame.roll(3);
+      frame.roll(6);
+      expect(frame.firstRoll).toEqual(3);
+      expect(frame.secondRoll).toEqual(6);
+    });
   });
 
-  it('can add one roll', function() {
-    frame.roll(3);
-    expect(frame.firstRoll).toEqual(3);
-    expect(frame.secondRoll).toEqual(null);
-  });
+  describe('#isComplete', function() {
 
-  it('can add second roll', function() {
-    frame.roll(3);
-    frame.roll(6);
-    expect(frame.firstRoll).toEqual(3);
-    expect(frame.secondRoll).toEqual(6);
-  });
+    it('identifies when a frame is complete', function () {
+      frame.roll(3);
+      frame.roll(4);
+      expect(frame.isComplete()).toEqual(true);
+    });
+
+    it('identifies when a frame is not complete', function() {
+      frame.roll(3);
+      expect(frame.isComplete()).toEqual(false);
+    });
+  })
+
 })

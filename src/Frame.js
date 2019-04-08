@@ -12,6 +12,14 @@ Frame.prototype = {
       this.firstRoll = pins;
     } else {
       this.secondRoll = pins;
-    }    
+    }
+  },
+
+  isComplete: function() {
+    if (this.secondRoll === null) {
+      return false
+    } else {
+      return true
+    }
   }
 }

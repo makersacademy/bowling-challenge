@@ -24,5 +24,15 @@ describe('Scorecard', function () {
         expect(scorecard.frames[0].score).toBe(9)
       })
     })
+
+    describe('If a frame is a spare', function () {
+      it('It is scored on the next roll', function () {
+        scorecard.roll(9)
+        scorecard.roll(1)
+        expect(scorecard.frames[0].score).toBe(null)
+        scorecard.roll(1)
+        expect(scorecard.frames[0].score).toBe(11)
+      })
+    })
   })
 })

@@ -31,11 +31,24 @@ Scorecard.prototype = {
     return this.frames[this.frames.length - 1]
   },
 
-  _updateFrameScores: function () {
-    this._updateCurrentFrame()
+  _previousFrame: function () {
+    return this.frames[this.frames.length - 2]
   },
 
-  _updateCurrentFrame: function () {
+  _updateFrameScores: function () {
+    console.log('inside update frame scores')
+    var latest, previous
+    this._updateCurrentFrameIfRequired()
+
+    if (this._previousRollIsSpare()) {
+      previous = this._previousFrame()
+      latest = this._latestFrame()
+      previous.score = previous.roll1 + previous.roll2 + latest.roll1
+    }
+
+  },
+
+  _updateCurrentFrameIfRequired: function () {
     var latestFrame = this._latestFrame()
     if (latestFrame.isComplete()) {
       if (latestFrame.roll2 !== null) {
@@ -44,6 +57,19 @@ Scorecard.prototype = {
         }
       }
     }
+  },
+
+  _previousRollIsSpare: function () {
+    var previousFrame
+    if (!this._latestFrame().isComplete()) {
+      if (this.frames.length > 1) {
+        previousFrame = this._previousFrame()
+        if (previousFrame.roll1 + previousFrame.roll2 == 10) {
+          return true
+        }
+      }
+    }
+    return false
   },
 
   _startNewFrameIfRequired: function () {

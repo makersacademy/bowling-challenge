@@ -16,14 +16,8 @@ Scorecard.prototype = {
     this._updateScore();
   },
 
-  _updateScore: function() {
-    if (this._currentFrame().isComplete() === true) {
-      this._score += (this._currentFrame().score());
-      this.frameNumber += 1;
-    }
-  },
-
   total: function() {
+    this._addSpareBonus();
     return this._score
   },
 
@@ -44,5 +38,31 @@ Scorecard.prototype = {
   _currentFrame: function() {
     return this.frameLog[this.frameLog.length - 1]
   },
+
+  _previousFrame: function() {
+    return this.frameLog[this.frameLog.length - 2]
+  },
+
+  _updateScore: function() {
+    if (this._currentFrame().isComplete() === true) {
+      return this._score += (this._currentFrame().score());
+      this.frameNumber += 1;
+    }
+  },
+
+  _addSpareBonus: function() {
+    if (this._isPreviousFrameSpare()) {
+      this._previousFrame().bonus += this._currentFrame().firstRoll
+      this._score += this._previousFrame().bonus
+    }
+  },
+
+  _isPreviousFrameSpare: function() {
+    if (this._previousFrame() !== undefined && this._previousFrame().score() === 10) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 };

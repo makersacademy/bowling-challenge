@@ -1,6 +1,7 @@
 function Frame() {
   this.firstRoll = null;
   this.secondRoll = null;
+  this.bonus = 0;
 }
 
 Frame.prototype = {
@@ -24,6 +25,6 @@ Frame.prototype = {
   },
 
   score: function() {
-    return this.firstRoll + this.secondRoll;
-  }
+    return this.firstRoll + this.secondRoll + this.bonus;
+  },
 }

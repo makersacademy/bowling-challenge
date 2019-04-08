@@ -51,4 +51,22 @@ describe('Scorecard', function() {
     });
   });
 
+  describe('spare on first frame and incomplete game', function() {
+    it('recognises previous frame is a spare', function() {
+      scorecard.roll(1);
+      scorecard.roll(9);
+      scorecard.roll(4);
+      scorecard.roll(5);
+      expect(scorecard._isPreviousFrameSpare()).toEqual(true);
+    })
+
+    it('adds bonus to score', function() {
+      scorecard.roll(1);
+      scorecard.roll(9);
+      scorecard.roll(4);
+      scorecard.roll(5);
+      expect(scorecard.total()).toEqual(23)
+    })
+  })
+
 });

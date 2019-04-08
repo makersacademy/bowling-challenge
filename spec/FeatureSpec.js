@@ -43,4 +43,15 @@ describe('Feature Test', function() {
     })
   });
 
+  describe('partially complete game with a spare', function() {
+    it('hits 10 pins on first frame and 7 pins on second frame', function() {
+      scorecard.roll(9);
+      scorecard.roll(1);
+      scorecard.roll(5);
+      scorecard.roll(2);
+      expect(scorecard.total()).toEqual(22)
+      expect(scorecard.isComplete()).toEqual(false);
+    });
+  });
+
 });

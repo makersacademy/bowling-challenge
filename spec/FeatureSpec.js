@@ -43,14 +43,4 @@ describe('Feature Test', function() {
     })
   });
 
-  describe('hits one strike on first frame', function() {
-    it('hits 10 pins on first roll and fewer than 5 on next two rolls', function() {
-      scorecard.roll(10);
-      scorecard.roll(4);
-      scorecard.roll(4);
-      expect(scorecard.total()).toEqual(26);
-      expect(scorecard.isComplete()).toEqual(false);
-    });
-  });
-
 });

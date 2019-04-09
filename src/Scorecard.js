@@ -14,10 +14,10 @@ Scorecard.prototype = {
     this._startNewFrame();
     this._currentFrame().roll(pins);
     this._updateScore();
+    this._addSpareBonus();
   },
 
   total: function() {
-    this._addSpareBonus();
     return this._score
   },
 

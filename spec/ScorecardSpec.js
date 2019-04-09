@@ -51,22 +51,50 @@ describe('Scorecard', function() {
     });
   });
 
-  describe('spare on first frame and incomplete game', function() {
-    it('recognises previous frame is a spare', function() {
-      scorecard.roll(1);
-      scorecard.roll(9);
-      scorecard.roll(4);
-      scorecard.roll(5);
-      expect(scorecard._isPreviousFrameSpare()).toEqual(true);
-    })
-
-    it('adds bonus to score', function() {
+  describe('spare and incomplete game', function() {
+    it('spare on 1st frame - adds bonus to score', function() {
       scorecard.roll(1);
       scorecard.roll(9);
       scorecard.roll(4);
       scorecard.roll(5);
       expect(scorecard.total()).toEqual(23)
     })
-  })
+
+    it('spare on 7th frame - adds bonus to score', function() {
+      for (i = 1; i <= 12; i++) {
+        scorecard.roll(2);
+      }
+      scorecard.roll(7);
+      scorecard.roll(3);
+      for (i = 1; i <= 6; i++) {
+        scorecard.roll(3);
+      }
+      expect(scorecard.total()).toEqual(55);
+    });
+  });
+
+  describe('spare and complete game', function() {
+    it('spare on 1st frame - adds bonus to score', function() {
+      scorecard.roll(9);
+      scorecard.roll(1);
+      for (i = 1; i <= 18; i++) {
+        scorecard.roll(4);
+      }
+      expect(scorecard.total()).toEqual(86);
+    });
+
+    it('spare on 6th frame - adds bonus to score', function() {
+      for (i = 1; i <= 10; i++) {
+        scorecard.roll(4);
+      }
+      scorecard.roll(8);
+      scorecard.roll(2);
+      for (i = 1; i <= 8; i++) {
+        scorecard.roll(3);
+      }
+      expect(scorecard.total()).toEqual(77);
+    })
+
+  });
 
 });

@@ -106,4 +106,25 @@ describe('Scorecard', function() {
     });
   })
 
+  describe('strike and complete game', function() {
+    it('strike on 1st roll and all other frames less than 10', function() {
+      scorecard.roll(10);
+      for (i = 1; i <= 18; i++) {
+        scorecard.roll(3);
+      }
+      expect(scorecard.total()).toEqual(70)
+    })
+
+    it('strike on 5th roll and all other frames less than 10', function() {
+      for (i = 1; i <= 8; i++) {
+        scorecard.roll(3);
+      }
+      scorecard.roll(10)
+      for (i = 1; i <= 10; i++) {
+        scorecard.roll(3);
+      }
+      expect(scorecard.total()).toEqual(70)
+    })
+  })
+
 });

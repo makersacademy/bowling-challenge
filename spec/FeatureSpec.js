@@ -163,4 +163,16 @@ describe('Feature Test', function() {
     })
   })
 
+  describe('complete game with two strikes in a row', function() {
+  it('hits strikes on first and second frame', function() {
+    scorecard.roll(10)
+    scorecard.roll(10)
+    for (i = 1; i <= 16; i++) {
+      scorecard.roll(4);
+    }
+    expect(scorecard.total()).toEqual(106)
+    expect(scorecard.isComplete()).toEqual(true)
+  })
+})
+
 });

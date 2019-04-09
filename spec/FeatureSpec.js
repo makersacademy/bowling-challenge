@@ -102,10 +102,11 @@ describe('Feature Test', function() {
         scorecard.roll(3);
       }
       expect(scorecard.total()).toEqual(77)
+      expect(scorecard.isComplete()).toEqual(true)
     })
   })
 
-  describe('complete game with a strike and spare', function() {
+  describe('incomplete game with a strike and spare', function() {
     it('hits 10 pins on 5th frame and spare on 8th frame', function() {
       for (i = 1; i <= 8; i++) {
         scorecard.roll(3);
@@ -119,6 +120,7 @@ describe('Feature Test', function() {
       scorecard.roll(3)
       scorecard.roll(3)
       expect(scorecard.total()).toEqual(77)
+      expect(scorecard.isComplete()).toEqual(false)
     })
   })
 

@@ -87,4 +87,39 @@ describe('Feature Test', function() {
     })
   })
 
+  describe('complete game with a strike and spare', function() {
+    it('hits 10 pins on 5th frame and spare on 8th frame', function() {
+      for (i = 1; i <= 8; i++) {
+        scorecard.roll(3);
+      }
+      scorecard.roll(10)
+      for (i = 1; i <= 4; i++) {
+        scorecard.roll(3);
+      }
+      scorecard.roll(6)
+      scorecard.roll(4)
+      for (i = 1; i <= 4; i++) {
+        scorecard.roll(3);
+      }
+      expect(scorecard.total()).toEqual(77)
+    })
+  })
+
+  describe('complete game with a strike and spare', function() {
+    it('hits 10 pins on 5th frame and spare on 8th frame', function() {
+      for (i = 1; i <= 8; i++) {
+        scorecard.roll(3);
+      }
+      scorecard.roll(10)
+      for (i = 1; i <= 4; i++) {
+        scorecard.roll(4);
+      }
+      scorecard.roll(6)
+      scorecard.roll(4)
+      scorecard.roll(3)
+      scorecard.roll(3)
+      expect(scorecard.total()).toEqual(77)
+    })
+  })
+
 });

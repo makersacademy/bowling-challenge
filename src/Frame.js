@@ -17,14 +17,30 @@ Frame.prototype = {
   },
 
   isComplete: function() {
-    if (this.secondRoll === null) {
-      return false
-    } else {
+    if (this.firstRoll === 10 || this.secondRoll !== null) {
       return true
+    } else {
+      return false
     }
   },
 
   score: function() {
     return this.firstRoll + this.secondRoll + this.bonus;
   },
+
+  isSpare: function() {
+    if (this.firstRoll !== 10 && this.score() === 10) {
+      return true
+    } else {
+      return false
+    }
+  },
+
+  isStrike: function() {
+    if (this.firstRoll === 10) {
+      return true
+    } else {
+      return false
+    }
+  }
 }

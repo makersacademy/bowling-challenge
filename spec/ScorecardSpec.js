@@ -97,4 +97,13 @@ describe('Scorecard', function() {
 
   });
 
+  describe('strike and incomplete game', function() {
+    it('strike on the 1st roll and 2nd frame less than 10', function() {
+      scorecard.roll(10);
+      scorecard.roll(3);
+      scorecard.roll(4);
+      expect(scorecard.total()).toEqual(24);
+    });
+  })
+
 });

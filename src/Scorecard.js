@@ -14,7 +14,6 @@ Scorecard.prototype = {
     this._startNewFrame();
     this._currentFrame().roll(pins);
     this._updateScore();
-    this._addSpareBonus();
   },
 
   total: function() {
@@ -44,6 +43,8 @@ Scorecard.prototype = {
   },
 
   _updateScore: function() {
+    this._addSpareBonus();
+    this._addStrikeBonus();
     if (this._currentFrame().isComplete() === true) {
       return this._score += (this._currentFrame().score());
       this.frameNumber += 1;
@@ -57,12 +58,27 @@ Scorecard.prototype = {
     }
   },
 
+  _addStrikeBonus: function() {
+    if (this._isPreviousFrameStrike() && this._currentFrame().isComplete()) {
+      this._previousFrame().bonus += this._currentFrame().score();
+      this._score += this._previousFrame().bonus;
+    }
+  },
+
   _isPreviousFrameSpare: function() {
-    if (this._previousFrame() !== undefined && this._previousFrame().score() === 10) {
+    if (this._previousFrame() !== undefined && this._previousFrame().isSpare()) {
       return true;
     } else {
       return false;
     }
-  }
+  },
+
+  _isPreviousFrameStrike: function() {
+    if (this._previousFrame() !== undefined && this._previousFrame().isStrike()) {
+      return true;
+    } else {
+      return false;
+    }
+  },
 
 };

@@ -66,4 +66,14 @@ describe('Feature Test', function() {
     })
   })
 
+  describe('partially complete game with a strike', function() {
+    it('hits 10 pins on first roll and less than 10 pins on all subsequent frames', function() {
+      scorecard.roll(10);
+      scorecard.roll(4);
+      scorecard.roll(4);
+      expect(scorecard.total()).toEqual(26);
+      expect(scorecard.isComplete()).toEqual(false);
+    })
+  })
+
 });

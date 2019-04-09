@@ -42,10 +42,15 @@ Scorecard.prototype = {
     return this.frameLog[this.frameLog.length - 2]
   },
 
+  _previousButOneFrame: function() {
+    return this.frameLog[this.frameLog.length - 3]
+  },
+
   _updateScore: function() {
     this._addSpareBonus();
     this._addStrikeBonus();
     if (this._currentFrame().isComplete() === true) {
+      this._updateStrikeBonus();
       return this._score += (this._currentFrame().score());
       this.frameNumber += 1;
     }
@@ -65,6 +70,13 @@ Scorecard.prototype = {
     }
   },
 
+  _updateStrikeBonus: function() {
+    if (this._isPreviousButOneFrameStrike() && this._previousFrame().isStrike()) {
+      this._previousButOneFrame().bonus += this._currentFrame().firstRoll;
+      this._score += this._currentFrame().firstRoll;
+    }
+  },
+
   _isPreviousFrameSpare: function() {
     if (this._previousFrame() !== undefined && this._previousFrame().isSpare()) {
       return true;
@@ -75,6 +87,14 @@ Scorecard.prototype = {
 
   _isPreviousFrameStrike: function() {
     if (this._previousFrame() !== undefined && this._previousFrame().isStrike()) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+
+  _isPreviousButOneFrameStrike: function() {
+    if (this._previousButOneFrame() !== undefined && this._previousButOneFrame().isStrike()) {
       return true;
     } else {
       return false;

@@ -124,4 +124,18 @@ describe('Feature Test', function() {
     })
   })
 
+  describe('incomplete game with two spares in a row', function() {
+    it('hits spares on first and second frame', function() {
+      scorecard.roll(9)
+      scorecard.roll(1)
+      scorecard.roll(8)
+      scorecard.roll(2)
+      for (i = 1; i <= 4; i++) {
+        scorecard.roll(4);
+      }
+      expect(scorecard.total()).toEqual(48)
+      expect(scorecard.isComplete()).toEqual(false)
+    })
+  })
+
 });

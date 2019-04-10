@@ -136,6 +136,26 @@ describe('Scorecard', function() {
       scorecard.roll(3)
       expect(scorecard.isComplete()).toEqual(false)
     });
+
+    it('calculates score with strike on 10th frame', function() {
+      for (i = 1; i <= 18; i++) {
+        scorecard.roll(4);
+      }
+      scorecard.roll(10)
+      scorecard.roll(8)
+      scorecard.roll(1)
+      expect(scorecard.total()).toEqual(91)
+    })
+
+    it('knows the game is complete after three throws in 10th frame', function() {
+      for (i = 1; i <= 18; i++) {
+        scorecard.roll(4);
+      }
+      scorecard.roll(10)
+      scorecard.roll(8)
+      scorecard.roll(1)
+      expect(scorecard.isComplete()).toEqual(true)
+    })
   })
 
 });

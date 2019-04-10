@@ -187,6 +187,18 @@ describe('10th frame spare/strike rules', function() {
     expect(scorecard.total()).toEqual(89)
     expect(scorecard.isComplete()).toEqual(true)
   })
+
+  it('hits strike on 10th frame', function() {
+    for (i = 1; i <= 18; i++) {
+      scorecard.roll(4);
+    }
+    scorecard.roll(10)
+    expect(scorecard.isComplete()).toEqual(false)
+    scorecard.roll(8)
+    scorecard.roll(0)
+    expect(scorecard.total()).toEqual(90)
+    expect(scorecard.isComplete()).toEqual(true)
+  })
 })
 
 // NEXT AFTER THAT: Perfect game

@@ -1,6 +1,6 @@
 function Scorecard (frame = Frame) {
   this.frame = frame;
-  this.framesTotal = 10;
+  this.FRAMES_TOTAL = 10;
   this.frameLog = [];
   this._score = 0
   this.frameNumber = 1;
@@ -21,12 +21,22 @@ Scorecard.prototype = {
   },
 
   isComplete: function() {
-    if ( this.frameLog.length > 10 ) {
+    if ( this.frameLog.length > this.FRAMES_TOTAL ) {
       return true
-    } else if ( this.frameLog.length < this.framesTotal || this._tenthFrameIsStrikeOrSpare()) {
+    } else if ( this.frameLog.length < this.FRAMES_TOTAL || this._tenthFrameIsStrikeOrSpare()) {
       return false;
     } else {
       return true;
+    }
+  },
+
+  _updateScore: function() {
+    this._addSpareBonus();
+    this._addStrikeBonus();
+    if (this._currentFrame().isComplete() === true) {
+      this._updateStrikeBonus();
+      return this._score += (this._currentFrame().score());
+      this.frameNumber += 1;
     }
   },
 
@@ -48,16 +58,6 @@ Scorecard.prototype = {
     return this.frameLog[this.frameLog.length - 3]
   },
 
-  _updateScore: function() {
-    this._addSpareBonus();
-    this._addStrikeBonus();
-    if (this._currentFrame().isComplete() === true) {
-      this._updateStrikeBonus();
-      return this._score += (this._currentFrame().score());
-      this.frameNumber += 1;
-    }
-  },
-
   _addSpareBonus: function() {
     if (this._isPreviousFrameSpare()) {
       this._previousFrame().bonus += this._currentFrame().firstRoll
@@ -66,7 +66,7 @@ Scorecard.prototype = {
   },
 
   _addStrikeBonus: function() {
-    if (this.frameLog.length > 10) {
+    if (this.frameLog.length > this.FRAMES_TOTAL) {
       return
     }
     if (this._isPreviousFrameStrike() && this._currentFrame().isComplete()) {
@@ -82,14 +82,6 @@ Scorecard.prototype = {
     if (this._isPreviousButOneFrameStrike() && this._previousFrame().isStrike()) {
       this._previousButOneFrame().bonus += this._currentFrame().firstRoll;
       this._score += this._currentFrame().firstRoll;
-    }
-  },
-
-  _tenthFrameIsStrikeOrSpare: function() {
-    if (this.frameLog[9].score() === 10) {
-      return true
-    } else {
-      return false
     }
   },
 
@@ -114,6 +106,14 @@ Scorecard.prototype = {
       return true;
     } else {
       return false;
+    }
+  },
+  
+  _tenthFrameIsStrikeOrSpare: function() {
+    if (this.frameLog[9].score() === 10) {
+      return true
+    } else {
+      return false
     }
   },
 

@@ -2,13 +2,13 @@
 
 This is the Week 5 Weekend Challenge from Makers Academy.
 
-See [here](https://github.com/makersacademy/bowling-challenge) for the original Makers repo.
-
 ## The Task
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+
+See [here](https://github.com/makersacademy/bowling-challenge) for the full original Makers repo.
 
 [Getting started](#getting-started) | [Usage](#Usage) | [Running tests](#running-tests)
 
@@ -58,3 +58,18 @@ Player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 1
 ## Approach
 
 - BDD and TDD in new language, JavaScript, using Jasmine test framework
+- Built up back end logic slowly writing features tests followed by unit tests for the following:
+  * Gutter game
+  * Incomplete game with no strikes or spares
+  * Complete game with no strikes or spares
+  * Created Frame class to store rolls and knows if a frame is complete
+  * Incomplete game with a spare
+  * Complete game with a spare
+  * Incomplete game with strike
+  * Complete game with a strike
+  * Two spares in a row
+  * Two strikes in a row
+  * 10th frame rule
+  * Perfect game
+I lost a bit of time by trying to introduce the rules for strikes before I had implemented spares. The difficulty in passing my feature tests at this point took me back to my planning to consider again what would be easier to implement at this point.
+Repetition and difficulty in constructing clear, simple methods also led me to extract a Frame class, which held responsibility suitable for a Frame (storing rolls and knowing if a frame is complete or not) and leaving calculating of scores to the Scorecard. I feel like perhaps further logic in Scorecard class could perhaps be extracted to the Frame class. To consider in a future refactor.

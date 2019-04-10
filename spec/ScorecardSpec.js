@@ -127,6 +127,31 @@ describe('Scorecard', function() {
     })
   })
 
+  describe('game with mix of strikes and spares', function() {
+    it('calculates correct score and knows game is complete', function() {
+      scorecard.roll(6)
+      scorecard.roll(3)
+      scorecard.roll(4)
+      scorecard.roll(2)
+      scorecard.roll(9)
+      scorecard.roll(1)
+      scorecard.roll(10)
+      scorecard.roll(4)
+      scorecard.roll(5)
+      scorecard.roll(7)
+      scorecard.roll(3)
+      scorecard.roll(9)
+      scorecard.roll(0)
+      scorecard.roll(10)
+      scorecard.roll(6)
+      scorecard.roll(3)
+      scorecard.roll(7)
+      scorecard.roll(2)
+      expect(scorecard.total()).toEqual(128)
+      expect(scorecard.isComplete()).toEqual(true)
+    })
+  })
+
   describe('10th frame spare/strike rules', function() {
     it('identifies game is not complete with spare on 10th frame', function() {
       for (i = 1; i <= 18; i++) {

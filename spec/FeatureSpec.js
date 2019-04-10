@@ -175,4 +175,20 @@ describe('Feature Test', function() {
   })
 })
 
+describe('10th frame spare/strike rules', function() {
+  it('hits spare on 10th frame', function() {
+    for (i = 1; i <= 18; i++) {
+      scorecard.roll(4);
+    }
+    scorecard.roll(9)
+    scorecard.roll(1)
+    expect(scorecard.isComplete()).toEqual(false)
+    scorecard.roll(7)
+    expect(scorecard.total()).toEqual(89)
+    expect(scorecard.isComplete()).toEqual(true)
+  })
+})
+
+// NEXT AFTER THAT: Perfect game
+
 });

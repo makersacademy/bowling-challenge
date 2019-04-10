@@ -21,7 +21,7 @@ Scorecard.prototype = {
   },
 
   isComplete: function() {
-    if ( this.frameLog.length < this.framesTotal ) {
+    if ( this.frameLog.length < this.framesTotal || this._tenthFrameIsSpare()) {
       return false;
     } else {
       return true;
@@ -74,6 +74,14 @@ Scorecard.prototype = {
     if (this._isPreviousButOneFrameStrike() && this._previousFrame().isStrike()) {
       this._previousButOneFrame().bonus += this._currentFrame().firstRoll;
       this._score += this._currentFrame().firstRoll;
+    }
+  },
+
+  _tenthFrameIsSpare: function() {
+    if (this.frameLog[9].score() === 10) {
+      return true
+    } else {
+      return false
     }
   },
 

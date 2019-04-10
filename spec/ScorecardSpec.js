@@ -127,4 +127,15 @@ describe('Scorecard', function() {
     })
   })
 
+  describe('10th frame spare/strike rules', function() {
+    it('identifies game is not complete with spare on 10th frame', function() {
+      for (i = 1; i <= 18; i++) {
+        scorecard.roll(3);
+      }
+      scorecard.roll(7)
+      scorecard.roll(3)
+      expect(scorecard.isComplete()).toEqual(false)
+    });
+  })
+
 });

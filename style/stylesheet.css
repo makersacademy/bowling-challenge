@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Monoton');
+@import url('https://fonts.googleapis.com/css?family=Heebo');
+
+body {
+  background-image: url("https://images.unsplash.com/photo-1518620025093-fbca064bdd9a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80");
+  background-size: 100%;
+  color: maroon;
+  font-family: 'Heebo', sans-serif;
+}
+
+h1, h2 {
+  font-family: 'Monoton', cursive;
+  text-align: center;
+}
+table {
+  text-align: center;
+  border-collapse: collapse;
+  margin: 10px;
+}
+
+table, th, td {
+  border: 1px solid white;
+  background-color: grey;
+}
+
+.scorecard {
+  background-color: rgb(128,128,128, .5);
+  height: 100%;
+  width: 800px;
+  margin: 0 auto;
+}

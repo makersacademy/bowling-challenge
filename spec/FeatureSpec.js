@@ -201,6 +201,15 @@ describe('10th frame spare/strike rules', function() {
   })
 })
 
-// NEXT AFTER THAT: Perfect game
+describe('perfect game', function() {
+  it('hits strike on every game', function() {
+    for (i = 1; i <= 12; i++) {
+      scorecard.roll(10);
+    }
+    console.log(scorecard.frameLog)
+    expect(scorecard.total()).toEqual(300)
+    expect(scorecard.isComplete()).toEqual(true)
+  })
+})
 
 });

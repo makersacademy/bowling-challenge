@@ -76,6 +76,9 @@ Scorecard.prototype = {
   },
 
   _updateStrikeBonus: function() {
+    if (this.frameLog.length > 11) {
+      return
+    }
     if (this._isPreviousButOneFrameStrike() && this._previousFrame().isStrike()) {
       this._previousButOneFrame().bonus += this._currentFrame().firstRoll;
       this._score += this._currentFrame().firstRoll;

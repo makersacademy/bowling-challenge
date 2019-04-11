@@ -1,51 +1,187 @@
-'use strict';
-
 describe('Scorecard', function() {
-  var scorecard;
-  var frame;
-  var game;
 
-  beforeEach(function(){
-    scorecard = new Scorecard();
-    frame = new Frame(1,2);
+  var scorecard;
+
+  beforeEach(function() {
+    scorecard = new Scorecard;
+  });
+
+  describe('Gutter Game', function() {
+
+    it('returns 0 for the total', function() {
+      for (i = 1; i <= 20; i++) {
+        scorecard.roll(0);
+      }
+      expect(scorecard.total()).toEqual(0);
+    });
+
+    it('returns true for the game being complete', function() {
+      for (i = 1; i <= 20; i++) {
+        scorecard.roll(0);
+      }
+      expect(scorecard.isComplete()).toEqual(true);
+    });
+  });
+
+  describe('no strikes or spares complete game', function() {
+
+    it('total is 20 for game rolling only 1', function() {
+      for (i = 1; i <= 20; i++) {
+        scorecard.roll(1);
+      }
+      expect(scorecard.total()).toEqual(20);
+    });
+
+  });
+
+  describe('no strikes or spares incomplete game', function() {
+
+    it('total is 20 for game rolling only 1', function() {
+      for (i = 1; i <= 12; i++) {
+        scorecard.roll(1);
+      }
+      expect(scorecard.total()).toEqual(12);
+    });
+
+    it('returns false for #isComplete function', function() {
+      for (i = 1; i <= 12; i++) {
+        scorecard.roll(1);
+      }
+      expect(scorecard.isComplete()).toEqual(false);
+    });
+  });
+
+  describe('spare and incomplete game', function() {
+    it('spare on 1st frame - adds bonus to score', function() {
+      scorecard.roll(1);
+      scorecard.roll(9);
+      scorecard.roll(4);
+      scorecard.roll(5);
+      expect(scorecard.total()).toEqual(23)
+    });
+
+    it('spare on 7th frame - adds bonus to score', function() {
+      for (i = 1; i <= 12; i++) {
+        scorecard.roll(2);
+      }
+      scorecard.roll(7);
+      scorecard.roll(3);
+      for (i = 1; i <= 6; i++) {
+        scorecard.roll(3);
+      }
+      expect(scorecard.total()).toEqual(55);
+    });
+  });
+
+  describe('spare and complete game', function() {
+    it('spare on 1st frame - adds bonus to score', function() {
+      scorecard.roll(9);
+      scorecard.roll(1);
+      for (i = 1; i <= 18; i++) {
+        scorecard.roll(4);
+      }
+      expect(scorecard.total()).toEqual(86);
+    });
+
+    it('spare on 6th frame - adds bonus to score', function() {
+      for (i = 1; i <= 10; i++) {
+        scorecard.roll(4);
+      }
+      scorecard.roll(8);
+      scorecard.roll(2);
+      for (i = 1; i <= 8; i++) {
+        scorecard.roll(3);
+      }
+      expect(scorecard.total()).toEqual(77);
+    })
+
+  });
+
+  describe('strike and incomplete game', function() {
+    it('strike on the 1st roll and 2nd frame less than 10', function() {
+      scorecard.roll(10);
+      scorecard.roll(3);
+      scorecard.roll(4);
+      expect(scorecard.total()).toEqual(24);
+    });
   })
 
-  it('frames is empty as default', function() {
-    expect(scorecard.frames.length).toEqual(0);
-  });
+  describe('strike and complete game', function() {
+    it('strike on 1st roll and all other frames less than 10', function() {
+      scorecard.roll(10);
+      for (i = 1; i <= 18; i++) {
+        scorecard.roll(3);
+      }
+      expect(scorecard.total()).toEqual(70)
+    })
 
-  it('score is 0 as default', function() {
-    expect(scorecard.score).toEqual(0);
-  });
+    it('strike on 5th roll and all other frames less than 10', function() {
+      for (i = 1; i <= 8; i++) {
+        scorecard.roll(3);
+      }
+      scorecard.roll(10)
+      for (i = 1; i <= 10; i++) {
+        scorecard.roll(3);
+      }
+      expect(scorecard.total()).toEqual(70)
+    })
+  })
 
-  describe('#takeFrames', function() {
+  describe('game with mix of strikes and spares', function() {
+    it('calculates correct score and knows game is complete', function() {
+      scorecard.roll(2)
+      scorecard.roll(5)
+      scorecard.roll(4)
+      scorecard.roll(1)
+      scorecard.roll(9)
+      scorecard.roll(1)
+      scorecard.roll(10)
+      scorecard.roll(4)
+      scorecard.roll(3)
+      scorecard.roll(7)
+      scorecard.roll(3)
+      scorecard.roll(9)
+      scorecard.roll(0)
+      scorecard.roll(10)
+      scorecard.roll(4)
+      scorecard.roll(3)
+      scorecard.roll(6)
+      scorecard.roll(2)
+      expect(scorecard.total()).toEqual(116)
+      expect(scorecard.isComplete()).toEqual(true)
+    })
+  })
 
-    it('accepts 10 frames', function() {
-      for(var i=0; i < 10; i++){
-        scorecard.takeFrames(frame)
-      };
-      // expect(scorecard.frames).toEqual('Test')
-      expect(scorecard.frames.length).toEqual(10);
+  describe('10th frame spare/strike rules', function() {
+    it('identifies game is not complete with spare on 10th frame', function() {
+      for (i = 1; i <= 18; i++) {
+        scorecard.roll(3);
+      }
+      scorecard.roll(7)
+      scorecard.roll(3)
+      expect(scorecard.isComplete()).toEqual(false)
     });
 
-    it('takes no more than 10 frames', function() {
-      for(var i=0; i < 10; i++){
-        scorecard.takeFrames(frame)
-      };
-      scorecard.takeFrames(frame)
-      expect(scorecard.frames.length).toEqual(10);
-    });
+    it('calculates score with strike on 10th frame', function() {
+      for (i = 1; i <= 18; i++) {
+        scorecard.roll(4);
+      }
+      scorecard.roll(10)
+      scorecard.roll(10)
+      scorecard.roll(1)
+      scorecard.roll(4)
+      expect(scorecard.total()).toEqual(97)
+    })
 
-  });
-
-  describe('#scoreGame', function() {
-    var scorecard = new Scorecard;
-    var frame1 = [2,3]
-    it('tots up score', function() {
-      scorecard.takeFrames(frame1);
-      expect(scorecard.scoreGame()).toEqual(5);
-      // expect(scorecard.score).toEqual(5);
-    });
-  });
+    it('knows the game is complete after three throws in 10th frame', function() {
+      for (i = 1; i <= 18; i++) {
+        scorecard.roll(4);
+      }
+      scorecard.roll(10)
+      scorecard.roll(8)
+      scorecard.roll(1)
+      expect(scorecard.isComplete()).toEqual(true)
+    })
+  })
 
 });

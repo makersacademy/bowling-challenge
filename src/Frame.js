@@ -1,22 +1,46 @@
+function Frame() {
+  this.firstRoll = null;
+  this.secondRoll = null;
+  this.bonus = 0;
+}
 
-function Frame(score1, score2) {
-  this.turn = [score1, score2];
-  this.score = 0;
-};
+Frame.prototype = {
 
-Frame.prototype.roundScore = function() {
+  constructor: Frame,
 
-  const result = this.turn[0] + this.turn[1];
+  roll: function(pins) {
+    if (this.firstRoll === null) {
+      this.firstRoll = pins;
+    } else {
+      this.secondRoll = pins;
+    };
+  },
 
-  this.score += result;
-  // if (this.turn[0] === 10) {
-  //   this.score += 10;
-  // }
-  // if (this.turn[0] !== 10 && result === 10) {
-  //   this.score += 10;
-  // }
-  // if (result !== 10) {
-  //   this.score += result;
-  // };
+  isComplete: function() {
+    if (this.firstRoll === 10 || this.secondRoll !== null) {
+      return true
+    } else {
+      return false
+    };
+  },
 
+  score: function() {
+    return this.firstRoll + this.secondRoll + this.bonus;
+  },
+
+  isSpare: function() {
+    if (this.firstRoll !== 10 && this.score() === 10) {
+      return true
+    } else {
+      return false
+    };
+  },
+
+  isStrike: function() {
+    if (this.firstRoll === 10) {
+      return true
+    } else {
+      return false
+    }
+  }
 };

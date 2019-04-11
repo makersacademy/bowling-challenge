@@ -71,20 +71,26 @@ Game.prototype.recordBall = function(score) {
   }
 
   function calculateBonusPoints(score, frames, bonusList) {
-    if (bonusList.length > 0){
-      for(let i = 0; i<bonusList.length; i++){
-        let bonusItem = bonusList[i]
-        if (bonusItem['bonusType'] == "strike") {
-          if (bonusItem['bonusPoints']) {
-            frames[bonusItem['frameScored']].frameTotal += bonusItem['bonusPoints'] + score;
-            bonusList.pop(bonusItem);
-          } else {
-            bonusItem['bonusPoints'] = score;
-          }
-        } else if (bonusItem['bonusType'] == "spare") {
-          frames[bonusItem['frameScored']].frameTotal += score;
-          bonusList.pop(bonusItem);
+    for(let i = 0; i<bonusList.length; i++){
+      let bonusItem = bonusList[i]
+      if (bonusItem['bonusType'] == "strike") {
+        console.log(frames);
+        if (bonusItem['bonusPoints']) {
+          frames[bonusItem['frameScored']].frameTotal += bonusItem['bonusPoints'] + score;
+          console.log(bonusList);
+          bonusList.splice(i, 1);
+          console.log(bonusList);
+
+        } else {
+          bonusItem['bonusPoints'] = score;
         }
+      } else if (bonusItem['bonusType'] == "spare") {
+        frames[bonusItem['frameScored']].frameTotal += score;
+        // bonusList.pop(bonusItem);
+        bonusList.splice(i, 1);
+        // bonusList.shift;
+
+
       }
     }
   }

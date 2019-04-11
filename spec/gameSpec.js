@@ -51,7 +51,6 @@ describe('Game', function(){
         expect(game.bonuses.length).toEqual(1);
         game.recordBall(7);
         expect(game.calculateTotal()).toEqual(24);
-        console.log(game.frames);
         expect(game.frames[0].frameTotal).toEqual(17);
     });
   })
@@ -69,8 +68,17 @@ describe('Game', function(){
     });
   })
 
+  describe("Strike", function(){
+    it("two strikes in a row", function(){
+      game.recordBall(10);
+      expect(game.frames.length).toEqual(1);
+      game.recordBall(10);
+      expect(game.frames.length).toEqual(2);
+    });
+  })
+
   describe("Round 10 with a bonus score", function(){
-    
+
   })
 
 });

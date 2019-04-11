@@ -8,6 +8,12 @@ This weekend (and next) the focus is on JavaScript. This is a totally new langua
 - HTML and CSS for the web page
 - Jasmine for the tests
 - ESLint for the linter
+- Node.js and travis for automated tests
+- Karma for running tests
+    - `npm install karma --save-dev`
+    - `npm install karma-jasmine karma-firefox-launcher --save-dev`
+    - `npm install -g karma-cli`
+
 
 ## Setting up the project
 - `git clone `

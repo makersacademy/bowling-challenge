@@ -2,7 +2,7 @@
 language: node_js
 
 node_js:
-    - "0.10"
+    - "node"
 
 script: node_modules/karma/bin/karma start my.conf.js --single-run
 

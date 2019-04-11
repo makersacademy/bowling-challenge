@@ -8,24 +8,79 @@ body {
   font-family: 'Heebo', sans-serif;
 }
 
-h1, h2 {
+h1, h4 {
   font-family: 'Monoton', cursive;
   text-align: center;
 }
+
+h1 {
+  font-size: 56px;
+}
+
+h4 {
+  font-size: 25px;
+}
+
 table {
   text-align: center;
   border-collapse: collapse;
-  margin: 10px;
+  margin: 20px;
 }
 
 table, th, td {
   border: 1px solid white;
   background-color: grey;
+  font-size: 20px;
+}
+
+.score-table td {
+  width: 30px;
+  background-color: darkgrey;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.frame-and-score {
+  display: flex;
+  justify-content: space-around;
 }
 
 .scorecard {
   background-color: rgb(128,128,128, .5);
-  height: 100%;
-  width: 800px;
-  margin: 0 auto;
+  width: 80%;
+}
+
+.score-buttons, .score-table {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  background-color: maroon;
+  border-style: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 2rem;
+  margin-top: 1rem;
+  margin: auto;
+  padding: 0.5rem;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  width: 8%;
+}
+
+button:hover {
+  background-color: white;
+  color: maroon;
+}
+
+button:active {
+  transform: translateY(4px);
 }

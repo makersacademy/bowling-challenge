@@ -8,7 +8,7 @@ Frame.prototype = {
 
   constructor: Frame,
 
-  roll: function(pins) {
+  roll(pins) {
     if (this.firstRoll === null) {
       this.firstRoll = pins;
     } else {
@@ -16,31 +16,32 @@ Frame.prototype = {
     }
   },
 
-  isComplete: function() {
+  isComplete() {
     if (this.firstRoll === 10 || this.secondRoll !== null) {
-      return true
-    } else {
-      return false
+      return true;
     }
+    return false;
   },
 
-  score: function() {
+  score() {
     return this.firstRoll + this.secondRoll + this.bonus;
   },
 
-  isSpare: function() {
+  isSpare() {
     if (this.firstRoll !== 10 && this.score() === 10) {
-      return true
-    } else {
-      return false
+      return true;
     }
+    return false;
   },
 
-  isStrike: function() {
+  isStrike() {
     if (this.firstRoll === 10) {
-      return true
-    } else {
-      return false
+      return true;
     }
-  }
+    return false;
+  },
+};
+
+if (typeof module !== 'undefined') {
+  module.exports = Frame;
 }

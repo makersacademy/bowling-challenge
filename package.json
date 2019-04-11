@@ -1,0 +1,39 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "This weekend (and next) the focus is on JavaScript. This is a totally new language and concept for me. My weekend challenge will be focusing on what have I learned about JavaScript this week, and how can I continue to use the same process to learn more about it. The challenge itself this week is complex so I am going to focus on understanding the business logic first, implementing the user interface second.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samanthaixer/bowling-challenge.git"
+  },
+  "author": "Samantha Ixer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samanthaixer/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/samanthaixer/bowling-challenge#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "karma": "^4.0.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-firefox-launcher": "^1.1.0",
+    "karma-jasmine": "^2.0.1"
+  },
+  "dependencies": {},
+  "keywords": [
+    "bowling",
+    "strike",
+    "spare",
+    "this",
+    "is",
+    "hard"
+  ]
+}

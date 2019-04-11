@@ -12,7 +12,7 @@ Frame.prototype = {
       this.firstRoll = pins;
     } else {
       this.secondRoll = pins;
-    }
+    };
   },
 
   isDone: function() {
@@ -20,6 +20,10 @@ Frame.prototype = {
       return false
     } else {
       return true
-    }
+    };
+  },
+
+  score: function() {
+    return this.firstRoll + this.secondRoll; // basic as possible logic
   }
-}
+};

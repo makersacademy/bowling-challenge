@@ -40,4 +40,12 @@ describe("Frame", function() {
     });
   });
 
+  describe('#score', function() {
+    it('calculates the score of frame', function() {
+      frame.roll(2);
+      frame.roll(3);
+      expect(frame.score()).toEqual(5)
+    })
+  });
+
 });

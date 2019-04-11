@@ -5,13 +5,21 @@ function Frame() {
 
 Frame.prototype = {
 
-   constructor: Frame, // tider syntax
+  constructor: Frame, // tider syntax
 
-   roll: function(pins) {
-     if (this.firstRoll === null) {
-     this.firstRoll = pins;
-   } else {
-     this.secondRoll = pins;
-   }
+  roll: function(pins) {
+    if (this.firstRoll === null) {
+      this.firstRoll = pins;
+    } else {
+      this.secondRoll = pins;
+    }
+  },
+
+  isDone: function() {
+    if (this.secondRoll === null) {
+      return false
+    } else {
+      return true
+    }
   }
 }

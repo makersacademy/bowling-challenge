@@ -1,29 +1,46 @@
 function Frame() {
   this.firstRoll = null;
   this.secondRoll = null;
+  this.bonus = 0;
 }
 
 Frame.prototype = {
 
-  constructor: Frame, // tider syntax
+  constructor: Frame,
 
   roll: function(pins) {
     if (this.firstRoll === null) {
       this.firstRoll = pins;
     } else {
       this.secondRoll = pins;
-    };
+    }
   },
 
-  isDone: function() {
-    if (this.secondRoll === null) {
-      return false
-    } else {
+  isComplete: function() {
+    if (this.firstRoll === 10 || this.secondRoll !== null) {
       return true
-    };
+    } else {
+      return false
+    }
   },
 
   score: function() {
-    return this.firstRoll + this.secondRoll; // basic as possible logic
+    return this.firstRoll + this.secondRoll + this.bonus;
+  },
+
+  isSpare: function() {
+    if (this.firstRoll !== 10 && this.score() === 10) {
+      return true
+    } else {
+      return false
+    }
+  },
+
+  isStrike: function() {
+    if (this.firstRoll === 10) {
+      return true
+    } else {
+      return false
+    }
   }
-};
+}

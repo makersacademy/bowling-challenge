@@ -8,7 +8,6 @@ $(document).ready(function() {
     $(name).on('change', function() {
       let score = $(name)[0].value;
       game.recordBall(parseInt(score, 10));
-      game.calculateBonusPoints();
       $(name).attr('readonly', true);
       updateTotals();
     });
@@ -17,8 +16,8 @@ $(document).ready(function() {
   function updateTotals() {
     for(let num = 0; num<8; num++){
       let name = '#frameTotal' + parseInt(num+1, 10);
-      if(game.frames[num]){
-        $(name).text("Frame Total: " + game.frames[num].frameTotal);
+      if(game.frameList[num]){
+        $(name).text("Frame Total: " + game.frameList[num].total);
       }
     }
     $('#gameTotal').text("Game Total: " + game.calculateTotal());

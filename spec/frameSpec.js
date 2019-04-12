@@ -46,4 +46,17 @@ describe('Frame', function(){
     });
   });
 
+  describe("the final frame", function() {
+    it("allows 3 balls to be rolled", function(){
+      frame.recordScore(10, true);
+      expect(frame.isComplete()).toBe(false);
+      frame.recordScore(10, true);
+      expect(frame.isComplete()).toBe(false);
+      frame.recordScore(10, true);
+      expect(frame.isComplete()).toBe(true);
+      expect(frame.balls).toEqual([10, 10, 10]);
+      expect(frame.total).toEqual(30);
+    });
+  });
+
 });

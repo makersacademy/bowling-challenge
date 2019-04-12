@@ -4,6 +4,7 @@ function Game() {
   this.complete = false;
   this.frameList = [];
   this.bonuses = [];
+  this.lastRound = false;
 }
 
 Game.prototype.recordBall = function(score) {
@@ -15,24 +16,28 @@ Game.prototype.recordBall = function(score) {
     return this;
   }
 
+  if (this.frameList.length === 9 && this.frameList.slice(-1)[0].isComplete() === true) {
+    this.lastRound = true;
+  }
+
   if (this.frameList.slice(-1)[0].isComplete() === false) {
-    addToFrame(score, this.frameList.slice(-1)[0]);
+    addToFrame(score, this.frameList.slice(-1)[0], this.lastRound);
   }
   else {
-    this.frameList.push(createNewFrame(score));
+    this.frameList.push(createNewFrame(score, this.lastRound));
   }
 
   this.complete = checkEndOfGame(this.frameList);
 
   Game.prototype.addBonusScores(this.frameList);
 
-  function createNewFrame(score) {
+  function createNewFrame(score, lastRound = false) {
     let frame = new Frame();
-    return frame.recordScore(score);
+    return frame.recordScore(score, lastRound);
   }
 
-  function addToFrame(score, frame) {
-    frame.recordScore(score);
+  function addToFrame(score, frame, lastRound = false) {
+    frame.recordScore(score, lastRound);
   }
 
   function checkEndOfGame(frameList) {
@@ -46,7 +51,7 @@ Game.prototype.recordBall = function(score) {
 Game.prototype.addBonusScores = function(frameList) {
   frameList.forEach(function (frame, index) {
     let bonusPoints = 0;
-    isTen = frame.balls.reduce(function(total, ball) { return total += ball; }, 0);
+    let isTen = frame.balls.reduce(function(total, ball) { return total += ball; }, 0);
     if(isTen === 10 && frame.total === 10) {
       if(frameList[index+1]) {
         if (frame.balls.length === 1 ) {

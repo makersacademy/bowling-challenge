@@ -2,42 +2,29 @@
 
 function Game() {
   this.complete = false;
-  this.frames = [];
+  this.frameList = [];
   this.bonuses = [];
 }
 
 Game.prototype.recordBall = function(score) {
 
-  if(this.complete === true) { return this.frames; }
+  if (this.complete === true) { return this.frameList; }
 
-  if (this.frames.length === 0) {
-    // very first ball
-    this.frames.push(createNewFrame(score));
-
-    bonus = checkForBonusScore(score, this.frames, this.bonuses);
-    if (bonus) { this.bonuses.push(bonus); };
-    // no need to calculate bonus points as this is only on the first ball
+  if (this.frameList.length === 0) {
+    this.frameList.push(createNewFrame(score));
     return this;
   }
 
-  if (this.frames.slice(-1)[0].isComplete() == false) {
-    addToFrame(score, this.frames.slice(-1)[0]);
-    this.complete = checkEndOfGame(this.frames);
-
-    calculateBonusPoints(score, this.frames, this.bonuses);
-    bonus = checkForBonusScore(score, this.frames, this.bonuses);
-    if (bonus) { this.bonuses.push(bonus); };
-    return this;
+  if (this.frameList.slice(-1)[0].isComplete() === false) {
+    addToFrame(score, this.frameList.slice(-1)[0]);
   }
   else {
-    this.frames.push(createNewFrame(score));
-    this.complete = checkEndOfGame(this.frames);
-
-    calculateBonusPoints(score, this.frames, this.bonuses);
-    bonus = checkForBonusScore(score, this.frames, this.bonuses);
-    if (bonus) { this.bonuses.push(bonus); };
-    return this;
+    this.frameList.push(createNewFrame(score));
   }
+
+  this.complete = checkEndOfGame(this.frameList);
+
+  Game.prototype.addBonusScores(this.frameList);
 
   function createNewFrame(score) {
     let frame = new Frame();
@@ -48,53 +35,45 @@ Game.prototype.recordBall = function(score) {
     frame.recordScore(score);
   }
 
-  function checkEndOfGame(frames) {
-    if (frames.length === 10 && frames.slice(-1)[0].isComplete() == true) {
+  function checkEndOfGame(frameList) {
+    if (frameList.length === 10 && frameList.slice(-1)[0].isComplete() === true) {
       return true;
     } else { return false; }
   }
 
-  function checkForBonusScore(score, frames, bonuses) {
-    let lastFrame = frames.slice(-1)[0]
-    if (lastFrame.frameTotal === 10){
-      // spare or strike
-      return createBonus(lastFrame, bonuses, frames.length-1);
-    }
-  }
+}
 
-  function createBonus(frame, bonuses, frameNumber) {
-    let type = "";
-    if (frame.balls[1]) { type = "spare"; }
-    else { type = "strike"; }
+Game.prototype.addBonusScores = function(frameList) {
+  frameList.forEach(function (frame, index) {
+    let bonusPoints = 0;
+    isTen = frame.balls.reduce(function(total, ball) { return total += ball; }, 0);
+    if(isTen === 10 && frame.total === 10) {
+      if(frameList[index+1]) {
+        if (frame.balls.length === 1 ) {
+          // strike
+          let ball1 = frameList[index+1].balls[0]
+          let ball2 = null;
+          if (frameList[index+1].balls[0] === 10 && frameList[index+2]){
+            ball2 = frameList[index+2].balls[0];
+          }
+          else {
+            ball2 = frameList[index+1].balls[1]
+          }
 
-    return {bonusType: type, frameScored: frameNumber};
-  }
-
-  function calculateBonusPoints(score, frames, bonusList) {
-    for(let i = 0; i<bonusList.length; i++){
-      let bonusItem = bonusList[i]
-      if (bonusItem['bonusType'] == "strike") {
-        console.log(frames);
-        if (bonusItem['bonusPoints']) {
-          frames[bonusItem['frameScored']].frameTotal += bonusItem['bonusPoints'] + score;
-          console.log(bonusList);
-          bonusList.splice(i, 1);
-          console.log(bonusList);
-
-        } else {
-          bonusItem['bonusPoints'] = score;
+          if (ball2){
+            bonusPoints += ball1 + ball2;
+          }
         }
-      } else if (bonusItem['bonusType'] == "spare") {
-        frames[bonusItem['frameScored']].frameTotal += score;
-        // bonusList.pop(bonusItem);
-        bonusList.splice(i, 1);
-        // bonusList.shift;
-
-
+        else {
+          // spare
+          let ball1 = frameList[index+1].balls[0]
+          bonusPoints += ball1;
+        }
       }
     }
-  }
-};
+    frame.total += bonusPoints;
+  });
+}
 
 Game.prototype.isComplete = function() {
   return this.complete;
@@ -102,9 +81,8 @@ Game.prototype.isComplete = function() {
 
 Game.prototype.calculateTotal = function() {
   let total = 0;
-  for(let i=0; i<this.frames.length; i++){
-    let frame = this.frames[i];
-    total += frame.frameTotal;
-  }
+  this.frameList.forEach(function(frame){
+    total += frame.total;
+  });
   return total;
 }

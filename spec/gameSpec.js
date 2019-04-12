@@ -26,20 +26,20 @@ describe('Game', function(){
       expect(game.isComplete()).toBe(true);
     });
 
-    it("can see that all frames are complete after 20 rolls of zero", function(){
+    it("can see that all frameList are complete after 20 rolls of zero", function(){
       for(let i=0; i<20; i++){
         game.recordBall(0);
       }
-      expect(game.frames.slice(-1)[0].isComplete()).toBe(true);
+      expect(game.frameList.slice(-1)[0].isComplete()).toBe(true);
     });
 
-    it("records two frames in a row correctly", function(){
+    it("records two frameList in a row correctly", function(){
       for(let i=0; i<4; i++) {
         game.recordBall(4);
       }
       expect(game.isComplete()).toBe(false);
       expect(game.calculateTotal()).toEqual(16);
-      expect(game.frames.length).toEqual(2);
+      expect(game.frameList.length).toEqual(2);
     });
   });
 
@@ -48,10 +48,9 @@ describe('Game', function(){
         game.recordBall(3);
         game.recordBall(7);
         expect(game.calculateTotal()).toEqual(10);
-        expect(game.bonuses.length).toEqual(1);
         game.recordBall(7);
         expect(game.calculateTotal()).toEqual(24);
-        expect(game.frames[0].frameTotal).toEqual(17);
+        expect(game.frameList[0].total).toEqual(17);
     });
   })
 
@@ -59,23 +58,33 @@ describe('Game', function(){
     it("strike - records 10 for the frame after a strike but then updates the frame with bonus points", function(){
       game.recordBall(10);
       expect(game.calculateTotal()).toEqual(10);
-      expect(game.frames[0].frameTotal).toEqual(10);
-      expect(game.bonuses.length).toEqual(1);
+      expect(game.frameList[0].total).toEqual(10);
       game.recordBall(7);
       game.recordBall(2);
+      console.log(game.frameList)
       expect(game.calculateTotal()).toEqual(28);
-      expect(game.frames[0].frameTotal).toEqual(19);
+      expect(game.frameList[0].total).toEqual(19);
     });
   })
 
   describe("Strike", function(){
     it("two strikes in a row", function(){
       game.recordBall(10);
-      expect(game.frames.length).toEqual(1);
+      expect(game.frameList.length).toEqual(1);
       game.recordBall(10);
-      expect(game.frames.length).toEqual(2);
+      expect(game.frameList.length).toEqual(2);
     });
   })
+
+  // describe("Next2Balls", function(){
+  //   it("returns the two balls in the frameList following the bonus", function(){
+  //     game.recordBall(10);
+  //     game.recordBall(7);
+  //     game.recordBall(2);
+  //     console.log(game.frameList);
+  //     expect(game.getNextTwoBalls()).toEqual(9);
+  //   });
+  // })
 
   describe("Round 10 with a bonus score", function(){
 

@@ -8,6 +8,7 @@ $(document).ready(function() {
     $(name).on('change', function() {
       let score = $(name)[0].value;
       game.recordBall(parseInt(score, 10));
+      game.calculateBonusPoints();
       $(name).attr('readonly', true);
       updateTotals();
     });

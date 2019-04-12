@@ -50,26 +50,30 @@ describe("Bonus scores in rounds 1-9", function(){
       for(let i=0; i<10; i++){
         game.recordBall(3);
       }
+      // console.log("Strike test");
+      // console.log(game.frameList);
       expect(game.calculateTotal()).toEqual(30);
       game.recordBall(10);
       game.recordBall(7);
       game.recordBall(7);
       expect(game.calculateTotal()).toEqual(68);
     });
+  });
 
-    // it("correctly allows 2 strikes in a row", function(){
-    //   game = new Game();
-    //   for(let i=0; i<8; i++){
-    //     game.recordBall(3);
-    //   }
-    //   expect(game.calculateTotal()).toEqual(24);
-    //   game.recordBall(10);
-    //   game.recordBall(10);
-    //   game.recordBall(7);
-    //   game.recordBall(5);
-    //   // 24 + (10 + 10 + 7) + (10 + 7 + 5) + 7 + 5
-    //   expect(game.calculateTotal()).toEqual(85);
-    // });
-
+  describe("DoubleStrike", function(){
+    it("correctly allows 2 strikes in a row", function(){
+      game = new Game();
+      for(let i=0; i<8; i++){
+        game.recordBall(3);
+      }
+      expect(game.calculateTotal()).toEqual(24);
+      game.recordBall(10);
+      game.recordBall(10);
+      game.recordBall(7);
+      game.recordBall(5);
+      game.recordBall(5);
+      // 24 + (10 + 10 + 7) + (10 + 7 + 5) + 7 + 5 + 5
+      expect(game.calculateTotal()).toEqual(90);
+    });
   });
 });

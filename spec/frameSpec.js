@@ -22,7 +22,7 @@ describe('Frame', function(){
     it("updates the frame total correctly", function(){
       frame.recordScore(3);
       frame.recordScore(4);
-      expect(frame.frameTotal).toEqual(7);
+      expect(frame.total).toEqual(7);
     });
 
     it("doesn't add further scores to the frame after completion", function(){
@@ -35,6 +35,14 @@ describe('Frame', function(){
     it("sets the frame to complete after first roll of a strike", function(){
       frame.recordScore(10);
       expect(frame.isComplete()).toBe(true);
+      expect(frame.balls).toEqual([10]);
+    });
+
+    it("only contains one ball in the first frame", function(){
+      frame.recordScore(10);
+      frame.recordScore(7);
+      expect(frame.isComplete()).toBe(true);
+      expect(frame.balls).toEqual([10]);
     });
   });
 

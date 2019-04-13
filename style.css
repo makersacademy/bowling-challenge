@@ -1,0 +1,126 @@
+body
+{
+  background-image: url("img/background.png");
+}
+
+button
+{
+  color: yellow;
+  background-color: black;
+  cursor: pointer;
+}
+
+button:hover
+{
+  background-color: yellow;
+  color: red;
+  text-decoration: underline;
+  opacity: 0.7;
+}
+
+.gamefinished
+{
+  width: 300px;
+  height: 80px;
+  border-radius: 40px;
+  margin-left: 480px;
+  margin-top: 20px;
+  font-size: 30px;
+}
+
+.buttons
+{
+  width: 80px;
+  height: 80px;
+  font-size: 40px;
+  border-color: red;
+  border-width: 5px;
+  border-radius: 40px;
+  text-align: center;
+  -webkit-box-shadow: 6px -14px 216px 0px rgba(255,8,8,1);
+  -moz-box-shadow: 6px -14px 216px 0px rgba(255,8,8,1);
+  box-shadow: 6px -14px 216px 0px rgba(255,8,8,1);
+  margin-left: 20px;
+}
+
+#header
+{
+  text-align: center;
+  margin-top: 90px;
+  color: white;
+  font-size: 65px;
+  -webkit-box-shadow: 6px -14px 216px 0px rgba(255,8,8,1);
+  -moz-box-shadow: 6px -14px 216px 0px rgba(255,8,8,1);
+  box-shadow: 6px -14px 216px 0px rgba(255,8,8,1);
+  text-shadow: 2px 2px #ff0000;
+}
+
+#numbers
+{
+  margin-top: 30px;
+  margin-left: 110px;
+}
+
+
+#container_frames
+{
+  height: 200px;
+  width: 200px;
+
+
+}
+
+.frame {
+  background-color: black;
+  color: yellow;
+  height: 200px;
+  text-align: right;
+  padding: 10px 3px;
+  border: 2px solid red;
+
+
+}
+
+.roll,
+.last_frame_roll {
+  color: black;
+  background-color: yellow;
+  border: 2px solid red;
+  text-align: right;
+  padding: 5px;
+  margin-top: 12px;
+  text-align: center;
+
+}
+#main {
+  margin-left: 100px;
+}
+
+#scoreboard
+{
+  margin-top: 70px;
+  opacity: 0.8;
+}
+#footer
+{
+  margin-top: 50px;
+  clear: both;
+  color: black;
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+}
+#test
+{
+    margin-top: 50px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 70px;
+
+text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;
+}
+.row-score-total
+{
+  margin-top: 40px;
+  text-align: center;
+}

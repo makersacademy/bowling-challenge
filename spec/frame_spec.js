@@ -1,7 +1,7 @@
 describe('Bowling frame', function() {
   
   var frame;
-  
+
   beforeEach(function() {
     frame = new Frame();
     
@@ -56,6 +56,13 @@ describe('Bowling frame', function() {
     frame.roll(2);
     frame.roll(3);
     expect( frame.total() ).toEqual(3);
+  });
+
+  it("given a frame, shows the total of the 2 rolls and keeps the result of the first roll, so calculates the bonus in case of Strike", function() {
+    frame.roll(2);
+    frame.roll(3);
+    expect( frame.get_first_roll() ).toEqual(2); // We need to fullfil this expectation where the lgic for the roll is (within this.roll in frame.js)
+    expect( frame.total() ).toEqual(5); // We do not need to do nothing else to fullfill this expectation, since it has been already accomplished with previous logic in this.roll in frame.js
   });
 
 });

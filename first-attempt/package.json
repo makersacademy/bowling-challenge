@@ -1,8 +1,12 @@
 {
   "name": "bowling-challenge",
   "version": "1.0.0",
-  "description": "Hivemind's Bowling Challenge Second Attempt",
+  "description": "Paul's Bowling Challenge",
   "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,24 +15,27 @@
     "url": "git+https://github.com/Hives/bowling-challenge.git"
   },
   "keywords": [
-    "bowling"
+    "bowling",
+    "gutterballs",
+    "sometimes you eat the bear, and sometimes the bear eats you"
   ],
-  "author": "Hivemind",
+  "author": "Paul Martin <communty.hivemind@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Hives/bowling-challenge/issues"
   },
   "homepage": "https://github.com/Hives/bowling-challenge#readme",
-  "dependencies": {
-    "jasmine": "^3.4.0",
-    "jasmine-terminal-reporter": "^1.0.3"
-  },
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.17.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jasmine": "^2.10.1",
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.1.1",
-    "eslint-plugin-standard": "^4.0.0"
-  }
+    "eslint-plugin-standard": "^4.0.0",
+    "jasmine": "^3.4.0",
+    "jasmine-terminal-reporter": "^1.0.3",
+    "nyc": "^13.3.0"
+  },
+  "dependencies": {}
 }

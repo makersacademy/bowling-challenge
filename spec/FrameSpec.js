@@ -193,13 +193,23 @@ describe("Frame", function() {
       ));
     });
 
-    it("prevents bonus roll when spare has not been scored", function() {
+    it("prevents first bonus roll when spare or strike has not been scored", function() {
       var frame10 = new Frame;
       scorecard.frames.push(frame10);
       frame10.enterFirstRollScore(6, scorecard);
       frame10.enterSecondRollScore(3, scorecard);
       expect(function() { frame10.enter10thFirstBonusRollScore(4, scorecard) }).toThrow(new Error(
         "This bonus roll is only available after 10th frame strike or spare is scored"
+      ));
+    });
+
+    it("prevents second bonus roll when strike has not been scored", function() {
+      var frame10 = new Frame;
+      scorecard.frames.push(frame10);
+      frame10.enterFirstRollScore(6, scorecard);
+      frame10.enterSecondRollScore(4, scorecard);
+      expect(function() { frame10.enter10thSecondBonusRollScore(4, scorecard) }).toThrow(new Error(
+        "This bonus roll is only available after 10th frame strike is scored"
       ));
     });
   });

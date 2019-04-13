@@ -63,14 +63,6 @@ describe("Gutter game", function() {
 
 // ---------------
 
-it("prevents bonus roll when spare has not been scored", function() {
-
-});
-
-it("prevents bonus roll when strike has not been scored", function() {
-
-});
-
 it("allows bonus rolls after strike", function() {
   var frame10 = new Frame;
   frame10.enterFirstRollScore(10, scorecard);

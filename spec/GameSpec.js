@@ -7,18 +7,29 @@ describe('Game', function () {
   var trueFunc = function () { return true }
   var falseFunc = function () { return false }
   var frame = {
-    addRoll: function () {}
+    addRoll: function () {},
+    addBonus: function () {},
+    isComplete: function () {},
+    isSpare: function () {},
+    roll1: null,
+    roll2: null
   }
   var completeFrame = {
     addRoll: function () {},
+    addBonus: function () {},
+    isSpare: function () {},
     isComplete: trueFunc
   }
   var incompleteFrame = {
     addRoll: function () {},
+    addBonus: function () {},
+    isSpare: function () {},
     isComplete: falseFunc
   }
   var frameWithAScoreOf23 = {
     addRoll: function () {},
+    addBonus: function () {},
+    isSpare: function () {},
     isComplete: function () { return true },
     score: function () {
       return 23
@@ -61,9 +72,11 @@ describe('Game', function () {
         it('it adds the roll to the first frame', function () {
           var index = 0
           var frameFactory = function() {
-            var frame = [frame1, frame2][index]
+            var output = index === 0 ?
+              frame1 :
+              frame2
             index++
-            return frame
+            return output
           }
           var frame1 = incompleteFrame
           var frame2 = frame
@@ -74,6 +87,106 @@ describe('Game', function () {
           game.roll(2)
           expect(frame1.addRoll).toHaveBeenCalledWith(2)
           expect(frame2.addRoll).not.toHaveBeenCalled()
+        })
+      })
+    })
+
+    describe('adding frame bonuses', function () {
+      describe('after rolling a 7', function () {
+        it('it does not add a frame bonus', function () {
+          var frameFactory = function() { return incompleteFrame }
+          var game = new Game(frameFactory)
+          spyOn(frame, 'addBonus')
+          game.roll(0)
+          expect(frame.addBonus).not.toHaveBeenCalled()
+        })
+      })
+
+      describe('after rolling a 7 and a 2', function () {
+        it('it adds a bonus of 0', function () {
+          var isComplete
+          var changeableFrame = {
+            addRoll: function () {},
+            addBonus: function () {},
+            roll1: 7,
+            roll2: 2,
+            isComplete: function () { return isComplete }
+          }
+          var frameFactory = function() {
+            return changeableFrame
+          }
+          var game = new Game(frameFactory)
+          spyOn(changeableFrame, 'addBonus')
+
+          isComplete = false
+          game.roll(7)
+          expect(changeableFrame.addBonus).not.toHaveBeenCalled()
+
+          isComplete = true
+          game.roll(2)
+          expect(changeableFrame.addBonus).toHaveBeenCalledWith(0)
+        })
+      })
+
+      describe('after rolling a spare', function () {
+        it('it does not add a bonus', function () {
+          var isComplete
+          var changeableFrame = {
+            addRoll: function () {},
+            addBonus: function () {},
+            roll1: 7,
+            roll2: 3,
+            isComplete: function () { return isComplete }
+          }
+          var frameFactory = function() {
+            return changeableFrame
+          }
+          var game = new Game(frameFactory)
+          spyOn(changeableFrame, 'addBonus')
+
+          isComplete = false
+          game.roll(7)
+          expect(changeableFrame.addBonus).not.toHaveBeenCalled()
+
+          isComplete = true
+          game.roll(3)
+          expect(changeableFrame.addBonus).not.toHaveBeenCalled()
+        })
+      })
+
+      describe('after rolling a spare and a 1', function () {
+        it('it adds a bonus of 1 to the spare', function () {
+          var isComplete, returnedFrame
+          var spareFrame = {
+            addRoll: function () {},
+            addBonus: function () {},
+            isSpare: function () { return true },
+            roll1: 7,
+            roll2: 3,
+            isComplete: function () { return isComplete }
+          }
+          var oneRollFrame = {
+            addRoll: function () {},
+            addBonus: function () {},
+            isSpare: function () {},
+            roll1: 1,
+            roll2: null,
+            isComplete: function () { return false }
+          }
+          var frameFactory = function() {
+            return returnedFrame
+          }
+          var game = new Game(frameFactory)
+          spyOn(spareFrame, 'addBonus')
+
+          returnedFrame = spareFrame
+          isComplete = false
+          game.roll(7)
+          game.roll(3)
+          isComplete = true
+          returnedFrame = oneRollFrame
+          game.roll(1)
+          expect(spareFrame.addBonus).toHaveBeenCalledWith(1)
         })
       })
     })
@@ -107,7 +220,7 @@ describe('Game', function () {
         var counter = 0;
         var frameFactory = function() {
           counter++
-          return counter == 10 ? completeFrame : incompleteFrame
+          return counter === 10 ? completeFrame : incompleteFrame
         }
         var game = new Game(frameFactory)
         for (var i = 0; i < 0; i ++) {

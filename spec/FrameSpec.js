@@ -221,6 +221,16 @@ describe("Frame", function() {
       frame10.enter10thFirstBonusRollScore(6, scorecard);
       expect(frame10.bonusScore).toEqual(6);
       expect(frame10.totalScore).toEqual(16);
-    })
+    });
+
+    it("adds second bonus roll score to strike bonus", function() {
+      var frame10 = new Frame;
+      scorecard.frames.push(frame10);
+      frame10.enterFirstRollScore(10, scorecard);
+      frame10.enter10thFirstBonusRollScore(10, scorecard);
+      frame10.enter10thSecondBonusRollScore(10, scorecard);
+      expect(frame10.bonusScore).toEqual(20);
+      expect(frame10.totalScore).toEqual(30);
+    });
   });
 });

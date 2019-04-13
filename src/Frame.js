@@ -93,5 +93,8 @@ Frame.prototype = {
     if (scorecard.frames[9].firstRollScore < 10) {
       throw new Error("This bonus roll is only available after 10th frame strike is scored");
     }
+    this.secondTenthFrameBonusRollScore = pins;
+    this.bonusScore += pins;
+    this.calculateTotalScore();
   }
 }

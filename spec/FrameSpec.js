@@ -12,18 +12,18 @@ describe('Frame', function () {
   describe('#addRoll', function () {
     describe('when called on a new frame', function () {
       it('changes roll 1 from null to something', function () {
-        expect(frame.roll1).toEqual(null)
+        expect(frame.roll1.pins).toEqual(null)
         frame.addRoll(7)
-        expect(frame.roll1).toBe(7)
+        expect(frame.roll1.pins).toBe(7)
       })
     })
 
     describe('when called on a frame that already has one roll', function () {
       it('changes roll 2 from null to something', function () {
         frame.addRoll(2)
-        expect(frame.roll2).toEqual(null)
+        expect(frame.roll2.pins).toEqual(null)
         frame.addRoll(7)
-        expect(frame.roll2).toBe(7)
+        expect(frame.roll2.pins).toBe(7)
       })
     })
   })

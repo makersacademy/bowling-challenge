@@ -6,33 +6,43 @@ describe('Game', function () {
   var trueFunc = function () { return true }
   var falseFunc = function () { return false }
   var frame = {
+    name: 'frame',
     addRoll: function () {},
     addBonus: function () {},
     isComplete: function () {},
     isSpare: function () {},
-    roll1: null,
-    roll2: null
+    roll1: { pins: null },
+    roll2: { pins: null }
   }
   var completeFrame = {
+    name: 'completeFrame',
     addRoll: function () {},
     addBonus: function () {},
     isSpare: function () {},
-    isComplete: trueFunc
+    isComplete: trueFunc,
+    roll1: { pins: null },
+    roll2: { pins: null }
   }
   var incompleteFrame = {
+    name: 'incompleteFrame',
     addRoll: function () {},
     addBonus: function () {},
     isSpare: function () {},
-    isComplete: falseFunc
+    isComplete: falseFunc,
+    roll1: { pins: null },
+    roll2: { pins: null }
   }
   var frameWithAScoreOf23 = {
+    name: 'frameWithAScoreOf23',
     addRoll: function () {},
     addBonus: function () {},
     isSpare: function () {},
     isComplete: function () { return true },
     score: function () {
       return 23
-    }
+    },
+    roll1: { pins: null },
+    roll2: { pins: null }
   }
 
   describe('#roll', function () {
@@ -104,8 +114,8 @@ describe('Game', function () {
           var changeableFrame = {
             addRoll: function () {},
             addBonus: function () {},
-            roll1: 7,
-            roll2: 2,
+            roll1: { pins: 7 },
+            roll2: { pins: 2 },
             isComplete: function () { return isComplete }
           }
           var frameFactory = function() {
@@ -130,8 +140,8 @@ describe('Game', function () {
           var changeableFrame = {
             addRoll: function () {},
             addBonus: function () {},
-            roll1: 7,
-            roll2: 3,
+            roll1: { pins: 7 },
+            roll2: { pins: 3 },
             isComplete: function () { return isComplete }
           }
           var frameFactory = function() {
@@ -157,16 +167,16 @@ describe('Game', function () {
             addRoll: function () {},
             addBonus: function () {},
             isSpare: function () { return true },
-            roll1: 7,
-            roll2: 3,
+            roll1: { pins: 7 },
+            roll2: { pins: 3 },
             isComplete: function () { return isComplete }
           }
           var oneRollFrame = {
             addRoll: function () {},
             addBonus: function () {},
             isSpare: function () {},
-            roll1: 1,
-            roll2: null,
+            roll1: { pins: 1 },
+            roll2: { pins: null },
             isComplete: function () { return false }
           }
           var frameFactory = function() {

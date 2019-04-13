@@ -1,7 +1,8 @@
 module.exports = {
   'env': {
     'browser': true,
-    'es6': true
+    'es6': true,
+    'jasmine': true
   },
   'extends': 'standard',
   'globals': {
@@ -12,5 +13,8 @@ module.exports = {
     'ecmaVersion': 2018
   },
   'rules': {
-  }
+  },
+  'plugins': [
+    'jasmine'
+  ]
 }

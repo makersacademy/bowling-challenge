@@ -3,7 +3,6 @@ describe('Game', function () {
     Game = require ('../lib/Game')
   }
 
-  var game, frameFactory
   var trueFunc = function () { return true }
   var falseFunc = function () { return false }
   var frame = {
@@ -42,6 +41,7 @@ describe('Game', function () {
         var frameFactory = function() { return frame }
         var game = new Game(frameFactory)
         spyOn(frame, 'addRoll')
+
         game.roll(0)
         expect(frame.addRoll).toHaveBeenCalledWith(0)
       })
@@ -50,43 +50,39 @@ describe('Game', function () {
     describe('used for the second time', function () {
       describe('if the first frame is complete', function () {
         it('it adds the roll to the next frame', function () {
-          var index = 0
+          var injectedFrame
           var frameFactory = function() {
-            var frame = [frame1, frame2][index]
-            index++
-            return frame
+            return injectedFrame
           }
-          var frame1 = completeFrame
-          var frame2 = incompleteFrame
           var game = new Game(frameFactory)
-          spyOn(frame1, 'addRoll')
-          spyOn(frame2, 'addRoll')
+          spyOn(completeFrame, 'addRoll')
+          spyOn(incompleteFrame, 'addRoll')
+
+          injectedFrame = completeFrame
           game.roll(10)
+          injectedFrame = incompleteFrame
           game.roll(1)
-          expect(frame1.addRoll).not.toHaveBeenCalledWith(1)
-          expect(frame2.addRoll).toHaveBeenCalledWith(1)
+          expect(completeFrame.addRoll).not.toHaveBeenCalledWith(1)
+          expect(incompleteFrame.addRoll).toHaveBeenCalledWith(1)
         })
       })
 
       describe('if the first frame is not complete', function () {
         it('it adds the roll to the first frame', function () {
-          var index = 0
+          var returnedFrame
           var frameFactory = function() {
-            var output = index === 0 ?
-              frame1 :
-              frame2
-            index++
-            return output
+            return injectedFrame
           }
-          var frame1 = incompleteFrame
-          var frame2 = frame
           var game = new Game(frameFactory)
-          spyOn(frame1, 'addRoll')
-          spyOn(frame2, 'addRoll')
+          spyOn(incompleteFrame, 'addRoll')
+          spyOn(frame, 'addRoll')
+
+          injectedFrame = incompleteFrame
           game.roll(8)
+          injectedFrame = frame
           game.roll(2)
-          expect(frame1.addRoll).toHaveBeenCalledWith(2)
-          expect(frame2.addRoll).not.toHaveBeenCalled()
+          expect(incompleteFrame.addRoll).toHaveBeenCalledWith(2)
+          expect(frame.addRoll).not.toHaveBeenCalled()
         })
       })
     })
@@ -96,9 +92,9 @@ describe('Game', function () {
         it('it does not add a frame bonus', function () {
           var frameFactory = function() { return incompleteFrame }
           var game = new Game(frameFactory)
-          spyOn(frame, 'addBonus')
+          spyOn(incompleteFrame, 'addBonus')
           game.roll(0)
-          expect(frame.addBonus).not.toHaveBeenCalled()
+          expect(incompleteFrame.addBonus).not.toHaveBeenCalled()
         })
       })
 

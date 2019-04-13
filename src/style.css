@@ -1,11 +1,34 @@
 body {
   align-content: center;
   font-family: tahoma;
-  background-color: lightyellow;
+  font-variant: small-caps;
+  background-color: silver;
   color: black;
 }
 h1 {
   align-content: center;
   font-family: verdana;
-  color: silver;
+  color: #4A646C;
+}
+h2 {
+  color: cornflowerblue;
+  font-variant: small-caps;
+}
+input[type=text] {
+  border-radius: 25px;
+  text-align: center;
+  background-color: powderblue;
+  width: 75px;
+  height: 25px;
+  size: 6;
+}
+table th {
+  text-align: center;
+}
+table {
+  width: 75%;
+}
+table td {
+  white-space: nowrap;
+  text-align: center;
 }

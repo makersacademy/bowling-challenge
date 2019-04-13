@@ -34,17 +34,16 @@ This weekend (and next) the focus is on JavaScript. This is a totally new langua
 
 - To run the linter, type `eslint src/**`
 
-## Limitations
-
-- This project is not finished. After many hours of trying to get this all to work, it doesn't! :-)
-- You can play bowling through index.html as long as you don't expect any special behaviour in frame 10.
-
 ### Still to do
 - Stop user being able to enter ball 2 in the interface if they've scored a strike
 - Make the interface clearer that a strike or spare has been scored
-- Build functionality for frame 10 with the additional ball
-- Make the user interface pretty
+- Update functionality for frame 10 with the additional ball - if a 10 is scored first then don't count the extra point. Also update index.html to allow 3 balls - only make the 3rd appear if relevant?
+- Make the user interface pretty including using flash to notify a problem
 - Do all the normal refactoring for single responsibility!!
+- Update the README to describe the rewrite and to reflect that I am no longer using a bonus array
+- Look to see if I could use better syntax anywhere - map or reduce, foreach instead of a for loop for arrays etc
+- Add error handling to stop the user adding more than 10 points per frame
+- Look at notes for other things to do
 
 ## My approach
 

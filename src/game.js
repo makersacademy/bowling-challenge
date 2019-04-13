@@ -9,7 +9,7 @@ function Game() {
 
 Game.prototype.recordBall = function(score) {
 
-  if (this.complete === true) { return this.frameList; }
+  if (this.complete === true) { return "Game Over" }
 
   if (this.frameList.length === 0) {
     this.frameList.push(createNewFrame(score));
@@ -90,4 +90,21 @@ Game.prototype.calculateTotal = function() {
     total += frame.total;
   });
   return total;
+}
+
+Game.prototype.frameIsBonus = function(frame) {
+  let isTen = frame.balls.reduce(function(total, ball) { return total += ball; }, 0);
+
+  if(isTen === 10) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+Game.prototype.getFrameMessage = function(frameNumber) {
+  console.log(this.frameList[frameNumber]);
+  if(Game.prototype.frameIsBonus(this.frameList[frameNumber]) === true) {
+    return "Bonus!";
+  }
 }

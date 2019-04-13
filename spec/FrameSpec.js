@@ -188,12 +188,19 @@ describe("Frame", function() {
     });
 
     it("prevents bonus roll when fewer than 10 frames played", function() {
-      console.log(frame9)
       expect(function() { frame9.enter10thFirstBonusRollScore(4, scorecard) }).toThrow(new Error(
         "This bonus roll is only available in the 10th frame"
       ));
     });
 
-
+    it("prevents bonus roll when spare has not been scored", function() {
+      var frame10 = new Frame;
+      scorecard.frames.push(frame10);
+      frame10.enterFirstRollScore(6, scorecard);
+      frame10.enterSecondRollScore(3, scorecard);
+      expect(function() { frame10.enter10thFirstBonusRollScore(4, scorecard) }).toThrow(new Error(
+        "This bonus roll is only available after 10th frame strike or spare is scored"
+      ));
+    });
   });
 });

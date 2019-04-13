@@ -2,41 +2,29 @@
 Bowling Challenge
 =================
 
+This is a JavaScript project that scores a bowling game made up of user inputs to a scorecard.
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+See [here](https://github.com/makersacademy/bowling-challenge) for the original Makers repo.
+
 
 ## The Task
-
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by
+## Getting Started
+```
+git clone https://github.com/arthurashman/bowling-challenge
+```
 
-* Forking this repo
+## Running Tests
+Open `SpecRunner.html` in the browser
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+## Bowling Rules — Scoring Logic
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
-
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
-
-## Bowling — how does it work?
+### Frames
+A game of bowling is made up of 10 frames. Each frame allows for 10 pins to be knocked down over 2 rolls. Each pin knocked down is equal to a point. Bonuses are applied for strikes and spares. For bonus scoring reasons, the 10th frame allows for up to 3 rolls.
 
 ### Strikes
 
@@ -53,25 +41,14 @@ If the player rolls a strike or spare in the 10th frame they can roll the additi
     10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
     1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
 
-### Gutter Game
+### A 'Gutter Game'
 
 A Gutter Game is when the player never hits a pin (20 zero scores).
 
-### Perfect Game
+### A 'Perfect Game'
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
 
-In the image below you can find some score examples.
+### Approach
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+This project is built in Javascript and tested with its Jasmine framework with a TDD approach. 

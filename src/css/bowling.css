@@ -1,0 +1,66 @@
+body{
+    background-image: url("./../../images/background.jpeg");
+    background-size: 100%;
+}
+.title {
+  text-align: center;
+  color: rgb(60, 142, 197);
+  font-size: 40px;
+  font-family: 'Roboto';
+  font-weight: 600;
+  text-shadow: 0 0 5px rgb(255, 255, 255);
+  top: 10px;
+  background-color: rgba(250, 235, 215, 0.555);
+  width: 400px;
+  position: relative;
+  left: 35%;
+  border-radius: 60px 20px;
+}
+
+.scorecard-background {
+    background-color: rgb(255, 255, 255);
+    width: 80%;
+    margin: 0 auto; 
+    border-radius: 10px;
+}
+
+table.scorecard {
+    width: 100%; 
+    font-size: 12px; 
+    border: 3px solid; 
+    text-align: center; 
+    table-layout: fixed; 
+    color: rgba(0, 0, 0, 0.301);
+    border-radius: 10px;
+}
+
+table.scorecard th, tr, td {
+    padding: 1px; 
+    vertical-align: middle; 
+    font-family: 'Roboto'; 
+    text-align: center;
+}
+
+table.scorecard th {
+    border-bottom:3px solid; 
+    background-color:#8cadb3; 
+    height:40px; 
+    color: rgba(255, 255, 255, 0.596);
+    font-family: 'Roboto';
+    font-size: 20px;
+    text-shadow: 0 0 7px black;
+}
+
+/* table.scorecard th:not(:last-child) {border-right:1px solid;} */
+table.scorecard td {
+    height:30px; 
+    background: rgb(255, 254, 254);
+}
+
+table.scorecard tr td:not(:last-child) {
+    border-right:2px solid;
+}
+
+table.scorecard tr:nth-child(2) td:nth-child(even) {
+    border-bottom: 2px solid;
+}

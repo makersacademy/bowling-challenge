@@ -212,5 +212,15 @@ describe("Frame", function() {
         "This bonus roll is only available after 10th frame strike is scored"
       ));
     });
+
+    it("adds first bonus roll score to spare bonus", function() {
+      var frame10 = new Frame;
+      scorecard.frames.push(frame10);
+      frame10.enterFirstRollScore(6, scorecard);
+      frame10.enterSecondRollScore(4, scorecard);
+      frame10.enter10thFirstBonusRollScore(6, scorecard);
+      expect(frame10.bonusScore).toEqual(6);
+      expect(frame10.totalScore).toEqual(16);
+    })
   });
 });

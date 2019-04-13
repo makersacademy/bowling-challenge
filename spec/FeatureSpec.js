@@ -142,7 +142,7 @@ describe("Feature: Captures bonus for strike frame", function() {
 // so that my final score is correctly captured,
 // I want to be able to play and record bonus rolls in the 10th frame.
 
-describe("Feature: Captures bonus for 10th frame strike", function() {
+xdescribe("Feature: Captures bonus for 10th frame strike", function() {
   it("adds bonus score to 10th frame strike bonus and frame total", function() {
     var scorecard = new Scorecard;
     var frame1 = new Frame;

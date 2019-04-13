@@ -5,6 +5,8 @@ function Frame() {
   this.totalScore = 0;
   this.spareFlag = false;
   this.strikeFlag = false;
+  this.firstTenthFrameBonusRollScore = 0;
+  this.secondTenthFrameBonusRollScore = 0;
 }
 
 Frame.prototype = {
@@ -79,6 +81,9 @@ Frame.prototype = {
     if (scorecard.frames[9].totalScore < 10) {
       throw new Error("This bonus roll is only available after 10th frame strike or spare is scored");
     }
+    this.firstTenthFrameBonusRollScore = pins;
+    this.bonusScore += pins;
+    this.calculateTotalScore();
   },
 
   enter10thSecondBonusRollScore: function(pins, scorecard) {

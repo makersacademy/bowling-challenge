@@ -60,16 +60,3 @@ describe("Gutter game", function() {
   });
   
 });
-
-// ---------------
-
-it("allows bonus rolls after strike", function() {
-  var frame10 = new Frame;
-  frame10.enterFirstRollScore(10, scorecard);
-  frame10.enter10thFirstBonusRollScore(3, scorecard);
-  frame10.enter10thSecondBonusRollScore(4, scorecard);
-  expect(frame10.enter10thFirstBonusRollScore(3, scorecard)).not.toBe(undefined);
-  expect(frame10.enter10thSecondBonusRollScore(3, scorecard)).not.toBe(undefined);
-});
-
-

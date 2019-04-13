@@ -6,6 +6,7 @@ describe('Example rolls', function () {
   beforeEach(function () {
     game = new Game()
   })
+
   describe('20 * 0', function () {
     it('Game is complete with a score of 0', function () {
       for (var i = 0; i < 20; i++) {
@@ -23,6 +24,17 @@ describe('Example rolls', function () {
       }
       expect(game.complete()).toBe(false)
       expect(game.score()).toBe(0)
+    })
+  })
+
+  describe('1 * 10, 18 * 0', function () {
+    it('Game is complete with a score of 10', function () {
+      game.roll(10)
+      for (var i = 0; i < 18; i++) {
+        game.roll(0)
+      }
+      expect(game.complete()).toBe(true)
+      expect(game.score()).toBe(10)
     })
   })
 })

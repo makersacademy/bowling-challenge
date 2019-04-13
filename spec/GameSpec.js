@@ -15,27 +15,64 @@ describe('Game', function () {
   })
 
   describe('#complete', function () {
-    it('returns true after 20 gutterballs', function () {
-      for (var i = 0; i < 20; i ++) {
-        game.roll(0)
-      }
-      expect(game.complete()).toBe(true)
+    describe('after 20 gutterballs', function () {
+      it('returns true', function () {
+        for (var i = 0; i < 20; i ++) {
+          game.roll(0)
+        }
+        expect(game.complete()).toBe(true)
+      })
     })
 
-    it('returns false after 19 gutterballs', function () {
-      for (var i = 0; i < 19; i ++) {
+    describe('after 19 gutterballs', function () {
+      it('returns false', function () {
+        for (var i = 0; i < 19; i ++) {
+          game.roll(0)
+        }
+        expect(game.complete()).toBe(false)
+      })
+    })
+
+    describe('after 1 strike and 18 gutterballs', function () {
+      it('returns true', function () {
+        game.roll(10)
+        for (var i = 0; i < 18; i ++) {
+          game.roll(0)
+        }
+        expect(game.complete()).toBe(true)
+      })
+    })
+
+    describe('after 9 strikes and 2 gutterballs', function () {
+      it('returns true', function () {
+        for (var i = 0; i < 9; i ++) {
+          game.roll(10)
+        }
         game.roll(0)
-      }
-      expect(game.complete()).toBe(false)
+        game.roll(0)
+        expect(game.complete()).toBe(true)
+      })
     })
   })
 
   describe('#score', function () {
-    it('returns zero after 20 gutterballs', function () {
-      for (var i = 0; i < 20; i ++) {
-        game.roll(0)
-      }
-      expect(game.score()).toBe(0)
+    describe('after 20 gutterballs', function () {
+      it('returns zero', function () {
+        for (var i = 0; i < 20; i ++) {
+          game.roll(0)
+        }
+        expect(game.score()).toBe(0)
+      })
+    })
+
+    describe('after one strike and 18 gutterballs', function () {
+      it('returns 10', function () {
+        game.roll(10)
+        for (var i = 0; i < 18; i ++) {
+          game.roll(0)
+        }
+        expect(game.score()).toBe(10)
+      })
     })
   })
 })

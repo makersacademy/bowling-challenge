@@ -1,5 +1,7 @@
 # Bowling challenge
 
+[![Build Status](https://travis-ci.org/Hives/bowling-challenge.svg?branch=master)](https://travis-ci.org/Hives/bowling-challenge)
+
 *[Instructions](instructions.md)*  
 *[Notes](notes.md)*
 

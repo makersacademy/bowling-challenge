@@ -35,5 +35,16 @@ describe('Bowl', function() {
     bowl.add(5,5)
     expect(bowl.score).toEqual(10);
   });
+});
+
+describe('Bowl Functions', function() {
+  var bowl;
+
+  it('Gives a gutterball score if no pins are hit', function() {
+    bowl = new Bowl(10,0,0,0,[])
+    bowl.bonusCalc()
+    expect(bowl.bonus).toEqual(jasmine.arrayContaining(["Gutter"]));
+  });
+
 
 });

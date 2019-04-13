@@ -1,6 +1,8 @@
-Game = require('../../lib/Game')
-
 describe('Example rolls', function () {
+  if (typeof(require) !== 'undefined') {
+    Game = require ('../../lib/Game')
+  }
+
   var game
 
   beforeEach(function () {

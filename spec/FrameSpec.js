@@ -1,6 +1,8 @@
-Frame = require ('../lib/Frame')
-
 describe('Frame', function () {
+  if (typeof(require) !== 'undefined') {
+    Frame = require ('../lib/Frame')
+  }
+
   var frame
 
   beforeEach(function () {

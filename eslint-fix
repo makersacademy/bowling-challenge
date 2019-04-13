@@ -1,2 +1,2 @@
 #! /bin/sh
-node_modules/.bin/eslint --fix src/*.js spec/**/*.js
+node_modules/.bin/eslint --fix lib/*.js spec/**/*.js

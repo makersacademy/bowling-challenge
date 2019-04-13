@@ -1,2 +1,2 @@
 #! /bin/sh
-node_modules/.bin/eslint src/*.js spec/**/*.js
+node_modules/.bin/eslint lib/*.js spec/**/*.js

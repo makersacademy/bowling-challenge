@@ -21,6 +21,13 @@ describe('Game', function () {
       }
       expect(game.complete()).toBe(true)
     })
+
+    it('returns false after 19 gutterballs', function () {
+      for (var i = 0; i < 19; i ++) {
+        game.roll(0)
+      }
+      expect(game.complete()).toBe(false)
+    })
   })
 
   describe('#score', function () {

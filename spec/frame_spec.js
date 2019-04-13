@@ -34,6 +34,11 @@ describe('Bowling frame', function() {
     expect( frame.isStrike() ).toBe(true);
   });
 
+  it("is not a strike when player does not knock down 10 pines the first roll", function() {
+    frame.roll(7);
+    expect( frame.isStrike() ).toBe(false);
+  });
+
   it("is a spare when player knocks down 10 pines between the first and the second roll", function() {
     frame.roll(2);
     frame.roll(8);

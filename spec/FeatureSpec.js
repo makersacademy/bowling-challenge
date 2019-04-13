@@ -133,4 +133,49 @@ describe("Feature: Captures bonus for strike frame", function() {
     expect(frame1.bonusScore).toEqual(9);
     expect(frame1.totalScore).toEqual(19);
   });
-})
+});
+
+
+// User story: Capture bonuses in 10th frame
+
+// As a player,
+// so that my final score is correctly captured,
+// I want to be able to play and record bonus rolls in the 10th frame.
+
+xdescribe("Feature: Captures bonus for 10th frame strike", function() {
+  it("adds bonus score to 10th frame strike bonus and frame total", function() {
+    var scorecard = new Scorecard;
+    var frame1 = new Frame;
+    var frame2 = new Frame;
+    var frame3 = new Frame;
+    var frame4 = new Frame;
+    var frame5 = new Frame;
+    var frame6 = new Frame;
+    var frame7 = new Frame;
+    var frame8 = new Frame;
+    var frame9 = new Frame;
+    var frame10 = new Frame;
+    frame1.enterFirstRollScore(5, scorecard);
+    frame1.enterSecondRollScore(4, scorecard);
+    frame2.enterFirstRollScore(2, scorecard);
+    frame2.enterSecondRollScore(6, scorecard);
+    frame3.enterFirstRollScore(5, scorecard);
+    frame3.enterSecondRollScore(4, scorecard);
+    frame4.enterFirstRollScore(5, scorecard);
+    frame4.enterSecondRollScore(4, scorecard);
+    frame5.enterFirstRollScore(5, scorecard);
+    frame5.enterSecondRollScore(4, scorecard);
+    frame6.enterFirstRollScore(5, scorecard);
+    frame6.enterSecondRollScore(4, scorecard);
+    frame7.enterFirstRollScore(5, scorecard);
+    frame7.enterSecondRollScore(4, scorecard);
+    frame8.enterFirstRollScore(5, scorecard);
+    frame8.enterSecondRollScore(4, scorecard);
+    frame9.enterFirstRollScore(5, scorecard);
+    frame9.enterSecondRollScore(4, scorecard);
+    frame10.enterFirstRollScore(10, scorecard);
+    frame10.enter10thFirstBonusRollScore(3, scorecard);
+    frame10.enter10thSecondBonusRollScore(4, scorecard);
+    expect(frame10.bonusScore).toEqual(7);
+  });
+});

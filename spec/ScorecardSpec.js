@@ -29,8 +29,8 @@ describe("Scorecard", function() {
   it("throws error if > 10 frames added", function() {
     scorecard.frames = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     expect(function() { scorecard.captureFrame(fakeFrame) }).toThrow(new Error(
-      "Scorecard already contains the maximum 10 frames.")
-    );
+      "Scorecard already contains the maximum 10 frames."
+    ));
   });
 
   it("completes when 10th frame is added", function() {

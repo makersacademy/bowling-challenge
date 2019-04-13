@@ -70,5 +70,20 @@ Frame.prototype = {
 
   checkForStrikeTwoFramesPrevious: function(scorecard) {
     return scorecard.isTwoFramesPreviousStrike(this);
+  },
+
+  enter10thFirstBonusRollScore: function(pins, scorecard) {
+    if (scorecard.frames.length < 10) {
+      throw new Error("This bonus roll is only available in the 10th frame")
+    }
+    // if (scorecard.frames[9].totalScore < 10) {
+    //   return "This bonus roll is only available after 10th frame strike or spare is scored"
+    // }
+  },
+
+  enter10thSecondBonusRollScore: function(pins, scorecard) {
+    // if (scorecard.frames.length < 10) {
+    //   return "This bonus roll is only available in the 10th frame"
+    // }
   }
 }

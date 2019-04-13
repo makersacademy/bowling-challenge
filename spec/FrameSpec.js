@@ -134,4 +134,66 @@ describe("Frame", function() {
       });
     });
   });
+
+  describe("Tenth frame", function() {
+    var scorecard;
+    var frame1;
+    var frame2;
+    var frame3;
+    var frame4;
+    var frame5;
+    var frame6;
+    var frame7;
+    var frame8;
+    var frame9;
+    
+    beforeEach(function() {
+      scorecard = jasmine.createSpyObj(
+        'scorecard', [
+          'captureFrame',
+          'isPreviousFrameSpare',
+          'isPreviousFrameStrike',
+          'isTwoFramesPreviousStrike'
+        ]
+      );
+      frame1 = new Frame;
+      frame2 = new Frame;
+      frame3 = new Frame;
+      frame4 = new Frame;
+      frame5 = new Frame;
+      frame6 = new Frame;
+      frame7 = new Frame;
+      frame8 = new Frame;
+      frame9 = new Frame;
+      scorecard.frames = [];
+      scorecard.frames.push(frame1, frame2, frame3, frame4, frame5, frame6, frame7, frame8, frame9);
+      frame1.enterFirstRollScore(5, scorecard);
+      frame1.enterSecondRollScore(4, scorecard);
+      frame2.enterFirstRollScore(2, scorecard);
+      frame2.enterSecondRollScore(6, scorecard);
+      frame3.enterFirstRollScore(5, scorecard);
+      frame3.enterSecondRollScore(4, scorecard);
+      frame4.enterFirstRollScore(5, scorecard);
+      frame4.enterSecondRollScore(4, scorecard);
+      frame5.enterFirstRollScore(5, scorecard);
+      frame5.enterSecondRollScore(4, scorecard);
+      frame6.enterFirstRollScore(5, scorecard);
+      frame6.enterSecondRollScore(4, scorecard);
+      frame7.enterFirstRollScore(5, scorecard);
+      frame7.enterSecondRollScore(4, scorecard);
+      frame8.enterFirstRollScore(5, scorecard);
+      frame8.enterSecondRollScore(4, scorecard);
+      frame9.enterFirstRollScore(5, scorecard);
+      frame9.enterSecondRollScore(4, scorecard);
+    });
+
+    it("prevents bonus roll when fewer than 10 frames played", function() {
+      console.log(frame9)
+      expect(function() { frame9.enter10thFirstBonusRollScore(4, scorecard) }).toThrow(new Error(
+        "This bonus roll is only available in the 10th frame"
+      ));
+    });
+
+
+  });
 });

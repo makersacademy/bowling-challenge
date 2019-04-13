@@ -168,3 +168,9 @@ As a player,
 so that my final score is correctly captured,
 I want to be able to play and record bonus rolls in the 10th frame. 
 ```
+
+1. Determine if player is in the 10th frame
+2. If strike in 10th frame 2 extra rolls are given and scores added only to 10th frame bonusScore
+3. If spare in 10th frame 1 extra roll is given and score added only to 10th frame bonusScore
+4. Perfect game = 300
+5. In case of 9th frame strike and 10th frame strike only 10 bonus points are added to 9th frame bonus (usually next 2 rolls would be added to 9th frame strike bonus)

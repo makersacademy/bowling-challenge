@@ -84,6 +84,11 @@ Frame.prototype = {
     this.firstTenthFrameBonusRollScore = pins;
     this.bonusScore += pins;
     this.calculateTotalScore();
+    if(this.checkForPreviousFrameStrike(scorecard)) {
+      var i = scorecard.frames.indexOf(this);
+      scorecard.frames[i - 1].bonusScore += (pins + this.firstRollScore);
+      scorecard.frames[i - 1].calculateTotalScore();
+    }
   },
 
   enter10thSecondBonusRollScore: function(pins, scorecard) {

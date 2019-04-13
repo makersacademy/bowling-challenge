@@ -153,7 +153,8 @@ describe("Frame", function() {
           'captureFrame',
           'isPreviousFrameSpare',
           'isPreviousFrameStrike',
-          'isTwoFramesPreviousStrike'
+          'isTwoFramesPreviousStrike',
+          'calculateTotalScore'
         ]
       );
       frame1 = new Frame;

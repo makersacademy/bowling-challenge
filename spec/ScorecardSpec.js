@@ -12,14 +12,6 @@ describe("Scorecard", function() {
     scorecard.frames = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     expect(scorecard.isComplete()).toEqual(true);
   });
-  
-  it("shows total score of zero for gutter game", function() {
-    fakeFrame.totalScore = 0;
-    for (var i = 0; i < 10; i++) {
-      scorecard.frames.push(fakeFrame);
-    }
-    expect(scorecard.calculateTotalScore()).toEqual(0);
-  });
 
   it("captures frame when played", function() {
     scorecard.captureFrame(fakeFrame);
@@ -69,5 +61,27 @@ describe("Scorecard", function() {
     scorecard.frames.push(fakeFrame);
     scorecard.frames.push(fakeFrame3);
     expect(scorecard.isTwoFramesPreviousStrike(fakeFrame3)).toBe(true);
+  });
+
+  describe(".calculateTotalScore", function() {
+    beforeEach(function() {
+      scorecard = new Scorecard;
+    });
+    
+    it("shows total score of zero for gutter game", function() {
+      fakeFrame.totalScore = 0;
+      for (var i = 0; i < 10; i++) {
+        scorecard.frames.push(fakeFrame);
+      }
+      expect(scorecard.calculateTotalScore()).toEqual(0);
+    });
+
+    it("shows total score of 60 for game", function() {
+      fakeFrame.totalScore = 6;
+      for (var i = 0; i < 10; i++) {
+        scorecard.frames.push(fakeFrame);
+      }
+      expect(scorecard.calculateTotalScore()).toEqual(60);
+    });
   });
 });

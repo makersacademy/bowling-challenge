@@ -178,4 +178,31 @@ describe("Feature: Captures bonus for 10th frame strike", function() {
     frame10.enter10thSecondBonusRollScore(4, scorecard);
     expect(frame10.bonusScore).toEqual(7);
   });
+
+  it("scores 300 for the perfect game", function() {
+    var scorecard = new Scorecard;
+    var frame1 = new Frame;
+    var frame2 = new Frame;
+    var frame3 = new Frame;
+    var frame4 = new Frame;
+    var frame5 = new Frame;
+    var frame6 = new Frame;
+    var frame7 = new Frame;
+    var frame8 = new Frame;
+    var frame9 = new Frame;
+    var frame10 = new Frame;
+    frame1.enterFirstRollScore(10, scorecard);
+    frame2.enterFirstRollScore(10, scorecard);
+    frame3.enterFirstRollScore(10, scorecard);
+    frame4.enterFirstRollScore(10, scorecard);
+    frame5.enterFirstRollScore(10, scorecard);
+    frame6.enterFirstRollScore(10, scorecard);
+    frame7.enterFirstRollScore(10, scorecard);
+    frame8.enterFirstRollScore(10, scorecard);
+    frame9.enterFirstRollScore(10, scorecard);
+    frame10.enterFirstRollScore(10, scorecard);
+    frame10.enter10thFirstBonusRollScore(10, scorecard);
+    frame10.enter10thSecondBonusRollScore(10, scorecard);
+    expect(scorecard.calculateTotalScore()).toEqual(300);
+  });
 });

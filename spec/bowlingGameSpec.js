@@ -106,7 +106,7 @@ describe("Javascript bowling score keeper: ", function(){
             expect(game.score).toBe(24);
         });
 
-        it("handles multiple strike correctly", function(){
+        it("handles multiple random strikes correctly", function(){
             game.addFrames(frameStrike);
             game.addFrames(frameSeven);
             game.addFrames(frameStrike);
@@ -114,7 +114,7 @@ describe("Javascript bowling score keeper: ", function(){
             expect(game.score).toBe(48);
         });
 
-        xit("handles 2 strike after each other", function(){
+        it("handles 2 strike after each other", function(){
             game.addFrames(frameStrike);
             game.addFrames(frameStrike);
             game.addFrames(frameSeven);

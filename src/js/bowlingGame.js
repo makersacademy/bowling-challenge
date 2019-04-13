@@ -2,7 +2,6 @@ function bowlingGame() {
     this.score = 0;
     this.frame = [];
     this.players = [];
-    this.state = 'normal';
 }
 
 bowlingGame.prototype.addPlayers = function(playerName){
@@ -22,16 +21,17 @@ bowlingGame.prototype.addFrames = function(frame){
 };
 
 bowlingGame.prototype.lastFrame = function(){
-
+    // WIP
 };
 
 bowlingGame.prototype.setTotal = function(frame){
-    if (this.state === 'strike'){
-        this.score = this.score + frame.reduce(getSum);
-    }else if (this.state === 'spare'){
-        this.score = this.score + frame[0];
-    }
-    this.score = this.score + frame.reduce(getSum);
+    // if (this.state === 'strike'){
+    //     this.score = this.score + frame.reduce(getSum);
+    // }else if (this.state === 'spare'){
+    //     this.score = this.score + frame[0];
+    // }
+    // this.score = this.score + frame.reduce(getSum);
+    
 };
 
 bowlingGame.prototype.setState = function(values){

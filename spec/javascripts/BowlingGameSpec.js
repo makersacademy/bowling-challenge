@@ -25,7 +25,6 @@ describe('Bowling', function() {
     const times = 4;
     for (let i=0; i < times; i++) {
       bowling.roll(0);
-      console.log(bowling._frames)
     };
 
     expect(bowling._frames.length).toEqual(2);
@@ -58,5 +57,14 @@ describe('Bowling', function() {
     bowling.roll(4);
 
     expect(bowling.result()).toEqual(28);
+  });
+
+  it('spare multiplies next one roll by two', function(){
+    const bowling = new Bowling();
+    bowling.roll(9);
+    bowling.roll(1);
+    bowling.roll(5);
+    bowling.roll(4);
+    expect(bowling.result()).toEqual(24);
   });
 });

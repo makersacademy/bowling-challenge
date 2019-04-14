@@ -13,4 +13,15 @@ describe("Game", function () {
 
   });
 
+  describe('getFinalScore', function () {
+    
+    it("gets the final score of 0 for the gutter game", function () {
+      var game = new Game();
+      let rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      game.addPinRolls(rolls);
+      expect(game.getFinalScore(game.rolls)).toEqual(0);
+    });
+
+  });
+
 });

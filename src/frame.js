@@ -42,7 +42,7 @@ var Frame = function() {
     //   return false;
   }
 
-  this.get_first_roll = function get_first_roll(pins){
+  this.get_first_roll = function get_first_roll(){
     return first_roll;
   }
 

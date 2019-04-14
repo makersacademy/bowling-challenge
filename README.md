@@ -21,11 +21,6 @@ This JavaScript app simulates a bowling scorecard, allowing a user to enter thei
 - Further learn JavaScript
 - Improve my process of learning new languages
 
-
-#### Outstanding TODOs
-
-- 10th frame bonuses
-
 ------
 
 ## Steps to download

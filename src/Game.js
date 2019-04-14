@@ -1,47 +1,24 @@
-function Game () {
-  this._rolls = []
-  this.runningTotals = []
-  this._frameBall = 0
+function Game (scorer) {
+  if (typeof (require) !== 'undefined') {
+    Scorer = require('./Scorer')
+  }
+
+  this._scorer = scorer || new Scorer()
 }
 
 Game.prototype = {
   constructor: Game,
 
   roll: function (roll) {
-    this._rolls.push(roll)
-    this._updateFrameBall()
-    this._checkScoring()
+    this._scorer.addRoll(roll)
   },
 
   score: function () {
-    return this.runningTotals
+    return this._scorer.total()
   },
 
-  _checkScoring: function () {
-    if (this._frameBall === 2) {
-      this.runningTotals.push(this._lastRunningTotal() +
-                              this._lastRoll() +
-                              this._secondLastRoll())
-    }
-  },
-
-  _updateFrameBall: function () {
-    this._frameBall = (this._frameBall % 2) + 1
-  },
-
-  _lastRoll: function () {
-    return this._rolls[this._rolls.length - 1]
-  },
-
-  _secondLastRoll: function () {
-    return this._rolls[this._rolls.length - 2]
-  },
-
-  _lastRunningTotal: function () {
-    if (this.runningTotals.length === 0) {
-      return 0
-    }
-    return this.runningTotals[this.runningTotals.length - 1]
+  isComplete: function () {
+    return this._scorer.runningTotals.length === 10
   }
 }
 

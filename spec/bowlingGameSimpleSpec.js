@@ -50,6 +50,13 @@ describe("Game", function () {
       expect(game.getFinalScore(game.rolls)).toEqual(300);
     });
 
+    it("gets the score of 138 for a mixed game of strikes and normal rolls (no spares)", function () {
+      var game = new Game();
+      let rolls = [2, 4, 10, 10, 2, 4, 10, 10, 2, 4, 10, 10, 2, 4]
+      game.addPinRolls(rolls);
+      expect(game.getFinalScore(game.rolls)).toEqual(138);
+    });
+
   });
 
   describe('strike', function () {

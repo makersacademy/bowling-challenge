@@ -1,6 +1,6 @@
 function Scorer () {
-  this._rolls = []
   this.runningTotals = []
+  this._rolls = []
   this._scoringIndex = 0
 }
 
@@ -8,8 +8,11 @@ Scorer.prototype = {
   constructor: Scorer,
 
   addRoll: function (roll) {
+    var update
     this._rolls.push(roll)
-    this._updateScores()
+    do {
+      update = this._updateScores()
+    } while (update)
   },
 
   total: function () {
@@ -17,14 +20,33 @@ Scorer.prototype = {
   },
 
   _updateScores: function () {
-    var rolls
+    var score
     var i = this._scoringIndex
+    if (this._rolls[i] === 10) {
+      // strike!
+      if (this._rolls[i] !== undefined &&
+          this._rolls[i + 1] !== undefined &&
+          this._rolls[i + 2] !== undefined) {
+        score = this._rolls[i] +
+                this._rolls[i + 1] +
+                this._rolls[i + 2]
+        this.runningTotals.push(this._lastRunningTotal() + score)
+        this._scoringIndex = i + 1
+
+        return true
+      } else {
+        return false
+      }
+    }
     if (this._rolls[i] !== undefined &&
         this._rolls[i + 1] !== undefined) {
       // not a strike or spare
-      rolls = this._rolls[i] + this._rolls[i + 1]
-      this.runningTotals.push(this._lastRunningTotal() + rolls)
+      score = this._rolls[i] + this._rolls[i + 1]
+      this.runningTotals.push(this._lastRunningTotal() + score)
       this._scoringIndex = i + 2
+      return true
+    } else {
+      return false
     }
   },
 

@@ -41,4 +41,21 @@ describe('Scorer', function () {
     })
   })
 
+  describe('Add a strike and one roll', function () {
+    it('No frames are scored', function () {
+      scorer.addRoll(10)
+      scorer.addRoll(0)
+      expect(scorer.runningTotals).toEqual([])
+    })
+  })
+
+  describe('Add a strike and a basic frame', function () {
+    it('Two frames are scored', function () {
+      scorer.addRoll(10)
+      scorer.addRoll(1)
+      scorer.addRoll(1)
+      expect(scorer.runningTotals).toEqual([12, 14])
+    })
+  })
+
 })

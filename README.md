@@ -45,7 +45,7 @@ Concepts
 - Implement closure patterns to make object properties private
 
 Processes
-- Use test-driven development to test-drive the app. I will be applying the Jasmine JS testing framework for my JavaScript. I would like to apply the use of Capybara for feature testing the user flow.
+- Use test-driven development to test-drive the app. I will be applying the Jasmine JS testing framework for my JavaScript. I would like to apply feature testing the user flow.
 - Break down the requirements into business logic model, representing simple model of bowling scorecard and iterate to create an initial MVP and add to that MVP by creating a user interface.
 
 Behaviours/mindset

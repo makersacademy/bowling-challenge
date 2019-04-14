@@ -197,7 +197,7 @@ I play a gutter game
 
 ##### TEST CASES
 
-1.  score with gutter game
+1.  Version 1: Return score with gutter game
 
 ---
 

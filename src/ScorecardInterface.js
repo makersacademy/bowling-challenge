@@ -7,8 +7,18 @@ $(document).ready(function() {
 
   roll = function(pins) {
     scorecard.roll(pins);
+
     $('#frame-number').text(scorecard.frameNumber);
     $('#score').text(scorecard.total());
+
+    if (scorecard._currentFrame().isComplete() === false) {
+      $(`#frame-${scorecard.frameNumber}-roll-1`).text(scorecard._currentFrame().firstRoll);
+    }
+
+    if (scorecard._currentFrame().isComplete()) {
+      $(`#frame-${scorecard.frameNumber - 1}-roll-2`).text(scorecard._currentFrame().secondRoll);
+      $(`#frame-score-${scorecard.frameNumber - 1}`).text(scorecard._currentFrame().score());
+    }
   };
 
 });

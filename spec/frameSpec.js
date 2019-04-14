@@ -23,7 +23,7 @@ describe("Frame", function() {
     expect(function() {
       frame.addRoll(4);
     }).toThrowError(
-      "A frame with a strike does not accept a 2nd roll in this frame is not possibile"
+      "A frame with a strike does not accept a 2nd roll in this frame"
     );
   });
 
@@ -41,5 +41,15 @@ describe("Frame", function() {
     frame.addRoll(6);
     expect(frame.isSpare).toBe(true);
     expect(frame.frameRolls).toEqual([4, 6]);
+  });
+
+  it("can reset the frame once it is complete", function() {
+    frame.addRoll(4);
+    frame.addRoll(4);
+    frame.reset();
+    expect(frame.frameRolls).toEqual([]);
+    frame.addRoll(4);
+    frame.addRoll(4);
+    expect(frame.frameRolls).toEqual([4, 4]);
   });
 });

@@ -13,12 +13,12 @@ class Frame {
   addRoll(pin) {
     if (this.isStrike === true) {
       throw new Error(
-        "A frame with a strike does not accept a 2nd roll in this frame is not possibile"
+        "A frame with a strike does not accept a 2nd roll in this frame"
       );
     } else if (this.frameComplete() === true) {
       throw new Error("Frame is complete - no more rolls allowed");
     } else {
-      this.frameRolls.push(pin);
+      this.frameRolls.push(parseInt(pin));
     }
   }
 
@@ -30,16 +30,23 @@ class Frame {
   }
 
   get isSpare() {
-    if (this.frameRolls.reduce((acc, val) => acc + val) === 10) {
+    if (
+      this.frameRolls.reduce((acc, val) => acc + val) === 10 &&
+      this.frameRolls.length == 2
+    ) {
       return true;
     }
     return false;
   }
 
   frameComplete() {
-    if (this.frameRolls.length > 1) {
+    if (this.frameRolls.length > 1 || this.isStrike === true) {
       return true;
     }
     return false;
+  }
+
+  reset() {
+    this.frameRolls = [];
   }
 }

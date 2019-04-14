@@ -1,9 +1,10 @@
+/* eslint-disable no-undef */
 describe("Feature test:", function() {
   beforeEach(function() {});
 
   describe("new game", function() {
     it("has an empty score card", function() {});
-    it("has an empty frame object", function() {});
+    it("has an empty frameSheet object", function() {});
   });
 
   describe("gutter game", function() {

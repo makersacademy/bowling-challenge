@@ -1,5 +1,5 @@
-describe('No Bonus Game', function() {
-  it('should show score of 105 after mixed rolls with some spares (none in final game)', function() {
+describe('Spare Game', function() {
+  it('should show score of 105 after mixed rolls with some spares (none in final frame)', function() {
     var scorecard = new Scorecard;
     scorecard.startGame();
     scorecard.roll(5);
@@ -24,7 +24,7 @@ describe('No Bonus Game', function() {
     scorecard.roll(2);
     expect(scorecard.totalScore).toEqual(105);
   });
-  it('should show score of 114 after mixed rolls with some spares (final game is spare)', function() {
+  it('should show score of 114 after mixed rolls with some spares (final frame is spare)', function() {
     var scorecard = new Scorecard;
     scorecard.startGame();
     scorecard.roll(5);

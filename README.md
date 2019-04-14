@@ -1,4 +1,4 @@
-# bowling-challenge-2
+# bowling-challenge
 
 This is a simple one page web app that can be used for keeping score in a game of ten pin bowling.
 

@@ -15,3 +15,7 @@ Game.prototype.getFinalScore = function() {
     return prevScore + currentScore;
   }, 0);
 };
+
+Game.prototype.strike = function(pins) {
+  return pins === 10;
+};

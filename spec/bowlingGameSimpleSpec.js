@@ -45,4 +45,14 @@ describe("Game", function () {
 
   });
 
+  describe('strike', function () {
+  
+    it("returns a strike if frame roll over 10 pins", function () {
+      var game = new Game();
+      var pins = 10;
+      expect(game.strike(pins)).toEqual(true);
+    });
+
+  });
+
 });

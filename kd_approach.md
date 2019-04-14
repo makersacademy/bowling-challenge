@@ -12,7 +12,7 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 #### Features (USER STORIES)
 
 ```
-/* BUSINESS LOGIC */
+/* BUSINESS LOGIC */ - FOR VERSION 2 - BOWLING GAME
 
 //ROLL INPUT
 
@@ -163,11 +163,34 @@ I can input my pins knocked over for the whole game
 1.  [X] Version 1: Return final score for random games (no strikes/spares)
 
 
+### USER STORY 3
+
+> [X] As a player
+when I knock down all 10 pins on the first roll of a frame
+I score a strike
+
+##### TEST CASES
+
+1.  [X] Version 1: Return true if strike 
+
+
+### USER STORY 4
+
+> As a player
+when I roll 12 strikes (10 regular strikes and 2 strikes for both the bonus rolls in the 10th frame)
+I play a perfect game and score 300 points
+
+##### TEST CASES
+
+1.  Version 1: Return 300 final score if all strikes
 
 
 
 
 
+
+-----------------------------
+## VERSION 2 - BowlingGame
 
 ##### BUSINESS LOGIC
 

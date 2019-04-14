@@ -1,0 +1,36 @@
+{
+  "name": "quintanas-bowling-alley",
+  "version": "1.0.0",
+  "description": "Week 6 weekend challenge at Makers Academy",
+  "main": "public/js/view/index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saypop/bowling-challenge.git"
+  },
+  "keywords": [
+    "bowling",
+    "challenge",
+    "javascript",
+    "jquery",
+    "html",
+    "css"
+  ],
+  "author": "saypop",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/saypop/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/saypop/bowling-challenge#readme",
+  "engines": {
+    "node": "10.15.3",
+    "npm": "6.4.1"
+  }
+
+}

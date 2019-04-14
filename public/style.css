@@ -1,0 +1,104 @@
+body{
+  background-image: url("../images/jesus_rubbing_balls.jpg");
+  background-size: 100vw;
+  background-repeat: no-repeat;
+}
+
+h1{
+  font-size: 4vw;
+  text-align: center;
+  color: #5B2E62;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+h2{
+  font-size: 1.25vw;
+}
+
+.title{
+  font-family: 'Notable', sans-serif;
+}
+.insult{
+  font-family: 'Sedgwick Ave', cursive;
+  margin-left: 67vw;
+  text-align: center;
+  word-wrap: break-word;
+  width: 15vw;
+  padding-top: 0.5vw;
+  padding-bottom: 1.5vw;
+  color: #7F2316;
+  font-size: 1.25vw;
+  min-height: 5vw;
+}
+.buttons{
+  padding-top: 1vw;
+  padding-bottom: 4vw;
+  font-size: 2vw;
+  font-family: 'Notable', sans-serif;
+  color: #FDFAC4;
+  text-align: center;
+}
+.button{
+  min-width: 6vw;
+  padding: 0.5vw;
+  color: #FDFAC4;
+  font-size: 1.2vw;
+  font-family: 'Notable', sans-serif;
+  background-color: #8B61A4
+}
+.playagain{
+  align-self: auto;
+  min-width: 6vw;
+  padding: 0.5vw;
+  color: #FDFAC4;
+  font-size: 1.2vw;
+  font-family: 'Notable', sans-serif;
+  background-color: #8B61A4
+}
+table.scorecard {
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90vw;
+  height: 7vw;
+  font-size:1vw;
+  border:2px solid;
+  text-align: center;
+  table-layout: fixed;
+  border-color: #FDFAC4;
+}
+table.scorecard th, tr, td {
+  padding: 0;
+  vertical-align: middle;
+  text-align: center;
+}
+table.scorecard th {
+  font-family: 'Geo', sans-serif;
+  border-bottom:2px solid;
+  border-color: #FDFAC4;
+  background-color: #8B61A4;
+  height: 2vw;
+  font-size: 1.5vw;
+  color: #221618
+}
+table.scorecard th:not(:last-child) {
+  border-right:2px solid;
+  border-color: #FDFAC4;
+}
+table.scorecard td {
+  font-family: 'Sedgwick Ave', cursive;
+  height:2.5vw;
+  background: rgba(255, 255, 255, 0.5);
+}
+table.scorecard tr td:not(:last-child) {
+  border-right:1px solid;
+  border-color: #5B2E62;
+}
+table.scorecard tr:nth-child(2) td:nth-child(even) {
+  border-bottom:1px solid;
+  border-color: #5B2E62;
+}
+table.scorecard tr:nth-child(2) td:last-child {
+  border-bottom:1px solid;
+  border-color: #5B2E62;
+}

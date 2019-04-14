@@ -51,6 +51,12 @@ $(document).ready(function() {
     for(i=0;i<9;i++) {
       $(`#score-${i + 1}-2`).text(scorecard.frameScores[i]);
     };
+    if(typeof(scorecard.frames[9].rolls()[0]) === 'number' && scorecard.frameScores[8] !== '') {
+      $(`#score-10-1`).text(scorecard.frameScores[8] + scorecard.frames[9].rolls()[0])
+    };
+    if(typeof(scorecard.frames[9].rolls()[1]) === 'number') {
+      $(`#score-10-2`).text(scorecard.frameScores[8] + scorecard.frames[9].rolls()[0] + scorecard.frames[9].rolls()[1])
+    };
     $(`#score-10-3`).text(scorecard.frameScores[9]);
   };
 });

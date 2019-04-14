@@ -92,4 +92,38 @@ describe('Scorecard', function() {
       expect(scorecard.frameScores).toEqual([4,8,12,16,20,24,28,32,36,40])
     });
   });
+  describe('.isRollValid', function() {
+    it('should return false if roll > 10', function() {
+      spyOn(Frame.prototype, 'changeStatus');
+      scorecard.startGame();
+      expect(scorecard.isRollValid(11)).toEqual(false)
+    });
+    it('should return false if sum of two rolls > 10', function() {
+      spyOn(Frame.prototype, 'changeStatus');
+      scorecard.startGame();
+      spyOn(Frame.prototype, 'rolls').and.returnValue([4]);
+      expect(scorecard.isRollValid(7)).toEqual(false)
+    });
+    it('should return true if sum of two rolls <= 10', function() {
+      spyOn(Frame.prototype, 'changeStatus');
+      scorecard.startGame();
+      spyOn(Frame.prototype, 'rolls').and.returnValue([4]);
+      expect(scorecard.isRollValid(6)).toEqual(true)
+    });
+    it('should return true if first roll is smaller than 10', function() {
+      spyOn(Frame.prototype, 'changeStatus');
+      scorecard.startGame();
+      spyOn(Frame.prototype, 'rolls').and.returnValue([]);
+      expect(scorecard.isRollValid(6)).toEqual(true)
+    });
+    it('should return true if first roll is 10', function() {
+      spyOn(Frame.prototype, 'changeStatus');
+      scorecard.startGame();
+      spyOn(Frame.prototype, 'rolls').and.returnValue([]);
+      expect(scorecard.isRollValid(10)).toEqual(true)
+    });
+    it('should return false if roll is < 0', function() {
+      expect(scorecard.isRollValid(-1)).toEqual(false)
+    });
+  });
 });

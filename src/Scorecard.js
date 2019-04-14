@@ -11,13 +11,15 @@ Scorecard.prototype.startGame = function() {
 };
 
 Scorecard.prototype.roll = function(pins_knocked_down) {
-  this.frames.forEach(function(frame) {
-    if(frame.status() === 'active') {
-      frame.add_roll(pins_knocked_down);
-    };
-  });
-  this.calculateFrameScores();
-  if(this.isGameOver() === false) { this.manageFrame() };
+  if(this.isRollValid(pins_knocked_down)){
+    this.frames.forEach(function(frame) {
+      if(frame.status() === 'active') {
+        frame.add_roll(pins_knocked_down);
+      };
+    });
+    this.calculateFrameScores();
+    if(this.isGameOver() === false) { this.manageFrame() };
+  }
 };
 
 Scorecard.prototype.manageFrame = function() {
@@ -45,4 +47,18 @@ Scorecard.prototype.calculateFrameScores = function() {
     };
   });
   this.totalScore = runningTotal;
+};
+
+Scorecard.prototype.isRollValid = function(roll) {
+  if(roll > 10 || roll < 0) {
+    return false;
+  } else if(this.currentFrame().rolls().length === 0) {
+    return true;
+  } else if(this.currentFrame().rolls().length === 1 && this.currentFrame().rolls()[0] !== 10) {
+    return this.currentFrame().rolls()[0] + roll > 10 ? false : true;
+  } else if(this.currentFrame().rolls().length === 1) {
+    return true;
+  } else {
+    return true;
+  };
 };

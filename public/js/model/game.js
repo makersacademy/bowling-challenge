@@ -16,7 +16,7 @@ Game.prototype.roll = function (score) {
     if (this._isNormalFrame(i)) {
       if (this._isLegalRoll(i, score)) {
         this.rollHistory[i].push(score);
-        this.insult = this._randomInsult()
+        this.insult = this._randomInsult(score)
       } else {
         this.insult = "You are a filthy cheater cabrón! Enter a valid score."
       };
@@ -64,6 +64,22 @@ Game.prototype.accumulate = function () {
     };
   };
   return this.cumulativeScore;
+};
+
+Game.prototype.isOver = function () {
+  if (this.rollHistory[10].length === 0) {
+    return false;
+  } else if (this.rollHistory[11].length === 2) {
+    return true;
+  } else if (this.rollHistory[10][0] === 10 && this.rollHistory[11].length != 2) {
+    return false;
+  } else if (this.rollHistory[10][0] + this.rollHistory[10][1] === 10 && this.rollHistory[11].length != 1) {
+    return false;
+  } else if (this.rollHistory[10].length != 2) {
+    return false;
+  } else {
+    return true;
+  };
 };
 
 Game.prototype._isNormalFrame = function (frame) {
@@ -125,21 +141,20 @@ Game.prototype._isLegalRoll = function (frame, score) {
   };
 };
 
-Game.prototype._randomInsult = function () {
+Game.prototype._randomInsult = function (score) {
   var insults = [
     "Dios mio, man. Liam and me, we're gonna f*** you up.",
-    "You suck! And that's not 'just, like, my opinion man'.",
-    "You think you're a big shot huh? Watch out - I own this place!",
-    "You might fool the f***s in the league office, but you don't fool Jesus!",
-    "Laughable, man! HA HA!",
-    "Keep this up and I'm gonna pull the trigger till it goes click!",
     "HA HA HA! You call that bowling? I know eight year olds better than you!",
-    "You said it, man. Nobody f***s with the Jesus."
+    "You suck! And that's not 'just, like, my opinion man'.",
+    "You said it, man. Nobody f***s with the Jesus.",
+    "Laughable, man! HA HA!",
+    "You might fool the f***s in the league office, but you don't fool Jesus!",
+    "You think you're a big shot huh? Watch out - I own this place!",
+    "Keep this up and I'm gonna pull the trigger till it goes click!",
+    "...",
+    "I don't believe it pandejo, nobody is that good.",
+    "Whatever man, that was a lucky shot!"
   ]
 
-  var rand = Math.random();
-  rand *= insults.length;
-  rand = Math.floor(rand);
-
-  return insults[rand];
+  return insults[score];
 };

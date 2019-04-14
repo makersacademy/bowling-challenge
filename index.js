@@ -1,6 +1,9 @@
 $(document).ready(function() {
   game = new Game();
   $('#insult').text(game.insult);
+  $('#newgame').hide();
+  $('#buttons').show();
+
 
   function update() {
     for (var i = 1; i <= 9; i++) {
@@ -12,11 +15,18 @@ $(document).ready(function() {
     };
     $('#insult').text(game.insult);
     $("#insult").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+    if (game.isOver()) {
+      $('#buttons').hide();
+      $('#newgame').show();
+    };
   };
 
   $(".button").click(function(){
     game.roll($(this).index());
     update();
-    // alert (game.rollHistory[1]);
+  });
+
+  $(".playagain").click(function(){
+    location.reload();
   });
 });

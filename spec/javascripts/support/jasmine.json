@@ -4,8 +4,7 @@
 
   // Array of filepaths (and globs) relative to spec_dir to include and exclude
   "spec_files": [
-    "**/*[sS]pec.js",
-    "!**/*nospec.js"
+    "spec/*[sS]pec.js",
   ],
 
   // Array of filepaths (and globs) relative to spec_dir to include before jasmine specs

@@ -51,7 +51,7 @@ helpers:
 #   - '**/*[sS]pec.js'
 #
 spec_files:
-  - '**/*[sS]pec.js'
+  - spec/javascripts/BowlingGameSpec.js
 
 # src_dir
 #
@@ -73,7 +73,7 @@ src_dir:
 #
 # spec_dir: spec/javascripts
 #
-spec_dir:
+spec_dir: spec
 
 # spec_helper
 #

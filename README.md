@@ -2,7 +2,7 @@
 
 Deployed to Heroku: [Quintana's Bowling Alley](https://quintanas-bowling-alley.herokuapp.com/)
 
-![Screenshot of UI](/images/2019/04/Screenshot.png)
+![Screenshot of UI](https://github.com/saypop/bowling-challenge/blob/master/images/Screenshot.png)
 
 This is a bowling scorecard app that tracks the score for a single player in a game of ten pin bowling. All [Traditional Ten Pin Scoring Rules](https://en.wikipedia.org/wiki/Ten-pin_bowling#Traditional_scoring) have been satisfied in this app.
 

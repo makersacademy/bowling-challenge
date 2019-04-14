@@ -1,5 +1,7 @@
 # Bowling Challenge
 
+[![Build Status](https://travis-ci.org/amyj0rdan/bowling-challenge.svg?branch=master)](https://travis-ci.org/amyj0rdan/bowling-challenge)
+
 This is the Week 5 Weekend Challenge from Makers Academy.
 
 ## The Task
@@ -71,5 +73,17 @@ Player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 1
   * Two strikes in a row
   * 10th frame rule
   * Perfect game
+
 I lost a bit of time by trying to introduce the rules for strikes before I had implemented spares. The difficulty in passing my feature tests at this point took me back to my planning to consider again what would be easier to implement at this point.
+
 Repetition and difficulty in constructing clear, simple methods also led me to extract a Frame class, which held responsibility suitable for a Frame (storing rolls and knowing if a frame is complete or not) and leaving calculating of scores to the Scorecard. I feel like perhaps further logic in Scorecard class could perhaps be extracted to the Frame class. To consider in a future refactor.
+
+When I started on the interface, I built a simple HTML/CSS page, which I then planned to connect up to the JavaScript backend via JQuery. Through this process I discovered the following:
+- Current frame and previous frame functions should not be private as I needed to access them in the front end. They require further testing, as they are currently only tested through their use in non private function.
+- 10th frame model needs amending to push a first, second and third roll into the tenth frame so that these are more easily readable for the interface. This would likely be functionality in the Frame object rather than the Scorecard object.
+- The isComplete function only works on the front end on the attempt of another roll.
+
+**Functionality needing more work**
+- Immediately start a new game underneath or ask the user if they want to start a new game when the game is complete.
+- Not allow the user to click on the buttons once the game is complete. (Unsuccessful attempt of this is recorded.)
+- Get Spare functionality working on the front end - tried to use the same approach I took to strike bonus functionality but not working. Requires further investigation.

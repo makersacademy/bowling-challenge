@@ -1,6 +1,7 @@
 body{
   background-image: url("../images/jesus_rubbing_balls.jpg");
   background-size: 100vw;
+  background-repeat: no-repeat;
 }
 
 h1{
@@ -22,11 +23,12 @@ h2{
   margin-left: 67vw;
   text-align: center;
   word-wrap: break-word;
-  width: 10vw;
-  padding-top: 1vw;
-  padding-bottom: 1vw;
+  width: 15vw;
+  padding-top: 0.5vw;
+  padding-bottom: 1.5vw;
   color: #7F2316;
   font-size: 1.25vw;
+  min-height: 5vw;
 }
 .buttons{
   padding-top: 1vw;
@@ -44,7 +46,7 @@ h2{
   font-family: 'Notable', sans-serif;
   background-color: #8B61A4
 }
-.notice{
+/* .notice{
   text-align: center;
   color: #d3313a;
 }
@@ -53,11 +55,13 @@ h2{
   color: green;
   padding-bottom: 10px;
 }
-#playagain{
+.playagain{
   text-align: center;
-}
+} */
 table.scorecard {
-  margin: 0 auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
   width: 90vw;
   height: 7vw;
   font-size:1vw;

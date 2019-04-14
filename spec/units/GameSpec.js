@@ -51,6 +51,13 @@ describe("Game", function() {
       expect(game.rollHistory[2][0]).toEqual(1);
     });
 
+    it("does not enter a cheat score", function() {
+      game.roll(6);
+      game.roll(6);
+      game.roll(4);
+      expect(game.rollHistory[1][1]).toEqual(4);
+    });
+
     it("enters a ten frames in the scorecard", function() {
       for (var i = 0; i < 10; i++) {
         rollFrame();
@@ -151,13 +158,19 @@ describe("Game", function() {
 
   });
 
+  it("should contain a cumulativeScore object", function() {
+    expect(game.cumulativeScore).toEqual({
+      1: "", 2: "", 3: "", 4: "", 5: "", 6: "", 7: "", 8: "", 9: "", 10: ""
+    });
+  });
+
   describe("#accumulate", function () {
     it("provides the cumulative score at a given frame", function () {
       for (var i = 0; i < 10; i++) {
         rollFrame();
       };
       game.score();
-      expect(game.accumulate(5)).toEqual(45);
+      expect(game.accumulate()[5]).toEqual(' : 45');
     });
   });
 

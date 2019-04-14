@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css?family=Monoton');
+@import url('https://fonts.googleapis.com/css?family=Heebo');
+
+body {
+  background-image: url("https://images.unsplash.com/photo-1518620025093-fbca064bdd9a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80");
+  background-size: 100%;
+  color: maroon;
+  font-family: 'Heebo', sans-serif;
+}
+
+h1, h4 {
+  font-family: 'Monoton', cursive;
+  text-align: center;
+}
+
+h1 {
+  font-size: 56px;
+}
+
+h4 {
+  font-size: 25px;
+}
+
+table {
+  text-align: center;
+  border-collapse: collapse;
+  margin: 20px;
+  font-size: 20px;
+}
+
+table, th, td {
+  border: 1px solid white;
+  background-color: grey;
+}
+
+.score-table td {
+  width: 30px;
+  background-color: darkgrey;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.frame-and-score {
+  display: flex;
+  justify-content: space-around;
+}
+
+.scorecard {
+  background-color: rgb(128,128,128, .5);
+  width: 80%;
+}
+
+.score-buttons, .score-table {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  background-color: maroon;
+  border-style: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 2rem;
+  margin-top: 1rem;
+  margin: auto;
+  padding: 0.5rem;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  width: 8%;
+}
+
+button:hover {
+  background-color: white;
+  color: maroon;
+}
+
+button:active {
+  transform: translateY(4px);
+}

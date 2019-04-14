@@ -8,7 +8,14 @@ $(document).ready(function() {
   roll = function(pins) {
     scorecard.roll(pins);
 
-    $('#frame-number').text(scorecard.frameNumber);
+    if (scorecard.isComplete()) {
+      $('#frame-number').text("GAME OVER");
+      // Failing attempt to switch off roll function when scorecard is complete
+      // $('#frame-and-score').off("click");
+    } else {
+      $('#frame-number').text(scorecard.frameNumber);
+    }
+
     $('#score').text(scorecard.total());
 
     if (scorecard._currentFrame().isComplete() === false) {
@@ -21,7 +28,7 @@ $(document).ready(function() {
       $(`#frame-score-${scorecard.frameNumber - 1}`).text(scorecard._currentFrame().score());
     }
 
-    if (scorecard._previousFrame().isStrike()) {
+    if (scorecard._previousFrame().isStrike() && scorecard._currentFrame().isComplete()) {
       $(`#frame-score-${scorecard.frameNumber - 2}`).text(scorecard._previousFrame().score());
     }
   };

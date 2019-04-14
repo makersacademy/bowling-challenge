@@ -23,7 +23,9 @@ Scorecard.prototype = {
   isComplete() {
     if (this.frameLog.length > this.FRAMES_TOTAL) {
       return true;
-    } if (this.frameLog.length < this.FRAMES_TOTAL || this._tenthFrameIsStrikeOrSpare()) {
+    } else if (this._currentFrame().isComplete() === false) {
+      return false;
+    } else if (this.frameLog.length < this.FRAMES_TOTAL || this._tenthFrameIsStrikeOrSpare()) {
       return false;
     }
     return true;

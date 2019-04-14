@@ -187,7 +187,6 @@ I play a perfect game and score 300 points
 1.  [X] Version 1: Return 300 final score if all strikes
 
 
-
 -----------------------------
 ## VERSION 2 - BowlingGame
 

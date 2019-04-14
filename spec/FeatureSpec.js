@@ -45,7 +45,7 @@ describe('Example rolls', function () {
     })
   })
 
-  describe('10, then 2 * 1, then 16 * 0', function () {
+  describe('10, then [1, 1], then 16 * 0', function () {
     it('Game is complete with score of 14', function () {
       rolls = [10, 1, 1, 0, 0, 0, 0, 0, 0, 0,
                0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -54,6 +54,18 @@ describe('Example rolls', function () {
       })
       expect(game.isComplete()).toBe(true)
       expect(game.score()).toEqual(14)
+    })
+  })
+
+  describe('[5, 5], then [2, 1], then 16 * 0', function () {
+    it('Game is complete with score of 14', function () {
+      rolls = [5, 5, 2, 1, 0, 0, 0, 0, 0, 0,
+               0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      rolls.forEach(function(pins) {
+        game.roll(pins)
+      })
+      expect(game.isComplete()).toBe(true)
+      expect(game.score()).toEqual(15)
     })
   })
 })

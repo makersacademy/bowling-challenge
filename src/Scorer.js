@@ -38,6 +38,19 @@ Scorer.prototype = {
         return false
       }
     }
+    if (this._rolls[i] + this._rolls[i + 1] === 10) {
+      // spare!
+      if (this._rolls[i + 2] !== undefined) {
+        score = this._rolls[i] +
+                this._rolls[i + 1] +
+                this._rolls[i + 2]
+        this.runningTotals.push(this._lastRunningTotal() + score)
+        this._scoringIndex = i + 2
+        return true
+      } else {
+        return false
+      }
+    }
     if (this._rolls[i] !== undefined &&
         this._rolls[i + 1] !== undefined) {
       // not a strike or spare

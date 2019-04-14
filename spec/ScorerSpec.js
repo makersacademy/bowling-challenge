@@ -67,4 +67,20 @@ describe('Scorer', function () {
     })
   })
 
+  describe('A spare', function () {
+    it('No frames are scored', function () {
+      scorer.addRoll(5)
+      scorer.addRoll(5)
+      expect(scorer.runningTotals).toEqual([])
+    })
+  })
+
+  describe('A spare and one more roll', function () {
+    it('One frame is scored', function () {
+      scorer.addRoll(5)
+      scorer.addRoll(5)
+      scorer.addRoll(5)
+      expect(scorer.runningTotals).toEqual([15])
+    })
+  })
 })

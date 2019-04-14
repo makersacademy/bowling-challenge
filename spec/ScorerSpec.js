@@ -58,4 +58,13 @@ describe('Scorer', function () {
     })
   })
 
+  describe('Three strikes in a row', function () {
+    it('One frame is scored', function () {
+      scorer.addRoll(10)
+      scorer.addRoll(10)
+      scorer.addRoll(10)
+      expect(scorer.runningTotals).toEqual([30])
+    })
+  })
+
 })

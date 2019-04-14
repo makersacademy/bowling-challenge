@@ -46,7 +46,6 @@ $(document).ready(function() {
   });
 
   $("#second-roll-submit-1").click(function() {
-    // var pins = parseInt($("#second-roll-1").val());
     var pins;
     if ($("#second-roll-1").val().match(/[0-9]|10/)) {
       pins = parseInt($("#second-roll-1").val());
@@ -60,7 +59,6 @@ $(document).ready(function() {
   });
 
   $("#first-roll-submit-2").click(function() {
-    // var pins = parseInt($("#first-roll-2").val());
     var pins;
     if ($("#first-roll-2").val().match(/[0-9]|10/)) {
       pins = parseInt($("#first-roll-2").val());
@@ -77,10 +75,9 @@ $(document).ready(function() {
   });
 
   $("#second-roll-submit-2").click(function() {
-    // var pins = parseInt($("#second-roll-2").val());
     var pins;
     if ($("#second-roll-2").val().match(/[0-9]|10/)) {
-      pins = parseInt($("#first-roll-1").val());
+      pins = parseInt($("#second-roll-2").val());
     } else {
       $("#second-roll-2").val(0)
       pins = 0;
@@ -91,7 +88,6 @@ $(document).ready(function() {
   });
 
   $("#first-roll-submit-3").click(function() {
-    // var pins = parseInt($("#first-roll-3").val());
     var pins;
     if ($("#first-roll-3").val().match(/[0-9]|10/)) {
       pins = parseInt($("#first-roll-3").val());
@@ -108,7 +104,6 @@ $(document).ready(function() {
   });
 
   $("#second-roll-submit-3").click(function() {
-    // var pins = parseInt($("#second-roll-3").val());
     var pins;
     if ($("#second-roll-3").val().match(/[0-9]|10/)) {
       pins = parseInt($("#second-roll-3").val());
@@ -122,7 +117,6 @@ $(document).ready(function() {
   });
 
   $("#first-roll-submit-4").click(function() {
-    // var pins = parseInt($("#first-roll-4").val());
     var pins;
     if ($("#first-roll-4").val().match(/[0-9]|10/)) {
       pins = parseInt($("#first-roll-4").val());
@@ -139,7 +133,6 @@ $(document).ready(function() {
   });
 
   $("#second-roll-submit-4").click(function() {
-    // var pins = parseInt($("#second-roll-4").val());
     var pins;
     if ($("#second-roll-4").val().match(/[0-9]|10/)) {
       pins = parseInt($("#second-roll-4").val());
@@ -153,7 +146,6 @@ $(document).ready(function() {
   });
 
   $("#first-roll-submit-5").click(function() {
-    // var pins = parseInt($("#first-roll-5").val());
     var pins;
     if ($("#first-roll-5").val().match(/[0-9]|10/)) {
       pins = parseInt($("#first-roll-5").val());
@@ -170,7 +162,6 @@ $(document).ready(function() {
   });
 
   $("#second-roll-submit-5").click(function() {
-    // var pins = parseInt($("#second-roll-5").val());
     var pins;
     if ($("#second-roll-5").val().match(/[0-9]|10/)) {
       pins = parseInt($("#second-roll-5").val());
@@ -184,7 +175,6 @@ $(document).ready(function() {
   });
 
   $("#first-roll-submit-6").click(function() {
-    // var pins = parseInt($("#first-roll-6").val());
     var pins;
     if ($("#first-roll-6").val().match(/[0-9]|10/)) {
       pins = parseInt($("#first-roll-6").val());
@@ -201,7 +191,6 @@ $(document).ready(function() {
   });
 
   $("#second-roll-submit-6").click(function() {
-    // var pins = parseInt($("#second-roll-6").val());
     var pins;
     if ($("#second-roll-6").val().match(/[0-9]|10/)) {
       pins = parseInt($("#second-roll-6").val());
@@ -215,7 +204,6 @@ $(document).ready(function() {
   });
 
   $("#first-roll-submit-7").click(function() {
-    // var pins = parseInt($("#first-roll-7").val());
     var pins;
     if ($("#first-roll-7").val().match(/[0-9]|10/)) {
       pins = parseInt($("#first-roll-7").val());
@@ -232,7 +220,6 @@ $(document).ready(function() {
   });
 
   $("#second-roll-submit-7").click(function() {
-    // var pins = parseInt($("#second-roll-7").val());
     var pins;
     if ($("#second-roll-7").val().match(/[0-9]|10/)) {
       pins = parseInt($("#second-roll-7").val());
@@ -246,7 +233,6 @@ $(document).ready(function() {
   });
 
   $("#first-roll-submit-8").click(function() {
-    // var pins = parseInt($("#first-roll-8").val());
     var pins;
     if ($("#first-roll-8").val().match(/[0-9]|10/)) {
       pins = parseInt($("#first-roll-8").val());
@@ -263,7 +249,6 @@ $(document).ready(function() {
   });
 
   $("#second-roll-submit-8").click(function() {
-    // var pins = parseInt($("#second-roll-8").val());
     var pins;
     if ($("#second-roll-8").val().match(/[0-9]|10/)) {
       pins = parseInt($("#second-roll-8").val());
@@ -277,7 +262,6 @@ $(document).ready(function() {
   });
 
   $("#first-roll-submit-9").click(function() {
-    // var pins = parseInt($("#first-roll-9").val());
     var pins;
     if ($("#first-roll-9").val().match(/[0-9]|10/)) {
       pins = parseInt($("#first-roll-9").val());
@@ -294,7 +278,6 @@ $(document).ready(function() {
   });
 
   $("#second-roll-submit-9").click(function() {
-    // var pins = parseInt($("#second-roll-9").val());
     var pins;
     if ($("#second-roll-9").val().match(/[0-9]|10/)) {
       pins = parseInt($("#second-roll-9").val());
@@ -308,7 +291,6 @@ $(document).ready(function() {
   });
 
   $("#first-roll-submit-10").click(function() {
-    // var pins = parseInt($("#first-roll-10").val());
     var pins;
     if ($("#first-roll-10").val().match(/[0-9]|10/)) {
       pins = parseInt($("#first-roll-10").val());
@@ -327,7 +309,6 @@ $(document).ready(function() {
   });
 
   $("#second-roll-submit-10").click(function() {
-    // var pins = parseInt($("#second-roll-10").val());
     var pins;
     if ($("#second-roll-10").val().match(/[0-9]|10/)) {
       pins = parseInt($("#second-roll-10").val());
@@ -344,7 +325,6 @@ $(document).ready(function() {
   });
 
   $("#bonus-roll-1-submit").click(function() {
-    // var pins = parseInt($("#bonus-roll-1").val());
     var pins;
     if ($("#bonus-roll-1").val().match(/[0-9]|10/)) {
       pins = parseInt($("#bonus-roll-1").val());
@@ -357,7 +337,6 @@ $(document).ready(function() {
     refreshScores();
   });
   $("#bonus-roll-2-submit").click(function() {
-    // var pins = parseInt($("#bonus-roll-2").val());
     var pins;
     if ($("#bonus-roll-2").val().match(/[0-9]|10/)) {
       pins = parseInt($("#bonus-roll-2").val());

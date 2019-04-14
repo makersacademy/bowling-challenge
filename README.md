@@ -5,6 +5,8 @@ Bowling Scorecard
 
 This JavaScript app simulates a bowling scorecard, allowing a user to enter their scores per roll, and calculating the running total.
 
+![demo gif](https://github.com/mattTea/bowling-challenge/blob/master/problem/bowling.gif)
+
 ------
 
 ### Technologies used
@@ -37,6 +39,7 @@ This JavaScript app simulates a bowling scorecard, allowing a user to enter thei
 ## To run tests
 
 After forking and cloning repo, open the path to `SpecRunner.html` in your browser.
+Click `ok` to any tests that prompt alerts.
 
 ------
 

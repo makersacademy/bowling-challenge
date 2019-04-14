@@ -12,6 +12,9 @@ function Frame() {
 Frame.prototype = {
   constructor: Frame,
   enterFirstRollScore: function(pins, scorecard) {
+    if (typeof pins !== Number) {
+      pins = 0;
+    }
     if (pins > 10) {
       alert("A maximum of 10 can be scored per frame.");
       throw new Error("A maximum of 10 can be scored per frame.");
@@ -40,6 +43,9 @@ Frame.prototype = {
   },
 
   enterSecondRollScore: function(pins, scorecard) {
+    if (typeof pins !== Number) {
+      pins = 0;
+    }
     if (this.firstRollScore + pins > 10) {
       alert("A maximum of 10 can be scored per frame.");
       throw new Error("A maximum of 10 can be scored per frame.");

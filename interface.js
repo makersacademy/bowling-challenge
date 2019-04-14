@@ -8,6 +8,7 @@ $(document).ready(function() {
     scorecard.roll(pins);
     displayRolls();
     displayScore();
+    displayBonus();
 
   });
 
@@ -22,6 +23,16 @@ $(document).ready(function() {
       } else {
         $(`#pins-${frame.index + 1}-1`).text(frame.rolls()[0])
         $(`#pins-${frame.index + 1}-2`).text(frame.rolls()[1])
+      };
+    });
+  };
+  function displayBonus() {
+    scorecard.frames.forEach(function(frame) {
+      if(frame.rolls()[0] === 10) {
+        $(`#bonus-${frame.index + 1}-2`).text("Strike! The next two rolls will be added to this frame's score")
+      } else if(typeof(frame.rolls()[1]) === 'number' && frame.rolls()[0] + frame.rolls()[1] > 9) {
+        $(`#bonus-${frame.index + 1}-2`).text("Spare! The next roll will be added to this frame's score")
+      } else {
       };
     });
   };

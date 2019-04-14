@@ -1,7 +1,7 @@
 // A very basic web server in node.js
 // Stolen from: Node.js for Front-End Developers by Garann Means (p. 9-10)
 
-var port = 8000;
+var port = process.env.PORT || 8000;
 var serverUrl = "localhost";
 
 var http = require("http");
@@ -50,7 +50,7 @@ http.createServer( function(req, res) {
          getFile(__dirname + '/index.html', res, 'text/html');
     }
 
-}).listen(port, serverUrl);
+}).listen(process.env.PORT || 8000);
 
 function getFile(localPath, res, mimeType) {
     fs.readFile(localPath, function(err, contents) {

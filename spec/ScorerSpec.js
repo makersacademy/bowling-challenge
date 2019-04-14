@@ -83,4 +83,43 @@ describe('Scorer', function () {
       expect(scorer.runningTotals).toEqual([15])
     })
   })
+
+  describe('Final frame', function () {
+    describe('Strike in the final frame', function () {
+      it('It needs 2 more rolls to score', function () {
+        for (var i = 0; i < 18; i ++) {
+          scorer.addRoll(0)
+        }
+        scorer.addRoll(10)
+        scorer.addRoll(0)
+        expect(scorer.runningTotals.length).toBe(9)
+        scorer.addRoll(0)
+        expect(scorer.runningTotals.length).toBe(10)
+      })
+    })
+
+    describe('Spare in the final frame', function () {
+      it('It needs 1 more roll to score', function () {
+        for (var i = 0; i < 18; i ++) {
+          scorer.addRoll(0)
+        }
+        scorer.addRoll(5)
+        scorer.addRoll(5)
+        expect(scorer.runningTotals.length).toBe(9)
+        scorer.addRoll(0)
+        expect(scorer.runningTotals.length).toBe(10)
+      })
+    })
+
+    describe('Basic frame in final frame', function () {
+      it('Scores immediately', function () {
+        for (var i = 0; i < 18; i ++) {
+          scorer.addRoll(0)
+        }
+        scorer.addRoll(5)
+        scorer.addRoll(3)
+        expect(scorer.runningTotals.length).toBe(10)
+      })
+    })
+  })
 })

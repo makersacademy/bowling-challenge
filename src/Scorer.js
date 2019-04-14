@@ -22,6 +22,9 @@ Scorer.prototype = {
   _updateScores: function () {
     var score
     var i = this._scoringIndex
+    if (this._scoredFrames() === 10) {
+      return false
+    }
     if (this._rolls[i] === 10) {
       // strike!
       if (this._rolls[i] !== undefined &&
@@ -30,7 +33,7 @@ Scorer.prototype = {
         score = this._rolls[i] +
                 this._rolls[i + 1] +
                 this._rolls[i + 2]
-        this.runningTotals.push(this._lastRunningTotal() + score)
+        this._scoreFrame(score)
         this._scoringIndex = i + 1
 
         return true
@@ -44,7 +47,7 @@ Scorer.prototype = {
         score = this._rolls[i] +
                 this._rolls[i + 1] +
                 this._rolls[i + 2]
-        this.runningTotals.push(this._lastRunningTotal() + score)
+        this._scoreFrame(score)
         this._scoringIndex = i + 2
         return true
       } else {
@@ -55,12 +58,20 @@ Scorer.prototype = {
         this._rolls[i + 1] !== undefined) {
       // not a strike or spare
       score = this._rolls[i] + this._rolls[i + 1]
-      this.runningTotals.push(this._lastRunningTotal() + score)
+      this._scoreFrame(score)
       this._scoringIndex = i + 2
       return true
     } else {
       return false
     }
+  },
+
+  _scoreFrame: function (score) {
+    this.runningTotals.push(this._lastRunningTotal() + score)
+  },
+
+  _scoredFrames: function () {
+    return this.runningTotals.length
   },
 
   _lastRunningTotal: function () {

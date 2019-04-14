@@ -1,9 +1,9 @@
-describe("Bowling", function(){
-  it("Gutter game", function(){
-    var bowling = new Bowling();
+describe('Bowling', function() {
+  it('Gutter game', function() {
+    const bowling = new Bowling();
 
-    var times = 20;
-    for(var i=0; i < times; i++){
+    const times = 20;
+    for (let i=0; i < times; i++) {
       bowling.roll(0);
     };
 

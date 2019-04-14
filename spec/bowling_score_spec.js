@@ -45,9 +45,18 @@ describe('Bowling_score', function() {
     expect( game.score() ).toEqual(14);// the resulto of the 10 pins of the first roll + the bonus (first roll of next frame) + the second frame (1+2)
 
     game.input_frame(getMockFrame(1,2));
-    expect( game.score() ).toEqual(17);// to confirm that the next frame follows the normal flow (without strike)
+    expect( game.score() ).toEqual(17);// to confirm that the next frame follows the normal flow (without spare)
   });
 
+  it("the total number of frames can not exceed 10", function() {
+    for (var i = 0; i < 10; i++){
+      game.input_frame(getMockFrame(1,3));
+    }
+    expect( game.score() ).toEqual(40);
+
+    game.input_frame(getMockFrame(1,3));
+    expect( game.score() ).toEqual(40);
+  });
 
   function getMockFrame (first, second) {
     var frame = new Frame();

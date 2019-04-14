@@ -13,11 +13,11 @@ Frame.prototype = {
   constructor: Frame,
   enterFirstRollScore: function(pins, scorecard) {
     if (pins > 10) {
-      throw new Error("A maximum of 10 can be scored per frame.")
+      alert("A maximum of 10 can be scored per frame.");
+      throw new Error("A maximum of 10 can be scored per frame.");
     } else {
       if (this.firstRollScore === 0) {
         this.addToScorecard(scorecard)
-        console.log(scorecard.frames.length);
       }
       this.firstRollScore = pins;
       if (pins === 10) {
@@ -41,7 +41,8 @@ Frame.prototype = {
 
   enterSecondRollScore: function(pins, scorecard) {
     if (this.firstRollScore + pins > 10) {
-      throw new Error("A maximum of 10 can be scored per frame.")
+      alert("A maximum of 10 can be scored per frame.");
+      throw new Error("A maximum of 10 can be scored per frame.");
     } else {
       this.secondRollScore = pins;
       this.calculateTotalScore();
@@ -79,9 +80,11 @@ Frame.prototype = {
 
   enter10thFirstBonusRollScore: function(pins, scorecard) {
     if (scorecard.frames.length < 10) {
+      alert("This bonus roll is only available in the 10th frame");
       throw new Error("This bonus roll is only available in the 10th frame");
     }
     if (scorecard.frames[9].totalScore < 10) {
+      alert("This bonus roll is only available after 10th frame strike or spare is scored");
       throw new Error("This bonus roll is only available after 10th frame strike or spare is scored");
     }
     this.firstTenthFrameBonusRollScore = pins;
@@ -96,9 +99,11 @@ Frame.prototype = {
 
   enter10thSecondBonusRollScore: function(pins, scorecard) {
     if (scorecard.frames.length < 10) {
+      alert("This bonus roll is only available in the 10th frame");
       throw new Error("This bonus roll is only available in the 10th frame");
     }
     if (scorecard.frames[9].firstRollScore < 10) {
+      alert("This bonus roll is only available after 10th frame strike is scored");
       throw new Error("This bonus roll is only available after 10th frame strike is scored");
     }
     this.secondTenthFrameBonusRollScore = pins;

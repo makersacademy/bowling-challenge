@@ -3,26 +3,28 @@
   <head>
     <meta charset="utf-8">
     <title>Bowling Scorecard</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="style/stylesheet.css">
     <script type="text/javascript" src="src/Frame.js"></script>
     <script type="text/javascript" src="src/Scorecard.js"></script>
+    <script type="text/javascript" src="src/ScorecardInterface.js"></script>
   </head>
   <body>
     <div class="container">
       <div class="scorecard">
         <h1>SUPERB-BOWL</h1>
         <div class="score-buttons">
-          <button type="button" name="button">Gutter</button>
-          <button type="button" name="button">1</button>
-          <button type="button" name="button">2</button>
-          <button type="button" name="button">3</button>
-          <button type="button" name="button">4</button>
-          <button type="button" name="button">5</button>
-          <button type="button" name="button">6</button>
-          <button type="button" name="button">7</button>
-          <button type="button" name="button">8</button>
-          <button type="button" name="button">9</button>
-          <button type="button" name="button">10</button>
+          <button type="button" onclick="roll(0)">Gutter</button>
+          <button type="button" onclick="roll(1)">1</button>
+          <button type="button" onclick="roll(2)">2</button>
+          <button type="button" onclick="roll(3)">3</button>
+          <button type="button" onclick="roll(4)">4</button>
+          <button type="button" onclick="roll(5)">5</button>
+          <button type="button" onclick="roll(6)">6</button>
+          <button type="button" onclick="roll(7)">7</button>
+          <button type="button" onclick="roll(8)">8</button>
+          <button type="button" onclick="roll(9)">9</button>
+          <button type="button" onclick="roll(10)">10</button>
         </div>
         <div class="score-table">
           <table>
@@ -39,28 +41,28 @@
               <th colspan="10">10</th>
             </tr>
             <tr>
-              <td colspan="5">1</td><td colspan="5">1</td>
-              <td colspan="5">2</td><td colspan="5">2</td>
-              <td colspan="5">3</td><td colspan="5">3</td>
-              <td colspan="5">4</td><td colspan="5">4</td>
-              <td colspan="5">5</td><td colspan="5">5</td>
-              <td colspan="5">6</td><td colspan="5">6</td>
-              <td colspan="5">7</td><td colspan="5">7</td>
-              <td colspan="5">8</td><td colspan="5">8</td>
-              <td colspan="5">9</td><td colspan="5">9</td>
-              <td colspan="5">10</td><td colspan="5">10</td>
+              <td colspan="5" id="frame-1-roll-1"></td><td colspan="5" id="frame-1-roll-2"></td>
+              <td colspan="5" id="frame-2-roll-1"></td><td colspan="5" id="frame-2-roll-2"></td>
+              <td colspan="5" id="frame-3-roll-1"></td><td colspan="5" id="frame-3-roll-2"></td>
+              <td colspan="5" id="frame-4-roll-1"></td><td colspan="5" id="frame-4-roll-2"></td>
+              <td colspan="5" id="frame-5-roll-1"></td><td colspan="5" id="frame-5-roll-2"></td>
+              <td colspan="5" id="frame-6-roll-1"></td><td colspan="5" id="frame-6-roll-2"></td>
+              <td colspan="5" id="frame-7-roll-1"></td><td colspan="5" id="frame-7-roll-2"></td>
+              <td colspan="5" id="frame-8-roll-1"></td><td colspan="5" id="frame-8-roll-2"></td>
+              <td colspan="5" id="frame-9-roll-1"></td><td colspan="5" id="frame-9-roll-2"></td>
+              <td colspan="5" id="frame-10-roll-1"></td><td colspan="5" id="frame-10-roll-2"></td>
             </tr>
             <tr>
-              <td colspan="10">1</td>
-              <td colspan="10">2</td>
-              <td colspan="10">3</td>
-              <td colspan="10">4</td>
-              <td colspan="10">5</td>
-              <td colspan="10">6</td>
-              <td colspan="10">7</td>
-              <td colspan="10">8</td>
-              <td colspan="10">9</td>
-              <td colspan="10">10</td>
+              <td colspan="10" id="frame-score-1"></td>
+              <td colspan="10" id="frame-score-2"></td>
+              <td colspan="10" id="frame-score-3"></td>
+              <td colspan="10" id="frame-score-4"></td>
+              <td colspan="10" id="frame-score-5"></td>
+              <td colspan="10" id="frame-score-6"></td>
+              <td colspan="10" id="frame-score-7"></td>
+              <td colspan="10" id="frame-score-8"></td>
+              <td colspan="10" id="frame-score-9"></td>
+              <td colspan="10" id="frame-score-10"></td>
             </tr>
           </table>
         </div>

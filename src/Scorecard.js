@@ -34,8 +34,8 @@ Scorecard.prototype = {
     this._addStrikeBonus();
     if (this._currentFrame().isComplete() === true) {
       this._updateStrikeBonus();
-      return this._score += (this._currentFrame().score());
       this.frameNumber += 1;
+      return this._score += (this._currentFrame().score());
     }
   },
 

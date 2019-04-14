@@ -25,12 +25,12 @@ table {
   text-align: center;
   border-collapse: collapse;
   margin: 20px;
+  font-size: 20px;
 }
 
 table, th, td {
   border: 1px solid white;
   background-color: grey;
-  font-size: 20px;
 }
 
 .score-table td {

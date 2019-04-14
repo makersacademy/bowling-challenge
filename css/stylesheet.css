@@ -1,0 +1,54 @@
+body {
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 30px;
+}
+
+h1 {
+  font-family: 'Lobster', cursive;
+  font-weight: 700;
+  font-size: 75px;
+  padding-bottom: 20px;
+}
+h2 {
+  font-family: 'Lobster', cursive;
+  font-weight: 700;
+  font-size: 45px;
+  color: red;
+}
+
+html {
+  background-image: url('../images/bowling_alley.jpg');
+  background-size: cover;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+input {
+  font-family: 'impact';
+  font-weight: 700;
+  font-size: 75px;
+}
+
+#start-button {
+  margin-bottom: 20px;
+}
+
+.glow {
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px rgb(255,255,0), 0 0 20px rgb(255,255,0), 0 0 30px rgb(255,255,0), 0 0 40px rgb(255,255,0), 0 0 50px rgb(255,255,0), 0 0 60px rgb(255,255,0), 0 0 70px rgb(255,255,0);
+  }
+  to {
+    text-shadow: 0 0 20px rgb(255,255,255), 0 0 30px rgb(255,255,255), 0 0 40px rgb(255,255,255), 0 0 80px rgb(255,255,255), 0 0 100px rgb(255,255,255), 0 0 120px rgb(255,255,255), 0 0 80px rgb(255,255,255);
+  }
+}

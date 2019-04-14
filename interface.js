@@ -2,18 +2,22 @@ $(document).ready(function() {
   var scorecard = new Scorecard;
   scorecard.startGame();
 
-  $('#start-game').click(function() {
+  $('#start-game').click(function(event) {
     location.reload();
   });
 
-  $('#submit-roll').submit(function(event) {
+  $('#submit-roll').click(function(event) {
     event.preventDefault();
-    var pins = parseInt($('#pins-knocked-down').val(), 10);
+    var pins = parseInt(event.target.value, 10);
+    if(isNaN(pins)) { pins = -1 }
     scorecard.roll(pins);
     displayRolls();
     displayScore();
     displayBonus();
-
+    if(scorecard.isGameOver()) {
+      for(i=0;i<=10;i++) { $(`#roll-${i}`).attr("type","hidden") };
+      $('#final-score').text(`Game Over, your final score is ${scorecard.frameScores[9]}!`);
+    };
   });
 
   function displayRolls() {

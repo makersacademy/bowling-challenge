@@ -1,6 +1,11 @@
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+
 // As a player
 // So that I can keep track of my bowling score
 // I want to record the number of pins knocked down in a frame
+
+//is
 
 // Frame object
 
@@ -13,7 +18,7 @@ var Frame = function() {
 };
 
 Frame.prototype.roll = function(roll) {
-  if (rolls[0] == 10) {
+  if (this.rolls[0] == 10) {
     //first roll is 10
     this.strike = true;
   }
@@ -57,7 +62,7 @@ var scoreTracker = {
 };
 
 // APP Example
-var scoreTracker = Object.create(scoreTracker);
+//var scoreTracker = Object.create(scoreTracker);
 
 // simulation of 10x2 rolls
 for (let i = 0; i < 10; i++) {

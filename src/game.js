@@ -1,11 +1,6 @@
-var Game = function(scoreCard) {
-  this._scoreCard = scoreCard;
-};
+/* eslint-disable no-unused-vars */
+"use strict";
 
-Game.prototype.start = function() {
-  return true;
-};
-
-Game.prototype.seeRolls = function() {
-  return this._scoreCard.seeRolls();
-};
+class Game {
+  constructor() {}
+}

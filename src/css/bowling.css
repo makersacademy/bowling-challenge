@@ -64,3 +64,62 @@ table.scorecard tr td:not(:last-child) {
 table.scorecard tr:nth-child(2) td:nth-child(even) {
     border-bottom: 2px solid;
 }
+
+.btn-container {
+    width: 80%;
+    margin: 40px auto; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: rgba(250, 235, 215, 0.555);
+    border-radius: 60px 20px;
+}
+
+.btn {
+  box-sizing: border-box;
+  appearance: none;
+  background-color: transparent;
+  border-radius: 10px;
+
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 10px;
+  padding: 15px 20px;
+  text-align: center;
+  font-family: 'Roboto';
+  font-weight: 900;
+}
+.btn:hover, :focus {
+    color: #fff;
+    outline: 0;
+}
+
+.btn-effect-rolls {
+    border-color: #ffffff79;
+    color: #fff;
+    box-shadow: 0 0 40px 40px #8cadb3 inset, 0 0 0 0 #8cadb3;
+    transition: all 150ms ease-in-out;
+}
+.btn-effect-rolls:hover {
+    box-shadow: 0 0 10px 0 #8cadb3 inset, 0 0 10px 4px #8cadb3;
+}
+
+.scr-rst-container {
+    width: 20%;
+    border-radius: 10px;
+    position: absolute;
+    left: 15%;
+}
+
+.btn-effect-reset {
+    border-color: #ffffff79;
+    color: #fff;
+    box-shadow: 0 0 40px 40px #8cadb3 inset, 0 0 0 0 #8cadb3;
+    transition: all 150ms ease-in-out;
+}
+.btn-effect-reset:hover {
+    box-shadow: 0 0 10px 0 #f70000 inset, 0 0 10px 4px #ff7878;
+}

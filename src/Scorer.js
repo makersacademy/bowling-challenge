@@ -8,62 +8,70 @@ Scorer.prototype = {
   constructor: Scorer,
 
   addRoll: function (roll) {
-    var update
+    var updateScores
     this._rolls.push(roll)
     do {
-      update = this._updateScores()
-    } while (update)
+      updateScores = this._tryUpdatingScores()
+    } while (updateScores)
   },
 
   total: function () {
     return this._lastRunningTotal()
   },
 
-  _updateScores: function () {
-    var score
-    var i = this._scoringIndex
+  _tryUpdatingScores: function () {
+    var score, i = this._scoringIndex
     if (this._scoredFrames() === 10) {
       return false
     }
     if (this._rolls[i] === 10) {
       // strike!
-      if (this._rolls[i] !== undefined &&
-          this._rolls[i + 1] !== undefined &&
-          this._rolls[i + 2] !== undefined) {
-        score = this._rolls[i] +
-                this._rolls[i + 1] +
-                this._rolls[i + 2]
-        this._scoreFrame(score)
-        this._scoringIndex = i + 1
-
-        return true
-      } else {
-        return false
-      }
+      return this._tryScoringStrike()
     }
-    if (this._rolls[i] + this._rolls[i + 1] === 10) {
+    else if (this._rolls[i] + this._rolls[i + 1] === 10) {
       // spare!
-      if (this._rolls[i + 2] !== undefined) {
-        score = this._rolls[i] +
-                this._rolls[i + 1] +
-                this._rolls[i + 2]
-        this._scoreFrame(score)
-        this._scoringIndex = i + 2
-        return true
-      } else {
-        return false
-      }
+      return this._tryScoringSpare()
     }
-    if (this._rolls[i] !== undefined &&
-        this._rolls[i + 1] !== undefined) {
-      // not a strike or spare
-      score = this._rolls[i] + this._rolls[i + 1]
-      this._scoreFrame(score)
-      this._scoringIndex = i + 2
+    else if (this._rolls[i + 1] !== undefined) {
+      // just a normal frame
+      this._scoreBasicFrame()
       return true
     } else {
       return false
     }
+  },
+
+  _tryScoringStrike: function () {
+    var score, i = this._scoringIndex
+    if (this._rolls[i] !== undefined &&
+        this._rolls[i + 1] !== undefined &&
+        this._rolls[i + 2] !== undefined) {
+      score = this._rolls[i] + this._rolls[i + 1] + this._rolls[i + 2]
+      this._scoreFrame(score)
+      this._scoringIndex += 1
+      return true
+    } else {
+      return false
+    }
+  },
+
+  _tryScoringSpare: function () {
+    var score, i = this._scoringIndex
+    if (this._rolls[i + 2] !== undefined) {
+      score = this._rolls[i] + this._rolls[i + 1] + this._rolls[i + 2]
+      this._scoreFrame(score)
+      this._scoringIndex += 2
+      return true
+    } else {
+      return false
+    }
+  },
+
+  _scoreBasicFrame: function () {
+    var score, i = this._scoringIndex
+    score = this._rolls[i] + this._rolls[i + 1]
+    this._scoreFrame(score)
+    this._scoringIndex = i + 2
   },
 
   _scoreFrame: function (score) {

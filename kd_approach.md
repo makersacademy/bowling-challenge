@@ -12,15 +12,14 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 #### Features (USER STORIES)
 
 ```
-
 /* BUSINESS LOGIC */
 
-## ROLL INPUT
+//ROLL INPUT
 
 User inputs the number of pins rolled via the interface
 The scorecard will keep track of the score :)
 
-### STRIKES
+//STRIKES
 
 The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
 
@@ -43,7 +42,7 @@ Calculation:
  frame i+1 score = (frame i score) + (total number of pins knocked down by the next two rolls (of frame i+1))
 
 
-### SPARES
+//SPARES
 
 The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
 
@@ -65,7 +64,7 @@ Calculation:
  frame i score = (frame i-1 score) + y
  frame i+1 score = (frame i score) + (total number of pins knocked down by the first roll (of frame i+1))
 
-### 10th frame
+//10th frame
 
 If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
 
@@ -85,7 +84,7 @@ THEN: The player can roll additional balls for bonus
     1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
 
 
-### Gutter Game
+//Gutter Game
 
 A Gutter Game is when the player never hits a pin (20 zero scores).
 
@@ -96,7 +95,7 @@ I play a gutter game
 
 Score is: 0
 
-### Perfect Game
+//Perfect Game
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
 
@@ -117,18 +116,32 @@ With my notes, I will go through the TDD process.
 
 ### DOMAIN MODEL
 
+As well as breaking down the requirements, I watched a youtube video: https://www.youtube.com/watch?v=oSUi1d5sAb0 which helped me visualise the bigger picture of the aim of the project. I did some research and found the reduce method super powerful https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce.
+
 #### TECHNICAL IMPLEMENTATION
+
+Last weekend, 7th April 2019, I went for the approach of having separate frame, player, bowlingGame and scoreCard objects, but this proved to be quite complicated. I had to go back and remodel my domain several times.
+
+A week later, 14th April 2019, I went back to the drawing board and simplified my approach. This week, learning about the minimum viable product (MVP) was useful to achieve my aims in a focused way, without overcomplicating it.
+
+For the MVP, I split the aim of this project into two versions:
+
+Version 1: 
+The user will input all the rolls of a bowling game and get a total score back at the end of the game
+
+Version 2: 
+A Frame object will manage each frame and their status (strike, spare, normal) and the game object will manage the gameplay (contain frames) and score while the user is playing. This is a better model as it gives feedback to the user at the end of each frame and resets a frame, rather than at the end of the whole game.
 
 
 ##### BUSINESS LOGIC
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-Score is: 0
 
 ##### OBJECTS/FUNCTIONS (MODEL)
 
 ```
 # pseudocode
+
+A Gutter Game is when the player never hits a pin (20 zero scores).
+Score is: 0
 
 scorecard = new Scorecard()
 
@@ -151,7 +164,7 @@ Justification: Useful if the one-player scorecard is expanded to two-player scor
   - [X] Manages pins rolled by the player in a frame
   - [X] Determines the type: strike, spare, normal
 
-Once `player` plays a roll, the frame will determine the score, it will determine the overall type for the frame. The frame tracking is delegated to the `BowlingGame` object.`BowlingGame` manages the 10th frame management. `ScoreCard` manages the scoring mechanism.
+Once `player` plays a roll, the frame will determine the score, it will determine the overall type for the frame. The frame tracking is delegated to the `BowlingGame` object which contains an array of frames.`BowlingGame` manages the 10th frame management. `ScoreCard` manages the scoring mechanism (?)
 
 - BowlingGame
   Manages:
@@ -171,6 +184,7 @@ Once `player` plays a roll, the frame will determine the score, it will determin
 
 Player input number of pins rolled, the frame will determine the score, it will determine the overall type for the frame. The frame tracking is delegated to the `BowlingGame` object.`BowlingGame` manages the 10th frame management. `ScoreCard` manages the scoring mechanism, user sees the number of pins rolled and score for the frame in the user interface.
 
+----------------------
 
 ### USER STORY 1
 

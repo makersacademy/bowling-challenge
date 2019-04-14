@@ -49,13 +49,26 @@ describe('Bowling_score', function() {
   });
 
   it("the total number of frames can not exceed 10", function() {
-    for (var i = 0; i < 10; i++){
+    for ( var i = 0; i < 10; i++ ){
       game.input_frame(getMockFrame(1,3));
     }
     expect( game.score() ).toEqual(40);
 
     game.input_frame(getMockFrame(1,3));
     expect( game.score() ).toEqual(40);
+  });
+
+  it("there can be a frame number 11 in case of frame 10 being a Strike", function() {
+    for ( var i = 0; i < 9; i++ ){
+      game.input_frame(getMockFrame(1,3));
+    }
+    expect( game.score() ).toEqual(36);
+
+    game.input_frame(getMockFrame(10,0));
+    expect( game.score() ).toEqual(36);
+
+    game.input_frame(getMockFrame(1,0));
+    expect( game.score() ).toEqual(47);
   });
 
   function getMockFrame (first, second) {

@@ -10,13 +10,19 @@ var Bowling_score = function() {
 
   this.input_frame = function(frame){
     number_frame += 1;
-    if ( number_frame <= MAX_FRAME ) {
+    if ( number_frame <= MAX_FRAME || 
+      (number_frame == (MAX_FRAME + 1) && strike == 1)
+      ) {
       if ( frame.isStrike()) {
         strike = 1;
       } else if ( frame.isSpare()) {
         spare = 1;
       } else if ( strike == 1) {
-        total += STRIKE_SCORE + frame.total() + frame.total(); // 10 from Strike + the bonus (score of next frame) + the score from next frame 
+        if (number_frame > MAX_FRAME) {
+          total += STRIKE_SCORE + frame.total();
+        } else {
+          total += STRIKE_SCORE + frame.total() + frame.total(); // 10 from Strike + the bonus (score of next frame) + the score from next frame 
+        }
         strike = 0; // we set strike to 0 to know that we have already applied the bonus of the strike
       } else if ( spare == 1) {
         total += SPARE_SCORE + frame.get_first_roll() + frame.total();// 10 from Spare + the bonus (score of the first roll of next frame) + score from next frame

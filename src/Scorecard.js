@@ -30,7 +30,7 @@ Scorecard.prototype = {
   },
 
   isPreviousFrameSpare: function(frame) {
-    if (this.frames.length > 1) {
+    if (this.frames.indexOf(frame) > 0) {
       var i = this.frames.indexOf(frame);
       var isSpare = this.frames[i - 1].spareFlag;
       return isSpare;
@@ -40,7 +40,7 @@ Scorecard.prototype = {
   },
 
   isPreviousFrameStrike: function(frame) {
-    if (this.frames.length > 1) {
+    if (this.frames.indexOf(frame) > 0) {
       var i = this.frames.indexOf(frame);
       var isStrike = this.frames[i - 1].strikeFlag;
       return isStrike;
@@ -50,7 +50,7 @@ Scorecard.prototype = {
   },
 
   isTwoFramesPreviousStrike: function(frame) {
-    if (this.frames.length > 2) {
+    if (this.frames.indexOf(frame) > 1) {
       var i = this.frames.indexOf(frame);
       var isStrike = this.frames[i - 2].strikeFlag;
       return isStrike;

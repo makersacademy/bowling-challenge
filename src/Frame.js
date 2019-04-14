@@ -15,7 +15,10 @@ Frame.prototype = {
     if (pins > 10) {
       throw new Error("A maximum of 10 can be scored per frame.")
     } else {
-      this.addToScorecard(scorecard)
+      if (this.firstRollScore === 0) {
+        this.addToScorecard(scorecard)
+        console.log(scorecard.frames.length);
+      }
       this.firstRollScore = pins;
       if (pins === 10) {
         this.strikeFlag = true;

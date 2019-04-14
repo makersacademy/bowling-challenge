@@ -10,16 +10,14 @@ function Frame() {
 };
 
 Frame.prototype.rollOne = function(){
-this.firstRoll += Math.floor(Math.random() * (10 - 0 + 1)) + 0;
+this.firstRoll = Math.floor(Math.random() * (10 - 0 + 1)) + 0;
 // return this.firstRoll
 }
-
 Frame.prototype.rollTwo = function(){
   // this.pinsStanding -= this.firstRoll
 //  console.log(this.firstRoll)
 // firstRoll not persisted here
-this.secondRoll += Math.floor(Math.random() * ((10- this.firstRoll) - 0 + 1)) + 0;
-
+this.secondRoll = Math.floor(Math.random() * ((10- this.firstRoll) - 0 + 1)) + 0;
 
 this.score = this.firstRoll + this.secondRoll
 

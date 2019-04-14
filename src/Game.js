@@ -1,10 +1,11 @@
 function Game() {
   this.STARTING_SCORE = 0
   this.score = this.STARTING_SCORE
-  this.STARTING_FRAME = 1
+  this.STARTING_FRAME = 0.5
   this.framecount = this.STARTING_FRAME
   var gameOver = false;
   this.frames = []
+  this.roll = 1
 
 };
 
@@ -20,10 +21,13 @@ Game.prototype.getCurrentFrame = function(){
 // main event
 Game.prototype.bowl = function(){
   // calculates count
+  this.framecount += 0.5
+  
   if (Number.isInteger(this.framecount)){
     frame = new Frame()
     frame.rollOne()
     this.frames.push(frame)
+    this.roll = 1
     // this.score += frame.score
     // adds score from new frame
   } else {
@@ -32,11 +36,11 @@ Game.prototype.bowl = function(){
     let lastframe = this.frames.slice(-1)[0]
     lastframe.rollTwo()
     // this.frames.slice(-1)[0].getTotalScore()
-
+    this.roll = 2
     this.score += lastframe.score
   }
 
-  this.framecount += 0.5
+
 // add to existing frame
 
 

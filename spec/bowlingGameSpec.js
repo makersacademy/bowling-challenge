@@ -42,4 +42,16 @@ describe("BowlingGame", function () {
 
   });
 
+  describe('finalScore', function () {
+
+    it("final score of 0 for a gutter game", function () {
+      bowlingGame.frame.roll(0);
+      bowlingGame.frame.roll(0);
+      bowlingGame.recordFrame();
+      bowlingGame.addScore(bowlingGame.frameIndex);
+      expect(bowlingGame.finalScore(bowlingGame.scoreCard)).toEqual(0);
+    });
+
+  });
+
 });

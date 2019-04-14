@@ -1,4 +1,25 @@
 ## Project Overview
+
+## Improvements/enhancements:
+
+Next time I come round to looking at this I want to:
+
+**Version 1 - Simple bowling game - calculating final score after all frames:**
+
+- Add on logic to deal with spares for version 1
+- Refactor some of the code - try out closures if relevant
+- Create some sort of user interface with JQuery so the user can input the rolls and then get their final score
+shown on the screen in a simple way
+
+**Version 2 - Bowling game**
+
+- Review current logic for version 2 of the game
+- Fix the feature bug relating to the first frame
+- Remodel the objects of bowlingGame and frame to better cater for calculating strikes and spares
+- Test the logic for a perfect game and gutter game
+- Create some sort of user interface with JQuery so the user can input the rolls per frame as they play, see the rolls presented on the screen per frame and then get their frame score, as well as the final score, with better feedback loop to improve user experience
+
+
 ## Processes & Approach
 
 #### REQUIREMENTS
@@ -303,14 +324,3 @@ THEN: The total number of pins knocked down by the next roll (frame i+1) is adde
 Calculation:
  frame i score = (frame i-1 score) + y
  frame i+1 score = (frame i score) + (total number of pins knocked down by the first roll (of frame i+1))
-
-
-
-
-
-## Improvements/enhancements:
-
-Next time I come round to looking at this I want to:
-
-- 
-- 

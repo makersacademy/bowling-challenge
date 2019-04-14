@@ -39,6 +39,7 @@ table.scorecard th, tr, td {
     vertical-align: middle; 
     font-family: 'Roboto'; 
     text-align: center;
+    font-size: 20px;
 }
 
 table.scorecard th {
@@ -63,6 +64,9 @@ table.scorecard tr td:not(:last-child) {
 
 table.scorecard tr:nth-child(2) td:nth-child(even) {
     border-bottom: 2px solid;
+}
+table.scorecard tr:nth-last-child(2) td:nth-last-child(2) { 
+    border-bottom:2px solid;
 }
 
 .btn-container {
@@ -108,10 +112,13 @@ table.scorecard tr:nth-child(2) td:nth-child(even) {
 }
 
 .scr-rst-container {
-    width: 20%;
-    border-radius: 10px;
+    width: 80%;
+    border-radius: 0px;
     position: absolute;
     left: 15%;
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
 }
 
 .btn-effect-reset {
@@ -123,3 +130,13 @@ table.scorecard tr:nth-child(2) td:nth-child(even) {
 .btn-effect-reset:hover {
     box-shadow: 0 0 10px 0 #f70000 inset, 0 0 10px 4px #ff7878;
 }
+
+.system-messages {
+    font-family: 'Roboto';
+    color: rgb(255, 255, 255);
+    font-size: 50px;
+    background-color: rgba(255, 168, 53, 0.8);
+    border-radius: 10px 30px;
+    font-weight: 500px;
+}
+

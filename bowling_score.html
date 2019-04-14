@@ -2,7 +2,9 @@
     <html>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <head>
-            <script type="./src/js/bowlingGame.js>"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="./src/js/bowlingGame.js"></script>
+            <script src="./src/js/bowlingInteraction.js"></script>
             <link rel="stylesheet" type="text/css" href="./src/css/bowling.css">
         </head>
 
@@ -18,60 +20,56 @@
 
                 <!-- Frames -->
                 <tr>
-                    <th colspan='8'>1</th>
-                    <th colspan='8'>2</th>
-                    <th colspan='8'>3</th>
-                    <th colspan='8'>4</th>
-                    <th colspan='8'>5</th>
-                    <th colspan='8'>6</th>
-                    <th colspan='8'>7</th>
-                    <th colspan='8'>8</th>
-                    <th colspan='8'>9</th>
-                    <th colspan='8'>10</th>
-                    <th colspan='8'>11</th>
-                    <th colspan='8'>12</th>
+                    <th colspan='12'>1</th>
+                    <th colspan='12'>2</th>
+                    <th colspan='12'>3</th>
+                    <th colspan='12'>4</th>
+                    <th colspan='12'>5</th>
+                    <th colspan='12'>6</th>
+                    <th colspan='12'>7</th>
+                    <th colspan='12'>8</th>
+                    <th colspan='12'>9</th>
+                    <th colspan='12'>10</th>
+                    <th colspan='14'>Total</th>
                 </tr>
                 <tr>
-                    <!-- Rolls -->
-                    <td colspan='4'></td>
-                        <td id="rolls-frame1" colspan='4'></td>
-                    <td colspan='4'></td>
-                        <td id="rolls-frame2" colspan='4'></td>
-                    <td colspan='4'></td>
-                        <td id="rolls-frame3" colspan='4'></td>
-                    <td colspan='4'></td>
-                        <td id="rolls-frame4" colspan='4'></td>
-                    <td colspan='4'></td>
-                        <td id="rolls-frame5" colspan='4'></td>
-                    <td colspan='4'></td>
-                        <td id="rolls-frame6" colspan='4'></td>
-                    <td colspan='4'></td>
-                        <td id="rolls-frame7" colspan='4'></td>
-                    <td colspan='4'></td>
-                        <td id="rolls-frame8" colspan='4'></td>
-                    <td colspan='4'></td>
-                        <td id="rolls-frame9" colspan='4'></td>
-                    <td colspan='4'></td>
-                        <td id="rolls-frame10" colspan='4'></td>
-                    <td colspan='4'></td>
-                        <td id="rolls-frame11" colspan='4'></td>
-                    <td colspan='4'></td>
-                        <td id="rolls-frame12" colspan='4'></td>
+                    <!-- Second roll, spare or strike symbol -->
+                    <td colspan='6'></td>
+                        <td id="rolls-frame1" colspan='6'></td>
+                    <td colspan='6'></td>
+                        <td id="rolls-frame2" colspan='6'></td>
+                    <td colspan='6'></td>
+                        <td id="rolls-frame3" colspan='6'></td>
+                    <td colspan='6'></td>
+                        <td id="rolls-frame4" colspan='6'></td>
+                    <td colspan='6'></td>
+                        <td id="rolls-frame5" colspan='6'></td>
+                    <td colspan='6'></td>
+                        <td id="rolls-frame6" colspan='6'></td>
+                    <td colspan='6'></td>
+                        <td id="rolls-frame7" colspan='6'></td>
+                    <td colspan='6'></td>
+                        <td id="rolls-frame8" colspan='6'></td>
+                    <td colspan='6'></td>
+                        <td id="rolls-frame9" colspan='6'></td>
+                    <td colspan='6'></td>
+                        <td id="rolls-frame10" colspan='3'></td>
+                        <td id="rolls-frame10" colspan='3'></td>
+                    <td colspan='1'></td>
                 </tr>
                 <tr>
-                    <!-- Scores -->
-                    <td colspan='8'id="score-frame0"></td>
-                    <td colspan='8'id="score-frame1"></td>
-                    <td colspan='8'id="score-frame2"></td>
-                    <td colspan='8'id="score-frame3"></td>
-                    <td colspan='8'id="score-frame4"></td>
-                    <td colspan='8'id="score-frame5"></td>
-                    <td colspan='8'id="score-frame6"></td>
-                    <td colspan='8'id="score-frame7"></td>
-                    <td colspan='8'id="score-frame8"></td>
-                    <td colspan='8'id="score-frame9"></td>
-                    <td colspan='8'id="score-frame10"></td>
-                    <td colspan='8'id="score-frame11"></td>
+                    <!-- First Roll -->
+                    <td colspan='12'id="score-frame1"></td>
+                    <td colspan='12'id="score-frame2"></td>
+                    <td colspan='12'id="score-frame3"></td>
+                    <td colspan='12'id="score-frame4"></td>
+                    <td colspan='12'id="score-frame5"></td>
+                    <td colspan='12'id="score-frame6"></td>
+                    <td colspan='12'id="score-frame7"></td>
+                    <td colspan='12'id="score-frame8"></td>
+                    <td colspan='12'id="score-frame9"></td>
+                    <td colspan='12'id="score-frame10"></td>
+                    <td colspan='12'id="score-total"></td>
                 </tr>
             </table>
             </div>
@@ -97,7 +95,13 @@
             </div>
 
             <div class="scr-rst-container">
-                <button type="button" onclick="resetGame()" class="btn btn-effect-reset">Reset game</button>
+                <div>
+                    <button type="button" onclick="resetGame()" class="btn btn-effect-reset">Reset game</button>
+                </div>
+
+                <div>
+                    <button type="button" onclick="alertConfirm()" class="btn system-messages" id="system-messages"></button>
+                </div>
             </div>
 
         </body>

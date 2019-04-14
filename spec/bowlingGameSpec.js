@@ -20,4 +20,13 @@ describe("BowlingGame", function () {
 
   });
 
+  describe('newFrame', function () {
+
+    it("makes a new frame", function () {
+      bowlingGame.newFrame()
+      expect(bowlingGame.frame.pinsRolled).toEqual([]);
+    });
+
+  });
+
 });

@@ -8,9 +8,11 @@ function BowlingGame() {
 
 BowlingGame.prototype.recordFrame = function() {
   this.frames.push(this.frame);
-  this.frame = new Frame();
 };
 
+BowlingGame.prototype.newFrame = function() {
+  this.frames.push(this.frame);
+};
 
 //play
 // bowlingGame = new BowlingGame();

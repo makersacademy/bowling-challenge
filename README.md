@@ -48,4 +48,4 @@ I also still need to figure out how to run Capybara style tests for Node apps - 
 - [Thanks to W3 Schools for the html tips.](https://www.w3schools.com)
 - [Thanks CSS Tricks for the CSS tricks.](https://css-tricks.com)
 - Thanks to my tiny macbook air, which is spitting and huffing as I type this.
-- Thanks to past and current students at Makers Academy and the good (and bad) pull requests they have submitted for this challenge.
+- Thanks to past and current students at Makers Academy and the good (and bad) pull requests they have submitted for this challenge. Reading through them helped me a lot!

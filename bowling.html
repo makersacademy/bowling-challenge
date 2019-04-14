@@ -1,0 +1,195 @@
+<html>
+<head>
+<title>Bowling Scorecard App</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/stylesheet.css">
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body class='card'>
+  <h1 id='title' class='glow'>Lets go Bowling!</h1>
+  <div class="row">
+    <h2 class='col-12' id='final-score'>
+    </h2>
+    <form class='col-7' id="submit-roll">
+      <input class='btn btn-info' id="roll-0" type='submit' value='0'></input>
+      <input class='btn btn-info' id="roll-1" type='submit' value='1'></input>
+      <input class='btn btn-info' id="roll-2" type='submit' value='2'></input>
+      <input class='btn btn-info' id="roll-3" type='submit' value='3'></input>
+      <input class='btn btn-info' id="roll-4" type='submit' value='4'></input>
+      <input class='btn btn-info' id="roll-5" type='submit' value='5'></input>
+      <input class='btn btn-info' id="roll-6" type='submit' value='6'></input>
+      <input class='btn btn-info' id="roll-7" type='submit' value='7'></input>
+      <input class='btn btn-info' id="roll-8" type='submit' value='8'></input>
+      <input class='btn btn-info' id="roll-9" type='submit' value='9'></input>
+      <input class='btn btn-info' id="roll-10" type='submit' value='10'></input>
+    </form>
+    <div class='col-5' id='start-button'>
+      <input class='btn btn-warning float-right' id="start-game" type='submit' value='Start a new game'></input>
+    </div>
+  </div>
+  <table class='table table-hover'>
+    <thead class="thead-dark">
+      <tr>
+        <th scope='col'>Frame</th>
+        <th scope='col'>Roll</th>
+        <th scope='col'>Pins</th>
+        <th scope='col'>Total Score</th>
+        <th scope='col'>Bonuses</th>
+      </tr>
+    </thead>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td id='pins-1-1'></td>
+      <td id='score-1-1'></td>
+      <td id='bonus-1-1'></td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td id='pins-1-2'></td>
+      <td id='score-1-2'></td>
+      <td id='bonus-1-2'></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1</td>
+      <td id='pins-2-1'></td>
+      <td id='score-2-1'></td>
+      <td id='bonus-2-1'></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2</td>
+      <td id='pins-2-2'></td>
+      <td id='score-2-2'></td>
+      <td id='bonus-2-2'></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1</td>
+      <td id='pins-3-1'></td>
+      <td id='score-3-1'></td>
+      <td id='bonus-3-1'></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2</td>
+      <td id='pins-3-2'></td>
+      <td id='score-3-2'></td>
+      <td id='bonus-3-2'></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1</td>
+      <td id='pins-4-1'></td>
+      <td id='score-4-1'></td>
+      <td id='bonus-4-1'></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>2</td>
+      <td id='pins-4-2'></td>
+      <td id='score-4-2'></td>
+      <td id='bonus-4-2'></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>1</td>
+      <td id='pins-5-1'></td>
+      <td id='score-5-1'></td>
+      <td id='bonus-5-1'></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>2</td>
+      <td id='pins-5-2'></td>
+      <td id='score-5-2'></td>
+      <td id='bonus-5-2'></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>1</td>
+      <td id='pins-6-1'></td>
+      <td id='score-6-1'></td>
+      <td id='bonus-6-1'></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>2</td>
+      <td id='pins-6-2'></td>
+      <td id='score-6-2'></td>
+      <td id='bonus-6-2'></td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>1</td>
+      <td id='pins-7-1'></td>
+      <td id='score-7-1'></td>
+      <td id='bonus-7-1'></td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>2</td>
+      <td id='pins-7-2'></td>
+      <td id='score-7-2'></td>
+      <td id='bonus-7-2'></td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>1</td>
+      <td id='pins-8-1'></td>
+      <td id='score-8-1'></td>
+      <td id='bonus-8-1'></td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>2</td>
+      <td id='pins-8-2'></td>
+      <td id='score-8-2'></td>
+      <td id='bonus-8-2'></td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>1</td>
+      <td id='pins-9-1'></td>
+      <td id='score-9-1'></td>
+      <td id='bonus-9-1'></td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>2</td>
+      <td id='pins-9-2'></td>
+      <td id='score-9-2'></td>
+      <td id='bonus-9-2'></td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>1</td>
+      <td id='pins-10-1'></td>
+      <td id='score-10-1'></td>
+      <td id='bonus-10-1'></td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>2</td>
+      <td id='pins-10-2'></td>
+      <td id='score-10-2'></td>
+      <td id='bonus-10-2'></td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>3</td>
+      <td id='pins-10-3'></td>
+      <td id='score-10-3'></td>
+      <td id='bonus-10-3'></td>
+    </tr>
+  </table>
+  <h1 id='final-score'></h1>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="src/Frame.js"></script>
+  <script type="text/javascript" src="src/Scorecard.js"></script>
+  <script type="text/javascript" src="interface.js"></script>
+</body>

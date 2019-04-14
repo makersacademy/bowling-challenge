@@ -40,7 +40,9 @@ Click `ok` to any tests that prompt alerts.
 
 ## To use app
 
-Example console commands showing scoring variations and strike/spare bonuses...
+Copy the path to `index.html` into your browser, and start adding scores
+
+Alternatively, console commands can be used as follows (examples showing scoring variations and strike/spare bonuses)...
 
 ```javascript
 scorecard = new Scorecard

@@ -4,6 +4,8 @@
 > 
 > The challenge was to build a bowling score counter with an interface.
 
+![Bowling interface](images/bowling.png)
+
 ## Scoring system
 
 The scoring system is based on this flowchart. 

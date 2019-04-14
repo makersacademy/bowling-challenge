@@ -26,10 +26,23 @@ Frame.prototype.changeStatus = function(newStatus) {
 };
 
 Frame.prototype.isInPlay = function() {
-  if(this._rolls.length > 1 || this._rolls[0] === 10) {
-    return false
-  } else {
+  if(this.index === 9) {
+    this.isInPlayFinalFrame();
+  } else
+    if(this._rolls.length > 1 || this._rolls[0] === 10) {
+      return false
+    } else {
+      return true;
+    };
+};
+
+Frame.prototype.isInPlayFinalFrame = function() {
+  if(this._rolls.length < 2) {
     return true;
+  } else if(this._rolls[0] + this._rolls[1] >= 10) {
+    return true;
+  } else {
+    return false;
   };
 };
 

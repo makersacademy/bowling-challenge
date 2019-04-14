@@ -2,6 +2,10 @@ $(document).ready(function() {
   var scorecard = new Scorecard;
   scorecard.startGame();
 
+  $('#start-game').click(function() {
+    location.reload();
+  });
+
   $('#submit-roll').submit(function(event) {
     event.preventDefault();
     var pins = parseInt($('#pins-knocked-down').val(), 10);

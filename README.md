@@ -15,7 +15,7 @@ $ node app.js
 
 You might need to install node and npm if the above doesn't work.
 
-To see test Jasmine results
+To see Jasmine test results
 ```
 $ open SpecRunner.html
 ```

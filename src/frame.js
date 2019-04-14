@@ -7,7 +7,7 @@ var Frame = function() {
   var first_roll = 0;
 
   this.roll = function roll(pins){
-    if ( roll_number < MAX_ROLLS ){
+    if ( roll_number < MAX_ROLLS  && this.total() < MAX_PINS){
 
       frame += pins;
       roll_number ++;

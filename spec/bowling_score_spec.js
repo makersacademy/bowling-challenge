@@ -28,7 +28,15 @@ describe('Bowling_score', function() {
     expect( game.score() ).toEqual(40);
   });
 
+  it("shows the result of a Strike", function() {
+    game.input_frame(getMockFrame(10,0));
+    expect( game.score() ).toEqual(0);
+    game.input_frame(getMockFrame(1,2));
+    expect( game.score() ).toEqual(16); // the result of the 10 pins of the Strike frame + the bonus (1+2) plus the second frame (1+2)
 
+    game.input_frame(getMockFrame(1,2));
+    expect( game.score() ).toEqual(19); // to confirm that the next frame follows the normal flow (without strike)
+  });
 
 
 

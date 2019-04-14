@@ -1,0 +1,29 @@
+{
+  "name": "bowlingchallenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "src/BowlingGameSpec.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "rake jasmine:ci"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m-budryte/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/m-budryte/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/m-budryte/bowling-challenge#readme",
+  "dependencies": {
+    "jasmine-node": "^2.0.1"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.4"
+  }
+}

@@ -43,8 +43,8 @@ I also still need to figure out how to run Capybara style tests for Node apps - 
 - [Thanks Google for the fonts.](https://fonts.google.com)
 - [Thanks Coen Brothers for the creative inspiration.](https://www.imdb.com/title/tt0118715)
 - [Thanks John Turturro for being the creepiest Jesus of them all.](https://www.imdb.com/title/tt0118715/characters/nm0001806)
-- [Thanks to little app for helping me with colors.](https://html-color-codes.info/colors-from-image/#)
-- [Thanks to the artisst who made the backround I used.](https://wallup.net/the-big-lebowski-minimalism-jesus-quintana/)
+- [Thanks to this little app for helping me with colors.](https://html-color-codes.info/colors-from-image/#)
+- [Thanks to the artist who made the backround I used.](https://wallup.net/the-big-lebowski-minimalism-jesus-quintana/)
 - [Thanks to W3 Schools for the html tips.](https://www.w3schools.com)
 - [Thanks CSS Tricks for the CSS tricks.](https://css-tricks.com)
 - Thanks to my tiny macbook air, which is spitting and huffing as I type this.

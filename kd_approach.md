@@ -173,6 +173,8 @@ I score a strike
 
 1.  [X] Version 1: Return true if strike 
 
+2.  [] Version 1: Mixture of strikes and normal rolls
+
 
 ### USER STORY 4
 
@@ -182,7 +184,7 @@ I play a perfect game and score 300 points
 
 ##### TEST CASES
 
-1.  Version 1: Return 300 final score if all strikes
+1.  [X] Version 1: Return 300 final score if all strikes
 
 
 

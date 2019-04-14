@@ -43,6 +43,13 @@ describe("Game", function () {
       expect(game.getFinalScore(game.rolls)).toEqual(45);
     });
 
+    it("gets the final score of 300 for the perfect game", function () {
+      var game = new Game();
+      let rolls = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+      game.addPinRolls(rolls);
+      expect(game.getFinalScore(game.rolls)).toEqual(300);
+    });
+
   });
 
   describe('strike', function () {

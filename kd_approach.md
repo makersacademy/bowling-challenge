@@ -126,11 +126,47 @@ A week later, 14th April 2019, I went back to the drawing board and simplified m
 
 For the MVP, I split the aim of this project into two versions:
 
-Version 1: 
+VERSION 1 - Simple Bowling Game
 The user will input all the rolls of a bowling game and get a total score back at the end of the game
 
-Version 2: 
+VERSION 2
 A Frame object will manage each frame and their status (strike, spare, normal) and the game object will manage the gameplay (contain frames) and score while the user is playing. This is a better model as it gives feedback to the user at the end of each frame and resets a frame, rather than at the end of the whole game.
+
+
+
+-----------------------------
+## VERSION 1 - Simple Bowling Game
+
+
+### USER STORY 1
+
+### Gutter Game
+
+USER STORY
+[X] > As a player
+when I roll 0 for every frame
+I play a gutter game
+
+##### TEST CASES
+
+1.  [X] Version 1: Return final score with gutter game
+
+### USER STORY 2
+
+> [X] As a player,
+so that I can get the final score
+I can input my pins knocked over for the whole game
+
+
+##### TEST CASES
+
+1.  [X] Version 1: Return final score for random games (no strikes/spares)
+
+
+
+
+
+
 
 
 ##### BUSINESS LOGIC
@@ -191,13 +227,13 @@ Player input number of pins rolled, the frame will determine the score, it will 
 ### Gutter Game
 
 USER STORY
-> As a player
+[X] > As a player
 when I roll 0 for every frame
 I play a gutter game
 
 ##### TEST CASES
 
-1.  Version 1: Return score with gutter game
+1.  [X] Version 1: Return score with gutter game
 
 ---
 
@@ -246,6 +282,8 @@ THEN: The total number of pins knocked down by the next roll (frame i+1) is adde
 Calculation:
  frame i score = (frame i-1 score) + y
  frame i+1 score = (frame i score) + (total number of pins knocked down by the first roll (of frame i+1))
+
+
 
 
 

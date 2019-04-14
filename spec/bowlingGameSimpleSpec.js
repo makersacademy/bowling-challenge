@@ -22,6 +22,27 @@ describe("Game", function () {
       expect(game.getFinalScore(game.rolls)).toEqual(0);
     });
 
+    it("gets the final score of 50 for normal game (no strikes / no spares)", function () {
+      var game = new Game();
+      let rolls = [2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3]
+      game.addPinRolls(rolls);
+      expect(game.getFinalScore(game.rolls)).toEqual(50);
+    });
+
+    it("gets the final score of 70 for normal game (no strikes / no spares)", function () {
+      var game = new Game();
+      let rolls = [2, 5, 2, 5, 2, 5, 2, 5, 2, 5, 2, 5, 2, 5, 2, 5, 2, 5, 2, 5]
+      game.addPinRolls(rolls);
+      expect(game.getFinalScore(game.rolls)).toEqual(70);
+    });
+
+    it("gets the final score of 45 for random game (no strikes / no spares)", function () {
+      var game = new Game();
+      let rolls = [0, 1, 2, 3, 5, 4, 2, 3, 0, 2, 6, 2, 0, 0, 1, 2, 3, 4, 5, 0]
+      game.addPinRolls(rolls);
+      expect(game.getFinalScore(game.rolls)).toEqual(45);
+    });
+
   });
 
 });

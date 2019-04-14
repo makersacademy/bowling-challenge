@@ -25,6 +25,7 @@ describe('Bowling', function() {
     const times = 4;
     for (let i=0; i < times; i++) {
       bowling.roll(0);
+      console.log(bowling._frames)
     };
 
     expect(bowling._frames.length).toEqual(2);
@@ -38,5 +39,24 @@ describe('Bowling', function() {
     };
 
     expect(bowling._frames.length).toEqual(10);
+  });
+
+  it('rolling adds points to the final score', function(){
+    const bowling = new Bowling();
+    const times = 20;
+    for (let i=0; i < times; i++) {
+      bowling.roll(1);
+    };
+
+    expect(bowling.result()).toEqual(20);
+  });
+
+  it('strike multiplies next two rolls by two', function(){
+    const bowling = new Bowling();
+    bowling.roll(10);
+    bowling.roll(5);
+    bowling.roll(4);
+
+    expect(bowling.result()).toEqual(28);
   });
 });

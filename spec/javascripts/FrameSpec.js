@@ -6,4 +6,11 @@ describe('Frame', function(){
     frame.roll(0);
     expect(frame.isOver()).toEqual(true);
   });
+
+  it("strike ends the frame", function(){
+    var frame = new Frame();
+    expect(frame.isOver()).toEqual(false);
+    frame.roll(10);
+    expect(frame.isOver()).toEqual(true);
+  });
 });

@@ -1,0 +1,294 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Gutterballs</title>
+  <meta name="description" content="Gutterballs">
+  <meta name="author" content="Bowling">
+
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  <link rel="stylesheet" href="font/stylesheet.css" type="text/css" charset="utf-8" />
+  <style>
+    html {
+      font-size: 60px;
+      font-family: 'vt323regular';
+    }
+    body {
+      background-color: #21618C;
+     }
+    div.error {
+      z-index: -1;
+      display: none;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: magenta;
+    }
+    h1 {
+      margin: 0;
+    }
+    .container {
+      display: flex;
+      text-align: center;
+    }
+    .frame {
+      display: flex;
+      flex-direction: column;
+      width: 102px;
+    }
+    .frame .header {
+      font-size: 100px;
+      color: #3498DB;
+    }
+    .body {
+      border: 6px solid #3498DB;
+    }
+    .scores {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+    .roll {
+      font-size: 40px;
+      width: 30px;
+      height: 50px;
+      background-color: #F4D03F;
+    }
+    .running-total {
+      height: 70px;
+    }
+    .roll.strike, .roll.spare {
+      color: red;
+    }
+    .running-total {
+      font-weight: bold;
+      color: white;
+      height: 80px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="error"></div>
+  <h1>They see me rollin</h1>
+  <form id='they-see-me-rollin'>
+    <input type="number" name="roll">
+    <button type="submit">Submit</button>
+  </form>
+  <div class="container">
+    <div class="frame frame-1">
+      <div class="header">1</div>
+      <div class="body">
+        <div class="scores">
+          <div class="roll roll-1"></div>
+          <div class="roll roll-2"></div>
+        </div>
+        <div class="running-total"></div>
+      </div>
+    </div>
+    <div class="frame frame-2">
+      <div class="header">2</div>
+      <div class="body">
+        <div class="scores">
+          <div class="roll roll-1"></div>
+          <div class="roll roll-2"></div>
+        </div>
+        <div class="running-total"></div>
+      </div>
+    </div>
+    <div class="frame frame-3">
+      <div class="header">3</div>
+      <div class="body">
+        <div class="scores">
+          <div class="roll roll-1"></div>
+          <div class="roll roll-2"></div>
+        </div>
+        <div class="running-total"></div>
+      </div>
+    </div>
+    <div class="frame frame-4">
+      <div class="header">4</div>
+      <div class="body">
+        <div class="scores">
+          <div class="roll roll-1"></div>
+          <div class="roll roll-2"></div>
+        </div>
+        <div class="running-total"></div>
+      </div>
+    </div>
+    <div class="frame frame-5">
+      <div class="header">5</div>
+      <div class="body">
+        <div class="scores">
+          <div class="roll roll-1"></div>
+          <div class="roll roll-2"></div>
+        </div>
+        <div class="running-total"></div>
+      </div>
+    </div>
+    <div class="frame frame-6">
+      <div class="header">6</div>
+      <div class="body">
+        <div class="scores">
+          <div class="roll roll-1"></div>
+          <div class="roll roll-2"></div>
+        </div>
+        <div class="running-total"></div>
+      </div>
+    </div>
+    <div class="frame frame-7">
+      <div class="header">7</div>
+      <div class="body">
+        <div class="scores">
+          <div class="roll roll-1"></div>
+          <div class="roll roll-2"></div>
+        </div>
+        <div class="running-total"></div>
+      </div>
+    </div>
+    <div class="frame frame-8">
+      <div class="header">8</div>
+      <div class="body">
+        <div class="scores">
+          <div class="roll roll-1"></div>
+          <div class="roll roll-2"></div>
+        </div>
+        <div class="running-total"></div>
+      </div>
+    </div>
+    <div class="frame frame-9">
+      <div class="header">9</div>
+      <div class="body">
+        <div class="scores">
+          <div class="roll roll-1"></div>
+          <div class="roll roll-2"></div>
+        </div>
+        <div class="running-total"></div>
+      </div>
+    </div>
+    <div class="frame frame-10">
+      <div class="header">10</div>
+      <div class="body">
+        <div class="scores">
+          <div class="roll roll-1"></div>
+          <div class="roll roll-2"></div>
+          <div class="roll roll-3"></div>
+        </div>
+        <div class="running-total"></div>
+      </div>
+    </div>
+  </div>
+
+  <h1>They hatin</h1>
+
+  <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+  <script src="src/Scorer.js"></script>
+  <script src="src/Game.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      var $button = $('#they-see-me-rollin button')
+      var $input = $('#they-see-me-rollin input')
+      var game, frame, roll, lastRoll, scoredFrames
+      var reset
+
+      initialise = function () {
+        scoredFrames = 0
+        lastRoll = null
+        roll = 1
+        frame = 1
+        game = new Game ()
+        $('.roll').text("").removeClass('strike').removeClass('spare')
+        $('.running-total').text("")
+      }
+
+      initialise()
+
+      $button.click(function () {
+        var input, runningTotals, inputWasValid, $roll, translate
+
+        input = parseInt($input.val())
+        $input.val("")
+
+        // validate input
+        if (![0,1,2,3,4,5,6,7,8,9,10].includes(input)) {
+          inputWasValid = false
+        } else if (roll === 2 && lastRoll !== 10 && input + lastRoll > 10) {
+          inputWasValid = false
+        } else {
+          inputWasValid = true
+        }
+
+        if (inputWasValid) {
+          if (game.isComplete()) {
+            initialise()
+          }
+
+          console.log('rollin with ' + input)
+          game.roll(input)
+
+          $roll = $('.frame-' + frame + ' .roll-' + roll)
+          if (frame < 10) {
+            if (input === 10 && roll === 1) {
+              // strike
+              $roll.text("X").addClass('strike')
+            } else if (roll === 2 && lastRoll + input === 10) {
+              // spare
+              $roll.text("/").addClass('spare')
+            } else {
+              // basic
+              $roll.text(input)
+            }
+          } else {
+            // 10th frame
+            if (roll === 2 && lastRoll + input === 10) {
+              // spare
+              $roll.text("/").addClass('spare')
+            } else if (input === 10) {
+              // strike
+              $roll.text("X").addClass('strike')
+            } else {
+              // basic
+              $roll.text(input)
+            }
+          }
+          runningTotals = game.runningTotals()
+          if (runningTotals.length > scoredFrames) {
+            for (var i = scoredFrames; i < runningTotals.length; i++) {
+              $frameScore = $('.frame-' + (i + 1) + ' .running-total')
+              $frameScore.text(runningTotals[i])
+              console.log(runningTotals[i])
+            }
+            scoredFrames = runningTotals.length
+          }
+
+          if (frame < 10) {
+            if (input === 10 && roll === 1) {
+              frame ++
+            } else if (roll === 1) {
+              roll = 2
+            } else {
+              roll = 1
+              frame ++
+            }
+          } else {
+            roll ++
+          }
+          lastRoll = input
+        } else {
+          $(".error").stop().fadeIn(0, function() {
+            $(this).fadeOut(4000)
+            return false
+          })
+        }
+
+        return false
+      })
+    })
+  </script>
+</body>
+</html>

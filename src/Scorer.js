@@ -20,19 +20,17 @@ Scorer.prototype = {
   },
 
   _tryUpdatingScores: function () {
-    var score, i = this._scoringIndex
+    var i = this._scoringIndex
     if (this._scoredFrames() === 10) {
       return false
     }
     if (this._rolls[i] === 10) {
       // strike!
       return this._tryScoringStrike()
-    }
-    else if (this._rolls[i] + this._rolls[i + 1] === 10) {
+    } else if (this._rolls[i] + this._rolls[i + 1] === 10) {
       // spare!
       return this._tryScoringSpare()
-    }
-    else if (this._rolls[i + 1] !== undefined) {
+    } else if (this._rolls[i + 1] !== undefined) {
       // just a normal frame
       this._scoreBasicFrame()
       return true
@@ -42,7 +40,7 @@ Scorer.prototype = {
   },
 
   _tryScoringStrike: function () {
-    var score, i = this._scoringIndex
+    var score; var i = this._scoringIndex
     if (this._rolls[i] !== undefined &&
         this._rolls[i + 1] !== undefined &&
         this._rolls[i + 2] !== undefined) {
@@ -56,7 +54,7 @@ Scorer.prototype = {
   },
 
   _tryScoringSpare: function () {
-    var score, i = this._scoringIndex
+    var score; var i = this._scoringIndex
     if (this._rolls[i + 2] !== undefined) {
       score = this._rolls[i] + this._rolls[i + 1] + this._rolls[i + 2]
       this._scoreFrame(score)
@@ -68,7 +66,7 @@ Scorer.prototype = {
   },
 
   _scoreBasicFrame: function () {
-    var score, i = this._scoringIndex
+    var score; var i = this._scoringIndex
     score = this._rolls[i] + this._rolls[i + 1]
     this._scoreFrame(score)
     this._scoringIndex = i + 2

@@ -8,7 +8,8 @@ describe('Game', function () {
   beforeEach(function () {
     scorer = {
       addRoll: function () {},
-      total: function () { return 42 }
+      total: function () { return 42 },
+      runningTotals: "running totals"
     }
     game = new Game (scorer)
   })
@@ -24,6 +25,13 @@ describe('Game', function () {
   describe('.score()', function () {
     it('It returns the total from the scorer', function () {
       expect(game.score()).toEqual(42)
+    })
+  })
+
+  describe('.runningTotals', function () {
+    it('It returns the running totals from the scorer', function () {
+      p = game
+      expect(game.runningTotals()).toEqual("running totals")
     })
   })
 

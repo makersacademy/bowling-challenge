@@ -13,6 +13,10 @@ Game.prototype = {
     this._scorer.addRoll(roll)
   },
 
+  runningTotals: function () {
+    return this._scorer.runningTotals
+  },
+
   score: function () {
     return this._scorer.total()
   },

@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/Hives/bowling-challenge.svg?branch=master)](https://travis-ci.org/Hives/bowling-challenge)
 
+<img src="images/screenshot.png" width=700>
+
 *[Instructions](instructions.md)*  
 
 ## Installation

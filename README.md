@@ -9,7 +9,7 @@ This weekend (and next) the focus is on JavaScript. This is a totally new langua
 - Jasmine for the tests
 - ESLint for the linter
 - Node.js and travis for automated tests
-- Karma for running tests
+- Karma for running automated tests - note this is not yet working
     - `npm install karma --save-dev`
     - `npm install karma-jasmine karma-firefox-launcher --save-dev`
     - `npm install -g karma-cli`
@@ -34,20 +34,31 @@ This weekend (and next) the focus is on JavaScript. This is a totally new langua
 
 - To run the linter, type `eslint src/**`
 
+## My approach
+
+- Setup of a basi git repo so that I can make notes and feel ready to build
+- Understand the rules of bowling and model how that all works
+- TDD a game, frame and bonus class
+- End of first weekend - basic scores and strikes/spares working but does not work for two strikes in a row
+
+- Beginning of second weekend - rewrite game to not need a bonus class and to instead iterate over frames to calculate bonus points
+- Not working - final frame will calculate the first bonus ball as part of a normal role if you roll a strike with the first ball.
+- Not working - user interface doesn't allow for 3 balls to be thrown in the final frame
+
+### Let's TDD
+- Next I started to build my code using TDD. Or so I thought. I went straight to unit tests, first to set up the initial game and then second to start building frames
+- About an hour into my merry TDD process, Ed posted in the slack channel a recommendation to write a feature test for the gutter game first. Doh! Feature tests!!
+- As it turned out, a bit of my game spec seems to be a bit of a feature test anyway but my next step was to build the proper feature test.
+
+
 ### Still to do
-- Stop user being able to enter ball 2 in the interface if they've scored a strike
+
 - Make the interface clearer that a strike or spare has been scored
 - Update functionality for frame 10 with the additional ball - if a 10 is scored first then don't count the extra point. Also update index.html to allow 3 balls - only make the 3rd appear if relevant?
 - Make the user interface pretty including using flash to notify a problem
 - Do all the normal refactoring for single responsibility!!
-- Update the README to describe the rewrite and to reflect that I am no longer using a bonus array
 - Look to see if I could use better syntax anywhere - map or reduce, foreach instead of a for loop for arrays etc
 - Add error handling to stop the user adding more than 10 points per frame
-- Look at notes for other things to do
-
-## My approach
-
-After some very basic setup of a git repo so that I can make notes and feel ready to build, the first step this week was for me to understand the rules of bowling and model how that all works.
 
 ### User Stories
 
@@ -113,7 +124,7 @@ Once I understood the user stories, I modelled the objects and their methods, us
 
 - Game object - to control the overall scorecard
 - Frame object - to control the score per frame
-- Bonus object - to keep track of required bonus points because of a strike or a spare
+- Bonus object - to keep track of required bonus points because of a strike or a spare - **NOW REMOVED AS IT WAS TOO COMPLICATED**
 
 ### Data structures
 
@@ -124,15 +135,12 @@ Once I understood the user stories, I modelled the objects and their methods, us
   - Details of the balls rolled and the scores for those
   - A frame total which will include bonus points
   - The number of pins left in the frame so we can check that the player doesn't exceed 10
-- A bonus is made up of: (a bonus is stored as a hash object)
+- A bonus is made up of: (a bonus is stored as a hash object) - **NOW REMOVED**
   - The type of bonus - strike or spare
   - If it is a strike, it will hold the first bonus point
   - The frame in which the bonus started accruing
 
-## Let's TDD
-- Next I started to build my code using TDD. Or so I thought. I went straight to unit tests, first to set up the initial game and then second to start building frames
-- About an hour into my merry TDD process, Ed posted in the slack channel a recommendation to write a feature test for the gutter game first. Doh! Feature tests!!
-- As it turned out, a bit of my game spec seems to be a bit of a feature test anyway but my next step was to build the proper feature test. It's now late on Friday and I am having a little sulk that I completely forgot about feature tests... Maybe time for bed!!!
+
 
 
 ****

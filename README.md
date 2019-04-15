@@ -70,6 +70,8 @@ In retrospect I think the logic in my attempt 4 is probably clearer to follow. T
 
 Also I've got way too many tests I think. They need to be refactored and redundant test removed.
 
+Just noticed... the validation on the last frame is wrong. If you roll a strike and then roll less than 10, the pins are not replaced. So you should be able to roll "X 9 /" in the last frame, but not "X 9 X". So that is just like what I noted elsewhere, that the 10th frame is like a 10th frame with an extra 11th frame which isn't scored itself, but only contributes to the score of the 10th frame.
+
 ## Code review
 
 ### Outside in usually better than inside out

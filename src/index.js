@@ -7,10 +7,13 @@ $(document).ready(function() {
     let name = '#ball' + parseInt(num+1, 10);
     $(name).on('change', function() {
       let score = $(name)[0].value;
-      game.recordBall(parseInt(score, 10));
-      // updateMessage(num);
-      updateReadOnly(name, num, parseInt(score, 10))
-      updateTotals();
+      valid = validateInput(score, num);
+      if (valid !== false) {
+        game.recordBall(parseInt(score, 10));
+        // updateMessage(num);
+        updateReadOnly(name, num, parseInt(score, 10))
+        updateTotals();
+      }
     });
   }
 
@@ -32,6 +35,14 @@ $(document).ready(function() {
       $(nextName).attr('readonly', true).css("background-color","paleblue");
       // $(nextName).attr('tabindex', '-1');
     }
+  }
+
+  function validateInput(score, num) {
+    if(score > 10) {
+      alert("Score cannot be more than 10");
+      return false;
+    }
+
   }
 
   // function updateMessage(number) {

@@ -1,2 +1,13 @@
 /**/.DS_Store
+.env
+.eslintrc.json
 node_modules
+coverage
+logs
+
+#Logs
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+lerna-debug.log
+

@@ -7,12 +7,12 @@ describe("Feature test:", function() {
     scoreCard = new ScoreCard(frame);
   });
 
-  describe("new game", function() {
+  describe("New game", function() {
     it("has an empty frame sheet", function() {
       expect(scoreCard.frameSheet).toEqual([]);
     });
     it("has total score equal to 0", function() {
-      expect(scoreCard.gameTotal).toEqual = 0;
+      expect(scoreCard.calculateScore()).toEqual(0);
     });
   });
 
@@ -21,11 +21,11 @@ describe("Feature test:", function() {
       for (let i = 0; i < 20; i++) {
         scoreCard.addRoll(0);
       }
-      expect(scoreCard.gameTotal()).toEqual(0);
+      expect(scoreCard.calculateScore()).toEqual(0);
     });
   });
 
-  describe("illegal moves", function() {
+  describe("Illegal moves", function() {
     it("rollsSheet only accepts 10 frames if no special case", function() {
       for (let i = 0; i < 20; i++) {
         scoreCard.addRoll(0);
@@ -41,7 +41,7 @@ describe("Feature test:", function() {
       for (let i = 0; i < 20; i++) {
         scoreCard.addRoll(2);
       }
-      expect(scoreCard.gameTotal()).toEqual(40);
+      expect(scoreCard.calculateScore()).toEqual(40);
     });
   });
 
@@ -59,7 +59,7 @@ describe("Feature test:", function() {
       scoreCard.addRoll(3);
       scoreCard.addRoll(3);
 
-      expect(scoreCard.gameTotal()).toEqual(255);
+      expect(scoreCard.calculateScore()).toEqual(255);
     });
   });
 });

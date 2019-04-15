@@ -49,8 +49,8 @@ describe("ScoreCard: ", function() {
       scoreCard.addRoll(5);
       scoreCard.addRoll(2);
       expect(scoreCard.frameSheet[0][0]).toEqual(17);
-      expect(scoreCard.gameTotal()).toEqual(24);
-      expect(scoreCard.gameTotal()).not.toEqual(27);
+      expect(scoreCard.calculateScore()).toEqual(24);
+      expect(scoreCard.calculateScore()).not.toEqual(27);
     });
 
     it("adds the bonus to the correct frame withouth updating previous frame's score if strike in next frame", function() {
@@ -86,7 +86,7 @@ describe("ScoreCard: ", function() {
       scoreCard.addRoll(5);
       scoreCard.addRoll(5);
       scoreCard.addRoll(4);
-      expect(scoreCard.frameSheet[0]).toEqual(15);
+      expect(scoreCard.frameSheet[0]).toEqual([15]);
       expect(scoreCard.frameSheet[1]).toEqual([5, 4]);
     });
 
@@ -103,7 +103,7 @@ describe("ScoreCard: ", function() {
       for (let i = 0; i < 12; i++) {
         scoreCard.addRoll(10);
       }
-      expect(scoreCard.gameTotal()).toEqual(300);
+      expect(scoreCard.calculateScore()).toEqual(300);
     });
   });
 
@@ -112,14 +112,14 @@ describe("ScoreCard: ", function() {
       for (let i = 0; i < 20; i++) {
         scoreCard.addRoll(4);
       }
-      expect(scoreCard.gameTotal()).toEqual(80);
-      expect(scoreCard.gameTotal()).not.toEqual(1);
+      expect(scoreCard.calculateScore()).toEqual(80);
+      expect(scoreCard.calculateScore()).not.toEqual(1);
     });
 
     it("returns current total of the game", function() {
       scoreCard.addRoll(3);
       scoreCard.addRoll(5);
-      expect(scoreCard.gameTotal()).toEqual(8);
+      expect(scoreCard.calculateScore()).toEqual(8);
     });
 
     it("game only accepts 10 frames if no special case", function() {
@@ -135,8 +135,8 @@ describe("ScoreCard: ", function() {
       for (let i = 0; i < 20; i++) {
         scoreCard.addRoll(0);
       }
-      expect(scoreCard.gameTotal()).toEqual(0);
-      expect(scoreCard.gameTotal()).not.toEqual(1);
+      expect(scoreCard.calculateScore()).toEqual(0);
+      expect(scoreCard.calculateScore()).not.toEqual(1);
     });
   });
 });

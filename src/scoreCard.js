@@ -45,7 +45,7 @@ class ScoreCard {
         let frameLength = this.frameLength(frame);
 
         if (frameScore == 10 && frameLength == 2) {
-          fs[len - 1] = frameScore + calculateBonusSpare(fs);
+          fs[len - 1] = [frameScore + calculateBonusSpare(fs)];
         }
       }
 
@@ -60,10 +60,19 @@ class ScoreCard {
     return this.frameSheet;
   }
 
-  gameTotal() {
-    return this.frameSheet
-      .map(frame => frame.reduce((acc, val) => acc + val))
-      .reduce((acc, frameTotal) => acc + frameTotal);
+  calculateScore() {
+    //add to scoreSheet
+    let fs = this.frameSheet;
+    let score = 0;
+    if (this.frameSheet.length > 11) {
+      this.frameSheet.splice(-2, 2);
+    }
+
+    for (let i = 0; i < fs.length; i++) {
+      score += parseInt(fs[i].reduce((acc, val) => acc + val));
+    }
+
+    return score;
   }
 
   // scoreSheetTest() {}

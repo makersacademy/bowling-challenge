@@ -7,7 +7,7 @@ class Scorecard {
 
   recordFrame(frameNo, rollOne = 0, rollTwo = 0) {
     const FRAME = [frameNo, rollOne, rollTwo];
-    if (!this.isComplete()) {this.gameScores.push(FRAME)}
+    if ( !this.isComplete() ) { this.gameScores.push(FRAME) }
   }
 
   isComplete(){
@@ -15,7 +15,7 @@ class Scorecard {
   }
 
   clearGame(){
-    if (this.isComplete()){this.gameScores.length = 0}
+    if ( this.isComplete() ) { this.gameScores.length = 0 }
   }
 
   total(){

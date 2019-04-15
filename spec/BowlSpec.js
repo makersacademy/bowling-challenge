@@ -46,5 +46,16 @@ describe('Bowl Functions', function() {
     expect(bowl.bonus).toEqual(jasmine.arrayContaining(["Gutter"]));
   });
 
+  it('Adds strike to the bonus if the last frame equalled 10', function() {
+    bowl = new Bowl(0,0,0,0,0,0);
+    bowl.bonusCalc(bowl.add(5,5));
+    expect(bowl.bonus).toEqual(jasmine.arrayContaining(["Strike"]));
+  });
 
+  it('Increases the score if the last bonus was a strike', function() {
+    bowl = new Bowl(0,0,0,0,0,0);
+    bowl.bonusCalc(bowl.add(5,5));
+    bowl.bonusCalc(bowl.add(2,2));
+    expect(bowl.score)toEqual(16);
+  });
 });

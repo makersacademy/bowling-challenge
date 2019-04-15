@@ -46,4 +46,24 @@ describe('Scorecard', function(){
       expect(scorecard.isComplete()).toBe(true)
     })
   })
+
+  describe('10th frame', function(){
+    it('calculates 10th frame score with 2 rolls', function(){
+      scorecard.roll([3,7, 6,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 3,4])
+      expect(scorecard.total()).toEqual(29)
+      expect(scorecard.isComplete()).toBe(true)
+    })
+    
+    // it('calculates 10th frame score with 3 rolls with spare', function(){
+    //   scorecard.roll([3,7, 6,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 4,6,4])
+    //   expect(scorecard.total()).toEqual(40)
+    //   expect(scorecard.isComplete()).toBe(true)
+    // })
+
+    // it('calculates 10th frame score with 3 rolls with strike', function(){
+    //   scorecard.roll([3,7, 6,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 10,4,4])
+    //   expect(scorecard.total()).toEqual(48)
+    //   expect(scorecard.isComplete()).toBe(true)
+    // })
+  })
 })

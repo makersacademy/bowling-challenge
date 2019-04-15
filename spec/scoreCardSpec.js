@@ -34,13 +34,13 @@ describe("ScoreCard: ", function() {
     expect(scoreCard.frameSheet.length).toEqual(2);
   });
 
-  fdescribe("Bonus tracking", function() {
+  describe("Bonus tracking", function() {
     it("keeps track of bonus after 1 strike", function() {
       scoreCard.addRoll(10);
       expect(scoreCard.frameSheet[0]).toEqual([10]);
       scoreCard.addRoll(5);
       scoreCard.addRoll(2);
-      expect(scoreCard.bonusTracker).toEqual(7);
+      expect(scoreCard.frameSheet[0][0]).toEqual(17);
     });
 
     it("adds the bonus to the correct frame if no strike in next frame", function() {
@@ -59,28 +59,52 @@ describe("ScoreCard: ", function() {
       scoreCard.addRoll(10);
       expect(scoreCard.frameSheet[0]).toEqual([10]); // check that bonus is not included
       expect(scoreCard.frameSheet[1]).toEqual([10]); // check that strike is registered
-      expect(scoreCard.bonusTracker).toEqual(10); //check bonus is 10
     });
 
-    it("keeps track of 2 strikes bonus", function() {
+    it("adds bonus to first frame after 2 strikes and a normal roll", function() {
       scoreCard.addRoll(10); //strike 1
       expect(scoreCard.frameSheet[0]).toEqual([10]);
       scoreCard.addRoll(10); //strike 2
-      expect(scoreCard.frameSheet[0]).toEqual([10]); // check that bonus is not included
-      expect(scoreCard.frameSheet[1]).toEqual([10]); // check that strike is registered
-      expect(scoreCard.bonusTracker).toEqual(10); //check bonus is 10
-      // no strike - no spare rolls
+      expect(scoreCard.frameSheet[0]).toEqual([10]);
+      expect(scoreCard.frameSheet[1]).toEqual([10]);
       scoreCard.addRoll(5);
-      scoreCard.addRoll(2);
-      expect(scoreCard.frameSheet[2]).toEqual([5, 2]); //current frame after completion
-      //WORKS UP TO HERE
-      expect(scoreCard.frameSheet[0][0]).toEqual(27); //frame n-2 updated with bonus 10+10+7
-      expect(scoreCard.frameSheet[0][1]).toEqual(17); //frame n-1 updated with bonus 10+7
+      scoreCard.addRoll(5);
+      expect(scoreCard.frameSheet[0]).toEqual([25]);
     });
 
-    it("keeps track of spare bonus", function() {});
+    it("adds bonus to the second frame after 2 strikes and 2 normal rolls", function() {
+      scoreCard.addRoll(10); //strike 1
+      scoreCard.addRoll(10); //strike 2
+      scoreCard.addRoll(5);
+      scoreCard.addRoll(2);
+      expect(scoreCard.frameSheet[0]).toEqual([25]); //current frame after completion
+      expect(scoreCard.frameSheet[1]).toEqual([17]); //current frame after completion
+    });
 
-    it("accepts a maximum of 12 consecutive strikes", function() {});
+    it("adds first roll to previous frame if previous frame is a spare", function() {
+      scoreCard.addRoll(5);
+      scoreCard.addRoll(5);
+      scoreCard.addRoll(5);
+      scoreCard.addRoll(4);
+      expect(scoreCard.frameSheet[0]).toEqual(15);
+      expect(scoreCard.frameSheet[1]).toEqual([5, 4]);
+    });
+
+    it("accepts a maximum of 12 consecutive strikes", function() {
+      for (let i = 0; i < 12; i++) {
+        scoreCard.addRoll(10);
+      }
+      expect(function() {
+        scoreCard.addRoll(10);
+      }).toThrowError("No more rolls");
+    });
+
+    it("perfect score is 300", function() {
+      for (let i = 0; i < 12; i++) {
+        scoreCard.addRoll(10);
+      }
+      expect(scoreCard.gameTotal()).toEqual(300);
+    });
   });
 
   describe("Normal game: no strikes, no spares", function() {

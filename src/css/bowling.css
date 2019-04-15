@@ -1,0 +1,142 @@
+body{
+    background-image: url("./../../images/background.jpeg");
+    background-size: 100%;
+}
+.title {
+  text-align: center;
+  color: rgb(60, 142, 197);
+  font-size: 40px;
+  font-family: 'Roboto';
+  font-weight: 600;
+  text-shadow: 0 0 5px rgb(255, 255, 255);
+  top: 10px;
+  background-color: rgba(250, 235, 215, 0.555);
+  width: 400px;
+  position: relative;
+  left: 35%;
+  border-radius: 60px 20px;
+}
+
+.scorecard-background {
+    background-color: rgb(255, 255, 255);
+    width: 80%;
+    margin: 0 auto; 
+    border-radius: 10px;
+}
+
+table.scorecard {
+    width: 100%; 
+    font-size: 12px; 
+    border: 3px solid; 
+    text-align: center; 
+    table-layout: fixed; 
+    color: rgba(0, 0, 0, 0.301);
+    border-radius: 10px;
+}
+
+table.scorecard th, tr, td {
+    padding: 1px; 
+    vertical-align: middle; 
+    font-family: 'Roboto'; 
+    text-align: center;
+    font-size: 20px;
+}
+
+table.scorecard th {
+    border-bottom:3px solid; 
+    background-color:#8cadb3; 
+    height:40px; 
+    color: rgba(255, 255, 255, 0.596);
+    font-family: 'Roboto';
+    font-size: 20px;
+    text-shadow: 0 0 7px black;
+}
+
+/* table.scorecard th:not(:last-child) {border-right:1px solid;} */
+table.scorecard td {
+    height:30px; 
+    background: rgb(255, 254, 254);
+}
+
+table.scorecard tr td:not(:last-child) {
+    border-right:2px solid;
+}
+
+table.scorecard tr:nth-child(2) td:nth-child(even) {
+    border-bottom: 2px solid;
+}
+table.scorecard tr:nth-last-child(2) td:nth-last-child(2) { 
+    border-bottom:2px solid;
+}
+
+.btn-container {
+    width: 80%;
+    margin: 40px auto; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: rgba(250, 235, 215, 0.555);
+    border-radius: 60px 20px;
+}
+
+.btn {
+  box-sizing: border-box;
+  appearance: none;
+  background-color: transparent;
+  border-radius: 10px;
+
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 10px;
+  padding: 15px 20px;
+  text-align: center;
+  font-family: 'Roboto';
+  font-weight: 900;
+}
+.btn:hover, :focus {
+    color: #fff;
+    outline: 0;
+}
+
+.btn-effect-rolls {
+    border-color: #ffffff79;
+    color: #fff;
+    box-shadow: 0 0 40px 40px #8cadb3 inset, 0 0 0 0 #8cadb3;
+    transition: all 150ms ease-in-out;
+}
+.btn-effect-rolls:hover {
+    box-shadow: 0 0 10px 0 #8cadb3 inset, 0 0 10px 4px #8cadb3;
+}
+
+.scr-rst-container {
+    width: 80%;
+    border-radius: 0px;
+    position: absolute;
+    left: 15%;
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+}
+
+.btn-effect-reset {
+    border-color: #ffffff79;
+    color: #fff;
+    box-shadow: 0 0 40px 40px #8cadb3 inset, 0 0 0 0 #8cadb3;
+    transition: all 150ms ease-in-out;
+}
+.btn-effect-reset:hover {
+    box-shadow: 0 0 10px 0 #f70000 inset, 0 0 10px 4px #ff7878;
+}
+
+.system-messages {
+    font-family: 'Roboto';
+    color: rgb(255, 255, 255);
+    font-size: 50px;
+    background-color: rgba(255, 168, 53, 0.8);
+    border-radius: 10px 30px;
+    font-weight: 500px;
+}
+

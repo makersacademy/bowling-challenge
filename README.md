@@ -4,7 +4,7 @@
 
 <img src="images/screenshot.png" width=700>
 
-*[Instructions](instructions.md)*  
+*[Exercise instructions](instructions.md)*  
 
 ## Installation
 

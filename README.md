@@ -1,40 +1,30 @@
 
-Bowling Challenge
-=================
+# Javascript Bowling Challenge
 
+[Getting started](#getting-started) | [To Use](#to-use) | [Task](#task) | [Approach](#approach) |
+[Code Status](#code-status)
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+This weekend challenge is for submission to Makers Academy. The code creates a
+programme which allows the user to keep track of their score for a 10 pin bowling game, and 
+calculate any bonus points they may get. 
 
-## The Task
+### Getting Started
+1. Clone to your local machine using
+  `git@github.com:LaurenQurashi/bowling-challenge.git`
+2. Run `gem install bundle`
+3. Run `bundle`
 
+### To Use
+Run the Bowl.js file in the console. You can use the ones on Google Chrome's Dev Tools. To test this code, use Jasmine. To see what tests it currently passes, run the bowlSpec.js file. 
+
+### Task
+-----
 **THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
-
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
 
 ## Bowling — how does it work?
 
@@ -60,18 +50,31 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 ### Perfect Game
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+------
 
-In the image below you can find some score examples.
+### Approach
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
+To combat this challenge, I used the standard practice of TDD. This involved
+writing a very simple failing test, checking the error code, and doing the least
+I could to pass my simple test. Repetition of this process allowed me to evolve
+my programme into the current product.
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+To start this process, I read through the criteria and drafted up some user stories
+that someone using this score card would need. I then reduced the user stories down,
+one by one, to nouns and verbs, and considered how these nouns would interact with each other. Once
+completed, I would formulate my objects and their functions from this list of nouns and
+verbs. I then completed some in depth planning around the logic of bowling, as it's not as 
+simple as it looks.
 
-## Code Review
+The next step would be to create the most simple test I could using Jasmine, to
+ensure that this function wasn't possible, and thus work on a solution to resolve
+this. By repeating this step, I soon built up the code to complete the
+requirements for the first user story.
 
-In code review we'll be hoping to see:
+### Code Status
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+Currently, the code satisfies 8/9 of the tests. Due to time restrictions, I was unable 
+to make this test pass before submission. The requirements remain incomplete, however basic functionality
+such as the score counter is in tact. To continue solving this task, I would continue adding the 
+types of bonuses to the bonus calculator. I would then implement some concluding functionality to end the game.
+I invisioned this to show a summary of the game by recording each frame's data in an interface. 

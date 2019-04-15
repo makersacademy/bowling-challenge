@@ -69,3 +69,13 @@ My `Game` object now only does one thing, which is deciding whether the game is 
 In retrospect I think the logic in my attempt 4 is probably clearer to follow. The `._tryUpdatingScores()` function in `Scorer` is pretty complex. Some improvement is probably possible with further refactoring, but if I was going to do an attempt 6 (😱) I might start from the attempt 4-type logic.
 
 Also I've got way too many tests I think. They need to be refactored and redundant test removed.
+
+## Code review
+
+### Outside in usually better than inside out
+
+Start by writing a simple feature test, and use that to spin up your unit tests. Doing it this way will help you write the smallest amount of code to implement the feature. Starting from the inside out, i.e. writing unit tests first, can lead you to write too much code, too many methods, which can be brittle and need to be deleted or rewritten later.
+
+See [BDD pill])(https://github.com/makersacademy/course/blob/master/pills/bdd_cycle.md).
+
+See also [Uncle Bob's test-driven bowling game kata](http://butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata).

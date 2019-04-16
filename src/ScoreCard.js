@@ -52,13 +52,13 @@ class ScoreCard {
     if (this.frameComplete === true) {
       if (this.strikeMode === true) {
         this.smallFrameArray[0] *= 2;
-        this.smallFrameArray[1] *= 2;
-        this.mode = 'none';
+        if (this.smallFrameArray.length > 1) {
+          this.smallFrameArray[1] *= 2;
+        };
         this.strikeMode = false;
       };
       if (this.spareMode === true) {
         this.smallFrameArray[0] *= 2;
-        this.mode = 'none';
         this.spareMode = false;
       };
       this.reset();
@@ -68,7 +68,10 @@ class ScoreCard {
       if (this.mode === 'spare') {
         this.spareMode = true;
       };
-      return this.total;
+      this.total;
+      if (this.mode !== 'finished') {
+        this.mode = 'none'
+      };
     };
   };
 

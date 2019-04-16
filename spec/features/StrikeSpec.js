@@ -14,4 +14,13 @@ describe ('Strikes', function () {
     expect(scorecard.frameCount).toEqual(3)
     expect(scorecard.rollCount).toEqual(1)
   });
+
+  it('If a user rolls a strike and then another strike, the next roll also counts', function () {
+    scorecard.roll(10);
+    scorecard.roll(10);
+    scorecard.roll(3);
+    scorecard.roll(4);
+
+    expect(scorecard.total).toEqual(47)
+  });
 });

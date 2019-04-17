@@ -9,6 +9,7 @@ class ScoreCard {
     this.mode = 'none';
     this.strikeMode = false;;
     this.spareMode = false;
+    this.doubleMode = false;
   };
 
   roll(num) {
@@ -51,11 +52,19 @@ class ScoreCard {
     };
     if (this.frameComplete === true) {
       if (this.strikeMode === true) {
-        this.smallFrameArray[0] *= 2;
+        if (this.smallFrameArray[0] === 10) {
+          this.mode = 'double'
+        }
+        if (this.doubleMode === true) {
+          this.smallFrameArray[0] *= 3;
+        } else {
+          this.smallFrameArray[0] *= 2;
+        }
         if (this.smallFrameArray.length > 1) {
           this.smallFrameArray[1] *= 2;
         };
         this.strikeMode = false;
+        this.doubleMode = false;
       };
       if (this.spareMode === true) {
         this.smallFrameArray[0] *= 2;
@@ -68,6 +77,10 @@ class ScoreCard {
       if (this.mode === 'spare') {
         this.spareMode = true;
       };
+      if (this.mode === 'double') {
+        this.strikeMode = true;
+        this.doubleMode = true;
+      }
       this.total;
       if (this.mode !== 'finished') {
         this.mode = 'none'

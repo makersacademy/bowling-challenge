@@ -3,7 +3,7 @@
 $(document).ready(function() {
   var game = new Game();
 
-  for(let num = 0; num<20; num++){
+  for(let num = 0; num<20; num++) {
     let name = '#ball' + parseInt(num+1, 10);
     $(name).on('change', function() {
       let score = $(name)[0].value;

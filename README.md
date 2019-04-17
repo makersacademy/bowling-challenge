@@ -1,5 +1,6 @@
 # Bowling Challenge
 
+
 ## There are 4 elements to this challenge.
 
 ## The first is how to store the data.
@@ -64,3 +65,7 @@ If the game array is length 10 then 10 frames have been played and unless the la
 If the last game is a 'Strike' then a further frame can be played, if this too is a 'Strike' then one final frame can be played.
 
 The score is calculated as play continues.
+
+## To run the tests
+ open SpecRunner.html 
+

@@ -1,4 +1,4 @@
-# Bowling Challenge
+# Bowling Challenge 2
 
 ## There are 4 elements to this challenge.
 

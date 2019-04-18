@@ -4,7 +4,7 @@ function Game(frame = Frame) {
   this.Frame = frame
   this.complete = false;
   this.frameList = [];
-  this.bonuses = [];
+  // this.bonuses = [];
   this.lastRound = false;
 }
 
@@ -12,47 +12,45 @@ Game.prototype = {
   recordBall: function(score) {
     if(this.complete !== true)
     {
-      if (this.frameList.length === 9 && this.isPreviousFrameComplete()) {
+      if (this.frameList.length === 9 && this._isPreviousFrameComplete()) {
         this.lastRound = true;
       }
 
-      if(this.isFirstFrame() || this.isPreviousFrameComplete()) {
-        this.frameList.push(this.createNewFrame(score));
+      if(this._isFirstFrame() || this._isPreviousFrameComplete()) {
+        this.frameList.push(this._createNewFrame(score));
       }
       else {
-        this.addToFrame(score, this.frameList.slice(-1)[0]);
+        this._addToFrame(score, this.frameList.slice(-1)[0]);
       }
-
-      this.complete = this.checkEndOfGame(this.frameList);
-      this.addBonusScores();
     }
   },
 
-  isFirstFrame: function() {
+  _isFirstFrame: function() {
     if(this.frameList.length === 0) { return true; }
     else { return false; }
   },
 
-  createNewFrame: function(score) {
+  _createNewFrame: function(score) {
       let frame = new this.Frame();
       return frame.recordScore(score, this.lastRound);
   },
 
-  addToFrame: function(score, frame) {
+  _addToFrame: function(score, frame) {
       frame.recordScore(score, this.lastRound);
   },
 
   checkEndOfGame: function() {
     if (this.frameList.length === 10 && this.frameList.slice(-1)[0].isComplete() === true) {
-      return true;
-    } else { return false; }
+      this.complete = true;
+    }
+    // else { return false; }
   },
 
   isComplete: function() {
     return this.complete;
   },
 
-  isPreviousFrameComplete: function() {
+  _isPreviousFrameComplete: function() {
     if(this.frameList.slice(-1)[0].isComplete() === true) { return true; }
     else { return false; }
   },

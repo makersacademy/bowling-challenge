@@ -1,10 +1,5 @@
 describe('Game', function(){
   beforeEach(function(){
-    // function frameDouble () {};
-    // frameDouble.prototype = {
-    //
-    // }
-    // );
     game = new Game();
   });
 
@@ -30,6 +25,7 @@ describe('Game', function(){
       }
       game.recordBall(0, true);
       game.recordBall(0, true);
+      game.checkEndOfGame();
       expect(game.isComplete()).toBe(true);
     });
 
@@ -56,6 +52,7 @@ describe('Game', function(){
         game.recordBall(7);
         expect(game.calculateTotal()).toEqual(10);
         game.recordBall(7);
+        game.addBonusScores();
         expect(game.calculateTotal()).toEqual(24);
         expect(game.frameList[0].total).toEqual(17);
     });
@@ -68,6 +65,7 @@ describe('Game', function(){
       expect(game.frameList[0].total).toEqual(10);
       game.recordBall(7);
       game.recordBall(2);
+      game.addBonusScores();
       expect(game.calculateTotal()).toEqual(28);
       expect(game.frameList[0].total).toEqual(19);
     });
@@ -85,6 +83,7 @@ describe('Game', function(){
       }
       game.recordBall(2);
       game.recordBall(5);
+      game.addBonusScores();
       // (30) + (30) + (10+10+2) + (10+2+5) + 2 + 5
       expect(game.calculateTotal()).toEqual(106);
     });
@@ -98,6 +97,7 @@ describe('Game', function(){
       game.recordBall(8);
       game.recordBall(2);
       game.recordBall(3);
+      game.addBonusScores();
       // (30) + (30) + (10+10+8) + (10+8+2) + (8+2+3) + 3
       expect(game.calculateTotal()).toEqual(124);
     });
@@ -112,7 +112,7 @@ describe('Game', function(){
       game.recordBall(10, true);
       game.recordBall(10, true);
       game.recordBall(10, true);
-      console.log(game.frameList)
+      // console.log(game.frameList)
       expect(game.calculateTotal()).toEqual(102)
     });
 
@@ -124,7 +124,7 @@ describe('Game', function(){
       game.recordBall(8, true);
       game.recordBall(2, true);
       game.recordBall(5, true);
-      console.log(game.frameList)
+      // console.log(game.frameList)
       expect(game.calculateTotal()).toEqual(87)
     });
 
@@ -135,6 +135,7 @@ describe('Game', function(){
       expect(game.calculateTotal()).toEqual(72);
       game.recordBall(3, true);
       game.recordBall(2, true);
+      game.checkEndOfGame();
       expect(game.calculateTotal()).toEqual(77);
       expect(game.isComplete()).toEqual(true);
       game.recordBall(5, true);

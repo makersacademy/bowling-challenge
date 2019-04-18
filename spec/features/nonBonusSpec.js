@@ -1,10 +1,10 @@
 describe("Game with no bonus points", function(){
   it("Rolls a non-10 score every frame", function(){
-    game = new Game();
+    controller = new Controller();
     for(let i=0; i<20; i++){
-      game.recordBall(3);
+      controller.addBall(3);
     }
-    expect(game.calculateTotal()).toEqual(60);
-    expect(game.isComplete()).toEqual(true);
+    expect(controller.totalScore()).toEqual(60);
+    expect(controller.isGameOver()).toEqual(true);
   });
 });

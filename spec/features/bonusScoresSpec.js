@@ -1,79 +1,80 @@
 describe("Bonus scores in rounds 1-9", function(){
   describe("Spares", function(){
+    beforeEach(function() {
+      controller = new Controller();
+    })
+
     it("correctly allows a spare to be scored on one occasion", function(){
-      game = new Game();
       for(let i=0; i<10; i++){
-        game.recordBall(3);
+        controller.addBall(3);
       }
-      expect(game.calculateTotal()).toEqual(30);
-      game.recordBall(3);
-      game.recordBall(7);
-      game.recordBall(7);
-      expect(game.calculateTotal()).toEqual(54);
+      expect(controller.totalScore()).toEqual(30);
+      controller.addBall(3);
+      controller.addBall(7);
+      controller.addBall(7);
+      expect(controller.totalScore()).toEqual(54);
     });
 
     it("correctly allows a spare to be scored on two occasions", function(){
-      game = new Game();
       for(let i=0; i<10; i++){
-        game.recordBall(3);
+        controller.addBall(3);
       }
-      game.recordBall(3);
-      game.recordBall(7);
+      controller.addBall(3);
+      controller.addBall(7);
       for(let j=0; j<2; j++){
-        game.recordBall(3);
+        controller.addBall(3);
       }
-      expect(game.calculateTotal()).toEqual(49);
-      game.recordBall(6);
-      game.recordBall(4);
-      game.recordBall(8);
-      expect(game.calculateTotal()).toEqual(75);
+      expect(controller.totalScore()).toEqual(49);
+      controller.addBall(6);
+      controller.addBall(4);
+      controller.addBall(8);
+      expect(controller.totalScore()).toEqual(75);
     });
 
     it("correctly allows a spare to be scored on consecutive occasions", function(){
-      game = new Game();
       for(let i=0; i<10; i++){
-        game.recordBall(3);
+        controller.addBall(3);
       }
-      game.recordBall(3);
-      game.recordBall(7);
-      game.recordBall(6);
-      expect(game.calculateTotal()).toEqual(52);
-      game.recordBall(4);
-      game.recordBall(8);
-      expect(game.calculateTotal()).toEqual(72);
+      controller.addBall(3);
+      controller.addBall(7);
+      controller.addBall(6);
+      expect(controller.totalScore()).toEqual(52);
+      controller.addBall(4);
+      controller.addBall(8);
+      expect(controller.totalScore()).toEqual(72);
     });
   });
 
   describe("Strikes", function(){
+
     it("correctly allows a strike to be scored on one occasion", function(){
-      game = new Game();
+      controller = new Controller();
       for(let i=0; i<10; i++){
-        game.recordBall(3);
+        controller.addBall(3);
       }
-      // console.log("Strike test");
-      // console.log(game.frameList);
-      expect(game.calculateTotal()).toEqual(30);
-      game.recordBall(10);
-      game.recordBall(7);
-      game.recordBall(7);
-      expect(game.calculateTotal()).toEqual(68);
+      expect(controller.totalScore()).toEqual(30);
+      controller.addBall(10);
+      controller.addBall(7);
+      controller.addBall(7);
+      expect(controller.totalScore()).toEqual(68);
     });
   });
 
   describe("DoubleStrike", function(){
+
     it("correctly allows 2 strikes in a row", function(){
-      game = new Game();
+      controller = new Controller();
       for(let i=0; i<8; i++){
-        game.recordBall(3);
+        controller.addBall(3);
       }
-      expect(game.calculateTotal()).toEqual(24);
-      game.recordBall(10);
-      game.recordBall(10);
-      game.recordBall(7);
-      game.recordBall(5);
-      game.recordBall(5);
+      expect(controller.totalScore()).toEqual(24);
+      controller.addBall(10);
+      controller.addBall(10);
+      controller.addBall(7);
+      controller.addBall(5);
+      controller.addBall(5);
       // 24 + (10 + 10 + 7) + (10 + 7 + 5) + 7 + 5 + 5
-      expect(game.calculateTotal()).toEqual(90);
+      expect(controller.totalScore()).toEqual(90);
     });
   });
 });

@@ -1,7 +1,8 @@
 // 'use strict';
 
 $(document).ready(function() {
-  var game = new Game();
+  // var game = new Game();
+  controller = new Controller();
 
   for(let num = 0; num<20; num++) {
     let name = '#ball' + parseInt(num+1, 10);
@@ -9,8 +10,7 @@ $(document).ready(function() {
       let score = $(name)[0].value;
       valid = validateInput(score, num);
       if (valid !== false) {
-        game.recordBall(parseInt(score, 10));
-        // updateMessage(num);
+        controller.addBall(parseInt(score, 10));
         updateReadOnly(name, num, parseInt(score, 10))
         updateTotals();
       }
@@ -20,11 +20,12 @@ $(document).ready(function() {
   function updateTotals() {
     for(let num = 0; num<20; num++){
       let name = '#frameTotal' + parseInt(num+1, 10);
-      if(game.frameList[num]){
-        $(name).text("Frame Total: " + game.frameList[num].total);
+      console.log(controller.frameTotals())
+      if(controller.frameTotals()[num]){
+        $(name).text("Frame Total: " + controller.frameTotals()[num]);
       }
     }
-    $('#gameTotal').text("Game Total: " + game.calculateTotal());
+    $('#gameTotal').text("Game Total: " + controller.totalScore());
   }
 
   function updateReadOnly(name, number, score) {

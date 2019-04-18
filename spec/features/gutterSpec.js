@@ -1,20 +1,20 @@
 describe("Gutter game", function(){
   it("Rolls a zero for every frame of the game", function(){
-    game = new Game();
+    controller = new Controller();
     for(let i=0; i<20; i++){
-      game.recordBall(0);
+      controller.addBall(0);
     }
-    expect(game.calculateTotal()).toEqual(0);
-    expect(game.isComplete()).toEqual(true);
+    expect(controller.totalScore()).toEqual(0);
+    expect(controller.isGameOver()).toEqual(true);
   });
 
   it("Rolls a zero for every frame and stops the game", function(){
-    game = new Game();
+    controller = new Controller();
     for(let i=0; i<20; i++){
-      game.recordBall(0);
+      controller.addBall(0);
     }
-    game.recordBall(5);
-    expect(game.calculateTotal()).toEqual(0);
-    expect(game.isComplete()).toEqual(true);
+    controller.addBall(5);
+    expect(controller.totalScore()).toEqual(0);
+    expect(controller.isGameOver()).toEqual(true);
   });
 });

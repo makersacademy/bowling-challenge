@@ -1,5 +1,10 @@
 describe('Game', function(){
   beforeEach(function(){
+    // function frameDouble () {};
+    // frameDouble.prototype = {
+    //
+    // }
+    // );
     game = new Game();
   });
 

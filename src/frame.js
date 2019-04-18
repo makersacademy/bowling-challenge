@@ -9,6 +9,7 @@ function Frame(){
 
 Frame.prototype.recordScore = function(score, lastRound = false){
 
+  // Change to first update completed and then only push if not complete
   if (this.completed === false) {
     this.balls.push(score);
     this.total += score;

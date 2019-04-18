@@ -1,6 +1,7 @@
 // 'use strict';
 
-function Game() {
+function Game(frame = Frame) {
+  this.Frame = frame
   this.complete = false;
   this.frameList = [];
   this.bonuses = [];
@@ -9,35 +10,36 @@ function Game() {
 
 Game.prototype = {
   recordBall: function(score) {
-    if (this.complete === true) { return "Game Over" }
+    if(this.complete !== true)
+    {
+      if (this.frameList.length === 9 && this.isPreviousFrameComplete()) {
+        this.lastRound = true;
+      }
 
-    if (this.frameList.length === 0) {
-      this.frameList.push(this.createNewFrame(score));
-      return this;
-    }
+      if(this.isFirstFrame() || this.isPreviousFrameComplete()) {
+        this.frameList.push(this.createNewFrame(score));
+      }
+      else {
+        this.addToFrame(score, this.frameList.slice(-1)[0]);
+      }
 
-    if (this.frameList.length === 9 && this.frameList.slice(-1)[0].isComplete() === true) {
-      this.lastRound = true;
+      this.complete = this.checkEndOfGame(this.frameList);
+      this.addBonusScores();
     }
-
-    if (this.frameList.slice(-1)[0].isComplete() === false) {
-      this.addToFrame(score, this.frameList.slice(-1)[0], this.lastRound);
-    }
-    else {
-      this.frameList.push(this.createNewFrame(score, this.lastRound));
-    }
-
-    this.complete = this.checkEndOfGame(this.frameList);
-    this.addBonusScores();
   },
 
-  createNewFrame: function(score, lastRound = false) {
-      let frame = new Frame();
-      return frame.recordScore(score, lastRound);
+  isFirstFrame: function() {
+    if(this.frameList.length === 0) { return true; }
+    else { return false; }
   },
 
-  addToFrame: function(score, frame, lastRound = false) {
-      frame.recordScore(score, lastRound);
+  createNewFrame: function(score) {
+      let frame = new this.Frame();
+      return frame.recordScore(score, this.lastRound);
+  },
+
+  addToFrame: function(score, frame) {
+      frame.recordScore(score, this.lastRound);
   },
 
   checkEndOfGame: function() {
@@ -48,6 +50,11 @@ Game.prototype = {
 
   isComplete: function() {
     return this.complete;
+  },
+
+  isPreviousFrameComplete: function() {
+    if(this.frameList.slice(-1)[0].isComplete() === true) { return true; }
+    else { return false; }
   },
 
   addBonusScores: function() {

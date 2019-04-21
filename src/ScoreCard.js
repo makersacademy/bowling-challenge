@@ -13,7 +13,7 @@ class ScoreCard {
   };
 
   roll(roll1, roll2 = 0) {
-    let frame = new Frame(roll1, roll2 = 0, this.mode);
+    let frame = new Frame(roll1, roll2);
     var score = frame.score();
     //this.mode = frame.nextMode;
     //const reducer = (accumulator, currentValue) => accumulator + currentValue;

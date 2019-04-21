@@ -6,8 +6,8 @@ describe ('Simple Rules', function () {
   });
 
   it('Scoring increments', function () {
-    for (i=0; i<20; i++) {
-      scorecard.roll(1);
+    for (i=0; i<10; i++) {
+      scorecard.roll(1, 1);
     };
     expect(scorecard.total).toEqual(20)
   });

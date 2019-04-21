@@ -9,7 +9,8 @@ class Frame {
   }
 
   score() {
-    return 0
+    console.log(this.roll1 + this.roll2)
+    return this.roll1 + this.roll2
   }
 
 }

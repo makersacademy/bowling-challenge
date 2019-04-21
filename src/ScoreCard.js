@@ -6,7 +6,7 @@ class ScoreCard {
     //this.frameComplete = false;
     //this.bigFrameArray = [];
     //this.smallFrameArray = [];
-    //this.mode = 'none';
+    this.mode = 'none';
     //this.strikeMode = false;;
     //this.spareMode = false;
     //this.doubleMode = false;
@@ -14,10 +14,12 @@ class ScoreCard {
 
   roll(roll1, roll2 = 0) {
     let frame = new Frame(roll1, roll2);
-    var score = frame.score();
-    //this.mode = frame.nextMode;
+    if (this.mode === 'spare') {
+      frame.roll1 *= 2
+    }
     //const reducer = (accumulator, currentValue) => accumulator + currentValue;
-    this.total += score;
+    this.total += frame.score();
+    this.mode = frame.nextMode;
   }
 
   //rollOg(num) {

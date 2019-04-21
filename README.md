@@ -1,3 +1,13 @@
+### Using the application
+
+In order to use the application, you can clone or fork the repository and
+
+use the command:
+
+``` open index.html ```
+
+Then you can see the application working on your browser.
+
 # In this challenge, we are going to stimulate a bowling scorecard.
 
 It will be done by Javascript and it is front end.

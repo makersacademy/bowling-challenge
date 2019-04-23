@@ -5,11 +5,7 @@ class ScoreCard {
   }
 
   addFrame(frame) {
-    if (this.frameNumber() < 10 ) {
-      this.frames.push(frame);
-    } else {
-      throw 'This game already has 10 frames';
-    };
+    this.frameNumber() < 10 ? this.frames.push(frame) : (function(){throw "This game already has 10 frames"}());
   }
 
   frameNumber() {

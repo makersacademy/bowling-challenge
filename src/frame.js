@@ -5,9 +5,9 @@ class Frame {
   }
 
   addBowl(secondBowl) {
-    if (this.bowls[0] === 10) {
+    if (this.isAStrike()) {
       throw 'Strike! Second bowl denied.';
-    } else if (this.bowls.length >= 2) {
+    } else if (this.isFullRound()) {
       throw '2 bowls completed! Third bowl denied.';
     } else {
       this.bowls.push(secondBowl);
@@ -23,11 +23,15 @@ class Frame {
   }
 
   isAStrike() {
-    return this.bowls[0] === 10
+    return this.bowls[0] === 10;
   }
 
   isASpare() {
-    return this.frameScore() === 10 && this.bowls.length === 2
+    return this.frameScore() === 10 && this.bowls.length === 2;
+  }
+
+  isFullRound() {
+    return this.bowls.length >= 2;
   }
 
   firstBowl() {

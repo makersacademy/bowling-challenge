@@ -38,12 +38,11 @@ Features I couldn't add because I ran out of time:
 Technical issues I was not able to solve in the time we had:
 ====
 
-
 - Some tension with using a transpiler and exports vs. sourcing the JavaScript files directly in the html:
- - Couldn't work out how to get `jasmine-cli` to work without `require` statements, although all tests work fine in the SpecRunner, because they share the `window` context.
+ - Couldn't work out how to get `jasmine-cli` to work without `require` statements, although all tests work fine in the Jasmine SpecRunner, because they share the `window` context.
  - Likewise, without `require` statements, ESLint is unaware of files that only become available because of the `window` context in the browser (e.g. `interface.js`'s use of `Bowling`) - I had to mute it on lines 3 and 14 instead.
  - Initially implemented using browserify to transpile and bundle the ES6 code, but in the current version I have dropped this for simplicity's sake.
-- Event looping is currently bundled up in other methods (e.g. `enterScore()` can trigger `endFrame()`). I was unable to work out how to orchestrate things and have jasmine input when required.
+- Event looping is currently bundled up in other methods (e.g. `enterScore()` can trigger `endFrame()`). I was unable to work out how to orchestrate things and have jasmine simulate user input when required.
     - Following discussion with Sam Jones (coach), he felt that because the functionality was delegated, it wasn't a problem. 
 
 Project structure
@@ -55,17 +54,7 @@ Project structure
 - `src/Frame.js` contains all the information about an individual frame and makes decisions about the status of frames.
 - `src/interface.js` connects the game to the UI and populates the dynamic sections of the page.
 - `src/bowling.hmtl` is the front-end to the game. 
-- `bundle.js` is the javascript produced by `Browserify`; necessary to make the node app run in the browser.
 
-Technical feedback welcomed...
-====
-
-This week has felt a bit like I was stabbing in the dark with a bunch of technologies I was new to, so any feedback would be very welcome. In particular...
-
-- Would it be better practice to have another class orchestrating the overall program logic?
-    - If so, how can jasmine coordinate with this, when it needs to enter numbers?
-    - Currently, this difficulty has led to events being triggered by existing methods within `Bowling.js` as a side-effect - e.g. `enterScore` triggers `endFrame`.
- 
 Instructions for use
 ===
 
@@ -73,7 +62,7 @@ Instructions for use
 
 - No setup is required
 - Clone the directory
-- Open `src/bowling.html` and play. ~~(`browserify` has been used in standalone mode to bundle the required javascript)~~
+- Open `public/index.html` and play.
  
 **As a developer: **
 
@@ -82,13 +71,9 @@ Instructions for use
 - Execute `npm run lint` to run the `ESLint` package (`javascript-standard` profile)
 - Open `SpecRunner.html` in your browser from the project root to run the unit tests. (NB: using the cli will fail due to dependency issues)
 - Run `$(npm bin)/cypress open` to launch the end-to-end testing gui and select `interface.test.js` from the bottom.  
-- ~~Execute `npm test` to run the `Jasmine` tests~~
-- ~~NB: If you make any changes to the source files, you need to run `browserify src/Bowling.js --s Bowling >  src/bundle.js` from the project root to generate an updated javascript bundle for the browser.~~
-- ~~NB2: If this is done, in order to pass the lint tests, add a `/*eslint-disable*/` to line 1 of `bundle.js` as the generated javascript is not compliant.~~
 
 Bowling Challenge
 =================
-
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

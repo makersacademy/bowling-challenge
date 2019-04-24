@@ -39,9 +39,9 @@ Technical issues I was not able to solve in the time we had:
 ====
 
 - Some tension with using a transpiler and exports vs. sourcing the JavaScript files directly in the html:
- - Couldn't work out how to get `jasmine-cli` to work without `require` statements, although all tests work fine in the Jasmine SpecRunner, because they share the `window` context.
- - Likewise, without `require` statements, ESLint is unaware of files that only become available because of the `window` context in the browser (e.g. `interface.js`'s use of `Bowling`) - I had to mute it on lines 3 and 14 instead.
- - Initially implemented using browserify to transpile and bundle the ES6 code, but in the current version I have dropped this for simplicity's sake.
+    - Couldn't work out how to get `jasmine-cli` to work without `require` statements, although all tests work fine in the Jasmine SpecRunner, because they share the `window` context.
+    - Likewise, without `require` statements, ESLint is unaware of files that only become available because of the `window` context in the browser (e.g. `interface.js`'s use of `Bowling`) - I had to mute it on lines 3 and 14 instead.
+    - Initially implemented using browserify to transpile and bundle the ES6 code, but in the current version I have dropped this for simplicity's sake.
 - Event looping is currently bundled up in other methods (e.g. `enterScore()` can trigger `endFrame()`). I was unable to work out how to orchestrate things and have jasmine simulate user input when required.
     - Following discussion with Sam Jones (coach), he felt that because the functionality was delegated, it wasn't a problem. 
 

@@ -1,10 +1,10 @@
 Colin's Bowling Challenge
 =============
 
-Welcome to my rather scrappy bowling challenge. This proved much more complicated than expected and while I did try and
-stick to TDD, the code ended up pretty messy. I've refactored the worst of it away, but it's not pretty. 
+Welcome to my bowling challenge. This proved surprisingly complex and while I did try and
+stick to TDD, it's not perfect. 
  
-I also encountered a world of technical issues, largely due to my unfamiliarity with javascript (new to it this week). More on that below. 
+I also encountered lots of technical issues, largely due to my unfamiliarity with javascript (new to it this week). More on that below. 
 
 Features
 =====
@@ -28,20 +28,21 @@ The user interface is basic but functional. 'Bonus' scores for strikes and spare
 Missing features / bugs etc.
 =====
 
+Features I couldn't add because I ran out of time:
 - The game does not announce victory, although the score stops tallying correctly.
 - There is zero validation on user input at present (so e.g. the user can input >10 pins).
 - The event loop behind the scenes is still slightly creaky, hence there is a 'frame 11' created behind the scenes. Needs some more thought and refactoring.
 - There is no rules prompting for users - e.g. they must know to press the submit button again for bonus shots.
-- I wasn't able to fully separate out bonus scores from 'normal' scores as much as I would like without introducing different bugs. 
+- I wasn't able to fully separate out bonus scores from 'normal' scores as much as I would like without introducing more complexity and bugs.
  
 Technical issues I was not able to solve in the time we had:
 ====
 
-- Jasmine helper methods in a separate file (I had to duplicate `enterScores` in both spec files...)
-- Travis tests triggering when I create a PR on github (maybe not turned on for the repo?)
-- Make ESLint aware of files that only become available in the browser (re. `interface.js`'s use of `Bowling`) - I had to mute it on lines 3 and 14 instead.
-- Deal with dependencies arising from `node` more elegantly - currently a choice between using `browserify` and `require` statements or requiring files directly in the html. Having to manage a `bundle.js` file is a pain.
-- Couldn't work out how to get `jasmine-cli` to work without `require` statements, although all tests work fine in the SpecRunner, because they share context.
+
+- Some tension with using a transpiler and exports vs. sourcing the JavaScript files directly in the html:
+ - Couldn't work out how to get `jasmine-cli` to work without `require` statements, although all tests work fine in the SpecRunner, because they share the `window` context.
+ - Likewise, without `require` statements, ESLint is unaware of files that only become available because of the `window` context in the browser (e.g. `interface.js`'s use of `Bowling`) - I had to mute it on lines 3 and 14 instead.
+ - Initially implemented using browserify to transpile and bundle the ES6 code, but in the current version I have dropped this for simplicity's sake.
 - Event looping is currently bundled up in other methods (e.g. `enterScore()` can trigger `endFrame()`). I was unable to work out how to orchestrate things and have jasmine input when required.
     - Following discussion with Sam Jones (coach), he felt that because the functionality was delegated, it wasn't a problem. 
 

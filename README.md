@@ -2,10 +2,7 @@
 
 ---
 
-
-===
 Bowling Challenge - Instructions
-===
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

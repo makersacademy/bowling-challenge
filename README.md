@@ -1,7 +1,6 @@
-===
-Bowling Challenge - README
-===
+### Makers software engineering bootcamp exercise - weekend challenge 
 
+---
 
 
 ===

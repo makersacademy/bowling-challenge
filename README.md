@@ -1,4 +1,49 @@
+This is the Makers week 5 and 6 weekend challenge (details below) to implement a 10-pin bowling scoreboard in Javascript.
 
+To run
+------
+* Clone repo.
+* Open ../index.html in a browser.
+
+To run tests
+------------
+* Open ../SpecRunner.html in a browser.
+
+Requirements
+------------
+* The game is played by 1 player.
+* The player keys the number of pins knocked down after each bowl.
+* The game consists of 10 frames.
+* The player may bowl 1 or 2 bowls for each frame, depending on whether the first bowl is a strike.
+* The score for each frame is calculated from 4 parts: the 1st bowl, the 2nd bowl, bonus 1 and bonus 2.
+* If the player bowls a strike (10) on the first bowl, then then 2nd bowl is not used but both bonus 1 and bonus 2 will be included in the total score for the frame.
+* If the player does not bowl a strike on the first bowl (<10) then they bowl the 2nd bowl.
+* If the player gets a spare on the second bowl (bowl 1 + bowl 2 = 10) then bonus 1 will be included in the total score for the frame. (Bonus 2 will not be used)
+* Bonus 1 is the number of pins knocked down by the next bowl (the first bowl of the next frame).
+* Bonus 2 is the number of pins knocked down by the 2nd next bowl (either the 2nd bowl of the next frame, or the first bowl of the 2nd next frame if the next frame is a strike).
+* If the player scores < 10 with the 2 bowls for a frame, then the score is simply the number of pins knocked down by bowl 1 + bowl2.
+
+My Approach
+-----------
+* Translated the bowling rules into requirements of the scoreboard.
+* Drew a draft model of classes, data and responsibilities
+* Created an html page to help understand what would be required of the classes (javascript functions)
+* Learnt a bit about CSS Flexbox and Grid to work out how to have well-aligned scores and totals.
+* Test-drove the development of the classes by taking 1 requirement at a time.
+* Used TO DO comments when I noted where something would need to be added for a later requirement.
+* Learnt a bit about Javascript spies.
+* Used JQuery and Javascript to tie the html to the classes
+* Updated tests and classes 
+* Refactored to break down the logic for displaying scores that was in a very large method with some repetition.
+
+If had more time I would...
+---------------------------
+* Validate the input (e.g. user can currently enter more than 10 pins in a frame)
+* Refactor the Jquery/Javascript to prevent totals being refreshed when they haven't changed?  (Consider whether the inefficiency of that is preferable to more complex code)
+* Reconsider the responsibilities of the game and frame class that relate to the flow of the game as it feels like they are doing similar things in managing whether a 2nd/3rd bowl is required.
+
+
+----------------------------------------------------------------------------------------------
 Bowling Challenge
 =================
 

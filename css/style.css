@@ -1,0 +1,344 @@
+body {
+    background-color: #E01A4F;
+    font: medium Impact;
+  }
+
+  .title {
+    font-size:82px;
+    text-align: left;
+  }
+
+.scorecard { 
+    display: grid; 
+    grid-template-columns: repeat(24, 1fr); 
+    grid-auto-rows: 50px; 
+    text-align: center;
+    color: black
+  } 
+  
+.frame1 { 
+grid-column-start: 1; 
+grid-column-end: 3; 
+grid-row-start: 1; 
+grid-row-end: 2; 
+}
+.frame2 { 
+grid-column-start: 3; 
+grid-column-end: 5; 
+grid-row-start: 1; 
+grid-row-end: 2; 
+}
+.frame3 { 
+grid-column-start: 5; 
+grid-column-end: 7; 
+grid-row-start: 1; 
+grid-row-end: 2; 
+}
+.frame4 { 
+grid-column-start: 7; 
+grid-column-end: 9; 
+grid-row-start: 1; 
+grid-row-end: 2; 
+}
+.frame5 { 
+grid-column-start: 9; 
+grid-column-end: 11; 
+grid-row-start: 1; 
+grid-row-end: 2; 
+}
+.frame6 { 
+grid-column-start: 11; 
+grid-column-end: 13; 
+grid-row-start: 1; 
+grid-row-end: 2; 
+}
+.frame7 { 
+grid-column-start: 13; 
+grid-column-end: 15; 
+grid-row-start: 1; 
+grid-row-end: 2; 
+}
+.frame8 { 
+grid-column-start: 15; 
+grid-column-end: 17; 
+grid-row-start: 1; 
+grid-row-end: 2; 
+}
+.frame9 { 
+grid-column-start: 17; 
+grid-column-end: 19; 
+grid-row-start: 1; 
+grid-row-end: 2; 
+}
+.frame10 { 
+grid-column-start: 19; 
+grid-column-end: 21; 
+grid-row-start: 1; 
+grid-row-end: 2; 
+}
+.totalHeader { 
+grid-column-start: 21; 
+grid-column-end: 25; 
+grid-row-start: 1; 
+grid-row-end: 2; 
+text-align: right;
+font-size:44px;
+}
+
+.frame1bowl1 { 
+border: 1px solid #999999;
+background-color: #cccccc;
+grid-column-start: 1; 
+grid-column-end: 2; 
+grid-row-start: 2; 
+grid-row-end: 3; 
+}
+.frame1bowl2 { 
+border: 1px solid #999999;
+background-color: #cccccc;
+grid-column-start: 2; 
+grid-column-end: 3; 
+grid-row-start: 2; 
+grid-row-end: 3; 
+}
+.frame2bowl1 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
+grid-column-start: 3; 
+grid-column-end: 4; 
+grid-row-start: 2; 
+grid-row-end: 3; 
+}
+.frame2bowl2 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
+grid-column-start: 4; 
+grid-column-end: 5; 
+grid-row-start: 2; 
+grid-row-end: 3; 
+}
+.frame3bowl1 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
+grid-column-start: 5; 
+grid-column-end: 6; 
+grid-row-start: 2; 
+grid-row-end: 3; 
+}
+.frame3bowl2 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
+grid-column-start: 6; 
+grid-column-end: 7; 
+grid-row-start: 2; 
+grid-row-end: 3; 
+}
+.frame4bowl1 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
+grid-column-start: 7; 
+grid-column-end: 8; 
+grid-row-start: 2; 
+grid-row-end: 3; 
+}
+.frame4bowl2 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
+grid-column-start: 8; 
+grid-column-end: 9; 
+grid-row-start: 2; 
+grid-row-end: 3; 
+}
+.frame5bowl1 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
+grid-column-start: 9; 
+grid-column-end: 10; 
+grid-row-start: 2; 
+grid-row-end: 3; 
+}
+.frame5bowl2 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
+grid-column-start: 10; 
+grid-column-end: 11; 
+grid-row-start: 2; 
+grid-row-end: 3; 
+}
+.frame6bowl1 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
+grid-column-start: 11; 
+grid-column-end: 12; 
+grid-row-start: 2; 
+grid-row-end: 3; 
+}
+.frame6bowl2 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
+grid-column-start: 12; 
+grid-column-end: 13; 
+grid-row-start: 2; 
+grid-row-end: 3; 
+}
+.frame7bowl1 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
+grid-column-start: 13; 
+grid-column-end: 14; 
+grid-row-start: 2; 
+grid-row-end: 3; 
+}
+.frame7bowl2 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
+grid-column-start: 14; 
+grid-column-end: 15; 
+grid-row-start: 2; 
+grid-row-end: 3; 
+}
+.frame8bowl1 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
+grid-column-start: 15; 
+grid-column-end: 16; 
+grid-row-start: 2; 
+grid-row-end: 3; 
+}
+.frame8bowl2 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
+grid-column-start: 16; 
+grid-column-end: 17; 
+grid-row-start: 2; 
+grid-row-end: 3; 
+}
+.frame9bowl1 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
+grid-column-start: 17; 
+grid-column-end: 18; 
+grid-row-start: 2; 
+grid-row-end: 3; 
+}
+.frame9bowl2 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
+grid-column-start: 18; 
+grid-column-end: 19; 
+grid-row-start: 2; 
+grid-row-end: 3; 
+}
+.frame10bowl1 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
+grid-column-start: 19; 
+grid-column-end: 20; 
+grid-row-start: 2; 
+grid-row-end: 3; 
+}
+.frame10bowl2 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
+grid-column-start: 20; 
+grid-column-end: 21; 
+grid-row-start: 2; 
+grid-row-end: 3; 
+}
+.frame10bowl3 { 
+    border: 1px solid #999999;
+    background-color: #cccccc;
+grid-column-start: 21; 
+grid-column-end: 22; 
+grid-row-start: 2; 
+grid-row-end: 3; 
+}
+
+.score1 { 
+    font-size:24px;
+grid-column-start: 1; 
+grid-column-end: 3; 
+grid-row-start: 3; 
+grid-row-end: 4; 
+}
+.score2 {
+    font-size:24px; 
+grid-column-start: 3; 
+grid-column-end: 5; 
+grid-row-start: 3; 
+grid-row-end: 4; 
+}
+.score3 { 
+    font-size:24px;
+grid-column-start: 5; 
+grid-column-end: 7; 
+grid-row-start: 3; 
+grid-row-end: 4; 
+}
+.score4 { 
+    font-size:24px;
+grid-column-start: 7; 
+grid-column-end: 9; 
+grid-row-start: 3; 
+grid-row-end: 4; 
+}
+.score5 { 
+    font-size:24px;
+grid-column-start: 9; 
+grid-column-end: 11; 
+grid-row-start: 3; 
+grid-row-end: 4; 
+}
+.score6 { 
+    font-size:24px;
+grid-column-start: 11; 
+grid-column-end: 13; 
+grid-row-start: 3; 
+grid-row-end: 4; 
+}
+.score7 { 
+    font-size:24px;
+grid-column-start: 13; 
+grid-column-end: 15; 
+grid-row-start: 3; 
+grid-row-end: 4; 
+}
+.score8 { 
+    font-size:24px;
+grid-column-start: 15; 
+grid-column-end: 17; 
+grid-row-start: 3; 
+grid-row-end: 4; 
+}
+.score9 { 
+    font-size:24px;
+grid-column-start: 17; 
+grid-column-end: 19; 
+grid-row-start: 3; 
+grid-row-end: 4; 
+}
+.score10 { 
+    font-size:24px;
+grid-column-start: 19; 
+grid-column-end: 21; 
+grid-row-start: 3; 
+grid-row-end: 4; 
+}
+.totalScore { 
+    font-size:44px;
+    grid-column-start: 21; 
+    grid-column-end: 25; 
+    grid-row-start: 3; 
+    grid-row-end: 4; 
+    text-align: right;
+    }
+        
+input[type="number"]
+{
+    font-size:24px;
+}
+
+label
+{
+    font-size:20px;
+}

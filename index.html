@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>BOWLING SCORECARD</title>
+    <link rel = "stylesheet" type = "text/css" href = "css/style.css" </link>
+  </head>
+  <body>
+    <div class="title">BOWLING  SCORECARD</div>
+    
+    <div id="scorecard" class="scorecard">
+        <span class="frame1">Frame 1</span>
+        <span class="frame2">Frame 2</span>
+        <span class="frame3">Frame 3</span>
+        <span class="frame4">Frame 4</span>
+        <span class="frame5">Frame 5</span>
+        <span class="frame6">Frame 6</span>
+        <span class="frame7">Frame 7</span>
+        <span class="frame8">Frame 8</span>
+        <span class="frame9">Frame 9</span>
+        <span class="frame10">Frame 10</span>
+        <span class="totalHeader">TOTAL</span>
+    
+        <span id="frame1bowl1" class="frame1bowl1"></span>
+        <span id="frame1bowl2" class="frame1bowl2"></span>
+        <span id="frame2bowl1" class="frame2bowl1"></span>
+        <span id="frame2bowl2" class="frame2bowl2"></span>
+        <span id="frame3bowl1" class="frame3bowl1"></span>
+        <span id="frame3bowl2" class="frame3bowl2"></span>
+        <span id="frame4bowl1" class="frame4bowl1"></span>
+        <span id="frame4bowl2" class="frame4bowl2"></span>
+        <span id="frame5bowl1" class="frame5bowl1"></span>
+        <span id="frame5bowl2" class="frame5bowl2"></span>
+        <span id="frame6bowl1" class="frame6bowl1"></span>
+        <span id="frame6bowl2" class="frame6bowl2"></span>
+        <span id="frame7bowl1" class="frame7bowl1"></span>
+        <span id="frame7bowl2" class="frame7bowl2"></span>
+        <span id="frame8bowl1" class="frame8bowl1"></span>
+        <span id="frame8bowl2" class="frame8bowl2"></span>
+        <span id="frame9bowl1" class="frame9bowl1"></span>
+        <span id="frame9bowl2" class="frame9bowl2"></span>
+        <span id="frame10bowl1" class="frame10bowl1"></span>
+        <span id="frame10bowl2" class="frame10bowl2"></span>
+        <span id="frame10bowl3" class="frame10bowl3"></span>
+       
+        <span id="score1" class="score1"></span>
+        <span id="score2" class="score2"></span>
+        <span id="score3" class="score3"></span>
+        <span id="score4" class="score4"></span>
+        <span id="score5" class="score5"></span>
+        <span id="score6" class="score6"></span>
+        <span id="score7" class="score7"></span>
+        <span id="score8" class="score8"></span>
+        <span id="score9" class="score9"></span>
+        <span id="score10" class="score10"></span>
+        <span id="totalScore" class="totalScore"></span>
+
+    </div>
+
+    <form>
+      <label for="pins">How many pins were knocked down?   </label>
+      <input id="pins" class="pins" type="number" min="0" max="10"/>
+      <button type="button" id="save">SAVE</button>
+    </form>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="src/game.js"></script>
+    <script src="src/frame.js"></script>
+    <script src="src/scorecard.js"></script>
+  </body>
+</html>

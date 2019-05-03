@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Bowling score card</title>
+    <script src="js/lib/jquery-3.3.1.min.js"></script>
+    <script src="js/frame.js"></script>
+    <%# <script src="js/game.js"></script> %>
+    <%# <script src="js/scoreCardPersister.js"></script> %>
+    <%# <script src="js/scoreCardController.js"></script> %>
+    <script src="js/index.js"></script>
+    <link rel = "stylesheet"
+      type = "text/css"
+      href = "style/style.css" />
+  </head>
+  <body>
+    <h1>Bowling score card...</h1>
+    <img src="../images/skittles.jpg" alt="Skittles" height="10%" width="10%">
+
+    <div>
+      <form>
+        <table border="1">
+          <tr>
+            <th>Frame</th>
+            <th>Roll 1</th>
+            <th>Roll 2</th>
+            <th>Special</th>
+            <th>Total</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>
+              <input type="text" id="f1Roll1" size="10" placeholder="Roll 1">
+            </td>
+            <td>
+              <input type="text" id="f1Roll2" size="10" placeholder="Roll 2">
+            </td>
+            <td>
+              <input type="text" id="f1Special" size="10">
+            </td>
+            <td>
+              <input type="text" id="f1Total" size="10">
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>
+              <input type="text" id="f2Roll1" size="10" placeholder="Roll 1">
+            </td>
+            <td>
+              <input type="text" id="f2Roll2" size="10" placeholder="Roll 2">
+            </td>
+            <td>
+              <input type="text" id="f2Special" size="10">
+            </td>
+            <td>
+              <input type="text" id="f2Total" size="10">
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>
+              <input type="text" id="f3Roll1" size="10" placeholder="Roll 1">
+            </td>
+            <td>
+              <input type="text" id="f3Roll2" size="10" placeholder="Roll 2">
+            </td>
+            <td>
+              <input type="text" id="f3Special" size="10">
+            </td>
+            <td>
+              <input type="text" id="f3Total" size="10">
+            </td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>
+              <input type="text" id="f4Roll1" size="10" placeholder="Roll 1">
+            </td>
+            <td>
+              <input type="text" id="f4Roll2" size="10" placeholder="Roll 2">
+            </td>
+            <td>
+              <input type="text" id="f4Special" size="10">
+            </td>
+            <td>
+              <input type="text" id="f4Total" size="10">
+            </td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>
+              <input type="text" id="f5Roll1" size="10" placeholder="Roll 1">
+            </td>
+            <td>
+              <input type="text" id="f5Roll2" size="10" placeholder="Roll 2">
+            </td>
+            <td>
+              <input type="text" id="f5Special" size="10">
+            </td>
+            <td>
+              <input type="text" id="f5Total" size="10">
+            </td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>
+              <input type="text" id="f6Roll1" size="10" placeholder="Roll 1">
+            </td>
+            <td>
+              <input type="text" id="f6Roll2" size="10" placeholder="Roll 2">
+            </td>
+            <td>
+              <input type="text" id="f6Special" size="10">
+            </td>
+            <td>
+              <input type="text" id="f6Total" size="10">
+            </td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>
+              <input type="text" id="f7Roll1" size="10" placeholder="Roll 1">
+            </td>
+            <td>
+              <input type="text" id="f7Roll2" size="10" placeholder="Roll 2">
+            </td>
+            <td>
+              <input type="text" id="f7Special" size="10">
+            </td>
+            <td>
+              <input type="text" id="f7Total" size="10">
+            </td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>
+              <input type="text" id="f8Roll1" size="10" placeholder="Roll 1">
+            </td>
+            <td>
+              <input type="text" id="f8Roll2" size="10" placeholder="Roll 2">
+            </td>
+            <td>
+              <input type="text" id="f8Special" size="10">
+            </td>
+            <td>
+              <input type="text" id="f8Total" size="10">
+            </td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>
+              <input type="text" id="f9Roll1" size="10" placeholder="Roll 1">
+            </td>
+            <td>
+              <input type="text" id="f9Roll2" size="10" placeholder="Roll 2">
+            </td>
+            <td>
+              <input type="text" id="f9Special" size="10">
+            </td>
+            <td>
+              <input type="text" id="f9Total" size="10">
+            </td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>
+              <input type="text" id="f10Roll1" size="10" placeholder="Roll 1">
+            </td>
+            <td>
+              <input type="text" id="f10Roll2" size="10" placeholder="Roll 2">
+            </td>
+            <td>
+              <input type="text" id="f10Special" size="10">
+            </td>
+            <td>
+              <input type="text" id="f10Total" size="10">
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <input type="text" id="f10Roll3" size="10">
+            </td>
+            <td>
+              <input type="text" id="f10Roll4" size="10">
+            </td>
+            <td></td>
+            <td>
+              <input type="text" id="f1Total" size="10">
+            </td>
+          </tr>
+        </table>
+        <p><input type="submit" value="Go!"></p>
+      </form>
+    </div>
+
+    <div>
+      <h2>You score: []</h2>
+    </div>
+  </body>
+</html>

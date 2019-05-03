@@ -1,0 +1,34 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Solving the Makers Bowling Challenge, to make an interactive scorecard for a game of 10-pin bowling. Original readme can be found in this repository.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "dependencies": {
+    "on-change": "^1.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthewwhitaker/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matthewwhitaker/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/matthewwhitaker/bowling-challenge#readme"
+}

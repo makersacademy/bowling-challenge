@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8">
+    <title>Bowling</title>
+
+  </head>
+  <body>
+<br>
+<h1>Let's bowl...</h1>
+<br>
+  <div class="container">
+    <table id="scoreTable" class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Frame</th>
+          <th scope="col">First</th>
+          <th scope="col">Second</th>
+          <th scope="col">Bonus Points</th>
+          <th scope="col">Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td><input class="rollScoreBox" type="number" min=0 max=10 step="1" pattern="\d+" id="1"></td>
+          <td><input class="rollScoreBox" type="number" min=0 max=10 id="2"></td>
+          <td id="bonus-1"></td>
+          <td id="note-1"></td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td><input class="rollScoreBox" type="number" min=0 max=10 id="3"></td>
+          <td><input class="rollScoreBox" type="number" min=0 max=10 id="4"></td>
+          <td id="bonus-2"></td>
+          <td id="note-2"></td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td><input class="rollScoreBox" type="number" min=0 max=10 id="5"></td>
+          <td><input class="rollScoreBox" type="number" min=0 max=10 id="6"></td>
+          <td id="bonus-3"></td>
+          <td id="note-3"></td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td><input class="rollScoreBox" type="number" min=0 max=10 id="7"></td>
+          <td><input class="rollScoreBox" type="number" min=0 max=10 id="8"></td>
+          <td id="bonus-4"></td>
+          <td id="note-4"></td>
+        </tr>
+        <tr>
+          <th scope="row">5</th>
+          <td><input class="rollScoreBox" type="number" min=0 max=10 id="9"></td>
+          <td><input class="rollScoreBox" type="number" min=0 max=10 id="10"></td>
+          <td id="bonus-5"></td>
+          <td id="note-5"></td>
+        </tr>
+        <tr>
+          <th scope="row">6</th>
+          <td><input class="rollScoreBox" type="number" min=0 max=10 id="11"></td>
+          <td><input class="rollScoreBox" type="number" min=0 max=10 id="12"></td>
+          <td id="bonus-6"></td>
+          <td id="note-6"></td>
+        </tr>
+        <tr>
+          <th scope="row">7</th>
+          <td><input class="rollScoreBox" type="number" min=0 max=10 id="13"></td>
+          <td><input class="rollScoreBox" type="number" min=0 max=10 id="14"></td>
+          <td id="bonus-7"></td>
+          <td id="note-7"></td>
+        </tr>
+        <tr>
+          <th scope="row">8</th>
+          <td><input class="rollScoreBox" type="number" min=0 max=10 id="15"></td>
+          <td><input class="rollScoreBox" type="number" min=0 max=10 id="16"></td>
+          <td id="bonus-8"></td>
+          <td id="note-8"></td>
+        </tr>
+        <tr>
+          <th scope="row">9</th>
+          <td><input class="rollScoreBox" type="number" min=0 max=10 id="17"></td>
+          <td><input class="rollScoreBox" type="number" min=0 max=10 id="18"></td>
+          <td id="bonus-9"></td>
+          <td id="note-9"></td>
+        </tr>
+        <tr>
+          <th scope="row">10</th>
+          <td><input class="rollScoreBox" type="number" min=0 max=10 id="19" name="final-frame-1"></td>
+          <td><input class="rollScoreBox" type="number" min=0 max=10 id="20" name="final-frame-2"></td>
+          <td id="bonus-10"></td>
+          <td id="note-10"></td>
+        </tr>
+        <tr id="ExtraRolls">
+          <th scope="row">extra rolls</th>
+          <td id="ExtraRoll-1"><input class="rollScoreBox" type="number" min=0 max=10 id="21"></td>
+          <td id="ExtraRoll-2"><input class="rollScoreBox" type="number" min=0 max=10 id="22"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+<br>
+  <div>
+    <h2 id="scoreShow"></h2>
+  </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="src/Scorer.js"></script>
+    <script src="src/scoreRecorder.js"></script>
+  </body>
+</html>

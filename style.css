@@ -1,0 +1,44 @@
+body {
+  background-color: #ADD8E6
+}
+
+.col-sm{
+  border: 1px solid rgba(86,61,124,.2);
+  text-align: center;
+}
+
+input {
+  padding: 2px 1px;
+  line-height: 1px;
+  border-width: 0px;
+  border: none;
+  text-align: center;
+  size: 10;
+}
+
+input[type="text"]{
+  padding: 2px 1px;
+  line-height: 1px;
+  border-width: 0px;
+  border: none;
+  text-align: center;
+  size: 10;
+}
+
+table[class="table table-bordered table-hover"]{
+  text-align: center;
+  background-color: white
+}
+
+input[class="rollScoreBox"]{
+  width: 70px;
+}
+
+h2 {
+  text-align: center;
+}
+
+
+h1 {
+  text-align: center;
+}

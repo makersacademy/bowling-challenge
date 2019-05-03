@@ -1,0 +1,110 @@
+Game so far  0
+Bowling.js:69 Adding  10
+Bowling.js:82 Score now  10
+Bowling.js:121 Strike
+Bowling.js:122 [Array(2)]
+
+Bowling.js:67 Game so far  10
+Bowling.js:69 Adding  3
+Bowling.js:72 Strike  3
+Bowling.js:82 Score now  16
+Bowling.js:121 Play
+Bowling.js:122 [Array(2)]
+
+Bowling.js:67 Game so far  16
+Bowling.js:69 Adding  3
+Bowling.js:72 Strike  3
+Bowling.js:82 Score now  22
+Bowling.js:121 Play
+Bowling.js:122 [Array(2)]
+
+Bowling.js:67 Game so far  22
+Bowling.js:69 Adding  3
+Bowling.js:82 Score now  25
+Bowling.js:121 Play
+Bowling.js:122 [Array(2)]
+
+Bowling.js:67 Game so far  25
+Bowling.js:69 Adding  3
+Bowling.js:82 Score now  28
+Bowling.js:121 Play
+Bowling.js:122 (2) [Array(2), Array(2)]
+
+Bowling.js:67 Game so far  28
+Bowling.js:69 Adding  3
+Bowling.js:82 Score now  31
+Bowling.js:121 Play
+Bowling.js:122 (2) [Array(2), Array(2)]
+
+Bowling.js:67 Game so far  31
+Bowling.js:69 Adding  3
+Bowling.js:82 Score now  34
+Bowling.js:121 Play
+Bowling.js:122 (3) [Array(2), Array(2), Array(2)]
+
+Bowling.js:67 Game so far  34
+Bowling.js:69 Adding  3
+Bowling.js:82 Score now  37
+Bowling.js:121 Play
+Bowling.js:122 (3) [Array(2), Array(2), Array(2)]
+Bowling.js:67 Game so far  37
+Bowling.js:69 Adding  3
+Bowling.js:82 Score now  40
+Bowling.js:121 Play
+Bowling.js:122 (4) [Array(2), Array(2), Array(2), Array(2)]
+Bowling.js:67 Game so far  40
+Bowling.js:69 Adding  3
+Bowling.js:82 Score now  43
+Bowling.js:121 Play
+Bowling.js:122 (4) [Array(2), Array(2), Array(2), Array(2)]
+Bowling.js:67 Game so far  43
+Bowling.js:69 Adding  3
+Bowling.js:82 Score now  46
+Bowling.js:121 Play
+Bowling.js:122 (5) [Array(2), Array(2), Array(2), Array(2), Array(2)]
+Bowling.js:67 Game so far  46
+Bowling.js:69 Adding  3
+Bowling.js:82 Score now  49
+Bowling.js:121 Play
+Bowling.js:122 (5) [Array(2), Array(2), Array(2), Array(2), Array(2)]
+Bowling.js:67 Game so far  49
+Bowling.js:69 Adding  3
+Bowling.js:82 Score now  52
+Bowling.js:121 Play
+Bowling.js:122 (6) [Array(2), Array(2), Array(2), Array(2), Array(2), Array(2)]
+Bowling.js:67 Game so far  52
+Bowling.js:69 Adding  3
+Bowling.js:82 Score now  55
+Bowling.js:121 Play
+Bowling.js:122 (6) [Array(2), Array(2), Array(2), Array(2), Array(2), Array(2)]
+Bowling.js:67 Game so far  55
+Bowling.js:69 Adding  3
+Bowling.js:82 Score now  58
+Bowling.js:121 Play
+Bowling.js:122 (7) [Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2)]
+Bowling.js:67 Game so far  58
+Bowling.js:69 Adding  3
+Bowling.js:82 Score now  61
+Bowling.js:121 Play
+Bowling.js:122 (7) [Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2)]
+Bowling.js:67 Game so far  61
+Bowling.js:69 Adding  3
+Bowling.js:82 Score now  64
+Bowling.js:121 Play
+Bowling.js:122 (8) [Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2)]
+Bowling.js:67 Game so far  64
+Bowling.js:69 Adding  3
+Bowling.js:82 Score now  67
+Bowling.js:121 Play
+Bowling.js:122 (8) [Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2)]
+Bowling.js:67 Game so far  67
+Bowling.js:69 Adding  3
+Bowling.js:82 Score now  70
+Bowling.js:121 Play
+Bowling.js:122 (9) [Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2)]
+Bowling.js:67 Game so far  70
+Bowling.js:69 Adding  3
+Bowling.js:82 Score now  73
+Bowling.js:121 Play
+Bowling.js:122 (9) [Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2)]
+jasmine.js:2274 [Violation] 'message' handler took 73170ms

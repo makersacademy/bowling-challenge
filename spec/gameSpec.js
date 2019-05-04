@@ -3,17 +3,20 @@ describe('Bowling Game', function() {
     game = new Game();
   });
 
-  it('can roll gutter game', function () {
-    for (var i = 0; i < 20; i++) {
-      game.bowl(0);
+  function bowlLoop(bowls, pins){
+    for (var i = 0; i < bowls; i++){
+      game.bowl(pins);
     }
+  };
+
+  it('can roll gutter game', function () {
+    bowlLoop(20, 0);
     expect(game.score()).toEqual(0);
   });
 
   it('can knock down one pin in all 20 bowls', function() {
-    for (var i = 0; i < 20; i++) {
-      game.bowl(1);
-    }
+    bowlLoop(20, 1);
     expect(game.score()).toEqual(20);
   });
+  
 });

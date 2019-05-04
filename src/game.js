@@ -3,8 +3,8 @@ var Game = function() {
   this.STARTING_SCORE = 0;
 };
 
-Game.prototype.bowl = function(total) {
-  this.bowls.push(total);
+Game.prototype.bowl = function(pins) {
+  this.bowls.push(pins);
 };
 
 Game.prototype.score = function() {

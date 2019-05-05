@@ -18,6 +18,10 @@ describe('frame', function() {
     expect(game.frame()).toEqual(2);
   });
 
+  it('starts the score at 0', function() {
+    expect(game.frame_score()).toEqual(0);
+  });
+
   });
 
 });

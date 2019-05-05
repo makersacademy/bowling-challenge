@@ -25,3 +25,8 @@ user story - 3
 As a marker
 So I can caculate the total score
 I would like to keep the record of frames;
+
+user story - 4
+As a marker
+So I can caculate the total score
+I would like to caculate the total score with no strick or spares in the game;

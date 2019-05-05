@@ -11,7 +11,7 @@ describe("Feature test:", function () {
     for(var i = 0; i< 20; i++){
       bowling.knock(0);
     }
-    expect(bowling.totlescore).toBe(0)
+    expect(bowling.getTotalScores(10)).toBe(0)
   })
     
   });

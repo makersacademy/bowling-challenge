@@ -12,10 +12,14 @@ Scorecard.prototype.showFrame = function() {
   return this.frameNumber;
 };
 
+Scorecard.prototype.showRolls = function() {
+  return this.rolls;
+};
+
 Scorecard.prototype.roll = function(score) {
   if (score === 10) {
     this.frameNumber += 1;
-    this.rolls.push("X");
+    this.rolls.push(10);
   } else {
   }
 };

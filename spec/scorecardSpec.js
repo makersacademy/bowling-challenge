@@ -13,4 +13,9 @@ describe('Scorecard', function() {
     scorecard.roll(10);
     expect(scorecard.showFrame()).toEqual(1)
   });
+
+  it("adds 10 to the rolls array after a strike", function() {
+    scorecard.roll(10);
+    expect(scorecard.showRolls()).toEqual([10])
+  });
 });

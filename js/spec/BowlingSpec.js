@@ -40,7 +40,43 @@ describe("Bowling",function(){
     bowling.knock(5);
     bowling.knock(3);
     bowling.knock(4);
+    bowling.calulateTotalScore(1);
     expect(bowling.getTotalScores(2)).toEqual(12)
   })
+
+it("add the one addtional knock down into the sore when spares",function(){
+    bowling.knock(4);
+    bowling.knock(6);
+    bowling.knock(3);
+    bowling.knock(4);
+    expect(bowling.getTotalScores(1)).toEqual(13);
+    expect(bowling.getTotalScores(2)).toEqual(20);
+})
+
+
+
+  // it("add the 3rd knock into the 10th frame when spare",function(){
+  //   for(var i = 0; i< 18; i++){
+  //     bowling.knock(0);
+  //   }
+
+  //   bowling.knock(4);
+  //   bowling.knock(6);
+  //   bowling.knock(9);
+
+  //   expect(bowling.getFrameRecord()).toEqual([4,6,9])
+  // })
+
+  // it("add the 2nd and 3rd knocks into the 10th frame when strikes",function(){
+  //   for(var i = 0; i< 18; i++){
+  //     bowling.knock(0);
+  //   }
+
+  //   bowling.knock(10);
+  //   bowling.knock(6);
+  //   bowling.knock(9);
+
+  //   expect(bowling.getFrameRecord()).toEqual([10,6,9])
+  // })
 
 });

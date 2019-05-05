@@ -12,7 +12,7 @@ Bowling.prototype.knock = function (number) {
   this._knockedPins = number;
 
   if (this._gamerecord.length == 10) {
-    if (this._isSpares(10)) {
+    if (this._isSpares(10) || this._isStrikes(10)) {
       this.addThridRoll(number);
     }
   } else {
@@ -28,13 +28,17 @@ Bowling.prototype.recordFrame = function () {
   }
 
   this._framerecord.push(this._knockedPins);
-  if (this._framerecord[0] == 10) {
-    this._framerecord.push(0)
+
+  if (this._framerecord[0] == 10 && this._gamerecord.length != 9) {
+    this._framerecord.push(0);
   };
 
-  if ((this._framerecord[0] + this._framerecord[1]) > 10) {
-    throw new Error("Over 10 knock down in one frame")
+  if (this._framerecord[0] != 10 && this._gamerecord.length != 9) {
+    if ((this._framerecord[0] + this._framerecord[1]) > 10) {
+      throw new Error("Over 10 knock down in one frame")
+    }
   }
+
 
   if (this._framerecord.length == numberofFrameRoll) {
     this.recordGame();
@@ -98,22 +102,22 @@ Bowling.prototype.updateSpareScore = function (number) {
       this._framesores[number - 1] = this._framesores[number - 1] + this._gamerecord[number][0];
       this.calulateTotalScore(number - 1);
     }
-  } 
+  }
 };
 
 Bowling.prototype.updateStrikeScore = function (number) {
- 
+
   if (this._gamerecord.length > 2) {
-    if (this._isStrikes(number-1) && this._isStrikes(number)) {
-      this._framesores[number - 2] = this._framesores[number - 2] + this._gamerecord[number-1][0]+this._gamerecord[number][0];
+    if (this._isStrikes(number - 1) && this._isStrikes(number)) {
+      this._framesores[number - 2] = this._framesores[number - 2] + this._gamerecord[number - 1][0] + this._gamerecord[number][0];
       this.calulateTotalScore(number - 2);
       this.calulateTotalScore(number - 1);
     };
   };
 
   if (this._gamerecord.length > 1) {
-    if (this._isStrikes(number) && !this._isStrikes(number+1)) {
-      this._framesores[number - 1] = this._framesores[number - 1] + this._gamerecord[number][0]+this._gamerecord[number][1];
+    if (this._isStrikes(number) && (!this._isStrikes(number + 1) || number == 9)) {
+      this._framesores[number - 1] = this._framesores[number - 1] + this._gamerecord[number][0] + this._gamerecord[number][1];
       this.calulateTotalScore(number - 1);
     };
   };
@@ -125,4 +129,3 @@ Bowling.prototype.addThridRoll = function (number) {
   this.caculateFrameScore(9);
   this.calulateTotalScore(9);
 };
-

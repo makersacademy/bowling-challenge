@@ -20,6 +20,11 @@ describe('Scorecard', function() {
     expect(scorecard.showFrame()).toEqual(1)
   });
 
+  it("does not increase frame number after only one roll (no strike)", function() {
+    scorecard.firstRoll(5);
+    expect(scorecard.showFrame()).toEqual(0)
+  });
+
   it("starts with an empty score array", function() {
     expect(scorecard.showRolls()).toEqual([])
   });
@@ -27,5 +32,11 @@ describe('Scorecard', function() {
   it("adds 10 to the rolls array after a strike", function() {
     scorecard.firstRoll(10);
     expect(scorecard.showRolls()).toEqual([10])
+  });
+
+  it("adds score from first and second roll to the rolls array", function() {
+    scorecard.firstRoll(5);
+    scorecard.secondRoll(5);
+    expect(scorecard.showRolls()).toEqual([5,5])
   });
 });

@@ -40,3 +40,8 @@ user story - 6
 As a marker
 So I can caculate the total score
 I would like to add the 3rd roll in the frame when spares ;
+
+user story - 7
+As a marker
+So I can caculate the total score
+I would like to add the number of knock down of next 2 rolls to the socre when strikes ;

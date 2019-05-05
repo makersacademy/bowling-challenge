@@ -22,7 +22,16 @@ describe("Feature test:", function () {
   })
 
 
+  it("allow 3rd roll in the 10th frame when spare",function(){
+    for(var i = 0; i< 18; i++){
+      bowling.knock(0);
+    }
+    bowling.knock(6);
+    bowling.knock(4);
+    bowling.knock(6);
 
+    expect(bowling.getTotalScores(10)).toEqual(16)
+  })
 
 
 
@@ -39,15 +48,6 @@ describe("Feature test:", function () {
   //   expect(bowling.getTotalScores(10)).toEqual(25);
   // })
 
-  // it("allow 3rd roll in the 10th frame when spare",function(){
-  //   for(var i = 0; i< 18; i++){
-  //     bowling.knock(0);
-  //   }
-  //   bowling.knock(6);
-  //   bowling.knock(4);
-  //   bowling.knock(6);
 
-  //   expect(bowling.getTotalScores(10)).toEqual(16)
-  // })
     
   });

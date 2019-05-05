@@ -16,10 +16,16 @@ Scorecard.prototype.showRolls = function() {
   return this.rolls;
 };
 
-Scorecard.prototype.roll = function(score) {
+Scorecard.prototype.firstRoll = function(score) {
   if (score === 10) {
     this.frameNumber += 1;
     this.rolls.push(10);
   } else {
+    this.rolls.push(score);
   }
+};
+
+Scorecard.prototype.secondRoll = function(score) {
+  this.frameNumber += 1;
+  this.rolls.push(score);
 };

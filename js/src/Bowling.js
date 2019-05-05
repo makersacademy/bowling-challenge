@@ -101,14 +101,23 @@ Bowling.prototype.updateSpareScore = function (number) {
   } 
 };
 
-
 Bowling.prototype.updateStrikeScore = function (number) {
+ 
+  if (this._gamerecord.length > 2) {
+    if (this._isStrikes(number-1) && this._isStrikes(number)) {
+      this._framesores[number - 2] = this._framesores[number - 2] + this._gamerecord[number-1][0]+this._gamerecord[number][0];
+      this.calulateTotalScore(number - 2);
+      this.calulateTotalScore(number - 1);
+    };
+  };
+
   if (this._gamerecord.length > 1) {
-    if (this._isStrikes(number)) {
+    if (this._isStrikes(number) && !this._isStrikes(number+1)) {
       this._framesores[number - 1] = this._framesores[number - 1] + this._gamerecord[number][0]+this._gamerecord[number][1];
       this.calulateTotalScore(number - 1);
-    }; 
+    };
   };
+
 };
 
 Bowling.prototype.addThridRoll = function (number) {

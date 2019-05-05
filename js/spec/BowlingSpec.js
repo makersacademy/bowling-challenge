@@ -68,14 +68,24 @@ it("add the one addtional knock down into the sore when spares",function(){
   })
 
 
-  it("add the two addtional knock down into the sore when strikes",function(){
+  it("add the two addtional(non-strikes) knock down into the sore when strikes",function(){
     bowling.knock(10);
-    console.log(bowling._gamerecord);
     bowling.knock(6);
     bowling.knock(3);
-    console.log(bowling._gamerecord)
     expect(bowling.getTotalScores(1)).toEqual(19);
     expect(bowling.getTotalScores(2)).toEqual(28);
+})
+
+it("add the two addtional knock down (strikes) into the sore when strikes",function(){
+  bowling.knock(10);
+  bowling.knock(10); 
+  bowling.knock(6);
+  bowling.knock(3);
+  console.log(bowling._gamerecord)
+  console.log(bowling._totalscores)
+  expect(bowling.getTotalScores(1)).toEqual(26);
+  expect(bowling.getTotalScores(2)).toEqual(45);
+  expect(bowling.getTotalScores(3)).toEqual(54);
 })
 
   // it("add the 2nd and 3rd knocks into the 10th frame when strikes",function(){

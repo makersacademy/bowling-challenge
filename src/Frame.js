@@ -1,3 +1,8 @@
+const errorText = "A maximum of 10 can be scored per frame."
+const error10th = "This bonus roll is only available in the 10th frame"
+const error10thStrike = "This bonus roll is only available after 10th frame strike is scored"
+const error10thStrikeSpare = "This bonus roll is only available after 10th frame strike or spare is scored"
+
 function Frame() {
   this.firstRollScore = 0;
   this.secondRollScore = 0;
@@ -7,42 +12,26 @@ function Frame() {
   this.strikeFlag = false;
   this.firstTenthFrameBonusRollScore = 0;
   this.secondTenthFrameBonusRollScore = 0;
-  this.errorText = "A maximum of 10 can be scored per frame."
-  this.error10th = "This bonus roll is only available in the 10th frame"
 }
 
 Frame.prototype = {
   constructor: Frame,
-  enterFirstRollScore: function(pins, scorecard) {
-    if (pins > 10) { alert(this.errorText); throw new Error(this.errorText); }
-    if (this.firstRollScore === 0) this.addToScorecard(scorecard)
-    this.firstRollScore = pins;
-    if (pins === 10) this.strikeFlag = true;
+  
+  enterFirstRollScore: function(numOfPins, scorecard) {
+    if (numOfPins > 10) this.displayError(errorText);
+    this.addToScorecard(scorecard)
+    this.firstRollScore = numOfPins;
+    if (numOfPins === 10) this.strikeFlag = true;
     this.calculateTotalScore();
-    if (this.checkForSpare(scorecard)) {
-      var i = scorecard.frames.indexOf(this);
-      scorecard.frames[i - 1].bonusScore += pins;
-      scorecard.frames[i - 1].calculateTotalScore();
-    }
-    if (this.checkForPreviousFrameStrike(scorecard) && this.checkForStrikeTwoFramesPrevious(scorecard)) {
-      var i = scorecard.frames.indexOf(this)
-      scorecard.frames[i - 2].bonusScore += (pins + 10);
-      scorecard.frames[i - 2].calculateTotalScore();
-    }
+    this.updateBonusIfNeeded(scorecard, numOfPins, 1);
   },
 
-  enterSecondRollScore: function(pins, scorecard) {
-    if (this.firstRollScore + pins > 10) {
-      alert(this.errorText); throw new Error(this.errorText);
-    }
-    this.secondRollScore = pins;
+  enterSecondRollScore: function(numOfPins, scorecard) {
+    if (this.firstRollScore + numOfPins > 10) this.displayError(errorText);
+    this.secondRollScore = numOfPins;
     this.calculateTotalScore();
     if (this.totalScore === 10) this.spareFlag = true;
-    if(this.checkForPreviousFrameStrike(scorecard)) {
-      var i = scorecard.frames.indexOf(this);
-      scorecard.frames[i - 1].bonusScore += (pins + this.firstRollScore);
-      scorecard.frames[i - 1].calculateTotalScore();
-    }
+    this.updateBonusIfNeeded(scorecard, numOfPins, 2)
   },
 
   calculateTotalScore: function() {
@@ -66,34 +55,62 @@ Frame.prototype = {
     return scorecard.isTwoFramesPreviousStrike(this);
   },
 
-  enter10thFirstBonusRollScore: function(pins, scorecard) {
-    if (scorecard.frames.length < 10) {
-      alert(this.error10th); throw new Error(this.error10th);
-    }
-    if (scorecard.frames[9].totalScore < 10) {
-      alert("This bonus roll is only available after 10th frame strike or spare is scored");
-      throw new Error("This bonus roll is only available after 10th frame strike or spare is scored");
-    }
-    this.firstTenthFrameBonusRollScore = pins;
-    this.bonusScore += pins;
-    this.calculateTotalScore();
-    if(this.checkForPreviousFrameStrike(scorecard)) {
-      var i = scorecard.frames.indexOf(this);
-      scorecard.frames[i - 1].bonusScore += (pins + this.firstRollScore);
-      scorecard.frames[i - 1].calculateTotalScore();
+  addSpareBonus: function(scorecard, numOfPins) {
+    var bonusFrame = this.findFrame(scorecard, 1)
+    bonusFrame.bonusScore += numOfPins;
+    bonusFrame.calculateTotalScore();
+  },
+
+  addStrikeBonus2FramesPrev: function(scorecard, numOfPins) {
+    var bonusFrame = this.findFrame(scorecard, 2)
+    bonusFrame.bonusScore += (numOfPins + 10);
+    bonusFrame.calculateTotalScore();
+  },
+
+  addStrikeBonus: function(scorecard, numOfPins) {
+    var bonusFrame = this.findFrame(scorecard, 1)
+    bonusFrame.bonusScore += (numOfPins + this.firstRollScore);
+    bonusFrame.calculateTotalScore();
+  },
+
+
+  updateBonusIfNeeded: function(scorecard, numOfPins, rollType) {
+    if (rollType === 1) {
+      if (this.checkForSpare(scorecard)) this.addSpareBonus(scorecard, numOfPins);
+      if (this.checkForPreviousFrameStrike(scorecard) && this.checkForStrikeTwoFramesPrevious(scorecard)) {
+        this.addStrikeBonus2FramesPrev(scorecard, numOfPins);
+      }
+    } else {
+      if (this.checkForPreviousFrameStrike(scorecard)) {
+        this.addStrikeBonus(scorecard, numOfPins);
+      }
     }
   },
 
-  enter10thSecondBonusRollScore: function(pins, scorecard) {
-    if (scorecard.frames.length < 10) {
-      alert(this.error10th); throw new Error(this.error10th);
-    }
-    if (scorecard.frames[9].firstRollScore < 10) {
-      alert("This bonus roll is only available after 10th frame strike is scored");
-      throw new Error("This bonus roll is only available after 10th frame strike is scored");
-    }
-    this.secondTenthFrameBonusRollScore = pins;
-    this.bonusScore += pins;
+  findFrame: function(scorecard, framesPrevious) {
+    var i = scorecard.frames.indexOf(this);
+    return scorecard.frames[i - framesPrevious]
+  },
+
+  enter10thFirstBonusRollScore: function(numOfPins, scorecard) {
+    if (scorecard.frames.length < 10) this.displayError(error10th)
+    if (scorecard.frames[9].totalScore < 10) this.displayError(error10thStrikeSpare)
+    this.firstTenthFrameBonusRollScore = numOfPins;
+    this.bonusScore += numOfPins;
     this.calculateTotalScore();
+    this.updateBonusIfNeeded(scorecard, numOfPins, 2)
+  },
+
+  enter10thSecondBonusRollScore: function(numOfPins, scorecard) {
+    if (scorecard.frames.length < 10) this.displayError(error10th);
+    if (scorecard.frames[9].firstRollScore < 10) this.displayError(error10thStrike);
+    this.secondTenthFrameBonusRollScore = numOfPins;
+    this.bonusScore += numOfPins;
+    this.calculateTotalScore();
+  },
+
+  displayError: function(errorMessage) {
+    alert(errorMessage);
+    throw new Error(errorMessage);
   }
 }

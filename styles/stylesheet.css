@@ -1,0 +1,127 @@
+body {
+  background-image: url("../public/bowl-2.jpg");
+  background-size: cover;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0;
+}
+
+.content {
+  margin-top: 80px;
+}
+
+.navbar {
+  align-items: center;
+  background-color: black;
+  color: white;
+  display: flex;
+  height: 75px;
+  justify-content: space-around;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+h1 {
+  margin-left: 3rem;
+  text-align: center;
+}
+
+.running-total-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+
+.running-total {
+  font-size: 30px;
+  margin-left: 1rem;
+  width: 45px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 5rem;
+  max-width: 600px;
+}
+
+.frame {
+  background-color: rgb(128, 128, 128, 0.75);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0.25rem;
+  padding: 1.5rem;
+  padding-top: 0;
+}
+
+.frame-scores {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin-left: 2.5rem;
+  text-align: center;
+}
+
+.frame h3 {
+  text-align: center;
+}
+
+.frame-total {
+  background-color: white;
+  font-size: 50px;
+  height: 100%;
+  margin: 0.5rem;
+  margin-left: 5rem;
+  padding: 1rem;
+  width: 60px;
+}
+
+.frame-roll {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 25%;
+}
+
+.frame-roll-input {
+  margin: 0.5rem;
+}
+
+input {
+  border-style: none;
+  padding: 0.25rem;
+  width: 50%;
+}
+
+button {
+  border-style: none;
+  border-radius: 5px;
+}
+
+.submit-button {
+  background-color: rgb(73, 160, 73);
+  color: white;
+  padding: 0.5rem;
+  width: 60%;
+}
+
+#bonus-1 {
+  display: none;
+}
+
+#bonus-2 {
+  display: none;
+}
+
+.new-button {
+  background-color: rgb(73, 73, 245);
+  color: white;
+  font-size: 16px;
+  padding: 0.5rem 1rem;
+}

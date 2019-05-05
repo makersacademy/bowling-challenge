@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BowlScore</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles/stylesheet.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="src/Scorecard.js"></script>
+  <script type="text/javascript" src="src/Frame.js"></script>
+  <script type="text/javascript" src="src/index.js"></script>
+</head>
+
+<body>
+  <div class="navbar">
+    <button class="new-button" id="new-game">New game</button>
+    <h1>Bowling Scorecard</h1>
+    <div class="running-total-container">
+      <div>Game total</div>
+      <div class="running-total" id="running-total">0</div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container">
+      <div class="frame">
+        <h3>Frame 1</h3>
+        <div class="frame-scores">
+          <div class="frame-roll">
+            <label class="frame-roll-input">1st roll</label>
+            <input class="frame-roll-input" type="number" pattern="[0-9]*" id="first-roll-1">
+            <button class="frame-roll-input submit-button" id="first-roll-submit-1" type="submit">Enter</button>
+          </div>
+          <div class="frame-roll">
+            <label class="frame-roll-input">2nd roll</label>
+            <input class="frame-roll-input" type="number" pattern="[0-9]*" id="second-roll-1">
+            <button class="frame-roll-input submit-button" id="second-roll-submit-1" type="submit">Enter</button>
+          </div>
+          <div class="frame-total"><span id="frame-score-1">0</span></div>
+        </div>
+      </div>
+  
+      <div class="frame">
+        <h3>Frame 2</h3>
+        <div class="frame-scores">
+          <div class="frame-roll">
+            <label class="frame-roll-input">1st roll</label>
+            <input class="frame-roll-input" type="number" pattern="[0-9]*" id="first-roll-2">
+            <button class="frame-roll-input submit-button" id="first-roll-submit-2" type="submit">Enter</button>
+          </div>
+          <div class="frame-roll">
+            <label class="frame-roll-input">2nd roll</label>
+            <input class="frame-roll-input" type="number" pattern="[0-9]*" id="second-roll-2">
+            <button class="frame-roll-input submit-button" id="second-roll-submit-2" type="submit">Enter</button>
+          </div>
+          <div class="frame-total"><span id="frame-score-2">0</span></div>
+        </div>
+      </div>
+
+      <div class="frame">
+        <h3>Frame 3</h3>
+        <div class="frame-scores">
+          <div class="frame-roll">
+            <label class="frame-roll-input">1st roll</label>
+            <input class="frame-roll-input" type="number" pattern="[0-9]*" id="first-roll-3">
+            <button class="frame-roll-input submit-button" id="first-roll-submit-3" type="submit">Enter</button>
+          </div>
+          <div class="frame-roll">
+            <label class="frame-roll-input">2nd roll</label>
+            <input class="frame-roll-input" type="number" pattern="[0-9]*" id="second-roll-3">
+            <button class="frame-roll-input submit-button" id="second-roll-submit-3" type="submit">Enter</button>
+          </div>
+          <div class="frame-total"><span id="frame-score-3">0</span></div>
+        </div>
+      </div>
+
+      <div class="frame">
+        <h3>Frame 4</h3>
+        <div class="frame-scores">
+          <div class="frame-roll">
+            <label class="frame-roll-input">1st roll</label>
+            <input class="frame-roll-input" type="number" pattern="[0-9]*" id="first-roll-4">
+            <button class="frame-roll-input submit-button" id="first-roll-submit-4" type="submit">Enter</button>
+          </div>
+          <div class="frame-roll">
+            <label class="frame-roll-input">2nd roll</label>
+            <input class="frame-roll-input" type="number" pattern="[0-9]*" id="second-roll-4">
+            <button class="frame-roll-input submit-button" id="second-roll-submit-4" type="submit">Enter</button>
+          </div>
+          <div class="frame-total"><span id="frame-score-4">0</span></div>
+        </div>
+      </div>
+
+      <div class="frame">
+        <h3>Frame 5</h3>
+        <div class="frame-scores">
+          <div class="frame-roll">
+            <label class="frame-roll-input">1st roll</label>
+            <input class="frame-roll-input" type="number" pattern="[0-9]*" id="first-roll-5">
+            <button class="frame-roll-input submit-button" id="first-roll-submit-5" type="submit">Enter</button>
+          </div>
+          <div class="frame-roll">
+            <label class="frame-roll-input">2nd roll</label>
+            <input class="frame-roll-input" type="number" pattern="[0-9]*" id="second-roll-5">
+            <button class="frame-roll-input submit-button" id="second-roll-submit-5" type="submit">Enter</button>
+          </div>
+          <div class="frame-total"><span id="frame-score-5">0</span></div>
+        </div>
+      </div>
+  
+      <div class="frame">
+        <h3>Frame 6</h3>
+        <div class="frame-scores">
+          <div class="frame-roll">
+            <label class="frame-roll-input">1st roll</label>
+            <input class="frame-roll-input" type="number" pattern="[0-9]*" id="first-roll-6">
+            <button class="frame-roll-input submit-button" id="first-roll-submit-6" type="submit">Enter</button>
+          </div>
+          <div class="frame-roll">
+            <label class="frame-roll-input">2nd roll</label>
+            <input class="frame-roll-input" type="number" pattern="[0-9]*" id="second-roll-6">
+            <button class="frame-roll-input submit-button" id="second-roll-submit-6" type="submit">Enter</button>
+          </div>
+          <div class="frame-total"><span id="frame-score-6">0</span></div>
+        </div>
+      </div>
+  
+      <div class="frame">
+        <h3>Frame 7</h3>
+        <div class="frame-scores">
+          <div class="frame-roll">
+            <label class="frame-roll-input">1st roll</label>
+            <input class="frame-roll-input" type="number" pattern="[0-9]*" id="first-roll-7">
+            <button class="frame-roll-input submit-button" id="first-roll-submit-7" type="submit">Enter</button>
+          </div>
+          <div class="frame-roll">
+            <label class="frame-roll-input">2nd roll</label>
+            <input class="frame-roll-input" type="number" pattern="[0-9]*" id="second-roll-7">
+            <button class="frame-roll-input submit-button" id="second-roll-submit-7" type="submit">Enter</button>
+          </div>
+          <div class="frame-total"><span id="frame-score-7">0</span></div>
+        </div>
+      </div>
+
+      <div class="frame">
+        <h3>Frame 8</h3>
+        <div class="frame-scores">
+          <div class="frame-roll">
+            <label class="frame-roll-input">1st roll</label>
+            <input class="frame-roll-input" type="number" pattern="[0-9]*" id="first-roll-8">
+            <button class="frame-roll-input submit-button" id="first-roll-submit-8" type="submit">Enter</button>
+          </div>
+          <div class="frame-roll">
+            <label class="frame-roll-input">2nd roll</label>
+            <input class="frame-roll-input" type="number" pattern="[0-9]*" id="second-roll-8">
+            <button class="frame-roll-input submit-button" id="second-roll-submit-8" type="submit">Enter</button>
+          </div>
+          <div class="frame-total"><span id="frame-score-8">0</span></div>
+        </div>
+      </div>
+
+      <div class="frame">
+        <h3>Frame 9</h3>
+        <div class="frame-scores">
+          <div class="frame-roll">
+            <label class="frame-roll-input">1st roll</label>
+            <input class="frame-roll-input" type="number" pattern="[0-9]*" id="first-roll-9">
+            <button class="frame-roll-input submit-button" id="first-roll-submit-9" type="submit">Enter</button>
+          </div>
+          <div class="frame-roll">
+            <label class="frame-roll-input">2nd roll</label>
+            <input class="frame-roll-input" type="number" pattern="[0-9]*" id="second-roll-9">
+            <button class="frame-roll-input submit-button" id="second-roll-submit-9" type="submit">Enter</button>
+          </div>
+          <div class="frame-total"><span id="frame-score-9">0</span></div>
+        </div>
+      </div>
+  
+      <div class="frame">
+        <h3>Frame 10</h3>
+        <div class="frame-scores">
+          <div class="frame-roll">
+            <label class="frame-roll-input">1st roll</label>
+            <input class="frame-roll-input" type="number" pattern="[0-9]*" id="first-roll-10">
+            <button class="frame-roll-input submit-button" id="first-roll-submit-10" type="submit">Enter</button>
+          </div>
+          <div class="frame-roll">
+            <label class="frame-roll-input">2nd roll</label>
+            <input class="frame-roll-input" type="number" pattern="[0-9]*" id="second-roll-10">
+            <button class="frame-roll-input submit-button" id="second-roll-submit-10" type="submit">Enter</button>
+          </div>
+          <div class="frame-total"><span id="frame-score-10">0</span></div>
+        </div>
+        <div class="frame-scores">
+          <div class="frame-roll" id="bonus-1">
+            <label class="frame-roll-input">Bonus roll 1</label>
+            <input class="frame-roll-input" type="number" pattern="[0-9]*" id="bonus-roll-1">
+            <button class="frame-roll-input submit-button" id="bonus-roll-1-submit" type="submit">Enter</button>
+          </div>
+          <div class="frame-roll" id="bonus-2">
+            <label class="frame-roll-input">Bonus roll 2</label>
+            <input class="frame-roll-input" type="number" pattern="[0-9]*" id="bonus-roll-2">
+            <button class="frame-roll-input submit-button" id="bonus-roll-2-submit" type="submit">Enter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</body>

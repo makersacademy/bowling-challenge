@@ -58,8 +58,14 @@ $(document).ready(function () {
   });
 
   $('#submit10').on('click', function () {
-    bowling.knock(Number($('#fram10roll1').val()));
-    bowling.knock(Number($('#fram10roll2').val()));
+    var num_f10r1 = Number($('#fram10roll1').val());
+    var num_f10r2 = Number($('#fram10roll2').val());
+    bowling.knock(num_f10r1);
+    bowling.knock(num_f10r2);
+    if(num_f10r1 == 10 || (num_f10r1+num_f10r2) == 10 ){
+      bowling.knock(Number($('#fram10roll3').val()));
+    }
+    
     updateprevioustotal(10);
   });
 

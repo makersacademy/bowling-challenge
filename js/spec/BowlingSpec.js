@@ -54,18 +54,23 @@ it("add the one addtional knock down into the sore when spares",function(){
 })
 
 
+  it("add the 3rd knock into the 10th frame when spare",function(){
+    for(var i = 0; i< 18; i++){
+      bowling.knock(0);
+    }
+  
+    bowling.knock(4);
+    bowling.knock(6);
+    bowling.knock(9);
 
-  // it("add the 3rd knock into the 10th frame when spare",function(){
-  //   for(var i = 0; i< 18; i++){
-  //     bowling.knock(0);
-  //   }
+    expect(bowling.getFrameRecord()).toEqual([4,6,9])
+    expect(bowling.getTotalScores(10)).toEqual(19);
+  })
 
-  //   bowling.knock(4);
-  //   bowling.knock(6);
-  //   bowling.knock(9);
 
-  //   expect(bowling.getFrameRecord()).toEqual([4,6,9])
-  // })
+
+
+
 
   // it("add the 2nd and 3rd knocks into the 10th frame when strikes",function(){
   //   for(var i = 0; i< 18; i++){

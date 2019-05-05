@@ -1,28 +1,29 @@
 function Bowling(){
-  this.MINIMUMSCORE = 0;
-  this.MAXIMUMSCORE = 300;
-  this.PINS = 10;
-  this.MAXFRAMES = 10;
+  this.score = 0;
+  this.MAXFRAME = 10;
+  this.currentFrame = 1;
   this.frame = [];
-  this.currentFrame
-  this.score  = 0;
+  this.score = 0;
+  this.eachFrameScore = {};
 }
 
 Bowling.prototype = {
   constructor:Bowling,
 
   roll: function(pins){
-    return(this.frame.push(pins))
+    if(this.frame.length >= 2){
+      this.frame = [];
+      this.currentFrame++;
+    }
+    this.frame.push(pins);
+    this.eachFrameScore[this.currentFrame]= this.calculateScore();
   },
 
-  calScore: function(){
-    let score = (this.frame.reduce((total, currentScore)=>{
-      return total + currentScore;
+  calculateScore: function(){
+    return(this.frame.reduce((acc, cur)=>{
+      let score = acc + cur;
+      this.score += score
+      return score
     }));
-    this.score += score
-  },
-
-  isTwoRows: function(){
-    return this.frame.length >= 2
   }
 }

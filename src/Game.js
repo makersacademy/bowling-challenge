@@ -10,8 +10,10 @@ Game.prototype.roll = function(pins){
 };
 
 Game.prototype.score = function(){
-  var score = 0, i;
-  for (i = 0; i < this._rolls.length; i++) {
+  var score = 0, i, bonusRoll = this._bonusRoll(),
+      scoreRolls = (bonusRoll) ? bonusRoll + 1 : this._rolls.length;
+
+  for (i = 0; i < scoreRolls; i++) {
     if (this._strike(i)) {
       score += 10 + this._rolls[i + 1] + this._rolls[i + 2];
       i++;
@@ -31,4 +33,12 @@ Game.prototype._spare = function(roll) {
 
 Game.prototype._strike = function(roll) {
   return this._rolls[roll] === 10;
+};
+
+Game.prototype._bonusRoll = function() {
+  var tenthFrame;
+  tenthFrame = this._rolls.length - 3, bonus;
+  bonus = (this._strike(tenthFrame) || this._spare(tenthFrame))
+  return (bonus) ? tenthFrame : null;
+
 };

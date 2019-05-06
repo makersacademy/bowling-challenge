@@ -28,20 +28,20 @@ rollStrike = function rollSpare(){
 
   describe ("Gutter Game", function() {
     it ("should score 0", function() {
-      gameRolls.call(this.game, 20, 0);
+      gameRolls.call(game, 20, 0);
       expect(game.score()).toEqual(0);
     });
   });
 
   describe ("Each roll hits 1 pin", function() {
     it ("should score 20", function() {
-      gameRolls.call(this.game, 20, 1);
+      gameRolls.call(game, 20, 1);
       expect(game.score()).toEqual(20);
     });
   });
 
   describe ("One spare", function() {
-    it ("should score 10 + bonus", function() {
+    it ("should score 10", function() {
       rollSpare.call(game);
       game.roll(5);
       gameRolls.call(game, 17, 0)
@@ -61,7 +61,7 @@ rollStrike = function rollSpare(){
 
   describe ("Perfect Game", function() {
     it ("should score 300, (12 strikes inc bonus)", function() {
-      gameRolls.call(12, 10);
+      gameRolls.call(game, 12, 10);
       expect(game.score()).toEqual(300);
     });
   });

@@ -5,6 +5,7 @@ function Bowling() {
   this._gamerecord = [];
   this._framesores = [];
   this._totalscores = [];
+  this.NUMBEROFROLL = 2;
 
 };
 
@@ -12,16 +13,14 @@ Bowling.prototype.knock = function (number) {
   this._knockedPins = number;
 
   if (this._gamerecord.length == 10) {
-    if (this._isSpares(10) || this._isStrikes(10)) {
       this.addThridRoll(number);
-    }
   } else {
     this.recordFrame();
   }
 };
 
 Bowling.prototype.recordFrame = function () {
-  var numberofFrameRoll = 2;
+  var numberofFrameRoll = this.NUMBEROFROLL;
 
   if (this._framerecord.length == numberofFrameRoll) {
     this._framerecord = [];
@@ -39,7 +38,6 @@ Bowling.prototype.recordFrame = function () {
     }
   }
 
-
   if (this._framerecord.length == numberofFrameRoll) {
     this.recordGame();
   }
@@ -48,28 +46,28 @@ Bowling.prototype.recordFrame = function () {
 
 Bowling.prototype.recordGame = function () {
   this._gamerecord.push(this._framerecord);
-  this.caculateFrameScore(this._gamerecord.length - 1);
+  this.caculateFrameScore(this._gamerecord.length);
   this.updateSpareScore(this._gamerecord.length - 1);
   this.updateStrikeScore(this._gamerecord.length - 1);
-  this.calulateTotalScore(this._gamerecord.length - 1)
+  this.calulateTotalScore(this._gamerecord.length)
 };
 
-Bowling.prototype.caculateFrameScore = function (number) {
+Bowling.prototype.caculateFrameScore = function (framenumber) {
   var framescore = 0;
-  for (var i = 0; i < this._gamerecord[number].length; i++) {
-    framescore = framescore + this._gamerecord[number][i]
+  for (var i = 0; i < this._gamerecord[framenumber-1].length; i++) {
+    framescore = framescore + this._gamerecord[framenumber-1][i]
   };
 
-  this._framesores[number] = framescore;
+  this._framesores[framenumber-1] = framescore;
 };
 
-Bowling.prototype.calulateTotalScore = function (number) {
+Bowling.prototype.calulateTotalScore = function (framenumber) {
   var sumscore = 0
-  for (var i = 0; i <= number; i++) {
+  for (var i = 0; i < framenumber; i++) {
     sumscore = sumscore + this._framesores[i]
   }
 
-  this._totalscores[number] = sumscore;
+  this._totalscores[framenumber-1] = sumscore;
 };
 
 Bowling.prototype.getKnockedPins = function () {
@@ -96,36 +94,38 @@ Bowling.prototype._isStrikes = function (framenumber) {
   return (this._gamerecord[framenumber - 1][0] == 10)
 };
 
-Bowling.prototype.updateSpareScore = function (number) {
+Bowling.prototype.updateSpareScore = function (framenumber) {
   if (this._gamerecord.length > 1) {
-    if (this._isSpares(number)) {
-      this._framesores[number - 1] = this._framesores[number - 1] + this._gamerecord[number][0];
-      this.calulateTotalScore(number - 1);
+    if (this._isSpares(framenumber)) {
+      this._framesores[framenumber - 1] = this._framesores[framenumber - 1] + this._gamerecord[framenumber][0];
+      this.calulateTotalScore(framenumber);
     }
   }
 };
 
-Bowling.prototype.updateStrikeScore = function (number) {
+Bowling.prototype.updateStrikeScore = function (framenumber) {
 
   if (this._gamerecord.length > 2) {
-    if (this._isStrikes(number - 1) && this._isStrikes(number)) {
-      this._framesores[number - 2] = this._framesores[number - 2] + this._gamerecord[number - 1][0] + this._gamerecord[number][0];
-      this.calulateTotalScore(number - 2);
-      this.calulateTotalScore(number - 1);
+    if (this._isStrikes(framenumber - 1) && this._isStrikes(framenumber)) {
+      this._framesores[framenumber - 2] = this._framesores[framenumber - 2] + this._gamerecord[framenumber - 1][0] + this._gamerecord[framenumber][0];
+      this.calulateTotalScore(framenumber - 1);
+      this.calulateTotalScore(framenumber);
     };
   };
 
   if (this._gamerecord.length > 1) {
-    if (this._isStrikes(number) && (!this._isStrikes(number + 1) || number == 9)) {
-      this._framesores[number - 1] = this._framesores[number - 1] + this._gamerecord[number][0] + this._gamerecord[number][1];
-      this.calulateTotalScore(number - 1);
+    if (this._isStrikes(framenumber) && (!this._isStrikes(framenumber + 1) || framenumber == 9)) {
+      this._framesores[framenumber - 1] = this._framesores[framenumber - 1] + this._gamerecord[framenumber][0] + this._gamerecord[framenumber][1];
+      this.calulateTotalScore(framenumber);
     };
   };
 
 };
 
-Bowling.prototype.addThridRoll = function (number) {
-  this._gamerecord[9].push(number);
-  this.caculateFrameScore(9);
-  this.calulateTotalScore(9);
+Bowling.prototype.addThridRoll = function (knockDownNumber) {
+  if (this._isSpares(10) || this._isStrikes(10)) {
+  this._gamerecord[9].push(knockDownNumber);
+  this.caculateFrameScore(10);
+  this.calulateTotalScore(10);
+  };
 };

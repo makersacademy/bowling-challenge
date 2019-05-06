@@ -1,5 +1,5 @@
-'use strcit';
-
+// 'use strcit';
+//
 // describe("Player", function() {
 //   var player;
 //   var song;

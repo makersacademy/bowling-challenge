@@ -1,6 +1,6 @@
 'use strict'
 
-describe('scorecard', function() {
+describe('scorecard', function(){
 
   var scorecard
 
@@ -9,19 +9,27 @@ describe('scorecard', function() {
   })
 
   describe('gutter game', function(){
-    it('ends game', function() {
-      expect(scorecard.over).toBe(true)
+    it('ends game', function(){
+      for (var i = 1; i <= 10; i++) {
+        scorecard.ball1(0);
+        scorecard.ball2(0);
+      };
+      expect(scorecard.isOver()).toBe(true)
     })
-    it('with a score of 0', function() {
-      expect(scorecard.score).toEqual(0)
+    it('with a score of 0', function(){
+      for (var i = 1; i <= 10; i++) {
+        scorecard.ball1(0);
+        scorecard.ball2(0);
+      };
+      expect(scorecard.total()).toEqual(0)
     })
   })
 
-  describe('scoring a frame frame', function(){
+  describe('scoring a frame', function(){
     it('can enter the score for 2 balls', function(){
       scorecard.ball1(1);
       scorecard.ball2(2);
-      expect(scorecard.score).toEqual(3)
+      expect(scorecard.total()).toEqual(3)
     })
   })
 
@@ -31,7 +39,7 @@ describe('scorecard', function() {
         scorecard.ball1(1);
         scorecard.ball2(2);
       };
-      expect(scorecard.score).toEqual(30)
+      expect(scorecard.total()).toEqual(30)
     })
   })
 

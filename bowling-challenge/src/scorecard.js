@@ -1,22 +1,21 @@
 'use strict'
 
-function Scorecard() {
-  this.score = 0;
-  this.over = true;
+function Scorecard(){
+  this.game = new Game
 };
 
-Scorecard.prototype.isOver = function () {
-  return this.frames === 10;
+Scorecard.prototype.isOver = function (){
+  return this.game.framesPlayed() === 10;
 };
 
-Scorecard.prototype.frames = function () {
-
+Scorecard.prototype.ball1 = function (pins){
+  this.game.ball1(pins)
 };
 
-Scorecard.prototype.ball1 = function (pins) {
-  return this.score = this.score + pins
+Scorecard.prototype.ball2 = function (pins){
+  this.game.ball2(pins)
 };
 
-Scorecard.prototype.ball2 = function (pins) {
-  return this.score = this.score + pins
+Scorecard.prototype.total = function () {
+  return this.game.score()
 };

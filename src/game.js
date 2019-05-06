@@ -11,11 +11,17 @@ function Game(){
 Game.prototype.inputScore = function(pins) {
   if (this.currentFrame.length == 0) {
     this.currentFrame.push(pins);
+    this.strike = this.isStrike()
     if(this.spare) {
       this.total += pins
     }
+    if(this.strike) {
+      this.scores.push(this.currentFrame)
+      this.currentFrame = []
+      this.frameCounter += 1 
+    }
   }
-  else if(this.currentFrame.length == 1){
+  else if(this.currentFrame.length == 1) {
     this.currentFrame.push(pins);
     this.scores.push(this.currentFrame)
     this.spare = this.isSpare()

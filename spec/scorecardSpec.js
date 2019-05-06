@@ -14,7 +14,7 @@ describe('Bowling ScoreCard', function() {
     expect(scorecard._totalScore).toEqual(0);
   });
 
-  describe('Scoring a game', function() {
+  describe('Scoring a simple game - no bonuses', function() {
     it('user can roll a gutter ball', function() {
       rollHelper(0, 20);
       expect(scorecard.score()).toEqual(0);
@@ -23,6 +23,16 @@ describe('Bowling ScoreCard', function() {
     it('user can roll a game of 1s', function() {
       rollHelper(1, 20);
       expect(scorecard.score()).toEqual(20);
+    });
+  });
+
+  describe('Scoring a game with Spares', function() {
+    it('user can roll one spare in a game', function() {
+      scorecard.roll(5);
+      scorecard.roll(5);
+      scorecard.roll(1);
+      rollHelper(0, 17);
+      expect(scorecard.score()).toEqual(12);
     });
   });
 

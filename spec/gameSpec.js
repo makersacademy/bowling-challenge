@@ -26,4 +26,13 @@ describe('Bowling Game', function() {
     bowlLoop(0, 17);
     expect(game.score()).toEqual(26);
   });
+
+  it('can roll a strike', function() {
+    game.bowl(10);
+    game.bowl(6);
+    game.bowl(3);
+    bowlLoop(0, 16);
+    expect(game.score()).toEqual(28);
+  });
+
 });

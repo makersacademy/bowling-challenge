@@ -15,12 +15,16 @@ Game.prototype.score = function() {
 
 
   for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
-    if (isSpareBonus()) {
+    if (isStrikeBonus()) {
+      result += getStrikeBonusTotal();
+      bowlIndex++;
+    } else if (isSpareBonus()) {
       result += getSpareBonusTotal();
+      bowlIndex += 2;
     } else {
       result += getNoBonusTotal();
+      bowlIndex += 2;
     }
-    bowlIndex += 2;
   }
   return result;
 
@@ -32,7 +36,15 @@ Game.prototype.score = function() {
     return game.bowls[bowlIndex] + game.bowls[bowlIndex + 1] == 10;
   }
 
+  function isStrikeBonus() {
+    return game.bowls[bowlIndex] == 10;
+  }
+
   function getSpareBonusTotal() {
+    return game.bowls[bowlIndex] + game.bowls[bowlIndex + 1] + game.bowls[bowlIndex + 2];
+  }
+
+  function getStrikeBonusTotal() {
     return game.bowls[bowlIndex] + game.bowls[bowlIndex + 1] + game.bowls[bowlIndex + 2];
   }
 

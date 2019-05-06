@@ -17,11 +17,21 @@ describe('scorecard', function() {
     })
   })
 
-  describe('entering 2 balls per frame', function(){
-    it('can enter 2 scores', function(){
+  describe('scoring a frame frame', function(){
+    it('can enter the score for 2 balls', function(){
       scorecard.ball1(1);
       scorecard.ball2(2);
       expect(scorecard.score).toEqual(3)
+    })
+  })
+
+  describe('playing a full game', function(){
+    it('allows me to enter scores for 10 frames', function(){
+      for (var i = 1; i <= 10; i++) {
+        scorecard.ball1(1);
+        scorecard.ball2(2);
+      };
+      expect(scorecard.score).toEqual(30)
     })
   })
 

@@ -8,7 +8,7 @@ I expect to be able to enter 2 scores per frame
 
 As a keen bowler
 When I bowl a full game
-I would like to be able to enter scores for 10 frames  
+I would like to be able to enter scores for 10 frames
 
 As a keen bowler
 If I get a spare

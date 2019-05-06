@@ -14,12 +14,24 @@ ScoreCard.prototype.roll = function (pins) {
 
 ScoreCard.prototype.score = function () {
   for (var frame = 0; frame < 10; frame++) {
-    if (this._frames[this._rolls] + this._frames[this._rolls + 1] === 10) {
-      this._totalScore += this._frames[this._rolls] + this._frames[this._rolls + 1] + this._frames[this._rolls + 2];
+    if (this._isASpare()) {
+      this._totalScore += this._spareScore();
     } else {
-      this._totalScore += this._frames[this._rolls] + this._frames[this._rolls + 1];
+      this._totalScore += this._normalScore();
     }
     this._rolls += 2;
   }
   return this._totalScore;
+};
+
+ScoreCard.prototype._isASpare = function () {
+  return this._frames[this._rolls] + this._frames[this._rolls + 1] === 10;
+};
+
+ScoreCard.prototype._spareScore = function () {
+  return this._frames[this._rolls] + this._frames[this._rolls + 1] + this._frames[this._rolls + 2];
+};
+
+ScoreCard.prototype._normalScore = function () {
+  return this._frames[this._rolls] + this._frames[this._rolls + 1];
 };

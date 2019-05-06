@@ -20,4 +20,11 @@ describe('Bowling', function(){
       expect(bowling.score()).toEqual(20);
     });
   });
+
+  describe('roll', function(){
+    it('gives an error if more than 10 pins are hit per frame', function(){
+      bowling.roll(8);
+      expect(function(){ bowling.roll(3)}).toThrow('You can only hit 10 pins per frame');
+    });
+  });
 });

@@ -1,5 +1,5 @@
 <h1 align='center'>
-Makers Week 5 Bowling Challenge
+Makers Week 5 Bowling Challenge.
 </h1>
 
 ```

@@ -1,6 +1,6 @@
 var Scorecard = function() {
-  this._total = 0
-  this._rolls = 0
+  this._total = 0;
+  this._rolls = 0;
 };
 
 Scorecard.prototype.record = function(pins) {

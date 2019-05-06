@@ -51,6 +51,41 @@ describe('Game', function(){
     game.inputScore(4);
     game.inputScore(1);
     expect(game.total).toEqual(20)
-  })
+  });
 
+  it('can calculate a game with consecutive spares', function(){
+    game.inputScore(5);
+    game.inputScore(5);
+    game.inputScore(2);
+    game.inputScore(8);
+    game.inputScore(1);
+    game.inputScore(1);
+    expect(game.total).toEqual(25)
+  });
+
+  it('can calculate a perfect game', function(){
+    for (i = 0; i < 10; i ++) {
+    game.inputScore(10);
+    }
+    expect(game.total).toEqual(300);
+  });
+
+  // it('can calculate a game with consecutive strikes', function(){
+  //   game.inputScore(1);
+  //   game.inputScore(2);
+  //   game.inputScore(10);
+  //   game.inputScore(10);
+  //   game.inputScore(6);
+  //   game.inputScore(2);
+  //   expect(game.total).toEqual( )
+  // });
+  //
+  // it('can calculate a game with strikes and spares', function(){
+  //   game.inputScore(10);
+  //   game.inputScore(6);
+  //   game.inputScore(4);
+  //   game.inputScore(1);
+  //   game.inputScore(1);
+  //   expect(game.total).toEqual( )
+  // })
 });

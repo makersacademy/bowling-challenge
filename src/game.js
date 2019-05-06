@@ -37,8 +37,6 @@ Game.prototype.inputScore = function(pins) {
 
 Game.prototype.isStrike = function() {
   return this.currentFrame[0] === 10;
-  // return this.scores[this.frameCounter-1] == [10];
-
 }
 
 Game.prototype.isSpare = function() {

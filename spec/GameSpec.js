@@ -8,7 +8,7 @@ beforeEach(function(){
   game = new Game();
 });
 
-var gameRolls, rollSpare;
+var gameRolls, rollSpare, rollStrike;
 
 gameRolls = function gameRolls(rolls, pins){
   for(var i = 0; i < rolls; i++){
@@ -19,6 +19,11 @@ gameRolls = function gameRolls(rolls, pins){
 rollSpare = function rollSpare(){
   game.roll(5);
   game.roll(5);
+}
+
+rollStrike = function rollSpare(){
+  game.roll(5);
+  game.roll(3);
 }
 
   describe ("Gutter Game", function() {
@@ -39,7 +44,25 @@ rollSpare = function rollSpare(){
     it ("should score 10 + bonus", function() {
       rollSpare.call(game);
       game.roll(5);
+      gameRolls.call(game, 17, 0)
       expect(game.score()).toEqual(20);
+    });
+  });
+
+  describe ("One strike", function() {
+    it ("should score 20 + bonus", function() {
+      rollStrike.call(game);
+      game.roll(5);
+      game.roll(3);
+      gameRolls.call(17, 0);
+      expect(game.score()).toEqual(26);
+    });
+  });
+
+  describe ("Perfect Game", function() {
+    it ("should score 300, (12 strikes inc bonus)", function() {
+      gameRolls.call(12, 10);
+      expect(game.score()).toEqual(300);
     });
   });
 });

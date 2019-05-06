@@ -11,6 +11,11 @@ Game.prototype.roll = function(pins) {
   };
 };
 
+Game.prototype.frameTotal = function() {
+  var frame = this.points[this.frameIndex] + this.points[this.frameIndex + 1];
+  return frame;
+};
+
 Game.prototype.finalScore = function(points) {
   return points.reduce(function(a,b) {
     return a + b

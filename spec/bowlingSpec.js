@@ -21,12 +21,24 @@ describe('Game', function() {
   });
 
   describe('A final score of zero', function() {
+
     it('will return a "Gutter game"', function() {
       for(var i = 0; i < 20; i++) {
         game.roll(0);
       };
       expect(game.gutterGame()).toEqual(true);
     });
+
+  });
+
+  describe('The game will', function() {
+
+    it('return the total score for the frame', function() {
+      game.roll(2);
+      game.roll(6);
+      expect(game.frameTotal()).toEqual(8);
+    });
+
   });
 
 });

@@ -14,6 +14,11 @@ describe('Bowling Game', function() {
     expect(game.score()).toEqual(0);
   });
 
+  it('can roll a perfect 300', function() {
+    bowlLoop(10, 12);
+    expect(game.score()).toEqual(300);
+  });
+
   it('can score 1 each bowl', function() {
     bowlLoop(1, 20);
     expect(game.score()).toEqual(20);

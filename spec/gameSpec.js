@@ -47,12 +47,10 @@ describe('Game', function(){
   })
 
   it('calculates special scoring for a strike', function(){
-    game.inputScore(4);
-    game.inputScore(2);
     game.inputScore(10);
-    game.inputScore(2);
-    game.inputScore(2);
-    expect(game.total).toEqual(24)
+    game.inputScore(4);
+    game.inputScore(1);
+    expect(game.total).toEqual(20)
   })
 
 });

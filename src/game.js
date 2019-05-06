@@ -5,10 +5,12 @@ function Game(){
   this.frameCounter = 0
   this.rollCounter = 0
   this.spare = false
+  this.strike = false
 };
 
 Game.prototype.inputScore = function(pins) {
-  if (this.currentFrame.length == 0) { this.currentFrame.push(pins);
+  if (this.currentFrame.length == 0) {
+    this.currentFrame.push(pins);
     if(this.spare) {
       this.total += pins
     }
@@ -24,7 +26,7 @@ Game.prototype.inputScore = function(pins) {
 };
 
 Game.prototype.isStrike = function() {
-  return this.inputScore(pins) === 10;
+  return this.currentFrame[0] === 10;
 }
 
 Game.prototype.isSpare = function() {

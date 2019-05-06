@@ -19,6 +19,31 @@ describe('Bowling', function(){
       };
       expect(bowling.score()).toEqual(20);
     });
+
+    it('is able to calculate spares', function(){
+      bowling.roll(5);
+      bowling.roll(5);
+      bowling.roll(2)
+      bowling.roll(0)
+      expect(bowling.score()).toEqual(14);
+    });
+
+    it('can calculate complex spares', function(){
+      bowling.roll(5);
+      bowling.roll(5);
+      bowling.roll(3);
+      bowling.roll(5);
+      bowling.roll(6);
+      bowling.roll(4);
+      bowling.roll(4);
+      bowling.roll(0);
+      bowling.roll(4);
+      bowling.roll(6);
+      bowling.roll(5);
+      bowling.roll(5);
+      bowling.roll(3);
+      expect(bowling.score()).toEqual(70)
+    });
   });
 
   describe('roll', function(){

@@ -1,6 +1,17 @@
 function Game(){
-  this.frames = []
-  for(i = 0; i < 10; i ++) { this.frames.push(new Frame()}
+  this.scores = []
+  this.total = 0
+  this.currentFrame = []
+  this.frameCounter = 0
+  this.rollCounter = 0
 };
 
-frame = new Frame() 
+Game.prototype.inputScore = function(pins) {
+  if (this.currentFrame.length == 0) { this.currentFrame.push(pins); }
+  else if(this.currentFrame.length == 1){
+    this.currentFrame.push(pins);
+    this.scores.push(this.currentFrame)
+    this.currentFrame = []
+  }
+  this.total += pins;
+};

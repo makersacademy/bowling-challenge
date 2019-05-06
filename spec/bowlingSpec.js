@@ -6,17 +6,16 @@ describe('Game', function() {
     game = new Game();
   });
 
-  var john;
+  describe('The user can', function() {
 
-  beforeEach(function() {
-    john = new Player('John');
-  });
+    it('input the number of pins they have knocked down for one roll', function() {
+      game.roll(8);
+      expect(game.frames).toEqual([8])
+    });
 
-  describe('allows a user to', function() {
-
-    it('add a player to the game', function() {
-      game.addPlayer('John');
-      expect(game.players).toEqual( [john] );
+    it('NOT input more than 10 for a roll', function() {
+      var error = 'You cannot bowl more than 10!';
+      expect(function() { game.roll(11) }).toThrow(error);
     });
 
   });

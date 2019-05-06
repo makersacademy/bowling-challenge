@@ -15,3 +15,11 @@ Game.prototype.inputScore = function(pins) {
   }
   this.total += pins;
 };
+
+Game.prototype.isStrike = function() {
+  return this.inputScore(pins) === 10;
+}
+
+Game.prototype.isSpare = function() {
+  return this.currentFrame[0] + this.currentFrame[1] === 10;
+}

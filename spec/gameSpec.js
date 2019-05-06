@@ -23,5 +23,17 @@ describe('Game', function(){
     game.inputScore(5);
     game.inputScore(2);
     expect(game.scores).toContain([5, 2])
-  }); 
+  });
+
+  it('can recognise a throw as a strike', function(){
+    game.inputScore(10);
+    expect(game.isStrike).toBeTruthy();
+  });
+
+  it('can recognise a throw as a strike', function(){
+    game.inputScore(2);
+    game.inputScore(8);
+    expect(game.isSpare).toBeTruthy();
+  });
+
   });

@@ -9,17 +9,31 @@ Game.prototype.bowl = function(pins) {
 };
 
 Game.prototype.score = function() {
-
+  var game = this;
   bowlIndex = this.bowlIndex;
   result = this.STARTING_SCORE;
 
+
   for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
-    if (this.bowls[bowlIndex] + this.bowls[bowlIndex + 1] == 10) {
-      result += this.bowls[bowlIndex] + this.bowls[bowlIndex + 1] + this.bowls[bowlIndex + 2];
+    if (isSpareBonus()) {
+      result += getSpareBonusTotal();
     } else {
-      result += this.bowls[bowlIndex] + this.bowls[bowlIndex + 1];
+      result += getNoBonusTotal();
     }
     bowlIndex += 2;
   }
   return result;
+
+  function getNoBonusTotal() {
+    return game.bowls[bowlIndex] + game.bowls[bowlIndex + 1];
+  }
+
+  function isSpareBonus() {
+    return game.bowls[bowlIndex] + game.bowls[bowlIndex + 1] == 10;
+  }
+
+  function getSpareBonusTotal() {
+    return game.bowls[bowlIndex] + game.bowls[bowlIndex + 1] + game.bowls[bowlIndex + 2];
+  }
+
 };

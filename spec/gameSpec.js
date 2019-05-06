@@ -26,5 +26,4 @@ describe('Bowling Game', function() {
     bowlLoop(0, 17);
     expect(game.score()).toEqual(26);
   });
-
 });

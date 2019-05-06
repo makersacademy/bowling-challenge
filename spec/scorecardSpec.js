@@ -9,6 +9,13 @@ describe('Scorecard', function() {
     expect(scorecard.showTotal()).toEqual(0)
   });
 
+  it("increases total score as rolls are added", function() {
+    scorecard.firstRoll(5);
+    scorecard.secondRoll(5);
+    scorecard.firstRoll(5);
+    expect(scorecard.showTotal()).toEqual(20)
+  });
+
   it("increases frame number after strike", function() {
     scorecard.firstRoll(10);
     expect(scorecard.showFrame()).toEqual(1)

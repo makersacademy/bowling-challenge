@@ -7,7 +7,7 @@ function Scorecard(){
 }
 
 Scorecard.prototype.roll = function(pins) {
-  this._pinsDown = pins
+  this._pinsDown.push(pins)
 }
 
 Scorecard.prototype.total = function(){

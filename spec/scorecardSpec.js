@@ -9,7 +9,7 @@ describe('Scorecard', function(){
 
   describe('gutter balls', function(){
     it('gives zero score', function(){
-      scorecard.roll([0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0])
+      roll(20,0)
       expect(scorecard.total()).toEqual(0)
       expect(scorecard.isComplete()).toBe(true)
     })
@@ -17,7 +17,7 @@ describe('Scorecard', function(){
 
   describe('one frame game', function(){
     it('gives accumulative total score', function(){
-      scorecard.roll([4,4, 4,4, 4,4, 4,4, 4,4, 4,4, 4,4, 4,4, 4,4, 4,4])
+      roll(20,4)
       expect(scorecard.total()).toEqual(80)
       expect(scorecard.isComplete()).toBe(true)
     })
@@ -25,7 +25,10 @@ describe('Scorecard', function(){
 
   describe('spare game', function(){
     it('gives accumulative total', function(){
-      scorecard.roll([3,7, 6,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0])
+      scorecard.roll(3)	     
+      scorecard.roll(7)	
+      scorecard.roll(6)	
+      roll(18,0)
       expect(scorecard.total()).toEqual(22)
       expect(scorecard.isComplete()).toBe(true)
     })
@@ -33,7 +36,10 @@ describe('Scorecard', function(){
 
   describe('strike game', function(){
     it('gives accumulative total', function(){
-      scorecard.roll([10, 4,3, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0])
+      scorecard.roll(10)
+      scorecard.roll(4)	
+      scorecard.roll(3)	
+      roll(18,0)
       expect(scorecard.total()).toEqual(24)
       expect(scorecard.isComplete()).toBe(true)
     })
@@ -41,29 +47,15 @@ describe('Scorecard', function(){
 
   describe('perfect game', function(){
     it('gives accumulative total', function(){
-      scorecard.roll([10, 10, 10, 10, 10, 10,10, 10, 10, 10, 10,10])
+      roll(12,10)
       expect(scorecard.total()).toEqual(300)
       expect(scorecard.isComplete()).toBe(true)
     })
   })
 
-  describe('10th frame', function(){
-    it('calculates 10th frame score with 2 rolls', function(){
-      scorecard.roll([3,7, 6,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 3,4])
-      expect(scorecard.total()).toEqual(29)
-      expect(scorecard.isComplete()).toBe(true)
-    })
-    
-    // it('calculates 10th frame score with 3 rolls with spare', function(){
-    //   scorecard.roll([3,7, 6,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 4,6,4])
-    //   expect(scorecard.total()).toEqual(40)
-    //   expect(scorecard.isComplete()).toBe(true)
-    // })
-
-    // it('calculates 10th frame score with 3 rolls with strike', function(){
-    //   scorecard.roll([3,7, 6,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 10,4,4])
-    //   expect(scorecard.total()).toEqual(48)
-    //   expect(scorecard.isComplete()).toBe(true)
-    // })
-  })
+  function roll(times,pins) {
+    for (var i = 0; i < times; i++) {	
+      scorecard.roll(pins)
+    }	 
+  }	
 })

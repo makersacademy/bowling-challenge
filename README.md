@@ -82,3 +82,9 @@ What Would I Do Differently.
 - Commit in small quantities and push to github more frequently.
 - Take it easy and not be hard on myself when algorithm for spare was not working.
 
+<h4 align='center'>
+Tech Stack
+</h4>
+
+- JavaScript(ES6).
+- Jasmine

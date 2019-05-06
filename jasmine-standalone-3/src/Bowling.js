@@ -19,8 +19,16 @@ class Bowling{
   }
 
   score(){
-    return this.rolls.reduce((accumulator, currentValue)=>{
-      return( accumulator+ currentValue);
-    },0);
+    var rollScore = 0;
+    for(let i = 0 ; i < this.rolls.length; i++){
+      if(this.rolls[i] + this.rolls[i+ 1] == 10){
+        rollScore += this.rolls[i] + this.rolls[i+1] + this.rolls[i+2]
+        this.rolls[i++]
+      }else{
+        rollScore += (this.rolls[i])
+      }
+    }
+    return rollScore
   }
+
 }

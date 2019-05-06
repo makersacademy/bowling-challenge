@@ -4,14 +4,21 @@ function Game(){
   this.currentFrame = []
   this.frameCounter = 0
   this.rollCounter = 0
+  this.spare = false
 };
 
 Game.prototype.inputScore = function(pins) {
-  if (this.currentFrame.length == 0) { this.currentFrame.push(pins); }
+  if (this.currentFrame.length == 0) { this.currentFrame.push(pins);
+    if(this.spare) {
+      this.total += pins
+    }
+  }
   else if(this.currentFrame.length == 1){
     this.currentFrame.push(pins);
     this.scores.push(this.currentFrame)
+    this.spare = this.isSpare()
     this.currentFrame = []
+    this.frameCounter += 1
   }
   this.total += pins;
 };

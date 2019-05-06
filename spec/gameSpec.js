@@ -30,10 +30,20 @@ describe('Game', function(){
     expect(game.isStrike).toBeTruthy();
   });
 
-  it('can recognise a throw as a strike', function(){
+  it('can recognise a throw as a spare', function(){
     game.inputScore(2);
     game.inputScore(8);
     expect(game.isSpare).toBeTruthy();
   });
 
-  });
+  it('calculates special scoring for a spare', function(){
+    game.inputScore(4);
+    game.inputScore(5);
+    game.inputScore(6);
+    game.inputScore(4);
+    game.inputScore(5);
+    game.inputScore(3);
+    expect(game.total).toEqual(32)
+  })
+
+});

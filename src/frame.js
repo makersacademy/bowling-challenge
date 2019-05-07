@@ -1,13 +1,16 @@
 function Frame () {
   this.playerRollCount = [];
+  this.playerFrameCount = [];
   result = 0;
+  frameResult = 0;
 };
 
 Frame.prototype.roll = function(roll) {
   this.playerRollCount.push(roll);
-  result += 1
+  result += 1;
   return result;
 };
+
 
 //
 // frame 1

@@ -4,6 +4,7 @@ function Scorecard() {
   this.rolls = [];
   this.roll1 = 0;
   this.roll2 = 0;
+  this.strikeBonus = 0;
 };
 
 Scorecard.prototype.showTotal = function() {
@@ -30,6 +31,7 @@ Scorecard.prototype.firstRoll = function(score) {
     this.frameNumber += 1;
     this.rolls.push(10);
     this.totalScore += 10;
+    this.strikeBonus += 1;
   } else {
     this.rolls.push(score);
     this.totalScore += score;
@@ -43,6 +45,7 @@ Scorecard.prototype.secondRoll = function(score) {
   this.rolls.push(score);
   this.totalScore += score;
   this.roll2 = score;
+  this.bonus();
 };
 
 Scorecard.prototype.rollErrors = function(score) {
@@ -50,5 +53,13 @@ Scorecard.prototype.rollErrors = function(score) {
     throw new Error("Unable to add new rolls; the game has finished.")
   } else if (score > 10) {
     throw new Error("Score must be below 10.")
+  }
+};
+
+Scorecard.prototype.bonus = function() {
+  if (this.strikeBonus > 0) {
+    this.rolls.push(this.roll1 + this.roll2)
+    this.totalScore += (this.roll1 + this.roll2)
+    this.strikeBonus = 0;
   }
 };

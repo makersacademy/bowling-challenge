@@ -47,6 +47,13 @@ describe('Scorecard', function() {
     expect(scorecard.showRolls()).toEqual([5,5])
   });
 
+  it("adds a strike bonus when player gets a strike", function() {
+    scorecard.firstRoll(10);
+    scorecard.firstRoll(4);
+    scorecard.secondRoll(4);
+    expect(scorecard.showTotal()).toEqual(26)
+  });
+
   it("throws an error when the game is complete with no bonuses (frame number equals 10)", function() {
     for (var i = 0; i < 10; i++) {
       scorecard.firstRoll(2);

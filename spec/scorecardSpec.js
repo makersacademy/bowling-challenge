@@ -54,6 +54,15 @@ describe('Scorecard', function() {
     expect(scorecard.showTotal()).toEqual(26)
   });
 
+  it("adds both a strike and spare bonus", function() {
+    scorecard.firstRoll(10);
+    scorecard.firstRoll(5);
+    scorecard.secondRoll(5);
+    scorecard.firstRoll(4);
+    scorecard.secondRoll(4);
+    expect(scorecard.showTotal()).toEqual(42)
+  });
+
   it("throws an error when the game is complete with no bonuses (frame number equals 10)", function() {
     for (var i = 0; i < 10; i++) {
       scorecard.firstRoll(2);

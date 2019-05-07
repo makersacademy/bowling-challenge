@@ -19,6 +19,7 @@ Scorecard.prototype.showRolls = function() {
 };
 
 Scorecard.prototype.firstRoll = function(score) {
+  this.endGame();
   if (this.roll1 + this.roll2 === 10) {
     this.rolls.push(score);
     this.rolls.push(score);
@@ -41,4 +42,10 @@ Scorecard.prototype.secondRoll = function(score) {
   this.rolls.push(score);
   this.totalScore += score;
   this.roll2 = score;
+};
+
+Scorecard.prototype.endGame = function() {
+  if (this.frameNumber === 10) {
+    throw new Error("Unable to add new rolls; the game has finished.")
+  }
 };

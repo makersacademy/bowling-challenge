@@ -32,6 +32,14 @@ describe('Scorecard', function() {
     expect(scorecard.showFrame()).toEqual(0)
   });
 
+  it("throws an error when the game is complete with no bonuses (frame number equals 10)", function() {
+    for (var i = 0; i < 10; i++) {
+      scorecard.firstRoll(2);
+      scorecard.secondRoll(2);
+    }
+    expect(function(){ scorecard.firstRoll(5);}).toThrowError("Unable to add new rolls; the game has finished.");
+  });
+
   it("starts with an empty score array", function() {
     expect(scorecard.showRolls()).toEqual([])
   });

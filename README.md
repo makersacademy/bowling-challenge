@@ -1,7 +1,7 @@
 
 # Bowling Challenge #
 
-  This program uses JavaScript (and Jasmine for test writing) to create a scorecard for a single player in bowling by counting and totalling the scores of that player throughout a bowling game.
+  This program uses JavaScript (and Jasmine for test writing) to create a scorecard for a single player in bowling by counting and totalling the scores of that player throughout a bowling game. I approached this by initially creating a rough domain model to map out what it is that I need to achieve. This involved breaking down the rules of bowling in small steps and applying them one by one.
 
 ## The Rules of Bowling
 
@@ -26,10 +26,8 @@ If the player rolls a strike or spare in the 10th frame they can roll the additi
     10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
     1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
 
-### Gutter Game
+### Gutter Game and Perfect Game
 
 A Gutter Game is when the player never hits a pin (20 zero scores).
-
-### Perfect Game
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.

@@ -10,7 +10,7 @@ Then you can see the application working on your browser.
 
 # In this challenge, we are going to stimulate a bowling scorecard.
 
-It will be done by Javascript and it is front end.
+It will use Javascript and Jquery and the test framework for the javascript is Jasmine. 
 
 Two classes are defined.
 

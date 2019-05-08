@@ -11,4 +11,9 @@ describe('Bowling', function() {
     expect(bowling.score()).toBe(5);
   });
 
+  it('can sum the scores of a frame', function() {
+    bowling.frame([5,3]);
+    expect(bowling.frame_score()).toBe(8);
+  });
+
 });

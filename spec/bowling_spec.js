@@ -1,27 +1,14 @@
 describe('Bowling', function() {
 
-  var game;
+  var bowling;
 
   beforeEach(function() {
-    game = new Bowling();
+    bowling = new Bowling();
   });
 
-
-describe('frame', function() {
-
-  it('starts at frame 1', function() {
-    expect(game.frame()).toEqual(1);
-  });
-
-  it('increments the frame number()', function() {
-    game.frame_increase();
-    expect(game.frame()).toEqual(2);
-  });
-
-  it('starts the score at 0', function() {
-    expect(game.frame_score()).toEqual(0);
-  });
-
+  it('can record the number of pins knocked down()', function() {
+    bowling.pins(5);
+    expect(bowling.score()).toBe(5);
   });
 
 });

@@ -1,16 +1,11 @@
 function Bowling(){
-  this.frame_number = 1;
-  this.score = 0
+  this._pins =[]
 }
 
-Bowling.prototype.frame = function() {
-  return this.frame_number
+Bowling.prototype.score = function() {
+  return this._pins[0];
 };
 
-Bowling.prototype.frame_increase = function() {
-  this.frame_number += 1;
-};
-
-Bowling.prototype.frame_score = function() {
-  return this.score
+Bowling.prototype.pins = function(number) {
+  this._pins.push(number);
 };

@@ -6,7 +6,11 @@
   <link rel="stylesheet" href="skeleton.css">
 </head>
 <body>
-<center><h3> Bowling Scorecard</h3></center>
+<center><h3> Bowling Scorecard</h3>
+<img src="bowling.png" style="width:120px;height:120px;">
+</center>
+<br>
+
   <center>  Pins knocked down:
     <button id="0" class="button">0</button>
     <button id="1" class="button">1</button>
@@ -33,6 +37,18 @@
     <th>Frame 9</th>
     <th>Frame 10</th>
   </tr>
+  <tr>
+      <td id="frame1"></td>
+      <td id="frame2"></td>
+      <td id="frame3"></td>
+      <td id="frame4"></td>
+      <td id="frame5"></td>
+      <td id="frame6"></td>
+      <td id="frame7"></td>
+      <td id="frame8"></td>
+      <td id="frame9"></td>
+      <td id="frame10"></td>
+    </tr>
 </table>
 
 <center><h3>Total Score</h3><center>
@@ -103,6 +119,9 @@ $( function() {
       game.inputScore(10);
       $('#total').text(game.total);
     });
+
+    $('#frame1').text(game.currentFrame); // need to try to fix to ensure populated
+
   });
 
 </script>

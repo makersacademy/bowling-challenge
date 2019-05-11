@@ -25,9 +25,12 @@ Game.prototype.inputScore = function(pins) {
     this._addFrame()
     this.spare = this.isSpare()
     this.currentFrame = []
-    if (this.frameCounter > 0 && this.scores[this.frameCounter-1][0] == 10){
+    if (this.frameCounter > 0 && this.scores[this.frameCounter-1][0] == 10) {
       this.total += frameTotal
     }
+    // else if (this.frameCounter > 1 && this.scores[this.frameCounter-2][0] == 10) {
+    //   this.total += frameTotal
+    // }
     this.frameCounter += 1
   }
   this.total += pins;
@@ -51,5 +54,5 @@ Game.prototype._addFrame = function() {
 }
 
 Game.prototype.getTotal = function() {
-  return this.total; 
+  return this.total;
 }

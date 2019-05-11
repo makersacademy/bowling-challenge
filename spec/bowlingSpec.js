@@ -8,8 +8,9 @@ describe("Bowling", function(){
 
   it("ends the game if _frameCount is equal to 10", function(){
     var bowling = new Bowling();
-    for (var i = 1; i < 20; i++ ) { bowling.roll(0); };
-    expect(bowling.getFrame()).toBe(10);
+    for (var i = 0; i < 20; i++ ) { bowling.roll(0); };
+    expect(bowling.getFrame()).toBe(11);
+    expect(bowling.isFinished()).toBe(true);
   });
 
   // As a bowling player,

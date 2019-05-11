@@ -49,3 +49,7 @@ Game.prototype._newFrame = function() {
 Game.prototype._addFrame = function() {
   this.scores.push(this.currentFrame);
 }
+
+Game.prototype.getTotal = function() {
+  return this.total; 
+}

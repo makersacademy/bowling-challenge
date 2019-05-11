@@ -10,7 +10,8 @@ function Bowling() {
 Bowling.prototype.roll = function(pin){
   if (this.getPlay() === 1) {
     this._frame.setPlayOne(pin);
-    this._play = 2
+    // if (pin === 10) {this._play = 1 } else { this._play = 2}
+    this._play = 2;
     this.lastSpare();
   } else if (this.getPlay() === 2) {
     this._frame.setPlayTwo(pin);

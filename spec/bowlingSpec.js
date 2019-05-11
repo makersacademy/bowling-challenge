@@ -31,6 +31,10 @@ describe("Bowling", function(){
   // So that I my score is updated,
   // I want to see the total of the previous frame affected by strikes and spares.
 
+  // As a bowling player,
+  // So that I can see my spares more easily
+  // I want to see an / in my scorecard after every spare.
+
   it('updates the score of the previous frame in case of spare', function(){
     var bowling = new Bowling();
     bowling.roll(4);

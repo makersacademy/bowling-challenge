@@ -19,6 +19,8 @@ Frame.prototype.setPlayTwo = function (pin) {
   this.incrementFrameNumber();
   if (this._playOne + this._playTwo === 10) {
     this._lastSpare = true;
+  } else {
+    this._lastSpare = false;
   }
 };
 

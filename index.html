@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bowling Scorecard</title>
+    <script src="./src/game.js"></script>
+  <link rel="stylesheet" href="skeleton.css">
+</head>
+<body>
+<center><h3> Bowling Scorecard</h3></center>
+
+<div id="buttons" class="buttons">
+  <center>  Pins knocked down:
+    <button type="button" onclick="pinHit(0)">0</button>
+    <button type="button" onclick="pinHit(1)">1</button>
+    <button type="button" onclick="pinHit(2)">2</button>
+    <button type="button" onclick="pinHit(3)">3</button>
+    <button type="button" onclick="pinHit(4)">4</button>
+    <button type="button" onclick="pinHit(5)">5</button>
+    <button type="button" onclick="pinHit(6)">6</button>
+    <button type="button" onclick="pinHit(7)">7</button>
+    <button type="button" onclick="pinHit(8)">8</button>
+    <button type="button" onclick="pinHit(9)">9</button>
+    <button type="button" onclick="pinHit(10)">STRIKE!</button>
+  </center>
+  </div>
+  <table style="width:100%">
+  <tr>
+    <th>Frame 1</th>
+    <th>Frame 2</th>
+    <th>Frame 3</th>
+    <th>Frame 4</th>
+    <th>Frame 5</th>
+    <th>Frame 6</th>
+    <th>Frame 7</th>
+    <th>Frame 8</th>
+    <th>Frame 9</th>
+    <th>Frame 10</th>
+  </tr>
+</table>
+
+<center><h3>Total Score</h3><center>
+  <h1 id="total"></h1>
+
+
+
+</html>

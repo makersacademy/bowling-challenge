@@ -29,15 +29,71 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
 
+## To run this game
+1. Clone this repo
+2. As the user interface is a work in progress, use the console log in Chrome Dev Tools and copy and paste the code from the 'game.js' file.
+3. Type `game = new Game();`
+4. Input rolls using the following function: `game.inputRolls(x)`, replacing `x` for the number of pins you knocked down.
+5. Type `game` and hit enter in order to see the current status of the game (e.g. the number of frames, or the total score).
+6. To have a look at the user interface, type `open index.html` from the command line - you are able to click on the buttons which will display your running total but this is not yet finished as I would like each frame score to display on the page. 
+
 ## My approach
 
+I broke down this task into the following user stories:
+
+```
+As a competitive bowler
+So that I can keep track of my score as I play
+I would like a scorecard that calculates a running total.
+
+As a competitive bowler
+So that I can record when I score a strike
+I would like a scorecard to recognise a strike.
+
+As a competitive bowler
+So that I can record when I score a spare
+I would like a scorecard to recognise a spare.
+
+As a competitive bowler
+So that I can work out my spare scores correctly
+I would like a scorecard to calculate the special scoring for spares.
+
+As a competitive bowler
+So that I can work out my strike scores correctly
+I would like a scorecard to calculate the special scoring for strikes.
+
+As a competitive bowler
+So that I can calculate a gutter game
+I would like a scorecard to calculate when I score 0 for every roll.
+
+As a competitive bowler
+So that I can calculate a perfect game
+I would like a scorecard to calculate when I score 10 for every roll.
+
+As a competitive bowler
+So that I can take advantage of the tenth frame bonus
+I would like an additional roll if I score a spare or strike in the tenth frame.
+
+```
+
+At first I considered having a Scorecard constructor function and a Frame constructor function. However, when planning this project I realised that it is simply designed to be a scorecard, not a bowling game. As the scorecard has one responsibility - to keep track of scores - I made the decision to just have a Game constructor function that would take care of the logic.
+
+I have managed to implement most of these user stories successfully and have also created a user interface which records the running total as the user clicks on the button corresponding with the number of pins they have knocked down.
+
+I have not yet managed to implement the logic of consecutive strike scores (and accordingly a perfect game). I have also not managed to implement the 10th frame bonus feature yet.
+
 ## What I learned from this project
+* The importance of planning carefully when there is a lot of complex logic involved!
+* Practice using Javascript to create an app
+* Practice TDD in Javascript
+* Practice debugging in Javascript
+* Practice using Jquery and HTML
 
 ## To fix
-* A perfect game
+* A perfect game (score 300)
 * A game with consecutive strikes
-* A game with strikes and spares
-* The tenth frame feature 
+* The tenth frame feature
+* Improve the front end so that the table of scores is populated as user clicks buttons
 
 ## Acknowledgements
 Jordan Roberts - a Makers Academy Challenge

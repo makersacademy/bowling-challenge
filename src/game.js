@@ -28,9 +28,6 @@ Game.prototype.inputScore = function(pins) {
     if (this.frameCounter > 0 && this.scores[this.frameCounter-1][0] == 10) {
       this.total += frameTotal
     }
-    // else if (this.frameCounter > 1 && this.scores[this.frameCounter-2][0] == 10) {
-    //   this.total += frameTotal
-    // }
     this.frameCounter += 1
   }
   this.total += pins;

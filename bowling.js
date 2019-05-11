@@ -1,5 +1,4 @@
 var Frame = require('./frame')
-// var Play = require('./play')
 
 function Bowling() {
   this._frame = new Frame();
@@ -31,9 +30,5 @@ Bowling.prototype.getPlay = function(){
 Bowling.prototype.getFrame = function() {
   return this._frameCount
 };
-
-// Bowling.prototype.getResult = function () {
-//   var result = ;
-// };
 
 module.exports = Bowling;

@@ -1,5 +1,3 @@
-// var Play = require('./play.js')
-
 function Frame() {
     this._frameNumber = 1
     this._playOne

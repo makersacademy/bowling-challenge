@@ -17,6 +17,9 @@ Frame.prototype.setPlayTwo = function (pin) {
   this._result.push(`Play 2: ${pin}`);
   this._result.push(`Frame score: ${this._playOne + this._playTwo}`);
   this.incrementFrameNumber();
+  if (this._playOne + this._playTwo === 10) {
+    this._lastSpare = true;
+  }
 };
 
 Frame.prototype.incrementFrameNumber = function () {
@@ -28,7 +31,11 @@ Frame.prototype.getFrameNumber = function () {
 };
 
 Frame.prototype.getResult = function () {
-  this._result
+  return this._result
+};
+
+Frame.prototype.lastSpare = function () {
+  return this._lastSpare
 };
 
 // Frame.prototype.getRoll = function () {

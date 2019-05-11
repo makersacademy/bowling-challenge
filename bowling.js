@@ -10,13 +10,23 @@ function Bowling() {
 Bowling.prototype.roll = function(pin){
   if (this.getPlay() === 1) {
     this._frame.setPlayOne(pin);
-    this._play = 2;
+    this._play = 2
+    this.lastSpare();
   } else if (this.getPlay() === 2) {
     this._frame.setPlayTwo(pin);
+    // this.lastStrike();
     this._scorecard.push(this._frame._result);
     this._frameCount ++;
     this._play = 1;
   };
+};
+
+Bowling.prototype.lastSpare = function () {
+  if (this._frame.lastSpare() === true){
+    var last_frame = this._frameCount - 2;
+    this.getScorecard()[last_frame][3] = `Frame score: ${10 + this._frame._playOne}`
+    this.getScorecard()[last_frame][2] = `Play 2: /`
+  }
 };
 
 Bowling.prototype.getScorecard = function () {

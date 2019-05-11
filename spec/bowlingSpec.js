@@ -27,6 +27,20 @@ describe("Bowling", function(){
      [ 'Frame: 2', 'Play 1: 4', 'Play 2: 2', 'Frame score: 6' ]);
   });
 
+  // As a bowling player,
+  // So that I my score is updated,
+  // I want to see the total of the previous frame affected by strikes and spares.
+
+  it('updates the score of the previous frame in case of spare', function(){
+    var bowling = new Bowling();
+    bowling.roll(4);
+    bowling.roll(6);
+    bowling.roll(5);
+    bowling.roll(3);
+    expect(bowling.getScorecard()).toContain([ 'Frame: 1', 'Play 1: 4', 'Play 2: /', 'Frame score: 15' ],
+     [ 'Frame: 2', 'Play 1: 5', 'Play 2: 3', 'Frame score: 8' ]);
+  });
+
   // it('shows an X for every strike', function(){
   //   bowling.roll(10);
   //   expect(bowling.printScorecard()).toBeUndefined();
@@ -38,17 +52,7 @@ describe("Bowling", function(){
   //   expect(bowling.printScorecard()).toBeUndefined();
   // });
   //
-  // it('shows the total for each frame', function(){
-  //   bowling.roll(5);
-  //   bowling.roll(4);
-  //   expect(bowling.getFrameResult()).toEqual(9);
-  // });
   //
-  // it('updates the score of the previou frame', function(){
-  //   bowling.roll(4);
-  //   bowling.roll(6);
-  //   bowling.roll(5);
-  //   expect(bowling.getFrameResult()).toEqual(20);
-  // });
+
 
 });

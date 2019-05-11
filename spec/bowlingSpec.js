@@ -2,7 +2,7 @@ var Bowling = require('../bowling')
 
 describe("Bowling", function(){
 
-  it("ends the game if _frame is equal to 10", function(){
+  it("ends the game if _frameCount is equal to 10", function(){
     var bowling = new Bowling();
     for (var i = 1; i < 20; i++ ) { bowling.roll(0); };
     expect(bowling.getFrame()).toBe(10);

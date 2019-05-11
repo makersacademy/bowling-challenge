@@ -18,6 +18,24 @@ describe('frame', function() {
     });
   });
 
+  describe('#rollOne', function() {
+    it('returns first roll', function() {
+      var firstRoll = 4;
+      frame.pinsHit(firstRoll)
+      expect(frame.rollOne()).toEqual(firstRoll);
+    });
+  });
+
+  describe('#rollTwo', function() {
+    it('returns second roll', function() {
+      var firstRoll = 2;
+      var secondRoll = 6;
+      frame.pinsHit(firstRoll);
+      frame.pinsHit(secondRoll);
+      expect(frame.rollTwo()).toEqual(secondRoll);
+    });
+  });
+
   describe('#score', function() {
     it('returns the score for the frame', function() {
       expect(frame.score()).toEqual(0);
@@ -42,6 +60,59 @@ describe('frame', function() {
       frame.pinsHit(6);
       expect(frame.isComplete()).toBe(true);
     });
-    // Add it for returns true after strike
+
+    it('returns true if a strike is rolled', function() {
+      expect(frame.isComplete()).toBe(false);
+      frame.pinsHit(10);
+      expect(frame.isComplete()).toBe(true);
+    });
+
+    it('returns false if not complete', function() {
+      expect(frame.isComplete()).toBe(false);
+      frame.pinsHit(1);
+      expect(frame.isComplete()).toBe(false);
+    });
+  });
+
+  describe('#isStrike', function() {
+    it('returns true if a strike is rolled', function() {
+      expect(frame.isStrike()).toBe(false);
+      frame.pinsHit(10);
+      expect(frame.isStrike()).toBe(true);
+    });
+
+    it('returns false if a strike is not rolled', function() {
+      expect(frame.isStrike()).toBe(false);
+      frame.pinsHit(1);
+      expect(frame.isStrike()).toBe(false);
+    });
+
+    it('returns false if a spare is rolled', function() {
+      expect(frame.isStrike()).toBe(false);
+      frame.pinsHit(1);
+      frame.pinsHit(9);
+      expect(frame.isStrike()).toBe(false);
+    });
+  });
+
+  describe('#isSpare', function() {
+    it('returns true if a spare is rolled', function() {
+      expect(frame.isSpare()).toBe(false);
+      frame.pinsHit(4);
+      frame.pinsHit(6);
+      expect(frame.isSpare()).toBe(true);
+    });
+
+    it('returns false if there is only 1 roll', function() {
+      expect(frame.isSpare()).toBe(false);
+      frame.pinsHit(1);
+      expect(frame.isSpare()).toBe(false);
+    });
+
+    it('returns false if a strike is rolled', function() {
+      expect(frame.isSpare()).toBe(false);
+      frame.pinsHit(10);
+      expect(frame.isSpare()).toBe(false);
+    });
   });
 });

@@ -12,14 +12,37 @@ Frame.prototype.score = function() {
   return this._score;
 };
 
+Frame.prototype.rollOne = function() {
+  return this._rolls[0];
+};
+
+Frame.prototype.rollTwo = function() {
+  return this._rolls[1];
+};
+
 Frame.prototype.isComplete = function() {
-  if (this._rolls.length === 2) { return true };
+  if (this.isStrike() || this._rolls.length === 2) {
+    return true;
+  };
   return false;
 };
 
+Frame.prototype.isStrike = function() {
+  if (this._rolls[0] === 10) {
+    return true;
+  };
+  return false;
+};
+
+Frame.prototype.isSpare = function() {
+  if (this.score() === 10 && this._rolls.length === 2) {
+    return true;
+  };
+  return false;
+}
+
 Frame.prototype._calculateScore = function() {
-  var self = this;
-  this._rolls.forEach(function(value) {
-    self._score += value;
-  });
+  this._score = this._rolls.reduce(function (accumulator, currentValue) {
+    return accumulator + currentValue;
+  }, 0);
 };

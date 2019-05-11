@@ -4,12 +4,12 @@ function Frame() {
     this._frameNumber = 1
     this._playOne
     this._playTwo
-    this._result = [
-      `Frame: ${this._frameNumber}`
-    ]
 };
 
 Frame.prototype.setPlayOne = function (pin) {
+  this._result = [
+    `Frame: ${this._frameNumber}`
+  ]
   this._playOne = pin;
   this._result.push(`Play 1: ${pin}`);
 };

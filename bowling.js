@@ -5,7 +5,7 @@ function Bowling() {
   this._frameCount = 1;
   this._play = 1;
   this._scorecard = []
-};
+}
 
 Bowling.prototype.roll = function(pin){
   if (this.getPlay() === 1 && pin === 10) {
@@ -24,7 +24,7 @@ Bowling.prototype.roll = function(pin){
     this._play = 1;
     this.lastStrike();
     this._frameCount ++;
-  };
+  }
 };
 
 Bowling.prototype.lastStrike = function () {

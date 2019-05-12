@@ -3,7 +3,7 @@ function Frame() {
     this._playOne
     this._playTwo
     this._lastStrike = false
-};
+}
 
 Frame.prototype.setPlayOne = function (pin) {
   if (pin === 10) {
@@ -20,7 +20,7 @@ Frame.prototype.setPlayOne = function (pin) {
       `Frame: ${this._frameNumber}`
     ]
     this._playOne = pin;
-    this._result.push(`Play 1: ${pin}`)};
+    this._result.push(`Play 1: ${pin}`)}
 };
 
 Frame.prototype.setPlayTwo = function (pin) {

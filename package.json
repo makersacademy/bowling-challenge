@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/guilhe0756/bowling-challenge/issues"
   },
-  "homepage": "https://github.com/guilhe0756/bowling-challenge#readme"
+  "homepage": "https://github.com/guilhe0756/bowling-challenge#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0"
+  }
 }

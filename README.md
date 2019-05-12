@@ -23,15 +23,14 @@ Bowling Challenge
 
 Developed in JavaScript.
 Testing framework: Jasmine node.js
+Linter: ESLint
 
 ### Next Steps
 
 * Create a nice interactive animated interface with jQuery.
 * Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
 
 ### User Stories Still to be implemented
-
 
 ### 10th frame
 

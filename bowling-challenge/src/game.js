@@ -1,26 +1,25 @@
 'use strict'
 
 function Game(){
-  this.frame = []
+  this.currentFrame = []
   this.frames = []
+  this.frameTotals = []
 };
 
 Game.prototype.ball1 = function(pins){
-  this.frame.push(pins);
+  this.currentFrame.push(pins);
 };
 
 Game.prototype.ball2 = function(pins){
-  this.frame.push(pins);
-  this.frames.push(this.frame);
-  this.frame = [];
+  this.currentFrame.push(pins);
+  this.frames.push(this.currentFrame);
+  this.resetCurrentFrame()
 };
 
 Game.prototype.framesPlayed = function() {
   return this.frames.length;
 };
 
-Game.prototype.score = function () {
-  var scores = this.frames.flat(1)
-  var reducer = (total, score) => total + score;
-  return scores.reduce(reducer)
+Game.prototype.resetCurrentFrame = function () {
+  this.currentFrame = [];
 };

@@ -13,13 +13,13 @@ describe('game', function(){
   })
 
   it('starts with empty frame', function(){
-    expect(game.frame).toEqual([])
+    expect(game.currentFrame).toEqual([])
   })
 
   describe('#ball1', function(){
     it('adds 1st ball score to the frame', function(){
       game.ball1(1)
-      expect(game.frame[0]).toEqual(1)
+      expect(game.currentFrame[0]).toEqual(1)
     })
   })
 

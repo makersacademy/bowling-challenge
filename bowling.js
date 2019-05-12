@@ -8,18 +8,30 @@ function Bowling() {
 };
 
 Bowling.prototype.roll = function(pin){
-  if (this.getPlay() === 1) {
+  if (this.getPlay() === 1 && pin === 10) {
     this._frame.setPlayOne(pin);
-    // if (pin === 10) {this._play = 1 } else { this._play = 2}
+    this._scorecard.push(this._frame._result);
+    this._play = 1;
+    this._frameCount ++;
+    this.lastSpare();
+  } else if (this.getPlay() === 1 && pin < 10) {
+    this._frame.setPlayOne(pin);
     this._play = 2;
     this.lastSpare();
   } else if (this.getPlay() === 2) {
     this._frame.setPlayTwo(pin);
-    // this.lastStrike();
     this._scorecard.push(this._frame._result);
-    this._frameCount ++;
     this._play = 1;
+    this.lastStrike();
+    this._frameCount ++;
   };
+};
+
+Bowling.prototype.lastStrike = function () {
+  if (this._frame.lastStrike() === true){
+    var last_frame = this._frameCount - 2;
+    this.getScorecard()[last_frame][3] = `Frame score: ${10 + this._frame._playOne + this._frame._playTwo}`
+  }
 };
 
 Bowling.prototype.lastSpare = function () {

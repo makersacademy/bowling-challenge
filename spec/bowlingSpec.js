@@ -31,10 +31,6 @@ describe("Bowling", function(){
   // So that I my score is updated,
   // I want to see the total of the previous frame affected by strikes and spares.
 
-  // As a bowling player,
-  // So that I can see my spares more easily
-  // I want to see an / in my scorecard after every spare.
-
   it('updates the score of the previous frame in case of spare', function(){
     var bowling = new Bowling();
     bowling.roll(4);
@@ -45,18 +41,34 @@ describe("Bowling", function(){
      [ 'Frame: 2', 'Play 1: 5', 'Play 2: 3', 'Frame score: 8' ]);
   });
 
-  // it('shows an X for every strike', function(){
-  //   bowling.roll(10);
-  //   expect(bowling.printScorecard()).toBeUndefined();
-  // });
-  //
-  // it('shows a / for every spare', function(){
-  //   bowling.roll(4);
-  //   bowling.roll(6);
-  //   expect(bowling.printScorecard()).toBeUndefined();
-  // });
-  //
-  //
+  // As a bowling player,
+  // So that I can see my spares more easily
+  // I want to see an / in my scorecard after every spare.
 
+  it('shows a / for every spare', function(){
+    var bowling = new Bowling();
+    bowling.roll(4);
+    bowling.roll(6);
+    bowling.roll(5);
+    bowling.roll(3);
+    expect(bowling.getScorecard()).toContain([ 'Frame: 1', 'Play 1: 4', 'Play 2: /', 'Frame score: 15' ],
+     [ 'Frame: 2', 'Play 1: 5', 'Play 2: 3', 'Frame score: 8' ]);
+  });
 
+  // As a bowling player,
+  // So that I can see my strikes more easily
+  // I want to see an X in my scorecard after every strike.
+
+  it('shows an X for every strike', function(){
+    var bowling = new Bowling();
+    console.log(bowling.getPlay())
+    bowling.roll(10);
+    console.log(bowling.getPlay())
+    bowling.roll(6);
+    console.log(bowling.getPlay())
+    bowling.roll(3);
+    console.log(bowling.getPlay())
+    expect(bowling.getScorecard()).toContain([ 'Frame: 1', 'Play 1: X', 'Play 2: -', 'Frame score: 19' ],
+     [ 'Frame: 2', 'Play 1: 6', 'Play 2: 3', 'Frame score: 9' ]);
+  });
 });

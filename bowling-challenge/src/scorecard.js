@@ -31,19 +31,37 @@ Scorecard.prototype.totalScore = function () {
 
 Scorecard.prototype.frameScoreCalc = function () {
   this.frameScores.push(this.frameTotal())
-  if (this.isSpare()) {
-    this.frameScores[this.index-1] += this.game.frames[this.index][0] }
+  if (this.isDoubleStrike()) {
+    this.frameScores[this.index-1] += this.game.ball1Pins + this.game.ball2Pins
+    this.frameScores[this.index-2] += 10
+  } else if (this.isStrike()) {
+    this.frameScores[this.index-1] += this.game.ball1Pins + this.game.ball2Pins
+  } else if (this.isSpare()) {
+    this.frameScores[this.index-1] += this.game.ball1Pins
+  }
   this.index += 1
 };
 
-Scorecard.prototype.isSpare = function () {
-  return this.previousFrame() === 10;
+Scorecard.prototype.isStrike = function () {
+  if (this.index > 0) {
+    return this.game.frames[this.index-1].includes(10)
+  } else {
+    return false
+  }
 };
 
-Scorecard.prototype.previousFrame = function () {
+Scorecard.prototype.isSpare = function () {
   if (this.index > 0) {
-    return this.frameScores[this.index-1]
+    return this.frameScores[this.index-1]  === 10;
   } else {
-    return 0
+    return false
+  }
+};
+
+Scorecard.prototype.isDoubleStrike = function () {
+  if (this.index > 1) {
+    return this.game.frames[this.index-1].includes(10) && this.game.frames[this.index-2].includes(10)
+  } else {
+    return false
   }
 };

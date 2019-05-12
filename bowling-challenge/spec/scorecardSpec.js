@@ -44,7 +44,7 @@ describe('scorecard', function(){
   })
 
 describe('#frameScores', function(){
-  it('is an array of frame score totals', function(){
+  it('correctly calculates the score for each frame', function(){
     scorecard.ball1(7);
     scorecard.ball2(1);
     scorecard.ball1(3);
@@ -57,16 +57,14 @@ describe('#frameScores', function(){
   })
 })
 
-  describe('calculating the bonus for spare', function(){
-    it('doubles the score for the next ball', function(){
+  describe('calculating the bonus for spares', function(){
+    it('adds the next ball to my frame score', function(){
       scorecard.ball1(5);
       scorecard.ball2(5);
       scorecard.ball1(5);
-      scorecard.ball2(0);
-      expect(scorecard.totalScore()).toEqual(20)
+      scorecard.ball2(4);
+      expect(scorecard.totalScore()).toEqual(24)
     })
-  
-
     it('applies the spare bonus correctly over multiple frames', function(){
       for (var i = 1; i <= 5; i++) {
         scorecard.ball1(5);
@@ -75,6 +73,25 @@ describe('#frameScores', function(){
       expect(scorecard.totalScore()).toEqual(70)
     })
   })
+
+  describe('calculating the bonus for strikes', function(){
+    it('adds the next 2 balls to my frame score', function(){
+      scorecard.ball1(10);
+      scorecard.ball2(0);
+      scorecard.ball1(5);
+      scorecard.ball2(4);
+      expect(scorecard.totalScore()).toEqual(28)
+    })
+    it('applies the strike bonus correctly over multiple frames', function(){
+      for (var i = 1; i <= 5; i++) {
+        scorecard.ball1(10);
+        scorecard.ball2(0);
+      };
+      expect(scorecard.totalScore()).toEqual(120)
+    })
+  })
+
+
 
 })
 

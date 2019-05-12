@@ -1,20 +1,23 @@
-'use strict';
+describe('Scorecard', function() {
 
-describe('Score', function() {
-  var bowlcard;
-
+  var scorecard;
   beforeEach(function() {
-    bowlcard = new Score()
+    scorecard = new Scorecard()
+  })
 
-  });
 
-  it('begins at 0', function () {
-    expect(bowlcard.total()).toEqual(0);
-  });
+describe('gutter game', function(){
+  it('gives score 0', function(){
+    roll(20,0)
+    expect(score.total()).toEqual(0);
+    expect(score.isComplete()).toBe(true);
+  })
+})
 
-  it('adds number to score', function () {
-    bowlcard.add(5)
-    expect(bowlcard.total()).toEqual(5);
-  });
-
-});
+describe('one frame', function(){
+  it('gives total score so far', function(){
+    roll(20,4)
+    expect(scorecard.tota.()).toEqual(80)
+    expect(scorecard.isComplete()).toBe(true)
+  })
+})

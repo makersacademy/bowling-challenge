@@ -30,6 +30,7 @@ Scorecard.prototype.firstRoll = function(score) {
   } else if (score === 10) {
     this.frameNumber += 1;
     this.rolls.push(10);
+    this.rolls.push(0);
     this.totalScore += 10;
     this.strikeBonus += 1;
   } else {

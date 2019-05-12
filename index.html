@@ -6,11 +6,91 @@
     <link href="/style.css" rel="stylesheet" type="text/css" />
     <title>Bowling Scorecard</title>
     <div class="title-text">
-      <center><h1>Bowling Scorecard</h1></center>
+      <center><h1>Name's Scorecard</h1></center>
     </div>
   </head>
   <body>
     <section>
+      <style>
+        table {
+          font-family: tahoma;
+          border-collapse: collapse;
+          width: 70%;
+        }
+
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+      </style>
+      <center><table>
+        <tr>
+          <th>Frame</th>
+          <th colspan="2">Pins Fallen</th>
+          <th>Score</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td><span id="f1r1"></span></td>
+          <td><span id="f1r2"></span></td>
+          <td><span id="f1total"></span></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><span id="f2r1"></span></td>
+          <td><span id="f2r2"></span></td>
+          <td><span id="f2total"></span></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><span id="f3r1"></span></td>
+          <td><span id="f3r2"></span></td>
+          <td><span id="f3total"></span></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><span id="f4r1"></span></td>
+          <td><span id="f4r2"></span></td>
+          <td><span id="f4total"></span></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><span id="f5r1"></span></td>
+          <td><span id="f5r2"></span></td>
+          <td><span id="f5total"></span></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><span id="f6r1"></span></td>
+          <td><span id="f6r2"></span></td>
+          <td><span id="f6total"></span></td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><span id="f7r1"></span></td>
+          <td><span id="f7r2"></span></td>
+          <td><span id="f7total"></span></td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><span id="f8r1"></span></td>
+          <td><span id="f8r2"></span></td>
+          <td><span id="f8total"></span></td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td><span id="f9r1"></span></td>
+          <td><span id="f9r2"></span></td>
+          <td><span id="f9total"></span></td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td><span id="f10r1"></span></td>
+          <td><span id="f10r2"></span></td>
+          <td><span id="f10total"></span></td>
+        </tr>
+      </table></center>
     </section>
     <script src="/scorecard.js"></script>
   </body>

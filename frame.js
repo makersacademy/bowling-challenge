@@ -55,20 +55,4 @@ Frame.prototype.lastStrike = function () {
   return this._lastStrike
 };
 
-// Frame.prototype.getRoll = function () {
-//   if(this._play === 1) {
-//     this._roll = new Roll();
-//
-//     console.log(this.roll.roll(pin));
-//     this._play = 2;
-//   } else if(this._play === 2) {
-//     this._play = 1;
-//     console.log(this.roll.roll(pin))
-//   };
-// };
-//
-// Frame.prototype.Roll = function () {
-//   this._roll = new Roll();
-// };
-
 module.exports = Frame;

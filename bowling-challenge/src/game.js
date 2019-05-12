@@ -15,7 +15,9 @@ Game.prototype.ball1 = function(pins){
 Game.prototype.ball2 = function(pins){
   this.currentFrame.push(pins);
   this.ball2Pins = pins
-  if (this.framesPlayed() === 9 && (this.ball1Pins + this.ball2Pins) === (10 || 20)) {
+  if (this.framesPlayed() === 9 && (this.ball1Pins + this.ball2Pins) === 0) {
+    this.endFrame();
+  } else if (this.framesPlayed() === 9 && (this.ball1Pins + this.ball2Pins) % 10 === 0) {
     return
   } else {
     this.endFrame();
@@ -35,13 +37,3 @@ Game.prototype.endFrame = function () {
   this.frames.push(this.currentFrame);
   this.currentFrame = [];
 };
-
-// Game.prototype.bonusBall = function () {
-//   var frame10 = this.frameTenCalc()
-//   return this.framesPlayed === 9 && (frame10 === (10 || 20))
-// };
-//
-// Scorecard.prototype.frameTenCalc = function () {
-//   var reducer = (total, score) => total + score;
-//   return this.currentFrame.reduce(reducer)
-// };

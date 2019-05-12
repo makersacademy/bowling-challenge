@@ -14,6 +14,7 @@ describe('scorecard', function(){
         scorecard.ball1(0);
         scorecard.ball2(0);
       };
+
       expect(scorecard.isOver()).toBe(true)
     })
     it('with a score of 0', function(){
@@ -91,7 +92,7 @@ describe('viewing frame scores', function(){
     })
   })
 
-  describe('bowling the perfect game', function(){
+  describe('scoring the perfect game', function(){
     it('calculates the score of a perfect game to be 300', function(){
       for (var i = 1; i <= 9; i++) {
         scorecard.ball1(10);
@@ -104,6 +105,58 @@ describe('viewing frame scores', function(){
     })
   })
 
+  describe('scoring an average game', function(){
+    it('calculates the score of my average game to be 115', function(){
+      scorecard.ball1(6);
+      scorecard.ball2(2);
+      scorecard.ball1(8);
+      scorecard.ball2(0);
+      scorecard.ball1(6);
+      scorecard.ball2(4);
+      scorecard.ball1(10);
+      scorecard.ball2(0);
+      scorecard.ball1(3);
+      scorecard.ball2(4);
+      scorecard.ball1(7);
+      scorecard.ball2(0);
+      scorecard.ball1(10);
+      scorecard.ball2(0);
+      scorecard.ball1(4);
+      scorecard.ball2(4);
+      scorecard.ball1(9);
+      scorecard.ball2(0);
+      scorecard.ball1(6);
+      scorecard.ball2(4);
+      scorecard.ball3(3);
+      expect(scorecard.totalScore()).toEqual(115)
+    })
+  })
+
+  describe('scoring an average game', function(){
+    it('calculates the score of another average game to be 111', function(){
+      scorecard.ball1(6);
+      scorecard.ball2(2);
+      scorecard.ball1(8);
+      scorecard.ball2(0);
+      scorecard.ball1(6);
+      scorecard.ball2(4);
+      scorecard.ball1(10);
+      scorecard.ball2(0);
+      scorecard.ball1(3);
+      scorecard.ball2(4);
+      scorecard.ball1(7);
+      scorecard.ball2(0);
+      scorecard.ball1(10);
+      scorecard.ball2(0);
+      scorecard.ball1(4);
+      scorecard.ball2(4);
+      scorecard.ball1(9);
+      scorecard.ball2(0);
+      scorecard.ball1(6);
+      scorecard.ball2(3);
+      expect(scorecard.totalScore()).toEqual(111)
+    })
+  })
 
 })
 

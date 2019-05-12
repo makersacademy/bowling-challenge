@@ -16,6 +16,15 @@ Scorecard.prototype.ball1 = function (pins){
 
 Scorecard.prototype.ball2 = function (pins){
   this.game.ball2(pins)
+  if (this.index === 8 && (this.game.ball1Pins + this.game.ball2Pins) === (10 || 20)) {
+    return
+  } else {
+    this.frameScoreCalc()
+  }
+};
+
+Scorecard.prototype.ball3 = function (pins){
+  this.game.ball3(pins)
   this.frameScoreCalc()
 };
 

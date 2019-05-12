@@ -43,7 +43,7 @@ describe('scorecard', function(){
     })
   })
 
-describe('#frameScores', function(){
+describe('viewing frame scores', function(){
   it('correctly calculates the score for each frame', function(){
     scorecard.ball1(7);
     scorecard.ball2(1);
@@ -91,6 +91,18 @@ describe('#frameScores', function(){
     })
   })
 
+  describe('bowling the perfect game', function(){
+    it('calculates the score of a perfect game to be 300', function(){
+      for (var i = 1; i <= 9; i++) {
+        scorecard.ball1(10);
+        scorecard.ball2(0);
+      };
+      scorecard.ball1(10);
+      scorecard.ball2(10);
+      scorecard.ball3(10);
+      expect(scorecard.totalScore()).toEqual(300)
+    })
+  })
 
 
 })

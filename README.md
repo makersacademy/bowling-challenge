@@ -1,77 +1,90 @@
+<h1 align='center'>
+Makers Week 5 Bowling Challenge.
+</h1>
 
-Bowling Challenge
-=================
+```
+Note !! The challenge is not yet completed.
+I still need to write the algorithm to calculate a strike.
+
+```
+
+<h4 align='center'>
+To Use Application.
+</h4>
+
+- Fork and clone this repo.
+- In terminal ``cd into bowling-challenge``.
+- cd into ``jasmine-standalone-3``.
+- Type ``open  SpecRunner.html`` to run test.
+
+<h4 align='center'>
+How It Works.
+</h4>
+
+- A user is able to create a ``new Bowling`` instance.
+
+<img width="496" alt="Screen Shot 2019-05-06 at 22 05 37" src="https://user-images.githubusercontent.com/37377831/57255723-a33cb180-704c-11e9-82b4-4423e1e65bf6.png">
+
+- A user is able to check the current frame.
+
+<img width="493" alt="Screen Shot 2019-05-06 at 22 06 08" src="https://user-images.githubusercontent.com/37377831/57255765-c5ceca80-704c-11e9-944a-ff82b42fbdb3.png">
+
+- A user can roll a ball and check how many pins were pinned down.
+
+<img width="493" alt="Screen Shot 2019-05-06 at 22 07 06" src="https://user-images.githubusercontent.com/37377831/57255820-f44ca580-704c-11e9-8d83-d50a41b5c029.png">
+
+- It gives an error if a user trys to pin down more than ten pins in a single frame.
+
+<img width="493" alt="Screen Shot 2019-05-06 at 22 08 02" src="https://user-images.githubusercontent.com/37377831/57255945-468dc680-704d-11e9-9968-27e1c0c72640.png">
+
+- The frame changes as the game goes on.
+
+<img width="492" alt="Screen Shot 2019-05-06 at 22 10 35" src="https://user-images.githubusercontent.com/37377831/57256044-82c12700-704d-11e9-89bb-0dae8f6f5016.png">
 
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+- The application can calculate a spare.
 
-## The Task
+<img width="493" alt="Screen Shot 2019-05-06 at 22 12 31" src="https://user-images.githubusercontent.com/37377831/57256093-ab492100-704d-11e9-8e18-a372e7e97386.png">
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+- It can handle complex spares.
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+<img width="490" alt="Screen Shot 2019-05-06 at 22 14 35" src="https://user-images.githubusercontent.com/37377831/57256247-0549e680-704e-11e9-9ad2-d4204a57d920.png">
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by
+<h4 align='center'>
+To Do.
+</h4>
 
-* Forking this repo
+- Handle Strikes.
+- Check all edge cases.
+- Implement the interface section of the application.
+- Refactor Codebase.
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+<h4 align='center'>
+Difficulties.
+</h4>
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+```
+This is one of the most complicated challenges I have done so far at Makers.
+This is due to the fact that, I had to learn and understand the rules of bowling.
+I can say for a fact that I am not a fan of the game!! 
+But anyways, it took me about a day and a half to fully understand the game and its rules.
+```
+- Understanding the game.
+- calculating spares.
 
-### Optional Extras
+<h4 align='center'>
+What Would I Do Differently.
+</h4>
 
-In any order you like:
+- Watch a bowling game to understand the rules.
+- Plan well, using diagrams on how the application would work.
+- Commit in small quantities and push to github more frequently.
+- Take it easy and not be hard on myself when algorithm for spare was not working.
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+<h4 align='center'>
+Tech Stack
+</h4>
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
-
-## Bowling — how does it work?
-
-### Strikes
-
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
-
-### Spares
-
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-### 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-### Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-### Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+- JavaScript(ES6).
+- Jasmine

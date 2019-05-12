@@ -87,5 +87,12 @@ describe('Game', function(){
     game.inputScore(1);
     game.inputScore(1);
     expect(game.total).toEqual(33)
-  })
+  });
+
+  it('knows when a game is over', function() {
+    for (i = 0; i < 10; i ++) {
+    game.inputScore(10);
+    }
+    expect(game.isGameOver).toBeTruthy();
+  });
 });

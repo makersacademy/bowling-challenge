@@ -53,3 +53,7 @@ Game.prototype._addFrame = function() {
 Game.prototype.getTotal = function() {
   return this.total;
 }
+
+Game.prototype.isGameOver = function() {
+  return this.frameCounter == 10 
+}

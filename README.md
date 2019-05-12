@@ -91,7 +91,7 @@ I have not yet managed to implement the logic of consecutive strike scores (and 
 Here is a screenshot of the user interface as it currently is:
 
 <div align="center">
-    <img src="InterfaceScreenshot.png" width="600px"</img>
+    <img src="InterfaceScreenshot.png" width="800px"</img>
 </div>
 
 ## What I learned from this project
@@ -105,7 +105,7 @@ Here is a screenshot of the user interface as it currently is:
 * A perfect game (score 300)
 * A game with consecutive strikes
 * The tenth frame feature
-* Improve the user interface 
+* Improve the user interface
 
 ## Acknowledgements
 Jordan Roberts - a Makers Academy Challenge

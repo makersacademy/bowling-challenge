@@ -4,6 +4,18 @@ Bowling Challenge
 
 Week 5 Makers Academy weekend challenge - build an app that counts the scores of a game of 10 pin bowling, in Javascript.
 
+## To run this program
+1. Clone this repo
+2. Type `open index.html` from the command line and click on the button that corresponds to the number of pins you knocked down. You will see a running total being displayed, as well as a record of your scores printed to the screen. This is a work in progress, so if you prefer you can run the program using the console in your Chrome Dev Tools. To do so, follow the steps below:
+3. Copy and paste the code from the 'game.js' file into the console.
+3. Type `game = new Game();`
+4. Input rolls using the following function: `game.inputRolls(x)`, replacing `x` for the number of pins you knocked down.
+5. Type `game` and hit enter in order to see the current status of the game (e.g. the number of frames you have played, or the total score).
+
+## To test this program
+1. Clone this repo
+2. Type `open SpecRunner.html` from the command line.
+
 ## Rules of Bowling
 
 ### Strikes
@@ -29,17 +41,9 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
 
-## To run this game
-1. Clone this repo
-2. As the user interface is a work in progress, use the console log in Chrome Dev Tools and copy and paste the code from the 'game.js' file.
-3. Type `game = new Game();`
-4. Input rolls using the following function: `game.inputRolls(x)`, replacing `x` for the number of pins you knocked down.
-5. Type `game` and hit enter in order to see the current status of the game (e.g. the number of frames, or the total score).
-6. To have a look at the user interface, type `open index.html` from the command line - you are able to click on the buttons which will display your running total but this is not yet finished as I would like each frame score to display on the page. 
-
 ## My approach
 
-I broke down this task into the following user stories:
+My first step was to break down this task into the following user stories:
 
 ```
 As a competitive bowler
@@ -80,7 +84,15 @@ At first I considered having a Scorecard constructor function and a Frame constr
 
 I have managed to implement most of these user stories successfully and have also created a user interface which records the running total as the user clicks on the button corresponding with the number of pins they have knocked down.
 
-I have not yet managed to implement the logic of consecutive strike scores (and accordingly a perfect game). I have also not managed to implement the 10th frame bonus feature yet.
+I have not yet managed to implement the logic of consecutive strike scores (and accordingly a perfect game). I have also not managed to implement the 10th frame bonus feature yet, which are both features I would like to fix.
+
+## User Interface
+
+Here is a screenshot of the user interface as it currently is:
+
+<div align="center">
+    <img src="InterfaceScreenshot.png" width="600px"</img>
+</div>
 
 ## What I learned from this project
 * The importance of planning carefully when there is a lot of complex logic involved!
@@ -93,7 +105,7 @@ I have not yet managed to implement the logic of consecutive strike scores (and 
 * A perfect game (score 300)
 * A game with consecutive strikes
 * The tenth frame feature
-* Improve the front end so that the table of scores is populated as user clicks buttons
+* Improve the user interface 
 
 ## Acknowledgements
 Jordan Roberts - a Makers Academy Challenge

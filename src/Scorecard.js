@@ -30,3 +30,7 @@ Scorecard.prototype.total = function() {
 Scorecard.prototype.isComplete = function() {
   return true
 };
+
+Scorecard.prototype.frame = function() {
+  return 3
+};

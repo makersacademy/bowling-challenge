@@ -1,12 +1,12 @@
 "use strict";
 
 function Scorecard () {
-  // this.presentScore = 0
-  // this._complete = false
-  // this.pinsRolled = []
+  this._complete = false
+  this.score = 0
+  this._pinsRolled = []
 };
 
-Scorecard.prototype.roll = function(){
+Scorecard.prototype.roll = function(pins){
    // this.pinsRolled.push(pins)
  };
 

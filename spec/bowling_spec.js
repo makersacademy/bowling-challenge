@@ -18,7 +18,7 @@ describe('Bowling', function() {
     expect(bowling.game_score()).toEqual(8);
   });
 
-  it('can record a gutter game', function () {
+  it('can record a gutter game', function() {
     bowling.pins(0);
     bowling.pins(0);
     bowling.pins(0);
@@ -32,13 +32,12 @@ describe('Bowling', function() {
     expect(bowling.game_score()).toEqual(0);
   });
 
-  // it('can record the number of pins knocked down in multiple frames', function() {
-  //   bowling.pins(5);
-  //   bowling.pins(4);
-  //   bowling.pins(3);
-  //   bowling.pins(2);
-  //   expect(bowling.total()).toEqual([[5,4],[3,2]]);
-  // });
-
+  it('gives a bonus for a spare', function() {
+    bowling.pins(5);
+    bowling.pins(5);
+    bowling.pins(4);
+    bowling.pins(0);
+    expect(bowling.game_score()).toEqual(18);
+  });
 
 });

@@ -1,6 +1,6 @@
 function Bowling(){
-  this.frame = []
-  this.game_score_total = []
+  this.frame = [];
+  this.game_score_total = [];
 }
 
 Bowling.prototype.pins = function(a) {
@@ -13,5 +13,5 @@ Bowling.prototype.frame_score = function() {
 
 Bowling.prototype.game_score = function() {
   this.game_score_total.push(this.frame.reduce(function(a, b){return a+b;}));
-  return this.game_score_total.reduce(function(a, b){return a+b;})
+  return this.game_score_total.reduce(function(a){return a;})
 };

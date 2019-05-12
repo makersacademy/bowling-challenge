@@ -1,10 +1,9 @@
 $(document).ready(function() {
   var scorecard = new Scorecard();
-  $('#name').text(scorecard.name);
 
   $('#addRoll').click(function() {
     scorecard.method();
-    $('#').text(scorecard.method);
-    $('#').text(scorecard.method);
+    $('#f1r1').text(scorecard.method());
+    $('#f1r2').text(scorecard.method());
   });
 });

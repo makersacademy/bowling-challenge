@@ -5,6 +5,8 @@ function Scorecard() {
   this.roll1 = 0;
   this.roll2 = 0;
   this.strikeBonus = 0;
+  this.displayRoll1 = 0;
+  this.displayRoll2 = 0;
 };
 
 Scorecard.prototype.showTotal = function() {
@@ -17,6 +19,15 @@ Scorecard.prototype.showFrame = function() {
 
 Scorecard.prototype.showRolls = function() {
   return this.rolls;
+};
+
+Scorecard.prototype.displayRolls = function() {
+  if (this.frameNumber === 1) {
+    this.displayRoll1 = this.rolls[this.frameNumber - 1]
+  } else {
+    this.displayRoll1 = this.rolls[this.frameNumber + 1]
+  }
+  this.displayRoll2 = this.rolls[this.frameNumber]
 };
 
 Scorecard.prototype.firstRoll = function(score) {
@@ -59,7 +70,6 @@ Scorecard.prototype.rollErrors = function(score) {
 
 Scorecard.prototype.bonus = function() {
   if (this.strikeBonus > 0) {
-    this.rolls.push(this.roll1 + this.roll2)
     this.totalScore += (this.roll1 + this.roll2)
     this.strikeBonus = 0;
   }

@@ -1,28 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="/scripts.js"></script>
+    <script src="./src/scorecard.js"></script>
     <link href="/style.css" rel="stylesheet" type="text/css" />
     <title>Bowling Scorecard</title>
     <div class="title-text">
       <center><h1>Bowling Scorecard</h1></center>
     </div>
-    <div class="add-roll">
-      <center><form>
-        <label for="roll1">1:</label>
-        <input type="text" name="roll1" placeholder="First Roll">
-        <h1></h1>
-        <label for="roll2">2:</label>
-        <input type="text" name="roll2" placeholder="Second Roll">
-        <h1></h1>
-        <input type="submit" value="Add Roll">
-      </form></center>
-    <h1></h1>
-    </div>
   </head>
   <body>
     <section>
+      <div class="add-roll">
+        <center><form>
+          <h1>Frame 1</h1>
+          <input type="text" name="roll1" placeholder="First Roll">
+          <h1></h1>
+          <input type="text" name="roll2" placeholder="Second Roll">
+          <h1></h1>
+        </form>
+        <button id="addRoll1">Add Roll</button></center>
+        <center><form>
+          <h1>Frame 2</h1>
+          <input type="text" name="roll1" placeholder="First Roll">
+          <h1></h1>
+          <input type="text" name="roll2" placeholder="Second Roll">
+          <h1></h1>
+        </form>
+        <button id="addRoll2">Add Roll</button></center>
+        <center><form>
+          <h1>Frame 3</h1>
+          <input type="text" name="roll1" placeholder="First Roll">
+          <h1></h1>
+          <input type="text" name="roll2" placeholder="Second Roll">
+          <h1></h1>
+        </form>
+        <button id="addRoll3">Add Roll</button></center>
+      <h1></h1>
+      </div>
       <style>
         table {
           font-family: tahoma;
@@ -104,6 +119,41 @@
         </tr>
       </table></center>
     </section>
-    <script src="/scorecard.js"></script>
   </body>
 </html>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<script>
+$(document).ready(function() {
+  var scorecard = new Scorecard();
+  $('#f1total').text(scorecard.totalScore);
+
+  $('#addRoll1').click(function() {
+    scorecard.firstRoll(3);
+    scorecard.secondRoll(5);
+    scorecard.displayRolls();
+    $('#f1r1').text(scorecard.displayRoll1);
+    $('#f1r2').text(scorecard.displayRoll2);
+    $('#f1total').text(scorecard.totalScore);
+  });
+
+  $('#addRoll2').click(function() {
+    scorecard.bonus();
+    scorecard.firstRoll(10);
+    scorecard.displayRolls();
+    $('#f2r1').text(scorecard.displayRoll1);
+    $('#f2r2').text(scorecard.displayRoll2);
+    $('#f2total').text(scorecard.totalScore);
+  });
+
+  $('#addRoll3').click(function() {
+    scorecard.bonus();
+    scorecard.firstRoll(10);
+    scorecard.displayRolls();
+    $('#f3r1').text(scorecard.displayRoll1);
+    $('#f3r2').text(scorecard.displayRoll2);
+    $('#f3total').text(scorecard.totalScore);
+  });
+});
+</script>

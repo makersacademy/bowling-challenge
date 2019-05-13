@@ -6,6 +6,15 @@ h1 {
   background-color: #f2f2f2;
   padding: 20px;
 }
+
+h2 {
+  position: relative;
+  color: gray;
+  font-size: 12px;
+  font-family: tahoma;
+  top: 64px;
+  left: 918px;
+  margin: 0 auto;
 }
 
 body {

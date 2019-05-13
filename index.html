@@ -11,6 +11,9 @@
   </head>
   <body>
     <section>
+      <div class="instructions">
+        <h2>Please type in your rolls below.</h2>
+      </div>
       <div class="frame1">
         <form>
           <input type="text" name="roll1" placeholder="First Roll">
@@ -45,7 +48,7 @@
         </form>
       </div>
       <div class="frame4button">
-        <button id="addRoll2">Add Roll</button>
+        <button id="addRoll4">Add Roll</button>
       </div>
       <div class="frame5">
         <form>
@@ -54,7 +57,7 @@
         </form>
       </div>
       <div class="frame5button">
-        <button id="addRoll2">Add Roll</button>
+        <button id="addRoll5">Add Roll</button>
       </div>
       <div class="frame6">
         <form>
@@ -63,7 +66,7 @@
         </form>
       </div>
       <div class="frame6button">
-        <button id="addRoll2">Add Roll</button>
+        <button id="addRoll6">Add Roll</button>
       </div>
       <div class="frame7">
         <form>
@@ -72,7 +75,7 @@
         </form>
       </div>
       <div class="frame7button">
-        <button id="addRoll2">Add Roll</button>
+        <button id="addRoll7">Add Roll</button>
       </div>
       <div class="frame8">
         <form>
@@ -81,7 +84,7 @@
         </form>
       </div>
       <div class="frame8button">
-        <button id="addRoll2">Add Roll</button>
+        <button id="addRoll8">Add Roll</button>
       </div>
       <div class="frame9">
         <form>
@@ -90,7 +93,7 @@
         </form>
       </div>
       <div class="frame9button">
-        <button id="addRoll2">Add Roll</button>
+        <button id="addRoll9">Add Roll</button>
       </div>
       <div class="frame10">
         <form>
@@ -99,7 +102,7 @@
         </form>
       </div>
       <div class="frame10button">
-        <button id="addRoll2">Add Roll</button>
+        <button id="addRoll10">Add Roll</button>
       </div>
       <style>
         table {
@@ -221,6 +224,76 @@ $(document).ready(function() {
     $('#f3r1').text(scorecard.displayRoll1);
     $('#f3r2').text(scorecard.displayRoll2);
     $('#f3total').text(scorecard.totalScore);
+  });
+
+  $('#addRoll4').click(function() {
+    scorecard.bonus();
+    scorecard.firstRoll(4);
+    scorecard.secondRoll(4);
+    scorecard.displayRolls();
+    $('#f4r1').text(scorecard.displayRoll1);
+    $('#f4r2').text(scorecard.displayRoll2);
+    $('#f4total').text(scorecard.totalScore);
+  });
+
+  $('#addRoll5').click(function() {
+    scorecard.bonus();
+    scorecard.firstRoll(4);
+    scorecard.secondRoll(4);
+    scorecard.displayRolls();
+    $('#f5r1').text(scorecard.displayRoll1);
+    $('#f5r2').text(scorecard.displayRoll2);
+    $('#f5total').text(scorecard.totalScore);
+  });
+
+  $('#addRoll6').click(function() {
+    scorecard.bonus();
+    scorecard.firstRoll(4);
+    scorecard.secondRoll(4);
+    scorecard.displayRolls();
+    $('#f6r1').text(scorecard.displayRoll1);
+    $('#f6r2').text(scorecard.displayRoll2);
+    $('#f6total').text(scorecard.totalScore);
+  });
+
+  $('#addRoll7').click(function() {
+    scorecard.bonus();
+    scorecard.firstRoll(4);
+    scorecard.secondRoll(4);
+    scorecard.displayRolls();
+    $('#f7r1').text(scorecard.displayRoll1);
+    $('#f7r2').text(scorecard.displayRoll2);
+    $('#f7total').text(scorecard.totalScore);
+  });
+
+  $('#addRoll8').click(function() {
+    scorecard.bonus();
+    scorecard.firstRoll(4);
+    scorecard.secondRoll(4);
+    scorecard.displayRolls();
+    $('#f8r1').text(scorecard.displayRoll1);
+    $('#f8r2').text(scorecard.displayRoll2);
+    $('#f8total').text(scorecard.totalScore);
+  });
+
+  $('#addRoll9').click(function() {
+    scorecard.bonus();
+    scorecard.firstRoll(4);
+    scorecard.secondRoll(4);
+    scorecard.displayRolls();
+    $('#f9r1').text(scorecard.displayRoll1);
+    $('#f9r2').text(scorecard.displayRoll2);
+    $('#f9total').text(scorecard.totalScore);
+  });
+
+  $('#addRoll10').click(function() {
+    scorecard.bonus();
+    scorecard.firstRoll(4);
+    scorecard.secondRoll(4);
+    scorecard.displayRolls();
+    $('#f10r1').text(scorecard.displayRoll1);
+    $('#f10r2').text(scorecard.displayRoll2);
+    $('#f10total').text(scorecard.totalScore);
   });
 });
 </script>

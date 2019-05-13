@@ -3,7 +3,7 @@ describe('frame', function() {
   var frame, number;
 
   beforeEach(function() {
-    number = 2
+    number = 2;
     frame = new Frame(number);
   });
 

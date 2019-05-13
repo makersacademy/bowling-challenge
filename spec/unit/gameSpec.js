@@ -19,14 +19,21 @@ describe('Game', function() {
     it('will add a roll to the frame', function() {
       var value = 3;
       game.addRoll(3);
-      expect(game.frames[0].pinsHit).toHaveBeenCalledWith(value);
+      expect(game.frames()[0].pinsHit).toHaveBeenCalledWith(value);
+    });
+  });
+
+  describe('#frames', function() {
+    it('returns frames array', function() {
+      game.addRoll(3);
+      expect(game.frames()).toEqual([frameMock]);
     });
   });
 
   describe('#_addFrame', function() {
     it('adds a new frame to the frames array', function() {
       game._addFrame(1);
-      expect(game.frames[0]).toBe(frameMock);
+      expect(game.frames()[0]).toBe(frameMock);
     });
   });
 
@@ -46,14 +53,14 @@ describe('Game', function() {
       game.addRoll(1);
       game._currentFrame().number.and.returnValue(10);
       game._currentFrame().isComplete.and.returnValue(true);
-      expect(game._isComplete()).toBe(true);
+      expect(game.isComplete()).toBe(true);
     });
 
     it('returns false if tenth frame is not complete', function() {
       game.addRoll(1);
       game._currentFrame().number.and.returnValue(10);
       game._currentFrame().isComplete.and.returnValue(false);
-      expect(game._isComplete()).toBe(false);
+      expect(game.isComplete()).toBe(false);
     });
   });
 });

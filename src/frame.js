@@ -44,7 +44,7 @@ Frame.prototype.isSpare = function() {
     return true;
   };
   return false;
-}
+};
 
 Frame.prototype._calculateScore = function() {
   this._score = this._rolls.reduce(function (accumulator, currentValue) {

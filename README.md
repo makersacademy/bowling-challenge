@@ -3,6 +3,13 @@
 
   This program uses JavaScript (and Jasmine for test writing) to create a scorecard for a single player in bowling by counting and totalling the scores of that player throughout a bowling game. I approached this by initially creating a rough domain model to map out what it is that I need to achieve. This involved breaking down the rules of bowling in small steps and applying them one by one.
 
+  This app also has uses jQuery, HTML, and CSS to create a browser interface.
+
+## How to access the browser
+
+  Copy the full path for the `index.html` file and paste it as a url. It should look something like this: `/Users/username/projects/bowling-challenge/index.html`.
+  
+
 ## The Rules of Bowling
 
 - A game of bowling consists of 10 frames, in which the player tries to knock down 10 pins.

@@ -25,10 +25,6 @@ Game.prototype.inputScore = function(pins) {
       }
       this.SC = 2
     }
-    // if(this.SC > 0 && pins != 10) {
-    //   this.total += pins
-    //   this.SC -= 1
-    // }
 
   if (this.currentFrame.length == 0) {
     this.currentFrame.push(pins);

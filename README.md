@@ -2,7 +2,7 @@
 Bowling Challenge
 =================
 
-Week 5 Makers Academy weekend challenge - build an app that counts the scores of a game of 10 pin bowling, in Javascript.
+Week 5 Makers Academy weekend challenge - build an app that counts the scores of a game of 10 pin bowling, in Javascript. We were advised to practice solving this kata several times and I re-did this challenge following a different approach in order to practice problem solving <a href="https://github.com/jordantroberts/bowling-kata">here</a>.
 
 ## To run this program
 1. Clone this repo

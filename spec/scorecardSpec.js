@@ -27,13 +27,40 @@ describe('Bowling ScoreCard', function() {
   });
 
   describe('Scoring a game with Spares', function() {
-    it('user can roll one spare in a game', function() {
+    it('user can score one spare in a game', function() {
       scorecard.roll(5);
       scorecard.roll(5);
       scorecard.roll(1);
       rollHelper(0, 17);
       expect(scorecard.score()).toEqual(12);
     });
+
+    it('user can score two spares in a game', function() {
+      scorecard.roll(6);
+      scorecard.roll(4);
+      scorecard.roll(1);
+      scorecard.roll(0);
+      scorecard.roll(6);
+      scorecard.roll(4);
+      scorecard.roll(1);
+      scorecard.roll(0);
+      rollHelper(0, 12);
+      expect(scorecard.score()).toEqual(24);
+    });
+  });
+
+  describe('Scoring a game containing strikes', function() {
+    it('user can score one strike in a game', function() {
+      scorecard.roll(10);
+      scorecard.roll(1);
+      scorecard.roll(2);
+      rollHelper(0, 16);
+      expect(scorecard.score()).toEqual(16);
+    });
+
+    // it('user can score two strikes in a game', function() {
+    //
+    // });
   });
 
   var rollHelper = function (pins, rolls) {

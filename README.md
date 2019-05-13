@@ -22,8 +22,14 @@ Bowling Challenge
 ### System
 
 Developed in JavaScript.
+
 Testing framework: Jasmine node.js
+
 Linter: ESLint
+
+### Logical Diagram
+
+!["Diagram"](./diagram.png)
 
 ### Next Steps
 

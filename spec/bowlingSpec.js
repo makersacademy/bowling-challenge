@@ -1,4 +1,4 @@
-var Bowling = require('../bowling')
+var Bowling = require('../lib/bowling')
 
 describe("Bowling", function(){
 
@@ -61,13 +61,9 @@ describe("Bowling", function(){
 
   it('shows an X for every strike', function(){
     var bowling = new Bowling();
-    console.log(bowling.getPlay())
     bowling.roll(10);
-    console.log(bowling.getPlay())
     bowling.roll(6);
-    console.log(bowling.getPlay())
     bowling.roll(3);
-    console.log(bowling.getPlay())
     expect(bowling.getScorecard()).toContain([ 'Frame: 1', 'Play 1: X', 'Play 2: -', 'Frame score: 19' ],
      [ 'Frame: 2', 'Play 1: 6', 'Play 2: 3', 'Frame score: 9' ]);
   });

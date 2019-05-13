@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title></title>
+  </head>
+  <body>
+    <script src="jquery-3.4.1.min.js"></script>
+
+
+    <div>
+    <center>
+    <h1 id="title">THE BOWLING ALLEY</h1>
+    </center>
+    </div>
+    <div>
+    <center>
+    <button id="roll"> Roll </button>
+    <h2 id="frameCount" ></h2><br><br>
+    <label id="play">Play</label><br><br>
+    <label id="scorecard">Scorecard </label><br><br>
+    <br><br>
+    <br><br>
+    <!-- <button id="down"> Down</button> -->
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+
+    <!-- <label id="weather"></label> -->
+    </center>
+    </div>
+
+    <script src="lib/bowling.js"></script>
+    <script src="lib/frame.js"></script>
+    <script src="interface.js"></script>
+
+    <script>
+      $(function(){
+        $("#title").fadeOut(1000).delay(1000).slideDown(1000);
+      });
+    </script>
+  </body>
+</html>

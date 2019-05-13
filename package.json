@@ -1,0 +1,28 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "bowling scorecard app in js",
+  "main": "scorecard.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "open SpecRunner.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ocripps24/bowling-challenge.git"
+  },
+  "author": "Oliver Cripps",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ocripps24/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/ocripps24/bowling-challenge#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2"
+  }
+}

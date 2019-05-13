@@ -1,7 +1,11 @@
-
 Bowling Challenge
 =================
 
+Partial completion of the bowling challenge.
+Implementation of logic up to scoring a strike. 
+
+Existing readme below
+=================
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

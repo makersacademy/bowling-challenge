@@ -19,3 +19,5 @@ Scorecard.prototype.isComplete = function() {
     return false
   };
 };
+
+module.exports = Scorecard;

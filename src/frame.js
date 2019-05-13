@@ -1,6 +1,11 @@
-var Frame = function() {
+var Frame = function(number) {
+  this._number = number;
   this._rolls = [];
   this._score = 0;
+};
+
+Frame.prototype.number = function() {
+  return this._number;
 };
 
 Frame.prototype.pinsHit = function(number) {
@@ -46,3 +51,5 @@ Frame.prototype._calculateScore = function() {
     return accumulator + currentValue;
   }, 0);
 };
+
+module.exports = Frame;

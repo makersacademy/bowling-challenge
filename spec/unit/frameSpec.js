@@ -1,12 +1,25 @@
 describe('frame', function() {
+  var Frame = require('../../src/frame');
+  var frame, number;
 
   beforeEach(function() {
-      frame = new Frame();
+    number = 2
+    frame = new Frame(number);
   });
 
   describe('::new', function() {
     it('will initialise with 0 pins hits', function() {
-      expect(frame.score()).toEqual(0);
+      expect(frame.score()).toBe(0);
+    });
+
+    it('will initialise with frame number', function() {
+      expect(frame.number()).toEqual(number);
+    });
+  });
+
+  describe('#number', function() {
+    it('returns frame number', function() {
+      expect(frame.number()).toEqual(number);
     });
   });
 

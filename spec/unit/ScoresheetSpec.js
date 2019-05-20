@@ -29,8 +29,12 @@
       for (let i = 1; i <= 20; i++) {
         scoresheet.roll(0)
       }
-
       expect(scoresheet.isComplete).toBeTruthy()
+    })
+
+    it('adds the roll amount to the finalScore', function () {
+      scoresheet.roll(5)
+      expect(scoresheet.finalScore).toEqual(5)
     })
   })
 

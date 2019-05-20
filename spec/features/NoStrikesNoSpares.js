@@ -1,18 +1,18 @@
 'use strict'
 
- describe ('No strikes or spares', function () {
+ describe('No strikes or spares', function () {
   let scoresheet
 
    beforeEach (function () {
-    scoresheet = new Scoresheet
+    scoresheet = new Scoresheet()
   })
 
-   it('A user rolls 1 20 times and the final score is 20', function () {
+   it('A user rolls 1 20 times and the final score is 60', function () {
     for (let i = 1; i <= 20; i++) {
-      scoresheet.roll(1)
+      scoresheet.roll(3)
     }
 
-     expect(scoresheet.isComplete).toBeTruthy()
-    expect(scoresheet.finalScore).toEqual(20)
+    expect(scoresheet.isComplete).toBeTruthy()
+    expect(scoresheet.finalScore).toEqual(60)
   })
 })

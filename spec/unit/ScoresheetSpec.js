@@ -15,4 +15,23 @@
       expect(scoresheet.finalScore).toEqual(0)
     })
 
+    it('has 0 rolls by default', function () {
+    expect(scoresheet.rollCount).toEqual(0)
+  })
+
+  describe('#roll', function () {
+    it('increments the rollCount by one', function () {
+      scoresheet.roll()
+      expect(scoresheet.rollCount).toEqual(1)
+    })
+
+    it('rolling 20 times completes the scoresheet', function () {
+      for (let i = 1; i <= 20; i++) {
+        scoresheet.roll(0)
+      }
+
+      expect(scoresheet.isComplete).toBeTruthy()
+    })
+  })
+
 })

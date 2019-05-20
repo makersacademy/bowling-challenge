@@ -8,5 +8,6 @@
   }
 
    roll () {
+     this.rollCount += 1
   }
 }

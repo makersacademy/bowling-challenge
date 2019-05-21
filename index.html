@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bowling Scorecard</title>
+    <script src="./src/game.js"></script>
+  <link rel="stylesheet" href="skeleton.css">
+</head>
+<body>
+
+<center><h3> Bowling Scorecard</h3>
+<img src="bowling.png" style="width:120px;height:120px;">
+</center>
+<br>
+
+  <center>  Pins knocked down:
+    <button id="0" class="button">0</button>
+    <button id="1" class="button">1</button>
+    <button id="2" class="button">2</button>
+    <button id="3" class="button">3</button>
+    <button id="4" class="button">4</button>
+    <button id="5" class="button">5</button>
+    <button id="6" class="button">6</button>
+    <button id="7" class="button">7</button>
+    <button id="8" class="button">8</button>
+    <button id="9" class="button">9</button>
+    <button id="10" class="button">STRIKE</button>
+  </center>
+  <table style="width:100%">
+  <tr>
+    <th>Frame 1</th>
+    <th>Frame 2</th>
+    <th>Frame 3</th>
+    <th>Frame 4</th>
+    <th>Frame 5</th>
+    <th>Frame 6</th>
+    <th>Frame 7</th>
+    <th>Frame 8</th>
+    <th>Frame 9</th>
+    <th>Frame 10</th>
+  </tr>
+  <tr>
+      <td id="frame1"></td>
+      <td id="frame2"></td>
+      <td id="frame3"></td>
+      <td id="frame4"></td>
+      <td id="frame5"></td>
+      <td id="frame6"></td>
+      <td id="frame7"></td>
+      <td id="frame8"></td>
+      <td id="frame9"></td>
+      <td id="frame10"></td>
+    </tr>
+</table>
+
+<center><h3>Total Score</h3><center>
+  <h1 id="total"></h1>
+</body>
+</html>
+
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+
+$( function() {
+
+    var game = new Game();
+
+    $('#total').text(game.total);
+
+    $('#0').on('click', function(){
+      game.inputScore(0);
+      $('#frame1').text(game.scores);
+      $('#total').text(game.total);
+    });
+
+    $('#1').on('click', function(){
+      game.inputScore(1);
+      $('#frame1').text(game.scores);
+      $('#total').text(game.total);
+    });
+
+    $('#2').on('click', function(){
+      game.inputScore(2);
+      $('#frame1').text(game.scores);
+      $('#total').text(game.total);
+    });
+
+    $('#3').click (function(){
+      game.inputScore(3);
+      $('#frame1').text(game.scores);
+      $('#total').text(game.total);
+    });
+
+    $('#4').on('click', function(){
+      game.inputScore(4);
+      $('#frame1').text(game.scores);
+      $('#total').text(game.total);
+    });
+
+    $('#5').on('click', function(){
+      game.inputScore(5);
+      $('#frame1').text(game.scores);
+      $('#total').text(game.total);
+    });
+
+    $('#6').on('click', function(){
+      game.inputScore(6);
+      $('#frame1').text(game.scores);
+      $('#total').text(game.total);
+    });
+
+    $('#7').on('click', function(){
+      game.inputScore(7);
+      $('#frame1').text(game.scores);
+      $('#total').text(game.total);
+    });
+
+    $('#8').on('click', function(){
+      game.inputScore(8);
+      $('#frame1').text(game.scores);
+      $('#total').text(game.total);
+    });
+
+    $('#9').on('click', function(){
+      game.inputScore(9);
+      $('#frame1').text(game.scores);
+      $('#total').text(game.total);
+    });
+
+    $('#10').on('click', function(){
+      game.inputScore(10);
+      $('#frame1').text(game.scores);
+      $('#total').text(game.total);
+    });
+  });
+
+</script>

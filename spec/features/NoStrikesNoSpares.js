@@ -7,7 +7,7 @@
     scoresheet = new Scoresheet()
   })
 
-   it('A user rolls 1 20 times and the final score is 60', function () {
+   it('can calculate the score of a game with no spares or strikes', function () {
     for (let i = 1; i <= 20; i++) {
       scoresheet.roll(3)
     }

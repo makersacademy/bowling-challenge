@@ -1,5 +1,6 @@
 function Controller() {
   this.game = new Game();
+  this.view = new View(this);
 }
 
 Controller.prototype = {
@@ -22,6 +23,11 @@ Controller.prototype = {
     return this.game.frameList.map(function(frame) {
       return frame.total;
     });
+  },
+
+  updateDOM: function(name, num, score) {
+    this.view.updateTotals(name, num);
+    this.view.updateReadOnly(name, num, score);
   }
 
 }

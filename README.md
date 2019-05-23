@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/dafuloth/bowling-challenge.svg?branch=master)](https://travis-ci.org/dafuloth/bowling-challenge)
 
 # Bowling Challenge
 
@@ -127,3 +128,7 @@ I wrote out a "perfect game" scorecard so that I could understand how bonuses we
   - it should be able to progress through the scorecard on its own without being told which frame the roll belongs to
   - the solution should then assign it appropriately, taking into account all the rules
   - this approach might be more reliant on a "virtuous consumer"
+
+## Addendum
+
+Travis CI can be used to automate testing for JavaScript, as with Ruby. A good reference: https://medium.com/@koalamango/javascript-automated-testing-with-jasmine-karma-and-travis-c118a98223d9

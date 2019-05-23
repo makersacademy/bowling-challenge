@@ -4,6 +4,26 @@
 
 _My solution is the subdirectory /Bowling. Original challenge README [here](./challenge.md)._
 
+## Contents
+<details><summary><i>expand Table of Contents</i></summary>
+
+  - [Getting started](#getting-started)
+  - [Usage](#usage)
+    - [A summary](#a-summary)
+    - [Creating a new Bowling Scorecard](#creating-a-new-bowling-scorecard)
+    - [Add roll to Bowling Scorecard](#add-roll-to-bowling-scorecard)
+      - [Adding a normal roll](#adding-a-normal-roll)
+      - [Adding a Strike](#adding-a-strike)
+      - [Adding a Spare](#adding-a-spare)
+    - [Strike on last frame awards 2 bonus rolls](#strike-on-last-frame-awards-2-bonus-rolls)
+    - [Spare on last frame awards 1 bonus roll](#spare-on-last-frame-awards-1-bonus-roll)
+    - [Can get the total score at any point](#can-get-the-total-score-at-any-point)
+  - [Development Approach](#development-approach)
+  - [Further work](#further-work)
+  - [Addendum](#addendum)
+
+</details>
+
 ## Getting started
 
 Tests may be run as follows:

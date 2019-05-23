@@ -1,32 +1,17 @@
 {
   "name": "bowling-challenge",
   "version": "1.0.0",
-  "description": "Bowling Challenge =================",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
+  "description": "JS bowling scorecard, jasmine+karma+travis",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "karma start karma.conf.js — single-run"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dafuloth/bowling-challenge.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dafuloth/bowling-challenge/issues"
-  },
-  "homepage": "https://github.com/dafuloth/bowling-challenge#readme",
-  "keywords": [],
   "devDependencies": {
-    "eslint": "^5.15.1",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jasmine": "^2.10.1",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.12.4"
+    "jasmine-core": "^3.4.0",
+    "karma": "^4.1.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-cli": "^2.0.0",
+    "karma-jasmine": "^2.0.1",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "phantomjs-prebuilt": "^2.1.16"
   }
 }

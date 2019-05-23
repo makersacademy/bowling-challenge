@@ -5,6 +5,13 @@
   "scripts": {
     "test": "karma start karma.conf.js — single-run"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dafuloth/bowling-challenge.git"
+  },
+  "author": "David Thai",
+  "license": "ISC",
+  "homepage": "https://github.com/dafuloth/bowling-challenge#readme",
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",

@@ -22,7 +22,7 @@ You can play with the scorer directly by opening the console in Chrome or Firefo
 
 Open `SpecRunner.html` from the project root.
 
-Alternatively, run `npm install` in the project root, then you can run the tests in the terminal by running `npm test` (I think).
+Alternatively, run `npm install` in the project root, then you can run the tests in the terminal by running `npm test`.
 
 If you run `npm install` you should also be able to check test coverage by running `node_modules/.bin/nyc npm test`.
 
@@ -78,6 +78,6 @@ Just noticed... the validation on the last frame is wrong. If you roll a strike 
 
 Start by writing a simple feature test, and use that to spin up your unit tests. Doing it this way will help you write the smallest amount of code to implement the feature. Starting from the inside out, i.e. writing unit tests first, can lead you to write too much code, too many methods, which can be brittle and need to be deleted or rewritten later.
 
-See [BDD pill])(https://github.com/makersacademy/course/blob/master/pills/bdd_cycle.md).
+See [BDD pill](https://github.com/makersacademy/course/blob/master/pills/bdd_cycle.md).
 
 See also [Uncle Bob's test-driven bowling game kata](http://butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata).

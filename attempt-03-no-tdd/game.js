@@ -6,7 +6,7 @@ function Game () {
 Game.prototype = {
   constructor: Game,
 
-  roll: function (roll) {
+  roll: function (pins) {
     var roll
 
     if (this.isComplete()) {
@@ -17,10 +17,10 @@ Game.prototype = {
     if (this.frames.length === 10) {
       this.currentFrame().isFinalFrame = true
     }
-    this.currentFrame().addRoll(roll)
+    this.currentFrame().addRoll(pins)
     roll = {
       frame: this.currentFrame(),
-      pins: roll,
+      pins: pins,
       isStrike: this.currentFrame().isStrike(),
       completesSpare: this.currentFrame().isSpare(),
       completesFrame: this.currentFrame().roll2 !== null

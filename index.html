@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="/scripts.js"></script>
+    <script src="./src/scorecard.js"></script>
+    <link href="./src/style.css" rel="stylesheet" type="text/css" />
+    <title>Bowling Scorecard</title>
+    <div class="title-text">
+      <center><h1>Bowling Scorecard</h1></center>
+    </div>
+  </head>
+  <body>
+    <section>
+      <div class="instructions">
+        <h2>Please type in your rolls below.</h2>
+      </div>
+      <div class="frame1">
+        <form>
+          <input type="text" name="roll1" placeholder="First Roll">
+          <input type="text" name="roll2" placeholder="Second Roll">
+        </form>
+      </div>
+      <div class="frame1button">
+        <button id="addRoll1">Add Roll</button>
+      </div>
+      <div class="frame2">
+        <form>
+          <input type="text" name="roll1" placeholder="First Roll">
+          <input type="text" name="roll2" placeholder="Second Roll">
+        </form>
+      </div>
+      <div class="frame2button">
+        <button id="addRoll2">Add Roll</button>
+      </div>
+      <div class="frame3">
+        <form>
+          <input type="text" name="roll1" placeholder="First Roll">
+          <input type="text" name="roll2" placeholder="Second Roll">
+        </form>
+      </div>
+      <div class="frame3button">
+        <button id="addRoll3">Add Roll</button>
+      </div>
+      <div class="frame4">
+        <form>
+          <input type="text" name="roll1" placeholder="First Roll">
+          <input type="text" name="roll2" placeholder="Second Roll">
+        </form>
+      </div>
+      <div class="frame4button">
+        <button id="addRoll4">Add Roll</button>
+      </div>
+      <div class="frame5">
+        <form>
+          <input type="text" name="roll1" placeholder="First Roll">
+          <input type="text" name="roll2" placeholder="Second Roll">
+        </form>
+      </div>
+      <div class="frame5button">
+        <button id="addRoll5">Add Roll</button>
+      </div>
+      <div class="frame6">
+        <form>
+          <input type="text" name="roll1" placeholder="First Roll">
+          <input type="text" name="roll2" placeholder="Second Roll">
+        </form>
+      </div>
+      <div class="frame6button">
+        <button id="addRoll6">Add Roll</button>
+      </div>
+      <div class="frame7">
+        <form>
+          <input type="text" name="roll1" placeholder="First Roll">
+          <input type="text" name="roll2" placeholder="Second Roll">
+        </form>
+      </div>
+      <div class="frame7button">
+        <button id="addRoll7">Add Roll</button>
+      </div>
+      <div class="frame8">
+        <form>
+          <input type="text" name="roll1" placeholder="First Roll">
+          <input type="text" name="roll2" placeholder="Second Roll">
+        </form>
+      </div>
+      <div class="frame8button">
+        <button id="addRoll8">Add Roll</button>
+      </div>
+      <div class="frame9">
+        <form>
+          <input type="text" name="roll1" placeholder="First Roll">
+          <input type="text" name="roll2" placeholder="Second Roll">
+        </form>
+      </div>
+      <div class="frame9button">
+        <button id="addRoll9">Add Roll</button>
+      </div>
+      <div class="frame10">
+        <form>
+          <input type="text" name="roll1" placeholder="First Roll">
+          <input type="text" name="roll2" placeholder="Second Roll">
+        </form>
+      </div>
+      <div class="frame10button">
+        <button id="addRoll10">Add Roll</button>
+      </div>
+      <style>
+        table {
+          position: relative;
+          margin: 0 auto;
+          font-family: tahoma;
+          border-collapse: collapse;
+          width: 60%;
+          top: -480px;
+          right: 100px;
+        }
+
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+      </style>
+      <center><table>
+        <tr>
+          <th>Frame</th>
+          <th colspan="2">Pins Fallen</th>
+          <th>Score</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td><span id="f1r1"></span></td>
+          <td><span id="f1r2"></span></td>
+          <td><span id="f1total"></span></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><span id="f2r1"></span></td>
+          <td><span id="f2r2"></span></td>
+          <td><span id="f2total"></span></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><span id="f3r1"></span></td>
+          <td><span id="f3r2"></span></td>
+          <td><span id="f3total"></span></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><span id="f4r1"></span></td>
+          <td><span id="f4r2"></span></td>
+          <td><span id="f4total"></span></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><span id="f5r1"></span></td>
+          <td><span id="f5r2"></span></td>
+          <td><span id="f5total"></span></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><span id="f6r1"></span></td>
+          <td><span id="f6r2"></span></td>
+          <td><span id="f6total"></span></td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><span id="f7r1"></span></td>
+          <td><span id="f7r2"></span></td>
+          <td><span id="f7total"></span></td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><span id="f8r1"></span></td>
+          <td><span id="f8r2"></span></td>
+          <td><span id="f8total"></span></td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td><span id="f9r1"></span></td>
+          <td><span id="f9r2"></span></td>
+          <td><span id="f9total"></span></td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td><span id="f10r1"></span></td>
+          <td><span id="f10r2"></span></td>
+          <td><span id="f10total"></span></td>
+        </tr>
+      </table></center>
+    </section>
+  </body>
+</html>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<script>
+$(document).ready(function() {
+  var scorecard = new Scorecard();
+  $('#f1total').text(scorecard.totalScore);
+
+  $('#addRoll1').click(function() {
+    scorecard.firstRoll(3);
+    scorecard.secondRoll(5);
+    scorecard.displayRolls();
+    $('#f1r1').text(scorecard.displayRoll1);
+    $('#f1r2').text(scorecard.displayRoll2);
+    $('#f1total').text(scorecard.totalScore);
+  });
+
+  $('#addRoll2').click(function() {
+    scorecard.bonus();
+    scorecard.firstRoll(10);
+    scorecard.displayRolls();
+    $('#f2r1').text(scorecard.displayRoll1);
+    $('#f2r2').text(scorecard.displayRoll2);
+    $('#f2total').text(scorecard.totalScore);
+  });
+
+  $('#addRoll3').click(function() {
+    scorecard.bonus();
+    scorecard.firstRoll(10);
+    scorecard.displayRolls();
+    $('#f3r1').text(scorecard.displayRoll1);
+    $('#f3r2').text(scorecard.displayRoll2);
+    $('#f3total').text(scorecard.totalScore);
+  });
+
+  $('#addRoll4').click(function() {
+    scorecard.bonus();
+    scorecard.firstRoll(4);
+    scorecard.secondRoll(4);
+    scorecard.displayRolls();
+    $('#f4r1').text(scorecard.displayRoll1);
+    $('#f4r2').text(scorecard.displayRoll2);
+    $('#f4total').text(scorecard.totalScore);
+  });
+
+  $('#addRoll5').click(function() {
+    scorecard.bonus();
+    scorecard.firstRoll(4);
+    scorecard.secondRoll(4);
+    scorecard.displayRolls();
+    $('#f5r1').text(scorecard.displayRoll1);
+    $('#f5r2').text(scorecard.displayRoll2);
+    $('#f5total').text(scorecard.totalScore);
+  });
+
+  $('#addRoll6').click(function() {
+    scorecard.bonus();
+    scorecard.firstRoll(4);
+    scorecard.secondRoll(4);
+    scorecard.displayRolls();
+    $('#f6r1').text(scorecard.displayRoll1);
+    $('#f6r2').text(scorecard.displayRoll2);
+    $('#f6total').text(scorecard.totalScore);
+  });
+
+  $('#addRoll7').click(function() {
+    scorecard.bonus();
+    scorecard.firstRoll(4);
+    scorecard.secondRoll(4);
+    scorecard.displayRolls();
+    $('#f7r1').text(scorecard.displayRoll1);
+    $('#f7r2').text(scorecard.displayRoll2);
+    $('#f7total').text(scorecard.totalScore);
+  });
+
+  $('#addRoll8').click(function() {
+    scorecard.bonus();
+    scorecard.firstRoll(4);
+    scorecard.secondRoll(4);
+    scorecard.displayRolls();
+    $('#f8r1').text(scorecard.displayRoll1);
+    $('#f8r2').text(scorecard.displayRoll2);
+    $('#f8total').text(scorecard.totalScore);
+  });
+
+  $('#addRoll9').click(function() {
+    scorecard.bonus();
+    scorecard.firstRoll(4);
+    scorecard.secondRoll(4);
+    scorecard.displayRolls();
+    $('#f9r1').text(scorecard.displayRoll1);
+    $('#f9r2').text(scorecard.displayRoll2);
+    $('#f9total').text(scorecard.totalScore);
+  });
+
+  $('#addRoll10').click(function() {
+    scorecard.bonus();
+    scorecard.firstRoll(4);
+    scorecard.secondRoll(4);
+    scorecard.displayRolls();
+    $('#f10r1').text(scorecard.displayRoll1);
+    $('#f10r2').text(scorecard.displayRoll2);
+    $('#f10total').text(scorecard.totalScore);
+  });
+});
+</script>

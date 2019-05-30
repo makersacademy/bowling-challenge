@@ -1,0 +1,208 @@
+h1 {
+  color: black;
+  font-size: 32px;
+  font-family: tahoma;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+h2 {
+  position: relative;
+  color: gray;
+  font-size: 12px;
+  font-family: tahoma;
+  top: 64px;
+  left: 918px;
+  margin: 0 auto;
+}
+
+body {
+  background-image: gray;
+}
+
+input[type=text] {
+  width: 5%;
+  height: 20%;
+  padding: 10px 6px;
+}
+
+.frame1 {
+  position: relative;
+  border-radius: 25px;
+  top: 76px;
+  left: 910px;
+  margin: 0 auto;
+}
+
+.frame1button {
+  position: relative;
+  border-radius: 25px;
+  top: 40px;
+  left: 450px;
+  width: 8px;
+  height: 15px;
+  margin: 0 auto;
+}
+
+.frame2 {
+  position: relative;
+  border-radius: 25px;
+  top: 60px;
+  left: 910px;
+  margin: 0 auto;
+}
+
+.frame2button {
+  position: relative;
+  border-radius: 25px;
+  top: 25px;
+  left: 450px;
+  width: 8px;
+  height: 15px;
+  margin: 0 auto;
+}
+
+.frame3 {
+  position: relative;
+  border-radius: 25px;
+  top: 44px;
+  left: 910px;
+  margin: 0 auto;
+}
+
+.frame3button {
+  position: relative;
+  border-radius: 25px;
+  top: 10px;
+  left: 450px;
+  width: 8px;
+  height: 15px;
+  margin: 0 auto;
+}
+
+.frame4 {
+  position: relative;
+  border-radius: 25px;
+  top: 28px;
+  left: 910px;
+  margin: 0 auto;
+}
+
+.frame4button {
+  position: relative;
+  border-radius: 25px;
+  top: -4px;
+  left: 450px;
+  width: 8px;
+  height: 15px;
+  margin: 0 auto;
+}
+
+.frame5 {
+  position: relative;
+  border-radius: 25px;
+  top: 12px;
+  left: 910px;
+  margin: 0 auto;
+}
+
+.frame5button {
+  position: relative;
+  border-radius: 25px;
+  top: -23px;
+  left: 450px;
+  width: 8px;
+  height: 15px;
+  margin: 0 auto;
+}
+
+.frame6 {
+  position: relative;
+  border-radius: 25px;
+  top: -4px;
+  left: 910px;
+  margin: 0 auto;
+}
+
+.frame6button {
+  position: relative;
+  border-radius: 25px;
+  top: -38px;
+  left: 450px;
+  width: 8px;
+  height: 15px;
+  margin: 0 auto;
+}
+
+.frame7 {
+  position: relative;
+  border-radius: 25px;
+  top: -20px;
+  left: 910px;
+  margin: 0 auto;
+}
+
+.frame7button {
+  position: relative;
+  border-radius: 25px;
+  top: -54px;
+  left: 450px;
+  width: 8px;
+  height: 15px;
+  margin: 0 auto;
+}
+
+.frame8 {
+  position: relative;
+  border-radius: 25px;
+  top: -36px;
+  left: 910px;
+  margin: 0 auto;
+}
+
+.frame8button {
+  position: relative;
+  border-radius: 25px;
+  top: -70px;
+  left: 450px;
+  width: 8px;
+  height: 15px;
+  margin: 0 auto;
+}
+
+.frame9 {
+  position: relative;
+  border-radius: 25px;
+  top: -52px;
+  left: 910px;
+  margin: 0 auto;
+}
+
+.frame9button {
+  position: relative;
+  border-radius: 25px;
+  top: -86px;
+  left: 450px;
+  width: 8px;
+  height: 15px;
+  margin: 0 auto;
+}
+
+.frame10 {
+  position: relative;
+  border-radius: 25px;
+  top: -68px;
+  left: 910px;
+  margin: 0 auto;
+}
+
+.frame10button {
+  position: relative;
+  border-radius: 25px;
+  top: -102px;
+  left: 450px;
+  width: 8px;
+  height: 15px;
+  margin: 0 auto;
+}

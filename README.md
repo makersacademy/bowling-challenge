@@ -51,12 +51,12 @@ I would like my score to start at 0
 ```
 Object|message
 -|-
-Game|showScore
+Bowling|showScore
 
-### Console testgit 
+### Console test
 ```js
-var game = new Game()
-game.showScore()
+var scorecard = new Scorecard()
+scorecard.showScore()
 
 // output should be 0
 ```

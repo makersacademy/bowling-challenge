@@ -51,7 +51,7 @@ I would like my score to start at 0
 ```
 Object|message
 -|-
-Bowling|showScore
+Scorecard|showScore
 
 ### Console test
 ```js
@@ -60,3 +60,22 @@ scorecard.showScore()
 
 // output should be 0
 ```
+---
+```
+As a player
+So that I can track my score
+I would like to be able to enter the number of pins I have knocked down
+```
+Object|message
+-|-
+Scorecard|enterScore
+```js
+var scorecard = new Scorecard()
+scorecard.showScore()
+  // output is 0
+
+scorecard.enterScore(3)
+scorecard.showScore()
+  // output is 3
+```
+---

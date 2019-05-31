@@ -3,5 +3,9 @@ function Scorecard() {
 }
 
 Scorecard.prototype.showScore = function() {
-  return this._score
+  return this._score;
+}
+
+Scorecard.prototype.enterScore = function(pins) {
+  this._score += pins;
 }

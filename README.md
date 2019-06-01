@@ -7,7 +7,8 @@ The specification is below:
 
 - The game starts at 0
 - A player rolls a gutter game if they role 20 balls without knocking any down
-- 
+- There are 10 frames with 2 bowls per frame, unless the player bowls a strike (in which case there is 1 bowl for that frame)
+
 
 
 * Challenge time: rest of the day and weekend.

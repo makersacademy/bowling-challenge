@@ -9,8 +9,19 @@ describe ("Bowling", function() {
 		expect(bowling.total).toEqual(0);
 	});
 
+  it('the frame starts at 0', function(){
+    expect(bowling.frame).toEqual(0);
+  });
+
+  it('increments the frame by 1 every 2 turns', function(){
+    for(var i=0; i<20; i++) {
+      bowling.roll(2)
+    }
+    expect(bowling.frame).toEqual(10);
+  });
+
   it('can roll a gutter game', function() {
-    for(var i=0; i<21; i++) {
+    for(var i=0; i<20; i++) {
 			bowling.roll(0)
 		}
     expect(bowling.total).toEqual(0);
@@ -22,4 +33,6 @@ describe ("Bowling", function() {
     }
     expect(bowling.score()).toEqual(40);
   });
+
+  it('')
 });

@@ -1,13 +1,12 @@
-function Frame() {
-  this._bowls = [];
+function Frame(rolls) {
+  this.rolls = rolls;
 }
 
-Frame.prototype.firstBowl = function (score) {
-  this._bowls[0] = score;
-  return this;
+Frame.prototype.total = function () {
+  score = this._rollScore();
+  return score;
 };
 
-Frame.prototype.secondBowl = function (score) {
-  this._bowls[1] = score;
-  return this;
+Frame.prototype._rollScore = function() {
+  return (this.rolls[0] + this.rolls[1]);
 };

@@ -1,11 +1,7 @@
-describe(Frame, function() {
-  frame = new Frame();
+describe('A frame of bowling', function() {
 
-  it('receives first bowl', function() {
-    expect(frame.firstBowl(6)).toEqual(frame);
-  });
-
-  it('receives second bowl', function() {
-    expect(frame.secondBowl(3)).toEqual(frame);
+  it('adds two rolls together', function() {
+    frame = new Frame([1,3]);
+    expect(frame.total()).toEqual(4);
   });
 });

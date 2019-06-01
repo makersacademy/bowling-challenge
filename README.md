@@ -1,6 +1,13 @@
-
 Bowling Challenge
 =================
+
+This is a bowling scorecard, that tracks the scores in a game of bowling. I have built this using a TDD approach in Javascript and have used jasmine as the testing framework.
+
+The specification is below:
+
+- The game starts at 0
+- A player rolls a gutter game if they role 20 balls without knocking any down
+- 
 
 
 * Challenge time: rest of the day and weekend.

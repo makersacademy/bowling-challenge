@@ -50,7 +50,7 @@ describe ("Bowling", function() {
   });
 
   it('can roll a perfect game', function() {
-    fullGame(10, 20)
+    fullGame(10, 12)
     expect(bowling.score()).toEqual(300);
   });
 

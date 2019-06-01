@@ -10,6 +10,9 @@ The specification is below:
 - There are 10 frames with 2 bowls per frame, unless the player bowls a strike (in which case there is 1 bowl for that frame)
 - The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
 - The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+- If a player bowls a strike in the 10th frame, they will get another go. This applies in the 11th frame, but the player can have no more than 12 frames.
+- A perfect game is bowled with a final score of 300.
+- A gutter game is bowled with a final score of 0.
 
 ## Instructions for Use:
 - Run the command in the folder you would like to store this app

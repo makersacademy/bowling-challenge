@@ -8,6 +8,19 @@ The specification is below:
 - The game starts at 0
 - A player rolls a gutter game if they role 20 balls without knocking any down
 - There are 10 frames with 2 bowls per frame, unless the player bowls a strike (in which case there is 1 bowl for that frame)
+- The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+
+## Instructions for Use:
+- Run the command in the folder you would like to store this app
+```
+git clone https://github.com/samkitchen94/bowling-challenge.git
+```
+- In the relevant folder in the command line, run
+```
+open SpecRunner.html
+```
+This will show you the passing tests.
+-
 
 
 

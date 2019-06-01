@@ -31,7 +31,9 @@ describe ("Bowling", function() {
   it('can roll a spare', function(){
     bowling.roll(9);
     bowling.roll(1);
-    
+    bowling.roll(6);
+    fullGame(0, 17);
+    expect(bowling.score()).toEqual(22);
   });
 
   it('stops adding to the total after 10 frames', function() {

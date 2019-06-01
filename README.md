@@ -15,26 +15,21 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 
 ## Technologies used:
 
-- Javascript with jQuery
+- Javascript code with jQuery created interface
 - Tested using Jasmine (BDD framework for testing Javascript code)
 
 ## Images:
 ![Start Screen]()
-![End of Game]()
 
 ## APPROACH:
 
-### User Stories:
+### The Plan
 
-### #1 
-```
-As a Player,
-So that I can keep track of my score while playing a bowling game,
-I want to be able to record my score on a scorecard.
-```
+* Each Frame will be in the range of 1-10
 
+* The Rolls will be 1-2 and 1-3 in the 10th frame
 
-
+* The knocked Pins will be 0-10
 
 
 ## BOWLING RULES

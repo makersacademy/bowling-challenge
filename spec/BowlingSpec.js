@@ -15,4 +15,11 @@ describe ("Bowling", function() {
 		}
     expect(bowling.total).toEqual(0);
   });
+
+  it('can roll a game of 2s with no spares/strikes', function(){
+    for(var i=0; i<21; i++) {
+      bowling.roll(2)
+    }
+    expect(bowling.score()).toEqual(40);
+  });
 });

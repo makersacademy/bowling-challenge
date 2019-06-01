@@ -9,30 +9,39 @@ describe ("Bowling", function() {
 		expect(bowling.total).toEqual(0);
 	});
 
-  it('the frame starts at 0', function(){
-    expect(bowling.frame).toEqual(0);
-  });
-
-  it('increments the frame by 1 every 2 turns', function(){
-    for(var i=0; i<20; i++) {
-      bowling.roll(2)
-    }
-    expect(bowling.frame).toEqual(10);
-  });
+  // it('the frame starts at 0', function(){
+  //   expect(bowling.frame).toEqual(0);
+  // });
+  //
+  // it('increments the frame by 1 every 2 turns', function(){
+  //   fullGame(0, 20)
+  //   expect(bowling.frame).toEqual(10);
+  // });
 
   it('can roll a gutter game', function() {
-    for(var i=0; i<20; i++) {
-			bowling.roll(0)
-		}
+    fullGame(0, 20)
     expect(bowling.total).toEqual(0);
   });
 
   it('can roll a game of 2s with no spares/strikes', function(){
-    for(var i=0; i<21; i++) {
-      bowling.roll(2)
-    }
+    fullGame(2, 20)
     expect(bowling.score()).toEqual(40);
   });
 
-  it('')
+  it('can roll a spare', function(){
+    bowling.roll(9);
+    bowling.roll(1);
+    
+  });
+
+  it('stops adding to the total after 10 frames', function() {
+    fullGame(2, 20)
+    expect(bowling.score()).toEqual(40);
+  });
+
+  var fullGame = function(pins, rolls) {
+    for(var i=0; i<rolls; i++) {
+      bowling.roll(pins);
+    }
+  }
 });

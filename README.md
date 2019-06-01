@@ -2,16 +2,30 @@
 Bowling Challenge
 =================
 
-
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
-
 ## The Task
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+**CREATE A BOWLING SCORECARD IN WHICH THE USER INPUTS THE ROLLS.**
+
+### Challenge setup
+
+Logic considerations:
+
+* A player can enter their name onto the scorecard
+* The score starts at zero
+* Each roll score is saved as it is inputted
+* Scores are saved in groups of up to 2 rolls in an array of tuples. The 10th tuple may contain 3 elements
+* If the first roll in a frame has a value of 10, the 2nd roll is left unfilled and the frame is over
+* If the first roll in a frame has a value of 10, the total of the next two rolls are bonus added to that score of 10
+* If the 2 rolls in a single frame add up to a value of 10, the value of the next roll is bonus added to that score of 10
+* The score total is calculated at the end of each frame
+* A game consists of exactly 10 frames and no more
+* If the final frame results in a strike, a further 2 rolls are taken for bonus adding reasons
+* If the final frame results in a spare, a final roll is taken for bonus adding reasons
+
+
+
+
+
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 

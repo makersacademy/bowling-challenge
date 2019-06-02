@@ -5,14 +5,14 @@ body {
 
 h1 {
   font-family: "Comic Sans Ms";
-  color: red;
+  color: white;
   text-align: center;
   font-size: 40px;
 }
 
 p {
   font-family: "Comic Sans Ms";
-  color: red;
+  color: white;
   margin-left: 380px;
   font-weight: bold;
   font-size: 35px;
@@ -36,12 +36,12 @@ button {
   padding: 8px 15px;
 }
 
-table.scorecard {margin-top: 50px; margin-left: 100px; color: #ff0080; width:80%; font-size:12px; border:2px solid #3189CD; text-align: center; table-layout: fixed; }
-table.scorecard th, tr, td {padding: 0; vertical-align: middle; font-family: Arial, Helvetica, sans-serif; text-align: center;}
-table.scorecard th {border-bottom:2px solid; height:30px; border-color: #3189CD}
-table.scorecard th:not(:last-child) {border-right:2px solid #3189CD;}
-table.scorecard td {height:30px; background: rgba(255, 255, 255, 0.5);}
-table.scorecard tr td:not(:last-child) {border-right:2px solid #3189CD;}
-table.scorecard tr:nth-child(2) td:nth-child(even) {border-bottom:2px solid #3189CD;}
-table.scorecard tr:nth-child(2) td:last-child {border-bottom:2px solid #3189CD;}
+table, td, th {
+  border:1px solid #3189CD;
+  margin-left: 100px;
+  color: #ff0080;
+
+  font-size:15px;
+}
+
 

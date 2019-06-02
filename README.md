@@ -13,6 +13,8 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 
 ![Bowling Rules]()
 
+![Project approach]()
+
 ## Technologies used:
 
 - Javascript code with jQuery created interface

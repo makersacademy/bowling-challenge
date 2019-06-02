@@ -4,11 +4,13 @@ function Game() {
   this.roll = START_ROLL_COUNT
   this.framesScores = [];
   this.currentFrameScore = [];
+  this.bonus = START_BONUS;
   };
 
   const START_SCORE = 0
   const START_FRAME_NUMBER = 1
   const START_ROLL_COUNT = 0
+  const START_BONUS = 0
 
 Game.prototype.getScore = function() {
   return this.score;
@@ -31,6 +33,8 @@ Game.prototype.oneRoll = function(rollScore){
   this.currentFrameScore.push(rollScore); 
   if(this.rollNo() === 2) {
     this.oneFrame();
+  } else {
+    this.isStrike(rollScore)
   }
 };
 
@@ -56,3 +60,10 @@ Game.prototype.nextFrame = function() {
     this.currentFrameScore = [];
 };
 
+Game.prototype.bonusPoints = function() {
+  return this.bonus
+};
+
+Game.prototype.isStrike = function(rollScore) {
+  return rollScore === 10
+};

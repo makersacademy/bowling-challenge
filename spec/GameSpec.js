@@ -20,6 +20,11 @@ describe ('Game', function() {
     it('games starts on roll zero', function() {
       expect(game.rollCount()).toEqual(0);
     });
+
+    it('starts with zero bonus points', function() {
+      expect(game.bonusPoints()).toEqual(0);
+    });
+
   });
 
   describe('passing scores to the next frames', function() {
@@ -49,5 +54,19 @@ describe ('Game', function() {
     });
 
   });
+
+  describe ('awarded bonus points', function() {
+
+    it('first roll is a strike', function() {
+      expect(game.isStrike(10)).toBe(true);
+    });
+
+    it('first roll is not a strike', function() {
+      expect(game.isStrike(3)).toBe(false);
+    });
+  
+  });
+
+
 
 });

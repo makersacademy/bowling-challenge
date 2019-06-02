@@ -43,18 +43,6 @@ describe ('Game', function() {
       expect(game.frameNumber()).toEqual(2);
     });
 
-    it('stores frame score on first roll if strike', function() {
-      game.oneRoll(3);
-      game.oneRoll(4);
-      game.oneRoll(10);
-      expect(game.totalFrameScore()).toEqual([[3,4],[10]])
-    });
-
-    it("doesn't store the frame score on the first roll if not a strike", function() {
-      game.oneRoll(6);
-      expect(game.totalFrameScore()).toEqual([])
-    });
-
   });
 
   describe('storing frame scores', function() {
@@ -68,6 +56,18 @@ describe ('Game', function() {
     it('increases frame number by two if there is a strike', function() {
       game.oneRoll(10);
       expect(game.roll).toEqual(2)
+    });
+
+    it('stores frame score on first roll if strike', function() {
+      game.oneRoll(3);
+      game.oneRoll(4);
+      game.oneRoll(10);
+      expect(game.totalFrameScore()).toEqual([[3,4],[10]])
+    });
+
+    it("doesn't store the frame score on the first roll if not a strike", function() {
+      game.oneRoll(6);
+      expect(game.totalFrameScore()).toEqual([])
     });
 
   });
@@ -157,20 +157,19 @@ describe ('Game', function() {
 
   describe ('a strike or a spare', function() {
 
-    it('returns a strike if it is a strike', function() {
+    beforeEach(function() {
       for (var i = 0; i < 9; i++) {
         game.oneRoll(3);
         game.oneRoll(5);
       }
+    });
+
+    it('returns a strike if it is a strike', function() {
       game.oneRoll(10);
       expect(game.strikeOrSpare()).toEqual('Strike')
     });
 
     it("returns spare if it is a spare", function() {
-      for(var i = 0; i < 9; i++) {
-        game.oneRoll(4);
-        game.oneRoll(4);
-      }
       game.oneRoll(4);
       game.oneRoll(6);
       expect(game.strikeOrSpare()).toEqual('Spare')
@@ -181,31 +180,26 @@ describe ('Game', function() {
 
   describe ('Final frame has bonus', function() {
 
-    it('if first roll was a strike, frame does not close after the second roll', function() {
+    beforeEach(function(){
       for (var i = 0; i < 9; i++) {
-        game.oneRoll(6);
+        game.oneRoll(4);
         game.oneRoll(3);
       }
+    });
+
+    it('if first roll was a strike, frame does not close after the second roll', function() {
       game.oneRoll(10);
-      game.oneRoll(4);
+      game.oneRoll(5);
       expect(game.frameNumber()).toEqual(10)
     });
 
     it("if it was a spare in the final frame, it doesn't close the frame after the second roll", function() {
-      for (var i = 0; i < 9; i++) {
-        game.oneRoll(6);
-        game.oneRoll(3);
-      }
       game.oneRoll(4);
       game.oneRoll(6);
       expect(game.frameNumber()).toEqual(10)
     });
 
     it('if there is no bonus in the final frame, frame closes after the second roll', function() {
-      for (var i = 0; i < 9; i++) {
-        game.oneRoll(6);
-        game.oneRoll(3);
-      }
       game.oneRoll(2);
       game.oneRoll(3);
       expect(game.frameNumber()).toEqual(11)
@@ -233,6 +227,60 @@ describe ('Game', function() {
       expect(game.getScore()).toEqual(9)
     });
 
+    it('adds the spare bonus in the next non-bonus frame', function() {
+      game.oneRoll(6);
+      game.oneRoll(4);
+      game.oneRoll(4);
+      expect(game.getScore()).toEqual(14)
+    });
+
+    it('totals score correctly', function() {
+      game.oneRoll(7);
+      game.oneRoll(3);
+      game.oneRoll(4);
+      game.oneRoll(3);
+      expect(game.getScore()).toEqual(21)
+    });
+
+    it('adds a strike bonus at the end of the next non-bonus frame', function() {
+      game.oneRoll(10);
+      game.oneRoll(5);
+      game.oneRoll(4);
+      expect(game.getScore()).toEqual(28)
+    });
+
+    it('two strikes and a frame with no bonus', function() {
+      game.oneRoll(10);
+      game.oneRoll(10);
+      game.oneRoll(7);
+      game.oneRoll(1);
+      expect(game.getScore()).toEqual(53)
+    });
+
+    it('three strikes', function() {
+      game.oneRoll(10);
+      game.oneRoll(10);
+      game.oneRoll(10);
+      expect(game.getScore()).toEqual(30)
+    });
+
+    it('three strikes and a 6', function() {
+      game.oneRoll(10);
+      game.oneRoll(10);
+      game.oneRoll(10);
+      game.oneRoll(6);
+      expect(game.getScore()).toEqual(56)
+    });
+
+    it('three strikes and a no-bonus frame', function() {
+      game.oneRoll(10);
+      game.oneRoll(10);
+      game.oneRoll(10);
+      game.oneRoll(5);
+      game.oneRoll(3);
+      expect(game.getScore()).toEqual(81)
+    });
+    
   });
-  
+
 });

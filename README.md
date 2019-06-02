@@ -42,13 +42,9 @@ Scorecard | Calculate total score
 
 Object | Message
 -|-
-Frame | Calculate score from rolls
+Frame | Calculate score
 Roll |
 
-Object | Message
--|-
-Strike | Add bonus
-Spare | Add bonus
 
 ### Strikes
 

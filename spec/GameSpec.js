@@ -224,4 +224,15 @@ describe ('Game', function() {
     });
 
   });
+
+  describe('score', function() {
+
+    it('adds the score for the rolls without bonus', function() {
+      game.oneRoll(4);
+      game.oneRoll(5);
+      expect(game.getScore()).toEqual(9)
+    });
+
+  });
+  
 });

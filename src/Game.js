@@ -68,8 +68,9 @@ Game.prototype.oneFrame = function() {
 };
 
 Game.prototype.nextFrame = function() {
-    this.frame += 1;
-    this.currentFrameScore = [];
+  this.totalScoreFrame();
+  this.frame += 1;
+  this.currentFrameScore = [];
 };
 
 Game.prototype.bonusPoints = function() {
@@ -103,5 +104,13 @@ Game.prototype.strikeOrSpare = function() {
 Game.prototype.gameOver = function() {
   if(this.frameNumber() === 11) {
     throw new Error('Game Over');
+  }
+};
+
+Game.prototype.totalScoreFrame = function(first_argument) {
+  if(this.currentFrameScore[0] === 10){
+    this.score += 10;
+  } else {
+    this.score += (this.currentFrameScore[0] + this.currentFrameScore[1])
   }
 };

@@ -43,6 +43,19 @@ In code review we'll be hoping to see:
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
 
+## How to use
+
+Clone this repo
+```bash
+open SpecRunner.html
+```
+Open the console with cmd + option + J
+
+Create a new scorecard in the console:
+```js
+var scorecard = new Scorecard
+```
+---
 ## User Stories
 ```
 As a player
@@ -55,7 +68,6 @@ Scorecard|showScore
 
 ### Console test
 ```js
-var scorecard = new Scorecard()
 scorecard.showScore()
   // output should be 0
 ```
@@ -69,7 +81,6 @@ Object|message
 -|-
 Scorecard|enterScore
 ```js
-var scorecard = new Scorecard()
 scorecard.showScore()
   // output is 0
 
@@ -90,16 +101,29 @@ Scorecard|frame
 ```
 As a player,
 Because because I have 2 attempts to knock down all the pins
-I should be able to enter 2 scores per round
+I should be able to enter 2 scores per frame
 ```
 Object|message
 -|-
 Scorecard|isFrame
 ```js
-var scorecard = new Scorecard()
 scorecard.isFrame()
   //output should be 1
 scorecard.enterScore(3)
 scorecard.enterScore(3)
 scorecard.isFrame()
   //output should be 2
+```
+---
+```
+As a player,
+Because I only have 10 pins that I am trying to knockdown
+I would like a warning if my score for a frame is more than 10
+```
+Object|message
+-|-
+Scorecard|enterScore
+expect error message
+```js
+scorecard.enterScore(11)
+ // "maximum input per frame is 10"

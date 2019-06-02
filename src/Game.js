@@ -72,3 +72,7 @@ Game.prototype.isStrike = function(rollScore) {
 Game.prototype.bonusFrame = function() {
   return this.currentFrameScore[0] === 10 || (this.currentFrameScore[0] + this.currentFrameScore[1]) === 10
 };
+
+Game.prototype.previousFrameBonus = function() {
+  return this.framesScores.slice(-1)[0][0] === 10 || this.framesScores.slice(-1)[0][0] + this.framesScores.slice(-1)[0][1] === 10
+};

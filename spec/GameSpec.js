@@ -98,5 +98,25 @@ describe ('Game', function() {
 
   });
 
+  describe ('check if last frame had a bonus', function() {
+
+    it('returns true if there was a strike in the previous frame', function() {
+      game.oneRoll(10);
+      expect(game.previousFrameBonus()).toBe(true)
+    });
+
+    it('returns true if there was a spare in the previous frame', function() {
+      game.oneRoll(6);
+      game.oneRoll(4);
+      expect(game.previousFrameBonus()).toBe(true)
+    });
+    
+    it('returns false if the previous frame did not have a bonus', function() {
+      game.oneRoll(3);
+      game.oneRoll(2);
+      expect(game.previousFrameBonus()).toBe(false)
+    });
+  
+  });
 
 });

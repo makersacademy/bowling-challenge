@@ -65,6 +65,11 @@ describe ('Game', function() {
       expect(game.totalFrameScore()).toEqual([[6, 3]]);
     });
 
+    it('increases frame number by two if there is a strike', function() {
+      game.oneRoll(10);
+      expect(game.roll).toEqual(2)
+    });
+
   });
 
   describe ('awarding bonus points', function() {

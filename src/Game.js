@@ -30,7 +30,7 @@ Game.prototype.totalFrameScore = function() {
 
 Game.prototype.oneRoll = function(rollScore) {
   this.gameOver();
-  this.addRoll();
+  this.addRoll(rollScore);
   this.currentFrameScore.push(rollScore); 
   if (this.bonusFrame() && this.finalFrame()) {
     this.strikeOrSpare();
@@ -41,8 +41,12 @@ Game.prototype.oneRoll = function(rollScore) {
   }
 };
 
-Game.prototype.addRoll = function() {
-  this.roll += 1;
+Game.prototype.addRoll = function(rollScore) {
+  if(rollScore !== 10 || this.frameNumber === 10) {
+    this.roll += 1
+  } else {
+    this.roll += 2;
+  }
 };
 
 Game.prototype.rollNo = function() {

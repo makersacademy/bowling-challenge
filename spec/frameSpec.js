@@ -146,4 +146,14 @@ describe('Frame', function() {
          expect(frame.isEnded()).toEqual(false);
       });
    });
+
+   describe('#addBonus', function() {
+      it('adds bonus to total', function() {
+         frame.recordScore(10);
+         frame.addBonus(3);
+         frame.addBonus(5);
+
+         expect(frame.getTotalScore()).toEqual(18);
+      });
+   });
 });

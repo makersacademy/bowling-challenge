@@ -35,6 +35,10 @@ Frame.prototype = {
 
       this._rollCount++;
    },
+   
+   addBonus: function(bonusScore) {
+      this._bonus += bonusScore;
+   },
 
    _validateScore: function(pinsHit) {
       if (this._firstRollScore + this._secondRollScore + pinsHit > 10) {

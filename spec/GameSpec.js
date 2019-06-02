@@ -14,7 +14,7 @@ describe ('Game', function() {
     });
 
     it('game starts with the first frame', function() {
-      expect(game.frame()).toEqual(1);
+      expect(game.frameNumber()).toEqual(1);
     });
 
     it('games starts on roll zero', function() {
@@ -22,11 +22,30 @@ describe ('Game', function() {
     });
   });
 
-  describe('score for one frame', function() {
+  describe('passing scores to the next frames', function() {
 
-    it('is 6 after a roll with 6 pins hit', function() {
+    it('frame number increases by three after six rolls', function() {
+      for(var i = 0; i < 6; i++) {
+        game.oneRoll(5);
+      }
+      expect(game.frameNumber()).toEqual(4);
+    });
+
+    it('frame number increases by one after three rolls', function() {
+      for(var i = 0; i < 3; i++) {
+        game.oneRoll(5);
+      }
+      expect(game.frameNumber()).toEqual(2);
+    });
+
+  });
+
+  describe('storing frame scores', function() {
+
+    it('stores frames scores in an array of frames', function() {
       game.oneRoll(6);
-      expect(game.totalFrameScore()).toEqual(6);
+      game.oneRoll(3);
+      expect(game.totalFrameScore()).toEqual([[6, 3]]);
     });
 
   });

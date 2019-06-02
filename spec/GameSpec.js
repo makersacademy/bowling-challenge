@@ -22,4 +22,9 @@ describe ('Game Scorecard', function() {
       expect(game.frame()).toBe(2);
     });
 
+    it('when a frame has a strike, next frame will start', function() {
+      game.roll(10);
+      expect(game.frame()).toEqual(2);
+    });
+
 });

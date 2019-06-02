@@ -1,11 +1,13 @@
 function Game() {
   this._totalScore = 0;
   this._frame = 1;
+  this._rollScore = 0;
   this._rollsPerFrame = 0;
   };
 
 Game.prototype.roll = function(rollScore) {
   if(rollScore <= 10) {
+    this._rollScore = rollScore;
     this._totalScore += rollScore;
     this._rollsPerFrame ++;
     this.addRoll();
@@ -23,7 +25,9 @@ Game.prototype.frame = function() {
 };
 
 Game.prototype.addRoll = function() {
-  if(this._rollsPerFrame < 2) {
+  if(this._rollScore === 10) {
+    this._frame ++;
+  } else if(this._rollsPerFrame < 2) {
     this._rollsPerFrame ++;
   } else {
     this._frame ++;

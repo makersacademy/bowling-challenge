@@ -23,7 +23,9 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 This application's testing suite uses Jasmine. To run the tests:  
 `open OpenRunner.html`
 
-This will open your web browser and run the tests with Jasmine.
+This will open your web browser and run the tests with Jasmine, which should display the following:  
+
+![Jasmine Tests](images/jasmine_tests.png)
 
 ## Bowling — how does it work?
 

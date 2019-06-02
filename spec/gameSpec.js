@@ -22,6 +22,11 @@ describe('A game', function () {
     expect(game.score()).toEqual(150);
   });
 
+  it('calculates a perfect game - all strikes', function () {
+    generateFrames([10], [10, 10, 10]);
+    expect(game.score()).toEqual(300);
+  });
+
   function generateFrames (frame, finalFrame) {
     for (i = 0; i < 9; i++) {
       game.roll(frame);

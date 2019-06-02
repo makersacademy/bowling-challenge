@@ -43,6 +43,18 @@ describe ('Game', function() {
       expect(game.frameNumber()).toEqual(2);
     });
 
+    it('stores frame score on first roll if strike', function() {
+      game.oneRoll(3);
+      game.oneRoll(4);
+      game.oneRoll(10);
+      expect(game.totalFrameScore()).toEqual([[3,4],[10]])
+    });
+
+    it("doesn't store the frame score on the first roll if not a strike", function() {
+      game.oneRoll(6);
+      expect(game.totalFrameScore()).toEqual([])
+    });
+
   });
 
   describe('storing frame scores', function() {
@@ -55,7 +67,7 @@ describe ('Game', function() {
 
   });
 
-  describe ('awarded bonus points', function() {
+  describe ('awarding bonus points', function() {
 
     it('first roll is a strike', function() {
       expect(game.isStrike(10)).toBe(true);

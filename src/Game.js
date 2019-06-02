@@ -33,8 +33,8 @@ Game.prototype.oneRoll = function(rollScore){
   this.currentFrameScore.push(rollScore); 
   if(this.rollNo() === 2) {
     this.oneFrame();
-  } else {
-    this.isStrike(rollScore)
+  } else if (this.isStrike(rollScore)) {
+    this.oneFrame();
   }
 };
 

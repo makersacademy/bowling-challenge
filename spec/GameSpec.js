@@ -150,10 +150,10 @@ describe ('Game', function() {
 
   });
 
-  describe('A strike or a Spare', function() {
+  describe ('a strike or a spare', function() {
 
     it('returns a strike if it is a strike', function() {
-      for(var i = 0; i < 9; i++) {
+      for (var i = 0; i < 9; i++) {
         game.oneRoll(3);
         game.oneRoll(5);
       }
@@ -173,4 +173,38 @@ describe ('Game', function() {
 
   });
 
+
+  describe ('Final frame has bonus', function() {
+
+    it('if first roll was a strike, frame does not close after the second roll', function() {
+      for (var i = 0; i < 9; i++) {
+        game.oneRoll(6);
+        game.oneRoll(3);
+      }
+      game.oneRoll(10);
+      game.oneRoll(4);
+      expect(game.frameNumber()).toEqual(10)
+    });
+
+    it("if it was a spare in the final frame, it doesn't close the frame after the second roll", function() {
+      for (var i = 0; i < 9; i++) {
+        game.oneRoll(6);
+        game.oneRoll(3);
+      }
+      game.oneRoll(4);
+      game.oneRoll(6);
+      expect(game.frameNumber()).toEqual(10)
+    });
+
+    it('if there is no bonus in the final frame, frame closes after the second roll', function() {
+      for (var i = 0; i < 9; i++) {
+        game.oneRoll(6);
+        game.oneRoll(3);
+      }
+      game.oneRoll(2);
+      game.oneRoll(3);
+      expect(game.frameNumber()).toEqual(11)
+    });
+
+  });
 });

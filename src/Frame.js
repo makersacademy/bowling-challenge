@@ -10,7 +10,9 @@ Frame.prototype.total = function (nextFrame) {
 };
 
 Frame.prototype._rollScore = function () {
-  return (this.rolls[0] + this.rolls[1]);
+  return this.rolls.reduce(function (score, roll) {
+    return score + roll;
+  }, 0);
 };
 
 Frame.prototype._bonus = function (nextFrame) {

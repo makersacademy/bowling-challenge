@@ -22,4 +22,13 @@ describe ('Game', function() {
     });
   });
 
+  describe('score for one frame', function() {
+
+    it('is 6 after a roll with 6 pins hit', function() {
+      game.oneRoll(6);
+      expect(game.totalFrameScore()).toEqual(6);
+    });
+
+  });
+
 });

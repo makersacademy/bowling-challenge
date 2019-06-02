@@ -1,35 +1,25 @@
 function Game() {
-  this._totalScore = 0;
-  this._frame = 1;
-  this._rollScore = 0;
-  this._rollsPerFrame = 0;
+  START_SCORE = 0
+  START_FRAME_NUMBER = 1
+  START_ROLL_COUNT = 0
   };
 
-Game.prototype.roll = function(rollScore) {
-  if(rollScore <= 10) {
-    this._rollScore = rollScore;
-    this._totalScore += rollScore;
-    this._rollsPerFrame ++;
-    this.addRoll();
-  } else {
-    throw new Error("Are you trying to cheat?");
-  }
-};
-
-Game.prototype.addScore = function() {
-  return this._totalScore;
+Game.prototype.getScore = function() {
+  return this.score = START_SCORE;
 };
 
 Game.prototype.frame = function() {
-  return this._frame;
+  return this.frame = START_FRAME_NUMBER;
 };
 
-Game.prototype.addRoll = function() {
-  if(this._rollScore === 10) {
-    this._frame ++;
-  } else if(this._rollsPerFrame < 2) {
-    this._rollsPerFrame ++;
-  } else {
-    this._frame ++;
-  }
+Game.prototype.rollCount = function() {
+  return this.rollCount = START_ROLL_COUNT;
 };
+
+
+
+
+
+
+
+

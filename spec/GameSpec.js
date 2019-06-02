@@ -1,30 +1,25 @@
 'use strict';
 
-describe ('Game Scorecard', function() {
+describe ('Game', function() {
   var game;
 
   beforeEach(function() {
     game = new Game();
   });
 
-    it('throws an error when score is wrong', function() {
-      expect(function() { game.roll(11); }).toThrow(new Error('Are you trying to cheat?'));
+  describe('initialize game', function() {
+
+    it('game starts with the score of zero', function() {
+      expect(game.getScore()).toEqual(0);
     });
 
-    it('holds the score from one single roll', function() {
-      game.roll(6);
-      expect(game.addScore()).toEqual(6);
+    it('game starts with the first frame', function() {
+      expect(game.frame()).toEqual(1);
     });
 
-    it('when a frame has two rolls, next frame will start', function() {
-      game.roll(6);
-      game.roll(4);
-      expect(game.frame()).toBe(2);
+    it('games starts on roll zero', function() {
+      expect(game.rollCount()).toEqual(0);
     });
-
-    it('when a frame has a strike, next frame will start', function() {
-      game.roll(10);
-      expect(game.frame()).toEqual(2);
-    });
+  });
 
 });

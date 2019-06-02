@@ -2,7 +2,7 @@ function BowlingGame() {
   this.score = 0;
   this.frames = [];
   this.currentFrame = [];
-  this.frameCounter = 1;
+  this.frameCounter = 0;
 };
 
 BowlingGame.prototype.rolls = function (roll1, roll2) {
@@ -21,10 +21,25 @@ BowlingGame.prototype.isSpare = function () {
   return this.currentFrame.reduce((a, b) => a + b, 10);
 };
 
+BowlingGame.prototype.isGutter = function () {
+  return this.getScore === 0;
+};
+
+BowlingGame.prototype.isPerfect = function () {
+  return this.getScore === 300;
+};
+
+BowlingGame.prototype.endGame = function () {
+    return this.frameCounter === 10;
+};
+
+BowlingGame.prototype.getScore = function () {
+  this.score
+};
+
 BowlingGame.prototype.newGame = function () {
   this.score = 0;
   this.frames = [];
   this.currentFrame = [];
   this.frameCounter = 1;
-
 };

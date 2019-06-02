@@ -30,4 +30,19 @@ describe('Bowling', function() {
     expect(bowlingGame.currentFrame[0]).toEqual(5);
   });
 
+  it('ends game after 10 frames', function () {
+    bowlingGame.frameCounter = 10
+    expect(bowlingGame.endGame).toBeTruthy();
+  });
+
+  it('is a gutter game if the player never scores', function () {
+    bowlingGame.rolls(0, 0);
+    expect(bowlingGame.isGutter).toBeTruthy();
+  });
+
+  it('is a perfect game if the player scores 300', function () {
+    bowlingGame.score = 300
+    expect(bowlingGame.isPerfect).toBeTruthy();
+  });
+
 });

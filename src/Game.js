@@ -29,6 +29,7 @@ Game.prototype.totalFrameScore = function() {
 };
 
 Game.prototype.oneRoll = function(rollScore) {
+  this.gameOver();
   this.addRoll();
   this.currentFrameScore.push(rollScore); 
   if (this.bonusFrame() && this.finalFrame()) {
@@ -92,5 +93,11 @@ Game.prototype.strikeOrSpare = function() {
     return 'Strike'
   } else {
     return 'Spare'
+  }
+};
+
+Game.prototype.gameOver = function() {
+  if(this.frameNumber() === 11) {
+    throw new Error('Game Over');
   }
 };

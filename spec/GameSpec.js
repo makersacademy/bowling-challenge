@@ -207,4 +207,16 @@ describe ('Game', function() {
     });
 
   });
+
+  describe('game over', function() {
+
+    it('throws an error if user makes a roll and frame is 11', function() {
+      for (var i = 0; i < 10; i++) {
+        game.oneRoll(4);
+        game.oneRoll(3);
+      }
+      expect( function(){ game.oneRoll(8); } ).toThrow(new Error("Game Over"));
+    });
+
+  });
 });

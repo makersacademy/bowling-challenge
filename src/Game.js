@@ -76,3 +76,7 @@ Game.prototype.bonusFrame = function() {
 Game.prototype.previousFrameBonus = function() {
   return this.framesScores.slice(-1)[0][0] === 10 || this.framesScores.slice(-1)[0][0] + this.framesScores.slice(-1)[0][1] === 10
 };
+
+Game.prototype.finalFrame = function() {
+  return this.frame == 10
+};

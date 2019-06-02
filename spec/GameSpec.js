@@ -114,9 +114,40 @@ describe ('Game', function() {
     it('returns false if the previous frame did not have a bonus', function() {
       game.oneRoll(3);
       game.oneRoll(2);
+      game.oneRoll(6);
+      game.oneRoll(0);
       expect(game.previousFrameBonus()).toBe(false)
     });
-  
+    
+  });
+
+  describe('last frame rolls', function() {
+
+    it('returns true if frame is number 10', function() {
+      for(var i = 0; i < 9; i++) {
+        game.oneRoll(4);
+        game.oneRoll(5);
+      }
+      expect(game.finalFrame()).toBe(true)
+    });
+
+    it('returns true if one roll has been done in frame number 10', function() {
+      for(var i = 0; i < 9; i++) {
+        game.oneRoll(6);
+        game.oneRoll(2);
+      }
+      game.oneRoll(8);
+      expect(game.finalFrame()).toBe(true)
+    });
+
+    it('returns false if frame is not number 10', function() {
+      for(var i = 0; i < 3; i++) {
+        game.oneRoll(3);
+        game.oneRoll(2);
+      }
+      expect(game.finalFrame()).toBe(false)
+    });
+
   });
 
 });

@@ -6,28 +6,28 @@ describe('Bowling', function() {
   });
 
   it('the score starts at 0', function() {
-    expect(bowlingGame._score).toBe(0);
-  });
-
-  it('has 10 frames for each game', function() {
-    expect(bowlingGame._maxFrames).toBe(10);
+    expect(bowlingGame.score).toBe(0);
   });
 
   it('you can roll twice and the score will change', function() {
-    bowlingGame.rolls(3, 4)
-    expect(bowlingGame._score).toBe(7);
-  });
-  it('you score a strike if you knock down 10 pins on your first roll', function() {
-    expect(bowlingGame.rolls(10, 0)).toBe('Strike');
+    bowlingGame.rolls(3, 4);
+    expect(bowlingGame.score).toEqual(7);
   });
 
-  it('you score a spare if you know down 10 pins with 2 rolls', function() {
-    expect(bowlingGame.rolls(6,4)).toBe('Spare');
+  it('score a strike if first roll is 10', function() {
+    bowlingGame.rolls(10, 0);
+    expect(bowlingGame.isStrike).toBeTruthy();
   });
 
-  it('after 2 rolls you move onto the next frame', function() {
-    bowlingGame.rolls(3, 5);
-    expect(bowlingGame._currentFrame).toBe(2);
-  })
+  it('score a spare is rolls equal 10', function() {
+    bowlingGame.rolls(4, 6);
+    expect(bowlingGame.isSpare).toBeTruthy();
+  });
+
+  it('resets current frame with each new roll', function ()  {
+    bowlingGame.rolls(3, 4);
+    bowlingGame.rolls(5, 2);
+    expect(bowlingGame.currentFrame[0]).toEqual(5);
+  });
 
 });

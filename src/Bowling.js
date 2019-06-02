@@ -1,16 +1,30 @@
 function BowlingGame() {
-  this._score = 0;
-  this._currentFrame = 1;
-  this._maxFrames = 10;
+  this.score = 0;
+  this.frames = [];
+  this.currentFrame = [];
+  this.frameCounter = 1;
 };
 
 BowlingGame.prototype.rolls = function (roll1, roll2) {
-  if (roll1 === 10) {
-    return 'Strike'
-  }
-  if (roll1 + roll2 === 10) {
-    return 'Spare'
-  }
-  this._score = (roll1 + roll2)
-  this._currentFrame += 1
+  this.currentFrame = []
+  this.currentFrame.push(roll1, roll2)
+  this.score = this.score + (this.currentFrame.reduce((a, b) => a + b, 0));
+  this.frames.push(this.currentFrame);
+  this.frameCounter += 1;
+};
+
+BowlingGame.prototype.isStrike = function () {
+  return this.currentFrame[0] === 10;
+};
+
+BowlingGame.prototype.isSpare = function () {
+  return this.currentFrame.reduce((a, b) => a + b, 10);
+};
+
+BowlingGame.prototype.newGame = function () {
+  this.score = 0;
+  this.frames = [];
+  this.currentFrame = [];
+  this.frameCounter = 1;
+
 };

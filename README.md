@@ -127,3 +127,19 @@ expect error message
 ```js
 scorecard.enterScore(11)
  // "maximum input per frame is 10"
+```
+---
+```
+As a player
+Because I can't roll any more balls if I knock all the pins over in one go
+I would like a strike to immediately end the frame.
+```
+Object|message
+-|-
+Scorecard|enterScore
+```js
+scorecard.isFrame()
+  // output is 1
+scorecard.enterScore(10)
+scorecard.isFrame()
+ // output is 2

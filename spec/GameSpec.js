@@ -8,12 +8,18 @@ describe ('Game Scorecard', function() {
   });
 
     it('throws an error when score is wrong', function() {
-      expect(function() { game.addRoll(11); }).toThrow(new Error('Are you trying to cheat?'));
+      expect(function() { game.roll(11); }).toThrow(new Error('Are you trying to cheat?'));
     });
 
-    it('two rolls, no spares, no strike', function() {
-      game.addRoll(6);
+    it('holds the score from one single roll', function() {
+      game.roll(6);
       expect(game.addScore()).toEqual(6);
+    });
+
+    it('when a frame has two rolls, next frame will start', function() {
+      game.roll(6);
+      game.roll(4);
+      expect(game.frame()).toBe(2);
     });
 
 });

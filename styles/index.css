@@ -36,12 +36,20 @@ button {
   padding: 8px 15px;
 }
 
+.newscore {
+  margin-top: 30px;
+  margin-left: 390px;
+  background-color: #3189CD;
+  font-family: Arial;
+  color: white;
+}
+
 table, td, th {
   border:1px solid #3189CD;
   margin-left: 100px;
   color: #ff0080;
-
   font-size:15px;
 }
 
 
+table.scorecard td {height: 10px; background: rgba(255, 255, 255, 0.5);}

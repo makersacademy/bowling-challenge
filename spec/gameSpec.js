@@ -44,6 +44,11 @@ describe("Game", function() {
       expect(game.allRolls).toEqual([5]);
     });
 
+    it("should create a key-value pair in 'scores'",function() {
+      game.rollOne(5);
+      expect(game.scores).toEqual({ 1: 5 })
+    });
+
     it("should start a new frame if a strike", function() {
       game.rollOne(10);
       expect(game.frame).toEqual(2);
@@ -53,7 +58,7 @@ describe("Game", function() {
     it("should push to 'activeStrikes' array if a strike", function() {
       game.rollOne(10);
       expect(game.activeStrikes).toEqual([[1, 0]]);
-    })
+    });
   });
 
   describe("The 'rollTwo' method", function() {
@@ -72,11 +77,25 @@ describe("Game", function() {
       expect(game.allRolls).toEqual([5, 5]);
     });
 
+    it("should add pins to the correct frame value in 'scores'", function() {
+      game.rollTwo(4);
+      expect(game.scores).toEqual({1: 9});
+    });
+
     it("should start a new frame", function() {
       game.rollTwo(5);
       expect(game.frame).toEqual(2);
       expect(game.scoreOne).toEqual(null);
       expect(game.scoreTwo).toEqual(null);
-    })
+    });
+  });
+
+  describe("The '_resolveStrikes' method", function() {
+    it("should add to a frame the next two scores after a strike", function() {
+      game.rollOne(10);
+      game.rollOne(5);
+      game.rollTwo(2);
+      expect(game.scores[1]).toEqual(17);
+    });
   });
 });

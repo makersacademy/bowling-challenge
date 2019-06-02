@@ -1,43 +1,39 @@
-// Game properties
+'use strict';
+
 function Game() {
-  this.frameNumber = 1;
-  this.scoreTotal = 0;
+  this.frame = 1;
+
+  this.allRolls = [];
+  this.scores = {};
+
+  // array of arrays with format [[frameNumber, allRolls index], ...]
+  this.activeStrikes = [];
 
   this.scoreOne = null;
   this.scoreTwo = null;
-
-  this.isSpare = false;
-  this.isStrike = false;
 }
 
-// Public methods
 Game.prototype.rollOne = function(pins) {
   this.scoreOne = pins;
-  this.scoreTotal += pins;
-  this._checkStrike();
+  this.allRolls.push(pins);
+  this._checkStrike(pins);
 }
 
 Game.prototype.rollTwo = function(pins) {
   this.scoreTwo = pins;
-  this.scoreTotal += pins;
-  this._checkSpare();
+  this.allRolls.push(pins);
   this._newFrame();
 }
 
-// Private methods
-Game.prototype._checkStrike = function() {
-  if(this.scoreOne === 10) {
-    this.isStrike = true;
+Game.prototype._checkStrike = function(pins) {
+  if (pins === 10) {
+    this.activeStrikes.push([this.frame, this.allRolls.length - 1])
     this._newFrame();
   }
-}
-
-Game.prototype._checkSpare = function() {
-  if(this.scoreOne + this.scoreTwo === 10) {this.isSpare = true;}
 }
 
 Game.prototype._newFrame = function() {
   this.scoreOne = null;
   this.scoreTwo = null;
-  this.frameNumber++;
+  this.frame++
 }

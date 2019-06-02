@@ -12,12 +12,12 @@ describe('Frame', function() {
          expect(frame.getTotalScore()).toEqual(0);
       });
 
-      it("does not have stike by default", function(){
-         expect(frame.hasStrike()).toEqual(false);
+      it("is not strike by default", function(){
+         expect(frame.isStrike()).toEqual(false);
       });
 
-      it("does not have spare by default", function(){
-         expect(frame.hasSpare()).toEqual(false);
+      it("is not spare by default", function(){
+         expect(frame.isSpare()).toEqual(false);
       });
 
       it('is not ended by default', function() {
@@ -80,5 +80,70 @@ describe('Frame', function() {
 
          expect(function() { frame.recordScore(2) }).toThrowError('Invalid score');
       });
-   })
+   });
+
+   describe('#isStrike', function() {
+      it('returns true when first score is 10', function() {
+         frame.recordScore(10);
+
+         expect(frame.isStrike()).toEqual(true);
+      });
+
+      it('returns false when first score is 0 and second is 10', function() {
+         frame.recordScore(0);
+         frame.recordScore(10);
+
+         expect(frame.isStrike()).toEqual(false);
+      });
+
+      it('returns false when the two scores together are less than 10', function() {
+         frame.recordScore(1);
+         frame.recordScore(2);
+
+         expect(frame.isStrike()).toEqual(false);
+      });
+   });
+
+   describe('#isSpare', function() {
+      it('returns true when the two scores together are 10', function() {
+         frame.recordScore(5);
+         frame.recordScore(5);
+
+         expect(frame.isSpare()).toEqual(true);
+      });
+
+      it('returns false when the first roll is a strike', function() {
+         frame.recordScore(10);
+
+         expect(frame.isSpare()).toEqual(false);
+      });
+
+      it('returns false when the two scores together are less than 10', function() {
+         frame.recordScore(1);
+         frame.recordScore(2);
+
+         expect(frame.isSpare()).toEqual(false);
+      });
+   });
+
+   describe('#isEnded', function() {
+      it('returns true when the first roll is a strike', function() {
+         frame.recordScore(10);
+
+         expect(frame.isEnded()).toEqual(true);
+      });
+
+      it('returns true when player rolled twice', function() {
+         frame.recordScore(1);
+         frame.recordScore(2);
+
+         expect(frame.isEnded()).toEqual(true);
+      });
+
+      it('returns false after the first non-strike roll', function() {
+         frame.recordScore(5);
+
+         expect(frame.isEnded()).toEqual(false);
+      });
+   });
 });

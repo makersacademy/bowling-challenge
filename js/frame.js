@@ -10,17 +10,17 @@ Frame.prototype = {
       return this._firstRollScore + this._secondRollScore + this._bonus;
    },
 
-   hasStrike: function() {
+   isStrike: function() {
       return this._rollCount === 1 && this._firstRollScore === 10;
    },
 
-   hasSpare: function() {
+   isSpare: function() {
       return this._firstRollScore + this._secondRollScore === 10
-             && !this.hasStrike();
+             && !this.isStrike();
    },
 
    isEnded: function() {
-      return this.hasStrike() || this._rollCount === 2;
+      return this.isStrike() || this._rollCount === 2;
    },
 
    recordScore: function(pinsHit) {

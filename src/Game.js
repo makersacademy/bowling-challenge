@@ -51,16 +51,9 @@ Game.prototype.rollNo = function() {
 };
 
 Game.prototype.oneFrame = function() {
-  if(this.bonusFrame()) {
-    
-    if (this.finalFrame()) {
+  if(this.bonusFrame() && this.finalFrame()) {
       // Bonus type: if spare, 1 more roll; if strike, 2 more rolls.
     this.strikeOrSpare();
-  } else {
-    this.framesScores.push(this.currentFrameScore);
-    this.nextFrame();
-    } 
-    
   } else {
       this.framesScores.push(this.currentFrameScore);
       this.nextFrame();

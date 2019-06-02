@@ -1,11 +1,11 @@
-function BowlingGame() {
+function Scorecard() {
   this.score = 0;
   this.frames = [];
   this.currentFrame = [];
   this.frameCounter = 0;
 };
 
-BowlingGame.prototype.rolls = function (roll1, roll2) {
+Scorecard.prototype.rolls = function (roll1, roll2) {
   this.currentFrame = []
   this.currentFrame.push(roll1, roll2)
   this.score = this.score + (this.currentFrame.reduce((a, b) => a + b, 0));
@@ -13,31 +13,31 @@ BowlingGame.prototype.rolls = function (roll1, roll2) {
   this.frameCounter += 1;
 };
 
-BowlingGame.prototype.isStrike = function () {
+Scorecard.prototype.isStrike = function () {
   return this.currentFrame[0] === 10;
 };
 
-BowlingGame.prototype.isSpare = function () {
+Scorecard.prototype.isSpare = function () {
   return this.currentFrame.reduce((a, b) => a + b, 10);
 };
 
-BowlingGame.prototype.isGutter = function () {
+Scorecard.prototype.isGutter = function () {
   return this.getScore === 0;
 };
 
-BowlingGame.prototype.isPerfect = function () {
+Scorecard.prototype.isPerfect = function () {
   return this.getScore === 300;
 };
 
-BowlingGame.prototype.endGame = function () {
+Scorecard.prototype.endGame = function () {
     return this.frameCounter === 10;
 };
 
-BowlingGame.prototype.getScore = function () {
+Scorecard.prototype.getScore = function () {
   this.score
 };
 
-BowlingGame.prototype.newGame = function () {
+Scorecard.prototype.newGame = function () {
   this.score = 0;
   this.frames = [];
   this.currentFrame = [];

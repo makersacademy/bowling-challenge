@@ -150,4 +150,27 @@ describe ('Game', function() {
 
   });
 
+  describe('A strike or a Spare', function() {
+
+    it('returns a strike if it is a strike', function() {
+      for(var i = 0; i < 9; i++) {
+        game.oneRoll(3);
+        game.oneRoll(5);
+      }
+      game.oneRoll(10);
+      expect(game.strikeOrSpare()).toEqual('Strike')
+    });
+
+    it("returns spare if it is a spare", function() {
+      for(var i = 0; i < 9; i++) {
+        game.oneRoll(4);
+        game.oneRoll(4);
+      }
+      game.oneRoll(4);
+      game.oneRoll(6);
+      expect(game.strikeOrSpare()).toEqual('Spare')
+    });
+
+  });
+
 });

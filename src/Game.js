@@ -51,9 +51,20 @@ Game.prototype.rollNo = function() {
 };
 
 Game.prototype.oneFrame = function() {
-  this.framesScores.push(this.currentFrameScore);
-  this.bonusFrame();
-  this.nextFrame();
+  if(this.bonusFrame()) {
+    
+    if (this.finalFrame()) {
+      // Bonus type: if spare, 1 more roll; if strike, 2 more rolls.
+    this.strikeOrSpare();
+  } else {
+    this.framesScores.push(this.currentFrameScore);
+    this.nextFrame();
+    } 
+    
+  } else {
+      this.framesScores.push(this.currentFrameScore);
+      this.nextFrame();
+  }
 };
 
 Game.prototype.nextFrame = function() {
@@ -79,4 +90,12 @@ Game.prototype.previousFrameBonus = function() {
 
 Game.prototype.finalFrame = function() {
   return this.frame == 10
+};
+
+Game.prototype.strikeOrSpare = function() {
+  if(this.currentFrameScore[0] === 10) {
+    return 'Strike'
+  } else {
+    return 'Spare'
+  }
 };

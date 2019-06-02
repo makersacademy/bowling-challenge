@@ -79,6 +79,24 @@ describe ('Game', function() {
   
   });
 
+  describe ('frame has a bonus', function() {
+    
+    it('returns true if the last frame had a strike', function() {
+      game.currentFrameScore = [10];
+      expect(game.bonusFrame()).toBe(true)
+    });
+
+    it('returns true if the last frame had a spare', function() {
+      game.currentFrameScore = [5, 5];
+      expect(game.bonusFrame()).toBe(true)
+    });
+
+    it('it returns false if the last frame did not have a bonus', function() {
+      game.currentFrameScore = [3, 2];
+      expect(game.bonusFrame()).toBe(false)
+    });
+
+  });
 
 
 });

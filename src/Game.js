@@ -52,6 +52,7 @@ Game.prototype.rollNo = function() {
 
 Game.prototype.oneFrame = function() {
   this.framesScores.push(this.currentFrameScore);
+  this.bonusFrame();
   this.nextFrame();
 };
 
@@ -66,4 +67,8 @@ Game.prototype.bonusPoints = function() {
 
 Game.prototype.isStrike = function(rollScore) {
   return rollScore === 10
+};
+
+Game.prototype.bonusFrame = function() {
+  return this.currentFrameScore[0] === 10 || (this.currentFrameScore[0] + this.currentFrameScore[1]) === 10
 };

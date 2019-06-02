@@ -13,4 +13,7 @@ describe("Scorecard", function() {
     scorecard.enterScore(3)
     expect(scorecard.showScore()).toEqual(3);
   });
+  it("should show the frame number", function() {
+    expect(scorecard.isFrame()).toEqual(1)
+  });
 });

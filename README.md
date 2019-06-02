@@ -57,8 +57,7 @@ Scorecard|showScore
 ```js
 var scorecard = new Scorecard()
 scorecard.showScore()
-
-// output should be 0
+  // output should be 0
 ```
 ---
 ```
@@ -79,3 +78,28 @@ scorecard.showScore()
   // output is 3
 ```
 ---
+```
+As a player
+So I can have two chances per frame to knock down the pins
+I need to be able to add a score twice per frames
+```
+Object|message
+-|-
+Scorecard|frame
+---
+```
+As a player,
+Because because I have 2 attempts to knock down all the pins
+I should be able to enter 2 scores per round
+```
+Object|message
+-|-
+Scorecard|isFrame
+```js
+var scorecard = new Scorecard()
+scorecard.isFrame()
+  //output should be 1
+scorecard.enterScore(3)
+scorecard.enterScore(3)
+scorecard.isFrame()
+  //output should be 2

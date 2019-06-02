@@ -2,7 +2,7 @@
 Bowling Challenge
 =================
 
-A bowling scorecard that counts and sums a single player's input rolls.
+A bowling scorecard that counts and sums a single player's input of rolls.
 
 
 ## Overview

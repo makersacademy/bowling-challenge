@@ -56,14 +56,14 @@ describe('Frame', function() {
          frame.recordScore(2);
 
          expect(function() { frame.recordScore(4) })
-            .toThrowError('Frame already ended with two rolls');
+            .toThrowError('Frame already ended');
       });
 
       it('throws error when recording score after a strike', function() {
          frame.recordScore(10);
 
          expect(function() { frame.recordScore(1) })
-            .toThrowError('Frame already ended with a strike');
+            .toThrowError('Frame already ended');
       });
 
       it('throws error when recording a score greater than 10', function() {

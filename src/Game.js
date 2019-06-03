@@ -180,3 +180,14 @@ Game.prototype.gameOver = function() {
     throw new Error('Game Over');
   }
 };
+
+Game.prototype.reset = function() {
+  this.score = START_SCORE;
+  this.frame = START_FRAME_NUMBER;
+  this.roll = START_ROLL_COUNT
+  this.framesScores = [];
+  this.currentFrameScore = [];
+  this.rollsScores = [];
+  this.oneFrameScores = [];
+  this.bonus = START_BONUS;
+};

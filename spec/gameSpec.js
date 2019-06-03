@@ -31,6 +31,10 @@ describe("Game", function() {
     it("should have an 'activeStrikes' property set to []", function() {
       expect(game.activeStrikes).toEqual([]);
     });
+
+    it("should have an '_isSpare' property set to false", function() {
+      expect(game.isSpare).toEqual(false);
+    });
   });
 
   describe("The 'rollOne' method", function() {
@@ -88,6 +92,11 @@ describe("Game", function() {
       expect(game.scoreOne).toEqual(null);
       expect(game.scoreTwo).toEqual(null);
     });
+
+    it("should set 'isSpare' to true if 10 pins are hit total", function() {
+      game.rollTwo(5);
+      expect(game.isSpare).toEqual(true);
+    });
   });
 
   describe("The '_resolveStrikes' method", function() {
@@ -97,5 +106,22 @@ describe("Game", function() {
       game.rollTwo(2);
       expect(game.scores[1]).toEqual(17);
     });
+  });
+
+  describe("The '_resolveSpare' method", function() {
+    beforeEach(function() {
+      game.rollOne(5);
+      game.rollTwo(5);
+      game.rollOne(5);
+      game.rollTwo(3);
+    });
+
+    it("should add the next roll to the previous frame", function() {
+      expect(game.scores[1]).toEqual(15);
+    });
+
+    it("should set 'isSpare' to false", function() {
+      expect(game.isSpare).toEqual(false);
+    })
   });
 });

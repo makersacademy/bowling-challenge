@@ -3,14 +3,11 @@
 // Properties
 function Game() {
   this.frame = 1;
-
   this.allRolls = [];
+  this.scores = {}; // key = frame, value = score
 
-  // key = frame, value = score
-  this.scores = {};
-
-  // array of arrays with format [[frame, allRolls index], ...]
-  this.activeStrikes = [];
+  this.isSpare = false;
+  this.activeStrikes = []; // array of arrays: [[frame, allRolls index], ...]
 
   this.scoreOne = null;
   this.scoreTwo = null;
@@ -20,12 +17,14 @@ function Game() {
 Game.prototype.rollOne = function(pins) {
   this._addScores(pins);
   this._resolveStrikes();
+  this._resolveSpare();
   this._checkStrike(pins);
 }
 
 Game.prototype.rollTwo = function(pins) {
   this._addScores(pins);
   this._resolveStrikes();
+  this._checkSpare();
   this._newFrame();
 }
 
@@ -48,9 +47,12 @@ Game.prototype._checkStrike = function(pins) {
   }
 }
 
+Game.prototype._checkSpare = function() {
+  if (this.scoreOne + this.scoreTwo === 10) { this.isSpare = true; }
+}
+
 Game.prototype._newFrame = function() {
-  this.scoreOne = null;
-  this.scoreTwo = null;
+  [this.scoreOne, this.scoreTwo] = [null, null];
   this.frame++;
 }
 
@@ -64,5 +66,12 @@ Game.prototype._resolveStrikes = function() {
       this.scores[frame] += (this.allRolls[index+1] + this.allRolls[index+2]);
       this.activeStrikes.shift();
     }
+  }
+}
+
+Game.prototype._resolveSpare = function() {
+  if (this.isSpare) {
+    this.scores[this.frame - 1] += this.scoreOne;
+    this.isSpare = false;
   }
 }

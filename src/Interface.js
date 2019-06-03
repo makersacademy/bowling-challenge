@@ -39,7 +39,7 @@ $(document).ready(function() {
   });
 
   function updateScore() {
-  	$('#score').text(game.getScore());
+  	$('#totalscore').text(game.getScore());
   	thisRoll = game.roll;    
     $('#row1' + thisRoll).text(game.rollsScores[thisRoll - 1]);
 

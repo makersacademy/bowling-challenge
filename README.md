@@ -10,18 +10,13 @@ Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-
-![Bowling Rules]()
-
-![Project approach]()
-
 ## Technologies used:
 
 - Javascript code with jQuery created interface
 - Tested using Jasmine (BDD framework for testing Javascript code)
 
 ## Images:
-![Start Screen]()
+![Start Screen](images/Game.png)
 
 ## APPROACH:
 
@@ -32,6 +27,8 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 * The Rolls will be 1-2 and 1-3 in the 10th frame
 
 * The knocked Pins will be 0-10
+
+![Diagram](images/diagram.png)
 
 
 ## BOWLING RULES

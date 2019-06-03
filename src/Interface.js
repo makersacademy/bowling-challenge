@@ -2,6 +2,11 @@ $(document).ready(function() {
 	var game = new Game();
 	updateScore();
 
+  $('#roll0').on('click', function() {
+  	game.oneRoll(0);
+  	updateScore();
+  });
+
   $('#roll1').on('click', function() {
   	game.oneRoll(1);
   	updateScore();
@@ -17,6 +22,13 @@ $(document).ready(function() {
   	updateScore();
   });
 
+  $('#roll4').on('click', function() {
+  	game.oneRoll(4);
+  	updateScore();
+  });
+
+
+
 
 
   $('#reset')on('click', function() {
@@ -28,11 +40,10 @@ $(document).ready(function() {
 
   function updateScore() {
   	$('#score').text(game.getScore());
-  	rolls = game.roll;
-    if ( rolls === 1 && rolls === 1) 	    
-    $('#row1' + rolls).text(game.rollsScores[rolls - 1]);
+  	thisRoll = game.roll;    
+    $('#row1' + thisRoll).text(game.rollsScores[thisRoll - 1]);
 
-  	frameNo = game.frame - 1;
- 	$('#marker' + frame).text(game.oneFrameScores[frameNo - ]);
+  	thisFrame = game.frame - 1;
+ 	$('#marker' + thisFrame).text(game.oneFrameScores[thisFrame - ]);
  }
 });

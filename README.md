@@ -1,23 +1,27 @@
-
-Bowling Challenge
-=================
+# Bowling Challenge
 
 ## How to use
 
 1. Clone this repository;
 
-2. Install Jasmine (if not already globally install) or type ```npm install``` to install packages;
+2. Install Jasmine (if not already globally install) or type `npm install` to install packages;
 
-3. Open ```node```
+3. Open `node`
 
 4. Type, in sequence:
-``var Bowling = require('./bowling/js')```
-``var bowling = new Bowling();```
+   ` var Bowling = require('./lib/bowling.js')``` `var bowling = new Bowling();```
 
-5. To play, type ``` bowling.roll(<pin>)``` replacing the pin with the number of pins you wish to knock down.
+5. To play, type `bowling.roll(<pin>)` replacing the pin with the number of pins you wish to knock down.
 
-6. At anytime, to see your scorecard, type ```bowling.getScorecard()```.
+6. At anytime, to see your scorecard, type `bowling.getScorecard()`.
 
+## To test
+
+Run `npm test` on your terminal.
+
+## To run the Linter
+
+Run `node_modules/.bin/eslint <filename>` on your terminal.
 
 ### System
 
@@ -33,8 +37,8 @@ Linter: ESLint
 
 ### Next Steps
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
+- Create a nice interactive animated interface with jQuery.
+- Set up [Travis CI](https://travis-ci.org) to run your tests.
 
 ### User Stories Still to be implemented
 

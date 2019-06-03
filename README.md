@@ -1,8 +1,40 @@
-
 Bowling Challenge
 =================
 
+This is a bowling scorecard, that tracks the scores in a game of bowling. I have built this using a TDD approach in Javascript and have used jasmine as the testing framework.
 
+The specification is below:
+
+- The game starts at 0
+- A player rolls a gutter game if they role 20 balls without knocking any down
+- There are 10 frames with 2 bowls per frame, unless the player bowls a strike (in which case there is 1 bowl for that frame)
+- The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+- The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+- If a player bowls a strike in the 10th frame, they will get another go. This applies in the 11th frame, but the player can have no more than 12 frames.
+- A perfect game is bowled with a final score of 300.
+- A gutter game is bowled with a final score of 0.
+
+## Instructions for Use:
+- Run the command in the folder you would like to store this app
+```
+git clone https://github.com/samkitchen94/bowling-challenge.git
+```
+- In the relevant folder in the command line, run
+```
+open SpecRunner.html
+```
+
+ This will show you the passing tests in a browser
+- Next open the console within the browser and here you can interact with the code
+
+## Features to be added:
+As soon as I get more time an interface will be added to this so that the user can open this within their browser and input their own scores when bowling. The scorecard will calculate their scores and take into account any spares, strikes etc.
+
+This will be done using jQuery.
+
+
+
+----
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README

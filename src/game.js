@@ -19,6 +19,8 @@ Game.prototype.rollOne = function(pins) {
   this.scoreOne = pins;
   this.allRolls.push(pins);
 
+  if (this.activeStrikes.length > 0) { this._resolveStrikes(); }
+
   this.scores[this.frame] = pins;
   this._checkStrike(pins);
 }
@@ -26,6 +28,8 @@ Game.prototype.rollOne = function(pins) {
 Game.prototype.rollTwo = function(pins) {
   this.scoreTwo = pins;
   this.allRolls.push(pins);
+
+  if (this.activeStrikes.length > 0) { this._resolveStrikes(); }
 
   this.scores[this.frame] += pins;
   this._newFrame();
@@ -51,5 +55,6 @@ Game.prototype._resolveStrikes = function() {
 
   if (index === this.allRolls.length - 3) {
     this.scores[frame] += (this.allRolls[index + 1] + this.allRolls[index + 2]);
+    this.activeStrikes.shift();
   }
 }

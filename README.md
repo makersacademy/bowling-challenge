@@ -32,9 +32,9 @@ In order to run the tests, you should run the following command in your command 
 
 ``` open SpecRunner.html
 
-Then, you will see all the tests are passed like the following picture in the browser :
+Then, you will see all the tests are passed in the browser. 
 
-![Tests passed Example](images/tests.png)
+<!-- ![Tests passed Example](images/tests.png) -->
 
 ## You can find the rules of the game in the following text.
 

@@ -1,32 +1,40 @@
-### Using the application
+## Bowling playing application
 
-In order to use the application, you can clone or fork the repository and
+This is a single page application (SPA) that enables you to play bowling. In this application, you enter the number of the pins you hit in each role of different rounds, then you will see your point at the end of the round.
 
-use the command:
+## How to use the application
+
+To use the application, clone the current repository:
+
+[Bowling challenge](https://github.com/soroushh/bowling-challenge)
+
+Then run the following command to see the application on your browser :
 
 ``` open index.html ```
 
-Then you can see the application working on your browser.
+Then you will see the interface for choosing your pins at each rounds of the game.In addition, you will see the number of the round and the score you have got:
 
-# In this challenge, we are going to stimulate a bowling scorecard.
+![Ten Pin Score Example](images/app.png)
 
-It will use Javascript and Jquery and the test framework for the javascript is Jasmine. 
+## Techonologies used
 
-Two classes are defined.
+Javascript (Jquery)
 
-The first one has the responsibility to make every frame with two roles.
-it is called "Frame.js".
+test framework: Jasmine
 
-The second class has the responsibility to count the whole points of the frames.
+CSS
 
+HTML
 
-## The extra things need to be done.
+## How to run the tests
 
-1. There is a lot of coding inside the html. In fact, they are related to the
-condition when the tenth round is spare or strike. They should be done in the
-count class, so it needs to be refactored.
+In order to run the tests, you should run the following command in your command line:
 
-2. There should be a lot of css things to make the interface beautiful.
+``` open SpecRunner.html
+
+Then, you will see all the tests are passed like the following picture in the browser :
+
+![Tests passed Example](images/tests.png)
 
 ## You can find the rules of the game in the following text.
 

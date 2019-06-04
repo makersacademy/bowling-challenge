@@ -30,9 +30,9 @@ HTML
 
 In order to run the tests, you should run the following command in your command line:
 
-``` open SpecRunner.html
+``` open SpecRunner.html ```
 
-Then, you will see all the tests are passed in the browser. 
+Then, you will see all the tests are passed in the browser.
 
 <!-- ![Tests passed Example](images/tests.png) -->
 

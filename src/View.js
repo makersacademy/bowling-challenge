@@ -1,19 +1,24 @@
 (function(exports){
-  function View(controller) {
-    this.controller = controller
+  function View(game) {
+    this.game = game
   }
 
   View.prototype = {
+
+    updateDOM: function(name, num, score) {
+      this.updateTotals(name, num);
+      this.updateReadOnly(name, num, score);
+    },
 
     updateTotals: function(name, num) {
       for(let num = 0; num<20; num++){
         let name = '#frameTotal' + parseInt(num+1, 10);
         // console.log(this.controller.frameTotals())
-        if(this.controller.frameTotals()[num]){
-          $(name).text("Frame: " + this.controller.frameTotals()[num]);
+        if(this.game.frameTotals()[num]){
+          $(name).text("Frame: " + this.game.frameTotals()[num]);
         }
       }
-      $('#gameTotal').text("Game Total: " + this.controller.totalScore());
+      $('#gameTotal').text("Game Total: " + this.game.calculateTotal());
     },
 
     updateReadOnly: function(name, num, score) {

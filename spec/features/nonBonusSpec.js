@@ -1,12 +1,12 @@
-var Controller = require('../../src/Controller');
+var Game = require('../../src/Game');
 
 describe("Game with no bonus points", function(){
   it("Rolls a non-10 score every frame", function(){
-    controller = new Controller();
+    game = new Game();
     for(let i=0; i<20; i++){
-      controller.addBall(3);
+      game.recordScore(3);
     }
-    expect(controller.totalScore()).toEqual(60);
-    expect(controller.isGameOver()).toEqual(true);
+    expect(game.calculateTotal()).toEqual(60);
+    expect(game.isComplete()).toEqual(true);
   });
 });

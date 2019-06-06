@@ -10,7 +10,14 @@ function Game(frame = Frame) {
 }
 
 Game.prototype = {
-  recordBall: function(score) {
+
+  recordScore: function(score){
+      this._recordBall(score);
+      this._checkEndOfGame();
+      this._addBonusScores();
+  },
+
+  _recordBall: function(score) {
     if(this.complete !== true)
     {
       if (this.frameList.length === 9 && this._isPreviousFrameComplete()) {
@@ -24,6 +31,12 @@ Game.prototype = {
         this._addToFrame(score, this.frameList.slice(-1)[0]);
       }
     }
+  },
+
+  frameTotals: function() {
+    return this.frameList.map(function(frame) {
+      return frame.total;
+    });
   },
 
   _isFirstFrame: function() {
@@ -40,7 +53,7 @@ Game.prototype = {
       frame.recordScore(score, this.lastRound);
   },
 
-  checkEndOfGame: function() {
+  _checkEndOfGame: function() {
     if (this.frameList.length === 10 && this.frameList.slice(-1)[0].isComplete() === true) {
       this.complete = true;
     }
@@ -56,7 +69,7 @@ Game.prototype = {
     else { return false; }
   },
 
-  addBonusScores: function() {
+  _addBonusScores: function() {
     currentList = this.frameList
     this.frameList.forEach(function (frame, index) {
       let bonusPoints = 0;

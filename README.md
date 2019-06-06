@@ -8,8 +8,7 @@ _My solution is the subdirectory /Bowling. Original challenge README [here](./ch
 <details><summary><i>expand Table of Contents</i></summary>
 
   - [Getting started](#getting-started)
-  - [Usage](#usage)
-    - [A summary](#a-summary)
+  - [Overview of Features](#overview-of-features)
     - [Creating a new Bowling Scorecard](#creating-a-new-bowling-scorecard)
     - [Add roll to Bowling Scorecard](#add-roll-to-bowling-scorecard)
       - [Adding a normal roll](#adding-a-normal-roll)
@@ -34,11 +33,11 @@ cd bowling-challenge/Bowling
 open SpecRunner.html
 ```
 
-## Usage
+The results are currently as follows, all tests passing (except for pending test that was deemed not MVP):
 
----
+![Tests passing](./images/tests_passing.png)
 
-### A summary
+## Overview of Features
 
 - Create a new Bowling object: `var bowling = new Bowling()`
 - Add a roll: `bowling.addRoll({frame: 1, pinsDown: 4})`

@@ -1,4 +1,4 @@
-var Game = require('../../src/Game');
+// var Game = require('../../src/Game');
 
 describe("Gutter game", function(){
   it("Rolls a zero for every frame of the game", function(){

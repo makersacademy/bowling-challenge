@@ -33,4 +33,4 @@ Frame.prototype.isComplete = function() {
   return this.completed;
 };
 
-module.exports = Frame;
+// module.exports = Frame;

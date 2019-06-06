@@ -1,4 +1,4 @@
-var Game = require('../../src/Game');
+// var Game = require('../../src/Game');
 
 describe("Game with no bonus points", function(){
   it("Rolls a non-10 score every frame", function(){

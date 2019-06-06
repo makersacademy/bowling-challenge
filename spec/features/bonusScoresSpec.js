@@ -1,4 +1,4 @@
-var Game = require('../../src/Game');
+// var Game = require('../../src/Game');
 
 describe("Bonus scores in rounds 1-9", function(){
   describe("Spares", function(){

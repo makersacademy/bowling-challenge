@@ -1,4 +1,4 @@
-var Game = require('../src/Game');
+// var Game = require('../src/Game');
 
 describe('Game', function(){
   beforeEach(function(){

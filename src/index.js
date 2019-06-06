@@ -1,8 +1,6 @@
 // 'use strict';
-var Game = require('./Game');
-var View = require('./View');
-
-
+// var Game = require('./Game');
+// var View = require('./View');
 
 $(document).ready(function() {
 

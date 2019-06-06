@@ -34,6 +34,6 @@
     }
   }
 
-  module.exports = View;
+  exports.View = View;
 
 })(this);

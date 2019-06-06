@@ -1,3 +1,5 @@
+var Game = require('../src/Game');
+
 describe('Game', function(){
   beforeEach(function(){
     game = new Game();

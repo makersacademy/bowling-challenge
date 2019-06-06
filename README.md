@@ -17,18 +17,19 @@ This weekend (and next) the focus is on JavaScript. This is a totally new langua
 
 ## Setting up the project
 - `git clone `
-- `bundle install`
 - `npm i -g eslint` to install the linter
 
 ## Using the project
 
 #### To run the project
 
-- `open -a "Google Chrome" index.html` in the console
+- [MAC] `open -a "Google Chrome" index.html` in the console
+- [LINUX] `google-chrome index.html`
 
 #### To run tests
 
-- To run Jasmine tests, type `open -a "Google Chrome" SpecRunner.html` into the console
+- [MAC] To run Jasmine tests in the browser, type `open -a "Google Chrome" SpecRunner.html` into the console
+- [LINUX] To run Jasmine tests in the browser, type `google-chrome SpecRunner.html` into the console
 
 #### To run the linter (eslint)
 

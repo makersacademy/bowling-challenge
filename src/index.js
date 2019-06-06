@@ -1,4 +1,5 @@
 // 'use strict';
+var Controller = require('./Controller');
 
 $(document).ready(function() {
   controller = new Controller();

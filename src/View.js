@@ -18,7 +18,7 @@
 
     updateReadOnly: function(name, num, score) {
       $(name).attr('readonly', true);
-      
+
       if(score === 10)
       {
         let nextName = '#ball' + parseInt(num+2, 10);
@@ -29,6 +29,6 @@
     }
   }
 
-  exports.View = View
+  module.exports = View;
 
 })(this);

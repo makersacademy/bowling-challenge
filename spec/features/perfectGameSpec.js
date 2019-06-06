@@ -1,3 +1,5 @@
+var Controller = require('../../src/Controller');
+
 describe("Perfect game", function(){
   it("Rolls a 10 for every frame of the game", function(){
     controller = new Controller();

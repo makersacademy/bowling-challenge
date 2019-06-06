@@ -1,3 +1,5 @@
+var Controller = require('../src/Controller');
+
 describe('Controller', function() {
   beforeEach(function (){
     controller = new Controller();

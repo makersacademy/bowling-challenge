@@ -1,3 +1,5 @@
+var Controller = require('../../src/Controller');
+
 describe("Game with no bonus points", function(){
   it("Rolls a non-10 score every frame", function(){
     controller = new Controller();

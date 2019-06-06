@@ -32,3 +32,5 @@ Frame.prototype.recordScore = function(score, lastRound = false){
 Frame.prototype.isComplete = function() {
   return this.completed;
 };
+
+module.exports = Frame;

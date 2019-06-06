@@ -1,3 +1,6 @@
+var Game = require('./Game');
+var View = require('./View');
+
 function Controller() {
   this.game = new Game();
   this.view = new View(this);
@@ -31,3 +34,5 @@ Controller.prototype = {
   }
 
 }
+
+module.exports = Controller;

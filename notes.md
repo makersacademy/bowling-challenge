@@ -20,3 +20,34 @@ To run Jasmine tests, type `open -a "Google Chrome" SpecRunner.html` into the co
 ## To run the linter (eslint)
 
 To run the linter, type `eslint lib/**` (this might need double quotes around the folder)
+
+
+## Installing npm and node js on linux machine
+
+- To get the latest version of apt-get on linux:
+`sudo apt-get update`
+- To install nodejs and npm:
+`sudo apt-get install nodejs`
+`sudo apt-get install npm` (npm is the node package manager)
+
+NOTE: on linux, use nodejs as the command rather than just node (MAC)
+[nodejs instructions](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04)
+
+Export allclasses as modules:
+
+`module.exports = ClassName;`
+
+And require them in the spec files:
+
+`var ClassName = require('../src/ClassName');`
+
+Then to install nyc:
+
+`npm install --save-dev nyc`
+
+To actually run the test coverage stats and the tests, update package.json to include:
+`"scripts": {
+  "test": "jasmine",
+  "coverage": "nyc npm run test"
+},`
+When you then run `npm run coverage` from the command line it will run the tests and the coverage stats.

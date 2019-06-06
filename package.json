@@ -8,7 +8,8 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine",
+    "coverage": "nyc npm run test"
   },
   "repository": {
     "type": "git",
@@ -22,10 +23,12 @@
   "homepage": "https://github.com/samanthaixer/bowling-challenge#readme",
   "devDependencies": {
     "eslint": "^5.16.0",
+    "jasmine": "^3.4.0",
     "karma": "^4.0.1",
     "karma-chrome-launcher": "^2.2.0",
     "karma-firefox-launcher": "^1.1.0",
-    "karma-jasmine": "^2.0.1"
+    "karma-jasmine": "^2.0.1",
+    "nyc": "^14.1.1"
   },
   "dependencies": {},
   "keywords": [

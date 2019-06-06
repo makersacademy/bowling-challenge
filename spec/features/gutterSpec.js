@@ -1,3 +1,5 @@
+var Controller = require('../../src/Controller');
+
 describe("Gutter game", function(){
   it("Rolls a zero for every frame of the game", function(){
     controller = new Controller();

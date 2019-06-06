@@ -1,3 +1,5 @@
+var Controller = require('../../src/Controller');
+
 describe("Bonus scores in rounds 1-9", function(){
   describe("Spares", function(){
     beforeEach(function() {

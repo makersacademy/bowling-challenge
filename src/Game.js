@@ -1,4 +1,5 @@
 // 'use strict';
+var Frame = require('./Frame');
 
 function Game(frame = Frame) {
   this.Frame = frame
@@ -110,3 +111,5 @@ Game.prototype.getFrameMessage = function(frameNumber) {
     return "Bonus!";
   }
 }
+
+module.exports = Game;

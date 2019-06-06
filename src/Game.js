@@ -17,6 +17,24 @@ Game.prototype = {
       this._addBonusScores();
   },
 
+  frameTotals: function() {
+    return this.frameList.map(function(frame) {
+      return frame.total;
+    });
+  },
+
+  isComplete: function() {
+    return this.complete;
+  },
+
+  calculateTotal: function() {
+    let total = 0;
+    this.frameList.forEach(function(frame){
+      total += frame.total;
+    });
+    return total;
+  },
+
   _recordBall: function(score) {
     if(this.complete !== true)
     {
@@ -33,14 +51,13 @@ Game.prototype = {
     }
   },
 
-  frameTotals: function() {
-    return this.frameList.map(function(frame) {
-      return frame.total;
-    });
-  },
-
   _isFirstFrame: function() {
     if(this.frameList.length === 0) { return true; }
+    else { return false; }
+  },
+
+  _isPreviousFrameComplete: function() {
+    if(this.frameList.slice(-1)[0].isComplete() === true) { return true; }
     else { return false; }
   },
 
@@ -53,74 +70,54 @@ Game.prototype = {
       frame.recordScore(score, this.lastRound);
   },
 
+
   _checkEndOfGame: function() {
     if (this.frameList.length === 10 && this.frameList.slice(-1)[0].isComplete() === true) {
       this.complete = true;
     }
-    // else { return false; }
-  },
-
-  isComplete: function() {
-    return this.complete;
-  },
-
-  _isPreviousFrameComplete: function() {
-    if(this.frameList.slice(-1)[0].isComplete() === true) { return true; }
-    else { return false; }
   },
 
   _addBonusScores: function() {
-    currentList = this.frameList
+    currentList = this.frameList;
+    game = this;
     this.frameList.forEach(function (frame, index) {
       let bonusPoints = 0;
-      let isTen = frame.balls.reduce(function(total, ball) { return total += ball; }, 0);
-      if(isTen === 10 && frame.total === 10) {
-        if(currentList[index+1]) {
-          if (frame.balls.length === 1 ) {
-            // strike
-            let ball1 = currentList[index+1].balls[0]
-            let ball2 = null;
-            if (currentList[index+1].balls[0] === 10 && currentList[index+2]){
-              ball2 = currentList[index+2].balls[0];
-            }
-            else {
-              ball2 = currentList[index+1].balls[1]
-            }
+      let nextFrame = currentList[index+1]
+      let frameAfterNext = currentList[index+2]
+      if(nextFrame) {
+        if (frame.isStrike()) {
+          bonusBall2 = game._calculateSecondBonus(nextFrame, frameAfterNext);
 
-            if (ball2){
-              bonusPoints += ball1 + ball2;
-            }
+          if (bonusBall2){
+            bonusPoints += nextFrame.firstBall() + bonusBall2;
           }
-          else {
-            // spare
-            let ball1 = currentList[index+1].balls[0]
-            bonusPoints += ball1;
-          }
+        }
+        else if(frame.isSpare()) {
+          bonusPoints += nextFrame.firstBall();
         }
       }
       frame.total += bonusPoints;
     });
   },
 
-  calculateTotal: function() {
-    let total = 0;
-    this.frameList.forEach(function(frame){
-      total += frame.total;
-    });
-    return total;
+  _calculateSecondBonus: function(nextFrame, frameAfterNext) {
+    if (nextFrame.isStrike() && frameAfterNext){
+      return frameAfterNext.firstBall();;
+    }
+    else {
+      return nextFrame.secondBall();
+    }
   },
 
-  frameIsBonus: function(frame) {
-    let isTen = frame.balls.reduce(function(total, ball) { return total += ball; }, 0);
-
-    if(isTen === 10) { return true; }
+  _frameIsBonus: function(frame) {
+    if(frame.isStrike() || frame.isSpare()) { return true; }
     else { return false; }
   }
 }
 
 Game.prototype.getFrameMessage = function(frameNumber) {
   console.log(this.frameList[frameNumber]);
-  if(Game.prototype.frameIsBonus(this.frameList[frameNumber]) === true) {
+  if(Game.prototype._frameIsBonus(this.frameList[frameNumber]) === true) {
     return "Bonus!";
   }
 }

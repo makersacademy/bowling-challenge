@@ -38,6 +38,7 @@ describe('Frame', function(){
       frame.recordScore(10);
       expect(frame.isComplete()).toBe(true);
       expect(frame.balls).toEqual([10]);
+      expect(frame.isStrike()).toBe(true);
     });
 
     it("only contains one ball in the first frame", function(){
@@ -45,6 +46,16 @@ describe('Frame', function(){
       frame.recordScore(7);
       expect(frame.isComplete()).toBe(true);
       expect(frame.balls).toEqual([10]);
+    });
+  });
+
+  describe("adding a spare", function() {
+    it("correctly has two balls and a total of 10", function(){
+      frame.recordScore(3);
+      frame.recordScore(7);
+      expect(frame.isComplete()).toBe(true);
+      expect(frame.balls).toEqual([3, 7]);
+      expect(frame.isSpare()).toBe(true);
     });
   });
 

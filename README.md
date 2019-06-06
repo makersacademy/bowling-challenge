@@ -138,7 +138,9 @@ bowling.totalScore();
 
 I wrote out a "perfect game" scorecard so that I could understand how bonuses were applied:
 
-![Scorecard for a perfect game](./Bowling/images/perfect_game.png)
+<div  align="center">
+<img src="./Bowling/images/perfect_game.png" title="Scorecard for a perfect game" alt="an example scorecard showing a perfect game" width="500px">
+</div>
 
 ## Further work
 

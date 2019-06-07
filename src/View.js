@@ -6,12 +6,12 @@
   View.prototype = {
 
     updateDOM: function(tagName, ballNumber, score) {
-      this.updateFrameTotals();
-      this.updateGameTotal();
-      this.updateReadOnly(tagName, ballNumber, score);
+      this._updateFrameTotals();
+      this._updateGameTotal();
+      this._updateReadOnly(tagName, ballNumber, score);
     },
 
-    updateFrameTotals: function() {
+    _updateFrameTotals: function() {
       this.game.frameList.forEach(function (frame, index) {
         let tagName = '#frameTotal' + parseInt(index+1, 10);
         $(tagName).text("Frame: " + this.game.getFrameTotal(index));
@@ -19,18 +19,22 @@
       })
     },
 
-    updateGameTotal: function() {
+    _updateGameTotal: function() {
       $('#gameTotal').text("Game Total: " + this.game.calculateTotal());
     },
 
-    updateReadOnly: function(tagName, ballNumber, score) {
-      $(tagName).attr('readonly', true);
+    _updateReadOnly: function(tagName, ballNumber, score) {
+      this._setTagToReadOnly(tagName);
 
       if(score === 10)
       {
-        let nexttagName = '#ball' + parseInt(ballNumber+2, 10);
-        $(nexttagName).attr('readonly', true);
+        let nextTagName = '#ball' + parseInt(ballNumber+2, 10);
+        this._setTagToReadOnly(nextTagName);
       }
+    },
+
+    _setTagToReadOnly: function(tagName) {
+      $(tagName).attr('readonly', true);
     }
   }
 

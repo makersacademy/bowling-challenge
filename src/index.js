@@ -10,7 +10,7 @@ $(document).ready(function() {
   for(let ballNumber = 0; ballNumber<20; ballNumber++) {
     let tagName = '#ball' + parseInt(ballNumber+1, 10);
     $(tagName).on('change', function() {
-      let score = $(tagName)[0].value;
+      let score = parseInt($(tagName)[0].value, 10);
       valid = validateInput(score, ballNumber);
       if (valid !== false) {
         game.recordScore(parseInt(score, 10));

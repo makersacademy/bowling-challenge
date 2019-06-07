@@ -5,7 +5,6 @@ function Game(frame = Frame) {
   this.Frame = frame
   this.complete = false;
   this.frameList = [];
-  // this.bonuses = [];
   this.lastRound = false;
 }
 
@@ -17,10 +16,8 @@ Game.prototype = {
       this._addBonusScores();
   },
 
-  frameTotals: function() {
-    return this.frameList.map(function(frame) {
-      return frame.total;
-    });
+  getFrameTotal: function(frameNumber) {
+    return this.frameList[frameNumber].total;
   },
 
   isComplete: function() {

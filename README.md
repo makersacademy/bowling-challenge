@@ -71,6 +71,7 @@ Steps I followed:
 - Make the user interface pretty including using flash to notify a problem
 - Look to see if I could use better syntax anywhere - map or reduce, foreach instead of a for loop for arrays etc
 - Add error handling to stop the user adding more than 10 points per frame
+- Build feature tests from the interface
 
 ### User Stories
 
@@ -142,7 +143,7 @@ Once I understood the user stories, I modelled the objects and their methods, us
 
 - The game holds:
   - A list of frames for the game
-  - A list of currently active bonus objects
+  - A list of currently active bonus objects - **NOW REMOVED**
 - A frame holds:
   - Details of the balls rolled and the scores for those
   - A frame total which will include bonus points

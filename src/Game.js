@@ -109,17 +109,17 @@ Game.prototype = {
     }
   },
 
-  _frameIsBonus: function(frame) {
-    if(frame.isStrike() || frame.isSpare()) { return true; }
-    else { return false; }
-  }
+  // _frameIsBonus: function(frame) {
+  //   if(frame.isStrike() || frame.isSpare()) { return true; }
+  //   else { return false; }
+  // }
 }
 
-Game.prototype.getFrameMessage = function(frameNumber) {
-  console.log(this.frameList[frameNumber]);
-  if(Game.prototype._frameIsBonus(this.frameList[frameNumber]) === true) {
-    return "Bonus!";
-  }
-}
+// Game.prototype.getFrameMessage = function(frameNumber) {
+//   console.log(this.frameList[frameNumber]);
+//   if(Game.prototype._frameIsBonus(this.frameList[frameNumber]) === true) {
+//     return "Bonus!";
+//   }
+// }
 
 // module.exports = Game;

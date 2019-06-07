@@ -27,7 +27,7 @@
       if(score === 10)
       {
         let nextName = '#ball' + parseInt(num+2, 10);
-        console.log(nextName)
+        // console.log(nextName)
         $(nextName).attr('readonly', true);
         // $(nextName).attr('tabindex', '-1');
       }

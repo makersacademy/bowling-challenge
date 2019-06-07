@@ -1,35 +1,38 @@
 # The Bowling Challenge
 
-This weekend (and next) the focus is on JavaScript. This is a totally new language and concept for me. My weekend challenge will be focusing on what have I learned about JavaScript this week, and how can I continue to use the same process to learn more about it. The challenge itself this week is complex so I am going to focus on understanding the business logic first, implementing the user interface second.
+This project provides a way for a user to record their bowling scores in a scorecard, including calculating bonus points for spares and strikes.
+
+NOTE: This project does not play a game of bowling or roll the ball for the user.
 
 ## Technologies used
 
-- JavaScript for most of the functionality
-- HTML and CSS for the web page
-- Jasmine for the tests
-- ESLint for the linter
-- Node.js and travis for automated tests
+- Most of the project is build in JavaScript
+- The web page is built in HTML and CSS
+- Tests are written in Jasmine
+- ESLint is used for the linter
+- I have attempted to use Node.js and travis for automated tests on github but this is not currently working
 - Karma for running automated tests - note this is not yet working
     - `npm install karma --save-dev`
     - `npm install karma-jasmine karma-firefox-launcher --save-dev`
     - `npm install -g karma-cli`
 
-
 ## Setting up the project
+To set up the project on your own machine:
+
 - `git clone `
 - `npm i -g eslint` to install the linter
 
 ## Using the project
 
-#### To run the project
+#### To open the user interface
 
 - [MAC] `open -a "Google Chrome" index.html` in the console
 - [LINUX] `google-chrome index.html`
 
-#### To run tests
+#### To run the tests
 
-- [MAC] To run Jasmine tests in the browser, type `open -a "Google Chrome" SpecRunner.html` into the console
-- [LINUX] To run Jasmine tests in the browser, type `google-chrome SpecRunner.html` into the console
+- [MAC] To run Jasmine tests in the browser, type `open -a "Google Chrome" SpecRunner.html` into the terminal
+- [LINUX] To run Jasmine tests in the browser, type `google-chrome SpecRunner.html` into the terminal
 
 #### To run the linter (eslint)
 
@@ -37,7 +40,11 @@ This weekend (and next) the focus is on JavaScript. This is a totally new langua
 
 ## My approach
 
-- Setup of a basi git repo so that I can make notes and feel ready to build
+JavaScript was a totally new language and concept for me when I originally created this project. The logic in the challenge was complex so I initially focused on understanding the business logic. I implemented a user interface second and finally spent a lot of time refactoring to improve what I had written.
+
+Steps I followed:
+
+- Setup of a basic git repo so that I can make notes and feel ready to build
 - Understand the rules of bowling and model how that all works
 - TDD a game, frame and bonus class
 - End of first weekend - basic scores and strikes/spares working but does not work for two strikes in a row
@@ -46,18 +53,22 @@ This weekend (and next) the focus is on JavaScript. This is a totally new langua
 - Not working - final frame will calculate the first bonus ball as part of a normal role if you roll a strike with the first ball.
 - Not working - user interface doesn't allow for 3 balls to be thrown in the final frame
 
+- Later:
+  - Refactoring the code to have an MVC model and removing the additional "controller" object which was duplicating code that could be in game or in the index.js (which essentially is the controller)
+  - Refactoring the code to extract responsibilities out of game and into frame where appropriate
+  - Refactoring the code to have more meaningful variables, new methods to DRY the code and trying to make the bonus points calculation as simple as possible
+
 ### Let's TDD
-- Next I started to build my code using TDD. Or so I thought. I went straight to unit tests, first to set up the initial game and then second to start building frames
+- I started to build my code using TDD. Or so I thought. I went straight to unit tests, first to set up the initial game and then second to start building frames
 - About an hour into my merry TDD process, Ed posted in the slack channel a recommendation to write a feature test for the gutter game first. Doh! Feature tests!!
 - As it turned out, a bit of my game spec seems to be a bit of a feature test anyway but my next step was to build the proper feature test.
 
 
-### Still to do
+### Things I would still like to do
 
 - Make the interface clearer that a strike or spare has been scored
 - Update functionality for frame 10 with the additional ball - if a 10 is scored first then don't count the extra point. Also update index.html to allow 3 balls - only make the 3rd appear if relevant?
 - Make the user interface pretty including using flash to notify a problem
-- Do all the normal refactoring for single responsibility!!
 - Look to see if I could use better syntax anywhere - map or reduce, foreach instead of a for loop for arrays etc
 - Add error handling to stop the user adding more than 10 points per frame
 
@@ -140,85 +151,3 @@ Once I understood the user stories, I modelled the objects and their methods, us
   - The type of bonus - strike or spare
   - If it is a strike, it will hold the first bonus point
   - The frame in which the bonus started accruing
-
-
-
-
-****
-
-THE ORIGINAL Bowling Challenge
-=================
-
-
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
-
-## The Task
-
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
-
-Count and sum the scores of a bowling game for one player (in JavaScript).
-
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
-
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
-
-## Bowling — how does it work?
-
-### Strikes
-
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
-
-### Spares
-
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-### 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-### Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-### Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

@@ -28,8 +28,6 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 
 * The knocked Pins will be 0-10
 
-![Diagram](images/diagram.png)
-
 
 ## BOWLING RULES
 

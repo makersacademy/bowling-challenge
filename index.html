@@ -2,7 +2,9 @@
 <html lang='en'>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="style/style.css">
+        <link rel="stylesheet" type="text/css" href="style/bootstrap-4.3.1-dist/css">
+        <link rel="stylesheet" type="text/css" href="style/bootstrap-4.3.1-dist/js">
         <title>Bowling Scorecard</title>
     </head>
     
@@ -23,44 +25,60 @@
                 <th colspan="2">Total</th>
             </tr>
             <tr>
-                <td id="1st-frame-1st-roll"></td>
-                <td id="1st-frame-2nd-roll"></td>
-                <td id="2nd-frame-1st-roll"></td>
-                <td id="2nd-frame-2nd-roll"></td>
-                <td id="3rd-frame-1st-roll"></td>
-                <td id="3rd-frame-2nd-roll"></td>
-                <td id="4th-frame-1st-roll"></td>
-                <td id="4th-frame-2nd-roll"></td>
-                <td id="5th-frame-1st-roll"></td>
-                <td id="5th-frame-2nd-roll"></td>
-                <td id="6th-frame-1st-roll"></td>
-                <td id="6th-frame-2nd-roll"></td>
-                <td id="7th-frame-1st-roll"></td>
-                <td id="7th-frame-2nd-roll"></td>
-                <td id="8th-frame-1st-roll"></td>
-                <td id="8th-frame-2nd-roll"></td>
-                <td id="9th-frame-1st-roll"></td>
-                <td id="9th-frame-2nd-roll"></td>
-                <td id="10th-frame-1st-roll"></td>
-                <td id="10th-frame-2nd-roll"></td>
-                <td id="10th-frame-3rd-roll"></td>
-                <td colspan="2" id="total-score"></td>
+                <td frame="1" roll="1"></td>
+                <td frame="1" roll="2"></td>
+                <td frame="2" roll="1"></td>
+                <td frame="2" roll="2"></td>
+                <td frame="3" roll="1"></td>
+                <td frame="3" roll="2"></td>
+                <td frame="4" roll="1"></td>
+                <td frame="4" roll="2"></td>
+                <td frame="5" roll="1"></td>
+                <td frame="5" roll="2"></td>
+                <td frame="6" roll="1"></td>
+                <td frame="6" roll="2"></td>
+                <td frame="7" roll="1"></td>
+                <td frame="7" roll="2"></td>
+                <td frame="8" roll="1"></td>
+                <td frame="8" roll="2"></td>
+                <td frame="9" roll="1"></td>
+                <td frame="9" roll="2"></td>
+                <td frame="10" roll="1"></td>
+                <td frame="10" roll="2"></td>
+                <td frame="10" roll="3"></td>
+                <td colspan="2" rowspan="2" id="game-total-score"></td>
             </tr>
             <tr>
-                <td colspan="2" id="1st-frame"></td>
-                <td colspan="2" id="2nd-frame"></td>
-                <td colspan="2" id="3rd-frame"></td>
-                <td colspan="2" id="4th-frame"></td>
-                <td colspan="2" id="5th-frame"></td>
-                <td colspan="2" id="6th-frame"></td>
-                <td colspan="2" id="7th-frame"></td>
-                <td colspan="2" id="8th-frame"></td>
-                <td colspan="2" id="9th-frame"></td>
-                <td colspan="3" id="10th-frame"></td>
+                <td colspan="2" id="frame-1-total"></td>
+                <td colspan="2" id="frame-2-total"></td>
+                <td colspan="2" id="frame-3-total"></td>
+                <td colspan="2" id="frame-4-total"></td>
+                <td colspan="2" id="frame-5-total"></td>
+                <td colspan="2" id="frame-6-total"></td>
+                <td colspan="2" id="frame-7-total"></td>
+                <td colspan="2" id="frame-8-total"></td>
+                <td colspan="2" id="frame-9-total"></td>
+                <td colspan="3" id="frame-10-total"></td>
             </tr>
         </table>
+        
+        <div>
+            <button class="score-button">0</button>
+            <button class="score-button">1</button>
+            <button class="score-button">2</button>
+            <button class="score-button">3</button>
+            <button class="score-button">4</button>
+            <button class="score-button">5</button>
+            <button class="score-button">6</button>
+            <button class="score-button">7</button>
+            <button class="score-button">8</button>
+            <button class="score-button">9</button>
+            <button class="score-button">10</button>
+            <button id="reset">Reset</button>
+        </div>
+        <script src="js/jquery-3.4.1.min.js"></script>
         <script src="js/frame.js"></script>
         <script src="js/scoreCard.js"></script>
-        <script> src="interface.js"</script>
+        <script src="js/interface.js"></script>
     </body>
 </html>

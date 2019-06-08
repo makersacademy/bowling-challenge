@@ -43,6 +43,17 @@ describe('ScoreCard', function() {
          expect(scoreCard.frames.length).toEqual(2);
          expect(scoreCard.frames[1].getTotalScore()).toEqual(4);
       });
+
+      it('adds score to final frame after the ninth frame ended', function() {
+         for(var i = 0; i < 9; i++) {
+            scoreCard.recordScore(10);
+         }
+
+         scoreCard.recordScore(1);
+
+         expect(scoreCard.frames.length).toEqual(10);
+         expect(scoreCard.frames[9]._isFinalFrame).toEqual(true);
+      });
    });
 
    describe('Applying bonus', function() {
@@ -104,6 +115,17 @@ describe('ScoreCard', function() {
          }
 
          expect(function() { scoreCard.recordScore(1) }).toThrowError('Game already ended');
+      });
+   });
+
+   describe('Perfect game', function() {
+      it('returns a total score of 300 after a perfect game', function() {
+         for(var i = 0; i < 12; i++) {
+            scoreCard.recordScore(10);
+         }
+   
+         expect(scoreCard.isGameEnded()).toEqual(true);
+         expect(scoreCard.getTotalScore()).toEqual(300);
       });
    });
 });

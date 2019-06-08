@@ -62,7 +62,7 @@ $(document).ready(function() {
   	$('.eachroll').text('');
   	$('.eachframe').text('');
   	updateScore();
-  });
+  }); 
 
   function updateScore() {
   	$('#totalscore').text(game.score);

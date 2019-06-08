@@ -153,7 +153,7 @@ Game.prototype.totalScoreResult = function() {
 }
 return this.currentFrameScore[0] + this.currentFrameScore[1]
   }
-};
+}; 
 
 Game.prototype.updateScore = function() {
   this.score += (this.totalScoreResult() + this.bonus)

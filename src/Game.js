@@ -181,13 +181,13 @@ Game.prototype.gameOver = function() {
   }
 };
 
-Game.prototype.reset = function() {
-  this.score = START_SCORE;
-  this.frame = START_FRAME_NUMBER;
-  this.roll = START_ROLL_COUNT
+Game.prototype.resetGame = function() {
+  this.score = 0;
+  this.frame = 1;
+  this.roll = 0
   this.framesScores = [];
   this.currentFrameScore = [];
   this.rollsScores = [];
   this.oneFrameScores = [];
-  this.bonus = START_BONUS;
+  this.bonus = 1;
 };

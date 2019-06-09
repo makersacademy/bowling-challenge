@@ -5,8 +5,7 @@ function Game() {
   this._MAXSCORE = 10;
 
   this.frame = 1;
-  this.scoreOne = null;
-  this.scoreTwo = null;
+  this.rolls = [];
   this._isSpare = false;
 
   this.scores = {};
@@ -14,18 +13,18 @@ function Game() {
   this.activeStrikes = []; // array of arrays: [[turn, allRolls index], ...]
 }
 
-Game.prototype.rollOne = function(pins) {
-  this._addScores(pins);
-  this._resolveStrikes();
-  this._resolveSpare();
-  this._checkStrike(pins);
-}
-
-Game.prototype.rollTwo = function(pins) {
-  this._addScores(pins);
-  this._resolveStrikes();
-  this._checkSpare();
-  this._newFrame();
+Game.prototype.roll = function(pins) {
+  if (this.rolls.length === 0) {
+    this._addScores(pins);
+    this._resolveStrikes();
+    this._resolveSpare();
+    this._checkStrike(pins);
+  } else {
+    this._addScores(pins);
+    this._resolveStrikes();
+    this._checkSpare();
+    this._newFrame();
+  }
 }
 
 Game.prototype.total = function() {
@@ -39,11 +38,11 @@ Game.prototype.total = function() {
 // Private methods
 Game.prototype._addScores = function(pins) {
   if (this.frame <= this._NUMBEROFFRAMES) {
-    if (this.scoreOne === null) {
-      this.scoreOne = pins;
+    if (this.rolls.length === 0) {
+      this.rolls.push(pins);
       this.scores[this.frame] = pins;
     } else {
-      this.scoreTwo = pins;
+      this.rolls.push(pins);
       this.scores[this.frame] += pins;
     }
   }
@@ -58,11 +57,11 @@ Game.prototype._checkStrike = function(pins) {
 }
 
 Game.prototype._checkSpare = function() {
-  if (this.scoreOne + this.scoreTwo === this._MAXSCORE) { this.isSpare = true; }
+  if (this.rolls[0] + this.rolls[1] === this._MAXSCORE) { this.isSpare = true; }
 }
 
 Game.prototype._newFrame = function() {
-  [this.scoreOne, this.scoreTwo] = [null, null];
+  this.rolls = [];
   this.frame++;
 }
 
@@ -80,7 +79,7 @@ Game.prototype._resolveStrikes = function() {
 
 Game.prototype._resolveSpare = function() {
   if (this.isSpare) {
-    this.scores[this.frame - 1] += this.scoreOne;
+    this.scores[this.frame - 1] += this.rolls[0];
     this.isSpare = false;
   }
 }

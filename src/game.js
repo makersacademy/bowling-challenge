@@ -7,20 +7,20 @@ function Game() {
   this.frame = 1;
   this.rolls = [];
   this._isSpare = false;
+  this.activeStrikes = []; // array of arrays: [[turn, allRolls index], ...]
 
   this.scores = {};
   this.allRolls = [];
-  this.activeStrikes = []; // array of arrays: [[turn, allRolls index], ...]
 }
 
 Game.prototype.roll = function(pins) {
   if (this.rolls.length === 0) {
-    this._addScores(pins);
+    this._addRolls(pins, 1);
     this._resolveStrikes();
     this._resolveSpare();
     this._checkStrike(pins);
   } else {
-    this._addScores(pins);
+    this._addRolls(pins, 2);
     this._resolveStrikes();
     this._checkSpare();
     this._newFrame();
@@ -35,16 +35,10 @@ Game.prototype.total = function() {
   return sum;
 }
 
-// Private methods
-Game.prototype._addScores = function(pins) {
+Game.prototype._addRolls = function(pins, rollNumber) {
   if (this.frame <= this._NUMBEROFFRAMES) {
-    if (this.rolls.length === 0) {
-      this.rolls.push(pins);
-      this.scores[this.frame] = pins;
-    } else {
-      this.rolls.push(pins);
-      this.scores[this.frame] += pins;
-    }
+    this.rolls.push(pins);
+    rollNumber === 1 ? this.scores[this.frame] = pins : this.scores[this.frame] += pins;
   }
   this.allRolls.push(pins);
 }

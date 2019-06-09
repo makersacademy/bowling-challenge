@@ -33,10 +33,10 @@ describe("Game", function() {
     });
   });
 
-  describe("The 'rollOne' method", function() {
-    it("should set 'scoreOne' to its argument", function() {
+  describe("The first use of 'roll' method in a frame", function() {
+    it("should set 'rolls[0]' to its argument", function() {
       game.roll(5);
-      expect(game.rolls).toEqual([5]);
+      expect(game.rolls[0]).toEqual(5);
     });
 
     it("should push argument to 'allRolls' array", function() {
@@ -61,15 +61,15 @@ describe("Game", function() {
     });
   });
 
-  describe("The 'rollTwo' method", function() {
+  describe("The second use of 'roll' method in a frame", function() {
     beforeEach(function() {
       game.roll(5);
     });
 
-    it("should set 'scoreTwo' to its argument", function() {
+    it("should set 'rolls[1]' to its argument", function() {
       spyOn(game, "_newFrame").and.returnValue(null);
       game.roll(5);
-      expect(game.rolls).toEqual([5, 5]);
+      expect(game.rolls[1]).toEqual(5);
     });
 
     it("should push argument to 'allRolls' array", function() {

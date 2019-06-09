@@ -29,7 +29,16 @@ describe("Scorecard", function() {
   });
 
   it("should move to the next frame immediately in the event of a strike", function() {
-    scorecard.enterScore(10)
-    expect(scorecard.isFrame()).toEqual(2)
+    scorecard.enterScore(10);
+    expect(scorecard.isFrame()).toEqual(2);
+  });
+
+  it("should add the next two balls to the relevant round's score if the player rolled a strike", function() {
+  scorecard.enterScore(10);
+  scorecard.enterScore(3);
+  scorecard.enterScore(3);
+  expect(scorecard.sumFrameScore(1)).toEqual(16);
+  expect(scorecard.sumFrameScore(2)).toEqual(6);
+  expect(scorecard.totalScore()).toEqual(22)
   });
 });

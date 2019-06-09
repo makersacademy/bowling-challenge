@@ -20,6 +20,7 @@
     font-family: "Comic Sans MS", cursive, sans-serif;
     background-image: url("../images/bowling.jpg");
     background-size: 100%;
+    text-align: center;
    }
 
 table, th, td{
@@ -32,6 +33,15 @@ table, th, td{
 th, td{
     width: 30px;
     height: 30px;
+}
+
+th {
+    font-weight: bold;
+    background-color: #cf0369;
+}
+
+#game-total-score {
+    width: 80px;
 }
 
 button{

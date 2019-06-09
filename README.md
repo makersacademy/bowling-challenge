@@ -90,15 +90,6 @@ scorecard.showScore()
 ```
 ---
 ```
-As a player
-So I can have two chances per frame to knock down the pins
-I need to be able to add a score twice per frames
-```
-Object|message
--|-
-Scorecard|frame
----
-```
 As a player,
 Because because I have 2 attempts to knock down all the pins
 I should be able to enter 2 scores per frame
@@ -143,3 +134,20 @@ scorecard.isFrame()
 scorecard.enterScore(10)
 scorecard.isFrame()
  // output is 2
+ ```
+ ---
+```
+ As a player
+ So that I am scored correctly
+ After a strike, the total of my next two rolls should be added to my strike score
+ ```
+ Object|message
+ -|-
+ Scorecard|enterScore
+ ```js
+ scorecard.enterScore(10)
+ scorecard.enterScore(3)
+ scorecard.enterScore(3)
+ scorecard.totalScore()
+  // output should be 22
+```

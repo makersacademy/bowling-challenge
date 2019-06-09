@@ -4,11 +4,11 @@ function Scorecard() {
 }
 
 Scorecard.prototype.showScore = function() {
-  return this._score.reduce((a,b) => a + b, 0);
+  return this.sumScore();
 }
 
 Scorecard.prototype.enterScore = function(pins) {
-  if (this._score.reduce((a,b) => a + b, 0) + pins > 10) throw "maximum input per frame is 10";
+  if (this.sumScore() + pins > 10) throw "maximum input per frame is 10";
   this._score.push(pins);
   if ((this._score.length === 2) || (pins === 10)) {
     this.frameReset();
@@ -22,4 +22,8 @@ Scorecard.prototype.isFrame = function() {
 Scorecard.prototype.frameReset = function() {
   this._frame += 1;
   this._score = [];
+}
+
+Scorecard.prototype.sumScore = function() {
+  return this._score.reduce((a,b) => a + b, 0)
 }

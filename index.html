@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html lang='en'>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style/style.css">
+        <link rel="stylesheet" type="text/css" href="style/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+        <title>Bowling Scorecard</title>
+    </head>
+    
+    <body class="text-light bowling-body">
+        <h1 class="d-flex justify-content-center bowling-title">
+            BOWLING SCORECARD
+        </h1>
+        <div class="d-flex justify-content-center">
+            <table>
+                <tr>
+                    <th colspan="2">1</th>
+                    <th colspan="2">2</th>
+                    <th colspan="2">3</th>
+                    <th colspan="2">4</th>
+                    <th colspan="2">5</th>
+                    <th colspan="2">6</th>
+                    <th colspan="2">7</th>
+                    <th colspan="2">8</th>
+                    <th colspan="2">9</th>
+                    <th colspan="3">10</th>
+                    <th colspan="2">Total</th>
+                </tr>
+                <tr>
+                    <td frame="1" roll="1"></td>
+                    <td frame="1" roll="2"></td>
+                    <td frame="2" roll="1"></td>
+                    <td frame="2" roll="2"></td>
+                    <td frame="3" roll="1"></td>
+                    <td frame="3" roll="2"></td>
+                    <td frame="4" roll="1"></td>
+                    <td frame="4" roll="2"></td>
+                    <td frame="5" roll="1"></td>
+                    <td frame="5" roll="2"></td>
+                    <td frame="6" roll="1"></td>
+                    <td frame="6" roll="2"></td>
+                    <td frame="7" roll="1"></td>
+                    <td frame="7" roll="2"></td>
+                    <td frame="8" roll="1"></td>
+                    <td frame="8" roll="2"></td>
+                    <td frame="9" roll="1"></td>
+                    <td frame="9" roll="2"></td>
+                    <td frame="10" roll="1"></td>
+                    <td frame="10" roll="2"></td>
+                    <td frame="10" roll="3"></td>
+                    <td colspan="2" rowspan="2" id="game-total-score"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" id="frame-1-total"></td>
+                    <td colspan="2" id="frame-2-total"></td>
+                    <td colspan="2" id="frame-3-total"></td>
+                    <td colspan="2" id="frame-4-total"></td>
+                    <td colspan="2" id="frame-5-total"></td>
+                    <td colspan="2" id="frame-6-total"></td>
+                    <td colspan="2" id="frame-7-total"></td>
+                    <td colspan="2" id="frame-8-total"></td>
+                    <td colspan="2" id="frame-9-total"></td>
+                    <td colspan="3" id="frame-10-total"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="d-flex justify-content-center m-4">
+            <button class="score-button m-1">0</button>
+            <button class="score-button m-1">1</button>
+            <button class="score-button m-1">2</button>
+            <button class="score-button m-1">3</button>
+            <button class="score-button m-1">4</button>
+            <button class="score-button m-1">5</button>
+            <button class="score-button m-1">6</button>
+            <button class="score-button m-1">7</button>
+            <button class="score-button m-1">8</button>
+            <button class="score-button m-1">9</button>
+            <button class="score-button m-1">10</button>
+            <button id="reset" class="m-1">Reset</button>
+        </div>
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <script src="js/frame.js"></script>
+        <script src="js/scoreCard.js"></script>
+        <script src="js/interface.js"></script>
+    </body>
+</html>

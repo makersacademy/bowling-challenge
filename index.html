@@ -29,24 +29,30 @@
       }
 
       table {
-        width: 50%;
+        /* width: 50%; */
         table-layout: fixed;
+      }
+
+      td {
+        height: 30px;
+        width: 30px;
       }
     </style>
 
     <center>
       <h1>Bowling Scorecard</h1>
       <div id='buttons'>
-        <button id='1pin'>1</button>
-        <button id='2pins'>2</button>
-        <button id='3pins'>3</button>
-        <button id='4pins'>4</button>
-        <button id='5pins'>5</button>
-        <button id='6pins'>6</button>
-        <button id='7pins'>7</button>
-        <button id='8pins'>8</button>
-        <button id='9pins'>9</button>
-        <button id='10pins'>10</button>
+        <button id='r0'>0</button>
+        <button id='r1'>1</button>
+        <button id='r2'>2</button>
+        <button id='r3'>3</button>
+        <button id='r4'>4</button>
+        <button id='r5'>5</button>
+        <button id='r6'>6</button>
+        <button id='r7'>7</button>
+        <button id='r8'>8</button>
+        <button id='r9'>9</button>
+        <button id='r10'>10</button>
       </div>
       <div id='scorecard'>
         <table id='scorecardTable' class='scorecard' cellspacing='0'>
@@ -63,30 +69,32 @@
             <th class='frame' colspan='6'>10</th>
           </tr>
           <tr id='rolls'>
-            <td class='roll' colspan='3'>1</td><td class='roll' colspan='3'>2</td>
-            <td class='roll' colspan='3'>1</td><td class='roll' colspan='3'>2</td>
-            <td class='roll' colspan='3'>1</td><td class='roll' colspan='3'>2</td>
-            <td class='roll' colspan='3'>1</td><td class='roll' colspan='3'>2</td>
-            <td class='roll' colspan='3'>1</td><td class='roll' colspan='3'>2</td>
-            <td class='roll' colspan='3'>1</td><td class='roll' colspan='3'>2</td>
-            <td class='roll' colspan='3'>1</td><td class='roll' colspan='3'>2</td>
-            <td class='roll' colspan='3'>1</td><td class='roll' colspan='3'>2</td>
-            <td class='roll' colspan='3'>1</td><td class='roll' colspan='3'>2</td>
-            <td class='roll' colspan='2'>1</td><td class='roll' colspan='2'>2</td><td class='roll' colspan='2'>3</td>
+            <td class='roll' id='1-1' colspan='3'></td><td class='roll' id='1-2' colspan='3'></td>
+            <td class='roll' id='2-1' colspan='3'></td><td class='roll' id='2-2' colspan='3'></td>
+            <td class='roll' id='3-1' colspan='3'></td><td class='roll' id='3-2' colspan='3'></td>
+            <td class='roll' id='4-1' colspan='3'></td><td class='roll' id='4-2' colspan='3'></td>
+            <td class='roll' id='5-1' colspan='3'></td><td class='roll' id='5-2' colspan='3'></td>
+            <td class='roll' id='6-1' colspan='3'></td><td class='roll' id='6-2' colspan='3'></td>
+            <td class='roll' id='7-1' colspan='3'></td><td class='roll' id='7-2' colspan='3'></td>
+            <td class='roll' id='8-1' colspan='3'></td><td class='roll' id='8-2' colspan='3'></td>
+            <td class='roll' id='9-1' colspan='3'></td><td class='roll' id='9-2' colspan='3'></td>
+            <td class='roll' id='10-1' colspan='2'></td><td class='roll' id='10-2' colspan='2'></td><td class='roll' id='10-3' colspan='2'></td>
           </tr>
           <tr id='scores'>
-            <td class='score' colspan='6'>30</td>
-            <td class='score' colspan='6'>30</td>
-            <td class='score' colspan='6'>30</td>
-            <td class='score' colspan='6'>30</td>
-            <td class='score' colspan='6'>30</td>
-            <td class='score' colspan='6'>30</td>
-            <td class='score' colspan='6'>30</td>
-            <td class='score' colspan='6'>30</td>
-            <td class='score' colspan='6'>30</td>
-            <td class='score' colspan='6'>30</td>
+            <td class='score' id='score1' colspan='6'></td>
+            <td class='score' id='score2' colspan='6'></td>
+            <td class='score' id='score3' colspan='6'></td>
+            <td class='score' id='score4' colspan='6'></td>
+            <td class='score' id='score5' colspan='6'></td>
+            <td class='score' id='score6' colspan='6'></td>
+            <td class='score' id='score7' colspan='6'></td>
+            <td class='score' id='score8' colspan='6'></td>
+            <td class='score' id='score9' colspan='6'></td>
+            <td class='score' id='score10' colspan='6'></td>
           </tr>
         </table>
       </div>
+
+      <h1>Total: <span id='total'></span></h1>
     </center>
 </body>

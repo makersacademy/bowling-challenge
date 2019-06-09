@@ -1,5 +1,6 @@
 $( document ).ready(function() {
   var game = new Game();
+  var gameOver = false;
 
   function updateFrameScore(number) {
     $( '#score' + number.toString() ).text(game.scores[number])
@@ -11,10 +12,12 @@ $( document ).ready(function() {
       updateFrameScore(i);
     }
     $( '#total' ).text(game.total());
+    console.log(game);
   }
 
   function rollNumber() {
-    return game.rolls.length === 0 ? '1' : '2';
+    return (game.rolls.length + 1).toString();
+    // return game.rolls.length === 0 ? '1' : '2';
   }
 
   function isSpare(number) {

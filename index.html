@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Thermostat</title>
+    <!-- <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js'></script>
+    <script type='text/javascript' src='interface.js' -->
+  </head>
+  <body>
+    <style>
+      #frames {
+        background-color: blue;
+        color: white;
+      }
+
+      #buttons {
+        padding: 20px;
+      }
+
+      .roll {
+        border: 1px solid black;
+        text-align: center;
+      }
+
+      .score {
+        border: 1px solid black;
+        text-align: center;
+      }
+
+      table {
+        width: 50%;
+        table-layout: fixed;
+      }
+    </style>
+
+    <center>
+      <h1>Bowling Scorecard</h1>
+      <div id='buttons'>
+        <button id='1pin'>1</button>
+        <button id='2pins'>2</button>
+        <button id='3pins'>3</button>
+        <button id='4pins'>4</button>
+        <button id='5pins'>5</button>
+        <button id='6pins'>6</button>
+        <button id='7pins'>7</button>
+        <button id='8pins'>8</button>
+        <button id='9pins'>9</button>
+        <button id='10pins'>10</button>
+      </div>
+      <div id='scorecard'>
+        <table id='scorecardTable' class='scorecard' cellspacing='0'>
+          <tr id='frames'>
+            <th class='frame' colspan='6'>1</th>
+            <th class='frame' colspan='6'>2</th>
+            <th class='frame' colspan='6'>3</th>
+            <th class='frame' colspan='6'>4</th>
+            <th class='frame' colspan='6'>5</th>
+            <th class='frame' colspan='6'>6</th>
+            <th class='frame' colspan='6'>7</th>
+            <th class='frame' colspan='6'>8</th>
+            <th class='frame' colspan='6'>9</th>
+            <th class='frame' colspan='6'>10</th>
+          </tr>
+          <tr id='rolls'>
+            <td class='roll' colspan='3'>1</td><td class='roll' colspan='3'>2</td>
+            <td class='roll' colspan='3'>1</td><td class='roll' colspan='3'>2</td>
+            <td class='roll' colspan='3'>1</td><td class='roll' colspan='3'>2</td>
+            <td class='roll' colspan='3'>1</td><td class='roll' colspan='3'>2</td>
+            <td class='roll' colspan='3'>1</td><td class='roll' colspan='3'>2</td>
+            <td class='roll' colspan='3'>1</td><td class='roll' colspan='3'>2</td>
+            <td class='roll' colspan='3'>1</td><td class='roll' colspan='3'>2</td>
+            <td class='roll' colspan='3'>1</td><td class='roll' colspan='3'>2</td>
+            <td class='roll' colspan='3'>1</td><td class='roll' colspan='3'>2</td>
+            <td class='roll' colspan='2'>1</td><td class='roll' colspan='2'>2</td><td class='roll' colspan='2'>3</td>
+          </tr>
+          <tr id='scores'>
+            <td class='score' colspan='6'>30</td>
+            <td class='score' colspan='6'>30</td>
+            <td class='score' colspan='6'>30</td>
+            <td class='score' colspan='6'>30</td>
+            <td class='score' colspan='6'>30</td>
+            <td class='score' colspan='6'>30</td>
+            <td class='score' colspan='6'>30</td>
+            <td class='score' colspan='6'>30</td>
+            <td class='score' colspan='6'>30</td>
+            <td class='score' colspan='6'>30</td>
+          </tr>
+        </table>
+      </div>
+    </center>
+</body>

@@ -33,7 +33,7 @@ describe("Game", function() {
     });
 
     it("should have an '_isSpare' property set to false", function() {
-      expect(game.isSpare).toEqual(false);
+      expect(game._isSpare).toEqual(false);
     });
   });
 
@@ -99,6 +99,15 @@ describe("Game", function() {
     });
   });
 
+  describe("The 'total' method", function() {
+    it("should sum all the values in the 'scores' dictionary", function() {
+      game.rollOne(5);
+      game.rollTwo(2);
+      game.rollOne(4);
+      expect(game.total()).toEqual(11);
+    });
+  });
+
   describe("The '_resolveStrikes' method", function() {
     it("should add to a frame the next two scores after a strike", function() {
       game.rollOne(10);
@@ -123,5 +132,28 @@ describe("Game", function() {
     it("should set 'isSpare' to false", function() {
       expect(game.isSpare).toEqual(false);
     })
+  });
+
+  describe("A 'Perfect Game'", function() {
+    it("12 rolls of 10 should score 300", function() {
+      var i;
+      for (i = 0; i < 12; i++) {
+        game.rollOne(10);
+      }
+
+      expect(game.scores[10]).toEqual(30);
+      expect(game.total()).toEqual(300);
+    });
+  });
+
+  describe("A 'Gutter Game'", function() {
+    it("20 rolls of 0 should score 0", function() {
+      var i;
+      for (i = 0; i < 12; i++) {
+        game.rollOne(0);
+        game.rollTwo(0);
+      }
+      expect(game.total()).toEqual(0);
+    });
   });
 });

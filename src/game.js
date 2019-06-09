@@ -1,19 +1,19 @@
 'use strict';
 
-// Properties
 function Game() {
+  this._NUMBEROFFRAMES = 10;
+  this._MAXSCORE = 10;
+
   this.frame = 1;
-  this.allRolls = [];
-  this.scores = {}; // key = frame, value = score
-
-  this.isSpare = false;
-  this.activeStrikes = []; // array of arrays: [[frame, allRolls index], ...]
-
   this.scoreOne = null;
   this.scoreTwo = null;
+  this._isSpare = false;
+
+  this.scores = {};
+  this.allRolls = [];
+  this.activeStrikes = []; // array of arrays: [[turn, allRolls index], ...]
 }
 
-// Methods
 Game.prototype.rollOne = function(pins) {
   this._addScores(pins);
   this._resolveStrikes();
@@ -28,27 +28,37 @@ Game.prototype.rollTwo = function(pins) {
   this._newFrame();
 }
 
+Game.prototype.total = function() {
+  var sum = Object.values(this.scores).reduce(add, 0);
+  function add(accumulator, a) {
+    return accumulator + a;
+  }
+  return sum;
+}
+
 // Private methods
 Game.prototype._addScores = function(pins) {
-  if (this.scoreOne === null) {
-    this.scoreOne = pins;
-    this.scores[this.frame] = pins;
-  } else {
-    this.scoreTwo = pins;
-    this.scores[this.frame] += pins;
+  if (this.frame <= this._NUMBEROFFRAMES) {
+    if (this.scoreOne === null) {
+      this.scoreOne = pins;
+      this.scores[this.frame] = pins;
+    } else {
+      this.scoreTwo = pins;
+      this.scores[this.frame] += pins;
+    }
   }
   this.allRolls.push(pins);
 }
 
 Game.prototype._checkStrike = function(pins) {
-  if (pins === 10) {
+  if (pins === this._MAXSCORE) {
     this.activeStrikes.push([this.frame, this.allRolls.length - 1]);
     this._newFrame();
   }
 }
 
 Game.prototype._checkSpare = function() {
-  if (this.scoreOne + this.scoreTwo === 10) { this.isSpare = true; }
+  if (this.scoreOne + this.scoreTwo === this._MAXSCORE) { this.isSpare = true; }
 }
 
 Game.prototype._newFrame = function() {
@@ -60,7 +70,6 @@ Game.prototype._resolveStrikes = function() {
   if (this.activeStrikes.length > 0) {
     var frame = this.activeStrikes[0][0]; // frame of strike
     var index = this.activeStrikes[0][1]; // index of strike in allRolls
-
     // adds next two rolls from allRolls to scores dictionary
     if (index === this.allRolls.length - 3) {
       this.scores[frame] += (this.allRolls[index+1] + this.allRolls[index+2]);

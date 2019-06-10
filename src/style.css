@@ -1,0 +1,118 @@
+html {
+  width: 100%;
+}
+
+body {
+  padding-left: 5%;
+  padding-right: 5%;
+  font-size: 25px;
+  color: #B9A583;
+  background-image: url("../images/retro-bowling.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+table {
+  font-family: 'Ubuntu', sans-serif;
+  padding: 8px;
+  border-radius: 4px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+td, th {
+  border:1px solid #68AECF;
+  color: #E55E64;
+  font-size:14px;
+}
+
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.playTile{
+  font-family: 'Ubuntu', sans-serif;
+	overflow: auto;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	background: #3F393B none repeat scroll 0% 0% !important;
+  /* background: #B9A583 none repeat scroll 0% 0% !important; */
+	width: 250px;
+	height: 90px;
+	border-radius: 30px !important;
+	box-shadow: rgba(187, 164, 133, 100) 0px 16px 40px !important;
+	position: absolute;
+	top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding-top: 8px;
+}
+
+#play {
+  font-size: 20px;
+  padding: 8px;
+}
+
+#nameField {
+  background-color: Transparent;
+  font-size: 20px;
+  border: 0.25px solid #B9A583;
+  border-radius: 4px;
+  margin-top: 20px;
+  color: #E55E64;
+  padding-left: 8px;
+  height: 40px;
+}
+
+#name {
+  color: #E55E64;
+  font-weight: bold
+}
+
+#nameBtn {
+  text-align: center;
+  font-size: 20px;
+  border-radius: 4px;
+  border: 0.25px solid #B9A583;
+  background-color: Transparent;
+  color: #B9A583;
+  margin: 16px;
+  height: 30px;
+}
+
+#frameNumber, #rollNumber {
+  color: #E55E64;
+  font-weight: bold
+}
+
+#rollScoreField {
+  text-align: center;
+  font-size: 20px;
+  border-radius: 4px;
+  border: 0.25px solid #B9A583;
+  background-color: Transparent;
+  color: #E55E64;
+  margin: 8px;
+  width: 50px;
+  height: 30px;
+}
+
+#rollScoreBtn {
+  text-align: center;
+  font-size: 20px;
+  border-radius: 4px;
+  border: 0.25px solid #B9A583;
+  background-color: Transparent;
+  color: #B9A583;
+  margin: 8px;
+  height: 30px;
+}

@@ -56,9 +56,7 @@ Game.prototype._checkSpare = function() {
 
 Game.prototype._newFrame = function() {
   this.rolls = [];
-  if (this.frame < 10) {
-    this.frame++;
-  }
+  this.frame++;
 }
 
 Game.prototype._resolveStrikes = function() {

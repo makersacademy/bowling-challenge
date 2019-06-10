@@ -17,7 +17,6 @@ $( document ).ready(function() {
 
   function rollNumber() {
     return (game.rolls.length + 1).toString();
-    // return game.rolls.length === 0 ? '1' : '2';
   }
 
   function isSpare(number) {
@@ -25,7 +24,7 @@ $( document ).ready(function() {
   }
 
   function updateRollScore(number) {
-    if (number === 10) { number = 'X'; }
+    if (number === 10 && rollNumber() === '1') { number = 'X'; }
     if (isSpare(number)) { number = '/'; }
     $( '#' + game.frame.toString() + '-' + rollNumber() ).text(number)
   }

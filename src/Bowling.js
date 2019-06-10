@@ -17,9 +17,18 @@ Scorecard.prototype.isStrike = function () {
   return this.currentFrame[0] === 10;
 };
 
+Scorecard.prototype.strikeBonus = function () {
+  var bonus = this.frames.pop()
+  bonus.reduce((a, b) => a + b, 0)
+};
+
 Scorecard.prototype.isSpare = function () {
   return this.currentFrame.reduce((a, b) => a + b, 10);
 };
+
+// Scorecard.prototype.spareBonus = function () {
+//
+// };
 
 Scorecard.prototype.isGutter = function () {
   return this.getScore === 0;

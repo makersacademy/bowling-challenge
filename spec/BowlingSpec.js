@@ -19,10 +19,22 @@ describe('Scorecard', function() {
     expect(scorecard.isStrike).toBeTruthy();
   });
 
+  it('has a bonus score if a strike is scored', function() {
+    scorecard.rolls(10, 0);
+    scorecard.rolls(5, 3);
+    expect(scorecard.strikeBonus).toEqual(8)
+  });
+
   it('score a spare is rolls equal 10', function() {
     scorecard.rolls(4, 6);
     expect(scorecard.isSpare).toBeTruthy();
   });
+
+  // it('has a bonus score if a spare is scored', function() {
+  //   scorecard.rolls(6, 4);
+  //   scorecard.rolls(5, 3);
+  //   expect(scorecard.spareBonus).toEqual(5)
+  // });
 
   it('resets current frame with each new roll', function ()  {
     scorecard.rolls(3, 4);

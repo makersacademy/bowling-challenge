@@ -12,7 +12,7 @@ Create a bowling scorecard. Count and sum the scores of a bowling game for one p
 2. Look into which would be the best diagram to use for the logic and which would be best for the interface.
 3. Create user stories from step 1 and decide on the classes I will need. Possible classes: frame, totalScore.
 
-After following those steps, I found planning for this challenge difficult as I couldn't envision how it would all work. I tried various diagrams but they confused me more as I couldn't separate the components in my head. Instead I found it easier to start this project with a simple feature test (the total score is 0 if I only roll 0 pins twenty times) and build from there.
+After following those steps, I found planning for this challenge difficult as I couldn't envision how it would all work. I tried various diagrams but they confused me more as I couldn't separate the components in my head. Instead I found it easier to start this project with a simple feature test (the total score is 0 if I only roll 0 pins twenty times) and build from there. This project is unfinished as I had separated the frames and scorecard into different classes and realised that I had to refactor it, but I will finish the logic side of it this week (by Friday 14th June).
 
 ## Bowling — how does it work?
 

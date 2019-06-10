@@ -5,6 +5,7 @@ function BowlingScorekeeper() {
   this._currentScore = 0;
   this._currentFrame = [];
   this._arrayOfFrames = [];
+
   // this._scoreProgression = [];
 }
 
@@ -12,8 +13,32 @@ BowlingScorekeeper.prototype.addName = function(name) {
   this._playerName = name;
 }
 
+BowlingScorekeeper.prototype.name = function() {
+  return this._playerName;
+}
+
+BowlingScorekeeper.prototype.score = function() {
+  return this._currentScore;
+}
+
+BowlingScorekeeper.prototype.arrayOfFrames = function() {
+  this._arrayOfFrames;
+}
+
 BowlingScorekeeper.prototype.addRollScore = function(rollScore) {
-  if (this._arrayOfFrames.length === 10) throw "No more goes allowed: game has finished";
+  const sum = arr => arr.reduce((a,b) => a + b, 0);
+  if (this._arrayOfFrames.length === 10 && this._arrayOfFrames[9].length === 2 && sum(this._arrayOfFrames[9]) === 10) {
+      this._arrayOfFrames[9].push(rollScore);
+      this._calculateScore();
+      return;
+  } else if (this._arrayOfFrames.length === 10 && this._arrayOfFrames[9][0] === 10 && this._arrayOfFrames[9].length < 3) {
+      this._arrayOfFrames[9].push(rollScore);
+        this._arrayOfFrames[8].push(rollScore);
+      this._calculateScore();
+      return;
+  } else if (this._arrayOfFrames.length === 10) {
+      throw "No more goes allowed: game has finished";
+  }
 
   this._currentFrame.push(rollScore);
 

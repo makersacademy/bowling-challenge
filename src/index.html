@@ -3,11 +3,57 @@
 <html lang="en">
   <head>
     <title>Bowling Scorekeeper</title>
-  </head>
-  <body>
-
+    <link rel = "stylesheet" href = "style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300&display=swap" rel="stylesheet">
     <script src="BowlingScorekeeper.js"></script>
     <script src="jquery.js"></script>
     <script src="interface.js"></script>
+
+
+
+  </head>
+  <body>
+    <div class="playTile">
+      <p id="play">click to keep score</p>
+
+      <input id="nameField" type="text" placeholder="enter name"></input>
+      <button id="nameBtn">submit</button>
+
+      <div class="gameTile">
+        <span>welcome: </span><span id="name"></span><br>
+        <span>frame number: <span id="frameNumber"></span></span>
+        <span>roll number: <span id="rollNumber"></span></span>
+        <br>
+        <label for="rollScoreField"><b>enter roll score: </b></label>
+        <input id="rollScoreField" type="number" name="rollScore" min="0" max="10"></input>
+        <button id="rollScoreBtn">submit</button>
+        <!-- <button id="reset">reset</button> -->
+
+          <table id='scoreTable' cellpadding='10' cellspacing='2'>
+            <tr>
+              <th scope='col' colspan='2'>frame<br>one</th>
+              <th scope='col' colspan='2'>frame<br>two</th>
+              <th scope='col' colspan='2'>frame<br>three</th>
+              <th scope='col' colspan='2'>frame<br>four</th>
+              <th scope='col' colspan='2'>frame<br>five</th>
+              <th scope='col' colspan='2'>frame<br>six</th>
+              <th scope='col' colspan='2'>frame<br>seven</th>
+              <th scope='col' colspan='2'>frame<br>eight</th>
+              <th scope='col' colspan='2'>frame<br>nine</th>
+              <th scope='col' colspan='3'>frame<br>ten</th>
+            </tr>
+            <tr class="rollRow">
+            </tr>
+            <tr class="scoreRow">
+            </tr>
+          </table>
+        </div>
+      </div>
+
+
+
+
+
+
   </body>
 </html>

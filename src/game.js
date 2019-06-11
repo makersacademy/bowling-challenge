@@ -1,7 +1,7 @@
 'use strict';
 
 function Game() {
-  this._NUMBEROFFRAMES = 10;
+  // this._NUMBEROFFRAMES = 10;
   this._MAXSCORE = 10;
 
   this.frame = 1;
@@ -28,18 +28,24 @@ Game.prototype.roll = function(pins) {
 }
 
 Game.prototype.total = function() {
-  var sum = Object.values(this.scores).reduce(add, 0);
-  function add(accumulator, a) {
-    return accumulator + a;
+  if (this.frame > 10) {
+    var limit = 10;
+  } else {
+    var limit = this.frame - 1;
   }
-  return sum;
+
+  var total = 0;
+
+  for (var i = 1; i <= limit; i++) {
+    console.log(this.scores[i]);
+    total += this.scores[i];
+  }
+  return total;
 }
 
 Game.prototype._addRolls = function(pins, rollNumber) {
-  if (this.frame <= this._NUMBEROFFRAMES) {
-    this.rolls.push(pins);
-    rollNumber === 1 ? this.scores[this.frame] = pins : this.scores[this.frame] += pins;
-  }
+  this.rolls.push(pins);
+  rollNumber === 1 ? this.scores[this.frame] = pins : this.scores[this.frame] += pins;
   this.allRolls.push(pins);
 }
 

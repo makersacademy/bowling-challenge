@@ -15,7 +15,6 @@
       this.game.frameList.forEach(function (frame, index) {
         let tagName = '#frameTotal' + parseInt(index+1, 10);
         $(tagName).text("Frame: " + this.game.getFrameTotal(index));
-
       })
     },
 

@@ -1,6 +1,7 @@
 $( document ).ready(function() {
   var game = new Game();
-  var gameOver = false;
+
+  window.onerror = function() { alert('Too many pins!') }
 
   function updateFrameScore(number) {
     $('#score' + number.toString()).text(game.scores[number])

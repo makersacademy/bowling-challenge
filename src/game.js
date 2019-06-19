@@ -19,6 +19,7 @@ Game.prototype.roll = function(pins) {
     this._resolveSpare();
     this._checkStrike(pins);
   } else {
+    if (this.rolls[0] + pins > 10) { throw 'Too many pins!' }
     this._addRolls(pins);
     this._resolveStrikes();
     this._checkSpare();

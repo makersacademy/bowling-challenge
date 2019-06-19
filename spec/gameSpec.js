@@ -7,6 +7,13 @@ describe("Game", function() {
     game = new Game();
   });
 
+  describe("The second use of the 'roll' method in a frame", function() {
+    it('should throw an error if roll 1 and 2 sum to > 10', function() {
+      game.roll(5);
+      expect(function() {game.roll(6)}).toThrow('Too many pins!')
+    });
+  });
+
   describe("The 'total' method", function() {
     it("should sum all the values in the 'scores' dictionary", function() {
       game.roll(5);

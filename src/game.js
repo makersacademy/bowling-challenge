@@ -1,7 +1,6 @@
 'use strict';
 
 function Game() {
-  // this._NUMBEROFFRAMES = 10;
   this._MAXSCORE = 10;
 
   this.frame = 1;
@@ -15,12 +14,12 @@ function Game() {
 
 Game.prototype.roll = function(pins) {
   if (this.rolls.length === 0) {
-    this._addRolls(pins, 1);
+    this._addRolls(pins);
     this._resolveStrikes();
     this._resolveSpare();
     this._checkStrike(pins);
   } else {
-    this._addRolls(pins, 2);
+    this._addRolls(pins);
     this._resolveStrikes();
     this._checkSpare();
     this._newFrame();
@@ -36,17 +35,15 @@ Game.prototype.total = function() {
 
   var total = 0;
 
-  for (var i = 1; i <= limit; i++) {
-    console.log(this.scores[i]);
-    total += this.scores[i];
-  }
+  for (var i = 1; i <= limit; i++) { total += this.scores[i]; }
   return total;
 }
 
-Game.prototype._addRolls = function(pins, rollNumber) {
+Game.prototype._addRolls = function(pins) {
   this.rolls.push(pins);
-  rollNumber === 1 ? this.scores[this.frame] = pins : this.scores[this.frame] += pins;
   this.allRolls.push(pins);
+  this.scores[this.frame] = this.scores[this.frame] || 0;
+  this.scores[this.frame] += pins;
 }
 
 Game.prototype._checkStrike = function(pins) {

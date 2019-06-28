@@ -31,3 +31,12 @@ Frame.prototype.isAStrike = function(){
     return false;
   }
 };
+
+Frame.prototype.isASpare = function(){
+  if(this._pinsRemaining === 0 && this._rollScores.length === 2){
+    return true;
+  }
+  else {
+    return false;
+  }
+};

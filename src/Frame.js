@@ -3,6 +3,8 @@
 function Frame(){
   this._pinsRemaining = 10;
   this._rollScores = [];
+  this._MAXSCORE = 10;
+  this._NUMBERROLLS = 2;
 };
 
 Frame.prototype.roll = function(pinsKnocked, rollClass = new Roll()){
@@ -17,14 +19,14 @@ Frame.prototype.numberPinsRemaining = function(){
   return this._pinsRemaining;
 };
 
-Frame.prototype.totalScore = function(){
+Frame.prototype.score = function(){
     return this._rollScores.reduce(function(a,b){
       return a + b
     }, 0);
 };
 
-Frame.prototype.isAStrike = function(){
-  if(this._rollScores[0] === 10){
+Frame.prototype.containsAStrike = function(){
+  if(this._rollScores.includes(this._MAXSCORE)){
     return true;
   }
   else {
@@ -32,8 +34,8 @@ Frame.prototype.isAStrike = function(){
   }
 };
 
-Frame.prototype.isASpare = function(){
-  if(this._pinsRemaining === 0 && this._rollScores.length === 2){
+Frame.prototype.containsASpare = function(){
+  if(this._pinsRemaining === 0 && this._rollScores.length === this._NUMBERROLLS){
     return true;
   }
   else {

@@ -22,3 +22,12 @@ Frame.prototype.totalScore = function(){
       return a + b
     }, 0);
 };
+
+Frame.prototype.isAStrike = function(){
+  if(this._rollScores[0] === 10){
+    return true;
+  }
+  else {
+    return false;
+  }
+};

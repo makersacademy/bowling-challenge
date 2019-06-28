@@ -20,7 +20,7 @@ describe('Frame', function(){
 
   it('should register a strike in a frame', function(){
     let frame = new Frame();
-    frame.roll(10, rollDouble);
+    frame.roll(9, rollDouble);
     expect(frame.isAStrike()).toBe(true);
   });
 

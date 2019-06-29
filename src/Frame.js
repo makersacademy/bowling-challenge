@@ -51,3 +51,11 @@ Frame.prototype.addBonus = function(bonus){
 Frame.prototype.totalScore = function(){
   return this.score() + this._bonus;
 };
+
+Frame.prototype.isInPlay = function(){
+  if(this._rollScores.length === this._NUMBERROLLS || this.containsAStrike()){
+    return false;
+  } else {
+    return true;
+  }
+};

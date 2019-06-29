@@ -65,7 +65,7 @@ describe('Frame', function(){
     expect(frame.isInPlay()).toBe(false);
   });
 
-  it('should report if frame in play', function(){
+  it('if frame contains strike not in play', function(){
     expect(frame.isInPlay()).toBe(true);
     frame.roll(10, rollDouble);
     expect(frame.isInPlay()).toBe(false);

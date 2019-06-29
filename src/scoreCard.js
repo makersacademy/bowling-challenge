@@ -1,17 +1,13 @@
-function ScoreCard() {
-  this.frames = [];
-  this.roll1 = 0;
-  this.roll2 = 0;
+function Frame() {
+  this.firstRoll = true;
 };
 
-ScoreCard.prototype.addRoll = function (score) {
-  if (this.isRoll1()) {
-    this.roll1 = score;
-  } else {
-    this.roll2 = score;
-  }
+
+function ScoreCard(frame = new Frame) {
+  this.frames = [frame]
+  this.currentFrame = this.frames[this.frames.length - 1]
 };
 
-ScoreCard.prototype.isRoll1 = function () {
-  return this.roll1 === 0;
+ScoreCard.prototype.isFirstRoll = function () {
+  return this.currentFrame['firstRoll'];
 };

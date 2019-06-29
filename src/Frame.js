@@ -5,6 +5,7 @@ function Frame(){
   this._rollScores = [];
   this._MAXSCORE = 10;
   this._NUMBERROLLS = 2;
+  this._bonus = 0;
 };
 
 Frame.prototype.roll = function(pinsKnocked, rollClass = new Roll()){
@@ -41,4 +42,12 @@ Frame.prototype.containsASpare = function(){
   else {
     return false;
   }
+};
+
+Frame.prototype.addBonus = function(bonus){
+  this._bonus = this._bonus + bonus;
+};
+
+Frame.prototype.totalScore = function(){
+  return this.score() + this._bonus;
 };

@@ -6,17 +6,8 @@ function Game(){
 
 
 Game.prototype.roll = function(pins){
-  if(this._frames.length === 0){
-    this._addFrame();
+    this._setFrame();
     this._currentFrame().roll(pins);
-  } 
-  else if (this._currentFrame().isInPlay()) {
-    this._currentFrame().roll(pins);
-  } 
-  else {
-    this._addFrame();
-    this._currentFrame().roll(pins);
-  };
 };
 
 Game.prototype.frameNumber= function(){
@@ -37,4 +28,10 @@ Game.prototype._currentFrame = function(){
 
 Game.prototype._addFrame = function(frame = new Frame()){
   this._frames.push(frame)
+};
+
+Game.prototype._setFrame = function(){
+  if(this._frames.length === 0 || !this._currentFrame().isInPlay()){
+    this._addFrame();
+  } 
 };

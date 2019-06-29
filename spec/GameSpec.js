@@ -24,6 +24,33 @@ describe('Game', function(){
     expect(game.score()).toEqual(18);
   })
 
+  it('calculates correct score for a strike', function(){
+    game.roll(2);
+    game.roll(5);
+    game.roll(10);
+    game.roll(4);
+    game.roll(5);
+    expect(game.score()).toEqual(35);
+  });
+
+  it('calculates correct score for a strike', function(){
+    game.roll(10);
+    game.roll(10);
+    game.roll(5);
+    game.roll(4);
+    game.roll(5);
+    expect(game.score()).toEqual(58);
+  });
+
+  it('calculates correct score for a strike', function(){
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(9);
+    game.roll(1);
+    expect(game.score()).toEqual(89);
+  });
+
 
 
 });

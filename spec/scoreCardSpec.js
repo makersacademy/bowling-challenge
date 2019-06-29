@@ -15,4 +15,9 @@ describe('ScoreCard', function() {
     expect(scoreCard.roll1).toEqual(0)
     expect(scoreCard.roll2).toEqual(0)
   })
+
+  it('can add a roll', function() {
+    scoreCard.roll(5);
+    expect(scoreCard.addRoll1).toEqual(5);
+  })
 })

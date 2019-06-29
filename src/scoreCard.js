@@ -1,5 +1,9 @@
 function Frame() {
+  this.strike = false;
+  this.spare = false;
   this.firstRoll = true;
+  this.score = 0;
+  this.bonus = 0;
 };
 
 

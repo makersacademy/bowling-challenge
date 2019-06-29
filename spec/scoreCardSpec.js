@@ -30,7 +30,11 @@ describe('Frame', function(){
     frame = new Frame
   });
 
-  it('defaults firstRoll to true', function() {
+  it('defaults with certain requirements', function() {
+    expect(frame.strike).toEqual(false)
     expect(frame.firstRoll).toEqual(true)
+    expect(frame.spare).toEqual(false)
+    expect(frame.score).toEqual(0)
+    expect(frame.bonus).toEqual(0)
   })
 })

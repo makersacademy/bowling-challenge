@@ -21,6 +21,7 @@ describe('Frame', function() {
 
   it('keeps track of strikes', function() {
     frame.rollOne = 10; // rewrite as function?
+    // execute a calculate function?
     expect(frame.strike).toBe(true);
   });
 

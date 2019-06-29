@@ -51,5 +51,11 @@ describe('Frame', function(){
     expect(frame.containsASpare()).toBe(false);
   });
 
+  it('should have score ammended by a bonus', function(){
+    frame.roll(10, rollDouble);
+    frame.addBonus(7);
+    expect(frame.totalScore()).toEqual(17);
+  })
+
 
 });

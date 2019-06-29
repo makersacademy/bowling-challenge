@@ -27,6 +27,7 @@ The player can only get a spare if they knock down between 0 and 9 pins on the f
 The **bonus** for that frame is the number of pins knocked down by the next roll (first roll of next frame).
 
 #### 10th frame
+
 If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
 
 ```
@@ -35,12 +36,14 @@ If the player rolls a strike or spare in the 10th frame they can roll the additi
 ```
 
 #### Gutter Game
+
 A Gutter Game is when the player never hits a pin (20 zero scores).
 
 #### Perfect Game
+
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
 
-In the image below you can find some score examples.
+#### Score examples
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
@@ -50,13 +53,24 @@ In the image below you can find some score examples.
 
 ## Approach
 
-### User stories
+I laid out the requirements of the app as User Stories, detailed below. To keep the build simple, I implemented the requirements in stages.
+
+#### Business logic
+
+* Version 1 does not recognise spares or strikes, so the player bowls 10 frames, with two rolls in each frame.
+* Version 2 recognises a spare, so calculates bonus points and adds them to your score for that frame. You get one extra roll if you get a spare in the final frame.
+* Version 3 recognises a strike, so moves onto the next frame and calculates your bonus points accordingly. You get two extra rolls if you get a strike in the final frame.
+
+#### Interface
+
+* Version 4 allows the player to enter the number of pins knocked over with each roll and display their score.
+
+
+### User Stories
+
+#### Version 1 - Basics
 
 ```
-As a solo bowler,
-To play a game of bowling,
-I want to enter the number of pins knocked down on each roll (if any).
-
 As a solo bowler,
 To play a full game of bowling,
 I want each frame to consist of two rolls.
@@ -67,8 +81,12 @@ I want to each game to consist of 10 frames.
 
 As a solo bowler,
 To know how well I bowled,
-I want my score for each frame to equal the number of pins I knocked down plus any bonus points.
+I want my score for each frame to equal the number of pins I knocked down.
+```
 
+#### Version 2 - Spares
+
+```
 As a solo bowler,
 So that I'm rewarded for knocking down 10 pins in a frame,
 I want to receive bonus points that are added to my score for that frame.
@@ -77,23 +95,34 @@ As a fairly good solo bowler,
 So that I get the correct score for a frame in which I get a spare,
 I want to receive bonus points equal to the score of my next roll.
 
-As a really accurate solo bowler,
-So that I get the correct score for a frame in which I get a strike,
-I want to receive bonus points equal to the score for my next two rolls.
+As a solo bowler who gets a spare in the last frame,
+So that I get the correct bonus,
+I want to have one extra roll.
+```
 
+#### Version 3 - Strikes
+
+```
 As a highly skilled solo bowler,
 So that I don't have more rolls than I should,
 I want to move to the next frame when I get a strike.
 
-As a solo bowler,
-So that I know how well I'm doing,
-I want to see a running total of my score.
+As a highly skilled solo bowler,
+So that I get the correct score for a frame in which I get a strike,
+I want to receive bonus points equal to the score for my next two rolls.
 
 As a solo bowler who gets a strike in the last frame,
 So that I get the correct bonus,
 I want to have two extra rolls.
+```
 
-As a solo bowler who gets a spare in the last frame,
-So that I get the correct bonus,
-I want to have one extra roll.
+#### Version 4 - Interface
+```
+As a solo bowler,
+To play a game of bowling,
+I want to enter the number of pins knocked down on each roll (if any).
+
+As a solo bowler,
+So that I know how well I'm doing,
+I want to see a running total of my score.
 ```

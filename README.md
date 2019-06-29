@@ -1,6 +1,59 @@
 
 RACHEL GRIFFITHS
 =================
+
+## CHALLENGE: BOWLING SCORECARD
+------------
+
+##### BUSINESS LOGIC
+* Create a Bowling Scorecard
+* User enters score between 0 and 10 for each roll
+* Each pin knocked down accounts for one point
+* The game consists of 10 frames and each frame consists of 2 rolls
+* Bonus points are awarded for a strike or a spare
+* A strike occurs if all 10 pins are knocked down in roll 1 of the frame
+* A spare occurs if the total frame score is equal to 10
+
+##### WEB INTERFACE
+* Create a nice interactive animated interface with jQuery.
+
+### GETTING STARTED
+------------
+* JavaScript
+* gitclone: git@github.com:rachjgriff/bowling-challenge.git
+
+### USAGE
+------------
+
+### TESTING
+------------
+* jasmine 3.4.0
+* To run from command line:
+```
+cd jasmine
+open SpecRunner.html
+```
+
+### WEBSITE SPECIFICATION (REQUIREMENTS)
+------------
+* User enters roll score
+* Add roll score to frame score
+* Add frame score to total score
+* Allow only 2 rolls to be added to a frame score
+* Allow only 10 frame scores to be added to the total score
+* Count number of rolls
+* Count number of frames
+* If roll score 1 = 10, add it to the frame score and automatically set roll score 2 = 0
+* If roll score 1 in previous frame = 10, add current frame score twice to total score (Strike Bonus)
+* if roll score 1 in previous frame < 10 and previous frame score = 10, add roll score 1 of current frame twice to total score (Spare Bonus)
+* If frame count = 10 and roll 1 score of frame 10 = 10, allow 2 more rolls and add these to frame 10 score
+* if frame count = 10 and frame 10 score = 10, allow 1 more roll and add this to frame 10 score
+
+### APPROACH
+------------
+
+### FOLLOW UP
+------------
 Bowling Challenge
 =================
 

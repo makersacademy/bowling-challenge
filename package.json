@@ -1,0 +1,30 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "bowling-challenge ",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petraartep/bowling-challenge.git"
+  },
+  "keywords": [
+    "bowling"
+  ],
+  "author": "petra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/petraartep/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/petraartep/bowling-challenge#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.18.0"
+  }
+}

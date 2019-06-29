@@ -69,5 +69,5 @@ describe('Scoreboard', function() {
     game.calculateFrameScore(frameOne);
     expect(frameOne.points).toEqual(14);
     expect(game.bonus).toEqual(0);
-  })
+  });
 });

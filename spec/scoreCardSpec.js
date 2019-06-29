@@ -21,3 +21,16 @@ describe('ScoreCard', function() {
   })
 
 });
+
+describe('Frame', function(){
+
+  var frame;
+
+  beforeEach(function() {
+    frame = new Frame
+  });
+
+  it('defaults firstRoll to true', function() {
+    expect(frame.firstRoll).toEqual(true)
+  })
+})

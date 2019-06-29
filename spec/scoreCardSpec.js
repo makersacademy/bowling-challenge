@@ -49,4 +49,11 @@ describe('Frame', function(){
     frame.addScore(3)
     expect(frame.score).toEqual(3)
   });
+
+  describe('bowler adds score of 10 on first roll', function() {
+    it('can check for strike condition', function() {
+      frame.addScore(10);
+      expect(frame.strike).toEqual(true)
+    });
+  });
 });

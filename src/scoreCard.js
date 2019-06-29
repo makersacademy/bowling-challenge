@@ -7,13 +7,16 @@ function Frame() {
 };
 
 Frame.prototype.addScore = function (score) {
+  if (this.firstRoll && score === 10) {
+    this.strike = true;
+  };
   this.score += score;
 };
 
 
 function ScoreCard(frame = new Frame) {
-  this.frames = [frame]
-  this.currentFrame = this.frames[this.frames.length - 1]
+  this.frames = [frame];
+  this.currentFrame = this.frames[this.frames.length - 1];
 };
 
 ScoreCard.prototype.isFirstRoll = function () {
@@ -21,5 +24,5 @@ ScoreCard.prototype.isFirstRoll = function () {
 };
 
 ScoreCard.prototype.addScore = function (roll) {
-  this.currentFrame.addScore(roll)
+  this.currentFrame.addScore(roll);
 };

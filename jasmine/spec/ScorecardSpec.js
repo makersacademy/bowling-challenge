@@ -22,6 +22,30 @@ describe("Scorecard", function() {
       expect(scoreCard.nextFrame).toEqual(2);
       expect(scoreCard.nextRoll).toEqual(1);
     });
+  });
 
+  describe("#calculateBonusForFrame", function() {
+    it("should be able to calculate the bonus for a frame with a strike then a round without a strike", function() {
+      scoreCard.updateScore(10);
+      scoreCard.updateScore(3);
+      scoreCard.updateScore(4);
+      expect(scoreCard.calculateBonusForFrame(1)).toEqual(7);
+    });
+
+    it("should be able to calculate the bonus for a frame with no strikes or spares", function() {
+      scoreCard.updateScore(2);
+      scoreCard.updateScore(5);
+      scoreCard.updateScore(3);
+      scoreCard.updateScore(4);
+      expect(scoreCard.calculateBonusForFrame(1)).toEqual(0);
+    });
+
+    it("should be able to calculate the bonus for a frame with a spare", function() {
+      scoreCard.updateScore(5);
+      scoreCard.updateScore(5);
+      scoreCard.updateScore(3);
+      scoreCard.updateScore(4);
+      expect(scoreCard.calculateBonusForFrame(1)).toEqual(3);
+    });
   });
 });

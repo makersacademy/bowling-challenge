@@ -14,6 +14,16 @@ describe("score a game story", function() {
       scoreCard.updateScore(2);
       expect(scoreCard.getRunningTotal()).toEqual(4);
     });
+
+    it("should sum the score from three frames with strikes and spares", function() {
+      scoreCard.updateScore(10);
+      scoreCard.updateScore(2);
+      scoreCard.updateScore(8);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(3);
+      expect(scoreCard.getRunningTotal()).toEqual(35);
+      expect(scoreCard.getFrameNumber()).toEqual(4);
+    });
   });
 
   describe("set up a new game feature", function(){

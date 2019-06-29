@@ -12,6 +12,20 @@ This is not a bowling game, it is a Bowling Scorecard. The user inputs the rolls
 - Jasmine
 
 ---
+
+## Features
+  * [ ] Gutter game
+  * [ ] One frame
+  * [ ] Multiple frames
+  * [ ] Spares
+  * [ ] Strikes
+  * [ ] Final Frame
+
+* Bonus Features
+  * [ ] UI
+
+---
+
 ## Functionality
 
 ---
@@ -55,3 +69,6 @@ A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 str
 In the image below you can find some score examples.
 
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
+
+
+![Ten Pin Score Example](https://github.com/petraartep/bowling-challenge/blob/master/images/example_ten_pin_scoring.png)

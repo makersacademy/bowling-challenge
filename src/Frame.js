@@ -27,7 +27,7 @@ Frame.prototype.score = function(){
 };
 
 Frame.prototype.containsAStrike = function(){
-  if(this._rollScores.includes(this._MAXSCORE)){
+  if(this._rollScores[0] === this._MAXSCORE){
     return true;
   }
   else {

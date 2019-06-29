@@ -27,16 +27,16 @@ describe('Frame', function(){
     expect(frame.containsAStrike()).toBe(true);
   });
 
-  it('should register a strike in a frame', function(){
+  it('should register a spare in a frame', function(){
     frame.roll(9, rollDouble);
     frame.roll(1, rollDouble);
     expect(frame.containsAStrike()).toBe(false);
   });
 
-  it('should register a strike in a frame', function(){
+  it('should register a spare in a frame', function(){
     frame.roll(0, rollDouble);
     frame.roll(10, rollDouble);
-    expect(frame.containsAStrike()).toBe(true);
+    expect(frame.containsASpare()).toBe(true);
   });
 
   it('should register a spare in a frame', function(){

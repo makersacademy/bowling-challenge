@@ -1,31 +1,3 @@
-function Frame() {
-  this.strike = false;
-  this.spare = false;
-  this.firstRoll = true;
-  this.score = 0;
-  this.bonus = 0;
-};
-
-Frame.prototype.addScore = function (roll) {
-  this.score += roll;
-  if (this.score === 10) {
-    this.firstRoll ? this.strike = true : this.spare = true;
-  }
-  this.firstRoll = false;
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
 function ScoreCard(frame = new Frame) {
   this.frames = [frame];
   this.currentFrame = this.frames[this.frames.length - 1];

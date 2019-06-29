@@ -6,6 +6,10 @@ function Frame() {
   this.bonus = 0;
 };
 
+Frame.prototype.addScore = function (score) {
+  this.score += score;
+};
+
 
 function ScoreCard(frame = new Frame) {
   this.frames = [frame]
@@ -14,4 +18,8 @@ function ScoreCard(frame = new Frame) {
 
 ScoreCard.prototype.isFirstRoll = function () {
   return this.currentFrame['firstRoll'];
+};
+
+ScoreCard.prototype.addScore = function (roll) {
+  this.currentFrame.addScore(roll)
 };

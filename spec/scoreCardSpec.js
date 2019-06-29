@@ -20,7 +20,14 @@ describe('ScoreCard', function() {
     expect(scoreCard.isFirstRoll()).toEqual(true)
   })
 
+  it('tells Frame to add score', function() {
+    scoreCard.addScore(3)
+    expect(scoreCard.currentFrame.score).toEqual(3)
+  })
+
 });
+
+
 
 describe('Frame', function(){
 
@@ -36,5 +43,10 @@ describe('Frame', function(){
     expect(frame.spare).toEqual(false)
     expect(frame.score).toEqual(0)
     expect(frame.bonus).toEqual(0)
-  })
-})
+  });
+
+  it('can add to score', function() {
+    frame.addScore(3)
+    expect(frame.score).toEqual(3)
+  });
+});

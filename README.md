@@ -9,6 +9,7 @@ This is not a bowling game, it is a Bowling Scorecard. The user inputs the rolls
 ## Technologies used
 - Javascript
 - Node.js
+- Jasmine
 
 ---
 ## Functionality

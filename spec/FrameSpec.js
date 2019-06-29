@@ -57,5 +57,21 @@ describe('Frame', function(){
     expect(frame.totalScore()).toEqual(17);
   })
 
+  it('should report if frame in play', function(){
+    expect(frame.isInPlay()).toBe(true);
+    frame.roll(4, rollDouble);
+    expect(frame.isInPlay()).toBe(true);
+    frame.roll(4, rollDouble);
+    expect(frame.isInPlay()).toBe(false);
+  });
+
+  it('should report if frame in play', function(){
+    expect(frame.isInPlay()).toBe(true);
+    frame.roll(10, rollDouble);
+    expect(frame.isInPlay()).toBe(false);
+  });
+
+
+
 
 });

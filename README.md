@@ -7,7 +7,21 @@
 
 ## How to Use
 
-* to do.
+# How to Install
+
+# How to Run
+
+* Open index.html in a browser.
+* Run the code from the javascript console:
+
+```javascript
+var scorecard = new Scorecard;
+scorecard.getRunningTotal();
+> 0
+scorecard.updateScore(4);
+scorecard.getRunningTotal();
+> 4
+```
 
 ## Testing
 
@@ -15,7 +29,7 @@
 * To run eslint:
 
 ```
-/Users/student/node_modules/eslint/bin/eslint.js ./jasmine/src/Scorecard.js
+~/node_modules/eslint/bin/eslint.js ./jasmine/src/Scorecard.js
 ```
 
 ## Solving the Challenge

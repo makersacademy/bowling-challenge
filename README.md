@@ -33,3 +33,9 @@ scorecard.getRunningTotal();
 ```
 
 ## Notes on Solving the Challenge
+
+### Work Still to Do
+
+* There is a lot of repitition in the tests, which should be refactored.
+* Each frame is represented by a frame object literal, which gives rise to a lot of repitition in the code. I would like to move this to a new object e.g. Frame.
+* Some of the methods are too long and the conditionals need to be refactored.

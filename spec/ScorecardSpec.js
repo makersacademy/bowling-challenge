@@ -11,6 +11,15 @@ describe("Scorecard", function() {
       expect(scoreCard.getRunningTotal()).toEqual(2);
     });
 
+    it("should be able to update the score in frame 10 when 3 strikes are made", function() {
+      scoreCard.nextFrame = 10;
+      scoreCard.nextRoll = 1;
+      scoreCard.updateScore(10);
+      scoreCard.updateScore(10);
+      scoreCard.updateScore(10);
+      expect(scoreCard.getRunningTotal()).toEqual(30);
+    });
+
     it("should set the number of the next frame and roll correctly when first roll of frame is not a strike in first frame", function() {
       scoreCard.updateScore(2);
       expect(scoreCard.nextFrame).toEqual(1);
@@ -21,6 +30,23 @@ describe("Scorecard", function() {
       scoreCard.updateScore(10);
       expect(scoreCard.nextFrame).toEqual(2);
       expect(scoreCard.nextRoll).toEqual(1);
+    });
+
+    it("should set the number of the next frame and roll correctly when in frame 10 when there is a strike", function() {
+      scoreCard.nextFrame = 10;
+      scoreCard.nextRoll = 1;
+      scoreCard.updateScore(10);
+      expect(scoreCard.nextFrame).toEqual(10);
+      expect(scoreCard.nextRoll).toEqual(2);
+    });
+
+     it("should set the number of the next roll to 3 when in frame 10, there is a strike in roll 1, and roll 2 is being updated", function() {
+      scoreCard.nextFrame = 10;
+      scoreCard.nextRoll = 1;
+      scoreCard.updateScore(10);
+      scoreCard.updateScore(10);
+      expect(scoreCard.nextFrame).toEqual(10);
+      expect(scoreCard.nextRoll).toEqual(3);
     });
   });
 

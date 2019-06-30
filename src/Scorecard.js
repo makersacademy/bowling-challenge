@@ -57,9 +57,8 @@ function Scorecard() {
 Scorecard.prototype.updateScore = function(numOfPins) {
   this.updateFrame(numOfPins);
   this.updateNextTurn();
-  for (i = 1; i < 5; i++) {
-    var frame = this.frames[i];
-    frame.scoreBonus = this.calculateBonusForFrame(i);
+  for (i = 0; i < 9; i++) {
+    this.frames[i].scoreBonus = this.calculateBonusForFrame(i+1);
   }
 };
 
@@ -94,7 +93,16 @@ Scorecard.prototype.calculateBonusForFrame = function(frameNum) {
   var thisFrame = this.frames[frameNum - 1];
   var nextFrame = this.frames[frameNum];
   var bonus = 0;
-  if (this.isStrike(thisFrame)) {
+  if ((this.isStrike(thisFrame)) && (this.isStrike(nextFrame))) {
+    if (frameNum < 9) {
+      var subsequentFrame = this.frames[frameNum + 1];
+      bonus = nextFrame.scoreRoll1 + subsequentFrame.scoreRoll1;
+    }
+    else {
+      bonus = nextFrame.scoreRoll1 + nextFrame.scoreRoll2;
+    }
+  }
+  else if (this.isStrike(thisFrame)) {
     bonus = nextFrame.scoreRoll1 + nextFrame.scoreRoll2;
   }
   else if (this.isSpare(thisFrame)) {
@@ -108,13 +116,37 @@ Scorecard.prototype.updateFrame = function(numOfPins) {
   if (this.getRollNumber() === 1) {
     thisFrame.scoreRoll1 = numOfPins;
   }
-  else {
+  else if (this.getRollNumber() === 2) {
     thisFrame.scoreRoll2 = numOfPins;
+  }
+  else {
+    thisFrame.scoreRoll3 = numOfPins;
   }
 };
 
 Scorecard.prototype.updateNextTurn = function() {
   thisFrame = this.frames[this.getFrameNumber() - 1];
+  if ( this.getFrameNumber() === 10) {
+    this.updateNextTurnForLastFrame(thisFrame);
+  }
+  else {
+    this.updateNextTurnForNormalFrame(thisFrame);
+  }
+};
+
+Scorecard.prototype.updateNextTurnForLastFrame = function(thisFrame) {
+  if ( this.isStrike(thisFrame) && this.getRollNumber() === 2 ) {
+    this.nextRoll = 3;
+  }
+  else if ( this.isSpare(thisFrame) && this.getRollNumber() === 2 ) {
+    this.nextRoll = 3;
+  }
+  else {
+    this.nextRoll = 2;
+  }
+};
+
+Scorecard.prototype.updateNextTurnForNormalFrame = function(thisFrame) {
   if ( this.isStrike(thisFrame) ) {
     this.nextFrame += 1;
     this.nextRoll = 1;

@@ -25,7 +25,7 @@ describe("score a game story", function() {
       expect(scoreCard.getFrameNumber()).toEqual(4);
     });
 
-     xit("should score a perfect game correctly", function() {
+    it("should score a perfect game correctly", function() {
       scoreCard.updateScore(10);
       scoreCard.updateScore(10);
       scoreCard.updateScore(10);
@@ -38,6 +38,8 @@ describe("score a game story", function() {
       scoreCard.updateScore(10);
       scoreCard.updateScore(10);
       scoreCard.updateScore(10);
+      debugger;
+      console.log("?????" + scoreCard.frames);
       expect(scoreCard.getRunningTotal()).toEqual(300);
     });
 

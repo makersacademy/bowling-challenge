@@ -24,7 +24,7 @@ describe('Game', function(){
     expect(game.score()).toEqual(18);
   })
 
-  it('calculates correct score for a strike', function(){
+  it('calculates correct score for a single  strike', function(){
     game.roll(2);
     game.roll(5);
     game.roll(10);
@@ -33,7 +33,7 @@ describe('Game', function(){
     expect(game.score()).toEqual(35);
   });
 
-  it('calculates correct score for a strike', function(){
+  it('calculates correct score for a double strike', function(){
     game.roll(10);
     game.roll(10);
     game.roll(5);
@@ -42,7 +42,7 @@ describe('Game', function(){
     expect(game.score()).toEqual(58);
   });
 
-  it('calculates correct score for a strike', function(){
+  it('calculates correct score for a triple strike', function(){
     game.roll(10);
     game.roll(10);
     game.roll(10);

@@ -49,7 +49,7 @@ Frame.prototype.addBonus = function(bonus){
 };
 
 Frame.prototype.totalScore = function(){
-  return this.score() + this._bonus;
+    return this.score() + this._bonus;
 };
 
 Frame.prototype.isInPlay = function(){

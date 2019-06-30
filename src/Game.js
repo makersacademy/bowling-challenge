@@ -9,16 +9,8 @@ function Game(){
 Game.prototype.roll = function(pins){
     this._setFrame();
     this._currentFrame().roll(pins);
-    this._lastThreeRoles.push(pins);
-    if(this._frames.length > 1){
-      if(this._lastFrame().containsASpare() & this._lastFrame()._bonus === 0){
-        this._lastFrame().addBonus(pins);
-      }
-    }
-    if(this._lastThreeRoles.length === 3){
-      this.strikeBonus(pins);
-      this._lastThreeRoles.shift();
-    }
+    this.spareBonus(pins);
+    this.strikeBonus(pins);
 };
 
 Game.prototype.frameNumber= function(){
@@ -59,11 +51,38 @@ Game.prototype._sumLastTwo = function(array){
   return array[array.length -1] + array[array.length - 2];
 };
 
-Game.prototype.strikeBonus= function(pins){
-  if(this._lastThreeRoles[0] === 10 & this._lastThreeRoles.length === 3 & this._lastThreeRoles[1] != 10) {
-    this._lastFrame().addBonus(this._sumLastTwo(this._lastThreeRoles));
+Game.prototype.strikeBonus = function(pins){
+  if(this._checkStrikeBonus(pins)){
+    if(this._lastThreeRoles[1] != 10) {
+      this._lastFrame().addBonus(this._sumLastTwo(this._lastThreeRoles));
+    }
+    else if(this._lastThreeRoles[1] === 10) {
+      this._frameBeforeLast().addBonus(this._sumLastTwo(this._lastThreeRoles));
+    };
   }
-  else if(this._lastThreeRoles[0] === 10 & this._lastThreeRoles.length === 3 & this._lastThreeRoles[1] === 10) {
-    this._frameBeforeLast().addBonus(this._sumLastTwo(this._lastThreeRoles));
-  };    
+};
+
+Game.prototype.spareBonus = function(pins){
+  if(this._checkSpareBonus()){
+    this._lastFrame().addBonus(pins);
+  }
+};
+
+Game.prototype._checkSpareBonus = function(){
+  if(this._frames.length > 1){
+    if(this._lastFrame().containsASpare() & this._lastFrame()._bonus === 0){
+      return true;
+    }
+  }
+};
+
+Game.prototype._checkStrikeBonus = function(pins){
+  this._lastThreeRoles.push(pins);
+  if(this._lastThreeRoles.length === 3){
+    if(this._lastThreeRoles[0] === 10){
+      this._lastThreeRoles.shift();
+      return true;
+    }
+    this._lastThreeRoles.shift();
+  }
 };

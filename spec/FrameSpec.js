@@ -71,7 +71,4 @@ describe('Frame', function(){
     expect(frame.isInPlay()).toBe(false);
   });
 
-
-
-
 });

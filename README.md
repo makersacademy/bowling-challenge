@@ -2,12 +2,18 @@
 Bowling Challenge
 =================
 
+## Still TODO:
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+- [ ] re-do the actual logic of the game
+- [ ] refactor tests to test behaviour instead of state
+- [ ] linting
+- [ ] add interface
+- [ ] add event listeners?
+- [ ] revive the feature test 
+- [ ] Scoreboard - add styles
+- [ ] add special extra logic for frame 10
+- [ ] add returns in game.play that describe actual states of the game
+- [ ] add db? idfk
 
 ## The Task
 

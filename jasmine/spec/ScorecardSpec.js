@@ -48,4 +48,30 @@ describe("Scorecard", function() {
       expect(scoreCard.calculateBonusForFrame(1)).toEqual(3);
     });
   });
+
+  describe("#getRunningTotal", function() {
+    it("should be able to calculate the total for a game of 10 frames with no strikes or spares", function() {
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(2);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(2);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(2);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(2);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(2);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(2);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(2);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(2);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(2);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(2);
+      expect(scoreCard.getRunningTotal()).toEqual(30);
+    });
+  });
 });

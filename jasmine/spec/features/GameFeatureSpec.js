@@ -24,6 +24,46 @@ describe("score a game story", function() {
       expect(scoreCard.getRunningTotal()).toEqual(35);
       expect(scoreCard.getFrameNumber()).toEqual(4);
     });
+
+     xit("should score a perfect game correctly", function() {
+      scoreCard.updateScore(10);
+      scoreCard.updateScore(10);
+      scoreCard.updateScore(10);
+      scoreCard.updateScore(10);
+      scoreCard.updateScore(10);
+      scoreCard.updateScore(10);
+      scoreCard.updateScore(10);
+      scoreCard.updateScore(10);
+      scoreCard.updateScore(10);
+      scoreCard.updateScore(10);
+      scoreCard.updateScore(10);
+      scoreCard.updateScore(10);
+      expect(scoreCard.getRunningTotal()).toEqual(300);
+    });
+
+    it("should score a game with no strikes or spares correctly", function() {
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(4);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(4);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(4);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(4);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(4);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(4);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(4);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(4);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(4);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(4);
+      expect(scoreCard.getRunningTotal()).toEqual(50);
+    });
   });
 
   describe("set up a new game feature", function(){

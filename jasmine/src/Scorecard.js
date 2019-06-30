@@ -64,7 +64,14 @@ Scorecard.prototype.updateScore = function(numOfPins) {
 };
 
 Scorecard.prototype.getRunningTotal = function() {
-  return this.frame1.scoreRoll1 + this.frame1.scoreRoll2 + this.frame1.scoreBonus + this.frame2.scoreRoll1 + this.frame2.scoreRoll2 + this.frame2.scoreBonus + this.frame3.scoreRoll1 + this.frame3.scoreRoll2 + this.frame3.scoreBonus
+  var runningTotal = 0;
+  for (i = 0; i < 9; i++) {
+    var frame = this.frames[i];
+    runningTotal = runningTotal + frame.scoreRoll1 + frame.scoreRoll2 + frame.scoreBonus;
+  }
+  var frame = this.frames[9];
+  runningTotal = runningTotal + frame.scoreRoll1 + frame.scoreRoll2 + frame.scoreRoll3;
+  return runningTotal;
 };
 
 Scorecard.prototype.getFrameNumber = function() {
@@ -80,7 +87,6 @@ Scorecard.prototype.isStrike = function(frame) {
 };
 
 Scorecard.prototype.isSpare = function(frame) {
-  console.log(frame);
   return ( (frame.scoreRoll1 < 10) && (frame.scoreRoll1 + frame.scoreRoll2 === 10) ) ? true : false ;
 };
 

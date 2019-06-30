@@ -3,14 +3,14 @@
 
 ## Description
 
-* << to do >>
+* Solution to the Makers bowling challenge.
 
 ## How to Use
 
-* << to do >>
+* to do.
 
 ## Testing
 
-* << to do >>
+* To run the feature and unit tests open SpecRunner.html in a browser.
 
 ## Solving the Challenge

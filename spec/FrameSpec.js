@@ -15,10 +15,6 @@ describe('Frame', function() {
     expect(frame.spare).toBe(false);
   });
 
-  it('launches with no points', function() {
-    expect(frame.points).toEqual(0);
-  });
-
   it('keeps track of strikes', function() {
     frame.rollOne = 10; // rewrite as function?
     // execute a calculate function?

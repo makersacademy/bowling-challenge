@@ -7,12 +7,12 @@ Bowling Challenge
 - [ ] re-do the actual logic of the game
 - [ ] linting
 - [ ] add interface
-- [ ] add event listeners? ¯\_(⊙︿⊙)_/¯ 
+- [ ] add event listeners?
 - [ ] feature tests
 - [ ] Scoreboard styles
 - [ ] add special extra logic for frame 10
 - [ ] add returns in game.play that describe actual states of the game
-- [ ] add db? ¯\_(⊙︿⊙)_/¯ 
+- [ ] add db? idfk
 
 ## The Task
 

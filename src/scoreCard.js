@@ -1,5 +1,6 @@
 function ScoreCard(frame = new Frame) {
   this.frames = [frame];
+  this.tenthFrameBonusRoll = 0;
 };
 
 ScoreCard.prototype.isFirstRoll = function () {
@@ -7,13 +8,22 @@ ScoreCard.prototype.isFirstRoll = function () {
 };
 
 ScoreCard.prototype.addScore = function (roll, frame = new Frame) {
-  this.strikeBonus(roll);
-  this.spareBonus(roll);
-  if (this.currentFrame().addScore(roll)) {
-    this.addFrame(frame);
+  if (this.isTenthFrame() && this.tenthFrameBonusRoll === 0) {
+    this.currentFrame().addScore(roll)
+    this.tenthFrameBonusRoll ++
+  } else if (this.isTenthFrame()) {
+    if (this.frames[9].strike || this.frames[9].spare) {
+      this.tenthFrameBonus(this.currentFrame(), roll);
+    } else {
+      return "game over"
+    };
   } else {
-    return;
-  }
+    this.strikeBonus(roll);
+    this.spareBonus(roll);
+    if (this.currentFrame().addScore(roll)) {
+      this.addFrame(frame);
+    };
+  };
 };
 
 ScoreCard.prototype.currentFrame = function () {
@@ -45,4 +55,21 @@ ScoreCard.prototype.spareBonus = function (roll) {
 
 ScoreCard.prototype.addFrame = function (frame) {
   this.frames.push(frame)
+};
+
+ScoreCard.prototype.isTenthFrame = function () {
+  return this.frames.length === 10;
+};
+
+ScoreCard.prototype.tenthFrameBonus = function (frame, roll) {
+  console.log('inside tenth frame bonus')
+  if (frame.strike && this.tenthFrameBonusRoll < 3) {
+    frame.bonus += roll;
+    this.tenthFrameBonusRoll ++;
+  } else if (frame.spare && this.tenthFrameBonusRoll < 2) {
+    frame.bonus += roll;
+    this.tenthFrameBonusRoll ++;
+  } else {
+    return "game over";
+  }
 };

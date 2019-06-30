@@ -30,6 +30,27 @@ describe('ScoreCard', function() {
     expect(scoreCard.frames.length).toEqual(2)
   })
 
+  it('checks for tenth frame condition', function() {
+    for (var i = 0; i < 9; i++) {
+      scoreCard.addScore(10);
+    };
+    expect(scoreCard.frames.length).toEqual(10);
+    expect(scoreCard.isTenthFrame()).toEqual(true);
+  })
+
+  describe('tenth frame is a strike', function() {
+    it('calculates bonus for tenth frame', function() {
+      for (var i = 0; i < 10; i++) {
+        scoreCard.addScore(10);
+      };
+      scoreCard.addScore(5)
+      scoreCard.addScore(5)
+      expect(scoreCard.frames.length).toEqual(10)
+      expect(scoreCard.frames[9].bonus).toEqual(10)
+            console.log(scoreCard)
+    })
+  })
+
   describe('bowler adds two new scores that are non strike', function() {
     it('adds a new frame', function() {
       scoreCard.addScore(1);

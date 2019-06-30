@@ -51,6 +51,16 @@ describe('Game', function(){
     expect(game.score()).toEqual(89);
   });
 
+  it('calclulate the correct score if there is a spare', function(){
+    game.roll(4);
+    game.roll(3);
+    game.roll(7);
+    game.roll(3);
+    game.roll(5);
+    game.roll(3);
+    expect(game.score()).toEqual(30);
+  })
+
 
 
 });

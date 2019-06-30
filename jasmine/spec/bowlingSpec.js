@@ -16,6 +16,7 @@ describe('BowlingScorecard',function() {
       expect(bowlingScorecard.getCurrentRollScore()).toEqual(5);
       bowlingScorecard.rollScore(3);
       expect(bowlingScorecard.getCurrentRollScore()).toEqual(3);
+      expect(bowlingScorecard.frame).toContain(5);
     });
   });
 
@@ -23,7 +24,11 @@ describe('BowlingScorecard',function() {
     it('Roll score is added to frame score', function() {
       bowlingScorecard.rollScore(5);
       bowlingScorecard.frameScore();
-      expect(bowlingScorecard.frame).toContain(5);
+      expect(bowlingScorecard.frame).toContain(5, 3);
     });
+
+    // it('Only 2 roll scores per frame', function() {
+    //   bowlingScorecard
+    // });
   });
 });

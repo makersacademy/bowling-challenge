@@ -10,7 +10,8 @@ BowlingScorecard.prototype.getCurrentRollScore = function() {
 };
 
 BowlingScorecard.prototype.rollScore = function(knockedDownPins) {
-  return this.knockedDownPins = knockedDownPins;
+  this.knockedDownPins = knockedDownPins;
+  this.frameScore();
 };
 
 BowlingScorecard.prototype.frameScore = function() {

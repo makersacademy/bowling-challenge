@@ -69,6 +69,17 @@ As a bowler
 So that I can record the score of the frame
 My roll score is added to my frame score
 
+USER STORY 4: Roll score automatically added to frame score
+
+As a bowler
+So that my frame score is updated as soon as I enter my roll score
+My roll score should update my frame score automatically
+
+USER STORY 5: Only 2 scores per frame
+
+As a bowler
+So that my frame score can be added to my total score
+My frame score can only include 2 roll scores
 
 ### APPROACH
 ------------

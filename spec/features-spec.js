@@ -23,14 +23,12 @@ describe("bowling-computer", function() {
       expect(myGame.frame).toEqual(1);
     });
 
+    it("returns the final score", function() {
+      for (var i = 0; i < 10; i++) {
+        myGame.sumPointsPerFrame(5);
+        myGame.sumPointsPerFrame(0);
+      }
+      expect(myGame.score).toEqual(50);
+    });
   });
 });
-
-
-
-
-// it("returns the final score", function() {
-//   for (var i = 0; i < 10; i++) {
-//   myGame.sumPointsPerFrame(5,0); }
-//   expect(myGame.score).toEqual(50)
-// })

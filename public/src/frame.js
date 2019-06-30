@@ -8,7 +8,11 @@ Frame.prototype.addPins = function(pins) {
 }
 
 Frame.prototype.frameScore = function() {
-  if(this.rolls.length == 2) {
-  return this.singleScore = this.rolls[0] + this.rolls[1]
-  }
+  if(this.rolls.length == 2 || this.rolls[0] == 10) {
+    return this.singleScore = this.rolls.reduce(scoreCalc)
+  } else { return 0}
+}
+
+function scoreCalc(total, num) {
+  return total + num
 }

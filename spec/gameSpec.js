@@ -25,4 +25,14 @@ describe('Game', function() {
       expect(game.score()).toEqual(3)
     })
   })
+
+  describe('bonusStrike', function() {
+    it('calculates the bonus for a strike', function() {
+      game.add(10)
+      game.add(5)
+      game.add(4)
+      expect(game._bonusStrike).toEqual(9)
+
+    })
+  })
 })

@@ -34,6 +34,4 @@ describe('FinalFrame', function(){
     expect(finalFrame.totalScore()).toEqual(30);
   });
 
-
-
 });

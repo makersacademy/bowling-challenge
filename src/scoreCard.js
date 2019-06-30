@@ -8,6 +8,7 @@ ScoreCard.prototype.isFirstRoll = function () {
 
 ScoreCard.prototype.addScore = function (roll, frame = new Frame) {
   this.strikeBonus(roll);
+  this.spareBonus(roll);
   if (this.currentFrame().addScore(roll)) {
     this.addFrame(frame);
   } else {
@@ -32,8 +33,12 @@ ScoreCard.prototype.strikeBonus = function (roll) {
     this.secondLastFrame().bonus += roll
     this.thirdLastFrame().bonus += roll
   } else if (this.frames.length > 1 && this.secondLastFrame().strike) {
-    console.log('roll')
-    console.log(roll)
+    this.secondLastFrame().bonus += roll
+  }
+};
+
+ScoreCard.prototype.spareBonus = function (roll) {
+  if (this.frames.length > 1 && this.secondLastFrame().spare) {
     this.secondLastFrame().bonus += roll
   }
 };

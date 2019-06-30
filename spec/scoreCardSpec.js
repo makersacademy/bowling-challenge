@@ -56,4 +56,13 @@ describe('ScoreCard', function() {
     })
   })
 
+  describe('bowler knocks down all pins in single frame', function() {
+    it('can calculate a spare bonus points', function() {
+      scoreCard.addScore(5)
+      scoreCard.addScore(5)
+      scoreCard.addScore(5)
+      expect(scoreCard.frames[0].bonus).toEqual(5)
+    })
+  })
+
 });

@@ -17,15 +17,17 @@ describe("bowling-computer", function() {
       myGame.sumPointsPerFrame(10);
       expect(myGame.frame).toEqual(2);
     });
+
+    it("does not progress the frame if pinfall is 5", function() {
+      myGame.sumPointsPerFrame(5);
+      expect(myGame.frame).toEqual(1);
+    });
+
   });
 });
 
 
 
-// it("does not progress the frame if pinfall is 5", function() {
-//   myGame.sumPointsPerFrame(10,1);
-//   expect(myGame.frame).toEqual(2);
-// });
 
 // it("returns the final score", function() {
 //   for (var i = 0; i < 10; i++) {

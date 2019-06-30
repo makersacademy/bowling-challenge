@@ -14,7 +14,7 @@ Scorecard.prototype.sumPointsPerFrame = function(pinfall) {
     this.frame++;
     this.roll = 1;
   } else {
-    if (this.roll === 1) {
+    if (pinfall === 10) {
       this.score += pinfall;
       this.frame++;
       this.roll = 1;

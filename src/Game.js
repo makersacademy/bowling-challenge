@@ -44,16 +44,21 @@ Game.prototype._setFrame = function(){
 
 Game.prototype._lastFrame = function(){
   return this._frames[this._frames.length - 2];
-}
+};
+
+Game.prototype._frameBeforeLast = function(){
+  return this._frames[this._frames.length - 3]
+};
+
+Game.prototype._sumLastTwo = function(array){
+  return array[array.length -1] + array[array.length - 2];
+};
 
 Game.prototype.strikeBonus= function(pins){
   if(this._lastThreeRoles[0] === 10 & this._lastThreeRoles.length === 3 & this._lastThreeRoles[1] != 10) {
-    console.log("Stike Bonus 1 strike")
-    this._lastFrame().addBonus(this._currentFrame().score());
+    this._lastFrame().addBonus(this._sumLastTwo(this._lastThreeRoles));
   }
   else if(this._lastThreeRoles[0] === 10 & this._lastThreeRoles.length === 3 & this._lastThreeRoles[1] === 10) {
-    console.log("Stike Bonus 2 strike")
-    this._frames[this._frames.length - 3].addBonus((10 + pins));
-  };
-    
+    this._frameBeforeLast().addBonus(this._sumLastTwo(this._lastThreeRoles));
+  };    
 };

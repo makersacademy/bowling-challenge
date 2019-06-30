@@ -1,5 +1,5 @@
 
-### Bowling Challenge
+# Bowling Challenge
 
 ## Description
 
@@ -7,9 +7,9 @@
 
 ## How to Use
 
-# How to Install
+### How to Install
 
-# How to Run
+### How to Run
 
 * Open index.html in a browser.
 * Run the code from the javascript console:
@@ -28,8 +28,8 @@ scorecard.getRunningTotal();
 * To run the feature and unit tests open SpecRunner.html in a browser.
 * To run eslint:
 
-```
+```console
 ~/node_modules/eslint/bin/eslint.js ./jasmine/src/Scorecard.js
 ```
 
-## Solving the Challenge
+## Notes on Solving the Challenge

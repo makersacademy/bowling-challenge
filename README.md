@@ -5,11 +5,12 @@ Bowling Challenge
 ## Still TODO:
 
 - [ ] re-do the actual logic of the game
+- [ ] refactor tests to test behaviour instead of state
 - [ ] linting
 - [ ] add interface
 - [ ] add event listeners?
-- [ ] feature tests
-- [ ] Scoreboard styles
+- [ ] revive the feature test 
+- [ ] Scoreboard - add styles
 - [ ] add special extra logic for frame 10
 - [ ] add returns in game.play that describe actual states of the game
 - [ ] add db? idfk

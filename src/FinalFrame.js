@@ -3,22 +3,25 @@
 function FinalFrame(){
   this._pinsRemaining = 10;
   this._rollScores = [];
+  this._numberRolls = 2;
 };
 
 
 FinalFrame.prototype.roll = function(pinsKnocked, rollClass = new Roll()){
-  // #todo use extra roll to prevent illegal 3rd roll in addition to resetting pins
   this.isExtraRoll();
-  var roll = rollClass;
-  if(roll.validRoll(pinsKnocked, this._pinsRemaining)){
-    this._rollScores.push(pinsKnocked);
-    this._pinsRemaining = this._pinsRemaining - pinsKnocked;
-  };
+  if(this.isInPlay()){
+    var roll = rollClass;
+    if(roll.validRoll(pinsKnocked, this._pinsRemaining)){
+      this._rollScores.push(pinsKnocked);
+      this._pinsRemaining = this._pinsRemaining - pinsKnocked;
+    };
+  }
 };
 
 FinalFrame.prototype.isExtraRoll = function(){
   if(this._rollScores[0] === 10 || this._rollScores[0] + this._rollScores[1]=== 10){
     this._pinsRemaining = 10;
+    this._numberRolls = 3
     return true;
   }
 };
@@ -27,4 +30,12 @@ FinalFrame.prototype.totalScore = function(){
   return this._rollScores.reduce(function(a,b){
     return a + b
   }, 0);
+};
+
+FinalFrame.prototype.isInPlay = function(){
+  if(this._rollScores.length < this._numberRolls){
+    return true;
+  } else {
+    return false;
+  }
 };

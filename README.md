@@ -49,6 +49,27 @@ open SpecRunner.html
 * If frame count = 10 and roll 1 score of frame 10 = 10, allow 2 more rolls and add these to frame 10 score
 * if frame count = 10 and frame 10 score = 10, allow 1 more roll and add this to frame 10 score
 
+### USER STORIES
+------------
+USER STORY 1: Roll score set to 0
+
+As a bowler
+So that I can start bowling
+The roll score is set to 0 in the beginning
+
+USER STORY 2: Add roll score
+
+As a bowler
+So that I can record the score of my roll
+I can enter how many pins I have knocked down
+
+USER STORY 3: Add roll score to frame score
+
+As a bowler
+So that I can record the score of the frame
+My roll score is added to my frame score
+
+
 ### APPROACH
 ------------
 

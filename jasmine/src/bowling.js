@@ -2,7 +2,7 @@
 
 var BowlingScorecard = function() {
   this.knockedDownPins = 0;
-  // this.frame = []
+  this.frame = []
 };
 
 BowlingScorecard.prototype.getCurrentRollScore = function() {
@@ -10,9 +10,9 @@ BowlingScorecard.prototype.getCurrentRollScore = function() {
 };
 
 BowlingScorecard.prototype.rollScore = function(knockedDownPins) {
-  return this.knockedDownPins += knockedDownPins;
+  return this.knockedDownPins = knockedDownPins;
 };
 
-// BowlingScorecard.prototype.frameScore = function() {
-//   return this.frame.push(this.knocked_down_pins);
-// };
+BowlingScorecard.prototype.frameScore = function() {
+  this.frame.push(this.knockedDownPins);
+};

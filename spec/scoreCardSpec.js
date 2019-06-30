@@ -25,10 +25,17 @@ describe('ScoreCard', function() {
     expect(scoreCard.currentFrame.score).toEqual(3)
   })
 
-  describe('adds new frame if adding score returns true', function() {
-    scoreCard.addScore(1);
-    scoreCard.addScore(1);
-    expect(scoreCard.frames.length).toEqual(2);
+  it('adds new frame to frames aray with addFrame()', function() {
+    scoreCard.addFrame(new Frame);
+    expect(scoreCard.frames.length).toEqual(2)
+  })
+
+  describe('bowler adds two new scores that are non strike', function() {
+    it('adds a new frame', function() {
+      scoreCard.addScore(1);
+      scoreCard.addScore(1);
+      expect(scoreCard.frames.length).toEqual(2);
+    })
   })
 
 });

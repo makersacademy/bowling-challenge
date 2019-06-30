@@ -10,6 +10,7 @@ Frame.prototype.addScore = function (roll) {
   this.score += roll;
   if (this.score === 10) {
     this.firstRoll ? this.strike = true : this.spare = true;
-  }
+  };
+  if (this.strike || !this.firstRoll) {return true;};
   this.firstRoll = false;
 };

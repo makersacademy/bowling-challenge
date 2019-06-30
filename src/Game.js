@@ -10,6 +10,11 @@ Game.prototype.roll = function(pins){
     this._setFrame();
     this._currentFrame().roll(pins);
     this._lastThreeRoles.push(pins);
+    if(this._frames.length > 1){
+      if(this._lastFrame().containsASpare() & this._lastFrame()._bonus === 0){
+        this._lastFrame().addBonus(pins);
+      }
+    }
     if(this._lastThreeRoles.length === 3){
       this.strikeBonus(pins);
       this._lastThreeRoles.shift();

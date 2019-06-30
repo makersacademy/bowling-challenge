@@ -53,33 +53,45 @@ open SpecRunner.html
 ------------
 USER STORY 1: Roll score set to 0
 
-As a bowler
-So that I can start bowling
+As a bowler  
+So that I can start bowling  
 The roll score is set to 0 in the beginning
 
 USER STORY 2: Add roll score
 
-As a bowler
-So that I can record the score of my roll
+As a bowler  
+So that I can record the score of my roll  
 I can enter how many pins I have knocked down
 
 USER STORY 3: Add roll score to frame score
 
-As a bowler
-So that I can record the score of the frame
+As a bowler  
+So that I can record the score of the frame  
 My roll score is added to my frame score
 
 USER STORY 4: Roll score automatically added to frame score
 
-As a bowler
-So that my frame score is updated as soon as I enter my roll score
+As a bowler  
+So that my frame score is updated as soon as I enter my roll score  
 My roll score should update my frame score automatically
 
 USER STORY 5: Roll Strike
 
-As a bowler
-So that my scorecard shows a strike
+As a bowler  
+So that my scorecard shows a strike  
 My frame score can only roll 2 should equal 0
+
+USER STORY 6: Add frame score to total score
+
+As a bowler
+So that I can see the total score of my game
+My frame scores get added to my total score
+
+USER STORY 7: New frame
+
+As a bowler  
+So that I can reset the pins  
+A new frame will start after 2 rolls
 
 ### APPROACH
 ------------

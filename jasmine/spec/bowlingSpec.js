@@ -30,5 +30,20 @@ describe('BowlingScorecard',function() {
       bowlingScorecard.rollScore(3);
       expect(bowlingScorecard.frame).toEqual(jasmine.arrayContaining([5, 3]));
     });
+
+    it('Frame array reset to empty after 2 rolls', function() {
+      bowlingScorecard.rollScore(5);
+      bowlingScorecard.rollScore(3);
+      bowlingScorecard.totalScore();
+      expect(bowlingScorecard.frame).toEqual([])
+    });
+  });
+
+  describe('Total Score', function() {
+    it('Each frame score gets added', function() {
+      bowlingScorecard.rollScore(5);
+      bowlingScorecard.rollScore(3);
+      expect(bowlingScorecard.total).toEqual(jasmine.arrayContaining([5, 3]));
+    });
   });
 });

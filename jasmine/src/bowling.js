@@ -3,6 +3,7 @@
 var BowlingScorecard = function() {
   this.knockedDownPins = 0;
   this.frame = []
+  this.total = new Array
 };
 
 BowlingScorecard.prototype.getCurrentRollScore = function() {
@@ -28,6 +29,14 @@ BowlingScorecard.prototype.strike = function() {
   };
 };
 
-// BowlingScorecard.prototype.isFrameOver = function() {
-//   return this.frame.length === 2
-// };
+BowlingScorecard.prototype.isFrameOver = function() {
+  return this.frame.length === 2
+};
+
+BowlingScorecard.prototype.totalScore = function() {
+  if(this.isFrameOver()) {
+    this.total.push(this.frame);
+    this.frame = []
+  };
+    return;
+};

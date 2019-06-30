@@ -1,14 +1,16 @@
 'use strict';
 
-var Bowling = function () {
+var Game = function () {
   this.rolls = [];
+  this.frameNo = 1;
+  this.rollCount = 0;
 };
 
-Bowling.prototype.roll = function (pins) {
+Game.prototype.roll = function (pins) {
   this.rolls.push(pins);
 };
 
-Bowling.prototype.score = function() {
+Game.prototype.score = function() {
   var result = 0;
   var rollIndex = 0;
   var game = this;

@@ -5,17 +5,17 @@ describe('Bowling', function() {
   var game;
 
   beforeEach(function () {
-    game = new Bowling;
+    game = new Game;
   });
 
   it('can roll gutter game', function() {
     rollMany(0, 20);
-    expect(game.score()).toBe(0);
+    expect(game.score()).toEqual(0);
   });
 
   it('can roll all ones', function() {
     rollMany(1, 20);
-    expect(game.score()).toBe(20);
+    expect(game.score()).toEqual(20);
   });
 
   it('can roll a spare', function() {
@@ -23,7 +23,7 @@ describe('Bowling', function() {
     game.roll(5);
     game.roll(5);
     rollMany(0, 17);
-    expect(game.score()).toBe(20);
+    expect(game.score()).toEqual(20);
   });
 
   it('can roll a strike', function() {
@@ -31,12 +31,12 @@ describe('Bowling', function() {
     game.roll(5);
     game.roll(2);
     rollMany(0, 16);
-    expect(game.score()).toBe(24);
+    expect(game.score()).toEqual(24);
   });
 
   it('can roll perfect game', function() {
     rollMany(10, 12);
-    expect(game.score()).toBe(300);
+    expect(game.score()).toEqual(300);
   });
 
   var rollMany = function (pins, rolls) {

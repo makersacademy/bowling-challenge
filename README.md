@@ -2,29 +2,44 @@
 
 ## About
 
-This is a bowling scorecard!  It will count and sum the scores for a single-player ten-pin bowling game.
+This is a bowling scorecard!  It will count and sum the scores for a single-player ten-pin bowling game.  
+Warning: This challenge may put you off ten-pin bowling for life. :bowling:
+
 
 > A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
 ## User Stories
 
 ### Epic:
+:bowling: :bowling: :bowling: :bowling: :bowling:
 ```
 As a bowler,
 So that I can keep track of my bowling score,
 I want to see a scorecard and my total game score.
 ```
+:bowling: :bowling: :bowling: :bowling: :bowling:
+
 
 ### Stories:
 ```
 As a bowler,
-When I knock down 1 pin in a frame,
-I want to be awarded 1 point.
+So that I can remember my score,
+I want my score to be recorded.
 ```
 
 ```
-As a bowler,
-When I knock down 2 pins in a roll,
+...When I knock down a pin in a frame,
+I want to be awarded 1 point for every pin.
+```
+
+```
+...So that my score will be calculated correctly,
+I want to receive no more than 10 pin points per frame.
+```
+
+<!-- 
+```
+...When I knock down 2 pins in a roll,
 I want to be awaded 2 points.
 ... 3 pins/points
 ... 4 pins/points
@@ -40,7 +55,7 @@ I want to be awaded 2 points.
 As a bowler,
 When I don't have a pinfall of 10 on my first roll,
 I want to get a second roll in the frame
-```
+``` -->
 
 <!-- ```
 As a bowler,

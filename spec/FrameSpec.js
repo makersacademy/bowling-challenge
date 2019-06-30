@@ -18,15 +18,15 @@ describe('Frame', function() {
   it('keeps track of strikes', function() {
     frame.receiveRollOne(10); 
     expect(frame.strike).toBe(true);
-  //  expect(frame.isStrike()).toBe(true);
+    expect(frame.isStrike()).toBe(true);
   });
 
   it('keeps track of spares', function() {
     frame.receiveRollOne(5);
     frame.receiveRollTwo(5);
     expect(frame.spare).toBe(true);
-    // expect(frame.isSpare()).toBe(true);
-    // expect(frame.isStrike()).toBe(false);
+     expect(frame.isSpare()).toBe(true);
+     expect(frame.isStrike()).toBe(false);
   });
 
   it('keeps track of points', function() {

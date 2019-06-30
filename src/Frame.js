@@ -9,11 +9,11 @@ function Frame() {
 };
 
 Frame.prototype.isStrike = function() {
-  this.strike === true;
+  return this.strike === true;
 };
 
 Frame.prototype.isSpare = function() {
-  this.spare === true;
+  return this.spare === true;
 };
 
 Frame.prototype.receiveRollOne = function(num) {

@@ -72,6 +72,10 @@ I laid out the requirements of the app as User Stories, detailed below. To keep 
 
 ```
 As a solo bowler,
+To play a game of bowling,
+I want each roll to knock down between 0 and 10 pins.
+
+As a solo bowler,
 To play a full game of bowling,
 I want each frame to consist of two rolls.
 

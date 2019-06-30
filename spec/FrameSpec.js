@@ -16,21 +16,29 @@ describe('Frame', function() {
   });
 
   it('keeps track of strikes', function() {
-    frame.rollOne = 10; // rewrite as function?
-    // execute a calculate function?
+    frame.receiveRollOne(10); 
     expect(frame.strike).toBe(true);
+  //  expect(frame.isStrike()).toBe(true);
   });
 
   it('keeps track of spares', function() {
-    frame.rollTwo = 10;
+    frame.receiveRollOne(5);
+    frame.receiveRollTwo(5);
     expect(frame.spare).toBe(true);
-    expect(frame.strike).toBe(false);
+    // expect(frame.isSpare()).toBe(true);
+    // expect(frame.isStrike()).toBe(false);
   });
 
-  it('keeps track of spares by addition', function() {
-    frame.rollOne = 5;
-    frame.rollTwo = 5;
-    expect(frame.spare).toBe(true);
-    expect(frame.strike).toBe(false);
+  it('keeps track of points', function() {
+    frame.receiveRollOne(5);
+    frame.receiveRollTwo(5);
+    expect(frame.points).toEqual(10);
   });
+
+  it('evaluates points', function() {
+    frame.rollOne = 5;
+    frame.rollTwo = 4;
+    frame.evaluatePoints();
+    expect(frame.points).toEqual(9);
+    });
 });

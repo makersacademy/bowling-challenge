@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/petraartep/bowling-challenge.svg?branch=master)](https://travis-ci.org/petraartep/bowling-challenge)
 
-This is not a bowling game, it is a Bowling Scorecard. The user inputs the rolls. It counts and sums the scores of a bowling game for one player (in JavaScript).
+This is not a bowling game, it is a Bowling Scorecard. The user inputs the rolls. It counts and sums the scores of a bowling game for one player.
 
 ---
 
@@ -30,11 +30,89 @@ This is not a bowling game, it is a Bowling Scorecard. The user inputs the rolls
 
 ---
 
+## Approach 
+
+- Plan
+- Creating user stories
+- Setting up the environment
+- Testing
+- Implementing
+- Refactoring
+- Styling
+
+---
+## User Stories
+
+```
+As a user
+So that I can see my scores
+I would like to display my current score in each rolls in each frames.
+
+As a user
+So that I can keep track of my score
+I would like to calculates the total.
+
+As a user
+So that I can calculate the total score
+I would like to record the frames.
+
+As a user
+So that I can record when I score a strike
+I would like to recognize a strike.
+
+As a user
+So that I can record when I score a spare
+I would like to recognize a spare.
+
+As a user
+So that I can record my strike scores correctly
+I would like to calculate the bonus scoring for strikes.
+
+As a user
+So that I can record my spare scores correctly
+I would like to calculate the bonus scoring for spares.
+
+As a user
+So that I can get extra rolls in 10th frame
+I would like 1 extra roll when I score spare in 10th frame.
+
+As a user
+So that I can get extra rolls in 10th frame
+I would like 2 extra rolls when I score strike in 10th frame.
+
+As a user 
+So that I can calculate the total score
+I would like to calculate the total score with no strick or spares.
+
+As a user 
+So that I can calculate the total score
+I would like to calculate the total score with strick and/or spares.
+
+As a user
+So that I can calculate a perfect game
+I would like to calculate when I score 10 for every roll.
+
+As a user
+So that I can calculate a gutter game
+I would like to calculate when I score 0 for every roll.
+
+```
+---
+
 ## Challenges
+
+- Setting up Eslint
+- Travis CI not recognizing JS
 
 ---
 
 ## How to use
+
+```sh
+$ git clone git@github.com:[USERNAME]/bowling-challenge.git
+$ cd bowling-challenge
+$ open SpecRunner.html
+```
 
 
 ---

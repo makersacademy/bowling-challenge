@@ -25,8 +25,8 @@ describe('Frame', function() {
     frame.receiveRollOne(5);
     frame.receiveRollTwo(5);
     expect(frame.spare).toBe(true);
-     expect(frame.isSpare()).toBe(true);
-     expect(frame.isStrike()).toBe(false);
+    expect(frame.isSpare()).toBe(true);
+    expect(frame.isStrike()).toBe(false);
   });
 
   it('keeps track of points', function() {

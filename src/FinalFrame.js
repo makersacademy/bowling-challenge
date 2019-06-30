@@ -7,6 +7,7 @@ function FinalFrame(){
 
 
 FinalFrame.prototype.roll = function(pinsKnocked, rollClass = new Roll()){
+  // #todo use extra roll to prevent illegal 3rd roll in addition to resetting pins
   this.isExtraRoll();
   var roll = rollClass;
   if(roll.validRoll(pinsKnocked, this._pinsRemaining)){

@@ -36,11 +36,11 @@ I want to be awaded 2 points.
 ... 0 pins/points
 ```
 
-<!-- ```
+```
 As a bowler,
 When I don't have a pinfall of 10 on my first roll,
 I want to get a second roll in the frame
-``` -->
+```
 
 <!-- ```
 As a bowler,

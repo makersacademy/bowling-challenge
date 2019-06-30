@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Bowling Challenge </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="public/css/style.css">.
+  </head>
+
+  <body>
+
+    <h2>Score Card</h2>
+      <form id='user_input'>
+        <input id='input' type="text" placeholder="Insert pins number"/>
+        <input id='button' type="submit" style="position: absolute; left: -9999px"/>
+      </form>
+      <div id="result"></div>
+
+    <table>
+      <tr>
+        <th>Frame</th>
+        <th>Roll</th>
+        <th>Knocked down pins</th>
+        <th>Total score</th>
+        <th>Notes</th>
+      </tr>
+      <tr>
+        <td id='frame1a'> - </td>
+        <td id='roll1a'> - </td>
+        <td id='pins1a'> - </td>
+        <th id='score1a'> - </th>
+        <th id='notes1a'>Notes</th>
+      </tr>
+      <tr>
+        <td id='frame1b'> - </td>
+        <td id='roll1b'> - </td>
+        <td id='pins1b'> -  </td>
+        <th id='score1b'> - </th>
+        <th id='notes1b'>Notes</th>
+        </tr>
+
+        <tr>
+          <td id='frame2a'> - </td>
+          <td id='roll2a'> - </td>
+          <td id='pins2a'> - </td>
+          <th id='score2a'> - </th>
+          <th id='notes2a'>Notes</th>
+        </tr>
+        <tr>
+          <td id='frame2b'> - </td>
+          <td id='roll2b'> - </td>
+          <td id='pins2b'> -  </td>
+          <th id='score2b'> - </th>
+          <th id='notes2b'>Notes</th>
+        </tr>
+
+
+    <script src="public/src/game.js"></script>
+    <script src="public/src/frame.js"></script>
+    <!-- <script src="public/data.php"></script> -->
+
+    <script>
+      $(document).ready(function() {
+        game = new Game()
+
+        // first frame
+        game.add(4)
+        $('#frame1a').text(game.frames.length)
+        $('#roll1a').text(game.frames[0].rolls.length)
+        $('#pins1a').text(game.frames[0].rolls[0])
+
+        game.add(5)
+        $('#frame1b').text(game.frames.length)
+        $('#roll1b').text(game.frames[0].rolls.length)
+        $('#pins1b').text(game.frames[0].rolls[1])
+        $('#score1b').text(game.score())
+
+        // second frame
+        game.add(3)
+        $('#frame2a').text(game.frames.length)
+        $('#roll2a').text(game.frames[1].rolls.length)
+        $('#pins2a').text(game.frames[1].rolls[0])
+
+        game.add(2)
+
+        $('#frame2b').text(game.frames.length)
+        $('#roll2b').text(game.frames[1].rolls.length)
+        $('#pins2b').text(game.frames[1].rolls[1])
+        $('#score2b').text(game.score())
+
+
+
+        var value = $('#input').val();
+        $.post({ value: value },
+          function(data) {
+            game.add(data)
+            $('#user_input')[0].reset();
+          })
+      
+        
+      });
+    </script>
+  </body>
+
+</html>

@@ -75,11 +75,11 @@ As a bowler
 So that my frame score is updated as soon as I enter my roll score
 My roll score should update my frame score automatically
 
-USER STORY 5: Only 2 scores per frame
+USER STORY 5: Roll Strike
 
 As a bowler
-So that my frame score can be added to my total score
-My frame score can only include 2 roll scores
+So that my scorecard shows a strike
+My frame score can only roll 2 should equal 0
 
 ### APPROACH
 ------------

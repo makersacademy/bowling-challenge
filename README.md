@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/petraartep/bowling-challenge.svg?branch=master)](https://travis-ci.org/petraartep/bowling-challenge)
 
-This is not a bowling game, it is a Bowling Scorecard. The user inputs the rolls. It counts and sums the scores of a bowling game for one player.
+This is a Bowling Scorecard. The user inputs the rolls. It counts and sums the scores of a bowling game for one player.
 
 ---
 
@@ -33,6 +33,7 @@ This is not a bowling game, it is a Bowling Scorecard. The user inputs the rolls
 ## Approach 
 
 - Plan
+    - calculating scoring
 - Creating user stories
 - Setting up the environment
 - Testing
@@ -50,7 +51,7 @@ I would like to display my current score in each rolls in each frames.
 
 As a user
 So that I can keep track of my score
-I would like to calculates the total.
+I would like to calculate the total.
 
 As a user
 So that I can calculate the total score
@@ -82,11 +83,11 @@ I would like 2 extra rolls when I score strike in 10th frame.
 
 As a user 
 So that I can calculate the total score
-I would like to calculate the total score with no strick or spares.
+I would like to calculate the total score with no strike or spares.
 
 As a user 
 So that I can calculate the total score
-I would like to calculate the total score with strick and/or spares.
+I would like to calculate the total score with strike and/or spares.
 
 As a user
 So that I can calculate a perfect game

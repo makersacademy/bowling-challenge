@@ -1,10 +1,11 @@
 {
   "name": "bowling-challenge",
   "version": "1.0.0",
-  "description": "bowling-challenge ",
-  "main": "index.js",
+  "description": "[![Build Status](https://travis-ci.org/petraartep/bowling-challenge.svg?branch=master)](https://travis-ci.org/petraartep/bowling-challenge)",
+  "main": "jquery-3.4.1.min.js",
   "directories": {
-    "doc": "docs"
+    "doc": "docs",
+    "lib": "lib"
   },
   "scripts": {
     "test": "jasmine"
@@ -13,9 +14,6 @@
     "type": "git",
     "url": "git+https://github.com/petraartep/bowling-challenge.git"
   },
-  "keywords": [
-    "bowling"
-  ],
   "author": "petra",
   "license": "ISC",
   "bugs": {
@@ -25,11 +23,6 @@
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.18.0",
-    "jasmine": "^3.4.0"
-  },
-  "dependencies": {
-    "jasmine-jquery": "^2.1.1",
-    "jquery": "^3.4.1"
+    "eslint-plugin-import": "^2.18.0"
   }
 }

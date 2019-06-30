@@ -7,7 +7,12 @@ describe('BowlingScorecard',function() {
   });
 
   it('User enters roll score', function() {
-    knocked_down_pins = 5
-    expect(bowlingScorecard.rollScore(knocked_down_pins)).toEqual(5);
+    bowlingScorecard.rollScore(5);
+    expect(bowlingScorecard.getCurrentRollScore()).toEqual(5);
   });
+
+  // it('Roll scores is added to frame score', function() {
+  //   rollScore1 = bowlingScorecard.rollScore(5);
+  //   expect(bowlingScorecard.frameScore()).toInclude(rollScore1);
+  // });
 });

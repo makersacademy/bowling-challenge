@@ -26,6 +26,14 @@ describe('Bowling', function() {
     expect(game.score()).toBe(20);
   });
 
+  it('can roll a strike', function() {
+    game.roll(10);
+    game.roll(5);
+    game.roll(2);
+    rollMany(0, 16);
+    expect(game.score()).toBe(24);
+  });
+
   var rollMany = function (pins, rolls) {
     for (var i = 0; i < rolls; i++) {
       game.roll(pins);

@@ -36,4 +36,10 @@ describe('Scoreboard', function() {
     expect(game.frames.length).toEqual(10);
   });
 
+  xit('adds scores to scoreboard')
+
+  xit('runs game')
+
+  xit('back updates scoreboard')
+
 });

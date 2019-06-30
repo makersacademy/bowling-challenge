@@ -21,7 +21,8 @@ As a bowler,
 When I knock down 1 pin in a frame,
 I want to be awarded 1 point.
 ```
-<!-- ```
+
+```
 As a bowler,
 When I knock down 2 pins in a roll,
 I want to be awaded 2 points.
@@ -33,6 +34,12 @@ I want to be awaded 2 points.
 ... 8 pins/points
 ... 9 pins/points
 ... 0 pins/points
+```
+
+<!-- ```
+As a bowler,
+When I don't have a pinfall of 10 on my first roll,
+I want to get a second roll in the frame
 ``` -->
 
 <!-- ```
@@ -55,12 +62,7 @@ Knock down all 10 pins with the first roll in a frame.
  - The bonus for that frame is the number of pins knocked down in the next frame. -->
 
 
-<!-- 
-```
-As a bowler,
-When I don't have a pinfall of 10 on my first roll,
-I want to get a second roll in the frame
-``` -->
+
 
 
 <!-- **Spare:**

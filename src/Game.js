@@ -33,10 +33,20 @@ Game.prototype._addFrame = function(frame = new Frame()){
   this._frames.push(frame)
 };
 
+Game.prototype._addFinalFrame = function(frame = new FinalFrame()){
+  this._frames.push(frame)
+};
+
 Game.prototype._setFrame = function(){
-  if(this._frames.length === 0 || !this._currentFrame().isInPlay()){
+  if(this._frames.length === 0){
     this._addFrame();
   } 
+   else if (this._frames.length === 9 & !this._currentFrame().isInPlay()){
+    this._addFinalFrame();
+  } 
+  else if(!this._currentFrame().isInPlay()){
+    this._addFrame();
+  }
 };
 
 Game.prototype._lastFrame = function(){

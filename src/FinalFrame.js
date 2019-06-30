@@ -14,12 +14,13 @@ FinalFrame.prototype.roll = function(pinsKnocked, rollClass = new Roll()){
     if(roll.validRoll(pinsKnocked, this._pinsRemaining)){
       this._rollScores.push(pinsKnocked);
       this._pinsRemaining = this._pinsRemaining - pinsKnocked;
+      this.isExtraRoll();
     };
   }
 };
 
 FinalFrame.prototype.isExtraRoll = function(){
-  if(this._rollScores[0] === 10 || this._rollScores[0] + this._rollScores[1]=== 10){
+  if(this._rollScores[0] === 10 || this._rollScores[0] + this._rollScores[1] === 10){
     this._pinsRemaining = 10;
     this._numberRolls = 3
     return true;
@@ -33,9 +34,9 @@ FinalFrame.prototype.totalScore = function(){
 };
 
 FinalFrame.prototype.isInPlay = function(){
-  if(this._rollScores.length < this._numberRolls){
-    return true;
-  } else {
+  if(this._rollScores.length === this._numberRolls){
     return false;
+  } else {
+    return true;
   }
 };

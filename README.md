@@ -5,7 +5,9 @@ AJ attempt at bowling scorecard challenge. Original README found [here]().
 
 This is still work in progress.
 To be finished:
-- final frame logic - in feature test the total is not correct (because final frame not being used in Game class and so standard spare and strike checks in place.)
+- ~~final frame logic - in feature test the total is not correct (because final frame not being used in Game class and so standard spare and strike checks in place.)~~
+- feature test is giving correct final score
+- need to add game over logic
 - pause live scoring when a strike or spare in play
 - refactor - nested ifs and magic numbers in particular
 - build frontend

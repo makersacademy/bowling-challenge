@@ -28,44 +28,32 @@ I want my score to be recorded.
 ```
 
 ```
-...When I knock down a pin in a frame,
+As a bowler,
+When I knock down a pin in a frame,
 I want to be awarded 1 point for every pin.
 ```
 
 ```
-...So that my score will be calculated correctly,
+As a bowler,
+So that my score will be calculated correctly,
 I want to receive no more than 10 pin points per frame.
-```
-
-<!-- 
-```
-...When I knock down 2 pins in a roll,
-I want to be awaded 2 points.
-... 3 pins/points
-... 4 pins/points
-... 5 pins/points
-... 6 pins/points
-... 7 pins/points
-... 8 pins/points
-... 9 pins/points
-... 0 pins/points
 ```
 
 ```
 As a bowler,
-When I don't have a pinfall of 10 on my first roll,
-I want to get a second roll in the frame
-``` -->
+So that I know my score
+I want to see my final score after 10 frames.
+```
 
-<!-- ```
+```
 As a bowler,
 When I have a gutter game,
 I want to score 0 points
 ```
 **Gutter Game:**
-The player never hits a pin (20 zero scores). -->
+The player never hits a pin (20 zero scores).
 
-<!-- 
+
 ```
 As a bowler,
 When I knock down 10 pins in a roll,
@@ -74,7 +62,7 @@ I want to score a strike.
 **Strike:**
 Knock down all 10 pins with the first roll in a frame. 
  - The frame ends immediately (since there are no pins left for a second roll).
- - The bonus for that frame is the number of pins knocked down in the next frame. -->
+ - The bonus for that frame is the number of pins knocked down in the next frame.
 
 
 

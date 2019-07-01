@@ -1,52 +1,87 @@
 'use strict';
 
-var Game = function () {
+function Frame() {
   this.rolls = [];
-  this.frameNo = 1;
-  this.rollCount = 0;
-};
+  this.score = 0;
+  this.bonus = 0;
+}
+
+
+Frame.prototype.recordScore = function (pins) {
+  this.rolls.push(pins);
+}
+
+
+function Game() {
+  this.frameNumber = 1;
+  this.rollCount = 0; 
+  this.score = 0;
+}
+
+
+function roll(pins) {
+  this.rolls.push(pins);
+}
 
 Game.prototype.roll = function (pins) {
   this.rolls.push(pins);
+}
+
+
+
+function ScoreCard() {
+  this.frames = [];
 };
 
-Game.prototype.score = function() {
-  var result = 0;
-  var rollIndex = 0;
-  var game = this;
 
-  for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
-    if (isStrike()) {
-      result += getStrikeScore();
-      rollIndex++;
-    }
-    else if (isSpare()) {
-      result += getSpareScore();
-      rollIndex += 2;
-    }
-    else {
-      result += getNormalScore();
-      rollIndex += 2;
-    }
-  }
 
-  return result;
+// var Game = function () {
+//   this.rolls = [];
+//   this.frameNo = 1;
+//   this.rollCount = 0;
+// };
 
-  function isStrike() {
-    return game.rolls[rollIndex] === 10;
-  }
-  
-  function isSpare() {
-    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] == 10;
-  }
-  function getStrikeScore() {
-    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
-  }
-  function getSpareScore() {
-    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
-  }
-  function getNormalScore() {
-    return game.rolls[rollIndex] + game.rolls[rollIndex + 1 ];
-  }
+// Game.prototype.roll = function (pins) {
+//   this.rolls.push(pins);
+// };
 
-};
+// Game.prototype.score = function () {
+//   var result = 0;
+//   var rollIndex = 0;
+//   var game = this;
+
+//   for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
+//     if (isStrike()) {
+//       result += getStrikeScore();
+//       rollIndex++;
+//     }
+//     else if (isSpare()) {
+//       result += getSpareScore();
+//       rollIndex += 2;
+//     }
+//     else {
+//       result += getNormalScore();
+//       rollIndex += 2;
+//     }
+//   }
+
+//   return result;
+
+//   function isStrike() {
+//     return game.rolls[rollIndex] === 10;
+//   }
+
+//   function isSpare() {
+//     return game.rolls[rollIndex] + game.rolls[rollIndex + 1] == 10;
+//   }
+//   function getStrikeScore() {
+//     return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
+//   }
+//   function getSpareScore() {
+//     return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
+//   }
+//   function getNormalScore() {
+//     return game.rolls[rollIndex] + game.rolls[rollIndex + 1];
+//   }
+
+// };

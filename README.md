@@ -14,14 +14,15 @@ From the above specification, and a further breakdown of the rolls of ten pin bo
 
   - **Basics of score saving:**
 
-    - As a user, I want to keep a record of any scores I input
+    - As a user, I want to keep a record of any rolls I input
     - As a user, so that I can only input a possible score, I don't want to be able to input a roll less than 0 or more than 10
 
 
   - **General visibility:**
 
-    - As a user i want it to be clear if I am on my first or second roll
+    - As a user I want it to be clear if I am on my first or second roll
     - As a user I want to know what frame I am in
+    - As a user I want to know my previous rolls and score at the end of each frame
 
 
   - **Special circumstances:**

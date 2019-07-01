@@ -20,7 +20,7 @@ describe('BowlingScorecard',function() {
 
     it('Roll score 2 is auto updated to 0 when roll score 1 equals 10', function() {
       bowlingScorecard.rollScore(10);
-      expect(bowlingScorecard.frame).toEqual(jasmine.arrayContaining([10, 0]));
+      expect(bowlingScorecard.frame).toEqual([10, 0]);
     });
   });
 
@@ -28,7 +28,7 @@ describe('BowlingScorecard',function() {
     it('Roll score is added to frame score', function() {
       bowlingScorecard.rollScore(5);
       bowlingScorecard.rollScore(3);
-      expect(bowlingScorecard.frame).toEqual(jasmine.arrayContaining([5, 3]));
+      expect(bowlingScorecard.frame).toEqual([5, 3]);
     });
 
     it('Frame array reset to empty after 2 rolls', function() {
@@ -43,7 +43,12 @@ describe('BowlingScorecard',function() {
     it('Each frame score gets added', function() {
       bowlingScorecard.rollScore(5);
       bowlingScorecard.rollScore(3);
-      expect(bowlingScorecard.total).toEqual(jasmine.arrayContaining([5, 3]));
+      bowlingScorecard.totalScore();
+      bowlingScorecard.rollScore(6);
+      bowlingScorecard.rollScore(2);
+      bowlingScorecard.totalScore();
+      expect(bowlingScorecard.total.length).toEqual(2);
+      expect(bowlingScorecard.total).toEqual([[5, 3], [6, 2]]);
     });
   });
 });

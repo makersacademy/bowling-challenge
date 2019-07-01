@@ -3,7 +3,7 @@
 var BowlingScorecard = function() {
   this.knockedDownPins = 0;
   this.frame = []
-  this.total = new Array
+  this.total = []
 };
 
 BowlingScorecard.prototype.getCurrentRollScore = function() {

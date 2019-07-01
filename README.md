@@ -83,9 +83,9 @@ My frame score can only roll 2 should equal 0
 
 USER STORY 6: Add frame score to total score
 
-As a bowler
-So that I can see the total score of my game
-My frame scores get added to my total score
+As a bowler  
+So that I can see the total score of my game  
+My frame scores get added to my total score  
 
 USER STORY 7: New frame
 
@@ -95,6 +95,7 @@ A new frame will start after 2 rolls
 
 ### APPROACH
 ------------
+
 
 ### FOLLOW UP
 ------------

@@ -1,21 +1,52 @@
 'use strict';
 
-describe('Game', function () {
+describe('Scorecard', function () {
 
-  // var game;
+  var scorecard;
 
-  // beforeEach(function () {
-  //   game = new Game;
-  // });
+  beforeEach(function () {
+    scorecard = new Scorecard();
+  });
 
-  // it('starts on frame 1', function () {
-  //   expect(game.frameNo).toEqual(1);
-  // })
+  describe('calculating scores', function() {
+    it('can roll gutter game', function () {
+      rollMany(0, 20);
+      expect(scorecard.score).toEqual(0);
+    })
 
-  // it('starts on roll 0', function () {
-  //   expect(game.rollCount).toEqual(0);
-  // })
+    it('can roll all ones', function () {
+      rollMany(1, 20);
+      expect(scorecard.score).toEqual(20);
+    })
 
+    it('can roll a spare', function () {
+      scorecard.roll(5);
+      scorecard.roll(5);
+      scorecard.roll(5);
+      rollMany(0, 17);
+      expect(scorecard.score).toEqual(20);
+    })
 
+    it('can roll a strike', function () {
+      scorecard.roll(10);
+      scorecard.roll(5);
+      scorecard.roll(2);
+      rollMany(0, 16);
+      expect(scorecard.score).toEqual(24);
+    })
+
+    it('can roll perfect scorecard', function () {
+      rollMany(10, 12);
+      console.log(rollMany(10,12));
+      expect(scorecard.score).toEqual(300);
+    })
+
+    var rollMany = function (pins, rolls) {
+      for (var i = 0; i < rolls; i++) {
+        console.log(scorecard.roll(1));
+        scorecard.roll(pins);
+      }
+    }
+  })
 
 });

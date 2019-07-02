@@ -1,61 +1,55 @@
 'use strict';
 
-describe('Bowling', function () {
+describe('Scorecard', function () {
 
-  var game;
+  var scorecard;
 
   beforeEach(function () {
-    game = new Game;
+    scorecard = new Scorecard();
+    // frame = new Frame();
   });
 
-
-
-
-  describe('Game', function () {
+  describe('start a game ', function () {
     it('game starts with zero points', function () {
-      expect(game.score).toEqual(0);
+      console.log(scorecard.score, 'zero score');
+      expect(scorecard.score).toEqual(0);
     });
 
     it('game starts on frame 1', function () {
-      expect(game.frameNumber).toEqual(1);
+      console.log(scorecard.frameNumber, 'first frame');
+      expect(scorecard.frameNumber).toEqual(1);
     })
 
     it('game starts on roll 0', function () {
-      expect(game.rollCount).toEqual(0);
-    })
-  });
-
-
-  describe('Scorecard', function() {
-
-    var scorecard;
-    
-    beforeEach(function () {
-      scorecard = new ScoreCard
+      console.log(scorecard.rollCount), 'rollCount';
+      expect(scorecard.rollCount).toEqual(0);
     })
 
     it('stores the frames', function () {
+      console.log(scorecard.frames, 'empty frames array');
       expect(scorecard.frames).toEqual([]);
     })
-  });
-
-
-  describe('Frame', function () {
-
-    // it('can record the score', function() {
-    //   var frame;
-    //   frame = new Frame;
-
-    //   game.roll(1);
-    //   expect(frame.score).toEqual(1);
-    // })
-
-
   })
 
-
-
 });
+
+
+//   describe('frames', function () {
+
+//     it('can record the score', function () {
+//       // scorecardspy = jasmine.createSpyObj('game', ['roll'])
+//       scorecard.roll(1);
+//       console.log(scorecard.rolls, 'rolls array' );
+//       expect(scorecard.rolls).toEqual([1]);
+//     })
+//   })
+
+
+
+
+// });    
+
+
   // it('can roll gutter game', function () {
   //   rollMany(0, 20);
   //   expect(game.score()).toEqual(0);
@@ -93,4 +87,3 @@ describe('Bowling', function () {
   //   }
   // };
 
-// });

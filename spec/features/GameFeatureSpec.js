@@ -25,6 +25,13 @@ describe("score a game story", function() {
       expect(scoreCard.getFrameNumber()).toEqual(4);
     });
 
+    it("should score a gutter game correctly", function() {
+      for (i=1; i==20; i++) {
+        scoreCard.updateScore(0);
+      }
+      expect(scoreCard.getRunningTotal()).toEqual(0);
+    });
+
     it("should score a perfect game correctly", function() {
       scoreCard.updateScore(10);
       scoreCard.updateScore(10);

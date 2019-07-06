@@ -65,13 +65,13 @@ Game.prototype._sumLastTwo = function(array){
 
 Game.prototype.strikeBonus = function(pins){
   if(this._checkStrikeBonus(pins)){
-    if(this._lastThreeRoles[1] != 10) {
+    if(this._lastThreeRoles[1] != this._MAXSCORE) {
       this._lastFrame().addBonus(this._sumLastTwo(this._lastThreeRoles));
     }
-    else if(this._lastThreeRoles[1] === 10 & this._frameBeforeLast()._bonus === 0) {
+    else if(this._lastThreeRoles[1] === this._MAXSCORE & this._frameBeforeLast()._bonus === 0) {
       this._frameBeforeLast().addBonus(this._sumLastTwo(this._lastThreeRoles));
     }
-    else if(this._lastThreeRoles[1] === 10 & this._frameBeforeLast()._bonus > 0 & this._lastFrame()._bonus === 0) {
+    else if(this._lastThreeRoles[1] === this._MAXSCORE & this._frameBeforeLast()._bonus > 0 & this._lastFrame()._bonus === 0) {
       this._lastFrame().addBonus(this._sumLastTwo(this._lastThreeRoles));
     }
   }

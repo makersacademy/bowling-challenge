@@ -4,6 +4,7 @@ var BowlingScorecard = function() {
   this.knockedDownPins = 0;
   this.frame = []
   this.total = []
+  this.frameCount = 0
 };
 
 BowlingScorecard.prototype.getCurrentRollScore = function() {
@@ -48,3 +49,13 @@ BowlingScorecard.prototype.cumScore = function() {
   }, 0);
   return cumScores
 };
+
+BowlingScorecard.prototype.counter = function() {
+  return this.frameCount = this.total.length
+};
+
+// BowlingScorecard.prototype.bonusStrike = function() {
+//   if(this.strike()) {
+//     console.log()
+//   };
+// };

@@ -99,10 +99,16 @@ As a bowler
 So that I can see my total score after each frame  
 All my roll scores and bonus points are added up
 
-USER STORY 9: Strike Bonus
+USER STORY 9: Frame Count
 
-As a bowler
-So that I can receive bonus points for a strike
+As a bowler  
+So that I can keep track of how many frames I have played  
+Each frame has an index number which starts at 1 from frame 1 and increases in increments of 1 so that, for example, frame 3 = 3, frame 8 = 8 etc.
+
+USER STORY 10: Strike Bonus
+
+As a bowler  
+So that I can receive bonus points for a strike  
 My current frame score will be added to my previous frame score as bonus points
 
 ### APPROACH

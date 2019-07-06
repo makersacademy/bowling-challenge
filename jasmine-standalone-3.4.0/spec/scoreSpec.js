@@ -1,5 +1,14 @@
 
-it("calculates a gutter game", function() {
-  generateFrames([0,0]);
-  expect(game.score()).toEqual(0);
+
+describe('Bowling game', function(){
+
+  it("can roll a gutter game", function() {
+    var game = new BowlingGame();
+    for (var i = 0; i < 20; i++) {
+      game.roll(0);
+
+    }
+    expect(game.score()).toBe(0);
+  });
+
 });

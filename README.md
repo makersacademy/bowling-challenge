@@ -1,18 +1,41 @@
 Bowling Challenge
 =================
 
-AJ attempt at bowling scorecard challenge. Original README found [here]().
+Introduction
+------------
 
-This is still work in progress.
-To be finished:
-- ~~final frame logic - in feature test the total is not correct (because final frame not being used in Game class and so standard spare and strike checks in place.)~~
-- feature test is giving correct final score
-- need to add game over logic
-- pause live scoring when a strike or spare in play
-- refactor - nested ifs and magic numbers in particular
-- build frontend
+This is my attempt at the bowling scorecard challenge. Original README found [here](https://github.com/makersacademy/bowling-challenge/blob/master/README.md).  
+Should be noted that this was done having been learning Javascript for one week.
+
+At some point I'd like to revist the challenge and see how my solution would change.
+
+
+To run
+------
+- Fork repo
+- Open SpecRunner in a browser window.
+- Within the tests are some feature tests with some examples games (gutter, wikipedia example, perfect game)
+
+
+Successes
+---------
+- It works! It gives the correct score for all bowling games.
+- As oppossed to one open end game file it is split into some separate 'classes' of Game, Frame, Final Frame and Roll. While this is good it maybe one too many (Roll)
 
 Challenges / Mistakes
-- have written assuming that player enters rolls one by one. This was done as also thought of front end that would update on each roll. It appears from the rubric that actually a user might enter an array of rolls and all that is needed is to run through these and calculate a final score.
+---------------------
+- when writing the solution I tried to solve as a game would play out - roll by roll. This was done as also thought of front end that would update on each roll. 
+- when looking at spare and strike bonus' the solution looks 'back' at frames and adds a bonus retrospectively.
+If solving again I think a better solution might be to constantly be calculating scores and each frame (if a bonus frame) should look at frames after - hope this makes sense.
 - splitting game and frame out - i haven't not created doubles / mocks of frames for the game 'class' tests. This should be done.
-- builing of logic up logic. There is lots in play. This is primarily a result of i)designing logic with frontend result in mind, ii) taking sequential roles. It will be interesting to see how much can be refactored at the end. I've tried to refactor as I go along and reduce method sizes but I've not (yet) been able to remove all nested if statements.
+- builing of logic upon logic. The solution could be simplified. However, I ploughed on. In hindsight maybe I should have stopped and restarted.
+- Potentially have too many classes. 
+
+
+To Do
+-------
+- Build a front end so a user can see a game play out
+- Believe there can be a refactor and simplification.
+- As there is a loop going on I have a gut feeling that a recursive function could be used here to calculate total running score.
+
+

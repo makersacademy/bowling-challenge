@@ -1,7 +1,8 @@
 
 // set up a constructor function Game, give it a saved property - empty array
-function Game() {
+function Game(frame) {
   this.roll = []
+  this.frame = frame
 };
 
 // add a function via prototype for all objects created by the constructor function
@@ -21,8 +22,4 @@ Game.prototype.current_roll = function() {
   } else {
     return 2
   }
-};
-
-Game.prototype.frame = function() {
-  return Math.ceil(this.roll.length / 2);
 };

@@ -21,8 +21,8 @@ From the above specification, and a further breakdown of the rolls of ten pin bo
   - **General visibility:**
 
     **- As a user I want it to be clear if I am on my first or second roll**
-    - As a user I want to know what frame I am in
-    - As a user I want to know my previous rolls and score at the end of each frame
+    **- As a user I want to know what frame I am in**
+    - As a user I want to see my previous rolls and score at the end of each frame
 
 
   - **Special circumstances:**
@@ -64,5 +64,4 @@ From the above specification, and a further breakdown of the rolls of ten pin bo
 
 ## Proposed Classes:
 - **Score class:** calculates and records scores
-- **Frame class:** knows what frame the player is on and what roll within that frame
-- **Game class:** handles user input and display
+- **Game class:** handles user input and display, knows what frame the player is on and what roll within that fram

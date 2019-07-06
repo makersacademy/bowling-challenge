@@ -18,6 +18,7 @@ Game.prototype.inputRoll = function(roll) {
       frame.roll_1 = roll;
     } else {
       frame.roll_2 = roll;
+      this.current_frame += 1
     }
   } else {
     return 'Error: invalid roll'

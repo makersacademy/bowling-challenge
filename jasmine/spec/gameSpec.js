@@ -35,7 +35,13 @@
       expect(game.inputRoll(-1)).toEqual('Error: invalid roll');
       expect(game.inputRoll(11)).toEqual('Error: invalid roll');
     });
+    it ('increments the current_frame by 1 if input is added to roll two', function() {
+      game.makeFrames()
+      expect(game.current_frame).toEqual(1)
+      game.inputRoll(3)
+      game.inputRoll(5)
+      expect(game.current_frame).toEqual(2)
+    });
   });
-
 
 });

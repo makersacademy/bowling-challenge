@@ -8,7 +8,6 @@ function FinalFrame(){
 
 
 FinalFrame.prototype.roll = function(pinsKnocked, rollClass = new Roll()){
-  this.isExtraRoll();
   if(this.isInPlay()){
     var roll = rollClass;
     if(roll.validRoll(pinsKnocked, this._pinsRemaining)){

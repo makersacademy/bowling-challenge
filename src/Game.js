@@ -41,7 +41,7 @@ Game.prototype._setFrame = function(){
   if(this._frames.length === 0){
     this._addFrame();
   } 
-   else if (this._frames.length === 9 & !this._currentFrame().isInPlay()){
+  else if (this._frames.length === 9 & !this._currentFrame().isInPlay()){
     this._addFinalFrame();
   } 
   else if(!this._currentFrame().isInPlay()){
@@ -66,9 +66,12 @@ Game.prototype.strikeBonus = function(pins){
     if(this._lastThreeRoles[1] != 10) {
       this._lastFrame().addBonus(this._sumLastTwo(this._lastThreeRoles));
     }
-    else if(this._lastThreeRoles[1] === 10) {
+    else if(this._lastThreeRoles[1] === 10 & this._frameBeforeLast()._bonus === 0) {
       this._frameBeforeLast().addBonus(this._sumLastTwo(this._lastThreeRoles));
-    };
+    }
+    else if(this._lastThreeRoles[1] === 10 & this._frameBeforeLast()._bonus > 0 & this._lastFrame()._bonus === 0) {
+      this._lastFrame().addBonus(this._sumLastTwo(this._lastThreeRoles));
+    }
   }
 };
 

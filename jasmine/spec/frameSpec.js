@@ -34,5 +34,16 @@ describe ('Frame', function() {
     });
   });
 
+  describe ('validRolls', function() {
+    it ('checks if the rolls combined equal 10 or less', function() {
+      frame.roll_1 = 4
+      frame.roll_2 = 3
+      expect(frame.validRolls()).toEqual(true);
+      frame.roll_1 = 4
+      frame.roll_2 = 13
+      expect(frame.validRolls()).toEqual(false);
+    });
+  });
+
 
 });

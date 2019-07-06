@@ -16,3 +16,7 @@ Frame.prototype.calculateWhichRoll = function() {
 Frame.prototype.addRolls = function() {
   return this.roll_1 + this.roll_2;
 };
+
+Frame.prototype.validRolls = function() {
+  return this.addRolls() <= 10
+}

@@ -45,5 +45,20 @@ describe ('Frame', function() {
     });
   });
 
+  describe ('setRollTotal', function() {
+    it('sets the frames score property equal to result of addRolls if valid rolls', function() {
+      frame.roll_1 = 4
+      frame.roll_2 = 3
+      frame.setRollTotal()
+      expect(frame.score).toEqual(7);
+    });
+    it('returns an error message if rolls are not valid and does not change the score property', function() {
+      frame.roll_1 = 8
+      frame.roll_2 = 5
+      expect(frame.setRollTotal()).toEqual('Error: combined rolls are greater than number of pins')
+      expect(frame.score).toEqual('nil')
+    });
+  });
+
 
 });

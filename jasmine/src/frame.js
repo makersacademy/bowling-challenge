@@ -19,4 +19,12 @@ Frame.prototype.addRolls = function() {
 
 Frame.prototype.validRolls = function() {
   return this.addRolls() <= 10
-}
+};
+
+Frame.prototype.setRollTotal = function() {
+  if (this.validRolls()){
+    return this.score = this.addRolls()
+  } else {
+    return 'Error: combined rolls are greater than number of pins'
+  }
+};

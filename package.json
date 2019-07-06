@@ -1,0 +1,44 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "bowling-scorecard",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "node ./bin/www",
+    "lint": "eslint src/*.js; eslint spec/*/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ch359/bowling-challenge.git"
+  },
+  "author": "Colin Hulme",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ch359/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/ch359/bowling-challenge#readme",
+  "devDependencies": {
+    "cypress": "^3.1.5",
+    "eslint": "^5.13.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-cypress": "^2.2.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "jasmine": "^3.3.1",
+    "jasmine-console-reporter": "^3.1.0"
+  },
+  "dependencies": {
+    "eslint-plugin-jasmine": "^2.10.1",
+    "npm": "^6.7.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "morgan": "~1.9.0"
+  }
+}

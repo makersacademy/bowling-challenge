@@ -1,7 +1,79 @@
+Colin's Bowling Challenge
+=============
+
+Welcome to my bowling challenge. This proved surprisingly complex and while I did try and
+stick to TDD, it's not perfect. 
+ 
+I also encountered lots of technical issues, largely due to my unfamiliarity with javascript (new to it this week). More on that below. 
+
+Features
+=====
+
+- Functioning bowling game.
+- All bowling edge cases are working (gutter games, all-strike games, all-spare games, combinations etc.).
+- Round 10 is also implemented in the UI - bonus balls for strikes and spares are counted.
+- `NodeJS` and `ExpressJS` used to serve the site. 
+- `JQuery` basic user interface, showing a table of results, scores and strike/spare symbols.
+- `ESLint` used with `javascript standard` profile - all passing.
+- `Jasmine` used for unit and feature tests. 
+- `Cypress` used for integration testing of the interface.
+
+User experience
+=====
+
+The user interface is basic but functional. 'Bonus' scores for strikes and spares are shown in column 2/3. 
+
+![](images/example_with_spare_and_strike.png)
+
+Missing features / bugs etc.
+=====
+
+Features I couldn't add because I ran out of time:
+- The game does not announce victory, although the score stops tallying correctly.
+- There is zero validation on user input at present (so e.g. the user can input >10 pins).
+- The event loop behind the scenes is still slightly creaky, hence there is a 'frame 11' created behind the scenes. Needs some more thought and refactoring.
+- There is no rules prompting for users - e.g. they must know to press the submit button again for bonus shots.
+- I wasn't able to fully separate out bonus scores from 'normal' scores as much as I would like without introducing more complexity and bugs.
+ 
+Technical issues I was not able to solve in the time we had:
+====
+
+- Some tension with using a transpiler and exports vs. sourcing the JavaScript files directly in the html:
+    - Couldn't work out how to get `jasmine-cli` to work without `require` statements, although all tests work fine in the Jasmine SpecRunner, because they share the `window` context.
+    - Likewise, without `require` statements, ESLint is unaware of files that only become available because of the `window` context in the browser (e.g. `interface.js`'s use of `Bowling`) - I had to mute it on lines 3 and 14 instead.
+    - Initially implemented using browserify to transpile and bundle the ES6 code, but in the current version I have dropped this for simplicity's sake.
+- Event looping is currently bundled up in other methods (e.g. `enterScore()` can trigger `endFrame()`). I was unable to work out how to orchestrate things and have jasmine simulate user input when required.
+    - Following discussion with Sam Jones (coach), he felt that because the functionality was delegated, it wasn't a problem. 
+
+Project structure
+============
+
+- `spec/features/BowlingFeatureSpec.js` and `spec/units/BowlingSpec.js` contain the two jasmine test files.
+- `cypress/integration/interface.spec.js` contains the Cypress end to end test file.
+- `src/Bowling.js` coordinates events and creates new frames when needed.
+- `src/Frame.js` contains all the information about an individual frame and makes decisions about the status of frames.
+- `src/interface.js` connects the game to the UI and populates the dynamic sections of the page.
+- `src/bowling.hmtl` is the front-end to the game. 
+
+Instructions for use
+===
+
+**As an end user: **
+
+- No setup is required
+- Clone the directory
+- Open `public/index.html` and play.
+ 
+**As a developer: **
+
+- Install `npm` using your usual package manager
+- Execute `npm install` in the project root to download the dependencies in `package.json`
+- Execute `npm run lint` to run the `ESLint` package (`javascript-standard` profile)
+- Open `SpecRunner.html` in your browser from the project root to run the unit tests. (NB: using the cli will fail due to dependency issues)
+- Run `$(npm bin)/cypress open` to launch the end-to-end testing gui and select `interface.test.js` from the bottom.  
 
 Bowling Challenge
 =================
-
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

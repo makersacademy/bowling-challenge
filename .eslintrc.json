@@ -1,0 +1,13 @@
+{
+    "extends": "standard",
+    "plugins": [ "jasmine"],
+
+    "env": {
+        "jasmine": true,
+        "node": true,
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "jquery": true
+    }
+}

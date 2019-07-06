@@ -4,6 +4,8 @@ function FinalFrame(){
   this._pinsRemaining = 10;
   this._rollScores = [];
   this._numberRolls = 2;
+  this._MAXSCORE = 10;
+  this._MAXROLLS = 3;
 };
 
 
@@ -19,9 +21,9 @@ FinalFrame.prototype.roll = function(pinsKnocked, rollClass = new Roll()){
 };
 
 FinalFrame.prototype.isExtraRoll = function(){
-  if(this._rollScores[0] === 10 || this._rollScores[0] + this._rollScores[1] === 10){
-    this._pinsRemaining = 10;
-    this._numberRolls = 3
+  if(this._rollScores[0] === this._MAXSCORE || this._rollScores[0] + this._rollScores[1] === this._MAXSCORE){
+    this._pinsRemaining = this._MAXSCORE;
+    this._numberRolls = this._MAXROLLS;
     return true;
   }
 };

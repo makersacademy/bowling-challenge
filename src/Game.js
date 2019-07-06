@@ -3,6 +3,8 @@
 function Game(){
   this._frames = []
   this._lastThreeRoles = []
+  this._NUMFRAMES = 10
+  this._MAXSCORE = 10;
 };
 
 
@@ -41,7 +43,7 @@ Game.prototype._setFrame = function(){
   if(this._frames.length === 0){
     this._addFrame();
   } 
-  else if (this._frames.length === 9 & !this._currentFrame().isInPlay()){
+  else if (this._frames.length === (this._NUMFRAMES - 1) & !this._currentFrame().isInPlay()){
     this._addFinalFrame();
   } 
   else if(!this._currentFrame().isInPlay()){
@@ -92,7 +94,7 @@ Game.prototype._checkSpareBonus = function(){
 Game.prototype._checkStrikeBonus = function(pins){
   this._lastThreeRoles.push(pins);
   if(this._lastThreeRoles.length === 3){
-    if(this._lastThreeRoles[0] === 10){
+    if(this._lastThreeRoles[0] === this._MAXSCORE){
       this._lastThreeRoles.shift();
       return true;
     }

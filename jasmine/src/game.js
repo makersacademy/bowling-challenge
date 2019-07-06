@@ -12,10 +12,18 @@ Game.prototype.makeFrames = function(number=10, frameConstructor=Frame) {
 };
 
 Game.prototype.inputRoll = function(roll) {
-  frame = this.frames[this.current_frame - 1]
-  if (frame.calculateWhichRoll() == 1){
-    frame.roll_1 = roll;
+  if (this.validRoll(roll)){
+    frame = this.frames[this.current_frame - 1]
+    if (frame.calculateWhichRoll() == 1){
+      frame.roll_1 = roll;
+    } else {
+      frame.roll_2 = roll;
+    }
   } else {
-    frame.roll_2 = roll;
+    return 'Error: invalid roll'
   }
 };
+
+Game.prototype.validRoll = function(roll) {
+  return roll > 0 && roll < 10;
+}

@@ -30,6 +30,11 @@
       game.inputRoll(5)
       expect(game.frames[0].roll_2).toEqual(5)
     });
+    it ('does not allow the input of a roll lower than 0 or higher than 10', function() {
+      game.makeFrames()
+      expect(game.inputRoll(-1)).toEqual('Error: invalid roll');
+      expect(game.inputRoll(11)).toEqual('Error: invalid roll');
+    });
   });
 
 

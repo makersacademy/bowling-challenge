@@ -15,12 +15,22 @@
     });
   });
 
-  describe ('make_frames', function() {
+  describe ('makeFrames', function() {
     it ('adds a default number of frame objects to the empty frames array', function() {
-      game.make_frames()
+      game.makeFrames()
       expect(game.frames.length).toEqual(10)
-      console.log(game.frames)
     });
   });
+
+  describe ('inputRoll', function() {
+    it ('adds a roll to the correct place in the frames array', function() {
+      game.makeFrames()
+      game.inputRoll(3)
+      expect(game.frames[0].roll_1).toEqual(3)
+      game.inputRoll(5)
+      expect(game.frames[0].roll_2).toEqual(5)
+    });
+  });
+
 
 });

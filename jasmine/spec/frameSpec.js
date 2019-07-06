@@ -25,4 +25,14 @@ describe ('Frame', function() {
       expect(frame.calculateWhichRoll()).toEqual(2);
     });
   });
+
+  describe ('addRolls', function() {
+    it ('adds together roll_1 and roll_2', function() {
+      frame.roll_1 = 4
+      frame.roll_2 = 3
+      expect(frame.addRolls()).toEqual(7);
+    });
+  });
+
+
 });

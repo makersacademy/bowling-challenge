@@ -12,3 +12,7 @@ Frame.prototype.calculateWhichRoll = function() {
     return 2;
   }
 };
+
+Frame.prototype.addRolls = function() {
+  return this.roll_1 + this.roll_2;
+};

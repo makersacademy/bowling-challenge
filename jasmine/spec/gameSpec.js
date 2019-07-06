@@ -22,30 +22,36 @@ describe ('Game', function() {
 
   });
 
-  // As a user I want it to be clear if I am on my first or second roll
   describe('which_roll', function(){
 
-    it('accesses the roll property and returns 1 if on first roll', function() {
+    it('returns 1 if not taken first roll', function() {
       game = new Game;
-      game.input_roll(1)
-      expect(game.which_roll()).toEqual(1)
+      expect(game.current_roll()).toEqual(1)
     });
 
-    it('accesses the roll property and returns 2 if on second roll', function() {
+    it('returns 2 if taken first roll', function() {
+      game = new Game;
+      game.input_roll(1)
+      expect(game.current_roll()).toEqual(2);
+    });
+
+    it('returns 1 if taken second roll', function() {
       game = new Game;
       game.input_roll(1)
       game.input_roll(3)
-      expect(game.which_roll()).toEqual(2);
+      expect(game.current_roll()).toEqual(1)
     });
 
-    it('resets after roll 2 back to roll 1 rather than increase to 3', function() {
+  });
+
+  describe('frame', function() {
+    it('returns which frame of the game a player is in', function() {
       game = new Game;
       game.input_roll(1)
+      expect(game.frame()).toEqual(1);
       game.input_roll(3)
-      game.input_roll(4)
-      expect(game.which_roll()).toEqual(1)
+      expect(game.frame()).toEqual(1);
     });
-
   });
 
 

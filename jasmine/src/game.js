@@ -22,3 +22,7 @@ Game.prototype.current_roll = function() {
     return 2
   }
 };
+
+Game.prototype.frame = function() {
+  return Math.ceil(this.roll.length / 2);
+};

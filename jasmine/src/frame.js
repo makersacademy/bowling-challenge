@@ -1,5 +1,5 @@
 function Frame() {
-  this.roll_1 ;
-  this.roll_2 ;
-  this.score ;
+  this.roll_1 = 'nil';
+  this.roll_2 = 'nil';
+  this.score = 'nil';
 };

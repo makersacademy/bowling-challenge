@@ -93,6 +93,18 @@ As a bowler
 So that I can reset the pins  
 A new frame will start after 2 rolls
 
+USER STORY 8: Cum Score
+
+As a bowler  
+So that I can see my total score after each frame  
+All my roll scores and bonus points are added up
+
+USER STORY 9: Strike Bonus
+
+As a bowler
+So that I can receive bonus points for a strike
+My current frame score will be added to my previous frame score as bonus points
+
 ### APPROACH
 ------------
 

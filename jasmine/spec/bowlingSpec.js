@@ -40,7 +40,7 @@ describe('BowlingScorecard',function() {
   });
 
   describe('Total Score', function() {
-    it('Each frame score gets added', function() {
+    it('Each frame score gets added to the total', function() {
       bowlingScorecard.rollScore(5);
       bowlingScorecard.rollScore(3);
       bowlingScorecard.totalScore();
@@ -49,6 +49,16 @@ describe('BowlingScorecard',function() {
       bowlingScorecard.totalScore();
       expect(bowlingScorecard.total.length).toEqual(2);
       expect(bowlingScorecard.total).toEqual([[5, 3], [6, 2]]);
+    });
+
+    it('Returns a cum score for the game', function() {
+      bowlingScorecard.rollScore(5);
+      bowlingScorecard.rollScore(3);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.rollScore(6);
+      bowlingScorecard.rollScore(2);
+      bowlingScorecard.totalScore();
+      expect(bowlingScorecard.cumScore()).toEqual(16);
     });
   });
 });

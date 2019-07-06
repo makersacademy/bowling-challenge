@@ -40,3 +40,11 @@ BowlingScorecard.prototype.totalScore = function() {
   };
     return;
 };
+
+BowlingScorecard.prototype.cumScore = function() {
+  var scores = this.total.flat();
+  var cumScores = scores.reduce(function(accumulator, score) {
+    return accumulator + score;
+  }, 0);
+  return cumScores
+};

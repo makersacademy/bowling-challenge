@@ -15,10 +15,10 @@ Game.prototype.input_roll = function (roll) {
   }
 };
 
-Game.prototype.which_roll = function() {
-  if(this.roll.length % 2 == 0) {
-    return 2
-  } else {
+Game.prototype.current_roll = function() {
+  if(this.roll.length % 2 == 0 || this.roll.length == 0) {
     return 1
+  } else {
+    return 2
   }
 };

@@ -1,24 +1,21 @@
 describe ('Frame', function() {
 
+  var frame;
 
-  describe ('construction', function() {
-    it('starts on 1', function() {
-      var frame = new Frame();
-      expect(frame.frame_number).toEqual(1);
-    });
+  beforeEach(function(){
+    frame = new Frame();
   });
 
-  describe ('calculateFrame', function() {
-    it('returns which frame of the game a player it on', function() {
-      var frame = new Frame();
-      var fakeGame1 = {
-        roll : function() {
-          return [3,4];
-        }
-      };
-      expect(frame.calculateFrame(fakeGame1.roll)).toEqual(1);
+  describe ('constructor', function() {
+    it ('initializes with a property roll_1 set to nil', function() {
+      expect(frame.roll_1).toEqual(undefined);
+    });
+    it ('initializes with a property roll_2 set to nil', function() {
+      expect(frame.roll_2).toEqual(undefined);
+    });
+    it ('initializes with a property score set to nil', function() {
+      expect(frame.score).toEqual(undefined);
     });
   });
-
 
 });

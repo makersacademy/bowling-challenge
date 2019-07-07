@@ -1,6 +1,7 @@
 function Scorecard() {
   this.nextFrame = 1;
   this.nextRoll = 1;
+  this.endGame = false;
   this.frame1 = {
     scoreRoll1: 0,
     scoreRoll2: 0,
@@ -55,10 +56,15 @@ function Scorecard() {
 }
 
 Scorecard.prototype.updateScore = function(numOfPins) {
-  this.updateFrame(numOfPins);
-  this.updateNextTurn();
-  for (i = 0; i < 9; i++) {
-    this.frames[i].scoreBonus = this.calculateBonusForFrame(i+1);
+  if (!this.endGame) {
+    this.updateFrame(numOfPins);
+    this.updateNextTurn();
+    for (i = 0; i < 9; i++) {
+      this.frames[i].scoreBonus = this.calculateBonusForFrame(i+1);
+    }
+  }
+  else {
+    return "END"
   }
 };
 
@@ -141,8 +147,11 @@ Scorecard.prototype.updateNextTurnForLastFrame = function(thisFrame) {
   else if ( this.isSpare(thisFrame) && this.getRollNumber() === 2 ) {
     this.nextRoll = 3;
   }
-  else {
+  else if ( this.getRollNumber() === 1 ) {
     this.nextRoll = 2;
+  }
+  else {
+    this.endGame = true;
   }
 };
 

@@ -28,6 +28,8 @@ scorecard.getRunningTotal();
 > 4
 ```
 
+* At the end of the game the updateScore method will return "END" and the score will not be updated.
+
 ## Testing
 
 * To run the feature and unit tests open SpecRunner.html in a browser.
@@ -45,3 +47,4 @@ scorecard.getRunningTotal();
 * Each frame is represented by a frame object literal, which gives rise to a lot of repitition in the code. I would like to move this to a new object e.g. Frame.
 * Some of the methods are too long and the conditional statements (if/else if) need to be refactored.
 * It would be good to have a simple user interface, rather than running via the command line.
+* The intention was for there to be only two public methods but I couldn't work out how to make the other methods private.

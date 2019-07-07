@@ -20,6 +20,43 @@ describe("Scorecard", function() {
       expect(scoreCard.getRunningTotal()).toEqual(30);
     });
 
+    it("should not update the score past the end of the game, with no strikes or spares in the last frame", function() {
+      scoreCard.nextFrame = 10;
+      scoreCard.nextRoll = 1;
+      scoreCard.updateScore(3);
+      scoreCard.updateScore(5);
+      scoreCard.updateScore(6);
+      expect(scoreCard.getRunningTotal()).toEqual(8);
+    });
+
+    it("should not update the score past the end of the game, with a strike in the last frame", function() {
+      scoreCard.nextFrame = 10;
+      scoreCard.nextRoll = 1;
+      scoreCard.updateScore(10);
+      scoreCard.updateScore(3);
+      scoreCard.updateScore(6);
+      scoreCard.updateScore(5);
+      expect(scoreCard.getRunningTotal()).toEqual(19);
+    });
+
+    it("should not update the score past the end of the game, with a spare in the last frame", function() {
+      scoreCard.nextFrame = 10;
+      scoreCard.nextRoll = 1;
+      scoreCard.updateScore(8);
+      scoreCard.updateScore(2);
+      scoreCard.updateScore(6);
+      scoreCard.updateScore(5);
+      expect(scoreCard.getRunningTotal()).toEqual(16);
+    });
+
+     it("should return END when the last roll has already happened", function() {
+      scoreCard.nextFrame = 10;
+      scoreCard.nextRoll = 1;
+      scoreCard.updateScore(8);
+      scoreCard.updateScore(1);
+      expect(scoreCard.updateScore(3)).toEqual("END");
+    });
+
     it("should set the number of the next frame and roll correctly when first roll of frame is not a strike in first frame", function() {
       scoreCard.updateScore(2);
       expect(scoreCard.nextFrame).toEqual(1);

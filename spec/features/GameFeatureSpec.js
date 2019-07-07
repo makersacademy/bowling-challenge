@@ -84,4 +84,32 @@ describe("score a game story", function() {
     });
   });
 
+  describe("end of game feature", function(){
+    it("should know when the game is over", function() {
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(4);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(4);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(4);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(4);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(4);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(4);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(4);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(4);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(4);
+      scoreCard.updateScore(1);
+      scoreCard.updateScore(4);
+      expect(scoreCard.getRunningTotal()).toEqual(50);
+      expect(scoreCard.updateScore(5)).toEqual("END");
+      expect(scoreCard.getRunningTotal()).toEqual(50);
+    });
+  });
+
 });

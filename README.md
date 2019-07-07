@@ -44,7 +44,8 @@ open SpecRunner.html
 - [ ] Count number of rolls
 - [x] Count number of frames
 - [x] If roll score 1 = 10, add it to the frame score and automatically set roll score 2 = 0
-- [x] If roll score 1 in previous frame = 10, add current frame score twice to total score (Strike Bonus)
+- [x] If roll score 1 in previous frame = 10 and current frame roll 1 < 10, add current frame score twice to total score (Strike Bonus)
+- [ ] if roll score 1 in previous frame = 10 and current frame roll 1 = 10, add current frame roll 1 and next frame roll 1 to total score (Strike Bonus)
 - [x] if roll score 1 in previous frame < 10 and previous frame score = 10, add roll score 1 of current frame twice to total score (Spare Bonus)
 - [ ] If frame count = 10 and roll 1 score of frame 10 = 10, allow 2 more rolls and add these to frame 10 score
 - [ ] if frame count = 10 and roll score 1 < 10 and frame 10 score = 10, allow 1 more roll and add this to frame 10 score
@@ -105,19 +106,25 @@ As a bowler
 So that I can keep track of how many frames I have played  
 Each frame has an index number which starts at 1 from frame 1 and increases in increments of 1 so that, for example, frame 3 = 3, frame 8 = 8 etc.
 
-USER STORY 10: Strike Bonus
+USER STORY 10: Strike Bonus 1
 
 As a bowler  
 So that I can receive bonus points for a strike  
-My current frame score will be added to my previous frame score as bonus points
+My current frame score will be added to my previous frame score as bonus points, if I don't roll a strike in my current frame
 
-USER STORY 11: Spare Bonus
+USER STORY 11: Strike Bonus 2
+
+As a bowler  
+So that I can receive bonus points for a strike  
+My current frame score and my first roll in my next frame will be added to my previous frame score as bonus points, if i roll a strike in my current frame
+
+USER STORY 12: Spare Bonus
 
 As a bowler  
 So that I can receive bonus points for a spare  
 The first roll score of my current frame will be added to my previous frame score as bonus points
 
-USER STORY 12: Frame 10, Roll 1 = Strike
+USER STORY 13: Frame 10, Roll 1 = Strike
 
 As a bowler  
 So that I can receive bonus points for a strike in my last frame (frame 10)  

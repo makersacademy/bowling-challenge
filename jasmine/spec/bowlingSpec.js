@@ -60,20 +60,106 @@ describe('BowlingScorecard',function() {
       bowlingScorecard.totalScore();
       expect(bowlingScorecard.cumScore()).toEqual(16);
     });
+
+    it('Perfect game - 12 strikes - total score = 300', function() {
+      bowlingScorecard.rollScore(10);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.counter();
+      bowlingScorecard.bonusStrike1();
+      bowlingScorecard.bonusStrike2();
+      bowlingScorecard.rollScore(10);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.counter();
+      bowlingScorecard.bonusStrike1();
+      bowlingScorecard.bonusStrike2();
+      bowlingScorecard.rollScore(10);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.counter();
+      bowlingScorecard.bonusStrike1();
+      bowlingScorecard.bonusStrike2();
+      bowlingScorecard.rollScore(10);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.counter();
+      bowlingScorecard.bonusStrike1();
+      bowlingScorecard.bonusStrike2();
+      bowlingScorecard.rollScore(10);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.counter();
+      bowlingScorecard.bonusStrike1();
+      bowlingScorecard.bonusStrike2();
+      bowlingScorecard.rollScore(10);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.counter();
+      bowlingScorecard.bonusStrike1();
+      bowlingScorecard.bonusStrike2();
+      bowlingScorecard.rollScore(10);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.counter();
+      bowlingScorecard.bonusStrike1();
+      bowlingScorecard.bonusStrike2();
+      bowlingScorecard.rollScore(10);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.counter();
+      bowlingScorecard.bonusStrike1();
+      bowlingScorecard.bonusStrike2();
+      bowlingScorecard.rollScore(10);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.counter();
+      bowlingScorecard.bonusStrike1();
+      bowlingScorecard.bonusStrike2();
+      bowlingScorecard.rollScore(10);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.counter();
+      bowlingScorecard.bonusStrike1();
+      bowlingScorecard.bonusStrike2();
+      bowlingScorecard.lastFrameStrikeBonus(10, 10);
+      bowlingScorecard.counter();
+      expect(bowlingScorecard.frameCount).toEqual(10);
+      expect(bowlingScorecard.total[9]).toEqual([10, 0, 20]);
+      expect(bowlingScorecard.cumScore()).toEqual(300);
+    });
   });
 
   describe('Bonus Points', function() {
-    it('Current frame score added to previous frame if strike achieved on first roll in previous frame', function(){
+    it('Current frame score added to previous frame if strike achieved on first roll in previous frame', function() {
       bowlingScorecard.rollScore(10);
       bowlingScorecard.totalScore();
       bowlingScorecard.rollScore(5);
       bowlingScorecard.rollScore(3);
       bowlingScorecard.totalScore();
       bowlingScorecard.counter();
-      bowlingScorecard.bonusStrike();
+      bowlingScorecard.bonusStrike1();
       expect(bowlingScorecard.total.length).toEqual(2);
       expect(bowlingScorecard.total).toEqual([[10, 0, 8], [5, 3]])
       expect(bowlingScorecard.cumScore()).toEqual(26);
+    });
+
+    it ('If strike in previous frame and current frame achieved, add 10 plus first roll score of next frame to previous frame', function() {
+      bowlingScorecard.rollScore(10);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.counter();
+      bowlingScorecard.bonusStrike1();
+      bowlingScorecard.bonusStrike2();
+      bowlingScorecard.rollScore(10);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.counter();
+      bowlingScorecard.bonusStrike1();
+      bowlingScorecard.bonusStrike2();
+      bowlingScorecard.rollScore(5);
+      bowlingScorecard.rollScore(3);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.counter();
+      bowlingScorecard.bonusStrike1();
+      bowlingScorecard.bonusStrike2();
+      bowlingScorecard.rollScore(5);
+      bowlingScorecard.rollScore(3);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.counter();
+      bowlingScorecard.bonusStrike1();
+      bowlingScorecard.bonusStrike2();
+      expect(bowlingScorecard.total.length).toEqual(4);
+      expect(bowlingScorecard.total).toEqual([[10, 0, 10, 5], [10, 0, 8], [5, 3], [5, 3]])
+      expect(bowlingScorecard.cumScore()).toEqual(59);
     });
 
     it('Roll 1 score of current frame added to previous frame if spare achieved on previous frame', function() {
@@ -103,7 +189,7 @@ describe('BowlingScorecard',function() {
       expect(bowlingScorecard.frameCount).toEqual(2);
     });
 
-    it('previousFrame function returns previous frame', function() {
+    it('previousFrame1 function returns previous frame', function() {
       bowlingScorecard.rollScore(5);
       bowlingScorecard.rollScore(3);
       bowlingScorecard.totalScore();
@@ -111,7 +197,63 @@ describe('BowlingScorecard',function() {
       bowlingScorecard.rollScore(2);
       bowlingScorecard.totalScore();
       bowlingScorecard.counter();
-      expect(bowlingScorecard.previousFrame()).toEqual([5, 3])
+      expect(bowlingScorecard.total[bowlingScorecard.frameCount - 2]).toEqual([5, 3]);
+      expect(bowlingScorecard.previousFrame1()).toEqual([5, 3]);
+    });
+
+    it('previousFrame2 function returns frame from 2 frames ago', function() {
+      bowlingScorecard.rollScore(5);
+      bowlingScorecard.rollScore(3);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.rollScore(6);
+      bowlingScorecard.rollScore(2);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.rollScore(8);
+      bowlingScorecard.rollScore(1);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.counter();
+      expect(bowlingScorecard.total[bowlingScorecard.frameCount - 3]).toEqual([5, 3]);
+      expect(bowlingScorecard.previousFrame2()).toEqual([5, 3]);
+    });
+  });
+
+  describe('Last Frame - Frame 10', function() {
+    it('Allows 2 additional rolls if roll 1 in frame 10 is a strike', function() {
+      bowlingScorecard.rollScore(5);
+      bowlingScorecard.rollScore(3);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.rollScore(5);
+      bowlingScorecard.rollScore(3);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.rollScore(5);
+      bowlingScorecard.rollScore(3);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.rollScore(5);
+      bowlingScorecard.rollScore(3);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.rollScore(5);
+      bowlingScorecard.rollScore(3);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.rollScore(5);
+      bowlingScorecard.rollScore(3);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.rollScore(5);
+      bowlingScorecard.rollScore(3);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.rollScore(5);
+      bowlingScorecard.rollScore(3);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.rollScore(5);
+      bowlingScorecard.rollScore(3);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.rollScore(10);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.counter();
+      bowlingScorecard.lastFrameStrikeBonus(5, 3);
+      expect(bowlingScorecard.frameCount).toEqual(10);
+      expect(bowlingScorecard.total.length).toEqual(10);
+      expect(bowlingScorecard.total).toEqual([[5, 3], [5, 3], [5, 3], [5, 3], [5, 3], [5, 3], [5, 3], [5, 3], [5, 3], [10, 0, 8]])
+      expect(bowlingScorecard.cumScore()).toEqual(90);
     });
   });
 });

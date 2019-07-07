@@ -54,30 +54,53 @@ BowlingScorecard.prototype.counter = function() {
   return this.frameCount = this.total.length;
 };
 
-BowlingScorecard.prototype.previousFrame = function() {
-  if(this.frameCount > 0) {
+BowlingScorecard.prototype.previousFrame1 = function() {
+  if(this.frameCount > 1) {
     return this.total[this.frameCount - 2];
   };
 };
 
-BowlingScorecard.prototype.isPreviousFrameStrike = function() {
-  var frame = this.previousFrame();
-  return frame[0] === 10 && frame[1] === 0;
+BowlingScorecard.prototype.isPreviousFrameStrike1 = function() {
+  if(this.frameCount > 1) {
+    var frame = this.previousFrame1();
+    return frame[0] === 10 && frame[1] === 0;
+  };
 };
 
-BowlingScorecard.prototype.bonusStrike = function() {
-  if(this.isPreviousFrameStrike()) {
+BowlingScorecard.prototype.bonusStrike1 = function() {
+  if(this.isPreviousFrameStrike1()) {
       var frame = this.total[this.frameCount - 1]
       var bonusScore = frame.reduce(function(accumulator, score) {
         return accumulator + score;
       }, 0);
-      this.previousFrame().push(bonusScore);
+      this.previousFrame1().push(bonusScore);
+  };
+    return;
+};
+
+BowlingScorecard.prototype.previousFrame2 = function() {
+  if(this.frameCount > 2) {
+    return this.total[this.frameCount - 3];
+  };
+};
+
+BowlingScorecard.prototype.isPreviousFrameStrike2 = function() {
+  if(this.frameCount > 2) {
+    var frame = this.previousFrame2();
+    return frame[0] === 10 && frame[1] === 0;
+  };
+};
+
+BowlingScorecard.prototype.bonusStrike2 = function() {
+  if(this.isPreviousFrameStrike2() && this.isPreviousFrameStrike1()) {
+      var bonusScore = this.total[this.frameCount - 1][0]
+      this.previousFrame2().push(bonusScore);
   };
     return;
 };
 
 BowlingScorecard.prototype.isPreviousFrameSpare = function() {
-  var frame = this.previousFrame();
+  var frame = this.previousFrame1();
   var score = frame.reduce(function(accumulator, score) {
     return accumulator + score;
   }, 0);
@@ -87,6 +110,17 @@ BowlingScorecard.prototype.isPreviousFrameSpare = function() {
 BowlingScorecard.prototype.bonusSpare = function() {
   if(this.isPreviousFrameSpare()) {
     var bonusScore = this.total[this.frameCount - 1][0]
-    this.previousFrame().push(bonusScore);
+    this.previousFrame1().push(bonusScore);
+  };
+};
+
+BowlingScorecard.prototype.isLastFrameStrike = function() {
+  return this.frameCount === 10 && this.total[9][0] === 10;
+};
+
+BowlingScorecard.prototype.lastFrameStrikeBonus = function(knockedDownPins1, knockedDownPins2) {
+  if(this.isLastFrameStrike()) {
+    var bonusScore = knockedDownPins1 + knockedDownPins2
+    this.total[9].push(bonusScore)
   };
 };

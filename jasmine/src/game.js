@@ -28,3 +28,13 @@ Game.prototype.inputRoll = function(roll) {
 Game.prototype.validRoll = function(roll) {
   return roll > 0 && roll < 10;
 }
+
+Game.prototype.runningTotal = function() {
+  x = 0
+  total = 0
+  while (x < (this.current_frame) ) {
+    total += this.frames[x].score
+    x += 1
+  }
+  return total
+}

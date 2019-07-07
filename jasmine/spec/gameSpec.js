@@ -44,4 +44,16 @@
     });
   });
 
+  describe ('runningTotal', function() {
+    it ('adds together all scores for each completed frame', function() {
+      game.makeFrames()
+      game.frames[0].score = 5
+      expect(game.runningTotal()).toEqual(5)
+      game.frames[1].score = 7
+      expect(game.runningTotal()).toEqual(12)
+      game.frames[2].score = 7
+      expect(game.runningTotal()).toEqual(19)
+    });
+  });
+
 });

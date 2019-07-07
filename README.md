@@ -20,18 +20,38 @@ RACHEL GRIFFITHS
 ### GETTING STARTED
 ------------
 * JavaScript
-* gitclone: git@github.com:rachjgriff/bowling-challenge.git
+* Open folder in which you want to download project to
 
-### USAGE
-------------
+```
+git clone git@github.com:rachjgriff/bowling-challenge.git
+```
 
 ### TESTING
 ------------
 * jasmine 3.4.0
 * To run from command line:
 ```
-cd jasmine
+cd bowling-challenge/jasmine
 open SpecRunner.html
+```
+
+### USAGE
+------------
+
+* Google Chrome - right click - inspect
+* Navigate to console
+* Follow the below input in order to see how game works and the cumulative score is calculated:
+
+```
+var scorecard = new BowlingScorecard
+scorecard.rollScore(1);
+scorecard.rollScore(4);
+scorecard.game();
+scorecard.cumScore();
+```
+* If you want to see which frame you are on:
+```
+scorecard.frameCount;
 ```
 
 ### WEBSITE SPECIFICATION (REQUIREMENTS)
@@ -146,10 +166,32 @@ Allow me to have 1 additional roll
 ### APPROACH
 ------------
 
+* Focused on understanding the game logic in detail, breaking down examples given to ensure understanding of bonus points and how the final score is calculated
+* Researched in detail how to access data in arrays and how to iterate over nested arrays in order to return a total score - sought help from peers which led me to the .flat() function
+* Broke all requirements down into simple user stories and tested each one of them
+* Attempted to keep each function simple and relative to one task only
 
 ### FOLLOW UP
 ------------
-Bowling Challenge
+
+###### POSSIBLE CHANGES TO LOGIC:
+* Need to split the BowlingScorecard constructor (class) into 2 in order to keep it simple - possibly BowlingFrame and BowlingScorecard
+* Tests are long due to the need to test last frame - possibly reduce number of tests to avoid repetition
+* Add in constants for minimum and maximum of knocked down pins to avoid use of magic numbers within functions
+* Add in private method syntax   
+  e.g. \_isLastFrameStrike
+* Add in error messages if the numbers entered for knockedDownPins in the rollScore function and the bonusRolls in the lastFrame functions are not between 1 and 10
+* Prevent more than 2 rollScores being added to a frame
+* Prevent more than 10 frames being added to total
+* cumScore does not include bonus points until the next frame(s) has been played - if a strike or spare has been scored, not sure if this should be blank in the logic or just in the user interface
+
+###### ADDITIONAL FEATURES:
+* Use jQuery, html & CSS to add an interactive user interface
+* Add in Travis to gain test coverage
+* Add in ESLint to check javaScript conventions are met
+
+
+ORIGINAL README: Bowling Challenge
 =================
 
 

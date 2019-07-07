@@ -1,13 +1,14 @@
 'use strict';
 
-function game() {
-  game = new Game;
-  // scorecard = new ScoreCard;
-
-}
-
 $(document).ready(function () {
- game();
+  scorecard = new Scorecard;
+  $('#title');
+  $('#buttons');
+  $('#scorecard');
+  buttons(0);
+    });
+  });
 });
+
 
 

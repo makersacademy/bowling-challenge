@@ -1,15 +1,17 @@
 'use strict';
 
+
+// unit test roll 
+// spy roll, roll was called with right argument
+
 // function Scorecard() {
 var Scorecard = function() {
   this.frames = [];
   this.rolls = [];
-  this.score = 0;
   this.bonus = 0;
   this.frameNumber = 1;
-  this.rollCount = 0; // max 2
+  this.rollCount = 0; 
 }
-
 
 Scorecard.prototype.roll = function (pins) {
   this.rolls.push(pins);
@@ -34,7 +36,6 @@ Scorecard.prototype.score = function () {
       rollIndex += 2;
     }
   }
-
   return result;
 
   function isStrike() {

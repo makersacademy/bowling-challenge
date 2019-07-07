@@ -1,5 +1,9 @@
 'use strict';
 
+// roll spare in 10th frame
+// roll a strike 
+
+
 describe('Scorecard', function () {
 
   var scorecard;
@@ -11,12 +15,12 @@ describe('Scorecard', function () {
   describe('calculating scores', function() {
     it('can roll gutter game', function () {
       rollMany(0, 20);
-      expect(scorecard.score).toEqual(0);
+      expect(scorecard.score()).toEqual(0);
     })
 
     it('can roll all ones', function () {
       rollMany(1, 20);
-      expect(scorecard.score).toEqual(20);
+      expect(scorecard.score()).toEqual(20);
     })
 
     it('can roll a spare', function () {
@@ -24,7 +28,7 @@ describe('Scorecard', function () {
       scorecard.roll(5);
       scorecard.roll(5);
       rollMany(0, 17);
-      expect(scorecard.score).toEqual(20);
+      expect(scorecard.score()).toEqual(20);
     })
 
     it('can roll a strike', function () {
@@ -32,21 +36,24 @@ describe('Scorecard', function () {
       scorecard.roll(5);
       scorecard.roll(2);
       rollMany(0, 16);
-      expect(scorecard.score).toEqual(24);
+      expect(scorecard.score()).toEqual(24);
     })
 
     it('can roll perfect scorecard', function () {
       rollMany(10, 12);
       console.log(rollMany(10,12));
-      expect(scorecard.score).toEqual(300);
+      expect(scorecard.score()).toEqual(300);
     })
 
     var rollMany = function (pins, rolls) {
       for (var i = 0; i < rolls; i++) {
-        console.log(scorecard.roll(1));
         scorecard.roll(pins);
+        console.log(scorecard.rolls);
       }
     }
   })
 
 });
+
+
+

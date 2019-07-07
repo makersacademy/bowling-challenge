@@ -118,9 +118,13 @@ BowlingScorecard.prototype.isLastFrameStrike = function() {
   return this.frameCount === 10 && this.total[9][0] === 10;
 };
 
-BowlingScorecard.prototype.lastFrameStrikeBonus = function(knockedDownPins1, knockedDownPins2) {
-  if(this.isLastFrameStrike()) {
-    var bonusScore = knockedDownPins1 + knockedDownPins2
+BowlingScorecard.prototype.lastFrameStrikeBonus = function(bonusRoll1, bonusRoll2) {
+  if(this.isLastFrameStrike() && this.isPreviousFrameStrike1()) {
+    var bonusScore = bonusRoll1 + bonusRoll2
     this.total[9].push(bonusScore)
+    this.total[8].push(bonusRoll1)
+  } else if (this.isLastFrameStrike()) {
+      var bonusScore = bonusRoll1 + bonusRoll2
+      this.total[9].push(bonusScore)
   };
 };

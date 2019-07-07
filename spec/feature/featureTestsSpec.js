@@ -42,7 +42,7 @@ I want to start with a new frame line
   it('calculate the score', function() {
     game.add(4)
     game.add(5)
-    expect(game.currentScore).toEqual(9)
+    expect(game.currentScore[0]).toEqual(9)
   })
 
   // As a user
@@ -51,11 +51,9 @@ I want to start with a new frame line
 
   it('calculates the bonus for a strike', function() {
     game.add(10)
-    console.log(game)
+    game.add(0)
     game.add(5)
-    console.log(game)
     game.add(4)
-    console.log(game)
     expect(game._bonusStrike).toEqual(9)
   })
 })

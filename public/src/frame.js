@@ -8,9 +8,9 @@ Frame.prototype.addPins = function(pins) {
 }
 
 Frame.prototype.frameScore = function() {
-  if(this.rolls.length == 2 || this.rolls[0] == 10) {
+  if(this.rolls.length == 2) {
     return this.singleScore = this.rolls.reduce(scoreCalc)
-  } else { return 0}
+  }
 }
 
 function scoreCalc(total, num) {

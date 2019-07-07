@@ -57,13 +57,14 @@ I laid out the requirements of the app as User Stories, detailed below. To keep 
 
 #### Business logic
 
-* Version 1 does not recognise spares or strikes, so the player bowls 10 frames, with two rolls in each frame.
-* Version 2 recognises a spare, so calculates bonus points and adds them to your score for that frame. You get one extra roll if you get a spare in the final frame.
-* Version 3 recognises a strike, so moves onto the next frame and calculates your bonus points accordingly. You get two extra rolls if you get a strike in the final frame.
+* Version 1 does not recognise spares, strikes or frames, so the player rolls 20 times.
+* Version 2 recognises a spare, so calculates bonus points and adds them to your score for that frame.
+* Version 3 recognises a strike, so reduces the total number of rolls you'll get to take and calculates your bonus points accordingly.
+* Version 4 breaks the game down into frames. You get one extra roll if you get a spare in the final frame. You get two extra rolls if you get a strike in the final frame.
 
 #### Interface
 
-* Version 4 allows the player to enter the number of pins knocked over with each roll and display their score.
+* Version 5 allows the player to enter the number of pins knocked over with each roll and display their score.
 
 
 ### User Stories
@@ -94,10 +95,6 @@ I want to receive bonus points that are added to my score for that frame.
 As a fairly good solo bowler,
 So that I get the correct score for a frame in which I get a spare,
 I want to receive bonus points equal to the score of my next roll.
-
-As a solo bowler who gets a spare in the last frame,
-So that I get the correct bonus,
-I want to have one extra roll.
 ```
 
 #### Version 3 - Strikes
@@ -110,11 +107,8 @@ I want to move to the next frame when I get a strike.
 As a highly skilled solo bowler,
 So that I get the correct score for a frame in which I get a strike,
 I want to receive bonus points equal to the score for my next two rolls.
-
-As a solo bowler who gets a strike in the last frame,
-So that I get the correct bonus,
-I want to have two extra rolls.
 ```
+
 #### Version 4 - Frames
 
 ```
@@ -125,6 +119,14 @@ I want each frame to consist of two rolls.
 As a solo bowler,
 So that I play a full game of bowling,
 I want to each game to consist of 10 frames.
+
+As a solo bowler who gets a spare in the last frame,
+So that I get the correct bonus,
+I want to have one extra roll.
+
+As a solo bowler who gets a strike in the last frame,
+So that I get the correct bonus,
+I want to have two extra rolls.
 ```
 
 #### Version 5 - Interface

@@ -36,18 +36,18 @@ open SpecRunner.html
 
 ### WEBSITE SPECIFICATION (REQUIREMENTS)
 ------------
-* User enters roll score
-* Add roll score to frame score
-* Add frame score to total score
-* Allow only 2 rolls to be added to a frame score
-* Allow only 10 frame scores to be added to the total score
-* Count number of rolls
-* Count number of frames
-* If roll score 1 = 10, add it to the frame score and automatically set roll score 2 = 0
-* If roll score 1 in previous frame = 10, add current frame score twice to total score (Strike Bonus)
-* if roll score 1 in previous frame < 10 and previous frame score = 10, add roll score 1 of current frame twice to total score (Spare Bonus)
-* If frame count = 10 and roll 1 score of frame 10 = 10, allow 2 more rolls and add these to frame 10 score
-* if frame count = 10 and frame 10 score = 10, allow 1 more roll and add this to frame 10 score
+- [x] User enters roll score
+- [x] Add roll score to frame score
+- [x] Add frame score to total score
+- [ ] Allow only 2 rolls to be added to a frame score
+- [ ] Allow only 10 frame scores to be added to the total score
+- [ ] Count number of rolls
+- [x] Count number of frames
+- [x] If roll score 1 = 10, add it to the frame score and automatically set roll score 2 = 0
+- [x] If roll score 1 in previous frame = 10, add current frame score twice to total score (Strike Bonus)
+- [x] if roll score 1 in previous frame < 10 and previous frame score = 10, add roll score 1 of current frame twice to total score (Spare Bonus)
+- [ ] If frame count = 10 and roll 1 score of frame 10 = 10, allow 2 more rolls and add these to frame 10 score
+- [ ] if frame count = 10 and roll score 1 < 10 and frame 10 score = 10, allow 1 more roll and add this to frame 10 score
 
 ### USER STORIES
 ------------
@@ -116,6 +116,12 @@ USER STORY 11: Spare Bonus
 As a bowler  
 So that I can receive bonus points for a spare  
 The first roll score of my current frame will be added to my previous frame score as bonus points
+
+USER STORY 12: Frame 10, Roll 1 = Strike
+
+As a bowler  
+So that I can receive bonus points for a strike in my last frame (frame 10)  
+Allow me to have 2 additional rolls
 
 ### APPROACH
 ------------

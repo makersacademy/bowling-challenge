@@ -68,7 +68,7 @@ I laid out the requirements of the app as User Stories, detailed below. To keep 
 
 ### User Stories
 
-#### Version 1 - Basics
+#### Version 1 - Basic game with no strikes or spares
 
 ```
 As a solo bowler,
@@ -76,16 +76,12 @@ To play a game of bowling,
 I want each roll to knock down between 0 and 10 pins.
 
 As a solo bowler,
-To play a full game of bowling,
-I want each frame to consist of two rolls.
+So that I know how well I bowled,
+I want my score to equal the sum of all the pins knocked down in the game.
 
 As a solo bowler,
-To play a full game of bowling,
-I want to each game to consist of 10 frames.
-
-As a solo bowler,
-To know how well I bowled,
-I want my score for each frame to equal the number of pins I knocked down.
+So that I play a full game of bowling,
+I want a game to consist of 20 rolls.
 ```
 
 #### Version 2 - Spares
@@ -119,14 +115,30 @@ As a solo bowler who gets a strike in the last frame,
 So that I get the correct bonus,
 I want to have two extra rolls.
 ```
+#### Version 4 - Frames
 
-#### Version 4 - Interface
 ```
 As a solo bowler,
-To play a game of bowling,
+So that I play a full game of bowling,
+I want each frame to consist of two rolls.
+
+As a solo bowler,
+So that I play a full game of bowling,
+I want to each game to consist of 10 frames.
+```
+
+#### Version 5 - Interface
+
+```
+As a solo bowler,
+So that I can play a game of bowling,
 I want to enter the number of pins knocked down on each roll (if any).
 
 As a solo bowler,
 So that I know how well I'm doing,
 I want to see a running total of my score.
+
+As a solo bowler,
+So that I know how well I'm doing in each frame,
+I want to see my score for each frame.
 ```

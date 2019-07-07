@@ -8,7 +8,8 @@ function BowlingGame () {
 };
 
 BowlingGame.prototype.roll = function (pinsKnockedDown) {
-  this.addToFrame(pinsKnockedDown);
+  // this.addToFrame(pinsKnockedDown);
+  this.score += pinsKnockedDown;
   this.countRoll();
   return pinsKnockedDown;
 };
@@ -21,6 +22,6 @@ BowlingGame.prototype.countRoll = function () {
   };
 };
 
-BowlingGame.prototype.addToFrame = function (pinsKnockedDown) {
-  this.frame.push(pinsKnockedDown);
-};
+// BowlingGame.prototype.addToFrame = function (pinsKnockedDown) {
+  // this.frame.push(pinsKnockedDown);
+// };

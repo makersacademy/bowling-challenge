@@ -63,15 +63,18 @@ describe('BowlingScorecard',function() {
   });
 
   describe('Bonus Points', function() {
-    // it('Current frame score added to previous frame if strike achieved on first roll in previous frame', function(){
-    //   bowlingScorecard.rollScore(10);
-    //   bowlingScorecard.totalScore();
-    //   bowlingScorecard.rollScore(5);
-    //   bowlingScorecard.rollScore(3);
-    //   bowlingScorecard.totalScore();
-    //   expect(bowlingScorecard.total).toEqual([10, 0, 8], [5, 3])
-    //   expect(bowlingScorecard.cumScore()).toEqual(24);
-    // });
+    it('Current frame score added to previous frame if strike achieved on first roll in previous frame', function(){
+      bowlingScorecard.rollScore(10);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.rollScore(5);
+      bowlingScorecard.rollScore(3);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.counter();
+      bowlingScorecard.bonusStrike();
+      expect(bowlingScorecard.total.length).toEqual(2);
+      expect(bowlingScorecard.total).toEqual([[10, 0, 8], [5, 3]])
+      expect(bowlingScorecard.cumScore()).toEqual(26);
+    });
   });
 
   describe('Frame Counter', function() {
@@ -84,6 +87,17 @@ describe('BowlingScorecard',function() {
       bowlingScorecard.totalScore();
       bowlingScorecard.counter();
       expect(bowlingScorecard.frameCount).toEqual(2);
+    });
+
+    it('previousFrame function returns previous frame', function() {
+      bowlingScorecard.rollScore(5);
+      bowlingScorecard.rollScore(3);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.rollScore(6);
+      bowlingScorecard.rollScore(2);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.counter();
+      expect(bowlingScorecard.previousFrame()).toEqual([5, 3])
     });
   });
 });

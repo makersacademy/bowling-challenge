@@ -51,11 +51,27 @@ BowlingScorecard.prototype.cumScore = function() {
 };
 
 BowlingScorecard.prototype.counter = function() {
-  return this.frameCount = this.total.length
+  return this.frameCount = this.total.length;
 };
 
-// BowlingScorecard.prototype.bonusStrike = function() {
-//   if(this.strike()) {
-//     console.log()
-//   };
-// };
+BowlingScorecard.prototype.previousFrame = function() {
+  if(this.frameCount > 0) {
+    return this.total[this.frameCount - 2];
+  };
+};
+
+BowlingScorecard.prototype.isPreviousFrameStrike = function() {
+  var frame = this.previousFrame();
+  return frame[0] === 10 && frame[1] === 0;
+};
+
+BowlingScorecard.prototype.bonusStrike = function() {
+  if(this.isPreviousFrameStrike()) {
+      var frame = this.total[this.frameCount - 1]
+      var bonusScore = frame.reduce(function(accumulator, score) {
+        return accumulator + score;
+      }, 0);
+      this.total[this.frameCount - 2].push(bonusScore);
+  };
+    return;
+};

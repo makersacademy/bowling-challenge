@@ -9,33 +9,35 @@ describe("Game", function() {
   it("sums up gutter game", function(){
     var roll;
     for (roll=1; roll < 20; roll++) {
-      game.roll();
+      game.roll(0);
     }
-    expect(game.gutterGame()).toEqual(0);
+    expect(game.score()).toEqual(0);
   });
-
-  it("sums up perfect game", function() {
-    var roll;
-    for (roll=1; roll < 12; roll ++) {
-      game.roll();
-    }
-    expect(game.perfectGame()).toEqual(300);
-  })
-
-  it("Saves amount of pins hit in an average frame", function() {
-    expect(game.pointsInOneFrame().length).toEqual(2)
-  });
-
-  it("Sums up points from the first frame", function() {
-    expect(game.sumsUpFrameInFirstRound()).toEqual(1)
-  });
-
-
-
-
-
-
-
+  //
+  // it("sums up perfect game", function() {
+  //   var roll;
+  //   for (roll=1; roll < 12; roll ++) {
+  //     game.roll();
+  //   }
+  //   expect(game.perfectGame()).toEqual(300);
+  // })
+  //
+  // it("Saves amount of pins hit in an average frame", function() {
+  //   expect(game.pointsInOneFrame().length).toEqual(2)
+  // });
+  //
+  // it("Sums up points from the first frame", function() {
+  //   expect(game.sumUpFrameInFirstRound()).toEqual(1)
+  // });
+  //
+  // it("Sums up a score of one pin in each frame", function() {
+  //
+  // })
+  //
+  //
+  //
+  //
+  //
 
 
 //   it("has two scores in frames from 1 to 9", function() {

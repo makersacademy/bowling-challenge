@@ -1,9 +1,22 @@
+"use strict";
+
 describe('Bowling Game', function () {
 
   var game;
 
   beforeEach(function () {
     game = new BowlingGame;
+  });
+
+  describe('Gutter Game', function () {
+    it('consists of 20 rolls with a total score of 0', function () {
+      for (var i = 0; i < 20; i++) {
+        game.roll(0);
+      };
+
+      expect(game.score).toEqual(0)
+      expect(game.finished).toBe(true)
+    });
   });
 
   describe('roll', function () {

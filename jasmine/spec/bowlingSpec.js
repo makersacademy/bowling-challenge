@@ -75,6 +75,20 @@ describe('BowlingScorecard',function() {
       expect(bowlingScorecard.total).toEqual([[10, 0, 8], [5, 3]])
       expect(bowlingScorecard.cumScore()).toEqual(26);
     });
+
+    it('Roll 1 score of current frame added to previous frame if spare achieved on previous frame', function() {
+      bowlingScorecard.rollScore(8);
+      bowlingScorecard.rollScore(2);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.rollScore(5);
+      bowlingScorecard.rollScore(3);
+      bowlingScorecard.totalScore();
+      bowlingScorecard.counter();
+      bowlingScorecard.bonusSpare();
+      expect(bowlingScorecard.total.length).toEqual(2);
+      expect(bowlingScorecard.total).toEqual([[8, 2, 5], [5, 3]])
+      expect(bowlingScorecard.cumScore()).toEqual(23);
+    });
   });
 
   describe('Frame Counter', function() {

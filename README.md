@@ -111,6 +111,12 @@ As a bowler
 So that I can receive bonus points for a strike  
 My current frame score will be added to my previous frame score as bonus points
 
+USER STORY 11: Spare Bonus
+
+As a bowler  
+So that I can receive bonus points for a spare  
+The first roll score of my current frame will be added to my previous frame score as bonus points
+
 ### APPROACH
 ------------
 

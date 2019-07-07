@@ -71,7 +71,22 @@ BowlingScorecard.prototype.bonusStrike = function() {
       var bonusScore = frame.reduce(function(accumulator, score) {
         return accumulator + score;
       }, 0);
-      this.total[this.frameCount - 2].push(bonusScore);
+      this.previousFrame().push(bonusScore);
   };
     return;
+};
+
+BowlingScorecard.prototype.isPreviousFrameSpare = function() {
+  var frame = this.previousFrame();
+  var score = frame.reduce(function(accumulator, score) {
+    return accumulator + score;
+  }, 0);
+  return frame[0] < 10 && score === 10;
+};
+
+BowlingScorecard.prototype.bonusSpare = function() {
+  if(this.isPreviousFrameSpare()) {
+    var bonusScore = this.total[this.frameCount - 1][0]
+    this.previousFrame().push(bonusScore);
+  };
 };

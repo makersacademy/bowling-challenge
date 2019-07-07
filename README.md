@@ -40,15 +40,16 @@ open SpecRunner.html
 - [x] Add roll score to frame score
 - [x] Add frame score to total score
 - [ ] Allow only 2 rolls to be added to a frame score
+- [ ] Allow only numbers 1 to 10 to be added as a roll score
 - [ ] Allow only 10 frame scores to be added to the total score
 - [ ] Count number of rolls
 - [x] Count number of frames
 - [x] If roll score 1 = 10, add it to the frame score and automatically set roll score 2 = 0
 - [x] If roll score 1 in previous frame = 10 and current frame roll 1 < 10, add current frame score twice to total score (Strike Bonus)
-- [ ] if roll score 1 in previous frame = 10 and current frame roll 1 = 10, add current frame roll 1 and next frame roll 1 to total score (Strike Bonus)
+- [x] if roll score 1 in previous frame = 10 and current frame roll 1 = 10, add current frame roll 1 and next frame roll 1 to total score (Strike Bonus)
 - [x] if roll score 1 in previous frame < 10 and previous frame score = 10, add roll score 1 of current frame twice to total score (Spare Bonus)
-- [ ] If frame count = 10 and roll 1 score of frame 10 = 10, allow 2 more rolls and add these to frame 10 score
-- [ ] if frame count = 10 and roll score 1 < 10 and frame 10 score = 10, allow 1 more roll and add this to frame 10 score
+- [x] If frame count = 10 and roll 1 score of frame 10 = 10, allow 2 more rolls and add these to frame 10 score
+- [x] if frame count = 10 and roll score 1 < 10 and frame 10 score = 10, allow 1 more roll and add this to frame 10 score
 
 ### USER STORIES
 ------------
@@ -129,6 +130,18 @@ USER STORY 13: Frame 10, Roll 1 = Strike
 As a bowler  
 So that I can receive bonus points for a strike in my last frame (frame 10)  
 Allow me to have 2 additional rolls
+
+USER STORY 14: Frame 10 & Frame 9 Strikes
+
+As a bowler  
+So that I can receive bonus points for a strike in my last frame (frame 10) and the previous frame (frame 9)  
+Allow me to have 2 additional rolls and add to frame 10 and frame 9 accordingly
+
+USER STORY 15: Frame 10 Spare
+
+As a bowler  
+So that I can receive bonus points for a spare in my last frame (frame 10)  
+Allow me to have 1 additional roll  
 
 ### APPROACH
 ------------

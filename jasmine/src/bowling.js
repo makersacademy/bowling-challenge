@@ -100,11 +100,13 @@ BowlingScorecard.prototype.bonusStrike2 = function() {
 };
 
 BowlingScorecard.prototype.isPreviousFrameSpare = function() {
-  var frame = this.previousFrame1();
-  var score = frame.reduce(function(accumulator, score) {
-    return accumulator + score;
-  }, 0);
-  return frame[0] < 10 && score === 10;
+  if(this.frameCount > 1) {
+    var frame = this.previousFrame1();
+    var score = frame.reduce(function(accumulator, score) {
+      return accumulator + score;
+    }, 0);
+    return frame[0] < 10 && score === 10;
+  };
 };
 
 BowlingScorecard.prototype.bonusSpare = function() {
@@ -127,4 +129,26 @@ BowlingScorecard.prototype.lastFrameStrikeBonus = function(bonusRoll1, bonusRoll
       var bonusScore = bonusRoll1 + bonusRoll2
       this.total[9].push(bonusScore)
   };
+};
+
+BowlingScorecard.prototype.isLastFrameSpare = function() {
+  var lastFrame = this.total[9]
+  var lastFrameScore = lastFrame.reduce(function(accumulator, score) {
+    return accumulator + score;
+  }, 0);
+  return lastFrame[0] < 10 && lastFrameScore === 10;
+};
+
+BowlingScorecard.prototype.lastFrameSpareBonus = function(bonusRoll1) {
+  if(this.isLastFrameSpare()) {
+    this.total[9].push(bonusRoll1);
+  };
+};
+
+BowlingScorecard.prototype.game = function() {
+  this.totalScore();
+  this.counter();
+  this.bonusStrike1();
+  this.bonusStrike2();
+  this.bonusSpare();
 };

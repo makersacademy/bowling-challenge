@@ -22,6 +22,22 @@ describe("Game", function() {
     expect(game.perfectGame()).toEqual(300);
   })
 
+  it("Saves amount of pins hit in an average frame", function() {
+    expect(game.pointsInOneFrame().length).toEqual(2)
+  });
+
+  it("Sums up points from the first frame", function() {
+    expect(game.sumsUpFrameInFirstRound()).toEqual(1)
+  });
+
+
+
+
+
+
+
+
+
 //   it("has two scores in frames from 1 to 9", function() {
 //     expect(game.countCapacityInFirst9Frames().length).toEqual(2);
 //   });

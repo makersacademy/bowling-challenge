@@ -11,15 +11,12 @@ function Game() {
   this.frame=1;
   this.pins=[]; //points in each frame [5,5]
   this.totalScore=0;
+  this.score1=0
+  this.score2=1
 
   this.roll = function() {
     return this.rolls++
   };
-// NOT SURE ABOUT THIS ONE:
-//   this.sumUpPins= function() {
-//     this.pins=[1,1]
-//     return this.sum= this.pins[0] + this.pins[1]
-//   }
 
   this.gutterGame = function() {
     if (this.pins===[] && this.roll()===20){
@@ -27,15 +24,22 @@ function Game() {
     return this.totalScore= 0
   };
 
-// MIGHT NEED SUM UP PINS HERE:
   this.perfectGame=function() {
     if (this.roll() === 12 && this.pins[120] ){
       return this.totalScore=300
+    };
+    return this.totalScore = 300
   };
-  return this.totalScore = 300
-};
 
+  this.pointsInOneFrame = function() {
+     this.pins.push(this.score1, this.score2)
+     return this.pins
+  };
 
+  this.sumsUpFrameInFirstRound=function() {
+    this.sum=this.pointsInOneFrame()[0]+ this.pointsInOneFrame()[1];
+    return this.sum
+  };
 
 
 

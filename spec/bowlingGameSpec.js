@@ -14,7 +14,7 @@ describe('Bowling Game', function () {
         game.roll(0);
       };
 
-      expect(game.score).toEqual(0)
+      expect(game.score(game)).toEqual(0)
       expect(game.finished).toBe(true)
     });
   });
@@ -25,10 +25,20 @@ describe('Bowling Game', function () {
         game.roll(4);
       };
 
-      expect(game.score).toEqual(80)
+      expect(game.score(game)).toEqual(80)
       expect(game.finished).toBe(true)
     });
   });
+
+  // describe('end of game', function () {
+  //   it('ends game after 20 rolls', function () {
+  //     for (var i = 0; i < 20; i++) {
+  //       game.roll(0);
+  //     };
+  //
+  //     expect(game.roll(0).toThrow('Game over!'));
+  //   });
+  // });
 
   describe('roll', function () {
     it('returns the number of pins knocked down', function () {
@@ -37,6 +47,18 @@ describe('Bowling Game', function () {
       };
     });
   });
+
+  // describe('spare', function() {
+  //   it('adds bonus points equal to the next roll after the spare', function () {
+  //     game.roll(7);
+  //     game.roll(3);
+  //
+  //     expect(game.score(game)).toEqual(10);
+  //
+  //     game.roll(4);
+  //     expect(game.score(game)).toEqual(18)
+  //   });
+  // });
 
   // describe('frame', function () {
   //   it('starts empty', function () {

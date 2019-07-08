@@ -8,54 +8,40 @@ describe("Game", function() {
 
   it("sums up gutter game", function(){
     var roll;
-    for (roll=1; roll < 20; roll++) {
+    for (roll=0; roll < 20; roll++) {
       game.roll(0);
     }
     expect(game.score()).toEqual(0);
   });
-  //
+
+  it("Sums up a score of one pin hit in each roll", function() {
+    var roll;
+    for (roll=0; roll < 20; roll++) {
+      game.roll(1);
+    }
+    expect(game.score()).toEqual(20);
+  });
+
+  it("hits a spare", function() {
+    game.roll(7)
+    game.roll(3)
+    game.roll(3)
+    var roll;
+    for (roll=0; roll < 17; roll++) {
+      game.roll(0);
+    }
+    expect(game.score()).toEqual(16)
+  })
+
+
   // it("sums up perfect game", function() {
+  //   game.roll(10)
+  //   game.roll(10)
   //   var roll;
-  //   for (roll=1; roll < 12; roll ++) {
-  //     game.roll();
+  //   for (roll=0; roll < 7; roll++) {
+  //     game.roll(10);
   //   }
-  //   expect(game.perfectGame()).toEqual(300);
-  // })
-  //
-  // it("Saves amount of pins hit in an average frame", function() {
-  //   expect(game.pointsInOneFrame().length).toEqual(2)
+  //   expect(game.score()).toEqual(300);
   // });
-  //
-  // it("Sums up points from the first frame", function() {
-  //   expect(game.sumUpFrameInFirstRound()).toEqual(1)
-  // });
-  //
-  // it("Sums up a score of one pin in each frame", function() {
-  //
-  // })
-  //
-  //
-  //
-  //
-  //
-
-
-//   it("has two scores in frames from 1 to 9", function() {
-//     expect(game.countCapacityInFirst9Frames().length).toEqual(2);
-//   });
-//
-//   it("has three scores in frame 10", function() {
-//     expect(game.countCapacityInFrame10().length).toEqual(3);
-//   });
-//
-//   it("returns a sum of the first score", function() {
-//     expect(game.sumScoresInRound1()).toEqual(6);
-//   });
-// ////already here i should have the code for spare
-//   it("returns a sum of the second score", function() {
-//     expect(game.sumScoresInRound2()).toEqual(12);
-//   });
-
-
 
 });

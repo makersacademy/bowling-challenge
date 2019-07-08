@@ -6,6 +6,16 @@ The scorecard will need to count and sum the scores of a bowling game for one pl
 
 The full instructions given for this project can be found in `challenge-instructions.md`.
 
+## Progress
+
+The current version of the scorecard is not a complete scorecard. The model can count the number of rolls and the score for each, so fulfils the  Version 1 user stories only, which are outlined in [Approach](#approach).
+
+Given more time I would have built the scorecard to meet the later user stories and built an `index.html` file so you could load the app in the browser.
+
+I started to write the code for Version 2, which you can see commented out in previous commit `8456c8b`. It's been removed from this latest commit for clarity.
+
+Score inputs would have been done through numbered buttons from 0 to 10 that you would click and the score would be dynamically displayed using jQuery.
+
 ## Rules of bowling
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
@@ -49,7 +59,19 @@ A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 str
 
 ## Set up
 
+In the folder you wish to save the bowling scorecard directory:
 
+```sh
+cd path/to/project/directory
+git clone git@github.com:rhysco8/bowling-challenge.git
+cd bowling-challenge
+```
+
+### Run tests
+
+```sh
+open SpecRunner.html
+```
 
 ## Approach
 

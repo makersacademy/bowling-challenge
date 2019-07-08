@@ -23,11 +23,3 @@ BowlingGame.prototype.countRoll = function () {
     this.finished = true;
   };
 };
-
-// BowlingGame.prototype.gameOver = function () {
-//   throw 'Game over!' if this.finished;
-// };
-
-// BowlingGame.prototype.addToFrame = function (pinsKnockedDown) {
-  // this.frame.push(pinsKnockedDown);
-// };

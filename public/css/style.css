@@ -1,0 +1,71 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,500,80);
+
+body {
+	font-family: 'Montserrat', sans-serif;
+	padding: 0;
+	margin: 0;
+	background: #B10088;
+	color: #fff;
+}
+
+.header {
+	background-image: url('https://user-images.githubusercontent.com/23095774/60387385-1cc7ad80-9a9a-11e9-981d-e0430aed4bec.jpg');
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	color: #fff;
+}
+
+.navbar {
+	background: #B10088;
+}
+
+.nav-link,
+.navbar-brand {
+	color: #fff;
+	cursor: pointer;
+}
+
+.nav-link {
+	margin-right: 1em !important;
+}
+
+.nav-link:hover {
+	color: #000;
+}
+
+.navbar-collapse {
+	justify-content: flex-end;
+}
+
+
+
+.title{
+  text-align: center;
+}
+.buttons{
+  text-align: center;
+	margin: 30px;
+	border-radius: 25px;
+}
+.notice{
+  text-align: center;
+  color: #fff70b;
+}
+.final-score{
+  text-align: center;
+  color: rgb(47, 36, 255);
+  padding-bottom: 10px;
+}
+#playagain{
+  text-align: center;
+}
+
+table.scorecard { border-radius: 25px; margin: 0 auto; width:80%; font-size:12px; text-align: center; table-layout: fixed; margin-bottom: 40px;}
+table.scorecard th, tr, td {padding: 0; vertical-align: middle; font-family: Arial, Helvetica, sans-serif; text-align: center;  border-radius: 25px;}
+table.scorecard th {background-color: #2F108F; height:30px; color: #fff;}
+table.scorecard th:not(:last-child) {border-radius: 25px;}
+table.scorecard td {height:30px; background: #B10088;}
+table.scorecard tr td:not(:last-child) {border-radius: 25px;}
+table.scorecard tr:nth-child(2) td:nth-child(even) {border-radius: 25px;}
+table.scorecard tr:nth-child(2) td:last-child {border-radius: 25px;} 

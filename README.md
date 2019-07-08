@@ -54,6 +54,22 @@ scorecard.cumScore();
 scorecard.frameCount;
 ```
 
+* If you roll a spare or a strike in frame 10, follow the the below input in order to complete the game:
+
+```
+scorecard.rollScore(2);
+scorecard.rollScore(8);
+scorecard.game();
+scorecard.lastFrameSpareBonus(6);
+scorecard.cumScore();
+```
+```
+scorecard.rollScore(10);
+scorecard.game();
+scorecard.lastFrameStrikeBonus(6, 3);
+scorecard.cumScore();
+```
+
 ### WEBSITE SPECIFICATION (REQUIREMENTS)
 ------------
 - [x] User enters roll score

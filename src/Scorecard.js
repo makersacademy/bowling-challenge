@@ -55,3 +55,5 @@ Scorecard.prototype.score = function () {
     return scorecard.rolls[rollIndex] + scorecard.rolls[rollIndex + 1];
   }
 };
+
+

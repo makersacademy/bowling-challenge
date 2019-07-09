@@ -18,7 +18,7 @@ Scorecard.prototype.ball1 = function (pins){
 
 Scorecard.prototype.ball2 = function (pins){
   this.game.ball2(pins)
-  if (this.index === 9 && (this.game.pinsTotal()) % 10 === 0) {
+  if (this.index === 9 && (this.game.pinsTotal()) % maxScore === 0) {
     return
   } else {
     this.frameScoreCalc()

@@ -69,3 +69,4 @@ table.scorecard td {height:30px; background: #B10088;}
 table.scorecard tr td:not(:last-child) {border-radius: 25px;}
 table.scorecard tr:nth-child(2) td:nth-child(even) {border-radius: 25px;}
 table.scorecard tr:nth-child(2) td:last-child {border-radius: 25px;} 
+

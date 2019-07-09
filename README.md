@@ -14,11 +14,11 @@ This is a Bowling Scorecard. The user inputs the rolls. It counts and sums the s
 ---
 
 ## Features
-  * [ ] Gutter game
-  * [ ] One frame
+  * [x] Gutter game
+  * [x] One frame
   * [ ] Multiple frames
-  * [ ] Spares
-  * [ ] Strikes
+  * [x] Spares
+  * [x] Strikes
   * [ ] Final Frame
 
 * Bonus Features

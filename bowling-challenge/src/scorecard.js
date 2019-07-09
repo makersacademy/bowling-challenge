@@ -16,7 +16,7 @@ Scorecard.prototype.ball1 = function (pins){
 
 Scorecard.prototype.ball2 = function (pins){
   this.game.ball2(pins)
-  if (this.index === 9 && (this.game.ball1Pins + this.game.ball2Pins) % 10 === 0) {
+  if (this.index === 9 && (this.game.pinsTotal()) % 10 === 0) {
     return
   } else {
     this.frameScoreCalc()
@@ -41,10 +41,10 @@ Scorecard.prototype.totalScore = function () {
 Scorecard.prototype.frameScoreCalc = function () {
   this.frameScores.push(this.frameTotal())
   if (this.isDoubleStrike()) {
-    this.frameScores[this.index-1] += this.game.ball1Pins + this.game.ball2Pins
+    this.frameScores[this.index-1] += this.game.pinsTotal()
     this.frameScores[this.index-2] += 10
   } else if (this.isStrike()) {
-    this.frameScores[this.index-1] += this.game.ball1Pins + this.game.ball2Pins
+    this.frameScores[this.index-1] += this.game.pinsTotal()
   } else if (this.isSpare()) {
     this.frameScores[this.index-1] += this.game.ball1Pins
   }

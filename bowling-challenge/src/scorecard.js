@@ -1,5 +1,7 @@
 'use strict'
 
+const maxScore = 10
+
 function Scorecard(){
   this.game = new Game
   this.frameScores = []
@@ -42,7 +44,7 @@ Scorecard.prototype.frameScoreCalc = function () {
   this.frameScores.push(this.frameTotal())
   if (this.isDoubleStrike()) {
     this.frameScores[this.index-1] += this.game.pinsTotal()
-    this.frameScores[this.index-2] += 10
+    this.frameScores[this.index-2] += maxScore
   } else if (this.isStrike()) {
     this.frameScores[this.index-1] += this.game.pinsTotal()
   } else if (this.isSpare()) {
@@ -53,7 +55,7 @@ Scorecard.prototype.frameScoreCalc = function () {
 
 Scorecard.prototype.isStrike = function () {
   if (this.index > 0) {
-    return this.game.frames[this.index-1][0] === 10;
+    return this.game.frames[this.index-1][0] === maxScore;
   } else {
     return false
   }
@@ -61,7 +63,7 @@ Scorecard.prototype.isStrike = function () {
 
 Scorecard.prototype.isSpare = function () {
   if (this.index > 0) {
-    return this.frameScores[this.index-1] === 10;
+    return this.frameScores[this.index-1] === maxScore;
   } else {
     return false
   }
@@ -69,7 +71,7 @@ Scorecard.prototype.isSpare = function () {
 
 Scorecard.prototype.isDoubleStrike = function () {
   if (this.index > 1) {
-    return this.game.frames[this.index-1][0] === 10 && this.game.frames[this.index-2][0] === 10
+    return this.game.frames[this.index-1][0] === maxScore && this.game.frames[this.index-2][0] === maxScore
   } else {
     return false
   }

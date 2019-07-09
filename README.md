@@ -150,4 +150,4 @@ In the image below you can find some score examples.
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 
-![Ten Pin Score Example](https://github.com/petraartep/bowling-challenge/blob/master/images/example_ten_pin_scoring.png)
+![Ten Pin Score Example]("https://user-images.githubusercontent.com/23095774/60917942-f10ea980-a289-11e9-8585-9c394a211621.png")

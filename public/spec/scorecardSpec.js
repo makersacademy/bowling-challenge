@@ -19,6 +19,16 @@ describe('Scorecard', function () {
       expect(scorecard.points).toEqual([]);
     });
 
+  describe("starting a frame", function () {
+
+    it("will add a frame to the player's scorecard", function () {
+      scorecard._startFrame();
+      expect(scorecard.frames.length).toBe(1);
+    });
+
+  });
+
+
   describe('calculating scores', function () {
     it('can roll gutter game', function () {
       rollMany(0, 20);

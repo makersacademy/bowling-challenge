@@ -1,6 +1,7 @@
 "use strict";
 
 function Frame() {
+  this.rolls = [];
   this.score = 0;
   this.bonus = 0;
   this.strike = false;
@@ -28,5 +29,10 @@ Frame.prototype.points = function(roll) {
       return true; 
     }
   }    
+};
+
+Frame.prototype.recordScore = function (pinsHit) {
+  this.rolls.push(pinsHit);
+  this.score += pinsHit;
 };
 

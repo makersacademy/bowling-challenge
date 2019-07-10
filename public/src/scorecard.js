@@ -18,6 +18,11 @@ Scorecard.prototype.roll = function (pins) {
   this.rolls.push(pins);
 };
 
+ScoreCard.prototype.currentFrame = function () {
+  return this.frames[this.frames.length - 1];
+};
+
+
 Scorecard.prototype.score = function () {
   var result = 0;
   var rollIndex = 0;

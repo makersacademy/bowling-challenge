@@ -11,9 +11,14 @@
    })
 
    it('adds a frame to it', function () {
- 
      scorecard.addFrame(mockframe);
      expect(scorecard.frames).toEqual([mockframe]);
+   });
+
+
+   it('adds a pins to it', function () {
+     scorecard.addRoll(1);
+     expect(scorecard.rolls).toEqual([1]);
    });
 });
 

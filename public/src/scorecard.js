@@ -9,3 +9,6 @@ Scorecard.prototype.addFrame = function(frame) {
   this.frames.push(frame)
 };
 
+Scorecard.prototype.addRoll = function(pins) {
+  this.rolls.push(pins)
+};

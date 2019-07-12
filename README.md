@@ -3,7 +3,8 @@ Bowling Challenge
 =================
 
 ## Getting Started
-1. Clone thhis repo https://github.com/yadlra/bowling-challenge.git
+1. Clone the repo
+2. When in terminal, cd bowling-challenge
 
 
 ## The Task

@@ -11,5 +11,5 @@ var Frame = function() {
 Frame.prototype.recordScore = function(pins) {
   this.rolls.push(pins);
   this.score += pins;
-
+// this.score += parseInt(pins); for the page
 }

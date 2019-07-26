@@ -12,7 +12,7 @@ Scorecard.prototype.addFrame = function(frame) {
     this.frames.push(frame);
     if(this.isSpare(this.frames.length - 1) || this.isStrike(this.frames.length - 1)){
     } else {
-        this.updateCurrentScore();
+        this.getCurrentScore();
     };
 };
 Scorecard.prototype.getCurrentScore = function() {

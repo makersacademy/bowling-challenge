@@ -38,9 +38,11 @@ describe('Feature', function() {
     it('Scorecard can return current scores, including both spares and strikes.', function() {
         frame1.inputRoll(10);
         scorecard.addFrame(frame1);
+        expect(scorecard.getCurrentScore()).toEqual(10);
         frame2.inputRoll(7);
         frame2.inputRoll(3);
         scorecard.addFrame(frame2);
+        expect(scorecard.getCurrentScore()).toEqual(30)
         frame3.inputRoll(5);
         frame3.inputRoll(4);
         scorecard.addFrame(frame3);

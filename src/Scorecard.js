@@ -23,8 +23,10 @@ Scorecard.prototype.updateCurrentScore = function() {
     this.currentScore = 0;
     for (var i = 0; i < this.frames.length; i++) {
         this.currentScore += this.getFrameScore(i);
-        this.spareCheck(i);
-        this.strikeCheck(i);
+        if(i > 0) {
+            this.spareCheck(i - 1);
+            this.strikeCheck(i - 1);
+        };
     };
 };
 Scorecard.prototype.getFrameScore = function(frameIndex) {

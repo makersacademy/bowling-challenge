@@ -10,10 +10,6 @@ Scorecard.prototype.getFrames = function() {
 };
 Scorecard.prototype.addFrame = function(frame) {
     this.frames.push(frame);
-    if(this.isSpare(this.frames.length - 1) || this.isStrike(this.frames.length - 1)){
-    } else {
-        this.getCurrentScore();
-    };
 };
 Scorecard.prototype.getCurrentScore = function() {
     this.updateCurrentScore();

@@ -7,8 +7,7 @@ describe('Scorecard', function() {
 
     beforeEach(function() {
         scorecard = new Scorecard();
-        // frame = jasmine.createSpyObj('frame', ['getRolls']);
-        frame = new Frame()
+        frame = jasmine.createSpyObj('frame', ['getRolls']);
     });
 
     it('Starts with no frames stored.', function() {
@@ -19,15 +18,13 @@ describe('Scorecard', function() {
         expect(scorecard.getFrames()[0]).toEqual(frame);
     });
     it('Can return the score from a frame.', function() {
-        // frame.getRolls.and.returnValue([3, 4]);
-        frame.inputRoll(3);
-        frame.inputRoll(4);
+        frame.getRolls.and.returnValue([3, 4]);
         scorecard.addFrame(frame);
         expect(scorecard.getFrameScore(1)).toEqual(7);
     })
     it('Can return current score.', function() {
-        frame.getRolls.and.returnValue([3, 4]);
+        frame.getRolls.and.returnValue([2, 3]);
         scorecard.addFrame(frame);
-        expect(scorecard.getCurrentScore()).toEqual(7);
+        expect(scorecard.getCurrentScore()).toEqual(5);
     })
 });

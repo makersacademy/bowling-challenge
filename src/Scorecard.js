@@ -10,6 +10,10 @@ Scorecard.prototype.getFrames = function() {
 };
 Scorecard.prototype.addFrame = function(frame) {
     this.frames.push(frame);
+    if(this.isSpare(this.frames.length - 1) || this.isStrike(this.frames.length - 1)){
+    } else {
+        this.updateCurrentScore();
+    };
 };
 Scorecard.prototype.getCurrentScore = function() {
     this.updateCurrentScore();
@@ -17,10 +21,46 @@ Scorecard.prototype.getCurrentScore = function() {
 };
 Scorecard.prototype.updateCurrentScore = function() {
     this.currentScore = 0;
-    for (var i = 1; i <= this.frames.length; i++) {
+    for (var i = 0; i < this.frames.length; i++) {
         this.currentScore += this.getFrameScore(i);
+        this.spareCheck(i);
+        this.strikeCheck(i);
     };
 };
-Scorecard.prototype.getFrameScore = function(frameNumber) {
-    return this.frames[(frameNumber - 1)].getRolls().reduce(function(acc, val) { return acc + val; }, 0);
+Scorecard.prototype.getFrameScore = function(frameIndex) {
+    return this.frames[frameIndex].getRolls().reduce(function(acc, val) { return acc + val; }, 0);
+};
+Scorecard.prototype.spareCheck = function(index) {
+    if(this.isSpare(index)) {
+        this.addSpareBonus(index);
+    };
+};
+Scorecard.prototype.isSpare = function(index) {
+    return this.frames[index].getRolls()[0] != 10 && (this.frames[index].getRolls()[0] + this.frames[index].getRolls()[1]) === 10
+};
+Scorecard.prototype.addSpareBonus = function(index) {
+    if(index === 9) {
+        return
+    } else {
+    this.currentScore += this.frames[index + 1].getRolls()[0]
+    };
+};
+Scorecard.prototype.strikeCheck = function(index) {
+        if(this.isStrike(index)) {
+            this.addStrikeBonus(index);
+        };
+};
+Scorecard.prototype.isStrike = function(index) {
+    return this.frames[index].getRolls()[0] === 10;
+}
+Scorecard.prototype.addStrikeBonus = function(index) {
+    if(index === 9) {                                                 // if this is the final frame
+        return
+    } else if(this.frames[index + 1].getRolls().length === 1) {       // else if the next ball is also a strike
+        this.currentScore += this.frames[index + 1].getRolls()[0]
+        this.currentScore += this.frames[index + 2].getRolls()[0]
+    } else {                                                          // regular strike
+        this.currentScore += this.frames[index + 1].getRolls()[0]
+        this.currentScore += this.frames[index + 1].getRolls()[1]
+    };
 };

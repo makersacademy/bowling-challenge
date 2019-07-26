@@ -8,24 +8,23 @@ describe('Frame', function() {
         frame = new Frame();
     });
 
-    it('Starts with undefined entries for both rolls.', function() {
-        expect(frame.getBallScore(1)).toEqual(undefined);
-        expect(frame.getBallScore(2)).toEqual(undefined);
+    it('Starts with an empty array for rolls.', function() {
+        expect(frame.getRolls()).toEqual([]);
     });
     it('Records the first roll.', function() {
         frame.inputRoll(5);
-        expect(frame.getBallScore(1)).toEqual(5);
+        expect(frame.getRolls()[0]).toEqual(5);
     });
     it('Records a second roll.', function() {
         frame.inputRoll(5);
         frame.inputRoll(4);
-        expect(frame.getBallScore(2)).toEqual(4);
+        expect(frame.getRolls()[1]).toEqual(4);
     });
     it('Records a third roll.', function() {
         frame.inputRoll(5);
         frame.inputRoll(4);
         frame.inputRoll(8);
-        expect(frame.getBallScore(3)).toEqual(8);
+        expect(frame.getRolls()[2]).toEqual(8);
     });
     it('Can return input rolls as an array.', function() {
         frame.inputRoll(1);

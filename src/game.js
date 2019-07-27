@@ -4,6 +4,7 @@ function Game() {
   this._gameOver = false
 };
 
-Game.prototype.updateScore = function(frameScore) {
+Game.prototype.updateScore = function(frame) {
+  var frameScore = frame.score();
   this._totalScore += frameScore;
 }

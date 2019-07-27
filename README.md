@@ -1,3 +1,15 @@
+Outline
+=================
+
+Roll -> Score, Roll Number
+ |
+ | Add  
+ v
+Frame -> [Rolls] , Pins Score , Bonus , FrameScore
+ |
+ | Add
+ v
+Game -> [Frames] , GameScore
 
 Bowling Challenge
 =================

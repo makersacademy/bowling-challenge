@@ -24,6 +24,14 @@ describe('Bowling', function() {
     expect(bowling.isGameOver()).toEqual(true)
   })
 
+  it('shows correct score for a game of all 1s', function() {
+    for (var i = 0; i < 20; i++) {
+      bowling.enterBallScore(1)
+    };
+    expect(bowling.calculateTotalScore()).toEqual(20)
+    expect(bowling.isGameOver()).toEqual(true)
+  })
+
   it('shows correct score for a gutter game', function() {
     for (var i = 0; i < 20; i++) {
       bowling.enterBallScore(0)
@@ -39,5 +47,12 @@ describe('Bowling', function() {
     bowling.newGame()
     expect(bowling.calculateTotalScore()).toEqual(0)
     expect(bowling.isGameOver()).toEqual(false)
+  })
+
+  it('ends when game is over', function() {
+    while (bowling.isGameOver() === false) {
+      bowling.enterBallScore(0)
+    };
+    expect(bowling.calculateTotalScore()).toEqual(0)
   })
 });

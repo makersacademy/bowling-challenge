@@ -38,7 +38,7 @@ Bowling.prototype.newGame = function() {
 
 Bowling.prototype.isGameOver = function() {
   if (this.isFinalRound()) {
-    if (((this._scoreboard[9][0] + this._scoreboard[9][1]) < 10) || this._scoreboard[9].length === 4) {
+    if (((this._scoreboard[9][0] + this._scoreboard[9][1]) < 10) && this._scoreboard[9][1] != null || this._scoreboard[9].length === 4) {
       return true
     } else return false;
   } else return false;

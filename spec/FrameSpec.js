@@ -29,12 +29,36 @@ describe('Frame', function() {
     expect(frame._roll).toEqual(2);
   });
 
-  it('Ends frame if player scores strike', function() {
+  it('Ends frame if player scores strike (excl 10th frame)', function() {
     frame.addPoints(10);
-    expect(frame._frameOver).toEqual(true);
+    expect(frame.status()).toEqual(true);
   });
 
+  it('Ends frame after second roll', function() {
+    frame.addPoints(5);
+    frame.addPoints(5);
+    expect(frame.status()).toEqual(true);
+  });
 });
+
+describe('10th Frame', function() {
+  beforeEach(function() {
+    frame = new Frame(10,);
+  });
+
+  it("Doesn't end frame after second roll on 10th frame", function() {
+    frame._frameNumber = 10;
+    frame.addPoints(5);
+    frame.addPoints(5);
+    expect(frame.status()).toEqual(false);
+  });
+
+  it("Doesn't end frame after strike on 10th frame", function() {
+    frame._frameNumber = 10;
+    frame.addPoints(10);
+    expect(frame.status()).toEqual(false);
+  });
+})
 
 describe('Bonus Score', function() {
   beforeEach(function(){

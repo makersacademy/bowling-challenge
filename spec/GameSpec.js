@@ -21,9 +21,9 @@ describe('Play Game', function(){
     game = new Game();
   });
 
-  it('Score is increased by 5 when 5 is scored', function () {
-    var frameScore = 5;
-    game.updateScore(frameScore);
+  it('Adds the score of a completed frame', function () {
+    spyOn(frame, "score").and.returnValue(5);
+    game.updateScore(frame)
     expect(game._totalScore).toEqual(5);
   });
 

@@ -13,7 +13,7 @@ describe('Bowling', function() {
       bowling.enterBallScore(10)
     };
     expect(bowling.calculateTotalScore()).toEqual(300)
-    expect(bowling._gameOver).toEqual(true)
+    expect(bowling.isGameOver()).toEqual(true)
   })
 
   it('shows correct score for a game of all spares', function() {
@@ -21,7 +21,7 @@ describe('Bowling', function() {
       bowling.enterBallScore(5)
     };
     expect(bowling.calculateTotalScore()).toEqual(150)
-    expect(bowling._gameOver).toEqual(true)
+    expect(bowling.isGameOver()).toEqual(true)
   })
 
   it('shows correct score for a gutter game', function() {
@@ -29,6 +29,15 @@ describe('Bowling', function() {
       bowling.enterBallScore(0)
     };
     expect(bowling.calculateTotalScore()).toEqual(0)
-    expect(bowling._gameOver).toEqual(true)
+    expect(bowling.isGameOver()).toEqual(true)
+  })
+
+  it('resets game half way through', function() {
+    for (var i = 0; i < 10; i++) {
+      bowling.enterBallScore(5)
+    };
+    bowling.newGame()
+    expect(bowling.calculateTotalScore()).toEqual(0)
+    expect(bowling.isGameOver()).toEqual(false)
   })
 });

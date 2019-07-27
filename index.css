@@ -1,0 +1,142 @@
+body {
+  background-image: url("./images/bowling_alley.png");
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.score_table {
+  border: 3px solid black;
+  padding: 2px;
+  background-color: #fbf3b0;
+  font-family: "Futura", Futura, serif;
+  text-align: center;
+  width: 500px;
+  height: 400;
+}
+
+td {
+
+  width: 30px;
+  background-color: #fbf3b0;
+  font-family: "Futura", Futura, serif;
+  text-align: center;
+}
+
+.td_score {
+  border: 1px solid black;
+  background-color: #fbf3b0;
+  font-family: "Futura", Futura, serif;
+  text-align: center;
+}
+
+.bottom_td {
+  border: 0px;
+  padding: ;
+  background-color: transparent;
+  font-family: "Futura", Futura, serif;
+  text-align: ;
+}
+
+.bottom_tr {
+}
+
+th {
+  background-color: #fbf3b0;
+  font-family: "Futura", Futura, serif;
+  text-align: center;
+}
+
+.score_table {
+  border-spacing: 15px;
+  border-radius: 25px;
+}
+
+.tableheader {
+  border: 3px solid black;
+  padding: 5px;
+  background-color: #fbf3b0;
+  font-family: "Futura", Futura, serif;
+  text-align: center;
+  font-size: 30px;
+}
+
+.total_score {
+  clear: both;
+  border: 3px solid black;
+  width: 170px;
+  padding: 0px;
+  background-color: #fbf3b0;
+  font-family: "Futura", Futura, serif;
+  text-align: left;
+  font-size: 16px;
+  margin: 4px 2px;
+}
+
+.bottom_table {
+}
+
+.button_new_game {
+  clear: both;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  transition-duration: 0.4s;
+  border-radius: 15px;
+  border: 10px solid #4CAF50;
+  background-color: white;
+  color: black;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-family: "Futura", Futura, serif;
+}
+
+.button_new_game:hover {
+  background-color: #4CAF50;
+  /* Green */
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.button_new_game:active {
+  background-color: #3e8e41;
+  border: 10px solid #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(3px);
+}
+
+.button_new_game:focus {
+  outline: 0;
+}
+
+.new_ball_button {
+  font-family: "Futura", Futura, serif;
+  background-color: #fbf3b0;
+  border-radius: 15px;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+.new_ball_button:not(:last-child) {
+  border-right: none;
+  /* Prevent double borders */
+}
+
+.new_ball_button:hover {
+  background-color: white;
+}
+
+.new_ball_button:active {
+  background-color: #4CAF50;
+  transform: translateY(1px)
+}
+
+.new_ball_button:focus {
+  outline: 0;
+}

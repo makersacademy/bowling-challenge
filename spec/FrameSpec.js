@@ -7,6 +7,10 @@ describe('Frame', function() {
     expect(frame._roll).toEqual(1);
   });
 
+  it('Returns score for frame', function() {
+    expect(frame.score()).toEqual(0)
+  });
+
   it('Score starts at 0', function() {
     expect(frame._score).toEqual(0);
   });

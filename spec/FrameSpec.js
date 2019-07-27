@@ -24,4 +24,9 @@ describe('Frame', function() {
     frame.addPoints(5);
     expect(frame._roll).toEqual(2);
   });
+
+  it('Ends frame if player scores strike', function() {
+    frame.addPoints(10);
+    expect(frame._frameOver).toEqual(true);
+  });
 });

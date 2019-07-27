@@ -25,6 +25,6 @@ describe('Play Game', function(){
     var frameScore = 5;
     game.updateScore(frameScore);
     expect(game._totalScore).toEqual(5);
-  })
+  });
 
 });

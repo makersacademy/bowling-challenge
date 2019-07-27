@@ -29,4 +29,20 @@ describe('Frame', function() {
     frame.addPoints(10);
     expect(frame._frameOver).toEqual(true);
   });
+
+});
+
+describe('Bonus Score', function() {
+  beforeEach(function(){
+    frame1 = new Frame();
+  });
+
+  it('Calculates a bonus score of 10 for a strike after a spare', function() {
+    frame1.addPoints(5);
+    frame1.addPoints(5);
+    frame2 = new Frame(frame1);
+    frame2.addPoints(10);
+    frame2.calculateBonus(frame1);
+    expect(frame1._bonus).toEqual(10);
+  });
 });

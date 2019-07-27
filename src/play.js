@@ -18,17 +18,72 @@ $(document).ready(function() {
     populate_frame()
   }
 
+  function generate_bonus_frame() {
+    console.log("generating bonus frame")
+    bonus_frame = $('.bonus_frame').html()
+    $('.master_container').append(bonus_frame)
+    populate_frame()
+  }
+
+  function end_game() {
+    $('.the_end').attr('hidden',false)
+    $('.the_end').html(`The game has ended. Your final score was ${scorecard.score}`)
+  }
+
+  function numerify(number) {
+    if (number === "") {
+      return 0
+    } else {
+      return parseInt(number,10)
+    }
+  }
+
   $(document).on('click', '.submit_score', function(){
 
-      var first = parseInt($("#first_roll").val(),10)
-      var second = parseInt($("#second_roll").val(),10)
+      $("#first_roll").prop('disabled', true);
+      $("#second_roll").prop('disabled', true);
+      
+      string_first = $("#first_roll").val()
+      string_second = $("#second_roll").val()
+
+      first = numerify(string_first)
+      second = numerify(string_second)
+
+      if(first>10 || second>10) {
+        alert("You can't knock down more than 10 pins in one roll!")
+        return
+      }else if(scorecard.frame<10 && first + second > 10) {
+        alert("Your combined score can't be more than 10!")
+        return
+      };
+
       scorecard.submit(first,second)
       $("#first_roll").attr('id','finished_roll')
       $("#second_roll").attr('id','finished_roll')
       $('.submit_score').attr('hidden',true)
       $('.submit_message').attr('hidden',false)
-      generate_frame()
 
+      if (scorecard.gameStatus === 'ended') {
+        end_game()
+      } else if (scorecard.gameStatus === 'bonus') {
+        generate_bonus_frame()
+      } else {
+        generate_frame()
+      }
+
+  })
+
+  $(document).on('click', '.submit_bonus', function(){
+    var string_first = $("#first_roll").val()
+    var first = numerify(string_first)
+    if(first>10){
+      alert("You can't knock down more than 10 pins in one roll!")
+      return
+    }
+    scorecard.score += first
+    $('.total_score').html(`Score: ${scorecard.score}`);
+    scorecard.gameStatus = 'ended'
+    end_game()
   })
 
 });

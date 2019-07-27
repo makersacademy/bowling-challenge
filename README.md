@@ -1,77 +1,103 @@
+# Bowling Challenge
 
-Bowling Challenge
-=================
+This is my attempt at the [Makers Academy Week 5 Bowling Challenge](https://github.com/makersacademy/bowling-challenge)
+
+## Approach
+
+I built the bowling scorer in Javascript using TDD.  
+
+## Domain Model/Plan
+
+### Objects
+```
+Game:
+  * Attributes:
+    * this.frames = [[Frame object], [Frame object], etc..]
+    * this.scorecard = e.g. [[X], [7, /], [0, 0], [5, 2], etc]
+    * this.frame_running_totals = e.g. [20, 35, 45, etc]
+    * this.running_total = 0
+
+  * Methods:
+    * get_scores (in order to display on web page)
+    * update_scores (consisting of three functions...)
+    1. update_scorecard (adds the latest roll to the scorecard)
+    2. update_frame_running_totals (loops through the frame objects to check if .is_complete, if so, add frame score to frame_running_totals)
+    3. update_running_total (loops through frame objects, if is.complete add to the running_total)
+
+Frame:
+  * Attributes:
+    * this.rolls = [] - consists of 3 rolls if is_spare or is_strike, otherwise consists of 2
+    * this.frame_score
+    * this.is_strike = false
+    * this.is_spare = false
+    * this.is_complete = false
+  * Methods:
+    * set_to_complete (if 2 rolls if normal frame, 3 if strike or spare)
+    * .strike (sets this.is_strike to true and ends the frame unless 10th Frame)
+    * .spare (sets this.is_spare to true)
+    * is_previous_spare_or_strike (also checks if previous frame is_complete, for first roll only)
+    * is_previous_previous_strike (also checks if previous previous frame is complete, for first roll only)
+    * is_previous_strike (for second roll of frame only, also checks is previous frame complete)
+    * add_to_frames (add Frame object to game.frames)
+  * Differences for Frame 10
+    * Do not end the frame when you get a strike or spare. Only end the frame if first two rolls don't add up to ten, or after 3 rolls.
+```
+### Process example for 3 frames in pseudo-JavaScript code):
+  * game = new Game object
+  * for loop of 10 iterations starts...(i = index of current frame)
+  * --- FRAME 1 ---
+  * this = new Frame object
+  * --ROLL 1--
+  * user_input = 10
+  * this.rolls.push(user_input) (this.rolls = [10])
+  * this.strike
+  * this.is_previous_spare_or_strike (false)
+  * this.is_previous_previous_strike (false)
+  * game.frames.push(this)  (game.frames = [[10]])
+  * game.update_scores (roll is added to scorecard, frame is not complete so frame_running_total and running_total not updated)
+  * this.frame_score == 10, therefore move onto next frame...
 
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+  * -- FRAME 2 ---
+  * this = new Frame object
+  * --ROLL 1--
+  * user_input = 7
+  * this.rolls.push(user_input) (this.rolls = [7])
+  * this.is_previous_spare_or_strike (true)
+  * game.frames[i-1].push([this.rolls[0]]) (game.frames = [[10, 7]]
+  * this.is_previous_previous_strike (false)
+  * game.update_scores (roll added to scorecard, neither this frame, nor frame 1 is complete, so frame_running_total and running_total not updated)
+  * this.frame_score != 10, therefore, need a second roll...
+  * --ROLL 2--
+  * user_input = 3
+  * this.rolls.push(user_input) = (this.rolls = [7, 3])
+  * this.spare
+  * this.is_previous_strike (true)
+  * game.frames[i-1].push(this.rolls[1]) (game.frames = [10, 7, 3])
+  * this.is_previous_previous_strike (false)
+  * game.frames.push(this) (game.frames = [[10, 7, 3], [7, 3]])
+  * game.update_scores (game.frames[0] is now complete to gets added to frame_running_totals and running total)
+  * game.frame_running_totals = [20]
+  * game.running_total = 20
+  * two rolls have been completed, so move onto next frame...
 
-## The Task
-
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
-
-Count and sum the scores of a bowling game for one player (in JavaScript).
-
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
-
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
-
-## Bowling — how does it work?
-
-### Strikes
-
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
-
-### Spares
-
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-### 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-### Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-### Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+  *  ---FRAME 3---
+  * this = new Frame object
+  * --ROLL 1--
+  * user_input = 5
+  * this.rolls.push(user_input) (this.rolls = [5])
+  * this.is_previous_spare_or_strike (true)
+  * game.frames[i-1].push(this.rolls[0]) (game.frames = [10, 7, 3], [7, 3, 5])
+  * game.udpate_scores (game.frames[1] is now complete so gets added to frame totals and running total )
+  * game.frame_running_totals [20, 35]
+  * game.running_total = 35
+  * this.is_previous_previous_strike (false)
+  * --ROLL 2--
+  * user_input = 0
+  * this.rolls.push(user_input) (this.rolls = [5, 0])
+  * this.is_previous_strike (false)
+  * this.set_to_complete (because rolls.sum != 10)
+  * game.frames.push(this) (game.frames = [10, 7, 3], [7, 3, 5 ], [5, 0])
+  * game.update_scores (latest frame added to totals as it is complete)
+  * game.frame_running_totals [20, 35, 40]
+  * game.running_total = 40

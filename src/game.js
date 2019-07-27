@@ -1,10 +1,9 @@
 function Game() {
-  this._score = 0
+  this._totalScore = 0
   this._frame = 1
   this._gameOver = false
 };
 
-// Game.prototype.updateScore = function(bowl) {
-//   var score = bowl.score();
-//   this._score += score;
-// }
+Game.prototype.updateScore = function(score) {
+  this._totalScore += score;
+}

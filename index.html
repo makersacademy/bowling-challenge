@@ -1,84 +1,44 @@
 <!DOCTYPE html>
-
 <html>
-  <center><head>
-    <link rel="stylesheet" href="public/stylesheet.css">
-    <title>Thermostat</title>
-  </head>
-  <script src="src/bowling.js"></script>
-  <script src="src/balls.js"></script>
-  <script src="src/frame.js"></script>
-  <script>
-    var bowling = new Bowling()
-    bowling.enterBallScore(10)
-    bowling.enterBallScore(10)
-    bowling.enterBallScore(10)
-    bowling.enterBallScore(10)
-    bowling.enterBallScore(10)
-    bowling.enterBallScore(10)
-    bowling.enterBallScore(10)
-    bowling.enterBallScore(10)
-    bowling.enterBallScore(10)
-    bowling.enterBallScore(10)
-    bowling.enterBallScore(10)
-    bowling.enterBallScore(10)
-    console.log(bowling._scoreboard)
-    console.log('Total Score: ' + bowling.totalScore())
-  </script>
-  <!-- <center><body>
-    <section>
-      <h1 id="temperature"></h1>
-      <p>
-        <button id="temp-up">+</button>
-        <button id="temp-down">-</button>
-        <button id="temp-reset">reset</button>
-        power saving mode is <span id="power-saving-status">on</span>
-        <button id="psm-on">PSM on</button>
-        <button id="psm-off">PSM off</button>
-      </p>
-    </section>
-    <script src="src/thermostat.js"></script>
-    <script src="node_modules/jquery/dist/jquery.js"></script>
-    <script>
-      $( document ).ready(function() {
-        var thermostat = new Thermostat();
-        updateTemperature();
+<title>Tim's Bowling Scorecard</title>
+<meta name="viewport" content="width=500px, initial-scale=2">
 
-        $('#temp-up').click(function() {
-          thermostat.raiseTemp(1);
-          updateTemperature();
-        });
+<body>
 
-        $('#temp-down').click(function() {
-          thermostat.lowerTemp(1);
-          updateTemperature();
-        });
+<div class="w3-container">
+  <h2></h2>
+  <table class="w3-table-all w3-card-4">
+    <tr>
+      <th>Frame</th>
+      <th>Roll 1</th>
+      <th>Roll 2</th>
+      <th>Total Score</th>
+    </tr>
+    <tr>
+      <th>1</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>2</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>1</th>
+    </tr>
+    <tr>
+      <th>1</th>
+    </tr>
+    <tr>
+      <th>1</th>
+    </tr>
 
-        $('#temp-reset').click(function() {
-          thermostat.resetTemperature();
-          updateTemperature();
-        });
 
-        $('#psm-on').click(function() {
-          thermostat.switchPowerSavingModeOn();
-          $('#power-saving').text('on')
-          updateTemperature();
-        })
+  </table>
+</div>
 
-        $('#psm-off').click(function() {
-          thermostat.switchPowerSavingModeOff();
-          $('#power-saving').text('off')
-          updateTemperature();
-        })
-
-        function updateTemperature() {
-          $('#temperature').text('Current Temp: ' + thermostat.getTemp());
-          $('#temperature').attr('class', thermostat.energyUsage());
-        }
-
-      });
-
-    </script>
-
-  </body> -->
+</body>
 </html>

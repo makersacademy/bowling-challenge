@@ -1,58 +1,145 @@
 'use strict';
 
+var Ball1 = function(score, game) {
+  this._score = score;
+};
+
 var Bowling = function() {
   this._scoreboard = [];
-  this._firstball = true
+  this._frame = [null, 0, null];
+  this._isFirstBall = true;
+  this._gameOver = false
 };
 
-Bowling.prototype.totalScore = function() {
-  return this._scoreboard.map(function(x) {
-    return x.thisFrame().score
-  }).reduce(function(total, num) {
-    return total + num
-  });
-};
-
-Bowling.prototype.newBall = function(score) {
-  if (this.isFirstBall()) {
-    return new Ball1(score, this)
-  } else {
-    return new Ball2(score, this)
-  };
+Bowling.prototype.calculateTotalScore = function() {
+  var sum = 0
+  this._scoreboard.forEach(function(value) {
+    sum += value[2]
+  })
+  return sum
 };
 
 Bowling.prototype.enterBallScore = function(score) {
-  this.newBall(score).pushBallToFrame()
+  if (this.isFinalRound()) {
+    this.calculateFinalScore(score);
+  } else {
+    if (this._isFirstBall) {
+      this.calculateScore(score);
+      this.pushScoreToFrame(score);
+    } else {
+      this.calculateScore(score);
+      this.pushScoreToFrame(score);
+    }
+  }
+  this.isGameOver()
 };
 
-Bowling.prototype.FirstBall = function(boolean) {
-  this._firstball = boolean
+//////////////////////////////////////////////////////////////
+
+Bowling.prototype.calculateScore = function(score) {
+  if (this._isFirstBall) {
+    this.addFirstBallScore(score)
+  } else {
+    this.addSecondBallScore(score)
+  };
 };
 
-Bowling.prototype.pushFrameToScoreboard = function(frame) {
-  this._scoreboard.push(frame)
+Bowling.prototype.calculateFinalScore = function(score) {
+  if (this._scoreboard[9][1] === null) {
+    this._scoreboard[9][1] = score
+    this._scoreboard[9][2] += score
+    if (this._scoreboard[8][0] === 10) {
+      this._scoreboard[8][2] += score
+    }
+  } else {
+    this._scoreboard[9][3] = score
+    this._scoreboard[9][2] += score
+  }
 };
 
-Bowling.prototype.isFirstBall = function() {
-  return this._firstball
+Bowling.prototype.pushScoreToFrame = function(score) {
+  if (this._isFirstBall) {
+    this.pushFirstScoreToFrame(score)
+  } else {
+    this.pushSecondScoreToFrame(score)
+  };
 };
 
-Bowling.prototype.thisFrame = function() {
-  return this._scoreboard[this.gameLength() - 1];
+Bowling.prototype.pushFirstScoreToFrame = function(score) {
+  if (score === 10) {
+    this._frame[0] = score;
+    this.pushFrameToScoreboard();
+  } else {
+    this._frame[0] = score;
+    this._isFirstBall = false
+  }
+};
+
+Bowling.prototype.pushSecondScoreToFrame = function(score) {
+  this._frame[1] = score;
+  this.pushFrameToScoreboard();
+  this._isFirstBall = true;
+};
+
+Bowling.prototype.pushFrameToScoreboard = function() {
+  this._scoreboard.push(this._frame);
+  this._frame = [null, null, null];
+};
+
+Bowling.prototype.addFirstBallScore = function(score) {
+  if (this.isPreviousSpare() || this.isPreviousStrike()) {
+    this._frame[2] = score;
+    this.thisFrame()[2] += score;
+  } else this._frame[2] = score;
+  if (this.isPreviousPreviousStrike() && this.isPreviousStrike()) {
+    this.previousPreviousFrame()[2] += score;
+  };
+};
+
+Bowling.prototype.addSecondBallScore = function(score) {
+  if (this.isPreviousStrike()) {
+    this._frame[2] += score;
+    this.thisFrame()[2] += score;
+  } else this._frame[2] += score;
+}
+Bowling.prototype.isPreviousSpare = function() {
+  if (this._scoreboard.length >= 1) {
+    return this.previousFrame()[2] === 10 && this.previousFrame()[0] !== 10;
+  } else return false;
+};
+
+Bowling.prototype.isPreviousStrike = function() {
+  if (this._scoreboard.length >= 1) {
+    return this.previousFrame()[0] === 10;
+  } else return false;
+};
+
+Bowling.prototype.isPreviousPreviousStrike = function() {
+  if (this._scoreboard.length >= 2) {
+    return this.previousPreviousFrame()[0] === 10;
+  } else return false;
 };
 
 Bowling.prototype.previousFrame = function() {
-  return this._scoreboard[this.gameLength() - 2];
+  return this._scoreboard[(this._scoreboard.length - 1)];
 };
 
 Bowling.prototype.previousPreviousFrame = function() {
-  return this._scoreboard[this.gameLength() - 3];
+  return this._scoreboard[(this._scoreboard.length - 2)];
 };
 
-Bowling.prototype.gameLength = function() {
-  return this._scoreboard.length;
+Bowling.prototype.thisFrame = function() {
+  return this._scoreboard[(this._scoreboard.length - 1)];
 };
 
-Bowling.prototype.finalFrame = function() {
-  return this.gameLength() === 10
-}
+Bowling.prototype.isFinalRound = function() {
+  return this._scoreboard.length === 10;
+};
+
+Bowling.prototype.isGameOver = function() {
+  if (this.isFinalRound()) {
+    if (((this._scoreboard[9][0] + this._scoreboard[9][1]) < 10) || this._scoreboard[9].length === 4) {
+      this._gameOver = true
+    };
+  };
+};

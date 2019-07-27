@@ -27,7 +27,7 @@ Game:
 Frame:
   * Attributes:
     * this.rolls = [] - consists of 3 rolls if is_spare or is_strike, otherwise consists of 2
-    * this.frame_score
+    * this.frame_score = 0
     * this.is_strike = false
     * this.is_spare = false
     * this.is_complete = false
@@ -38,9 +38,27 @@ Frame:
     * is_previous_spare_or_strike (also checks if previous frame is_complete, for first roll only)
     * is_previous_previous_strike (also checks if previous previous frame is complete, for first roll only)
     * is_previous_strike (for second roll of frame only, also checks is previous frame complete)
-    * add_to_frames (add Frame object to game.frames)
+    * add_to_frames (push Frame object to game.frames)
+
+  * Roll 1 procedure:
+    * add roll to .rolls
+    * call .strike if roll == 10
+    * is_previous_spare_or_strike (if so, add roll value to previous frame.rolls)
+    * is_previous_previous_strike (if so, add roll to previous, previous frame.rolls)
+    * add_to_frames if .strike
+    * game.update_scores
+    * next frame if .strike
+
+  * Roll 2 procedure:
+    * add roll to .rolls
+    * call .spare if rolls.sum == 10
+    * is_previous_strike (if so, add roll value to previous frame.rolls)
+    * add_to_frames
+    * game.update_scores
+    * next frame
+
   * Differences for Frame 10
-    * Do not end the frame when you get a strike or spare. Only end the frame if first two rolls don't add up to ten, or after 3 rolls.
+    * Do not end the frame when you get a strike or spare. Only end the frame if first two rolls don't add up to ten, or after 3 rolls. Just input all scores ( 2, or 3 if spare or strike) and add them to the total.
 ```
 ### Process example for 3 frames in pseudo-JavaScript code):
   * game = new Game object

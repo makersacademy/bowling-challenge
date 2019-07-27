@@ -22,8 +22,8 @@ describe('Play Game', function(){
   });
 
   it('Score is increased by 5 when 5 is scored', function () {
-    var score = 5;
-    game.updateScore(score);
+    var frameScore = 5;
+    game.updateScore(frameScore);
     expect(game._totalScore).toEqual(5);
   })
 

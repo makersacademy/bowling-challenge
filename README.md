@@ -1,5 +1,8 @@
 # Bowling Challenge
 
+## Notes to myself
+1. Look into stubbing out (or creating a spy maybe) the ```._game``` private state where tested?
+
 This is my attempt at the [Makers Academy Week 5 Bowling Challenge](https://github.com/makersacademy/bowling-challenge)
 
 ## Approach
@@ -32,6 +35,7 @@ Frame:
     * this.is_spare = false
     * this.is_complete = false
   * Methods:
+    * .roll (follows roll_one_procedure or roll_two_procedure procedure accordingly)
     * set_to_complete (if 2 rolls if normal frame, 3 if strike or spare)
     * .strike (sets this.is_strike to true and ends the frame unless 10th Frame)
     * .spare (sets this.is_spare to true)
@@ -42,12 +46,12 @@ Frame:
 
   * Roll 1 procedure:
     * add roll to .rolls
-    * call .strike if roll == 10
     * is_previous_spare_or_strike (if so, add roll value to previous frame.rolls)
     * is_previous_previous_strike (if so, add roll to previous, previous frame.rolls)
-    * add_to_frames if .strike
     * game.update_scores
-    * next frame if .strike
+    * call .strike if roll == 10
+    * add_to_frames if .strike
+    * next frame if .strike (i.e. clear .rolls)
 
   * Roll 2 procedure:
     * add roll to .rolls
@@ -55,7 +59,7 @@ Frame:
     * is_previous_strike (if so, add roll value to previous frame.rolls)
     * add_to_frames
     * game.update_scores
-    * next frame
+    * next frame (i.e. clear .rolls)
 
   * Differences for Frame 10
     * Do not end the frame when you get a strike or spare. Only end the frame if first two rolls don't add up to ten, or after 3 rolls. Just input all scores ( 2, or 3 if spare or strike) and add them to the total.

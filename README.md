@@ -27,7 +27,7 @@ Game:
 Frame:
   * Attributes:
     * this.rolls = [] - consists of 3 rolls if is_spare or is_strike, otherwise consists of 2
-    * this.frame_score = 0
+    * this.score = 0
     * this.is_strike = false
     * this.is_spare = false
     * this.is_complete = false
@@ -73,7 +73,7 @@ Frame:
   * this.is_previous_previous_strike (false)
   * game.frames.push(this)  (game.frames = [[10]])
   * game.update_scores (roll is added to scorecard, frame is not complete so frame_running_total and running_total not updated)
-  * this.frame_score == 10, therefore move onto next frame...
+  * this.score == 10, therefore move onto next frame...
 
 
   * -- FRAME 2 ---
@@ -85,7 +85,7 @@ Frame:
   * game.frames[i-1].push([this.rolls[0]]) (game.frames = [[10, 7]]
   * this.is_previous_previous_strike (false)
   * game.update_scores (roll added to scorecard, neither this frame, nor frame 1 is complete, so frame_running_total and running_total not updated)
-  * this.frame_score != 10, therefore, need a second roll...
+  * this.score != 10, therefore, need a second roll...
   * --ROLL 2--
   * user_input = 3
   * this.rolls.push(user_input) = (this.rolls = [7, 3])

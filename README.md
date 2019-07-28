@@ -26,7 +26,7 @@ open index.html
 //OR HOST IT LOCALLY//
 rackup
 open http://localhost:9292/
-'''
+```
 
 ## Bowling — how does it work?
 

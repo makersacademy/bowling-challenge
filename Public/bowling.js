@@ -1,4 +1,4 @@
-"use strict"
+'use strict'
 
 var Bowling = function() {
   this._scoreboard = [];

@@ -13,7 +13,20 @@ To make a bowling scoreboard in javascript.
 ```calculateTotalScore() ```
 ```newGame()```
 ```isGameOver()```
-- Having completed the task, I decided to have a go at a UI, for which I used HTML, CSS & Jquery.
+- Tests are using Jasmine
+- Having completed the task, I decided to have a go at a UI, for which I used HTML, CSS & Jquery.  Seems to all be working fine.
+
+### Installation
+
+- In your terminal
+```git clone git@github.com:Timdavidcole/bowling-challenge.git
+cd bowling-challenge
+//TO LAUNCH//
+open index.html
+//OR HOST IT LOCALLY//
+rackup
+open http://localhost:9292/
+'''
 
 ## Bowling — how does it work?
 

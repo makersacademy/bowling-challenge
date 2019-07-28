@@ -9,7 +9,7 @@ describe ('Frame', function(){
     it('can input the scores for the first nine frames', function(){
       frame.rollOneToNine(10, 0);
       frame.rollOneToNine(7, 5);
-      expect(frame.allFrames()).toEqual([[10, 0], [7, 5]])
+      expect(frame.allFrames()).toEqual([[10], [7, 5]])
       });
 
     it('inputs the scores after the last frame. can accept two or three arguments', function(){

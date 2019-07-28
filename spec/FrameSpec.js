@@ -1,76 +1,95 @@
 describe('Frame', function() {
   beforeEach(function(){
     frame = new Frame();
+    testScore = 1
+    testRollNumber = 1
+    roll = new Roll(testScore,testRollNumber)
   });
 
-  it('Roll starts at 1', function() {
-    expect(frame._roll).toEqual(1);
+  it('Each frame starts with 10 pins remaining', function() {
+    expect(frame.pinsRemaining()).toEqual(10);
   });
 
-  it('Returns score for frame', function() {
-    expect(frame.score()).toEqual(0)
+  it('Reduces pins remaining after scoring roll', function() {
+    frame.add(roll);
+    expect(frame.pinsRemaining()).toEqual(9);
   });
 
-  it('Score starts at 0', function() {
-    expect(frame._score).toEqual(0);
+  it("Doesn't reduce pins remaining after gutter ball", function() {
+    frame = new Frame ();
+    gutterBall = new Roll(0,1);
+    frame.add(gutterBall);
+    expect(frame.pinsRemaining()).toEqual(10);
   });
 
-  it('Bonus is set to 0 by default', function() {
-    expect(frame._bonus).toEqual(0);
+  it('End frame if player scores strike (excl 10th frame)', function() {
+    frame = new Frame();
+    testScore = 10
+    testRollNumber = 1
+    roll = new Roll(testScore,testRollNumber)
+    frame.add(roll);
+    expect(frame._frameOver).toEqual(true);
   });
 
-  it('Increases score by 5 when 5 points are scored in roll', function() {
-    frame.addPoints(5);
-    expect(frame._score).toEqual(5);
-  });
+  describe('Record Rolls', function() {
+    beforeEach(function(){
+      frame = new Frame();
+      testScore2 = 1
+      testRollNumber2 = 2
+      roll2 = new Roll(testScore2,testRollNumber2)
+      frame.add(roll)
+      frame.add(roll2)
+    });
 
-  it('Moves to next roll after points for first are added', function() {
-    frame.addPoints(5);
-    expect(frame._roll).toEqual(2);
-  });
+    it('Can record rolls', function() {
+      expect(function() {frame.add(roll)}).not.toThrow();
+    });
 
-  it('Ends frame if player scores strike (excl 10th frame)', function() {
-    frame.addPoints(10);
-    expect(frame.status()).toEqual(true);
-  });
+    it('Lists rolls consecutively', function() {
+      secondRollinFrame = roll2
+      expect(frame._rolls[1]).toEqual(secondRollinFrame);
+    });
 
-  it('Ends frame after second roll', function() {
-    frame.addPoints(5);
-    frame.addPoints(5);
-    expect(frame.status()).toEqual(true);
+    it('Returns pins score for frame', function() {
+      expect(frame.pinScore()).toEqual(2);
+    });
+
+    it('Ends frame after second roll (excl 10th frame)', function() {
+      expect(frame._frameOver).toEqual(true);
+    });
   });
 });
 
-describe('10th Frame', function() {
-  beforeEach(function() {
-    frame = new Frame(10,);
-  });
-
-  it("Doesn't end frame after second roll on 10th frame", function() {
-    frame._frameNumber = 10;
-    frame.addPoints(5);
-    frame.addPoints(5);
-    expect(frame.status()).toEqual(false);
-  });
-
-  it("Doesn't end frame after strike on 10th frame", function() {
-    frame._frameNumber = 10;
-    frame.addPoints(10);
-    expect(frame.status()).toEqual(false);
-  });
-})
-
-describe('Bonus Score', function() {
-  beforeEach(function(){
-    frame1 = new Frame();
-  });
-
-  it('Calculates a bonus score of 10 for a strike after a spare', function() {
-    frame1.addPoints(5);
-    frame1.addPoints(5);
-    frame2 = new Frame(frame1);
-    frame2.addPoints(10);
-    frame2.calculateBonus(frame1);
-    expect(frame1._bonus).toEqual(10);
-  });
-});
+//
+// describe('10th Frame', function() {
+//   beforeEach(function() {
+//     frame = new Frame(10,);
+//   });
+//
+//   it("Doesn't end frame after second roll on 10th frame", function() {
+//     frame._frameNumber = 10;
+//     frame.addPoints(5);
+//     frame.addPoints(5);
+//     expect(frame.status()).toEqual(false);
+//   });
+//
+//   it("Doesn't end frame after strike on 10th frame", function() {
+//     frame._frameNumber = 10;
+//     frame.addPoints(10);
+//     expect(frame.status()).toEqual(false);
+//   });
+// })
+//
+// describe('Bonus Score', function() {
+//   beforeEach(function(){
+//     frame1 = new Frame();
+//   });
+//
+//   it('Calculates a bonus score of 10 for a strike after a spare', function() {
+//     frame1.addPoints(5);
+//     frame1.addPoints(5);
+//     frame2 = new Frame(frame1);
+//     frame2.addPoints(10);
+//     frame2.calculateBonus(frame1);
+//     expect(frame1._bonus).toEqual(10);
+//   });

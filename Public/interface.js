@@ -98,9 +98,9 @@ $(document).ready(function() {
 
   function updateThirdScore(i) {
     if (bowling._scoreboard[i].length === 4) {
-        $('#frame' + (i + 1).toString() + '_ball3').text(bowling._scoreboard[i][3]);
-        $('#frame_table').find('tr').eq(i + 1).find('td').eq(3).attr('class', 'td_score')
-        $('#frame' + (i + 1).toString() + '_total').text(bowling._scoreboard[i][2]);
+      $('#frame' + (i + 1).toString() + '_ball3').text(bowling._scoreboard[i][3]);
+      $('#frame_table').find('tr').eq(i + 1).find('td').eq(3).attr('class', 'td_score')
+      $('#frame' + (i + 1).toString() + '_total').text(bowling._scoreboard[i][2]);
     };
   }
 
@@ -155,6 +155,7 @@ $(document).ready(function() {
       for (var i = (0); i < 11; i++) {
         $('#new_ball_button_' + i.toString()).fadeOut(50)
       }
+      $('#final_score').text('FINAL')
     };
   };
 });

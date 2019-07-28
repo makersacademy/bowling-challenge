@@ -1,21 +1,46 @@
 $(document).ready(function() {
+
+  //generating players
+
+  var player_names = []
+
+  $(document).on('click','.add_player', function() {
+    var extra = $('.player_name').get(0).outerHTML
+    $('.names').append(extra)
+  })
+
+  $(document).on('click','.submit_names', function() {
+    player_names = $('input[name^=names]').map(function(idx, elem) {
+      return $(elem).val();
+    }).get();
+
+    console.log(player_names)
+  })
+
+  console.log(player_names)
+
+
+  //Bowling game
+
   var scorecard = new Scorecard();
 
-  var new_frame = $('.new_frame').html()
+  var new_frame = $('.new_frame').get(0).outerHTML
 
   populate_frame()
+  roll_rules()
 
   function populate_frame() {
     var score = scorecard.score;
     var frame = scorecard.frame;
-    $('.total_score').html(`Score: ${score}`);
-    $('.frame_number').html(`Frame: ${frame}`);
+    $('.total_score').html(score);
+    $('.frame_number').html(`Frame ${frame}`);
     $('.frame_number').attr('class','finished_frame')
   }
 
   function generate_frame() {
     $('.master_container').append(new_frame)
     populate_frame()
+    roll_rules()
   }
 
   function generate_bonus_frame() {
@@ -38,38 +63,58 @@ $(document).ready(function() {
     }
   }
 
-  $(document).on('click', '.submit_score', function(){
+  function roll_rules() {
+    $( ".roll" ).change(function() {
+      var string_first = $("#first_roll").val()
+      var string_second = $("#second_roll").val()
 
-      $("#first_roll").prop('disabled', true);
-      $("#second_roll").prop('disabled', true);
-      
-      string_first = $("#first_roll").val()
-      string_second = $("#second_roll").val()
+      var first = numerify(string_first)
+      var second = numerify(string_second)
 
-      first = numerify(string_first)
-      second = numerify(string_second)
-
-      if(first>10 || second>10) {
+      if(first>10){
         alert("You can't knock down more than 10 pins in one roll!")
+        $("#first_roll").val('')
+        return
+      } else if(second>10) {
+        alert("You can't knock down more than 10 pins in one roll!")
+        $("#second_roll").val('')
         return
       }else if(scorecard.frame<10 && first + second > 10) {
         alert("Your combined score can't be more than 10!")
+        $("#first_roll").val('')
+        $("#second_roll").val('')
         return
       };
 
-      scorecard.submit(first,second)
-      $("#first_roll").attr('id','finished_roll')
-      $("#second_roll").attr('id','finished_roll')
-      $('.submit_score').attr('hidden',true)
-      $('.submit_message').attr('hidden',false)
+    });
+  }
 
-      if (scorecard.gameStatus === 'ended') {
-        end_game()
-      } else if (scorecard.gameStatus === 'bonus') {
-        generate_bonus_frame()
-      } else {
-        generate_frame()
-      }
+  $(document).on('click', '.submit_score', function(){
+
+    var string_first = $("#first_roll").val()
+    var string_second = $("#second_roll").val()
+
+    var first = numerify(string_first)
+    var second = numerify(string_second)
+
+    $("#first_roll").prop('disabled', true);
+    $("#second_roll").prop('disabled', true);
+
+    scorecard.submit(first,second)
+    $("#first_roll").removeAttr('id')
+    $("#first_roll").attr('class','finished_roll')
+    $("#second_roll").removeAttr('id')
+    $("#second_roll").attr('class','finished_roll')
+    $('.submit_score').attr('hidden',true)
+    $('.submit_message').attr('hidden',false)
+
+    if (scorecard.gameStatus === 'ended') {
+      end_game()
+    } else if (scorecard.gameStatus === 'bonus') {
+      generate_bonus_frame()
+    } else {
+      generate_frame()
+    }
 
   })
 
@@ -81,7 +126,7 @@ $(document).ready(function() {
       return
     }
     scorecard.score += first
-    $('.total_score').html(`Score: ${scorecard.score}`);
+    $('.total_score').html(`${scorecard.score}`);
     scorecard.gameStatus = 'ended'
     end_game()
   })

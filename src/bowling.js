@@ -1,4 +1,5 @@
 function Scorecard() {
+  
   this.score = 0;
   this.frame = 1;
 

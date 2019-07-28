@@ -1,57 +1,76 @@
-<div class="master_container">
-  <div class="total_score">
-    Score
+<head>
+  <link rel="stylesheet" type="text/css" href="public/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="public/css/play.css">
+</head>
+
+<body>
+
+  <div class="container player_entry">
+    <div>Who's playing?</div>
+    <div class="names">
+    <input class="player_name" name="names[]" type="text" placeholder="Enter a name">
+    <input class="player_name" name="names[]" type="text" placeholder="Enter a name">
+    </div>
+    <button class="add_player">Add player</button>
+    <button class="submit_names">Let's bowl!</button>
   </div>
-  <div class="new_frame">
-    <div class="frame_info">
-      <div class="frame_number">
-        Frame number
+
+
+  <div class="container">
+    <div class="d-flex flex-row flex-wrap master_container">
+      <div class="p-2 score_info">
+        <h4>Score</h4>
+        <h3 class="total_score"></h3>
       </div>
-      <div class="frame_scores">
-        <div class="first_roll_column">
-          <input id="first_roll" type="number" min="0" max="10">
+      <div class="p-2 new_frame">
+        <div class="frame_info">
+          <div class="frame_number">
+            Frame number
+          </div>
+          <div class="d-flex flex-row frame_scores">
+            <div class="first_roll_column">
+              <input class="roll" id="first_roll" type="number" min="0" max="10">
+            </div>
+            <div class="second_roll_column">
+              <input class="roll" id="second_roll" type="number" min="0" max="10">
+            </div>
+          </div>
         </div>
-        <div class="second_roll_column">
-          <input id="second_roll" type="number" min="0" max="10">
+        <div class="pt-2 frame_button">
+          <button class="submit_score">Submit</button>
+          <div hidden="true" class="submit_message">done</div>
         </div>
       </div>
     </div>
-
-    <div class="frame_button">
-      <button class="submit_score">Submit</button>
-      <div hidden="true" class="submit_message">done</div>
-    </div>
-
   </div>
-</div>
 
-
-<div hidden="true" class="bonus_frame">
-  <div class="frame_info">
-    <div class="frame_number_bonus">
-      BONUS
-    </div>
-    <div class="frame_scores">
-      <div class="first_roll_column">
-        <input id="first_roll" type="number" min="0" max="10">
+  <div hidden="true" class="bonus_frame">
+    <div class="p-2">
+      <div class="frame_info">
+        <div class="frame_number_bonus">
+          BONUS
+        </div>
+        <div class="d-flex flex-row frame_scores">
+          <div class="first_roll_column">
+            <input class="roll" id="first_roll" type="number" min="0" max="10">
+          </div>
+          <div hidden="true" class="second_roll_column">
+            <input class="roll" id="second_roll" type="number" min="0" max="10">
+          </div>
+        </div>
       </div>
-      <div hidden="true" class="second_roll_column">
-        <input id="second_roll" type="number" min="0" max="10">
+      <div class="pt-2 frame_button">
+        <button class="submit_bonus">Submit</button>
       </div>
     </div>
   </div>
-  <div class="frame_button">
-    <button class="submit_bonus">Submit</button>
-    <div hidden="true" class="submit_message">done</div>
+
+  <div hidden="true" class="container the_end">
   </div>
-</div>
 
-<div hidden="true" class="the_end">
-</div>
+  <script src="src/jquery-3.4.1.min.js"></script>
+  <script src="src/bootstrap.bundle.js"></script>
+  <script src="src/bowling.js"></script>
+  <script src="src/play.js"></script>
 
-
-
-
-<script src="src/jquery-3.4.1.min.js"></script>
-<script src="src/bowling.js"></script>
-<script src="src/play.js"></script>
+</body>

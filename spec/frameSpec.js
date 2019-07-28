@@ -9,14 +9,6 @@ describe ('Frame', function(){
     game = new Game;
   });
 
-  // it('check set up at start', function() {
-  //   expect(frame.rolls).toEqual([]);
-  //   expect(frame.score).toEqual(0);
-  //   expect(frame.is_strike).toEqual(false);
-  //   expect(frame.is_spare).toEqual(false);
-  //   expect(frame.is_complete).toEqual(false);
-  // })
-
   describe('.roll', function() {
     it('adds the roll score to the .rolls attribute', function() {
       frame.roll(1)
@@ -33,14 +25,14 @@ describe ('Frame', function(){
       frame.roll(1)
       expect(frame.rolls).toEqual([1])
     })
-    it('sets is_strike to true if a strike', function(){
+    it('sets isStrike to true if a strike', function(){
       frame.roll(10)
-      expect(frame.is_strike).toEqual(true)
+      expect(frame.isStrike).toEqual(true)
     })
-    it('sets is_spare to true if a spare', function() {
+    it('sets isSpare to true if a spare', function() {
       frame.roll(3)
       frame.roll(7)
-      expect(frame.is_spare).toEqual(true)
+      expect(frame.isSpare).toEqual(true)
     })
   })
 })

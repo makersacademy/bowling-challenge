@@ -10,17 +10,17 @@ describe ('game', function(){
 
   });
 
-  xit ('game set up correct', function(){
-    expect(game.frames).toEqual([]);
+  it ('game set up correct', function(){
+    expect(game._frames).toEqual([]);
     expect(game.scorecard).toEqual([]);
-    expect(game.frame_running_totals).toEqual([]);
-    expect(game.running_total).toEqual(0);
+    expect(game.frameRunningTotals).toEqual([]);
+    expect(game.runningTotal).toEqual(0);
 
   });
 
-  describe ('.receive_frame', function(){
+  describe ('.receiveFrame', function(){
     it ('receives a frame object and adds to .frames', function() {
-      game.receive_frame(frame)
+      game.receiveFrame(frame)
       expect(game._frames).toEqual([frame])
     })
   })

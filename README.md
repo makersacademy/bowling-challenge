@@ -51,3 +51,4 @@ open SpecRunner.html
 
 - This was a lot of fun to make.  I would like to maybe implement a database system, maybe to store results for multiple rounds with multiple players.  If I get time I'll definitely have a go.
 - I probably should have refactored out another main object Frame, as my Bowling object is doing an awful lot at the moment.  But I think my code is fairly clear, so I decided to go with simplicity rather than the Single Responsibility Principle.
+- I spent HOURS trying to get that bloody 10 button's text aligned properly, but it defeated me.  I would love to know how to fix it!

@@ -9,7 +9,10 @@ To make a bowling scoreboard in javascript.
 ## My Approach
 
 - I started off making sure the model of the game worked. I initially started simple with one game object, then went far too deep down the OOP rabbit hole, so retraced back to an old commit and finalised from there.
-- bowling.js has 4 main functions * enterBallScore(score) * calculateTotalScore(score) * newGame(score) * isGameOver(score)
+- bowling.js has 4 main functions ``` enterBallScore(score) 
+calculateTotalScore(score) 
+newGame(score) 
+isGameOver(score) ```
 
 ## Bowling — how does it work?
 

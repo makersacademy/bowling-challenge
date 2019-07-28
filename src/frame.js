@@ -6,25 +6,20 @@ function Frame() {
   this.is_strike = false
   this.is_spare = false
   this.is_complete = false
-  this._game = typeof game !== 'undefined' ? game : new Game();
-
 };
 
 Frame.prototype.roll = function (user_input) {
+  this._game = typeof game !== 'undefined' ? game : new Game();
 
   if (this.rolls.length === 0) {
-    this.roll_one_procedure(user_input);
-  } else { this.roll_two_procedure(user_input);
+    this.roll_one_procedure(user_input, this._game);
+  } else { this.roll_two_procedure(user_input, this._game);
 
-  }
+  };
 
 };
 
-Frame.prototype.add_to_frames = function () {
-  this._game.frames.push(this);
-};
-
-Frame.prototype.roll_one_procedure = function (user_input) {
+Frame.prototype.roll_one_procedure = function (user_input, game) {
   this.rolls.push(user_input)
 
   // this.is_previous_spare_or_strike()
@@ -32,23 +27,28 @@ Frame.prototype.roll_one_procedure = function (user_input) {
     // Game.update_scores()
   if (user_input === 10) {
       this.strike();
-      this.add_to_frames();
+      this.add_to_frames(game);
       this.frame_end();
   }
 
 };
 
-Frame.prototype.roll_two_procedure = function (user_input) {
+Frame.prototype.roll_two_procedure = function (user_input, game) {
   this.rolls.push(user_input)
   // this.is_previous_strike()
   if (this.sum_of_frame() === 10) {
     this.spare();
   }
 
-  this.add_to_frames()
+  this.add_to_frames(game)
   // Game.update_scores()
   this.frame_end()
 };
+
+Frame.prototype.add_to_frames = function (game) {
+  game.receive_frame(this);
+};
+
 
 Frame.prototype.strike = function () {
   this.is_strike = true

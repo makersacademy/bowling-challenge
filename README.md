@@ -19,7 +19,8 @@ To make a bowling scoreboard in javascript.
 ### Installation
 
 - In your terminal
-```git clone git@github.com:Timdavidcole/bowling-challenge.git
+```
+git clone git@github.com:Timdavidcole/bowling-challenge.git
 cd bowling-challenge
 //TO LAUNCH//
 open index.html

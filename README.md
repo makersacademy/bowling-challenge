@@ -30,6 +30,7 @@ cd bowling-challenge
 //TO LAUNCH//
 open index.html
 //OR HOST IT LOCALLY//
+bundle install
 rackup
 open http://localhost:9292/
 ```

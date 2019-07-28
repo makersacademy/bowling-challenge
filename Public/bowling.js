@@ -18,13 +18,8 @@ Bowling.prototype.enterBallScore = function(score) {
   if (this.isFinalRound()) {
     this.calculateFinalScore(score);
   } else {
-    if (this._isFirstBall) {
-      this.calculateScore(score);
-      this.pushScoreToFrame(score);
-    } else {
-      this.calculateScore(score);
-      this.pushScoreToFrame(score);
-    }
+    this.calculateScore(score);
+    this.pushScoreToFrame(score);
   }
 };
 
@@ -109,9 +104,9 @@ Bowling.prototype.addFirstBallScore = function(score) {
 };
 
 Bowling.prototype.addSecondBallScore = function(score) {
-  if (this.isPreviousStrike()) {
+  if (this.isPreviousPreviousStrike()) {
     this._frame[2] += score;
-    this.thisFrame()[2] += score;
+    this.previousPreviousFrame()[2] += score;
   } else this._frame[2] += score;
 };
 

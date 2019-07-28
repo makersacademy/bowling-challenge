@@ -2,6 +2,14 @@
   width:25px;
 }
 
+.score_info {
+  width:100px;
+}
+
+#current_player {
+  background-color: pink;
+}
+
 /* Hide HTML5 Up and Down arrows. */
 input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;

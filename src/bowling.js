@@ -1,5 +1,6 @@
-function Scorecard() {
-  
+function Scorecard(name) {
+  this.name = name
+
   this.score = 0;
   this.frame = 1;
 

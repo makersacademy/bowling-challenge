@@ -15,12 +15,11 @@
     <button class="submit_names">Let's bowl!</button>
   </div>
 
-
-  <div class="container">
-    <div class="d-flex flex-row flex-wrap master_container">
+  <div hidden='true' class="player_row">
+    <div class="pt-2 d-flex flex-row flex-wrap master_container">
       <div class="p-2 score_info">
-        <h4>Score</h4>
-        <h3 class="total_score"></h3>
+        <h3 class="player_name"></h3>
+        <h3 class="player_score"></h3>
       </div>
       <div class="p-2 new_frame">
         <div class="frame_info">
@@ -29,16 +28,16 @@
           </div>
           <div class="d-flex flex-row frame_scores">
             <div class="first_roll_column">
-              <input class="roll" id="first_roll" type="number" min="0" max="10">
+              <input class="roll first_roll" type="number" min="0" max="10" disabled>
             </div>
             <div class="second_roll_column">
-              <input class="roll" id="second_roll" type="number" min="0" max="10">
+              <input class="roll second_roll" type="number" min="0" max="10" disabled>
             </div>
           </div>
         </div>
         <div class="pt-2 frame_button">
-          <button class="submit_score">Submit</button>
-          <div hidden="true" class="submit_message">done</div>
+          <button class="submit_score current" disabled>Submit</button>
+          <div hidden="true" class="submit_message current">🎳🎳🎳</div>
         </div>
       </div>
     </div>
@@ -52,17 +51,20 @@
         </div>
         <div class="d-flex flex-row frame_scores">
           <div class="first_roll_column">
-            <input class="roll" id="first_roll" type="number" min="0" max="10">
-          </div>
-          <div hidden="true" class="second_roll_column">
-            <input class="roll" id="second_roll" type="number" min="0" max="10">
+            <input class="roll bonus_roll" type="number" min="0" max="10">
           </div>
         </div>
       </div>
       <div class="pt-2 frame_button">
         <button class="submit_bonus">Submit</button>
+        <div hidden="true" class="bonus_message">🎳🎳🎳</div>
       </div>
     </div>
+  </div>
+
+
+
+  <div hidden='true' class="container bowling_grid">
   </div>
 
   <div hidden="true" class="container the_end">

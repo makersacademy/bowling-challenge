@@ -6,12 +6,12 @@ Bowling Challenge
 
 ## The Task
 
-To make a bowling scoreboard in javascript.
+To make my first javascript project, an interactive bowling scoreboard!
 
 ## My Approach
 
-- I started off making sure the model of the game worked. I initially started simple with one game object, then went far too deep down the OOP rabbit hole, with a WAY too complicated spagetti junction of SRP and forwarding.  So retraced back to an old commit and finalised from there.
-- bowling.js has 4 main functions ``` enterBallScore(score) ``` 
+- I kicked off making sure the model of the game worked. I initially started simple with one game object, then went far too deep down the OOP rabbit hole, with a WAY too complicated spagetti junction of SRP and forwarding.  So retraced back to an old commit and finalised from there.
+- Main file is bowling.js, which has 4 main functions ``` enterBallScore(score) ``` 
 ```calculateTotalScore()```
 ```newGame()```
 ```isGameOver()```
@@ -19,6 +19,7 @@ To make a bowling scoreboard in javascript.
 - JSLint and Beautify used in Atom to make sure the code is up to snuff.
 - Having completed the task, I decided to have a go at a UI, for which I used HTML, CSS & Jquery.  Seems to all be working fine.
 - Hosting was done in Ruby with Sinatra.
+- Tested it in Chrome, Safari and Firefox.  Working fine!
 
 ### Installation
 

@@ -66,3 +66,11 @@ Frame.prototype.endFrame = function() {
 Frame.prototype.frameScore = function() {
   return this._frameScore;
 };
+
+Frame.prototype.strikeBonus = function (firstRoll, secondRoll) {
+  this._bonus = (firstRoll.score() + secondRoll.score());
+};
+
+Frame.prototype.spareBonus = function (firstRoll) {
+  this._bonus = firstRoll.score();
+}

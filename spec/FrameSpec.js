@@ -58,6 +58,21 @@ describe('Frame', function() {
       expect(frame._frameOver).toEqual(true);
     });
   });
+  describe('Bonus', function() {
+    beforeEach(function(){
+      frame = new Frame();
+      firstRoll = new Roll(5,1);
+      secondRoll = new Roll(5,2);
+    });
+    it('Returns strike bonus of 10 for two rolls of 5 following strike', function() {
+      frame.strikeBonus(firstRoll,secondRoll);
+      expect(frame._bonus).toEqual(10);
+    });
+    it('Returns spare bonus of 5 for one roll of 5 following spare', function() {
+      frame.spareBonus(firstRoll);
+      expect(frame._bonus).toEqual(5);
+    });
+  });
 });
 
 //

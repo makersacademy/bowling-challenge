@@ -3,9 +3,6 @@
 
 <head>
   <link rel="stylesheet" type="text/css" href="index.css">
-  <script src="bowling.js"></script>
-  <script src="jquery-3.4.1.js"></script>
-  <script src="interface.js"></script>
 </head>
 
 <body>
@@ -13,34 +10,20 @@
     <center>
       <table class="tableheader">
         <tr>
-          <th>Tim's Bowling Scorecard</th>
+          <th>TIM'S BOWLING SCOREBOARD</th>
         </tr>
       </table>
   </div>
-  <br>
-  <center>
-    <div id="new_ball_buttons">
-      <button id="new_ball_button_0" class="new_ball_button">0</button>
-      <button id="new_ball_button_1" class="new_ball_button">1</button>
-      <button id="new_ball_button_2" class="new_ball_button">2</button>
-      <button id="new_ball_button_3" class="new_ball_button">3</button>
-      <button id="new_ball_button_4" class="new_ball_button">4</button>
-      <button id="new_ball_button_5" class="new_ball_button">5</button>
-      <button id="new_ball_button_6" class="new_ball_button">6</button>
-      <button id="new_ball_button_7" class="new_ball_button">7</button>
-      <button id="new_ball_button_8" class="new_ball_button">8</button>
-      <button id="new_ball_button_9" class="new_ball_button">9</button>
-      <button id="new_ball_button_10" class="new_ball_button">10</button>
-    </div>
-  </center>
+
+
   <center>
     <table id="frame_table" class="score_table">
       <tr id="headers">
-        <th>Frame</th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th>Round Score</th>
+        <th>FRAME</th>
+        <th>Pins</th>
+        <th>knocked</th>
+        <th>over</th>
+        <th>ROUND SCORE</th>
       </tr>
       <tr>
         <td>1</td>
@@ -114,16 +97,40 @@
       </tr>
 
     </table>
-    <table class='bottom_table'><tr class='bottom_tr'><td class='bottom_td'>
-    <table class="total_score">
-      <tr>
-        <th>Total Score: <span id="total_score"></span></th>
+    <table class='bottom_table'>
+      <tr class='bottom_tr'>
+        <td class='bottom_td'>
+          <table class="total_score">
+            <tr>
+              <th><span id="final_score">TOTAL</span> SCORE: <span id="total_score"></span></th>
+            </tr>
+          </table>
+        </td>
+        <td class='bottom_td'>
+          <button id='button_new_game' class="button_new_game">Start New Game</button>
+        </td>
       </tr>
-    </table></td><td class='bottom_td'>
-    <button id='button_new_game' class="button_new_game">Start New Game</button>
-  </td></tr></table>
+    </table>
   </center>
 
+  <center>
+    <table class="button_table" id="new_ball_buttons">
+      <th colspan="11" ><span id="knocked_pins">ENTER KNOCKED PINS</span></th>
+      <tr>
+      <td><button id="new_ball_button_0" class="new_ball_button">0</button></td>
+      <td><button id="new_ball_button_1" class="new_ball_button">1</button></td>
+      <td><button id="new_ball_button_2" class="new_ball_button">2</button></td>
+      <td><button id="new_ball_button_3" class="new_ball_button">3</button></td>
+      <td><button id="new_ball_button_4" class="new_ball_button">4</button></td>
+      <td><button id="new_ball_button_5" class="new_ball_button">5</button></td>
+      <td><button id="new_ball_button_6" class="new_ball_button">6</button></td>
+      <td><button id="new_ball_button_7" class="new_ball_button">7</button></td>
+      <td><button id="new_ball_button_8" class="new_ball_button">8</button></td>
+      <td><button id="new_ball_button_9" class="new_ball_button">9</button></td>
+      <td><button id="new_ball_button_10" class="new_ball_button">10</button></td>
+      </tr>
+    </table>
+  </center>
 </body>
 
 </html>

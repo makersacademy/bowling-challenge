@@ -5,7 +5,9 @@ $(document).ready(function() {
   $('#button_new_game').click(function() {
     bowling.newGame()
     updateScores();
-    button_back()
+    button_back();
+    $('#final_score').text('TOTAL');
+    $('#knocked_pins').text('ENTER KNOCKED PINS');
   });
 
   $('#new_ball_button_0').click(function() {
@@ -155,7 +157,8 @@ $(document).ready(function() {
       for (var i = (0); i < 11; i++) {
         $('#new_ball_button_' + i.toString()).fadeOut(50)
       }
-      $('#final_score').text('FINAL')
+      $('#final_score').text('FINAL');
+      $('#knocked_pins').text('');
     };
   };
 });

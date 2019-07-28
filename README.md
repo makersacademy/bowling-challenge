@@ -18,6 +18,7 @@ To make a bowling scoreboard in javascript.
 - Tests are using Jasmine.
 - JSLint and Beautify used in Atom to make sure the code is up to snuff.
 - Having completed the task, I decided to have a go at a UI, for which I used HTML, CSS & Jquery.  Seems to all be working fine.
+- Hosting was done in Ruby with Sinatra.
 
 ### Installation
 

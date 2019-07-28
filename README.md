@@ -54,3 +54,5 @@ open SpecRunner.html
 - I probably should have refactored out another main object Frame, as my Bowling object is doing an awful lot at the moment.  But I think my code is fairly clear, so I decided to go with simplicity rather than the Single Responsibility Principle.
 - I spent HOURS trying to get that bloody 10 button's text aligned properly, but it defeated me.  I would love to know how to fix it!
 - I'm particularly pleased with animations on the Start New Game button.
+- Would like to tweak the UI to display a more traditional bowling scorecard design.
+- Maybe implement Node.js rather than Sinatra.

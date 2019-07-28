@@ -24,10 +24,19 @@ describe('Bowling Score', function(){
     expect(scorer.pins).toEqual([[2,2],[2,2]]);
   });
 
-  it("sums up the total score of the current frame", function() {
+  it("sums up the total score", function() {
     scorer.insert(5);
     scorer.insert(4);
-    expect(scorer.currentFrameScore()).toEqual(9);
+    scorer.insert(3);
+    scorer.insert(2);
+    expect(scorer.currentScore()).toEqual(14)
+  });
+
+  it("shows score of current frame", function() {
+    for (var i = 0; i < 4; i++) {
+      scorer.insert(2);
+    }
+    expect(scorer.currentFrameScore()).toEqual(4)
   });
 
   describe("When spare", function() {
@@ -35,16 +44,25 @@ describe('Bowling Score', function(){
       scorer.insert(5);
       scorer.insert(5);
       scorer.insert(5);
-      expect(scorer.currentFrameScore()).toEqual(15);
+      expect(scorer.currentScore()).toEqual(20);
     });
 
     it("scores next frame including accumulated extra roll from previous", function() {
       scorer.insert(5);
       scorer.insert(5);
       scorer.insert(5)
-      expect(scorer.currentFrameScore()).toEqual(15);
+      expect(scorer.currentScore()).toEqual(20);
+      scorer.insert(4);
+      expect(scorer.currentFrameScore()).toEqual(9);
+    });
+  });
+
+  describe("When strike", function() {
+    it("marks current frame as complete", function() {
+      scorer.insert(10);
       scorer.insert(5);
-      expect(scorer.currentFrameScore()).toEqual(10);
+      scorer.insert(4);
+      expect(scorer.pins).toEqual([[10],[5,4]]);
     });
   });
 });

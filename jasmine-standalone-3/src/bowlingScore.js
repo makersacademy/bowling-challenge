@@ -2,7 +2,9 @@
 
 function Scorer() {
   this.pins = [[]]
-  this._scoreFrame = 0
+  this.scores = []
+  this.currentFrame = 0
+  this._currentAccumulatingFrame = 0
 };
 
 Scorer.prototype.showPins = function(number) {
@@ -10,28 +12,44 @@ Scorer.prototype.showPins = function(number) {
 };
 
 Scorer.prototype.insert = function(number) {
-  if (this.pins[this._scoreFrame].length < 2) {
-    this.pins[this._scoreFrame].push(number);
+  if (this.pins[this.currentFrame].length < 2 && this.currentFrameScore() < 10) {
+    this.pins[this.currentFrame].push(number);
   }
   else {
     this.pins.push([number]);
-    this._scoreFrame += 1;
+    this.scores.push(this.currentFrameScore());
+    this.currentFrame++
   };
 };
 
-Scorer.prototype.currentFrameScore = function() {
-  return this._thisScoreFrameCalculator();
+Scorer.prototype.currentScore = function() {
+  this._accumulation();
+  return this.scores.reduce(function(sum, value) {
+    return sum + value;
+  }, 0);
+}
+
+Scorer.prototype._accumulation = function() {
+  if (this._isSpare()) {
+    this.scores.push(this._currentAccumulatingFrameScore());
+  }
+  else {
+    this.scores.push(this.currentFrameScore());
+  }
 };
 
-Scorer.prototype._thisScoreFrameCalculator = function() {
-  var sum = this.pins.reduce(function(accumulator, order){
-    return order.reduce(function(sum, order){
-      return sum + order;
-    }, 0);
+Scorer.prototype.currentFrameScore = function () {
+  return this.pins[this.currentFrame].reduce(function(sum, value) {
+    return sum + value;
   }, 0);
-  return sum;
+}
+
+Scorer.prototype._currentAccumulatingFrameScore = function() {
+  return this.pins[this._currentAccumulatingFrame].reduce(function(sum, value) {
+    return sum + value;
+  }, 0);
 };
 
 Scorer.prototype._isSpare = function() {
-  return this._thisScoreFrameCalculator() === 10;
+  return this._currentAccumulatingFrameScore() === 10;
 };

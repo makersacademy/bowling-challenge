@@ -62,3 +62,7 @@ Frame.prototype.updateStatus = function() {
 Frame.prototype.endFrame = function() {
   this._frameOver = true;
 };
+
+Frame.prototype.frameScore = function() {
+  return this._frameScore;
+};

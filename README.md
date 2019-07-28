@@ -2,7 +2,7 @@
 Bowling Challenge
 =================
 
-![Screenshot](https://path_to_your_image)
+![Screenshot](https://github.com/Timdavidcole/bowling-challenge/blob/master/images/bowling-challenge.png)
 
 ## The Task
 

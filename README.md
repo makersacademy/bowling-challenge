@@ -2,6 +2,8 @@
 Bowling Challenge
 =================
 
+![Screenshot](https://path_to_your_image)
+
 ## The Task
 
 To make a bowling scoreboard in javascript.
@@ -32,6 +34,14 @@ open http://localhost:9292/
 ```
 https://bowlingscorecardtim.herokuapp.com/
 ```
+- If you're feeling extra curious you can load my Jasmine tests.
+```
+open SpecRunner.html
+```
+
+## How to use the site
+
+- It's extremely simple 
 
 ## Bowling — how does it work?
 

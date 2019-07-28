@@ -57,6 +57,7 @@ Bowling.prototype.calculateFinalScore = function(score) {
   if (this._scoreboard[9][1] === null) {
     this._scoreboard[9][1] = score;
     this._scoreboard[9][2] += score;
+    this._isFirstBall = true;
     if (this._scoreboard[8][0] === 10) {
       this._scoreboard[8][2] += score;
     }

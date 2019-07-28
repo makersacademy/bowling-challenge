@@ -148,3 +148,9 @@ th {
 .new_ball_button:focus {
   outline: 0;
 }
+
+.ball {
+  position: absolute;
+  top: 60px;
+  left: 80px;
+}

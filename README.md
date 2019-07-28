@@ -28,6 +28,10 @@ open index.html
 rackup
 open http://localhost:9292/
 ```
+- I've tried to host it on herokuapp but unfortunately it doesn't seem to be loading the css/jQuery.
+```
+https://bowlingscorecardtim.herokuapp.com/
+```
 
 ## Bowling — how does it work?
 

@@ -1,0 +1,78 @@
+function Frame() {
+  this._pins = 10;
+  this._maxRolls = 2;
+  this.firstBowl = null;
+  this.lastBowl = null;
+  this._currentRoll = 0;
+  this._bonusPoints = 0;
+};
+
+Frame.prototype.pinsLeft = function () {
+  return this._pins;
+};
+
+Frame.prototype.maxRolls = function () {
+  return this._maxRolls;
+};
+
+Frame.prototype.bowl = function (pinsKnockedDown) {
+  this._currentRoll++
+  if (this._currentRoll == 1) {
+    return this.nextRoll(pinsKnockedDown);
+  } else if (this._currentRoll == 2) {
+    if (pinsKnockedDown > this._pins) throw new Error(`Error! There are only ${this._pins} pin(s) left.`);
+    this._pins -= pinsKnockedDown
+    return this.lastBowl = pinsKnockedDown;
+  } else {
+    throw new Error('You only get two rolls!');
+  }
+};
+
+Frame.prototype.isStrike = function () {
+  if (this.firstBowl == 10) {
+  return true;
+  };
+  return false
+};
+
+Frame.prototype.isSpare = function () {
+  if (this.firstBowl < 10 && this.pinsLeft() == 0) {
+    return true;
+  };
+  return false;
+};
+
+Frame.prototype.nextRoll = function (pinsKnockedDown) {
+  if (pinsKnockedDown > this._pins) throw new Error(`Error! There are only ${this._pins} pin(s).`);
+  this._pins -= pinsKnockedDown
+  return this.firstBowl = pinsKnockedDown;
+};
+
+Frame.prototype.bonusPoints = function () {
+  return this._bonusPoints;
+};
+
+Frame.prototype.addBonusPoints = function (points) {
+  this._bonusPoints += points;
+};
+
+Frame.prototype.isFinished = function () {
+  if (this.isStrike()) {
+    return true;
+  } else if (this.isSpare()) {
+    return true;
+  } else if (this.lastBowl != null) {
+    return true;
+  }
+  return false;
+};
+
+Frame.prototype.score = function () {
+  if (this.isFinished() && (this.isSpare() || this.isStrike())) {
+    return 10;
+  } else if (this.isFinished()) {
+    return (this.firstBowl + this.lastBowl);
+  } else {
+    throw new Error('The frame is not finished yet.');
+  }
+};

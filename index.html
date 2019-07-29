@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="public/index.css">
+</head>
+<body>
+  <div>
+    <center>
+      <table class="tableheader">
+        <tr>
+          <th>TIM'S BOWLING SCOREBOARD</th>
+        </tr>
+      </table>
+  </div>
+
+
+  <center>
+    <table id="frame_table" class="score_table" cellpadding='1' cellspacing='0'>
+      <tr id="headers">
+        <th>FRAME</th>
+        <th>Pins</th>
+        <th>knocked</th>
+        <th>over</th>
+        <th>ROUND SCORE</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td><span id="frame1_ball1"></span></td>
+        <td><span id="frame1_ball2"></span></td>
+        <td></td>
+        <td><span id="frame1_total"></span></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><span id="frame2_ball1"></span></td>
+        <td><span id="frame2_ball2"></span></td>
+        <td></td>
+        <td><span id="frame2_total"></span></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><span id="frame3_ball1"></span></td>
+        <td><span id="frame3_ball2"></span></td>
+        <td></td>
+        <td><span id="frame3_total"></span></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><span id="frame4_ball1"></span></td>
+        <td><span id="frame4_ball2"></span></td>
+        <td></td>
+        <td><span id="frame4_total"></span></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><span id="frame5_ball1"></span></td>
+        <td><span id="frame5_ball2"></span></td>
+        <td></td>
+        <td><span id="frame5_total"></span></td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td><span id="frame6_ball1"></span></td>
+        <td><span id="frame6_ball2"></span></td>
+        <td></td>
+        <td><span id="frame6_total"></span></td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td><span id="frame7_ball1"></span></td>
+        <td><span id="frame7_ball2"></span></td>
+        <td></td>
+        <td><span id="frame7_total"></span></td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td><span id="frame8_ball1"></span></td>
+        <td><span id="frame8_ball2"></span></td>
+        <td></td>
+        <td><span id="frame8_total"></span></td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td><span id="frame9_ball1"></span></td>
+        <td><span id="frame9_ball2"></span></td>
+        <td></td>
+        <td><span id="frame9_total"></span></td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td><span id="frame10_ball1"></span></td>
+        <td><span id="frame10_ball2"></span></td>
+        <td><span id="frame10_ball3"></span></td>
+        <td><span id="frame10_total"></span></td>
+      </tr>
+      </table>
+    <div style="position: absolute; left: 0; top: 0;">
+    <img scr="example_ten_pin_scoring.png"/>
+  </div>
+    <table class='bottom_table'>
+      <tr class='bottom_tr'>
+        <td class='bottom_td'>
+          <table class="total_score">
+            <tr>
+              <th><span id="final_score">TOTAL</span> SCORE: <span id="total_score"></span></th>
+            </tr>
+          </table>
+        </td>
+        <td class='bottom_td'>
+          <button id='button_new_game' class="button_new_game">START NEW GAME</button>
+        </td>
+      </tr>
+    </table>
+  </center>
+
+  <center>
+    <table class="button_table" id="new_ball_buttons">
+      <th colspan="11" ><span id="knocked_pins">ENTER KNOCKED PINS</span></th>
+      <tr>
+      <td><button id="new_ball_button_0" class="new_ball_button">0</button></td>
+      <td><button id="new_ball_button_1" class="new_ball_button">1</button></td>
+      <td><button id="new_ball_button_2" class="new_ball_button">2</button></td>
+      <td><button id="new_ball_button_3" class="new_ball_button">3</button></td>
+      <td><button id="new_ball_button_4" class="new_ball_button">4</button></td>
+      <td><button id="new_ball_button_5" class="new_ball_button">5</button></td>
+      <td><button id="new_ball_button_6" class="new_ball_button">6</button></td>
+      <td><button id="new_ball_button_7" class="new_ball_button">7</button></td>
+      <td><button id="new_ball_button_8" class="new_ball_button">8</button></td>
+      <td><button id="new_ball_button_9" class="new_ball_button">9</button></td>
+      <td><button id="new_ball_button_10" class="new_ball_button">10</button></td>
+      </tr>
+    </table>
+  </center>
+</body>
+
+</html>
+
+<script src="public/bowling.js"></script>
+<script src="public/jquery-3.4.1.js"></script>
+<script src="public/interface.js"></script>

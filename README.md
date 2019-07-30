@@ -14,8 +14,10 @@ Game:
   * Attributes:
     * throws = []
     * throwsRemaining = 20
+    * index = 0
     * frameRunningTotals = e.g. [20, 35, 45, etc]
     * totalScore
+    * showTotal
   * Methods:
     * .throw(score)
 
@@ -23,38 +25,32 @@ Game:
     * bonus throws, if applicable only get added to the total once, as bonus scores.
 ```
 
-### Process
-  * start game (sets throw counter to 20)
-  * throw(user_input)
-  * add score to score
-  * check for previous throw a strike or spare
-  * if so add this score on to the total twice and add to previous frame's running total
-  * check if previous, previous throw was a strike
-  * if so add this score to the total twice and add to previous previous frame's running total
-  * if it was a 10, then decrease rolls remaining by 2, if not reduce by 1.
+### Process in psudeo-code
+  * if throwsRemaining === 0:
+  - Reset all the attributes to start a new game
+  * throw(score)
+  * totalScore += score
+  * if throwsRemaining is even num:
+  - frameRunningTotals.push(score)
+  * else:
+  - frameRunningTotals[index -1] += score
+  * if previous throw == 10: (STRIKE)
+  - totalScore += score
+  - frameRunningTotals[index - 1] += score
+  - if previous, previous throw == 10: (STRIKE)
+  -- totalScore += score
+  --  frameRunningTotals[index -2] += score
+  * else:
+  - if throwsRemaining is even num:
+  -- if throws[index -2] + throws[index -1] == 10: (SPARE)
+  -- totalScore += score
+  -- frameRunningTotals[index - 1] += score
+  -- showTotal = total
+  * add throw score to totalScore
+  * unless throwsRemaining is even num OR score + throws[index -1] == 10:  (SPARE)
+  - showTotal = total
+  * index + 1
+  * if throw == 10: decrease throwsRemaining by 2, else reduce by 1.
+
 
 ### Process example for 3 frames in pseudo-JavaScript code):
-  * .throw(10)
-  * throws.push(10)
-  * check if previous frame strike or spare (false)
-  * check if previous previous strike (false)
-  * totalScore += 10
-  * throw == 10, therefore reduce throwsRemaining by 2.
-
-  * SECOND THROW
-  * .throw(7)
-  * throws.push(7)
-  * check if previous throw strike or spare (true)
-  * therefore, framesRunningTotals[i-1] += 7 (framesRunningTotals = [[17]])
-  * check if previous previous strike (false)
-  * totalScore += 7
-  * throw != 10, therefore reduce throwsRemaining by 1
-
-  * THIRD THROW
-  * throw_two(3)
-  * throws.push(3)
-  * Check if previous throw a strike (no)
-  * Check if previous previous throw a strike (yes)
-  * therefore, framesRunningTotals[i-1] += 3 - frames = [20]
-  * totalScorescore
-  * throw != 10 threfore reduce throwsRemaining by 1

@@ -8,10 +8,11 @@ describe ('Game', function(){
     game = new Game
   });
 
-  describe('.start', function() {
+  describe('.throw', function() {
     it('records two throws if not a strike', function() {
-      set_user_input(3)
-      game.start()
+      game.throw(4)
+      game.throw(4)
+      expect(game.totalScore).toEqual(8)
 
     })
   })

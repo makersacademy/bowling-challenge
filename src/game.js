@@ -22,8 +22,9 @@ Game.prototype.throw = function (score) {
   }
 
   this.totalScore += score
+  this.throws.push(score)
 
-  if (this.index > 0 && this.throwsRemaining % 2 === 0 ) {
+  if (this.throwsRemaining % 2 === 0 ) {
     this.frameRunningTotals.push(score)
   } else {
     this.frameRunningTotals[this.index -1] += score
@@ -42,13 +43,18 @@ Game.prototype.throw = function (score) {
 
   // CHECKING FOR SPARE ON LAST FRAME
   }
-  if (this.throwsRemaining % 2 === 0 && this.throws[this.index -2] + this.throws[this.index -1] === 10) {
+  if (this.index > 1 && this.throwsRemaining % 2 === 0 &&
+      this.throws[this.index -2] + this.throws[this.index -1] === 10) {
         totalScore += score;
         this.frameRunningTotals[this.index -1] += score;
-        this.showTotal = this.total
+        this.showTotal = this.totalScore
   }
 
   this.total += score;
+
+  if (this.index > 0 && this.throwsRemaining % 2 != 0 && score + this.throws[this.index -1] != 10) {
+    this.showTotal = this.totalScore
+  }
   this.index += 1
 
   if (score === 10) {

@@ -29,6 +29,7 @@ Game:
   * if throwsRemaining === 0:
   - Reset all the attributes to start a new game
   * throw(score)
+  * throws.push(score)
   * totalScore += score
   * if throwsRemaining is even num:
   - frameRunningTotals.push(score)
@@ -49,6 +50,7 @@ Game:
   * add throw score to totalScore
   * unless throwsRemaining is even num OR score + throws[index -1] == 10:  (SPARE)
   - showTotal = total
+  - frameRunningTotals[index -1] += score
   * index + 1
   * if throw == 10: decrease throwsRemaining by 2, else reduce by 1.
 

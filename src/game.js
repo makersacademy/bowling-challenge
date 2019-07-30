@@ -10,6 +10,7 @@ function Score() {
 function Game() {
 
   this._frames = []
+  
 
 };
 

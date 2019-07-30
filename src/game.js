@@ -9,46 +9,46 @@ function Score() {
 
 function Game() {
 
-  this._frames = []
-  
+  this._frames = [ new Frame, new Frame, new Frame, new Frame, new Frame,
+    new Frame, new Frame, new Frame, new Frame,  new Frame,]
+  this.user_input = null
+  frames_remaining = 10
 
 };
 
-function Frame(throw) {
+function Frame() {
   this._throws = []
-  this._game = typeof game !== 'undefined' ? game : new Game();
-  this.throw_one = function(throw){
-    this._throws.push(throw)
-    // check for previous strike/spare
-    // check for previous previous strike
-    // score.update
-    if (throw === 10) {
-      this.send_frame(game)
-    } else {
-      this.throw_two(new_throw)
-    }
-  };
-
-  this.throw_one(throw)
+  this.is_complete = false
 };
 
-Game.prototype.start = function () {
-  var i;
-  for (i = 0; i < 9; i++) {
-    var frame = new Frame(throw);
+// Game.prototype.start = function () {
+//   this._frames.forEach (function (frame, index) {
+//     frame.throw_one(receive_user_input())
+//     if (throw_one === 10) {
+//       return
+//     } else {
+//
+//       frame.throw_two(receive_user_input())
+//     }
+//
+//   })
+// };
 
-  };
-};
+Game.prototype.throw = function (user_input) {
 
+  this.frames_remaining =- 1
 
-Game.prototype.throw_two = function (user_input) {
+  if (user_input === 10) {
+    return
+  }
 
 };
 
-Frame.prototype.send_frame = function (game) {
-  game.receive_frame(this)
+Game.prototype.receive_user_input = function () {
+  return this.user_input
+
 };
 
-Frame.prototype.receive_user_input = function (set_user_input) {
-  return user_input
+Game.prototype.set_user_input = function (user_input) {
+  return this.user_input = user_input
 };

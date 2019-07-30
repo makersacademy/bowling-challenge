@@ -24,8 +24,8 @@ Score:
 Game:
   * Attributes:
     * frames = e.g. [[frame object], [frame object], [frame object], etc]
+    * frames_remaining = 10
   * Methods:
-    * .start - start a for loop for 10 iterations (one for each frame), 10th one being different. Each iteration instantiates new Frame object.
 
 Frame:
   Attributes:

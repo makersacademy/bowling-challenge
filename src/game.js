@@ -13,34 +13,34 @@ function Game() {
 
 };
 
-function Frame(roll) {
-  this._rolls = []
+function Frame(throw) {
+  this._throws = []
   this._game = typeof game !== 'undefined' ? game : new Game();
-  this.roll_one = function(roll){
-    this._rolls.push(roll)
+  this.throw_one = function(throw){
+    this._throws.push(throw)
     // check for previous strike/spare
     // check for previous previous strike
     // score.update
-    if (roll === 10) {
+    if (throw === 10) {
       this.send_frame(game)
     } else {
-      this.roll_two(new_roll)
+      this.throw_two(new_throw)
     }
   };
 
-  this.roll_one(roll)
+  this.throw_one(throw)
 };
 
 Game.prototype.start = function () {
   var i;
   for (i = 0; i < 9; i++) {
-    var frame = new Frame(roll);
+    var frame = new Frame(throw);
 
   };
 };
 
 
-Game.prototype.roll_two = function (user_input) {
+Game.prototype.throw_two = function (user_input) {
 
 };
 

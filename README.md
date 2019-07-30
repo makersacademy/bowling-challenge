@@ -9,73 +9,52 @@ I built the bowling scorer in Javascript using TDD.
 ## Domain Model/Plan
 
 ### Objects
-```
-Score:
-  * Attributes:
-    * scorecard = e.g. [[X], [7, /], [0, 0], [5, 2], etc]
-    * frame_running_totals = e.g. [20, 35, 45, etc]
-
-  * Methods:
-    * .get_scores (in order to display on web page)
-    * .update (consisting of three functions...)
-    1. .update_scorecard (adds the latest throw to the scorecard)
-    2. .update_frame_running_totals (loops over the frames to check if they are complete, if so, add frame score to frame_running_totals)
 
 Game:
   * Attributes:
-    * frames = e.g. [[frame object], [frame object], [frame object], etc]
-    * frames_remaining = 10
-  * Methods:
-
-Frame:
-  Attributes:
     * throws = []
-    * is_complete = true/false
-  Methods:
-    * .throw_one(user_input):
-    1. throws.push(user_input)
-    2. check if previous frame strike or spare (if so, add throw value to previous frame)
-    3. check if previous, previous frame a strike (if so, add throw value to previous, previous frame)
-    4. score.update
-    6. if throw == 10: move onto next frame (i.e next iteration in for loop)
-
-    * .throw_two(user_input):
-    1. throws.push(user_input)
-    2. check if previous frame a strike (if so, add throw value to previous frame)
-    4. score.update
+    * throwsRemaining = 20
+    * frameRunningTotals = e.g. [20, 35, 45, etc]
+    * totalScore
+  * Methods:
+    * .throw(score)
 
   * Differences for Frame 10
-    * Do not end the frame when you get a strike or spare. Only end the frame if first two throws don't add up to ten, or after 3 throws. Just input all scores ( 2, or 3 if spare or strike) and add them to the total.
+    * bonus throws, if applicable only get added to the total once, as bonus scores.
 ```
+
+### Process
+  * start game (sets throw counter to 20)
+  * throw(user_input)
+  * add score to score
+  * check for previous throw a strike or spare
+  * if so add this score on to the total twice and add to previous frame's running total
+  * check if previous, previous throw was a strike
+  * if so add this score to the total twice and add to previous previous frame's running total
+  * if it was a 10, then decrease rolls remaining by 2, if not reduce by 1.
+
 ### Process example for 3 frames in pseudo-JavaScript code):
-  * game = new Game
-  * game.start
-  * frames = []
-  * for loop of 10 frames starts...
-  * --- FRAME 1 ---
-  * throws = []
-  <!-- * for loop of 2 throws -->
-  * --throw 1--
-  * .throw_one(10)
+  * .throw(10)
   * throws.push(10)
   * check if previous frame strike or spare (false)
   * check if previous previous strike (false)
-  * score.update
-  * throw == 10 so break out of for loop and go to next frame
+  * totalScore += 10
+  * throw == 10, therefore reduce throwsRemaining by 2.
 
-  * -- FRAME 2 ---
-  * frame = []
-  * --throw 1--
-  * .throw_one(7)
-  * frame.push(7)
-  * check if previous frame strike or spare (true)
-  * therefore, frames[i-1].throws.push(7) (frames = [[10,7]])
+  * SECOND THROW
+  * .throw(7)
+  * throws.push(7)
+  * check if previous throw strike or spare (true)
+  * therefore, framesRunningTotals[i-1] += 7 (framesRunningTotals = [[17]])
   * check if previous previous strike (false)
-  * score.update
-  * --throw 2--
+  * totalScore += 7
+  * throw != 10, therefore reduce throwsRemaining by 1
+
+  * THIRD THROW
   * throw_two(3)
   * throws.push(3)
-  * Check if previous frame a strike (yes)
-  * therefore, game.frames[i-1].throws.push(3) - frames = [[10,7,3]]
-  * frames.push(frame) - frames = [[10,7,3], [7,3]]
-  * score.update
+  * Check if previous throw a strike (no)
+  * Check if previous previous throw a strike (yes)
+  * therefore, framesRunningTotals[i-1] += 3 - frames = [20]
+  * totalScorescore
+  * throw != 10 threfore reduce throwsRemaining by 1

@@ -19,7 +19,7 @@ describe('Frame', function () {
 
   it('player can roll twice if first roll is not a strike', function () {
     frame.bowl(5);
-    expect(frame.bowl(5)).toEqual(frame.lastBowl);
+    expect(frame.bowl(5)).toEqual(frame.secondBowl);
   });
 
   it('if first roll is a strike, frame ends', function () {

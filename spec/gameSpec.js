@@ -49,13 +49,13 @@ describe('Game', function() {
     });
   });
 
-  it('only creates 10 frames', function () {
-    var times = 10;
-    for(var i=0; i < times; i++){
-      game.bowl(10);
-    };
-    expect(function(){game.bowl(10);}).toThrowError('Game is finished!');
-  });
+  // it('only creates 10 frames', function () {
+  //   var times = 10;
+  //   for(var i=0; i < times; i++){
+  //     game.bowl(10);
+  //   };
+  //   expect(function(){game.bowl(10);}).toThrowError('Game is finished!');
+  // });
 
   it('can determine if previous frame was a strike', function () {
     game.bowl(10);

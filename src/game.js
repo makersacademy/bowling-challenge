@@ -39,20 +39,36 @@ Game.prototype.isPreviousFrameSpare = function () {
 };
 
 Game.prototype.bowl = function (pinsKnockedDown) {
+  if (this._frameNumber < this._maxNumberOfFrames) {
+    this.initialFramesBowl(pinsKnockedDown);
+  } else {
+    this.lastFrameBowl(pinsKnockedDown);
+  }
+};
+
+Game.prototype.lastFrameBowl = function (pinsKnockedDown) {
   if (this.isFinished()) {
     throw new Error('Game is finished!')
   }
+  this.currentFrame().lastFrameBowl(pinsKnockedDown);
+};
+
+Game.prototype.initialFramesBowl = function (pinsKnockedDown) {
   this.currentFrame().bowl(pinsKnockedDown);
   this.addBonusPoints(pinsKnockedDown);
   this.createNewFrameifFinished();
 };
-
+//
 Game.prototype.nthFrame = function (frame) {
   return this.frames()[frame - 1];
 };
 
 Game.prototype.checkFrame = function () {
   return this.currentFrame().isFinished();
+};
+
+Game.prototype.checkLastFrame = function () {
+  return this.currentFrame().lastFrameIsFinished();
 };
 
 Game.prototype.startFrame = function () {
@@ -68,7 +84,7 @@ Game.prototype.createNewFrameifFinished = function () {
 };
 
 Game.prototype.isFinished = function () {
-  return (this.checkFrame() && this._frameNumber == 10);
+  return (this.checkLastFrame() && this._frameNumber == 10);
 };
 
 Game.prototype.addBonusPoints = function (points) {
@@ -78,7 +94,7 @@ Game.prototype.addBonusPoints = function (points) {
   if (this.isPreviousFrameStrike()) {
     this.frames().slice(-2)[0].addBonusPoints(points);
   }
-  if (this.isPreviousFrameSpare() && (this.currentFrame().lastBowl== null)) {
+  if (this.isPreviousFrameSpare() && (this.currentFrame().secondBowl== null)) {
     this.frames().slice(-2)[0].addBonusPoints(points);
   }
 };

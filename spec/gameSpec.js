@@ -55,6 +55,12 @@ describe ('Game', function(){
       expect(game.totalScore).toEqual(0)
       expect(game.throwsRemaining).toEqual(0)
     })
+    it('throw after a completed game starts a new game', function() {
+      manyThrows(20, 0)
+      game.throw(10)
+      expect(game.totalScore).toEqual(10)
+      expect(game.throwsRemaining).toEqual(18)
+    })
 
     xit('total score 300 for perfect game', function() {
       manyThrows(22, 10)

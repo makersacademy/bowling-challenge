@@ -13,15 +13,14 @@ Game.prototype.throw = function (score) {
 
   var index = this.throws.length
 
-  // Maybe need to make execption to the below if statement
-  // in case we are on the last frame and a strike is thrown?
-  if (this.throwsRemaining === 0) {
-    this.throws = []
-    this.throwsRemaining = 20
-    this.frameRunningTotals = []
-    this.totalScore = 0
-    this.showTotal = 0
-  }
+  if (this.throwsRemaining === 0 &&
+    this.throws[index -1] != 10 &&
+    this.throws[index -1] + this.throws[index -2] != 10) {
+
+      this.resetGame()
+    } else {
+      // code to allow for tenth frame bonuses...
+    }
 
   this.totalScore += score
   this.throws.push(score)
@@ -87,4 +86,14 @@ Game.prototype.addToFrameTotals = function (score) {
   } else {
     this.frameRunningTotals[this.frameRunningTotals.length -1] += score
   }
+};
+
+Game.prototype.resetGame = function () {
+  // Maybe need to make execption to the below if statement
+  // in case we are on the last frame and a strike is thrown?
+    this.throws = []
+    this.throwsRemaining = 20
+    this.frameRunningTotals = []
+    this.totalScore = 0
+    this.showTotal = 0
 };

@@ -55,6 +55,12 @@ describe ('Game', function(){
       expect(game.totalScore).toEqual(0)
       expect(game.throwsRemaining).toEqual(0)
     })
+
+    xit('total score 300 for perfect game', function() {
+      manyThrows(22, 10)
+      expect(game.totalScore).toEqual(300)
+      expect(game.throwsRemaining).toEqual(0)
+    })
   })
 
   var manyThrows = function(times, pins) {

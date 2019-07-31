@@ -17,26 +17,7 @@ describe ('Game', function(){
       expect(game.throwsRemaining).toEqual(18)
       expect(game.frameRunningTotals).toEqual([8])
     })
-    it('records two throws equaling a spare', function() {
-      game.throw(5)
-      game.throw(5)
-      expect(game.totalScore).toEqual(10)
-      expect(game.throws).toEqual([5,5])
-      expect(game.throwsRemaining).toEqual(18)
-      expect(game.frameRunningTotals).toEqual([10])
-    })
 
-    it('records two throws equaling a spare and then another frame not equaling a spare', function() {
-      game.throw(5)
-      game.throw(5)
-      game.throw(5)
-      game.throw(0)
-      expect(game.totalScore).toEqual(20)
-      expect(game.throws).toEqual([5,5,5,0])
-      expect(game.throwsRemaining).toEqual(16)
-      expect(game.frameRunningTotals).toEqual([15, 5])
-      expect(game.totalScore).toEqual(20)
-    })
     it('records a strike correctly with bonus rolls', function() {
       game.throw(10)
       game.throw(1)
@@ -59,29 +40,32 @@ describe ('Game', function(){
     })
     it('records a multiple strikes and spares correctly with bonus rolls', function() {
       game.throw(10)
-      game.throw(5)
-      game.throw(5)
+      throwSpare()
       game.throw(10)
+      throwSpare()
       game.throw(5)
-      game.throw(5)
-      game.throw(5)
-      many_throws(11, 0)
+      manyThrows(11, 0)
       expect(game.totalScore).toEqual(80)
       expect(game.throwsRemaining).toEqual(0)
       expect(game.frameRunningTotals).toEqual([20, 20, 20, 15, 5, 0, 0, 0, 0, 0])
     })
+
+    it('total score is 0 for gutter game', function() {
+      manyThrows(20, 0)
+      expect(game.totalScore).toEqual(0)
+      expect(game.throwsRemaining).toEqual(0)
+    })
   })
 
-  var many_throws = function(times, pins) {
+  var manyThrows = function(times, pins) {
     for (var i = 0; i < times; i++) {
       game.throw(pins)
     }
   }
 
-})
-
-var many_throws = function(times, pins) {
-  for (var i = 0; i < pins; i++) {
-    game.throw(pins)
+  var throwSpare = function() {
+    game.throw(5)
+    game.throw(5)
   }
-}
+
+})

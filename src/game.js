@@ -34,29 +34,37 @@ Game.prototype.throw = function (score) {
     this.frameRunningTotals[this.frameRunningTotals.length -1] += score
   }
 
+  var frameIndex = this.frameRunningTotals.length
+
   // CHECKING FOR STRIKE ON LAST THROW...
   if (index > 0 && this.throws[index -1] === 10) {
     this.totalScore += score;
-    this.frameRunningTotals[this.frameRunningTotals.length -2] += score;
+    this.frameRunningTotals[frameIndex -2] += score;
   }
   // CHECKING FOR STRIKE ON LAST, LAST THROW...
   if (index > 1 && this.throws[index - 2] === 10) {
-    console.log("WE ARE HERE")
+    // console.log("WE ARE HERE")
+    // console.log(this)
     this.totalScore += score;
-    this.frameRunningTotals[this.frameRunningTotals.length -2] += score;
+    if (this.throwsRemaining % 2 === 0) {
+      this.frameRunningTotals[frameIndex -3] += score;
+    } else {
+      this.frameRunningTotals[frameIndex -2] += score;
+    }
+    this.showTotal = this.totalScore
   }
     // CHECKING FOR SPARE ON LAST FRAME
   if (index > 1 && this.throwsRemaining % 2 === 0 &&
       this.throws[index -2] + this.throws[index -1] === 10) {
         this.totalScore += score;
-        this.frameRunningTotals[this.frameRunningTotals.length -2] += score;
+        this.frameRunningTotals[frameIndex -2] += score;
         this.showTotal = this.totalScore
   }
 
   if (index > 0 && this.throwsRemaining % 2 != 0 && score + this.throws[index -1] != 10) {
     this.showTotal = this.totalScore
   }
-
+//
   if (score === 10) {
     this.throwsRemaining -= 2
   } else {

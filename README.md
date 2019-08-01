@@ -21,13 +21,13 @@ Game:
   * Methods:
     * .throw(score)
 
-  * Differences for Frame 10
-    * bonus throws, if applicable only get added to the total once, as bonus scores.
 ```
 
 ### Process in psudeo-code
   * if throwsRemaining === 0:
   - Reset all the attributes to start a new game
+  * if throwsRemaining === 2:
+  - Go to frame 10 procedure (see below)
   * throw(score)
   * throws.push(score)
   * totalScore += score
@@ -54,5 +54,8 @@ Game:
   * index + 1
   * if throw == 10: decrease throwsRemaining by 2, else reduce by 1.
 
+  * Differences for Frame 10 procedure:
+    * bonus throws, if applicable, only get added to the total once, as bonus scores.
 
 ### Process example for 3 frames in pseudo-JavaScript code):
+```

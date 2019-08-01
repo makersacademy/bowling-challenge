@@ -14,7 +14,7 @@ describe ('Game', function(){
       game.throw(4)
       expect(game.totalScore).toEqual(8)
       expect(game.throws).toEqual([4,4])
-      expect(game.throwsRemaining).toEqual(18)
+      expect(game.throwsRemaining).toEqual(20)
       expect(game.frameRunningTotals).toEqual([8])
     })
 
@@ -24,7 +24,7 @@ describe ('Game', function(){
       game.throw(1)
       expect(game.totalScore).toEqual(14)
       expect(game.throws).toEqual([10,1,1])
-      expect(game.throwsRemaining).toEqual(16)
+      expect(game.throwsRemaining).toEqual(18)
       expect(game.frameRunningTotals).toEqual([12, 2])
       expect(game.totalScore).toEqual(14)
     })
@@ -34,7 +34,7 @@ describe ('Game', function(){
       game.throw(10)
       expect(game.totalScore).toEqual(60)
       expect(game.throws).toEqual([10,10,10])
-      expect(game.throwsRemaining).toEqual(14)
+      expect(game.throwsRemaining).toEqual(16)
       expect(game.frameRunningTotals).toEqual([30, 20,10])
       // expect(game.showTotal).toEqual(30)
     })
@@ -55,15 +55,19 @@ describe ('Game', function(){
       expect(game.totalScore).toEqual(0)
       expect(game.throwsRemaining).toEqual(0)
     })
-    it('throw after a completed game starts a new game', function() {
+    xit('throw after a completed game starts a new game', function() {
       manyThrows(20, 0)
-      game.throw(10)
-      expect(game.totalScore).toEqual(10)
-      expect(game.throwsRemaining).toEqual(18)
+      game.throw(1)
+      expect(game.totalScore).toEqual(1)
+      expect(game.throwsRemaining).toEqual(21)
     })
 
-    xit('total score 300 for perfect game', function() {
-      manyThrows(22, 10)
+    it('total score 300 for perfect game', function() {
+      manyThrows(10, 10)
+      game.throw(10)
+      game.throw(10)
+      console.log(game)
+      debugger
       expect(game.totalScore).toEqual(300)
       expect(game.throwsRemaining).toEqual(0)
     })

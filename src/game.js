@@ -2,6 +2,7 @@ function Game() {
   this._totalScore = 0;
   this._frames = [];
   this._gameOver = false;
+  this._currentFrame = 1;
 };
 
 Game.prototype.updateScore = function(frame) {
@@ -12,6 +13,7 @@ Game.prototype.updateScore = function(frame) {
 Game.prototype.add = function(frame) {
   this._frames.push(frame);
   this._totalScore += frame.frameScore();
+  this._currentFrame += 1;
 };
 
 Game.prototype.totalScore = function() {

@@ -14,7 +14,7 @@ Frame.prototype.add = function(roll) {
   this._rolls.push(roll);
   this._pinScore += roll.score();
   this._pinsRemaining -= roll.score();
-  this.updateStatus();
+  this.updateStatus(roll);
 };
 
 Frame.prototype.pinsRemaining = function() {
@@ -23,7 +23,7 @@ Frame.prototype.pinsRemaining = function() {
 
 Frame.prototype.pinScore = function() {
   return this._pinScore;
-}
+};
 
 Frame.prototype.addPoints = function(points) {
   this._score += points;
@@ -45,7 +45,7 @@ Frame.prototype.addPoints = function(points) {
 //   }
 // };
 
-Frame.prototype.updateStatus = function() {
+Frame.prototype.updateStatus = function(roll) {
   if (roll.score() === 10) {
     this._stike = true;
     this.endFrame();
@@ -67,10 +67,10 @@ Frame.prototype.frameScore = function() {
   return this._frameScore;
 };
 
-Frame.prototype.strikeBonus = function (firstRoll, secondRoll) {
+Frame.prototype.strikeBonus = function(firstRoll, secondRoll) {
   this._bonus = (firstRoll.score() + secondRoll.score());
 };
 
-Frame.prototype.spareBonus = function (firstRoll) {
+Frame.prototype.spareBonus = function(firstRoll) {
   this._bonus = firstRoll.score();
-}
+};

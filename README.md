@@ -16,6 +16,8 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 
 ## How to Use
 
+[Deployed on surge](http://grandiose-rhythm.surge.sh/), or:
+
 * Clone this repository
 
 * Open index.html from the root directory in your browser of choice

@@ -6,6 +6,8 @@ function Game() {
   this.frameRunningTotals = [];
   this.totalScore = 0;
   this.showTotal = 0;
+  this.frameNumber = 1
+  this.throwNumber = 1
 }
 
 Game.prototype.throw = function(score) {
@@ -21,11 +23,11 @@ Game.prototype.throw = function(score) {
   } else if (this.throwsRemaining === 1) {
     this.frameTenThrowThree(score, index);
   } else {
-    this.normalFrame(score, index);
+    this.normalThrow(score, index);
   }
 };
 
-Game.prototype.normalFrame = function(score, index) {
+Game.prototype.normalThrow = function(score, index) {
 
   this.addScore(score);
 
@@ -44,12 +46,18 @@ Game.prototype.normalFrame = function(score, index) {
     this.showTotal += score + this.throws[index - 1];
   }
 
+  if (this.throwsRemaining % 2 !== 0) {
+    this.frameNumber++;
+  }
+
   this.reduceThrowsRemaining(score);
+
   index += 1;
 };
 
 Game.prototype.frameTenThrowTwo = function(score, index) {
 
+  this.frameNumber = 10
   this.addScore(score);
 
   this.frameRunningTotals[9] += score;
@@ -76,11 +84,15 @@ Game.prototype.frameTenThrowTwo = function(score, index) {
 
 Game.prototype.frameTenThrowThree = function(score, index) {
 
+  this.frameNumber = 10
+
   this.addScore(score);
 
   this.frameRunningTotals[9] += score;
 
   this.throwsRemaining -= 1;
+
+  this.showTotal = this.totalScore
   index += 1;
 };
 
@@ -117,7 +129,6 @@ Game.prototype.checkForStrikePrevsPrevs = function(score, index, frameIndex) {
     } else {
       this.frameRunningTotals[frameIndex - 2] += score;
     }
-    // this.showTotal = this.totalScore;
   }
 };
 
@@ -140,6 +151,7 @@ Game.prototype.resetGame = function() {
   this.frameRunningTotals = [];
   this.totalScore = 0;
   this.showTotal = 0;
+  this.frameNumber = 1;
 };
 
 Game.prototype.receiveFrame = function (frame) {

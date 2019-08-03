@@ -60,11 +60,11 @@ $( document ).ready(function() {
     updateScore();
   });
 
-  updateScore();
+  // updateScore();
 
   function updateScore() {
+    $('#frameNumber').text(game.frameNumber);
     $('#score').text(game.showTotal);
-    // POSTE REQUEST HERE, somtething like: $.post('/save').params(city,temp, psm)
-    // needs a $get request here to retrieve the data to update the page.
+    $('#scorecard').text(game.frameRunningTotals)
   };
 });

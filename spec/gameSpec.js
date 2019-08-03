@@ -82,6 +82,7 @@ describe("Game", function() {
       game.throw(10);
       expect(game.totalScore).toEqual(300);
       expect(game.throwsRemaining).toEqual(0);
+      expect(game.showTotal).toEqual(300)
     });
 
     it("correctly handles spare in frame 10", function() {

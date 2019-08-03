@@ -16,8 +16,16 @@
 </head>
 
 <body>
+  <!-- <input type="hidden" id="array1" value="<%= @space.booked_nights.to_s %>"><input>
+    <script>
+    var array = document.getElementById("array1").value.substr(1).slice(0,-1).split(',');
+    </script> -->
   <h1>Will's King Pin Bowling Scorer</h1>
-
+  <h2>
+    Frame Number: <span id="frameNumber">1</span><br>
+    Scorecard: <span id="scorecard">0</span><br>
+    Total Score: <span id="score">0</span>
+  </h2>
   <div id="scoreButtons">
     <button id="one">1</button>
     <button id="two">2</button>
@@ -31,6 +39,5 @@
     <button id="ten">10</button>
     <button id="reset">reset</button>
   </div>
-  Score:<span id="score">0</span>
 </body>
 </html>

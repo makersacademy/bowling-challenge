@@ -11,7 +11,6 @@ function Game() {
 }
 
 Game.prototype.throw = function(score) {
-
   if (this.throwsRemaining === 0) {
     this.resetGame();
   }
@@ -48,7 +47,13 @@ Game.prototype.normalThrow = function(score, index) {
   }
 
   this.reduceThrowsRemaining(score);
-  this.changeThrowNumber;
+
+  if (this.throwsRemaining % 2 === 0) {
+    this.throwNumber = 2;
+  } else {
+    this.throwNumber = 1;
+  }
+
   index += 1;
 };
 
@@ -151,12 +156,4 @@ Game.prototype.resetGame = function() {
   this.showTotal = 0;
   this.frameNumber = 1;
   this.throwNumber = 1;
-};
-
-Game.prototype.changeThrowNumber = function () {
-  if (this.throwsRemaining % 2 === 0) {
-    this.throwNumber++;
-  } else {
-    this.throwNumber = 1;
-  }
 };

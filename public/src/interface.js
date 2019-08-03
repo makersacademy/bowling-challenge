@@ -1,6 +1,11 @@
 $( document ).ready(function() {
   var game = new Game
 
+  $( "#zero" ).click(function() {
+  game.throw(0);
+  updateScore();
+});
+
   $( "#one" ).click(function() {
   game.throw(1);
   updateScore();
@@ -60,11 +65,11 @@ $( document ).ready(function() {
     updateScore();
   });
 
-  // updateScore();
-
   function updateScore() {
     $('#frameNumber').text(game.frameNumber);
+    $('#throwNumber').text(game.throwNumber);
     $('#score').text(game.showTotal);
+    $('#throws').text(game.throws);
     $('#scorecard').text(game.frameRunningTotals)
   };
 });

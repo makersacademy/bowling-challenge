@@ -11,8 +11,7 @@
   <script src="/public/src/game.js"></script>
   <script src="/public/src/interface.js"></script>
 
-
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="/public/style.css">
 </head>
 
 <body>
@@ -23,10 +22,13 @@
   <h1>Will's King Pin Bowling Scorer</h1>
   <h2>
     Frame Number: <span id="frameNumber">1</span><br>
-    Scorecard: <span id="scorecard">0</span><br>
+    Throw Number: <span id="throwNumber">1</span><br>
+    Scorecard: <span id="scorecard"></span><br>
+    Throws: <span id="throws"></span><br>
     Total Score: <span id="score">0</span>
   </h2>
-  <div id="scoreButtons">
+  <div>
+    <button id="zero">0</button>
     <button id="one">1</button>
     <button id="two">2</button>
     <button id="three">3</button>
@@ -37,7 +39,10 @@
     <button id="eight">8</button>
     <button id="nine">9</button>
     <button id="ten">10</button>
-    <button id="reset">reset</button>
+  </div>
+  <div class="reset">
+    <br>
+    <button id="reset">New Game</button>
   </div>
 </body>
 </html>

@@ -41,7 +41,7 @@ Game.prototype.normalFrame = function(score, index) {
 
   if (index > 0 && this.throwsRemaining % 2 === 0 &&
     score + this.throws[index - 1] !== 10) {
-    this.showTotal = this.totalScore;
+    this.showTotal += score + this.throws[index - 1];
   }
 
   this.reduceThrowsRemaining(score);
@@ -97,7 +97,7 @@ Game.prototype.checkForSparePrevs = function(score, index, frameIndex) {
     this.throws[index - 2] + this.throws[index - 1] === 10) {
     this.totalScore += score;
     this.frameRunningTotals[frameIndex - 2] += score;
-    this.showTotal = this.totalScore;
+    this.showTotal += score + this.throws[index -1] + this.throws[index -2];
   }
 };
 
@@ -111,12 +111,13 @@ Game.prototype.checkForStrikePrevs = function(score, index, frameIndex) {
 Game.prototype.checkForStrikePrevsPrevs = function(score, index, frameIndex) {
   if (index > 1 && this.throws[index - 2] === 10) {
     this.totalScore += score;
+    this.showTotal += score + this.throws[index - 1] + 10
     if (this.throwsRemaining % 2 !== 0) {
       this.frameRunningTotals[frameIndex - 3] += score;
     } else {
       this.frameRunningTotals[frameIndex - 2] += score;
     }
-    this.showTotal = this.totalScore;
+    // this.showTotal = this.totalScore;
   }
 };
 
@@ -143,4 +144,9 @@ Game.prototype.resetGame = function() {
 
 Game.prototype.receiveFrame = function (frame) {
   this._frames.push(frame)
+};
+
+Game.prototype.isStrike = function (score) {
+  score === 10;
+
 };

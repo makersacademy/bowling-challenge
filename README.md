@@ -4,7 +4,7 @@ This is my attempt at the [Makers Academy Week 5 Bowling Challenge](https://gith
 
 ## Approach
 
-I built the bowling scorer in Javascript using TDD.  
+I built the bowling scorer in Javascript using TDD with Jasmine.  
 
 ## Domain Model/Plan
 
@@ -18,6 +18,7 @@ Game:
     * frameRunningTotals = e.g. [20, 35, 45, etc]
     * totalScore
     * showTotal
+    * frameIndex
   * Methods:
     * .throw(score)
 

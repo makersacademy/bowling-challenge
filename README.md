@@ -64,5 +64,3 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 * I would like to refactor the business logic further, creating frame and finalFrame constructor functions
 
 * Implementing the final frame in the UI was trickier than expected, it is still not quite fully functional (refactoring the business logic may help with this)
-
-* A player can knock down more than ten pins in each frame! Must fix this, ran out of time this weekend

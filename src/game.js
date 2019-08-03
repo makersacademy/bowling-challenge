@@ -148,5 +148,4 @@ Game.prototype.receiveFrame = function (frame) {
 
 Game.prototype.isStrike = function (score) {
   score === 10;
-
 };

@@ -44,9 +44,9 @@ describe("Game", function() {
       expect(game.showTotal).toEqual(0);
       game.throw(1);
       game.throw(0);
-      expect(game.totalScore).toEqual(12)
-      expect(game.showTotal).toEqual(12)
-    })
+      expect(game.totalScore).toEqual(12);
+      expect(game.showTotal).toEqual(12);
+    });
 
     it("records multiple strikes and spares with bonus rolls", function() {
       game.throw(10);

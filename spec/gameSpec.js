@@ -14,7 +14,6 @@ describe ('Game', function(){
       game.throw(4)
       expect(game.totalScore).toEqual(8)
       expect(game.throws).toEqual([4,4])
-      expect(game.throwsRemaining).toEqual(20)
       expect(game.frameRunningTotals).toEqual([8])
     })
 
@@ -24,7 +23,6 @@ describe ('Game', function(){
       game.throw(1)
       expect(game.totalScore).toEqual(14)
       expect(game.throws).toEqual([10,1,1])
-      expect(game.throwsRemaining).toEqual(18)
       expect(game.frameRunningTotals).toEqual([12, 2])
       expect(game.totalScore).toEqual(14)
     })
@@ -34,7 +32,7 @@ describe ('Game', function(){
       game.throw(10)
       expect(game.totalScore).toEqual(60)
       expect(game.throws).toEqual([10,10,10])
-      expect(game.throwsRemaining).toEqual(16)
+      expect(game.throwsRemaining).toEqual(15)
       expect(game.frameRunningTotals).toEqual([30, 20,10])
       // expect(game.showTotal).toEqual(30)
     })
@@ -51,24 +49,35 @@ describe ('Game', function(){
     })
 
     it('total score is 0 for gutter game', function() {
-      manyThrows(20, 0)
+      manyThrows(19, 0)
+      // console.log(game)
+      // debugger
+      game.throw(0)
+      // console.log(game)
+      // debugger
       expect(game.totalScore).toEqual(0)
       expect(game.throwsRemaining).toEqual(0)
     })
-    xit('throw after a completed game starts a new game', function() {
+    it('throw after a completed game starts a new game', function() {
       manyThrows(20, 0)
       game.throw(1)
-      expect(game.totalScore).toEqual(1)
-      expect(game.throwsRemaining).toEqual(21)
+      game.throw(1)
+      expect(game.totalScore).toEqual(2)
+      expect(game.throwsRemaining).toEqual(19)
     })
 
     it('total score 300 for perfect game', function() {
       manyThrows(10, 10)
       game.throw(10)
       game.throw(10)
-      console.log(game)
-      debugger
       expect(game.totalScore).toEqual(300)
+      expect(game.throwsRemaining).toEqual(0)
+    })
+    it('correctly handles spare in frame 10', function() {
+      manyThrows(19, 0)
+      game.throw(10)
+      game.throw(10)
+      expect(game.totalScore).toEqual(20)
       expect(game.throwsRemaining).toEqual(0)
     })
   })

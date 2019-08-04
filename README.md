@@ -1,3 +1,12 @@
+## TO DOs:
+1. Make scorecard display nicely
+2. Update README
+3. Refactor
+
+## NICE TO HAVES
+1. background image
+2. Host the page
+
 # Bowling Challenge
 
 This is my attempt at the [Makers Academy Week 5 Bowling Challenge](https://github.com/makersacademy/bowling-challenge)
@@ -24,12 +33,14 @@ Game:
 
 ```
 
-### Process in psudeo-code
+### Algorithm in psudeo code
   * if throwsRemaining === 0:
   - Reset all the attributes to start a new game
   * if throwsRemaining === 2:
-  - Go to frame 10 procedure (see below)
-  * throw(score)
+  - Go to frame 10-throw-two procedure (see below)
+  * if throwsRemaining === 1:
+  - Go to frame 10-throw-three procedure (see below)
+  * User makes a throw - throw(score)
   * throws.push(score)
   * totalScore += score
   * if throwsRemaining is even num:
@@ -55,8 +66,6 @@ Game:
   * index + 1
   * if throw == 10: decrease throwsRemaining by 2, else reduce by 1.
 
-  * Differences for Frame 10 procedure:
+  * Differences for Frame 10-throw-two procedure:
     * bonus throws, if applicable, only get added to the total once, as bonus scores.
-
-### Process example for 3 frames in pseudo-JavaScript code):
 ```

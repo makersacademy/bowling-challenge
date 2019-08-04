@@ -117,14 +117,15 @@ $( document ).ready(function() {
   });
 
   $( "#ten" ).click(function() {
-  game.throw(10);
-  updateScore();
+    game.throw(10);
+    updateScore();
   });
 
   $( "#reset" ).click(function() {
-  game.resetGame();
-  updateScore();
-  showAllButtons();
+    game.resetGame();
+    updateScore();
+    showAllButtons();
+    $("#throws").text("");
   });
 
   $("button").click(function() {
@@ -136,11 +137,16 @@ $( document ).ready(function() {
   };
 
   function updateScore() {
-    $('#frameNumber').text(game.frameNumber);
-    $('#throwNumber').text(game.throwNumber);
-    $('#score').text(game.showTotal);
-    $('#throws').text(game.throws);
-    $('#scorecard').text(game.frameRunningTotals)
+    $("#frameNumber").text(game.frameNumber);
+    $("#throwNumber").text(game.throwNumber);
+    $("#score").text(game.showTotal);
+    $("#scorecard").text(game.frameRunningTotals);
+    // $.each(game.showThrows, function( index, value ){
+    //   $('#throws').text(value);
+    // });
+
+    $("#throws").text(game.showThrows);
+
     if (game.throwNumber === 1 || game.throwNumber === 3) {
       showAllButtons()
     }

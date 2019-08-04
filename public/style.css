@@ -30,7 +30,14 @@ button {
 }
 
 .header {
-  background-color: #feb87c;
+  background-color: #f2e6d9;
+  padding: 10px 15px;
+  text-align: center;
+
+}
+
+.scorecard {
+  background-color: #fff5e6;
   padding: 10px 15px;
   text-align: center;
 

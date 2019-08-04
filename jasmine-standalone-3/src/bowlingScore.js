@@ -2,54 +2,71 @@
 
 function Scorer() {
   this.pins = [[]]
-  this.scores = []
+  this.scores = [[]]
   this.currentFrame = 0
-  this._currentAccumulatingFrame = 0
-};
-
-Scorer.prototype.showPins = function(number) {
-  return number;
 };
 
 Scorer.prototype.insert = function(number) {
-  if (this.pins[this.currentFrame].length < 2 && this.currentFrameScore() < 10) {
-    this.pins[this.currentFrame].push(number);
-  }
-  else {
-    this.pins.push([number]);
-    this.scores.push(this.currentFrameScore());
-    this.currentFrame++
-  };
-};
+  if (this.pins[this.currentFrame].length < 2 && this.pins[this.currentFrame][0] !== 10) {
+    this.pins[this.currentFrame].push(number)
 
-Scorer.prototype.currentScore = function() {
-  this._accumulation();
-  return this.scores.reduce(function(sum, value) {
-    return sum + value;
-  }, 0);
+    if (this._unzerofy() === 10) {
+      this.scores[this.currentFrame - 1].push(number);
+      this.scores[this.currentFrame].push(number);
+    }
+    else {
+      this.scores[this.currentFrame].push(number);
+    }
+  }
+
+  else {
+    this.pins.push([number])
+    this.scores.push([number])
+    this.spareOrStrike(number)
+    this.currentFrame++;
+  }
 }
 
-Scorer.prototype._accumulation = function() {
-  if (this._isSpare()) {
-    this.scores.push(this._currentAccumulatingFrameScore());
-  }
-  else {
-    this.scores.push(this.currentFrameScore());
-  }
-};
-
-Scorer.prototype.currentFrameScore = function () {
-  return this.pins[this.currentFrame].reduce(function(sum, value) {
+Scorer.prototype.totalScore = function () {
+  var scores = this.scores.map(function(frame) {
+    return frame.reduce(function(sum, value) {
+      return sum + value;
+    });
+  });
+  return scores.reduce(function(sum, value) {
     return sum + value;
-  }, 0);
+  });
 }
 
-Scorer.prototype._currentAccumulatingFrameScore = function() {
-  return this.pins[this._currentAccumulatingFrame].reduce(function(sum, value) {
+Scorer.prototype.scoreOfCurrentFrame = function () {
+  return this.scores[this.currentFrame].reduce(function (sum, value) {
     return sum + value;
-  }, 0);
-};
+  })
+}
 
-Scorer.prototype._isSpare = function() {
-  return this._currentAccumulatingFrameScore() === 10;
-};
+Scorer.prototype.spareOrStrike = function (number) {
+  if (this.scoreOfCurrentFrame() == 10 && this.pins[this.currentFrame][0] !== 10) {
+    this.scores[this.currentFrame].push(number)
+  }
+  else if (this.scoreOfCurrentFrame() == 10 || this.pins[this.currentFrame][0] === 10) {
+    if (this._unzerofy() === 10) {
+      this.scores[this.currentFrame - 1].push(number);
+      this.scores[this.currentFrame].push(number);
+      this.scores.push[number];
+    }
+    else {
+    this.scores[this.currentFrame].push(number);
+    this.scores.push[number];
+    }
+  }
+}
+
+Scorer.prototype._unzerofy = function() {
+  if (this.currentFrame === 0) {
+    return this.pins[this.currentFrame - 1]
+  }
+  else {
+    return this.pins[this.currentFrame - 1][0]
+  }
+}
+

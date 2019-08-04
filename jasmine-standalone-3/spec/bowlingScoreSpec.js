@@ -8,10 +8,6 @@ describe('Bowling Score', function(){
     scorer = new Scorer();
   });
 
-  it('shows pins', function() {
-    expect(scorer.showPins(7)).toEqual(7);
-  });
-
   it('stores pins in an array', function() {
     scorer.insert(7);
     expect(scorer.pins).toContain([7]);
@@ -29,31 +25,49 @@ describe('Bowling Score', function(){
     scorer.insert(4);
     scorer.insert(3);
     scorer.insert(2);
-    expect(scorer.currentScore()).toEqual(14)
+    expect(scorer.totalScore()).toEqual(14)
   });
 
   it("shows score of current frame", function() {
     for (var i = 0; i < 4; i++) {
       scorer.insert(2);
     }
-    expect(scorer.currentFrameScore()).toEqual(4)
+    expect(scorer.scoreOfCurrentFrame()).toEqual(4)
   });
+
+  it("accumulates score of spare after strike", function() {
+    scorer.insert(10);
+    scorer.insert(5);
+    scorer.insert(5);
+    scorer.insert(4);
+    scorer.insert(3);
+    expect(scorer.totalScore()).toEqual(41);
+  })
 
   describe("When spare", function() {
     it("accumulates score from next roll", function() {
       scorer.insert(5);
       scorer.insert(5);
       scorer.insert(5);
-      expect(scorer.currentScore()).toEqual(20);
+      expect(scorer.totalScore()).toEqual(20);
     });
 
     it("scores next frame including accumulated extra roll from previous", function() {
       scorer.insert(5);
       scorer.insert(5);
       scorer.insert(5)
-      expect(scorer.currentScore()).toEqual(20);
       scorer.insert(4);
-      expect(scorer.currentFrameScore()).toEqual(9);
+      expect(scorer.totalScore()).toEqual(24);
+    });
+
+    it("accumulates scores of 2 consecutive spares", function() {
+      scorer.insert(5);
+      scorer.insert(5);
+      scorer.insert(5);
+      scorer.insert(5);
+      scorer.insert(4);
+      scorer.insert(3);
+      expect(scorer.totalScore()).toEqual(36);
     });
   });
 
@@ -64,5 +78,30 @@ describe('Bowling Score', function(){
       scorer.insert(4);
       expect(scorer.pins).toEqual([[10],[5,4]]);
     });
+
+    it("accumulates scores of 2 rolls after", function() {
+      scorer.insert(10);
+      scorer.insert(4);
+      scorer.insert(3);
+      expect(scorer.totalScore()).toEqual(24);
+    });
+
+    it("accumulates scores of 2 consecutive strikes", function() {
+      scorer.insert(10);
+      scorer.insert(10);
+      scorer.insert(3);
+      scorer.insert(4);
+      expect(scorer.totalScore()).toEqual(47);
+    })
+
+    it("accumulates scores of 4 consecutive srikes", function() {
+      scorer.insert(10);
+      scorer.insert(10);
+      scorer.insert(10);
+      scorer.insert(10);
+      scorer.insert(5);
+      scorer.insert(4);
+      expect(scorer.totalScore()).toEqual(113);
+    })
   });
 });

@@ -1,7 +1,55 @@
 function Game() {
-  this.score = 0;
+  this.currentFrameIndex = 0;
+  this.frames = new Array(10).fill(null).map(function() {
+    return [];
+  });
 };
 
-Game.prototype.addFrame = function(){
-  this.score += frame.frameScore;
+Game.prototype.score = function () {
+  return this.frames.reduce(function(totalScore, frame) {
+    return totalScore + frame.reduce(function(acc, pins) { return acc + pins }, 0)
+  }, 0)
+}
+
+Game.prototype.currentFrame = function(){
+  return this.frames[this.currentFrameIndex]
+}
+
+Game.prototype.bowl = function(pins) {
+  this.currentFrame().push(pins);
+  this.processPreviousFrameBonus(pins);
+  this.processPreviousPreviousFrameBonus(pins);
+  if (this.isCurrentFrameComplete())  {
+    this.currentFrameIndex += 1;
+  }
+};
+
+Game.prototype.isCurrentFrameComplete = function () {
+  if (this.currentFrameIndex < 9) {
+    return this.currentFrame().length === 2 || this.currentFrame()[0] === 10
+}
+  else {
+    return this.currentFrame().length === 2 || ((this.currentFrame()[0] === 10) && (this.currentFrame()[1] === 10) && (this.currentFrame().length === 3))
+  }
+}
+Game.prototype.processPreviousFrameBonus = function(pins) {
+  var previousFrame = this.frames[this.currentFrameIndex - 1]
+  if (previousFrame && (this.isFrameStrike(previousFrame) || this.isFrameSpare(previousFrame)) && previousFrame.length < 3){
+    previousFrame.push(pins);
+  }
+}
+
+Game.prototype.processPreviousPreviousFrameBonus = function(pins) {
+  var previousPreviousFrame = this.frames[this.currentFrameIndex - 2]
+  if (previousPreviousFrame && this.isFrameStrike(previousPreviousFrame) && previousPreviousFrame.length < 3) {
+    previousPreviousFrame.push(pins);
+  }
+}
+
+Game.prototype.isFrameStrike = function (frame) {
+  return frame[0] === 10
+}
+
+Game.prototype.isFrameSpare = function (frame) {
+  return frame[0] + frame[1] === 10
 }

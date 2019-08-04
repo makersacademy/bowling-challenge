@@ -2,32 +2,154 @@ describe('Game', function(){
 
   beforeEach(function() {
     game = new Game();
-    frame = new Frame();
   });
 
-  it('starts with a score of 0', function(){
-    expect(game.score).toEqual(0);
+  it('starts with 10 frames', function(){
+    expect(game.frames.length).toEqual(10);
   })
 
-  it('returns the score of the first frame', function(){
-    frame.bowlOne(7);
-    frame.bowlTwo(2);
-    frame.calculate();
-    game.addFrame();
-    expect(game.score).toEqual(9);
+  it('starts with zero score', function(){
+    expect(game.score()).toEqual(0);
   })
 
-  it('adds the score of the second frame to the game score', function(){
-    game.score = 9
-    frame.bowlOne(3);
-    frame.bowlTwo(4);
-    frame.calculate();
-    game.addFrame();
-    expect(game.score).toEqual(16);
+  it('starts with currentFrameIndex of zero', function() {
+    expect(game.currentFrameIndex).toEqual(0)
   })
 
-  // it('does not add points to the game score for a spare', function(){
-  //
-  //   expect(game.score).toEqual(0);
-  // })
+  describe('bowl', function () {
+    it('should increase the score by the number of pins', function () {
+      game.bowl(4)
+      expect(game.score()).toEqual(4);
+      expect(game.frames[0]).toEqual([4]);
+    })
+
+    it('should add second roll pins to frame', function () {
+      game.bowl(4)
+      game.bowl(2)
+      expect(game.frames[0]).toEqual([4, 2]);
+      expect(game.score()).toEqual(6);
+    })
+
+    it('should increment currentFrameIndex after two bowls', function () {
+      game.bowl(4)
+      game.bowl(2)
+      expect(game.currentFrameIndex).toEqual(1);
+    })
+
+    it('should add third bowl to second frame', function () {
+      game.bowl(4)
+      game.bowl(2)
+      game.bowl(5)
+      expect(game.frames[0]).toEqual([4, 2]);
+      expect(game.frames[1]).toEqual([5]);
+      expect(game.score()).toEqual(11);
+    })
+
+    describe('strike', function () {
+      it('should increment currentFrameIndex after a strike', function () {
+        game.bowl(10)
+        expect(game.currentFrameIndex).toEqual(1);
+      })
+
+      it('should add the next bowl as bonus points', function () {
+        game.bowl(10)
+        game.bowl(5)
+        expect(game.currentFrameIndex).toEqual(1);
+        expect(game.frames[0]).toEqual([10, 5]);
+        expect(game.frames[1]).toEqual([5]);
+        expect(game.score()).toEqual(20);
+      })
+
+      it('should add the next two bowls as bonus points', function () {
+        game.bowl(10)
+        game.bowl(5)
+        game.bowl(4)
+        expect(game.currentFrameIndex).toEqual(2);
+        expect(game.frames[0]).toEqual([10, 5, 4]);
+        expect(game.frames[1]).toEqual([5, 4]);
+        expect(game.score()).toEqual(28);
+      })
+
+      it('should not add the third bowl as bonus points', function () {
+        game.bowl(10)
+        game.bowl(5)
+        game.bowl(4)
+        game.bowl(3)
+        expect(game.currentFrameIndex).toEqual(2);
+        expect(game.frames[0]).toEqual([10, 5, 4]);
+        expect(game.frames[1]).toEqual([5, 4]);
+        expect(game.frames[2]).toEqual([3]);
+        expect(game.score()).toEqual(31);
+      })
+
+      it('should award multiple strike bonus points', function () {
+        game.bowl(10)
+        game.bowl(10)
+        game.bowl(10)
+        expect(game.currentFrameIndex).toEqual(3);
+        expect(game.frames[0]).toEqual([10, 10, 10]);
+        expect(game.frames[1]).toEqual([10, 10]);
+        expect(game.frames[2]).toEqual([10]);
+        expect(game.score()).toEqual(60);
+      })
+    })
+
+    describe('spare', function() {
+      it('should increment currentFrameIndex after a spare', function () {
+        game.bowl(4)
+        game.bowl(6)
+        expect(game.currentFrameIndex).toEqual(1);
+      })
+
+      it('should add the next bowl as bonus points', function () {
+        game.bowl(4)
+        game.bowl(6)
+        game.bowl(5)
+        expect(game.currentFrameIndex).toEqual(1);
+        expect(game.frames[0]).toEqual([4, 6, 5]);
+        expect(game.frames[1]).toEqual([5]);
+        expect(game.score()).toEqual(20);
+      })
+
+      it('should not add the second bowl as bonus points', function () {
+        game.bowl(4)
+        game.bowl(6)
+        game.bowl(5)
+        game.bowl(4)
+        game.bowl(3)
+        expect(game.currentFrameIndex).toEqual(2);
+        expect(game.frames[0]).toEqual([4, 6, 5]);
+        expect(game.frames[1]).toEqual([5, 4]);
+        expect(game.frames[2]).toEqual([3]);
+        expect(game.score()).toEqual(27);
+      })
+
+      it('should award multiple spare bonus points', function () {
+        game.bowl(4)
+        game.bowl(6)
+        game.bowl(4)
+        game.bowl(6)
+        game.bowl(3)
+        expect(game.currentFrameIndex).toEqual(2);
+        expect(game.frames[0]).toEqual([4, 6, 4]);
+        expect(game.frames[1]).toEqual([4, 6, 3]);
+        expect(game.frames[2]).toEqual([3]);
+        expect(game.score()).toEqual(30);
+      })
+    })
+
+    describe('final frame', function () {
+      it('should allow a second bowl if the first bowl is a strike', function () {
+        new Array(18).fill(null).forEach(function () {
+          game.bowl(4)
+        })
+        game.bowl(10)
+        console.log(game)
+        game.bowl(9)
+        console.log(game)
+        expect(game.frames[9]).toEqual([10, 9]);
+        expect(game.score()).toEqual(91);
+      })
+    })
+  })
 })

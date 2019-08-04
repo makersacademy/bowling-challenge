@@ -1,0 +1,38 @@
+/* body {
+  background-image: url(https://i.etsystatic.com/7580913/r/il/e1ce40/1817823675/il_fullxfull.1817823675_ohvh.jpg);
+  background-size: cover;
+} */
+
+h1 {
+  font-size: 40px;
+  font-family: 'Bungee Shade';
+  text-align: center;
+  color: #3b281b;
+}
+
+.myDiv {
+    position: relative;
+    z-index: 1;
+}
+
+.myDiv .bg {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url(https://i.etsystatic.com/7580913/r/il/e1ce40/1817823675/il_fullxfull.1817823675_ohvh.jpg) center center;
+    opacity: .4;
+    width: 600px;
+    height: 700px;
+}
+
+@font-face {
+    font-family: 'stripedshadowsregular';
+    src: url('stripedshadows-webfont.woff2') format('woff2'),
+         url('stripedshadows-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}

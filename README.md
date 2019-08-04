@@ -1,4 +1,4 @@
-#A Bowling Scorecard and UI for multiple players
+# A Bowling Scorecard and UI for multiple players
 
 Built in my 5th week of learning to code for a weekend challenge @ makers academy
 

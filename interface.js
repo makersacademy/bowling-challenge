@@ -1,64 +1,75 @@
 $(document).ready(function() {
   var game = new Game();
-  updateScore();
+  updateDisplay();
 
   $("#one-pin").click(function() {
     game.bowl(1)
-    updateScore();
+    updateDisplay();
   });
 
   $("#two-pins").click(function() {
     game.bowl(2)
-    updateScore();
+    updateDisplay();
   });
 
   $("#three-pins").click(function() {
     game.bowl(3)
-    updateScore();
+    updateDisplay();
   });
 
   $("#four-pins").click(function() {
     game.bowl(4)
-    updateScore();
+    updateDisplay();
   });
 
   $("#five-pins").click(function() {
     game.bowl(5)
-    updateScore();
+    updateDisplay();
   });
 
   $("#six-pins").click(function() {
     game.bowl(6)
-    updateScore();
+    updateDisplay();
   });
 
   $("#seven-pins").click(function() {
     game.bowl(7)
-    updateScore();
+    updateDisplay();
   });
 
   $("#eight-pins").click(function() {
     game.bowl(8)
-    updateScore();
+    updateDisplay();
   });
 
   $("#nine-pins").click(function() {
     game.bowl(9)
-    updateScore();
+    updateDisplay();
   });
 
   $("#ten-pins").click(function() {
     game.bowl(10)
-    updateScore();
+    updateDisplay();
   });
 
   $("#reset-game").click(function() {
     game = new Game();
-    updateScore();
+    updateDisplay();
   });
 
-  function updateScore() {
+  function updateDisplay() {
     $("#score").text(game.score());
+    $("#currentFrameIndex").text(game.currentFrameIndex + 1);
     console.log(game)
+    var frameList = ""
+    game.frames.forEach(function (frame) {
+      frameList += (JSON.stringify(frame) + " - ")
+    })
+    $("#frames").text(frameList);
   };
+
+  // function updateFrameIndex() {
+  //   $("#currentFrameIndex").text(game.currentFrameIndex + 1);
+  //   $("#currentFrame").text(JSON.stringify(game.frames[game.currentFrameIndex]));
+  // }
 })

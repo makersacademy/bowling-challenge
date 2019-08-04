@@ -141,12 +141,7 @@ $( document ).ready(function() {
     $("#throwNumber").text(game.throwNumber);
     $("#score").text(game.displayTotal);
     $("#scorecard").text(game.frameRunningTotals);
-    // $.each(game.displayThrows, function( index, value ){
-    //   $('#throws').text(value);
-    // });
-
     $("#throws").text(game.displayThrows);
-
     if (game.throwNumber === 1 || game.throwNumber === 3) {
       showAllButtons()
     }

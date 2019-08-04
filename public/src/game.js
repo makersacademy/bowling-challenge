@@ -41,7 +41,7 @@ Game.prototype.normalThrow = function(score, index) {
   this.checkForSparePrevs(score, index);
 
   if (index > 0 && this.throwNumber === 2 &&
-    score + this.throws[index - 1] !== 10) {
+    !this.isSpare(score, index)) {
     this.showTotal += score + this.throws[index - 1];
   }
 
@@ -67,12 +67,12 @@ Game.prototype.frameTenThrowTwo = function(score, index) {
   this.frameRunningTotals[9] += score;
 
   // If not a strike prevs or a spare remove last bonus throw
-  if (this.throws[index - 1] !== 10 && this.throws[index - 1] + score < 10) {
+  if (!this.isStrike(this.throws[index - 1]) && this.throws[index - 1] + score < 10) {
     this.throwsRemaining -= 1;
   }
 
   // check for PrevsPrevsStrikeAlternative
-  if (this.throws[index - 2] === 10) {
+  if (this.isStrike(this.throws[index - 2])) {
     this.totalScore += score;
     this.frameRunningTotals[8] += score;
     this.showTotal += this.frameRunningTotals[8];
@@ -93,7 +93,7 @@ Game.prototype.frameTenThrowThree = function(score, index) {
 };
 
 Game.prototype.reduceThrowsRemaining = function(score) {
-  if (score === 10 && this.throwsRemaining > 3) {
+  if (this.isStrike(score) && this.throwsRemaining > 3) {
     this.throwsRemaining -= 2;
   } else {
     this.throwsRemaining -= 1;
@@ -110,17 +110,17 @@ Game.prototype.checkForSparePrevs = function(score, index) {
 };
 
 Game.prototype.checkForStrikePrevs = function(score, index) {
-  if (index > 0 && this.throws[index - 1] === 10) {
+  if (index > 0 && this.isStrike(this.throws[index - 1])) {
     this.totalScore += score;
     this.frameRunningTotals[this.frameNumber - 2] += score;
   }
 };
 
 Game.prototype.checkForStrikePrevsPrevs = function(score, index, frameIndex) {
-  if (index > 1 && this.throws[index - 2] === 10) {
+  if (index > 1 && this.isStrike(this.throws[index - 2])) {
     this.totalScore += score;
     this.showTotal += score + this.throws[index - 1] + 10
-    if (this.throws[index -1] === 10) {
+    if (this.isStrike(this.throws[index -1])) {
       this.frameRunningTotals[this.frameNumber - 3] += score;
     } else {
       this.frameRunningTotals[frameIndex - 2] += score;
@@ -139,9 +139,9 @@ Game.prototype.addToFrameTotals = function(score) {
 Game.prototype.addScore = function(score, index) {
   this.totalScore += score;
   this.throws.push(score);
-  if (score === 10) {
+  if (this.isStrike(score)) {
     this.showThrows.push("X")
-  } else if (this.throwNumber === 2 && score + this.throws[index - 1] === 10) {
+  } else if (this.throwNumber === 2 && this.isSpare(score,index)) {
     this.showThrows.push("/")
   } else {
     this.showThrows.push(score)
@@ -157,4 +157,21 @@ Game.prototype.resetGame = function() {
   this.showTotal = 0;
   this.frameNumber = 1;
   this.throwNumber = 1;
+};
+
+
+Game.prototype.isStrike = function (score) {
+  if (score === 10) {
+    return true
+  } else {
+    return false
+  }
+};
+
+Game.prototype.isSpare = function (score, index) {
+  if (score + this.throws[index - 1] === 10) {
+    return true
+  } else {
+    return false
+  }
 };

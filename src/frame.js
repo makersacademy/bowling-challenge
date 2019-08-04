@@ -29,15 +29,24 @@ Frame.prototype.bowl = function (pinsKnockedDown) {
   }
 };
 
-// ClassName.prototype.lastFrameBowl = function (pinsKnockedDown) {
-//   this._currentRoll++
-//   if (this._currentRoll == 1) {
-//     this._pins -= pinsKnockedDown
-//     this.firstBowl = pinsKnockedDown
-//   } else if (this._currentRoll == 2) {
-//
-//   }
-// };
+Frame.prototype.lastFrameBowl = function (pinsKnockedDown) {
+  this._currentRoll++
+  if (this._currentRoll == 1) {
+    this._pins -= pinsKnockedDown
+    this.firstBowl = pinsKnockedDown
+  } else if (this._currentRoll == 2) {
+    if (pinsKnockedDown > this._pins) throw new Error(`Error! There are only ${this._pins} pin(s) left.`);
+    this._pins -= pinsKnockedDown
+    this.secondBowl = pinsKnockedDown
+  } else if (this._currentRoll == 3) {
+    if (pinsKnockedDown > this._pins) throw new Error(`Error! There are only ${this._pins} pin(s) left.`);
+    this._pins -= pinsKnockedDown
+    this.lastBowl = pinsKnockedDown
+  } else {
+    throw new Error('No rolls left!');
+  }
+};
+
 
 Frame.prototype.isStrike = function () {
   if (this.firstBowl == 10) {
@@ -83,7 +92,7 @@ Frame.prototype.lastFrameIsFinished = function () {
     return true;
   } else if (this.firstBowl < 10 && this.secondBowl == (10 - this.firstBowl) && this.lastBowl != null) {
     return true;
-  } else if (this.secondBowl != null) {
+  } else if (this.firstBowl < 10 && this.secondBowl != null && (this.firstBowl + this.secondBowl != 10)) {
     return true
   }
   return false

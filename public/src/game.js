@@ -59,6 +59,7 @@ Game.prototype.normalThrow = function(score, index) {
 
 Game.prototype.frameTenThrowTwo = function(score, index) {
 
+  console.log("FRAME TEN THROW TWO")
   this.frameNumber = 10
   this.addScore(score);
 
@@ -73,12 +74,12 @@ Game.prototype.frameTenThrowTwo = function(score, index) {
   if (this.throws[index - 2] === 10) {
     this.totalScore += score;
     this.frameRunningTotals[8] += score;
-    this.showTotal = this.totalScore;
+    this.showTotal += this.frameRunningTotals[8];
   }
-
-  if (this.throwsRemaining % 2 === 0 && score + this.throws[index - 1] !== 10) {
-    this.showTotal = this.totalScore;
-  }
+  //
+  // if (this.throwsRemaining % 2 === 0 && score + this.throws[index - 1] !== 10) {
+  //   this.showTotal += score + this.throws[index - 1];
+  // }
 
   this.throwsRemaining -= 1;
   index += 1;

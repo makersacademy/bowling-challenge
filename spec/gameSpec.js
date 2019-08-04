@@ -78,7 +78,9 @@ describe("Game", function() {
 
     it("total score 300 for perfect game", function() {
       manyThrows(10, 10);
+      expect(game.showTotal).toEqual(240)
       game.throw(10);
+      expect(game.showTotal).toEqual(270)
       game.throw(10);
       expect(game.totalScore).toEqual(300);
       expect(game.throwsRemaining).toEqual(0);

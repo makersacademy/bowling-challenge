@@ -1,8 +1,14 @@
+body {
+  font-family: 'Questrial', sans-serif;
+  font-family: 'Darker Grotesque', sans-serif;
+
+}
+
 button {
-  background-color: #4CAF50; /* Green */
-  border: 2px solid #4CAF50;
+  background-color: #FFFFFF;
+  border: 2px solid #000000;
   border-radius: 100px;
-  color: white;
+  color: #cc0000;
   padding: 10px 25px;
   text-align: center;
   text-decoration: none;
@@ -12,14 +18,20 @@ button {
 }
 
 #reset {
-    background-color: #4CAF50; /* Green */
+    background-color: #FFFFFF;
     border: 2px solid #000000;
-    border-radius: 50px;
-    color: white;
+    border-radius: 100px;
+    color: #cc0000;
     padding: 10px 25px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 40px;
-  }
+}
+
+.header {
+  background-color: #feb87c;
+  padding: 10px 15px;
+  text-align: center;
+
 }

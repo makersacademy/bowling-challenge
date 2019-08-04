@@ -26,14 +26,14 @@ Game:
     * index = 0
     * frameRunningTotals = e.g. [20, 35, 45, etc]
     * totalScore
-    * showTotal
+    * displayTotal
     * frameIndex
   * Methods:
     * .throw(score)
 
 ```
 
-### Algorithm in psudeo code
+### Algorithm in pseudo-code
   * if throwsRemaining === 0:
   - Reset all the attributes to start a new game
   * if throwsRemaining === 2:
@@ -41,8 +41,8 @@ Game:
   * if throwsRemaining === 1:
   - Go to frame 10-throw-three procedure (see below)
   * User makes a throw - throw(score)
-  * throws.push(score)
-  * totalScore += score
+  * Add score to throws array
+  * Add score to Total Score
   * if throwsRemaining is even num:
   - frameRunningTotals.push(score)
   * else:
@@ -58,10 +58,10 @@ Game:
   -- if throws[index -2] + throws[index -1] == 10: (SPARE)
   -- totalScore += score
   -- frameRunningTotals[index - 1] += score
-  -- showTotal = total
+  -- displayTotal = total
   * add throw score to totalScore
   * unless throwsRemaining is even num OR score + throws[index -1] == 10:  (SPARE)
-  - showTotal = total
+  - displayTotal = total
   - frameRunningTotals[index -1] += score
   * index + 1
   * if throw == 10: decrease throwsRemaining by 2, else reduce by 1.

@@ -15,7 +15,7 @@ describe("Game", function() {
       expect(game.totalScore).toEqual(8);
       expect(game.throws).toEqual([4, 4]);
       expect(game.frameRunningTotals).toEqual([8]);
-      expect(game.showTotal).toEqual(8)
+      expect(game.displayTotal).toEqual(8)
     });
 
     it("records a strike correctly with bonus rolls", function() {
@@ -25,7 +25,7 @@ describe("Game", function() {
       expect(game.totalScore).toEqual(14);
       expect(game.throws).toEqual([10, 1, 1]);
       expect(game.frameRunningTotals).toEqual([12, 2]);
-      expect(game.showTotal).toEqual(14);
+      expect(game.displayTotal).toEqual(14);
     });
 
     it("records a multiple strikes correctly with bonus rolls", function() {
@@ -36,16 +36,30 @@ describe("Game", function() {
       expect(game.throws).toEqual([10, 10, 10]);
       expect(game.throwsRemaining).toEqual(15);
       expect(game.frameRunningTotals).toEqual([30, 20, 10]);
-      expect(game.showTotal).toEqual(30)
+      expect(game.displayTotal).toEqual(30)
+    });
+
+    it("records a 10 on second throw as a spare", function() {
+      game.throw(0);
+      game.throw(10);
+      expect(game.displayTotal).toEqual(0)
+      game.throw(1);
+      expect(game.displayTotal).toEqual(11)
+      game.throw(1);
+      expect(game.displayTotal).toEqual(13)
+      expect(game.totalScore).toEqual(13);
+      expect(game.throws).toEqual([0, 10, 1, 1]);
+      expect(game.throwsRemaining).toEqual(17);
+      expect(game.frameRunningTotals).toEqual([11, 2]);
     });
 
     it ("records spares and bonus rolls correctly", function() {
       throwSpare();
-      expect(game.showTotal).toEqual(0);
+      expect(game.displayTotal).toEqual(0);
       game.throw(1);
       game.throw(0);
       expect(game.totalScore).toEqual(12);
-      expect(game.showTotal).toEqual(12);
+      expect(game.displayTotal).toEqual(12);
     });
 
     it("records multiple strikes and spares with bonus rolls", function() {
@@ -78,13 +92,13 @@ describe("Game", function() {
 
     it("total score 300 for perfect game", function() {
       manyThrows(10, 10);
-      expect(game.showTotal).toEqual(240)
+      expect(game.displayTotal).toEqual(240)
       game.throw(10);
-      expect(game.showTotal).toEqual(270)
+      expect(game.displayTotal).toEqual(270)
       game.throw(10);
       expect(game.totalScore).toEqual(300);
       expect(game.throwsRemaining).toEqual(0);
-      expect(game.showTotal).toEqual(300)
+      expect(game.displayTotal).toEqual(300)
     });
 
     it("correctly handles spare in frame 10", function() {

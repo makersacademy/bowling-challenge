@@ -1,7 +1,6 @@
 body {
   font-family: 'Questrial', sans-serif;
   font-family: 'Darker Grotesque', sans-serif;
-
 }
 
 button {
@@ -14,7 +13,6 @@ button {
   text-decoration: none;
   display: inline-block;
   font-size: 30px;
-
 }
 
 #reset {
@@ -33,12 +31,11 @@ button {
   background-color: #f2e6d9;
   padding: 10px 15px;
   text-align: center;
-
 }
 
 .scorecard {
   background-color: #fff5e6;
   padding: 10px 15px;
   text-align: center;
-
+  font-size: 18px;
 }

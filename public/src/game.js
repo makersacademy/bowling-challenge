@@ -25,16 +25,15 @@ Game.prototype.throw = function(score) {
   } else {
     this.normalThrow(score, index);
   }
+  console.log(this)
 };
 
 Game.prototype.normalThrow = function(score, index) {
   this.addScore(score, index);
   this.addToFrameTotals(score);
 
-  var frameIndex = this.frameRunningTotals.length;
-
   this.checkForStrikePrevs(score, index);
-  this.checkForStrikePrevsPrevs(score, index, frameIndex);
+  this.checkForStrikePrevsPrevs(score, index);
   this.checkForSparePrevs(score, index);
 
   if (index > 0 && this.throwNumber === 2 &&
@@ -98,10 +97,11 @@ Game.prototype.frameTenThrowThree = function(score, index) {
   } else {
     this.displayThrows.push(score)
   }
-  this.frameRunningTotals[-1] += score;
+  this.frameRunningTotals[9] += score;
   this.throwsRemaining -= 1;
   this.displayTotal = this.totalScore
   index += 1;
+  this.throwNumber = "END OF GAME"
 };
 
 Game.prototype.reduceThrowsRemaining = function(score) {

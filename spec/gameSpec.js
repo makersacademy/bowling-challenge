@@ -120,5 +120,4 @@ describe("Game", function() {
     game.throw(5);
     game.throw(5);
   }
-
 });

@@ -24,5 +24,4 @@ describe ('Frame', function(){
       frame.rollOneToNine(0,0)
       expect
     });
-
 });

@@ -1,0 +1,217 @@
+body {
+    height: 100%;
+    background-image: url("/images/bowling.jpg");
+    max-width: 100%;
+    max-height: 95%;
+    padding: 0px;
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-attachment: scroll;
+    background-size: cover;
+    font-family:'Open Sans',sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* html {
+    height: 100%;
+  }
+  #header {
+    width:100%;
+    height: 10%;
+    top:0;
+    left:0;
+    position:fixed;
+    padding:0;
+    background:#7f7f7f;
+    background:rgba(255,255,255,0.6);
+    z-index:9999;
+    overflow:visible
+  }
+  
+  #links {
+    position: relative;
+    right: 0;
+    float: right;
+    padding-right: 20px
+  }
+  
+  #footer {
+    width:100%;
+    height: 8%;
+    bottom: 0;
+    left:0;
+    position:fixed;
+    padding: 0px;
+    background:#7f7f7f;
+    background:rgba(255,255,255,0.6);
+    z-index:9999;
+    overflow:visible;
+    align-content: center;
+  }
+  
+  #home-container {
+    border-radius: 30px;
+    background:#7f7f7f;
+    background:rgba(255,255,255,0.6);
+    width: 30%;
+    height: 80%;
+    position: relative;
+    left: 50%;
+    top: 5%;
+    transform: translate(-50%);
+    padding: 5px;
+  }
+  
+  #body-container {
+    display: flex;
+    background:#7f7f7f;
+    background:rgba(255,255,255,0.6);
+    width: 100%;
+    height: 100%;
+    margin-left: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0px;
+  }
+  
+  #left-third {
+    display: flex;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    display: block;
+    padding-top: 50px;
+    text-align: center;
+  }
+  
+  #right-third {
+    display: flex;
+    overflow-y: auto;
+    top: 10%;
+    right: 0px;
+    bottom: 0%;
+    height: 80%;
+    width: 40%;
+    position: fixed;
+    display: block;
+    padding-top: 0px;
+    text-align: center;
+  }
+  
+  #list-element {
+    background-color: white;
+    border-radius: 12px;
+    width: 90%;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    padding-top: 5px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  #welcome-header {
+    position: absolute;
+    border-radius: 30px;
+    height: 10%;
+    width: 100%;
+    top: 0;
+    margin: 0;
+    bottom: 0px;
+    left: 0;
+  }
+  
+  #left-choice {
+    left: 0;
+    position: absolute;
+    width: 50%;
+    bottom: 0;
+    padding: 2px;
+  }
+  
+  #right-choice {
+    right: 0;
+    position: absolute;
+    width: 50%;
+    bottom: 0;
+    padding: 2px;
+  }
+  
+  #welcome-hello {
+    position: relative;
+    top: 0;
+    width: 100%;
+  }
+  
+  #welcome-menu {
+    bottom: 2px;
+    margin-top: 2px;
+    left: 0;
+    height: 10%;
+    width: 100%;
+    position: absolute;
+  }
+  
+  #welcome-picture {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    left: 0;
+    top: 12%;
+  }
+  
+  #welcome-image {
+    width: 100%;
+  }
+  
+  #space-image {
+    margin: 0;
+    position: relative;
+  }
+  
+  #space-footer {
+    margin-top: -5%;
+    padding-top: 0px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  
+  
+  input[type=submit] {
+    border: #474747;
+    background-color: #d6d6d6;
+    color: #474747;
+    transition-duration: 0.4s;
+    align-content: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+  }
+  
+  .dateNA {
+    background-color: red;
+  }
+  
+  input[type=submit]:hover {
+    border: #474747;
+    background-color: #737373;
+    color: #d6d6d6;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    align-content: center;
+    border-radius: 5px;
+  }
+  
+  h1,
+  h2,
+  h3 {
+    text-align: center;
+  } */

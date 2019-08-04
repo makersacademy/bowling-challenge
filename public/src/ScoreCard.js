@@ -1,7 +1,6 @@
 function ScoreCard(){
 
 };
-
 ScoreCard.prototype.spares = function(arr){
   return arr.map(function(item, index){
     if(item.reduce(function(a,b){return a+b}) === 10 && !item.includes(10)) {
@@ -27,17 +26,17 @@ ScoreCard.prototype.spares = function(arr){
   }
 });
 };
-
+// change this so that the array isn't merged
 ScoreCard.prototype.strikes = function(arr) {
-  var merged = [].concat.apply([], arr);
-  merged
-  return strikes = merged.map(function(item, index){
-    if(item === (10)){
-    return item + merged[index+1] + merged[index+2]
+  return arr.map(function(item, index){
+    if(item[0] === (10) && item.length < 3){
+     return item.concat(arr[index+1])
   } else {
      return "no"
   }
-});
+}).map(function(item, index) {
+  return item !== "no" ? item.reduce(function(a,b){return a+b}) : item;
+})
 };
 
 ScoreCard.prototype.normalScores = function(arr) {

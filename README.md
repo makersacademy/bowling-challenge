@@ -2,9 +2,9 @@
 
 Built in my 5th week of learning to code for a weekend challenge @ makers academy
 
-![in action]('/docs/example.gif')
+![in action]('example.gif')
 
-![responsiveness]('/docs/responsive.gif')
+![responsiveness]('responsive.gif')
 
 - model powered by javascript
 - interface powered by jQuery

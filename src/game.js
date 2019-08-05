@@ -14,6 +14,7 @@ Game.prototype.add = function(frame) {
   this._frames.push(frame);
   this._totalScore += frame.frameScore();
   this._currentFrame += 1;
+  nextFrame = new Frame((this._currentFrame + 1))
 };
 
 Game.prototype.totalScore = function() {

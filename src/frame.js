@@ -8,7 +8,21 @@ function Frame() {
   this._spare = false;
   this._finalFrame = false;
   this._frameOver = false;
+  this._currentFrame = 1;
 };
+
+Frame.prototype.reset = function() {
+  this._rolls = [];
+  this._pinsRemaining = 10;
+  this._pinScore = 0;
+  this._bonus = 0;
+  this._frameScore = 0;
+  this._strike = false;
+  this._spare = false;
+  this._finalFrame = false;
+  this._frameOver = false;
+  this._currentFrame += 1;
+}
 
 Frame.prototype.add = function(roll) {
   this._rolls.push(roll);
@@ -45,7 +59,10 @@ Frame.prototype.addPoints = function(points) {
 //   }
 // };
 
-Frame.prototype.updateStatus = function(roll) {
+Frame.prototype.updateStatus = function(roll, game) {
+  if (this._currentFrame === 10) {
+    this._finalFrame = true;
+  };
   if (roll.score() === 10) {
     this._stike = true;
     this.endFrame();
@@ -53,6 +70,8 @@ Frame.prototype.updateStatus = function(roll) {
     this._spare = true;
     this.endFrame();
   } else if ((this._rolls.length === 2) && (this._finalFrame === false)) {
+    this.endFrame();
+  } else if ((this._rolls.length === 3 ) && (this._finalFrame === true)) {
     this.endFrame();
   } else {
     null;

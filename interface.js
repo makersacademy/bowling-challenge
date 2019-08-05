@@ -1,6 +1,6 @@
 $(document).ready(function() {
   var game = new Game();
-  var roll = new Roll(7,1);
+  var roll = new Roll(5,1);
   var frame = new Frame();
   updateFrame();
 
@@ -8,8 +8,7 @@ $(document).ready(function() {
     frame.add(roll);
     if (frame._frameOver === true){
       game.add(frame);
-      frame = new Frame();
-      // var frame = new Frame(); this causes
+      frame.reset();
     }
     updateFrame();
   });

@@ -111,9 +111,7 @@ $(document).ready(function() {
     updateFrames();
   });
 
-  $('#remove').click(function() {
-    updateFrames();
-  });
+  
   //
   // $('#restore').click(function() {
   //   restoreButtons();

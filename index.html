@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+<!-- <div  id="bg">
+<img src="bowlingpins.jpg" alt="">
+</div> -->
+
+<head>
+
+<title> Bowling Score Card </title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css">
+<link href="public/css/styles.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+<h1 class="title has-text-centered" id="title">Bowling Scorecard</h1>
+
+  <section>
+
+    <div class="container add-top-margin">
+  <div class="columns is-centered">
+    <div class="column add-padding is-narrow box has-background-white box-radius box-shadow">
+
+    <table class='table  is-striped'>
+<tr>
+  <th>Frame</th>
+  <th>Roll 1</th>
+  <th>Roll 2</th>
+</tr>
+<tr>
+  <td>1</td>
+
+
+  <td><select id="frame-1-roll-1" name="frame1roll1" >
+    <option value =""> Enter score</option>
+    <option value=0>0</option>
+    <option value=1>1</option>
+    <option value=2>2</option>
+    <option value=3>3</option>
+    <option value=4>4</option>
+    <option value=5>5</option>
+    <option value=6>6</option>
+    <option value=7>7</option>
+    <option value=8>8</option>
+    <option value=9>9</option>
+    <option value=10>10</option>
+  </select></td>
+
+  <td><select id="frame-1-roll-2">
+    <option value =""> Enter score</option>
+    <option value=0>0</option>
+    <option value=1>1</option>
+    <option value=2>2</option>
+    <option value=3>3</option>
+    <option value=4>4</option>
+    <option value=5>5</option>
+    <option value=6>6</option>
+    <option value=7>7</option>
+    <option value=8>8</option>
+    <option value=9>9</option>
+    <option value=10>10</option>
+  </select></td>
+  <td>
+    <button type="submit" id="frame-1-add">Add</button>
+    </td>
+
+
+
+
+
+</tr>
+
+<tr>
+  <td>2</td>
+
+  <td><select id="frame-2-roll-1">
+    <option value =""> Enter score</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select></td>
+  <td><select id="frame-2-roll-2">
+    <option value =""> Enter score</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select></td>
+  <td>
+    <button id="frame-2-add">Add</button>
+    </td>
+
+</tr>
+
+
+<tr>
+  <td>3</td>
+  <td><select id="frame-3-roll-1">
+    <option value =""> Enter score</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select></td>
+  <td><select id="frame-3-roll-2">
+    <option value =""> Enter score</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select></td>
+  <td>
+    <button id="frame-3-add">Add</button>
+    </td>
+</tr>
+
+<tr>
+  <td>4</td>
+  <td><select id="frame-4-roll-1">
+    <option value =""> Enter score</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select></td>
+  <td><select id="frame-4-roll-2">
+    <option value =""> Enter score</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select></td>
+  <td>
+    <button id="frame-4-add">Add</button>
+    </td>
+</tr>
+
+<tr>
+  <td>5</td>
+  <td><select id="frame-5-roll-1">
+    <option value =""> Enter score</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select></td>
+  <td><select id="frame-5-roll-2">
+    <option value =""> Enter score</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select></td>
+  <td>
+    <button id="frame-5-add">Add</button>
+    </td>
+</tr>
+
+<tr>
+  <td>6</td>
+  <td><select id="frame-6-roll-1">
+    <option value =""> Enter score</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select></td>
+  <td><select id="frame-6-roll-2">
+    <option value =""> Enter score</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select></td>
+  <td>
+    <button id="frame-6-add">Add</button>
+    </td>
+</tr>
+
+<tr>
+  <td>7</td>
+  <td><select id="frame-7-roll-1">
+    <option value =""> Enter score</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select></td>
+  <td><select id="frame-7-roll-2">
+    <option value =""> Enter score</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select></td>
+  <td>
+    <button id="frame-7-add">Add</button>
+    </td>
+</tr>
+
+<tr>
+  <td>8</td>
+  <td><select id="frame-8-roll-1">
+    <option value =""> Enter score</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select></td>
+  <td><select id="frame-8-roll-2">
+    <option value =""> Enter score</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select></td>
+  <td>
+    <button id="frame-8-add">Add</button>
+    </td>
+</tr>
+
+<tr>
+  <td>9</td>
+  <td><select id="frame-9-roll-1">
+    <option value =""> Enter score</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select></td>
+  <td><select id="frame-9-roll-2">
+    <option value =""> Enter score</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select></td>
+  <td>
+    <button id="frame-9-add">Add</button>
+    </td>
+</tr>
+
+<tr>
+  <td>10</td>
+  <td><select id="frame-10-roll-1">
+    <option value =""> Enter score</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select></td>
+  <td><select id="frame-10-roll-2">
+    <option value =""> Enter score</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select></td>
+  <td>
+    <button id="frame-10-add">Add</button>
+    </td>
+</tr>
+
+
+
+<tr>
+
+  <td id="bonus-1-title">Bonus!</td>
+  <td ><select id="bonus-roll-1" >
+    <option value =""> Enter score</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select></td>
+
+  <td ><select id="bonus-roll-2">
+    <option value =""> Enter score</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select></td>
+  <td>
+    <button class="bonusone" id="bonus-add">Add</button>
+    </td>
+</tr>
+
+<tr>
+    <td class="bonustwo">Bonus!</td>
+    <td class="bonustwo"><select id="bonus-2">
+      <option value =""> Enter score</option>
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select></td>
+    <td>
+      <button class="bonustwo" id="bonus-2-add">Add</button>
+      </td>
+    <!-- when spare in tenth, only one of the bonus roll inputs appear. when its a strike, both bonus inputs appear. -->
+</tr>
+
+</table>
+<div class="container add-top-margin">
+  <div class="columns is-centered">
+    <div class="column add-padding is-narrow box has-background-white box-radius box-shadow">
+<button id="reset">Play again</button>
+
+<br>
+<br>
+
+<h1 class="score">Current score: <span class="current-score">0</span></h1>
+<br>
+<h1 class="final-score">Final score: <span class="current-score">0</span></h1>
+
+
+    </section>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<script src="src/bowlingCl.js"> </script>
+
+<!-- <script>
+
+
+  $( "#frame_1" ).validate({
+    rules: {
+        frame-1-roll-1: { required: true }
+    }
+});
+
+  function checkforblank(){
+        if (document.getElementByID('#frame-1-roll-1').value== "Please select score") {
+          alert('Please enter score!');
+            document.getElementById('#frame-1-roll-1').style.borderColor = "red";
+            return false;
+        }
+      }  -->
+
+  <!-- </script> -->
+
+
+<script src="jquery/jquery.js">
+
+  // $(document).getElementById('#frame-1-roll-1').validity.valid { alert('missing surname'); return }
+
+    // work out how to do in order i.e. cant click 2nd frame add unless first is done
+
+    </script>
+
+  </body>
+
+  </html>

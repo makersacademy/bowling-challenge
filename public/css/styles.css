@@ -1,0 +1,25 @@
+/* .yo {
+  background-color: green;
+} */
+
+
+
+/* .bonusone {
+  visibility: hidden;
+}
+
+/* .bonustwo {
+  visibility: hidden;
+} */
+.final-score {
+  display: none;
+  color: green;
+  font-size: 30px;
+}
+/* .bonusoneb {
+  display: none;
+} */
+#title {
+  margin-top: 25px;
+  margin-bottom: 50px;
+}

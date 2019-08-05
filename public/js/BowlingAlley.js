@@ -40,6 +40,15 @@ function BowlingAlley() {
       this.clearBonus();
     }
 
+    this.gameOver = function() {
+      if(this.round > 10) {
+        console.log("Game Over");
+        return true;
+      } else {
+        return false;
+      }
+    }
+
     this.bonusScore = function(a, b) {
       var points = a + b;
       this.player.getFrameRecord()[(this.round-1)].bonusScore = points;
@@ -81,7 +90,7 @@ function BowlingAlley() {
     this.pinHit = function() {
         this.pins = this._defaultPins;
         // this.spareFlag || this.strikeFlag ? this.calculator() : console.log("No bonus yet");
-        while(this.frameCount != 3) {
+        while(this.frameCount != 3 && !this.gameOver()) {
             this.frameCount += 1;
             if(this.frameCount == 1) {
                 var frameOne = this.randPinHit();  //number of pins knocked down

@@ -7,6 +7,7 @@ $(document).ready(function() {
     console.log('BOO! You hit none!');
     updateButtons();
     placeScore(0);
+    updateFrames();
   });
 
   $('#one').click(function() {
@@ -16,6 +17,7 @@ $(document).ready(function() {
     setTimeout(restoreButtons, 10);
     placeScore(1);
     counter++
+    updateFrames();
   });
 
   $('#two').click(function() {
@@ -25,6 +27,7 @@ $(document).ready(function() {
     setTimeout(restoreButtons, 10);
     placeScore(2);
     counter++
+    updateFrames();
   });
 
   $('#three').click(function() {
@@ -34,6 +37,7 @@ $(document).ready(function() {
     setTimeout(restoreButtons, 10);
     placeScore(3);
     counter++
+    updateFrames();
   });
 
   $('#four').click(function() {
@@ -43,6 +47,7 @@ $(document).ready(function() {
     setTimeout(restoreButtons, 10);
     placeScore(4);
     counter++
+    updateFrames();
   });
 
   $('#five').click(function() {
@@ -52,6 +57,7 @@ $(document).ready(function() {
     setTimeout(restoreButtons, 10);
     placeScore(5);
     counter++
+    updateFrames();
   });
 
   $('#six').click(function() {
@@ -61,6 +67,7 @@ $(document).ready(function() {
     setTimeout(restoreButtons, 10);
     placeScore(6);
     counter++
+    updateFrames();
   });
 
   $('#seven').click(function() {
@@ -70,6 +77,7 @@ $(document).ready(function() {
     setTimeout(restoreButtons, 10);
     placeScore(7);
     counter++
+    updateFrames();
   });
 
   $('#eight').click(function() {
@@ -79,6 +87,7 @@ $(document).ready(function() {
     setTimeout(restoreButtons, 10);
     placeScore(8);
     counter++
+    updateFrames();
   });
 
   $('#nine').click(function() {
@@ -88,6 +97,7 @@ $(document).ready(function() {
     setTimeout(restoreButtons, 10);
     placeScore(9);
     counter++
+    updateFrames();
   });
 
   $('#ten').click(function() {
@@ -98,15 +108,16 @@ $(document).ready(function() {
       counter++
     }
     counter++;
+    updateFrames();
   });
 
   $('#remove').click(function() {
-    updateButtons();
+    updateFrames();
   });
-
-  $('#restore').click(function() {
-    restoreButtons();
-  });
+  //
+  // $('#restore').click(function() {
+  //   restoreButtons();
+  // });
 
   var button = {};
   button[0] = 'zero';
@@ -153,5 +164,18 @@ $(document).ready(function() {
     }
   }
 
-  
+  function updateFrames() {
+    game.frameTotal();
+    for (var i = 1; i < 11; i++) {
+      frame = ("tot" + i);
+      if (game._frameTotals[i-1] === (undefined)) {
+        document.getElementById( frame ).innerHTML = "-";
+      } else {
+        document.getElementById( frame ).innerHTML = game._frameTotals[i-1];
+      }
+    }
+    document.getElementById( 'total' ).innerHTML = 'Your score is ' + game.calculateTotal();
+  }
+
+
 })

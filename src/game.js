@@ -2,6 +2,7 @@ function Game() {
   this._maxNumberOfFrames = 10;
   this._frameNumber = 0;
   this._frames = [];
+  this._frameTotals = []
 };
 
 Game.prototype.maxNumberOfFrames = function () {
@@ -125,4 +126,10 @@ Game.prototype.calculateTotal = function () {
     total += (frame.firstBowl + frame.secondBowl + frame.lastBowl + frame._bonusPoints)
   });
   console.log(total);
+  return total;
+};
+
+
+Game.prototype.frameTotal = function () {
+  this._frameTotals = this._frames.map(frame => frame.firstBowl + frame.secondBowl + frame.lastBowl + frame._bonusPoints);
 };

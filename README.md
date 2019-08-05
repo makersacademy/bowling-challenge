@@ -5,7 +5,7 @@ This is my attempt at the [Makers Academy Week 5 Bowling Challenge](https://gith
 ## Approach
 * I built the bowling scorer in Javascript using TDD with Jasmine.
 
-* The back-end logic is based on their being a maximum of 21 throws in a game. If you throw a strike the number of throws remaining is reduced by 2, otherwise, throws remaining is reduced by 1. 
+* The back-end logic is based on their being a maximum of 21 throws in a game. If you throw a strike the number of throws remaining is reduced by 2, otherwise, throws remaining is reduced by 1.
 
 ## Notes to a code reviewer
 * To run the code, open the ```index.html``` file in your browser.

@@ -2,10 +2,13 @@
 
 This is my attempt at the [Makers Academy Week 5 Bowling Challenge](https://github.com/makersacademy/bowling-challenge)
 
-## Notes to a reviewer
-* If you clone the repo and run with a 'live server' from your text editor, e.g. ```atom-live-server``` then the program should run in your browser. Failing which, drop me a message and I can show you it in action!
+## Approach
+I built the bowling scorer in Javascript using TDD with Jasmine.
 
-* I have not put in guard clauses for a user entering a throw for throw two that is not allowed, as the buttons are removed by jQuery. 
+## Notes to a code reviewer
+* If you clone the repo and open the ```index.html``` page then the program should run in your browser. Failing which, drop me a message and I can show you it in action!
+
+* I have not put in guard clauses for a user entering an invalid throw (e.g. anything above ten for a a single throw or for a spare) as only valid throw buttons will be shown.
 
 * Things I would have like to have done but ran out of time:
 
@@ -13,8 +16,6 @@ This is my attempt at the [Makers Academy Week 5 Bowling Challenge](https://gith
 
 2. Make the presentation of the throws and frame total more like an actual bowling scorecard. [Example](https://www.bowlinggenius.com/)
 
-## Approach
-I built the bowling scorer in Javascript using TDD with Jasmine.  
 
 ## Domain Model/Plan
 

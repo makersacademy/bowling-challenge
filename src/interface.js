@@ -111,7 +111,7 @@ $(document).ready(function() {
     updateFrames();
   });
 
-  
+
   //
   // $('#restore').click(function() {
   //   restoreButtons();

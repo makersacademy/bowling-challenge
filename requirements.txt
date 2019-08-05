@@ -1,0 +1,22 @@
+Player initialises with a zero score
+
+Scenario: Player wants to play a game
+GIVEN: I am a player
+WHEN: when I want to play
+THEN: my score starts with zero
+
+
+Player has a frame record 
+
+Scenario: Player is mid game with some scores on the board
+GIVEN: I am a player, mid game
+WHEN: have played some rounds
+THEN: each frame is recorded
+
+
+BowlingGame has a frame count 
+
+Scenario: Playing a game of bowling
+GIVEN: A game of bowling is being played
+WHEN: in the middle of a game
+THEN: each frame is recorded

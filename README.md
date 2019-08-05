@@ -3,10 +3,16 @@
 This is my attempt at the [Makers Academy Week 5 Bowling Challenge](https://github.com/makersacademy/bowling-challenge)
 
 ## Approach
-I built the bowling scorer in Javascript using TDD with Jasmine.
+* I built the bowling scorer in Javascript using TDD with Jasmine.
+
+* The back-end logic is based on their being a maximum of 21 throws in a game. If you throw a strike the number of throws remaining is reduced by 2, otherwise, throws remaining is reduced by 1. 
 
 ## Notes to a code reviewer
-* If you clone the repo and open the ```index.html``` page then the program should run in your browser. Failing which, drop me a message and I can show you it in action!
+* To run the code, open the ```index.html``` file in your browser.
+
+* Run the Jasmine tests by opening ```SpecRunner.html``` in your browser.
+
+* Start a game by clicking the button for your first throw. A new game will start if you click for a throw after a game has finished.
 
 * I have not put in guard clauses for a user entering an invalid throw (e.g. anything above ten for a a single throw or for a spare) as only valid throw buttons will be shown.
 
@@ -23,16 +29,17 @@ I built the bowling scorer in Javascript using TDD with Jasmine.
 
 Game:
   * Attributes:
-    * throws = []
-    * displayThrows (required as Strike should show as "X" and a Spare as "/")
-    * throwsRemaining = 20
-    * index = 0
-    * frameRunningTotals = e.g. [20, 35, 45, etc]
-    * totalScore
-    * displayTotal (required because you should not display the score of a Strike or Spare frame which has not had the bonus rolls added yet)
-    * frameNumber
+    - throws = []
+    - displayThrows (required as Strike should show as "X" and a Spare as "/")
+    - throwsRemaining = 20
+    - index = 0
+    - frameRunningTotals = e.g. [20, 35, 45, etc]
+    - totalScore
+    - displayTotal (required because you should not display the score of a Strike or Spare frame which has not had the bonus rolls added yet)
+    - frameNumber
+
   * Methods:
-    * .throw(score)
+    - .throw(score)
 
 ```
 ### Algorithm in pseudo-code

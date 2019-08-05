@@ -20,10 +20,10 @@ describe("BowlingAlley", function() {
         });
     });
 
-    describe("randPinHit", function() {
-        it("calls randPinHit() and gets an int between 0-10, gives us a random pin hit count", function() {
-            bowlingAlley.randPinHit = jasmine.createSpy().and.returnValue(6);
-            expect(bowlingAlley.randPinHit()).toEqual(6);
+    describe("randomPinHit", function() {
+        it("calls randomPinHit() and gets an int between 0-10, gives us a random pin hit count", function() {
+            bowlingAlley.randomPinHit = jasmine.createSpy().and.returnValue(6);
+            expect(bowlingAlley.randomPinHit()).toEqual(6);
         });
     });
 

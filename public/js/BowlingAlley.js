@@ -65,7 +65,6 @@ function BowlingAlley() {
 
     this.lastBonus = function() {
       if(this.player.getFrameRecord()[this.round-1].bonus) {
-        debugger;
         this.calculator();
       }
     }

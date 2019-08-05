@@ -22,6 +22,43 @@ $(document).ready(function() {
   var frame10_roll1;
   var frame10_roll2;
 
+$( "#frame2_roll1" ).hide();
+$( "#frame2_roll2" ).hide();
+$( "#frame2" ).hide();
+$( "#frame2_heading" ).hide();
+$( "#frame3_roll1" ).hide();
+$( "#frame3_roll2" ).hide();
+$( "#frame3" ).hide();
+$( "#frame3_heading" ).hide();
+$( "#frame4_roll1" ).hide();
+$( "#frame4_roll2" ).hide();
+$( "#frame4" ).hide();
+$( "#frame4_heading" ).hide();
+$( "#frame5_roll1" ).hide();
+$( "#frame5_roll2" ).hide();
+$( "#frame5" ).hide();
+$( "#frame5_heading" ).hide();
+$( "#frame6_roll1" ).hide();
+$( "#frame6_roll2" ).hide();
+$( "#frame6" ).hide();
+$( "#frame6_heading" ).hide();
+$( "#frame7_roll1" ).hide();
+$( "#frame7_roll2" ).hide();
+$( "#frame7" ).hide();
+$( "#frame7_heading" ).hide();
+$( "#frame8_roll1" ).hide();
+$( "#frame8_roll2" ).hide();
+$( "#frame8" ).hide();
+$( "#frame8_heading" ).hide();
+$( "#frame9_roll1" ).hide();
+$( "#frame9_roll2" ).hide();
+$( "#frame9" ).hide();
+$( "#frame9_heading" ).hide();
+$( "#frame10_roll1" ).hide();
+$( "#frame10_roll2" ).hide();
+$( "#frame10" ).hide();
+$( "#frame10_heading" ).hide();
+
 
   $('#frame1_roll1').change(function() {
     roll1_input = $('#frame1_roll1').val();
@@ -33,13 +70,16 @@ $(document).ready(function() {
     frame1_roll2 = Number(roll2_input);
   })
 
-  $('#frame1').click(function() {
+  $('#frame1').click(function(e) {
+    e.preventDefault();
     console.log(frame1_roll1);
     console.log(frame1_roll2);
     game.frame_score(frame1_roll1, frame1_roll2);
     updateScore();
-    return false;
+    $('#frame2_show').show();
+    $('#frame1_show').hide();
   })
+
 
   $('#frame2_roll1').change(function() {
     roll1_input = $('#frame2_roll1').val();

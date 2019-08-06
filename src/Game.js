@@ -5,6 +5,7 @@ function Game(){
   this.throwCount = 0;
   this.frameCount = 0;
   this.frameScore = [];
+  this.ballLive = false;
 }
 
 Game.prototype.score = function() {
@@ -27,7 +28,6 @@ Game.prototype.score = function() {
       throwIndex += 2;
     }
   }
-
   return total
 }
 
@@ -65,18 +65,21 @@ Game.prototype.normalScore = function (throwIndex) {
   return (this.throws[throwIndex] + this.throws[throwIndex + 1])
 };
 
-Game.prototype.shot = function(throwOne, throwTwo = 0){
+Game.prototype.shot = function(throwOne){
   if (throwOne === 10){
-    this.throws.push(throwOne)
-  } else {
-  this.throws.push(throwOne, throwTwo)
-  }
+    this.frameCount += 1
+    this.ballLive = false
+  } else if (this.ballLive === true){
+    this.frameCount += 1
+    this.ballLive = false
+  } else if (this.ballLive === false){
+    this.ballLive = true
+    }
 
-  this.frameCount += 1
+  this.throws.push(throwOne)
 }
 
 Game.prototype.frameCalc = function(){
-
   if (this.frameCount > 10) {
     return this.frameCount = 10
   } else {

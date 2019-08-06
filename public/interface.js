@@ -42,14 +42,19 @@ $(document).ready(function() {
   $('#bowling_button').click(function(){
     game.shot(firstGo);
     console.log(firstGo + "first printed")
-    console.log('ten pressed')
     ongoingTotal();
   });
+  
+  $("#btn1").click(function(){
+    alert("Text: " + $("#test").text());
+  });
+  $("#btn2").click(function(){
+    alert("HTML: " + $("#test").html());
+  });
 
-  var firstGo = {
-    option1: $form.find( '#option1').val()
-  }
-
+  $(".shot").click(function(e) {
+    console.log(+this.id);
+});
 
    function ongoingTotal(){
      $('#total').text(game.score())

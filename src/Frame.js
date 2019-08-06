@@ -53,4 +53,4 @@ Frame.prototype.frameUp = function(){
   }
 }
 
-module.exports = Frame;
+// module.exports = Frame;

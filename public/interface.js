@@ -39,9 +39,16 @@ $(document).ready(function() {
     ongoingTotal();
   });
 
+  $('#bowling_button').click(function(){
+    game.shot(10);
+    console.log('ten pressed')
+    ongoingTotal();
+  });
+
 
    function ongoingTotal(){
      $('#total').text(game.score())
-     console.log('total')
+     console.log(game.score() + 'total')
+     console.log(game)
    }
  });

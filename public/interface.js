@@ -40,10 +40,15 @@ $(document).ready(function() {
   });
 
   $('#bowling_button').click(function(){
-    game.shot(10);
+    game.shot(firstGo);
+    console.log(firstGo + "first printed")
     console.log('ten pressed')
     ongoingTotal();
   });
+
+  var firstGo = {
+    option1: $form.find( '#option1').val()
+  }
 
 
    function ongoingTotal(){

@@ -10,8 +10,9 @@
   </section>
    <h1 id='total'></h1>
    <p>
-     <p><button id="one">One</button></p></a>
-     <p><button id="two">Two</button></p>
+   <select id='option1' name='option1'>
+     <p><button id="one" value=1 >One</button></p></a>
+     <p><button id="two" value=2 >Two</button></p>
      <p><button id="three">Three</button></p>
      <p><button id="four">Four</button></p></a>
      <p><button id="five">Five</button></p>
@@ -20,6 +21,7 @@
      <p><button id="eight">Eight</button></p>
      <p><button id="nine">Nine</button></p>
      <p><button id="ten">Ten</button></p>
+   </select>
      <input type="image" id="bowling_button" src="https://www.gmcrafts.co.uk/wp-content/uploads/2018/11/Bowling-Ball-Main-Product-Image.jpg" />
      <h3>Total: <span id="total"></h3>
    </p>
@@ -28,3 +30,22 @@
    <script src="interface.js"></script>
  </body>
 </html>
+
+<div class="row">
+             <div class="col-md-9" ><h5>Click Number of Pins Knocked Down</h5>
+                 <div class="btn-toolbar pinButtons" id="option1" role="toolbar">
+                     <button id="btn0" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="bottom" title="No pins knocked down" onclick="hS(0);" value="0" >0</button>
+                     <button id="btn1" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="bottom" title="1 pin knocked down" onclick="hS(1);" value="1" >1</button>
+                     <button id="btn2" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="bottom" title="2 pins knocked down" onclick="hS(2);" value="2" >2</button>
+                     <button id="btn3" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="bottom" title="3 pins knocked down" onclick="hS(3);" value="3" >3</button>
+                     <button id="btn4" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="bottom" title="4 pins knocked down" onclick="hS(4);" value="4" >4</button>
+                     <button id="btn5" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="bottom" title="5 pins knocked down" onclick="hS(5);" value="5" >5</button>
+                     <button id="btn6" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="bottom" title="6 pins knocked down" onclick="hS(6);" value="6" >6</button>
+                     <button id="btn7" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="bottom" title="7 pins knocked down" onclick="hS(7);" value="7" >7</button>
+                     <button id="btn8" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="bottom" title="8 pins knocked down" onclick="hS(8);" value="8" >8</button>
+                     <button id="btn9" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="9 pins knocked down" onclick="hS(9);" value="9" >9</button>
+                     <button id="btn10" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="10 pins knocked down" onclick="hS(10);" value="10" >10</button>
+                     <button id="btn033" type="button" class="btn btn-default pull-right" data-toggle="tooltip" data-placement="bottom"
+                             title="Click to create another game" onclick="m64tew('010C23GF011EO23875755504948');" value="start">Start Another Game &raquo;</button>
+                 </div>
+             </div>

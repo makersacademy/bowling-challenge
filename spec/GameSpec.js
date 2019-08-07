@@ -1,6 +1,7 @@
 describe('Start Game', function(){
   beforeEach(function(){
     game = new Game();
+    frame =new Frame();
   });
 
   it('Score starts at 0', function(){

@@ -14,7 +14,7 @@ function Frame() {
 Frame.prototype.next = function() {
   this._rolls = [];
   this._pinsRemaining = 10;
-  this._pinScore = 0; 
+  this._pinScore = 0;
   this._bonus = 0;
   this._frameScore = 0;
   this._strike = false;
@@ -24,11 +24,11 @@ Frame.prototype.next = function() {
   this._currentFrame += 1;
 }
 
-Frame.prototype.add = function(roll) {
-  this._rolls.push(roll);
-  this._pinScore += roll.score();
-  this._pinsRemaining -= roll.score();
-  this.updateStatus(roll);
+Frame.prototype.add = function(rollscore) {
+  this._rolls.push(rollscore);
+  this._pinScore += rollscore;
+  this._pinsRemaining -= rollscore;
+  this.updateStatus(rollscore);
 };
 
 Frame.prototype.pinsRemaining = function() {
@@ -63,7 +63,7 @@ Frame.prototype.updateStatus = function(roll) {
   if (this._currentFrame === 10) {
     this._finalFrame = true;
   };
-  if ((roll.score() === 10) && (this._finalFrame === false)) {
+  if ((roll === 10) && (this._finalFrame === false)) {
     this._stike = true;
     this.endFrame();
   } else if (this.pinScore() === 10) {
@@ -87,9 +87,9 @@ Frame.prototype.frameScore = function() {
 };
 
 Frame.prototype.strikeBonus = function(firstRoll, secondRoll) {
-  this._bonus = (firstRoll.score() + secondRoll.score());
+  this._bonus = (firstRoll + secondRoll);
 };
 
 Frame.prototype.spareBonus = function(firstRoll) {
-  this._bonus = firstRoll.score();
+  this._bonus = firstRoll;
 };

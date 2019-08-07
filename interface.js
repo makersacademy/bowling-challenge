@@ -8,7 +8,8 @@ $(document).ready(function() {
     rollScore = parseInt(this.value);
     frame.add(rollScore);
     frameNumber = frame._currentFrame;
-    $('#frame-'+frameNumber).text(rollScore)
+    tableCellId = '#frame' + frameNumber + 'roll' + frame._rolls.length;
+    $(tableCellId).text(rollScore)
     console.log(frame._pinScore);
     if (frame._frameOver === true){
       game.add(frame);
@@ -18,7 +19,6 @@ $(document).ready(function() {
     if (game._gameOver === true) {
       console.log("GAME OVER!" + game._totalScore)
     }
-    return frame;
   });
 
   function updateFrame() {

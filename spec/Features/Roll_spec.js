@@ -1,8 +1,9 @@
 describe("Roll", function() {
-  frame = new Frame();
+  game = new Game();
+  var frame = new Frame();
   it("A roll records a score for the frame", function() {
     $(document).ready(function() {
-      $('#roll10').click();
+      $('#roll1').click();
       console.log(frame);
     });
     expect(frame._pinScore).toEqual(10);

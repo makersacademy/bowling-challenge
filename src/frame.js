@@ -11,10 +11,10 @@ function Frame() {
   this._currentFrame = 1;
 };
 
-Frame.prototype.reset = function() {
+Frame.prototype.next = function() {
   this._rolls = [];
   this._pinsRemaining = 10;
-  this._pinScore = 0;
+  this._pinScore = 0; 
   this._bonus = 0;
   this._frameScore = 0;
   this._strike = false;
@@ -59,11 +59,11 @@ Frame.prototype.addPoints = function(points) {
 //   }
 // };
 
-Frame.prototype.updateStatus = function(roll, game) {
+Frame.prototype.updateStatus = function(roll) {
   if (this._currentFrame === 10) {
     this._finalFrame = true;
   };
-  if (roll.score() === 10) {
+  if ((roll.score() === 10) && (this._finalFrame === false)) {
     this._stike = true;
     this.endFrame();
   } else if (this.pinScore() === 10) {

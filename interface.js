@@ -1,13 +1,13 @@
 $(document).ready(function() {
   var game = new Game();
-  var roll = new Roll(3,1);
   var frame = new Frame();
   updateFrame();
 
-  $('#roll').click(function() {
-    frame.add(roll);
-    console.log(frame._spare)
-    console.log(frame._currentFrame)
+  // Click a roll button (0-10) to select number of pins knocked down
+  $('.rollbutton').click(function() {
+    rollScore = parseInt(this.value);
+    frame.add(rollScore);
+    console.log(frame._pinScore);
     if (frame._frameOver === true){
       game.add(frame);
       frame.next();
@@ -16,6 +16,7 @@ $(document).ready(function() {
     if (game._gameOver === true) {
       console.log("GAME OVER!" + game._totalScore)
     }
+    return frame;
   });
 
   function updateFrame() {

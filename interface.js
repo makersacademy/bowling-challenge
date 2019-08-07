@@ -7,6 +7,8 @@ $(document).ready(function() {
   $('.rollbutton').click(function() {
     rollScore = parseInt(this.value);
     frame.add(rollScore);
+    frameNumber = frame._currentFrame;
+    $('#frame-'+frameNumber).text(rollScore)
     console.log(frame._pinScore);
     if (frame._frameOver === true){
       game.add(frame);

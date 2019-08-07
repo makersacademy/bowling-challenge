@@ -50,15 +50,6 @@ Frame.prototype.addPoints = function(points) {
   }
 };
 
-// Frame.prototype.calculateBonus = function(previousFrame) {
-//   if (previousFrame === null) {
-//     null
-//   }
-//   else {
-//     previousFrame._bonus += this._score;
-//   }
-// };
-
 Frame.prototype.updateStatus = function(roll) {
   if (this._currentFrame === 10) {
     this._finalFrame = true;
@@ -76,6 +67,10 @@ Frame.prototype.updateStatus = function(roll) {
   } else {
     null;
   };
+};
+
+Frame.prototype.currentFrame = function() {
+  return this._currentFrame;
 };
 
 Frame.prototype.endFrame = function() {

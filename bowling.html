@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="public/index.css" rel="stylesheet" type="text/css">
 
     <center><h1>Bowling Scorecard</h1>
   </head>
 <body>
-  <h1>Current Frame: <span id="current-frame"></span></h1>
+  <h2>Current Frame: <span id="current-frame"></span></h2>
 
   <button class="rollbutton" id="roll0" value=0>0</button>
   <button class="rollbutton" id="roll1" value=1>1</button>
@@ -25,7 +22,35 @@
   <button class="rollbutton" id="roll9" value=9>9</button>
   <button class="rollbutton" id="roll10" value=10>10</button>
 
-
+  <p>
+  <table>
+  <tr>
+    <td>Frame:</td>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+    <td>4</td>
+    <td>5</td>
+    <td>6</td>
+    <td>7</td>
+    <td>8</td>
+    <td>9</td>
+    <td>10</td>
+  </tr>
+  <tr>
+    <td>Score:</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
   <script src="lib/jquery-3.4.1.js"></script>
   <script src="interface.js"></script>
   <script src="src/game.js"></script>

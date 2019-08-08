@@ -2,15 +2,16 @@
 
 function Game(){
   this.throws = [];
-  this.throwCount = 0;
   this.frameCount = 0;
   this.frameScore = [];
   this.ballLive = false;
+  this.scoreCard = []
 }
 
 Game.prototype.score = function() {
   var total = 0;
   var throwIndex = 0;
+  this.frameScore = []
   for (var i = 0; i < this.frameCalc(); i++) {
     if (this.rollsStrike(throwIndex)) {
       total += (this.strikeScore(throwIndex));
@@ -28,11 +29,20 @@ Game.prototype.score = function() {
       throwIndex += 2;
     }
   }
-  return total
+  // || 0 will convert any falsey value to 0
+  return total || 0
 }
 
+Game.prototype.throwScore = function (throwNumber) {
+  if (this.scoreCard[throwNumber - 1] == 10){
+    return "X"
+  } else {
+    return this.scoreCard[throwNumber - 1] }
+};
+
 Game.prototype.getFrameScore = function (frameNumber) {
-  return this.frameScore[frameNumber - 1]
+  // || 0 will convert any falsey value to 0
+  return this.frameScore[frameNumber - 1] || 0
 };
 
 Game.prototype.rollsStrike = function (throwIndex) {
@@ -66,17 +76,20 @@ Game.prototype.normalScore = function (throwIndex) {
 };
 
 Game.prototype.shot = function(throwOne){
-  if (throwOne === 10){
+  if (throwOne === 10 && this.ballLive === false){
     this.frameCount += 1
     this.ballLive = false
+    this.scoreCard.push(throwOne , 0)
   } else if (this.ballLive === true){
     this.frameCount += 1
     this.ballLive = false
-  } else if (this.ballLive === false){
+    this.scoreCard.push(throwOne)
+  } else {
     this.ballLive = true
+    this.scoreCard.push(throwOne)
     }
-
   this.throws.push(throwOne)
+
 }
 
 Game.prototype.frameCalc = function(){

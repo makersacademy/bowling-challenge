@@ -71,4 +71,31 @@ describe('Game', function(){
     expect(game.getFrameScore(1)).toBe(16)
   })
 
+  it('retrieves the score from an individual score', function(){
+    game.shot(3)
+    game.shot(5)
+    game.shot(4)
+    game.shot(2)
+    game.score()
+
+    expect(game.throwScore(1)).toBe(3)
+  })
+
+  it('retrieves the score from the third frame', function(){
+    game.shot(3)
+    game.shot(6)
+    game.shot(4)
+    game.shot(2)
+    game.shot(5)
+    game.shot(3)
+    game.shot(6)
+    game.shot(1)
+    game.score()
+    console.log(game.getFrameScore(1))
+    console.log(game.getFrameScore(3))
+    console.log(game)
+
+    expect(game.getFrameScore(3)).toBe(8)
+  })
+
 });

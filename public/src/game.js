@@ -5,6 +5,7 @@ function Game() {
   this.displayThrows = []
   this.throwsRemaining = 21;
   this.frameRunningTotals = [];
+  this.displayFrameTotals = []
   this.totalScore = 0;
   this.displayTotal = 0;
   this.frameNumber = 1;
@@ -37,6 +38,7 @@ Game.prototype.normalThrow = function(score, index) {
   if (index > 0 && this.throwNumber === 2 &&
     !this.isSpare(score, index)) {
     this.displayTotal += score + this.throws[index - 1];
+    this.displayFrameTotals.push(this.frameRunningTotals[this.frameNumber-1]);
   }
   if (this.throwNumber === 2 || this.isStrike(score) && this.throwsRemaining > 3) {
     this.frameNumber++;
@@ -81,6 +83,7 @@ Game.prototype.frameTenThrowTwo = function(score, index) {
     this.totalScore += score;
     this.frameRunningTotals[8] += score;
     this.displayTotal += this.frameRunningTotals[8];
+    this.displayFrameTotals.push(this.frameRunningTotals[8])
   }
 
   this.throwsRemaining -= 1;
@@ -99,6 +102,7 @@ Game.prototype.frameTenThrowThree = function(score, index) {
   this.frameRunningTotals[9] += score;
   this.throwsRemaining -= 1;
   this.displayTotal = this.totalScore
+  this.displayFrameTotals.push(this.frameRunningTotals[9])
   index += 1;
   this.throwNumber = "END OF GAME"
 };
@@ -117,6 +121,7 @@ Game.prototype.checkForSparePrevs = function(score, index) {
     this.totalScore += score;
     this.frameRunningTotals[this.frameNumber - 2] += score;
     this.displayTotal += score + this.throws[index - 1] + this.throws[index - 2];
+    this.displayFrameTotals.push(this.frameRunningTotals[this.frameNumber - 2])
   }
 };
 
@@ -133,8 +138,10 @@ Game.prototype.checkForStrikePrevsPrevs = function(score, index) {
     this.displayTotal += score + this.throws[index - 1] + 10
     if (this.throwNumber === 1) {
       this.frameRunningTotals[this.frameNumber - 3] += score;
+      this.displayFrameTotals.push(this.frameRunningTotals[this.frameNumber - 3])
     } else {
       this.frameRunningTotals[this.frameNumber - 2] += score;
+      this.displayFrameTotals.push(this.frameRunningTotals[this.frameNumber - 2])
     }
   }
 };
@@ -164,6 +171,7 @@ Game.prototype.resetGame = function() {
   this.displayThrows = [];
   this.throwsRemaining = 21;
   this.frameRunningTotals = [];
+  this.displayFrameTotals = []
   this.totalScore = 0;
   this.displayTotal = 0;
   this.frameNumber = 1;

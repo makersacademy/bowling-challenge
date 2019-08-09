@@ -1,7 +1,7 @@
 $( document ).ready(function() {
   var game = new Game
 
-  const speed = 300
+  const speed = 400
 
   $( "#zero" ).click(function() {
   game.throw(0);
@@ -12,7 +12,7 @@ $( document ).ready(function() {
   game.throw(1);
   updateScore();
   if (game.throwNumber === 2) {
-    $("#ten").hide(200)
+    $("#ten").hide(speed)
   }
 });
 
@@ -122,15 +122,12 @@ $( document ).ready(function() {
   });
 
   $( "#reset" ).click(function() {
-    game.resetGame();
-    updateScore();
-    showAllButtons();
-    $("#throws").text("");
+    reset();
   });
 
-  $("button").click(function() {
-    updateScore();
-  });
+  // $("button").click(function() {
+  //   updateScore();
+  // });
 
   function showAllButtons() {
     $("button").show(speed)
@@ -140,10 +137,86 @@ $( document ).ready(function() {
     $("#frameNumber").text(game.frameNumber);
     $("#throwNumber").text(game.throwNumber);
     $("#score").text(game.displayTotal);
-    $("#scorecard").text(game.frameRunningTotals);
+    $("#scorecard").text(game.displayFrameTotals);
     $("#throws").text(game.displayThrows);
     if (game.throwNumber === 1 || game.throwNumber === 3) {
       showAllButtons()
     }
+    fillInScorecard()
+    var str = $( "#throwNumber" ).text();
+    if (str === "END OF GAME") {
+      afterEndGame()
+      $("#scoreButtons").hide(speed);
+      };
   };
+
+  function updateScoreStart() {
+    $("#frameNumber").text(game.frameNumber);
+    $("#throwNumber").text(game.throwNumber);
+    $("#score").text(game.displayTotal);
+    $("#scorecard").text(game.displayFrameTotals);
+    $("#throws").text(game.displayThrows);
+    $("#finalScore").text("")
+  };
+
+  function fillInScorecard() {
+    for (i = 0; i < game.displayFrameTotals.length; i++) {
+      $("#marker" + i).text(game.displayFrameTotals[i])
+    }
+
+    if (game.frameNumber === 1 && game.throwNumber === 2 || game.frameNumber === 2 && game.throwNumber === 1) {
+      $("#frame0").append(game.displayThrows[game.displayThrows.length -1] + " ")
+    }
+
+    if (game.frameNumber === 2 && game.throwNumber === 2 || game.frameNumber === 3 && game.throwNumber === 1) {
+      $("#frame1").append(game.displayThrows[game.displayThrows.length -1] + " ")
+    }
+
+    if (game.frameNumber === 3 && game.throwNumber === 2 || game.frameNumber === 4 && game.throwNumber === 1) {
+      $("#frame2").append(game.displayThrows[game.displayThrows.length -1] + " ")
+    }
+
+    if (game.frameNumber === 4 && game.throwNumber === 2 || game.frameNumber === 5 && game.throwNumber === 1) {
+      $("#frame3").append(game.displayThrows[game.displayThrows.length -1] + " ")
+    }
+
+    if (game.frameNumber === 5 && game.throwNumber === 2 || game.frameNumber === 6 && game.throwNumber === 1) {
+      $("#frame4").append(game.displayThrows[game.displayThrows.length -1] + " ")
+    }
+
+    if (game.frameNumber === 6 && game.throwNumber === 2 || game.frameNumber === 7 && game.throwNumber === 1) {
+      $("#frame5").append(game.displayThrows[game.displayThrows.length -1] + " ")
+    }
+
+    if (game.frameNumber === 7 && game.throwNumber === 2 || game.frameNumber === 8 && game.throwNumber === 1) {
+      $("#frame6").append(game.displayThrows[game.displayThrows.length -1] + " ")
+    }
+
+
+    if (game.frameNumber === 8 && game.throwNumber === 2 || game.frameNumber === 9 && game.throwNumber === 1) {
+      $("#frame7").append(game.displayThrows[game.displayThrows.length -1] + " ")
+    }
+
+    if (game.frameNumber === 9 && game.throwNumber === 2 || game.frameNumber === 10 && game.throwNumber === 1) {
+      $("#frame8").append(game.displayThrows[game.displayThrows.length -1] + " ")
+    }
+
+    if (game.frameNumber === 10 && game.throwNumber === 2 || game.frameNumber === 10 && game.throwNumber === 3 || game.throwNumber === "END OF GAME") {
+      $("#frame9").append(game.displayThrows[game.displayThrows.length -1] + " ")
+    }
+  }
+
+  function reset() {
+    $("#scoreButtons").show(speed);
+    game.resetGame();
+    updateScoreStart();
+    $("#throws").text("");
+    $("#scorecardTable tr td").html("");
+  }
+
+  function afterEndGame() {
+    $(".reset").after(
+      $("#finalScore").text("Game Over! Final Score:" + game.displayTotal)
+    );
+  }
 });

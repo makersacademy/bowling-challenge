@@ -15,10 +15,12 @@ To play, just clone this repository and open public/index.html. If you do go on 
 If you would like to play again (likely), no need to refresh. Just press the bowling ball and the game will restart.
 
 
-## In Action
+## In action
 
 ![alt test](/images/the-perfect-game.gif)
 
-## To be Added
+## To be added
 
-I would like to remove the option of knocking down more pins than what exist. For example, if the player get seven on the first throw of a frame, only one to three would be available on the next go. 
+I would like to remove the option of knocking down more pins than what exist. For example, if the player get seven on the first throw of a frame, only one to three would be available on the next go.
+
+I used bootstrap for the layout of the page. There are areas in the styling I would like to improve: scorecard and the white space at the bottom of the page would be the first to be updated. 

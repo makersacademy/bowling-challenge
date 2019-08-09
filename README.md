@@ -17,4 +17,5 @@ If you would like to play again (likely), no need to refresh. Just press the bow
 
 ## In Action
 ![alt test](/images/perfect-game.gif)
+![alt test](/images/the-perfect-game.gif)
 ![alt test](/images/home-screen.png)

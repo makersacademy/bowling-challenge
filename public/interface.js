@@ -5,6 +5,7 @@ $(document).ready(function() {
     console.log(game.shot(0))
     console.log(game.score())
     console.log(game.frameScore)
+    rollTheBall()
     populateScoreCardThrows();
     populateScoreCardFrames()
   });
@@ -96,10 +97,10 @@ $(document).ready(function() {
 
   });
 
-  $('#bowling_button').click(function(){
-    console.log(game.score());
-
-  });
+  function rollTheBall(){
+    $("bowling_button").animate({left: '250px', borderWidth: "10px"});
+  console.log('pressed')
+  }
 
   function populateScoreCardThrows(){
     $('#edit-frame1-1').attr('value', game.throwScore(1))
@@ -139,7 +140,6 @@ $(document).ready(function() {
     $('#edit-game-result').attr('value', game.score())
 
   }
-
 
    function ongoingTotal(){
      $('#total').text(game.score())

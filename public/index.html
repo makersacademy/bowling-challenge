@@ -1,6 +1,8 @@
 <html>
  <head>
    <link rel="stylesheet" type="text/css" href="index.css">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <center><title>Bowling!</title>
  </head>
  <body>
@@ -8,30 +10,15 @@
    <h2>No longer do you have to travel to far-away alleys. Play online today</h2>
    <section>
   </section>
-   <h1 id='total'></h1>
-   <p>
-     <p><button id="zero">Zero</button></p></a>
-     <p><button id="one">One</button></p></a>
-     <p><button id="two">Two</button></p>
-     <p><button id="three">Three</button></p>
-     <p><button id="four">Four</button></p></a>
-     <p><button id="five">Five</button></p>
-     <p><button id="six">Six</button></p>
-     <p><button id="seven">Seven</button></p></a>
-     <p><button id="eight">Eight</button></p>
-     <p><button id="nine">Nine</button></p>
-     <p><button id="ten">Ten</button></p>
-     <input type="image" id="bowling_button" src="https://www.gmcrafts.co.uk/wp-content/uploads/2018/11/Bowling-Ball-Main-Product-Image.jpg" />
-     <h3>Total: <span id="total"></h3>
-   </p>
-   <script src="../src/Game.js"></script>
-   <script src="../lib/jquery-3.4.1.js"></script>
-   <script src="interface.js"></script>
  </body>
-</html>
 
-<div id="bowling-calc-container">
-  <div id="bowling-calc-score-container">
+<!-- Below is the scorecard -->
+<center>
+<div class="jumbotron text-center">
+<div class="container text-center">
+<!-- <div id="bowling-calc-container">
+  <div id="bowling-calc-score-container"> -->
+  <center>
       <table class="bowling-calc-score-table">
           <tr>
               <td class="first score"><div class="form-item form-type-textfield form-item-frame1-1">
@@ -162,8 +149,39 @@
 </td>
 <td class="frame score" colspan="3"><div class="form-item form-type-textfield form-item-frame10-res">
 <input type="text" id="edit-frame10-res" name="frame10-res" value="0" size="3" maxlength="3" class="form-text" />
+</center>
 </div>
 </td>
 </tr>
 </table>
+<!-- </div>
+</div> -->
 </div>
+</center>
+
+<div class="container">
+  <!-- <div class="row">
+    <div class="col-sm-4"> -->
+<p>
+  <p><button id="zero">0</button>
+  <button id="one">1</button>
+  <button id="two">2</button>
+  <button id="three">3</button>
+  <button id="four">4</button>
+  <button id="five">5</button>
+  <button id="six">6</button>
+  <button id="seven">7</button>
+  <button id="eight">8</button>
+  <button id="nine">9</button>
+  <button id="ten">10</button></p>
+</p>
+<script src="../src/Game.js"></script>
+<script src="../lib/jquery-3.4.1.js"></script>
+<script src="interface.js"></script>
+</div>
+<!-- </div>
+</div> -->
+<input type="image" id="bowling_button" src="https://www.gmcrafts.co.uk/wp-content/uploads/2018/11/Bowling-Ball-Main-Product-Image.jpg" />
+<h3>Play Again?<span id="total"></h3>
+
+</html>

@@ -93,12 +93,25 @@ $(document).ready(function() {
     populateScoreCardThrows();
     populateScoreCardFrames()
     perfectGame()
+    console.log(game.throwScore(1))
+    console.log(game.getFrameScore(1))
+
+  });
+
+  $('#bowling_button').click(function(){
+    game.playAgain()
+    populateScoreCardThrows();
+    populateScoreCardFrames()
+    console.log(game.throwScore(1))
+    perfectGame()
+
   });
 
   function rollTheBall(){
     $("bowling_button").animate({left: '250px', borderWidth: "10px"});
   console.log('pressed')
   }
+
 
   function populateScoreCardThrows(){
     $('#edit-frame1-1').attr('value', game.throwScore(1))
@@ -148,6 +161,8 @@ $(document).ready(function() {
      if (game.score() == 300){
        $('#perfect-game').css('display', "block")
        console.log("perfect game")
+     } else{
+       $('#perfect-game').css('display', "none")
      }
    }
 

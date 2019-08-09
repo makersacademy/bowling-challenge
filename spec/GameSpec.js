@@ -98,4 +98,16 @@ describe('Game', function(){
     expect(game.getFrameScore(3)).toBe(8)
   })
 
+  it('allows a user to play more than one game', function(){
+    for(var i = 0; i < 12; i++){
+      game.shot(10)
+    }
+    expect(game.score()).toBe(300)
+    game.playAgain()
+    for(var i = 0; i < 20; i++){
+      game.shot(1)
+    }
+    expect(game.score()).toBe(20)
+  })
+
 });

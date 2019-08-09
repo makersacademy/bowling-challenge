@@ -2,18 +2,16 @@ $(document).ready(function() {
   var game = new Game();
 
   $('#zero').click(function(){
-    console.log(game.shot(0))
-    console.log(game.score())
-    console.log(game.frameScore)
+    game.shot(0)
+    game.score()
     rollTheBall()
     populateScoreCardThrows();
     populateScoreCardFrames()
   });
 
   $('#one').click(function(){
-    console.log(game.shot(1) + ' shot 1 fired')
-    console.log(game.score())
-    console.log(game.frameScore)
+    game.shot(1)
+    game.score()
     populateScoreCardThrows();
     populateScoreCardFrames()
    });
@@ -94,7 +92,7 @@ $(document).ready(function() {
 
     populateScoreCardThrows();
     populateScoreCardFrames()
-
+    perfectGame()
   });
 
   function rollTheBall(){
@@ -145,4 +143,13 @@ $(document).ready(function() {
      $('#total').text(game.score())
      game.score()
    }
+
+   function perfectGame(){
+     if (game.score() == 300){
+       $('#perfect-game').css('display', "block")
+       console.log("perfect game")
+     }
+   }
+
+
  });

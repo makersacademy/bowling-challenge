@@ -30,7 +30,7 @@ Game.prototype.score = function() {
     }
   }
   // || 0 will convert any falsey value to 0
-  return total || 0
+  return total || 0 
 }
 
 Game.prototype.playAgain = function () {
@@ -45,7 +45,7 @@ Game.prototype.throwScore = function (throwNumber) {
   if (this.scoreCard[throwNumber - 1] == 10){
     return "X"
   } else {
-    return this.scoreCard[throwNumber - 1] || 0 }
+    return this.scoreCard[throwNumber - 1] || 0}
 };
 
 Game.prototype.getFrameScore = function (frameNumber) {

@@ -93,8 +93,7 @@ $(document).ready(function() {
     populateScoreCardThrows();
     populateScoreCardFrames()
     perfectGame()
-    console.log(game.throwScore(1))
-    console.log(game.getFrameScore(1))
+
 
   });
 
@@ -102,7 +101,6 @@ $(document).ready(function() {
     game.playAgain()
     populateScoreCardThrows();
     populateScoreCardFrames()
-    console.log(game.throwScore(1))
     perfectGame()
 
   });
@@ -160,7 +158,6 @@ $(document).ready(function() {
    function perfectGame(){
      if (game.score() == 300){
        $('#perfect-game').css('display', "block")
-       console.log("perfect game")
      } else{
        $('#perfect-game').css('display', "none")
      }

@@ -15,6 +15,8 @@ To play, just clone this repository and open public/index.html. If you do go on 
 If you would like to play again (likely), no need to refresh. Just press the bowling ball and the game will restart.
 
 
-## In Play
+## In Action
+<p align="center">
+  ![alt test](/images/perfect-game.gif)
+</p>
 ![alt test](/images/home-screen.png)
-![alt test](/images/perfect-game.gif)

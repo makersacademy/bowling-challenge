@@ -6,7 +6,7 @@ A Bowling scorecard written in JavaScript, CSS and HTML.
 
 The bowling rules are a bit of a brain teaser at first. It was fun putting together the logic in JS to do the calculations.
 
-I used TDD via Jasmine. I started by writing tests for a gutter game, game of ones and finally a perfect game. Although there were edge cases, I found once the perfect game was conquered the rest fell into place.
+I used TDD via Jasmine. I started by writing tests for a gutter game, game of ones and finally a perfect game. Although there were edge cases, I found once the perfect game was conquered the rest rolled into place.
 
 ## How to play
 

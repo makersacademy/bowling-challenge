@@ -137,8 +137,6 @@ $( document ).ready(function() {
     $("#frameNumber").text(game.frameNumber);
     $("#throwNumber").text(game.throwNumber);
     $("#score").text(game.displayTotal);
-    $("#scorecard").text(game.displayFrameTotals);
-    $("#throws").text(game.displayThrows);
     if (game.throwNumber === 1 || game.throwNumber === 3) {
       showAllButtons()
     }
@@ -154,8 +152,6 @@ $( document ).ready(function() {
     $("#frameNumber").text(game.frameNumber);
     $("#throwNumber").text(game.throwNumber);
     $("#score").text(game.displayTotal);
-    $("#scorecard").text(game.displayFrameTotals);
-    $("#throws").text(game.displayThrows);
     $("#finalScore").text("")
   };
 
@@ -210,7 +206,6 @@ $( document ).ready(function() {
     $("#scoreButtons").show(speed);
     game.resetGame();
     updateScoreStart();
-    $("#throws").text("");
     $("#scorecardTable tr td").html("");
   }
 

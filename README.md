@@ -16,5 +16,9 @@ If you would like to play again (likely), no need to refresh. Just press the bow
 
 
 ## In Action
+
 ![alt test](/images/the-perfect-game.gif)
-![alt test](/images/home-screen.png)
+
+## To be Added
+
+I would like to remove the option of knocking down more pins than what exist. For example, if the player get seven on the first throw of a frame, only one to three would be available on the next go. 

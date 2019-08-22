@@ -52,7 +52,7 @@ Game.prototype.bonusStrike = function() {
   if(this.frames.length > 1) {
     if(this.lastFrame().rolls[0] == 10) {
     this._bonusStrike = this.currentFrame().frameScore();
-    this.currentScore[this.lastScoreIndex()] = 10 + this._bonusStrike;
+    this.currentScore[this.lastScoreIndex()] = this.lastScore() + this._bonusStrike;
     }
   }
 }

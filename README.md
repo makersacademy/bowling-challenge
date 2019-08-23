@@ -1,3 +1,33 @@
+Frame
+[ roll1, roll2 ]
+
+
+METHODS
+
+frame.insertRoll1(value)
+frame.insertRoll2(value)  - this.pinsDown[1] = value
+frame.score      - score for frame (DIFFERENT to number of pins down), if < 10
+frame.showTotalPinsDown  
+
+
+
+
+frame.finish    ---- game << frame
+
+
+-------------------------------------------------------------------------
+
+
+Game
+
+methods
+
+
+
+
+
+
+
 
 Bowling Challenge
 =================

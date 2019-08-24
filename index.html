@@ -3,7 +3,7 @@
   <main>
   <head>
       <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="Bowling.js"></script>
+    <script src="public/javascripts/Bowling.js"></script>
     <script src="interface.js"></script>
     <link rel='stylesheet' href="style.css">
     <!-- Title is the TABS title -->
@@ -13,7 +13,7 @@
   <body>
 
     <section>
-    <h1>Round<span id="round"></span>°C</h1>
+    <h1>Round<span id="count"></span></h1>
       <h1><select id="turn-input">
           <option value="1">1</option>
           <option value="2">2</option>
@@ -25,6 +25,7 @@
           <option value="8">8</option>
           <option value="9">9</option>
           <option value="X">X</option>
+          <option value="F">F</option>
         </select> 
         <select id="turn2-input">
             <option value="1">1</option>
@@ -37,6 +38,7 @@
             <option value="8">8</option>
             <option value="9">9</option>
             <option value="/">/</option>
+            <option value="F">F</option>
           </select> 
         <p>
         <span id="current-temperature"></span>INPUT PINS KNOCKED DOWN

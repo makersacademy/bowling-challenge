@@ -8,9 +8,9 @@ describe('Bowling', function() {
 
 
   describe('#intializes with array', function() {
-    it("creates array", function() {
+    it("creates array for scorecard", function() {
       var bowling = new Bowling()
-      expect(bowling._round).toBeDefined();
+      expect(bowling._scorecard).toBeDefined();
     });
   });
 
@@ -26,21 +26,21 @@ describe('Bowling', function() {
     it("saves string in turn array", function() {
       var bowling = new Bowling()
       bowling.turn("3", "4")
-      bowling.addturn(bowling._turn)
+      bowling.addTurn(bowling._turn)
       expect(bowling._turn).toEqual([]);
     });
   });
 
-  describe('#saving turns in round array', function() {
-    it("saves string in turn array which is saved in round array", function() {
+  describe('#saving turns in scorecard array', function() {
+    it("saves turn input into in turn array which is then saved in scorecard array", function() {
       var bowling = new Bowling()
       bowling.turn("3", "4")
-      bowling.addturn(bowling._turn)
+      bowling.addTurn(bowling._turn)
       bowling.turn("5", "2")
-      bowling.addturn(bowling._turn)
+      bowling.addTurn(bowling._turn)
       bowling.turn("1", "4")
-      bowling.addturn(bowling._turn)
-      expect(bowling._round).toEqual([["3", "4"], ["5", "2"], ["1", "4"] ]);
+      bowling.addTurn(bowling._turn)
+      expect(bowling._scorecard).toEqual([["3", "4"], ["5", "2"], ["1", "4"] ]);
     });
   });
 
@@ -48,9 +48,9 @@ describe('Bowling', function() {
     it("saves count number", function() {
       var bowling = new Bowling()
       bowling.turn("3", "4")
-      bowling.addturn(bowling._turn)
+      bowling.addTurn(bowling._turn)
       bowling.turn("3", "4")
-      bowling.addturn(bowling._turn)
+      bowling.addTurn(bowling._turn)
       expect(bowling._count).toEqual(3);
     });
   });

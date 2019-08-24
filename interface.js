@@ -3,12 +3,14 @@ $(document).ready(function() {
     
     updateCount();
 
-  $("Submit Round 1!").click(function(){
-    $("p").html("Hello <b>world</b>!");
-  });
+  
+    $("#round-scores").on('click', function() {
+      bowling.addTurn(["3","4"])
+      updateCount();
+    });
+  
     
   $('#roundcount').on('click', function() {
-    bowling._count();
     updateCount();
   });
       

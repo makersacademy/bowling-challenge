@@ -1,29 +1,29 @@
-'use strict'
-
-
-
-function Scorecard() {
-
-  this.pinsDown = [];
-  // this.runningTotal = [];
-
-}
-
-var insertFrame = function(frame){
-  this.pinsDown.push(frame);
-}
-
-
-
-// Scorecard.prototype.insertFrame = function() {
+// 'use strict'
+//
+//
+//
+// function Scorecard() {
+//
+//   this.pinsDown = [];
+//   // this.runningTotal = [];
+//
+// }
+//
+// var insertFrame = function(frame){
 //   this.pinsDown.push(frame);
-// };
-
-
-Scorecard.prototype.showPinsDown = function(){
-  return this.pinsDown};
-
-  module.exports = insertFrame;
+// }
+//
+//
+//
+// // Scorecard.prototype.insertFrame = function() {
+// //   this.pinsDown.push(frame);
+// // };
+//
+//
+// Scorecard.prototype.showPinsDown = function(){
+//   return this.pinsDown};
+//
+//   module.exports = insertFrame;
 
   // Scorecard.prototype.insertFrame = function(frame) {
   //   this.pinsDown.push(frame);

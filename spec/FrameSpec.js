@@ -11,7 +11,7 @@ describe("Frame", function() {
   beforeEach(function(){
     // scorecard = new Scorecard();
     frame = new Frame();
-    scorecard = jasmine.createSpyObj('scorecard', ['insertFrame']);
+    // scorecard = new Scorecard();
 
   });
 
@@ -38,21 +38,19 @@ it('calculates total pins down in a frame', function(){
   expect(frame.totalPinsDown()).toEqual(7);
 })
 
-
-
 it('updates the all pins down scoresheet', function(){
   frame.insertRoll1(3);
  frame.insertRoll2(4);
-  expect(frame.allPinsDown).toEqual([[3,4]])
+  expect(frame.allPinsDown).toEqual([[3,4]]);
 });
 
 
 it('updates the all pins down scoresheet for more than one frame', function(){
-  frame.insertRoll1(3);
+frame.insertRoll1(3);
  frame.insertRoll2(4);
  frame.insertRoll1(2);
  frame.insertRoll2(4);
-  expect(frame.allPinsDown).toEqual([[3,4],[2,4]])
+  expect(frame.allPinsDown).toEqual([[3,4],[2,4]]);
 });
 
 
@@ -65,8 +63,10 @@ it('updates the all pins down scoresheet for more than one frame and placeholder
   frame.insertRoll1(10);
   frame.insertRoll1(2);
   frame.insertRoll2(4);
-  expect(frame.allPinsDown).toEqual([[10," "],[2,4]])
+  expect(frame.allPinsDown).toEqual([[10," "], [2,4]]);
 });
+
+
 
 
 
@@ -75,8 +75,16 @@ describe('for frames with no strike or spare', function(){
   it('updates the running total after each frame if no strike or spare', function(){
     frame.insertRoll1(2);
     frame.insertRoll2(4);
-    expect(frame.runningTotal).toEqual(6)
+    expect(frame.runningTotal()).toEqual(6)
 
+  })
+
+  it('does not update the running total if there is a strike', function(){
+    frame.insertRoll1(2);
+    frame.insertRoll2(4);
+    frame.insertRoll1(10);
+
+    expect(frame.runningTotal()).toEqual(6)
   })
 
   it('updates the total score if no strike or spare', function(){
@@ -85,15 +93,19 @@ describe('for frames with no strike or spare', function(){
     expect(frame.totalScore()).toEqual(7);
   })
 
+  it('when there is a strike, it adds the next two rolls to total for that frame', function(){
+    frame.insertRoll1(2);
+    frame.insertRoll2(6);
+    frame.insertRoll1(10);
+    frame.insertRoll1(1);
+    frame.insertRoll2(1);
+    expect(frame.runningTotal()).toEqual(22)
+  })
+
 
 })
 
-it('can push frames to a scorecard when finished', function(){
-  frame.insertRoll1(3);
-  frame.insertRoll2(4);
-  expect(scorecard.insertFrame).toHaveBeenCalledWith([2,3])
 
-});
 
 
 

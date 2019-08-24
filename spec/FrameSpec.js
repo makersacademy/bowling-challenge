@@ -1,12 +1,17 @@
+// 'use strict'
+
+// var Frame = require('../src/frame');
+
 describe("Frame", function() {
 
 
   var frame;
-  var game;
+  var scorecard;
 
   beforeEach(function(){
-    game = new Game();
+    // scorecard = new Scorecard();
     frame = new Frame();
+    scorecard = jasmine.createSpyObj('scorecard', ['insertFrame']);
 
   });
 
@@ -21,11 +26,83 @@ it('a user can enter how many pins they knocked down on second roll', function()
   expect(frame.pinsDown[1]).toEqual(4);
 })
 
+it('a user can see how many pins they knocked down on each turn', function(){
+  frame.insertRoll1(3);
+  frame.insertRoll2(4);
+  expect(frame.pinsDown).toEqual([3,4]);
+})
+
 it('calculates total pins down in a frame', function(){
   frame.insertRoll1(3);
   frame.insertRoll2(4);
-  expect(frame.showTotalPinsDown()).toEqual(7);
+  expect(frame.totalPinsDown()).toEqual(7);
 })
+
+
+
+it('updates the all pins down scoresheet', function(){
+  frame.insertRoll1(3);
+ frame.insertRoll2(4);
+  expect(frame.allPinsDown).toEqual([[3,4]])
+});
+
+
+it('updates the all pins down scoresheet for more than one frame', function(){
+  frame.insertRoll1(3);
+ frame.insertRoll2(4);
+ frame.insertRoll1(2);
+ frame.insertRoll2(4);
+  expect(frame.allPinsDown).toEqual([[3,4],[2,4]])
+});
+
+
+it('leaves a placeholder if there is a strike', function(){
+  frame.insertRoll1(10);
+  expect(frame.pinsDown[1]).toEqual(" ");
+})
+
+it('updates the all pins down scoresheet for more than one frame and placeholder for strike', function(){
+  frame.insertRoll1(10);
+  frame.insertRoll1(2);
+  frame.insertRoll2(4);
+  expect(frame.allPinsDown).toEqual([[10," "],[2,4]])
+});
+
+
+
+describe('for frames with no strike or spare', function(){
+
+  it('updates the running total after each frame if no strike or spare', function(){
+    frame.insertRoll1(2);
+    frame.insertRoll2(4);
+    expect(frame.runningTotal).toEqual(6)
+
+  })
+
+  it('updates the total score if no strike or spare', function(){
+    frame.insertRoll1(3);
+    frame.insertRoll2(4);
+    expect(frame.totalScore()).toEqual(7);
+  })
+
+
+})
+
+it('can push frames to a scorecard when finished', function(){
+  frame.insertRoll1(3);
+  frame.insertRoll2(4);
+  expect(scorecard.insertFrame).toHaveBeenCalledWith([2,3])
+
+});
+
+
+
+
+
+
+
+
+
 
 })
 

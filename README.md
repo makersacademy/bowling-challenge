@@ -1,6 +1,8 @@
 Frame
 [ roll1, roll2 ]
 
+frame lets the user enter the data for a frame, scorecard calculates the score 
+
 
 METHODS
 
@@ -8,11 +10,17 @@ frame.insertRoll1(value)
 frame.insertRoll2(value)  - this.pinsDown[1] = value
 frame.score      - score for frame (DIFFERENT to number of pins down), if < 10
 frame.showTotalPinsDown  
+frame.totalScore
 
 
 
 
-frame.finish    ---- game << frame
+strike = [10, " "]
+
+
+
+
+frame.finish    ---- game(frames) << frame
 
 
 -------------------------------------------------------------------------
@@ -20,7 +28,13 @@ frame.finish    ---- game << frame
 
 Game
 
+frames []
+scores (of frames)
+running total (scores.reduce)
+
 methods
+
+
 
 
 

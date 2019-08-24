@@ -1,9 +1,37 @@
-// describe("Game", function(){
-//   var game;
+// // 'use strict'
+//
+// // var Scorecard = require('../src/scorecard')
+//
+// describe("Scorecard", function(){
+//   var scorecard;
 //   var frame;
-// //
+//
+//   beforeEach(function(){
+//     scorecard = new Scorecard();
+//     frame = jasmine.createSpy('frame', ['finish']);
+//
+//   });
+// it('has no pins down by default', function(){
+//   expect(scorecard.showPinsDown()).toEqual([]);
+//
 // });
-// //
+//
+// it('can accept a frame', function(){
+//   scorecard.insertFrame([3,4]);
+//   expect(scorecard.showPinsDown()).toEqual([3,4]);
+// });
+//
+//   // it('admits frame scores', function(frame) {
+//   //
+//   // });
+//
+//
+// });
+
+// it('admits frame scores', function(frame) {
+//   this.
+// });
+//
 //
 // it ("ends the game after ten frames", function() {
 //

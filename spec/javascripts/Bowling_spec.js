@@ -55,6 +55,18 @@ describe('Bowling', function() {
     });
   });
 
+
+  describe('#counts score for turn excluding spare and strike', function() {
+    it("adds number to total", function() {
+      var bowling = new Bowling()
+      bowling.turn("3", "4")
+      bowling.addTurn(bowling._turn)
+      console.log(bowling._score)
+      console.log(bowling._scorecard[0])
+      bowling.scoreCalculatorPins(bowling._scorecard[0])
+      expect(bowling._score).toEqual([7]);
+    });
+  });
 });
 // #     it("has power-saving mode on by default", () => {
 // #         expect(thermostat._powersaving).toBe("ON");

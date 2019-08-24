@@ -61,7 +61,7 @@ describe('Bowling', function() {
       var bowling = new Bowling()
       bowling.turn("3", "4")
       bowling.addTurn(bowling._turn)
-      bowling.scoreCalculatorPins(bowling._scorecard[0])
+      // bowling.scoreCalculatorPins(bowling._scorecard[0])
       expect(bowling._scores).toEqual([7]);
     });
   });
@@ -71,10 +71,10 @@ describe('Bowling', function() {
       var bowling = new Bowling()
       bowling.turn("3", "4")
       bowling.addTurn(bowling._turn)
-      bowling.scoreCalculatorPins(bowling._scorecard[bowling._count - 2])
+      // bowling.scoreCalculatorPins(bowling._scorecard[bowling._count - 2])
       bowling.turn("3", "5")
       bowling.addTurn(bowling._turn)
-      bowling.scoreCalculatorPins(bowling._scorecard[bowling._count - 2])
+      // bowling.scoreCalculatorPins(bowling._scorecard[bowling._count - 2])
       expect(bowling._scores).toEqual([7, 8]);
     });
   });

@@ -12,6 +12,7 @@ Bowling.prototype.turn = function(x, y){
 
 Bowling.prototype.addTurn = function(turn){
     this._scorecard.push(turn);
+    this.scoreCalculatorPins(turn);
     this._count ++
     this._turn = [];
   };

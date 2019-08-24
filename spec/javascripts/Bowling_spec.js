@@ -57,14 +57,25 @@ describe('Bowling', function() {
 
 
   describe('#counts score for turn excluding spare and strike', function() {
-    it("adds number to total", function() {
+    it("adds number to score array", function() {
       var bowling = new Bowling()
       bowling.turn("3", "4")
       bowling.addTurn(bowling._turn)
-      console.log(bowling._score)
-      console.log(bowling._scorecard[0])
       bowling.scoreCalculatorPins(bowling._scorecard[0])
-      expect(bowling._score).toEqual([7]);
+      expect(bowling._scores).toEqual([7]);
+    });
+  });
+
+  describe('#counts score for multiple turns excluding spare and strike', function() {
+    it("adds numbers to score array", function() {
+      var bowling = new Bowling()
+      bowling.turn("3", "4")
+      bowling.addTurn(bowling._turn)
+      bowling.scoreCalculatorPins(bowling._scorecard[bowling._count - 2])
+      bowling.turn("3", "5")
+      bowling.addTurn(bowling._turn)
+      bowling.scoreCalculatorPins(bowling._scorecard[bowling._count - 2])
+      expect(bowling._scores).toEqual([7, 8]);
     });
   });
 });

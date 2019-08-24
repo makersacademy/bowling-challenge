@@ -11,8 +11,20 @@
     <h1>Bowling</h1>
   </head>
   <body>
+    <h3>ROUND <span id="roundcount"></span></h3>
+    <form action="/action_page.php" method="get" name="round-scores">
+      First bowl Score: <input type="text" name="bowl1" placeholder="1 -> 9, / , X or F"><br>
+      Second bowl score: <input type="text" name="bowl2" placeholder="1 -> 9, / , X or F"><br>
+      <input type="button" onclick="formSubmit()" value="Submit Round!">
+    </form>
+  
 
-    <section>
+
+
+
+
+
+    <!-- <section>
     <h1>Round<span id="count"></span></h1>
       <h1><select id="turn-input">
           <option value="1">1</option>
@@ -42,9 +54,12 @@
           </select> 
         <p>
         <span id="current-temperature"></span>INPUT PINS KNOCKED DOWN
+
+        <script> if this.count == 10</script>
+    
     </h1>
 
-    </section>
+    </section> -->
 
 
   </body>

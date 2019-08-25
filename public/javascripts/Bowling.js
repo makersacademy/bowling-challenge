@@ -4,6 +4,7 @@ function Bowling () {
     this._turn = []
     this._count = 1
     this._scores = []
+    this._cumulator = 0
 };
 
 Bowling.prototype.turn = function(x, y){
@@ -15,6 +16,8 @@ Bowling.prototype.addTurn = function(turn){
     this.scoreCalculatorPins(turn);
     this._count ++
     this._turn = [];
+    this.cumulator
+    console.log(this._scores)
   };
   
 Bowling.prototype.scoreCalculatorPins = function(turn) {  
@@ -23,3 +26,8 @@ Bowling.prototype.scoreCalculatorPins = function(turn) {
     this._scores.push(a + b)
 };
 
+
+
+function myTot(total, num) {
+  return total + num;
+}

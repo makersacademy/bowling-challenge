@@ -2,24 +2,47 @@ $(document).ready(function() {
     var bowling = new Bowling ();
     
     updateCount();
-
+    
   
     $("#round-scores").on('click', function() {
       var score1 = $('#bowl1').val();
       var score2 = $('#bowl2').val();
       bowling.addTurn([score1, score2])
-      console.log(bowling._scores)
       updateCount();
+      updateTable();
     });
   
     
   // $('#roundcount').on('click', function() {
   //   updateCount();
   // });
-      
+  function myTot(total, num) {
+    return total + num;
+  };
+
   function updateCount() {
     $('#roundcount').text(bowling._count);
   }
+
+  function updateTable() {
+      var x = document.createElement("TABLE");
+      x.setAttribute("id", "myTable");
+      document.body.appendChild(x);
+
+      var y = document.createElement("TR");
+      y.setAttribute("id", "myTr");
+      document.getElementById("myTable").appendChild(y);
+      
+      var z = document.createElement("TD");
+      var i = document.createTextNode($('#bowl1').val() + "-");
+      var t = document.createTextNode($('#bowl2').val()+ ":");
+      var r = document.createTextNode(bowling._scores.reduce(myTot));
+      z.appendChild(i);
+      z.appendChild(t);
+      z.appendChild(r);
+      document.getElementById("myTr").appendChild(z);
+    }
+  
      
 });
   

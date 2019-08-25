@@ -15,6 +15,7 @@ $(document).ready(function() {
     $("#reset").on('click', function() {
       bowling.reset()
       deleteTable();
+      updateCount();
     });
 
   
@@ -50,7 +51,7 @@ $(document).ready(function() {
       var z = document.createElement("TD");
       var i = document.createTextNode($('#bowl1').val() + "-");
       var t = document.createTextNode($('#bowl2').val()+ ":");
-      var r = document.createTextNode(bowling._scores.reduce(myTot));
+      var r = document.createTextNode(bowling._score);
       z.appendChild(i);
       z.appendChild(t);
       z.appendChild(r);

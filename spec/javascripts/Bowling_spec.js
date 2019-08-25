@@ -37,7 +37,7 @@ describe('Bowling', function() {
       bowling.addTurn(bowling._turn)
       bowling.turn("1", "4")
       bowling.addTurn(bowling._turn)
-      expect(bowling._scorecard).toEqual([["3", "4"], ["5", "2"], ["1", "4"] ]);
+      expect(bowling._scorecard).toEqual([[3, 4], [5, 2], [1, 4] ]);
     });
   });
 

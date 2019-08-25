@@ -9,14 +9,13 @@ describe('Bowling', function() {
 
   describe('#intializes with array', function() {
     it("creates array for scorecard", function() {
-      var bowling = new Bowling()
+      
       expect(bowling._scorecard).toBeDefined();
     });
   });
 
   describe('#saves turn', function() {
     it("saves string in turn array", function() {
-      var bowling = new Bowling()
       bowling.turn("3", "4")
       expect(bowling._turn).toEqual(["3", "4"]);
     });
@@ -24,7 +23,6 @@ describe('Bowling', function() {
 
   describe('#resets turn array when score added to scorecard', function() {
     it("saves string in turn array", function() {
-      var bowling = new Bowling()
       bowling.turn("3", "4")
       bowling.addTurn(bowling._turn)
       expect(bowling._turn).toEqual([]);
@@ -33,7 +31,6 @@ describe('Bowling', function() {
 
   describe('#saving turns in scorecard array', function() {
     it("saves turn input into in turn array which is then saved in scorecard array", function() {
-      var bowling = new Bowling()
       bowling.turn("3", "4")
       bowling.addTurn(bowling._turn)
       bowling.turn("5", "2")
@@ -46,7 +43,6 @@ describe('Bowling', function() {
 
   describe('#counts round number', function() {
     it("saves count number", function() {
-      var bowling = new Bowling()
       bowling.turn("3", "4")
       bowling.addTurn(bowling._turn)
       bowling.turn("3", "4")
@@ -58,7 +54,6 @@ describe('Bowling', function() {
 
   describe('#counts score for turn excluding spare and strike', function() {
     it("adds number to score array", function() {
-      var bowling = new Bowling()
       bowling.turn("3", "4")
       bowling.addTurn(bowling._turn)
       // bowling.scoreCalculatorPins(bowling._scorecard[0])
@@ -68,7 +63,6 @@ describe('Bowling', function() {
 
   describe('#counts score for multiple turns excluding spare and strike', function() {
     it("adds numbers to score array", function() {
-      var bowling = new Bowling()
       bowling.turn("3", "4")
       bowling.addTurn(bowling._turn)
       // bowling.scoreCalculatorPins(bowling._scorecard[bowling._count - 2])
@@ -77,6 +71,15 @@ describe('Bowling', function() {
       // bowling.scoreCalculatorPins(bowling._scorecard[bowling._count - 2])
       expect(bowling._scores).toEqual([7, 8]);
     });
+  });
+
+  describe('#restarts game', function() {
+    it("score, array and cumulator reset", function() {
+      var bowling2 = new Bowling();
+      bowling.turn("3", "4")
+      bowling.addTurn(bowling._turn)
+      bowling.reset()
+      expect(bowling).toEqual(bowling2)
   });
 });
 // #     it("has power-saving mode on by default", () => {
@@ -106,4 +109,4 @@ describe('Bowling', function() {
 // #         });
 
 
-// #       });
+    });

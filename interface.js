@@ -11,6 +11,12 @@ $(document).ready(function() {
       updateCount();
       updateTable();
     });
+    
+    $("#reset").on('click', function() {
+      bowling.reset()
+      deleteTable();
+    });
+
   
     
   // $('#roundcount').on('click', function() {
@@ -22,7 +28,15 @@ $(document).ready(function() {
 
   function updateCount() {
     $('#roundcount').text(bowling._count);
-  }
+  };
+  
+  function deleteTable() {
+    var Parent = document.getElementById("myTable");
+      while(Parent.hasChildNodes())
+      {
+        Parent.removeChild(Parent.firstChild);
+      }
+    };
 
   function updateTable() {
       var x = document.createElement("TABLE");

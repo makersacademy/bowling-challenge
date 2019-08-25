@@ -11,6 +11,14 @@ Bowling.prototype.turn = function(x, y){
     this._turn.push(x, y);
   };
 
+Bowling.prototype.reset = function(){
+  this._scorecard = [];
+  this._turn = [];
+  this._count = 1;
+  this._scores = [];
+  this._cumulator = 0;
+  };
+
 Bowling.prototype.addTurn = function(turn){
     this._scorecard.push(turn);
     this.scoreCalculatorPins(turn);

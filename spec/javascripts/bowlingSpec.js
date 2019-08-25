@@ -48,11 +48,40 @@ describe("Bowling", function() {
     expect(bowling.score).toEqual([[5], []]);
   });
 
-  it("should add the scores to each frame", function() {
+  it("Should add the scores to each frame", function() {
     bowling.play(2);
     bowling.play(3);
     bowling.play(5);
     bowling.play(4);
     expect(bowling.score).toEqual([[5], [9], []]);
+  });
+
+  it("If a strike is bowled it should return true", function() {
+    bowling.play(10);
+    bowling.isStrike();
+    expect(bowling.strike).toEqual(true);
+  });
+
+  it("If a strike is bowled it moves on to the next frame", function() {
+    bowling.play(10);
+    bowling.isStrike();
+    expect(bowling.frame).toEqual(1);
+  });
+
+  it("If a spare is bowled it should return true", function() {
+    bowling.play(9);
+    bowling.play(1);
+    bowling.isSpare();
+    expect(bowling.spare).toEqual(true);
+  });
+
+  it("It should add the total scores", function() {
+    bowling.play(5);
+    bowling.play(2);
+    bowling.play(8);
+    bowling.play(1);
+    bowling.play(2);
+    bowling.play(6);
+    expect(bowling.total(bowling.score)).toEqual(24);
   });
 });

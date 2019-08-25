@@ -26,6 +26,11 @@ Bowling.prototype.addTurn = function(turn){
     var a = parseInt(turn[0], 10)
     var b = (10 - a)
     this._scorecard.push([a, b]);
+  }else if (turn.length == 3) {
+    var a = parseInt(turn[0], 10)
+    var b = parseInt(turn[1], 10)
+    var c = parseInt(turn[2], 10)
+    this._scorecard.push([a, b, c])
   } else {
     var a = parseInt(turn[0], 10)
     var b = parseInt(turn[1], 10)
@@ -52,6 +57,8 @@ Bowling.prototype.scoreCalculatorPins = function(turn) {
 Bowling.prototype.scoreCalculator = function(scorecardarray) {  
   var x = this.scorefirst8(scorecardarray);
   var y = this.scorelast2(scorecardarray);
+  console.log(y.reduce(myTot))
+  console.log(x.reduce(myTot))
   this._score = (x.reduce(myTot)+y.reduce(myTot));
 };
 
@@ -67,7 +74,7 @@ Bowling.prototype.scorefirst8 = function(arr1) {
   }else{
           points.push(arr1[i-2].reduce(myTot))
   };
-        
+  console.log(points.reduce(myTot))
     i += 1
   }
    while (i < 10);

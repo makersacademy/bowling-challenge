@@ -7,7 +7,12 @@ $(document).ready(function() {
     $("#round-scores").on('click', function() {
       var score1 = $('#bowl1').val();
       var score2 = $('#bowl2').val();
-      bowling.addTurn([score1, score2])
+      var score3 = $('#bowl3').val();
+      if (bowling._count < 10) {
+        bowling.addTurn([score1, score2])
+      }else{
+        bowling.addTurn([score1, score2, score3])
+      }
       updateCount();
       updateTable();
     });

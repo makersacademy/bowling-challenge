@@ -2,15 +2,28 @@
 var Scorecard = function () {
   this.roll = 0;
   this.frame = 0;
-  this.rolls = []
-  for (var i = 0; i < 10; i++) {
-    this.rolls.push([])
-  };
-  this.frames = []
-  for (var i = 0; i < 10; i++) {
-    this.frames.push(0)
-  };
   this.total_score = 0
+  this.frames = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  this.rolls = [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ]
+
+  // for (var i = 0; i < 10; i++) {
+  //   this.rolls.push([])
+  // };
+
+  // for (var i = 0; i < 10; i++) {
+  //   this.frames.push(0)
+  // };
 }
 
 Scorecard.prototype = {
@@ -55,39 +68,42 @@ Scorecard.prototype = {
   },
 
   frameRollTotal: function (frame_num) {
-    if (!(0 <= frame_num && frame_num <= 9)) {
-      return 0
-    }
     return this.rolls[frame_num].reduce((sum, val) => sum += val, 0)
   },
 
-  followingRolls: function (index) {
+
+
+  calcScores: function () {
+    for (let i = 0; i < this.rolls.length; i++) {
+      if (i === 9) {
+        this.frames[9] = this.frameRollTotal(9);
+      } else {
+        this.frames[i] = this.frameRollTotal(i);
+
+        // if strike or spare add bonuses
+        if (this.isStrike(i)) {
+          this.frames[i] += this.nextTwoRolls(i).reduce((sum, value) => sum += value, 0);
+        } else if (this.isSpare(i)) {
+          this.frames[i] += this.nextTwoRolls(i)[0];
+        };
+      };
+    };
+    // update total score
+    this.total_score = this.frames.reduce((accumulator, value) => accumulator += value, 0)
+  },
+
+  nextTwoRolls: function (index) {
     var following_rolls = this.rolls.slice(index + 1, index + 3).flat()
     return [Number((following_rolls[0] || 0)), Number((following_rolls[1] || 0))]
   },
 
-  calcScores: function () {
-    var frames = []
-
-    this.rolls.forEach(
-      function (element, index, array) {
-
-        if (index === 9) { // frame ten just need to sum values. Logic on if roll can be taken is done in add roll
-          frames[9] = this.frameRollTotal(9);
-        } else {
-          frames[index] = this.frameRollTotal(index);
-
-          // if strike
-          if ((element[0] || 0) === 10) {
-            frames[index] += this.followingRolls(index)[0] + this.followingRolls(index)[1];
-          } else if (this.frameRollTotal(index) === 10) {
-            frames[index] += this.followingRolls(index)[0];
-          };
-
-        };
-      }, this);
-
-    this.frames = frames
-    this.total_score = frames.reduce((accumulator, value) => accumulator += value, 0)
+  isSpare: function (frameIndex) {
+    return (this.frameRollTotal(frameIndex) === 10 && this.rolls[frameIndex].length === 2) ? true : false
   },
+
+  isStrike: function (frameIndex) {
+    return (this.frameRollTotal(frameIndex) === 10 && this.rolls[frameIndex].length === 1) ? true : false
+  },
+
+
 };

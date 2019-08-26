@@ -19,15 +19,20 @@ Bowling.prototype.addTurn = function(turn){
     var c = parseInt(turn[2], 10)
   if (((turn[0] === "X") && (turn[1]==="X")) && (turn[2] === "X")){
     this._scorecard.push([10, 10, 10])
-  } else if (((turn[0] != "X") && (turn[1]!="X")) && (turn[2] === "X")) {
+  } else if (((turn[0] != "X") && (turn[1]!="X")) && ((turn[2] === "X") && (turn[1] != "/"))) {
     this._scorecard.push([a, b, 10])
   }else if ((turn[0] === "X") && (turn[1]==="X")) {
     this._scorecard.push([10, 10, c])
   } else if ((turn[0] === "X") && (turn[2]==="X")) {
-      
       this._scorecard.push([10, b, 10])
   } else if (turn[0] === "X") {
-    this._scorecard.push([10, 0]);
+      this._scorecard.push([10, 0]);
+    } else if ((turn[1] === "/") && (turn[2] === "X")) {
+      var d = (10 - a)
+      this._scorecard.push([a, d, 10]);
+  } else if ((turn[1] === "/") && (Number.isInteger(c))) {
+    var d = (10 - a)
+    this._scorecard.push([a, d, c]);
   } else if (turn[1] === "/") {
     var d = (10 - a)
     this._scorecard.push([a, d]);
@@ -99,7 +104,7 @@ Bowling.prototype.scorelast2 = function(arr1) {
 }
 while (i < 11);
 points.push(arr1[9].reduce(myTot))
-
+console.log(arr1[9])
 this._listOfScores.push(this._listOfScores[this._listOfScores.length-1] + arr1[9].reduce(myTot))
 return points
 };

@@ -34,8 +34,8 @@ $(document).ready(function() {
     return total + num;
   };
 
-  function roundNineCheck(array) {
-    if ((array.length == 9) && (array[array.length - 1].reduce(myTot) % 10 === 0)){
+  function roundNineCheck(array, score) {
+    if ((array.length == 9) && ((array[array.length - 1].reduce(myTot)) % 10 === 0)){
       return true
     }
   };
@@ -47,7 +47,7 @@ $(document).ready(function() {
       $('form').append(' <h3> Tenth round Third Bowl <select id="bowl3"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="X">X</option></select> </h3>')
    } else if (bowling._count == 11) {
      $('form').append(' <h1> FINAL SCORE <span id="tot"></span></h1>')
-     $('section').append('<h2 color=blue >SCORECARD <span id="list"></span></h2>')
+     $('section').append('<h2 color=blue >Accumulating Score <span id="list"></span></h2>')
    };
   };
   

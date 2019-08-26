@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Bowling</title>
+  <link rel="stylesheet" type="text/css" href="style.css"> 
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Sancreek&display=swap');
+  </style>
+  <script src="jquery.js"></script>
+  <script src="src/Bowling.js"></script>
+  <script src="src/interface.js"></script>
+</head>
+<body>
+  <div class="row">
+    <div class="column">
+        <table id="bowling-frames">
+            <tr>
+              <th id="frame">Frame</th>
+              <th id="throw1">Throw 1</th>
+              <th id="throw2">Throw 2</th>
+              <th id="score">Score</th>
+              <th id="total">Total</th>
+            </tr> 
+          </table>
+    </div>
+    <div class="column">
+        <div>
+            <h1 id="game-message">Obviously you're not a golfer</h1>
+            <input type="number" id="throw" min="0" max="10">
+            <input type="button" name="submit" id="submit" value="throw">
+            <input type="button" name="submit2" id="submit2" value="throw">
+            <input type="number" id="throw-two" min="0" max="10">
+          </div>
+          <img id="gif" class="get-ready">
+    </div>
+    <div class="column">
+        <table id="bowling-frames2">
+            <tr>
+              <th id="frame">Frame</th>
+              <th id="throw1">Throw 1</th>
+              <th id="throw2">Throw 2</th>
+              <th id="score">Score</th>
+              <th id="total">Total</th>
+            </tr> 
+          </table>
+    </div>
+  </div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+.column {
+  float: left;
+  width: 33%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+body {
+  float: center;
+  letter-spacing: 2px;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Sancreek', cursive;
+  background-image: url("./public/images/big-lebowski.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+h1 {
+  color: orange;
+}
+
+input {
+  font-family: 'Sancreek', cursive;
+  margin-bottom: 1%;
+  font-size: 24px;
+  text-align:center;
+  width: 10%;
+}
+
+table {
+  font-family: 'Sancreek', cursive;
+  font-style: bold;
+  font-weight: 400;
+  font-size: auto;
+  color: yellow;
+  width: 80%;
+  margin: 10%;
+}
+
+img {
+  width: 90%
+}
+
+.get-ready {
+  content:url("./public/images/get-ready.gif")
+}
+
+.cheater {
+  content:url("./public/images/cheater.gif")
+}
+
+.strike {
+  content:url("./public/images/strike.gif")
+}
+
+.spare {
+  content:url("./public/images/spare.gif")
+}
+
+.zero {
+  content:url("./public/images/zero.gif")
+}
+
+.perfect-game {
+  content:url("./public/images/perfect-game.gif")
+}
+
+.gutter-game {
+  content:url("./public/images/gutter-game.gif")
+}
+
+.game-over {
+  content:url("./public/images/game-over.gif")
+}

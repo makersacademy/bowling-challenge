@@ -8,7 +8,7 @@ function Bowling() {
   this.strike = false;
 
   Bowling.prototype.play = function(num) {
-    if (this.pins[this.frame].length < 2) {
+    if (this.pins[this.frame].length <= 2) {
       this.pins[this.frame].push(num);
     }
     if (this.pins[this.frame].length === 2 && this.frame != 10) {

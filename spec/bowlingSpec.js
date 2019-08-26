@@ -1,6 +1,6 @@
 "use strict";
 
-describe("Bowling", function () {
+describe("Bowling", () => {
   let bowling;
 
   beforeEach(() => {
@@ -53,6 +53,3 @@ describe("Bowling", function () {
 
 
 });
-
-
-

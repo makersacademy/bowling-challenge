@@ -24,6 +24,9 @@ function Bowling() {
       this.strike = true;
       this._nextFrame();
     }
+
+    if (this.strike) {
+    }
   };
 
   Bowling.prototype.isSpare = function() {

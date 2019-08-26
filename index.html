@@ -37,6 +37,7 @@
    
     <form action="/interface.js"></form>
       <h1><select id="bowl1">
+          <option value="0">0</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -47,9 +48,9 @@
           <option value="8">8</option>
           <option value="9">9</option>
           <option value="X">X</option>
-          <option value="F">F</option>
         </select> 
         <select id="bowl2">
+            <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -60,20 +61,20 @@
             <option value="8">8</option>
             <option value="9">9</option>
             <option value="/">/</option>
-            <option value="F">F</option>
+            <option value="X">X</option>
           </select> 
           <p>
 
           <!-- <script> if (this.count == 10) {
 
           }</script> -->
-         <h3> Tenth round Third Bowl(if got Strike or spare) <input type="text" id="bowl3" value=0><br></h3>
+        
         <p>
             <h2><input type="button" id="round-scores"  value="Submit Round!"></h2>
           </form>
     
     </h1>
-
+    <h3>SCORES <span id="list"></span></h3>
     </section>
 </html>
 

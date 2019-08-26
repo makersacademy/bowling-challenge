@@ -14,7 +14,15 @@ Bowling.prototype.reset = function(){
   };
 
 Bowling.prototype.addTurn = function(turn){
-  if (turn[0] === "X") {
+  if (((turn[0] === "X") && (turn[1]==="X")) && ((turn[2] === "X") || (turn[2] === "10"))){
+    this._scorecard.push([10, 10, 10])
+  } else if ((turn[0] === "X") && (turn[1]==="X")) {
+    var c = parseInt(turn[2], 10)
+    this._scorecard.push([10, 10, c])
+  } else if ((turn[0] === "X") && (turn[2]==="X")) {
+      var b = parseInt(turn[1], 10)
+      this._scorecard.push([10, b, 10])
+  } else if (turn[0] === "X") {
     this._scorecard.push([10, 0]);
   } else if (turn[1] === "/") {
     var a = parseInt(turn[0], 10)
@@ -38,21 +46,17 @@ Bowling.prototype.addTurn = function(turn){
 Bowling.prototype.scoreTotaller = function(array) {  
   if (this._count == 11) {
     this.scoreCalculator(array)
-  }else {
-    this._score = "tbc"
+  } else {
+    this._score = "CALC IN PROG"
   }
 };
   
-// Bowling.prototype.scoreCalculatorPins = function(turn) {  
-//     this._scores.push(turn[0] + turn[1])
-// };
 
 Bowling.prototype.scoreCalculator = function(scorecardarray) {  
   var x = this.scorefirst8(scorecardarray);
   var y = this.scorelast2(scorecardarray);
   this._score = (x.reduce(myTot)+y.reduce(myTot));
 };
-
 
 
 Bowling.prototype.checkArray = function(array) {
@@ -72,10 +76,12 @@ Bowling.prototype.scorefirst8 = function(arr1) {
           points.push(arr1[i-2].reduce(myTot))
   };
     i += 1
+    
     this._listOfScores.push(points.reduce(myTot))
   }
-   while (i < 10);
+   while (i < arr1.length);
    return points
+  
 };
 
 Bowling.prototype.scorelast2 = function(arr1) {
@@ -90,17 +96,20 @@ Bowling.prototype.scorelast2 = function(arr1) {
   }else{
           points.push(arr1[i-2].reduce(myTot))
   }
-        
+  this._listOfScores.push(this._listOfScores[this._listOfScores.length-1] + points.reduce(myTot))
       i += 1
 }
 while (i < 11);
 points.push(arr1[9].reduce(myTot))
-this._listOfScores.push(points.reduce(myTot))
+
+this._listOfScores.push(this._listOfScores[this._listOfScores.length-1] + arr1[9].reduce(myTot))
 return points
 };
 
 
 function myTot(total, num) {
+  if (Number.isInteger(num)) {
   return total + num;
-}
+  };
+};
 

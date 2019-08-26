@@ -12,13 +12,13 @@
   </head>
   <body align = middle>
     <h3>ROUND <span id="roundcount"></span></h3>
-    <form action="/interface.js">
+    <!-- <form action="/interface.js">
       First bowl Score: <input type="text" id="bowl1" placeholder="1 -> 9, / , X or F"><br>
       Second bowl score: <input type="text" id="bowl2" placeholder="1 -> 9, / , X or F"><br>
       <p>
       Tenth round: only if get Strike or spare: <input type="text" id="bowl3" placeholder="1 -> 9, / , X or F"><br>
       <input type="button" id="round-scores"  value="Submit Round!">
-    </form>
+    </form> -->
   
     <style>
       table, td {
@@ -33,9 +33,10 @@
 </main>
 
 
-    <!-- <section>
-    <h1>Round<span id="count"></span></h1>
-      <h1><select id="turn-input">
+    <section>
+   
+    <form action="/interface.js"></form>
+      <h1><select id="bowl1">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -48,7 +49,7 @@
           <option value="X">X</option>
           <option value="F">F</option>
         </select> 
-        <select id="turn2-input">
+        <select id="bowl2">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -61,13 +62,18 @@
             <option value="/">/</option>
             <option value="F">F</option>
           </select> 
-        <p>
-        <span id="current-temperature"></span>INPUT PINS KNOCKED DOWN
+          <p>
 
-        <script> if this.count == 10</script>
+          <!-- <script> if (this.count == 10) {
+
+          }</script> -->
+         <h3> Tenth round Third Bowl(if got Strike or spare) <input type="text" id="bowl3" value=0><br></h3>
+        <p>
+            <h2><input type="button" id="round-scores"  value="Submit Round!"></h2>
+          </form>
     
     </h1>
 
-    </section> -->
+    </section>
 </html>
 

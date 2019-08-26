@@ -1,21 +1,15 @@
 function Bowling () {
-   
     this._scorecard = []
-    this._turn = []
     this._count = 1
-    this._scores = []
+    this._listOfScores = []
     this._score = 0
+    
 };
-
-Bowling.prototype.turn = function(x, y){
-    this._turn.push(x, y);
-  };
 
 Bowling.prototype.reset = function(){
   this._scorecard = [];
-  this._turn = [];
   this._count = 1;
-  this._scores = [];
+  this._listOfScores = [];
   this._score = 0;
   };
 
@@ -36,31 +30,34 @@ Bowling.prototype.addTurn = function(turn){
     var b = parseInt(turn[1], 10)
     this._scorecard.push([a, b])
     };
-  // this.scoreCalculatorPins(this._scorecard[this._count - 1]);
+
   this._count ++;
-  this._turn = [];
-  console.log(this._scorecard)
-  this.scoreTotaller(this._scorecard)
-  // console.log(this._scores);
+  this.scoreTotaller(this._scorecard);
   };
   
 Bowling.prototype.scoreTotaller = function(array) {  
   if (this._count == 11) {
     this.scoreCalculator(array)
-  };
+  }else {
+    this._score = "tbc"
+  }
 };
   
-Bowling.prototype.scoreCalculatorPins = function(turn) {  
-    this._scores.push(turn[0] + turn[1])
-};
+// Bowling.prototype.scoreCalculatorPins = function(turn) {  
+//     this._scores.push(turn[0] + turn[1])
+// };
 
 Bowling.prototype.scoreCalculator = function(scorecardarray) {  
   var x = this.scorefirst8(scorecardarray);
   var y = this.scorelast2(scorecardarray);
-  console.log(y.reduce(myTot))
-  console.log(x.reduce(myTot))
   this._score = (x.reduce(myTot)+y.reduce(myTot));
 };
+
+
+
+Bowling.prototype.checkArray = function(array) {
+  
+}
 
 Bowling.prototype.scorefirst8 = function(arr1) {
   var points = []
@@ -74,8 +71,8 @@ Bowling.prototype.scorefirst8 = function(arr1) {
   }else{
           points.push(arr1[i-2].reduce(myTot))
   };
-  console.log(points.reduce(myTot))
     i += 1
+    this._listOfScores.push(points.reduce(myTot))
   }
    while (i < 10);
    return points
@@ -85,7 +82,7 @@ Bowling.prototype.scorelast2 = function(arr1) {
   var points = []
   var i = 10
   do {if ((arr1[i - 2][0] == 10) && (arr1[i - 1][0] == 10)) {
-          points.push(arr1[i-2][0] + arr1[i-2][0] + arr1[i-1][1])
+          points.push(arr1[i-2][0] + arr1[i-1][0] + arr1[i-1][1])
   } else if (arr1[i - 2][0] == 10) {
           points.push(arr1[i-2][0] + arr1[i-1][0] + arr1[i-1][1])
   } else if((arr1[i - 2][0] != 10) && ((arr1[i-2].reduce(myTot)) == 10)) {
@@ -98,9 +95,9 @@ Bowling.prototype.scorelast2 = function(arr1) {
 }
 while (i < 11);
 points.push(arr1[9].reduce(myTot))
+this._listOfScores.push(points.reduce(myTot))
 return points
 };
-
 
 
 function myTot(total, num) {

@@ -53,6 +53,29 @@ frame.insertRoll1(3);
   expect(frame.allPinsDown).toEqual([[3,4],[2,4]]);
 });
 
+
+
+
+describe('for frames with a strike', function(){
+  it('does not update this.scores when there is a strike', function(){
+    frame.insertRoll1(3);
+     frame.insertRoll2(4);
+     frame.insertRoll1(10);
+     expect(frame.scores).toEqual([7]);
+  })
+
+  // it('does update this.scores when the strike streak ends', function(){
+  //   frame.insertRoll1(3);
+  //    frame.insertRoll2(4);
+  //    frame.insertRoll1(10);
+  //    frame.insertRoll1(3);
+  //     frame.insertRoll2(4);
+  //     expect(frame.scores).toEqual([7, 24, 31]);
+  //
+  // })
+
+})
+
 describe('for frames with no strike or spare', function(){
 
   it('updates this.scores', function(){

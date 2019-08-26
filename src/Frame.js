@@ -5,6 +5,7 @@
 function Frame() {
 
 this.allPinsDown = [];
+this.displayAllPinsDown = [];
 this.pinsDown = [];
 this.scores = [];
 this.bonus = [1,1,1];
@@ -29,36 +30,50 @@ Frame.prototype.allPinsDown = function() {
 Frame.prototype.insertRoll1 = function(value){
 this.pinsDown[0]= value;
 
+if(value === 10) {
+  this.allPinsDown.push([10,0])
+  this.displayAllPinsDown.push(["X"," "])
 }
+
+}
+
+
 
 Frame.prototype.insertRoll2 = function(value){
 this.pinsDown[1]= value;
 this.allPinsDown.push([this.pinsDown[0], this.pinsDown[1]]);
 
-if(this.allPinsDown.length !== 0) {
-  this.previousPinsDown = this.allPinsDown[this.allPinsDown.length-1]
-}
+// if(this.allPinsDown.length !== 0) {
+//   this.previousPinsDown = this.allPinsDown[this.allPinsDown.length-1]
+// }
+// else
+// {this.previousPinsDown = [0,0]};
+
+  this.previousPinsDown = this.allPinsDown[(this.allPinsDown.length-1)]
+
+
+if(this.scores[this.scores.length-1] === undefined)
+{this.previousScore = 0}
 else
-{this.previousPinsDown = [0,0]};
+{this.previousScore = this.scores[this.scores.length-1]}
 
-
-if(this.scores.length > 0) {
-  this.previousScore = this.scores[this.scores.length-1]
-}
-else
-{this.previousScore = 0};
+  // this.scoreSoFar = this.scores.reduce((a,b) => a + b);
 
 
 
-if (this.previousPinsDown === [10," "])
-{this.scores[(this.allPinsDown.length)/2] += (this.pinsDown[0] + this.pinsDown[1] )}
-else if (this.previousPinsDown[1] === '/')
-{this.scores[(this.allPinsDown.length)/2] += (this.pinsDown[0])}
-  else
-  // {this.scores.push(1+ [this.previousScore ]);}
+//BRING THIS STUFF BACK LATER
+// if (this.previousPinsDown === [10,0])
+// // {this.scores[(this.allPinsDown.length)/2] += (this.pinsDown[0] + this.pinsDown[1] )}
+// {this.scores.push(10 + this.pinsDown[0] + this.pinsDown[1] + this.scoreSoFar)}
+// else if (this.previousPinsDown[1] === '/')
+// {this.scores[(this.allPinsDown.length)/2] += (this.pinsDown[0])}
+//   else
+//   // {this.scores.push(1+ [this.previousScore ]);}
     //{this.scores.push([this.pinsDown[0] + this.pinsDown[1] ]);}
 
-  {this.scores.push(([this.pinsDown[0] + this.pinsDown[1] + this.previousScore]).reduce((a,b) => a + b))}
+  // {this.scores.push(([this.pinsDown[0] + this.pinsDown[1] + this.previousScore]).reduce((a,b) => a + b))}
+
+  {this.scores.push(( this.pinsDown[0] + this.pinsDown[1] + this.previousScore ))}
 
 }
 

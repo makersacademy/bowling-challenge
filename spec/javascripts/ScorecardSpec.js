@@ -1,34 +1,47 @@
+'use strict;'
 describe('Scorecard', function () {
   beforeEach(function () {
     scorecard = new Scorecard();
   });
 
   it('starts with empty rolls', function () {
-    expect(scorecard.rolls).toEqual([])
+    expect(scorecard.rolls).toEqual([
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ])
   });
 
   it('adds a roll to the rolls', function () {
     scorecard.add_roll(5);
-    expect(scorecard.rolls).toEqual([5])
+    expect(scorecard.rolls[0]).toEqual([5])
     scorecard.add_roll(5);
-    expect(scorecard.rolls).toEqual([5, 5])
+    expect(scorecard.rolls[0]).toEqual([5, 5])
     scorecard.add_roll(10);
-    expect(scorecard.rolls).toEqual([5, 5, 10, null])
+    expect(scorecard.rolls[1]).toEqual([10])
   });
 
   it('reports the frames so far', function () {
     scorecard.add_roll(5);
-    expect(scorecard.frames()).toEqual([5])
+    expect(scorecard.frames[0]).toEqual(5);
     scorecard.add_roll(5);
-    expect(scorecard.frames()).toEqual([10])
+    expect(scorecard.frames[0]).toEqual(10)
   });
 
   it('calculates spare bonuses', function () {
     scorecard.add_roll(5);
     scorecard.add_roll(5);
     scorecard.add_roll(5);
-    expect(scorecard.frames()).toEqual([15, 5])
+    expect(scorecard.frames[0]).toEqual(15)
   });
+
 
 
 

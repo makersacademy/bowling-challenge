@@ -14,28 +14,26 @@ Bowling.prototype.reset = function(){
   };
 
 Bowling.prototype.addTurn = function(turn){
-  if (((turn[0] === "X") && (turn[1]==="X")) && ((turn[2] === "X") || (turn[2] === "10"))){
-    this._scorecard.push([10, 10, 10])
-  } else if ((turn[0] === "X") && (turn[1]==="X")) {
+    var a = parseInt(turn[0], 10)
+    var b = parseInt(turn[1], 10)
     var c = parseInt(turn[2], 10)
+  if (((turn[0] === "X") && (turn[1]==="X")) && (turn[2] === "X")){
+    this._scorecard.push([10, 10, 10])
+  } else if (((turn[0] != "X") && (turn[1]!="X")) && (turn[2] === "X")) {
+    this._scorecard.push([a, b, 10])
+  }else if ((turn[0] === "X") && (turn[1]==="X")) {
     this._scorecard.push([10, 10, c])
   } else if ((turn[0] === "X") && (turn[2]==="X")) {
-      var b = parseInt(turn[1], 10)
+      
       this._scorecard.push([10, b, 10])
   } else if (turn[0] === "X") {
     this._scorecard.push([10, 0]);
   } else if (turn[1] === "/") {
-    var a = parseInt(turn[0], 10)
-    var b = (10 - a)
-    this._scorecard.push([a, b]);
+    var d = (10 - a)
+    this._scorecard.push([a, d]);
   }else if (turn.length == 3) {
-    var a = parseInt(turn[0], 10)
-    var b = parseInt(turn[1], 10)
-    var c = parseInt(turn[2], 10)
     this._scorecard.push([a, b, c])
   } else {
-    var a = parseInt(turn[0], 10)
-    var b = parseInt(turn[1], 10)
     this._scorecard.push([a, b])
     };
 

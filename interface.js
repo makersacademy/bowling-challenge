@@ -13,7 +13,7 @@ $(document).ready(function() {
        } else {
         bowling.addTurn([score1, score2])
       }
-
+      
       updateCount();
       updateTable();
     });
@@ -40,14 +40,14 @@ $(document).ready(function() {
     }
   };
 
+
   function updateCount() {
     $('#roundcount').text(bowling._count);
-    $('#list').text(bowling._listOfScores);
-    $('#tot').text(bowling._score);
     if (roundNineCheck(bowling._scorecard)) {
-      $('form').append(' <h3> Tenth round Third Bowl(if got Strike or spare) <input type="text" id="bowl3" value=0><br></h3>')
+      $('form').append(' <h3> Tenth round Third Bowl <select id="bowl3"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="X">X</option></select> </h3>')
    } else if (bowling._count == 11) {
      $('form').append(' <h1> FINAL SCORE <span id="tot"></span></h1>')
+     $('section').append('<h2 color=blue >SCORECARD <span id="list"></span></h2>')
    };
   };
   
@@ -60,6 +60,8 @@ $(document).ready(function() {
     };
 
   function updateTable() {
+      $('#tot').text(bowling._score);
+      $('#list').text(bowling._listOfScores);
       var x = document.createElement("TABLE");
       x.setAttribute("id", "myTable");
       document.body.appendChild(x);
@@ -71,10 +73,10 @@ $(document).ready(function() {
       var z = document.createElement("TD");
       var i = document.createTextNode($('#bowl1').val() + "-");
       var t = document.createTextNode($('#bowl2').val()+ ":");
-      var r = document.createTextNode(bowling._score);
+      // var r = document.createTextNode(bowling._score);
       z.appendChild(i);
       z.appendChild(t);
-      z.appendChild(r);
+      // z.appendChild(r);
       document.getElementById("myTr").appendChild(z);
     }
     

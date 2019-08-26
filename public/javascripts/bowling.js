@@ -19,13 +19,12 @@ function Bowling() {
     }
   };
 
+  Bowling.prototype.addToScore = function() {};
+
   Bowling.prototype.isStrike = function() {
     if (this.pins[this.frame][0] === 10) {
       this.strike = true;
       this._nextFrame();
-    }
-
-    if (this.strike) {
     }
   };
 
@@ -42,6 +41,7 @@ function Bowling() {
         total += score[i][j];
       }
     }
+
     return total;
   };
 

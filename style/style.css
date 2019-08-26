@@ -17,7 +17,10 @@ h3 {
 }
 
 .box {
-  background-color: coral;
+  background-image: url(https://download.hipwallpaper.com/desktop/1600/900/24/77/Ovn5dc.jpg);
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center;
   width: 1500px;
   height: 500px;
   border: 5px solid purple;
@@ -29,9 +32,47 @@ body {
   background-color: lightblue;
 }
 
-li {
-  list-style-type: none; /*Removes bullet points*/
-  float: left; /*Moves div to next row if the window is too narrow*/
-  background: red;
-  border: 2px #000 solid; /*For demo*/
+table.score {
+  margin: 0 auto;
+  width: 90%;
+  font-size: 20px;
+  border: 1px solid;
+  text-align: center;
+  table-layout: fixed;
+  margin-bottom: 40px;
+}
+table.score th,
+tr,
+td {
+  padding: 0;
+  /* vertical-align: middle; */
+  font-family: "Oswald";
+  font-size: 20px;
+  text-align: center;
+}
+table.score th {
+  border-bottom: 1px solid;
+  height: 30px;
+}
+table.score th {
+  border-right: 1px solid;
+  background-color: red;
+  height: 30px;
+  color: #fff;
+}
+table.score td {
+  height: 50px;
+  background: white;
+}
+table.score tr td:not(:last-child) {
+  border-right: 1px solid;
+}
+table.score tr:nth-child(2) td:nth-child(even) {
+  border-bottom: 1px solid;
+}
+table.score tr:nth-child(2) td:nth-child(odd) {
+  border-bottom: 1px solid;
+}
+table.score tr:nth-child(2) td:last-child {
+  border-bottom: 1px solid;
 }

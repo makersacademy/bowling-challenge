@@ -32,11 +32,11 @@ it('a user can see how many pins they knocked down on each turn', function(){
   expect(frame.pinsDown).toEqual([3,4]);
 })
 
-it('calculates total pins down in a frame', function(){
-  frame.insertRoll1(3);
-  frame.insertRoll2(4);
-  expect(frame.totalPinsDown()).toEqual(7);
-})
+// it('calculates total pins down in a frame', function(){
+//   frame.insertRoll1(3);
+//   frame.insertRoll2(4);
+//   expect(frame.totalPinsDown()).toEqual(7);
+// })
 
 it('updates the all pins down scoresheet', function(){
   frame.insertRoll1(3);
@@ -53,58 +53,89 @@ frame.insertRoll1(3);
   expect(frame.allPinsDown).toEqual([[3,4],[2,4]]);
 });
 
-
-it('leaves a placeholder if there is a strike', function(){
-  frame.insertRoll1(10);
-  expect(frame.pinsDown[1]).toEqual(" ");
-})
-
-it('updates the all pins down scoresheet for more than one frame and placeholder for strike', function(){
-  frame.insertRoll1(10);
-  frame.insertRoll1(2);
-  frame.insertRoll2(4);
-  expect(frame.allPinsDown).toEqual([[10," "], [2,4]]);
-});
-
-
-
-
-
 describe('for frames with no strike or spare', function(){
 
-  it('updates the running total after each frame if no strike or spare', function(){
-    frame.insertRoll1(2);
-    frame.insertRoll2(4);
-    expect(frame.runningTotal()).toEqual(6)
-
-  })
-
-  it('does not update the running total if there is a strike', function(){
-    frame.insertRoll1(2);
-    frame.insertRoll2(4);
-    frame.insertRoll1(10);
-
-    expect(frame.runningTotal()).toEqual(6)
-  })
-
-  it('updates the total score if no strike or spare', function(){
+  it('updates this.scores', function(){
     frame.insertRoll1(3);
-    frame.insertRoll2(4);
-    expect(frame.totalScore()).toEqual(7);
+     frame.insertRoll2(4);
+     frame.insertRoll1(4);
+      frame.insertRoll2(4);
+     expect(frame.scores).toEqual([7,15])
   })
 
-  it('when there is a strike, it adds the next two rolls to total for that frame', function(){
-    frame.insertRoll1(2);
-    frame.insertRoll2(6);
-    frame.insertRoll1(10);
-    frame.insertRoll1(1);
-    frame.insertRoll2(1);
-    expect(frame.runningTotal()).toEqual(22)
-  })
+
+// it('leaves a placeholder on pinsDown if there is a strike', function(){
+//   frame.insertRoll1(10);
+//   expect(frame.pinsDown[1]).toEqual(" ");
+// })
+
+// it('updates the all pins down scoresheet for more than one frame and placeholder for strike', function(){
+//   frame.insertRoll1(10);
+//   frame.insertRoll1(2);
+//   frame.insertRoll2(4);
+//   expect(frame.allPinsDown).toEqual([[10," "], [2,4]]);
+// });
+
+
+// it('doesnt update this.scores straight after a strike', function(){
+//   frame.insertRoll1(3);
+//    frame.insertRoll2(4);
+//    frame.insertRoll1(10);
+//    expect(frame.scores).toEqual([7])
+// })
+
+// it('does update this.scores the turn after a strike if thats not a strike / spare', function(){
+//   frame.insertRoll1(3);
+//    frame.insertRoll2(4);
+//   frame.insertRoll1(10);
+//   frame.insertRoll1(3);
+//    frame.insertRoll2(4);
+//    expect(frame.scores).toEqual([7,24,31])
+// })
+
+
+
+
+  // it('updates the running total after each frame if no strike or spare', function(){
+  //   frame.insertRoll1(2);
+  //   frame.insertRoll2(4);
+  //   expect(frame.runningTotal()).toEqual(6)
+  //
+  // })
+
+  // it('does not update the running total if there is a strike', function(){
+  //   frame.insertRoll1(2);
+  //   frame.insertRoll2(4);
+  //   frame.insertRoll1(10);
+  //
+  //   expect(frame.runningTotal()).toEqual(6)
+  // })
+  //
+  // it('updates the total score if no strike or spare', function(){
+  //   frame.insertRoll1(3);
+  //   frame.insertRoll2(4);
+  //   expect(frame.totalScore()).toEqual(7);
+  // })
+
+  // it('when there is a strike, it adds the next two rolls to total for that frame', function(){
+  //   frame.insertRoll1(2);
+  //   frame.insertRoll2(6);
+  //   frame.insertRoll1(10);
+  //   frame.insertRoll1(1);
+  //   frame.insertRoll2(1);
+  //   expect(frame.runningTotal()).toEqual(22);
+  // })
+
 
 
 })
-
+// it('when there is a spare, it adds the next one role to total for that frame', function(){
+//   frame.insertRoll1(4);
+//   frame.insertRoll2(6);
+//   frame.insertRoll1(1);
+//   frame.insertRoll2(1);
+//   expect(frame.runningTotal()).toEqual(13);
+// });
 
 
 

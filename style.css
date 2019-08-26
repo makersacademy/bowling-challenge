@@ -1,0 +1,26 @@
+body {
+  background-image:url(./images/Bowling.jpg);
+  background-position: left top;
+  background-size: 100%;
+}
+
+table {
+  border: 3px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 2px solid rgb(70, 67, 67);
+  padding: 10px;
+  text-align: center;
+  width: 5%;
+}
+
+th {
+  background-color: brown;
+}
+
+td {
+  color: white;
+  background-color: blue;
+}

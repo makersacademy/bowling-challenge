@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bowling</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script
+			  src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous"></script>
+    
+    <script src="./lib/frame.js"></script>
+    <script src="./lib/scoreCard.js"></script>
+    <script src="./index.js"></script>
+
+</head>
+<body>
+
+    <h1>Bowwwwliiinggggg, Awww Yisss!</h1>
+
+    <table>
+        <tr id="frame-numbers"></tr>
+        <tr id="roll-scores"></tr>
+        <tr id="frame-scores"></tr>
+    </table>
+
+    <div id="input-div">
+        <label for="roll-score"></label>
+        <input type="text" placeholder="Number of pins knocked" name="roll-score" id="roll-score">
+        <input type="button" value="Submit this roll!" id="roll-score-button">
+    </div>
+    
+</body>
+</html>

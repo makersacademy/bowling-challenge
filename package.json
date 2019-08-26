@@ -1,0 +1,31 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jasmine --reporter=jasmine-console-reporter",
+    "coverage": "nyc -x 'spec/' npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Clepsyd/bowling-challenge.git"
+  },
+  "author": "GL",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Clepsyd/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/Clepsyd/bowling-challenge#readme",
+  "devDependencies": {
+    "jasmine": "^3.4.0",
+    "jasmine-console-reporter": "^3.1.0",
+    "nyc": "^14.1.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

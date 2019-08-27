@@ -12,6 +12,8 @@ this.bonus = [1,1,1];
 this.streak = [];
 this.previousScore = 0;
 this.previousPinsDown = [0,0];
+this.pending = [];
+this.scoreSoFar = 0;
 
 // this.runningTotal = 0;
 
@@ -28,20 +30,70 @@ Frame.prototype.allPinsDown = function() {
 }
 
 Frame.prototype.insertRoll1 = function(value){
+
 this.pinsDown[0]= value;
 
+
 if(value === 10) {
-  this.allPinsDown.push([10,0])
-  this.displayAllPinsDown.push(["X"," "])
-}
+  this.pinsDown[1] = 0
+this.allPinsDown.push([10,0])
+this.pending.push(10)
+this.updatePending();
+
 
 }
+else
+this.pending.push(value);
+
+}
+
+
+Frame.prototype.updatePending = function(){
+
+
+  if(this.scores.length === 0){
+    this.scoreSoFar = 0
+  }
+  else
+  {this.scoreSoFar = this.scores[this.scores.length -1]}
+
+
+  if(this.pending.length <=1){return}
+  else if(((this.pending[0]+this.pending[1]) <10) && (this.pending.length>1))
+  {this.scores.push(this.pending[0]+this.pending[1] + this.scoreSoFar)
+    this.pending = [];
+
+  }
+  else if((this.pending[0] === 10) && (this.pending.length >= 3))
+  {console.log(this.scoreSoFar + "score so far")
+  this.scores.push(this.scoreSoFar + this.pending[0] + this.pending[1] + this.pending[2])
+   this.pending.shift();
+   console.log(this.scores)
+//    console.log(this.scores + "scores")
+//    console.log(this.pending[0] + "first pending")
+// console.log(this.pending[1] + "second pending")
+// console.log(this.pending[2] + "third pending")
+// console.log(this.scoreSoFar + "score so far")
+   } else if((this.pending[0] !==10) && (this.pending[0] + this.pending[1] === 10))
+  {this.scores.push( (10 + this.pending[2]) + this.scoreSoFar )
+    this.pending.shift();
+    this.pending.shift();
+
+  }
+  // else
+  // {this.pending = 0}
+}
+
+
 
 
 
 Frame.prototype.insertRoll2 = function(value){
 this.pinsDown[1]= value;
 this.allPinsDown.push([this.pinsDown[0], this.pinsDown[1]]);
+this.pending.push(value);
+this.updatePending();
+
 
 // if(this.allPinsDown.length !== 0) {
 //   this.previousPinsDown = this.allPinsDown[this.allPinsDown.length-1]
@@ -49,16 +101,14 @@ this.allPinsDown.push([this.pinsDown[0], this.pinsDown[1]]);
 // else
 // {this.previousPinsDown = [0,0]};
 
-  this.previousPinsDown = this.allPinsDown[(this.allPinsDown.length-1)]
+  // this.previousPinsDown = this.allPinsDown[(this.allPinsDown.length -1)]
 
-
-if(this.scores[this.scores.length-1] === undefined)
-{this.previousScore = 0}
-else
-{this.previousScore = this.scores[this.scores.length-1]}
-
-  // this.scoreSoFar = this.scores.reduce((a,b) => a + b);
-
+//
+// if(this.scores[this.scores.length-1] === undefined)
+// {this.previousScore = 0}
+// else
+// {this.previousScore = this.scores[this.scores.length-1]}
+//
 
 
 //BRING THIS STUFF BACK LATER
@@ -73,9 +123,45 @@ else
 
   // {this.scores.push(([this.pinsDown[0] + this.pinsDown[1] + this.previousScore]).reduce((a,b) => a + b))}
 
-  {this.scores.push(( this.pinsDown[0] + this.pinsDown[1] + this.previousScore ))}
+// if (this.previousPinsDown === [10,0])
+
+// {this.scores[(this.allPinsDown.length)/2] += (this.pinsDown[0] + this.pinsDown[1] )}
+// {this.scores.push(10 + this.pinsDown[0] + this.pinsDown[1] + this.scoreSoFar)}
+// this.previousPinsDown = this.allPinsDown[(this.allPinsDown.length -1)]
+
+// if (this.previousPinsDown === [10,0])
+// // {this.scores.push('hello')}
+// {this.scores.push( this.pinsDown[0] + this.pinsDown[1] + this.previousScore + 10)}
+// else
+//   {this.scores.push(( this.pinsDown[0] + this.pinsDown[1] + this.previousScore ))}
+
+// this.updateScores();
 
 }
+
+
+
+// Frame.prototype.updateScores = function(){
+//    if(this
+//   {console.log("hello")}
+//   // if(this.allPinsDown[this.allPinsDown.length - 1] === [10,0])
+//   // (this.allPinsDown[this.allPinsDown.length - 1] === [10,0] )
+//   // {console.log(this.allPinsDown[this.allPinsDown.length - 1] +"hi")}
+// // (this.allPinsDown[this.allPinsDown.length - 1] === [10,0]))
+// // {console.log(this.allPinsDown.length + 'hello')}
+// // console.log('hello')
+//   // console.log(this.allPinsDown[this.allPinsDown.length - 2])
+//   // {this.scores.push(this.scores.reduce((a,b) => a+b) + 20)}
+//   // else if((this.allPinsDown.length >= (this.scores.length +1)) &&
+//   // (this.allPinsDown[this.allPinsDown.length - 1] !== [10,0]))
+//
+// }
+// console.log(this.allPinsDown[this.allPinsDown.length - 1])
+    // {this.scores.push(this.scores.reduce((a,b) => a+b)) + (this.allPinsDown[this.allPinsDown.length - 1][0])}
+
+
+
+
 
 
 

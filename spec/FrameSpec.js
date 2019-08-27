@@ -64,15 +64,58 @@ describe('for frames with a strike', function(){
      expect(frame.scores).toEqual([7]);
   })
 
-  // it('does update this.scores when the strike streak ends', function(){
-  //   frame.insertRoll1(3);
-  //    frame.insertRoll2(4);
-  //    frame.insertRoll1(10);
-  //    frame.insertRoll1(3);
-  //     frame.insertRoll2(4);
-  //     expect(frame.scores).toEqual([7, 24, 31]);
-  //
-  // })
+  it('does update this.scores when the strike streak ends', function(){
+    frame.insertRoll1(3);
+     frame.insertRoll2(4);
+     frame.insertRoll1(10);
+     frame.insertRoll1(3);
+      frame.insertRoll2(4);
+      expect(frame.scores).toEqual([7, 24]);
+
+  })
+
+  it('can handle more than one strike in a row', function(){
+    frame.insertRoll1(10);
+    frame.insertRoll1(10);
+    frame.insertRoll1(10);
+    expect(frame.scores).toEqual([30])
+  })
+
+
+    it('can handle more than one strike in a row', function(){
+      frame.insertRoll1(10);
+      frame.insertRoll1(10);
+      frame.insertRoll1(10);
+      frame.insertRoll1(10);
+      frame.insertRoll1(10);
+      frame.insertRoll1(10);
+      expect(frame.scores).toEqual([30, 60, 90, 120])
+
+    })
+
+    it('you get zero for a gutter game', function(){
+      frame.insertRoll1(0);
+      frame.insertRoll2(0);
+      frame.insertRoll1(0);
+      frame.insertRoll2(0);
+      frame.insertRoll1(0);
+      frame.insertRoll2(0);
+      frame.insertRoll1(0);
+      frame.insertRoll2(0);
+      frame.insertRoll1(0);
+      frame.insertRoll2(0);
+      frame.insertRoll1(0);
+      frame.insertRoll2(0);
+      frame.insertRoll1(0);
+      frame.insertRoll2(0);
+      frame.insertRoll1(0);
+      frame.insertRoll2(0);
+      frame.insertRoll1(0);
+      frame.insertRoll2(0);
+      frame.insertRoll1(0);
+      frame.insertRoll2(0);
+      expect(frame.scores[frame.scores.length -1]).toEqual(0)
+    })
 
 })
 

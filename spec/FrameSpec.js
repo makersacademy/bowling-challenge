@@ -62,6 +62,52 @@ it('only lets the player play 10 frames', function(){
 
 })
 
+// it('lets the player have 3 rolls if they roll a strike in last frame', function(){
+//   var i
+//   for(i=0; i<10; i++)
+//   {frame.insertRoll1(10);}
+//   expect(function(){frame.insertBonusRoll(2); }).not.toThrowError();
+//
+// })
+//
+// it('lets the player have 3 rolls if they roll a spare in last frame', function(){
+//   var i
+//   for(i=0; i<9; i++)
+//   {frame.insertRoll1(10);}
+//   frame.insertRoll1(6);
+//   frame.insertRoll2(4);
+//   expect(function(){frame.insertBonusRoll(2); }).not.toThrowError();
+//
+// })
+
+
+// it('only lets the player have 2 rolls per frame', function(){
+//   frame.insertRoll1(3);
+//  frame.insertRoll2(4);
+//  expect(function(){frame.insertBonusRoll(3); }).toThrowError("Only 2 rolls per frame")
+//
+// })
+
+it('can handle a nearly perfect game', function(){
+  var i
+  for(i=0; i<9; i++)
+  {frame.insertRoll1(10);}
+  frame.insertRoll1(4);
+  frame.insertRoll2(2);
+  console.log(frame.scores.length)
+
+  // frame.insertRoll3(10);
+  expect(frame.scores).toEqual([30, 60, 90, 120, 150, 180, 210, 234, 250, 256]);
+})
+
+it('can handle a normal game', function(){
+  var i
+     for(i=0; i<10; i++)
+    {frame.insertRoll1(4);
+    frame.insertRoll2(3);}
+    expect(frame.scores).toEqual([7,14,21,28,35,42,49,56,63,70])
+})
+
 
 
 describe('for frames with a strike', function(){

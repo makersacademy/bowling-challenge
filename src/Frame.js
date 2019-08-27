@@ -8,7 +8,6 @@ this.allPinsDown = [];
 this.displayAllPinsDown = [];
 this.pinsDown = [];
 this.scores = [];
-this.bonus = [1,1,1];
 this.streak = [];
 this.previousScore = 0;
 this.previousPinsDown = [0,0];
@@ -31,8 +30,9 @@ Frame.prototype.allPinsDown = function() {
 
 Frame.prototype.insertRoll1 = function(value){
 
-  if(this.allPinsDown.length === 10)
-  {throw new Error ("No frames left")}
+  if((this.allPinsDown.length === 10) && ((this.allPinsDown[this.allPinsDown.length -1]) !== [10,0] ))
+  {throw new Error ("No frames left")
+}
 
 this.pinsDown[0]= value;
 
@@ -41,6 +41,7 @@ if(value === 10) {
   this.pinsDown[1] = 0
 this.allPinsDown.push([10,0])
 this.pending.push(10)
+this.updatePending();
 this.updatePending();
 this.updatePending();
 
@@ -55,6 +56,7 @@ this.pending.push(value);
 Frame.prototype.updatePending = function(){
 
 
+
   if(this.scores.length === 0){
     this.scoreSoFar = 0
   }
@@ -64,31 +66,38 @@ Frame.prototype.updatePending = function(){
 
 
 
-  if(this.pending.length <=1){return}
+  if(this.pending.length <=1){
+  console.log(this.pending.length)
+  console.log(this.pending)}
+  else if ((this.scores.length === 9) && (this.pending.length >= 2))
 
-  else if ((this.pending[0] + this.pending[1]) < 10)
-  // && (( this.pending[0] + this.pending[1] ) ==! 10) )
- // console.log((this.pending[0] + this.pending[1])< 10)
+  {
+    console.log('foxes2')
+   this.scores.push(this.pending[0]+this.pending[1] + this.scoreSoFar)
+     this.pending = [];
 
-  {this.scores.push(this.pending[0]+this.pending[1] + this.scoreSoFar)
+   }
+
+  else if( ((this.pending[0] + this.pending[1]) < 10))
+ {
+  this.scores.push(this.pending[0] + this.pending[1] + this.scoreSoFar)
     this.pending = [];
-    console.log('first else if ')
+    console.log('foxess')
   }
   else if((this.pending[0] === 10) && (this.pending.length >= 3))
 
   {this.scores.push(this.scoreSoFar + this.pending[0] + this.pending[1] + this.pending[2])
    this.pending.shift();
-   console.log('second else if')
+   console.log('yaya')
+
 
  } else if((this.pending[0] !==10) && (this.pending[0] + this.pending[1] === 10) && (this.pending.length>2))
   {this.scores.push( ( 10 + this.pending[2]) + this.scoreSoFar )
     this.pending.shift();
     this.pending.shift();
-    console.log(this.pending + 'third else if')
-
-
 
   }
+
   // else
   // {this.pending = 0}
 }
@@ -103,6 +112,21 @@ this.allPinsDown.push([this.pinsDown[0], this.pinsDown[1]]);
 this.pending.push(value);
 this.updatePending();
 this.updatePending();
+this.updatePending();
+
+Frame.prototype.insertBonusRoll = function(bonus1){
+  if((this.allPinsDown.length >= 10) && (this.allPinsDown[this.allPinsDown.length-1] === [10,0]))
+
+  { console.log('it knows')
+    this.allPinsDown[this.allPinsDown.length-1] = [10, (this.bonus1 + this.bonus2)]
+    this.scores.push(this.bonus1 + this.bonus2 + 10 + this.scores[this.scores.length-1])
+
+  }
+  else if ((this.allPinsDown.length !== 10) && (this.allPinsDown[this.allPinsDown.length-1] !== [10,0]))
+   // else
+    {throw new Error ("Only 2 rolls per frame")
+  }
+}
 
 
 // if(this.allPinsDown.length !== 0) {

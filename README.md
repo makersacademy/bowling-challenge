@@ -1,4 +1,22 @@
 
+
+# Booooowling
+
+## Design
+
+Scorecard object.
+
+scorecard = new Scorecard();
+
+scorecard.add_roll([0-10]);
+scorecard.frame_score(); // returns an array of frame scores [0,0,0,0,0,0,0,0,0,0]
+scorecard.rolls; // returns an array of rolls. Up to 23. [5,5,10,null,...]
+
+
+
+
+
+
 Bowling Challenge
 =================
 

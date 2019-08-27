@@ -53,6 +53,14 @@ frame.insertRoll1(3);
   expect(frame.allPinsDown).toEqual([[3,4],[2,4]]);
 });
 
+it('only lets the player play 10 frames', function(){
+  var i
+  for(i=0; i<10; i++)
+  {frame.insertRoll1(3);
+   frame.insertRoll2(4);}
+   expect(function(){frame.insertRoll1(2); }).toThrowError("No frames left")
+
+})
 
 
 
@@ -93,7 +101,7 @@ describe('for frames with a strike', function(){
 
     it('you get zero for a gutter game', function(){
       var i
-      for(i=0; i<11; i++)
+      for(i=0; i<10; i++)
       {frame.insertRoll1(0);
       frame.insertRoll2(0);}
       expect(frame.scores[frame.scores.length -1]).toEqual(0)

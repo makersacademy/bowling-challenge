@@ -31,6 +31,9 @@ Frame.prototype.allPinsDown = function() {
 
 Frame.prototype.insertRoll1 = function(value){
 
+  if(this.allPinsDown.length === 10)
+  {throw new Error ("No frames left")}
+
 this.pinsDown[0]= value;
 
 

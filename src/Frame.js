@@ -39,6 +39,7 @@ if(value === 10) {
 this.allPinsDown.push([10,0])
 this.pending.push(10)
 this.updatePending();
+this.updatePending();
 
 
 }
@@ -58,26 +59,31 @@ Frame.prototype.updatePending = function(){
   {this.scoreSoFar = this.scores[this.scores.length -1]}
 
 
+
+
   if(this.pending.length <=1){return}
-  else if(((this.pending[0]+this.pending[1]) <10) && (this.pending.length>1))
+
+  else if ((this.pending[0] + this.pending[1]) < 10)
+  // && (( this.pending[0] + this.pending[1] ) ==! 10) )
+ // console.log((this.pending[0] + this.pending[1])< 10)
+
   {this.scores.push(this.pending[0]+this.pending[1] + this.scoreSoFar)
     this.pending = [];
-
+    console.log('first else if ')
   }
   else if((this.pending[0] === 10) && (this.pending.length >= 3))
-  {console.log(this.scoreSoFar + "score so far")
-  this.scores.push(this.scoreSoFar + this.pending[0] + this.pending[1] + this.pending[2])
+
+  {this.scores.push(this.scoreSoFar + this.pending[0] + this.pending[1] + this.pending[2])
    this.pending.shift();
-   console.log(this.scores)
-//    console.log(this.scores + "scores")
-//    console.log(this.pending[0] + "first pending")
-// console.log(this.pending[1] + "second pending")
-// console.log(this.pending[2] + "third pending")
-// console.log(this.scoreSoFar + "score so far")
-   } else if((this.pending[0] !==10) && (this.pending[0] + this.pending[1] === 10))
-  {this.scores.push( (10 + this.pending[2]) + this.scoreSoFar )
+   console.log('second else if')
+
+ } else if((this.pending[0] !==10) && (this.pending[0] + this.pending[1] === 10) && (this.pending.length>2))
+  {this.scores.push( ( 10 + this.pending[2]) + this.scoreSoFar )
     this.pending.shift();
     this.pending.shift();
+    console.log(this.pending + 'third else if')
+
+
 
   }
   // else
@@ -92,6 +98,7 @@ Frame.prototype.insertRoll2 = function(value){
 this.pinsDown[1]= value;
 this.allPinsDown.push([this.pinsDown[0], this.pinsDown[1]]);
 this.pending.push(value);
+this.updatePending();
 this.updatePending();
 
 

@@ -70,50 +70,32 @@ describe('for frames with a strike', function(){
      frame.insertRoll1(10);
      frame.insertRoll1(3);
       frame.insertRoll2(4);
-      expect(frame.scores).toEqual([7, 24]);
+      expect(frame.scores).toEqual([7, 24, 31]);
 
   })
 
-  it('can handle more than one strike in a row', function(){
-    frame.insertRoll1(10);
-    frame.insertRoll1(10);
-    frame.insertRoll1(10);
-    expect(frame.scores).toEqual([30])
+  it('adds the next roll to a spare', function(){
+    frame.insertRoll1(4);
+    frame.insertRoll2(6);
+    frame.insertRoll1(2);
+    frame.insertRoll2(2);
+    expect(frame.scores).toEqual([12, 16])
   })
 
 
     it('can handle more than one strike in a row', function(){
-      frame.insertRoll1(10);
-      frame.insertRoll1(10);
-      frame.insertRoll1(10);
-      frame.insertRoll1(10);
-      frame.insertRoll1(10);
-      frame.insertRoll1(10);
+      var i
+      for(i=0; i<6; i++)
+      {frame.insertRoll1(10);}
       expect(frame.scores).toEqual([30, 60, 90, 120])
 
     })
 
     it('you get zero for a gutter game', function(){
-      frame.insertRoll1(0);
-      frame.insertRoll2(0);
-      frame.insertRoll1(0);
-      frame.insertRoll2(0);
-      frame.insertRoll1(0);
-      frame.insertRoll2(0);
-      frame.insertRoll1(0);
-      frame.insertRoll2(0);
-      frame.insertRoll1(0);
-      frame.insertRoll2(0);
-      frame.insertRoll1(0);
-      frame.insertRoll2(0);
-      frame.insertRoll1(0);
-      frame.insertRoll2(0);
-      frame.insertRoll1(0);
-      frame.insertRoll2(0);
-      frame.insertRoll1(0);
-      frame.insertRoll2(0);
-      frame.insertRoll1(0);
-      frame.insertRoll2(0);
+      var i
+      for(i=0; i<11; i++)
+      {frame.insertRoll1(0);
+      frame.insertRoll2(0);}
       expect(frame.scores[frame.scores.length -1]).toEqual(0)
     })
 

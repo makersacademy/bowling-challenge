@@ -1,4 +1,35 @@
+Bowling Challenge - Weekend Challenge for Weeks 5 & 6 - Update as at Wed 28 Aug 2019:
+=================
+Notes:
+* User inputs the rolls
+* After a frame, reset the 10 pins
+Rules:
+* Game = 10 frames
+.
+* 1 frame = 1 OR 2 rolls (depends on strikes and spares)
+* Score of a frame = number of pins knocked down pins PLUS bonuses (depending on strikes & spares)
+.
+* Strike = knock down all 10 pins on 1st roll
+* IF 10th frame, see special rules
+* ELSE -> Frame ends, add bonus to score
+* Strike bonus = number of pins knocked down by the next 2 rolls (i.e. either next frame OR if the player rolls a 2nd strike)
+.
+* Spare = If NOT a strike, but knock down all 10 pins within a frame
+* IF 10th frame, see special rules
+* ELSE -> Frame ends, add bonus to score
+* Spare bonus = number of pins knocked down by the next roll (1st roll of next frame)
+.
+* Special rule for 10th frame = IF a strike OR spare - player CAN do extra rolls, subject to MAX 3 rolls in the 10th frame.
+* Points from extra extra rolls only added to the bonus (not included in regular points).
+* Examples - 10th frame - 3 rolls:
+`10, 10, 10`
+`-> 30 points (10 points for the regular first strike and 20 points for the bonus)`
+`1, 9, 10`
+`->20 points (10 points for the regular spare and 10 points for the bonus)`
 
+
+ORIGINAL INSTRUCTIONS FROM MAKERS:
+=================
 Bowling Challenge
 =================
 

@@ -13,6 +13,7 @@ this.previousScore = 0;
 this.previousPinsDown = [0,0];
 this.pending = [];
 this.scoreSoFar = 0;
+this.bonus = 0;
 
 // this.runningTotal = 0;
 
@@ -26,6 +27,10 @@ Frame.prototype.pinsDown = function() {
 
 Frame.prototype.allPinsDown = function() {
   return this.allPinsDown
+}
+
+Frame.prototype.bonus = function() {
+  return this.bonus
 }
 
 Frame.prototype.insertRoll1 = function(value){
@@ -116,8 +121,34 @@ this.updatePending();
 this.updatePending();
 this.updatePending();
 }
+
 Frame.prototype.insertBonusRoll = function(value){
-  this.scores.push( this.scores[this.scores.length-1] + value + this.pending[0] + this.pending[1] )}
+  this.bonus = value;
+  if(this.pinsDown.includes(10))
+  {this.scores.push( this.scores[this.scores.length-1] + this.bonus + this.pending[0] + this.pending[1] )}
+  else
+  {this.scores[this.scores.length-1] = this.scores[this.scores.length-1] + this.bonus}
+
+
+  }
+
+
+// Frame.prototype.insertBonusRoll = function(value){
+//   this.bonus = value;
+//   console.log(this.bonus)
+//   console.log(this.scores[this.scores.length-1])
+//
+//
+//
+//   this.scores.push( this.scores[this.scores.length-1] + this.bonus + this.pending[0] + this.pending[1] )
+// }
+
+
+
+
+
+
+
 //   if((this.allPinsDown.length >= 10) && (this.allPinsDown[this.allPinsDown.length-1] === [10,0]))
 //
 //   { console.log('it knows')

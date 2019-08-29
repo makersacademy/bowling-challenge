@@ -14,17 +14,11 @@ git clone git@github.com:willhowes/bowling-challenge.git
 cd bowling-challenge
 open index.html
 ```
-## How to run the tests in Jasmine 
+## How to run the tests in Jasmine
 Open ```SpecRunner.html``` in your browser.
 
-<<<<<<< HEAD
-* Start a game by clicking the button for your first throw.
-
-* Start a new game (at the end or midway through a game) by clicking the 'New Game' button
-=======
 ## Instructions
-* Start a game by clicking the button for your first throw. 
->>>>>>> ed521f942d843c090e444e56b4273c5952bcc874
+* Start a game by clicking the button for your first throw.
 
 * Start a new game by clicking "New Game". A new game will automatically start if you click for a throw after the previous game has been completed.
 
@@ -32,12 +26,13 @@ Open ```SpecRunner.html``` in your browser.
 
 1. Refactor the code with some extraction of responsibility of the ```Game``` object which  which is very long. My original approach was to have two main objects: ```Game``` and ```Frame``` but this only seemed to over-complicate matters.
 
-<<<<<<< HEAD
-=======
 ## Screenshots
-![A blank ten-pin bowling scorecard](images/
+* Start of the game
+![A blank ten-pin bowling scorecard](images/start_of_game.png)
 
->>>>>>> ed521f942d843c090e444e56b4273c5952bcc874
+* End of the game
+![A blank ten-pin bowling scorecard](images/perfect_game.png)
+
 ## Domain Model/Plan
 
 ### Objects

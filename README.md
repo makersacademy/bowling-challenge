@@ -26,6 +26,9 @@ Open ```SpecRunner.html``` in your browser.
 
 1. Refactor the code with some extraction of responsibility of the ```Game``` object which  which is very long. My original approach was to have two main objects: ```Game``` and ```Frame``` but this only seemed to over-complicate matters.
 
+## Screenshots
+![A blank ten-pin bowling scorecard](images/
+
 ## Domain Model/Plan
 
 ### Objects

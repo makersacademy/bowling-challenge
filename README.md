@@ -12,16 +12,15 @@ This is my attempt at the [Makers Academy Week 5 Bowling Challenge](https://gith
 
 * Run the Jasmine tests by opening ```SpecRunner.html``` in your browser.
 
-* Start a game by clicking the button for your first throw. A new game will start if you click for a throw after a game has finished.
+* Start a game by clicking the button for your first throw.
+
+* Start a new game (at the end or midway through a game) by clicking the 'New Game' button
 
 * I have not put in guard clauses for a user entering an invalid throw (e.g. anything above ten for a a single throw or for a spare) as only valid throw buttons will be shown.
 
 * Things I would have like to have done but ran out of time:
 
 1. Refactor the code with some extraction of responsibility of the ```Game``` object which  which is very long. My original approach was to have two main objects: ```Game``` and ```Frame``` but this only seemed to over-complicate matters.
-
-2. Make the presentation of the throws and frame total more like an actual bowling scorecard. [Example](https://www.bowlinggenius.com/)
-
 
 ## Domain Model/Plan
 

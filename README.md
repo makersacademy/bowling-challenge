@@ -18,9 +18,9 @@ Bowling Challenge - Weekend Challenge for Weeks 5 & 6 - Update as at Sun 1 Sept 
 ![domain_model](./images/bowling-domain-model.png)
 * One frame - user does 2 rolls (no spares or strikes)
 * Two frames - calculate total score for these (no spares or strikes)
-### TO DO - User stories to be implemented:
 * Spares - user plays 2 frames, of which one is a spare
 * Strikes - user plays 2 frames, of which one is a strike
+### TO DO - User stories to be implemented:
 * Full game (excl. 10th frame rules) - user plays 10 frames, including some spares, strikes and misses
 * Full game incl. 10th frame rules
 ### TO DO - Functionality:

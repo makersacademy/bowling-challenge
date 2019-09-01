@@ -1,10 +1,35 @@
-Bowling Challenge - Weekend Challenge for Weeks 5 & 6 - Update as at Wed 28 Aug 2019:
+Bowling Challenge - Weekend Challenge for Weeks 5 & 6 - Update as at Sun 1 Sept 2019:
 =================
-## Notes:
-* User inputs the rolls
-* After a frame, reset the 10 pins
+## Purpose of the app:
+* The function of the app is to calculate the users score for a bowling game
+* User inputs the rolls i.e. how many pins they knock over each time
+* There is just one user
 
-## Rules:
+## How to use / test this app:
+* Clone the github repo by inputting the follwing in your Terminal:
+`git clone https://github.com/HannaAikas/bowling-challenge.git`
+* Open the relevant folder on your terminal
+`cd bowling-challenge`
+* Open SpecRunner.html
+`open SpecRunner.html`
+
+## Notes - Progress to date:
+### DONE:
+* Create README and diagram to show the logic of the app
+### TO DO - User stories to be implemented:
+![domain_model](./images/bowling-domain-model.png)
+* One frame - user does 2 rolls (no spares or strikes)
+* Two frames - calculate total score for these (no spares or strikes)
+* Spares - user plays 2 frames, of which one is a spare
+* Strikes - user plays 2 frames, of which one is a strike
+* Full game (excl. 10th frame rules) - user plays 10 frames, including some spares, strikes and misses
+* Full game incl. 10th frame rules
+### TO DO - Functionality:
+* Create user interface
+
+## App logic - Rules of Bowling:
+![business_logic](./images/bowling-logic.png)
+
 ### Game
 * = 10 frames
 ### Frames
@@ -20,7 +45,7 @@ Bowling Challenge - Weekend Challenge for Weeks 5 & 6 - Update as at Wed 28 Aug 
 * IF 10th frame, see special rules
 * ELSE -> Frame ends, add bonus to score
 * Spare bonus = number of pins knocked down by the next roll (1st roll of next frame)
-### 10th Frame 
+### 10th Frame
 * Special rule for 10th frame = IF a strike OR spare - player CAN do extra rolls, subject to MAX 3 rolls in the 10th frame.
 * Points from extra extra rolls only added to the bonus (not included in regular points).
 * Examples - 10th frame - 3 rolls:

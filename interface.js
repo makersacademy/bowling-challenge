@@ -3,16 +3,17 @@ $(document).ready(function() {
     
     updateCount();
     
-  
     $("#round-scores").on('click', function() {
-      var score1 = $('#bowl1').val();
-      var score2 = $('#bowl2').val();
-      var score3 = $('#bowl3').val();
+    
+      var score1 = parseInt($('#bowl1').val(), 10);
+      var score2 = parseInt($('#bowl2').val(), 10);
+      var score3 = parseInt($('#bowl3').val(), 10);
+
       if (roundNineCheck(bowling._scorecard)){
         bowling.addTurn([score1, score2, score3])
        } else {
         bowling.addTurn([score1, score2])
-      }
+      };
       
       updateCount();
       updateTable();
@@ -25,16 +26,11 @@ $(document).ready(function() {
       $( "form" ).empty();
     });
 
-  
-    
-  // $('#roundcount').on('click', function() {
-  //   updateCount();
-  // });
   function myTot(total, num) {
     return total + num;
   };
 
-  function roundNineCheck(array, score) {
+  function roundNineCheck(array) {
     if ((array.length == 9) && ((array[array.length - 1].reduce(myTot)) % 10 === 0)){
       return true
     }
@@ -44,10 +40,10 @@ $(document).ready(function() {
   function updateCount() {
     $('#roundcount').text(bowling._count);
     if (roundNineCheck(bowling._scorecard)) {
-      $('form').append(' <h3> Tenth round Third Bowl <select id="bowl3"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="X">X</option></select> </h3>')
+      $('form').append(' <h3> Tenth round Third Bowl <select id="bowl3"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value=10>X</option></select> </h3>')
    } else if (bowling._count == 11) {
      $('form').append(' <h1> FINAL SCORE <span id="tot"></span></h1>')
-     $('section').append('<h2 color=blue >Accumulating Score <span id="list"></span></h2>')
+     $('form').append('<h2 color=blue >Accumulating Score <span id="list"></span></h2>')
    };
   };
   
@@ -61,7 +57,7 @@ $(document).ready(function() {
 
   function updateTable() {
       $('#tot').text(bowling._score);
-      $('#list').text(bowling._listOfScores);
+      $('#list').text(bowling._accumulatingScoreArray);
       var x = document.createElement("TABLE");
       x.setAttribute("id", "myTable");
       document.body.appendChild(x);
@@ -80,9 +76,6 @@ $(document).ready(function() {
       document.getElementById("myTr").appendChild(z);
     }
     
-   
-  
-     
 });
   
     // Update score method like update temperature 

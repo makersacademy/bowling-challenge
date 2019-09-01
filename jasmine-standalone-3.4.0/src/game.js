@@ -1,55 +1,53 @@
 'use strict';
 
 function Game() {
-  this.frameCount = 1;
-  this.calculateScore = 0;
-  this.calculateBonus = 0;
+  this.calculateTotalScore = 0;
   this._frames = [];
+  this.frameCount = 1;
 }
 
 function Frame() {
   this.firstRoll = 'TBC';
   this.secondRoll = 'TBC';
-  this.thirdRoll = 'TBC';
 }
 
+var frameScoreHolder = [];
+
+// HELPER FUNCTIONS - CHECK FRAME COUNT AND GAME SCORES:
 Game.prototype.checkFrameCount = function() {
   return this.frameCount;
 };
-
-Game.prototype.checkScore = function() {
-  return this.calculateScore;
+Game.prototype.checkTotalScore = function() {
+  return this.calculateTotalScore;
 };
-
 Game.prototype.checkBonus = function() {
   return this.calculateBonus;
 };
 
-Game.prototype.startFirstFrame = function(frame) {
-  this._frames.push(frame);
-};
-
+// HELPER FUNCTIONS - CHECK SCORES PER ROLL:
 Frame.prototype.checkFirstRoll = function() {
   return this.firstRoll;
 };
-
 Frame.prototype.checkSecondRoll = function() {
   return this.secondRoll;
 };
 
-Frame.prototype.checkThirdRoll = function() {
-  return this.thirdRoll;
-};
-
+// FUNCTIONALITY - CALCULATE SCORES PER ROLL AND FRAME:
 Frame.prototype.inputScore = function(roll) {
   if(this.firstRoll === 'TBC') {
     this.firstRoll = roll;
-    return this.firstRoll;
+    frameScoreHolder.push(this.firstRoll);
   } else if (this.secondRoll === 'TBC') {
     this.secondRoll = roll;
-    return this.secondRoll;
-  } else {
-    this.thirdRoll = roll;
-    return this.thirdRoll;
+    frameScoreHolder.push(this.secondRoll);
   };
+};
+Game.prototype.finishFrame = function(frame) {
+  var totalScore = 0;
+  frameScoreHolder.forEach(function(score) {
+    totalScore += score;
+  });
+  this.calculateTotalScore = totalScore;
+  this._frames.push(frameScoreHolder);
+  this.frameCount += 1
 };

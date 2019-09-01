@@ -62,4 +62,29 @@ describe('Bowling', function() {
     });
   });
 
+  describe('spares', function() {
+    beforeEach(function() {
+      game.inputScore(5);
+      game.inputScore(3);
+      game.finishFrame();
+      game.inputScore(3);
+      game.inputScore(7);
+    });
+    it('has a record of which frames where spares', function() {
+      expect(game.spares).toContain(2);
+    });
+  });
+
+  describe('spikes', function() {
+    beforeEach(function() {
+      game.inputScore(5);
+      game.inputScore(3);
+      game.finishFrame();
+      game.inputScore(10);
+    });
+    it('has a record of which frames where spares', function() {
+      expect(game.strikes).toContain(2);
+    });
+  });
+
 });

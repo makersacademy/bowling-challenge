@@ -7,7 +7,11 @@ function Game() {
   this.firstRoll = 'TBC';
   this.secondRoll = 'TBC';
   this.holdFrameScore = [];
+  this.spares = [];
+  this.strikes = [];
 }
+
+var PERFECT_SCORE = 10;
 
 // HELPER FUNCTIONS - CHECK FRAME COUNT AND GAME SCORES:
 Game.prototype.checkFrameCount = function() {
@@ -33,9 +37,17 @@ Game.prototype.inputScore = function(roll) {
   if(this.firstRoll === 'TBC') {
     this.firstRoll = roll;
     this.holdFrameScore.push(this.firstRoll);
+    var frameNumber = this.frameCount
+    if(this.firstRoll === PERFECT_SCORE) {
+      this.strikes.push(frameNumber);
+    }
   } else if (this.secondRoll === 'TBC') {
     this.secondRoll = roll;
     this.holdFrameScore.push(this.secondRoll);
+    var frameNumber = this.frameCount
+    if(this.firstRoll + this.secondRoll === PERFECT_SCORE) {
+      this.spares.push(frameNumber);
+    };
   };
 };
 Game.prototype.finishFrame = function(frame) {

@@ -40,6 +40,16 @@ Game.prototype.inputScore = function(roll) {
     var frameNumber = this.frameCount
     if(this.firstRoll === PERFECT_SCORE) {
       this.strikes.push(frameNumber);
+      var totalScore = 0;
+      this.holdFrameScore.forEach(function(score) {
+        totalScore += score;
+      });
+      this.calculateTotalScore += totalScore;
+      this._frames.push(this.holdFrameScore);
+      this.frameCount += 1;
+      this.firstRoll = 'TBC';
+      this.secondRoll = 'TBC';
+      this.holdFrameScore = [];
     }
   } else if (this.secondRoll === 'TBC') {
     this.secondRoll = roll;
@@ -48,17 +58,15 @@ Game.prototype.inputScore = function(roll) {
     if(this.firstRoll + this.secondRoll === PERFECT_SCORE) {
       this.spares.push(frameNumber);
     };
+    var totalScore = 0;
+    this.holdFrameScore.forEach(function(score) {
+      totalScore += score;
+    });
+    this.calculateTotalScore += totalScore;
+    this._frames.push(this.holdFrameScore);
+    this.frameCount += 1;
+    this.firstRoll = 'TBC';
+    this.secondRoll = 'TBC';
+    this.holdFrameScore = [];
   };
-};
-Game.prototype.finishFrame = function(frame) {
-  var totalScore = 0;
-  this.holdFrameScore.forEach(function(score) {
-    totalScore += score;
-  });
-  this.calculateTotalScore += totalScore;
-  this._frames.push(this.holdFrameScore);
-  this.frameCount += 1;
-  this.firstRoll = 'TBC';
-  this.secondRoll = 'TBC';
-  this.holdFrameScore = [];
 };

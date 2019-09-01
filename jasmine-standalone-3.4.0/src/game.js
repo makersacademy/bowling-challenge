@@ -43,7 +43,10 @@ Game.prototype.finishFrame = function(frame) {
   this.holdFrameScore.forEach(function(score) {
     totalScore += score;
   });
-  this.calculateTotalScore = totalScore;
+  this.calculateTotalScore += totalScore;
   this._frames.push(this.holdFrameScore);
-  this.frameCount += 1
+  this.frameCount += 1;
+  this.firstRoll = 'TBC';
+  this.secondRoll = 'TBC';
+  this.holdFrameScore = [];
 };

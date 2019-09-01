@@ -54,9 +54,9 @@ describe('Bowling', function() {
   describe('spares', function() {
     beforeEach(function() {
       game.inputScore(5);
+      game.inputScore(3); // THIS IS A NORMAL FRAME
       game.inputScore(3);
-      game.inputScore(3);
-      game.inputScore(7);
+      game.inputScore(7); // THIS IS A SPARE
     });
     it('has a record of which frames where spares', function() {
       expect(game.spares).toContain(2);
@@ -66,8 +66,8 @@ describe('Bowling', function() {
   describe('spikes', function() {
     beforeEach(function() {
       game.inputScore(5);
-      game.inputScore(3);
-      game.inputScore(10);
+      game.inputScore(3); // THIS IS A NORMAL FRAME 
+      game.inputScore(10); // THIS IS A STRIKE
     });
     it('has a record of which frames where spares', function() {
       expect(game.strikes).toContain(2);

@@ -12,6 +12,7 @@ Bowling Challenge - Weekend Challenge for Weeks 5 & 6 - Update as at Sun 1 Sept 
 `cd bowling-challenge`
 * Open SpecRunner.html
 `open SpecRunner.html`
+* To play the game, open the console in your browser, and input e.g. `game = new Game()` `game.inputScore(5);` `<repeat inputting of several scores>` `console.log(game.calculateTotalScore);`
 
 ## Notes - Progress to date:
 ### DONE - User stories implemented so far:
@@ -20,8 +21,10 @@ Bowling Challenge - Weekend Challenge for Weeks 5 & 6 - Update as at Sun 1 Sept 
 * Two frames - calculate total score for these (no spares or strikes)
 * Spares - user plays 2 frames, of which one is a spare
 * Strikes - user plays 2 frames, of which one is a strike
+### TO DO - Refactoring:
+* Remove the duplication of functionality that ends the frame (after a strike or 2nd roll)
 ### TO DO - User stories to be implemented:
-* Full game (excl. 10th frame rules) - user plays 10 frames, including some spares, strikes and misses
+* Full game (excl. 10th frame rules) - user plays 10 frames, including some spares, strikes and misses. App calculates score at end.
 * Full game incl. 10th frame rules
 ### TO DO - Functionality:
 * Create user interface

@@ -3,7 +3,9 @@ function Bowling () {
     this._count = 1
     this._accumulatingScoreArray = []
     this._score = 0
-    
+    this._gameover = false
+    // this._move = 'normal'
+    // this._acc = []
 };
 
 Bowling.prototype.reset = function(){
@@ -11,7 +13,7 @@ Bowling.prototype.reset = function(){
   this._count = 1;
   this._accumulatingScoreArray = [];
   this._score = 0;
-  this._check = true
+  // this._gameover = false
   };
 
 Bowling.prototype.addTurn = function(turn){
@@ -21,44 +23,69 @@ Bowling.prototype.addTurn = function(turn){
 
     if (Number.isInteger(b) == false) {
       b = 10 - a
+      // this._move = 'spare'
     }
+
+    // if (((a + b) == 10) && (a !=10) ) {
+      
+    //   this._move = 'spare'
+    // }
 
     if (a == 10 && this._count != 10) {
       b = 0
+    //   this._move = 'strike'
     }
 
    if (turn.length == 3) {
       this._scorecard.push([a, b, c])
+      this._gameover = true
   } else {
     this._scorecard.push([a, b])
+    // this._move = 'normal'
     };
 
 
-  this._count ++;
-  if (this._count > 4) {
-    console.log((this.scorefirst8(this._scorecard)).reduce(myTot))
+  if (this._count < 10) {
+     this._count ++;
+  } else {
+     this._count = 'FINITO'
   }
 
-  this.scoreTotaller(this._scorecard);
-  };
+  // if (this._count > 4) {
+  //   console.log((this.scorefirst8(this._scorecard)).reduce(myTot))
+  // }
+
+  this.scoreTotaller(this._scorecard)
+  // this.scoreCalc(this._scorecard, turn)
+  // console.log(this._acc)
+  // console.log(this._accumulatingScoreArray[this._accumulatingScoreArray.length-1])
+ };
+
 
 
   
 Bowling.prototype.scoreTotaller = function(arrayOfScores) {  
-  if (this._count == 11) {
+  if (this._count == 'FINITO') {
     var x = this.scorefirst8(arrayOfScores);
     var y = this.scorelast2(arrayOfScores);
     this._score = (x.reduce(myTot)+y.reduce(myTot));
+    // this._gameover = true
   } else {
     this._score = "CALC IN PROG"
   }
 };
 
-Bowling.prototype.scoreCalculator = function(arrayOfScores) {  
-  var x = this.scorefirst8(arrayOfScores);
-  var y = this.scorelast2(arrayOfScores);
-  this._score = (x.reduce(myTot)+y.reduce(myTot));
-};
+// Bowling.prototype.scoreCalc = function(array, turn) {
+// if (this._move == 'normie'){
+//   this._acc.push(turn.reduce(myTot));
+// } else if (((this._move == 'strike')||(this._move == 'spare'))&&(this._count > 3)) {
+//   this.scorefirst8(array)
+//   this._acc.push(this._accumulatingScoreArray[this._accumulatingScoreArray.length-1]);
+// } else if (this._move == 'normie') {
+//     console.log(this._acc);
+// };
+  
+// };
 
 Bowling.prototype.scorefirst8 = function(arrayOfScores) {
   var points = []

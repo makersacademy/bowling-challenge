@@ -41,7 +41,7 @@ $(document).ready(function() {
     $('#roundcount').text(bowling._count);
     if (roundNineCheck(bowling._scorecard)) {
       $('form').append(' <h3> Tenth round Third Bowl <select id="bowl3"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value=10>X</option></select> </h3>')
-   } else if (bowling._count == 11) {
+   } else if (bowling._count == 'FINITO') {
      $('form').append(' <h1> FINAL SCORE <span id="tot"></span></h1>')
      $('form').append('<h2 color=blue >Accumulating Score <span id="list"></span></h2>')
    };

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Bowling Score Board</title>
+  </head>
+
+  <body>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- <script src="./src/index.js"></script> -->
+    <script src="./src/bowlingBoard.js"></script>
+    <script src="./src/frame.js"></script>
+
+    <div class="input">
+      <label for="knockdown">Knock down:</label>
+      <input type="number" id="knockdown" min="0" max="10" value="0">
+      <button id="send_score">Submit</button>
+      <button id="restart">Start New Game</button>
+    </div>
+
+    <div>
+      <h2 id="which_frame_roll">empty</h2>
+
+      <div>
+        <span id="frame_1_roll_1">empty</span>
+        <span id="frame_1_roll_2">empty</span>
+      </div>
+
+      <div>
+        <span id="frame_2_roll_1">empty</span>
+        <span id="frame_2_roll_2">empty</span>
+      </div>
+
+      <div>
+        <span id="frame_3_roll_1">empty</span>
+        <span id="frame_3_roll_2">empty</span>
+      </div>
+
+      <div>
+        <span id="frame_4_roll_1">empty</span>
+        <span id="frame_4_roll_2">empty</span>
+      </div>
+
+      <div>
+        <span id="frame_5_roll_1">empty</span>
+        <span id="frame_5_roll_2">empty</span>
+      </div>
+
+      <div>
+        <span id="frame_6_roll_1">empty</span>
+        <span id="frame_6_roll_2">empty</span>
+      </div>
+
+      <div>
+        <span id="frame_7_roll_1">empty</span>
+        <span id="frame_7_roll_2">empty</span>
+      </div>
+
+      <div>
+        <span id="frame_8_roll_1">empty</span>
+        <span id="frame_8_roll_2">empty</span>
+      </div>
+
+      <div>
+        <span id="frame_9_roll_1">empty</span>
+        <span id="frame_9_roll_2">empty</span>
+      </div>
+
+      <div>
+        <span id="frame_10_roll_1">empty</span>
+        <span id="frame_10_roll_2">empty</span>
+      </div>
+
+    </div>
+
+    <script>
+      $(document).ready(function(){
+        var bowlingGame;
+        var currentKnockDown;
+        var currentFrameAndRoll;
+        var currentFrame;
+        var currentRoll;
+
+        //start the first game
+        bowlingGame = new BowlingBoard();
+        $("#which_frame_roll").text(bowlingGame.startNewFrame());
+        //
+        $("#restart").on("click", function(){
+          bowlingGame = new BowlingBoard();
+          $("#which_frame_roll").text(bowlingGame.startNewFrame());
+          $("#send_score").show();
+        });
+        //
+        $("#send_score").on("click", function(){
+          currentKnockDown = $("#knockdown").val();
+          //
+          bowlingGame.currentFrame.setScore(Number(currentKnockDown));
+          bowlingGame.currentFrame.updateFrameResult();
+          bowlingGame.updateBonus();
+          //
+          currentFrame = bowlingGame.frameList.length;
+          currentRoll = bowlingGame.currentFrame.score.length;
+          var id = "#frame_"+currentFrame+"_roll_"+currentRoll;
+          $(id).text(bowlingGame.currentFrame.score[currentRoll-1]);
+          //
+          result = bowlingGame.proceed();
+          //
+          if(result == 1){
+            $("#which_frame_roll").text("Your total score: " + bowlingGame.calculateTotal());
+            $("#send_score").hide();
+          }
+          else{
+            $("#which_frame_roll").text(bowlingGame.whichFrameAndRoll());
+          }
+        });
+
+      });
+    </script>
+
+
+  </body>
+</html>

@@ -22,9 +22,10 @@ Bowling Challenge - Weekend Challenge for Weeks 5 & 6 - Update as at Sun 1 Sept 
 * Spares - user plays 2 frames, of which one is a spare
 * Strikes - user plays 2 frames, of which one is a strike
 ### TO DO - Refactoring:
+* Consider splitting Game object into several objects (Game, Frame, Roll?)
 * Remove the duplication of functionality that ends the frame (after a strike or 2nd roll)
 ### TO DO - User stories to be implemented:
-* Full game (excl. 10th frame rules) - user plays 10 frames, including some spares, strikes and misses. App calculates score at end.
+* Full game (excl. 10th frame rules) - user plays 10 frames, including some spares, strikes and misses -> app calculates score at end
 * Full game incl. 10th frame rules
 ### TO DO - Functionality:
 * Create user interface

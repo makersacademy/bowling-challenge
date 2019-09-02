@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bowling Scorecard</title>
+  <script src="./jquery-3.4.1.js"></script>
+  <script src="./Scorecard.js"></script>
+  <script src="./interface.js"></script>
+</head>
+
+<body>
+
+  <main>
+    <label>Next Roll:
+      <select class="input-next-roll">
+        <option value="1">one</option>
+        <option value="2">two</option>
+        <option value="3">three</option>
+        <option value="4">four</option>
+        <option value="5">five</option>
+        <option value="6">six</option>
+        <option value="7">seven</option>
+        <option value="8">eight</option>
+        <option value="9">nine</option>
+        <option value="10">ten</option>
+      </select></label>
+    <button class="button-add-roll">Add Roll</button>
+    <div class="error-msg"></div>
+    <div class="total-score">
+      <h2>Total Score:<span class="total-score-value">0</span></h2>
+    </div>
+    <div class="current-frame">
+      <h2>Current Frame:<span class="current-frame-value">0</span></h2>
+    </div>
+    <div class="current-roll">
+      <h2>Current Roll:<span class="current-roll-value">0</span></h2>
+    </div>
+    <div class='frames' style="display:flex;flex-direction: row; justify-content: space-around;">
+      <div id="frame-0">
+        <h3>Frame 1</h3>
+        <div class="roll-1">Roll 1:<span class="roll-1-value"></span></div>
+        <div class="roll-2">Roll 2:<span class="roll-2-value"></span></div>
+        <div class="frame-total">Frame Total:<span class="frame-total-value"></span></div>
+      </div>
+      <div id="frame-1">
+        <h3>Frame 2</h3>
+        <div class="roll-1">Roll 1:<span class="roll-1-value"></span></div>
+        <div class="roll-2">Roll 2:<span class="roll-2-value"></span></div>
+        <div class="frame-total">Frame Total:<span class="frame-total-value"></span></div>
+      </div>
+      <div id="frame-2">
+        <h3>Frame 3</h3>
+        <div class="roll-1">Roll 1:<span class="roll-1-value"></span></div>
+        <div class="roll-2">Roll 2:<span class="roll-2-value"></span></div>
+        <div class="frame-total">Frame Total:<span class="frame-total-value"></span></div>
+      </div>
+      <div id="frame-3">
+        <h3>Frame 4</h3>
+        <div class="roll-1">Roll 1:<span class="roll-1-value"></span></div>
+        <div class="roll-2">Roll 2:<span class="roll-2-value"></span></div>
+        <div class="frame-total">Frame Total:<span class="frame-total-value"></span></div>
+      </div>
+      <div id="frame-4">
+        <h3>Frame 5</h3>
+        <div class="roll-1">Roll 1:<span class="roll-1-value"></span></div>
+        <div class="roll-2">Roll 2:<span class="roll-2-value"></span></div>
+        <div class="frame-total">Frame Total:<span class="frame-total-value"></span></div>
+      </div>
+      <div id="frame-5">
+        <h3>Frame 6</h3>
+        <div class="roll-1">Roll 1:<span class="roll-1-value"></span></div>
+        <div class="roll-2">Roll 2:<span class="roll-2-value"></span></div>
+        <div class="frame-total">Frame Total:<span class="frame-total-value"></span></div>
+      </div>
+      <div id="frame-6">
+        <h3>Frame 7</h3>
+        <div class="roll-1">Roll 1:<span class="roll-1-value"></span></div>
+        <div class="roll-2">Roll 2:<span class="roll-2-value"></span></div>
+        <div class="frame-total">Frame Total:<span class="frame-total-value"></span></div>
+      </div>
+      <div id="frame-7">
+        <h3>Frame 8</h3>
+        <div class="roll-1">Roll 1:<span class="roll-1-value"></span></div>
+        <div class="roll-2">Roll 2:<span class="roll-2-value"></span></div>
+        <div class="frame-total">Frame Total:<span class="frame-total-value"></span></div>
+      </div>
+      <div id="frame-8">
+        <h3>Frame 9</h3>
+        <div class="roll-1">Roll 1:<span class="roll-1-value"></span></div>
+        <div class="roll-2">Roll 2:<span class="roll-2-value"></span></div>
+        <div class="frame-total">Frame Total:<span class="frame-total-value"></span></div>
+      </div>
+      <div id="frame-9">
+        <h3>Frame 10</h3>
+        <div class="roll-1">Roll 1:<span class="roll-1-value"></span></div>
+        <div class="roll-2">Roll 2:<span class="roll-2-value"></span></div>
+        <div class="frame-total">Frame Total:<span class="frame-total-value"></span></div>
+      </div>
+
+
+    </div>
+  </main>
+
+</body>
+
+</html>

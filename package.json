@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/dtrts/bowling-challenge/issues"
   },
-  "homepage": "https://github.com/dtrts/bowling-challenge#readme"
+  "homepage": "https://github.com/dtrts/bowling-challenge#readme",
+  "dependencies": {
+    "jquery": "^3.4.1"
+  }
 }

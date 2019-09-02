@@ -34,7 +34,7 @@ function BowlingBoard () {
       var repeatTime;
       var currentFrame = this.frameList[i];
 
-      if(currentFrame.result === "normal"){return;}
+      if(currentFrame.result === "normal"){continue;}
       else if(currentFrame.result === "strike"){
         repeatTime = 2;
       }

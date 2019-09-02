@@ -31,7 +31,7 @@ $(document).ready(function() {
   };
 
   function roundNineCheck(array) {
-    if ((array.length == 9) && ((array[array.length - 1].reduce(myTot)) % 10 === 0)){
+    if (((array.length == 9) && ((array[array.length - 1].reduce(myTot)) % 10 === 0))&& (array[array.length - 1].reduce(myTot) != 0)){
       return true
     }
   };

@@ -29,7 +29,6 @@ function BowlingBoard () {
   }
 
   BowlingBoard.prototype.updateBonus = function(){
-    debugger;
     var numberOfFrames = this.frameList.length;
     for(var i = 0; i < numberOfFrames; i++){
       var repeatTime;
@@ -93,9 +92,11 @@ function BowlingBoard () {
     else if(this.currentFrame.result != "normal"){
       if(this.frameList.length == 10){  //last frame
         if(this.currentFrame.score.length + this.currentFrame.bonus.length == 3){
+          debugger;
           return 1;
         }
         else if(this.currentFrame.score.length == 2 && this.currentFrame.score[1] != 10 && this.currentFrame.result == "strike"){
+          debugger;
           return 1;
         }
         else{

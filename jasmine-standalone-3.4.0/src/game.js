@@ -43,18 +43,7 @@ Game.prototype.inputScore = function(roll) {
     var frameNumber = this.frameCount
     if(this.firstRoll === PERFECT_SCORE) {
       this.strikes.push(frameNumber);
-      // NOTE - REFACTOR - Below code ends the frame
-      // It is repeated below, so need to abstract this into a method
-      var totalScore = 0;
-      this.holdFrameScore.forEach(function(score) {
-        totalScore += score;
-      });
-      this.calculateTotalScore += totalScore;
-      this._frames.push(this.holdFrameScore);
-      this.frameCount += 1;
-      this.firstRoll = 'TBC';
-      this.secondRoll = 'TBC';
-      this.holdFrameScore = [];
+      this.endFrame();
     }
   } else if (this.secondRoll === 'TBC') {
     this.secondRoll = roll;
@@ -63,17 +52,19 @@ Game.prototype.inputScore = function(roll) {
     if(this.firstRoll + this.secondRoll === PERFECT_SCORE) {
       this.spares.push(frameNumber);
     };
-    // NOTE - REFACTOR - Below code ends the frame
-    // It is repeated below, so need to abstract this into a method
-    var totalScore = 0;
-    this.holdFrameScore.forEach(function(score) {
-      totalScore += score;
-    });
-    this.calculateTotalScore += totalScore;
-    this._frames.push(this.holdFrameScore);
-    this.frameCount += 1;
-    this.firstRoll = 'TBC';
-    this.secondRoll = 'TBC';
-    this.holdFrameScore = [];
+  this.endFrame();
   };
+};
+
+Game.prototype.endFrame = function () {
+  var totalScore = 0;
+  this.holdFrameScore.forEach(function(score) {
+    totalScore += score;
+  });
+  this.calculateTotalScore += totalScore;
+  this._frames.push(this.holdFrameScore);
+  this.frameCount += 1;
+  this.firstRoll = 'TBC';
+  this.secondRoll = 'TBC';
+  this.holdFrameScore = [];
 };

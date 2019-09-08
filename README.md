@@ -1,4 +1,4 @@
-Bowling Challenge - Weekend Challenge for Weeks 5 & 6 - Update as at Sun 1 Sept 2019:
+Bowling Challenge - Weekend Challenge for Weeks 5 & 6 - Update as at Sun 8 Sept 2019:
 =================
 ## Purpose of the app:
 * The function of the app is to calculate the users score for a bowling game
@@ -10,9 +10,8 @@ Bowling Challenge - Weekend Challenge for Weeks 5 & 6 - Update as at Sun 1 Sept 
 `git clone https://github.com/HannaAikas/bowling-challenge.git`
 * Open the relevant folder on your terminal
 `cd bowling-challenge`
-* Open SpecRunner.html
-`open SpecRunner.html`
-* To play the game, open the console in your browser, and input e.g. `game = new Game()` `game.inputScore(5);` `<repeat inputting of several scores>` `console.log(game.calculateTotalScore);`
+* Open ./jasmine-standalone-3.4.0/SpecRunner.html
+* To play the game, open the console in your browser (Chrome or Firefox), and input e.g. `game = new Game()` `game.inputScore(5);` `<repeat inputting of several scores, as app won't work unless you have input enough rolls to make a complete frame>` `console.log(game.calculateTotalScore);`
 
 ## Notes - Progress to date:
 ### DONE - User stories implemented so far:
@@ -22,13 +21,18 @@ Bowling Challenge - Weekend Challenge for Weeks 5 & 6 - Update as at Sun 1 Sept 
 * Spares - user plays 2 frames, of which one is a spare
 * Strikes - user plays 2 frames, of which one is a strike
 ### TO DO - Refactoring:
+* Tidy up file structure e.g. have duplicate of images
 * Consider splitting Game object into several objects (Game, Frame, Roll?)
-* Remove the duplication of functionality that ends the frame (after a strike or 2nd roll)
+*
 ### TO DO - User stories to be implemented:
 * Full game (excl. 10th frame rules) - user plays 10 frames, including some spares, strikes and misses -> app calculates score at end
 * Full game incl. 10th frame rules
 ### TO DO - Functionality:
 * Create user interface
+* Guard against e.g. users inputting a score > 10
+* Investigate using closures for getter methods
+### TO DO - Documentation:
+* Explain choices in README doc e.g. did X to achieve encapsulation / SRP
 
 ## App logic - Rules of Bowling:
 ![business_logic](./images/bowling-logic.png)

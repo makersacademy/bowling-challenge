@@ -13,8 +13,18 @@ function Game() {
   this.frame10 = {roll1: 2, roll2: 8, roll3: 6};
 }
 
+var game = new Game();
+
 Game.prototype.score = function(){
-  return this.frame1["roll1"]+this.frame1["roll2"]
+  if (game.isStrike() === true) {
+    return this.frame2["roll1"]+this.frame2["roll2"]+10
+  }
+  else if (game.isSpare() === true) {
+    return this.frame2["roll1"]+10
+  }
+  else {
+    return this.frame1["roll1"]+this.frame1["roll2"]
+  }
 }
 
 Game.prototype.isStrike = function(){

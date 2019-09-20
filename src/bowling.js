@@ -20,3 +20,7 @@ Game.prototype.score = function(){
 Game.prototype.isStrike = function(){
   return this.frame1["roll1"] === 10
 }
+
+Game.prototype.isSpare = function(){
+  return (this.frame1["roll1"]+this.frame1["roll2"]) === 10
+}

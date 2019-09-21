@@ -6,6 +6,10 @@ Bowling Challenge
 As a user
 I want to enter how many pins I knocked down in my last roll
 So that I can keep track of my score
+
+As a user
+I want to know my score at the end of the frame
+So that I can see how I am doing
 ```
 
 

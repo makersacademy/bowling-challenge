@@ -1,7 +1,6 @@
 function Frame() {
   this.rolls = [];
   this.score = 0;
-  // this.strike = false
 };
 
 Frame.prototype.addRoll = function(roll) {

@@ -7,7 +7,28 @@ BowlingGame.prototype.roll = function(pins) {
 };
 
 BowlingGame.prototype.score = function() {
-    return this._rolls.reduce(function (acc, value) {
-        return acc + value;
-    })
+    let score = 0;
+    let rollIndex = 0;
+
+    function isSpare() {
+        return this._rolls[rollIndex] + this._rolls[rollIndex + 1] === 10;
+    }
+
+    function isStrike() {
+        return this._rolls[rollIndex] === 10;
+    }
+
+    for (let frame = 0; frame < 10; frame++) {
+        if (isSpare.call(this)) {
+            score += 10 + this._rolls[rollIndex + 2];
+            rollIndex += 2;
+        } else if (isStrike.call(this)) {
+            score += 10 + this._rolls[rollIndex + 1] + this._rolls[rollIndex + 2];
+            rollIndex += 1;
+        } else {
+            score += this._rolls[rollIndex] + this._rolls[rollIndex + 1];
+            rollIndex += 2;
+        }
+    }
+    return score
 };

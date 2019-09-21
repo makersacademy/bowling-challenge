@@ -7,8 +7,17 @@ describe('BowlingGame', function () {
 
     function rollMany(times, pins) {
         for (let i = 0; i < times; i++) {
-            game.roll.call(game, pins)
+            game.roll(pins)
         }
+    }
+
+    function rollSpare() {
+        game.roll(5);
+        game.roll(5);
+    }
+
+    function rollStrike() {
+        game.roll(10)
     }
 
     describe('gutter game', function () {
@@ -24,4 +33,30 @@ describe('BowlingGame', function () {
             expect(game.score()).toEqual(20);
         })
     });
+
+    describe('one spare followed by a three', function () {
+        it('scores 16', function () {
+            rollSpare();
+            game.roll(3);
+            rollMany(17, 0);
+            expect(game.score()).toEqual(16)
+        });
+    })
+
+    describe('one strike followed by a three and a four', function () {
+        it('scores 24', function () {
+            rollStrike();
+            game.roll(3)
+            game.roll(4)
+            rollMany(16, 0)
+            expect(game.score()).toEqual(24)
+        });
+    })
+
+    describe('perfect game', function () {
+        it ('scores 300', function () {
+            rollMany(12, 10)
+            expect(game.score()).toEqual(300)
+        })
+    })
 });

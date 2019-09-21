@@ -2,6 +2,9 @@
 
 This is my attempt at the [Makers Academy Week 5 Bowling Challenge](https://github.com/makersacademy/bowling-challenge)
 
+## Deployed
+https://bowlingpenpinwill.herokuapp.com/
+
 ## Approach
 * I built the bowling scorer in Javascript using TDD with Jasmine.
 

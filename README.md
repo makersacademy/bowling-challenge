@@ -10,6 +10,10 @@ So that I can keep track of my score
 As a user
 I want to know my score at the end of the frame
 So that I can see how I am doing
+
+As a user
+I want the score card to record a strike
+So that I can accrue bonus points
 ```
 
 

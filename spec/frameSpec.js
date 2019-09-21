@@ -16,4 +16,11 @@ describe('Frame', function() {
     expect(frame.score).toEqual(8);
   });
 
+  it('can record a strike', function() {
+    rollOne.enterPinsDown(10);
+    frame.addRoll(rollOne);
+    expect(frame.strike).toEqual(true);
+  });
+
+
 });

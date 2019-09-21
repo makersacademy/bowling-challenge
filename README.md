@@ -4,7 +4,7 @@ Bowling Challenge
 
 ```
 As a user
-I want to enter my score for roll one of the current frame
+I want to enter how many pins I knocked down in my last roll
 So that I can keep track of my score
 ```
 

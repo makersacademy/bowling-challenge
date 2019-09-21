@@ -5,7 +5,8 @@ describe('Bowling', function() {
   });
 
   it('allows a user to enter the score for the current frame', function() {
-    bowlingCard.enterScore(['frameOne','rollOne',4]);
+    score = new Score(1,1,5)
+    bowlingCard.enterScore(score);
     expect(bowlingCard.scores[0][2]).toEqual(4);
   });
 

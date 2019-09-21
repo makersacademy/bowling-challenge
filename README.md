@@ -2,6 +2,12 @@
 Bowling Challenge
 =================
 
+```
+As a user
+I want to enter my score for roll one of the current frame
+So that I can keep track of my score
+```
+
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

@@ -22,5 +22,13 @@ describe('Frame', function() {
     expect(frame.strike).toEqual(true);
   });
 
+  it('can record a spare', function() {
+    rollOne.enterPinsDown(6);
+    frame.addRoll(rollOne);
+    rollTwo.enterPinsDown(4);
+    frame.addRoll(rollTwo);
+    expect(frame.spare).toEqual(true);
+  });
+
 
 });

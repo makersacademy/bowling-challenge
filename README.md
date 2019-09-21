@@ -14,6 +14,10 @@ So that I can see how I am doing
 As a user
 I want the score card to record a strike
 So that I can accrue bonus points
+
+As a user
+I want to know the score so far
+So that I can see if I am winning
 ```
 
 

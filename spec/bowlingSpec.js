@@ -1,7 +1,5 @@
 describe('BowlingCard', function() {
   var bowlingCard
-  // var frame
-  // var roll
   beforeEach(function() {
      bowlingCard = new BowlingCard();
   });
@@ -29,4 +27,10 @@ describe('BowlingCard', function() {
     expect(bowlingCard.spare).toEqual(true);
   });
 
+  it('has a total score', function() {
+    bowlingCard.enterRoll(10);
+    bowlingCard.enterRoll(3);
+    bowlingCard.enterRoll(5);
+    expect(bowlingCard.totalScore).toEqual(26);
+  });
 });

@@ -1,3 +1,10 @@
+How To Play!
+=================
+
+* Clone the github repo to your own local repository
+* Run the SpecRunner.html in order to check the tests
+* Run index.html in your favourite browser to check your bowling score!
+* One note - the game is not yet validated - for that reason please enter in 0's where you have rolled a gutterball
 
 Bowling Challenge
 =================

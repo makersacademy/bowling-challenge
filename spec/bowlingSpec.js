@@ -1,5 +1,5 @@
 describe('Bowling', function() {
-  var frames
+  var frames;
 
   beforeEach(function() {
     bowling = new Bowling();
@@ -9,4 +9,27 @@ describe('Bowling', function() {
     expect(bowling.frames.length).toBe(0);
   });
 
+  it('allows you to start a new frame', function() {
+    bowling.startNewFrame();
+    expect(bowling.frames.length).toBe(1);
+  });
+
+  it('adds a score, for a frame, into the scorecard', function() {
+    bowling.startNewFrame();
+    bowling.addScore(2);
+    expect(bowling.frames[0][0]).toBe(2);
+  });
+
+  it('adds a second score, for a frame, into the scorecard', function() {
+    bowling.startNewFrame();
+    bowling.addScore(2);
+    bowling.addScore(6);
+    expect(bowling.frames[0][1]).toBe(6);
+  });
+
+  it('only allows for two scores in one frame', function() {
+    bowling.startNewFrame();
+    for(i = 1; i <= 2; i++) { bowling.addScore(3) }
+    expect(function() {bowling.addScore(3)}).toThrow('START A NEW FRAME')
+  });
 });

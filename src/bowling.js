@@ -11,6 +11,8 @@ class Bowling {
   }
 
   bowl(pinsHit) {
+    this.validateInput(pinsHit);
+
     if (this.frame < 10) {
       this.normalFrame(pinsHit);
     } else {
@@ -37,7 +39,7 @@ class Bowling {
   nextFrame() {
     this.frame += 1;
     this.roll = 1;
-    this.pinInLane = 10;
+    this.pinsInLane = 10;
 
     this.totalScore = this.calculateScore();
   }
@@ -87,6 +89,12 @@ class Bowling {
     return totalScore;
   }
 
+  validateInput(pinsHit) {
+    if (pinsHit > this.pinsInLane) {
+      throw "Invalid input. Number greater than pins in lane.";
+    }
+  }
+
   isStrike(pinsHit) {
     return (this.roll === 1 && pinsHit === 10);
   }
@@ -95,3 +103,5 @@ class Bowling {
     return (this.roll === 2 && pinsHit === this.pinsInLane);
   }
 }
+
+  

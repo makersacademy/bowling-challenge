@@ -23,47 +23,44 @@
   </style>
 </head>
 <body>
-  <script src="./src/bowlingCard.js"></script>
-<!--
+  <script src="./src/bowling.js"></script>
+  <script src="./src/frame.js"></script>
+  <script src="./src/roll.js"></script>
+
   <script>
   $(document).ready(function() {
-    var thermostat = new Thermostat();
-    updateTemperature();
-    $("#powerSaveButton").text(thermostat._displayMode())
+    var bowling = new BowlingCard();
+    var rowCount = 0;
 
+    $("#submit").click(function() {
+      var entry = new Number();
+      entry = $("#pinsEntry").val();
+      bowling.enterRoll(entry);
+      $("#pinsDown1").text(entry);
 
-    $("#upButton").click(function() {
-      thermostat.increaseTemp();
-      updateTemperature();
-    })
+      _addTableRow(entry);
+      rowcount += 1;
+    });
 
-    $("#downButton").click(function() {
-      thermostat.decreaseTemp();
-      updateTemperature();
-    })
-
-    $("#resetButton").click(function() {
-      thermostat.resetTemp();
-      updateTemperature();
-    })
-
-    $("#powerSaveButton").click(function() {
-      thermostat.powerSaver();
-      $("#powerSaveButton").text(thermostat._displayMode());
-    })
-
-    function updateTemperature() {
-      $("#temp").text(thermostat.temperature);
-      $("#temp").attr("class", thermostat.energyUsage());
+    function _addTableRow(entry) {
+      $('#cardTable > tbody:last-child').append(
+      '<tr>'
+      +'<td>one</td>'
+      +'<td>two</td>'
+      +'<td id=pinsDown'+rowCount+'>'+entry+'</td>'
+      +'<td>four</td>'
+      +'<td>five</td>'
+      +'</tr>');
     };
-  });
-  </script> -->
 
-  <table align='centre'>
+  });
+  </script>
+
+  <table align='centre' id=cardTable >
     <tr>
       <td colspan="3" id="enterScoreTitle">Enter Score: </th>
-      <td><input id='enterPins'></button></td>
-      <td><button id='supmit'>Submit</button></td>
+      <td><input id='pinsEntry'></td>
+      <td><button id='submit'>Submit</button></td>
     </tr>
     <tr>
       <th colspan="5" id="bowlingCard">Bowling Card</th>
@@ -75,13 +72,13 @@
       <th id='score'>Score</th>
       <th id='notes'>Notes</th>
     </tr>
-    <tr>
+    <!-- <tr>
       <td id='frame1'>1</th>
       <td id='roll1'>1</th>
       <td id='pinsDown1'>4</th>
       <td id='score1'></th>
       <td id='notes1'></th>
-    </tr>
+    </tr> -->
   </table>
 
 </body>

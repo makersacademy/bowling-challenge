@@ -7,6 +7,7 @@ class Bowling {
     this.roll = 1;
     this.pinsInLane = 10;
     this.score = [];
+    this.totalScore = 0;
   }
 
   bowl(pinsHit) {
@@ -31,13 +32,14 @@ class Bowling {
       this.score.push([pinsHit, 0]);
       this.nextFrame();
     }
-    // return this.calculateScore();
   }
 
   nextFrame() {
     this.frame += 1;
     this.roll = 1;
     this.pinInLane = 10;
+
+    this.totalScore = this.calculateScore();
   }
 
   secondRoll(pinsHit) {
@@ -46,7 +48,7 @@ class Bowling {
   }
 
   finalFrame(pinsHit) {
-    if  (this.isStrike(pinsHit)) {
+    if (this.isStrike(pinsHit)) {
       this.score.push([pinsHit, 0]);
       this.bonusRoll();
     } else if (this.roll === 1) {
@@ -61,12 +63,15 @@ class Bowling {
     } else {
       this.score.push([pinsHit, 0]);
     }
-    // return this.calculateScore();
   }
 
   bonusRoll() {
     this.roll += 1;
     this.pinsInLane = 10;
+  }
+
+  gameOver() {
+    this.totalScore = this.calculateScore();
   }
 
   calculateScore() {

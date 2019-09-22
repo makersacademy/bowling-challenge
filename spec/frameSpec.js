@@ -75,4 +75,9 @@ describe('Frame', function() {
     expect(function() {frame.addRoll(rollThree)}).toThrow('Frame already complete')
   });
 
+  it('has a bonus', function(){
+    frame.updateBonus(3);
+    expect(frame.bonus).toEqual(3);
+  });
+
 });

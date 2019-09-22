@@ -76,4 +76,14 @@ describe('BowlingCard', function() {
     bowlingCard.enterRoll(6);
     expect(bowlingCard.totalScore).toEqual(133);
   });
+
+  it('calculates total for gutter game', function(){
+    for(i = 1; i <= 20; i++) { bowlingCard.enterRoll(0) }
+    expect(bowlingCard.totalScore).toEqual(0);
+  });
+
+  it('calculates total for perfect game', function() {
+    for(i = 1; i <= 12; i++) { bowlingCard.enterRoll(10) }
+expect(bowlingCard.totalScore).toEqual(300);
+  });
 });

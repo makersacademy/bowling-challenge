@@ -49,7 +49,7 @@ BowlingCard.prototype._createRoll = function() {
 };
 
 BowlingCard.prototype._checkIfStrike = function() {
-  if (this.currentFrame.strike == true) {
+  if (this.currentFrame.strike == true && this.frameNumber < 10) {
     this._completeStrikeFrame();
   };
 };
@@ -73,9 +73,22 @@ BowlingCard.prototype._addBonusToPrevFrame = function() {
   this.strike = false;
 };
 
+// BowlingCard.prototype._updatePrevFrameScore = function() {
+//   var prevFrame = this.card[this.frameNumber - 2];
+//   prevFrame.score += this.currentFrame.score;
+// };
+
 BowlingCard.prototype._updatePrevFrameScore = function() {
   var prevFrame = this.card[this.frameNumber - 2];
   prevFrame.score += this.currentFrame.score;
+
+  if (prevFrame.strike == true && this.frameNumber >= 3) {
+    var prevPrevFrame = this.card[this.frameNumber - 3];
+    if (prevPrevFrame.strike == true) {
+      prevPrevFrame.score += this.currentFrame.rolls[0];
+      this.totalScore += this.currentFrame.rolls[0];
+    };
+  };
 };
 
 BowlingCard.prototype._updateCounts = function() {
@@ -84,3 +97,9 @@ BowlingCard.prototype._updateCounts = function() {
     this.rollNumber = 1;
   }else{this.rollNumber += 1}
 };
+//
+// BowlingCard.prototype._recalculateScores = function() {
+//   n = this.frameNumber;
+//   for(i = 0; i < n; i++) {
+//     this.card[i]
+// };

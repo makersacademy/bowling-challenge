@@ -5,12 +5,17 @@ function Frame() {
   this.strike = false;
   this.spare = false;
   this.complete = false;
+  this.bonus = 0;
 };
 
 Frame.prototype.addRoll = function(roll) {
   this._validateThrow();
   this._addRollToFrame(roll);
   this._setBonusFlags();
+};
+
+Frame.prototype.updateBonus = function(number) {
+  this.bonus = number;
 };
 
 Frame.prototype._validateThrow = function() {
@@ -45,7 +50,8 @@ Frame.prototype._frameComplete = function() {
 };
 
 Frame.prototype._lastFrameComplete = function() {
-  if (this.rolls.length == 2 && this.lastFrame == true && this.strike == false && this.spare == false){
+  if (this.rolls.length == 2 && this.lastFrame == true && this.strike == false && this.spare == false
+          || this.rolls.length == 3 && this.lastFrame == true){
     return true;
   };
 };

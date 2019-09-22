@@ -8,4 +8,11 @@ describe('Bowling', function() {
     bowling.roll(4);
     expect(bowling.score).toEqual(9);
   });
+
+  it('ignores invalid input', function() {
+    bowling.roll('dice');
+    bowling.roll(-4);
+    bowling.roll(100);
+    expect(bowling.score).toEqual(0);
+  });
 });

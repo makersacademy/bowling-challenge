@@ -29,7 +29,17 @@ describe('Bowling', function() {
 
   it('only allows for two scores in one frame', function() {
     bowling.startNewFrame();
-    for(i = 1; i <= 2; i++) { bowling.addScore(3) }
-    expect(function() {bowling.addScore(3)}).toThrow('START A NEW FRAME')
+    for (var i = 1; i <= 2; i++) {
+      bowling.addScore(3);
+    }
+    expect(function() { bowling.addScore(3) }).toThrowError('START A NEW FRAME');
   });
+
+  it('adds up the scores for a single frame', function() {
+    bowling.startNewFrame();
+    bowling.addScore(4);
+    bowling.addScore(5);
+    bowling.finishFrame();
+    expect(bowling.currentScore).toEqual(9);
+  })
 });

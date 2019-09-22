@@ -14,8 +14,28 @@ Bowling Manager - This does any complicated game logic such as calculating the t
 
 **User Stories**
 As a player
-I want to store a single frame score
-So I can see what I scored in that frame
+I want to record a single frame score
+So I can see what rolls I scored in that frame
+
+As a player
+I want to view a single frame score
+So I can see what my total is for the frame
+
+As a player
+I want to enter my name for a match
+So I can see my name on the scorecard
+
+As a player
+I want to store my frame score in a game
+So I can build up a score for the whole game
+
+As a player
+I want to store my current frame
+So I know how far through the game I am
+
+As a player
+I want to know my running total for the game
+So I know if I'm an awsome bowler
 
 
 **Details**

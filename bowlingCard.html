@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 5px;
+      text-align: left;
+    }
+    .low {
+      color: green;
+    }
+    .medium {
+      color: black;
+    }
+    .high {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <script src="./src/bowlingCard.js"></script>
+<!--
+  <script>
+  $(document).ready(function() {
+    var thermostat = new Thermostat();
+    updateTemperature();
+    $("#powerSaveButton").text(thermostat._displayMode())
+
+
+    $("#upButton").click(function() {
+      thermostat.increaseTemp();
+      updateTemperature();
+    })
+
+    $("#downButton").click(function() {
+      thermostat.decreaseTemp();
+      updateTemperature();
+    })
+
+    $("#resetButton").click(function() {
+      thermostat.resetTemp();
+      updateTemperature();
+    })
+
+    $("#powerSaveButton").click(function() {
+      thermostat.powerSaver();
+      $("#powerSaveButton").text(thermostat._displayMode());
+    })
+
+    function updateTemperature() {
+      $("#temp").text(thermostat.temperature);
+      $("#temp").attr("class", thermostat.energyUsage());
+    };
+  });
+  </script> -->
+
+  <table align='centre'>
+    <tr>
+      <td colspan="3" id="enterScoreTitle">Enter Score: </th>
+      <td><input id='enterPins'></button></td>
+      <td><button id='supmit'>Submit</button></td>
+    </tr>
+    <tr>
+      <th colspan="5" id="bowlingCard">Bowling Card</th>
+    </tr>
+    <tr>
+      <th id='frame'>Frame</th>
+      <th id='roll'>Roll</th>
+      <th id='pinsDown'>Pins</th>
+      <th id='score'>Score</th>
+      <th id='notes'>Notes</th>
+    </tr>
+    <tr>
+      <td id='frame1'>1</th>
+      <td id='roll1'>1</th>
+      <td id='pinsDown1'>4</th>
+      <td id='score1'></th>
+      <td id='notes1'></th>
+    </tr>
+  </table>
+
+</body>
+</html>

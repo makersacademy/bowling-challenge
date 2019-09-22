@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script src="./src/bowling.js"></script>
   <script src="./src/interface.js"></script>
-  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
   <head>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link rel="stylesheet" href="layout.css">
     <title>Bowling</title>
   </head>
 
   <body>
-    <h1></h1>Current score: <span id="current-score"></span></h1>
+    <div>
+      <h1>Current score: <span id="current-score"></span></h1>
+    </div>
+    </br>
+    <div>
+      <h3>Frame: <span id="frame"></span></h3>
+      <h3>Roll: <span id="roll"></span></h3>
+      <input class ="col-1" id="pins-hit" type="number" autofocus 
+        autocomplete="off" placeholder="Pins hit" min="0" max="10">
+      <button class="btn btn-primary" id="submit">Submit</button>
+    </div>
+    
   </body>
 
 

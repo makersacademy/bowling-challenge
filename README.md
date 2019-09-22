@@ -26,6 +26,10 @@ So that I can see if I have won
 As a user
 I want to record  an extra bowl in the last round if I throw a strike or spare
 So that I can accrue bonus points
+
+As a user
+I want to know when the card is _complete
+So that I don't add too many frames to the card
 ```
 
 

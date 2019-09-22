@@ -8,6 +8,7 @@ function BowlingCard() {
 };
 
 BowlingCard.prototype.enterRoll = function(number) {
+  if (this.complete == true) throw 'Card already complete';
   this._storeRoll(number);
   if (this.rollNumber == 1) { this._addToNewFrame(); }
   else { this._addToCurrentFrame();
@@ -34,23 +35,13 @@ BowlingCard.prototype._addToCurrentFrame = function() {
 
 BowlingCard.prototype._createNewFrame = function() {
   this.currentFrame = new Frame();
+  if (this.frameNumber == 10) {this.currentFrame.lastFrame = true}
   this.currentFrame.addRoll(this.currentRoll);
   this.rollNumber = 2;
 };
 
 BowlingCard.prototype.showRoll = function(number) {
   return this.currentFrame.rolls[number - 1];
-};
-
-BowlingCard.prototype._addBonusToPrevFrame = function() {
-  this._updatePrevFrameScore();
-  this.totalScore += this.currentFrame.score;
-  this.strike = false;
-};
-
-BowlingCard.prototype._updatePrevFrameScore = function() {
-  var prevFrame = this.card[this.frameNumber - 2];
-  prevFrame.score += this.currentFrame.score;
 };
 
 BowlingCard.prototype._createRoll = function() {
@@ -72,10 +63,24 @@ BowlingCard.prototype._completeStrikeFrame = function() {
 BowlingCard.prototype._endOfFrameChecks = function() {
   if (this.strike == true) { this._addBonusToPrevFrame();};
   if (this.currentFrame.score == 10) { this.spare = true};
+  if (this.frameNumber == 10 && this.currentFrame.score < 10) { this.complete = true }
   this._updateCounts();
+};
+
+BowlingCard.prototype._addBonusToPrevFrame = function() {
+  this._updatePrevFrameScore();
+  this.totalScore += this.currentFrame.score;
+  this.strike = false;
+};
+
+BowlingCard.prototype._updatePrevFrameScore = function() {
+  var prevFrame = this.card[this.frameNumber - 2];
+  prevFrame.score += this.currentFrame.score;
 };
 
 BowlingCard.prototype._updateCounts = function() {
   this.frameNumber += 1;
-  this.rollNumber = 1;
+  if (this.frameNumber < 11) {
+    this.rollNumber = 1;
+  }else{this.rollNumber += 1}
 };

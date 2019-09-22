@@ -42,4 +42,38 @@ describe('BowlingCard', function() {
     expect(bowlingCard.totalScore).toEqual(22);
   });
 
+  it('knows when game is complete', function() {
+    for(i = 1; i <= 20; i++) { bowlingCard.enterRoll(3) }
+    expect(bowlingCard.complete).toEqual(true);
+  });
+
+  it('does not allow rolls to be added when complete', function() {
+    for(i = 1; i <= 20; i++) { bowlingCard.enterRoll(3) }
+    expect(function() {bowlingCard.enterRoll(3)}).toThrow('Card already complete')
+
+  });
+
+  it('calculates total for whole game', function (){
+    bowlingCard.enterRoll(1);
+    bowlingCard.enterRoll(4);
+    bowlingCard.enterRoll(4);
+    bowlingCard.enterRoll(5);
+    bowlingCard.enterRoll(6);
+    bowlingCard.enterRoll(4);
+    bowlingCard.enterRoll(5);
+    bowlingCard.enterRoll(5);
+    bowlingCard.enterRoll(10);
+    bowlingCard.enterRoll(0);
+    bowlingCard.enterRoll(1);
+    bowlingCard.enterRoll(7);
+    bowlingCard.enterRoll(3);
+    bowlingCard.enterRoll(6);
+    bowlingCard.enterRoll(4);
+    bowlingCard.enterRoll(10);
+    bowlingCard.enterRoll(2);
+    bowlingCard.enterRoll(8);
+    // debugger
+    bowlingCard.enterRoll(6);
+    expect(bowlingCard.totalScore).toEqual(133);
+  });
 });

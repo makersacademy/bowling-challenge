@@ -4,6 +4,7 @@ function Frame() {
   this.lastFrame = false;
   this.strike = false;
   this.spare = false;
+  this.complete = false;
 };
 
 Frame.prototype.addRoll = function(roll) {
@@ -26,6 +27,15 @@ Frame.prototype._setBonusFlags = function() {
 Frame.prototype._addRollToFrame = function(roll) {
   this.rolls.push(roll.pinsDown)
   this.score += roll.pinsDown
+  this._checkComplete();
+};
+
+Frame.prototype._checkComplete = function() {
+  if (this._frameComplete() == true || this._lastFrameComplete() == true){
+      this.complete = true;
+      return true;
+    }
+
 };
 
 Frame.prototype._frameComplete = function() {

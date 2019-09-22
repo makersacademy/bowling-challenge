@@ -40,6 +40,11 @@ $(document).ready(function(){
       $("#f"+i+"r2").html(frameScores[i-1].rollTwo);
       $("#f"+i).html(bowlingManager.frameScore(frameScores[i-1],frameScores[i],frameScores[i+1]));
     }
+
+    console.log(bowlingGame.frameScores);
+    if(bowlingGame.frameScores.length === 10){
+      $("#f10r3").html(frameScores[9].rollThree);
+    };
     $("#total").html(bowlingManager.matchScore(bowlingGame.frameScores));
     
   };

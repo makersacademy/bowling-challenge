@@ -8,8 +8,41 @@ BowlingGame.prototype.roll = function (pins) {
 
 BowlingGame.prototype.score = function () {
   var result = 0;
-  for(var i = 0; i < 20; i++) {
-    result += this.frameRolls[i];
+  var rollIndex = 0;
+  var game = this;
+
+  for(var frame = 0; frame < 10; frame++) {
+    if (isStrike()) {
+      result += strikeScore();
+      rollIndex++
+    } else if (isSpare()) {
+      result += spareScore();
+      rollIndex += 2
+    } else {
+      result += getScore();
+      rollIndex += 2
+    }
   }
   return result;
+
+  function isSpare() {
+    return (game.frameRolls[rollIndex] + game.frameRolls[rollIndex + 1] === 10);
+  }
+
+  function spareScore() {
+    return game.frameRolls[rollIndex] + game.frameRolls[rollIndex +1] + game.frameRolls[rollIndex + 2];
+  }
+
+  function getScore() {
+    return game.frameRolls[rollIndex] + game.frameRolls[rollIndex +1]
+  }
+
+  function isStrike() {
+    return game.frameRolls[rollIndex] === 10;
+  }
+
+  function strikeScore() {
+    return game.frameRolls[rollIndex] + game.frameRolls[rollIndex + 1] + game.frameRolls[rollIndex + 2];
+  }
+
 };

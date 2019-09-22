@@ -10,6 +10,34 @@ describe('Bowling', function() {
     expect(bowling.calculateScore()).toEqual(0);
   });
 
+  it('should move to next frame after a strike', function() {
+    expect(bowling.frame).toEqual(1);
+    expect(bowling.roll).toEqual(1);
+
+    bowling.bowl(10);
+    expect(bowling.frame).toEqual(2);
+    expect(bowling.roll).toEqual(1);
+  })
+
+  it('should throw error for invalid first roll input', function() {
+    expect(function() { bowling.bowl(11) }).toThrow('Invalid input. Number greater than pins in lane.');
+  })
+
+  it('should throw error for invalid second roll input', function() {
+    bowling.bowl(5);
+    expect(function() { bowling.bowl(7) }).toThrow('Invalid input. Number greater than pins in lane.');
+  })
+
+  it('should throw error after game end', function() {
+    for (var i = 0; i < 20; i++) {
+      bowling.bowl(4);
+    }
+    console.log(bowling.frame);
+    console.log(bowling.frame);
+    console.log(bowling.pinsInLane);
+    expect(function() { bowling.bowl(7) }).toThrow('Game over!');
+  })
+
   it ('example single frame', function() {
     bowling.bowl(5);
     bowling.bowl(3);
@@ -22,7 +50,7 @@ describe('Bowling', function() {
     bowling.bowl(5);
     bowling.bowl(4);
     bowling.bowl(2);
-    bowling.bowl(8);  
+    bowling.bowl(8);
     bowling.bowl(10);
 
     expect(bowling.calculateScore()).toEqual(58);

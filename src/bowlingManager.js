@@ -11,6 +11,14 @@ BowlingManager.prototype.matchScore = function(frames){
   return matchScore;
 }
 
+BowlingManager.prototype.frameScore = function(frame1,frame2,frame3){
+  var matchScore = 0;
+  matchScore += frame1.frameScore();
+  if(frame1.isSpare()){matchScore += this.spareCalc(frame2)}
+  if(frame1.isStrike()){matchScore += this.strikeCalc(frame2,frame3)}
+  return matchScore;    
+}
+
 BowlingManager.prototype.anotherThrow = function(frameScore, frame){
   if(frame===10){return this.tenthFrameAnotherThrow(frameScore)}
   if(frameScore.rollTwo != null){return false;}

@@ -1,0 +1,56 @@
+
+
+table {
+  border:1px solid black;
+  border-collapse:collapse;
+  background-color:#ffdab9;
+  margin: auto;
+  box-shadow: 5px 10px;
+}
+
+td {
+  width:50px;
+  height:50px;
+  border:1px solid black;
+  border-collapse:collapse;
+  background-color:#ffdab9;
+  margin: auto;
+  box-shadow: 5px 10px;
+  text-align: center;
+}
+
+table.plane, td.plane {
+  border: none;
+  box-shadow: none;
+}
+
+h1 {
+  color:rgb(113, 252, 0);
+  font-size: 100px;
+  text-shadow: 2px 2px #ffdab9;
+} 
+button {
+  color:red;
+  font-size: 30px;
+}
+button.updown {
+  width: 90px;
+  display: block;
+  margin: auto;
+}
+input {
+  font: 25px "Helvetica", "Arial", "sans-serif";
+  color:green;
+}
+
+div {
+  font-size: 30px
+}
+
+div.temp {
+  font-size: 60px
+}
+
+select{
+  font-size:30px;
+}

@@ -145,4 +145,18 @@ describe('BowlingManager', function(){
     expect(bowlingManager.anotherThrow(frameScore,10)).toEqual(true);
   });
 
+  it("calculates frame score", function(){
+    frame.push(new BowlingScore(4,6));
+    frame.push(new BowlingScore(7,3));
+    frame.push(new BowlingScore(5,2));
+    frame.push(new BowlingScore(10));
+    frame.push(new BowlingScore(3,7));
+    frame.push(new BowlingScore(10));
+    frame.push(new BowlingScore(5,4));
+    frame.push(new BowlingScore(10));
+    frame.push(new BowlingScore(10));
+    frame.push(new BowlingScore(5,5,4));
+    expect(bowlingManager.frameScore(frame[0],frame[1],frame[2])).toEqual(17);
+  });
+
 });

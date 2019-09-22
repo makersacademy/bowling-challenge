@@ -37,6 +37,10 @@ As a player
 I want to know my running total for the game
 So I know if I'm an awsome bowler
 
+As a player
+I want to know if I get another throw
+So I can get a better score
+
 
 **Details**
 

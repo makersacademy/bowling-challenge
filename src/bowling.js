@@ -3,6 +3,7 @@ const spareBonusRoll = 1;
 
 class Bowling {
   constructor() {
+    this._gameOver = false;
     this.frame = 1;
     this.roll = 1;
     this.pinsInLane = 10;
@@ -55,7 +56,7 @@ class Bowling {
       this.bonusRoll();
     } else if (this.roll === 1) {
       this.score.push([pinsHit, 0]);
-      this.secondRoll();
+      this.secondRoll(pinsHit);
     } else if (this.roll === 2 && pinsHit === 10) {
       this.score.push([pinsHit, 0]);
       this.bonusRoll();
@@ -64,6 +65,7 @@ class Bowling {
       this.bonusRoll();
     } else {
       this.score.push([pinsHit, 0]);
+      this.gameOver();
     }
   }
 
@@ -73,6 +75,7 @@ class Bowling {
   }
 
   gameOver() {
+    this._gameOver = true;
     this.totalScore = this.calculateScore();
   }
 
@@ -90,8 +93,11 @@ class Bowling {
   }
 
   validateInput(pinsHit) {
+    if (this._gameOver) {
+      throw 'Game over!';
+    }
     if (pinsHit > this.pinsInLane) {
-      throw "Invalid input. Number greater than pins in lane.";
+      throw 'Invalid input. Number greater than pins in lane.';
     }
   }
 

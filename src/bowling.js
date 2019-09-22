@@ -23,6 +23,7 @@ BowlingCard.prototype._createNewFrame = function() {
   this.currentFrame = new Frame();
   this.currentFrame.addRoll(this.currentRoll);
   this.rollNumber = 2;
+  if (this.spare == true) { this._addBonusToPrevFrame() }
   this._checkIfStrike();
 };
 
@@ -47,6 +48,7 @@ BowlingCard.prototype._checkIfStrike = function() {
   if (this.currentFrame.strike == true) {
     this.enterRoll(0);
     this.strike = true;
+    this.spare = false;
   };
 };
 

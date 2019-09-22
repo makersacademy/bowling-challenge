@@ -39,4 +39,40 @@ describe('Frame', function() {
     rollThree.enterPinsDown(5);
     expect(function() {frame.addRoll(rollThree)}).toThrow('Frame already complete')
   });
+
+  it('allows three rolls in last frame if strike', function() {
+    frame.lastFrame = true;
+    rollOne.enterPinsDown(10);
+    frame.addRoll(rollOne);
+    rollTwo.enterPinsDown(10);
+    frame.addRoll(rollTwo);
+    var rollThree = new Roll();
+    rollThree.enterPinsDown(5);
+    frame.addRoll(rollThree);
+    expect(frame.score).toEqual(25);
+  });
+
+  it('allows three rolls in last frame if spare', function() {
+    frame.lastFrame = true;
+    rollOne.enterPinsDown(3);
+    frame.addRoll(rollOne);
+    rollTwo.enterPinsDown(7);
+    frame.addRoll(rollTwo);
+    var rollThree = new Roll();
+    rollThree.enterPinsDown(5);
+    frame.addRoll(rollThree);
+    expect(frame.score).toEqual(15);
+  });
+
+  it('is complete after two rolls in last frame if not strike or spare', function() {
+    frame.lastFrame = true;
+    rollOne.enterPinsDown(3);
+    frame.addRoll(rollOne);
+    rollTwo.enterPinsDown(4);
+    frame.addRoll(rollTwo);
+    var rollThree = new Roll();
+    rollThree.enterPinsDown(5);
+    expect(function() {frame.addRoll(rollThree)}).toThrow('Frame already complete')
+  });
+
 });

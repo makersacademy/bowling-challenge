@@ -16,8 +16,16 @@ I want the score card to record a strike
 So that I can accrue bonus points
 
 As a user
-I want to know the score so far
-So that I can see if I am winning
+I want the score card to record a spare
+So that I can accrue bonus points
+
+As a user
+I want to know the total score
+So that I can see if I have won
+
+As a user
+I want to record  an extra bowl in the last round if I throw a strike or spare
+So that I can accrue bonus points
 ```
 
 

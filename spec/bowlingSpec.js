@@ -27,10 +27,19 @@ describe('BowlingCard', function() {
     expect(bowlingCard.spare).toEqual(true);
   });
 
-  it('has a total score', function() {
+  it('can add strike bonus points to the score', function() {
     bowlingCard.enterRoll(10);
     bowlingCard.enterRoll(3);
     bowlingCard.enterRoll(5);
     expect(bowlingCard.totalScore).toEqual(26);
   });
+
+  it('can add spare bonus points to the score', function() {
+    bowlingCard.enterRoll(7);
+    bowlingCard.enterRoll(3);
+    bowlingCard.enterRoll(5);
+    bowlingCard.enterRoll(2);
+    expect(bowlingCard.totalScore).toEqual(22);
+  });
+
 });

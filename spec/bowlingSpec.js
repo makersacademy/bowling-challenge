@@ -4,27 +4,15 @@ describe('BowlingCard', function() {
      bowlingCard = new BowlingCard();
   });
 
-  it('knows how many pins were knocked out in first roll', function() {
-    bowlingCard.enterRoll(3);
-    bowlingCard.enterRoll(7);
-    expect(bowlingCard.showRoll(1)).toEqual(3);
-  });
-
-  it('knows how many pins were knocked out in second roll', function() {
-    bowlingCard.enterRoll(3);
-    bowlingCard.enterRoll(7);
-    expect(bowlingCard.showRoll(2)).toEqual(7);
-  });
-
   it('records a strike', function() {
     bowlingCard.enterRoll(10);
-    expect(bowlingCard.strike).toEqual(true);
+    expect(bowlingCard.strikeFlag).toEqual(true);
   });
 
   it('records a spare', function() {
     bowlingCard.enterRoll(3);
     bowlingCard.enterRoll(7);
-    expect(bowlingCard.spare).toEqual(true);
+    expect(bowlingCard.spareFlag).toEqual(true);
   });
 
   it('can add strike bonus points to the score', function() {
@@ -72,7 +60,6 @@ describe('BowlingCard', function() {
     bowlingCard.enterRoll(10);
     bowlingCard.enterRoll(2);
     bowlingCard.enterRoll(8);
-    // debugger
     bowlingCard.enterRoll(6);
     expect(bowlingCard.totalScore).toEqual(133);
   });

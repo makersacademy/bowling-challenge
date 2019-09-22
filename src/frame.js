@@ -5,7 +5,6 @@ function Frame() {
   this.strike = false;
   this.spare = false;
   this.complete = false;
-  this.bonus = 0;
 };
 
 Frame.prototype.addRoll = function(roll) {
@@ -40,7 +39,6 @@ Frame.prototype._checkComplete = function() {
       this.complete = true;
       return true;
     }
-
 };
 
 Frame.prototype._frameComplete = function() {

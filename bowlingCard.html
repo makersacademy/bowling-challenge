@@ -37,16 +37,18 @@
       entry = $("#pinsEntry").val();
       bowling.enterRoll(entry);
       $("#pinsDown1").text(entry);
-
       _addTableRow(entry);
-      rowcount += 1;
+      rowCount += 1;
     });
 
     function _addTableRow(entry) {
+      // debugger
+      var frameNumber = bowling.frameNumber;
+      var rollNumber = bowling.rollNumber;
       $('#cardTable > tbody:last-child').append(
       '<tr>'
-      +'<td>one</td>'
-      +'<td>two</td>'
+      +'<td id=frame'+rowCount+'>'+frameNumber+'</td>'
+      +'<td id=rollNum'+rowCount+'>'+rollNumber+'</td>'
       +'<td id=pinsDown'+rowCount+'>'+entry+'</td>'
       +'<td>four</td>'
       +'<td>five</td>'
@@ -72,13 +74,6 @@
       <th id='score'>Score</th>
       <th id='notes'>Notes</th>
     </tr>
-    <!-- <tr>
-      <td id='frame1'>1</th>
-      <td id='roll1'>1</th>
-      <td id='pinsDown1'>4</th>
-      <td id='score1'></th>
-      <td id='notes1'></th>
-    </tr> -->
   </table>
 
 </body>

@@ -2,6 +2,24 @@
 Bowling Challenge
 =================
 
+Class Design
+============
+
+**Class** 
+Bowling - This is resposible for current game state.  Holds the details of the player, the array/map of the scores and the current frame.
+
+BowlingScore - This hold the details of a single frame.
+
+Bowling Manager - This does any complicated game logic such as calculating the total score
+
+**User Stories**
+As a player
+I want to store a single frame score
+So I can see what I scored in that frame
+
+
+**Details**
+
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

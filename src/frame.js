@@ -4,6 +4,7 @@ function Frame() {
 };
 
 Frame.prototype.addRoll = function(roll) {
+  if (this.rolls.length == 2) throw 'Frame already complete';
   this.rolls.push(roll.pinsDown)
   this.score += roll.pinsDown
   if (this.rolls.length == 1 && this.score == 10) { this.strike = true };

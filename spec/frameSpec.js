@@ -30,5 +30,13 @@ describe('Frame', function() {
     expect(frame.spare).toEqual(true);
   });
 
-
+  it('is complete when it contains two rolls', function() {
+    rollOne.enterPinsDown(6);
+    frame.addRoll(rollOne);
+    rollTwo.enterPinsDown(4);
+    frame.addRoll(rollTwo);
+    var rollThree = new Roll();
+    rollThree.enterPinsDown(5);
+    expect(function() {frame.addRoll(rollThree)}).toThrow('Frame already complete')
+  });
 });

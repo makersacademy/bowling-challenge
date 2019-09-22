@@ -5,7 +5,7 @@ function BowlingCard() {
   this.strike = false;
   this.spare = false;
   this.totalScore = 0;
-  this.bonus = 0;
+  // this.bonus = 0;
 };
 
 BowlingCard.prototype.enterRoll = function(number) {

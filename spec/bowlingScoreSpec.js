@@ -37,4 +37,21 @@ describe('BowlingScore', function() {
     bowlingScore = new BowlingScore(5,2);
     expect(bowlingScore.frameScore()).toEqual(7);
   });
+
+  it("returns a frame score for 1 roll", function(){
+    bowlingScore = new BowlingScore(5);
+    expect(bowlingScore.frameScore()).toEqual(5);
+  });
+
+  it("if its a spare, return true", function(){
+    bowlingScore = new BowlingScore(6,4);
+    expect(bowlingScore.isSpare()).toEqual(true);
+    expect(bowlingScore.isStrike()).toEqual(false);
+  });
+
+  it("if its a strike, return true", function(){
+    bowlingScore = new BowlingScore(10);
+    expect(bowlingScore.isSpare()).toEqual(false);
+    expect(bowlingScore.isStrike()).toEqual(true);
+  });
 });

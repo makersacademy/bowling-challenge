@@ -25,10 +25,6 @@ Open ```SpecRunner.html``` in your browser.
 
 * Start a new game by clicking "New Game". A new game will automatically start if you click for a throw after the previous game has been completed.
 
-* Things I would have like to have done but ran out of time:
-
-1. Refactor the code with some extraction of responsibility of the ```Game``` object which  which is very long. My original approach was to have two main objects: ```Game``` and ```Frame``` but this only seemed to over-complicate matters.
-
 ## Screenshots
 * Start of the game
 ![A blank ten-pin bowling scorecard](images/start_of_game.png)

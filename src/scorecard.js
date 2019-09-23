@@ -106,9 +106,6 @@ Scorecard = function () {
   Scorecard.prototype.frameTenTracker = function (player) {
       // st st
       if (player._array[7].includes("X") && player._array[8].includes("X")) {
-        console.log(player._array[7])
-        console.log(player._array[8])
-        console.log(player._array[9])
         if (player._array[9][0] == "X" && player._array[9][1] == "X" && player._array[9][2] == "X") {
           player._currentscore += 60;
         } else if (player._array[9][0] == "X" && player._array[9][1] == "X" && !player._array[9][2] == "X") {

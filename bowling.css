@@ -1,4 +1,7 @@
 
+body {
+  background-image: url("./public/tenPin.jpg");
+}
 
 table {
   border:1px solid black;
@@ -25,7 +28,7 @@ table.plane, td.plane {
 }
 
 h1 {
-  color:rgb(113, 252, 0);
+  color:red;
   font-size: 100px;
   text-shadow: 2px 2px #ffdab9;
 } 

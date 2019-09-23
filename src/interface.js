@@ -1,48 +1,73 @@
 $(document).ready(function() {
   var bowling = new Bowling();
 
-  $("#1").click(function() {
+  $("#zero").click(function() {
+    bowling.roll(0);
+    updateScore()
+    $("#" + bowling.currentRoll).text('0')
+  })
+
+  $("#one").click(function() {
     bowling.roll(1);
-    $("#totalScore").text(bowling.score)
+    updateScore()
+    $("#" + bowling.currentRoll).text('1')
   })
 
-  $("#2").click(function() {
+  $("#two").click(function() {
     bowling.roll(2);
-    $("#totalScore").text(bowling.score)
+    updateScore()
+    $("#" + bowling.currentRoll).text('2')
   })
 
-  $("#3").click(function() {
+  $("#three").click(function() {
     bowling.roll(3);
-    $("#totalScore").text(bowling.score)
+    updateScore()
+    $("#" + bowling.currentRoll).text('3')
   })
 
-  $("#4").click(function() {
+  $("#four").click(function() {
     bowling.roll(4);
-    $("#totalScore").text(bowling.score)
+    updateScore()
+    $("#" + bowling.currentRoll).text('4')
   })
 
-  $("#5").click(function() {
+  $("#five").click(function() {
     bowling.roll(5);
-    $("#totalScore").text(bowling.score)
+    updateScore()
+    $("#" + bowling.currentRoll).text('5')
   })
 
-  $("#6").click(function() {
+  $("#six").click(function() {
     bowling.roll(6);
-    $("#totalScore").text(bowling.score)
+    updateScore()
+    $("#" + bowling.currentRoll).text('6')
   })
 
-  $("#7").click(function() {
+  $("#seven").click(function() {
     bowling.roll(7);
-    $("#totalScore").text(bowling.score)
+    updateScore()
+    $("#" + bowling.currentRoll).text('7')
   })
 
-  $("#8").click(function() {
+  $("#eight").click(function() {
     bowling.roll(8);
-    $("#totalScore").text(bowling.score)
+    updateScore()
+    $("#" + bowling.currentRoll).text('8')
   })
 
-  $("#9").click(function() {
+  $("#nine").click(function() {
     bowling.roll(9);
-    $("#totalScore").text(bowling.score)
+    updateScore()
+    $("#" + bowling.currentRoll).text('9')
   })
+
+  $("#strike").click(function() {
+    bowling.roll('x');
+    updateScore()
+    $("#" + bowling.currentRoll).text('x')
+  })
+
+  function updateScore() {
+    $("#totalScore").text(bowling.score)
+  };
 });

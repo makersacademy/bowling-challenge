@@ -11,16 +11,16 @@ Bowling.prototype.roll = function(pins) {
     this.currentRoll += 2;
     this.score += (10 * this.bonus);
     if (this.bonus < 3) {this.bonus++};
+    if (this.bonus === 2) {this.bonusArr = ['x']};
   } else if (pins === '/') {
     this.currentRoll += 1;
   } else if (pins <= 9) {
     this.currentRoll += 1;
     this.score += (pins * this.bonus);
-    if (this.bonus === 2) {this.bonusArr.push('x')};
-    if ((this.bonus > 1) && (this.bonusArr.length === 0)) {
-      this.bonus--;
-    } else {
+    if ((this.bonus === 2) && (this.bonusArr.length === 1)) {
+      this.bonusArr.pop(); } else if (this.bonus > 1) {
       this.bonusArr.pop();
+      this.bonus--;
     };
   } else {return};
 };

@@ -3,6 +3,12 @@ bowling = new Bowling();
 $(document).ready(function() {
 
   updateGame();
+
+  $(document).bind('keypress', function(event) {
+    if(event.keyCode==13){
+         $('#submit').trigger('click');
+     }
+  });
   
   $("#submit").click(function() {
     var pinsHit = parseInt($('input#pins-hit').val());

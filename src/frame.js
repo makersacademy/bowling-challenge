@@ -39,6 +39,7 @@ Frame.prototype._checkComplete = function() {
       this.complete = true;
       return true;
     }
+
 };
 
 Frame.prototype._frameComplete = function() {
@@ -48,7 +49,7 @@ Frame.prototype._frameComplete = function() {
 };
 
 Frame.prototype._lastFrameComplete = function() {
-  if (this.rolls.length == 2 && this.lastFrame == true && this.strike == false && this.spare == false
+  if (this.rolls.length == 2 && this.lastFrame == true && this.score < 10
           || this.rolls.length == 3 && this.lastFrame == true){
     return true;
   };

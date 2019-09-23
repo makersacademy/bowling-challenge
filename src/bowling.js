@@ -1,6 +1,6 @@
 function BowlingCard() {
   this.card = [];
-  this.frameNumber = 1;
+  this.frameNumber = 0;
   this.rollNumber = 1;
   this.strikeFlag = false;
   this.spareFlag = false;
@@ -39,6 +39,7 @@ BowlingCard.prototype._addToCurrentFrame = function() {
 
 BowlingCard.prototype._createNewFrame = function() {
   this.currentFrame = new Frame();
+  this.frameNumber += 1;
   if (this.frameNumber == 10) {this.currentFrame.lastFrame = true}
   this.currentFrame.addRoll(this.currentRoll);
   this.rollNumber = 2;
@@ -76,6 +77,7 @@ BowlingCard.prototype._addBonusToPrevFrame = function() {
 BowlingCard.prototype._updatePrevFrameScore = function() {
   var prevFrame = this.card[this.frameNumber - 2];
   prevFrame.score += this.currentFrame.score;
+
   if (prevFrame.strike == true && this.frameNumber >= 3) {
     this._updatePrevPrevFrameScore();
   };
@@ -90,8 +92,7 @@ BowlingCard.prototype._updatePrevPrevFrameScore = function() {
 };
 
 BowlingCard.prototype._updateCounts = function() {
-  this.frameNumber += 1;
-  if (this.frameNumber < 11) {
+  if (this.frameNumber < 10) {
     this.rollNumber = 1;
   }else{this.rollNumber += 1}
 };

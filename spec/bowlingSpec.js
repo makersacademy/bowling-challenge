@@ -95,4 +95,29 @@ describe('Bowling', function() {
 
     expect(bowling.calculateScore()).toEqual(300);
   });
+
+  it('strike in final frame roll 1', function() {
+    for (var i = 0; i < 9; i++) {
+      bowling.bowl(10);
+    }
+
+    // Frame 10
+    bowling.bowl(10);
+    bowling.bowl(2);
+    bowling.bowl(2);
+
+    expect(bowling.calculateScore()).toEqual(276);
+  });
+
+  it('miss in final frame roll 1', function() {
+    for (var i = 0; i < 9; i++) {
+      bowling.bowl(10);
+    }
+
+    // Frame 10
+    bowling.bowl(0);
+    bowling.bowl(2);
+
+    expect(bowling.calculateScore()).toEqual(244);
+  });
 });

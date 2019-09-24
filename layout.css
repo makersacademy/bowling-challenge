@@ -1,5 +1,5 @@
 body {
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 table {
@@ -9,8 +9,9 @@ table {
 }
 
 td, th {
+  line-height: 15px;
   width: 100px;
   border: 1px solid #dddddd;
-  text-align: left;
+  text-align: center;
   padding: 8px;
 }

@@ -5,14 +5,35 @@ describe('Bowling', function() {
     bowling = new Bowling();
   })
 
-  it('initial score is 0', function() {
-    expect(bowling.score).toEqual(0);
-  })
+  describe('keeps score', function() {
+    it('initial score is 0', function() {
+      expect(bowling.score).toEqual(0);
+    })
 
-  it('tallies the score on multiple rolls', function() {
-    bowling.roll(1);
-    bowling.roll(2);
-    expect(bowling.score).toEqual(3);
+    it('adds two non strike/spare rolls', function() {
+      bowling.roll(1);
+      bowling.roll(2);
+      bowling.calculateScore();
+      expect(bowling.score).toEqual(3);
+    })
+
+    it('adds bonus score when strike', function() {
+      bowling.roll(10);
+      bowling.roll(2);
+      bowling.roll(3);
+      bowling.calculateScore();
+      expect(bowling.score).toEqual(20);
+    })
+
+    it('adds bonus score when strike and spare', function() {
+      bowling.roll(10);
+      bowling.roll(6);
+      bowling.roll(4);
+      bowling.roll(3);
+      bowling.roll(2);
+      bowling.calculateScore();
+      expect(bowling.score).toEqual(38);
+    })
   })
 
   describe('records rolls', function() {
@@ -37,7 +58,6 @@ describe('Bowling', function() {
       bowling.roll(10);
       bowling.roll(4);
       bowling.roll(6);
-      console.log(bowling.score);
       expect(bowling.rollsArray).toEqual([10, 'X', 4, '/']);
     })
   })

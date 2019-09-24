@@ -1,6 +1,6 @@
-describe("GutterFrame", function () {
+describe("#Scorecard", function () {
 
-  it('Expects players score to be 0', function () {
+  it('', function () {
     expect(frame.score).toEqual(0)
   });
 });

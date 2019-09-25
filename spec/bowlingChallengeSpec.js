@@ -1,6 +1,6 @@
 describe("#Scorecard", function () {
 
-  it('', function () {
-    expect(frame.score).toEqual(0)
+  it('Expect score to be 1 when player enters 1', function () {
+    expect(game.score).toEqual(1)
   });
 });

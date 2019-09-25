@@ -93,34 +93,34 @@ High level plan
 User Stories
 ============
 
-As a player
-So I can play a single frame
-I’d like to see what I scored for a frame
+-As a player
+-So I can play a single frame
+-I’d like to see what I scored for a frame
 
-As a player
-So I know my total score
-I’d like to view my total score for up to 10 frames
+-As a player
+-So I know my total score
+-I’d like to view my total score for up to 10 frames
 
-As a player
-So that I can have a gutter frame
-I’d like to bowl twice in a frame, score 0 and move on to the next frame.
+-As a player
+-So that I can have a gutter frame
+-I’d like to bowl twice in a frame, score 0 and move on to the next frame.
 
-As a player
-So I can get bonus points for a spare
-I’d like to have my spare bonus points added to my total
+-As a player
+-So I can get bonus points for a spare
+-I’d like to have my spare bonus points added to my total
 
-As a player
-So I can get bonus points for a strike
-I’d like to have my spare bonus points added to my total
+-As a player
+-So I can get bonus points for a strike
+-I’d like to have my spare bonus points added to my total
 
-As a player
-So that I can play a perfect game
-I’d like to be able to enter 10 strikes in a row.
+-As a player
+-So that I can play a perfect game
+-I’d like to be able to enter 10 strikes in a row.
 
-As a player
-So that I can get 30 points in the 10th frame
-I’d like to be able to score 3 strikes in a row in the final frame only.
+-As a player
+-So that I can get 30 points in the 10th frame
+-I’d like to be able to score 3 strikes in a row in the final frame only.
 
-As a player
-So that I can get 20 points in the final frame
-I’d like to be able to knock over 10 pins in the first two rolls and then get a strike.
+-As a player
+-So that I can get 20 points in the final frame
+-I’d like to be able to knock over 10 pins in the first two rolls and then get a strike.

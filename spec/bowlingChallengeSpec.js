@@ -1,6 +1,10 @@
-describe("#Scorecard", function () {
+describe("Scorecard", function () {
 
-  it('Expect score to be 1 when player enters 1', function () {
-    expect(game.score).toEqual(1)
+  beforeEach(function() {
+    scorecard = new Scorecard();
+  });
+
+  it('Expect score to be 0 when game starts', function () {
+    expect(scorecard.playerScore).toEqual(0)
   });
 });

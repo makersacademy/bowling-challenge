@@ -1,0 +1,73 @@
+
+body {
+  background-image: url("./public/tenPin.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+table {
+  border:1px solid black;
+  border-collapse:collapse;
+  background-color:#ffdab9;
+  margin: auto;
+  box-shadow: 5px 10px;
+}
+
+td {
+  width:50px;
+  height:50px;
+  border:1px solid black;
+  border-collapse:collapse;
+  background-color:#ffdab9;
+  margin: auto;
+  box-shadow: 5px 10px;
+  text-align: center;
+}
+
+table.plane, td.plane {
+  border: none;
+  box-shadow: none;
+}
+
+table.plane2, td.plane2 {
+  border: none;
+  box-shadow: none;
+  background-color:#fac393;
+}
+
+table.plane3, td.plane3 {
+  border: none;
+  box-shadow: none;
+  background-color:#f7a762;
+}
+
+h1 {
+  color:red;
+  font-size: 100px;
+  text-shadow: 2px 2px #ffdab9;
+} 
+button {
+  color:red;
+  font-size: 30px;
+}
+button.updown {
+  width: 90px;
+  display: block;
+  margin: auto;
+}
+input {
+  font: 25px "Helvetica", "Arial", "sans-serif";
+  color:green;
+}
+
+div {
+  font-size: 30px
+}
+
+div.temp {
+  font-size: 60px
+}
+
+select{
+  font-size:30px;
+}

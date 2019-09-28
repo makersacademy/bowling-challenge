@@ -2,6 +2,59 @@
 Bowling Challenge
 =================
 
+Class Design
+============
+
+**Class** 
+Bowling - This is resposible for current game state.  Holds the details of the player, the array/map of the scores and the current frame.
+
+BowlingScore - This hold the details of a single frame.
+
+Bowling Manager - This does any complicated game logic such as calculating the total score
+
+**User Stories**
+```
+As a player
+I want to record a single frame score
+So I can see what rolls I scored in that frame
+
+As a player
+I want to view a single frame score
+So I can see what my total is for the frame
+
+As a player
+I want to enter my name for a match
+So I can see my name on the scorecard
+
+As a player
+I want to store my frame score in a game
+So I can build up a score for the whole game
+
+As a player
+I want to store my current frame
+So I know how far through the game I am
+
+As a player
+I want to know if I get another throw
+So I can get a better score
+
+As a player
+I want to know my running total for the game
+So I know if I'm an awsome bowler
+
+As a player
+I want to know if I got a spare
+So I can add on the next roll too
+
+As a player
+I want to know if I got a strike
+So I can add on the next two rolls
+
+
+
+```
+**Details**
+
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

@@ -19,9 +19,9 @@ Bowling.prototype.calculateScore = function() {
   var array = this.rollsArray
   for (let i = 0; i < array.length; i++) {
     if (array[i] === 'X') {
-      this.score += (this.findNext(i) + this.findNext(i + 1));
+      this.score += (this.findNext(2, i));
     } else if (array[i] === '/') {
-      this.score += (10 - array[i - 1] + this.findNext(i));
+      this.score += (10 - array[i - 1] + this.findNext(1, i));
     } else {
       this.score += array[i];
     }
@@ -38,13 +38,15 @@ Bowling.prototype.addToRollsArray = function(num) {
   }
 }
 
-Bowling.prototype.findNext = function(ind) {
-  for (var i = ind + 1; i < this.rollsArray.length; i++) {
-    if (typeof this.rollsArray[i] === 'number'){
-      return this.rollsArray[i];
+Bowling.prototype.findNext = function(howmany, ind) {
+  bonus = [];
+  for (let i = ind + 1; i < this.rollsArray.length; i++) {
+    if (bonus.length == howmany) break;
+    if (typeof this.rollsArray[i] === 'number') {
+      bonus.push(this.rollsArray[i]);
     } else if (this.rollsArray[i] === '/') {
-      return (10 - this.rollsArray[i - 1])
-      console.log(10 - this.rollsArray[i - 1])
+      bonus.push(10 - this.rollsArray[i - 1])
     }
   }
+  return bonus.reduce((a,b) => a+b, 0)
 }

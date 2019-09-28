@@ -34,6 +34,14 @@ describe('Bowling', function() {
       bowling.calculateScore();
       expect(bowling.score).toEqual(38);
     })
+
+    it('calculates score even when awaiting bonus rolls', function() {
+      bowling.roll(10);
+      bowling.roll(10);
+      bowling.roll(10);
+      bowling.calculateScore();
+      expect(bowling.score).toEqual(60);
+    })
   })
 
   describe('records rolls', function() {

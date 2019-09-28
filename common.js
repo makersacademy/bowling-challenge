@@ -33,20 +33,34 @@ $(document).ready(function(){
   $("#score9").click(function(){bowlingGame.play(9);updateScreen();});
   $("#score10").click(function(){bowlingGame.play(10);updateScreen();});
 
+  //$("#reset").click(function(){bowlingGame.reset();updateScreen();});
+  $("#reset").click(function(){bowlingGame.reset();clearScreen();});
+
   function updateScreen(){
+    var frameScores = bowlingGame.frameScores;
+    
     for(i = 1;i<=bowlingGame.frameScores.length;i++){
-      var frameScores = bowlingGame.frameScores;
       $("#f"+i+"r1").html(frameScores[i-1].rollOne);
       $("#f"+i+"r2").html(frameScores[i-1].rollTwo);
       $("#f"+i).html(bowlingManager.frameScore(frameScores[i-1],frameScores[i],frameScores[i+1]));
     }
 
-    console.log(bowlingGame.frameScores);
     if(bowlingGame.frameScores.length === 10){
       $("#f10r3").html(frameScores[9].rollThree);
     };
     $("#total").html(bowlingManager.matchScore(bowlingGame.frameScores));
     
+  };
+
+  function clearScreen(){
+    
+    for(i = 1;i<=10;i++){
+      $("#f"+i+"r1").html("");
+      $("#f"+i+"r2").html("");
+      $("#f"+i).html("");
+    }
+    $("#f10r3").html("");
+    $("#total").html(0);
   };
 }) 
 

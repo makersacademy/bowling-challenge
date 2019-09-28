@@ -15,4 +15,68 @@ describe("Scorecard", function () {
     })
   })
 
+  describe('#addTwo', function () {
+    it('Expect score to be 2 when player enters 2', function () {
+      scorecard.addTwo()
+      expect(scorecard.playerScore).toEqual(2)
+    })
+  })
+
+  describe('#addThree', function () {
+    it('Expect score to be 3 when player enters 3', function () {
+      scorecard.addThree()
+      expect(scorecard.playerScore).toEqual(3)
+    })
+  })
+
+  describe('#addFour', function () {
+    it('Expect score to be 4 when player enters 4', function () {
+      scorecard.addFour()
+      expect(scorecard.playerScore).toEqual(4)
+    })
+  })
+
+  describe('#addFive', function () {
+    it('Expect score to be 5 when player enters 5', function () {
+      scorecard.addFive()
+      expect(scorecard.playerScore).toEqual(5)
+    })
+  })
+
+  describe('#addSix', function () {
+    it('Expect score to be 6 when player enters 6', function () {
+      scorecard.addSix()
+      expect(scorecard.playerScore).toEqual(6)
+    })
+  })
+
+  describe('#addSeven', function () {
+    it('Expect score to be 7 when player enters 7', function () {
+      scorecard.addSeven()
+      expect(scorecard.playerScore).toEqual(7)
+    })
+  })
+
+  describe('#addEight', function () {
+    it('Expect score to be 8 when player enters 8', function () {
+      scorecard.addEight()
+      expect(scorecard.playerScore).toEqual(8)
+    })
+  })
+
+  describe('#addNine', function () {
+    it('Expect score to be 9 when player enters 9', function () {
+      scorecard.addNine()
+      expect(scorecard.playerScore).toEqual(9)
+    })
+  })
+
+  describe('#addTen', function () {
+    it('Expect score to be 10 when player enters 10', function () {
+      scorecard.addTen()
+      expect(scorecard.playerScore).toEqual(10)
+    })
+  })
+
+
 });

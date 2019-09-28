@@ -15,21 +15,27 @@
 
 <body>
   <h1 align="center"> BOWLING SCORECARD </h1><br>
-  <h3 align="center"> PLAYER TOTAL SCORE </h3><br>
-  <h3 align="center"> ENTER PLAYER SCORE </h3>
+  <h3 align="center"> ENTER PLAYER SCORE </h3><br>
 
   <div align="center" class="btn-group">
-    <button>1</button>
-    <button>2</button>
-    <button>3</button>
-    <button>4</button>
-    <button>5</button>
-    <button>6</button>
-    <button>7</button>
-    <button>8</button>
-    <button>9</button>
-    <button>10</button>
-  </div><br><br>
+    <button id="roll-score-zero">0</button>
+    <button id="roll-score-one">1</button>
+    <button id="roll-score-two">2</button>
+    <button id="roll-score-three">3</button>
+    <button id="roll-score-four">4</button>
+    <button id="roll-score-five">5</button>
+    <button id="roll-score-six">6</button>
+    <button id="roll-score-seven">7</button>
+    <button id="roll-score-eight">8</button>
+    <button id="roll-score-one">9</button>
+    <button id="roll-score-ten">10</button>
+  </div><br>
+
+  <table align="center">
+    <tr>
+      <td> PLAYER SCORE </td>
+      <td id="player-score"> 100 </td>
+    </tr>
 
   <table align="center">
     <tr>
@@ -47,30 +53,32 @@
     </tr>
     <tr>
     <td colspan="11">ROLL 1</td>
-    <td>  </td>
-    <td>  </td>
-    <td>  </td>
-    <td>  </td>
-    <td>  </td>
-    <td>  </td>
-    <td>  </td>
-    <td>  </td>
-    <td>  </td>
-    <td>  </td>
+    <td id="roll-one-frame-one-score"></td>
+    <td id="roll-one-frame-two-score"></td>
+    <td id="roll-one-frame-three-score"></td>
+    <td id="roll-one-frame-four-score"></td>
+    <td id="roll-one-frame-five-score"></td>
+    <td id="roll-one-frame-six-score"></td>
+    <td id="roll-one-frame-seven-score"></td>
+    <td id="roll-one-frame-eight-score"></td>
+    <td id="roll-one-frame-nine-score"></td>
+    <td id="roll-one-frame-ten-score"></td>
     </tr>
     <tr>
     <td colspan="11">ROLL 2</td>
-    <td>  </td>
-    <td>  </td>
-    <td>  </td>
-    <td>  </td>
-    <td>  </td>
-    <td>  </td>
-    <td>  </td>
-    <td>  </td>
-    <td>  </td>
-    <td>  </td>
+    <td id="roll-two-frame-one-score"></td>
+    <td id="roll-two-frame-two-score"></td>
+    <td id="roll-two-frame-three-score"></td>
+    <td id="roll-two-frame-four-score"></td>
+    <td id="roll-two-frame-five-score"></td>
+    <td id="roll-two-frame-six-score"></td>
+    <td id="roll-two-frame-seven-score"></td>
+    <td id="roll-two-frame-eight-score"></td>
+    <td id="roll-two-frame-nine-score"></td>
+    <td id="roll-two-frame-ten-score"></td>
     </tr>
   </table>
+
+<script src="bowlingChallenge.js"></script>
 
 </body>

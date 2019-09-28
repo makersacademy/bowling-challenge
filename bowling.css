@@ -29,6 +29,18 @@ table.plane, td.plane {
   box-shadow: none;
 }
 
+table.plane2, td.plane2 {
+  border: none;
+  box-shadow: none;
+  background-color:#fac393;
+}
+
+table.plane3, td.plane3 {
+  border: none;
+  box-shadow: none;
+  background-color:#f7a762;
+}
+
 h1 {
   color:red;
   font-size: 100px;

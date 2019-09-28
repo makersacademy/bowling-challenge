@@ -7,14 +7,14 @@ $(document).ready(function(){
   for(i = 1;i<=9;i++){
     tableHeaders += "<th>"+i+"</th>";
     tableData +=  "<td><table class='plane'>" +
-                    "<tr><td id='f"+i+"r1' class='plane'></td><td id='f"+i+"r2' class='plane'></td></tr>" +
-                    "<tr><td id='f"+i+"' class='plane' colspan='2'></td></tr>" +
+                    "<tr><td id='f"+i+"r1' class='plane'></td><td id='f"+i+"r2' class='plane2'></td></tr>" +
+                    "<tr><td id='f"+i+"' class='plane3' colspan='2'></td></tr>" +
                     "</table></td>";
   }
   tableHeaders += "<th>10</th><th>Total</th>";
   tableData += "<td><table class='plane'>" +
-  "<tr><td id='f10r1' class='plane'></td><td id='f10r2' class='plane'></td><td id='f10r3' class='plane'></td></tr>" +
-  "<tr><td id='f10' class='plane' colspan='3'></td></tr>" +
+  "<tr><td id='f10r1' class='plane'></td><td id='f10r2' class='plane2'></td><td id='f10r3' class='plane2'></td></tr>" +
+  "<tr><td id='f10' class='plane3' colspan='3'></td></tr>" +
   "</table></td>";
 
   tableData +=  "<td id=total></td>";

@@ -7,51 +7,30 @@ describe(' Bowling Game', function (){
     game = new BowlingGame();
   });
 
-  // var rollLoop = function (rolls, pins) {
-  //   for (var i = 0; i < rolls; i++) {
-  //     game.roll(pins);
-  //   }
-  // };
-  //
   describe(".roll", function() {
-      it("records a roll", function() {
-        game.roll(8);
-        expect(game.score).toEqual(8);
-        // expect(game.throws).toEqual([8]);
-        // expect(game.frameRunningTotals).toEqual([8]);
-        // expect(game.displayTotal).toEqual(8)
-      });
+    it("records a roll", function() {
+      game.roll(8);
+      expect(game.score).toEqual(8);
+      expect(game.rolls).toEqual([8]);
+      expect(game.pinsPerFrame).toEqual([8]);
     });
 
-  // it('total score is 0 if no pins are knocked in any frame', function(){
-  //   rollLoop(20, 0);
-  //   expect(game.score()).toEqual(0);
-  // });
-  //
-  // it('can knock two pins per roll', function (){
-  //   rollLoop(20, 2);
-  //   expect(game.score()).toEqual(40);
-  // });
-  //
-  // it('can score a spare properly', function (){
-  //   game.roll(1);
-  //   game.roll(9);
-  //   game.roll(5);
-  //   rollLoop(17, 0);
-  //   expect(game.score()).toEqual(20);
-  // });
-  //
-  // it('can score a strike properly', function (){
-  //   game.roll(10);
-  //   game.roll(4);
-  //   game.roll(4);
-  //   rollLoop(16, 0);
-  //   expect(game.score()).toEqual(26);
-  // });
-  //
-  // it('can role a perfect game', function (){
-  //   rollLoop(12, 10);
-  //   expect(game.score()).toEqual(300);
-  // });
+    it("records two throws appropriatley", function() {
+      game.roll(4);
+      game.roll(4);
+      expect(game.score).toEqual(8);
+      expect(game.rolls).toEqual([4, 4]);
+      expect(game.pinsPerFrame).toEqual([8]);
+    });
 
+    it("records the change of frame", function() {
+      game.roll(4);
+      game.roll(4);
+      game.roll(4);
+      expect(game.currentFrame).toEqual(2);
+      expect(game.score).toEqual(12);
+      expect(game.rolls).toEqual([4, 4, 4]);
+      expect(game.pinsPerFrame).toEqual([8, 4]);
+    });
+  });
 });

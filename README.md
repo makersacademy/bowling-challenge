@@ -1,11 +1,17 @@
 Introduction
 ---
-This application serves as a bowling scorecard for a single player. The user input the rolls and the app counts and sums the scores of a bowling game (in JavaScript).
+This application serves as a bowling scorecard for a single player. The user input the rolls and the app counts and sums the scores of a bowling game.
+
+
 
 Instruction
 ---
-
-Clone the repositry, open index.html and input rolls.
+```
+$git clone git@github.com:[username]/bowling-challenge.git
+$cd bowling-challenge
+```
+To run tests, open 'SpecRunner.html'.
+To use the web application, open 'bowling.html' and input number of pins as prompted.
 
 Bowling rules
 ---

@@ -87,7 +87,7 @@ High level plan
 4.  Draw up UI
 5.  Create user stories
 6.  Create a business logic model
-7.  TDD business logic / features using Jammine and JS
+7.  TDD business logic / features using Jasmine and JS
 8.  Refactor code
 
 User Stories
@@ -124,3 +124,22 @@ I’d like to be able to score 3 strikes in a row in the final frame only.
 As a player
 So that I can get 20 points in the final frame
 I’d like to be able to knock over 10 pins in the first two rolls and then get a strike.
+
+Notes
+============
+
+So far I have:
+
+1.  Forked
+2.  Created a README
+3.  Identified features
+4.  Drawn up UI
+5.  Created user stories
+6.  Created a partial business logic model
+7.  Done TDD some of my business logic model / features using Jasmine and JS
+
+Reflection
+
+I chose to move forward with the user interface before I had completed the business logic because I wanted to spend some time on this rather then use all of my allocated time on logic.  This has meant I got more familiar with JQuery and linking up JS with a HTML page.  
+
+I dont think moving on to the front end before a basic backend is complete is something I'd do as a regular process but in this case it was helpful to get practice in both areas.  

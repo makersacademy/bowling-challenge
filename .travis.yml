@@ -5,8 +5,9 @@ services:
   - xvfb
 addons:
     chrome: stable
-dist: trusty
-# before_install: if [[ `npm -v` != 6* ]]; then npm i -g npm@6; fi
+before_install:
+  - npm i -g npm@6
+
 install:
   - npm set progress=false
   - npm install

@@ -37,18 +37,35 @@ describe(' Bowling Game', function (){
       game.roll(10);
       game.roll(1);
       game.roll(1);
-      // expect(game.score).toEqual(14);
       expect(game.currentFrame).toEqual(3)
       expect(game.rolls).toEqual([10, 1, 1]);
-      // expect(game.pinsPerFrame).toEqual([12, 2]);
     });
 
     it("records the correct score for a strike", function() {
       game.roll(10);
       game.roll(1);
+      game.roll(2);
+      expect(game.score).toEqual(16);
+      expect(game.pinsPerFrame).toEqual([13, 3]);
+    });
+
+    it("records the correct score for two consecutive strikes", function() {
+      game.roll(10);
+      game.roll(10);
       game.roll(1);
-      expect(game.score).toEqual(14);
-      expect(game.pinsPerFrame).toEqual([12, 2]);
+      game.roll(2);
+      expect(game.score).toEqual(37);
+      expect(game.pinsPerFrame).toEqual([21, 13, 3]);
+    });
+
+    it("records the correct score for three consecutive strikes", function() {
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(1);
+      game.roll(2);
+      expect(game.score).toEqual(67);
+      expect(game.pinsPerFrame).toEqual([30, 21, 13, 3]);
     });
 
   });

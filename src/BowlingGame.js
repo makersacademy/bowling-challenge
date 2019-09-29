@@ -11,7 +11,7 @@ var BowlingGame = function(){
 BowlingGame.prototype.roll = function (pins) {
   var index = this.rolls.length
   this.score += pins;
-  this.rolls.push(pins);
+  // this.rolls.push(pins);
 
   this.strikeBonus(pins, index);
   this.strikeBonusPlus(pins, index);
@@ -31,7 +31,8 @@ BowlingGame.prototype.roll = function (pins) {
    this.currentRoll = 1
  }
 
- // have to have an if else statement here to change the currentRoll
+this.rolls.push(pins);
+
 };
 
 BowlingGame.prototype.isStrike = function(pins) {
@@ -46,12 +47,22 @@ BowlingGame.prototype.strikeBonus = function(pins, index, num=1) {
   if (this.isStrike(this.rolls[index - num])) {
     this.score += pins;
     this.pinsPerFrame[this.currentFrame - 2] += pins;
+    this.strikeBonusSwitch = true;
   }
 };
 
 BowlingGame.prototype.strikeBonusPlus = function(pins, index) {
   if (this.rolls[index - 2] === 10 && this.strikeBonusSwitch) {
     this.score += pins;
+    this.bonusAllocation(pins);
+  }
+};
+
+BowlingGame.prototype.bonusAllocation = function(pins) {
+  if (this.currentRoll === 1) {
+    this.pinsPerFrame[this.currentFrame - 3] += pins;
+    // this.strikeBonusSwitch = true;
+  } else {
     this.pinsPerFrame[this.currentFrame - 2] += pins;
     this.strikeBonusSwitch = false;
   }

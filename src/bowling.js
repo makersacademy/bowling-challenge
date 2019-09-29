@@ -30,7 +30,7 @@ Bowling.prototype.calculateScore = function() {
 
 Bowling.prototype.addToRollsArray = function(num) {
   if (this.isStrike(num)) {
-    this.rollsArray.push(10, 'X');
+    this.rollsArray.push('   ', 'X');
   } else if (this.isSpare(num)) {
     this.rollsArray.push('/');
   } else {

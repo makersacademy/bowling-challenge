@@ -4,8 +4,7 @@ function BowlingGame() {
     this.scoreCard = [];
 }
 
-
-BowlingGame.prototype.frame = function(bowl1, bowl2, bowl3){
+BowlingGame.prototype.frame = function(bowl1, bowl2, bowl3) {
     let frameScore = [];
 
     let bowl = function(pins) {
@@ -14,7 +13,9 @@ BowlingGame.prototype.frame = function(bowl1, bowl2, bowl3){
 
     bowl(bowl1);
     bowl(bowl2);
+
     if (this.scoreCard.length === 9)
         bowl(bowl3);
+
     this.scoreCard.push(frameScore)
 };

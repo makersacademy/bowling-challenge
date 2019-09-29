@@ -32,5 +32,24 @@ describe(' Bowling Game', function (){
       expect(game.rolls).toEqual([4, 4, 4]);
       expect(game.pinsPerFrame).toEqual([8, 4]);
     });
+
+    it("records a strike and moves to the next frame", function() {
+      game.roll(10);
+      game.roll(1);
+      game.roll(1);
+      // expect(game.score).toEqual(14);
+      expect(game.currentFrame).toEqual(3)
+      expect(game.rolls).toEqual([10, 1, 1]);
+      // expect(game.pinsPerFrame).toEqual([12, 2]);
+    });
+
+    it("records the correct score for a strike", function() {
+      game.roll(10);
+      game.roll(1);
+      game.roll(1);
+      expect(game.score).toEqual(14);
+      expect(game.pinsPerFrame).toEqual([12, 2]);
+    });
+
   });
 });

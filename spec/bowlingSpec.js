@@ -15,4 +15,7 @@ describe('Game', function(){
   it('checks if the frame has a spare', function(){
     expect(game.isSpare()).toBe(false)
   });
+  it('adds up the rolls in 10 frames', function(){
+    expect(game.score()).toEqual(117)
+  })
 });

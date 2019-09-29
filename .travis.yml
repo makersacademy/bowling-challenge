@@ -9,4 +9,4 @@ addons:
 install:
    - npm set progress=false
    - npm install npm@latest -g
-script: karma.conf.js --single-run
+script: karma start karma.conf.js --single-run

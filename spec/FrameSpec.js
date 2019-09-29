@@ -41,7 +41,7 @@ describe("Frame", function() {
         });
         it("... cannot be had on frame 10", function () {
             frame = new Frame(8, 10, 2, 6);
-            expect(frame.bowl3).toEqual(null);
+            expect(frame.bowl3).toEqual(0);
         });
 
     });

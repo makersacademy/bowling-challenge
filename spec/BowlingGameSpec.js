@@ -100,7 +100,7 @@ describe("Bowling Game", function() {
             it("if first bowl is not a strike, error raised when bowl 1 and bowl 2 is more than 10", function () {
                 expect(function () {
                     bowlingGame.setFrame(10, 9,5);
-                }).toThrowError("Can only bowl 10 pins unless first bowl is strike")
+                }).toThrowError("Cannot bowl more than 10 pins unless first bowl is strike")
             });
 
             it("bowling a strike and a 7 will set bowl1 and bowl2 to 10 and 7 respectively for the 10th frame of score card", function () {
@@ -140,4 +140,16 @@ describe("Bowling Game", function() {
             });
         });
     });
+
+    describe('#getScore', function () {
+        it("returns 60 if bowled 3 for entire game", function () {
+            for (let i = 0; i < 10; i++)
+                bowlingGame.setFrame(i + 1, 3,3);
+            bowlingGame.calcScore();
+            expect(bowlingGame.score).toEqual(60);
+        });
+
+
+    });
+
 });

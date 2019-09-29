@@ -3,7 +3,7 @@ function Frame(frameNo, bowl1, bowl2, bowl3) {
     this.frameNo = frameNo;
     this.bowl1 = bowl1;
     this.bowl2 = bowl2;
-    this.bowl3 = null;
+    this.bowl3 = 0;
     this.strike = false;
     this.spare = false;
 

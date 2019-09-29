@@ -102,8 +102,8 @@ So I know my total score
 I’d like to view my total score for up to 10 frames
 
 As a player
-So that I can have a gutter frame
-I’d like to bowl twice in a frame, score 0 and move on to the next frame.
+So that I can have a gutter game
+I’d like to bowl 20 zero scores.
 
 As a player
 So I can get bonus points for a spare
@@ -121,6 +121,6 @@ As a player
 So that I can get 30 points in the 10th frame
 I’d like to be able to score 3 strikes in a row in the final frame only.
 
--As a player
--So that I can get 20 points in the final frame
--I’d like to be able to knock over 10 pins in the first two rolls and then get a strike.
+As a player
+So that I can get 20 points in the final frame
+I’d like to be able to knock over 10 pins in the first two rolls and then get a strike.

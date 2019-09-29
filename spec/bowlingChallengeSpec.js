@@ -8,6 +8,13 @@ describe("Scorecard", function () {
     expect(scorecard.playerScore).toEqual(0)
   });
 
+  describe('#addZero', function () {
+    it('Expect score to be 0 when player enters 0', function () {
+      scorecard.addZero()
+      expect(scorecard.playerScore).toEqual(0)
+    })
+  })
+
   describe('#addOne', function () {
     it('Expect score to be 1 when player enters 1', function () {
       scorecard.addOne()

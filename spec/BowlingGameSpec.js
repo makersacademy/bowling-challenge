@@ -142,11 +142,18 @@ describe("Bowling Game", function() {
     });
 
     describe('#getScore', function () {
-        it("returns 60 if bowled 3 for entire game", function () {
+        it("bowling 3 for entire game returns 60", function () {
             for (let i = 0; i < 10; i++)
                 bowlingGame.setFrame(i + 1, 3,3);
             bowlingGame.calcScore();
             expect(bowlingGame.score).toEqual(60);
+        });
+
+        it("bowling strike on frame 1 and 4, 4 on frame to returns 26", function () {
+            bowlingGame.setFrame(1, 10);
+            bowlingGame.setFrame(2, 4,4);
+            bowlingGame.calcScore();
+            expect(bowlingGame.score).toEqual(26);
         });
 
 

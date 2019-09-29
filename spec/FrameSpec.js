@@ -9,7 +9,6 @@ describe("Frame", function() {
         });
     });
 
-
     describe('Strike', function () {
         it("bowling 10 on bowl 1 sets strike flag to true", function () {
             frame = new Frame(1,10);
@@ -31,19 +30,5 @@ describe("Frame", function() {
             frame = new Frame(1,6,4);
             expect(frame.spare).toBeTruthy();
         });
-
     });
-
-    describe('3rd bowl...', function () {
-        it("... can be had on frame 10", function () {
-            frame = new Frame(10,10,2,6);
-            expect(frame.bowl3).toEqual(6);
-        });
-        it("... cannot be had on frame 10", function () {
-            frame = new Frame(8, 10, 2, 6);
-            expect(frame.bowl3).toEqual(0);
-        });
-
-    });
-
 });

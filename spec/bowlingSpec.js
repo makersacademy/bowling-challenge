@@ -41,5 +41,25 @@ describe('Bowling', function() {
     bowling.addScore(5);
     bowling.finishFrame();
     expect(bowling.currentScore).toEqual(9);
-  })
+  });
+
+  it('returns a score of 0 for a Gutter game', function() {
+    for (var i = 1; i <= 10; i++) {
+      bowling.startNewFrame();
+      bowling.addScore(0);
+      bowling.addScore(0);
+    }
+    bowling.calculateGutter();
+    expect(bowling.currentScore).toEqual(0);
+  });
+
+  it('if spare will add the pins from the first roll in the next frame', function() {
+    bowling.startNewFrame();
+    bowling.addScore(5);
+    bowling.addScore(5);
+    bowling.finishFrame();
+    bowling.startNewFrame();
+    bowling.calculateSpare(3);
+    expect(bowling.frames[1][0]).toBe(6);
+  });
 });

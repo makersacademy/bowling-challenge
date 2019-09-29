@@ -8,7 +8,7 @@ describe("Scorecard", function () {
     expect(scorecard.playerScore).toEqual(0)
   });
 
-  it('Expect player can play a gutter game with 20 rolls of 0 only', function() {
+  it('Expect player can play a gutter game with 20 rolls of 0', function() {
     scorecard.addZero()
     scorecard.addZero()
     scorecard.addZero()
@@ -28,6 +28,22 @@ describe("Scorecard", function () {
     scorecard.addZero()
     scorecard.addZero()
     expect(scorecard.playerScore).toEqual(0)
+  });
+
+  it('Expect player can play a perfect game with 12 rolls of 10', function() {
+    scorecard.addTen()
+    scorecard.addTen()
+    scorecard.addTen()
+    scorecard.addTen()
+    scorecard.addTen()
+    scorecard.addTen()
+    scorecard.addTen()
+    scorecard.addTen()
+    scorecard.addTen()
+    scorecard.addTen()
+    scorecard.addTen()
+    scorecard.addTen()
+    expect(scorecard.playerScore).toEqual(300)
   });
 
   describe('#addZero', function () {

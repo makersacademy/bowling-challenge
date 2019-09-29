@@ -76,7 +76,7 @@ describe(' Bowling Game', function (){
       expect(game.pinsPerFrame).toEqual([0, 30, 21, 13, 3]);
     });
 
-    it("records a 10 on second throw as a spare", function() {
+    it("records a spare bonus", function() {
      game.roll(0);
      game.roll(10);
      game.roll(1);
@@ -85,5 +85,30 @@ describe(' Bowling Game', function (){
      expect(game.pinsPerFrame).toEqual([11, 1]);
    });
 
+   it("records a multiple spare bonuses", function() {
+    game.roll(5);
+    game.roll(5);
+    game.roll(1);
+    game.roll(1);
+    game.roll(4);
+    game.roll(6);
+    game.roll(2);
+    game.roll(0);
+    expect(game.score).toEqual(27)
+    expect(game.rolls).toEqual([5, 5, 1, 1, 4, 6, 2, 0]);
+    expect(game.pinsPerFrame).toEqual([11, 2, 12, 2]);
+  });
+
+  it("records a tenth frame", function() {
+   rollLoop(9, 10);
+   game.roll(1);
+   expect(game.currentFrame).toEqual(10);
+ });
+
+ it("scores the perfect game", function() {
+  rollLoop(12, 10);
+  expect(game.score).toEqual(300);
+  expect(game.remainingRolls).toEqual(0);
+});
   });
 });

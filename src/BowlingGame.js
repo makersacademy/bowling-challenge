@@ -3,7 +3,7 @@ var BowlingGame = function(){
   this.rolls = []
   this.currentFrame = 1
   this.score = 0
-  this.remainingRolls = 21
+  // this.remainingRolls = 21
   this.pinsPerFrame = []
   this.strikeBonusSwitch = false
   this.spareBonusSwitch = false
@@ -19,8 +19,9 @@ BowlingGame.prototype.roll = function (pins) {
 
 
   //Can't get it to register the second bonus.
-
-  if (this.isStrike(pins) && this.currentRoll === 1) {
+  if (this.currentFrame === 10) {
+    this.frameTen(pins, index);
+  }else if (this.isStrike(pins) && this.currentRoll === 1) {
     this.pinsPerFrame.push(pins);
     this.strikeBonusSwitch = true;
     this.currentFrame += 1
@@ -72,7 +73,7 @@ BowlingGame.prototype.bonusAllocation = function(pins) {
 };
 
 BowlingGame.prototype.isSpare = function(pins, index) {
-  if (pins + this.rolls[index - 1] === 10 && this.currentRoll === 2 && this.spareBonus === false) {
+  if (pins + this.rolls[index - 1] === 10 && this.currentRoll === 2 && this.spareBonusSwitch === false) {
     return true
   } else {
     return false
@@ -80,9 +81,20 @@ BowlingGame.prototype.isSpare = function(pins, index) {
 };
 
 BowlingGame.prototype.spareBonus = function(pins, index) {
-  if (this.rolls[index -2] + this.rolls[index - 1] === 10 && this.strikeBonusSwitch === false) {
+  if (this.rolls[index -2] + this.rolls[index - 1] === 10 && this.spareBonusSwitch === true &&this.strikeBonusSwitch === false) {
     this.score += pins;
     this.pinsPerFrame[this.currentFrame - 2] += pins;
     this.spareBonusSwitch = false;
+  }
+};
+
+BowlingGame.prototype.frameTen = function(pins, index) {
+  if (this.isStrike(pins) && index === 9 ) {
+    this.pinsPerFrame.push(pins);
+    this.strikeBonusSwitch = true;
+  } else if (this.isStrike(pins) && index === 10) {
+    this.pinsPerFrame[this.currentFrame - 1] += pins;
+  } else if (this.isStrike(pins) && index === 11){
+    this.pinsPerFrame[this.currentFrame - 1] += pins;
   }
 };

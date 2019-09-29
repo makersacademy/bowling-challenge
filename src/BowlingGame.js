@@ -20,11 +20,17 @@ BowlingGame.prototype.setFrame = function(frameNo, bowl1 = 0, bowl2 = 0, bowl3 =
 
 BowlingGame.prototype.calcScore = function() {
     for (let i = 1; i <= Object.keys(this.scoreCard).length; i++) {
+
         this.score += this.scoreCard[i].bowl1 + this.scoreCard[i].bowl2 + this.scoreCard[i].bowl3;
+
         if (typeof this.scoreCard[i - 1] !== "undefined" ) {
+
             if (this.scoreCard[i - 1].strike === true) {
                 this.score += this.scoreCard[i].bowl1;
-                this.scoreCard[i].strike === true ? this.score += this.scoreCard[i+1].bowl1 : this.score += this.scoreCard[i].bowl2;
+                if (this.scoreCard[i].strike === true)
+                    this.score += this.scoreCard[i+1].bowl1;
+                else
+                    this.score += this.scoreCard[i].bowl2;
             }
             else if (this.scoreCard[i - 1].spare === true)
                 this.score += this.scoreCard[i].bowl1;

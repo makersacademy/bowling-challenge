@@ -8,7 +8,7 @@ addons:
 before_install:
   - npm i -g npm@6
 
-install:
-  - npm set progress=false
-  - npm install
+# install:
+#   - npm set progress=false
+#   - npm install
 script: node_modules/karma/bin/karma start my.conf.js --single-run

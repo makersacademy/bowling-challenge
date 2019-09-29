@@ -11,8 +11,8 @@ BowlingGame.prototype.setFrame = function(frameNo, bowl1 = 0, bowl2 = 0, bowl3 =
         throw new Error("Each bowl needs to be between 0 and 10");
     if(frameNo !== 10 && (bowl1 + bowl2 > 10 ))
         throw new Error("Can only bowl 10 pins in frame's 1 to 9");
-    if(bowl3 !== 0 && (frameNo !== 10 || frameNo === 10 && (bowl1 + bowl2 !== 10 || bowl2 !== 10)))
-        throw new Error("Chance to bowl 3 times only in 10th frame and strike or spare gotten");
+    if(bowl3 !== 0 && (frameNo !== 10 || frameNo === 10 && bowl1 + bowl2 !== 10 && bowl1 !== 10 ))
+        throw new Error("Chance to bowl 3 times only in 10th frame and when strike or spare gotten");
     if(frameNo === 10 && ((bowl1 !== 10) && (bowl1 + bowl2 > 10)))
         throw new Error("Cannot bowl more than 10 pins unless first bowl is strike");
     this.scoreCard[frameNo] = new Frame(frameNo, bowl1, bowl2, bowl3)
@@ -21,9 +21,13 @@ BowlingGame.prototype.setFrame = function(frameNo, bowl1 = 0, bowl2 = 0, bowl3 =
 BowlingGame.prototype.calcScore = function() {
     for (let i = 1; i <= Object.keys(this.scoreCard).length; i++) {
         this.score += this.scoreCard[i].bowl1 + this.scoreCard[i].bowl2 + this.scoreCard[i].bowl3;
-        if ( typeof this.scoreCard[i - 1] !== "undefined" ) {
-            if (this.scoreCard[i - 1].strike === true)
-                this.score += this.scoreCard[i].bowl1 + this.scoreCard[i].bowl2;
+        if (typeof this.scoreCard[i - 1] !== "undefined" ) {
+            if (this.scoreCard[i - 1].strike === true) {
+                this.score += this.scoreCard[i].bowl1;
+                this.scoreCard[i].strike === true ? this.score += this.scoreCard[i+1].bowl1 : this.score += this.scoreCard[i].bowl2;
+            }
+            else if (this.scoreCard[i - 1].spare === true)
+                this.score += this.scoreCard[i].bowl1;
         }
     }
 };

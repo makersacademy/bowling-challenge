@@ -85,13 +85,13 @@ describe("Bowling Game", function() {
                 it("not frame 10, i.e bowling 4, 1, 1 in frame 8", function () {
                     expect(function () {
                         bowlingGame.setFrame(8, 4, 1,1);
-                    }).toThrowError("Chance to bowl 3 times only in 10th frame and strike or spare gotten");
+                    }).toThrowError("Chance to bowl 3 times only in 10th frame and when strike or spare gotten");
                 });
 
                 it("in frame 10 but bowl 1 or bowl 2 not a strike or spare", function () {
                     expect(function () {
                         bowlingGame.setFrame(10, 4, 5,1);
-                    }).toThrowError("Chance to bowl 3 times only in 10th frame and strike or spare gotten");
+                    }).toThrowError("Chance to bowl 3 times only in 10th frame and when strike or spare gotten");
                 });
             });
         });
@@ -108,6 +108,22 @@ describe("Bowling Game", function() {
                 expect(bowlingGame.scoreCard[10].bowl1).toEqual(10);
                 expect(bowlingGame.scoreCard[10].bowl2).toEqual(7);
             });
+
+            it("bowling spare and strike on frame 10, i.e. 5, 5, 10 sets 5, 5, 10 at 10th frame on score card", function () {
+                bowlingGame.setFrame(10, 5, 5, 10);
+                expect(bowlingGame.scoreCard[10].bowl1).toEqual(5);
+                expect(bowlingGame.scoreCard[10].bowl2).toEqual(5);
+                expect(bowlingGame.scoreCard[10].bowl3).toEqual(10);
+            });
+
+            it("bowling 3 strikes on frame 10 sets 10, 10, 10 at 10th frame on score card", function () {
+                bowlingGame.setFrame(10, 10, 10, 10);
+                expect(bowlingGame.scoreCard[10].bowl1).toEqual(10);
+                expect(bowlingGame.scoreCard[10].bowl2).toEqual(10);
+                expect(bowlingGame.scoreCard[10].bowl3).toEqual(10);
+            });
+
+
         });
 
         describe('when strike scored', function () {
@@ -156,7 +172,42 @@ describe("Bowling Game", function() {
             expect(bowlingGame.score).toEqual(26);
         });
 
+        it("bowling spare on frame 1 and 4, 4 on frame to returns 26", function () {
+            bowlingGame.setFrame(1, 1,9);
+            bowlingGame.setFrame(2, 4,4);
+            bowlingGame.calcScore();
+            expect(bowlingGame.score).toEqual(22);
+        });
+
+        it("random bowling session equals 154", function () {
+            bowlingGame.setFrame(1, 4,2);
+            bowlingGame.setFrame(2, 5,5);
+            bowlingGame.setFrame(3, 5,5);
+            bowlingGame.setFrame(4, 10);
+            bowlingGame.setFrame(5, 5,5);
+            bowlingGame.setFrame(6, 3,7);
+            bowlingGame.setFrame(7, 1,0);
+            bowlingGame.setFrame(8, 2,2);
+            bowlingGame.setFrame(9, 6,4);
+            bowlingGame.setFrame(10, 10,10,10);
+            bowlingGame.calcScore();
+            expect(bowlingGame.score).toEqual(140);
+        });
+
+        it("random bowling session with 2 or more strikes in a row returns ", function () {
+            bowlingGame.setFrame(1, 10);
+            bowlingGame.setFrame(2, 10);
+            bowlingGame.setFrame(3, 4,2);
+            bowlingGame.setFrame(4, 2,6);
+            bowlingGame.setFrame(5, 10);
+            bowlingGame.setFrame(6, 10);
+            bowlingGame.setFrame(7, 10);
+            bowlingGame.setFrame(8, 10);
+            bowlingGame.setFrame(9, 2,4);
+            bowlingGame.setFrame(10, 5,5,10);
+            bowlingGame.calcScore();
+            expect(bowlingGame.score).toEqual(178);
+        });
 
     });
-
 });

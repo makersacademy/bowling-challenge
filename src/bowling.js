@@ -1,9 +1,11 @@
+const strikePins = 10;
+const gutterPins = 0;
+
 function Bowling() {
   this.frames = [];
   this.currentFrame = 0;
   this.maxRolls = 2;
   this.currentScore = 0;
-  this.totalScore = 0;
 };
 
 Bowling.prototype.startNewFrame = function() {
@@ -24,9 +26,20 @@ Bowling.prototype.finishFrame = function() {
 };
 
 Bowling.prototype.calculateGutter = function() {
-  this.totalScore = 0;
+  this.currentScore = 0;
 };
 
 Bowling.prototype.calculateSpare = function(number) {
   this.frames[this.currentFrame-1].push(number * 2);
+};
+
+Bowling.prototype.strike = function() {
+  this.frames[this.currentFrame-1].push(strikePins)
+  this.frames[this.currentFrame-1].push(gutterPins)
+};
+
+Bowling.prototype.calculateStrike = function() {
+  var frameTotal = this.frames[this.currentFrame - 1];
+  var updateStrikeScore = (frameTotal[0])*2 + (frameTotal[1])*2;
+   this.currentScore += updateStrikeScore
 };

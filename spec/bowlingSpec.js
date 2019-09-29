@@ -53,7 +53,7 @@ describe('Bowling', function() {
     expect(bowling.currentScore).toEqual(0);
   });
 
-  it('if spare will add the pins from the first roll in the next frame', function() {
+  it('double the score of the first roll if the last frame was a spare', function() {
     bowling.startNewFrame();
     bowling.addScore(5);
     bowling.addScore(5);
@@ -61,5 +61,20 @@ describe('Bowling', function() {
     bowling.startNewFrame();
     bowling.calculateSpare(3);
     expect(bowling.frames[1][0]).toBe(6);
+  });
+
+  it('will input a score of 0 for the second roll, after a strike', function() {
+    bowling.startNewFrame();
+    bowling.strike();
+    expect(bowling.frames[0][0]).toBe(10);
+    expect(bowling.frames[0][1]).toBe(0);
+  });
+
+  it('after a strike the next frame is doubled', function() {
+    bowling.startNewFrame();
+    bowling.addScore(4);
+    bowling.addScore(5);
+    bowling.calculateStrike();
+    expect(bowling.currentScore).toEqual(18);
   });
 });

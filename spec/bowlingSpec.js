@@ -32,7 +32,7 @@ describe('Bowling', function() {
     for (var i = 1; i <= 2; i++) {
       bowling.addScore(3);
     }
-    expect(function() { bowling.addScore(3) }).toThrowError('START A NEW FRAME');
+    expect(function() { bowling.addScore(3) }).toThrowError(newFrameError);
   });
 
   it('adds up the scores for a single frame', function() {

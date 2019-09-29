@@ -1,5 +1,6 @@
 const strikePins = 10;
 const gutterPins = 0;
+const newFrameError = 'START A NEW FRAME';
 
 function Bowling() {
   this.frames = [];

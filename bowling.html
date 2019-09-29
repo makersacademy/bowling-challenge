@@ -7,21 +7,22 @@
   <link href="public/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-  <script src="bowling.js"></script>
-  <script src="bowlingInterfacec.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="src/bowling.js"></script>
+  <script src="src/bowlingInterface.js"></script>
   <h1>Bowling Scorecard</h1>
   <div class="rollbuttons" align="center">
-    <button id="pins0" class="button" type="button" name="0 pins knocked down">0</button>
-    <button id="pins1" class="button" type="button" name="1 pins knocked down">1</button>
-    <button id="pins2" class="button" type="button" name="2 pins knocked down">2</button>
-    <button id="pins3" class="button" type="button" name="3 pins knocked down">3</button>
-    <button id="pins4" class="button" type="button" name="4 pins knocked down">4</button>
-    <button id="pins5" class="button" type="button" name="5 pins knocked down">5</button>
-    <button id="pins6" class="button" type="button" name="6 pins knocked down">6</button>
-    <button id="pins7" class="button" type="button" name="7 pins knocked down">7</button>
-    <button id="pins8" class="button" type="button" name="8 pins knocked down">8</button>
-    <button id="pins9" class="button" type="button" name="9 pins knocked down">9</button>
-    <button id="pins10" class="button" type="button" name="10 pins knocked down">10</button>
+    <button id="btn0" class="button" type="button" name="0 pins knocked down">0</button>
+    <button id="btn1" class="button" type="button" name="1 pins knocked down">1</button>
+    <button id="btn2" class="button" type="button" name="2 pins knocked down">2</button>
+    <button id="btn3" class="button" type="button" name="3 pins knocked down">3</button>
+    <button id="btn4" class="button" type="button" name="4 pins knocked down">4</button>
+    <button id="btn5" class="button" type="button" name="5 pins knocked down">5</button>
+    <button id="btn6" class="button" type="button" name="6 pins knocked down">6</button>
+    <button id="btn7" class="button" type="button" name="7 pins knocked down">7</button>
+    <button id="btn8" class="button" type="button" name="8 pins knocked down">8</button>
+    <button id="btn9" class="button" type="button" name="9 pins knocked down">9</button>
+    <button id="btn10" class="button" type="button" name="10 pins knocked down">10</button>
   </div>
   </br>
   <div class="pointstable">
@@ -39,39 +40,39 @@
         <th colspan="3">Frame </br> 10</th>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="box0">0</td>
+        <td id="box1">0</td>
+        <td id="box2">0</td>
+        <td id="box3">0</td>
+        <td id="box4">0</td>
+        <td id="box5">0</td>
+        <td id="box6">0</td>
+        <td id="box7">0</td>
+        <td id="box8">0</td>
+        <td id="box9">0</td>
+        <td id="box10">0</td>
+        <td id="box11">0</td>
+        <td id="box12">0</td>
+        <td id="box13">0</td>
+        <td id="box14">0</td>
+        <td id="box15">0</td>
+        <td id="box16">0</td>
+        <td id="box17">0</td>
+        <td id="box18">0</td>
+        <td id="box19">0</td>
+        <td id="box20">0</td>
       </tr>
       <tr>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="3"></td>
+        <td id="score0" colspan="2"></td>
+        <td id="score1" colspan="2"></td>
+        <td id="score2" colspan="2"></td>
+        <td id="score3" colspan="2"></td>
+        <td id="score4" colspan="2"></td>
+        <td id="score5" colspan="2"></td>
+        <td id="score6" colspan="2"></td>
+        <td id="score7" colspan="2"></td>
+        <td id="score8" colspan="2"></td>
+        <td id="score9" colspan="3"></td>
       </tr>
     </table>
   </div>

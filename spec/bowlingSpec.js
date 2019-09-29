@@ -32,9 +32,6 @@ describe('Bowling', function() {
     for (var i = 0; i < 20; i++) {
       bowling.bowl(4);
     }
-    console.log(bowling.frame);
-    console.log(bowling.frame);
-    console.log(bowling.pinsInLane);
     expect(function() { bowling.bowl(7) }).toThrow('Game over!');
   })
 

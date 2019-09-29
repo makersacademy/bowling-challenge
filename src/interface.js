@@ -1,11 +1,12 @@
 bowling = new Bowling();
+const ENTER_KEY_CODE = 13;
 
 $(document).ready(function() {
   constructTable();
   updateGame();
 
   $(document).bind('keypress', function(event) {
-    if(event.keyCode==13){
+    if(event.keyCode === ENTER_KEY_CODE){
       $('#submit').trigger('click');
     }
   });
@@ -13,11 +14,12 @@ $(document).ready(function() {
   $("#submit").click(function() {
     var pinsHit = parseInt($('input#pins-hit').val());
 
-    if (bowling._gameOver) {
-      alert('Game over!');
-    }
-    if (pinsHit > bowling.pinsInLane) {
-      alert('Invalid input. Number greater than pins in lane.');
+    try {
+      bowling.validateInput(pinsHit);
+    } catch(error) {
+      alert(error);
+      $('input#pins-hit').val('');
+      return;
     }
 
     updateTable(pinsHit);
@@ -29,21 +31,26 @@ $(document).ready(function() {
 
   function updateTable(pinsHit) {
     $(`#frame-${bowling.frame}-roll-${bowling.roll}`).text(pinsHit);
-
+    
+    // Record strike/spare for normal frame
     if (bowling.isStrike(pinsHit)) {
       $(`#note-${bowling.frame}-strike`).text("Strike");
     }
     if (bowling.isSpare(pinsHit)) {
       $(`#note-${bowling.frame}-spare`).text("Spare");
     }
-    if (bowling.frame ===10 && bowling.isStrike(pinsHit)) {
+    
+    // record strike/spare for final frame
+    if (bowling.frame === 10 && bowling.isStrike(pinsHit)) {
       $('#bonus-1').text("Bonus")
       $('#bonus-2').text("Bonus")
-      $(`#note-${bowling.frame}-strike`).text("Strike");
+    }
+    if (bowling.isFinalFrameSecondStrike(pinsHit)) {
+      $(`#note-${bowling.frame}-2`).text("Strike");
     }
     if (bowling.frame === 10 && bowling.isSpare(pinsHit)) {
       $('#bonus-2').text("Bonus")
-      $(`#note-${bowling.frame}-spare`).text("Spare");
+      $(`#note-${bowling.frame}-2`).text("Spare");
     }
   }
 
@@ -54,8 +61,12 @@ $(document).ready(function() {
 
   function displayScore() {
     var displayScore;
-    if (bowling._gameOver) {
+    if (bowling.isGameOver) {
+      if (bowling.totalScore === 300) {
+        displayScore = 'Perfect game! Final score: ' + bowling.totalScore;
+      } else {
       displayScore = 'Game over! Final score: ' + bowling.totalScore;
+      }
     } else {
       displayScore = 'Current score: ' + bowling.totalScore;
     }
@@ -70,7 +81,6 @@ $(document).ready(function() {
 
 function constructTable() {
   var tableData = '';
-  var finalRow = '';
   for (i = 1; i <= 9; i++) {
     tableData += '<tr>'
                 + `<td rowspan='2'>${i}</td>`

@@ -3,12 +3,12 @@ const spareBonusRoll = 1;
 
 class Bowling {
   constructor() {
-    this._gameOver = false;
+    this.isGameOver = false;
     this.frame = 1;
     this.roll = 1;
     this.pinsInLane = 10;
     this.finalFrameStrike = false;
-    this.score = [];
+    this.pins = [];
     this.totalScore = 0;
   }
 
@@ -22,18 +22,30 @@ class Bowling {
     }
   }
 
+  validateInput(pinsHit) {
+    if (!Number.isInteger(pinsHit) || pinsHit < 0) {
+      throw 'Pins hit must be a positive integer!';
+    }
+    if (this.isGameOver) {
+      throw 'Game over!';
+    }
+    if (pinsHit > this.pinsInLane) {
+      throw 'Invalid input. Number greater than pins in lane.';
+    }
+  }
+
   normalFrame(pinsHit) {
     if (this.isStrike(pinsHit)) {
-      this.score.push([pinsHit, strikeBonusRoll]);
+      this.pins.push([pinsHit, strikeBonusRoll]);
       this.nextFrame();
     } else if (this.roll === 1) {
-      this.score.push([pinsHit, 0]);
+      this.pins.push([pinsHit, 0]);
       this.secondRoll(pinsHit);
     } else if (this.isSpare(pinsHit)) {
-      this.score.push([pinsHit, spareBonusRoll]);   
+      this.pins.push([pinsHit, spareBonusRoll]);   
       this.nextFrame();
     } else {
-      this.score.push([pinsHit, 0]);
+      this.pins.push([pinsHit, 0]);
       this.nextFrame();
     }
   }
@@ -52,7 +64,7 @@ class Bowling {
   }
 
   finalFrame(pinsHit) {
-    this.score.push([pinsHit, 0]);
+    this.pins.push([pinsHit, 0]);
 
     if (this.isStrike(pinsHit)) {
       this.finalFrameStrike = true;
@@ -76,30 +88,21 @@ class Bowling {
   }
 
   gameOver() {
-    this._gameOver = true;
+    this.isGameOver = true;
     this.totalScore = this.calculateScore();
   }
 
   calculateScore() {
     var totalScore = 0;
-    for (var i = 0; i < this.score.length; i++) {
-      var [pins, bonus] = this.score[i];
+    for (var i = 0; i < this.pins.length; i++) {
+      var [pins, bonus] = this.pins[i];
       totalScore += pins;
-      for (var j = 1; j <= bonus && i + j < this.score.length; j++) {
-        var [bonusPins, _] = this.score[i + j];
+      for (var j = 1; j <= bonus && i + j < this.pins.length; j++) {
+        var [bonusPins, _] = this.pins[i + j];
         totalScore += bonusPins;
       }
     }
     return totalScore;
-  }
-
-  validateInput(pinsHit) {
-    if (this._gameOver) {
-      throw 'Game over!';
-    }
-    if (pinsHit > this.pinsInLane) {
-      throw 'Invalid input. Number greater than pins in lane.';
-    }
   }
 
   isStrike(pinsHit) {
@@ -111,7 +114,8 @@ class Bowling {
   }
 
   isSpare(pinsHit) {
-    return (this.roll === 2 && pinsHit === this.pinsInLane);
+    return (this.roll === 2 && pinsHit === this.pinsInLane &&
+      !this.finalFrameStrike);
   }
 }
 

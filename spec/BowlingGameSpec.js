@@ -7,6 +7,12 @@ describe(' Bowling Game', function (){
     game = new BowlingGame();
   });
 
+  var rollLoop = function (rolls, pins) {
+    for (var i = 0; i < rolls; i++) {
+      game.roll(pins);
+    }
+  };
+
   describe(".roll", function() {
     it("records a roll", function() {
       game.roll(8);
@@ -59,14 +65,25 @@ describe(' Bowling Game', function (){
     });
 
     it("records the correct score for three consecutive strikes", function() {
+      game.roll(0);
+      game.roll(0);
       game.roll(10);
       game.roll(10);
       game.roll(10);
       game.roll(1);
       game.roll(2);
       expect(game.score).toEqual(67);
-      expect(game.pinsPerFrame).toEqual([30, 21, 13, 3]);
+      expect(game.pinsPerFrame).toEqual([0, 30, 21, 13, 3]);
     });
+
+    it("records a 10 on second throw as a spare", function() {
+     game.roll(0);
+     game.roll(10);
+     game.roll(1);
+     expect(game.score).toEqual(12)
+     expect(game.rolls).toEqual([0, 10, 1]);
+     expect(game.pinsPerFrame).toEqual([11, 1]);
+   });
 
   });
 });

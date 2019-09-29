@@ -22,10 +22,10 @@ module.exports = function(config) {
       files: [
 
         // src files
-        "../src/*.js",
+        "./src/*.js",
 
         // test files
-        "./*.js"
+        "./spec/*.js"
       ],
 
 

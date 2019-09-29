@@ -1,9 +1,5 @@
-runPage = function() {
-var scorecard = new Scorecard();
 
   $(document).ready(function() {
-
-    $('#scorecard').text(scorecard.playerScore);
+  var scorecard = new Scorecard();
+  $('#player-score').text(scorecard.playerScore);
   })
-
-};

@@ -1,10 +1,12 @@
 class BowlingGame {
     constructor() {
-        this._rolls = [].fill(0, 0, 20);
+        this._rolls = new Array(21)
+        this._rolls.fill(0);
+        this._currentRoll = 0;
     }
 
     roll(pins) {
-        this._rolls.push(pins);
+        this._rolls[this._currentRoll++] = pins;
     }
 
     score() {

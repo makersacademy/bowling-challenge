@@ -2,7 +2,7 @@
 Bowling Challenge
 =================
 
-Writen for a Makers Academy weekend challenge: build a ten-pin bowling scorecard using TDD. 
+Written for a Makers Academy weekend challenge: build a ten-pin bowling scorecard using TDD. Full commit history [in this repo](https://github.com/mikjw/bowling-challenge-mw).
 
 ## To run the test suite
 

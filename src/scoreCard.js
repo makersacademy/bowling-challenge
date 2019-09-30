@@ -3,16 +3,16 @@
 var ScoreCard = function() {
   this._score = 0;
   this._numFrames = 10;
-}
+};
 
 ScoreCard.prototype.getScore = function(pinsDown) {
   
   function isSpare(i) {
-    return (pinsDown[i] + pinsDown[i+1] === 10)
+    return (pinsDown[i] + pinsDown[i+1] === 10);
   }
 
   function isStrike(i) {
-    return (pinsDown[i] === 10)
+    return (pinsDown[i] === 10);
   }
 
   var i = 0;
@@ -29,4 +29,4 @@ ScoreCard.prototype.getScore = function(pinsDown) {
     }
   }
   return this._score;
-}
+};

@@ -15,7 +15,7 @@ BowlingGame.prototype.setFrame = function(frameNo, bowl1 = 0, bowl2 = 0, bowl3 =
         throw new Error("Chance to bowl 3 times only in 10th frame and when strike or spare gotten");
     if(frameNo === 10 && ((bowl1 !== 10) && (bowl1 + bowl2 > 10)))
         throw new Error("Cannot bowl more than 10 pins unless first bowl is strike");
-    this.scoreCard[frameNo] = new Frame(frameNo, bowl1, bowl2, bowl3)
+    this.scoreCard[frameNo] = new Frame(bowl1, bowl2, bowl3)
 };
 
 BowlingGame.prototype.calcScore = function() {

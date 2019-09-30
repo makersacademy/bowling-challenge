@@ -13,19 +13,19 @@ class BowlingGame {
         let score = 0;
         let rollIndex = 0;
 
-        function isSpare() {
-            return this._rolls[rollIndex] + this._rolls[rollIndex + 1] === 10;
+        function isSpare(rolls) {
+            return rolls[rollIndex] + rolls[rollIndex + 1] === 10;
         }
 
-        function isStrike() {
-            return this._rolls[rollIndex] === 10;
+        function isStrike(rolls) {
+            return rolls[rollIndex] === 10;
         }
 
         for (let frame = 0; frame < 10; frame++) {
-            if (isSpare.call(this)) {
+            if (isSpare(this._rolls)) {
                 score += 10 + this._rolls[rollIndex + 2];
                 rollIndex += 2;
-            } else if (isStrike.call(this)) {
+            } else if (isStrike(this._rolls)) {
                 score += 10 + this._rolls[rollIndex + 1] + this._rolls[rollIndex + 2];
                 rollIndex += 1;
             } else {

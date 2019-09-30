@@ -11,7 +11,13 @@ var BowlingGame = function(){
 
 BowlingGame.prototype.roll = function (pins) {
   var index = this.rolls.length
-  this.score += pins;
+  if (index <= 10) {
+    this.score += pins;
+  } else {
+    this.score += pins;
+    this.pinsPerFrame[this.currentFrame - 1] += pins;
+    this.pinsPerFrame[this.currentFrame - 1] += pins;
+  }
   // Moved this at the bottom: this.rolls.push(pins);
   this.spareBonus(pins, index);
   this.strikeBonus(pins, index);
@@ -19,16 +25,16 @@ BowlingGame.prototype.roll = function (pins) {
 
 
   //Can't get it to register the second bonus.
-  if (this.currentFrame === 10) {
+  if (this.currentFrame === 10 && index > 8) {
     this.frameTen(pins, index);
-  }else if (this.isStrike(pins) && this.currentRoll === 1) {
+  }else if (this.isStrike(pins) && this.currentRoll === 1 && this.currentFrame <= 9) {
     this.pinsPerFrame.push(pins);
     this.strikeBonusSwitch = true;
     this.currentFrame += 1
   }else if (this.currentRoll === 1) {
    this.pinsPerFrame.push(pins);
    this.currentRoll = 2
- } else {
+ } else if (this.currentFrame < 10){
    this.isSpare ? this.spareBonusSwitch = true : this.spareBonusSwitch = false
    this.pinsPerFrame[this.currentFrame - 1] += pins;
    this.currentFrame += 1
@@ -36,7 +42,6 @@ BowlingGame.prototype.roll = function (pins) {
  }
 
 this.rolls.push(pins);
-
 };
 
 BowlingGame.prototype.isStrike = function(pins) {
@@ -92,9 +97,16 @@ BowlingGame.prototype.frameTen = function(pins, index) {
   if (this.isStrike(pins) && index === 9 ) {
     this.pinsPerFrame.push(pins);
     this.strikeBonusSwitch = true;
+    this.currentRoll = 2
+
   } else if (this.isStrike(pins) && index === 10) {
     this.pinsPerFrame[this.currentFrame - 1] += pins;
-  } else if (this.isStrike(pins) && index === 11){
-    this.pinsPerFrame[this.currentFrame - 1] += pins;
+    this.spareBonusSwitch = true;
+    this.strikeBonusSwitch = true;
+    this.spareBonus(pins, index);
+
+  // } else if (this.isStrike(pins) && index === 11){
+  //   this.pinsPerFrame[this.currentFrame - 1] += pins;
+
   }
 };

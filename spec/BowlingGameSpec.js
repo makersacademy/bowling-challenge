@@ -108,7 +108,7 @@ describe(' Bowling Game', function (){
  it("scores the perfect game", function() {
   rollLoop(12, 10);
   expect(game.score).toEqual(300);
-  expect(game.remainingRolls).toEqual(0);
+  expect(game.pinsPerFrame).toEqual([30, 30, 30, 30, 30, 30, 30, 30, 30, 30]);
 });
   });
 });

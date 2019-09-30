@@ -1,3 +1,7 @@
+## Bowling Challenge
+
+Notes for reviewer. The back end logic works, with some refactoring required for extracting responsibility from the .roll function. The calculation for the second and third roll of the tenth frame could do with some refactoring so that it is more elegant.
+
 
 Bowling Challenge
 =================

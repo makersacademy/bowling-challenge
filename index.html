@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <script src="./src/BowlingGame.js"></script>
+    <script src="./src/Frame.js"></script>
+    <script src="./lib/jquery-3.4.1.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            debugger
+            let bowlingGame = new BowlingGame();
+
+            $( "#calc-score" ).click(function(event) {
+                event.preventDefault();
+                submitScore();
+                debugger
+                bowlingGame.calcScore();
+                updateScore();
+            });
+
+            function submitScore() {
+                let f1b1 = parseInt($('#frame1-bowl1').val(), 10);
+                let f1b2 = parseInt($('#frame1-bowl2').val(), 10);
+                bowlingGame.setFrame(1,f1b1,f1b2);
+                let f2b1 = parseInt($('#frame2-bowl1').val(), 10);
+                let f2b2 = parseInt($('#frame2-bowl2').val(), 10);
+                bowlingGame.setFrame(2,f2b1,f2b2);
+                let f3b1 = parseInt($('#frame3-bowl1').val(), 10);
+                let f3b2 = parseInt($('#frame3-bowl2').val(), 10);
+                bowlingGame.setFrame(3,f3b1,f3b2);
+                // let f4b1 = parseInt($('#frame4-bowl1').val(), 10);
+                // let f4b2 = parseInt($('#frame4-bowl2').val(), 10);
+                // bowlingGame.setFrame(4,f4b1,f4b2);
+                // let f5b1 = parseInt($('#frame5-bowl1').val(), 10);
+                // let f5b2 = parseInt($('#frame5-bowl2').val(), 10);
+                // bowlingGame.setFrame(5,f5b1,f5b2);
+                // let f6b1 = parseInt($('#frame6-bowl1').val(), 10);
+                // let f6b2 = parseInt($('#frame6-bowl2').val(), 10);
+                // bowlingGame.setFrame(6,f6b1,f6b2);
+                // let f7b1 = parseInt($('#frame7-bowl1').val(), 10);
+                // let f7b2 = parseInt($('#frame7-bowl2').val(), 10);
+                // bowlingGame.setFrame(7,f7b1,f7b2);
+                // let f8b1 = parseInt($('#frame8-bowl1').val(), 10);
+                // let f8b2 = parseInt($('#frame8-bowl2').val(), 10);
+                // bowlingGame.setFrame(8,f8b1,f8b2);
+                // let f9b1 = parseInt($('#frame9-bowl1').val(), 10);
+                // let f9b2 = parseInt($('#frame9-bowl2').val(), 10);
+                // bowlingGame.setFrame(9,f9b1,f9b2);
+                // let f10b1 = parseInt($('#frame10-bowl1').val(), 10);
+                // let f10b2 = parseInt($('#frame10-bowl2').val(), 10);
+                // let f10b3 = parseInt($('#frame10-bowl3').val(), 10);
+                // bowlingGame.setFrame(10,f10b1,f10b2,f10b3);
+            }
+
+            function updateScore() {
+                $('#bowling-game-score').text(`Score: ${bowlingGame.score}`);
+
+            }
+        });
+    </script>
+
+    <title>Thermostat</title>
+</head>
+
+<body>
+
+<h1>The Ultimate Ben Zeng Bowling Score Keeper</h1>
+<h2 id="bowling-game-score">Score: Click calculate!</h2>
+
+<div>
+   <form>
+       <input type="number" id="frame1-bowl1">
+       <input type="number" id="frame1-bowl2">
+       <br>
+       <input type="number" id="frame2-bowl1">
+       <input type="number" id="frame2-bowl2">
+       <br>
+       <input type="number" id="frame3-bowl1">
+       <input type="number" id="frame3-bowl2">
+       <br>
+       <input type="number" id="frame4-bowl1">
+       <input type="number" id="frame4-bowl2">
+       <br>
+       <input type="number" id="frame5-bowl1">
+       <input type="number" id="frame5-bowl2">
+       <br>
+       <input type="number" id="frame6-bowl1">
+       <input type="number" id="frame6-bowl2">
+       <br>
+       <input type="number" id="frame7-bowl1">
+       <input type="number" id="frame7-bowl2">
+       <br>
+       <input type="number" id="frame8-bowl1">
+       <input type="number" id="frame8-bowl2">
+       <br>
+       <input type="number" id="frame9-bowl1">
+       <input type="number" id="frame9-bowl2">
+       <br>
+       <input type="number" id="frame10-bowl1">
+       <input type="number" id="frame10-bowl2">
+       <input type="number2" id="frame10-bowl3">
+       <br>
+       <br>
+       <input id="calc-score" type="submit" value="submit">
+   </form>
+</div>
+
+</body>
+
+</html>

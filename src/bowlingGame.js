@@ -1,6 +1,6 @@
 class BowlingGame {
     constructor() {
-        this._rolls = [];
+        this._rolls = [].fill(0, 0, 20);
     }
 
     roll(pins) {

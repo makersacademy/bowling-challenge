@@ -1,4 +1,5 @@
 'use strict';
+
 function Frame(bowl1, bowl2, bowl3) {
     this.bowl1 = bowl1;
     this.bowl2 = bowl2;

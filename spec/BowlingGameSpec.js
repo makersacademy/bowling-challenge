@@ -1,4 +1,4 @@
-describe("Bowling Game", function() {
+describe("Bowling Game", function () {
     let bowlingGame;
 
     beforeEach(function () {
@@ -32,8 +32,8 @@ describe("Bowling Game", function() {
             });
         });
 
-        describe('Raising errors when breaking rules:', function() {
-            describe('invalid frame numbers', function() {
+        describe('Raising errors when breaking rules:', function () {
+            describe('invalid frame numbers', function () {
                 it("a frame number less than 1", function () {
                     expect(function () {
                         bowlingGame.setFrame(-1, 2, 3);
@@ -53,7 +53,7 @@ describe("Bowling Game", function() {
                 });
             });
 
-            describe('invalid number of pins being bowled', function() {
+            describe('invalid number of pins being bowled', function () {
                 it("bowling less than 0 for bowl2", function () {
                     expect(function () {
                         bowlingGame.setFrame(4, 5, -3);
@@ -67,7 +67,7 @@ describe("Bowling Game", function() {
                 });
             });
 
-            describe('invalid when more than 10 pins bowled in frames 1 to 9', function() {
+            describe('invalid when more than 10 pins bowled in frames 1 to 9', function () {
                 it("bowling 8 and 9 in frame 9", function () {
                     expect(function () {
                         bowlingGame.setFrame(9, 8, 9);
@@ -81,16 +81,16 @@ describe("Bowling Game", function() {
                 });
             });
 
-            describe('bowling the 3rd bowl in a frame is invalid when...', function() {
+            describe('bowling the 3rd bowl in a frame is invalid when...', function () {
                 it("not frame 10, i.e bowling 4, 1, 1 in frame 8", function () {
                     expect(function () {
-                        bowlingGame.setFrame(8, 4, 1,1);
+                        bowlingGame.setFrame(8, 4, 1, 1);
                     }).toThrowError("Chance to bowl 3 times only in 10th frame and when strike or spare gotten");
                 });
 
                 it("in frame 10 but bowl 1 or bowl 2 not a strike or spare", function () {
                     expect(function () {
-                        bowlingGame.setFrame(10, 4, 5,1);
+                        bowlingGame.setFrame(10, 4, 5, 1);
                     }).toThrowError("Chance to bowl 3 times only in 10th frame and when strike or spare gotten");
                 });
             });
@@ -99,7 +99,7 @@ describe("Bowling Game", function() {
         describe('On the 10th frame...', function () {
             it("if first bowl is not a strike, error raised when bowl 1 and bowl 2 is more than 10", function () {
                 expect(function () {
-                    bowlingGame.setFrame(10, 9,5);
+                    bowlingGame.setFrame(10, 9, 5);
                 }).toThrowError("Cannot bowl more than 10 pins unless first bowl is strike")
             });
 
@@ -142,14 +142,14 @@ describe("Bowling Game", function() {
 
         describe('when spare scored', function () {
             it("spare in frame 3 will set bowl1 and bowl 2 to total 10 and spare to true in 1st frame of score card", function () {
-                bowlingGame.setFrame(3, 6,4);
+                bowlingGame.setFrame(3, 6, 4);
                 expect(bowlingGame.scoreCard[3].bowl1).toEqual(6);
                 expect(bowlingGame.scoreCard[3].bowl2).toEqual(4);
                 expect(bowlingGame.scoreCard[3].spare).toBeTruthy();
             });
 
             it("spare in frame 3 will leave strike to stay false in 1st frame of score card", function () {
-                bowlingGame.setFrame(3, 6,4);
+                bowlingGame.setFrame(3, 6, 4);
                 expect(bowlingGame.scoreCard[3].bowl1).toEqual(6);
                 expect(bowlingGame.scoreCard[3].bowl2).toEqual(4);
                 expect(bowlingGame.scoreCard[3].strike).toBeFalsy();
@@ -160,36 +160,36 @@ describe("Bowling Game", function() {
     describe('#getScore', function () {
         it("bowling 3 for entire game returns 60", function () {
             for (let i = 0; i < 10; i++)
-                bowlingGame.setFrame(i + 1, 3,3);
+                bowlingGame.setFrame(i + 1, 3, 3);
             bowlingGame.calcScore();
             expect(bowlingGame.score).toEqual(60);
         });
 
         it("bowling strike on frame 1 and 4, 4 on frame to returns 26", function () {
             bowlingGame.setFrame(1, 10);
-            bowlingGame.setFrame(2, 4,4);
+            bowlingGame.setFrame(2, 4, 4);
             bowlingGame.calcScore();
             expect(bowlingGame.score).toEqual(26);
         });
 
         it("bowling spare on frame 1 and 4, 4 on frame to returns 26", function () {
-            bowlingGame.setFrame(1, 1,9);
-            bowlingGame.setFrame(2, 4,4);
+            bowlingGame.setFrame(1, 1, 9);
+            bowlingGame.setFrame(2, 4, 4);
             bowlingGame.calcScore();
             expect(bowlingGame.score).toEqual(22);
         });
 
         it("random bowling session equals 154", function () {
-            bowlingGame.setFrame(1, 4,2);
-            bowlingGame.setFrame(2, 5,5);
-            bowlingGame.setFrame(3, 5,5);
+            bowlingGame.setFrame(1, 4, 2);
+            bowlingGame.setFrame(2, 5, 5);
+            bowlingGame.setFrame(3, 5, 5);
             bowlingGame.setFrame(4, 10);
-            bowlingGame.setFrame(5, 5,5);
-            bowlingGame.setFrame(6, 3,7);
-            bowlingGame.setFrame(7, 1,0);
-            bowlingGame.setFrame(8, 2,2);
-            bowlingGame.setFrame(9, 6,4);
-            bowlingGame.setFrame(10, 10,10,10);
+            bowlingGame.setFrame(5, 5, 5);
+            bowlingGame.setFrame(6, 3, 7);
+            bowlingGame.setFrame(7, 1, 0);
+            bowlingGame.setFrame(8, 2, 2);
+            bowlingGame.setFrame(9, 6, 4);
+            bowlingGame.setFrame(10, 10, 10, 10);
             bowlingGame.calcScore();
             expect(bowlingGame.score).toEqual(140);
         });
@@ -197,14 +197,14 @@ describe("Bowling Game", function() {
         it("random bowling session with 2 or more strikes in a row returns ", function () {
             bowlingGame.setFrame(1, 10);
             bowlingGame.setFrame(2, 10);
-            bowlingGame.setFrame(3, 4,2);
-            bowlingGame.setFrame(4, 2,6);
+            bowlingGame.setFrame(3, 4, 2);
+            bowlingGame.setFrame(4, 2, 6);
             bowlingGame.setFrame(5, 10);
             bowlingGame.setFrame(6, 10);
             bowlingGame.setFrame(7, 10);
             bowlingGame.setFrame(8, 10);
-            bowlingGame.setFrame(9, 2,4);
-            bowlingGame.setFrame(10, 5,5,10);
+            bowlingGame.setFrame(9, 2, 4);
+            bowlingGame.setFrame(10, 5, 5, 10);
             bowlingGame.calcScore();
             expect(bowlingGame.score).toEqual(178);
         });

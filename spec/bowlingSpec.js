@@ -73,4 +73,5 @@ describe('BowlingCard', function() {
     for(i = 1; i <= 12; i++) { bowlingCard.enterRoll(10) }
 expect(bowlingCard.totalScore).toEqual(300);
   });
+
 });

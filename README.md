@@ -36,7 +36,7 @@ So that I don't add too many frames to the card
 $ git clone git@github.com:mariacuffaro/bowling-challenge.git
 $ cd bowling-challenge
 $ open SpecRunner.html to test
-$ open SbowlingCard.html to run
+$ open bowlingCard.html to run
 ```
 
 * Challenge time: rest of the day and weekend.

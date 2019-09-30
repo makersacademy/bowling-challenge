@@ -5,3 +5,7 @@ function Roll() {
 Roll.prototype.enterPinsDown = function(number) {
   this.pinsDown = number;
 };
+
+Roll.prototype.enterRollNumber = function(rollNumber) {
+  this.number = rollNumber;
+}

@@ -43,8 +43,9 @@
     function _addTableRow(entry) {
       // debugger
       var frameNumber = bowling.frameNumber;
-      var rollNumber = bowling.rollNumber;
-      var score = parseInt(bowling.totalScore);
+      var rollNumber = bowling.currentRoll.number;
+      var score = ""
+      if (rollNumber == 2 ) { score = parseInt(bowling.totalScore); }
       $('#cardTable > tbody:last-child').append(
       '<tr>'
       +'<td id=frame'+rowCount+'>'+frameNumber+'</td>'
@@ -53,6 +54,11 @@
       +'<td id=score'+rowCount+'>'+score+'</td>'
       +'<td></td>'
       +'</tr>');
+      _recalcScores();
+    };
+    function _recalcScores() {
+      bowling.card.forEach(_recalc(frame, index))
+        $("#score").text = parseInt(bowling.totalScore);
     };
 
   });

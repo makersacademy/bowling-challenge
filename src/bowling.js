@@ -16,6 +16,7 @@ BowlingCard.prototype.enterRoll = function(number) {
 BowlingCard.prototype._storeRoll = function(pinsDown) {
     this.currentRoll = new Roll();
     this.currentRoll.pinsDown = pinsDown
+    this.currentRoll.enterRollNumber(this.rollNumber) 
     this.totalScore += pinsDown;
 };
 

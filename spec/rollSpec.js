@@ -9,4 +9,10 @@ describe('Roll', function() {
     expect(roll.pinsDown).toEqual(5);
   });
 
+  it('knows which roll it is', function() {
+    roll.enterPinsDown(3);
+    roll.enterRollNumber(1);
+    expect(roll.number).toEqual(1);
+  })
+
 });

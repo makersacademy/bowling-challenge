@@ -20,6 +20,7 @@ Bowling Scorecard Calculator
 
 - Adding buttons to populate text fields with scores instead of needing them to be typed
 - Tidy up HTML files by generating HTML using JS
+- Take JS out of html file
 
 
 

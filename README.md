@@ -15,6 +15,7 @@ Bowling Scorecard Calculator
 - If entering a value for the 3rd bowl in frame 10 when first two bowls are not a strike or spare, clicking calculate will do nothing.
 - All text fields need to be filled with a number between 0 - 10 otherwise clicking calculate will do nothing.
 - Open SpecRunner.html to run unit tests for Javascript files.
+- Bug where getting a strike on the 1st bowl of 10th frame breaks calculation which needs to be fixed
 
 ### Future Improvements
 

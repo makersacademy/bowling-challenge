@@ -15,6 +15,10 @@ Bowling.prototype.isSpare = function(num) {
   return num + this.rollsArray.slice(- 1)[0] === 10 && this.rollsArray.length % 2 !== 0;
 }
 
+Bowling.prototype.isTenthFrame = function() {
+  return this.rollsArray.length >= 18;
+}
+
 Bowling.prototype.calculateScore = function() {
   var array = this.rollsArray
   for (let i = 0; i < array.length; i++) {
@@ -26,11 +30,12 @@ Bowling.prototype.calculateScore = function() {
       this.score += array[i];
     }
   }
+  return this.score;
 }
 
 Bowling.prototype.addToRollsArray = function(num) {
   if (this.isStrike(num)) {
-    this.rollsArray.push('   ', 'X');
+    this.rollsArray.push(10, 'X');
   } else if (this.isSpare(num)) {
     this.rollsArray.push('/');
   } else {

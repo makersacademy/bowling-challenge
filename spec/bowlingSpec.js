@@ -68,5 +68,12 @@ describe('Bowling', function() {
       bowling.roll(6);
       expect(bowling.rollsArray).toEqual([10, 'X', 4, '/']);
     })
+
+    it('detects tenth frame', function() {
+      for (let i = 0; i < 10; i++) {
+        bowling.roll(10);
+      }
+      expect(bowling.isTenthFrame()).toEqual(true);
+    })
   })
 })

@@ -11,6 +11,7 @@ $(document).ready(function() {
     bowling.roll(1);
     writeRolls();
     disableButtons();
+    console.log(bowling.isTenthFrame());
   });
 
   $("#btn2").click(function() {

@@ -4,18 +4,23 @@ h1 {
 }
 
 table {
-  width: 75%;
+  width: 1200px;
   text-align: center;
   color:aliceblue;
 }
 
+tr {
+  height: 40px;
+  width: 50px;
+}
+
 th {
   background-color: dodgerblue;
-  padding: 1%;
 }
 
 td {
   background-color: grey;
+  width: 50px;
 }
 
 .button {

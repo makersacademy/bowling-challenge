@@ -1,0 +1,68 @@
+body {
+  font-family: 'Questrial', sans-serif;
+  font-family: 'Darker Grotesque', sans-serif;
+}
+
+button {
+  background-color: #FFFFFF;
+  border: 2px solid #000000;
+  border-radius: 100px;
+  color: #cc0000;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+}
+
+#reset {
+    background-color: #FFFFFF;
+    border: 2px solid #000000;
+    border-radius: 100px;
+    color: #cc0000;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 40px;
+}
+
+.header {
+  background-color: #f2e6d9;
+  padding: 10px 15px;
+  text-align: center;
+}
+
+#scoreButtons {
+  background-color: #fff5e6;
+  padding: 10px 15px;
+  font-size: 18px;
+}
+
+#resetButton {
+  background-color: #fff5e6;
+  padding: 10px 15px;
+  font-size: 18px;
+}
+
+#totalScoreID {
+  background-color: #FFFFFF;
+  padding: 5px 5px;
+  font-size: 22px;
+}
+
+#finalScore {
+  text-align: center;
+  font-size: 40px;
+  color: #cc0000;
+}
+
+
+table.scorecard {margin: 0 auto; width:80%; font-size:12px; border:1px solid; table-layout: fixed; margin-bottom: 40px;}
+table.scorecard th, tr, td {padding: 0; vertical-align: middle; font-family: Arial, Helvetica, sans-serif; text-align: center;}
+table.scorecard th {border-bottom:1px solid; background-color:#d3313a; height:30px; color: #fff}
+table.scorecard th:not(:last-child) {border-right:1px solid;}
+table.scorecard td {height:30px; background: rgba(255, 255, 255, 0.5);}
+table.scorecard tr td:not(:last-child) {border-right:1px solid;}
+table.scorecard tr:nth-child(2) td:nth-child(even) {border-bottom:1px solid;}
+table.scorecard tr:nth-child(2) td:last-child {border-bottom:1px solid;}

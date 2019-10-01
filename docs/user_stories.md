@@ -1,12 +1,4 @@
-# Bowling Scorecard
-
-
-## Model
-
-![Model Class Diagram](./images/ScoreCard_diagram.png)
-
-
-## USER STORIES
+# USER STORIES
 
 ```txt
 As a user,

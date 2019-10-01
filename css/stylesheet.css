@@ -1,0 +1,50 @@
+#frames {
+  background-color: black;
+  color: white;
+}
+
+#buttons {
+  padding: 20px;
+}
+
+.roll {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.score {
+  border: 1px solid black;
+  text-align: center;
+}
+
+table {
+  background-color: white;
+  table-layout: fixed;
+}
+
+td {
+  height: 30px;
+  width: 30px;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 90%;
+  font-family: helvetica, sans-serif;
+  background-image: linear-gradient(to bottom right, #9FD8F9, #21CD6D)
+}
+
+button {
+  background-color: white; /* Green */
+  border: 1px solid black;
+  color: black;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+}

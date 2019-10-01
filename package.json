@@ -1,0 +1,37 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "setupFiles": [
+      "jest-plugin-context/setup"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olliebaum/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/olliebaum/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/olliebaum/bowling-challenge#readme",
+  "devDependencies": {
+    "jest": "^23.6.0",
+    "jest-plugin-context": "^2.9.0",
+    "puppeteer": "^1.11.0"
+  },
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
+  }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+  <script src="src/Frame.js"></script>
+  <script src="src/Game.js"></script>
+  <script src="src/View.js"></script>
+  <script src="src/index.js"></script>
+  <link href="src/style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<h1> Record your Bowling Scorecard</h1>
+
+
+<!-- Would like to insert dynamic HTML here but don't know how -->
+<!-- need to look into creation of table dynamically? -->
+<br/><br/>
+<table>
+  <tr>
+    <th>Frame 1</th>
+    <th>Frame 2</th>
+    <th>Frame 3</th>
+    <th>Frame 4</th>
+    <th>Frame 5</th>
+    <th>Frame 6</th>
+    <th>Frame 7</th>
+    <th>Frame 8</th>
+    <th>Frame 9</th>
+    <th>Frame 10</th>
+  </tr>
+  <tr>
+    <td>Ball 1: <input id="ball1" type="text" tabindex="1"></td>
+    <td>Ball 1: <input id="ball3" type="text" tabindex="3"></td>
+    <td>Ball 1: <input id="ball5" type="text" tabindex="5"></td>
+    <td>Ball 1: <input id="ball7" type="text" tabindex="7"></td>
+    <td>Ball 1: <input id="ball9" type="text" tabindex="9"></td>
+    <td>Ball 1: <input id="ball11" type="text" tabindex="11"></td>
+    <td>Ball 1: <input id="ball13" type="text" tabindex="13"></td>
+    <td>Ball 1: <input id="ball15" type="text" tabindex="15"></td>
+    <td>Ball 1: <input id="ball17" type="text" tabindex="17"></td>
+    <td>Ball 1: <input id="ball19" type="text" tabindex="19"></td>
+  </tr>
+  <tr>
+    <td>Ball 2: <input id="ball2" type="text" tabindex="2"></td>
+    <td>Ball 2: <input id="ball4" type="text" tabindex="4"></td>
+    <td>Ball 2: <input id="ball6" type="text" tabindex="6"></td>
+    <td>Ball 2: <input id="ball8" type="text" tabindex="8"></td>
+    <td>Ball 2: <input id="ball10" type="text" tabindex="10"></td>
+    <td>Ball 2: <input id="ball12" type="text" tabindex="12"></td>
+    <td>Ball 2: <input id="ball14" type="text" tabindex="14"></td>
+    <td>Ball 2: <input id="ball16" type="text" tabindex="16"></td>
+    <td>Ball 2: <input id="ball18" type="text" tabindex="18"></td>
+    <td>Ball 2: <input id="ball20" type="text" tabindex="20"></td>
+  </tr>
+  <tr>
+    <td><h4 id="message1"></h4></td>
+    <td><h4 id="message2"></h4></td>
+    <td><h4 id="message3"></h4></td>
+    <td><h4 id="message4"></h4></td>
+    <td><h4 id="message5"></h4></td>
+    <td><h4 id="message6"></h4></td>
+    <td><h4 id="message7"></h4></td>
+    <td><h4 id="message8"></h4></td>
+    <td><h4 id="message9"></h4></td>
+    <td><h4 id="message10"></h4></td>
+  </tr>
+  <tr>
+    <td><h4 id="frameTotal1">Frame: 0</h4></td>
+    <td><h4 id="frameTotal2">Frame: 0</h4></td>
+    <td><h4 id="frameTotal3">Frame: 0</h4></td>
+    <td><h4 id="frameTotal4">Frame: 0</h4></td>
+    <td><h4 id="frameTotal5">Frame: 0</h4></td>
+    <td><h4 id="frameTotal6">Frame: 0</h4></td>
+    <td><h4 id="frameTotal7">Frame: 0</h4></td>
+    <td><h4 id="frameTotal8">Frame: 0</h4></td>
+    <td><h4 id="frameTotal9">Frame: 0</h4></td>
+    <td><h4 id="frameTotal10">Frame: 0</h4></td>
+  </tr>
+</table>
+
+<h2 id="gameTotal">Game Total: 0</h2>
+<br/><br/>
+<h3 id="gameOver"></h3>
+
+</body>

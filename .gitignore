@@ -1,2 +1,6 @@
 /**/.DS_Store
 node_modules
+.eslintrc.js
+package-lock.json
+.nyc_output
+npm-debug.log

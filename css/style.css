@@ -1,0 +1,23 @@
+body {
+  text-align: center;
+  margin-top: 3em;
+  background-color: rgb(242, 242, 242)
+}
+
+section#count {
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+
+section#scoresheet {
+  margin-left: 3em;
+  margin-right: 3em;
+}
+
+#total-score td {
+  background-color: rgb(255, 230, 230);
+}
+
+#scoresheet th {
+  background-color: rgb(255, 230, 230);
+}

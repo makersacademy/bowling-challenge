@@ -2,28 +2,11 @@
 Bowling Challenge
 =================
 
-
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
-
 ## The Task
-
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
 
 ### Optional Extras
 
@@ -36,42 +19,100 @@ In any order you like:
 You might even want to start with ESLint early on in your work — to help you
 learn Javascript conventions as you go along.
 
-## Bowling — how does it work?
+### Goals
 
-### Strikes
+Work on this challenge as conclusion of week 4, to work towards these goals:
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+* I version-control my projects
+* I use a methodical approach to solving problems
+* I test-drive my code
+* I can work to a specification
+* I create effective documentation
+* I can design and build user interfaces
+* I can write standards-compliant, clean object-oriented code
 
-### Spares
+Instructions to run this at home
+-----
 
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+To use the Scorecard from Github:
 
-### 10th frame
+```
+https://fbl11.github.io/bowling-challenge/jasmine/lib/index.html
+```
 
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
+To use the Scorecard:
+```
+$ git clone https://github.com/fbl11/bowling-challenge
+$ cd bowling-challenge
+$ npm install bootstrap@3
+$ open jasmine/lib/index.html
+```
 
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
+To run tests:
+```
+$ git clone https://github.com/fbl11/bowling-challenge
+$ cd bowling-challenge
+$ npm install jasmine-expect --save-dev
+$ open jasmine/SpecRunner.html
+```
 
-### Gutter Game
+STATUS
+-----
+Implements and tests 'Game' and 'Frame' class.
 
-A Gutter Game is when the player never hits a pin (20 zero scores).
+**Notes**
+Using https://github.com/JamieMason/Jasmine-Matchers to add additional testing functionality (only used for one very few tests - install if you want to run tests)
+Using Bootstrap for styling
 
-### Perfect Game
+**TO DO**
 
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+- Test User Interface logic (Script.js)
+- Add Domain Model
+- Set up Travis CI
 
-In the image below you can find some score examples.
+User stories
+-----
+```
+As a player,
+so that I know how long the game is,
+I want to see how many frames the game has
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
+As a player,
+so I know how many frames I have already played,
+I want to know which frame I'm currently playing
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+As a player,
+to be assigned a score,
+I want to be able to record the number of pins I hit in each roll in the correct frame
 
-## Code Review
+As a player,
+so I don't have to remember the number of pins I've previously hit,
+I want to see the history of my previous rolls.
 
-In code review we'll be hoping to see:
+As a player,
+so I don't have to remember my score,
+I want to see the history of my scores for each frame.
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+As a player,
+so that I know who's winnig the game,
+I want to see my running score (the sum of the score of all my rolls)
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+As a player,
+so that I know who has won,
+I want to see my overall score (the sum of the score of all my frames)
+
+As a player,
+to be rewarded for my skill,
+I want to be credited extra scores when I bowl a strike
+
+As a player,
+to be rewarded for my skill,
+I want to be credited extra scores when I bowl a spare
+```
+
+Domain Model
+
+
+Author
+-----
+Freya Becker [fbl11](https://github.com/fbl11/)

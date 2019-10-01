@@ -1,0 +1,35 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "bowling weekend challenge",
+  "main": "SpecRunner.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "karma start karma.conf.js --single-run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariacuffaro/bowling-challenge.git"
+  },
+  "author": "Maria Cuffaro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mariacuffaro/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/mariacuffaro/bowling-challenge#readme",
+  "devDependencies": {
+    "jasmine": "^3.5.0",
+    "karma": "^4.3.0",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-firefox-launcher": "^1.2.0",
+    "karma-jasmine": "^2.0.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "jasmine-node": "^3.0.0",
+    "request": "^2.88.0"
+  }
+}

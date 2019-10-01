@@ -2,6 +2,42 @@
 Bowling Challenge
 =================
 
+```
+As a user
+I want to enter how many pins I knocked down in my last roll
+So that I can keep track of my score
+
+As a user
+I want to know my score at the end of the frame
+So that I can see how I am doing
+
+As a user
+I want the score card to record a strike
+So that I can accrue bonus points
+
+As a user
+I want the score card to record a spare
+So that I can accrue bonus points
+
+As a user
+I want to know the total score
+So that I can see if I have won
+
+As a user
+I want to record  an extra bowl in the last round if I throw a strike or spare
+So that I can accrue bonus points
+
+As a user
+I want to know when the card is _complete
+So that I don't add too many frames to the card
+```
+**To test/run this code please do the following**
+```
+$ git clone git@github.com:mariacuffaro/bowling-challenge.git
+$ cd bowling-challenge
+$ open SpecRunner.html to test
+$ open bowlingCard.html to run
+```
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own
@@ -29,9 +65,9 @@ ___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. 
 
 In any order you like:
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+* Create a nice interactive animated interface with jQuery - started not complete
+* Set up [Travis CI](https://travis-ci.org) to run your tests. - not done
+* Add [ESLint](http://eslint.org/) to your codebase and make your code conform. not done
 
 You might even want to start with ESLint early on in your work — to help you
 learn Javascript conventions as you go along.

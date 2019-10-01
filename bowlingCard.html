@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 5px;
+      text-align: left;
+    }
+    .low {
+      color: green;
+    }
+    .medium {
+      color: black;
+    }
+    .high {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <script src="./src/bowling.js"></script>
+  <script src="./src/frame.js"></script>
+  <script src="./src/roll.js"></script>
+
+  <script>
+  $(document).ready(function() {
+    var bowling = new BowlingCard();
+    var rowCount = 0;
+
+    $("#submit").click(function() {
+      var entry = parseInt($("#pinsEntry").val());
+      bowling.enterRoll(entry);
+      $("#pinsDown1").text(entry);
+      _addTableRow(entry);
+      rowCount += 1;
+    });
+
+    function _addTableRow(entry) {
+      // debugger
+      var frameNumber = bowling.frameNumber;
+      var rollNumber = bowling.currentRoll.number;
+      var score = ""
+      if (rollNumber == 2 ) { score = parseInt(bowling.totalScore); }
+      $('#cardTable > tbody:last-child').append(
+      '<tr>'
+      +'<td id=frame'+rowCount+'>'+frameNumber+'</td>'
+      +'<td id=rollNum'+rowCount+'>'+rollNumber+'</td>'
+      +'<td id=pinsDown'+rowCount+'>'+entry+'</td>'
+      +'<td id=score'+rowCount+'>'+score+'</td>'
+      +'<td></td>'
+      +'</tr>');
+      _recalcScores();
+    };
+    function _recalcScores() {
+      bowling.card.forEach(_recalc(frame, index))
+        $("#score").text = parseInt(bowling.totalScore);
+    };
+
+  });
+  </script>
+
+  <table align='centre' id=cardTable >
+    <tr>
+      <td colspan="3" id="enterScoreTitle">Enter Score: </th>
+      <td><input id='pinsEntry'></td>
+      <td><button id='submit'>Submit</button></td>
+    </tr>
+    <tr>
+      <th colspan="5" id="bowlingCard">Bowling Card</th>
+    </tr>
+    <tr>
+      <th id='frame'>Frame</th>
+      <th id='roll'>Roll</th>
+      <th id='pinsDown'>Pins</th>
+      <th id='score'>Score</th>
+      <th id='notes'>Notes</th>
+    </tr>
+  </table>
+
+</body>
+</html>

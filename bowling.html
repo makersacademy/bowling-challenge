@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="./src/bowling.js"></script>
+  <script src="./src/interface.js"></script>
+
+  <head>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link rel="stylesheet" href="layout.css">
+    <title>Bowling</title>
+  </head>
+
+  <body>
+    <div>
+      <h1><span id="display-score"></span></h1>
+    </div>
+    </br>
+    <div>
+      <h4>Please enter pins hit for Frame <span id="frame"></span>, Roll <span id="roll"></span>:</h4>
+      <input class ="col-1" id="pins-hit" type="number" autofocus 
+        autocomplete="off" placeholder="Pins hit" min="0" max="10">
+      <button class="btn btn-primary" id="submit" type="submit">Submit</button>
+    </div>
+    </br>
+    <div>
+      <table>
+        <tr>
+          <th>Frame</th>
+          <th>Roll</th>
+          <th>Knocked Down Pins</th>
+          <th>Note</th>
+        </tr>
+      </table>
+      <!-- table constructed with javascript -->
+      <table id="constructTable">
+      </table>
+      <table>
+        <tr>
+          <td rowspan='3'>10</td>
+          <td>1</td>
+          <td id='frame-10-roll-1'></td>
+          <td id='note-10-strike'></td>
+        </tr>
+        <tr>
+          <td id='bonus-1'>2</td>
+          <td id='frame-10-roll-2'></td>
+          <td id='note-10-2'></td>
+        </tr>
+        <tr>
+          <td id='bonus-2'></td>
+          <td id='frame-10-roll-3'></td>
+          <td id='note-10-3'></td>
+        </tr>
+      </table>
+    </div> 
+  </body>
+</html>

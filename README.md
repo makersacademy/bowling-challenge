@@ -1,6 +1,65 @@
-
 Bowling Challenge
 =================
+
+This is a JavaScript application for a bowling scorecard which counts and sums the scores of a bowling game for one player.
+
+## Instructions for Use
+
+1. Clone this repository
+```
+git clone https://github.com/melissasedgwick/bowling-challenge.git
+```
+2. Navigate into directory
+```
+cd bowling-challenge
+```
+3. Run the application
+```
+open bowling-challenge.html
+```
+
+## Testing
+
+From the project directory, open SpecRunner
+```
+open SpecRunner.html
+```
+
+## User Stories
+
+```
+As a player
+So I can record my roll
+I'd like to record a number of knocked down pins
+
+As a player
+So I can keep track of my frames
+I'd like each frame to be limited to 2 rolls
+
+As a player
+So I don't record my score incorrectly
+I'd like the number of knocked down pins to be limited to 10 per frame
+
+As a player
+So I can play a full game of bowling
+I want the game to consist of 10 frames
+
+As a player
+So I know how well I'm doing
+I'd like to be able to see a score for each frame
+
+As a player
+So I can earn extra points
+I'd like bonus points to be awarded for a spare
+
+As a player
+So I can earn extra points
+I'd like bonus points to be awarded for a strike
+
+As a player
+So I know how well I did
+I'd like to see a total score for the whole game
+```
 
 
 * Challenge time: rest of the day and weekend.

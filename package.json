@@ -1,0 +1,27 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "JS bowling scorecard, jasmine+karma+travis",
+  "scripts": {
+    "test": "karma start karma.conf.js — single-run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dafuloth/bowling-challenge.git"
+  },
+  "author": "David Thai",
+  "license": "ISC",
+  "homepage": "https://github.com/dafuloth/bowling-challenge#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "jasmine-core": "^3.4.0",
+    "karma": "^4.1.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-cli": "^2.0.0",
+    "karma-jasmine": "^2.0.1",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "phantomjs-prebuilt": "^2.1.16"
+  }
+}

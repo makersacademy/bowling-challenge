@@ -1,77 +1,155 @@
+[![Build Status](https://travis-ci.org/dafuloth/bowling-challenge.svg?branch=master)](https://travis-ci.org/dafuloth/bowling-challenge)
 
-Bowling Challenge
-=================
+# Bowling Challenge
 
+_My solution is the subdirectory /Bowling. Original challenge README [here](./challenge.md)._
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+## Contents
+<details><summary><i>expand Table of Contents</i></summary>
 
-## The Task
+  - [Getting started](#getting-started)
+  - [Overview of Features](#overview-of-features)
+    - [Creating a new Bowling Scorecard](#creating-a-new-bowling-scorecard)
+    - [Add roll to Bowling Scorecard](#add-roll-to-bowling-scorecard)
+      - [Adding a normal roll](#adding-a-normal-roll)
+      - [Adding a Strike](#adding-a-strike)
+      - [Adding a Spare](#adding-a-spare)
+    - [Strike on last frame awards 2 bonus rolls](#strike-on-last-frame-awards-2-bonus-rolls)
+    - [Spare on last frame awards 1 bonus roll](#spare-on-last-frame-awards-1-bonus-roll)
+    - [Can get the total score at any point](#can-get-the-total-score-at-any-point)
+  - [Development Approach](#development-approach)
+  - [Further work](#further-work)
+  - [Addendum](#addendum)
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+</details>
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+## Getting started
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+Tests may be run as follows:
 
-As usual please start by
+```sh
+git clone git@github.com:dafuloth/bowling-challenge.git
+cd bowling-challenge/Bowling
+open SpecRunner.html
+```
 
-* Forking this repo
+The results are currently as follows, all tests passing (except for pending test that was deemed not MVP):
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+![Tests passing](./images/tests_passing.png)
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+## Overview of Features
 
-### Optional Extras
+- Create a new Bowling object: `var bowling = new Bowling()`
+- Add a roll: `bowling.addRoll({frame: 1, pinsDown: 4})`
+- Get the score at any point: `bowling.totalScore();`
 
-In any order you like:
+Further details on the methods follows.
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+---
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+### Creating a new Bowling Scorecard
 
-## Bowling — how does it work?
+```javascript
+var bowling = new Bowling()
+```
 
-### Strikes
+![Creating a new Bowling Scorecard](./Bowling/images/new_bowling.png)
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+### Add roll to Bowling Scorecard
 
-### Spares
+The solution endeavours to ignore illogical or physically impossible inputs:
 
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+- Knocking down more than 10 pins in a normal frame: e.g. 7, 5
+- Adding a third roll to a frame - unless it's the last frame and bonus roll(s) are in play
+  - _Illegal:_ **2, 3, 4**
+  - _Allowed in last frame:_
+    - 2 bonus rolls with a strike: **10, 2, 3**
+    - 1 bonus roll with a spare  **4, 6, 10**
 
-### 10th frame
+#### Adding a normal roll
 
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
+```javascript
+bowling.addRoll({frame: 1, pinsDown: 4})
+bowling.addRoll({frame: 1, pinsDown: 5})
+// frame complete, further rolls ignored:
+bowling.addRoll({frame: 1, pinsDown: 3})  
+```
 
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
+![Adding a normal roll](./Bowling/images/addRoll.png)
 
-### Gutter Game
+#### Adding a Strike
 
-A Gutter Game is when the player never hits a pin (20 zero scores).
+```javascript
+bowling.addRoll({frame: 2, pinsDown: 10}) // this is a Strike
 
-### Perfect Game
+// frame complete, further rolls ignored:
+bowling.addRoll({frame: 2, pinsDown: 2})  
+```
 
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+![Adding a Strike](./Bowling/images/addRoll_Strike.png)
 
-In the image below you can find some score examples.
+#### Adding a Spare
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
+```javascript
+bowling.addRoll({frame: 3, pinsDown: 8})
+bowling.addRoll({frame: 3, pinsDown: 2}) // a Spare is recorded
+// frame complete, further rolls ignored:
+bowling.addRoll({frame: 3, pinsDown: 1})
+```
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+![Adding a Spare](./Bowling/images/addRoll_Spare.png)
 
-## Code Review
+### Strike on last frame awards 2 bonus rolls
 
-In code review we'll be hoping to see:
+```javascript
+bowling.addRoll({frame: 10, pinsDown: 10}) // a Strike is recorded
+bowling.addRoll({frame: 10, pinsDown: 10}) // First bonus roll
+bowling.addRoll({frame: 10, pinsDown: 10}) // Second bonus roll
+// frame complete, further rolls ignored
+```
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+![Strike on last frame awards 2 bonus rolls](./Bowling/images/last_frame_Strike.png)
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+### Spare on last frame awards 1 bonus roll
+
+```javascript
+bowling.addRoll({frame: 10, pinsDown: 9})
+bowling.addRoll({frame: 10, pinsDown: 1}) // a Spare is recorded
+bowling.addRoll({frame: 10, pinsDown: 10}) // Bonus roll
+// frame complete, further rolls ignored
+```
+
+![Spare on last frame awards bonus roll](./Bowling/images/last_frame_Spare.png)
+
+### Can get the total score at any point
+
+```javascript
+bowling.addRoll({frame: 1, pinsDown: 9})
+bowling.addRoll({frame: 1, pinsDown: 1}) // a Spare is recorded
+bowling.addRoll({frame: 2, pinsDown: 10})
+bowling.addRoll({frame: 3, pinsDown: 4})
+bowling.addRoll({frame: 3, pinsDown: 5})
+bowling.totalScore();
+```
+
+![Scoring is possible at any point](./Bowling/images/scoring.png)
+
+## Development Approach
+
+I wrote out a "perfect game" scorecard so that I could understand how bonuses were applied:
+
+<div  align="center">
+<img src="./Bowling/images/perfect_game.png" title="Scorecard for a perfect game" alt="an example scorecard showing a perfect game" width="500px">
+</div>
+
+## Further work
+
+- _Work in progress:_ Refactor `addRoll()` for more intelligent data entry, allowing it to work just by passing the number of pins knocked down
+  - .addRoll(5)
+  - it should be able to progress through the scorecard on its own without being told which frame the roll belongs to
+  - the solution should then assign it appropriately, taking into account all the rules
+  - this approach might be more reliant on a "virtuous consumer"
+
+## Addendum
+
+Travis CI can be used to automate testing for JavaScript, as with Ruby. A good reference: https://medium.com/@koalamango/javascript-automated-testing-with-jasmine-karma-and-travis-c118a98223d9

@@ -1,0 +1,6 @@
+{
+  "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
+  "terminal.integrated.shellArgs.windows": ["/E:ON","/K", "C:\\Program Files\\nodejs\\nodevars.bat"],
+
+  "eslint.enable": true
+}

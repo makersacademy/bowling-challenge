@@ -1,0 +1,31 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Scorecard Calculator ===========================",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ben-zeng/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ben-zeng/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/ben-zeng/bowling-challenge#readme",
+  "dependencies": {
+    "jasmine": "^3.5.0",
+    "karma": "^4.3.0",
+    "karma-jasmine": "^2.0.1"
+  },
+  "devDependencies": {
+    "karma-chrome-launcher": "^3.1.0"
+  }
+}

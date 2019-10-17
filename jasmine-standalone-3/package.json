@@ -1,0 +1,25 @@
+{
+  "name": "jasmine-standalone-3",
+  "version": "1.0.0",
+  "description": "Bowling",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "eslint": "^6.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "testESLint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "bowling-challenge"
+  },
+  "keywords": [
+    "bowling"
+  ],
+  "author": "HS",
+  "license": "ISC"
+}

@@ -7,3 +7,10 @@ function Game() {
 
 // }
 
+Game.prototype.roll = function(pins) {
+  this.score += pins
+}
+
+Game.prototype.returnScore = function() {
+  return this.score === 0 ? 'Jeez!' : this.score
+}

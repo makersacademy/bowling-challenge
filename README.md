@@ -23,7 +23,6 @@ Bowling Challenge - Weekend Challenge for Weeks 5 & 6 - Update as at Sun 8 Sept 
 ### TO DO - Refactoring:
 * Tidy up file structure e.g. have duplicate of images
 * Consider splitting Game object into several objects (Game, Frame, Roll?)
-*
 ### TO DO - User stories to be implemented:
 * Full game (excl. 10th frame rules) - user plays 10 frames, including some spares, strikes and misses -> app calculates score at end
 * Full game incl. 10th frame rules

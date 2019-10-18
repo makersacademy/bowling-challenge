@@ -6,23 +6,36 @@ describe("Game", function() {
   });
 
   it("initializes a new game with an array", function() {
-    game.getScores;
-    expect(game.getScores()).toEqual([]);
-  })
+    expect(game.getScore()).toEqual({1:[], 2:[], 3:[], 4:[], 5:[], 6:[], 7:[], 8:[], 9:[], 10:[]}
+   )})
+
 
   it('adds players first frame bowls to scores', function () {
-    game.bowl(4)
-    game.bowl(5)
-    expect(game.getScores()).toEqual([4,5])
+    game.bowl(1)
+    game.bowl(2)
+    expect(game.gameScore[1]).toEqual([1,2])
   })
 
-  // it('adds players second frame bowls to scores', function () {
-  //   game.bowl(4)
-  //   game.bowl(5)
-  //   game.bowl(3)
-  //   game.bowl(6)
-  //   expect(game.getScores()).toEqual([4,5],[3.6])
-  // })
+  it('adds players 2nd frame bowls to scores', function () {
+    game.bowl(1)
+    game.bowl(2)
+    console.log(game.gameScore[1])
+    game.bowl(3)
+    game.bowl(4)
+    console.log(game.gameScore[2])
+    expect(game.gameScore[2]).toEqual([3,4])
+  })
 })
+
+//   it('adds players second frame bowls to scores', function () {
+//     game.bowl(1)
+//     game.bowl(2)
+//     console.log(game.gamescore[1])
+//     game.bowl(3)
+//     game.bowl(4)
+//     console.log(game.gamescore[2])
+//     expect(game.getScore()).toEqual([[1,2],[3,4]],)
+//   })
+// })
 
 

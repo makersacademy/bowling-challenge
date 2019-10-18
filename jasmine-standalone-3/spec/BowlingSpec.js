@@ -11,8 +11,19 @@ describe('Bowling', function() {
 it('starts at 0 points', function() {
   expect(bowling.getCurrentScore()).toEqual(0);
 });
+
+
+it('increases score with up()', function() {
+  bowling.up();
+  expect(bowling.getCurrentScore()).toEqual(1);
 });
 
+it('decreases score with down()', function() {
+  bowling.up();
+  bowling.down();
+  expect(bowling.getCurrentScore()).toEqual(0);
+});
+});
 
 
 // describe("Player", function() {

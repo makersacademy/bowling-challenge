@@ -18,11 +18,11 @@ it('increases score with up()', function() {
   expect(bowling.getCurrentScore()).toEqual(1);
 });
 
-it('decreases score with down()', function() {
-  bowling.up();
-  bowling.down();
-  expect(bowling.getCurrentScore()).toEqual(0);
-});
+// it('decreases score with down()', function() {
+//   bowling.up();
+//   bowling.down();
+//   expect(bowling.getCurrentScore()).toEqual(0);
+// });
 });
 
 

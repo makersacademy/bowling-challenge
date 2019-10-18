@@ -12,6 +12,6 @@ Bowling.prototype.up = function() {
   this.score += 1;
 }
 
-Bowling.prototype.down = function() {
-  this.score -=1;
-}
+// Bowling.prototype.down = function() {
+//   this.score -=1;
+// }

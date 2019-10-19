@@ -27,7 +27,7 @@ describe('Game', function() {
       expect(game.frames[1][0]).toEqual(8);
     });
 
-    it("adds a strike on the first bowl and ends the turn", function() {
+    it("adds a strike on the first bowl and end the turn", function() {
       game.addBowl("X");
       expect(game.frames[0][0]).toEqual("X");
       expect(game.frames[0][1]).toEqual("-");
@@ -38,6 +38,18 @@ describe('Game', function() {
       game.addBowl(6);
       expect(game.frames[0][0]).toEqual(4);
       expect(game.frames[0][1]).toEqual("/");
+    });
+
+    it("does not allow a single bowl of more than 10 pins", function() {
+      game.addBowl(11);
+      expect(game.frames[0][0]).not.toEqual(11);
+    });
+
+    it("does not allow a combined bowl of more than 10 pins", function() {
+      game.addBowl(6);
+      game.addBowl(7);
+      expect(game.frames[0][0]).toEqual(6);
+      expect(game.frames[0][1]).not.toEqual(7);
     });
 
   });

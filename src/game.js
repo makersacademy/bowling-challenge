@@ -7,8 +7,19 @@ function Game() {
   this.turn = 1;
 }
 
+Game.prototype.validTurn = function(pins) {
+  if ( pins > 10 ) {
+    return false;
+  } else if ( pins + this.frames[this.current_frame - 1][0] > 10 ) {
+    return false;
+  }
+  return true;
+};
+
 Game.prototype.addBowl = function(pins) {
-  this.frames[this.current_frame - 1].push(pins);
+  if ( this.validTurn(pins) === true ) {
+    this.frames[this.current_frame - 1].push(pins);
+  }
   if ( this.wasStrike() === true ) {
     this.frames[this.current_frame - 1].push("-");
   } else if ( this.wasSpare() === true ) {
@@ -28,7 +39,7 @@ Game.prototype.wasSpare = function() {
       this.frames[this.current_frame - 1][1] === 10 ) {
     return true;
   }
-  
+
 };
 
 Game.prototype.nextFrame = function() { //Look into making this private

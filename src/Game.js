@@ -11,13 +11,14 @@ Game.prototype.getScore = function () {
 Game.prototype.bowl = function (score ) {
   if (this.bowlCount === 1) {
     this.gameScore[this.frameCount].push(score)
-    this.bowlCount += 0
+    this.bowlCount = 0
     this.frameCount += 1
   }
   else {
     this.gameScore[this.frameCount].push(score)
     this.bowlCount += 1
-  }
+
+}
 }
 
 // Game.prototype.getFrameScore = function () {
@@ -27,4 +28,3 @@ Game.prototype.bowl = function (score ) {
 // Game.prototype.framePush = function () {
 //   this.gameScore.push(this.frameScore)
 // }
-

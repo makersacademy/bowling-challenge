@@ -27,7 +27,7 @@ Game.prototype.addBowl = function(pins) {
 };
 
 Game.prototype.wasStrike = function() {
-  if (this.frames[this.current_frame - 1].includes("X")) {
+  if (this.frames[this.current_frame - 1][0] === 10) {
     return true;
   }
 };

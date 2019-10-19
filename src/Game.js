@@ -31,3 +31,15 @@ Game.prototype.totalScore = function () {
   }
   return this.total
 }
+
+Game.prototype.frame = function () {
+  return this.frameCount
+}
+
+Game.prototype.frameTotal = function () {
+  return this.gameScore[this.frameCount -1].reduce((a, b) => a + b, 0)
+}
+
+Game.prototype.ishalfStrike = function () {
+  return this.frameTotal() === 10 ? true  : false 
+}

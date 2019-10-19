@@ -27,17 +27,17 @@ describe('Game', function() {
       expect(game.frames[1][0]).toEqual(8);
     });
 
-    it("adds a strike on the first bowl and end the turn", function() {
-      game.addBowl("X");
-      expect(game.frames[0][0]).toEqual("X");
-      expect(game.frames[0][1]).toEqual("-");
+    it("adds a strike on the first bowl and ends the turn", function() {
+      game.addBowl(10);
+      expect(game.frames[0][0]).toEqual(10);
+      expect(game.frames[0][1]).toEqual(0);
     });
 
     it("adds a spare to the scorecard", function() {
       game.addBowl(4);
       game.addBowl(6);
       expect(game.frames[0][0]).toEqual(4);
-      expect(game.frames[0][1]).toEqual("/");
+      expect(game.frames[0][1]).toEqual(6);
     });
 
     it("does not allow a single bowl of more than 10 pins", function() {
@@ -56,13 +56,19 @@ describe('Game', function() {
 
   describe('calculateScore', function() {
 
-    it("calculates the total score for 1 frame", function() {
+    it("calculates the total score of less than 10 for 1 frame ", function() {
       game.frames = [[5,2]];
       game.calculateScore();
       expect(game.total_score).toEqual(7);
     });
 
-    it("calculates the total score for 2 frames", function() {
+    it("calculates the total score of less than 10 for 2 frames", function() {
+      game.frames = [[5,2],[2,7]];
+      game.calculateScore();
+      expect(game.total_score).toEqual(16);
+    });
+
+    it("doubles the score of the next frame after a strike", function() {
       game.frames = [[5,2],[2,7]];
       game.calculateScore();
       expect(game.total_score).toEqual(16);

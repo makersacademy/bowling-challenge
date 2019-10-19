@@ -21,9 +21,7 @@ Game.prototype.addBowl = function(pins) {
     this.frames[this.current_frame - 1].push(pins);
   }
   if ( this.wasStrike() === true ) {
-    this.frames[this.current_frame - 1].push("-");
-  } else if ( this.wasSpare() === true ) {
-    this.frames[this.current_frame - 1][1] = "/";
+    this.frames[this.current_frame - 1].push(0);
   }
   this.nextFrame();
 };
@@ -39,7 +37,6 @@ Game.prototype.wasSpare = function() {
       this.frames[this.current_frame - 1][1] === 10 ) {
     return true;
   }
-
 };
 
 Game.prototype.nextFrame = function() { //Look into making this private

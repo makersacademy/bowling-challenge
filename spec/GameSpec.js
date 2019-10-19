@@ -23,17 +23,25 @@ describe("Game", function() {
     game.bowl(4)
     expect(game.gameScore[2]).toEqual([3,4])
   })
+
+  it('adds players 3rd frame bowls to scores', function () {
+    game.bowl(1)
+    game.bowl(2)
+    game.bowl(3)
+    game.bowl(4)
+    game.bowl(5)
+    game.bowl(6)
+    expect(game.gameScore[3]).toEqual([5,6])
+  })
+
+  it('keeps returns players total score', function () {
+    game.bowl(5)
+    game.bowl(4)
+    game.bowl(5)
+    game.bowl(4)
+    expect(game.totalScore()).toEqual(18)
+  })
 })
 
-//   it('adds players second frame bowls to scores', function () {
-//     game.bowl(1)
-//     game.bowl(2)
-//     console.log(game.gamescore[1])
-//     game.bowl(3)
-//     game.bowl(4)
-//     console.log(game.gamescore[2])
-//     expect(game.getScore()).toEqual([[1,2],[3,4]],)
-//   })
-// })
 
 

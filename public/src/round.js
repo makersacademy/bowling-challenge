@@ -1,7 +1,7 @@
 function Round() {
   this.roll1 = 0
   this.roll2 = 0
-  this.tot = 0
+  this.currentScore = 0
   this.plus = ""
 };
 
@@ -13,6 +13,9 @@ Round.prototype.setRoll1 = function(value) {
 }
 
 Round.prototype.setRoll2 = function(value) {
+  if (value < 0 || value > 10) {
+    return "You should input a valid value"
+  }
   this.roll2 = parseInt(value)
 }
 
@@ -24,10 +27,10 @@ Round.prototype.setPlus = function() {
   }
 }
 
-Round.prototype.total = function() {
-  this.tot = this.roll1 + this.roll2
-  if (this.tot === 10) {
+Round.prototype.score = function() {
+  this.currentScore = this.roll1 + this.roll2
+  if (this.currentScore === 10) {
     this.setPlus()
   }
-  return this.tot
+  return this.currentScore
 }

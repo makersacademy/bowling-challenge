@@ -1,17 +1,18 @@
 function BowlingScore() {
   this.round = ""
+  this.currRound = 0
 }
 
 BowlingScore.prototype.newRound = function() {
+  this.currRound += 1
   return this.round = new Round()
 }
 
-BowlingScore.prototype.addPlus = function(prevRound) {
-  return prevRound.tot += this.round.tot
-  };
-
-BowlingScore.prototype.checkPlus = function(prevRound) {
-  if (prevRound.plus !== "") {
-    prevRound.tot = this.addPlus(prevRound)
+BowlingScore.prototype.addScore = function(prevRound) {
+  if (prevRound.plus === "strike") {
+    prevRound.currentScore += this.round.currentScore
+  } else if (prevRound.plus === "spare") {
+    prevRound.currentScore += this.round.roll1
   }
+    this.round.currentScore += prevRound.currentScore
 }

@@ -47,19 +47,19 @@ describe("Round", function(){
     });
   });
 
-  describe("total", function(){
+  describe("score", function(){
     it("calculate total of two rolls", function(){
       round.roll1 = 2
       round.roll2 = 5
-      round.total()
+      round.score()
 
-      expect(round.tot).toEqual(7);
+      expect(round.currentScore).toEqual(7);
     });
 
     it("set the plus strike if total is 10", function() {
       round.roll1 = 10
       round.roll2 = 0
-      round.total()
+      round.score()
 
       expect(round.plus).toEqual("strike")
     });
@@ -67,7 +67,7 @@ describe("Round", function(){
     it("set the plus spare if total is 10", function() {
       round.roll1 = 8
       round.roll2 = 2
-      round.total()
+      round.score()
 
       expect(round.plus).toEqual("spare")
     });

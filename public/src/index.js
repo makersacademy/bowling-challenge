@@ -7,6 +7,7 @@ $(document).ready(function() {
   }
 
   startNewRound()
+  $("#current-round").text(bowlingScore.currRound)
 
   $( ".first-roll .btn" ).click(function( event ) {
     if (typeof round.setRoll1($("#input-roll-1").val()) === typeof "string") {
@@ -17,15 +18,32 @@ $(document).ready(function() {
     }
     if (round.roll1 === 10) {
       round.setPlus()
-      round.total()
+      round.score()
       console.log("inviare al database")
       console.log("visualizzare il database")
+    } else {
+      $(".second-roll").toggleClass("d-none")
     }
   });
 
   $( ".second-roll .btn" ).click(function( event ) {
-    console.log("second roll")
+    if (typeof round.setRoll2($("#input-roll-2").val()) === typeof "string") {
+      alert(round.setRoll2($("#input-roll-2").val()))
+    } else {
+      round.setRoll2($("#input-roll-2").val())
+    }
+    if (round.roll2 === 10) {
+      round.setPlus()
+      round.score()
+      console.log("inviare al database")
+      console.log("visualizzare il database")
+    }
+    round.total()
+    $("#input-roll-1, .first-roll .btn").prop("disabled", false)
+    $(".second-roll").toggleClass("d-none")
+    $("#input-roll-1").val(null)
     startNewRound()
+    $("#current-round").text(bowlingScore.currRound)
   });
 
 });

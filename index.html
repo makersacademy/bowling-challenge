@@ -13,23 +13,47 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-2">
+      <div class="col-12 p-3">
+        <h1 class="mb-5">Bowling Scorecard</h1>
+        <h3>
+          <strong>
+            Frame <span id="current-frame"></span>:
+          </strong>
+          &nbsp; Roll <span id="current-roll"></span>
+        </h3>
+        <form id="player-action">
+          <label>
+            Enter number of knocked down pins:
+            <input type="text" id="player-knocks" class="mx-2" required>
+          </label>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+    <div class="row font-weight-bold">
+      <div class="col-2 p-3">
         Frame
       </div>
-      <div class="col-2">
+      <div class="col-2 p-3">
         Roll
       </div>
-      <div class="col-2">
+      <div class="col-2 p-3">
         Knocked down pins
       </div>
-      <div class="col-2">
+      <div class="col-2 p-3">
         Total score
       </div>
-      <div class="col-4">
+      <div class="col-4 p-3">
         Notes
       </div>
     </div>
+    <div id="results">
+      <!-- Use a loop to add as many rows of data as there are frames and rolls? -->
+    </div>
   </div>
+
+  <script src="src/Game.js"></script>
+  <script src="src/Interface.js"></script>
 
 </body>
 </html>

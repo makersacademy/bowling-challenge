@@ -1,0 +1,15 @@
+.temperature {
+  font-size: 48px;
+}
+
+.low-usage {
+  color: green;
+}
+
+.medium-usage {
+  color: blue;
+}
+
+.high-usage {
+  color: red;
+}

@@ -36,10 +36,29 @@ describe('Game', () => {
     expect(game.getCurrentRoll()).toEqual(1);
   });
 
-  // user form submission should trigger a mechanism to add knocks
-  // it('.addKnocks() records the number of knocked pins', () => {
-  //   game.addKnocks(5);
-  //   expect(game.getScore()).toEqual(5);
-  // });
+  it('.addScore(arg) adds a given number to the total score', () => {
+    game.addScore(5);
+    expect(game.getScore()).toEqual(5);
+  });
+
+  it('.addKnocks(arg) records the number of knocked pins and proceeds to next roll', () => {
+    game.addKnocks(5);
+    expect(game.getScore()).toEqual(5);
+    expect(game.getCurrentRoll()).toEqual(2);
+  });
+
+  // 3 possible outcomes in a given frame
+
+  describe('when player does not strike in a given frame', () => {
+
+  });
+
+  describe('when player strikes in the first roll of a frame', () => {
+
+  });
+
+  describe('when player has a spare within two rolls of a given frame', () => {
+
+  });
 
 });

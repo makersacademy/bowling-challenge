@@ -95,24 +95,24 @@
     </div>
       <br><br>
       <div class="container">
-        <h3><u>Round <span>1</span></u></h3>
+        <h3><u>Round <span></span></u></h3>
         <form>
-          <div class="form-group row">
-            <label for="nput-roll-1" class="col-sm-1 col-form-label">Roll 1</label>
+          <div class="form-group row first-roll">
+            <label for="nput-roll-1" class="col-sm-1 col-form-label"><h5>Roll 1</h5></label>
             <div class="col-sm-5">
-              <input type="text" class="form-control" disabled id="input-roll-1" placeholder="Pins knocked out">
+              <input type="number" class="form-control" id="input-roll-1" placeholder="Pins knocked out">
             </div>
             <div class="col-sm-5">
-              <button type="submit" class="btn btn-primary" disabled>Submit</button>
+              <button type="button" class="btn btn-primary">Submit</button>
             </div>
           </div>
-          <div class="form-group row d-none">
+          <div class="form-group row second-roll d-none">
             <label for="input-roll-2" class="col-sm-1 col-form-label">Roll 2</label>
             <div class="col-sm-5">
-              <input type="text" class="form-control" id="input-roll-2" placeholder="Pins knocked out">
+              <input type="number" class="form-control" id="input-roll-2" placeholder="Pins knocked out">
             </div>
             <div class="col-sm-5">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="button" class="btn btn-primary">Submit</button>
             </div>
           </div>
         </form>
@@ -121,6 +121,6 @@
     <script src="src/round.js"></script>
     <script src="src/bowlingScore.js"></script>
     <script src="jquery.js"></script>
-    <!-- <script src="src/index.js"></script> -->
+    <script src="src/index.js"></script>
   </body>
 </html>

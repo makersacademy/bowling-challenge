@@ -10,6 +10,16 @@ describe("Round", function(){
 
       expect(round.roll1).toEqual(7);
     });
+
+    it("return a string error if value < 0", function() {
+
+      expect(round.setRoll1(-1)).toEqual("You should input a valid value")
+    });
+
+    it("return a string error if value > 10", function() {
+
+      expect(round.setRoll1(12)).toEqual("You should input a valid value")
+    });
   });
 
   describe ("setRoll2", function() {

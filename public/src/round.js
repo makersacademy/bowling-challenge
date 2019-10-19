@@ -6,11 +6,14 @@ function Round() {
 };
 
 Round.prototype.setRoll1 = function(value) {
-  this.roll1 = value
+  if (value < 0 || value > 10) {
+    return "You should input a valid value"
+  }
+  this.roll1 = parseInt(value)
 }
 
 Round.prototype.setRoll2 = function(value) {
-  this.roll2 = value
+  this.roll2 = parseInt(value)
 }
 
 Round.prototype.setPlus = function() {

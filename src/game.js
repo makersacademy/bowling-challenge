@@ -17,6 +17,9 @@ Game.prototype.getCurrentRoll = function() {
 };
 
 Game.prototype.roll = function(pins) {
+  if (this.rollNumber < 2){
+      this.rollNumber ++
+    }
   this.score += pins
-  this.rollNumber ++
+
 };

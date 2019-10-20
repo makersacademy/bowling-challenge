@@ -19,4 +19,13 @@ describe("Game", function() {
     expect(game.getCurrentScore()).toEqual(20);
   });
 
+  it("tracks the frame and roll number", function() {
+    for (i=0; i < 3; i++) {
+      game.roll(1);
+    }
+    expect(game.getCurrentFrame()).toEqual(2);
+    expect(game.getCurrentRoll()).toEqual(1);
+  });
+
+
 });

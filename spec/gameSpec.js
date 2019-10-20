@@ -57,21 +57,46 @@ describe('Game', function() {
   describe('calculateScore', function() {
 
     it("calculates the total score of less than 10 for 1 frame ", function() {
-      game.frames = [[5,2]];
+      game.addBowl(6);
+      game.addBowl(1);
       game.calculateScore();
       expect(game.total_score).toEqual(7);
     });
 
     it("calculates the total score of less than 10 for 2 frames", function() {
-      game.frames = [[5,2],[2,7]];
+      game.addBowl(5);
+      game.addBowl(2);
+      game.addBowl(2);
+      game.addBowl(7);
       game.calculateScore();
       expect(game.total_score).toEqual(16);
     });
 
-    it("doubles the score of the next frame after a strike", function() {
-      game.frames = [[5,2],[2,7]];
+    it("Adds a bonus score to the first frame strike, after the second frame", function() {
+      game.addBowl(10);
+      game.addBowl(3);
+      game.addBowl(1);
       game.calculateScore();
-      expect(game.total_score).toEqual(16);
+      expect(game.total_score).toEqual(18);
+    });
+
+    it("calculates the correct score for 2 strikes and then a score below 10", function() {
+      game.addBowl(10);
+      game.addBowl(10);
+      game.addBowl(3);
+      game.addBowl(0);
+      game.calculateScore();
+      expect(game.total_score).toEqual(39);
+    });
+
+    it("calculates the correct score for 3 strikes and then a score below 10", function() {
+      game.addBowl(10);
+      game.addBowl(10);
+      game.addBowl(10);
+      game.addBowl(4);
+      game.addBowl(0);
+      game.calculateScore();
+      expect(game.total_score).toEqual(72);
     });
 
   });

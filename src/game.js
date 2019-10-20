@@ -20,21 +20,20 @@ Game.prototype.addBowl = function(pins) {
   if ( this.validTurn(pins) === true ) {
     this.frames[this.current_frame - 1].push(pins);
   }
-  if ( this.wasStrike() === true ) {
+  if ( this.wasStrike(this.frames[this.current_frame - 1]) === true ) {
     this.frames[this.current_frame - 1].push(0);
   }
   this.nextFrame();
 };
 
-Game.prototype.wasStrike = function() {
-  if (this.frames[this.current_frame - 1][0] === 10) {
+Game.prototype.wasStrike = function(frame) {
+  if ( frame.includes(10) ) {
     return true;
   }
 };
 
-Game.prototype.wasSpare = function() {
-  if (this.frames[this.current_frame - 1][0] +
-      this.frames[this.current_frame - 1][1] === 10 ) {
+Game.prototype.wasSpare = function(frame) {
+  if (frame[0] !== 10 && frame[0] + frame[1] === 10 ) {
     return true;
   }
 };
@@ -46,9 +45,36 @@ Game.prototype.nextFrame = function() { //Look into making this private
 };
 
 Game.prototype.calculateScore = function() {
-  var total = 0;
+  var total_base = this.calculateBaseScore();
+  var total_bonus = this.calculateBonusScore();
+  this.total_score = total_base + total_bonus;
+};
+
+Game.prototype.calculateBaseScore = function() {
+  var base_accum = 0;
   this.frames.forEach(function(frame) {
-    total += frame.reduce((partial_sum, a) => partial_sum + a,0);
+    base_accum += frame.reduce((partial_sum, a) => partial_sum + a,0);
   });
-  return this.total_score = total;
+  return base_accum;
+};
+
+Game.prototype.calculateBonusScore = function() {
+  var bonus_accum = 0;
+  this.frames.forEach(function(frame, index, all_frames) {
+    if ( frame.includes(10) ) {
+      if (all_frames[index + 1].includes(10)) {
+        bonus_accum += all_frames[index + 1].reduce((partial_sum, a) => partial_sum + a,0) +
+                       all_frames[index + 2].reduce((partial_sum, a) => partial_sum + a,0);
+      } else {
+        bonus_accum += all_frames[index + 1].reduce((partial_sum, a) => partial_sum + a,0);
+      }
+    } else if ( frame[0] !== 10 && frame[0] + frame[1] === 10 ) {
+      bonus_accum += all_frames[index + 1][0];
+    }
+  });
+  return bonus_accum;
+};
+
+Game.prototype.recentFrameScore = function() {
+    return this.frames[this.current_frame - 2][0] + this.frames[this.current_frame - 2][1];
 };

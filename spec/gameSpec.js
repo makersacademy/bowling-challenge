@@ -153,6 +153,23 @@ describe('Game', function() {
       game.calculateScore();
       expect(game.total_score).toEqual(36);
     });
-  });
 
+    it("correctly scores 9 strikes and a sub 10 in last frame", function() {
+      for ( var i = 0; i < 9; i++ ) {
+        game.addBowl(10);
+      }
+      game.addBowl(1);
+      game.addBowl(1);
+      game.calculateScore();
+      expect(game.total_score).toEqual(245);
+    });
+
+    it("scores the perfect game as 300", function() {
+      for ( var i = 0; i < 12; i++ ) {
+        game.addBowl(10);
+      }
+      game.calculateScore();
+      expect(game.total_score).toEqual(300);
+    });
+  });
 });

@@ -87,13 +87,19 @@ Game.prototype.calculateBonusScore = function() {
 Game.prototype.calculateStrikeBonus = function() {
   var strike_accum = 0;
   this.frames.forEach(function(frame, index, all_frames) {
-    if ( frame.includes(10) ) { //wanted to use the wasStrike method here
+    if ( frame.includes(10) && index < 7 ) { //wanted to use the wasStrike method here
       if (all_frames[index + 1].includes(10)) {
         strike_accum += all_frames[index + 1].reduce((partial_sum, a) => partial_sum + a,0) +
-                       all_frames[index + 2].reduce((partial_sum, a) => partial_sum + a,0);
+                        all_frames[index + 2].reduce((partial_sum, a) => partial_sum + a,0);
       } else {
         strike_accum += all_frames[index + 1].reduce((partial_sum, a) => partial_sum + a,0);
       }
+    } else if ( frame.includes(10) && index === 7 ) {
+        if (all_frames[index + 1].includes(10)) {
+        strike_accum += all_frames[index + 1].reduce((partial_sum, a) => partial_sum + a,0) + all_frames[index + 2][0];
+        }
+    } else if ( frame.includes(10) && index === 8 ) {
+        strike_accum += all_frames[index + 1][0] + all_frames[index + 1][1];
     }
   });
   return strike_accum;

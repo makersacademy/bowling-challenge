@@ -25,27 +25,7 @@ describe('Bowling', () => {
     game.roll(4);
     game.roll(3);
 
-    expect(game.getFrameScore()).toEqual(7);
-  });
-
-  it('Frame is complete when frame score is 10', () => {
-    game.roll(4);
-    game.roll(6);
-
-    expect(game.isFrameComplete()).toEqual(true);
-  });
-
-  it('Player rolls strike', () => {
-    game.roll(10);
-
-    expect(game.isStrike()).toEqual(true);
-  });
-
-  it('Player rolls spare', () => {
-    game.roll(4);
-    game.roll(6);
-
-    expect(game.isSpare()).toEqual(true);
+    expect(game.getCurrentScore()).toEqual(7);
   });
 
   it('Frame is complete and stored', () => {
@@ -53,5 +33,14 @@ describe('Bowling', () => {
     game.roll(6);
 
     expect(game.frames).toContain([4, 6]);
+  });
+
+  it('Current score after 2 completed frames is 15', () => {
+    game.roll(4);
+    game.roll(2);
+    game.roll(3);
+    game.roll(6);
+
+    expect(game.getCurrentScore()).toEqual(15);
   });
 });

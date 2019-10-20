@@ -2,47 +2,44 @@ function Game() {
   this._score = 0;
   this._frames = [];
   this._bowls = [];
-  this._bowlNumber = 1;
-  this._frameBowls = [0,0];
+  this._bowlNumber = 0;
+  this._frameBowls = [];
   this._frameScore = 0;
-  this._frameBonus = [0,0];
-  this._frameComplete = false
+  this._frameBonus = [];
   this._frameType = 'normal'
   this._frameMove = 0;
   this._frameNumber = 1;
-  // frame = new Frame()
+  this._frameComplete = false;
 };
 
 Game.prototype.add = function(pins) {
-  // this.addBonus(pins)
+  this.addBonus(pins)
   this._bowls.push(pins)
-  this._frameBowls[this._frameMove] = pins
+  this._bowlNumber += 1
+  this._frameBowls.push(pins)
   this._frameMove +++1
   if (this.isStrike() || this._frameMove === 2) {
       this.nextTurn()
       this._frameMove = 0
       this._frameNumber +++1
-      console.log(this._frames)
+      this._frameBowls = []
+      this._frameBonus = []
+      this._frameComplete = false
     }
-}
-
-Game.prototype.addBonus = function(pins){
-  if (this._frameType != 'normal') {
-    this._frames[this._frameNumber - 2].frameBonus[this._frameMove] = pins
-  }
 }
 
 Game.prototype.isStrike = function() {
-  if (this._frameBowls[0] === 10){
-      this._frameType = 'strike'
-      return true
-    }
-    else if (this._frameBowls[0] != 10 && this.frameScore() == 10){
+  if (this._frameBowls[0] != 10 && this.frameScore() == 10){
       this._frameType = 'spare'
-        return false
+      return false
+    }
+    else if (this._frameBowls[0] === 10){
+      this._frameType = 'strike'
+        return true
       }
       else {
         this._frameType = 'normal'
+        this._frameComplete = true;
       return false
     }
 }
@@ -51,20 +48,57 @@ Game.prototype.frameScore = function() {
   var frameScore = 0
   for (var i = 0; i < 2; i++) {
     frameScore += this._frameBowls[i]
-    // frameScore += this._frames[this._frameNumber-2].frameBowls[i]
     this._frameScore = frameScore
   }
-    return frameScore
+  return frameScore
 }
 
 Game.prototype.score = function() {
-      var score = 0
-      for (var i = 0; i < this._frameNumber-1; i++) {
-        frame = this._frames[i]
-        score += frame.frameScore
-      }
-     return this._score = score
+  var score = 0
+  for (var i = 0; i < this._frameNumber-1; i++) {
+    frame = this._frames[i]
+    score += frame.frameScore
+  }
+  return this._score = score
 }
+
+Game.prototype.addBonus = function(pins){
+  var lastFrame
+  if (this._frameNumber > 1){
+    lastFrame = this._frames[this._frameNumber - 2]
+    if (lastFrame.frameType == 'spare' && lastFrame.frameBonus.length == 0) {
+        lastFrame = this._frames[this._frameNumber - 2]
+        lastFrame.frameBonus.push(pins)
+        this.updateFrameScore(lastFrame)
+        lastFrame.frameComplete = true;
+      }
+    if (lastFrame.frameType == 'strike' && lastFrame.frameBonus.length < 2) {
+      lastFrame = this._frames[this._frameNumber - 2]
+      lastFrame.frameBonus.push(pins)
+      this.updateFrameScore(lastFrame)
+      lastFrame.frameComplete = true;
+    }
+    if (this._frameNumber > 2) {
+      lastFrame = this._frames[this._frameNumber - 3]
+      if (lastFrame.frameType == 'strike' && lastFrame.frameBonus.length == 1) {
+        lastFrame = this._frames[this._frameNumber - 2]
+        lastFrame.frameBonus.push(pins)
+        this.updateFrameScore(lastFrame)
+        lastFrame.frameComplete = true;
+      }
+    }
+  }
+}
+
+Game.prototype.updateFrameScore = function(frame){
+  var score = frame.frameScore
+  var j = frame.frameBonus.length
+  for (var i = 0; i < j; i++) {
+    score += frame.frameBonus[i]
+  }
+  frame.frameScore = score
+}
+
 
 Game.prototype.nextTurn = function(){
   var frame = {}
@@ -72,7 +106,8 @@ Game.prototype.nextTurn = function(){
   frame['frameBowls'] = this._frameBowls
   frame['frameBonus'] = this._frameBonus
   frame['frameType'] = this._frameType
-  frame['frameComplete'] = this._frameComplete
+  frame['frameBowl'] = this._bowlNumber
   frame['frameScore'] = this._frameScore
+  frame['frameComplete'] = this._frameComplete
   this._frames.push(frame)
 }

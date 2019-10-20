@@ -1,10 +1,26 @@
 $(document).ready(function() {
   var scorecard = new Scorecard();
 
-  scorecard.total();
+  updateScore();
 
-  $('#enter-rolls').on('click', function(){
-    scorecard.roll()
+  $('#enter-rolls').on('click', function(event){
+    event.preventDefault();
+    let roll1 = Number($("#roll-1").val())
+    let roll2 = Number($("#roll-2").val())
+    if ((roll1+roll2)> 10){
+      alert('Frame score cannot exceed 10 points. Please re-enter.')
+    } else {
+      scorecard.roll(roll1,roll2)
+    }
+    updateScore();
+    endgame();
+  });
+  function endgame(){
+   $('#game-over').text(scorecard.gameOver())
+  };
+
+  function updateScore() {
     $('#player-score').text(scorecard.total + " points");
-  })
-})
+  };
+
+});

@@ -73,7 +73,7 @@ Game.prototype.calculateScore = function() {
 Game.prototype.calculateBaseScore = function() {
   var base_accum = 0;
   this.frames.forEach(function(frame) {
-    base_accum += frame.reduce((partial_sum, a) => partial_sum + a,0);
+    base_accum += frame.reduce((roll_one, roll_two) => roll_one + roll_two,0);
   });
   return base_accum;
 };
@@ -89,14 +89,14 @@ Game.prototype.calculateStrikeBonus = function() {
   this.frames.forEach(function(frame, index, all_frames) {
     if ( frame.includes(10) && index < 7 ) { //wanted to use the wasStrike method here
       if (all_frames[index + 1].includes(10)) {
-        strike_accum += all_frames[index + 1].reduce((partial_sum, a) => partial_sum + a,0) +
-                        all_frames[index + 2].reduce((partial_sum, a) => partial_sum + a,0);
+        strike_accum += all_frames[index + 1].reduce((roll_one, roll_two) => roll_one + roll_two,0) +
+                        all_frames[index + 2].reduce((roll_one, roll_two) => roll_one + roll_two,0);
       } else {
-        strike_accum += all_frames[index + 1].reduce((partial_sum, a) => partial_sum + a,0);
+        strike_accum += all_frames[index + 1].reduce((roll_one, roll_two) => roll_one + roll_two,0);
       }
     } else if ( frame.includes(10) && index === 7 ) {
         if (all_frames[index + 1].includes(10)) {
-        strike_accum += all_frames[index + 1].reduce((partial_sum, a) => partial_sum + a,0) + all_frames[index + 2][0];
+        strike_accum += all_frames[index + 1].reduce((roll_one, roll_two) => roll_one + roll_two,0) + all_frames[index + 2][0];
         }
     } else if ( frame.includes(10) && index === 8 ) {
         strike_accum += all_frames[index + 1][0] + all_frames[index + 1][1];

@@ -1,9 +1,8 @@
-describe('Feature Tests:', function(){
+describe("Game", function() {
   var game;
 
-  beforeEach(function(){
-    game = new Game();
-
+  beforeEach(function() {
+    game = new Game()
   });
 
   it("allows a person to record a gutter game", function() {

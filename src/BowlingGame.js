@@ -4,9 +4,10 @@ function BowlingGame() {
   this.allFrames = {1: [], 2: [], 3: [], 4: [], 5: [],
     6: [], 7: [], 8: [], 9: [], 10:[]
     }
-  this.currentFrame = 1
-  this.previousFrame = 0
+  this.currentFrame = 1;
+  this.previousFrame = 0;
   this.bonusRoll = 0;
+  this.strikeBonus = [];
 };
 
 BowlingGame.prototype.bowl = function(number) {
@@ -43,6 +44,11 @@ BowlingGame.prototype.strike = function() {
 BowlingGame.prototype.addBonus = function() {
   if(this.bonusRoll == 1) {
     this.allFrames[this.previousFrame].push(this.allFrames[this.currentFrame][0]);
-    this.bonusRoll -= 1
+    this.bonusRoll -= 1;
+  }
+  if(this.bonusRoll > 1 && this.allFrames[this.currentFrame].length == 2) {
+    this.allFrames[this.previousFrame].push(this.allFrames[this.currentFrame][0]);
+    this.allFrames[this.previousFrame].push(this.allFrames[this.currentFrame][1]);
+    this.bonusRoll -= 2;
   }
 };

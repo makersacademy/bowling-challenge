@@ -80,4 +80,19 @@ describe("Game", function() {
     expect(game.score()).toEqual(53);
   });
 
+  it("perfect game", function() {
+    game.add(10);
+    game.add(10);
+    game.add(10);
+    game.add(10);
+    game.add(10);
+    game.add(10);
+    game.add(10);
+    game.add(10);
+    game.add(10);
+    game.add(10);
+    console.log(game)
+    expect(game.score()).toEqual(300);
+  });
+
 });

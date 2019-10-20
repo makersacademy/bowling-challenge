@@ -1,0 +1,113 @@
+body {
+    background-color: black;
+  }
+  
+  h1 {
+    color: white;
+    background-color: black;
+    display: table;
+    margin: 0 auto;
+  }
+  
+  button{
+    border: black 1px solid;
+    margin-bottom: 3px;
+  }
+
+  @import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
+
+.thermostat {
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 7%;
+  background-color:white;
+  border:3px solid black;    
+  border-radius:75%;
+  -moz-border-radius:75%;
+  -webkit-border-radius:75%;
+  height: 250px;
+  width: 250px;
+}
+
+#temperature {
+  font-size: 40px;
+  color: black;
+  border: solid black 2px;
+  background-color: rgb(27, 203, 223);
+  font-family: 'Orbitron', sans-serif;
+  width: 50%;
+  padding-top: 2px;
+  margin-left: 25%;
+  margin-top: 8px;
+  margin-bottom: 8px;
+ }
+
+#reset_temperature {
+  margin-top: 8px;
+}
+
+.energy_usage {
+  border:1px solid black;    
+  border-radius:75%;
+  -moz-border-radius:75%;
+  -webkit-border-radius:75%;
+  height: 8px;
+  width: 8px;
+  margin: 2px;
+  float: left;
+}
+
+.main_energy {
+  margin-left: 42%;
+  margin-top: 3px;
+}
+
+.low-usage{
+  color: black;
+  background-color: rgb(118, 223, 27);
+}
+
+.medium-usage{
+  background-color: rgb(227, 144, 36);
+}
+.high-usage{
+  color: black;
+  background-color: rgb(227, 36, 36);
+}
+
+ .powersave_on{
+  background-color: rgb(118, 223, 27);
+ }
+
+ .powersave_off{
+  background-color: rgb(244, 100, 78);
+ }
+
+ .change_temperature{
+   font-size: 22px;
+ }
+
+ .weather{
+   margin-top: 100px;
+ }
+
+ .light-rain{
+    background-image: url("./light-rain.jpg");
+    background-size: cover;
+  }
+
+  .heavy-rain{
+    margin-top: 100px;
+  }
+
+  .cloudy{
+    margin-top: 100px;
+  }
+
+  .sunny{
+    margin-top: 100px;
+  }
+
+  .stormy{
+    margin-top: 100px;
+  }

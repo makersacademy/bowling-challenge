@@ -28,6 +28,26 @@ Game.prototype.add = function(pins) {
     }
 }
 
+Game.prototype.isGameOver = function() {
+  if(this._frameNumber == 11 && this._frames[10].frameType == 'normal') {
+    return true
+  }
+  if(this._frameNumber == 12 && this._frames[10].frameType == 'spare'){
+    return true
+  }
+  if(this._frameNumber == 13 && this._frames[10].frameType == 'strike'){
+    return true
+  }
+}
+
+Game.prototype.getFrameNumber = function() {
+  if (this._frameNumber > 10){
+    return 10
+  } else {
+  return this._frameNumber
+  }
+}
+
 Game.prototype.isStrike = function() {
   if (this.frameScore() == 10 && this._frameBowls[0] != 10 ){
       this._frameType = 'spare'
@@ -54,11 +74,26 @@ Game.prototype.frameScore = function() {
   return frameScore
 }
 
+Game.prototype.updateFrameScore = function(frame){
+  var score = 10
+  var j = frame.frameBonus.length
+  for (var i = 0; i < j; i++) {
+    score += frame.frameBonus[i]
+  }
+  frame.frameScore = score
+}
+
 Game.prototype.score = function() {
   var score = 0
-  for (var i = 0; i < this._frameNumber-1; i++) {
+  var j = this._frameNumber - 1
+  if (this._frameNumber >= 10) {
+    j = 10
+  }
+  for (var i = 0; i < j; i++) {
     frame = this._frames[i]
+    if (frame.frameComplete === true) {
     score += frame.frameScore
+    }
   }
   return this._score = score
 }
@@ -69,27 +104,20 @@ Game.prototype.addBonus = function(pins){
   if (this._frameNumber > 1){
     lastFrame = this._frames[this._frameNumber - 2]
     if (lastFrame.frameType === 'spare' && lastFrame.frameBonus.length === 0) {
-        console.log('lastFrame')
-        console.log(lastFrame)
-        console.log(pins)
         lastFrame.frameBonus.push(pins)
         this.updateFrameScore(lastFrame)
         lastFrame.frameComplete = true;
       }
     if (lastFrame.frameType === 'strike' && lastFrame.frameBonus.length < 2 ) {
-      console.log('lastFrame')
-      console.log(lastFrame)
-      console.log(pins)
       lastFrame.frameBonus.push(pins)
       this.updateFrameScore(lastFrame)
-      lastFrame.frameComplete = true;
+      if (lastFrame.frameBonus.length === 2) {
+        lastFrame.frameComplete = true;
+      }
     }
     if (this._frameNumber > 2) {
       secondLastFrame = this._frames[this._frameNumber - 3]
       if (secondLastFrame.frameType === 'strike' && secondLastFrame.frameBonus.length === 1) {
-        console.log('2ndlastFrame')
-        console.log(secondLastFrame)
-        console.log(pins)
         secondLastFrame.frameBonus.push(pins)
         this.updateFrameScore(secondLastFrame)
         secondLastFrame.frameComplete = true;
@@ -97,16 +125,6 @@ Game.prototype.addBonus = function(pins){
     }
   }
 }
-
-Game.prototype.updateFrameScore = function(frame){
-  var score = 10
-  var j = frame.frameBonus.length
-  for (var i = 0; i < j; i++) {
-    score += frame.frameBonus[i]
-  }
-  frame.frameScore = score
-}
-
 
 Game.prototype.nextTurn = function(){
   var frame = {}

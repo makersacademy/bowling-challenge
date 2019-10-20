@@ -52,6 +52,33 @@ describe('Game', function() {
       expect(game.frames[0][1]).not.toEqual(7);
     });
 
+    it("Ends the game after 2 rolls in the 10th frame after rolling a 1 and a 2", function() {
+      for ( var i = 0; i < 9; i++ ) {
+        game.addBowl(10);
+      }
+      game.addBowl(2)
+      game.addBowl(2)
+      expect(game.game_over).toEqual(true);
+    });
+
+    it("Allows a 3rd roll in the 10th frame after rolling 2 strikes", function() {
+      for ( var i = 0; i < 9; i++ ) {
+        game.addBowl(10);
+      }
+      game.addBowl(10)
+      game.addBowl(10)
+      expect(game.game_over).toEqual(false);
+    });
+
+    it("Allows a 3rd roll in the 10th frame after rolling a spare", function() {
+      for ( var i = 0; i < 9; i++ ) {
+        game.addBowl(10);
+      }
+      game.addBowl(1)
+      game.addBowl(9)
+      expect(game.game_over).toEqual(false);
+    });
+
   });
 
   describe('calculateScore', function() {
@@ -99,6 +126,14 @@ describe('Game', function() {
       expect(game.total_score).toEqual(72);
     });
 
+    it("calculates 9 strikes in a row", function() {
+      for ( var i = 0; i < 9; i++ ) {
+        game.addBowl(10);
+      }
+      game.calculateScore();
+      expect(game.total_score).toEqual(240);
+    });
+
     it("Adds a bonus score for a spare followed by a score of 2 and 6", function() {
       game.addBowl(1);
       game.addBowl(9);
@@ -108,6 +143,16 @@ describe('Game', function() {
       expect(game.total_score).toEqual(20);
     });
 
+    it("Adds a bonus score for 2 spares followed by a score of 4 and 3", function() {
+      game.addBowl(1);
+      game.addBowl(9);
+      game.addBowl(5);
+      game.addBowl(5);
+      game.addBowl(4);
+      game.addBowl(3);
+      game.calculateScore();
+      expect(game.total_score).toEqual(36);
+    });
   });
 
 });

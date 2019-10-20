@@ -12,7 +12,8 @@ Game.prototype.roll = function(pins) {
 
 Game.prototype.calculateScore = function() {
   var score = 0;
-  var currentBowl = 0
+  var currentBowl = 0;
+  this.scorecardFiller();
   for (var frame = 0; frame < 10; frame ++) {
     if (this.isStrike(currentBowl)) {
       score += this.strikeBonus(currentBowl);
@@ -46,4 +47,14 @@ Game.prototype.strikeBonus = function(currentBowl) {
 
 Game.prototype.spareBonus = function(currentBowl) {
   return 10 + this.rolls[currentBowl+2]
+}
+
+Game.prototype.multiRoll = function(rolls, pins) {
+  for (var i = 0; i < rolls; i++) {
+    this.roll(pins);
+  };
+}
+
+Game.prototype.scorecardFiller = function() {
+  this.multiRoll(21,0)
 }

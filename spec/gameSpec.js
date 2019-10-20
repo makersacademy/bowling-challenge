@@ -56,8 +56,13 @@ describe('Game', function() {
   })
 
   it('calculates a perfect game', function() {
-    multiRoll(20, 10);
+    multiRoll(12, 10);
     expect(game.calculateScore()).toEqual(300)
+  })
+
+  it('can calculate the score of an unfinished game', function() {
+    multiRoll(16, 4)
+    expect(game.calculateScore()).toEqual(64)
   })
 
   function multiRoll(rolls, pins) {

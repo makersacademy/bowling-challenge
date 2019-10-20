@@ -58,8 +58,26 @@ describe("Game", function() {
     expect(game._frames[0].frameBowls).toEqual([8,2]);
     game.add(7);
     game.add(1);
-    console.log(game)
     expect(game.score()).toEqual(25);
+  });
+
+  it("score updates after two bowls first being strike", function() {
+    game.add(10);
+    expect(game._frames[0].frameBowls).toEqual([10]);
+    game.add(7);
+    game.add(1);
+    expect(game.score()).toEqual(26);
+  });
+
+  it("score updates after two strikes in a row", function() {
+    game.add(10);
+    expect(game._frames[0].frameBowls).toEqual([10]);
+    game.add(10);
+    game.add(7);
+    game.add(1);
+    expect(game._frames[0].frameScore).toEqual(27);
+    expect(game._frames[1].frameScore).toEqual(18);
+    expect(game.score()).toEqual(53);
   });
 
 });

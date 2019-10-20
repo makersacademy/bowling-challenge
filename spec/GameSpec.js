@@ -53,16 +53,16 @@ it("score updates after two bowls", function() {
   game.add(8);
   game.add(1);
   expect(game._frames[0].frameBowls).toEqual([8,1]);
-  game.add(8);
+  game.add(7);
   game.add(1);
-  expect(game.score()).toEqual(18);
+  expect(game.score()).toEqual(17);
 });
 
 it("score updates after two bowls first being spare", function() {
   game.add(8);
   game.add(2);
   expect(game._frames[0].frameBowls).toEqual([8,2]);
-  game.add(8);
+  game.add(7);
   game.add(1);
   expect(game.score()).toEqual(27);
 });

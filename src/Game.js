@@ -1,8 +1,8 @@
 function Game() {
   this._score = 0;
-  this._bowls = []
   this._frames = [];
-  this._frame = {};
+  this._bowls = [];
+  this._bowlNumber = 1;
   this._frameBowls = [0,0];
   this._frameScore = 0;
   this._frameBonus = [0,0];
@@ -10,17 +10,26 @@ function Game() {
   this._frameType = 'normal'
   this._frameMove = 0;
   this._frameNumber = 1;
+  // frame = new Frame()
 };
 
 Game.prototype.add = function(pins) {
+  // this.addBonus(pins)
+  this._bowls.push(pins)
   this._frameBowls[this._frameMove] = pins
-  // this._frames[this._frameNumber - 2].frameBowls[this._frameMove] = pins
   this._frameMove +++1
   if (this.isStrike() || this._frameMove === 2) {
       this.nextTurn()
       this._frameMove = 0
       this._frameNumber +++1
+      console.log(this._frames)
     }
+}
+
+Game.prototype.addBonus = function(pins){
+  if (this._frameType != 'normal') {
+    this._frames[this._frameNumber - 2].frameBonus[this._frameMove] = pins
+  }
 }
 
 Game.prototype.isStrike = function() {
@@ -52,18 +61,18 @@ Game.prototype.score = function() {
       var score = 0
       for (var i = 0; i < this._frameNumber-1; i++) {
         frame = this._frames[i]
-        console.log(Number(frame.frameScore))
         score += frame.frameScore
       }
      return this._score = score
 }
 
 Game.prototype.nextTurn = function(){
-  this._frame['frameNumber'] = this._frameNumber
-  this._frame['frameBowls'] = this._frameBowls
-  this._frame['frameBonus'] = this._frameBonus
-  this._frame['frameType'] = this._frameType
-  this._frame['frameComplete'] = this._frameComplete
-  this._frame['frameScore'] = this._frameScore
-  this._frames[this._frameNumber-1] = this._frame
+  var frame = {}
+  frame['frameNumber'] = this._frameNumber
+  frame['frameBowls'] = this._frameBowls
+  frame['frameBonus'] = this._frameBonus
+  frame['frameType'] = this._frameType
+  frame['frameComplete'] = this._frameComplete
+  frame['frameScore'] = this._frameScore
+  this._frames.push(frame)
 }

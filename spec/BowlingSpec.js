@@ -41,6 +41,30 @@ describe('Bowling', () => {
     game.roll(3);
     game.roll(6);
 
+
     expect(game.getCurrentScore()).toEqual(15);
+  });
+
+  it('Player scores strike, next 2 rolls are added as bonus', () => {
+    game.roll(10);
+    game.roll(2);
+    game.roll(3);
+
+    expect(game.getCurrentScore()).toEqual(20);
+  });
+
+  it('Player scores spare, next 1 roll is added as bonus', () => {
+    game.roll(5);
+    // console.log(game.getCurrentScore());
+    // console.log(game.framesScores);
+    game.roll(5);
+    // console.log(game.previousFrame());
+    // console.log(game.isSpare(game.previousFrame()));
+    // console.log(game.getCurrentScore());
+    // console.log(game.framesScores);
+    game.roll(3);
+    game.roll(3);
+
+    expect(game.getCurrentScore()).toEqual(19);
   });
 });

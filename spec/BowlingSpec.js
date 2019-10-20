@@ -68,19 +68,41 @@ describe('Bowling', () => {
     game.roll(10);
     game.roll(3);
     game.roll(2);
-    // console.log(game.getCurrentScore());
-    // console.log(game.framesScores);
 
     expect(game.getCurrentScore()).toEqual(75);
   });
 
   it('Game ends after 10 frames', () => {
-    for (let i = 0; i <= 20; i++) {
+    for (let i = 0; i < 20; i++) {
       game.roll(2);
     }
-    // console.log(game.getCurrentScore());
-    // console.log(game.framesScores);
 
-    expect(game.gameOver).toEqual(true);
+    expect(game.gameOver()).toEqual(true);
+  });
+
+  it('10 strikes is a Perfect Game', () => {
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    console.log(game.getFrameScore());
+    console.log(game.framesScores);
+    game.roll(10);
+    console.log(game.getFrameScore());
+    console.log(game.framesScores);
+    game.roll(10);
+    console.log(game.getFrameScore());
+    console.log(game.framesScores);
+    game.roll(10);
+    console.log(game.getFrameScore());
+    console.log(game.framesScores);
+
+    expect(game.getCurrentScore()).toEqual(300);
+    expect(game.perfectGame()).toEqual(true);
   });
 });

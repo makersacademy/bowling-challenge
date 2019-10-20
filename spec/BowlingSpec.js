@@ -73,4 +73,14 @@ describe('Bowling', () => {
 
     expect(game.getCurrentScore()).toEqual(75);
   });
+
+  it('Game ends after 10 frames', () => {
+    for (let i = 0; i <= 20; i++) {
+      game.roll(2);
+    }
+    // console.log(game.getCurrentScore());
+    // console.log(game.framesScores);
+
+    expect(game.gameOver).toEqual(true);
+  });
 });

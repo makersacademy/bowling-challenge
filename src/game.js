@@ -47,7 +47,7 @@ Game.prototype.nextFrame = function() { //Look into making this private
 Game.prototype.calculateScore = function() {
   var total_base = this.calculateBaseScore();
   var total_bonus = this.calculateBonusScore();
-  this.total_score = total_base + total_bonus;
+  return this.total_score = total_base + total_bonus;
 };
 
 Game.prototype.calculateBaseScore = function() {
@@ -59,20 +59,34 @@ Game.prototype.calculateBaseScore = function() {
 };
 
 Game.prototype.calculateBonusScore = function() {
-  var bonus_accum = 0;
+  var strike_bonus = this.calculateStrikeBonus();
+  var spare_bonus = this.calculateSpareBonus();
+  return strike_bonus + spare_bonus;
+};
+
+Game.prototype.calculateStrikeBonus = function() {
+  var strike_accum = 0;
   this.frames.forEach(function(frame, index, all_frames) {
     if ( frame.includes(10) ) {
       if (all_frames[index + 1].includes(10)) {
-        bonus_accum += all_frames[index + 1].reduce((partial_sum, a) => partial_sum + a,0) +
+        strike_accum += all_frames[index + 1].reduce((partial_sum, a) => partial_sum + a,0) +
                        all_frames[index + 2].reduce((partial_sum, a) => partial_sum + a,0);
       } else {
-        bonus_accum += all_frames[index + 1].reduce((partial_sum, a) => partial_sum + a,0);
+        strike_accum += all_frames[index + 1].reduce((partial_sum, a) => partial_sum + a,0);
       }
-    } else if ( frame[0] !== 10 && frame[0] + frame[1] === 10 ) {
-      bonus_accum += all_frames[index + 1][0];
     }
   });
-  return bonus_accum;
+  return strike_accum;
+};
+
+Game.prototype.calculateSpareBonus = function() {
+  var spare_accum = 0;
+  this.frames.forEach(function(frame, index, all_frames) {
+    if ( frame[0] !== 10 && frame[0] + frame[1] === 10 ) {
+      spare_accum += all_frames[index + 1][0];
+    }
+  });
+  return spare_accum;
 };
 
 Game.prototype.recentFrameScore = function() {

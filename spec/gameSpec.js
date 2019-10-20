@@ -99,6 +99,15 @@ describe('Game', function() {
       expect(game.total_score).toEqual(72);
     });
 
+    it("Adds a bonus score for a spare followed by a score of 2 and 6", function() {
+      game.addBowl(1);
+      game.addBowl(9);
+      game.addBowl(2);
+      game.addBowl(6);
+      game.calculateScore();
+      expect(game.total_score).toEqual(20);
+    });
+
   });
 
 });

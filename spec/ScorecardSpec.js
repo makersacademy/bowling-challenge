@@ -95,14 +95,14 @@ describe("Scorecard", function() {
     });
   }); 
 
-  describe('pinsPerFrame', function(){
+  describe('pinsPerRoll', function(){
     it ('initializes with an empty array', function(){
-      expect(scorecard.pinsPerFrame).toEqual([]);
+      expect(scorecard.pinsPerRoll).toEqual([]);
     });
     it ('records the value of each roll', function(){
       scorecard.roll(4,5)
       scorecard.roll(10,0)
-      expect(scorecard.pinsPerFrame).toEqual([4,5,10]);
+      expect(scorecard.pinsPerRoll).toEqual([4,5,10]);
     });
 
   });

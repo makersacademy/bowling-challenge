@@ -1,10 +1,9 @@
 describe('Feature Tests:', function(){
   var game;
-  var frame;
 
   beforeEach(function(){
     game = new Game();
-    frame = new Frame();
+
   });
 
   it("allows a person to record a gutter game", function() {

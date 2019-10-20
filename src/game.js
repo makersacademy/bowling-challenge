@@ -9,7 +9,3 @@ Game.prototype.getCurrentScore = function() {
 Game.prototype.roll = function(pins) {
   this.score += pins
 };
-
-Game.prototype.turn = function(turn, pins) {
-  Game.prototype.roll(pins)
-};

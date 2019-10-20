@@ -1,5 +1,5 @@
 
-Bowling Scorecard
+Bowling ScoreCard
 =================
 A program that counts and sums the scores of a users bowling (in JavaScript).
 

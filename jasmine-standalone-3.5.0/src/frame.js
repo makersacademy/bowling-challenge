@@ -6,7 +6,7 @@ function Frame(number){
   this.roll1 = 0
   this.roll2 = 0
   this.strike = false
-  this.split = false
+  this.spare = false
 }
 
 Frame.prototype.returnpoints = function(){
@@ -14,11 +14,18 @@ Frame.prototype.returnpoints = function(){
 }
 
 Frame.prototype.firstroll = function(pins){
-  this.roll1 = pins
-  this.POINTS = pins
+  if (pins === 10) {
+    this.strike = true
+    this.POINTS = null
+  }else {
+    this.roll1 = pins}
 }
 
 Frame.prototype.secondroll = function(pins){
+  if (this.roll1 + pins === 10){
+    this.spare = true
+    this.POINTS = null
+  }else {
   this.roll2 = pins
-  this.POINTS = this.roll1 + pins
+  this.POINTS = this.roll1 + pins}
 }

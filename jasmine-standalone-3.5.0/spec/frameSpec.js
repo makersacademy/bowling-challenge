@@ -32,6 +32,20 @@ describe('Frame', function(){
       frame.secondroll(6)
       expect(frame.POINTS).toEqual(9)
     });
-
+  describe('strike rules', function(){
+    it('records a strike has occured and sets the points to null', function(){
+      frame.firstroll(10)
+      expect(frame.strike).toBe(true)
+      expect(frame.POINTS).toBe(null)
+    });
+  });
+  describe('spare rules', function(){
+    it('records a spare has occured and sets the points to null', function(){
+      frame.firstroll(3)
+      frame.secondroll(7)
+      expect(frame.spare).toBe(true)
+      expect(frame.POINTS).toBe(null)
+    });
+  })
   });
 });

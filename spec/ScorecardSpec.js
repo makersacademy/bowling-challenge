@@ -44,6 +44,7 @@ describe("Scorecard", function() {
     it ('starts at 0', function(){
       expect(scorecard.total).toEqual(0);
       });
+
       it ('adds up the score for each roll', function(){
         scorecard.roll(4,4);
         scorecard.roll(2,7);
@@ -94,32 +95,40 @@ describe("Scorecard", function() {
     });
   }); 
 
-//   describe('gameOver', function(){
+  describe('pinsPerFrame', function(){
+    it ('initializes with an empty array', function(){
+      expect(scorecard.pinsPerFrame).toEqual([]);
+    });
+    it ('records the value of each roll', function(){
+      scorecard.roll(4,5)
+      scorecard.roll(10,0)
+      expect(scorecard.pinsPerFrame).toEqual([4,5,10]);
+    });
 
-//     beforeEach(function(){
-//       scorecard.frame === 10
-//     });
+  });
 
-//     it ('identifies a gutter game', function(){
-//       scorecard.gameOver();
-//       expect(console.log).toHaveBeenCalledWith('You scored 0 points. Gutter game!')
-//     });
+  describe('gameOver', function(){
+
+    beforeEach(function(){
+      console.log = jasmine.createSpy("log");
+      scorecard.frame = 10
+    });
+
+    it ('identifies a gutter game', function(){
+      scorecard.gameOver();
+      expect(console.log).toHaveBeenCalledWith('You scored 0 points. Gutter game!')
+    });
  
-//   it ('identifies a perfect game', function(){
-//     console.log = jasmine.createSpy("log");
-//     scorecard.total === 300;
-//     scorecard.gameOver();
-//     expect(console.log).toHaveBeenCalledWith('You scored 300 points. Perfect game!');
-//     });
+  it ('identifies a perfect game', function(){
+    scorecard.total = 300;
+    scorecard.gameOver();
+    expect(console.log).toHaveBeenCalledWith('You scored 300 points. Perfect game!');
+    });
    
-//   it ('identifies the overall score of a game', function(){
-//     console.log = jasmine.createSpy("log");
-//       var times;
-//       for ( times = 0; times < 10; times ++){
-//         scorecard.roll(3,4);
-//       }
-//       scorecard.gameOver();
-//     expect(console.log).toHaveBeenCalledWith('You scored 70 points. Good game!');
-//     });
-//   }); 
+  it ('identifies the overall score of a game', function(){
+      scorecard.total = 150
+      scorecard.gameOver();
+    expect(console.log).toHaveBeenCalledWith('You scored 150 points. Good game!');
+    });
+  }); 
 });

@@ -36,4 +36,13 @@ describe ('BowlingGame', function() {
     expect(game.bonusRoll).toEqual(2);
   });
 
+  it('adds bonus points to previous frame if there is a spare', function() {
+    game.bowl(5);
+    game.bowl(5);
+    game.bowl(3);
+    game.bowl(1);
+    expect(game.allFrames[1]).toEqual([5, 5, 3])
+    expect(game.allFrames[2]).toEqual([3, 1])
+  });
+
 });

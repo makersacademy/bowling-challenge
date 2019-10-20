@@ -12,6 +12,7 @@ function BowlingGame() {
 BowlingGame.prototype.bowl = function(number) {
   this.frameNumber();
   this.allFrames[this.currentFrame].push(number)
+  this.addBonus();
   this.spare();
   this.strike();
 };
@@ -36,5 +37,12 @@ BowlingGame.prototype.spare = function() {
 BowlingGame.prototype.strike = function() {
   if(this.allFrames[this.currentFrame][0] == 10) {
     this.bonusRoll += 2;
+  }
+};
+
+BowlingGame.prototype.addBonus = function() {
+  if(this.bonusRoll == 1) {
+    this.allFrames[this.previousFrame].push(this.allFrames[this.currentFrame][0]);
+    this.bonusRoll -= 1
   }
 };

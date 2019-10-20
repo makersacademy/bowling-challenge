@@ -55,16 +55,22 @@ describe('Bowling', () => {
 
   it('Player scores spare, next 1 roll is added as bonus', () => {
     game.roll(5);
-    // console.log(game.getCurrentScore());
-    // console.log(game.framesScores);
     game.roll(5);
-    // console.log(game.previousFrame());
-    // console.log(game.isSpare(game.previousFrame()));
-    // console.log(game.getCurrentScore());
-    // console.log(game.framesScores);
     game.roll(3);
     game.roll(3);
 
     expect(game.getCurrentScore()).toEqual(19);
+  });
+
+  it('Player scores 3 strikes and 2 regular rolls', () => {
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(3);
+    game.roll(2);
+    // console.log(game.getCurrentScore());
+    // console.log(game.framesScores);
+
+    expect(game.getCurrentScore()).toEqual(75);
   });
 });

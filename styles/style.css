@@ -1,0 +1,77 @@
+header {
+  font-family: 'Graduate', cursive;
+}
+
+body {
+  font-family: 'Patrick Hand SC', cursive;
+}
+
+.scorecard {
+  display: grid;
+  justify-content: stretch;	
+  grid-template-columns: repeat(10, auto);
+  grid-template-rows: auto auto auto;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  box-shadow: 0 3px 4px 0 rgba(0,0,0,0.14), 0 3px 3px -2px rgba(0,0,0,0.12), 0 1px 8px 0 rgba(0,0,0,0.20);
+}
+
+.frame {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas: 
+    "num   num   num   num"
+    "left  box   box   box"
+    "score score score score";
+  min-width: 5rem;
+  min-height: 4rem;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+.number {
+  font-family: 'Graduate', cursive;
+  text-align: center;
+  color: white;
+  align-content: center;
+  grid-area: 'num';
+  grid-column-start: span 4;
+  grid-row-start: span 1;
+  background-color: blueviolet;
+  border-top: 0px;
+  border-bottom: 2px;
+  border-left: 0px;
+  border-right: 0px;
+  border-style: solid;
+  border-color: black;
+}
+
+.left_area {
+  grid-area: 'left';
+  min-width: 1rem;
+  background-color: white;
+}
+
+.box {
+  text-align: center;
+  grid-area: 'box';
+  min-width: 2.2rem;
+  min-height: 2rem;
+  border-top: 0px;
+  border-bottom: 2px;
+  border-left: 2px;
+  border-right: 0px;
+  border-style: solid;
+  border-color: black;
+}
+
+.bottom_area {
+  text-align: center;
+  grid-area: 'score';
+  grid-column-start: span 4;
+  min-width: 5rem;
+  min-height: 4rem;
+}

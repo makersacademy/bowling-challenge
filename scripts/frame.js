@@ -1,5 +1,4 @@
 
-
 class Frame {
   constructor(number) {
     this.number = number
@@ -9,6 +8,8 @@ class Frame {
     this.box2 = null
     this.fillBox = null
     this.score = 0
+    this.isSpare = false
+    this.isStrike = true
     this.isFrameTen = false
     this.checkFrameTen()
   }
@@ -22,8 +23,18 @@ class Frame {
   }
 
   addBall(pins, ball = this.currentBall) {
-    let thisBall = new Ball(pins)
-    this.balls[ball - 1] = thisBall
+    if (this.isFrameTen) {
+      console.log("fix frame 10")
+    } else if (thisBall.pins === 10) {
+      let thisBall = new Ball(pins)
+      this.balls[ball - 1] = thisBall
+      this.isStrike = true
+      console.log('Strike!')
+    } else {
+      let thisBall = new Ball(pins)
+      this.balls[ball - 1] = thisBall
+      console.log("Ten ${pins}")
+    }
     this.update()
   }
 

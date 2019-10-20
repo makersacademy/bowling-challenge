@@ -9,7 +9,7 @@ describe('Game', function() {
   });
   
   it('is possible to start a new game', function() {
-    expect(game).toEqual(game)
+    expect(game).toEqual(game);
   });
 
   it('knows the current roll', function() {
@@ -24,33 +24,45 @@ describe('Game', function() {
     expect(game.rolls).toEqual([2,6])
   })
 
-  it('begins a game with a score of zero', function(){
+  it('allows a gutter game', function(){
+    multiRoll(20, 0);
     expect(game.calculateScore()).toEqual(0)
   })
 
   it('adds the score of bowls', function() {
     game.roll(5);
     game.roll(4);
+    multiRoll(18, 0);
     expect(game.calculateScore()).toEqual(9)
   })
 
-  // it('has a score of 3 if 3 pins are knocked down', function(){
-  //   game.roll(3)
-  //   expect(game.getScore()).toEqual(3)
-  // })
+  it('has a score of 20 after 20 rolls of 1', function(){
+    multiRoll(20, 1);
+    expect(game.calculateScore()).toEqual(20)
+  })
 
-  // it('has a score of 20 after 20 rolls of 1', function(){
-  //   for (var i = 0; i < 20; i++) {
-  //   game.roll(1) };
-  //   expect(game.getScore()).toEqual(20)
-  // })
-  // describe('it accounts for a spare', function() {
-  //   it('adds a bonus for a spare', function(){
-  //     game.roll(6);
-  //     game.roll(4);
-  //     game.roll(2);
-  //     expect(game.getScore()).toEqual(14)
-  //   }) 
-  // })
+    it('adds a bonus for a strike', function(){
+      game.roll(10);
+      multiRoll(19, 1);
+      expect(game.calculateScore()).toEqual(30)
+    }) 
+  
+
+  it('it accounts for a spare', function() {
+    game.roll(5);
+    game.roll(5);
+    multiRoll(18, 1);
+    expect(game.calculateScore()).toEqual(29)
+  })
+
+  it('calculates a perfect game', function() {
+    multiRoll(20, 10);
+    expect(game.calculateScore()).toEqual(300)
+  })
+
+  function multiRoll(rolls, pins) {
+    for (var i = 0; i < rolls; i++) {
+      game.roll(pins) };
+  }
   
 })

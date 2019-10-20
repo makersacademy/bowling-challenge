@@ -13,10 +13,37 @@ Game.prototype.roll = function(pins) {
 Game.prototype.calculateScore = function() {
   var score = 0;
   var currentBowl = 0
-  for (var bowl = 0; bowl < this.rolls.length; bowl ++) {
-    score += this.rolls[currentBowl];
-    currentBowl ++;
+  for (var frame = 0; frame < 10; frame ++) {
+    if (this.isStrike(currentBowl)) {
+      score += this.strikeBonus(currentBowl);
+      currentBowl ++;
+    } else if (this.isSpare(currentBowl)) {
+      score += this.spareBonus(currentBowl);
+      currentBowl += 2;
+    } else {
+    score += this.basicFrame(currentBowl);
+    currentBowl += 2;
   }
-
+}
   return score
+}
+
+Game.prototype.basicFrame = function(currentBowl) {
+  return this.rolls[currentBowl] + this.rolls[currentBowl+1];
+}
+
+Game.prototype.isSpare = function(currentBowl) {
+  return (this.rolls[currentBowl] + this.rolls[currentBowl+1] === 10)
+}
+
+Game.prototype.isStrike = function (currentBowl) {
+  return (this.rolls[currentBowl] === 10)
+}
+
+Game.prototype.strikeBonus = function(currentBowl) {
+  return 10 + this.rolls[currentBowl+1] + this.rolls[currentBowl+2]
+}
+
+Game.prototype.spareBonus = function(currentBowl) {
+  return 10 + this.rolls[currentBowl+2]
 }

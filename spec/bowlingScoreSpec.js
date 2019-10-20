@@ -1,7 +1,6 @@
 describe("BowlingScore", function(){
 
   beforeEach(function(){
-    prevRound = jasmine.createSpy('prevRound')
     bowlingscore = new BowlingScore();
   });
 
@@ -16,35 +15,38 @@ describe("BowlingScore", function(){
   describe("addScore", function(){
     it("add the new score to previus round", function(){
       bowlingscore.newRound()
-      prevRound.plus = ""
-      prevRound.currentScore = 5
       bowlingscore.round.currentScore = 3
-      bowlingscore.addScore(prevRound)
+      bowlingscore.addScore("", 5)
 
       expect(bowlingscore.round.currentScore).toEqual(8)
     });
 
     it("add a plus spare at the previous score", function(){
       bowlingscore.newRound()
-      prevRound.plus = "spare"
-      prevRound.currentScore = 20
-      bowlingscore.round.currentScore = 3
-      bowlingscore.round.roll1 = 1
-      bowlingscore.addScore(prevRound)
+      bowlingscore.round.currentScore = 10
+      bowlingscore.round.roll1 = 5
+      bowlingscore.addScore("spare", 24)
 
-      expect(prevRound.currentScore).toEqual(21)
-      expect(bowlingscore.round.currentScore).toEqual(24)
+      expect(bowlingscore.round.currentScore).toEqual(39)
     });
 
     it("add a plus strike at the previous score", function(){
       bowlingscore.newRound()
-      prevRound.plus = "strike"
-      prevRound.currentScore = 20
       bowlingscore.round.currentScore = 3
-      bowlingscore.addScore(prevRound)
+      bowlingscore.addScore("strike", 20)
 
-      expect(prevRound.currentScore).toEqual(23)
       expect(bowlingscore.round.currentScore).toEqual(26)
+    });
+  });
+
+  describe("bonusRound", function(){
+    it("add the bonus round", function(){
+      bowlingscore.newRound()
+      bowlingscore.round.roll3 = 2
+      bowlingscore.round.currentScore = 20
+      bowlingscore.bonusRound()
+
+      expect(bowlingscore.round.currentScore).toEqual(22);
     });
   });
 });

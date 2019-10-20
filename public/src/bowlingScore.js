@@ -8,11 +8,21 @@ BowlingScore.prototype.newRound = function() {
   return this.round = new Round()
 }
 
-BowlingScore.prototype.addScore = function(prevRound) {
-  if (prevRound.plus === "strike") {
-    prevRound.currentScore += this.round.currentScore
-  } else if (prevRound.plus === "spare") {
-    prevRound.currentScore += this.round.roll1
+BowlingScore.prototype.addScore = function(prevPlus, prevScore) {
+  if (prevPlus === "strike") {
+    this.round.currentScore += prevScore + this.round.currentScore
+  } else if (prevPlus === "spare") {
+    this.round.currentScore += prevScore + this.round.roll1
+  } else {
+    this.round.currentScore += prevScore
   }
-    this.round.currentScore += prevRound.currentScore
 }
+
+BowlingScore.prototype.bonusRound = function() {
+  this.round.currentScore += this.round.roll3
+}
+
+
+// implement gutter game = 0 score 20 times
+// implement perfect game = 12 strikes will be 300 points
+// implement check to not enter sum > 10

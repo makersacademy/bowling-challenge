@@ -1,22 +1,34 @@
 function Round() {
   this.roll1 = 0
   this.roll2 = 0
+  this.roll3 = 0
   this.currentScore = 0
   this.plus = ""
+  this.bonus = 0
 };
 
 Round.prototype.setRoll1 = function(value) {
-  if (value < 0 || value > 10) {
+  value = parseInt(value)
+  if (value < 0 || value > 10 || isNaN(value)) {
     return "You should input a valid value"
   }
-  this.roll1 = parseInt(value)
+  this.roll1 = value
 }
 
 Round.prototype.setRoll2 = function(value) {
-  if (value < 0 || value > 10) {
+  value = parseInt(value)
+  if (value < 0 || value > 10 || isNaN(value)) {
     return "You should input a valid value"
   }
-  this.roll2 = parseInt(value)
+  this.roll2 = value
+}
+
+Round.prototype.setRoll3 = function(value) {
+  value = parseInt(value)
+  if (value < 0 || value > 10 || isNaN(value)) {
+    return "You should input a valid value"
+  }
+  this.roll3 = value
 }
 
 Round.prototype.setPlus = function() {

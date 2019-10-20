@@ -30,6 +30,14 @@ describe("Round", function(){
     });
   });
 
+  describe ("setRoll3", function() {
+    it("set the roll3 value", function(){
+      round.setRoll3(7)
+
+      expect(round.roll3).toEqual(7);
+    });
+  });
+
   describe("setPlus", function() {
     it("check if a round has a strike", function(){
       round.roll1 = 10
@@ -48,7 +56,7 @@ describe("Round", function(){
   });
 
   describe("score", function(){
-    it("calculate total of two rolls", function(){
+    it("calculate total of rolls", function(){
       round.roll1 = 2
       round.roll2 = 5
       round.score()

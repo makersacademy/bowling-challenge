@@ -1,3 +1,5 @@
+const Bowling = require('../lib/Bowling.js');
+
 describe('Bowling', () => {
   let game;
 

@@ -2,7 +2,6 @@
   "name": "bowling-challenge",
   "version": "1.0.0",
   "description": "10 Pin Bowling Scorecard – Makers Week 5",
-  "main": "index.js",
   "directories": {
     "doc": "docs",
     "lib": "lib"

@@ -1,3 +1,5 @@
+const Frame = require('../lib/Frame.js');
+
 describe('Frame', () => {
   let frame;
   let game;

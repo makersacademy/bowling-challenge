@@ -1,13 +1,29 @@
-
 Bowling Challenge
 =================
 
+Setup:
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+- git clone git@github.com:PacificRebel/bowling-challenge.git
+- cd bowling-challenge
+- set up Jasmine by downloading from https://github.com/jasmine/jasmine/releases and copying to bowling-challenge (via Finder - I haven't found a better way of doing this yet)
+- type 'open SpecRunner.html' to check it's working
+- set up new folders:
+  touch src/Bowling.js and spec/Bowling.js
+- add the following to SpecRunner.html
+  <script src="src/Bowling.js"></script>
+  <script src="spec/BowlingSpec.js"></script>
+
+First test:
+
+- in BowlingSpec.js, write first test to start score from 0
+- pass test with code in Bowling.js
+- write tests and code for 'up' method which increases the score by 1
+##this is not necessarily a good step for this particular task but I wanted to start with something##
+
+Second test:
+- I need to figure out how to set up a frame:
+  each frame takes two rolls and the combination score of the two makes up the score for the frame
+- write test for 'first throw' method
 
 ## The Task
 

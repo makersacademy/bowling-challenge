@@ -46,7 +46,7 @@ describe("Game", function() {
     })
   })
 
-  describe('chcking for bonus points', function () {
+  describe('checking for bonus points', function () {
     it('adds frame score', function () {
       game.bowl(5)
       game.bowl(5)
@@ -58,11 +58,28 @@ describe("Game", function() {
     it('checks if there has been a half strike in previous frame', function () {
       game.bowl(5)
       game.bowl(5)
-      console.log(game.frame())
-      expect(game.ishalfStrike()).toEqual(true)
+      expect(game.isHalfStrike()).toEqual(true)
     })
+  })
 
-    
+  describe('getting a strike', function () {
+    it('moves to next frame if strike bowled', function () {
+      game.bowl(10)
+      game.bowl(5)
+      game.bowl(3)
+      expect(game.gameScore[1]).toEqual([10])
+      expect(game.gameScore[2]).toEqual([5,3])
+    })
+  })
+
+  describe('getting a half strike', function () {
+    it('calculates bonus from a half strike', function () {
+      game.bowl(7)
+      game.bowl(3)
+      game.bowl(5)
+      expect(game.isHalfStrike()).toEqual(true)
+      expect(game.bonusScores[1]).toEqual(5)
+    })
   })
 })
 

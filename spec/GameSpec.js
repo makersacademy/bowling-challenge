@@ -1,8 +1,9 @@
 describe('Game', () => {
 
   let game;
-
   beforeEach(() => { game = new Game; });
+
+  // ============================== UNIT TESTS ===============================
 
   // Getters
 
@@ -18,29 +19,18 @@ describe('Game', () => {
     expect(game.getCurrentRoll()).toEqual(1);
   });
 
-  it('On 1st roll, .is1stRoll() returns true, .is2ndRoll() returns false', () => {
-    expect(game.is1stRoll()).toEqual(true);
-    expect(game.is2ndRoll()).toEqual(false);
-  });
-
-  it('On 2nd roll, .is1stRoll() returns false, .is2ndRoll() returns true', () => {
-    game.play(5);
-    expect(game.is1stRoll()).toEqual(false);
-    expect(game.is2ndRoll()).toEqual(true);
-  });
-
   // Setters and Doers
 
-  describe('.newroll()', () => {
+  describe('.setupNextPlay() in a given frame', () => {
 
-    it('starts the next roll in the current frame', () => {
-      game.newRoll();
+    it('sets currentRoll to 2 after the 1st roll has completed', () => {
+      game.setupNextPlay();
       expect(game.getCurrentRoll()).toEqual(2);
     });
 
-    it('resets the roll count after the second roll in a frame', () => {
-      game.newRoll();
-      game.newRoll();
+    it('resets currentRoll to 1 after the 2nd roll has completed', () => {
+      game.setupNextPlay();
+      game.setupNextPlay();
       expect(game.getCurrentRoll()).toEqual(1);
     });
 
@@ -49,24 +39,27 @@ describe('Game', () => {
   describe('.newFrame()', () => {
 
     it('starts the next frame and resets currentRoll to 1', () => {
-      game.newRoll();
       game.newFrame();
       expect(game.getCurrentFrame()).toEqual(2);
       expect(game.getCurrentRoll()).toEqual(1);
     });
 
-    it('does not start a new frame after Frame 10 has completed', () => {
-      for (let roll = 1; roll <= 21; roll++) {
-        game.play(1);
+    it('does not start a new frame after the last frame has completed', () => {
+      for (let frame = 1; frame <= game.MAX_FRAMES; frame++) {
+        game.newFrame();
       }
       expect(game.getCurrentFrame()).toEqual(10);
     });
 
   });
 
-  it('.addScore(arg) adds a given number to the total score', () => {
-    game.addScore(5);
-    expect(game.getScore()).toEqual(5);
+  describe('.addScore()', () => {
+
+    it('adds a given number to the total score', () => {
+      game.addScore(5);
+      expect(game.getScore()).toEqual(5);
+    });
+
   });
 
   it('.getStandingPins() returns no. of pins still standing', () => {
@@ -81,16 +74,6 @@ describe('Game', () => {
     expect(game.getStandingPins()).toEqual(10);
   });
 
-  describe('.play()', () => {
-
-    it('records the number of knocked pins and proceeds to next roll', () => {
-      game.play(5);
-      expect(game.getScore()).toEqual(5);
-      expect(game.getCurrentRoll()).toEqual(2);
-    });
-
-  });
-
   it('.isGameOver() returns true when there are no more frames to play', () => {
     for (let roll = 1; roll <= 20; roll++) {
       game.play(1);
@@ -98,11 +81,41 @@ describe('Game', () => {
     expect(game.isGameOver()).toEqual(true);
   });
 
+  // ============================ FEATURE TESTS ===============================
+  // ==================== WHEN THE GAME IS PLAYED =============================
+
+  it('On 1st roll, .is1stRoll() returns true, .is2ndRoll() returns false', () => {
+    expect(game.is1stRoll()).toEqual(true);
+    expect(game.is2ndRoll()).toEqual(false);
+  });
+
+  it('On 2nd roll, .is1stRoll() returns false, .is2ndRoll() returns true', () => {
+    game.play(5);
+    expect(game.is1stRoll()).toEqual(false);
+    expect(game.is2ndRoll()).toEqual(true);
+  });
 
 
-  // edge case: when player enters a value that is not between 0 and 10
+  describe('when player does not strike in the first roll', () => {
 
-  // 3 possible outcomes in a given frame
+    beforeEach(() => {
+      game.play(5);
+    });
+
+    it('records number of knocked pins and proceeds to next roll', () => {
+      expect(game.getScore()).toEqual(5);
+      expect(game.getCurrentRoll()).toEqual(2);
+    });
+
+    it('writes the roll result to this.frames', () => {
+      expect(game.frames.frame1.roll1.score).toEqual(5);
+    });
+
+    // write the result to the Page
+
+  });
+
+  // ----------------- Completed frame Outcome 1: Normal ---------------------
 
   describe('when player does not strike after 2 rolls in a frame', () => {
 
@@ -120,7 +133,13 @@ describe('Game', () => {
       expect(game.getCurrentRoll()).toEqual(1);
     });
 
+    it('.bonusToSpend() returns 0', () => {
+      expect(game.bonusToSpend()).toEqual(0);
+    });
+
   });
+
+  // ------------------ Completed frame Outcome 2: Strike ---------------------
 
   describe('when player strikes in the first roll of a frame', () => {
 
@@ -132,7 +151,14 @@ describe('Game', () => {
       expect(game.bonusToSpend()).toEqual(2);
     });
 
+    it('does not add a score yet if a strike or spare was scored', () => {
+      game.play
+    });
+
+
   });
+
+  // ------------------ Completed frame Outcome 3: Spare ---------------------
 
   describe('when player has a spare within two rolls of a given frame', () => {
 

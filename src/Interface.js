@@ -39,4 +39,7 @@ $(document).ready(() => {
     updateCurrentStage();
   });
 
+  // edge case: when player enters a value that is not between 0 and 10
+
+
 });

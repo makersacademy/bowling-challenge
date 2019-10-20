@@ -17,32 +17,33 @@ class Game {
     this.standingPins = this.STARTING_PINS;
     this.bonus = 0;
 
-    this.game = new Object; // do something with this later?
+    // Ideally, record the frames, rolls and results in a JS object
+    this.frames = new Object;
+    this.frames = {
+      frame1: 0,
+      frame2: 0,
+      frame3: 0,
+      frame4: 0,
+      frame5: 0,
+      frame6: 0,
+      frame7: 0,
+      frame8: 0,
+      frame9: 0,
+      frame10: 0
+    };
+
   }
 
   // Getters
 
-  getScore() { return this.totalScore; }
-
   getCurrentFrame() { return this.currentFrame; }
-
   getCurrentRoll() { return this.currentRoll; }
+  is1stRoll() { return (this.getCurrentRoll() === 1); }
+  is2ndRoll() { return (this.getCurrentRoll() === 2); }
 
-  is1stRoll() {
-    return (this.getCurrentRoll() === 1);
-  }
-
-  is2ndRoll() {
-    return (this.getCurrentRoll() === 2);
-  }
-
-  getStandingPins() {
-    return this.standingPins;
-  }
-
-  bonusToSpend() {
-    return this.bonus;
-  }
+  getStandingPins() { return this.standingPins; }
+  getScore() { return this.totalScore; }
+  bonusToSpend() { return this.bonus; }
 
   isGameOver() {
     let checkFinalFrame = (this.currentFrame === this.MAX_FRAMES);
@@ -52,7 +53,13 @@ class Game {
 
   // Setters
 
-  newRoll() {
+  newFrame() {
+    if (this.getCurrentFrame() === this.MAX_FRAMES) return; // Guard clause
+    this.currentFrame += 1; // Increment the frame number
+    this.currentRoll = 1; // Reset the roll number
+  }
+
+  setupNextPlay() {
     if (this.currentRoll === 1) {
       this.currentRoll += 1;
     } else {
@@ -60,19 +67,7 @@ class Game {
     }
   }
 
-  newFrame() {
-    if (this.getCurrentFrame() === this.MAX_FRAMES) return;
-    this.currentFrame += 1; // Increment the frame number
-    this.currentRoll = 1; // Reset the roll number
-  }
-
-  addScore(score) {
-    this.totalScore += parseInt(score);
-  }
-
-  resetPins() {
-    this.standingPins = this.STARTING_PINS;
-  }
+  resetPins() { this.standingPins = this.STARTING_PINS; }
 
   checkStrikeOrSpare(knocks) {
     let isClear = (this.standingPins - knocks <= 0); // boolean
@@ -93,11 +88,21 @@ class Game {
     }
   }
 
+  addScore(score) {
+    this.totalScore += parseInt(score);
+  }
+
+  // addBonusScore(score) { // add bonus to previous score
+  //
+  // }
+
+
   // Triggered every time player submits the form
   play(knocks) {
     this.checkStrikeOrSpare(knocks);
-    this.addScore(knocks);
-    this.newRoll();
+    this.addScore(knocks); // do the logic in addScore
+    // write to JS game object
+    this.setupNextPlay();
   }
 
 }

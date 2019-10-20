@@ -1,8 +1,10 @@
 describe('Feature Tests:', function(){
   var game;
+  var frame;
 
   beforeEach(function(){
     game = new Game();
+    frame = new Frame();
   });
 
   it("allows a person to record a gutter game", function() {
@@ -15,13 +17,6 @@ describe('Feature Tests:', function(){
   it("allows a person to record a normal score, no bonuses", function() {
     for (i=0; i < 20; i++) {
       game.roll(1);
-    }
-    expect(game.getCurrentScore()).toEqual(20);
-  });
-
-  it("allows a person to get bonus points for a split", function() {
-    for (i=0; i < 3; i++) {
-      game.roll(5);
     }
     expect(game.getCurrentScore()).toEqual(20);
   });

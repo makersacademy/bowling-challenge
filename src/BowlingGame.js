@@ -1,42 +1,40 @@
 'use strict';
 
 function BowlingGame() {
-  this.score = 0;
-  this.frame = 1;
+  this.allFrames = {1: [], 2: [], 3: [], 4: [], 5: [],
+    6: [], 7: [], 8: [], 9: [], 10:[]
+    }
+  this.currentFrame = 1
+  this.previousFrame = 0
   this.bonusRoll = 0;
-  this.frameRoll = [];
-  this.allRolls = [];
 };
 
-BowlingGame.prototype.inputRoll = function(number) {
-  this.frameRoll.push(number);
+BowlingGame.prototype.bowl = function(number) {
+  this.frameNumber();
+  this.allFrames[this.currentFrame].push(number)
+  this.spare();
+  this.strike();
+};
 
-  if(number == 10) {
-    this.strike();
+BowlingGame.prototype.frameNumber = function() {
+  if(this.allFrames[this.currentFrame].length == 2 || this.allFrames[this.currentFrame].includes(10)) {
+    this.currentFrame += 1
+    this.previousFrame += 1
   };
-
-  if(this.frameRoll.length == 2) {
-    this.allRolls.push(this.frameRoll);
-    this.spare();
-    this.frameRoll = [];
-    this.frame += 1;
-  };
-
 };
 
 BowlingGame.prototype.spare = function() {
   var sum = 0;
-  for(var i = 0; i < this.frameRoll.length; i++) {
-    sum += this.frameRoll[i];
-    if(sum == 10) {
+  for(var i = 0; i < this.allFrames[this.currentFrame].length; i++) {
+    sum += this.allFrames[this.currentFrame][i];
+    if(sum == 10 && this.allFrames[this.currentFrame].length == 2) {
       this.bonusRoll += 1;
     };
   };
 };
 
 BowlingGame.prototype.strike = function() {
-  this.allRolls.push(this.frameRoll);
-  this.frameRoll = [];
-  this.frame += 1;
-  this.bonusRoll += 2;
+  if(this.allFrames[this.currentFrame][0] == 10) {
+    this.bonusRoll += 2;
+  }
 };

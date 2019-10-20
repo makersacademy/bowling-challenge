@@ -8,47 +8,32 @@ describe ('BowlingGame', function() {
     game = new BowlingGame();
   });
 
-  it('starts at 0 points', function() {
-    expect(game.score).toEqual(0);
+  it('stores a bowl in the correct frame', function() {
+    game.bowl(5);
+    game.bowl(2);
+    expect(game.allFrames[1]).toEqual([5, 2])
   });
 
-  it('starts on frame 1', function() {
-    expect(game.frame).toEqual(1);
+  it('moves onto the next frame after 2 bowls', function() {
+    game.bowl(5);
+    game.bowl(2);
+    game.bowl(10);
+    game.bowl(6);
+    game.bowl(3);
+    expect(game.allFrames[1]).toEqual([5, 2])
+    expect(game.allFrames[2]).toEqual([10])
+    expect(game.allFrames[3]).toEqual([6, 3])
   });
 
-  it('pushes 2 rolls to a frame', function() {
-    game.inputRoll(1);
-    game.inputRoll(2);
-    expect(game.allRolls).toEqual([[1, 2]])
-  });
-
-  it('pushes 4 rolls to a frame', function() {
-    game.inputRoll(1);
-    game.inputRoll(2);
-    game.inputRoll(4);
-    game.inputRoll(5);
-    expect(game.allRolls).toEqual([[1, 2], [4, 5]])
-  });
-
-  it('pushes a single roll if its a strike to a frame', function() {
-    game.inputRoll(1);
-    game.inputRoll(2);
-    game.inputRoll(10);
-    game.inputRoll(5);
-    game.inputRoll(2);
-    expect(game.allRolls).toEqual([[1, 2], [10], [5, 2]])
-  });
-
-  it('adds 1 to bonus roll when there is a spare', function() {
-    game.inputRoll(5);
-    game.inputRoll(5);
+  it('adds a bonus roll if there is a spare', function() {
+    game.bowl(5);
+    game.bowl(5);
     expect(game.bonusRoll).toEqual(1);
   });
 
-  it('adds 2 to bonus roll when there is a strike', function() {
-    game.inputRoll(10);
+  it('adds 2 bonus rolls if there is a strike', function() {
+    game.bowl(10);
     expect(game.bonusRoll).toEqual(2);
   });
-
 
 });

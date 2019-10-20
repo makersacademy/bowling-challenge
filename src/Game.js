@@ -2,35 +2,26 @@ class Game {
 
   constructor() {
 
-    // Constants
-    this.STARTING_PINS = 10;
-    this.STRIKE_MSG = 'You scored a Strike!';
-    this.SPARE_MSG = 'You scored a Spare!';
     this.MAX_FRAMES = 10;
+    this.STARTING_PINS = 10;
 
-    // Initial values
+    // Variables that will accummulate
     this.totalScore = 0;
     this.currentFrame = 1;
-    this.currentRoll = 1;
 
-    // Initial values - variables to be reused for each frame
+    // Variables that will be reset/reused in each frame
+    this.currentRoll = 1;
     this.standingPins = this.STARTING_PINS;
     this.bonus = 0;
 
-    // Ideally, record the frames, rolls and results in a JS object
+    // Create a JS object to record the game results
     this.frames = new Object;
-    this.frames = {
-      frame1: 0,
-      frame2: 0,
-      frame3: 0,
-      frame4: 0,
-      frame5: 0,
-      frame6: 0,
-      frame7: 0,
-      frame8: 0,
-      frame9: 0,
-      frame10: 0
-    };
+    for (let frame = 1; frame <= this.MAX_FRAMES; frame++) {
+      this.frames['frame' + frame] = new Object;
+      for (let roll = 1; roll <=2; roll++) {
+        this.frames['frame' + frame]['roll' + roll] = new Object;
+      }
+    }
 
   }
 
@@ -38,11 +29,11 @@ class Game {
 
   getCurrentFrame() { return this.currentFrame; }
   getCurrentRoll() { return this.currentRoll; }
-  is1stRoll() { return (this.getCurrentRoll() === 1); }
-  is2ndRoll() { return (this.getCurrentRoll() === 2); }
+  is1stRoll() { return (this.currentRoll === 1); }
+  is2ndRoll() { return (this.currentRoll === 2); }
 
   getStandingPins() { return this.standingPins; }
-  getScore() { return this.totalScore; }
+  getTotalScore() { return this.totalScore; }
   bonusToSpend() { return this.bonus; }
 
   isGameOver() {
@@ -54,7 +45,7 @@ class Game {
   // Setters
 
   newFrame() {
-    if (this.getCurrentFrame() === this.MAX_FRAMES) return; // Guard clause
+    if (this.getCurrentFrame() === this.MAX_FRAMES) return; // Check if game end
     this.currentFrame += 1; // Increment the frame number
     this.currentRoll = 1; // Reset the roll number
   }
@@ -69,39 +60,54 @@ class Game {
 
   resetPins() { this.standingPins = this.STARTING_PINS; }
 
-  checkStrikeOrSpare(knocks) {
-    let isClear = (this.standingPins - knocks <= 0); // boolean
-    // Here the comparison operator <= is used as a foolproof approach,
-    // although the controller will need to be updated to validate user input
-    // before passing the number of knocks into the models
-
-    if (this.is1stRoll() && isClear) return 'strike';
-    // no need to reset pins as no change to the initial value of this.standingPins
-
-    if (this.is1stRoll() && isClear == false) {
-      this.standingPins = this.STARTING_PINS - knocks;
-    } else if (this.is2ndRoll() && isClear) {
-      resetPins();
-      return 'spare';
-    } else {
-      return 'neither';
-    }
-  }
-
-  addScore(score) {
+  updateTotalScore(score) {
     this.totalScore += parseInt(score);
+    return this.totalScore;
   }
 
   // addBonusScore(score) { // add bonus to previous score
   //
   // }
 
+  // Reminder to self: We don't need to hold the score if a strike or spare was
+  // scored, because we know the frame score would be 10.
+  // After calculating bonus, just add 10 when calculating retrospective score.
 
-  // Triggered every time player submits the form
-  play(knocks) {
-    this.checkStrikeOrSpare(knocks);
-    this.addScore(knocks); // do the logic in addScore
-    // write to JS game object
+
+
+  // ================== EVERY TIME PLAYER SUBMITS THE FORM ====================
+  play(userInput) {
+
+    // Log the knocks as integers, no matter the outcome
+    let knocks = parseInt(userInput);
+    let frameID = `frame${this.getCurrentFrame()}`;
+    let rollID = `roll${this.getCurrentRoll()}`;
+
+    this.frames[frameID][rollID].knocks = knocks;
+    console.log(this.frames);
+
+    // Check if all pins are down
+    let isClear = (this.standingPins - knocks <= 0);
+
+    if (this.is1stRoll() && isClear) { // ------------------- 1st ROLL: STRIKE!
+      this.frames[frameID][rollID].notes = 'STRIKE!';
+      this.newFrame();
+      return;
+
+    } else if (this.is1stRoll() && isClear == false) { // ------- 1st ROLL: MEH
+      // Useful for imposing limits on user input
+      this.standingPins = this.STARTING_PINS - knocks;
+
+    } else if (this.is2ndRoll() && isClear) { // ------------- 2nd ROLL: SPARE!
+      this.resetPins();
+
+    } else if (this.is2ndRoll() && isClear == false) { // ------- 2nd ROLL: MEH
+      let prevRollID = `roll${this.getCurrentRoll() - 1}`;
+      let frameScore = this.frames[frameID][rollID].knocks;
+      frameScore += this.frames[frameID][prevRollID].knocks;
+      this.frames[frameID].totalScore = this.updateTotalScore(frameScore);
+    }
+
     this.setupNextPlay();
   }
 

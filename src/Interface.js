@@ -2,15 +2,16 @@ $(document).ready(() => {
 
   let game = new Game;
 
-  function updateCurrentStage() {
+  function updateCurrentPlay() {
     $('#current-frame').text(game.getCurrentFrame());
     $('#current-roll').text(game.getCurrentRoll());
   }
 
-  function appendResults(knocks) {
+  function appendResults() {
     let frame = game.getCurrentFrame();
     let roll = game.getCurrentRoll();
-    let score = game.getScore();
+    let knocks = game.frames[`frame${frame}`][`roll${roll}`].knocks;
+    let score = game.getTotalScore();
     let row = `<div class="row" id="frame-${frame}-roll-${roll}">`;
     row += `<div class="col-2 px-3">${frame}</div>`;
     row += `<div class="col-2 px-3">${roll}</div>`;
@@ -22,21 +23,19 @@ $(document).ready(() => {
   }
 
   // On page load
-  updateCurrentStage();
+  updateCurrentPlay();
 
   // On 'submit' form
   $('#player-action').submit(function(event) {
     event.preventDefault();
     let knocks = $('#player-knocks').val();
-    game.play(knocks);
-    appendResults(knocks);
+    game.play(knocks); // Problem is we need to print row before game.play starts next move.
+    appendResults();
     if (game.getCurrentFrame() === 10 && game.getCurrentRoll() === 2) {
       $('#player-action').text('');
       $('#current-stage').text('The game has ended!');
-    } else {
-      game.newRoll();
     }
-    updateCurrentStage();
+    updateCurrentPlay();
   });
 
   // edge case: when player enters a value that is not between 0 and 10

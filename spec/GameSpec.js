@@ -44,21 +44,14 @@ describe("Game", function() {
       game.bowl(4)
       expect(game.totalScore()).toEqual(18)
     })
+
   })
 
   describe('checking for bonus points', function () {
-    it('adds frame score', function () {
-      game.bowl(5)
-      game.bowl(5)
-      game.bowl(3)
-      game.bowl(7)
-      expect(game.frameTotal()).toEqual(10)
-    })
-    
     it('checks if there has been a half strike in previous frame', function () {
       game.bowl(5)
       game.bowl(5)
-      expect(game.isHalfStrike()).toEqual(true)
+      expect(game.wasHalfStrike()).toEqual(true)
     })
   })
 
@@ -70,6 +63,14 @@ describe("Game", function() {
       expect(game.gameScore[1]).toEqual([10])
       expect(game.gameScore[2]).toEqual([5,3])
     })
+
+    it('calculates bonus from a strike', function () {
+      game.bowl(10)
+      game.bowl(5)
+      game.bowl(3)
+      expect(game.wasStrike()).toEqual(true)
+      expect(game.bonusScores[1]).toEqual(8)
+    })
   })
 
   describe('getting a half strike', function () {
@@ -77,7 +78,7 @@ describe("Game", function() {
       game.bowl(7)
       game.bowl(3)
       game.bowl(5)
-      expect(game.isHalfStrike()).toEqual(true)
+      expect(game.wasHalfStrike()).toEqual(true)
       expect(game.bonusScores[1]).toEqual(5)
     })
   })

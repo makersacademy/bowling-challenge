@@ -1,12 +1,8 @@
-'use strict';
 
 describe('Bowling', () => {
   let game;
 
-  beforeEach( () => {
+  beforeEach(() => {
     game = new Bowling();
-  })
-
-  
-
+  });
 });

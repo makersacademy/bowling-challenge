@@ -47,3 +47,5 @@ Messages
 |Game| roll(pins), totalScore
 |Frames| frameScore,
 |Roll| pins
+
+[Game]->[Frame x10]->[rolls 1..3]

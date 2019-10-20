@@ -5,19 +5,16 @@ describe("Game", function() {
     game = new Game();
   });
 
-  it('displays the players score.', function() {
-  expect(game.score).toEqual(0)
+  describe('getCurrentScore', function() {
+    it('displays the players current score.', function() {
+      expect(game.getCurrentScore()).toEqual(0);
+    });
   });
 
   describe('roll', function() {
-    it('increments the temp', function() {
-      game.roll(1)
-      expect(game.score).toEqual(1)
-    })
-  })
-
-  it('frame', function() {
-  expect(game.frame).toEqual(1)
+    it('adds the points of each roll to the total', function() {
+      game.roll(1);
+      expect(game.getCurrentScore()).toEqual(1);
+    });
   });
-
 });

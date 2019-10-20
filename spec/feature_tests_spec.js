@@ -9,21 +9,21 @@ describe('Feature Tests:', function(){
     for (i=0; i < 20; i++) {
       game.roll(0);
     }
-    expect(game.score).toEqual(0);
+    expect(game.getCurrentScore()).toEqual(0);
   });
 
   it("allows a person to record a normal score, no bonuses", function() {
     for (i=0; i < 20; i++) {
       game.roll(1);
     }
-    expect(game.score).toEqual(20);
+    expect(game.getCurrentScore()).toEqual(20);
   });
 
   it("allows a person to get bonus points for a split", function() {
     for (i=0; i < 3; i++) {
       game.roll(5);
     }
-    expect(game.score).toEqual(20);
+    expect(game.getCurrentScore()).toEqual(20);
   });
 
 });

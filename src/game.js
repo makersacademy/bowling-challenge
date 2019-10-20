@@ -1,6 +1,9 @@
 var Game = function() {
   this.score = 0
-  this.frame = 1
+};
+
+Game.prototype.getCurrentScore = function() {
+  return this.score;
 };
 
 Game.prototype.roll = function(pins) {

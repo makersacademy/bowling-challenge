@@ -12,12 +12,6 @@ describe('Game', function() {
     expect(game).toEqual(game);
   });
 
-  it('knows the current roll', function() {
-    game.roll(3);
-    game.roll(3);
-    expect(game.currentRoll).toEqual(2)
-  })
-
   it('stores bowls', function() {
     game.roll(2);
     game.roll(6);

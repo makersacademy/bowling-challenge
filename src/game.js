@@ -1,7 +1,6 @@
 function Game() {
 
   this.rolls = []
-  this.currentRoll = 0
   
 }
 

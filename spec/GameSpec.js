@@ -101,7 +101,7 @@ describe('Game', () => {
 
   });
 
-  describe('.updateTotalScore()', () => {
+  describe('.updateTotalScore(score)', () => {
 
     it('adds a given number to the total score', () => {
       game.updateTotalScore(5);
@@ -120,10 +120,10 @@ describe('Game', () => {
     });
   });
 
-  describe('.addBonusToSpend(arg)', () => {
-    it('adds a bonus', () => {
-      game.addBonusToSpend(1);
-      expect(game.bonusToSpend()).toEqual(1);
+  describe('.assignUnspentBonus(frame, bonus)', () => {
+    it('logs an unspent bonus for the given frame', () => {
+      game.assignUnspentBonus('frame1', 1);
+      expect(game.getUnspentBonus('frame1')).toEqual(1);
     });
   });
 
@@ -179,8 +179,8 @@ describe('Game', () => {
       expect(game.getCurrentRoll()).toEqual(1);
     });
 
-    it('.bonusToSpend() returns 0', () => {
-      expect(game.bonusToSpend()).toEqual(0);
+    it('.getUnspentBonus(frame) returns 0', () => {
+      expect(game.getUnspentBonus('frame1')).toEqual(0);
     });
 
   });
@@ -194,17 +194,24 @@ describe('Game', () => {
     });
 
     it('does not add a score yet', () => {
-      expect(game.getTotalScore()).toEqual(0);
+      expect(game.frames.frame1.totalScore).toEqual(undefined);
     });
 
-    it('.bonusToSpend() returns 2', () => {
-      expect(game.bonusToSpend()).toEqual(2);
+    it('.getUnspentBonus(frame) returns 2', () => {
+      expect(game.getUnspentBonus('frame1')).toEqual(2);
     });
 
     it('adds the bonus from the next 2 rolls', () => {
       game.play(3);
       game.play(4);
-      expect(game.getTotalScore()).toEqual(10 + 7 + 7);
+      expect(game.frames.frame1.totalScore).toEqual(10 + 3 + 4);
+    });
+
+    it('.getUnspentBonus(frame) is reduced every time a bonus calculation is applied', () => {
+      game.play(3);
+      expect(game.getUnspentBonus('frame1')).toEqual(1);
+      game.play(4);
+      expect(game.getUnspentBonus(1)).toEqual(0);
     });
 
   });
@@ -218,8 +225,8 @@ describe('Game', () => {
       game.play(4);
     });
 
-    it('.bonusToSpend() returns 1', () => {
-      expect(game.bonusToSpend()).toEqual(1);
+    it('.getUnspentBonus(frame) returns 1', () => {
+      expect(game.getUnspentBonus('frame1')).toEqual(1);
     });
 
 

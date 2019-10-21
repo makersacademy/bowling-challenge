@@ -4,6 +4,8 @@ class Game {
 
     this.MAX_FRAMES = 10;
     this.STARTING_PINS = 10;
+    this.STRIKE_BONUS = 2;
+    this.SPARE_BONUS = 1;
 
     // Variables that will accummulate
     this.totalScore = 0;
@@ -12,7 +14,6 @@ class Game {
     // Variables that will be reset/reused in each frame
     this.currentRoll = 1;
     this.standingPins = this.STARTING_PINS;
-    this.bonus = 0;
 
     // Create a JS object to record the game results
     this.frames = new Object;
@@ -21,6 +22,7 @@ class Game {
       for (let roll = 1; roll <=2; roll++) {
         this.frames['frame' + frame]['roll' + roll] = new Object;
       }
+      this.frames['frame' + frame]['unspentBonus'] = 0;
     }
 
   }
@@ -34,7 +36,10 @@ class Game {
 
   getStandingPins() { return this.standingPins; }
   getTotalScore() { return this.totalScore; }
-  bonusToSpend() { return this.bonus; }
+
+  getUnspentBonus(frameID) {
+    return this.frames[frameID].unspentBonus;
+  }
 
   isGameOver() {
     let checkFinalFrame = (this.currentFrame === this.MAX_FRAMES);
@@ -65,19 +70,22 @@ class Game {
     return this.totalScore;
   }
 
-  addBonusToSpend(bonus) {
-    this.bonus += bonus;
+  assignUnspentBonus(frameID, bonus) {
+    this.frames[frameID].unspentBonus = bonus;
   }
-
-
-  // addBonusScore(score) { // add bonus to previous score
-  //
-  // }
 
   // Reminder to self: We don't need to hold the score if a strike or spare was
   // scored, because we know the frame score would be 10.
   // After calculating bonus, just add 10 when calculating retrospective score.
 
+  // Supporting functions for play(arg)
+
+  addStrikeNote() {}
+  addSpareNote() {}
+  calcRemainingPins() {}
+
+  targetThisRollObj() {}
+  targetPrevRollObj() {}
 
 
   // ================== EVERY TIME PLAYER SUBMITS THE FORM ====================
@@ -96,7 +104,7 @@ class Game {
 
     if (this.is1stRoll() && isClear) { // ------------------- 1st ROLL: STRIKE!
       this.frames[frameID][rollID].notes = 'STRIKE!';
-      this.addBonusToSpend(2);
+      this.assignUnspentBonus(frameID, this.STRIKE_BONUS);
       this.newFrame();
       return;
 
@@ -105,7 +113,8 @@ class Game {
       this.standingPins = this.STARTING_PINS - knocks;
 
     } else if (this.is2ndRoll() && isClear) { // ------------- 2nd ROLL: SPARE!
-      this.addBonusToSpend(1);
+      this.frames[frameID][rollID].notes = 'SPARE!';
+      this.assignUnspentBonus(frameID, this.SPARE_BONUS);
       this.resetPins();
 
     } else if (this.is2ndRoll() && isClear == false) { // ------- 2nd ROLL: MEH

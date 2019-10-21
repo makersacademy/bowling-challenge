@@ -30,7 +30,8 @@ describe("Game", function() {
   it("saves how many pins were knocked over on each roll", function() {
     game.roll(4);
     // scoreCard = [{frame: 1, roll: 1, pins: 4}]
-    var result = game.scoreCard.first.pins
+    var result = game.scoreCard.pop().pins;
+    console.log(result)
     expect(result).toEqual(4);
   });
 });

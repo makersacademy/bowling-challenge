@@ -2,6 +2,7 @@ var Game = function() {
   this.score = 0
   this.frameNumber = 1
   this.rollNumber = 1
+  this.scoreCard = []
 };
 
 Game.prototype.getCurrentScore = function() {
@@ -18,6 +19,7 @@ Game.prototype.getCurrentRoll = function() {
 
 Game.prototype.roll = function(pins) {
   this.score += pins
+  this.scoreCard.push(4)
   this.endTurn()
 };
 

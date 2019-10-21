@@ -27,5 +27,10 @@ describe("Game", function() {
     expect(game.getCurrentRoll()).toEqual(1);
   });
 
-
+  it("saves how many pins were knocked over on each roll", function() {
+    game.roll(4);
+    // scoreCard = [{frame: 1, roll: 1, pins: 4}]
+    var result = game.scoreCard.first.pins
+    expect(result).toEqual(4);
+  });
 });

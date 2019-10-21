@@ -21,22 +21,15 @@ describe("Game", function() {
     expect(game.getCurrentRoll()).toEqual(1);
   });
 
-  // scoreCard = [{frame: 1 roll: 1, pins: 4}]
-  it("saves how many pins were knocked over on each roll", function() {
-    game.roll(4);
-    var pins = game.scoreCard.pop().pins;
-    expect(pins).toEqual(4);
-  });
-
-  it("saves the roll number on each roll", function() {
-    for (i=0; i < 1; i++) { game.roll(4); };
-    var roll = game.scoreCard.pop().roll;
-    expect(roll).toEqual(1);
-  });
-
-  it("saves the frame number on each roll", function() {
+  it("saves the frame, roll & number of pins on each roll", function() {
     for (i=0; i < 3; i++) { game.roll(4); };
-    var frame = game.scoreCard.pop().frame;
+    // scoreCard = [{frame: 1 roll: 1, pins: 4}, ... ]
+    var lastestRoll = game.scoreCard.length-1
+    var frame = game.scoreCard[lastestRoll].frame;
+    var roll = game.scoreCard[lastestRoll].roll;
+    var pins = game.scoreCard[lastestRoll].pins;
     expect(frame).toEqual(2);
+    expect(roll).toEqual(1);
+    expect(pins).toEqual(4);
   });
 });

@@ -18,12 +18,12 @@ Game.prototype.getCurrentRoll = function() {
 };
 
 Game.prototype.getCurrentScoreCard = function() {
-  return this.scoreCard;
+  this.scoreCard;
 };
 
 Game.prototype.roll = function(pins) {
   this.score += pins
-  this.scoreCard.push({pins: pins})
+  this.scoreCard.push({frame: this.frameNumber, roll: this.rollNumber, pins: pins})
   this.endTurn()
 };
 

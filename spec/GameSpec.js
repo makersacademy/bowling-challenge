@@ -120,6 +120,18 @@ describe('Game', () => {
     });
   });
 
+  describe('.addBonusToSpend(arg)', () => {
+    it('adds a bonus', () => {
+      game.addBonusToSpend(1);
+      expect(game.bonusToSpend()).toEqual(1);
+    });
+  });
+
+  // describe('.printResult()', () => {
+  //   // prints result to a row (or rows) on HTML page
+  // });
+
+
   // ====================== WHEN THE GAME IS PLAYED ===========================
 
   // --------------------- 1st Roll Outcome 1: Normal -------------------------
@@ -135,7 +147,7 @@ describe('Game', () => {
     });
 
     it('the total score is not recorded yet', () => {
-      expect(game.frames.frame1.totalScore).toEqual('TBC');
+      expect(game.frames.frame1.totalScore).toEqual(undefined);
     });
 
     it('player proceeds to 2nd roll', () => {
@@ -181,12 +193,12 @@ describe('Game', () => {
       game.play(10);
     });
 
-    it('.bonusToSpend() returns 2', () => {
-      expect(game.bonusToSpend()).toEqual(2);
-    });
-
     it('does not add a score yet', () => {
       expect(game.getTotalScore()).toEqual(0);
+    });
+
+    it('.bonusToSpend() returns 2', () => {
+      expect(game.bonusToSpend()).toEqual(2);
     });
 
     it('adds the bonus from the next 2 rolls', () => {
@@ -211,10 +223,6 @@ describe('Game', () => {
     });
 
 
-  });
-
-  describe('.writeResult', () => {
-    // writes result to a row and display HTML on page
   });
 
 });

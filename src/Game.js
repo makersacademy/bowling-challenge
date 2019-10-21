@@ -65,6 +65,11 @@ class Game {
     return this.totalScore;
   }
 
+  addBonusToSpend(bonus) {
+    this.bonus += bonus;
+  }
+
+
   // addBonusScore(score) { // add bonus to previous score
   //
   // }
@@ -91,6 +96,7 @@ class Game {
 
     if (this.is1stRoll() && isClear) { // ------------------- 1st ROLL: STRIKE!
       this.frames[frameID][rollID].notes = 'STRIKE!';
+      this.addBonusToSpend(2);
       this.newFrame();
       return;
 
@@ -99,6 +105,7 @@ class Game {
       this.standingPins = this.STARTING_PINS - knocks;
 
     } else if (this.is2ndRoll() && isClear) { // ------------- 2nd ROLL: SPARE!
+      this.addBonusToSpend(1);
       this.resetPins();
 
     } else if (this.is2ndRoll() && isClear == false) { // ------- 2nd ROLL: MEH

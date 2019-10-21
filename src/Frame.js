@@ -3,6 +3,8 @@
 function Frame() {
   this.roll = [];
   this.inFrameScore = 0;
+  this.strike = false;
+  this.spare = false;
 };
 
 Frame.prototype.getRolls = function() {
@@ -15,33 +17,35 @@ Frame.prototype.getCurrentScore = function() {
 }
 
 Frame.prototype.knockedDownPins = function(score){
-  this.validateFrameLength();
-  this.validateScore();
-  if (score >= 10){
-    this.roll.push(0);
-  } else {
+  if (score <=10 && this.calculateFrameScore(score)<=10 ){
     this.roll.push(score);
+    this.isStrike();
+    this.isSpare();
+  } else {
+    return this.roll
   }
 }
-
-Frame.prototype.validateScore = function() {
-  if ((this.calculateFrameScore > 10) && (this.roll.first !== 10)) {
-    console.log("Only ten pins in lane")
-  }
-}
-
+//  && this.validateFrameLength() && this.validateScore()
+// && this.validateFrameLength()
 Frame.prototype.validateFrameLength = function() {
   if (this.roll.length >= 2) {
     console.log('Only two rolls allowed per frame')
-    // return 'Only two rolls allowed per frame'
-    return this.getRolls()
-  }
+    return false;
+  } 
 }
 
-Frame.prototype.calculateFrameScore = function(){
-  return this.roll.reduce((a, b) => a + b, 0)
+Frame.prototype.calculateFrameScore = function(num=0){
+  return this.roll.reduce((a, b) => a + b, num);
 }
 
 Frame.prototype.isStrike = function(){
-    this.knockedDownPins === 10;
+  if (this.roll[0] === 10){
+    this.strike = true;
+  } 
+}
+
+Frame.prototype.isSpare = function(){
+  if (this.calculateFrameScore() === 10){
+    this.spare = true;
   }
+}

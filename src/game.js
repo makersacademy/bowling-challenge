@@ -22,9 +22,17 @@ Game.prototype.getCurrentScoreCard = function() {
 };
 
 Game.prototype.roll = function(pins) {
-  this.score += pins
-  this.scoreCard.push({frame: this.frameNumber, roll: this.rollNumber, pins: pins})
-  this.endTurn()
+  this.score += pins;
+  this.saveScore(pins);
+  this.endTurn();
+};
+
+Game.prototype.saveScore = function(pins) {
+  this.scoreCard.push({
+    frame: this.frameNumber,
+    roll: this.rollNumber,
+    pins: pins
+  });
 };
 
 Game.prototype.endTurn = function() {

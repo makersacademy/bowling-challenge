@@ -29,17 +29,14 @@ describe("Game", function() {
   });
 
   it("saves the roll number on each roll", function() {
-    for (i=0; i < 3; i++) { game.roll(4); };
+    for (i=0; i < 1; i++) { game.roll(4); };
     var roll = game.scoreCard.pop().roll;
-    console.log(roll);
     expect(roll).toEqual(1);
   });
 
   it("saves the frame number on each roll", function() {
     for (i=0; i < 3; i++) { game.roll(4); };
     var frame = game.scoreCard.pop().frame;
-    console.log(game.scoreCard);
-    console.log(frame);
     expect(frame).toEqual(2);
   });
 });

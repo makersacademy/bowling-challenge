@@ -19,6 +19,12 @@ describe("Game", function() {
     for (i=0; i < 3; i++) {
       game.roll(5);
     }
+    var startingIndex = game.scoreCard.length-3
+    var previousTwoRolls = game.scoreCard.slice(startingIndex, 2);
+    var roll1 = previousTwoRolls.shift().pins;
+    var roll2 = previousTwoRolls.shift().pins;
+    console.log(roll1 + roll2)
+    console.log(game.scoreCard)
     expect(game.getCurrentScore()).toEqual(20);
   });
 

@@ -15,6 +15,17 @@ $(document).ready(function() {
     updateScore();
     endgame();
   });
+
+  $('#reset-card').on('click', function(){
+    if (confirm("Are you sure you want to start a new game? This action cannot be undone.")) { 
+      scorecard.newGame();
+      updateScore();
+      document.getElementById('score').reset();
+
+    }
+  });
+
+
   function endgame(){
    $('#game-over').text(scorecard.gameOver())
   };
@@ -22,5 +33,4 @@ $(document).ready(function() {
   function updateScore() {
     $('#player-score').text(scorecard.total + " points");
   };
-
 });

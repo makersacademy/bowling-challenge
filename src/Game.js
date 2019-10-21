@@ -78,10 +78,12 @@ class Game {
   // scored, because we know the frame score would be 10.
   // After calculating bonus, just add 10 when calculating retrospective score.
 
-  // Supporting functions for play(arg)
+  // Supporting functions for play(userInput)
 
-  addStrikeNote() {}
-  addSpareNote() {}
+  addNote(frameID, note) {
+    this.frames[frameID].notes = note;
+  }
+
   calcRemainingPins() {}
 
   targetThisRollObj() {}
@@ -93,17 +95,23 @@ class Game {
 
     // Log the knocks as integers, no matter the outcome
     let knocks = parseInt(userInput);
-    let frameID = `frame${this.getCurrentFrame()}`;
-    let rollID = `roll${this.getCurrentRoll()}`;
+    let thisFrame = this.getCurrentFrame();
+    let thisRoll = this.getCurrentRoll();
+    let frameID = `frame${thisFrame}`;
+    let rollID = `roll${thisRoll}`;
 
     this.frames[frameID][rollID].knocks = knocks;
+
+    // To check for unspent bonuses in prev frame and apply them if so
+    // Do this after logging the knocks but before assigning any new unspent bonus
+
     console.log(this.frames);
 
     // Check if all pins are down
     let isClear = (this.standingPins - knocks <= 0);
 
     if (this.is1stRoll() && isClear) { // ------------------- 1st ROLL: STRIKE!
-      this.frames[frameID][rollID].notes = 'STRIKE!';
+      this.addNote(frameID, 'STRIKE!');
       this.assignUnspentBonus(frameID, this.STRIKE_BONUS);
       this.newFrame();
       return;
@@ -113,17 +121,18 @@ class Game {
       this.standingPins = this.STARTING_PINS - knocks;
 
     } else if (this.is2ndRoll() && isClear) { // ------------- 2nd ROLL: SPARE!
-      this.frames[frameID][rollID].notes = 'SPARE!';
+      this.addNote(frameID, 'SPARE!');
       this.assignUnspentBonus(frameID, this.SPARE_BONUS);
       this.resetPins();
 
     } else if (this.is2ndRoll() && isClear == false) { // ------- 2nd ROLL: MEH
-      let prevRollID = `roll${this.getCurrentRoll() - 1}`;
+      let prevRollID = `roll${thisRoll - 1}`;
       let frameScore = this.frames[frameID][rollID].knocks;
       frameScore += this.frames[frameID][prevRollID].knocks;
       this.frames[frameID].totalScore = this.updateTotalScore(frameScore);
     }
 
+    // To print output here, before setting up next play
     this.setupNextPlay();
   }
 

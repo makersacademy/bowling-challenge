@@ -17,7 +17,8 @@ Frame.prototype.getCurrentScore = function() {
 }
 
 Frame.prototype.knockedDownPins = function(score){
-  if (score <=10 && this.calculateFrameScore(score)<=10 ){
+  
+  if (score <=10 && this.calculateFrameScore(score)<=10 && this.validateFrameLength()) {
     this.roll.push(score);
     this.isStrike();
     this.isSpare();
@@ -25,13 +26,14 @@ Frame.prototype.knockedDownPins = function(score){
     return this.roll
   }
 }
-//  && this.validateFrameLength() && this.validateScore()
-// && this.validateFrameLength()
+
 Frame.prototype.validateFrameLength = function() {
   if (this.roll.length >= 2) {
     console.log('Only two rolls allowed per frame')
     return false;
-  } 
+  } else {
+    return true
+  }
 }
 
 Frame.prototype.calculateFrameScore = function(num=0){

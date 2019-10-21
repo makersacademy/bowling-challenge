@@ -33,13 +33,9 @@ describe('Frame', function() {
 
     it('does not save a roll value if there are more than 2 rolls in a frame', function(){
       frame.knockedDownPins(4);
-      // console.log(frame.getCurrentScore(), frame.validateFrameLength())
       frame.knockedDownPins(3);
-      // console.log(frame.getCurrentScore(), frame.validateFrameLength())
       frame.knockedDownPins(2);
-      // console.log(frame.getCurrentScore(), frame.validateFrameLength())
       frame.knockedDownPins(1);
-      // console.log(frame.getCurrentScore(), frame.validateFrameLength())
       expect(frame.getRolls()).toEqual([4,3]);
     })
   })

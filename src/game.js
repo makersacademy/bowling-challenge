@@ -18,6 +18,10 @@ Game.prototype.getCurrentRoll = function() {
 
 Game.prototype.roll = function(pins) {
   this.score += pins
+  this.endTurn()
+};
+
+Game.prototype.endTurn = function() {
   if (this.rollNumber === 1 ){
     this.rollNumber ++
   } else {

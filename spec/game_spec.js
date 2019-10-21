@@ -28,8 +28,14 @@ describe("Game", function() {
       game.roll(1);
       expect(game.getCurrentScore()).toEqual(1);
     });
+  });
+
+  describe('endTurn', function() {
     it('changes the turn', function() {
-      game.roll(1);
+      for (i=0; i < 5; i++) {
+        game.endTurn();
+      }
+      expect(game.getCurrentFrame()).toEqual(3);
       expect(game.getCurrentRoll()).toEqual(2);
     });
   });

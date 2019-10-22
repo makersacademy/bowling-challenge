@@ -86,20 +86,18 @@ Game.prototype.calculateBonusScore = function() {
 
 Game.prototype.calculateStrikeBonus = function() {
   var strike_accum = 0;
+  var roll = this;
   this.frames.forEach(function(frame, index, all_frames) {
-    if ( frame.includes(10) && index < 7 ) { //wanted to use the wasStrike method here
-      if (all_frames[index + 1].includes(10)) {
+    if ( roll.wasStrike(frame) && index < 8 ) {
+      if ( roll.wasStrike(all_frames[index + 1]) ) {
         strike_accum += all_frames[index + 1].reduce((roll_one, roll_two) => roll_one + roll_two,0) +
-                        all_frames[index + 2].reduce((roll_one, roll_two) => roll_one + roll_two,0);
+                        (all_frames[index + 2][0] || 0);
       } else {
         strike_accum += all_frames[index + 1].reduce((roll_one, roll_two) => roll_one + roll_two,0);
       }
-    } else if ( frame.includes(10) && index === 7 ) {
-        if (all_frames[index + 1].includes(10)) {
-        strike_accum += all_frames[index + 1].reduce((roll_one, roll_two) => roll_one + roll_two,0) + all_frames[index + 2][0];
-        }
-    } else if ( frame.includes(10) && index === 8 ) {
-        strike_accum += all_frames[index + 1][0] + all_frames[index + 1][1];
+    }
+    if ( roll.wasStrike(frame) && index === 8 ) {
+        strike_accum += (all_frames[index + 1][0] || 0 ) + (all_frames[index + 1][1] || 0 );
     }
   });
   return strike_accum;
@@ -107,9 +105,10 @@ Game.prototype.calculateStrikeBonus = function() {
 
 Game.prototype.calculateSpareBonus = function() {
   var spare_accum = 0;
+  var roll = this;
   this.frames.forEach(function(frame, index, all_frames) {
-    if ( frame[0] !== 10 && frame[0] + frame[1] === 10 ) { //wanted to use the wasSpare here
-      spare_accum += all_frames[index + 1][0];
+    if ( roll.wasSpare(frame) && index < 9 ) {
+      spare_accum += all_frames[index + 1][0] || 0;
     }
   });
   return spare_accum;

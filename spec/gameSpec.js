@@ -116,6 +116,15 @@ describe('Game', function() {
       expect(game.total_score).toEqual(39);
     });
 
+    it("calculates the correct score for 2 strikes and then a score below 10", function() {
+      game.addBowl(10);
+      game.addBowl(10);
+      game.addBowl(3);
+      game.addBowl(2);
+      game.calculateScore();
+      expect(game.total_score).toEqual(43);
+    });
+
     it("calculates the correct score for 3 strikes and then a score below 10", function() {
       game.addBowl(10);
       game.addBowl(10);
@@ -162,6 +171,27 @@ describe('Game', function() {
       game.addBowl(1);
       game.calculateScore();
       expect(game.total_score).toEqual(245);
+    });
+
+    it("correctly scores 11 spares and a 5", function() {
+      for ( var i = 0; i < 21; i++ ) {
+        game.addBowl(5);
+      }
+      game.calculateScore();
+      expect(game.total_score).toEqual(150);
+    });
+
+    it("correctly scores a combination of spares and strikes", function() {
+      game.addBowl(5);
+      game.addBowl(5);
+      game.addBowl(10);
+      game.addBowl(10);
+      game.addBowl(5);
+      game.addBowl(5);
+      game.addBowl(1);
+      game.addBowl(9);
+      game.calculateScore();
+      expect(game.total_score).toEqual(86);
     });
 
     it("scores the perfect game as 300", function() {

@@ -18,28 +18,34 @@ Game.prototype.getCurrentRoll = function() {
 };
 
 Game.prototype.roll = function(pins) {
-  if ( this.frameNumber > 1 ){
-    if ( this.rollNumber === 1 ){
-      var startingIndex = (this.scoreCard.length-3);
-      var previousTwoRolls = this.scoreCard.slice(startingIndex, 2);
-
-      //var roll1 = previousTwoRolls.shift().pins;
-      //var roll2 = previousTwoRolls.shift().pins;
-      if (roll1 + roll2 === 10 ){
-        bonus = 2;
-        this.score += (2 + 2);
-      } else {
-          this.score += pins;
-      }
-    } else {
-      this.score += pins;
-    }
-  } else {
+  if ( this.frameNumber === 1 ){
     this.score += pins;
+  } else {
+    this.isBonus(pins);
   }
   this.saveScore(pins);
   this.endTurn();
 };
+
+Game.prototype.isBonus = function(pins) {
+  if ( this.rollNumber === 1 ){
+    this.calculateBonus(pins);
+  } else {
+    this.score += pins;
+  }
+};
+
+Game.prototype.calculateBonus = function(pins) {
+  var roll1 = this.scoreCard[this.scoreCard.length - 2].pins
+  var roll2 = this.scoreCard[this.scoreCard.length - 1].pins
+  if (roll1 + roll2 === 10 ){
+    bonus = 2;
+    this.score += pins * 2;
+  } else {
+      this.score += pins;
+  }
+};
+
 
 Game.prototype.saveScore = function(pins) {
   this.scoreCard.push({

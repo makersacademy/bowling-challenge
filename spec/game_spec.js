@@ -41,7 +41,7 @@ describe("Game", function() {
   describe('saveScore', function() {
     it("saves the frame, roll & number of pins on each roll", function() {
       for (i=0; i < 3; i++) { game.roll(4); }
-      // scoreCard = [{frame: 1 roll: 1, pins: 4}, ... ]
+      // scoreCard = [{frame: 1, roll: 1, pins: 4}, ... ]
       var lastestRoll = game.scoreCard.length-1
       var frame = game.scoreCard[lastestRoll].frame;
       var roll = game.scoreCard[lastestRoll].roll;

@@ -62,7 +62,6 @@ describe('Frame', function() {
       expect(frame.spare).toEqual(false);
       frame.knockedDownPins(2);
       frame.knockedDownPins(8);
-      
       expect(frame.spare).toEqual(true);
     })
   })

@@ -23,17 +23,6 @@ describe ('BowlingGame', function() {
     expect(game.currentFrame).toEqual(3);
   });
 
-  it('adds a bonus roll if there is a spare', function() {
-    game.bowl(5);
-    game.bowl(5);
-    expect(game.bonusRoll).toEqual(1);
-  });
-
-  it('adds 2 bonus rolls if there is a strike', function() {
-    game.bowl(10);
-    expect(game.bonusRoll).toEqual(2);
-  });
-
   it('adds bonus points to previous frame if there is a spare', function() {
     game.bowl(5);
     game.bowl(5);

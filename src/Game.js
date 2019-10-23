@@ -10,19 +10,17 @@ function Game(){
 }
 
 Game.prototype.addFrame = function(frame){
-  this.frameScore[this.frameNumber] = frame.roll;
+  this.frameScore[this.frameNumber] = frame;
   this.frameNumber++;
 }
 
-// Game.prototype.getCumulativeScore = function(frame) {
-//   // for (var i = 1; i < 11; i++){
-//   //   this.cumulativeScore += this.frameScore[i].getCurrentScore()
-//   // }
-//   let selectedFrame = this.frameScore[this.frameNumber];
-//   this.cumulativeScore += selectedFrame.inFrameScore;
-//   this.frameNumber++;
-// }
+Game.prototype.getCumulativeScore = function() {
+  for (var i = 1; i < 11; i++){
+    this.cumulativeScore += this.frameScore[i].inFrameScore
+  }
+    return this.cumulativeScore
+}
 
 Game.prototype.getTotalScore = function(){
-  return this.cumulativeScore + this.bonusScore;
+  return this.getCumulativeScore() + this.bonusScore;
 }

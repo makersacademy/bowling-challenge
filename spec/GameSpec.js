@@ -36,9 +36,8 @@ describe('Game', function() {
       for (var i = 0; i < 10; i++){
         game.addFrame(frames[i])
       }
-      expect(game.getTotalScore()).toEqual(88);
+      expect(game.getTotalScore()).toEqual(80);
     })
   })
-
 
 })

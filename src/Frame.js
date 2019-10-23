@@ -22,8 +22,9 @@ Frame.prototype.knockedDownPins = function(score){
     this.roll.push(score);
     this.isStrike();
     this.isSpare();
+    return this.getCurrentScore();
   } else {
-    return this.roll
+    return this.getCurrentScore();
   }
 }
 

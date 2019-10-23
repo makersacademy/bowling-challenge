@@ -62,4 +62,15 @@ describe ('BowlingGame', function() {
     expect(game.allFrames[2]).toEqual([5, 1]);
   });
 
+    it('calculates the correct score for a double strike', function() {
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(5);
+      game.bowl(1);
+      game.bowl(6);
+      game.bowl(0);
+      expect(game.allFrames[1]).toEqual([10, 10, 5]);
+      expect(game.allFrames[2]).toEqual([10, 5, 1]);
+    });
+
 });

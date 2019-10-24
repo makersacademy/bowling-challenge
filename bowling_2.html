@@ -1,0 +1,52 @@
+<script src="src/game.js"></script>
+<script src="jquery.js"></script>
+<script src="src/interface.js"></script>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="bowling.css">
+</head>
+
+<h1 class="title">Bowling Score Card</h1>
+ <div id="buttons" class="buttons">
+   Pins Hit:
+   <button type="button" onclick="pinHit(0)"  class="btn0">0</button>
+   <button type="button" onclick="pinHit(1)"  class="btn1">1</button>
+   <button type="button" onclick="pinHit(2)"  class="btn2">2</button>
+   <button type="button" onclick="pinHit(3)"  class="btn3">3</button>
+   <button type="button" onclick="pinHit(4)"  class="btn4">4</button>
+   <button type="button" onclick="pinHit(5)"  class="btn5">5</button>
+   <button type="button" onclick="pinHit(6)"  class="btn6">6</button>
+   <button type="button" onclick="pinHit(7)"  class="btn7">7</button>
+   <button type="button" onclick="pinHit(8)"  class="btn8">8</button>
+   <button type="button" onclick="pinHit(9)"  class="btn9">9</button>
+   <button type="button" onclick="pinHit(10)"  class="btn10">10</button>
+ </div>
+ <div id='scorecard'>
+ <table id='scorecardTable' class='scorecard' cellpadding='1' cellspacing='0'>
+   <tr>
+     <th colspan='6'>Frame 1</th>
+     <th colspan='6'>Frame 2</th>
+     <th colspan='6'>Frame 3</th>
+     <th colspan='6'>Frame 4</th>
+     <th colspan='6'>Frame 5</th>
+     <th colspan='6'>Frame 6</th>
+     <th colspan='6'>Frame 7</th>
+     <th colspan='6'>Frame 8</th>
+     <th colspan='6'>Frame 9</th>
+     <th colspan='6'>Frame 10</th>
+   </tr>
+   <tr>
+     <td colspan='3'></td><td id="frame1"colspan='3'></td>
+     <td colspan='3'></td><td id="frame2" colspan='3'></td>
+     <td colspan='3'></td><td id="frame3" colspan='3'></td>
+     <td colspan='3'></td><td id="frame4" colspan='3'></td>
+     <td colspan='3'></td><td id="frame5" colspan='3'></td>
+     <td colspan='3'></td><td id="frame6" colspan='3'></td>
+     <td colspan='3'></td><td id="frame7" colspan='3'></td>
+     <td colspan='3'></td><td id="frame8" colspan='3'></td>
+     <td colspan='3'></td><td id="frame9" colspan='3'></td>
+     <td colspan='3'></td><td id="frame10" colspan='3'></td>
+   </tr>
+   </div>
+   <br>
+   <center><h2> Total Score: <span id="total_score"></span></h2>

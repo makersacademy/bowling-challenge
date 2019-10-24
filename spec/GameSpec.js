@@ -40,4 +40,21 @@ describe('Game', function() {
     })
   })
 
+  describe('a perfect game', function(){
+    it('shows a total score of 300 for a perfect game', function(){
+      let frames = [];
+      for (var i = 0; i < 10; i++) { 
+        frames[i] = new Frame(); 
+        frames[i].knockedDownPins(10)
+        frames[i].knockedDownPins(0)
+      }
+      for (var i = 0; i < 10; i++){
+        game.addFrame(frames[i])
+      }
+      game.finalFrameBonusRoll(10)
+      game.lastBonus(10)
+      expect(game.getTotalScore()).toEqual(300);
+    })
+  })
+
 })

@@ -1,0 +1,21 @@
+.header {
+  height: 200px;
+  background-image: url("images/bowling.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+body {
+  color: red;
+}
+
+h1 {
+  padding-top: 150px;
+  color: #ededed;
+}
+
+.btn-primary {
+  background-color: #6398ed;
+  color: white;
+}

@@ -2,67 +2,67 @@ $(document).ready(function() {
   var game = new Game();
 
 
-  $('.btn0').click(function() {
+  $('#btn0').click(function() {
     game.addBowl(0);
     updateFrames();
     updateScore();
   });
 
-  $('.btn1').click(function() {
+  $('#btn1').click(function() {
     game.addBowl(1);
     updateFrames();
     updateScore();
   });
 
-  $('.btn2').click(function() {
+  $('#btn2').click(function() {
     game.addBowl(2);
     updateFrames();
     updateScore();
   });
 
-  $('.btn3').click(function() {
+  $('#btn3').click(function() {
     game.addBowl(3);
     updateFrames();
     updateScore();
   });
 
-  $('.btn4').click(function() {
+  $('#btn4').click(function() {
     game.addBowl(4);
     updateFrames();
     updateScore();
   });
 
-  $('.btn5').click(function() {
+  $('#btn5').click(function() {
     game.addBowl(5);
     updateFrames();
     updateScore();
   });
 
-  $('.btn6').click(function() {
+  $('#btn6').click(function() {
     game.addBowl(6);
     updateFrames();
     updateScore()
   });
 
-  $('.btn7').click(function() {
+  $('#btn7').click(function() {
     game.addBowl(7);
     updateFrames();
     updateScore()
   });
 
-  $('.btn8').click(function() {
+  $('#btn8').click(function() {
     game.addBowl(8);
     updateFrames();
     updateScore()
   });
 
-  $('.btn9').click(function() {
+  $('#btn9').click(function() {
     game.addBowl(9);
     updateFrames();
     updateScore()
   });
 
-  $('.btn10').click(function() {
+  $('#btn10').click(function() {
     game.addBowl(10);
     updateFrames();
     updateScore()

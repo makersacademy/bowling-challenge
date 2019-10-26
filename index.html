@@ -5,17 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link href="styles/style.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Graduate|Patrick+Hand+SC&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Graduate|Patrick+Hand+SC&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="scripts/ball.js"></script>
     <script src="scripts/frame.js"></script>
     <script src="scripts/scorecard.js"></script>
+    <script src="scripts/interface.js"></script>
     <title>Bowling Scorecard</title>
   </head>
   <body>
     <header>
       <h1>Bowling Scorecard</h1>
+      <img class='logo'src="images/ten-pin-bowling-2385094_640.png" alt="logo">
     </header>
     <main>
+      <form class="user_details" action="">
+        <label for="username">Please enter your name: </label>
+        <input type="text" name="username" id="name" />
+        <input type="submit" id="submit-player-name" value="Submit" />
+      </form>
+      <br />
+      <div class="pins">
+        <div class="pin" id='pin_01'>1</div>
+        <div class="pin" id='pin_02'>2</div>
+        <div class="pin" id='pin_03'>3</div>
+        <div class="pin" id='pin_04'>4</div>
+        <div class="pin" id='pin_05'>5</div>
+        <div class="pin" id='pin_06'>6</div>
+        <div class="pin" id='pin_07'>7</div>
+        <div class="pin" id='pin_08'>8</div>
+        <div class="pin" id='pin_09'>9</div>
+        <div class="pin" id='pin_10'>10</div>
+        <div class="gutter_ball" id='pin_00'>Gutter ball!</div>
+      </div>
+
       <div class="scorecard">
         <div class="frame" id="frame01">
           <div class="number">Frame 1</div>
@@ -90,11 +116,8 @@
         </div>
       </div>
     </main>
-    <nav>
-      Nav
-    </nav>
     <footer>
-      Footer
+      <a href="http://www.github.com/JDtheGeek" target="_blank">By JDtheGeek</a>
     </footer>
   </body>
 </html>

@@ -1,35 +1,203 @@
-header {
-  font-family: 'Graduate', cursive;
+body {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto 1fr auto 1fr;
+  background: #FEAC5E;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #4BC0C8, #C779D0, #FEAC5E);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #4BC0C8, #C779D0, #FEAC5E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  grid-template-areas:
+  "header"
+  "main"
+  "main"
+  "footer";
 }
 
-body {
-  font-family: 'Patrick Hand SC', cursive;
+header {
+  grid-area: header;
+  display: grid;
+  grid-template-columns: 1fr auto;	
+  font-family: 'Graduate', cursive;
+  background-color: #4BC0C8;
+  margin-bottom: 1em;
+  padding: 0.5em;
+  border-radius: 0.4em;
+  box-shadow: 0 3px 4px 0 rgba(0,0,0,0.14), 0 3px 3px -2px rgba(0,0,0,0.12), 0 1px 8px 0 rgba(0,0,0,0.20);
+}
+
+header .logo {
+  position: top;
+  max-height: 5em;
+}
+main {
+  grid-area: main;
+  display: grid;
+  gap: 2em;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas:
+  "form  form  pins  pins"
+  "score score score score"
+}
+
+footer {
+  font: 200;
+  grid-area: footer;
+  align-self: end;
+  text-align: right;
+}
+
+.user_details {
+  grid-area: form;
+  padding: 1em;
+  background: #4BC0C8;
+  min-width: 10em;
+  border-radius: 0.4em;
+  box-shadow: 0 3px 4px 0 rgba(0,0,0,0.14), 0 3px 3px -2px rgba(0,0,0,0.12), 0 1px 8px 0 rgba(0,0,0,0.20);
+}
+
+.pins {
+  place-self: center;
+  align-content: center;
+  grid-area: pins;
+  grid-column-start: 3;
+  grid-column-end: end;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  max-width: 10em;
+}
+
+.pin {
+  cursor: pointer;
+  justify-self: auto;
+  font-family: 'Graduate', cursive;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 2em;
+  color: red;
+  background-color: white;
+  margin-left: -0.4em;
+  margin-right: -0.4em;
+  margin-bottom: -0.2em;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  border-color: red;
+  border-style: solid;
+  border-width: 2px;
+  box-shadow: 0 3px 4px 0 rgba(0,0,0,0.14), 0 3px 3px -2px rgba(0,0,0,0.12), 0 1px 8px 0 rgba(0,0,0,0.20);
+}
+
+#pin_07 {
+  grid-column-start: 1;
+  grid-row-start: 1;
+}
+
+#pin_08 {
+  grid-column-start: 3;
+  grid-row-start: 1;
+}
+
+#pin_09 {
+  grid-column-start: 5;
+  grid-row-start: 1;
+}
+
+#pin_10 {
+  grid-column-start: 7;
+  grid-row-start: 1;
+}
+
+#pin_04 {
+  grid-column-start: 2;
+  grid-row-start: 2;
+}
+
+#pin_05 {
+  grid-column-start: 4;
+  grid-row-start: 2;
+}
+
+#pin_06 {
+  grid-column-start: 6;
+  grid-row-start: 2;
+}
+
+#pin_02 {
+  grid-column-start: 3;
+  grid-row-start: 3;
+}
+
+#pin_03 {
+  grid-column-start: 5;
+  grid-row-start: 3;
+}
+
+#pin_01 {
+  grid-column-start: 4;
+  grid-row-start: 4;
+}
+
+.gutter_ball {
+  cursor: pointer;
+  text-align: center;
+  grid-column-start: 1;
+  grid-column-end: span col8-start;
+  grid-row-start: end;
+  /* justify-content: stretch;	 */
+  background-color: white;
+  color: red;
+  width: auto;
+  height: auto;
+  padding: 0.3em;
+  border-radius: 1em;
+  border-color: red;
+  border-style: solid;
+  border-width: 2px;
+  box-shadow: 0 3px 4px 0 rgba(0,0,0,0.14), 0 3px 3px -2px rgba(0,0,0,0.12), 0 1px 8px 0 rgba(0,0,0,0.20);
 }
 
 .scorecard {
+  grid-area: score;
   display: grid;
   justify-content: stretch;	
   grid-template-columns: repeat(10, auto);
   grid-template-rows: auto auto auto;
-  border-style: solid;
-  border-color: black;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  /* border-style: solid; */
+  /* border-color: black; */
   border-width: 1px;
   box-shadow: 0 3px 4px 0 rgba(0,0,0,0.14), 0 3px 3px -2px rgba(0,0,0,0.12), 0 1px 8px 0 rgba(0,0,0,0.20);
 }
 
 .frame {
+  font-family: 'Patrick Hand SC', cursive;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas: 
+    "num   num   num "
+    "left  box   box"
+    "score score score";
+  min-width: 6rem;
+  width:auto;
+  min-height: 4rem;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+#frame10 {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: repeat(3, auto);
   grid-template-areas: 
     "num   num   num   num"
     "left  box   box   box"
     "score score score score";
-  min-width: 5rem;
-  min-height: 4rem;
-  border-style: solid;
-  border-color: black;
-  border-width: 1px;
+  width: auto;
 }
 
 .number {
@@ -56,22 +224,25 @@ body {
 }
 
 .box {
+  cursor: pointer;
   text-align: center;
   grid-area: 'box';
-  min-width: 2.2rem;
   min-height: 2rem;
+  min-width: 1.5rem;
   border-top: 0px;
   border-bottom: 2px;
   border-left: 2px;
   border-right: 0px;
   border-style: solid;
   border-color: black;
+  background-color: white;
 }
 
 .bottom_area {
   text-align: center;
   grid-area: 'score';
   grid-column-start: span 4;
-  min-width: 5rem;
-  min-height: 4rem;
+  min-width: 4rem;
+  min-height: 3rem;
+  background-color: white;
 }

@@ -23,17 +23,15 @@ class Frame {
   }
 
   addBall(pins, ball = this.currentBall) {
+    let thisBall = new Ball(pins)
     if (this.isFrameTen) {
       console.log("fix frame 10")
     } else if (thisBall.pins === 10) {
-      let thisBall = new Ball(pins)
-      this.balls[ball - 1] = thisBall
       this.isStrike = true
       console.log('Strike!')
     } else {
-      let thisBall = new Ball(pins)
       this.balls[ball - 1] = thisBall
-      console.log("Ten ${pins}")
+      console.log('Pins: ' + pins)
     }
     this.update()
   }

@@ -10,6 +10,7 @@ function BowlingGame() {
   this.currentFrame = 1;
   this.previousFrame = 0;
   this.previous2Frame = -1;
+  this.cumulativeScore = 0
 };
 
 BowlingGame.prototype.bowl = function(number) {
@@ -54,4 +55,5 @@ BowlingGame.prototype.calculate = function(frameNumber) {
     sum += frame[i];
   };
   this.allFramesScore[frameNumber] = sum;
+  this.cumulativeScore += sum;
 };

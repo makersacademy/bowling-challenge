@@ -12,11 +12,11 @@ describe("BowlingScore", function(){
     });
   });
 
-  describe("addScore", function(){
+  describe("finalScore", function(){
     it("add the new score to previus round", function(){
       bowlingscore.newRound()
       bowlingscore.round.currentScore = 3
-      bowlingscore.addScore("", 5)
+      bowlingscore.finalScore("", 5)
 
       expect(bowlingscore.round.currentScore).toEqual(8)
     });
@@ -25,7 +25,7 @@ describe("BowlingScore", function(){
       bowlingscore.newRound()
       bowlingscore.round.currentScore = 10
       bowlingscore.round.roll1 = 5
-      bowlingscore.addScore("spare", 24)
+      bowlingscore.finalScore("spare", 24)
 
       expect(bowlingscore.round.currentScore).toEqual(39)
     });
@@ -33,7 +33,7 @@ describe("BowlingScore", function(){
     it("add a plus strike at the previous score", function(){
       bowlingscore.newRound()
       bowlingscore.round.currentScore = 3
-      bowlingscore.addScore("strike", 20)
+      bowlingscore.finalScore("strike", 20)
 
       expect(bowlingscore.round.currentScore).toEqual(26)
     });

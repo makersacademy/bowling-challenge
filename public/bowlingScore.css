@@ -6,10 +6,6 @@
   background-position: left;
 }
 
-body {
-  color: red;
-}
-
 h1 {
   padding-top: 150px;
   color: #ededed;
@@ -18,4 +14,42 @@ h1 {
 .btn-primary {
   background-color: #6398ed;
   color: white;
+}
+
+.rounds > div {
+  border: 1px red solid;
+  border-left: none;
+  /* background-color: #488ec4; */
+}
+
+.rounds .round-1 {
+  border-left: 1px red solid;
+}
+
+.rounds .title {
+  border-bottom: 1px red solid;
+  margin-left: -15px;
+  margin-right: -15px;
+  text-align: center; /* width: 100% */
+}
+
+.rolls > div {
+  /* border: 1px red solid; */
+  border-bottom: 1px red solid;
+}
+
+.roll-1 {
+  border-right: 1px red solid;
+}
+
+.roll-3 {
+  border-left: 1px red solid;
+}
+
+.rolls.row > div {
+  height: 25px;
+}
+
+.score {
+  height: 25px;
 }

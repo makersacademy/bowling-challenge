@@ -8,7 +8,7 @@ BowlingScore.prototype.newRound = function() {
   return this.round = new Round()
 }
 
-BowlingScore.prototype.addScore = function(prevPlus, prevScore) {
+BowlingScore.prototype.finalScore = function(prevPlus, prevScore) {
   if (prevPlus === "strike") {
     this.round.currentScore += prevScore + this.round.currentScore
   } else if (prevPlus === "spare") {

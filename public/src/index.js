@@ -16,12 +16,12 @@ $(document).ready(function() {
       startNewRound()
       $("#current-round").text(bowlingScore.currRound)
     } else if (bowlingScore.currRound < 10) {
-      bowlingScore.addScore(plus, score)
+      bowlingScore.finalScore(plus, score)
       printValue()
       startNewRound()
       $("#current-round").text(bowlingScore.currRound)
     } else {
-      bowlingScore.addScore(plus, score)
+      bowlingScore.finalScore(plus, score)
       printValue()
       $("#input-roll-1, .first-roll .btn").prop("disabled", true)
       $(".form-group.second-roll").toggleClass("d-none")
@@ -59,10 +59,10 @@ $(document).ready(function() {
   }
 
   startNewRound()
-  $("#current-round").text(bowlingScore.currRound)
+  // $("#current-round").text(bowlingScore.currRound)
 
-  $( ".first-roll .btn" ).click(function( event ) {
-    roll1 = $("#input-roll-1").val()
+  $( ".btn" ).click(function( event ) {
+    roll1 = $(".round-" + "bowlingScore.currRound" + " .rolls .roll-1").val()
     if (typeof round.setRoll1(roll1) === "string") {
       alert(round.setRoll1(roll1))
     } else {

@@ -1,0 +1,39 @@
+.frame {
+  width: 80px;
+  height: 80px;
+  margin: 0;
+  border: 2px solid #dddddd;
+}
+
+/* .frame-container {
+  margin-left: auto;
+  margin-right: auto;
+} */
+
+.roll {
+  width: 30%;
+  border-left: 2px solid #dddddd;
+  border-bottom: 2px solid #dddddd;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+body {
+  font-family: "Nunito", sans-serif !important;
+  color: #222222;
+}
+
+.score {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.frame-count {
+  color: #555;
+  font-size: 12px;
+}
+
+#header {
+  font-weight: 800;
+  font-size: 72px;
+}

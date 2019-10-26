@@ -8,7 +8,7 @@ describe('Bowling', () => {
   });
 
   it('Initial score is 0', () => {
-    expect(game.getCurrentScore()).toEqual(0);
+    expect(game.score()).toEqual(0);
   });
 
   it('Game has frames', () => {
@@ -25,7 +25,7 @@ describe('Bowling', () => {
     game.roll(4);
     game.roll(3);
 
-    expect(game.getCurrentScore()).toEqual(7);
+    expect(game.score()).toEqual(7);
   });
 
   it('Frame is complete and stored', () => {
@@ -41,8 +41,7 @@ describe('Bowling', () => {
     game.roll(3);
     game.roll(6);
 
-
-    expect(game.getCurrentScore()).toEqual(15);
+    expect(game.score()).toEqual(15);
   });
 
   it('Player scores strike, next 2 rolls are added as bonus', () => {
@@ -50,7 +49,7 @@ describe('Bowling', () => {
     game.roll(2);
     game.roll(3);
 
-    expect(game.getCurrentScore()).toEqual(20);
+    expect(game.score()).toEqual(20);
   });
 
   it('Player scores spare, next 1 roll is added as bonus', () => {
@@ -59,7 +58,7 @@ describe('Bowling', () => {
     game.roll(3);
     game.roll(3);
 
-    expect(game.getCurrentScore()).toEqual(19);
+    expect(game.score()).toEqual(19);
   });
 
   it('Player scores 3 strikes and 2 regular rolls', () => {
@@ -69,7 +68,7 @@ describe('Bowling', () => {
     game.roll(3);
     game.roll(2);
 
-    expect(game.getCurrentScore()).toEqual(75);
+    expect(game.score()).toEqual(75);
   });
 
   it('Game ends after 10 frames', () => {
@@ -89,20 +88,19 @@ describe('Bowling', () => {
     game.roll(10);
     game.roll(10);
     game.roll(10);
+    console.log(' ');
+    console.log('roll8 - ' + game.score());
     game.roll(10);
-    console.log(game.getFrameScore());
-    console.log(game.framesScores);
+    console.log('roll9 - ' + game.score());
     game.roll(10);
-    console.log(game.getFrameScore());
-    console.log(game.framesScores);
+    console.log('roll10 - ' + game.score());
     game.roll(10);
-    console.log(game.getFrameScore());
-    console.log(game.framesScores);
+    console.log('roll11 - ' + game.score());
     game.roll(10);
-    console.log(game.getFrameScore());
-    console.log(game.framesScores);
+    console.log('roll12 - ' + game.score());
+    console.log(game.frames);
 
-    expect(game.getCurrentScore()).toEqual(300);
+    expect(game.score()).toEqual(300);
     expect(game.perfectGame()).toEqual(true);
   });
 });

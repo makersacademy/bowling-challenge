@@ -4,7 +4,7 @@ var BowlingCard = function() {
   this.scoreCard = []
 };
 
-BowlingCard.prototype.roll = function(pins) {
+BowlingCard.prototype.record = function(pins) {
   this.saveScore(pins);
   this.endTurn(pins);
 };

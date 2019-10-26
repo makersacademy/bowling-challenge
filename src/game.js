@@ -1,9 +1,12 @@
 var Game = function() {
   this.bowlingCard = new BowlingCard
+  this.scoreCalculator = new ScoreCalculator
 };
 
 Game.prototype.roll = function(pins) {
-  this.bowlingCard.roll(pins)
+  this.bowlingCard.record(pins);
+  //console.log(this.getScoreCard());
+  // this.scoreCalculator.calculate(this.getScoreCard());
 };
 
 Game.prototype.getScoreCard = function() {
@@ -17,18 +20,3 @@ Game.prototype.getCurrentFrame = function() {
 Game.prototype.getCurrentRoll = function() {
   return this.bowlingCard.rollNumber
 };
-
-
-
-
-
-// Game.prototype.calculateBonus = function(pins) {
-//   var roll1 = this.scoreCard[this.scoreCard.length - 2].pins
-//   var roll2 = this.scoreCard[this.scoreCard.length - 1].pins
-//   if (roll1 + roll2 === 10 ){
-//     var multiplier = 2;
-//     this.score += pins * multiplier;
-//   } else {
-//       this.score += pins;
-//   }
-// };

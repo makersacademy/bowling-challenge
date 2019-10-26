@@ -39,13 +39,12 @@ Game.prototype.calculateBonus = function(pins) {
   var roll1 = this.scoreCard[this.scoreCard.length - 2].pins
   var roll2 = this.scoreCard[this.scoreCard.length - 1].pins
   if (roll1 + roll2 === 10 ){
-    bonus = 2;
-    this.score += pins * 2;
+    var multiplier = 2;
+    this.score += pins * multiplier;
   } else {
       this.score += pins;
   }
 };
-
 
 Game.prototype.saveScore = function(pins) {
   this.scoreCard.push({

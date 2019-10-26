@@ -22,4 +22,8 @@ describe("Game", function() {
     expect(game.getCurrentScore()).toEqual(20);
   });
 
+  it("ends the frame if player gets a strike", function() {
+      game.roll(10);
+    expect(game.frameNumber).toEqual(2);
+  });
 });

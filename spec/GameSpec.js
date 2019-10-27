@@ -95,6 +95,14 @@ describe('Game', () => {
 
   });
 
+  describe('.reduceStandingPins(knocks)', () => {
+    it('reduces the no. of standing pins by the no. of pins knocked down', () => {
+      game.reduceStandingPins(3);
+      expect(game.getStandingPins()).toEqual(7);
+    });
+  });
+
+
   describe('.resetPins()', () => {
     it('resets the number of pins for a new frame', () => {
       game.play(5);
@@ -243,6 +251,45 @@ describe('Game', () => {
     it('.getUnspentBonus(frame) is reduced every time a bonus calculation is applied', () => {
       game.play(3);
       expect(game.getUnspentBonus('frame1')).toEqual(0);
+    });
+
+  });
+
+
+  // ---------------------------- 10th Frame ----------------------------------
+
+  describe('SCENARIO 10th frame', () => {
+
+    beforeEach(() => {
+      // Play until Frame 9 is completed
+      for (let frame = 1; frame <=9; frame++) {
+        game.play(3);
+        game.play(3);
+      }
+    });
+
+    it('allows user the standard 2 rolls if neither strike or spare', () => {
+      game.play(7);
+      game.play(2);
+      expect(game.isGameOver()).toEqual(true);
+    });
+
+    it('allows user 3 rolls if a strike is scored', () => {
+      game.play(10);
+      expect(game.isGameOver()).toEqual(false);
+      game.play(3);
+      expect(game.isGameOver()).toEqual(false);
+      game.play(4);
+      expect(game.isGameOver()).toEqual(true);
+    });
+
+    it('allows user 3 rolls if a spare is scored', () => {
+      game.play(7);
+      expect(game.isGameOver()).toEqual(false);
+      game.play(3);
+      expect(game.isGameOver()).toEqual(false);
+      game.play(4);
+      expect(game.isGameOver()).toEqual(true);
     });
 
   });

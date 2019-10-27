@@ -15,8 +15,9 @@ class Game {
     this.standingPins = this.STARTING_PINS;
 
     // Create a JS object to record the game results
+    // Create 11 frames for a 10-frame game: 11th frame for calculating bonus only
     this.frames = new Object;
-    for (let frame = 1; frame <= this.MAX_FRAMES; frame++) {
+    for (let frame = 1; frame <= this.MAX_FRAMES + 1; frame++) {
       this.frames['frame' + frame] = new Object;
       for (let roll = 1; roll <=2; roll++) {
         this.frames['frame' + frame]['roll' + roll] = new Object;
@@ -55,9 +56,28 @@ class Game {
   }
 
   isGameOver() {
-    let checkFinalFrame = (this.currentFrame === this.MAX_FRAMES);
-    let checkFinalRoll = (this.currentRoll === 2); // To replace magic number later
-    return (checkFinalFrame && checkFinalRoll);
+
+    let hasCompletedFinalFrame = this.currentFrame > this.MAX_FRAMES;
+    let hasCompletedBonusFrame = this.currentFrame > this.MAX_FRAMES + 1;
+
+    let didStrikeInFinalFrame = this.frames[`frame${this.MAX_FRAMES}`].notes === 'STRIKE!';
+    let didSpareInFinalFrame = this.frames[`frame${this.MAX_FRAMES}`].notes === 'SPARE!';
+
+    let didNotScoreFinalBonus = !didStrikeInFinalFrame && !didSpareInFinalFrame;
+
+    if (hasCompletedFinalFrame && didNotScoreFinalBonus) {
+      return true;
+
+    } else if (didStrikeInFinalFrame && hasCompletedBonusFrame) {
+      return true;
+
+    } else if (hasCompletedFinalFrame && didSpareInFinalFrame) {
+      if (getCurrentRoll() == 2) return true;
+
+    } else {
+      return false;
+    }
+
   }
 
   // Setters
@@ -104,13 +124,38 @@ class Game {
   }
 
 
+  // Printer
+
+  // printResults() {
+  //
+  //   let row;
+  //   for (let frame = 1; frame <= this.MAX_FRAMES; frame++) {
+  //
+  //     let resultFrame = this.frames[`frame${frame}`];
+  //
+  //     for (let roll = 1; roll <= 2; roll++) {
+  //       row = `<div class="row">`;
+  //       row += `<div class="col-2 px-3">${frame}</div>`;
+  //       row += `<div class="col-2 px-3">${roll}</div>`;
+  //       row += `<div class="col-2 px-3">${resultFrame[`roll${roll}`].knocks}</div>`;
+  //       row += `<div class="col-2 px-3" id="score">${resultFrame.totalScore}</div>`;
+  //       row += `<div class="col-4 px-3" id="notes">${resultFrame.notes}</div>`;
+  //       row += `</div>`;
+  //     }
+  //   }
+  //   return row;
+  // }
+
+
   // Supporting functions for play(userInput)
 
   addNote(frameID, note) {
     this.frames[frameID].notes = note;
   }
 
-  calcRemainingPins() {}
+  reduceStandingPins(knocks) {
+    this.standingPins = this.STARTING_PINS - knocks;
+  }
 
   targetThisRollObj() {}
   targetPrevRollObj() {}
@@ -134,6 +179,9 @@ class Game {
 
   // ================== EVERY TIME PLAYER SUBMITS THE FORM ====================
   play(userInput) {
+
+    // Guard condition: check for end game
+    if (this.isGameOver()) return;
 
     // Log the knocks as integers, no matter the outcome
     let knocks = parseInt(userInput);
@@ -163,8 +211,7 @@ class Game {
       return;
 
     } else if (this.is1stRoll() && isClear == false) { // ------- 1st ROLL: MEH
-      // Useful for imposing limits on user input
-      this.standingPins = this.STARTING_PINS - knocks;
+      this.reduceStandingPins(knocks);
 
     } else if (this.is2ndRoll() && isClear) { // ------------- 2nd ROLL: SPARE!
       this.addNote(frameID, 'SPARE!');
@@ -179,8 +226,6 @@ class Game {
     }
 
     this.updateTotalScores();
-
-    // To print output here, before setting up next play
 
     this.setupNextPlay();
   }

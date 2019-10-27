@@ -5,6 +5,7 @@ $(document).ready(function() {
     game = new Game();
     clearFrames();
     updateFrames();
+    $(document).find('.buttons_1').show();
   });
 
 
@@ -82,10 +83,10 @@ $(document).ready(function() {
 
   function updateScore() {
     game.calculateScore();
-    hideButtons();
+    hidePinButtons();
   };
 
-  function hideButtons() {
+  function hidePinButtons() {
     if ( game.current_frame !== 10 ) {
       if ( Number(game.frames[game.current_frame - 1].reduce((roll_one, roll_two) => roll_one + roll_two,0)) > 0 ) {
         document.getElementById("btn10").style.visibility="hidden";
@@ -135,6 +136,8 @@ $(document).ready(function() {
         document.getElementById("btn8").style.visibility="visible";
         document.getElementById("btn9").style.visibility="visible";
         document.getElementById("btn10").style.visibility="visible";
+    } if ( game.game_over === true ) {
+      $(document).find('.buttons_1').hide();
     }
   };
 

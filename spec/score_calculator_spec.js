@@ -20,46 +20,49 @@ describe("ScoreCalculator", function() {
             {frame: 10, roll: 2, pins: 10},
             {frame: 10, roll: 3, pins: 10}
             ]
-    framePerTurn = [1, 1, 2, 3, 3, 4, 5, 5, 6, 7, 8, 9, 10, 10, 10]
-    rollPerTurn = [1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 2, 3]
-    pinsPerTurn = [3, 4, 10, 1, 2, 10, 5, 5, 10, 10, 10, 10, 10, 10, 10]
-    normalScore = [7, 10, 3, 10, 10, 10, 10, 10, 10, 30]
-    bonusTurns = ["normal", "normal", "Strike", "normal", "normal", "Strike",
+    framePerTurn1 = [1, 1, 2, 3, 3, 4, 5, 5, 6, 7, 8, 9, 10, 10, 10]
+    rollPerTurn1 = [1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 2, 3]
+    pinsPerTurn1 = [3, 4, 10, 1, 2, 10, 5, 5, 10, 10, 10, 10, 10, 10, 10]
+    normalScore1 = [7, 10, 3, 10, 10, 10, 10, 10, 10, 30]
+    bonusTurns1 = ["normal", "normal", "Strike", "normal", "normal", "Strike",
       "normal", "Split", "Strike", "Strike", "Strike", "Strike",
       "Strike", "Strike", "Strike"]
   });
 
-  describe('arrange', function() {
-    it('calculates the total score for each frame', function() {
-      scoreCalculator.arrange(scoreCard1);
-      // expect(framePerTurn).toEqual(framePerTurn);
-    });
-  });
-
+  // describe('arrange', function() {
+  //   it('calculates the total score for each frame', function() {
+  //     scoreCalculator.arrange(scoreCard1);
+  //     expect(scoreCalculator.framePerTurn).toEqual(framePerTurn1);
+  //     expect(scoreCalculator.rollPerTurn).toEqual(rollPerTurn1);
+  //     expect(scoreCalculator.pinsPerTurn).toEqual(pinsPerTurn1);
+  //   });
+  // });
+  //
   describe('calculateScore', function() {
     it('calculates the total score for each frame', function() {
-      scoreCalculator.calculateScore(framePerTurn, rollPerTurn, pinsPerTurn);
+     scoreCalculator.calculateScore(scoreCard1);
       //expect(scoreCalculator.frameScores).toEqual([7,13,3,20,20,30,30,30,30,30]);
     });
   });
 
   describe('calculateNormalScore', function() {
     it('calculates the score of each frame without bonus points', function() {
-      scoreCalculator.calculateNormalScore(framePerTurn, pinsPerTurn);
-      expect(scoreCalculator.frameScores).toEqual(normalScore);
+      scoreCalculator.framePerTurn = framePerTurn1;
+      scoreCalculator.calculateNormalScore(pinsPerTurn1);
+      expect(scoreCalculator.frameScores).toEqual(normalScore1);
     });
   });
 
-  describe('isbonusTurn', function() {
-    it('describes if a turn was a strike, split or normal turn', function() {
-      scoreCalculator.isbonusTurn(pinsPerTurn, rollPerTurn);
-      expect(scoreCalculator.bonusTurns).toEqual(bonusTurns);
-    });
-  });
-  describe('calculateBonusScore', function() {
-    it('calculates the bonus points of a turn', function() {
-      // scoreCalculator.calculateBonusScore(pinsPerTurn, framePerTurn);
-      //expect().toEqual();
-    });
-  });
+//   describe('isbonusTurn', function() {
+//     it('describes if a turn was a strike, split or normal turn', function() {
+//       scoreCalculator.isbonusTurn(pinsPerTurn1, rollPerTurn1);
+//       expect(scoreCalculator.bonusTurns).toEqual(bonusTurns1);
+//     });
+//   });
+//   describe('calculateBonusScore', function() {
+//     it('calculates the bonus points of a turn', function() {
+//       // scoreCalculator.calculateBonusScore(pinsPerTurn, framePerTurn);
+//       //expect().toEqual();
+//     });
+//   });
 });

@@ -3,31 +3,34 @@ var ScoreCalculator = function() {
   this.currentScore = 0
   this.frameScores = [0,0,0,0,0,0,0,0,0,0]
   this.bonusTurns = []
+  this.framePerTurn = []
+  this.pinsPerTurn = []
+  this.rollPerTurn = []
+};
+
+ScoreCalculator.prototype.calculateScore = function(scoreCard) {
+  this.arrange(scoreCard);
+  this.calculateNormalScore(this.pinsPerTurn.slice());
+  //this.isbonusTurn(pinsPerTurn.slice(), rollPerTurn);
+  //this.calculateBonusScore(pinsPerTurn, framePerTurn);
+
 };
 
 ScoreCalculator.prototype.arrange = function(scoreCard) {
-  let framePerTurn = []
-  let pinsPerTurn = []
-  let rollPerTurn = []
+  let framePerTurn = this.framePerTurn
+  let pinsPerTurn = this.pinsPerTurn
+  let rollPerTurn = this.rollPerTurn
   scoreCard.forEach(function(turn) {
     framePerTurn.push(turn.frame);
     rollPerTurn.push(turn.roll);
     pinsPerTurn.push(turn.pins);
   });
-  this.calculateScore(framePerTurn, rollPerTurn, pinsPerTurn);
 };
 
-ScoreCalculator.prototype.calculateScore = function(framePerTurn, rollPerTurn, pinsPerTurn) {
-  console.log(framePerTurn);
-  this.calculateNormalScore(framePerTurn, pinsPerTurn.slice());
-  this.isbonusTurn(pinsPerTurn.slice(), rollPerTurn);
-  this.calculateBonusScore(pinsPerTurn, framePerTurn);
-};
-
-ScoreCalculator.prototype.calculateNormalScore = function(framePerTurn, pinsPerTurn) {
+ScoreCalculator.prototype.calculateNormalScore = function(pinsPerTurn) {
   let frameX = 1
   let frameScores = this.frameScores;
-  framePerTurn.forEach(function(turn) {
+  this.framePerTurn.forEach(function(turn) {
     if ( turn === frameX ) {
       frameScores[ frameX - 1 ] += ( pinsPerTurn.shift() );
     } else {
@@ -35,6 +38,7 @@ ScoreCalculator.prototype.calculateNormalScore = function(framePerTurn, pinsPerT
       frameScores[ frameX - 1 ] += ( pinsPerTurn.shift() );
     }
   });
+  console.log(this.frameScores);
 };
 
 ScoreCalculator.prototype.isbonusTurn = function(pinsPerTurn, rollPerTurn) {
@@ -72,4 +76,26 @@ ScoreCalculator.prototype.calculateBonusScore = function(pinsPerTurn, framePerTu
   console.log(this.bonusTurns);
   console.log(pinsPerTurn);
   console.log(framePerTurn);
+  console.log(this.pinsPerTurn);
+  console.log(this.framePerTurn);
+  console.log(this.rollPerTurn);
+  console.log(this.bonusTurns);
+  console.log(this.frameScores);
 };
+
+// var pins = [3,2,10,4,2,10]
+//
+// var count = 0
+// nextTwoList = []
+// pins.forEach(function() {
+//   // console.log(pins.slice(count+1,count+3));
+//   nextTwoList.push(pins.slice(count+1,count+3));
+//   count ++
+// });
+//
+// console.log(nextTwoList);
+//
+// nextTwoList.forEach(function(nextTwo, index) {
+//   console.log(nextTwo);
+//   console.log( index );
+// });

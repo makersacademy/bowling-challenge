@@ -70,43 +70,35 @@ ScoreCalculator.prototype.isbonusTurn = function(pinsPerTurn) {
 };
 
 ScoreCalculator.prototype.calculateBonusScore = function() {
-  console.log(this.framePerTurn);
-  console.log(this.rollPerTurn);
-  console.log(this.pinsPerTurn);
-  console.log(this.bonusTurns);
-  console.log(this.frameScores);
-
   let index = 0
   let pins = this.pinsPerTurn
   let frameScores = this.frameScores;
   let framePerTurn = this.framePerTurn;
+
   this.bonusTurns.forEach(function(bonus) {
-    console.log( "index " + index );
-    if ( bonus === "Strike" ) {
-      console.log(bonus);
-      nextRoll1 = pins.slice(index +1, index +2)[0];
-      nextRoll2 = pins.slice(index +2, index +3)[0];
-      currentFrame = (framePerTurn[index]);
-      frameScore = frameScores[currentFrame-1];
-      console.log("CFrame " + currentFrame);
-      console.log("CFScr " + frameScore);
-      if (nextRoll1) {frameScore += nextRoll1 }
-      if (nextRoll2) {frameScore += nextRoll2 }
+    currentFrame = (framePerTurn[index]);
+    frameScore = frameScores[currentFrame-1];
+    if( currentFrame < 10 ) {
+      if ( bonus === "Strike" ) {
+        nextRoll1 = pins.slice(index +1, index +2)[0];
+        nextRoll2 = pins.slice(index +2, index +3)[0];
+        if (nextRoll1) {frameScore += nextRoll1 }
+        if (nextRoll2) {frameScore += nextRoll2 }
+      }
+      else if ( bonus === "Split" ) {
+        nextRoll = pins.slice(index +1, index +2)[0];
+        if (nextRoll) {frameScore += nextRoll}
+      }
       frameScores[currentFrame-1] = frameScore
-    }
-    else if ( bonus === "Split" ) {
-      console.log(bonus);
-      nextRoll = pins.slice(index +1, index +2)[0];
-      currentFrame = (framePerTurn[index]);
-      frameScore = frameScores[currentFrame-1];
-      console.log("CFrame " + currentFrame);
-      console.log("CFScr " + frameScore);
-      if (nextRoll) {frameScore += nextRoll}
-      frameScores[currentFrame-1] = frameScore
-      console.log("CFScr " + frameScore);
-    }
-    index ++
-    console.log("--------------");
+      index ++
+    };
+    this.frameScores = frameScores;
   });
-  console.log("final " + frameScores);
 };
+
+
+// console.log(this.framePerTurn);
+// console.log(this.rollPerTurn);
+// console.log(this.pinsPerTurn);
+// console.log(this.bonusTurns);
+// console.log(this.frameScores);

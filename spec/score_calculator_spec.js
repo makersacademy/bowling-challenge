@@ -41,8 +41,8 @@ describe("ScoreCalculator", function() {
 
   describe('calculateScore', function() {
     it('calculates the total score for each frame', function() {
-    //scoreCalculator.calculateScore(scoreCard1);
-    //expect(scoreCalculator.frameScores).toEqual(bonusScore1);
+      scoreCalculator.calculateScore(scoreCard1);
+      expect(scoreCalculator.frameScores).toEqual(bonusScore1);
     });
   });
 
@@ -65,7 +65,6 @@ describe("ScoreCalculator", function() {
   describe('calculateBonusScore', function() {
     it('calculates the bonus points of each turn', function() {
       scoreCalculator.framePerTurn = framePerTurn1;
-      scoreCalculator.rollPerTurn = rollPerTurn1;
       scoreCalculator.pinsPerTurn = pinsPerTurn1;
       scoreCalculator.bonusTurns = bonusTurns1;
       scoreCalculator.frameScores = normalScore1;

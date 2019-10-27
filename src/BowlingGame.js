@@ -40,7 +40,12 @@ BowlingGame.prototype.calculateFrame = function() {
     this.allFrames[this.previousFrame].push(this.allFrames[this.currentFrame][1]);
     this.calculate(this.previousFrame);
   };
-  if(this.allFrames[this.previous2Frame][0] == 10 && this.allFrames[this.previousFrame][0] == 10 && this.allFrames[this.previousFrame].length < 3) {
+  if(this.allFrames[this.previous2Frame][0] == 10 && this.allFrames[this.previousFrame][0] == 10 && this.allFrames[this.currentFrame][0] + this.allFrames[this.currentFrame][1] <= 10) {
+    this.allFrames[this.previous2Frame].push(this.allFrames[this.previousFrame][0]);
+    this.allFrames[this.previous2Frame].push(this.allFrames[this.currentFrame][0]);
+    this.calculate(this.previous2Frame);
+  };
+  if(this.allFrames[this.previous2Frame][0] == 10 && this.allFrames[this.previousFrame][0] == 10 && this.allFrames[this.currentFrame][0] == 10) {
     this.allFrames[this.previous2Frame].push(this.allFrames[this.previousFrame][0]);
     this.allFrames[this.previous2Frame].push(this.allFrames[this.currentFrame][0]);
     this.calculate(this.previous2Frame);

@@ -7,7 +7,14 @@ body {
   text-align: center;
 
 }
-.buttons{
+
+.boldscore{
+  font-weight: bold;
+  font-size:16px
+
+}
+
+.buttons_1{
   box-shadow:inset 0px 1px 0px 1px #cf866c;
 	background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
 	background-color:#0549a3;
@@ -22,10 +29,11 @@ body {
 	text-decoration:none;
 	text-shadow:0px 1px 0px #854629;
 }
-/* .myButton {
-	box-shadow:inset 0px 1px 0px 1px #cf866c;
-	background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
-	background-color:#d0451b;
+
+.buttons_2{
+  box-shadow:inset 0px 1px 0px 1px #cf866c;
+	background:linear-gradient(to bottom, #d0451b 30%, #bc3315 50%);
+	background-color:#0549a3;
 	border-radius:17px;
 	border:1px solid #942911;
 	display:inline-block;
@@ -33,15 +41,16 @@ body {
 	color:#ffffff;
 	font-family:Arial;
 	font-size:13px;
-	padding:21px 28px;
+	padding:20px 28px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #854629;
-} */
-.buttons:hover {
+}
+
+.buttons_1:hover {
 	background:linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
 	background-color:#bc3315;
 }
-.buttons:active {
+.buttons_1:active {
 	position:relative;
 	top:1px;
 }
@@ -58,7 +67,7 @@ body {
 #playagain{
   text-align: center;
 }
-table.scorecard {margin: 0 auto; width:80%; font-size:12px; border:1px solid; text-align: center; table-layout: fixed; margin-bottom: 40px;}
+table.scorecard {margin: 0 auto; width:80%; font-size:15px; border:1px solid; text-align: center; table-layout: fixed; margin-bottom: 40px;}
 table.scorecard th, tr, td {padding: 0; vertical-align: middle; font-family: Arial, Helvetica, sans-serif; text-align: center;}
 table.scorecard th {border-bottom:1px solid; background-color:#b30000; height:30px; color: #fff}
 table.scorecard th:not(:last-child) {border-right:1px solid;}

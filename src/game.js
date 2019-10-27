@@ -1,8 +1,10 @@
 'use strict';
 
 function Game() {
-  this.total_score = 0;
   this.frames = [[],[],[],[],[],[],[],[],[],[]];
+  this.frame_base = [[],[],[],[],[],[],[],[],[],[]];
+  this.frame_bonus = [[],[],[],[],[],[],[],[],[],[]];
+  this.frame_scores = [[],[],[],[],[],[],[],[],[],[]];
   this.current_frame = 1;
   this.game_over = false;
 }
@@ -65,51 +67,57 @@ Game.prototype.nextFrame = function() { //Look into making this private
 };
 
 Game.prototype.calculateScore = function() {
-  var total_base = this.calculateBaseScore();
-  var total_bonus = this.calculateBonusScore();
-  return this.total_score = total_base + total_bonus;
+  this.calculateBaseScore();
+  this.calculateBonusScore();
+  this.calculateFrameScore();
+};
+
+Game.prototype.calculateFrameScore = function() {
+  let game = this;
+  this.frame_scores.forEach(function(frame, index, all_frames) {
+    if (game.frames[index].length > 0 && index < 9 ) {
+      all_frames[index] = Number(game.frame_base[index] || 0) + Number(game.frame_bonus[index] || 0 ) +
+      Number(all_frames[index - 1] || 0 );
+    } if (game.frames[index].length > 0 && index == 9 ) {
+      all_frames[index] = Number(game.frame_base[index] || 0) + Number(all_frames[index - 1] || 0 );
+    }
+  });
 };
 
 Game.prototype.calculateBaseScore = function() {
-  var base_accum = 0;
-  this.frames.forEach(function(frame) {
-    base_accum += frame.reduce((roll_one, roll_two) => roll_one + roll_two,0);
+  var roll = this;
+  this.frames.forEach(function(frame, index) {
+    roll.frame_base[index] = frame.reduce((roll_one, roll_two) => roll_one + roll_two,0);
   });
-  return base_accum;
 };
 
 Game.prototype.calculateBonusScore = function() {
-  var strike_bonus = this.calculateStrikeBonus();
-  var spare_bonus = this.calculateSpareBonus();
-  return strike_bonus + spare_bonus;
+  this.calculateStrikeBonus();
+  this.calculateSpareBonus();
 };
 
 Game.prototype.calculateStrikeBonus = function() {
-  var strike_accum = 0;
   var roll = this;
   this.frames.forEach(function(frame, index, all_frames) {
     if ( roll.wasStrike(frame) && index < 8 ) {
       if ( roll.wasStrike(all_frames[index + 1]) ) {
-        strike_accum += all_frames[index + 1].reduce((roll_one, roll_two) => roll_one + roll_two,0) +
+        roll.frame_bonus[index] = all_frames[index + 1].reduce((roll_one, roll_two) => roll_one + roll_two,0) +
                         (all_frames[index + 2][0] || 0);
       } else {
-        strike_accum += all_frames[index + 1].reduce((roll_one, roll_two) => roll_one + roll_two,0);
+        roll.frame_bonus[index] = all_frames[index + 1].reduce((roll_one, roll_two) => roll_one + roll_two,0);
       }
     }
     if ( roll.wasStrike(frame) && index === 8 ) {
-        strike_accum += (all_frames[index + 1][0] || 0 ) + (all_frames[index + 1][1] || 0 );
+        roll.frame_bonus[index] = ((all_frames[index + 1][0] || 0 ) + (all_frames[index + 1][1] || 0 ));
     }
   });
-  return strike_accum;
 };
 
 Game.prototype.calculateSpareBonus = function() {
-  var spare_accum = 0;
   var roll = this;
   this.frames.forEach(function(frame, index, all_frames) {
     if ( roll.wasSpare(frame) && index < 9 ) {
-      spare_accum += all_frames[index + 1][0] || 0;
+      roll.frame_bonus[index] = (all_frames[index + 1][0] || 0);
     }
   });
-  return spare_accum;
 };

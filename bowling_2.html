@@ -11,19 +11,22 @@
   <link rel="stylesheet" type="text/css" href="bowling.css">
 </head>
 <center><img src="./public/images/bowling_logo.png">
- <div id="buttons" class="-">
-   <button id=btn0 type="button" onclick="pinHit(0)"  class="buttons">0</button>
-   <button id=btn1 type="button" onclick="pinHit(1)"  class="buttons">1</button>
-   <button id=btn2 type="button" onclick="pinHit(2)"  class="buttons">2</button>
-   <button id=btn3 type="button" onclick="pinHit(3)"  class="buttons">3</button>
-   <button id=btn4 type="button" onclick="pinHit(4)"  class="buttons">4</button>
-   <button id=btn5 type="button" onclick="pinHit(5)"  class="buttons">5</button>
-   <button id=btn6 type="button" onclick="pinHit(6)"  class="buttons">6</button>
-   <button id=btn7 type="button" onclick="pinHit(7)"  class="buttons">7</button>
-   <button id=btn8 type="button" onclick="pinHit(8)"  class="buttons">8</button>
-   <button id=btn9 type="button" onclick="pinHit(9)"  class="buttons">9</button>
-   <button id=btn10 type="button" onclick="pinHit(10)"  class="buttons">10</button>
+ <div id="buttons_1">
+   <button id=btn_new_game type="button" class="buttons_2">New game</button>
+   <button id=btn0 type="button" class="buttons_1">0</button>
+   <button id=btn1 type="button" class="buttons_1">1</button>
+   <button id=btn2 type="button" class="buttons_1">2</button>
+   <button id=btn3 type="button" class="buttons_1">3</button>
+   <button id=btn4 type="button" class="buttons_1">4</button>
+   <button id=btn5 type="button" class="buttons_1">5</button>
+   <button id=btn6 type="button" class="buttons_1">6</button>
+   <button id=btn7 type="button" class="buttons_1">7</button>
+   <button id=btn8 type="button" class="buttons_1">8</button>
+   <button id=btn9 type="button" class="buttons_1">9</button>
+   <button id=btn10 type="button" class="buttons_1">10</button>
  </div>
+ <br>
+ <br>
  <div id='scorecard'>
  <table id='scorecardTable' class='scorecard' cellpadding='1' cellspacing='0'>
    <tr>
@@ -36,23 +39,33 @@
      <th colspan='6'>Frame 7</th>
      <th colspan='6'>Frame 8</th>
      <th colspan='6'>Frame 9</th>
-     <th colspan='6'>Frame 10</th>
+     <th colspan='9'>Frame 10</th>
    </tr>
    <tr>
-     <td colspan='3'></td><td id="frame1"colspan='3'></td>
-     <td colspan='3'></td><td id="frame2" colspan='3'></td>
-     <td colspan='3'></td><td id="frame3" colspan='3'></td>
-     <td colspan='3'></td><td id="frame4" colspan='3'></td>
-     <td colspan='3'></td><td id="frame5" colspan='3'></td>
-     <td colspan='3'></td><td id="frame6" colspan='3'></td>
-     <td colspan='3'></td><td id="frame7" colspan='3'></td>
-     <td colspan='3'></td><td id="frame8" colspan='3'></td>
-     <td colspan='3'></td><td id="frame9" colspan='3'></td>
-     <td colspan='3'></td><td id="frame10" colspan='3'></td>
+     <td id="frame1_r1" colspan='3'></td><td id="frame1_r2"colspan='3'></td>
+     <td id="frame2_r1" colspan='3'></td><td id="frame2_r2" colspan='3'></td>
+     <td id="frame3_r1" colspan='3'></td><td id="frame3_r2" colspan='3'></td>
+     <td id="frame4_r1" colspan='3'></td><td id="frame4_r2" colspan='3'></td>
+     <td id="frame5_r1" colspan='3'></td><td id="frame5_r2" colspan='3'></td>
+     <td id="frame6_r1" colspan='3'></td><td id="frame6_r2" colspan='3'></td>
+     <td id="frame7_r1" colspan='3'></td><td id="frame7_r2" colspan='3'></td>
+     <td id="frame8_r1" colspan='3'></td><td id="frame8_r2" colspan='3'></td>
+     <td id="frame9_r1" colspan='3'></td><td id="frame9_r2" colspan='3'></td>
+     <td id="frame10_r1" colspan='3'></td><td id="frame10_r2" colspan='3'></td><td id="frame10_r3" colspan='3'></td>
    </tr>
-   </div>
+   <tr>
+     <td class=boldscore id="frame1sc" colspan='6'></td>
+     <td class=boldscore id="frame2sc" colspan='6'></td>
+     <td class=boldscore id="frame3sc" colspan='6'></td>
+     <td class=boldscore id="frame4sc" colspan='6'></td>
+     <td class=boldscore id="frame5sc" colspan='6'></td>
+     <td class=boldscore id="frame6sc" colspan='6'></td>
+     <td class=boldscore id="frame7sc" colspan='6'></td>
+     <td class=boldscore id="frame8sc" colspan='6'></td>
+     <td class=boldscore id="frame9sc" colspan='6'></td>
+     <td class=boldscore id="frame10sc" colspan='6'></td>
+</tr>
    <br>
-   <center><h2> Total Score: <span id="total_score"></span></h2>
-
+   </div>
   </body>
 </html>

@@ -22,6 +22,24 @@ describe("Game", function() {
        expect(game.getPins()).toEqual([6, 3]);
     });
   });
+
+  describe('getScore', function() {
+    it('displays the players current score.', function() {
+      expect(game.getScore()).toEqual(0);
+    });
+  });
+
+  describe('getCurrentFrame', function() {
+    it('displays the players current Frame.', function() {
+      expect(game.getCurrentFrame()).toEqual(1);
+    });
+  });
+
+  describe('getCurrentRoll', function() {
+    it('displays the players current Roll.', function() {
+      expect(game.getCurrentRoll()).toEqual(1);
+    });
+  });
 });
 
 // console.log( game.getScore() );

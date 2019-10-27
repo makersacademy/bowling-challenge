@@ -43,6 +43,7 @@ describe("ScoreCalculator", function() {
     it('calculates the total score for each frame', function() {
       scoreCalculator.calculateScore(scoreCard1);
       expect(scoreCalculator.frameScores).toEqual(bonusScore1);
+      expect(scoreCalculator.score).toEqual(213);
     });
   });
 
@@ -70,6 +71,28 @@ describe("ScoreCalculator", function() {
       scoreCalculator.frameScores = normalScore1;
       scoreCalculator.calculateBonusScore();
       expect(scoreCalculator.frameScores).toEqual(bonusScore1);
+    });
+  });
+
+  describe('totalScore', function() {
+    it('calculates the current total score of the game', function() {
+      scoreCalculator.frameScores = bonusScore1;
+      scoreCalculator.totalScore();
+      expect(scoreCalculator.score).toEqual(213);
+    });
+  });
+
+  describe('reset', function() {
+    it('resets the calculator to avoid double entries from the ScoreCard', function() {
+      scoreCalculator.calculateScore(scoreCard1);
+      expect(scoreCalculator.score).toEqual(213);
+      scoreCalculator.reset();
+      expect(scoreCalculator.score).toEqual(0);
+      expect(scoreCalculator.frameScores).toEqual([0,0,0,0,0,0,0,0,0,0]);
+      expect(scoreCalculator.bonusTurns).toEqual([]);
+      expect(scoreCalculator.framePerTurn).toEqual([]);
+      expect(scoreCalculator.pinsPerTurn).toEqual([]);
+      expect(scoreCalculator.rollPerTurn).toEqual([]);
     });
   });
 });

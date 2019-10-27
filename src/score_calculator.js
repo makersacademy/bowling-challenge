@@ -16,12 +16,7 @@ ScoreCalculator.prototype.calculateScore = function(scoreCard) {
   });
   this.calculateNormalScore(framePerTurn, pinsPerTurn.slice());
   this.isbonusTurn(pinsPerTurn.slice(), rollPerTurn);
-  console.log(this.frameScores);
-  console.log(this.bonusTurns);
-  console.log(framePerTurn);
-  console.log(pinsPerTurn);
-  console.log(rollPerTurn);
-  this.calculateBonusScore();
+  this.calculateBonusScore(pinsPerTurn, framePerTurn);
 };
 
 ScoreCalculator.prototype.calculateNormalScore = function(framePerTurn, pinsPerTurn) {
@@ -67,5 +62,9 @@ ScoreCalculator.prototype.isbonusTurn = function(pinsPerTurn, rollPerTurn) {
   });
 };
 
-ScoreCalculator.prototype.calculateBonusScore = function() {
+ScoreCalculator.prototype.calculateBonusScore = function(pinsPerTurn, framePerTurn) {
+  console.log(this.frameScores);
+  console.log(this.bonusTurns);
+  console.log(pinsPerTurn);
+  console.log(framePerTurn);
 };

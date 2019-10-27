@@ -27,6 +27,7 @@ describe("ScoreCalculator", function() {
     bonusTurns1 = ["normal", "normal", "Strike", "normal", "normal", "Strike",
       "normal", "Split", "Strike", "Strike", "Strike", "Strike",
       "Strike", "Strike", "Strike"]
+    bonusScore1 = [7, 13, 3, 20, 20, 30, 30, 30, 30, 30]
   });
 
   describe('arrange', function() {
@@ -40,8 +41,8 @@ describe("ScoreCalculator", function() {
 
   describe('calculateScore', function() {
     it('calculates the total score for each frame', function() {
-     scoreCalculator.calculateScore(scoreCard1);
-      //expect(scoreCalculator.frameScores).toEqual([7,13,3,20,20,30,30,30,30,30]);
+    //scoreCalculator.calculateScore(scoreCard1);
+    //expect(scoreCalculator.frameScores).toEqual(bonusScore1);
     });
   });
 
@@ -68,8 +69,8 @@ describe("ScoreCalculator", function() {
       scoreCalculator.pinsPerTurn = pinsPerTurn1;
       scoreCalculator.bonusTurns = bonusTurns1;
       scoreCalculator.frameScores = normalScore1;
-      // scoreCalculator.calculateBonusScore();
-      //expect().toEqual();
+      scoreCalculator.calculateBonusScore();
+      // expect(scoreCalculator.frameScores).toEqual(bonusScore1);
     });
   });
 });

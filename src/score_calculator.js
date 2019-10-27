@@ -82,11 +82,15 @@ ScoreCalculator.prototype.calculateBonusScore = function() {
     console.log( "index " + index );
     if ( bonus === "Strike" ) {
       console.log(bonus);
-      console.log(pins.slice(index +1, index +3));
+      nextRoll1 = pins.slice(index +1, index +2)[0];
+      nextRoll2 = pins.slice(index +2, index +3)[0];
+      if (nextRoll1) {console.log(nextRoll1)}
+      if (nextRoll1) {console.log(nextRoll1)}
     }
     else if ( bonus === "Split" ) {
       console.log(bonus);
-      console.log(pins.slice(index +1, index +2));
+      nextRoll = pins.slice(index +1, index +2)[0];
+      if (nextRoll) {console.log(nextRoll)}
     }
     index ++
   });

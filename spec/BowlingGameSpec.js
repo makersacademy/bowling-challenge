@@ -23,6 +23,14 @@ describe ('BowlingGame', function() {
     expect(game.currentFrame).toEqual(3);
   });
 
+  it('does not allow more than 10 pins to be knowcked down in a frame', function() {
+    game.bowl(6);
+    game.bowl(5);
+    game.bowl(8);
+    game.bowl(2);
+    expect(game.allFrames[1]).toEqual([6, 2])
+  });
+
   describe ('Calculating scores and bonuses', function() {
 
     it('adds bonus points to previous frame if there is a spare', function() {
@@ -84,6 +92,8 @@ describe ('BowlingGame', function() {
       expect(game.allFramesScore[4]).toEqual(20);
       expect(game.allFramesScore[5]).toEqual(16);
       expect(game.allFramesScore[6]).toEqual(6);
+      expect(game.allFramesScore[7]).toEqual(7);
+      expect(game.allFramesScore[8]).toEqual(7);
     });
 
 

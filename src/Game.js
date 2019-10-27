@@ -22,8 +22,9 @@ class Game {
         this.frames['frame' + frame]['roll' + roll] = new Object;
       }
       this.frames['frame' + frame]['unspentBonus'] = 0;
-      this.frames['frame' + frame]['frameScore'] = 0;
       this.frames['frame' + frame]['tempFrameScore'] = 0;
+      this.frames['frame' + frame]['frameScore'] = 0;
+      this.frames['frame' + frame]['totalScore'] = 0;
     }
 
   }

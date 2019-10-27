@@ -196,7 +196,7 @@ describe('Game', () => {
     });
 
     it('does not add a score yet', () => {
-      expect(game.frames.frame1.totalScore).toEqual(undefined);
+      expect(game.frames.frame1.totalScore).toEqual(0);
     });
 
     it('.getUnspentBonus(frame) returns 2', () => {
@@ -227,10 +227,23 @@ describe('Game', () => {
       game.play(4);
     });
 
+    it('does not add a score yet', () => {
+      expect(game.frames.frame1.totalScore).toEqual(0);
+    });
+
     it('.getUnspentBonus(frame) returns 1', () => {
       expect(game.getUnspentBonus('frame1')).toEqual(1);
     });
 
+    it('adds the bonus from the next roll', () => {
+      game.play(3);
+      expect(game.frames.frame1.totalScore).toEqual(10 + 3);
+    });
+
+    it('.getUnspentBonus(frame) is reduced every time a bonus calculation is applied', () => {
+      game.play(3);
+      expect(game.getUnspentBonus('frame1')).toEqual(0);
+    });
 
   });
 

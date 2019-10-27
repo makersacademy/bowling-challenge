@@ -2,32 +2,36 @@
 
 function Frame(number){
   this.NUMBER = number;
+  this.BONUS = 0
   this.POINTS = 0;
   this.strike = false;
   this.spare = false;
 };
 
-Frame.prototype.returnpoints = function(){
-  return this.POINTS;
+Frame.prototype.setbonus = function(bonus){
+  this.BONUS = bonus;
 };
 
 Frame.prototype.addpoints = function(number){
   this.POINTS = this.POINTS + number
-}
-
-Frame.prototype.firstroll = function(pins){
-  if (pins === 10){
-    this.strike = true
-    this.POINTS = null
-  }else {
-    this.roll1 = pins};
 };
 
-Frame.prototype.secondroll = function(pins){
-  if (this.roll1 + pins === 10){
-    this.spare = true;
-    this.POINTS = null;
+Frame.prototype.returnscore = function(){
+  return this.POINTS + this.BONUS
+}
+
+Frame.prototype.firstroll = function(roll){
+  if (roll.PINS === 10){
+    this.strike = true
+
   }else {
-  this.roll2 = pins;
-  this.POINTS = this.roll1 + pins};
+    this.POINTS = roll.PINS};
+};
+
+Frame.prototype.secondroll = function(roll){
+  if (roll.PINS + this.POINTS === 10){
+    this.spare = true;
+
+  }else {
+  this.POINTS = roll.PINS + this.POINTS};
 };

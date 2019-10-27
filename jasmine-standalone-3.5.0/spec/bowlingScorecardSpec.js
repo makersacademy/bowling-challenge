@@ -3,11 +3,15 @@
 describe('BowlingScorecard', function(){
   var bowlingScorecard;
   var frame1;
+  var frame2;
   var roll;
 
   beforeEach(function(){
     bowlingScorecard = new BowlingScorecard();
-    frame1 = new Frame(1)
+    frame1 = new Frame(1);
+    frame1.POINTS = 6
+    frame2 = new Frame(2);
+    frame2.POINTS = 9
   });
   describe('initial setup', function(){
 
@@ -27,13 +31,29 @@ describe('BowlingScorecard', function(){
   describe('adding new frames', function(){
 
     it('can add a new frame to the array', function(){
-      bowlingScorecard.updateframe(frame1)
+      bowlingScorecard.updatecurrentframe(frame1)
       expect(bowlingScorecard.FRAMES[0]).toEqual(frame1)
     });
 
+    it('can add two new frames to the array', function(){
+      bowlingScorecard.updatecurrentframe(frame1)
+      bowlingScorecard.updatecurrentframe(frame2)
+      expect(bowlingScorecard.FRAMES[0]).toEqual(frame1)
+      expect(bowlingScorecard.FRAMES[1]).toEqual(frame2)
+    });
+
     it('updates the current frame tracker once a frame is added', function(){
-      bowlingScorecard.updateframe(frame1)
+      bowlingScorecard.updatecurrentframe(frame1)
       expect(bowlingScorecard.CURRENTFRAME).toEqual(2)
+    });
+  });
+
+  describe('scoring', function(){
+    it('can return the total of two non-bonus frames', function(){
+      bowlingScorecard.updatecurrentframe(frame1)
+      bowlingScorecard.updatecurrentframe(frame2)
+      bowlingScorecard.updatescore()
+      expect(bowlingScorecard.SCORE).toEqual(15)
     });
   });
 });

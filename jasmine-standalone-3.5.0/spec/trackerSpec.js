@@ -6,7 +6,8 @@ describe('Tracker', function(){
 
   beforeEach(function(){
     tracker = new Tracker
-    roll = new Roll(1,5)
+    roll = new Roll
+    roll.setpoints(1,5)
   });
 
   it('starts with an empty array of rolls', function(){

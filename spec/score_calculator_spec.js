@@ -25,8 +25,8 @@ describe("ScoreCalculator", function() {
     pinsPerTurn1 = [3, 4, 10, 1, 2, 10, 5, 5, 10, 10, 10, 10, 10, 10, 10]
     normalScore1 = [7, 10, 3, 10, 10, 10, 10, 10, 10, 30]
     bonusTurns1 = ["normal", "normal", "Strike", "normal", "normal", "Strike",
-      "normal", "Split", "Strike", "Strike", "Strike", "Strike",
-      "Strike", "Strike", "Strike"]
+                   "normal", "Split", "Strike", "Strike", "Strike", "Strike",
+                   "Strike", "Strike", "Strike"]
     bonusScore1 = [7, 13, 3, 20, 20, 30, 30, 30, 30, 30]
   });
 

@@ -90,8 +90,9 @@ ScoreCalculator.prototype.calculateBonusScore = function() {
       frameScore = frameScores[currentFrame-1];
       console.log("CFrame " + currentFrame);
       console.log("CFScr " + frameScore);
-      if (nextRoll1) {console.log(nextRoll1)}
-      if (nextRoll2) {console.log(nextRoll2)}
+      if (nextRoll1) {frameScore += nextRoll1 }
+      if (nextRoll2) {frameScore += nextRoll2 }
+      frameScores[currentFrame-1] = frameScore
     }
     else if ( bonus === "Split" ) {
       console.log(bonus);
@@ -100,9 +101,12 @@ ScoreCalculator.prototype.calculateBonusScore = function() {
       frameScore = frameScores[currentFrame-1];
       console.log("CFrame " + currentFrame);
       console.log("CFScr " + frameScore);
-      if (nextRoll) {console.log(nextRoll)}
+      if (nextRoll) {frameScore += nextRoll}
+      frameScores[currentFrame-1] = frameScore
+      console.log("CFScr " + frameScore);
     }
     index ++
     console.log("--------------");
   });
+  console.log("final " + frameScores);
 };

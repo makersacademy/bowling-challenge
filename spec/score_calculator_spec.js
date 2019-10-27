@@ -70,7 +70,7 @@ describe("ScoreCalculator", function() {
       scoreCalculator.bonusTurns = bonusTurns1;
       scoreCalculator.frameScores = normalScore1;
       scoreCalculator.calculateBonusScore();
-      // expect(scoreCalculator.frameScores).toEqual(bonusScore1);
+      expect(scoreCalculator.frameScores).toEqual(bonusScore1);
     });
   });
 });

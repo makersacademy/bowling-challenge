@@ -76,28 +76,18 @@ ScoreCalculator.prototype.calculateBonusScore = function() {
   console.log(this.bonusTurns);
   console.log(this.frameScores);
 
+  var index = 0
+  var pins = this.pinsPerTurn
   this.bonusTurns.forEach(function(bonus) {
+    console.log( "index " + index );
     if ( bonus === "Strike" ) {
       console.log(bonus);
+      console.log(pins.slice(index +1, index +3));
     }
     else if ( bonus === "Split" ) {
       console.log(bonus);
+      console.log(pins.slice(index +1, index +2));
     }
-  });
-
-  var pins = this.pinsPerTurn
-  var count = 0
-  nextTwoRollsList = []
-
-  pins.forEach(function() {
-    nextTwoRollsList.push(pins.slice(count+1, count+3));
-    count ++
-  });
-
-  console.log(nextTwoRollsList);
-
-  nextTwoRollsList.forEach(function(nextTwo, index) {
-    console.log(nextTwo);
-    console.log( index );
+    index ++
   });
 };

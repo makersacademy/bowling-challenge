@@ -1,28 +1,34 @@
 
 var ScoreCalculator = function() {
   this.currentScore = 0
+  this.frameScores = [0,0,0,0,0,0,0,0,0,0]
 };
 
 ScoreCalculator.prototype.calculate = function(scoreCard) {
-  console.log(scoreCard);
-  scoreCard.forEach(function(roll) {
-  console.log(roll);
-});
+  let framePerTurn = []
+  let pinsPerTurn = []
+  scoreCard.forEach(function(turn) {
+    framePerTurn.push(turn.frame);
+    pinsPerTurn.push(turn.pins);
+  });
+  console.log(framePerTurn);
+  console.log(pinsPerTurn);
+  let x = pinsPerTurn.slice();
+  this.calculateNormalScore(framePerTurn, pinsPerTurn);
+  console.log(this.frameScores);
+  console.log(x);
+  // this.calculateBonusScore(framePerTurn, x);
 };
 
-
-
-// ScoreCalculator.prototype.getScoreCard = function() {
-//   return this.bowlingCard.scoreCard;
-// };
-
-// ScoreCalculator.prototype.calculateBonus = function(pins) {
-//   var roll1 = this.scoreCard[this.scoreCard.length - 2].pins
-//   var roll2 = this.scoreCard[this.scoreCard.length - 1].pins
-//   if (roll1 + roll2 === 10 ){
-//     var multiplier = 2;
-//     this.score += pins * multiplier;
-//   } else {
-//       this.score += pins;
-//   }
-// };
+ScoreCalculator.prototype.calculateNormalScore = function(framePerTurn, pinsPerTurn) {
+  let frameX = 1
+  let frameScores = this.frameScores;
+  framePerTurn.forEach(function(turn) {
+    if ( turn === frameX ) {
+      frameScores[ frameX - 1 ] += ( pinsPerTurn.shift() );
+    } else {
+      frameX ++
+      frameScores[ frameX - 1 ] += ( pinsPerTurn.shift() );
+    }
+  });
+};

@@ -3,7 +3,7 @@ describe("ScoreCalculator", function() {
 
   beforeEach(function() {
     scoreCalculator = new ScoreCalculator();
-    game1 = [
+    scoreCard1 = [
             {frame: 1, roll: 1, pins: 3},
             {frame: 1, roll: 2, pins: 4},
             {frame: 2, roll: 1, pins: 10},
@@ -29,9 +29,16 @@ describe("ScoreCalculator", function() {
       "Strike", "Strike", "Strike"]
   });
 
+  describe('arrange', function() {
+    it('calculates the total score for each frame', function() {
+      scoreCalculator.arrange(scoreCard1);
+      // expect(framePerTurn).toEqual(framePerTurn);
+    });
+  });
+
   describe('calculateScore', function() {
     it('calculates the total score for each frame', function() {
-      scoreCalculator.calculateScore(game1);
+      scoreCalculator.calculateScore(framePerTurn, rollPerTurn, pinsPerTurn);
       //expect(scoreCalculator.frameScores).toEqual([7,13,3,20,20,30,30,30,30,30]);
     });
   });

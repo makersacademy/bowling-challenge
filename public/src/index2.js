@@ -21,14 +21,12 @@ $(document).ready(function() {
     if (round.currRoll === 1) {
       checkRoll1(pins)
     } else if (round.currRoll === 2) {
-      // checkRound()
       printValue(pins)
       printScore()
       startNewRound()
     } else {
       checkRoll3(pins)
     }
-    // checkRound()
   }
 
   checkRoll1 = function(pins) {
@@ -41,29 +39,29 @@ $(document).ready(function() {
     }
   }
 
-  checkRound = function() {
-    prevRound = bowlingScore.currRound - 1
-
-    prevScore = parseInt($(".round-" + prevRound + " .score")).text()
-    plus = getPlus()
-    bowlingScore.finalScore(plus, prevScore)
-
-    if (bowlingScore.currRound === 1 ) {
-      round.score()
-      printScore(round.currentScore)
-      round.countRoll()
-      startNewRound()
-    } else if (bowlingScore.currRound < 10) {
-      round.score()
-      printValue(roll)
-      printScore(round.currentScore)
-      startNewRound()
-    } else {
-      round.score()
-      printValue(roll)
-      printScore(round.currentScore)
-    }
-  }
+  // checkRound = function() {
+  //   prevRound = bowlingScore.currRound - 1
+  //
+  //   prevScore = parseInt($(".round-" + prevRound + " .score")).text()
+  //   plus = getPlus()
+  //   bowlingScore.finalScore(plus, prevScore)
+  //
+  //   if (bowlingScore.currRound === 1 ) {
+  //     round.score()
+  //     printScore(round.currentScore)
+  //     round.countRoll()
+  //     startNewRound()
+  //   } else if (bowlingScore.currRound < 10) {
+  //     round.score()
+  //     printValue(roll)
+  //     printScore(round.currentScore)
+  //     startNewRound()
+  //   } else {
+  //     round.score()
+  //     printValue(roll)
+  //     printScore(round.currentScore)
+  //   }
+  // }
 
 
   getPlus = function() {

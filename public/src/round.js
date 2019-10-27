@@ -3,7 +3,7 @@ function Round() {
   this.roll2 = 0
   this.roll3 = 0
   this.currentScore = 0
-  this.bonus = 0
+  this.plus = ""
   this.currRoll = 1
 };
 
@@ -30,9 +30,19 @@ Round.prototype.countRoll = function() {
 }
 
 Round.prototype.score = function() {
+  console.log(this.roll1)
+  console.log(this.roll2)
   this.currentScore = this.roll1 + this.roll2
-//   if (this.currentScore === 10) {
-//     // this.setPlus()
-//   }
-//   return this.currentScore
+  if (this.currentScore === 10) {
+    this.setPlus()
+  }
+  return this.currentScore
+}
+
+Round.prototype.setPlus = function() {
+  if (this.roll1 === 10 || this.roll2 === 10) {
+    this.plus = "strike"
+  } else {
+    this.plus = "spare"
+  }
 }

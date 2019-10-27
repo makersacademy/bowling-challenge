@@ -3,110 +3,78 @@ $(document).ready(function() {
 
   startNewRound = function() {
     round = bowlingScore.newRound()
-    // console.log(round)
   }
 
   checkRound = function() {
     prevRound = bowlingScore.currRound - 1
-    plus = $(".round-" + prevRound + " .plus").text()
-    score = parseInt($(".round-" + prevRound + " .total").text())
+
+    prevScore = parseInt($(".round-" + prevRound + " .score"))
+    plus = getPlus()
+    bowlingScore.finalScore(plus, prevScore)
 
     if (bowlingScore.currRound === 1 ) {
-      printValue()
+      round.score()
+      printScore(round.currentScore)
+      round.countRoll()
       startNewRound()
-      $("#current-round").text(bowlingScore.currRound)
     } else if (bowlingScore.currRound < 10) {
-      bowlingScore.finalScore(plus, score)
-      printValue()
+      round.score()
+      printValue(roll)
+      printScore(round.currentScore)
       startNewRound()
-      $("#current-round").text(bowlingScore.currRound)
     } else {
-      bowlingScore.finalScore(plus, score)
-      printValue()
-      $("#input-roll-1, .first-roll .btn").prop("disabled", true)
-      $(".form-group.second-roll").toggleClass("d-none")
-      $("#input-roll-2, .second-roll .btn").prop("disabled", true)
-      $(".form-group.third-roll").toggleClass("d-none")
-      $(".row.round-bonus").toggleClass("d-none")
+      round.score()
+      printValue(roll)
+      printScore(round.currentScore)
     }
   }
 
-  checkRoll1 = function() {
-    if (round.roll1 === 10) {
-      $("#input-roll-1, .first-roll .btn").prop("disabled", false)
-      $(".round-" + bowlingScore.currRound + " .first-roll").text(round.roll1)
-      $(".round-" + bowlingScore.currRound + " .plus").text(round.plus)
-      $(".round-" + bowlingScore.currRound + " .total").text(round.currentScore)
-      $("#input-roll-1").val(null)
-      $("#input-roll-2").val(null)
-      round.score()
-      round.setPlus()
+  checkRoll = function(roll) {
+    if (roll === 10 && round.currRoll === 1) {
+      $(".round-" + bowlingScore.currRound + " .roll-" + (round.currRoll + 1)).text("X")
       checkRound()
-      } else {
-      $(".form-group.second-roll").toggleClass("d-none") // unhide second field
-    }
-  }
-
-  checkRoll2 = function() {
-    if (round.roll2 === 10 || round.currentScore === 10) {
+    } else if (roll === 10 && round.currRoll === 2) {
+      printValue(roll)
       round.score()
-      round.setPlus()
-      checkRound()
+      printScore(round.currentScore)
+    } else if (round.currRoll === 1) {
+      printValue(roll)
+      round.countRoll()
     } else {
-      round.score()
+      printValue(roll)
       checkRound()
     }
   }
 
   startNewRound()
-  // $("#current-round").text(bowlingScore.currRound)
 
   $( ".btn" ).click(function( event ) {
-    roll1 = $(".round-" + "bowlingScore.currRound" + " .rolls .roll-1").val()
-    if (typeof round.setRoll1(roll1) === "string") {
-      alert(round.setRoll1(roll1))
+    roll = $(event.target).text()
+    currentRoll = round.setRoll(roll)
+    if (typeof currentRoll === "string") {
+      alert(currentRoll)
     } else {
-      round.setRoll1(roll1)
-      $("#input-roll-1, .first-roll .btn").prop("disabled", true) // disable first field
-      checkRoll1()
-
+      checkRoll(parseInt(roll))
     }
   });
 
-  $( ".second-roll .btn" ).click(function( event ) {
-    roll2 = $("#input-roll-2").val()
-    if (typeof round.setRoll2(roll2) === "string") {
-      alert(round.setRoll2(roll2))
-    } else {
-      round.setRoll2(roll2)
-      $("#input-roll-1, .first-roll .btn").prop("disabled", false)
-      round.score()
-      checkRoll2()
-      $(".form-group.second-roll").toggleClass("d-none")
-      $("#input-roll-1").val(null)
-      $("#input-roll-2").val(null)
+  getPlus = function() {
+    prevRoll1 = parseInt($(".roll-1" + (bowlingScore.currRound - 1)))
+    prevRoll2 = parseInt($(".roll-2" + (bowlingScore.currRound - 1)))
+    if (prevRoll1 === 10 || prevRoll2 === 10) {
+      return 1
     }
-  });
+    if (prevRoll1 + prevRoll2 === 10) {
+      return 2
+    }
+      return 0
+  }
 
-  $( ".third-roll .btn" ).click(function( event ) {
-    roll3 = $("#input-roll-3").val()
-    if (typeof round.setRoll3(roll3) === "string") {
-      alert(round.setRoll3(roll3))
-    } else {
-      round.setRoll3(roll3)
-      prevRound = bowlingScore.currRound - 1
-      score = parseInt($(".round-" + prevRound + " .total").text())
-      $(".round-bonus .plus").text(round.roll3)
-      bowlingScore.bonusRound()
-      $(".round-bonus .total").text(round.currentScore)
-    }
-  });
-
-    printValue = function() {
-      $(".round-" + bowlingScore.currRound + " .first-roll").text(round.roll1)
-      $(".round-" + bowlingScore.currRound + " .second-roll").text(round.roll2)
-      $(".round-" + bowlingScore.currRound + " .plus").text(round.plus)
-      $(".round-" + bowlingScore.currRound + " .total").text(round.currentScore)
-    }
+  printValue = function(roll) {
+    $(".round-" + bowlingScore.currRound + " .roll-" + round.currRoll).text(roll)
+  }
+  printScore = function(score) {
+    $(".round-" + bowlingScore.currRound + " .score").text(score)
+  }
 
 });

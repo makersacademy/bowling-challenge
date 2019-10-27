@@ -9,9 +9,9 @@ BowlingScore.prototype.newRound = function() {
 }
 
 BowlingScore.prototype.finalScore = function(prevPlus, prevScore) {
-  if (prevPlus === "strike") {
+  if (prevPlus === 1) {
     this.round.currentScore += prevScore + this.round.currentScore
-  } else if (prevPlus === "spare") {
+  } else if (prevPlus === 2) {
     this.round.currentScore += prevScore + this.round.roll1
   } else {
     this.round.currentScore += prevScore

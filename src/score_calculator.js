@@ -11,9 +11,8 @@ var ScoreCalculator = function() {
 ScoreCalculator.prototype.calculateScore = function(scoreCard) {
   this.arrange(scoreCard);
   this.calculateNormalScore(this.pinsPerTurn.slice());
-  //this.isbonusTurn(pinsPerTurn.slice(), rollPerTurn);
-  //this.calculateBonusScore(pinsPerTurn, framePerTurn);
-
+  this.isbonusTurn(this.pinsPerTurn.slice());
+  this.calculateBonusScore();
 };
 
 ScoreCalculator.prototype.arrange = function(scoreCard) {
@@ -38,16 +37,15 @@ ScoreCalculator.prototype.calculateNormalScore = function(pinsPerTurn) {
       frameScores[ frameX - 1 ] += ( pinsPerTurn.shift() );
     }
   });
-  console.log(this.frameScores);
 };
 
-ScoreCalculator.prototype.isbonusTurn = function(pinsPerTurn, rollPerTurn) {
+ScoreCalculator.prototype.isbonusTurn = function(pinsPerTurn) {
+  let bonusTurns = this.bonusTurns
   let firstRoll = 0
   let secondRoll = 0
   let thirdRoll = 0
-  let bonusTurns = this.bonusTurns
 
-  rollPerTurn.forEach(function(rollTurn) {
+  this.rollPerTurn.forEach(function(rollTurn) {
      if ( rollTurn === 1 ) {
       firstRoll = ( pinsPerTurn.shift() );
       if ( firstRoll === 10 ) {
@@ -71,7 +69,7 @@ ScoreCalculator.prototype.isbonusTurn = function(pinsPerTurn, rollPerTurn) {
   });
 };
 
-ScoreCalculator.prototype.calculateBonusScore = function(pinsPerTurn, framePerTurn) {
+ScoreCalculator.prototype.calculateBonusScore = function() {
   console.log(this.frameScores);
   console.log(this.bonusTurns);
   console.log(pinsPerTurn);
@@ -82,20 +80,3 @@ ScoreCalculator.prototype.calculateBonusScore = function(pinsPerTurn, framePerTu
   console.log(this.bonusTurns);
   console.log(this.frameScores);
 };
-
-// var pins = [3,2,10,4,2,10]
-//
-// var count = 0
-// nextTwoList = []
-// pins.forEach(function() {
-//   // console.log(pins.slice(count+1,count+3));
-//   nextTwoList.push(pins.slice(count+1,count+3));
-//   count ++
-// });
-//
-// console.log(nextTwoList);
-//
-// nextTwoList.forEach(function(nextTwo, index) {
-//   console.log(nextTwo);
-//   console.log( index );
-// });

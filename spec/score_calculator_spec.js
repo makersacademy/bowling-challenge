@@ -29,15 +29,15 @@ describe("ScoreCalculator", function() {
       "Strike", "Strike", "Strike"]
   });
 
-  // describe('arrange', function() {
-  //   it('calculates the total score for each frame', function() {
-  //     scoreCalculator.arrange(scoreCard1);
-  //     expect(scoreCalculator.framePerTurn).toEqual(framePerTurn1);
-  //     expect(scoreCalculator.rollPerTurn).toEqual(rollPerTurn1);
-  //     expect(scoreCalculator.pinsPerTurn).toEqual(pinsPerTurn1);
-  //   });
-  // });
-  //
+  describe('arrange', function() {
+    it('calculates the total score for each frame', function() {
+      scoreCalculator.arrange(scoreCard1);
+      expect(scoreCalculator.framePerTurn).toEqual(framePerTurn1);
+      expect(scoreCalculator.rollPerTurn).toEqual(rollPerTurn1);
+      expect(scoreCalculator.pinsPerTurn).toEqual(pinsPerTurn1);
+    });
+  });
+
   describe('calculateScore', function() {
     it('calculates the total score for each frame', function() {
      scoreCalculator.calculateScore(scoreCard1);
@@ -53,16 +53,18 @@ describe("ScoreCalculator", function() {
     });
   });
 
-//   describe('isbonusTurn', function() {
-//     it('describes if a turn was a strike, split or normal turn', function() {
-//       scoreCalculator.isbonusTurn(pinsPerTurn1, rollPerTurn1);
-//       expect(scoreCalculator.bonusTurns).toEqual(bonusTurns1);
-//     });
-//   });
-//   describe('calculateBonusScore', function() {
-//     it('calculates the bonus points of a turn', function() {
-//       // scoreCalculator.calculateBonusScore(pinsPerTurn, framePerTurn);
-//       //expect().toEqual();
-//     });
-//   });
+  describe('isbonusTurn', function() {
+    it('describes if a turn was a strike, split or normal turn', function() {
+      scoreCalculator.rollPerTurn = rollPerTurn1
+      scoreCalculator.isbonusTurn(pinsPerTurn1);
+      expect(scoreCalculator.bonusTurns).toEqual(bonusTurns1);
+    });
+  });
+
+  describe('calculateBonusScore', function() {
+    it('calculates the bonus points of each turn', function() {
+      // scoreCalculator.calculateBonusScore();
+      //expect().toEqual();
+    });
+  });
 });

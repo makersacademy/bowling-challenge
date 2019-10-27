@@ -55,7 +55,7 @@ describe("ScoreCalculator", function() {
 
   describe('isbonusTurn', function() {
     it('describes if a turn was a strike, split or normal turn', function() {
-      scoreCalculator.rollPerTurn = rollPerTurn1
+      scoreCalculator.rollPerTurn = rollPerTurn1;
       scoreCalculator.isbonusTurn(pinsPerTurn1);
       expect(scoreCalculator.bonusTurns).toEqual(bonusTurns1);
     });
@@ -63,6 +63,11 @@ describe("ScoreCalculator", function() {
 
   describe('calculateBonusScore', function() {
     it('calculates the bonus points of each turn', function() {
+      scoreCalculator.framePerTurn = framePerTurn1;
+      scoreCalculator.rollPerTurn = rollPerTurn1;
+      scoreCalculator.pinsPerTurn = pinsPerTurn1;
+      scoreCalculator.bonusTurns = bonusTurns1;
+      scoreCalculator.frameScores = normalScore1;
       // scoreCalculator.calculateBonusScore();
       //expect().toEqual();
     });

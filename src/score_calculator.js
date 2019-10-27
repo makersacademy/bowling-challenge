@@ -1,6 +1,6 @@
 
 var ScoreCalculator = function() {
-  this.currentScore = 0
+  this.totalScore = 0
   this.frameScores = [0,0,0,0,0,0,0,0,0,0]
   this.bonusTurns = []
   this.framePerTurn = []
@@ -70,13 +70,26 @@ ScoreCalculator.prototype.isbonusTurn = function(pinsPerTurn) {
 };
 
 ScoreCalculator.prototype.calculateBonusScore = function() {
-  console.log(this.frameScores);
-  console.log(this.bonusTurns);
-  console.log(pinsPerTurn);
-  console.log(framePerTurn);
-  console.log(this.pinsPerTurn);
   console.log(this.framePerTurn);
   console.log(this.rollPerTurn);
+  console.log(this.pinsPerTurn);
   console.log(this.bonusTurns);
   console.log(this.frameScores);
+
+  var pins = this.pinsPerTurn
+  var count = 0
+  nextTwoRollsList = []
+
+  pins.forEach(function() {
+    // console.log(pins.slice(count+1,count+3));
+    nextTwoRollsList.push(pins.slice(count+1, count+3));
+    count ++
+  });
+
+  console.log(nextTwoRollsList);
+
+  nextTwoRollsList.forEach(function(nextTwo, index) {
+    console.log(nextTwo);
+    console.log( index );
+  });
 };

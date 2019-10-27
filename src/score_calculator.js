@@ -76,12 +76,20 @@ ScoreCalculator.prototype.calculateBonusScore = function() {
   console.log(this.bonusTurns);
   console.log(this.frameScores);
 
+  this.bonusTurns.forEach(function(bonus) {
+    if ( bonus === "Strike" ) {
+      console.log(bonus);
+    }
+    else if ( bonus === "Split" ) {
+      console.log(bonus);
+    }
+  });
+
   var pins = this.pinsPerTurn
   var count = 0
   nextTwoRollsList = []
 
   pins.forEach(function() {
-    // console.log(pins.slice(count+1,count+3));
     nextTwoRollsList.push(pins.slice(count+1, count+3));
     count ++
   });

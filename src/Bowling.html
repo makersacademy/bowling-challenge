@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <head>
   <title>Bowling Scorecard</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Handlee&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="stylesheet" type='text/css' href="../public/stylesheets/main.css">
+    
     <script src="Frame.js"></script>
     <script src="Game.js"></script>
 </head>
@@ -12,78 +13,114 @@
 
 <body>
   <div>
-    <h1>Bowling Scorecard</h1>
-
+    <h1>B
+        <img class="bowling-ball" src="../public/images/bowling_ball.png" >
+      wl
+      <img class="bowling-pin-1" src="../public/images/bowling_pin.png">
+      ng 
+      <br>Scorecard</h1>
+    
     <div class="all-buttons">
-      <button type="button" class="btn btn-info">Gutter </button>
-      <button type="button" class="btn btn-info">1</button>
-      <button type="button" class="btn btn-info">2</button>
-      <button type="button" class="btn btn-info">3</button>
-      <button type="button" class="btn btn-info">4</button>
-      <button type="button" class="btn btn-info">5</button>
-      <button type="button" class="btn btn-info">6</button>
-      <button type="button" class="btn btn-info">7</button>
-      <button type="button" class="btn btn-info">8</button>
-      <button type="button" class="btn btn-info">9</button>
-      <button type="button" class="btn btn-info">Strike!</button>
+      <button type="button" onclick="recordScore(0)" class="btn btn-info btn-0">0</button>
+      <button type="button" onclick="recordScore(1)" class="btn btn-info btn-1">1</button>
+      <button type="button" onclick="recordScore(2)" class="btn btn-info btn-2">2</button>
+      <button type="button" onclick="recordScore(3)" class="btn btn-info btn-3">3</button>
+      <button type="button" onclick="recordScore(4)" class="btn btn-info btn-4">4</button>
+      <button type="button" onclick="recordScore(5)" class="btn btn-info btn-5">5</button>
+      <button type="button" onclick="recordScore(6)" class="btn btn-info btn-6">6</button>
+      <button type="button" onclick="recordScore(7)" class="btn btn-info btn-7">7</button>
+      <button type="button" onclick="recordScore(8)" class="btn btn-info btn-8">8</button>
+      <button type="button" onclick="recordScore(9)" class="btn btn-info btn-9">9</button>
+      <button type="button" onclick="recordScore(10)" class="btn btn-info btn-strike">Strike!</button>
+    <p id="gameover" class="notice"></p>
+    <p id="yourscore" class="final-score"></p>
+    <div id="playagain"></div>
     </div>
-    <table class="table table-dark" id="score-table">
+    <table class="table" id="score-table">
       <thead>
         <tr>
-          <th colspan="2" scope="col">1</th>
-          <th colspan="2" scope="col">2</th>
-          <th colspan="2" scope="col">3</th>
-          <th colspan="2" scope="col">4</th>
-          <th colspan="2" scope="col">5</th>
-          <th colspan="2" scope="col">6</th>
-          <th colspan="2" scope="col">7</th>
-          <th colspan="2" scope="col">8</th>
-          <th colspan="2" scope="col">9</th>
-          <th colspan="2" scope="col">10</th>
+          <th scope="col">Frame</th>
+          <th scope="col">Roll 1 Score</th>
+          <th scope="col">Roll 2 Score</th>
+          <th scope="col">Bonus Score</th>
+          <th scope="col">Total Score</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <!-- <th scope="row">Score</th> -->
           <td>1</td>
-          <td>2</td>
-          <td>3</td>
-          <td>4</td>
-          <td>5</td>
-          <td>6</td>
-          <td>7</td>
-          <td>8</td>
-          <td>9</td>
-          <td>0</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td id="frame11" class="frame1-roll-1-score"></td>
+          <td id="frame12" class="frame1-roll-2-score"></td>
+          <td id="bonus1" class="frame1-bonus-score"></td>
+          <td id="total1" class="frame1-total-score"></td>
         </tr>
         <tr>
-          
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          
+            <td>2</td>
+            <td id="frame21" class="frame2-roll-1-score"></td>
+            <td id="frame22" class="frame2-roll-2-score"></td>
+            <td id="bonus2" class="frame2-bonus-score"></td>
+            <td id="total2" class="frame2-total-score"></td>
         </tr>
-        
+        <tr>
+            <td>3</td>
+            <td id="frame31" class="frame3-roll-1-score"></td>
+            <td id="frame32" class="frame3-roll-2-score"></td>
+            <td id="bonus3" class="frame3-bonus-score"></td>
+            <td id="total3" class="frame3-total-score"></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td id="frame41" class="frame4-roll-1-score"></td>
+            <td id="frame42" class="frame4-roll-2-score"></td>
+            <td id="bonus4" class="frame4-bonus-score"></td>
+            <td id="total4" class="frame4-total-score"></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td id="frame51" class="frame5-roll-1-score"></td>
+            <td id="frame52" class="frame5-roll-2-score"></td>
+            <td id="bonus5" class="frame5-bonus-score"></td>
+            <td id="total5" class="frame5-total-score"></td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td id="frame61" class="frame6-roll-1-score"></td>
+            <td id="frame62" class="frame6-roll-2-score"></td>
+            <td id="bonus6" class="frame6-bonus-score"></td>
+            <td id="total6" class="frame6-total-score"></td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td id="frame71" class="frame7-roll-1-score"></td>
+            <td id="frame72" class="frame7-roll-2-score"></td>
+            <td id="bonus7" class="frame7-bonus-score"></td>
+            <td id="total7" class="frame7-total-score"></td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td id="frame81" class="frame8-roll-1-score"></td>
+            <td id="frame82" class="frame8-roll-2-score"></td>
+            <td id="bonus8" class="frame8-bonus-score"></td>
+            <td id="total8" class="frame8-total-score"></td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td id="frame91" class="frame9-roll-1-score"></td>
+            <td id="frame92" class="frame9-roll-2-score"></td>
+            <td id="bonus9" class="frame9-bonus-score"></td>
+            <td id="total9" class="frame9-total-score"></td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td id="frame101" class="frame10-roll-1-score"></td>
+            <td id="frame102" class="frame10-roll-2-score"></td>
+            <td id="bonus10" class="frame10-bonus-score"></td>
+            <td id="total10" class="frame10-total-score"></td>
+        </tr>
       </tbody>
     </table>
-
+    
   </div>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="../interface.js"></script>
 </body>

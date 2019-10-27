@@ -1,0 +1,73 @@
+body {
+  background-color: #0c2b3c;
+}
+
+h1 {
+  font-family: 'Abril Fatface', cursive;
+  text-transform: uppercase;
+  font-weight: 300px;
+  text-align: center;
+  padding: 75px;
+  color: white;
+}
+
+.all-buttons{
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+#score-table {
+  width:80%;
+  margin: 0 auto;
+  height: 300px;
+  color: white;
+  text-align: right;
+}
+
+#gameover, #yourscore {
+  color: lightcoral;
+}
+
+
+@keyframes shake {
+  0% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(20deg);
+  }
+  50% {
+    transform: rotate(-20deg);
+  }
+  75% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+.bowling-pin-1 {
+  width: 30px;
+}
+
+.bowling-ball {
+  width: 50px;
+}
+
+.bowling-pin-1:hover {
+  cursor: pointer;
+  animation-name: shake;
+  animation-duration: 1s;
+  animation-iteration-count: 2;
+  animation-timing-function: ease-in-out;
+}
+
+.bowling-ball:hover {
+  cursor: pointer;
+  animation-name: shake;
+  animation-duration: 1s;
+  animation-iteration-count: 2;
+  animation-timing-function: ease-in-out;
+}
+

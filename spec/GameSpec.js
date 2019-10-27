@@ -57,4 +57,32 @@ describe('Game', function() {
     })
   })
 
+  describe('a typical game', function(){
+    it('shows a total score of', function(){
+      let frames = [];
+      for (var i = 0; i < 8; i++) { 
+        frames[i] = new Frame(); 
+        frames[i].knockedDownPins(5)
+        frames[i].knockedDownPins(0)
+      }
+
+      let frame8 = new Frame(); 
+      frame8.knockedDownPins(7)
+      frame8.knockedDownPins(1)
+      frames.push(frame8)
+      let frame9 = new Frame(); 
+      frame9.knockedDownPins(3)
+      frame9.knockedDownPins(7)
+      frames.push(frame9)
+
+      console.log(frames)
+
+      for (var i = 0; i < 10; i++){
+        game.addFrame(frames[i])
+      }
+      game.finalFrameBonusRoll(3)
+      // game.lastBonus(7)
+      expect(game.getTotalScore()).toEqual(61);
+    })
+  })
 })

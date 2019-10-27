@@ -4,7 +4,7 @@ function Game(){
   this.gameInPlay = true;
   this.frameNumber = 1;
   this.frameScore = {1:[] , 2:[], 3:[], 4:[], 5:[], 6:[], 7:[], 8:[], 9:[], 10:[]};
-  this.bonusFrame = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0, 10:0}
+  this.bonusFrame = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0}
   this.bonusScore = 0;
   this.cumulativeScore = 0;
   this.finalFrameBonus = [];
@@ -14,6 +14,7 @@ Game.prototype.addFrame = function(frame){
   this.frameScore[this.frameNumber] = frame;
   this.frameNumber++;
   this.calculateFrameBonus();
+  console.log(this.frameScore)
 }
 
 Game.prototype.getCumulativeScore = function() {
@@ -25,7 +26,7 @@ Game.prototype.getCumulativeScore = function() {
 
 // for first 8 frames
 Game.prototype.calculateFrameBonus = function(){
-  console.log("a", this.bonusFrame)
+  // console.log("a", this.bonusFrame)
   for (var i = 1; i < 9; i++){
     if (this.frameScore[i].strike) {
       this.bonusFrame[i] = (this.frameScore[i+1].inFrameScore || 0) + (this.frameScore[i+2].inFrameScore || 0)
@@ -39,7 +40,7 @@ Game.prototype.calculateFrameBonus = function(){
 }
 
 Game.prototype.getSecondLastFrameBonus = function(){
-  console.log(this.frameScore[9])
+  // console.log(this.frameScore[9])
   if (this.frameScore[9].strike) {
     this.bonusFrame[9] = (this.frameScore[9].inFrameScore || 0) + (this.frameScore[10].inFrameScore || 0)
   } else if (this.frameScore[9].spare){

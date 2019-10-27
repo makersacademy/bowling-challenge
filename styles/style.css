@@ -5,7 +5,6 @@ body {
   background: #FEAC5E;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to left, #4BC0C8, #C779D0, #FEAC5E);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to left, #4BC0C8, #C779D0, #FEAC5E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   grid-template-areas:
   "header"
   "main"
@@ -28,11 +27,11 @@ header {
 header .logo {
   position: top;
   max-height: 5em;
+  cursor: pointer;
 }
 main {
   grid-area: main;
   display: grid;
-  gap: 2em;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
   grid-template-areas:
@@ -159,6 +158,7 @@ footer {
 }
 
 .scorecard {
+  margin-top: 2em;
   grid-area: score;
   display: grid;
   justify-content: stretch;	

@@ -7,17 +7,19 @@ var ScoreCalculator = function() {
 ScoreCalculator.prototype.calculate = function(scoreCard) {
   let framePerTurn = []
   let pinsPerTurn = []
+  let rollPerTurn = []
   scoreCard.forEach(function(turn) {
     framePerTurn.push(turn.frame);
+    rollPerTurn.push(turn.roll);
     pinsPerTurn.push(turn.pins);
   });
   console.log(framePerTurn);
   console.log(pinsPerTurn);
-  let x = pinsPerTurn.slice();
+  console.log(rollPerTurn);
+  let pPTCopy = pinsPerTurn.slice();
   this.calculateNormalScore(framePerTurn, pinsPerTurn);
   console.log(this.frameScores);
-  console.log(x);
-  // this.calculateBonusScore(framePerTurn, x);
+  this.calculateBonusScore(framePerTurn, pPTCopy, rollPerTurn);
 };
 
 ScoreCalculator.prototype.calculateNormalScore = function(framePerTurn, pinsPerTurn) {
@@ -32,3 +34,52 @@ ScoreCalculator.prototype.calculateNormalScore = function(framePerTurn, pinsPerT
     }
   });
 };
+
+ScoreCalculator.prototype.calculateBonusScore = function(framePerTurn, pinsPerTurn, rollPerTurn) {
+  let firstRoll = 0
+  let secondRoll = 0
+  let thirdRoll = 0
+  console.log( rollPerTurn );
+  rollPerTurn.forEach(function(rollTurn) {
+     if ( rollTurn === 1 ) {
+      firstRoll = ( pinsPerTurn.shift() );
+      if ( firstRoll === 10 ) {
+        console.log( "Strike" );
+      }
+    } else if ( rollTurn === 2 ) {
+      secondRoll = ( pinsPerTurn.shift() );
+      if ( firstRoll + secondRoll === 10 ) {
+        console.log( "Split" );
+      } else if ( secondRoll === 10 ) {
+        console.log( "Strike" );
+      }
+    } else if ( rollTurn === 3 ){
+      thirdRoll = ( pinsPerTurn.shift() );
+      if ( thirdRoll === 10 ) {
+        console.log( "Strike" );
+      }
+    }
+  });
+};
+
+
+
+
+
+
+
+
+// var multiplier = 0
+// if ( roll === 1 && pins === 10 ){
+
+
+// ScoreCalculator.prototype.calculateBonus = function(pins) {
+//   var roll1 = this.scoreCard[this.scoreCard.length - 2].pins
+//   var roll2 = this.scoreCard[this.scoreCard.length - 1].pins
+//   if (roll1 + roll2 === 10 ){
+//     var multiplier = 2;
+//     this.score += pins * multiplier;
+//   } else {
+//       this.score += pins;
+//   }
+// };

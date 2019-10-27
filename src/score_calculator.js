@@ -76,22 +76,33 @@ ScoreCalculator.prototype.calculateBonusScore = function() {
   console.log(this.bonusTurns);
   console.log(this.frameScores);
 
-  var index = 0
-  var pins = this.pinsPerTurn
+  let index = 0
+  let pins = this.pinsPerTurn
+  let frameScores = this.frameScores;
+  let framePerTurn = this.framePerTurn;
   this.bonusTurns.forEach(function(bonus) {
     console.log( "index " + index );
     if ( bonus === "Strike" ) {
       console.log(bonus);
       nextRoll1 = pins.slice(index +1, index +2)[0];
       nextRoll2 = pins.slice(index +2, index +3)[0];
-      if (nextRoll1) {console.log(nextRoll1)}
-      if (nextRoll1) {console.log(nextRoll1)}
+      currentFrame = (framePerTurn[index]);
+      frameScore = frameScores[currentFrame-1];
+      console.log("CFrame " + currentFrame);
+      console.log("CFScr " + frameScore);
+      // if (nextRoll1) {console.log(nextRoll1)}
+      // if (nextRoll1) {console.log(nextRoll1)}
     }
     else if ( bonus === "Split" ) {
       console.log(bonus);
       nextRoll = pins.slice(index +1, index +2)[0];
-      if (nextRoll) {console.log(nextRoll)}
+      currentFrame = (framePerTurn[index]);
+      frameScore = frameScores[currentFrame-1];
+      console.log("CFrame " + currentFrame);
+      console.log("CFScr " + frameScore);
+      // if (nextRoll) {console.log(nextRoll)}
     }
     index ++
+    console.log("--------------");
   });
 };

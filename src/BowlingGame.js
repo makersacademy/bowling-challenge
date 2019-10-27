@@ -10,12 +10,19 @@ function BowlingGame() {
   this.currentFrame = 1;
   this.previousFrame = 0;
   this.previous2Frame = -1;
-  this.cumulativeScore = 0
+  this.cumulativeScore = 0;
+};
+
+BowlingGame.prototype.correctPins = function () {
+  if(this.allFrames[this.currentFrame][0] + this.allFrames[this.currentFrame][1] > 10) {
+    this.allFrames[this.currentFrame].splice(1, 1);
+  };
 };
 
 BowlingGame.prototype.bowl = function(number) {
   this.frameNumber();
-  this.allFrames[this.currentFrame].push(number)
+  this.allFrames[this.currentFrame].push(number);
+  this.correctPins();
   this.calculateFrame();
 };
 

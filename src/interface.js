@@ -10,72 +10,132 @@ $(document).ready(function() {
 
   $('#btn0').click(function() {
     game.addBowl(0);
-    updateFrames();
     updateScore();
+    updateFrames();
   });
 
   $('#btn1').click(function() {
     game.addBowl(1);
-    updateFrames();
     updateScore();
+    updateFrames();
   });
 
   $('#btn2').click(function() {
     game.addBowl(2);
-    updateFrames();
     updateScore();
+    updateFrames();
   });
 
   $('#btn3').click(function() {
     game.addBowl(3);
-    updateFrames();
     updateScore();
+    updateFrames();
   });
 
   $('#btn4').click(function() {
     game.addBowl(4);
-    updateFrames();
     updateScore();
+    updateFrames();
   });
 
   $('#btn5').click(function() {
     game.addBowl(5);
-    updateFrames();
     updateScore();
+    updateFrames();
+
   });
 
   $('#btn6').click(function() {
     game.addBowl(6);
-    updateFrames();
     updateScore()
+    updateFrames();
+
   });
 
   $('#btn7').click(function() {
     game.addBowl(7);
-    updateFrames();
     updateScore()
+    updateFrames();
+
   });
 
   $('#btn8').click(function() {
     game.addBowl(8);
-    updateFrames();
     updateScore()
+    updateFrames();
+
   });
 
   $('#btn9').click(function() {
     game.addBowl(9);
-    updateFrames();
     updateScore()
+    updateFrames();
+
   });
 
   $('#btn10').click(function() {
     game.addBowl(10);
-    updateFrames();
     updateScore()
+    updateFrames();
+
   });
 
   function updateScore() {
-    $("#total_score").text(game.calculateScore());
+    game.calculateScore();
+    hideButtons();
+  };
+
+  function hideButtons() {
+    if ( game.current_frame !== 10 ) {
+      if ( Number(game.frames[game.current_frame - 1].reduce((roll_one, roll_two) => roll_one + roll_two,0)) > 0 ) {
+        document.getElementById("btn10").style.visibility="hidden";
+      } else {
+        document.getElementById("btn10").style.visibility="visible";
+      } if ( Number(game.frames[game.current_frame - 1].reduce((roll_one, roll_two) => roll_one + roll_two,0)) > 1 ) {
+        document.getElementById("btn9").style.visibility="hidden";
+      } else {
+        document.getElementById("btn9").style.visibility="visible";
+      } if ( Number(game.frames[game.current_frame - 1].reduce((roll_one, roll_two) => roll_one + roll_two,0)) > 2 ) {
+        document.getElementById("btn8").style.visibility="hidden";
+      } else {
+        document.getElementById("btn8").style.visibility="visible";
+      } if ( Number(game.frames[game.current_frame - 1].reduce((roll_one, roll_two) => roll_one + roll_two,0)) > 3 ) {
+        document.getElementById("btn7").style.visibility="hidden";
+      } else {
+        document.getElementById("btn7").style.visibility="visible";
+      } if ( Number(game.frames[game.current_frame - 1].reduce((roll_one, roll_two) => roll_one + roll_two,0)) > 4 ) {
+        document.getElementById("btn6").style.visibility="hidden";
+      } else {
+        document.getElementById("btn6").style.visibility="visible";
+      } if ( Number(game.frames[game.current_frame - 1].reduce((roll_one, roll_two) => roll_one + roll_two,0)) > 5 ) {
+        document.getElementById("btn5").style.visibility="hidden";
+      } else {
+        document.getElementById("btn5").style.visibility="visible";
+      } if ( Number(game.frames[game.current_frame - 1].reduce((roll_one, roll_two) => roll_one + roll_two,0)) > 6 ) {
+        document.getElementById("btn4").style.visibility="hidden";
+      } else {
+        document.getElementById("btn4").style.visibility="visible";
+      } if ( Number(game.frames[game.current_frame - 1].reduce((roll_one, roll_two) => roll_one + roll_two,0)) > 7 ) {
+        document.getElementById("btn3").style.visibility="hidden";
+      } else {
+        document.getElementById("btn3").style.visibility="visible";
+      } if ( Number(game.frames[game.current_frame - 1].reduce((roll_one, roll_two) => roll_one + roll_two,0)) > 8 ) {
+        document.getElementById("btn2").style.visibility="hidden";
+      } else {
+        document.getElementById("btn2").style.visibility="visible";
+      }
+    } else if ( game.current_frame === 10 ) {
+        document.getElementById("btn1").style.visibility="visible";
+        document.getElementById("btn2").style.visibility="visible";
+        document.getElementById("btn3").style.visibility="visible";
+        document.getElementById("btn4").style.visibility="visible";
+        document.getElementById("btn5").style.visibility="visible";
+        document.getElementById("btn6").style.visibility="visible";
+        document.getElementById("btn7").style.visibility="visible";
+        document.getElementById("btn8").style.visibility="visible";
+        document.getElementById("btn9").style.visibility="visible";
+        document.getElementById("btn10").style.visibility="visible";
+    }
   };
 
   function updateFrames() {

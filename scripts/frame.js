@@ -4,6 +4,7 @@ class Frame {
     this.number = number
     this.balls = []
     this.score = 0
+    this.subTotal = 0
     this.isSpare = false
     this.isStrike = false
     this.isLastFrame = false

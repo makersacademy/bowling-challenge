@@ -35,7 +35,7 @@ main {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
   grid-template-areas:
-  "form  form  pins  pins"
+  "text  text  pins  pins"
   "score score score score"
 }
 
@@ -46,8 +46,9 @@ footer {
   text-align: right;
 }
 
-.user_details {
-  grid-area: form;
+.instructions {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  grid-area: text;
   padding: 1em;
   background: #4BC0C8;
   min-width: 10em;
@@ -55,6 +56,9 @@ footer {
   box-shadow: 0 3px 4px 0 rgba(0,0,0,0.14), 0 3px 3px -2px rgba(0,0,0,0.12), 0 1px 8px 0 rgba(0,0,0,0.20);
 }
 
+.instructions h2 {
+  font-family: 'Graduate', cursive;
+}
 .pins {
   place-self: center;
   align-content: center;
@@ -74,7 +78,7 @@ footer {
   text-align: center;
   vertical-align: middle;
   line-height: 2em;
-  color: red;
+  color: black;
   background-color: white;
   margin-left: -0.4em;
   margin-right: -0.4em;
@@ -139,6 +143,7 @@ footer {
 }
 
 .gutter_ball {
+  font-family: 'Graduate', cursive;
   cursor: pointer;
   text-align: center;
   grid-column-start: 1;
@@ -146,7 +151,7 @@ footer {
   grid-row-start: end;
   /* justify-content: stretch;	 */
   background-color: white;
-  color: red;
+  color: black;
   width: auto;
   height: auto;
   padding: 0.3em;
@@ -224,8 +229,10 @@ footer {
 }
 
 .box {
+  font-size: 1.3em;
   cursor: pointer;
   text-align: center;
+  justify-self: auto;
   grid-area: 'box';
   min-height: 2rem;
   min-width: 1.5rem;
@@ -239,7 +246,10 @@ footer {
 }
 
 .bottom_area {
+  font-size: 2em;
+  justify-self: auto;
   text-align: center;
+  vertical-align: middle;
   grid-area: 'score';
   grid-column-start: span 4;
   min-width: 4rem;

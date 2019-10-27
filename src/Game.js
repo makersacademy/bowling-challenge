@@ -8,7 +8,6 @@ class Game {
     this.SPARE_BONUS = 1;
 
     // Variables that will accummulate
-    this.totalScore = 0;
     this.currentFrame = 1;
 
     // Variables that will be reset/reused in each frame
@@ -23,6 +22,8 @@ class Game {
         this.frames['frame' + frame]['roll' + roll] = new Object;
       }
       this.frames['frame' + frame]['unspentBonus'] = 0;
+      this.frames['frame' + frame]['frameScore'] = 0;
+      this.frames['frame' + frame]['tempFrameScore'] = 0;
     }
 
   }
@@ -35,10 +36,21 @@ class Game {
   is2ndRoll() { return (this.currentRoll === 2); }
 
   getStandingPins() { return this.standingPins; }
-  getTotalScore() { return this.totalScore; }
 
   getUnspentBonus(frameID) {
     return this.frames[frameID].unspentBonus;
+  }
+
+  getTempFrameScore(frameID) {
+    return this.frames[frameID].tempFrameScore;
+  }
+
+  getFrameScore(frameID) {
+    return this.frames[frameID].frameScore;
+  }
+
+  getFrameTotalScore(frameID) {
+    return this.frames[frameID].totalScore;
   }
 
   isGameOver() {
@@ -65,18 +77,31 @@ class Game {
 
   resetPins() { this.standingPins = this.STARTING_PINS; }
 
-  updateTotalScore(score) {
-    this.totalScore += parseInt(score);
-    return this.totalScore;
+  addTempFrameScore(frameID, tempScore) {
+    this.frames[frameID].tempFrameScore += parseInt(tempScore);
+  }
+
+  addFrameScore(frameID, frameScore) {
+    this.frames[frameID].frameScore += parseInt(frameScore);
+  }
+
+  updateTotalScores() {
+    let totalScore = 0;
+    for (let frame = 1; frame <= 10; frame ++) { //Fix the end condition later
+      let frameID = `frame${frame}`;
+      totalScore += this.getFrameScore(frameID);
+      this.frames[frameID].totalScore = totalScore;
+    }
   }
 
   assignUnspentBonus(frameID, bonus) {
     this.frames[frameID].unspentBonus = bonus;
   }
 
-  // Reminder to self: We don't need to hold the score if a strike or spare was
-  // scored, because we know the frame score would be 10.
-  // After calculating bonus, just add 10 when calculating retrospective score.
+  reduceUnspentBonus(frameID) {
+    this.frames[frameID].unspentBonus = this.getUnspentBonus(frameID) - 1;
+  }
+
 
   // Supporting functions for play(userInput)
 
@@ -89,6 +114,22 @@ class Game {
   targetThisRollObj() {}
   targetPrevRollObj() {}
 
+  checkAndSpendBonus(thisFrame, knocks) {
+    for (let frame = 1; frame <= thisFrame; frame++) {
+      let frameID = `frame${frame}`;
+      if (this.getUnspentBonus(frameID) > 1) {
+        this.addTempFrameScore(frameID, knocks);
+        this.reduceUnspentBonus(frameID);
+        return;
+      } else if (this.getUnspentBonus(frameID) === 1) {
+        knocks += this.STARTING_PINS;
+        this.addFrameScore(frameID, this.getTempFrameScore(frameID) + knocks);
+        this.reduceUnspentBonus(frameID);
+        return;
+      }
+    }
+  }
+
 
   // ================== EVERY TIME PLAYER SUBMITS THE FORM ====================
   play(userInput) {
@@ -100,15 +141,19 @@ class Game {
     let frameID = `frame${thisFrame}`;
     let rollID = `roll${thisRoll}`;
 
+    // Log the knocks for this frame/roll no.
     this.frames[frameID][rollID].knocks = knocks;
 
     // To check for unspent bonuses in prev frame and apply them if so
     // Do this after logging the knocks but before assigning any new unspent bonus
+    this.checkAndSpendBonus(thisFrame, knocks);
 
     console.log(this.frames);
 
     // Check if all pins are down
     let isClear = (this.standingPins - knocks <= 0);
+
+    // Deal with one of four scenarios
 
     if (this.is1stRoll() && isClear) { // ------------------- 1st ROLL: STRIKE!
       this.addNote(frameID, 'STRIKE!');
@@ -129,10 +174,13 @@ class Game {
       let prevRollID = `roll${thisRoll - 1}`;
       let frameScore = this.frames[frameID][rollID].knocks;
       frameScore += this.frames[frameID][prevRollID].knocks;
-      this.frames[frameID].totalScore = this.updateTotalScore(frameScore);
+      this.addFrameScore(frameID, frameScore);
     }
 
+    this.updateTotalScores();
+
     // To print output here, before setting up next play
+
     this.setupNextPlay();
   }
 

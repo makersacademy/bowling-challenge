@@ -6,12 +6,6 @@ describe('Game', () => {
 
   // Getters
 
-  describe('.getTotalScore()', () => {
-    it('returns the total score', () => {
-      expect(game.getTotalScore()).toEqual(0);
-    });
-  });
-
   describe('.getCurrentFrame()', () => {
     it('returns the current frame', () => {
       expect(game.getCurrentFrame()).toEqual(1);
@@ -101,16 +95,6 @@ describe('Game', () => {
 
   });
 
-  describe('.updateTotalScore(score)', () => {
-
-    it('adds a given number to the total score', () => {
-      game.updateTotalScore(5);
-      game.updateTotalScore(3);
-      expect(game.getTotalScore()).toEqual(8);
-    });
-
-  });
-
   describe('.resetPins()', () => {
     it('resets the number of pins for a new frame', () => {
       game.play(5);
@@ -120,10 +104,28 @@ describe('Game', () => {
     });
   });
 
+  describe('.updateTotalScores()', () => {
+    it('updates the cumulative score at the end of each frame', () => {
+      game.play(3);
+      game.play(4);
+      game.updateTotalScores();
+      expect(game.getFrameTotalScore('frame1')).toEqual(7);
+    });
+  });
+
   describe('.assignUnspentBonus(frame, bonus)', () => {
     it('logs an unspent bonus for the given frame', () => {
       game.assignUnspentBonus('frame1', 1);
       expect(game.getUnspentBonus('frame1')).toEqual(1);
+    });
+  });
+
+  describe('.reduceUnspentBonus(frame)', () => {
+    it('reduces the unspent bonus by 1 for the given frame', () => {
+      game.play(8);
+      game.play(2);
+      game.reduceUnspentBonus('frame1');
+      expect(game.getUnspentBonus('frame1')).toEqual(0);
     });
   });
 
@@ -147,7 +149,7 @@ describe('Game', () => {
     });
 
     it('the total score is not recorded yet', () => {
-      expect(game.frames.frame1.totalScore).toEqual(undefined);
+      expect(game.frames.frame1.totalScore).toEqual(0);
     });
 
     it('player proceeds to 2nd roll', () => {
@@ -211,7 +213,7 @@ describe('Game', () => {
       game.play(3);
       expect(game.getUnspentBonus('frame1')).toEqual(1);
       game.play(4);
-      expect(game.getUnspentBonus(1)).toEqual(0);
+      expect(game.getUnspentBonus('frame1')).toEqual(0);
     });
 
   });

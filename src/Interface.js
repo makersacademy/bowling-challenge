@@ -11,7 +11,7 @@ $(document).ready(() => {
     let frame = game.getCurrentFrame();
     let roll = game.getCurrentRoll();
     let knocks = game.frames[`frame${frame}`][`roll${roll}`].knocks;
-    let score = game.getTotalScore();
+    let score = 'game.getTotalScore()';
     let row = `<div class="row" id="frame-${frame}-roll-${roll}">`;
     row += `<div class="col-2 px-3">${frame}</div>`;
     row += `<div class="col-2 px-3">${roll}</div>`;

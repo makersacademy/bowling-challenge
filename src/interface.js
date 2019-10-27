@@ -3,9 +3,10 @@ $(document).ready(function() {
 
   $('#btn_new_game').click(function() {
     game = new Game();
+    displayPinButtons();
+    $(document).find('.buttons_1').show();
     clearFrames();
     updateFrames();
-    $(document).find('.buttons_1').show();
   });
 
 
@@ -83,10 +84,10 @@ $(document).ready(function() {
 
   function updateScore() {
     game.calculateScore();
-    hidePinButtons();
+    displayPinButtons();
   };
 
-  function hidePinButtons() {
+  function displayPinButtons() {
     if ( game.current_frame !== 10 ) {
       if ( Number(game.frames[game.current_frame - 1].reduce((roll_one, roll_two) => roll_one + roll_two,0)) > 0 ) {
         document.getElementById("btn10").style.visibility="hidden";

@@ -6,7 +6,7 @@ var Game = function() {
 Game.prototype.roll = function(pins) {
   this.bowlingCard.record(pins);
   //console.log(this.getScoreCard());
-  // this.scoreCalculator.calculate(this.getScoreCard());
+  // this.scoreCalculator.calculateScore(this.getScoreCard());
 };
 
 Game.prototype.getScoreCard = function() {

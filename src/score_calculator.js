@@ -2,9 +2,10 @@
 var ScoreCalculator = function() {
   this.currentScore = 0
   this.frameScores = [0,0,0,0,0,0,0,0,0,0]
+  this.bonusTurns = []
 };
 
-ScoreCalculator.prototype.calculate = function(scoreCard) {
+ScoreCalculator.prototype.calculateScore = function(scoreCard) {
   let framePerTurn = []
   let pinsPerTurn = []
   let rollPerTurn = []
@@ -13,13 +14,14 @@ ScoreCalculator.prototype.calculate = function(scoreCard) {
     rollPerTurn.push(turn.roll);
     pinsPerTurn.push(turn.pins);
   });
+  this.calculateNormalScore(framePerTurn, pinsPerTurn.slice());
+  this.isbonusTurn(pinsPerTurn.slice(), rollPerTurn);
+  console.log(this.frameScores);
+  console.log(this.bonusTurns);
   console.log(framePerTurn);
   console.log(pinsPerTurn);
   console.log(rollPerTurn);
-  let pPTCopy = pinsPerTurn.slice();
-  this.calculateNormalScore(framePerTurn, pinsPerTurn);
-  console.log(this.frameScores);
-  this.calculateBonusScore(framePerTurn, pPTCopy, rollPerTurn);
+  this.calculateBonusScore();
 };
 
 ScoreCalculator.prototype.calculateNormalScore = function(framePerTurn, pinsPerTurn) {
@@ -35,51 +37,35 @@ ScoreCalculator.prototype.calculateNormalScore = function(framePerTurn, pinsPerT
   });
 };
 
-ScoreCalculator.prototype.calculateBonusScore = function(framePerTurn, pinsPerTurn, rollPerTurn) {
+ScoreCalculator.prototype.isbonusTurn = function(pinsPerTurn, rollPerTurn) {
   let firstRoll = 0
   let secondRoll = 0
   let thirdRoll = 0
-  console.log( rollPerTurn );
+  let bonusTurns = this.bonusTurns
+
   rollPerTurn.forEach(function(rollTurn) {
      if ( rollTurn === 1 ) {
       firstRoll = ( pinsPerTurn.shift() );
       if ( firstRoll === 10 ) {
-        console.log( "Strike" );
-      }
-    } else if ( rollTurn === 2 ) {
+        bonusTurns.push( "Strike" );
+      } else {bonusTurns.push( "normal" );}
+    }
+    else if ( rollTurn === 2 ) {
       secondRoll = ( pinsPerTurn.shift() );
       if ( firstRoll + secondRoll === 10 ) {
-        console.log( "Split" );
+        bonusTurns.push( "Split" );
       } else if ( secondRoll === 10 ) {
-        console.log( "Strike" );
-      }
-    } else if ( rollTurn === 3 ){
+        bonusTurns.push( "Strike" );
+      } else {bonusTurns.push( "normal" );}
+    }
+    else if ( rollTurn === 3 ){
       thirdRoll = ( pinsPerTurn.shift() );
       if ( thirdRoll === 10 ) {
-        console.log( "Strike" );
-      }
+        bonusTurns.push( "Strike" );
+      } else {bonusTurns.push( "normal" );}
     }
   });
 };
 
-
-
-
-
-
-
-
-// var multiplier = 0
-// if ( roll === 1 && pins === 10 ){
-
-
-// ScoreCalculator.prototype.calculateBonus = function(pins) {
-//   var roll1 = this.scoreCard[this.scoreCard.length - 2].pins
-//   var roll2 = this.scoreCard[this.scoreCard.length - 1].pins
-//   if (roll1 + roll2 === 10 ){
-//     var multiplier = 2;
-//     this.score += pins * multiplier;
-//   } else {
-//       this.score += pins;
-//   }
-// };
+ScoreCalculator.prototype.calculateBonusScore = function() {
+};

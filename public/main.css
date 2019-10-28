@@ -1,3 +1,9 @@
+p {
+  
+  font-size: 20px;
+  padding: 5px;
+}
+
 h1 {
   color: white;
   letter-spacing: 8px;
@@ -11,14 +17,7 @@ body {
   background-color: #003a73;
   padding: 20px;
 }
-p.groove {
-  border-style: groove;
-  border-color: white;
-  border-width: 1px;
-  border-radius: 5px;
-  padding: 12px;
-  background-color: #002040;
-}
+
 div {
   border-radius: 50px;
   background-color: #f2f2f2;

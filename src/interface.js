@@ -2,16 +2,21 @@ $(document).ready(function() {
 
   var game = new Game();
 
-  function updateScore() {
+  function updatePage() {
     $('#score').text(game.getScore());
+    $('#frame').text(game.getCurrentFrame());
+    $('#roll').text(game.getCurrentRoll());
+    $('#frameScores').text(game.getFrameScores());
   }
+
+  updatePage();
 
   $('#enter-pins').submit(function(event){
     event.preventDefault();
     var pins = $('#current-turn').val();
     pins = Number(pins)
     game.roll(pins);
-    updateScore();
+    updatePage();
     console.log(game.getCurrentFrame());
     console.log(game.getCurrentRoll());
     console.log(game.getScoreCard());

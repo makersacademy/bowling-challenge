@@ -31,9 +31,10 @@ class Scorecard {
     } else {
       var frameID = (frameNum - 1)
     }
-
-    let ball = this.frames[frameID].balls[ballID]
+    let frame = this.frames[frameID]
+    let ball = frame.balls[ballID]
     ball.pins = pins
+    frame.maxPins()
     this.updateBoxValue()
   }
 
@@ -50,9 +51,11 @@ class Scorecard {
   updateBoxValue() {
     for (let i = 0; i <= 9; i += 1) { //9 frames zero indexed
       let frame = this.frames[i]
+      let nextFrame = this.frames[i + 1]
       let ball1 = frame.balls[0]
       let ball2 = frame.balls[1]
       let ball3 = frame.balls[2]
+      let thisFrameScore = 0
 
       if (ball1.pins === null) {
         ball1.boxString = ''
@@ -67,7 +70,15 @@ class Scorecard {
         ball2.boxString = '-'
         ball1.isSkipped = false
         ball2.isSkipped = true
-        frame.score = 10 // TODO plus next two ball
+        thisFrameScore = 10
+        thisFrameScore += nextFrame.balls[0].pins
+        if (nextFrame.balls[0].pins !== 10 ) {
+          thisFrameScore += nextFrame.balls[1].pins
+        } else {
+          let nextNextFrame = this.frames[i + 2]
+          thisFrameScore += nextNextFrame.balls[0].pins
+        }
+        frame.score = thisFrameScore // TODO plus next two ball
         this.currFrameID = i + 1
         this.currBallID = 0 // zero indexed
         console.log('Next Frame')
@@ -129,7 +140,9 @@ class Scorecard {
         ball2.boxString = '/'
         ball1.isSkipped = false
         ball2.isSkipped = false
-        frame.score = 10 // TODO plus next ball
+        thisFrameScore = 10
+        thisFrameScore += nextFrame.balls[0].pins
+        frame.score = thisFrameScore
         if (frame.number === 10) {
           this.currFrameID = i
           this.currBallID = 2 // zero indexed

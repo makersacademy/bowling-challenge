@@ -8,6 +8,7 @@ class Frame {
     this.isSpare = false
     this.isStrike = false
     this.isLastFrame = false
+    this.remainingPins = 10
     this.checkLastFrame()
     this.initBalls()
   }
@@ -26,5 +27,9 @@ class Frame {
     } else {
       this.isLastFrame = false
     }
+  }
+
+  maxPins() {
+    this.remainingPins = (10 - this.balls[0].pins)
   }
 }

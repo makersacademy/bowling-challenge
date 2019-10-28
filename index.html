@@ -10,16 +10,26 @@
       <div>
         <h2>Total Score:</h2>
         <h2 id="score"></h2>
-        <form id="enter-pins">
-          <input type="number" id="current-turn" name="current-turn" min="1" max="10">
-          <input type="submit" value="Submit"/>
-        </form>
+        <p id="bonus"></p>
+        <h2>Frame Score:</h2>
+        <p1>|1 |2 |3 |4 |5 |6 |7 |8 |9 |10 |</p1>
+        <p1 id="frameScores"></p1>
+        <h2>Current Turn:</h2>
         <p>Frame:</p>
         <p id="frame"></p>
         <p>Roll:</p>
         <p id="roll"></p>
-        <p>Frame Score:</p>
-        <p id="frameScores"></p>
+        <form id="enter-pins">
+          <input type="number" id="current-turn" name="current-turn" min="1" max="10">
+          <input type="submit" value="Submit"/>
+        </form>
+        <h2>Previous Turns:</h2>
+        <p>Frame:</p>
+        <p1 id="frames">previous-frames:</p1>
+        <p>Roll:</p>
+        <p1 id="rolls">previous-rolls:</p1>
+        <p>Pins:</p>
+        <p1 id="pins">previous-pins:</p1>
       </div>
     </section>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

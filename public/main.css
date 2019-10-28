@@ -1,7 +1,14 @@
 p {
-  
+  display: inline;
   font-size: 20px;
   padding: 5px;
+}
+
+p1 {
+  display: block;
+  font-size: 20px;
+  padding: 5px;
+  letter-spacing: 8px;
 }
 
 h1 {

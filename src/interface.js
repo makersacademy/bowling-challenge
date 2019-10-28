@@ -7,8 +7,11 @@ $(document).ready(function() {
     $('#frame').text(game.getCurrentFrame());
     $('#roll').text(game.getCurrentRoll());
     $('#frameScores').text(game.getFrameScores());
+    $('#bonus').text(game.bonuses().pop());
+    $('#frames').text(game.getFrames());
+    $('#rolls').text(game.getRolls());
+    $('#pins').text(game.getPins());
   }
-
   updatePage();
 
   $('#enter-pins').submit(function(event){
@@ -17,6 +20,7 @@ $(document).ready(function() {
     pins = Number(pins)
     game.roll(pins);
     updatePage();
+
     console.log(game.getCurrentFrame());
     console.log(game.getCurrentRoll());
     console.log(game.getScoreCard());
@@ -24,7 +28,7 @@ $(document).ready(function() {
     console.log(game.getScore());
     console.log(game.getFrameScores());
     console.log(game.bonuses());
-    console.log(game.getframes());
+    console.log(game.getFrames());
     console.log(game.getRolls());
     console.log(game.getPins());
   });

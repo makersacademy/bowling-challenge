@@ -27,7 +27,7 @@ Game.prototype.getFrameScores = function() {
 Game.prototype.bonuses = function() {
   return this.scoreCalculator.bonusTurns;
 };
-Game.prototype.getframes = function() {
+Game.prototype.getFrames = function() {
   return this.scoreCalculator.framePerTurn;
 };
 Game.prototype.getPins = function() {

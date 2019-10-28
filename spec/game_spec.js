@@ -17,7 +17,7 @@ describe("Game", function() {
        expect(game.getScore()).toEqual(9);
        expect(game.getFrameScores()).toEqual([9, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
        expect(game.bonuses()).toEqual(["normal", "normal"]);
-       expect(game.getframes()).toEqual([1, 1]);
+       expect(game.getFrames()).toEqual([1, 1]);
        expect(game.getRolls()).toEqual([1, 2]);
        expect(game.getPins()).toEqual([6, 3]);
     });
@@ -45,6 +45,6 @@ describe("Game", function() {
 // console.log( game.getScore() );
 // console.log( game.getFrameScores() );
 // console.log( game.bonuses() );
-// console.log( game.getframes() );
+// console.log( game.getFrames() );
 // console.log( game.getRolls() );
 // console.log( game.getPins() );

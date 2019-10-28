@@ -24,7 +24,7 @@ Scorecard.prototype.nextFrame = function(){
 };
 
 Scorecard.prototype.gameOver = function(){
-  if(this.frame === 12 && this.total === 0){
+  if(this.frame === 11 && this.total === 0){
     console.log('You scored 0 points. Gutter game!')
     return('You scored 0 points. Gutter game!')
   } else if(this.frame === 12 && this.total === 300){
@@ -56,9 +56,6 @@ Scorecard.prototype.oneTurn = function(){
 }
 
 Scorecard.prototype.roll = function(roll1,roll2){
-  if((roll1+roll2) >= 10){
-    console.log('Frame score cannot exceed 10 points. Please re-enter.')
-  }
   if( roll1 === this.maxPins){
     this.pinsPerRoll.push(roll1)
     this.pins = this.maxPins

@@ -58,12 +58,6 @@ describe("Scorecard", function() {
       expect(scorecard.total).toEqual(8);
     });
 
-    it ('throws an error for more than 10 points per frame', function(){
-      console.log = jasmine.createSpy("log");
-      scorecard.roll(10,2);
-      expect(console.log).toHaveBeenCalledWith('Frame score cannot exceed 10 points. Please re-enter.');
-    });
-
     it ('returns strikes', function(){
      console.log = jasmine.createSpy("log");
      scorecard.roll(10,0);
@@ -115,7 +109,7 @@ describe("Scorecard", function() {
     });
 
     it ('identifies a gutter game', function(){
-      scorecard.frame =12;
+      scorecard.frame =11;
       scorecard.gameOver();
       expect(console.log).toHaveBeenCalledWith('You scored 0 points. Gutter game!')
     });

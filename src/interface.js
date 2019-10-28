@@ -1,8 +1,12 @@
 $(document).ready(function() {
   var game = new Game();
 
+  // $(document).find('f_score').hide();
+  $(document).find('.final_score').hide();
+
   $('#btn_new_game').click(function() {
     game = new Game();
+    $(document).find('.final_score').hide();
     displayPinButtons();
     $(document).find('.buttons_1').show();
     clearFrames();
@@ -85,7 +89,19 @@ $(document).ready(function() {
   function updateScore() {
     game.calculateScore();
     displayPinButtons();
+    finalScore();
   };
+
+  function finalScore() {
+    if ( game.game_over === true ) {
+      // $(document).find('f_score').show();
+      $(document).find('.final_score').show();
+      $("#f_score").text(game.frame_scores[9]);
+    } else {
+      $(document).find('.final_score').hide();
+    }
+  };
+
 
   function displayPinButtons() {
     if ( game.current_frame !== 10 ) {

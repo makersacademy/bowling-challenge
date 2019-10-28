@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-<body background="./public/images/bowling_back.png")">
+<body background="./public/images/bowling_back.png">
 
 <script src="src/game.js"></script>
 <script src="jquery.js"></script>
@@ -9,8 +9,11 @@
 
 <head>
   <link rel="stylesheet" type="text/css" href="bowling.css">
+  <title>Bowling Scorecard</title>
 </head>
 <center><img src="./public/images/bowling_logo.png">
+  <br>
+  <br>
  <div id="buttons_1">
    <button id=btn_new_game type="button" class="buttons_2">New game</button>
    <button id=btn0 type="button" class="buttons_1">0</button>
@@ -67,5 +70,8 @@
 </tr>
    <br>
    </div>
+   <div class="final_score">
+     <img src="./public/images/final_score.png" width="350" height="130"><center><span class="f_score" id="f_score" </span>
+  </div>
   </body>
 </html>

@@ -33,7 +33,6 @@ Game.prototype.add = function(pins) {
       this.frameTen(pins)    
   }
 }
-    
 
 Game.prototype.frameTen = function(pins) {
   if (this._frameMove == 1 ){

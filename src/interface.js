@@ -90,20 +90,23 @@ $(document).ready(function(){
       $('#score').text("Game score: "+game.score());
       $('#frame').text("Frame: "+game._frameNumber);
       $('#last_bowl').text("Last bowl: "+game._bowls[game._bowls.length-1]);
-      if (game._frameNumber > 1){
+
+      if (game._frameNumber > 0){
         for (var i = 0; i < game._frameNumber-1; i++) {
           var frame = game._frames[i]
           if (frame.frameComplete === true) {
-          $('#bowl'+(i+1)).text("Frame rolls: "+frame.frameBowls+" Framescore: "+game._frames[i].frameScore+" Bonus: "+game._frames[i].frameBonus);
+          $('#bowl'+(i+1)).text(frame.frameBowls)
+          $('#bowlScore'+(i+1)).text(game._frames[i].frameScore)
           } else {
-          $('#bowl'+(i+1)).text("Frame rolls: "+frame.frameBowls+" Framescore: ");
+          $('#bowl'+(i+1)).text(frame.frameBowls)
           }
         }
       }
 
       if (game._frameMove === 0){
         unhide()
-        }else if (game._frameMove === 3 && game._frameNumber === 10){
+        }
+        else if (game._frameMove === 3 && game._frameNumber === 10){
         unhide()
       }
 
@@ -113,7 +116,6 @@ $(document).ready(function(){
         $('#frame').hide();
         $('#new_button').show();
       }
-
     }
 
 });

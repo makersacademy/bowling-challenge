@@ -12,16 +12,18 @@ BowlingScore.prototype.newRound = function() {
 
 BowlingScore.prototype.finalScore = function() {
   if (this.prevRound.plus === "strike") {
-    this.round.currentScore += this.prevRound.score + this.round.currentScore
+    this.prevRound.currentScore += this.round.currentScore
+    this.round.currentScore += this.prevRound.currentScore
   } else if (this.prevRound.plus === "spare") {
-    this.round.currentScore += this.prevRound.score + this.round.roll1
+    this.prevRound.currentScore += this.round.roll1
+    this.round.currentScore += this.prevRound.currentScore
   } else {
-    this.round.currentScore += this.prevRound.score
+    this.round.currentScore += this.prevRound.currentScore
   }
 }
 
 BowlingScore.prototype.bonusRound = function() {
-  this.round.currentScore += this.round.roll3
+  this.round.currentScore += this.prevRound.currentScore
 }
 
 

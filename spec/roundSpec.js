@@ -37,14 +37,6 @@ describe("Round", function(){
     });
   });
 
-  // describe ("setRoll2", function() {
-  //   it("set the roll2 value", function(){
-  //     round.setRoll2(7)
-  //
-  //     expect(round.roll2).toEqual(7);
-  //   });
-  // });
-  //
   // describe ("setRoll3", function() {
   //   it("set the roll3 value", function(){
   //     round.setRoll3(7)

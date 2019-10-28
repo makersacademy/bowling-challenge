@@ -30,9 +30,7 @@ Round.prototype.countRoll = function() {
 }
 
 Round.prototype.score = function() {
-  console.log(this.roll1)
-  console.log(this.roll2)
-  this.currentScore = this.roll1 + this.roll2
+  this.currentScore = this.roll1 + this.roll2 + this.roll3
   if (this.currentScore === 10) {
     this.setPlus()
   }

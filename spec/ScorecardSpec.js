@@ -15,10 +15,10 @@ describe("Scorecard", function() {
       expect(scorecard.frame).toEqual(2);
     });
 
-    it ('does not exceed 10 frames', function(){
+    it ('does not exceed 11 frames', function(){
       console.log = jasmine.createSpy("log");
       var times;
-      for ( times = 0; times < 10; times ++){
+      for ( times = 0; times < 12; times ++){
         scorecard.roll(3,4);
       }
        scorecard.roll(3,4);
@@ -115,17 +115,20 @@ describe("Scorecard", function() {
     });
 
     it ('identifies a gutter game', function(){
+      scorecard.frame =12;
       scorecard.gameOver();
       expect(console.log).toHaveBeenCalledWith('You scored 0 points. Gutter game!')
     });
  
   it ('identifies a perfect game', function(){
+    scorecard.frame =12;
     scorecard.total = 300;
     scorecard.gameOver();
     expect(console.log).toHaveBeenCalledWith('You scored 300 points. Perfect game!');
     });
    
   it ('identifies the overall score of a game', function(){
+    scorecard.frame =12;
       scorecard.total = 150
       scorecard.gameOver();
     expect(console.log).toHaveBeenCalledWith('You scored 150 points. Good game!');

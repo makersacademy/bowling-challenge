@@ -7,8 +7,19 @@ $(document).ready(function() {
     event.preventDefault();
     let roll1 = Number($("#roll-1").val())
     let roll2 = Number($("#roll-2").val())
-    if ((roll1+roll2)> 10){
-      alert('Frame score cannot exceed 10 points. Please re-enter.')
+    if(scorecard.frame ===10) {
+      scorecard.roll10(roll1,roll2)
+    } else if(scorecard.frame ===11) {
+      document.getElementById("roll-1").style.display="none";
+      document.getElementById("roll-2").style.display="none";
+      document.getElementById("roll-3").style.display="block";
+      scorecard.roll11(roll1)
+    } else if(scorecard.frame >12){
+      document.getElementById("enter-rolls").disabled = true;
+    }
+      else if ((roll1+roll2)> 10){
+        alert('Frame score cannot exceed 10 points. Please re-enter.')
+        document.getElementById('score').reset();
     } else {
       scorecard.roll(roll1,roll2)
     }
@@ -20,14 +31,20 @@ $(document).ready(function() {
     if (confirm("Are you sure you want to start a new game? This action cannot be undone.")) { 
       scorecard.newGame();
       updateScore();
-      document.getElementById('score').reset();
-
+      clearScore();
+      document.getElementById("roll-1").style.display="block";
+      document.getElementById("roll-2").style.display="block";
+      document.getElementById("roll-3").style.display="none";
     }
   });
 
+  function clearScore(){
+    document.getElementById('score').reset();
+  }
 
   function endgame(){
-   $('#game-over').text(scorecard.gameOver())
+    $('#game-over').text(scorecard.gameOver());
+     
   };
 
   function updateScore() {

@@ -10,41 +10,53 @@ function Game() {
   this._frameMove = 0;
   this._frameNumber = 1;
   this._frameComplete = false;
+  this._gameOver = false;
 };
 
 Game.prototype.add = function(pins) {
-  this.addBonus(pins)
   this._bowls.push(pins)
   this._bowlNumber += 1
-  this._frameBowls.push(pins)
   this._frameMove +++1
-  if (this.isStrike() || this._frameMove === 2) {
-      this.nextTurn()
-      this._frameMove = 0
-      this._frameNumber +++1
-      this._frameBowls = []
-      this._frameBonus = []
-      this._frameComplete = false
+  if (this._frameNumber < 10) {
+    this._frameBowls.push(pins)
+    this.addBonus(pins)
+    if (this.isStrike() || this._frameMove === 2) {
+        this.nextTurn()
+        this._frameMove = 0
+        this._frameNumber +++1
+        this._frameBowls = []
+        this._frameBonus = []
+        this._frameComplete = false
     }
-}
-
-Game.prototype.isGameOver = function() {
-  if(this._frameNumber == 11 && this._frames[10].frameType == 'normal') {
-    return true
-  }
-  if(this._frameNumber == 12 && this._frames[10].frameType == 'spare'){
-    return true
-  }
-  if(this._frameNumber == 13 && this._frames[10].frameType == 'strike'){
-    return true
-  }
-}
-
-Game.prototype.getFrameNumber = function() {
-  if (this._frameNumber > 10){
-    return 10
   } else {
-  return this._frameNumber
+      this.addBonus(pins)
+      this.frameTen(pins)    
+  }
+}
+    
+
+Game.prototype.frameTen = function(pins) {
+  if (this._frameMove == 1 ){
+    this._frameBowls.push(pins)
+  }
+  if (this._frameMove == 2) {
+    this._frameBowls.push(pins)
+    this.isStrike() 
+    if (this.frameScore() < 10) {
+      this._frameComplete = true
+      this.nextTurn()
+      this._frameNumber +++1
+      this._gameOver = true
+      
+    }
+  }
+  if (this._frameMove == 3) {
+    this._frameBowls.push(pins) 
+    this._frameComplete = true
+    this.frameScore()
+    this.nextTurn()
+    this._frameNumber +++1
+    this._gameOver = true
   }
 }
 
@@ -86,9 +98,6 @@ Game.prototype.updateFrameScore = function(frame){
 Game.prototype.score = function() {
   var score = 0
   var j = this._frameNumber - 1
-  if (this._frameNumber >= 10) {
-    j = 10
-  }
   for (var i = 0; i < j; i++) {
     frame = this._frames[i]
     if (frame.frameComplete === true) {

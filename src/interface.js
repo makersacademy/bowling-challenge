@@ -12,56 +12,56 @@ $(document).ready(function(){
 
     $('#button1').click(function(){
       game.add(1);
-      updateScore()
       hide(1)
+      updateScore()
     })
 
     $('#button2').click(function(){
       game.add(2);
-      updateScore()
       hide(2)
+      updateScore()
     })
 
     $('#button3').click(function(){
       game.add(3);
-      updateScore()
       hide(3)
+      updateScore()
     })
 
     $('#button4').click(function(){
       game.add(4);
-      updateScore()
       hide(4)
+      updateScore()
     })
 
     $('#button5').click(function(){
       game.add(5);
-      updateScore()
       hide(5)
+      updateScore()
     })
 
     $('#button6').click(function(){
       game.add(6);
-      updateScore()
       hide(6)
+      updateScore()
     })
 
     $('#button7').click(function(){
       game.add(7);
-      updateScore()
       hide(7)
+      updateScore()
     })
 
     $('#button8').click(function(){
       game.add(8);
-      updateScore()
       hide(8)
+      updateScore()
     })
 
     $('#button9').click(function(){
       game.add(9);
-      updateScore()
       hide(9)
+      updateScore()
     })
 
     $('#button10').click(function(){
@@ -81,34 +81,39 @@ $(document).ready(function(){
     }
 
     function unhide(){
-      for (var i = 1; i <= 10; i++) {
+      for (var i = 1; i < 11; i++) {
         $('#button'+i).show();
       };
     }
 
     function updateScore(){ 
       $('#score').text("Game score: "+game.score());
-      $('#frame').text("Frame: "+game.getFrameNumber());
+      $('#frame').text("Frame: "+game._frameNumber);
       $('#last_bowl').text("Last bowl: "+game._bowls[game._bowls.length-1]);
       if (game._frameNumber > 1){
         for (var i = 0; i < game._frameNumber-1; i++) {
           var frame = game._frames[i]
-          if (frame.frameComplete == true) {
-          $('#bowl'+(i+1)).text("Frame: "+frame.frameBowls+" Framescore: "+game._frames[i].frameScore+" Bonus: "+game._frames[i].frameBonus);
+          if (frame.frameComplete === true) {
+          $('#bowl'+(i+1)).text("Frame rolls: "+frame.frameBowls+" Framescore: "+game._frames[i].frameScore+" Bonus: "+game._frames[i].frameBonus);
           } else {
-          $('#bowl'+(i+1)).text("Frame: "+frame.frameBowls+" Framescore: ");
+          $('#bowl'+(i+1)).text("Frame rolls: "+frame.frameBowls+" Framescore: ");
           }
         }
       }
+
       if (game._frameMove === 0){
-      unhide()
+        unhide()
+        }else if (game._frameMove === 3 && game._frameNumber === 10){
+        unhide()
       }
 
-      if (game.isGameOver() === true){
+      if (game._gameOver === true){
         hide(10)
         $('#button0').hide();
+        $('#frame').hide();
         $('#new_button').show();
       }
+
     }
 
 });

@@ -1,6 +1,6 @@
 function Game() {
 
-  this.rolls = []
+  this.rolls = [] 
   
 }
 
@@ -20,7 +20,7 @@ Game.prototype.calculateScore = function() {
     } else if (this.isSpare(currentBowl)) {
       score += this.spareBonus(currentBowl);
       currentBowl += 2;
-    } else {
+    } else { 
     score += this.basicFrame(currentBowl);
     currentBowl += 2;
   }

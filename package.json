@@ -10,10 +10,15 @@
   "devDependencies": {
     "eslint": "^6.5.1",
     "eslint-plugin-jasmine": "^2.10.1",
-    "jasmine": "^3.5.0"
+    "jasmine": "^3.5.0",
+    "karma": "*",
+    "karma-cli": "*",
+    "karma-jasmine": "*",
+    "karma-phantomjs-launcher": "*",
+    "karma-chrome-launcher": "*"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "karma start spec/karma.conf.js --single-run=false"
   },
   "repository": {
     "type": "git",

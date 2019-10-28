@@ -1,7 +1,6 @@
 var Game = function() {
   this.bowlingCard = new BowlingCard
   this.scoreCalculator = new ScoreCalculator
-  this.xmple = this.scoreCalculator.score;
 };
 Game.prototype.roll = function(pins) {
   this.scoreCalculator.reset();

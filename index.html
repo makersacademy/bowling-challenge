@@ -8,13 +8,16 @@
     <section>
       <h1>Ten Pin Bowling</h1>
       <div>
-        <form>
-          <input type="number" id="pins" name="pins" min="1" max="10">
+        <h2>Current Score:</h2>
+        <h2 id="score"></h2>
+        <form id="enter-pins">
+          <input type="number" id="current-turn" name="current-turn" min="1" max="10">
           <input type="submit" value="Submit"/>
         </form>
       </div>
     </section>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="src/interface.js"></script>
     <script src="src/game.js"></script>
     <script src="src/bowling_card.js"></script>
     <script src="src/score_calculator.js"></script>

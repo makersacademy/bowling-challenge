@@ -5,8 +5,9 @@ h1 {
   text-align:center;
   font-size: 40px;
 }
+
 body {
-  color: white;
+  color: black;
   background-color: #003a73;
   padding: 20px;
 }

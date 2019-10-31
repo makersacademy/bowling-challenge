@@ -7,17 +7,19 @@ $(document).ready(function() {
     event.preventDefault();
     let roll1 = Number($("#roll-1").val())
     let roll2 = Number($("#roll-2").val())
-    if(scorecard.frame ===10) {
+    if(scorecard.frame ===9) {
       scorecard.roll10(roll1,roll2)
-    } else if(scorecard.frame ===11) {
+      updateScore();
+    } else if(scorecard.frame ===10) {
       document.getElementById("roll-1").style.display="none";
       document.getElementById("roll-2").style.display="none";
       document.getElementById("roll-3").style.display="block";
       scorecard.roll11(roll1)
-    } else if(scorecard.frame >12){
+      updateScore();
+    } else if(scorecard.frame ===12){
       document.getElementById("enter-rolls").disabled = true;
     }
-      else if ((roll1+roll2)> 10){
+      else if ((roll1+roll2)> 10 && scorecard.frame < 10){
         alert('Frame score cannot exceed 10 points. Please re-enter.')
         document.getElementById('score').reset();
     } else {

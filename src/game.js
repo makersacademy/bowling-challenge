@@ -12,9 +12,14 @@ function Game() {
 Game.prototype.validTurn = function(pins) {
   if ( pins > 10 ) {
     return false;
-  } else if ( pins + this.frames[this.current_frame - 1][0] > 10 &&
-    this.current_frame !== 10 ) {
-    return false;
+  } if ( this.current_frame !== 10 ) {
+      if ( pins + this.frames[this.current_frame - 1][0] > 10 ) {
+        return false;
+      }
+  } else if ( this.current_frame === 10 && this.frames[9][0] !== 10 ) {
+      if ( pins + this.frames[9][0] > 10 && this.frames[9][1] === undefined ) {
+        return false;
+      }
   }
   return true;
 };
@@ -75,6 +80,7 @@ Game.prototype.calculateScore = function() {
 Game.prototype.calculateFrameScore = function() {
   let game = this;
   this.frame_scores.forEach(function(frame, index, all_frames) {
+    console.log(all_frames)
     if (game.frames[index].length > 0 && index < 9 ) {
       all_frames[index] = Number(game.frame_base[index] || 0) + Number(game.frame_bonus[index] || 0 ) +
       Number(all_frames[index - 1] || 0 );

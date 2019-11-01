@@ -1,13 +1,12 @@
 $(document).ready(function() {
   var game = new Game();
 
-  // $(document).find('f_score').hide();
   $(document).find('.final_score').hide();
 
   $('#btn_new_game').click(function() {
     game = new Game();
     $(document).find('.final_score').hide();
-    displayPinButtons();
+    showPinButtons();
     $(document).find('.buttons_1').show();
     clearFrames();
     updateFrames();
@@ -16,85 +15,85 @@ $(document).ready(function() {
 
   $('#btn0').click(function() {
     game.addBowl(0);
-    updateScore();
+    updateScore(0);
     updateFrames();
   });
 
   $('#btn1').click(function() {
     game.addBowl(1);
-    updateScore();
+    updateScore(1);
     updateFrames();
   });
 
   $('#btn2').click(function() {
     game.addBowl(2);
-    updateScore();
+    updateScore(2);
     updateFrames();
   });
 
   $('#btn3').click(function() {
     game.addBowl(3);
-    updateScore();
+    updateScore(3);
     updateFrames();
   });
 
   $('#btn4').click(function() {
     game.addBowl(4);
-    updateScore();
+    updateScore(4);
     updateFrames();
   });
 
   $('#btn5').click(function() {
     game.addBowl(5);
-    updateScore();
+    updateScore(5);
     updateFrames();
 
   });
 
   $('#btn6').click(function() {
     game.addBowl(6);
-    updateScore()
+    updateScore(6)
     updateFrames();
 
   });
 
   $('#btn7').click(function() {
     game.addBowl(7);
-    updateScore()
+    updateScore(7)
     updateFrames();
 
   });
 
   $('#btn8').click(function() {
     game.addBowl(8);
-    updateScore()
+    updateScore(8)
     updateFrames();
 
   });
 
   $('#btn9').click(function() {
     game.addBowl(9);
-    updateScore()
+    updateScore(9)
     updateFrames();
 
   });
 
   $('#btn10').click(function() {
     game.addBowl(10);
-    updateScore()
+    updateScore(10)
     updateFrames();
 
   });
 
-  function updateScore() {
+  function updateScore(pins) {
     game.calculateScore();
-    displayPinButtons();
+    hidePinButtons(pins);
+    showPinButtons()
     finalScore();
   };
 
   function finalScore() {
     if ( game.game_over === true ) {
-      // $(document).find('f_score').show();
       $(document).find('.final_score').show();
       $("#f_score").text(game.frame_scores[9]);
     } else {
@@ -102,59 +101,21 @@ $(document).ready(function() {
     }
   };
 
+  function hidePinButtons(pins) {
+    var p = 10 - pins
+    for (var i = 10; i > p; i--) {
+      $('#btn'+i).hide();
+    };
+  };
 
-  function displayPinButtons() {
-    if ( game.current_frame !== 10 ) {
-      if ( Number(game.frames[game.current_frame - 1].reduce((roll_one, roll_two) => roll_one + roll_two,0)) > 0 ) {
-        document.getElementById("btn10").style.visibility="hidden";
-      } else {
-        document.getElementById("btn10").style.visibility="visible";
-      } if ( Number(game.frames[game.current_frame - 1].reduce((roll_one, roll_two) => roll_one + roll_two,0)) > 1 ) {
-        document.getElementById("btn9").style.visibility="hidden";
-      } else {
-        document.getElementById("btn9").style.visibility="visible";
-      } if ( Number(game.frames[game.current_frame - 1].reduce((roll_one, roll_two) => roll_one + roll_two,0)) > 2 ) {
-        document.getElementById("btn8").style.visibility="hidden";
-      } else {
-        document.getElementById("btn8").style.visibility="visible";
-      } if ( Number(game.frames[game.current_frame - 1].reduce((roll_one, roll_two) => roll_one + roll_two,0)) > 3 ) {
-        document.getElementById("btn7").style.visibility="hidden";
-      } else {
-        document.getElementById("btn7").style.visibility="visible";
-      } if ( Number(game.frames[game.current_frame - 1].reduce((roll_one, roll_two) => roll_one + roll_two,0)) > 4 ) {
-        document.getElementById("btn6").style.visibility="hidden";
-      } else {
-        document.getElementById("btn6").style.visibility="visible";
-      } if ( Number(game.frames[game.current_frame - 1].reduce((roll_one, roll_two) => roll_one + roll_two,0)) > 5 ) {
-        document.getElementById("btn5").style.visibility="hidden";
-      } else {
-        document.getElementById("btn5").style.visibility="visible";
-      } if ( Number(game.frames[game.current_frame - 1].reduce((roll_one, roll_two) => roll_one + roll_two,0)) > 6 ) {
-        document.getElementById("btn4").style.visibility="hidden";
-      } else {
-        document.getElementById("btn4").style.visibility="visible";
-      } if ( Number(game.frames[game.current_frame - 1].reduce((roll_one, roll_two) => roll_one + roll_two,0)) > 7 ) {
-        document.getElementById("btn3").style.visibility="hidden";
-      } else {
-        document.getElementById("btn3").style.visibility="visible";
-      } if ( Number(game.frames[game.current_frame - 1].reduce((roll_one, roll_two) => roll_one + roll_two,0)) > 8 ) {
-        document.getElementById("btn2").style.visibility="hidden";
-      } else {
-        document.getElementById("btn2").style.visibility="visible";
+  function showPinButtons(){
+    if ( game.frames[game.current_frame - 1][0] === undefined ||
+      game.frames[9][0] === 10 || game.frames[9][1] !== undefined ) {
+      for (var i = 1; i < 11; i++) {
+        $('#btn'+i).show();
+      } if ( game.game_over === true ) {
+        $(document).find('.buttons_1').hide();
       }
-    } else if ( game.current_frame === 10 ) {
-        document.getElementById("btn1").style.visibility="visible";
-        document.getElementById("btn2").style.visibility="visible";
-        document.getElementById("btn3").style.visibility="visible";
-        document.getElementById("btn4").style.visibility="visible";
-        document.getElementById("btn5").style.visibility="visible";
-        document.getElementById("btn6").style.visibility="visible";
-        document.getElementById("btn7").style.visibility="visible";
-        document.getElementById("btn8").style.visibility="visible";
-        document.getElementById("btn9").style.visibility="visible";
-        document.getElementById("btn10").style.visibility="visible";
-    } if ( game.game_over === true ) {
-      $(document).find('.buttons_1').hide();
     }
   };
 

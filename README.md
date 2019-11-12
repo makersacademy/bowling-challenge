@@ -2,6 +2,8 @@
 Bowling Challenge
 =================
 
+This challenge has the purporse to show how the TDD process can help to developer a clean code.
+
 ## Bowling — how does it work?
 
 ### Strikes

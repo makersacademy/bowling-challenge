@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<body background="./public/images/bowling_back.png">
+
+<script src="src/game.js"></script>
+<script src="jquery.js"></script>
+<script src="src/interface.js"></script>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="bowling.css">
+  <title>Bowling Scorecard</title>
+</head>
+<center><img src="./public/images/bowling_logo.png">
+  <br>
+  <br>
+ <div id="buttons_1">
+   <button id=btn_new_game type="button" class="buttons_2">New game</button>
+   <button id=btn0 type="button" class="buttons_1">0</button>
+   <button id=btn1 type="button" class="buttons_1">1</button>
+   <button id=btn2 type="button" class="buttons_1">2</button>
+   <button id=btn3 type="button" class="buttons_1">3</button>
+   <button id=btn4 type="button" class="buttons_1">4</button>
+   <button id=btn5 type="button" class="buttons_1">5</button>
+   <button id=btn6 type="button" class="buttons_1">6</button>
+   <button id=btn7 type="button" class="buttons_1">7</button>
+   <button id=btn8 type="button" class="buttons_1">8</button>
+   <button id=btn9 type="button" class="buttons_1">9</button>
+   <button id=btn10 type="button" class="buttons_1">10</button>
+ </div>
+ <br>
+ <br>
+ <div id='scorecard'>
+ <table id='scorecardTable' class='scorecard' cellpadding='1' cellspacing='0'>
+   <tr>
+     <th colspan='6'>Frame 1</th>
+     <th colspan='6'>Frame 2</th>
+     <th colspan='6'>Frame 3</th>
+     <th colspan='6'>Frame 4</th>
+     <th colspan='6'>Frame 5</th>
+     <th colspan='6'>Frame 6</th>
+     <th colspan='6'>Frame 7</th>
+     <th colspan='6'>Frame 8</th>
+     <th colspan='6'>Frame 9</th>
+     <th colspan='9'>Frame 10</th>
+   </tr>
+   <tr>
+     <td id="frame1_r1" colspan='3'></td><td id="frame1_r2"colspan='3'></td>
+     <td id="frame2_r1" colspan='3'></td><td id="frame2_r2" colspan='3'></td>
+     <td id="frame3_r1" colspan='3'></td><td id="frame3_r2" colspan='3'></td>
+     <td id="frame4_r1" colspan='3'></td><td id="frame4_r2" colspan='3'></td>
+     <td id="frame5_r1" colspan='3'></td><td id="frame5_r2" colspan='3'></td>
+     <td id="frame6_r1" colspan='3'></td><td id="frame6_r2" colspan='3'></td>
+     <td id="frame7_r1" colspan='3'></td><td id="frame7_r2" colspan='3'></td>
+     <td id="frame8_r1" colspan='3'></td><td id="frame8_r2" colspan='3'></td>
+     <td id="frame9_r1" colspan='3'></td><td id="frame9_r2" colspan='3'></td>
+     <td id="frame10_r1" colspan='3'></td><td id="frame10_r2" colspan='3'></td><td id="frame10_r3" colspan='3'></td>
+   </tr>
+   <tr>
+     <td class=boldscore id="frame1sc" colspan='6'></td>
+     <td class=boldscore id="frame2sc" colspan='6'></td>
+     <td class=boldscore id="frame3sc" colspan='6'></td>
+     <td class=boldscore id="frame4sc" colspan='6'></td>
+     <td class=boldscore id="frame5sc" colspan='6'></td>
+     <td class=boldscore id="frame6sc" colspan='6'></td>
+     <td class=boldscore id="frame7sc" colspan='6'></td>
+     <td class=boldscore id="frame8sc" colspan='6'></td>
+     <td class=boldscore id="frame9sc" colspan='6'></td>
+     <td class=boldscore id="frame10sc" colspan='6'></td>
+</tr>
+   <br>
+   </div>
+   <div class="final_score">
+     <img src="./public/images/final_score.png" width="350" height="130"><center><span class="f_score" id="f_score" </span>
+  </div>
+  </body>
+</html>

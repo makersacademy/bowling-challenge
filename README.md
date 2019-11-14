@@ -5,9 +5,9 @@ Bowling Challenge
 ## SETUP 
 
 * Clone the project into a folder of your choice
-* Run 'npm install to install relevant npm packages'
+* Run 'npm install' to install relevant npm packages
 
-## 
+## RUNNING TESTS
 
 We are using jasmine to test our javascript classes 
 

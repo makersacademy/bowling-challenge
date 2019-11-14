@@ -1,6 +1,6 @@
 How To Play!
 =================
-jkjkj
+
 * Clone the github repo to your own local repository
 * Run the SpecRunner.html in order to check the tests
 * Run index.html in your favourite browser to check your bowling score!
@@ -8,6 +8,102 @@ jkjkj
 
 Bowling Challenge
 =================
+
+This is my attempt at the very famous *Bowling Game Kata* - designed to test both logical thinking and TDD. The user story was very simple-
+
+```
+As a bowler
+So I can what score I've got
+I want to be able to enter my scores into a scorecard and recieve my sore
+```
+
+I was primarily tasked with building the logic for the game in Javascript. After several different iterations I found a solution that I was pleased with - and one that was relatively simple to read. Further to this I then built a fully functional front-end where users can type in their scores and get their total score in return
+
+### Screenshots
+
+<img src="images/game_logic.png?" width="400px">
+
+A screenshot of the game logic - I tried to follow SRP and DRY principles as much as possible
+
+<img src="images/slicing_the_array.png?" width="400px">
+
+In order for my application I needed to take the entered numbers and turn them into an array of arrays - this shows you how I did it
+
+<img src="images/index.png?" width="400px">
+
+A simple front-end allowing users to enter in their scores
+
+<img src="images/tests.png?" width="400px">
+
+A small shot of the testing spec
+
+<img src="images/passing_tests.png?" width="400px">
+
+20/20 passing tests
+
+Technologies Used
+-----
+
+* Ruby
+  * I built my application with Ruby - using the command line to allow users to build their own airports and planes
+* Rspec
+  * My testing framework was rspec - my final test suite had 14/14 passing tests
+
+A Sample of the IRB
+-----
+
+```
+2.6.0 :001 > require './lib/airport.rb'
+2.6.0 :002 > require './lib/plane.rb'
+2.6.0 :003 > require './lib/weather.rb'
+
+2.6.0 :004 > gatwick = Airport.new
+ => #<Airport:0x00007f9aaa079af8 @capacity=20, @plane_array=[]> 
+
+2.6.0 :005 > virgin = Plane.new
+ => #<Plane:0x00007f9aaa0aa568 @has_landed=false> 
+
+2.6.0 :006 > easyjet.land(gatwick, Weather.new)
+ => [#<Plane:0x00007f9aab845a10 @has_landed=true>] 
+
+2.6.0 :007 > gatwick.takeoff(easyjet, Weather.new)
+ => #<Plane:0x00007f9aab845a10 @has_landed=false> 
+
+2.6.0 :025 > gatwick.takeoff(easyjet, Weather.new)
+RuntimeError (Sorry - this plane is not at the airport)
+
+2.6.0 :035 > easyjet.land(gatwick, Weather.new)
+RuntimeError (Sorry - poor weather) # The application gives this error 1/10 times as per the Weather class
+```
+
+
+Installation
+-----
+
+* Git clone the project into your own local repository
+* Run bundle install in order to download the relevant gems
+* Run irb in your local repo in order to start the application
+* Add the following into you IRB IRB
+
+```
+2.5.0 :001 > require './lib/takeaway.rb'
+2.6.0 :002 > require './lib/plane.rb'
+2.6.0 :003 > require './lib/weather.rb'
+```
+
+Tests
+-----
+
+After bundle install has been run you will be able to run rspec to test the application. Just run rspec in your terminal to do so.
+
+
+How To Play!
+=================
+
+* Clone the github repo to your own local repository
+* Run the SpecRunner.html in order to check the tests
+* Run index.html in your favourite browser to check your bowling score!
+* One note - the game is not yet validated - for that reason please enter in 0's where you have rolled a gutterball
 
 
 * Challenge time: rest of the day and weekend.

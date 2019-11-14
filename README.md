@@ -55,8 +55,6 @@ Technologies Used
 * Jasmine
   * All my tests were ran in Jasmine 
 
-```
-
 How To Play!
 -----
 

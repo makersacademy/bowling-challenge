@@ -6,8 +6,10 @@ describe("Bowling", () => {
     
     beforeEach(() => bowling = new Bowling());
 
-    it('should have a random flight number generated', () => {
-        bowling.roll(5)
-        expect(bowling.rolls[0]).toEqual(5)
-    });
+    describe("Each go", () => {
+        it('should have a score added to the rolls array when a roll is made', () => {
+            bowling.roll(5)
+            expect(bowling.rolls[0]).toEqual(5)
+        });
+    }) 
 });

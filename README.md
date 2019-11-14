@@ -1,6 +1,6 @@
 How To Play!
 =================
-
+jkjkj
 * Clone the github repo to your own local repository
 * Run the SpecRunner.html in order to check the tests
 * Run index.html in your favourite browser to check your bowling score!

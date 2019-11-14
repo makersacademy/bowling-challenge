@@ -6,6 +6,7 @@ $("#submit").click(function () {
 
   game = new Game(chunkArray(array, 2))
   $("#result").html(`Your score is ${game.play()}`);
+
 })
 
 function chunkArray(myArray, chunk_size) {
@@ -21,6 +22,9 @@ function chunkArray(myArray, chunk_size) {
   return newArray;
 }
 
+[1, 2, 3, 4]
+
+[[, 1, 2], [3, 4]]
 
 
 

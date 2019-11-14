@@ -4,6 +4,12 @@ function Game(numbers) {
   this.currentGameState = 'standard'
 }
 
+[[4, 5], [5, 5], [6, 2]]
+// Score-
+//9      19     33
+// Game State-
+// Stan  Stan   Spare
+
 Game.prototype.play = function () {
   for (let i = 0; i < 10; i++) {
     this.addRolls(this.numbers[i], this.currentGameState)

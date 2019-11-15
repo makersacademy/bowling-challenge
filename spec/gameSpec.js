@@ -29,7 +29,13 @@ describe("Bowling", () => {
             rolls.map(roll => bowling.roll(roll));
 
             expect(bowling.getScore()).toEqual(0);
-        })
+        });
+        it("should calculate score of where balls have no spares or strikes", () => {
+            let rolls = [3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6]
+            rolls.map(roll => bowling.roll(roll));
+
+            expect(bowling.getScore()).toEqual(90);
+        });
         
     })
 });

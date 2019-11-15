@@ -7,4 +7,10 @@ class Frame {
   roll() {
    this.bowlsLeft -= 1;
   }
+
+  isFrameOver() {
+    if (bowlsLeft === 0) {
+      this.frameOver = false;
+    }
+  }
 }

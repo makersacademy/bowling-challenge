@@ -1,15 +1,15 @@
-describe( 'Frame', () => {
+describe( 'frame', () => {
   
   let frame;
-  let scoreCard;
 
   beforeEach(() => {
     frame = new Frame();
-    scoreCard = new scoreCard();
   });
 
-  it('allows you to roll', () => {
+  it('allows you to roll twice', ()=> {
     frame.roll;
-    expect(scoreCard).toEqual(score);
+    frame.roll;
+    expect(frame).toEqual(frameOver)
   });
 });
+

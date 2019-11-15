@@ -4,6 +4,6 @@ class ScoreCard {
   }
 
   score(num) {
-    this.totalScore =+ num;
+    this.totalScore += num;
   }
 }

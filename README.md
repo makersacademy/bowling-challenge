@@ -85,5 +85,9 @@ As a player I want to be able to go bowling
 I want to be able to bowl twice a frame
 
 2#
-As a player, once I have bowled I want a score
-my score should be based on the number of pins I knocked down
+As a player, I want to be able to record my score
+I want to be able to manual enter my score for each bowl
+
+3#
+As a player, I want to be able to see my total score
+I want to be able to see the combine score of both my bowls

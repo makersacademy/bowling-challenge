@@ -21,5 +21,9 @@ describe('Scorecard', function(){
     it('Has an array of played frames which are empty', function(){
       expect(scorecard.frames).toEqual([]);
     });
+
+    it('Has counter for what number frame it is on', function(){
+      expect(scorecard.frameCounter).toEqual(1);
+    });
   });
 });

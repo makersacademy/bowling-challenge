@@ -7,13 +7,17 @@ class Frame{
   }
 
   setScore(){
-    try {
+    if(this.rollCounter.length == 2){
+      
       this.rollOne = this.rollCounter[0];
       this.rollTwo = this.rollCounter[1];
-      this.score = this.rollOne + this.rollTwo
-    }
-    catch {
+      this.score = this.rollOne + this.rollTwo;
+
+    } else if (this.rollCounter.length == 1){
+
       this.rollOne = this.rollCounter[0];
+      this.rollTwo = 0;
+      this.score = this.rollOne + this.rollTwo;
     }
   }
 

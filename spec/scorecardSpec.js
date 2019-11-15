@@ -29,8 +29,19 @@ describe('Scorecard', function(){
 
   describe('Add score', function(){
     it('On start new instance of frame is created', function(){
-      scorecard.addScore();
+      scorecard.addScore(2);
       expect(scorecard.currentFrame).toBeInstanceOf(Frame);
+    });
+
+    it('Will set the frames score to the total score on scorecard', function(){
+      scorecard.addScore(2);
+      expect(scorecard.totalScore).toEqual(2);
+    });
+
+    it('Will take 2 scores and set the total score to the total score of the frame', function(){
+      scorecard.addScore(2);
+      scorecard.addScore(2);
+      expect(scorecard.totalScore).toEqual(4);
     });
   });
 });

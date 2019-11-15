@@ -8,7 +8,11 @@ class Scorecard {
   }
 
 
-  addScore(){
+  addScore(score){
     this.currentFrame = new Frame;
+    this.currentFrame.getRoll(score);
+
+    this.totalScore += this.currentFrame.score;
+
   }
 }

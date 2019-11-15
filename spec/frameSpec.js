@@ -22,12 +22,21 @@ describe('Frame', function(){
     it('Has score for second roll', function(){
       expect(frames.rollTwo).toEqual(0);
     });
+
+    it('Has bool value which is set false which checks if the frame is complete', function(){
+      expect(frames.complete).toBeFalsy();
+    });
   });
 
   describe('getRoll', function(){
     it('Can accept a first roll and add it to the score for the first roll', function(){
       frames.getRoll(4);
       expect(frames.rollOne).toEqual(4);
+    });
+
+    it('Sets the score to the first roll if only one roll has been completed', function(){
+      frames.getRoll(4);
+      expect(frames.score).toEqual(4);
     });
 
     it('Can accept a second roll and add it to the score for the second roll', function(){

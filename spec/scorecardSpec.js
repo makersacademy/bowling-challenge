@@ -29,6 +29,7 @@ describe('Scorecard', function(){
 
   describe('Add score', function(){
     it('On start new instance of frame is created', function(){
+      scorecard.addScore();
       expect(scorecard.currentFrame).toBeInstanceOf(Frame);
     });
   });

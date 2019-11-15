@@ -7,7 +7,7 @@ describe('Frame', function(){
 
   describe('Defaults', function(){
 
-    it('Can be an instance of scorecard', function(){
+    it('Can be an instance of frame', function(){
       expect(frames).toBeInstanceOf(Frame);
     });
     

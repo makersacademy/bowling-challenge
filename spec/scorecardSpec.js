@@ -19,7 +19,7 @@ describe('Scorecard', function(){
     });
 
     it('Has an array of played frames which are empty', function(){
-      expect(scorecard.frames).toBeEmpty();
+      expect(scorecard.frames).toEqual([]);
     });
   });
 });

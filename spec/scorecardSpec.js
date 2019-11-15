@@ -26,4 +26,10 @@ describe('Scorecard', function(){
       expect(scorecard.frameCounter).toEqual(1);
     });
   });
+
+  describe('Add score', function(){
+    it('On start new instance of frame is created', function(){
+      expect(scorecard.currentFrame).toBeInstanceOf(Frame);
+    });
+  });
 });

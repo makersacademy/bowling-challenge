@@ -5,4 +5,9 @@ class Scorecard {
     this.frames = [];
     this.frameCounter = 1;
   }
+
+
+  addScore(){
+    
+  }
 }

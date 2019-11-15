@@ -43,5 +43,13 @@ describe('Scorecard', function(){
       scorecard.addScore(2);
       expect(scorecard.totalScore).toEqual(4);
     });
+
+    it('Will take in 4 scores, from 2 frames and set the total score accordingly', function(){
+      scorecard.addScore(2);
+      scorecard.addScore(2);
+      scorecard.addScore(2);
+      scorecard.addScore(2);
+      expect(scorecard.totalScore).toEqual(8);
+    });
   });
 });

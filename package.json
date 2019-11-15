@@ -1,10 +1,11 @@
 {
   "name": "bowling-challenge",
   "version": "1.0.0",
-  "description": "Makers bowling challenge code",
+  "description": "Bowling Challenge =================",
   "main": "index.js",
   "directories": {
-    "doc": "docs"
+    "doc": "docs",
+    "lib": "lib"
   },
   "scripts": {
     "test": "jasmine"

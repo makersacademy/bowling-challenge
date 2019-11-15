@@ -17,7 +17,7 @@ class Bowling {
         if(score < 0 || score > 10) {
             throw "roll must be between 0 and 10"
         }
-        this.rolls.push(score);
+        this.rolls.push(parseInt(score));
     }
 
     isAStrike() {

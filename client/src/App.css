@@ -20,3 +20,39 @@
 .App-link {
   color: #09d3ac;
 }
+
+select {
+  width: 200px;
+  height: 30px;
+  border: 1px solid #282c34;
+}
+
+button {
+  border: 1px solid #282c34;
+  border-radius: 5px;
+  background-color: transparent;
+  margin-left: 5px;
+}
+
+button:hover, select:hover {
+  cursor: pointer;
+}
+
+.scores-enter {
+  background-color: #fff;
+  color: #2c2c2c;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  max-width: 500px;
+  margin: 10px auto;
+  padding: 20px 40px;
+}
+
+.scores-flex {
+  display: flex;
+}
+
+.button-calculate {
+  background-color: #fff;
+  height: 30px;
+}

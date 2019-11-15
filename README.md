@@ -12,3 +12,9 @@ Bowling Challenge
 We are using jasmine to test our javascript classes 
 
 * To run the tests, run 'npm test' in a terminal. You should see the result in the terminal
+
+## START THE APP
+
+run 'cd client' and then 'npm start'
+
+this should then start up a browser with the project

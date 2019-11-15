@@ -43,6 +43,19 @@ describe('Bowling', function(){
             bowling.rollBall(4);
             bowling.makeFrame();
             expect(bowling.frame).toEqual([ [7, 2], [5, 4] ])
-        })
+        });
+
+        it('adds 0 to frame if first roll is 10', function(){
+            bowling.rollBall(10);
+            bowling.makeFrame();
+            expect(bowling.frame).toEqual([[10, 0]])
+        });
+
+        it('checks', function(){
+            bowling.rollBall(0);
+            bowling.rollBall(10);
+            bowling.makeFrame();
+            expect(bowling.frame).toEqual([[0, 10], [0]])
+        });
     });
 });

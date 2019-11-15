@@ -10,6 +10,15 @@ class Frame{
     this.spare = false;
   }
 
+  checkScore(){
+    if (this.rollOne == 10){
+      this.strike = true;
+    }
+    if (this.rollOne + this.rollTwo == 10 && this.rollOne != 10){
+      this.spare = true;
+    }
+  }
+
   setScore(){
     if(this.rollCounter.length == 2){
 
@@ -32,6 +41,7 @@ class Frame{
       if(score < 10){
         this.rollCounter.push(score);
         this.setScore();
+        this.checkScore();
       } else{
         throw new Error('Score of over 10 is not possible')
       }  

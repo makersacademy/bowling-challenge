@@ -62,6 +62,17 @@ describe('Frame', function(){
       expect(function() { frames.getRoll(11); }).toThrowError('Score of over 10 is not possible');
     });
 
+    it('Will roll strike', function(){
+      frames.getRoll(10);
+      expect(frames.strike).toBeTruthy();
+    });
+
+    it('Will roll spare', function(){
+      frames.getRoll(9);
+      frames.getRoll(1);
+      expect(frames.spare).toBeTruthy();
+    });
+
     describe('Check Score', function(){
 
       it('Will set strike if a strike was made', function(){
@@ -74,9 +85,8 @@ describe('Frame', function(){
         frames.rollOne = 4;
         frames.rollTwo = 6;
         frames.checkScore();
-        expect(frames.strike).toBeTruthy
+        expect(frames.spare).toBeTruthy();
       });
-
     });
   });
 });

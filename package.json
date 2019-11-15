@@ -1,0 +1,26 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robbaile/bowling-challenge.git"
+  },
+  "author": "Rob Baile",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robbaile/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/robbaile/bowling-challenge#readme",
+  "dependencies": {
+    "jasmine": "^3.5.0"
+  }
+}

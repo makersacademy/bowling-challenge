@@ -1,4 +1,4 @@
-describe( 'frame', () => {
+describe( 'Frame', () => {
   
   let frame;
 
@@ -10,21 +10,21 @@ describe( 'frame', () => {
     expect(frame.bowlsLeft).toEqual(2)
   });
 
-  it('each roll reduces the number of bowls left by 1', () => {
-    frame.roll();
+  it('each bowl reduces the number of bowls left by 1', () => {
+    frame.bowl();
     expect(frame.bowlsLeft).toEqual(1)
   });
 
-  it('allows you to roll twice', ()=> {
-    frame.roll();
-    frame.roll();
+  it('allows you to bowl twice', ()=> {
+    frame.bowl();
+    frame.bowl();
     expect(frame.bowlsLeft).toEqual(0)
   });
 
   it('ends a frame after 2 bowls', ()=> {
-    frame.roll();
-    frame.roll();
-    expect(frame.frameOver).toEqual(true)
+    frame.bowl();
+    frame.bowl();
+    expect(frame.isFrameOver).toEqual(true)
   });
 
 });

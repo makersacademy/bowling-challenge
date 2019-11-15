@@ -21,5 +21,15 @@ describe("Bowling", () => {
             bowling.roll(5)
             expect(bowling.rolls[0]).toEqual(5)
         });
-    }) 
+    });
+    
+    describe("Calculating scores", () => {
+        it("should calculate score of 0", () => {
+            let rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rolls.map(roll => bowling.roll(roll));
+
+            expect(bowling.getScore()).toEqual(0);
+        })
+        
+    })
 });

@@ -51,5 +51,20 @@ describe('Scorecard', function(){
       scorecard.addScore(2);
       expect(scorecard.totalScore).toEqual(8);
     });
+
+    it('Will add completed frame into frames array', function(){
+      scorecard.addScore(2);
+      scorecard.addScore(2);
+      expect(scorecard.frames.length).toEqual(1);
+    });
+
+    it('Is able to add multiple completed frames into array', function(){
+      scorecard.addScore(2);
+      scorecard.addScore(2);
+      scorecard.addScore(2);
+      scorecard.addScore(2);
+      expect(scorecard.frames.length).toEqual(2);
+    });
+
   });
 });

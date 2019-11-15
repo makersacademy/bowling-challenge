@@ -32,6 +32,7 @@ class Frame{
       this.rollOne = this.rollCounter[0];
       this.rollTwo = 0;
       this.score = this.rollOne + this.rollTwo;
+      if (this.score == 10){ this.complete = true; }
     }
   }
 

@@ -6,10 +6,15 @@ describe( 'frame', () => {
     frame = new Frame();
   });
 
-  it('allows you to roll twice', ()=> {
-    frame.roll;
-    frame.roll;
-    expect(frame).toEqual(frameOver)
+  it('initializes a frame with 2 bowls available', () => {
+    expect(frame.bowlsLeft).toEqual(2)
   });
+
+  it('allows you to roll twice', ()=> {
+    frame.roll();
+    frame.roll();
+    expect(frame.bowlsLeft).toEqual(0)
+  });
+
 });
 

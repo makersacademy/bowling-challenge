@@ -7,7 +7,33 @@ describe('Bowling', function(){
         bowling = new Bowling();
     });
 
-    it('begins with a score of 0', function(){
-        expect(bowling.getCurrentScore()).toEqual(0);
+    describe('Initial game setup', function(){
+        it('begins with a score of 0', function(){
+            expect(bowling.getCurrentScore()).toEqual(0);
+        });
+
+        it('starts with 0 rolls', function(){
+            expect(bowling.rolls).toEqual([])
+        });
     });
-})
+
+    describe('Playing a game', function(){
+        it('updates the rolls array when ball is rolled once', function(){
+            bowling.rollBall(8);
+            expect(bowling.rolls).toEqual([8]);
+        });
+        
+        it('updates the rolls array when the ball is rolled multiple times', function(){
+            bowling.rollBall(5);
+            bowling.rollBall(2);
+            expect(bowling.rolls).toEqual([5, 2])
+        });
+
+        it('calculates the the score', function(){
+            bowling.rollBall(7);
+            bowling.rollBall(3);
+            bowling.calculateScore();
+            expect(bowling.score).toEqual(10);
+        });
+    });
+});

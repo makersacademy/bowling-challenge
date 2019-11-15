@@ -9,11 +9,7 @@ class Scorecard {
 
 
   addScore(score){
-
-    
-
     if (this.currentFrame.complete == true){
-
       this.currentFrame = new Frame;
       this.addScore(score)
 
@@ -24,6 +20,11 @@ class Scorecard {
       } else {
         this.totalScore += this.currentFrame.rollTwo;
       }    
+    }
+
+    if (this.currentFrame.complete == true){
+      this.frames.push(this.currentFrame);
+      console.log(this.frames.length)
     }
   }
 }

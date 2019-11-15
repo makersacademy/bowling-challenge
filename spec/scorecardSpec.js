@@ -66,5 +66,10 @@ describe('Scorecard', function(){
       expect(scorecard.frames.length).toEqual(2);
     });
 
+    it('Is able to add a frame which was complete by a strike', function(){
+      scorecard.addScore(10);
+      expect(scorecard.frames.length).toEqual(1);
+    });
+
   });
 });

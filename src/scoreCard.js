@@ -4,6 +4,9 @@ class ScoreCard {
   }
 
   score(num) {
+    if (num > 10) {
+      throw new Error("Invalid Score");
+    }
     this.totalScore += num;
   }
 }

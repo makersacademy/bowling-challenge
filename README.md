@@ -91,3 +91,7 @@ I want to be able to manual enter my score for each bowl
 3#
 As a player, I want to be able to see my total score
 I want to be able to see the combine score of both my bowls
+
+4#
+As a player, if I score 10 in my first bowl
+I shouldn't be able to bowl again in the same frame

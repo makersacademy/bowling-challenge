@@ -43,6 +43,13 @@ describe("Bowling", () => {
             rolls.map(roll => bowling.roll(roll));
 
             expect(bowling.getScore()).toEqual(10);
+        });
+
+        it("points scored in the roll after a spare are counted twice", () => {
+            let rolls = [6, 4, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            rolls.map(roll => bowling.roll(roll));
+
+            expect(bowling.getScore()).toEqual(16); 
         })
         
     })

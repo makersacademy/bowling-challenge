@@ -38,7 +38,7 @@ class Frame{
 
   getRoll(score){
     if (this.rollCounter.length < 2) {
-      if(score < 10){
+      if(score <= 10){
         this.rollCounter.push(score);
         this.setScore();
         this.checkScore();

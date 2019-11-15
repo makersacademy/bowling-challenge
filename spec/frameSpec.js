@@ -61,5 +61,22 @@ describe('Frame', function(){
     it('Will only allow the user to input a score of 10', function(){
       expect(function() { frames.getRoll(11); }).toThrowError('Score of over 10 is not possible');
     });
+
+    describe('Check Score', function(){
+
+      it('Will set strike if a strike was made', function(){
+        frames.rollOne = 10;
+        frames.checkScore();
+        expect(frames.strike).toBeTruthy();
+      });
+
+      it('Will set spare if a spare was made', function(){
+        frames.rollOne = 4;
+        frames.rollTwo = 6;
+        frames.checkScore();
+        expect(frames.strike).toBeTruthy
+      });
+
+    });
   });
 });

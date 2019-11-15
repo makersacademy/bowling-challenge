@@ -14,5 +14,13 @@ describe('Frame', function(){
     it('Has score for current frame', function(){
       expect(frames.score).toEqual(0);
     });
+
+    it('Has score for the first roll', function(){
+      expect(frames.rollOne).toEqual(0);
+    });
+
+    it('Has score for second roll', function(){
+      expect(frames.rollTwo).toEqual(0);
+    });
   });
 });

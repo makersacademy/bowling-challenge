@@ -24,6 +24,7 @@ class Scorecard {
 
     if (this.currentFrame.complete == true){
       this.frames.push(this.currentFrame);
+      this.frameCounter ++;
     }
   }
 }

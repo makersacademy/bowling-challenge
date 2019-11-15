@@ -5,6 +5,11 @@ describe('Scorecard', function(){
     scorecard = new Scorecard;
   });
 
+  function testAddScore(num1,num2){
+    scorecard.addScore(num1)
+    scorecard.addScore(num2)
+  }
+
   describe('Defaults', function(){
     it('Can be an instance of scorecard', function(){
       expect(scorecard).toBeInstanceOf(Scorecard);
@@ -69,6 +74,20 @@ describe('Scorecard', function(){
     it('Is able to add a frame which was complete by a strike', function(){
       scorecard.addScore(10);
       expect(scorecard.frames.length).toEqual(1);
+    });
+
+    it('Will add 10 frames to the array', function(){
+      for(var i = 0; i < 10; i++){
+        testAddScore(2,3)
+      }
+      expect(scorecard.frames.length).toEqual(10);
+    });
+
+    it('Will throw error if 11 frames are tried to put into the array', function(){
+      for(var i = 0; i < 10; i++){
+        testAddScore(2,3)
+      }
+      expect(function() { scorecard.addScore(2); }).toThrowError('Game is over, 10 frames have been exceeded')
     });
 
   });

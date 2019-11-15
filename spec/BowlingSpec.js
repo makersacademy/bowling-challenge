@@ -35,5 +35,14 @@ describe('Bowling', function(){
             bowling.calculateScore();
             expect(bowling.score).toEqual(10);
         });
+
+        it('chunks the array into pairs', function(){
+            bowling.rollBall(7);
+            bowling.rollBall(2);
+            bowling.rollBall(5);
+            bowling.rollBall(4);
+            bowling.makeFrame();
+            expect(bowling.frame).toEqual([ [7, 2], [5, 4] ])
+        })
     });
 });

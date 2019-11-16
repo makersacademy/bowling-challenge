@@ -42,13 +42,6 @@ describe('Game', function() {
       bowl = new Bowl();
     });
 
-    it('can see the score', function() {
-      bowl.roll(1)
-      bowl.roll(1)
-      total = game.score();
-      expect(total).toEqual(2);
-    });
-
     it('can play a full game scoring 0 points', function () {
       for (i = 0; i < 20; i++) {
         bowl.roll(0);
@@ -65,6 +58,52 @@ describe('Game', function() {
       expect(total).toEqual(20);
     });
 
+    it('can play a perfect game', function() {
+      for (i = 0; i < 20; i++) {
+        bowl.roll(10);
+      };
+      total = game.score();
+      expect(total).toEqual(200);
+    });
+
+  });
+
+});
+
+describe('Spares', function() {
+
+  beforeEach(function() {
+    game = new Game();
+    bowl = new Bowl();
+  });
+
+  it('knows the first roll', function() {
+    bowl.roll(1)
+    expect(bowl.rolls[0]).toEqual(1);
+  });
+
+  it('knows the second roll', function() {
+    bowl.roll(5)
+    bowl.roll(5)
+    expect(bowl.rolls[1]).toEqual(5);
+  });
+
+  it('has a full array of 20 for full game', function() {
+    for (i = 0; i < 20; i++) {
+      bowl.roll(10);
+    };
+    expect(bowl.rolls.length).toEqual(20);
+  });
+
+  it('rolls a spare', function() {
+    for (i = 0; i < 3; i++) {
+      bowl.roll(5);
+    };
+    for (i = 0; i < 17; i++) {
+      bowl.roll(0);
+    };
+    total = game.score()
+    expect(total).toEqual(20);
   });
 
 });

@@ -3,7 +3,7 @@ describe("Game", function() {
   var frame;
   beforeEach(function() {
     game = new Game;
-    frame = jasmine.createSpy('frame')
+    frame = jasmine.createSpyObj('frame', ['_getPoints'])
   });
 
   it("exists", function() {
@@ -11,6 +11,18 @@ describe("Game", function() {
   });
 
   it("can add a frame", function() {
-    expect(game.addFrame(frame)).toEqual([frame])
+    game.addFrame(frame)
+    expect(game._getFrames()).toEqual([frame]);
+  });
+
+  it("can return the frames", function() {
+    game.addFrame(frame);
+    game.addFrame(frame);
+    expect(game._getFrames()).toEqual([frame, frame]);
+  });
+
+  it("counts up points", function() {
+    game.addFrame(frame);
+    expect(game._getOverallPoints()).not.toEqual(0);
   });
 });

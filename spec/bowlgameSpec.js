@@ -42,26 +42,26 @@ describe('Game', function() {
       bowl = new Bowl();
     });
 
-    it('can play a full game scoring 0 points', function () {
-      for (i = 0; i < 20; i++) {
-        bowl.roll(0);
+    var fullGame = function (skittles, rolls) {
+      for (i = 0; i < rolls; i++) {
+        bowl.roll(skittles);
       };
+    };
+
+    it('can play a full game scoring 0 points', function () {
+      fullGame(0, 20);
       total = game.score();
       expect(total).toEqual(0);
     });
 
     it('can play a full game scoring 20 points', function() {
-      for (i = 0; i < 20; i++) {
-        bowl.roll(1);
-      };
+      fullGame(1, 20);
       total = game.score();
       expect(total).toEqual(20);
     });
 
     it('can play a perfect game', function() {
-      for (i = 0; i < 20; i++) {
-        bowl.roll(10);
-      };
+      fullGame(10, 20);
       total = game.score();
       expect(total).toEqual(200);
     });
@@ -77,6 +77,12 @@ describe('Spares', function() {
     bowl = new Bowl();
   });
 
+  var fullGame = function (skittles, rolls) {
+    for (i = 0; i < rolls; i++) {
+      bowl.roll(skittles);
+    };
+  };
+
   it('knows the first roll', function() {
     bowl.roll(1)
     expect(bowl.rolls[0]).toEqual(1);
@@ -89,19 +95,15 @@ describe('Spares', function() {
   });
 
   it('has a full array of 20 for full game', function() {
-    for (i = 0; i < 20; i++) {
-      bowl.roll(10);
-    };
+    fullGame(10, 20);
     expect(bowl.rolls.length).toEqual(20);
   });
 
   it('rolls a spare', function() {
-    for (i = 0; i < 3; i++) {
-      bowl.roll(5);
-    };
-    for (i = 0; i < 17; i++) {
-      bowl.roll(0);
-    };
+    bowl.roll(5);
+    bowl.roll(5);
+    bowl.roll(5);
+    fullGame(0, 17);
     total = game.score()
     expect(total).toEqual(20);
   });

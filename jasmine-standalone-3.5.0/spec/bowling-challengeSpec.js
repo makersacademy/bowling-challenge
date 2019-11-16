@@ -26,11 +26,14 @@ describe('Scorer', function(){
     });
 
     it('adds a strike bonus to the tally', function(){
-       console.log(scorer.tally);
        scorer.addFrame(10, 0);
-       console.log(scorer.strike);
        scorer.addFrame(3, 4);
-       console.log(scorer.strike);
        expect(scorer.tally).toEqual(24);
+    });
+
+    it('adds a spare bonus to the tally', function(){
+        scorer.addFrame(7, 3);
+        scorer.addFrame(4, 5);
+        expect(scorer.tally).toEqual(23);
     });
 });

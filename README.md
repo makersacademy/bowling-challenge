@@ -79,3 +79,5 @@ Reviewers will potentially be using this [code review rubric](docs/review.md).  
 ------------------
 ### Sara Rancati - 16 November 2019
 
+1. Installed ESLint.
+

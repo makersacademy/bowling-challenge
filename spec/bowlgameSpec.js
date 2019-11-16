@@ -60,12 +60,6 @@ describe('Game', function() {
       expect(total).toEqual(20);
     });
 
-    it('can play a perfect game', function() {
-      fullGame(10, 20);
-      total = game.score();
-      expect(total).toEqual(200);
-    });
-
   });
 
 });
@@ -106,6 +100,46 @@ describe('Spares', function() {
     fullGame(0, 17);
     total = game.score()
     expect(total).toEqual(20);
+  });
+
+});
+
+describe('Strikes', function() {
+
+  beforeEach(function() {
+    game = new Game();
+    bowl = new Bowl();
+  });
+
+  var fullGame = function (skittles, rolls) {
+    for (i = 0; i < rolls; i++) {
+      bowl.roll(skittles);
+    };
+  };
+
+  it('rolls a strike on first roll', function() {
+    bowl.roll(10);
+    bowl.roll(5);
+    bowl.roll(5);
+    fullGame(0, 17);
+    total = game.score();
+    expect(total).toEqual(30);
+  });
+
+  it('rolls two strikes', function() {
+    bowl.roll(10);
+    bowl.roll(5);
+    bowl.roll(10);
+    bowl.roll(5);
+    fullGame(0, 16);
+    total = game.score();
+    expect(total).toEqual(45);
+  });
+
+  it('can play a perfect game', function() {
+    fullGame(10, 20);
+    total = game.score();
+    expect(total).toEqual(300);
   });
 
 });

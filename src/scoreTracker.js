@@ -1,7 +1,8 @@
 'use strict'
 
-function ScoreTracker () {
+function ScoreTracker (calculate) {
   this._scoreSheet = []
+  this._calculate = calculate
 }
 
 ScoreTracker.prototype.add = function (score) {
@@ -11,4 +12,8 @@ ScoreTracker.prototype.add = function (score) {
 
 ScoreTracker.prototype.scoreSheet = function () {
   return this._scoreSheet
+}
+
+ScoreTracker.prototype.total = function () {
+  return this._calculate(this._scoreSheet)
 }

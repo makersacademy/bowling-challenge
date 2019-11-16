@@ -4,7 +4,8 @@ describe('ScoreTracker', function () {
   var tracker
 
   beforeEach(function () {
-    tracker = new ScoreTracker()
+    var calculate = jasmine.createSpy().and.returnValue(2)
+    tracker = new ScoreTracker(calculate)
   })
 
   it('Accepts scores from user', function () {
@@ -15,5 +16,9 @@ describe('ScoreTracker', function () {
     tracker.add(1)
     tracker.add(1)
     expect(tracker.scoreSheet()).toContain(1, 1)
+  })
+
+  it('Returns a total when #total is called', function () {
+    expect(tracker.total()).toEqual(2)
   })
 })

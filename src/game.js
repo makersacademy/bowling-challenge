@@ -1,14 +1,14 @@
 function Game() {
-  this.rollScore = [];
+  this.bowls = [];
 };
 
-Game.prototype.roll = function(pins) {
-  this.rollScore.push(pins);
+Game.prototype.bowl = function(skittles) {
+  this.bowls.push(skittles);
 };
-Game.prototype.frameScore = function() {
+Game.prototype.score = function() {
   var total = 0;
-  for (var i = 0; i < 2; i++) {
-    total += this.rollScore[i];
+  for (i = 0; i < this.bowls.length; i++) {
+    total += this.bowls[i];
   };
   return total;
-};
+}

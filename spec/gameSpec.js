@@ -7,34 +7,49 @@ describe('Game', function() {
     });
 
     it('player can roll a gutter ball', function() {
-      game.roll(0)
-      expect(game.rollScore).toEqual([0]);
+      game.bowl(0)
+      expect(game.bowls).toEqual([0]);
     });
 
     it('player can roll a ball and score 1', function() {
-      game.roll(1)
-      expect(game.rollScore).toEqual([1]);
+      game.bowl(1)
+      expect(game.bowls).toEqual([1]);
     });
 
     it('player can roll 2 balls and score 2', function() {
-      game.roll(1)
-      game.roll(1)
-      expect(game.rollScore).toEqual([1, 1])
+      game.bowl(1)
+      game.bowl(1)
+      expect(game.bowls).toEqual([1, 1])
     });
 
     it('can see the score for the frame', function() {
-      game.roll(1)
-      game.roll(1)
-      total = game.frameScore();
+      game.bowl(1)
+      game.bowl(1)
+      total = game.score();
       expect(total).toEqual(2);
     });
 
-    xit('can play a full game scoring 0 points', function () {
+    it('can play a full game scoring 0 points', function () {
       for (i = 0; i < 20; i++) {
-        game.roll(1);
+        game.bowl(0);
       };
-      total = game.frameScore();
+      total = game.score();
+      expect(total).toEqual(0);
+    });
+
+    it('can play a full game scoring 20 points', function() {
+      for (i = 0; i < 20; i++) {
+        game.bowl(1);
+      };
+      total = game.score();
       expect(total).toEqual(20);
+    });
+
+    it('can play half a game', function() {
+      game.bowl(1);
+      game.bowl(1);
+      total = game.score();
+      expect(total).toEqual(2);
     });
 
   });

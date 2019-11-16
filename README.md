@@ -13,24 +13,16 @@ $ open SpecRunner.html
 This is a bowling scorecard. The user inputs the rolls from a bowling game, and
 the program counts and sums the scores for that player.
 
-### Bowling rules
+## Comments
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-For more detail on scoring, see the section 'Bowling - how does it work?' below.
-
-## Notes
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
-
-### Code Review
+This code is intended to be reviewed using [this rubric](docs/review.md).
 
 In code review we'll be hoping to see:
 
 * All tests passing
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
 
 ### Optional Extras
 
@@ -43,7 +35,9 @@ In any order you like:
 You might even want to start with ESLint early on in your work — to help you
 learn Javascript conventions as you go along.
 
-## Bowling — how does it work?
+### Bowling rules
+
+A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
 ### Strikes
 

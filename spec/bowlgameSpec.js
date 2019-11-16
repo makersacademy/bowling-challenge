@@ -119,21 +119,23 @@ describe('Strikes', function() {
 
   it('rolls a strike on first roll', function() {
     bowl.roll(10);
-    bowl.roll(5);
-    bowl.roll(5);
-    fullGame(0, 17);
+    bowl.roll(4);
+    bowl.roll(3);
+    fullGame(0, 16);
     total = game.score();
-    expect(total).toEqual(30);
+    expect(total).toEqual(24);
   });
 
   it('rolls two strikes', function() {
     bowl.roll(10);
-    bowl.roll(5);
+    bowl.roll(4);
+    bowl.roll(3);
     bowl.roll(10);
-    bowl.roll(5);
-    fullGame(0, 16);
+    bowl.roll(4);
+    bowl.roll(3);
+    fullGame(0, 12);
     total = game.score();
-    expect(total).toEqual(45);
+    expect(total).toEqual(48);
   });
 
   it('can play a perfect game', function() {

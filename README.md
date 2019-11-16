@@ -13,6 +13,9 @@ $ open SpecRunner.html
 This is a bowling scorecard. The user inputs the rolls from a bowling game, and
 the program counts and sums the scores for that player.
 
+![Diagram 1](https://www.dropbox.com/s/hjtnszrn5neywy5/Bowling-score-diagram.png?dl=0)
+_Created on [draw.io](https://www.draw.io/)_
+
 ## Comments
 
 This code is intended to be reviewed using [this rubric](docs/review.md).

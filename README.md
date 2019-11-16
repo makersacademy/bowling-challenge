@@ -13,8 +13,14 @@ $ open SpecRunner.html
 This is a bowling scorecard. The user inputs the rolls from a bowling game, and
 the program counts and sums the scores for that player.
 
-### Planning diagram
-![planning-diagram](images/planning-diagram.png)
+### Planning diagrams
+First plan:
+![planning-diagram-1](images/planning-diagram-1.png)
+
+_Created on [draw.io](https://www.draw.io/)_
+
+Second plan:
+![planning-diagram-2](images/planning-diagram-2.png)
 
 _Created on [draw.io](https://www.draw.io/)_
 

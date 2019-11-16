@@ -1,14 +1,19 @@
 function Game() {
-  this.bowls = [];
-};
-
-Game.prototype.bowl = function(skittles) {
-  this.bowls.push(skittles);
 };
 Game.prototype.score = function() {
-  var total = 0;
-  for (i = 0; i < this.bowls.length; i++) {
-    total += this.bowls[i];
+  total = 0;
+  for (i = 0; i < bowl.rolls.length; i++) {
+    total += bowl.rolls[i];
   };
   return total;
-}
+};
+
+function Bowl() {
+  this.rolls = [];
+};
+Bowl.prototype.roll = function(skittles) {
+  this.rolls.push(skittles);
+};
+
+var game = new Game();
+var bowl = new Bowl();

@@ -3,9 +3,21 @@
 function ScoreTracker (calculate) {
   this._scoreSheet = []
   this._calculate = calculate
+  this._bonusMode = false
 }
 
 ScoreTracker.prototype.add = function (score) {
+  if (this._bonusMode) {
+    console.log('bonus time')
+    return score
+  } else {
+    console.log('calling normalAdd')
+    this._normalAdd(score)
+    return score
+  }
+}
+
+ScoreTracker.prototype._normalAdd = function (score) {
   var lastIndex = this._scoreSheet.length - 1
   if (this._scoreSheet.length < 1) {
     this._scoreSheet.push([score])

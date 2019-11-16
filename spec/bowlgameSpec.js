@@ -1,9 +1,8 @@
-describe('Game', function() {
+describe('Bowl', function() {
 
-  describe('roll a ball', function() {
+  describe('bowling a ball', function() {
 
     beforeEach(function() {
-      game = new Game();
       bowl = new Bowl();
     });
 
@@ -28,6 +27,19 @@ describe('Game', function() {
         bowl.roll(1);
       };
       expect(bowl.rolls).toEqual([1, 1, 1, 1]);
+    });
+
+  });
+
+});
+
+describe('Game', function() {
+
+  describe('seeing the score', function() {
+
+    beforeEach(function() {
+      game = new Game();
+      bowl = new Bowl();
     });
 
     it('can see the score', function() {

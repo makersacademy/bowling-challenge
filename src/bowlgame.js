@@ -14,6 +14,3 @@ function Bowl() {
 Bowl.prototype.roll = function(skittles) {
   this.rolls.push(skittles);
 };
-
-var game = new Game();
-var bowl = new Bowl();

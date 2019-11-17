@@ -1,7 +1,7 @@
 function UserScore() {
-  this.score = []
+  this.frames = []
 }
 
-UserScore.prototype.add = function(frame) {
-  this.score.push(frame);
+UserScore.prototype.addFrame = function(frame) {
+  this.frames.push(frame);
 };

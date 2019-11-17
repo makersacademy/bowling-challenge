@@ -2,6 +2,9 @@
 
 function Frame() {};
 
+var output
+
 Frame.prototype.getScore = function(firstroll, secondroll) {
-  return (0);
+  output = firstroll + secondroll
+  return (output);
 };

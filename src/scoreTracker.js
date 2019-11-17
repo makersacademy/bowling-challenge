@@ -12,13 +12,25 @@ ScoreTracker.prototype.add = function (score) {
     return score
   }
   // all other rolls
-  var lastFrame = this._scoreSheet[this._scoreSheet.length - 1]
-  if (lastFrame.length > 1) {
+  var latestFrame = this._scoreSheet[this._scoreSheet.length - 1]
+  if (latestFrame.length > 1) {
     this._scoreSheet.push([score])
+    return score
   } else {
-    lastFrame.push(score)
+    latestFrame.push(score)
+    // check if final frame
+    if (this._scoreSheet.length === 10) {
+      console.log(JSON.stringify(this._scoreSheet))
+      console.log('final frame complete!')
+      if (latestFrame[0] + latestFrame[1] === 10) {
+        console.log('TODO: bonus rolls')
+      } else {
+        return this.total()
+      }
+    } else {
+      return score
+    }
   }
-  return score
 }
 
 ScoreTracker.prototype.scoreSheet = function () {
@@ -28,3 +40,16 @@ ScoreTracker.prototype.scoreSheet = function () {
 ScoreTracker.prototype.total = function () {
   return this._calculate(this._scoreSheet)
 }
+
+// ScoreTracker.prototype._isFinalFrame = function () {
+  // return this._scoreSheet.length === 10
+// }
+//
+  // if (this._isFinalFrame()) {
+    // console.log('finalFrame')
+    // return this.total()
+  // } else {
+    // console.log(this.scoreSheet())
+    // console.log('notFinalFrame')
+    // return score
+  // }

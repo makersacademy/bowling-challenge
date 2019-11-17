@@ -20,4 +20,8 @@ Score.prototype.totalScore = function(array){
     return this.subtotal;
 }
 
+Score.prototype.showSum = function(){
+    return this.subtotal;
+}
+
 // [[2,3],[5,6],[7,6],[6,3],[2,3],[6,9],[5,6],[5,6],[2,8],[7,7]]

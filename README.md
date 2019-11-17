@@ -80,4 +80,6 @@ Reviewers will potentially be using this [code review rubric](docs/review.md).  
 ### Sara Rancati - 16 November 2019
 
 1. Installed ESLint.
+2. TDD simple functions to calculate sum for single roll, and for 10 rolls (without logic for strike/spare).
+3. Developed a simple interface for user's input.
 

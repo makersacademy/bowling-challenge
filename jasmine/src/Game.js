@@ -26,6 +26,9 @@ Game.prototype.calculateScore = function() {
   if (this.isPerfectGame() === true) {
     return 300;
   } else if (this.isGutterGame() === true) {
-    return 0;
-  }
+    return 0; }
+  // } else {
+  //   frame = new Frame(this._frames);
+  //   frame.calculateScore();
+  // }
 };

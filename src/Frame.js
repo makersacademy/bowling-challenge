@@ -3,7 +3,7 @@
 function Frame(firstRoll,secondRoll,thirdRoll){
   this._firstRoll = firstRoll;
   this._secondRoll = secondRoll;
-  thirdRoll === undefined ? this._thirdRoll = 0 : this.thirdRoll = thirdRoll;
+  thirdRoll === undefined ? this._thirdRoll = 0 : this._thirdRoll = thirdRoll;
 }
 
 Frame.prototype.getFirstRoll = function() {
@@ -27,5 +27,9 @@ Frame.prototype.isASpare = function() {
 }
 
 Frame.prototype.getFrameScore = function() {
+  return this._firstRoll + this._secondRoll;
+}
+
+Frame.prototype.get10thFrameScore = function() {
   return this._firstRoll + this._secondRoll + this._thirdRoll;
 }

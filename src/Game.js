@@ -10,7 +10,8 @@ Game.prototype.addFrame = function(frame) {
 
 Game.prototype.finalScore = function() {
   var finalScore = 0;
-  for(var x = 0; x < this.frames.length; x++) {
+  for(var x = 0; x < 9; x++) {
+      console.log('loop at ',x);
     if (this.frames[x].isAStrike()) {
       finalScore += this._calculateStrikeChain(x);
     } else {
@@ -22,25 +23,26 @@ Game.prototype.finalScore = function() {
       }
     }
   }
-    return finalScore;
+  console.log('loop at ',x);
+  finalScore += this.frames[x].get10thFrameScore();
+  return finalScore;
 };
 
 Game.prototype._calculateStrikeChain = function(index) {
   var strikeScore = 0;
-  if (this.frames[index + 1].isAStrike()) {
-    if (this.frames[index + 2].isAStrike()) {
-      strikeScore += this._thisAndNextFrameScore(index) +
-                    this.frames[index + 2].getFrameScore();
+  if (index === 8) {
+    return this._thisAndNextFrameScore(index)
+  }
 
-    } else {
+  if (this.frames[index + 1].isAStrike()) {
       strikeScore += this._thisAndNextFrameScore(index) +
                     this.frames[index + 2].getFirstRoll();
-    }
   } else {
       strikeScore += this._thisAndNextFrameScore(index);
-    }
+  }
   return strikeScore;
 };
+
 
 Game.prototype._thisAndNextFrameScore = function(index) {
   var score = this.frames[index].getFrameScore() +

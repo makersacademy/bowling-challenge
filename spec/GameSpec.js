@@ -9,11 +9,11 @@ describe('Game', function() {
     game = new Game();
   });
 
-  it("1 frame game, no strikes or spares", function(){
-    frame = new Frame(4,5);
-    game.addFrame(frame);
-    expect(game.finalScore()).toEqual(9);
-  });
+  // it("1 frame game, no strikes or spares", function(){
+  //   frame = new Frame(4,5);
+  //   game.addFrame(frame);
+  //   expect(game.finalScore()).toEqual(9);
+  // });
 
   it("10 frame game, no strikes or spares", function(){
     generateStandardFrames(5,game);
@@ -87,8 +87,25 @@ describe('Game', function() {
       var frame = new Frame(4,5);
       game.addFrame(frame);
       generateStandardFrames(2,game);
-      console.log(game)
       expect(game.finalScore()).toEqual(132);
+    });
+  });
+
+  describe("tenth frame strike and spare scenarios", function(){
+
+    it("perfect score - 12 strikes", function(){
+      generateStrikeFrames(9,game);
+      var frame = new Frame(10,10,10);
+      game.addFrame(frame);
+      expect(game.finalScore()).toEqual(300);
+    });
+
+    it(" 10 spares", function(){
+      generateSpareFrames(9,game);
+      var frame = new Frame(9,1,10);
+      game.addFrame(frame);
+      console.log(game);
+      expect(game.finalScore()).toEqual(191);
     });
   });
 });

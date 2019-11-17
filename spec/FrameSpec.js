@@ -25,4 +25,19 @@ describe('Frame', function() {
     var frame = new Frame(4,5);
     expect(frame.isASpare()).toEqual(false);
   });
+
+  it("standard frame returns score", function() {
+    var frame = new Frame(4,5);
+    expect(frame.getFrameScore()).toEqual(9);
+  });
+
+  it("tenth frame returns score", function() {
+    var frame = new Frame(10,5,10);
+    expect(frame.get10thFrameScore()).toEqual(25);
+  });
+
+  it("tenth frame returns score", function() {
+    var frame = new Frame(10,5,10);
+    expect(frame.getFrameScore()).toEqual(15);
+  });
 });

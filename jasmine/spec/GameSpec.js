@@ -20,4 +20,9 @@ describe("Game", function() {
     expect(gutterGame.calculateScore()).toEqual(0);
   });
 
+  it("if a game is not a perfect game or a gutter game, the score is calculated frame by frame", function() {
+    normalGame = new Game([[1, 4], [9, 1], [10, 0], [3, 6], [10, 0], [10, 0], [7, 2], [4, 5], [2, 2], [10, 10, 10]]);
+    expect(normalGame.calculateScore()).toEqual(151);
+  });
+
 });

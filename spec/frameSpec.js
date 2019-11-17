@@ -7,8 +7,9 @@ describe ('Frame', function() {
 
   describe('#roll', function() {
     it ('roll adds to frame score', function() {
-      frame.roll(5);
-      expect(frame.calcScore()).toEqual(5);
+      frame.roll(5)
+      frame.calcScore();
+      expect(frame.score).toEqual(5);
     });
   });
 
@@ -26,4 +27,18 @@ describe ('Frame', function() {
       expect(frame.rolls.length).toBe(0);
     });
   });
+
+  describe('#isStrike', function() {
+    it('returns true if 10 pins knocked down on first roll', function() {
+      frame.rolls = [10];
+      expect(frame.isStrike()).toBe(true);
+    });
+  })
+
+  describe('#isSpare', function() {
+    it('returns true if 10 pins knocked down within 2 rolls', function() {
+      frame.rolls = [5, 5];
+      expect(frame.isSpare()).toBe(true);
+    })
+  })
 });

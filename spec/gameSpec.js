@@ -1,3 +1,5 @@
+
+
 describe ('Game', function() {
 
   var game;
@@ -7,7 +9,7 @@ describe ('Game', function() {
   });
 
   it ('calculates a gutter game', function() {
-    game.roll(0)
-    expect(game.score()).toEqual(0);
+    game.frames = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    expect(game.calcScore()).toEqual(0);
   })
 });

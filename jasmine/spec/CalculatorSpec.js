@@ -1,7 +1,7 @@
 describe("Calculator", function() {
 
   beforeEach(function() {
-    calculator = new Calculator([[1, 4], [9, 1], [10, 0], [3, 6], [10, 0], [10, 0], [7, 2]]);
+    calculator = new Calculator([[1, 4], [9, 1], [10, 0], [3, 6], [10, 0], [10, 0], [7, 2], [4, 5], [2, 2], [10, 10, 10]]);
   })
 
   it("if a player doesn't bowl a strike or a spare, the score for the frame is the sum of the two rolls", function() {
@@ -21,7 +21,7 @@ describe("Calculator", function() {
   })
 
   it("a user can enter the results from a whole game and see the final score", function() {
-    expect(calculator.classify()).toEqual(108);
+    expect(calculator.classify()).toEqual(151);
   });
 
 });

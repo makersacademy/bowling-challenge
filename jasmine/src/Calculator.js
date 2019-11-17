@@ -3,23 +3,27 @@ Calculator = function(frames) {
 };
 
 Calculator.prototype.classify = function() {
-  for(i = 0; i < this._frames.length; i++) {
+  totalScore = 0
+  for(i = 0; i < (this._frames.length - 1); i++) {
     if (this._frames[i][0] === 10) {
       // STRIKE
-      console.log("STRIKE")
+      totalScore += this.strikeScore(this._frames[i], this._frames[i+1], this._frames[i+2]);
     } else if (this._frames[i][0] + this._frames[i][1] === 10) {
       // SPARE
-      console.log("SPARE")
+      totalScore += this.spareScore(this._frames[i], this._frames[i+1]);
     } else {
       // NORMAL ROLL
-      console.log("NORMAL ROLL")
-      // score = this.normalScore(this._frames[i]);
+      totalScore += this.normalScore(this._frames[i]);
     };
   };
+  totalScore += this.normalScore(this._frames[9]);
+  return totalScore;
 };
 
 Calculator.prototype.normalScore = function(frame) {
-  return frame[0] + frame[1];
+  return frame.reduce(function (accumulator, roll) {
+    return accumulator + roll;
+  }, 0);
 };
 
 Calculator.prototype.spareScore = function(frame1, frame2) {

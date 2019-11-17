@@ -12,10 +12,20 @@ Game.prototype.isPerfectGame = function() {
   }
 };
 
+Game.prototype.isGutterGame = function() {
+  framesScore = this._frames.flat();
+  totalScore = framesScore.reduce(function (accumulator, roll) {
+    return accumulator + roll;
+  }, 0);
+  if (totalScore === 0) {
+    return true;
+  }
+};
+
 Game.prototype.calculateScore = function() {
-  console.log("calculateScore called")
   if (this.isPerfectGame() === true) {
-    console.log("if statement true");
     return 300;
-  };
+  } else if (this.isGutterGame() === true) {
+    return 0;
+  }
 };

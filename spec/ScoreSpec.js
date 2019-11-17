@@ -6,7 +6,7 @@ describe('Score', function(){
     })
 
     it('sum the score of two rolls in the first frame', function(){
-        expect(score.singleScoreSum(4,6)).toEqual(10)
+        expect(score.singleScoreSum([4,6])).toEqual(10)
     })
 
     it('adds roll to array', function(){
@@ -18,7 +18,20 @@ describe('Score', function(){
     it('returns a simple score after 2 rolls'), function(){
         score.addRoll(4,5);
         score.addRoll(7,8);
-        expect(score.totalScore(score.scoreArray)).toEqual(24);
+        score.addRoll(3,3);
+        expect(score.totalScore(score.scoreArray)).toEqual(30);
     }
+
+    describe('isStrike', function(){
+        it('returns true if the first roll is 10'), function(){
+            expect(score.isStrike([10,0])).toBe(true)
+        }
+    })
+
+    describe('isSpare', function(){
+        it('returns true if the sum of the two rolls is 10'), function(){
+            expect(score.isSpare([8,2])).toBe(true)
+        }
+    })
 
 })

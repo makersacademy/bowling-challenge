@@ -5,9 +5,10 @@ function Score(){
     this.scoreArray = [];
 }
 
-Score.prototype.singleScoreSum = function(one, two){
-    return one + two;
+Score.prototype.singleScoreSum = function(arr) {
+    return arr.reduce((a,b) => a + b, 0)
 }
+
 
 Score.prototype.addRoll = function(one, two) {
     this.scoreArray.push([one,two])
@@ -15,7 +16,7 @@ Score.prototype.addRoll = function(one, two) {
 
 Score.prototype.totalScore = function(array){
     for(var i=0; i<array.length; i++){
-        this.subtotal += this.singleScoreSum(array[i][0], array[i][1]);
+        this.subtotal += this.singleScoreSum(array[i]);
     }
     return this.subtotal;
 }
@@ -24,4 +25,12 @@ Score.prototype.showSum = function(){
     return this.subtotal;
 }
 
-// [[2,3],[5,6],[7,6],[6,3],[2,3],[6,9],[5,6],[5,6],[2,8],[7,7]]
+Score.prototype.isSpare = function([a,b]) {
+    (a + b) === 10 ? true : false;
+}
+
+Score.prototype.isStrike = function([a,b]) {
+    a === 10 ? true : false;
+}
+
+// [[1,4],[4,5],[6,4],[5,5],[10,0],[0,1],[7,3],[6,4],[10,0],[2,8,6]]

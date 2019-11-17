@@ -11,7 +11,6 @@ Game.prototype.addFrame = function(frame) {
 Game.prototype.finalScore = function() {
   var finalScore = 0;
   for(var x = 0; x < 9; x++) {
-      console.log('loop at ',x);
     if (this.frames[x].isAStrike()) {
       finalScore += this._calculateStrikeChain(x);
     } else {
@@ -23,7 +22,6 @@ Game.prototype.finalScore = function() {
       }
     }
   }
-  console.log('loop at ',x);
   finalScore += this.frames[x].get10thFrameScore();
   return finalScore;
 };

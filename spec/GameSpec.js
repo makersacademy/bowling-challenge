@@ -104,7 +104,6 @@ describe('Game', function() {
       generateSpareFrames(9,game);
       var frame = new Frame(9,1,10);
       game.addFrame(frame);
-      console.log(game);
       expect(game.finalScore()).toEqual(191);
     });
   });

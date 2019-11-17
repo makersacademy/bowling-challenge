@@ -15,7 +15,7 @@ BowlingGame.prototype.score = function () {
   var rollIndex = 0;
   var totalScore = 0;
 
-  for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
+  for (var frame = 0; frame < 10; frame++) {
     if (isStrike()) {
       totalScore += strikeScore();
       rollIndex += 1;

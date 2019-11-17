@@ -14,3 +14,10 @@ function generateStrikeFrames(frameNumber,game) {
     game.addFrame(strikeFrame);
   }
 }
+
+function generateSpareFrames(frameNumber,game) {
+  var spareFrame = new Frame(9,1);
+  for ( var x = 0; x < frameNumber; x++ ) {
+    game.addFrame(spareFrame);
+  }
+}

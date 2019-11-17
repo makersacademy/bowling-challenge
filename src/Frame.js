@@ -1,8 +1,9 @@
 "use strict";
 
-function Frame(firstRoll,secondRoll){
+function Frame(firstRoll,secondRoll,thirdRoll){
   this._firstRoll = firstRoll;
   this._secondRoll = secondRoll;
+  thirdRoll === undefined ? this._thirdRoll = 0 : this.thirdRoll = thirdRoll;
 }
 
 Frame.prototype.getFirstRoll = function() {
@@ -26,5 +27,5 @@ Frame.prototype.isASpare = function() {
 }
 
 Frame.prototype.getFrameScore = function() {
-  return this._firstRoll + this._secondRoll;
+  return this._firstRoll + this._secondRoll + this._thirdRoll;
 }

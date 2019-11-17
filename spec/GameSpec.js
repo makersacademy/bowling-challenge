@@ -48,7 +48,6 @@ describe('Game', function() {
     });
 
     it("two consecutive strike game. frames 8 and 9", function(){
-      var strikeFrame = new Frame(10,0);
       var frame = new Frame(4,5);
       generateStandardFrames(3,game);
       game.addFrame(frame);
@@ -62,11 +61,34 @@ describe('Game', function() {
 
     it("one spare game", function(){
       var frame = new Frame(4,5);
-      var strikeFrame = new Frame(10,0);
-      game.addFrame(strikeFrame);
+      var spareFrame = new Frame(5,5);
+      game.addFrame(spareFrame);
       game.addFrame(frame);
       generateStandardFrames(4,game);
-      expect(game.finalScore()).toEqual(68);
+      expect(game.finalScore()).toEqual(63);
+    });
+
+    it("two consecutive spare game", function(){
+      var frame = new Frame(4,5);
+      var spareFrame = new Frame(5,5);
+      generateSpareFrames(2,game);
+      generateStandardFrames(4,game);
+      expect(game.finalScore()).toEqual(73);
+    });
+  });
+  describe(" strike and spare scenarios", function(){
+
+    it("two strikes followed by 1 spare, 1 strike followed by 1 spare",
+    function(){
+      generateStrikeFrames(2,game);
+      generateSpareFrames(1,game);
+      generateStrikeFrames(1,game);
+      generateSpareFrames(1,game);
+      var frame = new Frame(4,5);
+      game.addFrame(frame);
+      generateStandardFrames(2,game);
+      console.log(game)
+      expect(game.finalScore()).toEqual(132);
     });
   });
 });

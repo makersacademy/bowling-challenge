@@ -10,7 +10,7 @@ describe ('frame', function() {
 
   it('returns 0 on two gutter rolls', function() {
     frame_score = new Frame(0,0)
-    expect(frame_score.getScore()).toEqual(0);
+    expect(frame_score.getRawScore()).toEqual(0);
   });
 
   it('throws an error if we pass a negative number when creating a new \
@@ -32,7 +32,7 @@ describe ('frame', function() {
 
   it('returns 9 on a 4 and 5 roll', function() {
     frame_score = new Frame(4,5)
-    expect(frame_score.getScore()).toEqual(9);
+    expect(frame_score.getRawScore()).toEqual(9);
   });
 
   it('returns nil if the frame has nothing special', function() {

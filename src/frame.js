@@ -21,13 +21,13 @@ Frame.prototype.validateRolls = function() {
   }
 }
 
-Frame.prototype.getScore = function() {
+Frame.prototype.getRawScore = function() {
   output = this.rolls[0] + this.rolls[1];
   return (output);
 };
 
 Frame.prototype.getFrameType = function() {
-  if (this.getScore() != 10) {
+  if (this.getRawScore() != 10) {
     return('nil');
   } else {
    output = this.isSpareorStrike();
@@ -44,6 +44,6 @@ Frame.prototype.isSpareorStrike = function() {
 };
 
 Frame.prototype.getFirstRoll = function() {
-  output = this.rolls[0];
+  output = this.firstroll;
   return(output);
 };

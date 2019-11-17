@@ -44,4 +44,25 @@ describe('Bowling Game', function() {
     });
   });
 
+  describe('strikes (Xs)', function() {
+    it('can score a strike', function() {
+      game.roll(10)
+      game.roll(4)
+      game.roll(5)
+      for (var i = 0; i < 16; i++) {
+        game.roll(0)
+      }
+      expect(game.score()).toEqual(28)
+    });
+  });
+
+  describe('perfect game (all Xs)', function() {
+    it('can roll a perfect game', function() {
+      for (var i = 0; i < 12; i++) {
+        game.roll(10)
+      }
+      expect(game.score()).toEqual(300)
+    });
+  });
+
 });

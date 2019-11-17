@@ -53,5 +53,5 @@ describe ('frame', function() {
   it('returns 3 when that is the first roll', function() {
     frame_score = new Frame (3,4)
     expect(frame_score.getFirstRoll()).toEqual(3);
-  })
+  });
 });

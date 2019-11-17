@@ -10,6 +10,4 @@ describe ('Game', function() {
     game.roll(0)
     expect(game.score()).toEqual(0);
   })
-
-
-    });
+});

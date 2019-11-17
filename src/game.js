@@ -1,4 +1,5 @@
 function Game() {
+  this.frames = []
 }
 
 Game.prototype.roll = function(pins) {

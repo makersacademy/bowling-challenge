@@ -16,4 +16,20 @@ describe('Bowling Game', function() {
     });
   });
 
+  describe('normal scoring (no Xs or /s)', function() {
+    it('can score a 1 on every roll', function() {
+      for (var i = 0; i < 20; i++) {
+        game.roll(1)
+      }
+      expect(game.score()).toEqual(20);
+    });
+
+    it('can score a 4 on every roll', function() {
+      for (var i = 0; i < 20; i++) {
+        game.roll(4)
+      }
+      expect(game.score()).toEqual(80);
+    });
+  });
+
 });

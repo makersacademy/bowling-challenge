@@ -40,16 +40,3 @@ ScoreTracker.prototype.scoreSheet = function () {
 ScoreTracker.prototype.total = function () {
   return this._calculate(this._scoreSheet)
 }
-
-// ScoreTracker.prototype._isFinalFrame = function () {
-  // return this._scoreSheet.length === 10
-// }
-//
-  // if (this._isFinalFrame()) {
-    // console.log('finalFrame')
-    // return this.total()
-  // } else {
-    // console.log(this.scoreSheet())
-    // console.log('notFinalFrame')
-    // return score
-  // }

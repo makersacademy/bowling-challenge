@@ -21,3 +21,11 @@ Frame.prototype.isSpare = function() {
   return this.roll1 + this.roll2 === 10;
 };
 
+Frame.prototype.addRoll = function(rollScore) {
+  if (this.roll1 === null) {
+    this.roll1 = rollScore
+  } else {
+    this.roll2 = rollScore
+  }
+};
+

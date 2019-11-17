@@ -35,4 +35,17 @@ describe ('frames', function() {
     frame.roll2 = 3;
     expect(frame.isComplete()).toEqual(true);
   });
+
+  it('adds a score to roll1 when roll1 is null', function() {
+    frame.addRoll(5);
+    expect(frame.roll1).toEqual(5)
+    expect(frame.roll2).toEqual(null);
+  });
+
+  it('adds a score to roll2 when roll1 is not null', function() {
+    frame.addRoll(5);
+    frame.addRoll(4);
+    expect(frame.roll1).toEqual(5);
+    expect(frame.roll2).toEqual(4);
+  });
 });

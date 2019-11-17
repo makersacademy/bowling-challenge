@@ -17,6 +17,7 @@ Score.prototype.addRoll = function(one, two) {
 Score.prototype.totalScore = function(array){
     for(var i=0; i<array.length; i++){
         this.subtotal += this.singleScoreSum(array[i]);
+        console.log(this.subtotal)
     }
     return this.subtotal;
 }

@@ -11,10 +11,24 @@
     <script src="src/interface.js"></script>
   </head>
   <body>
+    <h1>Bowling</h1>
     <form id="enter-value">
-        <input id="score-one" type="text" placeholder="Enter value for 1st roll"></input>
-        <input id="score-two" type="text" placeholder="Enter value for 2nd roll"></input>
+        1st roll: <input id="roll-one" type="text" placeholder="Enter value for 1st roll"></input>
+        <br>
+        2nd roll: <input id="roll-two" type="text" placeholder="Enter value for 2nd roll"></input>
+        <br>
+        3rd roll (only for 10th frame): <input id="roll-three" type="text" placeholder="Enter value for 3nd roll"></input>
+        <br>
         <input type="submit"></input>
     </form>
+    <p>So far, you have played <span id="display-frame"> </span> frame(s)</p>
+    <p>Your rolls so far: <span id="display-array"> </span></p>
+    <br>
+    <form id="calculate-score">
+        <button type="submit">Calculate score</button>
+    </form>
+    <p>Your score: <span id="display-score"> </span></p>
+
+
   </body>
 </html>

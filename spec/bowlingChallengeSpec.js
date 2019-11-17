@@ -32,4 +32,16 @@ describe('Bowling Game', function() {
     });
   });
 
+  describe('spares (/s)', function() {
+    it('can score a spare', function() {
+      game.roll(9)
+      game.roll(1)
+      game.roll(4)
+      for (var i = 0; i < 17; i++) {
+        game.roll(0)
+      }
+      expect(game.score()).toEqual(18)
+    });
+  });
+
 });

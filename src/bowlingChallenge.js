@@ -9,9 +9,29 @@ BowlingGame.prototype.roll = function (pins) {
 };
 
 BowlingGame.prototype.score = function () {
+  var game = this;
+  var rollIndex = 0;
   var totalScore = 0;
-  for (var i = 0; i < 20; i++) {
-    totalScore += this.rolls[i]
+
+  for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
+    if (isSpare()) {
+      totalScore += spareScore();
+      rollIndex += 2;
+    } else {
+      totalScore += normalScore();
+      rollIndex += 2;
+    }
   }
-  return totalScore;
+
+  return totalScore
+
+  function isSpare() {
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] == 10;
+  }
+  function spareScore() {
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
+  }
+  function normalScore() {
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1];
+  }
 };

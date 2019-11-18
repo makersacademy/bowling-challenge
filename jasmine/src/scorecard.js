@@ -22,5 +22,9 @@ Scorecard.prototype.addRoll = function(rollScore) {
 };
 
 Scorecard.prototype.addFrame = function() {
-  this.frames.push(new Frame)
+  if (this.frames.length < 9) {
+    this.frames.push(new Frame)
+  } else if (this.frames.length === 9) {
+    this.frames.push(new FinalFrame)
+  }
 };

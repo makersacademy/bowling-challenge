@@ -45,5 +45,12 @@ describe ('scorecard', function() {
     expect(scorecard.frames.length).toEqual(2)
   });
 
-
+  it('adds a new frame for rounds 1-9, and adds the final frame for round 10', function() {
+    for (var i = 0; i < 8; i++) {
+      scorecard.addFrame()
+      expect(scorecard.lastFrame()).toBeInstanceOf(Frame)
+    }
+    scorecard.addFrame()
+    expect(scorecard.lastFrame()).toBeInstanceOf(FinalFrame)
+  });
 });

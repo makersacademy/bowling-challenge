@@ -24,7 +24,7 @@ Frame.prototype.isSpare = function() {
 Frame.prototype.addRoll = function(rollScore) {
   if (this.roll1 === null) {
     this.roll1 = rollScore
-  } else {
+  } else if (!this.isComplete()) {
     this.roll2 = rollScore
   }
 };

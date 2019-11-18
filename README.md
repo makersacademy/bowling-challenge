@@ -2,7 +2,7 @@
 Bowling Challenge
 =================
 
-## Bowling — how does it work?
+## Bowling:
 
 ### Strikes
 

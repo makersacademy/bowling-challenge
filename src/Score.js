@@ -15,7 +15,7 @@ Score.prototype.addRoll = function(one, two) {
 }
 
 Score.prototype.totalScore = function(array){
-
+    this.subtotal = 0;
     for (var j=1; j<=array.length; j++) {
         if (this.isStrike(array[j-1])) {
             if(array[j] === undefined){

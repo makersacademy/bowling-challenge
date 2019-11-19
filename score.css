@@ -1,7 +1,11 @@
-body {
-    text-align: center;
+html {
+    background-color: rgb(175,238,238);
 }
 
+body {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    text-align: center;
+}
 
 .error {
     color: red;

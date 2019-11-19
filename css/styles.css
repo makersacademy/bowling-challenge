@@ -1,0 +1,44 @@
+body {
+    height: 100%;
+    width: 400px;
+    background-image: linear-gradient(hsl(236, 32%, 26%), rgb(138, 39, 177), orange);
+    background-size: auto;
+    background-repeat: no-repeat;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+
+table.BowlingScores {
+    width: 100%;
+    background-color: #ffffff;
+    border-collapse: collapse;
+    border-width: 2px;
+    border-color: #ffcc00;
+    border-style: solid;
+    color: #000000;
+}
+
+table.BowlingScores td, table.BowlingScores th {
+    border-width: 2px;
+    border-color: #ffcc00;
+    border-style: solid;
+    padding: 3px;
+}
+
+table.BowlingScores thead {
+    background-color: #ffcc00;
+}
+
+.slidecontainer {
+    width: 100%;
+    padding-bottom: 30px;
+  }
+
+.slider{
+width: 100%;
+background: url('../images/90336_bowling-ball-png.png')
+  }
+
+h1 {
+    color: #ffcc00;
+    text-shadow: 2px 2px red;
+}

@@ -1,3 +1,19 @@
+  _                   _ _                 
+ | |__   _____      _| (_)_ __   __ _                        0 _
+ | '_ \ / _ \ \ /\ / / | | '_ \ / _` |    i                 / \ `O
+ | |_) | (_) \ V  V /| | | | | | (_| |   __iii______________ /|____
+ |_.__/ \___/ \_/\_/ |_|_|_| |_|\__, |     ii                | \
+                                |___/      i
+
+Quick Start
+================
+
+To clone the repo, move into the directory and run the tests:
+```
+$ git clone git@github.com:jade-genevieve/bowling-challenge.git jades_bowling_challenge
+$ cd jades_bowling_challenge
+$ open SpecRunner.html
+```
 
 Bowling Challenge
 =================

@@ -194,6 +194,21 @@ describe("Bowling Game", function () {
             expect(bowlingGame.score).toEqual(140);
         });
 
+        it("bowling all strikes returns 300", function () {
+            bowlingGame.setFrame(1, 10);
+            bowlingGame.setFrame(2, 10);
+            bowlingGame.setFrame(3, 10);
+            bowlingGame.setFrame(4, 10);
+            bowlingGame.setFrame(5, 10);
+            bowlingGame.setFrame(6, 10);
+            bowlingGame.setFrame(7, 10);
+            bowlingGame.setFrame(8, 10);
+            bowlingGame.setFrame(9, 10);
+            bowlingGame.setFrame(10, 10, 10,10);
+            bowlingGame.calcScore();
+            expect(bowlingGame.score).toEqual(300);
+        });
+
         it("random bowling session with 2 or more strikes in a row returns 178 ", function () {
             bowlingGame.setFrame(1, 10);
             bowlingGame.setFrame(2, 10);

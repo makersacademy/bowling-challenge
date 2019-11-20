@@ -5,7 +5,7 @@
 ### To run bowling scorecard
 
 - Clone this repo
-- `$ cd bowling-challenge`
+- `$ cd BowlingScoreJS`
 - `$ open index.html`
 - Populate bowls in text fields
 - Click calculate!
@@ -28,7 +28,7 @@
 
 ### To Run Tests
 - Clone this repo
-- `$ cd bowling-challenge`
+- `$ cd BowlingScoreJS`
 - Then either:
     - `$ open SpecRunner.html` OR
     - `$ npm install`

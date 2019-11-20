@@ -8,7 +8,7 @@ function FinalFrame() {
 };
 
 FinalFrame.prototype.isComplete = function() {
-  if (this.isBonusRoll() && this.roll3 !== null) {
+  if (!this.isBonusRoll() && this.roll2 !== null || (this.isBonusRoll() && this.roll3 !== null)) {
     return this.complete = true
   }
   return this.complete;

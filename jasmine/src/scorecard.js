@@ -15,10 +15,10 @@ Scorecard.prototype.lastFrame = function() {
 Scorecard.prototype.addRoll = function(rollScore) {
   if (!this.lastFrame().isComplete()) {
     this.lastFrame().addRoll(rollScore)
-  } else {
+  } else if (this.frames.length < 10) {
     this.addFrame()
     this.addRoll(rollScore)
-  }
+  } 
 };
 
 Scorecard.prototype.addFrame = function() {

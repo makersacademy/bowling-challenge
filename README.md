@@ -1,32 +1,44 @@
 
-Bowling Scorecard Calculator
-===========================
-
-### Instructions
-
-1. Clone repo
-2. Open index.html
-3. Populate bowls in text fields
-4. Click calculate!
+# TDD Bowling Scorecard Kata in JavaScript
 
 
-### Notes
-- If invalid bowl entered, i.e. number not between 0 - 10, clicking calculate will do nothing.
-- If entering a value for the 3rd bowl in frame 10 when first two bowls are not a strike or spare, clicking calculate will do nothing.
-- All text fields need to be filled with a number between 0 - 10 otherwise clicking calculate will do nothing.
-- Open SpecRunner.html to run unit tests for Javascript files.
-- Bug where getting a strike on the 1st bowl of 10th frame breaks calculation which needs to be fixed
+### To run bowling scorecard
+
+- Clone this repo
+- `$ cd bowling-challenge`
+- `$ open index.html`
+- Populate bowls in text fields
+- Click calculate!
+
+![Run_1](./readme_images/demo_run_1.png) 
+
+#### Notes
+- If clicking calculate does nothing, it's very likely an error has occurred which has not been caught, such as:
+    - If invalid bowl entered, i.e. number not between 0 - 10, clicking calculate will do nothing.
+    - If entering a value for the 3rd bowl in frame 10 when first two bowls are not a strike or spare, clicking calculate will do nothing.
+    - All text fields need to be filled with a number between 0 - 10 otherwise clicking calculate will do nothing.
 
 ### Future Improvements
 
 - Adding buttons to populate text fields with scores instead of needing them to be typed
 - Tidy up HTML files by generating HTML using JS
 - Take JS out of html file
+- Alert on error instead of writing to console log
 
 
+### To Run Tests
+- Clone this repo
+- `$ cd bowling-challenge`
+- Then either:
+    - `$ open SpecRunner.html` OR
+    - `$ npm install`
+    - `$ karma start`
 
-Rules
-=====
+![Test_1](./readme_images/demo_test_1.png) 
+
+
+### Rules
+
 
 #### Strikes
 

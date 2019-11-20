@@ -27,7 +27,8 @@ describe("UserScore", function() {
     userScore.addFrame([4, 5]);
     userScore.addFrame([2, 2]);
     userScore.addFrame([10, 10, 10]);
-    expect(userScore.calculateScore()).toEqual(151);
+    userScore.calculateScore();
+    expect(userScore.result).toEqual(151);
   })
 
 });

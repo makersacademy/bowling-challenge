@@ -1,5 +1,6 @@
-function User() {
-  this.frames = []
+User = function() {
+  this.frames = [];
+  this.result = 0
 }
 
 User.prototype.addFrame = function(frame) {
@@ -8,5 +9,6 @@ User.prototype.addFrame = function(frame) {
 
 User.prototype.calculateScore = function() {
   game = new Game(this.frames);
-  return game.calculateScore();
+  result = game.calculateScore();
+  this.result = result;
 };

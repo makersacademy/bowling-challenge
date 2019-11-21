@@ -3,18 +3,15 @@
 ## Installation instructions
 
 * Fork and clone this repository
-* Open the SpecRunner in the browser by typing `open Specrunner.js` in the command line
-* Run the program through the browser console
+* Open the interface by typing `open jasmine/index.html` in the command line. This will open the interface in the browser.
 
 
 ## Program instructions
 
-* Define a new user, e.g. `user = new User ();`
-* There are only 2 user commands: `user.addFrame()` and `user.calculateScore()`
-* Use `user.addFrame()` to add the result from a pair of rolls in a frame. The format should be an array of 2 elements, e.g. `user.addFrame([3, 5])`.
-* Enter a strike in the following format: `user.addFrame([10, 0])`.
-* If the player bowls a strike or a spare in the 10th frame, enter an array of 3 elements, e.g. `user.addFrame([10, 10, 6])`
-* Once all 10 frames have been added, run the command `user.calculateScore();`.
+* Fill in the fields of the table with your two rolls for each frame. You can either use the arrows to increase the number for each roll (minimum value of 0, maximum value of 10). Or you can type the number in directly, but there are no value limits for this input.
+* If a roll is 0, either type 0 or leave the field blank.
+* Only enter a number into the bonus field of the 10th frame if you have rolled a spare or a strike in the 10th frame.
+* Click the `Submit` button and your score will be calculated and displayed at the bottom of the screen.
 
 
 ## Flow of code
@@ -40,3 +37,7 @@ In the `classify` function, if the two elements in a frame array add together to
 If the frame is not classified as a strike or a spare, the `calculator.normalScore()` function is called and the sum of the two elements in the frame is returned.
 
 Finally, the `calculate.classify()` function processes the last nested frame array within the frames nested separately to the loop, using the `.normalScore()` function. This is because if the player rolls a strike or a spare in the last frame there will be no following frame to provide the bonus values. Instead the frame will have 3 rolls instead of 2. For this reason the `.normalScore()` function uses an `array.reduce()` function instead of adding the elements of the array together. This means the function works for 2-element and 3-element arrays.
+
+## Technology used
+
+This program was built using JavaScript, Jasmine test frame, jQuery, HTML and CSS.

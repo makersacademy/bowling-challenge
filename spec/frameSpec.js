@@ -17,6 +17,12 @@ describe('Frame', function(){
     it('has default MAX ROLLS 2', function(){
       expect(frame.MAX_ROLLS).toEqual(2);
     });
+
+    it('doesnt allow three rolls', function(){
+      frame.addRoll(0);
+      frame.addRoll(0);
+      expect(function(){ frame.addRoll(1)} ).toThrow("Frame Over");
+    });
   });
 
   describe('adding pins on roll', function(){

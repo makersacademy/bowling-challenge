@@ -2,14 +2,19 @@
 
 function Frame(){
   this.MAX_ROLLS = 2;
-  this.currentRoll = 0;
+  this.currentRollNumber = 0;
   this.rolls = [];
   this._frameScore = 0;
 };
 
 Frame.prototype.addRoll = function(pins){
-  this.rolls.push(pins);
-  this.setFrameScore();
+  if (this.currentRollNumber === this.MAX_ROLLS) {
+    throw "Frame Over"
+  } else {
+    this.rolls.push(pins);
+    this.setFrameScore();
+    this.currentRollNumber++;
+  }
 };
 
 Frame.prototype.getFrameScore = function(){

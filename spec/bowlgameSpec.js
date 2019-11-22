@@ -89,7 +89,7 @@ describe('Spares', function() {
   });
 
   it('has a full array of 20 for full game', function() {
-    fullGame(10, 20);
+    fullGame(1, 20);
     expect(bowl.rolls.length).toEqual(20);
   });
 
@@ -139,7 +139,7 @@ describe('Strikes', function() {
   });
 
   it('can play a perfect game', function() {
-    fullGame(10, 20);
+    fullGame(10, 12);
     total = game.score();
     expect(total).toEqual(300);
   });

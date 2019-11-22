@@ -1,0 +1,29 @@
+
+#main {
+  width: 600px;
+  margin: 20px auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: white;
+  border: 2px solid #777777;
+}
+
+.bowl-table {
+    border: solid 1px #FF7F50;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font: normal 13px Verdana, sans-serif;
+}
+.bowl-table thead th {
+    background-color: #FF7F50;
+    border: solid 1px #FF7F50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+.bowl-table tbody td {
+    border: solid 1px #FF7F50;
+    color: #777777;
+    padding: 5px;
+}

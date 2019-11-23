@@ -64,5 +64,4 @@ describe('Bowling Game', function() {
       expect(game.score()).toEqual(300)
     });
   });
-
 });

@@ -1,5 +1,8 @@
 function Game() {
 };
+Game.prototype.reset = function() {
+  bowl.rolls = [];
+};
 Game.prototype.score = function() {
   var total = 0;
   var i = 0;
@@ -44,3 +47,6 @@ function Bowl() {
 Bowl.prototype.roll = function(skittles) {
   this.rolls.push(skittles);
 };
+
+var bowl = new Bowl();
+var game = new Game();

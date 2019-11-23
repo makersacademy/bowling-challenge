@@ -145,3 +145,28 @@ describe('Strikes', function() {
   });
 
 });
+
+describe('Reset', function() {
+
+  describe('reset the game', function() {
+
+    beforeEach(function() {
+      game = new Game();
+      bowl = new Bowl();
+    });
+
+    var fullGame = function (skittles, rolls) {
+      for (i = 0; i < rolls; i++) {
+        bowl.roll(skittles);
+      };
+    };
+
+    it('can reset the game', function () {
+      fullGame(1, 20);
+      game.reset();
+      expect(bowl.rolls).toEqual([]);
+    });
+
+  });
+
+});

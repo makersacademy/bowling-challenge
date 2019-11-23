@@ -37,30 +37,18 @@ describe('Scorer', function(){
     expect(scorer.tally).toEqual(23);
   });
 
-  it('runs for a maximum of ten frames', function(){
+  it('scores a maximum of ten frames', function(){
     scorer.addFrame(2,3);
-    console.log(scorer.frame);
     scorer.addFrame(2,3);
-    console.log(scorer.frame);
     scorer.addFrame(2,3);
-    console.log(scorer.frame);
     scorer.addFrame(2,3);
-    console.log(scorer.frame);
     scorer.addFrame(2,3);
-    console.log(scorer.frame);
     scorer.addFrame(2,3);
-    console.log(scorer.frame);
     scorer.addFrame(2,3);
-    console.log(scorer.frame);
     scorer.addFrame(2,3);
-    console.log(scorer.frame);
     scorer.addFrame(2,3);
-    console.log(scorer.frame);
     scorer.addFrame(2,3);
-    console.log(scorer.frame);
     scorer.addFrame(2,3);
-    console.log(scorer.frame);
     expect(scorer.tally).toEqual(50);
   });
 });
-

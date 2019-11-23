@@ -25,7 +25,7 @@ describe('Add and score complete game', function () {
     expect(tracker.total()).toEqual(29)
   })
 
-  it('returns 30 for a game with final frame [10, 0, 1, 1] (strike)', function () {
+  it('returns 30 for a game with final frame [10, null, 1, 1] (strike)', function () {
     for (var i = 0; i < 18; i++) {
       tracker.add(1)
     }

@@ -29,7 +29,6 @@ ScoreTracker.prototype.add = function (score) {
         this._scoreSheet.push([score])
       }
     }
-    console.log(JSON.stringify(this.scoreSheet()))
     return true
   }
 

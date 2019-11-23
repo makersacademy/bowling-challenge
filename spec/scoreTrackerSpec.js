@@ -41,4 +41,15 @@ describe('ScoreTracker', function () {
     }
     expect(function () { tracker.add(1) }).not.toThrow()
   })
+
+  it('Adds bonus roll to final frame if final frame is a spare', function () {
+    for (var i = 0; i < 18; i ++) {
+      tracker.add(1)
+    }
+    for (var i = 0; i < 2; i ++) {
+      tracker.add(5)
+    }
+    tracker.add(1)
+    expect(tracker.scoreSheet()).toContain([5, 5, 1])
+  })
 })

@@ -22,8 +22,10 @@ ScoreTracker.prototype.add = function (score) {
 
 ScoreTracker.prototype._extraRoll = function (score, latestFrame) {
   // TODO
-  if (latestFrame[0] + latestFrame[1] === 10) {
-    console.log('bonus')
+  if (latestFrame[0] === 10) {
+    console.log('strike bonus')
+  } else if (latestFrame[0] + latestFrame[1] === 10) {
+    latestFrame.push(score)
   } else {
     throw 'Game complete'
   }

@@ -6,20 +6,24 @@ function ScoreTracker (calculate) {
 }
 
 ScoreTracker.prototype.add = function (score) {
-  // first frame
   if (this._scoreSheet.length < 1) {
-    this._scoreSheet.push([score])
-    return score
+    return this._newFrame(score)
   }
-
   var latestFrame = this._scoreSheet[this._scoreSheet.length - 1]
-  // new frame
   if (latestFrame.length > 1) {
-    this._scoreSheet.push([score])
-    return score
+    return this._newFrame(score)
+  } else {
+    return this._addToFrame(score)
   }
+}
 
-  // add to existing frame
+ScoreTracker.prototype._newFrame = function (score) {
+  this._scoreSheet.push([score])
+  return score
+}
+
+ScoreTracker.prototype._addToFrame = function (score) {
+  var latestFrame = this._scoreSheet[this._scoreSheet.length - 1]
   latestFrame.push(score)
   if (this._scoreSheet.length === 10) {
     return this._finalFrame(score)

@@ -22,7 +22,7 @@ Frame.prototype.validateRolls = function() {
 }
 
 Frame.prototype.getRawScore = function() {
-  output = this.rolls[0] + this.rolls[1];
+  output = this.firstroll + this.secondroll;
   return (output);
 };
 

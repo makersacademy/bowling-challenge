@@ -18,9 +18,9 @@ describe ('finalFrame', function() {
     expect(final_frame_score.getRawScore()).toEqual(8);
   });
 
- // it('throws an error if we try and put a third roll in when \
- // not entitled to', function() {
- //   expect(function(){final_frame_score = new FinalFrame(3,3,3);}).toThrow("No\
- //   third roll unless there is a strike or spare earlier in the frame")
- // });
+ it('throws an error if we try and put a third roll \
+ in when not entitled to', function() {
+   expect(function(){final_frame_score = new FinalFrame(3,3,3);}).toThrow("No\
+ third roll unless there is a strike or spare earlier in the frame");
+ });
 })

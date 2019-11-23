@@ -10,7 +10,7 @@ function findFrameTotal (frames, i) {
   var frameTotal = frames[i].reduce(function (acc, cur) {
     return acc + cur
   }, 0)
-  if (frameTotal >= 10) {
+  if (frameTotal >= 10 && i < 9) {
     var bonus = calculateBonus(frames, i)
     frameTotal += bonus
   }

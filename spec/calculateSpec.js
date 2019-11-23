@@ -17,4 +17,14 @@ describe('calculate', function () {
     scoreSheet = [[10, 0], [5, 1]]
     expect(calculate(scoreSheet)).toEqual(22)
   })
+
+  it('returns 29 for nine frames [1, 1] and final frame [5, 5, 1]', function () {
+    scoreSheet = [[1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [5, 5, 1]]
+    expect(calculate(scoreSheet)).toEqual(29)
+  })
+
+  it('returns 30 for nine frames [1, 1] and final frame [10, 0, 1, 1]', function () {
+    scoreSheet = [[1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [10, 0, 1, 1]]
+    expect(calculate(scoreSheet)).toEqual(30)
+  })
 })

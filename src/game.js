@@ -2,8 +2,18 @@ function Game(){
   this.tenFrames = [];
 }
 
-
-Game.prototype.getTenFrames = function (endFrame) {
+Game.prototype.endRoll = function (endFrame) {
   this.tenFrames.push(endFrame);
   return this.tenFrames;
+};
+
+Game.prototype.totalScore = function () {
+  arr = this.tenFrames
+  var sum = 0;
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = 0; j < arr[i].length; j++) {
+      sum += arr[i][j];
+    }
+  }
+  return sum
 };

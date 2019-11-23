@@ -25,7 +25,6 @@ ScoreTracker.prototype._extraRoll = function (score, latestFrame) {
     throw 'Game complete'
   } else if (latestFrame[0] === 10) {
     latestFrame.push(score)
-    console.log('strike bonus')
   } else {
     latestFrame.push(score)
   }

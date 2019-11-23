@@ -1,0 +1,25 @@
+body {
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Luckiest Guy', cursive;
+  background: skyblue;
+}
+
+table {
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Luckiest Guy', cursive;
+  background: goldenrod;
+  padding: 30px;
+}
+
+#button {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 16px;
+  height: 24px;
+  margin: 0 auto;
+  padding: 10px 20px 20px 20px;
+  vertical-align: middle;
+  background: goldenrod;
+  border-radius: 12px;
+}

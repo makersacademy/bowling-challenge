@@ -11,6 +11,4 @@ describe ('Frame', function() {
     expect(frame.getEndFrame()).toEqual([2, 7])
   });
 
-
-
 });

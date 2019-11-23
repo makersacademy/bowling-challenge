@@ -42,7 +42,7 @@ describe('ScoreTracker', function () {
     expect(function () { tracker.add(1) }).not.toThrow()
   })
 
-  it('Adds bonus roll to final frame if final frame is a spare', function () {
+  it('Adds a bonus roll if final frame is a spare', function () {
     for (var i = 0; i < 18; i ++) {
       tracker.add(1)
     }
@@ -51,5 +51,29 @@ describe('ScoreTracker', function () {
     }
     tracker.add(1)
     expect(tracker.scoreSheet()).toContain([5, 5, 1])
+  })
+
+  it('Adds two bonus rolls if final frame is a strike', function () {
+    for (var i = 0; i < 18; i ++) {
+      tracker.add(1)
+    }
+    tracker.add(10)
+    tracker.add(0)
+    for (var i = 0; i < 2; i ++) {
+      tracker.add(1)
+    }
+    expect(tracker.scoreSheet()).toContain([10, 0, 1, 1])
+  })
+
+  it('Does not allow more than two bonus rolls', function () {
+    for (var i = 0; i < 18; i ++) {
+      tracker.add(1)
+    }
+    tracker.add(10)
+    tracker.add(0)
+    for (var i = 0; i < 2; i ++) {
+      tracker.add(1)
+    }
+    expect(function () { tracker.add(1) }).toThrow('Game complete')
   })
 })

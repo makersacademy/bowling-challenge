@@ -11,7 +11,7 @@ ScoreTracker.prototype.add = function (score) {
     return true
   }
   var latestFrame = this._scoreSheet[this._scoreSheet.length - 1]
-  if (this._scoreSheet.length === 10 && latestFrame.length === 2) {
+  if (this._scoreSheet.length === 10 && latestFrame.length >= 2) {
     this._extraRoll(score, latestFrame)
   } else if (latestFrame.length > 1) {
       this._scoreSheet.push([score])
@@ -21,13 +21,13 @@ ScoreTracker.prototype.add = function (score) {
 }
 
 ScoreTracker.prototype._extraRoll = function (score, latestFrame) {
-  // TODO
-  if (latestFrame[0] === 10) {
-    console.log('strike bonus')
-  } else if (latestFrame[0] + latestFrame[1] === 10) {
-    latestFrame.push(score)
-  } else {
+  if (latestFrame[0] + latestFrame[1] < 10 || latestFrame.length >= 4) {
     throw 'Game complete'
+  } else if (latestFrame[0] === 10) {
+    latestFrame.push(score)
+    console.log('strike bonus')
+  } else {
+    latestFrame.push(score)
   }
 }
 

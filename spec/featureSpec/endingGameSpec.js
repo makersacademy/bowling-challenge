@@ -7,10 +7,10 @@ describe('ending the game', function () {
     scoreTracker = new ScoreTracker(calculate)
   })
 
-  it('Returns the total after 10 frames', function () {
-    for (var i = 0; i < 19; i++) {
+  it('Returns total when #total is called after 10 frames', function () {
+    for (var i = 0; i < 20; i++) {
       scoreTracker.add(1)
     }
-    expect(scoreTracker.add(1)).toEqual(20)
+    expect(scoreTracker.total()).toEqual(20)
   })
 })

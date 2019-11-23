@@ -8,10 +8,6 @@ describe('ScoreTracker', function () {
     tracker = new ScoreTracker(calculate)
   })
 
-  it('Accepts scores from user', function () {
-    expect(tracker.add(1)).toEqual(1)
-  })
-
   it('Stores scores in a scoresheet', function () {
     tracker.add(1)
     tracker.add(1)
@@ -27,5 +23,12 @@ describe('ScoreTracker', function () {
 
   it('Returns a total when #total is called', function () {
     expect(tracker.total()).toEqual(2)
+  })
+
+  it('Throws if a score is added after 10 frames of 2 normal rolls', function () {
+    for (var i = 0; i < 20; i ++) {
+      tracker.add(1)
+    }
+    expect(function () { tracker.add(1) }).toThrow('Game complete')
   })
 })

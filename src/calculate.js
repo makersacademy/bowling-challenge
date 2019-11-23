@@ -14,10 +14,12 @@ function findFrameTotal (frames, i) {
     var bonus = calculateBonus(frames, i)
     frameTotal += bonus
   }
+  console.log(frameTotal)
   return frameTotal
 }
 
 function calculateBonus (frames, i) {
+  console.log('calculateBonus called', i)
   if (frames[i][0] === 10) {
     return frames[i + 1][0] + frames[i + 1][1]
   } else {

@@ -1,16 +1,16 @@
 /* eslint-env jasmine */
 
-describe('ending the game', function () {
-  var scoreTracker
+describe('Add and score complete game', function () {
+  var tracker
 
   beforeEach(function () {
-    scoreTracker = new ScoreTracker(calculate)
+    tracker = new ScoreTracker(calculate)
   })
 
-  it('Returns total when #total is called after 10 frames', function () {
+  it('returns 20 for a game of 20 rolls of 1', function () {
     for (var i = 0; i < 20; i++) {
-      scoreTracker.add(1)
+      tracker.add(1)
     }
-    expect(scoreTracker.total()).toEqual(20)
+    expect(tracker.total()).toEqual(20)
   })
 })

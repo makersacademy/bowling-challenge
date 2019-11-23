@@ -31,4 +31,14 @@ describe('ScoreTracker', function () {
     }
     expect(function () { tracker.add(1) }).toThrow('Game complete')
   })
+
+  it('Allows a bonus roll if the final frame is a spare', function () {
+    for (var i = 0; i < 18; i ++) {
+      tracker.add(1)
+    }
+    for (var i = 0; i < 2; i ++) {
+      tracker.add(5)
+    }
+    expect(function () { tracker.add(1) }).not.toThrow()
+  })
 })

@@ -17,6 +17,16 @@ it('can roll all ones', function(){
 
 });
 
+  it ('can roll a spare', function(){
+    game.roll(5);
+    game.roll(5);
+    game.roll(3);
+    rollMany(0, 17);
+    expect(game.score()).toBe(16);
+  });
+
+
+
 function rollMany(pins, rolls){
   for(var i = 0; i < rolls; i ++) {
     game.roll(pins)

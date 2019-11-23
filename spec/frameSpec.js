@@ -1,6 +1,6 @@
 'use strict';
 
-describe ('frame', function() {
+describe ("frame", function() {
 
   var frame_score;
 

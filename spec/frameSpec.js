@@ -37,7 +37,7 @@ describe ("frame", function() {
 
   it('returns nil if the frame has nothing special', function() {
     frame_score = new Frame(3,6)
-    expect(frame_score.getFrameType()).toMatch("nil");
+    expect(frame_score.getFrameType()).toMatch("ordinary");
   });
 
   it('returns strike if the frame has a strike', function() {

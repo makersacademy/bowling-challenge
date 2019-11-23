@@ -4,7 +4,6 @@ function Frame(firstroll, secondroll) {
   this.firstroll = firstroll
   this.secondroll = secondroll
   this.validateRolls()
-  this.rolls =[firstroll, secondroll];
 }
 
 var output
@@ -28,7 +27,7 @@ Frame.prototype.getRawScore = function() {
 
 Frame.prototype.getFrameType = function() {
   if (this.getRawScore() != 10) {
-    return('nil');
+    return('ordinary');
   } else {
    output = this.isSpareorStrike();
     return(output);
@@ -36,7 +35,7 @@ Frame.prototype.getFrameType = function() {
 };
 
 Frame.prototype.isSpareorStrike = function() {
-  if (this.rolls[0] === 10) {
+  if (this.firstroll === 10) {
     return('strike');
   } else {
     return('spare');

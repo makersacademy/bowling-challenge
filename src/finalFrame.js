@@ -10,6 +10,11 @@ function FinalFrame(firstroll, secondroll, thirdroll){
   this.validateRolls()
 }
 
+FinalFrame.prototype.getFirstRoll = function(){
+  return this.firstroll;
+};
+
+
 FinalFrame.prototype.getRawScore = function(){
   output = this.firstroll + this.secondroll +
   this.thirdroll;

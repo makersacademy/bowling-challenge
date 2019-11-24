@@ -2,6 +2,7 @@ function Frame() {
   this.frames = []
 }
 
+
 Frame.prototype.inputFrame = function(frame) {
   this.frames.push(frame);
 }

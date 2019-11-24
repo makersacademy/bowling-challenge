@@ -9,9 +9,12 @@ Game.prototype.roll = function (pins) {
 Game.prototype.totalScore = function () {
   var total = 0;
   var rollIndex = 0;
-  // i = the index of frame
   for(var i = 0; i < 10; i++){
-    total += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+    if(this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10) {
+      total += (this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2]);
+    } else {
+      total += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+    }
     rollIndex += 2
     // plusing by 2 so that it moves to a new frame
   }
@@ -20,8 +23,9 @@ Game.prototype.totalScore = function () {
 
 Game.prototype.isSpare = function () {
   var rollIndex = 0;
-  if(this.rolls[rollIndex] + this.rolls[rollIndex + 1]){
+  if(this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10){
     return true
+  } else {
+    return false
   }
-  return false
 };

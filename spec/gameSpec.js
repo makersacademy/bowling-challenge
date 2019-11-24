@@ -15,6 +15,14 @@ describe ('Game', function() {
       expect(game.totalScore()).toEqual(40);
     });
 
+    it('can roll a game with 1 spare', function() {
+      game.roll(7);
+      game.roll(3);
+      game.roll(4);
+      rollGame(0, 17);
+      expect(game.totalScore()).toEqual(18)
+    });
+
   });
 
   describe('Roll types', function() {
@@ -32,8 +40,14 @@ describe ('Game', function() {
     it('can roll a spare', function() {
       game.roll(3);
       game.roll(7);
-      expect(game.isSpare()).toEqual(true);
-    })
+      expect(game.isSpare()).toEqual(true)
+    });
+
+    it('can recognise a spare', function(){
+      game.roll(1);
+      game.roll(2);
+      expect(game.isSpare()).toEqual(false)
+    });
   });
 
 });

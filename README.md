@@ -81,7 +81,8 @@ Reviewers will potentially be using this [code review rubric](docs/review.md).  
 
 1. Installed ESLint.
 2. TDD simple functions to calculate sum for single roll, and for 10 rolls (without logic for strike/spare).
-3. Developed a simple interface to get user's input.
+3. Developed a simple interface (JQuery) to get user's input.
 4. Added function to check for strikes or spares.
-5. Added functions to interface to get the scores from user and to display rolls (one array of two-element arrays). Added a submit button to calculate score (sum of elements in array).
-
+5. Added functions to interface to get the scores from user and to display rolls (nested array). Added a submit button to calculate score (sum of elements in array).
+6. Worked on JS file to define logic for the score. Linked JS to interface. 
+7. Refactored interface: deleted "calculate score" button - score displayed after clicking on "submit" button.

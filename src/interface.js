@@ -40,5 +40,13 @@ $(document).ready(function() {
 
     $('#totalscore').text(frame.calcTotalScore());
 
+    var game = new Game();
+    gutter = game.isGutter(frame.frames);
+    if (gutter) {
+      alert('Gutter game, bad luck!')
+    } else {
+      alert("Congrats!")
+    };
+
     });
   });

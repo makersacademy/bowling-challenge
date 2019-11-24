@@ -1,10 +1,12 @@
-// function Game() {
-//   this.frames = [];
-// };
-//
-// Game.prototype.isGutter = function() {
-//   return this.calcScore() === 0
-// }
+function Game() {
+}
+
+Game.prototype.isGutter = function(frames) {
+  array = frames.flat();
+  if (array.reduce((a, b) => a+b) === 0) {
+    return true;
+  };
+};
 //
 // Game.prototype.isPerfect = function() {
 //   return this.calcScore() === 300

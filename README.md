@@ -1,4 +1,18 @@
 
+How to use
+==========
+
+```
+$ git clone https://github.com/natyeo/bowling-challenge.git
+$ cd bowling-challenge
+$ open index.html
+
+Input all rolls - if strike, then input 0 for next box or leave blank. If score a strike or spare on the last frame then input bonus roll, otherwise leave blank.
+Click on Calculate score to get result
+
+```
+
+
 Bowling Challenge
 =================
 

@@ -7,5 +7,13 @@ Game.prototype.roll = function (pins) {
 };
 
 Game.prototype.totalScore = function () {
-  return 0
+  var total = 0;
+  var rollIndex = 0;
+  // i = the index of frame
+  for(var i = 0; i < 10; i++){
+    total += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+    rollIndex += 2
+    // plusing by 2 so that it moves to a new frame
+  }
+  return total
 };

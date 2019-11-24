@@ -6,9 +6,15 @@ describe ('Game', function() {
 
   describe ('Game types', function() {
     it('can roll a gutter game(all rolls = 0)', function() {
-    rollGame(0, 20)
+    rollGame(0, 20);
       expect(game.totalScore()).toEqual(0);
     });
+
+    it('can roll a normal game(all rolls = 2)', function() {
+      rollGame(2, 20);
+      expect(game.totalScore()).toEqual(40);
+    });
+
   });
 
   describe('Roll types', function() {

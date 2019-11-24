@@ -3,6 +3,7 @@ function Game() {
 Game.prototype.reset = function() {
   bowl.rolls = [];
 };
+// new version of score function with running total available
 Game.prototype.score = function() {
   var total = 0;
   for (var i = 0, l = bowl.rolls.length; i < l; i++) {
@@ -38,6 +39,7 @@ Game.prototype.score = function() {
     return total += bowl.rolls[i] + bowl.rolls[i+1];
   };
 };
+// old version of score function - no running total available
 
 // Game.prototype.score = function() {
 //   var total = 0;
@@ -83,6 +85,7 @@ function Bowl() {
 Bowl.prototype.roll = function(skittles) {
   this.rolls.push(skittles);
 };
+// new functions created in order to get the interface working
 Bowl.prototype.roll0 = function() {
   bowl.roll(0);
   this.rolls.push(0);

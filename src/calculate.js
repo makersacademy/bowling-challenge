@@ -14,14 +14,11 @@ function findFrameTotal (frames, i) {
     var bonus = calculateBonus(frames, i)
     frameTotal += bonus
   }
-  console.log('frame total')
-  console.log(frameTotal)
   return frameTotal
 }
 
 function calculateBonus (frames, i) {
   var bonus = frames[i + 1][0]
-  console.log('calculating bonus')
   if (frames[i][1] === null) {
     if (frames[i + 1][1] !== null) {
       bonus += frames[i + 1][1]
@@ -31,6 +28,5 @@ function calculateBonus (frames, i) {
       bonus += frames[i + 2][0]
     }
   }
-  console.log(bonus)
   return bonus
 }

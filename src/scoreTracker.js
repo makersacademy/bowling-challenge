@@ -1,8 +1,9 @@
 'use strict'
 
-function ScoreTracker (calculate) {
+function ScoreTracker (calculate, onComplete) {
   this._scoreSheet = []
   this._calculate = calculate
+  this._onComplete = onComplete
 }
 
 ScoreTracker.prototype.add = function (score) {
@@ -41,7 +42,7 @@ ScoreTracker.prototype.add = function (score) {
     } else if (latestFrame.length === 2 && latestFrame[0] + latestFrame[1] === 10) {
       latestFrame.push(score)
     } else {
-      throw 'Game complete'
+      this._onComplete()
     }
     return true
   }

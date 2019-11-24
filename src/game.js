@@ -1,11 +1,11 @@
-function Game() {
-  this.frames = [];
-};
-
-Game.prototype.addFrame = function(frame) {
-  this.frames.push(frame);
-}
-
-Game.prototype.calcScore = function() {
-  return this.frames.reduce((a, b) => a + b);
-}
+// function Game() {
+//   this.frames = [];
+// };
+//
+// Game.prototype.isGutter = function() {
+//   return this.calcScore() === 0
+// }
+//
+// Game.prototype.isPerfect = function() {
+//   return this.calcScore() === 300
+// }

@@ -77,7 +77,7 @@ full");
    game_object.loadFrame(final_frame_test);
    expect(game_object.getGameScore()).toEqual(157);
  })
- it('takes a game with 9 strikes plus 3 and returns 300', function(){
+ it('takes a game with 9 strikes plus 3 more and returns 300', function(){
    frame_strike = new Frame(10,0)
    final_frame_test = new FinalFrame(10,10,10);
    for(let i = 0; i < 9; i++){
@@ -85,5 +85,17 @@ full");
    }
    game_object.loadFrame(final_frame_test);
    expect(game_object.getGameScore()).toEqual(300);
+ })
+ it('takes a game with 8 strikes plus 3 and returns 250', function(){
+   frame_strike = new Frame(10,0)
+   frame_test = new Frame(0,0)
+   game_object.loadFrame(frame_strike);
+   game_object.loadFrame(frame_test);
+   final_frame_test = new FinalFrame(10,10,10);
+   for(let i = 2; i < 9; i++){
+     game_object.loadFrame(frame_strike);
+   }
+   game_object.loadFrame(final_frame_test);
+   expect(game_object.getGameScore()).toEqual(250);
  })
 });

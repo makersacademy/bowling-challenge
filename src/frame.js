@@ -18,7 +18,7 @@ Frame.prototype.validateRolls = function() {
   if ((this.firstroll + this.secondroll) >10) {
     throw "Frame scores should not exceed 10";
   }
-}
+};
 
 Frame.prototype.getRawScore = function() {
   output = this.firstroll + this.secondroll;
@@ -29,7 +29,7 @@ Frame.prototype.getFrameType = function() {
   if (this.getRawScore() != 10) {
     return('ordinary');
   } else {
-   output = this.isSpareorStrike();
+    output = this.isSpareorStrike();
     return(output);
   }
 };
@@ -47,5 +47,5 @@ Frame.prototype.getFirstRoll = function() {
 };
 
 Frame.prototype.getSecondRoll = function(){
-    return this.secondroll;
-  };
+  return this.secondroll;
+};

@@ -21,8 +21,6 @@ Game.prototype.loadFrame = function(frame_item) {
 };
 
 
-
-
 Game.prototype.getGameScore = function() {
   gamescore = 0
   for(frame_no = 0; frame_no < 9; frame_no++){
@@ -38,8 +36,8 @@ Game.prototype.getGameScore = function() {
 };
 
 Game.prototype.getBonusScore = function(frame_no, frame_type){
+  bonus = 0
   next_frame = this.frame_holder[frame_no+1];
-  frame_plus_two = this.frame_holder[frame_no+2];
   if(frame_type === 'spare'){
     bonus = next_frame.getFirstRoll();
   } else {
@@ -49,11 +47,15 @@ Game.prototype.getBonusScore = function(frame_no, frame_type){
 };
 
 Game.prototype.getStrikeScore = function(frame_no, next_frame){
-  frame_plus_two = this.frame_holder[frame_no+2];
-  if(next_frame.getFrameType === 'strike'  || frame_no != 8 ) {
-    bonus = next_frame.getFirstRoll() + frame_plus_two.getFirstRoll();
+    console.log(next_frame);
+    if (frame_no === 8 ) {
+      return (next_frame.getFirstRoll() + next_frame.getSecondRoll())
+    }
+    if(next_frame.getFrameType() != 'strike') {
+    bonus = next_frame.getFirstRoll() + next_frame.getSecondRoll()
     } else {
-    bonus = next_frame.getFirstRoll() + next_frame.getSecondRoll();
-  }
+      frame_plus_two = this.frame_holder[frame_no+2];
+      bonus = next_frame.getFirstRoll() + frame_plus_two.getFirstRoll();
+    }
 return bonus;
 };

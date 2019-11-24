@@ -12,7 +12,11 @@ describe ('Game', function() {
     });
   });
 
-//   it('calculates a perfect game', function() {
-//
-// })
+  describe('#isPerfect', function() {
+    it ('calculates a perfect game', function() {
+      frames = [[10,10],[10,10],[10,10],[10,10],[10,10],[10,10],[10,10],[10,10],[10,10],[10,10,10]];
+      expect(game.isPerfect(frames)).toBeTruthy();
+    });
+  });
+
 });

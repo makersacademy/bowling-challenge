@@ -7,7 +7,10 @@ Game.prototype.isGutter = function(frames) {
     return true;
   };
 };
-//
-// Game.prototype.isPerfect = function() {
-//   return this.calcScore() === 300
-// }
+
+Game.prototype.isPerfect = function(frames) {
+  array = frames.flat();
+  if (array.reduce((a, b) => a+b) === 210) {
+    return true
+  };
+};

@@ -42,10 +42,14 @@ $(document).ready(function() {
 
     var game = new Game();
     gutter = game.isGutter(frame.frames);
+    perfect = game.isPerfect(frame.frames);
+
     if (gutter) {
       alert('Gutter game, bad luck!')
+    } else if (perfect) {
+      alert("Congrats, perfect game!")
     } else {
-      alert("Congrats, good game!")
+      alert("Good game!")
     };
 
     });

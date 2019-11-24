@@ -14,8 +14,8 @@ describe ('Frame', function() {
 
   describe('#calcTotalScore', function() {
     it ('calculates score for all frames', function() {
-      frame.frames = [[10, 0], [5, 5], [6, 3], [5, 2]];
-      expect(frame.calcTotalScore()).toBe(52);
+      frame.frames = [[10, 0], [5, 5], [6, 3], [5, 2], [10, 0], [5, 5], [6, 3], [5, 2], [3, 6], [10, 0, 5]];
+      expect(frame.calcTotalScore()).toBe(128);
     });
   });
 

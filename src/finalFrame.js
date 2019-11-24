@@ -1,7 +1,6 @@
 'use strict';
 
 function FinalFrame(firstroll, secondroll, thirdroll){
-  this.getFrameType = 'final'
   this.firstroll = firstroll
   this.secondroll = secondroll
   if (isNaN(thirdroll)) {
@@ -9,7 +8,7 @@ function FinalFrame(firstroll, secondroll, thirdroll){
   }
   this.thirdroll = thirdroll
   this.validateRolls()
-};
+}
 
 FinalFrame.prototype.getFirstRoll = function(){
   return this.firstroll;
@@ -20,7 +19,7 @@ FinalFrame.prototype.getSecondRoll = function(){
 };
 
 FinalFrame.prototype.getRawScore = function(){
-  output = this.firstroll + this.secondroll +
+  var output = this.firstroll + this.secondroll +
   this.thirdroll;
   return (output);
 };
@@ -37,5 +36,5 @@ FinalFrame.prototype.validateRolls = function(){
   this.thirdroll > 0) {
     throw "No third roll unless there is a \
 strike or spare earlier in the frame";
-  };
+  }
 };

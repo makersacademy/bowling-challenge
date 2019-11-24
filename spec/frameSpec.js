@@ -25,7 +25,6 @@ describe ("frame", function() {
   });
 
 
-
   it('throws an error if our total scores are more than ten on each \
   roll', function() {
     expect(function(){frame_score = new Frame(8,8);}).toThrow("Frame\
@@ -56,4 +55,14 @@ describe ("frame", function() {
     frame_score = new Frame (3,4)
     expect(frame_score.getFirstRoll()).toEqual(3);
   });
+
+  it('allows X to score as a strike', function() {
+    frame_score = new Frame('X',0)
+    expect(frame_score.getFrameType()).toMatch("strike");
+  });
+
+  it('allows / to treat a frame as a spare', function() {
+    frame_score = new Frame(7,'/')
+    expect(frame_score.getFrameType()).toMatch("spare");
+  })
 });

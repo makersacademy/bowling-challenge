@@ -4,7 +4,6 @@ describe ('finalFrame', function() {
 
   var final_frame_score;
 
-
   it('accepts three rolls where possible', function() {
     final_frame_score = new FinalFrame(10,10,10)
     expect(final_frame_score.getRawScore()).toEqual(30);
@@ -20,6 +19,4 @@ describe ('finalFrame', function() {
    expect(function(){final_frame_score = new FinalFrame(3,3,3);}).toThrow("No\
  third roll unless there is a strike or spare earlier in the frame");
  });
-
-
 })

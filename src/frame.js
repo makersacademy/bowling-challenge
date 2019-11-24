@@ -6,9 +6,21 @@ function Frame(firstroll, secondroll) {
   this.validateRolls()
 }
 
-var output
+var output;
 
 Frame.prototype.validateRolls = function() {
+  if (this.firstroll === 'X' || this.firstroll === 'x') {
+    this.firstroll = 10
+  }
+  if (this.secondroll === '/') {
+    this.secondroll = (10 - this.firstroll)
+  }
+  if (isNaN(this.firstroll)) {
+    this.firstroll = 0
+  }
+  if (isNaN(this.secondroll)) {
+    this.secondroll = 0
+  }
   if (this.firstroll < 0 || this.secondroll < 0) {
     throw "No negative scores";
   }
@@ -44,8 +56,4 @@ Frame.prototype.isSpareorStrike = function() {
 
 Frame.prototype.getFirstRoll = function() {
   return this.firstroll;
-};
-
-Frame.prototype.getSecondRoll = function(){
-  return this.secondroll;
 };

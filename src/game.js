@@ -10,7 +10,7 @@ var frame;
 var next_frame;
 var frame_plus_two;
 var bonus;
-var lastframe
+var lastframe;
 
 Game.prototype.loadFrame = function(frame_item) {
   if (this.frame_holder.length === 10) {
@@ -19,7 +19,6 @@ Game.prototype.loadFrame = function(frame_item) {
   this.frame_holder.push(frame_item);
   return('ok');}
 };
-
 
 Game.prototype.getGameScore = function() {
   gamescore = 0
@@ -36,7 +35,6 @@ Game.prototype.getGameScore = function() {
 };
 
 Game.prototype.getBonusScore = function(frame_no, frame_type){
-  bonus = 0
   next_frame = this.frame_holder[frame_no+1];
   if(frame_type === 'spare'){
     bonus = next_frame.getFirstRoll();
@@ -47,12 +45,11 @@ Game.prototype.getBonusScore = function(frame_no, frame_type){
 };
 
 Game.prototype.getStrikeScore = function(frame_no, next_frame){
-    console.log(next_frame);
     if (frame_no === 8 ) {
       return (next_frame.getFirstRoll() + next_frame.getSecondRoll())
     }
     if(next_frame.getFrameType() != 'strike') {
-    bonus = next_frame.getFirstRoll() + next_frame.getSecondRoll()
+    bonus = next_frame.getRawScore();
     } else {
       frame_plus_two = this.frame_holder[frame_no+2];
       bonus = next_frame.getFirstRoll() + frame_plus_two.getFirstRoll();

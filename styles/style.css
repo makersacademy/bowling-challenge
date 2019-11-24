@@ -1,0 +1,38 @@
+body {
+  text-align: center;
+  background-color: #d7f7f7;
+  font-family: geneva;
+}
+
+.interface {
+  display: flex;
+  flex-direction: column;
+}
+
+.enterScores {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons {
+  margin-left: 5vw;
+}
+
+.scorecard {
+  display: flex;
+  justify-content: center;
+}
+
+table.scoretable th {
+  background-color: #ebc9ff;
+  padding: 6px;
+}
+
+table.scoretable td {
+  padding-bottom: 6px;
+  padding-top: 6px;
+  background-color: #ffffff;
+}
+

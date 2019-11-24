@@ -21,8 +21,8 @@ describe ('Frame', function() {
 
   describe('#calcFrameScore', function() {
     it ('calculates score for frame', function() {
-      rolls = [5, 3];
-      expect(frame.calcFrameScore(rolls)).toBe(8);
+      frame.frames = [[10, 0], [5, 5], [6, 3], [5, 2]];
+      expect(frame.calcFrameScore(0)).toBe(20);
     });
   });
 });

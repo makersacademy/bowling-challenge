@@ -17,9 +17,14 @@ $(document).ready(function() {
     frame.inputFrame(frame4);
     frame.inputFrame(frame5);
 
-    $('#frame1score').text(frame.calcFrameScore(frame1));
+    $('#frame1score').text(frame.calcFrameScore(0));
+    $('#frame2score').text(frame.calcFrameScore(1));
+    $('#frame3score').text(frame.calcFrameScore(2));
+    $('#frame4score').text(frame.calcFrameScore(3));
+    $('#frame5score').text(frame.calcFrameScore(4));
 
     alert(frame.calcTotalScore());
 
+    
     });
   });

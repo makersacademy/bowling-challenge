@@ -23,8 +23,12 @@ Frame.prototype.calcTotalScore = function() {
     return total;
 };
 
-Frame.prototype.calcFrameScore = function(frame) {
-  if (frame[0] + frame[1] < 10) {
-    return frame.reduce((a, b) => a + b);
+Frame.prototype.calcFrameScore = function(i) {
+  if (this.frames[i][0] === 10) {
+    return this.frames[i][0] + this.frames[i+1][0] + this.frames[i+1][1];
+  } else if (this.frames[i][0] + this.frames[i][1] === 10) {
+    return this.frames[i][0] + this.frames[i][1] + this.frames[i+1][0];
+  } else {
+    return this.frames[i].reduce((a, b) => a + b);
   };
-}
+};

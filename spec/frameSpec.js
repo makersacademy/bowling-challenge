@@ -11,4 +11,9 @@ describe ('Frame', function() {
     expect(frame.endFrame).toEqual([2, 7])
   });
 
+  it('returns true when a spare is rolled', function(){
+    var frame = new Frame(9, 1);
+    expect(frame.isASpare()).toEqual(true)
+  });
+
 });

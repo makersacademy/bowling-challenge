@@ -17,3 +17,10 @@ Game.prototype.totalScore = function () {
   }
   return sum
 };
+
+Game.prototype.isGutterGame = function () {
+  if (this.totalScore() === 0){
+    return true
+  }
+  return false
+};

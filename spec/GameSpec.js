@@ -54,7 +54,61 @@ describe("Game", function() {
       game.play(6)
       expect(game.scorecard()).toEqual([[2,5], [4,'/']])
     })
+
+    it('strike are returned as X on scorcard', function(){
+      game.play(2)
+      game.play(5)
+      game.play(4)
+      game.play(6)
+      game.play(10)
+      game.play(7)
+      game.play(2)
+      expect(game.scorecard()).toEqual([[2,5], [4,'/'], ['X'], [7,2]])
+    })
+
+    it('game have a maximum of 10 frames', function() {
+      var i;
+      for (i = 0; i < 10; i++) {
+        game.play(2)
+        game.play(5)
+      }
+      expect(game.play(5)).toEqual('Game Over')
+    })
   });
+
+  describe('#score', function(){
+    it('it tracks to score on a non strike/ non spare round', function(){
+      game.play(2)
+      game.play(5)
+      expect(game.score()).toEqual(7)
+
+    })
+  });
+
+  describe('#strike', function(){
+    it('you get 2 bonus shot', function(){
+      game.strike()
+      expect(game.bonusShotsRemaining()).toEqual(2)
+    })
+
+    it('both sum of next two shots are added frame', function(){
+      game.play(10)
+      game.play(3)
+      game.play(5)
+     expect(game.score()).toEqual(26)
+    })
+  });
+
+  describe('#spare', function(){
+    it('you get 1 bonus shot', function(){
+      game.spare()
+      expect(game.bonusShotsRemaining()).toEqual(1)
+    })
+
+  });
+
+
+
 
 
 

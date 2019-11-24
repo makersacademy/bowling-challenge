@@ -9,7 +9,7 @@ Frame.prototype.roll = function(rollScore) {
 
 Frame.prototype.frameOutcome = function() {
   if (this._frameTracker[0] === 10) {
-    this._frameTracker = 'X'
+    this._frameTracker = ["X"]
   }
   else if (this._frameTracker[0] + this._frameTracker[1] === 10) {
     this._frameTracker[1] = '/'

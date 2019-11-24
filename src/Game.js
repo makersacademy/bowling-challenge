@@ -1,6 +1,9 @@
 function Game() {
   this._scoreCardArray = []
   this._framesArray = []
+  this._score = 0
+  this._bonusShots = 0
+
 }
 
 Game.prototype.newFrame = function(frame = new Frame) {
@@ -21,22 +24,71 @@ Game.prototype.frameNumber = function() {
 }
 
 Game.prototype.play = function(rollScore, frame = new Frame) {
+
   if (this.frameNumber() === 0) {
     this.newFrame(frame)
   }
+  if (this.frameNumber() <= 10) {
 
-  var currentFrame = this.currentFrame()
-  currentFrame.roll(rollScore)
-  frameState = currentFrame.frameOutcome()
-  if (frameState.length === 2 || frameState[0] === 10) {
-    this._scoreCardArray.push(frameState)
-    this.newFrame(frame)
+    var currentFrame = this.currentFrame()
+    currentFrame.roll(rollScore)
+    frameState = currentFrame.frameOutcome()
 
+    if (frameState.length === 2 || frameState[0] === "X") {
+      if (frameState[0] === "X") {
+        this.strike()
+        this._score += rollScore
+        this._scoreCardArray.push(frameState)
+        this.newFrame()
+
+      } else {
+        this._score += rollScore
+
+        if (this.bonusShotsRemaining() !== 0) {
+          this.bonusShot(rollScore)
+        }
+        this._scoreCardArray.push(frameState)
+        this.newFrame()
+      }
+
+
+    } else {
+      if (this.bonusShotsRemaining() !== 0){
+        this.bonusShot(rollScore)
+        this._score += rollScore
+      } else {
+        this._score += rollScore
+      }
+
+    }
+
+  } else {
+    return 'Game Over'
   }
-
-
 }
 
 Game.prototype.scorecard = function() {
   return this._scoreCardArray
+}
+
+Game.prototype.score = function() {
+ return this._score
+}
+
+Game.prototype.strike = function() {
+  this._bonusShots = 2
+}
+
+Game.prototype.bonusShotsRemaining = function() {
+  return this._bonusShots
+}
+
+Game.prototype.spare = function() {
+  this._bonusShots = 1
+}
+
+Game.prototype.bonusShot = function(rollScore) {
+  this._score += rollScore
+  this._bonusShots -= 1
+
 }

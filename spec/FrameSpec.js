@@ -24,10 +24,10 @@ describe('Frame', function(){
     it('you get a strike if you roll a 10 on your first roll', function() {
       var frame = new Frame;
       frame.roll(10)
-      expect(frame.frameOutcome()).toEqual('X')
+      expect(frame.frameOutcome()).toEqual(['X'])
     })
 
-  
+
 
   })
 

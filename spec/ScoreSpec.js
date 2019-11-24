@@ -34,4 +34,17 @@ describe('Score', function(){
         }
     })
 
+    it('returns the score after a spike', function(){
+        score.addRoll(4,6);
+        expect(score.totalScore(score.scoreArray)).toEqual(10);
+        score.addRoll(3,0);
+        expect(score.totalScore(score.scoreArray)).toEqual(16);
+    })
+
+    it('returns the score after a spike', function(){
+        score.addRoll(10,0);
+        expect(score.totalScore(score.scoreArray)).toEqual(10);
+        score.addRoll(3,5);
+        expect(score.totalScore(score.scoreArray)).toEqual(26);
+    })
 })

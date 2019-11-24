@@ -25,6 +25,8 @@ $(document).ready(function(){
         if (score.scoreArray.length > 8) {
           $('.game').hide();
           $('.no_game').show();
+          calculateScore();
+        $('#final-score').text(score.showSum());
         } 
 
         if (score1 >10) {
@@ -46,8 +48,6 @@ $(document).ready(function(){
         
       });
     
-      
-
 
       // $('#calculate-score').submit(function(event) {
       //   event.preventDefault();

@@ -1,4 +1,18 @@
-//
+function gameRollTwo() {
+  game.roll(1);
+  game.roll(4);
+  game.roll(7);
+  game.roll(1);
+}
+
+function rollGame(pins, rolls) {
+  for (var i = 0; i < rolls; i++){
+    game.roll(pins);
+  }
+}
+
+
+
 // function standardGame() {
 //   game = new Game;
 //   var frame = new Frame(1, 6);

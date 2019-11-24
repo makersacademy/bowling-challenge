@@ -3,77 +3,89 @@ $(document).ready(function() {
   var bowl = new Bowl();
   var game = new Game();
 
+  function updateRoll() {
+    var i = 0;
+    for (i = 0; i < bowl.rolls.length; i++) {
+      $('#roll' + i).text(bowl.rolls[i]);
+    };
+  };
+
+  function updateScore() {
+    $('#total').text(game.score());
+  };
+
+  updateRoll();
+  updateScore();
+
   $('#reset').on('click', function() {
     game.reset();
     $('.rolls').text('');
   });
 
   $('#zero').on('click', function() {
-    bowl.roll(0);
+    bowl.roll0();
     updateRoll();
+    updateScore();
   });
 
   $('#one').on('click', function() {
-    bowl.roll(1);
+    bowl.roll1();
     updateRoll();
+    updateScore();
   });
 
   $('#two').on('click', function() {
-    bowl.roll(2);
+    bowl.roll2();
     updateRoll();
+    updateScore();
   });
 
   $('#three').on('click', function() {
-    bowl.roll(3);
+    bowl.roll3();
     updateRoll();
+    updateScore();;
   });
 
   $('#four').on('click', function() {
-    bowl.roll(4);
+    bowl.roll4();
     updateRoll();
+    updateScore();
   });
 
   $('#five').on('click', function() {
-    bowl.roll(5);
+    bowl.roll5();
     updateRoll();
+    updateScore();
   });
 
   $('#six').on('click', function() {
-    bowl.roll(6);
+    bowl.roll6();
     updateRoll();
+    updateScore();
   });
 
   $('#seven').on('click', function() {
-    bowl.roll(7);
+    bowl.roll7();
     updateRoll();
+    updateScore();
   });
 
   $('#eight').on('click', function() {
-    bowl.roll(8);
+    bowl.roll8();
     updateRoll();
+    updateScore();
   });
 
   $('#nine').on('click', function() {
-    bowl.roll(9);
+    bowl.roll9();
     updateRoll();
+    updateScore();
   });
 
   $('#ten').on('click', function() {
-    bowl.roll(10);
+    bowl.roll10();
     updateRoll();
+    updateScore();
   });
-
-  function updateScore() {
-    $('#total').text(game.score());
-  };
-
-  function updateRoll() {
-    var i = 0;
-    var j = 0;
-    for (i = 0; i < bowl.rolls.length; i++) {
-      $('#roll' + i).text(bowl.rolls[i]);
-    };
-
-  };
 
 });

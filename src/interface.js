@@ -14,7 +14,7 @@ $(document).ready(function() {
     var frame7 = [Number($("#frame7roll1").val()), Number($("#frame7roll2").val())];
     var frame8 = [Number($("#frame8roll1").val()), Number($("#frame8roll2").val())];
     var frame9 = [Number($("#frame9roll1").val()), Number($("#frame9roll2").val())];
-    var frame10 = [Number($("#frame10roll1").val()), Number($("#frame10roll2").val())];
+    var frame10 = [Number($("#frame10roll1").val()), Number($("#frame10roll2").val()), Number($("#frame10roll3").val())];
 
     frame.inputFrame(frame1);
     frame.inputFrame(frame2);

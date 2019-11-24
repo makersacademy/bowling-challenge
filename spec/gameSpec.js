@@ -28,6 +28,12 @@ describe ('Game', function() {
       gameRollTwo()
       expect(game.rolls).toEqual([1, 4, 7, 1])
     });
+
+    it('can roll a spare', function() {
+      game.roll(3);
+      game.roll(7);
+      expect(game.isSpare()).toEqual(true);
+    })
   });
 
 });

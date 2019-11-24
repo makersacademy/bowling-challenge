@@ -17,3 +17,11 @@ Game.prototype.totalScore = function () {
   }
   return total
 };
+
+Game.prototype.isSpare = function () {
+  var rollIndex = 0;
+  if(this.rolls[rollIndex] + this.rolls[rollIndex + 1]){
+    return true
+  }
+  return false
+};

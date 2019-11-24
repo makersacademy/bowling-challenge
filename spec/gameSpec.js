@@ -23,6 +23,18 @@ describe ('Game', function() {
       expect(game.totalScore()).toEqual(18)
     });
 
+    it('can roll a game with 1 strike', function() {
+      game.roll(10);
+      game.roll(5);
+      game.roll(1);
+      rollGame(0, 16)
+      expect(game.totalScore()).toEqual(22);
+    });
+
+    it('can roll a perfect game (two extra frames at the end)', function() {
+      rollGame(10, 12);
+      expect(game.totalScore()).toEqual(300);
+    });
   });
 
   describe('Roll types', function() {
@@ -37,17 +49,16 @@ describe ('Game', function() {
       expect(game.rolls).toEqual([1, 4, 7, 1])
     });
 
-    it('can roll a spare', function() {
+    it('can recognise a spare', function() {
       game.roll(3);
       game.roll(7);
       expect(game.isSpare()).toEqual(true)
     });
 
-    it('can recognise a spare', function(){
-      game.roll(1);
-      game.roll(2);
-      expect(game.isSpare()).toEqual(false)
-    });
+    it('can recognise a strike', function() {
+      game.roll(10);
+      expect(game.isStrike()).toEqual(true)
+    })
   });
 
 });

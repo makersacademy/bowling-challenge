@@ -27,8 +27,8 @@ it('can roll all ones', function(){
 
 
 
-function rollMany(pins, rolls){
-  for(var i = 0; i < rolls; i ++) {
+  var rollMany = function (pins, rolls){
+  for (var i = 0; i < rolls; i ++) {
     game.roll(pins)
   };
 

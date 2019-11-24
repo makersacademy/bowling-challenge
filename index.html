@@ -11,7 +11,6 @@
 
     <h1 align="center"> Bowling Scorecard </h1>
     <div>
-      <form>
       <table style="margin:2em 0.5em;" class="table">
         <thead class="thead-dark">
           <tr>
@@ -32,7 +31,7 @@
             <th scope="row">1</th>
             <td>2</td>
             <td><input id="frame1roll2" type="number" min="0" max="10"></td>
-            <td></td>
+            <td id="frame1score"></td>
           </tr>
           <tr>
             <th scope="row">2</th>
@@ -44,7 +43,7 @@
             <th scope="row">2</th>
             <td>2</td>
             <td><input id="frame2roll2" type="number" min="0" max="10"></td>
-            <td></td>
+            <td id="frame2score"></td>
           </tr>
           <tr>
             <th scope="row">3</th>
@@ -84,7 +83,6 @@
           </tr>
         </tbody>
       </table>
-      </form>
         <input style="margin:5px 10px; display:block;" type="button" value="Calculate score">
       </div>
 
@@ -92,7 +90,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="src/frame.js"></script>
-<script src="src/interface.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+<script src="src/frame.js" type="text/javascript"></script>
+<script src="src/interface.js" type="text/javascript"></script>
   </body>
 </html>

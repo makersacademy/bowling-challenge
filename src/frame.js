@@ -10,11 +10,9 @@ Frame.prototype.calcTotalScore = function() {
     total = 0
     for(i = 0; i < this.frames.length; i++) {
       if (this.frames[i][0] === 10) {
-        score = this.frames[i][0] + this.frames[i+1][0] + this.frames[i+1][1];
-        total += score;
+        total += this.calcStrike(i);
       } else if (this.frames[i][0] + this.frames[i][1] === 10) {
-        score = this.frames[i][0] + this.frames[i][1] + this.frames[i+1][0];
-        total += score;
+        total += this.calcSpare(i);
       } else {
         score = this.frames[i][0] + this.frames[i][1];
         total += score;
@@ -25,10 +23,18 @@ Frame.prototype.calcTotalScore = function() {
 
 Frame.prototype.calcFrameScore = function(i) {
   if (this.frames[i][0] === 10) {
-    return this.frames[i][0] + this.frames[i+1][0] + this.frames[i+1][1];
+    return this.calcStrike(i);
   } else if (this.frames[i][0] + this.frames[i][1] === 10) {
-    return this.frames[i][0] + this.frames[i][1] + this.frames[i+1][0];
+    return this.calcSpare(i);
   } else {
     return this.frames[i].reduce((a, b) => a + b);
   };
+};
+
+Frame.prototype.calcStrike = function(i) {
+  return this.frames[i][0] + this.frames[i+1][0] + this.frames[i+1][1];
+};
+
+Frame.prototype.calcSpare = function(i) {
+  return this.frames[i][0] + this.frames[i][1] + this.frames[i+1][0];
 };

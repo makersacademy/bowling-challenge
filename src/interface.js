@@ -45,7 +45,7 @@ $(document).ready(function() {
     if (gutter) {
       alert('Gutter game, bad luck!')
     } else {
-      alert("Congrats!")
+      alert("Congrats, good game!")
     };
 
     });

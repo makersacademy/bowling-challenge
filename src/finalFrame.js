@@ -1,6 +1,7 @@
 'use strict';
 
 function FinalFrame(firstroll, secondroll, thirdroll){
+  this.getFrameType = 'final'
   this.firstroll = firstroll
   this.secondroll = secondroll
   if (isNaN(thirdroll)) {
@@ -8,19 +9,21 @@ function FinalFrame(firstroll, secondroll, thirdroll){
   }
   this.thirdroll = thirdroll
   this.validateRolls()
-}
+};
 
 FinalFrame.prototype.getFirstRoll = function(){
   return this.firstroll;
 };
 
+FinalFrame.prototype.getSecondRoll = function(){
+  return this.secondroll;
+};
 
 FinalFrame.prototype.getRawScore = function(){
   output = this.firstroll + this.secondroll +
   this.thirdroll;
   return (output);
 };
-
 FinalFrame.prototype.validateRolls = function(){
   if (this.firstroll < 0 || this.secondroll < 0
    || this.thirdroll < 0) {

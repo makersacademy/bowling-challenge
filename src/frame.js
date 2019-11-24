@@ -43,6 +43,9 @@ Frame.prototype.isSpareorStrike = function() {
 };
 
 Frame.prototype.getFirstRoll = function() {
-  output = this.firstroll;
-  return(output);
+  return this.firstroll;
 };
+
+Frame.prototype.getSecondRoll = function(){
+    return this.secondroll;
+  };

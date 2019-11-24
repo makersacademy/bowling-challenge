@@ -1,17 +1,14 @@
 'use strict';
 
-describe ('game', function() {
+describe ('Game object', function() {
   var game_object;
   var frame_test;
   var final_frame_test;
   var frame_spare;
+  var frame_strike;
 
   beforeEach(function() {
         game_object = new Game();
-  });
-
-  afterEach(function() {
-       game_object.cleardown();
   });
 
   it('loads something into the game object', function() {
@@ -29,6 +26,15 @@ describe ('game', function() {
     expect(game_object.getGameScore()).toEqual(90);
     });
 
+    it('throws an error if we try and load the game with more than \
+    10 frames', function() {
+      frame_test = new Frame(1,1);
+      for(let i = 0; i < 10; i++){
+        game_object.loadFrame(frame_test);
+      }
+      expect(function(){game_object.loadFrame(frame_test);}).toThrow("Array \
+full");
+    })
 
   it('takes a full gutter game and returns nil', function(){
     frame_test = new Frame(0,0);
@@ -70,5 +76,14 @@ describe ('game', function() {
    }
    game_object.loadFrame(final_frame_test);
    expect(game_object.getGameScore()).toEqual(157);
+ })
+ it('takes a game with 9 strikes plus 3 and returns 300', function(){
+   frame_strike = new Frame(10,0)
+   final_frame_test = new FinalFrame(10,10,10);
+   for(let i = 0; i < 9; i++){
+     game_object.loadFrame(frame_strike);
+   }
+   game_object.loadFrame(final_frame_test);
+   expect(game_object.getGameScore()).toEqual(300);
  })
 });

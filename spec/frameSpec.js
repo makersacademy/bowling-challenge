@@ -24,6 +24,8 @@ describe ("frame", function() {
  over 10");
   });
 
+
+
   it('throws an error if our total scores are more than ten on each \
   roll', function() {
     expect(function(){frame_score = new Frame(8,8);}).toThrow("Frame\

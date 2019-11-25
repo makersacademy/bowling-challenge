@@ -18,16 +18,16 @@ describe('Frame', function(){
       var frame = new Frame;
       frame.roll(5)
       frame.roll(5)
-      expect(frame.frameOutcome()).toEqual([5,'/'])
+      expect(frame.frameOutcome()).toEqual([5,5])
     })
 
     it('you get a strike if you roll a 10 on your first roll', function() {
       var frame = new Frame;
       frame.roll(10)
-      expect(frame.frameOutcome()).toEqual('X')
+      expect(frame.frameOutcome()).toEqual([10])
     })
 
-  
+
 
   })
 

@@ -52,9 +52,20 @@ describe("Game", function() {
       game.play(5)
       game.play(4)
       game.play(6)
-      expect(game.scorecard()).toEqual([[2,5], [4,'/']])
+      expect(game.scorecard()).toEqual([[2,5], [4,6]])
     })
   });
+
+  describe('#score', function(){
+    it('if there are no bonus points it will return the sum of rolls', function(){
+      game.play(2)
+      game.play(5)
+      game.play(4)
+      game.play(3)
+      expect(game.score()).toEqual(14)
+    })
+
+  })
 
 
 

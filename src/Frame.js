@@ -7,7 +7,9 @@ function Frame() {
 }
 
 Frame.prototype.roll = function(rollScore) {
+  if (this.frameStatus().length < 3) {
   this._frameTracker.push(rollScore)
+  }
 }
 
 Frame.prototype.frameStatus = function() {

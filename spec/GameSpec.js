@@ -108,4 +108,95 @@ describe("Game", function() {
 
   });
 
+  describe("Test Games", function() {
+    it("test game 1", function() {
+      game.play(10)
+      game.play(7)
+      game.play(3)
+      game.play(7)
+      game.play(2)
+      game.play(9)
+      game.play(1)
+      game.play(10)
+      game.play(10)
+      game.play(10)
+      game.play(2)
+      game.play(3)
+      game.play(6)
+      game.play(4)
+      game.play(7)
+      game.play(3)
+      game.play(3)
+
+      expect(game.score()).toEqual(168)
+
+
+    })
+
+    it("test game 2", function() {
+      game.play(1)
+      game.play(4)
+      game.play(4)
+      game.play(5)
+      game.play(6)
+      game.play(4)
+      game.play(5)
+      game.play(5)
+      game.play(10)
+      game.play(0)
+      game.play(1)
+      game.play(7)
+      game.play(3)
+      game.play(6)
+      game.play(4)
+      game.play(10)
+      game.play(2)
+      game.play(8)
+      game.play(6)
+
+      expect(game.score()).toEqual(133)
+    })
+
+    it("test game 3", function() {
+      game.play(8)
+      game.play(2)
+      game.play(5)
+      game.play(4)
+      game.play(9)
+      game.play(0)
+      game.play(10)
+      game.play(10)
+      game.play(5)
+      game.play(5)
+      game.play(5)
+      game.play(3)
+      game.play(6)
+      game.play(3)
+      game.play(9)
+      game.play(1)
+      game.play(9)
+      game.play(1)
+      game.play(10)
+      expect(game.score()).toEqual(149)
+    })
+
+    it("perfect game", function() {
+      game.play(10)
+      game.play(10)
+      game.play(10)
+      game.play(10)
+      game.play(10)
+      game.play(10)
+      game.play(10)
+      game.play(10)
+      game.play(10)
+      game.play(10)
+      game.play(10)
+      game.play(10)
+      expect(game.score()).toEqual(300)
+    })
+
+
+  })
+
 });

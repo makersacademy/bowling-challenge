@@ -30,6 +30,15 @@ describe('Frame', function(){
       expect(frame.frameStatus()).toEqual([10])
     })
 
+    it("frame should never have more than three rolls", function() {
+      frame.roll(5)
+      frame.roll(5)
+      frame.roll(5)
+      frame.roll(5)
+      expect(frame.frameStatus().length).toEqual(3)
+
+    })
+
   })
 
   describe("#strikeInitalizer", function() {

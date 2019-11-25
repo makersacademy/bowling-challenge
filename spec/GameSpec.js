@@ -56,6 +56,14 @@ describe("Game", function() {
       game.play(10)
       expect(game.allFrames()[game.allFrames().length - 2].strikeStatus()).toBeTrue()
     })
+
+    it('spare status is changed if there is a strike', function(){
+      game.play(2)
+      game.play(5)
+      game.play(6)
+      game.play(4)
+      expect(game.allFrames()[game.allFrames().length - 2].spareStatus()).toBeTrue()
+    })
   });
 
   describe('#score', function(){
@@ -79,6 +87,22 @@ describe("Game", function() {
       game.play(2)
       game.play(2)
       expect(game.score()).toEqual(25)
+    })
+
+
+  });
+
+  describe('#spareScorer', function(){
+
+
+    it("calculates correct score if spare is played", function(){
+      game.play(2)
+      game.play(5)
+      game.play(3)
+      game.play(7)
+      game.play(2)
+      game.play(7)
+      expect(game.score()).toEqual(28)
     })
 
 

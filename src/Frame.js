@@ -1,7 +1,9 @@
 function Frame() {
   this._frameTracker = []
   this._strikeStatus = false
+  this._spareStatus = false
   this._strikeShotsTracker = [false,true,true]
+  this._spareShotsTracker = [false,true]
 }
 
 Frame.prototype.roll = function(rollScore) {
@@ -18,4 +20,12 @@ Frame.prototype.strikeInitalizer = function() {
 
 Frame.prototype.strikeStatus = function() {
   return this._strikeStatus
+}
+
+Frame.prototype.spareInitalizer = function() {
+  this._spareStatus = this._spareShotsTracker.pop()
+}
+
+Frame.prototype.spareStatus = function() {
+  return this._spareStatus
 }

@@ -5,7 +5,6 @@ function Game(frame = new Frame) {
 
 Game.prototype.newFrame = function(frame = new Frame) {
   this._framesArray.push(frame)
-
 }
 
 Game.prototype.allFrames = function() {
@@ -39,14 +38,28 @@ Game.prototype.strikeScorer = function(rollScore) {
   })
 }
 
+Game.prototype.spareScorer = function(rollScore) {
+  this.allFrames().forEach(function(frame) {
+    if (frame.spareStatus()) {
+      frame.roll(rollScore)
+      frame.spareInitalizer()
+    }
+  })
+}
+
+
+
 Game.prototype.play = function(rollScore, frame = new Frame) {
 
   var currentFrame = this.currentFrame()
   currentFrame.roll(rollScore)
   this.strikeScorer(rollScore)
+  this.spareScorer(rollScore)
   if (currentFrame.frameStatus().length === 2 || rollScore === 10) {
     if (rollScore === 10) {
       currentFrame.strikeInitalizer()
+    } else if ((currentFrame.frameStatus()[0] + currentFrame.frameStatus()[1]) === 10) {
+      currentFrame.spareInitalizer()
     }
     this._scoreCardArray.push(currentFrame.frameStatus())
     this.newFrame(frame)

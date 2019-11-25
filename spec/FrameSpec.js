@@ -34,7 +34,7 @@ describe('Frame', function(){
 
   describe("#strikeInitalizer", function() {
 
-    it("if false at start of frame", function(){
+    it("is false at start of frame", function(){
       expect(frame.strikeStatus()).toEqual(false)
 
     })
@@ -51,6 +51,23 @@ describe('Frame', function(){
 
     })
 
+  })
+
+  describe("#spareInitalizer", function(){
+    it("is false at start of frame", function() {
+      expect(frame.spareStatus()).toEqual(false)
+    })
+
+    it("chances spare status to true", function() {
+      frame.spareInitalizer()
+      expect(frame.spareStatus()).toEqual(true)
+    })
+
+    it("after one bonus shot spare status equals false", function() {
+      frame.spareInitalizer()
+      frame.spareInitalizer()
+      expect(frame.spareStatus()).toEqual(false)
+    });
   })
 
 

@@ -17,7 +17,8 @@ describe('Frame', function(){
 
   it('gives 1 point per pin knocked down', function(){
     frame.roll(4);
-    expect(frame.pincount()).toEqual(6);
+    frame.roll(4);
+    expect(frame.pincount()).toEqual(2);
   });
 
   it('can only have 2 rolls per frame', function(){
@@ -33,6 +34,7 @@ describe('Frame', function(){
   it('is a spare if 10 pins knocked down in 2 rolls', function(){
     frame.firstroll = 5;
     frame.secondroll = 5;
-    expect(frame.spare()).toBe(true);
+    expect(frame.spare()).toBe(true)
   });
+
 });

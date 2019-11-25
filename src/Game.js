@@ -1,6 +1,6 @@
-function Game() {
+function Game(frame = new Frame) {
   this._scoreCardArray = []
-  this._framesArray = []
+  this._framesArray = [frame]
 }
 
 Game.prototype.newFrame = function(frame = new Frame) {
@@ -29,17 +29,13 @@ Game.prototype.score = function() {
   this._scoreCardArray.forEach(function(frame) {
     frame.forEach(function(roll) {
       sumOfRolls += roll
-
     });
-
   });
   return sumOfRolls
 }
 
 Game.prototype.play = function(rollScore, frame = new Frame) {
-  if (this.frameNumber() === 0) {
-    this.newFrame(frame)
-  }
+
   var currentFrame = this.currentFrame()
   currentFrame.roll(rollScore)
   frameState = currentFrame.frameOutcome()

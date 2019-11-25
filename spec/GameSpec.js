@@ -31,7 +31,7 @@ describe("Game", function() {
 
   describe("frameNumber", function(){
     it("you can see what frame your currently on", function(){
-      game.newFrame(frame1);
+      var game = new Game(frame1);
       game.newFrame(frame2);
       game.newFrame(frame3);
       expect(game.frameNumber()).toEqual(3)

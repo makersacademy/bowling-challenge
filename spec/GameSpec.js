@@ -17,6 +17,13 @@ describe("Game", function() {
       game.newFrame(frame1);
       expect(game.allFrames()).toContain(frame1);
     });
+
+    it("you can see what frame your currently on", function(){
+      var game = new Game(frame1);
+      game.newFrame(frame2);
+      game.newFrame(frame3);
+      expect(game.allFrames().length).toEqual(3)
+    })
   });
 
   describe("#currentFrame", function(){
@@ -25,20 +32,8 @@ describe("Game", function() {
       game.newFrame(frame2);
       game.newFrame(frame3);
       expect(game.currentFrame()).toEqual(frame3)
-
     })
   });
-
-  describe("frameNumber", function(){
-    it("you can see what frame your currently on", function(){
-      var game = new Game(frame1);
-      game.newFrame(frame2);
-      game.newFrame(frame3);
-      expect(game.allFrames().length).toEqual(3)
-
-    })
-
-  })
 
   describe("#play", function() {
     it('players first two rolls are saved to scorecard', function() {
@@ -54,6 +49,13 @@ describe("Game", function() {
       game.play(6)
       expect(game.scorecard()).toEqual([[2,5], [4,6]])
     })
+
+    it('strike status is changed if there is a strike', function(){
+      game.play(2)
+      game.play(5)
+      game.play(10)
+      expect(game.allFrames()[game.allFrames().length - 2].strikeStatus()).toBeTrue()
+    })
   });
 
   describe('#score', function(){
@@ -67,7 +69,19 @@ describe("Game", function() {
 
   })
 
+  describe('#strikeScorer', function(){
 
 
+    it("calculates correct score if strike is played", function(){
+      game.play(2)
+      game.play(5)
+      game.play(10)
+      game.play(2)
+      game.play(2)
+      expect(game.score()).toEqual(25)
+    })
+
+
+  });
 
 });

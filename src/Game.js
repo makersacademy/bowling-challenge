@@ -23,20 +23,33 @@ Game.prototype.scorecard = function() {
 Game.prototype.score = function() {
   var sumOfRolls = 0
   this._framesArray.forEach(function(frame) {
-    frame.frameOutcome().forEach(function(roll) {
+    frame.frameStatus().forEach(function(roll) {
       sumOfRolls += roll
     });
   });
   return sumOfRolls
 }
 
+Game.prototype.strikeScorer = function(rollScore) {
+  this.allFrames().forEach(function(frame) {
+    if (frame.strikeStatus()) {
+      frame.roll(rollScore)
+      frame.strikeInitalizer()
+    }
+  })
+}
+
 Game.prototype.play = function(rollScore, frame = new Frame) {
 
   var currentFrame = this.currentFrame()
   currentFrame.roll(rollScore)
-  frameState = currentFrame.frameOutcome()
-  if (frameState.length === 2 || rollScore === 10) {
-    this._scoreCardArray.push(frameState)
+  this.strikeScorer(rollScore)
+  if (currentFrame.frameStatus().length === 2 || rollScore === 10) {
+    if (rollScore === 10) {
+      currentFrame.strikeInitalizer()
+    }
+    this._scoreCardArray.push(currentFrame.frameStatus())
     this.newFrame(frame)
+
   }
 }

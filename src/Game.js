@@ -1,6 +1,6 @@
-function Game() {
+function Game(frame = new Frame) {
   this._scoreCardArray = []
-  this._framesArray = []
+  this._framesArray = [frame]
   this._score = 0
   this._bonusShots = 0
 
@@ -25,33 +25,25 @@ Game.prototype.frameNumber = function() {
 
 Game.prototype.play = function(rollScore, frame = new Frame) {
 
-  if (this.frameNumber() === 0) {
-    this.newFrame(frame)
-  }
+
   if (this.frameNumber() <= 10) {
 
     var currentFrame = this.currentFrame()
     currentFrame.roll(rollScore)
     frameState = currentFrame.frameOutcome()
-
     if (frameState.length === 2 || frameState[0] === "X") {
-      if (frameState[0] === "X") {
-        this.strike()
-        this._score += rollScore
-        this._scoreCardArray.push(frameState)
-        this.newFrame()
 
+      if (frameState[0] === "X") {
+        this.strike(rollScore, frameState)
       } else {
         this._score += rollScore
-
         if (this.bonusShotsRemaining() !== 0) {
           this.bonusShot(rollScore)
         }
         this._scoreCardArray.push(frameState)
         this.newFrame()
       }
-
-
+      
     } else {
       if (this.bonusShotsRemaining() !== 0){
         this.bonusShot(rollScore)
@@ -75,8 +67,14 @@ Game.prototype.score = function() {
  return this._score
 }
 
-Game.prototype.strike = function() {
+Game.prototype.strike = function(rollScore, frameState) {
+  if (this.bonusShotsRemaining() !== 0) {
+    this.bonusShot(rollScore)
+  }
   this._bonusShots = 2
+  this._score += rollScore
+  this._scoreCardArray.push(frameState)
+  this.newFrame()
 }
 
 Game.prototype.bonusShotsRemaining = function() {

@@ -38,7 +38,7 @@ Game.prototype.strikeOrSpare = function() {
 Game.prototype.roll = function() {
   this._pinsKnockedDown = Math.ceil(Math.random() * 10)
 
-  if (this._noOfRolls >= 2) throw ("Max rolls reached");
+  if (this._noOfRolls >= 2) throw ("Max rolls for frame: Hit Reset ");
   this._noOfRolls++ 
 }
 
@@ -49,6 +49,8 @@ Game.prototype.add = function() {
 
 // Change Frame number
 Game.prototype.changeFrame = function() {
+  if (this._frame >= 10) throw ("Max frames reached : Hit Reset ");
+  
   if(this._noOfRolls === 2 && this._isSpare === true) {
     this._frame++ 
   } 
@@ -91,12 +93,12 @@ Game.prototype.addFrame = function(frame){
   this._currentFrame.push(frame)
   };
 
-  // // Calculating the bonus 
-  // Game.prototype.bonus = function() {
-  //   if (this._isStrike === true) {
-  //     this._totalScore += 10 
-  //   }
-  // }
+  // Calculating the bonus 
+  Game.prototype.bonus = function() {
+    if (this._isStrike === true) {
+      this._frameScore += 10 
+    }
+  }
 
   // 10th Frame 
 

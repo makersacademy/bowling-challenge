@@ -14,14 +14,17 @@ $ (document).ready(function() {
       game.roll()
       game.strikeOrSpare()
       game.add()
+      
+      game.bonus()
 
+      game.changeFrame()
 
+      currentFrame()
       noOfRolls()
       pinsDropped()
 
       isStrike()
       isSpare()
-
       frameScore()
 
       
@@ -37,8 +40,23 @@ $ (document).ready(function() {
 
     $('#Reset').on('click', function(){
       game.reset()
-      // currentFrame()
+      noOfRolls()
+      isSpare()
+      isStrike()
+      frameScore()
+      pinsDropped()
+
+
     });
+
+    $('#totalScore').on('click', function(){
+      game.score()
+      totalScore()
+    });
+
+    
+
+
     // $('#bowl').on('click', function(){
     //   Roll()
     // });
@@ -104,8 +122,8 @@ $ (document).ready(function() {
       $('#resetAll').text(game._reset)
     }
 
-    function Reset() {
-      $('#resetAll').text(game._)
+    function totalScore() {
+      $('#total').text(game._totalScore)
     }
 
 });

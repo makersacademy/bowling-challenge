@@ -2,10 +2,17 @@
 
 function BowlingGame() {
   this.rolls = [];
+  this.result = 0;
 };
 
 BowlingGame.prototype.roll = function (pins) {
   this.rolls.push(pins);
+};
+
+BowlingGame.prototype.calculateScore = function() {
+  game = new BowlingGame()
+  result = game.calculateScore();
+  this.result = result;
 };
 
 BowlingGame.prototype.score = function () {

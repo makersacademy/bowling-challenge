@@ -1,0 +1,7 @@
+table.bowling, th, td {
+  border: 1px solid black;
+}
+
+table.bowling {
+  width: 100%;
+}

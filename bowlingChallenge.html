@@ -1,16 +1,89 @@
 <!DOCTYPE html>
 <html>
-<title>Bowling Scoring:</title>
 <head>
-
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="styleSheet.css">
-  <script src="src/bowlingChallenge.js"></script>
-  <script src="interface.js"></script>
+  <title>Bowling scorecard</title>
 </head>
 
 <body>
 
-  Test!
-</body>
-</html>
+  <script>
+  </script>
+
+  <h1>Bowling scorecard!</h1>
+  <h2>Enter the result from your rolls (Don't Cheat!)</h2>
+
+  <div>
+    <form>
+      <table>
+        <tr>
+          <th>Frame</th>
+          <th>Roll 1</th>
+          <th>Roll 2</th>
+          <th>Roll 3: 10th frame bonus</th>
+        </tr>
+        <br>
+        <tr>
+          <td>1</td>
+          <td><input id="frame1roll1" type="number" min="0" max="10"></input></td>
+          <td><input id="frame1roll2" type="number" min="0" max="10"></input></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><input id="frame2roll1" type="number" min="0" max="10"></input></td>
+          <td><input id="frame2roll2" type="number" min="0" max="10"></input></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><input id="frame3roll1" type="number" min="0" max="10"></input></td>
+          <td><input id="frame3roll2" type="number" min="0" max="10"></input></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><input id="frame4roll1" type="number" min="0" max="10"></input></td>
+          <td><input id="frame4roll2" type="number" min="0" max="10"></input></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><input id="frame5roll1" type="number" min="0" max="10"></input></td>
+          <td><input id="frame5roll2" type="number" min="0" max="10"></input></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><input id="frame6roll1" type="number" min="0" max="10"></input></td>
+          <td><input id="frame6roll2" type="number" min="0" max="10"></input></td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><input id="frame7roll1" type="number" min="0" max="10"></input></td>
+          <td><input id="frame7roll2" type="number" min="0" max="10"></input></td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><input id="frame8roll1" type="number" min="0" max="10"></input></td>
+          <td><input id="frame8roll2" type="number" min="0" max="10"></input></td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td><input id="frame9roll1" type="number" min="0" max="10"></input></td>
+          <td><input id="frame9roll2" type="number" min="0" max="10"></input></td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td><input id="frame10roll1" type="number" min="0" max="10"></input></td>
+          <td><input id="frame10roll2" type="number" min="0" max="10"></input></td>
+          <td><input id="frame10roll3" type="number" min="0" max="10"></input></td>
+        </tr>
+      </table>
+    </form>
+    <br>
+    <button id="button">Submit</button>
+    <br>
+    <h1>Your score is: <span id="result"></span><h1>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="interface.js"></script>
+    <script src="src/bowlingChallenge.js"></script>
+    <link rel="stylesheet" type="text/css" href="styleSheet.css">
+  </body>
+  </html>

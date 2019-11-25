@@ -1,37 +1,65 @@
 
-Bowling Challenge
-=================
+# Bowling Challenge
+  =================
+A bowling scorecard app., to help you simulate or keep score of the `snazzy` game of bowling.
 
-## Bowling:
+<img width="711" alt="Screenshot 2019-11-25 at 04 04 55" src="https://user-images.githubusercontent.com/33905131/69512916-eeada300-0f3d-11ea-8829-71d32d21f1f0.png">
 
-### Strikes
+## User stories delivered:
+```
+    As an excited Bowling player
+    I want to capture my score while bowling
+    So that my scores can be calculated/ aggregated after each frame.
+```
+## Getting Started
+* Fork this repo, then
+* Clone to see project awesomeness
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+### Prerequisites
+* Include all the jasmine files in the `lib` directory
+* node_modules
+* package-lock.json
+* Include a reference to the js files in your SpecRunner.html
 
-### Spares
+<img width="708" alt="Screenshot 2019-11-25 at 04 18 30" src="https://user-images.githubusercontent.com/33905131/69512956-0e44cb80-0f3e-11ea-909c-e9e76ae9ac64.png">
 
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
 
-### 10th frame
+### Installing
+* Fork the repo
+* Clone to your local directory, then establish an upstream
+* Include references to specific jscript files in SpecRunner.html (then open Specrunner file in the browser to see tests)
+* Open BowlingInterface.html to see app.
 
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
+## Running the tests
+* Automated tests for this system were run using TDD & the Jasmine framework.
 
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
+### End to end tests
+The following tests were setup to establish a basis for playing one frame of the game.
+```
+should have a starting score of '0' zero
+can increase the score by '1'
+score cannot go over the value '10'
+can decrease the score by '-1'
+can calculate the subtotal score of a frame
+```
+<img width="717" alt="Screenshot 2019-11-25 at 04 44 01" src="https://user-images.githubusercontent.com/33905131/69513001-3b917980-0f3e-11ea-932f-5f1381c35cf6.png">
 
-### Gutter Game
+```
+Example: The zero '0' allows for a gutter-game, with no scoring; and the subtotal holds the value per/each frame.
+```
+## Built With
+* HTML
+* JavaScript/ Jquery
 
-A Gutter Game is when the player never hits a pin (20 zero scores).
+## Authors
 
-### Perfect Game
+* **Kehinde Peter Olofinmoyin ** - *Initial work*
 
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+## License
 
-## Code Review
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-In code review we'll be hoping to see:
+## Acknowledgments
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+* Thanks to Luella Guesky's video in understanding the scoring in Bowling: https://www.youtube.com/watch?v=2w1MFocEPU0
+* Shout to Shubs Virk, whose thermostat code I looked at to understand how to set limits and use the `throw` keyword: https://github.com/SHUBV92/thermostat/blob/master/spec/ThermostatSpec.js

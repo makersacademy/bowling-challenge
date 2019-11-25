@@ -28,7 +28,7 @@ Game.prototype.getGameScore = function() {
    if (frame.getFrameType() != 'ordinary'){
      bonus = this.getBonusScore(frame_no, frame.getFrameType())
    }
-   gamescore += frame.getRawScore(frame_no) + bonus;}
+   gamescore += frame.getRawScore() + bonus;}
    lastframe = this.frameHolder[9]
    gamescore += lastframe.getRawScore()
   return(gamescore);

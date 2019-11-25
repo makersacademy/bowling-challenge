@@ -3,7 +3,6 @@
     this._totalScore = 0
     
     this._frameScore = 0 
-    this._currentFrame = []
     this._frame = 1
     
     this._noOfRolls = 0
@@ -37,8 +36,10 @@ Game.prototype.strikeOrSpare = function() {
 
 // Roll & Shows total number of pins knocked
 Game.prototype.roll = function() {
-  this._noOfRolls++ 
   this._pinsKnockedDown = Math.ceil(Math.random() * 10)
+
+  if (this._noOfRolls >= 2) throw ("Max rolls reached");
+  this._noOfRolls++ 
 }
 
 // Add Pins to Frame Score 
@@ -68,6 +69,7 @@ Game.prototype.reset = function() {
     this._isSpare = false 
     this._isStrike = false
     this._frameScore = 0 
+    this._pinsKnockedDown = 0
   
 }
 

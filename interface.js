@@ -1,40 +1,111 @@
-$(document).ready(function() {
+
+$ (document).ready(function() {
     var game = new Game();
-    currentFrame();
 
-
-
-    $('#Rolls').on('click', function() {
-      game.roll()
-      noOfRolls()
-    }
+   
 
 
     $('#displayCurrentFrame').on('click', function() {
         game.roll();
-
         currentFrame();
       });
 
     $('#roll').on('click', function() {
       game.roll()
-      game.roll()
-    }
+      game.strikeOrSpare()
+      game.add()
 
 
+      noOfRolls()
+      pinsDropped()
+
+      isStrike()
+      isSpare()
+
+      frameScore()
+
+      
+
+    });
 
     
+    $('#Frame').on('click', function(){
+      game.changeFrame()
+      currentFrame()
+    });
+    
+
+    $('#Reset').on('click', function(){
+      game.reset()
+      // currentFrame()
+    });
+    // $('#bowl').on('click', function(){
+    //   Roll()
+    // });
+
+    // $('#frameScore').on('click', function(){
+    //   // game.roll()
+    //   game.add()
+    //   frameScore()
+    // });
+
+    // $('#isAStrike').on('click', function(){
+    //   game.strikeOrSpare()
+    //   isStrike()
+    // });
+    
+    // $('#isASpare').on('click', function(){
+    //   game.strikeOrSpare()
+    //   isSpare()
+    // });
+
+    // $('#pinsD').on('click', function(){
+    //   game.roll()
+    //   pinsDropped()
+    // });
+
+
+
+
 
     function currentFrame() {
-        $('#currentFrame').text(game._currentFrame);
+        $('#currentFrame').text(game._frame);
       };
 
     function noOfRolls() {
         $('#noOfRolls').text(game._noOfRolls);
       };
 
-      function Roll() {
+    function Roll() {
         $('#rollBowl').text(game.roll())
       };
+
+      function add() {
+        $('#addScore').text(game.add())
+      }
+
+    function frameScore() {
+        $('#fScore').text(game._frameScore)
+      };
+    
+    function isStrike() {
+      $('#strike').text(game._isStrike)
+    };
+
+    function isSpare() {
+      $('#spare').text(game._isSpare)
+    };
+
+    function pinsDropped() {
+      $('#pinsDropped').text(game._pinsKnockedDown)
+    };
+
+    function Reset() {
+      $('#resetAll').text(game._reset)
+    }
+
+    function Reset() {
+      $('#resetAll').text(game._)
+    }
 
 });

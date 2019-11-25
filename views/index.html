@@ -23,17 +23,19 @@
     $( "#enterFrame" ).on( "click", function() {
         event.preventDefault();
         var frameInput = $('form').serializeArray();
-        console.log(frameInput, "inputs");
-        var frame = new Frame(frameInput[0].value,frameInput[1].value);
-        console.log(frame);
+        var frame = new Frame(Number(frameInput[0].value),Number(frameInput[1].value));
         game.addFrame(frame);
-        console.log(frame.getFirstRoll());
 
         var ball_id_1 = "#ball" + (game.frames.length - 1 ) + "_1"
         var ball_id_2 = "#ball" + (game.frames.length - 1 ) + "_2"
-        // $(".frame0").find("ballA0_0").text(frame.getFirstRoll());
         $(ball_id_1).text(frame.getFirstRoll());
         $(ball_id_2).text(frame.getSecondRoll());
+    });
+
+    $("#calculateScore").on("click", function() {
+      event.preventDefault();
+      var finalScore = "Final Score:" + game.finalScore();
+      $("#finalScore").text(finalScore);
     });
 
 });
@@ -131,18 +133,17 @@
 
       <p> Enter your scores for each frame : </p>
     <form id="frame">
-      <input type="text" name="firstroll"> </input>  <br>
-      <input type="text" name="secondroll"> </input>  <br>
+      <input type="number" name="firstroll"> </input>  <br>
+      <input type="number" name="secondroll"> </input>  <br>
       <input id="enterFrame" type="submit" name="Submit"> </input>
 
     </form>
   <br>
     <form>
-      <input type="submit" value="Click to calculate score"> </input>
+      <input id="calculateScore" type="submit" value="Click to calculate score"> </input>
 
     </form>
+    <p id="finalScore"> final score: </p>
     </div>
-
-
   </body>
 </html>

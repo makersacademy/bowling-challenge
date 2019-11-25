@@ -23,6 +23,7 @@ Game.prototype.finalScore = function() {
     }
   }
   finalScore += this.frames[x].get10thFrameScore();
+  console.log(finalScore);
   return finalScore;
 };
 

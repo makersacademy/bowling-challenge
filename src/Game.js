@@ -28,13 +28,10 @@ Game.prototype.play = function(rollScore, frame = new Frame) {
   var currentFrame = this.currentFrame()
   currentFrame.roll(rollScore)
   frameState = currentFrame.frameOutcome()
-  if (frameState.length === 2 || frameState[0] === 10) {
+  if (frameState.length === 2 || rollScore === 10) {
     this._scoreCardArray.push(frameState)
     this.newFrame(frame)
-
   }
-
-
 }
 
 Game.prototype.scorecard = function() {

@@ -16,18 +16,14 @@ Game.prototype.currentFrame = function() {
   return this._framesArray[this._framesArray.length - 1]
 }
 
-Game.prototype.frameNumber = function() {
-  return this._framesArray.length
-}
-
 Game.prototype.scorecard = function() {
   return this._scoreCardArray
 }
 
 Game.prototype.score = function() {
   var sumOfRolls = 0
-  this._scoreCardArray.forEach(function(frame) {
-    frame.forEach(function(roll) {
+  this._framesArray.forEach(function(frame) {
+    frame.frameOutcome().forEach(function(roll) {
       sumOfRolls += roll
     });
   });

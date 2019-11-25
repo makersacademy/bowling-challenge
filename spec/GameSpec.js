@@ -5,7 +5,7 @@ describe("Game", function() {
   var frame3;
 
   beforeEach(function() {
-    game = new Game;
+    game = new Game();
     frame1 = jasmine.createSpy("Frame1")
     frame2 = jasmine.createSpy("Frame2")
     frame3 = jasmine.createSpy("frame3")
@@ -34,7 +34,7 @@ describe("Game", function() {
       var game = new Game(frame1);
       game.newFrame(frame2);
       game.newFrame(frame3);
-      expect(game.frameNumber()).toEqual(3)
+      expect(game.allFrames().length).toEqual(3)
 
     })
 

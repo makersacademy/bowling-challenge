@@ -7,52 +7,110 @@ $(document).ready(function(){
       score.totalScore(score.scoreArray);
     }
 
-    $('#roll-three').hide();
+    $('#roll-three-div').hide();
+    $('#roll-two-div').hide(); 
     $(".no_game").hide(); 
 
-    $('#enter-value').submit(function(event) {
+    $('#roll-one-div').submit(function(event) {
         event.preventDefault();
-        score1 = parseInt($('#roll-one').val());
-        score2 = parseInt($('#roll-two').val());
-        score3 = parseInt($('#roll-three').val());
-
         $(".error").remove();
-      
-        if (score.scoreArray.length === 8) {
-          $('#roll-three').show(); 
-        } 
 
-        if (score.scoreArray.length > 8) {
-          $('.game').hide();
-          $('.no_game').show();
-          calculateScore();
-        $('#final-score').text(score.showSum());
-        } 
+        score1 = $('#roll-one').val();
 
-        if (score1 >10) {
-          $('#roll-one').after('<span class="error">Maximum value for a roll is 10</span>');
-          return false;
-        }
+          if (score1 >10) {
+            $('#roll-one').after('<span class="error">Maximum value for a roll is 10</span>');
+            return false;}
+          else if (isNaN(score1)) {
+            $('#roll-one').after('<span class="error">Please enter a number</span>');
+            return false;
+            }
+          else {
+              score1 = parseInt(score1)
+              score.addRoll(score1);
+          }
 
-        if ((score1 + score2) >10) {
-        $('#roll-two').after('<span class="error">Maximum value for a frame is 10</span>');
-        return false;
-        }
+        $('#display-roll').text((score.frame.length)+1 );
+          
+        $('#roll-one-div').hide(); 
+        $('#roll-two-div').show(); 
+        $('#roll-two').val('');
+      })
 
-        score.addRoll(score1,score2);
+      $('#roll-two-div').submit(function(event) {
+          event.preventDefault();
+          $(".error").remove();
+          
+          score2 = $('#roll-two').val();
+
+          if (score.scoreArray.length === 9 && (score1 + score2) == 10) {
+            $('#roll-two-div').hide(); 
+            $('#roll-three-div').show();             
+          } 
+
+          if ((score1 + parseInt(score2)) > 10) {
+            $('#roll-two').after('<span class="error">Maximum value for a frame is 10</span>');
+            return false;}
+            else if (isNaN(score2)) {
+            $('#roll-two').after('<span class="error">Please enter a number</span>');
+            return false;
+            }
+            else {
+              score2 = parseInt(score2)
+              score.addRoll(score2);
+          }
+
+        score.addFrame(score.frame);
 
         $('#display-array').text(score.scoreArray.join(" - "));
         $('#display-frame').text((score.scoreArray.length) + 1);
-        calculateScore();
-        $('#display-score').text(score.showSum());
+        $('#display-roll').text((score.frame.length)+1 );
         
-      });
-    
+        score.totalScore(score.scoreArray);
+        $('#display-score').text(score.showSum());
 
-      // $('#calculate-score').submit(function(event) {
-      //   event.preventDefault();
-      //   calculateScore();
-      //   $('#display-score').text(score.showSum());
-      // });
+        $('#roll-one-div').show(); 
+        $('#roll-two-div').hide(); 
+        $('#roll-one').val('');
+
+        if (score.scoreArray.length > 9) {
+          $('.game').hide();
+          $('.no_game').show();
+          calculateScore();
+          $('#final-score').text(score.showSum());
+        };
       
+      })
+
+      $('#roll-three-div').submit(function(event) {
+
+        score3 = $('#roll-three').val();
+
+        if (score3 >10) {
+          $('#roll-three').after('<span class="error">Maximum value for a roll is 10</span>');
+          return false;}
+        else if (isNaN(score3)) {
+          $('#roll-three').after('<span class="error">Please enter a number</span>');
+          return false;
+          }
+        else {
+            score3 = parseInt(score3)
+            score.addRoll(score3);
+        }
+
+      $('#display-array').text(score.scoreArray.join(" - "));
+        $('#display-frame').text((score.scoreArray.length) + 1);
+        $('#display-roll').text((score.frame.length)+1 );
+        
+        score.totalScore(score.scoreArray);
+        $('#display-score').text(score.showSum());
+
+        if (score.scoreArray.length > 9) {
+          $('.game').hide();
+          $('.no_game').show();
+          calculateScore();
+          $('#final-score').text(score.showSum());
+        };
+
+      })
+    
 });

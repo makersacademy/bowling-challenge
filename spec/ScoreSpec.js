@@ -9,16 +9,23 @@ describe('Score', function(){
         expect(score.singleScoreSum([4,6])).toEqual(10)
     })
 
-    it('adds roll to array', function(){
-        score.addRoll(4,5);
-        score.addRoll(7,8);
+    it('adds single roll to frame', function(){
+        score.addRoll(2);
+        expect(score.frame.length).toEqual(1);
+        score.addRoll(3);
+        expect(score.frame.length).toEqual(2);
+    })
+
+    it('adds frame to array', function(){
+        score.addFrame([4,5]);
+        score.addFrame([7,8]);
         expect(score.scoreArray.length).toEqual(2);
     })
 
     it('returns a simple score after 2 rolls'), function(){
-        score.addRoll(4,5);
-        score.addRoll(7,8);
-        score.addRoll(3,3);
+        score.addFrame([4,5]);
+        score.addFrame([7,8]);
+        score.addFrame([3,3]);
         expect(score.totalScore(score.scoreArray)).toEqual(30);
     }
 
@@ -35,16 +42,16 @@ describe('Score', function(){
     })
 
     it('returns the score after a spike', function(){
-        score.addRoll(4,6);
+        score.addFrame([4,6]);
         expect(score.totalScore(score.scoreArray)).toEqual(10);
-        score.addRoll(3,0);
+        score.addFrame([3,0]);
         expect(score.totalScore(score.scoreArray)).toEqual(16);
     })
 
     it('returns the score after a spike', function(){
-        score.addRoll(10,0);
+        score.addFrame([10,0]);
         expect(score.totalScore(score.scoreArray)).toEqual(10);
-        score.addRoll(3,5);
+        score.addFrame([3,5]);
         expect(score.totalScore(score.scoreArray)).toEqual(26);
     })
 })

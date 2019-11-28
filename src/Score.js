@@ -2,6 +2,7 @@
 
 function Score(){
     this.subtotal = 0;
+    this.frame = [];
     this.scoreArray = [];
 }
 
@@ -9,9 +10,13 @@ Score.prototype.singleScoreSum = function(arr) {
     return arr.reduce((a,b) => a + b, 0)
 }
 
+Score.prototype.addRoll = function(number) {
+    this.frame.push(number);
+}
 
-Score.prototype.addRoll = function(one, two) {
-    this.scoreArray.push([one,two])
+Score.prototype.addFrame = function(frame) {
+    this.scoreArray.push(frame);
+    this.frame = [];
 }
 
 Score.prototype.totalScore = function(array){
@@ -37,7 +42,6 @@ Score.prototype.totalScore = function(array){
 
     return this.subtotal;
 }
-
 
 Score.prototype.showSum = function(){
     if (this.subtotal === 0) {

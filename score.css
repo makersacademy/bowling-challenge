@@ -11,3 +11,10 @@ body {
     color: red;
     margin-left: 5px;
   }
+
+  header {
+    background-color: black;
+    padding: 40px 40px;
+    margin: 0px;
+  }
+

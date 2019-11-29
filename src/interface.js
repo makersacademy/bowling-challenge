@@ -42,11 +42,6 @@ $(document).ready(function(){
           
           score2 = $('#roll-two').val();
 
-          if (score.scoreArray.length === 9 && (score1 + score2) == 10) {
-            $('#roll-two-div').hide(); 
-            $('#roll-three-div').show();             
-          } 
-
           if ((score1 + parseInt(score2)) > 10) {
             $('#roll-two').after('<span class="error">Maximum value for a frame is 10</span>');
             return false;}
@@ -59,18 +54,26 @@ $(document).ready(function(){
               score.addRoll(score2);
           }
 
-        score.addFrame(score.frame);
+          if (score.scoreArray.length === 9 && (parseInt(score1) + parseInt(score2)) == 10) {
+            $('#roll-two-div').hide(); 
+            $('#roll-one-div').hide(); 
+            $('#roll-three-div').show();             
+          } 
 
-        $('#display-array').text(score.scoreArray.join(" - "));
-        $('#display-frame').text((score.scoreArray.length) + 1);
-        $('#display-roll').text((score.frame.length)+1 );
-        
-        score.totalScore(score.scoreArray);
-        $('#display-score').text(score.showSum());
+          else {
+            score.addFrame(score.frame);
 
-        $('#roll-one-div').show(); 
-        $('#roll-two-div').hide(); 
-        $('#roll-one').val('');
+            $('#display-array').text(score.scoreArray.join(" - "));
+            $('#display-frame').text((score.scoreArray.length) + 1);
+            $('#display-roll').text((score.frame.length)+1 );
+            
+            score.totalScore(score.scoreArray);
+            $('#display-score').text(score.showSum());
+    
+            $('#roll-one-div').show(); 
+            $('#roll-two-div').hide(); 
+            $('#roll-one').val('');
+          }
 
         if (score.scoreArray.length > 9) {
           $('.game').hide();
@@ -95,15 +98,9 @@ $(document).ready(function(){
         else {
             score3 = parseInt(score3)
             score.addRoll(score3);
+            score.addFrame(score.frame);      
         }
-
-      $('#display-array').text(score.scoreArray.join(" - "));
-        $('#display-frame').text((score.scoreArray.length) + 1);
-        $('#display-roll').text((score.frame.length)+1 );
         
-        score.totalScore(score.scoreArray);
-        $('#display-score').text(score.showSum());
-
         if (score.scoreArray.length > 9) {
           $('.game').hide();
           $('.no_game').show();

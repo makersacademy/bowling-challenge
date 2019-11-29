@@ -14,7 +14,7 @@ $(document).ready(function(){
     $('#roll-one-div').submit(function(event) {
         event.preventDefault();
         $(".error").remove();
-
+        console.log(score.scoreArray)
         score1 = $('#roll-one').val();
 
           if (score1 >10) {
@@ -79,12 +79,21 @@ $(document).ready(function(){
           $('.game').hide();
           $('.no_game').show();
           calculateScore();
+          if (score.showSum() === 300 ) {
+            $('#final-score').text('Perfect Game');
+          }
+          else if (score.showSum() === 0 ) {
+            $('#final-score').text('Gutter Game');
+          }
+          else
           $('#final-score').text(score.showSum());
         };
       
       })
 
       $('#roll-three-div').submit(function(event) {
+        event.preventDefault();
+        $(".error").remove();
 
         score3 = $('#roll-three').val();
 

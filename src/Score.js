@@ -44,9 +44,6 @@ Score.prototype.totalScore = function(array){
 }
 
 Score.prototype.showSum = function(){
-    if (this.subtotal === 0) {
-        return 'Gutter game'
-    }
     return this.subtotal;
 }
 

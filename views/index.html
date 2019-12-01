@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bowling Scorecard</title>
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="bowling.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../src/Frame.js"></script>
+    <script src="../src/Game.js"></script>
+    <script>
+      $( document ).ready(function(){
+
+        var game = new Game();
+
+    $( "#enterFrame" ).on( "click", function() {
+        event.preventDefault();
+        var frameInput = $('form').serializeArray();
+        var frame = new Frame(Number(frameInput[0].value),Number(frameInput[1].value));
+        game.addFrame(frame);
+
+        var ball_id_1 = "#ball" + (game.frames.length - 1 ) + "_1"
+        var ball_id_2 = "#ball" + (game.frames.length - 1 ) + "_2"
+        $(ball_id_1).text(frame.getFirstRoll());
+        $(ball_id_2).text(frame.getSecondRoll());
+    });
+
+    $("#calculateScore").on("click", function() {
+      event.preventDefault();
+      var finalScore = "Final Score:" + game.finalScore();
+      $("#finalScore").text(finalScore);
+    });
+
+});
+</script>
+
+
+  </head>
+  <body>
+    <h1>Bowling Scorecard</h1>
+
+    <br>
+
+    <div class="frameboxFrameone" id="frame0" style="background: rgb(250, 250, 210);">
+      <div class="framename frameFontSize">1</div>
+      <div class="outerbox frameScoreFontSize">
+        <div id="ball0_1" class="ball1box text-center"></div>
+        <div id="ball0_2" class="strikebox"></div>
+        <div id="ballD0_0" class="gamehidden">1</div>
+      </div>
+    </div>
+    <div class="frameboxFrameone" id="frame1" style="background: rgb(250, 250, 210);">
+      <div class="framename frameFontSize">2</div>
+      <div class="outerbox frameScoreFontSize">
+        <div id="ball1_1" class="ball1box text-center"></div>
+        <div id="ball1_2" class="strikebox"></div>
+        <div id="ballD0_0" class="gamehidden"></div>
+      </div>
+    </div>
+    <div class="frameboxFrameone" id="frame2" style="background: rgb(250, 250, 210);">
+      <div class="framename frameFontSize">3</div>
+      <div class="outerbox frameScoreFontSize">
+        <div id="ball2_1" class="ball1box text-center"></div>
+        <div id="ball2_2" class="strikebox"></div>
+        <div id="ballD0_0" class="gamehidden"></div>
+      </div>
+    </div>
+    <div class="frameboxFrameone" id="frame3" style="background: rgb(250, 250, 210);">
+      <div class="framename frameFontSize">4</div>
+      <div class="outerbox frameScoreFontSize">
+        <div id="ball3_1" class="ball1box text-center"></div>
+        <div id="ball3_2" class="strikebox"></div>
+        <div id="ballD0_0" class="gamehidden"></div>
+      </div>
+    </div>
+    <div class="frameboxFrameone" id="frame4" style="background: rgb(250, 250, 210);">
+      <div class="framename frameFontSize">5</div>
+      <div class="outerbox frameScoreFontSize">
+        <div id="ball4_1" class="ball1box text-center"></div>
+        <div id="ball4_2" class="strikebox"></div>
+        <div id="ballD0_0" class="gamehidden"></div>
+      </div>
+    </div>
+    <div class="frameboxFrameone" id="frame5" style="background: rgb(250, 250, 210);">
+      <div class="framename frameFontSize">6</div>
+      <div class="outerbox frameScoreFontSize">
+        <div id="ball5_1" class="ball1box text-center"></div>
+        <div id="ball5_2" class="strikebox"></div>
+        <div id="ballD0_0" class="gamehidden"></div>
+      </div>
+    </div>
+    <div class="frameboxFrameone" id="frame6" style="background: rgb(250, 250, 210);">
+      <div class="framename frameFontSize">7</div>
+      <div class="outerbox frameScoreFontSize">
+        <div id="ball6_1" class="ball1box text-center"></div>
+        <div id="ball6_2" class="strikebox"></div>
+        <div id="ballD0_0" class="gamehidden"></div>
+      </div>
+    </div>
+    <div class="frameboxFrameone" id="frame7" style="background: rgb(250, 250, 210);">
+      <div class="framename frameFontSize">8</div>
+      <div class="outerbox frameScoreFontSize">
+        <div id="ball7_1" class="ball1box text-center"></div>
+        <div id="ball7_2" class="strikebox"></div>
+        <div id="ballD0_0" class="gamehidden"></div>
+      </div>
+    </div>
+    <div class="frameboxFrameone" id="frame8" style="background: rgb(250, 250, 210);">
+      <div class="framename frameFontSize">9</div>
+      <div class="outerbox frameScoreFontSize">
+        <div id="ball8_1" class="ball1box text-center"></div>
+        <div id="ball8_2" class="strikebox"></div>
+        <div id="ball_0" class="gamehidden"></div>
+      </div>
+    </div>
+    <div class="frameboxFrameone" id="frame9" style="background: rgb(250, 250, 210);">
+      <div class="framename frameFontSize">10</div>
+      <div class="outerbox frameScoreFontSize">
+        <div id="ball9_1" class="ball1box text-center"></div>
+        <div id="ball9_2" class="strikebox"></div>
+        <div id="ballD0_0" class="gamehidden"></div>
+      </div>
+    </div>
+
+    <div class="data">
+
+      <p> Enter your scores for each frame : </p>
+    <form id="frame">
+      <input type="number" name="firstroll"> </input>  <br>
+      <input type="number" name="secondroll"> </input>  <br>
+      <input id="enterFrame" type="submit" name="Submit"> </input>
+
+    </form>
+  <br>
+    <form>
+      <input id="calculateScore" type="submit" value="Click to calculate score"> </input>
+
+    </form>
+    <p id="finalScore"> final score: </p>
+    </div>
+  </body>
+</html>

@@ -2,7 +2,8 @@
 Bowling Challenge
 =================
 
-![bowling_challenge](images/screenshot.png)
+![bowling_challenge](public/images/screenshot.png)
+
 ## Development
 I started writing two different classes, the main one for the bowling score and the second one for each as counter of each round and to keep track of current score for the round or for plus as strike or spare.
 The main class keep track of each current round and previous round to calculate final score for each round, adding plus points in next round.

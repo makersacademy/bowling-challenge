@@ -2,11 +2,18 @@
 Bowling Challenge
 =================
 
-# Setup:
-After cloning project run 
+![bowling_challenge](images/screenshot.png)
+## Development
+I started writing two different classes, the main one for the bowling score and the second one for each as counter of each round and to keep track of current score for the round or for plus as strike or spare.
+The main class keep track of each current round and previous round to calculate final score for each round, adding plus points in next round.
 
-npm install
+------
+## Setup:
+After cloning project run
 
+`npm install`
+
+## Makers Instruction
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

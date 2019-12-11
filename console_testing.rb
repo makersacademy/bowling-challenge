@@ -1,11 +1,17 @@
 # /*
-let frame1 = new Frame
-let frame2 = new Frame
+let frames = [];
+
+for (var i = 0; i < 10; i++) { 
+  frames[i] = new Frame(); 
+};
+
+let game = new Game();
+
 frame1.knockedDownPins(5)
 frame1.knockedDownPins(3)
 
-let game1 = new Game
-game1.addFrame(frame1)
+game.addFrame(frame1)
 
 game1.frameScore
+
 # /*

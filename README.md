@@ -12,21 +12,33 @@ The challenge is to create a scorecard for a game of bowling. The scorecard will
 
 As this is a scorecard, the user inputs the rolls (i.e. the rolls will not be randomly generated).
 
+![Screenshot]()
+
 ## Installation
 
 1. Clone this repository.
 
-2. 
+2. Move into the folder directory and run the app by typing the following into the terminal:
+```
+$ cd path/to/directory
+$ open src/Bowling.html
+```
+
+### Run the tests
+ 
+Open 'SpecRunner.html' (find in the home directory) in your browser.
 
 ## Approach
 
-I started with the specifications (as listed in the 'Rules' below) and developed user stories.
+I started with the specifications (as listed in the 'Rules' below) and developed user stories. Then I modelled the domain.
+
+I decided to have two classes interacting: Frame, which would keep track of an individual frame's scores, and Game, which would have new instances of frame, the rules of the game and keep track of the cumulative total score for a game.
 
 ### Rules
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-The rules are further detailed here: <a href="#user-content-bowling-rules-continued">Bowling Rules Continued</a> 
+The rules are further detailed at the bottom of this README: <a href="#user-content-bowling-rules-continued-">Bowling Rules Continued</a> 
 
 ### Next Steps
 
@@ -40,7 +52,6 @@ I started to add a graphical user interface using jQuery however with more time 
 
 ### User Stories
 
-Completed user stories:
 ```
 As a bowler,
 So that I can keep track of the number of pins I have knocked down
@@ -70,52 +81,35 @@ As a bowler,
 I would like to see the score of 10 (or 'X') for a frame when I achieve a strike.
 ```
 
-Additional user stories:
-
-
-
-## Technologies
-
-- Javascript
-- JQuery
-- Testing: Jasmine
-
-
-
-US4: 
-
-
-US5: done
-
-
-US6:
 ```
 As a bowler,
 So I can calculate the score correctly when I achieve a strike,
 I would like to add bonus points of the total of the next two rolls.
 ```
 
-US7:
 ```
 As a bowler,
 So I can calculate the score correctly when I achieve a spare,
 I would like to add bonus points of the total of the next rolls.
 ```
 
-US8:
 ```
 As a bowler, 
 So I can calculate the score correctly when I roll a strike on the 10th frame,
 I would like to include scores for a bonus round.
 ```
 
-US9:
 ```
 As a bowler, 
 So I know when the game is finally finished
 I would like to see 'Game Over' when I can no longer roll.
 ```
 
+## Technologies
+
+- Javascript
+- JQuery
+- Testing: Jasmine
 
 
 ### Bowling Rules continued ...

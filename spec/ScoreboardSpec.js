@@ -17,27 +17,41 @@ describe('Scoreboard', function () {
         expect(scoreboard.rolls).toContain(8);
     });
 
-    it('does not add a roll with a score of < 0', function(){
+    it('does not add a roll with a score of < 0', function () {
         scoreboard.addRoll(-1);
         expect(scoreboard.rolls).not.toContain(-1);
     });
 
-    it('does not add a roll with a score of > 10', function(){
+    it('does not add a roll with a score of > 10', function () {
         scoreboard.addRoll(11);
         expect(scoreboard.rolls).not.toContain(11);
     });
 
-    describe('second roll', function(){
+    describe('second roll', function () {
 
-        it('when added to first roll, the sum does not exceed 10', function(){
+        it('when added to first roll, the sum does not exceed 10', function () {
             scoreboard.rolls = [4];
             scoreboard.addRoll(7);
             expect(scoreboard.rolls).not.toContain(7);
         });
 
-        it('when to added to a strike, it returns null', function(){
+        it('when to added to a strike, it returns null', function () {
             scoreboard.addRoll(10);
             expect(scoreboard.rolls).toEqual([10, null]);
+        });
+    });
+
+    describe('bonus roll', function () {
+
+        beforeEach(function () {
+            scoreboard.rolls = [1, 4, 4, 5, 6, 4, 5, 5, 10, null, 0, 1, 7, 3, 6, 4, 10, null]
+        });
+
+        it('happens if roll 1 of frame 10 is 10 points', function () {
+            scoreboard.addRoll(10);
+            scoreboard.addRoll(6);
+            scoreboard.addRoll(4);
+            expect(scoreboard.rolls.slice(18, 21)).toEqual([10, 6, 4]);
         });
     });
 

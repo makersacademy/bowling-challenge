@@ -1,8 +1,10 @@
 const Bonus = require('./bonus');
 
 class Frame {
-  constructor(bonus = new Bonus) {
+  constructor(bonus = new Bonus()) {
     this.bonus = bonus;
+    this.rollOne = 0;
+    this.rollTwo = 0;
   }
 
   setRollOne(score) {
@@ -21,7 +23,7 @@ class Frame {
     return this.rollTwo;
   }
 
-  getFrameScore() {
+  getScore() {
     return this.rollOne + this.rollTwo + this.bonus.getPoints();
   }
 

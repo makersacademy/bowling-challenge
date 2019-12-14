@@ -28,20 +28,20 @@ describe('Frame', () => {
     });
   });
 
-  describe('getFrameScore()', () => {
+  describe('getScore()', () => {
     it('tallies two rolls of 4 and 5 as a score of 9', () => {
-      expect(testFrame.getFrameScore()).toBe(8);
+      expect(testFrame.getScore()).toBe(8);
     });
 
     it('tallies two rolls of 6 and 1 as a score of 7', () => {
-      expect(testFrame2.getFrameScore()).toBe(7);
+      expect(testFrame2.getScore()).toBe(7);
     });
 
     describe('any bonus point', () => {
       it('is added to the total frame score', () => {
         testFrame.awardBonus(5);
 
-        expect(testFrame.getFrameScore()).toEqual(13);
+        expect(testFrame.getScore()).toEqual(13);
       });
     });
   });

@@ -8,6 +8,6 @@ describe('FinalFrame', () => {
     testFinalFrame.setRollTwo(5);
     testFinalFrame.setRollThree(6);
 
-    expect(testFinalFrame.getFrameScore()).toBe(16);
+    expect(testFinalFrame.getScore()).toBe(16);
   });
 });

@@ -1,9 +1,10 @@
 const Frame = require('./frame');
 
 class ScoreCard {
-  constructor(allFrames = []) {
+  constructor(allFrames = [], frame = new Frame()) {
     this.currentFrame = 1;
     this.allFrames = allFrames;
+    this.frame = frame;
   }
 
   nextFrame() {
@@ -15,13 +16,16 @@ class ScoreCard {
   }
 
   setRollOne(score) {
-    this.frame = new Frame();
     this.allFrames.push(this.frame);
     this.frame.setRollOne(score);
   }
 
   setRollTwo(score) {
+    if (!this.frame.getRollOne()) { throw new Error(this.NO_FIRST_ROLL()); }
+
     this.frame.setRollTwo(score);
+    this.frame = new Frame();
+    this.nextFrame();
   }
 
   getTotalScore() {
@@ -32,6 +36,10 @@ class ScoreCard {
     });
 
     return totalScore;
+  }
+
+  static NO_FIRST_ROLL() {
+    return `Roll One of frame ${this.currentFrame} has not been recorded`;
   }
 }
 

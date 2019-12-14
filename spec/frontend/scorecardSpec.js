@@ -1,20 +1,31 @@
 const ScoreCard = require('../../src/scorecard');
 
 describe('ScoreCard', () => {
-  const testScoreCard = new ScoreCard();
-  it('keeps track of the current frame', () => {
-    const newScoreCard = new ScoreCard();
-    testScoreCard.nextFrame();
+  let testScoreCard = new ScoreCard();
 
-    expect(newScoreCard.getCurrentFrame()).toBe(1);
-    expect(testScoreCard.getCurrentFrame()).toBe(2);
-  });
-
-  it('lets players set scores for each frame', () => {
+  beforeEach(() => {
     testScoreCard.setRollOne(5);
     testScoreCard.setRollTwo(4);
     testScoreCard.setRollOne(6);
+    testScoreCard.setRollTwo(2);
+  });
 
-    expect(testScoreCard.getTotalScore()).toEqual(15);
+  afterEach(() => {
+    testScoreCard = new ScoreCard();
+  });
+
+  it('keeps track of the current frame', () => {
+    const newScoreCard = new ScoreCard();
+
+    expect(newScoreCard.getCurrentFrame()).toBe(1);
+    expect(testScoreCard.getCurrentFrame()).toBe(3);
+  });
+
+  it('lets players set scores for each frame', () => {
+    expect(testScoreCard.getTotalScore()).toEqual(17);
+  });
+
+  it('prevents players from entering a score for roll two until after the first roll', () => {
+    expect(() => { testScoreCard.setRollTwo(7); }).toThrowError(testScoreCard.NO_FIRST_ROLL);
   });
 });

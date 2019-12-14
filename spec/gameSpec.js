@@ -10,4 +10,8 @@ describe("Game", function() {
   it("has a default total score of 0", function() {
     expect(game.getTotalScore()).toEqual(0);
   });
+
+  it("has an empty defaul frame sheet", function() {
+    expect(game.getFrameSheet()).toEqual([]);
+  });
 });

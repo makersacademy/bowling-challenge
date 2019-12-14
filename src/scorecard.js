@@ -2,12 +2,13 @@ const Frame = require('./frame');
 
 class ScoreCard {
   constructor(allFrames = [], frame = new Frame()) {
+    this.frame = frame;
     this.currentFrame = 1;
     this.allFrames = allFrames;
-    this.frame = frame;
   }
 
   nextFrame() {
+    this.frame = new Frame();
     this.currentFrame += 1;
   }
 
@@ -18,6 +19,10 @@ class ScoreCard {
   setRollOne(score) {
     this.allFrames.push(this.frame);
     this.frame.setRollOne(score);
+    this.strikesAndSpares(score);
+
+    const strike = 10;
+    if (score === strike) { this.frame.isA('strike'); this.nextFrame(); }
   }
 
   setRollTwo(score) {
@@ -25,18 +30,23 @@ class ScoreCard {
     if (this.frame.getRollOne() + score > 10) { throw new Error(ScoreCard.INVALID_SCORE()); }
 
     this.frame.setRollTwo(score);
-    this.frame = new Frame();
+    this.strikesAndSpares(score);
     this.nextFrame();
   }
 
   getTotalScore() {
     let totalScore = 0;
-
-    this.allFrames.forEach((frame) => {
-      totalScore += frame.getScore();
-    });
-
+    this.allFrames.forEach((frame) => { totalScore += frame.getScore(); });
     return totalScore;
+  }
+
+  strikesAndSpares(points) {
+    this.allFrames.forEach((frame) => {
+      if (frame.hasBonusTurnsLeft()) {
+        frame.awardBonus(points);
+        frame.dropBonusTurn();
+      }
+    });
   }
 
   static NO_FIRST_ROLL() {

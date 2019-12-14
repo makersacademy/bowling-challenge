@@ -45,4 +45,39 @@ describe('Frame', () => {
       });
     });
   });
+
+  describe('isA()', () => {
+    describe('strike', () => {
+      it('allows a frame to be awarded bonus points after the fact for a number of turns', () => {
+        const strikeFrame = new Frame();
+        const spareFrame = new Frame();
+
+        strikeFrame.isA('strike');
+        spareFrame.isA('spare');
+
+        expect(strikeFrame.hasBonusTurnsLeft()).toBe(true);
+        expect(spareFrame.hasBonusTurnsLeft()).toBe(true);
+      });
+    });
+  });
+
+  describe('dropBonusTurn()', () => {
+    const strikeFrame = new Frame();
+    const spareFrame = new Frame();
+
+    strikeFrame.isA('strike');
+    spareFrame.isA('spare');
+
+    it('uses up the one bonus turn given to a spare', () => {
+      spareFrame.dropBonusTurn();
+
+      expect(spareFrame.hasBonusTurnsLeft()).toBe(false);
+    });
+
+    it('uses up one of two bonus turns given to a strike', () => {
+      strikeFrame.dropBonusTurn();
+
+      expect(strikeFrame.hasBonusTurnsLeft()).toBe(true);
+    });
+  });
 });

@@ -31,7 +31,30 @@ describe('ScoreCard', () => {
     expect(() => { testScoreCard.setRollTwo(5); }).toThrowError(ScoreCard.INVALID_SCORE());
   });
 
-  it('prevents players from entering a score for roll two until after the first roll', () => {
+  it('prevents players from entering a score for a second roll until after the first roll', () => {
     expect(() => { testScoreCard.setRollTwo(7); }).toThrowError(ScoreCard.NO_FIRST_ROLL());
+  });
+
+  describe('a strike', () => {
+    let strikeScoreCard = new ScoreCard();
+
+    beforeEach(() => {
+      strikeScoreCard = new ScoreCard();
+    });
+
+    it('automatically skips to the next frame', () => {
+      strikeScoreCard.setRollOne(10);
+
+      expect(strikeScoreCard.getCurrentFrame()).toBe(2);
+    });
+
+    it('adds bonus points to the striked frame for the next two rolls', () => {
+      strikeScoreCard.setRollOne(10);
+      strikeScoreCard.setRollOne(6);
+      strikeScoreCard.setRollTwo(3);
+      strikeScoreCard.setRollOne(4);
+
+      expect(strikeScoreCard.getTotalScore()).toBe(32);
+    });
   });
 });

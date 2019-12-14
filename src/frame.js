@@ -28,6 +28,22 @@ class Frame {
     return rollOne + rollTwo + this.bonus.getPoints();
   }
 
+  isA(type) {
+    if (type === 'strike') {
+      this.bonusTurnsLeft = 2;
+    } else if (type === 'spare') {
+      this.bonusTurnsLeft = 1;
+    }
+  }
+
+  dropBonusTurn() {
+    this.bonusTurnsLeft -= 1;
+  }
+
+  hasBonusTurnsLeft() {
+    return this.bonusTurnsLeft > 0;
+  }
+
   awardBonus(points) {
     this.bonus.add(points);
   }

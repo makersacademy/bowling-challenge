@@ -1,40 +1,47 @@
-"use strict";
-
 describe("Game", function() {
-  var game;
+  var game = new Game();
 
   beforeEach(function() {
     game = new Game();
   });
 
-  describe("when setting up the game", function() {
-    it("has a total score of 0", function() {
-      expect(game.getTotalScore()).toEqual(0);
-    });
+  it("can calculate the score of a gutter game", function() {
+    generateFrames([0, 0], [0, 0]);
+    expect(game.score()).toEqual(0);
+  })
 
-    it("has an empty score sheet", function() {
-      expect(game.getScoreSheet()).toEqual([]);
-    });
-  });
+  it("can calculate the score of a game without spares or strikes", function() {
+    generateFrames([2, 5], [6, 1]);
+    expect(game.score()).toEqual(70);
+  })
 
-  describe("wheh playing the game", function() {
-    it("can calculate the score of a frame", function() {
-      game.play(2, 5);
-      expect(game.getTotalScore()).toEqual(7);
-    });
-  
-    it("can add bonus points to the previous frame, if there was a spare", function() {
-      game.play(2, 8);
-      game.play(2, 5);
-      expect(game.getTotalScore()).toEqual(19);
-      expect(game.getScoreSheet()).toEqual([{pins: [2, 8], score: 12}, {pins: [2, 5], score: 7}]);
-    });
+  it("can calculate the score of a game with spares", function() {
+    generateFrames([2, 8], [6, 1]);
+    expect(game.score()).toEqual(119);
+  })
 
-    it("can add bonus points to the previous frame, if there was a strike", function() {
-      game.play(10);
-      game.play(2, 5);
-      expect(game.getTotalScore()).toEqual(24);
-      expect(game.getScoreSheet()).toEqual([{pins: [10], score: 17}, {pins: [2, 5], score: 7}]);
-    });
-  });
+  it("can calculate the score of a perfect game with 12 strikes", function() {
+    generateFrames([10], [10, 10, 10]);
+    expect(game.score()).toEqual(300);
+  })
+
+  it("can calculate the score of a game with spares and strikes", function() {
+    game.roll([10]);
+    game.roll([10]);
+    game.roll([10]);
+    game.roll([2, 8]);
+    game.roll([2, 2]);
+    game.roll([2, 5]);
+    game.roll([4, 6]);
+    game.roll([10]);
+    game.roll([2, 7]);
+    game.roll([2, 7]);
+    expect(game.score()).toEqual(152);
+  })
+
+  // Helper function
+  function generateFrames(frame, finalFrame) {
+    for (var i = 0; i < 9; i++) game.roll(frame);
+    game.roll(finalFrame);
+  };
 });

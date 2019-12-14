@@ -1,59 +1,52 @@
-"use strict";
-
 function Game() {
-  this.totalScore = 0;
-  this.scoreSheet = [];
-  this.isPreviousFrameSpare = false;
-  this.isPreviusFrameStrike = false;
+  this.frames = [];
+  this.scores = [];
 };
 
-Game.prototype.getTotalScore = function() {
-  return this.totalScore;
+Game.prototype.roll = function(frame) {
+  this.frames.push(frame);
 };
 
-Game.prototype.getScoreSheet = function() {
-  return this.scoreSheet;
+Game.prototype.score = function() {
+  this.frames.forEach((frame, index) => {
+    this.scores.push(this.calculateFrameScore(frame, index));
+  });
+  return this.scores.reduce((total, score) => {
+    return total + score;
+  })
 };
 
-Game.prototype.play = function(roll1, roll2 = 0) {
-  this.calculateBonusPoints(roll1, roll2);
-  this.resetPreviousFrame();
-  this.setSpareOrStrike(roll1, roll2);
-  this.updateScoreSheet(roll1, roll2);
-  this.calculateTotalScore();
-};
+Game.prototype.calculateFrameScore = function(frame, index) {
+  var rolls = this.frames.slice(index).flat();
+  var numberOfRolls = rolls.length;
+  var score = 0;
 
-Game.prototype.calculateBonusPoints = function(roll1, roll2) {
-  if (this.isPreviousFrameSpare) {
-    this.scoreSheet[this.scoreSheet.length - 1].score += roll1;
-  } else if (this.isPreviusFrameStrike) {
-    this.scoreSheet[this.scoreSheet.length - 1].score += roll1 + roll2;
-  };
-};
-
-Game.prototype.resetPreviousFrame = function() {
-  this.isPreviousFrameSpare = false;
-  this.isPreviousFrameStrike = false;
-}
-
-Game.prototype.setSpareOrStrike = function(roll1, roll2) {
-  if (roll1 === 10) {
-    this.isPreviusFrameStrike = true;
-  } else if (roll1 + roll2 === 10) {
-    this.isPreviousFrameSpare = true;
-  };
-}
-
-Game.prototype.updateScoreSheet = function(roll1, roll2) {
-  if (roll2) {
-    this.scoreSheet.push({ pins: [roll1, roll2], score: roll1 + roll2 });
+  if (index === 9) {
+    return frame.reduce((total, roll) => {
+      return total + roll;
+    }, 0);
   } else {
-    this.scoreSheet.push({ pins: [roll1], score: roll1 + roll2 });
-  };
+    if (frame.length > 1) {
+      var roll2 = frame[1];
+    } else {
+      var roll2 = 0;
+    }
+    
+    if (frame[0] === 10) {
+      if (numberOfRolls > 1) {
+        score += rolls[1];
+        if (numberOfRolls > 2) {
+          score += rolls[2];
+        }
+      }
+    } else if (frame[0] + roll2 === 10) {
+      if (numberOfRolls > 2) {
+        score += rolls[2];
+      }
+    }
+    score += frame[0] + roll2;
+    return score;
+  }
 };
 
-Game.prototype.calculateTotalScore = function() {
-  this.totalScore = this.scoreSheet.reduce((total, frame) => {
-    return total + frame.score;
-  }, 0);
-};
+// return (isMember ? '$2.00' : '$10.00');

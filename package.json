@@ -1,0 +1,29 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "A makers weekend challenge",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.19.1"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ffgi-es/bowling-challenge.git"
+  },
+  "author": "Alastair Gilles",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ffgi-es/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/ffgi-es/bowling-challenge#readme"
+}

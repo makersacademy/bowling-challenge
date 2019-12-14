@@ -21,10 +21,20 @@ describe("Game", function() {
     });
   })
 
-  describe("when playing the game", function() {
-    it("can calculate the score for a frame without strike or spare, which is not the last frame", function() {
-      game.calculateFrame(2, 5);
+  describe("when calculating the score for frames 0 to 9", function() {
+    it("can calculate the score of a frame without spare or strike", function() {
+      game.calculateFrameScore(2, 5);
       expect(game.getTotalScore()).toEqual(7);
     });
-  })
+
+    it("can calculate the score of a frame with spare", function() {
+      game.calculateFrameScore(2, "/");
+      expect(game.getTotalScore()).toEqual(10);
+    });
+
+    it("can calculate the score of a frame with strike", function() {
+      game.calculateFrameScore("X");
+      expect(game.getTotalScore()).toEqual(10);
+    });
+  });
 });

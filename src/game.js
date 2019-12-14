@@ -19,6 +19,12 @@ Game.prototype.getCurrentRollNumber = function() {
   return this.currentRollNumber;
 };
 
-Game.prototype.calculateFrame = function(roll1, roll2) {
-  this.totalScore += roll1 + roll2;
+Game.prototype.calculateFrameScore = function(roll1, roll2) {
+  if (roll1 === "X" ) {
+    this.totalScore += 10;
+  } else if (roll2 === "/") {
+      this.totalScore += 10;
+    } else {
+      this.totalScore += roll1 + roll2;
+  }
 };

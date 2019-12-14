@@ -13,8 +13,12 @@ Game.prototype.getTotalScore = function() {
 
 Game.prototype.getFrameSheet = function() {
   return this.frameSheet;
-}
+};
 
 Game.prototype.getCurrentRollNumber = function() {
   return this.currentRollNumber;
-}
+};
+
+Game.prototype.calculateFrame = function(roll1, roll2) {
+  this.totalScore += roll1 + roll2;
+};

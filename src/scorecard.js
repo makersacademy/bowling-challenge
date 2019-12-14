@@ -8,6 +8,14 @@ class ScoreCard {
     this.allFrames = allFrames;
   }
 
+  addName(name) {
+    this.playerName = name;
+  }
+
+  getName() {
+    return this.playerName;
+  }
+
   nextFrame() {
     this.currentFrame += 1;
 

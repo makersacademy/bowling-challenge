@@ -14,6 +14,12 @@ describe('ScoreCard', () => {
     testScoreCard = new ScoreCard();
   });
 
+  it('takes a name', () => {
+    testScoreCard.addName('Sam');
+
+    expect(testScoreCard.getName()).toEqual('Sam');
+  });
+
   it('keeps track of the current frame', () => {
     const newScoreCard = new ScoreCard();
 
@@ -33,6 +39,12 @@ describe('ScoreCard', () => {
 
   it('prevents players from entering a score for a second roll until after the first roll', () => {
     expect(() => { testScoreCard.setRollTwo(7); }).toThrowError(ScoreCard.NO_FIRST_ROLL());
+  });
+
+  it('prevents players from entering a score for a third roll until after the first and second rolls', () => {
+    expect(() => {
+      testScoreCard.setRollThree(7);
+    }).toThrowError(ScoreCard.NO_FIRST_OR_SECOND_ROLL());
   });
 
   describe('a strike', () => {

@@ -1,4 +1,5 @@
 const Frame = require('./frame');
+const FinalFrame = require('./finalFrame');
 
 class ScoreCard {
   constructor(allFrames = [], frame = new Frame()) {
@@ -8,8 +9,13 @@ class ScoreCard {
   }
 
   nextFrame() {
-    this.frame = new Frame();
     this.currentFrame += 1;
+
+    if (this.currentFrame === 10) {
+      this.frame = new FinalFrame();
+    } else {
+      this.frame = new Frame();
+    }
   }
 
   getCurrentFrame() {
@@ -20,18 +26,31 @@ class ScoreCard {
     this.allFrames.push(this.frame);
     this.frame.setRollOne(score);
     this.strikesAndSpares(score);
-
-    const strike = 10;
-    if (score === strike) { this.frame.isA('strike'); this.nextFrame(); }
+    if (score === 10 && this.currentFrame < 10) { this.frame.isA('strike'); this.nextFrame(); }
   }
 
   setRollTwo(score) {
     if (!this.frame.getRollOne()) { throw new Error(ScoreCard.NO_FIRST_ROLL()); }
-    if (this.frame.getRollOne() + score > 10) { throw new Error(ScoreCard.INVALID_SCORE()); }
+    if (this.currentFrame < 10 && this.frame.getRollOne() + score > 10) {
+      throw new Error(ScoreCard.INVALID_SCORE());
+    }
 
     this.frame.setRollTwo(score);
     this.strikesAndSpares(score);
-    this.nextFrame();
+    if (this.frame.getScore() === 10) { this.frame.isA('spare'); }
+    if (this.currentFrame < 10) { this.nextFrame(); }
+  }
+
+  setRollThree(score) {
+    if (!this.frame.getRollOne() || !this.frame.getRollTwo()) {
+      throw new Error(ScoreCard.NO_FIRST_OR_SECOND_ROLL());
+    }
+    if (this.frame.getRollOne() + this.frame.getRollTwo() + score > 30 || score > 10) {
+      throw new Error(ScoreCard.INVALID_SCORE());
+    }
+
+    this.frame.setRollThree(score);
+    this.strikesAndSpares(score);
   }
 
   getTotalScore() {
@@ -41,7 +60,8 @@ class ScoreCard {
   }
 
   strikesAndSpares(points) {
-    this.allFrames.forEach((frame) => {
+    const firstNineFrames = this.allFrames.slice(0, 9);
+    firstNineFrames.forEach((frame) => {
       if (frame.hasBonusTurnsLeft()) {
         frame.awardBonus(points);
         frame.dropBonusTurn();
@@ -53,8 +73,12 @@ class ScoreCard {
     return 'Roll One of the current frame has not been recorded';
   }
 
+  static NO_FIRST_OR_SECOND_ROLL() {
+    return 'Both of previous rolls of the current frame must be recorded';
+  }
+
   static INVALID_SCORE() {
-    return 'Invalid entry: the maximum rolled score per frame is 10';
+    return 'Invalid entry: the maximum rolled score per standard frame is 10, with 30 being the maximum for the final frame';
   }
 }
 

@@ -57,4 +57,43 @@ describe('ScoreCard', () => {
       expect(strikeScoreCard.getTotalScore()).toBe(32);
     });
   });
+
+  describe('a spare', () => {
+    const spareScoreCard = new ScoreCard();
+
+    it('adds bonus points to the spared frame for the next roll', () => {
+      spareScoreCard.setRollOne(3);
+      spareScoreCard.setRollTwo(7);
+      spareScoreCard.setRollOne(4);
+      spareScoreCard.setRollTwo(3);
+
+      expect(spareScoreCard.getTotalScore()).toBe(21);
+    });
+  });
+
+  it('does not reward bonus points on the tenth frame', () => {
+    const tenFrameScoreCard = new ScoreCard();
+
+    for (let i = 0; i < 10; i += 1) {
+      tenFrameScoreCard.setRollOne(9);
+      tenFrameScoreCard.setRollTwo(1);
+    }
+
+    tenFrameScoreCard.setRollThree(9);
+
+    expect(tenFrameScoreCard.getTotalScore()).toBe(190);
+  });
+
+  it('scores a maximum of 300', () => {
+    const perfectGameScoreCard = new ScoreCard();
+
+    for (let i = 0; i < 10; i += 1) {
+      perfectGameScoreCard.setRollOne(10);
+    }
+
+    perfectGameScoreCard.setRollTwo(10);
+    perfectGameScoreCard.setRollThree(10);
+
+    expect(perfectGameScoreCard.getTotalScore()).toBe(300);
+  });
 });

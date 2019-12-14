@@ -3,6 +3,7 @@ const Bonus = require('./bonus');
 class Frame {
   constructor(bonus = new Bonus()) {
     this.bonus = bonus;
+    this.bonusTurnsLeft = 0;
   }
 
   setRollOne(score) {

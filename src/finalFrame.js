@@ -1,11 +1,6 @@
 const Frame = require('./frame');
 
 class FinalFrame extends Frame {
-  constructor() {
-    super();
-    this.rollThree = 0;
-  }
-
   setRollThree(score) {
     this.rollThree = score;
   }
@@ -15,7 +10,7 @@ class FinalFrame extends Frame {
     const rollTwo = this.rollTwo ? this.rollTwo : 0;
     const rollThree = this.rollThree ? this.rollThree : 0;
 
-    return this.rollOne + this.rollTwo + this.rollThree;
+    return rollOne + rollTwo + rollThree;
   }
 }
 

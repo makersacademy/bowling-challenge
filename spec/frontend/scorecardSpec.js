@@ -25,7 +25,13 @@ describe('ScoreCard', () => {
     expect(testScoreCard.getTotalScore()).toEqual(17);
   });
 
+  it('prevents players from adding two scores in a frame with a sum greater than 10', () => {
+    testScoreCard.setRollOne(9);
+
+    expect(() => { testScoreCard.setRollTwo(5); }).toThrowError(ScoreCard.INVALID_SCORE());
+  });
+
   it('prevents players from entering a score for roll two until after the first roll', () => {
-    expect(() => { testScoreCard.setRollTwo(7); }).toThrowError(testScoreCard.NO_FIRST_ROLL);
+    expect(() => { testScoreCard.setRollTwo(7); }).toThrowError(ScoreCard.NO_FIRST_ROLL());
   });
 });

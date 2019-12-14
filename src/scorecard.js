@@ -21,7 +21,8 @@ class ScoreCard {
   }
 
   setRollTwo(score) {
-    if (!this.frame.getRollOne()) { throw new Error(this.NO_FIRST_ROLL()); }
+    if (!this.frame.getRollOne()) { throw new Error(ScoreCard.NO_FIRST_ROLL()); }
+    if (this.frame.getRollOne() + score > 10) { throw new Error(ScoreCard.INVALID_SCORE()); }
 
     this.frame.setRollTwo(score);
     this.frame = new Frame();
@@ -39,7 +40,11 @@ class ScoreCard {
   }
 
   static NO_FIRST_ROLL() {
-    return `Roll One of frame ${this.currentFrame} has not been recorded`;
+    return 'Roll One of the current frame has not been recorded';
+  }
+
+  static INVALID_SCORE() {
+    return 'Invalid entry: the maximum rolled score per frame is 10';
   }
 }
 

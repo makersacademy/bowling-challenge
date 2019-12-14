@@ -16,7 +16,7 @@ describe('Bowling', function () {
   describe('#roll', function () {
     it('adds the roll to the current frame', function () {
       bowling.roll(5)
-      expect(bowling.current_frame).toContain(5)
+      expect(bowling.currentFrame).toContain(5)
     })
   })
 

@@ -1,7 +1,7 @@
 'use strict'
 
 function Bowling () {
-  this.current_frame = []
+  this.currentFrame = []
   this.score = []
   this.isSpare = false
 };
@@ -11,26 +11,30 @@ Bowling.prototype.total = function () {
 }
 
 Bowling.prototype.roll = function (pins) {
-  this.current_frame.push(pins)
+  this.currentFrame.push(pins)
 
   if (this.isSpare) {
-    this.score.last().push(pins)
+    this.previousFrame().push(pins)
     this.isSpare = false
   }
 
-  if (this.current_frame.length === 2) { 
-    if (sum(this.current_frame) === 10) {
+  if (this.currentFrame.length === 2) {
+    if (sum(this.currentFrame) === 10) {
       this.isSpare = true
     }
-    this.score.push(this.current_frame) 
-    this.current_frame = []
+    this.score.push(this.currentFrame)
+    this.currentFrame = []
   }
 }
 
-function sum(array) {
-  return array.reduce((a, b) => a + b, 0)
+Bowling.prototype.frameCount = function () {
+  return this.score.length
 }
 
-Array.prototype.last = function () {
-  return this[this.length - 1];
+Bowling.prototype.previousFrame = function () {
+  return this.score[this.frameCount() - 1]
+}
+
+function sum (array) {
+  return array.reduce((a, b) => a + b, 0)
 }

@@ -1,4 +1,4 @@
-const Bonus = require('./bonus')
+const Bonus = require('./bonus');
 
 class Frame {
   constructor(bonus = new Bonus) {

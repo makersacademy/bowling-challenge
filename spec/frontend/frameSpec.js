@@ -10,14 +10,14 @@ describe('Frame', () => {
     testFrame.setRollTwo(3);
 
     testFrame2 = new Frame();
-    testFrame2.setRollOne(8);
+    testFrame2.setRollOne(6);
     testFrame2.setRollTwo(1);
   });
 
   describe('setRollOne()', () => {
     it('keeps track of the first roll of a frame', () => {
       expect(testFrame.getRollOne()).toBe(5);
-      expect(testFrame2.getRollOne()).toBe(8);
+      expect(testFrame2.getRollOne()).toBe(6);
     });
   });
 
@@ -31,6 +31,10 @@ describe('Frame', () => {
   describe('getFrameScore()', () => {
     it('tallies two rolls of 4 and 5 as a score of 9', () => {
       expect(testFrame.getFrameScore()).toBe(8);
+    });
+
+    it('tallies two rolls of 6 and 1 as a score of 7', () => {
+      expect(testFrame2.getFrameScore()).toBe(7);
     });
 
     describe('any bonus point', () => {

@@ -15,12 +15,12 @@ Game.prototype.getScoreSheet = function() {
   return this.scoreSheet;
 };
 
-Game.prototype.play = function(roll1, roll2) {
+Game.prototype.play = function(roll1, roll2 = 0) {
   this.calculateBonusPoints(roll1, roll2);
   this.resetPreviousFrame();
   this.setSpareOrStrike(roll1, roll2);
-  this.scoreSheet.push({ pins: [roll1, roll2], score: roll1 + roll2 });
-  this.totalScore = this.calculateTotalScore();
+  this.updateScoreSheet(roll1, roll2);
+  this.calculateTotalScore();
 };
 
 Game.prototype.calculateBonusPoints = function(roll1, roll2) {
@@ -44,8 +44,16 @@ Game.prototype.setSpareOrStrike = function(roll1, roll2) {
   };
 }
 
+Game.prototype.updateScoreSheet = function(roll1, roll2) {
+  if (roll2) {
+    this.scoreSheet.push({ pins: [roll1, roll2], score: roll1 + roll2 });
+  } else {
+    this.scoreSheet.push({ pins: [roll1], score: roll1 + roll2 });
+  };
+};
+
 Game.prototype.calculateTotalScore = function() {
-  return this.scoreSheet.reduce((total, frame) => {
+  this.totalScore = this.scoreSheet.reduce((total, frame) => {
     return total + frame.score;
   }, 0);
 };

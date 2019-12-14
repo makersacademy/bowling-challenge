@@ -3,19 +3,27 @@
 describe('Scoreboard', function () {
 
     var scoreboard;
-    var roll;
 
     beforeEach(function () {
         scoreboard = new Scoreboard();
-        roll = jasmine.createSpy('roll');
     });
 
-    it('it has no rolls by default', function () {
+    it('has no rolls by default', function () {
         expect(scoreboard.rolls()).toEqual([]);
     });
 
-    it('it can add rolls', function () {
-        scoreboard.addRoll(roll);
-        expect(scoreboard.rolls()).toContain(roll);
+    it('can add rolls', function () {
+        scoreboard.addRoll(8);
+        expect(scoreboard.rolls()).toContain(8);
+    });
+
+    it('does not add a roll with a score of < 0', function(){
+        scoreboard.addRoll(-1);
+        expect(scoreboard.rolls()).not.toContain(-1);
+    });
+
+    it('does not add a roll with a score of > 10', function(){
+        scoreboard.addRoll(11);
+        expect(scoreboard.rolls()).not.toContain(11);
     });
 });

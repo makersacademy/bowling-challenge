@@ -14,4 +14,8 @@ describe("Game", function() {
   it("has an empty defaul frame sheet", function() {
     expect(game.getFrameSheet()).toEqual([]);
   });
+
+  it("keeps track of the current roll number", function() {
+    expect(game.getCurrentRollNumber()).toEqual(1);
+  });
 });

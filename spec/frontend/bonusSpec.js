@@ -5,12 +5,12 @@ describe('Bonus', () => {
   const testBonus2 = new Bonus();
 
   it('keeps track of any bonus points in a frame', () => {
-    testBonus.addBonusPoints(2);
-    testBonus.addBonusPoints(4);
-    testBonus2.addBonusPoints(6);
-    testBonus2.addBonusPoints(9);
+    testBonus.add(2);
+    testBonus.add(4);
+    testBonus2.add(6);
+    testBonus2.add(9);
 
-    expect(testBonus.getBonusPoints()).toBe(6);
-    expect(testBonus2.getBonusPoints()).toBe(15);
+    expect(testBonus.getPoints()).toBe(6);
+    expect(testBonus2.getPoints()).toBe(15);
   });
 });

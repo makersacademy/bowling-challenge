@@ -1,14 +1,14 @@
 class Bonus {
   constructor() {
-    this.bonusPoints = 0;
+    this.points = 0;
   }
 
-  addBonusPoints(points) {
-    this.bonusPoints += points;
+  add(newPoints) {
+    this.points += newPoints;
   }
 
-  getBonusPoints() {
-    return this.bonusPoints;
+  getPoints() {
+    return this.points;
   }
 }
 

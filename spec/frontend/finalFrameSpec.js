@@ -1,4 +1,4 @@
-const FinalFrame = require('../../src/finalFrame');
+const FinalFrame = require('../../public/js/finalFrame');
 
 describe('FinalFrame', () => {
   let testFinalFrame = new FinalFrame();

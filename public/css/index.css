@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 1px solid red;
+}
+
+body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+#content {
+  width: 90%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#scorecard {
+  display: flex;
+  height: 70%;
+  width: 100%
+}
+
+#player-name {
+  height: 25%;
+  width: 20%
+}
+
+.standard {
+  width: 8%;
+}
+
+.final {
+  width: 12%;
+}
+
+.frame {
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+}
+
+.frame-rolls {
+  height: 40%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.standard .frame-rolls div {
+  height: 100%;
+  width: 36%;
+}
+
+.final .frame-rolls div {
+  width: 24%;
+}
+
+.frame-total {
+  height: 60%;
+}

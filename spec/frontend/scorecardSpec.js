@@ -1,4 +1,4 @@
-const ScoreCard = require('../../src/scorecard');
+const ScoreCard = require('../../public/js/scorecard');
 
 describe('ScoreCard', () => {
   let testScoreCard = new ScoreCard();

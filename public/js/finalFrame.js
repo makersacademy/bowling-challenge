@@ -1,10 +1,14 @@
-const Frame = require('./frame');
+// const Frame = require('./frame');
 
 class FinalFrame extends Frame {
   setRollThree(score) {
     if (this.getScore() < 10) { throw new Error(FinalFrame.NO_MORE_ROLLS()); }
 
     this.rollThree = score;
+  }
+
+  getRollThree() {
+    return this.rollThree;
   }
 
   getScore() {
@@ -20,4 +24,4 @@ class FinalFrame extends Frame {
   }
 }
 
-module.exports = FinalFrame;
+// module.exports = FinalFrame;

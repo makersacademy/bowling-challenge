@@ -1,4 +1,4 @@
-const Bonus = require('../../src/bonus');
+const Bonus = require('../../public/js/bonus');
 
 describe('Bonus', () => {
   const testBonus = new Bonus();

@@ -109,3 +109,41 @@ class Bowling {
 
   };
 };
+
+
+// class Bowling {
+//   constructor(currentScore = 0) {
+//     this.currentScore = currentScore;
+//     this.frames = [];
+//     this.strikes = false;
+//     this.doubleStrike = false;
+//     this.spares = false;
+//   }
+//
+//   rolls(roll1, roll2) {
+//     this.currentScore += (roll1 + roll2)
+//
+//     this.spares = false
+//     this.doubleStrike = false
+//     this.strikes = false
+//
+//     if (roll1 + roll2 === 10 && roll1 !== 10 && roll2 !== 10) {
+//       this.spares = true;
+//     } else if (roll1 === 10) {
+//       this.strikes = true;
+//
+//       if(this.frames.length && this.frames[this.frames.length - 1][0] === 10) {
+//         this.doubleStrike = true;
+//       }
+//     }
+//
+//     if (this.strikes) {
+//       this.currentScore += this.doubleStrike ? 20 : (roll1 + roll2)
+//     } else if (this.spares) {
+//       this.currentScore += (roll1)
+//     }
+//
+//     this.frames.push([roll1, roll2])
+//
+//   }
+// }

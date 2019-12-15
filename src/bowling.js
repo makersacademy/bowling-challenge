@@ -5,7 +5,7 @@ function Bowling () {
   this.score = []
   this.bonus = []
   for (var i = 0; i < 9; i++) {
-    this.bonus.push({rolls: 0, points: 0})
+    this.bonus.push({ rolls: 0, points: 0 })
   }
 };
 
@@ -56,9 +56,9 @@ Bowling.prototype.currentBonus = function () {
 
 Bowling.prototype.addBonus = function (pins) {
   var bonusToAdd = this.bonus.filter(frameBonus => frameBonus.rolls > 0)
-  bonusToAdd.forEach(function (frame) { 
+  bonusToAdd.forEach(function (frame) {
     frame.points += pins
-    frame.rolls --
+    frame.rolls--
   })
 }
 

@@ -3,18 +3,17 @@ var Frame = require('../src/frame.js');
 function Bowling(frames = 10) {
   this._maxFrames = frames;
   this._frames = [new Frame()];
-  this._frame = 0;
-  this._end = false;
-  this._lastFrame = false;
+  this.isEnd = false;
+  this._isLastFrame = false;
 }
 
 // public functions
 Bowling.prototype.roll = function(...args) {
   args.forEach( pins => {
-    this._currentFrame().inputRoll(pins);
-    if(this._frames.length > 1) this._extraPoints(pins);
-    if(!this._currentFrame().canRoll()) this._newFrame();
-    // this.checkEnd()  
+    if(this.isEnd) throw new Error("Cannot roll, the game has ended, total Points: " + this.totalScore())
+    if(this._islastFrame) return this._lastFrame
+   // console.log("here")
+    this._addRoll(pins)
   });
 }
 
@@ -28,12 +27,24 @@ Bowling.prototype.frameNum = function() {
 
 // private functions
 
-Bowling.prototype._currentFrame = function() {
-  return this._frames[this._frames.length - 1];
+Bowling.prototype._addRoll = function(pins) {
+  
+  if(this._frames.length > 1) this._extraPoints(pins);
+  this._checkEnd();
+  if(!this._currentFrame().canRoll() && !this._lastFrame) this._newFrame();
+}
+
+Bowling.prototype._lastFrame = function(pins) {
+  this._currentFrame().inputExtra(pins);
+  console.log("here")
 }
 
 Bowling.prototype._newFrame = function() {
   this._frames.push(new Frame());
+}
+
+Bowling.prototype._currentFrame = function() {
+  return this._frames[this._frames.length - 1];
 }
 
 Bowling.prototype._oneFrameBack = function() {
@@ -51,6 +62,13 @@ Bowling.prototype._extraPoints = function (pins) {
   } else if(this._oneFrameBack().numExtras() > 0) {
     this._oneFrameBack().inputExtra(pins);
   }
+}
+
+Bowling.prototype._checkEnd = function() {
+  if(this.frameNum() === this._maxFrames) this._isLastFrame = true
+  if(this._isLastFrame && this._currentFrame().closed()) {
+    this.isEnd = true;
+  } 
 }
 
 

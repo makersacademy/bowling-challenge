@@ -77,8 +77,4 @@ describe("Frame", function() {
     frame.inputExtra(7)
     expect(frame.closed()).toEqual(true)
   });
-
-  
-
-  
 });

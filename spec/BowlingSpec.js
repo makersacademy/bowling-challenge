@@ -65,11 +65,21 @@ describe("Bowling", function() {
     expect(game.totalScore()).toEqual(63)
   });
 
-  xit ("should give correct score for full game, with no strike or spare in the last frame. end of game to be true", function() {
+  it ("should give correct score for full game, with no strike or spare in the last frame. end of game to be true", function() {
     game.roll(10, 10, 5,5, 3,2, 7,3, 10, 3,2, 4,6, 10, 3,3)
     expect(game.frameNum()).toEqual(11)
     expect(game.totalScore()).toEqual(145)
-    expect(game.end()).toEqual(true)
+    expect(game.isEnd).toEqual(true)
   });
+
+  it ("should give correct score for full game without any strikes and the game to end", function() {
+    expect(function() {game.roll(10, 10, 5,5, 3,2, 7,3, 10, 3,2, 4,6, 10, 3,3, 5)}).toThrowError("Cannot roll, the game has ended, total Points: 145")
+  });
+
+  it ("should give correct score for perfect game", function() {
+    game.roll(10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10)
+    expect(game.totalScore()).toEqual(300)  
+  });
+
 
 });

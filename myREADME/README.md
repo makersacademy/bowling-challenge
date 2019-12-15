@@ -1,5 +1,5 @@
 
-### How I worked don this weekend challenged (16 November 2019)
+### How I worked on this weekend challenged (16 November 2019)
 
 1. Installed ESLint.
 2. TDD simple functions to calculate sum for single roll, and for 10 rolls (without logic for strike/spare).

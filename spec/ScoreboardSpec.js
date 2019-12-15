@@ -91,4 +91,19 @@ describe('Scoreboard', function () {
 
     });
 
+    describe('get frame score', function () {
+
+        it('scores a regular frame', function () {
+            expect(scoreboard.getFrameScore([2, 4])).toEqual(6);
+        });
+
+        it('scores a spare frame', function () {
+            expect(scoreboard.getFrameScore([6, 4], [4])).toEqual(14);
+        });
+
+        it('scores a strike frame followed by a regular frame', function () {
+            expect(scoreboard.getFrameScore([10, null], [4, 3])).toEqual(17);
+        });
+    });
+
 });

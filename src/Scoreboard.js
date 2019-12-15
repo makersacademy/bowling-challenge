@@ -27,11 +27,11 @@ Scoreboard.prototype.isRollValid = function (roll) {
 
     var secondRoll = (this.rolls.length % 2 === 1) && (this.rolls.length < 19)
     var lastFrameRoll = (this.rolls.length === 19) && (this.rolls[18] !== 10)
-    var bonusRoll = (this.rolls.length === 20) && (this.rolls[18] === 10) && (this.rolls[19] !== 10)
-    
-    if (secondRoll || lastFrameRoll || bonusRoll) {
+    var finalBonusRoll = (this.rolls.length === 20) && (this.rolls[18] === 10) && (this.rolls[19] !== 10)
+
+    if (secondRoll || lastFrameRoll || finalBonusRoll) {
         return roll <= 10 - this.rolls[this.rolls.length - 1]
-    } 
+    }
 
     return true;
 };
@@ -51,6 +51,23 @@ Scoreboard.prototype.addRoll = function (roll) {
         (roll === 10)) {
         this.rolls.push(null);
     }
+
+};
+
+Scoreboard.prototype.getFrameScore = function (rolls, bonusRolls) {
+    if (rolls[0] + rolls[1] < 10) {
+        return rolls[0] + rolls[1];
+    }
+
+    if (rolls[0] === 10) {
+        return rolls[0] + bonusRolls[0] + bonusRolls[1];
+    }
+
+    return rolls[0] + rolls[1] + bonusRolls[0];
+    
+};
+Scoreboard.prototype.getAllFrameScores = function () {
+
 
 };
 

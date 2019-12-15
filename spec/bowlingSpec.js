@@ -38,4 +38,28 @@ describe('Bowling', function () {
     expect(bowling.total()).toEqual(18)
   })
 
+  it('should score a single strike correctly', function () {
+    bowling.roll(10)
+    bowling.roll(3)
+    bowling.roll(2)
+    expect(bowling.total()).toEqual(20)
+  })
+
+  it('should score a double strike correctly', function () {
+    bowling.roll(10)
+    bowling.roll(10)
+    bowling.roll(3)
+    bowling.roll(2)
+    expect(bowling.total()).toEqual(43)
+  })
+
+  it('should score a triple strike correctly', function () {
+    bowling.roll(10)
+    bowling.roll(10)
+    bowling.roll(10)
+    bowling.roll(3)
+    bowling.roll(2)
+    expect(bowling.total()).toEqual(73)
+  })
+
 })

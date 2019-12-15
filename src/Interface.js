@@ -1,53 +1,59 @@
 $( document ).ready(function(){
   var bowling = new Bowling();
 
+  $('#0PinDown').click(function( event ){
+    bowling.pinsDown(0);
+    update();
+    })
   $('#1PinDown').click(function( event ){
     bowling.pinsDown(1);
-    updateScore();
-  })
+    update();
+    })
   $('#2PinsDown').click(function( event ){
     bowling.pinsDown(2);
-    updateScore();
-  })
+    update();
+    })
   $('#3PinsDown').click(function( event ){
     bowling.pinsDown(3);
-    updateScore();
-  })
+    update();
+    })
   $('#4PinsDown').click(function( event ){
     bowling.pinsDown(4);
-    updateScore();
-  })
+    update();
+    })
   $('#5PinsDown').click(function( event ){
     bowling.pinsDown(5);
-    updateScore();
-  })
+    update();
+    })
   $('#6PinsDown').click(function( event ){
     bowling.pinsDown(6);
-    updateScore();
-  })
+    update();
+    })
   $('#7PinsDown').click(function( event ){
     bowling.pinsDown(7);
-    updateScore();
-  })
+    update();
+    })
   $('#8PinsDown').click(function( event ){
     bowling.pinsDown(8);
-    updateScore();
-  })
+    update();
+    })
   $('#9PinsDown').click(function( event ){
     bowling.pinsDown(9);
-    updateScore();
-  })
+    update();
+    })
   $('#10PinsDown').click(function( event ){
     bowling.pinsDown(10);
-    updateScore();
-  })
+    update();
+    })
 
   $('#newGame').click(function ( event ){
     bowling.reset();
-  })
+    update();
+    })
 
-  function updateScore(){
-    $('#score').text(bowling.score());
-    $('#score').attr('class',bowling.score());
+  function update(){
+    $('#pinsDown').text(bowling._rolls);
+    $('#score').text(bowling.calculateScore());
+    $('#score').attr('class',bowling.calculateScore());
   }
 })

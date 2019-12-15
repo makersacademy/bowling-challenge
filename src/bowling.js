@@ -3,25 +3,26 @@
 function Bowling(){
   this.START_SCORE = [];
   this._rolls = this.START_SCORE;
+  this.MAX_SCORE = 10;
 }
 
 Bowling.prototype.reset = function(){
-  this._rolls = [];
+  return this._rolls = [];
 }
 
 Bowling.prototype.roll = function(pins){
-  this._rolls = pins;
+  return this._rolls = pins;
 }
 
 Bowling.prototype.pinsDown = function(pins){
-  this._rolls.push(pins);
+  return this._rolls.push(pins);
 }
 
 Bowling.prototype.frames = function(){
   return this._rolls.length / 2;
 }
 
-Bowling.prototype.score = function(){
+Bowling.prototype.calculateScore = function(){
   var score = 0;
   var rollIndex = 0;
   var game = this;
@@ -43,16 +44,16 @@ Bowling.prototype.score = function(){
   return score;
 
   function isSpare(rollIndex){
-    return game._rolls[rollIndex] + game._rolls[rollIndex + 1] == 10;
+    return game._rolls[rollIndex] + game._rolls[rollIndex + 1] == game.MAX_SCORE;
   }
   function isStrick(rollIndex){
-    return game._rolls[rollIndex] == 10;
+    return game._rolls[rollIndex] == game.MAX_SCORE;
   }
   function getSpareScore(){
-    return 10 + (game._rolls[rollIndex + 2]);
+    return game.MAX_SCORE + (game._rolls[rollIndex + 2]);
   }
   function getStrickScore(){
-    return 10 + game._rolls[rollIndex +1] + game._rolls[rollIndex + 2];
+    return game.MAX_SCORE + game._rolls[rollIndex +1] + game._rolls[rollIndex + 2];
   }
   function getNormalScore(){
     return game._rolls[rollIndex] + game._rolls[rollIndex + 1];

@@ -1,17 +1,25 @@
 'use strict';
 
 function Bowling(){
-  this.rolls = [];
+  this._rolls = [];
+}
+
+Bowling.prototype.reset = function(){
+  this._rolls = [];
+}
+
+Bowling.prototype.frames = function(){
+  return this._rolls.length;
 }
 
 Bowling.prototype.pinsDown = function(pins){
-  this.rolls.push(pins);
+  this._rolls.push(pins);
 }
 
 Bowling.prototype.score = function(){
-  var result = 0;
-  for(var i = 0; i < 20; i++){
-    result += this.rolls[i];
+  var score = 0;
+  for(var i = 0; i < this.frames(); i++){
+    score += this._rolls[i];
   }
-  return result;
+  return score;
 }

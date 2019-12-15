@@ -7,6 +7,10 @@ describe('Bowling', function(){
     bowling = new Bowling;
   })
 
+  it('resets a game', function(){
+    expect(bowling.reset()).toEqual();
+  })
+
   it('can roll a gutter game', function(){
     rollMany(0, 20);
     expect(bowling.score()).toEqual(0);

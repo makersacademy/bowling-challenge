@@ -2,7 +2,7 @@
 
 function Bowling() {
   this.totalScore = 0;
-  this.currentIndex = 0;
+  this._currentIndex = 0;
   this._DEFAULT_SCORE_SHEET = [
     {frame: 1, roll: 1, pins: "", score:"", notes: ""},
     {frame: 1, roll: 2, pins: "", score:"", notes: ""},
@@ -29,22 +29,34 @@ function Bowling() {
 }
 
 Bowling.prototype.knockedDown = function(pins) {
-  this.scoreSheet[this.currentIndex]["pins"] = pins;
-  this.currentIndex++;
+  this.scoreSheet[this._currentIndex]["pins"] = pins;
+  this.totalScore += pins;
+  if (this._isSecondRoll()) {
+    this.scoreSheet[this._currentIndex]["score"] = this.totalScore;
+  };
+  this._currentIndex++;
 }
 
 Bowling.prototype.currentFrame = function() {
-  return this.scoreSheet[this.currentIndex]["frame"];
+  return this.scoreSheet[this._currentIndex]["frame"];
 };
 
 Bowling.prototype.currentRoll = function() {
-  return this.scoreSheet[this.currentIndex]["roll"];
+  return this.scoreSheet[this._currentIndex]["roll"];
 };
 
 Bowling.prototype.currentPins = function() {
-  return this.scoreSheet[this.currentIndex]["pins"];
+  return this.scoreSheet[this._currentIndex]["pins"];
+};
+
+Bowling.prototype.currentScore = function() {
+  return this.scoreSheet[this._currentIndex]["score"];
 };
 
 Bowling.prototype.currentNotes = function() {
-  return this.scoreSheet[this.currentIndex]["notes"];
+  return this.scoreSheet[this._currentIndex]["notes"];
+};
+
+Bowling.prototype._isSecondRoll = function() {
+  return this.scoreSheet[this._currentIndex]["roll"] === 2;
 };

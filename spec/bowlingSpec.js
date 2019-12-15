@@ -20,6 +20,11 @@ describe('Bowling', function () {
     expect(bowling.currentNotes()).toEqual("");
   });
 
+  it("adds note of 'Bad luck' if no pins are knocked down", function() {
+    bowling.knockedDown(0)
+    expect(bowling.scoreSheet[0]["notes"]).toEqual("Bad luck");
+  });
+
   describe("on the first frame and first roll", function() {
     it("can add number of pins knocked down to the scoreheet", function() {
       bowling.knockedDown(3);
@@ -52,7 +57,7 @@ describe('Bowling', function () {
       expect(bowling.currentRoll()).toEqual(1);
     });
 
-    it("adds a note of Strike", function() {
+    it("adds a note of 'Strike'", function() {
       bowling.knockedDown(10);
       expect(bowling.scoreSheet[0]["notes"]).toEqual("Strike");
     });

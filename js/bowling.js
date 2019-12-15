@@ -31,6 +31,7 @@ function Bowling() {
 Bowling.prototype.knockedDown = function(pins) {
   this.scoreSheet[this._currentIndex]["pins"] = pins;
   this.totalScore += pins;
+  if (this._isGutter(pins)) { this.scoreSheet[this._currentIndex]["notes"] = "Bad luck"; }
   if (this._isStrike(pins)) { this._strike(); }
   if (this._currentIndex > 1 && this.scoreSheet[this._currentIndex - 2]["pins"] == "") {
     this._strikeBonus();
@@ -66,6 +67,10 @@ Bowling.prototype._isFirstRoll = function() {
 Bowling.prototype._isSecondRoll = function() {
   return this.scoreSheet[this._currentIndex]["roll"] === 2;
 };
+
+Bowling.prototype._isGutter = function(pins) {
+  return pins == 0
+}
 
 Bowling.prototype._updateScore = function() {
   this.scoreSheet[this._currentIndex]["score"] = this.totalScore;

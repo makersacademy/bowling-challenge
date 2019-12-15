@@ -41,5 +41,22 @@ describe('Game',function() {
     expect(game.score()).toBe(28)
   });
 
+  // it('can roll additional balls if strike or spare on the 10th frame',function() {
+  //   for(let i=0; i<19; i++) {
+  //     game.roll(1)
+  //   };
+  //   game.roll(9);
+  //   game.roll(1);
+  //   game.roll(10);
+  //   expect(game.score()).toBe(38)
+  // });
+
+  it('can roll a perfect game',function() {
+    for(let i=0; i<13; i++){
+      game.roll(10)
+    }
+    expect(game.score()).toBe(300)
+  });
+
 
 });

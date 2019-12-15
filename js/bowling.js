@@ -1,6 +1,7 @@
 'use strict';
 
-function Bowling() {
+function Bowling(player) {
+  this.player = player
   this.totalScore = 0;
   this._currentIndex = 0;
   this._BONUS_FRAME = {frame: 10, roll: 3, pins: "", score:"", notes: ""};
@@ -36,9 +37,9 @@ Bowling.prototype.knockedDown = function(pins) {
   if (this._isStrike(pins)) { this._strike(); }
   if (this._isAfterStrike()) { this._strikeBonus(); }
   if (this._isAfterSpare()) { this._spareBonus(); }
-  if (this._isSecondRoll()) { this._updateScore(); }
+  if (this._isSecondRoll() || this._isFinalRoll()) { this._updateScore(); }
   if (this._isSpare(pins)) { this._spare(); }
-  this._currentIndex++;
+  if (!this._isFinalRoll()) { this._currentIndex++; }
 }
 
 Bowling.prototype.currentFrame = function() {
@@ -69,6 +70,10 @@ Bowling.prototype._isSecondRoll = function() {
   return this.scoreSheet[this._currentIndex]["roll"] === 2;
 };
 
+Bowling.prototype._isFinalRoll = function() {
+  return (this._currentIndex + 1) === this.scoreSheet.length;
+}
+
 Bowling.prototype._updateScore = function() {
   this.scoreSheet[this._currentIndex]["score"] = this.totalScore;
 };
@@ -86,12 +91,9 @@ Bowling.prototype._isStrike = function(pins) {
 };
 
 Bowling.prototype._strike = function() {
-  if (this._isTenthFrame()) {
-    this._addBonusRoll();
-  } else {
-    this.scoreSheet[this._currentIndex]["notes"] = "Strike";
-    this._currentIndex++;
-  }
+  if (this._isTenthFrame()) { this._addBonusRoll(); }
+  this.scoreSheet[this._currentIndex]["notes"] = "Strike";
+  if (!this._isTenthFrame()) { this._currentIndex++; }
 };
 
 Bowling.prototype._isAfterStrike = function() {
@@ -111,12 +113,9 @@ Bowling.prototype._isSpare = function(pins) {
 }
 
 Bowling.prototype._spare = function() {
-  if (this._isTenthFrame()) {
-    this._addBonusRoll();
-  } else {
-    this.scoreSheet[this._currentIndex]["score"] = "";
-    this.scoreSheet[this._currentIndex]["notes"] = "Spare";
-  }
+  if (this._isTenthFrame()) { this._addBonusRoll(); }
+  this.scoreSheet[this._currentIndex]["score"] = "";
+  this.scoreSheet[this._currentIndex]["notes"] = "Spare";
 };
 
 Bowling.prototype._isAfterSpare = function() {
@@ -132,7 +131,7 @@ Bowling.prototype._spareBonus = function() {
 };
 
 Bowling.prototype._isTenthFrame = function() {
-  return this.scoreSheet[this._currentIndex]["frame"] == 10;
+  return this.scoreSheet[this._currentIndex]["frame"] === 10;
 }
 
 Bowling.prototype._addBonusRoll = function() {

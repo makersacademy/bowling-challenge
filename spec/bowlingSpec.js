@@ -5,7 +5,7 @@ describe('Bowling', function () {
   var bowling
 
   beforeEach(function() {
-    bowling = new Bowling();
+    bowling = new Bowling("Suzanne");
   });
 
   it("starts with a total score of 0", function() {
@@ -120,6 +120,25 @@ describe('Bowling', function () {
     it("adds a third roll if a spare is rolled", function() {
       bowling.knockedDown(5);
       bowling.knockedDown(5);
+      expect(bowling.scoreSheet.length).toEqual(21);
+    });
+
+    it("does not exceed 3 rolls total when strike", function() {
+      bowling.knockedDown(10);
+      bowling.knockedDown(10);
+      expect(bowling.scoreSheet[19]["score"]).toEqual(92);
+      bowling.knockedDown(10);
+      expect(bowling.currentScore()).toEqual(102);
+      expect(bowling.scoreSheet.length).toEqual(21);
+    });
+
+    it("does not exceed 3 rolls total when spare", function() {
+      bowling.knockedDown(5);
+      bowling.knockedDown(5);
+      expect(bowling.scoreSheet[19]["score"]).toEqual("");
+      bowling.knockedDown(8);
+      expect(bowling.scoreSheet[19]["score"]).toEqual(90);
+      expect(bowling.currentScore()).toEqual(98);
       expect(bowling.scoreSheet.length).toEqual(21);
     });
   });

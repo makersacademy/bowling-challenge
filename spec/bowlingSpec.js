@@ -11,19 +11,23 @@ describe('Bowling', function(){
     expect(bowling.reset()).toEqual();
   })
 
-  it('can roll a gutter game', function(){
-    rollMany(0, 20);
+  it('calculates a score of a gutter game', function(){
+    bowling.roll([0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0]);
     expect(bowling.score()).toEqual(0);
   })
 
   it('can roll all 2s', function(){
-    rollMany(2, 20);
+    bowling.roll([2,2, 2,2, 2,2, 2,2, 2,2, 2,2, 2,2, 2,2, 2,2, 2,2]);
     expect(bowling.score()).toEqual(40);
   })
 
-  var rollMany = function(pins, rolls){
-    for(var i = 0; i < rolls; i++){
-      bowling.pinsDown(pins);
-    }
-  }
+  it('can roll a spare', function(){
+    bowling.roll([6,4, 3,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0]);
+    expect(bowling.score()).toEqual(16);
+  })
+
+  it('can roll a strick', function(){
+    bowling.roll([10,3, 4,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0]);
+    expect(bowling.score()).toEqual(24);
+  })
 })

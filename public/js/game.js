@@ -1,4 +1,5 @@
 function Game() {
+  this.currentFrame = 0;
   this.frameSheet = [];
   this.scoreSheet = [];
   this.totalScore = 0;
@@ -6,6 +7,7 @@ function Game() {
 
 Game.prototype.roll = function(frame) {
   this.frameSheet.push(frame);
+  this.currentFrame += 1;
 };
 
 Game.prototype.getTotalScore = function() {

@@ -1,18 +1,22 @@
 'use strict';
-describe('Bowling', function() {
+describe('Game', function() {
 
-    var bowling;
+    var game;
 
     beforeEach(function() {
-      bowling = new Bowling
+      game = new Game
     });
 
     it('records number of pins knocked over', function() {
-      expect(bowling.pinNumber(5)).toEqual(5)
+      expect(game.pinNumber(5)).toEqual(5)
     });
 
     it('records a roll number for a given frame, when pin numbers are passed in', function(){
-      expect(bowling.rollNumber(2)).toEqual(1)
+      expect(game.rollNumber(2)).toEqual(1)
+    });
+
+    it('adds a new frame to the game', function() {
+      expect(game.addFrame(4,1)).toEqual([4,1])
     });
 
 });

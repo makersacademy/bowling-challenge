@@ -11,7 +11,7 @@ Game.prototype.score = function(){
     if(this.isSpare(roll)) {
       result += this.rolls[roll]+this.rolls[roll+1]+this.rolls[roll+2];
       roll += 2;
-    } else if(this.rolls[roll] == 10) {
+    } else if(this.isStrike(roll)) {
       result += this.rolls[roll]+this.rolls[roll+1]+this.rolls[roll+2];
       roll ++;
     }else{
@@ -28,4 +28,8 @@ Game.prototype.roll = function(pins) {
 
 Game.prototype.isSpare = function(roll) {
   return this.rolls[roll] + this.rolls[roll+1] == 10;
+};
+
+Game.prototype.isStrike = function(roll) {
+  return this.rolls[roll] == 10;
 };

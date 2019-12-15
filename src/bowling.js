@@ -39,3 +39,12 @@ Game.prototype.rollNumber = function () {
   }
   return ;
  }
+
+ Game.prototype.totalScore = function () {
+   var sum = 0;
+   var arr = this._frame;
+   for (var i = 0; i < arr.length; i++) {
+  sum += arr[i];
+  }
+  return sum;
+ }

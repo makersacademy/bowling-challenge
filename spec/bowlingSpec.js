@@ -33,4 +33,24 @@ describe('Scorings', function() {
     expect(game.gutter()).toEqual("It's a gutter game!")
   });
 
+  it('sums scores of each frame to produce total score', function(){
+    game.addFrame(3,1)
+    game.addFrame(4,2)
+    game.addFrame(7,2)
+    game.addFrame(4,4)
+    game.addFrame(1,6)
+    game.addFrame(2,3)
+    game.addFrame(1,1)
+    game.addFrame(0,9)
+    game.addFrame(8,0)
+    game.addFrame(2,3)
+    expect(game.totalScore()).toEqual(63)
+  });
+
+  // it('adds bonuses for spares', function(){
+  //   game.addFrame(4,6);
+  //   game.addFrame(3,3);
+  //   expect(game.totalScore()).toEqual(19)
+  // });
+
 });

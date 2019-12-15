@@ -23,17 +23,11 @@ class Scorecard {
     }
   }
 
-  normalTotal() {
+  total() {
     return [].concat.apply([], this.frames).reduce((a, b) => a + b);
   }
 
-  // specialTotal() {
-  //   var specialFrames = this.frames.pop()
-  //   return [].concat.apply([], specialFrames).reduce((a, b) => a + b);
-  // }
-
   _addFrame(roll1, roll2, roll3) {
-    // this.currentFrame = [roll1, roll2, roll3];
     this.frames.push([roll1, roll2, roll3]);
   }
 

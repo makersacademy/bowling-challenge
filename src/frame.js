@@ -44,8 +44,7 @@ Frame.prototype.numExtras = function() {
 }
 
 Frame.prototype.inputExtra = function(pins) {
-  this._extras.push(pins)
-  this._extrasRequired--
+  if(this._extrasRequired > 0) this._extras.push(pins), this._extrasRequired--;
 }
 
 Frame.prototype.closed = function() {

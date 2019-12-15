@@ -31,8 +31,8 @@ class ScoreCard {
   }
 
   setRollOne(score) {
-    this.allFrames.push(this.frame);
     this.frame.setRollOne(score);
+    this.allFrames.push(this.frame);
     this.strikesAndSpares(score);
     if (score === 10 && this.currentFrame < 10) { this.frame.isA('strike'); this.nextFrame(); }
   }

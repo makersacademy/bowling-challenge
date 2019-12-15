@@ -109,7 +109,7 @@ $(document).ready(() => {
   $('#enter-scores').submit((e) => {
     e.preventDefault();
     const score = Number($('#new-score').val());
-
+    
     if (!(scoreCard.frame.getRollOne())) {
       scoreCard.setRollOne(score);
       resetPlayerOneDisplay();

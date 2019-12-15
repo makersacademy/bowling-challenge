@@ -53,6 +53,21 @@ describe('Scoreboard', function () {
             scoreboard.addRoll(4);
             expect(scoreboard.rolls.slice(18, 21)).toEqual([10, 6, 4]);
         });
+
+        it('happens if both rolls in frame 10 total 10 points', function () {
+            scoreboard.addRoll(4);
+            scoreboard.addRoll(6);
+            scoreboard.addRoll(7);
+            expect(scoreboard.rolls.slice(18, 21)).toEqual([4, 6, 7])
+        });
+
+        // it('does not happen if both rolls in frame 10 are < 10 points', function () {
+        //     scoreboard.addRoll(4);
+        //     scoreboard.addRoll(5);
+        //     scoreboard.addRoll(7);
+        //     expect(scoreboard.rolls.slice(20)).not.toContain(7);
+        // });
+
     });
 
 });

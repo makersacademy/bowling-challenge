@@ -5,9 +5,12 @@ function Scoreboard() {
 };
 
 Scoreboard.prototype.addRoll = function (roll) {
-    var maxRoll = 10;
+    var maxRoll;
 
-    if (this.rolls.length % 2 === 0) {
+    if (this.rolls.length >= 18) {
+        // this bypasses the 'null after strike rule'
+        maxRoll = 10 - this.rolls[-1] || 10
+    } else if (this.rolls.length % 2 === 0) {
         maxRoll = 10;
     } else {
         maxRoll = 10 - this.rolls[-1];
@@ -17,13 +20,9 @@ Scoreboard.prototype.addRoll = function (roll) {
         this.rolls.push(roll);
     };
 
-    if ((this.rolls.length % 2 === 1) && (roll === 10)) {
+    if ((this.rolls.length % 2 === 1) && (this.rolls.length <= 18) && (roll === 10)) {
         this.rolls.push(null);
     };
-
-    // else if ((this.rolls[18] === 10) || (this.rolls[19 === 10])) {
-    //     this.rolls.push(roll);
-    // };
 
 };
 

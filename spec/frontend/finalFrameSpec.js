@@ -24,6 +24,25 @@ describe('FinalFrame', () => {
     }).toThrowError(FinalFrame.NO_MORE_ROLLS());
   });
 
+  it('ensures the player can only input a score for roll two lower than the first roll', () => {
+    testFinalFrame.setRollOne(5);
+
+    expect(() => {
+      testFinalFrame.setRollTwo(6);
+    }).toThrowError(FinalFrame.INVALID_SCORE());
+  });
+
+  describe('a frame where the first roll is a strike', () => {
+    it('ensures the player can only input a scores for rolls two and three with a sum of at most 10', () => {
+      testFinalFrame.setRollOne(10);
+      testFinalFrame.setRollTwo(4);
+
+      expect(() => {
+        testFinalFrame.setRollThree(7);
+      }).toThrowError(FinalFrame.INVALID_SCORE());
+    });
+  });
+
   it('does not award bonus points for strikes and spares', () => {
     const nearPerfectFinalFrame = new FinalFrame();
 

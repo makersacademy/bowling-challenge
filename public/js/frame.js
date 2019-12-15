@@ -1,4 +1,4 @@
-// const Bonus = require('./bonus');
+const Bonus = require('./bonus');
 
 class Frame {
   constructor(bonus = new Bonus()) {
@@ -50,4 +50,4 @@ class Frame {
   }
 }
 
-// module.exports = Frame;
+module.exports = Frame;

@@ -1,5 +1,5 @@
-// const Frame = require('./frame');
-// const FinalFrame = require('./finalFrame');
+const Frame = require('./frame');
+const FinalFrame = require('./finalFrame');
 
 class ScoreCard {
   constructor(allFrames = [], frame = new Frame()) {
@@ -90,4 +90,4 @@ class ScoreCard {
   }
 }
 
-// module.exports = ScoreCard;
+module.exports = ScoreCard;

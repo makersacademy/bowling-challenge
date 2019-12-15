@@ -12,4 +12,4 @@ class Bonus {
   }
 }
 
-// module.exports = Bonus;
+module.exports = Bonus;

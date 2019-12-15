@@ -2,7 +2,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border: 1px solid red;
+  /* border: 1px solid red; */
+  font-family: 'Patua One', cursive;
+  color: #1f1f37;
 }
 
 body {
@@ -18,6 +20,7 @@ body {
   justify-content: center;
   align-items: center;
   margin: auto;
+  background: #98acc7
 }
 
 #content {
@@ -32,32 +35,91 @@ body {
 #scorecard {
   display: flex;
   height: 70%;
-  width: 100%
+  width: 100%;
+}
+
+#scorecard-segment {
+  width: 100%;
+  margin: auto 0;
+  padding: 0 5px;
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 4px solid #1b1414;
+  background: white;
+}
+
+#name-and-controls {
+  height: 25%;
+  width: 20%;
+  display: flex;
+  align-items: center;
+  padding: 10px 0 10px 10px;
 }
 
 #player-name {
-  height: 25%;
-  width: 20%
+  width: 65%;
+  font-size: 2vw;
+  text-align: center;
+}
+
+#enter-scores {
+  height: 6vw;
+  width: 6vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+#new-score {
+  height: 95%;
+  width: 95%;
+  border-radius: 10px;
+  background-color: transparent;
+  text-align: center;
+  font-size: 3vw;
+  border: 2px solid #1b1414;
+}
+
+#new-score:focus {
+  outline: none;
+}
+
+.frame {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 0;
+  border-left: 1px solid #1b1414; 
+  border-right: 1px solid #1b1414; 
 }
 
 .standard {
   width: 8%;
 }
 
-.final {
-  width: 12%;
+#player-1-frame-1 {
+  border-left: 2px solid #1b1414; 
 }
 
-.frame {
-  height: 25%;
-  display: flex;
-  flex-direction: column;
+.final {
+  width: 12%;
+  border-right: 2px solid #1b1414; 
 }
 
 .frame-rolls {
   height: 40%;
   display: flex;
   justify-content: flex-end;
+  border-top: 1px solid #1b1414; 
+}
+
+.frame-rolls div {
+  font-size: 1.5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid #1b1414;
 }
 
 .standard .frame-rolls div {
@@ -71,4 +133,29 @@ body {
 
 .frame-total {
   height: 60%;
+  font-size: 2.5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #1b1414; 
+  border-bottom: 1px solid #1b1414; 
+}
+
+.game-total-cushion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: 12%;
+}
+
+#player-1-game-total {
+  height: 90%;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4vw;
+  border: 2px solid #1b1414;
+  border-radius: 10px;
 }

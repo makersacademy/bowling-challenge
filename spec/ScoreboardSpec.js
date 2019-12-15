@@ -94,7 +94,7 @@ describe('Scoreboard', function () {
     describe('get frame score', function () {
 
         it('scores a regular frame', function () {
-            expect(scoreboard.getFrameScore([2, 4])).toEqual(6);
+            expect(scoreboard.getFrameScore([2, 4], [])).toEqual(6);
         });
 
         it('scores a spare frame', function () {
@@ -103,6 +103,27 @@ describe('Scoreboard', function () {
 
         it('scores a strike frame followed by a regular frame', function () {
             expect(scoreboard.getFrameScore([10, null], [4, 3])).toEqual(17);
+        });
+
+        it('scores a strike frame followed by a strike frame', function () {
+            expect(scoreboard.getFrameScore([10, null], [10, null, 5])).toEqual(25);
+        });
+
+        it('should show score after a strike', function () {
+            expect(scoreboard.getFrameScore([10, null], [])).toEqual(NaN);
+        });
+    });
+
+    describe('get every frame scores', function () {
+
+        beforeEach(function () {
+            scoreboard.rolls = [1, 4, 4, 5, 6, 4, 5, 5, 10, null, 0, 1, 7, 3, 6, 4, 10, null, 2, 8, 6]
+        });
+
+        it("get all frames' score", function () {
+            expect(scoreboard.getAllFrameScores()).toEqual([
+                5, 14, 29, 49, 60, 61, 77, 97, 117, 133
+            ]);
         });
     });
 

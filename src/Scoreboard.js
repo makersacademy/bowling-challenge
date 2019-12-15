@@ -19,9 +19,11 @@ Scoreboard.prototype.addRoll = function (roll) {
 
     if ((this.rolls.length % 2 === 1) && (roll === 10)) {
         this.rolls.push(null);
-    } else if ((this.rolls[18] === 10) || (this.rolls[19 === 10])) {
-        this.rolls.push(roll);
     };
+
+    // else if ((this.rolls[18] === 10) || (this.rolls[19 === 10])) {
+    //     this.rolls.push(roll);
+    // };
 
 };
 

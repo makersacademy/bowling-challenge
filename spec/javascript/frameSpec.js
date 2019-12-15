@@ -160,6 +160,7 @@ describe('Frame', () => {
     it('should get three rolls if a strike on last frame', () => {
       frame = new Frame(10, Roll);
       frame.addRoll(10);
+      expect(frame.getNextFrame()).toEqual(frame);
       frame.addRoll(5);
       expect(frame.getNextFrame()).toEqual(frame);
       frame.addRoll(5);

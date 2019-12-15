@@ -18,14 +18,24 @@ describe("Bowling", function() {
   });
   
 
-  it ("should have a total of 9 after a ", function() {
+  it ("should have a total of 9 after 7 then 2 pins knocked down in first frame", function() {
     game.roll(7,2)
-    expect(game.score()).toEqual(7)
+    expect(game.score()).toEqual(9)
   });
 
-  it ("should be frame 2 after 2 balls rolled without strike", function() {
+  it ("assuming no strike, should move to second frame after 2 balls rolled", function() {
     game.roll(7,2)
-    expect(game.frame).toEqual(2)
+    expect(game.getFrame()).toEqual(2)
+  });
+
+  it ("should add a bonus to the score if getting the spare on the previous frame", function() {
+    game.roll(7,3,5)
+    expect(game.score()).toEqual(20)
+  });
+
+  it ("should move to second frame if a strike with first roll", function() {
+    game.roll(10)
+    expect(game.getFrame()).toEqual(2)
   });
 
 

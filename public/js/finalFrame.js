@@ -1,8 +1,8 @@
-const Frame = require('./frame');
+// const Frame = require('./frame');
 
 class FinalFrame extends Frame {
   setRollTwo(score) {
-    if (score > this.getRollOne()) { throw new Error(FinalFrame.INVALID_SCORE()); }
+    if (this.getRollOne() < 10 && score + this.getRollOne() > 10) { throw new Error(FinalFrame.INVALID_SCORE()); }
 
     this.rollTwo = score;
   }
@@ -37,4 +37,4 @@ class FinalFrame extends Frame {
   }
 }
 
-module.exports = FinalFrame;
+// module.exports = FinalFrame;

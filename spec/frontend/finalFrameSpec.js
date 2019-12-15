@@ -24,12 +24,14 @@ describe('FinalFrame', () => {
     }).toThrowError(FinalFrame.NO_MORE_ROLLS());
   });
 
-  it('ensures the player can only input a score for roll two lower than the first roll', () => {
-    testFinalFrame.setRollOne(5);
+  describe('a frame where the first roll is not a strike', () => {
+    it('ensures the player can only input a score for roll two which completes a sum of at most 10', () => {
+      testFinalFrame.setRollOne(6);
 
-    expect(() => {
-      testFinalFrame.setRollTwo(6);
-    }).toThrowError(FinalFrame.INVALID_SCORE());
+      expect(() => {
+        testFinalFrame.setRollTwo(5);
+      }).toThrowError(FinalFrame.INVALID_SCORE());
+    });
   });
 
   describe('a frame where the first roll is a strike', () => {

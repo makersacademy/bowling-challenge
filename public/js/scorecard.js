@@ -1,5 +1,5 @@
-const Frame = require('./frame');
-const FinalFrame = require('./finalFrame');
+// const Frame = require('./frame');
+// const FinalFrame = require('./finalFrame');
 
 class ScoreCard {
   constructor(allFrames = [], frame = new Frame()) {
@@ -86,8 +86,8 @@ class ScoreCard {
   }
 
   static INVALID_SCORE() {
-    return 'Invalid entry: the maximum rolled score per standard frame is 10, with 30 being the maximum for the final frame';
+    return 'Invalid entry';
   }
 }
 
-module.exports = ScoreCard;
+// module.exports = ScoreCard;

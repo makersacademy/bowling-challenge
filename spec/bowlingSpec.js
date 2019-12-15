@@ -58,5 +58,26 @@ describe('Scorings', function() {
     expect(game.totalScore()).toEqual(26)
   });
 
+  // it ('adds bonuses for final frame', function(){
+  //   game.addFrame(3,1)
+  //   game.addFrame(4,2)
+  //   game.addFrame(7,2)
+  //   game.addFrame(4,4)
+  //   game.addFrame(1,6)
+  //   game.addFrame(2,3)
+  //   game.addFrame(1,1)
+  //   game.addFrame(0,9)
+  //   game.addFrame(8,0)
+  //   game.addFrame(10,0)
+  //   game.addFrame(2,2)
+  //   expect(game.final_bonus).toEqual(4)
+  //  });
+
+  // it ('rewards the perfect game', function() {
+  //   for (var i = 0; i < 13; i++) {
+  //     game.addFrame(10,0)
+  //   }
+  //   expect(game.totalScore()).toEqual(300)
+  // });
 
 });

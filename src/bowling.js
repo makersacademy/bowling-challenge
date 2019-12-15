@@ -65,7 +65,7 @@ Game.prototype.pinNumber = function (number) {
    arr[z] = arr[z + 2]
    /// summing contents of scores
    for (var i = 0; i < arr.length; i++) {
-  sum += arr[i];
+    sum += arr[i];
   }
   return sum;
  }

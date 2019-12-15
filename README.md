@@ -25,3 +25,7 @@
 
 * If you had a shocker and missed all the pins for the 10 frames, and you would like a congratulatory message, please run the gutter method after inputing your scores.
 > game.gutter
+
+* In order to complete: functionality for the final frame needs to be created. Whilst scores for strike bonuses are automatically calculated, there is currently an issue with strikes following strikes.
+
+* A separate method should be created in order to determine whether a strike or a spare has been scored in a particular frame.

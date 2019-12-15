@@ -22,17 +22,17 @@ Bowling.prototype.frames = function(){
   return this._rolls.length / 2;
 }
 
-Bowling.prototype.calculateScore = function(){
+Bowling.prototype.calculateScore = function(frameNumber){
   var score = 0;
   var rollIndex = 0;
   var game = this;
   
-  for(var frameIndex = 0; frameIndex < this.frames(); frameIndex++){
-    if(isStrick(rollIndex)){
+  for(var frameIndex = 0; frameIndex < frameNumber; frameIndex++){
+    if(isStrick()){
       score += getStrickScore();
-      rollIndex++;
+      rollIndex ++;
     }
-    else if(isSpare(rollIndex)){
+    else if(isSpare()){
       score += getSpareScore();
       rollIndex += 2;
     }
@@ -43,10 +43,10 @@ Bowling.prototype.calculateScore = function(){
   }
   return score;
 
-  function isSpare(rollIndex){
+  function isSpare(){
     return game._rolls[rollIndex] + game._rolls[rollIndex + 1] == game.MAX_SCORE;
   }
-  function isStrick(rollIndex){
+  function isStrick(){
     return game._rolls[rollIndex] == game.MAX_SCORE;
   }
   function getSpareScore(){

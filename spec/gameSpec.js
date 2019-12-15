@@ -7,18 +7,29 @@ describe('Game',function() {
     game = new Game;
   });
 
-  // it('can keep scores',function() {
-  //   expect(game.score()).toBe(5)
-  // });
-
   it('can roll a gutter game',function() {
-    var i;
-    for(i=0; i<20; i++) {
+    for(let i=0; i<20; i++) {
       game.roll(0)
     };
     expect(game.score()).toBe(0)
   });
 
+  it('can roll a game',function() {
+    for(let i=0; i<20; i++) {
+      game.roll(1)
+    };
+    expect(game.score()).toBe(20)
+  });
+
+  it('can roll a spare game',function() {
+    game.roll(3);
+    game.roll(7);
+    game.roll(5);
+    for(let i=0; i<17; i++) {
+      game.roll(0)
+    };
+    expect(game.score()).toBe(20)
+  });
 
 
 });

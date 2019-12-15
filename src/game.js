@@ -5,10 +5,15 @@ function Game (){
 };
 
 Game.prototype.score = function(){
-  var i;
   var result = 0;
-  for(i=0; i<20; i++) {
-    result += this.rolls[i];
+  var roll = 0;
+  for(let frame=0; frame<10; frame++) {
+    if(this.rolls[roll] + this.rolls[roll+1] == 10) {
+      result += this.rolls[roll]+this.rolls[roll+1]+this.rolls[roll+2];
+    }else{
+      result += this.rolls[roll]+this.rolls[roll+1];
+    }
+    roll += 2;
   };
   return result;
 };

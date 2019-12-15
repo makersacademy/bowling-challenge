@@ -61,12 +61,33 @@ describe('Scoreboard', function () {
             expect(scoreboard.rolls.slice(18, 21)).toEqual([4, 6, 7])
         });
 
-        // it('does not happen if both rolls in frame 10 are < 10 points', function () {
-        //     scoreboard.addRoll(4);
-        //     scoreboard.addRoll(5);
-        //     scoreboard.addRoll(7);
-        //     expect(scoreboard.rolls.slice(20)).not.toContain(7);
-        // });
+        it('happens if both rolls in frame 10 are 10 points each', function () {
+            scoreboard.addRoll(10);
+            scoreboard.addRoll(10);
+            scoreboard.addRoll(7);
+            expect(scoreboard.rolls.slice(18, 21)).toEqual([10, 10, 7])
+        });
+
+        it('does not happen if both rolls in frame 10 total > 10 points', function () {
+            scoreboard.addRoll(4);
+            scoreboard.addRoll(7);
+            scoreboard.addRoll(7);
+            expect(scoreboard.rolls.slice(19, 21)).not.toContain(7)
+        });
+
+        it('does not happen if both rolls in frame 10 total < 10 points', function () {
+            scoreboard.addRoll(4);
+            scoreboard.addRoll(5);
+            scoreboard.addRoll(7);
+            expect(scoreboard.rolls.slice(20)).not.toContain(7);
+        });
+
+        it('does not happen in a sequence of 10, 6, 7', function () {
+            scoreboard.addRoll(10);
+            scoreboard.addRoll(6);
+            scoreboard.addRoll(7);
+            expect(scoreboard.rolls.slice(20)).not.toContain(7);
+        });
 
     });
 

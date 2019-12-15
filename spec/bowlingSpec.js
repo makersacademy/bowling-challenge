@@ -56,4 +56,10 @@ describe('Scorings', function() {
     expect(game.totalScore()).toEqual(19)
   });
 
+  it('adds bonuses for strikes', function() {
+    game.addFrame(10,0);
+    game.addFrame(4,4);
+    expect(game.totalScore()).toEqual(26)
+  });
+
 });

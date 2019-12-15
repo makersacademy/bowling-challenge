@@ -25,6 +25,10 @@ Game.prototype.rollNumber = function () {
 
  Game.prototype.addFrame = function (roll1, roll2) {
    this._frame.push(roll1, roll2);
+   if(roll1 == 10) {
+     this._frame.push("Strikey!", "Strike!")
+     return this._frame;
+   }
    if((roll1 + roll2) == 10) {
      this._frame.push("Spare!");
      return this._frame;
@@ -47,8 +51,15 @@ Game.prototype.rollNumber = function () {
  Game.prototype.totalScore = function () {
    var sum = 0;
    var arr = this._frame;
+   // subbing out "Spare!" placeholder to put in bonus of next roll
    var x = arr.indexOf("Spare!");
    arr[x] = arr[x + 1]
+   // subbing out "Strike" placeholders to put in bonuses of subsequent rolls.
+   var y = arr.indexOf("Strike!");
+   arr[y] = arr[y + 2]
+   var z = arr.indexOf("Strikey!");
+   arr[z] = arr[z + 2]
+   ///
    for (var i = 0; i < arr.length; i++) {
   sum += arr[i];
   }

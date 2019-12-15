@@ -18,5 +18,10 @@ describe("Bowling", () => {
     expect(game.frame).toEqual(2);
   });
 
-  // it("should default all points to zero after being reset")
+  it("should default all points to zero and frame back to one after being reset", () => {
+    game.reset();
+
+    expect(game.points).toEqual(0)
+    expect(game.frame).toEqual(1)
+  });
 });

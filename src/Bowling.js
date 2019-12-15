@@ -1,9 +1,17 @@
 'use strict';
 
 function Bowling(){
-  this.scores = [];
+  this.scorecard = [];
 };
 
 Bowling.prototype.addScore = function(score){
-  this.scores.push(score);
+  this.scorecard.push(score);
+};
+
+Bowling.prototype.isSpare = function(){
+  if (this.scorecard[this.scorecard.length-1][1] === '/'){
+    return true;
+  } else {
+    return false;
+  };
 };

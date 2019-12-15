@@ -15,3 +15,11 @@ Bowling.prototype.isSpare = function(){
     return false;
   };
 };
+
+Bowling.prototype.isStrike = function(){
+  if (this.scorecard[this.scorecard.length-1][0] === 'X'){
+    return true;
+  } else {
+    return false;
+  };
+};

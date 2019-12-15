@@ -21,4 +21,14 @@ describe('Bowling', function(){
     bowling.addScore([5,4]);
     expect(bowling.isSpare()).toBeFalsy();
   })
+
+  it('should return true if the last frame was a strike', function(){
+    bowling.addScore(['X', '-']);
+    expect(bowling.isStrike()).toBeTruthy();
+  });
+
+  it('should return false if the last frame was not a strike', function(){
+    bowling.addScore([9, '/']);
+    expect(bowling.isStrike()).toBeFalsy();
+  })
 });

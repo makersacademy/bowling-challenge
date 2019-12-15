@@ -21,7 +21,13 @@ describe("Bowling", () => {
   it("should default all points to zero and frame back to one after being reset", () => {
     game.reset();
 
-    expect(game.points).toEqual(0)
-    expect(game.frame).toEqual(1)
+    expect(game.points).toEqual(0);
+    expect(game.frame).toEqual(1);
+  });
+
+  it("should change your roll to 2 after entering a score", () => {
+    game.add(6);
+
+    expect(game.roll).toEqual(2);
   });
 });

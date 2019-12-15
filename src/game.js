@@ -1,24 +1,33 @@
 function Game() {
-  this.frame = [];
-  this.frameScores = [];
+  this.frameSheet = [];
+  this.scoreSheet = [];
   this.totalScore = 0;
 };
 
 Game.prototype.roll = function(frame) {
-  this.frame.push(frame);
+  this.frameSheet.push(frame);
 };
 
-Game.prototype.score = function() {
-  this.frame.forEach((frame, index) => {
-    this.frameScores.push(this.calculateFrameScore(frame, index));
-  });
-  return this.totalScore = this.frameScores.reduce((total, score) => {
+Game.prototype.getTotalScore = function() {
+  this.calculateTotalScore();
+  return this.totalScore;
+};
+
+Game.prototype.calculateTotalScore = function() {
+  this.calculateScoreSheet();
+  this.totalScore = this.scoreSheet.reduce((total, score) => {
     return total + score;
-  });
+  }, 0);
+};
+
+Game.prototype.calculateScoreSheet = function() {
+  this.frameSheet.forEach((frame, index) => {
+    this.scoreSheet.push(this.calculateFrameScore(frame, index));
+  }, 0);
 };
 
 Game.prototype.calculateFrameScore = function(frame, index) {
-  var rolls = this.frame.slice(index).flat();
+  var rolls = this.frameSheet.slice(index).flat();
   var frameScore = 0;
 
   function isStrike() {

@@ -4,7 +4,6 @@ function Game (){
   this.rolls = [];
 };
 Game.prototype.score = function(){
-  debugger;
   var result = 0;
   var roll = 0;
   for(let frame=0; frame<10; frame++) {

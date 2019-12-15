@@ -45,10 +45,10 @@ describe('Game',function() {
   //   for(let i=0; i<19; i++) {
   //     game.roll(1)
   //   };
-  //   game.roll(9);
-  //   game.roll(1);
-  //   game.roll(10);
-  //   expect(game.score()).toBe(38)
+  //   game.roll(2);
+  //   game.roll(8);
+  //   game.roll(6);
+  //   expect(game.score()).toBe(34)
   // });
 
   it('can roll a perfect game',function() {

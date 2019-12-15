@@ -21,14 +21,24 @@ describe('Game',function() {
     expect(game.score()).toBe(20)
   });
 
-  it('can roll a spare game',function() {
+  it('can roll a spare',function() {
     game.roll(3);
     game.roll(7);
     game.roll(5);
-    for(let i=0; i<17; i++) {
+    for(let i=0; i<18; i++) {
       game.roll(0)
     };
     expect(game.score()).toBe(20)
+  });
+
+  it('can roll a strike',function() {
+    game.roll(10);
+    game.roll(5);
+    game.roll(4);
+    for(let i=0; i<17; i++) {
+      game.roll(0)
+    };
+    expect(game.score()).toBe(28)
   });
 
 

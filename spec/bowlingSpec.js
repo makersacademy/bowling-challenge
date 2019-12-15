@@ -19,6 +19,11 @@ describe('Bowling', function () {
     expect(bowling.currentNotes()).toEqual("");
   });
 
-
+  describe("on the first frame and first roll", function() {
+    it("can add number of pins knocked down to the scoreheet", function() {
+      bowling.knockedDown(3)
+      expect(bowling.currentPins()).toEqual(3);
+    });
+  });
 
 });

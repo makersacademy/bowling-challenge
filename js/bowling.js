@@ -28,6 +28,10 @@ function Bowling() {
   this.scoreSheet = this.DEFAULT_SCORE_SHEET;
 }
 
+Bowling.prototype.knockedDown = function(pins) {
+  this.scoreSheet[this.currentIndex]["pins"] = pins
+}
+
 Bowling.prototype.currentFrame = function() {
   return this.scoreSheet[this.currentIndex]["frame"];
 };

@@ -2,7 +2,6 @@ function Game() {
   this.currentFrame = 0;
   this.frameSheet = [];
   this.scoreSheet = [];
-  this.totalScore = 0;
 };
 
 Game.prototype.roll = function(frame) {
@@ -10,19 +9,15 @@ Game.prototype.roll = function(frame) {
   this.currentFrame += 1;
 };
 
-Game.prototype.getTotalScore = function() {
-  this.calculateTotalScore();
-  return this.totalScore;
-};
-
 Game.prototype.calculateTotalScore = function() {
   this.calculateScoreSheet();
-  this.totalScore = this.scoreSheet.reduce((total, score) => {
+  return this.scoreSheet.reduce((total, score) => {
     return total + score;
   }, 0);
 };
 
 Game.prototype.calculateScoreSheet = function() {
+  this.scoreSheet = [];
   this.frameSheet.forEach((frame, index) => {
     this.scoreSheet.push(this.calculateFrameScore(frame, index));
   }, 0);
@@ -41,11 +36,11 @@ Game.prototype.calculateFrameScore = function(frame, index) {
   };
 
   function frameSum() {
-    return frame.reduce((total, roll) => total + roll, 0);
+    return frame.reduce((total, roll) => total + parseInt(roll), 0);
   };
 
-  if (isStrike()) { frameScore = 10 + rolls[1] + rolls[2]; }
-  else if (isSpare()) { frameScore += 10 + rolls[2]; }
+  if (isStrike()) { frameScore = 10 + parseInt(rolls[1]) + parseInt(rolls[2]); }
+  else if (isSpare()) { frameScore += 10 + parseInt(rolls[2]); }
   else { frameScore = frameSum(); }
   return frameScore;
 };

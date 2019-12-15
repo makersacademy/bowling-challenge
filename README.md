@@ -2,6 +2,25 @@
 Bowling Challenge
 =================
 
+Technical Approach
+==================
+
+The approach was to have 2 classes, a **Game** class and a **Frame** class
+
+The **Game** class contains the array of all the frame objects and allows for the total score to be calculated, a roll is also called from the game class
+
+The **Frame** class contains the score of each individual frame, including the normal rolls and any extra points from subsequent rolls (as a result of )
+
+The code could, easily, be made into a more succinct algorithm if the sole purpose was just to calculate the score of a game of bowling. However, the ultimate intention of the code is to present to a front end web application, hence separating the frames into separate objects seemed a more logical approach for filling in the individual boxes associated with a standard bowling scorecard.
+
+
+Further improvements
+====================
+
+- Currently the code has been tested in the "chicago" style TDD, this should be updated to the "London" style to isolate classes when testing.
+- A front end is required
+- A further extension would be to introduce multi-players, this is unlikely to be implemented given the time constraints of the course
+
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

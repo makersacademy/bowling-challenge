@@ -1,7 +1,7 @@
 'use strict'
 
 function Bowling () {
-  this.currentFrame = []
+  this.currentFrame = [] // Think this can be made into an object
   this.score = []
   this.bonus = []
   for (var i = 0; i < 9; i++) {
@@ -15,11 +15,18 @@ Bowling.prototype.total = function () {
 }
 
 Bowling.prototype.roll = function (pins) {
-  if (this.frameCount() === 10) {
-    if (this.isFinished()) throw new Error('Game is complete, cannot roll')
-  } else {
-    this.addBonus(pins)
+  this.addBonus(pins)
+  if (this.frameCount() >= 10) {
+    if (this.currentFrame.length === 3) throw new Error('Game is complete, cannot roll')
 
+    this.currentFrame.push(pins)
+    if (this.currentFrame.length === 2 && sum(this.currentFrame) < 10) {
+      this.currentFrame.length = 3
+      this.score.push(this.currentFrame)
+    } else if (this.currentFrame.length === 3) {
+      this.score.push(this.currentFrame)
+    }
+  } else {
     if (pins === 10) {
       this.currentBonus().rolls = 2
       this.score.push([10, 0])
@@ -39,19 +46,15 @@ Bowling.prototype.roll = function (pins) {
 }
 
 Bowling.prototype.frameCount = function () {
-  return this.score.length
+  return this.score.length + 1
 }
 
 Bowling.prototype.previousFrame = function () {
-  return this.score[this.frameCount() - 1]
-}
-
-Bowling.prototype.isFinished = function () {
-  return this.previousFrame().length === 2
+  return this.score[this.frameCount() - 2]
 }
 
 Bowling.prototype.currentBonus = function () {
-  return this.bonus[this.frameCount()]
+  return this.bonus[this.frameCount() - 1]
 }
 
 Bowling.prototype.addBonus = function (pins) {

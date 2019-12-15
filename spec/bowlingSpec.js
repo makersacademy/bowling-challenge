@@ -67,4 +67,20 @@ describe('Bowling', function () {
     
     expect(bowling.total()).toEqual(73)
   })
+
+  it('can score a gutter game', function () {
+    for (var i = 0; i < 20; i++) {
+      bowling.roll(0)
+    }
+
+    expect(bowling.total()).toEqual(0)
+  })
+
+  it('can score a perfect game', function () {
+    for (var i = 0; i < 12; i++) {
+      bowling.roll(10)
+    }
+
+    expect(bowling.total()).toEqual(300)
+  })
 })

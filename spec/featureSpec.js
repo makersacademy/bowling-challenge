@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Bowling', function () {
+describe('A game of bowling', function () {
 
   var bowling
 
@@ -11,7 +11,5 @@ describe('Bowling', function () {
   it("starts with a total score of 0", function() {
     expect(bowling.totalScore).toEqual(0);
   });
-
-  
 
 });

@@ -85,4 +85,5 @@ Reviewers will potentially be using this [code review rubric](docs/review.md).  
 4. Added function to check for strikes or spares.
 5. Added functions to interface to get the scores from user and to display rolls (nested array). Added a submit button to calculate score (sum of elements in array).
 6. Worked on JS file to define logic for the score. Linked JS to interface. 
-7. Refactored interface: deleted "calculate score" button - score displayed after clicking on "submit" button.
+7. Refactored interface: deleted "calculate score" button - score displayed after clicking on "submit" button. Final score displayed on a different page.
+8. Added table to display rolls for each frame.

@@ -31,12 +31,12 @@ function Bowling() {
 Bowling.prototype.knockedDown = function(pins) {
   this.scoreSheet[this._currentIndex]["pins"] = pins;
   this.totalScore += pins;
-  if (this._isGutter(pins)) { this.gutter(); }
+  if (this._isGutter(pins)) { this._gutter(); }
   if (this._isStrike(pins)) { this._strike(); }
-  if (this._currentIndex > 1 && this.scoreSheet[this._currentIndex - 2]["pins"] == "") {
-    this._strikeBonus();
-  }
+  if (this._isAfterStrike()) { this._strikeBonus(); }
+  if (this._isAfterSpare()) { this._spareBonus(); }
   if (this._isSecondRoll()) { this._updateScore(); }
+  if (this._isSpare(pins)) { this._spare(); }
   this._currentIndex++;
 }
 
@@ -76,7 +76,7 @@ Bowling.prototype._isGutter = function(pins) {
   return pins == 0
 }
 
-Bowling.prototype.gutter = function() {
+Bowling.prototype._gutter = function() {
   this.scoreSheet[this._currentIndex]["notes"] = "Bad luck";
 };
 
@@ -89,10 +89,35 @@ Bowling.prototype._strike = function() {
   this._currentIndex++;
 };
 
+Bowling.prototype._isAfterStrike = function() {
+  return this._currentIndex > 1 && this.scoreSheet[this._currentIndex - 2]["pins"] == ""
+};
+
 Bowling.prototype._strikeBonus = function() {
   var bonus = (this.scoreSheet[this._currentIndex]["pins"] + this.scoreSheet[this._currentIndex - 1]["pins"]);
   this.scoreSheet[this._currentIndex - 2]["score"] = this.totalScore;
   this.totalScore += bonus;
   var note = `Strike: 10 pins plus bonus of ${bonus} from next frame (rolls 1 and 2 from frame ${this.scoreSheet[this._currentIndex]["frame"]})`;
   this.scoreSheet[this._currentIndex - 2]["notes"] = note;
+};
+
+Bowling.prototype._isSpare = function(pins) {
+  return this._isSecondRoll() && (pins + this.scoreSheet[this._currentIndex - 1]["pins"] == 10);
+}
+
+Bowling.prototype._spare = function() {
+  this.scoreSheet[this._currentIndex]["score"] = "";
+  this.scoreSheet[this._currentIndex]["notes"] = "Spare";
+};
+
+Bowling.prototype._isAfterSpare = function() {
+  return this._currentIndex > 1 && this.scoreSheet[this._currentIndex - 1]["notes"] == "Spare";
+};
+
+Bowling.prototype._spareBonus = function() {
+  this.scoreSheet[this._currentIndex - 1]["score"] = this.totalScore;
+  var bonus = this.scoreSheet[this._currentIndex]["pins"];
+  this.totalScore += bonus;
+  var note = `Spare: 10 pins plus bonus of ${bonus} from next roll (roll 1 frame ${this.scoreSheet[this._currentIndex]["frame"]})`;
+  this.scoreSheet[this._currentIndex - 1]["notes"] = note;
 };

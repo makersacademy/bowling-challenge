@@ -77,8 +77,28 @@ describe('Bowling', function () {
       bowling.knockedDown(4);
       expect(bowling.scoreSheet[3]["score"]).toEqual(24);
     });
-
   });
 
+  describe("spare", function() {
+    it("adds the bonus score after the next roll is complete", function() {
+      bowling.knockedDown(4);
+      bowling.knockedDown(6);
+      expect(bowling.scoreSheet[1]["score"]).toEqual("");
+      expect(bowling.scoreSheet[1]["notes"]).toEqual("Spare");
+      bowling.knockedDown(3);
+      expect(bowling.scoreSheet[1]["score"]).toEqual(13);
+      expect(bowling.scoreSheet[1]["notes"]).toEqual("Spare: 10 pins plus bonus of 3 from next roll (roll 1 frame 2)");
+    });
+
+    it("adds the new total score after next frame is complete", function() {
+      bowling.knockedDown(4);
+      bowling.knockedDown(6);
+      bowling.knockedDown(3);
+      expect(bowling.scoreSheet[1]["score"]).toEqual(13);
+      bowling.knockedDown(5);
+      expect(bowling.scoreSheet[3]["score"]).toEqual(21);
+    });
+
+  });
 
 });

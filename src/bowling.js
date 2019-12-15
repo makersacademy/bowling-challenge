@@ -3,7 +3,6 @@ function Bowling(frames = 10) {
   this._maxFrames = frames
   this._scores = [[]]
   this._frame = 0
-  this._endFrame = false
   this._endOfGame = false
 }
 

@@ -12,6 +12,13 @@ describe('Bowling', function () {
     expect(bowling.totalScore).toEqual(0);
   });
 
-  
+  it("starts with an empty score sheet", function(){
+    expect(bowling.currentFrame()).toEqual(1);
+    expect(bowling.currentRoll()).toEqual(1);
+    expect(bowling.currentPins()).toEqual("");
+    expect(bowling.currentNotes()).toEqual("");
+  });
+
+
 
 });

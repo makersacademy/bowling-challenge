@@ -11,19 +11,23 @@ Bowling.prototype.total = function () {
 }
 
 Bowling.prototype.roll = function (pins) {
-  this.currentFrame.push(pins)
+  if (this.frameCount() === 10) {
+    if (this.isFinished()) throw new Error('Game is complete, cannot roll')
+  } else {
+    this.currentFrame.push(pins)
 
-  if (this.isSpare) {
-    this.previousFrame().push(pins)
-    this.isSpare = false
-  }
-
-  if (this.currentFrame.length === 2) {
-    if (sum(this.currentFrame) === 10) {
-      this.isSpare = true
+    if (this.isSpare) {
+      this.previousFrame().push(pins)
+      this.isSpare = false
     }
-    this.score.push(this.currentFrame)
-    this.currentFrame = []
+
+    if (this.currentFrame.length === 2) {
+      if (sum(this.currentFrame) === 10) {
+        this.isSpare = true
+      }
+      this.score.push(this.currentFrame)
+      this.currentFrame = []
+    }
   }
 }
 
@@ -33,6 +37,10 @@ Bowling.prototype.frameCount = function () {
 
 Bowling.prototype.previousFrame = function () {
   return this.score[this.frameCount() - 1]
+}
+
+Bowling.prototype.isFinished = function () {
+  return this.previousFrame().length === 2
 }
 
 function sum (array) {

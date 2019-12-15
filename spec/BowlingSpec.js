@@ -46,11 +46,6 @@ describe("Bowling", () => {
   });
 
   describe("spare", () => {
-    it("if each roll in the frame adds up to 10 don't add to current score", () => {
-      testBowling.rolls(6, 4)
-      expect(testBowling.currentScore).toEqual(0)
-    });
-
     it("if each roll in the frame adds up to 10, log a spare", () => {
       testBowling.rolls(6, 4)
       expect(testBowling.spares).toEqual(1)
@@ -108,18 +103,29 @@ describe("Bowling", () => {
     })
   });
 
-  describe("Accumulating spare scoring", () => {
+  describe("Accumulating spares", () => {
     it("if there is one spare currently logged, add 10, the second roll, and twice the first roll to the current score", () => {
       testBowling.rolls(6, 4)
       testBowling.rolls(2, 6)
       expect(testBowling.currentScore).toEqual(20);
     });
 
-    it("should set the spare log back to 0", () => {
+    it("should account for accumulating spares", () => {
       testBowling.rolls(6, 4)
-      testBowling.rolls(2, 6)
-      expect(testBowling.spares).toEqual(0);
+      testBowling.rolls(6, 4)
+      testBowling.rolls(6, 4)
+      testBowling.rolls(2, 1)
+      expect(testBowling.currentScore).toEqual(47);
     });
+  });
+
+  it("should account for accumulating a mix of strikes and spares", () => {
+    testBowling.rolls(6, 4)
+    testBowling.rolls(10, 0)
+    testBowling.rolls(6, 4)
+    testBowling.rolls(6, 4)
+    testBowling.rolls(2, 3)
+    expect(testBowling.currentScore).toEqual(73);
   });
 
 });

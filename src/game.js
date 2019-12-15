@@ -1,52 +1,40 @@
 function Game() {
-  this.frames = [];
-  this.scores = [];
+  this.frame = [];
+  this.frameScores = [];
+  this.totalScore = 0;
 };
 
 Game.prototype.roll = function(frame) {
-  this.frames.push(frame);
+  this.frame.push(frame);
 };
 
 Game.prototype.score = function() {
-  this.frames.forEach((frame, index) => {
-    this.scores.push(this.calculateFrameScore(frame, index));
+  this.frame.forEach((frame, index) => {
+    this.frameScores.push(this.calculateFrameScore(frame, index));
   });
-  return this.scores.reduce((total, score) => {
+  return this.totalScore = this.frameScores.reduce((total, score) => {
     return total + score;
-  })
+  });
 };
 
 Game.prototype.calculateFrameScore = function(frame, index) {
-  var rolls = this.frames.slice(index).flat();
-  var numberOfRolls = rolls.length;
-  var score = 0;
+  var rolls = this.frame.slice(index).flat();
+  var frameScore = 0;
 
-  if (index === 9) {
-    return frame.reduce((total, roll) => {
-      return total + roll;
-    }, 0);
-  } else {
-    if (frame.length > 1) {
-      var roll2 = frame[1];
-    } else {
-      var roll2 = 0;
-    }
-    
-    if (frame[0] === 10) {
-      if (numberOfRolls > 1) {
-        score += rolls[1];
-        if (numberOfRolls > 2) {
-          score += rolls[2];
-        }
-      }
-    } else if (frame[0] + roll2 === 10) {
-      if (numberOfRolls > 2) {
-        score += rolls[2];
-      }
-    }
-    score += frame[0] + roll2;
-    return score;
-  }
+  function isStrike() {
+    return frame[0] === 10;
+  };
+
+  function isSpare() {
+    return frame[0] + frame[1] === 10;
+  };
+
+  function frameSum() {
+    return frame.reduce((total, roll) => total + roll, 0);
+  };
+
+  if (isStrike()) { frameScore = 10 + rolls[1] + rolls[2]; }
+  else if (isSpare()) { frameScore += 10 + rolls[2]; }
+  else { frameScore = frameSum(); }
+  return frameScore;
 };
-
-// return (isMember ? '$2.00' : '$10.00');

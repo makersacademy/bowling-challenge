@@ -39,6 +39,20 @@ describe("Game", function() {
     expect(game.score()).toEqual(152);
   })
 
+  it("can calculate the score of a game with spares and strikes and a spare on the last frame", function() {
+    game.roll([10]);
+    game.roll([10]);
+    game.roll([10]);
+    game.roll([2, 8]);
+    game.roll([2, 2]);
+    game.roll([2, 5]);
+    game.roll([4, 6]);
+    game.roll([10]);
+    game.roll([2, 7]);
+    game.roll([2, 8, 4]);
+    expect(game.score()).toEqual(157);
+  })
+
   // Helper function
   function generateFrames(frame, finalFrame) {
     for (var i = 0; i < 9; i++) game.roll(frame);

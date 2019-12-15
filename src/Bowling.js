@@ -15,6 +15,8 @@ class Bowling {
       this.currentScore += (roll1 + roll2)
     } else if (this.strikes !== 0) {
       this.addStrike(roll1, roll2)
+    } else if (this.spares !== 0) {
+      this.addSpare(roll1, roll2)
     };
     this.frames.push([roll1, roll2])
   };
@@ -31,5 +33,7 @@ class Bowling {
     this.currentScore += (10 + (2 * (roll1 + roll2)))
   }
 
-
+  addSpare(roll1, roll2) {
+    this.currentScore += (10 + roll2 + (2 * roll1))
+  };
 };

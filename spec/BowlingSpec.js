@@ -43,6 +43,12 @@ describe("Bowling", () => {
       expect(testBowling.currentScore).toEqual(26)
     });
 
+    it("strike method should log a strike", () => {
+      testBowling.strike()
+      testBowling.strike()
+      expect(testBowling.strikes).toEqual(2);
+    });
+
   });
 
   describe("spare", () => {
@@ -54,6 +60,18 @@ describe("Bowling", () => {
     it("if each roll in the frame adds up to 10, log a spare", () => {
       testBowling.rolls(6, 4)
       expect(testBowling.spares).toEqual(1)
+    });
+
+    it("spare method should log a spare", () => {
+      testBowling.spare()
+      testBowling.spare()
+      expect(testBowling.spares).toEqual(2);
+    });
+
+    it("if there is one spare currently logged, add 10, the second roll, and twice the first roll to the current score", () => {
+      testBowling.rolls(6, 4)
+      testBowling.rolls(2, 6)
+      expect(testBowling.currentScore).toEqual(20);
     });
   });
 

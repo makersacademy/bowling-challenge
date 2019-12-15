@@ -36,6 +36,12 @@ describe("Bowling", () => {
   it("should set frame to 2 after scoring a strike(10)", () =>{
     game.add(10);
 
-    expect(game.frame).toEqual(2)
+    expect(game.frame).toEqual(2);
+  });
+
+  it("should set frame points to 0 if in a new frame", () =>{
+    game.add(10);
+
+    expect(game.framePoints).toEqual(0);
   });
 });

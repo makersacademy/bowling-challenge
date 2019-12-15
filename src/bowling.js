@@ -6,8 +6,9 @@ function Game() {
 }
 
 Game.prototype.add = function(points) {
-  (this.roll == 2 || points == 10) ? this.nextFrame() : this.roll ++;
+  this.framePoints += points;
   this.totalPoints += points;
+  (this.roll == 2 || points == 10) ? this.nextFrame() : this.roll ++;
 };
 
 Game.prototype.reset = function() {
@@ -18,6 +19,7 @@ Game.prototype.reset = function() {
 };
 
 Game.prototype.nextFrame = function() {
+  this.framePoints = 0;
   this.frame ++;
   this.roll = 1;
 }

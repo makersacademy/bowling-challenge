@@ -14,7 +14,7 @@ $(document).ready(function(){
     $('#roll-one-div').submit(function(event) {
         event.preventDefault();
         $(".error").remove();
-        console.log(score.scoreArray)
+
         score1 = $('#roll-one').val();
 
           if (score1 >10) {
@@ -63,12 +63,15 @@ $(document).ready(function(){
           else {
             score.addFrame(score.frame);
 
-            $('#display-array').text(score.scoreArray.join(" - "));
+            //$('#display-array').text(score.scoreArray.join(" - "));
             $('#display-frame').text((score.scoreArray.length) + 1);
             $('#display-roll').text((score.frame.length)+1 );
             
             score.totalScore(score.scoreArray);
             $('#display-score').text(score.showSum());
+
+            var markup = "<tr><td>" + (score.scoreArray.length) + "</td><td>" + score1 + "</td><td>" + score2  + "</td></tr>";    
+            $("#table").append(markup);
     
             $('#roll-one-div').show(); 
             $('#roll-two-div').hide(); 
@@ -88,6 +91,8 @@ $(document).ready(function(){
           else
           $('#final-score').text(score.showSum());
         };
+ 
+      
       
       })
 

@@ -34,9 +34,9 @@ Bowling.prototype.knockedDown = function(pins) {
   this.scoreSheet[this._currentIndex]["pins"] = pins;
   this.totalScore += pins;
   if (this._isGutter(pins)) { this._gutter(); }
-  if (this._isStrike(pins)) { this._strike(); }
   if (this._isAfterStrike()) { this._strikeBonus(); }
   if (this._isAfterSpare()) { this._spareBonus(); }
+  if (this._isStrike(pins)) { this._strike(); }
   if (this._isSecondRoll() || this._isFinalRoll()) { this._updateScore(); }
   if (this._isSpare(pins)) { this._spare(); }
   if (!this._isFinalRoll()) { this._currentIndex++; }
@@ -87,21 +87,22 @@ Bowling.prototype._gutter = function() {
 };
 
 Bowling.prototype._isStrike = function(pins) {
-  return pins == 10 && this._isFirstRoll()
+  return pins === 10 && this._isFirstRoll()
 };
 
 Bowling.prototype._strike = function() {
   if (this._isTenthFrame()) { this._addBonusRoll(); }
   this.scoreSheet[this._currentIndex]["notes"] = "Strike";
   if (!this._isTenthFrame()) { this._currentIndex++; }
+  if (this._isAfterStrike()) { this._strikeBonus(); }
 };
 
 Bowling.prototype._isAfterStrike = function() {
-  return this._currentIndex > 1 && this.scoreSheet[this._currentIndex - 2]["pins"] == ""
+  return this._currentIndex > 1 && this.scoreSheet[this._currentIndex - 2]["pins"] === "";
 };
 
 Bowling.prototype._strikeBonus = function() {
-  var bonus = (this.scoreSheet[this._currentIndex]["pins"] + this.scoreSheet[this._currentIndex - 1]["pins"]);
+  var bonus = parseFloat(this.scoreSheet[this._currentIndex]["pins"] + this.scoreSheet[this._currentIndex - 1]["pins"]);
   this.scoreSheet[this._currentIndex - 2]["score"] = this.totalScore;
   this.totalScore += bonus;
   var note = `Strike: 10 pins plus bonus of ${bonus} from next frame (rolls 1 and 2 from frame ${this.scoreSheet[this._currentIndex]["frame"]})`;
@@ -109,7 +110,7 @@ Bowling.prototype._strikeBonus = function() {
 };
 
 Bowling.prototype._isSpare = function(pins) {
-  return this._isSecondRoll() && (pins + this.scoreSheet[this._currentIndex - 1]["pins"] == 10);
+  return this._isSecondRoll() && (pins + this.scoreSheet[this._currentIndex - 1]["pins"] === 10);
 }
 
 Bowling.prototype._spare = function() {
@@ -119,7 +120,7 @@ Bowling.prototype._spare = function() {
 };
 
 Bowling.prototype._isAfterSpare = function() {
-  return this._currentIndex > 1 && this.scoreSheet[this._currentIndex - 1]["notes"] == "Spare";
+  return this._currentIndex > 1 && this.scoreSheet[this._currentIndex - 1]["notes"] === "Spare";
 };
 
 Bowling.prototype._spareBonus = function() {

@@ -47,13 +47,13 @@ $( document ).ready(function(){
     })
 
   $('#newGame').click(function ( event ){
-    bowling.reset();
-    update();
+    location.reload();
     })
 
   function update(){
     $('#pinsDown').text(bowling._rolls);
-    $('#score').text(bowling.calculateScore());
-    $('#score').attr('class',bowling.calculateScore());
+    for (var frameIndex = 1; frameIndex <= bowling.frames(); frameIndex ++){
+      $('#score').text(bowling.calculateScore(frameIndex));
+    }
   }
 })

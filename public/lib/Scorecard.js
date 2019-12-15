@@ -23,13 +23,18 @@ class Scorecard {
     }
   }
 
-  total() {
+  normalTotal() {
     return [].concat.apply([], this.frames).reduce((a, b) => a + b);
   }
 
+  // specialTotal() {
+  //   var specialFrames = this.frames.pop()
+  //   return [].concat.apply([], specialFrames).reduce((a, b) => a + b);
+  // }
+
   _addFrame(roll1, roll2, roll3) {
-    this.currentFrame = [roll1, roll2, roll3];
-    this.frames.push(this.currentFrame);
+    // this.currentFrame = [roll1, roll2, roll3];
+    this.frames.push([roll1, roll2, roll3]);
   }
 
   _isSpare(roll1, roll2) {
@@ -47,15 +52,15 @@ class Scorecard {
   _spareTurn(roll1, roll2) {
     this._isSpare(roll1, roll2)
     this._isStrike(roll1)
-    roll1 = roll1 * 2
+    this.frames[this.frames.length-1][0] += roll1
     this._addFrame(roll1, roll2, 0)
   }
 
   _strikeTurn(roll1, roll2) {
     this._isSpare(roll1, roll2)
     this._isStrike(roll1)
-    roll1 = roll1 * 2
-    roll2 = roll2 * 2
+    this.frames[this.frames.length-1][0] += roll1
+    this.frames[this.frames.length-1][1] += roll2
     this._addFrame(roll1, roll2, 0)
   }
 }

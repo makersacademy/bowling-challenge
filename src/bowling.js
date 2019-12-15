@@ -25,6 +25,10 @@ Game.prototype.rollNumber = function () {
 
  Game.prototype.addFrame = function (roll1, roll2) {
    this._frame.push(roll1, roll2);
+   if((roll1 + roll2) == 10) {
+     this._frame.push("Spare!");
+     return this._frame;
+   }
    return this._frame;
  }
 
@@ -43,6 +47,8 @@ Game.prototype.rollNumber = function () {
  Game.prototype.totalScore = function () {
    var sum = 0;
    var arr = this._frame;
+   var x = arr.indexOf("Spare!");
+   arr[x] = arr[x + 1]
    for (var i = 0; i < arr.length; i++) {
   sum += arr[i];
   }

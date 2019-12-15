@@ -25,8 +25,11 @@ describe('Scorings', function() {
 
   var game;
 
-  it('tests whether it was gutter game!', function(){
+  beforeEach(function() {
     game = new Game
+  });
+
+  it('tests whether it was gutter game!', function(){
     for (var i = 0; i < 11; i++) {
       game.addFrame(0,0);
     }
@@ -45,12 +48,12 @@ describe('Scorings', function() {
     game.addFrame(8,0)
     game.addFrame(2,3)
     expect(game.totalScore()).toEqual(63)
-  });
+  })
 
-  // it('adds bonuses for spares', function(){
-  //   game.addFrame(4,6);
-  //   game.addFrame(3,3);
-  //   expect(game.totalScore()).toEqual(19)
-  // });
+  it('adds bonuses for spares', function(){
+    game.addFrame(4,6);
+    game.addFrame(3,3);
+    expect(game.totalScore()).toEqual(19)
+  });
 
 });

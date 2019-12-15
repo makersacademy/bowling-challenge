@@ -30,7 +30,41 @@ class Bowling {
   }
 
   addStrike(roll1, roll2) {
-    this.currentScore += (10 + (2 * (roll1 + roll2)))
+    let spliceNumber = "-" + (this.strikes + 1)
+    spliceNumber.to_i
+
+    let end = this.frames.splice(spliceNumber)
+
+    let withoutZeros = []
+
+    for (let i = 0; i < end.length; i++) {
+      var arr = end[i]
+        for (let j = 0; j < arr.length; j++) {
+          if (arr[j] !== 0) {
+            withoutZeros.push(arr[j])
+          }
+       }
+    }
+
+    if (roll1 === 0) {
+        withoutZeros.push(0)
+    }
+
+    if (roll2 === 0) {
+        withoutZeros.push(0)
+    }
+
+    withoutZeros.push(roll1)
+    withoutZeros.push(roll2)
+
+    for (let k = 0; k < withoutZeros.length; k++) {
+      while (withoutZeros.length > 2) {
+          this.currentScore += (withoutZeros[0] + withoutZeros[1] + withoutZeros[2])
+          withoutZeros.shift()
+      }
+    }
+
+    this.currentScore += (withoutZeros[0] + withoutZeros[1])
     this.strikes = 0;
   }
 

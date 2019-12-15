@@ -63,7 +63,7 @@ describe("Bowling", () => {
     });
   });
 
-  describe("Adding to a previous strike", () => {
+  describe("Accumulating strike scoring", () => {
     it("if there is one strike previously logged, add 10 and double the current frame score to the current score", () => {
       testBowling.rolls(10, 0)
       testBowling.rolls(6, 2)
@@ -75,9 +75,40 @@ describe("Bowling", () => {
       testBowling.rolls(6, 2)
       expect(testBowling.strikes).toEqual(0);
     });
+
+    it("should accumulate strike scores on a double", () => {
+      testBowling.rolls(10, 0)
+      testBowling.rolls(10, 0)
+      testBowling.rolls(2, 3)
+      expect(testBowling.currentScore).toEqual(42)
+    })
+
+    it("should accumulate strike scores on a turkey", () => {
+      testBowling.rolls(10, 0)
+      testBowling.rolls(10, 0)
+      testBowling.rolls(10, 0)
+      testBowling.rolls(2, 3)
+      expect(testBowling.currentScore).toEqual(72)
+    })
+
+    it("should accumulate strike scores on a four-bagger", () => {
+      testBowling.rolls(10, 0)
+      testBowling.rolls(10, 0)
+      testBowling.rolls(10, 0)
+      testBowling.rolls(10, 0)
+      testBowling.rolls(2, 3)
+      expect(testBowling.currentScore).toEqual(102)
+    });
+
+    it("should take a total frame of 0 into account when adding strikes", () => {
+      testBowling.rolls(10, 0)
+      testBowling.rolls(10, 0)
+      testBowling.rolls(0, 0)
+      expect(testBowling.currentScore).toEqual(30)
+    })
   });
 
-  describe("Adding to a previous spare", () => {
+  describe("Accumulating spare scoring", () => {
     it("if there is one spare currently logged, add 10, the second roll, and twice the first roll to the current score", () => {
       testBowling.rolls(6, 4)
       testBowling.rolls(2, 6)

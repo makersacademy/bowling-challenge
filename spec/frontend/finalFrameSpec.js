@@ -15,6 +15,12 @@ describe('FinalFrame', () => {
     expect(testFinalFrame.getScore()).toBe(16);
   });
 
+  it('prevents a player from entering a single score higher than 10 or lower than 0', () => {
+    expect(() => { testFinalFrame.setRollOne(12); }).toThrowError(FinalFrame.INVALID_SCORE());
+    expect(() => { testFinalFrame.setRollTwo(100); }).toThrowError(FinalFrame.INVALID_SCORE());
+    expect(() => { testFinalFrame.setRollThree(-9); }).toThrowError(FinalFrame.INVALID_SCORE());
+  });
+
   it('prevents a player from rolling a third time if they fail to bowl a strike or spare', () => {
     testFinalFrame.setRollOne(5);
     testFinalFrame.setRollTwo(4);

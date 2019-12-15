@@ -14,6 +14,13 @@ describe('Frame', () => {
     testFrame2.setRollTwo(1);
   });
 
+  it('prevents a player from entering a single score higher than 10 or lower than 0', () => {
+    expect(() => { testFrame.setRollOne(12); }).toThrowError(Frame.INVALID_SCORE());
+    expect(() => { testFrame.setRollTwo(100); }).toThrowError(Frame.INVALID_SCORE());
+    expect(() => { testFrame.setRollOne(-4); }).toThrowError(Frame.INVALID_SCORE());
+    expect(() => { testFrame.setRollOne(-365); }).toThrowError(Frame.INVALID_SCORE());
+  });
+
   describe('setRollOne()', () => {
     it('keeps track of the first roll of a frame', () => {
       expect(testFrame.getRollOne()).toBe(5);

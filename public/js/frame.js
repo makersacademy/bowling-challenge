@@ -1,4 +1,4 @@
-// const Bonus = require('./bonus');
+const Bonus = require('./bonus');
 
 class Frame {
   constructor(bonus = new Bonus()) {
@@ -7,6 +7,8 @@ class Frame {
   }
 
   setRollOne(score) {
+    if(score < 0 || score > 10) { throw new Error(Frame.INVALID_SCORE()); }
+
     this.rollOne = score;
   }
 
@@ -15,6 +17,8 @@ class Frame {
   }
 
   setRollTwo(score) {
+    if(score < 0 || score > 10) { throw new Error(Frame.INVALID_SCORE()); }
+
     this.rollTwo = score;
   }
 
@@ -48,6 +52,10 @@ class Frame {
   awardBonus(points) {
     this.bonus.add(points);
   }
+
+  static INVALID_SCORE() {
+    return 'This score is not possible.';
+  }
 }
 
-// module.exports = Frame;
+module.exports = Frame;

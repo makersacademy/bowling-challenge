@@ -23,11 +23,9 @@ $(document).ready(() => {
   const recreatedScoreCardFrom = (obj) => {
     const newScoreCard = new ScoreCard();
 
-    obj.allFrames.forEach((frame, i) => {
-      createFrame(frame, i, newScoreCard);
-    });
-
+    obj.allFrames.forEach((frame, i) => { createFrame(frame, i, newScoreCard); });
     newScoreCard.currentFrame = obj.currentFrame;
+    
     const lastTurn = newScoreCard.allFrames[newScoreCard.allFrames.length - 1];
 
     if (newScoreCard.allFrames.length === 10 || (lastTurn.rollOne < 10 && !lastTurn.rollTwo)) {
@@ -100,7 +98,7 @@ $(document).ready(() => {
 
   $.get('/scores/new', (data) => {
     const scoreCardData = JSON.parse(data);
-    scoreCard = recreatedScoreCardFrom(scoreCardData) || new ScoreCard();
+    scoreCard = scoreCardData === null ? new ScoreCard() : recreatedScoreCardFrom(scoreCardData);
     resetPlayerOneDisplay();
   });
 

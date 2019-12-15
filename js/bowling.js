@@ -3,7 +3,7 @@
 function Bowling() {
   this.totalScore = 0;
   this.currentIndex = 0;
-  this.DEFAULT_SCORE_SHEET = [
+  this._DEFAULT_SCORE_SHEET = [
     {frame: 1, roll: 1, pins: "", score:"", notes: ""},
     {frame: 1, roll: 2, pins: "", score:"", notes: ""},
     {frame: 2, roll: 1, pins: "", score:"", notes: ""},
@@ -25,11 +25,12 @@ function Bowling() {
     {frame: 10, roll: 1, pins: "", score:"", notes: ""},
     {frame: 10, roll: 2, pins: "", score:"", notes: ""},
   ];
-  this.scoreSheet = this.DEFAULT_SCORE_SHEET;
+  this.scoreSheet = this._DEFAULT_SCORE_SHEET;
 }
 
 Bowling.prototype.knockedDown = function(pins) {
-  this.scoreSheet[this.currentIndex]["pins"] = pins
+  this.scoreSheet[this.currentIndex]["pins"] = pins;
+  this.currentIndex++;
 }
 
 Bowling.prototype.currentFrame = function() {

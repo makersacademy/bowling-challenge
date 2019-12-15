@@ -22,8 +22,17 @@ describe('Bowling', function () {
   describe("on the first frame and first roll", function() {
     it("can add number of pins knocked down to the scoreheet", function() {
       bowling.knockedDown(3)
-      expect(bowling.currentPins()).toEqual(3);
+      expect(bowling.scoreSheet[0]["pins"]).toEqual(3);
     });
+
+    it("moves on to the next roll after the turn has been taken", function() {
+      bowling.knockedDown(3)
+      expect(bowling.currentFrame()).toEqual(1);
+      expect(bowling.currentRoll()).toEqual(2);
+      expect(bowling.currentPins()).toEqual("");
+      expect(bowling.currentNotes()).toEqual("");
+    });
+
   });
 
 });

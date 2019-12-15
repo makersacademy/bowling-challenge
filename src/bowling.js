@@ -1,16 +1,24 @@
 function Game() {
-  this.points = 0;
+  this.totalPoints = 0;
+  this.framePoints = 0;
   this.frame = 1;
   this.roll = 1;
 }
 
 Game.prototype.add = function(points) {
-  if(this.points != 0) this.frame ++
-  this.roll ++;
-  this.points += points;
+  (this.roll == 2 || points == 10) ? this.nextFrame() : this.roll ++;
+  this.totalPoints += points;
 };
 
 Game.prototype.reset = function() {
-  this.points = 0
-  this.frame = 1
+  this.totalPoints = 0;
+  this.framePoints = 0;
+  this.frame = 1;
+  this.roll = 1;
 };
+
+Game.prototype.nextFrame = function() {
+  this.frame ++;
+  this.roll = 1;
+}
+

@@ -51,19 +51,21 @@ describe('Bowling', function () {
   });
 
   describe("strike", function() {
-    it("skips forward to next frame", function() {
+
+    beforeEach(function() {
       bowling.knockedDown(10);
+    });
+
+    it("skips forward to next frame", function() {
       expect(bowling.currentFrame()).toEqual(2);
       expect(bowling.currentRoll()).toEqual(1);
     });
 
     it("adds a note of 'Strike'", function() {
-      bowling.knockedDown(10);
       expect(bowling.scoreSheet[0]["notes"]).toEqual("Strike");
     });
 
     it("adds the bonus score after the next frame is complete", function() {
-      bowling.knockedDown(10);
       expect(bowling.scoreSheet[0]["score"]).toEqual("");
       bowling.knockedDown(3);
       bowling.knockedDown(4);
@@ -72,7 +74,6 @@ describe('Bowling', function () {
     });
 
     it("adds the new total score after next frame is complete", function() {
-      bowling.knockedDown(10);
       bowling.knockedDown(3);
       bowling.knockedDown(4);
       expect(bowling.scoreSheet[3]["score"]).toEqual(24);
@@ -80,9 +81,13 @@ describe('Bowling', function () {
   });
 
   describe("spare", function() {
-    it("adds the bonus score after the next roll is complete", function() {
+
+    beforeEach(function() {
       bowling.knockedDown(4);
       bowling.knockedDown(6);
+    });
+
+    it("adds the bonus score after the next roll is complete", function() {
       expect(bowling.scoreSheet[1]["score"]).toEqual("");
       expect(bowling.scoreSheet[1]["notes"]).toEqual("Spare");
       bowling.knockedDown(3);
@@ -91,14 +96,32 @@ describe('Bowling', function () {
     });
 
     it("adds the new total score after next frame is complete", function() {
-      bowling.knockedDown(4);
-      bowling.knockedDown(6);
       bowling.knockedDown(3);
       expect(bowling.scoreSheet[1]["score"]).toEqual(13);
       bowling.knockedDown(5);
       expect(bowling.scoreSheet[3]["score"]).toEqual(21);
     });
+  });
 
+  describe("10th frame", function() {
+
+    beforeEach(function() {
+      expect(bowling.scoreSheet.length).toEqual(20);
+      for (var i = 0; i < 18; i++) {
+        bowling.knockedDown(4);
+      };
+    });
+
+    it("adds a third roll if a strike is rolled", function() {
+      bowling.knockedDown(10);
+      expect(bowling.scoreSheet.length).toEqual(21);
+    });
+
+    it("adds a third roll if a spare is rolled", function() {
+      bowling.knockedDown(5);
+      bowling.knockedDown(5);
+      expect(bowling.scoreSheet.length).toEqual(21);
+    });
   });
 
 });

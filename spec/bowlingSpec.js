@@ -58,11 +58,5 @@ describe('Scorings', function() {
     expect(game.totalScore()).toEqual(26)
   });
 
-  // it('bonus score for the perfect game!', function () {
-  //   for (var i = 0; i < 13; i++) {
-  //     game.addFrame(10,0);
-  //   }
-  //   expect(game.totalScore()).toEqual(300)
-  // });
 
 });

@@ -11,10 +11,6 @@ describe('Game', function() {
       expect(game.pinNumber(5)).toEqual(5)
     });
 
-    it('records a roll number for a given frame, when pin numbers are passed in', function(){
-      expect(game.rollNumber(2)).toEqual(1)
-    });
-
     it('adds a new frame to the game', function() {
       expect(game.addFrame(4,1)).toEqual([4,1])
     });
@@ -61,5 +57,12 @@ describe('Scorings', function() {
     game.addFrame(4,4);
     expect(game.totalScore()).toEqual(26)
   });
+
+  // it('bonus score for the perfect game!', function () {
+  //   for (var i = 0; i < 13; i++) {
+  //     game.addFrame(10,0);
+  //   }
+  //   expect(game.totalScore()).toEqual(300)
+  // });
 
 });

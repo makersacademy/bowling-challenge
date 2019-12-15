@@ -3,7 +3,6 @@
 function Game(){
   this.MINIMUM_SCORE = 0;
   this.DEFAULT_PINS = 10;
-  this.pins = this.DEFAULT_PINS;
   this._frame = []
 }
 
@@ -15,17 +14,22 @@ Game.prototype.pinNumber = function (number) {
   return "Invalid role please, number of pins needs to be between 0 and 10"
 }
 
-Game.prototype.rollNumber = function () {
-  var i = 0; i ++;
-  if(i % 2 == 0) {
-    return 2;
-  }
-  return 1;
-}
-
  Game.prototype.addFrame = function (roll1, roll2) {
+   if (roll1 > this.DEFAULT_PINS) {
+  return "Invalid roll, number of pins needs to be between 0 and 10";
+    }
+    if (roll2 > this.DEFAULT_PINS) {
+  return "Invalid roll, number of pins needs to be between 0 and 10";
+    }
+    if (roll2 > (this.DEFAULT_PINS - roll1)) {
+  return "Invalid roll, that's more than 10 pins for the frame!?";
+    }
    this._frame.push(roll1, roll2);
    if(roll1 == 10) {
+     this._frame.push("Strikey!", "Strike!")
+     return this._frame;
+   }
+   if(roll2 == 10) {
      this._frame.push("Strikey!", "Strike!")
      return this._frame;
    }
@@ -59,7 +63,7 @@ Game.prototype.rollNumber = function () {
    arr[y] = arr[y + 2]
    var z = arr.indexOf("Strikey!");
    arr[z] = arr[z + 2]
-   ///
+   /// summing contents of scores
    for (var i = 0; i < arr.length; i++) {
   sum += arr[i];
   }

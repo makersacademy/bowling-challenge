@@ -1,14 +1,15 @@
 let protos = require('../lib/javascript/roll.js');
-const Roll = protos.Roll;
-const RollError = protos.RollError;
+
+const { Roll } = protos;
 
 protos = require('../lib/javascript/frame.js');
-const Frame = protos.Frame;
-const FrameError = protos.FrameError;
+
+const { Frame } = protos;
 
 protos = require('../lib/javascript/scorecard.js');
-const Scorecard = protos.Scorecard;
-const ScorecardError = protos.ScorecardError;
+
+const { Scorecard } = protos;
+const { ScorecardError } = protos;
 
 describe('A Game', () => {
   let scorecard;
@@ -70,7 +71,7 @@ describe('A Game', () => {
   });
 
   it('should end the game on the last frame without a strike or spare', () => {
-    for (let i=0; i<18; i++) expect(scorecard.input(0)).toEqual(true);
+    for (let i = 0; i < 18; i++) expect(scorecard.input(0)).toEqual(true);
     expect(scorecard.input(3)).toEqual(true);
     expect(scorecard.input(3)).toEqual(false);
     expect(scorecard.totalScore()).toEqual(6);
@@ -79,7 +80,7 @@ describe('A Game', () => {
   });
 
   it('should handle a strike on the last frame correctly', () => {
-    for (let i=0; i<18; i++) expect(scorecard.input(0)).toEqual(true);
+    for (let i = 0; i < 18; i++) expect(scorecard.input(0)).toEqual(true);
     scorecard.input(10);
     expect(scorecard.input(4)).toEqual(true);
     expect(scorecard.input(5)).toEqual(false);
@@ -87,7 +88,7 @@ describe('A Game', () => {
   });
 
   it('should handle a spare on the last frame correctly', () => {
-    for (let i=0; i<18; i++) expect(scorecard.input(0)).toEqual(true);
+    for (let i = 0; i < 18; i++) expect(scorecard.input(0)).toEqual(true);
     scorecard.input(6);
     expect(scorecard.input(4)).toEqual(true);
     expect(scorecard.input(7)).toEqual(false);
@@ -95,7 +96,7 @@ describe('A Game', () => {
   });
 
   it('should handle a perfect game', () => {
-    for (let i=0; i<11; i++) expect(scorecard.input(10)).toEqual(true);
+    for (let i = 0; i < 11; i++) expect(scorecard.input(10)).toEqual(true);
     expect(scorecard.input(10)).toEqual(false);
     expect(scorecard.totalScore()).toEqual(300);
   });

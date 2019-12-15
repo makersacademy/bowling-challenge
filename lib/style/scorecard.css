@@ -5,7 +5,7 @@
     border: 2px solid black;
 }
 
-.roll, .frame_score {
+.roll, .frame_score, .last_roll, .last_frame_score {
     display: flex;
     align-items: center;
     justify-content: center;

@@ -1,14 +1,14 @@
 const protos = require('../../lib/javascript/scorecard.js');
 
-const Scorecard = protos.Scorecard;
-const ScorecardError = protos.ScorecardError
+const { Scorecard } = protos;
+const { ScorecardError } = protos;
 
 describe('Scorecard', () => {
   let scorecard;
 
   const roll = jasmine.createSpyObj('roll', {
     score: 8,
-    addScore: 6
+    addScore: 6,
   });
 
   let frame;
@@ -19,7 +19,7 @@ describe('Scorecard', () => {
       frameNumber: 1,
       addRoll: roll,
     });
-    frame.getNextFrame = jasmine.createSpy('frame.getNextFrame', function() { return frame; }).and.callThrough();
+    frame.getNextFrame = jasmine.createSpy('frame.getNextFrame', () => frame).and.callThrough();
     roll.addScore.calls.reset();
     scorecard = new Scorecard(frame);
   });
@@ -57,7 +57,7 @@ describe('Scorecard', () => {
       roll.addScore.calls.reset();
       scorecard.input(4);
       expect(roll.addScore).toHaveBeenCalledTimes(2);
-    })
+    });
 
     it('should only try to add to the previous 2 rolls', () => {
       scorecard.input(6);
@@ -83,7 +83,7 @@ describe('Scorecard', () => {
         frameNumber: 2,
         addRoll: roll,
       });
-      frame.getNextFrame = function() { return frame2; }
+      frame.getNextFrame = function getNextFrame() { return frame2; };
       frame.score = () => 4;
       scorecard.input(4);
       expect(scorecard.totalScore()).toEqual(12);

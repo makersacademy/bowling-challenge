@@ -1,23 +1,23 @@
-let protos = require('../../lib/javascript/frame.js');
+const protos = require('../../lib/javascript/frame.js');
 
-const Frame = protos.Frame;
-const FrameError = protos.FrameError;
+const { Frame } = protos;
+const { FrameError } = protos;
 
 describe('Frame', () => {
-  let Roll = jasmine.createSpy('Roll',
-    function (number, rolls) { return { score: () => number, rolls: rolls }; })
+  const Roll = jasmine.createSpy('Roll',
+    (number, rolls) => ({ score: () => number, rolls }))
     .and.callThrough();
 
   let frame;
 
   beforeEach(() => {
     Roll.calls.reset();
-    frame = new Frame(1, Roll)
+    frame = new Frame(1, Roll);
   });
 
   describe('constructor', () => {
     it('sets the frame number', () => {
-      for (let i=1; i<=10; i++) {
+      for (let i = 1; i <= 10; i++) {
         frame = new Frame(i, Roll);
         expect(frame.frameNumber()).toEqual(i);
       }
@@ -46,7 +46,7 @@ describe('Frame', () => {
     });
 
     it('should return the roll', () => {
-      roll = frame.addRoll(8);
+      const roll = frame.addRoll(8);
       expect(roll.score()).toEqual(8);
       expect(roll.rolls).toEqual(0);
     });
@@ -106,7 +106,7 @@ describe('Frame', () => {
       expect(Roll.calls.allArgs()).toEqual([
         [10, 0],
         [10, 0],
-        [10, 0]
+        [10, 0],
       ]);
     });
   });

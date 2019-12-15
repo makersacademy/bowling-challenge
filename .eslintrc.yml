@@ -4,11 +4,17 @@ env:
   es6: true
   node: true
   jasmine: true
+  jquery: true
 extends:
   - airbnb-base
 globals:
   Atomics: readonly
   SharedArrayBuffer: readonly
+  Roll: writable
+  Frame: writable
+  Scorecard: writable
 parserOptions:
   ecmaVersion: 2018
-rules: {}
+rules: {
+    'no-plusplus': [2, { allowForLoopAfterthoughts: true }]
+}

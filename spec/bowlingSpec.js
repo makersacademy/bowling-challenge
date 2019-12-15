@@ -45,5 +45,35 @@ describe('Bowling', function () {
     });
   });
 
+  describe("strike", function() {
+    it("skips forward to next frame", function() {
+      bowling.knockedDown(10);
+      expect(bowling.currentFrame()).toEqual(2);
+      expect(bowling.currentRoll()).toEqual(1);
+    });
+
+    it("adds a note of Strike", function() {
+      bowling.knockedDown(10);
+      expect(bowling.scoreSheet[0]["notes"]).toEqual("Strike");
+    });
+
+    it("adds the bonus score after the next frame is complete", function() {
+      bowling.knockedDown(10);
+      expect(bowling.scoreSheet[0]["score"]).toEqual("");
+      bowling.knockedDown(3);
+      bowling.knockedDown(4);
+      expect(bowling.scoreSheet[1]["score"]).toEqual(17);
+      expect(bowling.scoreSheet[1]["notes"]).toEqual("Strike: 10 pins plus bonus of 7 from next frame (rolls 1 and 2 from frame 2)");
+    });
+
+    it("adds the new total score after next frame is complete", function() {
+      bowling.knockedDown(10);
+      bowling.knockedDown(3);
+      bowling.knockedDown(4);
+      expect(bowling.scoreSheet[3]["score"]).toEqual(24);
+    });
+
+  });
+
 
 });

@@ -24,7 +24,6 @@ Frame.prototype.isStrike = function () {
   if(this._rolls[this._rolls.length - 1] === 10) {
     this._numRolls = 0
     this._extrasRequired = 2
-    console.log("strike")
     return true
   }
 }
@@ -32,7 +31,6 @@ Frame.prototype.isStrike = function () {
 Frame.prototype.isSpare = function () {
   if(this._rolls.reduce((a,b) => a + b, 0) === 10) {
     this._extrasRequired = 1
-    console.log("spare")
     return true
   }
 }

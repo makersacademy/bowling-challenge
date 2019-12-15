@@ -1,4 +1,4 @@
-const Frame = require('./frame');
+// const Frame = require('./frame');
 
 class FinalFrame extends Frame {
   setRollTwo(score) {
@@ -35,4 +35,4 @@ class FinalFrame extends Frame {
   }
 }
 
-module.exports = FinalFrame;
+// module.exports = FinalFrame;

@@ -21,6 +21,12 @@ describe('Frame', () => {
     expect(() => { testFrame.setRollOne(-365); }).toThrowError(Frame.INVALID_SCORE());
   });
 
+  it('prevents a player from entering a score which is not a number', () => {
+    expect(() => { testFrame.setRollOne('abc'); }).toThrowError(Frame.INVALID_SCORE());
+    expect(() => { testFrame.setRollOne('one'); }).toThrowError(Frame.INVALID_SCORE());
+    expect(() => { testFrame.setRollOne('a score?'); }).toThrowError(Frame.INVALID_SCORE());
+  });
+
   describe('setRollOne()', () => {
     it('keeps track of the first roll of a frame', () => {
       expect(testFrame.getRollOne()).toBe(5);

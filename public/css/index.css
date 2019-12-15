@@ -54,7 +54,7 @@ body {
   width: 20%;
   display: flex;
   align-items: center;
-  padding: 10px 0 10px 10px;
+  padding: 5px 0 5px 10px;
 }
 
 #player-name {
@@ -64,22 +64,24 @@ body {
 }
 
 #enter-scores {
-  height: 6vw;
-  width: 6vw;
+  height: 100%;
+  width: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 10px 10px 10px 5px;
+  margin: 5px 0;
 }
 
 #new-score {
   height: 95%;
   width: 95%;
-  border-radius: 10px;
+  border-radius: 10%;
   background-color: transparent;
   text-align: center;
   font-size: 3vw;
   border: 2px solid #1b1414;
+  /* margin: 5px 10px; */
 }
 
 #new-score:focus {

@@ -1,0 +1,5 @@
+before_script:
+  - npm install jasmine --save-dev
+
+script:
+  - npx jasmine

@@ -11,9 +11,11 @@ function Bowling(frames = 10) {
 Bowling.prototype.roll = function(...args) {
   args.forEach( pins => {
     if(this.isEnd) throw new Error("Cannot roll, the game has ended, total Points: " + this.totalScore())
-    if(this._islastFrame) return this._lastFrame
-   // console.log("here")
-    this._addRoll(pins)
+    if(this._isLastFrame && !!this._currentFrame().numExtras) {
+      this._lastFrame(pins)
+    } else {
+      this._addRoll(pins)
+    }
   });
 }
 
@@ -28,15 +30,17 @@ Bowling.prototype.frameNum = function() {
 // private functions
 
 Bowling.prototype._addRoll = function(pins) {
-  
+  // console.log("here")
+  this._currentFrame().inputRoll(pins);
   if(this._frames.length > 1) this._extraPoints(pins);
   this._checkEnd();
-  if(!this._currentFrame().canRoll() && !this._lastFrame) this._newFrame();
+  if(!this._currentFrame().canRoll() && !this._isLastFrame) this._newFrame();
 }
 
 Bowling.prototype._lastFrame = function(pins) {
+  // console.log("here2")
   this._currentFrame().inputExtra(pins);
-  console.log("here")
+  this._checkEnd();
 }
 
 Bowling.prototype._newFrame = function() {
@@ -70,6 +74,5 @@ Bowling.prototype._checkEnd = function() {
     this.isEnd = true;
   } 
 }
-
 
 module.exports = Bowling

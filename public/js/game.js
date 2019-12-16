@@ -4,10 +4,10 @@ function Game() {
   this.scoreSheet = [];
 };
 
-Game.prototype.roll = function(frame) {
+Game.prototype.addFrame = function(frame) {
+  this.currentFrame += 1;
   this.frameSheet.push(frame);
   this.calculateScoreSheet();
-  this.currentFrame += 1;
 };
 
 Game.prototype.calculateTotalScore = function() {
@@ -40,9 +40,9 @@ Game.prototype.calculateFrameScore = function(frame, index) {
     return frame.reduce((total, roll) => total + roll, 0);
   };
 
-  if (isStrike()) { frameScore = 10 + rolls[1] + rolls[2]; }
-  else if (isSpare()) { frameScore += 10 + rolls[2]; }
-  else { frameScore = frameSum(); }
+  if (isStrike()) frameScore = 10 + rolls[1] + rolls[2];
+  else if (isSpare()) frameScore += 10 + rolls[2];
+  else frameScore = frameSum();
   
   return frameScore;
 };

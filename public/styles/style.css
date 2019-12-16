@@ -33,3 +33,7 @@ label {
   margin-left: 20px;
   margin-top: 30px;
 }
+
+#total-score-title, #total-score {
+  display: inline;
+}

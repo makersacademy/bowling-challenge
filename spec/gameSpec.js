@@ -7,7 +7,7 @@ describe("Game", function() {
 
   describe("when calculating the total score", function() {
     it("can calculate the score of an incomplete game", function() {
-      game.roll([2, 5]);
+      game.addFrame([2, 5]);
       expect(game.calculateTotalScore()).toEqual(7);
     });
 
@@ -32,36 +32,36 @@ describe("Game", function() {
     });
   
     it("can calculate the score of a game with spares and strikes and two rolls on the last frame", function() {
-      game.roll([10]);
-      game.roll([10]);
-      game.roll([10]);
-      game.roll([2, 8]);
-      game.roll([2, 2]);
-      game.roll([2, 5]);
-      game.roll([4, 6]);
-      game.roll([10]);
-      game.roll([2, 7]);
-      game.roll([2, 7]);
+      game.addFrame([10]);
+      game.addFrame([10]);
+      game.addFrame([10]);
+      game.addFrame([2, 8]);
+      game.addFrame([2, 2]);
+      game.addFrame([2, 5]);
+      game.addFrame([4, 6]);
+      game.addFrame([10]);
+      game.addFrame([2, 7]);
+      game.addFrame([2, 7]);
       expect(game.calculateTotalScore()).toEqual(152);
     });
   
     it("can calculate the score of a game with spares and strikes and three rolls on the last frame", function() {
-      game.roll([10]);
-      game.roll([10]);
-      game.roll([10]);
-      game.roll([2, 8]);
-      game.roll([2, 2]);
-      game.roll([2, 5]);
-      game.roll([4, 6]);
-      game.roll([10]);
-      game.roll([2, 7]);
-      game.roll([2, 8, 4]);
+      game.addFrame([10]);
+      game.addFrame([10]);
+      game.addFrame([10]);
+      game.addFrame([2, 8]);
+      game.addFrame([2, 2]);
+      game.addFrame([2, 5]);
+      game.addFrame([4, 6]);
+      game.addFrame([10]);
+      game.addFrame([2, 7]);
+      game.addFrame([2, 8, 4]);
       expect(game.calculateTotalScore()).toEqual(157);
     });
   });
 
   function generateFrames(frame, finalFrame) {
-    for (var i = 0; i < 9; i++) game.roll(frame);
-    game.roll(finalFrame);
+    for (var i = 0; i < 9; i++) game.addFrame(frame);
+    game.addFrame(finalFrame);
   };
 });

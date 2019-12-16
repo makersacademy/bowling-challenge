@@ -124,6 +124,7 @@ describe('Bowling', function(){
 
     it('should return total as 9', function(){
       bowling.addScore(4);
+      bowling.updateTotal();
       bowling.addScore(5);
       bowling.updateTotal();
       expect(bowling.total).toEqual(9);
@@ -131,6 +132,7 @@ describe('Bowling', function(){
 
     it('should return total of 7', function(){
       bowling.addScore(7);
+      bowling.updateTotal();
       bowling.addScore(0);
       bowling.updateTotal();
       expect(bowling.total).toEqual(7);
@@ -138,6 +140,7 @@ describe('Bowling', function(){
 
     it('should return total of 0, if only a strike was scored as it is awaiting the next two rolls', function(){
       bowling.addScore(10);
+      bowling.updateTotal();
       bowling.addScore(0);
       bowling.updateTotal();
       expect(bowling.total).toEqual(0);
@@ -145,6 +148,7 @@ describe('Bowling', function(){
 
     it('should return total of 0, if only a spare was scored as it is awaiting one additional roll', function(){
       bowling.addScore(7);
+      bowling.updateTotal();
       bowling.addScore(3);
       bowling.updateTotal();
       expect(bowling.total).toEqual(0);
@@ -153,6 +157,7 @@ describe('Bowling', function(){
     it('should return total of 15, after scoring a spare and a 5 on the next roll', function(){
       bowling.addScore(8);
       bowling.addScore(2);
+      bowling.updateTotal();
       bowling.addScore(5);
       bowling.updateTotal();
       expect(bowling.total).toEqual(15);
@@ -160,8 +165,22 @@ describe('Bowling', function(){
 
     it('should return a total of 20, after scoring a spare and a strike on the next roll', function(){
       bowling.addScore(8);
+      bowling.updateTotal();
       bowling.addScore(2);
+      bowling.updateTotal();
       bowling.addScore(10);
+      bowling.updateTotal();
+      expect(bowling.total).toEqual(20);
+    });
+
+    it('should return a total of 20, after scroing a spare and a strike on the next roll and inputting 0 as the second roll', function(){
+      bowling.addScore(8);
+      bowling.updateTotal();
+      bowling.addScore(2);
+      bowling.updateTotal();
+      bowling.addScore(10);
+      bowling.updateTotal();
+      bowling.addScore(0);
       bowling.updateTotal();
       expect(bowling.total).toEqual(20);
     });

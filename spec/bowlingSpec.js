@@ -13,11 +13,11 @@ describe('Bowling', function () {
   });
 
   it("starts with an empty score sheet", function(){
-    expect(bowling.currentFrame()).toEqual(1);
-    expect(bowling.currentRoll()).toEqual(1);
-    expect(bowling.currentPins()).toEqual("");
-    expect(bowling.currentScore()).toEqual("");
-    expect(bowling.currentNotes()).toEqual("");
+    expect(bowling._currentFrame()).toEqual(1);
+    expect(bowling._currentRoll()).toEqual(1);
+    expect(bowling._currentPins()).toEqual("");
+    expect(bowling._currentScore()).toEqual("");
+    expect(bowling._currentNotes()).toEqual("");
   });
 
   it("adds note of 'Bad luck' if no pins are knocked down", function() {
@@ -33,18 +33,18 @@ describe('Bowling', function () {
 
     it("moves on to the next roll after the turn has been taken", function() {
       bowling.knockedDown(3);
-      expect(bowling.currentFrame()).toEqual(1);
-      expect(bowling.currentRoll()).toEqual(2);
-      expect(bowling.currentPins()).toEqual("");
-      expect(bowling.currentScore()).toEqual("");
-      expect(bowling.currentNotes()).toEqual("");
+      expect(bowling._currentFrame()).toEqual(1);
+      expect(bowling._currentRoll()).toEqual(2);
+      expect(bowling._currentPins()).toEqual("");
+      expect(bowling._currentScore()).toEqual("");
+      expect(bowling._currentNotes()).toEqual("");
     });
   });
 
   describe("on the first frame and second roll", function() {
     it("adds the new total score to the score sheet once second roll has been taken", function() {
       bowling.knockedDown(3);
-      expect(bowling.currentScore()).toEqual("");
+      expect(bowling._currentScore()).toEqual("");
       bowling.knockedDown(4);
       expect(bowling.scoreSheet[1]["score"]).toEqual(7);
     });
@@ -57,8 +57,9 @@ describe('Bowling', function () {
     });
 
     it("skips forward to next frame", function() {
-      expect(bowling.currentFrame()).toEqual(2);
-      expect(bowling.currentRoll()).toEqual(1);
+      console.log(bowling._currentFrame());
+      expect(bowling._currentFrame()).toEqual(2);
+      expect(bowling._currentRoll()).toEqual(1);
     });
 
     it("adds a note of 'Strike'", function() {
@@ -128,7 +129,7 @@ describe('Bowling', function () {
       bowling.knockedDown(10);
       expect(bowling.scoreSheet[19]["score"]).toEqual(92);
       bowling.knockedDown(10);
-      expect(bowling.currentScore()).toEqual(102);
+      expect(bowling._currentScore()).toEqual(102);
       expect(bowling.scoreSheet.length).toEqual(21);
     });
 
@@ -138,9 +139,8 @@ describe('Bowling', function () {
       expect(bowling.scoreSheet[19]["score"]).toEqual("");
       bowling.knockedDown(8);
       expect(bowling.scoreSheet[19]["score"]).toEqual(90);
-      expect(bowling.currentScore()).toEqual(98);
+      expect(bowling._currentScore()).toEqual(98);
       expect(bowling.scoreSheet.length).toEqual(21);
     });
   });
-
 });

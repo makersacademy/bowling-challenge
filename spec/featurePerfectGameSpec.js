@@ -13,7 +13,7 @@ describe('A perfect game', function () {
       bowling.knockedDown(10);
     }
     expect(bowling.scoreSheet.length).toEqual(21);
-    expect(bowling.scoreSheet[20]["score"]).toEqual(300);
+    expect(bowling._currentScore()).toEqual(300);
     expect(bowling.totalScore).toEqual(300);
   });
 

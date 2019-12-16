@@ -13,9 +13,9 @@ describe('A gutter game', function () {
       bowling.knockedDown(0);
     }
     expect(bowling.scoreSheet.length).toEqual(20);
-    expect(bowling.scoreSheet[19]["pins"]).toEqual(0);
-    expect(bowling.scoreSheet[19]["score"]).toEqual(0);
-    expect(bowling.scoreSheet[19]["notes"]).toEqual("Bad luck");
+    expect(bowling._currentPins()).toEqual(0);
+    expect(bowling._currentScore()).toEqual(0);
+    expect(bowling._currentNotes()).toEqual("Bad luck");
     expect(bowling.totalScore).toEqual(0);
   });
 

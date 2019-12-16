@@ -259,7 +259,7 @@ describe('A full game of bowling', function () {
       expect(bowling.scoreSheet[bowling._currentIndex - 2]["score"]).toEqual("");
       expect(bowling.scoreSheet[bowling._currentIndex - 2]["notes"]).toEqual("Strike");
       expect(bowling.scoreSheet[bowling._currentIndex - 1]["score"]).toEqual(91);
-      expect(bowling.scoreSheet[bowling._currentIndex]["score"]).toEqual("");
+      expect(bowling._currentScore()).toEqual("");
       expect(bowling.totalScore).toEqual(91);
     });
   });

@@ -14,9 +14,9 @@ This project models a bowling game scorecard, tracking and calculating the score
 
 ## Still to be completed
 
-**Refactoring - perhaps extracting into multiple classes**  
-**Web interface**  
-**CSS styling**  
+- **Refactoring - perhaps extracting into multiple classes**  
+- **Web interface**  
+- **CSS styling**  
 
 ## Features
 - Add player name
@@ -98,4 +98,4 @@ To run tests in the web browser, run ```open SpecRunner.html``` in the terminal 
   - 1st roll, 9th frame: hits 8 pins
   - 2nd roll, 9th frame: hits 2 pins, gets a spare, and calculates bonus for previous strike
   - 1st roll, 10th frame: hits 3 pins and calculates bonus for previous spare
-  - 2nd roll, 10th frame: hits 4 pins and the game ends
+  - 2nd roll, 10th frame: hits 4 pins and the game ends with a 121 total score

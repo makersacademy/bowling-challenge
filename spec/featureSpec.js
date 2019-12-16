@@ -363,7 +363,7 @@ describe('A full game of bowling', function () {
   });
 
   describe('2nd roll, 10th frame', function(){
-    it("hits 4 pins and the game ends", function() {
+    it("hits 4 pins and the game ends with a 121 total score", function() {
       bowling.knockedDown(1);
       bowling.knockedDown(4);
       bowling.knockedDown(4);

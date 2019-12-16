@@ -34,7 +34,7 @@ Bowling.prototype.isSpare = function(){
 
 Bowling.prototype.isDoubleStrike = function(){
   if(this.scorecard.length > 2){
-    if(this.scorecard[this.scorecard.length-3][0] == 10 && this.isPrevStrike){
+    if(this.scorecard[this.scorecard.length-3][0] == 10 && this.isPrevStrike()){
       return true;
     };
   };

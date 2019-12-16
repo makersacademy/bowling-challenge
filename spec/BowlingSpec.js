@@ -71,7 +71,6 @@ describe('Bowling', function(){
       bowling.addScore(10);
       bowling.addScore(0);
       bowling.addScore(2);
-      bowling.addScore(8);
       expect(bowling.isPrevStrike()).toBeTruthy();
     });
 
@@ -79,7 +78,6 @@ describe('Bowling', function(){
       bowling.addScore(7);
       bowling.addScore(0);
       bowling.addScore(10);
-      bowling.addScore(0);
       expect(bowling.isPrevStrike()).toBeFalsy();
     });
 
@@ -88,7 +86,32 @@ describe('Bowling', function(){
       bowling.addScore(8);
       expect(bowling.isPrevStrike()).toBeFalsy();
     });
-    
+
+    it('should return true if player is on double strike', function(){
+      bowling.addScore(10);
+      bowling.addScore(0);
+      bowling.addScore(10);
+      bowling.addScore(0);
+      bowling.addScore(2);
+      expect(bowling.isDoubleStrike()).toBeTruthy();
+    });
+
+    it('should return false if player is not on double strike', function(){
+      bowling.addScore(10);
+      bowling.addScore(0);
+      bowling.addScore(4);
+      bowling.addScore(6);
+      bowling.addScore(4);
+      expect(bowling.isDoubleStrike()).toBeFalsy();
+    });
+
+    it('should return false if there is not enough frames to determine double strike', function(){
+      bowling.addScore(10);
+      bowling.addScore(0);
+      bowling.addScore(4);
+      expect(bowling.isDoubleStrike()).toBeFalsy();
+    });
+
   });
 
 });

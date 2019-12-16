@@ -60,7 +60,11 @@ Bowling.prototype.isStrike = function(){
 
 Bowling.prototype.updateTotal = function(){
   if(!this.firstThrow){
+    if(this.isDoubleStrike()){
 
+    } else if(this.isPrevSpare()) {
+      this.total += 10 + this.scorecard[this.scorecard.length-1][0];
+    }
   } else {
     if(this.isPrevStrike()){
 

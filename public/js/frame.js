@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+
 // const Bonus = require('./bonus');
 
 class Frame {
@@ -7,8 +10,8 @@ class Frame {
   }
 
   setRollOne(score) {
-    if(score < 0 || score > 10) { throw new Error(Frame.INVALID_SCORE()); }
-    if(!Frame.numbers().includes(score)) { throw new Error(Frame.INVALID_SCORE()); }
+    if (score < 0 || score > 10) { throw new Error(Frame.INVALID_SCORE()); }
+    if (!Frame.numbers().includes(score)) { throw new Error(Frame.INVALID_SCORE()); }
 
     this.rollOne = score;
   }
@@ -18,7 +21,7 @@ class Frame {
   }
 
   setRollTwo(score) {
-    if(score < 0 || score > 10) { throw new Error(Frame.INVALID_SCORE()); }
+    if (score < 0 || score > 10) { throw new Error(Frame.INVALID_SCORE()); }
 
     this.rollTwo = score;
   }

@@ -1,15 +1,20 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+
 // const Frame = require('./frame');
 
 class FinalFrame extends Frame {
   setRollTwo(score) {
-    if(score < 0 || score > 10) { throw new Error(FinalFrame.INVALID_SCORE()); }
-    if (this.getRollOne() < 10 && score + this.getRollOne() > 10) { throw new Error(FinalFrame.INVALID_SCORE()); }
+    if (score < 0 || score > 10) { throw new Error(FinalFrame.INVALID_SCORE()); }
+    if (this.getRollOne() < 10 && score + this.getRollOne() > 10) {
+      throw new Error(FinalFrame.INVALID_SCORE());
+    }
 
     this.rollTwo = score;
   }
 
   setRollThree(score) {
-    if(score < 0 || score > 10) { throw new Error(FinalFrame.INVALID_SCORE()); }
+    if (score < 0 || score > 10) { throw new Error(FinalFrame.INVALID_SCORE()); }
     if (this.getScore() < 10) { throw new Error(FinalFrame.NO_MORE_ROLLS()); }
     if (this.getRollOne() === 10 && this.getRollTwo() < 10 && score + this.getRollTwo() > 10) {
       throw new Error(FinalFrame.INVALID_SCORE());

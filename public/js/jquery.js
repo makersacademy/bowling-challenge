@@ -1,4 +1,6 @@
+/* eslint-disable no-console */
 /* eslint-disable no-undef */
+
 $(document).ready(() => {
   let scoreCard = new ScoreCard();
 
@@ -25,7 +27,7 @@ $(document).ready(() => {
 
     obj.allFrames.forEach((frame, i) => { createFrame(frame, i, newScoreCard); });
     newScoreCard.currentFrame = obj.currentFrame;
-    
+
     const lastTurn = newScoreCard.allFrames[newScoreCard.allFrames.length - 1];
 
     if (newScoreCard.allFrames.length === 10 || (lastTurn.rollOne < 10 && !lastTurn.rollTwo)) {
@@ -109,7 +111,7 @@ $(document).ready(() => {
   $('#enter-scores').submit((e) => {
     e.preventDefault();
     const score = Number($('#new-score').val());
-    
+
     if (!(scoreCard.frame.getRollOne())) {
       scoreCard.setRollOne(score);
       resetPlayerOneDisplay();

@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+
 // const Frame = require('./frame');
 // const FinalFrame = require('./finalFrame');
 

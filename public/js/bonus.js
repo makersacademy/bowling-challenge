@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 class Bonus {
   constructor() {
     this.points = 0;

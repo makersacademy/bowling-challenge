@@ -5,7 +5,7 @@ $(document).ready(function() {
   
   for (var i = 0; i < 10; i++) { 
     frames[i] = new Frame(); 
-  };
+  }
 
   let currentFrame = frames[frameNumber];
   let game = new Game();

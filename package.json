@@ -1,0 +1,35 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Scorecard Challenge",
+  "main": "interface.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "karma start karma.conf.js — single-run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mezela/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mezela/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/Mezela/bowling-challenge#readme",
+  "devDependencies": {
+    "eslint": "^6.7.2",
+    "eslint-plugin-jasmine": "^2.10.1",
+    "jasmine-core": "*",
+    "karma": "*",
+    "karma-chrome-launcher": "*",
+    "karma-cli": "*",
+    "karma-jasmine": "*",
+    "karma-phantomjs-launcher": "*",
+    "puppeteer": "^1.20.0",
+    "phantomjs-prebuilt": "^2.1.5"
+  }
+}

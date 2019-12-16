@@ -10,7 +10,7 @@
 
 The challenge is to create a scorecard for a game of bowling. The scorecard will take in the values for the pins knocked down by a single player and sum the total score for each round and finally for the entire game. 
 
-As this is a scorecard, the user inputs the rolls (i.e. the rolls will not be randomly generated).
+As this is a scorecard, the user inputs each roll (i.e. the rolls will not be randomly generated).
 
 ![Screenshot]()
 

@@ -116,6 +116,12 @@ describe('Bowling', function(){
 
   describe('Testing on updating the total score', function(){
 
+    it('should return total of 0, not updating score as frame has not ended', function(){
+      bowling.addScore(4);
+      bowling.updateTotal();
+      expect(bowling.total).toEqual(0);
+    });
+
     it('should return total as 9', function(){
       bowling.addScore(4);
       bowling.addScore(5);
@@ -123,6 +129,13 @@ describe('Bowling', function(){
       expect(bowling.total).toEqual(9);
     });
 
-  })
+    it('should return total of 7', function(){
+      bowling.addScore(7);
+      bowling.addScore(0);
+      bowling.updateTotal();
+      expect(bowling.total).toEqual(7);
+    });
+
+  });
 
 });

@@ -27,11 +27,11 @@ Frame.prototype._bonus = function(nextFrame, afterNextFrame) {
 };
 
 Frame.prototype._isSpare = function() {
-  return this._rollScore() == this.MAXIMUM_SCORE;
+  return this._rollScore() == this.MAX_SCORE;
 };
 
 Frame.prototype._isStrike = function() {
-  return this._firstRoll() == this.MAXIMUM_SCORE;
+  return this._firstRoll() == this.MAX_SCORE;
 };
 
 Frame.prototype._spareBonus = function() {

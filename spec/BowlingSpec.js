@@ -114,4 +114,15 @@ describe('Bowling', function(){
 
   });
 
+  describe('Testing on updating the total score', function(){
+
+    it('should return total as 9', function(){
+      bowling.addScore(4);
+      bowling.addScore(5);
+      bowling.updateTotal();
+      expect(bowling.total).toEqual(9);
+    });
+
+  })
+
 });

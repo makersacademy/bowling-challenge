@@ -17,7 +17,7 @@ Bowling.prototype.addScore = function(score){
 
 Bowling.prototype.isPrevSpare = function(){
   if(this.scorecard.length > 1){
-    if(this.scorecard[this.scorecard.length-2][0] + this.scorecard[this.scorecard.length-2][1] == 10){
+    if(this.scorecard[this.scorecard.length-2][0] + this.scorecard[this.scorecard.length-2][1] == 10 && this.scorecard[this.scorecard.length-2][0] != 10){
       return true;
     };
   };
@@ -59,7 +59,15 @@ Bowling.prototype.isStrike = function(){
 };
 
 Bowling.prototype.updateTotal = function(){
+  if(!this.firstThrow){
 
+  } else {
+    if(this.isPrevStrike()){
+
+    } else if(!this.isSpare() && !this.isStrike()){
+      this.total += this.sumCurrent();
+    };
+  };
 };
 
 Bowling.prototype.sumCurrent = function(){

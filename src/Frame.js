@@ -1,5 +1,5 @@
 var Frame = function(rolls) {
-  this.MAXIMUM_SCORE = 10;
+  this.MAX_SCORE = 10;
   this.rolls = rolls;
 };
 

@@ -1,65 +1,26 @@
 # Bowling Challenge
 
+This project models a bowling game scorecard, tracking and calculating the scores of a one-player bowling game in JavaScript.
 
-<!--
 ## Contents
 
-- [Domain modelling](#domain-modelling)
-- [Database structure](#database-structure)
 - [Still to be completed](#still-to-be-completed)
 - [Features](#features)
 - [Code style](#code-style)
 - [Tech used](#tech-used)
 - [Getting started](#getting-started)
-- [Database setup](#database-setup)
-- [Test database setup](#test-database-setup)
 - [Running the tests](#running-the-tests)
   - [Test coverage](#test-coverage)
-- [Credits](#credits)
-
-## Domain modelling
-
-| User class | Peep class |
-| ---- | --- |
-| ```@email``` | ```@id``` |
-| ```@password``` | ```@content``` |
-| ```@user_name``` | ```@created_at``` |
-| ```@user_handle``` | ```@user_id``` |
-| ```@created_at``` |  |
-| ```@user_id``` |  |
-| ------------- | ------------- |
-| ```.create``` | ```.create``` |
-| ```.authenticate``` | ```.all``` |  
-
-## Database structure
-
-**Table: users**
-
-user_id | user_name | user_handle | email | password | created_at |
-| ----- | --------- | ----------- | ----- | -------- | ---------- |
-| 1 | Debbie Handler | The Real Debs | debbie@test.com | dkfg14   | 2019-12-08 21:02:31.579223 |
-| 2 | Joan Peeler    | JoJo          | jojo@test.com   | j450pl   | 2019-12-08 21:02:31.579223 |  
-
-**Table: peeps**   
-
-| id | content | created_at | user_id |
-| -- | ------- | ---------- | ------- |
-| 1 | Hello World! | 2019-12-08 21:02:55.919516 | 1 |
-| 2 | Pancake Palour has the the best breakfast menu! | 2019-12-08 21:02:55.919516 | 2 |
-| 3 | I just read the most interesting article. | 2019-12-08 21:02:55.919516 | 2 |  
 
 ## Still to be completed
 
-**Final step**  
-- [Thermostat: saving state](https://github.com/makersacademy/course/blob/master/thermostat/saving_state.md)
+**Refactoring - perhaps extracting into multiple classes**  
+**Web interface**  
+**CSS styling**  
 
 ## Features
-- Increase temperature
-- Decrease temperature
-- Reset temperature
-- View energy usage level
-- Switch power saving mode on and off
-- Select a city and view its current temperature
+- Add player name
+- Input the number of pins you knocked down and the score is automatically tallied
 
 ## Code style
 - OOD
@@ -76,44 +37,65 @@ user_id | user_name | user_handle | email | password | created_at |
 
 ## Getting started
 
-To open in web browser, run ```open index.html``` in the terminal in the thermostat_js directory.
-
-## Database setup
-
-- Connect to ```psql```
-- Create the database using the ```psql``` command ```CREATE DATABASE chitter_database;```  
-- Connect to the database using the ```pqsl``` command ```\c chitter_database;```  
-- Run all the queries we have saved in the folder ```db\migrations\```  
-
-## Test database setup
-
-- Connect to ```psql```
-- Create the database using the ```psql``` command ```CREATE DATABASE chitter_test_database;```  
-- Connect to the database using the ```pqsl``` command ```\c chitter_test_database;```  
-- Run all the queries we have saved in the folder ```db\migrations\```  
+To open in web browser, run ```open index.html``` in the terminal in the bowling-challenge directory.
 
 ## Running the tests  
 
-To run tests in the web browser, run ```open SpecRunner.html``` in the terminal in the thermostat_js directory.
+To run tests in the web browser, run ```open SpecRunner.html``` in the terminal in the bowling-challenge directory.
 
 ### Test coverage  
+
 #### Unit tests
+- Bowling
+  - starts with a total score of 0
+  - starts with an empty score sheet
+  - adds note of 'Bad luck' if no pins are knocked down
+- On the first frame and first roll
+  - can add number of pins knocked down to the scoresheet
+  - moves on to the next roll after the turn has been taken
+- On the first frame and second roll
+  - adds the new total score to the score sheet once second roll has been taken
+- Strike
+  - skips forward to next frame
+  - adds a note of 'Strike'
+  - adds the bonus score after the next frame is complete
+  - adds the new total score after next frame is complete
+- Spare
+  - adds the bonus score after the next roll is complete
+  - adds the new total score after next frame is complete
+- 10th frame
+  - adds a third roll if a strike is rolled
+  - adds a third roll if a spare is rolled
+  - does not exceed 3 rolls total when strike
+  - does not exceed 3 rolls total when spare
 
-- has a starting temp of 20 degrees
-- doesn't go lower than 10 degrees
-- increases the temp by 1 when using up function
-- decreases the temp by 1 when using down function
-- resets the temp to 20 degrees
-- shows energy usage levels
-  - shows 'medium-usage' when temp is >= 18 but < 25
-  - shows 'low-usage' when temp is < 18
-  - shows 'high-usage' when temp is >= 25
-- is set to power saving mode by default
-- has a maximum temp of 25 when PSM is on
-- has a maximum temp of 25 when PSM has been switched off and turned on again
-- has a maximum temp of 32 when PSM is off
+#### Feature tests
 
-## Credits
-- Weather API from [OpenWeather](https://openweathermap.org/api)
-- CSS design of thermostat graphic by [Tommy Creenan](https://codepen.io/TommyCreenan/pen/pCslj/)
-- Page design inspired by [Dr Strangelove poster](https://www.mondographics.net/en/movie-poster/dr-strangelove-stanley-kubrick-18-x-24-in-43853) by designer Jason Munn. -->
+- A perfect game
+  - ends with a score of 300 when all rolls are strikes  
+
+- A gutter game
+  - ends with a score of 0 when all rolls knocked over 0 pins
+
+- A varied game of bowling
+  - starts with a total score of 0
+  - 1st roll, 1st frame: hits 1 pin
+  - 2nd roll, 1st frame: hits 4 pins
+  - 1st roll, 2nd frame: hits 4 pins
+  - 2nd roll, 2nd frame: hits 5 pins
+  - 1st roll, 3rd frame: hits 6 pins
+  - 2nd roll, 3rd frame: hits 4 pins and gets a spare
+  - 1st roll, 4th frame: hits 5 pins and calculates bonus from previous spare
+  - 2nd roll, 4th frame: hits 5 pins and gets another spare
+  - 1st roll, 5th frame: hits 10 pins, gets a strike, calculates bonus from previous spare, and skips 2nd roll
+  - 2nd roll, 5th frame: has been skipped due to previous strike
+  - 1st roll, 6th frame: hits 0 pins
+  - 2nd roll, 6th frame: hits 1 pin and calculates bonus from previous strike
+  - 1st roll, 7th frame: hits 10 pins, gets a strike and skips to next frame
+  - 2nd roll, 7th frame: has been skipped due to previous strike
+  - 1st roll, 8th frame: hits 10 pins, gets another strike and calculates bonus to previous strike
+  - 2nd roll, 8th frame: has been skipped due to previous strike
+  - 1st roll, 9th frame: hits 8 pins
+  - 2nd roll, 9th frame: hits 2 pins, gets a spare, and calculates bonus for previous strike
+  - 1st roll, 10th frame: hits 3 pins and calculates bonus for previous spare
+  - 2nd roll, 10th frame: hits 4 pins and the game ends

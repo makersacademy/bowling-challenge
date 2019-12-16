@@ -42,6 +42,7 @@ class ScoreCard {
 
   setRollTwo(score) {
     if (!this.frame.getRollOne()) { throw new Error(ScoreCard.NO_FIRST_ROLL()); }
+    if (!ScoreCard.numbers().includes(score)) { throw new Error(ScoreCard.INVALID_SCORE()); }
     if (this.currentFrame < 10 && this.frame.getRollOne() + score > 10) {
       throw new Error(ScoreCard.INVALID_SCORE());
     }
@@ -90,6 +91,10 @@ class ScoreCard {
 
   static INVALID_SCORE() {
     return 'Invalid entry';
+  }
+
+  static numbers() {
+    return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   }
 }
 

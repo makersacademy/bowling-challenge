@@ -11,6 +11,7 @@ class FinalFrame extends Frame {
   setRollThree(score) {
     if(score < 0 || score > 10) { throw new Error(FinalFrame.INVALID_SCORE()); }
     if (this.getScore() < 10) { throw new Error(FinalFrame.NO_MORE_ROLLS()); }
+    if(!Frame.numbers().includes(score)) { throw new Error(FinalFrame.INVALID_SCORE()); }
     if (this.getRollOne() === 10 && this.getRollTwo() < 10 && score + this.getRollTwo() > 10) {
       throw new Error(FinalFrame.INVALID_SCORE());
     }

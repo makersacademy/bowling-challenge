@@ -19,6 +19,7 @@ class Frame {
 
   setRollTwo(score) {
     if(score < 0 || score > 10) { throw new Error(Frame.INVALID_SCORE()); }
+    if(!Frame.numbers().includes(score)) { throw new Error(Frame.INVALID_SCORE()); }
 
     this.rollTwo = score;
   }

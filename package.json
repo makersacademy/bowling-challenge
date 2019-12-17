@@ -8,7 +8,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "karma start karma.conf.js — single-run"
+    "test": "karma start karma.config.js — single-run"
   },
   "repository": {
     "type": "git",
@@ -25,11 +25,11 @@
     "eslint-plugin-jasmine": "^2.10.1",
     "jasmine-core": "*",
     "karma": "*",
-    "karma-chrome-launcher": "*",
+    "karma-chrome-launcher": "^3.1.0",
     "karma-cli": "*",
     "karma-jasmine": "*",
     "karma-phantomjs-launcher": "*",
-    "puppeteer": "^1.20.0",
-    "phantomjs-prebuilt": "^2.1.5"
+    "phantomjs-prebuilt": "^2.1.5",
+    "puppeteer": "^1.20.0"
   }
 }

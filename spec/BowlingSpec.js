@@ -1,131 +1,46 @@
-describe("Bowling", () => {
-
+describe ("Bowling", () => {
   let testBowling;
 
   beforeEach(() => {
     testBowling = new Bowling;
   });
 
-  describe("frames", () => {
-    it("should be able to keep track of frames", () => {
-      testBowling.rolls(3, 5)
-      testBowling.rolls(3, 3)
-      expect(testBowling.frames.length).toEqual(2);
-    });
-  });
-
-  describe("inputting rolls", () => {
-    it("can input rolls and add them to current score", () => {
-      testBowling.rolls(1, 5)
-      expect(testBowling.currentScore).toEqual(6);
-    });
-
-    it("can add the just rolled frame to frames", () => {
-      testBowling.rolls(2, 6)
-      expect(testBowling.frames).toContain([2, 6]);
-    });
-  });
-
-  describe("strike", () => {
-    it("if the first roll in the frame is a 10 don't add to current score", () => {
-      testBowling.rolls(10, 0)
-      expect(testBowling.currentScore).toEqual(0);
-    });
-
-    it("if the first roll in the frame is a 10, log a strike", () => {
-      testBowling.rolls(10, 0)
-      expect(testBowling.strikes).toEqual(1);
-    });
-
-    it("strike method should log a strike", () => {
-      testBowling.strike()
-      testBowling.strike()
-      expect(testBowling.strikes).toEqual(2);
-    });
-
-  });
-
-  describe("spare", () => {
-    it("if each roll in the frame adds up to 10, log a spare", () => {
-      testBowling.rolls(6, 4)
-      expect(testBowling.spares).toEqual(1)
-    });
-
-    it("spare method should log a spare", () => {
-      testBowling.spare()
-      testBowling.spare()
-      expect(testBowling.spares).toEqual(2);
-    });
-  });
-
-  describe("Accumulating strike scoring", () => {
-    it("if there is one strike previously logged, add 10 and double the current frame score to the current score", () => {
-      testBowling.rolls(10, 0)
-      testBowling.rolls(6, 2)
-      expect(testBowling.currentScore).toEqual(26)
-    });
-
-    it("should set the strike log back to 0", () => {
-      testBowling.rolls(10, 0)
-      testBowling.rolls(6, 2)
-      expect(testBowling.strikes).toEqual(0);
-    });
-
-    it("should accumulate strike scores on a double", () => {
-      testBowling.rolls(10, 0)
-      testBowling.rolls(10, 0)
-      testBowling.rolls(2, 3)
-      expect(testBowling.currentScore).toEqual(42)
+  describe("score", () => {
+    it("should be able to keep score of a gutter game", () => {
+      for(let i = 0; i < 20; i++) {
+        testBowling.roll(0)
+      }
+      expect(testBowling.score()).toEqual(0)
     })
 
-    it("should accumulate strike scores on a turkey", () => {
-      testBowling.rolls(10, 0)
-      testBowling.rolls(10, 0)
-      testBowling.rolls(10, 0)
-      testBowling.rolls(2, 3)
-      expect(testBowling.currentScore).toEqual(72)
-    })
-
-    it("should accumulate strike scores on a four-bagger", () => {
-      testBowling.rolls(10, 0)
-      testBowling.rolls(10, 0)
-      testBowling.rolls(10, 0)
-      testBowling.rolls(10, 0)
-      testBowling.rolls(2, 3)
-      expect(testBowling.currentScore).toEqual(102)
-    });
-
-    it("should take a total frame of 0 into account when adding strikes", () => {
-      testBowling.rolls(10, 0)
-      testBowling.rolls(10, 0)
-      testBowling.rolls(0, 0)
-      expect(testBowling.currentScore).toEqual(30)
-    })
-  });
-
-  describe("Accumulating spares", () => {
-    it("if there is one spare currently logged, add 10, the second roll, and twice the first roll to the current score", () => {
-      testBowling.rolls(6, 4)
-      testBowling.rolls(2, 6)
-      expect(testBowling.currentScore).toEqual(20);
-    });
-
-    it("should account for accumulating spares", () => {
-      testBowling.rolls(6, 4)
-      testBowling.rolls(6, 4)
-      testBowling.rolls(6, 4)
-      testBowling.rolls(2, 1)
-      expect(testBowling.currentScore).toEqual(47);
+    it("should be able to add the pins", () => {
+      for(let i = 0; i < 20; i++) {
+        testBowling.roll(1)
+      }
+      expect(testBowling.score()).toEqual(20)
     });
   });
 
-  it("should account for accumulating a mix of strikes and spares", () => {
-    testBowling.rolls(6, 4)
-    testBowling.rolls(10, 0)
-    testBowling.rolls(6, 4)
-    testBowling.rolls(6, 4)
-    testBowling.rolls(2, 3)
-    expect(testBowling.currentScore).toEqual(73);
-  });
-
+  it("should be able to keep track of score", () => {
+    testBowling.roll(1)
+    testBowling.roll(4)
+    testBowling.roll(4)
+    testBowling.roll(5)
+    testBowling.roll(6)
+    testBowling.roll(4)
+    testBowling.roll(5)
+    testBowling.roll(5)
+    testBowling.roll(10)
+    testBowling.roll(0)
+    testBowling.roll(1)
+    testBowling.roll(7)
+    testBowling.roll(3)
+    testBowling.roll(6)
+    testBowling.roll(4)
+    testBowling.roll(10)
+    testBowling.roll(2)
+    testBowling.roll(8)
+    testBowling.roll(6)
+    expect(testBowling.score()).toEqual(133)
+  })
 });

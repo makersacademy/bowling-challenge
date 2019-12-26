@@ -1,4 +1,4 @@
-var Frame = require('../src/frame.js');
+// var Frame = require('../src/frame.js');
 
 describe("Frame", function() {
   var frame;

@@ -29,7 +29,7 @@ Frame.prototype.numExtras = function() {
 }
 
 Frame.prototype.inputExtra = function(pins) {
-  if(this._extrasRequired > 0) this._extras.push(pins), this._extrasRequired--;
+  if(this._extrasRequired > 0 && !this.canRoll()) this._extras.push(pins), this._extrasRequired--;
 }
 
 Frame.prototype.closed = function() {
@@ -53,4 +53,4 @@ Frame.prototype._isStrike = function () {
   }
 }
 
-module.exports = Frame
+// module.exports = Frame

@@ -1,4 +1,4 @@
-var Bowling = require('../src/bowling.js');
+// var Bowling = require('../src/bowling.js');
 
 describe("Bowling", function() {
   var game;
@@ -29,7 +29,7 @@ describe("Bowling", function() {
     expect(game.frameNum()).toEqual(2)
   });
 
- xit ("should have a total of 15 and be in the second frame after rolls of 7, 2, 6", function() {
+  xit ("should have a total of 15 and be in the second frame after rolls of 7, 2, 6", function() {
     game.roll(7,2, 6)
     expect(game.totalScore()).toEqual(15)
     expect(game.frameNum()).toEqual(2)
@@ -65,21 +65,30 @@ describe("Bowling", function() {
     expect(game.totalScore()).toEqual(63)
   });
 
-  it ("should give correct score for full game, with no strike or spare in the last frame. end of game to be true", function() {
+  xit ("should give correct score for full game, with no strike or spare in the last frame. end of game to be true", function() {
     game.roll(10, 10, 5,5, 3,2, 7,3, 10, 3,2, 4,6, 10, 3,3)
     expect(game.frameNum()).toEqual(10)
     expect(game.totalScore()).toEqual(145)
     expect(game.isEnd).toEqual(true)
   });
 
-  it ("should give correct score for full game without any strikes and the game to end", function() {
+  xit ("should throw an error if trying to roll when the game has finished", function() {
     expect(function() {game.roll(10, 10, 5,5, 3,2, 7,3, 10, 3,2, 4,6, 10, 3,3, 5)}).toThrowError("Cannot roll, the game has ended, total Points: 145")
   });
 
-  it ("should give correct score for perfect game", function() {
+  xit ("should have a current score of 270 after 10 strikes in a row", function() {
+    game.roll(10, 10, 10, 10, 10, 10, 10, 10, 10, 10)
+    expect(game.totalScore()).toEqual(270)  
+  });
+
+  it ("should have a current score of 290 after 11 strikes in a row", function() {
+    game.roll(10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10)
+    expect(game.totalScore()).toEqual(290)  
+  });
+
+  xit ("should have a current score of 290 after 11 strikes in a row", function() {
     game.roll(10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10)
     expect(game.totalScore()).toEqual(300)  
   });
-
 
 });

@@ -1,4 +1,4 @@
-var Frame = require('../src/frame.js');
+// var Frame = require('./frame.js');
 
 function Bowling(frames = 10) {
   this._maxFrames = frames;
@@ -10,12 +10,21 @@ function Bowling(frames = 10) {
 // public functions
 Bowling.prototype.roll = function(...args) {
   args.forEach( pins => {
+
     if(this.isEnd) throw new Error("Cannot roll, the game has ended, total Points: " + this.totalScore())
-    if(this._isLastFrame && !!this._currentFrame().numExtras) {
-      this._lastFrame(pins)
+
+    if(this._isLastFrame && !this._currentFrame().canRoll()) {
+      if(this._frames.length > 1) this._extraPoints(pins);
+      this._checkEnd();
+      console.log(this._currentFrame().numExtras())
     } else {
-      this._addRoll(pins)
+      // console.log('not in last frame')
+      this._currentFrame().inputRoll(pins);
+      if(this._frames.length > 1) this._extraPoints(pins);
+      this._checkEnd();
+      if(!this._currentFrame().canRoll() && !this._isLastFrame) this._newFrame();
     }
+
   });
 }
 
@@ -38,9 +47,14 @@ Bowling.prototype._addRoll = function(pins) {
 }
 
 Bowling.prototype._lastFrame = function(pins) {
-  // console.log("here2")
-  this._currentFrame().inputExtra(pins);
-  this._checkEnd();
+  if(this._currentFrame().canRoll()) {
+    if(this._frames.length > 1) this._extraPoints(pins);
+    this._currentFrame().inputRoll(pins);
+  } else {
+    console.log('here' + this.frameNum())
+    this._extraPoints(pins);
+  }
+  this._checkEnd()
 }
 
 Bowling.prototype._newFrame = function() {
@@ -60,9 +74,11 @@ Bowling.prototype._twoFramesBack = function() {
 }
 
 Bowling.prototype._extraPoints = function (pins) {
-  if(this.frameNum() > 2 && this._twoFramesBack().numExtras() > 0) {
+  if(this.frameNum() > 2) {
+    console.log('here')
     this._twoFramesBack().inputExtra(pins);
     this._oneFrameBack().inputExtra(pins);
+    this._currentFrame().inputExtra(pins);
   } else if(this._oneFrameBack().numExtras() > 0) {
     this._oneFrameBack().inputExtra(pins);
   }
@@ -75,4 +91,4 @@ Bowling.prototype._checkEnd = function() {
   } 
 }
 
-module.exports = Bowling
+// module.exports = Bowling

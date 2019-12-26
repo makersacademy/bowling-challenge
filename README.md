@@ -11,7 +11,7 @@ The **Game** class contains the array of all the frame objects and allows for th
 
 The **Frame** class contains the score of each individual frame, including the normal rolls and any extra points from subsequent rolls (as a result of )
 
-The code could, easily, be made into a more succinct algorithm if the sole purpose was just to calculate the score of a game of bowling. However, the ultimate intention of the code is to present to a front end web application, hence separating the frames into separate objects seemed a more logical approach for filling in the individual boxes associated with a standard bowling scorecard.
+The code could, easily, be made into a more succinct algorithm if the sole purpose was just to calculate the score of a game of bowling. However, the ultimate intention of the code is to present to a front end web application, hence separating the frames into separate objects seemed a more logical approach for filling in the individual boxes associated with a standard bowling scorecard. Additionally the code was developed to allow for multiple individual score inputs or inputting an entire games worth of scores in one.
 
 
 Further improvements

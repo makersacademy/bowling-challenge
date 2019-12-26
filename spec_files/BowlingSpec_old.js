@@ -1,4 +1,4 @@
-var Bowling = require('../src/bowling.js');
+var Bowling = require('../js_files/bowling.js/index.js');
 
 describe("Bowling", function() {
   var game;

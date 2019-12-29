@@ -15,12 +15,6 @@ describe('Bowling', function () {
   })
 
   describe('#roll', function () {
-    it('adds the roll to the current frame', function () {
-      bowling.roll(5)
-
-      expect(bowling.currentFrame).toContain(5)
-    })
-
     it('should not allow you to roll after the tenth frame is complete', function () {
       for (var i = 0; i < 20; i++) {
         bowling.roll(4)

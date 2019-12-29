@@ -1,68 +1,48 @@
 'use strict'
 
 function Bowling () {
-  this.currentFrame = [] // Think this can be made into an object
-  this.score = []
-  this.bonus = []
-  for (var i = 0; i < 9; i++) {
-    this.bonus.push({ rolls: 0, points: 0 })
-  }
+  this.currentFrame = new Frame()
+  this.frames = []
 };
 
 Bowling.prototype.total = function () {
-  var bonusPoints = this.bonus.map(frameBonus => frameBonus.points)
-  return sum(this.score.flat().concat(bonusPoints))
+  return this._calculateScore() + this._calculateBonus()
 }
 
 Bowling.prototype.roll = function (pins) {
-  this.addBonus(pins)
-  if (this.frameCount() >= 10) {
-    if (this.currentFrame.length === 3) throw new Error('Game is complete, cannot roll')
-
-    this.currentFrame.push(pins)
-    if (this.currentFrame.length === 2 && sum(this.currentFrame) < 10) {
-      this.currentFrame.length = 3
-      this.score.push(this.currentFrame)
-    } else if (this.currentFrame.length === 3) {
-      this.score.push(this.currentFrame)
-    }
+  this._addBonus(pins)
+  
+  if (this._frameCount() > 10) {
+    throw new Error('Game is complete, cannot roll')
+  } else if (this._frameCount() === 10) {
+    this.currentFrame.tenthFrame(pins)
   } else {
-    if (pins === 10) {
-      this.currentBonus().rolls = 2
-      this.score.push([10, 0])
-    } else {
-      this.currentFrame.push(pins)
+    this.currentFrame.roll(pins)
+  }
 
-      if (this.currentFrame.length === 2) {
-        if (sum(this.currentFrame) === 10) {
-          this.currentBonus().rolls = 1
-        }
-
-        this.score.push(this.currentFrame)
-        this.currentFrame = []
-      }
-    }
+  if (this.currentFrame.isComplete) {
+    this.frames.push(this.currentFrame)
+    this.currentFrame = new Frame()
   }
 }
 
-Bowling.prototype.frameCount = function () {
-  return this.score.length + 1
+Bowling.prototype._frameCount = function () {
+  return this.frames.length + 1
 }
 
-Bowling.prototype.previousFrame = function () {
-  return this.score[this.frameCount() - 2]
-}
-
-Bowling.prototype.currentBonus = function () {
-  return this.bonus[this.frameCount() - 1]
-}
-
-Bowling.prototype.addBonus = function (pins) {
-  var bonusToAdd = this.bonus.filter(frameBonus => frameBonus.rolls > 0)
+Bowling.prototype._addBonus = function (pins) {
+  var bonusToAdd = this.frames.filter(frame => frame.hasBonus())
   bonusToAdd.forEach(function (frame) {
-    frame.points += pins
-    frame.rolls--
+    frame.addBonus(pins)
   })
+}
+
+Bowling.prototype._calculateScore = function () {
+  return sum(this.frames.map(frame => frame.calculatePoints()))
+}
+
+Bowling.prototype._calculateBonus = function () {
+  return sum(this.frames.map(frame => frame.bonusPoints()))
 }
 
 function sum (array) {

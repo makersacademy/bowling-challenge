@@ -4,7 +4,7 @@ describe('Frame', function () {
   var frame
 
   beforeEach(function () {
-    frame = new Frame ()
+    frame = new Frame()
   })
 
   describe('#roll', function () {
@@ -19,24 +19,22 @@ describe('Frame', function () {
     it('adds bonus points to the frame', function () {
       frame.roll(6)
       frame.roll(4)
-
       frame.addBonus(5)
+
       expect(frame.bonus.points).toEqual(5)
     })
   })
 
-  describe('#spare', function () {
-    it('adds a bonus roll to the frame', function () {
-      frame.spare()
-      expect(frame.bonus.rolls).toEqual(1)
-    })
+  it('should have a bonus roll from a spare', function () {
+    frame.roll(6)
+    frame.roll(4)
+
+    expect(frame.hasBonus()).toEqual(true)
   })
 
-  describe('#strike', function () {
-    it('adds bonus rolls to the frame', function () {
-      frame.strike()
-      expect(frame.bonus.rolls).toEqual(2)
-    })
-  })
+  it('should have bonus rolls from a strike', function () {
+    frame.roll(10)
 
+    expect(frame.hasBonus()).toEqual(true)
+  })
 })

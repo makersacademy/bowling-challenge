@@ -11,7 +11,6 @@ Bowling.prototype.total = function () {
 
 Bowling.prototype.roll = function (pins) {
   this._addBonus(pins)
-  
   if (this._frameCount() > 10) {
     throw new Error('Game is complete, cannot roll')
   } else if (this._frameCount() === 10) {

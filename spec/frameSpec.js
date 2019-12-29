@@ -11,7 +11,7 @@ describe('Frame', function () {
     it('adds the roll to the frame', function () {
       frame.roll(5)
 
-      expect(frame.score).toContain(5)
+      expect(frame.calculatePoints()).toEqual(5)
     })
   })
 
@@ -21,7 +21,7 @@ describe('Frame', function () {
       frame.roll(4)
       frame.addBonus(5)
 
-      expect(frame.bonus.points).toEqual(5)
+      expect(frame.bonusPoints()).toEqual(5)
     })
   })
 

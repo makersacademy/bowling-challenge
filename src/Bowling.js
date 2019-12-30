@@ -1,6 +1,7 @@
 'use strict';
 
 function Bowling(){
+  // this.current = [];
   this.scorecard = [];
   this.total = 0;
   this.firstThrow = true;
@@ -8,8 +9,10 @@ function Bowling(){
 
 Bowling.prototype.addScore = function(score){
   if(this.firstThrow){
+    // this.current[0] = score;
     this.scorecard.push([score]);
   } else {
+    // this.current[1] = score;
     this.scorecard[this.scorecard.length-1].push(score);
   };
   this.firstThrow = !this.firstThrow;
@@ -59,17 +62,20 @@ Bowling.prototype.isStrike = function(){
 };
 
 Bowling.prototype.updateTotal = function(){
-  if(!this.firstThrow){
-    if(this.isDoubleStrike()){
-
-    } else if(this.isPrevSpare()) {
-      this.total += 10 + this.scorecard[this.scorecard.length-1][0];
+  if(this.isPrevSpare()){
+    if(this.isStrike()){
+      return this.total += 10 + 10;
     }
+    else {
+      return this.total += 10 + this.scorecard[this.scorecard.length - 1][0] + this.sumCurrent();
+    };
   } else {
-    if(this.isPrevStrike()){
-
-    } else if(!this.isSpare() && !this.isStrike()){
-      this.total += this.sumCurrent();
+    if(this.isStrike()){
+      return this.total += 0;
+    } else if (this.isSpare()){
+      return this.total += 0;
+    } else {
+      return this.total += this.sumCurrent();
     };
   };
 };

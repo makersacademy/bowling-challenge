@@ -70,6 +70,11 @@ Bowling.prototype.updateTotal = function(){
       return this.total += 10 + this.scorecard[this.scorecard.length - 1][0] + this.sumCurrent();
     };
   } else if(this.isPrevStrike()){
+    if(this.isSpare()){
+      return this.total += 10 + 10;
+    } else if(this.isStrike()){
+      return this.total += 0;
+    };
     return this.total += 10 + this.sumCurrent() + this.sumCurrent();
   } else {
     if(this.isStrike()){

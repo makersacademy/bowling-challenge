@@ -132,6 +132,13 @@ describe('Bowling', function(){
         expect(bowling.total).toEqual(7);
       });
 
+      it('should return total of 0', function(){
+        bowling.addScore(0);
+        bowling.addScore(0);
+        bowling.updateTotal();
+        expect(bowling.total).toEqual(0);
+      });
+
     });
 
     describe('the last frame being a spare', function(){
@@ -141,12 +148,12 @@ describe('Bowling', function(){
         bowling.addScore(3);
       });
 
-      it('should return total of 0, if only a spare was scored as it is awaiting one additional roll', function(){
+      it('should return total of 0, awaiting next frame', function(){
         bowling.updateTotal();
         expect(bowling.total).toEqual(0);
       });
 
-      it('should return total of 24, after scoring a spare and a 5 on the next roll', function(){
+      it('should return total of 24 (10+5)+(5+4)', function(){
         bowling.updateTotal();
         bowling.addScore(5);
         bowling.addScore(4);
@@ -154,7 +161,7 @@ describe('Bowling', function(){
         expect(bowling.total).toEqual(24);
       });
 
-      it('should return a total of 20, after scroing a spare and a strike on the next roll and inputting 0 as the second roll', function(){
+      it('should return a total of 20 (10+10), awaiting next frame', function(){
         bowling.updateTotal();
         bowling.addScore(10);
         bowling.addScore(0);
@@ -171,17 +178,37 @@ describe('Bowling', function(){
         bowling.addScore(0);
       });
 
-      it('should return total of 0, if only a strike was scored as it is awaiting the next two rolls', function(){
+      it('should return total of 0, awaiting the next two rolls', function(){
         bowling.updateTotal();
         expect(bowling.total).toEqual(0);
       });
 
-      it('should return a total of 28 after scoring a strike and a 1 then a 9', function(){
+      it('should return a total of 28 (10+5+4)+(5+4)', function(){
         bowling.updateTotal();
         bowling.addScore(5);
         bowling.addScore(4);
         bowling.updateTotal();
         expect(bowling.total).toEqual(28);
+      });
+
+      it('should return a total of 20 (10+5+5), awaiting for the next frame', function(){
+        bowling.updateTotal();
+        bowling.addScore(5);
+        bowling.addScore(5);
+        bowling.updateTotal();
+        expect(bowling.total).toEqual(20);
+      });
+
+      describe('and the frame before was also a strike', function(){
+
+        it('should return 0, awaiting the next frame', function(){
+          bowling.updateTotal();
+          bowling.addScore(10);
+          bowling.addScore(0);
+          bowling.updateTotal();
+          expect(bowling.total).toEqual(0)
+        });
+
       });
 
     });

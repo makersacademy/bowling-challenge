@@ -62,27 +62,31 @@ Bowling.prototype.isStrike = function(){
 };
 
 Bowling.prototype.updateTotal = function(){
-  if(this.isPrevSpare()){
-    if(this.isStrike()){
-      return this.total += 10 + 10;
-    }
-    else {
-      return this.total += 10 + this.scorecard[this.scorecard.length - 1][0] + this.sumCurrent();
-    };
-  } else if(this.isPrevStrike()){
-    if(this.isSpare()){
-      return this.total += 10 + 10;
+  if(this.isDoubleStrike()){
+    if (this.isSpare()){
+      return this.total += 20 + this.scorecard[this.scorecard.length - 1][0] + 10 + 10;
     } else if(this.isStrike()){
-      return this.total += 0;
-    };
-    return this.total += 10 + this.sumCurrent() + this.sumCurrent();
+      return this.total += 30;
+    }
+    return this.total += 20 + this.scorecard[this.scorecard.length - 1][0] + 10 + this.sumCurrent() + this.sumCurrent();
   } else {
-    if(this.isStrike()){
-      return this.total += 0;
-    } else if (this.isSpare()){
-      return this.total += 0;
+    if(this.isPrevSpare()){
+      if(this.isStrike()){
+        return this.total += 10 + 10;
+      }
+      else {
+        return this.total += 10 + this.scorecard[this.scorecard.length - 1][0] + this.sumCurrent();
+      };
+    } else if(this.isPrevStrike()){
+      if(this.isSpare()){
+        return this.total += 10 + 10;
+      } else if(!this.isStrike()){
+        return this.total += 10 + this.sumCurrent() + this.sumCurrent();
+      };
     } else {
-      return this.total += this.sumCurrent();
+      if(!this.isStrike() && !this.isSpare()){
+        return this.total += this.sumCurrent();
+      };
     };
   };
 };
@@ -90,3 +94,7 @@ Bowling.prototype.updateTotal = function(){
 Bowling.prototype.sumCurrent = function(){
   return this.scorecard[this.scorecard.length-1][0] + this.scorecard[this.scorecard.length-1][1];
 };
+
+Bowling.prototype.getFirstRoll = function(){
+  return this.scorecard[this.scorecard.length-1][0];
+}

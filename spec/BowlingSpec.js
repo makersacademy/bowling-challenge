@@ -7,7 +7,22 @@ describe('Bowling', function(){
     bowling = new Bowling();
   });
 
-  describe('Testing addScore card method', function(){
+  describe('getFirstRoll method', function(){
+
+    it('should return 5', function(){
+      bowling.addScore(5);
+      expect(bowling.getFirstRoll()).toEqual(5);
+    });
+
+    it('should return 4', function(){
+      bowling.addScore(4);
+      bowling.addScore(5);
+      expect(bowling.getFirstRoll()).toEqual(4);
+    });
+    
+  });
+
+  describe('addScore card method', function(){
 
     it('should add the number of pins knocked to the current frame', function(){
       bowling.addScore(5);
@@ -17,7 +32,7 @@ describe('Bowling', function(){
 
   });
 
-  describe('Testing for a spare on current frame or last frame', function(){
+  describe('A spare on current frame or last frame', function(){
 
     it('should return true if the last frame was a spare', function(){
       bowling.addScore(5);
@@ -53,7 +68,7 @@ describe('Bowling', function(){
 
   });
 
-  describe('Testing for whether current frame is a strike, last was a strike or on a double strike', function(){
+  describe('Whether current frame is a strike, last was a strike or on a double strike', function(){
 
     it('should return true if the last frame was a strike', function(){
       bowling.addScore(10);
@@ -114,7 +129,7 @@ describe('Bowling', function(){
 
   });
 
-  describe('Testing on updating the total score', function(){
+  describe('Updating the total score', function(){
 
     describe('no bonus points only regular frames thrown', function(){
 
@@ -146,15 +161,14 @@ describe('Bowling', function(){
       beforeEach(function(){
         bowling.addScore(7);
         bowling.addScore(3);
+        bowling.updateTotal();
       });
 
       it('should return total of 0, awaiting next frame', function(){
-        bowling.updateTotal();
         expect(bowling.total).toEqual(0);
       });
 
       it('should return total of 24 (10+5)+(5+4)', function(){
-        bowling.updateTotal();
         bowling.addScore(5);
         bowling.addScore(4);
         bowling.updateTotal();
@@ -162,7 +176,6 @@ describe('Bowling', function(){
       });
 
       it('should return a total of 20 (10+10), awaiting next frame', function(){
-        bowling.updateTotal();
         bowling.addScore(10);
         bowling.addScore(0);
         bowling.updateTotal();
@@ -176,15 +189,14 @@ describe('Bowling', function(){
       beforeEach(function(){
         bowling.addScore(10);
         bowling.addScore(0);
+        bowling.updateTotal();
       });
 
       it('should return total of 0, awaiting the next two rolls', function(){
-        bowling.updateTotal();
         expect(bowling.total).toEqual(0);
       });
 
       it('should return a total of 28 (10+5+4)+(5+4)', function(){
-        bowling.updateTotal();
         bowling.addScore(5);
         bowling.addScore(4);
         bowling.updateTotal();
@@ -192,21 +204,43 @@ describe('Bowling', function(){
       });
 
       it('should return a total of 20 (10+5+5), awaiting for the next frame', function(){
-        bowling.updateTotal();
         bowling.addScore(5);
         bowling.addScore(5);
         bowling.updateTotal();
         expect(bowling.total).toEqual(20);
       });
 
-      describe('and the frame before was also a strike', function(){
+      describe('and the frame before also a strike', function(){
 
-        it('should return 0, awaiting the next frame', function(){
-          bowling.updateTotal();
+        beforeEach(function(){
           bowling.addScore(10);
           bowling.addScore(0);
           bowling.updateTotal();
-          expect(bowling.total).toEqual(0)
+        });
+
+        it('should return 0, awaiting the next frame', function(){
+          expect(bowling.total).toEqual(0);
+        });
+
+        it('should return 52 (10+10+4)+(10+4+5)+(9+4)', function(){
+          bowling.addScore(4);
+          bowling.addScore(5);
+          bowling.updateTotal();
+          expect(bowling.total).toEqual(52);
+        });
+
+        it('should return 46 (10+10+6)+(10+6+4), awaiting for next roll', function(){
+          bowling.addScore(6);
+          bowling.addScore(4);
+          bowling.updateTotal();
+          expect(bowling.total).toEqual(46);
+        });
+
+        it('should return 30 (turkey), awaiting next two frames', function(){
+          bowling.addScore(10);
+          bowling.addScore(0);
+          bowling.updateTotal();
+          expect(bowling.total).toEqual(30);
         });
 
       });

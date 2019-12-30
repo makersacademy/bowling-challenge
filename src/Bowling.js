@@ -69,6 +69,8 @@ Bowling.prototype.updateTotal = function(){
     else {
       return this.total += 10 + this.scorecard[this.scorecard.length - 1][0] + this.sumCurrent();
     };
+  } else if(this.isPrevStrike()){
+    return this.total += 10 + this.sumCurrent() + this.sumCurrent();
   } else {
     if(this.isStrike()){
       return this.total += 0;

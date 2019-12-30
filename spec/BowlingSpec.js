@@ -171,7 +171,7 @@ describe('Bowling', function(){
       bowling.addScore(5);
       bowling.addScore(4);
       bowling.updateTotal();
-
+      expect(bowling.total).toEqual(28);
     });
 
   });

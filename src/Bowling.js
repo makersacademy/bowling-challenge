@@ -64,23 +64,21 @@ Bowling.prototype.updateTotal = function(){
       return this.total += 30;
     }
     return this.total += 30 + this.getFirstRoll() + this.sumCurrent() + this.sumCurrent();
-  } else {
-    if(this.isPrevSpare()){
-      if(this.isStrike()){
-        return this.total += 20;
-      };
-      return this.total += 10 + this.getFirstRoll() + this.sumCurrent();
-    } else if(this.isPrevStrike()){
-      if(this.isSpare()){
-        return this.total += 20;
-      } else if(!this.isStrike()){
-        return this.total += 10 + this.sumCurrent() + this.sumCurrent();
-      };
-    } else {
-      if(!this.isStrike() && !this.isSpare()){
-        return this.total += this.sumCurrent();
-      };
+  };
+  if(this.isPrevSpare()){
+    if(this.isStrike()){
+      return this.total += 20;
     };
+    return this.total += 10 + this.getFirstRoll() + this.sumCurrent();
+  } else if(this.isPrevStrike()){
+    if(this.isSpare()){
+      return this.total += 20;
+    } else if(!this.isStrike()){
+      return this.total += 10 + this.sumCurrent() + this.sumCurrent();
+    };
+  };
+  if(!this.isStrike() && !this.isSpare()){
+    return this.total += this.sumCurrent();
   };
 };
 
@@ -88,7 +86,11 @@ Bowling.prototype.isTenthFrame = function(){
   if(this.scorecard.length == 10){
     return true;
   };
-  return false
+  return false;
+};
+
+Bowling.prototype.tenthFrameUpdate = function(){
+  this.total += 8;
 };
 
 Bowling.prototype.sumCurrent = function(){
@@ -97,4 +99,4 @@ Bowling.prototype.sumCurrent = function(){
 
 Bowling.prototype.getFirstRoll = function(){
   return this.scorecard[this.scorecard.length-1][0];
-}
+};

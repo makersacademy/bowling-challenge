@@ -264,4 +264,16 @@ describe('Bowling', function(){
 
   });
 
+  describe('updating the points on the last frame of the game', function(){
+
+    it('should return 80', function(){
+      bowling.total = 72;
+      bowling.addScore(4);
+      bowling.addScore(4);
+      bowling.tenthFrameUpdate();
+      expect(bowling.total).toEqual(80);
+    });
+
+  });
+
 });

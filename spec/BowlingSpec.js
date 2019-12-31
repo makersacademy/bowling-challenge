@@ -266,12 +266,36 @@ describe('Bowling', function(){
 
   describe('updating the points on the last frame of the game', function(){
 
-    it('should return 80', function(){
-      bowling.total = 72;
-      bowling.addScore(4);
-      bowling.addScore(4);
-      bowling.tenthFrameUpdate();
-      expect(bowling.total).toEqual(80);
+    describe('no strike on frames 8 or 9 and no spare on 9', function(){
+
+      beforeEach(function(){
+        bowling.total = 72;
+      });
+
+      it('should return 80', function(){
+        bowling.addScore(4);
+        bowling.addScore(4);
+        bowling.tenthFrameUpdate();
+        expect(bowling.total).toEqual(80);
+      });
+
+      it('should return 86', function(){
+        bowling.addScore(5);
+        bowling.addScore(5);
+        bowling.tenthFrameUpdate();
+        bowling.addScore(4);
+        bowling.tenthFrameUpdate();
+        expect(bowling.total).toEqual(86);
+      });
+
+      it('should return 102', function(){
+        bowling.addScore(10);
+        bowling.addScore(10);
+        bowling.tenthFrameUpdate();
+        bowling.addScore(10);
+        bowling.tenthFrameUpdate();
+        expect(bowling.total).toEqual(102);
+      })
     });
 
   });

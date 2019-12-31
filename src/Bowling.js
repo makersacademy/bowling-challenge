@@ -84,6 +84,13 @@ Bowling.prototype.updateTotal = function(){
   };
 };
 
+Bowling.prototype.isTenthFrame = function(){
+  if(this.scorecard.length == 10){
+    return true;
+  };
+  return false
+};
+
 Bowling.prototype.sumCurrent = function(){
   return this.scorecard[this.scorecard.length-1][0] + this.scorecard[this.scorecard.length-1][1];
 };

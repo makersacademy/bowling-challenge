@@ -248,4 +248,20 @@ describe('Bowling', function(){
 
   });
 
+  describe('test if this is the tenth frame', function(){
+
+    it('should return false', function(){
+      bowling.addScore(4);
+      expect(bowling.isTenthFrame()).toBeFalsy();
+    });
+
+    it('should return true', function(){
+      for(var i = 0; i < 19; i++){
+        bowling.addScore(4);
+      };
+      expect(bowling.isTenthFrame()).toBeTruthy();
+    });
+
+  });
+
 });

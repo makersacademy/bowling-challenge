@@ -1,7 +1,6 @@
 'use strict';
 
 function Bowling(){
-  // this.current = [];
   this.scorecard = [];
   this.total = 0;
   this.firstThrow = true;
@@ -9,10 +8,8 @@ function Bowling(){
 
 Bowling.prototype.addScore = function(score){
   if(this.firstThrow){
-    // this.current[0] = score;
     this.scorecard.push([score]);
   } else {
-    // this.current[1] = score;
     this.scorecard[this.scorecard.length-1].push(score);
   };
   this.firstThrow = !this.firstThrow;
@@ -28,11 +25,10 @@ Bowling.prototype.isPrevSpare = function(){
 };
 
 Bowling.prototype.isSpare = function(){
-  if (this.sumCurrent() == 10 && this.scorecard[this.scorecard.length-1][0] != 10){
+  if (this.sumCurrent() == 10 && this.getFirstRoll() != 10){
     return true;
-  } else {
-    return false;
   };
+  return false;
 };
 
 Bowling.prototype.isDoubleStrike = function(){
@@ -54,32 +50,29 @@ Bowling.prototype.isPrevStrike = function(){
 };
 
 Bowling.prototype.isStrike = function(){
-  if (this.scorecard[this.scorecard.length-1][0] == 10){
+  if (this.getFirstRoll() == 10){
     return true;
-  } else {
-    return false;
   };
+  return false;
 };
 
 Bowling.prototype.updateTotal = function(){
   if(this.isDoubleStrike()){
-    if (this.isSpare()){
-      return this.total += 20 + this.scorecard[this.scorecard.length - 1][0] + 10 + 10;
+    if(this.isSpare()){
+      return this.total += 40 + this.getFirstRoll();
     } else if(this.isStrike()){
       return this.total += 30;
     }
-    return this.total += 20 + this.scorecard[this.scorecard.length - 1][0] + 10 + this.sumCurrent() + this.sumCurrent();
+    return this.total += 30 + this.getFirstRoll() + this.sumCurrent() + this.sumCurrent();
   } else {
     if(this.isPrevSpare()){
       if(this.isStrike()){
-        return this.total += 10 + 10;
-      }
-      else {
-        return this.total += 10 + this.scorecard[this.scorecard.length - 1][0] + this.sumCurrent();
+        return this.total += 20;
       };
+      return this.total += 10 + this.getFirstRoll() + this.sumCurrent();
     } else if(this.isPrevStrike()){
       if(this.isSpare()){
-        return this.total += 10 + 10;
+        return this.total += 20;
       } else if(!this.isStrike()){
         return this.total += 10 + this.sumCurrent() + this.sumCurrent();
       };

@@ -19,7 +19,7 @@ describe('Bowling', function(){
       bowling.addScore(5);
       expect(bowling.getFirstRoll()).toEqual(4);
     });
-    
+
   });
 
   describe('addScore card method', function(){
@@ -34,33 +34,33 @@ describe('Bowling', function(){
 
   describe('A spare on current frame or last frame', function(){
 
-    it('should return true if the last frame was a spare', function(){
+    it('should return true if the current frame is a spare', function(){
       bowling.addScore(5);
       bowling.addScore(5);
       expect(bowling.isSpare()).toBeTruthy();
     });
 
-    it('should return false if the last frame was not a spare', function(){
+    it('should return false if the current frame is not a spare', function(){
       bowling.addScore(5);
       bowling.addScore(4);
       expect(bowling.isSpare()).toBeFalsy();
     });
 
-    it('should return return true if the frame before last was a spare', function(){
+    it('should return return true if the last frame was a spare', function(){
       bowling.addScore(5);
       bowling.addScore(5);
       bowling.addScore(4);
       expect(bowling.isPrevSpare()).toBeTruthy();
     });
 
-    it('should return false if the frame before the last was not a spare', function(){
+    it('should return false if the last frame was not a spare', function(){
       bowling.addScore(5);
       bowling.addScore(4);
       bowling.addScore(2);
       expect(bowling.isPrevSpare()).toBeFalsy();
     });
 
-    it('should return false if there has only been one frame played', function(){
+    it('should return false if there has not been enough frames played', function(){
       bowling.addScore(4);
       bowling.addScore(5);
       expect(bowling.isPrevSpare()).toBeFalsy();
@@ -70,61 +70,60 @@ describe('Bowling', function(){
 
   describe('Whether current frame is a strike, last was a strike or on a double strike', function(){
 
-    it('should return true if the last frame was a strike', function(){
-      bowling.addScore(10);
-      bowling.addScore(0);
-      expect(bowling.isStrike()).toBeTruthy();
+    describe('a strike was thrown last', function(){
+
+      beforeEach(function(){
+        bowling.addScore(10);
+        bowling.addScore(0);
+      });
+
+      it('should return true if the last frame was a strike', function(){
+        expect(bowling.isStrike()).toBeTruthy();
+      });
+
+      it('should return true if the frame before last was a strike', function(){
+        bowling.addScore(2);
+        expect(bowling.isPrevStrike()).toBeTruthy();
+      });
+
+      it('should return true if player is on a double strike', function(){
+        bowling.addScore(10);
+        bowling.addScore(0);
+        bowling.addScore(2);
+        expect(bowling.isDoubleStrike()).toBeTruthy();
+      });
+
+      it('should return false if player is not on double strike', function(){
+        bowling.addScore(4);
+        bowling.addScore(6);
+        bowling.addScore(4);
+        expect(bowling.isDoubleStrike()).toBeFalsy();
+      });
+
+      it('should return false if there is not enough frames to determine double strike', function(){
+        bowling.addScore(4);
+        expect(bowling.isDoubleStrike()).toBeFalsy();
+      });
+
     });
 
-    it('should return false if the last frame was not a strike', function(){
+    it('should return false if the current frame is not a strike', function(){
       bowling.addScore(9);
       bowling.addScore(1);
       expect(bowling.isStrike()).toBeFalsy();
     });
 
-    it('should return true if the frame before last was a strike', function(){
-      bowling.addScore(10);
-      bowling.addScore(0);
-      bowling.addScore(2);
-      expect(bowling.isPrevStrike()).toBeTruthy();
-    });
-
-    it('should return false if the frame before last was not a strike', function(){
+    it('should return false if the last frame was not a strike', function(){
       bowling.addScore(7);
       bowling.addScore(0);
       bowling.addScore(10);
       expect(bowling.isPrevStrike()).toBeFalsy();
     });
 
-    it('should return false if only one frame has been played', function(){
+    it('should return false if there are not enough frames to determing previous was a strike', function(){
       bowling.addScore(1);
       bowling.addScore(8);
       expect(bowling.isPrevStrike()).toBeFalsy();
-    });
-
-    it('should return true if player is on double strike', function(){
-      bowling.addScore(10);
-      bowling.addScore(0);
-      bowling.addScore(10);
-      bowling.addScore(0);
-      bowling.addScore(2);
-      expect(bowling.isDoubleStrike()).toBeTruthy();
-    });
-
-    it('should return false if player is not on double strike', function(){
-      bowling.addScore(10);
-      bowling.addScore(0);
-      bowling.addScore(4);
-      bowling.addScore(6);
-      bowling.addScore(4);
-      expect(bowling.isDoubleStrike()).toBeFalsy();
-    });
-
-    it('should return false if there is not enough frames to determine double strike', function(){
-      bowling.addScore(10);
-      bowling.addScore(0);
-      bowling.addScore(4);
-      expect(bowling.isDoubleStrike()).toBeFalsy();
     });
 
   });

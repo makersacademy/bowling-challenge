@@ -15,6 +15,13 @@ describe('Bowling', function () {
   })
 
   describe('#roll', function () {
+    it('should not allow you to roll more than 10 pins', function () {
+
+      expect(function () {
+        bowling.roll(11)
+      }).toThrowError('Invalid number of pins')
+    })
+
     it('should not allow you to roll after the tenth frame is complete', function () {
       for (var i = 0; i < 20; i++) {
         bowling.roll(4)
@@ -76,5 +83,30 @@ describe('Bowling', function () {
     }
 
     expect(bowling.total()).toEqual(300)
+  })
+
+  it('can roll again after a spare in tenth frame', function () {
+    for (var i = 0; i < 9; i++) {
+      bowling.roll(10)
+    }
+
+    bowling.roll(5)
+    bowling.roll(5)
+
+    expect( function() {
+      bowling.roll(4)
+    }).not.toThrow()
+  })
+
+  it('can roll strike then a spare in tenth frame', function () {
+    for (var i = 0; i < 10; i++) {
+      bowling.roll(10)
+    }
+
+    bowling.roll(5)
+
+    expect( function() {
+      bowling.roll(5)
+    }).not.toThrow()
   })
 })

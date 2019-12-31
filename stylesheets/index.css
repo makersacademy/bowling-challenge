@@ -1,0 +1,42 @@
+table {
+  table-layout: fixed;
+  border: 3px solid black;
+  border-collapse: separate;
+  border-spacing: 0px;
+  border-radius: 20px;
+  text-align: center;
+  background-color: #CBA26D;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 30px;
+}
+
+td, th {
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  padding: 10px;
+  width: 80px;
+  height: 40px;
+}
+
+th {
+  border-top: none;
+}
+
+td:first-child, th:first-child {
+  border-left: none;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+body {
+  background-color: #AB7A3B;
+  background-image:
+  repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+  repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+  linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+  linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+  background-size: 70px 120px;
+  margin: 5%;
+}

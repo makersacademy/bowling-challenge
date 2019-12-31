@@ -37,11 +37,15 @@ Frame.prototype.hasBonus = function () {
   return this.bonus.rolls > 0
 }
 
-Frame.prototype.bonusPoints = function () {
+Frame.prototype.calculateTotal = function () {
+  return this._calculatePoints() + this._bonusPoints()
+}
+
+Frame.prototype._bonusPoints = function () {
   return this.bonus.points
 }
 
-Frame.prototype.calculatePoints = function () {
+Frame.prototype._calculatePoints = function () {
   return sum(this.score)
 }
 

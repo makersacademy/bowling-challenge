@@ -8,7 +8,7 @@ describe('Game',function(){
     game = new Game()
   })
 
-  it('Can roll gutter', function() {
+  it('can roll gutter', function() {
     rollMany(0, 20)
     expect(game.score()).toBe(0);
   })
@@ -21,6 +21,22 @@ describe('Game',function(){
   })
 
 
+  it('can rolls a spare', function() {
+    game.roll(3)
+    game.roll(7)
+    game.roll(2)
+    rollMany(0, 17);
+    expect(game.score()).toBe(14);
+  })
+
+
+  it('can roll a strike', function() {
+    game.roll(10);
+    game.roll(4);
+    game.roll(3);
+    rollMany(0,16)
+    expect(game.score()).toBe(24)
+  })
 
 
   let rollMany = function(pins, rolls) {

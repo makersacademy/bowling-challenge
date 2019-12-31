@@ -38,6 +38,11 @@ describe('Game',function(){
     expect(game.score()).toBe(24)
   })
 
+  it('can be a perfect game', function(){
+    rollMany(10, 12);
+    expect(game.score()).toBe(300)
+  })
+
 
   let rollMany = function(pins, rolls) {
     for (let i = 0; i < rolls; i++) {

@@ -331,6 +331,79 @@ describe('Bowling', function(){
         expect(bowling.total).toEqual(30);
       });
 
+    });
+
+    describe('a strike on the ninth frame', function(){
+
+      beforeEach(function(){
+        for(var i = 0; i < 8; i++){
+          bowling.addScore(0);
+          bowling.addScore(0);
+        };
+        bowling.addScore(10);
+        bowling.addScore(0);
+        bowling.updateTotal();
+      });
+
+      it('should return 26', function(){
+        bowling.addScore(4);
+        bowling.addScore(4);
+        bowling.tenthFrameUpdate();
+        expect(bowling.total).toEqual(26);
+      });
+
+      it('should return 60', function(){
+        bowling.addScore(10);
+        bowling.addScore(10);
+        bowling.tenthFrameUpdate();
+        bowling.addScore(10);
+        bowling.tenthFrameUpdate();
+        expect(bowling.total).toEqual(60);
+      });
+
+    });
+
+    describe('a strike on 8th and 9th frame', function(){
+
+      beforeEach(function(){
+        for(var i = 0; i < 7; i++){
+          bowling.addScore(0);
+          bowling.addScore(0);
+          bowling.updateTotal();
+        };
+        for(var i = 0; i < 2; i++){
+          bowling.addScore(10);
+          bowling.addScore(0);
+          bowling.updateTotal();
+        };
+
+      });
+
+      it('should return 50', function(){
+         bowling.addScore(4);
+         bowling.addScore(4);
+         bowling.tenthFrameUpdate();
+         expect(bowling.total).toEqual(50);
+      });
+
+      it('should return 55', function(){
+        bowling.addScore(5);
+        bowling.addScore(5);
+        bowling.tenthFrameUpdate();
+        expect(bowling.total).toEqual(55);
+      });
+
+      it('should return 90', function(){
+        bowling.addScore(10);
+        bowling.addScore(10);
+        bowling.tenthFrameUpdate();
+        bowling.addScore(10);
+        bowling.tenthFrameUpdate();
+        expect(bowling.total).toEqual(90);
+      });
+
+    });
+
   });
-  
+
 });

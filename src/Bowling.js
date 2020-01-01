@@ -63,7 +63,7 @@ Bowling.prototype.updateTotal = function(){
     } else if(this.isStrike()){
       return this.total += 30;
     }
-    return this.total += 30 + this.getFirstRoll() + this.sumCurrent() + this.sumCurrent();
+    return this.total += 30 + this.getFirstRoll() + 2 * this.sumCurrent();
   };
   if(this.isPrevSpare()){
     if(this.isStrike()){
@@ -74,7 +74,7 @@ Bowling.prototype.updateTotal = function(){
     if(this.isSpare()){
       return this.total += 20;
     } else if(!this.isStrike()){
-      return this.total += 10 + this.sumCurrent() + this.sumCurrent();
+      return this.total += 10 + 2 * this.sumCurrent();
     };
   };
   if(!this.isStrike() && !this.isSpare()){
@@ -91,24 +91,20 @@ Bowling.prototype.isTenthFrame = function(){
 
 Bowling.prototype.tenthFrameUpdate = function(){
   if(this.isPrevSpare() && this.scorecard.length != 11){
-    if(this.isSpare()){
-      console.log("FirstRoll:" + this.getFirstRoll());
-      return this.total += 20 + this.getFirstRoll();
-    } else if (this.scorecard.length == 11){
-      return this.total += this.getFirstRoll();
-    } else {
-      return this.total += 10 + this.getFirstRoll() + this.sumCurrent();
-    };
-  } else {
-    if(this.doubleStrikeOnTenth()){
-      return this.total += 20;
-    } else if(this.isSpare()){
-      return this.total += 10;
-    } else if(!this.isSpare() && !this.isStrike() && this.firstThrow == true){
-      return this.total += this.sumCurrent();
-    };
-    return this.total += this.getFirstRoll();
+    return this.total += 10 + this.getFirstRoll() + this.sumCurrent();
+  } else if(this.isDoubleStrike() && this.scorecard.length != 11){
+    return this.total += 30 + this.getFirstRoll() + 2 * this.sumCurrent();
+  } else if(this.isPrevStrike() && this.scorecard.length != 11){
+    return this.total += 10 + 2 * this.sumCurrent();
   };
+  if(this.doubleStrikeOnTenth()){
+    return this.total += 20;
+  } else if(this.isSpare()){
+    return this.total += 10;
+  } else if(!this.isSpare() && !this.isStrike() && this.firstThrow == true){
+    return this.total += this.sumCurrent();
+  };
+  return this.total += this.getFirstRoll();
 };
 
 Bowling.prototype.sumCurrent = function(){
@@ -124,4 +120,4 @@ Bowling.prototype.doubleStrikeOnTenth = function(){
     return true;
   };
   return false;
-}
+};

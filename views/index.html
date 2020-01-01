@@ -5,6 +5,10 @@
   <meta charset="utf-8">
   <title>Scorecard</title>
 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <link rel="stylesheet" href="../public/stylesheets/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Exo+2&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -14,15 +18,15 @@
     <h1>Bowling Scorecard</h1>
     
     <div>
+      <div id='roll-entry'>
+        <form id='roll'>
 
-      <form id='roll'>
-
-        <input type='text' id='entry'>
-
-      </form>
-      <button id='submit'>Enter Roll</button>
-
-      <table>
+          <input type='text' id='entry'>
+          
+        </form>
+        <button id='submit' class='btn btn-primary'>Enter Roll</button>
+      </div>
+      <table class='table table-hover table-dark'>
 
         <tr>
 

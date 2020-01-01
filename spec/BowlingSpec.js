@@ -269,7 +269,11 @@ describe('Bowling', function(){
     describe('no strike on frames 8 or 9 and no spare on 9', function(){
 
       beforeEach(function(){
-        bowling.total = 72;
+        for(var i = 0; i < 9; i++){
+          bowling.addScore(4);
+          bowling.addScore(4);
+          bowling.updateTotal();
+        };
       });
 
       it('should return 80', function(){
@@ -295,9 +299,38 @@ describe('Bowling', function(){
         bowling.addScore(10);
         bowling.tenthFrameUpdate();
         expect(bowling.total).toEqual(102);
-      })
+      });
+
     });
 
-  });
+    describe('a spare on the ninth frame', function(){
 
+      beforeEach(function(){
+        for(var i = 0; i < 8; i++){
+          bowling.addScore(0);
+          bowling.addScore(0);
+        };
+        bowling.addScore(5);
+        bowling.addScore(5);
+        bowling.updateTotal();
+      });
+
+      it('should return 22', function(){
+        bowling.addScore(4);
+        bowling.addScore(4);
+        bowling.tenthFrameUpdate();
+        expect(bowling.total).toEqual(22);
+      });
+
+      it('should return 30', function(){
+        bowling.addScore(5);
+        bowling.addScore(5);
+        bowling.tenthFrameUpdate();
+        bowling.addScore(5);
+        bowling.tenthFrameUpdate();
+        expect(bowling.total).toEqual(30);
+      });
+
+  });
+  
 });

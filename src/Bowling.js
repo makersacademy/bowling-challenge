@@ -90,14 +90,25 @@ Bowling.prototype.isTenthFrame = function(){
 };
 
 Bowling.prototype.tenthFrameUpdate = function(){
-  if(this.doubleStrikeOnTenth()){
-    return this.total += 20;
-  } else if(this.isSpare()){
-    return this.total += 10;
-  } else if(!this.isSpare() && !this.isStrike() && this.firstThrow == true){
-    return this.total += this.sumCurrent();
+  if(this.isPrevSpare() && this.scorecard.length != 11){
+    if(this.isSpare()){
+      console.log("FirstRoll:" + this.getFirstRoll());
+      return this.total += 20 + this.getFirstRoll();
+    } else if (this.scorecard.length == 11){
+      return this.total += this.getFirstRoll();
+    } else {
+      return this.total += 10 + this.getFirstRoll() + this.sumCurrent();
+    };
+  } else {
+    if(this.doubleStrikeOnTenth()){
+      return this.total += 20;
+    } else if(this.isSpare()){
+      return this.total += 10;
+    } else if(!this.isSpare() && !this.isStrike() && this.firstThrow == true){
+      return this.total += this.sumCurrent();
+    };
+    return this.total += this.getFirstRoll();
   };
-  return this.total += this.getFirstRoll();
 };
 
 Bowling.prototype.sumCurrent = function(){

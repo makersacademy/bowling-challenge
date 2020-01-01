@@ -6,7 +6,14 @@ This is an interactive bowling scorecard that users can input their scores as th
 
 ## Setting up
 
+### Cloning the repo
+
 Clone this repo by typing `git clone https://github.com/Jamie95187/bowling-challenge.git` inside your terminal.
+
+### Installing Jasmine
+
+Follow the instructions on [jasmine-link](https://github.com/jasmine/jasmine) (note - stop before the step labelled "Add the following to your HTML file").
+
 
 ## Running tests
 
@@ -14,7 +21,10 @@ The unit tests can be ran by running the `SpecRunner.html`. Type `open SpecRunne
 
 <img src="./images/SpecRunner.png" width="400"/>
 
+## Technologies Used
 
+**Javascript** - the backend for this project is written in javascript
+**Jasmine** - the testing framework for this project
 
 <!-- * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

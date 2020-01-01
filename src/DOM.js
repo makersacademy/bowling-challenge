@@ -37,7 +37,7 @@ $(document).ready(function() {
     if (pins < 10) {
       $.each(Array(11), function(i) {
         if (pins + i > 10) {
-          $(`#roll${i}`).attr('class', 'hide')
+          $(`#roll${i}`).attr('class', 'rollbutton hide')
         }
       })
     }

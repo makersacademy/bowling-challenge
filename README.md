@@ -12,11 +12,13 @@ Initially I used only one class but ended up creating another class to handle th
 
 Started with ESLint early on to ensure I was adhering to Javascript conventions.
 
-## Screenshots
+## Screenshots & Gif
 
 ![Empty](./img/empty.png)
 ![Some](./img/some.png)
 ![Filled](./img/filled.png)
+
+![Using](https://gfycat.com/periodiccluelessgemsbok)
 
 ## Areas of improvement
 

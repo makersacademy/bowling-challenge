@@ -18,7 +18,7 @@ Started with ESLint early on to ensure I was adhering to Javascript conventions.
 ![Some](img/some.png)
 ![Filled](img/filled.png)
 
-![Using](img/PeriodicCluelessGemsbok.mp4)
+![Gif of using app](img/bowling_challenge.gif)
 
 ## Areas of improvement
 

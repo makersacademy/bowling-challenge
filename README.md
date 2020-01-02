@@ -14,11 +14,11 @@ Started with ESLint early on to ensure I was adhering to Javascript conventions.
 
 ## Screenshots & Gif
 
-![Empty](./img/empty.png)
-![Some](./img/some.png)
-![Filled](./img/filled.png)
+![Empty](img/empty.png)
+![Some](img/some.png)
+![Filled](img/filled.png)
 
-![Using](https://gfycat.com/periodiccluelessgemsbok)
+![Using](img/PeriodicCluelessGemsbok.mp4)
 
 ## Areas of improvement
 

@@ -14,11 +14,11 @@ Started with ESLint early on to ensure I was adhering to Javascript conventions.
 
 ## Screenshots & Gif
 
-![Empty](img/empty.png)
-![Some](img/some.png)
-![Filled](img/filled.png)
+![Empty](media/empty.png)
+![Some](media/some.png)
+![Filled](media/filled.png)
 
-![Gif of using app](img/bowling_challenge.gif)
+![Gif of using app](media/bowling_challenge.gif)
 
 ## Areas of improvement
 
@@ -72,7 +72,7 @@ In the image below you can find some score examples.
 
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+![Ten Pin Score Example](media/example_ten_pin_scoring.png)
 
 ## Code Review
 

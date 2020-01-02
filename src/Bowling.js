@@ -9,10 +9,27 @@ function Bowling(){
 Bowling.prototype.addScore = function(score){
   if(this.firstThrow){
     this.scorecard.push([score]);
+    this.firstThrow = !this.firstThrow;
   } else {
-    this.scorecard[this.scorecard.length-1].push(score);
+    if(typeof(this.isRollValid(score)) == "number"){
+      this.scorecard[this.scorecard.length-1].push(score);
+      this.firstThrow = !this.firstThrow;
+    } else {
+      return this.isRollValid(score);
+    };
   };
-  this.firstThrow = !this.firstThrow;
+};
+
+Bowling.prototype.isRollValid = function(score){
+  if(this.scorecard.length == 10){
+    if(this.getFirstRoll() != 10 && this.getFirstRoll() + score > 10){
+      return "Invalid Roll - can not hit more than 10 pins!"
+    }
+  }
+  else if(this.getFirstRoll() != 10 && this.getFirstRoll() + score > 10){
+    return "Invalid Roll - can not hit more than 10 pins!"
+  };
+  return score;
 };
 
 Bowling.prototype.isPrevSpare = function(){

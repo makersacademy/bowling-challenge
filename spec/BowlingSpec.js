@@ -22,12 +22,26 @@ describe('Bowling', function(){
 
   });
 
-  describe('addScore card method', function(){
+  describe('addScore to scorecard method', function(){
 
     it('should add the number of pins knocked to the current frame', function(){
       bowling.addScore(5);
       bowling.addScore(5);
       expect(bowling.scorecard).toContain([5,5]);
+    });
+
+  });
+
+  describe('isRollValid method', function(){
+
+    it('should return Invalid Roll', function(){
+      bowling.addScore(5);
+      expect(bowling.isRollValid(6)).toEqual("Invalid Roll - can not hit more than 10 pins!");
+    });
+
+    it('should return 4', function(){
+      bowling.addScore(5);
+      expect(bowling.isRollValid(4)).toEqual(4);
     });
 
   });

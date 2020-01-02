@@ -1,8 +1,9 @@
-$(document).ready(function() {
+$(document).ready(function () {
   var game = new Bowling()
   var rollNumber = 1
   var prevRoll = 0
   var isFinal = false
+  selectFrame()
 
   function updateScore() {
     $('#total').text(`${game.total()}`)
@@ -24,13 +25,22 @@ $(document).ready(function() {
       rollNumber++
     }
     if (rollNumber === 21 && prevRoll === 10) isFinal = true
-    prevRoll = pins
   }
 
   function updateFrameTotal() {
     game.cumulativeTotals().forEach( function (value, i) {
       $(`#total${i+1}`).text(`${value}`)
     })
+  }
+
+  function selectFrame() {
+    $("col").removeClass('currentFrame')
+    if (rollNumber < 21) {
+      var i = Math.round(rollNumber/2)
+      $(`#col${i}`).attr('class', 'currentFrame')
+    } else {
+      $(`#col10`).attr('class', 'currentFrame')
+    }
   }
 
   function hideButtons(pins) {
@@ -47,28 +57,33 @@ $(document).ready(function() {
     $("button").removeClass("hide");
   }
 
-  $(function() {
-    $.each(Array(11), function(i) {
-      $(`#roll${i}`).click(function( event ) {
-        updateFrame(i)
-        game.roll(i)
-        if (rollNumber % 2 === 0 || rollNumber > 20) {
-          hideButtons(i)
-        } else {
-          showButtons()
-        }
+  function updateButtons(pins) {
+    if ((rollNumber > 21) || (rollNumber === 21 && prevRoll + pins < 10)) {
+      $.each(Array(11), function(i) {
+        $(`#roll${i}`).attr('class', 'rollbutton hide')
+      })
+    } else if (rollNumber % 2 === 0 || rollNumber === 21 && prevRoll + pins > 10) {
+      hideButtons(pins)
+    } else {
+      showButtons()
+    }
+  }
+
+  $(function () {
+    $.each(Array(11), function(pins) {
+      $(`#roll${pins}`).click(function ( event ) {
+        updateFrame(pins)
+        game.roll(pins)
         updateScore()
         updateFrameTotal()
-        if (rollNumber > 21) {
-          $.each(Array(11), function(i) {
-            $(`#roll${i}`).attr('class', 'hide')
-          })
-        }
+        updateButtons(pins)
+        selectFrame()
+        prevRoll = pins
       });
     });
   });
 
-  $('#restart').click(function( event) {
+  $('#restart').click(function ( event ) {
     game = new Bowling()
     rollNumber = 1
     prevRoll = 0
@@ -77,5 +92,6 @@ $(document).ready(function() {
     $('.totals').empty()
     $('#total').empty()
     showButtons()
+    selectFrame()
   });
 })

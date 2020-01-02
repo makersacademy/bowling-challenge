@@ -1,3 +1,17 @@
+body {
+  background-color: #AB7A3B;
+  background-image:
+  repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+  repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+  linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+  linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+  background-size: 70px 120px;
+  margin: 5%;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 30px;
+  text-align: center;
+}
+
 table {
   table-layout: fixed;
   border: 3px solid black;
@@ -6,6 +20,8 @@ table {
   border-radius: 20px;
   text-align: center;
   background-color: #CBA26D;
+  overflow: hidden;
+  display: inline-block;
 }
 
 td, th {
@@ -24,22 +40,12 @@ td:first-child, th:first-child {
   border-left: none;
 }
 
-button.hide {
-  visibility: hidden;
+.currentFrame {
+  background-color: #DCC19E;
 }
 
-body {
-  background-color: #AB7A3B;
-  background-image:
-  repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
-  repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
-  linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
-  linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
-  background-size: 70px 120px;
-  margin: 5%;
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  font-size: 30px;
-  text-align: center;
+button.hide {
+  visibility: hidden;
 }
 
 button.rollbutton {
@@ -60,7 +66,7 @@ button.rollbutton:hover {
 }
 
 #restart {
-  margin-top: 5%;
+  margin-top: 1%;
   width: 100px;
   height: 60px;
   border-radius: 25%;

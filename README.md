@@ -23,7 +23,7 @@ The unit tests can be ran by running the `SpecRunner.html`. Type `open SpecRunne
 
 ## Technologies Used
 
-**Javascript** - the backend for this project is written in javascript
+**Javascript** - the backend for this project is written in javascript <br>
 **Jasmine** - the testing framework for this project
 
 <!-- * Challenge time: rest of the day and weekend.
@@ -80,11 +80,15 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
-## Code Review
+## External links used
+
+Inspired by [scorecard template](https://codepen.io/owenjam/pen/reelWN), used this as a template for building the frontend environment.
+
+<!-- ## Code Review
 
 In code review we'll be hoping to see:
 
 * All tests passing
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want. -->

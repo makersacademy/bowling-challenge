@@ -10,7 +10,6 @@ Prerequisites
 
 * Fork this repository
 * Clone the new repository into your machine with ```git clone```
-* Open the file ```index.html``` in the browser to play the game
 
 How to run tests
 -------
@@ -32,5 +31,21 @@ Class Diagrams
 | calculateScoreSheet |  
 | calculateFrameScore |
 
-Feature Test / Screenshots (to be added)
+Feature Test / Screenshots
 -------
+
+* Open the file ```index.html``` in the browser to play the game
+
+![Homapage](./images/1-start.png)
+
+* Input the first frame and press "Add frame" (spare)
+
+![Spare](./images/2-spare.png)
+
+* Input the second frame and press "Add frame" (strike)
+
+![Strike](./images/3-strike.png)
+
+* See the partial and total scores
+
+![Final score](./images/4-final-score.png)

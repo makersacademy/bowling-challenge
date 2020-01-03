@@ -46,6 +46,7 @@ Scoreboard.prototype.addRoll = function (roll) {
     //otherwise add the roll
     this.rolls.push(roll);
 
+    // calculation scenario for spare before the final roll is rolled
     if ((this.rolls.length % 2 === 1) &&
         (this.rolls.length < 18) &&
         (roll === 10)) {
@@ -82,7 +83,7 @@ Scoreboard.prototype.getAllFrameScores = function () {
     var totalScore = 0;
 
     //below we tell the loop to either go until the end of the rolls array
-    //or until array index 18.this does not calculate the final frame
+    //or until array index 18. this does not calculate the final frame
 
     for (var i = 0; i < Math.min(this.rolls.length, 18); i += 2) {
         //it slices the array to 'create' frames of 2 rolls
@@ -91,13 +92,13 @@ Scoreboard.prototype.getAllFrameScores = function () {
         var bonusRolls = this.rolls.slice(i + 2, i + 5);
         //we increment to a totalScore the sums of the frames and any subsequent bonuses
         totalScore += this.getFrameScore(rolls, bonusRolls)
-        //we push those totals in a total score array
+        //we push those totals in a total score array so we see the score per frame
         frameScores.push(totalScore);
     }
 
     //this calculates the final frame
     if(this.rolls.length > 18) {
-        //this selects just the final frame sums the values of said frame and increments the total score
+        //this selects just the final frame, sums the values of said frame and increments the total score
         totalScore += this.rolls.slice(18, 21).reduce(function(a, b){return a + b})
         //you push the total of the final frame into the frame scores array
         frameScores.push(totalScore);

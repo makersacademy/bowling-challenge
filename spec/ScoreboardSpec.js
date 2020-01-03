@@ -91,7 +91,7 @@ describe('Scoreboard', function () {
 
     });
 
-    describe('get frame score', function () {
+    describe('get a frame score', function () {
 
         it('scores a regular frame', function () {
             expect(scoreboard.getFrameScore([2, 4], [])).toEqual(6);

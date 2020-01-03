@@ -49,3 +49,11 @@ Feature Test / Screenshots
 * See the partial and total scores
 
 ![Final score](./images/4-final-score.png)
+
+* Example of a gutter game
+
+![Final score](./images/5-gutter-game.png)
+
+* Example of a perfect game
+
+![Final score](./images/6-perfect-game.png)

@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+#title {
+  margin: 20px;
+}
+
+.scorecard {
+  border: 1px solid black;
+  width: 80vw;
+  height: 6vw;
+  display: flex;
+  margin: 10px;
+}
+
+.frame {
+  flex-basis: 100%;
+  border: 1px solid black;
+}
+
+.std-frame {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.std-frame-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 40%;
+  font-size: 1.5vw;
+}
+
+.std-frame-item:nth-child(2n) {
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.std-frame-item:nth-child(3n) {
+  width: 100%;
+  height: 60%;
+  font-size: 2vw;
+}
+
+.frame10 {
+  width: 100px;
+}

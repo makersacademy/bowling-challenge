@@ -17,7 +17,6 @@ Bowling.prototype.roll = function(...args) {
     } else if (this._isLastFrame && !this._currentFrame().closed()) {
       this._lastFrame(pins)
     }
-
   });
 }
 
@@ -65,7 +64,6 @@ Bowling.prototype._extraPoints = function (pins) {
 }
 
 Bowling.prototype._lastFrame = function(pins) {
-
   this._oneFrameBack().inputExtra(pins);
   this._currentFrame().inputExtra(pins);
   this._checkEnd()

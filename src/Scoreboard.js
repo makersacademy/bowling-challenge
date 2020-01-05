@@ -62,12 +62,12 @@ Scoreboard.prototype.getFrameScore = function (rolls, bonusRolls) {
         return rolls[0] + rolls[1];
     }
 
-    //strike plus strike score
-    if (rolls[0] === 10 && bonusRolls[0] === 10) {
-        return rolls[0] + bonusRolls[0] + bonusRolls[1] + bonusRolls[2];
+    //strike plus strike score(scenario for frame 9 and frame 10 strike)
+    if (rolls[0] === 10 && bonusRolls[1] === null) {
+        return rolls[0] + bonusRolls[0] + bonusRolls[2];
     }
 
-    //strike plus reg frame score
+    //strike plus next frame score
     if (rolls[0] === 10) {
         return rolls[0] + bonusRolls[0] + bonusRolls[1];
     }

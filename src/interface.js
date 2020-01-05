@@ -10,6 +10,7 @@ $(document).ready(function () {
 
         console.log(scoreboard.rolls);
 
+
         $('.pins').each(function (index, elem) {
             $(elem).html(scoreboard.rolls[index]);
         });

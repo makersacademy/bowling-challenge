@@ -2,7 +2,7 @@ $(document).ready(() => {
 
   function setDisplay() {
     if(frameNum === 10) {
-
+      
     } else {
       $(`#frame${frameNum}`).find('#roll1').text(game.frames[frameNum - 1].roll1())
       $(`#frame${frameNum}`).find('#roll2').text(game.frames[frameNum - 1].roll2())

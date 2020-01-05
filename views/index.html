@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+    <meta charset="utf-8">
+    <title>Bowling Game</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="../public/js/interface.js"></script>
+    <script src="../public/js/game.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' href='../public/styles/style.css'>
+
+  </head>
+
+  <body>
+    <header>
+      <h1>Bowling Game</h1>
+    </header>
+    <section>
+      <form id="input-rolls">
+        <label for="first-roll">
+          First Roll
+          <input type="text" name="first-roll">
+        </label>
+
+        <label for="second-roll">
+            Second Roll
+            <input type="text" name="second-roll">
+          </label>
+
+          <label for="third-roll">
+              Third Roll
+              <input type="text" name="third-roll">
+            </label>
+    
+        <input type="submit" value="Add Frame">
+      </form>
+    </section>
+
+    <section>
+      <div id="total-score-div">
+        <p id="total-score-title">Total Score:</p>
+        <p id="total-score">0</p>
+      </div>
+
+      <table id="score-card">
+        <tr>
+          <th>Frame</th>
+          <th>Knocked Down Pins</th>
+          <th>Frame Score</th>
+        </tr>
+        </table>
+    </section>
+    
+  </body>
+
+</html>

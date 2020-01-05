@@ -1,13 +1,15 @@
 $(document).ready(function() {
   let bowling = new Bowling
 
-  $('#score').text(`${bowling.score()}`)
+  // $('#score').text(`${bowling.score()}`)
 
   $('#roll1').change(function() {
     var value1 = $(this).val();
     console.log(value1)
     bowling.roll(value1);
     console.log(bowling.score())
+    // $('#score').text(`${bowling.score()}`)
+
   });
 
   $('#roll2').change(function() {
@@ -15,6 +17,8 @@ $(document).ready(function() {
     console.log(value2)
     bowling.roll(value2);
     console.log(bowling.score())
+    // $('#score').text(`${bowling.score()}`)
+
   });
 
   $('#roll3').change(function() {
@@ -150,7 +154,7 @@ $(document).ready(function() {
     console.log(bowling.score())
 
     $('#score').text(`${bowling.score()}`)
-    
+
   });
 
 });

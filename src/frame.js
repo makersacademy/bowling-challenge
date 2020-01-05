@@ -1,5 +1,5 @@
 function Frame() {
-  this._rolls = []
+  this.rolls = []
   this._extras = []
   this._numRolls = 2
   this._extrasRequired = 0
@@ -8,14 +8,14 @@ function Frame() {
 Frame.prototype.inputRoll = function(pins) {
   if(!this.canRoll()) throw new Error ("Cannot Roll, frame has ended");
   else {
-    this._rolls.push(pins);
+    this.rolls.push(pins);
     this._numRolls--;
     if(!this._isStrike()) this._isSpare();
   }
 }
 
 Frame.prototype.score = function() {
-  var rollScore = this._rolls.reduce((a,b) => a + b, 0);
+  var rollScore = this.rolls.reduce((a,b) => a + b, 0);
   var extraScore = this._extras.reduce((a,b) => a + b, 0);
   return (rollScore + extraScore);
 }
@@ -36,17 +36,31 @@ Frame.prototype.closed = function() {
   return !this._numRolls && !this._extrasRequired;
 }
 
+Frame.prototype.roll1 = function() {
+  if(this.rolls[0] === 10) return ""
+  return this.rolls[0]
+}
+
+Frame.prototype.roll2 = function() {
+  if(this.rolls[0] === 10) {
+    return 'X'
+  } else if(this.rolls.reduce((a,b) => a + b, 0) === 10) {
+    return '/'
+  }
+  return this.rolls[1]
+}
+
 // private functions
 
 Frame.prototype._isSpare = function () {
-  if(this._rolls.reduce((a,b) => a + b, 0) === 10) {
+  if(this.rolls.reduce((a,b) => a + b, 0) === 10) {
     this._extrasRequired = 1;
     return true;
   }
 }
 
 Frame.prototype._isStrike = function () {
-  if(this._rolls[this._rolls.length - 1] === 10) {
+  if(this.rolls[this.rolls.length - 1] === 10) {
     this._numRolls = 0;
     this._extrasRequired = 2;
     return true;

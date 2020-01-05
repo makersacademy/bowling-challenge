@@ -18,9 +18,13 @@ Further improvements
 ====================
 
 - Currently the code has been tested in the "chicago" style TDD, this should be updated to the "London" style to isolate classes when testing.
-- A front end is required
+- The final frame scoring/logic is very different to a normal frame. The code would probably be cleaner if there was a separare finalFrame class
 - A further extension would be to introduce multi-players, this is unlikely to be implemented given the time constraints of the course
 
+
+
+Original ReadMe
+===============
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

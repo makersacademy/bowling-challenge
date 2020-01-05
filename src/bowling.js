@@ -2,7 +2,7 @@
 
 function Bowling(frames = 10) {
   this._maxFrames = frames;
-  this._frames = [new Frame()];
+  this.frames = [new Frame()];
   this.isEnd = false;
   this._isLastFrame = false;
 }
@@ -20,12 +20,12 @@ Bowling.prototype.roll = function(...args) {
   });
 }
 
-Bowling.prototype.totalScore = function() {
-  return this._frames.reduce((a, b) => a + b.score(), 0);
+Bowling.prototype.totalScore = function(max = this.frames.length) {
+  return this.frames.slice(0, max).reduce((a, b) => a + b.score(), 0);
 }
 
 Bowling.prototype.frameNum = function() {
-  return (this._frames.length);
+  return (this.frames.length);
 }
 
 // private functions
@@ -33,25 +33,25 @@ Bowling.prototype.frameNum = function() {
 Bowling.prototype._addRoll = function(pins) {
   // console.log("here")
   this._currentFrame().inputRoll(pins);
-  if(this._frames.length > 1) this._extraPoints(pins);
+  if(this.frames.length > 1) this._extraPoints(pins);
   this._checkEnd();
   if(!this._currentFrame().canRoll() && !this._isLastFrame) this._newFrame();
 }
 
 Bowling.prototype._newFrame = function() {
-  this._frames.push(new Frame());
+  this.frames.push(new Frame());
 }
 
 Bowling.prototype._currentFrame = function() {
-  return this._frames[this._frames.length - 1];
+  return this.frames[this.frames.length - 1];
 }
 
 Bowling.prototype._oneFrameBack = function() {
-  return this._frames[this.frameNum() - 2];
+  return this.frames[this.frameNum() - 2];
 }
 
 Bowling.prototype._twoFramesBack = function() {
-  return this._frames[this.frameNum() - 3];
+  return this.frames[this.frameNum() - 3];
 }
 
 Bowling.prototype._extraPoints = function (pins) {

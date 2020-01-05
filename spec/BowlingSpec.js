@@ -6,7 +6,7 @@ describe("Bowling", function() {
   beforeEach(function() {
     game = new Bowling();
   });
-  
+
   it ("should have a total score of 0 upon initialization of the game", function() {
     expect(game.totalScore()).toEqual(0)
   });
@@ -121,5 +121,21 @@ describe("Bowling", function() {
     expect(game.totalScore()).toEqual(270)
     expect(game.isEnd).toEqual(true)
   });
+
+  describe(".totalScore", function() {
+    it ("should calculate the score of all frames if no argument is given", function() {
+      game.roll(5,4, 3,2, 7,1, 3,2)
+      expect(game.totalScore()).toEqual(27)
+    });
+
+    it ("should calculate the score up to a specific frame if an argument is given", function() {
+      game.roll(5,4, 3,2, 7,1, 3,2)
+      expect(game.totalScore(1)).toEqual(9)
+      expect(game.totalScore(2)).toEqual(14)
+      expect(game.totalScore(3)).toEqual(22)
+    }); 
+  });
+
+
 
 });

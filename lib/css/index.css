@@ -5,7 +5,7 @@
 }
 
 #title {
-  margin: 20px;
+  margin: 10px;
 }
 
 .scorecard {
@@ -45,7 +45,48 @@
   height: 60%;
   font-size: 2vw;
 }
+/* -------- */
+
+.final-frame {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.final-frame-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33.3333333333333333333%;
+  height: 40%;
+  font-size: 1.5vw;
+}
+
+.final-frame-item:nth-child(2n) {
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.final-frame-item:nth-child(3n) {
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.final-frame-item:nth-child(4n) {
+  width: 100%;
+  height: 60%;
+  font-size: 2vw;
+  border: 0px;
+}
+
 
 .frame10 {
   width: 100px;
+}
+
+#roll-score-title {
+  padding: 10px;
+}
+
+.score-btns {
+  padding: 10px;
 }

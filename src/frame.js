@@ -50,6 +50,25 @@ Frame.prototype.roll2 = function() {
   return this.rolls[1]
 }
 
+Frame.prototype.final1 = function() {
+  if(this.rolls[0] === 10) return "X"
+  return this.rolls[0]
+}
+
+Frame.prototype.final2 = function() {
+  join_arr = this.rolls.concat(this._extras)
+  if(join_arr[1] === 10) {
+    return "X"
+  } else if(this.rolls.reduce((a,b) => a + b, 0) === 10 && join_arr != 10) return "/"
+  return join_arr[1]
+}
+
+Frame.prototype.final3 = function() {
+  join_arr = this.rolls.concat(this._extras)
+  if(join_arr[2] === 10) return "X"
+  return join_arr[2]
+}
+
 // private functions
 
 Frame.prototype._isSpare = function () {

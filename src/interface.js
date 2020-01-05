@@ -2,12 +2,15 @@ $(document).ready(() => {
 
   function setDisplay() {
     if(frameNum === 10) {
-      
+      $(`#frame${frameNum}`).find('#roll1').text(game.frames[frameNum - 1].final1())
+      $(`#frame${frameNum}`).find('#roll2').text(game.frames[frameNum - 1].final2())
+      $(`#frame${frameNum}`).find('#extra').text(game.frames[frameNum - 1].final3())
     } else {
       $(`#frame${frameNum}`).find('#roll1').text(game.frames[frameNum - 1].roll1())
       $(`#frame${frameNum}`).find('#roll2').text(game.frames[frameNum - 1].roll2())
     }
     setScore()
+    // setButtons()
     frameNum = game.frameNum()
   };
 

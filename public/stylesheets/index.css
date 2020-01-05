@@ -14,6 +14,9 @@ body{
 }
 .title{
   text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  font-family: serif;
 }
 .buttons{
   text-align: center;
@@ -23,6 +26,11 @@ body{
   border-radius: 8px;
   padding: 12px 30px;
   background-color: rgba(53,69,58,0.09);
+}
+.notice{
+  text-align: center;
+  color: black;
+  font-weight: bold;
 }
 table.scorecard {margin: 0 auto; width:80%; font-size:12px; border:1px solid; text-align: center;
 table-layout: fixed; margin-bottom: 40px;}

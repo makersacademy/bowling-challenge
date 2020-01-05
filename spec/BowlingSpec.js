@@ -95,7 +95,6 @@ describe('Bowling', function(){
 
       beforeEach(function(){
         bowling.addScore(10);
-        bowling.addScore(0);
       });
 
       it('should return true if the last frame was a strike', function(){
@@ -184,22 +183,21 @@ describe('Bowling', function(){
         bowling.updateTotal();
       });
 
-      it('should return total of 0, awaiting next frame', function(){
-        expect(bowling.total).toEqual(0);
+      it('should return total of 10, awaiting next frame', function(){
+        expect(bowling.total).toEqual(10);
       });
 
-      it('should return total of 24 (10+5)+(5+4)', function(){
+      it('should return total of 24', function(){
         bowling.addScore(5);
         bowling.addScore(4);
         bowling.updateTotal();
         expect(bowling.total).toEqual(24);
       });
 
-      it('should return a total of 20 (10+10), awaiting next frame', function(){
+      it('should return a total of 30, awaiting next frame', function(){
         bowling.addScore(10);
-        bowling.addScore(0);
         bowling.updateTotal();
-        expect(bowling.total).toEqual(20);
+        expect(bowling.total).toEqual(30);
       });
 
     });
@@ -208,79 +206,60 @@ describe('Bowling', function(){
 
       beforeEach(function(){
         bowling.addScore(10);
-        bowling.addScore(0);
         bowling.updateTotal();
       });
 
-      it('should return total of 0, awaiting the next two rolls', function(){
-        expect(bowling.total).toEqual(0);
+      it('should return total of 10', function(){
+        expect(bowling.total).toEqual(10);
       });
 
-      it('should return a total of 28 (10+5+4)+(5+4)', function(){
+      it('should return a total of 28', function(){
         bowling.addScore(5);
         bowling.addScore(4);
         bowling.updateTotal();
         expect(bowling.total).toEqual(28);
       });
 
-      it('should return a total of 20 (10+5+5), awaiting for the next frame', function(){
+      it('should return a total of 30', function(){
         bowling.addScore(5);
         bowling.addScore(5);
         bowling.updateTotal();
-        expect(bowling.total).toEqual(20);
+        expect(bowling.total).toEqual(30);
       });
 
       describe('and the frame before also a strike', function(){
 
         beforeEach(function(){
           bowling.addScore(10);
-          bowling.addScore(0);
           bowling.updateTotal();
         });
 
-        it('should return 0, awaiting the next frame', function(){
-          expect(bowling.total).toEqual(0);
+        it('should return 20', function(){
+          expect(bowling.total).toEqual(20);
         });
 
-        it('should return 52 (10+10+4)+(10+4+5)+(9+4)', function(){
+        it('should return 52', function(){
           bowling.addScore(4);
           bowling.addScore(5);
           bowling.updateTotal();
           expect(bowling.total).toEqual(52);
         });
 
-        it('should return 46 (10+10+6)+(10+6+4), awaiting for next roll', function(){
+        it('should return 56', function(){
           bowling.addScore(6);
           bowling.addScore(4);
           bowling.updateTotal();
-          expect(bowling.total).toEqual(46);
+          expect(bowling.total).toEqual(56);
         });
 
-        it('should return 30 (turkey), awaiting next two frames', function(){
+        it('should return 50 (turkey)', function(){
           bowling.addScore(10);
-          bowling.addScore(0);
           bowling.updateTotal();
-          expect(bowling.total).toEqual(30);
+          expect(bowling.total).toEqual(50);
         });
 
       });
 
-    });
-
-  });
-
-  describe('test if this is the tenth frame', function(){
-
-    it('should return false', function(){
-      bowling.addScore(4);
-      expect(bowling.isTenthFrame()).toBeFalsy();
-    });
-
-    it('should return true', function(){
-      for(var i = 0; i < 19; i++){
-        bowling.addScore(4);
-      };
-      expect(bowling.isTenthFrame()).toBeTruthy();
     });
 
   });
@@ -291,35 +270,36 @@ describe('Bowling', function(){
 
       beforeEach(function(){
         for(var i = 0; i < 9; i++){
-          bowling.addScore(4);
-          bowling.addScore(4);
+          bowling.addScore(0);
+          bowling.addScore(0);
           bowling.updateTotal();
         };
       });
 
-      it('should return 80', function(){
+      it('should return 8', function(){
         bowling.addScore(4);
         bowling.addScore(4);
-        bowling.tenthFrameUpdate();
-        expect(bowling.total).toEqual(80);
+        bowling.updateTotal();
+        expect(bowling.total).toEqual(8);
       });
 
-      it('should return 86', function(){
+      it('should return 14', function(){
         bowling.addScore(5);
         bowling.addScore(5);
-        bowling.tenthFrameUpdate();
+        bowling.updateTotal();
         bowling.addScore(4);
-        bowling.tenthFrameUpdate();
-        expect(bowling.total).toEqual(86);
+        bowling.updateTotal();
+        expect(bowling.total).toEqual(14);
       });
 
-      it('should return 102', function(){
+      it('should return 30', function(){
         bowling.addScore(10);
+        bowling.updateTotal();
         bowling.addScore(10);
-        bowling.tenthFrameUpdate();
+        bowling.updateTotal();
         bowling.addScore(10);
-        bowling.tenthFrameUpdate();
-        expect(bowling.total).toEqual(102);
+        bowling.updateTotal();
+        expect(bowling.total).toEqual(30);
       });
 
     });
@@ -339,16 +319,16 @@ describe('Bowling', function(){
       it('should return 22', function(){
         bowling.addScore(4);
         bowling.addScore(4);
-        bowling.tenthFrameUpdate();
+        bowling.updateTotal();
         expect(bowling.total).toEqual(22);
       });
 
       it('should return 30', function(){
         bowling.addScore(5);
         bowling.addScore(5);
-        bowling.tenthFrameUpdate();
+        bowling.updateTotal();
         bowling.addScore(5);
-        bowling.tenthFrameUpdate();
+        bowling.updateTotal();
         expect(bowling.total).toEqual(30);
       });
 
@@ -362,23 +342,23 @@ describe('Bowling', function(){
           bowling.addScore(0);
         };
         bowling.addScore(10);
-        bowling.addScore(0);
         bowling.updateTotal();
       });
 
       it('should return 26', function(){
         bowling.addScore(4);
         bowling.addScore(4);
-        bowling.tenthFrameUpdate();
+        bowling.updateTotal();
         expect(bowling.total).toEqual(26);
       });
 
       it('should return 60', function(){
         bowling.addScore(10);
+        bowling.updateTotal();
         bowling.addScore(10);
-        bowling.tenthFrameUpdate();
+        bowling.updateTotal();
         bowling.addScore(10);
-        bowling.tenthFrameUpdate();
+        bowling.updateTotal();
         expect(bowling.total).toEqual(60);
       });
 
@@ -394,7 +374,6 @@ describe('Bowling', function(){
         };
         for(var i = 0; i < 2; i++){
           bowling.addScore(10);
-          bowling.addScore(0);
           bowling.updateTotal();
         };
 
@@ -403,23 +382,24 @@ describe('Bowling', function(){
       it('should return 50', function(){
          bowling.addScore(4);
          bowling.addScore(4);
-         bowling.tenthFrameUpdate();
+         bowling.updateTotal();
          expect(bowling.total).toEqual(50);
       });
 
       it('should return 55', function(){
         bowling.addScore(5);
         bowling.addScore(5);
-        bowling.tenthFrameUpdate();
+        bowling.updateTotal();
         expect(bowling.total).toEqual(55);
       });
 
       it('should return 90', function(){
         bowling.addScore(10);
+        bowling.updateTotal();
         bowling.addScore(10);
-        bowling.tenthFrameUpdate();
+        bowling.updateTotal();
         bowling.addScore(10);
-        bowling.tenthFrameUpdate();
+        bowling.updateTotal();
         expect(bowling.total).toEqual(90);
       });
 

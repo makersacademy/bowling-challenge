@@ -29,7 +29,8 @@ Feature tests can be ran in the Chrome DevTools. This can be accessed by pressin
 
 **Gutter Game**
 
-<img src="./images/gutter.png" width="400"/>
+<img src="./images/gutter.png" width="300"/>
+<img src="./images/gutterinterface.png" width="500" height="350"/>
 
 ## Technologies Used
 

@@ -33,6 +33,7 @@
   width: 50%;
   height: 40%;
   font-size: 1.5vw;
+  border-bottom: 1px solid transparent;
 }
 
 .std-frame-item:nth-child(2n) {
@@ -59,6 +60,7 @@
   width: 33.3333333333333333333%;
   height: 40%;
   font-size: 1.5vw;
+  border-bottom: 1px solid transparent;
 }
 
 .final-frame-item:nth-child(2n) {

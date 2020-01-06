@@ -1,0 +1,42 @@
+body {
+  background: rgb(104, 212, 104);
+  font-family: 'Exo 2', sans-serif;
+
+}
+
+h1 {
+  font-family: 'Lobster', cursive;
+  font-size: 5em;
+  text-align: center;
+}
+
+
+#roll-entry {
+  text-align: center;
+  width: 20%;
+  margin: auto;
+  margin-top: 2%;
+}
+
+#submit {
+  margin-top: 5%;
+}
+
+.table {
+  color: white;
+  width: 80%;
+  margin: auto;
+  margin-top: 2%;
+  background: rgb(0, 0, 0);
+  border: 4px solid white;
+  text-align: center;
+}
+
+th {
+  text-align: center;
+}
+
+tr:hover, th:hover, td:hover {
+  color: black;
+  cursor: pointer;
+}

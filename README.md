@@ -31,8 +31,14 @@ Feature tests can be ran in the Chrome DevTools. This can be accessed by pressin
 
 A full game of 0 rolls. (Unlucky!)
 
-<img src="./images/gutter.png" width="300"/>
-<img src="./images/gutterinterface.png" width="400" position="relative"/>
+<div class="row">
+  <div class="column">
+    <img src="./images/gutterinterface.png" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="./images/gutter.png" style="width:100%">
+  </div>
+</div>
 
 **Perfect Game**
 

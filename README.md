@@ -10,6 +10,10 @@ Usage
 * Buttons will be hidden for invalid roll scores (i.e if a score of 6 is rolled on the first roll, then only buttons 0 - 4 will be visible)
 * A highlighted backround will indicate the current frame
 
+![screenshot1](https://github.com/ajbacon/bowling-challenge/blob/master/images/Screenshot%202020-01-06%20at%2008.58.16.png)  
+  
+![screenshot1](https://github.com/ajbacon/bowling-challenge/blob/master/images/Screenshot%202020-01-06%20at%2009.00.50.png)
+
 
 Technical Approach
 ==================

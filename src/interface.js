@@ -5,7 +5,6 @@ $( document ).ready(function() {
   var gameover = false;
 
   $('.btn-primary').on('click', function() {
-    console.log(gameover);
     if(gameover == false){
       var score = parseInt($(this).attr('data-scoreid'));
       if(score == 10 && firstThrow == true){

@@ -29,8 +29,17 @@ Feature tests can be ran in the Chrome DevTools. This can be accessed by pressin
 
 **Gutter Game**
 
+A full game of 0 rolls. (Unlucky!)
+
 <img src="./images/gutter.png" width="300"/>
-<img src="./images/gutterinterface.png" width="500" height="350"/>
+<img src="./images/gutterinterface.png" width="400" position="relative"/>
+
+**Perfect Game**
+
+The perfect game with a score of 300. (Impressive!)
+
+<img src="./images/perfectgame.png" width ="300"/>
+
 
 ## Technologies Used
 

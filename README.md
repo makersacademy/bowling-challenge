@@ -2,7 +2,7 @@
 Bowling Challenge
 =================
 
-This is an interactive bowling scorecard that users can input their scores as they bowl. The scores are updated on a frame by frame basis.
+This is an interactive bowling scorecard that users can input their scores as they bowl. The scores are updated on a frame by frame basis. Bonus scores (strikes & spares) are calculated when the correct number of rolls have been made.
 
 ## Setting up
 
@@ -26,15 +26,7 @@ The unit tests can be ran by running the `SpecRunner.html`. Type `open SpecRunne
 **Javascript** - the backend for this project is written in javascript <br>
 **Jasmine** - the testing framework for this project
 
-<!-- * Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week -->
-
 ## Description
-
-Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
@@ -82,13 +74,19 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ## External links used
 
-Inspired by [scorecard template](https://codepen.io/owenjam/pen/reelWN), used this as a template for building the frontend environment.
+Inspired by [scorecard template](https://codepen.io/owenjam/pen/reelWN). Used this as a template for building the frontend environment.
 
-<!-- ## Code Review
+## Code Review
 
 In code review we'll be hoping to see:
 
 * All tests passing
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want. -->
+Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+
+## Things to consider next time
+
+* Planning ahead before starting project.
+* Setting up Travis for robust tests.
+* Using ESLint for writing conventional javascript.

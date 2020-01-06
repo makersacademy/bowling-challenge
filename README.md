@@ -17,9 +17,19 @@ Follow the instructions on [jasmine-link](https://github.com/jasmine/jasmine) (n
 
 ## Running tests
 
+### Unit testing
+
 The unit tests can be ran by running the `SpecRunner.html`. Type `open SpecRunner.html` inside the terminal which will open your browser of choice and the tests will be displayed in the browser.
 
 <img src="./images/SpecRunner.png" width="400"/>
+
+### Feature testing
+
+Feature tests can be ran in the Chrome DevTools. This can be accessed by pressing 'command + option + j' in a the google chrome browser. I copied the code from `src/Bowling.js` into the console tab.
+
+**Gutter Game**
+
+<img src="./images/gutter.png" width="400"/>
 
 ## Technologies Used
 

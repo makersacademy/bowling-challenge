@@ -8,6 +8,11 @@ $ cd bowling-challenge
 $ open SpecRunner.html
 ```
 
+To open the user interface:
+```
+$ open index.html
+```
+
 ## How it works
 
 This is a bowling scorecard. The user inputs the rolls from a bowling game, and

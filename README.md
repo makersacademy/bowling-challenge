@@ -13,40 +13,23 @@ $ open SpecRunner.html
 This is a bowling scorecard. The user inputs the rolls from a bowling game, and
 the program counts and sums the scores for that player.
 
-### Planning diagrams
-First plan:
-![planning-diagram-1](images/planning-diagram-1.png)
+## Comments
 
-_Created on [draw.io](https://www.draw.io/)_
+This was completed as a weekend challenge while I was doing Maker's.
 
-Second plan:
+Bowling is deceptively complex to score, so the challenge was mostly about tackling the business logic of scoring a game. I also had fun making a UI that responds to some extent to the game (e.g. buttons become available/unavailable; new cells are added to the scorecard when needed in the 10th frame).
+
+## Solution
+
+My solution is written in Javascript, with an interactive UI that uses jQuery. I used ESLint to enforce JS conventions, and tests in Jasmine which run in the browser when you open `SpecRunner.html`.
+
+The code works something like this:
+
 ![planning-diagram-2](images/planning-diagram-2.png)
 
 _Created on [draw.io](https://www.draw.io/)_
 
-## Comments
-
-This code is intended to be reviewed using [this rubric](docs/review.md).
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
-
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
-
-### Bowling rules
+## Background info about bowling
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 

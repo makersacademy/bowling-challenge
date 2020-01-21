@@ -39,7 +39,7 @@ ESLint was used as a plugin for the Atom editor.
 
 ### TODOS:
 
-In any order you like:
+
 
 * Create a nice interactive animated interface with jQuery
 * Set up [Travis CI](https://travis-ci.org) to run tests.

@@ -6,7 +6,7 @@ Bowling Challenge
 
 
 
-The program is a Javascript based program.  It will takes a score for each frame which is then stored in a Frame object.  For the final frame there is, not surprisingly, a FinalFrame object.
+The program is a Javascript based program.  It will takes a score for each frame which is then stored in a Frame object.  For the final frame there is, not surprisingly, a finalFrame object.
 
 The Frame object can undertake the following functions:   
 * Store roll details.  

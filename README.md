@@ -33,16 +33,13 @@ getBonusScore - calculates the bonus score.  This calculates a bonus for a spare
 
 getStrikeScore - This will do one of the following three things for a strike:   
 * Where the next frame is not a strike, set the bonus to equal the raw score for the next frame (or the next two rolls for the penultimate frame).   
-* Where the next frame is a strike, set the bonus to equal the raw score for the next frame and the first roll for the next frame but one ('frame plus two'). 
+* Where the next frame is a strike, set the bonus to equal the raw score for the next frame and the first roll for the next frame but one ('frame plus two').
 
+ESLint was used as a plugin for the Atom editor.
 
-### Optional Extras Implemented:
+### TODOS:
 
 In any order you like:
 
 ~~Create a nice interactive animated interface with jQuery~~  
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-ESLint was used as a plugin for the Atom editor.
-
+* Set up [Travis CI](https://travis-ci.org) to run tests.

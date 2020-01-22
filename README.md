@@ -1,7 +1,8 @@
 
 Bowling ScoreCard
 =================
-A program that counts and sums the scores of a users bowling (in JavaScript).
+An Single page web app to record and calculate a players score.  
+JavaScript (ES5, Constructor design pattern), JQuery, Jasmine.
 
 ##Bowling Rules
 
@@ -49,3 +50,14 @@ Messages
 |Roll| pins
 
 [Game]->[Frame x10]->[rolls 1..3]
+
+---
+## Quickstart
+- Clone this repo to your local drive.
+- open in your editor of choice.
+To Launch the app:
+- right click 'index.html' and select 'copy full path'
+- paste the url into chrome.
+To run tests:
+- right click 'SpecRunner.html' and select 'copy full path'
+- paste the url into chrome.

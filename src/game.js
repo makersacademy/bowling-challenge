@@ -2,6 +2,7 @@ var Game = function() {
   this.bowlingCard = new BowlingCard
   this.scoreCalculator = new ScoreCalculator
 };
+
 Game.prototype.roll = function(pins) {
   this.scoreCalculator.reset();
   this.bowlingCard.record(pins);

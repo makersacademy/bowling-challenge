@@ -51,3 +51,13 @@ input[type=number] {
   border-radius: 4px;
   font-size: 20px;
 }
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align:center;
+}
+
+th, td {
+  padding: 8px;
+}

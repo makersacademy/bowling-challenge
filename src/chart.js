@@ -1,4 +1,3 @@
-var updatedData = [1, 2, 3, 4, 5];
 var frameScoreChart = document.getElementById('frameScoreChart').getContext('2d');
 Chart.defaults.global.defaultFontSize=20;
 
@@ -45,7 +44,7 @@ var barChart = new Chart(frameScoreChart, {
   }
 });
 
-function updateChart() {
+function updateChart(updatedData) {
     barChart.data.datasets[0].data = updatedData
     barChart.update();
 };

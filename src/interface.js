@@ -23,6 +23,8 @@ $(document).ready(function() {
     $('#frames').text(game.getFrames());
     $('#rolls').text(game.getRolls());
     $('#pins').text(game.getPins());
+
+    updateChart(game.getFrameScores());
   }
   updatePage();
 

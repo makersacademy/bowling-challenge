@@ -30,10 +30,10 @@ A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 str
 ## Quickstart
 Clone this repo to your local drive and open in your editor of choice.  
   
-To Launch the app:
+To Launch the app locally:
 - right click 'index.html' and select 'copy full path'
-- paste the url into chrome.  
+- paste the file location into chrome.  
   
 To run tests:
 - right click 'SpecRunner.html' and select 'copy full path'
-- paste the url into chrome.
+- paste the  file location into chrome.

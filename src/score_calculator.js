@@ -44,9 +44,7 @@ ScoreCalculator.prototype.isbonusTurn = function(pinsPerTurn) {
   var bonusTurns = this.bonusTurns
   var roll
   var secondRoll
-
   this.rollPerTurn.forEach(function(rollTurn) {
-    this.recordBonus = function(bonus) { bonusTurns.push(bonus) }
     if ( rollTurn === 1 || rollTurn === 3 ) {
       roll = ( pinsPerTurn.shift() )
       secondRoll = 0
@@ -55,12 +53,13 @@ ScoreCalculator.prototype.isbonusTurn = function(pinsPerTurn) {
     }
 
     if ( roll === 10 || secondRoll === 10 ) {
-      recordBonus("Strike")
+      bonus = "Strike"
     } else if ( roll + secondRoll === 10 ) {
-      recordBonus("Split")
+      bonus = "Split"
     } else {
-      recordBonus("normal")
+      bonus = "normal"
     }
+    bonusTurns.push(bonus)
   })
 };
 

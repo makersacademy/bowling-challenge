@@ -5,8 +5,10 @@ var BowlingCard = function() {
 };
 
 BowlingCard.prototype.record = function(pins) {
-  this.saveScore(pins);
-  this.endTurn(pins);
+  if ( this.rollNumber < 4 ){
+    this.saveScore(pins);
+    this.endTurn(pins);
+  };
 };
 
 BowlingCard.prototype.saveScore = function(pins) {
@@ -27,5 +29,5 @@ BowlingCard.prototype.endTurn = function(pins) {
   } else if (this.rollNumber === 2 ){
     this.rollNumber --
     this.frameNumber ++
-  }
+  };
 };

@@ -1,3 +1,4 @@
+// JQuery: submits data to backend and updates frontend. 
 $(document).ready(function() {
   var game = new Game();
 

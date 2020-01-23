@@ -1,3 +1,4 @@
+// Chart.js code to format the barchart.
 var frameScoreChart = document.getElementById('frameScoreChart').getContext('2d');
 Chart.defaults.global.defaultFontSize=20;
 

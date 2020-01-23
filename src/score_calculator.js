@@ -1,4 +1,4 @@
-
+// Accepts 'BowlingCard.scoreCard' input & uses it to Calculate a players score.
 var ScoreCalculator = function() {
   this.score = 0
   this.frameScores = [0,0,0,0,0,0,0,0,0,0]
@@ -41,31 +41,25 @@ ScoreCalculator.prototype.calculateNormalScore = function(pinsPerTurn) {
 };
 
 ScoreCalculator.prototype.isbonusTurn = function(pinsPerTurn) {
-  let bonusTurns = this.bonusTurns
-  let firstRoll = 0
-  let secondRoll = 0
-  let thirdRoll = 0
+  var bonusTurns = this.bonusTurns
+  var roll = 0
+  var secondRoll = 0
 
   this.rollPerTurn.forEach(function(rollTurn) {
-     if ( rollTurn === 1 ) {
-      firstRoll = ( pinsPerTurn.shift() );
-      if ( firstRoll === 10 ) {
-        bonusTurns.push( "Strike" );
-      } else {bonusTurns.push( "normal" );}
+    this.recordStrike = function() { bonusTurns.push( "Strike" )};
+    this.recordSplit = function() { bonusTurns.push( "Split" )};
+    this.recordNormal = function() { bonusTurns.push( "normal" )};
+
+    if ( rollTurn === 1 || rollTurn === 3 ) {
+      roll = ( pinsPerTurn.shift() );
+      if ( roll === 10 ) { recordStrike() }
+      else { recordNormal() }
     }
     else if ( rollTurn === 2 ) {
       secondRoll = ( pinsPerTurn.shift() );
-      if ( firstRoll + secondRoll === 10 ) {
-        bonusTurns.push( "Split" );
-      } else if ( secondRoll === 10 ) {
-        bonusTurns.push( "Strike" );
-      } else {bonusTurns.push( "normal" );}
-    }
-    else if ( rollTurn === 3 ){
-      thirdRoll = ( pinsPerTurn.shift() );
-      if ( thirdRoll === 10 ) {
-        bonusTurns.push( "Strike" );
-      } else {bonusTurns.push( "normal" );}
+      if ( roll + secondRoll === 10 ) { recordSplit() }
+      else if ( secondRoll === 10 ) { recordStrike() }
+      else { recordNormal() }
     }
   });
 };

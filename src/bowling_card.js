@@ -1,3 +1,4 @@
+// Responsible for recording the players previous turns.
 var BowlingCard = function() {
   this.frameNumber = 1
   this.rollNumber = 1

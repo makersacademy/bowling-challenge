@@ -1,3 +1,4 @@
+// Top level; combines 'BowlingCard' & 'ScoreCalculator' together.
 var Game = function() {
   this.bowlingCard = new BowlingCard
   this.scoreCalculator = new ScoreCalculator

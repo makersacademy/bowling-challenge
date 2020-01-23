@@ -26,7 +26,6 @@ $(document).ready(function() {
   }
   updatePage();
 
-
   $('#enter-pins').submit(function(event){
     event.preventDefault();
     var pins = $('#current-turn').val();

@@ -3,25 +3,33 @@
   <head>
     <title>TenPinBowling</title>
     <link rel="stylesheet" href="public/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="src/interface.js"></script>
+    <script src="src/game.js"></script>
+    <script src="src/bowling_card.js"></script>
+    <script src="src/score_calculator.js"></script>
   </head>
   <body>
     <section>
       <h1>Ten Pin Bowling</h1>
       <div>
         <h2>Current Turn</h2>
-        <p>Frame:</p>
-        <p id="frame"></p>
-        <p>Roll:</p>
-        <p id="roll"></p>
+        <p>Frame: </p><p id="frame"></p>
+        <p>Roll: </p><p id="roll"></p>
+
         <form id="enter-pins">
           <input type="number" id="current-turn" name="current-turn" min="0" max="10" placeholder="0">
           <input type="submit" value="Submit"/>
         </form>
+
         <h2>Total Score</h2>
         <p id="score"></p>
         <p id="bonus"></p>
+
         <h2>Frame Score</h2>
         <p1 id="frameScores"></p1>
+
         <h2>Previous Turns</h2>
         <table id="prevTurns">
         <thead>
@@ -33,14 +41,10 @@
         </thead>
         </table>
 
-
+        <canvas id="myChart"></canvas>
+        <script src="src/chart.js"></script>
 
       </div>
     </section>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="src/interface.js"></script>
-    <script src="src/game.js"></script>
-    <script src="src/bowling_card.js"></script>
-    <script src="src/score_calculator.js"></script>
   </body>
 </html>

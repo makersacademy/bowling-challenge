@@ -42,17 +42,17 @@ ScoreCalculator.prototype.calculateNormalScore = function(pinsPerTurn) {
 
 ScoreCalculator.prototype.isbonusTurn = function(pinsPerTurn) {
   var bonusTurns = this.bonusTurns
-  var roll = 0
-  var secondRoll = 0
+  var roll
+  var secondRoll
 
   this.rollPerTurn.forEach(function(rollTurn) {
+    this.recordBonus = function(bonus) { bonusTurns.push(bonus) }
     if ( rollTurn === 1 || rollTurn === 3 ) {
       roll = ( pinsPerTurn.shift() )
-    } else if ( rollTurn === 2 ) {
+    } else {
       secondRoll = ( pinsPerTurn.shift() )
     }
-
-    this.recordBonus = function(bonus) { bonusTurns.push(bonus)};
+    
     if ( roll + secondRoll === 10 ) {
       recordBonus("Split")
     } else if ( roll === 10 || secondRoll === 10 ) {
@@ -85,9 +85,9 @@ ScoreCalculator.prototype.calculateBonusScore = function() {
       }
       frameScores[currentFrame-1] = frameScore
       index ++
-    };
+    }
     this.frameScores = frameScores;
-  });
+  })
 };
 
 ScoreCalculator.prototype.totalScore = function() {

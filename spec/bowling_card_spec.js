@@ -12,22 +12,22 @@ describe("BowlingCard", function() {
     });
   });
 
-  describe('endTurn', function() {
+  describe('updateTurn', function() {
     it('updates the current frame# and roll# after each roll', function() {
-      for (i=0; i < 3; i++) { bowlingCard.endTurn(1); }
+      for (i=0; i < 3; i++) { bowlingCard.updateTurn(1); }
       expect(bowlingCard.frameNumber).toEqual(2);
       expect(bowlingCard.rollNumber).toEqual(2);
     });
     it("ends the frame if player gets a strike", function() {
-      bowlingCard.endTurn(10);
+      bowlingCard.updateTurn(10);
       expect(bowlingCard.frameNumber).toEqual(2);
       expect(bowlingCard.rollNumber).toEqual(1);
     });
     it('allows for 3 rolls in the 10th frame', function() {
-      for (i=0; i < 10; i++) { bowlingCard.endTurn(10); }
+      for (i=0; i < 10; i++) { bowlingCard.updateTurn(10); }
       expect(bowlingCard.frameNumber).toEqual(10);
       expect(bowlingCard.rollNumber).toEqual(2);
-      bowlingCard.endTurn(10);
+      bowlingCard.updateTurn(10);
       expect(bowlingCard.frameNumber).toEqual(10);
       expect(bowlingCard.rollNumber).toEqual(3);
     });

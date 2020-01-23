@@ -7,7 +7,7 @@ var BowlingCard = function() {
 BowlingCard.prototype.record = function(pins) {
   if ( this.rollNumber < 4 ){
     this.saveScore(pins);
-    this.endTurn(pins);
+    this.updateTurn(pins);
   };
 };
 
@@ -19,7 +19,7 @@ BowlingCard.prototype.saveScore = function(pins) {
   });
 };
 
-BowlingCard.prototype.endTurn = function(pins) {
+BowlingCard.prototype.updateTurn = function(pins) {
   if ( this.frameNumber === 10 ){
     this.rollNumber ++
   } else if ( pins === 10 ){

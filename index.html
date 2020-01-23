@@ -27,21 +27,21 @@
         <p id="score"></p>
         <p id="bonus"></p>
 
-        <h2>Frame Score</h2>
-        <p1 id="frameScores"></p1>
-
         <h2>Previous Turns</h2>
         <table id="prevTurns">
-        <thead>
+          <thead>
             <tr>
-                <th>Frame</th>
-                <th>Roll</th>
-                <th>Pins</th>
+              <th>Frame</th>
+              <th>Roll</th>
+              <th>Pins</th>
             </tr>
-        </thead>
+          </thead>
         </table>
 
-        <canvas id="myChart"></canvas>
+        <h2>Frame Scores</h2>
+        <p1 id="frameScores"></p1>
+        <button class="btn btn-success" onclick="updateChart()">Update</button>
+        <canvas id="frameScoreChart"></canvas>
         <script src="src/chart.js"></script>
 
       </div>

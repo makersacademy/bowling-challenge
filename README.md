@@ -3,6 +3,7 @@ Bowling ScoreCard
 =================
 An Single page web app to record and calculate a players score.  
 JavaScript (ES5, Constructor design pattern), JQuery, Jasmine.
+view live on: https://joshdavies.github.io/bowling-challenge/ 
 
 ##Bowling Rules
 

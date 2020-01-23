@@ -46,22 +46,21 @@ ScoreCalculator.prototype.isbonusTurn = function(pinsPerTurn) {
   var secondRoll = 0
 
   this.rollPerTurn.forEach(function(rollTurn) {
-    this.recordStrike = function() { bonusTurns.push( "Strike" )};
-    this.recordSplit = function() { bonusTurns.push( "Split" )};
-    this.recordNormal = function() { bonusTurns.push( "normal" )};
-
     if ( rollTurn === 1 || rollTurn === 3 ) {
-      roll = ( pinsPerTurn.shift() );
-      if ( roll === 10 ) { recordStrike() }
-      else { recordNormal() }
+      roll = ( pinsPerTurn.shift() )
+    } else if ( rollTurn === 2 ) {
+      secondRoll = ( pinsPerTurn.shift() )
     }
-    else if ( rollTurn === 2 ) {
-      secondRoll = ( pinsPerTurn.shift() );
-      if ( roll + secondRoll === 10 ) { recordSplit() }
-      else if ( secondRoll === 10 ) { recordStrike() }
-      else { recordNormal() }
+
+    this.recordBonus = function(bonus) { bonusTurns.push(bonus)};
+    if ( roll + secondRoll === 10 ) {
+      recordBonus("Split")
+    } else if ( roll === 10 || secondRoll === 10 ) {
+      recordBonus("Strike")
+    } else {
+      recordBonus("normal")
     }
-  });
+  })
 };
 
 ScoreCalculator.prototype.calculateBonusScore = function() {

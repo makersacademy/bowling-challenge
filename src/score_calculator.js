@@ -28,15 +28,11 @@ ScoreCalculator.prototype.arrange = function(scoreCard) {
 };
 
 ScoreCalculator.prototype.calculateNormalScore = function(pinsPerTurn) {
-  let frameX = 1
-  let frameScores = this.frameScores;
-  this.framePerTurn.forEach(function(turn) {
-    if ( turn === frameX ) {
-      frameScores[ frameX - 1 ] += ( pinsPerTurn.shift() );
-    } else {
-      frameX ++
-      frameScores[ frameX - 1 ] += ( pinsPerTurn.shift() );
-    }
+  var frameScores = this.frameScores;
+  var frameNum = 1
+  this.framePerTurn.forEach(function(frameTurn) {
+    if ( frameTurn !== frameNum ) { frameNum ++ }
+    frameScores[ frameNum - 1 ] += ( pinsPerTurn.shift() );
   });
 };
 

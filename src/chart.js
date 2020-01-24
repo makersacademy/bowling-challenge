@@ -35,12 +35,7 @@ var barChart = new Chart(frameScoreChart, {
       yAxes: [{
         ticks: {
           beginAtZero: true,
-          userCallback: function(label, index, labels) {
-              if (Math.floor(label) === label) {
-                return label;
-              }
-
-            },
+          precision:0
         }
       }]
     },

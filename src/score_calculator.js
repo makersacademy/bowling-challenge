@@ -17,9 +17,9 @@ ScoreCalculator.prototype.calculateScore = function(scoreCard) {
 };
 
 ScoreCalculator.prototype.arrange = function(scoreCard) {
-  let framePerTurn = this.framePerTurn
-  let pinsPerTurn = this.pinsPerTurn
-  let rollPerTurn = this.rollPerTurn
+  var framePerTurn = this.framePerTurn
+  var pinsPerTurn = this.pinsPerTurn
+  var rollPerTurn = this.rollPerTurn
   scoreCard.forEach(function(turn) {
     framePerTurn.push(turn.frame)
     rollPerTurn.push(turn.roll)
@@ -47,7 +47,6 @@ ScoreCalculator.prototype.isbonusTurn = function(pinsPerTurn) {
     } else {
       secondRoll = ( pinsPerTurn.shift() )
     }
-
     if ( roll === 10 || secondRoll === 10 ) {
       bonus = "Strike"
     } else if ( roll + secondRoll === 10 ) {
@@ -65,10 +64,10 @@ ScoreCalculator.prototype.calculateBonusScore = function() {
   var framePerTurn = this.framePerTurn
 
   this.bonusTurns.forEach(function(bonus, index) {
-    frame = (framePerTurn[index])
+    var frame = (framePerTurn[index])
     if ( frame === 10 ) { return }
-    nextRoll1 = pins.slice(index +1, index +2)[0];
-    nextRoll2 = pins.slice(index +2, index +3)[0];
+    var nextRoll1 = pins[index +1]
+    var nextRoll2 = pins[index +2]
     if ( !nextRoll1 ) { return }
     if (bonus === "Split" || bonus === "Strike" ) {
       frameScores[frame-1] += nextRoll1

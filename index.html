@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thermostat</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="js/jquery.min.js"></script>
+    
+   
+    <!--<script src="js/jquery-3.3.1.min.js"></script>-->
+    
+</head>
+<body class="firstPage">
+    <div>
+        <section>
+            <!--main body of text page 1-->
+            <h3 class="currentTemp"> 25  </h3>
+            <h3 class="currentTempDes">Degrees</h3>
+            <p>
+                <button id="hide">Hide</button>
+                <button class="button" id="increase">+</button>
+                <button class="button" id="decrease">-</button>
+                <button class="button" id="reset">reset</button>
+                <button class="button" id="PSM">PSM</button>
+            </p>
+        </section>   
+        <h3 class="minTemperature">
+          MIN 
+      </h3>
+      <h3 class="maxTemperature">
+        MIN 
+    </h3>
+      <h3 class="powerSaveMode">
+          ON/OFF
+      </h3>
+    </div>
+    <div> 
+        <h1 id="message"></h1>
+        <button class="button" id="weatherButton">Get Weather</button>
+        
+    </div>
+    <script type="text/javascript" src="js/jstorage.js"></script>
+    <script src="src/myJquery.js"></script>
+    <script src="src/Thermostat.js"></script>
+  <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>-->
+</body>

@@ -60,29 +60,21 @@ ScoreCalculator.prototype.isbonusTurn = function(pinsPerTurn) {
 };
 
 ScoreCalculator.prototype.calculateBonusScore = function() {
-  let index = 0
-  let pins = this.pinsPerTurn
-  let frameScores = this.frameScores;
-  let framePerTurn = this.framePerTurn;
+  var pins = this.pinsPerTurn
+  var frameScores = this.frameScores;
+  var framePerTurn = this.framePerTurn;
 
-  this.bonusTurns.forEach(function(bonus) {
-    currentFrame = (framePerTurn[index]);
-    frameScore = frameScores[currentFrame-1];
-    if( currentFrame < 10 ) {
-      if ( bonus === "Strike" ) {
-        nextRoll1 = pins.slice(index +1, index +2)[0];
-        nextRoll2 = pins.slice(index +2, index +3)[0];
-        if (nextRoll1) {frameScore += nextRoll1 }
-        if (nextRoll2) {frameScore += nextRoll2 }
-      }
-      else if ( bonus === "Split" ) {
-        nextRoll = pins.slice(index +1, index +2)[0];
-        if (nextRoll) {frameScore += nextRoll}
-      }
-      frameScores[currentFrame-1] = frameScore
-      index ++
+  this.bonusTurns.forEach(function(bonus, index) {
+    frame = (framePerTurn[index]);
+    if ( frame === 10 ) { return }
+    nextRoll1 = pins.slice(index +1, index +2)[0];
+    nextRoll2 = pins.slice(index +2, index +3)[0];
+    if ( bonus === "Strike" ) {
+      if (nextRoll1) { frameScores[frame-1] += nextRoll1 }
+      if (nextRoll2) { frameScores[frame-1] += nextRoll2 }
+    } else if ( bonus === "Split" ) {
+      if (nextRoll1) { frameScores[frame-1] += nextRoll1 }
     }
-    this.frameScores = frameScores;
   })
 };
 

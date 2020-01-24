@@ -9,11 +9,11 @@ var ScoreCalculator = function() {
 };
 
 ScoreCalculator.prototype.calculateScore = function(scoreCard) {
-  this.arrange(scoreCard);
-  this.calculateNormalScore(this.pinsPerTurn.slice());
-  this.isbonusTurn(this.pinsPerTurn.slice());
-  this.calculateBonusScore();
-  this.totalScore();
+  this.arrange(scoreCard)
+  this.calculateNormalScore(this.pinsPerTurn.slice())
+  this.isbonusTurn(this.pinsPerTurn.slice())
+  this.calculateBonusScore()
+  this.totalScore()
 };
 
 ScoreCalculator.prototype.arrange = function(scoreCard) {
@@ -21,10 +21,10 @@ ScoreCalculator.prototype.arrange = function(scoreCard) {
   let pinsPerTurn = this.pinsPerTurn
   let rollPerTurn = this.rollPerTurn
   scoreCard.forEach(function(turn) {
-    framePerTurn.push(turn.frame);
-    rollPerTurn.push(turn.roll);
-    pinsPerTurn.push(turn.pins);
-  });
+    framePerTurn.push(turn.frame)
+    rollPerTurn.push(turn.roll)
+    pinsPerTurn.push(turn.pins)
+  })
 };
 
 ScoreCalculator.prototype.calculateNormalScore = function(pinsPerTurn) {
@@ -61,25 +61,26 @@ ScoreCalculator.prototype.isbonusTurn = function(pinsPerTurn) {
 
 ScoreCalculator.prototype.calculateBonusScore = function() {
   var pins = this.pinsPerTurn
-  var frameScores = this.frameScores;
-  var framePerTurn = this.framePerTurn;
+  var frameScores = this.frameScores
+  var framePerTurn = this.framePerTurn
 
   this.bonusTurns.forEach(function(bonus, index) {
-    frame = (framePerTurn[index]);
+    frame = (framePerTurn[index])
     if ( frame === 10 ) { return }
     nextRoll1 = pins.slice(index +1, index +2)[0];
     nextRoll2 = pins.slice(index +2, index +3)[0];
-    if ( bonus === "Strike" ) {
-      if (nextRoll1) { frameScores[frame-1] += nextRoll1 }
-      if (nextRoll2) { frameScores[frame-1] += nextRoll2 }
-    } else if ( bonus === "Split" ) {
-      if (nextRoll1) { frameScores[frame-1] += nextRoll1 }
+    if ( !nextRoll1 ) { return }
+    if (bonus === "Split" || bonus === "Strike" ) {
+      frameScores[frame-1] += nextRoll1
+    }
+    if ( bonus === "Strike" && nextRoll2 ) {
+      frameScores[frame-1] += nextRoll2
     }
   })
 };
 
 ScoreCalculator.prototype.totalScore = function() {
-this.score = this.frameScores.reduce((a, b) => a + b, 0);
+this.score = this.frameScores.reduce((a, b) => a + b, 0)
 };
 
 ScoreCalculator.prototype.reset = function() {

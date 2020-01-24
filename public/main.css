@@ -61,3 +61,23 @@ table, th, td {
 th, td {
   padding: 8px;
 }
+
+button {
+  border: none;
+  color: white;
+  background-color: #003a73;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+button:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}

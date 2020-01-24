@@ -1,4 +1,4 @@
-// JQuery: submits data to backend and updates frontend. 
+// JQuery: submits data to backend and updates frontend.
 $(document).ready(function() {
   var game = new Game();
 
@@ -29,22 +29,91 @@ $(document).ready(function() {
   }
   updatePage();
 
-  $('#enter-pins').submit(function(event){
+  $('#zero').click(function(event){
     event.preventDefault();
-    var pins = $('#current-turn').val();
+    var pins = $('#zero').val();
     pins = Number(pins)
     game.roll(pins);
     updatePage();
+  });
 
-    // console.log(game.getCurrentFrame());
-    // console.log(game.getCurrentRoll());
-    // console.log(game.getScoreCard()[0].pins);
-    //
-    // console.log(game.getScore());
-    // console.log(game.getFrameScores());
-    // console.log(game.bonuses());
-    // console.log(game.getFrames());
-    // console.log(game.getRolls());
-    // console.log(game.getPins());
+  $('#one').click(function(event){
+    event.preventDefault();
+    var pins = $('#one').val();
+    pins = Number(pins)
+    game.roll(pins);
+    updatePage();
+  });
+
+  $('#two').click(function(event){
+    event.preventDefault();
+    var pins = $('#two').val();
+    pins = Number(pins)
+    game.roll(pins);
+    updatePage();
+  });
+
+  $('#three').click(function(event){
+    event.preventDefault();
+    var pins = $('#three').val();
+    pins = Number(pins)
+    game.roll(pins);
+    updatePage();
+  });
+
+  $('#four').click(function(event){
+    event.preventDefault();
+    var pins = $('#four').val();
+    pins = Number(pins)
+    game.roll(pins);
+    updatePage();
+  });
+
+  $('#five').click(function(event){
+    event.preventDefault();
+    var pins = $('#five').val();
+    pins = Number(pins)
+    game.roll(pins);
+    updatePage();
+  });
+
+  $('#six').click(function(event){
+    event.preventDefault();
+    var pins = $('#six').val();
+    pins = Number(pins)
+    game.roll(pins);
+    updatePage();
+  });
+
+  $('#seven').click(function(event){
+    event.preventDefault();
+    var pins = $('#seven').val();
+    pins = Number(pins)
+    game.roll(pins);
+    updatePage();
+  });
+
+  $('#eight').click(function(event){
+    event.preventDefault();
+    var pins = $('#eight').val();
+    pins = Number(pins)
+    game.roll(pins);
+    updatePage();
+  });
+
+  $('#nine').click(function(event){
+    event.preventDefault();
+    var pins = $('#nine').val();
+    pins = Number(pins)
+    game.roll(pins);
+    updatePage();
+  });
+
+  $('#ten').click(function(event){
+    event.preventDefault();
+    var pins = $('#ten').val();
+    pins = Number(pins)
+    game.roll(pins);
+    updatePage();
   });
 });

@@ -17,15 +17,29 @@
         <h2>Current Turn</h2>
         <p>Frame: </p><p id="frame"></p>
         <p>Roll: </p><p id="roll"></p>
-
-        <form id="enter-pins">
-          <input type="number" id="current-turn" name="current-turn" min="0" max="10" placeholder="0">
-          <input type="submit" value="Submit"/>
-        </form>
+        <p>Score: </p>
+        <button id="zero" value="0">0</button>
+        <button id="one" value="1">1</button>
+        <button id="two" value="2">2</button>
+        <button id="three" value="3">3</button>
+        <button id="four" value="4">4</button>
+        <button id="five" value="5">5</button>
+        <button id="six" value="6">6</button>
+        <button id="seven" value="7">7</button>
+        <button id="eight" value="8">8</button>
+        <button id="nine" value="9">9</button>
+        <button id="ten" value="10">10</button>
 
         <h2>Total Score</h2>
-        <p id="score"></p>
+        <p id="score" style="font-size: 50px;"></p>
         <p id="bonus"></p>
+
+        <h2>Frame Scores</h2>
+        <p1 id="frameScores"></p1>
+        <div style="padding: 5px 170px 5px">
+        <canvas id="frameScoreChart"></canvas>
+        </div>
+        <script src="src/chart.js"></script>
 
         <h2>Previous Turns</h2>
         <table id="prevTurns">
@@ -37,12 +51,6 @@
             </tr>
           </thead>
         </table>
-
-        <h2>Frame Scores</h2>
-        <p1 id="frameScores"></p1>
-        <canvas id="frameScoreChart"></canvas>
-        <script src="src/chart.js"></script>
-
       </div>
     </section>
   </body>

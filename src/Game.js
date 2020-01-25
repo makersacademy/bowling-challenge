@@ -3,7 +3,7 @@
 function Game() {
 
   this.score = 0;
-  this.scorecard = [
+  this.pins_down = [
 
     {roll1: 0, roll2: 0},
     {roll1: 0, roll2: 0},
@@ -14,16 +14,35 @@ function Game() {
     {roll1: 0, roll2: 0},
     {roll1: 0, roll2: 0},
     {roll1: 0, roll2: 0},
-    {roll1: 0, roll2: 0},
+    {roll1: 0, roll2: 0, roll3: 0},
 
   ]
 
 }
 
-Game.prototype.returnScore = function() {
+Game.prototype.getScore = function() {
+
+
+  for (var i = 0; i < 10; i++) {
+    this.score += this.pins_down[i]['roll1'] + this.pins_down[i]['roll2'];
+  }
+    this.score += this.pins_down[9]['roll3'];
 
   return this.score;
+
+
 
 }
 
 
+Game.prototype.pinsDown = function(frame, roll, pins) {
+  
+  return this.pins_down[frame-1]['roll'+roll] = pins;
+
+}
+
+Game.prototype.getPinsDown = function() {
+
+  return this.score;
+
+}

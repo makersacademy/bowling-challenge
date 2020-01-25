@@ -41,6 +41,28 @@ describe("Game", function() {
       game.newFrame(5)
       expect(game.viewScore()).toEqual(5)
     })
+
+    it('adds bonus if the previous frame was a spare', function() {
+      game.newFrame(5)
+      game.updateFrame(5)
+      game.newFrame(1)
+      expect(game.frames[0].total).toEqual(11)
+    })
+
+    it('adds bonus if the previous frame was a strike', function() {
+      game.newFrame(10)
+      game.newFrame(5)
+      expect(game.frames[0].total).toEqual(15)
+    })
+
+    it('adds bonus if two frames prior was a strike', function() {
+      game.newFrame(10)
+      game.newFrame(5)
+      game.updateFrame(1)
+      game.newFrame(1)
+      expect(game.frames[0].total).toEqual(16)
+    })
+
   })
 
   describe("#updateFrame", function() {
@@ -77,19 +99,5 @@ describe("Game", function() {
       };
     }).toThrowError("Game Over");
   })
-
-  // describe('#updateScore', function() {
-  //   it('updates total score', function() {
-  //     game.updateScore(5)
-  //     expect(game.viewScore()).toEqual(5)
-  //   })
-
-  //   it('adds bonus if previous frame was a spare', function() {
-  //     game.newFrame(5)
-  //     game.updateFrame(5)
-  //     game.updateScore(5)
-  //     expect(game.viewScore()).toEqual(20)
-  //   })
-  // })
 
 })

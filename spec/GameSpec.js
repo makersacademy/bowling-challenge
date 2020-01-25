@@ -129,6 +129,7 @@ describe ("Game", function() {
       console.log(game.pins_down);
     })
 
+
     it("handles perfect game", function() {
       game.pinsDown(1,1,10);
       game.pinsDown(2,1,10);
@@ -143,6 +144,30 @@ describe ("Game", function() {
       game.pinsDown(10,2,10);
       game.pinsDown(10,3,10);
       expect(game.getScore()).toEqual(300);
+      console.log(game.pins_down);
+    })
+
+    it("handles example game", function() {
+      game.pinsDown(1,1,1);
+      game.pinsDown(1,2,4);
+      game.pinsDown(2,1,4);
+      game.pinsDown(2,2,5);   
+      game.pinsDown(3,1,6);
+      game.pinsDown(3,2,4);
+      game.pinsDown(4,1,5);
+      game.pinsDown(4,2,5);
+      game.pinsDown(5,1,10);
+      game.pinsDown(6,1,0);
+      game.pinsDown(6,2,1);
+      game.pinsDown(7,1,7);
+      game.pinsDown(7,2,3);
+      game.pinsDown(8,1,6);
+      game.pinsDown(8,2,4);
+      game.pinsDown(9,1,10);
+      game.pinsDown(10,1,2);
+      game.pinsDown(10,2,8);
+      game.pinsDown(10,3,6);
+      expect(game.getScore()).toEqual(133);
       console.log(game.pins_down);
     })
 

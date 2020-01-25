@@ -9,6 +9,10 @@ As a player
 When I nock over some pins
 I want to be able to input how many I knock over
 
+As a player
+So I can look back on my games
+I would like to record my scores
+
 
 
 ```

@@ -35,6 +35,8 @@ describe("Bowling", function() {
         it("returns fixed number if argument is fed in", function() {
             bowling.randScore(9);
             expect(bowling.getScore()).toEqual(9);
+            bowling.randScore(3);
+            expect(bowling.getScore()).toEqual(3);
         });
     });
 });

@@ -8,6 +8,11 @@ Bowling.prototype.getScore = function() {
     return this.score;
 };
 
-Bowling.prototype.randScore = function() {
-    return (this.score = Math.floor(Math.random(10) * 11)); //times 11 to get 10 pins
+Bowling.prototype.randScore = function(number = null) {
+    if (number === null) {
+        return (this.score = Math.floor(Math.random(10) * 11));
+    } //times 11 to get 10 pins
+    else {
+        return (this.score = number);
+    }
 };

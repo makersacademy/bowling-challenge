@@ -44,4 +44,18 @@ describe('frame', function () {
       expect(function () { frame.addShot(9) }).toThrowError(Error, "You can't hit more than 10 pins!")
     })
   })
+
+  describe('isSpare', function () {
+    it('return false if is not a spare', function () {
+      frame.addShot(2)
+      frame.addShot(7)
+      expect(frame.isSpare()).toEqual(false)
+    })
+
+    it('return true if is a spare', function () {
+      frame.addShot(3)
+      frame.addShot(7)
+      expect(frame.isSpare()).toEqual(true)
+    })
+  })
 })

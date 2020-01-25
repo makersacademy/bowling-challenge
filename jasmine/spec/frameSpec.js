@@ -58,4 +58,16 @@ describe('frame', function () {
       expect(frame.isSpare()).toEqual(true)
     })
   })
+
+  describe('isStrike', function () {
+    it('return false if not a strike', function () {
+      frame.addShot(5)
+      expect(frame.isStrike()).toEqual(false)
+    })
+
+    it('return true if is a strike', function () {
+      frame.addShot(10)
+      expect(frame.isStrike()).toEqual(true)
+    })
+  })
 })

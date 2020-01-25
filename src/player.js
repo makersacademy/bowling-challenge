@@ -1,11 +1,10 @@
 'use strict';
 
-function Player(){}
-
-Player.prototype.currentScore = function(){
-  return 0
+function Player(){
+  this._scorecard = []
 }
 
-Player.prototype.bowledOver = function(downedPins){
-  return downedPins 
-}
+Player.prototype.currentScore = function(){return 0}
+Player.prototype.bowledOver = function(downedPins){ 
+  this._scorecard.push(downedPins) }
+

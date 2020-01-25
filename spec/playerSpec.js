@@ -7,15 +7,16 @@ describe('Player', function(){
     player = new Player 
   })
 
-  describe('Score',function(){
+  describe('currentScore',function(){
     it('Has a starting score of zero', function(){
       expect(player.currentScore()).toEqual(0)
     })
   })
 
   describe('bowledOver', function(){
-    it('Lets the player put in how many pins they knocked over',function(){
-      expect(player.bowledOver(5)).toEqual(5)
+    it('adds the downed pins to the scorecard', function(){
+      player.bowledOver(6)
+      expect(player._scorecard).toContain(6)
     })
   })
 })

@@ -12,6 +12,9 @@ describe('bowling', function(){
     it('with zero points', function(){
       expect(bowling.currentScore()).toEqual(0)
     })
+    it('on round 1', function(){
+      expect(bowling.currentRound()).toEqual(1)
+    })
   })
 
   describe('adds the value of two balls', function(){
@@ -27,5 +30,12 @@ describe('bowling', function(){
     })
   })
 
-
+  describe('the game ends', function(){
+    it('when 10 rounds have been played', function(){
+      for (var round = 0; round <11; round++) {
+        bowling.play();
+      }
+      expect(bowling.play()).toEqual(`End of game, final score: ${bowling.currentScore()} points!`)
+     })
+  })
 })

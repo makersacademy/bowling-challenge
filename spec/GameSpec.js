@@ -49,6 +49,25 @@ describe ("Game", function() {
       console.log(game.pins_down);
     })
 
+    it("handles game with strikes", function() {
+      game.pinsDown(1,1,4);
+      game.pinsDown(3,1,10);
+      game.pinsDown(4,1,2);
+      game.pinsDown(4,2,7);
+      expect(game.getScore()).toEqual(32);
+      console.log(game.pins_down);
+    })
+
+    it("handles game with spares", function() {
+      game.pinsDown(1,1,4);
+      game.pinsDown(3,1,7);
+      game.pinsDown(3,2,3);
+      game.pinsDown(4,1,2);
+      game.pinsDown(4,2,7);
+      expect(game.getScore()).toEqual(25);
+      console.log(game.pins_down);
+    })
+
   })
 
 

@@ -1,10 +1,11 @@
 'use strict'; 
 
 describe('Player', function(){
-  var player 
+  var player
+  var scorecard
 
   beforeEach(function(){
-    player = new Player 
+    player = new Player
   })
 
   describe('currentScore',function(){
@@ -15,8 +16,9 @@ describe('Player', function(){
 
   describe('bowledOver', function(){
     it('adds the downed pins to the scorecard', function(){
+      spyOn(player._scorecard, 'addPins')
       player.bowledOver(6)
-      expect(player._scorecard).toContain(6)
+      expect(player._scorecard.addPins).toHaveBeenCalledWith(6)
     })
   })
 })

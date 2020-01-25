@@ -4,13 +4,18 @@ describe("Game", function() {
   beforeEach(function() {
     game = new Game();
   })
-  
-  it('starts with score of 0', function() {
-    expect(game.viewScore()).toEqual(0)
-  })
 
-  it('starts with empty array of frames', function() {
-    expect(game.viewFrames()).toEqual([])
+  describe('#viewScore', function() {
+    it('starts with score of 0', function() {
+      expect(game.viewScore()).toEqual(0)
+    })
+  })
+  
+
+  describe('#viewFrames', function() {
+    it('starts with empty array of frames', function() {
+      expect(game.viewFrames()).toEqual([])
+    })
   })
 
   describe('#roll', function() {
@@ -27,5 +32,18 @@ describe("Game", function() {
       expect(game.score).toEqual(1)
     })
   })
+
+  describe("#newFrame", function() {
+    it('creates new frame with score of roll1', function() {
+      expect(game.newFrame(5)).toEqual({roll1: 5, roll2: 0, total: 5, type: ''})
+    })
+
+    it('creates new frame with score of roll1, adds to frames if roll1 is a strike', function() {
+      game.newFrame(10)
+      expect(game.frames[0]).toEqual({roll1: 10, roll2: 0, total: 10, type: 'strike'})
+    })
+  })
+
+
 
 })

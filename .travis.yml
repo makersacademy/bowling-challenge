@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - stable
+services:
+  - xvfb
+before_install:
+  - export CHROME_BIN=chromium-browser
+  - export DISPLAY=:99.0
+before_script:
+  - npm install
+cache:
+  directories:
+    - node_modules
+script: karma start karma.config.js --single-run

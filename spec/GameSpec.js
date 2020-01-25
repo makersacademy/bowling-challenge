@@ -58,6 +58,42 @@ describe ("Game", function() {
       console.log(game.pins_down);
     })
 
+    it("handles consecutive strikes", function() {
+      game.pinsDown(3,1,10);
+      game.pinsDown(4,1,10);
+      game.pinsDown(5,1,2);
+      game.pinsDown(5,2,7);
+      expect(game.getScore()).toEqual(50);
+      console.log(game.pins_down);
+    })
+
+    it("handles strikes in the 9th frame with no strikes or spares in 10th frame", function() {
+      game.pinsDown(9,1,10);
+      game.pinsDown(10,1,3);
+      game.pinsDown(10,2,3);
+      expect(game.getScore()).toEqual(22);
+      console.log(game.pins_down);
+    })
+
+
+    it("handles strikes in the 9th frame with a spare in 10th frame", function() {
+      game.pinsDown(9,1,10);
+      game.pinsDown(10,1,3);
+      game.pinsDown(10,2,7);
+      game.pinsDown(10,3,5);
+      expect(game.getScore()).toEqual(35);
+      console.log(game.pins_down);
+    })
+
+    it("handles strikes in the 9th frame and a strike in 10th frame", function() {
+      game.pinsDown(9,1,10);
+      game.pinsDown(10,1,10);
+      game.pinsDown(10,2,7);
+      game.pinsDown(10,3,2);
+      expect(game.getScore()).toEqual(46);
+      console.log(game.pins_down);
+    })
+
     it("handles game with spares", function() {
       game.pinsDown(1,1,4);
       game.pinsDown(3,1,7);
@@ -65,6 +101,48 @@ describe ("Game", function() {
       game.pinsDown(4,1,2);
       game.pinsDown(4,2,7);
       expect(game.getScore()).toEqual(25);
+      console.log(game.pins_down);
+    })
+
+
+    it("10 10 10 in 10th frame gives 30 points", function() {
+      game.pinsDown(10,1,10);
+      game.pinsDown(10,2,10);
+      game.pinsDown(10,3,10);
+      expect(game.getScore()).toEqual(30);
+      console.log(game.pins_down);
+    })
+
+    it("10 10 7 in 10th frame gives 27 points", function() {
+      game.pinsDown(10,1,10);
+      game.pinsDown(10,2,10);
+      game.pinsDown(10,3,7);
+      expect(game.getScore()).toEqual(27);
+      console.log(game.pins_down);
+    })
+
+    it("10 3 7 in 10th frame gives 20 points", function() {
+      game.pinsDown(10,1,10);
+      game.pinsDown(10,2,3);
+      game.pinsDown(10,3,7);
+      expect(game.getScore()).toEqual(20);
+      console.log(game.pins_down);
+    })
+
+    it("handles perfect game", function() {
+      game.pinsDown(1,1,10);
+      game.pinsDown(2,1,10);
+      game.pinsDown(3,1,10);
+      game.pinsDown(4,1,10);
+      game.pinsDown(5,1,10);
+      game.pinsDown(6,1,10);
+      game.pinsDown(7,1,10);
+      game.pinsDown(8,1,10);
+      game.pinsDown(9,1,10);
+      game.pinsDown(10,1,10);
+      game.pinsDown(10,2,10);
+      game.pinsDown(10,3,10);
+      expect(game.getScore()).toEqual(300);
       console.log(game.pins_down);
     })
 

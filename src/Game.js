@@ -23,10 +23,20 @@ function Game() {
 Game.prototype.getScore = function() {
 
 
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 9; i++) {
     this.score += this.pins_down[i]['roll1'] + this.pins_down[i]['roll2'];
     if (this.pins_down[i]['roll1'] === 10 ) {
+      if (this.pins_down[i+1]['roll1'] < 10) {
       this.score += this.pins_down[i+1]['roll1'] + this.pins_down[i+1]['roll2'];
+      }
+      else {
+        if (i < 8) {
+          this.score += this.pins_down[i+1]['roll1'] + this.pins_down[i+2]['roll1'];
+        }
+        else {
+          this.score += this.pins_down[i+1]['roll1'] + this.pins_down[i+1]['roll2'];
+        }
+      }
     }
     if ((this.pins_down[i]['roll1'] < 10 ) && ((this.pins_down[i]['roll1'])+ (this.pins_down[i]['roll2']) === 10)) {
       this.score += this.pins_down[i+1]['roll1'];
@@ -34,7 +44,9 @@ Game.prototype.getScore = function() {
   
 
   }
-    this.score += this.pins_down[9]['roll3'];
+  this.score += this.pins_down[9]['roll1'];
+  this.score += this.pins_down[9]['roll2'];
+  this.score += this.pins_down[9]['roll3'];
 
   return this.score;
 

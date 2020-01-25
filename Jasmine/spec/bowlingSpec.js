@@ -8,9 +8,9 @@ describe('bowling', function(){
     bowling = new Bowling();
   })
 
-  describe('', function(){
-    it('', function(){
-
+  describe('starts the game', function(){
+    it('with zero points', function(){
+      expect(bowling.currentScore()).toEqual(0)
     })
   })
 

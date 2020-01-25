@@ -14,4 +14,10 @@ describe('bowling', function(){
     })
   })
 
+  describe('adds the value of two balls', function(){
+    it('that combined are < 10', function() {
+      expect(bowling.play(6, 2)).toEqual(8)
+    })
+  })
+
 })

@@ -1,3 +1,12 @@
+## Commits Correspond with the Following User stories ##
+
+```
+As a player
+So that I can enjoy a Game of bowling
+I would like to enter into a game
+
+```
+
 
 Bowling Challenge
 =================

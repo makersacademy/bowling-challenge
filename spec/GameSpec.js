@@ -34,16 +34,38 @@ describe("Game", function() {
   })
 
   describe("#newFrame", function() {
-    it('creates new frame with score of roll1', function() {
-      expect(game.newFrame(5)).toEqual({roll1: 5, roll2: 0, total: 5, type: ''})
+    it('adds new frame to frames array', function() {
+      game.newFrame(5)
+      expect(game.frames[0]).toEqual({roll1: 5, roll2: 0, total: 5, type: ''})
     })
 
-    it('creates new frame with score of roll1, adds to frames if roll1 is a strike', function() {
+    it('adds new frame to frames array - strike', function() {
       game.newFrame(10)
       expect(game.frames[0]).toEqual({roll1: 10, roll2: 0, total: 10, type: 'strike'})
     })
   })
 
+  describe("#updateFrame", function() {
+    it('updates an existing frame with score of roll2', function() {
+      game.newFrame(5)
+      game.updateFrame(1)
+      expect(game.frames[0]).toEqual({roll1: 5, roll2: 1, total: 6, type: ''})
+    })
 
+    it('updates an existing frame with score of roll2 and rolltype - spare', function() {
+      game.newFrame(5)
+      game.updateFrame(5)
+      expect(game.frames[0]).toEqual({roll1: 5, roll2: 5, total: 10, type: 'spare'})
+    })
+
+  })
+
+  it('only allows 10 frames', function() {
+    expect(function() {
+      for (var i = 0; i < 11; i++) {
+        game.newFrame(1)
+      };
+    }).toThrowError("Game Over");
+  })
 
 })

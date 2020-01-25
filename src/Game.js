@@ -23,16 +23,25 @@ Game.prototype.roll = function(pins) {
 }
 
 Game.prototype.newFrame = function(roll1) {
+  if (this.frames.length === 10) {
+    throw new Error("Game Over");
+  } 
+
   frame = {
     roll1: roll1,
     roll2: 0,
     total: roll1,
     type: this._rollType(roll1),
   }
-  if (this._isStrike(roll1)) {
-    this.frames.push(frame)
-  } else {
-    return frame
+
+  this.frames.push(frame)
+}
+
+Game.prototype.updateFrame = function(roll2) {
+  this._currentFrame().roll2 = roll2
+  this._currentFrame().total += roll2
+  if (this._currentFrame().total === 10) {
+    this._currentFrame().type = 'spare'
   }
 }
 
@@ -46,4 +55,8 @@ Game.prototype._rollType = function(roll) {
   } else {
     return ""
   }
+}
+
+Game.prototype._currentFrame = function() {
+  return this.frames[this.frames.length - 1]
 }

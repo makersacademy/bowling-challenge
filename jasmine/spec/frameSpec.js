@@ -19,4 +19,12 @@ describe('frame', function () {
       expect(frame.getShot(2)).toEqual(4)
     })
   })
+
+  describe('addShot', function () {
+    it('throw an error if trying to add a third shot', function () {
+      frame.addShot(2)
+      frame.addShot(2)
+      expect(function () { frame.addShot(2) }).toThrowError('You already inserted two shot!')
+    })
+  })
 })

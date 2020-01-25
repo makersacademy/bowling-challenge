@@ -11,40 +11,43 @@
     <script src="src/score_calculator.js"></script>
   </head>
   <body>
-      <h1>Ten Pin Bowling</h1>
+      <h1>🎳 Ten Pin Bowling</h1>
         <div class="left-column">
-        <h2>Current Turn</h2>
-        <p>Frame: </p><p id="frame"></p><br><br>
-        <p>Roll: </p><p id="roll"></p><br><br>
-        <p>Enter Score: </p> <br>
-        <div class="buttonHolder">
-          <button id="zero" value="0">0</button> <br>
-          <button id="one" value="1">1</button>
-          <button id="two" value="2">2</button>
-          <button id="three" value="3">3</button>
-          <button id="four" value="4">4</button> <br>
-          <button id="five" value="5">5</button>
-          <button id="six" value="6">6</button>
-          <button id="seven" value="7">7</button> <br>
-          <button id="eight" value="8">8</button>
-          <button id="nine" value="9">9</button> <br>
-          <button id="ten" value="10">10</button>
+          <div class="left-column">
+          <h2>Current Turn</h2>
+          <p>Frame: </p><p id="frame"></p><br><br>
+          <p>Roll: </p><p id="roll"></p><br><br>
+          <p>Enter Score: </p> <br>
+          <div class="buttonHolder">
+            <button id="zero" value="0">0</button> <br>
+            <button id="one" value="1">1</button>
+            <button id="two" value="2">2</button>
+            <button id="three" value="3">3</button>
+            <button id="four" value="4">4</button> <br>
+            <button id="five" value="5">5</button>
+            <button id="six" value="6">6</button>
+            <button id="seven" value="7">7</button> <br>
+            <button id="eight" value="8">8</button>
+            <button id="nine" value="9">9</button> <br>
+            <button id="ten" value="10">10</button>
+          </div>
         </div>
+        <div class="right-column">
+          <h2>Total Score</h2>
+          <p id="score" style="font-size: 5em"></p>
+          <p id="bonus"></p>
 
-        <h2>Total Score</h2>
-        <p id="score" style="font-size: 3em"></p>
-        <p id="bonus"></p>
-
-        <h2>Previous Turns</h2>
-        <table id="prevTurns">
-          <thead>
-            <tr>
-              <th>Frame</th>
-              <th>Roll</th>
-              <th>Pins</th>
-            </tr>
-          </thead>
-        </table>
+          <h2>Previous Turns</h2>
+          <table id="prevTurns">
+            <thead>
+              <tr>
+                <th>Frame</th>
+                <th>Roll</th>
+                <th>Pins</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
       </div>
       <div class="right-column">
         <h2>Frame Scores</h2>

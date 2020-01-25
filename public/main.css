@@ -1,6 +1,30 @@
+body {
+  background: rgb(2,0,36);
+  background: linear-gradient(120deg, #164141 0%, #071414 45%, #020606 100%);
+  padding: 2em;
+  margin: 0em;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+h1 {
+  color: #F6FCFC;
+  letter-spacing: .4em;
+  font-family: Verdana, Geneva, sans-serif;
+  text-align:center;
+  font-size: 3em;
+  padding: 0em;
+  margin: 0.5em;
+}
+
+h2 {
+  color: #071414;
+  letter-spacing: .2em;
+}
+
 p {
   display: inline;
   font-size: 1.2em;
+  color: #071414;
   letter-spacing: 0.1em;
   padding: 0.2em;
 }
@@ -11,39 +35,24 @@ p1 {
   padding: 0.2em;
 }
 
-h1 {
-  color: white;
-  letter-spacing: .2em;
-  font: arial, sans-serif;
-  text-align:center;
-  font-size: 3em;
-  padding: 0em;
-  margin: 0.4em;
-}
-
-body {
-  background-color: #003a73;
-  padding: 2em;
-  margin: 0em;
-}
-
 table, th, td {
-  border: 1px solid #003a73;
+  border: 1px solid #071414;
   border-collapse: collapse;
   text-align:center;
   font-size: 1.2em;
   letter-spacing: 0.1em;
-  padding: 0.1em;
-}
-
-th, td {
+  color: #071414;
   padding: 0.2em;
 }
 
+th, td {
+  color: #071414;
+}
+
 button {
-  border: none;
-  color: white;
-  background-color: #003a73;
+  border: 2px solid #f44336;
+  color: #071414;
+  background-color: white;
   height: 2em;
   width: 2em;
   text-align: center;
@@ -56,7 +65,7 @@ button {
 }
 
 button:hover {
-  background-color: #4CAF50; /* Green */
+  background-color: #4CAF50;
   color: white;
 }
 
@@ -65,20 +74,20 @@ button:hover {
 }
 
 div {
-  border-radius: 30px;
-  background-color: #f2f2f2;
+  border-radius: 2em;
+  background-color: #f6fcfc;
 }
 
 .left-column {
-  width: 30%;
+  width: 50%;
   float: left;
-  padding: 1em;
+  padding: 2%;
 }
 
 .right-column {
-  width: 60%;
+  width: 40%;
   float: right;
-  padding: 1em;
+  padding: 2%;
 }
 
 .chartHolder {

@@ -1,4 +1,4 @@
 language: java
 
 script:
-  - bundle exec rspec spec
+  - bundle exec spec

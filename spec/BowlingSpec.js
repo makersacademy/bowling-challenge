@@ -24,12 +24,17 @@ describe("Bowling", function() {
         //     .and.callThrough();
         // expect(bowling.getScore()).toEqual(9);
         // });
-        it("it returns a value more than or equal to 0", function() {
+        it("returns a value more than or equal to 0", function() {
             expect(bowling.randScore()).toBeGreaterThan(-1);
         });
 
-        it("it returns a value less than  or equal to 10", function() {
+        it("returns a value less than  or equal to 10", function() {
             expect(bowling.randScore()).toBeLessThan(11);
+        });
+
+        it("returns fixed number if argument is fed in", function() {
+            bowling.randScore(9);
+            expect(bowling.getScore()).toEqual(9);
         });
     });
 });

@@ -1,0 +1,4 @@
+language: java
+
+script:
+  - bundle exec rspec spec

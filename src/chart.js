@@ -2,7 +2,7 @@
 var frameScoreChart = document.getElementById('frameScoreChart').getContext('2d');
 Chart.defaults.global.defaultFontSize= 15;
 Chart.defaults.global.defaultFontColor = '#071414';
-Chart.defaults.global.defaultFontFamily = "'Verdana', 'Geneva', sans-serif"
+Chart.defaults.global.defaultFontFamily = "'Verdana', 'Geneva', sans-serif";
 
 var barChart = new Chart(frameScoreChart, {
   type:'bar',

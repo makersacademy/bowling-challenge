@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+#title {
+  margin: 10px;
+}
+
+.scorecard {
+  border: 1px solid black;
+  width: 80vw;
+  height: 6vw;
+  display: flex;
+  margin: 10px;
+}
+
+.frame {
+  flex-basis: 100%;
+  border: 1px solid black;
+}
+
+.std-frame {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.std-frame-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 40%;
+  font-size: 1.5vw;
+  border-bottom: 1px solid transparent;
+}
+
+.std-frame-item:nth-child(2n) {
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.std-frame-item:nth-child(3n) {
+  width: 100%;
+  height: 60%;
+  font-size: 2vw;
+}
+/* -------- */
+
+.final-frame {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.final-frame-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33.3333333333333333333%;
+  height: 40%;
+  font-size: 1.5vw;
+  border-bottom: 1px solid transparent;
+}
+
+.final-frame-item:nth-child(2n) {
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.final-frame-item:nth-child(3n) {
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.final-frame-item:nth-child(4n) {
+  width: 100%;
+  height: 60%;
+  font-size: 2vw;
+  border: 0px;
+}
+
+
+.frame10 {
+  width: 100px;
+}
+
+#roll-score-title {
+  padding: 10px;
+}
+
+.score-btns {
+  padding: 10px;
+}

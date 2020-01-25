@@ -2,6 +2,41 @@
 Bowling Challenge
 =================
 
+Usage
+========
+
+* Open the page ````index.html```` in an up to date browser (Chrome or Firefox recommended)
+* Enter the roll score using the provided buttons
+* Buttons will be hidden for invalid roll scores (i.e if a score of 6 is rolled on the first roll, then only buttons 0 - 4 will be visible)
+* A highlighted backround will indicate the current frame
+
+![screenshot1](https://github.com/ajbacon/bowling-challenge/blob/master/images/Screenshot%202020-01-06%20at%2008.58.16.png)  
+  
+![screenshot1](https://github.com/ajbacon/bowling-challenge/blob/master/images/Screenshot%202020-01-06%20at%2009.00.50.png)
+
+
+Technical Approach
+==================
+
+The approach was to have 2 classes, a **Game** class and a **Frame** class
+
+The **Game** class contains the array of all the frame objects and allows for the total score to be calculated, a roll is also called from the game class
+
+The **Frame** class contains the score of each individual frame, including the normal rolls and any extra points from subsequent rolls (as a result of )
+
+The code could, easily, be made into a more succinct algorithm if the sole purpose was just to calculate the score of a game of bowling. However, the ultimate intention of the code is to present to a front end web application, hence separating the frames into separate objects seemed a more logical approach for filling in the individual boxes associated with a standard bowling scorecard. Additionally the code was developed to allow for multiple individual score inputs or inputting an entire games worth of scores in one.
+
+
+Further improvements
+====================
+
+- Currently the code has been tested in the "chicago" style TDD, this should be updated to the "London" style to isolate classes when testing.
+- The final frame scoring/logic is very different to a normal frame. The code would probably be cleaner if there was a separare finalFrame class
+- A further extension would be to introduce multi-players, this is unlikely to be implemented given the time constraints of the course
+
+
+Original ReadMe
+===============
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

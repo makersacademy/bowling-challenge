@@ -24,7 +24,15 @@ describe('frame', function () {
     it('throw an error if trying to add a third shot', function () {
       frame.addShot(2)
       frame.addShot(2)
-      expect(function () { frame.addShot(2) }).toThrowError('You already inserted two shot!')
+      expect(function () { frame.addShot(2) }).toThrowError(Error, 'You already inserted two shot!')
+    })
+
+    it('throw an error if passing the wrong kind of value', function () {
+      expect(function () { frame.addShot('3') }).toThrowError(TypeError, 'You need to insert the number of pins as an Integer')
+      expect(function () { frame.addShot(true) }).toThrowError(TypeError, 'You need to insert the number of pins as an Integer')
+      expect(function () { frame.addShot(5.3) }).toThrowError(TypeError, 'You need to insert the number of pins as an Integer')
+      expect(function () { frame.addShot([3, 4]) }).toThrowError(TypeError, 'You need to insert the number of pins as an Integer')
+      expect(function () { frame.addShot({ shot: 2 }) }).toThrowError(TypeError, 'You need to insert the number of pins as an Integer')
     })
   })
 })

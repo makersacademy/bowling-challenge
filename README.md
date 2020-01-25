@@ -13,6 +13,10 @@ As a player
 So I can look back on my games
 I would like to record my scores
 
+As a player
+So I know when my game is over
+I would like to get a game over message
+
 
 
 ```

@@ -5,6 +5,12 @@ As a player
 So that I can enjoy a Game of bowling
 I would like to enter into a game
 
+As a player 
+When I nock over some pins
+I want to be able to input how many I knock over
+
+
+
 ```
 
 

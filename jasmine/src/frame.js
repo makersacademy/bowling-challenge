@@ -6,6 +6,7 @@ function Frame () {
 Frame.prototype.addShot = function (pins) {
   if (this._shots.length === 2) throw new Error('You already inserted two shot!')
   if (!Number.isInteger(pins)) throw new TypeError('You need to insert the number of pins as an Integer')
+  if (pins > this.MAX_PINS || this._shots[0] + pins > this.MAX_PINS) throw new Error("You can't hit more than 10 pins!")
   this._shots.push(pins)
 }
 

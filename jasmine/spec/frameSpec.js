@@ -34,5 +34,14 @@ describe('frame', function () {
       expect(function () { frame.addShot([3, 4]) }).toThrowError(TypeError, 'You need to insert the number of pins as an Integer')
       expect(function () { frame.addShot({ shot: 2 }) }).toThrowError(TypeError, 'You need to insert the number of pins as an Integer')
     })
+
+    it('throw an error if trying to add more than 10 pins to a shot', function () {
+      expect(function () { frame.addShot(11) }).toThrowError(Error, "You can't hit more than 10 pins!")
+    })
+
+    it('throw an erorr if adding more then 10 pins between the two shots', function () {
+      frame.addShot(6)
+      expect(function () { frame.addShot(9) }).toThrowError(Error, "You can't hit more than 10 pins!")
+    })
   })
 })

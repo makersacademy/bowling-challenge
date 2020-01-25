@@ -173,6 +173,190 @@ describe ("Game", function() {
 
   })
 
+  describe("play", function(){
+    it("plays a game with no spare or strike in the 10th frame", function() {
+      game.play(3);
+      game.play(4);
+      game.play(1);
+      game.play(2);
+      game.play(0);
+      game.play(5);
+      game.play(10);
+      game.play(1);
+      game.play(1);
+      game.play(1);
+      game.play(1);
+      game.play(1);
+      game.play(1);
+      game.play(1);
+      game.play(0);
+      game.play(1);
+      game.play(1);
+      game.play(1);
+      game.play(1);
+      console.log(game.pins_down);
+      expect(game.getScore()).toEqual(38);
+    })
+
+    it("plays a game with a spare in the 10th frame", function() {
+      game.play(3);
+      game.play(4);
+      game.play(1);
+      game.play(2);
+      game.play(0);
+      game.play(5);
+      game.play(10);
+      game.play(1);
+      game.play(1);
+      game.play(1);
+      game.play(1);
+      game.play(1);
+      game.play(1);
+      game.play(1);
+      game.play(0);
+      game.play(1);
+      game.play(1);
+      game.play(4);
+      game.play(6);
+      game.play(1);
+      console.log(game.pins_down);
+      expect(game.getScore()).toEqual(47);
+    })
+
+    it("plays a game with a strike in the 10th frame", function() {
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(10);
+      game.play(1);
+      game.play(6);
+      
+      console.log(game.pins_down);
+      expect(game.getScore()).toEqual(17);
+    })
+
+
+    it("plays a game with 3 strikes in the 10th frame", function() {
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      
+      console.log(game.pins_down);
+      expect(game.getScore()).toEqual(30);
+    })
+
+    it("handles attempt to take one shot too many following strikes", function() {
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(0);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      
+      console.log(game.pins_down);
+      expect(game.getScore()).toEqual(30);
+    })
+
+    it("handles trying to take one shot too many after a spare in the 10th frame", function() {
+      game.play(3);
+      game.play(4);
+      game.play(1);
+      game.play(2);
+      game.play(0);
+      game.play(5);
+      game.play(10);
+      game.play(1);
+      game.play(1);
+      game.play(1);
+      game.play(1);
+      game.play(1);
+      game.play(1);
+      game.play(1);
+      game.play(0);
+      game.play(1);
+      game.play(1);
+      game.play(4);
+      game.play(6);
+      game.play(1);
+      game.play(1);
+      console.log(game.pins_down);
+      expect(game.getScore()).toEqual(47);
+    })
+
+    it("handles attempting to take one shot too many after no spare or strike in the 10th frame", function() {
+      game.play(3);
+      game.play(4);
+      game.play(1);
+      game.play(2);
+      game.play(0);
+      game.play(5);
+      game.play(10);
+      game.play(1);
+      game.play(1);
+      game.play(1);
+      game.play(1);
+      game.play(1);
+      game.play(1);
+      game.play(1);
+      game.play(0);
+      game.play(1);
+      game.play(1);
+      game.play(1);
+      game.play(2);
+      game.play(7);
+      console.log(game.pins_down);
+      expect(game.getScore()).toEqual(39);
+    })
+  })
+
 
 })
-

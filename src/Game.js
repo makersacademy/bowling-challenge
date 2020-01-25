@@ -3,6 +3,8 @@
 function Game() {
 
   this.score = 0;
+  this.frame = 1;
+  this.roll = 1;
   this.pins_down = [
 
     {roll1: 0, roll2: 0},
@@ -61,8 +63,30 @@ Game.prototype.pinsDown = function(frame, roll, pins) {
 
 }
 
-Game.prototype.getPinsDown = function() {
 
-  return this.score;
+Game.prototype.play = function(pins) {
 
+  if ((this.frame === 10) && (this.roll === 4)) {
+    return
+  }
+
+  if (this.frame === 10 && this.roll === 3 && (this.pins_down[9]['roll1'] + this.pins_down[9]['roll2'])<10) {
+    return
+  }
+
+
+  this.pinsDown(this.frame, this.roll, pins) 
+
+
+  if ((pins === 10 && this.frame <10) || ((this.roll === 2) && (this.frame <10))) {
+    this.frame += 1;
+    this.roll = 1;
+  }
+
+  else {
+    this.roll += 1;
+  }
+
+
+  
 }

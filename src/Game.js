@@ -1,25 +1,24 @@
 function Game() {
-  this.score = 0;
+  // this.score = 0;
   this.frames = [];
   this.rollType = "";
 }
 
+// Game.prototype.viewScore = function() {
+
+//   return this.score;
+// }
+
 Game.prototype.viewScore = function() {
-  return this.score;
+  var score = 0
+  this.frames.forEach(function (frame) {
+    score += frame.total
+  })
+  return score
 }
 
 Game.prototype.viewFrames = function() {
   return this.frames;
-}
-
-Game.prototype.roll = function(pins) {
-  this.score += pins
-
-  if (this._isStrike(pins)) {
-    return 'strike'
-  } else {
-    return pins
-  }
 }
 
 Game.prototype.newFrame = function(roll1) {
@@ -35,15 +34,24 @@ Game.prototype.newFrame = function(roll1) {
   }
 
   this.frames.push(frame)
+  // this.updateScore(roll1)
 }
 
 Game.prototype.updateFrame = function(roll2) {
+  if (this._currentFrame().roll1 === 10) {
+    throw new Error("Nice try")
+  }
   this._currentFrame().roll2 = roll2
   this._currentFrame().total += roll2
   if (this._currentFrame().total === 10) {
     this._currentFrame().type = 'spare'
   }
+  // this.updateScore(roll2)
 }
+
+// Game.prototype.updateScore = function(roll) {
+//   this.score += roll
+// }
 
 Game.prototype._isStrike = function(roll) {
   return roll === 10

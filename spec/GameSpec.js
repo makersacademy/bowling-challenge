@@ -9,27 +9,20 @@ describe("Game", function() {
     it('starts with score of 0', function() {
       expect(game.viewScore()).toEqual(0)
     })
+
+    it('sums total of frames scores', function() {
+      game.newFrame(5)
+      game.updateFrame(4)
+      game.newFrame(1)
+      game.updateFrame(2)
+      expect(game.viewScore()).toEqual(12)
+    })
   })
-  
+
 
   describe('#viewFrames', function() {
     it('starts with empty array of frames', function() {
       expect(game.viewFrames()).toEqual([])
-    })
-  })
-
-  describe('#roll', function() {
-    it('returns number of pins when user rolls < 10', function() {
-      expect(game.roll(5)).toEqual(5)
-    })
-
-    it('returns "strike" when user rolls 10', function() {
-      expect(game.roll(10)).toEqual('strike')
-    })
-
-    it('updates score when user rolls', function() {
-      game.roll(1)
-      expect(game.score).toEqual(1)
     })
   })
 
@@ -42,6 +35,11 @@ describe("Game", function() {
     it('adds new frame to frames array - strike', function() {
       game.newFrame(10)
       expect(game.frames[0]).toEqual({roll1: 10, roll2: 0, total: 10, type: 'strike'})
+    })
+
+    it('updates total score', function() {
+      game.newFrame(5)
+      expect(game.viewScore()).toEqual(5)
     })
   })
 
@@ -58,6 +56,18 @@ describe("Game", function() {
       expect(game.frames[0]).toEqual({roll1: 5, roll2: 5, total: 10, type: 'spare'})
     })
 
+    it('updates total score', function() {
+      game.newFrame(5)
+      game.updateFrame(1)
+      expect(game.viewScore()).toEqual(6)
+    })
+
+    it('raises error if roll1 was a strike', function() {
+      expect(function() {
+        game.newFrame(10)
+        game.updateFrame(1)
+      }).toThrowError("Nice try");
+    })
   })
 
   it('only allows 10 frames', function() {
@@ -67,5 +77,19 @@ describe("Game", function() {
       };
     }).toThrowError("Game Over");
   })
+
+  // describe('#updateScore', function() {
+  //   it('updates total score', function() {
+  //     game.updateScore(5)
+  //     expect(game.viewScore()).toEqual(5)
+  //   })
+
+  //   it('adds bonus if previous frame was a spare', function() {
+  //     game.newFrame(5)
+  //     game.updateFrame(5)
+  //     game.updateScore(5)
+  //     expect(game.viewScore()).toEqual(20)
+  //   })
+  // })
 
 })

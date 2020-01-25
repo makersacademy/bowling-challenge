@@ -20,4 +20,12 @@ describe('bowling', function(){
     })
   })
 
+  describe('adds the value of the last round', function(){
+    it('to current score', function(){
+      bowling.play(6, 1);
+      expect(bowling.currentScore()).toEqual(7)
+    })
+  })
+
+
 })

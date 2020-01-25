@@ -11,7 +11,7 @@ function Bowling(){
     return ballOne + ballTwo;
   }
 
-  Bowling.prototype.play = function(scoreOne, scoreTwo) {
-    return this._roundScore(scoreOne, scoreTwo)
+  Bowling.prototype.play = function(scoreOne = 0, scoreTwo = 0) {
+    return this.score += (this._roundScore(scoreOne, scoreTwo))
   }
 }

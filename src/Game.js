@@ -33,15 +33,27 @@ Game.prototype.newFrame = function(roll1) {
 
 Game.prototype.updateFrame = function(roll2) {
   var currentFrame = this._currentFrame()
+
+  if (this.frames.length === 10 && this._isStrike(currentFrame.roll1)) {
+    return this._updateTenthFrame(roll2)
+  }
+
   if (currentFrame.roll1 === 10) {
     throw new Error("Nice try")
   }
+  
   currentFrame.roll2 = roll2
   currentFrame.total += roll2
+
   if (currentFrame.total === 10) {
     currentFrame.type = 'spare'
   }
+}
 
+Game.prototype._updateTenthFrame = function(roll) {
+  var currentFrame = this._currentFrame()
+  currentFrame.roll2 = roll
+  currentFrame.total += roll
 }
 
 Game.prototype._addBonus = function(roll) {

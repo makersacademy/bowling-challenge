@@ -107,12 +107,15 @@ $(document).ready(function() {
   
   var hit = new sound("audio/hit.mp3");
   var miss = new sound("audio/miss.mp3");
-
+  var rollin = new sound("audio/rollin.mp3");
   
+
 
 
   $('#bowl').click(function() { 
     
+    rollin.play();
+
     document.getElementById('bowl').style.visibility = 'hidden';
     $('#bonus').text('');
 

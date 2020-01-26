@@ -16,6 +16,10 @@ describe('Scorecard', function(){
     it('gives the maximum number of rolls as 20',function(){
       expect(scorecard._rolls).toEqual(20)
     })
+
+    it('gives the player a chance for two bonus rolls on 10th turn', function(){
+      expect(scorecard._hasBonus).toEqual(true)
+    })
   })
 
   describe('addPins', function(){
@@ -23,40 +27,43 @@ describe('Scorecard', function(){
       scorecard.addPins(7)
       expect(scorecard.getScorecard()).toContain(7)
     })
+  })
 
+  describe('rollUpdate', function(){
     it('reduces rolls by 0.5 if not a strike', function(){
-      scorecard.addPins(4)
+      scorecard.rollUpdate(4)
       expect(scorecard._rolls).toEqual(19)
     })
     
     it('reduces the max number of rolls by 1 if a strike is made', function(){
-      scorecard.addPins('X')
+      scorecard.rollUpdate('X')
       expect(scorecard._rolls).toEqual(18)
     })
-  })
 
-  describe('gameLimit', function(){
-    
-    xit('Removes a turn if a strike is made past first turn', function(){
-      scorecard.addPins(1)
-      scorecard.addPins(3)
-      scorecard.addPins('X')
-      console.log(scorecard._Card[-1])
-      scorecard.gameLimit()
-      expect(scorecard._rolls).toEqual(19)
+    it('gives 2 extra rolls if strike on penultimate roll', function(){
+      for(let i = 0; i < 18; i++){ scorecard.addPins(0) }
+      scorecard.addPins("X")
+      expect(scorecard._rolls).toEqual(2)
+      expect(scorecard._hasBonus).toBe(false)
     })
-    xit('Removes a turn if a strike is make on the first roll', function(){
-      scorecard.addPins('X')
-      scorecard.gameLimit()
-      expect(scorecard._rolls).toEqual(19)
+
+    it('strikes only reduce rolls by 1 in last two rolls', function(){
+      for(let i = 0; i < 18; i++){ scorecard.addPins(0) }
+      scorecard.addPins("X")
+      scorecard.addPins("X")
+      expect(scorecard._rolls).toEqual(1)
+    })
+
+    it('gives an extra roll if spare is thrown on final roll', function(){
+      for(let i = 0; i < 19; i++){ scorecard.addPins(0) }
+      scorecard.addPins("/")
+      expect(scorecard._rolls).toEqual(1)
     })
   })
 
   describe('isGameOver', function(){
     it('Ends game in simple case of no strikes or spares',function(){
-      for(let i = 0; i < 20; i++){
-        scorecard.addPins(1)
-      }
+      for(let i = 0; i < 20; i++){ scorecard.addPins(1) }
       expect(scorecard.isGameOver()).toEqual("You finished the Game!")
     })
   })

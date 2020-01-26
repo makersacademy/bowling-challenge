@@ -17,7 +17,9 @@ As a player
 So I know when my game is over
 I would like to get a game over message
 
-
+As a player
+If I strike on my last roll or spare
+I would like 2 extra turns and one extra turn respectively
 
 
 ```

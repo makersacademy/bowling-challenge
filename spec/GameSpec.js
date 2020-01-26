@@ -92,6 +92,13 @@ describe("Game", function() {
     })
   })
 
+  // describe('#firstRoll', function() {
+  //   it('Adds new frame', function() {
+  //     game.roll1(5)
+  //     expect(game.updateFrame()).toHaveBeenCalled()
+  //   })
+  // })
+
   it('only allows 10 frames', function() {
     expect(function() {
       for (var i = 0; i < 11; i++) {

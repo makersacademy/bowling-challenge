@@ -98,7 +98,17 @@ Plan model functionaility and how system will interact on paper to develop a wor
 - Feature test infastructure and to create working webapp
 - Test and develop JavaScript with Jasmine test suite
   - FrameModel
-  - GameController (still requires gameModel extracting)
+    - (possible refactor to join all prototypes etc)
+  - GameView
+    - (how to test jQuery using mocks?)
+    - (Add animation and end screen games)
+  - GameController
+    - (still requires gameModel extracting from controller)
+    - (add functionality to replace strikes and spares with X and /)
+    - (tests required)
+- Develop HTML along with GameView
+  - (requires refactor of id and class details to make selection more streamlined)
+  - (CSS can be improved)
 
 
 

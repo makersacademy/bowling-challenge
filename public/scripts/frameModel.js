@@ -20,7 +20,7 @@ FrameModel.prototype._checkStatus = function() {
       this._loc = 1
     }
   }
-  if (this._loc == 1) {
+  else if (this._loc == 1) {
     if ((this._rolls[0] + this._rolls[1]) == 10) {
       this._loc = 3
     }
@@ -28,10 +28,10 @@ FrameModel.prototype._checkStatus = function() {
       return [this._totalScore(), this.frameNumber]
     }
   }
-  if (this._loc == 2) {
-    this._loc == 3
+  else if (this._loc == 2) {
+    this._loc = 3
   }
-  if (this._loc == 3) {
+  else {
     return [this._totalScore(), this.frameNumber]
   }
 }

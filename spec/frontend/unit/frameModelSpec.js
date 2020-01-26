@@ -28,9 +28,10 @@ describe("Frame Model", function() {
       expect(frameModel.addRoll(4)).toEqual([14, 1])
     })
     it("Should return total score and frame number after three rolls the first roll is equal to 10 (strike)", function() {
-      frameModel.addRoll(3)
+      frameModel.addRoll(10)
       frameModel.addRoll(7)
-      expect(frameModel.addRoll(4)).toEqual([14, 1])
+      frameModel.addRoll(2)
+      expect(frameModel.addRoll(4)).toEqual([19, 1])
     })
   })
 

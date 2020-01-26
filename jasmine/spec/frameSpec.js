@@ -70,4 +70,18 @@ describe('frame', function () {
       expect(frame.isStrike()).toEqual(true)
     })
   })
+
+  describe('isCompleted', function () {
+    it('return false if the frame has less than two shots', function () {
+      expect(frame.isCompleted()).toEqual(false)
+      frame.addShot(6)
+      expect(frame.isCompleted()).toEqual(false)
+    })
+
+    it('return true if the frame has two shots', function () {
+      frame.addShot(5)
+      frame.addShot(1)
+      expect(frame.isCompleted()).toEqual(true)
+    })
+  })
 })

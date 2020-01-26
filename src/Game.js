@@ -2,21 +2,22 @@
 
 function Game() {
 
-  this.score = 0;
+  this.previous_frame = 1;
+  this.previous_roll = 1;
   this.frame = 1;
   this.roll = 1;
   this.pins_down = [
 
-    {roll1: 0, roll2: 0},
-    {roll1: 0, roll2: 0},
-    {roll1: 0, roll2: 0},
-    {roll1: 0, roll2: 0},
-    {roll1: 0, roll2: 0},
-    {roll1: 0, roll2: 0},
-    {roll1: 0, roll2: 0},
-    {roll1: 0, roll2: 0},
-    {roll1: 0, roll2: 0},
-    {roll1: 0, roll2: 0, roll3: 0},
+    {roll1: null, roll2: null},
+    {roll1: null, roll2: null},
+    {roll1: null, roll2: null},
+    {roll1: null, roll2: null},
+    {roll1: null, roll2: null},
+    {roll1: null, roll2: null},
+    {roll1: null, roll2: null},
+    {roll1: null, roll2: null},
+    {roll1: null, roll2: null},
+    {roll1: null, roll2: null, roll3: null},
 
   ]
 
@@ -24,7 +25,7 @@ function Game() {
 
 Game.prototype.getScore = function() {
 
-
+  this.score = 0;
   for (var i = 0; i < 9; i++) {
     this.score += this.pins_down[i]['roll1'] + this.pins_down[i]['roll2'];
     if (this.pins_down[i]['roll1'] === 10 ) {
@@ -63,6 +64,11 @@ Game.prototype.pinsDown = function(frame, roll, pins) {
 
 }
 
+Game.prototype.getPinsDown = function(frame, roll) {
+  
+  return this.pins_down[frame-1]['roll'+roll];
+
+}
 
 Game.prototype.play = function(pins) {
 
@@ -79,11 +85,15 @@ Game.prototype.play = function(pins) {
 
 
   if ((pins === 10 && this.frame <10) || ((this.roll === 2) && (this.frame <10))) {
+    this.previous_frame = this.frame;
+    this.previous_roll = this.roll;
     this.frame += 1;
     this.roll = 1;
   }
 
   else {
+    this.previous_frame = this.frame;
+    this.previous_roll = this.roll;
     this.roll += 1;
   }
 

@@ -1,26 +1,45 @@
 :root {
-  
+  --background_url: url("images/10.jpg");
+  --background_overlay_url: url("images/10.jpg");
+ 
+
 }
 
 
 html {
 
- 
+  height: 100%;
+  background-image: var(--background_overlay_url), var(--background_url);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  
+
 }
 
 body {
 
+  height: 100%;
 
 }
 
+#bowl {
+
+  position: absolute;
+  top: 650px;
+  left: 685px;
+
+}
 
 
 
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 35%;
+  width: 25%;
   empty-cells: show;
+  background-color: lightblue;
 }
 
 td, th {
@@ -29,10 +48,6 @@ td, th {
   padding: 8px;
 }
 
-tr:nth-child(even) {
-  empty-cells: show;
-  background-color: #dddddd;
-}
 
 
 

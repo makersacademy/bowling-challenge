@@ -38,6 +38,37 @@ describe ("Game", function() {
 
   })
 
+  describe("isPinResetRequired", function(){
+    it("returns false after non strike first roll", function() {
+      game.play(3);
+      expect(game.isPinResetRequired()).toEqual(false);
+    })
+
+    it("returns true after second roll", function() {
+      game.play(3);
+      game.play(4);
+      expect(game.isPinResetRequired()).toEqual(true);
+    })
+
+    it("returns true after second roll strike", function() {
+      game.play(0);
+      game.play(10);
+      expect(game.isPinResetRequired()).toEqual(true);
+    })
+
+    it("returns true after spare", function() {
+      game.play(1);
+      game.play(9);
+      expect(game.isPinResetRequired()).toEqual(true);
+    })
+    
+    it("returns true after strike", function() {
+      game.play(10);
+      expect(game.isPinResetRequired()).toEqual(true);
+    })
+
+  })
+
   describe("getScore", function(){
     it("handles game with no strikes or spares", function() {
       game.pinsDown(1,1,4);
@@ -66,6 +97,7 @@ describe ("Game", function() {
       expect(game.getScore()).toEqual(50);
       console.log(game.pins_down);
     })
+
 
     it("handles strikes in the 9th frame with no strikes or spares in 10th frame", function() {
       game.pinsDown(9,1,10);
@@ -104,6 +136,14 @@ describe ("Game", function() {
       console.log(game.pins_down);
     })
 
+    it("handles a spare on the second roll where there was no scoring on the previous roll", function() {
+      game.pinsDown(1,1,0);
+      game.pinsDown(1,2,10);
+      game.pinsDown(2,1,3);
+      game.pinsDown(2,2,5);
+      expect(game.getScore()).toEqual(21);
+      console.log(game.pins_down);
+    })
 
     it("10 10 10 in 10th frame gives 30 points", function() {
       game.pinsDown(10,1,10);

@@ -70,14 +70,34 @@ Game.prototype.getPinsDown = function(frame, roll) {
 
 }
 
+Game.prototype.getPinsDownFrame = function(frame) {
+  var pins_down_frame = this.pins_down[frame-1]['roll1'] + this.pins_down[frame-1]['roll2'];
+  return pins_down_frame;
+
+}
+
+Game.prototype.isPinResetRequired = function() {
+  if (this.getPinsDown(this.previous_frame, this.previous_roll) === 10) {
+    return true
+  }
+
+  else if (this.previous_roll === 2 && this.previous_frame < 10) {
+    return true
+  }
+
+  else {
+    return false
+  }
+}
+
 Game.prototype.play = function(pins) {
 
   if ((this.frame === 10) && (this.roll === 4)) {
-    return
+    return;
   }
 
   if (this.frame === 10 && this.roll === 3 && (this.pins_down[9]['roll1'] + this.pins_down[9]['roll2'])<10) {
-    return
+    return;
   }
 
 

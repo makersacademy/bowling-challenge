@@ -167,3 +167,9 @@ div {
     float: left;
   }
 }
+
+/* For screens 800px wide or less, columns will stack */
+@media screen and (max-width: 800px) {
+button {
+  font-size: 2em;
+}

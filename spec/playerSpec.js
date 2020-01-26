@@ -2,7 +2,6 @@
 
 describe('Player', function(){
   var player
-  var scorecard
 
   beforeEach(function(){
     player = new Player

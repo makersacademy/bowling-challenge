@@ -4,6 +4,7 @@ function Frame() {
   this.spared = false
   this.array = []
   this.score = this.array.reduce
+  this.tenthFrame = false
 }
 
 
@@ -12,6 +13,7 @@ function Game() {
   this.frames = []
   this.latestFrameIndex = ((this.frames.length - 1) < 0) ? (this.frames.length) : (this.frames.length - 1)
   this.strike = false
+  this.over = false
 }
 
 var game = new Game()
@@ -24,6 +26,14 @@ Game.prototype.ThereIsOneElementInTheFrame = function() {
   if (this.frames.length === 0) {
     return false
   } else if (this.frames[this.frames.length - 1].array.length === 1) {
+    return true
+  } else {
+    return false
+  }
+}
+
+Game.prototype.ThereAreTwoElementsInTheTenthFrame = function() {
+  if (this.frames.length === 10 && this.frames[9].array.length === 2) {
     return true
   } else {
     return false
@@ -47,13 +57,10 @@ Game.prototype.createFrame = function(pins) {
 }
 
 
-Game.prototype.checkFrame = function() {
-  if (this.frames.length === 0) {
-    return 10;
-  } else if (this.frames.length === 0) {
-    return 0;
-  } else {
-    return (this.frames.length)
+Game.prototype.checkTenthFrame = function(pins) {
+  if (this.frames.length === 10) {
+    this.tenthFrame = true
+    return true
   }
 };
 
@@ -62,7 +69,9 @@ Game.prototype.completeFrame = function(pins) {
 }
 
 Game.prototype.isItStrike = function() {
-  if (this.frames[this.frames.length - 1].array[0] === 10) {
+  if (this.frames.length === 10) {
+    return
+  } else if (this.frames[this.frames.length - 1].array[0] === 10) {
     this.frames[this.frames.length - 1].array.push(0)
     return true
   } else {
@@ -94,16 +103,68 @@ Frame.prototype.isItASparedFrame = function() {
   }
 }
 
+Game.prototype.gameOn = function(pins) {
+  if (this.over === true) {
+    throw new Error('Game has finished')
+  } else {
+    this.play(pins)
+  }
+}
+
 Game.prototype.play = function(pins) {
+  if ((this.frames.length === 9 && this.frames[8].array.length === 2) || this.frames.length === 10  ) {
+    this.lastPlay(pins)
+  } else {
+
+    if (this.ThereIsOneElementInTheFrame() === true) {
+      this.roll(pins)
+      this.rollValidity(pins)
+      this.completeFrame(pins)
+    } else {
+      this.roll(pins)
+      this.createFrame(pins)
+      this.frames[this.frames.length - 1].isItAStruckFrame()
+      this.frames[this.frames.length - 1].isItASparedFrame()
+      this.checkTenthFrame()
+      this.isItStrike()
+    }
+
+  }
+}
+
+Game.prototype.lastPlay = function(pins) {
   if (this.ThereIsOneElementInTheFrame() === true) {
     this.roll(pins)
-    this.rollValidity(pins)
-    this.completeFrame(pins)
+      if (this.frames[9].array[0] !== 10) {
+        this.rollValidity(pins)
+        this.completeFrame(pins)
+      } else {
+      this.completeFrame(pins)
+      };
+  } else if (this.ThereAreTwoElementsInTheTenthFrame() === true) {
+    if ((this.frames[9].array[0] + this.frames[9].array[1]) > 9) {
+      this.roll(pins)
+      this.completeFrame(pins)
+      this.over = true
+    } else {
+      this.over = true
+      throw new Error('Game has finished')
+    }
   } else {
     this.roll(pins)
     this.createFrame(pins)
     this.frames[this.frames.length - 1].isItAStruckFrame()
     this.frames[this.frames.length - 1].isItASparedFrame()
-    this.isItStrike()
   }
 }
+
+
+Game.prototype.bonusRoll = function(pins) {
+  if ((this.frames[9][0] + this.frames[9][1]) >= 10) {
+    this.roll(pins)
+    this.completeFrame(pins)
+  } else {
+    return
+  }
+}
+

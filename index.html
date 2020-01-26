@@ -1,24 +1,31 @@
 <!DOCTYPE html>
   <head>
+    <script src="jquery-3.4.1.min.js"></script>
     <title></title>
     <link rel="stylesheet" href="">
   </head>
   <body>
-    FRAMES:
+    Frames:
     <div id="frames"></div>
-    TOTAL:
+    Score:
     <div id="total-score"></div>
+    <div>
+
+    </div>
     <form id="first-roll">
       First Roll:<br>
       <input type="text" id="roll1" name="roll1"><br>
-      <input type="submit" name="Add Frame">
     </form>
+
+    <input type="button" value="Add Frame" id="new-frame">
+
 
     <form id="second-roll">
       Second Roll:<br>
-      <input type="text" id="roll1" name="roll2"><br>
+      <input type="text" id="roll2" name="roll2"><br>
       <input type="submit" name="Update Frame">
     </form>
     <script src="src/Game.js"></script>
+    <script src="interface.js"></script>
   </body>
 </html>

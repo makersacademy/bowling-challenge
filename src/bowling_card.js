@@ -6,10 +6,20 @@ var BowlingCard = function() {
 };
 
 BowlingCard.prototype.record = function(pins) {
-  if ( this.rollNumber < 4 ){
+  if ( this.validEntry(pins) ){
     this.saveScore(pins);
     this.updateTurn(pins);
   };
+};
+
+BowlingCard.prototype.validEntry = function(pins) {
+  if ( this.rollNumber > 3 ){ return false }
+  if ( this.rollNumber === 2 ){
+    var firstRoll = this.scoreCard[this.scoreCard.length -1].pins
+    if ( firstRoll === 10 ){ return true }
+    if ( (firstRoll + pins) > 10 ){ return false }
+  }
+  return true
 };
 
 BowlingCard.prototype.saveScore = function(pins) {

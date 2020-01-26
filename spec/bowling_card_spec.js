@@ -12,6 +12,19 @@ describe("BowlingCard", function() {
     });
   });
 
+  describe('validEntry', function() {
+    it('prevents a player recording an impossible score', function() {
+      bowlingCard.rollNumber = 2
+      bowlingCard.scoreCard = [{frame: 1, roll: 1, pins: 6}]
+      expect(bowlingCard.validEntry(6)).toEqual(false);
+      expect(bowlingCard.validEntry(4)).toEqual(true);
+      bowlingCard.scoreCard = [{frame: 10, roll: 1, pins: 10}]
+      expect(bowlingCard.validEntry(6)).toEqual(true);
+      bowlingCard.rollNumber = 4
+      expect(bowlingCard.validEntry(6)).toEqual(false);
+    });
+  });
+
   describe('updateTurn', function() {
     it('updates the current frame# and roll# after each roll', function() {
       for (i=0; i < 3; i++) { bowlingCard.updateTurn(1); }

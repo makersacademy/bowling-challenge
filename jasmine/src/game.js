@@ -26,6 +26,13 @@ Game.prototype.currentFrame = function () {
   return this._frames[this._frames.length - 1]
 }
 
+Game.prototype.previousFrame = function () {
+  return this._frames[this._frames.length - 2]
+}
+
 Game.prototype.addPoints = function () {
+  if (this.frameNumber() > 1) {
+    if (this.previousFrame().isSpare()) this._points += this.currentFrame().getShot(1)
+  }
   this._points += this.currentFrame().total()
 }

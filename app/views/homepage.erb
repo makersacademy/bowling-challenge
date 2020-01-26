@@ -14,16 +14,79 @@
 
 <body>
 
-  <section>
-
+  <header class="header">
     <h1>Bowling Scorecard</h1>
+  </header>
+
+
+  <div class="container">
+
+    <div class='buttons-section'>
+
+        <span class='start-button'>
+          <button class='general-button' id='start-game'>Start Game</button>
+        </span>
+
+        <span class="input-buttons">
+          <button id="button0" class="input-button-defualt" value="0">0</button>
+          <button id="button1" class="input-button-defualt" value="1">1</button>
+          <button id="button2" class="input-button-defualt" value="2">2</button>
+          <button id="button3" class="input-button-defualt" value="3">3</button>
+          <button id="button4" class="input-button-defualt" value="4">4</button>
+          <button id="button5" class="input-button-defualt" value="5">5</button>
+          <button id="button6" class="input-button-defualt" value="6">6</button>
+          <button id="button7" class="input-button-defualt" value="7">7</button>
+          <button id="button8" class="input-button-defualt" value="8">8</button>
+          <button id="button9" class="input-button-defualt" value="9">9</button>
+          <button id="button10" class="input-button-defualt" value="10">10</button>
+        </span>
+
+    </div>
+
+    <div class='scorecard-section'>
+
+      <div class='scorecard'>
+        Scorecard<br>
+        <div class='framebox-1'>
+          <div class='scoreboxleft' id='roll1box1'></div>
+          <div class='scoreboxright' id='roll2box1'></div>
+          <div class='scoreboxtotal' id='totalbox1'></div>
+        </div>
+
+        <% 8.times do |i| %>
+        <div class='framebox-2-10'>
+          <div class='scoreboxleft' id='roll1box<%=i+2%>'></div>
+          <div class='scoreboxright' id='roll2box<%=i+2%>'></div>
+          <div class='scoreboxtotal' id='totalbox<%=i+2%>'></div>
+        </div>
+        <% end %>
+
+        <div class='framebox-2-10'>
+          <div class='scoreboxleft-10' id='roll1box10'></div>
+          <div class='scoreboxmiddle-10' id='roll2box10'></div>
+          <div class='scoreboxright-10' id='roll3box10'></div>
+          <div class='scoreboxtotal' id='totalbox10'></div>
+        </div>
+
+        <div class='framebox-2-10'>
+          Total <div class='scoreboxtotal' id='totalboxtotal'>1</div>
+        </div>
+      </div>
+
+    </div>
 
 
 
+  </div>
 
-  </section>
+  <footer class="footer">
+    <p>Created by Chris.</p>
+  </footer>
 
-  <script src="gameController.js"></script>
-  <script src="index.js"></script>
+
+  <script src="scripts/gameView.js"></script>
+  <script src="scripts/frameModel.js"></script>
+  <script src="scripts/gameController.js"></script>
+  <script src="scripts/index.js"></script>
 
 </body>

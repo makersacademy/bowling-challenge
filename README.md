@@ -97,6 +97,8 @@ Plan model functionaility and how system will interact on paper to develop a wor
 ### TDD
 - Feature test infastructure and to create working webapp
 - Test and develop JavaScript with Jasmine test suite
+  - FrameModel
+  - GameController (still requires gameModel extracting)
 
 
 

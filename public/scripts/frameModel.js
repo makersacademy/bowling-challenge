@@ -1,3 +1,5 @@
+"use strict"
+
 var FrameModel = function(frameNumber) {
   this.frameNumber = frameNumber
   this._rolls = []

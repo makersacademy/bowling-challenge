@@ -25,3 +25,7 @@ Game.prototype.getPoints = function () {
 Game.prototype.currentFrame = function () {
   return this._frames[this._frames.length - 1]
 }
+
+Game.prototype.addPoints = function () {
+  this._points += this.currentFrame().total()
+}

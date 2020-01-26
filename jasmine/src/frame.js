@@ -18,7 +18,7 @@ Frame.prototype.getShot = function (number) {
 }
 
 Frame.prototype.isSpare = function () {
-  return this._shots.reduce((acc, val) => acc + val) === this.MAX_PINS
+  return this.total() === this.MAX_PINS
 }
 
 Frame.prototype.isStrike = function () {
@@ -27,4 +27,8 @@ Frame.prototype.isStrike = function () {
 
 Frame.prototype.isCompleted = function () {
   return this._shots.length === 2
+}
+
+Frame.prototype.total = function () {
+  return this._shots.reduce((acc, val) => acc + val)
 }

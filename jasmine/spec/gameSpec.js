@@ -71,4 +71,26 @@ describe('game', function () {
       expect(game.currentFrame()).toEqual(game._frames[1])
     })
   })
+
+  describe('.addPoints', function () {
+    it('add the point of the first frame', function () {
+      game.addFrame()
+      game.currentFrame().addShot(2)
+      game.currentFrame().addShot(2)
+      game.addPoints()
+      expect(game.getPoints()).toEqual(4)
+    })
+
+    it('add the points of two frames', function () {
+      game.addFrame()
+      game.currentFrame().addShot(1)
+      game.currentFrame().addShot(8)
+      game.addPoints()
+      game.addFrame()
+      game.currentFrame().addShot(2)
+      game.currentFrame().addShot(6)
+      game.addPoints()
+      expect(game.getPoints()).toEqual(17)
+    })
+  })
 })

@@ -1,13 +1,13 @@
 # Bowling Scorecard Challenge
 ----------
 ```
-   _ 0
--o'-/-\--------------------------------------------
-   |\                                           . o
-   / |       '.                             . o . o
-              .'                              o . o
-             '                                    o
-___________________________________________________
+  _ 0
+o'-/-\--------------------------------------------
+  |\                                           . o
+  / |       '.                             . o . o
+             .'                              o . o
+            '                                    o
+__________________________________________________
 ```
 ----------
 ## Overview
@@ -87,6 +87,9 @@ Bowling has a number of scoring rules which must followed in order to calculate 
 
 ----------
 ## Process
+
+Plan model functionaility and how system will interact on paper to develop a working design.
+
 ### Prerequisites
 - Create filestructure
 - Add required Gemfile and Rakefile

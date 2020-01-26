@@ -83,6 +83,10 @@ Game.prototype._updateTenthFrame = function(roll) {
     currentFrame.total += roll
   }
 
+  if (this.rollCount === 20 & currentFrame.total < 10) {
+    throw new Error("No bonus for you - game over");
+  } 
+
   this.rollCount += 1
 }
 

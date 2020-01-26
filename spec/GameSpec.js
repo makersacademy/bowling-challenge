@@ -125,16 +125,20 @@ describe("Game", function() {
         game.newFrame(1)
         game.updateFrame(1)
       }
-      console.log(game.frames)
-      console.log(game.rollCount)
       game.newFrame(5)
-      console.log(game.frames)
-      console.log(game.rollCount)
       game.updateFrame(5)
-      console.log(game.frames)
-      console.log(game.rollCount)
       game.updateFrame(1)
       expect(game.frames[game.frames.length -1]).toEqual({roll1: 5, roll2: 5, roll3: 1, total: 11, type: 'spare'})
+    })
+
+    it('expect error to be thrown if trying to add bonus in 10th frame with no strike or spare', function() {
+      for (var i = 0; i < 10; i++) {
+        game.newFrame(1)
+        game.updateFrame(1)
+      }
+      expect(function() {
+        game.updateFrame(1)
+      }).toThrowError("No bonus for you - game over");
     })
 
   })

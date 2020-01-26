@@ -72,7 +72,6 @@ describe('bowlingRules', function() {
     var turnHash = scoreArrayTest[1]
     expect(turnHash.score).toEqual(11)
     expect(turnHash.displayScore).toEqual("11")
-    console.log(scoreArrayTest)
   });
 
   it('calculates bonus score for a strike', function() {
@@ -82,7 +81,6 @@ describe('bowlingRules', function() {
     var turnHash = scoreArrayTest[1]
     expect(turnHash.score).toEqual(19)
     expect(turnHash.displayScore).toEqual("19")
-    console.log(scoreArrayTest)
   });
 
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thermostat</title>
+    <title>Bowling Scorecard</title>
     <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -14,34 +14,110 @@
     <div
         <section>
             <!--main body of text page 1-->
-            <h3 class="currentTemp"> 25  </h3>
-            <h3 class="currentTempDes">Degrees</h3>
+            <h2> Bowling Scorecard  </h2>
             <p>
-                <button id="hide">Hide</button>
-                <button class="button" id="increase">+</button>
-                <button class="button" id="decrease">-</button>
-                <button class="button" id="reset">reset</button>
-                <button class="button" id="PSM">PSM</button>
+                <button class="button" id="0">0</button>
+                <button class="button" id="1">1</button>
+                <button class="button" id="2">2</button>
+                <button class="button" id="3">3</button>
+                <button class="button" id="4">4</button>
+                <button class="button" id="5">5</button>
+                <button class="button" id="6">6</button>
+                <button class="button" id="7">7</button>
+                <button class="button" id="8">8</button>
+                <button class="button" id="9">9</button>
+                <button class="button" id="10">10</button>
             </p>
         </section>   
-        <h3 class="minTemperature">
-          MIN 
-      </h3>
-      <h3 class="maxTemperature">
-        MIN 
-    </h3>
-      <h3 class="powerSaveMode">
-          ON/OFF
-      </h3>
-    </div>
-    <div> 
-        <h1 id="message"></h1>
-        <button class="button" id="weatherButton">Get Weather</button>
-        
-    </div>
-    <script type="text/javascript" src="js/jstorage.js"></script>
+      </div>
+      <div>
+          <table>
+            <tr>
+                <th rowspan="2">1:</th>
+                <td id="role1">5</td>
+                <th id = "score1" rowspan="2">9</th>
+            </tr> 
+            <tr>
+                <td id="role2">4</td>
+            </tr>   
+            <tr>
+                <th rowspan="2">2:</th>
+                <td id="role3">5</td>
+                <th id = "score2" rowspan="2">9</th>
+            </tr> 
+            <tr>
+                <td id="role4">4</td>
+            </tr>   
+            <tr>
+                <th rowspan="2">3:</th>
+                <td id="role5">5</td>
+                <th id = "score3" rowspan="2">9</th>
+            </tr> 
+            <tr>
+                <td id="role6">4</td>
+            </tr>   
+            <tr>
+                <th rowspan="2">4:</th>
+                <td id="role7">5</td>
+                <th id = "score4" rowspan="2">9</th>
+            </tr> 
+            <tr>
+                <td id="role8">4</td>
+            </tr>   
+            <tr>
+                <th rowspan="2">5:</th>
+                <td id="role9">5</td>
+                <th id = "score5" rowspan="2">9</th>
+            </tr> 
+            <tr>
+                <td id="role10">4</td>
+            </tr>   
+            <tr>
+                <th rowspan="2">6:</th>
+                <td id="role11">5</td>
+                <th id = "score6" rowspan="2">9</th>
+            </tr> 
+            <tr>
+                <td id="role12">4</td>
+            </tr>   
+            <tr>
+                <th rowspan="2">7:</th>
+                <td id="role13">5</td>
+                <th id = "score7" rowspan="2">9</th>
+            </tr> 
+            <tr>
+                <td id="role14">4</td>
+            </tr>   
+            <tr>
+                <th rowspan="2">8:</th>
+                <td id="role15">5</td>
+                <th id = "score8" rowspan="2">9</th>
+            </tr> 
+            <tr>
+                <td id="role16">4</td>
+            </tr>   
+            <tr>
+                <th rowspan="2">9:</th>
+                <td id="role17">5</td>
+                <th id = "score9" rowspan="2">9</th>
+            </tr> 
+            <tr>
+                <td id="role18">4</td>
+            </tr>  
+            <tr>
+                <th rowspan="3">10:</th>
+                <td id="role19">5</td>
+                <th id = "score9" rowspan="3">9</th>
+            </tr> 
+            <tr>
+                <td id="role20">4</td>
+            </tr> 
+            <tr>
+                <td id="role21">4</td>
+            </tr>    
+
+          </table>
+        </div>
     <script src="src/myJquery.js"></script>
-    <script src="src/Thermostat.js"></script>
-  <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>-->
+    <script src="src/bowlingRules.js"></script>
 </body>

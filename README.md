@@ -1,41 +1,108 @@
+# Bowling Scorecard Challenge
+----------
+```
+   _ 0
+-o'-/-\--------------------------------------------
+   |\                                           . o
+   / |       '.                             . o . o
+              .'                              o . o
+             '                                    o
+___________________________________________________
+```
+----------
+## Overview
 
-Bowling Challenge
-=================
+Makers Academy weekend challenge to single page webapp, which allows a user to add in bowling scores from a game, then automatically calculates the total score.
+
+### How to Install
+
+The webapp has been developed on Sinatra, a rack based platform, with the majority of the functionality added through JavaScript. So to install the app, clone this repo, make sure Homebrew and Ruby 2.6.5 is installed then:
+- move to the project root directory in terminal
+- run ``` gem install rake ```
+- run ``` rake ```
+- run ```rackup``` to start server on localhost port 9292
+
+----------
+## Approach
+
+### User Stories
+
+Generate user stories from project requirements:
+```
+As a user
+So I can thoughtlessly keep track of my bowling score
+I want to visit a webpage and enter my scores
+```
+```
+As a user
+So I can see if I'm better than my friends
+I want to my total score to be displayed at the end of a game
+```
+```
+As a user
+So I can keep playing my favourite game
+I want to be able to restart my game without reloading the page
+```
+```
+As a user
+So I can't make a mistake in entering my point
+I only want the option to add score which reflects previous rolls in the frame
+```
+```
+As a project manager
+To ensure continious integration
+I want Travis CI to test my builds before adding them to github
+```
+```
+As a client
+So I can sell my product
+I want some cool animation added to to the site
+```
+
+### Bowling Rules
+
+Bowling has a number of scoring rules which must followed in order to calculate the correct total score for the game. The rules follow for this webapp scorecard model are those listed here: [Bowling Rules](https://www.liveabout.com/bowling-scoring-420895)
+
+### Extract Scope
+- Single page webapp, server based off Sinatra with functionality provided by JavaScript
+- Page displays one game at a time with option to start --> complete --> restart
+- Scores calculated as game progresses - follow offical bowling rules
+- No need to maintain persistence between page refreshes
+- Buttons to add score value dynamically change depending on previous roll
+- Animation to make site look pretty (provide as much as time allocation allows)
+- Travis CI to build, ESlint, and run Jasmine + RSpec tests
+
+### Objects
+- Controllers:
+  - Sinatra: app_controller - controls routes, views, and server side models
+  - JavaScript: gameController - Updates JavaScript models and views with user input
+- Views:
+  - Sinatra: homepage - single page HMTL including all JavaScript required for functionality
+  - JavaScript: gameView - updates each section of HTML with new information from controller
+- Models:
+  - Sinatra: nil - no server side models requires at this stage
+  - JavaScript: frameModel - calculates scores to be added returned to view
+
+<!-- refactor system to extract gameModel from gameController -->
+
+----------
+## Process
+### Prerequisites
+- Create filestructure
+- Add required Gemfile and Rakefile
+
+### TDD
+- Feature test infastructure and to create working webapp
+- Test and develop JavaScript with Jasmine test suite
 
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
 
-## The Task
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by
 
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
-
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
-
+----------
 ## Bowling — how does it work?
 
 ### Strikes
@@ -60,18 +127,3 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 ### Perfect Game
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

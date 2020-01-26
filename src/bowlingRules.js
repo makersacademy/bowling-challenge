@@ -15,10 +15,12 @@ function BowlingRules() {
 
 BowlingRules.prototype.takeTurn = function(role, pins) {
 if (this._isEven(role) === true) {
-  return BowlingRules.prototype.updateEvenRole(role, pins)
+  BowlingRules.prototype.updateEvenRole(role, pins)
 } else {
-  return BowlingRules.prototype.updateOddRole(role, pins)
+  BowlingRules.prototype.updateOddRole(role, pins)
 }
+BowlingRules.prototype._calcBonus(role,pins)
+return scoreArray
 };
 
 BowlingRules.prototype.updateOddRole = function(role, pins) {
@@ -65,6 +67,20 @@ BowlingRules.prototype.updateEvenRole = function(role, pins) {
   return scoreArray;
 }
 
+BowlingRules.prototype._calcBonus = function(role, pins){
+  for(let i = 0; i < ((role)/2); i++) {
+    this.turnHash = scoreArray[i]
+    if(this.turnHash.spares >0){
+      this.turnHash.spares -= 1
+      this.turnHash.score += pins
+      if(this.turnHash.spares === 0){
+        this.turnHash.displayScore = String(this.turnHash.score)
+      }
+      scoreArray[i] = this.turnHash
+    }
+  }
+}
+  
 BowlingRules.prototype._isEven = function(role) {
   if (role % 2 === 0 ) {return true}
   else {return false}

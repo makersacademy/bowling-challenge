@@ -65,5 +65,25 @@ describe('bowlingRules', function() {
     expect(turnHash.displayPins2ndRole).toEqual("5")
   });
 
+  it('calculates bonus score for a spare', function() {
+    bowlingRules.takeTurn(1,7)
+    bowlingRules.takeTurn(2,3)
+    scoreArrayTest = bowlingRules.takeTurn(3,1)
+    var turnHash = scoreArrayTest[1]
+    expect(turnHash.score).toEqual(11)
+    expect(turnHash.displayScore).toEqual("11")
+    console.log(scoreArrayTest)
+  });
+
+  it('calculates bonus score for a strike', function() {
+    bowlingRules.takeTurn(1,10)
+    bowlingRules.takeTurn(3,3)
+    scoreArrayTest = bowlingRules.takeTurn(4,6)
+    var turnHash = scoreArrayTest[1]
+    expect(turnHash.score).toEqual(19)
+    expect(turnHash.displayScore).toEqual("19")
+    console.log(scoreArrayTest)
+  });
+
 
 });

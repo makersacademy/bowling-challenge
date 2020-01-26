@@ -1,3 +1,5 @@
+'use strict'
+
 function Frame () {
   this._shots = []
   this.MAX_PINS = 10

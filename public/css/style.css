@@ -1,0 +1,34 @@
+#frames {
+  display: flex;
+}
+.border {
+  /* display: flex; */
+  border-style: solid;
+  height: 100px;
+  width: 10%;
+}
+
+.roll {
+  display: flex;
+  width: 100%;
+  height: 50%;
+}
+
+.roll-border {
+  border-style: solid;
+  width: 33.33333%;
+  float: right;
+}
+
+.roll-border-10 {
+  border-style: solid;
+  width: 33.33333%;
+}
+
+.f-total {
+  width: 100%;
+  height: 50%;
+}
+
+
+

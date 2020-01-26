@@ -16,6 +16,8 @@ describe('game', function () {
     it('add 6 frames to the game', function () {
       for (let i = 0; i < 6; i++) {
         game.addFrame()
+        game.currentFrame().addShot(2)
+        game.currentFrame().addShot(2)
       }
       expect(game._frames.length).toEqual(6)
     })
@@ -23,8 +25,15 @@ describe('game', function () {
     it('throw an error if trying to add a 11nth frame', function () {
       for (let i = 0; i < 10; i++) {
         game.addFrame()
+        game.currentFrame().addShot(2)
+        game.currentFrame().addShot(2)
       }
       expect(function () { game.addFrame() }).toThrowError(Error, "This game is over, can't play for ever!")
+    })
+
+    it('throw an error if adding a frame before the last one is complete', function () {
+      game.addFrame()
+      expect(function () { game.addFrame() }).toThrowError(Error, 'This frame is not complete yet!')
     })
   })
 
@@ -40,6 +49,8 @@ describe('game', function () {
     it('return 5 after adding 5 frames', function () {
       for (let i = 0; i < 5; i++) {
         game.addFrame()
+        game.currentFrame().addShot(2)
+        game.currentFrame().addShot(2)
       }
       expect(game.frameNumber()).toEqual(5)
     })
@@ -48,6 +59,16 @@ describe('game', function () {
   describe('.getPoints', function () {
     it('starts a game at 0 point', function () {
       expect(game.getPoints()).toEqual(0)
+    })
+  })
+
+  describe('.currentFrame', function () {
+    it('return the last frame', function () {
+      game.addFrame()
+      game.currentFrame().addShot(2)
+      game.currentFrame().addShot(2)
+      game.addFrame()
+      expect(game.currentFrame()).toEqual(game._frames[1])
     })
   })
 })

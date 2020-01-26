@@ -49,4 +49,14 @@ describe("Bowling", function() {
             expect(bowling.getAllScores()).toEqual([9, 8, 5, 4]);
         });
     });
+
+    describe("#getScoresTotalEvery2Elements()", function() {
+        it("returns the array of the total of every 2 elements", function() {
+            bowling.randScore(9);
+            bowling.randScore(8);
+            bowling.randScore(5);
+            bowling.randScore(4);
+            expect(bowling.getScoresTotalEvery2Elements()).toEqual([17, 9]);
+        });
+    });
 });

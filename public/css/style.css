@@ -86,6 +86,17 @@ button:active {
     font-family: Arial;
 }
 
+#cheers-display {
+    font-size: 100px;
+    color: rgb(255, 238, 0);
+    background-color: rgb(5, 1, 1);
+    width: 30%;
+    height: 30%;
+    box-shadow: 0 4px 8px 0 rgba(24, 184, 224, 0.2), 0 6px 20px 0 rgba(255, 35, 35, 0.19);
+    margin: auto;
+    font-family: Arial;
+}
+
 table.scoresheet {
     margin: 0 auto;
     width: 80%;

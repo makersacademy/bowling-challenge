@@ -113,8 +113,7 @@ $(document).ready(function() {
     document.getElementById('bowl').style.visibility = 'hidden';
 
     var previous_pins_down = game.getPinsDown(game.previous_frame,game.previous_roll);
-    // var randomness = Math.floor(Math.random() * (11 - previous_pins_down ));
-    var randomness = 10;
+    var randomness = Math.floor(Math.random() * (11 - previous_pins_down ));
     game.play(randomness);
 
     if (randomness === 0) {

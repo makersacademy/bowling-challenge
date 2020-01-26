@@ -63,6 +63,14 @@ describe("Game", function() {
       expect(game.frames[0].total).toEqual(16)
     })
 
+    it('creates frame with 3 rolls in 10th frame', function() {
+      for (var i = 0; i < 9; i++) {
+        game.newFrame(1)
+      }
+      game.newFrame(5)
+      expect(game.frames[9]).toEqual({roll1: 5, roll2: 0, roll3: 0, total: 5, type: ''})
+    })
+
   })
 
   describe("#updateFrame", function() {
@@ -94,22 +102,42 @@ describe("Game", function() {
     it('allows player to roll again if a strike is thrown in 10th frame', function() {
       for (var i = 0; i < 9; i++) {
         game.newFrame(1)
+        game.updateFrame(1)
       }
       game.newFrame(10)
       game.updateFrame(1)
-  
-      expect(game.frames[game.frames.length -1]).toEqual({roll1: 10, roll2: 1, total: 11, type: 'strike'})
+      expect(game.frames[game.frames.length -1]).toEqual({roll1: 10, roll2: 1, roll3: 0, total: 11, type: 'strike'})
+    })
+
+    it('gives player bonus role if a second strike is thrown in 10th frame', function() {
+      for (var i = 0; i < 9; i++) {
+        game.newFrame(1)
+        game.updateFrame(1)
+      }
+      game.newFrame(10)
+      game.updateFrame(10)
+      game.updateFrame(5)
+      expect(game.frames[game.frames.length -1]).toEqual({roll1: 10, roll2: 10, roll3: 5, total: 25, type: 'strike'})
+    })
+
+    it('gives player bonus role if spare is thrown in 10th frame', function() {
+      for (var i = 0; i < 9; i++) {
+        game.newFrame(1)
+        game.updateFrame(1)
+      }
+      console.log(game.frames)
+      console.log(game.rollCount)
+      game.newFrame(5)
+      console.log(game.frames)
+      console.log(game.rollCount)
+      game.updateFrame(5)
+      console.log(game.frames)
+      console.log(game.rollCount)
+      game.updateFrame(1)
+      expect(game.frames[game.frames.length -1]).toEqual({roll1: 5, roll2: 5, roll3: 1, total: 11, type: 'spare'})
     })
 
   })
-
-
-  // describe('#firstRoll', function() {
-  //   it('Adds new frame', function() {
-  //     game.roll1(5)
-  //     expect(game.updateFrame()).toHaveBeenCalled()
-  //   })
-  // })
 
   it('only allows 10 frames', function() {
     expect(function() {

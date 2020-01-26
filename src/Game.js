@@ -1,6 +1,7 @@
 function Game() {
   this.frames = [];
   this.rollType = "";
+  this.rollCount = 0;
 }
 
 Game.prototype.viewScore = function() {
@@ -20,30 +21,43 @@ Game.prototype.newFrame = function(roll1) {
     throw new Error("Game Over");
   } 
 
-  frame = {
-    roll1: roll1,
-    roll2: 0,
-    total: roll1,
-    type: this._rollType(roll1),
+  if (this.frames.length === 9) {
+    frame = {
+      roll1: roll1,
+      roll2: 0,
+      roll3: 0,
+      total: roll1,
+      type: this._rollType(roll1),
+    }
+  } else {
+    frame = {
+      roll1: roll1,
+      roll2: 0,
+      total: roll1,
+      type: this._rollType(roll1),
+    }
   }
 
   this.frames.push(frame)
   this._addBonus(roll1)
+  this.rollCount += 1
 }
 
-Game.prototype.updateFrame = function(roll2) {
+Game.prototype.updateFrame = function(roll) {
   var currentFrame = this._currentFrame()
 
-  if (this.frames.length === 10 && this._isStrike(currentFrame.roll1)) {
-    return this._updateTenthFrame(roll2)
+
+  if (this.frames.length === 10) {
+    return this._updateTenthFrame(roll)
   }
 
   if (currentFrame.roll1 === 10) {
     throw new Error("Nice try")
   }
   
-  currentFrame.roll2 = roll2
-  currentFrame.total += roll2
+  currentFrame.roll2 = roll
+  currentFrame.total += roll
+  this.rollCount += 1
 
   if (currentFrame.total === 10) {
     currentFrame.type = 'spare'
@@ -52,8 +66,24 @@ Game.prototype.updateFrame = function(roll2) {
 
 Game.prototype._updateTenthFrame = function(roll) {
   var currentFrame = this._currentFrame()
-  currentFrame.roll2 = roll
-  currentFrame.total += roll
+  
+  if (this.rollCount === 19) {
+    currentFrame.roll2 = roll
+    currentFrame.total += roll
+      if (currentFrame.total === 10) {
+        currentFrame.type = 'spare'
+      }
+  } else if (this._isStrike(currentFrame.roll1) && this.rollCount === 20) {
+    currentFrame.roll3 = roll
+    currentFrame.total += roll
+  }
+
+  if (this._isSpare(currentFrame) && this.rollCount === 20) {
+    currentFrame.roll3 = roll
+    currentFrame.total += roll
+  }
+
+  this.rollCount += 1
 }
 
 Game.prototype._addBonus = function(roll) {
@@ -71,6 +101,10 @@ Game.prototype._addBonus = function(roll) {
 
 Game.prototype._isStrike = function(roll) {
   return roll === 10
+}
+
+Game.prototype._isSpare = function(frame) {
+  return frame.total === 10
 }
 
 Game.prototype._rollType = function(roll) {

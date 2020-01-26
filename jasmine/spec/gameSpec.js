@@ -19,6 +19,13 @@ describe('game', function () {
       }
       expect(game._frames.length).toEqual(6)
     })
+
+    it('throw an error if trying to add a 11nth frame', function () {
+      for (let i = 0; i < 10; i++) {
+        game.addFrame()
+      }
+      expect(function () { game.addFrame() }).toThrowError(Error, "This game is over, can't play for ever!")
+    })
   })
 
   describe('.frameNumber', function () {

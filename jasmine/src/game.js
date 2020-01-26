@@ -7,3 +7,7 @@ function Game () {
 Game.prototype.addFrame = function () {
   this._frames.push(new Frame())
 }
+
+Game.prototype.frameNumber = function () {
+  return this._frames.length
+}

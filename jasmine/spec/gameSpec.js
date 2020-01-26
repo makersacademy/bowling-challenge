@@ -20,4 +20,21 @@ describe('game', function () {
       expect(game._frames.length).toEqual(6)
     })
   })
+
+  describe('.frameNumber', function () {
+    it('return 0 if no frames were added', function () {
+      expect(game.frameNumber()).toEqual(0)
+    })
+    it('return 1 as the first frame', function () {
+      game.addFrame()
+      expect(game.frameNumber()).toEqual(1)
+    })
+
+    it('return 5 after adding 5 frames', function () {
+      for (let i = 0; i < 5; i++) {
+        game.addFrame()
+      }
+      expect(game.frameNumber()).toEqual(5)
+    })
+  })
 })

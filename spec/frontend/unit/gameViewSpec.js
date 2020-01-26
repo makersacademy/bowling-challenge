@@ -15,18 +15,48 @@ describe("Game Controller", function() {
     })
   })
 
-  describe(".startGame", function() {
+  describe("#startGame", function() {
     it("Should remove start game button from view", function() {
 
     })
-  })
+    it("Should add option buttons to view", function() {
 
-  describe(".updateFrame", function() {
-    it("Should update frame score", function() {
+    })
+    it("Should wipe the scoreboard", function() {
 
     })
   })
 
+  describe("#updateFrame", function() {
+    it("Should update frame with score", function() {
+
+    })
+    it("Should update overall total with score", function() {
+
+    })
+  })
+
+  describe("#addButtons", function() {
+    it("Should make required buttons visible", function() {
+
+    })
+  })
+
+  describe("#updateScore", function() {
+    it("Should update frame roll section with score", function() {
+
+    })
+  })
+
+
+  describe("#gameComplete", function() {
+    it("Should display play again button", function() {
+
+    })
+    it("Should remove score buttons from view", function() {
+
+    })
+  })
 
 
 

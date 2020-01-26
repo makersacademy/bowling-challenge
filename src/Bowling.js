@@ -2,6 +2,7 @@
 
 function Bowling() {
     this.score = 0;
+    this.scores = [];
 }
 
 Bowling.prototype.getScore = function() {
@@ -10,9 +11,14 @@ Bowling.prototype.getScore = function() {
 
 Bowling.prototype.randScore = function(number = null) {
     if (number === null) {
-        return (this.score = Math.floor(Math.random(10) * 11));
+        this.score = Math.floor(Math.random(10) * 11);
     } //times 11 to get 10 pins
     else {
-        return (this.score = number);
+        this.score = number;
     }
+    return this.scores.push(this.score);
+};
+
+Bowling.prototype.getAllScores = function() {
+    return this.scores;
 };

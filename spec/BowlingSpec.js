@@ -39,4 +39,14 @@ describe("Bowling", function() {
             expect(bowling.getScore()).toEqual(3);
         });
     });
+
+    describe("#getAllScores()", function() {
+        it("returns the array of the scores", function() {
+            bowling.randScore(9);
+            bowling.randScore(8);
+            bowling.randScore(5);
+            bowling.randScore(4);
+            expect(bowling.getAllScores()).toEqual([9, 8, 5, 4]);
+        });
+    });
 });

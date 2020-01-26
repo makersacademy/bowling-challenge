@@ -60,15 +60,15 @@ $(document).ready(function() {
       root.style.setProperty('--background_overlay_url', 'url("images/0.jpg")');
 
       setTimeout(function() {
-
-        root.style.setProperty('--background_overlay_url', 'url("images/10.jpg")');
         
         if (game.isOver() === false) {
           document.getElementById('bowl').style.visibility = 'visible';
+          root.style.setProperty('--background_overlay_url', 'url("images/10.jpg")');
         }
 
         else{
-          $('#bonus').text('');
+          $('#bonus').text('YOU SCORED ' + parseInt(game.getScore()));
+
         }
         
       }, 2800);
@@ -102,18 +102,29 @@ $(document).ready(function() {
       }, 20);
     
     }
+
   }
   
   var hit = new sound("audio/hit.mp3");
   var miss = new sound("audio/miss.mp3");
 
+  
+
 
   $('#bowl').click(function() { 
     
     document.getElementById('bowl').style.visibility = 'hidden';
+    $('#bonus').text('');
 
     var previous_pins_down = game.getPinsDown(game.previous_frame,game.previous_roll);
+    if (game.roll === 1) {
+    var randomness = Math.floor(Math.random() * 11);
+    }
+    else {
     var randomness = Math.floor(Math.random() * (11 - previous_pins_down ));
+    }
+    
+  
     game.play(randomness);
 
     if (randomness === 0) {
@@ -132,17 +143,18 @@ $(document).ready(function() {
       update_scores(game);
       update_images(game);
       
-      if (game.getPinsDownFrame(10) === 10 || game.getPinsDownFrame(10) === 20) {
+      if (game.getPinsDown(10,1) === 10 || game.getPinsDownFrame(10) === 20) {
 
-        $('#bonus').text('BONUS GO!');
+        setTimeout(function() {
 
+          if (game.isOver() === false)
+          $('#bonus').text('BONUS GO!');
+
+        }, 2300);
       }
 
     }, 2300);
 
-    
-
-  
     
 
 

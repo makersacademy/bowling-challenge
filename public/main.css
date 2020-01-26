@@ -133,6 +133,10 @@ button:hover {
   text-align: center;
 }
 
+.chartHolder {
+  padding: 5em, 70px, 5em;
+}
+
 div {
   border-radius: 2em;
   background-color: #f6fcfc;
@@ -151,6 +155,15 @@ div {
   padding: 2%;
 }
 
-.chartHolder {
-  padding: 5em, 70px, 5em;
+/* For screens 1200px wide or less, columns will stack */
+@media screen and (max-width: 1200px) {
+  .left-column {
+    width: 96%;
+    margin-bottom: 2em;
+  }
+
+  .right-column {
+    width: 96%;
+    float: left;
+  }
 }

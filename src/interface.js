@@ -20,6 +20,7 @@ $(document).ready(function() {
     }
   }
 
+
   function update_scores(game) {
 
     $('#F1-R1').text(game.getPinsDown(1,1));
@@ -45,7 +46,6 @@ $(document).ready(function() {
 
     $('#F'+ game.previous_frame + '-Score').text(game.getScore());
 
-
   }
 
   function update_images(game) {
@@ -55,19 +55,40 @@ $(document).ready(function() {
     var pins_down = game.getPinsDownFrame(game.previous_frame);
     var url = 'url("images/' + (10 - pins_down) + '.jpg")';
 
-    if (game.isPinResetRequired() === true) {
-      root.style.setProperty('--background_overlay_url', url);
+    if (game.isPinResetRequired() === true && game.previous_frame === 10) {
+
+      root.style.setProperty('--background_overlay_url', 'url("images/0.jpg")');
+
       setTimeout(function() {
 
         root.style.setProperty('--background_overlay_url', 'url("images/10.jpg")');
+        
+        if (game.isOver() === false) {
+          document.getElementById('bowl').style.visibility = 'visible';
+        }
 
-      }, 2000);
-      
+        else{
+          $('#bonus').text('');
+        }
+        
+      }, 2800);
+
+    }
+
+    else if (game.isPinResetRequired() === true) {
+
+      root.style.setProperty('--background_overlay_url', url);
+
+      setTimeout(function() {
+
+        root.style.setProperty('--background_overlay_url', 'url("images/10.jpg")');
+        document.getElementById('bowl').style.visibility = 'visible';
+
+      }, 2800);
       
     }
  
     else {
-      
       
       var pins_down_1st = game.getPinsDown(game.previous_frame,1);
       var url_background = 'url("images/' + (10 - pins_down_1st) + '.jpg")';
@@ -76,8 +97,9 @@ $(document).ready(function() {
       setTimeout(function() {
 
         root.style.setProperty('--background_overlay_url', url);
+        document.getElementById('bowl').style.visibility = 'visible';
 
-      }, 50);
+      }, 20);
     
     }
   }
@@ -88,8 +110,11 @@ $(document).ready(function() {
 
   $('#bowl').click(function() { 
     
+    document.getElementById('bowl').style.visibility = 'hidden';
+
     var previous_pins_down = game.getPinsDown(game.previous_frame,game.previous_roll);
-    var randomness = Math.floor(Math.random() * (11 - previous_pins_down ));
+    // var randomness = Math.floor(Math.random() * (11 - previous_pins_down ));
+    var randomness = 10;
     game.play(randomness);
 
     if (randomness === 0) {
@@ -107,8 +132,14 @@ $(document).ready(function() {
 
       update_scores(game);
       update_images(game);
+      
+      if (game.getPinsDownFrame(10) === 10 || game.getPinsDownFrame(10) === 20) {
 
-    }, 1950);
+        $('#bonus').text('BONUS GO!');
+
+      }
+
+    }, 2300);
 
     
 

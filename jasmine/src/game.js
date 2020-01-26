@@ -2,6 +2,7 @@
 
 function Game () {
   this._frames = []
+  this._points = 0
 }
 
 Game.prototype.addFrame = function () {
@@ -12,4 +13,8 @@ Game.prototype.addFrame = function () {
 
 Game.prototype.frameNumber = function () {
   return this._frames.length
+}
+
+Game.prototype.getPoints = function () {
+  return this._points
 }

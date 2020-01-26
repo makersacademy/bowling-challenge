@@ -44,4 +44,10 @@ describe('game', function () {
       expect(game.frameNumber()).toEqual(5)
     })
   })
+
+  describe('.getPoints', function () {
+    it('starts a game at 0 point', function () {
+      expect(game.getPoints()).toEqual(0)
+    })
+  })
 })

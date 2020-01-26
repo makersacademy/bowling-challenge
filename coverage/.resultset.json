@@ -1,0 +1,41 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/cpcwood/OneDrive/Documents/Coding/Projects/bowling-challenge/app/controllers/app_controller.rb": [
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        2,
+        4,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null
+      ],
+      "/Users/cpcwood/OneDrive/Documents/Coding/Projects/bowling-challenge/spec/backend/features/homepage_spec.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1580048291
+  }
+}

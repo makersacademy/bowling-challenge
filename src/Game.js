@@ -22,20 +22,9 @@ Game.prototype.newFrame = function(roll1) {
   } 
 
   if (this.frames.length === 9) {
-    frame = {
-      roll1: roll1,
-      roll2: 0,
-      roll3: 0,
-      total: roll1,
-      type: this._rollType(roll1),
-    }
+    var frame = new Frame(roll1, 10).frame
   } else {
-    frame = {
-      roll1: roll1,
-      roll2: 0,
-      total: roll1,
-      type: this._rollType(roll1),
-    }
+    var frame = new Frame(roll1).frame
   }
 
   this.frames.push(frame)
@@ -114,6 +103,8 @@ Game.prototype._isSpare = function(frame) {
 Game.prototype._rollType = function(roll) {
   if (this._isStrike(roll)) {
     return "strike"
+  } else if (this._currentFrame.roll1 + roll) {
+    return "spare"
   } else {
     return ""
   }

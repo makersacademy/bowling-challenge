@@ -1,60 +1,70 @@
 $(document).ready(function(){
-  var firstLoad
-  var thermostat = new Thermostat()
-  updateCurrentTemperature() 
-  $(".minTemperature").text(thermostat.minimumTemperature)
-  $(".maxTemperature").text(thermostat.maximumTemperature)
-  if (thermostat.powerSavingMode === true ) {
-    $(".powerSaveMode").text("power save on")
-  } else {
-    $(".powerSaveMode").text("power save off")
-  }
+  var bowlingRules = new BowlingRules()
+  var scoreArray
+  var role = 1
+  turnTaken = false
+ 
+  $("#0").click(function(){
+    var scoreArray = bowlingRules.takeTurn(role, 0);
+    turnTaken = true
+  });
+  $("#1").click(function(){
+    var scoreArray = bowlingRules.takeTurn(role, 1);
+    var turnTaken = true
+  });
+  $("#2").click(function(){
+    var scoreArray = bowlingRules.takeTurn(role, 2);
+    turnTaken = true
+  });
+  $("#3").click(function(){
+    var scoreArray = bowlingRules.takeTurn(role, 3);
+    var turnTaken = true
+  });
+  $("#4").click(function(){
+    var scoreArray = bowlingRules.takeTurn(role, 4);
+    var turnTaken = true
+  });
+  $("#5").click(function(){
+    var scoreArray = bowlingRules.takeTurn(role, 5);
+    var turnTaken = true
+  });
+  $("#6").click(function(){
+    var scoreArray = bowlingRules.takeTurn(role, 6);
+    turnTaken = true
+  });
+  $("#7").click(function(){
+    var scoreArray = bowlingRules.takeTurn(role, 7);
+    turnTaken = true
+  });
+  $("#8").click(function(){
+    var scoreArray = bowlingRules.takeTurn(role, 8);
+    turnTaken = true
+  });  
+  $("#9").click(function(){
+    var scoreArray = bowlingRules.takeTurn(role, 9);
+    turnTaken = true
+  });  
+  $("#10").click(function(){
+    var scoreArray = bowlingRules.takeTurn(role, 10);
+    turnTaken = true
+  });
 
-  $("#increase").click(function(){
-    thermostat.increase();
-   updateCurrentTemperature() 
-  });
-  $("#decrease").click(function(){
-    thermostat.decrease();
-   updateCurrentTemperature() 
-  });
-  $("#reset").click(function(){
-    thermostat.reset();
-   updateCurrentTemperature() 
-  });
-  $("#PSM").click(function(){
-    console.log("I am clicking PSM button")
-    thermostat.togglePowerSavingMode();
-    $(".maxTemperature").text(thermostat.maximumTemperature)
-    updateCurrentTemperature()
-    if (thermostat.powerSavingMode === true ) {
-      $(".powerSaveMode").text("power save on")
-    } else {
-      $(".powerSaveMode").text("power save off")
-    }
-  });
-  function updateCurrentTemperature() {
-    if (firstLoad == null){
-      firstLoad = "No";
-      var loadTemp = $.jStorage.get("Temp");
-      if (loadTemp > 0) {
-        console.log("am I loading anything")
-        thermostat.currentTemperature = loadTemp
+  if(turnTaken = true){
+    turnTaken = false
+    for(let i = 1; i < 12; i++){
+      roleid = "#role" + String(role)
+      roleid2 = "#role" + String(role +1)
+      scoreid = "#score" + String(role)
+      console.log(scoreArray)
+      if (scoreArray[i] !== 'undefined'){
+        console.log(scoreArray)
+        $(roleid).text = scoreArray.turnHash.displayPins1stRole
+        $(roleid).text = scoreArray.turnHash.displayPins2ndRole
+        $(roleid).text = scoreArray.turnHash.displayScore
+        nextRole = scoreArray.turnHash.nextTurn
       }
+    role = nextRole
     }
-    $(".currentTemp").text( thermostat.currentTemperature)
-    $(".currentTemp").attr("id", thermostat.currentEnergyUsage());
-    $.jStorage.set("Temp", thermostat.currentTemperature);
-  };
-
-  $("#weatherButton").click(function () {
-    $.ajax({
-      url: "https://api.openweathermap.org/data/2.5/weather?id=2643743&appid=4e59427e3a5a45f03bff561097f5d8c6&units=metric",
-      dataType: "json",
-    })
-    .done(function (data) {
-      $("#message").text(data.main.temp);
-    })
-  });
+  }
 });
 

@@ -1,16 +1,9 @@
 $(document).ready(function() {
   var game = new Game();
   var frameCount = 0;
-  var rollNumber =0;
-  // $('#frames').text(game.viewFrames())
+
   $('#total-score').text(game.viewScore())
 
-  // $('#new-frame').on('click', function() {
-  //   var roll = Number($("#roll1").val())
-  //   game.newFrame(roll)
-  //   updateScore()
-  //   updateFrames()
-  // })
   $('#new-frame').on('click', function() {
     var roll = Number($("#roll1").val())
     game.newFrame(roll)

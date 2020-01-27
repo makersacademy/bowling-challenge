@@ -91,7 +91,6 @@ Game.prototype._addBonus = function(roll) {
   }
 }
 
-
 Game.prototype._isStrike = function(roll) {
   return roll === 10
 }

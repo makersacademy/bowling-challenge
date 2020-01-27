@@ -1,10 +1,8 @@
 describe("Game", function() {
   var game;
-  // var frame;
 
   beforeEach(function() {
     game = new Game();
-    // frame = new Frame();
   })
 
   describe('#viewScore', function() {
@@ -20,7 +18,6 @@ describe("Game", function() {
       expect(game.viewScore()).toEqual(12)
     })
   })
-
 
   describe('#viewFrames', function() {
     it('starts with empty array of frames', function() {

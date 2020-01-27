@@ -3,7 +3,7 @@ function Frame() {
   this.struck = false
   this.spared = false
   this.array = []
-  this.score = this.array.reduce
+  this.score = 0
   this.tenthFrame = false
 }
 
@@ -108,6 +108,7 @@ Game.prototype.gameOn = function(pins) {
     throw new Error('Game has finished')
   } else {
     this.play(pins)
+    this.frames[this.frames.length - 1].sum()
   }
 }
 
@@ -168,3 +169,17 @@ Game.prototype.bonusRoll = function(pins) {
   }
 }
 
+Frame.prototype.sum = function() {
+  function myFunc(total, num) {
+    return total + num;
+  }
+  arr = this.array
+  
+  if (this.struck === true) {
+    this.score = (arr.reduce(myFunc))*2
+  } else if (this.struck === true) {
+    this.score = (arr.reduce(myFunc))+(this.array[0])
+  } else {
+    this.score = (this.array.length > 0) ? (arr.reduce(myFunc)) : (0)
+  }
+}

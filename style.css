@@ -34,8 +34,8 @@ table {
   empty-cells: show;
   background-color: rgba(0,0,0,0.5);
   position: absolute;
-  top: 290px;
-  left: 30px;
+  top: 40%;
+  left: 3%;
 }
 
 td, th {
@@ -54,8 +54,8 @@ tr {
 button{
   font-size: 20px;
   position: absolute;
-  top: 620px;
-  left: 640px;
+  top: 78%;
+  left: 46%;
   display:inline-block;
   background-color:#f14ebd;
   padding:0.3em 1.2em;
@@ -82,8 +82,8 @@ h1 {
   font-weight:600;
   color:#FFFFFF;
   position: absolute;
-  top: 500px;
-  left: 620px;
+  top: 65%;
+  left: 46%;
 }
 
 

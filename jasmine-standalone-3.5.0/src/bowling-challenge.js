@@ -1,24 +1,24 @@
-// ATTEMPT 1
+// // ATTEMPT 1
 
-function Scorer(){
-  this.tally = (0);  
-  this.frame = (1);
-};
+// function Scorer(){
+//   this.tally = (0);  
+//   this.frame = (1);
+// };
 
-Scorer.prototype.addFrame = function(roll1, roll2) {
-  if (this.frame <= (10)) {
-    if (this.strike) { this.tally += (roll1 + roll2) };
-    if (this.spare) { this.tally += (roll1) };
-    this.tally += (roll1 + roll2);
-    if (roll1 === (10)) { (this.strike = true) }
-    else { (this.strike = false) };
-    if ((this.strike === false) && (roll1 + roll2 === 10)) {
-      this.spare = true };
-    this.frame += (1);
-   } else {
-     return "Final Score: " + (this.tally);
-   };
-  };
+// Scorer.prototype.addFrame = function(roll1, roll2) {
+//   if (this.frame <= (10)) {
+//     if (this.strike) { this.tally += (roll1 + roll2) };
+//     if (this.spare) { this.tally += (roll1) };
+//     this.tally += (roll1 + roll2);
+//     if (roll1 === (10)) { (this.strike = true) }
+//     else { (this.strike = false) };
+//     if ((this.strike === false) && (roll1 + roll2 === 10)) {
+//       this.spare = true };
+//     this.frame += (1);
+//    } else {
+//      return "Final Score: " + (this.tally);
+//    };
+//   };
 
 // ATTEMPT 2
 
@@ -33,7 +33,7 @@ function Scorecard(){
 };
 
 Scorecard.prototype.roll1 = function(pins) {
-
+  this.frameTally = pins;
   if (this.spare === (true) || this.strike === (true)) { 
     this.frames[this.frames.length-1] += pins;
     this.spare = false;
@@ -47,7 +47,7 @@ Scorecard.prototype.roll1 = function(pins) {
     this.frames.push(this.frameTally);
   } else {
     this.rolls.push(pins);
-  } this.frameTally += pins;
+  };
 
 Scorecard.prototype.roll2 = function(pins) {
   this.frameTally += pins;

@@ -113,6 +113,7 @@ describe("Game", function() {
         game.newFrame(1)
         game.updateFrame(1)
       }
+
       game.newFrame(10)
       game.updateFrame(10)
       game.updateFrame(5)

@@ -16,19 +16,15 @@ Game.prototype.viewFrames = function() {
   return this.frames;
 }
 
-Game.prototype.newFrame = function(roll1) {
-  if (this.frames.length === 10) {
+Game.prototype.newFrame = function(roll) {
+  if (this._isTenthFrame()) {
     throw new Error("Game Over");
   } 
 
-  if (this.frames.length === 9) {
-    var frame = new Frame(roll1, 10).frame
-  } else {
-    var frame = new Frame(roll1).frame
-  }
+  // var frame = new Frame(roll, (this.frames.length + 1)).frame
 
-  this.frames.push(frame)
-  this._addBonus(roll1)
+  this.frames.push(new Frame(roll, (this.frames.length + 1)).frame)
+  this._addBonus(roll)
   this.rollCount += 1
 }
 
@@ -36,7 +32,7 @@ Game.prototype.updateFrame = function(roll) {
   var currentFrame = this._currentFrame()
 
 
-  if (this.frames.length === 10) {
+  if (this._isTenthFrame()) {
     return this._updateTenthFrame(roll)
   }
 
@@ -129,4 +125,8 @@ Game.prototype._twoFramesPrior = function() {
   } else {
     return frame
   }
+}
+
+Game.prototype._isTenthFrame = function () {
+  return this.frames.length === 10
 }

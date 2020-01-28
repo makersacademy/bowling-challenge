@@ -21,8 +21,6 @@ Game.prototype.newFrame = function(roll) {
     throw new Error("Game Over");
   } 
 
-  // var frame = new Frame(roll, (this.frames.length + 1)).frame
-
   this.frames.push(new Frame(roll, (this.frames.length + 1)).frame)
   this._addBonus(roll)
   this.rollCount += 1

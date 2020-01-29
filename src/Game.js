@@ -49,6 +49,8 @@ Game.prototype.updateFrame = function(roll) {
 
 Game.prototype._updateTenthFrame = function(roll) {
   var currentFrame = this._currentFrame()
+  var isStrike = this._isStrike(currentFrame.roll1)
+  var isSpare = this._isSpare(currentFrame)
   
   if (this.rollCount === 19) {
     currentFrame.roll2 = roll
@@ -56,12 +58,8 @@ Game.prototype._updateTenthFrame = function(roll) {
       if (currentFrame.total === 10) {
         currentFrame.type = 'spare'
       }
-  } else if (this._isStrike(currentFrame.roll1) && this.rollCount === 20) {
-    currentFrame.roll3 = roll
-    currentFrame.total += roll
   }
-
-  if (this._isSpare(currentFrame) && this.rollCount === 20) {
+  if (this.rollCount === 20 && (isStrike || isSpare)) {
     currentFrame.roll3 = roll
     currentFrame.total += roll
   }

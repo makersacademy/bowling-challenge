@@ -64,4 +64,11 @@ describe('Bowling', function(){
     })
   });
 
+  it('can create a new frame once the previous one is finished', function() {
+    spyOn(bowling, '_randomRoll').and.returnValue(5);
+    bowling.roll();
+    bowling.updateScoreSecond();
+    expect(bowling.currentFrame()).toEqual(2);
+  });
+
 });

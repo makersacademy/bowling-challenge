@@ -26,6 +26,11 @@ To complete this simplified first-attempt challenges, the following user stories
   * So that I can keep progress of my game;
   * I need to know what frame and roll I currently play.
 
+###User story 3:
+  * As a player;
+  * So that I can play the whole game;
+  * I need to be able to play all 10 frames.
+
 
 
 

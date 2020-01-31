@@ -20,6 +20,13 @@ class Bowling{
     this._currentRoll = 0;
   }
 
+  updateScoreSecond() {
+    this.frames[(this.currentFrame()-1)].rollTwo = this._currentRoll;
+    this.frames[(this.currentFrame()-1)].score += this.frames[(this.currentFrame()-1)].rollTwo;
+    this.totalScore = this.frames[(this.currentFrame()-1)].score;
+    this._currentRoll = 0;
+  }
+
   currentFrame(){
     return this.frames.length
   }

@@ -163,4 +163,46 @@ it('calculates spares correctly', function(){
   expect(bowling.score()).toEqual(12);
 
 Error: expected 11 to equal 12
-})Implementation:
+2)Implementation:
+score(){
+  let rollIndex = 0
+  //rollindex will either be 1st roll or 2nd roll
+  let totalScore = 0
+  //totalscore will be the total score for all the frames
+  for (var frameIndex = 0; frameIndex < 10; frameIndex ++) {
+    var rollScore = this.total[rollIndex] + this.total[rollIndex + 1]
+    //this will add the first roll and second roll to the total score for each frame
+      if (rollScore === 10){
+      totalScore = totalScore + rollScore + this.total[rollIndex + 2]
+      } else {
+        totalScore += rollScore
+      }
+    rollIndex += 2
+  }
+  return totalScore
+};
+};
+3) Refractoring (since have long if/else statements)
+
+isSpare(rollScore){
+  return rollScore === 10; ( make sure to include return so true/false statement is evaluated)
+  }
+
+and insert it:
+if (this.isSpare(rollScore)) { (make sure to specify this so computer knows where this method is coming from)
+
+# Fourth User Story
+As a bowling player
+So that I know when I have hit a strike
+I would like to be able to see the correct score after I hit a strike
+1) Spec Test
+it('calculates strikes correctly', function(){
+  bowling.roll(10)
+  bowling.roll(1)
+  bowling.roll(1)
+  for(var i = 0; i < 16; i++) {
+    bowling.roll(0)
+  }
+  expect(bowling.score()).toEqual(12);
+
+})

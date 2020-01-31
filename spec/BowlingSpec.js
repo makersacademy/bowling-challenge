@@ -32,4 +32,18 @@ describe ('Bowling',function(){
 
   })
 
+  it('calculates strikes correctly', function(){
+    bowling.roll(10)
+    bowling.roll(1)
+    bowling.roll(1)
+    for(var i = 0; i < 16; i++) {
+      bowling.roll(0)
+    }
+    expect(bowling.score()).toEqual(12);
+
+  })
+
+  
+
+
 });

@@ -14,6 +14,16 @@ class scoreCard {
     this.empty();
   }
 
+  totalScore() {
+    let sum = 0;
+
+    for (let i = 0; i < this.score.length; i++) {
+      for (let j = 0; j < this.score[i].length; j++) {
+        sum += this.score[i][j];
+      }
+    }
+    return sum;
+  }
 
   empty() {
     this.frame = [];

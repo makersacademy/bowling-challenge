@@ -36,10 +36,10 @@ describe('scorecard', function() {
 
   describe('total', function() {
     it('returns total score after final frame', function() {
-      for (var i = 0; i < 11; i++) {
+      for (var i = 0; i < 10; i++) {
         scorecard.points(2, 3);
       }
-      expect(scorecard.totalscore).toEqual(50);
+      expect(scorecard.totalScore()).toEqual(50);
     });
   });
 });

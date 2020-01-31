@@ -2,6 +2,27 @@
 Bowling Challenge
 =================
 
+##Set-up and approach
+
+To complete the challenge, I have decided to start with a simplified scoring method as follows:
+  * There are 10 frames in the game;
+  * Each frame has 2 rolls:
+  * A player rolls a ball on each roll;
+  * A player scores between 0 and 10 on each roll;
+  * If a player scores 10 on the first roll, they move to the next frame;
+  * Total score is calculated (i.e. no special rules for 10th frame, spares or strikes so far).
+
+When finished, the game will be accessible from a webpage which will contain a scoring card, and a "Roll" button which a player presses to roll a ball (as an aside, I'm not really grasping what "DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS." means - surely, if the user puts any desired number of pins knocked on each roll, it's not much fun to play? Therefore, when a player hits the "Roll" button, the resulting score for the roll will be randomly generated). Also, the webpage will contain a tableau with the current frame, roll and current score displayed.
+
+To complete this simplified first-attempt challenges, the following user stories are devised:
+
+###User story 1:
+  * As a player;
+  * So that I can enjoy the game;
+  * I need to roll a ball and see how many pins I hit.
+
+
+
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

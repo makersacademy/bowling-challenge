@@ -11,34 +11,8 @@ describe('Bowling', function(){
     expect(bowling.totalScore).toEqual(0);
   });
 
-  it('allows to roll a ball and return a number of pins hit', function(){
-    spyOn(Math, 'random').and.returnValue(0.5);
-    bowling.roll();
-    bowling.updateScoreFirst();
-    expect(bowling.totalScore).not.toEqual(0);
-  });
-
   it('shows what frame is played', function(){
     expect(bowling.currentFrame()).toEqual(1);
-  });
-
-  it('shows score on first roll in given frame', function(){
-    expect(bowling.currentFrameRollOne()).toEqual(0);
-  })
-
-  it('shows score on second roll only in given frame', function() {
-    expect(bowling.currentFrameRollTwo()).toEqual(0);
-  })
-
-  it('shows total score in gived frame', function(){
-    expect(bowling.currentFrameScore()).toEqual(0);
-  })
-
-  it('resets current roll to zero once score is updated', function() {
-    spyOn(bowling, '_randomRoll').and.returnValue(8);
-    bowling.roll();
-    bowling.updateScoreFirst();
-    expect(bowling._currentRoll).toEqual(0);
   });
 
   describe('when updating score', function() {
@@ -48,13 +22,16 @@ describe('Bowling', function(){
       bowling.updateScoreFirst();
     })
 
-    it('updates frame and total score when ball is rolled on first roll', function() {
-      expect(bowling.currentFrameRollOne()).toEqual(3);
-      expect(bowling.currentFrameScore()).toEqual(3);
-      expect(bowling.totalScore).toEqual(3);
+    it('resets current roll to zero once score is updated', function() {
+      expect(bowling._currentRoll).toEqual(0);
     });
 
-    it('updates score after second roll - ignoring strike at the moment', function() {
+    it('updates frame score when ball is rolled on first roll', function() {
+      expect(bowling.currentFrameRollOne()).toEqual(3);
+      expect(bowling.currentFrameScore()).toEqual(3);
+    });
+
+    it('updates frame and total score after second roll - ignoring strike at the moment', function() {
       bowling._randomRoll.and.returnValue(5);
       bowling.roll();
       bowling.updateScoreSecond();
@@ -110,10 +87,21 @@ describe('Bowling', function(){
       bowling._randomRoll.and.returnValue(7);
       bowling.roll();
       bowling.updateScoreSecond();
+      bowling.updateGame();
+      bowling._randomRoll.and.returnValue(1);
+      bowling.roll();
+      bowling.updateScoreFirst();
+      bowling._randomRoll.and.returnValue(2);
+      bowling.roll();
+      bowling.updateScoreSecond();
     });
 
-    it('registers when a spare is hit', function() {
-      expect(bowling.isSpare()).toBe(true);
+    it('adds bonus points for a spare', function() {
+      expect(bowling.totalScore).toEqual(14);
+    });
+
+    it('updates frame score for perevious frame with bonus points', function() {
+      expect(bowling.frameScore(1)).toEqual(14);
     });
   });
 

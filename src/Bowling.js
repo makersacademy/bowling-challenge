@@ -17,7 +17,6 @@ class Bowling{
   updateScoreFirst() {
     this.frames[(this.currentFrame()-1)].rollOne = this._currentRoll;
     this.frames[(this.currentFrame()-1)].score = this.frames[(this.currentFrame()-1)].rollOne;
-    this.totalScore = this._calculateTotalScore();
     this._currentRoll = 0;
   }
 
@@ -60,6 +59,9 @@ class Bowling{
     var score = 0;
     for(var i = 0; i < this._frameCounter; i++) {
       score += this.frames[i].score;
+      if(i> 0 && this.frames[i-1].score ===10) {
+        score += this.frames[i].rollOne;
+      }
     }
     return score;
   }

@@ -41,7 +41,7 @@ describe('Bowling', function(){
     expect(bowling._currentRoll).toEqual(0);
   });
 
-  describe('when updating score with one frame only', function() {
+  describe('when updating score', function() {
     beforeEach(function() {
       spyOn(bowling, '_randomRoll').and.returnValue(3);
       bowling.roll();
@@ -62,13 +62,44 @@ describe('Bowling', function(){
       expect(bowling.currentFrameScore()).toEqual(8);
       expect(bowling.totalScore).toEqual(8);
     })
+
+    it('can play several frames', function() {
+      bowling._randomRoll.and.returnValue(5);
+      bowling.roll();
+      bowling.updateScoreSecond();
+      bowling.updateGame();
+      bowling._randomRoll.and.returnValue(6);
+      bowling.roll();
+      bowling.updateScoreFirst();
+      expect(bowling.currentFrameScore()).toEqual(6);
+      bowling._randomRoll.and.returnValue(7);
+      bowling.roll();
+      bowling.updateScoreSecond();
+      expect(bowling.currentFrameScore()).toEqual(13);
+      expect(bowling.totalScore).toEqual(21);
+    });
   });
 
   it('can create a new frame once the previous one is finished', function() {
     spyOn(bowling, '_randomRoll').and.returnValue(5);
     bowling.roll();
     bowling.updateScoreSecond();
+    bowling.updateGame();
     expect(bowling.currentFrame()).toEqual(2);
+  });
+
+  it('creates another frame object with _newFrame method', function() {
+    bowling._newFrame();
+    expect(bowling.frames[1].rollOne).toEqual(0);
+    expect(bowling.frames[1].rollTwo).toEqual(0);
+    expect(bowling.frames[1].score).toEqual(0);
+  });
+
+  it('updates frame counter once previous frame completed', function() {
+    spyOn(bowling, '_randomRoll').and.returnValue(5);
+    bowling.roll();
+    bowling.updateScoreSecond();
+    expect(bowling._frameCounter).toEqual(2);
   });
 
 });

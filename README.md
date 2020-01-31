@@ -88,3 +88,47 @@ As a bowling player
 So that I know when I didn't hit any pins
 I would like to be able to see score 0 after 10 frames
 1) Spec Test:
+'use strict';
+
+describe ('Bowling',function(){
+  var bowling;
+
+  beforeEach(function(){
+    bowling = new Bowling();
+  });
+
+  it ('gives score 0 when 0 pins are hit after 10 frames', function(){
+    for ( i=0; i <= 20; i++ ){
+      bowling.roll(0);
+    }
+  expect(bowling.score()).toEqual(0);
+  });
+});
+
+ERROR: Bowling is not defined
+2) Implementation
+'use strict';
+
+class Bowling{
+
+  roll(){
+
+  }
+
+  score(){
+    return 0;
+  }
+}
+
+# Second User Story
+s a bowling player
+So that I know when I hit 1 pin each time
+I would like to be able to see score 20 after 10 times
+1) Spec Test:
+it('gives score 20 when 1 pin is hit each frame', function(){
+  for(var i = 0; i <= 20; i++) {
+    bowling.roll(1)
+  }
+expect(bowling.score()).toEqual(20)
+})
+2) Implementation 

@@ -38,6 +38,14 @@ To complete this simplified first-attempt challenges, the following user stories
 
 A note: Before moving to more complicated scoring, I would like to create a dynamically updated webpage with a score card, tableau and a "Roll" button so that a game can be played.
 
+While developing the interface, I realised I need additional functionality to keep track of the frames to update the score card. Instead, I have decided to return to developing the scoring model.
+
+
+###User story 5:
+  * As a player;
+  * So that I can get bonus points for spares;
+  * I need to add these bonus points to my total score.
+
 
 
 

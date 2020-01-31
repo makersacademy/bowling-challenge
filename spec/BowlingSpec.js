@@ -102,4 +102,20 @@ describe('Bowling', function(){
     expect(bowling._frameCounter).toEqual(2);
   });
 
+  describe('when playing a game counting spares', function(){
+    beforeEach(function() {
+      spyOn(bowling, '_randomRoll').and.returnValue(3);
+      bowling.roll();
+      bowling.updateScoreFirst();
+      bowling._randomRoll.and.returnValue(7);
+      bowling.roll();
+      bowling.updateScoreSecond();
+      bowling.updateGame();
+    });
+
+    it('registeres when a spare was hit', function() {
+      expect(bowling.isSpare()).toBe(true);
+    });
+  });
+
 });

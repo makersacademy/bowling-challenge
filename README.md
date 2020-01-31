@@ -75,3 +75,16 @@ In code review we'll be hoping to see:
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+
+
+## Bowling Challenge Approach
+
+# Setup
+1) Download Jasmine file and remove files that aren't needed
+2) Add Bowling.js & BowlingSpec.js files to Specrunner
+
+# First User Story
+As a bowling player
+So that I know when I didn't hit any pins
+I would like to be able to see score 0 after 10 frames
+1) Spec Test:

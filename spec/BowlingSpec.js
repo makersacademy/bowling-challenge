@@ -43,4 +43,11 @@ describe('Bowling', function(){
     expect(bowling.totalScore).toEqual(8);
   });
 
+  it('resets current roll to zero once score is updated', function() {
+    spyOn(bowling, '_randomRoll').and.returnValue(8);
+    bowling.roll();
+    bowling.updateScoreFirst();
+    expect(bowling._currentRoll).toEqual(0);
+  });
+
 });

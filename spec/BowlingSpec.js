@@ -24,4 +24,12 @@ describe('Bowling', function(){
   it('shows score on first roll in given frame', function(){
     expect(bowling.currentFrameRollOne()).toEqual(0);
   })
+
+  it('shows score on second roll only in given frame', function() {
+    expect(bowling.currentFrameRollTwo()).toEqual(0);
+  })
+
+  it('shows total score in gived frame', function(){
+    expect(bowling.currentFrameScore()).toEqual(0);
+  })
 });

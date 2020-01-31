@@ -16,6 +16,10 @@ class Bowling{
     return this.frames.length
   }
 
+  currentFrameRollOne(){
+    return (this.frames[(this.currentFrame()-1)].rollOne);
+  }
+
 
   _randomRoll(){
   return Math.floor(Math.random() * 11);

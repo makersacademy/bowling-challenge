@@ -2,6 +2,18 @@
 Bowling Challenge
 =================
 
+##Approaches to learning a new language
+
+When learning JavaScript, I have relied on the following approaches:
+
+  * Started with the recommended resources (resources for the Module on the Makers apprenticeship course, links on Slack);
+  * Knowing the key concepts of the language previously studied (such as what are variables, methods, objects, data types etc.), I have tried to work out what their equivalents are in the new language;
+  * Attempting simple exercises (Exercism, ES6 tutorial, W3 Schools) helped me to get familiar with the language and writing expressions;
+  * Translating FizzBuzz code from Ruby into JavaScript trying to remember the syntax without relying on reference materials;
+  * Reading Makers pills articles (very useful, especially about functions) and working through the afternoon challenge;
+  * Trying to understand code written in JavaScript (Count exercise);
+  * To check whether I have retained any knowledge, I have tried to implement the Friday challenge (Bowling) relying mostly on my memory and only going back to the reference materials when stuck.
+
 ##Set-up and approach
 
 To complete the challenge, I have decided to start with a simplified scoring method as follows:

@@ -110,10 +110,9 @@ describe('Bowling', function(){
       bowling._randomRoll.and.returnValue(7);
       bowling.roll();
       bowling.updateScoreSecond();
-      bowling.updateGame();
     });
 
-    it('registeres when a spare was hit', function() {
+    it('registers when a spare is hit', function() {
       expect(bowling.isSpare()).toBe(true);
     });
   });

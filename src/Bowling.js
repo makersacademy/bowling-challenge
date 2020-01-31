@@ -50,6 +50,12 @@ class Bowling{
     return (this.frames[(this.currentFrame()-1)].score);
   }
 
+  isSpare() {
+    if(this.currentFrameScore() === 10) {
+      return true
+    }
+  }
+
   _calculateTotalScore() {
     var score = 0;
     for(var i = 0; i < this._frameCounter; i++) {

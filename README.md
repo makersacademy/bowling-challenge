@@ -31,6 +31,13 @@ To complete this simplified first-attempt challenges, the following user stories
   * So that I can play the whole game;
   * I need to be able to play all 10 frames.
 
+###User story 4:
+  * As a player;
+  * So that I can visualise my game;
+  * I need to play a game and see my scorecard on a webpage.
+
+A note: Before moving to more complicated scoring, I would like to create a dynamically updated webpage with a score card, tableau and a "Roll" button so that a game can be played.
+
 
 
 

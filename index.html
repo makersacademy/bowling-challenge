@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Bowling game</title>
+    <style media="screen">
+      table, th, td {
+        padding: 10px;
+        border: 1px solid gray;
+        border-collapse: collapse;
+        text-align: center;
+      }
+    </style>
+    <script type="text/javascript" src="src/Bowling.js"></script>
+    <script type="text/javascript" src="interface.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  </head>
+  <body>
+    <h1>Bowling Game</h1>
+    <h2 id="current-frame"></h2>
+    <br>
+    <h2 id="current-roll"></h2>
+    <button type="button" id="roll">Roll</button>
+    <br><br>
+    <div class="score card">
+      <table>
+        <tr>
+          <th>Frame</th>
+          <th>Roll</th>
+          <th>Knocked down pins</th>
+          <th>Total score</th>
+          <th>Notes</th>
+        </tr>
+        <tr id="current position">
+          <td id="current-frame"></td>
+          <td id="current-roll"></td>
+          <td id="current-roll-score"></td>
+          <td id="total-score"></td>
+          <td id="notes"></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

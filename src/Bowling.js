@@ -20,6 +20,13 @@ class Bowling{
     return (this.frames[(this.currentFrame()-1)].rollOne);
   }
 
+  currentFrameRollTwo(){
+    return (this.frames[(this.currentFrame()-1)].rollTwo);
+  }
+
+  currentFrameScore(){
+    return (this.frames[(this.currentFrame()-1)].score);
+  }
 
   _randomRoll(){
   return Math.floor(Math.random() * 11);

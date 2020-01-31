@@ -32,4 +32,10 @@ describe('Bowling', function(){
   it('shows total score in gived frame', function(){
     expect(bowling.currentFrameScore()).toEqual(0);
   })
+
+  it('updates score when ball is rolled', function() {
+    spyOn(bowling, 'roll').and.returnValue(8);
+    expect(bowling.currentFrameRollOne()).toEqual(8);
+    expect(bowling.currentFrameScore()).toEqual(8);
+  });
 });

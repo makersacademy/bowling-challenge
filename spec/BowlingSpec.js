@@ -15,7 +15,7 @@ describe('Bowling', function(){
     spyOn(Math, 'random').and.returnValue(0.5);
     bowling.roll();
     bowling.updateScoreFirst();
-    expect(bowling._currentRoll).not.toEqual(0);
+    expect(bowling.totalScore).not.toEqual(0);
   });
 
   it('shows what frame is played', function(){
@@ -34,20 +34,34 @@ describe('Bowling', function(){
     expect(bowling.currentFrameScore()).toEqual(0);
   })
 
-  it('updates frame and total score when ball is rolled on first roll', function() {
-    spyOn(bowling, '_randomRoll').and.returnValue(8);
-    bowling.roll();
-    bowling.updateScoreFirst();
-    expect(bowling.currentFrameRollOne()).toEqual(8);
-    expect(bowling.currentFrameScore()).toEqual(8);
-    expect(bowling.totalScore).toEqual(8);
-  });
-
   it('resets current roll to zero once score is updated', function() {
     spyOn(bowling, '_randomRoll').and.returnValue(8);
     bowling.roll();
     bowling.updateScoreFirst();
     expect(bowling._currentRoll).toEqual(0);
+  });
+
+  describe('when updating score with one frame only', function() {
+    beforeEach(function() {
+      spyOn(bowling, '_randomRoll').and.returnValue(3);
+      bowling.roll();
+      bowling.updateScoreFirst();
+    })
+
+    it('updates frame and total score when ball is rolled on first roll', function() {
+      expect(bowling.currentFrameRollOne()).toEqual(3);
+      expect(bowling.currentFrameScore()).toEqual(3);
+      expect(bowling.totalScore).toEqual(3);
+    });
+
+    it('updates score after second roll - ignoring strike at the moment', function() {
+      bowling._randomRoll.and.returnValue(5);
+      bowling.roll();
+      bowling.updateScoreSecond();
+      expect(bowling.currentFrameRollTwo()).toEqual(5);
+      expect(bowling.currentFrameScore()).toEqual(8);
+      expect(bowling.totalScore).toEqual(8);
+    })
   });
 
 });

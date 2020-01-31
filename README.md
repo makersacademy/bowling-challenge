@@ -21,6 +21,11 @@ To complete this simplified first-attempt challenges, the following user stories
   * So that I can enjoy the game;
   * I need to roll a ball and see how many pins I hit.
 
+###User story 2:
+  * As a player;
+  * So that I can keep progress of my game;
+  * I need to know what frame and roll I currently play.
+
 
 
 

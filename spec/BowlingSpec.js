@@ -16,4 +16,8 @@ describe('Bowling', function(){
     bowling.roll();
     expect(bowling.totalScore).not.toEqual(0);
   });
+
+  it('shows what frame is played', function(){
+    expect(bowling.currentFrame()).toEqual(1);
+  });
 });

@@ -20,4 +20,8 @@ describe('Bowling', function(){
   it('shows what frame is played', function(){
     expect(bowling.currentFrame()).toEqual(1);
   });
+
+  it('shows score on first roll in given frame', function(){
+    expect(bowling.currentFrameRollOne()).toEqual(0);
+  })
 });

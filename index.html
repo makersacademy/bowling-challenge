@@ -11,15 +11,14 @@
         text-align: center;
       }
     </style>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="src/Bowling.js"></script>
     <script type="text/javascript" src="interface.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   </head>
   <body>
     <h1>Bowling Game</h1>
-    <h2 id="current-frame"></h2>
-    <br>
-    <h2 id="current-roll"></h2>
+    <h2 id="current-frame-tab"></h2>
+    <h2 id="current-roll-tab"></h2>
     <button type="button" id="roll">Roll</button>
     <br><br>
     <div class="score card">
@@ -31,9 +30,142 @@
           <th>Total score</th>
           <th>Notes</th>
         </tr>
-        <tr id="current position">
-          <td id="current-frame"></td>
-          <td id="current-roll"></td>
+        <tr class="frame 1">
+          <td id="current-frame">1</td>
+          <td id="current-roll-1">1</td>
+          <td id="current-roll-score"></td>
+          <td id="total-score"></td>
+          <td id="notes"></td>
+        </tr>
+        <tr class="frame 1">
+          <td id="current-frame">1</td>
+          <td id="current-roll-2">2</td>
+          <td id="current-roll-score"></td>
+          <td id="total-score"></td>
+          <td id="notes"></td>
+        </tr>
+        <tr class="frame 2">
+          <td id="current-frame">2</td>
+          <td id="current-roll">1</td>
+          <td id="current-roll-score"></td>
+          <td id="total-score"></td>
+          <td id="notes"></td>
+        </tr>
+        <tr class="frame 2">
+          <td id="current-frame">2</td>
+          <td id="current-roll-2">2</td>
+          <td id="current-roll-score"></td>
+          <td id="total-score"></td>
+          <td id="notes"></td>
+        </tr>
+        <tr class="frame 3">
+          <td id="current-frame">3</td>
+          <td id="current-roll">1</td>
+          <td id="current-roll-score"></td>
+          <td id="total-score"></td>
+          <td id="notes"></td>
+        </tr>
+        <tr class="frame 3">
+          <td id="current-frame">3</td>
+          <td id="current-roll-2">2</td>
+          <td id="current-roll-score"></td>
+          <td id="total-score"></td>
+          <td id="notes"></td>
+        </tr>
+        <tr class="frame 4">
+          <td id="current-frame">4</td>
+          <td id="current-roll">1</td>
+          <td id="current-roll-score"></td>
+          <td id="total-score"></td>
+          <td id="notes"></td>
+        </tr>
+        <tr class="frame 4">
+          <td id="current-frame">4</td>
+          <td id="current-roll-2">2</td>
+          <td id="current-roll-score"></td>
+          <td id="total-score"></td>
+          <td id="notes"></td>
+        </tr>
+        <tr class="frame 5">
+          <td id="current-frame">5</td>
+          <td id="current-roll">1</td>
+          <td id="current-roll-score"></td>
+          <td id="total-score"></td>
+          <td id="notes"></td>
+        </tr>
+        <tr class="frame 5">
+          <td id="current-frame">5</td>
+          <td id="current-roll-2">2</td>
+          <td id="current-roll-score"></td>
+          <td id="total-score"></td>
+          <td id="notes"></td>
+        </tr>
+        <tr class="frame 6">
+          <td id="current-frame">6</td>
+          <td id="current-roll">1</td>
+          <td id="current-roll-score"></td>
+          <td id="total-score"></td>
+          <td id="notes"></td>
+        </tr>
+        <tr class="frame 7">
+          <td id="current-frame">7</td>
+          <td id="current-roll-2">2</td>
+          <td id="current-roll-score"></td>
+          <td id="total-score"></td>
+          <td id="notes"></td>
+        </tr>
+        <tr class="frame 7">
+          <td id="current-frame">7</td>
+          <td id="current-roll">1</td>
+          <td id="current-roll-score"></td>
+          <td id="total-score"></td>
+          <td id="notes"></td>
+        </tr>
+        <tr class="frame 7">
+          <td id="current-frame">7</td>
+          <td id="current-roll-2">2</td>
+          <td id="current-roll-score"></td>
+          <td id="total-score"></td>
+          <td id="notes"></td>
+        </tr>
+        <tr class="frame 8">
+          <td id="current-frame">8</td>
+          <td id="current-roll">1</td>
+          <td id="current-roll-score"></td>
+          <td id="total-score"></td>
+          <td id="notes"></td>
+        </tr>
+        <tr class="frame 8">
+          <td id="current-frame">8</td>
+          <td id="current-roll-2">2</td>
+          <td id="current-roll-score"></td>
+          <td id="total-score"></td>
+          <td id="notes"></td>
+        </tr>
+        <tr class="frame 9">
+          <td id="current-frame">9</td>
+          <td id="current-roll">1</td>
+          <td id="current-roll-score"></td>
+          <td id="total-score"></td>
+          <td id="notes"></td>
+        </tr>
+        <tr class="frame 9">
+          <td id="current-frame">9</td>
+          <td id="current-roll-2">2</td>
+          <td id="current-roll-score"></td>
+          <td id="total-score"></td>
+          <td id="notes"></td>
+        </tr>
+        <tr class="frame 10">
+          <td id="current-frame">10</td>
+          <td id="current-roll">1</td>
+          <td id="current-roll-score"></td>
+          <td id="total-score"></td>
+          <td id="notes"></td>
+        </tr>
+        <tr class="frame 11">
+          <td id="current-frame">10</td>
+          <td id="current-roll-2">2</td>
           <td id="current-roll-score"></td>
           <td id="total-score"></td>
           <td id="notes"></td>

@@ -1,12 +1,15 @@
 'use strict';
 
-class Bowling{
+class Bowling {
+  constructor(){
+  this.currentScore = 0;
+  };
 
-  roll(){
-
-  }
+  roll(pins){
+    this.currentScore += pins;
+  };
 
   score(){
-    return 0;
-  }
-}
+    return this.currentScore;
+  };
+};

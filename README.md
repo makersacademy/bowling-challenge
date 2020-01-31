@@ -121,14 +121,46 @@ class Bowling{
 }
 
 # Second User Story
-s a bowling player
+As a bowling player
 So that I know when I hit 1 pin each time
 I would like to be able to see score 20 after 10 times
 1) Spec Test:
 it('gives score 20 when 1 pin is hit each frame', function(){
-  for(var i = 0; i <= 20; i++) {
+  for(var i = 0; i < 20; i++) {
     bowling.roll(1)
   }
 expect(bowling.score()).toEqual(20)
 })
-2) Implementation 
+Error: expected 0 to equal 20
+2) Implementation
+class Bowling {
+  constructor(){
+  this.currentScore = 0;
+  };
+
+  roll(pins){
+    this.currentScore += pins;
+  };
+
+  score(){
+    return this.currentScore;
+  };
+};
+
+# Third User Story
+As a bowling player
+So that I know when I have hit a spare
+I would like to be able to see the correct score after I hit a spare
+
+1) Spec Test:
+it('calculates spares correctly', function(){
+  bowling.roll(3)
+  bowling.roll(7)
+  bowling.roll(1)
+  for(var i = 0; i < 17; i++) {
+    bowling.roll(0)
+  }
+  expect(bowling.score()).toEqual(12);
+
+Error: expected 11 to equal 12
+})Implementation:

@@ -34,11 +34,13 @@ describe('Bowling', function(){
     expect(bowling.currentFrameScore()).toEqual(0);
   })
 
-  it('updates score when ball is rolled on first roll', function() {
+  it('updates frame and total score when ball is rolled on first roll', function() {
     spyOn(bowling, '_randomRoll').and.returnValue(8);
     bowling.roll();
     bowling.updateScoreFirst();
     expect(bowling.currentFrameRollOne()).toEqual(8);
     expect(bowling.currentFrameScore()).toEqual(8);
+    expect(bowling.totalScore).toEqual(8);
   });
+
 });

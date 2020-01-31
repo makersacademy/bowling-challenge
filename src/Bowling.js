@@ -16,6 +16,7 @@ class Bowling{
   updateScoreFirst() {
     this.frames[(this.currentFrame()-1)].rollOne = this._currentRoll;
     this.frames[(this.currentFrame()-1)].score = this.frames[(this.currentFrame()-1)].rollOne;
+    this.totalScore = this.frames[(this.currentFrame()-1)].score;
   }
 
   currentFrame(){

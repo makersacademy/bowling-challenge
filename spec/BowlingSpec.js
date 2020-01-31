@@ -14,7 +14,8 @@ describe('Bowling', function(){
   it('allows to roll a ball and return a number of pins hit', function(){
     spyOn(Math, 'random').and.returnValue(0.5);
     bowling.roll();
-    expect(bowling.totalScore).not.toEqual(0);
+    bowling.updateScoreFirst();
+    expect(bowling._currentRoll).not.toEqual(0);
   });
 
   it('shows what frame is played', function(){
@@ -33,8 +34,10 @@ describe('Bowling', function(){
     expect(bowling.currentFrameScore()).toEqual(0);
   })
 
-  it('updates score when ball is rolled', function() {
-    spyOn(bowling, 'roll').and.returnValue(8);
+  it('updates score when ball is rolled on first roll', function() {
+    spyOn(bowling, '_randomRoll').and.returnValue(8);
+    bowling.roll();
+    bowling.updateScoreFirst();
     expect(bowling.currentFrameRollOne()).toEqual(8);
     expect(bowling.currentFrameScore()).toEqual(8);
   });

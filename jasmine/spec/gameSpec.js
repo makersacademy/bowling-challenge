@@ -7,6 +7,13 @@ describe('game', function () {
     game = new Game()
   })
 
+  describe('.new', function () {
+    it('create a new game with 10 frames', function () {
+      game.new()
+      expect(game.frameNumber()).toEqual(10)
+    })
+  })
+
   describe('.addFrame', function () {
     it('add a frame to the game', function () {
       game.addFrame()
@@ -31,10 +38,6 @@ describe('game', function () {
       expect(function () { game.addFrame() }).toThrowError(Error, "This game is over, can't play for ever!")
     })
 
-    it('throw an error if adding a frame before the last one is complete', function () {
-      game.addFrame()
-      expect(function () { game.addFrame() }).toThrowError(Error, 'This frame is not complete yet!')
-    })
   })
 
   describe('.frameNumber', function () {
@@ -56,25 +59,58 @@ describe('game', function () {
     })
   })
 
-  describe('.getPoints', function () {
-    it('starts a game at 0 point', function () {
-      expect(game.getPoints()).toEqual(0)
-    })
-  })
-
-  describe('.currentFrame', function () {
+  describe('.currentFrame, .previousFrame, .nextFrame', function () {
     it('return the last frame', function () {
-      game.addFrame()
+      game.new()
       game.currentFrame().addShot(2)
       game.currentFrame().addShot(2)
-      game.addFrame()
       expect(game.currentFrame()).toEqual(game._frames[1])
+      expect(game.previousFrame()).toEqual(game._frames[0])
+      expect(game.nextFrame()).toEqual(game._frames[2])
+    })
+
+    it('return the first frame in a new game', function () {
+      game.new()
+      game.currentFrame().addShot(1)
+      expect(game.currentFrame()).toEqual(game._frames[0])
+      expect(game.previousFrame()).toEqual(undefined)
+      expect(game.nextFrame()).toEqual(game._frames[1])
+    })
+
+    it('return the second frame in a new game', function () {
+      game.new()
+      game.currentFrame().addShot(1)
+      game.currentFrame().addShot(2)
+      game.currentFrame().addShot(1)
+      expect(game.currentFrame()).toEqual(game._frames[1])
+      expect(game.previousFrame()).toEqual(game._frames[0])
+      expect(game.nextFrame()).toEqual(game._frames[2])
+    })
+
+    it('return the second frame in a new game after a strike', function () {
+      game.new()
+      game.currentFrame().addShot(10)
+      game.currentFrame().addShot(2)
+      expect(game.currentFrame()).toEqual(game._frames[1])
+      expect(game.previousFrame()).toEqual(game._frames[0])
+      expect(game.nextFrame()).toEqual(game._frames[2])
+    })
+
+    it('return the fifth frame after multiples strikes', function () {
+      game.new()
+      game.currentFrame().addShot(10)
+      game.currentFrame().addShot(10)
+      game.currentFrame().addShot(10)
+      game.currentFrame().addShot(10)
+      expect(game.currentFrame()).toEqual(game._frames[4])
+      expect(game.previousFrame()).toEqual(game._frames[3])
+      expect(game.nextFrame()).toEqual(game._frames[5])
     })
   })
 
   describe('.addPoints', function () {
     it('add the point of the first frame', function () {
-      game.addFrame()
+      game.new()
       game.currentFrame().addShot(2)
       game.currentFrame().addShot(2)
       game.addPoints()
@@ -82,11 +118,10 @@ describe('game', function () {
     })
 
     it('add the points of two frames', function () {
-      game.addFrame()
+      game.new()
       game.currentFrame().addShot(1)
       game.currentFrame().addShot(8)
       game.addPoints()
-      game.addFrame()
       game.currentFrame().addShot(2)
       game.currentFrame().addShot(6)
       game.addPoints()
@@ -94,11 +129,10 @@ describe('game', function () {
     })
 
     it('if spare add the points of the next first shot', function () {
-      game.addFrame()
+      game.new()
       game.currentFrame().addShot(2)
       game.currentFrame().addShot(8)
       game.addPoints()
-      game.addFrame()
       game.currentFrame().addShot(2)
       game.currentFrame().addShot(6)
       game.addPoints()
@@ -106,19 +140,45 @@ describe('game', function () {
     })
 
     it('two spares, 1 normal', function () {
-      game.addFrame()
+      game.new()
       game.currentFrame().addShot(2)
       game.currentFrame().addShot(8)
       game.addPoints()
-      game.addFrame()
       game.currentFrame().addShot(4)
       game.currentFrame().addShot(6)
       game.addPoints()
-      game.addFrame()
       game.currentFrame().addShot(3)
       game.currentFrame().addShot(2)
       game.addPoints()
       expect(game.getPoints()).toEqual(32)
+    })
+
+    it('if strike add the points of the next frame', function () {
+      game.new()
+      game.currentFrame().addShot(10)
+      game.addPoints()
+      game.currentFrame().addShot(3)
+      game.currentFrame().addShot(4)
+      game.addPoints()
+      game.currentFrame().addShot(0)
+      game.currentFrame().addShot(0)
+      game.addPoints()
+      expect(game.getPoints()).toEqual(24)
+    })
+
+    it('2 strikes, 1 normal', function () {
+      game.new()
+      game.currentFrame().addShot(10)
+      game.addPoints()
+      game.currentFrame().addShot(10)
+      game.addPoints()
+      game.currentFrame().addShot(3)
+      game.currentFrame().addShot(4)
+      game.addPoints()
+      game.currentFrame().addShot(0)
+      game.currentFrame().addShot(0)
+      game.addPoints()
+      expect(game.getPoints()).toEqual(47)
     })
   })
 })

@@ -24,7 +24,7 @@ describe('frame', function () {
     it('throw an error if trying to add a third shot', function () {
       frame.addShot(2)
       frame.addShot(2)
-      expect(function () { frame.addShot(2) }).toThrowError(Error, 'You already inserted two shot!')
+      expect(function () { frame.addShot(2) }).toThrowError(Error, 'This frame is already complete!')
     })
 
     it('throw an error if passing the wrong kind of value', function () {

@@ -18,6 +18,11 @@ describe('Frame', function(){
       frame.addroll(1)
       expect(frame._throws).toContain(1)
     })
+    it('fils the array',function(){
+      frame.addroll(1)
+      frame.addroll(3)
+      expect(frame._throws).toEqual([1,3])
+    })
   })
 
   describe('check_strike', function(){
@@ -46,6 +51,28 @@ describe('Frame', function(){
       frame.addroll(4)
       frame.addroll(3)
       expect(frame.score_frame()).toEqual(17)
+    })
+    it('returns zero if the two elements are zero', function(){
+      frame.addroll(0)
+      frame.addroll(0)
+      expect(frame.score_frame()).toEqual(0)
+    })
+  })
+
+  describe('isStanding', function(){
+    it('returns true if there are pins left in the ally', function(){
+      frame.addroll(3)
+      frame.addroll(3)
+      expect(frame.isStanding()).toEqual(true)
+    })
+  })
+
+  describe('clearFrame',function(){
+    it('clears the throw array', function(){
+      frame.addroll(3)
+      frame.addroll(3)
+      frame.clearFrame()
+      expect(frame._throws).toEqual([])
     })
   })
 })

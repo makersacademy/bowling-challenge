@@ -13,7 +13,7 @@ Frame.prototype.check_strike = function(){
 }
 
 Frame.prototype.check_spare = function(){
-  return (this._throws[0] + this._throws[1]) === 10
+  return (this._throws[0] + this._throws[1]) === 10 && this._throws.length === 2
 }
 
 Frame.prototype.score_frame = function(){
@@ -22,3 +22,10 @@ Frame.prototype.score_frame = function(){
   })
 }
 
+Frame.prototype.clearFrame = function(){
+  this._throws = []
+}
+
+Frame.prototype.isStanding = function(){
+  return this._throws.length === 2 && this._throws[0] + this._throws[1] < 10
+}

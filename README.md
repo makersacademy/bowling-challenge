@@ -2,7 +2,7 @@
 
 ### Overview
 
-Makers Academy Week 5 - 6 Weekend Challenge
+[Makers Academy Week 5 - 6 Weekend Challenge](https://github.com/makersacademy/bowling-challenge)
 
 ### Application overview
 
@@ -25,6 +25,18 @@ Makers Academy Week 5 - 6 Weekend Challenge
 As a user
 So that I can keep track of my scores
 I want to visit a webpage and insert my scores
+```
+
+```
+As a user
+So that I can see the total scores
+I want the total scores to be displayed at every frame
+```
+
+```
+As a user
+So that I can play a proper bowling game
+I want the scoring system based on the official bowling rules
 ```
 
 - Challenge time: rest of the day and weekend.

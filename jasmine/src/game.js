@@ -50,8 +50,16 @@ Game.prototype.threePreviousFrame = function () {
   return this._frames[index]
 }
 
+Game.prototype.lastFrame = function () {
+  return this._frames[this._frames.length - 1]
+}
+
 Game.prototype.addPoints = function () {
-  this._pointsStorage.push(this.previousFrame().total())
+  if (this.currentFrame() === undefined) {
+    this._pointsStorage.push(this.lastFrame().total())
+  } else {
+    this._pointsStorage.push(this.previousFrame().total())
+  }
 
   if (this.threePreviousFrame() !== undefined && this.threePreviousFrame().isStrike() && this.twoPreviousFrame().isStrike()) {
     this._pointsStorage[this._frames.indexOf(this.threePreviousFrame())] += this.twoPreviousFrame().getShot(1)

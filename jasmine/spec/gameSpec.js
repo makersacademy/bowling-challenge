@@ -180,5 +180,63 @@ describe('game', function () {
       game.addPoints()
       expect(game.getPoints()).toEqual(47)
     })
+
+    it('random game', function () {
+      game.new()
+      game.currentFrame().addShot(2)
+      game.currentFrame().addShot(5)
+      game.addPoints()
+
+      game.currentFrame().addShot(4)
+      game.currentFrame().addShot(5)
+      game.addPoints()
+
+      game.currentFrame().addShot(2)
+      game.currentFrame().addShot(5)
+      game.addPoints()
+
+      game.currentFrame().addShot(3)
+      game.currentFrame().addShot(3)
+      game.addPoints()
+
+      game.currentFrame().addShot(10)
+      game.addPoints()
+
+      game.currentFrame().addShot(4)
+      game.currentFrame().addShot(6)
+      game.addPoints()
+
+      game.currentFrame().addShot(2)
+      game.currentFrame().addShot(4)
+      game.addPoints()
+
+      game.currentFrame().addShot(10)
+      game.addPoints()
+
+      game.currentFrame().addShot(0)
+      game.currentFrame().addShot(0)
+      game.addPoints()
+
+      expect(game.getPoints()).toEqual(77)
+    })
   })
+
+  describe('10th frame', function () {
+    it("no spare or strike don't add a third shot", function () {
+      newGame()
+      game.currentFrame().addShot(2)
+      game.currentFrame().addShot(3)
+      game.addPoints()
+      expect(game.getPoints()).toEqual(5)
+    })
+  })
+
+  const newGame = () => {
+    game.new()
+    for (let i = 0; i < 9; i++) {
+      game.currentFrame().addShot(0)
+      game.currentFrame().addShot(0)
+      game.addPoints(0)
+    }
+  }
 })

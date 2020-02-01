@@ -16,7 +16,7 @@ Makers Academy Week 5 - 6 Weekend Challenge
 ### Installation
 
 - move to the project root directory in terminal
-- `gem bundle install`
+- run `gem bundle install`
 - run `bundle`
 
 * Challenge time: rest of the day and weekend.

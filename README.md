@@ -1,6 +1,7 @@
 ## Commits Correspond with the Following User stories ##
 
 ```
+
 As a player
 So that I can enjoy a Game of bowling
 I would like to enter into a game
@@ -21,6 +22,9 @@ As a player
 If I strike on my last roll or spare
 I would like 2 extra turns and one extra turn respectively
 
+As a player 
+So I can see whos won a game
+I want to calculate my score at the end of a game
 
 ```
 

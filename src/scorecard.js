@@ -7,8 +7,8 @@ function Scorecard(){
 }
 
 Scorecard.prototype.addPins = function(downedPins){ 
-  this._Card.push(downedPins)
   this.rollUpdate(downedPins)
+  this._Card.push(downedPins)
 }
 
 Scorecard.prototype.getScorecard = function(){ return this._Card }
@@ -18,9 +18,12 @@ Scorecard.prototype.isGameOver = function(){
 }
 
 Scorecard.prototype.rollUpdate = function(downedPins){
-  if(downedPins === "X" && this._rolls === 2 && this._hasBonus){this._hasBonus = false }
-  else if(downedPins === "X" && this._rolls <= 2 ){ this._rolls -= 1 }
-  else if(downedPins === "/" && this._rolls === 1 && this._hasBonus === true ){this._hasBonus = false;}
-  else if(downedPins === "X"){this._rolls -= 2 } 
-  else { this._rolls -= 1 }
+  if(downedPins === 10 && this._rolls === 2 && this._hasBonus){this._hasBonus = false }
+  else if(downedPins === 10 && this._rolls <= 2 ){ this._rolls -= 1 }
+  else if(downedPins + this._Card[this._Card.length -1] === 10 && this._rolls === 1 && this._hasBonus === true )
+  {this._hasBonus = false;}
+  else if(downedPins === 10){this._rolls -= 2 } 
+  else{ this._rolls -= 1 }
 }
+
+ 

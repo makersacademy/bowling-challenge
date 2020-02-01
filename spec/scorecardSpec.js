@@ -36,27 +36,28 @@ describe('Scorecard', function(){
     })
     
     it('reduces the max number of rolls by 1 if a strike is made', function(){
-      scorecard.rollUpdate('X')
+      scorecard.rollUpdate(10)
       expect(scorecard._rolls).toEqual(18)
     })
 
     it('gives 2 extra rolls if strike on penultimate roll', function(){
       for(let i = 0; i < 18; i++){ scorecard.addPins(0) }
-      scorecard.addPins("X")
+      scorecard.addPins(10)
       expect(scorecard._rolls).toEqual(2)
       expect(scorecard._hasBonus).toBe(false)
     })
 
     it('strikes only reduce rolls by 1 in last two rolls', function(){
       for(let i = 0; i < 18; i++){ scorecard.addPins(0) }
-      scorecard.addPins("X")
-      scorecard.addPins("X")
+      scorecard.addPins(10)
+      scorecard.addPins(10)
       expect(scorecard._rolls).toEqual(1)
     })
 
     it('gives an extra roll if spare is thrown on final roll', function(){
-      for(let i = 0; i < 19; i++){ scorecard.addPins(0) }
-      scorecard.addPins("/")
+      for(let i = 0; i < 18; i++){ scorecard.addPins(0) }
+      scorecard.addPins(4)
+      scorecard.addPins(6)
       expect(scorecard._rolls).toEqual(1)
     })
   })

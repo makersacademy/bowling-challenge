@@ -2,6 +2,7 @@
 
 function Bowling(pins = new Pins()) {
     this.pins = pins;
+    this.score = 0;
     this.scores = [];
     this.totalScores = 0;
     this.scoreBoard = [
@@ -25,8 +26,18 @@ Bowling.prototype.possiblePins = function() {
     return this.pins.knockDownPins(10 - this.scoreBoard[this.frame][0]);
 };
 
+Bowling.prototype.getScore = function() {
+    return this.score
+}
+
 Bowling.prototype.play = function(knockDownPins = null) {
-    if (knockDownPins === null) { this.scoreBoard[this.frame][this.roll] = this.possiblePins() } else { this.scoreBoard[this.frame][this.roll] = knockDownPins };
+    if (knockDownPins === null) {
+        this.scoreBoard[this.frame][this.roll] = this.possiblePins();
+        this.score = this.scoreBoard[this.frame][this.roll]
+    } else {
+        this.scoreBoard[this.frame][this.roll] = knockDownPins
+        this.score = this.scoreBoard[this.frame][this.roll]
+    };
     if (this.scoreBoard[this.frame][0] === 10) {
         this.scoreBoard[this.frame][1] = null;
         return this.frame += 1
@@ -42,7 +53,7 @@ Bowling.prototype.next = function() {
 }
 
 Bowling.prototype.getEachFrameScores = function() {
-    this.scores = this._sum(this.scoreBoard)
+    this.scores.push(this._sum(this.scoreBoard))
 
 }
 

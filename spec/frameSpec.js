@@ -36,10 +36,16 @@ describe('Frame', function(){
   })
 
   describe('score_frame', function(){
-    it('sums the elements of the frame', function(){
+    it('sums the elements of 2 digit frame', function(){
       frame.addroll(4)
       frame.addroll(3)
       expect(frame.score_frame()).toEqual(7)
+    })
+    it('sums the elements of 3 digit frame', function(){
+      frame.addroll(10)
+      frame.addroll(4)
+      frame.addroll(3)
+      expect(frame.score_frame()).toEqual(17)
     })
   })
 })

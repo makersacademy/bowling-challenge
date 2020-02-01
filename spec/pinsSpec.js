@@ -16,10 +16,6 @@ describe("Pins", function() {
             expect(pins.knockDownPins()).toBeLessThan(11);
         });
 
-        it("returns fixed number if argument is fed in", function() {
-            expect(pins.knockDownPins(9)).toEqual(9);
-            expect(pins.knockDownPins(3)).toEqual(3);
-        });
         // it("returns random value between 1 to 10", function() {
         // spyOn(bowling, "randScore").and.callFake(function() {
         //     return 1;

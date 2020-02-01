@@ -4,11 +4,6 @@ function Pins() {
     this.score = 0;
 }
 
-Pins.prototype.knockDownPins = function(number = null) {
-    if (number === null) {
-        return this.score = Math.floor(Math.random(10) * 11);
-    } //times 11 to get 10 pins
-    else {
-        return this.score = number;
-    }
+Pins.prototype.knockDownPins = function(maxPins = 10) {
+    return this.score = Math.floor(Math.random() * (maxPins + 1));
 }

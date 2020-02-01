@@ -1,35 +1,39 @@
 "use strict";
 
-describe("Bowling", function() {
-    var bowling;
+function Bowling(pins = new Pins()) {
+    this.pins = pins;
+    this.scores = [];
+    this.totalScores = [];
+    this.frame = 0;
+    this.roll = 0;
+}
 
-    beforeEach(function() {
-        bowling = new Bowling();
-    });
 
-    describe("when initialiasing", function() {
-        it("starts with 0 frame", function() {
-            expect(bowling.frame).toEqual(0);
-        });
-    });
+Bowling.prototype.possiblePins = function(number = null) {
+    return this.scores.push(this.pins.knockDownPins(number));
+};
 
-    describe("#getAllScores()", function() {
-        it("returns the array of the scores", function() {
-            bowling.possiblePins(9);
-            bowling.possiblePins(8);
-            bowling.possiblePins(5);
-            bowling.possiblePins(4);
-            expect(bowling.getAllScores()).toEqual([9, 8, 5, 4]);
-        });
-    });
 
-    describe("#getScoresTotalEvery2Elements()", function() {
-        it("returns the array of the total of every 2 elements", function() {
-            bowling.possiblePins(9);
-            bowling.possiblePins(8);
-            bowling.possiblePins(5);
-            bowling.possiblePins(4);
-            expect(bowling.getScoresTotalEvery2Elements()).toEqual([17, 9]);
-        });
-    });
-});
+
+
+// Bowling.prototype.getAllScores = function() {
+//     return this.scores;
+// };
+
+// Bowling.prototype.getScoresTotalEvery2Elements = function() {
+//     for (var i = 0; i < this.scores.length; i += 2) {
+//         var myChunk = this.scores.slice(i, i + 2);
+//         this.totalScores.push(this._sum(myChunk));
+//     }
+//     return this.totalScores;
+//     // return this.scores.reduce((a, b) => a + b, 0);
+// };
+
+Bowling.prototype._sum = function(array) {
+    var total = 0;
+    var arrayLength = array.length;
+    for (var i = 0; i < arrayLength; i++) {
+        total += array[i];
+    }
+    return total;
+};

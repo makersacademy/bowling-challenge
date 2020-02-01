@@ -1,23 +1,16 @@
 "use strict";
 
-function Bowling() {
-    this.score = 0;
+function Bowling(pins = new Pins()) {
+    this.pins = pins;
     this.scores = [];
     this.totalScores = [];
+    this.frame = 0;
+    this.roll = 0;
 }
 
-Bowling.prototype.getScore = function() {
-    return this.score;
-};
 
-Bowling.prototype.randScore = function(number = null) {
-    if (number === null) {
-        this.score = Math.floor(Math.random(10) * 11);
-    } //times 11 to get 10 pins
-    else {
-        this.score = number;
-    }
-    return this.scores.push(this.score);
+Bowling.prototype.possiblePins = function(number = null) {
+    return this.scores.push(this.pins.knockDownPins(number));
 };
 
 Bowling.prototype.getAllScores = function() {

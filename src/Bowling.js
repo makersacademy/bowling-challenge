@@ -33,14 +33,23 @@ Bowling.prototype.getScore = function() {
 Bowling.prototype.play = function(knockDownPins = null) {
     if (knockDownPins === null) {
         this.scoreBoard[this.frame][this.roll] = this.possiblePins();
-        this.score = this.scoreBoard[this.frame][this.roll]
+        this.score = this.scoreBoard[this.frame][this.roll];
     } else {
-        this.scoreBoard[this.frame][this.roll] = knockDownPins
-        this.score = this.scoreBoard[this.frame][this.roll]
+        if (this.roll === 1 && (this.scoreBoard[this.frame][0] + knockDownPins > 10)) {
+            return this.moreThan10()
+        }
+        this.scoreBoard[this.frame][this.roll] = knockDownPins;
+        this.score = this.scoreBoard[this.frame][this.roll];
     };
     this.nextRoll();
     this.nextFrame();
 }
+
+Bowling.prototype.moreThan10 = function() {
+    var pinsLeft = (10 - this.scoreBoard[this.frame][0])
+    return "Exceed max number of pins. Pick number smaller than " + pinsLeft;
+}
+
 
 Bowling.prototype.nextFrame = function() {
     if (this.strike()) {

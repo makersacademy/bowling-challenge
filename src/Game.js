@@ -40,7 +40,7 @@ Game.prototype.updateFrame = function(roll) {
   if (currentFrame.roll1 === 10) {
     throw new Error("Nice try")
   }
-  
+
   currentFrame.roll2 = roll
   currentFrame.total += roll
   this.rollCount += 1

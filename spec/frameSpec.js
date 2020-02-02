@@ -2,17 +2,29 @@
 
 describe('Frame', function(){
   var frame 
+  var frame2
 
   beforeEach(function(){
     frame = new Frame
+    frame2 = new Frame
   })
 
   describe('keeps rolls in array',function(){
     it('returns empty array when it is initialized', function(){
       expect(frame._throws).toEqual([])
     })
+    it('has a _nextframe attribute',function(){
+      expect(frame._nextframe).toEqual(null)
+    })
   })
   
+  describe('createNextFrame', function(){
+    it('creates a next frame', function(){
+      frame.createNextFrame(frame2)
+      expect(frame._nextframe).toEqual(frame2)
+    })
+  })
+
   describe('addroll', function(){
     it('takes a player rolls and the value is stored', function(){
       frame.addroll(1)
@@ -56,6 +68,26 @@ describe('Frame', function(){
       frame.addroll(0)
       frame.addroll(0)
       expect(frame.score_frame()).toEqual(0)
+    })
+  })
+
+  describe('spare_score', function(){
+    it('will score a spare correctly', function(){
+      frame.addroll(6)
+      frame.addroll(4)
+      frame.createNextFrame(frame2)
+      frame._nextframe.addroll(3)
+      expect(frame.spare_score()).toEqual(13)
+    })
+  })
+
+  describe('strike_score', function(){
+    it('will score a strike correctly', function(){
+      frame.addroll(10)
+      frame.createNextFrame(frame2)
+      frame._nextframe.addroll(3)
+      frame._nextframe.addroll(3)
+      expect(frame.strike_score()).toEqual(16)
     })
   })
 

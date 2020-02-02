@@ -61,13 +61,14 @@ Game.prototype.addPoints = function () {
   if (this.currentFrame() === undefined) {
     this._pointsStorage.push(this.lastFrame().total())
     if (this._frames[8].isSpare()) this._pointsStorage[8] += this.lastFrame().getShot(1)
+    if (this._frames[7].isStrike() && this._frames[8].isStrike()) this._pointsStorage[7] += this._frames[8].getShot(1) + this.lastFrame().getShot(1)
+    if (this._frames[8].isStrike()) this._pointsStorage[8] += this.lastFrame().getShot(1) + this.lastFrame().getShot(2)
   } else {
     this._pointsStorage.push(this.previousFrame().total())
   }
 
   if (this.threePreviousFrame() !== undefined && this.threePreviousFrame().isStrike() && this.twoPreviousFrame().isStrike()) {
-    this._pointsStorage[this._frames.indexOf(this.threePreviousFrame())] += this.twoPreviousFrame().getShot(1)
-    this._pointsStorage[this._frames.indexOf(this.threePreviousFrame())] += this.previousFrame().getShot(1)
+    this._pointsStorage[this._frames.indexOf(this.threePreviousFrame())] += this.twoPreviousFrame().getShot(1) + this.previousFrame().getShot(1)
   }
   if (this.twoPreviousFrame() !== undefined && this.twoPreviousFrame().isStrike() && !this.previousFrame().isStrike()) {
     this._pointsStorage[this._frames.indexOf(this.twoPreviousFrame())] += this.previousFrame().total()

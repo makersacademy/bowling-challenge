@@ -32,8 +32,7 @@ describe("Bowling", function() {
                 [null, null],
                 [null, null],
                 [null, null],
-                [null, null, null],
-                [null]
+                [null, null, null]
             ]);
         })
     })

@@ -15,8 +15,7 @@ function Bowling(pins = new Pins()) {
         [null, null],
         [null, null],
         [null, null],
-        [null, null, null],
-        [null]
+        [null, null, null]
     ];
     this.frame = 0;
     this.roll = 0;
@@ -51,6 +50,7 @@ Bowling.prototype.nextFrame = function() {
 }
 
 Bowling.prototype.nextRoll = function() {
+    if (this.frame === 9) { return this.roll++ }
     if (this.roll === 0) {
         this.roll = 1
     } else if (this.roll === 1) {

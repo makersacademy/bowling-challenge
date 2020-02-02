@@ -1,5 +1,8 @@
 "use strict";
 
+// TODO: 
+// strike, spare logic
+
 function Bowling(pins = new Pins()) {
     this.pins = pins;
     this.score = 0;
@@ -58,6 +61,9 @@ Bowling.prototype.nextFrame = function() {
     if (this.roll === 0) {
         this.calculateScore();
         this.frame++;
+    }
+    if (this.frame === 9 && this.roll > 2) {
+        this.calculateScore();
     }
 }
 

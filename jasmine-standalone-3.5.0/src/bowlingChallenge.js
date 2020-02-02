@@ -12,6 +12,13 @@ class BowlingGame {
     let rollIndex = 0;
 
     for (let frameIndex = 0; frameIndex < 10; frameIndex++) {
+      if (this.isStrike(rollIndex)) {
+        score += this.strikeBonus(rollIndex);
+        rollIndex++;
+        continue;
+      }
+
+
       const frameScore = this.rolls[rollIndex] + this.rolls[rollIndex + 1];
 
       if (this.isSpare(frameScore)) {
@@ -32,6 +39,14 @@ class BowlingGame {
 
   spareBonus(rollIndex) {
     return 10 + this.rolls[rollIndex + 2];
+  }
+
+  isStrike(rollIndex) {
+    return this.rolls[rollIndex] === 10;
+  }
+
+  strikeBonus(rollIndex) {
+    return 10 + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
   }
 }
   

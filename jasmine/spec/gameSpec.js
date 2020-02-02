@@ -229,6 +229,15 @@ describe('game', function () {
       game.addPoints()
       expect(game.getPoints()).toEqual(5)
     })
+
+    it('a spare in the last frame adds a extra shot', function () {
+      newGame()
+      game.currentFrame().addShot(1)
+      game.currentFrame().addShot(9)
+      game.currentFrame().addShot(5)
+      game.addPoints()
+      expect(game.getPoints()).toEqual(15)
+    })
   })
 
   const newGame = () => {

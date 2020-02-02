@@ -56,6 +56,8 @@ Game.prototype.lastFrame = function () {
 
 Game.prototype.addPoints = function () {
   if (this.currentFrame() === undefined) {
+    console.log("HELLO")
+    console.log(this.lastFrame().total())
     this._pointsStorage.push(this.lastFrame().total())
   } else {
     this._pointsStorage.push(this.previousFrame().total())

@@ -1,39 +1,49 @@
 "use strict";
 
-function Bowling(pins = new Pins()) {
-    this.pins = pins;
-    this.scores = [];
-    this.totalScores = [];
-    this.frame = 0;
-    this.roll = 0;
-}
+describe("Bowling", function() {
+    var bowling;
 
+    beforeEach(function() {
+        bowling = new Bowling();
+    });
 
-Bowling.prototype.possiblePins = function(number = null) {
-    return this.scores.push(this.pins.knockDownPins(number));
-};
+    describe("when initialiasing", function() {
+        it("starts with 0 frame", function() {
+            expect(bowling.frame).toEqual(0);
+        });
+    });
 
+    describe("#play", function() {
+        it("enters score and update scoreBoard when called", function() {
+            bowling.play(9)
+            bowling.play(1)
+            bowling.play(3)
+            bowling.play(4)
+            bowling.play(4)
+            bowling.play(4)
+            expect(bowling.scores).toEqual([10, 7, 8]);
+            expect(bowling.scoreBoard).toEqual([
+                [9, 1],
+                [3, 4],
+                [4, 4],
+                [null, null],
+                [null, null],
+                [null, null],
+                [null, null],
+                [null, null],
+                [null, null],
+                [null, null]
+            ]);
+        })
+    })
 
+});
 
-
-// Bowling.prototype.getAllScores = function() {
-//     return this.scores;
-// };
-
-// Bowling.prototype.getScoresTotalEvery2Elements = function() {
-//     for (var i = 0; i < this.scores.length; i += 2) {
-//         var myChunk = this.scores.slice(i, i + 2);
-//         this.totalScores.push(this._sum(myChunk));
-//     }
-//     return this.totalScores;
-//     // return this.scores.reduce((a, b) => a + b, 0);
-// };
-
-Bowling.prototype._sum = function(array) {
-    var total = 0;
-    var arrayLength = array.length;
-    for (var i = 0; i < arrayLength; i++) {
-        total += array[i];
-    }
-    return total;
-};
+var b = new Bowling();
+b.play(3);
+b.play(4);
+b.play(10);
+b.play(6);
+b.play(3);
+b.play(5);
+b.scoreBoard;

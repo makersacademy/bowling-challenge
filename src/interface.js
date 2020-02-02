@@ -78,6 +78,7 @@ $(document).ready(function() {
         for (var i = 0; i <= 9; i++) {
             $("#" + i + "-0").text(bowling.scoreBoard[i][0])
             $("#" + i + "-1").text(bowling.scoreBoard[i][1])
+            $("#totalscore" + i).text(bowling.scores[i])
         }
     }
 

@@ -38,24 +38,37 @@ Bowling.prototype.play = function(knockDownPins = null) {
         this.scoreBoard[this.frame][this.roll] = knockDownPins
         this.score = this.scoreBoard[this.frame][this.roll]
     };
-    if (this.scoreBoard[this.frame][0] === 10) {
-        this.scoreBoard[this.frame][1] = null;
-        return this.frame += 1
+    this.nextRoll();
+    this.nextFrame();
+}
+
+Bowling.prototype.nextFrame = function() {
+    if (this.strike()) {
+        this.nextRoll();
+    };
+    if (this.roll === 0) { this.frame++ }
+}
+
+Bowling.prototype.nextRoll = function() {
+    if (this.roll === 0) {
+        this.roll = 1
+    } else if (this.roll === 1) {
+        if (this.frame === 0) {
+            this.scores.push(this._sum(this.scoreBoard[this.frame]));
+            this.roll = 0;
+        } else {
+            this.scores.push(this._sum(this.scoreBoard[this.frame]) + (this.scores[this.frame - 1]));
+            this.roll = 0;
+        }
+
     }
-    this.next()
 }
 
-Bowling.prototype.next = function() {
-    if (this.roll === 0) { this.roll = 1 } else if (this.roll === 1) {
-        this.frame += 1;
-        this.roll = 0;
-    }
+
+Bowling.prototype.strike = function() {
+    return this.scoreBoard[this.frame][0] === 10;
 }
 
-Bowling.prototype.getEachFrameScores = function() {
-    this.scores.push(this._sum(this.scoreBoard))
-
-}
 
 Bowling.prototype._sum = function(array) {
     var total = 0;
@@ -65,11 +78,6 @@ Bowling.prototype._sum = function(array) {
     }
     return total;
 };
-
-
-// Bowling.prototype.getAllScores = function() {
-//     return this.scores;
-// };
 
 // Bowling.prototype.getScoresTotalEvery2Elements = function() {
 //     for (var i = 0; i < this.scores.length; i += 2) {

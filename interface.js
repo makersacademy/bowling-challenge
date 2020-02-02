@@ -17,7 +17,7 @@ $(document).ready(function() {
     }
     updateScore()
     updateFrameTotal()
-    
+    finalScore()
   })
 
   // $('#new-frame').on('click', function() {
@@ -53,11 +53,14 @@ $(document).ready(function() {
       if (previousFrame.type === 'strike' || previousFrame.type === 'spare') {
         $(`#f${frameCount - 1}-score`).text(previousFrame.total)
       }
-    } else if (frameCount > 2) {
+    } 
+    
+    if (frameCount > 2) {
       if (twoFramesPrior.type === 'strike') {
         $(`#f${frameCount - 2}-score`).text(twoFramesPrior.total)
     }
-  }}
+  }
+}
   
   function updateRoll1() {
     var roll = game.frames[frameCount - 1].roll1
@@ -67,6 +70,12 @@ $(document).ready(function() {
   function updateRoll2() {
     var roll = game.frames[frameCount - 1].roll2
     $(`#f${frameCount}-r2`).text(roll)
+  }
+
+  function finalScore() {
+    if (game.rollCount === 21) {
+      alert("Game Over! Great Game, champ!")
+    }
   }
 
 })

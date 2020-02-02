@@ -19,7 +19,7 @@ Game.prototype.viewFrames = function() {
 Game.prototype.newFrame = function(roll) {
   if (this._isTenthFrame()) {
     throw new Error("Game Over");
-  } 
+  }
 
   this.frames.push(new Frame(roll, (this.frames.length + 1)).frame)
   this._addBonus(roll)
@@ -39,7 +39,10 @@ Game.prototype.updateFrame = function(roll) {
 
   if (currentFrame.roll1 === 10) {
     throw new Error("Nice try")
+  } else if (currentFrame.total + roll > 10) {
+    throw new Error("Nice try")
   }
+
 
   currentFrame.roll2 = roll
   currentFrame.total += roll

@@ -67,6 +67,83 @@ describe ("Game", function() {
       expect(game.isPinResetRequired()).toEqual(true);
     })
 
+
+    it("returns false after non strike in 10th frame", function() {
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(5);
+      expect(game.isPinResetRequired()).toEqual(false);
+    })
+
+    it("returns true after first roll 5 and second roll 3 in 10th frame", function() {
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(5);
+      game.play(3);
+      expect(game.isPinResetRequired()).toEqual(true);
+    })
+
+    it("returns true after first roll 5 and second roll 5 in 10th frame", function() {
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(5);
+      game.play(5);
+      expect(game.isPinResetRequired()).toEqual(true);
+    })
+
+    it("returns false after first roll 10 and second roll 5 in 10th frame", function() {
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(5);
+      expect(game.isPinResetRequired()).toEqual(false);
+    })
+
+    it("returns true after 3rd roll in 10th frame", function() {
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(5);
+      game.play(5);
+      expect(game.isPinResetRequired()).toEqual(true);
+    })
+
+
   })
 
   describe("getScore", function(){
@@ -395,6 +472,23 @@ describe ("Game", function() {
       game.play(7);
       console.log(game.pins_down);
       expect(game.getScore()).toEqual(39);
+    })
+
+    it("plays a perfect game", function() {
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      console.log(game.pins_down);
+      expect(game.getScore()).toEqual(300);
     })
   })
 

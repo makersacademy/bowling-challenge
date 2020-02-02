@@ -48,22 +48,30 @@ $(document).ready(function() {
 
   }
 
+
+
+  function url() {
+
+    var pins_down = game.getPinsDownFrame(game.previous_frame);
+    var url = 'url("images/' + (10 - pins_down) + '.jpg")';
+    return url
+  }
+
+
   function update_images(game) {
 
     let root = document.documentElement;
-  
-    var pins_down = game.getPinsDownFrame(game.previous_frame);
-    var url = 'url("images/' + (10 - pins_down) + '.jpg")';
+
 
     if (game.isPinResetRequired() === true && game.previous_frame === 10) {
 
-      root.style.setProperty('--background_overlay_url', 'url("images/0.jpg")');
+      root.style.setProperty('--background_overlay_url', url());
 
       setTimeout(function() {
         
         if (game.isOver() === false) {
-          document.getElementById('bowl').style.visibility = 'visible';
           root.style.setProperty('--background_overlay_url', 'url("images/10.jpg")');
+          document.getElementById('bowl').style.visibility = 'visible';
         }
 
         else{
@@ -77,7 +85,7 @@ $(document).ready(function() {
 
     else if (game.isPinResetRequired() === true) {
 
-      root.style.setProperty('--background_overlay_url', url);
+      root.style.setProperty('--background_overlay_url', url());
 
       setTimeout(function() {
 
@@ -96,8 +104,13 @@ $(document).ready(function() {
 
       setTimeout(function() {
 
-        root.style.setProperty('--background_overlay_url', url);
-        document.getElementById('bowl').style.visibility = 'visible';
+        root.style.setProperty('--background_overlay_url', url());
+
+        setTimeout(function() {
+
+          document.getElementById('bowl').style.visibility = 'visible';
+  
+        }, 2780);
 
       }, 20);
     

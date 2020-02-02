@@ -21,7 +21,7 @@ describe("Bowling", function() {
             bowling.play(4)
             bowling.play(4)
             bowling.play(4)
-            expect(bowling.scores).toEqual([10, 7, 8]);
+            expect(bowling.scores).toEqual([10, 17, 25]);
             expect(bowling.scoreBoard).toEqual([
                 [9, 1],
                 [3, 4],
@@ -32,12 +32,33 @@ describe("Bowling", function() {
                 [null, null],
                 [null, null],
                 [null, null],
-                [null, null]
+                [null, null, null],
+                [null]
             ]);
         })
     })
 
+    describe("#nextFrame", function() {
+        it("returns next frame", function() {
+            bowling.nextFrame();
+            expect(bowling.frame).toEqual(1);
+        })
+        it("returns next frame if strike", function() {
+            bowling.play(10);
+            expect(bowling.frame).toEqual(1);
+        })
+    });
+
+    describe("#nextRoll", function() {
+        it("returns next roll", function() {
+            bowling.nextRoll();
+            expect(bowling.roll).toEqual(1);
+        })
+    });
+
 });
+
+
 
 var b = new Bowling();
 b.play(3);

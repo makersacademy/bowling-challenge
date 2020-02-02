@@ -69,10 +69,14 @@ $(document).ready(function() {
         var score = parseInt($("#score-display").text());
         if (score === 10) {
             $("#cheers-display").text("Strike!");
+        } else if (bowling.spare()) {
+            $("#cheers-display").text("Spare!");
         } else {
             $("#cheers-display").text(null);
         }
+
     }
+
 
     function updateFrame() {
         for (var i = 0; i <= 9; i++) {

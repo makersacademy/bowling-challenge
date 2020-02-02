@@ -16,6 +16,8 @@ When learning JavaScript, I have relied on the following approaches:
 
 ## Set-up and approach
 
+=== After completing the code for calculating the score (bar 10th frame), I have realised that I should have had three classes (Counter, Score and Bowling(a.k.a. Controller)) instead of one Bowling class, as otherwise there is far too much going on for just one class. ===
+
 To complete the challenge, I have decided to start with a simplified scoring method as follows:
   * There are 10 frames in the game;
   * Each frame has 2 rolls:

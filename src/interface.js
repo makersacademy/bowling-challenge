@@ -67,22 +67,25 @@ $(document).ready(function() {
     function updateScore() {
         $("#score-display").text(bowling.getScore());
         var score = parseInt($("#score-display").text());
+        console.log(bowling.frame)
+        console.log("roll")
+        console.log(bowling.roll)
+        $("#cheers-display").hide();
         if (score === 10) {
-            $("#cheers-display").text("Strike!");
-        } else if (bowling.spare()) {
-            $("#cheers-display").text("Spare!");
-        } else {
-            $("#cheers-display").text(null);
+            $("#cheers-display").text("Strike!").show().delay(1000).fadeOut();
+        } else if (bowling.roll === 0 && bowling.spare()) {
+            $("#cheers-display").text("Spare!").show().delay(1000).fadeOut();
         }
-
     }
 
     function updateFrame() {
         for (var i = 0; i <= 9; i++) {
             $("#" + i + "-0").text(bowling.scoreBoard[i][0])
             $("#" + i + "-1").text(bowling.scoreBoard[i][1])
-            $("#totalscore" + i).text(bowling.scores[i])
+            $("#total-score" + i).text(bowling.scores[i])
         }
+        $("#9-2").text(bowling.scoreBoard[9][2]);
+        $("#total-score9").text(bowling.scores[9])
     }
 
 });

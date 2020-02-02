@@ -4,6 +4,19 @@ $(document).ready(function() {
 
   $('#total-score').text(game.viewScore())
 
+  $('.roll-btn').on('click', function() {
+    if (game.rollCount % 2 === 0) {
+      game.newFrame(Number(this.id))
+      console.log(frameCount)
+      updateRoll1()
+    } else {
+      game.updateFrame(Number(this.id))
+      updateRoll2()
+    }
+    updateScore()
+    updateCounts()
+  })
+
   $('#new-frame').on('click', function() {
     var roll = Number($("#roll1").val())
     game.newFrame(roll)

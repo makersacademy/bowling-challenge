@@ -24,6 +24,9 @@ Game.prototype.newFrame = function(roll) {
   this.frames.push(new Frame(roll, (this.frames.length + 1)).frame)
   this._addBonus(roll)
   this.rollCount += 1
+  if (this._isStrike(this._currentFrame().roll1)) {
+    this.rollCount +=1
+  }
 }
 
 Game.prototype.updateFrame = function(roll) {

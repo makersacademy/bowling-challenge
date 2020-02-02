@@ -12,3 +12,29 @@ html {
     color:white;
     text-align:center;
 }
+.wrapper {
+    text-align: center;
+    justify-content: center;
+}
+button.pins {
+    
+}
+
+table, th, td {
+    width:100%;
+    table-layout:fixed;
+    text-align:center;
+    font-size:17px;
+    border-collapse:collapse;
+    border:1px solid skyblue;
+}
+tr, th, td{
+    padding:15px;
+}
+th{
+    background:red;
+    color:white;
+}
+td{
+    background:#3c8a4e;
+}

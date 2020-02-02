@@ -9,7 +9,7 @@ $(document).ready(function() {
   $('#roll').on('click', function() {
     bowling.roll();
     bowling.updateScoreFirst();
-    $('#current-roll-score').text(bowling.currentFrameRollOne());
+    $('.frame-' + bowling.currentFrame()).find('#current-roll-score1').text(bowling.currentFrameRollOne());
     $('#total-score').text(bowling.totalScore);
   })
 })

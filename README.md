@@ -2,7 +2,7 @@
 Bowling Challenge
 =================
 
-##Approaches to learning a new language
+## Approaches to learning a new language
 
 When learning JavaScript, I have relied on the following approaches:
 
@@ -14,7 +14,7 @@ When learning JavaScript, I have relied on the following approaches:
   * Trying to understand code written in JavaScript (Count exercise);
   * To check whether I have retained any knowledge, I have tried to implement the Friday challenge (Bowling) relying mostly on my memory and only going back to the reference materials when stuck.
 
-##Set-up and approach
+## Set-up and approach
 
 To complete the challenge, I have decided to start with a simplified scoring method as follows:
   * There are 10 frames in the game;
@@ -28,22 +28,22 @@ When finished, the game will be accessible from a webpage which will contain a s
 
 To complete this simplified first-attempt challenges, the following user stories are devised:
 
-###User story 1:
+### User story 1:
   * As a player;
   * So that I can enjoy the game;
   * I need to roll a ball and see how many pins I hit.
 
-###User story 2:
+### User story 2:
   * As a player;
   * So that I can keep progress of my game;
   * I need to know what frame and roll I currently play.
 
-###User story 3:
+### User story 3:
   * As a player;
   * So that I can play the whole game;
   * I need to be able to play all 10 frames.
 
-###User story 4:
+### User story 4:
   * As a player;
   * So that I can visualise my game;
   * I need to play a game and see my scorecard on a webpage.
@@ -53,13 +53,13 @@ A note: Before moving to more complicated scoring, I would like to create a dyna
 While developing the interface, I realised I need additional functionality to keep track of the frames to update the score card. Instead, I have decided to return to developing the scoring model.
 
 
-###User story 5:
+### User story 5:
   * As a player;
   * So that I can get bonus points for spares;
   * I need to add these bonus points to my total score.
 
 
-
+===============================
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

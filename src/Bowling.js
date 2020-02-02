@@ -16,6 +16,9 @@ class Bowling{
 
   updateScoreFirst() {
     this.frames[(this.currentFrame()-1)].rollOne = this._currentRoll;
+    if(this.frames[(this.currentFrame()-1)].rollOne === 10) {
+      this._frameCounter += 1;
+    }
     this.frames[(this.currentFrame()-1)].score = this.frames[(this.currentFrame()-1)].rollOne;
     this._currentRoll = 0;
   }
@@ -23,6 +26,11 @@ class Bowling{
   updateScoreSecond() {
     this.frames[(this.currentFrame()-1)].rollTwo = this._currentRoll;
     this.frames[(this.currentFrame()-1)].score += this.frames[(this.currentFrame()-1)].rollTwo;
+    if(this.isStrike()) {
+      this.frames[(this.currentFrame()-2)].score += this.frames[this.currentFrame()-1].score;
+    }else if(this.isSpare()) {
+      this.frames[(this.currentFrame()-2)].score += this.frames[(this.currentFrame()-1)].rollOne;
+    }
     this.totalScore = this._calculateTotalScore();
     this._currentRoll = 0;
     this._frameCounter += 1;
@@ -37,33 +45,36 @@ class Bowling{
     return this.frames.length
   }
 
-  currentFrameRollOne(){
-    return (this.frames[(this.currentFrame()-1)].rollOne);
+  frameRollOne(frameNum){
+    return (this.frames[frameNum - 1].rollOne);
   }
 
   currentFrameRollTwo(){
     return (this.frames[(this.currentFrame()-1)].rollTwo);
   }
 
-  currentFrameScore(){
-    return (this.frames[(this.currentFrame()-1)].score);
+  frameScore(frameNum){
+    return (this.frames[frameNum - 1].score);
+  }
+
+  isStrike() {
+    if(this.currentFrame() !== 1 && this.frameRollOne(this.currentFrame()-1) === 10) {
+      return true
+    }
   }
 
   isSpare() {
-    if(this.currentFrameScore() === 10) {
+    if(this.currentFrame() !== 1 && this.frameScore(this.currentFrame()-1) === 10) {
       return true
     }
   }
 
   _calculateTotalScore() {
-    var score = 0;
+    var countScore = 0;
     for(var i = 0; i < this._frameCounter; i++) {
-      score += this.frames[i].score;
-      if(i> 0 && this.frames[i-1].score ===10) {
-        score += this.frames[i].rollOne;
-      }
+      countScore += this.frames[i].score;
     }
-    return score;
+    return countScore;
   }
 
   _randomRoll(){

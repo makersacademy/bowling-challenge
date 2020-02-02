@@ -103,7 +103,7 @@ Game.prototype.getPinsDownFrame = function(frame) {
 Game.prototype.isPinResetRequired = function() {
 
   // resets for strike, spare, consecutive strikes in 10th frame
- if (this.getPinsDownFrame(this.previous_frame) === 10 || this.getPinsDownFrame(this.previous_frame) === 20 ){
+ if (this.getPinsDownFrame(this.previous_frame) === 10 || this.getPinsDownFrame(this.previous_frame) === 20){
     return true;
   }
   // resets after second roll of the frame (unless the first roll was a strike which may happen in the 10th frame)
@@ -118,6 +118,21 @@ Game.prototype.isPinResetRequired = function() {
   else {
     return false;
   }
+}
+
+Game.prototype.generateThrow = function() {
+
+  var previous_pins_down = this.getPinsDown(this.previous_frame,this.previous_roll);
+
+  if (this.isPinResetRequired() === true) {
+  var generated_throw = Math.floor(Math.random() * 11);
+  }
+ 
+  else {
+  var generated_throw = Math.floor(Math.random() * (11 - previous_pins_down ));
+  }
+
+  return generated_throw
 }
 
 Game.prototype.isOver = function() {

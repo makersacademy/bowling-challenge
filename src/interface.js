@@ -20,8 +20,12 @@ $(document).ready(function() {
     }
   }
 
+  var hit = new sound("audio/hit.mp3");
+  var miss = new sound("audio/miss.mp3");
+  var rollin = new sound("audio/rollin.mp3");
 
-  function update_scores(game) {
+
+  function updateScores(game) {
 
     $('#F1-R1').text(game.getPinsDown(1,1));
     $('#F1-R2').text(game.getPinsDown(1,2));
@@ -50,61 +54,53 @@ $(document).ready(function() {
 
 
 
-  function url() {
+  function imageUrl() {
 
     var pins_down = game.getPinsDownFrame(game.previous_frame);
-    var url = 'url("images/' + (10 - pins_down) + '.jpg")';
+
+    if (pins_down === 10 || pins_down === 20 || pins_down === 30) {
+      var url = 'url("images/0.jpg")'
+    }
+
+    else {
+    var url = 'url("images/' + (10 - (pins_down % 10)) + '.jpg")';
+    }
+
     return url
   }
 
 
-  function update_images(game) {
+  function updateImages(game) {
 
     let root = document.documentElement;
 
 
-    if (game.isPinResetRequired() === true && game.previous_frame === 10) {
+    if (game.isPinResetRequired() === true) {
 
-      root.style.setProperty('--background_overlay_url', url());
+      root.style.setProperty('--overlay_url', imageUrl());
 
       setTimeout(function() {
         
         if (game.isOver() === false) {
-          root.style.setProperty('--background_overlay_url', 'url("images/10.jpg")');
+          root.style.setProperty('--overlay_url', 'url("images/10.jpg")');
           document.getElementById('bowl').style.visibility = 'visible';
         }
 
         else{
-          $('#bonus').text('YOU SCORED ' + parseInt(game.getScore()));
-
+          $('#message').text('YOU SCORED ' + parseInt(game.getScore()));
         }
         
       }, 2800);
 
     }
-
-    else if (game.isPinResetRequired() === true) {
-
-      root.style.setProperty('--background_overlay_url', url());
-
-      setTimeout(function() {
-
-        root.style.setProperty('--background_overlay_url', 'url("images/10.jpg")');
-        document.getElementById('bowl').style.visibility = 'visible';
-
-      }, 2800);
-      
-    }
  
     else {
-      
-      var pins_down_1st = game.getPinsDown(game.previous_frame,1);
-      var url_background = 'url("images/' + (10 - pins_down_1st) + '.jpg")';
-      root.style.setProperty('--background_url', url_background);
+    
+      root.style.setProperty('--background_url', imageUrl());
 
       setTimeout(function() {
 
-        root.style.setProperty('--background_overlay_url', url());
+        root.style.setProperty('--overlay_url', imageUrl());
 
         setTimeout(function() {
 
@@ -117,12 +113,6 @@ $(document).ready(function() {
     }
 
   }
-  
-  var hit = new sound("audio/hit.mp3");
-  var miss = new sound("audio/miss.mp3");
-  var rollin = new sound("audio/rollin.mp3");
-  
-
 
 
   $('#bowl').click(function() { 
@@ -130,24 +120,19 @@ $(document).ready(function() {
     rollin.play();
 
     document.getElementById('bowl').style.visibility = 'hidden';
-    $('#bonus').text('');
 
-    var previous_pins_down = game.getPinsDown(game.previous_frame,game.previous_roll);
-    if (game.roll === 1) {
-    var randomness = Math.floor(Math.random() * 11);
-    }
-    else {
-    var randomness = Math.floor(Math.random() * (11 - previous_pins_down ));
-    }
-    
+    $('#message').text('');
   
-    game.play(randomness);
+    var generated_throw = game.generateThrow();
 
-    if (randomness === 0) {
+    game.play(generated_throw);
+
+    if (generated_throw === 0) {
 
       miss.play();
 
     }
+
     else {
 
       hit.play();
@@ -156,25 +141,22 @@ $(document).ready(function() {
 
     setTimeout(function() {
 
-      update_scores(game);
-      update_images(game);
+      updateImages(game);
+
+      updateScores(game);
       
-      if (game.getPinsDown(10,1) === 10 || game.getPinsDownFrame(10) === 20) {
+      if (game.getPinsDownFrame(10) === 10 || game.getPinsDownFrame(10) === 20) {
 
         setTimeout(function() {
 
           if (game.isOver() === false)
-          $('#bonus').text('BONUS GO!');
+          $('#message').text('BONUS GO!');
 
         }, 2300);
       }
 
     }, 2300);
 
-    
-
-
   })
-
 
 })

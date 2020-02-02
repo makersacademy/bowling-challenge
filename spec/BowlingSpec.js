@@ -55,17 +55,13 @@ describe('Bowling', function(){
       bowling.updateScoreSecond();
     })
 
-    it('resets current roll to zero once score is updated', function() {
-      expect(bowling._currentRoll).toEqual(0);
-    });
-
     it('updates frame score when ball is rolled on first roll', function() {
       expect(bowling.frameRollOne(1)).toEqual(3);
       expect(bowling.frameScore(1)).toEqual(8);
     });
 
     it('updates frame and total score after second roll - ignoring strike at the moment', function() {
-      expect(bowling.currentFrameRollTwo()).toEqual(5);
+      expect(bowling.frameRollTwo(1)).toEqual(5);
       expect(bowling.frameScore(1)).toEqual(8);
       expect(bowling.totalScore).toEqual(8);
     })
@@ -115,6 +111,14 @@ describe('Bowling', function(){
       spyOn(bowling, '_randomRoll1').and.returnValue(10);
       bowling.roll1();
       bowling.updateScoreFirst();
+    });
+
+    it('updates total score after first roll before next frame', function() {
+      bowling.updateGame();
+      expect(bowling.totalScore).toEqual(10);
+    });
+
+    it('returns the correct score for the frame after hitting a strike', function() {
       bowling.updateGame();
       bowling._randomRoll1.and.returnValue(1);
       bowling.roll1();
@@ -122,14 +126,55 @@ describe('Bowling', function(){
       spyOn(bowling, '_randomRoll2').and.returnValue(2);
       bowling.roll2();
       bowling.updateScoreSecond();
-    });
-
-    it('returns the correct score for the frame after hitting a strike', function() {
+      expect(bowling.frameScore(2)).toEqual(3);
       expect(bowling.frameScore(1)).toEqual(13);
     })
 
     it('returns the correct total score after hitting a strike', function() {
+      bowling.updateGame();
+      bowling._randomRoll1.and.returnValue(1);
+      bowling.roll1();
+      bowling.updateScoreFirst();
+      spyOn(bowling, '_randomRoll2').and.returnValue(2);
+      bowling.roll2();
+      bowling.updateScoreSecond();
       expect(bowling.totalScore).toEqual(16);
     })
   })
+
+  it("retruns correct score when it's a game without bonuses", function() {
+    spyOn(bowling, '_randomRoll1').and.returnValue(4);
+    spyOn(bowling, '_randomRoll2').and.returnValue(5);
+    for(var i = 0; i < 10; i++) {
+      bowling.roll1();
+      bowling.updateScoreFirst();
+      bowling.roll2();
+      bowling.updateScoreSecond();
+      bowling.updateGame();
+    }
+    expect(bowling.totalScore).toEqual(90);
+  });
+
+  it("retruns correct score (0) when it's a gutter game", function() {
+    spyOn(bowling, '_randomRoll1').and.returnValue(0);
+    spyOn(bowling, '_randomRoll2').and.returnValue(0);
+    for(var i = 0; i < 10; i++) {
+      bowling.roll1();
+      bowling.updateScoreFirst();
+      bowling.roll2();
+      bowling.updateScoreSecond();
+      bowling.updateGame();
+    }
+    expect(bowling.totalScore).toEqual(0);
+  });
+
+  it("retruns correct score (130) when it's a perfect game", function() {
+    spyOn(bowling, '_randomRoll1').and.returnValue(10);
+    for(var i = 0; i < 10; i++) {
+      bowling.roll1();
+      bowling.updateScoreFirst();
+      bowling.updateGame();
+    }
+    expect(bowling.totalScore).toEqual(300);
+  });
 });

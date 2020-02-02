@@ -22,11 +22,17 @@ class Bowling{
   updateScoreFirst() {
     this.frames[(this.currentFrame()-1)].rollOne = this._currentRoll;
     if(this.frames[(this.currentFrame()-1)].rollOne === 10) {
+      this.frames[(this.currentFrame()-1)].score = this.frames[(this.currentFrame()-1)].rollOne;
+      this.totalScore = this._calculateTotalScore();
+      if(this.isStrike()) {
+        this.frames[(this.currentFrame()-2)].score += this.frames[this.currentFrame()-1].score;
+      }
       this.frameCounter += 1;
+      this.rollNum = 1;
+    }else {
+      this.frames[(this.currentFrame()-1)].score = this.frames[(this.currentFrame()-1)].rollOne;
+      this.rollNum = 2;
     }
-    this.frames[(this.currentFrame()-1)].score = this.frames[(this.currentFrame()-1)].rollOne;
-    this._currentRoll = 0;
-    this.rollNum = 2;
   }
 
   updateScoreSecond() {
@@ -42,9 +48,8 @@ class Bowling{
       this.frames[(this.currentFrame()-2)].score += this.frames[(this.currentFrame()-1)].rollOne;
     }
     this.totalScore = this._calculateTotalScore();
-    this._currentRoll = 0;
-    this.frameCounter += 1;
     this.rollNum = 1;
+    this.frameCounter += 1;
   }
 
   updateGame() {
@@ -60,8 +65,8 @@ class Bowling{
     return (this.frames[frameNum - 1].rollOne);
   }
 
-  currentFrameRollTwo(){
-    return (this.frames[(this.currentFrame()-1)].rollTwo);
+  frameRollTwo(frameNum){
+    return (this.frames[frameNum - 1].rollTwo);
   }
 
   frameScore(frameNum){
@@ -89,11 +94,11 @@ class Bowling{
   }
 
   _randomRoll1(){
-  return Math.floor(Math.random() * 11);
+  return Math.trunc(Math.random() * 11);
   }
 
   _randomRoll2(){
-  return Math.floor(Math.random() * (11 - this._currentRoll));
+  return Math.trunc(Math.random() * (11 - this._currentRoll));
   }
 
   _newFrame() {

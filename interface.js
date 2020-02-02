@@ -2,22 +2,28 @@ $(document).ready(function() {
   var bowling = new Bowling();
 
   $('#current-frame-tab').text('Current frame is: ' + bowling.currentFrame());
-  $('#current-roll-tab').text('Current roll is: ' + bowling.rollNum);
-
-  $('#total-score').text(bowling.totalScore);
+  $('#current-roll-tab').text('Roll to be played: ' + bowling.rollNum);
 
   $('#roll1').on('click', function() {
-    bowling.roll();
+    bowling.roll1();
+    $('.frame-' + bowling.currentFrame()).find('#current-roll-score1').text(bowling._currentRoll);
     bowling.updateScoreFirst();
-    $('.frame-' + bowling.currentFrame(bowling.frameCounter)).find('#current-roll-score1').text(bowling.frameRollOne(bowling.frameCounter));
-    // $('#total-score').text(bowling.totalScore);
+    if(bowling._currentRoll === 10) {
+      $('.frame-' + bowling.currentFrame()).find('#notes1').text("Strike");
+    }
+    $('#current-roll-tab').text('Roll to be played: ' + bowling.rollNum);
   })
 
   $('#roll2').on('click', function() {
-    bowling.roll();
+    bowling.roll2();
+    $('.frame-' + bowling.currentFrame()).find('#current-roll-score2').text(bowling._currentRoll);
     bowling.updateScoreSecond();
-    $('.frame-' + bowling.currentFrame(bowling.frameCounter)).find('#current-roll-score2').text(bowling.currentFrameRollTwo(bowling.frameCounter));
-    $('.frame-' + bowling.currentFrame(bowling.frameCounter)).find('#total-score' + bowling.currentFrame(bowling.frameCounter)).text(bowling.totalScore);
+    $('.frame-' + bowling.currentFrame()).find('#total-score' + bowling.currentFrame()).text(bowling.totalScore);
+    if(bowling.frames[(bowling.currentFrame()-1)].score === 10 && bowling.frames[(bowling.currentFrame()-1)].rollOne !== 10) {
+      $('.frame-' + bowling.currentFrame()).find('#notes2').text("Spare");
+    }
     bowling.updateGame();
+    $('#current-frame-tab').text('Current frame is: ' + bowling.currentFrame());
+    $('#current-roll-tab').text('Roll to be played: ' + bowling.rollNum);
   })
 })

@@ -15,7 +15,6 @@ class Bowling {
     let rollIndex = 0
     //rollindex refers to the position in the array, it will start off with 0 so 1st item in the array
     let totalScore = 0
-    let maxFrames = 1
     //totalscore will be the total score for all the frames
     for (var frameIndex = 0; frameIndex < 10; frameIndex ++) {
       //we will have 10 frames with two rolls each

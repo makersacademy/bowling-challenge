@@ -51,15 +51,13 @@ $(document).ready(function() {
     var twoFramesPrior = game.frames[frameCount - 3]
     if (frameCount > 1) {
       if (previousFrame.type === 'strike' || previousFrame.type === 'spare') {
-        // console.log(game.frames[frameCount - 1].roll1)
-        // console.log(previousFrame.total)
-        // var total = game.frames[frameCount -1].roll1 + previousFrame.total
         $(`#f${frameCount - 1}-score`).text(previousFrame.total)
       }
+    } else if (frameCount > 2) {
+      if (twoFramesPrior.type === 'strike') {
+        $(`#f${frameCount - 2}-score`).text(twoFramesPrior.total)
     }
-    
-   
-  }
+  }}
   
   function updateRoll1() {
     var roll = game.frames[frameCount - 1].roll1

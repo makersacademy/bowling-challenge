@@ -60,6 +60,7 @@ Game.prototype.lastFrame = function () {
 Game.prototype.addPoints = function () {
   if (this.currentFrame() === undefined) {
     this._pointsStorage.push(this.lastFrame().total())
+    if (this._frames[8].isSpare()) this._pointsStorage[8] += this.lastFrame().getShot(1)
   } else {
     this._pointsStorage.push(this.previousFrame().total())
   }

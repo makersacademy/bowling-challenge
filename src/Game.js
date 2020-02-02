@@ -153,11 +153,9 @@ Game.prototype.isOver = function() {
 
 Game.prototype.play = function(pins) {
   
-if (this.isOver() === true) {
-
-  return
-
-}
+  if (this.isOver() === true) {
+    return
+  }
 
   this.pinsDown(this.frame, this.roll, pins) 
 
@@ -175,7 +173,4 @@ if (this.isOver() === true) {
     this.previous_roll = this.roll;
     this.roll += 1;
   }
-
-
-  
 }

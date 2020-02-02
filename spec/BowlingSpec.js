@@ -89,7 +89,15 @@ describe ('Bowling',function(){
 
   })
 
+  it ('allows player to play perfect game', function(){
+    for(var i = 0; i < 19; i++ ) {
+      bowling.roll(10)
+    }
+    bowling.roll(10)
+    bowling.roll(10)
 
+  expect(bowling.score()).toEqual(300);
+});
 
 
 

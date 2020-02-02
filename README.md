@@ -297,4 +297,8 @@ This test passes as well
   </body>
 </html>
 
--added jquery:
+-added jquery in interface.js
+-I had a lot off difficulty with the form as the user input from the form was getting
+printed as NaaN. In the end, I found that making sure form input type is number
+and adding ParseInt(which takes a string and converts to integer) to .val
+(which is used to get input elements) helped to fix this.

@@ -84,6 +84,8 @@ Reviewers will potentially be using this [code review rubric](docs/review.md).  
 2) Add Bowling.js & BowlingSpec.js files to Specrunner
 
 # First User Story
+User requirement: A Gutter Game is when the player never hits a pin (20 zero scores).
+
 As a bowling player
 So that I know when I didn't hit any pins
 I would like to be able to see score 0 after 10 frames
@@ -148,6 +150,8 @@ class Bowling {
 };
 
 # Third User Story
+User requirement: The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+
 As a bowling player
 So that I know when I have hit a spare
 I would like to be able to see the correct score after I hit a spare
@@ -192,6 +196,8 @@ and insert it:
 if (this.isSpare(rollScore)) { (make sure to specify this so computer knows where this method is coming from)
 
 # Fourth User Story
+User requirement: The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+
 As a bowling player
 So that I know when I have hit a strike
 I would like to be able to see the correct score after I hit a strike
@@ -206,3 +212,89 @@ it('calculates strikes correctly', function(){
   expect(bowling.score()).toEqual(12);
 
 })
+
+Error: Expected NaN to equal 12.
+2) Implementation
+if (this.total[rollIndex] === 10) {
+  totalScore = totalScore + 10 + this.total[rollIndex + 1] + this.total[rollIndex + 2]
+  rollIndex ++;
+  continue;
+
+3) Refractoring
+isStrike(rollIndex) {
+  return this.total[rollIndex] === 10;
+}
+if (this.isStrike(rollIndex)) {
+  totalScore = totalScore + 10 + this.total[rollIndex + 1] + this.total[rollIndex + 2]
+  rollIndex ++;
+  continue;
+
+# Fifth User Story
+User requirement: If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
+
+As a bowling player
+So that I know when I have hit a strike or spare in 10th frame
+I would like to be able to see bonus
+1) Spec tests:
+it('calculates 10th frame bonus score correctly if there are three strikes', function(){
+  for(var i = 0; i < 18; i++) {
+    bowling.roll(0)
+  }
+  bowling.roll(10)
+  bowling.roll(10)
+  bowling.roll(10)
+
+  expect(bowling.score()).toEqual(30);
+
+})
+
+it('calculates 10th frame bonus score correctly if there is a spare and strike', function(){
+  for(var i = 0; i < 18; i++) {
+    bowling.roll(0)
+  }
+  bowling.roll(1)
+  bowling.roll(9)
+  bowling.roll(10)
+
+  expect(bowling.score()).toEqual(20);
+
+})
+
+The two above tests pass as the for loop is set to <10 so I will write a counter test as well :
+it('does not allow bonus round if not a strike or spare', function(){
+  for(var i = 0; i < 18; i++) {
+    bowling.roll(0)
+  }
+  bowling.roll(3)
+  bowling.roll(3)
+  bowling.roll(3)
+
+  expect(bowling.score()).toEqual(6);
+
+})
+This test passes as well
+
+# User interface
+-create index html with the most important functions:
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bowling</title>
+  </head>
+  <body>
+    <section>
+      <h1 id="score"></h1>
+    <section>
+           <form id="form">
+             <input id="firstroll" type="text" placeholder="First Roll"></input>
+             <input id="secondroll" type="text" placeholder="Second Roll"></input>
+             <input type="submit"></input>
+           </form>
+    </section>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="src/interface.js"></script>
+    <script src = "src/Bowling.js"></script>
+  </body>
+</html>
+
+-added jquery:

@@ -222,7 +222,7 @@ describe('game', function () {
   })
 
   describe('10th frame', function () {
-    it("no spare or strike don't add a third shot", function () {
+    it("no spare or strike don't add an extra shot", function () {
       newGame()
       game.currentFrame().addShot(2)
       game.currentFrame().addShot(3)
@@ -230,13 +230,40 @@ describe('game', function () {
       expect(game.getPoints()).toEqual(5)
     })
 
-    it('a spare in the last frame adds a extra shot', function () {
+    it('a spare in the last frame adds an extra shot', function () {
       newGame()
       game.currentFrame().addShot(1)
       game.currentFrame().addShot(9)
       game.currentFrame().addShot(5)
       game.addPoints()
       expect(game.getPoints()).toEqual(15)
+    })
+
+    it('a strike in the last frame adds an extra shot', function () {
+      newGame()
+      game.currentFrame().addShot(10)
+      game.currentFrame().addShot(2)
+      game.currentFrame().addShot(2)
+      game.addPoints()
+      expect(game.getPoints()).toEqual(14)
+    })
+
+    it('a strike in the last frame adds an extra shot', function () {
+      newGame()
+      game.currentFrame().addShot(10)
+      game.currentFrame().addShot(2)
+      game.currentFrame().addShot(2)
+      game.addPoints()
+      expect(game.getPoints()).toEqual(14)
+    })
+
+    it('a strike, 0, strike return 20 points', function () {
+      newGame()
+      game.currentFrame().addShot(10)
+      game.currentFrame().addShot(0)
+      game.currentFrame().addShot(10)
+      game.addPoints()
+      expect(game.getPoints()).toEqual(20)
     })
   })
 

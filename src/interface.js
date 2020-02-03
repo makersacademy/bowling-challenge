@@ -158,26 +158,9 @@ $(document).ready(function() {
     }, 2300);
 
   })
-  
-  // $('#bowl').on('mousedown', function(e) {
-    
-  //   $(this).data('p0', { x: e.pageX, y: e.pageY });
-  //   var p0 = $(this).data('p0');
-  //   console.log(p0.x);
-  //   console.log(p0.y);
-
-  // })
-  
-  // $('#bowl').on('mouseup', function(e) {
-  //   var p1 = { x: e.pageX, y: e.pageY }
-  //   console.log(p1.x);
-  //   console.log(p1.y);
-  // })
 
 
-  var draggable = $('#bowl');
-
-  draggable.on('mousedown', function(e){
+  $('#bowl').on('mousedown', function(e){
 
    
     var dr = $(this).addClass("drag").css("cursor","move");
@@ -185,8 +168,11 @@ $(document).ready(function() {
     var width = dr.outerWidth();
     var ypos = dr.offset().top + height - e.pageY;
     var xpos = dr.offset().left + width - e.pageX;
-    console.log(e.pageY);
-    console.log(e.pageX);
+    // console.log(e.pageY);
+    // console.log(e.pageX);
+    var x0 = e.pageX;
+    var y0 = e.pageY;
+  
     $(document.body).on('mousemove', function(e){
       var itop = e.pageY + ypos - height;
       var ileft = e.pageX + xpos - width;
@@ -195,8 +181,16 @@ $(document).ready(function() {
       }
     }).on('mouseup', function(e){
         dr.removeClass("drag");
-        console.log(e.pageY);
+        var x1 = e.pageX;
+        var y1 = e.pageY;
+        var delta_x = x1 - x0;
+        var delta_y = y1 - y0;
         console.log(e.pageX);
+        console.log(e.pageY);
+        // console.log(e.pageY);
+        // console.log(e.pageX);
+        // console.log(delta_x);
+        // console.log(delta_y);
     });
   });
 

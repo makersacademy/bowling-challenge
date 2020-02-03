@@ -3,52 +3,12 @@ $(document).ready(function(){
   var scoreArray
   var score = 0
   var role = 1
-  turnTaken = false
  
-  $("#0").click(function(){
-    scoreArray = bowlingRules.takeTurn(role, 0, score);
+  $(".button").click(function(){
+    scoreArray = bowlingRules.takeTurn(role, parseInt($(this).text()), score);
     displayScreen (scoreArray)
   });
-  $("#1").click(function(){
-    scoreArray = bowlingRules.takeTurn(role, 1, score);
-    displayScreen (scoreArray)
-  });
-  $("#2").click(function(){
-    scoreArray = bowlingRules.takeTurn(role, 2, score);
-    displayScreen (scoreArray)
-  });
-  $("#3").click(function(){
-    scoreArray = bowlingRules.takeTurn(role, 3, score);
-    displayScreen (scoreArray)
-  });
-  $("#4").click(function(){
-    scoreArray = bowlingRules.takeTurn(role, 4, score);
-    displayScreen (scoreArray)
-  });
-  $("#5").click(function(){
-    scoreArray = bowlingRules.takeTurn(role, 5, score);
-    displayScreen (scoreArray)
-  });
-  $("#6").click(function(){
-    scoreArray = bowlingRules.takeTurn(role, 6, score);
-    displayScreen (scoreArray)
-  });
-  $("#7").click(function(){
-    scoreArray = bowlingRules.takeTurn(role, 7, score);
-    displayScreen (scoreArray)
-  });
-  $("#8").click(function(){
-    scoreArray = bowlingRules.takeTurn(role, 8, score);
-    displayScreen (scoreArray)
-  });  
-  $("#9").click(function(){
-    scoreArray = bowlingRules.takeTurn(role, 9, score);
-    displayScreen (scoreArray)
-  });  
-  $("#10").click(function(){
-    scoreArray = bowlingRules.takeTurn(role, 10, score);
-    displayScreen (scoreArray)
-  });
+
   function displayScreen (scoreArray) { 
     console.log(scoreArray)
     for(let i = 1; i < 11; i++){

@@ -77,9 +77,8 @@ BowlingRules.prototype._calcBonus = function(role, pins){
     if(this.turnHash.spares >0){
       this.turnHash.spares -= 1
       this.turnHash.score += pins
-      scoreArray[i+1].score += pins
-      console.log("before checking flag?")
-      console.log(i)
+      scoreArray[i + 1].score += pins
+      if (typeof scoreArray[i + 2] !== 'undefined') {scoreArray[i+2].score += pins}
       console.log(scoreArray[i+1].score)
       if(scoreArray[i+1].displayScore != ""){scoreArray[i+1].displayScore = String(scoreArray[i+1].score)}
       if(this.turnHash.spares === 0){

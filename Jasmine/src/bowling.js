@@ -1,9 +1,7 @@
 "use strict";
 
 function Bowling() {
-
   this.game = [];
-
 }
 
 Bowling.prototype.play = function(pins) {
@@ -25,20 +23,34 @@ Bowling.prototype.score = function() {
       rolls += 2;
     
     } else {
-      roundScore += this.game[rolls] + this.game[rolls + 1] 
+      roundScore += this.game[rolls] + this.game[rolls + 1]; 
       rolls += 2;
       }
   }
-
   return roundScore;
-
 }
 
 Bowling.prototype.currentScore = function() {
   var currentScore = 0;
   for (var i = 0; i < this.game.length; i++) {
-    currentScore += this.game[i]
+    currentScore += this.game[i];
   }
   return currentScore;
+}
 
+
+Bowling.prototype.isStrike = function() {
+  (this.game[rolls] === 10)
+}
+
+Bowling.prototype.isSpare = function() {
+  (this.game[rolls] + this.game[rolls + 1] === 10)
+}
+
+Bowling.prototype.strikeSpareScore = function() {
+  (roundScore += this.game[rolls] + this.game[rolls + 1] + this.game[rolls + 2])
+}
+
+Bowling.prototype.normalScore = function() {
+  (roundScore += this.game[rolls] + this.game[rolls + 1])
 }

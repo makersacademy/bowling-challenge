@@ -1,0 +1,72 @@
+body {
+  background-color: beige;
+  color: azure;
+  text-align: center;
+  font-size: 1.6em;
+  font-family: 'Roboto', sans-serif;
+  padding: 1em;
+}
+
+h1 {
+  color: grey;
+}
+
+h2 {
+  color: coral;
+  opacity: 0.6;
+  font-size: 1em;
+}
+
+button {
+  display: inline-block;
+  font-size: 0.6em;
+  padding:0.35em 1.2em;
+  border:0.1em solid #FFFFFF;
+  margin:0.3em 0.3em 0.3em 0.3em;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+button:hover {
+  text-shadow: 0 0 2em rgba(255,255,255,1);
+  color:#FFFFFF;
+  background-color:#000000;
+}
+
+.bouncy {
+  animation: bouncy 12s infinite linear;
+  position: relative;
+}
+
+@keyframes bouncy {
+  0%{top:0em}
+  5%{top:0em}
+  15%{top:-2em}
+  20%{left:2em}
+  25%{top:-0.4em}
+  30%{top:-2em}
+  35%{bottom:-2em;}
+  34%{left:-2em;}
+  40%{left:-4em;}
+  49%{top:0em}
+  55%{top:-2em}
+  60%{left:2em}
+  70%{top:-0.4em}
+  80%{bottom:-2em;}
+  90%{left:-2em;}
+  100%{left:-4em;}
+}
+
+input {
+  font-size: 0.6em;
+  font-family: 'Roboto', sans-serif;
+  padding: 12px 20px;
+}
+
+input[type="submit"] {
+  font-size: 0.5em;
+  font-family: 'Roboto', sans-serif;
+  padding: 10px 15px;
+}

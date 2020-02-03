@@ -98,28 +98,6 @@ describe("Game", function() {
       }).toThrowError("Nice try");
     })
 
-    it('allows player to roll again if a strike is thrown in 10th frame', function() {
-      for (var i = 0; i < 9; i++) {
-        game.newFrame(1)
-        game.updateFrame(1)
-      }
-      game.newFrame(10)
-      game.updateFrame(1)
-      expect(game.frames[game.frames.length -1]).toEqual({roll1: 10, roll2: 1, roll3: 0, total: 11, type: 'strike'})
-    })
-
-    it('gives player bonus role if a second strike is thrown in 10th frame', function() {
-      for (var i = 0; i < 9; i++) {
-        game.newFrame(1)
-        game.updateFrame(1)
-      }
-
-      game.newFrame(10)
-      game.updateFrame(10)
-      game.updateFrame(5)
-      expect(game.frames[game.frames.length -1]).toEqual({roll1: 10, roll2: 10, roll3: 5, total: 25, type: 'strike'})
-    })
-
     it('gives player bonus role if spare is thrown in 10th frame', function() {
       for (var i = 0; i < 9; i++) {
         game.newFrame(1)

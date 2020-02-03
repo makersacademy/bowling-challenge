@@ -20,26 +20,9 @@ $(document).ready(function() {
     finalScore()
   })
 
-  // $('#new-frame').on('click', function() {
-  //   var roll = Number($("#roll1").val())
-  //   game.newFrame(roll)
-  //   updateScore()
-  //   updateCounts()
-  //   updateRoll1()
-  // })
-
-  // $('#update-frame').on('click', function() {
-  //   var roll = Number($("#roll2").val())
-  //   game.updateFrame(roll)
-  //   updateScore()
-  //   updateRoll2()
-  //   frameTotal()
-  // })
-
   function updateScore() {
     $('#total-score').text(game.viewScore())
   }
-
 
   function updateFrameTotal() {
     var roll = game.frames[frameCount -1].total

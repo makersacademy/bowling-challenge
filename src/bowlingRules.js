@@ -76,7 +76,6 @@ BowlingRules.prototype._calcBonus = function(role, pins){
     // calculate if spares - i.e. a bonus is due
     if(this.turnHash.spares >0){
       this.turnHash.spares -= 1
-      var strikeOrSpare = this.turnHash.spares
       this.turnHash.score += pins
       scoreArray[i+1].score += pins
       console.log("before checking flag?")

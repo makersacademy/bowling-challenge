@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-    grunt.initConfig({ jasmine: { src: 'src/*.js', options: { specs: 'spec/*.js' } } });
+    grunt.initConfig({ jasmine: { src: 'src/**/*.js', options: { specs: 'spec/**/*.js' } } });
     grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.registerTask('default', ['jasmine']);
 };

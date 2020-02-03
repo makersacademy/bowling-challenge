@@ -1,23 +1,52 @@
 describe('scorecard', function(){
 
-  let score = new ScoreCard();
+  let score;
+
+  beforeEach(function() {
+    score = new ScoreCard;
+  })
 
   describe('initialization', function() {
     it('starts with a score of 0', function() {
-      expect(score.score).toBe(0);
+      expect(score.frames).toEqual([]);
     })
   }); 
 
+  describe('current', function() {
+    it('returns the current frame', function() {
+      score.addFrame()
+      score.current().roll(5)
+      expect(score.current().rolls).toEqual([5])
+    })
+  });
+
   describe('last', function() {
-    it('returns the last frame', function() {
-      let b = new Frame()
-      b.roll(5)
-      b.roll(3)
-      score.addFrame(f)
-      expect(score.last()).toBe(f)
+    it ('returns the last frame', function() {
+      score.addFrame()
+      score.current().roll(5)
+      score.addFrame()
+      score.current().roll(10)
+      expect(score.last().isStrike()).toBe(false)
     })
   })
 
+  describe('score', function(){
+    it ('calculated the correct score including bonus', function() {
+      score.addFrame()
+      score.current().roll(10)
+      score.addFrame()
+      score.current().roll(5)
+      score.current().roll(3)
+      score.calc_score()
+      expect(score.last().score()).toEqual(18)
+      score.addFrame()
+      score.current().roll(5)
+      score.current().roll(3)
+      score.calc_score()
+      // expect(score.last().score()).toEqual(18)
+      expect(score.score).toEqual(26)
+    })
+  })
 });
 
 describe('frame', function(){
@@ -45,12 +74,26 @@ describe('frame', function(){
   describe('complete', function(){
     it('states frame as complete on strike', function(){
       f.roll(10)
-      expect(f.complete()).toBe(true)
+      expect(f.complete(1)).toBe(true)
     })
     it('states frame is complete on two rolls', function(){
       f.roll(2)
       f.roll(5)
-      expect(f.complete()).toBe(true)
+      expect(f.complete(1)).toBe(true)
+    })
+    it('states final frame is incomplete on 1 strike', function(){
+      f.roll(10)
+      expect(f.complete(10)).toBe(false)
+    })
+    it('states final frame is incomplete on 2 strikes', function(){
+      f.roll(10)
+      f.roll(10)
+      expect(f.complete(10)).toBe(false)
+    })
+    it('states final frame is complete on less than 10 pins', function(){
+      f.roll(3)
+      f.roll(3)
+      expect(f.complete(10)).toBe(true)
     })
   })
 
@@ -66,7 +109,7 @@ describe('frame', function(){
     })
   })
 
-  describe('bonus', function() {
+  xdescribe('bonus', function() {
     it('states the bonus is 1 for a strike', function() {
       f.roll(10)
       expect(f.bonus()).toBe(1)
@@ -77,4 +120,4 @@ describe('frame', function(){
       expect(f.bonus()).toBe(0)
     })
   })
-});
+})

@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+}
+
+.calculator-box {
+  /* border: 1px black solid; */
+  display: flex;
+}
+
+.frames-container {
+  border: 1px black solid;
+  border-right: none;
+  min-width: 40px;
+  min-height: 60px;
+}
+
+.frames-container.ten {
+  min-width: 60px;
+}
+
+.frame-number {
+  text-align: center;
+  border-bottom: 1px black solid;
+}
+
+.shots-container {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  border-bottom: 1px black solid;
+  min-height: 20px;
+}
+
+.shot1 {
+  width: 50%;
+  border-right: 1px black solid;
+}
+
+.shot2 {
+  width: 50%;
+}
+
+.ten .shot1, .ten .shot2 {
+  width: 33%;
+}
+.shot3 {
+  width: 33%;
+  border-left: 1px black solid;
+}
+
+.frame-score {
+  min-width: 10px;
+  min-height: 20px;
+}
+
+.total-score-container {
+  border: 1px black solid;
+  text-align: center;
+  min-width: 40px;
+  min-height: 30px;
+}

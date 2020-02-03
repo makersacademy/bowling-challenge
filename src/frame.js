@@ -9,8 +9,9 @@ Frame.prototype.addroll = function(roll){
   this._throws.push(roll)
 }
 
-Frame.prototype.createNextFrame = function(frame){
-  this._nextframe = frame 
+Frame.prototype.createNextFrame = function(){
+  if(this._nextframe == null){return this._nextframe = new Frame} 
+  else{ return this._nextframe }
 }
 
 Frame.prototype.check_strike = function(){
@@ -19,8 +20,8 @@ Frame.prototype.check_strike = function(){
 
 Frame.prototype.strike_score = function(){
   if(this._nextframe){ 
-    return this.score_frame() + this._nextframe.score_frame()
-  } else { this.score_frame() }
+    return (this._throws[0] + this._nextframe.score_frame())
+  } else { 0 }
 }
 
 Frame.prototype.check_spare = function(){

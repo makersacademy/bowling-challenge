@@ -80,5 +80,18 @@ describe('Scorecard', function(){
       scorecard.addPins(1)
       expect(scorecard._Card).toEqual([11,2])
     })
+    it('can score a strike correctly',function(){
+      scorecard.addPins(10)
+      scorecard.addPins(1)
+      scorecard.addPins(1)
+      expect(scorecard._Card).toEqual([12,2])
+    })
+    it('can score multiple strikes correctly', function(){
+      scorecard.addPins(10)
+      scorecard.addPins(10)
+      scorecard.addPins(3)
+      scorecard.addPins(5)
+      expect(scorecard._Card).toEqual([23,18,8])
+    })
   })
 })

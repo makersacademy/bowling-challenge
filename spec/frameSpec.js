@@ -20,8 +20,12 @@ describe('Frame', function(){
   
   describe('createNextFrame', function(){
     it('creates a next frame', function(){
-      frame.createNextFrame(frame2)
-      expect(frame._nextframe).toEqual(frame2)
+      frame.createNextFrame()
+      expect(frame._nextframe).not.toBe(null)
+    })
+    it('returns the second frame if already created', function(){
+      frame.createNextFrame()
+      expect(frame.createNextFrame()).toEqual(frame._nextframe)
     })
   })
 

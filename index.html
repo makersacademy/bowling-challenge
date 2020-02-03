@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+  <head>
+    <script src="jquery-3.4.1.min.js"></script>
+    <title></title>
+    <link type='text/css' rel='stylesheet' href='public/css/style.css'>  
+    <style>
+      body {
+        text-align: center;
+        font-size: 25px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <input type="submit" value="0" class="roll-btn" id="0">
+    <input type="submit" value="1" class="roll-btn" id="1">
+    <input type="submit" value="2" class="roll-btn" id="2">
+    <input type="submit" value="3" class="roll-btn" id="3">
+    <input type="submit" value="4" class="roll-btn" id="4">
+    <input type="submit" value="5" class="roll-btn" id="5">
+    <input type="submit" value="6" class="roll-btn" id="6">
+    <input type="submit" value="7" class="roll-btn" id="7">
+    <input type="submit" value="8" class="roll-btn" id="8">
+    <input type="submit" value="9" class="roll-btn" id="9">
+    <input type="submit" value="10" class="roll-btn" id="10">
+
+    <div id='frames-header'>Frames:</div>
+    <div id="frames">
+      <div class="border" id="frame1">
+        <div class="roll">
+          <div class="roll-border" id="f1-r1"></div>
+          <div class="roll-border" id="f1-r2"></div>
+        </div>
+        <div class="f-total" id="f1-score"></div>
+      </div>
+      <div class="border" id="frame2">
+        <div class="roll">
+          <div class="roll-border" id="f2-r1"></div>
+          <div class="roll-border" id="f2-r2"></div>
+        </div>
+        <div class="f-total" id="f2-score"></div>
+      </div>      
+      <div class="border" id="frame3">
+        <div class="roll">
+          <div class="roll-border" id="f3-r1"></div>
+          <div class="roll-border" id="f3-r2"></div>
+        </div>
+        <div class="f-total" id="f3-score"></div>
+      </div>
+      <div class="border" id="frame4">
+        <div class="roll">
+          <div class="roll-border" id="f4-r1"></div>
+          <div class="roll-border" id="f4-r2"></div>
+        </div>
+        <div class="f-total" id="f4-score"></div>
+      </div>
+      <div class="border" id="frame5">
+          <div class="roll">
+            <div class="roll-border" id="f5-r1"></div>
+            <div class="roll-border" id="f5-r2"></div>
+          </div>
+          <div class="f-total" id="f5-score"></div>
+        </div>
+      <div class="border" id="frame6">
+        <div class="roll">
+          <div class="roll-border" id="f6-r1"></div>
+          <div class="roll-border" id="f6-r2"></div>
+        </div>
+        <div class="f-total" id="f6-score"></div>
+      </div>      
+      <div class="border" id="frame7">
+        <div class="roll">
+          <div class="roll-border" id="f7-r1"></div>
+          <div class="roll-border" id="f7-r2"></div>
+        </div>
+        <div class="f-total" id="f7-score"></div>
+      </div>
+      <div class="border" id="frame8">
+        <div class="roll">
+          <div class="roll-border" id="f8-r1"></div>
+          <div class="roll-border" id="f8-r2"></div>
+        </div>
+        <div class="f-total" id="f8-score"></div>
+      </div>
+      <div class="border" id="frame9">
+        <div class="roll">
+          <div class="roll-border" id="f9-r1"></div>
+          <div class="roll-border" id="f9-r2"></div>
+          </div>
+        <div class="f-total" id="f9-score"></div>
+      </div>
+      <div class="border" id="frame10">
+        <div class="roll">
+          <div class="roll-border-10" id="f10-r1"></div>
+          <div class="roll-border-10" id="f10-r2"></div>
+          <div class="roll-border-10" id="f10-r2"></div>
+        </div>
+        <div class="f-total" id="f10-score"></div>
+      </div>
+    </div>
+
+
+    Score:
+    <div id="total-score"></div>
+    <div>
+
+    </div>
+    <script src="src/Game.js"></script>
+    <script src="src/Frame.js"></script>
+    <script src="interface.js"></script>
+  </body>
+</html>

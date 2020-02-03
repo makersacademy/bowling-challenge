@@ -13,17 +13,17 @@ function BowlingRules() {
   scoreArray = [this.turnHash];
 }
 
-BowlingRules.prototype.takeTurn = function(role, pins) {
-if (this._isEven(role) === true) {
-  BowlingRules.prototype.updateEvenRole(role, pins)
-} else {
-  BowlingRules.prototype.updateOddRole(role, pins)
-}
-BowlingRules.prototype._calcBonus(role,pins)
-return scoreArray
+BowlingRules.prototype.takeTurn = function(role, pins, score) {
+  if (this._isEven(role) === true) {
+    BowlingRules.prototype.updateEvenRole(role, pins)
+  } else {
+    BowlingRules.prototype.updateOddRole(role, pins, score)
+  }
+  BowlingRules.prototype._calcBonus(role,pins)
+  return scoreArray
 };
 
-BowlingRules.prototype.updateOddRole = function(role, pins) {
+BowlingRules.prototype.updateOddRole = function(role, pins, score) {
   if (pins === 10){
     var spares = 2;
     var nextTurn = role + 2
@@ -36,7 +36,7 @@ BowlingRules.prototype.updateOddRole = function(role, pins) {
   this.turnHash = {
     pins1stRole: pins,
     pins2ndRole: 0,
-    score: pins,
+    score: score + pins,
     spares: spares,
     nextTurn: nextTurn,
     displayPins1stRole: displayPins,
@@ -50,7 +50,7 @@ BowlingRules.prototype.updateOddRole = function(role, pins) {
 BowlingRules.prototype.updateEvenRole = function(role, pins) {
   retrieveArrayPlace = role / 2
   this.turnHash = scoreArray[retrieveArrayPlace];
-  if ((pins + this.turnHash.score) === 10){
+  if ((pins + this.turnHash.pins1stRole) === 10){
     this.turnHash.spares = 1;
     var displayPins = "/"
   } else {
@@ -68,16 +68,26 @@ BowlingRules.prototype.updateEvenRole = function(role, pins) {
 }
 
 BowlingRules.prototype._calcBonus = function(role, pins){
-  for(let i = 0; i < ((role)/2); i++) {
+  
+  for(let i = 1; i < ((role)/2); i++) {
     this.turnHash = scoreArray[i]
+    // add-in score to next turn if last turn just added a bonus
+    
+    // calculate if spares - i.e. a bonus is due
     if(this.turnHash.spares >0){
       this.turnHash.spares -= 1
+      var strikeOrSpare = this.turnHash.spares
       this.turnHash.score += pins
+      scoreArray[i+1].score += pins
+      console.log("before checking flag?")
+      console.log(i)
+      console.log(scoreArray[i+1].score)
+      if(scoreArray[i+1].displayScore != ""){scoreArray[i+1].displayScore = String(scoreArray[i+1].score)}
       if(this.turnHash.spares === 0){
         this.turnHash.displayScore = String(this.turnHash.score)
       }
-      scoreArray[i] = this.turnHash
     }
+    scoreArray[i] = this.turnHash
   }
 }
   

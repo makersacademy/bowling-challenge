@@ -1,70 +1,71 @@
 $(document).ready(function(){
   var bowlingRules = new BowlingRules()
   var scoreArray
+  var score = 0
   var role = 1
   turnTaken = false
  
   $("#0").click(function(){
-    var scoreArray = bowlingRules.takeTurn(role, 0);
-    turnTaken = true
+    scoreArray = bowlingRules.takeTurn(role, 0, score);
+    displayScreen (scoreArray)
   });
   $("#1").click(function(){
-    var scoreArray = bowlingRules.takeTurn(role, 1);
-    var turnTaken = true
+    scoreArray = bowlingRules.takeTurn(role, 1, score);
+    displayScreen (scoreArray)
   });
   $("#2").click(function(){
-    var scoreArray = bowlingRules.takeTurn(role, 2);
-    turnTaken = true
+    scoreArray = bowlingRules.takeTurn(role, 2, score);
+    displayScreen (scoreArray)
   });
   $("#3").click(function(){
-    var scoreArray = bowlingRules.takeTurn(role, 3);
-    var turnTaken = true
+    scoreArray = bowlingRules.takeTurn(role, 3, score);
+    displayScreen (scoreArray)
   });
   $("#4").click(function(){
-    var scoreArray = bowlingRules.takeTurn(role, 4);
-    var turnTaken = true
+    scoreArray = bowlingRules.takeTurn(role, 4, score);
+    displayScreen (scoreArray)
   });
   $("#5").click(function(){
-    var scoreArray = bowlingRules.takeTurn(role, 5);
-    var turnTaken = true
+    scoreArray = bowlingRules.takeTurn(role, 5, score);
+    displayScreen (scoreArray)
   });
   $("#6").click(function(){
-    var scoreArray = bowlingRules.takeTurn(role, 6);
-    turnTaken = true
+    scoreArray = bowlingRules.takeTurn(role, 6, score);
+    displayScreen (scoreArray)
   });
   $("#7").click(function(){
-    var scoreArray = bowlingRules.takeTurn(role, 7);
-    turnTaken = true
+    scoreArray = bowlingRules.takeTurn(role, 7, score);
+    displayScreen (scoreArray)
   });
   $("#8").click(function(){
-    var scoreArray = bowlingRules.takeTurn(role, 8);
-    turnTaken = true
+    scoreArray = bowlingRules.takeTurn(role, 8, score);
+    displayScreen (scoreArray)
   });  
   $("#9").click(function(){
-    var scoreArray = bowlingRules.takeTurn(role, 9);
-    turnTaken = true
+    scoreArray = bowlingRules.takeTurn(role, 9, score);
+    displayScreen (scoreArray)
   });  
   $("#10").click(function(){
-    var scoreArray = bowlingRules.takeTurn(role, 10);
-    turnTaken = true
+    scoreArray = bowlingRules.takeTurn(role, 10, score);
+    displayScreen (scoreArray)
   });
-
-  if(turnTaken = true){
-    turnTaken = false
-    for(let i = 1; i < 12; i++){
-      roleid = "#role" + String(role)
-      roleid2 = "#role" + String(role +1)
-      scoreid = "#score" + String(role)
-      console.log(scoreArray)
-      if (scoreArray[i] !== 'undefined'){
-        console.log(scoreArray)
-        $(roleid).text = scoreArray.turnHash.displayPins1stRole
-        $(roleid).text = scoreArray.turnHash.displayPins2ndRole
-        $(roleid).text = scoreArray.turnHash.displayScore
-        nextRole = scoreArray.turnHash.nextTurn
+  function displayScreen (scoreArray) { 
+    console.log(scoreArray)
+    for(let i = 1; i < 11; i++){
+      if (i === 1){
+        $("#create-table").replaceWith('<tr id="create-table"></tr>') 
       }
-    role = nextRole
+      if (typeof scoreArray[i] !== 'undefined'){
+        $("#create-table").append(
+          '<tr><th rowspan="2">' + String(i) + ':</th><td>' + scoreArray[i].displayPins1stRole + '</td>\
+          <th rowspan="2">' + scoreArray[i].displayScore + '</th></tr>\
+          <tr><td>' + scoreArray[i].displayPins2ndRole + '</td> </tr>');
+        var nextRole = scoreArray[i].nextTurn
+        score = scoreArray[i].score
+      }  
+    
     }
+  return role = nextRole
   }
 });
 

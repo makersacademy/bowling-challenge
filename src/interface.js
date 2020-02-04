@@ -159,40 +159,4 @@ $(document).ready(function() {
 
   })
 
-
-  $('#bowl').on('mousedown', function(e){
-
-   
-    var dr = $(this).addClass("drag").css("cursor","move");
-    var height = dr.outerHeight();
-    var width = dr.outerWidth();
-    var ypos = dr.offset().top + height - e.pageY;
-    var xpos = dr.offset().left + width - e.pageX;
-    // console.log(e.pageY);
-    // console.log(e.pageX);
-    var x0 = e.pageX;
-    var y0 = e.pageY;
-  
-    $(document.body).on('mousemove', function(e){
-      var itop = e.pageY + ypos - height;
-      var ileft = e.pageX + xpos - width;
-      if(dr.hasClass("drag")){
-        dr.offset({top: itop,left: ileft});
-      }
-    }).on('mouseup', function(e){
-        dr.removeClass("drag");
-        var x1 = e.pageX;
-        var y1 = e.pageY;
-        var delta_x = x1 - x0;
-        var delta_y = y1 - y0;
-        console.log(e.pageX);
-        console.log(e.pageY);
-        // console.log(e.pageY);
-        // console.log(e.pageX);
-        // console.log(delta_x);
-        // console.log(delta_y);
-    });
-  });
-
-
 })

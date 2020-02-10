@@ -39,4 +39,4 @@ To run tests:
 - right click 'SpecRunner.html' and select 'copy full path'
 - paste the  file location into chrome.
 
-![Screenshot](https://github.com/JoshDavies/bowling-challenge/blob/master/public/mobile-layout.jpg?raw=true)
+<img align="left" width="200" height="400" src="https://github.com/JoshDavies/bowling-challenge/blob/master/public/mobile-layout.jpg?raw=true">  

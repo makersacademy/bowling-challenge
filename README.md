@@ -3,9 +3,17 @@
 A single page web app that records a players turns & caluculates their score.   
 [Visit live Webpage](https://joshdavies.github.io/bowling-challenge/)  
 
-## Tech   
-JavaScript (ES5, Constructor design pattern), JQuery, chart.js & Jasmine.  
+<img align="left" width="200" height="400" src="https://github.com/JoshDavies/bowling-challenge/blob/master/public/mobile-layout.jpg?raw=true">  
 
+## Tech   
+- JavaScript (ES5, Constructor design pattern)
+- JQuery
+- chart.js 
+- Jasmine.  
+  
+    
+     
+     
 ## Bowling Rules
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 

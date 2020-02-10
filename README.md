@@ -1,10 +1,10 @@
 <h1 align="center">🎳 Bowling ScoreCard</h1>
 
-A single page web app that records a players turns & caluculates their score.   
-[Visit live Webpage](https://joshdavies.github.io/bowling-challenge/)  
-
 <img align="left" width="200" height="400" src="https://github.com/JoshDavies/bowling-challenge/blob/master/public/mobile-layout.jpg?raw=true">  
 
+A single page web app that records a players turns & caluculates their score.   
+[Visit live Webpage](https://joshdavies.github.io/bowling-challenge/)   
+  
 ## Tech   
 - JavaScript (ES5, Constructor design pattern)
 - JQuery
@@ -12,6 +12,9 @@ A single page web app that records a players turns & caluculates their score.
 - Jasmine.  
   
     
+     
+     
+     
      
      
 ## Bowling Rules

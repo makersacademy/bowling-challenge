@@ -6,6 +6,16 @@ Bowling Challenge
 
 Users can keep track of their bowling score by inputting each of their rolls.
 
+## Installation
+
+```
+git clone git@github.com:Hyan18/bowling-challenge.git
+cd bowling-challenge
+npm install
+```
+
+In your browser, open the index.html file to see the app and open the SpecRunner.html file to run the tests
+
 ## Approach
 
 Initially I used only one class but ended up creating another class to handle the Frames as using only one class made it too long. I also considered having another class to handle the Rolls but deemed it unnecessary as it would only be storing a number.

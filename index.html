@@ -1,0 +1,91 @@
+<html>
+<link rel="stylesheet" href="css/style.css">
+<head>
+  <br>
+  <title>Bowling</title>
+</head>
+<body bgcolor="#FF7F50">
+  <center>
+    <font face="verdana" color="#777777">
+      <h3><font color="white">BOWLING!</font></h3>
+      <div id="main">
+        <h4>How many pins knocked down?</h4>
+        <input type="button" class="button" id="zero" value="0">
+        <input type="button" class="button" id="one" value="1">
+        <input type="button" class="button" id="two" value="2">
+        <input type="button" class="button" id="three" value="3">
+        <input type="button" class="button" id="four" value="4">
+        <input type="button" class="button" id="five" value="5">
+        <input type="button" class="button" id="six" value="6">
+        <input type="button" class="button" id="seven" value="7">
+        <input type="button" class="button" id="eight" value="8">
+        <input type="button" class="button" id="nine" value="9">
+        <input type="button" class="button" id="ten" value="10">
+        <input type="button" class="button" id="reset" value="RESET">
+        <h4>Score:</h4>
+        <table class="bowl-table">
+          <thead>
+            <tr>
+            <th colspan="2">1</th>
+            <th colspan="2">2</th>
+            <th colspan="2">3</th>
+            <th colspan="2">4</th>
+            <th colspan="2">5</th>
+            <th colspan="2">6</th>
+            <th colspan="2">7</th>
+            <th colspan="2">8</th>
+            <th colspan="2">9</th>
+            <th colspan="2">10</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div style="height: 20px"><h4 id="roll1" class="rolls"></h4></div></td>
+            <td><div style="height: 20px"><h4 id="roll2" class="rolls"></h4></div></td>
+            <td><div style="height: 20px"><h4 id="roll3" class="rolls"></h4></div></td>
+            <td><div style="height: 20px"><h4 id="roll4" class="rolls"></h4></div></td>
+            <td><div style="height: 20px"><h4 id="roll5" class="rolls"></h4></div></td>
+            <td><div style="height: 20px"><h4 id="roll6" class="rolls"></h4></div></td>
+            <td><div style="height: 20px"><h4 id="roll7" class="rolls"></h4></div></td>
+            <td><div style="height: 20px"><h4 id="roll8" class="rolls"></h4></div></td>
+            <td><div style="height: 20px"><h4 id="roll9" class="rolls"></h4></div></td>
+            <td><div style="height: 20px"><h4 id="roll10" class="rolls"></h4></div></td>
+            <td><div style="height: 20px"><h4 id="roll11" class="rolls"></h4></div></td>
+            <td><div style="height: 20px"><h4 id="roll12" class="rolls"></h4></div></td>
+            <td><div style="height: 20px"><h4 id="roll13" class="rolls"></h4></div></td>
+            <td><div style="height: 20px"><h4 id="roll14" class="rolls"></h4></div></td>
+            <td><div style="height: 20px"><h4 id="roll15" class="rolls"></h4></div></td>
+            <td><div style="height: 20px"><h4 id="roll16" class="rolls"></h4></div></td>
+            <td><div style="height: 20px"><h4 id="roll17" class="rolls"></h4></div></td>
+            <td><div style="height: 20px"><h4 id="roll18" class="rolls"></h4></div></td>
+            <td><div style="height: 20px"><h4 id="roll19" class="rolls"></h4></div></td>
+            <td><div style="height: 20px"><h4 id="roll20" class="rolls"></h4></div></td>
+
+          </tr>
+          <tr>
+            <td colspan="2"><div style="height: 20px"><h4 id="frame1" class="frames"></h4></div></td>
+            <td colspan="2"><div style="height: 20px"><h4 id="frame2" class="frames"></h4></div></td>
+            <td colspan="2"><div style="height: 20px"><h4 id="frame3" class="frames"></h4></div></td>
+            <td colspan="2"><div style="height: 20px"><h4 id="frame4" class="frames"></h4></div></td>
+            <td colspan="2"><div style="height: 20px"><h4 id="frame5" class="frames"></h4></div></td>
+            <td colspan="2"><div style="height: 20px"><h4 id="frame6" class="frames"></h4></div></td>
+            <td colspan="2"><div style="height: 20px"><h4 id="frame7" class="frames"></h4></div></td>
+            <td colspan="2"><div style="height: 20px"><h4 id="frame8" class="frames"></h4></div></td>
+            <td colspan="2"><div style="height: 20px"><h4 id="frame9" class="frames"></h4></div></td>
+            <td colspan="2"><div style="height: 20px"><h4 id="frame10" class="frames"></h4></div></td>
+          </tr>
+
+        </tbody>
+      </table>
+      <br>
+      <h4>Total:</h4>
+
+      <h4 id="total" class="frames"></h4>
+      <br>
+
+        <script src="jquery.js"></script>
+        <script src="interface.js"></script>
+        <script src="src/bowlgame.js"></script>
+      </div>
+</body>
+</html>

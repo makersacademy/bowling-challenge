@@ -1,5 +1,5 @@
 $( document ).ready(function () {
-  var bowling = new Bowling()
+  var frame = new Frame()
 
-  $('#test').text(bowling.number)
+  $(`#te${'st'}`).text(`${frame.roll_one} + ${frame.roll_two}`)
 })

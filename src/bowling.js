@@ -1,3 +1,3 @@
 function Bowling () {
-  this.number = 5;
+  this.number = 5
 }

@@ -1,0 +1,5 @@
+function Scorecard() {
+
+  this.scoreArray = [];
+
+};

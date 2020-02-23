@@ -1,20 +1,39 @@
-function Frame () {
-  this.roll_one = 0
-  this.roll_two = 0
+function Frame (rolls) {
+  this.rolls = rolls
 }
 
-Frame.prototype.add_roll_one_score = function (score) {
-  this.roll_one = score
-}
-
-Frame.prototype.add_roll_two_score = function (score) {
-  this.roll_two = score
+Frame.prototype.total_without_bonus = function () {
+  return this.rolls[0] + this.rolls[1]
 }
 
 Frame.prototype.isStrike = function() {
-  return this.roll_one === 10
+  return this.rolls[0] === 10
 }
 
 Frame.prototype.isSpare = function () {
-  return this.isStrike() === false && this.roll_one + this.roll_two === 10
+  return this.isStrike() === false && this.total_without_bonus() === 10
+}
+
+Frame.prototype.strikeBonus = function(next_frame) {
+  if (this.isStrike() && next_frame !== undefined) {
+    return this.total_without_bonus() + next_frame.rolls[0]
+  } else {
+    return this.total_without_bonus()
+  }
+}
+
+Frame.prototype.bonus = function(next_frame, next_next_frame) {
+  if ( next_frame === undefined ) {
+    return 0
+  } else if (!this.isStrike() && !this.isSpare()) {
+    return 0
+  } else if (this.isSpare()) {
+    return next_frame.rolls[0]
+  } else {
+    return next_frame.strikeBonus(next_next_frame)
+  }
+}
+
+Frame.prototype.total_with_bonus = function(next_frame, next_next_frame) {
+  return this.total_without_bonus() + this.bonus(next_frame, next_next_frame)
 }

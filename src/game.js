@@ -1,12 +1,17 @@
 var Game = function () {
   this.total = 0
   this.frames = []
-  this.frame = 1
-  this.roll = 1
+  this.current_frame = 1
+  this.current_roll = 1
 }
 
 Game.prototype.add_frame = function (frame) {
   this.frames.push(frame)
 }
 
-console.log('New game')
+Game.prototype.update_total = function(frame) {
+  this.total += frame.total_without_bonus()
+  return this.total
+}
+
+console.log('New bowling game')

@@ -17,6 +17,17 @@ describe('Scorecard', function(){
 
   });
 
+  describe ('#addScore', function() {
+
+    it ("should add score to array", function() {
+
+      scorecard.addScore(3)
+
+      expect(scorecard.scoreArray).toContain(3)
+
+    })
+  })
+
 
 
 });

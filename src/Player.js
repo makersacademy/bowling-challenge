@@ -46,6 +46,8 @@ Player.prototype.secondRoll = function(pins) {
       this.scoreTracker.push([this.roll1, this.roll2])
       this.score += this.strikeCalc(this.strikeStreak)
     }
+    this.onSpare = false
+    this.strikeStreak = 0
   }
 }
 
@@ -67,8 +69,6 @@ Player.prototype.spare = function() {
   this.roll2 = 'spare'
   this.scoreTracker.push([this.roll1, this.roll2])
   this.onSpare = true
-  
-  
 }
 
 Player.prototype.firstRollOnSpare = function(pins) {

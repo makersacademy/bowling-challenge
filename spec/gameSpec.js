@@ -21,20 +21,35 @@ describe('Game', function () {
     })
   })
 
-  describe('update_total', function() {
+  describe('total', function() {
     it('returns score when no strikes or spares', function() {
       var game = new Game()
       var frame = new Frame([4,5])
       for(var i = 0; i < 10; i++) {
         game.add_frame(frame)
-        game.update_total(frame)
       }
       expect(game.frames.length).toEqual(10)
-      expect(game.total).toEqual(90)
+      expect(game.total_score()).toEqual(90)
     })
 
     it('returns score when spares but not strikes', function() {
-      
+      var game = new Game()
+      var frame = new Frame([4,6])
+      for(var i = 0; i < 10; i++) {
+        game.add_frame(frame)
+      }
+      expect(game.frames.length).toEqual(10)
+      expect(game.total_score()).toEqual(14*9+10)
+    })
+
+    it('returns score when strikes', function() {
+      var game = new Game()
+      var frame = new Frame([10,0])
+      for(var i = 0; i < 10; i++) {
+        game.add_frame(frame)
+      }
+      expect(game.frames.length).toEqual(10)
+      expect(game.total_score()).toEqual(30*8 + 20 + 10)
     })
   })
 })

@@ -1,56 +1,50 @@
-'use strict';
+'use strict'
 
-// Game object
-
-function Game() {
-  this.frames = [];
-  this.gameTotal = 0;
+var BowlingGame = function() {
+	this.rolls = [];
+	this.currentRoll = 0;
 };
 
-Game.prototype.addFrame = function(frame) {
-  if (this.frames.length < 10) {
-    this.frames.push(frame);  
-  } else {
-    return;
-  };
+BowlingGame.prototype.roll = function(pins) {
+	this.rolls[this.currentRoll++] = pins;
 };
 
-Game.prototype.finalScore = function() {
-  for (var i = 0; i < this.frames.length; i++) {
-    for (var j = 0; j < this.frames[i].length; j++) {
-      this.gameTotal += this.frames[i][j];   
-    }  
-  }
-  return this.gameTotal;
+BowlingGame.prototype.score = function() {
+	var score = 0;
+	var rollIndex = 0;
+	var self = this;
+
+	function sumOfBallsInFrame() {
+		return self.rolls[rollIndex] + self.rolls[rollIndex + 1];
+	}
+
+	function spareBonus() {
+		return self.rolls[rollIndex + 2];
+	}
+
+	function strikeBonus() {
+		return self.rolls[rollIndex + 1] + self.rolls[rollIndex + 2];
+	}
+
+	function isStrike() {
+		return self.rolls[rollIndex] === 10;
+	}
+
+	function isSpare() {
+		return self.rolls[rollIndex] + self.rolls[rollIndex + 1] === 10;
+	}
+
+	for (var frame = 0; frame < 10; frame++) {
+		if (isStrike()) {
+			score += 10 + strikeBonus();
+			rollIndex++;
+		} else if (isSpare()) {
+			score += 10 + spareBonus();
+			rollIndex += 2;
+		} else {
+			score += sumOfBallsInFrame();
+			rollIndex += 2;
+		}
+	}
+	return score;
 };
-
-// Frame object
-
-
-function Frame () {
-  this.rolls = [];
-  this.roll1 = 0;
-  this.roll2 = 0;
-  this.frameTotal = 0;
-};
-
-Frame.prototype.firstRoll = function(roll) {
-  this.roll1 = roll
-  this.frameTotal += roll
-  this.rolls.push(roll);
-};
-
-Frame.prototype.secondRoll = function(roll) {
-  this.roll2 = roll
-  this.frameTotal += roll
-  this.rolls.push(roll);
-};
-
-Frame.prototype.isStrike = function() {
-    return this.roll1 === 10;
-  };
-  
-Frame.prototype.isSpare = function() {
-    return (this.roll1 + this.roll2) === 10;
-};
- 

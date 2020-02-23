@@ -1,81 +1,57 @@
-'use strict';
+'use strict'
 
-// Game spec
+describe("BowlingGame", function(){
 
-describe('Game',function(){
   var game;
 
   beforeEach(function(){
-    game = new Game(); 
+    game = new BowlingGame();
   });
 
-  it ('keeps track of all rolls', function(){
-    expect(game.frames).toEqual([]);
+  function rollMany(rolls, pins){
+    for(var i = 0; i < rolls; i++){
+      game.roll(pins);
+    }
+  };
+
+  function rollSpare(){
+    game.roll(5);
+    game.roll(5);
+  }
+
+  function rollStrike(){
+    game.roll(10);
+  }
+
+  it("Gutter game", function(){
+    rollMany(20, 0); 
+    expect(game.score()).toBe(0);
   });
 
-  it ('accepts frames a parameter on addFrame', function(){
-    game.addFrame([1,2]);
-    expect(game.frames).toEqual([[1,2]]);
+  it("All ones", function(){
+    rollMany(20, 1);
+    expect(game.score()).toBe(20);
   });
 
-  it ('accepts a maximum of 10 frames', function(){
-    game.addFrame([1,2]);
-    game.addFrame([1,2]);
-    game.addFrame([1,2]);
-    game.addFrame([1,2]);
-    game.addFrame([1,2]);
-    game.addFrame([1,2]);
-    game.addFrame([1,2]);
-    game.addFrame([1,2]);
-    game.addFrame([1,2]);
-    game.addFrame([1,2]);
-    game.addFrame([1,2]);
-    expect(game.frames.length).toEqual(10);
+  it("One spare", function(){
+    rollSpare();
+    game.roll(3);
+    rollMany(17, 0);
+    expect(game.score()).toBe(16);
   });
 
-  it ('calculates a final score', function() {
-    game.addFrame([1,2]);
-    game.addFrame([3,4]);
-    expect(game.finalScore()).toEqual(10);
+  it("One strike", function(){
+    rollStrike();
+    game.roll(3);
+    game.roll(4);
+    rollMany(16, 0);
+    expect(game.score()).toBe(24);
   });
 
-});
-
-// Frame spec
-
-describe('Frame', function(){
-  var frame;
-
-  beforeEach(function(){
-    frame = new Frame();
+  it("Perfect game", function(){
+    rollMany(12, 10);
+    expect(game.score()).toBe(300);
   });
 
-  it ('keeps track of rolls', function(){
-    expect(frame.rolls).toEqual([]);
-    expect(frame.frameTotal).toEqual((0))
-  });
-
-  it ('takes in rolls as parameters', function(){
-    frame.firstRoll(2);
-    frame.secondRoll(3);
-    expect(frame.rolls).toEqual([2,3]);
-  });
-
-  it ('adds a total of rolls', function(){
-    frame.firstRoll(3);
-    frame.secondRoll(6);
-    expect(frame.frameTotal).toEqual(9);
-  });
-
-  it ('keeps track of strikes', function(){
-    frame.firstRoll(10);
-    expect(frame.isStrike()).toBe(true);
-  });
-
-  it ('keeps track of spares', function(){
-    frame.firstRoll(3);
-    frame.secondRoll(7);
-    expect(frame.isSpare()).toBe(true);
-  });
-
+  
 });

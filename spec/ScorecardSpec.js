@@ -17,18 +17,28 @@ describe('Scorecard', function(){
 
   });
 
-  // describe ('#addScore', function() {
+  describe ('#storeFrame', function() {
 
-  //   it ("should add score to array", function() {
+    it ("should add frameScore dictionary to Scorearray array", function() {
 
-  //     scorecard.addScore(3)
+      scorecard.addScore(10)
+      scorecard.storeFrame()
 
-  //     expect(scorecard.scoreArray).toContain(3)
+      expect(scorecard.scoreArray).toContain({ throw_1: 10, throw_2: 0, result: 'X' })
 
-  //   })
-  // })
+    })
 
-  describe ('#frameScore', function() {
+    it ("should clear frameScore dictionary after being stored in scoreArray", function() {
+
+      scorecard.addScore(10)
+      scorecard.storeFrame()
+
+      expect(scorecard.frameScore).toEqual({})
+
+    })
+  })
+
+  describe ('#addScore', function() {
 
     it("should return empty hash on initiialize", function() {
 
@@ -50,7 +60,7 @@ describe('Scorecard', function(){
       scorecard.addScore(5)
       scorecard.addScore(4)
 
-      expect(scorecard.frameScore).toEqual({ throw_1: 5, throw_2: 4, result: 9 })
+      expect(scorecard.scoreArray[0]).toEqual({ throw_1: 5, throw_2: 4, result: 9 })
 
 
     })
@@ -59,7 +69,7 @@ describe('Scorecard', function(){
 
       scorecard.addScore(10)
 
-      expect(scorecard.frameScore).toEqual({ throw_1: 10, throw_2: 0, result: 'X' })
+      expect(scorecard.scoreArray[0]).toEqual({ throw_1: 10, throw_2: 0, result: 'X' })
 
 
     })
@@ -69,7 +79,17 @@ describe('Scorecard', function(){
       scorecard.addScore(9)
       scorecard.addScore(1)
 
-      expect(scorecard.frameScore).toEqual({ throw_1: 9, throw_2: 1, result: '/' })
+      expect(scorecard.scoreArray[0]).toEqual({ throw_1: 9, throw_2: 1, result: '/' })
+
+
+    })
+
+    it("following the result of the frame being added to dictionary it should clear the frame", function() {
+
+      scorecard.addScore(9)
+      scorecard.addScore(1)
+
+      expect(scorecard.frameScore).toEqual({})
 
 
     })

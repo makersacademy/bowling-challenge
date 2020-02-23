@@ -3,15 +3,8 @@ function Score() {
 };
 
 Score.prototype.findScore = function(results) {
-  this.total = results.reduce(addArray, 0);
-}
-
-function add(total, num) {
-  return total + num;
-}
-
-function addArray(total, nextElement) {
-  return total + nextElement.reduce(add);
+  frames = results.slice(0, 10)
+  this.total = frames.reduce(addArray, 0);
 }
 
 // Score.prototype.findScore = function(results) {
@@ -26,3 +19,11 @@ function addArray(total, nextElement) {
 //   }
 //
 // }
+
+function add(total, num) {
+  return total + num;
+}
+
+function addArray(total, nextElement) {
+  return total + nextElement.reduce(add);
+}

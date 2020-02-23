@@ -9,11 +9,13 @@ function Frame () {
 
 Frame.prototype.firstRoll = function(roll) {
   this.roll1 = roll
+  this.frameTotal += roll
   this.rolls.push(roll);
 };
 
 Frame.prototype.secondRoll = function(roll) {
   this.roll2 = roll
+  this.frameTotal += roll
   this.rolls.push(roll);
 };
 

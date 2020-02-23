@@ -18,6 +18,12 @@ describe('Frame',function(){
     expect(frame.rolls).toEqual([2,3]);
   });
 
+  it ('adds a total of rolls', function(){
+    frame.firstRoll(3);
+    frame.secondRoll(6);
+    expect(frame.frameTotal).toEqual(9);
+  });
+
   it ('keeps track of strikes', function(){
     frame.firstRoll(10);
     expect(frame.isStrike()).toBe(true);
@@ -28,4 +34,5 @@ describe('Frame',function(){
     frame.secondRoll(7);
     expect(frame.isSpare()).toBe(true);
   });
+ 
 });

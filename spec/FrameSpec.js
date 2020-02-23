@@ -13,8 +13,19 @@ describe('Frame',function(){
   });
 
   it ('takes in rolls as parameters', function(){
-    frame.roll1(2);
-    frame.roll2(3);
+    frame.firstRoll(2);
+    frame.secondRoll(3);
     expect(frame.rolls).toEqual([2,3]);
+  });
+
+  it ('keeps track of strikes', function(){
+    frame.firstRoll(10);
+    expect(frame.isStrike()).toBe(true);
+  });
+
+  it ('keeps track of spares', function(){
+    frame.firstRoll(3);
+    frame.secondRoll(7);
+    expect(frame.isSpare()).toBe(true);
   });
 });

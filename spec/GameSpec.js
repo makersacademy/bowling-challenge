@@ -3,16 +3,16 @@ describe('Game', function(){
   var game
 
   beforeEach(function(){
-    game = new Game(player1 = new Player('Tim'), player2 = new Player('Harry'))
+    game = new Game(player1 = new Player('Tim'), player2 = new Player('Ray'))
   });
 
   it('game should be created with players', function() {
     expect(game.player1.name).toEqual('Tim')
-    expect(game.player2.name).toEqual('Harry')
+    expect(game.player2.name).toEqual('Ray')
   });
 
   it('game should start on first turn', function(){
-    expect(game.player1.turn).toEqual(1)
+    expect(game.player1.scoreTracker.length).toEqual(0)
   });
 
   describe('keeping score', function(){
@@ -21,16 +21,16 @@ describe('Game', function(){
       game.player1.firstRoll(5)
       game.player1.secondRoll(4)
       expect(game.player1.score).toEqual(9)
-      expect(game.player1.spare).toEqual(false)
-      expect(game.player1.onStrike).toEqual(false)
+      expect(game.player1.onSpare).toEqual(false)
+      expect(game.player1.strikeStreak).toEqual(0)
       expect(game.player1.scoreTracker.length + 1).toEqual(2) // +1 because array start a 0
     });
 
     it('score a spare', function(){
       game.player2.firstRoll(4)
       game.player2.secondRoll(6)
-      expect(game.player2.spare).toEqual(true)
-      expect(game.player2.onStrike).toEqual(false)
+      expect(game.player2.onSpare).toEqual(true)
+      expect(game.player2.strikeStreak).toEqual(0)
     });
 
     it('second turn after no strikes or spares', function(){
@@ -58,12 +58,50 @@ describe('Game', function(){
       game.player1.secondRoll(2)
       expect(game.player1.score).toEqual(5)
       game.player1.firstRoll(10)
-      expect(game.player1.onStrike).toEqual(true)
+      expect(game.player1.strikeStreak).toEqual(1)
       expect(game.player1.score).toEqual(5)
       game.player1.firstRoll(5)
       game.player1.secondRoll(2)
       expect(game.player1.score).toEqual(29)
+    });
 
+    it('end a third turn after spare and strike', function(){
+      game.player1.firstRoll(5)
+      game.player1.secondRoll(5)
+      expect(game.player1.onSpare).toEqual(true)
+      game.player1.firstRoll(10)
+      expect(game.player1.strikeStreak).toEqual(1)
+      expect(game.player1.onSpare).toEqual(false)
+      game.player1.firstRoll(2)
+      game.player1.secondRoll(4)
+      expect(game.player1.score).toEqual(42)
+      expect(game.player1.scoreTracker).toEqual([[5,'spare'], ['strike','NA'], [2,4]])
+    });
+
+    it('end fourth turn after with two strikes in a row', function(){
+      game.player1.firstRoll(5)
+      game.player1.secondRoll(4)
+      game.player1.firstRoll(10)
+      game.player1.firstRoll(10)
+      game.player1.firstRoll(5)
+      game.player1.secondRoll(2)
+      expect(game.player1.score).toEqual(58)
+    });
+
+    it('strike then a spare', function(){
+      game.player1.firstRoll(5)
+      game.player1.secondRoll(4)
+      expect(game.player1.score).toEqual(9)
+      console.log(game.player1.score)
+      game.player1.firstRoll(10)
+      console.log(game.player1.score)
+      game.player1.firstRoll(5)
+      game.player1.secondRoll(5)
+      console.log(game.player1.score)
+      game.player1.firstRoll(5)
+      game.player1.secondRoll(3)
+      console.log(game.player1.score)
+      expect(game.player1.score).toEqual(52)
     });
   }); 
 });

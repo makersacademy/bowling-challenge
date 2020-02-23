@@ -31,9 +31,10 @@ describe('Game',function(){
     expect(game.frames.length).toEqual(10);
   });
 
-  // it ('calculates a final score', function() {
-  //   expect(game.finalScore().toEqual(0));
-  // });
-
+  it ('calculates a final score', function() {
+    game.addFrame([1,2]);
+    game.addFrame([3,4]);
+    expect(game.finalScore()).toEqual(10);
+  });
 
 });

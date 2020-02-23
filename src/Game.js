@@ -13,14 +13,14 @@ Game.prototype.addFrame = function(frame) {
   };
 };
 
-// Game.prototype.finalScore = function() {
-//   for (var i = 0; i < this.frames.length; i++) {
-//     for (var j = 0; j < this.frames[i].length; j++) {
-//       this.gameTotal += this.frames[i][j];   
-//     }  
-//   }
-//   return this.gameTotal;
-// };
+Game.prototype.finalScore = function() {
+  for (var i = 0; i < this.frames.length; i++) {
+    for (var j = 0; j < this.frames[i].length; j++) {
+      this.gameTotal += this.frames[i][j];   
+    }  
+  }
+  return this.gameTotal;
+};
 
 
 

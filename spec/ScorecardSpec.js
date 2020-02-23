@@ -45,6 +45,16 @@ describe('Scorecard', function(){
 
     })
 
+    it("should return throw_1, throw_2 and result when adding score totalling less than 10", function() {
+
+      scorecard.addScore(5)
+      scorecard.addScore(4)
+
+      expect(scorecard.frameScore).toEqual({ throw_1: 5, throw_2: 4, result: 9 })
+
+
+    })
+
   })
 
 

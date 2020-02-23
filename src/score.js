@@ -11,5 +11,5 @@ Score.prototype.add = function(results) {
       ans += results[i][n]
     }
   }
-  return(ans);
+  this.total = ans;
 }

@@ -11,6 +11,9 @@ Scorecard.prototype.addScore = function(number) {
     this.frameScore.throw_1 = number
     this.frameScore.throw_2 = 0
     this.frameScore.result = 'X'
+  } else if (number + this.frameScore.throw_1 === 10) {
+    this.frameScore.throw_2 = number
+    this.frameScore.result = '/'
   } else if (this.frameScore["throw_1"] !== undefined) {
     this.frameScore.throw_2 = number
     this.frameScore.result = this.frameScore.throw_1 + this.frameScore.throw_2

@@ -64,6 +64,16 @@ describe('Scorecard', function(){
 
     })
 
+    it("should store a strike and write all dictionary values after throw", function() {
+
+      scorecard.addScore(9)
+      scorecard.addScore(1)
+
+      expect(scorecard.frameScore).toEqual({ throw_1: 9, throw_2: 1, result: '/' })
+
+
+    })
+
   })
 
 

@@ -1,11 +1,17 @@
-// var Frame = require('./Frame');
+'use strict';
 
-// 'use strict';
+function Game () {
+  this.frames = [];
+  this.gameTotal = 0;
+};
 
-// function Game () {
-//   this.frames = [];
-//   this.gameTotal = 0;
-// };
+Game.prototype.addFrame = function(frame) {
+  if (this.frames.length < 10) {
+    this.frames.push(frame);  
+  } else {
+    return;
+  };
+};
 
 // Game.prototype.finalScore = function() {
 //   for (var i = 0; i < this.frames.length; i++) {
@@ -14,11 +20,6 @@
 //     }  
 //   }
 //   return this.gameTotal;
-// };
-
-// Game.prototype.addFrame = function() {
-//   frame = new Frame();
-//   this.frames.push(frame);  
 // };
 
 

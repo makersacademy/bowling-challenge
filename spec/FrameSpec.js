@@ -34,5 +34,4 @@ describe('Frame',function(){
     frame.secondRoll(7);
     expect(frame.isSpare()).toBe(true);
   });
- 
 });

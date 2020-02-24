@@ -1,3 +1,4 @@
+
 function Player(name = player1) {
   this.name = name
   this.score = 0
@@ -38,11 +39,10 @@ Player.prototype.secondRoll = function(pins) {
       this.spare();
     }
   } else {
+    this.roll2 = pins
     if (this.strikeStreak === 0 ) {
-      this.roll2 = pins
       this.updateScore(pins);
     } else if (this.strikeStreak > 0) {
-      this.roll2 = pins
       this.scoreTracker.push([this.roll1, this.roll2])
       this.score += this.strikeCalc(this.strikeStreak)
     }
@@ -85,7 +85,6 @@ Player.prototype.strikeCalc = function(streak) {
   } else if (streak === 2) {
     console.log("log", lastRolls)
     tempscore = (10 + 10 + (lastRolls[0])) + (10 + lastRolls[0] + lastRolls[1]) + (lastRolls[0] +lastRolls[1])
-
   } else if (streak > 2) {
     tempscore = 30
   }
@@ -93,13 +92,3 @@ Player.prototype.strikeCalc = function(streak) {
   return tempscore
 }
 
-
-
-
-function Game(player1 = new Player('Tim'), player2 = new Player('Harry')) {
-  this.player1 = player1
-  this.player2 = player2 
-};
-
-
-var examplearr = [[5,5], ['strike', 'NA'], [5,'spare'], [5,3]];

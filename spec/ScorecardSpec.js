@@ -94,6 +94,56 @@ describe('Scorecard', function(){
 
     })
 
+    it("if it is the 10th round, player should be able to make an extra throw if recieving strike", function() {
+      scorecard.addScore(10)
+      scorecard.addScore(10)
+      scorecard.addScore(10)
+      scorecard.addScore(10)
+      scorecard.addScore(10)
+      scorecard.addScore(10)
+      scorecard.addScore(10)
+      scorecard.addScore(10)
+      scorecard.addScore(10)
+      scorecard.addScore(10)
+    
+      // 10th throw is strike
+      scorecard.addScore(10)
+
+      // Extra throw
+
+      scorecard.addScore(10)
+
+      //extra throw should be stored in same round
+
+      expect(scorecard.scoreArray).toContain({ throw_1: 10, throw_2: 0, result: 'X', throw_3: 10})
+
+    })
+
+    it("if it is the 10th round, player should be able to make an extra throw if receiving spare", function() {
+      scorecard.addScore(10)
+      scorecard.addScore(10)
+      scorecard.addScore(10)
+      scorecard.addScore(10)
+      scorecard.addScore(10)
+      scorecard.addScore(10)
+      scorecard.addScore(10)
+      scorecard.addScore(10)
+      scorecard.addScore(10)
+
+      // 10th throw is spare
+      scorecard.addScore(3)
+      scorecard.addScore(7)
+
+      // Extra throw
+
+      scorecard.addScore(10)
+
+     //extra throw should be stored in same round
+
+      expect(scorecard.scoreArray).toContain({ throw_1: 3, throw_2: 7, result: '/', throw_3: 10})
+
+    });
+
   })
 
 

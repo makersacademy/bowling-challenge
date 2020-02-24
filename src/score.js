@@ -3,21 +3,22 @@ function Score() {
 };
 
 Score.prototype.findScore = function(results) {
-  frames = results.slice(0, 10)
+  frames = results.slice(0, 10);
   this.total = frames.reduce(addArray, 0);
 }
 
-// Score.prototype.findScore = function(results) {
-//   numFrames = results.length;
-//   ans = 0;
-//   for(i = 0; i < numFrames; i++) {
-//     if (results[i] === 10 && results[i].length) {
-//       if (results[i+1].length === 2) {
-//         ans +=
-//       }
+// Score.prototype.findBonus = function(results) {
+//   frames = results.slice(0, 10);
+//   bonus = 0
+//   for(i = 0; i < frames.length; i++){
+//     if (frames[i].reduce(add) === 10 && frames[i].length === 1) {
+//       bonus += frames[i+1].concat(frames[i+2]).flat().slice(0, 3).reduce(add)
 //     }
-//   }
-//
+//     else if (frames[i].reduce(add) === 10){
+//       bonus += frames[i][0]
+//     };
+//   };
+//   return bonus;
 // }
 
 function add(total, num) {

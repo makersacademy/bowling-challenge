@@ -38,4 +38,13 @@ describe('Bowling', function(){
         };
         expect(bowlingGame.showScore()).toEqual(38)
     });
+
+    it('calculates the score for strikes', function(){
+        bowlingGame.roll(10, 0);
+        for (var i = 0; i < 9; i++){
+            bowlingGame.roll(1, 2)
+        };
+        expect(bowlingGame.showScore()).toEqual(40)
+    });
+
 });

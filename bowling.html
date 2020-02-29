@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel='stylesheet' href='./public/css/styles.css'/>
+  <title>Document</title>
+</head>
+<body>
+  <h1 class="title">Bowling Score Card</h1><br>
+
+  <form>
+    <input type="text" class="form-control" name="name" rows="1" cols="70" placeholder="Roll 1"> <input type='submit' value='Submit'> <br>
+    <input type="text" class="form-control" name="name" rows="1" cols="70" placeholder="Roll 2"> <input type='submit' value='Submit'> <br>
+  </form>
+  
+  <table id='scorecardTable' class='scorecard' cellpadding='1' cellspacing='0'>
+    <tr>
+      <th colspan='6'>Frame 1</th>
+      <th colspan='6'>Frame 2</th>
+      <th colspan='6'>Frame 3</th>
+      <th colspan='6'>Frame 4</th>
+      <th colspan='6'>Frame 5</th>
+      <th colspan='6'>Frame 6</th>
+      <th colspan='6'>Frame 7</th>
+      <th colspan='6'>Frame 8</th>
+      <th colspan='6'>Frame 9</th>
+      <th colspan='6'>Frame 10</th>
+    </tr>
+    <tr>
+      <td colspan='3'></td><td id="frame1" colspan='3'></td>
+      <td colspan='3'></td><td id="frame2" colspan='3'></td>
+      <td colspan='3'></td><td id="frame3" colspan='3'></td>
+      <td colspan='3'></td><td id="frame4" colspan='3'></td>
+      <td colspan='3'></td><td id="frame5" colspan='3'></td>
+      <td colspan='3'></td><td id="frame6" colspan='3'></td>
+      <td colspan='3'></td><td id="frame7" colspan='3'></td>
+      <td colspan='3'></td><td id="frame8" colspan='3'></td>
+      <td colspan='3'></td><td id="frame9" colspan='3'></td>
+      <td colspan='3'></td><td id="frame10" colspan='3'></td>
+    </tr>
+    <tr>
+      <td colspan='6'id="marker0"></td>
+      <td colspan='6'id="marker1"></td>
+      <td colspan='6'id="marker2"></td>
+      <td colspan='6'id="marker3"></td>
+      <td colspan='6'id="marker4"></td>
+      <td colspan='6'id="marker5"></td>
+      <td colspan='6'id="marker6"></td>
+      <td colspan='6'id="marker7"></td>
+      <td colspan='6'id="marker8"></td>
+      <td colspan='6'id="marker9"></td>
+    </tr>
+  </table>
+
+</div>
+<h1 id="comments" class="notice"></h1>
+<h1 id="gameover" class="notice"></h1>
+<h1 id="yourscore" class="final-score"></h1>
+<div id="playagain"></div>
+
+
+
+<script src="src/Game.js"></script>
+<script src="src/Player.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>
+  $(document).ready(function() { 
+  
+    var game = new Game();
+    
+  
+  //   function updateTemperature() {
+  //   $('#temperature').text(thermostat.temperature + "°c");
+  //   $('section').attr('class', thermostat.usage_indicator())
+  // };
+
+});
+  </script> 
+  
+</body>
+</html>

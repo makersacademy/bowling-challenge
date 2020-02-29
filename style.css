@@ -29,9 +29,12 @@ table, tr, td {
   background-image: url("scorecard_background.jpg");
 }
 
+#total-score {
+  text-align: center; 
+  vertical-align: middle;
+  font-size: xx-large;
+}
 
-
-
-
-
-
+.frames {
+  font-size: x-large;
+}

@@ -1,18 +1,24 @@
 function BowlingGame (){
-    this.score = 0;
+    this.score = [];
     this.scoreTable = [];
+    this.score_per_frame = 0;
+
 
 BowlingGame.prototype.roll = function(pinsdown1, pinsdown2){
         this.scoreTable.push(pinsdown1, pinsdown2) 
     };  
-    
+
 BowlingGame.prototype.showScore = function(){
-    return this.scoreTable = (this.scoreTable).reduce(function(a, b) { return a + b; }, 0);
-};
-    // if (pinsdown1 + pinsdown2 !== 10){
-    //         this.score = this.score + pinsdown1 + pinsdown2
-    //     }
-    //     else 
-    //     this.score = this.score + pinsdown1 + pinsdown2 + 
-    // }  
+    var arrayLength = this.scoreTable.length;
+    for (var i = 0; i < arrayLength; i = i + 2) {
+        if(this.scoreTable[i] + this.scoreTable[i + 1] === 10){
+            this.score_per_frame = this.scoreTable[i] + this.scoreTable[i+1] + this.scoreTable[i+2]
+        }
+        else {
+            this.score_per_frame = this.scoreTable[i] + this.scoreTable[i+1] 
+        }
+        (this.score).push(this.score_per_frame)
+    }
+    return (this.score).reduce(function(a, b) { return a + b; }, 0);
+    };
 };

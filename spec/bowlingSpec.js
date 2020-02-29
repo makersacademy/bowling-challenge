@@ -4,10 +4,10 @@ describe('Bowling', function(){
         bowlingGame = new BowlingGame
     });
     it('start a game at 0 points', function(){
-        expect(bowlingGame.score).toEqual(0);
+        expect(bowlingGame.score).toEqual([]);
     });
 
-    it('adds the knockedown pins in a frame to the table score', function(){
+    it('adds 2 numbers of knockedown pins per frame, to the table score', function(){
         bowlingGame.roll(3, 4);
         expect(bowlingGame.scoreTable).toEqual([3, 4])
     });
@@ -31,4 +31,11 @@ describe('Bowling', function(){
         expect(bowlingGame.showScore()).toEqual(0)
     });
 
+    it('calculates the score for spares', function(){
+        bowlingGame.roll(4, 6);
+        for (var i = 0; i < 9; i++){
+            bowlingGame.roll(1, 2)
+        };
+        expect(bowlingGame.showScore()).toEqual(38)
+    });
 });

@@ -49,6 +49,22 @@ describe('Bowling Game', function(){
       expect(game.score()).toBe(40)
     });
 
+    it('returns 300 for a perfect game', function(){
+      for (var i = 0; i < 20; i++) {
+        game.addFrame(10)
+      };
+      expect(game.score()).toBe(300)
+    });
+
+    it('can calculate two bowls', function(){
+      game.addFrame(6)
+      game.addFrame(2)
+      expect(game.addScoreOfTwoFrames(0)).toBe(8)
+    });
+  });
+
+  describe ('#spare score', function(){
+
     it('calculates a different score for a spare', function(){
       game.addFrame(3);
       game.addFrame(7);
@@ -59,7 +75,22 @@ describe('Bowling Game', function(){
       expect(game.score()).toBe(26);
     });
 
+    it('is a spare', function(){
+      game.addFrame(6)
+      game.addFrame(4)
+      expect(game.isASpare(0)).toBe(true)
+     });
+  });
+
+  describe ('#strike score', function(){
+
+    it('is a strike', function(){
+      game.addFrame(10);
+      expect(game.isAStrike(0)).toBe(true)
+     });
+
     it('calculates a different score for a strike', function(){
+
       game.addFrame(10);
       game.addFrame(4);
       game.addFrame(3);
@@ -68,29 +99,14 @@ describe('Bowling Game', function(){
       };
       expect(game.score()).toBe(24)
     });
-
-    it('returns 300 for a perfect game', function(){
-      for (var i = 0; i < 20; i++) {
-        game.addFrame(10)
-      };
-      expect(game.score()).toBe(300)
-    });
-
-    it('is a strike', function(){
-      game.addFrame(10);
-      expect(game.isAStrike(0)).toBe(true)
-     });
-
-    it('is a spare', function(){
-      game.addFrame(6)
-      game.addFrame(4)
-      expect(game.isASpare(0)).toBe(true)
-     });
-
-    it('can calculate two bowls', function(){
-      game.addFrame(6)
-      game.addFrame(2)
-      expect(game.addScoreOfTwoFrames(0)).toBe(8)
-    })
   });
 });
+
+    
+
+    
+
+    
+
+    
+ 

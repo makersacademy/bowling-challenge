@@ -6,13 +6,13 @@ function Game(){
 };
 
 Game.prototype.scoreCard = function(){
-  return this.frames
-}
+  return this.frames;
+};
 
 Game.prototype.addFrame = function(pins) {
   //  pushes number of pins into array
   this.frames.push(pins);
-}
+};
 
 
 Game.prototype.score = function() {
@@ -36,19 +36,19 @@ Game.prototype.score = function() {
     } else {
         score += this.addScoreOfTwoFrames(frameIndex);
         frameIndex += 2;
-    }
-  }
+    };
+  };
   return score;
 };
 
 Game.prototype.isAStrike = function(frameIndex){
   return this.frames[frameIndex] === 10
-}
+};
 
 Game.prototype.isASpare = function(frameIndex){
   return this.addScoreOfTwoFrames(frameIndex) === 10
-}
+};
 
 Game.prototype.addScoreOfTwoFrames = function(frameIndex){
   return this.frames[frameIndex] + this.frames[frameIndex + 1]
-}
+};

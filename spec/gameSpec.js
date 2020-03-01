@@ -38,43 +38,59 @@ describe('Bowling Game', function(){
     it('has a score of 0 for a game of gutterballs', function(){
       for (var i = 0; i < 20; i++){
         game.addFrame(0)
-      }
+      };
       expect(game.score()).toBe(0)
     });
 
     it('has a score of 40 for 20 twos', function(){
       for (var i = 0; i <20; i++) {
-      game.addFrame(2);
-      }
+        game.addFrame(2);
+      };
       expect(game.score()).toBe(40)
     });
 
     it('calculates a different score for a spare', function(){
-        game.addFrame(3);
-        game.addFrame(7);
-        game.addFrame(8);
-        for (var i = 0; i < 17; i++) {
-          game.addFrame(0)
-        };
-        expect(game.score()).toBe(26);
-      });
+      game.addFrame(3);
+      game.addFrame(7);
+      game.addFrame(8);
+      for (var i = 0; i < 17; i++) {
+        game.addFrame(0)
+      };
+      expect(game.score()).toBe(26);
+    });
 
     it('calculates a different score for a strike', function(){
-        game.addFrame(10);
-        game.addFrame(4);
-        game.addFrame(3);
-        for (var i = 0; i < 17; i++) {
-          game.addFrame(0)
-        };
-        expect(game.score()).toBe(24)
-    })
-
+      game.addFrame(10);
+      game.addFrame(4);
+      game.addFrame(3);
+      for (var i = 0; i < 17; i++) {
+        game.addFrame(0)
+      };
+      expect(game.score()).toBe(24)
+    });
 
     it('returns 300 for a perfect game', function(){
-        for (var i = 0; i < 20; i++) {
-          game.addFrame(10)
-        }
+      for (var i = 0; i < 20; i++) {
+        game.addFrame(10)
+      };
       expect(game.score()).toBe(300)
+    });
+
+    it('is a strike', function(){
+      game.addFrame(10);
+      expect(game.isAStrike(0)).toBe(true)
+     });
+
+    it('is a spare', function(){
+      game.addFrame(6)
+      game.addFrame(4)
+      expect(game.isASpare(0)).toBe(true)
+     });
+
+    it('can calculate two bowls', function(){
+      game.addFrame(6)
+      game.addFrame(2)
+      expect(game.addScoreOfTwoFrames(0)).toBe(8)
     })
   });
 });

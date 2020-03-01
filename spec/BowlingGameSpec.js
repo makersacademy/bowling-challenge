@@ -22,18 +22,43 @@ describe('Game', function(){
     })
   });
 
+  describe('pins remaining', function(){
+    it('game starts with 10 pins', function(){
+      expect(game.pinsRemaining).toEqual(10);
+    })
+
+    it('pins remaining are reduced by number of roll points', function(){
+      game.makeRoll(7);
+      expect(game.pinsRemaining).toEqual(3);
+    })
+
+    it('pins reset every frame', function(){
+      game.makeRoll(5);
+      game.makeRoll(5);
+      expect(game.pinsRemaining).toEqual(10);
+    })
+
+    it('throws an error if roll points are greater than pins remaining', function(){
+      game.makeRoll(7);
+      expect(function(){game.makeRoll(7);}).toThrowError("Roll cannot exceed pins remaining")
+    })
+  });
+
   describe('frame transition', function(){
-    it('frame increases by three after six rolls', function(){
-      for(var i=0; i<6; i++){
-        game.makeRoll(3);
-      }
+    it('frame increases by three after 8 rolls', function(){
+      game.makeRoll(3);
+      game.makeRoll(3);
+      game.makeRoll(3);
+      game.makeRoll(3);
+      game.makeRoll(3);
+      game.makeRoll(3);
+      game.makeRoll(3);
       expect(game.frameNo).toEqual(4);
     })
 
-    it('frame increases by one after 3 rolls', function(){
-      for(var i=0; i<3; i++){
-      game.makeRoll(7);
-      }
+    it('frame increases by one after 2 rolls', function(){
+      game.makeRoll(2);
+      game.makeRoll(3);
       expect(game.frameNo).toEqual(2);
     })
   })
@@ -100,43 +125,34 @@ describe('Game', function(){
     })
   })
 
-  // describe('final frame', function(){
-  //   beforeEach(function(){
-  //     for(var i=0; i<9; i++){
-  //       game.makeRoll(4);
-  //       game.makeRoll(3);
-  //     }
-  //   });
-
-    // it('strike on first roll doesnt make frame after 2nd roll', function(){
-    //   game.makeRoll(10);
-    //   game.makeRoll(5);
-    //   expect(game.frameNo).toEqual(10)
-    // })
-
-    // it('spare in final frame doesnt make frame after 2nd roll', function(){
-    //   game.makeRoll(5);
-    //   game.makeRoll(5);
-    //   expect(game.frameNo).toEqual(10)
-    // })
-
-    // it('no bonus in final frame makes frame', function(){
-    //   game.makeRoll(4);
-    //   game.makeRoll(4);
-    //   expect(game.frameNo).toEqual(11)
-    // })
-  // })
-
-  describe('game over', function(){
+  describe('final frame', function(){
     beforeEach(function(){
-      for(var i=0; i<10; i++){
+      for(var i=0; i<9; i++){
         game.makeRoll(4);
         game.makeRoll(3);
       }
     });
 
-    it('throws an error if user makes a roll and frame is 11', function(){
-      expect(function(){game.makeRoll(8);}).toThrowError('Game Over')
+    it('strike on first roll doesnt make frame after 2nd roll', function(){
+      game.makeRoll(10);
+      game.makeRoll(5);
+      expect(game.frameNo).toEqual(10)
+    })
+
+    it('spare in final frame doesnt make frame after 2nd roll', function(){
+      game.makeRoll(5);
+      game.makeRoll(5);
+      expect(game.frameNo).toEqual(10)
+    })
+
+    it('no bonus in final frame makes frame', function(){
+      game.makeRoll(4);
+      game.makeRoll(4);
+      expect(game.frameNo).toEqual(11)
+    })
+
+    it('pins reset for third roll of final frame', function(){
+      expect(game.pinsRemaining).toEqual(21)
     })
   })
 
@@ -222,5 +238,21 @@ describe('Game', function(){
       game.makeRoll(3);
       expect(game.score).toEqual(81)
     })
-  })
+
+    it('perfect game', function(){
+      game.makeRoll(10);
+      game.makeRoll(10);
+      game.makeRoll(10);
+      game.makeRoll(10);
+      game.makeRoll(10);
+      game.makeRoll(10);
+      game.makeRoll(10);
+      game.makeRoll(10);
+      game.makeRoll(10);
+      game.makeRoll(10);
+      game.makeRoll(10);
+      game.makeRoll(10);
+      expect(game.score).toEqual(300);
+    });
+  });
 });

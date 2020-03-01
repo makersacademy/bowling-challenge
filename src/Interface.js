@@ -1,9 +1,5 @@
-function game(){
-  game = new Game;
-}
-
 $(document).ready(function(){
-  game();
+  var game = new Game();
   updateScore();
 
   $('#pin_reset').click(function() {

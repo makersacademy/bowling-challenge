@@ -10,7 +10,7 @@ function Game() {
   this.history = []
   this.frameScores = []
   this.currentFrame = []
-  // pins remaining = 10
+  this.pinsRemaining = 10
 }
 
 Game.prototype.reset = function(){
@@ -23,6 +23,7 @@ Game.prototype.reset = function(){
   this.history = []
   this.frameScores = []
   this.currentFrame = []
+  this.pinsRemaining = 10
   // new Game();
 }
 
@@ -35,8 +36,7 @@ Game.prototype.isFinalFrame = function(){
 }
 
 Game.prototype.makeRoll = function(points) {
-  // if pins  > pr throw error
-  this.isGameOver();
+  this.updatePins(points);
   this.increaseRollNo(points);
   if (points === 10){
     this.rollHistory.push(0);
@@ -66,6 +66,7 @@ Game.prototype.makeRoll = function(points) {
     }
     // if 2 rolls ago in roll history was strike, make that frame with r1
   }
+  this.finalframePins();
 }
 
 Game.prototype.increaseRollNo = function(points){
@@ -96,6 +97,7 @@ Game.prototype.makeFrame = function(){
     this.shouldUpdateScore();
   }
   this.nextFrame();
+  this.pinsRemaining = 10
 }
 
 Game.prototype.wasStrike = function(){
@@ -123,6 +125,26 @@ Game.prototype.updateScore = function(){
     this.score += (this.tallyFrame());
     this.frameScores.push(this.score);
   }
+  console.log("this.score")
+  console.log(this.score)
+  console.log("this.frameNo")
+  console.log(this.frameNo)
+  console.log("this.rollCount")
+  console.log(this.rollCount)
+  console.log("this.rollHistory")
+  console.log(this.rollHistory)
+  console.log("this.literalRollHistory")
+  console.log(this.literalRollHistory)
+  console.log("this.literalRollCount")
+  console.log(this.literalRollCount)
+  console.log("this.history")
+  console.log(this.history)
+  console.log("frameScores")
+  console.log(this.frameScores)
+  console.log("this.currentFrame")
+  console.log(this.currentFrame)
+  console.log("this.pinsRemaining")
+  console.log(this.pinsRemaining)
 }
 
 Game.prototype.nextFrame = function(){
@@ -130,8 +152,19 @@ Game.prototype.nextFrame = function(){
   this.currentFrame = [];
 }
 
-Game.prototype.isGameOver = function(){
-  if (this.frameNo === 11){
-    throw new Error("Game Over")
+Game.prototype.updatePins = function(points){
+  if (points > this.pinsRemaining) {
+    throw new Error("Roll cannot exceed pins remaining")
+  }
+  this.pinsRemaining -= points;
+}
+
+Game.prototype.finalframePins = function(points){
+  if (this.frameNo === 10 && this.currentFrame[0] === 10) {
+    this.pinsRemaining = 10;
+  } else if (this.frameNo === 10 && this.currentFrame[0] +this.currentFrame[1] === 10) {
+    this.pinsRemaining = 10;
+  } else {
+    return;
   }
 }

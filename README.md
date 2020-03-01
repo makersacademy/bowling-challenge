@@ -1,4 +1,4 @@
-### [Makers Academy](http://www.makersacademy.com) - Week 6/7 Weekend programming challenge 
+### [Makers Academy](http://www.makersacademy.com) - Week 5/6 Weekend programming challenge 
 
 # Bowling Challenge 🎳
 
@@ -110,5 +110,5 @@ I would like to have a bonus roll if I score 10 on the 10th turn
 
 ## <a name="Further_Improvements">Further Improvements</a>
 * Requires more work to get jQuery functioning, e.g.
-- Gutter then 10 should print a spare
-- Final frame 9 then 1 (spare) should allow an additional final roll
+  * Gutter then 10 should print a spare
+  * Final frame 9 then 1 (spare) should allow an additional final roll

@@ -156,6 +156,19 @@ describe('Game', function(){
     })
   })
 
+  describe('game over', function(){
+    beforeEach(function(){
+      for(var i=0; i<10; i++){
+        game.makeRoll(4);
+        game.makeRoll(3);
+      }
+    });
+
+    it('throws an error if user makes a roll and frame is 11', function(){
+      expect(function(){game.makeRoll(8);}).toThrowError('Game Over')
+    })
+  })
+
   describe('score', function(){
     it('adds score for non bonusy rolls', function(){
       game.makeRoll(5);

@@ -32,41 +32,85 @@ Game.prototype.isStrike = function(points){
 }
 
 Game.prototype.isFinalFrame = function(){
-  return this.frameNo == 10
+  return this.frameNo === 10
 }
 
 Game.prototype.makeRoll = function(points) {
-  this.updatePins(points);
-  this.increaseRollNo(points);
-  if (points === 10){
-    this.rollHistory.push(0);
-  }
-  this.rollHistory.push(points);
-  this.literalRollHistory.push(points);
-  this.currentFrame.push(points);
-  if (this.isWhichRoll() === 2){
-    if (this.literalRollCount > 2 && this.wasStrike()){
-      this.score += (10 + points);
-      this.score += this.literalRollHistory.slice(-2)[0];
-      this.frameScores.push(this.score);
-      this.makeFrame();
+  if (this.frameNo === 10) {
+    this.isGameOver();
+    this.finalframePins();
+    this.updatePins(points);
+    this.increaseRollNo(points);
+    if (points === 10){
+      this.rollHistory.push(0);
+    }
+    this.rollHistory.push(points);
+    this.literalRollHistory.push(points);
+    this.currentFrame.push(points);
+  
+    if (this.isWhichRoll() === 3){
+      if (this.literalRollCount > 2 && this.wasStrike()){
+        this.score += (10 + points);
+        this.score += this.literalRollHistory.slice(-2)[0];
+        this.frameScores.push(this.score);
+        this.makeFrame();
+      } else {
+        this.makeFrame();
+      }
     } else {
-      this.makeFrame();
-    }
+      // if not see if last frame was a spare, make that frame with r1
+      if (this.frameNo > 1 && this.tallyLast() === 10){
+        this.score += (10 + points);
+        this.frameScores.push(this.score)
+      }
+      if (this.literalRollCount > 2 && this.wasStrike()){
+        this.score += (10 + points);
+        this.score += this.literalRollHistory.slice(-2)[0];
+        this.frameScores.push(this.score)
+      }
+      // if 2 rolls ago in roll history was strike, make that frame with r1
+    }   
+
+    // roll >10, spare, strike
+    // roll >10, spare, >10
+    // roll strike, >10, spare
+    // roll strike, strike, >10
+    // roll strike, strike, >10
+    // roll strike, strike, strike
+
   } else {
-    // if not see if last frame was a spare, make that frame with r1
-    if (this.frameNo > 1 && this.tallyLast() === 10){
-      this.score += (10 + points);
-      this.frameScores.push(this.score)
+    this.isGameOver();
+    this.updatePins(points);
+    this.increaseRollNo(points);
+    if (points === 10){
+      this.rollHistory.push(0);
     }
-    if (this.literalRollCount > 2 && this.wasStrike()){
-      this.score += (10 + points);
-      this.score += this.literalRollHistory.slice(-2)[0];
-      this.frameScores.push(this.score)
+    this.rollHistory.push(points);
+    this.literalRollHistory.push(points);
+    this.currentFrame.push(points);
+    if (this.isWhichRoll() === 2){
+      if (this.literalRollCount > 2 && this.wasStrike()){
+        this.score += (10 + points);
+        this.score += this.literalRollHistory.slice(-2)[0];
+        this.frameScores.push(this.score);
+        this.makeFrame();
+      } else {
+        this.makeFrame();
+      }
+    } else {
+      // if not see if last frame was a spare, make that frame with r1
+      if (this.frameNo > 1 && this.tallyLast() === 10){
+        this.score += (10 + points);
+        this.frameScores.push(this.score)
+      }
+      if (this.literalRollCount > 2 && this.wasStrike()){
+        this.score += (10 + points);
+        this.score += this.literalRollHistory.slice(-2)[0];
+        this.frameScores.push(this.score)
+      }
+      // if 2 rolls ago in roll history was strike, make that frame with r1
     }
-    // if 2 rolls ago in roll history was strike, make that frame with r1
   }
-  this.finalframePins();
 }
 
 Game.prototype.increaseRollNo = function(points){
@@ -99,6 +143,7 @@ Game.prototype.makeFrame = function(){
   this.nextFrame();
   this.pinsRemaining = 10
 }
+
 
 Game.prototype.wasStrike = function(){
   return this.literalRollHistory.slice(-3)[0] === 10
@@ -162,9 +207,15 @@ Game.prototype.updatePins = function(points){
 Game.prototype.finalframePins = function(points){
   if (this.frameNo === 10 && this.currentFrame[0] === 10) {
     this.pinsRemaining = 10;
-  } else if (this.frameNo === 10 && this.currentFrame[0] +this.currentFrame[1] === 10) {
+  } else if (this.frameNo === 10 && this.currentFrame[0] + this.currentFrame[1] === 20) {
     this.pinsRemaining = 10;
   } else {
     return;
+  }
+}
+
+Game.prototype.isGameOver = function(){
+  if (this.frameNo === 11){
+    throw new Error("Game Over")
   }
 }

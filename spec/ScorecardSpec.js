@@ -146,7 +146,20 @@ describe('Scorecard', function(){
 
   })
 
+  describe ('#cumlativeScore', function() {
 
+    it("It should sum all previous scores if they are less than 10 and save the sum", function() {
+
+      scorecard.addScore(3)
+      scorecard.addScore(4)
+      scorecard.addScore(3)
+      scorecard.addScore(4)
+
+      expect(scorecard.cumulativeScore()).toEqual(14)
+
+    })
+
+  })
 
 });
 

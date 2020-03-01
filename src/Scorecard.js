@@ -1,5 +1,6 @@
 function Scorecard() {
 
+  this.cumulativeScoreArray = [];
   this.scoreArray = [];
   this.frameScore = {};
   this.frameNumber = 1;
@@ -80,17 +81,44 @@ Scorecard.prototype.frameTen = function(number) {
 
   }
 
-
-  // Scorecard.prototype.cumulativeScore = function() {
-
-  //   for (index = 0; index < this.scoreArray.length; index++) { 
-  //     console.log(scoreArray[index]); 
-  //   } 
-
-
-
-
-
-  // }
-
 }
+
+Scorecard.prototype.cumulativeScore = function() {
+  var index;
+  for (index = 0; index < this.scoreArray.length; index++) {
+    if (this.scoreArray.length === 1){
+      var value = this.scoreArray[0]["result"];
+      if (typeof value !== "string"){
+        this.cumulativeScoreArray.push(value)
+      }
+    } else {
+      sum = this.scoreArray[index - 1]["result"] + this.scoreArray[index]["result"]
+      this.cumulativeScoreArray.push(sum)
+    }
+  } 
+}
+
+
+// Scorecard.prototype.cumulativeScore = function() {
+//   var index;
+//   var total = 0;
+//   for (index = 0; index < this.scoreArray.length; index++) { 
+//     // If you can add the score then add it, else do nothing
+
+//     if (this.scoreArray[index]["result"] === "X") {
+//       // Do this for a strike
+
+//     } else if (this.scoreArray[index]["result"] === "/"){
+//       //  Do this for a Spare
+
+//     } else {
+//       // Add result to the total and save as a new term 
+//       sum = this.scoreArray[index - 1]["result"] + this.scoreArray[index]["result"]
+//       this.cumulativeScoreArray.push(sum)
+//     }
+//   } 
+
+//   return (total)
+// }
+
+

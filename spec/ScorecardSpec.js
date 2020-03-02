@@ -24,7 +24,7 @@ describe('Scorecard', function(){
       scorecard.addScore(10)
       scorecard.storeFrame()
 
-      expect(scorecard.scoreArray).toContain({ throw_1: 10, throw_2: 0, result: 'X' })
+      expect(scorecard.scoreArray).toContain({ throw_1: 10, result: 'X' })
 
     })
 
@@ -69,7 +69,7 @@ describe('Scorecard', function(){
 
       scorecard.addScore(10)
 
-      expect(scorecard.scoreArray[0]).toEqual({ throw_1: 10, throw_2: 0, result: 'X' })
+      expect(scorecard.scoreArray[0]).toEqual({ throw_1: 10, result: 'X' })
 
 
     })

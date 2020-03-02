@@ -16,7 +16,6 @@ Scorecard.prototype.addScore = function(number) {
   } else if (number === 10 && this.frameScore.throw_1 == undefined) {
 
     this.frameScore.throw_1 = number
-    this.frameScore.throw_2 = 0
     this.frameScore.result = 'X'
     this.storeFrame()
 
@@ -85,6 +84,7 @@ Scorecard.prototype.frameTen = function(number) {
 
 Scorecard.prototype.cumulativeScore = function() {
   var index;
+  var currentTotal = 0;
   for (index = 0; index < this.scoreArray.length; index++) {
     if (this.scoreArray.length === 1){
       var value = this.scoreArray[0]["result"];

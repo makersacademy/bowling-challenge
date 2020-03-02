@@ -1,5 +1,5 @@
 
-function Player(name = player1) {
+function Player(name = "player1") {
   this.name = name
   this.score = 0
   this.roll1 = 0
@@ -7,6 +7,7 @@ function Player(name = player1) {
   this.onSpare = false
   this.strikeStreak = 0
   this.scoreTracker = []
+  this.scoresArr = []
 };
 
 Player.prototype.firstRoll = function(pins) {
@@ -14,16 +15,19 @@ Player.prototype.firstRoll = function(pins) {
     if (this.onSpare === true) {
       this.strike();
       this.score += 20
+      this.scoresArr.push(this.score)
     } else if (this.strikeStreak < 2 ) {
       this.strike();
     } else { 
       this.strike();
       this.score += 30
+      this.scoresArr.push(this.score)
     }
   } else {
     this.roll1 = pins
     if (this.onSpare === true) {
       this.score += 10 + pins
+      this.scoresArr.push(this.score)
     }
   }
 }
@@ -45,6 +49,7 @@ Player.prototype.secondRoll = function(pins) {
     } else if (this.strikeStreak > 0) {
       this.scoreTracker.push([this.roll1, this.roll2])
       this.score += this.strikeCalc(this.strikeStreak)
+      this.scoresArr.push(this.score)
     }
     this.onSpare = false
     this.strikeStreak = 0
@@ -53,6 +58,7 @@ Player.prototype.secondRoll = function(pins) {
 
 Player.prototype.updateScore = function(pins) {
   this.score = this.score + this.roll1 + pins
+  this.scoresArr.push(this.score)
   this.scoreTracker.push([this.roll1, this.roll2])
   this.roll1 = 0
   this.roll2 = 0
@@ -80,15 +86,20 @@ Player.prototype.strikeCalc = function(streak) {
   var tempscore = 0
   var lastRolls = this.scoreTracker.slice(-1)[0];
   if (streak === 1) {
-    console.log('last score', lastRolls)
-    tempscore = 10 + (lastRolls[0])*2 + (lastRolls[1])*2
-  } else if (streak === 2) {
-    console.log("log", lastRolls)
-    tempscore = (10 + 10 + (lastRolls[0])) + (10 + lastRolls[0] + lastRolls[1]) + (lastRolls[0] +lastRolls[1])
-  } else if (streak > 2) {
-    tempscore = 30
+    tempscore = 10 + (lastRolls[0]) + (lastRolls[1])
+    this.scoresArr.push((tempscore + this.score))
+    tempscore += (lastRolls[0]) + (lastRolls[1])
+  } else {
+    tempscore = (10 + 10 + (lastRolls[0]))
+    this.scoresArr.push((tempscore + this.score))
+    tempscore += (10 + lastRolls[0] + lastRolls[1]) 
+    this.scoresArr.push((tempscore + this.score))
+    tempscore += (lastRolls[0] +lastRolls[1])
   }
-  console.log('tempscore:', tempscore)
   return tempscore
 }
 
+
+function Game(player1 = new Player()) {
+  this.player1 = player1
+};

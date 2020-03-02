@@ -10,10 +10,15 @@
 <body>
   <h1 class="title">Bowling Score Card</h1><br>
 
-  <form>
-    <input type="text" class="form-control" name="name" rows="1" cols="70" placeholder="Roll 1"> <input type='submit' value='Submit'> <br>
-    <input type="text" class="form-control" name="name" rows="1" cols="70" placeholder="Roll 2"> <input type='submit' value='Submit'> <br>
+  <form id="roll1"> 
+    <input type="number" min="0" max="10" placeholder="Roll 1"> <input type='submit' id="submit1" value='Submit'> <br>
   </form>
+
+  <form id="roll2">
+    <input type="number"  min="0" max="10" placeholder="Roll 2"> <input type='submit' id="submit2" value='Submit'> <br>
+  </form>
+  
+  <header id="result"></header>
   
   <table id='scorecardTable' class='scorecard' cellpadding='1' cellspacing='0'>
     <tr>
@@ -29,7 +34,7 @@
       <th colspan='6'>Frame 10</th>
     </tr>
     <tr>
-      <td colspan='3'></td><td id="frame1" colspan='3'></td>
+      <td colspan='3'>test</td><td id="frame1" colspan='3'>test1</td>
       <td colspan='3'></td><td id="frame2" colspan='3'></td>
       <td colspan='3'></td><td id="frame3" colspan='3'></td>
       <td colspan='3'></td><td id="frame4" colspan='3'></td>
@@ -41,7 +46,7 @@
       <td colspan='3'></td><td id="frame10" colspan='3'></td>
     </tr>
     <tr>
-      <td colspan='6'id="marker0"></td>
+      <td colspan='6'id="marker0">test2</td>
       <td colspan='6'id="marker1"></td>
       <td colspan='6'id="marker2"></td>
       <td colspan='6'id="marker3"></td>
@@ -69,7 +74,18 @@
   $(document).ready(function() { 
   
     var game = new Game();
+
+    $('#roll1').submit(function() {
+    var pins = $('#roll1 :input').val();
+    game.player1.firstRoll(pins)
+    $('#frame1roll1').text(game.player1.roll1);
+    console.log(result)
+  
+});
     
+    // $('#roll1').click(function(){
+    // game.player1
+    // updateTemperature()  })
   
   //   function updateTemperature() {
   //   $('#temperature').text(thermostat.temperature + "°c");

@@ -8,7 +8,6 @@ describe('Game', function(){
 
   it('game should be created with players', function() {
     expect(game.player1.name).toEqual('Tim')
-    expect(game.player2.name).toEqual('Ray')
   });
 
   it('game should start on first turn', function(){
@@ -27,10 +26,10 @@ describe('Game', function(){
     });
 
     it('score a spare', function(){
-      game.player2.firstRoll(4)
-      game.player2.secondRoll(6)
-      expect(game.player2.onSpare).toEqual(true)
-      expect(game.player2.strikeStreak).toEqual(0)
+      game.player1.firstRoll(4)
+      game.player1.secondRoll(6)
+      expect(game.player1.onSpare).toEqual(true)
+      expect(game.player1.strikeStreak).toEqual(0)
     });
 
     it('second turn after no strikes or spares', function(){
@@ -43,14 +42,14 @@ describe('Game', function(){
     });
 
     it('second turn score after a spare in the first turn', function(){
-      game.player2.firstRoll(6)
-      game.player2.secondRoll(4)
-      expect(game.player2.score).toEqual(0)
-      game.player2.firstRoll(7)
-      expect(game.player2.score).toEqual(17)
-      game.player2.secondRoll(1)
-      expect(game.player2.score).toEqual(25)
-      expect(game.player2.scoreTracker).toEqual([[6,'spare'], [7,1]])
+      game.player1.firstRoll(6)
+      game.player1.secondRoll(4)
+      expect(game.player1.score).toEqual(0)
+      game.player1.firstRoll(7)
+      expect(game.player1.score).toEqual(17)
+      game.player1.secondRoll(1)
+      expect(game.player1.score).toEqual(25)
+      expect(game.player1.scoreTracker).toEqual([[6,'spare'], [7,1]])
     });
 
     it('end of third turn after a strike', function(){
@@ -81,11 +80,14 @@ describe('Game', function(){
     it('end fourth turn after with two strikes in a row', function(){
       game.player1.firstRoll(5)
       game.player1.secondRoll(4)
+      expect(game.player1.score).toEqual(9)
       game.player1.firstRoll(10)
       game.player1.firstRoll(10)
       game.player1.firstRoll(5)
       game.player1.secondRoll(2)
       expect(game.player1.score).toEqual(58)
+      expect(game.player1.scoresArr).toEqual([9, 34, 51, 58])
+      console.log(game.player1.scoresArr)
     });
 
     it('strike then a spare', function(){
@@ -130,6 +132,23 @@ describe('Game', function(){
       game.player1.secondRoll(1)
       console.log(game.player1.score)
       expect(game.player1.score).toEqual(98)
+      console.log(game.player1.scoresArr)
+      
+      expect(game.player1.scoresArr).toEqual([9, 17, 36, 45, 61, 67, 76, 92, 98])
+    });
+
+    it('three strikes in row', function(){
+      game.player1.firstRoll(5)
+      game.player1.secondRoll(4)
+      expect(game.player1.score).toEqual(9)
+      game.player1.firstRoll(10)
+      game.player1.firstRoll(10)
+      game.player1.firstRoll(10)
+      game.player1.firstRoll(5)
+      game.player1.secondRoll(3)
+      expect(game.player1.score).toEqual(90)
+      console.log(game.player1.scoresArr)
+      expect(game.player1.scoresArr).toEqual([9, 39, 64, 82, 90])
     });
 
 

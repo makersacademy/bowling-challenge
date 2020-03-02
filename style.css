@@ -1,0 +1,40 @@
+html, body {
+  background-image: url("bowling.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.center-div
+{
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 85%;
+  height: 85%;
+  text-align: center;
+}
+
+.frame-headers {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: larger;
+}
+
+table, tr, td {
+  border: 2px solid black;
+  width: 50px;
+  height: 50px;
+  background-image: url("scorecard_background.jpg");
+}
+
+#total-score {
+  text-align: center; 
+  vertical-align: middle;
+  font-size: xx-large;
+}
+
+.frames {
+  font-size: x-large;
+}

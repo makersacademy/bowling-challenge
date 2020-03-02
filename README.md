@@ -1,42 +1,40 @@
+### [Makers Academy](http://www.makersacademy.com) - Week 5/6 Weekend programming challenge 
 
-Bowling Challenge
-=================
+# Bowling Challenge 🎳
 
+#### Technologies: Javascript, jQuery, Jasmine, HTML, CSS 
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+[Task](#Task) | [Installation Instructions](#Installation) | [Bowling - how does it work?](#Bowling) | [User Stories](#User_Stories) | [Further improvements](#Further_Improvements)
 
-## The Task
+![bowling](bowling-screenshot.jpg)
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+## <a name="Task">The Task</a>
+
+THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by
+This challenge is the fifth afternoon pair programming challenge at [Makers Academy](https://github.com/makersacademy).
 
-* Forking this repo
+## <a name="Installation">Installation Instructions</a>
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+1. Fork this repository, clone to your local machine then change into the directory:
+```
+$ git clone git@github.com:davmcgregor/bowling-challenge.git
+$ cd bowling-challenge
+```
+2. Run jasmine for tests and coverage
+```
+$ open SpecRunner.html
+```
+3. Run the app on a local server and use on the broswer:
+```
+$ open BowlingGame.html
+```
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
-
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
-
-## Bowling — how does it work?
+## <a name="Bowling">Bowling — how does it work?</a>
 
 ### Strikes
 
@@ -65,13 +63,52 @@ In the image below you can find some score examples.
 
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+![Ten Pin Score Example](example_ten_pin_scoring.png)
 
-## Code Review
+## <a name="User_Stories">User Stories</a>
 
-In code review we'll be hoping to see:
+```
+As a bowler,
+To keep track of my scores,
+I would like to input a score
+```
+```
+As a bowler,
+To complete a turn,
+I would like to enter two rolls
+```
+```
+As a bowler,
+To keep track of my score,
+I would like to see the total score for each turn
+```
+```
+As a bowler,
+To score a stike correctly,
+I would to add the next two scores to my strike turn
+```
+```
+As a bowler,
+To score a spare correctly,
+I would to add the next score to my strike turn
+```
+```
+As a bowler,
+To keep track of my score,
+I would like to see my total
+```
+```
+As a bowler,
+To complete a game,
+I would like to have ten turns
+```
+```
+As a bowler,
+To get as much points as possible,
+I would like to have a bonus roll if I score 10 on the 10th turn
+```
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+## <a name="Further_Improvements">Further Improvements</a>
+* Requires more work to get jQuery functioning, e.g.
+  * Gutter then 10 should print a spare
+  * Final frame 9 then 1 (spare) should allow an additional final roll

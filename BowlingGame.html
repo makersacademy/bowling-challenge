@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bowling Game</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div class = "center-div">
+      <table class= "table">
+        <tr class="frame-headers">
+          <td colspan="12">Frame 1</td>
+          <td colspan="12">Frame 2</td>
+          <td colspan="12">Frame 3</td>
+          <td colspan="12">Frame 4</td>
+          <td colspan="12">Frame 5</td>
+          <td colspan="12">Frame 6</td>
+          <td colspan="12">Frame 7</td>
+          <td colspan="12">Frame 8</td>
+          <td colspan="12">Frame 9</td>
+          <td colspan="12">Frame 10</td>
+          <td colspan="12">Total</td>
+        </tr>
+        <tr>
+          <td colspan="6" id='r1' class='rolls'></td>
+          <td colspan="6" id='r2' class='rolls'></td>
+          <td colspan="6" id='r3' class='rolls'></td>
+          <td colspan="6" id='r4' class='rolls'></td>
+          <td colspan="6" id='r5' class='rolls'></td>
+          <td colspan="6" id='r6' class='rolls'></td>
+          <td colspan="6" id='r7' class='rolls'></td>
+          <td colspan="6" id='r8' class='rolls'></td>
+          <td colspan="6" id='r9' class='rolls'></td>
+          <td colspan="6" id='r10' class='rolls'></td>
+          <td colspan="6" id='r11' class='rolls'></td>
+          <td colspan="6" id='r12' class='rolls'></td>
+          <td colspan="6" id='r13' class='rolls'></td>
+          <td colspan="6" id='r14' class='rolls'></td>
+          <td colspan="6" id='r15' class='rolls'></td>
+          <td colspan="6" id='r16' class='rolls'></td>
+          <td colspan="6" id='r17' class='rolls'></td>
+          <td colspan="6" id='r18' class='rolls'></td>
+          <td colspan="4" id='r19' class='rolls'></td>
+          <td colspan="4" id='r20' class='rolls'></td>
+          <td colspan="4" id='r21' class='rolls'></td>
+          <td colspan="12" rowspan="2" id='total-score' class='rolls'></td>
+        </tr>
+        <tr>
+          <td colspan="12" id='f1' class='frames'></td>
+          <td colspan="12" id='f2' class='frames'></td>
+          <td colspan="12" id='f3' class='frames'></td>
+          <td colspan="12" id='f4' class='frames'></td>
+          <td colspan="12" id='f5' class='frames'></td>
+          <td colspan="12" id='f6' class='frames'></td>
+          <td colspan="12" id='f7' class='frames'></td>
+          <td colspan="12" id='f8' class='frames'></td>
+          <td colspan="12" id='f9' class='frames'></td>
+          <td colspan="12" id='f10' class='frames'></td>
+        </tr>
+      </table>
+
+      <div id="buttons" class="buttons">
+        <button class="btn btn-danger btn-lg" id="pin_reset">Reset</button>
+        <button type="button" id="pinHit_0" class="btn btn-primary btn-lg">Gutter</button>
+        <button type="button" id="pinHit_1" class="btn btn-primary btn-lg">1</button>
+        <button type="button" id="pinHit_2" class="btn btn-primary btn-lg">2</button>
+        <button type="button" id="pinHit_3" class="btn btn-primary btn-lg">3</button>
+        <button type="button" id="pinHit_4" class="btn btn-primary btn-lg">4</button>
+        <button type="button" id="pinHit_5" class="btn btn-primary btn-lg">5</button>
+        <button type="button" id="pinHit_6" class="btn btn-primary btn-lg">6</button>
+        <button type="button" id="pinHit_7" class="btn btn-primary btn-lg">7</button>
+        <button type="button" id="pinHit_8" class="btn btn-primary btn-lg">8</button>
+        <button type="button" id="pinHit_9" class="btn btn-primary btn-lg">9</button>
+        <button type="button" id="pinHit_10" class="btn btn-primary btn-lg">10</button>
+      </div>
+    </div>  
+    <script src="./src/BowlingGame.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="./src/Interface.js"></script>
+  </body>
+</html>

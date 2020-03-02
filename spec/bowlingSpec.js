@@ -12,11 +12,6 @@ describe('Bowling', function(){
         expect(bowlingGame.scoreTable).toEqual([3, 4])
     });
 
-    it('calculates the score for one frame', function(){
-        bowlingGame.roll(2, 3);
-        expect(bowlingGame.showScore()).toEqual(5)
-    });
-
     it('calculates the score for a regular game', function(){
         for (var i = 0; i < 10; i++){
             bowlingGame.roll(2, 4)
@@ -45,6 +40,22 @@ describe('Bowling', function(){
             bowlingGame.roll(1, 2)
         };
         expect(bowlingGame.showScore()).toEqual(40)
+    });
+
+    it('calculates the score when the 10th frame is a strike', function(){
+        for (var i = 0; i < 9; i++){
+            bowlingGame.roll(1, 2)
+        };
+        bowlingGame.roll(10, 0);
+        bowlingGame.roll(3, 4);
+        expect(bowlingGame.showScore()).toEqual(44)
+    });
+
+    it('calculates the score for a perfect game', function(){
+        for (var i = 0; i < 12; i++){
+            bowlingGame.roll(10, 0)
+        };
+        expect(bowlingGame.showScore()).toEqual(300)
     });
 
 });

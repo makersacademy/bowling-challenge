@@ -23,4 +23,14 @@ describe('bowling', function() {
     for(let i = 0; i < 17; i++) {game.roll(0)};
     expect(game.score()).toBe(20);
   })
+
+  it('can roll two spares', function() {
+    game.roll(7)
+    game.roll(3)
+    game.roll(5)
+    game.roll(5)
+    game.roll(8)
+    for(let i = 0; i < 15; i++) {game.roll(0)};
+    expect(game.score()).toBe(41)
+  })
 })

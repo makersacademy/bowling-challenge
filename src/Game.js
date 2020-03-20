@@ -4,6 +4,7 @@ function Game() {
   this.MAX_FRAMES = 10
   this.frameCount = 0
   this.strike = false
+  this.spare = false
 };
 
 Game.prototype.addPlayer = function(name) {
@@ -11,20 +12,18 @@ Game.prototype.addPlayer = function(name) {
 };
 
 Game.prototype.addScore = function(number) {
-  if(this.strike === true) {
-    this.score += (number * 2)
-    this.frameCount += 1
-  }
-  if(this.strike === false) {
-    this.score += number
-    this.frameCount += 1
-  }
-  if(number === 10) {
-    this.strike = true
-    return;
-  }
+  this.frameCount += 1
+  if(this.strike === true) {this._isAStrike(number)};
+  if(this.strike === false) {this.score += number;}
+  this._resetStrike(number);
 };
 
+Game.prototype._isAStrike = function(number) {
+  this.score += (number * 2);
+};
 
+Game.prototype._resetStrike = function(number) {
+  if(number === 10) {this.strike = true} else {this.strike = false};
+};
 
 

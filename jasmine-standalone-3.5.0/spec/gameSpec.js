@@ -6,7 +6,7 @@ describe('bowling', function() {
     game = new bowlingGame()
   });
 
-  it('can roll a game of zeros', function() {
+  it('can roll a game of zeros (gutter game)', function() {
     for(let i = 0; i < 20; i++) {game.roll(0)};
     expect(game.score()).toBe(0);
   });
@@ -32,5 +32,18 @@ describe('bowling', function() {
     game.roll(8)
     for(let i = 0; i < 15; i++) {game.roll(0)};
     expect(game.score()).toBe(41)
+  });
+
+  it('can roll a strike', function() {
+    game.roll(10);
+    game.roll(4);
+    game.roll(3);
+    for(let i = 0; i < 16; i++) {game.roll(0)};
+    expect(game.score()).toBe(24)
+  })
+
+  it('can roll a perfect game', function() {
+    for(let i = 0; i < 12; i++) {game.roll(10)};
+    expect(game.score()).toBe(300)
   })
 })

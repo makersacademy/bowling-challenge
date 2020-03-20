@@ -17,5 +17,14 @@ describe("Game", function (){
   it("has a default score of 0", function() {
     expect(game.score).toBe(0)
   });
+
+  it("strike is false by default", function() {
+    expect(game.strike).toBeFalsy()
+  });
+
+  it("strike is false by default", function() {
+    expect(game.spare).toBeFalsy()
+  });
 });
+
 

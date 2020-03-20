@@ -1,11 +1,18 @@
-function Frame() {
-  this.frameScore = 0
-}
+describe("Frame", function (){
+  var frame;
 
-Frame.prototype.rollOne = function(number) {
-  this.frameScore += number
-}
+  beforeEach(function(){
+    frame = new Frame();
+  });
 
-Frame.prototype.rollTwo = function(number) {
-  this.frameScore += number;
-}
+  it("adds bowls to the frame score", function() {
+    frame.rollOne(4);
+    expect(frame.frameScore).toEqual(4);
+  });
+
+  it("add bowls to the frame score", function() {
+    frame.rollOne(4);
+    frame.rollOne(4);
+    expect(frame.frameScore).toEqual(8);
+  });
+});

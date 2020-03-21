@@ -36,4 +36,8 @@ Game.prototype._resetSpare = function(ball1,ball2) {
   if((ball2 != 0) && (ball1 + ball2) === 10) {this.spare = true} else {this.spare = false};
 };
 
+Game.prototype.resetScore = function(ball1,ball2) {
+  this.score = 0
+}
+
 

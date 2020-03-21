@@ -14,7 +14,7 @@ describe("Feature Spec", function() {
   it("score goes up when you bowl", function() {
     frame1.rollOne(5)
     frame1.rollTwo(3)
-    game.addScore(frame1.frameScore)
+    game.addScore(frame1.rollOneScore(),frame1.rollTwoScore())
     expect(game.score).toBe(8)
   })
 
@@ -29,22 +29,22 @@ describe("Feature Spec", function() {
 
   it("player can get a strike", function(){ 
     frame1.rollOne(10);
-    game.addScore(frame1.frameScore);
+    game.addScore(frame1.rollOneScore(),frame1.rollTwoScore());
     frame2.rollOne(2);
     frame2.rollTwo(3);
-    game.addScore(frame2.frameScore);
+    game.addScore(frame2.rollOneScore(),frame2.rollTwoScore());
     expect(game.score).toBe(20);
   });
 
   it("player can get a strike", function() {
     frame1.rollOne(10);
-    game.addScore(frame1.frameScore);
+    game.addScore(frame1.rollOneScore(),frame1.rollTwoScore());
     frame2.rollOne(2);
     frame2.rollTwo(3);
-    game.addScore(frame2.frameScore)
+    game.addScore(frame2.rollOneScore(),frame2.rollTwoScore())
     frame3.rollOne(2);
     frame3.rollTwo(3);
-    game.addScore(frame3.frameScore);
+    game.addScore(frame3.rollOneScore(),frame3.rollTwoScore());
     expect(game.score).toBe(25);
   });
   // it("player can bowl a spare", function(){

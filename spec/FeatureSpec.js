@@ -47,13 +47,26 @@ describe("Feature Spec", function() {
     game.addScore(frame3.rollOneScore(),frame3.rollTwoScore());
     expect(game.score).toBe(25);
   });
-  // it("player can bowl a spare", function(){
-  //   frame1.rollOne(5);
-  //   frame1.rollTwo(5);
-  //   game.addScore(frame1.frameScore);
-  //   frame2.rollOne(3);
-  //   frame2.rollTwo(3);
-  //   game.addScore(frame2.frameScore);
-  //   expect(game.score).toBe(19);
-  // });
+  it("player can bowl a spare", function(){
+    frame1.rollOne(5);
+    frame1.rollTwo(5);
+    game.addScore(frame1.rollOneScore(),frame1.rollTwoScore());
+    frame2.rollOne(3);
+    frame2.rollTwo(3);
+    game.addScore(frame2.rollOneScore(),frame2.rollTwoScore());
+    expect(game.score).toBe(19);
+  });
+
+  it("player can bowl a spare", function(){
+    frame1.rollOne(5);
+    frame1.rollTwo(5);
+    game.addScore(frame1.rollOneScore(),frame1.rollTwoScore());
+    frame2.rollOne(3);
+    frame2.rollTwo(3);
+    game.addScore(frame2.rollOneScore(),frame2.rollTwoScore());
+    frame3.rollOne(3);
+    frame3.rollTwo(3);
+    game.addScore(frame3.rollOneScore(),frame3.rollTwoScore());
+    expect(game.score).toBe(25);
+  });
 });

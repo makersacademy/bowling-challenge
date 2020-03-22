@@ -37,7 +37,7 @@ describe ('Game', function(){
     expect(game.currentScore()).toEqual(26)
   });
 
-  it ('tests for a perfect game - 10 strikes', function(){
+  it ('tests for a perfect game - 12 strikes', function(){
     rollMany(20, 10);
     expect(game.currentScore()).toEqual(300)
   });

@@ -30,15 +30,12 @@ describe ('Game', function(){
   });
 
   it ('test for a strike', function (){
-    game.roll(10);
+    rollStrike();
     game.roll(4);
     game.roll(4);
     rollMany(16, 0);
     expect(game.currentScore()).toEqual(26)
   });
-
-  
-
 
   function rollMany(x, pins) {
     for (var i = 0; i < x; i ++) {
@@ -48,6 +45,10 @@ describe ('Game', function(){
   function rollSpare() {
     game.roll(5);
     game.roll(5);
+  }
+
+  function rollStrike(){
+    game.roll(10);
   }
 
 });

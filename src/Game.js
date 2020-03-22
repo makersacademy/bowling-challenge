@@ -9,7 +9,7 @@ Game.prototype.currentScore = function (){
   var score = 0;
   var frameIndex = 0
   for (var frame = 0; frame < 10; frame++) {
-    if (this.rolls[frameIndex] === 10) {
+    if (this._isStrike(frameIndex)) {
       score += 10 + this._strikeBonus(frameIndex);
       frameIndex++;
     } else if (this._isSpare(frameIndex)) { 
@@ -39,22 +39,10 @@ Game.prototype._spareBonus = function(frameIndex) {
   return this.rolls[frameIndex+2];
 }
 
+Game.prototype._isStrike = function(frameIndex) {
+  return this.rolls[frameIndex] === 10;
+}
+
 Game.prototype._strikeBonus = function(frameIndex){
   return this.rolls[frameIndex+1] + this.rolls[frameIndex+2];
 }
-
-
-// Game.prototype.currentMove = function(pins) {
-//   if ( this.isStrike() ) {
-//     this.strikeScoring(pins);
-//   } else if ( this.isSpare() ) {
-//     this.spareScoring(pins);
-//   } else {
-//     this.addToScore(pins);
-//     if ( this.isFirstRoll() ) {
-//       this.incrementRoll();
-//     } else {
-//       this.resetFrame(pins);
-//     }
-//   }
-// };

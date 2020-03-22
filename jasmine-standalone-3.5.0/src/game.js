@@ -1,30 +1,51 @@
 function bowlingGame() {
-  this.maximumScore = 10;
-  this.rolls = []
+  this.frames = []  
 }
 
-bowlingGame.prototype.roll = function(num) {
-  this.rolls.push(num)
+bowlingGame.prototype.gameTotal = function() {
+  let total = 0;
+  let game = this;
+  calculateFrames(game);
+  total = calculateTotal(game, total);
+  calculateLastFrame(game)
+  // this will add the last frame total onto the total.
+  total += this.frames[this.frames.length - 1].frameTotal;
+  return total;
 }
 
-bowlingGame.prototype.score = function() {
-  let score = 0;
-  let roll = 0;
+bowlingGame.prototype.addFrame = function(rolls) {
+  this.createFrame(rolls)
+}
 
-  for(let frameIndex = 0; frameIndex < 10; frameIndex++) {
-    // this is for rolling a spare, as two rolls equal ten pins down in one frame
-    if (this.rolls[roll] == 10) { 
-      score += this.rolls[roll] + this.rolls[roll + 1] + this.rolls[roll + 2];
-      roll += 1
-    } else if (this.rolls[roll] + this.rolls[roll + 1] == 10) { 
-      score += this.rolls[roll] + this.rolls[roll + 1] + this.rolls[roll + 2];
-      roll += 2
+bowlingGame.prototype.addLastFrame = function(rolls) {
+  this.createFrame(rolls);
+}
+
+bowlingGame.prototype.createFrame = function(rolls) {
+  let frame;
+  frame = new Frames(rolls);
+  this.frames.push(frame);
+}
+
+function calculateFrames(game) {
+  for(let i = 0; i < game.frames.length - 1; i++) {
+    if(i < game.frames.length - 2) {
+      game.frames[i].calculateFrameTotal((game.frames[i].rolls), (game.frames[i + 1].rolls), (game.frames[i + 2].rolls));
     } else {
-      // this is for rolling a normal frame
-      score += this.rolls[roll] + this.rolls[roll + 1];
-      roll += 2
+      game.frames[i].calculateFrameTotal((game.frames[i].rolls), [(game.frames[i + 1].rolls[0]), 0], [(game.frames[i + 1].rolls[1]), 0]);
     }
+  };
+}
+
+function calculateTotal(game, total) {
+  // this will calculate the total of all the frames. 
+  for(let i = 0; i < game.frames.length; i++) {
+    total += game.frames[i].frameTotal;
   }
-  // for(let roll = 0; roll < 20; roll++) { score += this.rolls[roll]}
-  return score
+  return total
+}
+
+function calculateLastFrame(game) {
+  // this will calculate the total of the last frame.
+  game.frames[game.frames.length - 1].lastFrameTotal()
 }

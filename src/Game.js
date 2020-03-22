@@ -10,13 +10,13 @@ Game.prototype.currentScore = function (){
   var frameIndex = 0
   for (var frame = 0; frame < 10; frame++) {
     if (this.rolls[frameIndex] === 10) {
-      score += 10 + this.rolls[frameIndex+1] + this.rolls[frameIndex+2];
+      score += 10 + this._strikeBonus(frameIndex);
       frameIndex++;
     } else if (this._isSpare(frameIndex)) { 
-      score += 10 + this.rolls[frameIndex+2];
+      score += 10 + this._spareBonus(frameIndex);
       frameIndex += 2;
     } else {
-      score += this.rolls[frameIndex] + this.rolls[frameIndex+1];
+      score += this._sumOfBalls(frameIndex);
       frameIndex += 2;
     }
   }
@@ -27,13 +27,21 @@ Game.prototype.roll = function(pins){
   this.rolls[this.currentBall++] = pins;
 };
 
+Game.prototype._sumOfBalls = function(frameIndex) {
+  return this.rolls[frameIndex] + this.rolls[frameIndex+1];
+}
+
 Game.prototype._isSpare = function(frameIndex) {
   return this.rolls[frameIndex] + this.rolls[frameIndex+1] === 10;
 }
 
-// Game.prototype._isStrike = function(frameIndex){
-//   return 
-// }
+Game.prototype._spareBonus = function(frameIndex) {
+  return this.rolls[frameIndex+2];
+}
+
+Game.prototype._strikeBonus = function(frameIndex){
+  return this.rolls[frameIndex+1] + this.rolls[frameIndex+2];
+}
 
 
 // Game.prototype.currentMove = function(pins) {

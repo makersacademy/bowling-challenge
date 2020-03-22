@@ -27,7 +27,17 @@ describe ('Game', function(){
     game.roll(2);
     rollMany(17, 0);
     expect(game.currentScore()).toEqual(14)
-  })
+  });
+
+  it ('test for a strike', function (){
+    game.roll(10);
+    game.roll(4);
+    game.roll(4);
+    rollMany(16, 0);
+    expect(game.currentScore()).toEqual(26)
+  });
+
+  
 
 
   function rollMany(x, pins) {

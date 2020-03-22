@@ -4,7 +4,7 @@
 ## Aim
 To create a program that keeps counts and sums the scores of a bowling game for one player (in JavaScript).
 
-**Technologies used**: Javascript, Jasmine
+**Technologies used**: Javascript, Jasmine, jshint
 
 This was completed with help from '[The Bowling Game Kata](http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata)' by UncleBob
 

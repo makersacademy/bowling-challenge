@@ -14,7 +14,4 @@ describe('Bowling Scoreboard', function () {
     expect(scoreboard.totalScore()).toEqual(0);
   })
 
-
-
-
 })

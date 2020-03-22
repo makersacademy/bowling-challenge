@@ -4,6 +4,10 @@
 ## Aim
 To create a program that keeps counts and sums the scores of a bowling game for one player (in JavaScript).
 
+**Technologies used**: Javascript, Jasmine
+
+This was completed with help from '[The Bowling Game Kata](http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata)' by UncleBob
+
 ## Installing
 ```
 git clone git@github.com:Kittaru87/bowling-challenge.git
@@ -44,4 +48,6 @@ In any order you like:
 * Create a nice interactive animated interface with jQuery.
 * Set up [Travis CI](https://travis-ci.org) to run your tests.
 * Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+
+### 
 

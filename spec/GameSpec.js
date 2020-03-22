@@ -6,10 +6,11 @@ describe ('Game', function(){
     game = new Game();
   });
 
-  // it ('has a zero score by default', function() {
-  //   rollMany(0, 0)
-  //   expect(game.currentScore()).toEqual(0);
-  // });
+  it ('can keep score of one roll', function() {
+    game.roll(3);
+    rollMany(19, 0);
+    expect(game.currentScore()).toEqual(3);
+  });
 
   it ('tests for guttergame (0 score from 20 rolls)', function(){
     rollMany(20, 0)

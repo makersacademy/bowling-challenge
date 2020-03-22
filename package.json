@@ -2,7 +2,7 @@
   "name": "bowling-challenge",
   "version": "1.0.0",
   "description": "makers-bowling-challenge",
-  "main": "index.js",
+  "main": "game.js",
   "directories": {
     "doc": "docs",
     "lib": "lib",
@@ -18,7 +18,7 @@
   },
 
   "scripts": {
-    "test": "SpecRunner.html"
+    "test": "jasmine --spec"
   },
 
   "repository": {

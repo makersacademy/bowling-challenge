@@ -23,8 +23,7 @@ describe ('Game', function(){
   });
 
   it ('tests for a spare', function (){
-    game.roll(5);
-    game.roll(5);
+    rollSpare();
     game.roll(2);
     rollMany(17, 0);
     expect(game.currentScore()).toEqual(14)
@@ -35,5 +34,10 @@ describe ('Game', function(){
     for (var i = 0; i < x; i ++) {
       game.roll(pins)};
   };
+
+  function rollSpare() {
+    game.roll(5);
+    game.roll(5);
+  }
 
 });

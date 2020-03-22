@@ -12,9 +12,9 @@
   "dependencies": {
     "eslint": "^6.8.0"
   },
-
+  
   "scripts": {
-    "test": "node_modules/jasmine-node/bin/jasmine-node spec/ --verbose"
+    "test": "\"testing\""
   },
 
   "devDependencies": {

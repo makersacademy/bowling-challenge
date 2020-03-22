@@ -8,7 +8,6 @@ bowlingGame.prototype.gameTotal = function() {
   calculateFrames(game);
   total = calculateTotal(game, total);
   calculateLastFrame(game)
-  // this will add the last frame total onto the total.
   total += this.frames[this.frames.length - 1].frameTotal;
   return total;
 }

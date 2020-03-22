@@ -4,13 +4,13 @@ function Frames(rolls) {
 }
 
 Frames.prototype.calculateFrameTotal = function(frame, nextFrame, nextNextFrame) {
-  if(isStrike(frame, nextFrame)) { // this will be a strike 
+  if(isStrike(frame, nextFrame)) { 
     this.frameTotal = eval(frame.join('+')) + eval(nextFrame.join('+'))
-  } else if (isDoubleStrike(frame, nextFrame)) { // this will be a double strike 
+  } else if (isDoubleStrike(frame, nextFrame)) {
     this.frameTotal = frame[0] + nextFrame[0] + nextNextFrame[0]
-  } else if (isSpare(frame)) {// this will be a spare
+  } else if (isSpare(frame)) {
     this.frameTotal = eval(frame.join('+')) + nextFrame[0]
-  } else { // this will be any other normal score, no spare or strike
+  } else { 
     this.frameTotal = eval(frame.join('+')) 
   }
 }
@@ -34,4 +34,3 @@ function isDoubleStrike(frame, nextFrame) {
 function isStrike(frame, nextFrame) {
   return frame[0] === 10 && nextFrame[0] !== 10
 }
-

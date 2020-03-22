@@ -6,4 +6,4 @@ A game consists of ```10 frames``` in which the player tries to know down the ``
 
 After every frame, the 10 pins are ```reset```.
 
-The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. 
+The score of a frame is the number of knocked down pins plus bonuses for strikes and spares.

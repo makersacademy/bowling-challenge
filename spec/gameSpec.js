@@ -41,4 +41,13 @@ describe("Game", function() {
       game.roll(pins);
     }
   };
+
+  function rollSpare() {
+    game.roll(5);
+    game.roll(5);
+  }
+
+  function rollStrike() {
+    game.roll(10);
+  }
 });

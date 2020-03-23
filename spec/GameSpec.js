@@ -42,6 +42,10 @@ describe ('Game', function(){
     expect(game.currentScore()).toEqual(300);
   });
 
+  it ('raises an error if number of pins is over 10', function(){
+    expect(function(){game.roll(12)}).toThrow("Not a valid number of pins");
+  });
+
   function rollMany(x, pins) {
     for (var i = 0; i < x; i ++) {
       game.roll(pins);

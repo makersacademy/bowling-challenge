@@ -24,7 +24,10 @@ Game.prototype.currentScore = function (){
 };
 
 Game.prototype.roll = function(pins){
-  this.rolls[this.currentBall++] = pins;
+  if (pins > 10) {
+    throw "Not a valid number of pins";
+  } 
+    this.rolls[this.currentBall++] = pins;
 };
 
 Game.prototype._sumOfBalls = function(frameIndex) {

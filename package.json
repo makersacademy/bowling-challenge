@@ -1,0 +1,38 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "makers-bowling-challenge",
+  "main": "game.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib",
+    "src": "src",
+    "spec": "spec"
+  },
+  "dependencies": {
+    "eslint": "^6.8.0"
+  },
+
+  "devDependencies": {
+    "jasmine-node": "~1.14.5"
+  },
+
+  "scripts": {
+    "test": "jasmine --spec"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kittaru87/bowling-challenge.git"
+  },
+  "keywords": [
+    "bowling;",
+    "makers"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kittaru87/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/Kittaru87/bowling-challenge#readme"
+}

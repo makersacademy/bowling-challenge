@@ -19,51 +19,52 @@
         <tr>
           <th>1</th>
           <td>
-            <select id="roll1">
-              <option>0</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
+            <select id="roll1" name="roll1">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
             </select>
           </td>
           <td>
-            <select id="roll2">
-              <option>0</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
+            <select id="roll2" name='roll2'>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
             </select>
           </td>
-          <td><button id= "submit-score">Submit</button></td>
-          <td id="frame-score"></td>
-          <td id="game-score"></td>
+          <td><button id= "submitScore" name="submitScore">Submit</button></td>
+          <td id="frame-score" name="frame-score">0</td>
+          <td id="game-score" name="game-score">0</td>
           <td>n/a</td>
         </tr>
       </table>
     </h2>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="src/game.js"></script>
-    <script src="src/frame.js"></script>
-    <script src="src/interface.js" type="text/javascript.js"></script>
+    <script src="src/Game.js"></script>
+    <script src="src/Frame.js"></script>
+    <script src="src/interface.js"></script>
     <script>
-      $( document ).ready(function() {
-        var game = new Game();
-        var frame1 = new Frame();
-      });
+      // var game = new Game();
+      // var frame = new Frame();
+      // $(document).ready(function() {
+      //   console.log("hello")
+      // });
     </script>
   </body>
 </html>

@@ -1,3 +1,5 @@
+'use strict';
+
 function Game() {
   this.playername;
   this.score = 0;

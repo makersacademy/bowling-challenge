@@ -4,7 +4,7 @@ function Game() {
   this.playername;
   this.score = 0;
   this.MAX_FRAMES = 10
-  this.frameCount = 0
+  this.frameCount = 1
   this.strike = false
   this.spare = false
 };

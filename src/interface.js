@@ -1,10 +1,8 @@
 var game = new Game();
 var frame1 = new Frame();
+var frame2 = new Frame();
 
 $(document).ready(function() {
-  
-  console.log("hello")
-  console.log(roll2.value)
   
   $('#submitScore').click(function() {
     r1 = parseInt(roll1.value, 10)
@@ -12,7 +10,13 @@ $(document).ready(function() {
     game.addScore(r1,r2)
     $('#frame-score').text(r1 + r2)
     $('#game-score').text(game.score)
+    if(r1 === 10) {
+      $('#text')
+    }
   });
+
+  $('#frameCount').text(game.frameCount)
+
 
 
 

@@ -69,4 +69,8 @@ describe("Feature Spec", function() {
     game.addScore(frame3.rollOneScore(),frame3.rollTwoScore());
     expect(game.score).toBe(25);
   });
+
+  it("extra roll if the last roll is a spare or strike", function() {
+    
+  })
 });

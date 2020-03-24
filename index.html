@@ -6,19 +6,20 @@
   <body>
     <h2>
       <table style="width:50%">
-        <tr>
+        <p>
           <th>Frame</th>
           <th>Roll 1</th>
           <th>Roll 2</th>
+          <th></th>
           <th>Knocked Down Pins</th>
           <th>Total Score</th>
           <th>Notes</th>
-        </tr>
+        <p>
 
         <tr>
           <th>1</th>
-          <th>
-            <select id="roll1-selection">
+          <td>
+            <select id="roll1">
               <option>0</option>
               <option>1</option>
               <option>2</option>
@@ -31,9 +32,9 @@
               <option>9</option>
               <option>10</option>
             </select>
-          </th>
-          <th>
-            <select id="roll2-selection">
+          </td>
+          <td>
+            <select id="roll2">
               <option>0</option>
               <option>1</option>
               <option>2</option>
@@ -46,15 +47,23 @@
               <option>9</option>
               <option>10</option>
             </select>
-          </th>
-          <th>8</th>
-          <th>8</th>
-          <th>n/a</th>
+          </td>
+          <td><button id= "submit-score">Submit</button></td>
+          <td id="frame-score"></td>
+          <td id="game-score"></td>
+          <td>n/a</td>
         </tr>
       </table>
     </h2>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="src/game.js"></script>
     <script src="src/frame.js"></script>
+    <script src="src/interface.js" type="text/javascript.js"></script>
+    <script>
+      $( document ).ready(function() {
+        var game = new Game();
+        var frame1 = new Frame();
+      });
+    </script>
   </body>
 </html>

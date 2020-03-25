@@ -5,16 +5,25 @@ var frame2 = new Frame();
 $(document).ready(function() {
   
   $('#submitScore').click(function() {
-    r1 = parseInt(roll1.value, 10)
-    r2 = parseInt(roll2.value, 10)
+    var r1 = parseInt(roll1.value, 10)
+    var r2 = parseInt(roll2.value, 10)
     game.addScore(r1,r2)
-    $('#frame-score').text(r1 + r2)
-    $('#game-score').text(game.score)
+    $('#frameScore').text(r1 + r2)
+    $('#gameScore').text(game.score)
     if(r1 === 10) {
       $('#text')
     }
+    $('#roll1').replaceWith(r1)
+    $('#roll2').replaceWith(r2)
   });
 
+  // $('#notes').text(function() {
+    if(r1 + r2 === 10) {
+      $('#notes').text('Strike')
+    }
+  // })
+    
+    
   $('#frameCount').text(game.frameCount)
 
 

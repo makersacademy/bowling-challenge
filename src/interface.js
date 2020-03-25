@@ -20,6 +20,7 @@ $(document).ready(function() {
       } else if( r1 + r2 === 10) {
         $('#notes1').text('Spare!!!')
       }
+      $('#frame2').fadeToggle();
   });
 
   $('#submitScore2').click(function() {

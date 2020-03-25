@@ -1,99 +1,102 @@
 <!DOCTYPE html>
 <html>
+  <link rel="stylesheet" type="text/css" href='./public/bowling-style.css'>
   <head>
     <h1>Bowling Scoresheet</h1>
   </head>
   <body>
     <h2>
-      <table style="width:50%">
-        <p>
-          <th>Frame</th>
-          <th>Roll 1</th>
-          <th>Roll 2</th>
-          <th></th>
-          <th>Knocked Down Pins</th>
-          <th>Total Score</th>
-          <th>Notes</th>
-        <p>
-
-        <tr class='frame1'>
-          <td id="frameCount">1</th>
-          <td>
-            <select id="roll1">
-            <h5>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-            </h5>
-            </select>
-          </td>
-          <td>
-            <select id="roll2">
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-            </select>
-          </td>
-          <td><button id= "submitScore" name="submitScore">Submit</button></td>
-          <td id="frameScore" name="frameScore">0</td>
-          <td id="gameScore" name="gameScore">0</td>
-          <td id="notes"></td>
-        </tr>
-<!-- 
-        <tr class='frame2'>
-          <td>2</th>
-          <td>
-            <select id="roll1" name="roll1">
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-            </select>
-          </td>
-          <td>
-            <select id="roll2" name='roll2'>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-            </select>
-          </td>
-          <td><button id= "submitScore" name="submitScore">Submit</button></td>
-          <td id="frame-score" name="frame-score">0</td>
-          <td id="game-score" name="game-score">0</td>
-          <td>n/a</td>
-        </tr> -->
-      </table>
+      <div class="table_div">
+        <table style="width:50%">
+          <p>
+            <th>Frame</th>
+            <th>Roll 1</th>
+            <th>Roll 2</th>
+            <th></th>
+            <th>Knocked Down Pins</th>
+            <th>Total Score</th>
+            <th>Notes</th>
+          <p>
+  
+          <tr class='frame1'>
+            <td id="frameCount">1</th>
+            <td>
+              <select id="f1roll1">
+              <h5>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </h5>
+              </select>
+            </td>
+            <td>
+              <select id="f1roll2">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </td>
+            <td><button class="submit" id= "submitScore1" name="submitScore1">Submit</button></td>
+            <td id="frameScore1" name="frameScore1">0</td>
+            <td id="gameScore1" name="gameScore1">0</td>
+            <td id="notes1"></td>
+          </tr>
+  
+          <tr class='frame2'>
+            <td>2</th>
+            <td>
+              <select id="f2roll1" name="roll1">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </td>
+            <td>
+              <select id="f2roll2" name='roll2'>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </td>
+            <td><button class="submit" id= "submitScore2" name="submitScore2">Submit</button></td>
+            <td id="frameScore2" name="frameScore2">0</td>
+            <td id="gameScore2" name="gameScore2">0</td>
+            <td id="notes2"></td>
+          </tr>
+        </table>
+      </div>
     </h2>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="src/Game.js"></script>

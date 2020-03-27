@@ -1,0 +1,5 @@
+class Scorecard {
+	frames(){
+		return [];
+	}
+}

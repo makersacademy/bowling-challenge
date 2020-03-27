@@ -22,9 +22,10 @@ $(document).ready(function(){
 
 		if (isEndofFrame(rollNo)) {
 			var total = scorecard.total(); 
-			updateTotal(frameNo, total) 
+			updateTotal(frameNo, total);
+			clearFrame(); 
 		}
-		
+
 	});
 
 	function checkFrame(){
@@ -44,5 +45,7 @@ $(document).ready(function(){
 	}
 
 	function isEndofFrame(roll) {return roll === 2 ? true : false; }
+	function clearFrame() { frame = undefined; }
 });
+
 

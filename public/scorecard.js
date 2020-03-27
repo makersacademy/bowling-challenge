@@ -11,7 +11,9 @@ class Scorecard {
 		return this._frames;
 	}
 	total() {
-		this._frames.forEach( frame => this._sum += frame.total()); 
+		this._sum = this._frames.reduce((frame1, frame2) => frame1.total() + frame2.total(), 0); 
+		console.log(this._frames[0].total());
+		console.log(this._frames[1].total());
 		return this._sum; 
 	}
 }

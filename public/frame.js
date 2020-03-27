@@ -26,7 +26,7 @@ class Frame {
 		return this._pinfalls.first_roll + this._pinfalls.second_roll;
 	}
 
-	bonus(bonus = null){
+	bonus(bonus = 0){
 		return this._bonus = bonus;
 	}
 

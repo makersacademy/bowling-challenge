@@ -2,7 +2,7 @@
 
 This was the fifth weekend challenge at Makers. It reinforced what I had learnt in the weeks work - test driving a simple web app in a new language - JavaScript.
 
-I followed the brief when making this 10 Pin Bowling Scorecard, that is used in the console on the browser:
+I followed the brief when making this 10 Pin Bowling Scorecard that is used with the console in the browser:
 
 I decided to view the game as 20 rolls instead of 10 frames of 2 rolls. This made it far easier to access the individual rolls, as they were at the index of the game array (where each 'roll' was pushed into), and therefore made it easier to add the bonus (strike/spare bonus). This accumulative bonus is applied at the end of the game, and relies on the user calling the score function after the final frame.
 

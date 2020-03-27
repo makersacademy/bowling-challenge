@@ -1,0 +1,81 @@
+h1 {
+			text-align: center;
+			font-family: "Comic sans MS";
+			color: blue;
+		}
+		#pinfalls button {
+			display: inline;
+			border: .5px solid black;
+			padding: 5px 8px;
+			margin: 0 1px; 
+			font-size: 1.4em;
+			background-color: #ffccd9;
+		}
+		.frames .container {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+		}
+
+		.roll1, .roll2 {
+			display: inline-block;
+			width: 50%;
+			font-size: 2.3em;
+		}
+
+		.roll3 {
+			font-size: 2.3em;
+		}
+
+		#scorecard .frames{
+			display: inline-block;
+			border: 1px solid gray;
+			width: 100px;
+			height: 100px;
+			text-align: center;
+			overflow: hidden;
+		}
+
+		#scorecard .frames .container {
+			height: 50%;
+			width: 100%;
+		}
+
+		#scorecard .frames .container .roll2 {
+			border-left: .1px solid gray;
+			border-bottom: .1px solid gray;
+		}
+		#scorecard .frames .total {
+			display: inline-block;
+			height: 40%;
+			width: 70%;
+			font-size: 2em;
+			text-align: left;
+			padding: 10px 0 0 20px;
+			margin: 0;
+			color: blue;
+		}
+
+		#frame12 .container {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: flex-end;
+		}
+
+		#frame12 .container div {
+			display: inline-block;
+			width: 30%;
+			border-left: .1px solid gray;
+			border-bottom: .1px solid gray;
+		}
+
+		#frame12 .container .roll1 {
+			width: 40%;
+			border-left: none;
+			border-bottom: none;
+		}
+
+		section {
+			margin: 100px;
+		}

@@ -2,17 +2,193 @@
 <html>
 <head>
 	<title>Bowling Scorecard</title>
+	<style type="text/css">
+		#pinfalls button {
+			display: inline;
+			border: .5px solid black;
+			padding: 5px 8px;
+			margin: 0 1px; 
+			font-size: 1.4em;
+			background-color: #ffccd9;
+		}
+		.frames .container {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+		}
+
+		.roll1, .roll2 {
+			display: inline-block;
+			width: 50%;
+			font-size: 2.3em;
+		}
+
+		.roll3 {
+			font-size: 2.3em;
+		}
+
+		#scorecard .frames{
+			display: inline-block;
+			border: 1px solid gray;
+			width: 100px;
+			height: 100px;
+			text-align: center;
+			overflow: hidden;
+		}
+
+		#scorecard .frames .container {
+			height: 50%;
+			width: 100%;
+		}
+
+		#scorecard .frames .container .roll2 {
+			border-left: .1px solid gray;
+			border-bottom: .1px solid gray;
+		}
+		#scorecard .frames .total {
+			display: inline-block;
+			height: 40%;
+			width: 70%;
+			font-size: 2em;
+			text-align: left;
+			padding: 10px 0 0 20px;
+			margin: 0;
+			color: blue;
+		}
+
+		#frame12 .container {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: flex-end;
+		}
+
+		#frame12 .container div {
+			display: inline-block;
+			width: 30%;
+			border-left: .1px solid gray;
+			border-bottom: .1px solid gray;
+		}
+
+		#frame12 .container .roll1 {
+			width: 40%;
+			border-left: none;
+			border-bottom: none;
+		}
+
+
+		section {
+			margin: 100px;
+		}
+	</style>
 </head>
 <body>
 	<h1>Your faithful bowling scorecard</h1>
 	<section>
-		<div class="container">
+		<div id="pinfalls">
 			<p>Click on buttons below to record knocked down pins</p>
-
+			<div class="container">
+				<button id="btn0" type="button">0</button>
+				<button id="btn1" type="button">1</button>
+				<button id="btn2" type="button">2</button>
+				<button id="btn3" type="button">3</button>
+				<button id="btn4" type="button">4</button>
+				<button id="btn5" type="button">5</button>
+				<button id="btn6" type="button">6</button>
+				<button id="btn7" type="button">7</button>
+				<button id="btn8" type="button">8</button>
+				<button id="btn9" type="button">9</button>
+				<button id="btn10" type="button">10</button>
+			</div>
 		</div>
 	</section>
 	<section>
 		<div id="scorecard">
+			<div id="frame1" class="frames">
+				<div class="container">
+						<div class="roll1"></div>
+						<div class="roll2"></div>
+				</div>
+				<p class="total"></p>
+			</div>
+			<div id="frame2" class="frames">
+				<div class="container">
+						<div class="roll1"></div>
+						<div class="roll2"></div>
+				</div>
+				<p class="total"></p>
+			</div>
+			<div id="frame3" class="frames">
+				<div class="container">
+						<div class="roll1"></div>
+						<div class="roll2"></div>
+				</div>
+				<p class="total"></p>
+			</div>
+			<div id="frame4" class="frames">
+				<div class="container">
+						<div class="roll1"></div>
+						<div class="roll2"></div>
+				</div>
+				<p class="total"></p>
+			</div>
+			<div id="frame5" class="frames">
+				<div class="container">
+						<div class="roll1"></div>
+						<div class="roll2"></div>
+				</div>
+				<p class="total"></p>
+			</div>
+			<div id="frame6" class="frames">
+				<div class="container">
+						<div class="roll1"></div>
+						<div class="roll2"></div>
+				</div>
+				<p class="total"></p>
+			</div>
+			<div id="frame7" class="frames">
+				<div class="container">
+						<div class="roll1"></div>
+						<div class="roll2"></div>
+				</div>
+				<p class="total"></p>
+			</div>
+			<div id="frame8" class="frames">
+				<div class="container">
+						<div class="roll1"></div>
+						<div class="roll2"></div>
+				</div>
+				<p class="total"></p>
+			</div>
+			<div id="frame9" class="frames">
+				<div class="container">
+						<div class="roll1"></div>
+						<div class="roll2"></div>
+				</div>
+				<p class="total"></p>
+			</div>
+			<div id="frame10" class="frames">
+				<div class="container">
+						<div class="roll1"></div>
+						<div class="roll2"></div>
+				</div>
+				<p class="total"></p>
+			</div>
+			<div id="frame11" class="frames">
+				<div class="container">
+						<div class="roll1"></div>
+						<div class="roll2"></div>
+				</div>
+				<p class="total"></p>
+			</div>
+			<div id="frame12" class="frames">
+				<div class="container">
+						<div class="roll1"></div>
+						<div class="roll2"></div>
+						<div class="roll3"></div>
+				</div>
+				<p class="total"></p>
+			</div>
 		</div>
 	</section>
 </body>

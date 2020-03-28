@@ -2,6 +2,33 @@
 Bowling Challenge
 =================
 
+## Domain Model
+- Constructor Function Game
+  - Initializes with `this.rolls = []`
+- Prototype Function `roll(pins)`
+  - Pushes pins into `this.rolls`
+- Prototype Function returnScore
+  - Initializes with a variable `score = 0` and `rollIndex = 0`
+  - Iterates 10 times over `this.rolls` and adds to the score depending on the pins and bonuses, checking for spares and strikes.
+
+
+## Examples for the Tests
+- Gutter Game
+```
+-/- -/- -/- -/- -/- -/- -/- -/- -/- -/- = 0
+```
+- Spare Frame
+```
+5/5 3/- -/- -/- -/- -/- -/- -/- -/- -/- = 16
+```
+- Strike Frame
+```
+10 1/1 -/- -/- -/- -/- -/- -/- -/- -/- = 14
+```
+- Perfect Game
+```
+10 10 10 10 10 10 10 10 10 10 10 10 = 300
+```
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

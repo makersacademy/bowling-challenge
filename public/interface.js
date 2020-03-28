@@ -3,6 +3,8 @@ $(document).ready(function(){
 
 	const roll1 = 1;
 	const roll2 = 2;
+	const strike = "X";
+	const spare = "/";
 	var frame;
 
 	$userInput = $("#pinfalls .container");
@@ -18,13 +20,12 @@ $(document).ready(function(){
 
 		frameNo = checkFrame();
 		rollNo = checkRoll();
-		updateView(score, rollNo, frameNo);
+		updateView(score, rollNo, frameNo); 
 
 		if (isEndofFrame(rollNo)) {
 			var total = scorecard.total(); 
 			updateTotal(frameNo, total);
-			clearFrame(); 
-		}
+			clearFrame();}
 
 	});
 
@@ -33,15 +34,22 @@ $(document).ready(function(){
 	}
 
 	function checkRoll(){
-		return frame._pinfalls.second_roll === null ? 1 : 2
+		return frame._pinfalls.second_roll === null ? roll1 : roll2
 	}
-
-	function updateView(score, rollNo, frameNo){
-		$(`#frame${frameNo} .roll${rollNo}`).text(score);
+	function isSpare(total){ return total === 10 ? true : false }
+	function isStrike(rollNo, score){
+		return rollNo === roll1 && score === 10 ? true : false
 	}
 
 	function updateTotal(frameNo, total){
+		if(isSpare(total)){ $(`#frame${frameNo} .roll${roll2}`).text(spare); }
 		$(`#frame${frameNo} .total`).text(total);
+	}
+	function updateView(score, rollNo, frameNo){
+		if(isStrike(rollNo, score)){
+			$(`#frame${frameNo} .roll${roll2}`).text(strike);} 
+		else 
+			{$(`#frame${frameNo} .roll${rollNo}`).text(score);}
 	}
 
 	function isEndofFrame(roll) {return roll === 2 ? true : false; }

@@ -61,21 +61,21 @@ h1 {
 		color: blue;
 	}
 
-	#frame12 .container {
+	#frame10 .container {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: nowrap;
 		justify-content: flex-end;
 	}
 
-	#frame12 .container div {
+	#frame10 .container div {
 		display: inline-block;
 		width: 30%;
 		border-left: .1px solid gray;
 		border-bottom: .1px solid gray;
 	}
 
-	#frame12 .container .roll1 {
+	#frame10 .container .roll1 {
 		width: 40%;
 		border-left: none;
 		border-bottom: none;

@@ -84,3 +84,7 @@ h1 {
 	section {
 		margin: 100px;
 	}
+
+	.hide {
+		display: none;
+	}

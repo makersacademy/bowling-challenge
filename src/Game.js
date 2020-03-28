@@ -14,36 +14,34 @@ Game.prototype.returnScore = function() {
   for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
       var frameScore = this.rolls[rollIndex] + this.rolls[rollIndex + 1];
 
-      if (this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10) {
+      if (this.isStrike(rollIndex)) {
+        // strike logic (10 + the 2 next rolls)
+        score += 10 + this.strikeBonus(rollIndex);
+        rollIndex ++
+      } else if (this.isSpare(rollIndex)) {
         // spare logic (10 + next roll)
-        score += frameScore + this.rolls[rollIndex + 2];
-      } else if (this.rolls[rollIndex] === 10) {
-          score += frameScore + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+        score += 10 + this.spareBonus(rollIndex);
+        rollIndex += 2;
       } else {
         score += frameScore;
+        rollIndex += 2;
       }
-
-      rollIndex += 2;
     }
-
   return score;
+};
+
+Game.prototype.isSpare = function(rollIndex) {
+  return this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10;
 }
 
+Game.prototype.spareBonus = function(rollIndex) {
+  return this.rolls[rollIndex + 2];
+}
 
-// Game.prototype.currentScore = function (){
-//   var score = 0;
-//   var frameIndex = 0;
-//   for (var frame = 0; frame < 10; frame++) {
-//     if (this._isStrike(frameIndex)) {
-//       score += 10 + this._strikeBonus(frameIndex);
-//       frameIndex++;
-//     } else if (this._isSpare(frameIndex)) {
-//       score += 10 + this._spareBonus(frameIndex);
-//       frameIndex += 2;
-//     } else {
-//       score += this._sumOfBalls(frameIndex);
-//       frameIndex += 2;
-//     }
-//   }
-//   return score;
-// };
+Game.prototype.isStrike = function(rollIndex) {
+  return this.rolls[rollIndex] === 10;
+}
+
+Game.prototype.strikeBonus = function(rollIndex) {
+  return this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+}

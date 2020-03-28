@@ -17,6 +17,8 @@ Game.prototype.returnScore = function() {
       if (this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10) {
         // spare logic (10 + next roll)
         score += frameScore + this.rolls[rollIndex + 2];
+      } else if (this.rolls[rollIndex] === 10) {
+          score += frameScore + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
       } else {
         score += frameScore;
       }

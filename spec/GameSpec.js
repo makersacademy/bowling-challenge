@@ -29,6 +29,16 @@ describe ('Game', function() {
       rollMany(0, 17);
       expect(game.returnScore()).toEqual(16);
     })
+
+    it('should return the correct score when a strike is rolled', function() {
+      // strike frame(10) = 10 + next two rolls scores
+      game.roll(10);
+      game.roll(1);
+      game.roll(1);
+      // finish the game with gutter balls
+      rollMany(0, 17);
+      expect(game.returnScore()).toEqual(14);
+    })
   });
 
   // Refactor: function that rolls x pins x times

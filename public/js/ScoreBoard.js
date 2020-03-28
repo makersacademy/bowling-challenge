@@ -1,5 +1,6 @@
 function ScoreBoard() {
 
+    this.playerName = "";
     this.frames = [];
     this.score = [];
     this.totalScore = 0

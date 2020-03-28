@@ -4,7 +4,7 @@ function Frame() {
   this.bonusPoints = 0;
   this.strike = false;
   this.spare = false;
-  this.next = {};
+  this.next_frame = {};
 }
 
 Frame.prototype.roll = function(roll, pins) {
@@ -30,14 +30,15 @@ Frame.prototype.isSpare = function() {
   }
 }
 
-Frame.prototype.score = function(frame) {
-  this.bonus(this.next);
+Frame.prototype.score = function() {
+  this.bonus(this.next_frame);
   return this.roll_1 + this.roll_2 + this.bonusPoints;
 }
 
 Frame.prototype.bonus = function(frame) {
+  this.bonusPoints = 0;
   if (!this.strike && !this.spare) { return 0 };
   if (this.strike || this.spare) { this.bonusPoints += frame.roll_1 };
   if (this.strike) { this.bonusPoints += frame.roll_2 };
-  if (this.strike && frame.strike) { this.bonusPoints += frame.next.roll_1 };
+  if (this.strike && frame.strike) { this.bonusPoints += frame.next_frame.roll_1 };
 }

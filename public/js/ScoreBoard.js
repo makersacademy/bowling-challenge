@@ -7,7 +7,7 @@ function ScoreBoard() {
   ScoreBoard.prototype.newBoard = function() {
     for (i=0; i<12; i++) {
       this.frames.push(new Frame);
-      if (i > 0) { this.frames[i - 1].next = this.frames[i]; }
+      if (i > 0) { this.frames[i - 1].next_frame = this.frames[i]; }
     };
   };
 

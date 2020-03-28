@@ -3,9 +3,9 @@
 describe('ScoreBoard', () => {
 
   let scoreboard;
-  
-  beforeEach( () => {
-    scoreboard = new Scoreboard;
+
+  beforeEach(() => {
+    scoreboard = new ScoreBoard;
   });
 
   // creating scoreboard:

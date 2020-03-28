@@ -18,7 +18,7 @@ $(document).ready(function(){
 	});
 
 	function checkPrevBonus(frameNo, score, rollNo){
-		var prevFrame = scorecard.frames[frameNo];
+		let prevFrame = scorecard.frames()[frameNo];
 		if(prevFrame._isStrike){
 			prevFrame.bonus(score);
 		}else if (prevFrame._isSpare && rollNo === roll1){
@@ -53,7 +53,7 @@ $(document).ready(function(){
 				frame.recordStrike();
 				updateTotal(frameNo, true);
 			} 
-			else if(isSpare(total)){ 
+			else if(isSpare(rollNo, frameNo)){ 
 				$(`#frame${frameNo} .roll${rollNo}`).text(spare);
 			  frame.recordSpare();
 			  updateTotal(frameNo, true); 
@@ -72,7 +72,9 @@ $(document).ready(function(){
 		return rollNo === 2 ? true : false;
 	}
 
-	function isSpare(total){ return rollNo === roll2 && total === 10 ? true : false }
+	function isSpare(rollNo, frameNo){ 
+		let frameTotal = frame.total();
+		return rollNo === roll2 && frameTotal === 10 ? true : false }
 	function isStrike(rollNo, score){
 		return rollNo === roll1 && score === 10 ? true : false
 	}

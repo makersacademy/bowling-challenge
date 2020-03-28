@@ -6,21 +6,22 @@ describe ('Game', function() {
 
   beforeEach(function() {
     game = new Game();
-  })
+  });
 
   describe('score', function()    {
 
-    it('a game with all 0s should return a score of 0', function() {
+    it('a gutter game returns a score of 0', function() {
+      // gutter game: 20 rolls with no pins
       rollMany(0, 20);
       expect(game.returnScore()).toEqual(0);
     });
 
-    it('a game with all 1s should return a score of 20', function() {
+    it('a game with all 1s returns a score of 20', function() {
       rollMany(1, 20);
       expect(game.returnScore()).toEqual(20);
     });
 
-    it('should return the correct score when a spare is rolled', function() {
+    it('a spare frame has a bonus', function() {
       // spare frame(5-5) = 10 + next roll score
       game.roll(5);
       game.roll(5);
@@ -28,9 +29,9 @@ describe ('Game', function() {
       // finish the game with gutter balls
       rollMany(0, 17);
       expect(game.returnScore()).toEqual(16);
-    })
+    });
 
-    it('should return the correct score when a strike is rolled', function() {
+    it('a strike frame has a bonus', function() {
       // strike frame(10) = 10 + next two rolls scores
       game.roll(10);
       game.roll(1);
@@ -38,7 +39,13 @@ describe ('Game', function() {
       // finish the game with gutter balls
       rollMany(0, 17);
       expect(game.returnScore()).toEqual(14);
-    })
+    });
+
+    it('a perfect game returns a score of 300', function(){
+      // perfect game: 12 strikes
+      rollMany(10, 12);
+      expect(game.returnScore()).toEqual(300);
+    });
   });
 
   // Refactor: function that rolls x pins x times

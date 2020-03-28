@@ -1,7 +1,28 @@
 body {
-    background: linear-gradient(to right bottom, #ffffff 50%, #d40968 50%);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	background: linear-gradient(to right bottom, #ffffff 50%, #4fc2e6 50%);
+	/* background-image: url('../../image/pastel.jpg');
+	background-repeat: no-repeat;
+	background-size: cover; */
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.custom-container {
+	margin-bottom: 5rem;
+	display: flex;
+  flex-wrap: wrap;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+}
+
+.custom-table {
+  margin-bottom: 1rem;
+  display: flex;
+	flex-wrap: wrap;
+	width: auto;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
 }

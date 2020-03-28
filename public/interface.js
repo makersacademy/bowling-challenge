@@ -3,6 +3,7 @@ $(document).ready(function(){
 
 	const roll1 = 1;
 	const roll2 = 2;
+	const lastFrameIndex = 9;
 	const strike = "X";
 	const spare = "/";
 	var frame;
@@ -14,6 +15,11 @@ $(document).ready(function(){
 		frameNo = checkFrame(score);
 		rollNo = checkRoll();
 		if(frameNo !== 1){checkPrevBonus((frameNo - 2), score, rollNo)};
+		if(gameOver() && hasFinalBonus()){
+			scorecard.bonus(score);
+			updateRoll(score, rollNo, frameNo);
+			clearFrame();
+		}
 		updateRoll(score, rollNo, frameNo);
 	});
 
@@ -26,7 +32,13 @@ $(document).ready(function(){
 		}
 		return
 	}
+	function hasFinalBonus() {
+		let lastFrame = scorecard.frames()[lastFrameIndex];
+		if(lastFrame._isStrike || lastFrame._isSpare){ return true }
+	}
 
+  function gameOver(){ if(scorecard._gameOver) {return true} }
+	function endGame(){ scorecard.endGame() }
 	function checkFrame(score){
 		if(!frame) {
 			frame = new Frame(score);
@@ -44,6 +56,7 @@ $(document).ready(function(){
 		let total = scorecard.total();
 		if(strikeOrSpare){ $(`#frames${frameNo} .total`).css('display', 'none'); }
 		$(`#frame${frameNo} .total`).text(total);
+		if(frameNo === 10){ endGame(); }
 		clearFrame();
 	}
 	function updateRoll(score, rollNo, frameNo){

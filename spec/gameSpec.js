@@ -40,4 +40,9 @@ describe('Game', () => {
 
   })
 
+  it ('can get a perfect game', () => {
+    multipleRolls(10, 12);
+    expect(game.score()).toBe (300);
+  })
+
 })

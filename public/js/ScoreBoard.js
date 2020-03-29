@@ -3,7 +3,8 @@ function ScoreBoard() {
     this.playerName = "";
     this.frames = [];
     this.score = [];
-    this.totalScore = 0
+    this.totalScore = 0;
+    // this.newBoard();
 
   ScoreBoard.prototype.newBoard = function() {
     for (i=0; i<12; i++) {

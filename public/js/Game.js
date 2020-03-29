@@ -3,13 +3,15 @@ function Game() {
   this.players = [];
   this.frame = 1;
   this.playerIdx = 0;
-  this.currentPlayer = this.players[this.playerIdx];
+  this.currentPlayer = "";
+  // this.currentPlayer = this.players[this.playerIdx].name;
   this.roll = 1;
   this.inPlay = true;
 };
 
 Game.prototype.updatePlayersList = function (player) {
-  this.players.push(player);
+  this.players.push({ name: player, scoreboard: new ScoreBoard });
+  this.players[this.players.length - 1].scoreboard.newBoard();
 };
 
 Game.prototype.turn = function () {
@@ -20,7 +22,7 @@ Game.prototype.turn = function () {
 };
 
 Game.prototype.updateCurrentPlayer = function () {
-  this.currentPlayer = this.players[this.playerIdx];
+  this.currentPlayer = this.players[this.playerIdx].name;
 };
 
 Game.prototype._updateRoll = function () {

@@ -40,6 +40,15 @@ so I can play an accurate game of bowling,
 I would like to be able to calculate my score when I get a strike
 ```
 
+### Design Decisions
+
+At the point where I began to add the calculations for the spare, I considered extracting frame into a separate class to deal with the calculations separately from game.
+
+Game would then be responsible for keeping track of the frames and storing the rolls in the rolls array.
+
+Frame would be responsible for working out it's individual score.
+
+I decided to plot out the logic for the strike beforehand and then to reconsider refactoring it into a separate class later. 
 
 ### Optional Extras
 

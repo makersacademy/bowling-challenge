@@ -32,4 +32,12 @@ describe('Game', () => {
     expect(game.score()).toBe(16);
   })
 
+  it ('can get a strike', () => {
+    game.roll(10);
+    game.roll(5);
+    multipleRolls(0, 17);
+    expect(game.score()).toBe(20);
+
+  })
+
 })

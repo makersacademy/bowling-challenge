@@ -2,6 +2,7 @@ class Game {
 
   constructor() {
     this._rolls = [];
+    this._gameover = false;
   }
 
   roll(pins) {
@@ -26,28 +27,35 @@ class Game {
       }
     }
 
+    function endGame() {
+      game._gameover = true;
+      console.log(game._gameover);
+    }
+
+    function spare() {
+      return game._rolls[rollindex] + game._rolls[rollindex + 1] == 10;
+    }
+
+    function calculateSpareScore() {
+      return game._rolls[rollindex] + game._rolls[rollindex + 1] + game._rolls[rollindex + 2];
+    }
+
+    function calculateScore () {
+      return game._rolls[rollindex] + game._rolls[rollindex + 1];
+    }
+
+    function strike() {
+      return game._rolls[rollindex] == 10;
+    }
+
+    function calculateStrikeScore() {
+      return game._rolls[rollindex] + game._rolls[rollindex + 1] + game._rolls[rollindex + 2];
+    }
+
+    endGame();
     return result;
-
-      function spare() {
-        return game._rolls[rollindex] + game._rolls[rollindex + 1] == 10;
-      }
-
-      function calculateSpareScore() {
-        return game._rolls[rollindex] + game._rolls[rollindex + 1] + game._rolls[rollindex + 2];
-      }
-
-      function calculateScore () {
-        return game._rolls[rollindex] + game._rolls[rollindex + 1];
-      }
-
-      function strike() {
-        return game._rolls[rollindex] == 10;
-      }
-
-      function calculateStrikeScore() {
-        return game._rolls[rollindex] + game._rolls[rollindex + 1] + game._rolls[rollindex + 2];
-      }
   }
+
 }
 
 module.exports = Game;

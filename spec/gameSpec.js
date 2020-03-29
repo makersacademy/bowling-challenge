@@ -45,4 +45,10 @@ describe('Game', () => {
     multipleRolls(10, 12);
     expect(game.score()).toBe (300);
   })
+
+  it ('cannot exceed the maximum number of rolls', () => {
+    multipleRolls(10, 13);
+    expect(game.score()).toBe (300);
+    expect(game._gameover).toBe (true);
+  })
 })

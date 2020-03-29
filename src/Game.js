@@ -42,6 +42,7 @@ Game.prototype.randomRoll_2 = function() {
   return this.pinsRoll2;
 };
 
+
 // Refactoring to get scores
 Game.prototype.frameScore = function(rollIndex) {
   return this.rolls[rollIndex] + this.rolls[rollIndex + 1];

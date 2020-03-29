@@ -31,7 +31,7 @@ Once downloaded i have placed the structure in the project root and configured t
   - First commit.
 --------------------------------------------------------------------------------
 
-## PROJECT STEPS ##
+## PROJECT DSTEPS ##
 
 # FIRST STEP.
 
@@ -417,7 +417,7 @@ in the .rollspindown array is equal to 10. if it is, means that the player got a
 
  when we will run the test now all it should be green. (finger crossed!)
 
- ![test_11](11.strike_perfect_passed.png)
+ ![test_11](https://github.com/rafahg/bowling-challenge/blob/media/11.strike_perfect_passed.png)
 
 As a bonus i am going to implement the last test, a ramdom play to check if the code is consistent.
 
@@ -440,7 +440,7 @@ As a bonus i am going to implement the last test, a ramdom play to check if the 
 
  So, complete sucess at the moment.
 
- ![demo_gif](https://gph.is/1aulJry)
+ ![demo_gif](https://github.com/rafahg/bowling-challenge/blob/media/1.demo_gif.gif)
 
 
 Time for the final commit of this stage. In next steps of this projects Jquery

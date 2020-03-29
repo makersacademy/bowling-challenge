@@ -104,8 +104,7 @@ Once downloaded i have placed the structure in the project root and configured t
 
    Test state at the moment:
 
-   ![Test state]
-    (https://github.com/rafahg/bowling-challenge/blob/media/First_test.png)
+   ![Test state](https://github.com/rafahg/bowling-challenge/blob/media/First_test.png)
 
    Of course that test is failing, it is necesary the implementation in the Game.js file to make this work.
 
@@ -114,3 +113,56 @@ Once downloaded i have placed the structure in the project root and configured t
    I do a third one to implement better images in this README file.
 
    -----------------------------------------------------------------------------------
+
+  2. FIRST IMPLEMENTATION.
+  I am gonna create the class BowlingGame and the methods play and score.
+  Like that:
+
+   ```javascript
+   var BowlingGame = function() {};
+
+
+   BowlingGame.prototype.play = function() {
+     //code here.
+   };
+
+   BowlingGame.prototype.score = function() {
+     //code here.
+   };
+   ```
+
+  once i do that what i have in the test is this:
+
+  ![Test_2](picture_2)
+
+  ![Test_3](picture 3)
+
+  That shows that at the moment evertything is working properly, it is logic the fail due to i dont have any code within the methods.
+
+  To have logic within the methods i implement the following:
+
+  ```javascript
+  BowlingGame.prototype.play = function(pins) {
+    this._tempScore += pins;
+    //this is equivalent of this._tempScore = this._tempScore + pins;
+  };
+
+  BowlingGame.prototype.score = function() {
+    return this._tempScore;
+  };
+ ```
+
+What i am doing here is basically add an attribute to the class which will be in charge of storage
+the temporary score, and without any other logic at the moment the way to do it is control the points which are down in a row. Thats why now the method play have a parameter called (pins), those pins mean that for every roll, i ve knock down that number of pins.
+
+So we iterate 20 times in the test the method play with the parameter of our choice and of course if 0 is chosen the outcome is gonna be 0 points.
+
+The method score at the moment only storage the attribute updated. For the first test the attribute is gonna remain at 0 points, so piece of cake.
+
+
+ Implementing that code, as explained, the test pass.
+
+![Test4](picture_4)
+
+Time for one commit at this point.
+----------------------------------------------------------------------------------------------------

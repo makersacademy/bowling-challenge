@@ -1,17 +1,23 @@
 $(document).ready(function() {
-  
+  let total;  
   let game = new bowlingGame;
-  $("form").submit(function () {
-    alert("button is clicked");
-  });
+  // $("form").submit(function () {
+  //   alert("button is clicked");
+  // });
   
   function showTotal(num) {
     $("#totalScore").text(num);
   }
-  
-  $("#myButton").click(function (e) {
-    alert("Button is Clicked")
-  });
+
+  $("#inputFrame").click(function (e) {
+    let firstRoll;
+    let secondRoll;
+    firstRoll = parseInt($("#firstRoll").val());
+    secondRoll = parseInt($("#secondRoll").val());
+    game.addFrame([firstRoll, secondRoll]);
+    console.log(game.frames);
+    
+  })
 
   
   
@@ -22,10 +28,14 @@ $(document).ready(function() {
 
 
   $("#calculateScoreTest").click(function (e) {
-    for(let i = 0; i < 9; i++) {game.addFrame([1, 1])}
-    game.addLastFrame([10, 10, 10])
-    let total;
-    total = game.gameTotal()
-    showTotal(total);
+    // for(let i = 0; i < 8; i++) {game.addFrame([1, 1])};
+    // game.addLastFrame([10, 10]);
+    if(game.frames.length < 10) {
+      showTotal("You have not put in enough frames to calculate the total.")
+    } else {
+      total = game.gameTotal();
+      showTotal(total);
+    }
+    game = new bowlingGame
   });
 })

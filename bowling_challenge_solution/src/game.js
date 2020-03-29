@@ -27,8 +27,8 @@ bowlingGame.prototype.createFrame = function(rolls) {
 }
 
 function calculateFrames(game) {
-  for(let i = 0; i < game.frames.length - 1; i++) {
-    if(i < game.frames.length - 2) {
+  for(let i = 0; i < 9; i++) {
+    if(i < 8) {
       game.frames[i].calculateFrameTotal((game.frames[i].rolls), (game.frames[i + 1].rolls), (game.frames[i + 2].rolls));
     } else {
       game.frames[i].calculateFrameTotal((game.frames[i].rolls), [(game.frames[i + 1].rolls[0]), 0], [(game.frames[i + 1].rolls[1]), 0]);
@@ -38,7 +38,7 @@ function calculateFrames(game) {
 
 function calculateTotal(game, total) {
   // this will calculate the total of all the frames. 
-  for(let i = 0; i < game.frames.length; i++) {
+  for(let i = 0; i < 10; i++) {
     total += game.frames[i].frameTotal;
   }
   return total
@@ -46,5 +46,5 @@ function calculateTotal(game, total) {
 
 function calculateLastFrame(game) {
   // this will calculate the total of the last frame.
-  game.frames[game.frames.length - 1].lastFrameTotal()
+  game.frames[9].lastFrameTotal()
 }

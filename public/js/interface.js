@@ -44,12 +44,12 @@ $( document ).ready(function() {
     scoreboard.update();
     if (game.roll == 1){
       (scoreboard.frames[game.frame].strike) ? score = 'X' : score = scoreboard.frames[game.frame].roll_1
-      $( '.frame1' ).find('.Roll1').html(score);
+      $( '.frame' + game.frame ).find('.Roll1').html(score);
     } else {
       (scoreboard.frames[game.frame].spare) ? score = '/' : score = scoreboard.frames[game.frame].roll_2
-      $( '.frame1' ).find('.Roll2').html(score);
+      $( '.frame' + game.frame ).find('.Roll2').html(score);
     };
-    $( '.frame1' ).find('.Total').html(scoreboard.frames[game.frame].score());
+    $( '.frame' + game.frame ).find('.Total').html(scoreboard.frames[game.frame].score());
   };
 
   // function updateRoll() {

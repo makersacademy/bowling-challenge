@@ -15,17 +15,11 @@ $(document).ready(function(){
 		frameNo = checkFrame(score);
 		rollNo = checkRoll();
 		updateRoll(score, rollNo, frameNo);
+		updateBonus(frameNo, score);
 		updateTotal(frameNo);
-		if(isEndofFrame(rollNo, score)){ clearFrame(); };
+		if(isEndofFrame()){ clearFrame(rollNo, score);}
 	});
 
-	function hasFinalBonus() {
-		let lastFrame = scorecard.frames()[lastFrameIndex];
-		if(lastFrame._isStrike || lastFrame._isSpare){ return true }
-	}
-
-  function gameOver(){ if(scorecard._gameOver) {return true} }
-	function endGame(){ scorecard.endGame() }
 	function checkFrame(score){
 		if(!frame) {
 			frame = new Frame(score);
@@ -40,14 +34,31 @@ $(document).ready(function(){
 		return frame._pinfalls.second_roll === null ? roll1 : roll2
 	}
 
+	function updateBonus(frameNo, score){
+		let toBeCompleted = scorecard._frames.filter((frame) => !frame.completed());
+		let frames = toBeCompleted.map(frame => frame.frame );
+		frames.forEach(function(frame){
+			if(frame._isStrike() && frame._bonus < 2){ frame.addBonus(score); }
+			if(frame._isSpare()){ frame.addBonus(score); }
+		})
+	}
+
 	function updateTotal(frameNo){
 		try {
 			let total = scorecard.total();
 			$(`#frame${frameNo} .total`).text(total);}
 		catch {
 			$(`#frame${frameNo} .total`).text(''); 
-		}
-	}
+			if(frameNo > 1) { 
+				try { 
+					let total = scorecard.total(frameNo - 1);
+					$(`#frame${frameNo - 1} .total`).text(total);}
+				catch {
+					if(frameNo > 2){ updateTotal(frameNo - 2); };
+				};
+			};
+		};
+	};
 
 	function updateRoll(score, rollNo, frameNo){
 		if(frame._isStrike()){ 
@@ -74,7 +85,8 @@ $(document).ready(function(){
 		return scorecard.frames()[frameNo].completed;
 	}
 
-
+  function gameOver(){ if(scorecard._gameOver) {return true}; }
+	function endGame(){ scorecard.endGame(); }
 });
 
 

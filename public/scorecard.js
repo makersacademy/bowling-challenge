@@ -7,12 +7,7 @@ class Scorecard {
 	frames(){
 		return this._frames;
 	}
-
-	hasIncompleteFrames(){
-		let incomplete = this._frames.filter((frame) => !frame.completed());
-		return incomplete.length ? true : false
-	}
-
+	
 	add(frame) {
 		if(this._gameOver){ throw new Error("Game Over"); }
 		let hash = { 

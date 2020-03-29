@@ -6,6 +6,41 @@ Bowling Challenge
 
 Create a scoring card to calculate the score in a game of 10 pin bowling.
 
+### User Stories
+
+To help structure my approach I created several user stories from the challenge specifications. This was mainly to help with directing my feature and unit tests.
+
+#### Story 1
+
+```
+As a bowler,
+so I can play an accurate game of bowling,
+I would like to calculate my score for a gutter game
+```
+
+#### Story 2
+```
+As a bowler,
+so I can play an accurate game of bowling,
+I would like to be able to calculate my score when I knock down only 1 pin
+```
+
+#### Story 3
+
+```
+As a bowler,
+so I can play an accurate game of bowling,
+I would like to be able to calculate my score when I get a spare
+```
+
+#### Story 4
+```
+As a bowler,
+so I can play an accurate game of bowling,
+I would like to be able to calculate my score when I get a strike
+```
+
+
 ### Optional Extras
 
 In any order you like:

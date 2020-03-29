@@ -14,10 +14,12 @@ $(document).ready(function(){
 		score = parseInt(e.target.innerText); 
 		frameNo = checkFrame(score);
 		rollNo = checkRoll();
+
 		updateRoll(score, rollNo, frameNo);
 		updateBonus(frameNo, score);
 		updateTotal(frameNo);
-		if(isEndofFrame()){ clearFrame(rollNo, score);}
+
+		if(isEndofFrame(rollNo, score)){ clearFrame(rollNo, score);}
 	});
 
 	function checkFrame(score){
@@ -34,30 +36,30 @@ $(document).ready(function(){
 		return frame._pinfalls.second_roll === null ? roll1 : roll2
 	}
 
+	var toBeCompleted = function(){ 
+		return scorecard._frames.filter((frame) => !frame.completed()); 
+	};
+
 	function updateBonus(frameNo, score){
-		let toBeCompleted = scorecard._frames.filter((frame) => !frame.completed());
-		let frames = toBeCompleted.map(frame => frame.frame );
+		let frames = toBeCompleted().map(frame => frame.frame );
 		frames.forEach(function(frame){
-			if(frame._isStrike() && frame._bonus < 2){ frame.addBonus(score); }
-			if(frame._isSpare()){ frame.addBonus(score); }
+			if(frames.indexOf(frame) === frameNo - 1){ return; }
+			if(frame._isStrike() && frame._bonus.length < 2){ 
+				frame.addBonus(score); 
+				return;
+			}
+			if(frame._isSpare()){ frame.addBonus(score); return}
 		})
 	}
 
 	function updateTotal(frameNo){
-		try {
-			let total = scorecard.total();
-			$(`#frame${frameNo} .total`).text(total);}
-		catch {
-			$(`#frame${frameNo} .total`).text(''); 
-			if(frameNo > 1) { 
-				try { 
-					let total = scorecard.total(frameNo - 1);
-					$(`#frame${frameNo - 1} .total`).text(total);}
-				catch {
-					if(frameNo > 2){ updateTotal(frameNo - 2); };
-				};
-			};
-		};
+		for(var i = frameNo; i > 0; i--){
+			try {
+				let total = scorecard.total(i);
+				$(`#frame${i} .total`).text(total);}
+			catch { 
+				$(`#frame${i} .total`).text('');}
+		}
 	};
 
 	function updateRoll(score, rollNo, frameNo){

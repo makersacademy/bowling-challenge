@@ -7,17 +7,19 @@ describe('Game', () => {
     game = new Game;
   })
 
-  it ('can have a gutter game', () => {
-    for (let i = 0; i < 20; i++) {
-      game.roll(0);
+  let multipleRolls = function(pins, rolls) {
+    for (let i = 0; i < rolls; i++) {
+      game.roll(pins);
     }
+  };
+
+  it ('can have a gutter game', () => {
+    multipleRolls(0, 20);
     expect(game.score()).toBe(0);
   })
 
   it ('can roll all ones', () => {
-    for (let i = 0; i < 20; i ++) {
-      game.roll(1);
-    }
+    multipleRolls(1, 20);
     expect(game.score()).toBe(20);
   })
 

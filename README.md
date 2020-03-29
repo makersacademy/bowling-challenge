@@ -9,9 +9,7 @@ Create a virtual scoring card to calculate the score in a game of 10 pin bowling
 ## Running tests
 
 ```
-Clone or download the repository.
-cd bowling_challenge
-open SpecRunner.html in your favourite browser
+npm test
 
 ```
 
@@ -78,9 +76,6 @@ In any order you like:
 * Set up [Travis CI](https://travis-ci.org) to run your tests.
 * Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
-
 ## Bowling — how does it work?
 
 ### Strikes
@@ -105,12 +100,3 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 ### Perfect Game
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

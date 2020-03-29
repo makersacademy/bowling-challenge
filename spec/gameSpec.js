@@ -1,5 +1,7 @@
 'use strict';
 
+let Game = require('../src/Game.js');
+
 describe('Game', () => {
   let game;
 
@@ -37,13 +39,10 @@ describe('Game', () => {
     game.roll(5);
     multipleRolls(0, 17);
     expect(game.score()).toBe(20);
-
   })
 
   it ('can get a perfect game', () => {
     multipleRolls(10, 12);
     expect(game.score()).toBe (300);
   })
-
-
 })

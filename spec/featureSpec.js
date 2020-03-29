@@ -31,14 +31,16 @@ describe('Scorecard', function(){
 	});
 
 	describe('total', function(){
-		it("throw error when frame not completed", function(){
-			scorecard.add(frame);
-			expect(function(){ scorecard.total(); }).toThrowError('Incomplete frames');
-		});
 		it('can calculate total score',function(){
-			let firstFrame = scorecard._frames[0];
-			firstFrame.frame.add(4);
+			frame.add(4);
 			expect(scorecard.total()).toEqual(9);
+		});
+		it('can give total at a specific frame', function(){
+			frame.add(4);
+			frame = new Frame(3);
+			scorecard.add(frame);
+			frame.add(4)
+			expect(scorecard.total(1)).toEqual(9);
 		});
 	});
 });

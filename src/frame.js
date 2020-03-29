@@ -7,10 +7,10 @@ class Frame {
 		}; 
 
 		this._bonus = [];
-		this._isStrike = function(){ return this._pinfalls.first_roll === 10 ? true : false };
+		this._isStrike = function(){ 
+			return this._pinfalls.first_roll === 10 ? true : false };
 		this._isSpare = function(){
-			return !this._isStrike() && this.pinfalls() === 10 
-			? true : false
+			return !this._isStrike() && this.pinfalls() === 10 ? true : false
 		}
 	}
 

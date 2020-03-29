@@ -1,34 +1,45 @@
 class Scorecard {
 	constructor(){
 		this._frames = [];
-		this._sum = 0;
 		this._gameOver = false;
 	}
+
 	frames(){
 		return this._frames;
 	}
-	add(frame) {
-		if(this._gameOver){ throw new Error("Game Over"); }
-		this._frames.push(frame);
-		return this._frames;
-	}
-	total() {
-		if(this._frames.length === 1) {
-			this._sum = this._frames[0].total();
-		}
-		else{
-			this._sum = 0;
-			this._frames.forEach(frame => this._sum += frame.total()); 
-		}
-		return this._sum; 
-	}
-	endGame() {
-		this._gameOver = true;
+
+	hasIncompleteFrames(){
+		let incomplete = this._frames.filter((frame) => !frame.completed());
+		return incomplete.length ? true : false
 	}
 
-	bonus(bonus){
-		if(!this._gameOver){ throw new Error('Game ongoing, bonus error'); }
-		this._sum += bonus;
-		return this._sum;
+	add(frame) {
+		if(this._gameOver){ throw new Error("Game Over"); }
+		let hash = { 
+			frame: frame, 
+			completed: function(){ 
+				try { 
+					this.frame.total(); return true;
+				} catch { return false; }
+			} 
+		};
+		this._frames.push(hash);
+	}
+
+	total(frameNo = null) {
+		let sum = 0;
+		var self = this;
+		let endPoint = function(){ 
+			return frameNo === null ? self._frames.length : frameNo;
+		};
+
+		for(var i = 0; i < endPoint(); i++){
+			sum += this._frames[i].frame.total();
+		} 
+		return sum; 
+	}
+
+	endGame() {
+		this._gameOver = true;
 	}
 }

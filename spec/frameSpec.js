@@ -14,6 +14,10 @@ describe('Frame', function(){
 			frame.add(5);
 			expect(frame._isSpare()).toBe(true);
 		});
+		it('knows when it is not a spare', function(){
+			frame.add(4);
+			expect(frame._isSpare()).toBe(false);
+		})
 	});
 	describe('Frame pinfalls', function(){
 		it('can add second roll scores', function(){

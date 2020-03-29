@@ -1,7 +1,6 @@
 class Scorecard {
 	constructor(){
 		this._frames = [];
-		this._sum = 0;
 		this._gameOver = false;
 	}
 
@@ -27,12 +26,19 @@ class Scorecard {
 		this._frames.push(hash);
 	}
 
-	total() {
-		if(this.hasIncompleteFrames()){ throw new Error('Incomplete frames'); }
-		this._sum = 0;
-		this._frames.forEach(frame => this._sum += frame.frame.total()); 
-		return this._sum; 
+	total(frameNo = null) {
+		let sum = 0;
+		var self = this;
+		let endPoint = function(){ 
+			return frameNo === null ? self._frames.length : frameNo;
+		};
+
+		for(var i = 0; i < endPoint(); i++){
+			sum += this._frames[i].frame.total();
+		} 
+		return sum; 
 	}
+
 	endGame() {
 		this._gameOver = true;
 	}

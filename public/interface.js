@@ -14,24 +14,11 @@ $(document).ready(function(){
 		score = parseInt(e.target.innerText); 
 		frameNo = checkFrame(score);
 		rollNo = checkRoll();
-		if(frameNo !== 1){checkPrevBonus((frameNo - 2), score, rollNo)};
-		if(gameOver() && hasFinalBonus()){
-			scorecard.bonus(score);
-			updateRoll(score, rollNo, frameNo);
-			clearFrame();
-		}
 		updateRoll(score, rollNo, frameNo);
+		updateTotal(frameNo);
+		if(isEndofFrame(rollNo, score)){ clearFrame(); };
 	});
 
-	function checkPrevBonus(frameNo, score, rollNo){
-		let prevFrame = scorecard.frames()[frameNo];
-		if(prevFrame._isStrike){
-			prevFrame.bonus(score);
-		}else if (prevFrame._isSpare && rollNo === roll1){
-			prevFrame.bonus(score)
-		}
-		return
-	}
 	function hasFinalBonus() {
 		let lastFrame = scorecard.frames()[lastFrameIndex];
 		if(lastFrame._isStrike || lastFrame._isSpare){ return true }
@@ -52,45 +39,41 @@ $(document).ready(function(){
 	function checkRoll(){
 		return frame._pinfalls.second_roll === null ? roll1 : roll2
 	}
-	function updateTotal(frameNo, strikeOrSpare = false){
-		let total = scorecard.total();
-		if(strikeOrSpare){ $(`#frames${frameNo} .total`).css('display', 'none'); }
-		$(`#frame${frameNo} .total`).text(total);
-		if(frameNo === 10){ endGame(); }
-		clearFrame();
+
+	function updateTotal(frameNo){
+		try {
+			let total = scorecard.total();
+			$(`#frame${frameNo} .total`).text(total);}
+		catch {
+			$(`#frame${frameNo} .total`).text(''); 
+		}
 	}
+
 	function updateRoll(score, rollNo, frameNo){
-		if(isEndofFrame(rollNo, score)){
-			if(isStrike(rollNo, score)){
-				$(`#frame${frameNo} .roll${roll2}`).text(strike);
-				frame.recordStrike();
-				updateTotal(frameNo, true);
-			} 
-			else if(isSpare(rollNo, frameNo)){ 
-				$(`#frame${frameNo} .roll${rollNo}`).text(spare);
-			  frame.recordSpare();
-			  updateTotal(frameNo, true); 
-			}
-			else 
-				$(`#frame${frameNo} .roll${rollNo}`).text(score);
-				updateTotal(frameNo, false);
+		if(frame._isStrike()){ 
+			$(`#frame${frameNo} .roll${roll2}`).text(strike);
+			return;
 		} 
-	  else { $(`#frame${frameNo} .roll${rollNo}`).text(score); };
+		if(rollNo == roll2 && frame._isSpare()){ 
+			$(`#frame${frameNo} .roll${rollNo}`).text(spare);
+			return;
+		}
+		else {
+		  $(`#frame${frameNo} .roll${rollNo}`).text(score);
+		  return;
+		}
 	}
 
 	function clearFrame() { frame = undefined; }
-
 	function isEndofFrame(rollNo, score) {
-		if(isStrike(rollNo, score)){ return true }
+		if(frame._isStrike()){ return true };
 		return rollNo === 2 ? true : false;
 	}
 
-	function isSpare(rollNo, frameNo){ 
-		let frameTotal = frame.total();
-		return rollNo === roll2 && frameTotal === 10 ? true : false }
-	function isStrike(rollNo, score){
-		return rollNo === roll1 && score === 10 ? true : false
+	function isCompleted(frameNo){
+		return scorecard.frames()[frameNo].completed;
 	}
+
 
 });
 

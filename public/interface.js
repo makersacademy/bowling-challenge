@@ -36,20 +36,12 @@ $(document).ready(function(){
 		return frame._pinfalls.second_roll === null ? roll1 : roll2
 	}
 
-	var toBeCompleted = function(){ 
-		return scorecard._frames.filter((frame) => !frame.completed()); 
-	};
-
 	function updateBonus(frameNo, score){
-		let frames = toBeCompleted().map(frame => frame.frame );
-		frames.forEach(function(frame){
-			if(frames.indexOf(frame) === frameNo - 1){ return; }
-			if(frame._isStrike() && frame._bonus.length < 2){ 
-				frame.addBonus(score); 
-				return;
-			}
-			if(frame._isSpare()){ frame.addBonus(score); return}
-		})
+		let bonusFrames = scorecard._frames
+				.filter((frame, index)=> !frame.completed() && index !== frameNo - 1)
+				.map(frame => frame.frame);
+
+		bonusFrames.forEach(frame => frame.addBonus(score));
 	}
 
 	function updateTotal(frameNo){

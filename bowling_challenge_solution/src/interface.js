@@ -4,7 +4,13 @@ $(document).ready(function() {
   // $("form").submit(function () {
   //   alert("button is clicked");
   // });
-  
+  $(document).on('click', ':button', function (e) {
+
+    var btn = $(e.target);
+    btn.attr("disabled", "disabled"); // disable button
+
+  });
+
   function showTotal(num) {
     $("#totalScore").text(num);
   }
@@ -16,6 +22,9 @@ $(document).ready(function() {
     secondRoll = parseInt($("#secondRoll").val());
     game.addFrame([firstRoll, secondRoll]);
     console.log(game.frames);
+    $("#firstRoll").attr('disabled', true)
+    $("#secondRoll").attr('disabled', true)
+    $("#inputFrame").attr('disabled', true)
     
   })
 

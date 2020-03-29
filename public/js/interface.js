@@ -1,6 +1,9 @@
 $( document ).ready(function() {
 
-  let scoreboard = new ScoreBoard;
+  // will probably make a game object that stores these values
+  let scoreboard;
+  let frame = 1;
+  let roll = 1;
 
   $( '.scoreboard').hide();
   $( '.btn-startGame' ).hide();
@@ -10,7 +13,10 @@ $( document ).ready(function() {
     $( '.scoreboard').show();
     $( '.btn-startGame' ).show();
     $( '.playing').hide();
+
+    scoreboard = new ScoreBoard;
     scoreboard.newBoard();
+
     $( '.playerName' ).html("<input type='text' class='playerNameForm' placeholder='Enter name'>")
   });
 
@@ -21,47 +27,30 @@ $( document ).ready(function() {
     scoreboard.playerName = $( '.playerNameForm' ).val();
     $( '.playerName' ).html(scoreboard.playerName);
     $( '.msg-playersTurn' ).html("It's " + scoreboard.playerName + "'s turn!")
+    $( '.msg-rollNum' ).html("Roll " + roll);
   });
 
-  $( '.0Pin' ).on('click', function() {
-    updateScoreboard(parseInt($( '.0Pin' ).val()));
-  });
-  $( '.1Pin' ).on('click', function() {
-    updateScoreboard(parseInt($( '.1Pin' ).val()));
-  });
-  $( '.2Pins' ).on('click', function() {
-    updateScoreboard(parseInt($( '.2Pins' ).val()));
-  });
-  $( '.3Pins' ).on('click', function() {
-    updateScoreboard(parseInt($( '.3Pins' ).val()));
-  });
-  $( '.4Pins' ).on('click', function() {
-    updateScoreboard(parseInt($( '.4Pins' ).val()));
-  });
-  $( '.5Pins' ).on('click', function() {
-    updateScoreboard(parseInt($( '.5Pins' ).val()));
-  });
-  $( '.6Pins' ).on('click', function() {
-    updateScoreboard(parseInt($( '.6Pins' ).val()));
-  });
-  $( '.7Pins' ).on('click', function() {
-    updateScoreboard(parseInt($( '.7Pins' ).val()));
-  });
-  $( '.8Pins' ).on('click', function() {
-    updateScoreboard(parseInt($( '.8Pins' ).val()));
-  });
-  $( '.9Pins' ).on('click', function() {
-    updateScoreboard(parseInt($( '.9Pins' ).val()));
-  });
-  $( '.10Pins' ).on('click', function() {
-    updateScoreboard(parseInt($( '.10Pins' ).val()));
+  $( '.Pins' ).on('click', function() {
+    updateScoreboard(parseInt($(this).val()));
+    updateRoll();
+    $( '.msg-rollNum' ).html("Roll " + roll);
   });
 
   function updateScoreboard(pins) {
-    scoreboard.frames[0].roll(1, pins);
+    scoreboard.frames[0].roll(roll, pins);
     scoreboard.update();
-    $( '.frame1Roll1' ).html(scoreboard.frames[0].roll_1);
-    $( '.frame1Total' ).html(scoreboard.frames[0].score());
+    // if roll_1, check for strike, update with 'X' if strike
+    // if roll_2 check for spare, update with '/' if spare
+    if (roll == 1){
+      $( '.frame1' ).find('.Roll1').html(scoreboard.frames[0].roll_1);
+    } else {
+    $( '.frame1' ).find('.Roll2').html(scoreboard.frames[0].roll_2);
+    };
+
+    $( '.frame1' ).find('.Total').html(scoreboard.frames[0].score());
   };
 
+  function updateRoll() {
+    roll = roll % 2 + 1;
+  };
 });

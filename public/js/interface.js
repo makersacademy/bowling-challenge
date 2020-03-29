@@ -30,14 +30,25 @@ $( document ).ready(function() {
     game.updateCurrentPlayer();
     $( '.msg-playersTurn' ).html("It's " + game.currentPlayer + "'s turn!")
     $( '.msg-rollNum' ).html("Roll " + game.roll);
+    updatePinButtons();
+    // $( '.pinButtons' ).append("button")
   });
 
-  $( '.Pins' ).on('click', function() {
+  $( '.pinButtons' ).on('click', '.Pins', function() {
     updateScoreboard(parseInt($(this).val()));
     // updateRoll();
     game.turn();
+    updatePinButtons();
     $( '.msg-rollNum' ).html("Roll " + game.roll);
   });
+
+  function updatePinButtons() {
+    pinsLeft = 10 - scoreboard.frames[game.frame].roll_1;
+    $( '.pinButtons' ).empty();
+    for (i = 0; i <= pinsLeft; i++) {
+      $( '.pinButtons' ).append("<button class='Pins' value=" + i + " >" + ((i == 0) ? 'Gutter' : i) + "</button>")
+    };
+  }
 
   function updateScoreboard(pins) {
     scoreboard.frames[game.frame].roll(game.roll, pins);

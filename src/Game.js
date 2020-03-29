@@ -47,8 +47,7 @@ class Game {
       function calculateStrikeScore() {
         return game._rolls[rollindex] + game._rolls[rollindex + 1] + game._rolls[rollindex + 2];
       }
-
   }
-
-
 }
+
+module.exports = Game;

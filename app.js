@@ -1,5 +1,8 @@
 const http = require('http');
 
+game = require('./src/Game.js');
+console.log(game);
+
 const hostname = '127.0.0.1';
 const port = 3000;
 

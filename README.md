@@ -4,11 +4,20 @@ Bowling Challenge
 
 ## The Task
 
-Create a scoring card to calculate the score in a game of 10 pin bowling.
+Create a virtual scoring card to calculate the score in a game of 10 pin bowling.
+
+## Running tests
+
+```
+Clone or download the repository.
+cd bowling_challenge
+open SpecRunner.html in your favourite browser
+
+```
 
 ### User Stories
 
-To help structure my approach I created several user stories from the challenge specifications. This was mainly to help with directing my feature and unit tests.
+To help structure my approach I created several user stories from the challenge specifications. This was mainly to help with directing my feature and unit tests. I also followed advice from Uncle Bob on his implementation of the Bowling Kata.
 
 #### Story 1
 
@@ -47,17 +56,21 @@ so I can play an accurate game of bowling,
 I would like to be able to calculate my score for a perfect game.
 ```
 
-### Design Decisions
+### Future Additions
 
-At the point where I began to add the calculations for the spare, I considered extracting frame into a separate class to deal with the calculations separately from game.
+At the point where I began to add the calculations for the spare, I considered extracting frame into a separate class to deal with the calculations separately from game. Separating out frame into a separate class would have resulted in cleaner code which would be much easier to refactor.
 
-Game would then be responsible for keeping track of the frames and storing the rolls in the rolls array.
+In the future, when attempting this challenge again I would create 2, perhaps 3 separate classes for:
 
-Frame would be responsible for working out it's individual score.
+Game - responsible for keeping track of the frames.
 
-I decided to plot out the logic for the strike beforehand and then to reconsider refactoring it into a separate class later.
+Frame  - responsible for working out it's score, including deciding if it had achieved a spare or a srike bonus.
 
-### Optional Extras
+Final Frame - handles the exceptions for the final frame (is implemented by Game class)
+
+![Class diagram](docs/domainmodelBowling.png)
+
+### Extras
 
 In any order you like:
 

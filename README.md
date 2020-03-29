@@ -61,7 +61,7 @@ In the future, when attempting this challenge again I would create 2 separate cl
 
 Game - responsible for keeping track of the frames.
 
-Frame  - responsible for working out it's score, including deciding if it had achieved a spare or a srike bonus.
+Frame  - responsible for working out its score, including deciding if it had achieved a spare or a strike bonus.
 
 
 ![Class diagram](docs/domainmodelBowling.png)

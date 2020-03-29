@@ -69,7 +69,7 @@ Once downloaded i have placed the structure in the project root and configured t
 
   1. CREATING THE FIRST TEST.
 
-  ```
+  ```javascript
   describe('Bowling Game', function(){
     var game;
 
@@ -79,7 +79,7 @@ Once downloaded i have placed the structure in the project root and configured t
 
     describe('the diferent scenarios', function(){
       it('Scores 0 points in a gutter game, 20 rolls with 0 pins down', function(){
-        for (let i=20; i < 20; i++) {
+        for (let i=0; i < 20; i++) {
           game.play(0);
         }
         expect(game.score()).toEqual(0);
@@ -88,9 +88,9 @@ Once downloaded i have placed the structure in the project root and configured t
 
   });
 
+```
 
 
-  ```
 
    - Explanation :
 
@@ -166,3 +166,184 @@ The method score at the moment only storage the attribute updated. For the first
 
 Time for one commit at this point.
 ----------------------------------------------------------------------------------------------------
+
+3. Next tests and spare and strike logic.
+
+The next test i need to create is the one when 20 pins are down in 20 roll, 1 per roll, with a nice outcome of 20 points.
+
+The test look like that :
+
+```javascript
+describe('Bowling Game', function(){
+  var game;
+
+  beforeEach(function(){
+    game = new BowlingGame();
+  });
+
+  describe('the diferent scenarios', function(){
+    it('Scores 0 points in a gutter game, 20 rolls with 0 pins down', function() {
+      for (let i=0; i < 20; i++) {
+        game.play(0);
+      };
+      expect(game.score()).toEqual(0);
+    });
+
+    it('Scores 20 points in a play when 1 pin has been down each roll', function() {
+      for (let i=0; i<20; i++) {
+        game.play(1);
+      };
+      expect(game.score()).toEqual(20);
+    });
+
+  });
+
+});
+```
+As long as no spares of strikes are made at this moment the logic implemented is totally useful, that's why when i run the test at this moment i obtain this green which make my hart warm.
+
+![Test_5](picture_5)
+
+Time for the spare case test.
+
+First i am going to do a little refactoring in the test, i am goin a create a helper function to simplify the code in the tests. I refactor the code like that:
+
+```javascript
+describe('Bowling Game', function(){
+  var game;
+
+  beforeEach(function(){
+    game = new BowlingGame();
+  });
+
+  describe('the diferent scenarios', function(){
+    it('Scores 0 points in a gutter game, 20 rolls with 0 pins down', function() {
+      rolls(0, 20);
+      expect(game.score()).toEqual(0);
+    });
+
+    it('Scores 20 points in a play when 1 pin has been down each roll', function() {
+      rolls(1, 20);
+      expect(game.score()).toEqual(20);
+    });
+
+
+
+  });//second describe end.
+
+  function rolls(pins, rolls) {
+    for (let i = 0; i < rolls; i++) {
+      game.play(pins);
+    };
+  };
+  //first describe end.
+});
+```
+ The helper function roll(pins, rolls) now takes care of testing several rolls and pins down in each of those rolls. It is a simple refactor of the two lines that i had before, now depending of the rolls and the pins, as it is possible to see in the loop.
+ So selecting 0 pins in 20 rolls and 1 pin in 20 rolls, the result on the test should be the same, and thankfully , it is.
+
+ ![Test_6](picture_6)
+
+ Now, i am gonna write the spare test, like that :
+
+ ```javascript
+ it('the score is correct after a spare, the bonus is correctly calculated', function(){
+   game.play(6);
+   game.play(4);
+   game.play(3);
+   rolls(0,17);
+   expect(game.score ()).toEqual(16);
+ });
+ ```
+  This test is checking that a spare has been done, 6 + 4 plays in the 2 firs rolls, and 3 pins down in the 3 roll, then i just assume that the player has not made any other point in the game.
+  The score we are expecting following the bowling rules is : 6 + 4 + 3(bonus of the third roll) + 3 (third roll itself) + 0 points for the rest of the game, so, it should be 16 points.
+
+  When i run the test, it is going to fail, there is no spare logic at all. it give us, a boring no logical 13 points score.
+
+  ![Test_7](picture_7)
+
+   Let's implement the spare logic for make that test pass.
+
+   First of all i have to change the code to get ready for the spare logic:
+
+   ```javascript
+   var BowlingGame = function() {
+     this._rollsPinsDown = [];
+   };
+
+
+   BowlingGame.prototype.play = function(pins) {
+     return this._rollsPinsDown.push(pins);
+     //this is equivalent of this._tempScore = this._tempScore + pins;
+   };
+
+   BowlingGame.prototype.score = function() {
+     var score = 0; //Initial score, set at 0 points.
+     var rollNumber = 0; //this is the index of the array this._rollsPinsDown
+     //in the below loop frameNumber means the number of frames available, maximum 10.
+     for (let frameNumber = 0; frameNumber < 10; frameNumber++) {
+     var frameScore = this._rollsPinsDown[rollNumber] + this._rollsPinsDown[rollNumber + 1];
+     score += frameScore
+     rollNumber +=2;
+     };
+     return score;
+   };
+```
+  i have changed the methods to do exactly what they are doing until now but going through the whole game.
+
+  Explaining the changes step by step :
+
+    - The attribute ``` this._tempScore```has been changed for ```this._rollsPinsDown```
+    which is an array to get the accountability of the 20 rolls and 10 frames.
+
+    - play method now is in charge of getting the pins dows of each roll in the array.
+
+    - Score method now is a proper calculator method. I set up the score as 0 and the roll number at 0, the game has not started yet.
+    The the loop goes through the array simulating the frames until the 10th frame.
+    The score is calculated selecting in the first iteration the first 2 elements of the array and adding them to the score variable and so on.
+    - Finally the rollNumber(simply the array index) is aumented 2 positions to take us to the third element of the array which is the beggining of the 2 frame, and so on.
+    - Finally we get the final score of the game in the function return outcome.
+
+   This seems really good but there is no spare logic at all at the moment so the test still will be failing, but it is good to run it to check that the changes has not afected the general logic.
+   The result is the expected one:
+
+   ![Test_8](picture_8)
+
+   Time for finally implement the spare logic, we are almost there.
+
+   I code this :
+
+   ```javascript
+   BowlingGame.prototype.score = function() {
+     var score = 0; //Initial score, set at 0 points.
+     var rollNumber = 0; //this is the index of the array this._rollsPinsDown
+     //in the below loop frameNumber means the number of frames available, maximum 10.
+     for (let frameNumber = 0; frameNumber < 10; frameNumber++) {
+     var frameScore = this._rollsPinsDown[rollNumber] + this._rollsPinsDown[rollNumber + 1];
+     //spare logic------------------------------------------->>
+      if (frameScore === 10) {
+       score += 10 + this._rollsPinsDown[rollNumber + 2];
+    //-------------------------------------------------------<<
+
+     } else {
+     score += frameScore
+     }
+     rollNumber += 2;
+     };
+     return score;
+   };
+ ```
+   The spare logic is the new if within the method.
+   The way it works is the following:
+     - If the frame score is equal to 10 points means that the player got a spare
+     so the new way to calculate the score for that point of the game is
+     10 + the previous score + plus the first roll of the next frame. More clearly explained
+     in our array: ```this._rollsPinsDown``` now we have [6,4,3,0,0,0...0] so what we are doing is
+     sum 10 + 0 (previous score) + 3. The if conditional in the method  stops here for this iteration, and in the next iteration the code looks for the 3 which is in the rollNumber = 2 now. So the final sum is 10 + 0 + 3 + 3 + 0 + 0 ..... + 0 = 16. That outcome will make pass the test.
+
+     And it does!
+
+     ![Test_9](picture_9)
+
+     Time for other commit at this point.
+--------------------------------------------------------------------------------------------------------

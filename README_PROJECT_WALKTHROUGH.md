@@ -373,7 +373,7 @@ For the perfect game i need 12 rolls, the normal 10 ones and the 2 extrabonus du
 if i run the test now what it is obtained is an expected fail, no strike logic implemented so far,
 so absolutely expected.
 
-![Test_10](picture_10)
+![Test_10](https://github.com/rafahg/bowling-challenge/blob/media/10.strike_fail_test.png)
 
 Go for the strike logic:
 
@@ -417,7 +417,7 @@ in the .rollspindown array is equal to 10. if it is, means that the player got a
 
  when we will run the test now all it should be green. (finger crossed!)
 
- ![test_11](picture 11)
+ ![test_11](11.strike_perfect_passed.png)
 
 As a bonus i am going to implement the last test, a ramdom play to check if the code is consistent.
 
@@ -436,15 +436,15 @@ As a bonus i am going to implement the last test, a ramdom play to check if the 
  ```
  The result of this test is this:
 
- ![test_12](picture_12)
+ ![test_12](https://github.com/rafahg/bowling-challenge/blob/media/12.randomgamepassed.png)
 
  So, complete sucess at the moment.
 
- ![demo_gif](gif_1)
+ ![demo_gif](https://gph.is/1aulJry)
 
 
 Time for the final commit of this stage. In next steps of this projects Jquery
 UI it will be implemented.
 
 To be continued.........
-------------------------------------------------------------------------------------------------- 
+-------------------------------------------------------------------------------------------------

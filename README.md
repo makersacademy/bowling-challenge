@@ -10,7 +10,6 @@ Create a virtual scoring card to calculate the score in a game of 10 pin bowling
 
 ```
 npm test
-
 ```
 
 ### User Stories
@@ -51,7 +50,7 @@ I would like to be able to calculate my score when I get a strike
 ```
 As a bowler,
 so I can play an accurate game of bowling,
-I would like to be able to calculate my score for a perfect game.
+I would like to be able to calculate my score for a perfect game
 ```
 
 ### Future Additions
@@ -64,17 +63,15 @@ Game - responsible for keeping track of the frames.
 
 Frame  - responsible for working out it's score, including deciding if it had achieved a spare or a srike bonus.
 
-Final Frame - handles the exceptions for the final frame (is implemented by Game class)
 
 ![Class diagram](docs/domainmodelBowling.png)
 
-### Extras
+### Next Steps
 
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+• Adding a user interface
+• Implementing Express to handle get and post requests
+• Extract functional code into multiple classes
+• Adding tests for edge cases
 
 ## Bowling — how does it work?
 

@@ -60,7 +60,7 @@ I first created the second loop (`let r ...`)to populat the dropdown options in 
 **So far there's 3 problems left to solve :**
 1. Strike Bonus is not defined.
 2. Spare Bonus is not defined.
-3. The `Accumulated scores` column is not accumulating... hence we cant get the final score, but this one shouldn't to be hard if the above two solved.
+3. The `Accumulated scores` column is not accumulating... hence we can't get the final score, but this one shouldn't be too hard if the above two solved.
 
 ```
  ___________ 

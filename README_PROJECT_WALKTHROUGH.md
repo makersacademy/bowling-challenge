@@ -104,11 +104,13 @@ Once downloaded i have placed the structure in the project root and configured t
 
    Test state at the moment:
 
-   ![Test state] https://www.flickr.com/photos/187652747@N03/49711720383/in/album-72157713673564902/
+   ![Test state]
+    (https://github.com/rafahg/bowling-challenge/blob/media/First_test.png)
 
    Of course that test is failing, it is necesary the implementation in the Game.js file to make this work.
 
    That task will be done in the next step.
    I am going to commit here. It will be the second one.
+   I do a third one to implement better images in this README file.
 
    -----------------------------------------------------------------------------------

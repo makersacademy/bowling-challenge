@@ -4,6 +4,7 @@ function Game() {
   this.rolls = [];
   this.pinsRoll1 = 0;
   this.score = 0;
+  this.frame = 1;
 }
 
 Game.prototype.roll = function(pins) {

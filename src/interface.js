@@ -2,57 +2,46 @@ $(document).ready(function() {
 
   var game = new Game;
   var currentScore = game.score;
+  var currentFrame = game.frame;
 
-  // This makes frames one at a time with one button each
-
-  // $('#bowl_1').click(function() {
-  //   var roll_1 = game.randomRoll_1();
-  //   if(roll_1 === 10) {
-  //     $('#F1-R1').text(roll_1);
-  //     $('#F1-R2').text('-');
-  //     updateScore(10, 0);
-  //     $('#F1-Score').text(currentScore);
-  //   } else {
-  //     $('#F1-R1').text(roll_1);
-  //     var roll_2 = game.randomRoll_2();
-  //     $('#F1-R2').text(roll_2);
-  //     updateScore(roll_1, roll_2);
-  //     $('#F1-Score').text(currentScore);
-  //   };
-  // })
-  //
-  // $('#bowl_2').click(function() {
-  //   var roll_1 = game.randomRoll_1();
-  //   if(roll_1 === 10) {
-  //     $('#F2-R1').text(roll_1);
-  //     $('#F2-R2').text('-');
-  //     updateScore(10, 0);
-  //     $('#F2-Score').text(currentScore);
-  //   } else if(roll_1 < 10) {
-  //     $('#F2-R1').text(roll_1);
-  //     var roll_2 = game.randomRoll_2();
-  //     $('#F2-R2').text(roll_2);
-  //     updateScore(roll_1, roll_2);
-  //     $('#F2-Score').text(currentScore);
-  //   }
-  // })
-
-
-   // This fills all the table at once with one button
+  // Every click fills one frame, number 11 alerts 'Game Over'
 
   $('#bowl').click(function() {
-    frame_1();
-    frame_2();
-    frame_3();
-    frame_4();
-    frame_5();
-    frame_6();
-    frame_7();
-    frame_8();
-    frame_9();
-    frame_10();
+    if(currentFrame === 1) {
+      frame_1();
+      currentFrame++;
+    } else if(currentFrame === 2) {
+     frame_2();
+     currentFrame++;
+   } else if (currentFrame === 3) {
+     frame_3();
+     currentFrame++;
+   } else if (currentFrame === 4) {
+     frame_4();
+     currentFrame++;
+   } else if (currentFrame === 5) {
+     frame_5();
+     currentFrame++;
+   } else if (currentFrame === 6) {
+     frame_6();
+     currentFrame++;
+   } else if (currentFrame === 7) {
+     frame_7();
+     currentFrame++;
+   } else if (currentFrame === 8) {
+     frame_8();
+     currentFrame++;
+   } else if (currentFrame === 9) {
+     frame_9();
+     currentFrame++;
+   } else if (currentFrame === 10) {
+     frame_10();
+     currentFrame++;
+   } else if(currentFrame > 10) {
+     alert("Game Is Over! Please Refresh the Page");
+   };
+  });
 
-  })
 
   function frame_1() {
     var roll_1 = game.randomRoll_1();
@@ -218,5 +207,23 @@ $(document).ready(function() {
   function updateScore(roll_1, roll_2) {
     currentScore += (roll_1 + roll_2);
     return currentScore;
-  }
+  };
+
+
+     // This fills all the table at once with one button
+
+    // $('#bowl').click(function() {
+    //   frame_1();
+    //   frame_2();
+    //   frame_3();
+    //   frame_4();
+    //   frame_5();
+    //   frame_6();
+    //   frame_7();
+    //   frame_8();
+    //   frame_9();
+    //   frame_10();
+    //
+    // })
+
 })

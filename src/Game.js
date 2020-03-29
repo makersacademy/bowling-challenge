@@ -14,7 +14,7 @@ Game.prototype.addPlayer = function(name) {
 };
 
 Game.prototype.addScore = function(ball1,ball2) {
-  this.frameCount += 1
+
   if(this.strike === true) {this._isAStrike(ball1,ball2)};
   if(this.spare === true) {this._isASpare(ball1,ball2)}
   if(this.strike === false && this.spare === false) {this.score += ball1 + ball2 }
@@ -40,6 +40,10 @@ Game.prototype._resetSpare = function(ball1,ball2) {
 
 Game.prototype.resetScore = function(ball1,ball2) {
   this.score = 0
+}
+
+Game.prototype.frameCountPlusOne = function() {
+  this.frameCount += 1
 }
 
 

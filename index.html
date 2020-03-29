@@ -2,77 +2,82 @@
 <html>
   <head>
     <title>Bowling</title>
+    <link rel="stylesheet" href="public/style.css">
   </head>
 
   <body>
+    <div>
+    <h1><span>BOWLING GAME</span></h1>
+
     <table>
       <tr>
-        <th>FRAME</th>
-        <th>ROLL ONE</th>
-        <th>ROLL TWO</th>
-        <th>SCORE</th>
+        <th class='frame'>FRAME</th>
+        <th class='frame'>ROLL ONE</th>
+        <th class='frame'>ROLL TWO</th>
+        <th class='frame'>SCORE</th>
       </tr>
       <tr>
-        <td id='frame1'>1</td>
+        <td class='frame'>1</td>
         <td><span id="F1-R1"></span></td>
         <td><span id="F1-R2"></span></td>
         <td><span id="F1-Score"></span></td>
       </tr>
       <tr>
-        <td>2</td>
+        <td class='frame'>2</td>
         <td id ="F2-R1"></td>
         <td id ="F2-R2"></td>
         <td id ="F2-Score"></td>
       </tr>
       <tr>
-        <td>3</td>
+        <td class='frame'>3</td>
         <td id ="F3-R1"></td>
         <td id ="F3-R2"></td>
         <td id ="F3-Score"></td>
       </tr>
       <tr>
-        <td>4</td>
+        <td class='frame'>4</td>
         <td id ="F4-R1"></td>
         <td id ="F4-R2"></td>
         <td id ="F4-Score"></td>
       </tr>
       <tr>
-        <td>5</td>
+        <td class='frame'>5</td>
         <td id ="F5-R1"></td>
         <td id ="F5-R2"></td>
         <td id ="F5-Score"></td>
       </tr>
       <tr>
-        <td>6</td>
+        <td class='frame'>6</td>
         <td id ="F6-R1"></td>
         <td id ="F6-R2"></td>
         <td id ="F6-Score"></td>
       </tr>
       <tr>
-        <td>7</td>
+        <td class='frame'>7</td>
         <td id ="F7-R1"></td>
         <td id ="F7-R2"></td>
         <td id ="F7-Score"></td>
       </tr>
       <tr>
-        <td>8</td>
+        <td class='frame'>8</td>
         <td id ="F8-R1"></td>
         <td id ="F8-R2"></td>
         <td id ="F8-Score"></td>
       </tr>
       <tr>
-        <td>9</td>
+        <td class='frame'>9</td>
         <td id ="F9-R1"></td>
         <td id ="F9-R2"></td>
         <td id ="F9-Score"></td>
       </tr>
       <tr>
-        <td>10</td>
+        <td class='frame'>10</td>
         <td id ="F10-R1"></td>
         <td id ="F10-R2"></td>
         <td id ="F10-Score"></td>
       </tr>
     </table>
+
     <br>
     <br>
     <button id="bowl" type="button">BOWL!</button>
@@ -80,6 +85,7 @@
     <button id="bowl_2" type="button">BOWL FRAME 2!</button> -->
     <br>
     <br>
+    </div>
 
     <script src="src/Game.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>

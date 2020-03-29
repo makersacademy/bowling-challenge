@@ -14,13 +14,16 @@ class Game {
     let game = this;
 
     for (let frame = 0; frame < 10; frame ++) {
-      if (spare()) {
-        calculateSpareScore();
+      if (strike()) {
+        result += calculateStrikeScore();
+        rollindex ++;
+      } else if (spare()) {
+        result += calculateSpareScore();
+        rollindex += 2;
       } else {
-        calculateScore();
+        result += calculateScore();
+        rollindex += 2;
       }
-    //index increases by 2 as there are 2 rolls per frame
-      rollindex += 2;
     }
 
     return result;
@@ -30,12 +33,21 @@ class Game {
       }
 
       function calculateSpareScore() {
-        result += game._rolls[rollindex] + game._rolls[rollindex + 1] + game._rolls[rollindex + 2];
+        return game._rolls[rollindex] + game._rolls[rollindex + 1] + game._rolls[rollindex + 2];
       }
 
       function calculateScore () {
-        result += game._rolls[rollindex] + game._rolls[rollindex + 1];
+        return game._rolls[rollindex] + game._rolls[rollindex + 1];
       }
+
+      function strike() {
+        return game._rolls[rollindex] == 10;
+      }
+
+      function calculateStrikeScore() {
+        return game._rolls[rollindex] + game._rolls[rollindex + 1] + game._rolls[rollindex + 2];
+      }
+
   }
 
 

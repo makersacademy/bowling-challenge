@@ -1,6 +1,7 @@
 function Frames(rolls) {
   this.rolls = rolls;
   this.frameTotal = 0
+  this.rollTotal = rolls[0] + rolls[1]
 }
 
 Frames.prototype.calculateFrameTotal = function(frame, nextFrame, nextNextFrame) {

@@ -20,23 +20,17 @@ bowlingGame.prototype.addLastFrame = function(rolls) {
   this.createFrame(rolls);
 }
 
+bowlingGame.prototype.calculateScoreSoFar = function(scoreCurrently, rolls) { 
+  scoreCurrently += rolls[0] + rolls[1]
+  return scoreCurrently
+}
+
 bowlingGame.prototype.createFrame = function(rolls) {
   let frame;
   frame = new Frames(rolls);
   this.frames.push(frame);
 }
 
-bowlingGame.prototype.calculateScoreSoFar = function(scoreCurrently, rolls) {
-  if (rolls[0] === 10) {
-    return
-  } else if (rolls[0] + rolls[1] === 10) {
-    return
-  } else {
-    scoreCurrently += rolls[0] + rolls[1]
-    return scoreCurrently
-  }
-
-}
 function calculateFrames(game) {
   for(let i = 0; i < 9; i++) {
     if(i < 8) {
@@ -59,3 +53,4 @@ function calculateLastFrame(game) {
   // this will calculate the total of the last frame.
   game.frames[9].lastFrameTotal()
 }
+

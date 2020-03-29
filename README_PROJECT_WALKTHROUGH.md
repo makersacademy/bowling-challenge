@@ -89,9 +89,6 @@ Once downloaded i have placed the structure in the project root and configured t
   });
 
 ```
-
-
-
    - Explanation :
 
    1. I create the environment for the test with the first describe.
@@ -104,7 +101,7 @@ Once downloaded i have placed the structure in the project root and configured t
 
    Test state at the moment:
 
-   ![Test state](https://github.com/rafahg/bowling-challenge/blob/media/First_test.png)
+   ![Test_1](https://github.com/rafahg/bowling-challenge/blob/media/First_test.png)
 
    Of course that test is failing, it is necesary the implementation in the Game.js file to make this work.
 
@@ -133,9 +130,9 @@ Once downloaded i have placed the structure in the project root and configured t
 
   once i do that what i have in the test is this:
 
-  ![Test_2](picture_2)
+  ![Test_2](https://github.com/rafahg/bowling-challenge/blob/media/2.BowlingGameClass_created.png)
 
-  ![Test_3](picture 3)
+  ![Test_3](https://github.com/rafahg/bowling-challenge/blob/media/3.methods_created.png)
 
   That shows that at the moment evertything is working properly, it is logic the fail due to i dont have any code within the methods.
 
@@ -162,7 +159,7 @@ The method score at the moment only storage the attribute updated. For the first
 
  Implementing that code, as explained, the test pass.
 
-![Test4](picture_4)
+![Test4](https://github.com/rafahg/bowling-challenge/blob/media/4.gutter_passed.png)
 
 Time for one commit at this point.
 ----------------------------------------------------------------------------------------------------
@@ -202,7 +199,7 @@ describe('Bowling Game', function(){
 ```
 As long as no spares of strikes are made at this moment the logic implemented is totally useful, that's why when i run the test at this moment i obtain this green which make my hart warm.
 
-![Test_5](picture_5)
+![Test_5](https://github.com/rafahg/bowling-challenge/blob/media/5.20_points_test_passed..png)
 
 Time for the spare case test.
 
@@ -242,7 +239,7 @@ describe('Bowling Game', function(){
  The helper function roll(pins, rolls) now takes care of testing several rolls and pins down in each of those rolls. It is a simple refactor of the two lines that i had before, now depending of the rolls and the pins, as it is possible to see in the loop.
  So selecting 0 pins in 20 rolls and 1 pin in 20 rolls, the result on the test should be the same, and thankfully , it is.
 
- ![Test_6](picture_6)
+ ![Test_6](https://github.com/rafahg/bowling-challenge/blob/media/6.refactor_test.png)
 
  Now, i am gonna write the spare test, like that :
 
@@ -260,7 +257,7 @@ describe('Bowling Game', function(){
 
   When i run the test, it is going to fail, there is no spare logic at all. it give us, a boring no logical 13 points score.
 
-  ![Test_7](picture_7)
+  ![Test_7](https://github.com/rafahg/bowling-challenge/blob/media/7.spare_test_failed.png)
 
    Let's implement the spare logic for make that test pass.
 
@@ -307,7 +304,7 @@ describe('Bowling Game', function(){
    This seems really good but there is no spare logic at all at the moment so the test still will be failing, but it is good to run it to check that the changes has not afected the general logic.
    The result is the expected one:
 
-   ![Test_8](picture_8)
+   ![Test_8](https://github.com/rafahg/bowling-challenge/blob/media/8.methods_play_and_score_changed_testFailed.png)
 
    Time for finally implement the spare logic, we are almost there.
 
@@ -343,7 +340,7 @@ describe('Bowling Game', function(){
 
      And it does!
 
-     ![Test_9](picture_9)
+     ![Test_9](https://github.com/rafahg/bowling-challenge/blob/media/9.spare_logic_test_passed.png)
 
      Time for other commit at this point.
 --------------------------------------------------------------------------------------------------------

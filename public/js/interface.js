@@ -13,6 +13,9 @@ $( document ).ready(function() {
     game = new Game;
     scoreboard = new ScoreBoard;
     scoreboard.newBoard();
+    $( '.scoreboard-table' ).empty();
+    $( '.scoreboard-table' ).html("<tr><th>Player Names</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr>")
+    addPlayerToScoreboard();
     $( '.scoreboard').show();
     $( '.btn-startGame' ).show();
     $( '.playing').hide();
@@ -44,6 +47,15 @@ $( document ).ready(function() {
     updatePinButtons();
     $( '.msg-rollNum' ).html(messageRollNumber());
   });
+
+  function addPlayerToScoreboard() {
+    $( '.scoreboard-table' ).append("<tr>")
+    $( '.scoreboard-table' ).append("<td class='playerName'></td>")
+    for (i = 1; i < 10; i++) {
+      $( '.scoreboard-table' ).append("<td><div class='frame" + i + "' ><div></div><div class='Roll1'></div><div class='Roll2'></div><div class='Total'></div></div></td>")
+    };
+    $( '.scoreboard-table' ).append("<td><div class='frame" + 10 + "' ><div class='Roll1'></div><div class='Roll2'></div><div class='Roll3'></div><div class='Total'></div></div></td>")
+  };
 
   function updatePinButtons() {
     pinsLeft = 10 - scoreboard.frames[game.frame -1].roll_1;

@@ -43,13 +43,19 @@ $( document ).ready(function() {
     scoreboard.frames[game.frame].roll(game.roll, pins);
     scoreboard.update();
     if (game.roll == 1){
-      (scoreboard.frames[game.frame].strike) ? score = 'X' : score = scoreboard.frames[game.frame].roll_1
+      if (scoreboard.frames[game.frame].strike) {
+        score = 'X'
+        $( '.frame' + game.frame ).find('.Roll2').html('-');
+        game.turn();
+      } else { score = scoreboard.frames[game.frame].roll_1 };
       $( '.frame' + game.frame ).find('.Roll1').html(score);
     } else {
       (scoreboard.frames[game.frame].spare) ? score = '/' : score = scoreboard.frames[game.frame].roll_2
       $( '.frame' + game.frame ).find('.Roll2').html(score);
     };
-    $( '.frame' + game.frame ).find('.Total').html(scoreboard.frames[game.frame].score());
+    for (i = 1; i <= game.frame ; i++) {
+      $( '.frame' + i ).find('.Total').html(scoreboard.score[i]);
+    };
   };
 
   // function updateRoll() {

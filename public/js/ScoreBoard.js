@@ -15,7 +15,7 @@ function ScoreBoard() {
   ScoreBoard.prototype.update = function() {
     runningTotal = 0;
     this.score = [];
-    for (i=0; i<10; i++) {
+    for (i=0; i<=10; i++) {
       runningTotal += this.frames[i].score();
       this.score.push(runningTotal);
     }

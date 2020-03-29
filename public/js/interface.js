@@ -53,10 +53,21 @@ $( document ).ready(function() {
   function updateScoreboard(pins) {
     scoreboard.frames[game.frame].roll(game.roll, pins);
     scoreboard.update();
+    if (game.frame <= 10) {
+      updateFrames1to10Scoreboard();
+    } else {
+      updateBonusRollscoreboard();
+    };
+    for (i = 1; i <= game.frame ; i++) {
+      $( '.frame' + i ).find('.Total').html(scoreboard.score[i]);
+    };
+  };
+
+  function updateFrames1to10Scoreboard(pins) {
     if (game.roll == 1){
       if (scoreboard.frames[game.frame].strike) {
         score = 'X'
-        $( '.frame' + game.frame ).find('.Roll2').html('-');
+        if (game.frame < 10) { $( '.frame' + game.frame ).find('.Roll2').html('-'); }
         game.turn();
       } else { score = scoreboard.frames[game.frame].roll_1 };
       $( '.frame' + game.frame ).find('.Roll1').html(score);
@@ -64,12 +75,35 @@ $( document ).ready(function() {
       (scoreboard.frames[game.frame].spare) ? score = '/' : score = scoreboard.frames[game.frame].roll_2
       $( '.frame' + game.frame ).find('.Roll2').html(score);
     };
-    for (i = 1; i <= game.frame ; i++) {
-      $( '.frame' + i ).find('.Total').html(scoreboard.score[i]);
-    };
   };
 
-  // function updateRoll() {
-  //   roll = roll % 2 + 1;
-  // };
+  function updateBonusRollscoreboard() {
+    // debugger;
+    (scoreboard.frames[game.frame].roll_1 == 10) ? score = 'X' : score = scoreboard.frames[game.frame].roll_1;
+    if (game.frame == 11) {
+      if (scoreboard.frames[10].spare) {
+        $( '.frame10' ).find('.Roll3').html(score);
+      };
+      if (scoreboard.frames[10].strike) {
+        $( '.frame10' ).find('.Roll2').html(score);
+        game.turn();
+      };
+    };
+    if (game.frame == 12) {
+      $( '.frame10' ).find('.Roll3').html(score);
+    };
+      // if frame 10 is spare: roll_1 added to Roll3 in scoreboard and game over
+      // if frame 10 is strike:
+      // roll_1 not strike : update roll_1 in Roll2 in scoreboard and roll_2 to Roll3 in scoreboard and game over
+      // roll_1 == strike : update roll_1 in Roll2 in scoreboard and move to frame 12
+  };
+
+
+    // game.frame == 12
+      // if frame 10 == strike && frame 11 == strike: update roll_1 in Roll3 in scoreboard and game over
+
 });
+
+// roll_1 not strike && roll_2 not spare : update normally and game over
+// roll_1 not strike && roll_2 == spare : update normally and move to frame 11
+// roll_1 == strike : update and move to frame 11

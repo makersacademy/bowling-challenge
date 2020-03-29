@@ -5,6 +5,7 @@ function Game() {
   this.playerIdx = 0;
   this.currentPlayer = this.players[this.playerIdx];
   this.roll = 1;
+  this.inPlay = true;
 };
 
 Game.prototype.updatePlayersList = function (player) {

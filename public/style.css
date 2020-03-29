@@ -47,20 +47,20 @@ th, td {
 
 /* button */
 #bowl {
- background-color: lavender;
- border: 4px solid lavender;
- color: black;
- padding: 7px 15px;
- text-align: center;
- text-decoration: none;
- font-weight: bold;
- display: inline-block;
- font-size: 20px;
- transition-duration: 0.4s;
-}
-
-#bowl:hover {
   background-color: black;
   border: 4px solid lavender;
   color: lavender;
+  padding: 7px 15px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 20px;
+  transition-duration: 0.4s;
+}
+
+#bowl:hover {
+  background-color: lavender;
+  border: 4px solid lavender;
+  color: black;
 }

@@ -55,7 +55,7 @@ I would like to be able to calculate my score for a perfect game
 
 ### Future Additions
 
-At the point where I began to add the calculations for the spare, I considered extracting frame into a separate class to deal with the calculations independently from game. Separating out frame into a separate class would have resulted in cleaner code which would be much easier to refactor and add to making the logic more robust.
+At the point where I began to add the calculations for the spare, I considered extracting frame into a separate class to deal with the calculations independently from game. Separating out frame into a separate class would have resulted in cleaner code which would be much easier to refactor down the line. It would also avoid the overuse of nesting functions.
 
 In the future, when attempting this challenge again I would create 2 separate classes for:
 

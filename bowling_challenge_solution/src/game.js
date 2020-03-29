@@ -26,6 +26,17 @@ bowlingGame.prototype.createFrame = function(rolls) {
   this.frames.push(frame);
 }
 
+bowlingGame.prototype.calculateScoreSoFar = function(scoreCurrently, rolls) {
+  if (rolls[0] === 10) {
+    return
+  } else if (rolls[0] + rolls[1] === 10) {
+    return
+  } else {
+    scoreCurrently += rolls[0] + rolls[1]
+    return scoreCurrently
+  }
+
+}
 function calculateFrames(game) {
   for(let i = 0; i < 9; i++) {
     if(i < 8) {

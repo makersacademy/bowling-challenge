@@ -1,17 +1,9 @@
 $(document).ready(function() {
-  let total;  
+  let total = 0;  
   let firstRoll;
   let secondRoll;
   let game = new bowlingGame;
-  // $("form").submit(function () {
-  //   alert("button is clicked");
-  // });
-  $(document).on('click', ':button', function (e) {
-
-    var btn = $(e.target);
-    btn.attr("disabled", "disabled"); // disable button
-
-  });
+  
 
   function showTotal(num) {
     $("#totalScore").text(num);
@@ -25,6 +17,9 @@ $(document).ready(function() {
     $("#frameOneFirstRoll").attr('disabled', true)
     $("#frameOneSecondRoll").attr('disabled', true)
     $("#inputFrameOne").attr('disabled', true)
+    // console.log(game.frames[0].calculateFrameTotal(game.frames[0].rolls, game.frames[1].rolls, game.frames[2].rolls));
+    scoreSoFar = game.calculateScoreSoFar(total, [firstRoll, secondRoll])
+    $("#frameOneScoreSoFar").text(scoreSoFar);
   });
 
   $("#inputFrameTwo").click(function (e) {
@@ -111,7 +106,7 @@ $(document).ready(function() {
     firstRoll = parseInt($("#frameTenFirstRoll").val());
     secondRoll = parseInt($("#frameTenSecondRoll").val());
     thirdRoll = parseInt($("#frameTenThirdRoll").val());
-    game.addFrame([firstRoll, secondRoll]);
+    game.addLastFrame([firstRoll, secondRoll, thirdRoll]);
     console.log(game.frames);
     $("#frameTenFirstRoll").attr('disabled', true)
     $("#frameTenSecondRoll").attr('disabled', true)
@@ -119,8 +114,6 @@ $(document).ready(function() {
     $("#inputFrameTen").attr('disabled', true)
   });
   $("#calculateScoreTest").click(function (e) {
-    // for(let i = 0; i < 7; i++) {game.addFrame([1, 1])};
-    // game.addLastFrame([10, 10]);
     if(game.frames.length < 10) {
       showTotal("You have not put in enough frames to calculate the total.")
     } else {

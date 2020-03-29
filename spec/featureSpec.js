@@ -24,12 +24,6 @@ describe('Scorecard', function(){
 		});
 	});
 
-	it("can end game", function(){
-		scorecard.endGame();
-		expect(scorecard._gameOver).toBe(true);
-		expect(function(){ scorecard.add(new Frame()); }).toThrowError('Game Over');
-	});
-
 	describe('total', function(){
 		it('can calculate total score',function(){
 			frame.add(4);

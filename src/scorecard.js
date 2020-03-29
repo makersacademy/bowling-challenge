@@ -1,7 +1,6 @@
 class Scorecard {
 	constructor(){
 		this._frames = [];
-		this._gameOver = false;
 	}
 
 	frames(){
@@ -9,7 +8,6 @@ class Scorecard {
 	}
 
 	add(frame) {
-		if(this._gameOver){ throw new Error("Game Over"); }
 		let hash = { 
 			frame: frame, 
 			completed: function(){ 
@@ -32,9 +30,5 @@ class Scorecard {
 			sum += this._frames[i].frame.total();
 		} 
 		return sum; 
-	}
-
-	endGame() {
-		this._gameOver = true;
 	}
 }

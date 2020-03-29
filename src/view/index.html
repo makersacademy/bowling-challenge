@@ -1,148 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Bowling Scoreboard</title>
-		<link rel="stylesheet" type="text/css" href="./my_pretty_page.css">
-		<link href='https://fonts.googleapis.com/css?family=Limelight' rel='stylesheet'>
-		<link href='https://fonts.googleapis.com/css?family=Faster One' rel='stylesheet'>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-		<script src="https://kit.fontawesome.com/f2b366d57b.js" crossorigin="anonymous"></script>
-	</head>
 
-	<style>
-		.custom-container {
-			font-family: 'Faster One';
-			font-size: 30px;
-		}
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bowling Scoreboard</title>
+	<link rel="stylesheet" type="text/css" href="./my_pretty_page.css">
+	<!-- fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Limelight' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Faster One' rel='stylesheet'>
+	<!-- css scripts -->
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/f2b366d57b.js" crossorigin="anonymous"></script>
+</head>
 
-		.custom-table {
-			font-family: 'Limelight';
-			font-size: 15px;
-		}
-	</style>
+<style>
+	.custom-container {
+		font-family: 'Faster One';
+		font-size: 30px;
+	}
 
-	<body>
-		<div class="container">
-			<div class="row mx-auto">
-				<div class="custom-container">
-					<h1 class="text-center">Bowling Scoreboard</h1>
-				</div>
+	.custom-table {
+		font-family: 'Limelight';
+		font-size: 15px;
+	}
+</style>
+
+<body>
+	<div class="container">
+		<div class="row mx-auto">
+			<div class="custom-container">
+				<p class="text-center" style="font-size: 50px;">Bowling Scoreboard</p>
+			</div>
 
 
-				<div class="row">
-					<div class="custom-table">
-						<table class="table table-striped table-hover">
-							<thead>
-								<tr>
-									<th scope="col">Frame</th>
-									<th scope="col">First roll</th>
-									<th scope="col">Second roll</th>
-									<th scope="col">Bonus roll*</th>
-									<th scope="col">Accumulated Scores</th>
-									<th scope="col">Available Scores</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th scope="row">1</th>
-									<td><div class="btn-group">
-										<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											Score
-										</button>
-										<div class="dropdown-menu">
-											<a class="dropdown-item" href="#">1</a>
-											<a class="dropdown-item" href="#">2</a>
-											<a class="dropdown-item" href="#">3</a>
-											<a class="dropdown-item" href="#">4</a>
-										</div>
-									</div></td>
-									<td>Test</td>
-									<td></td>
-									<td>Test</td>
-									<td>available</td>
+			<div class="row">
+				<div class="custom-table">
+					<table class="table table-striped table-hover">
+						<thead>
+							<tr>
+								<th scope="col">Frame</th>
+								<th scope="col">First roll</th>
+								<th scope="col">Second roll</th>
+								<th scope="col">Bonus roll*</th>
+								<th scope="col">Accumulated Scores</th>
+								<!-- <th scope="col">Available Scores</th> -->
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">1</th>
+								<td>
+									<select id="frame1Roll1">
+										<option value="0">0</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+								</td>
+								<td>
+									<select id="frame1Roll2"/>
+								</td>
+								<td></td>
+								<td>
+									<span id="frame1Score"></span>
+								</td>
+								<!-- <td>available</td> -->
+							</tr>
 
-								</tr>
-								<tr>
-									<th scope="row">2</th>
-									<td>Test</td>
-									<td>Test</td>
-									<td></td>
-									<td>Test</td>
-									<td>available</td>
-								</tr>
-								<tr>
-									<th scope="row">3</th>
-									<td>Test</td>
-									<td>Test</td>
-									<td></td>
-									<td>Test</td>
-									<td>available</td>
-								</tr>
-								<tr>
-									<th scope="row">4</th>
-									<td>Test</td>
-									<td>Test</td>
-									<td></td>
-									<td>Test</td>
-									<td>available</td>
-								</tr>
-								<tr>
-									<th scope="row">5</th>
-									<td>Test</td>
-									<td>Test</td>
-									<td></td>
-									<td>Test</td>
-									<td>available</td>
-								</tr>
-								<tr>
-									<th scope="row">6</th>
-									<td>Test</td>
-									<td>Test</td>
-									<td></td>
-									<td>Test</td>
-									<td>available</td>
-								</tr>
-								<tr>
-									<th scope="row">7</th>
-									<td>Test</td>
-									<td>Test</td>
-									<td></td>
-									<td>Test</td>
-									<td>available</td>
-								</tr>
-								<tr>
-									<th scope="row">8</th>
-									<td>Test</td>
-									<td>Test</td>
-									<td></td>
-									<td>Test</td>
-									<td>available</td>
-								</tr>
-								<tr>
-									<th scope="row">9</th>
-									<td>Test</td>
-									<td>Test</td>
-									<td></td>
-									<td>Test</td>
-									<td>available</td>
-								</tr>
-								<tr>
-									<th scope="row">10</th>
-									<td>Test</td>
-									<td>Test</td>
-									<td></td>
-									<td>Test</td>
-									<td>available</td>
-								</tr>
-							</tbody>
-						</table>
-						<p style="font-size: 12px">*Bonus roll only available for 10th frame if there's strike or spike.</p>
-					</div>
+							<tr>
+								<th scope="row">2</th>
+								<td>
+									<select id="frame2Roll1">
+										<option value="0">0</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+								</td>
+								<td>
+									<select id="frame2Roll2"/>
+								</td>
+								<td></td>
+								<td>
+									<span id="frame2Score"></span>
+								</td>
+								<!-- <td>available</td> -->
+							</tr>
+
+							<tr>
+								<th scope="row">3</th>
+								<td>
+									<select id="frame3Roll1">
+										<option value="0">0</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+								</td>
+								<td>
+									<select id="frame3Roll2"/>
+								<td></td>
+								<td>
+									<span id="frame3Score"></span>
+								</td>
+								<!-- <td>available</td> -->
+							</tr>
+
+							<tr>
+								<th scope="row">4</th>
+								<td>
+									<select id="frame4Roll1">
+										<option value="0">0</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+								</td>
+								<td>
+									<select id="frame4Roll2"/>
+								<td></td>
+								<td>
+									<span id="frame4Score"></span>
+								</td>
+								<!-- <td>available</td> -->
+							</tr>
+
+							<tr>
+								<th scope="row">5</th>
+								<td>
+									<select id="frame5Roll1">
+										<option value="0">0</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+								</td>
+								<td>
+									<select id="frame5Roll2"/>
+								<td></td>
+								<td>
+									<span id="frame5Score"></span>
+								</td>
+								<!-- <td>available</td> -->
+							</tr>
+
+							<tr>
+								<th scope="row">6</th>
+								<td>
+									<select id="frame6Roll1">
+										<option value="0">0</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+								</td>
+								<td>
+									<select id="frame6Roll2"/>
+								<td></td>
+								<td>
+									<span id="frame6Score"></span>
+								</td>
+								<!-- <td>available</td> -->
+							</tr>
+
+							<tr>
+								<th scope="row">7</th>
+								<td>
+									<select id="frame7Roll1">
+										<option value="0">0</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+								</td>
+								<td>
+									<select id="frame7Roll2"/>
+								<td></td>
+								<td>
+									<span id="frame7Score"></span>
+								</td>
+								<!-- <td>available</td> -->
+							</tr>
+
+							<tr>
+								<th scope="row">8</th>
+								<td>
+									<select id="frame8Roll1">
+										<option value="0">0</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+								</td>
+								<td>
+									<select id="frame8Roll2"/>
+								<td></td>
+								<td>
+									<span id="frame8Score"></span>
+								</td>
+								<!-- <td>available</td> -->
+							</tr>
+
+							<tr>
+								<th scope="row">9</th>
+								<td>
+									<select id="frame9Roll1">
+										<option value="0">0</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+								</td>
+								<td>
+									<select id="frame9Roll2"/>
+								<td></td>
+								<td>
+									<span id="frame9Score"></span>
+								</td>
+								<!-- <td>available</td> -->
+							</tr>
+
+							<tr>
+								<th scope="row">10</th>
+								<td>
+									<select id="frame10Roll1">
+										<option value="0">0</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+								</td>
+								<td>
+									<select id="frame10Roll2"/>
+								<td></td>
+								<td>
+									<span id="frame10Score"></span>
+								</td>
+								<!-- <td>available</td> -->
+							</tr>
+
+						</tbody>
+					</table>
+					<p style="font-size: 12px">*Bonus roll only available for 10th frame if there's strike or spike.</p>
 				</div>
 			</div>
 		</div>
-	</body>
+	</div>
+</body>
+<script src="../model/score_calculator.js"></script>
 </html>

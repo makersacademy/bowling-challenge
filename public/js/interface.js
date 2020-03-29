@@ -2,6 +2,7 @@ $( document ).ready(function() {
 
   // will probably make a game object that stores these values
   let scoreboard;
+  let score;
   let frame = 1;
   let roll = 1;
 
@@ -42,9 +43,11 @@ $( document ).ready(function() {
     // if roll_1, check for strike, update with 'X' if strike
     // if roll_2 check for spare, update with '/' if spare
     if (roll == 1){
-      $( '.frame1' ).find('.Roll1').html(scoreboard.frames[0].roll_1);
+      (scoreboard.frames[0].strike) ? score = 'X' : score = scoreboard.frames[0].roll_1
+      $( '.frame1' ).find('.Roll1').html(score);
     } else {
-    $( '.frame1' ).find('.Roll2').html(scoreboard.frames[0].roll_2);
+      (scoreboard.frames[0].spare) ? score = '/' : score = scoreboard.frames[0].roll_2
+      $( '.frame1' ).find('.Roll2').html(score);
     };
 
     $( '.frame1' ).find('.Total').html(scoreboard.frames[0].score());

@@ -75,12 +75,6 @@ $(document).ready(function(){
 		return rollNo === 2 ? true : false;
 	}
 
-	function isCompleted(frameNo){
-		return scorecard.frames()[frameNo].completed;
-	}
-
-  function gameOver(){ if(scorecard._gameOver) {return true}; }
-	function endGame(){ scorecard.endGame(); }
 });
 
 

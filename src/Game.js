@@ -2,6 +2,8 @@
 
 function Game() {
   this.rolls = [];
+  this.pinsRoll1 = 0;
+  this.score = 0;
 }
 
 Game.prototype.roll = function(pins) {
@@ -30,6 +32,17 @@ Game.prototype.returnScore = function() {
   return score;
 };
 
+Game.prototype.randomRoll_1 = function() {
+  this.pinsRoll1 = Math.floor(Math.random() * 11);
+  return this.pinsRoll1;
+};
+
+Game.prototype.randomRoll_2 = function() {
+  this.pinsRoll2 = Math.floor(Math.random() * (11 - this.pinsRoll1));
+  return this.pinsRoll2;
+};
+
+// Refactoring to get scores
 Game.prototype.frameScore = function(rollIndex) {
   return this.rolls[rollIndex] + this.rolls[rollIndex + 1];
 };

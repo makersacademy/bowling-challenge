@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>Bowling</title>
-    <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
@@ -14,10 +13,10 @@
         <th>SCORE</th>
       </tr>
       <tr>
-        <td>1</td>
-        <td id ="F1-R1"></td>
-        <td id ="F1-R2"></td>
-        <td id ="F1-Score"></td>
+        <td id='frame1'>1</td>
+        <td><span id="F1-R1"></span></td>
+        <td><span id="F1-R2"></span></td>
+        <td><span id="F1-Score"></span></td>
       </tr>
       <tr>
         <td>2</td>
@@ -76,7 +75,8 @@
     </table>
     <br>
     <br>
-    <button id="bowl" type="button">BOWL!</button>
+    <button id="bowl_1" type="button">BOWL FRAME 1!</button>
+    <button id="bowl_2" type="button">BOWL FRAME 2!</button>
     <br>
     <br>
     <h2>
@@ -85,8 +85,9 @@
       </text>
     </h2>
 
+    <script src="src/Game.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="src/interface.js"></script>
-    <script src="src/Game.js"></script>
+
   </body>
 </html>

@@ -59,7 +59,7 @@ I created an HTML table with ten frames that take roll_1, roll_2 and current sco
 It has a click button 'bowl' that plays a random frame at a time and keeps updating the score through each of them. After 10 frames, on the next click it pops out a message 'Game Over'.
 The interface is not fully conected to backend and there is no bonus added in the score.
 
-[img]('images/app_screenshot.png')
+![img](images/app_screenshot.png)
 
 ### Optional Extras
 

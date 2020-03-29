@@ -1,7 +1,3 @@
-// how to get the oprtion value: https://css-tricks.com/dynamic-dropdowns/
-
-// $ = document.getElementById('')
-
 
 $(document).ready(function () {
 

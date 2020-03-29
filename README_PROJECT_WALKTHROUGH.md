@@ -31,7 +31,7 @@ Once downloaded i have placed the structure in the project root and configured t
   - First commit.
 --------------------------------------------------------------------------------
 
-## PROJECT DSTEPS ##
+## PROJECT STEPS ##
 
 # FIRST STEP.
 
@@ -101,7 +101,7 @@ Once downloaded i have placed the structure in the project root and configured t
 
    Test state at the moment:
 
-   ![Test_1](https://github.com/rafahg/bowling-challenge/blob/media/First_test.png)
+   ![Test_1](https://github.com/rafahg/bowling-challenge/blob/media/1.First_test.png)
 
    Of course that test is failing, it is necesary the implementation in the Game.js file to make this work.
 

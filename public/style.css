@@ -1,0 +1,66 @@
+body {
+  color: lavender;
+  font-family: sans-serif;
+  background-image: url("https://www.valenciabonita.es/wp-content/uploads/2016/01/web-visual-univers_1380888826203_ILUSIONA_UNIVERS.png");
+  background-color: lavender;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+div {
+  text-align: center;
+  vertical-align: center;
+  margin = 0;
+}
+
+h1 span{
+  background-color: black;
+  border: 4px solid lavender;
+  color: lavender;
+  padding: 3px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+table {
+  width: 50%;
+  color: lavender;
+  vertical-align: center;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+}
+
+th, td {
+  border: 1px solid lavender;
+  text-align: center;
+  font-weight: bold;
+
+}
+
+.frame {
+  background-color: lavender;
+  color: black;
+  padding: 4px;
+}
+
+/* button */
+#bowl {
+  background-color: black;
+  border: 4px solid lavender;
+  color: lavender;
+  padding: 7px 15px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 20px;
+  transition-duration: 0.4s;
+}
+
+#bowl:hover {
+  background-color: lavender;
+  border: 4px solid lavender;
+  color: black;
+}

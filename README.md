@@ -2,7 +2,6 @@
 Bowling Challenge
 =================
 
-
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README
@@ -24,6 +23,43 @@ As usual please start by
 * Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
 
 ___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+
+## Domain Model
+- Constructor Function Game
+  - Initializes with `this.rolls = []`
+- Prototype Function `roll(pins)`
+  - Pushes pins into `this.rolls`
+- Prototype Function returnScore
+  - Initializes with a variable `score = 0` and `rollIndex = 0`
+  - Iterates 10 times over `this.rolls` and adds to the score depending on the pins and bonuses, checking for spares and strikes.
+
+
+## Examples for the Tests
+- Gutter Game
+```
+-/- -/- -/- -/- -/- -/- -/- -/- -/- -/- = 0
+```
+- Spare Frame
+```
+5/5 3/- -/- -/- -/- -/- -/- -/- -/- -/- = 16
+```
+- Strike Frame
+```
+10 1/1 -/- -/- -/- -/- -/- -/- -/- -/- = 14
+```
+- Perfect Game
+```
+10 10 10 10 10 10 10 10 10 10 10 10 = 300
+```
+
+## Interface
+
+After I had all my tests passing and all the specifications covered I decided to do some front-end to practice everything I learned from Thermostat Project.
+I created an HTML table with ten frames that take roll_1, roll_2 and current score for each of them.
+It has a click button 'bowl' that plays a random frame at a time and keeps updating the score through each of them. After 10 frames, on the next click it pops out a message 'Game Over'.
+The interface is not fully conected to backend and there is no bonus added in the score.
+
+![img](images/app_screenshot.png)
 
 ### Optional Extras
 

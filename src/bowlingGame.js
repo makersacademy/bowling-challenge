@@ -54,6 +54,7 @@ Game.prototype.score = function() {
   function regularScore() {
     return game.rolls[rollIndex] + game.rolls[rollIndex+1];
   };
+  
 
 };
 

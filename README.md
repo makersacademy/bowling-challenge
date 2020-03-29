@@ -55,9 +55,9 @@ I would like to be able to calculate my score for a perfect game
 
 ### Future Additions
 
-At the point where I began to add the calculations for the spare, I considered extracting frame into a separate class to deal with the calculations separately from game. Separating out frame into a separate class would have resulted in cleaner code which would be much easier to refactor.
+At the point where I began to add the calculations for the spare, I considered extracting frame into a separate class to deal with the calculations independently from game. Separating out frame into a separate class would have resulted in cleaner code which would be much easier to refactor and add to making the logic more robust.
 
-In the future, when attempting this challenge again I would create 2, perhaps 3 separate classes for:
+In the future, when attempting this challenge again I would create 2 separate classes for:
 
 Game - responsible for keeping track of the frames.
 
@@ -71,7 +71,7 @@ Frame  - responsible for working out it's score, including deciding if it had ac
 • Adding a user interface
 • Implementing Express to handle get and post requests
 • Extract functional code into multiple classes
-• Adding tests for edge cases
+• Adding additional tests for edge cases
 
 ## Bowling — how does it work?
 

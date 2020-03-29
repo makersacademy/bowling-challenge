@@ -55,7 +55,6 @@ class Game {
     endGame();
     return result;
   }
-
 }
 
 module.exports = Game;

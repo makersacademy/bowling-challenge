@@ -24,6 +24,30 @@ describe('Bowling Game', function(){
       expect(game.score()).toEqual(16);
     });
 
+    it('the score is correct after a spare, the bonus is correctly calculate', function(){
+      game.play(10);
+      game.play(2);
+      game.play(4);
+      rolls(0,17);
+      expect(game.score()).toEqual(22);
+    });
+
+    it('the score for the perfect game is 300 points', function(){
+      rolls(10,12);
+      expect(game.score()).toEqual(300);
+    });
+
+    it('the score for a ramdom game is correct', function(){
+      game.play(3);
+      game.play(6);
+      game.play(10);
+      game.play(10)
+      game.play(4);
+      game.play(6);
+      game.play(2);
+      rolls(4,13);
+      expect(game.score()).toEqual(111);
+    });
 
   });//second describe end.
 

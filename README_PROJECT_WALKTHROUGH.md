@@ -101,7 +101,7 @@ Once downloaded i have placed the structure in the project root and configured t
 
    Test state at the moment:
 
-   ![Test_1](https://github.com/rafahg/bowling-challenge/blob/media/First_test.png)
+   ![Test_1](https://github.com/rafahg/bowling-challenge/blob/media/1.First_test.png)
 
    Of course that test is failing, it is necesary the implementation in the Game.js file to make this work.
 
@@ -164,7 +164,7 @@ The method score at the moment only storage the attribute updated. For the first
 Time for one commit at this point.
 ----------------------------------------------------------------------------------------------------
 
-3. Next tests and spare and strike logic.
+3. Next test for a Spare and the logic implementation.
 
 The next test i need to create is the one when 20 pins are down in 20 roll, 1 per roll, with a nice outcome of 20 points.
 
@@ -332,15 +332,119 @@ describe('Bowling Game', function(){
  ```
    The spare logic is the new if within the method.
    The way it works is the following:
-     - If the frame score is equal to 10 points means that the player got a spare
+     If the frame score is equal to 10 points means that the player got a spare
      so the new way to calculate the score for that point of the game is
      10 + the previous score + plus the first roll of the next frame. More clearly explained
      in our array: ```this._rollsPinsDown``` now we have [6,4,3,0,0,0...0] so what we are doing is
      sum 10 + 0 (previous score) + 3. The if conditional in the method  stops here for this iteration, and in the next iteration the code looks for the 3 which is in the rollNumber = 2 now. So the final sum is 10 + 0 + 3 + 3 + 0 + 0 ..... + 0 = 16. That outcome will make pass the test.
 
-     And it does!
-
      ![Test_9](https://github.com/rafahg/bowling-challenge/blob/media/9.spare_logic_test_passed.png)
 
      Time for other commit at this point.
 --------------------------------------------------------------------------------------------------------
+
+4. Final test, strike logic and the perfect game of 300 points.
+
+  At this point the code is almost finished for this stage of the project.
+  I will create the test for an strike and its bonus points, finally i will check that the perfect
+  game of 300 points is correctly calculated.
+
+  Those are the test:
+
+```javascript
+it('the score is correct after a spare, the bonus is correctly calculate', function(){
+  game.play(10);
+  game.play(2);
+  game.play(4);
+  rolls(0,17);
+  expect(game.score()).toEqual(22);
+});
+
+it('the score for the perfect game is 300 points', function(){
+  rolls(10,12);
+  expect(game.score()).toEqual(300);
+});
+```
+In those test i am checking 1 normal strike and the perfect game. Calling the method play in the first one to get an strike, 2 and 4 pins down in the next frame. Let's asume for the test than the rest of the rolls are 0. So the expected score for that game is 22 points.
+10(strike) + (2+4 bonus) + (2 + 4 , next frame) = 22.
+
+For the perfect game i need 12 rolls, the normal 10 ones and the 2 extrabonus due the last strike in the 10th frame. The expected score is 300 points, the dream of any bowling player.
+
+if i run the test now what it is obtained is an expected fail, no strike logic implemented so far,
+so absolutely expected.
+
+![Test_10](picture_10)
+
+Go for the strike logic:
+
+```javascript
+BowlingGame.prototype.score = function() {
+  var score = 0; //Initial score, set at 0 points.
+  var rollNumber = 0; //this is the index of the array this._rollsPinsDown
+  //in the below loop frameNumber means the number of frames available, maximum 10.
+  for (let frameNumber = 0; frameNumber < 10; frameNumber++) {
+  //logic of strike have to go first, it can be the case the player hit one in
+  // the first roll.
+  if (this._rollsPinsDown[rollNumber] === 10) {
+    score +=10 + this._rollsPinsDown[rollNumber + 1] + this._rollsPinsDown[rollNumber + 2];
+    rollNumber += 1;
+    continue; //this breaks one iteration in the loop if the condition occurs and continue
+    // the next iteration normally.
+  }
+  var frameScore = this._rollsPinsDown[rollNumber] + this._rollsPinsDown[rollNumber + 1];
+    //spare logic.
+   if (frameScore === 10) {
+    score += 10 + this._rollsPinsDown[rollNumber + 2];
+  } else {
+
+  score += frameScore
+  }
+  rollNumber += 2;
+  };
+  return score;
+};
+```
+First of all, the strike logic has to go first just after the beginning of the loop,
+that is because it could be more than possible that the first roll was an strike.
+That said, what it is done within the strike conditional is to check if the first element
+in the .rollspindown array is equal to 10. if it is, means that the player got a strike, so we need to calculate the score accordingly.
+ ```
+ score = previous score + first index of the array + second index + third index
+ ```
+ The next line of the code just add 1 to the rollNumber where the method is gonna look in the next iteration, that is becouse the frame is finished and we jump directly to the next frame.
+ The command continue breaks the loop for one iteration here and continue in the next one.
+ Doing that i am sure that the methods looks for the next roll in the very next index, which represent in this case the beggining of the next frame.
+
+ when we will run the test now all it should be green. (finger crossed!)
+
+ ![test_11](picture 11)
+
+As a bonus i am going to implement the last test, a ramdom play to check if the code is consistent.
+
+ ```javascript
+ it('the score for a ramdom game is correct', function(){
+   game.play(3);
+   game.play(6);
+   game.play(10);
+   game.play(10)
+   game.play(4);
+   game.play(6);
+   game.play(2);
+   rolls(4,13);
+   expect(game.score()).toEqual(111);
+ });
+ ```
+ The result of this test is this:
+
+ ![test_12](picture_12)
+
+ So, complete sucess at the moment.
+
+ ![demo_gif](gif_1)
+
+
+Time for the final commit of this stage. In next steps of this projects Jquery
+UI it will be implemented.
+
+To be continued.........
+------------------------------------------------------------------------------------------------- 

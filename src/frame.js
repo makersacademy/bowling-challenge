@@ -6,9 +6,12 @@ class Frame {
 				second_roll: null 
 		}; 
 
-		this._bonus = 0;
-		this._isStrike = false;
-		this._isSpare = false;
+		this._bonus = [];
+		this._isStrike = function(){ return this._pinfalls.first_roll === 10 ? true : false };
+		this._isSpare = function(){
+			return !this._isStrike() && this.pinfalls() === 10 
+			? true : false
+		}
 	}
 
 	add(second_roll){
@@ -19,37 +22,30 @@ class Frame {
 	}
 
 	pinfalls(){
-		if(this._isStrike) {
-			return 10;
-		}
+		if(this._isStrike()){return 10};
 		if(this._pinfalls.second_roll === null) {
-			return this._pinfalls.first_roll;
+			throw new Error('expecting second roll score');
 		}
 		return this._pinfalls.first_roll + this._pinfalls.second_roll;
 	}
 
-	bonus(bonus = 0){
-		return this._bonus += bonus;
+	addBonus(bonus){
+		this._bonus.push(bonus);
 	}
 
-	total() {
-		if(this._pinfalls.second_roll === null){
-			throw new Error('Total score unavailable due to ongoing game.')
+	bonus(){
+		if(this._isStrike()){
+			if(this._bonus.length < 2){ throw new Error('expect at least 2 bonuses');}
+			return this._bonus[0] + this._bonus[1];
 		}
+		if(this._isSpare()){
+			if (this._bonus.length < 1){ throw new Error('expect at least 1 bonus');}
+			return this._bonus[0];
+		}
+		return 0
+	}
+
+	total(){
 		return this.pinfalls() + this.bonus();
-	}
-
-	recordStrike(){
-		if(this._pinfalls.first_roll !== 10){
-			throw new Error('Not a strike');
-		}
-		this._isStrike = true;
-		this._pinfalls.second_roll = 0;
-	}
-
-	recordSpare() {
-		if(this._isStrike){ throw new Error("Not a Spare, but a Strike!")};
-		if(this.total() !== 10){ throw new Error("Not a Spare, less than 10 pins down")};
-		this._isSpare = true;
-	}
+	};
 }

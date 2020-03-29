@@ -31,7 +31,7 @@ Once downloaded i have placed the structure in the project root and configured t
   - First commit.
 --------------------------------------------------------------------------------
 
-## PROJECT DSTEPS ##
+## PROJECT STEPS ##
 
 # FIRST STEP.
 

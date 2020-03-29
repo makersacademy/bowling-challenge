@@ -24,12 +24,12 @@ describe('Game', () => {
     expect(game.score()).toBe(20);
   })
 
-  // it ('can roll a spare', () => {
-  //   game.roll(5);
-  //   game.roll(5);
-  //   game.roll(2);
-  //   multipleRolls(0, 17);
-  //   expect(game.score()).toBe(14);
-  // })
+  it ('can roll a spare', () => {
+    game.roll(5);
+    game.roll(5);
+    game.roll(3);
+    multipleRolls(0, 17);
+    expect(game.score()).toBe(16);
+  })
 
 })

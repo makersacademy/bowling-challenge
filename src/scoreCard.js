@@ -3,9 +3,9 @@ function ScoreCard(){
     this.consecutiveStrikes = 0;
     this.spareBonus = false;
     this.spareBonusValue = 0;
-    this.roll1Value;
-    this.roll2Value;
-    this.roll3Value;
+    this.roll1Value = 0;
+    this.roll2Value = 0;
+    this.roll3Value = 0;
 };
 
 ScoreCard.prototype.roll1 = function (pins) {
@@ -33,8 +33,18 @@ ScoreCard.prototype.roll2 = function(pins){
 ScoreCard.prototype.addFrame = function(){
     
     var total;
-    total = (this.roll1Value + this.roll2Value + this.roll3Value) + (10 * this.consecutiveStrikes) + this.spareBonusValue;
+    
+    if(this.roll1Value == "X"){
+        total = (10 * this.consecutiveStrikes) + this.spareBonusValue;
+    } else {
+        rollTotal = this.roll1Value + this.roll2Value + this.roll3Value
+        console.log(rollTotal);
+        total = rollTotal + (10 * this.consecutiveStrikes) + this.spareBonusValue;
+    }
+    
+    frame = new Frame(this.roll1Value, this.roll2Value, this.roll3Value, total);
 
-    this.score.push(new Frame(this.roll1Value, this.roll2Value, this.roll3Value, total));
+    this.score.push(frame);
+  
 };
 

@@ -1,0 +1,30 @@
+body {
+	background: linear-gradient(105deg, #ffffff 60%, #29c1cf 60%);
+	/* background: linear-gradient(-70deg, #fa7c30 30%, rgba(0, 0, 0, 0) 30%), url('../../image/homer-simpson-wallpaper-7.jpg'); */
+	/* background: linear-gradient(to right bottom, #ffffff 50%, #4fc2e6 50%); */
+	/* background-image: url('../../image/Geometric-Lines-Desktop-Wallpaper-creativity-takes-courage.jpg'); */
+	/* background-repeat: no-repeat;
+	background-size: cover; */
+	/* background-color:#29c1cf ; */
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.custom-container {
+	margin-bottom: 5rem;
+	display: flex;
+  flex-wrap: wrap;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+}
+
+.custom-table {
+  margin-bottom: 1rem;
+  display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+}

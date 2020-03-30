@@ -13,7 +13,6 @@ class BowlingGame {
   score() {
     let score = 0;
     let rollIndex = 0;
-    debugger;
     for (let frameIndex = 0; frameIndex < 10; frameIndex++) {
       /* strike logic
       if current roll = 10 (strike) then our score is 10 + next two rolls,
@@ -21,7 +20,7 @@ class BowlingGame {
       */
       if (this.rolls[rollIndex] === 10) {
         score += 10 + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
-        rollIndex = +1;
+        rollIndex += 1;
         continue; // using continue statement skips the next steps of counting score for this frame
       }
 
@@ -38,8 +37,6 @@ class BowlingGame {
       rollIndex += 2;
     }
     return score;
-
   }
-
 
 }

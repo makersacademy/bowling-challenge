@@ -22,6 +22,20 @@ describe ('ScoreCard', function(){
             scoreCard.roll1(3);
             expect(scoreCard.spareBonusValue).toEqual(3);
         });
+
+        describe('at frame 10', function(){
+            it('accepts a second roll if roll one is a strike', function(){
+                for(var i = 0; i<9; i++){
+                    scoreCard.roll1(1);
+                    scoreCard.roll2(2);
+                };
+                scoreCard.roll1(10);
+                scoreCard.roll2(3);
+
+                expect(scoreCard.score[10].roll2).toEqual(3);
+            });
+        });
+
     });
     
    describe('roll2', function(){

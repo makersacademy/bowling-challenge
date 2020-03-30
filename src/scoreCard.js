@@ -13,6 +13,10 @@ ScoreCard.prototype.roll1 = function (pins) {
         this.spareBonusValue = pins;
     };
     
+    if(this.score.length == 9){
+        this.roll1Value = pins;
+    }
+
     if(pins == 10){
         this.consecutiveStrikes ++;
         this.roll1Value = "X";
@@ -23,12 +27,21 @@ ScoreCard.prototype.roll1 = function (pins) {
 };
 
 ScoreCard.prototype.roll2 = function(pins){
+   
+    if(this.score.length == 9){
+        this.roll2Value = pins;
+    }
     if(pins + this.roll1Value == 10){
         this.spareBonus = true;
     }
     this.roll2Value = pins;
     this.addFrame();
 };
+
+ScoreCard.prototype.roll3 = function(pins){
+    this.roll3Value = pins;
+    this.addFrame;
+}
 
 ScoreCard.prototype.addFrame = function(){
     

@@ -28,16 +28,12 @@ $( document ).ready(function() {
   $( '.btn-startGame' ).on('click', function() {
     $( '.btn-startGame' ).hide();
     $( '.playing').show();
-    // this needs to loop through html form
-
     $( '.playerNameForm' ).each(function(i) {
       game.updatePlayersList($(this).val());
       $(this).parent().parent().addClass('player' + i );
       $(this).parent().html($(this).val());
     });
     game.updateCurrentPlayer();
-
-    // $( '.playerName' ).html(game.players[0]);
     $( '.msg-playersTurn' ).html("It's " + game.currentPlayer + "'s turn!")
     $( '.msg-rollNum' ).html("Roll " + game.roll);
     updatePinButtons();
@@ -45,15 +41,13 @@ $( document ).ready(function() {
 
   $( '.pinButtons' ).on('click', '.Pins', function() {
     updateScoreboard(parseInt($(this).val()));
-    // debugger;
-    if (!game.inPlay) {
+    if (game.isOver()) {
       $( '.msg-playersTurn' ).hide();
       $( '.msg-rollNum' ).hide();
       $( '.pinButtons' ).hide();
       $( '.msg-gameOver' ).html("Game Over!")
     }
     game.turn();
-    // debugger;
     game.updateCurrentPlayer();
     $( '.msg-playersTurn' ).html("It's " + game.currentPlayer + "'s turn!")
     updatePinButtons();
@@ -65,7 +59,6 @@ $( document ).ready(function() {
       .append($('<tr>')
         .append($('<td>')
           .append("<input type='text' class='playerNameForm' placeholder='Enter name'>")
-            // .attr('text')
         )
         .append($('<td>').append("<div class='frame1' ><div></div><div class='Roll1'></div><div class='Roll2'></div><div class='Total'></div></div>"))
         .append($('<td>').append("<div class='frame2' ><div></div><div class='Roll1'></div><div class='Roll2'></div><div class='Total'></div></div>"))
@@ -78,19 +71,11 @@ $( document ).ready(function() {
         .append($('<td>').append("<div class='frame9' ><div></div><div class='Roll1'></div><div class='Roll2'></div><div class='Total'></div></div>"))
         .append($('<td>').append("<div class='frame10' ><div class='Roll1'></div><div class='Roll2'></div><div class='Roll3'></div><div class='Total'></div></div>"))
         .append($('<td>').append("<button class='addPlayer'>+</button><button>-</button>"))
-        // <div class='frame" + i + "' ><div></div><div class='Roll1'></div><div class='Roll2'></div><div class='Total'></div></div>
-
     );
-                            // .append("<td><input type='text' class='playerNameForm' placeholder='Enter name'></td>");
-    // $( '.playerName' ).html("<input type='text' class='playerNameForm' placeholder='Enter name'>")
-    // for (i = 1; i < 10; i++) {
-    //   $( '.scoreboard-table' ).append("<td><div class='frame" + i + "' ><div></div><div class='Roll1'></div><div class='Roll2'></div><div class='Total'></div></div></td>");
-    // };
-    // $( '.scoreboard-table' ).append("<td><div class='frame" + 10 + "' ><div class='Roll1'></div><div class='Roll2'></div><div class='Roll3'></div><div class='Total'></div></div></td>");
-    // $( '.scoreboard-table' ).append("<button class='addPlayer'>+</button><button>-</button></tr>");
   };
 
   function updatePinButtons() {
+    console.log(game.frame);  
     pinsLeft = 10 - game.players[game.playerIdx].scoreboard.frames[game.frame -1].roll_1;
     $( '.pinButtons' ).empty();
     for (i = 0; i <= pinsLeft; i++) {
@@ -101,57 +86,109 @@ $( document ).ready(function() {
   function updateScoreboard(pins) {
     game.players[game.playerIdx].scoreboard.frames[game.frame-1].roll(game.roll, pins);
     game.players[game.playerIdx].scoreboard.update();
-    if (game.frame <= 10) {
-      updateFrames1to10Scoreboard();
+    if (game.frame < 10) {
+      updateFrames1to9Scoreboard();
     } else {
-      updateBonusRollscoreboard();
+      updateFrame10Scoreboard();
     };
     for (i = 1; i <= Math.min(game.frame,10) ; i++) {
-      $( '.player' + game.playerIdx ).find( '.frame' + i ).find('.Total').html(game.players[game.playerIdx].scoreboard.score[i-1]);
+      $( '.player' + game.playerIdx )
+        .find( '.frame' + i )
+          .find('.Total')
+            .html(game.players[game.playerIdx].scoreboard.score[i-1]);
     };
   };
 
-  function updateFrames1to10Scoreboard(pins) {
-    // debugger;
-    if (game.roll == 1){
+  function updateFrames1to9Scoreboard(pins) {
+    if (game.roll == 1)
+    {
       if (game.players[game.playerIdx].scoreboard.frames[game.frame-1].strike) {
         score = 'X'
-        // if (game.frame < 10) { $( '.frame' + game.frame ).find('.Roll2').html('-'); }
-        if (game.frame < 10) { $( '.player' + game.playerIdx ).find('.frame' + game.frame).find('.Roll2').html('-'); }
+        // if (game.frame < 10) {
+        $( '.player' + game.playerIdx ).find('.frame' + game.frame).find('.Roll2').html('-');
         game.turn();
+        // if (game.frame == 10 ) {
+        //   // do players next 2 rolls
+        // };
       } else { score = game.players[game.playerIdx].scoreboard.frames[game.frame-1].roll_1 };
       $( '.player' + game.playerIdx ).find( '.frame' + game.frame ).find('.Roll1').html(score);
     } else {
       (game.players[game.playerIdx].scoreboard.frames[game.frame-1].spare) ? score = '/' : score = game.players[game.playerIdx].scoreboard.frames[game.frame-1].roll_2
       $( '.player' + game.playerIdx ).find( '.frame' + game.frame ).find('.Roll2').html(score);
-      // debugger;
-      if (game.frame == 10 && !game.players[game.playerIdx].scoreboard.frames[game.frame-1].spare) {
-        // debugger;
-        if (game.players.length - 1 == game.playerIdx) {game.inPlay = false};
-      };
     };
   };
 
-  function updateBonusRollscoreboard() {
-    (game.players[game.playerIdx].scoreboard.frames[game.frame-1].roll_1 == 10) ? score = 'X' : score = game.players[game.playerIdx].scoreboard.frames[game.frame-1].roll_1;
-    if (game.frame == 11) {
-      if (game.players[game.playerIdx].scoreboard.frames[9].spare) {
-        // debugger;
-        $( '.player' + game.playerIdx ).find( '.frame10' ).find('.Roll3').html(score);
-        // debugger;
-        if (game.players.length - 1 == game.playerIdx) {game.inPlay = false};
-      };
-      if (game.players[game.playerIdx].scoreboard.frames[9].strike) {
-        $( '.player' + game.playerIdx ).find( '.frame10' ).find('.Roll2').html(score);
-        game.turn();
-      };
-    };
-    if (game.frame == 12) {
-      // debugger;
+  function updateFrame10Scoreboard() {
+    debugger;
+    //roll 3
+    if (game.frame == 12 && game.roll == 1) {
+      if (game.players[game.playerIdx].scoreboard.frames[game.frame-1].strike) {
+        score = 'X';
+      }  else { score = game.players[game.playerIdx].scoreboard.frames[game.frame-1].roll_1 };
       $( '.player' + game.playerIdx ).find( '.frame10' ).find('.Roll3').html(score);
-      // debugger;
-      if (game.players.length - 1 == game.playerIdx) {game.inPlay = false};
+      game.roll = 2;
+      game.specialTurn = false;
+      game.players[game.playerIdx].finished = true;
     };
+    if (game.frame == 11 && game.roll == 1) {
+      if (game.players[game.playerIdx].scoreboard.frames[game.frame-1].strike) {
+        score = 'X';
+        game.specialTurn = true;
+        game.frame = 12;
+        game.roll = 1;
+      }  else { score = game.players[game.playerIdx].scoreboard.frames[game.frame-1].roll_1 };
+      if (game.players[game.playerIdx].scoreboard.frames[10].strike) {
+        $( '.player' + game.playerIdx ).find( '.frame10' ).find('.Roll2').html(score);
+      } else {
+        $( '.player' + game.playerIdx ).find( '.frame10' ).find('.Roll3').html(score);
+        game.roll = 2;
+        game.specialTurn = false;
+        game.players[game.playerIdx].finished = true;
+      };
+    };
+    //roll 1
+    if (game.frame == 10 && game.roll == 1) {
+      if (game.players[game.playerIdx].scoreboard.frames[game.frame-1].strike) {
+        score = 'X';
+        game.specialTurn = true;
+        game.frame = 11;
+        game.roll = 1;
+      }  else { score = game.players[game.playerIdx].scoreboard.frames[game.frame-1].roll_1 };
+      $( '.player' + game.playerIdx ).find( '.frame10' ).find('.Roll1').html(score);
+    };
+    //roll 2
+    if (game.frame == 10 && game.roll == 2) {
+      if (game.players[game.playerIdx].scoreboard.frames[game.frame-1].spare) {
+        score = '/';
+        game.specialTurn = true;
+        game.frame = 11;
+        game.roll = 1;
+      }  else {
+        score = game.players[game.playerIdx].scoreboard.frames[game.frame-1].roll_2;
+        game.specialTurn = false;
+        game.players[game.playerIdx].finished = true;
+      };
+      $( '.player' + game.playerIdx ).find( '.frame10' ).find('.Roll2').html(score);
+    };
+
+    // if (game.frame == 10 && !game.players[game.playerIdx].scoreboard.frames[game.frame-1].spare) {
+    //   if (game.players.length - 1 == game.playerIdx) {game.inPlay = false};
+    // };
+    // (game.players[game.playerIdx].scoreboard.frames[game.frame-1].roll_1 == 10) ? score = 'X' : score = game.players[game.playerIdx].scoreboard.frames[game.frame-1].roll_1;
+    // if (game.frame == 11) {
+    //   if (game.players[game.playerIdx].scoreboard.frames[9].spare) {
+    //     $( '.player' + game.playerIdx ).find( '.frame10' ).find('.Roll3').html(score);
+    //     if (game.players.length - 1 == game.playerIdx) {game.inPlay = false};
+    //   };
+    //   if (game.players[game.playerIdx].scoreboard.frames[9].strike) {
+    //     $( '.player' + game.playerIdx ).find( '.frame10' ).find('.Roll2').html(score);
+    //     game.turn();
+    //   };
+    // };
+    // if (game.frame == 12) {
+    //   $( '.player' + game.playerIdx ).find( '.frame10' ).find('.Roll3').html(score);
+    //   if (game.players.length - 1 == game.playerIdx) {game.inPlay = false};
+    // };
   };
 
   function messageRollNumber() {

@@ -6,19 +6,22 @@ function Game() {
   this.currentPlayer = "";
   // this.currentPlayer = this.players[this.playerIdx].name;
   this.roll = 1;
+  this.specialTurn = false;
   this.inPlay = true;
 };
 
 Game.prototype.updatePlayersList = function (player) {
-  this.players.push({ name: player, scoreboard: new ScoreBoard });
+  this.players.push({ name: player, scoreboard: new ScoreBoard, finished: false });
   this.players[this.players.length - 1].scoreboard.newBoard();
 };
 
 Game.prototype.turn = function () {
-  this._updateRoll();
-  this._updatePlayer();
-  this._updateFrame();
-  this.updateCurrentPlayer();
+  if (!this.specialTurn) {
+    this._updateRoll();
+    this._updatePlayer();
+    this._updateFrame();
+    this.updateCurrentPlayer();
+  };
 };
 
 Game.prototype.updateCurrentPlayer = function () {
@@ -38,6 +41,16 @@ Game.prototype._updatePlayer = function () {
 
 Game.prototype._updateFrame = function () {
   if (this.roll == 1 && this.playerIdx == 0) {
-    this.frame += 1;
+    Math.min(this.frame += 1, 10);
   };
+  Math.min(this.frame, 10);
+};
+
+Game.prototype.isOver = function () {
+  for (i=0; i < this.players.length; i++) {
+    if (!this.players[i].finished) {
+      return false;
+    };
+  };
+  return true;
 };

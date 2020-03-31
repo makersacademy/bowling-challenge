@@ -41,9 +41,9 @@ Game.prototype._updatePlayer = function () {
 
 Game.prototype._updateFrame = function () {
   if (this.roll == 1 && this.playerIdx == 0) {
-    Math.min(this.frame += 1, 10);
+    this.frame += 1;
   };
-  Math.min(this.frame, 10);
+  this.frame = Math.min(this.frame, 10);
 };
 
 Game.prototype.isOver = function () {

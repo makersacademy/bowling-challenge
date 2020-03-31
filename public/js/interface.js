@@ -75,7 +75,6 @@ $( document ).ready(function() {
   };
 
   function updatePinButtons() {
-    console.log(game.frame);  
     pinsLeft = 10 - game.players[game.playerIdx].scoreboard.frames[game.frame -1].roll_1;
     $( '.pinButtons' ).empty();
     for (i = 0; i <= pinsLeft; i++) {
@@ -130,21 +129,51 @@ $( document ).ready(function() {
       game.specialTurn = false;
       game.players[game.playerIdx].finished = true;
     };
+    if (game.frame == 11 && game.roll == 2) {
+      score = game.players[game.playerIdx].scoreboard.frames[game.frame-1].roll_2;
+      $( '.player' + game.playerIdx ).find( '.frame10' ).find('.Roll3').html(score);
+      game.specialTurn = false;
+      game.players[game.playerIdx].finished = true;
+    };
     if (game.frame == 11 && game.roll == 1) {
       if (game.players[game.playerIdx].scoreboard.frames[game.frame-1].strike) {
-        score = 'X';
-        game.specialTurn = true;
-        game.frame = 12;
-        game.roll = 1;
-      }  else { score = game.players[game.playerIdx].scoreboard.frames[game.frame-1].roll_1 };
-      if (game.players[game.playerIdx].scoreboard.frames[10].strike) {
-        $( '.player' + game.playerIdx ).find( '.frame10' ).find('.Roll2').html(score);
+        score ='X';
       } else {
-        $( '.player' + game.playerIdx ).find( '.frame10' ).find('.Roll3').html(score);
-        game.roll = 2;
+        score = game.players[game.playerIdx].scoreboard.frames[game.frame-1].roll_1
+      };
+      if (game.players[game.playerIdx].scoreboard.frames[9].strike) {
+        game.specialTurn = true;
+        $( '.player' + game.playerIdx ).find( '.frame10' ).find('.Roll2').html(score);
+        if (game.players[game.playerIdx].scoreboard.frames[game.frame-1].strike) {
+          game.frame = 12;
+          game.roll = 1;
+        } else {
+          game.frame = 11;
+          game.roll = 2;
+        }
+      } else {
         game.specialTurn = false;
         game.players[game.playerIdx].finished = true;
+        $( '.player' + game.playerIdx ).find( '.frame10' ).find('.Roll3').html(score);
       };
+      // if (game.players[game.playerIdx].scoreboard.frames[game.frame-1].strike) {
+      //   score = 'X';
+      //   game.specialTurn = true;
+      //   game.frame = 12;
+      //   game.roll = 1;
+      //   $( '.player' + game.playerIdx ).find( '.frame10' ).find('.Roll2').html(score);
+      // }  else {
+      //   score = game.players[game.playerIdx].scoreboard.frames[game.frame-1].roll_1
+      // };
+      // if (game.players[game.playerIdx].scoreboard.frames[9].strike) {
+      //   $( '.player' + game.playerIdx ).find( '.frame10' ).find('.Roll2').html(score);
+      //   game.roll = 2;
+      // } else {
+      //   $( '.player' + game.playerIdx ).find( '.frame10' ).find('.Roll3').html(score);
+      //   game.roll = 2;
+      //   game.specialTurn = false;
+      //   game.players[game.playerIdx].finished = true;
+      // };
     };
     //roll 1
     if (game.frame == 10 && game.roll == 1) {
@@ -198,8 +227,11 @@ $( document ).ready(function() {
     if (game.frame == 11 && game.players[game.playerIdx].scoreboard.frames[9].spare) {
       return "Roll 3"
     };
-    if (game.frame == 11 && game.players[game.playerIdx].scoreboard.frames[9].strike) {
+    if (game.frame == 11 && game.players[game.playerIdx].scoreboard.frames[9].strike && game.roll == 1) {
       return "Roll 2"
+    };
+    if (game.frame == 11 && game.players[game.playerIdx].scoreboard.frames[9].strike && game.roll == 2) {
+      return "Roll 3"
     };
     if (game.frame == 12) {
       return "Roll 3"

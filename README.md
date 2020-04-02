@@ -33,10 +33,10 @@ A full game of 0 rolls. (Unlucky!)
 
 <div class="row">
   <div class="column">
-    <img src="./images/gutterinterface.png" style="width:100%">
+    <img src="./images/gutterinterface.png" style="width:500">
   </div>
   <div class="column">
-    <img src="./images/gutter.png" style="width:100%">
+    <img src="./images/gutter.png" style="width:500">
   </div>
 </div>
 
@@ -44,7 +44,7 @@ A full game of 0 rolls. (Unlucky!)
 
 The perfect game with a score of 300. (Impressive!)
 
-<img src="./images/perfectgame.png" width ="300"/>
+<img src="./images/perfectgame.png" width ="500"/>
 
 
 ## Technologies Used

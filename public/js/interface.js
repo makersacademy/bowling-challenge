@@ -118,7 +118,6 @@ $( document ).ready(function() {
   };
 
   function updateFrame10Scoreboard() {
-    debugger;
     //roll 3
     if (game.frame == 12 && game.roll == 1) {
       if (game.players[game.playerIdx].scoreboard.frames[game.frame-1].strike) {

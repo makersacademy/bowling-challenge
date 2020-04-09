@@ -14,31 +14,26 @@
       <h1>Bowling Scorecard</h1>
     </header>
     <div class='buttons-section'>
-      <button class='start-game'>Start Game</button>
-    <% 11.times do |i| %>
-      <button id="button<%=i%>" class="input-button-default" value="<%=i%>"><%=i%></button>
-    <% end %>
+      <div class='buttons'>
+        <button class='start-game'>Start Game</button>
+      <% 11.times do |i| %>
+        <button id="button<%=i%>" class="input-button-default" value="<%=i%>"><%=i%></button>
+      <% end %>
+      </div>
     </div>
 
     <div class='scorecard-section'>
       <div class='scorecard'>
-        <div class='framebox-1'>
-          <div class='title'>1</div>
-          <div class='scoreboxleft' id='roll1box1'></div>
-          <div class='scoreboxright' id='roll2box1'></div>
-          <div class='scoreboxtotal' id='totalbox1'></div>
-        </div>
-
-        <% 8.times do |i| %>
-        <div class='framebox-2-10'>
-          <div class='title'><%=i+2%></div>
-          <div class='scoreboxleft' id='roll1box<%=i+2%>'></div>
-          <div class='scoreboxright' id='roll2box<%=i+2%>'></div>
-          <div class='scoreboxtotal' id='totalbox<%=i+2%>'></div>
+        <% 9.times do |i| %>
+        <div class='framebox'>
+          <div class='title'><%=i+1%></div>
+          <div class='scoreboxleft' id='roll1box<%=i+1%>'></div>
+          <div class='scoreboxright' id='roll2box<%=i+1%>'></div>
+          <div class='scoreboxtotal' id='totalbox<%=i+1%>'></div>
         </div>
         <% end %>
 
-        <div class='framebox-2-10'>
+        <div class='framebox'>
           <div class='title'>10</div>
           <div class='scoreboxleft-10' id='roll1box10'></div>
           <div class='scoreboxmiddle-10' id='roll2box10'></div>
@@ -46,12 +41,13 @@
           <div class='scoreboxtotal' id='totalbox10'></div>
         </div>
 
-        <div class='framebox-2-10'>
+        <div class='framebox'>
           <div class='title'>Total</div>
           <div class='scoreboxtotal' id='totalboxtotal'></div>
         </div>
       </div>
     </div>
+
   </div>
 
   <footer class="footer">

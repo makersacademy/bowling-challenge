@@ -14,7 +14,6 @@ var GameView = function() {
   }
 
   this.addRoll = function(scoreObj) {
-    console.log(scoreObj)
     $(`#roll${scoreObj['roll']}box${scoreObj['frame']}`).text(scoreObj['score'])
   }
 

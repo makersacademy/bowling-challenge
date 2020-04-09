@@ -1,11 +1,6 @@
 "use strict"
 
-var GameModel = function(GameModel) {
-
-  var self
-  var newScore
-  var score
-
+var GameModel = function(FrameModel) {
   this.framesConstructor = FrameModel
 
   this.startGame = function() {
@@ -28,7 +23,7 @@ var GameModel = function(GameModel) {
   }
 
   this.numButtons = function(selection = 10) {
-    if (this.roll == 1 || selection == 10) {
+    if (this.roll == 1 || this.roll == 3 || selection == 10) {
       return 10
     }
     else {
@@ -36,17 +31,18 @@ var GameModel = function(GameModel) {
     }
   }
 
-  //return id, frame, and roll to update
+  // return id, frame, and roll to update
   this.addRoll = function(selection) {
-    newScore = {'score': selection, 'frame': this.frame, 'roll': this.roll}
+    var newScore = {'score': selection, 'frame': this.frame, 'roll': this.roll}
     if (selection == 10) {
       newScore['score'] = 'X'
-      newScore['roll'] = 2
+      if (this.frame !== 10) {
+        newScore['roll'] = 2
+      }
     }
     else if (this.roll == 2 && (selection + this.lastRoll) == 10) {
       newScore['score'] = '/'
     }
-    this.lastRoll = selection
     return newScore
   }
 
@@ -63,7 +59,7 @@ var GameModel = function(GameModel) {
   }
 
   this.evalFrame = function(frame, selection) {
-    score = frame.addRoll(selection)
+    var score = frame.addRoll(selection)
     if (score) {
       this.total += score[0]
       this.newScores.push({'total': this.total, 'frame': score[1]})
@@ -76,7 +72,7 @@ var GameModel = function(GameModel) {
   this.updateGame = function(selection) {
     // provide functionality for final frame
     if (this.frame == 10) {
-      if (this.roll == 1) {
+      if (this.roll == 1 ) {
         this.roll = 2
       }
       else if (this.roll == 2) {

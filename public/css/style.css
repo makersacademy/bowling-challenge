@@ -1,53 +1,76 @@
-html, body {
-  height: 100%;
-  width: 100%
-  margin: 0;
-  padding: 0; }
-
+/* Body */
 .container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
 }
 
-.header, .footer {
+.header {
+  position: relative;
+  width: 100%;
   padding: 10px 20px;
   background: #f7f7f7;
 }
 
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 20px;
+  background: #f7f7f7;
+}
+
+
+/* Buttons */
 .buttons-section {
+  display: flex;
+  flex-wrap: nowrap;
+  position: relative;
+  float: left;
   padding: 10px 20px;
   width: 100%;
-  height: 20%;
+  min-height: 50px;
   vertical-align: middle;
 }
 
-.scorecard-section {
-  padding: 10px 20px;
-  height: 30%;
+.start-game {
+  min-width: 100px;
+  font-size: medium;
+  display: inline;
 }
 
-/* Buttons */
-.input-buttons {
-  display: none;
-
-}
-.start-button {
-
-}
 .input-button-default {
+  min-width: 50px;
+  font-size: medium;
   display: none;
 }
+
 
 /* Scorecard */
-.scorecard {
-  width: 80%;
-  height: 100%;
-  border-left:solid thin Black ;
-  border-bottom:solid thin Black ;
-  border-right:solid thin Black ;
-  border-top:solid thin Black ;
+.scorecard-section {
+  position: relative;
   float: left;
+  width: 80%;
+  padding: 10px 30px;
+  min-height: 200px;
+}
+
+.scorecard {
+  display: block;
+  position: relative;
+  float: left;
+  width: 100%;
+  height: 80%;
+  border-left: solid thin Black;
+  border-bottom: solid thin Black;
+  border-right: solid thin Black;
+  border-top: solid thin Black;
   text-align: left;
   font-weight: bold;
   font-size: large;
@@ -58,76 +81,89 @@ html, body {
 
 .framebox-1 {
   position: relative;
-  min-height: 4em;
+  float: left;
+  min-height: 5.5em;
+  min-width: 2em;
+  max-width: 5em;
   width: 8%;
-  height: 80%;
-  margin: 0pt 0pt 0pt 0pt;
   border-left: solid thin Black;
   border-bottom: solid thin Black;
   border-right: solid thin Black;
   border-top: solid thin Black;
-  float: left;
-  background-color:#FAFAD2 ;
-  text-align:center;
-  vertical-align: middle;
+  background-color: #FAFAD2;
   font-weight: bold;
-  font-size:large;
+  font-size: large;
 }
 
 .framebox-2-10 {
   position: relative;
-  min-height: 4em;
-  width: 8%;
-  height: 80%;
-  margin: 0pt 0pt 0pt 0pt;
-  border-left:none;
-  border-bottom: solid thin Black ;
-  border-right: solid thin Black ;
-  border-top: solid thin Black ;
   float: left;
-  background-color:#FAFAD2 ;
-  text-align:center;
+  min-height: 5.5em;
+  min-width: 2em;
+  max-width: 5em;
+  width: 8%;
+  border-bottom: solid thin Black;
+  border-right: solid thin Black;
+  border-top: solid thin Black;
+  background-color: #FAFAD2;
+  text-align: center;
   vertical-align: middle;
   font-weight: bold;
-  font-size:large;
+  font-size: large;
+}
+
+.title {
+  position: relative;
+  min-height: 1em;
+  min-width: 2em;
+  max-width: 5em;
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+  box-sizing: border-box;
+  border-bottom: solid Black;
+  background: #BBBB9D;
 }
 
 .scoreboxleft {
-  min-height: 2em;
-  width: 50%;
-  height:50%;
-  padding-top: 3px;
+  position: relative;
   float: left;
-  text-align:center;
+  min-height: 2em;
+  min-width: 1em;
+  max-width: 3em;
+  width: 50%;
+  text-align: center;
   vertical-align: middle;
   box-sizing: border-box;
-  display: table-cell;
 }
 
 .scoreboxright {
-  min-height: 2em;
-  width: 50%;
-  height:50%;
-  padding-top: 3px;
-  border-left:solid thin Black;
-  border-bottom:solid thin Black;
+  position: relative;
   float: right;
-  text-align:center;
+  min-height: 2em;
+  min-width: 1em;
+  max-width: 3em;
+  width: 50%;
+  border-left: solid thin Black;
+  border-bottom: solid thin Black;
+  text-align: center;
   vertical-align: middle;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
-  display: table-cell;
 }
 
 .scoreboxtotal {
-  min-height: 2em;
-  box-sizing: border-box;
-  position: absolute;
-  bottom: 0px;
+  display: block;
+  position: relative;
+  float: left;
   width: 100%;
-  height:50%;
+  min-height: 2.5em;
+  min-width: 2em;
+  max-width: 5em;
+  box-sizing: border-box;
   text-align:center;
   vertical-align: middle;
-  display: table-cell;
 }
 
 .scoreboxleft-10 {
@@ -168,3 +204,5 @@ html, body {
   vertical-align: middle;
   box-sizing: border-box;
 }
+
+

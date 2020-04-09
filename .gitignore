@@ -1,2 +1,12 @@
-/**/.DS_Store
-node_modules
+*.DS_Store
+
+# Test coverage
+coverage
+
+# Puma shared files
+shared/log/**
+shared/pids/**
+shared/sockets/**
+
+# Keep empty directories
+!*.keep

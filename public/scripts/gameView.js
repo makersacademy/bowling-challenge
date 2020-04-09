@@ -2,7 +2,7 @@
 
 var GameView = function() {
   this.startGame = function() {
-    $("#start-game").css("display", "none")
+    $(".start-game").css("display", "none")
     $(".input-buttons").css("display", "inline")
     for (var i = 1; i < 11; i++) {
       $(`#roll1box${i}`).text("")
@@ -14,6 +14,7 @@ var GameView = function() {
   }
 
   this.addRoll = function(scoreObj) {
+    console.log(scoreObj)
     $(`#roll${scoreObj['roll']}box${scoreObj['frame']}`).text(scoreObj['score'])
   }
 
@@ -34,8 +35,8 @@ var GameView = function() {
   }
 
   this.gameComplete = function() {
-    $("#start-game").text("Play Again?")
-    $("#start-game").css("display", "inline")
-    $(".input-buttons").css("display", "none")
+    $(".start-game").text("Play Again?")
+    $(".start-game").css("display", "inline")
+    $(".input-button-default").css("display", "none")
   }
 }

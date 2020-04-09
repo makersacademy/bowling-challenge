@@ -14,16 +14,36 @@ __________________________________________________
 
 Makers Academy weekend challenge to single page webapp, which allows a user to add in bowling scores from a game, then automatically calculates the total score.
 
-### How to Install
+## How to Install
 
-The webapp has been developed on Sinatra, a rack based platform, with the majority of the functionality added through JavaScript. So to install the app, clone this repo, make sure Homebrew and Ruby 2.6.5 is installed then:
-- move to the project root directory in terminal
-- run ``` gem install rake ```
-- run ``` rake ```
-- run ```rackup``` to start server on localhost port 9292
+### Prerequisites
 
-----------
-## Approach
+The webapp has been developed on Ruby Sinatra, a rack based platform, so to install make sure you have the following installed:
+- RVM (follow instructions [here](https://rvm.io/rvm/install))
+- Ruby 2.6.5 (```rvm install 2.6.5```)
+- Bundler 2+ (```gem install bundler```)
+
+### Install Application
+
+Then clone or download this repository, move to root directory and run ```bundle install``` to install the application for all environments. 
+
+### How to Run the Tests
+
+After install, to check the application is working correctly navigate to the root directory and run the tests using the following command:
+```bash
+rspec
+```
+
+### How to Start the Server
+
+The default application server is Puma. The application is currently configured to listen for requests on a unix socket ```shared/sockets/puma.sock```. To change this to listen on the localhost, edit the puma configuration file ```config/puma.rb```, commenting out the line starting with ```bind ...``` and un-commenting the line starting with ```port ...```, selecting the port you wish to host on.
+
+To start the server, navigate to the root directory and run the following command:
+```bash
+puma
+```
+
+## Development Process
 
 ### User Stories
 
@@ -40,7 +60,7 @@ I want to my total score to be displayed at the end of a game
 ```
 ```
 As a user
-So I can keep playing my favourite game
+So I can keep playing my favorite game
 I want to be able to restart my game without reloading the page
 ```
 ```
@@ -50,7 +70,7 @@ I only want the option to add score which reflects previous rolls in the frame
 ```
 ```
 As a project manager
-To ensure continious integration
+To ensure continuous integration
 I want Travis CI to test my builds before adding them to github
 ```
 ```
@@ -66,7 +86,7 @@ Bowling has a number of scoring rules which must followed in order to calculate 
 ### Extract Scope
 - Single page webapp, server based off Sinatra with functionality provided by JavaScript
 - Page displays one game at a time with option to start --> complete --> restart
-- Scores calculated as game progresses - follow offical bowling rules
+- Scores calculated as game progresses - follow official bowling rules
 - No need to maintain persistence between page refreshes
 - Buttons to add score value dynamically change depending on previous roll
 - Animation to make site look pretty (provide as much as time allocation allows)
@@ -77,25 +97,22 @@ Bowling has a number of scoring rules which must followed in order to calculate 
   - Sinatra: app_controller - controls routes, views, and server side models
   - JavaScript: gameController - Updates JavaScript models and views with user input
 - Views:
-  - Sinatra: homepage - single page HMTL including all JavaScript required for functionality
+  - Sinatra: homepage - single page HTML including all JavaScript required for functionality
   - JavaScript: gameView - updates each section of HTML with new information from controller
 - Models:
-  - Sinatra: nil - no server side models requires at this stage
+  - Sinatra: nil - no server side models required at this stage
   - JavaScript: frameModel - calculates scores to be added returned to view
 
-<!-- refactor system to extract gameModel from gameController -->
+### Create Application
 
-----------
-## Process
+Plan model functionality and how system will interact on paper to develop a working design.
 
-Plan model functionaility and how system will interact on paper to develop a working design.
-
-### Prerequisites
-- Create filestructure
+#### Prerequisites
+- Create file structure
 - Add required Gemfile and Rakefile
 
-### TDD
-- Feature test infastructure and to create working webapp
+#### TDD
+- Feature test infrastructure and to create working webapp
 - Test and develop JavaScript with Jasmine test suite
   - FrameModel
     - (possible refactor to join all prototypes etc)
@@ -110,35 +127,6 @@ Plan model functionaility and how system will interact on paper to develop a wor
   - (requires refactor of id and class details to make selection more streamlined)
   - (CSS can be improved)
 
+## License
 
-
-
-
-
-
-
-----------
-## Bowling — how does it work?
-
-### Strikes
-
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
-
-### Spares
-
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-### 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-### Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-### Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+This application is distributed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License

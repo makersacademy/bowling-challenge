@@ -23,15 +23,16 @@
   background: #f7f7f7;
 }
 
-.buttons-section, .scorecard-section {
+/* Buttons */
+.buttons-section {
   position: relative;
   padding: 10px 20px;
   width: 100%;
   vertical-align: middle;
   text-align: center;
+  min-height: 50px;
 }
 
-/* Buttons */
 .buttons {
   display: flex;
   flex-wrap: nowrap;
@@ -58,18 +59,27 @@
 
 /* Scorecard */
 .scorecard-section {
-  min-height: 200px;
+  position: relative;
+  vertical-align: middle;
+  text-align: center;
+  max-height: 101px;
+  height: 100%;
+  padding: 10px 20px;
+  width: 100%;
 }
 
 .scorecard {
   display: flex;
   overflow-x: scroll;
   position: relative;
+  height: 100%;
   width: 90%;
+  max-width: 55em;
   border-left: solid thin Black;
   border-bottom: solid thin Black;
   border-right: solid thin Black;
   border-top: solid thin Black;
+  box-sizing: border-box;
   text-align: left;
   font-weight: bold;
   font-size: large;
@@ -79,100 +89,94 @@
 .framebox {
   position: relative;
   float: left;
-  min-height: 5.5em;
   min-width: 4em;
   max-width: 5em;
-  width: 9%;
+  height: 100%;
+  width: 9.9%;
   border-left: solid thin Black;
   border-bottom: solid thin Black;
   border-right: solid thin Black;
   border-top: solid thin Black;
+  box-sizing: border-box;
   font-weight: bold;
   font-size: large;
 }
 
 .title {
   position: relative;
-  min-height: 1em;
-  min-width: 2em;
-  max-width: 5em;
+  height: 24%;
   width: 100%;
   text-align: center;
   vertical-align: middle;
-  box-sizing: border-box;
   border-bottom: solid Black;
+  box-sizing: border-box;
   background: #BBBB9D;
 }
 
 .scoreboxleft {
   position: relative;
   float: left;
-  height: 50%;
+  height: 38%;
   width: 50%;
-  text-align: center;
-  vertical-align: middle;
-  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .scoreboxright {
   position: relative;
   float: right;
-  min-height: 2em;
-  height: 50%;
+  height: 38%;
   width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-left: solid thin Black;
   border-bottom: solid thin Black;
-  text-align: center;
-  vertical-align: middle;
   box-sizing: border-box;
 }
 
 .scoreboxtotal {
   position: relative;
   float: left;
+  height: 38%;
   width: 100%;
-  box-sizing: border-box;
-  text-align: center;
-  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .scoreboxleft-10 {
-  min-height: 2em;
-  width: 33.3%;
-  height: 50%;
-  padding-top: 3px;
-  border-left: none;
-  border-bottom: none;
+  position: relative;
   float: left;
-  text-align:center;
-  vertical-align: middle;
-  box-sizing: border-box;
-}
-
-.scoreboxmiddle-10 {
-  min-height: 2em;
   width: 33.3%;
-  height: 50%;
-  padding-top: 3px;
-  border-left: solid thin Black;
-  border-bottom: solid thin Black;
-  float: left;
-  text-align:center;
-  vertical-align: middle;
-  box-sizing: border-box;
+  height: 38%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .scoreboxright-10 {
-  min-height: 2em;
+  position: relative;
+  float: left;
   width: 33.3%;
-  height: 50%;
-  padding-top: 3px;
+  height: 38%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-left: solid thin Black;
   border-bottom: solid thin Black;
-  float: left;
-  text-align:center;
-  vertical-align: middle;
   box-sizing: border-box;
+}
+
+.totalboxtotal {
+  position: relative;
+  float: left;
+  height: 76%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 

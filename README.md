@@ -4,13 +4,13 @@ Ten-Pin Bowling
 
 A JavaScript Ten-Pin Bowling game with score calculation and generation of random rolls. The UI allows a roll to be generated on the click of a button and the bowling alley image is updated according to the number of pins hit and reset at the end of the frame.
 
-Prior to first shot...
+Prior to taking first turn...
 
 ![alt text](https://github.com/ratcliffetj/ten-pin-bowling/blob/master/images/Screenshot%202020-04-15%20at%2013.05.18.png "Example")
 
 
 
-After first shot...
+After taking first turn...
 ![alt text](https://github.com/ratcliffetj/ten-pin-bowling/blob/master/images/Screenshot%202020-04-15%20at%2013.05.29.png "Example")
 
 ## App setup

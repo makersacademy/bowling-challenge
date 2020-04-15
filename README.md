@@ -1,8 +1,8 @@
 
-Bowling
+Ten-Pin Bowling
 =================
 
-JavaScript Bowling game with score calculation and generation of random rolls. The UI allows a roll to be generated on the click of a button and the bowling alley image is updated according to the number of pins hit and reset at the end of the frame.
+A JavaScript Ten-Pin Bowling game with score calculation and generation of random rolls. The UI allows a roll to be generated on the click of a button and the bowling alley image is updated according to the number of pins hit and reset at the end of the frame.
 
 ## App setup
 

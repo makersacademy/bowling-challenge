@@ -4,6 +4,15 @@ Ten-Pin Bowling
 
 A JavaScript Ten-Pin Bowling game with score calculation and generation of random rolls. The UI allows a roll to be generated on the click of a button and the bowling alley image is updated according to the number of pins hit and reset at the end of the frame.
 
+Prior to first shot...
+
+![alt text](https://github.com/ratcliffetj/ten-pin-bowling/blob/master/images/Screenshot%202020-04-15%20at%2013.05.18.png "Example")
+
+
+
+After first shot...
+![alt text](https://github.com/ratcliffetj/ten-pin-bowling/blob/master/images/Screenshot%202020-04-15%20at%2013.05.29.png "Example")
+
 ## App setup
 
 * Clone the repository
@@ -48,5 +57,5 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
+More about ten-pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 

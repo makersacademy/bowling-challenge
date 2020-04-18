@@ -7,9 +7,6 @@ class Scorecard {
       },
     };
     this.frame2 = {
-      runningTotal: function() {
-        return this.roll1 + this.roll2;
-      },
     };
     this.currentFrame = this.frame1
   }

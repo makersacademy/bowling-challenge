@@ -97,4 +97,5 @@ Refactored to use ES6 class syntax, as I find it easier to read.
 
 Wrote test that after calling record 1 three times, frame2 roll1 should be 1. Red.
 
-
+- Added a new object literal for frame2.
+- 

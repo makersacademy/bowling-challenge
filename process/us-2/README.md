@@ -7,8 +7,9 @@ I want to update my score
 
 ## Specification
 
-- [ ] Create a turn
-- [ ] update the score
+- [X] Create a turn
+- [X] update the score
 
 ## Classes
 
+![crc](../images/us2-crc.png)

@@ -1,5 +1,5 @@
 Frame = function() {
-  this._turns = []
+  this._turns = [];
 }
 
 Frame.prototype.bowlBall = function(pins) {
@@ -7,5 +7,9 @@ Frame.prototype.bowlBall = function(pins) {
 }
 
 Frame.prototype.currentTurn = function() {
-  return this._turns.length
+  return this._turns.length;
+}
+
+Frame.prototype.calculateScore = function() {
+  return (this._turns[0] + this._turns[1]);
 }

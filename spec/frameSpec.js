@@ -10,8 +10,14 @@ describe('Frame', function() {
     expect(frame.bowlBall()).toBeDefined;
   })
 
-  it('bowling a ball updates the turn', function() {
+  it('can calculate  turns', function() {
     frame.bowlBall(1);
     expect(frame.currentTurn()).toEqual(1);
+  })
+
+  it('can calculate score', function() {
+    frame.bowlBall(1);
+    frame.bowlBall(2);
+    expect(frame.calculateScore()).toEqual(3);
   })
 })

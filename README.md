@@ -163,10 +163,18 @@ Green.
 
 Now the strike bonus points need to be applied. The strike applies bonus points for its frame based on the result of the next two rolls. This will either be rolls 1 and 2 of the next frame, or if the next frame is a strike, it will include that and the first roll of the frame after that.
 
-Wrote a test for recording 10, then recording 4 twice. The total for frame[0] should be 18 (10 + 4 + 4), and the runningTotal for frame[1] should be 28 (18 + 10).
+Wrote a test for recording 10, then recording 4 twice. The total for frame[0] should be 18 (10 + 4 + 4), and the runningTotal for frame[1] should be 26 (18 + 4 + 4).
 
 The frame should also know if it is a strike. Wrote a test for isStrike to return with a frame with a roll1 of 10.
 
 - Hard coded isStrike to return true.
 
 Green.
+
+Wrote a test for isSpare to check that it returns false if the frame is a strike.
+
+- Converted isSpare to return a ternary operator, if the frame is a strike then it returns false, otherwise it returns if this total is 10.
+
+Green.
+
+Now strikes and spares are correctly identified, back to 

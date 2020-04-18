@@ -92,7 +92,7 @@ describe('Scorecard', () => {
       scorecard.record(4)
       scorecard.record(4)
       expect(scorecard.runningTotal(0)).toEqual(18);
-      expect(scorecard.runningTotal(1)).toEqual(28);
+      expect(scorecard.runningTotal(1)).toEqual(26);
     });
 
   });

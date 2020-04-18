@@ -13,4 +13,10 @@ describe('Feature Test:', function() {
     expect(game.getFrame()).toEqual(frame);
   })
 
+  it('When a frame is complete, the score is updated', function() {
+    frame.bowlBall(4);
+    frame.bowlBall(2)
+    expect(game.getScore()).toEqual(6);
+  })
+
 })

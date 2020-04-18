@@ -1,8 +1,8 @@
 # User Story 1
 
-> As a user,
-> So I can take note of my scores,
-> I want to start with an empty frame.
+> As a user,</br>
+So I can take note of my scores,</br>
+I want to start with an empty frame.
 
 ## Specification
 

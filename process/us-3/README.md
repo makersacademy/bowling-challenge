@@ -1,4 +1,4 @@
-# User Story 2
+# User Story 3
 
 > As a user,</br>
 When a frame is complete,</br>

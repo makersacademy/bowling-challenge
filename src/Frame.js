@@ -5,7 +5,7 @@ class Frame {
     this.roll2 = 0
   }
   isStrike() {
-    return true
+    return this.roll1 === 10
   }
   isSpare() {
     return this.total() === 10

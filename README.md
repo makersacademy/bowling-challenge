@@ -2,6 +2,46 @@
 Bowling Challenge
 =================
 
+Jasmine Set up
+
+Scoring System
+
+## User Stories
+```
+As a bowler,
+So I can know what I score with a roll,
+I want to enter a score per roll
+```
+```
+As a bowler,
+So I can know my score per frame,
+I want to enter scores
+```
+```
+As a bowler,
+So I can keep track of my scores,
+I want to see my total score update per frame
+```
+```
+As a bowler,
+So I can see when I have bonus points,
+I want my scores to reflect strikes, spares and extra goes on 10th frame
+```
+```
+As a bowler,
+So I can know if I scored the highest or lowest scores possible,
+I want to see if I have a 'gutter game' or 'perfect game'
+```
+```
+As a bowler,
+So I can revel in my success,
+I want to see my scores in bright lights and pretty colours
+```
+
+
+Bowling Challenge
+=================
+
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

@@ -1,6 +1,7 @@
 Game = function() {
   this._frames = [new Frame()]
   this._score = 0;
+  this._applyBonus = false;
 }
 
 Game.prototype.currentFrame = function() {
@@ -15,9 +16,11 @@ Game.prototype.bowlBall = function(pins) {
 
 Game.prototype.endTurn = function() {
   if(frame.complete()) {
+    if (frame.strike()) {
+      this._applyBonus = true;
+    }
     this._score += frame.viewScore();
     this.addFrame()
-    this._turnCount++
   }
 }
 
@@ -35,5 +38,9 @@ Game.prototype.getFrameCount = function() {
 }
 
 Game.prototype.getScore = function() {
+  return this._score;
+}
+
+Game.prototype.bonusScore = function() {
   return this._score;
 }

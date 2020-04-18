@@ -48,4 +48,9 @@ describe('Game', function() {
     expect(game.getScore()).toEqual(16)
   })
 
+  it('a strike creates a bonus score', function(){
+    game.bowlBall(10);
+    expect(game._applyBonus).toEqual(true)
+  })
+
 })

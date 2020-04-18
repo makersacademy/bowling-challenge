@@ -42,7 +42,7 @@ describe('Feature Test:', function() {
       game.bowlBall(5);
       game.bowlBall(2);
       expect(game.getScore()).toEqual(24);
-      expect(game.getHandicapScore()).toEqual(7);
+      expect(game.getBonusScore()).toEqual(7);
       expect(game.getFrameCount()).toEqual(3);
     })
   })

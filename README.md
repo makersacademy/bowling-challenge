@@ -240,3 +240,7 @@ Green.
 ### The Perfect Game
 
 Wrote a test that 12 consecutive strikes should result in a runningTotal(9) of 300. It is green, but I had to be sure.
+
+- Linted.
+- Refactored currentFrame variable name to just frame.
+

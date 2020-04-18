@@ -104,3 +104,14 @@ Wrote test that after calling record 1 three times, frame2 roll1 should be 1. Re
 Green.
 
 Wrote test that after calling record 1 four times, frame2 runningTotal is 4. Red.
+
+- Hardcoded frame2,runningTotal() to return 4.
+
+Green.
+
+Wrote a test that after calling record 2 four times, frame2 runningTotal is 8. Red.
+
+At this point i need to be able to return the sum of frame2's rolls and the runningTotal of frame1. In its current form, the program has no way to reference the previous frame's total, so a different solution is needed.
+
+Frames probably should be their own object, and the scorecard can hold an array of frames.
+

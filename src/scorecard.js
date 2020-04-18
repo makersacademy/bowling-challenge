@@ -1,26 +1,36 @@
 class Scorecard {
   constructor() {
-    this.currentRoll = 1;
-    this.frame1 = {
-      runningTotal: function() {
-        return this.roll1 + this.roll2;
-      },
-    };
-    this.frame2 = {
-    };
-    this.currentFrame = this.frame1
+    this.currentRoll = 1
+    this.currentFrame = 0
+    this.frames = [
+      new Frame(),
+      new Frame()
+    ]
   }
 
   record(score) {
     if (this.currentRoll === 1) {
-      this.currentFrame.roll1 = score;
+      this.frames[this.currentFrame].roll1 = score;
       this.currentRoll = 2;
     }
     else {
-      this.currentFrame.roll2 = score;
+      this.frames[this.currentFrame].roll2 = score;
       this.currentRoll = 1
-      this.currentFrame = this.frame2
+      this.currentFrame++
     }
+  }
+
+  runningTotal(frame) {
+    let total = 0;
+    for (let i = 0; i <= frame; i++) {
+      total += this.frames[i].total();
+    }
+    return total;
   }
 }
 
+class Frame {
+  total() {
+    return this.roll1 + this.roll2
+  }
+}

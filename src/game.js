@@ -1,3 +1,7 @@
+"use strict";
+
+/* eslint-disable no-underscore-dangle */
+
 function Game() {
   this._currentScore = 0;
   this._frame = new Frame();

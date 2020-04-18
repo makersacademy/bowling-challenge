@@ -1,3 +1,5 @@
+"use strict";
+
 /* eslint-disable no-underscore-dangle */
 function Frame() {
 }

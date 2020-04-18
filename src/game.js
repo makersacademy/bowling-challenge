@@ -1,21 +1,20 @@
 Game = function() {
   this._frames = [new Frame()]
-  this._turnCount = 0;
   this._score = 0;
 }
 
 Game.prototype.currentFrame = function() {
-  return this._frames[this._turnCount];
+  return this._frames[this._frames.length -1];
 }
 
 Game.prototype.bowlBall = function(pins) {
   frame = this.currentFrame();
   frame.enterTurn(pins);
-  this.updateFrame();
+  this.endTurn();
 }
 
-Game.prototype.updateFrame = function() {
-  if(frame.currentTurn() === 2) {
+Game.prototype.endTurn = function() {
+  if(frame.complete()) {
     this._score += frame.viewScore();
     this.addFrame()
     this._turnCount++

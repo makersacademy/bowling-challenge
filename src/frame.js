@@ -31,3 +31,9 @@ Frame.prototype.strike = function() {
     return true
   }
 }
+
+Frame.prototype.spare = function() {
+  if( this._turns[0] + this._turns[1] === 10 ) {
+    return true
+  }
+}

@@ -1,4 +1,4 @@
-xdescribe('Frame', function() {
+describe('Frame', function() {
 
   var frame;
 
@@ -31,6 +31,12 @@ xdescribe('Frame', function() {
   it('a strike completes a frame', function() {
     frame.enterTurn(10);
     expect(frame.complete()).toEqual(true);
+  })
+
+  it('can understand a spare', function() {
+    frame.enterTurn(2);
+    frame.enterTurn(8);
+    expect(frame.spare()).toEqual(true);
   })
   
 })

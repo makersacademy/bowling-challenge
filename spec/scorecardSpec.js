@@ -9,7 +9,7 @@ describe('Scorecard', function() {
         expect(scorecard.totalScore).toEqual(0)
     })
 
-    it('can add a new frame score to their total score', function(){
+    it('can add a new frame score to their total score', function() {
         scorecard.addNewScore(2, 3)
         expect(scorecard.totalScore).toEqual(5)
     })
@@ -18,4 +18,14 @@ describe('Scorecard', function() {
         scorecard.addNewScore(10)
         expect(scorecard.totalScore).toEqual(10)
     })
+
+    it('if there is a spare it isSpare returns true', function() {
+        scorecard.addNewScore(5, 5)
+        expect(scorecard.isSpare()).toEqual(true)
+    })
+
+    //it('raises an error if the total of the 1st and 2nd rolls are more than 10', function() {
+    //    expect(scorecard.addNewScore(5, 6)).toThrow('Incorrect score')
+    //})
+    
 })

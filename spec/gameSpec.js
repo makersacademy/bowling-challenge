@@ -34,4 +34,9 @@ describe('Game', function() {
     expect(game.getFrameCount()).toEqual(2)
   })
 
+  it('frame number is updated when frame created', function() {
+    game.bowlBall(2);
+    game.bowlBall(5);
+    expect(game.getFrameCount()).toEqual(2)
+  })
 })

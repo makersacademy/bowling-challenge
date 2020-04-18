@@ -7,8 +7,8 @@ My nex bowl starts a new frame
 
 ## Specification
 
-- [ ] Game checks turns to determine if frame is complete
-- [ ] 
+- [X] Game checks turns to determine if frame is complete
+- [X] Game adds frame to frames
 
 ## Classes
 

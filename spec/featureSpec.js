@@ -23,5 +23,4 @@ describe('Feature Test:', function() {
     game.bowlBall(5);
     expect(game.getFrameCount()).toEqual(2);
   })
-
 })

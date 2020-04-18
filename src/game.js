@@ -10,6 +10,14 @@ Game.prototype.currentFrame = function() {
 Game.prototype.bowlBall = function(pins) {
   frame = this.currentFrame();
   frame.enterTurn(pins);
+  this.updateFrame();
+}
+
+Game.prototype.updateFrame = function() {
+  if(frame.currentTurn() === 2) {
+    this.addFrame()
+    this._turnCount++
+  }
 }
 
 Game.prototype.addFrame = function() {

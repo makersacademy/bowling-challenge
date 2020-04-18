@@ -54,5 +54,24 @@ This serves as a good guide for me to understand the logic I need to implement, 
 
 ### Project Setup
 
-I installed Jasmine as my testing framework.
+Installed Jasmine as my testing framework.
+
+### Inputting some rolls
+
+Wrote a test that after calling record with 1 on scorecard, the scorecard's frame1 roll1 should be 1. Red.
+
+- Created a scorecard constructor with a property frame1 object literal with a property roll1 assigned with 1.
+- Added a record method.
+
+Green.
+
+Wrote a test that after calling record with 2 on scorecard, the scorecard's frame1 roll1 should be 2. Red.
+
+- Adjusted record method to assign frame1.roll1 with the passed score.
+
+Green.
+
+- Refactored for record to create roll1 in an empty frame1 object literal.
+
+Wrote a test that after calling record 1 twice, frame1 roll2 should be 1.
 

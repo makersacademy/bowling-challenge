@@ -81,3 +81,4 @@ Wrote a test that after calling record 1 twice, frame1 roll2 and roll1 should be
 
 Green.
 
+Wrote a test that after calling record 1 twice, frame1 runningTotal should be 2. Red.

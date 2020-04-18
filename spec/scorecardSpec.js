@@ -41,12 +41,14 @@ describe('Scorecard', function() {
         scorecard.addNewScore(3, 7)
         scorecard.addNewScore(10)
         expect(scorecard.isStrike).toEqual(true)
+        expect(scorecard.isSpare).toEqual(false)
     })
 
     it('can change from strike to spare', function() {
         scorecard.addNewScore(10)
         scorecard.addNewScore(4, 6)
         expect(scorecard.isSpare).toEqual(true)
+        expect(scorecard.isStrike).toEqual(false)
     })
 
 

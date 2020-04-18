@@ -18,8 +18,8 @@ The player has a spare if the knocks down all 10 pins with the two rolls of a fr
 
 If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
 
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
+- 10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
+- 1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
 
 ### Gutter Game
 
@@ -108,7 +108,7 @@ Green.
 
 Wrote test that after calling record 1 four times, frame2 runningTotal is 4. Red.
 
-- Hardcoded frame2,runningTotal() to return 4.
+- Hard coded frame2,runningTotal() to return 4.
 
 Green.
 
@@ -119,10 +119,17 @@ At this point i need to be able to return the sum of frame2's rolls and the runn
 - Created Frame object constructor, and the scorecard frames is now an array of new Frames.
 - Reworked the runningTotal method not to belong to the frame, but to belong to scorecard. It takes an argument of which frame to calculate for, then loops up through the frames until that frame, collecting their individual totals (roll1 + roll2).
 
-Green. Frames will now be reffered to by their index in the frames array.
-
+Green.
 
 - Refactored frame into its own file, Frame.js.
 - Sourced that in SpecRunner.html.
 
-Now for spares. Wrote a test that recording 5 three times should result with runningTotal(0) returning 15 (5 + 5 + 5 on the first roll of the next frame as bonus)
+_Frames will now be referred to by their index in the frames array._
+
+Now for spares. Wrote a test that recording 5 three times should result with runningTotal(0) returning 15 (5 + 5 + 5 on the first roll of the next frame as bonus). Red
+
+In order to help pass this test the frame should know if its score is a spare.
+
+Created FrameSpec.js and wrote a test for frame.isSpare to return true if the frames rolls are five and five. Red.
+
+- Wrote the isSpare method to return a bool of roll1 plus roll2 equals 10

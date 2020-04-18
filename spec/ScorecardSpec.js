@@ -83,7 +83,7 @@ describe('Scorecard', () => {
       scorecard.record(10)
       scorecard.record(1)
       expect(scorecard.frames[0].roll1).toEqual(10);
-      expect(scorecard.frames[0].roll2).toEqual(0);
+      expect(scorecard.frames[0].roll2).toEqual(null);
       expect(scorecard.frames[1].roll1).toEqual(1);
     });
 

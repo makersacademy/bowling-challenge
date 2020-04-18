@@ -1,9 +1,9 @@
 class Frame {
   constructor() {
-    this.strikeBonus = 0;
-    this.spareBonus = 0;
-    this.roll1 = 0
-    this.roll2 = 0
+    this.strikeBonus = null;
+    this.spareBonus = null;
+    this.roll1 = null
+    this.roll2 = null
   }
   isStrike() {
     return this.roll1 === 10

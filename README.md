@@ -130,7 +130,7 @@ Green.
 
 _Frames will now be referred to by their index in the frames array._
 
-### Spares
+### Adding Spares
 
 Now for spares. Wrote a test that recording 5 three times should result with runningTotal(0) returning 15 (5 + 5 + 5 on the first roll of the next frame as bonus). Red.
 
@@ -160,9 +160,9 @@ Green.
 
 - Refactored with a variable for frame similar to previousFrame to make the record method more readable.
 
-## Strikes
+## Adding Strikes
 
-Now on to strikes. Wrote a test that recording 10 on the first roll then recording 1 on the second roll should result in frame[0].roll1 being 10, frame[0].roll2 being 0 and frame[1].roll1 being 1 (as the strike moves on to the next frame immediately). Red.
+Now on to strikes. Wrote a test that recording 10 on the first roll then recording 1 on the second roll should result in frames[0].roll1 being 10, frames[0].roll2 being 0 and frames[1].roll1 being 1 (as the strike moves on to the next frame immediately). Red.
 
 - Added to the record if statement for currentRoll is 1 a if statement for if the score is 10 to increment the currentFrame, else to switch the currentRoll to 2.
 - Added to the Frame constructor defaults for rolls of 0.
@@ -171,7 +171,7 @@ Green.
 
 Now the strike bonus points need to be applied. The strike applies bonus points for its frame based on the result of the next two rolls. This will either be rolls 1 and 2 of the next frame, or if the next frame is a strike, it will include that and the first roll of the frame after that.
 
-Wrote a test for recording 10, then recording 4 twice. The total for frame[0] should be 18 (10 + 4 + 4), and the runningTotal for frame[1] should be 26 (18 + 4 + 4). Red.
+Wrote a test for recording 10, then recording 4 twice. The total for frames[0] should be 18 (10 + 4 + 4), and the runningTotal for frames[1] should be 26 (18 + 4 + 4). Red.
 
 The frame should also know if it is a strike. Wrote a test for isStrike to return with a frame with a roll1 of 10. Red.
 
@@ -198,4 +198,8 @@ Refactoring to extract out some methods from a now quite busy record method.
 - Extracted the logic to assign spareBonus to its own method.
 - Extracted the logic to assign strikeBonus to its own method.
 
+Also refactored for the default values in the Frames constructor to be null, to distinguish them from a recorded value of 0.
+
 Tests still green.
+
+Wrote a test for two strikes in a row, then a frame of 1 and 1. The frames runningTotal should be 24 (10 + 10 from the next frame strike, + 4 from the roll1 of following frame)

@@ -154,4 +154,4 @@ Green.
 
 - Refactored with a variable for frame similar to previousFrame to make the record method more readable.
 
-Now on to strikes. 
+Now on to strikes. Wrote a test that recording 10 on the first roll then recording 1 on the second roll should result in frame[0].roll1 being 10, frame[0].roll2 being 0 and frame[1].roll1 being 1 (as the strike moves on to the next frame immediately). Red.

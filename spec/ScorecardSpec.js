@@ -77,4 +77,17 @@ describe('Scorecard', () => {
 
   });
 
+  describe('Spares', () => {
+
+    it('record(10) then record(1), frame[0] roll1 is 10 and roll2 is 0, and frame[1].roll1 is 1', () => {
+      scorecard.record(10)
+      scorecard.record(1)
+      expect(scorecard.frames[0].roll1).toEqual(10);
+      expect(scorecard.frames[0].roll2).toEqual(0);
+      expect(scorecard.frames[1].roll1).toEqual(1);
+    });
+
+  });
+
+
 });

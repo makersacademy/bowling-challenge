@@ -2,10 +2,14 @@ function Scorecard() {
     this.totalScore = 0
     this.isSpare = false
     this.isStrike = false
-    this.spareOrStrike
+    
+    
 }
 
 Scorecard.prototype.addNewScore = function(roll1, roll2=0) {
+    if (roll1 > 10 || (roll1 + roll2) > 10) {
+        return this.incorrectScore()
+    }
     this.totalScore += (roll1 + roll2)
     this.spareOrStrike(roll1, roll2)
 }

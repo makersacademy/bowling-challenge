@@ -75,3 +75,31 @@ In code review we'll be hoping to see:
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+
+# My attempt
+
+## Approach
+
+* User stories
+* General project setup
+
+## User Stories
+
+```
+As a bowler
+So that I can keep track of the game
+I want to enter the scores I get as I'm playing
+
+As a bowler
+So that I can see how well I am playing
+I want the scorecard to update whenever I enter a score
+
+As a bowler
+So that I can be entertained while I"m playing
+I want the scorecard to highlight special scores like strikes, spares, gutter games and perfect games
+
+As a bowler
+So that the scorecard is easy and interesting to read
+I want it to be graphically well designed and interesting to look at
+```
+

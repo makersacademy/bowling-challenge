@@ -13,7 +13,7 @@ describe('Game', function() {
   })
 
   it('can return current frame', function() {
-    expect(game.currentFrame()).toEqual(frame);
+    expect(game._currentFrame()).toEqual(frame);
   })
 
   it('can get frame score', function() {
@@ -30,7 +30,7 @@ describe('Game', function() {
   })
 
   it('can add a new frame', function(){
-    game.addFrame();
+    game._addFrame();
     expect(game.getFrameCount()).toEqual(2)
   })
 

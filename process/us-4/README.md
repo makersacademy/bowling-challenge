@@ -6,8 +6,8 @@ The game create a new frame and calculate a strike bonus
 
 ## Specification
 
-- [ ] new frame is created
-- [ ] next frame score is added to handicap score
+- [X] new frame is created
+- [X] next frame score is added to handicap score
 - [ ] games core is frames score and handicap
 
 ## Classes

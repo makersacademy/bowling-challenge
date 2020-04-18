@@ -12,7 +12,7 @@ describe('Feature Test:', function() {
   describe('Player rolls less than 10 in a frame', function() {
 
     it('A game starts with a new frame', function() {
-      expect(game.currentFrame()).toEqual(frame);
+      expect(game._currentFrame()).toEqual(frame);
     })
   
     it('When a game rolls a ball, frame score is updated', function() {

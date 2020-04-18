@@ -65,18 +65,34 @@ class Scorecard {
     }
   }
 
+  // advance(score) {
+  //   if (this.currentFrame === 9 && this.currentRoll === 2) {
+  //     this.currentRoll = 3
+  //   } else if (this.currentRoll === 1) {
+  //     if (score === 10) {
+  //       this.currentFrame++;
+  //     } else {
+  //       this.currentRoll = 2;
+  //     }
+  //   } else {
+  //     this.currentRoll = 1;
+  //     this.currentFrame++;
+  //   }
+  // }
+
   advance(score) {
-    if (this.currentFrame === 9 && this.currentRoll === 2) {
-      this.currentRoll = 3
-    } else if (this.currentRoll === 1) {
-      if (score === 10) {
-        this.currentFrame++;
-      } else {
-        this.currentRoll = 2;
-      }
+
+    if (this.currentFrame === 9) {
+      this.currentRoll++
     } else {
-      this.currentRoll = 1;
-      this.currentFrame++;
+      if (score === 10) {
+        this.currentFrame++
+      } else if (this.currentRoll === 1) {
+        this.currentRoll++;
+      } else if (this.currentRoll === 2) {
+        this.currentRoll = 1;
+        this.currentFrame++
+      }
     }
   }
 

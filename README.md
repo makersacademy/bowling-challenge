@@ -232,7 +232,11 @@ Wrote a test for a game in which all rolls are missed up until the tenth frame. 
 
 - The test is failing because at the moment because after the second record the scoreboard advances, and the third record attempts to set roll1 of the 11th item in frames, which does not exist.
 - Added a new special Frame10 object, which has a roll3.
-- Added logic to advance to set currentRoll to 3 if it is the last frame and currentRoll is 2.
+- Added logic to advance. If it is the 10th frame, then after each roll just increment the currentRoll. Otherwise go down the usual route of going from 1 to 2, or moving the the next frame if its a strike.
 - Added logic to record to handle currentRoll of 3, score should be set to roll3.
 
 Green.
+
+### The Perfect Game
+
+Wrote a test that 12 consecutive strikes should result in a runningTotal(9) of 300. It is green, but I had to be sure.

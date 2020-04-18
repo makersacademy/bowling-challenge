@@ -98,22 +98,37 @@ describe("Scorecard", () => {
     });
   });
 
-  describe('10th Frame (all gutters up till then)', () => {
-    
+  describe("10th Frame (all gutters up till then)", () => {
     beforeEach(function () {
-      let i = 0
+      let i = 0;
       while (i < 18) {
-        scorecard.record(0)
-        i++
+        scorecard.record(0);
+        i++;
       }
     });
-  
-    it('record(5) x3. runningTotal(9) is 15', () => {
+
+    it("record(5) x3. runningTotal(9) is 15", () => {
       scorecard.record(5);
       scorecard.record(5);
       scorecard.record(5);
       expect(scorecard.runningTotal(9)).toBe(15);
     });
 
+    it("record(10) then record(5). runningTotal(9) is 15", () => {
+      scorecard.record(10);
+      scorecard.record(5);
+      expect(scorecard.runningTotal(9)).toBe(15);
+    });
+  });
+
+  describe('Perfect Game', () => {
+    it('12 consecutive strikes, runningTotal(9) is 300', () => {
+      let i = 0;
+      while (i < 12) {
+        scorecard.record(10);
+        i++;
+      }
+      expect(scorecard.runningTotal(9)).toBe(300);
+    });
   });
 });

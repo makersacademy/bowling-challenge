@@ -28,9 +28,16 @@ describe('Scorecard', function() {
         expect(scorecard.isSpare).toEqual(true)
     })
 
-    it('if there is not a spare, isStrike returns false', function() {
+    it('if there is not a strike, isStrike returns false', function() {
         expect(scorecard.isStrike).toEqual(false)
     })
+
+    it('if there is a strike, isStrike returns true', function() {
+        scorecard.addNewScore(10)
+        expect(scorecard.isStrike).toEqual(true)
+    })
+
+
 
     //it('raises an error if the total of the 1st and 2nd rolls are more than 10', function() {
     //    expect(scorecard.addNewScore(5, 6)).toThrow('Incorrect score')

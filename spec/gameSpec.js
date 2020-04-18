@@ -16,10 +16,6 @@ describe('Game', function() {
     expect(game.currentFrame()).toEqual(frame);
   })
 
-  it('can bowl a ball', function() {
-    expect(game.bowlBall()).toBeDefined;
-  })
-
   it('can get frame score', function() {
     expect(game.getFrameScore()).toEqual(0);
   })

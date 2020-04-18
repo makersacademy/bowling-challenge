@@ -6,10 +6,6 @@ describe('Frame', function() {
     frame = new Frame();
   })
 
-  it('responds to a user bowling the ball', function() {
-    expect(frame.enterTurn()).toBeDefined;
-  })
-
   it('can calculate  turns', function() {
     frame.enterTurn(5);
     expect(frame.currentTurn()).toEqual(1);

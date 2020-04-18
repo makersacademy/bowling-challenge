@@ -18,6 +18,12 @@ describe('Frame', () => {
       frame.roll2 = 1
       expect(frame.isSpare()).toEqual(false);
     });
+
+    it('should return false if the frame is a strike', () => {
+      frame.roll1 = 10
+      expect(frame.isSpare()).toEqual(false);
+    });
+
   });
   
   describe('isStrike()', () => {

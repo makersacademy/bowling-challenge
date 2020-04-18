@@ -23,9 +23,8 @@ class Scorecard {
     
     if (this.currentRoll === 1) {
       frame.roll1 = score;
-      if (previousFrame != false && previousFrame.isSpare()) {
-        previousFrame.spareBonus = score
-      }
+      this.assignSpareBonus(previousFrame, score);
+      this.assignStrikeBonus(previousFrame, score);
       if (score == 10) {
         this.currentFrame++
       }
@@ -35,8 +34,21 @@ class Scorecard {
     }
     else {
       frame.roll2 = score;
+      this.assignStrikeBonus(previousFrame, score);
       this.currentRoll = 1
       this.currentFrame++
+    }
+  }
+
+  assignStrikeBonus(previousFrame, score) {
+    if (previousFrame != false && previousFrame.isStrike()) {
+      previousFrame.strikeBonus += score;
+    }
+  }
+
+  assignSpareBonus(previousFrame, score) {
+    if (previousFrame != false && previousFrame.isSpare()) {
+      previousFrame.spareBonus = score;
     }
   }
 

@@ -19,3 +19,10 @@ Frame.prototype.updateScore = function(pins) {
 Frame.prototype.viewScore = function() {
   return this._score;
 }
+
+Frame.prototype.complete = function() {
+  if(this.currentTurn() === 2 ) {
+    return true
+  }
+  return false
+}

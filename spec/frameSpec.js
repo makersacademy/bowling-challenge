@@ -21,4 +21,10 @@ describe('Frame', function() {
     frame.enterTurn(2);
     expect(frame.viewScore()).toEqual(3);
   })
+
+  it('knows if frame is complete', function() {
+    frame.enterTurn(1);
+    frame.enterTurn(2);
+    expect(frame.complete()).toEqual(true);
+  })
 })

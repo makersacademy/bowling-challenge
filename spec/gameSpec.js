@@ -15,4 +15,8 @@ describe('Game', function() {
   it('game can return current frame', function() {
     expect(game.getFrame()).toEqual(frame);
   })
+
+  it('can get frame score', function() {
+    expect(game.getFrameScore()).toEqual(0);
+  })
 })

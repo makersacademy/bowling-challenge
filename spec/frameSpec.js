@@ -39,4 +39,8 @@ describe('Frame', function() {
     expect(frame.spare()).toEqual(true);
   })
   
+  it('can return a single roll score', function() {
+    frame.enterTurn(2);
+    expect(frame.getSingleScore()).toEqual(2);
+  })
 })

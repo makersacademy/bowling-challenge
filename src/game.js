@@ -59,6 +59,8 @@ Game.prototype._updateScore = function() {
 Game.prototype._generateBonus = function() {
   if (this._applyStrikeBonus) {
     this._bonusScore = frame.viewScore();
+  } else if(this._applySpareBonus) {
+    // this._bonusScore = frame.viewScore();
   }
 }
 
@@ -67,7 +69,6 @@ Game.prototype._endTurn = function() {
     this._bonusStrikeFrame()
     this._bonusSpareFrame()
     this._updateScore()
-    this._clearBonus
     this._addFrame()
   } 
 }

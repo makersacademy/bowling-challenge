@@ -66,4 +66,11 @@ describe('Game', function() {
     expect(game._applySpareBonus).toEqual(true)
   })
 
+  it('a spare creates a bonus score', function(){
+    game.bowlBall(8);
+    game.bowlBall(2);
+    game.bowlBall(2);
+    expect(game._bonusScore).toEqual(2)
+  })
+
 })

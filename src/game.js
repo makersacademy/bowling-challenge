@@ -1,6 +1,6 @@
 Game = function() {
   this._frames = [new Frame()]
-  this._turnCount = 0
+  this._turnCount = 0;
 }
 
 Game.prototype.currentFrame = function() {
@@ -12,11 +12,15 @@ Game.prototype.bowlBall = function(pins) {
   frame.enterTurn(pins);
 }
 
+Game.prototype.addFrame = function() {
+  this._frames.push( new Frame() )
+}
+
 Game.prototype.getFrameScore = function() {
   frame = this.currentFrame();
   return frame.viewScore();
 }
 
 Game.prototype.getFrameCount = function() {
-  return this._turnCount;
+  return this._frames.length ;
 }

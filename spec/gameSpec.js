@@ -21,11 +21,17 @@ describe('Game', function() {
   })
 
   it('when a ball is bowled frame score is updated', function() {
-    game.bowlBall(2)
+    game.bowlBall(2);
     expect(game.getFrameScore()).toEqual(2)
   })
 
   it('can return frame number', function() {
-    expect(game.getFrameCount()).toEqual(0)
+    expect(game.getFrameCount()).toEqual(1)
   })
+
+  it('can add a new frame', function(){
+    game.addFrame();
+    expect(game.getFrameCount()).toEqual(2)
+  })
+
 })

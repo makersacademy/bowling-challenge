@@ -39,4 +39,12 @@ describe('Game', function() {
     game.bowlBall(5);
     expect(game.getFrameCount()).toEqual(2)
   })
+
+  it('game score is a total of frame scores', function(){
+    game.bowlBall(2);
+    game.bowlBall(5);
+    game.bowlBall(9);
+    game.bowlBall(0);
+    expect(game.getScore()).toEqual(16)
+  })
 })

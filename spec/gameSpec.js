@@ -53,4 +53,11 @@ describe('Game', function() {
     expect(game._applyBonus).toEqual(true)
   })
 
+  it('a bonus score is calculated', function(){
+    game.bowlBall(10);
+    game.bowlBall(2);
+    game.bowlBall(5);
+    expect(game.getBonusScore()).toEqual(7)
+  })
+
 })

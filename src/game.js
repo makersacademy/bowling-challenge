@@ -2,6 +2,7 @@ Game = function() {
   this._frames = [new Frame()]
   this._score = 0;
   this._applyBonus = false;
+  this._bonusScore;
 }
 
 Game.prototype.currentFrame = function() {
@@ -20,6 +21,7 @@ Game.prototype.endTurn = function() {
       this._applyBonus = true;
     }
     this._score += frame.viewScore();
+    this.generateBonus();
     this.addFrame()
   }
 }
@@ -41,6 +43,12 @@ Game.prototype.getScore = function() {
   return this._score;
 }
 
-Game.prototype.bonusScore = function() {
-  return this._score;
+Game.prototype.generateBonus = function() {
+  if (this._applyBonus) {
+    this._bonusScore = frame.viewScore();
+  }
+}
+
+Game.prototype.getBonusScore = function() {
+  return this._bonusScore;
 }

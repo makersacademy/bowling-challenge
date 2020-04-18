@@ -10,10 +10,9 @@ Game.prototype.currentFrame = function() {
 Game.prototype.bowlBall = function(pins) {
   frame = this.currentFrame();
   frame.enterTurn(pins);
-  console.log(this._frames);
 }
 
 Game.prototype.getFrameScore = function() {
   frame = this.currentFrame();
-  return frame.calculateScore();
+  return frame.viewScore();
 }

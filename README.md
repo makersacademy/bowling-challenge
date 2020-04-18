@@ -202,4 +202,12 @@ Also refactored for the default values in the Frames constructor to be null, to 
 
 Tests still green.
 
-Wrote a test for two strikes in a row, then a frame of 1 and 1. The frames runningTotal should be 24 (10 + 10 from the next frame strike, + 4 from the roll1 of following frame)
+Wrote a test for two strikes in a row, then a frame of 1 and 1. 
+
+- runningTotal(0) should be 24 (10 + 10 from the next frame strike, + 4 from the roll1 of following frame). 
+- runningTotal(1) should be 42 (24 from previous frame + 10 + 4 from next frame roll1 + 4 from next frame roll2). 
+- runningTotal(2) should be 50 (42 from previous frame + 4 + 4). 
+
+Red.
+
+In order to pass this test, for subsequent strikes, additional strike bonus needs to be allocated for the first strike as well.

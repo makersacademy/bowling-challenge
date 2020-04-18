@@ -95,6 +95,20 @@ describe('Scorecard', () => {
       expect(scorecard.runningTotal(1)).toEqual(26);
     });
 
+    it('record(10) x2 then record(4) x2, runningTotal(0) is 24, runningTotal(1) is 42m runningTotal(2) is 50', () => {
+      console.log("")
+      console.log("THIS ONE")
+
+      scorecard.record(10)
+      scorecard.record(10)
+      scorecard.record(4)
+      scorecard.record(4)
+      expect(scorecard.runningTotal(0)).toEqual(24);
+      expect(scorecard.runningTotal(1)).toEqual(42);
+      expect(scorecard.runningTotal(2)).toEqual(50);
+    });
+
+
   });
 
 

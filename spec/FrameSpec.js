@@ -20,4 +20,10 @@ describe('Frame', () => {
     });
   });
   
+  describe('isStrike()', () => {
+    it('should return true is roll1 is 10', () => {
+      frame.roll1 = 10
+      expect(frame.isStrike()).toEqual(true);
+    });
+  });
 });

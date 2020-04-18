@@ -119,7 +119,10 @@ At this point i need to be able to return the sum of frame2's rolls and the runn
 - Created Frame object constructor, and the scorecard frames is now an array of new Frames.
 - Reworked the runningTotal method not to belong to the frame, but to belong to scorecard. It takes an argument of which frame to calculate for, then loops up through the frames until that frame, collecting their individual totals (roll1 + roll2).
 
-Green.
+Green. Frames will now be reffered to by their index in the frames array.
+
 
 - Refactored frame into its own file, Frame.js.
 - Sourced that in SpecRunner.html.
+
+Now for spares. Wrote a test that recording 5 three times should result with runningTotal(0) returning 15 (5 + 5 + 5 on the first roll of the next frame as bonus)

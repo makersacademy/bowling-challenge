@@ -15,7 +15,7 @@ I want to enter a score per roll
 ```
 As a bowler,
 So I can know my score per frame,
-I want to enter scores
+I want to add frame score to total score
 ```
 ```
 As a bowler,

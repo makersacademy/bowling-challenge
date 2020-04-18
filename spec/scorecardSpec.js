@@ -37,6 +37,17 @@ describe('Scorecard', function() {
         expect(scorecard.isStrike).toEqual(true)
     })
 
+    it('can change from spare to a strike', function() {
+        scorecard.addNewScore(3, 7)
+        scorecard.addNewScore(10)
+        expect(scorecard.isStrike).toEqual(true)
+    })
+
+    it('can change from strike to spare', function() {
+        scorecard.addNewScore(10)
+        scorecard.addNewScore(4, 6)
+        expect(scorecard.isSpare).toEqual(true)
+    })
 
 
     //it('raises an error if the total of the 1st and 2nd rolls are more than 10', function() {

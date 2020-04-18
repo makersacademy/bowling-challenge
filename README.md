@@ -97,5 +97,10 @@ Refactored to use ES6 class syntax, as I find it easier to read.
 
 Wrote test that after calling record 1 three times, frame2 roll1 should be 1. Red.
 
-- Added a new object literal for frame2.
-- 
+- Added a currentFrame property to the scorecard, set to frame1.
+- Added a new object literal for frame2, empty for now.
+- Added to the record else statement to reset the currentRoll to 1 and set the currentFrame to frame2.
+
+Green.
+
+Wrote test that after calling record 1 four times, frame2 runningTotal is 4. Red.

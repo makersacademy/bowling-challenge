@@ -6,5 +6,9 @@
 
 ## Specification
 
-- [ ] Can start a new Game
-- [ ] Game starts with a new frame
+- [X] Can start a new Game
+- [X] Game starts with a new frame
+
+## Classes
+
+![CRC](../images/us1-crc.png)

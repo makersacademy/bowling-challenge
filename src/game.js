@@ -9,10 +9,7 @@ Game = function() {
 Game.prototype.bowlBall = function(pins) {
   frame = this._currentFrame();
   frame.enterTurn(pins);
-  if (this._applySpareBonus) {
-    this._bonusScore = pins;
-    this._applySpareBonus = false
-  }
+  this._applySpare(pins);
   this._endTurn();
 }
 
@@ -61,14 +58,24 @@ Game.prototype._addFrame = function() {
   this._frames.push( new Frame() )
 }
 
+Game.prototype._checkBonus = function() {
+  if (frame.strike()) {
+    this._addStrike();
+  } else if (frame.spare()) {
+    this._addSpare();
+  }
+}
+
+Game.prototype._applySpare = function(pins) {
+  if (this._applySpareBonus) {
+    this._bonusScore = pins;
+    this._applySpareBonus = false
+  }
+}
 
 Game.prototype._endTurn = function() {
   if(frame.complete()) {
-    if (frame.strike()) {
-      this._addStrike();
-    } else if (frame.spare()) {
-      this._addSpare();
-    }
+    this._checkBonus()
     this._updateScore()
     this._addFrame()
   } 

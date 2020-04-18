@@ -37,7 +37,6 @@ describe('Scorecard', () => {
       expect(scorecard.runningTotal(0)).toEqual(4);
     });
 
-    
   });
 
   describe('frames[1] (second frame)', () => {

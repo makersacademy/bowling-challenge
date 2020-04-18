@@ -58,8 +58,11 @@ Installed Jasmine as my testing framework.
 
 ### Inputting some rolls
 
+Created a spec file ScorecardSpec.js
+
 Wrote a test that after calling record with 1 on scorecard, the scorecard's frame1 roll1 should be 1. Red.
 
+- Created a file Scorecard.js, and sourced in SpecRunner.html.
 - Created a scorecard constructor with a property frame1 object literal with a property roll1 assigned with 1.
 - Added a record method.
 
@@ -113,5 +116,10 @@ Wrote a test that after calling record 2 four times, frame2 runningTotal is 8. R
 
 At this point i need to be able to return the sum of frame2's rolls and the runningTotal of frame1. In its current form, the program has no way to reference the previous frame's total, so a different solution is needed.
 
-Frames probably should be their own object, and the scorecard can hold an array of frames.
+- Created Frame object constructor, and the scorecard frames is now an array of new Frames.
+- Reworked the runningTotal method not to belong to the frame, but to belong to scorecard. It takes an argument of which frame to calculate for, then loops up through the frames until that frame, collecting their individual totals (roll1 + roll2).
 
+Green.
+
+- Refactored frame into its own file, Frame.js.
+- Sourced that in SpecRunner.html.

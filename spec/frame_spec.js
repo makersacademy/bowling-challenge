@@ -14,4 +14,11 @@ describe( "Frame", () => {
 
     expect( frame.score() ).toEqual( { score1: 4, score2: undefined, total: undefined } );
   } );
+
+  it( "should add the second score correctly", () => {
+    frame.addScore( 4 );
+    frame.addScore( 3 );
+
+    expect( frame.score() ).toEqual( {score1: 4, score2: 3, total: undefined } );
+  } );
 } );

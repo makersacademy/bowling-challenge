@@ -12,6 +12,6 @@ describe('Frame', function() {
 
   it('bowling a ball updates the turn', function() {
     frame.bowlBall(1);
-    expect(frame.currentTurn()).toEqual(2);
+    expect(frame.currentTurn()).toEqual(1);
   })
 })

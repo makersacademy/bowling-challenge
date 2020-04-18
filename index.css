@@ -4,16 +4,27 @@ font-family: custom-font;
 }
 
 .mbody{
+min-width: 80%;
 max-width: 80%;
 max-height: 80%;
+min-height: 80%;
 position: absolute; top: 0;
 z-index: -1;
 }
 
 .titleStyle {  
 font-family: custom-font;
-font-size: 50px;
-max-width: 800px;
-max-height: 200px;
-position: absolute; left: 10%;
+font-size: 40px;
+max-width: 60%;
+max-height: 20%;
+position: absolute; left: 0;
+block-size: 20%;
+padding-left: 165px;
+padding-top: 20px;
+}
+
+.logo {
+position: absolute; left: 20px;
+max-width: 120px;
+padding-top: 15px;
 }

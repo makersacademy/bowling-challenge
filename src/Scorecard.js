@@ -4,17 +4,39 @@ class Scorecard {
     this.currentFrame = 0
     this.frames = [
       new Frame(),
+      new Frame(),
+      new Frame(),
+      new Frame(),
+      new Frame(),
+      new Frame(),
+      new Frame(),
+      new Frame(),
+      new Frame(),
       new Frame()
     ]
   }
 
   record(score) {
+    
+    let frame = this.frames[this.currentFrame];
+    let previousFrame = this.currentFrame != 0 ? this.frames[this.currentFrame - 1] : false;
+    
     if (this.currentRoll === 1) {
-      this.frames[this.currentFrame].roll1 = score;
+      frame.roll1 = score;
       this.currentRoll = 2;
+      if (previousFrame != false) {
+        
+        
+        if (previousFrame.isSpare()) {
+          previousFrame.spareBonus = score
+        }
+        else {
+          previousFrame.spareBonus = 0
+        }
+      }
     }
     else {
-      this.frames[this.currentFrame].roll2 = score;
+      frame.roll2 = score;
       this.currentRoll = 1
       this.currentFrame++
     }

@@ -132,7 +132,7 @@ In order to help pass this test the frame should know if its score is a spare.
 
 Created FrameSpec.js and wrote a test for frame.isSpare to return true if the rolls are five and five. Red.
 
-- Wrote the isSpare method true hardcoded.
+- Wrote the isSpare method returning true hardcoded.
 
 Green.
 
@@ -142,5 +142,12 @@ Wrote a test for isSpare to return false if the rolls are 1 and 1. Red.
 
 Green.
 
-Now back to the runningTotal for spares.
+Now back to the runningTotal for spares. The running total needs to account for the first roll in the next frame and include that in the total of the frame as a bonus.
+
+The scoreboard needs to be able to calculate that for the frame and give it as a property.
+
+
+
+Green.
+
 

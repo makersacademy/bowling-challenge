@@ -7,8 +7,8 @@
     <script src="src/bowling.js"></script>
     <script src="interface.js"></script>
   </head>
-<h1>PLEASE ENTER YOUR PLAYER NAMES BELOW</h1>
-<form id="enter-name">
+<h1 class="intro">PLEASE ENTER YOUR PLAYER NAMES BELOW</h1>
+<form id="enter-name" class="intro">
   <input id="name" type="text" placeholder="enter names here">
   <input type="submit" value="Enter Player name">
 </form>
@@ -16,6 +16,13 @@
 <br>
 <br>
 <br>
-<button id="start-game">START GAME</button>
+<button id="start-game" class="intro">START GAME</button>
 
-<div id="player-list"></div>
+<div id="player-list" class="intro"></div>
+
+<div id="game-board" class="game-started">
+  <form class="game-started"style="display:none;">
+    <input type="text">
+    <input type="submit" value="Enter Score">
+  </form>
+</div>

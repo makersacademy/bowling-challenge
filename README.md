@@ -93,4 +93,8 @@ Wrote a test that after calling record 2 twice, frame1 runningTotal should be 4.
 
 Green.
 
+Refactored to use ES6 class syntax, as I find it easier to read.
+
+Wrote test that after calling record 1 three times, frame2 roll1 should be 1. Red.
+
 

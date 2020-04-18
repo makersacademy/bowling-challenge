@@ -219,3 +219,8 @@ Green.
 
 - Refactored the if statement into its own method, assignConsecutiveStrikeBonus.
 
+At this point I manually tested a few different game scenarios.
+
+### Frame 10
+
+

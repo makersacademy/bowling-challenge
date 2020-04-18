@@ -18,7 +18,7 @@ class Scorecard {
 
   record(score) {
     // console.log("");
-    // console.log(`Record: frame:${this.currentFrame} roll: ${this.currentRoll} scored with ${score}`)
+    // console.log(`F:${this.currentFrame} R:${this.currentRoll} S:${score}`)
     
     let frame = this.frames[this.currentFrame];
     let previousFrame = this.currentFrame > 0 ? this.frames[this.currentFrame - 1] : false;
@@ -37,17 +37,19 @@ class Scorecard {
       else {
         this.currentRoll = 2;
       }
+      console.table(this.frames)
     }
     else {
       frame.roll2 = score;
       this.assignStrikeBonus(previousFrame, secondPreviousFrame, score);
       this.currentRoll = 1
+      console.table(this.frames)
       this.currentFrame++
     }
   }
 
   assignConsecutiveStrikeBonus(previousFrame, secondPreviousFrame, score) {
-    if (previousFrame != false && previousFrame.isStrike() && secondPreviousFrame != false && previousFrame.isStrike()) {
+    if (previousFrame != false && previousFrame.isStrike() && secondPreviousFrame != false && secondPreviousFrame.isStrike()) {
       secondPreviousFrame.strikeBonus += score;
     }
   }

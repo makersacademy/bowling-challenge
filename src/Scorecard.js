@@ -17,13 +17,11 @@ class Scorecard {
   }
 
   record(score) {
-    console.log("");
-    
-    console.log(`Record: frame:${this.currentFrame} roll: ${this.currentRoll} scored with ${score}`)
+    // console.log("");
+    // console.log(`Record: frame:${this.currentFrame} roll: ${this.currentRoll} scored with ${score}`)
     
     let frame = this.frames[this.currentFrame];
     let previousFrame = this.currentFrame > 0 ? this.frames[this.currentFrame - 1] : false;
-
     let secondPreviousFrame = this.currentFrame > 1 ? this.frames[this.currentFrame - 2] : false;
 
     if (this.currentRoll === 1) {
@@ -31,9 +29,7 @@ class Scorecard {
       frame.roll1 = score;
       this.assignSpareBonus(previousFrame, score);
       this.assignStrikeBonus(previousFrame, secondPreviousFrame, score);
-      if (previousFrame != false && previousFrame.isStrike() && secondPreviousFrame != false && previousFrame.isStrike()) {
-        secondPreviousFrame.strikeBonus += score
-      }
+      this.assignConsecutiveStrikeBonus(previousFrame, secondPreviousFrame, score);
   
       if (score == 10) {
         this.currentFrame++
@@ -50,11 +46,16 @@ class Scorecard {
     }
   }
 
+  assignConsecutiveStrikeBonus(previousFrame, secondPreviousFrame, score) {
+    if (previousFrame != false && previousFrame.isStrike() && secondPreviousFrame != false && previousFrame.isStrike()) {
+      secondPreviousFrame.strikeBonus += score;
+    }
+  }
+
   assignStrikeBonus(previousFrame, secondPreviousFrame, score) {
     if (previousFrame != false && previousFrame.isStrike()) {
       previousFrame.strikeBonus += score;
     }
-    console.log(`Second previous frame passed to strikeBonus: ${secondPreviousFrame}`)
   }
 
   assignSpareBonus(previousFrame, score) {

@@ -96,9 +96,6 @@ describe('Scorecard', () => {
     });
 
     it('record(10) x2 then record(4) x2, runningTotal(0) is 24, runningTotal(1) is 42m runningTotal(2) is 50', () => {
-      console.log("")
-      console.log("THIS ONE")
-
       scorecard.record(10)
       scorecard.record(10)
       scorecard.record(4)
@@ -107,7 +104,6 @@ describe('Scorecard', () => {
       expect(scorecard.runningTotal(1)).toEqual(42);
       expect(scorecard.runningTotal(2)).toEqual(50);
     });
-
 
   });
 

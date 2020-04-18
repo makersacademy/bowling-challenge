@@ -204,10 +204,18 @@ Tests still green.
 
 Wrote a test for two strikes in a row, then a frame of 1 and 1. 
 
-- runningTotal(0) should be 24 (10 + 10 from the next frame strike, + 4 from the roll1 of following frame). 
-- runningTotal(1) should be 42 (24 from previous frame + 10 + 4 from next frame roll1 + 4 from next frame roll2). 
-- runningTotal(2) should be 50 (42 from previous frame + 4 + 4). 
+- runningTotal(0) should be 24 (10 + 10 from the next frame strike, + 4 from the roll1 of following frame).
+- runningTotal(1) should be 42 (24 from previous frame + 10 + 4 from next frame roll1 + 4 from next frame roll2).
+- runningTotal(2) should be 50 (42 from previous frame + 4 + 4).
 
 Red.
 
 In order to pass this test, for subsequent strikes, additional strike bonus needs to be allocated for the first strike as well.
+
+- Added a new variable in the record method, secondPreviousFrame, assigned in a similar way to the previousFrame but for the one before previous.
+- Added a new if statement in the currentRoll is 1 path that checks for if the previous frame is a strike and the second previous frame is a strike, and then adds the score to the secondPreviousFrames strikeBonus.
+
+Green.
+
+- Refactored the if statement into its own method, assignConsecutiveStrikeBonus.
+

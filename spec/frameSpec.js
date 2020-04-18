@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Frame', function() {
 
   var frame;
@@ -38,9 +40,5 @@ describe('Frame', function() {
     frame.enterTurn(8);
     expect(frame.spare()).toEqual(true);
   })
-  
-  it('can return a single roll score', function() {
-    frame.enterTurn(2);
-    expect(frame.getSingleScore()).toEqual(2);
-  })
+
 })

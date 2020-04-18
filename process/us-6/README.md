@@ -6,8 +6,8 @@ The game create a new frame and calculates a spare bonus
 
 ## Specification
 
-- [ ] A bonus score is added
-- [ ] game score is score + bonus score
+- [X] A bonus score is added
+- [X] game score is score + bonus score
 
 
 ## Classes

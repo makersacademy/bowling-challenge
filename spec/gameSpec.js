@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Game', function() {
 
   var game;
@@ -69,8 +71,9 @@ describe('Game', function() {
   it('a spare creates a bonus score', function(){
     game.bowlBall(8);
     game.bowlBall(2);
-    game.bowlBall(2);
-    expect(game._bonusScore).toEqual(2)
+    game.bowlBall(4);
+    game.bowlBall(1);
+    expect(game.getBonusScore()).toEqual(4)
   })
 
 })

@@ -37,7 +37,3 @@ Frame.prototype.spare = function() {
     return true
   }
 }
-
-Frame.prototype.getSingleScore = function() {
-  return this._turns[0]
-}

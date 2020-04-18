@@ -9,7 +9,7 @@ describe('Feature Test:', function() {
     frame = new Frame;
   })
 
-  xdescribe('Player rolls less than 10 in a frame', function() {
+  describe('Player rolls less than 10 in a frame', function() {
 
     it('A game starts with a new frame', function() {
       expect(game._currentFrame()).toEqual(frame);
@@ -36,7 +36,7 @@ describe('Feature Test:', function() {
 
   })
 
-  xdescribe('Player rolls a strike', function() {
+  describe('Player rolls a strike', function() {
     it('a new frame is started and a bonus score is added', function() {
       game.bowlBall(10);
       game.bowlBall(5);
@@ -50,11 +50,11 @@ describe('Feature Test:', function() {
   describe('Player rolls a spare', function() {
     it('a new frame is started and a bonus score is added', function() {
       game.bowlBall(6);
-      game.bowlBall(2);
+      game.bowlBall(4);
       game.bowlBall(2);
       game.bowlBall(5);
       expect(game.getScore()).toEqual(19);
-      // expect(game.getBonusScore()).toEqual(2);
+      expect(game.getBonusScore()).toEqual(2);
       expect(game.getFrameCount()).toEqual(3);
     })
   })

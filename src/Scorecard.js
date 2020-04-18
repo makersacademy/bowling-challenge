@@ -12,7 +12,7 @@ class Scorecard {
       new Frame(),
       new Frame(),
       new Frame(),
-      new Frame(),
+      new Frame10(),
     ];
   }
 
@@ -29,10 +29,16 @@ class Scorecard {
       this.assignStrikeBonus(prev1, score);
       this.assignConsecutiveStrikeBonus(prev1, prev2, score);
       this.advance(score);
-    } else {
+    } else if (this.currentRoll === 2) {
       frame.roll2 = score;
       this.assignStrikeBonus(prev1, score);
-      this.advance(score);
+      // if (this.currentFrame === 9) {
+        // this.currentRoll = 3
+      // } else {
+        this.advance(score);
+      // }
+    } else if (this.currentRoll === 3) {
+      frame.roll3 = score;
     }
   }
 
@@ -60,7 +66,9 @@ class Scorecard {
   }
 
   advance(score) {
-    if (this.currentRoll === 1) {
+    if (this.currentFrame === 9 && this.currentRoll === 2) {
+      this.currentRoll = 3
+    } else if (this.currentRoll === 1) {
       if (score === 10) {
         this.currentFrame++;
       } else {

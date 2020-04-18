@@ -228,3 +228,11 @@ At this point I manually tested a few different game scenarios, which also worke
 
 In the tenth frame if the result is a strike or a spare an additional roll can be made. If the additional roll is also a strike, a third roll can be made.
 
+Wrote a test for a game in which all rolls are missed up until the tenth frame. In the tenth frame two fives are recorded, a spare. A third roll of 5 is made. runningTotal(9) should be 15. red.
+
+- The test is failing because at the moment because after the second record the scoreboard advances, and the third record attempts to set roll1 of the 11th item in frames, which does not exist.
+- Added a new special Frame10 object, which has a roll3.
+- Added logic to advance to set currentRoll to 3 if it is the last frame and currentRoll is 2.
+- Added logic to record to handle currentRoll of 3, score should be set to roll3.
+
+Green.

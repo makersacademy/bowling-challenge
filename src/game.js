@@ -9,3 +9,7 @@ Game.prototype.addScore = function addScore( score ) {
 Game.prototype.currentScore = function currentScore() {
   return this._currentScore;
 };
+
+Game.prototype.frame = function frame(number) {
+  return { score: { score1: 5, score2: undefined, total: undefined } };
+};

@@ -47,4 +47,5 @@ describe('Game', function() {
     game.bowlBall(0);
     expect(game.getScore()).toEqual(16)
   })
+
 })

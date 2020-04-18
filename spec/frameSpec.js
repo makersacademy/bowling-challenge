@@ -27,4 +27,10 @@ describe('Frame', function() {
     frame.enterTurn(2);
     expect(frame.complete()).toEqual(true);
   })
+
+  it('a strike completes a frame', function() {
+    frame.enterTurn(10);
+    expect(frame.complete()).toEqual(true);
+  })
+  
 })

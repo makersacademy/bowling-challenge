@@ -1,13 +1,14 @@
-# User Story 4
+# User Story 5
 
 > As a user,</br>
-So I can see how much I score,</br>
-The game should have a total score
+If I roll a strike,</br>
+The game create a new frame and calculate a strike bonus
 
 ## Specification
 
-- [ ] game to calculate score of all frames
-- [ ] 
+- [ ] new frame is created
+- [ ] next frame score is added to handicap score
+- [ ] games core is frames score and handicap
 
 ## Classes
 

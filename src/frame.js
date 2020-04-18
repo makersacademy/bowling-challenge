@@ -21,7 +21,7 @@ Frame.prototype.viewScore = function() {
 }
 
 Frame.prototype.complete = function() {
-  if(this.currentTurn() === 2 ) {
+  if(this.currentTurn() === 2 || this.viewScore() === 10 ) {
     return true
   }
   return false

@@ -13,6 +13,6 @@ describe('Game', function() {
   })
 
   it('game can return current frame', function() {
-    expect(game.currentFrame()).toEqual(frame);
+    expect(game.getFrame()).toEqual(frame);
   })
 })

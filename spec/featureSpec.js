@@ -10,9 +10,7 @@ describe('Feature Test:', function() {
   })
 
   it('A game starts with a new frame', function() {
-    expect(game.currentFrame()).toEqual(frame);
+    expect(game.getFrame()).toEqual(frame);
   })
-
-
 
 })

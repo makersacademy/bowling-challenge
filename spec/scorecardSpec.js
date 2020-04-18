@@ -58,4 +58,8 @@ describe('Scorecard', function() {
     it('user told if they enter incorrect score', function() {
         expect(scorecard.addNewScore(11)).toEqual('Incorrect Score')
     })
+
+    it('calculates the score', function() {
+        expect(scorecard.calculateScore(5, 5)).toEqual(10)
+    })
 })

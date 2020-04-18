@@ -20,4 +20,9 @@ describe('Frame', function() {
     frame.enterTurn(2);
     expect(frame.calculateScore()).toEqual(3);
   })
+
+  it('has a current score', function() {
+    frame.enterTurn(2);
+    expect(frame.viewScore()).toEqual(2);
+  })
 })

@@ -3,14 +3,17 @@ Game = function() {
   this._turnCount = 0
 }
 
-Game.prototype.getFrame = function() {
+Game.prototype.currentFrame = function() {
   return this._frames[this._turnCount];
 }
 
 Game.prototype.bowlBall = function(pins) {
-  
+  frame = this.currentFrame();
+  frame.enterTurn(pins);
+  console.log(this._frames);
 }
-// Game.prototype.getFrameScore = function() {
-//   frame = this.getFrame();
-//   return frame.calculateScore();
-// }
+
+Game.prototype.getFrameScore = function() {
+  frame = this.currentFrame();
+  return frame.calculateScore();
+}

@@ -6,9 +6,9 @@ font-family: custom-font;
 
 .mbody{
 min-width: 95%;
-max-width: 700px;
+max-width: 900px;
 max-height: 80%;
-min-height: 800px;
+min-height: 400px;
 position: absolute; top: 0;
 z-index: -1;
 padding-bottom: 5px;
@@ -46,7 +46,7 @@ padding-top: 15px;
 .table {
     padding-top: 170px;
     padding-bottom: 100px;
-    min-width: 70%;
-    padding-left: 20px;
+    min-width: 90%;
+    padding-left: 15px;
    
 }

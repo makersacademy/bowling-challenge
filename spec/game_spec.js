@@ -16,4 +16,10 @@ describe( "Game", () => {
   it( "should set the current score to zero on creation", () => {
     expect( game.currentScore() ).toEqual( 0 );
   } );
+
+  it( "should give the correct score when you add the first score", () => {
+    game.addScore( 5 );
+
+    expect( game.currentScore() ).toEqual( 5 );
+  } );
 } );

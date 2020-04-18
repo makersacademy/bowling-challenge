@@ -1,9 +1,11 @@
-function Game() {}
+function Game() {
+  this._currentScore = 0;
+}
 
 Game.prototype.addScore = function addScore( score ) {
-  console.log( score );
+  this._currentScore += score;
 };
 
 Game.prototype.currentScore = function currentScore() {
-  return 0;
+  return this._currentScore;
 };

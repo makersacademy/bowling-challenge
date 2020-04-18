@@ -51,9 +51,8 @@ describe('Scorecard', function() {
         expect(scorecard.isStrike).toEqual(false)
     })
 
-
-    //it('raises an error if the total of the 1st and 2nd rolls are more than 10', function() {
-    //    expect(scorecard.addNewScore(5, 6)).toThrow('Incorrect score')
-    //})
+    it('tells the user if they have entered an incorrect score', function() {
+        expect(scorecard.incorrectScore()).toEqual("Incorrect Score")
+    })
     
 })

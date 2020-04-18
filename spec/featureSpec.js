@@ -9,8 +9,8 @@ describe('Feature Test:', function() {
     frame = new Frame();
   })
 
-  describe('A game starts with a new frame', function() {
-    exepect(game.frames[0]).toEqual (frame);
+  it('A game starts with a new frame', function() {
+    expect(game.currentFrame()).toEqual(frame);
   })
 
 

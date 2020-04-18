@@ -16,3 +16,7 @@ Game.prototype.getFrameScore = function() {
   frame = this.currentFrame();
   return frame.viewScore();
 }
+
+Game.prototype.getFrameCount = function() {
+  return this._turnCount;
+}

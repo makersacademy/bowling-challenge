@@ -24,4 +24,8 @@ describe('Game', function() {
     game.bowlBall(2)
     expect(game.getFrameScore()).toEqual(2)
   })
+
+  it('can return frame number', function() {
+    expect(game.getFrameCount()).toEqual(0)
+  })
 })

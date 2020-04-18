@@ -130,6 +130,11 @@ Now for spares. Wrote a test that recording 5 three times should result with run
 
 In order to help pass this test the frame should know if its score is a spare.
 
-Created FrameSpec.js and wrote a test for frame.isSpare to return true if the frames rolls are five and five. Red.
+Created FrameSpec.js and wrote a test for frame.isSpare to return true if the rolls are five and five. Red.
 
-- Wrote the isSpare method to return a bool of roll1 plus roll2 equals 10
+- Wrote the isSpare method true hardcoded.
+
+Green
+
+Wrote a test for isSpare to return false if the rolls are 1 and 1. Red.
+

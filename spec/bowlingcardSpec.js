@@ -1,11 +1,36 @@
 describe('Bowlingcard', function() {
   var bowlingcard;
-})
-
-describe('.enterScore', function() {
-  it('records the users score', function() {
+  beforeEach(function() {
     bowlingcard = new Bowlingcard();
-    bowlingcard.enterScore(5);
-    expect(bowlingcard.score).toBe(5);
   });
+
+  describe('.score', function() {
+    it('starts game at 0', function() {
+      expect(bowlingcard.score).toBe(0);
+    });
+  });
+
+  describe('.enterScore', function() {
+    it('records the users score', function() {
+      bowlingcard.enterScore(5);
+      expect(bowlingcard.score).toBe(5);
+    });
+    it('records the users scores as they accumulate', function() {
+      bowlingcard.enterScore(5);
+      bowlingcard.enterScore(10);
+      expect(bowlingcard.score).toBe(15);
+    });
+    it('increase the count of rolls after user entes score for a roll', function() {
+      bowlingcard.enterScore(5);
+      bowlingcard.enterScore(10);
+      expect(bowlingcard.roll).toBe(2);
+    });
+    
+  });
+
+  describe('.roll', function() {
+    it('starts game at 0', function() {
+      expect(bowlingcard.roll).toBe(0);
+    })
+  })
 });

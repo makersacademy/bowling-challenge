@@ -155,3 +155,18 @@ Green.
 - Refactored with a variable for frame similar to previousFrame to make the record method more readable.
 
 Now on to strikes. Wrote a test that recording 10 on the first roll then recording 1 on the second roll should result in frame[0].roll1 being 10, frame[0].roll2 being 0 and frame[1].roll1 being 1 (as the strike moves on to the next frame immediately). Red.
+
+- Added to the record if statement for currentRoll is 1 a if statement for if the score is 10 to increment the currentFrame, else to switch the currentRoll to 2.
+- Added to the Frame constructor defaults for rolls of 0.
+
+Green.
+
+Now the strike bonus points need to be applied. The strike applies bonus points for its frame based on the result of the next two rolls. This will either be rolls 1 and 2 of the next frame, or if the next frame is a strike, it will include that and the first roll of the frame after that.
+
+Wrote a test for recording 10, then recording 4 twice. The total for frame[0] should be 18 (10 + 4 + 4), and the runningTotal for frame[1] should be 28 (18 + 10).
+
+The frame should also know if it is a strike. Wrote a test for isStrike to return with a frame with a roll1 of 10.
+
+- Hard coded isStrike to return true.
+
+Green.

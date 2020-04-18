@@ -25,5 +25,10 @@ describe('Frame', () => {
       frame.roll1 = 10
       expect(frame.isStrike()).toEqual(true);
     });
+    it('should return false is roll1 is not 10', () => {
+      frame.roll1 = 7
+      expect(frame.isStrike()).toEqual(false);
+    });
+
   });
 });

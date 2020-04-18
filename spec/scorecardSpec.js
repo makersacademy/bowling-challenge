@@ -31,6 +31,13 @@ describe('Scorecard', () => {
       expect(scorecard.frame1.runningTotal()).toEqual(2);
     });
 
+    it('after calling record(2) twice frame1.runningTotal should eq 4', () => {
+      scorecard.record(2);
+      scorecard.record(2);
+      expect(scorecard.frame1.runningTotal()).toEqual(4);
+    });
+
+
   });
 
 });

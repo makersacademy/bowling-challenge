@@ -59,6 +59,11 @@ Game.prototype._endTurn = function() {
   if(frame.complete()) {
     this._bonusFrame()
     this._updateScore()
+    this._clearBonus
     this._addFrame()
-  }
+  } 
+}
+
+Game.prototype._clearBonus = function() {
+  this._applyBonus = false;
 }

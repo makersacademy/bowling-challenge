@@ -1,12 +1,11 @@
-module.exports = function(grunt) {
-
-  grunt.initConfig({
+module.exports = ( grunt ) => {
+  grunt.initConfig( {
     jasmine: {
-      src: 'src/*.js',
+      src: "src/*.js",
       options: {
-        specs: 'spec/*.js'
+        specs: "spec/*.js"
       }
     }
-  });
-  grunt.loadNpmTasks('grunt-contrib-jasmine');
+  } );
+  grunt.loadNpmTasks( "grunt-contrib-jasmine" );
 };

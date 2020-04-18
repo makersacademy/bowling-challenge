@@ -89,4 +89,8 @@ Green.
 
 Wrote a test that after calling record 2 twice, frame1 runningTotal should be 4. Red.
 
-- 
+- rewrote runningTotal to return the sum of roll2 and roll2.
+
+Green.
+
+

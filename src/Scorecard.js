@@ -23,9 +23,14 @@ class Scorecard {
     
     if (this.currentRoll === 1) {
       frame.roll1 = score;
-      this.currentRoll = 2;
       if (previousFrame != false && previousFrame.isSpare()) {
         previousFrame.spareBonus = score
+      }
+      if (score == 10) {
+        this.currentFrame++
+      }
+      else {
+        this.currentRoll = 2;
       }
     }
     else {

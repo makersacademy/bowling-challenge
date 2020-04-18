@@ -35,4 +35,11 @@ describe( "Game", () => {
 
     expect( game.frame( 1 ).score ).toEqual( { score1: 5, score2: undefined, total: undefined } );
   } );
+
+  it( "should give you the current frame scores after the second score", () => {
+    game.addScore( 5 );
+    game.addScore( 2 );
+
+    expect( game.frame( 1 ).score ).toEqual( { score1: 5, score2: 2, total: 7 } );
+  } );
 } );

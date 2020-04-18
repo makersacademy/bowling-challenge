@@ -1,11 +1,11 @@
-describe('Game', () => {
+describe( "Game", () => {
   let game;
 
-  beforeEach(() => {
+  beforeEach( () => {
     game = new Game();
-  });
+  } );
 
-  it('should accept a score from the player', () => {
-    expect(game.addScore).toBeDefined();
-  });
-});
+  it( "should accept a score from the player", () => {
+    expect( game.addScore ).toBeDefined();
+  } );
+} );

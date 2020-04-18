@@ -18,4 +18,10 @@ describe('Feature Test:', function() {
     expect(game.getFrameScore()).toEqual(4);
   })
 
+  it('When a frame is complete, a new frame is created', function() {
+    game.bowlBall(4);
+    game.bowlBall(5);
+    expect(game.getFrameCount()).toEqual(2);
+  })
+
 })

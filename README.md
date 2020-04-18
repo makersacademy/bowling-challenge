@@ -107,3 +107,12 @@ So that the scorecard is easy and interesting to read
 I want it to be graphically well designed and interesting to look at
 ```
 
+1st story
+
+- Added a Game function and tested addScore method. Soon realised that node and standalone jasmine were incompatible due to standalone not recognising node module syntax. Found guide to setting up grunt to run standalone from commandline so it can be triggered by Travis, and set this up
+- Created the simplest possible interface for inputting scores, and linked this with Game class using a game-controller script
+
+2nd story
+
+- The biggie. Started with unit tests for Game
+

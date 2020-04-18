@@ -1,6 +1,7 @@
 function Scorecard() {
     this.totalScore = 0
     this.isSpare = false
+    this.isStrike = false
 }
 
 Scorecard.prototype.addNewScore = function(roll1, roll2=0) {
@@ -11,6 +12,5 @@ Scorecard.prototype.addNewScore = function(roll1, roll2=0) {
     } else {
         this.isSpare = false
     }
-    
 }
 

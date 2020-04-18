@@ -82,6 +82,10 @@ Reviewers will potentially be using this [code review rubric](docs/review.md).  
 
 * User stories
 * General project setup
+    * eslint
+        * set up to use AirBnB base style guide
+    * jasmine
+        * although this is a web-based project, in order for Travis to be able to run tests, jasmine needs to be set up as a node package. Testing will cover both bases
 
 ## User Stories
 

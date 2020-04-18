@@ -1,5 +1,6 @@
 class Frame {
   constructor() {
+    this.strikeBonus = 0;
     this.spareBonus = 0;
     this.roll1 = 0
     this.roll2 = 0
@@ -11,6 +12,6 @@ class Frame {
     return this.isStrike() ? false : this.total() === 10
   }
   total() {
-    return this.roll1 + this.roll2 + this.spareBonus
+    return this.roll1 + this.roll2 + this.spareBonus + this.strikeBonus
   }
 }

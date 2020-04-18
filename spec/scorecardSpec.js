@@ -13,4 +13,9 @@ describe('Scorecard', function() {
         scorecard.addNewScore(2, 3)
         expect(scorecard.totalScore).toEqual(5)
     })
+
+    it('a strike gives 10 points in the current frame', function() {
+        scorecard.addNewScore(10)
+        expect(scorecard.totalScore).toEqual(10)
+    })
 })

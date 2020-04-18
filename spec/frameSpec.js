@@ -15,14 +15,14 @@ describe('Frame', function() {
     expect(frame.currentTurn()).toEqual(1);
   })
 
-  it('can calculate score', function() {
-    frame.enterTurn(1);
-    frame.enterTurn(2);
-    expect(frame.calculateScore()).toEqual(3);
-  })
-
   it('has a current score', function() {
     frame.enterTurn(2);
     expect(frame.viewScore()).toEqual(2);
+  })
+
+  it('can updates a score when turn is entered', function() {
+    frame.enterTurn(1);
+    frame.enterTurn(2);
+    expect(frame.viewScore()).toEqual(3);
   })
 })

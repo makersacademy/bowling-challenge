@@ -1,13 +1,13 @@
+const MAX_INITIAL_SCORE = 10
+
 function Scorecard() {
     this.totalScore = 0
     this.isSpare = false
     this.isStrike = false
-    
-    
 }
 
 Scorecard.prototype.addNewScore = function(roll1, roll2=0) {
-    if (roll1 > 10 || (roll1 + roll2) > 10) {
+    if (roll1 > MAX_INITIAL_SCORE || (roll1 + roll2) > MAX_INITIAL_SCORE) {
         return this.incorrectScore()
     }
     this.totalScore += (roll1 + roll2)
@@ -15,10 +15,10 @@ Scorecard.prototype.addNewScore = function(roll1, roll2=0) {
 }
 
 Scorecard.prototype.spareOrStrike = function(roll1, roll2) {
-    if (roll1 === 10) {
+    if (roll1 === MAX_INITIAL_SCORE) {
         this.isStrike = true
         this.isSpare = false
-    } else if ((roll1 + roll2) === 10) {
+    } else if ((roll1 + roll2) === MAX_INITIAL_SCORE) {
         this.isSpare = true
         this.isStrike = false
     } else {

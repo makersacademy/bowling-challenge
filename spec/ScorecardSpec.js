@@ -77,7 +77,7 @@ describe('Scorecard', () => {
 
   });
 
-  describe('Spares', () => {
+  describe('Strikes', () => {
 
     it('record(10) then record(1), frame[0] roll1 is 10 and roll2 is 0, and frame[1].roll1 is 1', () => {
       scorecard.record(10)
@@ -85,6 +85,14 @@ describe('Scorecard', () => {
       expect(scorecard.frames[0].roll1).toEqual(10);
       expect(scorecard.frames[0].roll2).toEqual(0);
       expect(scorecard.frames[1].roll1).toEqual(1);
+    });
+
+    it('record(10) then record(4) x2, runningTotal(0) is 18 and runningTotal(1) is 28', () => {
+      scorecard.record(10)
+      scorecard.record(4)
+      scorecard.record(4)
+      expect(scorecard.runningTotal(0)).toEqual(18);
+      expect(scorecard.runningTotal(1)).toEqual(28);
     });
 
   });

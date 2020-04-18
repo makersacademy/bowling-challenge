@@ -73,7 +73,7 @@ Green.
 
 - Refactored for record to create roll1 in an empty frame1 object literal.
 
-Wrote a test that after calling record 1 twice, frame1 roll2 should be 1. Red.
+Wrote a test that after calling record 1 twice, frame1 roll2 and roll1 should be 1. Red.
 
 - Added a property to the scorecard, currentRoll set to 1.
 - Added an if statement to record to assign roll1 with score passed if currentRoll is 1, then set currentRoll to 2.

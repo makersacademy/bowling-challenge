@@ -134,7 +134,13 @@ Created FrameSpec.js and wrote a test for frame.isSpare to return true if the ro
 
 - Wrote the isSpare method true hardcoded.
 
-Green
+Green.
 
 Wrote a test for isSpare to return false if the rolls are 1 and 1. Red.
+
+- Updated isSpare to return a boolean based on if the total is equal to 10.
+
+Green.
+
+Now back to the runningTotal for spares.
 

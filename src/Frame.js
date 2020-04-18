@@ -1,6 +1,6 @@
 class Frame {
   isSpare() {
-    return true
+    return this.total() === 10
   }
   total() {
     return this.roll1 + this.roll2;

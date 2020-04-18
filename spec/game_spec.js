@@ -1,5 +1,3 @@
-const Game = require('../src/game');
-
 describe('Game', () => {
   let game;
 

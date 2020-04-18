@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "jasmine"
+    "test": "grunt jasmine"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jasmine": "^4.1.1",
-    "jasmine": "^3.5.0"
+    "grunt": "^1.1.0",
+    "grunt-contrib-jasmine": "^2.1.0"
   }
 }

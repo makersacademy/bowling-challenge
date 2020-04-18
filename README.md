@@ -126,7 +126,7 @@ Green.
 
 _Frames will now be referred to by their index in the frames array._
 
-Now for spares. Wrote a test that recording 5 three times should result with runningTotal(0) returning 15 (5 + 5 + 5 on the first roll of the next frame as bonus). Red
+Now for spares. Wrote a test that recording 5 three times should result with runningTotal(0) returning 15 (5 + 5 + 5 on the first roll of the next frame as bonus). Red.
 
 In order to help pass this test the frame should know if its score is a spare.
 
@@ -146,8 +146,12 @@ Now back to the runningTotal for spares. The running total needs to account for 
 
 The scoreboard needs to be able to calculate that for the frame and give it as a property.
 
-
+- Added to record method a variable for the frame, and previousFrame if it exists (i.e. frames[this.currentFrame - 1]), otherwise set to false.
+- In the if statement for the currentRoll is 1, if the previousFrame is not false and if previousFrame was a spare then assign the roll1 score as the previousFrame spareBonus.
+- Finally, add spareBonus as part of Frame.total (which is defaulted to 0 in the Frame's constructor)
 
 Green.
 
+- Refactored with a variable for frame similar to previousFrame to make the record method more readable.
 
+Now on to strikes. 

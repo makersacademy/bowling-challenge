@@ -2,11 +2,13 @@
     "env": {
         "browser": true,
         "es6": true,
-        "jasmine": true
+        "jasmine": true,
+        "jquery": true
     },
     "extends": [
         "airbnb-base",
-        "plugin:jasmine/recommended"
+        "plugin:jasmine/recommended",
+        "jquery"
     ],
     "globals": {
         "Atomics": "readonly",

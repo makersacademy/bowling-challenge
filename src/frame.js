@@ -2,7 +2,7 @@ Frame = function() {
   this._turns = [];
 }
 
-Frame.prototype.bowlBall = function(pins) {
+Frame.prototype.enterTurn = function(pins) {
   this._turns.push(pins)
 }
 

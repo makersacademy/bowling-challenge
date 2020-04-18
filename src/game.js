@@ -1,7 +1,8 @@
 Game = function() {
   this._frames = [new Frame()]
   this._score = 0;
-  this._applyBonus = false;
+  this._applyStrikeBonus = false;
+  this._applySpareBonus = false;
   this._bonusScore = 0;
 }
 
@@ -38,9 +39,15 @@ Game.prototype._addFrame = function() {
   this._frames.push( new Frame() )
 }
 
-Game.prototype._bonusFrame = function() {
-  if (frame.strike()) {
-    this._applyBonus = true;
+Game.prototype._bonusStrikeFrame = function() {
+  if (frame.strike())  {
+    this._applyStrikeBonus = true;
+  } return false
+}
+
+Game.prototype._bonusSpareFrame = function() {
+  if (frame.spare())  {
+    this._applySpareBonus = true;
   } return false
 }
 
@@ -50,14 +57,15 @@ Game.prototype._updateScore = function() {
 }
 
 Game.prototype._generateBonus = function() {
-  if (this._applyBonus) {
+  if (this._applyStrikeBonus) {
     this._bonusScore = frame.viewScore();
   }
 }
 
 Game.prototype._endTurn = function() {
   if(frame.complete()) {
-    this._bonusFrame()
+    this._bonusStrikeFrame()
+    this._bonusSpareFrame()
     this._updateScore()
     this._clearBonus
     this._addFrame()
@@ -65,5 +73,5 @@ Game.prototype._endTurn = function() {
 }
 
 Game.prototype._clearBonus = function() {
-  this._applyBonus = false;
+  this._applyStrikeBonus = false;
 }

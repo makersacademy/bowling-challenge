@@ -1,4 +1,4 @@
-xdescribe('Game', function() {
+describe('Game', function() {
 
   var game;
   var frame;
@@ -50,14 +50,20 @@ xdescribe('Game', function() {
 
   it('a strike creates a bonus score', function(){
     game.bowlBall(10);
-    expect(game._applyBonus).toEqual(true)
+    expect(game._applyStrikeBonus).toEqual(true)
   })
 
-  it('a bonus score is calculated', function(){
+  it('a strike bonus score is calculated', function(){
     game.bowlBall(10);
     game.bowlBall(2);
     game.bowlBall(5);
     expect(game.getBonusScore()).toEqual(7)
+  })
+
+  it('a spare creates a bonus score', function(){
+    game.bowlBall(8);
+    game.bowlBall(2);
+    expect(game._applySpareBonus).toEqual(true)
   })
 
 })

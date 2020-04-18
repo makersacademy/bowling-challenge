@@ -8,7 +8,7 @@ class Frame {
     return this.roll1 === 10
   }
   isSpare() {
-    return this.total() === 10
+    return this.isStrike() ? false : this.total() === 10
   }
   total() {
     return this.roll1 + this.roll2 + this.spareBonus

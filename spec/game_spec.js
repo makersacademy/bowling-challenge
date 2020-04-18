@@ -22,4 +22,11 @@ describe( "Game", () => {
 
     expect( game.currentScore() ).toEqual( 5 );
   } );
+
+  it( "should give the correct score when you add the second score", () => {
+    game.addScore( 5 );
+    game.addScore( 2 );
+
+    expect( game.currentScore() ).toEqual( 7 );
+  } );
 } );

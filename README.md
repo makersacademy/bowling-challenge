@@ -219,8 +219,12 @@ Green.
 
 - Refactored the if statement into its own method, assignConsecutiveStrikeBonus.
 
-At this point I manually tested a few different game scenarios.
+- Also refactored out a method to advance to the next roll or to the next frame based on the current scenario, called advance.
+- Also refactored the variable names to reduce line length, previousFrame and secondPreviousFrame now prev1 and prev2
+
+At this point I manually tested a few different game scenarios, which also worked as expected.
 
 ### Frame 10
 
+In the tenth frame if the result is a strike or a spare an additional roll can be made. If the additional roll is also a strike, a third roll can be made.
 

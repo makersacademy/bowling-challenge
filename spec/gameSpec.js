@@ -99,4 +99,28 @@ describe('Game', function() {
     game.bowlBall(0);
     expect(game.complete()).toEqual(true)
   })
+
+  it('game does not create frames after 10 turns', function(){
+    game.bowlBall(1);
+    game.bowlBall(5);
+    game.bowlBall(2);
+    game.bowlBall(3);
+    game.bowlBall(3);
+    game.bowlBall(4);
+    game.bowlBall(4);
+    game.bowlBall(3);
+    game.bowlBall(5);
+    game.bowlBall(2);
+    game.bowlBall(6);
+    game.bowlBall(1);
+    game.bowlBall(7);
+    game.bowlBall(0);
+    game.bowlBall(8);
+    game.bowlBall(0);
+    game.bowlBall(9);
+    game.bowlBall(0);
+    game.bowlBall(1);
+    game.bowlBall(0);
+    expect(game.getFrameCount()).toEqual(10);
+  })
 })

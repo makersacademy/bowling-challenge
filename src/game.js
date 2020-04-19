@@ -32,7 +32,7 @@ Game.prototype.getBonusScore = function() {
 }
 
 Game.prototype.complete = function() {
-  if(this.getFrameCount() > 10) {
+  if(this.getFrameCount() > 9) {
     return true
   }
 }
@@ -66,7 +66,9 @@ Game.prototype._updateScore = function() {
   }
 }
 Game.prototype._addFrame = function() {
-  this._frames.push( new Frame() )
+  if(!this.complete()){
+    this._frames.push( new Frame() )
+  }
 }
 
 Game.prototype._endTurn = function() {

@@ -5,4 +5,3 @@ function Bowling() {
 Bowling.prototype.addPlayer = function(name){
   this.players.push(name);
 };
-

@@ -1,7 +1,7 @@
 class Frame {
-  constructor() {
-    this.roll1;
-    this.roll2;
+  constructor(roll1, roll2 = 0) {
+    this.roll1 = roll1;
+    this.roll2 = roll2;
   }
   setValues(roll1, roll2 = 0) {
     this.roll1 = roll1;

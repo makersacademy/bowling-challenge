@@ -3,8 +3,12 @@ describe("Frame10", () => {
   beforeEach(function () {
     frame = new Frame10();
   });
-  describe("isComplete", () => {
+  fdescribe("isComplete", () => {
     it("should default to false", () => {
+      expect(frame.isComplete()).toBe(false);
+    });
+    it("should return false when only one roll has been made", () => {
+      frame.roll1 = 1;
       expect(frame.isComplete()).toBe(false);
     });
     it("should return true if no strike or spare", () => {

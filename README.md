@@ -351,3 +351,21 @@ Wrote a test for isComplete to return true two strikes and then a third roll. Re
 - Moved the check for roll3 being filled up to the top of the order.
 
 Green.
+
+Finally, wrote a test for isComplete to return false after a single roll has been made. Red.
+
+- Added a condition if roll2 is null to return false.
+
+With just a check for roll2 being null returning false otherwise returning true most of the tests pass. Only the tests with a spare or two strikes and a bonus roll still to go fail.
+
+- 
+
+Green.
+
+As this method now has five(!) if statements it needs to be refactored.
+
+Now the updateRunningTotal method works correctly with the final frame.
+
+The last thing to do is fill in the grand total with the final running total.
+
+- Added an condition to updateRunningTotal if on the last frame, to update the grand total as well.

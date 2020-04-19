@@ -50,7 +50,12 @@ function updateFrame9(frame, i) {
 
 function updateRunningTotal(frame, i) {
   if (frame.isComplete()) {
+    console.log(`frame${i} complete`)
     $(`#frame${i} .running-total`).html(scorecard.runningTotal(i));
+    if (i === 9) {
+      $(`#grand-total`).html(scorecard.runningTotal(i));
+      
+    }
   }
 }
 

@@ -382,4 +382,6 @@ Wrote a feature test for a game in which the bonus roll is not available, any ad
 - Wrote a gameOver method, which returns true if frame 10 isComplete.
 - record throws an error if gameOver.
 
+It is also possible to enter an impossible combination of rolls for a frame, two 7s for example.
 
+This could be avoided by disabling buttons that would take the frame score over ten on the second roll. For example if the first roll was 7, then buttons 4 and up would be disabled, leaving 0, 1, 2 and 3 available.

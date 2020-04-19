@@ -6,7 +6,14 @@ Bowling Challenge
 ```
 npm init --yes
 eslint --init
+unzip jasmine-standalone-3.5.0.zip
 ```
+
+## Input - Output table
+
+Input | Output
+------|-------
+00,00,00,00,00,00,00,00,00,00 | 0
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

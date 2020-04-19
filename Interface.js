@@ -21,11 +21,10 @@ $(function () {
     scorecard.frames.forEach(function (frame, i) {
       if (i < 9) {
         updateFrame(frame, i);
-        updateRunningTotal(frame, i);
       } else {
         updateFrame9(frame, i);
-        updateRunningTotal(frame, i);
       }
+      updateRunningTotal(frame, i);
     });
   };
 });

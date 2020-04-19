@@ -306,3 +306,6 @@ Now this method can be used to decide if the running total for the frame should 
 
 - Added a new interface method updateRunningTotal, which updates the relevant frame's total element with its total if that frame is complete.
 
+Now for the final frame.
+
+Wrote a test for Frame10 isComplete to be false by default. Red.

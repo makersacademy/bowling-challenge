@@ -364,6 +364,8 @@ With just a check for roll2 being null returning false otherwise returning true 
 
 Adding a condition of isSpare and roll3 being null returning false, and a condition of are rolls 1 and 2 strikes and roll3 being null returning false passes the rest of the tests.
 
+Finally, extracted lengthy double strike conditions into its own method, isDoubleStrike.
+
 Now the updateRunningTotal method works correctly with the final frame.
 
 The last thing to do is fill in the grand total with the final running total.

@@ -34,6 +34,13 @@ describe('scorecard', function() {
     });
   });
 
+  describe('two frames', function() {
+    it('frames [2, 6], [3, 2] scores 13', function() {
+      scorecard.addFrame(2, 6);
+      scorecard.addFrame(3, 2);
+      expect(scorecard.score).toEqual(13);
+    });
+  });
 
   describe('open frame scorecards', function() {
     it('Gutter scorecard returns 0', function() {

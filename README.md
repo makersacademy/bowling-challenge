@@ -256,10 +256,24 @@ For this to be a web app, an html page needs to interface with the scorecard.
 - Added a button to toggle the video sound.
 - Sourced js files.
 
+### Clicking Buttons
+
 Now the buttons need to be hooked up to the model with an interface.
 
 - Created Interface.js.
 - Sourced this in index.html.
 - Sourced jquery.
-- Added jquery to toggle the video sound with the ambience button.
+- For the ambience button added jquery to toggle the video sound with the ambience button (fun).
+- For each of the scoring buttons added jquery for clicking any of them, the click event currentTarget's value is parsed to an integer, then passed in to the record method.
+
+### Displaying Scores
+
+The table needs to be filled in the the submitted scores, and totals.
+
+- Wrote a function updateScores which loops through each of the frames calling an updateFrame function.
+- updateFrame dynamically grabs the correct id for the frame and fills roll1 and roll2 with the frame object's values. 
+- updateFrame also has some logic to enter an X or / for strike or spare.
+- The last frame has a special function, updateFrame9 (counting from 0).
+- updateFrame9 has more complex logic to allow for each of its rolls to be a strike and/or roll2 to be a spare (/).
+
 

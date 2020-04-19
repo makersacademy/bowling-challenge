@@ -25,19 +25,21 @@ class Scorecard {
     this.frames.push(new Frame(roll1, roll2));
     this.setScore2();
   }
-
+  addBothRolls(frame) {
+    this.score += frame.roll1 + frame.roll2;
+  }
   setScore2() {
     this.score = 0;
     this.frames.forEach((frame, index, frames) => {
       if (frame.isSpare() == true) {
-        this.score += frame.roll1 + frame.roll2;
+        this.addBothRolls(frame);
         if (frames[index+1] == undefined) {
           this.score = 'Add another frame.';
         } else {
           this.score += frames[index+1].roll1;
         }
       } else {
-        this.score += frame.roll1 + frame.roll2;
+        this.addBothRolls(frame);
       }
     });
   }

@@ -8,6 +8,11 @@ describe('Frame10', () => {
     it('should default to false', () => {
       expect(frame.isComplete()).toBe(false);
     });
+    it('should return true if no strike or spare', () => {
+      frame.roll1 = 1;
+      frame.roll2 = 1;
+      expect(frame.isComplete()).toBe(true);
+    });
 
 
   });

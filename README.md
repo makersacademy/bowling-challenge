@@ -313,3 +313,6 @@ Wrote a test for Frame10 isComplete to be false by default. Red.
 - Wrote Frame10 isComplete to return false.
 
 Green.
+
+Wrote a test for Frame10 isComplete to be true if roll1 and roll2 are filled but not by a spare of a strike. Red.
+

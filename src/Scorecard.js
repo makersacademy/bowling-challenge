@@ -84,6 +84,6 @@ class Scorecard {
   }
 
   gameOver() {
-    this.frames[9].isComplete()
+    return this.frames[9].isComplete()
   }
 }

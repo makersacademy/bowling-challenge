@@ -21,6 +21,14 @@ describe('Game', function() {
     });
 
   });
+
+  describe('strikes', function() {
+
+    it('Game with 1 strike and then 5 returns 20', function() {
+      expect(game.score([10, 05, 00, 00, 00, 00, 00, 00, 00, 00])).toEqual(20);
+    });
+  
+  });
   
   
 });

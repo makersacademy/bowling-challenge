@@ -278,7 +278,7 @@ The table needs to be filled in with the submitted scores.
 
 Now the table is filled with the correct score as they are recorded
 
-### Displaying Running Totals
+### Displaying Frame Running Totals
 
 The table needs to be filled in with running totals that update based on the submitted scores.
 
@@ -306,21 +306,9 @@ Now this method can be used to decide if the running total for the frame should 
 
 - Added a new interface method updateRunningTotal, which updates the relevant frame's total element with its total if that frame is complete.
 
-Now for the final frame. The final frame can have a bonus roll if the first roll is a strike or a spare.
+### Displaying FInal Frame Total
 
-Wrote a test for bonusRoll method to return false by default. Red.
-
-- Added bonusRoll method, returning false.
-
-Green.
-
-Wrote a test for bonusRoll method to return true if the first two rolls are a spare.
-
-- 
-
-
-
-
+Now for the final frame. The final frame can have a bonus roll if the first roll is a strike or a spare so its isComplete method is slightly different.
 
 Wrote a test for Frame10 isComplete to be false by default. Red.
 
@@ -334,4 +322,6 @@ Wrote a test for Frame10 isComplete to be true if roll1 and roll2 are filled but
 
 Green.
 
-Wrote a test for Frame10 isComplete to become true if roll1 and roll2 are filled but not by a spare of a strike. Red.
+Wrote a test for Frame10 isComplete to return false if the first two rolls are a spare (as there is still a bonus roll to go). Red.
+
+- modified 

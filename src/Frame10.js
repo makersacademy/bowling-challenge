@@ -6,11 +6,13 @@ class Frame10 {
     this.strikeBonus = null;
     this.spareBonus = null;
   }
-  bonusRoll() {
-    return this.isSpare();
-  }
+
   isComplete() {
-    return this.roll1 != null && this.roll2 != null 
+    if (this.roll1 !=null && this.roll1 + this.roll2 < 10) {
+      return true
+    }
+    return false
+
   }
   isStrike() {
     return this.roll1 === 10;

@@ -175,6 +175,8 @@ body {
 }
 
 #input {
+  display: flex;
+  justify-content: center;
   grid-area: input;
 }
 

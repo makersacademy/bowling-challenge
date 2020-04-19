@@ -3,12 +3,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="src/interface.js"></script>
+  <script src="src/game.js"></script>
+  <script src="src/frame.js"></script>
   <title>Bowling Scorecard</title>
 </head>
 <body>
   <h1>Bowling Scorecard</h1>
   <div id="scorecard">
-    <div class="frame 1">
+    <div class="frame" id="1">
       <div class="frame-number">1</div>
       <div class="top">
         <div class="left"></div>
@@ -16,7 +20,7 @@
       </div>
       <div class="bottom"></div>
     </div>
-    <div class="frame 1">
+    <div class="frame" id="2">
       <div class="frame-number">2</div>
       <div class="top">
         <div class="left"></div>
@@ -24,7 +28,7 @@
       </div>
       <div class="bottom"></div>
     </div>
-    <div class="frame 1">
+    <div class="frame" id="3">
       <div class="frame-number">3</div>
       <div class="top">
         <div class="left"></div>
@@ -32,7 +36,7 @@
       </div>
       <div class="bottom"></div>
     </div>
-    <div class="frame 1">
+    <div class="frame" id="4">
       <div class="frame-number">4</div>
       <div class="top">
         <div class="left"></div>
@@ -40,7 +44,7 @@
       </div>
       <div class="bottom"></div>
     </div>
-    <div class="frame 1">
+    <div class="frame" id="5">
       <div class="frame-number">5</div>
       <div class="top">
         <div class="left"></div>
@@ -48,7 +52,7 @@
       </div>
       <div class="bottom"></div>
     </div>
-    <div class="frame 1">
+    <div class="frame" id="6">
       <div class="frame-number">6</div>
       <div class="top">
         <div class="left"></div>
@@ -56,7 +60,7 @@
       </div>
       <div class="bottom"></div>
     </div>
-    <div class="frame 1">
+    <div class="frame" id="7">
       <div class="frame-number">7</div>
       <div class="top">
         <div class="left"></div>
@@ -64,7 +68,7 @@
       </div>
       <div class="bottom"></div>
     </div>
-    <div class="frame 1">
+    <div class="frame" id="8">
       <div class="frame-number">8</div>
       <div class="top">
         <div class="left"></div>
@@ -72,7 +76,7 @@
       </div>
       <div class="bottom"></div>
     </div>
-    <div class="frame 1">
+    <div class="frame" id="9">
       <div class="frame-number">9</div>
       <div class="top">
         <div class="left"></div>
@@ -80,7 +84,7 @@
       </div>
       <div class="bottom"></div>
     </div>
-    <div class="frame 1">
+    <div class="frame" id="10">
       <div class="frame-number">10</div>
       <div class="top">
         <div class="left"></div>
@@ -88,30 +92,30 @@
       </div>
       <div class="bottom"></div>
     </div>
-    <div class="frame bonus">
+    <div class="frame" >
       <div class="frame-number">Bonus</div>
-      <div class="score"></div>
+      <div class="score" id="bonus"></div>
     </div>
-    <div class="frame main">
+    <div class="frame" >
       <div class="frame-number">Score</div>
-      <div class="score"></div>
+      <div class="score" id="main"></div>
     </div>
-    <div class="frame total">
+    <div class="frame">
       <div class="frame-number">Total</div>
-      <div class="score"></div>
+      <div class="score" id="total"></div>
     </div>
     <div class="pins">
       <p>Select Pins</p>
-      <button>1</button>
-      <button>2</button>
-      <button>3</button>
-      <button>4</button>
-      <button>5</button>
-      <button>6</button>
-      <button>7</button>
-      <button>8</button>
-      <button>9</button>
-      <button>10</button>
+      <button id="pin" value=1 >1</button>
+      <button id="pin" value=2 >2</button>
+      <button id="pin" value=3 >3</button>
+      <button id="pin" value=4 >4</button>
+      <button id="pin" value=5 >5</button>
+      <button id="pin" value=6 >6</button>
+      <button id="pin" value=7 >7</button>
+      <button id="pin" value=8 >8</button>
+      <button id="pin" value=9 >9</button>
+      <button id="pin" value=10 >10</button>
     </div>
   </div>
   

@@ -14,11 +14,6 @@ describe('Scorecard', function() {
         expect(scorecard.totalScore).toEqual(5)
     })
 
-    it('a strike gives 10 points in the current frame', function() {
-        scorecard.addNewScore(10)
-        expect(scorecard.totalScore).toEqual(10)
-    })
-
     it('if there is not a spare isSpare returns false', function() {
         expect(scorecard.isSpare).toEqual(false)
     })
@@ -60,20 +55,31 @@ describe('Scorecard', function() {
     })
 
     it('calculates the score', function() {
-        expect(scorecard.calculateScore(5, 5)).toEqual(10)
+        scorecard.calculateScore(5, 5)
+        expect(scorecard.totalScore).toEqual(10)
     })
-})
 
-describe('Frame', function() {
-    var frame1
-
-    beforeEach(function() {
-        frame1 = new Frame()
+    it('a strike gives 10 points in the current frame', function() {
+        scorecard.addNewScore(10)
+        expect(scorecard.currentFrame).toEqual([10, 0])
     })
+
+    //need to learn how to stub something in jasmine
+    it('doubles the score of first roll if player scored a spare in the last round', function() {
+        scorecard.addNewScore(5, 5)
+        scorecard.addNewScore(3, 3)
+        expect(scorecard.currentFrame).toEqual([6, 3])
+    })
+
+
 
     it('contains an array with the score from the current frame', function() {
-        frame1.addScoreToCurrentFrame(5, 5)
-        expect(frame1.currentFrame).toEqual([5, 5])
+        scorecard.addScoreToCurrentFrame(5, 5)
+        expect(scorecard.currentFrame).toEqual([5, 5])
     })
-    
+
 })
+
+
+
+

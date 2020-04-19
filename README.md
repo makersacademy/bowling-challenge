@@ -23,7 +23,7 @@ Input | Output
 
 Objects | Messages
 --------|--------
-Frames | isStrike </br> isSpare </br> isOpenFrame </br> this.value
+Frame | isStrike </br> isSpare </br> isOpenFrame </br> this.values
 Scorecard | this.frames </br> this.score </br> calculateScore
 
 ## Developmental approach

@@ -377,10 +377,10 @@ Even if the tenth frame bonus is not available, the user can still call click an
 
 There should probably be a method on the scorecard that can determine if the game is over. The record method could use this method to prevent any further records being made.
 
-Wrote a feature test for a game in which the bonus roll is not available, expecting the final frame to remain as null. Red.
+Wrote a feature test for a game in which the bonus roll is not available, any additional record calls will throw an error. Red.
 
 - Wrote a gameOver method, which returns true if frame 10 isComplete.
-- record returns immediately if gameOver.
+- record throws an error if gameOver.
 
 
 

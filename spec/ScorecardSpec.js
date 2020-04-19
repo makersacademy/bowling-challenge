@@ -121,8 +121,8 @@ describe("Scorecard", () => {
     });
   });
 
-  describe('Perfect Game', () => {
-    it('12 consecutive strikes, runningTotal(9) is 300', () => {
+  describe("Perfect Game", () => {
+    it("12 consecutive strikes, runningTotal(9) is 300", () => {
       let i = 0;
       while (i < 12) {
         scorecard.record(10);
@@ -132,29 +132,27 @@ describe("Scorecard", () => {
     });
   });
 
-  describe('gameOver', () => {
-
-    it('gameOver is false when last frame is not complete', () => {
-      expect(scorecard.gameOver()).toBe(false)
+  describe("gameOver", () => {
+    it("gameOver is false when last frame is not complete", () => {
+      expect(scorecard.gameOver()).toBe(false);
     });
 
-    it('game is over when last frame is complete', () => {
+    it("game is over when last frame is complete", () => {
       let i = 0;
       while (i < 20) {
         scorecard.record(1);
         i++;
       }
-      expect(scorecard.gameOver()).toBe(true)
+      expect(scorecard.gameOver()).toBe(true);
     });
 
-    it('in a game in which the bonus roll is not available, final frame roll 3 remains null', () => {
+    it("If attempting to record after game is over, record throws error", () => {
       let i = 0;
-      while (i < 21) {
+      while (i < 20) {
         scorecard.record(1);
         i++;
       }
-      expect(scorecard.frames[9].roll3).toBe(null);
+      expect(function() { scorecard.record(1) }).toThrow("The game is over");
     });
-
   });
 });

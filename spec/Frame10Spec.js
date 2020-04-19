@@ -27,6 +27,10 @@ describe('Frame10', () => {
       frame.roll2 = 5;
       expect(frame.bonusRoll()).toBe(true);
     });
+    it('should return true if first roll is strike', () => {
+      frame.roll1 = 10;
+      expect(frame.bonusRoll()).toBe(true);
+    });
   });
 
   describe('isSpare()', () => {

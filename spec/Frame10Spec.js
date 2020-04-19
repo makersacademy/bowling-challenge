@@ -27,6 +27,13 @@ describe('Frame10', () => {
       expect(frame.isComplete()).toBe(true);
     });
 
+    it('should return true after strike and non strike roll', () => {
+      frame.roll1 = 10;
+      frame.roll2 = 1;
+      expect(frame.isComplete()).toBe(true);
+    });
+
+
   });
 
   describe('isSpare()', () => {

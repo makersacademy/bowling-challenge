@@ -1,11 +1,16 @@
 class Frame {
   constructor() {
-    this.values;
+    this.roll1;
+    this.roll2;
   }
-  setValues(values) {
-    this.values = values;
+  setValues(roll1, roll2) {
+    this.roll1 = roll1;
+    this.roll2 = roll2;
   }
   isStrike() {
+    if (this.roll1 != 10) {
+      return false;
+    }
     return true;
   }
 };

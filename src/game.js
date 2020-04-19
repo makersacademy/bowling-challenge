@@ -1,15 +1,12 @@
 Game = function() {
   this._frames = [new Frame()]
   this._score = 0;
-  this._applyStrikeBonus = false;
-  this._applySpareBonus = false;
   this._bonusScore = 0;
 }
 
 Game.prototype.bowlBall = function(pins) {
   frame = this._currentFrame();
   frame.enterTurn(pins);
-  this._applySpare(pins);
   this._endTurn();
 }
 
@@ -17,15 +14,15 @@ Game.prototype.getFrameScore = function() {
   frame = this._currentFrame();
   return frame.viewScore();
 }
-
 Game.prototype.getFrameCount = function() {
   return this._frames.length;
 }
-
-Game.prototype.getScore = function() {
+Game.prototype.getTotalScore = function() {
   return (this._score + this._bonusScore);
 }
-
+Game.prototype.getScore = function() {
+  return (this._score);
+}
 Game.prototype.getBonusScore = function() {
   return this._bonusScore;
 }
@@ -33,49 +30,36 @@ Game.prototype.getBonusScore = function() {
 Game.prototype._currentFrame = function() {
   return this._frames[this._frames.length -1];
 }
+Game.prototype._lastFrame = function() {
+  return this._frames[this._frames.length -2];
+}
 
-
-Game.prototype._generateBonus = function() {
-  if (this._applyStrikeBonus) {
-    this._bonusScore = frame.viewScore();
+Game.prototype._applySpare = function(pins) {
+  last = this._lastFrame()
+  if (last.spare()) {
+    this._bonusScore += frame.firstTurn();
   } 
 }
-
-Game.prototype._addStrike = function() {
-  this._applyStrikeBonus = true;
-}
-
-Game.prototype._addSpare = function() {
-  this._applySpareBonus = true;
+Game.prototype._applyStrike = function() {
+  last = this._lastFrame()
+  if (last.strike()) {
+    this._bonusScore += frame.viewScore();
+  } 
 }
 
 Game.prototype._updateScore = function() {
   this._score += frame.viewScore();
-  this._generateBonus();
+  if(this.getFrameCount() >1) {
+    this._applyStrike();
+    this._applySpare();
+  }
 }
-
 Game.prototype._addFrame = function() {
   this._frames.push( new Frame() )
 }
 
-Game.prototype._checkBonus = function() {
-  if (frame.strike()) {
-    this._addStrike();
-  } else if (frame.spare()) {
-    this._addSpare();
-  }
-}
-
-Game.prototype._applySpare = function(pins) {
-  if (this._applySpareBonus) {
-    this._bonusScore = pins;
-    this._applySpareBonus = false
-  }
-}
-
 Game.prototype._endTurn = function() {
   if(frame.complete()) {
-    this._checkBonus()
     this._updateScore()
     this._addFrame()
   } 

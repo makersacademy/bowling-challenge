@@ -9,7 +9,7 @@ Bowling Challenge
 - [X] The Game can return a score
 - [X] A strike applies a bonus score
 - [X] A strike applies a bonus score
-- [ ] A Strike Bonus is removed once to bonus has been added
+- [X] A Strike Bonus is removed once to bonus has been added
 - [ ] A game is complete after 10 frames
 - [ ] The 10th Frame allows for bonus rolls
 - [ ] A gutter game is declared

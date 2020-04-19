@@ -41,7 +41,8 @@ describe('Feature Test:', function() {
       game.bowlBall(10);
       game.bowlBall(5);
       game.bowlBall(2);
-      expect(game.getScore()).toEqual(24);
+      expect(game.getTotalScore()).toEqual(24);
+      expect(game.getScore()).toEqual(17);
       expect(game.getBonusScore()).toEqual(7);
       expect(game.getFrameCount()).toEqual(3);
     })
@@ -53,9 +54,25 @@ describe('Feature Test:', function() {
       game.bowlBall(4);
       game.bowlBall(2);
       game.bowlBall(5);
-      expect(game.getScore()).toEqual(19);
+      expect(game.getTotalScore()).toEqual(19);
+      expect(game.getScore()).toEqual(17);
       expect(game.getBonusScore()).toEqual(2);
       expect(game.getFrameCount()).toEqual(3);
+    })
+  })
+  
+
+  describe('Player rolls a spare', function() {
+    it('a new frame is started and a bonus score is added', function() {
+      game.bowlBall(10);
+      game.bowlBall(4);
+      game.bowlBall(6);
+      game.bowlBall(1);
+      game.bowlBall(3);
+      expect(game.getTotalScore()).toEqual(35);
+      expect(game.getScore()).toEqual(24);
+      expect(game.getBonusScore()).toEqual(11);
+      expect(game.getFrameCount()).toEqual(4);
     })
   })
   

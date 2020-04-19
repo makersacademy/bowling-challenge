@@ -22,6 +22,11 @@ describe('scorecard', function() {
       scorecard.addFrame(0, 0);
       expect(scorecard.score).toEqual(0);
     });
+
+    it('frame [0, 5] returns score 5', function() {
+      scorecard.addFrame(0, 5);
+      expect(scorecard.score).toEqual(5);
+    });
   });
 
 

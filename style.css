@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  place-content: center;
+}
+
+#video {
+  z-index: -100;
+  position: fixed;
+  object-fit: cover;
+}
+
+.sheet {
+  background: yellow;
+  padding: 5em;
+  display: flex;
+}
+
+.frame {
+  margin-left: -1px;
+  display: grid;
+  grid-template-areas:
+    "num num num"
+    ". roll1 roll2"
+    "runningtotal runningtotal .";
+  grid-template-columns: repeat(3, 2em);
+  grid-template-rows: repeat(3, 1.5em);
+  border: solid black 1px;
+}
+
+#frame10 {
+  grid-template-areas:
+    "num num num num"
+    ". roll1 roll2 roll3"
+    "runningtotal runningtotal . .";
+  grid-template-columns: repeat(4, 2em);
+}
+
+.number {
+  border-bottom: solid black 1px;
+  grid-area: num;
+}
+
+.roll1 {
+  border-bottom: solid black 1px;
+  border-left: solid black 1px;
+  grid-area: roll1;
+}
+
+.roll2 {
+  border-bottom: solid black 1px;
+  border-left: solid black 1px;
+  grid-area: roll2;
+}
+
+.roll3 {
+  border-bottom: solid black 1px;
+  border-left: solid black 1px;
+  grid-area: roll3;
+}
+
+.running-total {
+  grid-area: runningtotal;
+}
+
+.side-box {
+  margin-left: -1px;
+  display: grid;
+  grid-template-areas:
+    "label"
+    "field"
+    "field";
+  grid-template-columns: 8em;
+  grid-template-rows: repeat(3, 1.5em);
+  border: solid black 1px;
+}
+
+.label {
+  grid-area: label;
+  border-bottom: solid black 1px;
+}
+
+.label {
+  grid-area: label;
+}
+
+.field {
+  grid-area: field;
+}
+
+.roll1,
+.roll2,
+.roll3,
+.running-total {
+  font-weight: 900;
+  font-size: 0.6em;
+  font-family: "Rock Salt";
+}
+.field {
+  font-family: "Rock Salt";
+  font-size: 1.2em;
+}

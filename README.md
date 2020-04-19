@@ -244,3 +244,5 @@ Wrote a test that 12 consecutive strikes should result in a runningTotal(9) of 3
 - Linted.
 - Refactored currentFrame variable name to just frame.
 
+### HTML
+

@@ -284,4 +284,17 @@ The table needs to be filled in with running totals that update based on the sub
 
 The frames running total should only be updated if it is complete.
 
-- Wrote a test for a frame to know if it is complete
+Wrote a test for a frame to know if it is complete, which should default to false. Red.
+
+- Wrote frame isComplete to return false.
+
+Green.
+
+Wrote a test for a frame to be complete if both its rolls are filled. Red.
+
+- Returned the boolean of if both roll1 and roll2 are not null (i.e. filled).
+
+Green.
+
+Wrote a test for a frame to complete if it is a strike. Red.
+

@@ -9,19 +9,18 @@ class Frame10 {
 
   isComplete() {
     if (this.roll3 != null) {
-      return true
+      return true;
     }
     if (this.roll1 === 10 && this.roll2 === 10) {
-      return false
+      return false;
     }
     if (this.roll1 == 10 && this.roll2 != null) {
-      return true
+      return true;
     }
-    if (this.roll1 !=null && this.roll1 + this.roll2 < 10) {
-      return true
+    if (this.roll1 != null && this.roll1 + this.roll2 < 10) {
+      return true;
     }
-    return false
-
+    return false;
   }
   isStrike() {
     return this.roll1 === 10;
@@ -30,6 +29,8 @@ class Frame10 {
     return this.isStrike() ? false : this.roll1 + this.roll2 === 10;
   }
   total() {
-    return this.roll1 + this.roll2 + this.roll3 + this.spareBonus + this.strikeBonus;
+    return (
+      this.roll1 + this.roll2 + this.roll3 + this.spareBonus + this.strikeBonus
+    );
   }
 }

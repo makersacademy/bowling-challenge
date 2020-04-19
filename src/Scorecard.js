@@ -42,7 +42,12 @@ class Scorecard {
       this.score = 'Add another frame.';
     } else if (frames[index+1].isSpare() == true) {
       this.score += 10;
-    } else if (frames[index+1].isOpenFrame() == true) {
+    } else if (frames[index+1].isStrike() == true && frames[index+2] == undefined) {
+      this.score = 'Add another frame.';
+    } else if (frames[index+1].isStrike() == true) {
+      this.score += 10;
+      this.score += frames[index+2].roll1;
+    } else {
       this.addOpenFrame(frames[index+1]);
     }
   }

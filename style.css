@@ -52,7 +52,7 @@ body {
     "running-total running-total .";
   grid-template-columns: repeat(3, 2em);
   grid-template-rows: repeat(3, 1.5em);
-  border: dashed black 1px;
+  border: dashed #000000b3 1px;
 }
 
 #frame9 {
@@ -64,25 +64,25 @@ body {
 }
 
 .number {
-  border-bottom: dashed black 1px;
+  border-bottom: dashed #000000b3 1px;
   grid-area: num;
 }
 
 .roll1 {
-  border-bottom: dashed black 1px;
-  border-left: dashed black 1px;
+  border-bottom: dashed #000000b3 1px;
+  border-left: dashed #000000b3 1px;
   grid-area: roll1;
 }
 
 .roll2 {
-  border-bottom: dashed black 1px;
-  border-left: dashed black 1px;
+  border-bottom: dashed #000000b3 1px;
+  border-left: dashed #000000b3 1px;
   grid-area: roll2;
 }
 
 .roll3 {
-  border-bottom: dashed black 1px;
-  border-left: dashed black 1px;
+  border-bottom: dashed #000000b3 1px;
+  border-left: dashed #000000b3 1px;
   grid-area: roll3;
 }
 
@@ -99,12 +99,12 @@ body {
     "field";
   grid-template-columns: 8em;
   grid-template-rows: repeat(3, 1.5em);
-  border: dashed black 1px;
+  border: dashed #000000b3 1px;
 }
 
 .label {
   grid-area: label;
-  border-bottom: dashed black 1px;
+  border-bottom: dashed #000000b3 1px;
 }
 
 .label {
@@ -148,7 +148,7 @@ body {
 }
 
 .button {
-  border: dashed black 1px;
+  border: dashed #000000b3 1px;
   padding: 1em;
   background: none;
   margin-top: -1px;

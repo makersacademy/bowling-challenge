@@ -383,4 +383,3 @@ Wrote a feature test for a game in which the bonus roll is not available, any ad
 - record throws an error if gameOver.
 
 
-

@@ -29,7 +29,7 @@ body {
   "title help controls"
   "table table table"
   "input input input";
-  grid-template-columns: 8em 1fr 8em;
+  grid-template-columns: 8em 1fr 16em;
   gap: 1em;
   align-items: center;
   background-image: url(images/rice-paper-3.png);
@@ -143,15 +143,20 @@ body {
 
 #controls {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   grid-area: controls;
 }
+
+#controls .button {
+  width: 10em;
+}
+
 
 .button {
   border: dashed #000000b3 1px;
   padding: 1em;
   background: none;
-  margin-top: -1px;
+  margin-left: -1px;
 }
 
 .button:hover {

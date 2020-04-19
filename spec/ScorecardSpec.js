@@ -76,6 +76,13 @@ describe('scorecard', function() {
       scorecard.addFrame(1, 4);
       expect(scorecard.score).toEqual(36);
     });
+
+    it('[10], [2, 7], [1, 4] returns 36', function() {
+      scorecard.addFrame(10);
+      scorecard.addFrame(2, 7);
+      scorecard.addFrame(1, 4);
+      expect(scorecard.score).toEqual(33);
+    });
   });
 
   describe('open frame scorecards', function() {

@@ -36,6 +36,16 @@ class Scorecard {
       this.score += frames[index+1].roll1;
     }
   }
+  addStrike(frame, index, frames) {
+    this.score += 10;
+    if (frames[index+1] == undefined) {
+      this.score = 'Add another frame.';
+    } else if (frames[index+1].isSpare() == true) {
+      this.score += 10;
+    } else if (frames[index+1].isOpenFrame() == true) {
+      this.addOpenFrame(frames[index+1]);
+    }
+  }
   calculateScore() {
     this.frames.forEach((frame, index, frames) => {
       this.scoreLogic(frame, index, frames);
@@ -45,7 +55,7 @@ class Scorecard {
     if (frame.isSpare() == true) {
       this.addSpare(frame, index, frames);
     } else if (frame.isStrike() == true) {
-      this.score += 20;
+      this.addStrike(frame, index, frames);
     } else {
       this.addOpenFrame(frame);
     }

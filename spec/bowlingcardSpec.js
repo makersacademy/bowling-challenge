@@ -63,17 +63,11 @@ describe('Bowlingcard', function() {
       expect(bowlingcard.inGameFrames).toEqual([1, 2]);
     })
   })
-})
 
-/*
   describe('.framePoints', function() {
     it('adds the points scored in a frame', function() {
-      bowlingcard.enterScore(5);
-      bowlingcard.enterScore(8);      
-      bowlingcard.framePoints(1);
-      expect(bowlingcard.framePoints(1)).toBe(13);
-
+      expect(bowlingcard.framePoints(5, 8)).toBe(13);
     })
-  
+  })
+
 })
-  */

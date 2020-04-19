@@ -30,4 +30,7 @@ Bowlingcard.prototype.gameFrame = function() {
   }
 }
 
-
+Bowlingcard.prototype.framePoints = function(rollOne, rollTwo) {
+  let points = rollOne + rollTwo;
+  return points;
+}

@@ -6,6 +6,14 @@ describe('Frame', () => {
     frame = new Frame();
   });
 
+  describe('isComplete', () => {
+
+    it('should default to false', () => {
+      expect(frame.isComplete()).toBe(false);
+    });
+
+  });
+
   describe('isSpare()', () => {
     it('should return true if the rolls are 5 and 5 (total 10)', () => {
       frame.roll1 = 5

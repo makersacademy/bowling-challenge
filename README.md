@@ -268,10 +268,20 @@ Now the buttons need to be hooked up to the model with an interface.
 
 ### Displaying Scores
 
-The table needs to be filled in the the submitted scores, and totals.
+The table needs to be filled in with the submitted scores.
 
 - Wrote a function updateScores which loops through each of the frames calling an updateFrame function.
 - updateFrame dynamically grabs the correct id for the frame and fills roll1 and roll2 with the frame object's values.
 - updateFrame also has some logic to enter an X or / for strike or spare.
 - The last frame has a special function, updateFrame9 (counting from 0).
 - updateFrame9 has more complex logic to allow for each of its rolls to be a strike and/or roll2 to be a spare (/).
+
+Now the table is filled with the correct score as they are recorded
+
+### Displaying Running Totals
+
+The table needs to be filled in with running totals that update based on the submitted scores.
+
+The frames running total should only be updated if it is complete.
+
+- Wrote a test for a frame to know if it is complete

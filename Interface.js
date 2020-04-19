@@ -24,6 +24,7 @@ $(function () {
       } else {
         updateFrame9(frame, i);
       }
+      updateRunningTotal(frame, i);
     });
   };
 });
@@ -46,6 +47,11 @@ function updateFrame9(frame, i) {
 
   $("#frame9 .roll3").html(frame.roll3 == 10 ? "X" : frame.roll3);
 }
+
+function updateRunningTotal(frame, i) {
+  
+}
+
 
 // Scorecard methods for interfacing
 // scorecard.record(score)

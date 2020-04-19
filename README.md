@@ -202,7 +202,7 @@ Also refactored for the default values in the Frames constructor to be null, to 
 
 Tests still green.
 
-Wrote a test for two strikes in a row, then a frame of 1 and 1. 
+Wrote a test for two strikes in a row, then a frame of 1 and 1.
 
 - runningTotal(0) should be 24 (10 + 10 from the next frame strike, + 4 from the roll1 of following frame).
 - runningTotal(1) should be 42 (24 from previous frame + 10 + 4 from next frame roll1 + 4 from next frame roll2).
@@ -271,9 +271,7 @@ Now the buttons need to be hooked up to the model with an interface.
 The table needs to be filled in the the submitted scores, and totals.
 
 - Wrote a function updateScores which loops through each of the frames calling an updateFrame function.
-- updateFrame dynamically grabs the correct id for the frame and fills roll1 and roll2 with the frame object's values. 
+- updateFrame dynamically grabs the correct id for the frame and fills roll1 and roll2 with the frame object's values.
 - updateFrame also has some logic to enter an X or / for strike or spare.
 - The last frame has a special function, updateFrame9 (counting from 0).
 - updateFrame9 has more complex logic to allow for each of its rolls to be a strike and/or roll2 to be a spare (/).
-
-

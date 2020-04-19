@@ -286,7 +286,7 @@ The frames running total should only be updated if it is complete.
 
 Wrote a test for a frame to know if it is complete, which should default to false. Red.
 
-- Wrote frame isComplete to return false.
+- Wrote Frame isComplete to return false.
 
 Green.
 
@@ -309,3 +309,7 @@ Now this method can be used to decide if the running total for the frame should 
 Now for the final frame.
 
 Wrote a test for Frame10 isComplete to be false by default. Red.
+
+- Wrote Frame10 isComplete to return false.
+
+Green.

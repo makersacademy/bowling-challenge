@@ -298,3 +298,11 @@ Green.
 
 Wrote a test for a frame to complete if it is a strike. Red.
 
+- Added an or statement if the frame is a strike.
+
+Green.
+
+Now this method can be used to decide if the running total for the frame should be rendered in index.html.
+
+- Added a new interface method updateRunningTotal, which updates the relevant frame's total element with its total if that frame is complete.
+

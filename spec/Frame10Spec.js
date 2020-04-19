@@ -22,7 +22,11 @@ describe('Frame10', () => {
     it('should default to false', () => {
       expect(frame.bonusRoll()).toBe(false);
     });
-
+    it('should return true if spare', () => {
+      frame.roll1 = 5;
+      frame.roll2 = 5;
+      expect(frame.bonusRoll()).toBe(true);
+    });
   });
 
   describe('isSpare()', () => {

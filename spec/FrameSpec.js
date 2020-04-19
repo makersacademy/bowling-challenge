@@ -21,6 +21,10 @@ describe('Frame', function() {
       frame.setValues(5, 3);
       expect(frame.isOpenFrame()).toEqual(true);
     });
+    it('returns false if if frame is closed', function() {
+      frame.setValues(10);
+      expect(frame.isOpenFrame()).toEqual(false);
+    });
   });
 });
 

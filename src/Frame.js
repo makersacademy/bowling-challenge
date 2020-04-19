@@ -14,6 +14,9 @@ class Frame {
     return true;
   }
   isOpenFrame() {
+    if (this.roll1 == 10) {
+      return false;
+    }
     return true;
   }
 };

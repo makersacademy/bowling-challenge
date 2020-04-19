@@ -77,7 +77,7 @@ describe('scorecard', function() {
       expect(scorecard.score).toEqual(36);
     });
 
-    it('[10], [2, 7], [1, 4] returns 36', function() {
+    it('[10], [2, 7], [1, 4] returns 33', function() {
       scorecard.addFrame(10);
       scorecard.addFrame(2, 7);
       scorecard.addFrame(1, 4);
@@ -86,14 +86,14 @@ describe('scorecard', function() {
   });
 
   describe('four frames', function() {
-    it('[10], [10], [10], [2, 3] returns 36', function() {
+    it('[10], [10], [3, 7], [2, 3] returns 60', function() {
       scorecard.addFrame(10);
       scorecard.addFrame(10);
       scorecard.addFrame(3, 7);
       scorecard.addFrame(2, 3);
       expect(scorecard.score).toEqual(60);
     });
-  })
+  });
 
   describe('open frame scorecards', function() {
     it('Gutter scorecard returns 0', function() {

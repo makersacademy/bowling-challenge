@@ -26,11 +26,11 @@ The user is able to enter their points per individual roll for each frame of a g
 
 * As a user, when I am playing bowling and things are getting competitive
 * I want to keep a record of my points per roll to accumulate
-* So that I do not have to add them at the end
+* So that I do not have to add them at the end myself
 
 ### Acceptance criteria
 
-* Given that I have playing bowling
+* Given that I have been playing bowling
 * When I have had several turns at rolling
 * Then I want my points to accumulate
 
@@ -52,7 +52,6 @@ Points accumulate automatically each time the user enters points
 * Then I want to know what roll is which so I know how to keep track of my points
 
 ### Requirements
-
 * The game starts at roll 1
 * The user can see what roll they are playing in a gametically each time the user enters points
 
@@ -61,17 +60,16 @@ Points accumulate automatically each time the user enters points
 
 * As a user, when I am playing bowling
 * I want to know what frame this is
-* So the game can end in the expected 10 frames.
+* So I know how many more opportunities to get points i got
 
 
 ### Acceptance criteria
 
 * Given that I have been playing bowling
-* When I have rolled for 10 frames and have extra rolls
-* Then I want to know the game has ended and have my total score
+* When I have rolled for several frames
+* Then I want to know which frame we are playing
 
 ### Requirements
 
 * The game starts at Frame 1
-* The user is not able to add points for rolls beyond the predefined rolls in a game
 * There is a maximum of 2 rolls per frame

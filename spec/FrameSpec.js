@@ -30,5 +30,16 @@ describe('Frame', function() {
       expect(frame.isOpenFrame()).toEqual(false);
     });
   });
+
+  describe('isSpare', function() {
+    it('returns true if if roll is spare', function() {
+      frame.setValues(5, 5);
+      expect(frame.isSpare()).toEqual(true);
+    });
+    it('returns false if if roll is a strike', function() {
+      frame.setValues(10);
+      expect(frame.isSpare()).toEqual(false);
+    });
+  });
 });
 

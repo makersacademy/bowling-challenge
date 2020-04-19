@@ -14,8 +14,13 @@ class Frame {
     return true;
   }
   isOpenFrame() {
-    console.log(this.roll1)
     if ((this.roll1 + this.roll2) == 10) {
+      return false;
+    }
+    return true;
+  }
+  isSpare() {
+    if (this.roll1 == 10) {
       return false;
     }
     return true;

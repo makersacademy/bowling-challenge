@@ -22,8 +22,7 @@ class Scorecard {
     });
   }
   addFrame(roll1, roll2) {
-    this.frames.push(new Frame());
-    this.frames[0].setValues(roll1, roll2);
+    this.frames.push(new Frame(roll1, roll2));
     this.setScore2();
   }
 

@@ -3,10 +3,6 @@ class Frame {
     this.roll1 = roll1;
     this.roll2 = roll2;
   }
-  setValues(roll1, roll2 = 0) {
-    this.roll1 = roll1;
-    this.roll2 = roll2;
-  }
   isStrike() {
     if (this.roll1 != 10) {
       return false;

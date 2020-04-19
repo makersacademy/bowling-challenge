@@ -336,6 +336,18 @@ Green.
 
 Wrote a test for isComplete to return true after a strike and then a non strike roll. Red.
 
-- Added a condition to retun true if roll1 is 10 and roll2 is not null (i.e. filled).
+- Added a condition to return true if roll1 is 10 and roll2 is not null (i.e. filled).
 
+Green.
 
+Wrote a test for isComplete to return false after two strikes (third roll still available).
+
+- Added condition for roll 1 and roll2 both 10 to return false.
+
+Green.
+
+Wrote a test for isComplete to return true two strikes and then a third roll. Red.
+
+- Moved the check for roll3 being filled up to the top of the order.
+
+Green.

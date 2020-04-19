@@ -11,17 +11,13 @@ class Frame10 {
     if (this.roll2 == null) {
       return false
     }
-    if (this.roll1 === 10 && this.roll2 === 10 & this.roll3 == null) {
+    if (this.roll1 === 10 && this.roll2 === 10 && this.roll3 == null) {
       return false;
     }
     if (this.isSpare() && this.roll3 == null) {
       return false
     }
     return true;
-  }
-
-  bonusRoll() {
-    return this.roll1 + this.roll2 >= 10;
   }
 
   isStrike() {

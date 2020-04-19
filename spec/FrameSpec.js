@@ -18,6 +18,10 @@ describe('Frame', () => {
       expect(frame.isComplete()).toBe(true);
     });
 
+    it('if the frame is a strike should be true', () => {
+      frame.roll1 = 10
+      expect(frame.isComplete()).toBe(true);
+    });
 
   });
 

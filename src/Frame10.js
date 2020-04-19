@@ -11,6 +11,9 @@ class Frame10 {
     if (this.roll1 !=null && this.roll1 + this.roll2 < 10) {
       return true
     }
+    if (this.roll3 != null) {
+      return true
+    }
     return false
 
   }

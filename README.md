@@ -330,3 +330,8 @@ Green.
 
 Wrote a test for isComplete to return true once the third roll after a spare has been made. Red.
 
+- Added a condition to return true if roll three is not null (i.e. filled).
+
+Green.
+
+Wrote 

@@ -23,7 +23,7 @@ describe('Frame10', () => {
     it('should return true after the third roll after a spare', () => {
       frame.roll1 = 5;
       frame.roll2 = 5;
-      frame.roll2 = 5;
+      frame.roll3 = 5;
       expect(frame.isComplete()).toBe(true);
     });
 

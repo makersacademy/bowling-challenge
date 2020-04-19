@@ -16,6 +16,10 @@ describe('Game', function() {
       expect(game.score([05, 00, 00, 00, 00, 00, 00, 00, 00, 00])).toEqual(5);
     });
 
+    it('game with 10 scores of 5 scores 50', function() {
+      expect(game.score([05, 05, 05, 05, 05, 05, 05, 05, 05, 05])).toEqual(50);
+    });
+
   });
   
   

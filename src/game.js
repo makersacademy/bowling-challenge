@@ -14,18 +14,29 @@ Game.prototype.getFrameScore = function() {
   frame = this._currentFrame();
   return frame.viewScore();
 }
+
 Game.prototype.getFrameCount = function() {
   return this._frames.length;
 }
+
 Game.prototype.getTotalScore = function() {
   return (this._score + this._bonusScore);
 }
+
 Game.prototype.getScore = function() {
   return (this._score);
 }
+
 Game.prototype.getBonusScore = function() {
   return this._bonusScore;
 }
+
+Game.prototype.complete = function() {
+  if(this.getFrameCount() > 10) {
+    return true
+  }
+}
+
 
 Game.prototype._currentFrame = function() {
   return this._frames[this._frames.length -1];

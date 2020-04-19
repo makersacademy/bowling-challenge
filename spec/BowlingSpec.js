@@ -30,6 +30,20 @@ describe("Bowling", function() {
     bowling.addPlayer(playerTwo);
     bowling.changeTurn();
     expect(bowling.getCurrentPlayer()).toEqual(playerTwo);
-  })
+  });
 
+  it(" should be able to tell me when we are in the first frame", function() {
+    bowling.addPlayer(playerOne);
+    bowling.addPlayer(playerTwo);
+    bowling.changeTurn();
+    expect(bowling.getCurrentFrame()).toEqual(1);
+  });
+
+  it(" should be able to increment the frame once every player has had their turn", function() {
+    bowling.addPlayer(playerOne);
+    bowling.addPlayer(playerTwo);
+    bowling.changeTurn();
+    bowling.changeTurn();
+    expect(bowling.getCurrentFrame()).toEqual(2);
+  });
 });

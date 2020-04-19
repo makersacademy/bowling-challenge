@@ -31,7 +31,6 @@ describe('scorecard', function() {
 
 
   describe('open frame scorecards', function() {
-
     it('Gutter scorecard returns 0', function() {
       expect(scorecard.setScore([00, 00, 00, 00, 00, 00, 00, 00, 00, 00]))
           .toEqual(0);

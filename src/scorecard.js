@@ -9,7 +9,7 @@ function Scorecard() {
 }
 
 Scorecard.prototype.addNewScore = function(roll1, roll2=0) {
-    this.currentFrame = []
+    this.clearCurrentFrame()
     if (roll1 > MAX_INITIAL_SCORE || (roll1 + roll2) > MAX_INITIAL_SCORE) {
         return this.incorrectScore()
     }
@@ -18,7 +18,6 @@ Scorecard.prototype.addNewScore = function(roll1, roll2=0) {
     this.spareOrStrike(roll1, roll2)
 }
 
-//this method will either have to go or change massively
 Scorecard.prototype.calculateScore = function(roll1, roll2) {
     //this.totalScore += (roll1 + roll2) line below should become useless
     this.totalScore = roll1 + roll2
@@ -54,6 +53,10 @@ Scorecard.prototype.incorrectScore = function() {
 
 Scorecard.prototype.addScoreToCurrentFrame = function(score1, score2) {
     this.currentFrame.push(score1, score2)
+}
+
+Scorecard.prototype.clearCurrentFrame = function() {
+    this.currentFrame = []
 }
 
 

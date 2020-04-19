@@ -306,7 +306,21 @@ Now this method can be used to decide if the running total for the frame should 
 
 - Added a new interface method updateRunningTotal, which updates the relevant frame's total element with its total if that frame is complete.
 
-Now for the final frame.
+Now for the final frame. The final frame can have a bonus roll if the first roll is a strike or a spare.
+
+Wrote a test for bonusRoll method to return false by default. Red.
+
+- Added bonusRoll method, returning false.
+
+Green.
+
+Wrote a test for bonusRoll method to return true if the first two rolls are a spare.
+
+- 
+
+
+
+
 
 Wrote a test for Frame10 isComplete to be false by default. Red.
 
@@ -316,3 +330,8 @@ Green.
 
 Wrote a test for Frame10 isComplete to be true if roll1 and roll2 are filled but not by a spare of a strike. Red.
 
+- Returned the boolean of if both roll1 and roll2 are not null (i.e. filled).
+
+Green.
+
+Wrote a test for Frame10 isComplete to become true if roll1 and roll2 are filled but not by a spare of a strike. Red.

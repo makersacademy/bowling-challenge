@@ -7,6 +7,7 @@ function Scorecard() {
 }
 
 function Frame() {
+    this.currentFrame = []
     
 }
 
@@ -19,6 +20,7 @@ Scorecard.prototype.addNewScore = function(roll1, roll2=0) {
     this.spareOrStrike(roll1, roll2)
 }
 
+//this method will either have to go or change massively
 Scorecard.prototype.calculateScore = function(roll1, roll2) {
     return this.totalScore += (roll1 + roll2)
 }
@@ -40,8 +42,8 @@ Scorecard.prototype.incorrectScore = function() {
     return "Incorrect Score"
 }
 
-Frame.prototype.addScoreToArray = function(roll1, roll2) {
-    return [5, 5]
+Frame.prototype.addScoreToCurrentFrame = function(roll1, roll2) {
+    this.currentFrame.push(roll1, roll2)
 }
 
 

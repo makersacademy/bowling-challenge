@@ -65,14 +65,15 @@ describe('Scorecard', function() {
 })
 
 describe('Frame', function() {
-    var frame
+    var frame1
 
     beforeEach(function() {
-        frame = new Frame()
+        frame1 = new Frame()
     })
 
-    it('contains an array with the score', function() {
-        expect(frame.addScoreToArray(5, 5)).toEqual([5, 5])
+    it('contains an array with the score from the current frame', function() {
+        frame1.addScoreToCurrentFrame(5, 5)
+        expect(frame1.currentFrame).toEqual([5, 5])
     })
     
 })

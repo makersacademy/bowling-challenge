@@ -17,6 +17,9 @@ class Scorecard {
   }
 
   record(score) {
+    if (this.gameOver()) {
+      return
+    }
     let frame = this.frames[this.frame];
     let prev1 = this.frame > 0 ? this.frames[this.frame - 1] : false;
     let prev2 = this.frame > 1 ? this.frames[this.frame - 2] : false;

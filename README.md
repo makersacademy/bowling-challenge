@@ -264,7 +264,7 @@ Now the buttons need to be hooked up to the model with an interface.
 - Sourced this in index.html.
 - Sourced jquery.
 - For the ambience button added jquery to toggle the video sound with the ambience button (fun).
-- For each of the scoring buttons added jquery for clicking any of them, the click event currentTarget's value is parsed to an integer, then passed in to the record method.
+- For each of the scoring buttons (that have a class 'record') added jquery for clicking element with that class, the click event currentTarget's value is parsed to an integer, then passed in to the record method.
 
 ### Displaying Scores
 

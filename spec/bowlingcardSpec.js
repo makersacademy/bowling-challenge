@@ -33,4 +33,18 @@ describe('Bowlingcard', function() {
       expect(bowlingcard.roll).toBe(0);
     })
   })
+
+  describe('.frame', function() {
+    it('starts game at 0', function() {
+      expect(bowlingcard.frame).toBe(0);
+    });
+    it('increases by one every 2 rolls', function() {
+      bowlingcard.enterScore(5);
+      bowlingcard.enterScore(8);
+      bowlingcard.enterScore(5);
+      bowlingcard.enterScore(8);
+      bowlingcard.frameCount();
+      expect(bowlingcard.frame).toBe(2)
+    })
+  })
 });

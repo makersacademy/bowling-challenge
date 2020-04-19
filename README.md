@@ -47,10 +47,31 @@ Points accumulate automatically each time the user enters points
 
 ### Acceptance criteria
 
-* Given that I have being playing bowling
+* Given that I have been playing bowling
 * When I have rolled several times
 * Then I want to know what roll is which so I know how to keep track of my points
 
 ### Requirements
-The user can see what roll they are playing in a gametically each time the user enters points
 
+* The game starts at roll 1
+* The user can see what roll they are playing in a gametically each time the user enters points
+
+
+## User story 4
+
+* As a user, when I am playing bowling
+* I want to know what frame this is
+* So the game can end in the expected 10 frames.
+
+
+### Acceptance criteria
+
+* Given that I have been playing bowling
+* When I have rolled for 10 frames and have extra rolls
+* Then I want to know the game has ended and have my total score
+
+### Requirements
+
+* The game starts at Frame 1
+* The user is not able to add points for rolls beyond the predefined rolls in a game
+* There is a maximum of 2 rolls per frame

@@ -58,11 +58,3 @@ function updateRunningTotal(frame, i) {
     }
   }
 }
-
-
-// Scorecard methods for interfacing
-// scorecard.record(score)
-// scorecard.runningTotal(frame)
-// scorecard.frames[framenumber].roll1
-// scorecard.frames[framenumber].roll2
-// scorecard.frames[framenumber].roll3

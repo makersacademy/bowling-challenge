@@ -131,4 +131,21 @@ describe("Scorecard", () => {
       expect(scorecard.runningTotal(9)).toBe(300);
     });
   });
+
+  describe('gameOver', () => {
+
+    it('in a game in which the bonus roll is not available, final frame roll 3 remains null', () => {
+      let i = 0;
+      while (i < 21) {
+        scorecard.record(1);
+        i++;
+      }
+      expect(scorecard.frames[9].roll3).toBe(null);
+
+
+
+
+    });
+
+  });
 });

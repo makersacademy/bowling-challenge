@@ -373,5 +373,14 @@ The last thing to do is fill in the grand total with the final running total.
 
 ### Handling Edge Cases
 
-Even if the tenth frame bonus
+Even if the tenth frame bonus is not available, the user can still call click another button and record roll3 when they aren't supposed to be able to.
+
+There should probably be a method on the scorecard that can determine if the game is over. The record method could use this method to prevent any further records being made.
+
+Wrote a feature test for a game in which the bonus roll is not available, expecting the final frame to remain as null. Red.
+
+- Wrote a gameOver method, which returns true if frame 10 isComplete.
+- record returns immediately if gameOver.
+
+
 

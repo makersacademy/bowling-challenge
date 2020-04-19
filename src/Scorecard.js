@@ -82,4 +82,8 @@ class Scorecard {
     }
     return total;
   }
+
+  gameOver() {
+    this.frames[9].isComplete()
+  }
 }

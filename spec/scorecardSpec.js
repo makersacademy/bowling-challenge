@@ -88,6 +88,15 @@ describe('Scorecard', function() {
         scorecard.clearCurrentFrame()
         expect(scorecard.currentFrame).toEqual([])
     })
+
+    it('frames starts empty', function() {
+        expect(scorecard.allFrames).toEqual([])
+    })
+
+    it('adds current frame to all frames', function() {
+        scorecard.addCurrentToAllFrames([3, 2])
+        expect(scorecard.allFrames).toEqual([[3, 2]])
+    })
 })
 
 

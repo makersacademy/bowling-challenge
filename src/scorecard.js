@@ -6,6 +6,7 @@ function Scorecard() {
     this.isSpare = false
     this.isStrike = false
     this.currentFrame = []
+    this.allFrames = []
 }
 
 Scorecard.prototype.addNewScore = function(roll1, roll2=0) {
@@ -57,6 +58,10 @@ Scorecard.prototype.addScoreToCurrentFrame = function(score1, score2) {
 
 Scorecard.prototype.clearCurrentFrame = function() {
     this.currentFrame = []
+}
+
+Scorecard.prototype.addCurrentToAllFrames = function(currentFrame) {
+    this.allFrames.push(currentFrame)
 }
 
 

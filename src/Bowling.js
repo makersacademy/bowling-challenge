@@ -3,5 +3,5 @@ function Game() {
 }
 
 Game.prototype.score = function(frames) {
-  return 0
+  return frames.reduce((a, b) => a + b, 0)
 }

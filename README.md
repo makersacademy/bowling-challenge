@@ -246,3 +246,20 @@ Wrote a test that 12 consecutive strikes should result in a runningTotal(9) of 3
 
 ### HTML
 
+For this to be a web app, an html page needs to interface with the scorecard.
+
+- Created index.html.
+- Added a background video for ambience.
+- Created the scoring table using css grid.
+- Added styling
+- Added some buttons to input scores.
+- Added a button to toggle the video sound.
+- Sourced js files.
+
+Now the buttons need to be hooked up to the model with an interface.
+
+- Created Interface.js.
+- Sourced this in index.html.
+- Sourced jquery.
+- Added jquery to toggle the video sound with the ambience button.
+

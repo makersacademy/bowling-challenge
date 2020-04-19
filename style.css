@@ -151,4 +151,16 @@ body {
   border: dashed black 1px;
   padding: 10px;
   background: none;
+  margin-top: -1px;
+}
+
+.button:hover {
+text-decoration: underline;
+}
+
+#input {
+  grid-area: input;
+}
+#input .button {
+  width
 }

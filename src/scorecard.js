@@ -1,9 +1,15 @@
 Scorecard = function() {
-  this.score = 5;
+  this.bowlOne = [];
+  this.bowlTwo = [];
+  this.bowlThree = [];
+
 };
 
-Scorecard.prototype.scorecheck = function() {
-  return this.score;
+var userFirstbowl = []
+
+Scorecard.prototype.firstBowl = function(num) {
+  this.bowlOne.push(num);
+  return this.bowlOne
 }
 
 //make a variable for thermostat called power saving mode

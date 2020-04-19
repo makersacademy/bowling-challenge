@@ -21,10 +21,14 @@ Bowling.prototype.changeTurn = function() {
     this.currentPlayer++;
   } else {
     this.currentPlayer = 0;
-    this.currentFrame += 1;
+    this.incrCurrentFrame();
   }
 };
 
 Bowling.prototype.getCurrentFrame = function() {
   return this.currentFrame;
 };
+
+Bowling.prototype.incrCurrentFrame = function() {
+  this.currentFrame++;
+}

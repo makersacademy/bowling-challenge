@@ -28,8 +28,9 @@ body {
   "title help controls"
   "table table table"
   "input input input";
-  grid-template-columns: 250px 1fr 200px;
+  grid-template-columns: 250px 1fr 8em;
   gap: 1em;
+  align-items: center;
   background-image: url(images/rice-paper-3.png);
   background-color: #ffffc9;
   padding: 2em 3em;
@@ -140,6 +141,9 @@ body {
 }
 
 #controls {
+  display: flex;
+  flex-direction: column;
+  flex
   grid-area: controls;
 }
 

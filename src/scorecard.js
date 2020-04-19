@@ -25,6 +25,9 @@ Scorecard.prototype.calculateScore = function(roll1, roll2) {
     if (this.isSpare === true) { 
         score1 = roll1 * 2
         score2 = roll2
+    } else if (this.isStrike === true) {
+        score1 = roll1 * 2
+        score2 = roll2 * 2
     } else {
         score1 = roll1
         score2 = roll2

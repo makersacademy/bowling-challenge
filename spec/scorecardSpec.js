@@ -64,20 +64,24 @@ describe('Scorecard', function() {
         expect(scorecard.currentFrame).toEqual([10, 0])
     })
 
-    //need to learn how to stub something in jasmine
-    it('doubles the score of first roll if player scored a spare in the last round', function() {
-        scorecard.addNewScore(5, 5)
-        scorecard.addNewScore(3, 3)
-        expect(scorecard.currentFrame).toEqual([6, 3])
-    })
-
-
-
     it('contains an array with the score from the current frame', function() {
         scorecard.addScoreToCurrentFrame(5, 5)
         expect(scorecard.currentFrame).toEqual([5, 5])
     })
 
+    it('doubles the score of first roll if player scored a spare in the last round', function() {
+        //would be better to set isSpare to equal true with a double.
+        scorecard.addNewScore(5, 5)
+        scorecard.addNewScore(3, 3)
+        expect(scorecard.currentFrame).toEqual([6, 3])
+    })
+
+    it('doubles the score of first roll if player scored a strike in the last round', function() {
+        //would be better to set isSpare to equal true with a double.
+        scorecard.addNewScore(10, 0)
+        scorecard.addNewScore(3, 3)
+        expect(scorecard.currentFrame).toEqual([6, 6])
+    })
 })
 
 

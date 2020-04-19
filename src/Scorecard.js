@@ -1,6 +1,7 @@
 class Scorecard {
   constructor() {
     this.score = 0;
+    this.frames;
   }
   setScore(frames) {
     if (frames.includes(10)) {
@@ -20,5 +21,8 @@ class Scorecard {
         this.score += number;
       }
     });
+  }
+  addFrame(roll1, roll2) {
+    this.frames = new Frame();
   }
 }

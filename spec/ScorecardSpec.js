@@ -110,5 +110,4 @@ describe('scorecard', function() {
       expect(scorecard.score).toEqual(50);
     });
   });
-
 });

@@ -12,7 +12,7 @@ class Scorecard {
   }
   addSpare(frame, index, frames) {
     this.addOpenFrame(frame);
-    if (frames[index+1] == undefined) {
+    if (this.nextRollIsUndefined(index, frames)) {
       this.score = 'Add another frame.';
     } else {
       this.score += frames[index+1].roll1;
@@ -20,18 +20,30 @@ class Scorecard {
   }
   addStrike(frame, index, frames) {
     this.score += 10;
-    if (frames[index+1] == undefined) {
+    if (this.nextRollIsUndefined(index, frames)) {
       this.score = 'Add another frame.';
-    } else if (frames[index+1].isSpare() == true) {
+    } else if (this.nextRollIsSpare(index, frames)) {
       this.score += 10;
-    } else if (frames[index+1].isStrike() == true && frames[index+2] == undefined) {
+    } else if (this.rollAfterNextIsUndefined(index, frames)) {
       this.score = 'Add another frame.';
-    } else if (frames[index+1].isStrike() == true) {
+    } else if (this.nextRollIsStrike(index, frames)) {
       this.score += 10;
       this.score += frames[index+2].roll1;
     } else {
       this.addOpenFrame(frames[index+1]);
     }
+  }
+  nextRollIsUndefined(index, frames) {
+    return frames[index+1] == undefined;
+  }
+  nextRollIsSpare(index, frames) {
+    return frames[index+1].isSpare();
+  }
+  rollAfterNextIsUndefined(index, frames) {
+    return frames[index+1].isStrike() && frames[index+2] == undefined;
+  }
+  nextRollIsStrike(index, frames) {
+    return frames[index+1].isStrike();
   }
   calculateScore() {
     this.frames.forEach((frame, index, frames) => {

@@ -324,4 +324,9 @@ Green.
 
 Wrote a test for Frame10 isComplete to return false if the first two rolls are a spare (as there is still a bonus roll to go). Red.
 
-- modified 
+- Modified to return true if roll1 has been made and the sum of roll 1 and 2  is less than 10 (not a spare), otherwise return false (spare, so still can make a bonus roll).
+
+Green.
+
+Wrote a test for isComplete to return true once the third roll after a spare has been made. Red.
+

@@ -14,10 +14,17 @@ describe('Frame10', () => {
       expect(frame.isComplete()).toBe(true);
     });
 
-    it('should return false if the first two rolls are a spare', () => {
+    it('should return false if the first two rolls are a spare (still bonus roll to go)', () => {
       frame.roll1 = 5;
       frame.roll2 = 5;
       expect(frame.isComplete()).toBe(false);
+    });
+
+    it('should return true after the third roll after a spare', () => {
+      frame.roll1 = 5;
+      frame.roll2 = 5;
+      frame.roll2 = 5;
+      expect(frame.isComplete()).toBe(true);
     });
 
   });

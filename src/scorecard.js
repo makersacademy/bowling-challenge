@@ -54,6 +54,7 @@ Scorecard.prototype.incorrectScore = function() {
 
 Scorecard.prototype.addScoreToCurrentFrame = function(score1, score2) {
     this.currentFrame.push(score1, score2)
+    this.addCurrentToAllFrames(this.currentFrame)
 }
 
 Scorecard.prototype.clearCurrentFrame = function() {

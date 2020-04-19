@@ -97,6 +97,17 @@ describe('Scorecard', function() {
         scorecard.addCurrentToAllFrames([3, 2])
         expect(scorecard.allFrames).toEqual([[3, 2]])
     })
+
+    it('add new score goes to all frames', function() {
+        scorecard.addNewScore(4, 3)
+        expect(scorecard.allFrames).toEqual([[4, 3]])
+    })
+
+    it('is an array of arrays', function() {
+        scorecard.addNewScore(4, 3)
+        scorecard.addNewScore(4, 5)
+        expect(scorecard.allFrames).toEqual([[4, 3], [4, 5]])
+    })
 })
 
 

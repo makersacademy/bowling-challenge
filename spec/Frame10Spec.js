@@ -3,7 +3,7 @@ describe("Frame10", () => {
   beforeEach(function () {
     frame = new Frame10();
   });
-  fdescribe("isComplete", () => {
+  describe("isComplete", () => {
     it("should default to false", () => {
       expect(frame.isComplete()).toBe(false);
     });

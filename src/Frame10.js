@@ -8,6 +8,9 @@ class Frame10 {
   }
 
   isComplete() {
+    if (this.roll1 == 10 && this.roll2 != null) {
+      return true
+    }
     if (this.roll1 !=null && this.roll1 + this.roll2 < 10) {
       return true
     }

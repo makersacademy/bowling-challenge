@@ -334,4 +334,8 @@ Wrote a test for isComplete to return true once the third roll after a spare has
 
 Green.
 
-Wrote 
+Wrote a test for isComplete to return true after a strike and then a non strike roll. Red.
+
+- Added a condition to retun true if roll1 is 10 and roll2 is not null (i.e. filled).
+
+

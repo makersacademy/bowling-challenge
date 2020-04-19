@@ -62,17 +62,31 @@ describe('Feature Test:', function() {
   })
   
 
-  describe('Player rolls a spare', function() {
-    it('a new frame is started and a bonus score is added', function() {
-      game.bowlBall(10);
+  describe('Player completes game', function() {
+    it('after 10 rounds a game is complete', function() {
+      game.bowlBall(1);
+      game.bowlBall(5);
+      game.bowlBall(2);
+      game.bowlBall(3);
+      game.bowlBall(3);
       game.bowlBall(4);
+      game.bowlBall(4);
+      game.bowlBall(3);
+      game.bowlBall(5);
+      game.bowlBall(2);
       game.bowlBall(6);
       game.bowlBall(1);
-      game.bowlBall(3);
-      expect(game.getTotalScore()).toEqual(35);
-      expect(game.getScore()).toEqual(24);
-      expect(game.getBonusScore()).toEqual(11);
-      expect(game.getFrameCount()).toEqual(4);
+      game.bowlBall(7);
+      game.bowlBall(0);
+      game.bowlBall(8);
+      game.bowlBall(0);
+      game.bowlBall(9);
+      game.bowlBall(0);
+      game.bowlBall(1);
+      game.bowlBall(0);
+      expect(game.getTotalScore()).toEqual(64);
+      expect(game.getFrameCount()).toEqual(10);
+      expect(game.complete()).toEqual(true);
     })
   })
   

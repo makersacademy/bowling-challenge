@@ -28,6 +28,6 @@ class Scorecard {
 
   setScore2() {
     const frame = this.frames[0];
-    this.score += frame.roll2;
+    this.score += frame.roll1 + frame.roll2;
   }
 }

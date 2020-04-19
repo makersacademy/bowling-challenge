@@ -17,7 +17,16 @@ describe('scorecard', function() {
     });
   });
 
+  describe('single frames', function() {
+    it('frame [0, 0] returns score 0', function() {
+      scorecard.addFrame(0, 0);
+      expect(scorecard.score).toEqual(0);
+    });
+  });
+
+
   describe('open frame scorecards', function() {
+
     it('Gutter scorecard returns 0', function() {
       expect(scorecard.setScore([00, 00, 00, 00, 00, 00, 00, 00, 00, 00]))
           .toEqual(0);

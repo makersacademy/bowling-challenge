@@ -134,6 +134,19 @@ describe("Scorecard", () => {
 
   describe('gameOver', () => {
 
+    it('gameOver is false when last frame is not complete', () => {
+      expect(scorecard.gameOver()).toBe(false)
+    });
+
+    it('game is over when last frame is complete', () => {
+      let i = 0;
+      while (i < 20) {
+        scorecard.record(1);
+        i++;
+      }
+      expect(scorecard.gameOver()).toBe(true)
+    });
+
     it('in a game in which the bonus roll is not available, final frame roll 3 remains null', () => {
       let i = 0;
       while (i < 21) {
@@ -141,10 +154,6 @@ describe("Scorecard", () => {
         i++;
       }
       expect(scorecard.frames[9].roll3).toBe(null);
-
-
-
-
     });
 
   });

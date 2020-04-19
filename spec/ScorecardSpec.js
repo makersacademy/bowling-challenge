@@ -5,10 +5,15 @@ describe('scorecard', function() {
     scorecard = new Scorecard();
   });
 
-  describe('adding a new frame', function() {
+  describe('adding frames', function() {
     it('can accept a new frame', () => {
       scorecard.addFrame(2, 2);
-      expect(scorecard.frames).toBeInstanceOf(Frame);
+      expect(scorecard.frames[0]).toBeInstanceOf(Frame);
+    });
+    it('can accept two frames', () => {
+      scorecard.addFrame(2, 2);
+      scorecard.addFrame(10);
+      expect(scorecard.frames[1]).toBeInstanceOf(Frame);
     });
   });
 

@@ -13,7 +13,6 @@ class Scorecard {
   addSpare(frame, index, frames) {
     this.addOpenFrame(frame);
     if (this.nextRollIsUndefined(index, frames)) {
-      this.score = 'Add another frame.';
     } else {
       this.score += frames[index+1].roll1;
     }
@@ -21,7 +20,6 @@ class Scorecard {
   addStrike(frame, index, frames) {
     this.score += 10;
     if (this.nextRollIsUndefined(index, frames)) {
-      this.score = 'Add another frame.';
     } else if (this.nextRollIsSpare(index, frames)) {
       this.score += 10;
     } else if (this.rollAfterNextIsUndefined(index, frames)) {
@@ -34,7 +32,10 @@ class Scorecard {
     }
   }
   nextRollIsUndefined(index, frames) {
-    return frames[index+1] == undefined;
+    if (frames[index+1] == undefined) {
+      this.score = 'Add another frame.';
+      return true
+    }
   }
   nextRollIsSpare(index, frames) {
     return frames[index+1].isSpare();

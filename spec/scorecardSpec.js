@@ -25,5 +25,11 @@ describe('Scorecard', function() {
     scorecard.roundSummary()
     expect(scorecard.frameTotal).toEqual([8])
   });
+
+  xit('If first bowl is a strike, second bowl is skipped', function() {
+    //if bowl.One
+
+  });
+
 });
 //frame(arrays),

@@ -16,8 +16,7 @@ class Scorecard {
       if (number == 10) {
         this.score += 10;
         this.score += arr[index + 1];
-      }
-      else {
+      } else {
         this.score += number;
       }
     });

@@ -1,4 +1,4 @@
-class Game {
+class Scorecard {
   constructor() {
     this.score = 0;
   }
@@ -15,7 +15,8 @@ class Game {
       if (number == 10) {
         this.score += 10;
         this.score += arr[index + 1];
-      } else {
+      }
+      else {
         this.score += number;
       }
     });

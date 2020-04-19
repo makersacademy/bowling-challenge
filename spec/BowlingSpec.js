@@ -42,14 +42,18 @@ describe("Bowling", function () {
       ]);
     });
   });
-  describe('loopFrame', function(){
+  describe('loopText', function(){
     it("loops ten times and each time returns 'frame + number of loop' ", function(){
-      expect(bowling.loopFrame()).toEqual('Frame 10')
+      expect(bowling.loopText()).toEqual('undefined 10')
     })
   
   })
 
-  
+  describe('makeFrameText',function(){
+    it("", function(){
+      expect(bowling.makeFrameText()).toEqual('Frame 10')
+    })
+  })
 
 
 });

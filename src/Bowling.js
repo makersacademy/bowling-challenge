@@ -39,12 +39,17 @@ Bowling.prototype.makeCard =  function(){
    return this.card
 }
 
-Bowling.prototype.loopFrame = function(){
+Bowling.prototype.loopText = function(objectToLoop){
   var i;
-  var text = ''
+  var looped
   for (i = 0; i < 11; i++) {
-    text = "Frame" + " " + i 
+    looped =  `${objectToLoop} ${i}`
   }
-  return text 
+  return looped
 }
 
+Bowling.prototype.makeFrameText=function(){
+  var text
+  text = "Frame"
+  return this.loopText(text)
+}

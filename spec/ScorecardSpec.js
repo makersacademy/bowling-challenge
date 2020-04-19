@@ -18,33 +18,63 @@ describe('scorecard', function() {
   });
 
   describe('single frames', function() {
-    it('frame [0, 0] returns score 0', function() {
+    it('[0, 0] returns score 0', function() {
       scorecard.addFrame(0, 0);
       expect(scorecard.score).toEqual(0);
     });
 
-    it('frame [0, 5] returns score 5', function() {
+    it('[0, 5] returns score 5', function() {
       scorecard.addFrame(0, 5);
       expect(scorecard.score).toEqual(5);
     });
 
-    it('frame [3, 5] returns score 8', function() {
+    it('[3, 5] returns score 8', function() {
       scorecard.addFrame(3, 5);
       expect(scorecard.score).toEqual(8);
     });
   });
 
   describe('two frames', function() {
-    it('frames [2, 6], [3, 2] scores 13', function() {
+    it('[2, 6], [3, 2] scores 13', function() {
       scorecard.addFrame(2, 6);
       scorecard.addFrame(3, 2);
       expect(scorecard.score).toEqual(13);
     });
 
-    it('frames [3, 7], [3, 2] scores 18', function() {
+    it('[3, 7], [3, 2] scores 18', function() {
       scorecard.addFrame(3, 7);
       scorecard.addFrame(3, 2);
       expect(scorecard.score).toEqual(18);
+    });
+  });
+
+  describe('three frames', function() {
+    it('[2, 6], [3, 2], [1, 4] returns 18', function() {
+      scorecard.addFrame(2, 6);
+      scorecard.addFrame(3, 2);
+      scorecard.addFrame(1, 4);
+      expect(scorecard.score).toEqual(18);
+    });
+
+    it('[3, 7], [3, 2], [1, 4] returns 23', function() {
+      scorecard.addFrame(3, 7);
+      scorecard.addFrame(3, 2);
+      scorecard.addFrame(1, 4);
+      expect(scorecard.score).toEqual(23);
+    });
+
+    it('[3, 7], [3, 7], [1, 4] returns 29', function() {
+      scorecard.addFrame(3, 7);
+      scorecard.addFrame(3, 7);
+      scorecard.addFrame(1, 4);
+      expect(scorecard.score).toEqual(29);
+    });
+
+    it('[10], [3, 7], [1, 4] returns 36', function() {
+      scorecard.addFrame(10);
+      scorecard.addFrame(3, 7);
+      scorecard.addFrame(1, 4);
+      expect(scorecard.score).toEqual(36);
     });
   });
 

@@ -25,27 +25,33 @@ class Scorecard {
     this.frames.push(new Frame(roll1, roll2));
     this.setScore2();
   }
-  addBothRolls(frame) {
+  addOpenFrame(frame) {
     this.score += frame.roll1 + frame.roll2;
   }
-  calculateSpare(frame, index, frames) {
-    this.addBothRolls(frame);
+  addSpare(frame, index, frames) {
+    this.addOpenFrame(frame);
     if (frames[index+1] == undefined) {
       this.score = 'Add another frame.';
     } else {
       this.score += frames[index+1].roll1;
     }
   }
+  calculateScore() {
+    this.frames.forEach((frame, index, frames) => {
+      this.scoreLogic(frame, index, frames);
+    });
+  }
+  scoreLogic(frame, index, frames) {
+    if (frame.isSpare() == true) {
+      this.addSpare(frame, index, frames);
+    } else if (frame.isStrike() == true) {
+      this.score += 20;
+    } else {
+      this.addOpenFrame(frame);
+    }
+  }
   setScore2() {
     this.score = 0;
-    this.frames.forEach((frame, index, frames) => {
-      if (frame.isSpare() == true) {
-        this.calculateSpare(frame, index, frames);
-      } else if (frame.isStrike() == true) {
-        this.score += 20;
-      } else {
-        this.addBothRolls(frame);
-      }
-    });
+    this.calculateScore();
   }
 }

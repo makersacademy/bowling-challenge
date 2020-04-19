@@ -8,13 +8,15 @@ $(document).ready(function() {
     updateDisplay();
   })
 
- 
- 
   function updateDisplay() {
+    console.log(game._bonusScore)
     $('#bonus').text(game.getBonusScore());
     $('#main').text(game.getScore());
     $('#total').text(game.getTotalScore());
-    $('#1 .bottom').text(game.getFrameScore())
+    var number = game.getFrameCount()
+    $('#'+number+'.left').text(game.getFirstRoll())
+    $('#'+(number-1)+'.right').text(game._secondTurn)
+    $('#'+(number-1)+'.bottom').text(game._frameScore) 
   }
 
 });

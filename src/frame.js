@@ -41,3 +41,7 @@ Frame.prototype.spare = function() {
 Frame.prototype.firstTurn = function() {
   return this._turns[0]
 }
+
+Frame.prototype.secondTurn = function() {
+  return this._turns[1]
+}

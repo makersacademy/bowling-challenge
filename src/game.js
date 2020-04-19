@@ -15,6 +15,17 @@ Game.prototype.getFrameScore = function() {
   return frame.viewScore();
 }
 
+Game.prototype.getFirstRoll = function() {
+  frame = this._currentFrame();
+  return frame.firstTurn();
+}
+
+Game.prototype.getSecondRoll = function() {
+  if(this.getFrameCount > 2){
+    return this._lastFrame().secondTurn()
+  }
+}
+
 Game.prototype.getFrameCount = function() {
   return this._frames.length;
 }
@@ -50,6 +61,7 @@ Game.prototype._applySpare = function(pins) {
   if (last.spare()) {
     this._bonusScore += frame.firstTurn();
   } 
+  
 }
 Game.prototype._applyStrike = function() {
   last = this._lastFrame()
@@ -73,6 +85,8 @@ Game.prototype._addFrame = function() {
 
 Game.prototype._endTurn = function() {
   if(frame.complete()) {
+    this._secondTurn = frame.secondTurn()
+    this._frameScore = this.getFrameScore()
     this._updateScore()
     this._addFrame()
   } 

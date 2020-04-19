@@ -18,6 +18,7 @@ h1 {
   align-self: center;
   display: flex;
   padding: 80px;
+  flex-wrap: wrap;
 }
 .frame {
   display: flex;
@@ -60,4 +61,12 @@ h1 {
   height: 80px;
 }
 
+.pins {
+  padding-top: 20px;
+  align-self: center;
+}
+button {
+  height: 30px;
+  width: 30px;
+}
 

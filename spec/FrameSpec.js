@@ -12,6 +12,13 @@ describe('Frame', () => {
       expect(frame.isComplete()).toBe(false);
     });
 
+    it('if both rolls are made should be true', () => {
+      frame.roll1 = 2
+      frame.roll2 = 2
+      expect(frame.isComplete()).toBe(true);
+    });
+
+
   });
 
   describe('isSpare()', () => {

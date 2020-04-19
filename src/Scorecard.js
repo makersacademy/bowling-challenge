@@ -28,8 +28,17 @@ class Scorecard {
 
   setScore2() {
     this.score = 0;
-    this.frames.forEach((frame, index, array) => {
-      this.score += frame.roll1 + frame.roll2;
+    this.frames.forEach((frame, index, frames) => {
+      if (frame.isSpare() == true) {
+        this.score += frame.roll1 + frame.roll2;
+        if (frames[index+1] == undefined) {
+          this.score = 'Add another frame.';
+        } else {
+          this.score += frames[index+1].roll1;
+        }
+      } else {
+        this.score += frame.roll1 + frame.roll2;
+      }
     });
   }
 }

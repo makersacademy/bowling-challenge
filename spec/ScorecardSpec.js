@@ -40,6 +40,12 @@ describe('scorecard', function() {
       scorecard.addFrame(3, 2);
       expect(scorecard.score).toEqual(13);
     });
+
+    it('frames [3, 7], [3, 2] scores 18', function() {
+      scorecard.addFrame(3, 7);
+      scorecard.addFrame(3, 2);
+      expect(scorecard.score).toEqual(18);
+    });
   });
 
   describe('open frame scorecards', function() {

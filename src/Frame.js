@@ -13,4 +13,7 @@ class Frame {
     }
     return true;
   }
+  isOpenFrame() {
+    return true;
+  }
 };

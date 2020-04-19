@@ -4,6 +4,8 @@
   padding: 0;
   text-align: center;
   box-sizing: border-box;
+  color: #000000b3;
+  font-family: 'Special Elite';
 }
 
 body {
@@ -21,9 +23,22 @@ body {
 }
 
 .sheet {
-  background: yellow;
-  padding: 5em;
+  display: grid;
+  grid-template-areas: 
+  "title help controls"
+  "table table table"
+  "input input input";
+  grid-template-columns: 250px 1fr 200px;
+  gap: 1em;
+  background-image: url(images/rice-paper-3.png);
+  background-color: #ffffc9;
+  padding: 2em 3em;
+  clip-path: polygon(0.5% 0, 98% 0, 100% 3%, 99.8% 81%, 100% 100%, 20% 100%, 0.2% 99%, 0 63%);
+}
+
+#table {
   display: flex;
+  grid-area: table;
 }
 
 .frame {
@@ -32,45 +47,45 @@ body {
   grid-template-areas:
     "num num num"
     ". roll1 roll2"
-    "runningtotal runningtotal .";
+    "running-total running-total .";
   grid-template-columns: repeat(3, 2em);
   grid-template-rows: repeat(3, 1.5em);
-  border: solid black 1px;
+  border: dashed black 1px;
 }
 
 #frame10 {
   grid-template-areas:
     "num num num num"
     ". roll1 roll2 roll3"
-    "runningtotal runningtotal . .";
+    "running-total running-total . .";
   grid-template-columns: repeat(4, 2em);
 }
 
 .number {
-  border-bottom: solid black 1px;
+  border-bottom: dashed black 1px;
   grid-area: num;
 }
 
 .roll1 {
-  border-bottom: solid black 1px;
-  border-left: solid black 1px;
+  border-bottom: dashed black 1px;
+  border-left: dashed black 1px;
   grid-area: roll1;
 }
 
 .roll2 {
-  border-bottom: solid black 1px;
-  border-left: solid black 1px;
+  border-bottom: dashed black 1px;
+  border-left: dashed black 1px;
   grid-area: roll2;
 }
 
 .roll3 {
-  border-bottom: solid black 1px;
-  border-left: solid black 1px;
+  border-bottom: dashed black 1px;
+  border-left: dashed black 1px;
   grid-area: roll3;
 }
 
 .running-total {
-  grid-area: runningtotal;
+  grid-area: running-total;
 }
 
 .side-box {
@@ -82,12 +97,12 @@ body {
     "field";
   grid-template-columns: 8em;
   grid-template-rows: repeat(3, 1.5em);
-  border: solid black 1px;
+  border: dashed black 1px;
 }
 
 .label {
   grid-area: label;
-  border-bottom: solid black 1px;
+  border-bottom: dashed black 1px;
 }
 
 .label {
@@ -109,4 +124,27 @@ body {
 .field {
   font-family: "Rock Salt";
   font-size: 1.2em;
+  background: none;
+}
+
+.number, .label {
+  line-height: 1.5em;
+}
+
+#title {
+  grid-area: title;
+  font-family: 'Faster One';
+  font-weight: 100;
+  line-height: 0.7;
+  text-align: left;
+}
+
+#controls {
+  grid-area: controls;
+}
+
+.button {
+  border: dashed black 1px;
+  padding: 10px;
+  background: none;
 }

@@ -63,3 +63,16 @@ describe('Scorecard', function() {
         expect(scorecard.calculateScore(5, 5)).toEqual(10)
     })
 })
+
+describe('Frame', function() {
+    var frame
+
+    beforeEach(function() {
+        frame = new Frame()
+    })
+
+    it('contains an array with the score', function() {
+        expect(frame.addScoreToArray(5, 5)).toEqual([5, 5])
+    })
+    
+})

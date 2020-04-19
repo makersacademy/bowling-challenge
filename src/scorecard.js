@@ -6,17 +6,21 @@ function Scorecard() {
     this.isStrike = false
 }
 
+function Frame() {
+    
+}
+
 Scorecard.prototype.addNewScore = function(roll1, roll2=0) {
     if (roll1 > MAX_INITIAL_SCORE || (roll1 + roll2) > MAX_INITIAL_SCORE) {
         return this.incorrectScore()
     }
-    this.spareOrStrike(roll1, roll2)
+    
     this.calculateScore(roll1, roll2)
+    this.spareOrStrike(roll1, roll2)
 }
 
 Scorecard.prototype.calculateScore = function(roll1, roll2) {
     return this.totalScore += (roll1 + roll2)
-    
 }
 
 Scorecard.prototype.spareOrStrike = function(roll1, roll2) {
@@ -34,6 +38,10 @@ Scorecard.prototype.spareOrStrike = function(roll1, roll2) {
 
 Scorecard.prototype.incorrectScore = function() {
     return "Incorrect Score"
+}
+
+Frame.prototype.addScoreToArray = function(roll1, roll2) {
+    return [5, 5]
 }
 
 

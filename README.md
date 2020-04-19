@@ -84,4 +84,19 @@ Reviewers will potentially be using this [code review rubric](docs/review.md).  
 |     5 + 6      |     error      |
 
 
+   psuedo code for adding strikes and spares
+
+/*
+       if (this.isSpare === true) {
+        score1 = roll1 * 2
+        score2 = roll2
+    } else if (this.isStrike === true) {
+        score1 = roll1 * 2
+        score2 = roll2 * 2
+    } else {
+        score1 = roll1
+        score2 = roll2
+    }
+    */
+
 - unable to raise error to stop user adding to much to their score.

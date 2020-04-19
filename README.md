@@ -62,7 +62,6 @@ Points accumulate automatically each time the user enters points
 * I want to know what frame this is
 * So I know how many more opportunities to get points i got
 
-
 ### Acceptance criteria
 
 * Given that I have been playing bowling
@@ -73,3 +72,20 @@ Points accumulate automatically each time the user enters points
 
 * The game starts at Frame 1
 * There is a maximum of 2 rolls per frame
+
+
+## User story 5
+
+* As a user, when I am playing bowling
+* I want to see what my points are in each frame
+* So I that I can know how I am doing in the game as it progresses
+
+### Acceptance criteria
+
+* Given that I have being playing bowling
+* When I have rolled several times
+* Then I want to know how many points I totalled in each frame
+
+### Requirements
+
+Frame points are added together and displayed to the user as frame points

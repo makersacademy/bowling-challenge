@@ -20,12 +20,16 @@ describe('Bowlingcard', function() {
       bowlingcard.enterScore(10);
       expect(bowlingcard.score).toBe(15);
     });
-    it('increase the count of rolls after user entes score for a roll', function() {
+    it('increase the count of rolls after user enters score for a roll', function() {
       bowlingcard.enterScore(5);
       bowlingcard.enterScore(10);
       expect(bowlingcard.roll).toBe(2);
     });
-    
+    it('stores the number entered by the user in its corresponding roll', function() {
+      bowlingcard.enterScore(5);
+      bowlingcard.enterScore(10);
+      expect(bowlingcard.rollScores).toEqual([5, 10]);
+    })   
   });
 
   describe('.roll', function() {
@@ -34,17 +38,42 @@ describe('Bowlingcard', function() {
     })
   })
 
+  
   describe('.frame', function() {
     it('starts game at 0', function() {
       expect(bowlingcard.frame).toBe(0);
     });
-    it('increases by one every 2 rolls', function() {
+  });
+
+  describe('.frameNumber', function() {
+    it('increases frame by 1 every 2 rolls', function() {
       bowlingcard.enterScore(5);
       bowlingcard.enterScore(8);
       bowlingcard.enterScore(5);
       bowlingcard.enterScore(8);
-      bowlingcard.frameCount();
-      expect(bowlingcard.frame).toBe(2)
+      bowlingcard.frameNumber();
+      expect(bowlingcard.frame).toBe(2);
     })
   })
-});
+
+  describe('.gameFrame', function() {
+    it('adds a frame to the list of frames every 2 rolls', function() {
+      bowlingcard.frame = 2;
+      bowlingcard.gameFrame();
+      expect(bowlingcard.inGameFrames).toEqual([1, 2]);
+    })
+  })
+})
+
+/*
+  describe('.framePoints', function() {
+    it('adds the points scored in a frame', function() {
+      bowlingcard.enterScore(5);
+      bowlingcard.enterScore(8);      
+      bowlingcard.framePoints(1);
+      expect(bowlingcard.framePoints(1)).toBe(13);
+
+    })
+  
+})
+  */

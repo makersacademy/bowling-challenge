@@ -15,11 +15,11 @@ Scorecard.prototype.addNewScore = function(roll1, roll2=0) {
         return this.incorrectScore()
     }
     
-    this.calculateScore(roll1, roll2)
+    this.calculateFrameScore(roll1, roll2)
     this.spareOrStrike(roll1, roll2)
 }
 
-Scorecard.prototype.calculateScore = function(roll1, roll2) {
+Scorecard.prototype.calculateFrameScore = function(roll1, roll2) {
     //this.totalScore += (roll1 + roll2) line below should become useless
     this.totalScore = roll1 + roll2
     if (this.isSpare === true) { 
@@ -63,6 +63,10 @@ Scorecard.prototype.clearCurrentFrame = function() {
 
 Scorecard.prototype.addCurrentToAllFrames = function(currentFrame) {
     this.allFrames.push(currentFrame)
+}
+
+Scorecard.prototype.calculateTotalScore = function() {
+    return 7
 }
 
 

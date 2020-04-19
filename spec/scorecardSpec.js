@@ -5,14 +5,10 @@ describe('Scorecard', function() {
         scorecard = new Scorecard()
     })
 
-    it('Has a starting score of 0', function() {
-        expect(scorecard.totalScore).toEqual(0)
-    })
-
-    it('can add a new frame score to their total score', function() {
-        scorecard.addNewScore(2, 3)
-        expect(scorecard.totalScore).toEqual(5)
-    })
+    //it('can add a new frame score to their total score', function() {
+    //    scorecard.addNewScore(2, 3)
+    //    expect(scorecard.totalScore).toEqual(5)
+    //})
 
     it('if there is not a spare isSpare returns false', function() {
         expect(scorecard.isSpare).toEqual(false)
@@ -54,10 +50,10 @@ describe('Scorecard', function() {
         expect(scorecard.addNewScore(11)).toEqual('Incorrect Score')
     })
 
-    it('calculates the score', function() {
-        scorecard.calculateScore(5, 5)
-        expect(scorecard.totalScore).toEqual(10)
-    })
+    //it('calculates the score', function() {
+    //    scorecard.calculateScore(5, 5)
+    //    expect(scorecard.totalScore).toEqual(10)
+    //})
 
     it('a strike gives 10 points in the current frame', function() {
         scorecard.addNewScore(10)
@@ -108,7 +104,18 @@ describe('Scorecard', function() {
         scorecard.addNewScore(4, 5)
         expect(scorecard.allFrames).toEqual([[4, 3], [4, 5]])
     })
+
+    it('Has a starting score of 0', function() {
+        expect(scorecard.totalScore).toEqual(0)
+    })
+
+    it('calculates the total score', function() {
+        expect(scorecard.calculateTotalScore()).toEqual(7)
+
+    })
 })
+
+
 
 
 

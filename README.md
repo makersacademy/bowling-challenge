@@ -361,11 +361,9 @@ Green.
 
 As this method now has five(!) if statements it needs to be refactored.
 
-With just a check for roll2 being null returning false otherwise returning true most of the tests pass. Only the tests with a spare or two strikes and a bonus roll still to go fail.
-
-Adding a condition of isSpare and roll3 being null returning false, and a condition of are rolls 1 and 2 strikes and roll3 being null returning false passes the rest of the tests.
-
-Finally, extracted lengthy double strike conditions into its own method, isDoubleStrike.
+- With just a check for roll2 being null returning false otherwise returning true most of the tests pass. Only the tests with a spare or two strikes and a bonus roll still to go fail.
+- Adding a condition of isSpare and roll3 being null returning false, and a condition of are rolls 1 and 2 strikes and roll3 being null returning false passes the rest of the tests.
+- Finally, extracted lengthy double strike conditions into its own method, isDoubleStrike.
 
 Now the updateRunningTotal method works correctly with the final frame.
 
@@ -376,7 +374,4 @@ The last thing to do is fill in the grand total with the final running total.
 ### Handling Edge Cases
 
 Even if the tenth frame bonus
-=======
-_While working on Frame10 I realised that it does not need the isStrike or isSpare methods, or the strikeBonus or spareBonus properties, as it is the last frame these are never called or assigned. I removed these and their tests._
 
->>>>>>> c3a78571fbd220d01dc6d9e9e23c26306e3ed914

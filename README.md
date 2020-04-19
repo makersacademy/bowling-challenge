@@ -306,7 +306,7 @@ Now this method can be used to decide if the running total for the frame should 
 
 - Added a new interface method updateRunningTotal, which updates the relevant frame's total element with its total if that frame is complete.
 
-### Displaying FInal Frame Total
+### Displaying Final Frame Total
 
 Now for the final frame. The final frame can have a bonus roll if the first roll is a strike or a spare so its isComplete method is slightly different.
 
@@ -351,3 +351,6 @@ Wrote a test for isComplete to return true two strikes and then a third roll. Re
 - Moved the check for roll3 being filled up to the top of the order.
 
 Green.
+
+_While working on Frame10 I realised that it does not need the isStrike or isSpare methods, or the strikeBonus or spareBonus properties, as it is the last frame these are never called or assigned. I removed these and their tests._
+

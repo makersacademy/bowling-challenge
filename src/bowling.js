@@ -7,6 +7,10 @@ Bowling.prototype.addPlayer = function(name){
   this.players.push(name);
 };
 
-Bowling.prototype.getCurrentPlayer = function(){
+Bowling.prototype.getCurrentPlayer = function() {
   return this.players[this.currentPlayer];
 }
+
+Bowling.prototype.changeTurn = function() {
+  this.currentPlayer++;
+};

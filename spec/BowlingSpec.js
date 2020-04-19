@@ -19,10 +19,17 @@ describe("Bowling", function() {
     expect(bowling.players[0]).toEqual(playerOne);
   });
 
-  it(" should be able to tell me the current player pt1", function() {
+  it(" should be able to tell me the current player on the first turn", function() {
     bowling.addPlayer(playerOne);
     bowling.addPlayer(playerTwo);
     expect(bowling.getCurrentPlayer()).toEqual(playerOne);
   });
+
+  it(" should be able to change the turn", function() {
+    bowling.addPlayer(playerOne);
+    bowling.addPlayer(playerTwo);
+    bowling.changeTurn();
+    expect(bowling.getCurrentPlayer()).toEqual(playerTwo);
+  })
 
 });

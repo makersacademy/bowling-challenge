@@ -3,8 +3,6 @@ class Frame10 {
     this.roll1 = null;
     this.roll2 = null;
     this.roll3 = null;
-    this.strikeBonus = null;
-    this.spareBonus = null;
   }
 
   isComplete() {
@@ -34,7 +32,7 @@ class Frame10 {
   
   total() {
     return (
-      this.roll1 + this.roll2 + this.roll3 + this.spareBonus + this.strikeBonus
+      this.roll1 + this.roll2 + this.roll3
     );
   }
 }

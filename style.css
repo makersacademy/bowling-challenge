@@ -55,7 +55,7 @@ body {
   border: dashed black 1px;
 }
 
-#frame10 {
+#frame9 {
   grid-template-areas:
     "num num num num"
     ". roll1 roll2 roll3"
@@ -144,24 +144,35 @@ body {
 #controls {
   display: flex;
   flex-direction: column;
-  flex
   grid-area: controls;
 }
 
 .button {
   border: dashed black 1px;
-  padding: 10px;
+  padding: 1em;
   background: none;
   margin-top: -1px;
 }
 
 .button:hover {
-text-decoration: underline;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.button:disabled {
+  opacity: .5;
+}
+
+.button:disabled:hover {
+  opacity: .5;
+  text-decoration: none;
+  cursor: default;
 }
 
 #input {
   grid-area: input;
 }
+
 #input .button {
-  width
+  padding: 1em 2em;
 }

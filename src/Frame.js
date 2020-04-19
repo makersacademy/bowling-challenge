@@ -9,7 +9,7 @@ class Frame {
     return this.roll1 === 10
   }
   isSpare() {
-    return this.isStrike() ? false : this.total() === 10
+    return this.isStrike() ? false : this.roll1 + this.roll2 === 10
   }
   total() {
     return this.roll1 + this.roll2 + this.spareBonus + this.strikeBonus
@@ -28,7 +28,7 @@ class Frame10 {
     return this.roll1 === 10
   }
   isSpare() {
-    return this.isStrike() ? false : this.total() === 10
+    return this.isStrike() ? false : this.roll1 + this.roll2 === 10
   }
   total() {
     return this.roll1 + this.roll2 + this.roll3 + this.spareBonus + this.strikeBonus

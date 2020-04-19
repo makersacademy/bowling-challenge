@@ -251,7 +251,7 @@ For this to be a web app, an html page needs to interface with the scorecard.
 - Created index.html.
 - Added a background video for ambience.
 - Created the scoring table using css grid.
-- Added styling
+- Added styling and fonts.
 - Added some buttons to input scores.
 - Added a button to toggle the video sound.
 - Sourced js files.

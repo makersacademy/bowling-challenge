@@ -14,23 +14,12 @@ describe('Frame10', () => {
       expect(frame.isComplete()).toBe(true);
     });
 
-
-  });
-
-  describe('bonusRoll', () => {
-
-    it('should default to false', () => {
-      expect(frame.bonusRoll()).toBe(false);
-    });
-    it('should return true if spare', () => {
+    it('should return false if the first two rolls are a spare', () => {
       frame.roll1 = 5;
       frame.roll2 = 5;
-      expect(frame.bonusRoll()).toBe(true);
+      expect(frame.isComplete()).toBe(false);
     });
-    it('should return true if first roll is strike', () => {
-      frame.roll1 = 10;
-      expect(frame.bonusRoll()).toBe(true);
-    });
+
   });
 
   describe('isSpare()', () => {

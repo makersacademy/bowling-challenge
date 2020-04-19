@@ -14,9 +14,15 @@ Bowling Challenge
 - [ ] The 10th Frame allows for bonus rolls
 - [ ] A gutter game is declared
 - [ ] a perfect score is declared
-- [ ] Interactive animated display
+- [X] Interactive animated display
 - [ ] Travis set up
 - [ ] ESLint setup
+
+![bowling](process/images/bowling.gif)
+
+### Current Issues
+* 10th Frame 2nd score not showing
+* Users can have greater than 10 pins knocked down per round
 
 ## The Task
 

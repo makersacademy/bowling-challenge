@@ -41,11 +41,11 @@ Bowling.prototype.makeCard =  function(){
 
 Bowling.prototype.loopText = function(objectToLoop){
   var i;
-  var looped
+  var text
   for (i = 0; i < 11; i++) {
-    looped =  `${objectToLoop} ${i}`
+    text =  `${objectToLoop} ${i}`
   }
-  return looped
+  return text
 }
 
 Bowling.prototype.makeFrameText=function(){

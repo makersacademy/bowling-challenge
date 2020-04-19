@@ -5,11 +5,11 @@ function Game() {
 Game.prototype.setScore = function(frames) {
   if (frames.includes(10)) {
     this.strikeCalculator(frames);
-    return this.score
+    return this.score;
   }
   this.score = frames.reduce((a, b) => a + b, 0);
   return this.score;
-}
+};
 
 
 Game.prototype.strikeCalculator = function(array) {
@@ -21,5 +21,5 @@ Game.prototype.strikeCalculator = function(array) {
     } else {
       this.score += number;
     }
-  })
-}
+  });
+};

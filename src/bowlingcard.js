@@ -9,6 +9,15 @@ function Bowlingcard () {
 }
 
 Bowlingcard.prototype.enterScore = function(number) {
+ /*
+  if (number === 10) {
+    this.rollScores.push(number);
+    this.score += number;
+    this.roll++;
+    this.rollScores.push(0);
+    this.roll++; 
+  }
+  */
   this.rollScores.push(number);
   this.score += number;
   this.roll++;
@@ -22,6 +31,7 @@ Bowlingcard.prototype.frameNumber = function() {
   }
 }
 
+//I do not think you need ths one and the one above
 Bowlingcard.prototype.gameFrame = function() {
   if (this.frame === 1) {
     this.inGameFrames.push(1);
@@ -33,4 +43,9 @@ Bowlingcard.prototype.gameFrame = function() {
 Bowlingcard.prototype.framePoints = function(rollOne, rollTwo) {
   let points = rollOne + rollTwo;
   return points;
+}
+
+Bowlingcard.prototype.strike = function() {
+  this.rollScores.push(0);
+  this.roll++; 
 }

@@ -89,3 +89,20 @@ Points accumulate automatically each time the user enters points
 ### Requirements
 
 Frame points are added together and displayed to the user as frame points
+
+
+## User story 6
+
+* As a user, when I have rolled a strike
+* I want to know I do not need to roll again for that frame
+* So that I can add my points correctly in each frame
+
+### Acceptance criteria
+
+* Given that I have been playing bowling
+* When I have rolled a strike
+* Then I want to know I do not get a second roll in this frame
+
+### Requirements**
+
+The user is not able to add points for a second roll in a frame when they have rolled a strike in the first

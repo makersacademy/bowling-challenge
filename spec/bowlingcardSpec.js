@@ -69,5 +69,13 @@ describe('Bowlingcard', function() {
       expect(bowlingcard.framePoints(5, 8)).toBe(13);
     })
   })
+  
+  describe('.strike', function() {
+    it('records a value or 0 for the second roll if the first roll was a strike', function () {
+      bowlingcard.enterScore(10);
+      bowlingcard.strike()
+      expect(bowlingcard.rollScores[1]).toBe(0);
+    })
+  })
 
 })

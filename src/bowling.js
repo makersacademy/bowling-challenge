@@ -2,6 +2,7 @@ function Bowling() {
   this.players = [];
   this.currentPlayer = 0;
   this.currentFrame = 1;
+  this.firstBowl = 0
 };
 
 Bowling.prototype.addPlayer = function(name){
@@ -33,6 +34,6 @@ Bowling.prototype.incrCurrentFrame = function() {
   this.currentFrame++;
 }
 
-Bowling.prototype.storeFirst = function() {
-  
+Bowling.prototype.storeFirst = function(number) {
+  this.firstBowl = number;
 }

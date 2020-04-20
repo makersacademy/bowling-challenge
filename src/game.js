@@ -47,7 +47,7 @@ Game.prototype._addBonusToFrames = function _addBonusToPreviousSpare( bonus ) {
     frame.addBonus( bonus );
     if ( frame.hasAllBonuses() ) {
       frame.calcTotal( this._currentScore );
-      this._currentScore += frame.total;
+      this._currentScore = frame.total;
     }
   } );
 

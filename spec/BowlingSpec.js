@@ -14,7 +14,7 @@
 
  */
 
-describe("Bowling", function () {
+describe("#Bowling", function () {
   var bowling;
 
   beforeEach(function () {
@@ -31,13 +31,13 @@ describe("Bowling", function () {
     });
   });
 
-  describe("#makeCard", function () {
+  describe("#makeCardTemplate", function () {
     it("stores -> roll1 number of pins down; roll1 score; roll2 number of pins down; roll2 score --- in key  labelled by the frame number ", function () {
       bowling.calculateScore(1);
      
       bowling.calculateScore(4);
    
-      expect(bowling.makeCard()['frame1']).toEqual(
+      expect(bowling.makeCardTemplate()['frame1']).toEqual(
           { r1PinsDown: 0, r1score: 0, r2PinsDown: 0, r2score: 0 },
       );
       expect(bowling.card['frame10']).toEqual(
@@ -50,7 +50,7 @@ describe("Bowling", function () {
 
 
 
-  describe("loopText", function () {
+  describe("#loopText", function () {
     it("loops 'frame + number of loop' 10 times", function () {
       bowling.loop()
       expect(bowling.frameKey).toEqual("frame10");
@@ -63,17 +63,30 @@ describe("Bowling", function () {
   });
 
 
-describe("fillCard", function(){
+describe("#fillCard", function(){
   it("fills in the number of pins", function(){
-    bowling.makeCard()
+    bowling.makeCardTemplate();
     bowling.calculateScore(1);
     expect(bowling.fillCard()['frame1']['r1PinsDown']).toEqual(1)
   })
   it("fills in the number of pins", function(){
-    bowling.makeCard()
+    bowling.makeCardTemplate();
     bowling.calculateScore(1);
     expect(bowling.fillCard()['frame1']['r1Score']).toEqual(1)
   })
 })
+
+
+describe('#makeCard', function() {
+  it("returns 1", function(){
+    bowling.numPinsDown = 1
+    bowling.makeCardTemplate()
+    //bowling.makeCard()
+    expect(bowling.makeCard()['frame1']['r1PinsDown']).toEqual(1)
+  })
+    
+  
+
+});
 
 });

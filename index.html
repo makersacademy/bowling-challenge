@@ -5,18 +5,20 @@
     <h1> Bowling Scorecard </h1>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   </head>
-  <body>
-    <form>
+  <body style="background-image: url('background_wood.png');">
+    <form id="myform">
       <section>
         <label for="firstBowl"> First Bowl:</label><br>
-        <input type="text" id="firstBowl" name="fbowl"><br>
-        <button id="enterFirstBowl"> Enter </button>
+        <input type="text" id="usersFirstBowl" name="fbowl"><br>
+        <label for="secondBowl"> Second Bowl:</label><br>
+        <input type="text" id="usersSecondBowl" name="sbowl"><br>
       </section>
       <section>
-    <label for="secondBowl"> Second Bowl:</label><br>
-    <input type="text" id="enterSecondBowl" name="sbowl"><br>
-    <button id="enterSecondBowl"> Enter </button>
-     </section>
+        <button id="calculateScore"> CALCULATE </button>
+        <h2 id="roundTotal"></h2>
+      </section>
     </form>
+    <script src="src/scorecard.js"></script>
+    <script src="interface.js"></script>
   </body>
 </html>

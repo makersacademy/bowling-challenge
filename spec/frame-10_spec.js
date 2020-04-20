@@ -36,4 +36,13 @@ describe( "Frame10", () => {
       expect( frame10.score3 ).toEqual( 3 );
     } );
   } );
+
+  describe( ".isComplete", () => { 
+    it( "returns false unless all three scores are set", () => {
+      frame10.addScore( 1 );
+      frame10.addScore( 2 );
+
+      expect( frame10.isComplete() ).toEqual( false );
+    } );
+  } );
 } );

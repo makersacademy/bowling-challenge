@@ -6,7 +6,10 @@ $(document).ready(function() {
       roundtotal();
     });
 
-    $('#myform')
+    $('#myform').submit(function(event) {
+      event.preventDefault();
+
+    })
 
   function roundTotal() {
     $('#roundTotal').text(scorecard.roundSummary());

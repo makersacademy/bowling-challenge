@@ -51,5 +51,5 @@ Game.prototype._addBonusToFrames = function _addBonusToPreviousSpare( bonus ) {
     }
   } );
 
-  this._framesNeedingBonuses = [];
+  this._framesNeedingBonuses = this._framesNeedingBonuses.filter( ( frame ) => { return !frame.hasAllBonuses(); } );
 };

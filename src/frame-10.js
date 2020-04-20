@@ -5,6 +5,7 @@ function Frame10() {
   this._score1 = null;
   this._score2 = null;
   this._score3 = null;
+  this._total = null;
 }
 
 Frame10.prototype.addScore = function addScore( score ) {
@@ -36,5 +37,14 @@ Object.defineProperty( Frame10.prototype, "score2", {
 Object.defineProperty( Frame10.prototype, "score3", {
   get: function score2() {
     return this._score3;
+  }
+} );
+
+Object.defineProperty( Frame10.prototype, "total", {
+  get: function score1() {
+    return this._total;
+  },
+  set: function score1( total ) {
+    this._total = total;
   }
 } );

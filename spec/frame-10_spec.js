@@ -37,12 +37,20 @@ describe( "Frame10", () => {
     } );
   } );
 
-  describe( ".isComplete", () => { 
+  describe( ".isComplete", () => {
     it( "returns false unless all three scores are set", () => {
       frame10.addScore( 1 );
       frame10.addScore( 2 );
 
       expect( frame10.isComplete() ).toEqual( false );
+    } );
+  } );
+
+  describe( ".total", () => {
+    it( "sets the frame total", () => {
+      frame10.total = 5;
+
+      expect( frame10.total ).toEqual( 5 );
     } );
   } );
 } );

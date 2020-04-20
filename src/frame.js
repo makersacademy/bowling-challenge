@@ -19,7 +19,11 @@ Frame.prototype.isComplete = function isComplete() {
   return this.score1 !== null && this.score2 !== null;
 };
 
-Object.defineProperty(Frame.prototype, "score1", {
+Frame.prototype.calcTotal = function calcTotal() {
+  this.total = this.score1 + this.score2;
+};
+
+Object.defineProperty( Frame.prototype, "score1", {
   get: function score1() {
     return this._score1;
   }

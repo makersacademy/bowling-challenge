@@ -48,4 +48,14 @@ describe( "Frame", () => {
       expect( frame.isComplete() ).toEqual( true );
     } );
   } );
+
+  describe( ".calcTotasl", () => {
+    it( "calcuates the frame total", () => {
+      frame.addScore( 2 );
+      frame.addScore( 4 );
+      frame.calcTotal();
+
+      expect( frame.total ).toEqual( 6 );
+    } );
+  } );
 } );

@@ -50,7 +50,7 @@ describe("#Bowling", function () {
 
 
 
-  describe("#loopText", function () {
+  xdescribe("#loopText", function () {
     it("loops 'frame + number of loop' 10 times", function () {
       bowling.loop()
       expect(bowling.frameKey).toEqual("frame10");
@@ -84,9 +84,7 @@ describe('#makeCard', function() {
     //bowling.makeCard()
     expect(bowling.makeCard()['frame1']['r1PinsDown']).toEqual(1)
   })
-    
-  
+  });
 
 });
 
-});

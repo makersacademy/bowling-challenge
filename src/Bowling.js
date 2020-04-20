@@ -67,21 +67,26 @@ Bowling.prototype.makeCardTemplate =  function(){
    return this.card
 }
 
-Bowling.prototype.loop = function(objectToLoop){
-  var counter1;
-  var counter2;
-  for (counter1= 1; counter1 < 11; counter1++) {
-    this.frameKey =  ("frame" + counter1)
-    for (counter2 = 1; counter2 < 3; counter2 ++) 
-     this.rollNum = (  counter2);
-  }
-}
 
 Bowling.prototype.fillCard = function(){
   this.card['frame1']['r1PinsDown'] = this.numPinsDown
   this.card['frame1']['r1Score'] = this.score 
   return this.card
 }
+
+
+
+
+
+// Bowling.prototype.loop = function(objectToLoop){
+//   var counter1;
+//   var counter2;
+//   for (counter1= 1; counter1 < 11; counter1++) {
+//     this.frameKey =  ("frame" + counter1)
+//     for (counter2 = 1; counter2 < 3; counter2 ++) 
+//      this.rollNum = (  counter2);
+//   }
+// }
 
 
 /*

@@ -52,7 +52,7 @@ describe( "game should automatically calcuate the correct scores", () => {
     } );
   } );
 
-  xdescribe( "should calcuate the scores for spares", () => {
+  describe( "should calcuate the scores for spares", () => {
     describe( "first frame spare", () => {
       it( "doesn't calcuate the frame score", () => {
         game.addScore( 3 );

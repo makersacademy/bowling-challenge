@@ -14,6 +14,7 @@ function Game() {
 
 Game.prototype.addScore = function addScore( scoreString ) {
   const score = parseInt( scoreString, 10 );
+  this._addBonusToPreviousSpare( score );
   this._currentFrame.addScore( score );
   if ( this._currentFrame.isComplete() ) {
     this._handleCompleteFrame();
@@ -36,4 +37,13 @@ Game.prototype._handleCompleteFrame = function _handleCompleteFrame() {
 
   this._currentFrameNumber += 1;
   this._currentFrame = this._frames[ this._currentFrameNumber ];
+};
+
+Game.prototype._addBonusToPreviousSpare = function _addBonusToPreviousSpare( bonus ) {
+  if ( this._currentFrameNumber !== 0 ) {
+    this.frame( this._currentFrameNumber - 1 ).addBonus( bonus );
+    if ( this.frame( this._currentFrameNumber - 1 ).hasAllBonuses() && this.frame( this._currentFrameNumber - 1 ).isSpare() ) {
+      this.frame( this._currentFrameNumber - 1 ).calcTotal( this._currentScore );
+    }
+  }
 };

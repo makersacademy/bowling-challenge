@@ -69,4 +69,12 @@ describe("Bowling", function() {
     expect(bowling.players[0].bowls[1]).toEqual(5);
   });
 
+  it("saving the current player's frame should wipe the bowl values ", () => {
+    bowling.addPlayer(playerOne);
+    bowling.storeFirst(4);
+    bowling.storeSecond(5);
+    bowling.saveCurrentPlayerFrame();
+    expect(bowling.firstBowl).toEqual(0);
+    expect(bowling.secondBowl).toEqual(0);
+  });
 });

@@ -45,6 +45,8 @@ Bowling.prototype.storeSecond = function(number) {
 
 Bowling.prototype.saveCurrentPlayerFrame = function() {
   this.getCurrentPlayer().bowls.push(this.firstBowl);
-  this.getCurrentPlayer().bowls.push(this.secondBowl); 
+  this.getCurrentPlayer().bowls.push(this.secondBowl);
+  this.firstBowl = 0;
+  this.secondBowl = 0;
 };
 

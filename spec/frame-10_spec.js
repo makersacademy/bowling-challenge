@@ -53,4 +53,10 @@ describe( "Frame10", () => {
       expect( frame10.total ).toEqual( 5 );
     } );
   } );
+
+  describe( ".hasAllBonuses", () => {
+    it( "always returns true", () => {
+      expect( frame10.hasAllBonuses() ).toEqual( true );
+    } );
+  } );
 } );

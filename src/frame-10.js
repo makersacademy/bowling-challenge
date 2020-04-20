@@ -22,6 +22,10 @@ Frame10.prototype.isComplete = function isComplete() {
   return this.score1 !== null && this.score2 !== null && this.score3 !== null;
 };
 
+Frame10.prototype.hasAllBonuses = function hasAllBonuses() {
+  return true;
+};
+
 Object.defineProperty( Frame10.prototype, "score1", {
   get: function score1() {
     return this._score1;

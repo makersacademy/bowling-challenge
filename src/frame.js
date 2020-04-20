@@ -21,7 +21,8 @@ Frame.prototype.addScore = function addScore( score ) {
 };
 
 Frame.prototype.isComplete = function isComplete() {
-  return this.score1 !== null && this.score2 !== null;
+  const bothScoresSet = this.score1 !== null && this.score2 !== null;
+  return this.isStrike() || bothScoresSet;
 };
 
 Frame.prototype.calcTotal = function calcTotal( currentScore = 0 ) {

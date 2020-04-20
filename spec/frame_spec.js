@@ -35,10 +35,16 @@ describe( "Frame", () => {
       expect( frame.isComplete() ).toEqual( false );
     } );
 
-    it( "should return false for a frame with one score", () => {
+    it( "should return false for a frame with one score that isn't a strike", () => {
       frame.addScore( 3 );
 
       expect( frame.isComplete() ).toEqual( false );
+    } );
+
+    it( "should return true for a strike", () => {
+      frame.addScore( 10 );
+
+      expect( frame.isComplete() ).toEqual( true );
     } );
 
     it( "should return true for a frame with two scores", () => {

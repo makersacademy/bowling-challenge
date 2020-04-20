@@ -38,10 +38,10 @@ describe("Bowling", function () {
       bowling.calculateScore(4);
    
       expect(bowling.makeCard()['frame1']).toEqual(
-          { r1numDown: 0, r1score: 0, r2numDown: 0, r2score: 0 },
+          { r1PinsDown: 0, r1score: 0, r2PinsDown: 0, r2score: 0 },
       );
       expect(bowling.card['frame10']).toEqual(
-        {r1numDown: 0, r1score: 0, r2numDown: 0, r2score: 0 },
+        {r1PinsDown: 0, r1score: 0, r2PinsDown: 0, r2score: 0 },
       //);
       )
     });
@@ -52,14 +52,28 @@ describe("Bowling", function () {
 
   describe("loopText", function () {
     it("loops 'frame + number of loop' 10 times", function () {
-      bowling.loopText()
-      expect(bowling.frameText).toEqual("Frame 10");
+      bowling.loop()
+      expect(bowling.frameKey).toEqual("frame10");
     });
   
     it("creates a nested loop and loops 'Roll' twice for every time it loops 'frame' ", function () {
-      bowling.loopText()
-      expect(bowling.rollText).toEqual("Roll 2");
+      bowling.loop()
+      expect(bowling.rollNum).toEqual(2);
     });
   });
-});
 
+
+describe("fillCard", function(){
+  it("fills in the number of pins", function(){
+    bowling.makeCard()
+    bowling.calculateScore(1);
+    expect(bowling.fillCard()['frame1']['r1PinsDown']).toEqual(1)
+  })
+  it("fills in the number of pins", function(){
+    bowling.makeCard()
+    bowling.calculateScore(1);
+    expect(bowling.fillCard()['frame1']['r1Score']).toEqual(1)
+  })
+})
+
+});

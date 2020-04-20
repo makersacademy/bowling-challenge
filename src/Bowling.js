@@ -25,8 +25,8 @@ function Bowling(){
   this.score = 0
   this.numPinsDown = 0
   this.card = []
-  this.frameText 
-  this.rollText
+  this.frameKey 
+  this.rollNum
   this.roll
  
 }
@@ -51,27 +51,30 @@ Bowling.prototype.makeCard =  function(){
   
   for (counter1= 1; counter1 < 11; counter1++) {
     var key = `frame${counter1}`
-    for (counter2 = 1; counter2 < 3; counter2 ++) 
-    obj[key] = { 'r1numDown': 0, 'r1score': 0, 'r2numDown' :0, 'r2score' : 0 }
+    //for (counter2 = 1; counter2 < 3; counter2 ++) 
+    obj[key] = { 'r1PinsDown': 0, 'r1score': 0, 'r2PinsDown' :0, 'r2score' : 0 }
     this.card = obj
   }
    console.dir(this.card)
    return this.card
 }
 
-Bowling.prototype.loopText = function(objectToLoop){
+Bowling.prototype.loop = function(objectToLoop){
   var counter1;
   var counter2;
   for (counter1= 1; counter1 < 11; counter1++) {
-    this.frameText =  ("Frame " + counter1)
+    this.frameKey =  ("frame" + counter1)
     for (counter2 = 1; counter2 < 3; counter2 ++) 
-     this.rollText = ( 'Roll ' + counter2);
+     this.rollNum = (  counter2);
   }
 }
 
-Bowling.prototype.loop = function(objectToLoop){
-  
+Bowling.prototype.fillCard = function(){
+  this.card['frame1']['r1PinsDown'] = this.numPinsDown
+  this.card['frame1']['r1Score'] = this.score 
+  return this.card
 }
+
 
 /*
 for (counter = 1; counter < 4; counter++) { // count from 1 to 3 three times

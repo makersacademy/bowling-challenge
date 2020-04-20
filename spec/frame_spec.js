@@ -29,4 +29,23 @@ describe( "Frame", () => {
       expect( frame.total ).toEqual( 5 );
     } );
   } );
+
+  describe( ".isComplete", () => {
+    it( "should return false for a new frame", () => {
+      expect( frame.isComplete() ).toEqual( false );
+    } );
+
+    it( "should return false for a frame with one score", () => {
+      frame.addScore( 3 );
+
+      expect( frame.isComplete() ).toEqual( false );
+    } );
+
+    it( "should return true for a frame with two scores", () => {
+      frame.addScore( 3 );
+      frame.addScore( 4 );
+
+      expect( frame.isComplete() ).toEqual( true );
+    } );
+  } );
 } );

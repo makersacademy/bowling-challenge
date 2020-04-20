@@ -119,5 +119,12 @@ describe( "the game should automatically calcuate the correct scores", () => {
 
       expect( game.frame( 1 ).score1 ).toEqual( 5 );
     } );
+
+    it( "doesn't calcuate the frame score without both added bonuses", () => {
+      game.addScore( 10 );
+      game.addScore( 5 );
+
+      expect( game.frame( 0 ).total ).toEqual( null );
+    } );
   } );
 } );

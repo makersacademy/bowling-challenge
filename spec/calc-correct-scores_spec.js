@@ -1,13 +1,13 @@
 "use strict";
 
-describe( "game should automatically calcuate the correct scores", () => {
+describe( "the game should automatically calcuate the correct scores", () => {
   let game;
 
   beforeEach( () => {
     game = new Game();
   } );
 
-  describe( "should calcuate the scores for normal frames", () => {
+  describe( "normal frames", () => {
     describe( "first frame", () => {
       it( "after the first ball", () => {
         game.addScore( 2 );
@@ -52,7 +52,7 @@ describe( "game should automatically calcuate the correct scores", () => {
     } );
   } );
 
-  describe( "should calcuate the scores for spares", () => {
+  describe( "spares", () => {
     it( "doesn't calcuate the frame score until the bonus is added", () => {
       game.addScore( 3 );
       game.addScore( 7 );

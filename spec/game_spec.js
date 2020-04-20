@@ -21,7 +21,7 @@ describe( "Game", () => {
 
   describe( ".frame", () => {
     it( "contains 10 frames", () => {
-      expect( game.frame( 9 ) ).toEqual( jasmine.any( Frame ) );
+      expect( game.frame( 9 ) ).toEqual( jasmine.any( Frame10 ) );
       expect( game.frame( 10 ) ).toEqual( undefined );
     } );
   } );

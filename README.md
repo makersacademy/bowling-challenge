@@ -399,4 +399,6 @@ Refactored this out to its own method, prepareAvailableRolls.
 
 ### Disabling Buttons
 
-The currentAvailableRolls array also could be used by the interface to
+The currentAvailableRolls array also could be used by the interface to manage which buttons should be disabled.
+
+- 

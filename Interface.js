@@ -15,6 +15,12 @@ $(() => {
     let score = parseInt(e.currentTarget.value);
     scorecard.record(score);
     updateScores();
+    $( ".record" ).each(function(i) {
+      if (!scorecard.currentAvailableRolls.includes(this.value)) {
+        console.log(this)
+      }
+    });
+    
   });
 
   function updateScores() {

@@ -77,4 +77,24 @@ describe( "Frame", () => {
       expect( frame.isSpare() ).toEqual( false );
     } );
   } );
+
+  describe( ".addBonus", () => {
+    it( "adds a bonus that is factored into the frame total score", () => {
+      frame.addScore( 2 );
+      frame.addScore( 8 );
+      frame.addBonus( 5 );
+      frame.calcTotal( 5 );
+
+      expect( frame.total ).toEqual( 20 );
+    } );
+  } );
+
+  describe( ".hasAllBonuses", () => {
+    it( " returns false if the frame requires bonuses", () => {
+      frame.addScore( 5 );
+      frame.addScore( 5 );
+
+      expect( frame.hasAllBonuses() ).toEqual( false );
+    } );
+  } );
 } );

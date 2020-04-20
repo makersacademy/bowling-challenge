@@ -23,6 +23,11 @@ Frame.prototype.calcTotal = function calcTotal( currentScore = 0 ) {
   this.total = this.score1 + this.score2 + currentScore;
 };
 
+Frame.prototype.isSpare = function isSpare() {
+  const bothScoresReceived = this.score1 != null && this.score2 != null;
+  return bothScoresReceived && this.score1 + this.score2 === 10;
+};
+
 Object.defineProperty( Frame.prototype, "score1", {
   get: function score1() {
     return this._score1;

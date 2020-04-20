@@ -58,4 +58,23 @@ describe( "Frame", () => {
       expect( frame.total ).toEqual( 6 );
     } );
   } );
+
+  describe( ".isSpare", () => {
+    it( "returns true if the frame is a spare", () => {
+      frame.addScore( 2 );
+      frame.addScore( 8 );
+
+      expect( frame.isSpare() ).toEqual( true );
+    } );
+
+    it( "returns false for a new frame", () => {
+      expect( frame.isSpare() ).toEqual( false );
+    } );
+
+    it( "returns false for a frame with one ball bowled", () => {
+      frame.addScore( 4 );
+
+      expect( frame.isSpare() ).toEqual( false );
+    } );
+  } );
 } );

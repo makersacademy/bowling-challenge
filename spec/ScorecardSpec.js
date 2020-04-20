@@ -157,14 +157,18 @@ describe("Scorecard", () => {
   });
   
   describe('Illegal input', () => {
-    scorecard.record(9)
-    expect(function() { scorecard.record(2) }).toThrow("Over total of 10 for frame");
-    expect(function() { scorecard.record(3) }).toThrow("Over total of 10 for frame");
-    expect(function() { scorecard.record(4) }).toThrow("Over total of 10 for frame");
-    expect(function() { scorecard.record(6) }).toThrow("Over total of 10 for frame");
-    expect(function() { scorecard.record(7) }).toThrow("Over total of 10 for frame");
-    expect(function() { scorecard.record(8) }).toThrow("Over total of 10 for frame");
-    expect(function() { scorecard.record(9) }).toThrow("Over total of 10 for frame");
-    expect(function() { scorecard.record(10) }).toThrow("Over total of 10 for frame");
+
+    it('record(9), anything more than 1 will throw error', () => {
+      scorecard.record(9)
+      expect(function() { scorecard.record(2) }).toThrow("Over total of 10 for frame");
+      expect(function() { scorecard.record(3) }).toThrow("Over total of 10 for frame");
+      expect(function() { scorecard.record(4) }).toThrow("Over total of 10 for frame");
+      expect(function() { scorecard.record(6) }).toThrow("Over total of 10 for frame");
+      expect(function() { scorecard.record(7) }).toThrow("Over total of 10 for frame");
+      expect(function() { scorecard.record(8) }).toThrow("Over total of 10 for frame");
+      expect(function() { scorecard.record(9) }).toThrow("Over total of 10 for frame");
+      expect(function() { scorecard.record(10) }).toThrow("Over total of 10 for frame");
+    });
+
   });
 });

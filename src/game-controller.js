@@ -8,9 +8,15 @@ $( document ).ready( () => {
     game.addScore( newScore );
 
     for ( let i = 0; i < 10; i += 1 ) {
-      $( `#frame${i}-score1` ).text( game.frame( i ).score1 );
-      $( `#frame${i}-score2` ).text( game.frame( i ).score2 );
-      $( `#frame${i}-total` ).text( game.frame( i ).total );
+      if ( game.frame( i ).isSpare() ) {
+        $( `#frame${i}-score1` ).text( game.frame( i ).score1 );
+        $( `#frame${i}-score2` ).text( "/" );
+        $( `#frame${i}-total` ).text( game.frame( i ).total );
+      } else {
+        $( `#frame${i}-score1` ).text( game.frame( i ).score1 );
+        $( `#frame${i}-score2` ).text( game.frame( i ).score2 );
+        $( `#frame${i}-total` ).text( game.frame( i ).total );
+      }
     }
   } );
 } );

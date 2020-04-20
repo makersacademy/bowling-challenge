@@ -99,6 +99,10 @@ So that I can see how well I am playing
 I want the scorecard to update whenever I enter a score
 
 As a bowler
+So that I don't make mistakes or have to worry
+I want the scorecard to automatically keep the right score
+
+As a bowler
 So that I can be entertained while I"m playing
 I want the scorecard to highlight special scores like strikes, spares, gutter games and perfect games
 

@@ -59,4 +59,15 @@ describe( "Frame10", () => {
       expect( frame10.hasAllBonuses() ).toEqual( true );
     } );
   } );
+
+  describe( ".calcTotal", () => {
+    it( "sets the total", () => {
+      frame10.addScore( 4 );
+      frame10.addScore( 6 );
+      frame10.addScore( 5 );
+      frame10.calcTotal();
+
+      expect( frame10.total ).toEqual( 15 );
+    } );
+  } );
 } );

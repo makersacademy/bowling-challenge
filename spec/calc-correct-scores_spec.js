@@ -195,7 +195,7 @@ describe( "the game should automatically calcuate the correct scores", () => {
 
   describe( "frame 10", () => {
     it( "won't calcuate its total without all three scores", () => {
-      for ( let i = 0; i < 12; i += 1 ) {
+      for ( let i = 0; i < 20; i += 1 ) {
         game.addScore( 3 );
       }
 
@@ -203,7 +203,7 @@ describe( "the game should automatically calcuate the correct scores", () => {
     } );
 
     it( "calcuates its total when all three scores are set", () => {
-      for ( let i = 0; i < 13; i += 1 ) {
+      for ( let i = 0; i < 21; i += 1 ) {
         game.addScore( 3 );
       }
 

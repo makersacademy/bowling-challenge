@@ -26,6 +26,10 @@ Frame10.prototype.hasAllBonuses = function hasAllBonuses() {
   return true;
 };
 
+Frame10.prototype.calcTotal = function calcTotal() {
+  this._total = this.score1 + this.score2 + this.score3;
+};
+
 Object.defineProperty( Frame10.prototype, "score1", {
   get: function score1() {
     return this._score1;

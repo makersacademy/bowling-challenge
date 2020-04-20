@@ -51,6 +51,22 @@ describe("Bowling", function() {
     bowling.addPlayer(playerOne);
     bowling.storeFirst(4);
     expect(bowling.firstBowl).toEqual(4);
-     
-  })
+  });
+
+  it(" should be able to store the 2nd bowl of the current player's frame", function() {
+    bowling.addPlayer(playerOne);
+    bowling.storeFirst(4);
+    bowling.storeSecond(5);
+    expect(bowling.secondBowl).toEqual(5);
+  });
+
+  it("should be able to save the first and second bowls to the current player", () => {
+    bowling.addPlayer(playerOne);
+    bowling.storeFirst(4);
+    bowling.storeSecond(5);
+    bowling.saveCurrentPlayerFrame();
+    expect(bowling.players[0].bowls[0]).toEqual(4);
+    expect(bowling.players[0].bowls[1]).toEqual(5);
+  });
+
 });

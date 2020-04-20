@@ -10,10 +10,8 @@ function Frame() {
 Frame.prototype.addScore = function addScore( score ) {
   if ( this._score1 === null ) {
     this._score1 = score;
-    this._total = score;
   } else if ( this._score2 === null ) {
     this._score2 = score;
-    this._total += score;
   }
 };
 

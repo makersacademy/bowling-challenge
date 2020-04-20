@@ -24,7 +24,7 @@ function updatePlayerList() {
   var list = document.createElement('ul');
   bowling.players.forEach((player)=>{
     var li = document.createElement('li');
-    li.textContent = player;
+    li.textContent = player.name;
     list.appendChild(li);
 });
 $("#player-list").append(list);
@@ -61,7 +61,7 @@ function makeTable(players) {
 
   for (var i of players) {
     var cell = row.insertCell();
-    cell.innerHTML = i;
+    cell.innerHTML = i.name;
 
     /* You can also attach a click listener if you want
     cell.addEventListener("click", function(){

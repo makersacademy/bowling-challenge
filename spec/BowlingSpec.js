@@ -74,8 +74,8 @@ describe("Bowling", function() {
     bowling.storeFirst(4);
     bowling.storeSecond(5);
     bowling.saveCurrentPlayerFrame();
-    expect(bowling.firstBowl).toEqual(0);
-    expect(bowling.secondBowl).toEqual(0);
+    expect(bowling.firstBowl).toEqual(bowling.defaultBowl);
+    expect(bowling.secondBowl).toEqual(bowling.defaultBowl);
   });
 
   it("saving the current player's frame should change the turn", () => {

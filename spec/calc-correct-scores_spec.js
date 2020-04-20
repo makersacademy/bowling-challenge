@@ -117,6 +117,7 @@ describe( "the game should automatically calcuate the correct scores", () => {
       game.addScore( 10 );
       game.addScore( 5 );
 
+      expect( game.frame( 0 ).score2 ).toEqual( null );
       expect( game.frame( 1 ).score1 ).toEqual( 5 );
     } );
 
@@ -125,6 +126,17 @@ describe( "the game should automatically calcuate the correct scores", () => {
       game.addScore( 5 );
 
       expect( game.frame( 0 ).total ).toEqual( null );
+    } );
+
+    describe( "correct score calculations", () => {
+      it( "first frame strike", () => {
+        game.addScore( 10 );
+        game.addScore( 2 );
+        game.addScore( 3 );
+
+        expect( game.frame( 0 ).total ).toEqual( 15 );
+        expect( game.frame( 1 ).total ).toEqual( 20 );
+      } );
     } );
   } );
 } );

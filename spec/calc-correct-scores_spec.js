@@ -137,6 +137,17 @@ describe( "the game should automatically calcuate the correct scores", () => {
         expect( game.frame( 0 ).total ).toEqual( 15 );
         expect( game.frame( 1 ).total ).toEqual( 20 );
       } );
+
+      it( "second frame strike", () => {
+        game.addScore( 1 );
+        game.addScore( 4 );
+        game.addScore( 10 );
+        game.addScore( 2 );
+        game.addScore( 3 );
+
+        expect( game.frame( 1 ).total ).toEqual( 20 );
+        expect( game.frame( 2 ).total ).toEqual( 25 );
+      } );
     } );
   } );
 } );

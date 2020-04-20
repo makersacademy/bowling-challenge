@@ -7,17 +7,13 @@ describe( "Game", () => {
     game = new Game();
   } );
 
-  describe(".addScore", () => {
+  describe( ".addScore", () => {
     it( "should accept a score from the player", () => {
       expect( game.addScore ).toBeDefined();
     } );
   } );
 
-  describe(".currentScore", () => {
-    it( "should allow you to access the current score", () => {
-      expect( game.currentScore ).toBeDefined();
-    } );
-
+  describe( ".currentScore", () => {
     it( "should set the current score to zero on creation", () => {
       expect( game.currentScore() ).toEqual( 0 );
     } );
@@ -33,6 +29,13 @@ describe( "Game", () => {
       game.addScore( 2 );
 
       expect( game.currentScore() ).toEqual( 7 );
+    } );
+  } );
+
+  describe( ".frame", () => {
+    it( "contains 10 frames", () => {
+      expect( game.frame( 9 ) ).toEqual( jasmine.any( Frame ) );
+      expect( game.frame( 10 ) ).toEqual( undefined );
     } );
   } );
 } );

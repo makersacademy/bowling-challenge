@@ -23,13 +23,13 @@ Object.defineProperty(Frame.prototype, "score1", {
   }
 } );
 
-Object.defineProperty(Frame.prototype, "score2", {
+Object.defineProperty( Frame.prototype, "score2", {
   get: function score2() {
     return this._score2;
   }
 } );
 
-Object.defineProperty(Frame.prototype, "total", {
+Object.defineProperty( Frame.prototype, "total", {
   get: function score1() {
     return this._total;
   },

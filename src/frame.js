@@ -33,6 +33,10 @@ Frame.prototype.isSpare = function isSpare() {
   return bothScoresReceived && this.score1 + this.score2 === 10;
 };
 
+Frame.prototype.isStrike = function isStrike() {
+  return this.score1 === 10;
+};
+
 Frame.prototype.addBonus = function addBonus( bonus ) {
   if ( this._bonusesRequired > 0 ) {
     this._bonusScore += bonus;

@@ -78,6 +78,24 @@ describe( "Frame", () => {
     } );
   } );
 
+  describe( ".isStrike", () => {
+    it( "returns true when the frame is a strike", () => {
+      frame.addScore( 10 );
+
+      expect( frame.isStrike() ).toEqual( true );
+    } );
+
+    it( "returns false when the frame is new", () => {
+      expect( frame.isStrike() ).toEqual( false );
+    } );
+
+    it( "returns false when the frame is not a strike", () => {
+      frame.addScore( 8 );
+
+      expect( frame.isStrike() ).toEqual( false );
+    } );
+  } );
+
   describe( ".addBonus", () => {
     it( "adds a bonus that is factored into the frame total score", () => {
       frame.addScore( 2 );

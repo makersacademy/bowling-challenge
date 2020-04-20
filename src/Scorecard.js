@@ -29,17 +29,17 @@ class Scorecard {
     let prev1 = this.frame > 0 ? this.frames[this.frame - 1] : false;
     let prev2 = this.frame > 1 ? this.frames[this.frame - 2] : false;
 
+    this.prepareAvailableRolls(score);
+
     if (this.currentRoll === 1) {
       frame.roll1 = score;
       this.assignSpareBonus(prev1, score);
       this.assignStrikeBonus(prev1, score);
       this.assignConsecutiveStrikeBonus(prev1, prev2, score);
-      this.prepareAvailableRolls(score);
       this.advance(score);
     } else if (this.currentRoll === 2) {
       frame.roll2 = score;
       this.assignStrikeBonus(prev1, score);
-      this.prepareAvailableRolls(score);
       this.advance(score);
     } else if (this.currentRoll === 3) {
       frame.roll3 = score;
@@ -47,13 +47,11 @@ class Scorecard {
   }
 
   prepareAvailableRolls(score) {
-    if (this.currentRoll === 1) {
-      if (score != 10) {
-        this.currentAvailableRolls = this.DEFAULT_AVAILABLE_ROLLS;
-        this.currentAvailableRolls.splice(11 - score, score);
-      }
-    } else {
-      this.currentAvailableRolls = this.DEFAULT_AVAILABLE_ROLLS;
+    if (this.currentRoll === 1 && score != 10) {
+      this.currentAvailableRolls = [...this.DEFAULT_AVAILABLE_ROLLS];
+      this.currentAvailableRolls.splice(11 - score, score);
+      } else {
+      this.currentAvailableRolls = [...this.DEFAULT_AVAILABLE_ROLLS];
     }
   }
 

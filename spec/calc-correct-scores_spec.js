@@ -148,6 +148,48 @@ describe( "the game should automatically calcuate the correct scores", () => {
         expect( game.frame( 1 ).total ).toEqual( 20 );
         expect( game.frame( 2 ).total ).toEqual( 25 );
       } );
+
+      it( "consecutive strikes", () => {
+        game.addScore( 10 );
+        game.addScore( 10 );
+        game.addScore( 10 );
+        game.addScore( 2 );
+        game.addScore( 3 );
+
+        expect( game.frame( 0 ).total ).toEqual( 30 );
+        expect( game.frame( 1 ).total ).toEqual( 52 );
+        expect( game.frame( 2 ).total ).toEqual( 67 );
+        expect( game.frame( 3 ).total ).toEqual( 72 );
+      } );
+
+      it( "strike then spare", () => {
+        game.addScore( 2 );
+        game.addScore( 3 );
+        game.addScore( 10 );
+        game.addScore( 3 );
+        game.addScore( 7 );
+        game.addScore( 2 );
+
+        expect( game.frame( 0 ).total ).toEqual( 5 );
+        expect( game.frame( 1 ).total ).toEqual( 25 );
+        expect( game.frame( 2 ).total ).toEqual( 37 );
+      } );
+
+      it( "spare then strike", () => {
+        game.addScore( 2 );
+        game.addScore( 3 );
+        game.addScore( 3 );
+        game.addScore( 7 );
+        game.addScore( 10 );
+        game.addScore( 2 );
+        game.addScore( 3 );
+
+
+        expect( game.frame( 0 ).total ).toEqual( 5 );
+        expect( game.frame( 1 ).total ).toEqual( 25 );
+        expect( game.frame( 2 ).total ).toEqual( 40 );
+        expect( game.frame( 3 ).total ).toEqual( 45 );
+      } );
     } );
   } );
 } );

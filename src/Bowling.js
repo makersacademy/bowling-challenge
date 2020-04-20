@@ -33,7 +33,7 @@ function Bowling(){
 
 Bowling.prototype.runBowling =function() {
   this.calculateScore
-  this.card[0] =
+  
 }
 
 Bowling.prototype.calculateScore = function(numPinsDown){
@@ -44,13 +44,16 @@ Bowling.prototype.calculateScore = function(numPinsDown){
 }
 
 Bowling.prototype.makeCard =  function(){
+  // change name  to makeCardTemplate? 
   var counter1;
   var counter2;
+  var  obj = {};
   
   for (counter1= 1; counter1 < 11; counter1++) {
-    //text = `frame ${counter1}`
+    var key = `frame${counter1}`
     for (counter2 = 1; counter2 < 3; counter2 ++) 
-    this.card.push({ 'frame': counter1, 'roll' : counter2 , 'numPinsDown': 0, 'score': 0 })
+    obj[key] = { 'r1numDown': 0, 'r1score': 0, 'r2numDown' :0, 'r2score' : 0 }
+    this.card = obj
   }
    console.dir(this.card)
    return this.card

@@ -32,17 +32,16 @@ describe("Bowling", function () {
   });
 
   describe("#makeCard", function () {
-    it("stores numPinsDown & score", function () {
+    it("stores -> roll1 number of pins down; roll1 score; roll2 number of pins down; roll2 score --- in key  labelled by the frame number ", function () {
       bowling.calculateScore(1);
      
       bowling.calculateScore(4);
    
-      expect(bowling.makeCard()[0]).toEqual(
-        {frame: 1, roll:1, numPinsDown: 0, score: 0 },
-        
+      expect(bowling.makeCard()['frame1']).toEqual(
+          { r1numDown: 0, r1score: 0, r2numDown: 0, r2score: 0 },
       );
-      expect(bowling.card[1]).toEqual(
-        {frame: 1, roll:2, numPinsDown: 0, score: 0  },
+      expect(bowling.card['frame10']).toEqual(
+        {r1numDown: 0, r1score: 0, r2numDown: 0, r2score: 0 },
       //);
       )
     });

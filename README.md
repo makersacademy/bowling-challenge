@@ -391,4 +391,12 @@ Wrote a test that with a first roll of 9, attempting to record a roll of 2 or ab
 - Added a constant property of DEFAULT_AVAILABLE_ROLLS as an array from 0 to 10.
 - Added a property of currentAvailableRolls assigned with the default available rolls to start with.
 - In record in the condition that the current roll is 1, added a condition that if the score was not 10 (a strike) assign the currentAvailableRolls with DEFAULT_AVAILABLE_ROLLS. Then splice from position 11 - score to find where the cut off is, then delete with the value of the score to remove all the remaining elements.
-- if the current roll is 2, re
+- if the current roll is 2, reassign currentAvailableRolls with DEFAULT_AVAILABLE_ROLLS.
+
+Green.
+
+Refactored this out to its own method, prepareAvailableRolls.
+
+### Disabling Buttons
+
+The currentAvailableRolls array also could be used by the interface to

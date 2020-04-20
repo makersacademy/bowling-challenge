@@ -21,4 +21,12 @@ describe( "Frame", () => {
       expect( frame.score2 ).toEqual( 3 );
     } );
   } );
+
+  describe( ".total", () => {
+    it( "sets the frame total", () => {
+      frame.total = 5;
+
+      expect( frame.total ).toEqual( 5 );
+    } );
+  } );
 } );

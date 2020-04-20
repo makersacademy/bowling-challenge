@@ -25,6 +25,10 @@ function Bowling(){
   this.score = 0
   this.numPinsDown = 0
   this.card = []
+  this.frameText 
+  this.rollText
+  this.roll
+ 
 }
 
 
@@ -35,21 +39,40 @@ Bowling.prototype.calculateScore = function(numPinsDown){
 }
 
 Bowling.prototype.makeCard =  function(){
-   this.card.push({'numPinsDown': this.numPinsDown, 'score': this.score})
+  var counter1;
+  var counter2;
+  
+  for (counter1= 1; counter1 < 11; counter1++) {
+    //text = `frame ${counter1}`
+
+
+    for (counter2 = 1; counter2 < 3; counter2 ++) 
+    this.card.push({ 'frame': counter1, 'roll' : counter2 , 'numPinsDown': this.numPinsDown, 'score': this.score })
+  }
+   
+   console.dir(this.card)
    return this.card
 }
 
 Bowling.prototype.loopText = function(objectToLoop){
-  var i;
-  var text
-  for (i = 0; i < 11; i++) {
-    text =  `${objectToLoop} ${i}`
+  var counter1;
+  var counter2;
+  for (counter1= 1; counter1 < 11; counter1++) {
+    this.frameText =  ("Frame " + counter1)
+    for (counter2 = 1; counter2 < 3; counter2 ++) 
+     this.rollText = ( 'Roll ' + counter2);
   }
-  return text
 }
 
-Bowling.prototype.makeFrameText=function(){
-  var text
-  text = "Frame"
-  return this.loopText(text)
+Bowling.prototype.loop = function(objectToLoop){
+  
 }
+
+/*
+for (counter = 1; counter < 4; counter++) { // count from 1 to 3 three times
+  console.log("Count from 1 to 3");
+  for (counterTwo = 1; counterTwo < 4; counterTwo++){
+      console.log(counterTwo);
+  }
+}
+*/

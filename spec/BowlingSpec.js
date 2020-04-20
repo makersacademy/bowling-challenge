@@ -32,32 +32,35 @@ describe("Bowling", function () {
   });
 
   describe("#makeCard", function () {
-    it("stores num pins down & score", function () {
+    it("stores numPinsDown & score", function () {
       bowling.calculateScore(1);
-      bowling.makeCard();
-      bowling.calculateScore(4);
-      expect(bowling.makeCard()).toEqual([
-        { numPinsDown: 1, score: 1 },
-        { numPinsDown: 4, score:5 }
-      ]);
+     
+      //bowling.calculateScore(4);
+   //expect({"a": 1, "b":2}).toHaveProperty("a", "1"); 
+      expect(bowling.makeCard()[0]).toEqual(
+        {frame: 1, roll:1, numPinsDown: 1, score: 1 },
+        
+      );
+      //expect(bowling.card[1]).toEqual(
+       // {frame: 1, roll:2, numPinsDown: 4, score: 5  },
+      //);
+
     });
   });
-  describe('loopText', function(){
-    it("loops ten times and each time returns 'frame + number of loop' ", function(){
-      expect(bowling.loopText()).toEqual('undefined 10')
-    })
+
+
+
+
+  describe("loopText", function () {
+    it("loops 'frame + number of loop' 10 times", function () {
+      bowling.loopText()
+      expect(bowling.frameText).toEqual("Frame 10");
+    });
   
-  })
-
-  describe('makeFrameText',function(){
-    it("", function(){
-      expect(bowling.makeFrameText()).toEqual('Frame 10')
-    })
-  })
-
-
+    it("creates a nested loop and loops 'Roll' twice for every time it loops 'frame' ", function () {
+      bowling.loopText()
+      expect(bowling.rollText).toEqual("Roll 2");
+    });
+  });
 });
-
-
-
 

@@ -7,7 +7,7 @@ describe( "game should automatically calcuate the correct scores", () => {
     game = new Game();
   } );
 
-  describe( "should calcuate the correct scores for normal frames", () => {
+  describe( "should calcuate the scores for normal frames", () => {
     describe( "first frame", () => {
       it( "after the first ball", () => {
         game.addScore( 2 );
@@ -48,6 +48,17 @@ describe( "game should automatically calcuate the correct scores", () => {
         expect( game.frame( 0 ).total ).toEqual( 6 );
         expect( game.frame( 1 ).total ).toEqual( 8 );
         expect( game.frame( 2 ).total ).toEqual( null );
+      } );
+    } );
+  } );
+
+  describe( "should calcuate the scores for spares", () => {
+    describe( "first frame spare", () => {
+      it( "doesn't calcuate the frame score", () => {
+        game.addScore( 3 );
+        game.addScore( 7 );
+
+        expect( game.frame( 0 ).total ).toEqual( null );
       } );
     } );
   } );

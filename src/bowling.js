@@ -48,5 +48,6 @@ Bowling.prototype.saveCurrentPlayerFrame = function() {
   this.getCurrentPlayer().bowls.push(this.secondBowl);
   this.firstBowl = 0;
   this.secondBowl = 0;
+  this.changeTurn();
 };
 

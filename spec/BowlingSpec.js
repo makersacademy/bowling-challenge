@@ -77,4 +77,13 @@ describe("Bowling", function() {
     expect(bowling.firstBowl).toEqual(0);
     expect(bowling.secondBowl).toEqual(0);
   });
+
+  it("saving the current player's frame should change the turn", () => {
+    bowling.addPlayer(playerOne);
+    bowling.addPlayer(playerTwo);
+    bowling.storeFirst(4);
+    bowling.storeSecond(5);
+    bowling.saveCurrentPlayerFrame();
+    expect(bowling.getCurrentPlayer().name).toEqual(playerTwo);
+  });
 });

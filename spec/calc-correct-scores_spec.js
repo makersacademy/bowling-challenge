@@ -53,53 +53,62 @@ describe( "game should automatically calcuate the correct scores", () => {
   } );
 
   describe( "should calcuate the scores for spares", () => {
-    describe( "first frame spare", () => {
-      it( "doesn't calcuate the frame score", () => {
-        game.addScore( 3 );
-        game.addScore( 7 );
+    it( "doesn't calcuate the frame score until the bonus is added", () => {
+      game.addScore( 3 );
+      game.addScore( 7 );
 
-        expect( game.frame( 0 ).total ).toEqual( null );
-      } );
+      expect( game.frame( 0 ).total ).toEqual( null );
+    } );
 
-      it( "calcuates the frame score after the next ball", () => {
-        game.addScore( 3 );
-        game.addScore( 7 );
-        game.addScore( 4 );
+    it( "calcuates the frame score after the second ball", () => {
+      game.addScore( 3 );
+      game.addScore( 7 );
+      game.addScore( 4 );
 
-        expect( game.frame( 0 ).total ).toEqual( 14 );
-        expect( game.frame( 1 ).score1 ).toEqual( 4 );
-      } );
+      expect( game.frame( 0 ).total ).toEqual( 14 );
+    } );
 
-      it( "spare followed by full normal frame", () => {
-        game.addScore( 3 );
-        game.addScore( 7 );
-        game.addScore( 3 );
-        game.addScore( 4 );
+    it( "spare followed by full normal frame", () => {
+      game.addScore( 3 );
+      game.addScore( 7 );
+      game.addScore( 3 );
+      game.addScore( 4 );
 
-        expect( game.frame( 1 ).total ).toEqual( 20 );
-      } );
+      expect( game.frame( 1 ).total ).toEqual( 20 );
+    } );
 
-      it( "consecutive spares", () => {
-        game.addScore( 3 );
-        game.addScore( 7 );
-        game.addScore( 5 );
-        game.addScore( 5 );
-        game.addScore( 3 );
+    it( "consecutive spares", () => {
+      game.addScore( 3 );
+      game.addScore( 7 );
+      game.addScore( 5 );
+      game.addScore( 5 );
+      game.addScore( 3 );
 
-        expect( game.frame( 1 ).total ).toEqual( 28 );
-      } );
+      expect( game.frame( 1 ).total ).toEqual( 28 );
+    } );
 
-      it( "separated spares", () => {
-        game.addScore( 3 );
-        game.addScore( 7 );
-        game.addScore( 5 );
-        game.addScore( 2 );
-        game.addScore( 6 );
-        game.addScore( 4 );
-        game.addScore( 2 );
+    it( "separated spares", () => {
+      game.addScore( 3 );
+      game.addScore( 7 );
+      game.addScore( 5 );
+      game.addScore( 2 );
+      game.addScore( 6 );
+      game.addScore( 4 );
+      game.addScore( 2 );
 
-        expect( game.frame( 2 ).total ).toEqual( 34 );
-      } );
+      expect( game.frame( 2 ).total ).toEqual( 34 );
+    } );
+
+    it( "spare in later frame", () => {
+      game.addScore( 5 );
+      game.addScore( 3 );
+      game.addScore( 3 );
+      game.addScore( 7 );
+      game.addScore( 5 );
+      game.addScore( 5 );
+      game.addScore( 3 );
+
+      expect( game.frame( 2 ).total ).toEqual( 36 );
     } );
   } );
 } );

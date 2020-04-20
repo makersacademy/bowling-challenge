@@ -60,6 +60,15 @@ describe( "game should automatically calcuate the correct scores", () => {
 
         expect( game.frame( 0 ).total ).toEqual( null );
       } );
+
+      it( "calcuates the frame score after the next ball", () => {
+        game.addScore( 3 );
+        game.addScore( 7 );
+        game.addScore( 4 );
+
+        expect( game.frame( 0 ).total ).toEqual( 14 );
+        expect( game.frame( 1 ).score1 ).toEqual( 4 );
+      } );
     } );
   } );
 } );

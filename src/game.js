@@ -9,18 +9,21 @@ function Game() {
     this._frames.push( new Frame() );
   }
   this._currentFrameNumber = 0;
+  this._currentFrame = this._frames[ this._currentFrameNumber ];
 }
 
 Game.prototype.addScore = function addScore( scoreString ) {
   const score = parseInt( scoreString, 10 );
-  this._frames[ this._currentFrameNumber ].addScore( score );
-  this._currentScore += score;
+  this._currentFrame.addScore( score );
+  if ( this._currentFrame.isComplete() ) {
+    this._currentFrame.calcTotal();
+  }
 };
 
 Game.prototype.currentScore = function currentScore() {
   return this._currentScore;
 };
 
-Game.prototype.frame = function frame(number) {
+Game.prototype.frame = function frame( number ) {
   return this._frames[ number ];
 };

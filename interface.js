@@ -1,24 +1,19 @@
 
 $(document).ready(function() {
     var scorecard = new Scorecard();
-    roundTotal();
-
-    $('#enterFirstBowl').on('click', function() {
-      scorecard.firstBowl();
-    });
-
-    $('#enterSecondBowl').on('click', function() {
-      scorecard.secondBowl();
-    });
 
     $('#calculateScore').on('click', function() {
-      scorecard.roundSummary();
+      roundtotal();
     });
 
+    $('#myform')
+
   function roundTotal() {
-      $('#roundTotal').text(scorecard.roundSummary());
+    $('#roundTotal').text(scorecard.roundSummary());
   };
 })
+
+
 
 /*
 function updateTemperature() {

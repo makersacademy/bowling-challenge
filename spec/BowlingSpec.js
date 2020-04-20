@@ -35,16 +35,16 @@ describe("Bowling", function () {
     it("stores numPinsDown & score", function () {
       bowling.calculateScore(1);
      
-      //bowling.calculateScore(4);
-   //expect({"a": 1, "b":2}).toHaveProperty("a", "1"); 
+      bowling.calculateScore(4);
+   
       expect(bowling.makeCard()[0]).toEqual(
-        {frame: 1, roll:1, numPinsDown: 1, score: 1 },
+        {frame: 1, roll:1, numPinsDown: 0, score: 0 },
         
       );
-      //expect(bowling.card[1]).toEqual(
-       // {frame: 1, roll:2, numPinsDown: 4, score: 5  },
+      expect(bowling.card[1]).toEqual(
+        {frame: 1, roll:2, numPinsDown: 0, score: 0  },
       //);
-
+      )
     });
   });
 

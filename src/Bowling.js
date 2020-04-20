@@ -31,11 +31,16 @@ function Bowling(){
  
 }
 
+Bowling.prototype.runBowling =function() {
+  this.calculateScore
+  this.card[0] =
+}
 
 Bowling.prototype.calculateScore = function(numPinsDown){
   this.numPinsDown = numPinsDown
   this.score = numPinsDown + this.score
   return this.score
+
 }
 
 Bowling.prototype.makeCard =  function(){
@@ -44,12 +49,9 @@ Bowling.prototype.makeCard =  function(){
   
   for (counter1= 1; counter1 < 11; counter1++) {
     //text = `frame ${counter1}`
-
-
     for (counter2 = 1; counter2 < 3; counter2 ++) 
-    this.card.push({ 'frame': counter1, 'roll' : counter2 , 'numPinsDown': this.numPinsDown, 'score': this.score })
+    this.card.push({ 'frame': counter1, 'roll' : counter2 , 'numPinsDown': 0, 'score': 0 })
   }
-   
    console.dir(this.card)
    return this.card
 }

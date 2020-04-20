@@ -69,6 +69,14 @@ describe( "game should automatically calcuate the correct scores", () => {
         expect( game.frame( 0 ).total ).toEqual( 14 );
         expect( game.frame( 1 ).score1 ).toEqual( 4 );
       } );
+
+      it( "calcuates the score when there are two consecutive spares", () => {
+        game.addScore( 3 );
+        game.addScore( 7 );
+        game.addScore( 3 );
+        game.addScore( 3 );
+        expect( game.frame( 1 ).total ).toEqual( 19 );
+      } );
     } );
   } );
 } );

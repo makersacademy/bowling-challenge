@@ -7,7 +7,8 @@ function Game() {
   this._frame = new Frame();
 }
 
-Game.prototype.addScore = function addScore( score ) {
+Game.prototype.addScore = function addScore( scoreString ) {
+  const score = parseInt( scoreString, 10 );
   this._frame.addScore( score );
   this._currentScore += score;
 };

@@ -19,8 +19,8 @@ Frame.prototype.isComplete = function isComplete() {
   return this.score1 !== null && this.score2 !== null;
 };
 
-Frame.prototype.calcTotal = function calcTotal() {
-  this.total = this.score1 + this.score2;
+Frame.prototype.calcTotal = function calcTotal( currentScore = 0 ) {
+  this.total = this.score1 + this.score2 + currentScore;
 };
 
 Object.defineProperty( Frame.prototype, "score1", {

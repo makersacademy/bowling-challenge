@@ -49,7 +49,7 @@ describe( "Frame", () => {
     } );
   } );
 
-  describe( ".calcTotasl", () => {
+  describe( ".calcTotal", () => {
     it( "calcuates the frame total", () => {
       frame.addScore( 2 );
       frame.addScore( 4 );

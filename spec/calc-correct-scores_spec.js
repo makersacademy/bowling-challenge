@@ -70,12 +70,35 @@ describe( "game should automatically calcuate the correct scores", () => {
         expect( game.frame( 1 ).score1 ).toEqual( 4 );
       } );
 
-      it( "calcuates the score when there are two consecutive spares", () => {
+      it( "spare followed by full normal frame", () => {
         game.addScore( 3 );
         game.addScore( 7 );
         game.addScore( 3 );
+        game.addScore( 4 );
+
+        expect( game.frame( 1 ).total ).toEqual( 20 );
+      } );
+
+      it( "consecutive spares", () => {
         game.addScore( 3 );
-        expect( game.frame( 1 ).total ).toEqual( 19 );
+        game.addScore( 7 );
+        game.addScore( 5 );
+        game.addScore( 5 );
+        game.addScore( 3 );
+
+        expect( game.frame( 1 ).total ).toEqual( 28 );
+      } );
+
+      it( "separated spares", () => {
+        game.addScore( 3 );
+        game.addScore( 7 );
+        game.addScore( 5 );
+        game.addScore( 2 );
+        game.addScore( 6 );
+        game.addScore( 4 );
+        game.addScore( 2 );
+
+        expect( game.frame( 2 ).total ).toEqual( 34 );
       } );
     } );
   } );

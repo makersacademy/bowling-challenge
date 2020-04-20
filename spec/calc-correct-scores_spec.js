@@ -37,6 +37,18 @@ describe( "game should automatically calcuate the correct scores", () => {
         expect( game.frame( 0 ).total ).toEqual( 6 );
         expect( game.frame( 1 ).total ).toEqual( 8 );
       } );
+
+      it( "after 3 frames incomplete", () => {
+        game.addScore( 2 );
+        game.addScore( 4 );
+        game.addScore( 5 );
+        game.addScore( 3 );
+        game.addScore( 8 );
+
+        expect( game.frame( 0 ).total ).toEqual( 6 );
+        expect( game.frame( 1 ).total ).toEqual( 8 );
+        expect( game.frame( 2 ).total ).toEqual( null );
+      } );
     } );
   } );
 } );

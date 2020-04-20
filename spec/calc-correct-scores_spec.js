@@ -192,4 +192,22 @@ describe( "the game should automatically calcuate the correct scores", () => {
       } );
     } );
   } );
+
+  describe( "frame 10", () => {
+    it( "won't calcuate its total without all three scores", () => {
+      for ( let i = 0; i < 12; i += 1 ) {
+        game.addScore( 3 );
+      }
+
+      expect( game.frame( 9 ).total ).toEqual( null );
+    } );
+
+    it( "calcuates its total when all three scores are set", () => {
+      for ( let i = 0; i < 13; i += 1 ) {
+        game.addScore( 3 );
+      }
+
+      expect( game.frame( 9 ).total ).toEqual( 9 );
+    } );
+  } );
 } );

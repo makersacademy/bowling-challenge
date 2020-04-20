@@ -5,7 +5,7 @@ function Bowling() {
 };
 
 Bowling.prototype.addPlayer = function(name){
-  this.players.push(name);
+  this.players.push( new Player(name));
 };
 
 Bowling.prototype.getCurrentPlayer = function() {
@@ -31,4 +31,8 @@ Bowling.prototype.getCurrentFrame = function() {
 
 Bowling.prototype.incrCurrentFrame = function() {
   this.currentFrame++;
+}
+
+Bowling.prototype.storeFirst = function() {
+  
 }

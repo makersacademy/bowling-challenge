@@ -16,6 +16,10 @@ Scorecard.prototype.secondBowl = function(num) {
 }
 
 Scorecard.prototype.roundSummary = function() {
+  if (this.bowlOne == 10) {
+  }
+
+
   this.frameTotal.push(this.bowlOne[0] + this.bowlTwo[0]);
   return this.frameTotal
 }

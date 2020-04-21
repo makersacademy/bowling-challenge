@@ -79,6 +79,29 @@ describe( "Game", () => {
 
       expect( frame1Double.addBonus ).toHaveBeenCalledWith( 5 );
     } );
+
+    it( "calls calcTotal on a completed frame", () => {
+      const frame1Double = {
+        addScore: function addScore() {},
+        hasAllBonuses: function hasAllBonuses() { return true; },
+        isComplete: function isComplete() { return true; },
+        calcTotal: function calcTotal() {}
+      };
+      spyOn( frame1Double, "calcTotal" );
+
+      function NormalFrameClassDouble() {
+        return frame1Double;
+      }
+
+      function Frame10ClassDouble() {
+        return {};
+      }
+
+      game = new Game( NormalFrameClassDouble, Frame10ClassDouble );
+      game.addScore( 5 );
+
+      expect( frame1Double.calcTotal ).toHaveBeenCalledWith( 0 );
+    } );
   } );
 
   describe( ".currentScore", () => {

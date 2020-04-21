@@ -44,10 +44,12 @@ describe( "Game", () => {
       const frame1Double = {
         addScore: function addScore() {},
         isComplete: function isComplete() { return true; },
-        hasAllBonuses: function hasAllBonuses() { return false; },
-        addBonus: function addBonus() {}
+        hasAllBonuses: function hasAllBonuses() {},
+        addBonus: function addBonus() {},
+        calcTotal: function calcTotal() {}
       };
       spyOn( frame1Double, "addBonus" );
+      spyOn( frame1Double, "hasAllBonuses" ).and.returnValues( false, true );
 
       // This pattern makes a function that returns different things
       // depending on how many times new is called on it. In this case

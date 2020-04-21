@@ -19,15 +19,22 @@ Frame10.prototype.addScore = function addScore( score ) {
 };
 
 Frame10.prototype.isComplete = function isComplete() {
-  return this.score1 !== null && this.score2 !== null && this.score3 !== null;
+  const firstBallStrike = this.score1 === 10;
+  const twoBallSpare = this.score1 + this.score2 === 10;
+  const needsThreeScores = firstBallStrike || twoBallSpare;
+  if ( ( needsThreeScores && this.score3 === null ) || this.score2 == null ) {
+    return false;
+  } else {
+    return true;
+  }
 };
 
 Frame10.prototype.hasAllBonuses = function hasAllBonuses() {
   return true;
 };
 
-Frame10.prototype.calcTotal = function calcTotal() {
-  this._total = this.score1 + this.score2 + this.score3;
+Frame10.prototype.calcTotal = function calcTotal( currentScore ) {
+  this._total = this.score1 + this.score2 + this.score3 + currentScore;
 };
 
 Object.defineProperty( Frame10.prototype, "score1", {

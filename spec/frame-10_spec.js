@@ -38,11 +38,27 @@ describe( "Frame10", () => {
   } );
 
   describe( ".isComplete", () => {
-    it( "returns false unless all three scores are set", () => {
-      frame10.addScore( 1 );
-      frame10.addScore( 2 );
+    describe( "2 scores", () => {
+      it( "returns false if the first ball is a strike", () => {
+        frame10.addScore( 10 );
+        frame10.addScore( 2 );
 
-      expect( frame10.isComplete() ).toEqual( false );
+        expect( frame10.isComplete() ).toEqual( false );
+      } );
+
+      it( "returns false if the first two balls are a spare", () => {
+        frame10.addScore( 3 );
+        frame10.addScore( 7 );
+
+        expect( frame10.isComplete() ).toEqual( false );
+      } );
+
+      it( "returns true if the first two balls aren't a spare", () => {
+        frame10.addScore( 2 );
+        frame10.addScore( 5 );
+
+        expect( frame10.isComplete() ).toEqual( true );
+      } );
     } );
   } );
 
@@ -61,13 +77,21 @@ describe( "Frame10", () => {
   } );
 
   describe( ".calcTotal", () => {
-    it( "sets the total", () => {
+    it( "sets the total with all 3 scores set", () => {
       frame10.addScore( 4 );
       frame10.addScore( 6 );
       frame10.addScore( 5 );
-      frame10.calcTotal();
+      frame10.calcTotal( 15 );
 
-      expect( frame10.total ).toEqual( 15 );
+      expect( frame10.total ).toEqual( 30 );
+    } );
+
+    it( "sets the total with 2 scores set", () => {
+      frame10.addScore( 4 );
+      frame10.addScore( 2 );
+      frame10.calcTotal( 15 );
+
+      expect( frame10.total ).toEqual( 21 );
     } );
   } );
 } );

@@ -194,20 +194,35 @@ describe( "the game should automatically calcuate the correct scores", () => {
   } );
 
   describe( "frame 10", () => {
-    it( "won't calcuate its total without all three scores", () => {
-      for ( let i = 0; i < 20; i += 1 ) {
-        game.addScore( 3 );
+    it( "totals with a spare", () => {
+      for ( let i = 0; i < 21; i += 1 ) {
+        game.addScore( 5 );
       }
 
-      expect( game.frame( 9 ).total ).toEqual( null );
+      expect( game.frame( 9 ).total ).toEqual( 150 );
     } );
 
-    it( "calcuates its total when all three scores are set", () => {
-      for ( let i = 0; i < 21; i += 1 ) {
-        game.addScore( 3 );
+    it( "totals with a strike", () => {
+      for ( let i = 0; i < 18; i += 1 ) {
+        game.addScore( 5 );
       }
 
-      expect( game.frame( 9 ).total ).toEqual( 9 );
+      game.addScore( 10 );
+      game.addScore( 2 );
+      game.addScore( 4 );
+
+      expect( game.frame( 9 ).total ).toEqual( 156 );
+    } );
+
+    it( "totals if two scores are normal", () => {
+      for ( let i = 0; i < 18; i += 1 ) {
+        game.addScore( 5 );
+      }
+
+      game.addScore( 2 );
+      game.addScore( 2 );
+
+      expect( game.frame( 9 ).total ).toEqual( 136 );
     } );
   } );
 } );

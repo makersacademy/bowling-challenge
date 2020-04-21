@@ -2,13 +2,13 @@
 
 /* eslint-disable no-underscore-dangle */
 
-function Game() {
+function Game(FrameClass = Frame, Frame10Class = Frame10) {
   this._frames = [];
   this._populateFrames = function _populateFrames() {
     for ( let i = 0; i < 9; i += 1 ) {
-      this._frames.push( new Frame() );
+      this._frames.push( new FrameClass() );
     }
-    this._frames.push( new Frame10() );
+    this._frames.push( new Frame10Class() );
   };
   this._populateFrames();
   this._currentFrameNumber = 0;

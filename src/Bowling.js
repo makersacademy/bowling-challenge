@@ -63,30 +63,38 @@ Bowling.prototype.makeCardTemplate =  function(){
     obj[key] = { 'r1PinsDown': 0, 'r1score': 0, 'r2PinsDown' :0, 'r2score' : 0 }
     this.card = obj
   }
-   console.dir(this.card)
+   //console.dir(this.card)
    return this.card
 }
 
 
 Bowling.prototype.fillCard = function(){
-  this.card['frame1']['r1PinsDown'] = this.numPinsDown
-  this.card['frame1']['r1Score'] = this.score 
+  var counter1;
+  var counter2;
+  for (counter1= 1; counter1 < 11; counter1++) {
+    this.frameKey =  ("frame" + counter1)
+    this.card[this.frameKey]['r1PinsDown'] = this.numPinsDown
+    this.card[this.frameKey]['r1Score'] = this.score 
+    for (counter2 = 1; counter2 < 3; counter2 ++) 
+     this.rollNum = (  counter2);
+  }
   return this.card
+
 }
 
 
 
 
 
-// Bowling.prototype.loop = function(objectToLoop){
-//   var counter1;
-//   var counter2;
-//   for (counter1= 1; counter1 < 11; counter1++) {
-//     this.frameKey =  ("frame" + counter1)
-//     for (counter2 = 1; counter2 < 3; counter2 ++) 
-//      this.rollNum = (  counter2);
-//   }
-// }
+Bowling.prototype.loop = function(objectToLoop){
+  var counter1;
+  var counter2;
+  for (counter1= 1; counter1 < 11; counter1++) {
+    this.frameKey =  ("frame" + counter1)
+    for (counter2 = 1; counter2 < 3; counter2 ++) 
+     this.rollNum = (  counter2);
+  }
+}
 
 
 /*

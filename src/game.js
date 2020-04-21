@@ -3,15 +3,18 @@
 /* eslint-disable no-underscore-dangle */
 
 function Game() {
-  this._currentScore = 0;
   this._frames = [];
-  for ( let i = 0; i < 9; i += 1 ) {
-    this._frames.push( new Frame() );
-  }
-  this._frames.push( new Frame10() );
+  this.populateFrames = function populateFrames() {
+    for ( let i = 0; i < 9; i += 1 ) {
+      this._frames.push( new Frame() );
+    }
+    this._frames.push( new Frame10() );
+  };
+  this.populateFrames();
   this._currentFrameNumber = 0;
   this._currentFrame = this._frames[ this._currentFrameNumber ];
   this._framesNeedingBonuses = [];
+  this._currentScore = 0;
 }
 
 Game.prototype.addScore = function addScore( scoreString ) {

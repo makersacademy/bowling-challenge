@@ -16,8 +16,9 @@ function Game() {
 
 Game.prototype.addScore = function addScore( scoreString ) {
   const score = parseInt( scoreString, 10 );
-  this._addBonusToFrames( score );
+  this._addBonusToPreviousFrames( score );
   this._currentFrame.addScore( score );
+
   if ( this._currentFrame.isComplete() ) {
     this._handleCompleteFrame();
   }
@@ -33,8 +34,7 @@ Game.prototype.frame = function frame( number ) {
 
 Game.prototype._handleCompleteFrame = function _handleCompleteFrame() {
   if ( this._currentFrame.hasAllBonuses() ) {
-    this._currentFrame.calcTotal( this._currentScore );
-    this._currentScore = this._currentFrame.total;
+    this._updateTotals( this._currentFrame );
   } else {
     this._framesNeedingBonuses.push( this._currentFrame );
   }
@@ -43,14 +43,22 @@ Game.prototype._handleCompleteFrame = function _handleCompleteFrame() {
   this._currentFrame = this._frames[ this._currentFrameNumber ];
 };
 
-Game.prototype._addBonusToFrames = function _addBonusToPreviousSpare( bonus ) {
+Game.prototype._addBonusToPreviousFrames = function _addBonusToPreviousSpare( bonus ) {
   this._framesNeedingBonuses.forEach( ( frame ) => {
     frame.addBonus( bonus );
     if ( frame.hasAllBonuses() ) {
-      frame.calcTotal( this._currentScore );
-      this._currentScore = frame.total;
+      this._updateTotals( frame );
     }
   } );
+  this._removeFramesWithAllBonuses();
+};
 
-  this._framesNeedingBonuses = this._framesNeedingBonuses.filter( ( frame ) => { return !frame.hasAllBonuses(); } );
+Game.prototype._updateTotals = function _updateTotals( frame ) {
+  frame.calcTotal( this._currentScore );
+  this._currentScore = frame.total;
+};
+
+Game.prototype._removeFramesWithAllBonuses = function _removeFramesWithAllBonuses() { 
+  this._framesNeedingBonuses = this._framesNeedingBonuses
+    .filter( ( frame ) => { return !frame.hasAllBonuses(); } );
 };

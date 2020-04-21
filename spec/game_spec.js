@@ -8,13 +8,37 @@ describe( "Game", () => {
   } );
 
   describe( ".addScore", () => {
-    it( "should accept a score from the player", () => {
-      expect( game.addScore ).toBeDefined();
+    it( "calls addScore on the current frame", () => {
+      const frame1Double = {
+        addScore: function addScore() {},
+        isComplete: function isComplete() { return false; }
+      };
+      spyOn( frame1Double, "addScore" );
+
+      function NormalFrameClassDouble() {
+        if ( typeof NormalFrameClassDouble.i === "undefined" ) {
+          NormalFrameClassDouble.i = 0;
+        }
+        NormalFrameClassDouble.i += 1;
+        if ( NormalFrameClassDouble.i === 1 ) {
+          return frame1Double;
+        }
+        return {};
+      }
+
+      function Frame10ClassDouble() {
+        return {};
+      }
+
+      game = new Game( NormalFrameClassDouble, Frame10ClassDouble );
+      game.addScore( 1 );
+
+      expect( frame1Double.addScore ).toHaveBeenCalledWith( 1 );
     } );
   } );
 
   describe( ".currentScore", () => {
-    it( "should set the current score to zero on creation", () => {
+    it( "returns the game's current score", () => {
       expect( game.currentScore ).toEqual( 0 );
     } );
   } );

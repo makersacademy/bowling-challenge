@@ -38,6 +38,6 @@ Bowling.prototype.addBonus = function (r1,r2){
     if (r1 + r2 == 10 && this.frame == 10){
         this.bonus = true;
     }
-
+    
 }
 

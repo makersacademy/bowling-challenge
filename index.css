@@ -5,7 +5,7 @@ font-family: custom-font;
 
 
 .mbody{
-min-width: 95%;
+min-width: 100%;
 max-width: 900px;
 max-height: 80%;
 min-height: 400px;
@@ -49,4 +49,18 @@ padding-top: 15px;
     min-width: 90%;
     padding-left: 15px;
    
+}
+
+input{
+    max-width: 40px;
+    padding: 0;
+    z-index: 1;
+    position: absolute;
+}
+
+button{
+    font-size: 20px;
+    border: 2px solid black;
+    background-color: #ffffff00;
+    border-radius: 30px;
 }

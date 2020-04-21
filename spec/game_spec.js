@@ -36,25 +36,16 @@ describe( "Game", () => {
   } );
 
   describe( ".isComplete", () => {
-    it( "returns true if the game is complete", () => {
-      for ( let i = 0; i < 18; i += 1 ) {
-        game.addScore( 5 );
-      }
+    it( "calls isComplete() on the 10th frame", () => {
+      const NormalFrameClassDouble = function NormalFrameClassDouble() { return "frame"; };
+      const frame10 = { isComplete: function isComplete() {} };
+      const Frame10ClassDouble = function Frame10ClassDouble() { return frame10; };
+      spyOn( frame10, "isComplete" );
 
-      game.addScore( 2 );
-      game.addScore( 2 );
+      game = new Game( NormalFrameClassDouble, Frame10ClassDouble );
+      game.isComplete();
 
-      expect( game.isComplete() ).toEqual( true );
-    } );
-
-    it( "returns false if the game is incomplete", () => {
-      for ( let i = 0; i < 18; i += 1 ) {
-        game.addScore( 5 );
-      }
-
-      game.addScore( 2 );
-
-      expect( game.isComplete() ).toEqual( false );
+      expect( frame10.isComplete ).toHaveBeenCalledWith();
     } );
   } );
 } );

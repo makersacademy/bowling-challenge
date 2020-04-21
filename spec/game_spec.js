@@ -8,36 +8,25 @@ describe( "Game", () => {
   } );
 
   describe( ".addScore", () => {
+    function Frame10ClassDouble() {
+      return {};
+    }
+
     it( "calls addScore on the current frame", () => {
-      const frame1Double = {
+      const frameDouble = {
         addScore: function addScore() {},
         isComplete: function isComplete() { return false; }
       };
-      spyOn( frame1Double, "addScore" );
+      spyOn( frameDouble, "addScore" );
 
-      // This pattern makes a function that returns different things
-      // depending on how many times new is called on it. In this case
-      // the first time it returns the frame1double, and all other
-      // times it returns an empty object
       function NormalFrameClassDouble() {
-        if ( typeof NormalFrameClassDouble.i === "undefined" ) {
-          NormalFrameClassDouble.i = 0;
-        }
-        NormalFrameClassDouble.i += 1;
-        if ( NormalFrameClassDouble.i === 1 ) {
-          return frame1Double;
-        }
-        return {};
-      }
-
-      function Frame10ClassDouble() {
-        return {};
+        return frameDouble;
       }
 
       game = new Game( NormalFrameClassDouble, Frame10ClassDouble );
       game.addScore( 1 );
 
-      expect( frame1Double.addScore ).toHaveBeenCalledWith( 1 );
+      expect( frameDouble.addScore ).toHaveBeenCalledWith( 1 );
     } );
 
     it( "calls addBonus on a previous frame waiting for a bonus score", () => {
@@ -55,7 +44,8 @@ describe( "Game", () => {
       // depending on how many times new is called on it. In this case
       // the first time it returns the frame1double, and all other
       // times it returns a simpler object to stand in for the other
-      // frames we aren't interested in spying on
+      // frames we aren't interested in spying on but still need to
+      // do something
       function NormalFrameClassDouble() {
         if ( typeof NormalFrameClassDouble.i === "undefined" ) {
           NormalFrameClassDouble.i = 0;
@@ -69,10 +59,6 @@ describe( "Game", () => {
             isComplete: function isComplete() { return false; }
           };
         }
-      }
-
-      function Frame10ClassDouble() {
-        return {};
       }
 
       game = new Game( NormalFrameClassDouble, Frame10ClassDouble );
@@ -93,10 +79,6 @@ describe( "Game", () => {
 
       function NormalFrameClassDouble() {
         return frame1Double;
-      }
-
-      function Frame10ClassDouble() {
-        return {};
       }
 
       game = new Game( NormalFrameClassDouble, Frame10ClassDouble );

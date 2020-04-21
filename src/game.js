@@ -58,7 +58,7 @@ Game.prototype._addBonusToPreviousFrames = function _addBonusToPreviousSpare( bo
 
 Game.prototype._updateTotals = function _updateTotals( frame ) {
   frame.calcTotal( this.currentScore );
-  this.currentScore = frame.total;
+  this._currentScore = frame.total;
 };
 
 Game.prototype._removeFramesWithAllBonuses = function _removeFramesWithAllBonuses() { 
@@ -69,8 +69,5 @@ Game.prototype._removeFramesWithAllBonuses = function _removeFramesWithAllBonuse
 Object.defineProperty( Game.prototype, "currentScore", {
   get: function currentScore() {
     return this._currentScore;
-  },
-  set: function currentScore( score ) {
-    this._currentScore = score;
   }
 } );

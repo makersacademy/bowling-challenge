@@ -11,12 +11,19 @@ $( document ).ready( () => {
       if ( game.frame( i ).isSpare() ) {
         $( `#frame${i}-score1` ).text( game.frame( i ).score1 );
         $( `#frame${i}-score2` ).text( "/" );
-        $( `#frame${i}-total` ).text( game.frame( i ).total );
+      } else if ( game.frame( i ).isStrike() ) {
+        $( `#frame${i}-score1` ).text( "" );
+        $( `#frame${i}-score2` ).text( "X" );
       } else {
         $( `#frame${i}-score1` ).text( game.frame( i ).score1 );
         $( `#frame${i}-score2` ).text( game.frame( i ).score2 );
-        $( `#frame${i}-total` ).text( game.frame( i ).total );
       }
+
+      $( `#frame${i}-total` ).text( game.frame( i ).total );
+    }
+
+    if ( game.isComplete() ) {
+      $( "#game-total" ).text( game.currentScore );
     }
   } );
 } );

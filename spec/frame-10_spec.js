@@ -94,4 +94,16 @@ describe( "Frame10", () => {
       expect( frame10.total ).toEqual( 21 );
     } );
   } );
+
+  describe( ".isSpare", () => {
+    it( "returns false", () => {
+      expect( frame10.isSpare() ).toEqual( false );
+    } );
+  } );
+
+  describe( ".isStrike", () => {
+    it( "returns false", () => {
+      expect( frame10.isStrike() ).toEqual( false );
+    } );
+  } );
 } );

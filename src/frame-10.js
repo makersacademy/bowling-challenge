@@ -37,6 +37,14 @@ Frame10.prototype.calcTotal = function calcTotal( currentScore ) {
   this._total = this.score1 + this.score2 + this.score3 + currentScore;
 };
 
+Frame10.prototype.isSpare = function isSpare() {
+  return false;
+};
+
+Frame10.prototype.isStrike = function isStrike() {
+  return false;
+};
+
 Object.defineProperty( Frame10.prototype, "score1", {
   get: function score1() {
     return this._score1;

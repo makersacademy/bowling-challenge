@@ -31,6 +31,10 @@ Game.prototype.frame = function frame( number ) {
   return this._frames[ number ];
 };
 
+Game.prototype.isComplete = function isComplete() {
+  return this.frame( 9 ).isComplete();
+};
+
 Game.prototype._handleCompleteFrame = function _handleCompleteFrame() {
   if ( this._currentFrame.hasAllBonuses() ) {
     this._updateTotals( this._currentFrame );

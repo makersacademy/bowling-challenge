@@ -25,4 +25,27 @@ describe( "Game", () => {
       expect( game.frame( 10 ) ).toEqual( undefined );
     } );
   } );
+
+  describe( ".isComplete", () => {
+    it( "returns true if the game is complete", () => {
+      for ( let i = 0; i < 18; i += 1 ) {
+        game.addScore( 5 );
+      }
+
+      game.addScore( 2 );
+      game.addScore( 2 );
+
+      expect( game.isComplete() ).toEqual( true );
+    } );
+
+    it( "returns false if the game is incomplete", () => {
+      for ( let i = 0; i < 18; i += 1 ) {
+        game.addScore( 5 );
+      }
+
+      game.addScore( 2 );
+
+      expect( game.isComplete() ).toEqual( false );
+    } );
+  } );
 } );

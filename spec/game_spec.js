@@ -20,9 +20,18 @@ describe( "Game", () => {
   } );
 
   describe( ".frame", () => {
-    it( "contains 10 frames", () => {
-      expect( game.frame( 9 ) ).toEqual( jasmine.any( Frame10 ) );
-      expect( game.frame( 10 ) ).toEqual( undefined );
+    it( "returns the correct frame", () => {
+      const frame10 = jasmine.createSpy();
+      const NormalFrameClassDouble = function NormalFrameClassDouble() {
+        return "frame";
+      };
+      const Frame10ClassDouble = function Frame10ClassDouble() {
+        return frame10;
+      };
+
+      game = new Game( NormalFrameClassDouble, Frame10ClassDouble );
+
+      expect( game.frame( 9 ) ).toEqual( frame10 );
     } );
   } );
 

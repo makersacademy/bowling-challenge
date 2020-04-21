@@ -4,13 +4,13 @@
 
 function Game() {
   this._frames = [];
-  this.populateFrames = function populateFrames() {
+  this._populateFrames = function _populateFrames() {
     for ( let i = 0; i < 9; i += 1 ) {
       this._frames.push( new Frame() );
     }
     this._frames.push( new Frame10() );
   };
-  this.populateFrames();
+  this._populateFrames();
   this._currentFrameNumber = 0;
   this._currentFrame = this._frames[ this._currentFrameNumber ];
   this._framesNeedingBonuses = [];

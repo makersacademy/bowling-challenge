@@ -2,7 +2,7 @@
 
 /* eslint-disable no-underscore-dangle */
 
-function Game(FrameClass = Frame, Frame10Class = Frame10) {
+function Game( FrameClass = Frame, Frame10Class = Frame10 ) {
   this._frames = [];
   this._populateFrames = function _populateFrames() {
     for ( let i = 0; i < 9; i += 1 ) {
@@ -61,7 +61,7 @@ Game.prototype._updateTotals = function _updateTotals( frame ) {
   this._currentScore = frame.total;
 };
 
-Game.prototype._removeFramesWithAllBonuses = function _removeFramesWithAllBonuses() { 
+Game.prototype._removeFramesWithAllBonuses = function _removeFramesWithAllBonuses() {
   this._framesNeedingBonuses = this._framesNeedingBonuses
     .filter( ( frame ) => { return !frame.hasAllBonuses(); } );
 };

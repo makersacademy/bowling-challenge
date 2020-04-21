@@ -12,7 +12,7 @@ function Frame() {
 Frame.prototype.addScore = function addScore( score ) {
   if ( this._score1 === null ) {
     this._score1 = score;
-    if (this.isStrike() ) {
+    if ( this.isStrike() ) {
       this._bonusesRequired = 2;
     }
   } else if ( this._score2 === null ) {

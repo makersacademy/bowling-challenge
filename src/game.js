@@ -24,10 +24,6 @@ Game.prototype.addScore = function addScore( scoreString ) {
   }
 };
 
-Game.prototype.currentScore = function currentScore() {
-  return this._currentScore;
-};
-
 Game.prototype.frame = function frame( number ) {
   return this._frames[ number ];
 };
@@ -54,11 +50,20 @@ Game.prototype._addBonusToPreviousFrames = function _addBonusToPreviousSpare( bo
 };
 
 Game.prototype._updateTotals = function _updateTotals( frame ) {
-  frame.calcTotal( this._currentScore );
-  this._currentScore = frame.total;
+  frame.calcTotal( this.currentScore );
+  this.currentScore = frame.total;
 };
 
 Game.prototype._removeFramesWithAllBonuses = function _removeFramesWithAllBonuses() { 
   this._framesNeedingBonuses = this._framesNeedingBonuses
     .filter( ( frame ) => { return !frame.hasAllBonuses(); } );
 };
+
+Object.defineProperty( Game.prototype, "currentScore", {
+  get: function currentScore() {
+    return this._currentScore;
+  },
+  set: function currentScore( score ) {
+    this._currentScore = score;
+  }
+} );

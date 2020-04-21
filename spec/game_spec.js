@@ -15,7 +15,7 @@ describe( "Game", () => {
 
   describe( ".currentScore", () => {
     it( "should set the current score to zero on creation", () => {
-      expect( game.currentScore() ).toEqual( 0 );
+      expect( game.currentScore ).toEqual( 0 );
     } );
   } );
 

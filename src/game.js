@@ -42,8 +42,10 @@ Game.prototype._handleCompleteFrame = function _handleCompleteFrame() {
     this._framesNeedingBonuses.push( this._currentFrame );
   }
 
-  this._currentFrameNumber += 1;
-  this._currentFrame = this._frames[ this._currentFrameNumber ];
+  if (this._currentFrameNumber < 9 ) {
+    this._currentFrameNumber += 1;
+    this._currentFrame = this._frames[ this._currentFrameNumber ];
+  }
 };
 
 Game.prototype._addBonusToPreviousFrames = function _addBonusToPreviousSpare( bonus ) {

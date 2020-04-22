@@ -1,0 +1,22 @@
+body {
+  background-color:#282828;
+  color: #00FF00;
+}
+
+.input-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.input-button {
+  background: none;
+	color: inherit;
+	border: 1px solid #00FF00;
+  padding: 0;
+  width: 50px;
+  height: 50px;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}

@@ -1,7 +1,7 @@
 "use strict";
 
 $( document ).ready( () => {
-  const game = new Game();
+  let game = new Game();
 
   function updateScoreCard() {
     for ( let i = 0; i < game.currentFrameNumber + 1; i += 1 ) {
@@ -34,4 +34,17 @@ $( document ).ready( () => {
       updateScoreCard();
     } );
   }
+
+  $( "#reset-game" ).click( () => {
+    game = new Game();
+
+    for ( let i = 0; i < 10; i += 1 ) {
+      $( `#frame-${i}-score-1` ).text( "" );
+      $( `#frame-${i}-score-2` ).text( "" );
+      $( `#frame-${i}-total` ).text( "" );
+    }
+
+    $( `#frame-${9}-score-3` ).text( "" );
+    $( "#game-total" ).text( "" );
+  } );
 } );

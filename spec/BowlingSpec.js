@@ -65,32 +65,30 @@ describe("#Bowling", function () {
 
 
 describe("#fillCard", function(){
-  describe("fills in FRAME correctly", function() { 
+  describe("fills in FRAME after  ONE roll", function() { 
     it("fills in the number of PINS  after ONE roll ", function(){
       bowling.makeCardTemplate();
-      bowling.calculateScore(1);
-      expect(bowling.fillCard()['frame1']['r1PinsDown']).toEqual(1)
+      var bowlingMock = new Bowling()
+      bowlingMock.makeCardTemplate();
+      spyOn(bowlingMock, 'getInput').and.returnValue(3);
+      expect(bowlingMock.fillCard()['frame1']['r1PinsDown']).toEqual(3)
     })
+
     it("fills in the SCORE after ONE roll", function(){
-      bowling.makeCardTemplate();
-      bowling.calculateScore(1);
-      expect(bowling.fillCard()['frame1']['r1Score']).toEqual(1) 
+      var bowlingMock = new Bowling()
+      bowlingMock.makeCardTemplate();
+      spyOn(bowlingMock, 'getInput').and.returnValue(1);
+      expect(bowlingMock.fillCard()['frame1']['r1Score']).toEqual(1) 
+      
+    
     })
-    it("fills in the number of PINS  after THREE roll ", function(){
-      bowling.makeCardTemplate();
-      bowling.calculateScore(1);
-      bowling.calculateScore(4);
-      bowling.calculateScore(3);
-      expect(bowling.fillCard()['frame2']['r1PinsDown']).toEqual(3)
+    it("fills in the SCORE  after THREE rolls ", function(){
+      var bowlingMock = new Bowling()
+      bowlingMock.makeCardTemplate();
+      spyOn(bowlingMock, 'getInput').and.returnValue(2);
+      expect(bowlingMock.fillCard()['frame3']['r1Score']).toEqual(6)
     })
   
-    it("fills in the SCORE  after THREE rolls ", function(){
-      bowling.makeCardTemplate();
-      bowling.calculateScore(1);
-      bowling.calculateScore(4);
-      bowling.calculateScore(3);
-      expect(bowling.fillCard()['frame2']['r1Score']).toEqual(8)
-    })
     xdescribe("fills in ROLL correctly", function() {  
       it("fills in the number of PINS  after TWO rolls ", function(){
         bowling.makeCardTemplate();
@@ -104,7 +102,7 @@ describe("#fillCard", function(){
 })
 
 
-describe('#makeCard', function() {
+xdescribe('#makeCard', function() {
   it("returns 1", function(){
     bowling.numPinsDown = 1
     bowling.makeCardTemplate()

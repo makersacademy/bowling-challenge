@@ -75,10 +75,13 @@ function getRndInteger(min, max) {
 
 
 
-Bowling.prototype.manage_card = function(){
-  rolls = this.getInput()
-  total = this.calculateScore(rolls)
+Bowling.prototype.run_card_making = function(){
+  
+  this.makeCardTemplate()
+  var  rolls = this.getInput()
+  var total = this.calculateScore(rolls)
   this.fillCard(rolls,total)
+  return (this.card)
 }
 
 
@@ -104,7 +107,7 @@ Bowling.prototype.fillCard = function(){
     //for (counter2 = 1; counter2 < 3; counter2 ++) 
     // this.rollNum = (  counter2);
   }
-  console.dir(this.card)
+  //console.dir(this.card)
   return this.card
 
 }

@@ -3,10 +3,7 @@
 $( document ).ready( () => {
   const game = new Game();
 
-  $( "#input-score-button" ).click( () => {
-    const newScore = $( "#input-score" ).val();
-    game.addScore( newScore );
-
+  function updateScoreCard() {
     for ( let i = 0; i < 10; i += 1 ) {
       if ( game.frame( i ).isSpare() ) {
         $( `#frame${i}-score1` ).text( game.frame( i ).score1 );
@@ -39,5 +36,12 @@ $( document ).ready( () => {
       $( "#game-total" ).text( game.currentScore );
       $( "#input-score-button" ).attr( "disabled", true );
     }
-  } );
+  }
+
+  for ( let i = 0; i < 11; i += 1 ) {
+    $( `#input-score-${i}` ).click( () => {
+      game.addScore( i );
+      updateScoreCard();
+    } );
+  }
 } );

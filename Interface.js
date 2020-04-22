@@ -15,12 +15,7 @@ $(() => {
     let score = parseInt(e.currentTarget.value);
     scorecard.record(score);
     updateScores();
-    $( ".record" ).each(function(i) {
-      if (!scorecard.currentAvailableRolls.includes(this.value)) {
-        console.log(this)
-      }
-    });
-    
+    prepareButtons();
   });
 
   function updateScores() {
@@ -65,6 +60,7 @@ $(() => {
   $("#reset").click(() => {
     scorecard = new Scorecard();
     clearScores();
+    prepareButtons();
   });
 
   function clearScores() {
@@ -84,4 +80,20 @@ $(() => {
   function clearTotal() {
     $(`#grand-total`).empty();
   }
+
+  function prepareButtons() {
+    if (scorecard.gameOver()) {
+      $(".record").prop('disabled', true);
+      return
+    }
+    $(".record").removeAttr('disabled');
+    $(".record").each(function (_i, e) {
+      let value = parseInt(e.value);
+      if (!scorecard.currentAvailableRolls.includes(value)) {
+        $(`#${value}.record`).prop('disabled', true);
+      }
+    });
+  }
 });
+
+

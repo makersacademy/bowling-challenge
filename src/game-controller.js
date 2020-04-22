@@ -6,21 +6,21 @@ $( document ).ready( () => {
   function updateScoreCard() {
     for ( let i = 0; i < game.currentFrameNumber + 1; i += 1 ) {
       if ( game.frame( i ).isSpare() ) {
-        $( `#frame${i}-score1` ).text( game.frame( i ).score1 );
-        $( `#frame${i}-score2` ).text( "/" );
+        $( `#frame-${i}-score-1` ).text( game.frame( i ).score1 );
+        $( `#frame-${i}-score-2` ).text( "/" );
       } else if ( game.frame( i ).isStrike() ) {
-        $( `#frame${i}-score1` ).text( "" );
-        $( `#frame${i}-score2` ).text( "X" );
+        $( `#frame-${i}-score-1` ).text( "" );
+        $( `#frame-${i}-score-2` ).text( "X" );
       } else if ( i === 9 ) {
-        $( `#frame${i}-score1` ).text( game.frame( i ).score1 );
-        $( `#frame${i}-score2` ).text( game.frame( i ).score2 );
-        $( `#frame${i}-score3` ).text( game.frame( i ).score3 );
+        $( `#frame-${i}-score-1` ).text( game.frame( i ).score1 );
+        $( `#frame-${i}-score-2` ).text( game.frame( i ).score2 );
+        $( `#frame-${i}-score-3` ).text( game.frame( i ).score3 );
       } else {
-        $( `#frame${i}-score1` ).text( game.frame( i ).score1 );
-        $( `#frame${i}-score2` ).text( game.frame( i ).score2 );
+        $( `#frame-${i}-score-1` ).text( game.frame( i ).score1 );
+        $( `#frame-${i}-score-2` ).text( game.frame( i ).score2 );
       }
 
-      $( `#frame${i}-total` ).text( game.frame( i ).total );
+      $( `#frame-${i}-total` ).text( game.frame( i ).total );
     }
 
     if ( game.isComplete() ) {

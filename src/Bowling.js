@@ -73,6 +73,15 @@ function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min) ) + min;
 }
 
+
+
+Bowling.prototype.manage_card = function(){
+  rolls = this.getInput()
+  total = this.calculateScore(rolls)
+  this.fillCard(rolls,total)
+}
+
+
 Bowling.prototype.getInput = function(){
   this.numPinsDown = getRndInteger(1, 4)
   this.fillCard

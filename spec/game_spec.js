@@ -123,4 +123,10 @@ describe( "Game", () => {
       expect( frame10.isComplete ).toHaveBeenCalledWith();
     } );
   } );
+
+  describe( ".currentFrameNumber", () => {
+    it( "returns the current frame number", () => {
+      expect( game.currentFrameNumber ).toEqual( 0 );
+    } );
+  } );
 } );

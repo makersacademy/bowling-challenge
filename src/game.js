@@ -71,3 +71,9 @@ Object.defineProperty( Game.prototype, "currentScore", {
     return this._currentScore;
   }
 } );
+
+Object.defineProperty( Game.prototype, "currentFrameNumber", {
+  get: function currentFrameNumber() {
+    return this._currentFrameNumber;
+  }
+} );

@@ -67,20 +67,22 @@ Bowling.prototype.makeCardTemplate =  function(){
    return this.card
 }
 
-function getRndInteger(min, max) {
-  //for testing - need to  change
-  //ask for input  
+function getRndInteger(min, max) { 
   return Math.floor(Math.random() * (max - min) ) + min;
 }
 
 
 
 Bowling.prototype.run_card_making = function(){
-  
   this.makeCardTemplate()
-  var  rolls = this.getInput()
-  var total = this.calculateScore(rolls)
-  this.fillCard(rolls,total)
+  var numFrame;
+  //var counter2;
+  for (numFrame= 1; numFrame < 11; numFrame++) { 
+    var  rolls = this.getInput()
+    var score = this.calculateScore(rolls)
+    this.fillCard(rolls,score, numFrame)
+  }
+  console.log(this.card)
   return (this.card)
 }
 
@@ -93,20 +95,18 @@ Bowling.prototype.getInput = function(){
   
 }
 
-Bowling.prototype.fillCard = function(){
-  var counter1;
-  var counter2;
-  var score;
-  for (counter1= 1; counter1 < 11; counter1++) {
-    score = this.calculateScore(this.getInput())
+Bowling.prototype.fillCard = function(rolls,score, numFrame){
+
+  
+    
     // need to make argument = to something that changes each roll
-    this.frameKey =  ("frame" + counter1)
-    this.card[this.frameKey]['r1PinsDown'] = this.getInput()
+    this.frameKey =  ("frame" + numFrame)
+    this.card[this.frameKey]['r1PinsDown'] = rolls
     // this.PinsDown updates to the latest 
     this.card[this.frameKey]['r1Score'] = score 
     //for (counter2 = 1; counter2 < 3; counter2 ++) 
     // this.rollNum = (  counter2);
-  }
+ 
   //console.dir(this.card)
   return this.card
 
@@ -117,13 +117,13 @@ Bowling.prototype.fillCard = function(){
 
 
 Bowling.prototype.loop = function(objectToLoop){
-  var counter1;
-  var counter2;
-  for (counter1= 1; counter1 < 11; counter1++) {
+  //var counter1;
+  //var counter2;
+  //for (counter1= 1; counter1 < 11; counter1++) {
     this.frameKey =  ("frame" + counter1)
     for (counter2 = 1; counter2 < 3; counter2 ++) 
      this.rollNum = (  counter2);
-  }
+  //}
 }
 
 

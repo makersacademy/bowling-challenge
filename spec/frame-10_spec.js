@@ -106,4 +106,10 @@ describe( "Frame10", () => {
       expect( frame10.isStrike() ).toEqual( false );
     } );
   } );
+
+  describe( ".maxNextScore", () => {
+    it( "returns 10 if no scores have been added", () => {
+      expect( frame10.maxNextScore() ).toEqual( 10 );
+    } );
+  } );
 } );

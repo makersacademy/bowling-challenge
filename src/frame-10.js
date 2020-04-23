@@ -45,6 +45,10 @@ Frame10.prototype.isStrike = function isStrike() {
   return false;
 };
 
+Frame10.prototype.maxNextScore = function maxNextScore() {
+  return 10;
+};
+
 Object.defineProperty( Frame10.prototype, "score1", {
   get: function score1() {
     return this._score1;

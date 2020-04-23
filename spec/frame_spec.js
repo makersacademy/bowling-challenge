@@ -126,5 +126,11 @@ describe( "Frame", () => {
     it( "returns 10 if the first score hasn't been added", () => {
       expect( frame.maxNextScore() ).toEqual( 10 );
     } );
+
+    it( "returns the remaining number of pins if the first score has been added", () => {
+      frame.addScore( 3 );
+
+      expect( frame.maxNextScore() ).toEqual( 7 );
+    } );
   } );
 } );

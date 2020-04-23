@@ -53,7 +53,7 @@ Frame.prototype.hasAllBonuses = function hasAllBonuses() {
 };
 
 Frame.prototype.maxNextScore = function maxNextScore() {
-  return 10;
+  return 10 - this.score1;
 };
 
 Object.defineProperty( Frame.prototype, "score1", {

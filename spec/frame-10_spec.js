@@ -117,5 +117,11 @@ describe( "Frame10", () => {
 
       expect( frame10.maxNextScore() ).toEqual( 10 );
     } );
+
+    it( "returns 10 - first score if the first score was less than 10", () => {
+      frame10.addScore( 4 );
+
+      expect( frame10.maxNextScore() ).toEqual( 6 );
+    } );
   } );
 } );

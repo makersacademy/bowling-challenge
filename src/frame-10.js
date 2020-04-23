@@ -49,11 +49,7 @@ Frame10.prototype.maxNextScore = function maxNextScore() {
   if ( this.score1 === null ) {
     return 10;
   } else if ( this.score2 === null ) {
-    if ( this.score1 === 10 ) {
-      return 10;
-    } else {
-      return 10 - this.score1;
-    }
+    return this.score1 === 10 ? 10 : 10 - this.score1;
   } else {
     return 10;
   }

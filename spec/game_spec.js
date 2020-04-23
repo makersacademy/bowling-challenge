@@ -129,4 +129,26 @@ describe( "Game", () => {
       expect( game.currentFrameNumber ).toEqual( 0 );
     } );
   } );
+
+  describe( ".maxNextScore", () => {
+    it( "calls .maxNextScore on the current frame", () => {
+      function Frame10ClassDouble() {
+        return {};
+      }
+
+      const frameDouble = {
+        maxNextScore: function maxNextScore() { }
+      };
+
+      function NormalFrameClassDouble() {
+        return frameDouble;
+      }
+
+      spyOn( frameDouble, "maxNextScore" );
+      game = new Game( NormalFrameClassDouble, Frame10ClassDouble );
+      game.maxNextScore();
+
+      expect( frameDouble.maxNextScore ).toHaveBeenCalledWith();
+    } );
+  } );
 } );

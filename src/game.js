@@ -35,6 +35,10 @@ Game.prototype.isComplete = function isComplete() {
   return this.frame( 9 ).isComplete();
 };
 
+Game.prototype.maxNextScore = function maxNextScore() {
+  return this._currentFrame.maxNextScore();
+};
+
 Game.prototype._handleCompleteFrame = function _handleCompleteFrame() {
   if ( this._currentFrame.hasAllBonuses() ) {
     this._updateTotals( this._currentFrame );

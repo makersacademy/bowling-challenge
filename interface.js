@@ -12,9 +12,23 @@ $('#enter-name').submit(function(event) {
 
 $('#start-game').click(function() {
   startBowling();
-})
+});
 
+$('#game-save').submit(function(event) {
+  event.preventDefault();
+  var bowlOne = parseInt($('#ball-one').val()),
+      bowlTwo = parseInt($('#ball-two').val());
+      $('#ball-one').val('');
+      $('#ball-two').val('');
+      bowling.storeFirst(bowlOne);
+      bowling.storeSecond(bowlTwo);
+      bowling.saveCurrentPlayerFrame();
+      updateCurrentPlayer();
+});
 
+function updateCurrentPlayer() {
+  $('#current-player').text("enter Frame for " + bowling.getCurrentPlayer().name);
+}
 function savePlayer(player) {
   bowling.addPlayer(player)
 };
@@ -34,6 +48,7 @@ function startBowling() {
   hideIntro();
   makeTable(bowling.players);
   revealBoard();
+  updateCurrentPlayer();
 };
 
 function hideIntro() {

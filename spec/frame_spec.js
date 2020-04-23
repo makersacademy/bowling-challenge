@@ -121,4 +121,10 @@ describe( "Frame", () => {
       expect( frame.hasAllBonuses() ).toEqual( false );
     } );
   } );
+
+  describe( ".maxNextScore", () => {
+    it( "returns 10 if the first score hasn't been added", () => {
+      expect( frame.maxNextScore() ).toEqual( 10 );
+    } );
+  } );
 } );

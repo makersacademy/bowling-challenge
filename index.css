@@ -1,6 +1,8 @@
 body {
   background-color:#282828;
   color: #00FF00;
+  font-family: 'VT323', monospace;
+  font-size: 55px;
 }
 
 .scorecard-container {
@@ -26,6 +28,7 @@ body {
   outline: inherit;
   border: 1px 
   solid #00FF00;
+  font-size: 60px;
 }
 
 .input-button__disabled {
@@ -78,5 +81,5 @@ body {
 }
 
 #game-total {
-  line-height: 100px;
+  line-height: 200px;
 }

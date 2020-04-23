@@ -24,21 +24,59 @@ $( document ).ready( () => {
     }
   }
 
+  function updateSpareFrame( frameNumber ) {
+    const frame = game.frame( frameNumber );
+    $( `#frame-${frameNumber}-score-1` ).text( frame.score1 );
+    $( `#frame-${frameNumber}-score-2` ).text( "/" );
+  }
+
+  function updateStrikeFrame( frameNumber ) {
+    $( `#frame-${frameNumber}-score-1` ).text( "" );
+    $( `#frame-${frameNumber}-score-2` ).text( "X" );
+  }
+
+  function updateNormalFrame( frameNumber ) {
+    const frame = game.frame( frameNumber );
+    $( `#frame-${frameNumber}-score-1` ).text( frame.score1 );
+    $( `#frame-${frameNumber}-score-2` ).text( frame.score2 );
+  }
+
+  function updateTenthFrame( frameNumber ) {
+    const frame = game.frame( frameNumber );
+
+    if ( frame.score1 === 10 ) {
+      $( `#frame-${frameNumber}-score-1` ).text( "X" );
+
+      if ( frame.score2 === 10 ) {
+        $( `#frame-${frameNumber}-score-2` ).text( "X" );
+      } else {
+        $( `#frame-${frameNumber}-score-2` ).text( frame.score2 );
+      }
+    } else if ( frame.score1 + frame.score2 === 10 ) {
+      $( `#frame-${frameNumber}-score-1` ).text( frame.score1 );
+      $( `#frame-${frameNumber}-score-2` ).text( "/" );
+    } else {
+      $( `#frame-${frameNumber}-score-1` ).text( frame.score1 );
+      $( `#frame-${frameNumber}-score-2` ).text( frame.score2 );
+    }
+
+    if ( frame.score3 === 10 ) {
+      $( `#frame-${frameNumber}-score-3` ).text( "X" );
+    } else {
+      $( `#frame-${frameNumber}-score-3` ).text( frame.score3 );
+    }
+  }
+
   function updateScoreCard() {
     for ( let i = 0; i < game.currentFrameNumber + 1; i += 1 ) {
       if ( game.frame( i ).isSpare() ) {
-        $( `#frame-${i}-score-1` ).text( game.frame( i ).score1 );
-        $( `#frame-${i}-score-2` ).text( "/" );
+        updateSpareFrame( i );
       } else if ( game.frame( i ).isStrike() ) {
-        $( `#frame-${i}-score-1` ).text( "" );
-        $( `#frame-${i}-score-2` ).text( "X" );
+        updateStrikeFrame( i );
       } else if ( i === 9 ) {
-        $( `#frame-${i}-score-1` ).text( game.frame( i ).score1 );
-        $( `#frame-${i}-score-2` ).text( game.frame( i ).score2 );
-        $( `#frame-${i}-score-3` ).text( game.frame( i ).score3 );
+        updateTenthFrame( i );
       } else {
-        $( `#frame-${i}-score-1` ).text( game.frame( i ).score1 );
-        $( `#frame-${i}-score-2` ).text( game.frame( i ).score2 );
+        updateNormalFrame( i );
       }
 
       $( `#frame-${i}-total` ).text( game.frame( i ).total );

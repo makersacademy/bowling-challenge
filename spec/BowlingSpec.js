@@ -65,20 +65,20 @@ describe("#Bowling", function () {
     });
   });
 
-  describe("run_card_making", function () {
+  describe("runCardMaking", function () {
 
     describe("returns the correct amount of PINS", function () {
 
       it("fills in the roll 1 number of PINS for Frame 1  as 3", function () {
         var bowlingMock = new Bowling();
         spyOn(bowlingMock, "getInput").and.returnValue(3);
-        expect(bowlingMock.run_card_making()["frame1"]["r1PinsDown"]).toEqual(3)
+        expect(bowlingMock.runCardMaking()["frame1"]["r1PinsDown"]).toEqual(3)
       });
 
       it("fills in the roll 1 number of PINS for Frame 3 as 5 ", function () {
         var bowlingMock = new Bowling();
         spyOn(bowlingMock, "getInput").and.returnValue(5);
-        expect(bowlingMock.run_card_making()["frame3"]["r1PinsDown"]).toEqual(5)
+        expect(bowlingMock.runCardMaking()["frame3"]["r1PinsDown"]).toEqual(5)
       });
     });
 
@@ -87,14 +87,14 @@ describe("#Bowling", function () {
       it("fills in the roll 1 SCORE for Frame 1 as 3", function () {
         var bowlingMock = new Bowling();
         spyOn(bowlingMock, "getInput").and.returnValue(3);
-        expect(bowlingMock.run_card_making()["frame1"]["r1Score"]).toEqual(3);
+        expect(bowlingMock.runCardMaking()["frame1"]["r1Score"]).toEqual(3);
       });
 
       it("fills in the roll 1 SCORE for Frame 3 as 6 ", function () {
         var bowlingMock = new Bowling();
         bowlingMock.makeCardTemplate();
         spyOn(bowlingMock, "getInput").and.returnValue(2);
-        expect(bowlingMock.run_card_making()["frame1"]["r1Score"]).toEqual(2);
+        expect(bowlingMock.runCardMaking()["frame1"]["r1Score"]).toEqual(2);
         expect(bowlingMock.card["frame3"]["r1Score"]).toEqual(6);
       });
     });

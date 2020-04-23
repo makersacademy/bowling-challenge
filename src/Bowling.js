@@ -60,13 +60,13 @@ function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-Bowling.prototype.run_card_making = function () {
+Bowling.prototype.runCardMaking = function () {
   this.makeCardTemplate();
-  var numFrame;
-  for (numFrame = 1; numFrame < 11; numFrame++) {
+  var frameCount;
+  for (frameCount = 1; frameCount < 11; frameCount++) {
     var pins = this.getInput();
     var score = this.calculateScore(pins);
-    this.fillCard(pins, score, numFrame);
+    this.fillCard(pins, score, frameCount);
   }
   //console.log(this.card);
   return this.card;

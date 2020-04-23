@@ -111,5 +111,11 @@ describe( "Frame10", () => {
     it( "returns 10 if no scores have been added", () => {
       expect( frame10.maxNextScore() ).toEqual( 10 );
     } );
+
+    it( "returns the 10 if the first score was a 10", () => {
+      frame10.addScore( 10 );
+
+      expect( frame10.maxNextScore() ).toEqual( 10 );
+    } );
   } );
 } );

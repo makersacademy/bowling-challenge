@@ -23,11 +23,11 @@ Thermostat.prototype.reset = function () {
 
 function Bowling() {
   this.score = 0;
-  this.numPinsDown = 0;
-  this.card;
+  //this.numPinsDown = 0;
+  //this.card;
   this.frameKey;
-  this.rollNum;
-  this.roll;
+  //this.rollNum;
+  //this.roll;
 }
 
 
@@ -42,14 +42,15 @@ Bowling.prototype.calculateScore = function (numPinsDown) {
 };
 
 Bowling.prototype.makeCardTemplate = function () {
-  var counter1;
+  var frameCount;
   var counter2;
   var obj = {};
 
-  for (counter1 = 1; counter1 < 11; counter1++) {
-    var key = `frame${counter1}`;
+  for (frameCount = 1; frameCount < 11; frameCount++) {
+    var key = `frame${frameCount}`;
     obj[key] = { r1PinsDown: 0, r1score: 0, r2PinsDown: 0, r2score: 0 };
     this.card = obj;
+  
   }
   
   return this.card;

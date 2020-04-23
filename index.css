@@ -23,12 +23,14 @@ body {
   margin: 0;
 	font: inherit;
 	cursor: pointer;
-	outline: inherit;
-}
-
-.standard-border {
+  outline: inherit;
   border: 1px 
   solid #00FF00;
+}
+
+.input-button__disabled {
+  color: #009900;
+  border: 1px solid #009900;
 }
 
 .scores {

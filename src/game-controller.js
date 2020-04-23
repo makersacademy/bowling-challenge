@@ -3,6 +3,27 @@
 $( document ).ready( () => {
   let game = new Game();
 
+  function disableButton( button ) {
+    button.addClass( "input-button__disabled" );
+    button.prop( "disabled", true );
+  }
+
+  function enableButton( button ) {
+    button.removeClass( "input-button__disabled" );
+    button.prop( "disabled", false );
+  }
+
+  function disableInvalidInputButtons() {
+    const maxNextScore = game.maxNextScore();
+    for ( let i = 0; i < 11; i += 1 ) {
+      if ( i > maxNextScore || game.isComplete() ) {
+        disableButton( $( `#input-score-${i}` ) );
+      } else {
+        enableButton( $( `#input-score-${i}` ) );
+      }
+    }
+  }
+
   function updateScoreCard() {
     for ( let i = 0; i < game.currentFrameNumber + 1; i += 1 ) {
       if ( game.frame( i ).isSpare() ) {
@@ -33,6 +54,7 @@ $( document ).ready( () => {
       $( `#input-score-${i}` ).click( () => {
         game.addScore( i );
         updateScoreCard();
+        disableInvalidInputButtons();
       } );
     }
   }
@@ -43,16 +65,28 @@ $( document ).ready( () => {
     $( `#frame-${frameNumber}-total` ).text( "" );
   }
 
+  function resetInputButtons() {
+    for ( let i = 0; i < 11; i += 1 ) {
+      enableButton( $( `#input-score-${i}` ) );
+    }
+  }
+
+  function resetScorecard() {
+    game = new Game();
+
+    for ( let i = 0; i < 10; i += 1 ) {
+      resetFrameScore( i );
+    }
+
+    $( `#frame-${9}-score-3` ).text( "" );
+    $( "#game-total" ).text( "" );
+
+    resetInputButtons();
+  }
+
   function attachResetButtonListener() {
     $( "#reset-game" ).click( () => {
-      game = new Game();
-
-      for ( let i = 0; i < 10; i += 1 ) {
-        resetFrameScore( i );
-      }
-
-      $( `#frame-${9}-score-3` ).text( "" );
-      $( "#game-total" ).text( "" );
+      resetScorecard();
     } );
   }
 

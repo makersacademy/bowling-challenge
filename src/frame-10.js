@@ -46,16 +46,10 @@ Frame10.prototype.isStrike = function isStrike() {
 };
 
 Frame10.prototype.maxNextScore = function maxNextScore() {
-  if ( this.score1 === null && this.score2 === null && this.score3 === null ) {
-    return 10;
-  }
-
-  if ( this.score1 === 10 ) {
-    return 10;
-  }
-
   if ( this.score1 < 10 ) {
     return 10 - this.score1;
+  } else {
+    return 10;
   }
 };
 

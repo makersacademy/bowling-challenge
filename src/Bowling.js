@@ -18,7 +18,7 @@ Bowling.prototype.makeCardTemplate = function () {
   var counter2;
   var obj = {};
   for (frameCount = 1; frameCount < 11; frameCount++) {
-    var key = `frame${frameCount}`;
+    var key = frameCount;
     obj[key] = { r1PinsDown: 0, r1Score: 0, r2PinsDown: 0, r2Score: 0 };
     this.card = obj;
   }
@@ -67,7 +67,7 @@ Bowling.prototype.getInput = function () {
 Bowling.prototype.fillCard = function (pins, score, numFrame, rollCount) {
   // needs to be moved into a different method - maybe a make name method, also might be hard to access hash so might need  to  change to a number
   
-  this.frameKey = "frame" + numFrame;
+  this.frameKey = numFrame
 
   if (rollCount === 1) {
     this.card[this.frameKey]["r1PinsDown"] = pins;

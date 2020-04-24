@@ -15,6 +15,7 @@ Bowlingcard.prototype.enterScore = function(number) {
 }
 
 Bowlingcard.prototype.isStrike = function() {
+  if (this.rollScores[this.roll - 1] === 10)
   this.rollScores.push(NaN);
   this.roll++; 
 }

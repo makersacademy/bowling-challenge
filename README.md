@@ -360,7 +360,6 @@ Wrote a test for isComplete to return true two strikes and then a third roll. Re
 
 Green.
 
-<<<<<<< HEAD
 Finally, wrote a test for isComplete to return false after a single roll has been made. Red.
 
 - Added a condition if roll2 is null to return false.

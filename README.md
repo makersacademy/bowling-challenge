@@ -422,3 +422,5 @@ Extracted this out to a function prepareButtons, and called it in record, and in
 - I would like to add support for multiple players. This could be achieved by initialising more than one scorecard, based on a number of selected players. They could also be prompted for their names.
 
 - I would like to improve the responsiveness of the website. At the moment it is designed with desktop/wide screens in mind, as the design emulates an paper scorecard (which are wide and not tall).
+
+- I would like to ad a bit of animation when the scores are written in to complete the immersive experience.

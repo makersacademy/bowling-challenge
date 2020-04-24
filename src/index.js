@@ -1,6 +1,6 @@
 "use strict";
 
 $( document ).ready( () => {
-  const gameController = new GameController();
-  gameController.initialise();
+  const gamecardController = new GamecardController();
+  gamecardController.initialise();
 } );

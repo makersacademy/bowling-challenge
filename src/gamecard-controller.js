@@ -1,6 +1,6 @@
 "use strict";
 
-function GameController() {
+function GamecardController() {
   let game = new Game();
 
   function enableButton( button ) {

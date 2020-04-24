@@ -4,7 +4,11 @@ Create a bowling scorecard to count and sum the scores of a bowling game for one
 
 ## Play with it
 
+[Visit the bowling scorecard](http://immersive-bowling-scorecard.surge.sh/)
+
 ## Screen Previews
+
+![screen preview](images/bowling-scorecard-preview.gif)
 
 ## Development Journal
 

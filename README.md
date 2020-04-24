@@ -410,7 +410,7 @@ The currentAvailableRolls array also could be used by the interface to manage wh
 
 - Added some logic to the clicking on a record button event first to remove any disabled properties from the record buttons
 - Then loop through them and if their id does not appear in the array of currentAvailableRolls (i.e. they shouldn't be allowed to be clicked), re-add the property disabled.
--Finally, before any of that if the game is over, disable all buttons and return.
+- Finally, before any of that if the game is over, disable all buttons and return.
 
 Extracted this out to a function prepareButtons, and called it in record, and in reset (to set up all the buttons to be available for the first roll).
 

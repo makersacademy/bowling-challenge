@@ -332,7 +332,7 @@ Green.
 
 Wrote a test for Frame10 isComplete to return false if the first two rolls are a spare (as there is still a bonus roll to go). Red.
 
-- Modified to return true if roll1 has been made and the sum of roll 1 and 2  is less than 10 (not a spare), otherwise return false (spare, so still can make a bonus roll).
+- Modified to return true if roll1 has been made and the sum of roll 1 and 2 is less than 10 (not a spare), otherwise return false (spare, so still can make a bonus roll).
 
 Green.
 
@@ -416,7 +416,7 @@ Extracted this out to a function prepareButtons, and called it in record, and in
 
 ## Retrospective
 
-- I would like to be revise the tests for the scorecard to use dependency injection, to test it in isolation from actual frame objects. This is mainly for practicing dependency injection in JS, rather than any actual use case, as the scorecard would never use any object in place of frame.
+- I would like to be revise the tests for the scorecard to use dependency injection, to test it in isolation from actual frame objects. This is mainly for practising dependency injection in JS, rather than any actual use case, as the scorecard would never use any object in place of frame.
 
 - I would like to add support for multiple players. This could be achieved by initialising more than one scorecard, based on a number of selected players. They could also be prompted for their names.
 

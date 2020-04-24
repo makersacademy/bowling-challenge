@@ -106,3 +106,20 @@ Frame points are added together and displayed to the user as frame points
 ### Requirements**
 
 The user is not able to add points for a second roll in a frame when they have rolled a strike in the first
+
+
+## User story 7
+
+* As a user, when I have rolled a strike in the previous roll
+* I want my points from the next 2 rolls to be added to the roll where I scored the strike 
+* So that I can add my points correctly in each frame
+
+### Acceptance criteria
+
+* Given that I have been playing bowling
+* When I have rolled a strike
+* Then I want my points from the next two rolls to be added to this frame
+
+### Requirements
+
+Points are added automatically to the frame where the strike was rolled

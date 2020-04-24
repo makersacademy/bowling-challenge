@@ -5,11 +5,13 @@ $( document ).ready( () => {
 
   function disableButton( button ) {
     button.addClass( "input-button__disabled" );
+    button.removeClass( "input-button__enabled" );
     button.prop( "disabled", true );
   }
 
   function enableButton( button ) {
     button.removeClass( "input-button__disabled" );
+    button.addClass( "input-button__enabled" );
     button.prop( "disabled", false );
   }
 
@@ -134,4 +136,5 @@ $( document ).ready( () => {
   }
 
   attachEventListeners();
+  resetInputButtons();
 } );

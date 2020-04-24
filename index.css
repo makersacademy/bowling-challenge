@@ -26,14 +26,21 @@ body {
 	font: inherit;
 	cursor: pointer;
   outline: inherit;
-  border: 4px 
-  solid #00FF00;
   font-size: 70px;
+}
+
+.input-button__enabled {
+  border: 4px solid #00FF00;
+}
+
+.input-button__enabled:hover {
+  box-shadow: 0 0 5px 2px #00a700, 0 0 5px 2px #00a700 inset;
 }
 
 .input-button__disabled {
   color: #009900;
   border: 4px solid #009900;
+  box-shadow: none;
 }
 
 .scores {

@@ -39,7 +39,7 @@ Bowling.prototype.runCardMaking = function () {
     this.frameKey = frameCount
     for (rollCount = 1; rollCount < 3; rollCount++) {
       var pins = this.getInput();
-      
+
       var score = this.calculateScore(pins);
       this.fillCard(pins, score, frameCount,rollCount);
     }
@@ -49,21 +49,6 @@ Bowling.prototype.runCardMaking = function () {
 
 
 
-
-
-     
-
-
-
-// Bowling.prototype.getRollCount= function() {
-//   var rollCount;
-//   var frameCount;
-//   for (frameCount = 1; frameCount < 11; frameCount++) {
-//     for (rollCount = 1; rollCount < 3; rollCount++) {
-//       console.log(rollCount)
-//     }
-//   }
-// }
 
 Bowling.prototype.getInput = function () {
   return getRndInteger(3, 11);
@@ -90,11 +75,6 @@ Bowling.prototype.fillCard = function (pins, score, numFrame, rollCount) {
       this.spare = false
     }
 
-    if (this.card[this.frameKey]["r1PinsDown"] === 10 || this.card[this.frameKey]["r1PinsDown"] == 10) {
-      this.card[this.frameKey]["strike"] = true
-      } else {
-        this.card[this.frameKey]["strike"] = false
-      }
     
   console.log(this.frameKey )
   console.log(`roll ${rollCount}`);

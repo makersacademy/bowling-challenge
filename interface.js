@@ -20,6 +20,8 @@ $('#game-save').submit(function(event) {
       bowlTwo = parseInt($('#ball-two').val());
       $('#ball-one').val('');
       $('#ball-two').val('');
+      alert(`#${bowling.getCurrentPlayer().name}${bowling.currentFrame}`)
+      addBallsToTable(bowlOne,bowlTwo);
       bowling.storeFirst(bowlOne);
       bowling.storeSecond(bowlTwo);
       bowling.saveCurrentPlayerFrame();
@@ -72,45 +74,36 @@ function makeTable(players) {
       row = table.insertRow(),
       cell = row.insertCell();
       cell.innerHTML = 'Names\\Frames';
+      for (let index = 1; index < 11; index++) {
+        cell =row.insertCell();
+        cell.innerHTML = `  ${index}  `
+      };
       row = table.insertRow();
-
-  for (var i of players) {
-    var cell = row.insertCell();
-    cell.innerHTML = i.name;
-
-    /* You can also attach a click listener if you want
-    cell.addEventListener("click", function(){
-      alert("FOO!");
-    });
-    */
-
-    // Break into next row
-    count++;
-    if (count%perrow==0) {
-      row = table.insertRow();
-    }
-  };
-  for (let index = 0; index < 10; index++) {
-    appendColumn(table);
-  }
-
-  $("#game-board").append(table);
+      for (var i of players) {
+        var cell = row.insertCell();
+        cell.innerHTML = i.name;
+        for (let index = 1; index < 11; index+= 1) {
+          cell = row.insertCell();
+          cell.id = `${i.name}${index}`
+        };
+        
+        /* You can also attach a click listener if you want
+        cell.addEventListener("click", function(){
+          alert("FOO!");
+        });
+        */
+       
+       // Break into next row
+       count++;
+       if (count%perrow==0) {
+         row = table.insertRow();
+        }
+      };
+      
+      table.id = "score-board"
+      $("#game-board").append(table);
 };
-function appendColumn(tableid) {
-  var tbl = tableid,
-      i;
-  // open loop for each row and append cell
-  for (i = 0; i < tbl.rows.length; i++) {
-      createCell(tbl.rows[i].insertCell(tbl.rows[i].cells.length), "", 'col');
-  };
-};
-function createCell(cell, text, style) {
-  var div = document.createElement('div'), // create DIV element
-      txt = document.createTextNode(text); // create text node
-  div.appendChild(txt);                    // append text node to the DIV
-  div.setAttribute('class', style);        // set DIV class attribute
-  div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
-  cell.appendChild(div);
-};
-
+function addBallsToTable(ballOne, ballTwo) {
+  $( `#${bowling.getCurrentPlayer().name}${bowling.currentFrame}` ).innerHTML=`${ballOne},${ballTwo}`
+}
 });

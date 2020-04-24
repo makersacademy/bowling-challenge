@@ -35,6 +35,7 @@ body {
 
 .input-button__enabled:hover {
   box-shadow: 0 0 5px 2px #00a700, 0 0 5px 2px #00a700 inset;
+  text-shadow: 0 0 5px #00a700;
 }
 
 .input-button__disabled {

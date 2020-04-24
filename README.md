@@ -409,7 +409,12 @@ The currentAvailableRolls array also could be used by the interface to manage wh
 - Then loop through them and if their id does not appear in the array of currentAvailableRolls (i.e. they shouldn't be allowed to be clicked), re-add the property disabled.
 -Finally, before any of that if the game is over, disable all buttons and return.
 
-Extracted this out to a function prepareButtons, and called it in record, and in reset (to set up all the buttons to be available for the first roll.)
+Extracted this out to a function prepareButtons, and called it in record, and in reset (to set up all the buttons to be available for the first roll).
 
 ## Retrospective
 
+- I would like to be revise the tests for the scorecard to use dependency injection, to test it in isolation from actual frame objects. This is mainly for practicing dependency injection in JS, rather than any actual use case, as the scorecard would never use any object in place of frame.
+
+- I would like to add support for multiple players. This could be achieved by initialising more than one scorecard, based on a number of selected players. They could also be prompted for their names.
+
+- I would like to improve the responsiveness of the website. At the moment it is designed with desktop/wide screens in mind, as the design emulates an paper scorecard (which are wide and not tall).

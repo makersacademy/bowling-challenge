@@ -9,15 +9,18 @@ function Bowlingcard () {
 }
 
 Bowlingcard.prototype.enterScore = function(number) {
-  this.rollScores.push(number);
-  this.score += number;
-  this.roll++;
+    this.rollScores.push(number);
+    this.score += number;
+    this.roll++;
+    this.isStrike();
+    
 }
 
 Bowlingcard.prototype.isStrike = function() {
-  if (this.rollScores[this.roll - 1] === 10)
-  this.rollScores.push(NaN);
-  this.roll++; 
+  if (this.roll % 2 != 0 && this.rollScores[this.roll - 1] === 10) {
+    this.rollScores.push(NaN);
+    this.roll++; 
+    }
 }
 
 Bowlingcard.prototype.frameNumber = function() {

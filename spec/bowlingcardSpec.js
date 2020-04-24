@@ -88,5 +88,17 @@ describe('Bowlingcard', function() {
       expect(bowlingcard.rollScores[1]).toEqual(NaN);
     })
   })
+    it('checks if the user rolled a strike when the user enters their score', function() {
+      bowlingcard.enterScore(10);
+      expect(bowlingcard.rollScores[1]).toEqual(NaN);
+  })
+  it('is triggered only if the roll that scored 10 was an odd roll', function() {
+    bowlingcard.enterScore(3);
+    bowlingcard.enterScore(10);
+    bowlingcard.enterScore(3);
+    expect(bowlingcard.rollScores[2]).toEqual(3);
+  })
+
+ 
 
 })

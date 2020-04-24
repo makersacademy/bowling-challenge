@@ -79,38 +79,111 @@ describe("#Bowling", function () {
     });
   });
 
+
+
+
+
+
+
   describe("runCardMaking", function () {
-    describe("returns the correct amount of PINS", function () {
+    xdescribe("returns the correct amount of PINS", function () {
       it("fills in the roll 1 number of PINS for Frame 1  as 3", function () {
         var bowlingMock = new Bowling();
         spyOn(bowlingMock, "getInput").and.returnValue(3);
         expect(bowlingMock.runCardMaking()[1]["r1PinsDown"]).toEqual(3)
       });
 
-      xit("fills in the roll 1 number of PINS for Frame 3 as 5 ", function () {
+      it("fills in the roll 1 number of PINS for Frame 3 as 5 ", function () {
         var bowlingMock = new Bowling();
         spyOn(bowlingMock, "getInput").and.returnValue(5);
-        expect(bowlingMock.runCardMaking()["frame3"]["r1PinsDown"]).toEqual(5)
-
+        expect(bowlingMock.runCardMaking()[3]["r1PinsDown"]).toEqual(5)
       });
     });
 
     describe("returns the correct score", function () {
-      xit("fills in the roll 1 and 2 SCORE for Frame One", function () {
+      it("fills in the roll 1 and 2 SCORE for Frame One", function () {
         var bowlingMock = new Bowling();
         spyOn(bowlingMock, "getInput").and.returnValue(3);
-        expect(bowlingMock.runCardMaking()["frame1"]["r1Score"]).toEqual(3);
-        expect(bowlingMock.card["frame1"]["r2Score"]).toEqual(6);
+        expect(bowlingMock.runCardMaking()[1]["r1Score"]).toEqual(3);
+        expect(bowlingMock.card[1]["r2Score"]).toEqual(6);
       });
 
       xit("fills in the roll 1 and 2 SCORE for Frame three  ", function () {
         var bowlingMock = new Bowling();
         bowlingMock.makeCardTemplate();
         spyOn(bowlingMock, "getInput").and.returnValue(2);
-        expect(bowlingMock.runCardMaking()["frame1"]["r1Score"]).toEqual(2);
+        expect(bowlingMock.runCardMaking()[1]["r1Score"]).toEqual(2);
         //expect(bowlingMock.card["frame3"]["r1Score"]).toEqual(10);
         //expect(bowlingMock.card["frame3"]["r2Score"]).toEqual(12);
       });
     });
+
+    xdescribe("Spares and Stirkes", function () {
+      it("if a score is a spare, strike equals true", function () {
+        var bowlingMock = new Bowling();
+        spyOn(bowlingMock, "getInput").and.returnValue(5);
+        expect(bowlingMock.runCardMaking()[1]["spare"]).toEqual(true);
+      });
+
+      it("if a score is not a spare, spare equals false", function () {
+        var bowlingMock = new Bowling();
+        spyOn(bowlingMock, "getInput").and.returnValue(2);
+        expect(bowlingMock.runCardMaking()[1]["spare"]).toEqual(false);
+      });
+
+      it("if a score is a stike equals true", function () {
+        var bowlingMock = new Bowling();
+        spyOn(bowlingMock, "getInput").and.returnValue(10);
+        expect(bowlingMock.runCardMaking()[1]["strike"]).toEqual(true);
+      });
+
+      it("if a score is not a stirke, stike equals false", function () {
+        var bowlingMock = new Bowling();
+        spyOn(bowlingMock, "getInput").and.returnValue(5);
+        expect(bowlingMock.runCardMaking()[1]["strike"]).toEqual(false);
+      });
+    });
+  
+
+    
+    });
+
+    
+    describe("Spares & Stikes", function () {
+
+      it("If a spare is not thrown spare returns false", function () {
+        var bowlingMock = new Bowling();
+        spyOn(bowlingMock, "getInput").and.returnValue(5);
+        bowlingMock.runCardMaking()
+        expect(bowlingMock.spare).toEqual(true)
+      });
+
+      it("If a spare has been thrown, spare will change to true", function () {
+        var bowlingMock = new Bowling();
+        spyOn(bowlingMock, "getInput").and.returnValue(5);
+        bowlingMock.runCardMaking()
+        expect(bowlingMock.spare).toEqual(true)
+      });
+     
+      it("If a spare is not thrown and spare is true, spare will change to  false", function () {
+        var bowlingMock = new Bowling();
+        bowlingMock.spare = true
+        spyOn(bowlingMock, "getInput").and.returnValue(2);
+        bowlingMock.runCardMaking()
+        expect(bowlingMock.spare).toEqual(false)
+      });
+      
+      xit("If a spare is thrown the score from the first roll of the next frame will be added  it to the score of the frame", function () {
+        bowlingMock.spare = true
+        spyOn(bowlingMock, "getInput").and.returnValue(5);
+        bowlingMock.runCardMaking()
+        expect(bowlingMock.spare).toEqual(false)
+      });
+      
+    });
+
   });
-});
+
+
+
+ 

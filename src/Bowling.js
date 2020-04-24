@@ -4,6 +4,8 @@
 function Bowling() {
   this.score = 0;
   this.frameKey;
+  this.frameScore
+  this.spare = false
   //this.rollCount = 1;
   
 }
@@ -34,14 +36,17 @@ Bowling.prototype.runCardMaking = function () {
   var rollCount;
   var frameCount;
   for (frameCount = 1; frameCount < 11; frameCount++) {
+    this.frameKey = frameCount
     for (rollCount = 1; rollCount < 3; rollCount++) {
       var pins = this.getInput();
+      
       var score = this.calculateScore(pins);
       this.fillCard(pins, score, frameCount,rollCount);
     }
   }
   return this.card;
 };
+
 
 
 
@@ -61,14 +66,12 @@ Bowling.prototype.runCardMaking = function () {
 // }
 
 Bowling.prototype.getInput = function () {
-  return getRndInteger(1, 5);
+  return getRndInteger(3, 11);
 };
 
 Bowling.prototype.fillCard = function (pins, score, numFrame, rollCount) {
   // needs to be moved into a different method - maybe a make name method, also might be hard to access hash so might need  to  change to a number
-  
-  this.frameKey = numFrame
-
+  //this.frameKey = numFrame
   if (rollCount === 1) {
     this.card[this.frameKey]["r1PinsDown"] = pins;
     this.card[this.frameKey]["r1Score"] = score;
@@ -77,11 +80,29 @@ Bowling.prototype.fillCard = function (pins, score, numFrame, rollCount) {
     this.card[this.frameKey]["r2PinsDown"] = pins;
     this.card[this.frameKey]["r2Score"] = score;
   }
+  console.log("frame score")
+  console.log(this.card[this.frameKey]["r1PinsDown"] + this.card[this.frameKey]["r2PinsDown"])
+  
+  // change state to spare - needs to move to a  different method 
+  if (rollCount === 2 & this.card[this.frameKey]["r1PinsDown"] + this.card[this.frameKey]["r2PinsDown"] === 10) {
+    this.spare = true
+    } else if  (rollCount === 2) {
+      this.spare = false
+    }
+
+    if (this.card[this.frameKey]["r1PinsDown"] === 10 || this.card[this.frameKey]["r1PinsDown"] == 10) {
+      this.card[this.frameKey]["strike"] = true
+      } else {
+        this.card[this.frameKey]["strike"] = false
+      }
+    
   console.log(this.frameKey )
   console.log(`roll ${rollCount}`);
   console.log(`pins ${pins}`)
   console.log(score )
-  console.dir(this.card.frame3);
+  console.dir(this.card);
   console.log(" ");
   return this.card;
 };
+
+

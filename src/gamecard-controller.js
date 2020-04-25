@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 "use strict";
 
 function ResetButtonController( onClickCallback ) {
@@ -14,57 +15,42 @@ function ResetButtonController( onClickCallback ) {
   };
 }
 
+function ScoreButtonController( onClickCallback, frameNumber ) {
+  const _callback = onClickCallback;
+  const _frameNumber = frameNumber;
+  let _button = null;
+
+  this.disableButton = function disableButton() {
+    _button.addClass( "input-button__disabled" );
+    _button.removeClass( "input-button__enabled" );
+    _button.prop( "disabled", true );
+  };
+
+  this.enableButton = function enableButton() {
+    _button.removeClass( "input-button__disabled" );
+    _button.addClass( "input-button__enabled" );
+    _button.prop( "disabled", false );
+  };
+
+  function attachScoreButtonListener() {
+    _button.click( () => {
+      _callback( _frameNumber );
+    } );
+  }
+
+  this.initialise = function initialise() {
+    _button = $( `#input-score-${_frameNumber}` );
+    attachScoreButtonListener();
+  };
+}
+
 function GamecardController() {
   let game = new Game();
-
-  function enableButton( button ) {
-    button.removeClass( "input-button__disabled" );
-    button.addClass( "input-button__enabled" );
-    button.prop( "disabled", false );
-  }
-
-  function disableButton( button ) {
-    button.addClass( "input-button__disabled" );
-    button.removeClass( "input-button__enabled" );
-    button.prop( "disabled", true );
-  }
 
   function resetFrameScore( frameNumber ) {
     $( `#frame-${frameNumber}-score-1` ).text( "" );
     $( `#frame-${frameNumber}-score-2` ).text( "" );
     $( `#frame-${frameNumber}-total` ).text( "" );
-  }
-
-  function resetInputButtons() {
-    for ( let i = 0; i < 11; i += 1 ) {
-      enableButton( $( `#input-score-${i}` ) );
-    }
-  }
-
-  function resetScorecard() {
-    game = new Game();
-
-    for ( let i = 0; i < 10; i += 1 ) {
-      resetFrameScore( i );
-    }
-
-    $( `#frame-${9}-score-3` ).text( "" );
-    $( "#game-total" ).text( "" );
-
-    resetInputButtons();
-  }
-
-  const resetButtonController = new ResetButtonController( resetScorecard );
-
-  function disableInvalidInputButtons() {
-    const maxNextScore = game.maxNextScore();
-    for ( let i = 0; i < 11; i += 1 ) {
-      if ( i > maxNextScore || game.isComplete() ) {
-        disableButton( $( `#input-score-${i}` ) );
-      } else {
-        enableButton( $( `#input-score-${i}` ) );
-      }
-    }
   }
 
   function updateSpareFrame( frameNumber ) {
@@ -130,29 +116,57 @@ function GamecardController() {
     }
   }
 
-  function attachScoreButtonListeners() {
-    for ( let i = 0; i < 11; i += 1 ) {
-      $( `#input-score-${i}` ).click( () => {
-        game.addScore( i );
-        updateScoreCard();
-        disableInvalidInputButtons();
-      } );
+  function _onClickScoreButton( frameNumber ) {
+    game.addScore( frameNumber );
+    updateScoreCard();
+    _disableInvalidInputButtons();
+  }
+
+  const _scoreButtonControllers = [];
+  const _resetButtonController = new ResetButtonController( resetScorecard );
+
+  function _disableInvalidInputButtons() {
+    const maxNextScore = game.maxNextScore();
+
+    _scoreButtonControllers.forEach( ( controller, index ) => {
+      if ( index > maxNextScore || game.isComplete() ) {
+        controller.disableButton();
+      } else {
+        controller.enableButton();
+      }
+    } );
+  }
+
+  function _resetInputButtons() {
+    _scoreButtonControllers.forEach( ( controller ) => {
+      controller.enableButton();
+    } );
+  }
+
+  function resetScorecard() {
+    game = new Game();
+
+    for ( let i = 0; i < 10; i += 1 ) {
+      resetFrameScore( i );
     }
+
+    $( `#frame-${9}-score-3` ).text( "" );
+    $( "#game-total" ).text( "" );
+
+    _resetInputButtons();
   }
 
-  function initialiseButtonControllers() {
-    resetButtonController.initialise();
-  }
-
-  function attachEventListeners() {
-    //attachResetButtonListener();
-
-    attachScoreButtonListeners();
+  function _initialiseButtonControllers() {
+    for ( let i = 0; i < 11; i += 1 ) {
+      const controller = new ScoreButtonController( _onClickScoreButton, i );
+      controller.initialise();
+      _scoreButtonControllers.push( controller );
+    }
+    _resetButtonController.initialise();
   }
 
   this.initialise = function initialise() {
-    initialiseButtonControllers();
-    attachEventListeners();
-    resetInputButtons();
+    _initialiseButtonControllers();
+    _resetInputButtons();
   };
 }

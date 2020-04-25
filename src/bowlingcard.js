@@ -38,6 +38,14 @@ Bowlingcard.prototype.strikeScore = function() {
   }
 }
 
+Bowlingcard.prototype.spareScore = function() {
+  if (this.roll % 2 != 0 && this.rollScores[this.roll - 2] === 10) {
+    this.rollScores[this.roll - 2] = this.rollScores[this.roll - 1] + this.rollScores[this.roll - 2]; 
+  } else if (this.roll % 2 === 0 && this.rollScores[this.roll - 1] === 0 && this.rollScores[this.roll - 2] === 10) {
+    this.rollScores[this.roll - 3] = this.rollScores[this.roll - 2] + this.rollScores[this.roll - 3]; 
+  }
+}
+
 Bowlingcard.prototype.frameNumber = function() {
   if (this.rollScores.length < 3) {
     this.frame = 1;

@@ -140,3 +140,20 @@ Points are added automatically to the frame where the strike was rolled
 ### Requirements
 
 After the user rolls a strike bonus points  are automatically added to the frame where they rolled the strike
+
+
+## User story 9
+
+* As a user, when I have rolled a spare
+* I want the points from the following roll to be added to this frame
+* So that I do not have to do it myself and can just enjoy the game
+
+### Acceptance criteria
+
+* Given that I am playing bowling
+* When I have rolled a spare
+* Then I want the points from my next roll to be automatically added to the frame where I rolled the spare
+
+### Requirements**
+
+After the user rolls a spare points form the next roll are automatically added to the frame where they rolled the spare

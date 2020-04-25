@@ -40,8 +40,6 @@ describe('Bowlingcard', function() {
     });
   })
 
-
-
   /*
   describe('.frame', function() {
     it('starts game at 0', function() {
@@ -59,8 +57,6 @@ describe('Bowlingcard', function() {
       expect(bowlingcard.frame).toBe(2);
     })
   })
-
-
  
   describe('.gameFrame', function() {
     it('adds a frame to the list of frames every 2 rolls', function() {
@@ -103,7 +99,6 @@ describe('Bowlingcard', function() {
     it('checks if current roll is odd and preceding roll was strike if so adds points to strike', function() {
       bowlingcard.enterScore(10);
       bowlingcard.enterScore(6);
-      bowlingcard.strikeScore();
       expect(bowlingcard.rollScores[0]).toEqual(16);
     })
   })
@@ -126,6 +121,23 @@ describe('Bowlingcard', function() {
       bowlingcard.enterScore(10);
       expect(bowlingcard.rollScores[0]).toEqual(30);
       expect(bowlingcard.rollScores[2]).toEqual(20);
+  })
+
+  describe('.sparekeScore', function() {
+    it('checks if current roll is odd and preceding frame had a spare if so adds points there too', function() {
+      bowlingcard.enterScore(0);
+      bowlingcard.enterScore(10);
+      bowlingcard.enterScore(3);
+      bowlingcard.spareScore();
+      expect(bowlingcard.rollScores[1]).toEqual(13);
+    })
+    it('checks if current roll a strike and preceding frame had a spare if so adds points there', function() {
+      bowlingcard.enterScore(0);
+      bowlingcard.enterScore(10);
+      bowlingcard.enterScore(10);
+      bowlingcard.spareScore();
+      expect(bowlingcard.rollScores[1]).toEqual(20);
+    })
   })
 })
     

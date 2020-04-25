@@ -1,6 +1,6 @@
 class Frame {
   constructor(roll1, roll2 = 0) {
-    if (roll1 > 10 || roll2 > 10 || roll1 < 0 || isNaN(roll1) ) {
+    if ((roll1 || roll2) > 10 || roll1 < 0 || isNaN(roll1) ) {
       throw new Error('Must roll a number between 0 and 10');
     }
     this.roll1 = roll1;

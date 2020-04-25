@@ -63,4 +63,11 @@ button{
     border: 2px solid black;
     background-color: #ffffff00;
     border-radius: 30px;
+    margin-left: 40px;
+    margin-right: 0;
+    min-width: 5%;
 }
+
+th {max-width: 30px;}
+
+

@@ -1,5 +1,8 @@
 class Frame {
   constructor(roll1, roll2 = 0) {
+    if (roll1 > 10) {
+      throw new Error('Cannot score greater than 10');
+    }
     this.roll1 = roll1;
     this.roll2 = roll2;
   }
@@ -20,5 +23,8 @@ class Frame {
       return true;
     }
     return false;
+  }
+  legit() {
+    throw new Error('Cannot score greater than 10asf');
   }
 };

@@ -41,5 +41,13 @@ describe('Frame', function() {
       expect(frame.isSpare()).toEqual(false);
     });
   });
+
+  describe('edge cases', function() {
+    it('rejects greater than 10', function() {
+      expect(function() {
+        new Frame(12);
+      }).toThrowError('Cannot score greater than 10');
+    });
+  });
 });
 

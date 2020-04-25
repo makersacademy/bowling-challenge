@@ -121,7 +121,7 @@ describe('scorecard', function() {
       for (i = 0; i < 11; i++) {
         scorecard.addFrame(10);
       }
-      scorecard.addFrame(5, 0);
+      scorecard.addFrame(5);
       expect(scorecard.score).toEqual(295);
     });
 
@@ -129,7 +129,7 @@ describe('scorecard', function() {
       for (i = 0; i < 11; i++) {
         scorecard.addFrame(10);
       }
-      scorecard.addFrame(5, 0);
+      scorecard.addFrame(5);
       expect(scorecard.score).toEqual(295);
     });
 

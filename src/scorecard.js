@@ -13,12 +13,18 @@ Scorecard.prototype.addNewScore = function(roll1, roll2=0) {
     if (roll1 > MAX_INITIAL_SCORE || (roll1 + roll2) > MAX_INITIAL_SCORE) {
         return this.incorrectScore()
     }
+    //
+    //this.frameNumber += 1
+    //
     
-    this.calculateFrameScore(roll1, roll2)
+    this.calculateFrameScore(roll1, roll2) //change to addscoretocurrentframe
     this.spareOrStrike(roll1, roll2)
 }
 
+//so this method is bollocks now
 Scorecard.prototype.calculateFrameScore = function(roll1, roll2) {
+
+    
     if (this.isSpare === true) { 
         score1 = roll1 * 2
         score2 = roll2
@@ -57,6 +63,7 @@ Scorecard.prototype.addScoreToCurrentFrame = function(score1, score2) {
 }
 
 Scorecard.prototype.clearCurrentFrame = function() {
+    //
     this.currentFrame = []
 }
 
@@ -72,6 +79,8 @@ Scorecard.prototype.calculateTotalScore = function(array) {
             }
         })
         this.totalScore = runningTotal
+        //console log so I don't have to run card.totalScore when feature testing
+        console.log(this.totalScore)
     }
 
 

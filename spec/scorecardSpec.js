@@ -131,6 +131,14 @@ describe('Scorecard', function() {
         scorecard.addNewScore(3, 4)
         expect(scorecard.totalScore).toEqual(16)
     })
+
+    /////new tests
+    // it('calculates the frame score', function() {
+    //     expect(scorecard.calculateFrameScore(4, 5)).toEqual(9)
+    // })
+
+
+
 })
 
 

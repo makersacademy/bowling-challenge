@@ -157,3 +157,21 @@ After the user rolls a strike bonus points  are automatically added to the frame
 ### Requirements**
 
 After the user rolls a spare points form the next roll are automatically added to the frame where they rolled the spare
+
+
+## User story 10
+
+* As a user, when I am playing bowling
+* I want to know my points per frame 
+* So that I that I can easily compare my scores to that of my friends
+
+### Acceptance criteria
+
+* Given that I am playing bowling
+* When I want to look at my scores
+* Then I want to see the frame scores as the main information displayed 
+
+### Requirements
+
+* The score per frame is clearly displayed
+* Bonus points are added to a frame total not to a particular roll

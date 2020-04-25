@@ -40,43 +40,6 @@ describe('Bowlingcard', function() {
     });
   })
 
-  /*
-  describe('.frame', function() {
-    it('starts game at 0', function() {
-      expect(bowlingcard.frame).toBe(0);
-    });
-  });
-
-  describe('.frameNumber', function() {
-    it('increases frame by 1 every 2 rolls', function() {
-      bowlingcard.enterScore(5);
-      bowlingcard.enterScore(8);
-      bowlingcard.enterScore(5);
-      bowlingcard.enterScore(8);
-      bowlingcard.frameNumber();
-      expect(bowlingcard.frame).toBe(2);
-    })
-  })
- 
-  describe('.gameFrame', function() {
-    it('adds a frame to the list of frames every 2 rolls', function() {
-      bowlingcard.frame = 2;
-      bowlingcard.gameFrame();
-      expect(bowlingcard.inGameFrames).toEqual([0, 1]);
-    })
-  })
-
-  describe('.framePoints', function() {
-    it('adds the points scored in a frame', function() {
-      expect(bowlingcard.framePoints(5, 8)).toBe(13); //I htink this will fail
-    })
-    it('add the points from next 2 valid rolls if a strike was rolled', function() {
-      bowlingcard.rollScores = [10, 0, 3, 4];
-      expect(bowlingcard.framePoints(bowlingcard.rollScores)).toBe(17);
-    })
-  })
-*/
-
   describe('.strike', function() {
     it('records a value or 0 for the following roll if the preceding roll was a strike', function () {
       bowlingcard.enterScore(10);
@@ -128,16 +91,22 @@ describe('Bowlingcard', function() {
       bowlingcard.enterScore(0);
       bowlingcard.enterScore(10);
       bowlingcard.enterScore(3);
-      bowlingcard.spareScore();
       expect(bowlingcard.rollScores[1]).toEqual(13);
     })
-    it('checks if current roll a strike and preceding frame had a spare if so adds points there', function() {
+    it('checks if current roll a strike and preceding frame had a spare if so adds points there automatically', function() {
       bowlingcard.enterScore(0);
       bowlingcard.enterScore(10);
       bowlingcard.enterScore(10);
-      bowlingcard.spareScore();
       expect(bowlingcard.rollScores[1]).toEqual(20);
     })
   })
+  describe('.frameArray', function() {
+    it('checks if current roll is odd, if so pushes score to frame Array', function() {
+      bowlingcard.enterScore(3);
+      bowlingcard.frameArrayAdd()
+      expect(bowlingcard.frameArray[0]).toEqual(3);
+    })
+  })
+
 })
     

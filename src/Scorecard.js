@@ -5,6 +5,7 @@ class Scorecard {
   }
   addFrame(roll1, roll2) {
     this.isGameComplete();
+    this.tooManyRolls(roll2);
     this.frames.push(new Frame(roll1, roll2));
     this.setScore();
   }
@@ -80,6 +81,13 @@ class Scorecard {
     this.frames[this.frames.length-1].isSpare() ||
     this.frames.length == 12) {
       throw new Error('Game complete!');
+    }
+  }
+  tooManyRolls(roll2) {
+    if (this.frames.length == 10 &&
+    this.frames[this.frames.length-1].isSpare() &&
+    roll2 > 0) {
+      throw new Error('Cannot add 2 rolls.');
     }
   }
 }

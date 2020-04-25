@@ -166,6 +166,14 @@ describe('scorecard', function() {
       scorecard.addFrame(2, 2);
       expect(scorecard.score).toEqual(250);
     });
+
+    it('10 5,5 and 5 scores 150', function() {
+      for (i = 0; i < 10; i++) {
+        scorecard.addFrame(5, 5);
+      }
+      scorecard.addFrame(5);
+      expect(scorecard.score).toEqual(150);
+    });
   });
 
   describe('edge cases', function() {
@@ -187,13 +195,14 @@ describe('scorecard', function() {
       }).toThrowError('Game complete!');
     });
 
-    it('12 spares throws an error', function() {
-      for (i = 0; i < 11; i++) {
+    it('11 spares throws an error', function() {
+      for (i = 0; i < 10; i++) {
         scorecard.addFrame(5, 5);
       }
+      // scorecard.addFrame(6, 4);
       expect(function() {
         scorecard.addFrame(6, 4);
-      }).toThrowError('Game complete!');
+      }).toThrowError('Cannot add 2 rolls.');
     });
   });
 });

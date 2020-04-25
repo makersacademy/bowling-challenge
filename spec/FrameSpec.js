@@ -57,7 +57,7 @@ describe('Frame', function() {
 
     it('rejects a string', function() {
       expect(function() {
-        new Frame("string");
+        new Frame('string');
       }).toThrowError('Must roll between 0 and 10');
     });
   });

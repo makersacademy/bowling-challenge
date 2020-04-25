@@ -116,5 +116,12 @@ describe('scorecard', function() {
       }
       expect(scorecard.score).toEqual(300);
     });
+    it('11 strikes and one 5 scores 295', function() {
+      for (i = 0; i < 11; i++) {
+        scorecard.addFrame(10);
+      }
+      scorecard.addFrame(5, 0);
+      expect(scorecard.score).toEqual(295);
+    });
   });
 });

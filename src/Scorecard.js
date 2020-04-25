@@ -13,7 +13,10 @@ class Scorecard {
   }
   calculateScore() {
     this.frames.forEach((frame, index, frames) => {
-      this.scoreLogic(frame, index, frames);
+      if (index > 9) {
+      } else {
+        this.scoreLogic(frame, index, frames);
+      }
     });
   }
   scoreLogic(frame, index, frames) {
@@ -50,6 +53,7 @@ class Scorecard {
       this.score = 300;
       return true;
     } else if (frames[index+1] == undefined) {
+    // if (frames[index+1] == undefined) {
       this.score = 'Add another frame.';
       return true;
     }

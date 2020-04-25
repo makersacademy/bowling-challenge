@@ -34,50 +34,47 @@ describe("#Bowling", function () {
     });
   });
 
-  xdescribe("#fillCard", function () {
-    describe("fills in FRAME correctly", function () {
-      it("fills in one for number of PINS  after ONE roll ", function () {
+  describe("#fillCard", function () {
+    describe("fills in card correctly on FIRST ROLL of frame", function () {
+      it("fills in thhe number of PINS for first roll on FIRST frame ", function () {
         bowling.makeCardTemplate();
-        bowling.rollCount = 1
-        expect(bowling.fillCard(1, 1, 1)["frame1"]["r1PinsDown"]).toEqual(1);
+        bowling.frameKey = 1
+        expect(bowling.fillCard(1, 1, 1)[1]["r1PinsDown"]).toEqual(1);
       });
 
-      it("fills in the SCORE after ONE roll", function () {
-        
+      it("fills in the SCORE for first roll on FIRST frame ", function () {
         bowling.makeCardTemplate();
-        bowling.rollCount = 1
-        expect(bowling.fillCard(1, 1, 1)["frame1"]["r1Score"]).toEqual(1);
+        bowling.frameKey = 1
+        expect(bowling.fillCard(1, 1, 1)[1]["r1Score"]).toEqual(1);
       });
 
       //
-      xit("fills in the SCORE  after THREE rolls ", function () {
-        //will not work is refractored loop out of here   - is it neccesary to test or can I just delete?
-        this.rollCount = 3
+      it("fills in the SCORE  for first roll on  THIRD  frame", function () {
         bowling.makeCardTemplate();
-        bowling.fillCard(1, 1, 1);
-        bowling.fillCard(2, 3, 2);
-        expect(bowling.fillCard(1, 100, 3)["frame3"]["r1Score"]).toEqual(9);
+        bowling.frameKey = 3
+        expect(bowling.fillCard(1, 10, 1)[3]["r1Score"]).toEqual(10);
       });
+    });
 
-      describe("fills in card based on roll count", function () {
-        it("fills in the number of PINS on roll 2 ", function () {
-          bowling.rollCount = 2
+      describe("fills in card correctly on SECOND ROLL of frame", function () {
+        it("fills in the number of PINS on second roll of FIRST frame ", function () {
           bowling.makeCardTemplate();
-          expect(bowling.fillCard(1, 4, 3)["frame3"]["r2PinsDown"]).toEqual(1);
-          expect(bowling.fillCard(1, 4, 3)["frame3"]["r1PinsDown"]).toEqual(0);
+          bowling.frameKey = 1
+          expect(bowling.fillCard(2, 4, 2)[1]["r2PinsDown"]).toEqual(2);
+          expect(bowling.fillCard(2, 4, 2)[1]["r1PinsDown"]).toEqual(0);
         });
 
-        it("fills in the SCORE on roll 2 ", function () {
-          bowling.rollCount = 2
+        it("fills in the SCORE on second roll of THIRD frame ", function () {
+          bowling.frameKey = 3
           bowling.makeCardTemplate();
-          expect(bowling.fillCard(1, 4, 3)["frame3"]["r2Score"]).toEqual(4);
-          expect(bowling.fillCard(1, 4, 3)["frame3"]["r1Score"]).toEqual(0);
+          expect(bowling.fillCard(1, 4, 2)[3]["r2Score"]).toEqual(4);
+          expect(bowling.fillCard(1, 4, 2)[3]["r1Score"]).toEqual(0);
         });
 
 
       });
     });
-  });
+  
 
 
 

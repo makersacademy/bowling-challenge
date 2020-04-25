@@ -9,14 +9,16 @@ $(document).ready(function() {
   })
 
   function updateDisplay() {
-    console.log(game._bonusScore)
-    $('#bonus').text(game.getBonusScore());
-    $('#main').text(game.getScore());
-    $('#total').text(game.getTotalScore());
+    updateScores()
     var number = game.getFrameCount()
     $('#'+number+'.left').text(game.getFirstRoll())
     $('#'+(number-1)+'.right').text(game._secondTurn)
     $('#'+(number-1)+'.bottom').text(game._frameScore) 
   }
 
+  function updateScores() {
+    $('#bonus').text(game.getBonusScore());
+    $('#main').text(game.getScore());
+    $('#total').text(game.getTotalScore());
+  }
 });

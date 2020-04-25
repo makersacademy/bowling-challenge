@@ -85,6 +85,7 @@ Game.prototype._addFrame = function() {
 
 Game.prototype._endTurn = function() {
   if(frame.complete()) {
+    // console.log(this._frames)
     this._secondTurn = frame.secondTurn()
     this._frameScore = this.getFrameScore()
     this._updateScore()

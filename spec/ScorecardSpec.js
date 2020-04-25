@@ -116,6 +116,7 @@ describe('scorecard', function() {
       }
       expect(scorecard.score).toEqual(300);
     });
+
     it('11 strikes and one 5 scores 295', function() {
       for (i = 0; i < 11; i++) {
         scorecard.addFrame(10);
@@ -123,5 +124,51 @@ describe('scorecard', function() {
       scorecard.addFrame(5, 0);
       expect(scorecard.score).toEqual(295);
     });
+
+    it('11 strikes and one 5 scores 295', function() {
+      for (i = 0; i < 11; i++) {
+        scorecard.addFrame(10);
+      }
+      scorecard.addFrame(5, 0);
+      expect(scorecard.score).toEqual(295);
+    });
+
+    it('10 strikes and one spare scores 285', function() {
+      for (i = 0; i < 10; i++) {
+        scorecard.addFrame(10);
+      }
+      scorecard.addFrame(5, 5);
+      expect(scorecard.score).toEqual(285);
+    });
+
+    it('9 strikes, one spare, one strike scores 275', function() {
+      for (i = 0; i < 9; i++) {
+        scorecard.addFrame(10);
+      }
+      scorecard.addFrame(5, 5);
+      scorecard.addFrame(10);
+      expect(scorecard.score).toEqual(275);
+    });
+
+    it('9 strikes, one spare, one strike scores 275', function() {
+      for (i = 0; i < 9; i++) {
+        scorecard.addFrame(10);
+      }
+      scorecard.addFrame(5, 5);
+      scorecard.addFrame(10);
+      expect(scorecard.score).toEqual(275);
+    });
+
+    it('9 strikes, 2,2 scores 250', function() {
+      for (i = 0; i < 9; i++) {
+        scorecard.addFrame(10);
+      }
+      scorecard.addFrame(2, 2);
+      expect(scorecard.score).toEqual(250);
+    });
+  });
+
+  describe('edge cases', function() {
+
   });
 });

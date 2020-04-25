@@ -11,10 +11,6 @@ Frame.prototype.enterTurn = function(pins) {
   this.updateScore(pins);
 }
 
-// Frame.prototype.currentTurn = function() {
-//   return this._turns.length;
-// }
-
 Frame.prototype.updateScore = function(pins) {
   this._score += pins;
 }
@@ -23,10 +19,8 @@ Frame.prototype.viewScore = function() {
   return this._score;
 }
 
-Frame.prototype.complete = function() {
-  if( (this.currentTurn() === 2)  || this.strike() ) {
-    return true
-  } return false
+Frame2.prototype.complete = function() {
+  return ( ( this._firstTurn !== undefined && this._secondTurn !== undefined ) || this.strike() ) 
 }
 
 Frame.prototype.strike = function() {

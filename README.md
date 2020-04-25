@@ -11,23 +11,25 @@ Bowling Challenge
 - [X] A strike applies a bonus score
 - [X] A Strike Bonus is removed once to bonus has been added
 - [X] A game is complete after 10 frames
-- [ ] The 10th Frame allows for bonus rolls
-- [ ] A gutter game is declared
-- [ ] a perfect score is declared
 - [X] Interactive animated display
-- [ ] Travis set up
-- [x] ESLint setup
 - [X] Game shows when complete
-- [ ] Spares and Strikes displayed Visually
+- [x] ESLint setup
+- [X] Spares and Strikes displayed Visually
 - [X] Player can only knock over available pins
 - [X] Game can be restarted
 
-
 ![bowling](process/images/bowling.gif)
+# Features I would like to add
 
-### Current Issues
-
-- [X] Player cannot knock over 0 pins
+- [ ] The 10th Frame allows for bonus rolls
+- [ ] A gutter game is declared
+- [ ] a perfect score is declared
+- [ ] Travis set up
+- [ ] Player can choose names
+- [ ] Player can record high scores
+- [ ] Multiple Players can be added
+- [ ] Scores stored in database 
+- [ ] Leaderboard shows history of high scores
 
 ## The Task
 

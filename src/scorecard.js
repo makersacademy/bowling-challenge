@@ -1,7 +1,6 @@
 const MAX_INITIAL_SCORE = 10
 
 function Scorecard() {
-    //this.totalScore will become obsolete shortly.
     this.totalScore = 0
     this.isSpare = false
     this.isStrike = false
@@ -20,8 +19,6 @@ Scorecard.prototype.addNewScore = function(roll1, roll2=0) {
 }
 
 Scorecard.prototype.calculateFrameScore = function(roll1, roll2) {
-    //this.totalScore += (roll1 + roll2) line below should become useless
-    this.totalScore = roll1 + roll2
     if (this.isSpare === true) { 
         score1 = roll1 * 2
         score2 = roll2
@@ -55,6 +52,8 @@ Scorecard.prototype.incorrectScore = function() {
 Scorecard.prototype.addScoreToCurrentFrame = function(score1, score2) {
     this.currentFrame.push(score1, score2)
     this.addCurrentToAllFrames(this.currentFrame)
+    //will move next line to addCurrentToAllFrames when i can total an array or arrays
+    this.calculateTotalScore(this.allFrames)
 }
 
 Scorecard.prototype.clearCurrentFrame = function() {
@@ -65,9 +64,14 @@ Scorecard.prototype.addCurrentToAllFrames = function(currentFrame) {
     this.allFrames.push(currentFrame)
 }
 
-Scorecard.prototype.calculateTotalScore = function() {
-    return 7
-}
-
+Scorecard.prototype.calculateTotalScore = function(array) {    
+        var runningTotal = 0
+        array.forEach(function(entry) {
+            for (var i = 0; i < entry.length; i++) {
+                runningTotal += entry[i]
+            }
+        })
+        this.totalScore = runningTotal
+    }
 
 

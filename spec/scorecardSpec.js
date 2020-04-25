@@ -109,9 +109,27 @@ describe('Scorecard', function() {
         expect(scorecard.totalScore).toEqual(0)
     })
 
-    it('calculates the total score', function() {
-        expect(scorecard.calculateTotalScore()).toEqual(7)
+    //add describe block here to organise these tests better
 
+    it('calculates the total score', function() {
+        scorecard.calculateTotalScore([[3, 4]])
+        expect(scorecard.totalScore).toEqual(7)
+    })
+
+    it('calculates the total score', function() {
+        scorecard.calculateTotalScore([[3, 4], [2, 2]])
+        expect(scorecard.totalScore).toEqual(11)
+    })
+
+    it('calculates the total score', function() {
+        scorecard.addNewScore(4, 5)
+        expect(scorecard.totalScore).toEqual(9)
+    })
+
+    it('calculates the total score', function() {
+        scorecard.addNewScore(4, 5)
+        scorecard.addNewScore(3, 4)
+        expect(scorecard.totalScore).toEqual(16)
     })
 })
 

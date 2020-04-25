@@ -108,6 +108,12 @@ describe("#Bowling", function () {
   });
 
   describe("Spares & Stikes", function () {
+    var strike
+    var roll
+    beforeEach(function () {
+      strike = 10
+      nonStrike = 3
+    });
     describe("Testing state of PROPERTY spare ", function () {
       it("spare default is false", function () {
         expect(bowling.spare).toEqual(false);
@@ -138,8 +144,7 @@ describe("#Bowling", function () {
       it("#switchStrike - will return true (roll 2)", function () {
         bowling.makeCardTemplate();
         bowling.frameKey = 1;
-        var roll = 2
-        var strike = 10
+        roll = 2
         bowling.fillCard(strike, 10, roll)
         expect(bowling.switchStrike(roll)).toEqual(true)
       });
@@ -148,9 +153,7 @@ describe("#Bowling", function () {
       it("#switchStrike - will return true (roll 1)", function () {
         bowling.makeCardTemplate();
         bowling.frameKey = 1;
-        var roll = 1
-        var strike = 10
-        var nonStrike = 3
+        roll = 1
         bowling.fillCard(strike, 10, roll)
         roll = 2
         bowling.fillCard(nonStrike, 10, roll)
@@ -160,10 +163,9 @@ describe("#Bowling", function () {
       it("#switchStrike - will return false when a strike is not rolled ", function () {
         bowling.makeCardTemplate();
         bowling.frameKey = 2;
-        var roll = 2
-        var nonStrike = 3
+        roll = 1
         bowling.fillCard(nonStrike, 20, roll)
-        roll = 20
+        roll = 2
         bowling.fillCard(nonStrike, 23, roll)
         expect(bowling.switchStrike(roll)).toEqual(false)
       });

@@ -44,92 +44,111 @@ function ScoreButtonController( onClickCallback, frameNumber ) {
   };
 }
 
+function FrameScoreController( frame, frameNumber ) {
+  const _frame = frame;
+  const _frameNumber = frameNumber;
+
+  function updateSpareFrame() {
+    $( `#frame-${_frameNumber}-score-1` ).text( _frame.score1 );
+    $( `#frame-${_frameNumber}-score-2` ).text( "/" );
+  }
+
+  function updateStrikeFrame() {
+    $( `#frame-${_frameNumber}-score-1` ).text( "" );
+    $( `#frame-${_frameNumber}-score-2` ).text( "X" );
+  }
+
+  function updateNormalFrame() {
+    $( `#frame-${_frameNumber}-score-1` ).text( _frame.score1 );
+    $( `#frame-${_frameNumber}-score-2` ).text( _frame.score2 );
+  }
+
+  function updateTenthFrame() {
+    if ( _frame.score1 === 10 ) {
+      displayFirstBallStrike();
+    } else if ( _frame.score1 + _frame.score2 === 10 ) {
+      displaySecondBallSpare();
+    } else {
+      displayNormalFirstTwoScores();
+    }
+
+    if ( _frame.score3 === 10 ) {
+      displayThirdBallStrike();
+    } else {
+      displayThirdBallNormal();
+    }
+
+    function displayFirstBallStrike() {
+      $( `#frame-${_frameNumber}-score-1` ).text( "X" );
+
+      if ( _frame.score2 === 10 ) {
+        $( `#frame-${_frameNumber}-score-2` ).text( "X" );
+      } else {
+        $( `#frame-${_frameNumber}-score-2` ).text( _frame.score2 );
+      }
+    }
+
+    function displaySecondBallSpare() {
+      $( `#frame-${_frameNumber}-score-1` ).text( _frame.score1 );
+      $( `#frame-${_frameNumber}-score-2` ).text( "/" );
+    }
+
+    function displayNormalFirstTwoScores() {
+      $( `#frame-${_frameNumber}-score-1` ).text( _frame.score1 );
+      $( `#frame-${_frameNumber}-score-2` ).text( _frame.score2 );
+    }
+
+    function displayThirdBallStrike() {
+      $( `#frame-${_frameNumber}-score-3` ).text( "X" );
+    }
+
+    function displayThirdBallNormal() {
+      $( `#frame-${_frameNumber}-score-3` ).text( _frame.score3 );
+    }
+  }
+
+  this.resetScores = function resetScores() {
+    $( `#frame-${_frameNumber}-score-1` ).text( "" );
+    $( `#frame-${_frameNumber}-score-2` ).text( "" );
+
+    if ( _frameNumber === 9 ) {
+      $( `#frame-${_frameNumber}-score-3` ).text( "" );
+    }
+
+    $( `#frame-${_frameNumber}-total` ).text( "" );
+  };
+
+  this.updateScores = function updateScores() {
+    if ( _frame.isSpare() ) {
+      updateSpareFrame();
+    } else if ( _frame.isStrike() ) {
+      updateStrikeFrame();
+    } else if ( _frameNumber === 9 ) {
+      updateTenthFrame();
+    } else {
+      updateNormalFrame();
+    }
+
+    $( `#frame-${_frameNumber}-total` ).text( _frame.total );
+  };
+}
+
 function GamecardController() {
-  let game = new Game();
-
-  function resetFrameScore( frameNumber ) {
-    $( `#frame-${frameNumber}-score-1` ).text( "" );
-    $( `#frame-${frameNumber}-score-2` ).text( "" );
-    $( `#frame-${frameNumber}-total` ).text( "" );
-  }
-
-  function updateSpareFrame( frameNumber ) {
-    const frame = game.frame( frameNumber );
-    $( `#frame-${frameNumber}-score-1` ).text( frame.score1 );
-    $( `#frame-${frameNumber}-score-2` ).text( "/" );
-  }
-
-  function updateStrikeFrame( frameNumber ) {
-    $( `#frame-${frameNumber}-score-1` ).text( "" );
-    $( `#frame-${frameNumber}-score-2` ).text( "X" );
-  }
-
-  function updateNormalFrame( frameNumber ) {
-    const frame = game.frame( frameNumber );
-    $( `#frame-${frameNumber}-score-1` ).text( frame.score1 );
-    $( `#frame-${frameNumber}-score-2` ).text( frame.score2 );
-  }
-
-  function updateTenthFrame( frameNumber ) {
-    const frame = game.frame( frameNumber );
-
-    if ( frame.score1 === 10 ) {
-      $( `#frame-${frameNumber}-score-1` ).text( "X" );
-
-      if ( frame.score2 === 10 ) {
-        $( `#frame-${frameNumber}-score-2` ).text( "X" );
-      } else {
-        $( `#frame-${frameNumber}-score-2` ).text( frame.score2 );
-      }
-    } else if ( frame.score1 + frame.score2 === 10 ) {
-      $( `#frame-${frameNumber}-score-1` ).text( frame.score1 );
-      $( `#frame-${frameNumber}-score-2` ).text( "/" );
-    } else {
-      $( `#frame-${frameNumber}-score-1` ).text( frame.score1 );
-      $( `#frame-${frameNumber}-score-2` ).text( frame.score2 );
+  function _updateScoreCard() {
+    for ( let i = 0; i < _game.currentFrameNumber + 1; i += 1 ) {
+      _frameScoreControllers[ i ].updateScores();
     }
 
-    if ( frame.score3 === 10 ) {
-      $( `#frame-${frameNumber}-score-3` ).text( "X" );
-    } else {
-      $( `#frame-${frameNumber}-score-3` ).text( frame.score3 );
+    if ( _game.isComplete() ) {
+      $( "#game-total" ).text( _game.currentScore );
     }
   }
 
-  function updateScoreCard() {
-    for ( let i = 0; i < game.currentFrameNumber + 1; i += 1 ) {
-      if ( game.frame( i ).isSpare() ) {
-        updateSpareFrame( i );
-      } else if ( game.frame( i ).isStrike() ) {
-        updateStrikeFrame( i );
-      } else if ( i === 9 ) {
-        updateTenthFrame( i );
-      } else {
-        updateNormalFrame( i );
-      }
-
-      $( `#frame-${i}-total` ).text( game.frame( i ).total );
-    }
-
-    if ( game.isComplete() ) {
-      $( "#game-total" ).text( game.currentScore );
-    }
-  }
-
-  function _onClickScoreButton( frameNumber ) {
-    game.addScore( frameNumber );
-    updateScoreCard();
-    _disableInvalidInputButtons();
-  }
-
-  const _scoreButtonControllers = [];
-  const _resetButtonController = new ResetButtonController( resetScorecard );
-
-  function _disableInvalidInputButtons() {
-    const maxNextScore = game.maxNextScore();
+  function _disableInvalidScoreButtons() {
+    const maxNextScore = _game.maxNextScore();
 
     _scoreButtonControllers.forEach( ( controller, index ) => {
-      if ( index > maxNextScore || game.isComplete() ) {
+      if ( index > maxNextScore || _game.isComplete() ) {
         controller.disableButton();
       } else {
         controller.enableButton();
@@ -137,23 +156,29 @@ function GamecardController() {
     } );
   }
 
-  function _resetInputButtons() {
+  function _onClickScoreButton( frameNumber ) {
+    _game.addScore( frameNumber );
+    _updateScoreCard();
+    _disableInvalidScoreButtons();
+  }
+
+  function _resetScoreButtons() {
     _scoreButtonControllers.forEach( ( controller ) => {
       controller.enableButton();
     } );
   }
 
-  function resetScorecard() {
-    game = new Game();
+  function _resetScorecard() {
+    _game = new Game();
+    _initialiseFrameControllers();
 
-    for ( let i = 0; i < 10; i += 1 ) {
-      resetFrameScore( i );
-    }
+    _frameScoreControllers.forEach( ( controller ) => {
+      controller.resetScores();
+    } );
 
-    $( `#frame-${9}-score-3` ).text( "" );
     $( "#game-total" ).text( "" );
 
-    _resetInputButtons();
+    _resetScoreButtons();
   }
 
   function _initialiseButtonControllers() {
@@ -165,8 +190,22 @@ function GamecardController() {
     _resetButtonController.initialise();
   }
 
+  function _initialiseFrameControllers() {
+    _frameScoreControllers = [];
+    for ( let i = 0; i < 10; i += 1 ) {
+      const controller = new FrameScoreController( _game.frame( i ), i );
+      _frameScoreControllers.push( controller );
+    }
+  }
+
   this.initialise = function initialise() {
     _initialiseButtonControllers();
-    _resetInputButtons();
+    _resetScoreButtons();
+    _initialiseFrameControllers();
   };
+
+  let _game = new Game();
+  let _frameScoreControllers = [];
+  const _scoreButtonControllers = [];
+  const _resetButtonController = new ResetButtonController( _resetScorecard );
 }

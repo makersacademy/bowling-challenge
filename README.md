@@ -192,3 +192,21 @@ After the user rolls a spare points form the next roll are automatically added t
 ### Requirements
 
 The user can see the total points for their game
+
+
+## User story 12
+
+* As a user, when I am playing bowling
+* I want to know when the game has ended
+* So that we can check our final scores and see who won
+
+### Acceptance criteria
+
+* Given that I have been playing bowling
+* When the game has ended
+* Then I want to know I cannot keep adding scores
+
+### Requirements
+
+* The user is not able to add points for rolls beyond the predefined rolls in a game
+* The user is given their final score

@@ -3,21 +3,28 @@
 function Bowlingcard () {
   this.score = 0; //cummulative points
   this.roll = 0;//cummulative rolls
-  this.frame = 0; //cummulative frames
   this.rollScores = []; //individual points
   this.frameArray = [];//individual frames
 }
 
 Bowlingcard.prototype.enterScore = function(number) {
+  this.endGame();
+  if (number > 10) {
+    this.inputError();
+  } else {
     this.rollScores.push(number);
-    //I do not think I need this or its test
+    
     this.score += number;
     this.roll++;
     this.frameArrayAdd();
     this.strikeScore();
     this.spareScore();
     this.isStrike();
-    
+  }
+}
+
+Bowlingcard.prototype.inputError = function() {
+    console.log("what?");
 }
 
 Bowlingcard.prototype.isStrike = function() {
@@ -51,6 +58,16 @@ Bowlingcard.prototype.frameArrayAdd = function() {
     this.frameArray.push(this.rollScores[this.roll -1]);
   } else if (this.roll % 2 === 0) {
     this.frameArray[this.frameArray.length -1] = this.frameArray[this.frameArray.length -1] + this.rollScores[this.roll - 1]; 
+  }
+}
+
+Bowlingcard.prototype.endGame = function() {
+  if (this.rollScores.length === 20 && this.rollScores[this.roll - 2] != 10) {
+    console.log(`The end. Your total score was ${this.score}`)
+  } else if (this.rollScores.length === 20 && this.rollScores[this.roll - 2] === 10) {
+    console.log("You still have 2 rolls.")
+  } else if (this.rollScores.length === 22) {
+    console.log(`The end. Your total score was ${this.score}`)
   }
 }
 

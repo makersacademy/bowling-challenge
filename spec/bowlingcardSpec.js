@@ -112,6 +112,26 @@ describe('Bowlingcard', function() {
       expect(bowlingcard.frameArray[0]).toEqual(6);
     })
   })
+  
+  describe('.inputError', function() {
+    it('checks if score entered is greater than 10', function() {
+      bowlingcard.enterScore(11);
+      expect(bowlingcard.inputError).toEqual("what?");
+    })
+  })
+  
+/*  
+  describe('.endGame', function() {
+    it('prevents the user from entering scores after roll 20 and when the last roll 19 was not strike', function () {
+      bowlingcard.rollScores.length = 20;
+      expect(bowlingcard.endGame()).toMatch("The end");
+    })
+    it('prevents the user from entering scores after roll 22 if 19 was strike', function () {
+      bowlingcard.rollScores.length = 22;
+      expect(bowlingcard.endGame()).toMatch("The end");
+    })
+  })
+*/
 
 })
     

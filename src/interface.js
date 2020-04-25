@@ -24,14 +24,17 @@ $(document).ready(function() {
   function showStrike() {
     if ( game.strike() ) {
       var number = game.getFrameCount()
-      $('#'+(number-1)+'.bottom').text("strike")
+      $('#'+(number-1)+'.bonus').text("X");
+      $('#'+(number-1)+'.bottom').text("");
     }
   }
 
   function showSpare() {
     if ( game.spare() ) {
       var number = game.getFrameCount()
-      $('#'+(number-1)+'.bottom').text("spare")
+      $('#'+(number-1)+'.bonus').text("/");
+      $('#'+(number-1)+'.bottom').text("");
+      $('#'+(number-1)+'.right').text("")
     }
   }
 

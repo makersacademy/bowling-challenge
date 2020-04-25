@@ -169,6 +169,13 @@ describe('scorecard', function() {
   });
 
   describe('edge cases', function() {
-
+    it('13 strikes throws an error', function() {
+      for (i = 0; i < 12; i++) {
+        scorecard.addFrame(10);
+      }
+      expect(function() {
+        scorecard.addFrame(10);
+      }).toThrowError('Game complete!');
+    });
   });
 });

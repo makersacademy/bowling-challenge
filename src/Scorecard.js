@@ -4,6 +4,9 @@ class Scorecard {
     this.frames= [];
   }
   addFrame(roll1, roll2) {
+    if (this.frames.length == 12) {
+      throw new Error('Game complete!');
+    }
     this.frames.push(new Frame(roll1, roll2));
     this.setScore();
   }

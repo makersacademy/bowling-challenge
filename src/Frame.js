@@ -1,9 +1,6 @@
 class Frame {
   constructor(roll1, roll2 = 0) {
-    if ((roll1 || roll2) > 10 || (roll1 || roll2) < 0 ||
-    isNaN(roll1 || roll2)) {
-      throw new Error('Must roll a number between 0 and 10');
-    }
+    this.checkRolls(roll1, roll2);
     this.roll1 = roll1;
     this.roll2 = roll2;
   }
@@ -25,7 +22,10 @@ class Frame {
     }
     return false;
   }
-  legit() {
-    throw new Error('Cannot score greater than 10asf');
+  checkRolls(roll1, roll2) {
+    if ((roll1 || roll2) > 10 || (roll1 || roll2) < 0 ||
+    isNaN(roll1 || roll2)) {
+      throw new Error('Must roll a number between 0 and 10');
+    }
   }
 };

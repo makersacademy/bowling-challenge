@@ -186,5 +186,14 @@ describe('scorecard', function() {
         scorecard.addFrame(6);
       }).toThrowError('Game complete!');
     });
+
+    it('12 spares throws an error', function() {
+      for (i = 0; i < 11; i++) {
+        scorecard.addFrame(5, 5);
+      }
+      expect(function() {
+        scorecard.addFrame(6, 4);
+      }).toThrowError('Game complete!');
+    });
   });
 });

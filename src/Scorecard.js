@@ -79,5 +79,9 @@ class Scorecard {
     this.frames.length == 12) {
       throw new Error('Game complete!');
     }
+    if (this.frames.length == 11 &&
+    this.frames[this.frames.length-1].isSpare()) {
+      throw new Error('Game complete!');
+    }
   }
 }

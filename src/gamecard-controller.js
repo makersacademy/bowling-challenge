@@ -1,5 +1,19 @@
 "use strict";
 
+function ResetButtonController( onClickCallback ) {
+  const callback = onClickCallback;
+
+  function attachResetButtonListener() {
+    $( "#reset-game" ).click( () => {
+      callback();
+    } );
+  }
+
+  this.initialise = function initialise() {
+    attachResetButtonListener();
+  };
+}
+
 function GamecardController() {
   let game = new Game();
 
@@ -40,11 +54,7 @@ function GamecardController() {
     resetInputButtons();
   }
 
-  function attachResetButtonListener() {
-    $( "#reset-game" ).click( () => {
-      resetScorecard();
-    } );
-  }
+  const resetButtonController = new ResetButtonController( resetScorecard );
 
   function disableInvalidInputButtons() {
     const maxNextScore = game.maxNextScore();
@@ -130,12 +140,18 @@ function GamecardController() {
     }
   }
 
+  function initialiseButtonControllers() {
+    resetButtonController.initialise();
+  }
+
   function attachEventListeners() {
-    attachResetButtonListener();
+    //attachResetButtonListener();
+
     attachScoreButtonListeners();
   }
 
   this.initialise = function initialise() {
+    initialiseButtonControllers();
     attachEventListeners();
     resetInputButtons();
   };

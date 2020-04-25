@@ -28,6 +28,13 @@ $(document).ready(function() {
     }
   }
 
+  function showSpare() {
+    if ( game.spare() ) {
+      var number = game.getFrameCount()
+      $('#'+(number-1)+'.bottom').text("spare")
+    }
+  }
+
   function removeUnavailable() {
     num = 10 - (game.firstTurn - 1)
     var unavailable = [];
@@ -43,6 +50,7 @@ $(document).ready(function() {
     updateFrames()
     if (game.getFrameCount() > 1) {
       showStrike() 
+      showSpare() 
     }
   }
 

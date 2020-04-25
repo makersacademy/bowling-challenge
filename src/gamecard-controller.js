@@ -8,29 +8,41 @@ function GamecardController() {
   const _scoreButtonControllers = [];
   const _resetButtonController = new ResetButtonController( _resetScorecard );
   const _messageDisplayController = new MessageDisplayController();
+  let _frameDisplayWasLastChanged = 0;
+
+  function _handleMessageDisplay() {
+    function updateDisplayForFrameScores() {
+      if ( _game.frame( _game.currentFrameNumber - 1 ).isStrike() ) {
+        _messageDisplayController.displayStrike();
+      } else if ( _game.frame( _game.currentFrameNumber - 1 ).isSpare() ) {
+        _messageDisplayController.displaySpare();
+      } else {
+        _messageDisplayController.displayMessage( "" );
+      }
+    }
+
+    const isNewFrameSinceLastUpdate = _game.currentFrameNumber !== _frameDisplayWasLastChanged;
+    const isTimeToUpdate = _game.currentFrameNumber > 0 && isNewFrameSinceLastUpdate;
+    if ( isTimeToUpdate ) {
+      updateDisplayForFrameScores();
+      _frameDisplayWasLastChanged = _game.currentFrameNumber;
+    }
+  }
 
   function _updateScoreCard() {
     for ( let i = 0; i < _game.currentFrameNumber + 1; i += 1 ) {
       _frameScoreControllers[ i ].updateScores();
     }
 
-    if ( _game.currentFrameNumber > 0 ) {
-      if ( _game.frame( _game.currentFrameNumber - 1 ).isStrike() ) {
-        _messageDisplayController.displayMessage( "Strike!!!" );
-      } else if ( _game.frame( _game.currentFrameNumber - 1 ).isSpare() ) {
-        _messageDisplayController.displayMessage( "Spare!!!" );
-      } else {
-        _messageDisplayController.displayMessage( "" );
-      }
-    }
+    _handleMessageDisplay();
 
     if ( _game.isComplete() ) {
       $( "#game-total" ).text( _game.currentScore );
 
       if ( _game.currentScore === 0 ) {
-        _messageDisplayController.displayMessage( "Gutter game!!!" );
+        _messageDisplayController.displayGutterGame();
       } else if ( _game.currentScore === 300 ) {
-        _messageDisplayController.displayMessage( "Perfect game!!!" );
+        _messageDisplayController.displayPerfectGame();
       }
     }
   }
@@ -70,6 +82,7 @@ function GamecardController() {
     $( "#game-total" ).text( "" );
 
     _resetScoreButtons();
+    _messageDisplayController.resetDisplay();
   }
 
   function _initialiseButtonControllers() {

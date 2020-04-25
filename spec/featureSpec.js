@@ -85,7 +85,6 @@ describe('Feature Test:', function() {
       game.bowlBall(1);
       game.bowlBall(0);
       expect(game.getTotalScore()).toEqual(64);
-      expect(game.getFrameCount()).toEqual(10);
       expect(game.complete()).toEqual(true);
     })
   })

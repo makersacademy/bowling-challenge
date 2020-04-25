@@ -43,7 +43,7 @@ Game.prototype.getBonusScore = function() {
 }
 
 Game.prototype.complete = function() {
-  if(this.getFrameCount() > 9) {
+  if(this.getFrameCount() > 10) {
     return true
   }
 }
@@ -71,8 +71,10 @@ Game.prototype._applyStrike = function() {
 }
 
 Game.prototype._updateScore = function() {
+  console.log("frame")
+  console.log(frame.viewScore())
   this._score += frame.viewScore();
-  if(this.getFrameCount() >1) {
+  if(this.getFrameCount() > 1) {
     this._applyStrike();
     this._applySpare();
   }
@@ -85,10 +87,14 @@ Game.prototype._addFrame = function() {
 
 Game.prototype._endTurn = function() {
   if(frame.complete()) {
-    // console.log(this._frames)
-    this._secondTurn = frame.secondTurn()
-    this._frameScore = this.getFrameScore()
+    this.secondTurn = frame._secondTurn;
+    this.firstTurn = null;
+    this.frameScore = this.getFrameScore()
     this._updateScore()
     this._addFrame()
-  } 
+  } else {
+    this.firstTurn = frame._firstTurn;
+  }
+  console.log(this.getScore())
 }
+

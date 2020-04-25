@@ -3,9 +3,11 @@ $(document).ready(function() {
   updateDisplay();
 
   $('.pins #pin').click(function() {
-    var text = parseInt($(this).text());
-    game.bowlBall(text);
-    updateDisplay();
+    if (!game.complete()) {
+      var text = parseInt($(this).text());
+      game.bowlBall(text);
+      updateDisplay();
+    }
   })
 
   function updateDisplay() {
@@ -21,8 +23,8 @@ $(document).ready(function() {
 
   function updateFrames() {
     var number = game.getFrameCount()
-    $('#'+number+'.left').text(game.getFirstRoll())
-    $('#'+(number-1)+'.right').text(game._secondTurn)
-    $('#'+(number-1)+'.bottom').text(game._frameScore) 
+    $('#'+number+'.left').text(game.firstTurn)
+    $('#'+(number-1)+'.right').text(game.secondTurn)
+    $('#'+(number-1)+'.bottom').text(game.frameScore) 
   }
 });

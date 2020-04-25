@@ -10,6 +10,10 @@ $(document).ready(function() {
     }
   })
 
+  $('#restart').click(function() {
+    location.reload();
+  })
+
   function updateButtons() {
     if (game.firstTurn === undefined) {
       $('.pin').removeClass('unavailable');
@@ -18,6 +22,14 @@ $(document).ready(function() {
       $.each(pinsToRemove, function(index, pins) {
         $('#button-'+ pins).addClass('unavailable');
       });
+    }
+  }
+
+  function gameOver() {
+    if (game.complete() ) {
+      $('.pins').addClass('unavailable');
+      $('h2').css("visibility", "visible")
+      $('#restart').css("visibility", "visible")
     }
   }
 
@@ -55,6 +67,7 @@ $(document).ready(function() {
       showStrike() 
       showSpare() 
     }
+    gameOver()
   }
 
   function updateScores() {

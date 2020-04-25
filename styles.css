@@ -8,10 +8,24 @@ body {
   display: flex;
   flex-direction: column;
   align-content: center;
+  font-family: 'Permanent Marker', cursive;
 }
+
 h1 {
   text-align: center;
-  padding:20px;
+}
+
+h2, #restart {
+  text-align: center;
+  visibility: hidden;
+  align-self: flex-end;
+}
+
+#restart {
+  width: 80px;
+  height: 30px;
+  /* margin: 20px; */
+  /* display: block; */
 }
 
 #scorecard {

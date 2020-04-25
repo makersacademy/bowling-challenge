@@ -24,9 +24,7 @@ Frame2.prototype.complete = function() {
 }
 
 Frame.prototype.strike = function() {
-  if( this._turns[0] === 10 ) {
-    return true
-  }
+  return this._firstTurn === 10
 }
 
 Frame.prototype.spare = function() {

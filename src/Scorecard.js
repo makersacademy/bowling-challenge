@@ -86,6 +86,9 @@ class Scorecard {
   tooManyRolls(roll2) {
     if (this.frames.length == 10 &&
     this.frames[this.frames.length-1].isSpare() &&
+    roll2 > 0 ||
+    this.frames.length == 11 &&
+    this.frames[this.frames.length-1].isStrike() &&
     roll2 > 0) {
       throw new Error('Cannot add 2 rolls.');
     }

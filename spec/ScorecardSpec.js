@@ -199,7 +199,15 @@ describe('scorecard', function() {
       for (i = 0; i < 10; i++) {
         scorecard.addFrame(5, 5);
       }
-      // scorecard.addFrame(6, 4);
+      expect(function() {
+        scorecard.addFrame(6, 4);
+      }).toThrowError('Cannot add 2 rolls.');
+    });
+
+    it('11 strikes and a spare throws an error', function() {
+      for (i = 0; i < 11; i++) {
+        scorecard.addFrame(10);
+      }
       expect(function() {
         scorecard.addFrame(6, 4);
       }).toThrowError('Cannot add 2 rolls.');

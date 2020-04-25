@@ -7,14 +7,31 @@ function GamecardController() {
   let _frameScoreControllers = [];
   const _scoreButtonControllers = [];
   const _resetButtonController = new ResetButtonController( _resetScorecard );
+  const _messageDisplayController = new MessageDisplayController();
 
   function _updateScoreCard() {
     for ( let i = 0; i < _game.currentFrameNumber + 1; i += 1 ) {
       _frameScoreControllers[ i ].updateScores();
     }
 
+    if ( _game.currentFrameNumber > 0 ) {
+      if ( _game.frame( _game.currentFrameNumber - 1 ).isStrike() ) {
+        _messageDisplayController.displayMessage( "Strike!!!" );
+      } else if ( _game.frame( _game.currentFrameNumber - 1 ).isSpare() ) {
+        _messageDisplayController.displayMessage( "Spare!!!" );
+      } else {
+        _messageDisplayController.displayMessage( "" );
+      }
+    }
+
     if ( _game.isComplete() ) {
       $( "#game-total" ).text( _game.currentScore );
+
+      if ( _game.currentScore === 0 ) {
+        _messageDisplayController.displayMessage( "Gutter game!!!" );
+      } else if ( _game.currentScore === 300 ) {
+        _messageDisplayController.displayMessage( "Perfect game!!!" );
+      }
     }
   }
 

@@ -91,3 +91,9 @@ body {
 #game-total {
   line-height: 200px;
 }
+
+.message-display {
+  font-size: 300px;
+  text-align: center;
+  line-height: 500px;
+}

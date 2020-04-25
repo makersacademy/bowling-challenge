@@ -123,3 +123,20 @@ The user is not able to add points for a second roll in a frame when they have r
 ### Requirements
 
 Points are added automatically to the frame where the strike was rolled
+
+
+## User story 8
+
+* As a user, when I have rolled a strike
+* I want the bonus points to be added automatically
+* So that I do not have to stress about remembering about this
+
+### Acceptance criteria
+
+* Given that I am playing bowling
+* When I have rolled a strike
+* Then I want the bonus points to be automatically added to the frame where I rolled the strike
+
+### Requirements
+
+After the user rolls a strike bonus points  are automatically added to the frame where they rolled the strike

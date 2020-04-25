@@ -12,8 +12,8 @@ Bowlingcard.prototype.enterScore = function(number) {
     this.rollScores.push(number);
     this.score += number;
     this.roll++;
-    this.isStrike();
-    
+    this.isStrike();//was preceding roll a strike? if yes push 0 to current roll and
+    this.strikeScore();//checks if roll before last was a strike and adds points
 }
 
 Bowlingcard.prototype.isStrike = function() {
@@ -25,8 +25,7 @@ Bowlingcard.prototype.isStrike = function() {
 }
 
 Bowlingcard.prototype.strikeScore = function() {
-  
-  if (this.roll % 2 != 0 && this.rollScores[this.roll - 3] === 10 && this.rollScores[this.roll - 5] === 10) {
+  if (this.roll % 2 != 0 && this.rollScores[this.roll - 3] === 10 && this.rollScores[this.roll - 5] > 9) {
     this.rollScores[this.roll - 5] = this.rollScores[this.roll - 1] + this.rollScores[this.roll - 3] + this.rollScores[this.roll - 5];
     this.rollScores[this.roll - 3] = this.rollScores[this.roll - 1] + this.rollScores[this.roll - 3]; 
   } 
@@ -34,7 +33,6 @@ Bowlingcard.prototype.strikeScore = function() {
   this.rollScores[this.roll - 3] = this.rollScores[this.roll - 1] + this.rollScores[this.roll - 3];
   } 
   else if (this.roll % 2 === 0 && this.rollScores[this.roll - 4] > 9) {
-    console.log("eeee");
     this.rollScores[this.roll - 4] = this.rollScores[this.roll - 1] + this.rollScores[this.roll - 4]; 
   }
 }

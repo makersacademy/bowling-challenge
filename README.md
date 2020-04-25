@@ -1,13 +1,76 @@
+# Bowling Challenge
 
-Bowling Challenge
-=================
+### Overview
 
+[Makers Academy Week 5 - 6 Weekend Challenge](https://github.com/makersacademy/bowling-challenge)
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+### Application overview
+
+- Front End
+- JavaScript
+- JQuery
+- Jasmine
+- HTML
+- CSS
+
+### Installation
+
+- move to the project root directory in terminal
+- run `gem bundle install`
+- run `bundle`
+
+### User Stories
+
+```
+As a user
+So that I can keep track of my scores
+I want to visit a webpage and insert my scores
+```
+
+```
+As a user
+So that I can see the total scores
+I want the total scores to be displayed at every frame
+```
+
+```
+As a user
+So that I can play a proper bowling game
+I want the scoring system based on the official bowling rules
+```
+
+### Strikes
+
+The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+
+```
+As a user
+So that I can have a strike and have the strike bonus (The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike)
+I want to get a strike when I knock down all 10 pins in the first roll of a frame
+```
+
+### Spares
+
+The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+
+```
+As a user
+So that I can have a spare and have the spare bonus (The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).)
+I want to get a strike when I knock down all 10 pins with the two rolls of a frame
+```
+
+### 10th frame
+
+If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
+
+    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
+    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
+
+```
+As a user
+So that I can roll the additional balls in the 10th frame for the bonus
+I want to roll a strike or spare in the 10th frame
+```
 
 ## The Task
 
@@ -19,39 +82,24 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 
 As usual please start by
 
-* Forking this repo
+- Forking this repo
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+- Finally submit a pull request before Monday week at 9am with your solution or partial solution. However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. And since next week is lab week you have a full extra week to work on this.
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+**_STRONG HINT, IGNORE AT YOUR PERIL:_** Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
 
 ### Optional Extras
 
 In any order you like:
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+- Create a nice interactive animated interface with jQuery.
+- Set up [Travis CI](https://travis-ci.org) to run your tests.
+- Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
 
 You might even want to start with ESLint early on in your work — to help you
 learn Javascript conventions as you go along.
 
 ## Bowling — how does it work?
-
-### Strikes
-
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
-
-### Spares
-
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-### 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
 
 ### Gutter Game
 
@@ -71,7 +119,11 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 In code review we'll be hoping to see:
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+- All tests passing
+- The code is elegant: every class has a clear responsibility, methods are short etc.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+Reviewers will potentially be using this [code review rubric](docs/review.md). Note that referring to this rubric in advance may make the challenge somewhat easier. You should be the judge of how much challenge you want.
+
+```
+
+```

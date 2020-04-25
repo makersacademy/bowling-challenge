@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Bowling Scoreboard!</title>
+    <link type="text/css" rel="stylesheet" href="/public/css/style.css" />
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="jquery-3.4.1.js"></script>
+    <script src="src/Bowling.js"></script>
+    <script src="src/pins.js"></script>
+    <script src="src/interface.js"></script>
+</head>
+
+<body>
+    <section>
+        <h1>
+            <div id="bowling-header">Bowling Scoreboard</div>
+        </h1>
+        <h2>
+            <div id="score-display-header">
+                Current Score:
+                <span id="score-display"></span>
+            </div>
+        </h2>
+        <div class="inputButtons">
+            <div><span id="cheers-display"></span></div>
+            <span><button id="rand-score">Random</button></span>
+            <span><button id="0-score">0</button></span>
+            <span><button id="1-score">1</button></span>
+            <span><button id="2-score">2</button></span>
+            <span><button id="3-score">3</button></span>
+            <span><button id="4-score">4</button></span>
+            <span><button id="5-score">5</button></span>
+            <span><button id="6-score">6</button></span>
+            <span><button id="7-score">7</button></span>
+            <span><button id="8-score">8</button></span>
+            <span><button id="9-score">9</button></span>
+            <span><button id="10-score">10</button></span>
+        </div>
+
+        <div id="scoresheet">
+            <table id="scoresheetTable" class="scoresheet" cellpadding="1" cellspacing="0">
+                <tr>
+                    <th colspan="6">Frame 1</th>
+                    <th colspan="6">Frame 2</th>
+                    <th colspan="6">Frame 3</th>
+                    <th colspan="6">Frame 4</th>
+                    <th colspan="6">Frame 5</th>
+                    <th colspan="6">Frame 6</th>
+                    <th colspan="6">Frame 7</th>
+                    <th colspan="6">Frame 8</th>
+                    <th colspan="6">Frame 9</th>
+                    <th colspan="6">Frame 10</th>
+                </tr>
+                <tr>
+                    <td colspan="3" id="0-0"></td>
+                    <td colspan="3" id="0-1"></td>
+                    <td colspan="3" id="1-0"></td>
+                    <td colspan="3" id="1-1"></td>
+                    <td colspan="3" id="2-0"></td>
+                    <td colspan="3" id="2-1"></td>
+                    <td colspan="3" id="3-0"></td>
+                    <td colspan="3" id="3-1"></td>
+                    <td colspan="3" id="4-0"></td>
+                    <td colspan="3" id="4-1"></td>
+                    <td colspan="3" id="5-0"></td>
+                    <td colspan="3" id="5-1"></td>
+                    <td colspan="3" id="6-0"></td>
+                    <td colspan="3" id="6-1"></td>
+                    <td colspan="3" id="7-0"></td>
+                    <td colspan="3" id="7-1"></td>
+                    <td colspan="3" id="8-0"></td>
+                    <td colspan="3" id="8-1"></td>
+                    <td colspan="2" id="9-0"></td>
+                    <td colspan="2" id="9-1"></td>
+                    <td colspan="2" id="9-2"></td>
+                </tr>
+                <tr>
+                    <td colspan="6" id="total-score0"></td>
+                    <td colspan="6" id="total-score1"></td>
+                    <td colspan="6" id="total-score2"></td>
+                    <td colspan="6" id="total-score3"></td>
+                    <td colspan="6" id="total-score4"></td>
+                    <td colspan="6" id="total-score5"></td>
+                    <td colspan="6" id="total-score6"></td>
+                    <td colspan="6" id="total-score7"></td>
+                    <td colspan="6" id="total-score8"></td>
+                    <td colspan="6" id="total-score9"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="gameOver"></div>
+    </section>
+</body>
+
+</html>

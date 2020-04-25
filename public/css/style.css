@@ -1,0 +1,170 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-weight: 1000;
+    text-align: center;
+}
+
+:root {
+    --yellow: 128;
+    --green: 128;
+}
+
+html {
+    height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background: -webkit-linear-gradient(to top, green, rgb(var(--yellow), 0, var(--green)), yellow);
+    background: -moz-linear-gradient(to top, green, rgb(var(--yellow), 0, var(--green)), yellow);
+    background: -ms-linear-gradient(to top, green, rgb(var(--yellow), 0, var(--green)), yellow);
+    background: -o-linear-gradient(to top, green, rgb(var(--yellow), 0, var(--green)), yellow);
+    background: linear-gradient(to top, green, rgb(var(--yellow), 0, var(--green)), yellow);
+}
+
+button {
+    -moz-box-shadow: 3px 4px 0px 0px #8a2a21;
+    -webkit-box-shadow: 3px 4px 0px 0px #8a2a21;
+    box-shadow: 3px 4px 0px 0px #8a2a21;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #c62d1f), color-stop(1, #f24437));
+    background: -moz-linear-gradient(top, #c62d1f 5%, #f24437 100%);
+    background: -webkit-linear-gradient(top, #c62d1f 5%, #f24437 100%);
+    background: -o-linear-gradient(top, #c62d1f 5%, #f24437 100%);
+    background: -ms-linear-gradient(top, #c62d1f 5%, #f24437 100%);
+    background: linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#c62d1f', endColorstr='#f24437', GradientType=0);
+    background-color: #c62d1f;
+    -moz-border-radius: 18px;
+    -webkit-border-radius: 18px;
+    border-radius: 18px;
+    border: 1px solid #d02718;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 17px;
+    padding: 7px 25px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #810e05;
+}
+
+button:hover {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f24437), color-stop(1, #c62d1f));
+    background: -moz-linear-gradient(top, #f24437 5%, #c62d1f 100%);
+    background: -webkit-linear-gradient(top, #f24437 5%, #c62d1f 100%);
+    background: -o-linear-gradient(top, #f24437 5%, #c62d1f 100%);
+    background: -ms-linear-gradient(top, #f24437 5%, #c62d1f 100%);
+    background: linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#f24437', endColorstr='#c62d1f', GradientType=0);
+    background-color: #f24437;
+}
+
+button:active {
+    position: relative;
+    top: 1px;
+}
+
+#bowling-header {
+    font-size: 50px;
+    color: turquoise;
+    font-family: "Verdana";
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#score-display-header {
+    font-size: 40px;
+    color: black;
+    background-color: whitesmoke;
+    width: 50%;
+    height: 25%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    margin: auto;
+    font-family: Arial;
+}
+
+#cheers-display {
+    font-size: 100px;
+    color: rgb(255, 238, 0);
+    background-color: rgb(65, 57, 57);
+    width: 30%;
+    height: 30%;
+    box-shadow: 0 4px 8px 0 rgba(24, 184, 224, 0.2), 0 6px 20px 0 rgba(255, 35, 35, 0.19);
+    margin: auto;
+    font-family: Arial;
+}
+
+table.scoresheet {
+    margin: 0 auto;
+    width: 80%;
+    font-size: 12px;
+    border: 1px solid;
+    text-align: center;
+    table-layout: fixed;
+    margin-bottom: 40px;
+}
+
+table.scoresheet th,
+tr,
+td {
+    padding: 0;
+    vertical-align: middle;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+
+/* first row last column */
+
+table.scoresheet th {
+    border-bottom: 1px solid;
+    height: 30px;
+    background-color: yellowgreen;
+}
+
+
+/* first row */
+
+table.scoresheet th:not(:last-child) {
+    border-right: 1px solid;
+    background-color: yellowgreen;
+}
+
+
+/* third row last column */
+
+table.scoresheet td {
+    height: 30px;
+    background: violet;
+}
+
+
+/* second and third row */
+
+table.scoresheet tr td:not(:last-child) {
+    border-right: 1px solid;
+    background-color: violet;
+}
+
+
+/* second row every right column */
+
+table.scoresheet tr:nth-child(2) td:nth-child(even) {
+    border-bottom: 1px solid;
+    background-color: blue;
+}
+
+
+/* second row last right column */
+
+table.scoresheet tr:nth-child(2) td:last-child {
+    border-bottom: 1px solid;
+    background-color: red;
+}
+
+.inputButtons {
+    padding: 15px 15px;
+}

@@ -108,12 +108,9 @@ describe("#Bowling", function () {
   });
 
   describe("Spares & Stikes", function () {
-    describe("Testing state of this.spare ", function () {
-      it("If a spare is not thrown spare returns false", function () {
-        var bowlingMock = new Bowling();
-        spyOn(bowlingMock, "getInput").and.returnValue(5);
-        bowlingMock.runCardMaking();
-        expect(bowlingMock.spare).toEqual(true);
+    describe("Testing state of PROPERTY spare ", function () {
+      it("spare default is false", function () {
+        expect(bowling.spare).toEqual(false);
       });
 
       it("If a spare has been thrown, spare will change to true", function () {
@@ -132,13 +129,34 @@ describe("#Bowling", function () {
         expect(bowlingMock.spare).toEqual(false);
       });
     });
+
+    xdescribe("Testing state of PROPERTY strike ", function () {
+      it("stike default position is false", function () {
+        expect(bowling.strike).toEqual(false)
+      });
+
+      xit("If a strike has been thrown, strike will change to true", function () {
+        var bowlingMock = new Bowling();
+        spyOn(bowlingMock, "getInput").and.returnValue(10);
+        bowlingMock.runCardMaking();
+        expect(bowlingMock.strike).toEqual(true);
+      });
+
+      
+    
+    });
     describe("#scoreSpares ", function () {
       it("If a spare is thrown the score from the first roll of the next frame will be added to the score of the frame", function () {
         var bowlingMock = new Bowling();
         spyOn(bowlingMock, "getInput").and.returnValue(5);
         expect(bowlingMock.runCardMaking()[1]["r2Score"]).toEqual(15);
-        expect(bowlingMock.card[2]["r2Score"]).toEqual(30)
-        expect(bowlingMock.card[3]["r2Score"]).toEqual(45)
+        expect(bowlingMock.card[2]["r2Score"]).toEqual(30);
+        expect(bowlingMock.card[3]["r2Score"]).toEqual(45);
+      });
+    });
+    xdescribe("#scoreStrikes ", function () {
+      it("If a strike is thrown the score from BOTH rolls of the next frame will be added to the score of the frame", function () {
+       
       });
     });
   });

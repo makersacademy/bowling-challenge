@@ -1,16 +1,13 @@
 "use strict";
 
-
 function Bowling() {
   this.score = 0;
   this.frameKey;
-  this.frameScore
-  this.spare = false
-  //this.rollCount = 1;
-  
+  this.frameScore;
+  this.spare = false;
+  this.strike = false;
+  //this.rollCount = 1   maybe this should be instead of passing rollCount;
 }
-
-
 
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -21,20 +18,22 @@ Bowling.prototype.runCardMaking = function () {
   var rollCount;
   var frameCount;
   for (frameCount = 1; frameCount < 11; frameCount++) {
-    this.frameKey = frameCount
+    this.frameKey = frameCount;
     for (rollCount = 1; rollCount < 3; rollCount++) {
       var pins = this.getInput();
-      this.scoreSpares(rollCount, pins)
-      
-  
+      this.scoreSpares(rollCount, pins);
 
       var score = this.calculateScore(pins);
       this.fillCard(pins, score, rollCount);
     }
+    if (this.switchSpare() === true) {
+      this.spare = true;
+    } else {
+      this.spare = false;
+    }
   }
   return this.card;
 };
-
 
 Bowling.prototype.makeCardTemplate = function () {
   var frameCount;
@@ -59,18 +58,16 @@ Bowling.prototype.calculateScore = function (numPinsDown) {
 
 Bowling.prototype.scoreSpares = function (rollCount, pins) {
   if (this.spare === true && rollCount === 2 && this.frameKey > 1) {
-    var previousFrameKey = this.frameKey - 1
-    var previousFrameScore = this.card[previousFrameKey]['r2Score']
-    this.card[previousFrameKey]['r2Score'] = previousFrameScore + pins
-    console.log( this.card[previousFrameKey]['r2Score'])
-    console.log("")
-    this.score = this.score + pins
+    var previousFrameKey = this.frameKey - 1;
+    var previousFrameScore = this.card[previousFrameKey]["r2Score"];
+    this.card[previousFrameKey]["r2Score"] = previousFrameScore + pins;
+    //console.log(this.card[previousFrameKey]["r2Score"]);
+    //console.log("");
+    this.score = this.score + pins;
   }
-}
+};
 
 Bowling.prototype.fillCard = function (pins, score, rollCount) {
-  // needs to be moved into a different method - maybe a make name method, also might be hard to access hash so might need  to  change to a number
-  //this.frameKey = numFrame
   if (rollCount === 1) {
     this.card[this.frameKey]["r1PinsDown"] = pins;
     this.card[this.frameKey]["r1Score"] = score;
@@ -79,16 +76,6 @@ Bowling.prototype.fillCard = function (pins, score, rollCount) {
     this.card[this.frameKey]["r2PinsDown"] = pins;
     this.card[this.frameKey]["r2Score"] = score;
   }
-  // console.log("frame score")
-  // console.log(this.card[this.frameKey]["r1PinsDown"] + this.card[this.frameKey]["r2PinsDown"])
-  
-  // change state to spare - needs to move to a  different method 
-  if (rollCount === 2 & this.card[this.frameKey]["r1PinsDown"] + this.card[this.frameKey]["r2PinsDown"] === 10) {
-    this.spare = true
-    } else if  (rollCount === 2) {
-      this.spare = false
-    }
-
   // console.log(this.frameKey )
   // console.log(`roll ${rollCount}`);
   // console.log(`pins ${pins}`)
@@ -98,4 +85,17 @@ Bowling.prototype.fillCard = function (pins, score, rollCount) {
   return this.card;
 };
 
-
+Bowling.prototype.switchSpare = function (rollCount) {
+  console.log("switchh spare method");
+  console.log(this.frameKey);
+  console.dir(this.card);
+  if (
+    this.card[this.frameKey]["r1PinsDown"] +
+      this.card[this.frameKey]["r2PinsDown"] ===
+    10
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};

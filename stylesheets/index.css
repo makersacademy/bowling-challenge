@@ -1,0 +1,77 @@
+body {
+  background-color: #AB7A3B;
+  background-image:
+  repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+  repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+  linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+  linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+  background-size: 70px 120px;
+  margin: 5%;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 30px;
+  text-align: center;
+}
+
+table {
+  table-layout: fixed;
+  border: 3px solid black;
+  border-collapse: separate;
+  border-spacing: 0px;
+  border-radius: 20px;
+  text-align: center;
+  background-color: #CBA26D;
+  overflow: hidden;
+  display: inline-block;
+}
+
+td, th {
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  padding: 10px;
+  width: 80px;
+  height: 40px;
+}
+
+th {
+  border-top: none;
+}
+
+td:first-child, th:first-child {
+  border-left: none;
+}
+
+.currentFrame {
+  background-color: #DCC19E;
+}
+
+button.hide {
+  visibility: hidden;
+}
+
+button.rollbutton {
+  width: 50px;
+  height: 50px;
+  margin:0 0.3rem 0.3rem 0;
+  border: 2px solid black;
+  border-radius: 50%;
+  color: black;
+  font-size: 20px;
+  text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+  text-align: center;
+  background-color: #CBA26D;
+}
+
+button.rollbutton:hover {
+  border-color: rgba(255,255,255,1);
+}
+
+#restart {
+  margin-top: 1%;
+  width: 100px;
+  height: 60px;
+  border-radius: 25%;
+}
+
+.buttons {
+  margin-top: 5%;
+}

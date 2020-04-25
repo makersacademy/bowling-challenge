@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="stylesheets/index.css">
+  <title>Bowling</title>
+</head>
+<body>
+  <header>
+    <h2>Bowling Scorecard</h2>
+  </header>
+
+  <section>
+    <table id='scorecard'>
+    <script language="javascript" type="text/javascript">
+      document.write("<colgroup>")
+        for (var i=1; i < 10; i++) {
+          document.write(`<col id='col${i}' span='2'/>`)
+        }
+        document.write("<col id='col10' span='3'/>")
+      document.write("</colgroup>")
+      document.write("<tr id='frames'>")
+        for (var i=1; i < 10; i++) {
+          document.write(`<th colspan='2'>${i}</td>`)
+        }
+        document.write("<th colspan='3'>10</td>")
+        document.write("<th colspan='2'>Total</td>")
+      document.write("</tr>")
+      document.write("<tr id='rollsrow'>")
+        for (var i=1; i < 22; i++) {
+          document.write(`<td class='rolls' id='r${i.toString()}'></td>`)
+        }
+        document.write("<td id='total' rowspan='2'></td>")
+      document.write("</tr>")
+      document.write("<tr id='totalsrow'>")
+        for (var i=1; i < 10; i++) {
+          document.write(`<td class='totals' id='total${i}' colspan='2'></td>`)
+        }
+        document.write("<td class='totals' id='total10' colspan='3'></td>")
+      document.write("</tr>")
+    </script>
+    </table>
+  </section>
+
+  <section class='buttons'>
+    <script language="javascript" type="text/javascript">
+      for (var i=0; i, i < 11; i++) {
+        document.write(`<button id='roll${i}' class='rollbutton'>${i}</button>`)
+      }
+    </script>
+
+    <div>
+      <button id='restart' class='rollbutton'>Restart</button>
+    </div>
+  </section>
+
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  <script src="src/bowling.js"></script>
+  <script src="src/frame.js"></script>
+  <script src="src/DOM.js"></script>
+
+</body>
+</html>

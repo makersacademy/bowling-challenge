@@ -145,7 +145,26 @@ describe('Scorecard', function() {
     ////to make current frame number so can access correct element in array
     it('gives current frame number', function() {
         scorecard.addNewScore(2, 3)
+        scorecard.addNewScore(4, 5)
+        expect(scorecard.currentFrameNumber).toEqual(2)
+    })
+
+    it('gives the correct frame number if incorrect score is inputted', function() {
+        scorecard.addNewScore(2, 3)
+        scorecard.addNewScore(6, 7)
         expect(scorecard.currentFrameNumber).toEqual(1)
+    })
+
+    ////Updating the previous frame score following a spare/strike
+    it('updates the score of the previous frame following a spare', function() {
+        scorecard.addNewScore(5, 5)
+        scorecard.addNewScore(2, 3)
+        expect(scorecard.frameScoreArray).toEqual([12, 5])
+    })
+
+    it('updates the score of the previous frame following a strike', function() {
+        scorecard.addNewScore(10, 0)
+        scorecard.addNewScore(4, 5)
     })
 
 

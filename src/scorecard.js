@@ -19,9 +19,12 @@ Scorecard.prototype.addNewScore = function(roll1, roll2=0) {
     //this.frameNumber += 1
     //
     this.updateCurrentFrameNumber()
+    this.spareOrStrikeUpdate(roll1, roll2)
     this.addScoreToCurrentFrame(roll1, roll2)
     this.calculateFrameScore(roll1, roll2)
     this.spareOrStrike(roll1, roll2)
+   
+    
 }
 
 Scorecard.prototype.updateCurrentFrameNumber = function() {
@@ -44,6 +47,14 @@ Scorecard.prototype.spareOrStrike = function(roll1, roll2) {
     } else {
         this.isSpare = false
         this.isStrike = false
+    }
+}
+
+
+Scorecard.prototype.spareOrStrikeUpdate = function(roll1, roll2) {
+    if ((this.currentFrameNumber > 1) && (this.isSpare === true)) {
+        var arrayPosition = this.currentFrameNumber - 2
+        this.frameScoreArray[arrayPosition] += roll1
     }
 }
 

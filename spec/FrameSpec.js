@@ -46,19 +46,25 @@ describe('Frame', function() {
     it('rejects greater than 10', function() {
       expect(function() {
         new Frame(12);
-      }).toThrowError('Must roll between 0 and 10');
+      }).toThrowError('Must roll a number between 0 and 10');
     });
 
     it('rejects less than 0', function() {
       expect(function() {
         new Frame(-1);
-      }).toThrowError('Must roll between 0 and 10');
+      }).toThrowError('Must roll a number between 0 and 10');
     });
 
     it('rejects a string', function() {
       expect(function() {
         new Frame('string');
-      }).toThrowError('Must roll between 0 and 10');
+      }).toThrowError('Must roll a number between 0 and 10');
+    });
+
+    it('rejects roll2 greater than 10', function() {
+      expect(function() {
+        new Frame(0, 15);
+      }).toThrowError('Must roll a number between 0 and 10');
     });
   });
 });

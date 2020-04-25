@@ -10,7 +10,18 @@ $(document).ready(function() {
     }
   })
 
+  function updateButtons() {
+    console.log(game.firstTurn)
+    if (game.firstTurn === undefined) {
+      // $('#value').attr('class', thermostat.getUsage());
+      $('#note').text("first")
+    } else {
+      $('#note').text("second")
+    }
+  }
+
   function updateDisplay() {
+    updateButtons()
     updateScores()
     updateFrames()
   }
@@ -27,4 +38,4 @@ $(document).ready(function() {
     $('#'+(number-1)+'.right').text(game.secondTurn)
     $('#'+(number-1)+'.bottom').text(game.frameScore) 
   }
-});
+})

@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 Game = function() {
   this._frames = [new Frame()]
   this._score = 0;
@@ -86,13 +88,12 @@ Game.prototype._addFrame = function() {
 Game.prototype._endTurn = function() {
   if(frame.complete()) {
     this.secondTurn = frame._secondTurn;
-    this.firstTurn = null;
+    this.firstTurn = undefined;
     this.frameScore = this.getFrameScore()
     this._updateScore()
     this._addFrame()
   } else {
     this.firstTurn = frame._firstTurn;
   }
-  console.log(this.getScore())
 }
 

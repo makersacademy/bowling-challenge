@@ -1,7 +1,5 @@
 "use strict";
 
-/* eslint-disable no-underscore-dangle */
-
 function Game( FrameClass = Frame, Frame10Class = Frame10 ) {
   this._frames = [];
   this._populateFrames = function _populateFrames() {

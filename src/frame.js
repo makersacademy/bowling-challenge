@@ -1,6 +1,5 @@
 "use strict";
 
-/* eslint-disable no-underscore-dangle */
 function Frame() {
   this._total = null;
   this._score1 = null;

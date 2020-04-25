@@ -10,15 +10,19 @@ $(document).ready(function() {
 
   function updateDisplay() {
     updateScores()
-    var number = game.getFrameCount()
-    $('#'+number+'.left').text(game.getFirstRoll())
-    $('#'+(number-1)+'.right').text(game._secondTurn)
-    $('#'+(number-1)+'.bottom').text(game._frameScore) 
+    updateFrames()
   }
 
   function updateScores() {
     $('#bonus').text(game.getBonusScore());
     $('#main').text(game.getScore());
     $('#total').text(game.getTotalScore());
+  }
+
+  function updateFrames() {
+    var number = game.getFrameCount()
+    $('#'+number+'.left').text(game.getFirstRoll())
+    $('#'+(number-1)+'.right').text(game._secondTurn)
+    $('#'+(number-1)+'.bottom').text(game._frameScore) 
   }
 });

@@ -26,6 +26,8 @@ class Frame {
     if ((roll1 || roll2) > 10 || (roll1 || roll2) < 0 ||
     isNaN(roll1 || roll2)) {
       throw new Error('Must roll a number between 0 and 10');
+    } else if (roll1 + roll2 > 10) {
+      throw new Error('Cannot knock down more than 10 pins.');
     }
   }
 };

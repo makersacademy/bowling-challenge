@@ -78,6 +78,12 @@ describe('Frame', function() {
         new Frame(0, 'string');
       }).toThrowError('Must roll a number between 0 and 10');
     });
+
+    it('rejects spare greater than 10', function() {
+      expect(function() {
+        new Frame(6, 6);
+      }).toThrowError('Cannot knock down more than 10 pins.');
+    });
   });
 });
 

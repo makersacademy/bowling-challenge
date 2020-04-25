@@ -32,9 +32,9 @@ Frame.prototype.spare = function() {
 }
 
 Frame.prototype.firstTurn = function() {
-  return this._turns[0]
+  return this._firstTurn
 }
 
 Frame.prototype.secondTurn = function() {
-  return this._turns[1]
+  return this._secondTurn
 }

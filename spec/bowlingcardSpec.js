@@ -82,15 +82,15 @@ describe('Bowlingcard', function() {
 */
 
   describe('.strike', function() {
-    it('records a value or NaN for the following roll if the preceding roll was a strike', function () {
+    it('records a value or 0 for the following roll if the preceding roll was a strike', function () {
       bowlingcard.enterScore(10);
       bowlingcard.isStrike()
-      expect(bowlingcard.rollScores[1]).toEqual(NaN);
+      expect(bowlingcard.rollScores[1]).toEqual(0);
     })
   })
     it('checks if the user rolled a strike when the user enters their score', function() {
       bowlingcard.enterScore(10);
-      expect(bowlingcard.rollScores[1]).toEqual(NaN);
+      expect(bowlingcard.rollScores[1]).toEqual(0);
   })
   it('is triggered only if the roll that scored 10 was an odd roll', function() {
     bowlingcard.enterScore(3);
@@ -99,6 +99,19 @@ describe('Bowlingcard', function() {
     expect(bowlingcard.rollScores[2]).toEqual(3);
   })
 
- 
-
+  describe('.strikeScore', function() {
+    it('checks if current roll is odd and preceding roll was strike if so adds points to strike', function() {
+      bowlingcard.enterScore(10);
+      bowlingcard.enterScore(6);
+      bowlingcard.strikeScore();
+      expect(bowlingcard.rollScores[0]).toEqual(16);
+    })
+  })
+    it('checks if current roll is odd and last 2 rolls were strikes if so, adds points to strike', function() {
+      bowlingcard.enterScore(10);
+      bowlingcard.enterScore(10);
+      bowlingcard.enterScore(3);
+      bowlingcard.strikeScore();
+    expect(bowlingcard.rollScores[0]).toEqual(23);
+  })
 })

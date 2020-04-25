@@ -17,11 +17,34 @@ Bowlingcard.prototype.enterScore = function(number) {
 }
 
 Bowlingcard.prototype.isStrike = function() {
-  if (this.roll % 2 != 0 && this.rollScores[this.roll - 1] === 10) {
-    this.rollScores.push(NaN);
+  // if roll is odd and score is ten
+  if (this.roll % 2 != 0 && this.rollScores[this.roll - 1] === 10) {  //if the preceding this.roll was 10
+    this.rollScores.push(0);
     this.roll++; 
-    }
+  }
 }
+
+Bowlingcard.prototype.strikeScore = function() {
+  //if this is an odd roll
+  //was the roll before the one befoere also a strike?
+  //if the current roll is odd and the 4 rolls before is 10
+  //if so, add these points to that one too
+  if (this.roll % 2 != 0 && this.rollScores[this.roll - 3] === 10 && this.rollScores[this.roll - 5] === 10) {
+    this.rollScores[this.roll - 5] = this.rollScores[this.roll - 1] + this.rollScores[this.roll - 3] + this.rollScores[this.roll - 5];
+  //if this is an odd roll
+  //was the roll before a strike?
+  //if so, add these points to that one
+  } else if (this.roll % 2 != 0 && this.rollScores[this.roll - 3] === 10) {
+    this.rollScores[this.roll - 3] = this.rollScores[this.roll - 1] + this.rollScores[this.roll - 3]; 
+} 
+}
+    
+    //else if {
+  // was the roll before the one before me a strike? 
+  // => if this is an even roll, was the previous frame a strike
+  // if so, add these points there too
+
+
 
 Bowlingcard.prototype.frameNumber = function() {
   if (this.rollScores.length < 3) {
@@ -30,33 +53,4 @@ Bowlingcard.prototype.frameNumber = function() {
     this.frame = 2;
   }
 }
-
-
-
-/*
-//Build a dictionary with frame number as key and 
-//the rolls as the values
-//I am not sure you need this at all.
-//all you want is to have an array of arrays in frameArray
-Bowlingcard.prototype.gameFrame = function() {
-  if (this.frame === 1) {
-    this.frameArray.push(this.rollScores[0], this.rollScores[1]);
-  } else if (this.frame === 2) {
-    this.frameArray.push(this.rollScores[2], this.rollScores[3]);
-  } // [[4, 5],[10, NaN], [8, 1]...]
-}
-
-Bowlingcard.prototype.framePoints = function(arr) {
-  arr = this.frameArray;
-  //for Frame with strike, find the next two valid rolls and add
-  //for frame in frames if index 0 === 10 do...
-  
-  for (index = 0; index < arr.length; index++) {
-    
-  }
-  
-  let points = rollOne + rollTwo;
-  return points;
-}
-*/
 

@@ -4,14 +4,7 @@ class Scorecard {
     this.frames= [];
   }
   addFrame(roll1, roll2) {
-    if (this.frames.length == 10) {
-      if (this.frames[this.frames.length-1].isOpenFrame()) {
-        throw new Error('Game complete!');
-      }
-    }
-    if (this.frames.length == 12) {
-      throw new Error('Game complete!');
-    }
+    this.isGameComplete();
     this.frames.push(new Frame(roll1, roll2));
     this.setScore();
   }
@@ -78,6 +71,16 @@ class Scorecard {
       this.score += 10;
       this.score += frames[index+2].roll1;
       return true;
+    }
+  }
+  isGameComplete() {
+    if (this.frames.length == 10) {
+      if (this.frames[this.frames.length-1].isOpenFrame()) {
+        throw new Error('Game complete!');
+      }
+    }
+    if (this.frames.length == 12) {
+      throw new Error('Game complete!');
     }
   }
 }

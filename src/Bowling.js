@@ -86,9 +86,9 @@ Bowling.prototype.fillCard = function (pins, score, rollCount) {
 };
 
 Bowling.prototype.switchSpare = function (rollCount) {
-  console.log("switchh spare method");
-  console.log(this.frameKey);
-  console.dir(this.card);
+  //console.log("switch spare method");
+  //console.log(this.frameKey);
+  //console.dir(this.card);
   if (
     this.card[this.frameKey]["r1PinsDown"] +
       this.card[this.frameKey]["r2PinsDown"] ===
@@ -98,4 +98,15 @@ Bowling.prototype.switchSpare = function (rollCount) {
   } else {
     return false;
   }
+};
+
+Bowling.prototype.switchStrike = function (rollCount) {
+  if ( rollCount === 2 &&
+    this.card[this.frameKey]["r1PinsDown"] === 10 ||
+    this.card[this.frameKey]["r2PinsDown"] === 10
+  ) {
+    return true;
+  } else {
+    return false }
+ 
 };

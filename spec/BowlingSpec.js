@@ -130,16 +130,42 @@ describe("#Bowling", function () {
       });
     });
 
-    xdescribe("Testing state of PROPERTY strike ", function () {
+    describe("Testing state of PROPERTY strike ", function () {
       it("stike default position is false", function () {
         expect(bowling.strike).toEqual(false)
       });
 
-      xit("If a strike has been thrown, strike will change to true", function () {
-        var bowlingMock = new Bowling();
-        spyOn(bowlingMock, "getInput").and.returnValue(10);
-        bowlingMock.runCardMaking();
-        expect(bowlingMock.strike).toEqual(true);
+      it("#switchStrike - will return true (roll 2)", function () {
+        bowling.makeCardTemplate();
+        bowling.frameKey = 1;
+        var roll = 2
+        var strike = 10
+        bowling.fillCard(strike, 10, roll)
+        expect(bowling.switchStrike(roll)).toEqual(true)
+      });
+
+
+      it("#switchStrike - will return true (roll 1)", function () {
+        bowling.makeCardTemplate();
+        bowling.frameKey = 1;
+        var roll = 1
+        var strike = 10
+        var nonStrike = 3
+        bowling.fillCard(strike, 10, roll)
+        roll = 2
+        bowling.fillCard(nonStrike, 10, roll)
+        expect(bowling.switchStrike(roll)).toEqual(true)
+      });
+
+      it("#switchStrike - will return false when a strike is not rolled ", function () {
+        bowling.makeCardTemplate();
+        bowling.frameKey = 2;
+        var roll = 2
+        var nonStrike = 3
+        bowling.fillCard(nonStrike, 20, roll)
+        roll = 20
+        bowling.fillCard(nonStrike, 23, roll)
+        expect(bowling.switchStrike(roll)).toEqual(false)
       });
 
       
@@ -156,7 +182,7 @@ describe("#Bowling", function () {
     });
     xdescribe("#scoreStrikes ", function () {
       it("If a strike is thrown the score from BOTH rolls of the next frame will be added to the score of the frame", function () {
-       
+    
       });
     });
   });

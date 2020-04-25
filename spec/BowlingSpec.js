@@ -196,5 +196,15 @@ describe("#Bowling", function () {
     
       });
     });
+
+
+
+    describe("#runCardMaking -  second roll is skipped when stike rolled in first roll", function () {
+      it("If a stike is scored on first roll, the pins down on second turn will equal 0 ", function () {
+        spyOn(bowling, "getInput").and.returnValue(10);
+        expect(bowling.runCardMaking()[1]['r1PinsDown']).toEqual(10);
+        expect(bowling.card[1]['r2PinsDown']).toEqual(0);
+      });
+    });
   });
 });

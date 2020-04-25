@@ -72,6 +72,12 @@ describe('Frame', function() {
         new Frame(0, -1);
       }).toThrowError('Must roll a number between 0 and 10');
     });
+
+    it('rejects roll2 that is a string', function() {
+      expect(function() {
+        new Frame(0, 'string');
+      }).toThrowError('Must roll a number between 0 and 10');
+    });
   });
 });
 

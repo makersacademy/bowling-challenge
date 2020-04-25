@@ -111,7 +111,6 @@ describe('Bowlingcard', function() {
       bowlingcard.enterScore(10);
       bowlingcard.enterScore(10);
       bowlingcard.enterScore(3);
-      bowlingcard.strikeScore();
       expect(bowlingcard.rollScores[2]).toEqual(13);
       expect(bowlingcard.rollScores[0]).toEqual(23);
   })
@@ -120,6 +119,13 @@ describe('Bowlingcard', function() {
       bowlingcard.enterScore(6);
       bowlingcard.enterScore(3);
       expect(bowlingcard.rollScores[0]).toEqual(19);
+  })
+    it('adds points to strikes when the user had 3 strikes in a row', function() {
+      bowlingcard.enterScore(10);
+      bowlingcard.enterScore(10);
+      bowlingcard.enterScore(10);
+      expect(bowlingcard.rollScores[0]).toEqual(30);
+      expect(bowlingcard.rollScores[2]).toEqual(20);
   })
 })
     

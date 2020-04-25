@@ -46,7 +46,13 @@ describe('Frame', function() {
     it('rejects greater than 10', function() {
       expect(function() {
         new Frame(12);
-      }).toThrowError('Cannot score greater than 10');
+      }).toThrowError('Must score between 0 and 10');
+    });
+
+    it('rejects less than 0', function() {
+      expect(function() {
+        new Frame(-1);
+      }).toThrowError('Must score between 0 and 10');
     });
   });
 });

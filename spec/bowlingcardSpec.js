@@ -115,15 +115,13 @@ describe('Bowlingcard', function() {
       expect(bowlingcard.rollScores[2]).toEqual(13);
       expect(bowlingcard.rollScores[0]).toEqual(23);
   })
-
-  /*
-  it('checks if current roll is even and last 2 rolls were strikes if so, adds points to strike', function() {
-    bowlingcard.enterScore(10);
-    bowlingcard.enterScore(10);
-    bowlingcard.enterScore(3);
-    bowlingcard.strikeScore();
-  expect(bowlingcard.rollScores[0]).toEqual(23);
-})
-*/
+    it('checks if current roll is even and last 2 frames were strikes if so, adds points to both strikes', function() {
+      bowlingcard.enterScore(10);
+      bowlingcard.enterScore(6);
+      bowlingcard.strikeScore();
+      bowlingcard.enterScore(3);
+      bowlingcard.strikeScore();
+      expect(bowlingcard.rollScores[0]).toEqual(19);
+  })
 
 })

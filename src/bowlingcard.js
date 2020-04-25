@@ -25,27 +25,19 @@ Bowlingcard.prototype.isStrike = function() {
 }
 
 Bowlingcard.prototype.strikeScore = function() {
-  //if this is an odd roll
-  //was the roll before the one befoere also a strike?
-  //if the current roll is odd and the 4 rolls before is 10
-  //if so, add these points to that one too
+  
   if (this.roll % 2 != 0 && this.rollScores[this.roll - 3] === 10 && this.rollScores[this.roll - 5] === 10) {
     this.rollScores[this.roll - 5] = this.rollScores[this.roll - 1] + this.rollScores[this.roll - 3] + this.rollScores[this.roll - 5];
     this.rollScores[this.roll - 3] = this.rollScores[this.roll - 1] + this.rollScores[this.roll - 3]; 
-  //if this is an odd roll
-  //was the roll before a strike?
-  //if so, add these points to that one
-  } else if (this.roll % 2 != 0 && this.rollScores[this.roll - 3] === 10) {
-    this.rollScores[this.roll - 3] = this.rollScores[this.roll - 1] + this.rollScores[this.roll - 3]; 
-} 
+  } 
+  else if (this.roll % 2 != 0 && this.rollScores[this.roll - 3] === 10) {
+  this.rollScores[this.roll - 3] = this.rollScores[this.roll - 1] + this.rollScores[this.roll - 3];
+  } 
+  else if (this.roll % 2 === 0 && this.rollScores[this.roll - 4] > 9) {
+    console.log("eeee");
+    this.rollScores[this.roll - 4] = this.rollScores[this.roll - 1] + this.rollScores[this.roll - 4]; 
+  }
 }
-    
-    //else if {
-  // was the roll before the one before me a strike? 
-  // => if this is an even roll, was the previous frame a strike
-  // if so, add these points there too
-
-
 
 Bowlingcard.prototype.frameNumber = function() {
   if (this.rollScores.length < 3) {

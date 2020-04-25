@@ -2,28 +2,59 @@
 Bowling Challenge
 =================
 
+This is an interactive bowling scorecard that users can input their scores as they bowl. The scores are updated on a frame by frame basis. Bonus scores (strikes & spares) are calculated when the correct number of rolls have been made.
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+## Setting up
 
-## The Task
+### Cloning the repo
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+Clone this repo by typing `git clone https://github.com/Jamie95187/bowling-challenge.git` inside your terminal.
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+### Installing Jasmine
+
+Follow the instructions on [jasmine-link](https://github.com/jasmine/jasmine) (note - stop before the step labelled "Add the following to your HTML file").
+
+
+## Running tests
+
+### Unit testing
+
+The unit tests can be ran by running the `SpecRunner.html`. Type `open SpecRunner.html` inside the terminal which will open your browser of choice and the tests will be displayed in the browser.
+
+<img src="./images/SpecRunner.png" width="400"/>
+
+### Feature testing
+
+Feature tests can be ran in the Chrome DevTools. This can be accessed by pressing 'command + option + j' in a the google chrome browser. I copied the code from `src/Bowling.js` into the console tab.
+
+**Gutter Game**
+
+A full game of 0 rolls. (Unlucky!)
+
+<div class="row">
+  <div class="column">
+    <img src="./images/gutterinterface.png" style="width:500">
+  </div>
+  <div class="column">
+    <img src="./images/gutter.png" style="width:500">
+  </div>
+</div>
+
+**Perfect Game**
+
+The perfect game with a score of 300. (Impressive!)
+
+<img src="./images/perfectgame.png" width ="500"/>
+
+
+## Technologies Used
+
+**Javascript** - the backend for this project is written in javascript <br>
+**Jasmine** - the testing framework for this project
+
+## Description
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
 
 ### Optional Extras
 
@@ -67,6 +98,10 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
+## External links used
+
+Inspired by [scorecard template](https://codepen.io/owenjam/pen/reelWN). Used this as a template for building the frontend environment.
+
 ## Code Review
 
 In code review we'll be hoping to see:
@@ -75,3 +110,9 @@ In code review we'll be hoping to see:
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+
+## Things to consider next time
+
+* Planning ahead before starting project.
+* Setting up Travis for robust tests.
+* Using ESLint for writing conventional javascript.

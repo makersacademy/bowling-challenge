@@ -31,6 +31,7 @@ Bowlingcard.prototype.strikeScore = function() {
   //if so, add these points to that one too
   if (this.roll % 2 != 0 && this.rollScores[this.roll - 3] === 10 && this.rollScores[this.roll - 5] === 10) {
     this.rollScores[this.roll - 5] = this.rollScores[this.roll - 1] + this.rollScores[this.roll - 3] + this.rollScores[this.roll - 5];
+    this.rollScores[this.roll - 3] = this.rollScores[this.roll - 1] + this.rollScores[this.roll - 3]; 
   //if this is an odd roll
   //was the roll before a strike?
   //if so, add these points to that one

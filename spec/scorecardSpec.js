@@ -168,12 +168,19 @@ describe('Scorecard', function() {
         expect(scorecard.frameScoreArray).toEqual([19, 9])
     })
 
-    it('following 3 consecutive strikes it updates the frame score', function() {
+    it('following 3 consecutive strikes it updates the frame score correctly', function() {
         //this can be dried up
         scorecard.addNewScore(10, 0)
         scorecard.addNewScore(10, 0)
         scorecard.addNewScore(10, 0)
         expect(scorecard.frameScoreArray).toEqual([30, 20, 10])
+    })
+
+    it('following 2 consecutive strikes, and a normal frame, it updates the frame score correctly', function() {
+        scorecard.addNewScore(10, 0)
+        scorecard.addNewScore(10, 0)
+        scorecard.addNewScore(2, 3)
+        expect(scorecard.frameScoreArray).toEqual([22, 15, 5])
     })
 
 

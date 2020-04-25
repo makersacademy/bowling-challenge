@@ -21,9 +21,12 @@ $(document).ready(function() {
     }
   }
 
-  // function showStrike() {
-  //   if game.
-  // }
+  function showStrike() {
+    if ( game.strike() ) {
+      var number = game.getFrameCount()
+      $('#'+(number-1)+'.bottom').text("strike")
+    }
+  }
 
   function removeUnavailable() {
     num = 10 - (game.firstTurn - 1)
@@ -36,9 +39,11 @@ $(document).ready(function() {
 
   function updateDisplay() {
     updateButtons()
-    // showStrike() 
     updateScores()
     updateFrames()
+    if (game.getFrameCount() > 1) {
+      showStrike() 
+    }
   }
 
   function updateScores() {

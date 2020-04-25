@@ -17,11 +17,17 @@ Bowling Challenge
 - [X] Interactive animated display
 - [ ] Travis set up
 - [x] ESLint setup
+- [X] Game shows when complete
+- [ ] Spares and Strikes displayed Visually
+- [X] Player can only knock over available pins
+- [X] Game can be restarted
+
 
 ![bowling](process/images/bowling.gif)
 
 ### Current Issues
 
+- [X] Player cannot knock over 0 pins
 
 ## The Task
 

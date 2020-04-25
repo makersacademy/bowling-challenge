@@ -24,8 +24,6 @@ h2, #restart {
 #restart {
   width: 80px;
   height: 30px;
-  /* margin: 20px; */
-  /* display: block; */
 }
 
 #scorecard {
@@ -42,18 +40,13 @@ h2, #restart {
   flex-direction: column;
   justify-content: space-evenly;
   position: relative;
-  z-index: -1;
 }
 
 .bonus {
   color: rgb(218, 11, 11);
   top: -20px;
   z-index: 2;
-  color: #red;
-  font-family: 'Permanent Marker', cursive;
   font-size: 6.5em;
-  font-width: 1em;
-  font-weight: bold;
   text-align: center;
   width: 80px;
   height: 80px;
@@ -64,15 +57,11 @@ h2, #restart {
   display: flex;
   height: 40px;
   width: 80px;
-  z-index: 1;
-  /* position: absolute; */
 }
 
 .left{
   height: 40px;
   width: 40px;
-  z-index: 1;
-  /* position: absolute; */
 }
 
 .right {
@@ -81,15 +70,11 @@ h2, #restart {
   background-color: white;
   height: 40px;
   width: 40px;
-  z-index: 1;
-  /* position: absolute; */
-
 }
+
 .bottom {
   height: 40px;
   width: 80px;
-  z-index: 1;
-  /* position: absolute; */
 }
 .frame-number {
   height:20px;
@@ -104,6 +89,7 @@ h2, #restart {
   padding-top: 20px;
   align-self: center;
 }
+
 button {
   height: 30px;
   width: 30px;

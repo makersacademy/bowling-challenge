@@ -71,8 +71,6 @@ Game.prototype._applyStrike = function() {
 }
 
 Game.prototype._updateScore = function() {
-  console.log("frame")
-  console.log(frame.viewScore())
   this._score += frame.viewScore();
   if(this.getFrameCount() > 1) {
     this._applyStrike();

@@ -21,7 +21,6 @@ Bowling Challenge
 ![bowling](process/images/bowling.gif)
 
 ### Current Issues
-* 10th Frame 2nd score not showing
 * Users can have greater than 10 pins knocked down per round
 
 ## The Task

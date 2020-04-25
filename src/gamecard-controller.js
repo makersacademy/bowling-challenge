@@ -60,6 +60,7 @@ function GamecardController() {
   }
 
   function _onClickScoreButton( frameNumber ) {
+    _messageDisplayController.resetDisplay();
     _game.addScore( frameNumber );
     _updateScoreCard();
     _disableInvalidScoreButtons();
@@ -88,10 +89,8 @@ function GamecardController() {
   function _initialiseButtonControllers() {
     for ( let i = 0; i < 11; i += 1 ) {
       const controller = new ScoreButtonController( _onClickScoreButton, i );
-      controller.initialise();
       _scoreButtonControllers.push( controller );
     }
-    _resetButtonController.initialise();
   }
 
   function _initialiseFrameControllers() {

@@ -16,12 +16,12 @@ Bowling Challenge
 - [ ] a perfect score is declared
 - [X] Interactive animated display
 - [ ] Travis set up
-- [ ] ESLint setup
+- [x] ESLint setup
 
 ![bowling](process/images/bowling.gif)
 
 ### Current Issues
-* Users can have greater than 10 pins knocked down per round
+
 
 ## The Task
 

@@ -1,0 +1,17 @@
+td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+th {
+  vertical-align: middle;
+  text-align: center;
+}
+
+button {
+  margin-bottom: 30px;
+}
+
+input {
+  text-align: center;
+}

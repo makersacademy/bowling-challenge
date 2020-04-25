@@ -8,22 +8,23 @@ describe('Frame', function() {
     frame = new Frame();
   })
 
-  it('can calculate  turns', function() {
-    frame.enterTurn(5);
-    expect(frame.currentTurn()).toEqual(1);
-  })
-
   it('has a current score', function() {
-    frame.enterTurn(2);
-    expect(frame.viewScore()).toEqual(2);
+    expect(frame.viewScore()).toEqual(0);
   })
 
-  it('can updates a score when turn is entered', function() {
-    frame.enterTurn(1);
-    frame.enterTurn(2);
-    expect(frame.viewScore()).toEqual(3);
+  it('can increase the score on first turn', function() {
+    frame.enterTurn(5);
+    expect(frame._firstTurn).toEqual(5);
+    expect(frame.viewScore()).toEqual(5);
   })
 
+  it('can increase the score on second turn', function() {
+    frame.enterTurn(5);
+    frame.enterTurn(3);
+    expect(frame._secondTurn).toEqual(3);
+    expect(frame.viewScore()).toEqual(8);
+  })
+  
   it('knows if frame is complete', function() {
     frame.enterTurn(1);
     frame.enterTurn(2);

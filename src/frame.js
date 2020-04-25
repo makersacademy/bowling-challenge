@@ -1,16 +1,19 @@
 Frame = function() {
-  this._turns = [];
   this._score = 0;
 }
 
 Frame.prototype.enterTurn = function(pins) {
-  this._turns.push(pins)
+  if ( this._firstTurn === undefined ) {
+    this._firstTurn = pins;
+  } else if ( this._secondTurn === undefined ) {
+    this._secondTurn = pins;
+  }
   this.updateScore(pins);
 }
 
-Frame.prototype.currentTurn = function() {
-  return this._turns.length;
-}
+// Frame.prototype.currentTurn = function() {
+//   return this._turns.length;
+// }
 
 Frame.prototype.updateScore = function(pins) {
   this._score += pins;

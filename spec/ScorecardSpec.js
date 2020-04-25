@@ -103,11 +103,21 @@ describe('scorecard', function() {
       expect(scorecard.score).toEqual(0);
     });
 
-    it('10 scores of 5 scores 50', function() {
+    it('10 scores of 0, 5 scores 50', function() {
       for (i = 0; i < 10; i++) {
         scorecard.addFrame(0, 5);
       }
       expect(scorecard.score).toEqual(50);
     });
+
+    it('perfect game scores 300', function() {
+      for (i = 0; i < 12; i++) {
+        scorecard.addFrame(10);
+      }
+      expect(scorecard.score).toEqual(300);
+    });
+
+
+
   });
 });

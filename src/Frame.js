@@ -1,7 +1,7 @@
 class Frame {
   constructor(roll1, roll2 = 0) {
-    if (roll1 > 10 || roll1 < 0) {
-      throw new Error('Must score between 0 and 10');
+    if (roll1 > 10 || roll1 < 0 || isNaN(roll1) ) {
+      throw new Error('Must roll between 0 and 10');
     }
     this.roll1 = roll1;
     this.roll2 = roll2;

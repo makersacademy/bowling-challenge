@@ -2,26 +2,36 @@ $(document).ready(function() {
   var game = new Game();
   updateDisplay();
 
-  $('.pins #pin').click(function() {
+  $('.pins .pin').click(function() {
     if (!game.complete()) {
       var text = parseInt($(this).text());
       game.bowlBall(text);
+      updateButtons()
       updateDisplay();
     }
   })
 
   function updateButtons() {
-    console.log(game.firstTurn)
     if (game.firstTurn === undefined) {
-      // $('#value').attr('class', thermostat.getUsage());
-      $('#note').text("first")
+      $('.pin').removeClass('unavailable');
     } else {
-      $('#note').text("second")
+      pinsToRemove = removeUnavailable()
+      $.each(pinsToRemove, function(index, pins) {
+        $('#button-'+ pins).addClass('unavailable');
+      });
     }
   }
 
+  function removeUnavailable() {
+    num = 10 - (game.firstTurn - 1)
+    var unavailable = [];
+    for (var pin = num; pin <= 10; pin++) {
+        unavailable.push(pin);
+    }
+    return unavailable
+  }
+
   function updateDisplay() {
-    updateButtons()
     updateScores()
     updateFrames()
   }

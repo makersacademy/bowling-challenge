@@ -34,7 +34,6 @@ describe('Feature Test:', function() {
       game.bowlBall(6);
       expect(game.getScore()).toEqual(17);
     })
-
   })
 
   describe('Player rolls a strike', function() {

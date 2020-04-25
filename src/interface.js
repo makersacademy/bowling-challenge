@@ -6,7 +6,6 @@ $(document).ready(function() {
     if (!game.complete()) {
       var text = parseInt($(this).text());
       game.bowlBall(text);
-      updateButtons()
       updateDisplay();
     }
   })
@@ -22,6 +21,10 @@ $(document).ready(function() {
     }
   }
 
+  // function showStrike() {
+  //   if game.
+  // }
+
   function removeUnavailable() {
     num = 10 - (game.firstTurn - 1)
     var unavailable = [];
@@ -32,6 +35,8 @@ $(document).ready(function() {
   }
 
   function updateDisplay() {
+    updateButtons()
+    // showStrike() 
     updateScores()
     updateFrames()
   }

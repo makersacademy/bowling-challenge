@@ -50,9 +50,14 @@ describe('Game', function() {
     expect(game.getScore()).toEqual(16);
   })
 
-  it('a strike creates a bonus score', function(){
+  it('a strike creates a strike bonus score', function(){
     game.bowlBall(10);
     expect(game._lastFrame().strike()).toEqual(true)
+  })
+
+  it('can identify if frame eneded in a strike', function() {
+    game.bowlBall(10);
+    expect(game.strike()).toEqual(true)
   })
 
   it('a strike bonus score is calculated', function(){
@@ -67,6 +72,7 @@ describe('Game', function() {
     game.bowlBall(2);
     expect(game._lastFrame().spare()).toEqual(true)
   })
+
 
   it('a spare creates a bonus score', function(){
     game.bowlBall(8);

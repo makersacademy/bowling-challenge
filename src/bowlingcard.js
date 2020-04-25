@@ -47,6 +47,8 @@ Bowlingcard.prototype.spareScore = function() {
 Bowlingcard.prototype.frameArrayAdd = function() {
   if (this.roll % 2 != 0) {
     this.frameArray.push(this.rollScores[this.roll -1]);
+  } else if (this.roll % 2 === 0) {
+    this.frameArray[this.frameArray.length -1] = this.frameArray[this.frameArray.length -1] + this.rollScores[this.roll - 1]; 
   }
 }
 

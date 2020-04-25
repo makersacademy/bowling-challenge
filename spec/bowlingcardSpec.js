@@ -100,11 +100,18 @@ describe('Bowlingcard', function() {
       expect(bowlingcard.rollScores[1]).toEqual(20);
     })
   })
-  describe('.frameArray', function() {
+  describe('.frameArrayAdd', function() {
     it('checks if current roll is odd, if so pushes score to frame Array', function() {
       bowlingcard.enterScore(3);
       bowlingcard.frameArrayAdd()
       expect(bowlingcard.frameArray[0]).toEqual(3);
+    })
+    it('checks if current roll is even, if so adds to last index in frameArray', function() {
+      bowlingcard.enterScore(3);
+      bowlingcard.frameArrayAdd()
+      bowlingcard.enterScore(3);
+      bowlingcard.frameArrayAdd()
+      expect(bowlingcard.frameArray[0]).toEqual(6);
     })
   })
 

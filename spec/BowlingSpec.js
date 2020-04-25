@@ -73,7 +73,7 @@ describe("#Bowling", function () {
     });
   });
 
-  xdescribe("runCardMaking", function () {
+  describe("runCardMaking", function () {
     describe("returns the correct amount of PINS", function () {
       it("fills in the roll 1 number of PINS for Frame 1  as 3", function () {
         var bowlingMock = new Bowling();
@@ -132,7 +132,7 @@ describe("#Bowling", function () {
         expect(bowlingMock.spare).toEqual(false);
       });
     });
-    describe("Testing  Spare & strike  scoring ", function () {
+    describe("#scoreSpares ", function () {
       it("If a spare is thrown the score from the first roll of the next frame will be added to the score of the frame", function () {
         var bowlingMock = new Bowling();
         spyOn(bowlingMock, "getInput").and.returnValue(5);

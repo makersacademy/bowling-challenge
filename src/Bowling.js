@@ -26,10 +26,17 @@ Bowling.prototype.runCardMaking = function () {
       var score = this.calculateScore(pins);
       this.fillCard(pins, score, rollCount);
     }
+
     if (this.switchSpare() === true) {
       this.spare = true;
     } else {
       this.spare = false;
+    }
+
+    if (this.switchStrike() === true) {
+      this.strike = true;
+     } else {
+      this.stike = false;
     }
   }
   return this.card;
@@ -101,12 +108,12 @@ Bowling.prototype.switchSpare = function (rollCount) {
 };
 
 Bowling.prototype.switchStrike = function (rollCount) {
-  if ( rollCount === 2 &&
-    this.card[this.frameKey]["r1PinsDown"] === 10 ||
+  if (
+    (rollCount === 2 && this.card[this.frameKey]["r1PinsDown"] === 10) ||
     this.card[this.frameKey]["r2PinsDown"] === 10
   ) {
     return true;
   } else {
-    return false }
- 
+    return false;
+  }
 };

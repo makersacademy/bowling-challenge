@@ -175,6 +175,10 @@ describe("#Bowling", function () {
         bowling.runCardMaking();
         expect(bowling.strike).toEqual(true);
       });
+
+      xit("#runCardMaking - will change property strike to false when strike is rolled ", function () {
+       /// not sure how to test this so it matches how program runs 
+      });
       
     
     });

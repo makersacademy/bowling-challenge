@@ -73,7 +73,7 @@ describe("#Bowling", function () {
     });
   });
 
-  describe("runCardMaking", function () {
+  xdescribe("runCardMaking", function () {
     describe("returns the correct amount of PINS", function () {
       it("fills in the roll 1 number of PINS for Frame 1  as 3", function () {
         var bowlingMock = new Bowling();
@@ -147,6 +147,7 @@ describe("#Bowling", function () {
         roll = 2
         bowling.fillCard(strike, 10, roll)
         expect(bowling.switchStrike(roll)).toEqual(true)
+        expect(bowling.strike).toEqual(true)
       });
 
 
@@ -158,6 +159,7 @@ describe("#Bowling", function () {
         roll = 2
         bowling.fillCard(nonStrike, 10, roll)
         expect(bowling.switchStrike(roll)).toEqual(true)
+        expect(bowling.strike).toEqual(true)
       });
 
       it("#switchStrike - will return false when a strike is not rolled ", function () {
@@ -168,6 +170,7 @@ describe("#Bowling", function () {
         roll = 2
         bowling.fillCard(nonStrike, 23, roll)
         expect(bowling.switchStrike(roll)).toEqual(false)
+        expect(bowling.strike).toEqual(false)
       });
 
       xit("#runCardMaking - will change property: strike to true when strike is rolled ", function () {
@@ -205,6 +208,11 @@ describe("#Bowling", function () {
         spyOn(bowling, "getInput").and.returnValue(10);
         expect(bowling.runCardMaking()[1]['r1PinsDown']).toEqual(10);
         expect(bowling.card[1]['r2PinsDown']).toEqual('x');
+      });
+      it("If a stike is scored on first roll, the score  down on second turn will equate to the score of the previous round ", function () {
+        spyOn(bowling, "getInput").and.returnValue(10);
+        expect(bowling.runCardMaking()[2]['r2Score']).toEqual(20);
+  
       });
     });
   });

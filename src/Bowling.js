@@ -26,7 +26,11 @@ Bowling.prototype.runCardMaking = function () {
       console.log(score)
       this.fillCard(pins, score, rollCount);
       this.switchStrike()
-      if (pins === 10) { break; }
+      console.log(this.strike)
+      if (this.strike === true && rollCount === 1) { 
+        this.card[this.frameKey]['r2PinsDown'] = 'x'
+        this.card[this.frameKey]['r2Score'] = this.score
+        break; }
     }
     this.switchSpare()
   }
@@ -96,7 +100,7 @@ Bowling.prototype.switchSpare = function (rollCount) {
 
 Bowling.prototype.switchStrike = function (rollCount) {
   if (
-    (rollCount === 2 && this.card[this.frameKey]["r1PinsDown"] === 10) ||
+    (this.card[this.frameKey]["r1PinsDown"] === 10) ||
     this.card[this.frameKey]["r2PinsDown"] === 10
   ) {
     return this.strike = true;

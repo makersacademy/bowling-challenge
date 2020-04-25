@@ -1,0 +1,7 @@
+node_js:  
+  - "13.12.0"
+before_install:  
+  - npm install
+  - npm install -g grunt-cli
+script:
+  - npm run test

@@ -165,11 +165,20 @@ describe('Scorecard', function() {
     it('updates the score of the previous frame following a strike', function() {
         scorecard.addNewScore(10, 0)
         scorecard.addNewScore(4, 5)
+        expect(scorecard.frameScoreArray).toEqual([19, 9])
+    })
+
+    it('following 3 consecutive strikes it updates the frame score', function() {
+        //this can be dried up
+        scorecard.addNewScore(10, 0)
+        scorecard.addNewScore(10, 0)
+        scorecard.addNewScore(10, 0)
+        expect(scorecard.frameScoreArray).toEqual([30, 20, 10])
     })
 
 
-
 })
+
 
 
 

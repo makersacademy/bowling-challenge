@@ -55,6 +55,15 @@ Scorecard.prototype.spareOrStrikeUpdate = function(roll1, roll2) {
     if ((this.currentFrameNumber > 1) && (this.isSpare === true)) {
         var arrayPosition = this.currentFrameNumber - 2
         this.frameScoreArray[arrayPosition] += roll1
+    } 
+    if ((this.currentFrameNumber > 2) && (this.isStrike === true) && (roll2 === 0)) {
+        var arrayPosition = this.currentFrameNumber - 3
+        console.log(arrayPosition)
+        console.log(this.frameScoreArray[arrayPosition] += roll1)
+    } 
+    if ((this.currentFrameNumber > 1) && (this.isStrike === true)) {
+        var arrayPosition = this.currentFrameNumber - 2
+        this.frameScoreArray[arrayPosition] += (roll1 + roll2)
     }
 }
 

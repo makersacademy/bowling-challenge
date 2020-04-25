@@ -55,7 +55,7 @@ describe('Game', function() {
     expect(game._lastFrame().strike()).toEqual(true)
   })
 
-  it('can identify if frame eneded in a strike', function() {
+  it('can identify if frame ended in a strike', function() {
     game.bowlBall(10);
     expect(game.strike()).toEqual(true)
   })
@@ -73,6 +73,11 @@ describe('Game', function() {
     expect(game._lastFrame().spare()).toEqual(true)
   })
 
+  it('can identify if frame ended in a spare', function() {
+    game.bowlBall(5);
+    game.bowlBall(5);
+    expect(game.spare()).toEqual(true)
+  })
 
   it('a spare creates a bonus score', function(){
     game.bowlBall(8);

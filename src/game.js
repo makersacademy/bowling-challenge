@@ -55,6 +55,11 @@ Game.prototype.strike = function() {
   return last.strike()
 }
 
+Game.prototype.spare = function() {
+  last = this._lastFrame()
+  return last.spare()
+}
+
 
 Game.prototype._currentFrame = function() {
   return this._frames[this._frames.length -1];
@@ -64,12 +69,11 @@ Game.prototype._lastFrame = function() {
 }
 
 Game.prototype._applySpare = function(pins) {
-  last = this._lastFrame()
-  if (last.spare()) {
+  if (this.spare()) {
     this._bonusScore += frame.firstTurn();
-  } 
-  
+  }  
 }
+
 Game.prototype._applyStrike = function() {
   if (this.strike()) {
     this._bonusScore += frame.viewScore();

@@ -10,8 +10,10 @@ function Bowlingcard () {
 
 Bowlingcard.prototype.enterScore = function(number) {
     this.rollScores.push(number);
+    //I do not think I need this or its test
     this.score += number;
     this.roll++;
+    this.frameArrayAdd();
     this.strikeScore();
     this.spareScore();
     this.isStrike();

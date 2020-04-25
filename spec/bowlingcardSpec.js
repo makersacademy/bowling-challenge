@@ -108,9 +108,7 @@ describe('Bowlingcard', function() {
     })
     it('checks if current roll is even, if so adds to last index in frameArray', function() {
       bowlingcard.enterScore(3);
-      bowlingcard.frameArrayAdd()
       bowlingcard.enterScore(3);
-      bowlingcard.frameArrayAdd()
       expect(bowlingcard.frameArray[0]).toEqual(6);
     })
   })

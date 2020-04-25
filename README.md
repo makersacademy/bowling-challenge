@@ -175,3 +175,20 @@ After the user rolls a spare points form the next roll are automatically added t
 
 * The score per frame is clearly displayed
 * Bonus points are added to a frame total not to a particular roll
+
+
+## User story 11
+
+* As a user, after a fun game of bowling
+* I want to know my total score
+* so that I can know who is paying for the next round
+
+### Acceptance criteria
+
+* Given that I have being playing bowling
+* When I want to know how many points I got
+* Then I want to see my total points for the game
+
+### Requirements
+
+The user can see the total points for their game

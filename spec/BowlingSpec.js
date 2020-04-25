@@ -170,6 +170,11 @@ describe("#Bowling", function () {
         expect(bowling.switchStrike(roll)).toEqual(false)
       });
 
+      it("#runCardMaking - will change property: strike to true when strike is rolled ", function () {
+        spyOn(bowling, "getInput").and.returnValue(10);
+        bowling.runCardMaking();
+        expect(bowling.strike).toEqual(true);
+      });
       
     
     });

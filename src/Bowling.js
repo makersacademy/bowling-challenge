@@ -26,25 +26,14 @@ Bowling.prototype.runCardMaking = function () {
       var score = this.calculateScore(pins);
       this.fillCard(pins, score, rollCount);
     }
-
-    if (this.switchSpare() === true) {
-      this.spare = true;
-    } else {
-      this.spare = false;
-    }
-
-    if (this.switchStrike() === true) {
-      this.strike = true;
-     } else {
-      this.stike = false;
-    }
+    this.switchSpare()
+    this.switchStrike()
   }
   return this.card;
 };
 
 Bowling.prototype.makeCardTemplate = function () {
   var frameCount;
-  var counter2;
   var obj = {};
   for (frameCount = 1; frameCount < 11; frameCount++) {
     var key = frameCount;
@@ -55,7 +44,7 @@ Bowling.prototype.makeCardTemplate = function () {
 };
 
 Bowling.prototype.getInput = function () {
-  return getRndInteger(3, 11);
+  return getRndInteger(1, 11);
 };
 
 Bowling.prototype.calculateScore = function (numPinsDown) {
@@ -93,17 +82,14 @@ Bowling.prototype.fillCard = function (pins, score, rollCount) {
 };
 
 Bowling.prototype.switchSpare = function (rollCount) {
-  //console.log("switch spare method");
-  //console.log(this.frameKey);
-  //console.dir(this.card);
   if (
     this.card[this.frameKey]["r1PinsDown"] +
       this.card[this.frameKey]["r2PinsDown"] ===
     10
   ) {
-    return true;
+    return this.spare = true;
   } else {
-    return false;
+    return this.spare = false;
   }
 };
 
@@ -112,8 +98,8 @@ Bowling.prototype.switchStrike = function (rollCount) {
     (rollCount === 2 && this.card[this.frameKey]["r1PinsDown"] === 10) ||
     this.card[this.frameKey]["r2PinsDown"] === 10
   ) {
-    return true;
+    return this.strike = true;
   } else {
-    return false;
+    return this.strike = false;
   }
 };

@@ -177,7 +177,7 @@ describe("#Bowling", function () {
       });
 
       xit("#runCardMaking - will change property strike to false when strike is rolled ", function () {
-       /// not sure how to test this so it matches how program runs 
+       /// not sure how to test this so it matches how program runs without having to introduce loops in test
       });
       
     

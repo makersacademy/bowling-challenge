@@ -177,5 +177,14 @@ describe('scorecard', function() {
         scorecard.addFrame(10);
       }).toThrowError('Game complete!');
     });
+
+    it('11 open frames throws an error', function() {
+      for (i = 0; i < 10; i++) {
+        scorecard.addFrame(5);
+      }
+      expect(function() {
+        scorecard.addFrame(6);
+      }).toThrowError('Game complete!');
+    });
   });
 });

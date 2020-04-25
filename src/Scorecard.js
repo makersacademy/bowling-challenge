@@ -4,6 +4,11 @@ class Scorecard {
     this.frames= [];
   }
   addFrame(roll1, roll2) {
+    if (this.frames.length == 10) {
+      if (this.frames[this.frames.length-1].isOpenFrame()) {
+        throw new Error('Game complete!');
+      }
+    }
     if (this.frames.length == 12) {
       throw new Error('Game complete!');
     }

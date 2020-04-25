@@ -28,9 +28,7 @@ Frame.prototype.strike = function() {
 }
 
 Frame.prototype.spare = function() {
-  if( this._turns[0] + this._turns[1] === 10 ) {
-    return true
-  }
+  return this._firstTurn + this._secondTurn === 10
 }
 
 Frame.prototype.firstTurn = function() {

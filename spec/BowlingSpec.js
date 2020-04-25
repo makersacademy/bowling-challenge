@@ -195,9 +195,11 @@ describe("#Bowling", function () {
         expect(bowlingMock.card[3]["r2Score"]).toEqual(45);
       });
     });
-    xdescribe("#scoreStrikes ", function () {
+    describe("#runCardMaking ", function () {
       it("If a strike is thrown the score from BOTH rolls of the next frame will be added to the score of the frame", function () {
-    
+        bowlingMock = new Bowling();
+        spyOn(bowling, "getInput").and.returnValue(10);
+        expect(bowling.runCardMaking()[1]["r2Score"]).toEqual(20);
       });
     });
 

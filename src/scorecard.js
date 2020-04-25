@@ -6,6 +6,8 @@ function Scorecard() {
     this.isStrike = false
     this.currentFrame = []
     this.allFrames = []
+    this.frameScoreArray = []
+    this.currentFrameNumber = 0
 }
 
 Scorecard.prototype.addNewScore = function(roll1, roll2=0) {
@@ -16,26 +18,20 @@ Scorecard.prototype.addNewScore = function(roll1, roll2=0) {
     //
     //this.frameNumber += 1
     //
-    
-    this.calculateFrameScore(roll1, roll2) //change to addscoretocurrentframe
+    this.updateCurrentFrameNumber()
+    this.addScoreToCurrentFrame(roll1, roll2)
+    this.calculateFrameScore(roll1, roll2)
     this.spareOrStrike(roll1, roll2)
 }
 
-//so this method is bollocks now
-Scorecard.prototype.calculateFrameScore = function(roll1, roll2) {
+Scorecard.prototype.updateCurrentFrameNumber = function() {
+    this.currentFrameNumber += 1
+}
 
-    
-    if (this.isSpare === true) { 
-        score1 = roll1 * 2
-        score2 = roll2
-    } else if (this.isStrike === true) {
-        score1 = roll1 * 2
-        score2 = roll2 * 2
-    } else {
-        score1 = roll1
-        score2 = roll2
-    }
-    this.addScoreToCurrentFrame(score1, score2)
+Scorecard.prototype.calculateFrameScore = function(roll1, roll2) {
+    score = roll1 + roll2
+    //separate below into different method for SRP
+    this.frameScoreArray.push(score)
 }
 
 Scorecard.prototype.spareOrStrike = function(roll1, roll2) {
@@ -51,19 +47,16 @@ Scorecard.prototype.spareOrStrike = function(roll1, roll2) {
     }
 }
 
-Scorecard.prototype.incorrectScore = function() {
-    return "Incorrect Score"
-}
+
 
 Scorecard.prototype.addScoreToCurrentFrame = function(score1, score2) {
     this.currentFrame.push(score1, score2)
     this.addCurrentToAllFrames(this.currentFrame)
-    //will move next line to addCurrentToAllFrames when i can total an array or arrays
+    //below is now looking incorrect as total will not be total of framesScoreArray
     this.calculateTotalScore(this.allFrames)
 }
 
 Scorecard.prototype.clearCurrentFrame = function() {
-    //
     this.currentFrame = []
 }
 
@@ -82,5 +75,9 @@ Scorecard.prototype.calculateTotalScore = function(array) {
         //console log so I don't have to run card.totalScore when feature testing
         console.log(this.totalScore)
     }
+
+Scorecard.prototype.incorrectScore = function() {
+    return "Incorrect Score"
+}
 
 

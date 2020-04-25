@@ -133,9 +133,20 @@ describe('Scorecard', function() {
     })
 
     /////new tests
-    // it('calculates the frame score', function() {
-    //     expect(scorecard.calculateFrameScore(4, 5)).toEqual(9)
-    // })
+    it('calculates the frame score', function() {
+        expect(scorecard.calculateFrameScore(4, 5)).toEqual(9)
+    })
+
+    it('adds frame score to frame score array', function() {
+        scorecard.addNewScore(3, 4)
+        expect(scorecard.frameScoreArray).toEqual([7])
+    })
+
+    ////to make current frame number so can access correct element in array
+    it('gives current frame number', function() {
+        scorecard.addNewScore(2, 3)
+        expect(scorecard.currentFrameNumber).toEqual(1)
+    })
 
 
 

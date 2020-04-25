@@ -100,14 +100,30 @@ body {
 }
 
 .strike-display {
-  animation:strikeText 3s;
+  animation:strikeText 4s;
 }
 
 @keyframes strikeText {
-  0% { opacity: 0; }
-  25% { opacity: 1; }
+  0% { opacity: 1; }
+  9% { opacity: 1;}
+  10% { opacity: 0; }
+  19% { opacity: 0;}
+  20% { opacity: 1; }
+  29% { opacity: 1;}
+  30% { opacity: 0; }
+  39% { opacity: 0;}
+  40% { opacity: 1; }
+  49% { opacity: 1;}
   50% { opacity: 0; }
-  75% { opacity: 1; }
+  59% { opacity: 0;}
+  60% { opacity: 1; }
+  69% { opacity: 1;}
+  70% { opacity: 0; }
+  79% { opacity: 0; }
+  80% { opacity: 1; }
+  89% { opacity: 1;}
+  90% { opacity: 0; }
+  99% { opacity: 0; }
   100% { opacity: 0; }
 }
 
@@ -116,9 +132,16 @@ body {
 }
 
 @keyframes spareText {
-  0% { opacity: 0; }
-  20% { opacity: 1; }
+  0% { opacity: 1; }
+  19% { opacity: 1;}
+  20% { opacity: 0; }
+  39% { opacity: 0;}
+  40% { opacity: 1; }
+  59% { opacity: 1;}
+  60% { opacity: 0; }
+  79% { opacity: 0; }
   80% { opacity: 1; }
+  99% { opacity: 1; }
   100% { opacity: 0; }
 }
 

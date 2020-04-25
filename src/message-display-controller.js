@@ -11,7 +11,7 @@ function MessageDisplayController() {
   this.displayStrike = function displayStrike() {
     messageDisplay.text( "Strike!!" );
     messageDisplay.addClass( "strike-display" );
-    timeout = setTimeout( () => { messageDisplay.removeClass( "strike-display" ); }, 3000 );
+    timeout = setTimeout( () => { messageDisplay.removeClass( "strike-display" ); }, 4000 );
   };
 
   this.displaySpare = function displaySpare() {

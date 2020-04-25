@@ -74,12 +74,9 @@ class Scorecard {
     }
   }
   isGameComplete() {
-    if (this.frames.length == 10) {
-      if (this.frames[this.frames.length-1].isOpenFrame()) {
-        throw new Error('Game complete!');
-      }
-    }
-    if (this.frames.length == 12) {
+    if (this.frames.length == 10 &&
+    this.frames[this.frames.length-1].isOpenFrame() ||
+    this.frames.length == 12) {
       throw new Error('Game complete!');
     }
   }

@@ -203,17 +203,14 @@ describe("#Bowling", function () {
 
 
 
-    describe("#runCardMaking -  second roll is skipped when stike rolled in first roll", function () {
-      it("If a stike is scored on first roll, the pins down on second turn will be marked with an x ", function () {
+    describe("#runCardMaking -  second roll is skipped after stike ", function () {
+      it("If a stike is scored, the pins down on second turn will be marked with an x ", function () {
         spyOn(bowling, "getInput").and.returnValue(10);
         expect(bowling.runCardMaking()[1]['r1PinsDown']).toEqual(10);
         expect(bowling.card[1]['r2PinsDown']).toEqual('x');
       });
-      it("If a stike is scored on first roll, the score  down on second turn will equate to the score of the previous round ", function () {
-        spyOn(bowling, "getInput").and.returnValue(10);
-        expect(bowling.runCardMaking()[2]['r2Score']).toEqual(20);
-  
-      });
+
+      
     });
   });
 });

@@ -29,7 +29,7 @@ Bowling.prototype.runCardMaking = function () {
       console.log(this.strike)
       if (this.strike === true && rollCount === 1) { 
         this.card[this.frameKey]['r2PinsDown'] = 'x'
-        this.card[this.frameKey]['r2Score'] = this.score
+        this.card[this.frameKey]["r2Score"] = this.score
         break; }
     }
     this.switchSpare()

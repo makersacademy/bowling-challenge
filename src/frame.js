@@ -19,7 +19,7 @@ Frame.prototype.viewScore = function() {
   return this._score;
 }
 
-Frame2.prototype.complete = function() {
+Frame.prototype.complete = function() {
   return ( ( this._firstTurn !== undefined && this._secondTurn !== undefined ) || this.strike() ) 
 }
 

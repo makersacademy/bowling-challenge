@@ -13,8 +13,7 @@ class Scorecard {
   }
   calculateScore() {
     this.frames.forEach((frame, index, frames) => {
-      if (index > 9) {
-      } else {
+      if (index < 10) {
         this.scoreLogic(frame, index, frames);
       }
     });

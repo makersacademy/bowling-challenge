@@ -170,14 +170,15 @@ describe("#Bowling", function () {
         expect(bowling.switchStrike(roll)).toEqual(false)
       });
 
-      it("#runCardMaking - will change property: strike to true when strike is rolled ", function () {
+      xit("#runCardMaking - will change property: strike to true when strike is rolled ", function () {
+        // need to work out a way to be able to choose values each roll - otherwise it does not accurately reflect what is happening in program and also it cannot be tested as stike causes breaks in loop 
         spyOn(bowling, "getInput").and.returnValue(10);
         bowling.runCardMaking();
         expect(bowling.strike).toEqual(true);
       });
 
       xit("#runCardMaking - will change property strike to false when strike is rolled ", function () {
-       /// not sure how to test this so it matches how program runs without having to introduce loops in test
+       /// not sure how to test this - see above comment
       });
       
     
@@ -200,10 +201,10 @@ describe("#Bowling", function () {
 
 
     describe("#runCardMaking -  second roll is skipped when stike rolled in first roll", function () {
-      it("If a stike is scored on first roll, the pins down on second turn will equal 0 ", function () {
+      it("If a stike is scored on first roll, the pins down on second turn will be marked with an x ", function () {
         spyOn(bowling, "getInput").and.returnValue(10);
         expect(bowling.runCardMaking()[1]['r1PinsDown']).toEqual(10);
-        expect(bowling.card[1]['r2PinsDown']).toEqual(0);
+        expect(bowling.card[1]['r2PinsDown']).toEqual('x');
       });
     });
   });

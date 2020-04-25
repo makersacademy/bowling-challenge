@@ -22,12 +22,13 @@ Bowling.prototype.runCardMaking = function () {
     for (rollCount = 1; rollCount < 3; rollCount++) {
       var pins = this.getInput();
       this.scoreSpares(rollCount, pins);
-
       var score = this.calculateScore(pins);
+      console.log(score)
       this.fillCard(pins, score, rollCount);
+      this.switchStrike()
+      if (pins === 10) { break; }
     }
     this.switchSpare()
-    this.switchStrike()
   }
   return this.card;
 };

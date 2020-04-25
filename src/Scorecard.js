@@ -49,11 +49,7 @@ class Scorecard {
     this.score += frame.roll1 + frame.roll2;
   }
   nextRollIsUndefined(index, frames) {
-    if (frames[index+1] == undefined && frames[index] === frames[11]) {
-      this.score = 300;
-      return true;
-    } else if (frames[index+1] == undefined) {
-    // if (frames[index+1] == undefined) {
+    if (frames[index+1] == undefined) {
       this.score = 'Add another frame.';
       return true;
     }

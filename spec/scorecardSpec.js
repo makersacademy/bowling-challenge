@@ -243,6 +243,14 @@ describe('Scorecard', function() {
         scorecard.addNewScore(10, 10, 10)
         expect(scorecard.frameScoreArray).toEqual([30, 30, 30, 30, 30, 30, 30, 30, 30, 30])
     })
+
+    it('can score a gutter game', function() {
+        var i
+        for (i = 0; i < 10; i++) {
+        scorecard.addNewScore(0, 0)
+        }
+        expect(scorecard.frameScoreArray).toEqual([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    })
 })
 
 

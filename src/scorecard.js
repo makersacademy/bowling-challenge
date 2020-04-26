@@ -81,8 +81,7 @@ Scorecard.prototype.updatePreviousFrameScores = function(roll1, roll2) {
     ///Dry this out into separate methods
     //logic for spares
     if ((this.currentFrameNumber > 1) && (this.isSpare === true)) {
-        var arrayPosition = this.currentFrameNumber - 2
-        this.frameScoreArray[arrayPosition] += roll1
+        this.adjustPreviousFrameAfterSpare(roll1, roll2)
     } 
     //normal or spare followed by 2 strikes
     if ((this.currentFrameNumber > 2) && (this.isStrike === true) && (roll2 === 0) && (this.allFrames[(this.currentFrameNumber - 3)][1]) > 0) {
@@ -105,6 +104,11 @@ Scorecard.prototype.updatePreviousFrameScores = function(roll1, roll2) {
     }
 }
 
+Scorecard.prototype.adjustPreviousFrameAfterSpare = function(roll1, roll2) {       
+    var arrayPosition = this.currentFrameNumber - 2
+    this.frameScoreArray[arrayPosition] += roll1
+}
+
 
 
 Scorecard.prototype.addScoreToCurrentFrame = function(score1, score2) {
@@ -121,7 +125,6 @@ Scorecard.prototype.clearCurrentFrame = function() {
 Scorecard.prototype.addCurrentToAllFrames = function(currentFrame) {
     this.allFrames.push(currentFrame)
 }
-
 
 Scorecard.prototype.calculateTotalScore = function(scoreArray) {    
         var runningTotal = 0

@@ -208,16 +208,20 @@ describe('Scorecard', function() {
     })
 
     //10th frame testing
-    it('adds extra role following a spare in the 10th frame', function() {
-        scorecard.addNewScore(0)
-        scorecard.addNewScore(0)
-        scorecard.addNewScore(0)
-        scorecard.addNewScore(0)
-        scorecard.addNewScore(0)
-        scorecard.addNewScore(0)
-        scorecard.addNewScore(0)
-        scorecard.addNewScore(0)
-        scorecard.addNewScore(0)
+    it('does not count an extra roll if there is no spare or strike in 10th frame', function () {
+        var i;
+        for (i = 0; i < 9; i++) {
+        scorecard.addNewScore(0, 0)
+        }
+        scorecard.addNewScore(4, 4, 5)
+        expect(scorecard.frameScoreArray).toEqual([ 0, 0, 0, 0, 0, 0, 0, 0, 0, 8])
+    })
+
+    it('adds extra roll following a spare in the 10th frame', function() {
+        var i;
+        for (i = 0; i < 9; i++) {
+        scorecard.addNewScore(0, 0)
+        }
         scorecard.addNewScore(5, 5, 5)
         expect(scorecard.frameScoreArray).toEqual([ 0, 0, 0, 0, 0, 0, 0, 0, 0, 15])
     })

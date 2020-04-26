@@ -28,18 +28,51 @@ Bowling.prototype.runCardMaking = function () {
         pins = "x";
         score = this.calculateScore(0);
       } else {
+
+        
+
         pins = this.getInput();
-        this.scoreSpares(rollCount, pins);
+
+        //isStike?
+        if ( (rollCount === 1 && pins === 10) || (this.frameKey === 2 && rollCount === 2 && this.card[this.frameKey -1]['r2PinsDown'] === 'x' )) {this.strike = true
+        }else {
+          this.strike = false
+        }
+        
+        
+       
+       // scoreStrikes - next frame 
+        if (this.strike === true && rollCount === 2) {
+          console.log("in")
+          var previousFrameKey = this.frameKey - 1;
+          var previousFrameScore = this.card[previousFrameKey]["r2Score"];
+          console.log(this.card[this.frameKey]['r1PinsDown'])
+          this.card[previousFrameKey]["r2Score"] = previousFrameScore + pins + (this.card[frameCount]['r1PinsDown']);
+          this.score = this.score + pins;
+        }
+        // ///  -----------------------------------------------------
+
+      
+    
         score = this.calculateScore(pins);
+        /// end of conditional ----
       }
       this.fillCard(pins, score, rollCount);
-      if (rollCount === 1) {
-        this.switchStrike();
-      }
+
+     
+      if (this.strike === false && this.spare === true ) {this.scoreSpares(rollCount, pins);}
+      this.switchSpare();
+      
+      
+    
     }
-    this.switchSpare();
+    
+   
   }
+  // end of loop big loop
+  
   console.log(this.card)
+  
   return this.card;
 };
 
@@ -73,12 +106,14 @@ Bowling.prototype.calculateScore = function (numPinsDown) {
 };
 
 Bowling.prototype.scoreSpares = function (rollCount, pins) {
-  if (this.spare === true && rollCount === 2 && this.frameKey > 1) {
+  console.log("in scoreSpares")
+  console.log(rollCount)
+  //if ( rollCount === 1 && this.frameKey > 1) {
     var previousFrameKey = this.frameKey - 1;
     var previousFrameScore = this.card[previousFrameKey]["r2Score"];
     this.card[previousFrameKey]["r2Score"] = previousFrameScore + pins;
     this.score = this.score + pins;
-  }
+  //}
 };
 
 Bowling.prototype.fillCard = function (pins, score, rollCount) {
@@ -90,12 +125,6 @@ Bowling.prototype.fillCard = function (pins, score, rollCount) {
     this.card[this.frameKey]["r2PinsDown"] = pins;
     this.card[this.frameKey]["r2Score"] = score;
   }
-
-  // skip turn 2 if strike // user interace needs to be blocked - seperate functionality
-  // if (rollCount === 2 && this.strike === true) {
-  //   this.card[this.frameKey]['r2PinsDown'] = 'x'
-  //   this.card[this.frameKey]["r2Score"] = this.card[this.frameKey]["r1Score"]
-  //    }
 
   return this.card;
 };
@@ -123,7 +152,7 @@ Bowling.prototype.switchStrike = function (rollCount) {
   }
 };
 
-// scoreStrike
+
 // if (this.strike === true ) {
 //   console.log("in method")
 //   var previousFrameKey = this.frameKey - 1;

@@ -75,6 +75,10 @@ class Scorecard {
     }
   }
   isGameComplete() {
+    if (this.frames.length == 11 &&
+    this.frames[this.frames.length-2].isSpare()) {
+      throw new Error('Game complete!');
+    }
     if (this.frames.length == 10 &&
     this.frames[this.frames.length-1].isOpenFrame() ||
     this.frames.length == 11 &&

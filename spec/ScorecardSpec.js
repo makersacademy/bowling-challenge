@@ -222,15 +222,15 @@ describe('scorecard', function() {
       }).toThrowError('Cannot add 2 rolls.');
     });
 
-    // it('9 strikes, one spare, two strike throws an error', function() {
-    //   for (i = 0; i < 9; i++) {
-    //     scorecard.addFrame(new Framedouble(10));
-    //   }
-    //   scorecard.addFrame(new Framedouble(5, 5));
-    //   scorecard.addFrame(new Framedouble(10));
-    //   expect(function() {
-    //     scorecard.addFrame(new Framedouble(10));
-    //   }).toThrowError('Game complete!');
-    // });
+    it('9 strikes, one spare, two strike throws an error', function() {
+      for (i = 0; i < 9; i++) {
+        scorecard.addFrame(new Framedouble(10));
+      }
+      scorecard.addFrame(new Framedouble(5, 5));
+      scorecard.addFrame(new Framedouble(10));
+      expect(function() {
+        scorecard.addFrame(new Framedouble(10));
+      }).toThrowError('Game complete!');
+    });
   });
 });

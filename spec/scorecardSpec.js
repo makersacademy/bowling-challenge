@@ -110,28 +110,6 @@ describe('Scorecard', function() {
         expect(scorecard.totalScore).toEqual(0)
     })
 
-    //add describe block here to organise these tests better
-
-    it('calculates the total score', function() {
-        scorecard.calculateTotalScore([[3, 4]])
-        expect(scorecard.totalScore).toEqual(7)
-    })
-
-    it('calculates the total score', function() {
-        scorecard.calculateTotalScore([[3, 4], [2, 2]])
-        expect(scorecard.totalScore).toEqual(11)
-    })
-
-    it('calculates the total score', function() {
-        scorecard.addNewScore(4, 5)
-        expect(scorecard.totalScore).toEqual(9)
-    })
-
-    it('calculates the total score', function() {
-        scorecard.addNewScore(4, 5)
-        scorecard.addNewScore(3, 4)
-        expect(scorecard.totalScore).toEqual(16)
-    })
 
     /////new tests
     it('calculates the frame score', function() {
@@ -252,10 +230,26 @@ describe('Scorecard', function() {
         expect(scorecard.frameScoreArray).toEqual([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
     })
 
-    it('can calculate the total score', function() {
+    //total score tests
+    it('calculates the total score after 1 frame', function() {
+        scorecard.calculateTotalScore([3])
+        expect(scorecard.totalScore).toEqual(3)
+    })
+
+    it('calculates the total score after 2 frames', function() {
+        scorecard.calculateTotalScore([4, 5])
+        expect(scorecard.totalScore).toEqual(9)
+    })
+
+    it('can calculate the total score for a full game', function() {
         scorecard.calculateTotalScore([30, 30, 30, 30, 30, 30, 30, 30, 30, 30])
         expect(scorecard.totalScore).toEqual(300)
     })
 
+    it('calculates total score at the end of each frame', function() {
+        scorecard.addNewScore(4, 5)
+        scorecard.addNewScore(3, 4)
+        expect(scorecard.totalScore).toEqual(16)
+    })
     //would be nice to add a few further tests here just to show it works with other scores
 })

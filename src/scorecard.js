@@ -53,6 +53,8 @@ Scorecard.prototype.calculateFrameScore = function(roll1, roll2, roll3=0) {
     var score = roll1 + roll2 + roll3
     //separate below into different method for SRP
     this.frameScoreArray.push(score)
+    
+    this.calculateTotalScore(this.frameScoreArray)
     //added return score here to pass test on/near line 138
     return score
 }
@@ -115,8 +117,6 @@ Scorecard.prototype.clearCurrentFrame = function() {
 Scorecard.prototype.addCurrentToAllFrames = function(currentFrame) {
     this.allFrames.push(currentFrame)
 }
-
-
 
 
 Scorecard.prototype.calculateTotalScore = function(scoreArray) {    

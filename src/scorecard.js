@@ -15,8 +15,12 @@ Scorecard.prototype.secondBowl = function(num) {
 
 Scorecard.prototype.roundSummary = function() {
   this.frameTotal.push(this.bowlOne[0] + this.bowlTwo[0]);
+}
+
+Scorecard.prototype.printFrameScore = function() {
   return this.frameTotal
 }
+
 
 
 //make a variable for thermostat called power saving mode

@@ -48,7 +48,7 @@ Bowling.prototype.runCardMaking = function () {
           var previousFrameScore = this.card[previousFrameKey]["r2Score"];
           console.log(this.card[this.frameKey]['r1PinsDown'])
           this.card[previousFrameKey]["r2Score"] = previousFrameScore + pins + (this.card[frameCount]['r1PinsDown']);
-          this.score = this.score + pins 
+          this.score = this.score + pins + (this.card[frameCount]['r1PinsDown'])
 
           // if  previous frame [r2 pinsDown] == x then add 10 
         }

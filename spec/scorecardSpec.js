@@ -222,9 +222,14 @@ describe('Scorecard', function() {
     })
     //would be nice to add a few further tests here just to show it works with other scores
 
-    it('returns total score at the end of the game', function() {
+    it('tells the user their total score at the end of the game', function() {
         scorecard.totalScore = 236
         expect(scorecard.finalScore(scorecard.totalScore)).toEqual("You scored 236")
+    })
+
+    it('tells the user if they got a gutter game', function() {
+        scorecard.totalScore = 0
+        expect(scorecard.finalScore(scorecard.totalScore)).toEqual("GUTTER GAME")
     })
 
 })

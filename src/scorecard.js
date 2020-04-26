@@ -151,6 +151,9 @@ Scorecard.prototype.calculateTotalScore = function(scoreArray) {
     }
 
 Scorecard.prototype.finalScore = function(totalScore) {
+    if (totalScore === 0) {
+        return "GUTTER GAME"
+    }
     return "You scored " + totalScore
 }
 

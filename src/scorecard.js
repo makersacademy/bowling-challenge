@@ -13,10 +13,13 @@ function Scorecard() {
 
 Scorecard.prototype.addNewScore = function(roll1, roll2=0, roll3=0) {
     this.clearCurrentFrame()
+    this.reachedFrameLimit()
     if (this.currentFrameNumber === MAX_FRAMES) {
         return this.reachedFrameLimit()
     }
+
     this.updateCurrentFrameNumber()
+
     if  (this.currentFrameNumber < MAX_FRAMES && (roll1 > MAX_INITIAL_SCORE || (roll1 + roll2) > MAX_INITIAL_SCORE)) {
         return this.incorrectScore()
     }
@@ -105,7 +108,7 @@ Scorecard.prototype.afterSpare = function(roll1, roll2) {
 
 Scorecard.prototype.doesNotChangeNormalFrameAfterTwoStrikes = function() {
     //this method prevents a normal frame from receiving a bonus when it is followed by two strikes
-    //view in conjunction with 
+    //view in conjunction with afterConsecutiveStrikes
     var arrayPosition = this.currentFrameNumber - 3
     this.frameScoreArray[arrayPosition] += 0
 }

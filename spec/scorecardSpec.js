@@ -85,8 +85,6 @@ describe('Scorecard', function() {
         expect(scorecard.totalScore).toEqual(0)
     })
 
-
-    /////new tests
     it('calculates the frame score', function() {
         expect(scorecard.calculateFrameScore(4, 5)).toEqual(9)
     })

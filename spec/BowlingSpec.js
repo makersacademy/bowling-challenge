@@ -216,15 +216,15 @@ describe("#Bowling", function () {
 
 
     
-    xdescribe("#runCardMaking - scoreSrike", function () {
+    describe("#runCardMaking - scoreSrike", function () {
       it("If a strike is thrown the score from BOTH rolls of the next frame will be added to the score for this frame", function () {
-        function inputLoop() {
-          input = [10, 0, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2,1, 2, 1, 2, 1, 2, 1, 2,  2]
-          for (var i = 0;  i < input.size; x++) {
-            spyOn(bowling, "getInput").and.returnValue(x);
-          }
-        }
-        expect(bowling.runCardMaking()[1]["r2Score"]).toEqual(13);
+        var alreadyCalled = false;
+        spyOn(bowling, "getInput").and.callFake(function() {
+        if (alreadyCalled) return 10;
+        alreadyCalled = true;
+        return 1;
+        });
+      expect(bowling.runCardMaking()[1]["r2Score"]).toEqual(12);
       });
 
       

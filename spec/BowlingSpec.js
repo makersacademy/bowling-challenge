@@ -1,4 +1,8 @@
+
+
+
 describe("#Bowling", function () {
+  const STRIKE = 10
   var bowling;
 
   beforeEach(function () {
@@ -19,18 +23,8 @@ describe("#Bowling", function () {
     it("stores -> roll1 number of pins down; roll1 score; roll2 number of pins down; roll2 score --- in key  labelled by the frame number ", function () {
       bowling.calculateScore(1);
       bowling.calculateScore(4);
-      expect(bowling.makeCardTemplate()[1]).toEqual({
-        r1PinsDown: 0,
-        r1Score: 0,
-        r2PinsDown: 0,
-        r2Score: 0,
-      });
-      expect(bowling.card[10]).toEqual({
-        r1PinsDown: 0,
-        r1Score: 0,
-        r2PinsDown: 0,
-        r2Score: 0,
-      });
+      expect(bowling.makeCardTemplate()).toEqual({1: {}, 2: {}, 3: {}, 4: {}, 5: {}, 6: {}, 7: {}, 8: {}, 9: {}, 10: {}});
+      
     });
   });
 
@@ -61,14 +55,14 @@ describe("#Bowling", function () {
         bowling.makeCardTemplate();
         bowling.frameKey = 1;
         expect(bowling.fillCard(2, 4, 2)[1]["r2PinsDown"]).toEqual(2);
-        expect(bowling.fillCard(2, 4, 2)[1]["r1PinsDown"]).toEqual(0);
+        expect(bowling.fillCard(2, 4, 2)[1]["r1PinsDown"]).toEqual(undefined);
       });
 
       it("fills in the SCORE on second roll of THIRD frame ", function () {
         bowling.frameKey = 3;
         bowling.makeCardTemplate();
         expect(bowling.fillCard(1, 4, 2)[3]["r2Score"]).toEqual(4);
-        expect(bowling.fillCard(1, 4, 2)[3]["r1Score"]).toEqual(0);
+        expect(bowling.fillCard(1, 4, 2)[3]["r1Score"]).toEqual(undefined);
       });
     });
   });
@@ -108,10 +102,9 @@ describe("#Bowling", function () {
   });
 
   describe("Spares & Stikes", function () {
-    var strike
     var roll
     beforeEach(function () {
-      strike = 10
+
       nonStrike = 3
     });
     describe("Testing state of PROPERTY spare ", function () {
@@ -145,7 +138,7 @@ describe("#Bowling", function () {
         bowling.makeCardTemplate();
         bowling.frameKey = 1;
         roll = 2
-        bowling.fillCard(strike, 10, roll)
+        bowling.fillCard(STRIKE, 10, roll)
         expect(bowling.switchStrike(roll)).toEqual(true)
         expect(bowling.strike).toEqual(true)
       });
@@ -155,7 +148,7 @@ describe("#Bowling", function () {
         bowling.makeCardTemplate();
         bowling.frameKey = 1;
         roll = 1
-        bowling.fillCard(strike, 10, roll)
+        bowling.fillCard(STRIKE, 10, roll)
         roll = 2
         bowling.fillCard(nonStrike, 10, roll)
         expect(bowling.switchStrike(roll)).toEqual(true)

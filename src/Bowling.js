@@ -1,5 +1,7 @@
 "use strict";
 
+const STRIKE = 10
+
 function Bowling() {
   this.score = 0;
   this.frameKey;
@@ -19,32 +21,42 @@ Bowling.prototype.runCardMaking = function () {
   var pins;
   var score;
   this.makeCardTemplate();
-
   for (frameCount = 1; frameCount < 11; frameCount++) {
     this.frameKey = frameCount;
     for (rollCount = 1; rollCount < 3; rollCount++) {
-      if (rollCount === 2 && this.strike === true) {
-        pins = 'x';
+      if (this.isSkipped(rollCount)) {
+        pins = "x";
         score = this.calculateScore(0);
       } else {
-      pins = this.getInput();
-      this.scoreSpares(rollCount, pins);
-      score = this.calculateScore(pins);
+        pins = this.getInput();
+        this.scoreSpares(rollCount, pins);
+        score = this.calculateScore(pins);
       }
       this.fillCard(pins, score, rollCount);
-      if (rollCount === 1) {this.switchStrike()}
+      if (rollCount === 1) {
+        this.switchStrike();
+      }
     }
     this.switchSpare();
   }
   return this.card;
 };
 
+Bowling.prototype.isSkipped = function (rollCount) {
+  if (rollCount === 2 && this.strike === true) {
+    return true;
+  }
+};
+
 Bowling.prototype.makeCardTemplate = function () {
+  /// is everything here neccesary?
   var frameCount;
+  var key;
   var obj = {};
   for (frameCount = 1; frameCount < 11; frameCount++) {
-    var key = frameCount;
-    obj[key] = { r1PinsDown: 0, r1Score: 0, r2PinsDown: 0, r2Score: 0 };
+    key = frameCount;
+    obj[key] = {};
+    // obj[key] = { r1PinsDown: 0, r1Score: 0, r2PinsDown: 0, r2Score: 0 };
     this.card = obj;
   }
   return this.card;
@@ -64,8 +76,6 @@ Bowling.prototype.scoreSpares = function (rollCount, pins) {
     var previousFrameKey = this.frameKey - 1;
     var previousFrameScore = this.card[previousFrameKey]["r2Score"];
     this.card[previousFrameKey]["r2Score"] = previousFrameScore + pins;
-    //console.log(this.card[previousFrameKey]["r2Score"]);
-    //console.log("");
     this.score = this.score + pins;
   }
 };
@@ -93,7 +103,7 @@ Bowling.prototype.switchSpare = function (rollCount) {
   if (
     this.card[this.frameKey]["r1PinsDown"] +
       this.card[this.frameKey]["r2PinsDown"] ===
-    10
+      STRIKE
   ) {
     return (this.spare = true);
   } else {

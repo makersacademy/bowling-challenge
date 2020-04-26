@@ -224,6 +224,17 @@ describe("#Bowling", function () {
         return 10;
         });
       expect(bowling.runCardMaking()[1]["r2Score"]).toEqual(12);
+      expect(bowling.card[2]["r2Score"]).toEqual(14)
+      });
+
+      it("The score from bonus points will be added to the accumulated score", function () {
+        var alreadyCalled = false;
+        spyOn(bowling, "getInput").and.callFake(function() {
+        if (alreadyCalled) return 1;
+        alreadyCalled = true;
+        return 10;
+        });
+      expect(bowling.runCardMaking()[2]["r2Score"]).toEqual(14);
       });
 
       

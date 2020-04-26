@@ -80,25 +80,25 @@ Scorecard.prototype.spareOrStrike = function(roll1, roll2) {
 Scorecard.prototype.updatePreviousFrameScores = function(roll1, roll2) {
     //Made method names overly descriptive to give idea as to what they do
     if ((this.currentFrameNumber > 1) && (this.isSpare === true)) {
-        this.adjustPreviousFrameAfterSpare(roll1, roll2)
+        this.afterSpare(roll1, roll2)
     } 
     
     if ((this.currentFrameNumber > 2) && (this.isStrike === true) && (roll2 === 0) && (this.allFrames[(this.currentFrameNumber - 3)][1]) > 0) {
         this.doesNotChangeNormalFrameAfterTwoStrikes()
     } else if ((this.currentFrameNumber > 2) && (this.isStrike === true) && (roll2 === 0)) {
-        this.adjustPreviousFrameAfterConsecutiveStrikes(roll1)
+        this.afterConsecutiveStrikes(roll1)
     } 
 
     if ((this.currentFrameNumber > 1) && (this.isStrike === true)) {
-        this.adjustPreviousFrameAfterOneStrike(roll1, roll2)
+        this.afterOneStrike(roll1, roll2)
     } 
 
     if (this.isStrike === true && this.currentFrameNumber > 2 && (this.allFrames[(this.currentFrameNumber - 3)][0]) === 10 && (this.allFrames[(this.currentFrameNumber - 2)][0]) === 10 && roll1 != 10) { 
-        this.adjustPreviousFrameAfterTwoStrikesAndNormalFrame(roll1)
+        this.afterTwoStrikesAndNormalFrame(roll1)
     }
 }
 
-Scorecard.prototype.adjustPreviousFrameAfterSpare = function(roll1, roll2) {       
+Scorecard.prototype.afterSpare = function(roll1, roll2) {       
     var arrayPosition = this.currentFrameNumber - 2
     this.frameScoreArray[arrayPosition] += roll1
 }
@@ -110,27 +110,24 @@ Scorecard.prototype.doesNotChangeNormalFrameAfterTwoStrikes = function() {
     this.frameScoreArray[arrayPosition] += 0
 }
 
-Scorecard.prototype.adjustPreviousFrameAfterConsecutiveStrikes = function(roll1) {
+Scorecard.prototype.afterConsecutiveStrikes = function(roll1) {
     var arrayPosition = this.currentFrameNumber - 3
     this.frameScoreArray[arrayPosition] += roll1
 }
 
-Scorecard.prototype.adjustPreviousFrameAfterOneStrike = function(roll1, roll2) {
+Scorecard.prototype.afterOneStrike = function(roll1, roll2) {
     var arrayPosition = this.currentFrameNumber - 2
     this.frameScoreArray[arrayPosition] += (roll1 + roll2)
 }
 
-Scorecard.prototype.adjustPreviousFrameAfterTwoStrikesAndNormalFrame = function(roll1) { 
+Scorecard.prototype.afterTwoStrikesAndNormalFrame = function(roll1) { 
     var arrayPosition = this.currentFrameNumber - 3
     this.frameScoreArray[arrayPosition] += roll1
 }
 
-
-
 Scorecard.prototype.addScoreToCurrentFrame = function(score1, score2) {
     this.currentFrame.push(score1, score2)
     this.addCurrentToAllFrames(this.currentFrame)
-    //below is now looking incorrect as total will not be total of framesScoreArray
     this.calculateTotalScore(this.allFrames)
 }
 

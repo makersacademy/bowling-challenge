@@ -14,25 +14,27 @@ function getRndInteger(min, max) {
 }
 
 Bowling.prototype.runCardMaking = function () {
-  this.makeCardTemplate();
   var rollCount;
   var frameCount;
+  var pins;
+  var score;
+  this.makeCardTemplate();
+
   for (frameCount = 1; frameCount < 11; frameCount++) {
     this.frameKey = frameCount;
     for (rollCount = 1; rollCount < 3; rollCount++) {
-      var pins = this.getInput();
+      if (rollCount === 2 && this.strike === true) {
+        pins = 'x';
+        score = this.calculateScore(0);
+      } else {
+      pins = this.getInput();
       this.scoreSpares(rollCount, pins);
-      var score = this.calculateScore(pins);
-      console.log(score)
+      score = this.calculateScore(pins);
+      }
       this.fillCard(pins, score, rollCount);
-      this.switchStrike()
-      console.log(this.strike)
-      if (this.strike === true && rollCount === 1) { 
-        this.card[this.frameKey]['r2PinsDown'] = 'x'
-        this.card[this.frameKey]["r2Score"] = this.score
-        break; }
+      if (rollCount === 1) {this.switchStrike()}
     }
-    this.switchSpare()
+    this.switchSpare();
   }
   return this.card;
 };
@@ -77,12 +79,13 @@ Bowling.prototype.fillCard = function (pins, score, rollCount) {
     this.card[this.frameKey]["r2PinsDown"] = pins;
     this.card[this.frameKey]["r2Score"] = score;
   }
-  // console.log(this.frameKey )
-  // console.log(`roll ${rollCount}`);
-  // console.log(`pins ${pins}`)
-  // console.log(score )
-  // console.dir(this.card);
-  // console.log(" ");
+
+  // skip turn 2 if strike // user interace needs to be blocked - seperate functionality
+  // if (rollCount === 2 && this.strike === true) {
+  //   this.card[this.frameKey]['r2PinsDown'] = 'x'
+  //   this.card[this.frameKey]["r2Score"] = this.card[this.frameKey]["r1Score"]
+  //    }
+
   return this.card;
 };
 
@@ -92,19 +95,33 @@ Bowling.prototype.switchSpare = function (rollCount) {
       this.card[this.frameKey]["r2PinsDown"] ===
     10
   ) {
-    return this.spare = true;
+    return (this.spare = true);
   } else {
-    return this.spare = false;
+    return (this.spare = false);
   }
 };
 
 Bowling.prototype.switchStrike = function (rollCount) {
   if (
-    (this.card[this.frameKey]["r1PinsDown"] === 10) ||
+    this.card[this.frameKey]["r1PinsDown"] === 10 ||
     this.card[this.frameKey]["r2PinsDown"] === 10
   ) {
-    return this.strike = true;
+    return (this.strike = true);
   } else {
-    return this.strike = false;
+    return (this.strike = false);
   }
 };
+
+// scoreStrike
+// if (this.strike === true ) {
+//   console.log("in method")
+//   var previousFrameKey = this.frameKey - 1;
+//   //var previousFrameScore = this.card[previousFrameKey]["r2Score"];
+//   var roll1Score = this.card[this.frameKey]['r1PinsDown']
+//   console.log(roll1Score )
+//   this.card[previousFrameKey]["r2Score"] = this.card[previousFrameKey]["r2Score"] + pins
+//   console.log(pins)
+//   console.log(rollCount)
+//   console.log(this.card[previousFrameKey]["r2Score"] )
+//   this.score = this.score + pins;
+//  }

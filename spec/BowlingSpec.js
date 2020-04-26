@@ -73,7 +73,7 @@ describe("#Bowling", function () {
     });
   });
 
-  xdescribe("runCardMaking", function () {
+  describe("runCardMaking", function () {
     describe("returns the correct amount of PINS", function () {
       it("fills in the roll 1 number of PINS for Frame 1  as 3", function () {
         var bowlingMock = new Bowling();
@@ -173,7 +173,7 @@ describe("#Bowling", function () {
         expect(bowling.strike).toEqual(false)
       });
 
-      xit("#runCardMaking - will change property: strike to true when strike is rolled ", function () {
+      it("#runCardMaking - will change property: strike to true when strike is rolled ", function () {
         // need to work out a way to be able to choose values each roll - otherwise it does not accurately reflect what is happening in program and also it cannot be tested as stike causes breaks in loop 
         spyOn(bowling, "getInput").and.returnValue(10);
         bowling.runCardMaking();
@@ -195,12 +195,13 @@ describe("#Bowling", function () {
         expect(bowlingMock.card[3]["r2Score"]).toEqual(45);
       });
     });
-    describe("#runCardMaking ", function () {
+    describe("#runCardMaking - scoreSrike", function () {
+      // example is for a stike everytime 
       it("If a strike is thrown the score from BOTH rolls of the next frame will be added to the score of the frame", function () {
-        bowlingMock = new Bowling();
         spyOn(bowling, "getInput").and.returnValue(10);
         expect(bowling.runCardMaking()[1]["r2Score"]).toEqual(20);
       });
+    
     });
 
 
@@ -210,6 +211,7 @@ describe("#Bowling", function () {
         spyOn(bowling, "getInput").and.returnValue(10);
         expect(bowling.runCardMaking()[1]['r1PinsDown']).toEqual(10);
         expect(bowling.card[1]['r2PinsDown']).toEqual('x');
+        expect(bowling.card[5]['r2PinsDown']).toEqual('x')
       });
 
       

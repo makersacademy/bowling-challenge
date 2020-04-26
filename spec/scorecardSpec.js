@@ -221,4 +221,11 @@ describe('Scorecard', function() {
         expect(scorecard.totalScore).toEqual(16)
     })
     //would be nice to add a few further tests here just to show it works with other scores
+
+    it('returns total score at the end of the game', function() {
+        scorecard.totalScore = 236
+        expect(scorecard.finalScore(scorecard.totalScore)).toEqual("You scored 236")
+    })
+
 })
+

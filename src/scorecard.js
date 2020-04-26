@@ -150,6 +150,10 @@ Scorecard.prototype.calculateTotalScore = function(scoreArray) {
         this.totalScore = runningTotal
     }
 
+Scorecard.prototype.finalScore = function(totalScore) {
+    return "You scored " + totalScore
+}
+
 Scorecard.prototype.reachedFrameLimit = function() {
     return 'Game finished, cannot add more frames'
 }
@@ -157,4 +161,6 @@ Scorecard.prototype.reachedFrameLimit = function() {
 Scorecard.prototype.incorrectScore = function() {
     return "Incorrect Score"
 }
+
+
 

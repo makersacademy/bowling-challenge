@@ -151,14 +151,6 @@ describe('scorecard', function() {
       expect(scorecard.score).toEqual(295);
     });
 
-    it('11 strikes and one 5 scores 295', function() {
-      for (i = 0; i < 11; i++) {
-        scorecard.addFrame(new Framedouble(10));
-      }
-      scorecard.addFrame(new Framedouble(5));
-      expect(scorecard.score).toEqual(295);
-    });
-
     it('10 strikes and one spare scores 285', function() {
       for (i = 0; i < 10; i++) {
         scorecard.addFrame(new Framedouble(10));
@@ -229,5 +221,16 @@ describe('scorecard', function() {
         scorecard.addFrame(new Framedouble(6, 4));
       }).toThrowError('Cannot add 2 rolls.');
     });
+
+    // it('9 strikes, one spare, two strike throws an error', function() {
+    //   for (i = 0; i < 9; i++) {
+    //     scorecard.addFrame(new Framedouble(10));
+    //   }
+    //   scorecard.addFrame(new Framedouble(5, 5));
+    //   scorecard.addFrame(new Framedouble(10));
+    //   expect(function() {
+    //     scorecard.addFrame(new Framedouble(10));
+    //   }).toThrowError('Game complete!');
+    // });
   });
 });

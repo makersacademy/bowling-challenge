@@ -234,6 +234,15 @@ describe('Scorecard', function() {
         scorecard.addNewScore(10, 4, 3)
         expect(scorecard.frameScoreArray).toEqual([0, 0, 0, 0, 0, 0, 0, 0, 0, 17])
     })
+
+    it('can score perfect game', function() {
+        var i;
+        for (i = 0; i < 9; i++) {
+        scorecard.addNewScore(10, 0)
+        }
+        scorecard.addNewScore(10, 10, 10)
+        expect(scorecard.frameScoreArray).toEqual([30, 30, 30, 30, 30, 30, 30, 30, 30, 30])
+    })
 })
 
 

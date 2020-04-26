@@ -13,12 +13,12 @@ function Scorecard() {
 
 Scorecard.prototype.addNewScore = function(roll1, roll2=0, roll3=0) {
     this.clearCurrentFrame()
-    this.updateCurrentFrameNumber()
-    if (this.currentFrameNumber > MAX_FRAMES) {
+    if (this.currentFrameNumber === MAX_FRAMES) {
         //is there much value gained by putting this in a different method?
         //change this method name
         return this.maxFrames()
     }
+    this.updateCurrentFrameNumber()
     if  (this.currentFrameNumber < MAX_FRAMES && (roll1 > MAX_INITIAL_SCORE || (roll1 + roll2) > MAX_INITIAL_SCORE)) {
         //is there much value gained by putting the return in a different method?
         return this.incorrectScore()
@@ -34,6 +34,10 @@ Scorecard.prototype.addNewScore = function(roll1, roll2=0, roll3=0) {
         this.calculateFrameScore(roll1, roll2, roll3)
     } else if (this.currentFrameNumber === MAX_FRAMES && this.isStrike === true) {
         this.calculateFrameScore(roll1, roll2, roll3)
+        if (roll2 === 10 && roll3 === 10) {
+            this.frameScoreArray[7] += 10
+        }
+        
     } else {
     this.calculateFrameScore(roll1, roll2)
     }

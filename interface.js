@@ -20,7 +20,6 @@ $('#game-save').submit(function(event) {
       bowlTwo = parseInt($('#ball-two').val());
       $('#ball-one').val('');
       $('#ball-two').val('');
-      alert(`#${bowling.getCurrentPlayer().name}${bowling.currentFrame}`)
       addBallsToTable(bowlOne,bowlTwo);
       bowling.storeFirst(bowlOne);
       bowling.storeSecond(bowlTwo);
@@ -104,6 +103,6 @@ function makeTable(players) {
       $("#game-board").append(table);
 };
 function addBallsToTable(ballOne, ballTwo) {
-  $( `#${bowling.getCurrentPlayer().name}${bowling.currentFrame}` ).innerHTML=`${ballOne},${ballTwo}`
+  document.getElementById(`${bowling.getCurrentPlayer().name}${bowling.currentFrame}`).innerHTML=`${ballOne},${ballTwo}`
 }
 });

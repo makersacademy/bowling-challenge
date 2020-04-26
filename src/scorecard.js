@@ -23,7 +23,7 @@ Scorecard.prototype.addNewScore = function(roll1, roll2=0, roll3=0) {
 
     this.addScoreToCurrentFrame(roll1, roll2)
     ///below is a terrible name; change it; adjusts previous frame scores
-    this.spareOrStrikeUpdate(roll1, roll2)
+    this.updatePreviousFrameScores(roll1, roll2)
 
     this.spareOrStrike(roll1, roll2)
 
@@ -70,7 +70,7 @@ Scorecard.prototype.spareOrStrike = function(roll1, roll2) {
 }
 
 
-Scorecard.prototype.spareOrStrikeUpdate = function(roll1, roll2) {
+Scorecard.prototype.updatePreviousFrameScores = function(roll1, roll2) {
     ///Dry this out into separate methods
     //logic for spares
     if ((this.currentFrameNumber > 1) && (this.isSpare === true)) {

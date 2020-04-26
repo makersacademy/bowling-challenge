@@ -1,0 +1,42 @@
+body {
+    background-color: turquoise;
+    text-align: center;
+}
+
+h1 {
+    font-family: fantasy;
+    font-size: 300%;
+    font-weight: 800;
+    padding-top: 30px;
+    padding-bottom: ;
+}
+
+h4 {
+    font-family: fantasy;
+    font-size: 150%;
+}
+
+button {
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    text-align: center;
+    
+}
+
+button:hover {
+    background-color: teal;
+}
+
+table {
+    margin: 30px;
+    border: 2px solid black;
+}
+
+table, th {
+    border: 1px solid black;
+}
+
+table, tfoot, td {
+    border: 1px solid black;
+}

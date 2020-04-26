@@ -2,6 +2,7 @@
 
 const STRIKE = 10
 
+
 function Bowling() {
   this.score = 0;
   this.frameKey;
@@ -42,19 +43,11 @@ Bowling.prototype.runCardMaking = function () {
         
        
        // scoreStrikes - next frame 
-        if (this.strike === true && rollCount === 2) {
-          console.log("in")
-          var previousFrameKey = this.frameKey - 1;
-          var previousFrameScore = this.card[previousFrameKey]["r2Score"];
-          console.log(this.card[this.frameKey]['r1PinsDown'])
-          this.card[previousFrameKey]["r2Score"] = previousFrameScore + pins + (this.card[frameCount]['r1PinsDown']);
-          this.score = this.score + pins + (this.card[frameCount]['r1PinsDown'])
-
-          // if  previous frame [r2 pinsDown] == x then add 10 
-        }
+       this.scoreStrike(rollCount, pins)
+    
         // ///  -----------------------------------------------------
 
-      
+
     
         score = this.calculateScore(pins);
         /// end of conditional ----
@@ -107,16 +100,32 @@ Bowling.prototype.calculateScore = function (numPinsDown) {
   return this.score;
 };
 
-Bowling.prototype.scoreSpares = function (rollCount, pins) {
+
+
+Bowling.prototype.scoreStrike = function(rollCount, r1PinsDown) {
+  if (this.strike === true && rollCount === 2) {
+    var previousFrameKey = this.frameKey - 1
+    var r2PinsDown = (this.card[this.frameKey]['r1PinsDown'])
+    this.card[previousFrameKey]["r2Score"] = this.card[previousFrameKey]["r2Score"] + r1PinsDown + r2PinsDown;
+    this.score = this.score + r1PinsDown + r2PinsDown
+    // if  previous frame [r2 pinsDown] == x then add 10 
+  }
+}
+
+
+Bowling.prototype.scoreSpares = function (rollCount, r1PinsDown) {
   console.log("in scoreSpares")
   console.log(rollCount)
   //if ( rollCount === 1 && this.frameKey > 1) {
     var previousFrameKey = this.frameKey - 1;
-    var previousFrameScore = this.card[previousFrameKey]["r2Score"];
-    this.card[previousFrameKey]["r2Score"] = previousFrameScore + pins;
-    this.score = this.score + pins;
+    this.card[previousFrameKey]["r2Score"] = this.card[previousFrameKey]["r2Score"] + r1PinsDown;
+    this.score = this.score + r1PinsDown;
   //}
 };
+
+
+
+
 
 Bowling.prototype.fillCard = function (pins, score, rollCount) {
   if (rollCount === 1) {

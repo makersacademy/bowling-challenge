@@ -3,10 +3,10 @@ class Scorecard {
     this.score = 0;
     this.frames= [];
   }
-  addFrame(roll1, roll2) {
+  addFrame(frame) {
     this.isGameComplete();
-    this.tooManyRolls(roll2);
-    this.frames.push(new Frame(roll1, roll2));
+    this.tooManyRolls(frame.roll2);
+    this.frames.push(frame);
     this.setScore();
   }
   setScore() {

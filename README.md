@@ -26,6 +26,14 @@ Objects | Messages
 Frame | isStrike </br> isSpare </br> isOpenFrame </br> this.roll1 </br> this.roll2
 Scorecard | this.frames </br> this.score </br> calculateScore
 
+## Setting up Travis-CI
+
+I ran the following command:
+```
+touch .travis.yml
+```
+
+
 ## Developmental approach
 
 I started imagining from a users perspective, that I would want to enter a list of my frames, and be returned the total score of my game.

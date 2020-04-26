@@ -197,6 +197,23 @@ describe('Scorecard', function() {
         expect(scorecard.frameScoreArray).toEqual([9, 20, 10])
     })
 
+    ////
+    it('cannot have more than 10 frames', function() {
+        scorecard.addNewScore(4, 5)
+        scorecard.addNewScore(4, 5)
+        scorecard.addNewScore(4, 5)
+        scorecard.addNewScore(4, 5)
+        scorecard.addNewScore(4, 5)
+        scorecard.addNewScore(4, 5)
+        scorecard.addNewScore(4, 5)
+        scorecard.addNewScore(4, 5)
+        scorecard.addNewScore(4, 5)
+        scorecard.addNewScore(4, 5)
+        expect(scorecard.addNewScore(3, 5)).toEqual('Game finished, cannot add more frames')
+
+    })
+    
+
 
 })
 

@@ -12,12 +12,15 @@ function Scorecard() {
 
 Scorecard.prototype.addNewScore = function(roll1, roll2=0) {
     this.clearCurrentFrame()
+    if (this.currentFrameNumber >= 10) {
+        //is there much value gained by putting this in a different method?
+        return 'Game finished, cannot add more frames'
+    }
     if (roll1 > MAX_INITIAL_SCORE || (roll1 + roll2) > MAX_INITIAL_SCORE) {
+        //is there much value gained by putting the return in a different method?
         return this.incorrectScore()
     }
-    //
-    //this.frameNumber += 1
-    //
+
     this.updateCurrentFrameNumber()
     this.addScoreToCurrentFrame(roll1, roll2)
     this.spareOrStrikeUpdate(roll1, roll2)
@@ -66,7 +69,6 @@ Scorecard.prototype.spareOrStrikeUpdate = function(roll1, roll2) {
     } else if ((this.currentFrameNumber > 2) && (this.isStrike === true) && (roll2 === 0)) {
         var arrayPosition = this.currentFrameNumber - 3
         this.frameScoreArray[arrayPosition] += roll1
-        console.log("three strikes")
     } 
     //after 1 strike logic
     if ((this.currentFrameNumber > 1) && (this.isStrike === true)) {
@@ -77,7 +79,6 @@ Scorecard.prototype.spareOrStrikeUpdate = function(roll1, roll2) {
     if (this.isStrike === true && this.currentFrameNumber > 2 && (this.allFrames[(this.currentFrameNumber - 3)][0]) === 10 && (this.allFrames[(this.currentFrameNumber - 2)][0]) === 10 && roll1 != 10) { 
         var arrayPosition = this.currentFrameNumber - 3
         this.frameScoreArray[arrayPosition] += roll1
-        console.log('two strikes')
     }
 }
 

@@ -27,18 +27,23 @@ Scorecard.prototype.addNewScore = function(roll1, roll2=0, roll3=0) {
     this.howToCalculateFrameScore(roll1, roll2, roll3)
 }
 
+//should add separate tests for this?
 Scorecard.prototype.howToCalculateFrameScore = function (roll1, roll2, roll3) {
     if (this.currentFrameNumber === MAX_FRAMES && this.isSpare === true) {
         this.calculateFrameScore(roll1, roll2, roll3)
     } else if (this.currentFrameNumber === MAX_FRAMES && this.isStrike === true) {
         this.calculateFrameScore(roll1, roll2, roll3)
-        //this should also be moved to it's own method
-        if (roll2 === 10 && roll3 === 10) {
-            this.frameScoreArray[7] += 10
-        }
-        
+        this.adjustFrameEightInPerfectGame(roll2, roll3)
     } else {
     this.calculateFrameScore(roll1, roll2)
+    }
+}
+
+Scorecard.prototype.adjustFrameEightInPerfectGame = function(roll2, roll3) {
+    //this method adjusts frame eight in a perfect game. It was the simplest way to adjust
+    //the score in this scenario without more complicated adjustments.
+    if (roll2 === 10 && roll3 === 10) {
+        this.frameScoreArray[7] += 10
     }
 }
 

@@ -35,8 +35,8 @@ Scorecard.prototype.howToCalculateFrameScore = function (roll1, roll2, roll3) {
     if (this.currentFrameNumber === MAX_FRAMES && this.isSpare === true) {
         this.calculateFrameScore(roll1, roll2, roll3)
     } else if (this.currentFrameNumber === MAX_FRAMES && this.isStrike === true) {
-        this.calculateFrameScore(roll1, roll2, roll3)
         this.adjustFrameEightInPerfectGame(roll2, roll3)
+        this.calculateFrameScore(roll1, roll2, roll3)
     } else {
         this.calculateFrameScore(roll1, roll2)
     }
@@ -142,7 +142,7 @@ Scorecard.prototype.addCurrentToAllFrames = function(currentFrame) {
     this.allFrames.push(currentFrame)
 }
 
-Scorecard.prototype.calculateTotalScore = function(scoreArray) {    
+Scorecard.prototype.calculateTotalScore = function(scoreArray) {  
         var runningTotal = 0
             for (var i = 0; i < scoreArray.length; i++) {
                 runningTotal += scoreArray[i]

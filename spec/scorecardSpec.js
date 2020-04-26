@@ -123,56 +123,55 @@ describe('Scorecard', function() {
     })
 
     it('following 3 consecutive strikes it updates the frame score correctly', function() {
-        //this can be dried up
-        scorecard.addNewScore(10, 0)
-        scorecard.addNewScore(10, 0)
-        scorecard.addNewScore(10, 0)
+        for (var i = 0; i < 3; i++) {
+            scorecard.addNewScore(10, 0)
+        }
         expect(scorecard.frameScoreArray).toEqual([30, 20, 10])
     })
 
     it('following 2 consecutive strikes, and a normal frame, it updates the frame score correctly', function() {
-        scorecard.addNewScore(10, 0)
-        scorecard.addNewScore(10, 0)
+        for (var i = 0; i < 2; i++) {
+            scorecard.addNewScore(10, 0)
+        }
         scorecard.addNewScore(2, 3)
         expect(scorecard.frameScoreArray).toEqual([22, 15, 5])
     })
 
     it('following a spare and then 2 consecutive strikes, it updates the frame score correctly', function() {
         scorecard.addNewScore(5, 5)
-        scorecard.addNewScore(10, 0)
-        scorecard.addNewScore(10, 0)
+        for (var i = 0; i < 2; i++) {
+            scorecard.addNewScore(10, 0)
+        }
         expect(scorecard.frameScoreArray).toEqual([20, 20, 10])
     })
 
     it('following a normal frame and then 2 consecutive strikes, it updates the frame score correctly', function() {
         scorecard.addNewScore(4, 5)
-        scorecard.addNewScore(10, 0)
-        scorecard.addNewScore(10, 0)
+        for (var i = 0; i < 2; i++) {
+            scorecard.addNewScore(10, 0)
+        }
         expect(scorecard.frameScoreArray).toEqual([9, 20, 10])
     })
 
     //10 max frames
     it('cannot have more than 10 frames', function() {
-        var i;
-        for (i = 0; i < 10; i++) {
-        scorecard.addNewScore(4, 5)
+        for (var i = 0; i < 10; i++) {
+            scorecard.addNewScore(4, 5)
         }
         expect(scorecard.addNewScore()).toEqual('Game finished, cannot add more frames')
     })
 
     //10th frame testing
     it('does not count an extra roll if there is no spare or strike in 10th frame', function () {
-        var i;
-        for (i = 0; i < 9; i++) {
-        scorecard.addNewScore(0, 0)
+        for (var i = 0; i < 9; i++) {
+            scorecard.addNewScore(0, 0)
         }
         scorecard.addNewScore(4, 4, 5)
         expect(scorecard.frameScoreArray).toEqual([ 0, 0, 0, 0, 0, 0, 0, 0, 0, 8])
     })
 
     it('adds extra roll following a spare in the 10th frame', function() {
-        var i;
-        for (i = 0; i < 9; i++) {
+        for (var i = 0; i < 9; i++) {
         scorecard.addNewScore(0, 0)
         }
         scorecard.addNewScore(5, 5, 5)
@@ -180,8 +179,7 @@ describe('Scorecard', function() {
     })
 
     it('adds extra roll following a strike in the 10th frame', function() {
-        var i;
-        for (i = 0; i < 9; i++) {
+        for (var i = 0; i < 9; i++) {
         scorecard.addNewScore(0, 0)
         }
         scorecard.addNewScore(10, 4, 3)
@@ -189,8 +187,7 @@ describe('Scorecard', function() {
     })
 
     it('can score perfect game', function() {
-        var i;
-        for (i = 0; i < 9; i++) {
+        for (var i = 0; i < 9; i++) {
         scorecard.addNewScore(10, 0)
         }
         scorecard.addNewScore(10, 10, 10)
@@ -198,8 +195,7 @@ describe('Scorecard', function() {
     })
 
     it('can score a gutter game', function() {
-        var i
-        for (i = 0; i < 10; i++) {
+        for (var i = 0; i < 10; i++) {
         scorecard.addNewScore(0, 0)
         }
         expect(scorecard.frameScoreArray).toEqual([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])

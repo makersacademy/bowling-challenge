@@ -78,7 +78,7 @@ Scorecard.prototype.spareOrStrike = function(roll1, roll2) {
 
 
 Scorecard.prototype.updatePreviousFrameScores = function(roll1, roll2) {
-    //Made method names overly descriptive to give idea as to what they do
+    //read method names in conjunction with updatePreviousFrameScores
     if ((this.currentFrameNumber > 1) && (this.isSpare === true)) {
         this.afterSpare(roll1, roll2)
     } 

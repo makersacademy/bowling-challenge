@@ -51,4 +51,17 @@ describe("Player", function() {
     }
     expect(playerOne.gameOver).toEqual(false)
   });
+  it('should calculate the score of the player when their game ends', () => {
+    for (let index = 0; index < 9; index++) {
+      playerOne.addFrame(7,1);
+    }
+    playerOne.addFrame(8,1)
+    expect(playerOne.score).toEqual(81);
+  });
+  it('should be able to handle a perfect game just fine', () => {
+    for (let index = 0; index < 1; index++) {
+      playerOne.addFrame(10);
+    }
+    
+  })
 });

@@ -5,11 +5,12 @@
     <title>Hollywood Bowl</title>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="src/bowling.js"></script>
-    <script src="src/Player.js"></script>
-    <!---<link href="style.css" rel="stylesheet" />-->
+    <script src="src/player.js"></script>
+    <script src="interface.js"></script>
+    <link href="style.css" rel="stylesheet" />
   </head>
   <body>
-    <h1 class="intro">PLEASE ENTER YOUR PLAYER NAMES BELOW</h1>
+    <h1 id='names-pls' class="intro">PLEASE ENTER YOUR PLAYER NAMES BELOW</h1>
     <form id="enter-name" class="intro">
       <input id="name" type="text" placeholder="enter names here">
       <input type="submit" value="Enter Player name">
@@ -22,13 +23,14 @@
     <div id="player-list" class="intro"></div>
     
     <div id="game-board" class="game-started">
-      <form id="game-save" class="game-started"style="display:none;">
-        <label for="ball-one" id="current-player"></label>
-        <input type="number" id="ball-one" placeholder="first ball">
-        <input type="number" id="ball-two" placeholder="second ball">
-        <input type="submit" value="record frame">
-      </form>
-      <button id="calc-scores" class="game-started">Calculate Final scores</button>
+      <div id='score-form'>
+        <form id="game-save" class="game-started"style="display:none;">
+          <label for="ball-one" id="current-player"></label>
+          <input type="number" id="ball-one" placeholder="first ball">
+          <input type="number" id="ball-two" placeholder="second ball">
+          <input type="submit" value="record frame">
+        </form>
+      </div>
     </div>
     
   </body>
@@ -43,5 +45,4 @@
   </section>-->
   
   
-  <script src="interface.js"></script>
   </html>

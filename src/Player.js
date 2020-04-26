@@ -33,15 +33,18 @@ if (this.frameCount < 10) {
     this.bowls.push(one);
     this.bowls.push(two);
     this.gameOver = true;
+    this.calcScore();
   }
 } else if (this.frameCount <= 11) {
   if(this.tenthIsStrike) {
     this.bowls.push(one);
     this.bowls.push(two);
     this.gameOver = true;
+    this.calcScore();
   } else if(this.tenthIsSpare) {
     this.bowls.push(one);
     this.gameOver = true;
+    this.calcScore();
   }
 }
   this.frameCount += 1;
@@ -60,7 +63,6 @@ Player.prototype.calcScore = function() {
       i++;
       frame++;
     };
-    console.log(score);
     this.score = score;
 };
 

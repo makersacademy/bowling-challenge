@@ -16,16 +16,33 @@ $('#start-game').click(function() {
 
 $('#game-save').submit(function(event) {
   event.preventDefault();
+  if (bowling.gameEnded()) {
+    endGame();
+    return null
+  }
   var bowlOne = parseInt($('#ball-one').val()),
       bowlTwo = parseInt($('#ball-two').val());
       $('#ball-one').val('');
       $('#ball-two').val('');
-      addBallsToTable(bowlOne,bowlTwo);
-      bowling.storeFirst(bowlOne);
-      bowling.storeSecond(bowlTwo);
+      if (bowling.currentFrame < 11) {
+        addBallsToTable(bowlOne,bowlTwo);
+      };
+      if(inputChecker(bowlOne)){
+        bowling.storeFirst(bowlOne);
+      };
+      if (inputChecker(bowlTwo)) {
+        bowling.storeSecond(bowlTwo);
+      };
       bowling.saveCurrentPlayerFrame();
       updateCurrentPlayer();
 });
+
+function endGame() {
+  for (let index = 0; index < bowling.players.length; index++) {
+    const element = bowling.players[index];
+    document.getElementById( `${element.name}score` ).innerHTML = element.score
+  }
+}
 
 
 function updateCurrentPlayer() {
@@ -74,26 +91,26 @@ function makeTable(players) {
       row = table.insertRow(),
       cell = row.insertCell();
       cell.innerHTML = 'Names\\Frames';
-      for (let index = 1; index < 11; index++) {
+      for (let index = 1; index < 12; index++) {
         cell =row.insertCell();
-        cell.innerHTML = `  ${index}  `
+        if(index < 11){
+          cell.innerHTML = `  ${index}  `
+        } else {
+          cell.innerHTML = 'Final Score'
+        }
       };
       row = table.insertRow();
       for (var i of players) {
         var cell = row.insertCell();
         cell.innerHTML = i.name;
-        for (let index = 1; index < 11; index+= 1) {
+        for (let index = 1; index < 12; index+= 1) {
           cell = row.insertCell();
-          cell.id = `${i.name}${index}`
+          if(index < 11) {
+            cell.id = `${i.name}${index}`
+          } else {
+            cell.id = `${i.name}score`
+          }
         };
-        
-        /* You can also attach a click listener if you want
-        cell.addEventListener("click", function(){
-          alert("FOO!");
-        });
-        */
-       
-       // Break into next row
        count++;
        if (count%perrow==0) {
          row = table.insertRow();
@@ -104,6 +121,22 @@ function makeTable(players) {
       $("#game-board").append(table);
 };
 function addBallsToTable(ballOne, ballTwo) {
-  document.getElementById(`${bowling.getCurrentPlayer().name}${bowling.currentFrame}`).innerHTML=`${ballOne},${ballTwo}`
-}
+  var cell = document.getElementById(`${bowling.getCurrentPlayer().name}${bowling.currentFrame}`)
+  if(ballOne + ballTwo < 10) {
+    cell.innerHTML= `${ballOne},${ballTwo}`
+  } else if(ballOne < 10 && ballOne + ballTwo === 10) {
+    cell.innerHTML= '/'
+  } else if(ballOne === 10) {
+    cell.innerHTML='X'
+  } else {
+    cell.innerHTML= 'Foul'
+  }
+;}
+function inputChecker(number) {
+  if (number >= 0 && number <= 10) {
+    return true;
+  }
+  return false;
+};
+
 });

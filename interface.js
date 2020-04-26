@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
     var scorecard = new Scorecard();
-    $('#myform').submit(function(event) {
+    $('#round_one').submit(function(event) {
       event.preventDefault();
       var ball1 = parseInt($('#usersFirstBowl').val()),
           ball2 = parseInt($('#usersSecondBowl').val());
@@ -14,6 +14,6 @@ $(document).ready(function() {
     })
 
   function roundTotal() {
-    $('#roundTotal').text(scorecard.printFrameScore());
+    $('#result_round_one').text(scorecard.printFrameScore());
   };
 })

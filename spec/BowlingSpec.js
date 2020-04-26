@@ -180,19 +180,60 @@ describe("#Bowling", function () {
     
     });
     describe("#scoreSpares ", function () {
-      it("If a spare is thrown the score from the first roll of the next frame will be added to the score of the frame", function () {
+      it(" bonus points - If ALL spares the score from the first roll of the next frame will always be added to the score for current frame (score will increase always by 15)", function () {
         var bowlingMock = new Bowling();
         spyOn(bowlingMock, "getInput").and.returnValue(5);
         expect(bowlingMock.runCardMaking()[1]["r2Score"]).toEqual(15);
         expect(bowlingMock.card[2]["r2Score"]).toEqual(30);
         expect(bowlingMock.card[3]["r2Score"]).toEqual(45);
       });
+
+
+      it(" bonus points - If  spare the score from the first roll of the next frame will always be added to the score for current frame", function () {
+        var alreadyCalled = false;
+          spyOn(bowling, "getInput").and.callFake(function() {
+          if (alreadyCalled) return 4;
+          alreadyCalled = true;
+          return 6;
+          });
+        expect(bowling.runCardMaking()[1]["r2Score"]).toEqual(16);
+      });
+      
+      it(" The score from bonus points will be added to the accumulated score    ", function () {
+        var alreadyCalled = false;
+          spyOn(bowling, "getInput").and.callFake(function() {
+          if (alreadyCalled) return 4;
+          alreadyCalled = true;
+          return 6;
+          });
+        expect(bowling.runCardMaking()[2]["r2Score"]).toEqual(22);
+        expect(bowling.card[3]["r2Score"]).toEqual(30)
+      });
     });
-    describe("#runCardMaking - scoreSrike", function () {
-      // example is for a stike everytime 
-      it("If a strike is thrown the score from BOTH rolls of the next frame will be added to the score of the frame", function () {
+
+
+
+
+
+    
+    xdescribe("#runCardMaking - scoreSrike", function () {
+      it("If a strike is thrown the score from BOTH rolls of the next frame will be added to the score for this frame", function () {
+        function inputLoop() {
+          input = [10, 0, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2,1, 2, 1, 2, 1, 2, 1, 2,  2]
+          for (var i = 0;  i < input.size; x++) {
+            spyOn(bowling, "getInput").and.returnValue(x);
+          }
+        }
+        expect(bowling.runCardMaking()[1]["r2Score"]).toEqual(13);
+      });
+
+      
+      
+
+      xit("If a strike is thrown everytime  the score will always increase bt  20", function () {
         spyOn(bowling, "getInput").and.returnValue(10);
         expect(bowling.runCardMaking()[1]["r2Score"]).toEqual(20);
+        expect(bowling.runCardMaking()[4]["r2Score"]).toEqual(40);
       });
     
     });

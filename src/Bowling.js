@@ -39,6 +39,7 @@ Bowling.prototype.runCardMaking = function () {
     }
     this.switchSpare();
   }
+  console.log(this.card)
   return this.card;
 };
 

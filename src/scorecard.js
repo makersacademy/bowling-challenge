@@ -78,34 +78,50 @@ Scorecard.prototype.spareOrStrike = function(roll1, roll2) {
 
 
 Scorecard.prototype.updatePreviousFrameScores = function(roll1, roll2) {
-    ///Dry this out into separate methods
-    //logic for spares
+    //Made method names overly descriptive to give idea as to what they do
     if ((this.currentFrameNumber > 1) && (this.isSpare === true)) {
         this.adjustPreviousFrameAfterSpare(roll1, roll2)
     } 
-    //normal or spare followed by 2 strikes
+    
     if ((this.currentFrameNumber > 2) && (this.isStrike === true) && (roll2 === 0) && (this.allFrames[(this.currentFrameNumber - 3)][1]) > 0) {
-        var arrayPosition = this.currentFrameNumber - 3
-        this.frameScoreArray[arrayPosition] += 0
-    //3 + consecutive strike logic
+        this.doesNotChangeNormalFrameAfterTwoStrikes()
     } else if ((this.currentFrameNumber > 2) && (this.isStrike === true) && (roll2 === 0)) {
-        var arrayPosition = this.currentFrameNumber - 3
-        this.frameScoreArray[arrayPosition] += roll1
+        this.adjustPreviousFrameAfterConsecutiveStrikes(roll1)
     } 
-    //after 1 strike logic
+
     if ((this.currentFrameNumber > 1) && (this.isStrike === true)) {
-        var arrayPosition = this.currentFrameNumber - 2
-        this.frameScoreArray[arrayPosition] += (roll1 + roll2)
+        this.adjustPreviousFrameAfterOneStrike(roll1, roll2)
     } 
-    //2 strikes followed by a normal frame
+
     if (this.isStrike === true && this.currentFrameNumber > 2 && (this.allFrames[(this.currentFrameNumber - 3)][0]) === 10 && (this.allFrames[(this.currentFrameNumber - 2)][0]) === 10 && roll1 != 10) { 
-        var arrayPosition = this.currentFrameNumber - 3
-        this.frameScoreArray[arrayPosition] += roll1
+        this.adjustPreviousFrameAfterTwoStrikesAndNormalFrame(roll1)
     }
 }
 
 Scorecard.prototype.adjustPreviousFrameAfterSpare = function(roll1, roll2) {       
     var arrayPosition = this.currentFrameNumber - 2
+    this.frameScoreArray[arrayPosition] += roll1
+}
+
+Scorecard.prototype.doesNotChangeNormalFrameAfterTwoStrikes = function() {
+    //this method prevents a normal frame from receiving a bonus when it is followed by two strikes
+    //view in conjunction with 
+    var arrayPosition = this.currentFrameNumber - 3
+    this.frameScoreArray[arrayPosition] += 0
+}
+
+Scorecard.prototype.adjustPreviousFrameAfterConsecutiveStrikes = function(roll1) {
+    var arrayPosition = this.currentFrameNumber - 3
+    this.frameScoreArray[arrayPosition] += roll1
+}
+
+Scorecard.prototype.adjustPreviousFrameAfterOneStrike = function(roll1, roll2) {
+    var arrayPosition = this.currentFrameNumber - 2
+    this.frameScoreArray[arrayPosition] += (roll1 + roll2)
+}
+
+Scorecard.prototype.adjustPreviousFrameAfterTwoStrikesAndNormalFrame = function(roll1) { 
+    var arrayPosition = this.currentFrameNumber - 3
     this.frameScoreArray[arrayPosition] += roll1
 }
 

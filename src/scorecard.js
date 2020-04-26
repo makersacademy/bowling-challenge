@@ -24,11 +24,11 @@ Scorecard.prototype.addNewScore = function(roll1, roll2=0) {
 
     this.updateCurrentFrameNumber()
     this.addScoreToCurrentFrame(roll1, roll2)
+    ///below is a terrible name; change it; adjusts previous frame scores
     this.spareOrStrikeUpdate(roll1, roll2)
-    this.calculateFrameScore(roll1, roll2)
+    //this.calculateFrameScore(roll1, roll2)
     this.spareOrStrike(roll1, roll2)
-   
-    
+    this.calculateFrameScore(roll1, roll2)
 }
 
 Scorecard.prototype.updateCurrentFrameNumber = function() {
@@ -36,9 +36,11 @@ Scorecard.prototype.updateCurrentFrameNumber = function() {
 }
 
 Scorecard.prototype.calculateFrameScore = function(roll1, roll2) {
-    score = roll1 + roll2
+    var score = roll1 + roll2
     //separate below into different method for SRP
     this.frameScoreArray.push(score)
+    //added return score here to pass test on line 138
+    return score
 }
 
 Scorecard.prototype.spareOrStrike = function(roll1, roll2) {

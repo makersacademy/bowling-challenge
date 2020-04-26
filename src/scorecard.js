@@ -35,7 +35,7 @@ Scorecard.prototype.howToCalculateFrameScore = function (roll1, roll2, roll3) {
         this.calculateFrameScore(roll1, roll2, roll3)
         this.adjustFrameEightInPerfectGame(roll2, roll3)
     } else {
-    this.calculateFrameScore(roll1, roll2)
+        this.calculateFrameScore(roll1, roll2)
     }
 }
 
@@ -53,12 +53,14 @@ Scorecard.prototype.updateCurrentFrameNumber = function() {
 
 Scorecard.prototype.calculateFrameScore = function(roll1, roll2, roll3=0) {
     var score = roll1 + roll2 + roll3
-    //separate below into different method for SRP
-    this.frameScoreArray.push(score)
-    
-    this.calculateTotalScore(this.frameScoreArray)
+    this.addToFrameScoreArray(score)
     //added return score here to pass test on/near line 138
     return score
+}
+
+Scorecard.prototype.addToFrameScoreArray = function(score) {
+    this.frameScoreArray.push(score)
+    this.calculateTotalScore(this.frameScoreArray)
 }
 
 Scorecard.prototype.spareOrStrike = function(roll1, roll2) {

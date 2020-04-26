@@ -38,4 +38,17 @@ describe("Player", function() {
     expect(playerOne.bowls[playerOne.bowls.length -2]).toEqual(7)
     expect(playerOne.bowls[playerOne.bowls.length -1]).toEqual(2) 
   });
+  it('should be able to mark the player game as completed', () => {
+    for (let index = 0; index < 9; index++) {
+      playerOne.addFrame(7,1);
+    }
+    playerOne.addFrame(8,1)
+    expect(playerOne.gameOver).toEqual(true)
+  });
+  it('should be able to mark the player game as completed or not', () => {
+    for (let index = 0; index < 9; index++) {
+      playerOne.addFrame(7,1);
+    }
+    expect(playerOne.gameOver).toEqual(false)
+  });
 });

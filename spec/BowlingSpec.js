@@ -86,4 +86,29 @@ describe("Bowling", function() {
     bowling.saveCurrentPlayerFrame();
     expect(bowling.getCurrentPlayer().name).toEqual(playerTwo);
   });
+  it('should be able to determine if the game is over for every player', () => {
+    bowling.addPlayer(playerOne);
+    bowling.addPlayer(playerTwo);
+    for (let index = 0; index < 20; index++) {
+      bowling.storeFirst(4);
+      bowling.storeSecond(5);
+      bowling.saveCurrentPlayerFrame();
+    }
+    expect(bowling.gameEnded()).toEqual(true);
+  });
+  it('should be able to determine if the game is not over for every player', () => {
+    bowling.addPlayer(playerOne);
+    bowling.addPlayer(playerTwo);
+    for (let index = 0; index < 9; index++) {
+      bowling.storeFirst(4);
+      bowling.storeSecond(5);
+      bowling.saveCurrentPlayerFrame();
+    }
+    bowling.storeFirst(10);
+    bowling.saveCurrentPlayerFrame();
+    bowling.storeFirst(4);
+    bowling.storeFirst(2);
+    bowling.saveCurrentPlayerFrame();
+    expect(bowling.gameEnded()).toEqual(false);
+  });
 });

@@ -5,6 +5,7 @@ function Player(name) {
   this.score = 0
   this.tenthIsStrike = false
   this.tenthIsSpare = false
+  this.gameOver = false
 }
 
 Player.prototype.addFrame = function(one, two) {
@@ -25,16 +26,22 @@ if (this.frameCount < 10) {
   }
   if (this.tenthIsStrike) {
     this.bowls.push(one);
+  } else if (this.tenthIsSpare) {
+    this.bowls.push(one);
+    this.bowls.push(two);
   } else {
     this.bowls.push(one);
     this.bowls.push(two);
+    this.gameOver = true;
   }
 } else if (this.frameCount <= 11) {
   if(this.tenthIsStrike) {
     this.bowls.push(one);
     this.bowls.push(two);
+    this.gameOver = true;
   } else if(this.tenthIsSpare) {
     this.bowls.push(one);
+    this.gameOver = true;
   }
 }
   this.frameCount += 1;

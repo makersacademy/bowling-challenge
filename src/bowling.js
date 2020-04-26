@@ -51,3 +51,14 @@ Bowling.prototype.saveCurrentPlayerFrame = function() {
   this.changeTurn();
 };
 
+Bowling.prototype.gameEnded = function() {
+  premise = true
+  for (let index = 0; index < this.players.length; index++) {
+    const element = this.players[index];
+    if(element.gameOver != true) {
+      premise = false;
+      return premise;
+    }
+  }
+  return premise;
+}

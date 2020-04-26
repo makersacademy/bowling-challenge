@@ -27,6 +27,7 @@ $('#game-save').submit(function(event) {
       updateCurrentPlayer();
 });
 
+
 function updateCurrentPlayer() {
   $('#current-player').text("enter Frame for " + bowling.getCurrentPlayer().name);
 }

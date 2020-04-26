@@ -116,16 +116,15 @@ Scorecard.prototype.addCurrentToAllFrames = function(currentFrame) {
     this.allFrames.push(currentFrame)
 }
 
-Scorecard.prototype.calculateTotalScore = function(array) {    
+
+
+
+Scorecard.prototype.calculateTotalScore = function(scoreArray) {    
         var runningTotal = 0
-        array.forEach(function(entry) {
-            for (var i = 0; i < entry.length; i++) {
-                runningTotal += entry[i]
+            for (var i = 0; i < scoreArray.length; i++) {
+                runningTotal += scoreArray[i]
             }
-        })
         this.totalScore = runningTotal
-        //console log so I don't have to run card.totalScore when feature testing
-        //console.log(this.totalScore)
     }
 
 Scorecard.prototype.maxFrames = function() {

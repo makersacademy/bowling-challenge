@@ -251,11 +251,11 @@ describe('Scorecard', function() {
         }
         expect(scorecard.frameScoreArray).toEqual([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
     })
+
+    it('can calculate the total score', function() {
+        scorecard.calculateTotalScore([30, 30, 30, 30, 30, 30, 30, 30, 30, 30])
+        expect(scorecard.totalScore).toEqual(300)
+    })
+
+    //would be nice to add a few further tests here just to show it works with other scores
 })
-
-
-
-
-
-
-

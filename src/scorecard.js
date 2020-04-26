@@ -11,9 +11,9 @@ function Scorecard() {
     this.currentFrameNumber = 0
 }
 
-Scorecard.prototype.addNewScore = function(roll1, roll2=0) {
+Scorecard.prototype.addNewScore = function(roll1, roll2=0, roll3=0) {
     this.clearCurrentFrame()
-    if (this.currentFrameNumber >= MAX_FRAMES) {
+    if (this.currentFrameNumber === MAX_FRAMES) {
         //is there much value gained by putting this in a different method?
         return this.maxFrames()
     }
@@ -23,23 +23,31 @@ Scorecard.prototype.addNewScore = function(roll1, roll2=0) {
     }
 
     this.updateCurrentFrameNumber()
+    // console.log(this.currentFrameNumber)
     this.addScoreToCurrentFrame(roll1, roll2)
     ///below is a terrible name; change it; adjusts previous frame scores
     this.spareOrStrikeUpdate(roll1, roll2)
     //this.calculateFrameScore(roll1, roll2)
     this.spareOrStrike(roll1, roll2)
+    // console.log(this.isSpare)
+    if (this.currentFrameNumber === MAX_FRAMES && this.isSpare === true) {
+        this.calculateFrameScore(roll1, roll2, roll3)
+    } else {
     this.calculateFrameScore(roll1, roll2)
+    }
+
 }
+    
 
 Scorecard.prototype.updateCurrentFrameNumber = function() {
     this.currentFrameNumber += 1
 }
 
-Scorecard.prototype.calculateFrameScore = function(roll1, roll2) {
-    var score = roll1 + roll2
+Scorecard.prototype.calculateFrameScore = function(roll1, roll2, roll3=0) {
+    var score = roll1 + roll2 + roll3
     //separate below into different method for SRP
     this.frameScoreArray.push(score)
-    //added return score here to pass test on line 138
+    //added return score here to pass test on/near line 138
     return score
 }
 

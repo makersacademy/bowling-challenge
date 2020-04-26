@@ -198,13 +198,28 @@ describe('Scorecard', function() {
         expect(scorecard.frameScoreArray).toEqual([9, 20, 10])
     })
 
-    ////
+    //10 max frames
     it('cannot have more than 10 frames', function() {
         var i;
-        for (i = 0; i < 12; i++) {
+        for (i = 0; i < 10; i++) {
         scorecard.addNewScore(4, 5)
         }
-        expect(scorecard.maxFrames()).toEqual('Game finished, cannot add more frames')
+        expect(scorecard.addNewScore()).toEqual('Game finished, cannot add more frames')
+    })
+
+    //10th frame testing
+    it('adds extra role following a spare in the 10th frame', function() {
+        scorecard.addNewScore(0)
+        scorecard.addNewScore(0)
+        scorecard.addNewScore(0)
+        scorecard.addNewScore(0)
+        scorecard.addNewScore(0)
+        scorecard.addNewScore(0)
+        scorecard.addNewScore(0)
+        scorecard.addNewScore(0)
+        scorecard.addNewScore(0)
+        scorecard.addNewScore(5, 5, 5)
+        expect(scorecard.frameScoreArray).toEqual([ 0, 0, 0, 0, 0, 0, 0, 0, 0, 15])
     })
 })
 

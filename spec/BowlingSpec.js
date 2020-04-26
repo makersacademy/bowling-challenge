@@ -196,7 +196,7 @@ describe("#Bowling", function () {
           alreadyCalled = true;
           return 6;
           });
-        expect(bowling.runCardMaking()[1]["r2Score"]).toEqual(16);
+        expect(bowling.runCardMaking()[1]["r2Score"]).toEqual(14);
       });
       
       it(" The score from bonus points will be added to the accumulated score    ", function () {

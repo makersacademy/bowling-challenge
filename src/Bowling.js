@@ -1,7 +1,6 @@
 "use strict";
 
-const STRIKE = 10
-
+const STRIKE = 10;
 
 function Bowling() {
   this.score = 0;
@@ -29,45 +28,37 @@ Bowling.prototype.runCardMaking = function () {
         pins = "x";
         score = this.calculateScore(0);
       } else {
-
-        
-
         pins = this.getInput();
 
-        //isStike?
-        if ( (rollCount === 1 && pins === 10) || (this.frameKey === 2 && rollCount === 2 && this.card[this.frameKey -1]['r2PinsDown'] === 'x' )) {this.strike = true
-        }else {
-          this.strike = false
-        }
-        
-        
-       
-       // scoreStrikes - next frame 
-       this.scoreStrike(rollCount, pins)
-    
-        // ///  -----------------------------------------------------
+        this.switchStrike(rollCount, pins)
+        // if (
+        //   (rollCount === 1 && pins === 10) ||
+        //   (this.frameKey === 2 &&
+        //     rollCount === 2 &&
+        //     this.card[this.frameKey - 1]["r2PinsDown"] === "x")
+        // ) {
+        //   this.strike = true;
+        // } else {
+        //   this.strike = false;
+        // }
 
 
-    
+
+
+        
+        this.scoreStrike(rollCount, pins);
         score = this.calculateScore(pins);
-        /// end of conditional ----
       }
       this.fillCard(pins, score, rollCount);
 
-     
-      if (this.strike === false && this.spare === true ) {this.scoreSpares(rollCount, pins);}
+      if (this.strike === false && this.spare === true) {
+        this.scoreSpares(rollCount, pins);
+      }
       this.switchSpare();
-      
-      
-    
     }
-    
-   
   }
   // end of loop big loop
-  
-  console.log(this.card)
-  
+
   return this.card;
 };
 
@@ -78,13 +69,12 @@ Bowling.prototype.isSkipped = function (rollCount) {
 };
 
 Bowling.prototype.makeCardTemplate = function () {
-  /// is everything here neccesary?
-  var frameCount;
-  var key;
-  var obj = {};
+  /// changed obj but perhaps was better before as means I have to make conditions for runCardmaking
+  var frameCount,
+    key,
+    obj = {};
   for (frameCount = 1; frameCount < 11; frameCount++) {
-    key = frameCount;
-    obj[key] = {};
+    obj[frameCount] = {};
     // obj[key] = { r1PinsDown: 0, r1Score: 0, r2PinsDown: 0, r2Score: 0 };
     this.card = obj;
   }
@@ -100,32 +90,25 @@ Bowling.prototype.calculateScore = function (numPinsDown) {
   return this.score;
 };
 
-
-
-Bowling.prototype.scoreStrike = function(rollCount, r1PinsDown) {
+Bowling.prototype.scoreStrike = function (rollCount, r1PinsDown) {
   if (this.strike === true && rollCount === 2) {
-    var previousFrameKey = this.frameKey - 1
-    var r2PinsDown = (this.card[this.frameKey]['r1PinsDown'])
-    this.card[previousFrameKey]["r2Score"] = this.card[previousFrameKey]["r2Score"] + r1PinsDown + r2PinsDown;
-    this.score = this.score + r1PinsDown + r2PinsDown
-    // if  previous frame [r2 pinsDown] == x then add 10 
-  }
-}
-
-
-Bowling.prototype.scoreSpares = function (rollCount, r1PinsDown) {
-  console.log("in scoreSpares")
-  console.log(rollCount)
-  //if ( rollCount === 1 && this.frameKey > 1) {
     var previousFrameKey = this.frameKey - 1;
-    this.card[previousFrameKey]["r2Score"] = this.card[previousFrameKey]["r2Score"] + r1PinsDown;
-    this.score = this.score + r1PinsDown;
-  //}
+    var r2PinsDown = this.card[this.frameKey]["r1PinsDown"];
+    this.card[previousFrameKey]["r2Score"] =
+      this.card[previousFrameKey]["r2Score"] + r1PinsDown + r2PinsDown;
+    this.score = this.score + r1PinsDown + r2PinsDown;
+    // if  previous frame [r2 pinsDown] == x then add 10
+  }
 };
 
+//var previousFrameKey = this.frameKey - 1; is in scoreStrike and ScoreSpares -  beforeEach perhaps can declare these functions
 
-
-
+Bowling.prototype.scoreSpares = function (rollCount, r1PinsDown) {
+  var previousFrameKey = this.frameKey - 1;
+  this.card[previousFrameKey]["r2Score"] =
+    this.card[previousFrameKey]["r2Score"] + r1PinsDown;
+  this.score = this.score + r1PinsDown;
+};
 
 Bowling.prototype.fillCard = function (pins, score, rollCount) {
   if (rollCount === 1) {
@@ -144,7 +127,7 @@ Bowling.prototype.switchSpare = function (rollCount) {
   if (
     this.card[this.frameKey]["r1PinsDown"] +
       this.card[this.frameKey]["r2PinsDown"] ===
-      STRIKE
+    STRIKE
   ) {
     return (this.spare = true);
   } else {
@@ -152,27 +135,16 @@ Bowling.prototype.switchSpare = function (rollCount) {
   }
 };
 
-Bowling.prototype.switchStrike = function (rollCount) {
+ Bowling.prototype.switchStrike = function (rollCount, pins) {
   if (
-    this.card[this.frameKey]["r1PinsDown"] === 10 ||
-    this.card[this.frameKey]["r2PinsDown"] === 10
+    (rollCount === 1 && pins === 10) ||
+    (this.frameKey > 1 &&
+      rollCount === 2 &&
+      this.card[this.frameKey - 1]["r2PinsDown"] === "x") //too much functionality in one method?
   ) {
-    return (this.strike = true);
+    return this.strike = true;
   } else {
-    return (this.strike = false);
+   return this.strike = false;
   }
-};
+ };
 
-
-// if (this.strike === true ) {
-//   console.log("in method")
-//   var previousFrameKey = this.frameKey - 1;
-//   //var previousFrameScore = this.card[previousFrameKey]["r2Score"];
-//   var roll1Score = this.card[this.frameKey]['r1PinsDown']
-//   console.log(roll1Score )
-//   this.card[previousFrameKey]["r2Score"] = this.card[previousFrameKey]["r2Score"] + pins
-//   console.log(pins)
-//   console.log(rollCount)
-//   console.log(this.card[previousFrameKey]["r2Score"] )
-//   this.score = this.score + pins;
-//  }

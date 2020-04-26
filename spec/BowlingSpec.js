@@ -133,47 +133,29 @@ describe("#Bowling", function () {
         expect(bowling.strike).toEqual(false)
       });
 
-      it("#switchStrike - will return true (roll 2)", function () {
-        bowling.makeCardTemplate();
-        bowling.frameKey = 1;
-        roll = 2
-        bowling.fillCard(STRIKE, 10, roll)
-        expect(bowling.switchStrike(roll)).toEqual(true)
-        expect(bowling.strike).toEqual(true)
-      });
-
-
-      it("#switchStrike - will return true (roll 1)", function () {
+      // is this a neccesary test for a unit test - it seems mot like a feature test 
+      it("#switchStrike - will return true if a strike is rolled  ", function () {
         bowling.makeCardTemplate();
         bowling.frameKey = 1;
         roll = 1
-        bowling.fillCard(STRIKE, 10, roll)
-        roll = 2
-        bowling.fillCard(nonStrike, 10, roll)
-        expect(bowling.switchStrike(roll)).toEqual(true)
+        expect(bowling.switchStrike(roll, STRIKE)).toEqual(true)
         expect(bowling.strike).toEqual(true)
       });
 
-      it("#switchStrike - will return false when a strike is not rolled ", function () {
-        bowling.makeCardTemplate();
-        bowling.frameKey = 2;
-        roll = 1
-        bowling.fillCard(nonStrike, 20, roll)
-        roll = 2
-        bowling.fillCard(nonStrike, 23, roll)
-        expect(bowling.switchStrike(roll)).toEqual(false)
-        expect(bowling.strike).toEqual(false)
+      // need to use spies and already called  to test properly 
+      xit("#switchStrike - strike property will remain true in next frame", function () {
       });
 
-      it("#runCardMaking - will change property: strike to true when strike is rolled ", function () {
-        // need to work out a way to be able to choose values each roll - otherwise it does not accurately reflect what is happening in program and also it cannot be tested as stike causes breaks in loop 
-        spyOn(bowling, "getInput").and.returnValue(10);
-        bowling.runCardMaking();
+      xit("#switchStrike - will return false when a strike is not rolled ", function () {
+       
+      });
+
+      xit("#runCardMaking - will change property: strike to change to true when strike is rolled ", function () {
         expect(bowling.strike).toEqual(true);
       });
 
       xit("#runCardMaking - will change property strike to false when strike is rolled ", function () {
-       /// not sure how to test this - see above comment
+ 
       });
       
     

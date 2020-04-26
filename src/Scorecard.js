@@ -75,21 +75,28 @@ class Scorecard {
     }
   }
   isGameComplete() {
-    if (this.frames.length == 10 &&
-    this.frames[this.frames.length-1].isOpenFrame() ||
-    this.frames.length == 11 &&
-    (this.frames[this.frames.length-1].isSpare() ||
-    this.frames[this.frames.length-2].isSpare()) ||
-    this.frames.length == 12) {
+    const previousFrame = this.frames[this.frames.length-1];
+    const frameBeforeLast = this.frames[this.frames.length-2];
+    const numberOfFrames = this.frames.length;
+
+    if (numberOfFrames == 10 &&
+    previousFrame.isOpenFrame() ||
+    numberOfFrames == 11 &&
+    (previousFrame.isSpare() ||
+    frameBeforeLast.isSpare()) ||
+    numberOfFrames == 12) {
       throw new Error('Game complete!');
     }
   }
   tooManyRolls(roll2) {
-    if (this.frames.length == 10 &&
-    this.frames[this.frames.length-1].isSpare() &&
+    const previousFrame = this.frames[this.frames.length-1];
+    const numberOfFrames = this.frames.length;
+
+    if (numberOfFrames == 10 &&
+    previousFrame.isSpare() &&
     roll2 > 0 ||
-    this.frames.length == 11 &&
-    this.frames[this.frames.length-1].isStrike() &&
+    numberOfFrames == 11 &&
+    previousFrame.isStrike() &&
     roll2 > 0) {
       throw new Error('Cannot add 2 rolls.');
     }

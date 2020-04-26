@@ -210,3 +210,4 @@ The user can see the total points for their game
 
 * The user is not able to add points for rolls beyond the predefined rolls in a game
 * The user is given their final score
+

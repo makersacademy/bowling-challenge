@@ -93,12 +93,6 @@ describe('Bowlingcard', function() {
       bowlingcard.enterScore(3);
       expect(bowlingcard.rollScores[1]).toEqual(13);
     })
-    it('checks if current roll a strike and preceding frame had a spare if so adds points there automatically', function() {
-      bowlingcard.enterScore(0);
-      bowlingcard.enterScore(10);
-      bowlingcard.enterScore(10);
-      expect(bowlingcard.rollScores[1]).toEqual(20);
-    })
   })
   describe('.frameArrayAdd', function() {
     it('checks if current roll is odd, if so pushes score to frame Array', function() {
@@ -119,6 +113,7 @@ describe('Bowlingcard', function() {
       expect(bowlingcard.inputError).toEqual("what?");
     })
   })
+
   
 /*  
   describe('.endGame', function() {

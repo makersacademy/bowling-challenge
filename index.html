@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hollywood Bowl</title>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="src/bowling.js"></script>
+    <script src="src/player.js"></script>
+    <script src="interface.js"></script>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1 id='names-pls' class="intro">PLEASE ENTER YOUR PLAYER NAMES BELOW</h1>
+    <form id="enter-name" class="intro">
+      <input id="name" type="text" placeholder="enter names here">
+      <input type="submit" value="Enter Player name">
+    </form>
+    <br>
+    <br>
+    <br>
+    <button id="start-game" class="intro">START GAME</button>
+    
+    <div id="player-list" class="intro"></div>
+    
+    <div id="game-board" class="game-started">
+      <div id='score-form'>
+        <form id="game-save" class="game-started"style="display:none;">
+          <label for="ball-one" id="current-player"></label>
+          <input type="number" id="ball-one" placeholder="first ball">
+          <input type="number" id="ball-two" placeholder="second ball">
+          <input type="submit" value="record frame">
+        </form>
+      </div>
+    </div>
+    
+  </body>
+  <!---<section class="testing" display ="none">
+    <h1>Test area</h1>
+    <div id="flex_container" class="flex">
+      <span id="1st" class="flexed"></span><span id="2nd" class="flexed"></span>
+    </div>
+    <div id="grid_container" class="grid">
+      <span id="first"></span>1<span id="secondnd" >2</span>
+    </div>
+  </section>-->
+  
+  
+  </html>

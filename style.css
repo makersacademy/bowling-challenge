@@ -1,0 +1,54 @@
+body {
+  box-sizing:border-box;
+  margin: auto;
+  text-align: center;
+  background: url(/images/bowling_names.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  height: 100vh;
+}
+
+.intro {
+  color: red
+}
+#player-list {
+  display:block;
+  background-color:white;
+  width:20%;
+  margin:auto;
+}
+
+table {
+  width: 95%;
+  background-color: bisque;
+  margin: auto;
+  border:0.5em;
+}
+
+form {
+  width: 70%;
+  display: inline-block;
+  opacity: 90%;
+}
+
+#score-form {
+  display: block;
+  text-align: center;
+}
+
+#game-save {
+  display: inline-block;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:left;
+}
+
+#names-pls {
+  display: inline-block;
+  background-color: black;
+  opacity: 90%;
+  color: white;
+  width: 58%;
+  text-align: center;
+}

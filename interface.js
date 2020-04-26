@@ -13,6 +13,5 @@ $(document).ready(function() {
     scorecard.addFrame(new Frame(roll1, roll2));
     $('#score').text(scorecard.score);
     $('#frames').text(scorecard.frames.length);
-    console.log(scorecard.frames.length);
   });
 });

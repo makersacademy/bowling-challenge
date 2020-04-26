@@ -1,4 +1,5 @@
 const MAX_INITIAL_SCORE = 10
+const MAX_FRAMES = 10
 
 function Scorecard() {
     this.totalScore = 0
@@ -12,9 +13,9 @@ function Scorecard() {
 
 Scorecard.prototype.addNewScore = function(roll1, roll2=0) {
     this.clearCurrentFrame()
-    if (this.currentFrameNumber >= 10) {
+    if (this.currentFrameNumber >= MAX_FRAMES) {
         //is there much value gained by putting this in a different method?
-        return 'Game finished, cannot add more frames'
+        return this.maxFrames()
     }
     if (roll1 > MAX_INITIAL_SCORE || (roll1 + roll2) > MAX_INITIAL_SCORE) {
         //is there much value gained by putting the return in a different method?
@@ -110,6 +111,10 @@ Scorecard.prototype.calculateTotalScore = function(array) {
         //console log so I don't have to run card.totalScore when feature testing
         //console.log(this.totalScore)
     }
+
+Scorecard.prototype.maxFrames = function() {
+    return 'Game finished, cannot add more frames'
+}
 
 Scorecard.prototype.incorrectScore = function() {
     return "Incorrect Score"

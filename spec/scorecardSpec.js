@@ -199,22 +199,12 @@ describe('Scorecard', function() {
 
     ////
     it('cannot have more than 10 frames', function() {
+        var i;
+        for (i = 0; i < 12; i++) {
         scorecard.addNewScore(4, 5)
-        scorecard.addNewScore(4, 5)
-        scorecard.addNewScore(4, 5)
-        scorecard.addNewScore(4, 5)
-        scorecard.addNewScore(4, 5)
-        scorecard.addNewScore(4, 5)
-        scorecard.addNewScore(4, 5)
-        scorecard.addNewScore(4, 5)
-        scorecard.addNewScore(4, 5)
-        scorecard.addNewScore(4, 5)
-        expect(scorecard.addNewScore(3, 5)).toEqual('Game finished, cannot add more frames')
-
+        }
+        expect(scorecard.maxFrames()).toEqual('Game finished, cannot add more frames')
     })
-    
-
-
 })
 
 

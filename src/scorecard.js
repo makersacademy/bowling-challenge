@@ -58,10 +58,11 @@ Scorecard.prototype.spareOrStrikeUpdate = function(roll1, roll2) {
         var arrayPosition = this.currentFrameNumber - 2
         this.frameScoreArray[arrayPosition] += roll1
     } 
-    //3 + consecutive strike logic
+    //normal or spare followed by 2 strikes
     if ((this.currentFrameNumber > 2) && (this.isStrike === true) && (roll2 === 0) && (this.allFrames[(this.currentFrameNumber - 3)][1]) > 0) {
         var arrayPosition = this.currentFrameNumber - 3
         this.frameScoreArray[arrayPosition] += 0
+    //3 + consecutive strike logic
     } else if ((this.currentFrameNumber > 2) && (this.isStrike === true) && (roll2 === 0)) {
         var arrayPosition = this.currentFrameNumber - 3
         this.frameScoreArray[arrayPosition] += roll1

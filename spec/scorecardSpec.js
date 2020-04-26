@@ -5,11 +5,6 @@ describe('Scorecard', function() {
         scorecard = new Scorecard()
     })
 
-    //it('can add a new frame score to their total score', function() {
-    //    scorecard.addNewScore(2, 3)
-    //    expect(scorecard.totalScore).toEqual(5)
-    //})
-
     it('if there is not a spare isSpare returns false', function() {
         expect(scorecard.isSpare).toEqual(false)
     })
@@ -50,11 +45,6 @@ describe('Scorecard', function() {
         expect(scorecard.addNewScore(11)).toEqual('Incorrect Score')
     })
 
-    //it('calculates the score', function() {
-    //    scorecard.calculateScore(5, 5)
-    //    expect(scorecard.totalScore).toEqual(10)
-    //})
-
     it('a strike gives 10 points in the current frame', function() {
         scorecard.addNewScore(10)
         expect(scorecard.currentFrame).toEqual([10, 0])
@@ -64,21 +54,6 @@ describe('Scorecard', function() {
         scorecard.addScoreToCurrentFrame(5, 5)
         expect(scorecard.currentFrame).toEqual([5, 5])
     })
-
-    //commented out failing tests, will review later
-    // it('doubles the score of first roll if player scored a spare in the last round', function() {
-    //     //would be better to set isSpare to equal true with a double.
-    //     scorecard.addNewScore(5, 5)
-    //     scorecard.addNewScore(3, 3)
-    //     expect(scorecard.currentFrame).toEqual([6, 3])
-    // })
-
-    // it('doubles the score of both rolls if player scored a strike in the last round', function() {
-    //     //would be better to set isSpare to equal true with a double.
-    //     scorecard.addNewScore(10, 0)
-    //     scorecard.addNewScore(3, 3)
-    //     expect(scorecard.currentFrame).toEqual([6, 6])
-    // })
 
     it('clears the current fame', function() {
         scorecard.currentFrame = [5, 6]

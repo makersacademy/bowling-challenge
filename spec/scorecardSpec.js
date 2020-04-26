@@ -232,5 +232,10 @@ describe('Scorecard', function() {
         expect(scorecard.finalScore(scorecard.totalScore)).toEqual("GUTTER GAME")
     })
 
+    it('tells the user if they got a perfect score', function() {
+        scorecard.totalScore = 300
+        expect(scorecard.finalScore(scorecard.totalScore)).toEqual("PERFECT GAME")
+    })
+
 })
 

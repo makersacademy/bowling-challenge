@@ -154,6 +154,9 @@ Scorecard.prototype.finalScore = function(totalScore) {
     if (totalScore === 0) {
         return "GUTTER GAME"
     }
+    if (totalScore === 300) {
+        return "PERFECT GAME"
+    }
     return "You scored " + totalScore
 }
 

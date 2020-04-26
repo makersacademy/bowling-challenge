@@ -1,6 +1,6 @@
 "use strict";
 
-const STRIKE = 10;
+const ALL_PINS = 10;
 
 function Bowling() {
   this.score = 0;
@@ -31,21 +31,7 @@ Bowling.prototype.runCardMaking = function () {
         pins = this.getInput();
 
         this.switchStrike(rollCount, pins)
-        // if (
-        //   (rollCount === 1 && pins === 10) ||
-        //   (this.frameKey === 2 &&
-        //     rollCount === 2 &&
-        //     this.card[this.frameKey - 1]["r2PinsDown"] === "x")
-        // ) {
-        //   this.strike = true;
-        // } else {
-        //   this.strike = false;
-        // }
-
-
-
-
-        
+         
         this.scoreStrike(rollCount, pins);
         score = this.calculateScore(pins);
       }
@@ -127,7 +113,7 @@ Bowling.prototype.switchSpare = function (rollCount) {
   if (
     this.card[this.frameKey]["r1PinsDown"] +
       this.card[this.frameKey]["r2PinsDown"] ===
-    STRIKE
+    ALL_PINS
   ) {
     return (this.spare = true);
   } else {
@@ -137,7 +123,7 @@ Bowling.prototype.switchSpare = function (rollCount) {
 
  Bowling.prototype.switchStrike = function (rollCount, pins) {
   if (
-    (rollCount === 1 && pins === 10) ||
+    (rollCount === 1 && pins === ALL_PINS) ||
     (this.frameKey > 1 &&
       rollCount === 2 &&
       this.card[this.frameKey - 1]["r2PinsDown"] === "x") //too much functionality in one method?

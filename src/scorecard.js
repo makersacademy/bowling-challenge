@@ -13,16 +13,16 @@ function Scorecard() {
 
 Scorecard.prototype.addNewScore = function(roll1, roll2=0, roll3=0) {
     this.clearCurrentFrame()
-    if (this.currentFrameNumber === MAX_FRAMES) {
+    this.updateCurrentFrameNumber()
+    if (this.currentFrameNumber > MAX_FRAMES) {
         //is there much value gained by putting this in a different method?
+        //change this method name
         return this.maxFrames()
     }
-    if (roll1 > MAX_INITIAL_SCORE || (roll1 + roll2) > MAX_INITIAL_SCORE) {
+    if  (this.currentFrameNumber < MAX_FRAMES && (roll1 > MAX_INITIAL_SCORE || (roll1 + roll2) > MAX_INITIAL_SCORE)) {
         //is there much value gained by putting the return in a different method?
         return this.incorrectScore()
     }
-
-    this.updateCurrentFrameNumber()
     // console.log(this.currentFrameNumber)
     this.addScoreToCurrentFrame(roll1, roll2)
     ///below is a terrible name; change it; adjusts previous frame scores
@@ -31,6 +31,8 @@ Scorecard.prototype.addNewScore = function(roll1, roll2=0, roll3=0) {
     this.spareOrStrike(roll1, roll2)
     // console.log(this.isSpare)
     if (this.currentFrameNumber === MAX_FRAMES && this.isSpare === true) {
+        this.calculateFrameScore(roll1, roll2, roll3)
+    } else if (this.currentFrameNumber === MAX_FRAMES && this.isStrike === true) {
         this.calculateFrameScore(roll1, roll2, roll3)
     } else {
     this.calculateFrameScore(roll1, roll2)

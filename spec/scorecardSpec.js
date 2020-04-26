@@ -153,7 +153,7 @@ describe('Scorecard', function() {
     it('gives the correct frame number if incorrect score is inputted', function() {
         scorecard.addNewScore(2, 3)
         scorecard.addNewScore(6, 7)
-        expect(scorecard.currentFrameNumber).toEqual(1)
+        expect(scorecard.currentFrameNumber).toEqual(2)
     })
 
     ////Updating the previous frame score following a spare/strike
@@ -224,6 +224,15 @@ describe('Scorecard', function() {
         }
         scorecard.addNewScore(5, 5, 5)
         expect(scorecard.frameScoreArray).toEqual([ 0, 0, 0, 0, 0, 0, 0, 0, 0, 15])
+    })
+
+    it('adds extra roll following a strike in the 10th frame', function() {
+        var i;
+        for (i = 0; i < 9; i++) {
+        scorecard.addNewScore(0, 0)
+        }
+        scorecard.addNewScore(10, 4, 3)
+        expect(scorecard.frameScoreArray).toEqual([0, 0, 0, 0, 0, 0, 0, 0, 0, 17])
     })
 })
 

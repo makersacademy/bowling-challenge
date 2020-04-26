@@ -83,3 +83,4 @@ Todo;
 - Add UI with CSS & Jquery
 - Potentially separate frames into their own separate class
 - Unable to raise error to stop user adding to much to their score or for doing more than 10 frames
+- Remove extra stuff from the Readme

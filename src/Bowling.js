@@ -77,6 +77,8 @@ Bowling.prototype.getInput = function (input) {
   return input
 };
 
+
+
 Bowling.prototype.calculateScore = function (numPinsDown) {
   this.score = numPinsDown + this.score;
   return this.score;

@@ -3,6 +3,7 @@ Bowling Challenge
 =================
 ![Scorecard screenshot](./screenshot.png)
 
+See the deployed project here:- http://phils-bowlingcard.surge.sh/
 ## The Task
 
 Count and sum the scores of a bowling game for one player (in JavaScript).

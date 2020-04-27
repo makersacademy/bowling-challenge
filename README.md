@@ -2,76 +2,212 @@
 Bowling Challenge
 =================
 
+A simple bolwing socore card app
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+## User story 1
 
-## The Task
+* As a user, when I am playing bowling
+* I want to keep a record of my points per roll
+* so that I can know how many points I got each time
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+### Acceptance criteria
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+* Given that I am playing bolwing
+* When it has been my time to roll
+* Then I record my points for that roll
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+### Requirements
 
-As usual please start by
+The user is able to enter their points per individual roll for each frame of a game
 
-* Forking this repo
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+## User story 2
 
-### Optional Extras
+* As a user, when I am playing bowling and things are getting competitive
+* I want to keep a record of my points per roll to accumulate
+* So that I do not have to add them at the end myself
 
-In any order you like:
+### Acceptance criteria
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+* Given that I have been playing bowling
+* When I have had several turns at rolling
+* Then I want my points to accumulate
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+### Requirements
 
-## Bowling — how does it work?
+Points accumulate automatically each time the user enters points
 
-### Strikes
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+## User story 3
 
-### Spares
+* As a user, when I am playing bowling
+* I want to keep count of how many times I have rolled
+* So I that can keep track of my points and add them correctly
 
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+### Acceptance criteria
 
-### 10th frame
+* Given that I have been playing bowling
+* When I have rolled several times
+* Then I want to know what roll is which so I know how to keep track of my points
 
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
+### Requirements
+* The game starts at roll 1
+* The user can see what roll they are playing in a gametically each time the user enters points
 
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
 
-### Gutter Game
+## User story 4
 
-A Gutter Game is when the player never hits a pin (20 zero scores).
+* As a user, when I am playing bowling
+* I want to know what frame this is
+* So I know how many more opportunities to get points i got
 
-### Perfect Game
+### Acceptance criteria
 
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+* Given that I have been playing bowling
+* When I have rolled for several frames
+* Then I want to know which frame we are playing
 
-In the image below you can find some score examples.
+### Requirements
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
+* The game starts at Frame 1
+* There is a maximum of 2 rolls per frame
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
-## Code Review
+## User story 5
 
-In code review we'll be hoping to see:
+* As a user, when I am playing bowling
+* I want to see what my points are in each frame
+* So I that I can know how I am doing in the game as it progresses
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+### Acceptance criteria
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+* Given that I have being playing bowling
+* When I have rolled several times
+* Then I want to know how many points I totalled in each frame
+
+### Requirements
+
+Frame points are added together and displayed to the user as frame points
+
+
+## User story 6
+
+* As a user, when I have rolled a strike
+* I want to know I do not need to roll again for that frame
+* So that I can add my points correctly in each frame
+
+### Acceptance criteria
+
+* Given that I have been playing bowling
+* When I have rolled a strike
+* Then I want to know I do not get a second roll in this frame
+
+### Requirements**
+
+The user is not able to add points for a second roll in a frame when they have rolled a strike in the first
+
+
+## User story 7
+
+* As a user, when I have rolled a strike in the previous roll
+* I want my points from the next 2 rolls to be added to the roll where I scored the strike 
+* So that I can add my points correctly in each frame
+
+### Acceptance criteria
+
+* Given that I have been playing bowling
+* When I have rolled a strike
+* Then I want my points from the next two rolls to be added to this frame
+
+### Requirements
+
+Points are added automatically to the frame where the strike was rolled
+
+
+## User story 8
+
+* As a user, when I have rolled a strike
+* I want the bonus points to be added automatically
+* So that I do not have to stress about remembering about this
+
+### Acceptance criteria
+
+* Given that I am playing bowling
+* When I have rolled a strike
+* Then I want the bonus points to be automatically added to the frame where I rolled the strike
+
+### Requirements
+
+After the user rolls a strike bonus points  are automatically added to the frame where they rolled the strike
+
+
+## User story 9
+
+* As a user, when I have rolled a spare
+* I want the points from the following roll to be added to this frame
+* So that I do not have to do it myself and can just enjoy the game
+
+### Acceptance criteria
+
+* Given that I am playing bowling
+* When I have rolled a spare
+* Then I want the points from my next roll to be automatically added to the frame where I rolled the spare
+
+### Requirements**
+
+After the user rolls a spare points form the next roll are automatically added to the frame where they rolled the spare
+
+
+## User story 10
+
+* As a user, when I am playing bowling
+* I want to know my points per frame 
+* So that I that I can easily compare my scores to that of my friends
+
+### Acceptance criteria
+
+* Given that I am playing bowling
+* When I want to look at my scores
+* Then I want to see the frame scores as the main information displayed 
+
+### Requirements
+
+* The score per frame is clearly displayed
+* Bonus points are added to a frame total not to a particular roll
+
+
+## User story 11
+
+* As a user, after a fun game of bowling
+* I want to know my total score
+* so that I can know who is paying for the next round
+
+### Acceptance criteria
+
+* Given that I have being playing bowling
+* When I want to know how many points I got
+* Then I want to see my total points for the game
+
+### Requirements
+
+The user can see the total points for their game
+
+
+## User story 12
+
+* As a user, when I am playing bowling
+* I want to know when the game has ended
+* So that we can check our final scores and see who won
+
+### Acceptance criteria
+
+* Given that I have been playing bowling
+* When the game has ended
+* Then I want to know I cannot keep adding scores
+
+### Requirements
+
+* The user is not able to add points for rolls beyond the predefined rolls in a game
+* The user is given their final score
+

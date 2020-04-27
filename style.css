@@ -1,5 +1,5 @@
 body {
-    background-color: turquoise;
+    background-color: #465775;
     text-align: center;
 }
 
@@ -8,12 +8,13 @@ h1 {
     font-size: 300%;
     font-weight: 800;
     padding-top: 30px;
-    padding-bottom: ;
+    color: whitesmoke;
 }
 
 h4 {
     font-family: fantasy;
     font-size: 150%;
+    color: whitesmoke;
 }
 
 button {
@@ -21,7 +22,8 @@ button {
     width: 40px;
     border-radius: 100%;
     text-align: center;
-    
+    background-color: #FFFBFE;
+    font-family: fantasy;
 }
 
 button:hover {
@@ -31,6 +33,9 @@ button:hover {
 table {
     margin: 30px;
     border: 2px solid black;
+    background-color: #87BBA2;
+    margin-left: 25%;
+    font-family: 'Lucida Sans', sans-serif;
 }
 
 table, th {
@@ -40,3 +45,5 @@ table, th {
 table, tfoot, td {
     border: 1px solid black;
 }
+
+table.center { margin-left:auto; margin-right:auto; } 

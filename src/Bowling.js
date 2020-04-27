@@ -1,3 +1,4 @@
+
 "use strict";
 
 const ALL_PINS = 10;
@@ -8,6 +9,7 @@ function Bowling() {
   this.frameScore;
   this.spare = false;
   this.strike = false;
+  this.input 
   //this.rollCount = 1   maybe this should be instead of passing rollCount;
 }
 
@@ -28,7 +30,8 @@ Bowling.prototype.runCardMaking = function () {
         pins = "x";
         score = this.calculateScore(0);
       } else {
-        pins = this.getInput();
+       // this.getInput()
+        pins = this.input;
 
         this.switchStrike(rollCount, pins)
          
@@ -44,7 +47,7 @@ Bowling.prototype.runCardMaking = function () {
     }
   }
   // end of loop big loop
-
+  console.log(this.card)
   return this.card;
 };
 
@@ -67,8 +70,11 @@ Bowling.prototype.makeCardTemplate = function () {
   return this.card;
 };
 
-Bowling.prototype.getInput = function () {
-  return getRndInteger(1, 11);
+Bowling.prototype.getInput = function (input) {
+  input = parseInt(input,10)
+  this.input = input
+  console.log(this.input)
+  return input
 };
 
 Bowling.prototype.calculateScore = function (numPinsDown) {

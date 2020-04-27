@@ -414,6 +414,12 @@ The currentAvailableRolls array also could be used by the interface to manage wh
 
 Extracted this out to a function prepareButtons, and called it in record, and in reset (to set up all the buttons to be available for the first roll).
 
+## Refactors
+
+- I refactored the advance method to take the current frame as an argument and call advance to the next frame if the frame isComplete, else increment the roll. 
+
+Tests still green.
+
 ## Retrospective
 
 - I would like to be revise the tests for the scorecard to use dependency injection, to test it in isolation from actual frame objects. This is mainly for practising dependency injection in JS, rather than any actual use case, as the scorecard would never use any object in place of frame.

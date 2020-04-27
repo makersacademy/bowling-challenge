@@ -76,6 +76,10 @@ brew install node
 npm install
 ```
 
+## Using the scorecard
+
+The scorecard can be used simply by opening the project's index.html page.
+
 ## Running tests
 
 ```bash
@@ -216,5 +220,5 @@ I also left it quite late to refactor the game-controller code. By the time I re
 The challenge is essentially feature complete. However, there are additional things I would do given more time:
 
 * Code coverage - At present the project does not use a code coverage tool. This is an important metric, and I would add the Istanbul npm module as it works well with Jasmine.
-* End-to-end testing - There are no tests covering the controller code. I realise this is far from ideal, and that I could have implemented something that tested their interaction with the model. However, I chose not to for the following reason. I believe an end-to-end testing module, eg Cypress, that exercises the code by directly controlling the browser would be the most effective way of testing this code. The challenge did not involve setting one of these up, but if I were to continue working on this, I would do so as a priority.
+* End-to-end testing - There are no tests covering the controller code. I realise this is far from ideal, and that I could have implemented something that tested their interaction with the model. However, I chose not to for the following reason. I believe an end-to-end testing module, eg Cypress, that exercises the code by directly controlling the browser would be the most effective way of testing this code. Anything I had done without a library such as this would have been very awkward and incomplete because of the interactions between the controller code and web-page DOM model. The challenge did not involve setting one of these up, but if I were to continue working on this, I would do so as a priority.
 

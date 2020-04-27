@@ -41,23 +41,24 @@ describe('Frame', function(){
     it('returns complete when two scores', function() {
         frame.addScore(3)
         frame.addScore(4)
+        frame.isFrameComplete()
         expect(frame.isComplete).toEqual(true);
     });
 
     it('returns strike as true if 10 scored on first go', function() {
         frame.addScore(10)
-        expect(frame.isStrike()).toBeTruthy;
+        expect(frame.isStrike()).toBe(true);
     });
 
     it('returns strike as false if 10 not scored on first go', function() {
         frame.addScore(5)
-        expect(frame.isStrike()).toBeFalsy;
+        expect(frame.isStrike()).toBe(false);
     });
 
     it('returns spare as true if rollOne plus rollTwo is 10', function() {
         frame.addScore(6)
         frame.addScore(4)
-        expect(frame.isSpare()).toBeTruthy;
+        expect(frame.isSpare()).toBe(true);
     });
 
 });

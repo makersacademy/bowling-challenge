@@ -18,7 +18,7 @@ Frame.prototype.addScore = function(score) {
 }
 
 Frame.prototype.isFrameComplete = function() {
-    if ((this.isStrike() === true) || ((this.rollOne !== null) && (this.rollTwo !== null))) {
+    if ((this.rollOne === this.MAX_SCORE) || (this.rollOne !== null && this.rollOne !== null)) {
         return this.isComplete = true
     } else {
         return this.isComplete = false

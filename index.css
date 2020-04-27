@@ -3,6 +3,13 @@ src: url(fonts/MISTV___.TTF);
 font-family: custom-font;  
 }
 
+@font-face {
+    src: url(fonts/desyrel.ttf); 
+    font-family: pen;  
+    }
+
+
+
 
 .mbody{
 min-width: 100%;
@@ -47,12 +54,13 @@ padding-top: 15px;
     padding-top: 170px;
     padding-bottom: 100px;
     min-width: 90%;
-    padding-left: 15px;
-   
+    font-family: pen; 
+    font-size: 30px;
+  
 }
 
 input{
-    max-width: 40px;
+    max-width: 60px;
     padding: 0;
     z-index: 1;
     position: absolute;
@@ -69,5 +77,14 @@ button{
 }
 
 th {max-width: 30px;}
+
+input{
+   background-color: transparent;
+   border: none;
+   font-family: pen; 
+   font-size: 20px; 
+}
+
+td {min-width: 30px;}
 
 

@@ -2,6 +2,25 @@
 Bowling Challenge
 =================
 
+Focus 
+- Understanding spies in testing - yes and explore call Fake 
+- Following TDD - yes but sometimes didn't refractor straight after and forgot to commit consistently
+- Solving the backend - mostly but this focus meant the front-end was relegated to the end 
+- Refractoring - yes tried to seperate methods, think about names
+
+- I decided to do the backend first as this was my focus but in retrospec I should have done the interface and backend simultaneously because it has created an issue where the backend and the front-end are hard to integrate - I have a runCardMaking method which makes the card, by looping 20 x but it is difficult to get the input to change every time. 
+
+Method used so far to try: 
+- var input = $('#input').val()  in interface will get input but passes it through once 
+- var input = $('#input').val()  - in Bowling.js - jquery does not seem to work in a src file 
+  
+Methods to try: 
+- 1. Document.getElementById() - in Bowling.js - this way the src file can get input 
+- 2. reorganising Bowling.js so that all methods are seperate and having the loop in the interface 
+
+I think option is probably how it is meant to be done ? Option 1 will be quicker but might not work.
+
+
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

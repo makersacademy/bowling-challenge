@@ -17,7 +17,7 @@ function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-Bowling.prototype.runCardMaking = function () {
+Bowling.prototype.runCardMaking = function (input) {
   var rollCount;
   var frameCount;
   var pins;
@@ -30,7 +30,7 @@ Bowling.prototype.runCardMaking = function () {
         pins = "x";
         score = this.calculateScore(0);
       } else {
-       // this.getInput()
+       
         pins = this.input;
 
         this.switchStrike(rollCount, pins)

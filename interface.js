@@ -8,7 +8,7 @@ $('#input-form').submit(function(){
   var input = $('#input').val()
   //console.log(input)
   $('#num-pins-down').text(input)
-  bowling.getInput(input)
+  getInputMethod =bowling.getInput(input)
   bowling.runCardMaking()
   return false 
 })

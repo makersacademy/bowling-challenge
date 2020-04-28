@@ -21,9 +21,9 @@ class Scorecard {
     });
   }
   scoreLogic(frame, index, frames) {
-    if (frame.isSpare() == true) {
+    if (frame.isSpare()) {
       this.addSpare(frame, index, frames);
-    } else if (frame.isStrike() == true) {
+    } else if (frame.isStrike()) {
       this.addStrike(frame, index, frames);
     } else {
       this.addOpenFrame(frame);
@@ -75,9 +75,9 @@ class Scorecard {
     }
   }
   isGameComplete() {
-    const previousFrame = this.frames[this.frames.length-1];
-    const frameBeforeLast = this.frames[this.frames.length-2];
     const numberOfFrames = this.frames.length;
+    const previousFrame = this.frames[numberOfFrames-1];
+    const frameBeforeLast = this.frames[numberOfFrames-2];
 
     if (numberOfFrames == 10 &&
     previousFrame.isOpenFrame() ||
@@ -89,8 +89,8 @@ class Scorecard {
     }
   }
   tooManyRolls(roll2) {
-    const previousFrame = this.frames[this.frames.length-1];
     const numberOfFrames = this.frames.length;
+    const previousFrame = this.frames[numberOfFrames-1];
 
     if (numberOfFrames == 10 &&
     previousFrame.isSpare() &&

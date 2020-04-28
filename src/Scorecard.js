@@ -5,8 +5,9 @@ class Scorecard {
     this.TEN_FRAMES = 10;
   }
   addFrame(frame) {
-    this.isGameComplete();
-    this.tooManyRolls(frame.roll2);
+    if (this.frames.length >= this.TEN_FRAMES) {
+      this.finalframes(frame.roll2);
+    }
     this.frames.push(frame);
     this.setScore();
   }
@@ -16,7 +17,8 @@ class Scorecard {
   }
   calculateScore() {
     this.frames.forEach((frame, frameNumber, frames) => {
-      // this ensures rolls after the 10th frame are only counted for bonus points.
+      // this ensures rolls after the 10th frame
+      // are only counted for bonus points.
       if (frameNumber < this.TEN_FRAMES) {
         this.scoreLogic(frame, frameNumber, frames);
       }
@@ -77,34 +79,43 @@ class Scorecard {
       return true;
     }
   }
+  finalframes(roll2) {
+    this.isGameComplete();
+    this.correctNumberOfRolls(roll2);
+  }
   isGameComplete() {
     const numberOfFrames = this.frames.length;
     const previousFrame = this.frames[numberOfFrames-1];
     const frameBeforeLast = this.frames[numberOfFrames-2];
 
-    if (numberOfFrames == 10 &&
+    if (numberOfFrames == this.TEN_FRAMES &&
     previousFrame.isOpenFrame()) {
       throw new Error('Game complete!');
     }
-    if (numberOfFrames == 11 &&
-      (previousFrame.isSpare() ||
-      frameBeforeLast.isSpare())) {
+    if (numberOfFrames == this.TEN_FRAMES+1 &&
+      previousFrame.isSpare()) {
       throw new Error('Game complete!');
     }
-    if (numberOfFrames == 12) {
+    if (numberOfFrames == this.TEN_FRAMES+1 &&
+      frameBeforeLast.isSpare()) {
+      throw new Error('Game complete!');
+    }
+    if (numberOfFrames == this.TEN_FRAMES+2) {
       throw new Error('Game complete!');
     }
   }
-  tooManyRolls(roll2) {
+  correctNumberOfRolls(roll2) {
     const numberOfFrames = this.frames.length;
     const previousFrame = this.frames[numberOfFrames-1];
 
-    if (numberOfFrames == 10 &&
+    if (numberOfFrames == this.TEN_FRAMES &&
     previousFrame.isSpare() &&
-    roll2 > 0 ||
-    numberOfFrames == 11 &&
-    previousFrame.isStrike() &&
     roll2 > 0) {
+      throw new Error('Cannot add 2 rolls.');
+    }
+    if (numberOfFrames == this.TEN_FRAMES+1 &&
+      previousFrame.isStrike() &&
+      roll2 > 0) {
       throw new Error('Cannot add 2 rolls.');
     }
   }

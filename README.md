@@ -2,6 +2,48 @@
 Bowling Challenge
 =================
 
+## How I set it up
+```
+npm init --yes
+eslint --init
+unzip jasmine-standalone-3.5.0.zip
+```
+
+## Input - Output table
+
+Input | Output
+------|-------
+00,00,00,00,00,00,00,00,00,00 | 0
+05,00,00,00,00,00,00,00,00,00 | 5
+05,05,05,05,05,05,05,05,05,05 | 5
+10,05,00,00,00,00,00,00,00,00 | 20
+10,05,05,00,00,00,00,00,00,00 | 25
+
+## Class Diagram
+
+Objects | Messages
+--------|--------
+Frame | isStrike </br> isSpare </br> isOpenFrame </br> this.roll1 </br> this.roll2
+Scorecard | this.frames </br> this.score </br> calculateScore
+
+## Setting up Travis-CI
+
+I ran the following command:
+```
+touch .travis.yml
+```
+
+
+## Developmental approach
+
+I started imagining from a users perspective, that I would want to enter a list of my frames, and be returned the total score of my game.
+
+So I created an input/output table for my imaginary function and put in some simple use cases. Then I used this to begin test driving my program.
+
+After test driving this code for a few 5 different simple cases, I realised that due to the complexity of the rules of bowling, it may be simpler if I request the user to enter only one frame at a time.
+
+This led me to start thinking about a new model for the code.
+
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

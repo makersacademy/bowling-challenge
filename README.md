@@ -1,4 +1,28 @@
 
+Domain model: 
+
+As a player
+So that I can keep scores
+I want the scorecard to be blank
+
+As a player
+So that I can record the scores
+I want to input my rolls for each round
+
+As a player
+So that I can see my score for that round
+I want the knocked down pins to total score
+
+As a player
+So that I can see my score when i get a spare
+I want to see the total plus 5 points (and add the next knocked down pin)
+
+As a player
+So that I can see my score when i get a strike
+I want to see the total plus 10 points (and add the next two knocked down rolls)
+
+
+
 Bowling Challenge
 =================
 

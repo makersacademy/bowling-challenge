@@ -1,0 +1,1 @@
+// strike bonus = 10

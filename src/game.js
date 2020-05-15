@@ -4,6 +4,10 @@ class Game {
     this.currentFrame = 0;
   }
 
+  getCurrentFrame() {
+    return this.frames[this.currentFrame];
+  }
+
   nextFrame() {
     this.currentFrame += 1;
   }

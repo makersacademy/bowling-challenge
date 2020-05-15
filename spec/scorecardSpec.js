@@ -28,9 +28,13 @@ it('can result a spare', function(){
   expect(scorecard.isSpare()).toBe(true)
 });
 
-// spare - it adds the next score on
-
 // is strike?
+it('can result a strike', function(){
+  scorecard.knockDownPins(1,10)
+  expect(scorecard.isStrike()).toBe(true)
+});
+
+// spare - it adds the next score on
 
 // strike - it adds the next two scores on
 

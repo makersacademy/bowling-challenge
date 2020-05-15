@@ -33,6 +33,15 @@ class Scorecard {
     }
   }
 
+  isStrike(){
+    if (this.roll1 || this.roll2 === 10){
+      return true
+    }
+    else {
+      return false
+    }
+  }
+
 
 
 }

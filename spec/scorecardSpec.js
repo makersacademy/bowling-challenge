@@ -22,6 +22,12 @@ it('can add two frames to the score', function(){
   expect(scorecard.knockDownPins(5,3)).toEqual(8)
 });
 
+// is spare?
+it('can result a spare', function(){
+  scorecard.knockDownPins(5,5)
+  expect(scorecard.isSpare()).toBe(true)
+});
+
 // spare - it adds the next score on
 
 // is strike?

@@ -17,9 +17,22 @@ class Scorecard {
   }
 
   knockDownPins(roll1, roll2){
+    this.roll1 = roll1
+    this.roll2 = roll2
     var score = roll1 + roll2
     this.totalArr.push(score)
     return score
   }
+
+  isSpare(){
+    if (this.roll1 + this.roll2 === 10){
+      return true
+    }
+    else {
+      return false
+    }
+  }
+
+
 
 }

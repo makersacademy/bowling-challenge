@@ -1,7 +1,9 @@
 describe('Frame', function() {
   var frame;
   beforeEach(function() {
-    frame = new Frame(Roll);
+    firstRoll = jasmine.createSpyObj('firstRoll', ['score', 'setScore']);
+    secondRoll = jasmine.createSpyObj('secondRoll', ['score']);
+    frame = new Frame(firstRoll, secondRoll);
   });
 
   describe('#rolls', function() {
@@ -20,6 +22,13 @@ describe('Frame', function() {
     it('adds to currentRoll', function() {
       frame.nextRoll();
       expect(frame.currentRoll).toEqual(1);
+    });
+  });
+
+  describe('#setCurrentRollScore', function() {
+    it('sets score of current roll', function() {
+      frame.setCurrentRollScore(5);
+      expect(firstRoll.setScore).toHaveBeenCalledWith(5);
     });
   });
 });

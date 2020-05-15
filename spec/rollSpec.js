@@ -4,9 +4,16 @@ describe('Roll', function() {
     roll = new Roll(5);
   });
 
-  describe('score', function() {
+  describe('#score', function() {
     it('has a score for its roll', function() {
       expect(roll.score).toEqual(5);
+    });
+  });
+
+  describe('setScore', function() {
+    it('sets the score', function() {
+      roll.setScore(7);
+      expect(roll.score).toEqual(7);
     });
   });
 });

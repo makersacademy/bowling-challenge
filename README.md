@@ -2,13 +2,6 @@
 Bowling Challenge
 =================
 
-
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
-
 ## The Task
 
 **THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
@@ -16,12 +9,6 @@ Bowling Challenge
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
 
 ___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
 
@@ -61,12 +48,6 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
 
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
 ## Code Review
 
 In code review we'll be hoping to see:
@@ -74,4 +55,23 @@ In code review we'll be hoping to see:
 * All tests passing
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+#### Bowling Rules
+- The goal is to knock down all ten pins
+- Each frame consists of throwing the ball twice to knock down all the pins
+- If you knock down all the pins with the first ball, it is called a "strike"
+- If you knock down all the pins with the second ball, it is called a "spare"
+- Each games consists of ten frames. If you bowl a strike in the tenth frame, you get
+two more balls. If you throw a spare, you get one more ball.
+- Open frames are frames without a strike or spare
+- Scoring is based on the number of pins you knock down. However, if you bowl a
+spare, you get to add the pins in your next ball to that frame. For strikes, you get
+the next two balls.
+- An average of three games is played. You determine a 3 game average by adding
+all 3 scores and then dividing that number by 3.
+- Accurate preliminary scores are essential for fair divisioning.
+- Foul line is in effect. If you step over the foul line, any pins knocked down will not
+count towards your score.
+- Ramp Bowling is allowed for those athletes that are not physically capable of
+rolling a bowling ball. The ramp is for physical disabilities and not to be used to
+just increase a score.
+- Bumpers are not allowed.

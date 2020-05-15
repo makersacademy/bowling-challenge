@@ -1,14 +1,12 @@
-describe('JavaFizzBuzz', function(){
+describe('Bowling', function(){
     // method statement
     var bowling;
     beforeEach(function() {
       bowling = new Bowling();
     });
   
-    describe('knows when the number is', function() {
-        // it('devisable by 3', function() {
-        //     expect(javabuzz.isDivisibleByThree(3)).toBe(true);
-        // });
+    it('score at the start of the game is 0', function() {
+      expect(bowling.getTotalScore()).toEqual(0);
 
     });
 

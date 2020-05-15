@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/dpwdec/bowling-challenge.png?branch=master)](https://travis-ci.org/dpwdec/bowling-challenge)
+[![Build Status](https://travis-ci.com/dpwdec/bowling-challenge.svg?branch=master)](https://travis-ci.org/dpwdec/bowling-challenge)
 
 # Bowling Scorecard
 

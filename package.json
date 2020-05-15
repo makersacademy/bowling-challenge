@@ -8,7 +8,10 @@
     "karma": "*",
     "karma-cli": "*",
     "karma-jasmine": "*",
-    "karma-chrome-launcher": "*"
+    "karma-chrome-launcher": "*",
+    "karma-spec-reporter": "*",
+    "karma-super-dots-reporter": "*",
+    "karma-coverage": "*"
   },
   "directories": {
     "doc": "docs"

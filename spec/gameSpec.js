@@ -12,7 +12,7 @@ describe('Game', function() {
 
   describe('#currentFrame', function() {
     it('stores the current frame', function() {
-      expect(game.currentFrame).toEqual(0);
+      expect(game.currentFrameIndex).toEqual(0);
     });
   });
 
@@ -25,15 +25,15 @@ describe('Game', function() {
   describe('#nextFrame', function() {
     it('progresses the game to the next frame', function() {
       game.nextFrame();
-      expect(game.currentFrame).toEqual(1);
+      expect(game.currentFrameIndex).toEqual(1);
     });
   });
 
   describe('#update', function() {
     it('progresses the current frames roll if the current frame is not finished', function() {
-      game.frames[game.currentFrame].setCurrentRollScore(9);
+      game.frames[game.currentFrameIndex].setCurrentRollScore(9);
       game.update();
-      expect(game.frames[game.currentFrame].currentRoll).toEqual(1);
+      expect(game.frames[game.currentFrameIndex].currentRoll).toEqual(1);
     });
   });
 });

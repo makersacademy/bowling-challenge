@@ -18,10 +18,22 @@ describe('Game', function () {
             expect(game.roll).toEqual(2);
         });
         it("increments frame by 1 if roll was 2", function () {
-            game.roll = 2
-            game.play(4)
+            game.roll = 2;
+            game.play(4);
             expect(game.frame).toEqual(2);
             expect(game.roll).toEqual(1);
+        });
+        it("calls end method if number of frames exceeds 10", function () {
+            spyOn(game, 'end')
+            game.frame = 11;
+            game.play(4);
+            expect(game.end).toHaveBeenCalled();
+        });
+    });
+
+    describe('end', function () {
+        it('prints message saying game has ended', function () {
+            expect(game.end).toMatch("The game has ended.");
         });
     });
 });

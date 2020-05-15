@@ -15,7 +15,7 @@ class Bowling {
     } else {
       this._countHelper();
       this.frameScore.push(score);
-      console.log(this.frameScore)
+      // console.log(this.frameScore)
     }
   }
   getTotalScore() {

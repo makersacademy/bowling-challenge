@@ -22,7 +22,7 @@ class Bowling {
       this.FRAME += 1;
     }
     if(this.frameScore < this.MAX_FRAME_SCORE && this.POSITION <= 2) {
-      this.POSITION += 1;
+      this.POSITION = 2;
       this.frameScore += score;
     }
   }

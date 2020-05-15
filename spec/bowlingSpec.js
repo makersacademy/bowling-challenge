@@ -16,6 +16,13 @@ describe('Bowling', function() {
         expect(bowling.FRAME).toEqual(1)
         expect(bowling.POSITION).not.toEqual(1);
       });
+      it('able to count score when in position 2', function() {
+        bowling.countScore(5);
+        bowling.countScore(3);
+        expect(bowling.getFrameScore()).toEqual(8);
+        expect(bowling.FRAME).toEqual(2);
+        expect(bowling.POSITION).toEqual(2);
+      });
 
     });
 

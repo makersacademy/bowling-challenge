@@ -15,4 +15,11 @@ describe('Game', function() {
       expect(game.currentFrame).toEqual(0);
     });
   });
+
+  describe('#nextFrame', function() {
+    it('progresses the game to the next frame', function() {
+      game.nextFrame();
+      expect(game.currentFrame).toEqual(1);
+    });
+  });
 });

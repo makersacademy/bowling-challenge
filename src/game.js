@@ -7,4 +7,10 @@ class Game {
   nextFrame() {
     this.currentFrame += 1;
   }
+
+  update() {
+    if(!this.frames[this.currentFrame].finished()) {
+      this.frames[this.currentFrame].nextRoll();
+    }
+  }
 }

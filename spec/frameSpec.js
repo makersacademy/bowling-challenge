@@ -1,8 +1,8 @@
 describe('Frame', function() {
   var frame;
   beforeEach(function() {
-    firstRoll = jasmine.createSpyObj('firstRoll', ['score', 'setScore']);
-    secondRoll = jasmine.createSpyObj('secondRoll', ['score']);
+    firstRoll = jasmine.createSpyObj('firstRoll', ['getScore', 'setScore']);
+    secondRoll = jasmine.createSpyObj('secondRoll', ['getScore']);
     frame = new Frame(firstRoll, secondRoll);
   });
 
@@ -30,5 +30,24 @@ describe('Frame', function() {
       frame.setCurrentRollScore(5);
       expect(firstRoll.setScore).toHaveBeenCalledWith(5);
     });
+  });
+
+  describe('#finished', function() {
+    it('returns true if both roll slots are filled', function() {
+      firstRoll.getScore.and.returnValue(1);
+      secondRoll.getScore.and.returnValue(1);
+      frame = new Frame(firstRoll, secondRoll);
+      expect(frame.finished()).toEqual(true);
+    });
+    it('returns true if first roll slot is greater than 10', function() {
+      firstRoll.getScore.and.returnValue(10);
+      frame = new Frame(firstRoll, secondRoll);
+      expect(frame.finished()).toEqual(true);
+    });
+    it('returns false if one slot is not filled', function() {
+      firstRoll.getScore.and.returnValue(9);
+      frame = new Frame(firstRoll, secondRoll);
+      expect(frame.finished()).toEqual(false);
+    })
   });
 });

@@ -16,4 +16,10 @@ describe('Roll', function() {
       expect(roll.score).toEqual(7);
     });
   });
+
+  describe('getScore', function() {
+    it('returns the score', function() {
+      expect(roll.getScore()).toEqual(5);
+    });
+  })
 });

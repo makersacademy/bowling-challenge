@@ -6,4 +6,8 @@ class Roll {
   setScore(score) {
     this.score = score;
   }
+
+  getScore() {
+    return this.score;
+  }
 }

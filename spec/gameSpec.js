@@ -16,6 +16,12 @@ describe('Game', function() {
     });
   });
 
+  describe('#getCurrentFrame', function() {
+    it('returns the current frame object', function() {
+      expect(game.getCurrentFrame()).toBeInstanceOf(Frame);
+    });
+  });
+
   describe('#nextFrame', function() {
     it('progresses the game to the next frame', function() {
       game.nextFrame();

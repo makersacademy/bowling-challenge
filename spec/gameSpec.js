@@ -22,4 +22,12 @@ describe('Game', function() {
       expect(game.currentFrame).toEqual(1);
     });
   });
+
+  describe('#update', function() {
+    it('progresses the current frames roll if the current frame is not finished', function() {
+      game.frames[game.currentFrame].setCurrentRoll(9);
+      game.update();
+      expect(game.frames[game.currentFrame].currentFrame).toEqual(1);
+    });
+  });
 });

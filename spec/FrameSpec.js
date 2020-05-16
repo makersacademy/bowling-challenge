@@ -35,5 +35,10 @@ describe("Frame", function() {
       frame.second = 5;
       expect(frame.second).toEqual(5);
     });
+
+    it("should return total score", function() {
+      frame.second = 5;
+      expect(frame.score()).toEqual(8);
+    });
   });
 });

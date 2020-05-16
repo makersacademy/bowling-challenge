@@ -10,4 +10,8 @@ class Frame {
     return false;
   }
 
+  score() {
+    return this.first + this.second;
+  }
+
 };

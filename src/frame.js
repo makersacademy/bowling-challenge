@@ -66,9 +66,9 @@ class Frame {
   }
 
   _calculateFinishState() {
+    if(this._checkForStrike()) return this.finishStates.strike;
     if(this._checkForSpare()) return this.finishStates.spare;
     if(this._checkForFinished()) return this.finishStates.finished;
-    if(this._checkForStrike()) return this.finishStates.strike;
     return this.finishStates.unfinished;
   }
 }

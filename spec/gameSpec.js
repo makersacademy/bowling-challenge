@@ -5,6 +5,7 @@ describe('Game', function() {
     rollClass = function() {}
     frameClass.prototype.nextRoll = function() {}
     frameClass.prototype.finished = function() {}
+    frameClass.prototype.updateFinishState = function() {}
     frameFactory = {
       instance: function() {
         return new frameClass()

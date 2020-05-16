@@ -23,6 +23,7 @@ class Game {
   }
 
   update() {
+    this.getCurrentFrame().updateFinishState();
     if(!this.getCurrentFrame().finished()) {
       this.getCurrentFrame().nextRoll();
     } else {

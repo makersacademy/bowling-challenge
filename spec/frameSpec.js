@@ -60,14 +60,6 @@ describe('Frame', function() {
     })
   });
 
-  describe('#basicTotalScore', function() {
-    it('returns the basic total of both rolls', function() {
-      firstRoll.getScore.and.returnValue(4);
-      secondRoll.getScore.and.returnValue(3);
-      expect(frame.basicTotalScore()).toEqual(7);
-    });
-  });
-
   describe('#setFinishState', function() {
     it('sets finish state', function() {
       frame.setFinishState(frame.finishStates.finished);
@@ -133,6 +125,22 @@ describe('Frame', function() {
       secondRoll.getScore.and.returnValue('');
       expect(frame.rollText().firstRoll).toEqual(3);
       expect(frame.rollText().secondRoll).toEqual('');
+    });
+  });
+
+  describe('#basicTotalScore', function() {
+    it('returns the basic total of both rolls', function() {
+      firstRoll.getScore.and.returnValue(4);
+      secondRoll.getScore.and.returnValue(3);
+      expect(frame.basicTotalScore()).toEqual(7);
+    });
+  });
+
+  describe('#totalScore', function() {
+    it('returns the total score basic total score with no bonuses', function() {
+      firstRoll.getScore.and.returnValue(4);
+      secondRoll.getScore.and.returnValue(3);
+      expect(frame.totalScore()).toEqual(7);
     });
   });
 });

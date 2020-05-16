@@ -40,6 +40,10 @@ class Frame {
     return this.rolls[0].getScore() + this.rolls[1].getScore();
   }
 
+  totalScore() {
+    return this.basicTotalScore();
+  }
+
   // finish state calculation
   getFinishState() {
     return this.finishState;

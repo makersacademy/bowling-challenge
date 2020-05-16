@@ -1,8 +1,7 @@
 class Frame {
-  index;
-
   constructor(index) {
     this.index = index
+    this.first = 0;
   }
 
 };

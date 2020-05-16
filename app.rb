@@ -18,6 +18,7 @@ class BowlingApp < Sinatra::Base
   get '/frameform' do
     @roll1 = session[:roll1] 
     @roll2 = session[:roll2]
+    
     erb :index
   end
 

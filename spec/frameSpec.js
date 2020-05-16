@@ -3,7 +3,16 @@ describe('Frame', function() {
   beforeEach(function() {
     firstRoll = jasmine.createSpyObj('firstRoll', ['getScore', 'setScore', 'isScored']);
     secondRoll = jasmine.createSpyObj('secondRoll', ['getScore', 'isScored']);
-    frame = new Frame(firstRoll, secondRoll);
+    firstFrameRoll = {
+      getScore: function() {
+        return 4;
+      }
+    }
+    firstFrame = {
+      rolls: [firstFrameRoll]
+    }
+    secondFrame = {};
+    frame = new Frame(FinishStates, firstRoll, secondRoll, firstFrame, secondFrame);
   });
 
   describe('#rolls', function() {
@@ -62,14 +71,14 @@ describe('Frame', function() {
 
   describe('#setFinishState', function() {
     it('sets finish state', function() {
-      frame.setFinishState(frame.finishStates.finished);
-      expect(frame.finishState).toEqual(frame.finishStates.finished);
+      frame.setFinishState(FinishStates().finished);
+      expect(frame.finishState).toEqual(FinishStates().finished);
     });
   });
 
   describe('#getFinishState', function() {
     it('returns the finishState', function() {
-      expect(frame.getFinishState()).toEqual(frame.finishStates.unfinished);
+      expect(frame.getFinishState()).toEqual(FinishStates().unfinished);
     })
   });
 
@@ -78,7 +87,7 @@ describe('Frame', function() {
       firstRoll.isScored.and.returnValue(true);
       secondRoll.isScored.and.returnValue(true);
       frame.updateFinishState();
-      expect(frame.finishState).toEqual(frame.finishStates.finished);
+      expect(frame.finishState).toEqual(FinishStates().finished);
     });
     it('updates the finish state to spare if both values add up to 10', function() {
       firstRoll.isScored.and.returnValue(true);
@@ -86,35 +95,35 @@ describe('Frame', function() {
       firstRoll.getScore.and.returnValue(5);
       secondRoll.getScore.and.returnValue(5);
       frame.updateFinishState();
-      expect(frame.finishState).toEqual(frame.finishStates.spare);
+      expect(frame.finishState).toEqual(FinishStates().spare);
     });
     it('updates the finish state to strike if first value is 10', function() {
       firstRoll.getScore.and.returnValue(10);
       frame.updateFinishState();
-      expect(frame.finishState).toEqual(frame.finishStates.strike);
+      expect(frame.finishState).toEqual(FinishStates().strike);
     });
     it('keeps the value as unfinished if frame is not finished spare or strike', function() {
       firstRoll.getScore.and.returnValue(1);
       secondRoll.isScored.and.returnValue(false);
       frame.updateFinishState();
-      expect(frame.finishState).toEqual(frame.finishStates.unfinished);
+      expect(frame.finishState).toEqual(FinishStates().unfinished);
     })
   });
 
   describe('#rollReportText', function() {
     it('returns an object with X and "" if it was a strike', function() {
-      spyOn(frame, 'getFinishState').and.returnValue(frame.finishStates.strike);
+      spyOn(frame, 'getFinishState').and.returnValue(FinishStates().strike);
       expect(frame.rollText().firstRoll).toEqual('X');
       expect(frame.rollText().secondRoll).toEqual('');
     });
     it('returns an object with 3 and "/" if it was a spare', function() {
-      spyOn(frame, 'getFinishState').and.returnValue(frame.finishStates.spare);
+      spyOn(frame, 'getFinishState').and.returnValue(FinishStates().spare);
       firstRoll.getScore.and.returnValue(3);
       expect(frame.rollText().firstRoll).toEqual(3);
       expect(frame.rollText().secondRoll).toEqual('/');
     });
     it('returns current score values for rolls if finished', function() {
-      spyOn(frame, 'getFinishState').and.returnValue(frame.finishStates.finished);
+      spyOn(frame, 'getFinishState').and.returnValue(FinishStates().finished);
       firstRoll.getScore.and.returnValue(3);
       secondRoll.getScore.and.returnValue(6);
       expect(frame.rollText().firstRoll).toEqual(3);
@@ -140,7 +149,15 @@ describe('Frame', function() {
     it('returns the total score basic total score with no bonuses', function() {
       firstRoll.getScore.and.returnValue(4);
       secondRoll.getScore.and.returnValue(3);
+      spyOn(frame, 'getFinishState').and.returnValue(FinishStates().finished);
       expect(frame.totalScore()).toEqual(7);
+    });
+    it('returns the total spare from a spare based on the next roll', function() {
+      firstRoll.getScore.and.returnValue(3);
+      secondRoll.getScore.and.returnValue(7);
+      frame.updateFinishState();
+      expect(frame.totalScore()).toEqual(14);
+
     });
   });
 
@@ -154,5 +171,17 @@ describe('Frame', function() {
       frame.reportTotalScore();
       expect(frame.totalScore).toHaveBeenCalled();
     });
-  })
+  });
+
+  describe('#isBonus', function() {
+    it('returns false by default', function() {
+      expect(frame.isBonus).toBe(false);
+    });
+  });
+
+  describe('#adjacentFrames', function() {
+    it('has a list of adjacent frames', function() {
+      expect(frame.adjacentFrames.length).toEqual(2);
+    });
+  });
 });

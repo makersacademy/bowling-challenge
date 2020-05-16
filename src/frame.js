@@ -1,20 +1,17 @@
 'use strict';
 
 class Frame {
-  constructor(roll1, roll2) {
+  constructor(finishStates, roll1, roll2, frame1, frame2) {
     this.rolls = [roll1, roll2];
     this.currentRollIndex = 0;
-    this.finishStates = {
-      unfinished: 0,
-      finished: 1,
-      spare: 2,
-      strike: 3
-    }
-    this.finishState = this.finishStates.unfinished;
+    this.finishStates = finishStates;
+    this.finishState = this.finishStates().unfinished;
+    this.isBonus = false;
+    this.adjacentFrames = [frame1, frame2];
   }
 
   getCurrentRoll() {
-    return this.rolls[this.currentRollIndex]
+    return this.rolls[this.currentRollIndex];
   }
 
   nextRoll() {
@@ -31,8 +28,8 @@ class Frame {
   }
 
   rollText() {
-    if(this.getFinishState() == this.finishStates.strike) return { firstRoll: 'X', secondRoll: ''};
-    if(this.getFinishState() == this.finishStates.spare) return { firstRoll: this.rolls[0].getScore(), secondRoll: '/'};
+    if(this.getFinishState() == this.finishStates().strike) return { firstRoll: 'X', secondRoll: ''};
+    if(this.getFinishState() == this.finishStates().spare) return { firstRoll: this.rolls[0].getScore(), secondRoll: '/'};
     return { firstRoll: this.rolls[0].getScore(), secondRoll: this.rolls[1].getScore() }
   }
 
@@ -41,7 +38,10 @@ class Frame {
   }
 
   totalScore() {
-    return this.basicTotalScore();
+    if(this.getFinishState() == this.finishStates().finished) return this.basicTotalScore();
+    if(this.getFinishState() == this.finishStates().spare) {
+      return this.basicTotalScore() + this.adjacentFrames[0].rolls[0].getScore();
+    }
   }
 
   reportTotalScore() {
@@ -75,9 +75,9 @@ class Frame {
   }
 
   _calculateFinishState() {
-    if(this._checkForStrike()) return this.finishStates.strike;
-    if(this._checkForSpare()) return this.finishStates.spare;
-    if(this._checkForFinished()) return this.finishStates.finished;
-    return this.finishStates.unfinished;
+    if(this._checkForStrike()) return this.finishStates().strike;
+    if(this._checkForSpare()) return this.finishStates().spare;
+    if(this._checkForFinished()) return this.finishStates().finished;
+    return this.finishStates().unfinished;
   }
 }

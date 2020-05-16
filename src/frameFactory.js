@@ -7,6 +7,6 @@ class FrameFactory {
   }
 
   instance() {
-    return new this.frameClass(new this.rollClass(-1), new this.rollClass(-1))
+    return new this.frameClass(FinishStates, new this.rollClass(-1), new this.rollClass(-1))
   }
 }

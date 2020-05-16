@@ -9,7 +9,7 @@ describe('Bowling', function() {
       expect(bowling.firstBowl).toBe(true);
     });
 
-    describe('Frame score without strikes', function() {
+    describe('Frame score under 10 pins', function() {
       it('when in position 1 and frame 1', () => {
         bowling.countScore(4);
         expect(bowling.frameScore).toEqual(4);
@@ -23,7 +23,6 @@ describe('Bowling', function() {
         expect(bowling.firstBowl).toBe(true);
         expect(bowling.frame).toEqual(2);
       });
-
       it('when in position 1 and frame 2', () => {
         bowling.countScore(4);
         bowling.countScore(4);
@@ -31,6 +30,13 @@ describe('Bowling', function() {
         expect(bowling.getTotalScore() + bowling.frameScore).toEqual(12);
         expect(bowling.firstBowl).toBe(false);
         expect(bowling.frame).toEqual(2);
+      });
+      it('when in position 2 frame 8', () => {
+        for(let i = 0; i < 16; i++) {
+          bowling.countScore(1);
+        };
+        expect(bowling.getTotalScore()).toEqual(16);
+        expect(bowling.frame).toEqual(9);
       });
       
     });
@@ -55,6 +61,7 @@ describe('Bowling', function() {
           bowling.countScore(10);
         }
         expect(bowling.getTotalScore()).toEqual(150);
+        expect(bowling.frame).toEqual(7);
       });
     });
 

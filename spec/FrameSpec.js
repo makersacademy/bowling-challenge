@@ -77,6 +77,7 @@ describe("Frame", function() {
       it("returns final score on thirdRoll", function() {
         lastFrame.thirdRoll =  8;
         expect(lastFrame.score()).toEqual(18);
+        expect(lastFrame.turns).toEqual(0);
       });
     });
 
@@ -89,6 +90,7 @@ describe("Frame", function() {
       it("returns final score on first two rolls only", function() {
         lastFrame.thirdRoll =  8;
         expect(lastFrame.score()).toEqual(8);
+        expect(lastFrame.turns).toEqual(0);
       });
     });
 
@@ -101,6 +103,7 @@ describe("Frame", function() {
       it("returns final score on thirdroll", function() {
         lastFrame.thirdRoll =  8;
         expect(lastFrame.score()).toEqual(26);
+        expect(lastFrame.turns).toEqual(0);
       });
     });
   });

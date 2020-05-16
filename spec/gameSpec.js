@@ -53,5 +53,12 @@ describe('Game', function() {
   });
 
 
+  // it ('gives a total score of 300 when just rolling 10s', function() {
+  //   for (let i = 0; i < 9; i ++) {game.addFrame([10, 0])};
+  //   game.addLastFrame([10, 10, 10]);
+  //
+  //   expect(game.calculateTotalScore()).toEqual(300);
+  // });
+
 
 });

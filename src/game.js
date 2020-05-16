@@ -20,20 +20,13 @@ class Game {
 
     this.frames.forEach(function (value, index, array) {
 
-      if (index !== 9){
-        if (value[0] + value[1] === 10) {
-          total += value[0] + value[1] + array[index + 1][0]
-        } else {
-          total += value[0] + value[1]
-        }
+      var merged = [].concat.apply([], array);
 
-      } else {
         if (value[0] + value[1] === 10) {
-          total += value[0] + value[1] + value[2]
+          total += merged[index] + merged[index + 1] + merged[index + 2]
         } else {
-          total += value[0] + value[1]
+          total += merged[index] + merged[index + 1]
         }
-      }
 
     });
 

@@ -1,6 +1,7 @@
 class Game {
     'use strict';
-    constructor(){
+    constructor(scorecard){
+      this.scorecard = this._scorecard = typeof scorecard !== 'undefined' ? scorecard : new ScoreCard();
       this.frame = 1;
       this.roll = 1;
       this.knocked = 0;
@@ -17,7 +18,7 @@ class Game {
       if(this.frame === 10){
         this.finalFrameRules(pins)
       }else{
-        this.addScore(pins)
+        this.scorecard.addScore(this.frame, this.roll, pins)
         // sets next roll and frame
         if(this.roll === 2 || pins === 10){
           this.frame ++;
@@ -29,7 +30,7 @@ class Game {
     }
 
     finalFrameRules(pins){
-      this.addScore(pins)
+      this.scorecard.addScore(this.frame, this.roll, pins)
       // checks if player can have an extra round
       if(this.roll === 2){
         if(this.isExtraRound()){
@@ -54,19 +55,9 @@ class Game {
       return "The game has ended.";
     }
 
-    addScore(pins){
-      this.knocked = pins
-      if(this.knocked === 10 && this.frame !== 10){
-        this.score.push({frame: this.frame, roll: this.roll, knocked: this.knocked})
-        this.score.push({frame: this.frame, roll: 2, knocked: 0})
-      } else {
-        this.score.push({frame: this.frame, roll: this.roll, knocked: this.knocked})
-      }
-    }
-
     isExtraRound(){
-      var finalPins = this.score[this.score.length - 1].knocked;
-      var preceedingPins = this.score[this.score.length - 2].knocked;
+      var finalPins = this.scorecard.scoreboard[this.scorecard.scoreboard.length - 1].knocked;
+      var preceedingPins = this.scorecard.scoreboard[this.scorecard.scoreboard.length - 2].knocked;
       /// checks for spare
       if(finalPins + preceedingPins === 10){
         return true;

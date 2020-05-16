@@ -1,9 +1,7 @@
 describe('Game', function () {
     'use strict';
-    var scorecard;
     var game;
     beforeEach(function () {
-        scorecard = jasmine.createSpy('ScoreCard');
         game = new Game();
     });
 
@@ -24,16 +22,15 @@ describe('Game', function () {
             expect(game.roll).toEqual(1);
         });
         it("calls add score method", function () {
-            spyOn(game, 'addScore');
             game.play(4);
-            expect(game.addScore).toHaveBeenCalled();
+            expect(game.scorecard.scoreboard).toEqual([{frame: 1, roll: 1, knocked: 4}]);
         });
         it('strike - so is an extra round', function () {
           for (let i = 0; i < 11; i += 1) {
             game.play(10)
           };
           game.play(2);
-          expect(game.score[game.score.length - 1].roll).toEqual(3);
+          expect(game.scorecard.scoreboard[game.scorecard.scoreboard.length - 1].roll).toEqual(3);
         });
         it('spare - so is an extra round', function () {
           for (let i = 0; i < 19; i += 1) {
@@ -41,7 +38,7 @@ describe('Game', function () {
           };
           game.play(6);
           game.play(2);
-          expect(game.score[game.score.length - 1].roll).toEqual(3);
+          expect(game.scorecard.scoreboard[game.scorecard.scoreboard.length - 1].roll).toEqual(3);
         });
         it('neither - so game ends', function () {
           for (let i = 0; i < 20; i += 1) {
@@ -49,18 +46,11 @@ describe('Game', function () {
           };
           expect(game.play(4)).toEqual("The game has ended.");
         });
-    }); 
+    });
 
     describe('end', function () {
         it('prints message saying game has ended', function () {
             expect(game.end).toMatch("The game has ended.");
-        });
-    });
-
-    describe('addScore', function(){
-        it('adds score from round to array as hash', function () {
-            game.play(4);
-            expect(game.score).toEqual([{frame: 1, roll: 1, knocked: 4}]);
         });
     });
 

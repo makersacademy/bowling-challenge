@@ -143,4 +143,16 @@ describe('Frame', function() {
       expect(frame.totalScore()).toEqual(7);
     });
   });
+
+  describe('#reportTotalScore', function() {
+    it('returns an empty string when frame is not finished', function() {
+      expect(frame.reportTotalScore()).toEqual('');
+    });
+    it('returns total score if it is finished', function() {
+      spyOn(frame, 'totalScore');
+      spyOn(frame, 'finished').and.returnValue(true);
+      frame.reportTotalScore();
+      expect(frame.totalScore).toHaveBeenCalled();
+    });
+  })
 });

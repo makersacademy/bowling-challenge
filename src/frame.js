@@ -44,6 +44,11 @@ class Frame {
     return this.basicTotalScore();
   }
 
+  reportTotalScore() {
+    if(!this.finished()) return '';
+    return this.totalScore();
+  }
+
   // finish state calculation
   getFinishState() {
     return this.finishState;

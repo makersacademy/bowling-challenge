@@ -9,15 +9,29 @@ class Game {
     }
 
     play(pins){
-      if(this.isEnded){
+      // prevents someone from playing if game has ended
+      if(this.isEnded || this.frame >= 11){
         return this.end();
       }
-      if(this.frame === 10 && this.roll === 3){
+      // calls method to check for final frame rules
+      if(this.frame === 10){
+        this.finalFrameRules(pins)
+      }else{
         this.addScore(pins)
-        return this.end();
+        // sets next roll and frame
+        if(this.roll === 2 || pins === 10){
+          this.frame ++;
+          this.roll = 1;
+        } else {
+          this.roll ++;
+        }
       }
-      if(this.frame === 10 && this.roll === 2){
-        this.addScore(pins)
+    }
+
+    finalFrameRules(pins){
+      this.addScore(pins)
+      // checks if player can have an extra round
+      if(this.roll === 2){
         if(this.isExtraRound()){
           this.roll ++;
           return;
@@ -25,11 +39,12 @@ class Game {
           return this.end();
         }
       }
-      this.addScore(pins)
-      if(this.roll === 2){
-        this.frame ++;
-        this.roll = 1;
-      } else {
+      // prevents any extra rounds if extra round already played
+      if(this.roll === 3){
+        return this.end();
+      }
+      // increments roll for the first roll
+      if(this.roll === 1){
         this.roll ++;
       }
     }
@@ -41,7 +56,12 @@ class Game {
 
     addScore(pins){
       this.knocked = pins
-      this.score.push({frame: this.frame, roll: this.roll, knocked: this.knocked})
+      if(this.knocked === 10 && this.frame !== 10){
+        this.score.push({frame: this.frame, roll: this.roll, knocked: this.knocked})
+        this.score.push({frame: this.frame, roll: 2, knocked: 0})
+      } else {
+        this.score.push({frame: this.frame, roll: this.roll, knocked: this.knocked})
+      }
     }
 
     isExtraRound(){

@@ -23,19 +23,13 @@ describe('Game', function () {
             expect(game.frame).toEqual(2);
             expect(game.roll).toEqual(1);
         });
-        it("calls end method if number of frames exceeds 10", function () {
-            spyOn(game, 'end');
-            game.frame = 11;
-            game.play(4);
-            expect(game.end).toHaveBeenCalled();
-        });
         it("calls add score method", function () {
             spyOn(game, 'addScore');
             game.play(4);
             expect(game.addScore).toHaveBeenCalled();
         });
         it('strike - so is an extra round', function () {
-          for (let i = 0; i < 20; i += 1) {
+          for (let i = 0; i < 11; i += 1) {
             game.play(10)
           };
           game.play(2);
@@ -55,7 +49,7 @@ describe('Game', function () {
           };
           expect(game.play(4)).toEqual("The game has ended.");
         });
-    });
+    }); 
 
     describe('end', function () {
         it('prints message saying game has ended', function () {

@@ -3,12 +3,15 @@ class Game {
     constructor(){
       this.frame = 1;
       this.roll = 1;
+      this.knocked = 0;
+      this.score = [];
     }
 
-    play(){
-      if(this.frame === 11){
-        this.end()
+    play(pins){
+      if(this.frame >= 11){
+        return this.end()
       }
+      this.addScore(pins)
       if(this.roll === 2){
         this.frame ++;
         this.roll = 1;
@@ -18,5 +21,10 @@ class Game {
     }
     end(){
       return "The game has ended.";
+    }
+
+    addScore(pins){
+      this.knocked = pins
+      this.score.push({frame: this.frame, roll: this.roll, knocked: this.knocked})
     }
 }

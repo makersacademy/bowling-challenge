@@ -24,16 +24,28 @@ describe('Game', function () {
             expect(game.roll).toEqual(1);
         });
         it("calls end method if number of frames exceeds 10", function () {
-            spyOn(game, 'end')
+            spyOn(game, 'end');
             game.frame = 11;
             game.play(4);
             expect(game.end).toHaveBeenCalled();
+        });
+        it("calls add score method", function () {
+            spyOn(game, 'addScore');
+            game.play(4);
+            expect(game.addScore).toHaveBeenCalled();
         });
     });
 
     describe('end', function () {
         it('prints message saying game has ended', function () {
             expect(game.end).toMatch("The game has ended.");
+        });
+    });
+
+    describe('addScore', function(){
+        it('adds score from round to array as hash', function () {
+            game.play(4);
+            expect(game.score).toEqual([{frame: 1, roll: 1, knocked: 4}]);
         });
     });
 });

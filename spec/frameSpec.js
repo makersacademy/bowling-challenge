@@ -128,5 +128,11 @@ describe('Frame', function() {
       expect(frame.rollText().firstRoll).toEqual(3);
       expect(frame.rollText().secondRoll).toEqual(6);
     });
+    it('returns first scores value for unfinished frame', function() {
+      firstRoll.getScore.and.returnValue(3);
+      secondRoll.getScore.and.returnValue('');
+      expect(frame.rollText().firstRoll).toEqual(3);
+      expect(frame.rollText().secondRoll).toEqual('');
+    });
   });
 });

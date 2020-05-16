@@ -13,4 +13,12 @@ class Frame {
 
     return sum;
   }
+
+  getRolls() {
+    return this.rolls;
+  }
+
+  setRolls(pins) {
+    this.rolls.push(pins);
+  }
 }

@@ -7,7 +7,7 @@ describe('ScoreCard', () => {
 
   beforeEach(() => {
     scoreCard = new ScoreCard();
-    frame = jasmine.createSpyObj(Frame, ['total']);
+    frame = jasmine.createSpyObj(Frame, ['total', 'rolls']);
   });
 
   it('holds game frames in an array', () => {

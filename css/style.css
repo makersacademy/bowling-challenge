@@ -1,0 +1,109 @@
+body{
+	font-family: Impact, Helvetica, Arial;
+	letter-spacing: 2px;
+	font-weight: 300;
+}
+
+#container{
+	text-align: center;
+}
+
+#inner{
+	display: inline-block;
+	border-radius: 2px;
+	border:1px solid #91a3c4;
+	background: #bbcced;
+	padding:10px;
+}
+
+#header{
+	border:1px solid #74667d;
+	border-radius: 2px;
+	background: #624873;
+	color:white;
+}
+
+#message{
+	border:1px solid #91a3c4;
+	border-radius: 2px;
+	padding: 10px;
+	margin: 0px;
+	margin-top: 10px;
+	padding-bottom: : 10px;
+	background: #3b4b69;
+	color:white;
+}
+
+#scorecard{
+	padding:0px;
+}
+
+#left {
+	width:250px;
+	float: left;
+}
+
+#right{
+	width:250px;
+	float: left;
+}
+
+#left, .frame{
+	margin-right:5px;
+}
+
+#right, .frame{
+	margin-left:5px;
+}
+
+.frame{
+	background: #819edb;
+	margin:0px;
+	border-radius: 2px;
+	border:1px solid #91a3c4;
+	padding-top: 10px;
+	margin-top: 10px;
+}
+
+#total{
+	border:1px solid #91a3c4;
+	padding-top:10px;
+	margin-top:10px;
+	border-radius: 2px;
+	background: #3b4b69;
+	color:white;
+}
+
+label{
+	color: #212f4a;
+}
+
+input{
+	width:50px;
+	height:25px;
+	border:1px solid #5b79b0;
+	border-radius: 3px;
+	color: #3b4b69;
+}
+
+.input{
+	background: #819edb;
+}
+
+input:focus{
+	outline: none;
+}
+
+h1{
+	padding-left: 10px;
+	padding-right: 10px;
+	letter-spacing: 0.3em;
+
+}
+
+h4{
+	margin: 10px;
+	color:#212f4a;
+	background: #e1ebfc;
+	border-radius: 2px;
+}

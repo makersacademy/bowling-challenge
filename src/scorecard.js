@@ -6,8 +6,6 @@ class Scorecard {
   constructor(){
     this.totalArr = []
     this.Scores = []
-    this.roll1 = 0;
-    this.roll2 = 0;
     this.legibleForSpareBonus = false;
     this.legibleForStrikeBonus = false;
   }; 
@@ -15,58 +13,49 @@ class Scorecard {
   input(roll1, roll2){
     this.changeLastFrameBy(roll1,roll2);
 
-    if (this.isSpare(roll1,roll2) === true) { // spare frame
-      console.log("spare!");
-      this.totalArr.push(roll1);
-      this.totalArr.push(roll2);
-      this.addtoScore(roll1,roll2)
+    if (this.isSpare(roll1,roll2) === true) { 
+      this.generateGame(roll1,roll2)
       this.legibleForSpareBonus = true;
 
-    } else if (this.isStrike(roll1) === true) { // strike frame
-      console.log("strike!");
-      this.totalArr.push(roll1);
-      this.totalArr.push(roll2);
-      this.addtoScore(roll1,roll2)
+    } else if (this.isStrike(roll1) === true) {
+      this.generateGame(roll1,roll2)
       this.legibleForStrikeBonus = true;
 
-    } else if (this.totalArr.length > 0) { // normal frame
-      console.log("normal bowl")
-      this.totalArr.push(roll1);
-      this.totalArr.push(roll2);
-      this.addtoScore(roll1,roll2)
+    } else { 
+      this.generateGame(roll1,roll2)
       this.legibleForBonus = false;
-
-    } else {
-      console.log("first throw!") // first frame
-      this.totalArr.push(roll1);
-      this.totalArr.push(roll2);
-      this.addtoScore(roll1,roll2)
-    }
+    } 
   }
 
+  generateGame(roll1,roll2) {
+    this.pushBowlsToScorecard(roll1,roll2);
+    this.addtoScore(roll1,roll2)
+  }
+  
+
   changeLastFrameBy(roll1,roll2){
-    var roll1 = roll1
-    var roll2 = roll2
-
     if (this.legibleForSpareBonus === true) {
-      var spareprevscore = this.totalArr[this.totalArr.length - 1]
-      var sparenewscore = spareprevscore + roll1;
-      this.totalArr.pop();
-      this.totalArr.splice(this.totalArr[this.totalArr.length - 1], 0, sparenewscore)
-      this.legibleForSpareBonus = false;
-
+      this.spareBonusPoints(roll1)
     } else if (this.legibleForStrikeBonus === true) {
-      var strikeprevscore = this.totalArr[this.totalArr.length - 1]
-      var strikenewscore = strikeprevscore + roll1 + roll2;
-      console.log(strikenewscore)
-      console.log(strikeprevscore)
-      this.totalArr[this.totalArr.length - 1] = strikenewscore;
-      // this.totalArr.splice(this.totalArr[this.totalArr.length - 1], 0, strikenewscore)
-      this.legibleForStrikeBonus = false; 
-
+      this.strikeBonusPoints(roll1, roll2)
     } else {
       return;
     }
+  }
+
+  spareBonusPoints(roll1){
+    var spareprevscore = this.totalArr[this.totalArr.length - 1]
+    var sparenewscore = spareprevscore + roll1;
+    this.totalArr.pop();
+    this.totalArr.splice(this.totalArr[this.totalArr.length - 1], 0, sparenewscore)
+    this.legibleForSpareBonus = false;
+  }
+
+  strikeBonusPoints(roll1, roll2) {
+    var strikeprevscore = this.totalArr[this.totalArr.length - 1]
+    var strikenewscore = strikeprevscore + roll1 + roll2;
+    this.totalArr[this.totalArr.length - 1] = strikenewscore;
+    this.legibleForStrikeBonus = false; 
   }
  
   addtoScore(roll1,roll2) {
@@ -75,6 +64,11 @@ class Scorecard {
     } else {
       this.totalArr.push(this.frameScore(roll1,roll2) + this.previousFrame());
     }
+  }
+
+  pushBowlsToScorecard(roll1,roll2){
+    this.totalArr.push(roll1);
+    this.totalArr.push(roll2);
   }
 
   previousFrame(){
@@ -111,11 +105,9 @@ class Scorecard {
   totalScore(){
     var totalScore = 0;
       for (var i = 0, len = this.frameScoreslength; i < len; i++) {
-        totalScore += totalArr[i];  // Iterate over your first array and then grab the second element add the values up
+        totalScore += totalArr[i];
       }
     return totalScore
   }
 
 }
-
-console.log(this.totalArr)

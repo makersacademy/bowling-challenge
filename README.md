@@ -1,6 +1,9 @@
 # Bowling challenge
 
+## Notes
 
+* Followed @dpwdec's instructions to get Jasmine CLI and Travis working: 
+https://dpwdec.github.io/2020/05/15/cmd-line-jasmine.html
 
 # Original README.md
 

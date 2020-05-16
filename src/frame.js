@@ -26,14 +26,8 @@ class Frame {
   }
 
   finished() {
-    // if this is finished, spare, or strike
-    if(this.rolls[0].getScore() >= 0 && this.rolls[1].getScore() >= 0) {
-      return true;
-    } else if(this.rolls[0].getScore() >= 10) {
-      return true;
-    } else {
-      return false;
-    }
+    if(this.finishState > 0) return true;
+    return false;
   }
 
   rollReportText() {
@@ -53,6 +47,7 @@ class Frame {
     return this.rolls[0].getScore() + this.rolls[1].getScore();
   }
 
+  // finish state calculation
   setFinishState(finishState) {
     this.finishState = finishState;
   }

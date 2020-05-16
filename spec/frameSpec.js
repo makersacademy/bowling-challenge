@@ -44,19 +44,18 @@ describe('Frame', function() {
 
   describe('#finished', function() {
     it('returns true if both roll slots are filled', function() {
-      firstRoll.getScore.and.returnValue(1);
-      secondRoll.getScore.and.returnValue(1);
-      frame = new Frame(firstRoll, secondRoll);
+      firstRoll.isScored.and.returnValue(true);
+      secondRoll.isScored.and.returnValue(true);
+      frame.updateFinishState();
       expect(frame.finished()).toEqual(true);
     });
     it('returns true if first roll slot is greater than 10', function() {
       firstRoll.getScore.and.returnValue(10);
-      frame = new Frame(firstRoll, secondRoll);
+      frame.updateFinishState();
       expect(frame.finished()).toEqual(true);
     });
     it('returns false if one slot is not filled', function() {
       firstRoll.getScore.and.returnValue(9);
-      frame = new Frame(firstRoll, secondRoll);
       expect(frame.finished()).toEqual(false);
     })
   });

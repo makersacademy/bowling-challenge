@@ -60,19 +60,6 @@ describe('Frame', function() {
     })
   });
 
-  describe('#rollReportText', function() {
-    it('returns an X if the roll was 10', function() {
-      firstRoll.getScore.and.returnValue(10);
-      expect(frame.rollReportText()).toEqual('X');
-    });
-    it('returns a / if the combined first and second roll is 10', function() {
-      frame.nextRoll();
-      firstRoll.getScore.and.returnValue(5);
-      secondRoll.getScore.and.returnValue(5);
-      expect(frame.rollReportText()).toEqual('/');
-    });
-  });
-
   describe('#basicTotalScore', function() {
     it('returns the basic total of both rolls', function() {
       firstRoll.getScore.and.returnValue(4);
@@ -86,6 +73,12 @@ describe('Frame', function() {
       frame.setFinishState(frame.finishStates.finished);
       expect(frame.finishState).toEqual(frame.finishStates.finished);
     });
+  });
+
+  describe('#getFinishState', function() {
+    it('returns the finishState', function() {
+      expect(frame.getFinishState()).toEqual(frame.finishStates.unfinished);
+    })
   });
 
   describe('#updateFinishState', function() {
@@ -114,5 +107,13 @@ describe('Frame', function() {
       frame.updateFinishState();
       expect(frame.finishState).toEqual(frame.finishStates.unfinished);
     })
+  });
+
+  describe('#rollReportText', function() {
+    it('returns an object with X and "" if it was a strike', function() {
+      spyOn(frame, 'getFinishState').and.returnValue(frame.finishStates.strike);
+      expect(frame.rollText().firstRoll).toEqual('X');
+      expect(frame.rollText().secondRoll).toEqual('');
+    });
   });
 });

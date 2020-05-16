@@ -30,17 +30,8 @@ class Frame {
     return false;
   }
 
-  rollReportText() {
-    if(this.currentRollIndex == 0) {
-      if(this.getCurrentRoll().getScore() == 10) {
-        return 'X';
-      }
-    }
-    if(this.currentRollIndex == 1) {
-      if(this.getCurrentRoll().getScore() + this.rolls[0].getScore() == 10) {
-        return '/';
-      }
-    }
+  rollText() {
+    if(this.getFinishState() == this.finishStates.strike) return { firstRoll: 'X', secondRoll: ''}
   }
 
   basicTotalScore() {
@@ -48,6 +39,10 @@ class Frame {
   }
 
   // finish state calculation
+  getFinishState() {
+    return this.finishState;
+  }
+
   setFinishState(finishState) {
     this.finishState = finishState;
   }

@@ -14,7 +14,9 @@ $( document ).ready(function() {
     var i;
     for(i = 0; i < game.frames.length; i++) {
       //game.frames[i].totalScore() // => assign to total
-      //let scores = games.frames[i].rollScore()
+      //let frameScores = games.frames[i].rollScore() // => this will return the formatting
+      //$ assign framesScore.firstRoll to roll 1
+      //$ assign framesScore.secondRoll to roll 2
     }
     //game.render();
   });

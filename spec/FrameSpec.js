@@ -27,13 +27,13 @@ describe("Frame", function() {
   });
 
   describe("#firstRoll", function() {
-    it("should return score", function() {
+    it("should return score of roll", function() {
       frame.firstRoll = 5;
       expect(frame.first).toEqual(5);
       expect(frame.hasStrike()).toEqual(false);
     });
 
-    it("#hasStrike should return true if score is 10", function() {
+    it("#hasStrike should return true if score of roll is 10", function() {
       frame.firstRoll = 10;
       expect(frame.hasStrike()).toEqual(true);
       expect(frame.turns).toEqual(2);
@@ -45,7 +45,7 @@ describe("Frame", function() {
       frame.firstRoll = 3;
     });
 
-    it("should return score", function() {
+    it("should return score of roll", function() {
       frame.secondRoll = 5;
       expect(frame.second).toEqual(5);
     });

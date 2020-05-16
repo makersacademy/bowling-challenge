@@ -24,7 +24,7 @@ It flashes a message each go, depending on what happens. These messages include:
 
 Overall I was very happy with the outcome. It works very well, allows for corrections and updates instantly and as far as I am aware has no real bugs.
 
-However, I seem to keep putting my code outside of the classes. The 'Game' class in this is essentially non existant. There is alot of functionality in my 'interface.js', that should definitely be in the game class. These include...
+However, I seem to keep putting my code outside of the classes. The 'Game' class in this is essentially non existant. There is a lot of functionality in my 'interface.js', that should definitely be in the game class. Mainly the following:
  
  - Score calculation - both total and frame scores.
  - Messages, deciding which message to put to the user.

@@ -1,5 +1,7 @@
 # Bowling challenge
 
+[![Build Status](https://travis-ci.com/will-head/bowling-challenge.svg?branch=master)](https://api.travis-ci.com/will-head/bowling-challenge.svg?branch=master)
+
 ## Notes
 
 * Followed [@dpwdec](https://github.com/dpwdec)'s instructions to get Jasmine CLI and Travis working:

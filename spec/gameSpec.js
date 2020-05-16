@@ -22,4 +22,11 @@ describe('ScoreCard', () => {
     });
   });
 
+  describe('score', () => {
+    it('can keep track of the score for a normal frame', () => {
+      scorecard.addToFrames(frame);
+
+      expect(scorecard.score()).toContain(frame.total());
+    });
+  });
 });

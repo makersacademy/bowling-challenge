@@ -31,7 +31,8 @@ class Frame {
   }
 
   rollText() {
-    if(this.getFinishState() == this.finishStates.strike) return { firstRoll: 'X', secondRoll: ''}
+    if(this.getFinishState() == this.finishStates.strike) return { firstRoll: 'X', secondRoll: ''};
+    if(this.getFinishState() == this.finishStates.spare) return { firstRoll: this.rolls[0].getScore(), secondRoll: '/'};
   }
 
   basicTotalScore() {

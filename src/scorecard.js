@@ -9,6 +9,7 @@ class Scorecard {
     this.roll1 = 0;
     this.roll2 = 0;
     this.legibleForSpareBonus = false;
+    this.legibleForStrikeBonus = false;
   }; 
 
   input(roll1, roll2){
@@ -20,6 +21,13 @@ class Scorecard {
       this.totalArr.push(roll2);
       this.addtoScore(roll1,roll2)
       this.legibleForSpareBonus = true;
+
+    } else if (this.isStrike(roll1) === true) { // strike frame
+      console.log("strike!");
+      this.totalArr.push(roll1);
+      this.totalArr.push(roll2);
+      this.addtoScore(roll1,roll2)
+      this.legibleForStrikeBonus = true;
 
     } else if (this.totalArr.length > 0) { // normal frame
       console.log("normal bowl")
@@ -41,11 +49,23 @@ class Scorecard {
     var roll2 = roll2
 
     if (this.legibleForSpareBonus === true) {
-      var prevscore = this.totalArr[this.totalArr.length - 1]
-      var newscore = prevscore + roll1;
+      var spareprevscore = this.totalArr[this.totalArr.length - 1]
+      var sparenewscore = spareprevscore + roll1;
       this.totalArr.pop();
-      this.totalArr.splice(this.totalArr[this.totalArr.length - 1], 0, newscore)
+      this.totalArr.splice(this.totalArr[this.totalArr.length - 1], 0, sparenewscore)
       this.legibleForSpareBonus = false;
+
+    } else if (this.legibleForStrikeBonus === true) {
+      var strikeprevscore = this.totalArr[this.totalArr.length - 1]
+      var strikenewscore = strikeprevscore + roll1 + roll2;
+      console.log(strikenewscore)
+      console.log(strikeprevscore)
+      this.totalArr[this.totalArr.length - 1] = strikenewscore;
+      // this.totalArr.splice(this.totalArr[this.totalArr.length - 1], 0, strikenewscore)
+      this.legibleForStrikeBonus = false; 
+
+    } else {
+      return;
     }
   }
  
@@ -74,10 +94,9 @@ class Scorecard {
   }
  
   isSpare(roll1, roll2){
-    if (roll1 + roll2 === 10){
+    if (roll1 + roll2 === 10 && roll1 !== 10) {
       return true
-    }
-    else {
+    } else {
       return false
     }
   }

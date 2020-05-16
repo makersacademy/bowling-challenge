@@ -8,26 +8,58 @@ class Scorecard {
     this.Scores = []
     this.roll1 = 0;
     this.roll2 = 0;
-  };
-
- 
+    this.bowledSpare = false;
+    this.bowledStrike = false;
+  }; 
 
   input(roll1, roll2){
     if (this.isSpare(roll1,roll2) === true) {
       console.log("spare!");
-    } else if (this.isStrike(roll1,roll2) === true) {
-      console.log("strike!");
-    } else {
-      console.log("normal score!")
       this.totalArr.push(roll1);
       this.totalArr.push(roll2);
-      this.totalArr.push(scorecard.frameScore(roll1,roll2));
+      this.totalArr.push(this.frameScore(roll1,roll2) + this.previousFrame());
+      // this.bowledSpare = true;
+
+    } else if (this.isStrike(roll1,roll2) === true) {
+      // console.log("strike!");
+
+    } else if (this.totalArr.length > 0) { // first frame
+      console.log("normal bowl")
+      this.totalArr.push(roll1);
+      this.totalArr.push(roll2);
+      this.totalArr.push(this.frameScore(roll1,roll2) + this.previousFrame());
+    } else {
+      console.log("first throw!")
+      this.totalArr.push(roll1);
+      this.totalArr.push(roll2);
+      this.totalArr.push(this.frameScore(roll1,roll2));
     }
   }
 
-  frameScore(roll1 ,roll2){
-    return roll1 + roll2
+  bowledSpare(){
+    this.totalArr[this.totalArr.length - 2] + this.totalArr[this.totalArr.length - 1] === 10
   }
+
+  previousFrame(){
+    return this.totalArr[this.totalArr.length - 3]
+  }
+
+  // nextBowl(){
+  //   return this.totalArr[this.totalArr.length + 1]
+  // }
+
+  latestScore(){
+    return this.totalArr[this.totalArr.length - 1]
+  }
+
+  // frameScore(roll1 ,roll2){
+  //   if (this.bowledSpare === true) {
+  //     previousscore = this.previousFrame()
+  //     newscore = roll1 + previousscore
+  //     this.totalArr[this.totalArr.length - 3] = newscore 
+  //   }
+  //   return roll1 + roll2
+  // }
  
   isSpare(roll1, roll2){
     if (roll1 + roll2 === 10){
@@ -39,7 +71,9 @@ class Scorecard {
   }
 
   isStrike(roll1, roll2){
-    if (roll1 || roll2 === 10){
+    if (roll1 === 10) {
+      return true
+    } else if (roll2 === 10) {
       return true
     }
     else {
@@ -57,3 +91,5 @@ class Scorecard {
   }
 
 }
+
+console.log(this.totalArr)

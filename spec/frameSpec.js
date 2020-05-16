@@ -87,6 +87,13 @@ describe('Frame', function() {
       firstRoll.getScore.and.returnValue(4);
       secondRoll.getScore.and.returnValue(3);
       expect(frame.calculateFinishState()).toEqual(frame.finishStates.finished);
-    })
+    });
+  });
+
+  describe('#setFinishState', function() {
+    it('sets finish state', function() {
+      frame.setFinishState(frame.finishStates.finished);
+      expect(frame.finishState).toEqual(frame.finishStates.finished);
+    });
   });
 });

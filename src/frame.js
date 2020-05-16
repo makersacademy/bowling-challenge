@@ -53,6 +53,10 @@ class Frame {
     return this.rolls[0].getScore() + this.rolls[1].getScore();
   }
 
+  setFinishState(finishState) {
+    this.finishState = finishState;
+  }
+
   calculateFinishState() {
     if(this._checkForFinished) return this.finishStates.finished;
   }

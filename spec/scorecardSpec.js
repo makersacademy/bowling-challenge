@@ -44,14 +44,15 @@ describe('Scorecard',function(){
     expect(scorecard.latestScore()).toEqual(16)
   });
 
-  // // spare = total 10 + add next array item to this total
-  // it('calculates spare scores', function(){
-  //   // first bowl
-  //   scorecard.input(4,3) // first bowl
-  //   expect(scorecard.frameScore(4,3)).toEqual(7) // scores 7
-  //   scorecard.input(5,5) // bowls a spare, 10 points
-  //   scorecard.input(5,2) // next round first bowl is 5
-  //   expect(scorecard.previousFrame()).toEqual(15) // previous score goes up by next bowl
-  // });
+  // spare = total 10 + add next array item to this total
+  it('calculates spare scores', function(){
+    // first bowl
+    scorecard.input(4,3) // first bowl
+    scorecard.input(5,5) // bowls a spare, 10 points
+    scorecard.input(5,2) // next round first bowl is 5
+    console.log(scorecard.totalArr)
+    console.log(scorecard.frameScoreBefore())
+    expect(scorecard.frameScoreBefore()).toEqual(22) // previous score goes up by next bowl
+  });
 });
 

@@ -8,58 +8,64 @@ class Scorecard {
     this.Scores = []
     this.roll1 = 0;
     this.roll2 = 0;
-    this.bowledSpare = false;
-    this.bowledStrike = false;
+    this.legibleForBonus = false;
   }; 
 
   input(roll1, roll2){
-    if (this.isSpare(roll1,roll2) === true) {
+    this.changeLastFrameBy(roll1,roll2);
+
+    if (this.isSpare(roll1,roll2) === true) { // spare frame
       console.log("spare!");
       this.totalArr.push(roll1);
       this.totalArr.push(roll2);
       this.totalArr.push(this.frameScore(roll1,roll2) + this.previousFrame());
-      // this.bowledSpare = true;
-
-    } else if (this.isStrike(roll1,roll2) === true) {
-      // console.log("strike!");
-
-    } else if (this.totalArr.length > 0) { // first frame
+      this.legibleForBonus = true;
+    } else if (this.totalArr.length > 0) { // normal frame
       console.log("normal bowl")
       this.totalArr.push(roll1);
       this.totalArr.push(roll2);
       this.totalArr.push(this.frameScore(roll1,roll2) + this.previousFrame());
+      this.legibleForBonus = false;
     } else {
-      console.log("first throw!")
+      console.log("first throw!") // first frame
       this.totalArr.push(roll1);
       this.totalArr.push(roll2);
       this.totalArr.push(this.frameScore(roll1,roll2));
+      this.legibleForBonus = false;
     }
   }
 
-  bowledSpare(){
-    this.totalArr[this.totalArr.length - 2] + this.totalArr[this.totalArr.length - 1] === 10
+  changeLastFrameBy(roll1,roll2){
+    var roll1 = roll1
+    var roll2 = roll2
+
+    if (this.legibleForBonus === true) {
+
+      this.totalArr.map 
+      var prevscore = this.totalArr[this.totalArr.length - 1]
+      var newscore = prevscore + roll1;
+      this.totalArr.pop();
+      this.totalArr.splice(this.totalArr[this.totalArr.length - 1], 0, newscore)
+
+    }
   }
+ 
 
   previousFrame(){
     return this.totalArr[this.totalArr.length - 3]
   }
 
-  // nextBowl(){
-  //   return this.totalArr[this.totalArr.length + 1]
-  // }
+  frameScoreBefore(){
+    return this.totalArr[this.totalArr.length - 4]
+  }
 
   latestScore(){
     return this.totalArr[this.totalArr.length - 1]
   }
 
-  // frameScore(roll1 ,roll2){
-  //   if (this.bowledSpare === true) {
-  //     previousscore = this.previousFrame()
-  //     newscore = roll1 + previousscore
-  //     this.totalArr[this.totalArr.length - 3] = newscore 
-  //   }
-  //   return roll1 + roll2
-  // }
+  frameScore(roll1 ,roll2){
+    return roll1 + roll2
+  }
  
   isSpare(roll1, roll2){
     if (roll1 + roll2 === 10){

@@ -11,8 +11,6 @@ class Bowling {
   countScore(score) {
     if(score === this.MAX_FRAME_SCORE && this.firstBowl === true) {
       this._countHelperWhenStrike(score);
-    } else if(this.frameScore + score === 10) {
-      this._countHelperWhenSpare(score);
     } else {
       this._countHelper(score);
     }
@@ -21,52 +19,37 @@ class Bowling {
     let gameScore = this.gameScore;
     let score_modified = [];
     gameScore.forEach(function(item, index) {
-      if(item %2 === 0 && item === 10) {
-        let indexPlusOne = gameScore[index + 1] === undefined ? 0 : gameScore[index + 1]
-        let indexPlusTwo = gameScore[index + 2] === undefined ? 0 : gameScore[index + 2]
-        let score = gameScore[index + 1] === 10 ? indexPlusOne + indexPlusTwo : indexPlusOne
-        score_modified.push(gameScore[index] + score)
+      if(gameScore[index][0] === 10) {
+        let indexPlusOne = gameScore[index + 1] === undefined ? 0 : gameScore[index + 1].reduce((a, b) => a + b, 0);
+        let indexPlusTwo = gameScore[index + 2] === undefined ? 0 : gameScore[index + 2][0];
+        let score = gameScore[index + 1] === undefined ? 0 : gameScore[index + 1][0] === 10 ? indexPlusOne + indexPlusTwo : indexPlusOne;
+        let frameTotal = gameScore[index][0]
+        score_modified.push(frameTotal + score)
+      } else if((gameScore[index].reduce((a, b) => a + b, 0)) === 10) {
+        let frameTotal = gameScore[index].reduce((a, b) => a + b, 0);
+        let score = gameScore[index + 1] === undefined ? 0 : gameScore[index + 1][0] === undefined ? 0 : gameScore[index + 1][0];
+        score_modified.push(frameTotal + score)
       } else {
-        score_modified.push(item)
+        score_modified.push(gameScore[index].reduce((a, b) => a + b, 0))
       }
     })
     return score_modified.reduce((a, b) => a + b, 0)
   }
-
-  getFrameScore() {
-    console.log(this.frameScore)
-    name = this.frameScore;
-    return this.frameScore.shift;
-  }
-  
   _countHelper(score) {
     if(this.firstBowl === false) {
       this.firstBowl = true;
       this.frame += 1;
-      this.gameScore.push(this.frameScore + score);
+      this.gameScore.push([this.frameScore, score]);
       this.frameScore = 0;
     } else {
       this.firstBowl = false;
       this.frameScore = score;
     }
   }
-
-  _countHelperWhenSpare() {
-    let score = gameScore;
-    let score_modified = [];
-    score.forEach(function(item, index) {
-      if((score[index] + score[index + 1]) === 10) {
-        score_modified.push(score[index + 1] + score[index + 2])
-      } else {
-        score_modified.push(item)
-      }
-    })
-  }
-  
   _countHelperWhenStrike(score) {
     this.frame += 1;
     this.firstBowl = true;
-    this.gameScore.push(score)
+    this.gameScore.push([score, 0])
   }
 
 }
@@ -103,18 +86,24 @@ class Bowling {
 
 let firstBowl = true;
 let frame = 0;
-let gameScore = [10, 10, 10, 10, 10, 10];
+let gameScore = [[5, 5], [2, 0]];
 let frameScore = 0;
 
 let score_modified = [];
 gameScore.forEach(function(item, index) {
-  if(item %2 === 0 && item === 10) {
-    let indexPlusOne = gameScore[index + 1] === undefined ? 0 : gameScore[index + 1]
-    let indexPlusTwo = gameScore[index + 2] === undefined ? 0 : gameScore[index + 2]
-    let score = gameScore[index + 1] === 10 ? indexPlusOne + indexPlusTwo : indexPlusOne
-    score_modified.push(gameScore[index] + score)
+  if(gameScore[index][0] === 10) {
+    let indexPlusOne = gameScore[index + 1] === undefined ? 0 : gameScore[index + 1].reduce((a, b) => a + b, 0);
+    let indexPlusTwo = gameScore[index + 2] === undefined ? 0 : gameScore[index + 2][0];
+    let score = gameScore[index + 1] === undefined ? 0 : gameScore[index + 1][0] === 10 ? indexPlusOne + indexPlusTwo : indexPlusOne;
+    let frameTotal = gameScore[index][0]
+    score_modified.push(frameTotal + score)
+  } else if((gameScore[index].reduce((a, b) => a + b, 0)) === 10) {
+    // console.log(index)
+    let frameTotal = gameScore[index].reduce((a, b) => a + b, 0);
+    let score = gameScore[index + 1] === undefined ? 0 : gameScore[index + 1][0] === undefined ? 0 : gameScore[index + 1][0];
+    score_modified.push(frameTotal + score)
   } else {
-    score_modified.push(item)
+    score_modified.push(gameScore[index].reduce((a, b) => a + b, 0))
   }
 })
 let total = score_modified.reduce((a, b) => a + b, 0)

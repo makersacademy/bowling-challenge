@@ -23,13 +23,14 @@ describe('Bowling', function() {
         expect(bowling.firstBowl).toBe(true);
         expect(bowling.frame).toEqual(2);
       });
-      it('when in position 1 and frame 2', () => {
+      it('when in position 1 and frame 3', () => {
         bowling.countScore(4);
         bowling.countScore(4);
         bowling.countScore(4);
-        expect(bowling.getTotalScore() + bowling.frameScore).toEqual(12);
-        expect(bowling.firstBowl).toBe(false);
-        expect(bowling.frame).toEqual(2);
+        bowling.countScore(0);
+        expect(bowling.getTotalScore()).toEqual(12);
+        expect(bowling.firstBowl).toBe(true);
+        expect(bowling.frame).toEqual(3);
       });
       it('when in position 2 frame 8', () => {
         for(let i = 0; i < 16; i++) {
@@ -41,7 +42,7 @@ describe('Bowling', function() {
       
     });
 
-    describe('Frame score with strikes', () => {
+    describe('Frame score if strike', () => {
       it('when in position 1 and frame 1',  () => {
         bowling.countScore(10);
         expect(bowling.getTotalScore()).toBe(10);
@@ -62,6 +63,17 @@ describe('Bowling', function() {
         }
         expect(bowling.getTotalScore()).toEqual(150);
         expect(bowling.frame).toEqual(7);
+      });
+    });
+
+    describe('Frame scores if Spare',  () => {
+      it('when in position 1 frame 3', () => {
+        bowling.countScore(5);
+        bowling.countScore(5);
+        bowling.countScore(2);
+        bowling.countScore(0);
+        expect(bowling.getTotalScore()).toEqual(14);
+        expect(bowling.frame).toEqual(3);
       });
     });
 

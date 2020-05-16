@@ -14,8 +14,8 @@ describe('Game', function() {
   });
 
   describe('#frames', function() {
-    it('has an initial list of frames containing the first frame', function() {
-      expect(game.frames.length).toEqual(1);
+    it('has an initial list of frames', function() {
+      expect(game.frames.length).toEqual(10);
     });
   });
 
@@ -44,10 +44,6 @@ describe('Game', function() {
     it('progresses the game to the next frame', function() {
       game.nextFrame();
       expect(game.currentFrameIndex).toEqual(1);
-    });
-    it('creates a new frame object', function() {
-      game.nextFrame();
-      expect(game.frames.length).toEqual(2);
     });
   });
 

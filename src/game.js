@@ -2,7 +2,11 @@
 
 class Game {
   constructor(frameFactory) {
-    this.frames = [frameFactory.instance()];
+    this.frames = [];
+    let i = 0;
+    for(i = 0; i < 10; i++) {
+      this.frames.push(frameFactory.instance());
+    }
     this.currentFrameIndex = 0;
   }
 
@@ -12,7 +16,6 @@ class Game {
 
   nextFrame() {
     this.currentFrameIndex += 1;
-    this.frames.push(frameFactory.instance());
   }
 
   getCurrentRoll() {

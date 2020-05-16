@@ -104,5 +104,16 @@ describe('Frame', function() {
       frame.updateFinishState();
       expect(frame.finishState).toEqual(frame.finishStates.spare);
     });
+    it('updates the finish state to strike if first value is 10', function() {
+      firstRoll.getScore.and.returnValue(10);
+      frame.updateFinishState();
+      expect(frame.finishState).toEqual(frame.finishStates.strike);
+    });
+    it('keeps the value as unfinished if frame is not finished spare or strike', function() {
+      firstRoll.getScore.and.returnValue(1);
+      secondRoll.isScored.and.returnValue(false);
+      frame.updateFinishState();
+      expect(frame.finishState).toEqual(frame.finishStates.unfinished);
+    })
   });
 });

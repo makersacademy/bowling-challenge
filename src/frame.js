@@ -69,8 +69,14 @@ class Frame {
     if((this.rolls[0].getScore() + this.rolls[1].getScore()) == 10) return true;
   }
 
+  _checkForStrike() {
+    if(this.rolls[0].getScore() == 10) return true;
+  }
+
   _calculateFinishState() {
     if(this._checkForSpare()) return this.finishStates.spare;
     if(this._checkForFinished()) return this.finishStates.finished;
+    if(this._checkForStrike()) return this.finishStates.strike;
+    return this.finishStates.unfinished;
   }
 }

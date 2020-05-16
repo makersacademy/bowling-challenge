@@ -75,6 +75,33 @@ describe('Bowling', function() {
         expect(bowling.getTotalScore()).toEqual(14);
         expect(bowling.frame).toEqual(3);
       });
+      it('when in position 1 frame 9', () => {
+        for(let i = 0; i < 18; i++) {
+          bowling.countScore(5);
+        }
+        expect(bowling.getTotalScore()).toEqual(130);
+      });
+
+    });
+
+    describe('Frame scores if Strike and Spares', () => {
+      it('when in position 1 frame 6', () => {
+        bowling.countScore(8);
+        bowling.countScore(2);
+        bowling.countScore(7);
+        bowling.countScore(3);
+        bowling.countScore(3);
+        bowling.countScore(4);
+        bowling.countScore(10);
+        bowling.countScore(2);
+        bowling.countScore(8);
+        bowling.countScore(10);
+        bowling.countScore(10);
+        bowling.countScore(8);
+        bowling.countScore(0);
+        expect(bowling.getTotalScore()).toEqual(131);
+      });
+
     });
 
 });

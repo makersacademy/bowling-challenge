@@ -1,2 +1,16 @@
+# misc
 /**/.DS_Store
-node_modules
+
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# other
+/tmp
+/secret
+/local
+
+# Local cache of Rubocop remote config
+.rubocop-*

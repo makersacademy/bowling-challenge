@@ -1,0 +1,26 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Not quite sure? Setting up ELSLint for the first time",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "eslint": "^7.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/will-head/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/will-head/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/will-head/bowling-challenge#readme"
+}

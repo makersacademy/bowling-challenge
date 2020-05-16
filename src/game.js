@@ -1,8 +1,8 @@
 'use strict';
 
 class Game {
-  constructor(frameClass, rollClass) {
-    this.frames = [new frameClass(new rollClass(-1), new rollClass(-1))];
+  constructor(frameFactory) {
+    this.frames = [frameFactory.instance()];
     this.currentFrameIndex = 0;
   }
 
@@ -12,6 +12,10 @@ class Game {
 
   nextFrame() {
     this.currentFrameIndex += 1;
+  }
+
+  getCurrentRoll() {
+    return this.getCurrentFrame().getCurrentRoll();
   }
 
   update() {

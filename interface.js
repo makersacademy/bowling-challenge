@@ -1,7 +1,7 @@
 $( document ).ready(function() {
   console.log( "ready!" );
 
-  let game = new Game();
+  let game = new Game(new FrameFactory(Frame, Roll));
 
   $('#score-input').submit(function(event) {
     event.preventDefault();

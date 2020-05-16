@@ -2,10 +2,15 @@ describe('Game', function() {
   var game;
   beforeEach(function() {
     frameClass = function() {}
+    rollClass = function() {}
     frameClass.prototype.nextRoll = function() {}
     frameClass.prototype.finished = function() {}
-    rollClass = function() {}
-    game = new Game(frameClass, rollClass);
+    frameFactory = {
+      instance: function() {
+        return new frameClass()
+      }
+    }
+    game = new Game(frameFactory);
   });
 
   describe('#frames', function() {
@@ -23,6 +28,15 @@ describe('Game', function() {
   describe('#getCurrentFrame', function() {
     it('returns the current frame object', function() {
       expect(game.getCurrentFrame()).toBeInstanceOf(frameClass);
+    });
+  });
+
+  describe('#getCurrentRoll', function(){
+    it('returns the current roll', function() {
+      frameClass.prototype.getCurrentRoll = function() {
+        return new rollClass();
+      }
+      expect(game.getCurrentRoll()).toBeInstanceOf(rollClass);
     });
   });
 

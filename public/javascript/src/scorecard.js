@@ -101,7 +101,6 @@ class Scorecard {
     } 
   }
 
-  // overall score
   totalScore(){
     var totalScore = 0;
       for (var i = 0, len = this.frameScoreslength; i < len; i++) {

@@ -18,6 +18,7 @@ It flashes a message each go, depending on what happens. These messages include:
  - Strike
  - Spare
  - Game over
+ - Correction (if a user changes a score theyve already entered)
  - Random general encouragement if none of the above qualify.
 
 --------

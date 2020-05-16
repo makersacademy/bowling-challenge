@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<title>Bowling Scorecard</title>
+	</head>
+	<body>
+		<br>
+		<br>
+		<div id="container">
+			<div id="inner">
+				<div id="top">
+					<div id="header">
+						<header>
+							<h1>Bowling Scorecard</h1>
+						</header>
+					</div>
+					<div>
+						<h1 id="message">Lets go bowling!</h2>
+					</div>
+<!-- 					<div>
+						<button>Recalculate</button>	
+					</div> -->
+					<div id="total">
+						<h1>Game total: <span id="totalScore">0</span></h2>
+					</div>
+				</div>
+				<div id="scorecard">
+					<div id="left">
+						<div class="frame" id="frame1">
+							<label>1:</label>&emsp;
+							<input class="input1" type="number" data-frame="0" data-go="0" id="1" min="0" max="10">
+							<input class="input" type="number" data-frame="0" data-go="1"  id="2" min="0" max="10" disabled="true">
+							<h4>Frame total: <span id="0total">0</span></h4>
+						</div>
+						<div class="frame" id="frame2">
+							<label>2:</label>&emsp;
+							<input class="input" type="number" data-frame="1" data-go="0"  id="3" min="0" max="10" disabled="true">
+							<input class="input" type="number" data-frame="1" data-go="1"  id="4" min="0" max="10" disabled="true">
+							<h4>Frame total: <span id="1total">0</span></h4>
+						</div>
+						<div class="frame" id="frame3">
+							<label>3:</label>&emsp;
+							<input class="input" type="number" data-frame="2" data-go="0" id="5" min="0" max="10" disabled="true">
+							<input class="input" type="number" data-frame="2" data-go="1"  id="6" min="0" max="10" disabled="true">
+							<h4>Frame total: <span id="2total">0</span></h4>
+						</div>
+						<div class="frame" id="frame4">
+							<label>4:</label>&emsp;
+							<input class="input" type="number" data-frame="3" data-go="0"  id="7" min="0" max="10" disabled="true">
+							<input class="input" type="number" data-frame="3" data-go="1"  id="8" min="0" max="10" disabled="true">
+							<h4>Frame total: <span id="3total">0</span></h4>
+						</div>
+						<div class="frame" id="frame5">
+							<label>5:</label>&emsp;
+							<input class="input" type="number" data-frame="4" data-go="0"  id="9" min="0" max="10" disabled="true">
+							<input class="input" type="number" data-frame="4" data-go="1"  id="10" min="0" max="10" disabled="true">
+							<h4>Frame total: <span id="4total">0</span></h4>
+						</div>
+					</div>
+					<div id="right">
+						<div class="frame" id="frame6">
+							<label>6:</label>&emsp;
+							<input class="input" type="number" data-frame="5" data-go="0"  id="11" min="0" max="10" disabled="true">
+							<input class="input" type="number" data-frame="5" data-go="1"  id="12" min="0" max="10" disabled="true">
+							<h4>Frame total: <span id="5total">0</span></h4>
+						</div>
+						<div class="frame" id="frame7">
+							<label>7:</label>&emsp;
+							<input class="input" type="number" data-frame="6" data-go="0"  id="13" min="0" max="10" disabled="true">
+							<input class="input" type="number" data-frame="6" data-go="1"  id="14" min="0" max="10" disabled="true">
+							<h4>Frame total: <span id="6total">0</span></h4>
+						</div>
+						<div class="frame" id="frame8">
+							<label>8:</label>&emsp;
+							<input class="input" type="number" data-frame="7" data-go="0"  id="15" min="0" max="10" disabled="true">
+							<input class="input" type="number" data-frame="7" data-go="1"  id="16" min="0" max="10" disabled="true">
+							<h4>Frame total: <span id="7total">0</span></h4>
+						</div>
+						<div class="frame" id="frame9">
+							<label>9:</label>&emsp;
+							<input class="input" type="number" data-frame="8" data-go="0"  id="17" min="0" max="10" disabled="true">
+							<input class="input" type="number" data-frame="8" data-go="1"  id="18" min="0" max="10" disabled="true">
+							<h4>Frame total: <span id="8total">0</span></h4>
+						</div>
+						<div class="frame" id="frame10">
+							<label>10:</label>&emsp;
+							<input class="input" type="number" data-frame="9" data-go="0"  id="19" min="0" max="10" disabled="true">
+							<input class="input" type="number" data-frame="9" data-go="1"  id="20" min="0" max="10" disabled="true">
+							<input class="input" type="number" data-frame="9" data-go="2"  id="21" min="0" max="10" disabled="true">
+							<h4>Frame total: <span id="9total">0</span></h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="src/interface.js"></script>
+		<script type="text/javascript" src="src/game.js"></script>
+		<script type="text/javascript" src="src/frame.js"></script>
+	</body>
+</html>

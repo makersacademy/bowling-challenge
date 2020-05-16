@@ -1,0 +1,179 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  
+  <section>
+    <form action="/frameform" method="post">
+      <input name="roll1" type="text" placeholder="First bowl"></input>
+      <input name="roll2" type="text" placeholder="Second bowl"></input>
+      <input type="submit" value="Submit"/>
+    </form>
+  </section>
+
+  <%= @roll1 %>
+  <%= @roll2 %>
+
+  
+
+
+
+  # <!-- <div class="divTable" style="width: 40%; border: 1px solid #000;">
+  #   </div><div class="divTableBody">
+    
+  #   <div class="divTableRow">
+  #     <div class="divTableCell">Frame</div>
+  #     <div class="divTableCell">Roll</div>
+  #     <div class="divTableCell">Knocked down pins</div>
+  #     <div class="divTableCell">Total Score</div>
+  #   </div>
+    
+    
+  #   <div class="divTableRow">
+  #     <div class="divTableCell">1</div>
+  #     <div class="divTableCell">1</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #   </div>  
+
+  #     <div class="divTableRow">
+  #     <div class="divTableCell">1</div>
+  #     <div class="divTableCell">2</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #   </div>
+
+    
+  #   <div class="divTableRow">
+  #     <div class="divTableCell">2</div>
+  #     <div class="divTableCell">1&nbsp;</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #   </div>
+
+    
+  #   <div class="divTableRow">
+  #     <div class="divTableCell">2</div>
+  #     <div class="divTableCell">2</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #   </div>
+
+    
+  #   <div class="divTableRow">
+  #     <div class="divTableCell">&nbsp;3</div>
+  #     <div class="divTableCell">&nbsp;1</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #   </div> 
+     
+  #   <div class="divTableRow">
+  #     <div class="divTableCell">3</div>
+  #     <div class="divTableCell">2</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #   </div> 
+  #   <div class="divTableRow">
+  #     <div class="divTableCell">4</div>
+  #     <div class="divTableCell">1</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #   </div>   
+  #   <div class="divTableRow">
+  #     <div class="divTableCell">4</div>
+  #     <div class="divTableCell">2</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #   </div>  
+  #   <div class="divTableRow">
+  #     <div class="divTableCell">5</div>
+  #     <div class="divTableCell">1</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #   </div>  
+  #   <div class="divTableRow">
+  #     <div class="divTableCell">5</div>
+  #     <div class="divTableCell">2</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #   </div> 
+  #   <div class="divTableRow">
+  #     <div class="divTableCell">6</div>
+  #     <div class="divTableCell">1</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #   </div> 
+  #   <div class="divTableRow">
+  #     <div class="divTableCell">6</div>
+  #     <div class="divTableCell">2</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #   </div> 
+  #   <div class="divTableRow">
+  #     <div class="divTableCell">7</div>
+  #     <div class="divTableCell">1</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #   </div> 
+  #   <div class="divTableRow">
+  #     <div class="divTableCell">7</div>
+  #     <div class="divTableCell">2</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #   </div> 
+  #   <div class="divTableRow">
+  #     <div class="divTableCell">8</div>
+  #     <div class="divTableCell">1</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #   </div>
+  #   <div class="divTableRow">
+  #     <div class="divTableCell">8</div>
+  #     <div class="divTableCell">2</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #   </div>
+  #   <div class="divTableRow">
+  #     <div class="divTableCell">9</div>
+  #     <div class="divTableCell">1</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #   </div> 
+  #   <div class="divTableRow">
+  #     <div class="divTableCell">9</div>
+  #     <div class="divTableCell">2</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #   </div> 
+  #   <div class="divTableRow">
+  #     <div class="divTableCell">10</div>
+  #     <div class="divTableCell">1</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #   </div> 
+  #   <div class="divTableRow">
+  #     <div class="divTableCell">10</div>
+  #     <div class="divTableCell">2</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #   </div> 
+  #   <div class="divTableRow">
+  #     <div class="divTableCell">10</div>
+  #     <div class="divTableCell">3</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #     <div class="divTableCell">&nbsp;</div>
+  #   </div>
+  # </div> -->
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="interface.js"></script>
+
+
+
+

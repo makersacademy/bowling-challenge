@@ -8,7 +8,8 @@ clear
 # echo -e "$HOSTNAME\$ $CMD\n"
 # $CMD
 echo $HOSTNAME\$ open -na "Google Chrome" --args --incognito "$PWD/index.html"
-open -na "Google Chrome" --args --incognito "$PWD/index.html"
+open -na "Google Chrome" --args --incognito "$PWD/spec/SpecRunner.html" "$PWD/index.html"
+
 
 # CMD="rackup"
 # echo -e "$HOSTNAME\$ $CMD\n"

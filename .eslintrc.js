@@ -3,6 +3,7 @@
 module.exports = {
   'env': {
     'browser': true,
+    'jasmine': true,
     'es6': true
   },
   'extends': 'eslint:recommended',

@@ -9,9 +9,15 @@
   "dependencies": {
     "eslint": "^7.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jasmine-core": "*",
+    "karma": "*",
+    "karma-chrome-launcher": "*",
+    "karma-cli": "*",
+    "karma-jasmine": "^3.1.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "karma start karma.conf.js --single-run"
   },
   "repository": {
     "type": "git",

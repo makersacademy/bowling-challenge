@@ -8,7 +8,7 @@ class Scorecard {
     this.Scores = []
     this.roll1 = 0;
     this.roll2 = 0;
-    this.legibleForBonus = false;
+    this.legibleForSpareBonus = false;
   }; 
 
   input(roll1, roll2){
@@ -18,20 +18,21 @@ class Scorecard {
       console.log("spare!");
       this.totalArr.push(roll1);
       this.totalArr.push(roll2);
-      this.totalArr.push(this.frameScore(roll1,roll2) + this.previousFrame());
-      this.legibleForBonus = true;
+      this.addtoScore(roll1,roll2)
+      this.legibleForSpareBonus = true;
+
     } else if (this.totalArr.length > 0) { // normal frame
       console.log("normal bowl")
       this.totalArr.push(roll1);
       this.totalArr.push(roll2);
-      this.totalArr.push(this.frameScore(roll1,roll2) + this.previousFrame());
+      this.addtoScore(roll1,roll2)
       this.legibleForBonus = false;
+
     } else {
       console.log("first throw!") // first frame
       this.totalArr.push(roll1);
       this.totalArr.push(roll2);
-      this.totalArr.push(this.frameScore(roll1,roll2));
-      this.legibleForBonus = false;
+      this.addtoScore(roll1,roll2)
     }
   }
 
@@ -39,17 +40,22 @@ class Scorecard {
     var roll1 = roll1
     var roll2 = roll2
 
-    if (this.legibleForBonus === true) {
-
-      this.totalArr.map 
+    if (this.legibleForSpareBonus === true) {
       var prevscore = this.totalArr[this.totalArr.length - 1]
       var newscore = prevscore + roll1;
       this.totalArr.pop();
       this.totalArr.splice(this.totalArr[this.totalArr.length - 1], 0, newscore)
-
+      this.legibleForSpareBonus = false;
     }
   }
  
+  addtoScore(roll1,roll2) {
+    if (this.previousFrame() === undefined ) {
+      this.totalArr.push(this.frameScore(roll1,roll2));
+    } else {
+      this.totalArr.push(this.frameScore(roll1,roll2) + this.previousFrame());
+    }
+  }
 
   previousFrame(){
     return this.totalArr[this.totalArr.length - 3]
@@ -76,15 +82,10 @@ class Scorecard {
     }
   }
 
-  isStrike(roll1, roll2){
+  isStrike(roll1){
     if (roll1 === 10) {
       return true
-    } else if (roll2 === 10) {
-      return true
-    }
-    else {
-      return false
-    }
+    } 
   }
 
   // overall score

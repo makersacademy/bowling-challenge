@@ -112,6 +112,8 @@ $(document).ready(function() {
 				}else{
 					if((this.dataset.go == 0)&&(this.value < 10)){
 						limit_max_next(parseInt(this.id) + 1, this.value);
+					}else if((this.dataset.go == 1)&&(this.value < 10)){
+						$("#21").prop('max', (10 - this.value));
 					}
 				}
 			}

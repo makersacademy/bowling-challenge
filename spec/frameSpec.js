@@ -85,33 +85,33 @@ describe('Frame', function() {
 	describe('#calculateLastFrame', function() {
 		it('can calculate and return game over', function() {
 			frame.throws[1] = 4;
-			expect(frame.calculateLastFrame()).toEqual([8, 'GAME OVER!!!!!']);
+			expect(frame.calculateLastFrame(1)).toEqual([8, 'GAME OVER!!!!!']);
 		});
 		it('returns strike', function() {
 			frame.throws[0] = 10;
-			expect(frame.calculateLastFrame()).toEqual([10, 'STRIKE!!!!!'])
+			expect(frame.calculateLastFrame(0)).toEqual([10, 'STRIKE!!!!!'])
 		});
 		it('returns spare', function() {
 			frame.throws[0] = 5;
 			frame.throws[1] = 5;
-			expect(frame.calculateLastFrame()).toEqual([10, 'SPARE!!!!!']);
+			expect(frame.calculateLastFrame(1)).toEqual([10, 'SPARE!!!!!']);
 		});
 		it('returns 30 when next 2 throws were strikes and returns game over', function() {
 			frame.throws[0] = 10;
 			frame.throws[1] = 10;
 			frame.throws[2] = 10;
-			expect(frame.calculateLastFrame()).toEqual([30, 'GAME OVER!!!!!']);
+			expect(frame.calculateLastFrame(2)).toEqual([30, 'GAME OVER!!!!!']);
 		});
 		it('whem strike, returns value of next 2 throws when they are not strikes and returns game over', function() {
 			frame.throws[0] = 10;
 			frame.throws[1] = 5;
 			frame.throws[2] = 5;
-			expect(frame.calculateLastFrame()).toEqual([20, 'GAME OVER!!!!!']);
+			expect(frame.calculateLastFrame(2)).toEqual([20, 'GAME OVER!!!!!']);
 		});
 		it('adds on next when spare and returns game over', function() {
 			frame.throws[1] = 6;
 			frame.throws[2] = 3;
-			expect(frame.calculateLastFrame()).toEqual([13, 'GAME OVER!!!!!']);
+			expect(frame.calculateLastFrame(2)).toEqual([13, 'GAME OVER!!!!!']);
 		});
 	})
 });

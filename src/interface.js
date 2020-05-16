@@ -89,6 +89,10 @@ $(document).ready(function() {
 			message = 'GUTTERBALL!'
 		}
 
+		if(totalScore == 300){
+			message = 'PERFECT!!!!!'
+		}
+
 		if(message != null){
 			$('#message').text(message);
 		}else{

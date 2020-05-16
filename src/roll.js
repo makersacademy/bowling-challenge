@@ -2,14 +2,19 @@
 
 class Roll {
   constructor(score) {
-    this.score = score;
+    this._score = score;
   }
 
   setScore(score) {
-    this.score = score;
+    this._score = score;
   }
 
   getScore() {
-    return this.score;
+    return this._score;
+  }
+
+  isScored() {
+    if(this._score >= 0) return true;
+    return false;
   }
 }

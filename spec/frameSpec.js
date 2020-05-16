@@ -65,6 +65,28 @@ describe('Frame', function() {
     it('returns an X if the roll was 10', function() {
       firstRoll.getScore.and.returnValue(10);
       expect(frame.rollReportText()).toEqual('X');
+    });
+    it('returns a / if the combined first and second roll is 10', function() {
+      frame.nextRoll();
+      firstRoll.getScore.and.returnValue(5);
+      secondRoll.getScore.and.returnValue(5);
+      expect(frame.rollReportText()).toEqual('/');
+    });
+  });
+
+  describe('#basicTotalScore', function() {
+    it('returns the basic total of both rolls', function() {
+      firstRoll.getScore.and.returnValue(4);
+      secondRoll.getScore.and.returnValue(3);
+      expect(frame.basicTotalScore()).toEqual(7);
+    });
+  });
+
+  describe('#calculateFinishState', function() {
+    it('updates the finishState to finished if both values have a score', function() {
+      firstRoll.getScore.and.returnValue(4);
+      secondRoll.getScore.and.returnValue(3);
+      expect(frame.calculateFinishState()).toEqual(frame.finishStates.finished);
     })
-  })
+  });
 });

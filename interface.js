@@ -9,7 +9,13 @@ $( document ).ready(function() {
     $('#current-score').val('');
     console.log(score);
     game.getCurrentFrame().setCurrentRollScore(score);
-    $(`#frame-${game.currentFrameIndex}-roll-${game.getCurrentFrame().currentRollIndex}`).text(game.getCurrentRoll().getScore());
+    //$(`#frame-${game.currentFrameIndex}-roll-${game.getCurrentFrame().currentRollIndex}`).text(game.getCurrentRoll().getScore());
     game.update();
+    var i;
+    for(i = 0; i < game.frames.length; i++) {
+      //game.frames[i].totalScore() // => assign to total
+      //let scores = games.frames[i].rollScore()
+    }
+    //game.render();
   });
 });

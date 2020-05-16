@@ -19,5 +19,10 @@ describe("Frame", function() {
       frame.first = 10;
       expect(frame.hasStrike()).toEqual(true)
     });
+
+    it("#hasStrike should return false if score is not 10", function() {
+      frame.first = 7;
+      expect(frame.hasStrike()).toEqual(false)
+    });
   });
 });

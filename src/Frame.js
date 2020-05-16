@@ -5,7 +5,8 @@ class Frame {
   }
 
   hasStrike() {
-    if (this.first == 10) return true
+    if (this.first == 10) return true;
+    return false;
   }
 
 };

@@ -118,10 +118,15 @@ describe('Frame', function() {
     it('returns an object with 3 and "/" if it was a spare', function() {
       spyOn(frame, 'getFinishState').and.returnValue(frame.finishStates.spare);
       firstRoll.getScore.and.returnValue(3);
-      console.log(frame.getFinishState());
-      console.log(frame.rollText());
       expect(frame.rollText().firstRoll).toEqual(3);
       expect(frame.rollText().secondRoll).toEqual('/');
+    });
+    it('returns current score values for rolls if finished', function() {
+      spyOn(frame, 'getFinishState').and.returnValue(frame.finishStates.finished);
+      firstRoll.getScore.and.returnValue(3);
+      secondRoll.getScore.and.returnValue(6);
+      expect(frame.rollText().firstRoll).toEqual(3);
+      expect(frame.rollText().secondRoll).toEqual(6);
     });
   });
 });

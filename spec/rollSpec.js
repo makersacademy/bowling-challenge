@@ -1,7 +1,7 @@
 describe('Roll', function() {
   var roll;
   beforeEach(function() {
-    roll = new Roll(-1);
+    roll = new Roll();
   });
 
   describe('#setScore', function() {
@@ -13,7 +13,7 @@ describe('Roll', function() {
 
   describe('#getScore', function() {
     it('returns the score', function() {
-      expect(roll.getScore()).toEqual(-1);
+      expect(roll.getScore()).toEqual('');
     });
   });
 

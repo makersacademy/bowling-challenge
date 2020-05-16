@@ -1,8 +1,8 @@
 'use strict';
 
 class Roll {
-  constructor(score) {
-    this._score = score;
+  constructor() {
+    this._score = '';
   }
 
   setScore(score) {
@@ -14,7 +14,7 @@ class Roll {
   }
 
   isScored() {
-    if(this._score >= 0) return true;
+    if(typeof(this._score) == 'number') return true;
     return false;
   }
 }

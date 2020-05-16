@@ -1,6 +1,8 @@
+# Bowling Scorecard
+
 [![Build Status](https://travis-ci.com/dpwdec/bowling-challenge.svg?branch=master)](https://travis-ci.com/github/dpwdec/bowling-challenge)
 
-# Bowling Scorecard
+## User Stories
 
 ```
 As a player
@@ -28,7 +30,7 @@ So that I can record my perfect bowling games
 I want to be able to record two bonus rolls if I score a strike on frame 10
 ```
 
-# Objects
+## Objects
 
 | object | message |
 | --- | --- |

@@ -1,8 +1,8 @@
 describe('Frame', function() {
   var frame;
   beforeEach(function() {
-    firstRoll = jasmine.createSpyObj('firstRoll', ['getScore', 'setScore']);
-    secondRoll = jasmine.createSpyObj('secondRoll', ['getScore']);
+    firstRoll = jasmine.createSpyObj('firstRoll', ['getScore', 'setScore', 'isScored']);
+    secondRoll = jasmine.createSpyObj('secondRoll', ['getScore', 'isScored']);
     frame = new Frame(firstRoll, secondRoll);
   });
 
@@ -82,14 +82,6 @@ describe('Frame', function() {
     });
   });
 
-  describe('#calculateFinishState', function() {
-    it('updates the finishState to finished if both values have a score', function() {
-      firstRoll.getScore.and.returnValue(4);
-      secondRoll.getScore.and.returnValue(3);
-      expect(frame.calculateFinishState()).toEqual(frame.finishStates.finished);
-    });
-  });
-
   describe('#setFinishState', function() {
     it('sets finish state', function() {
       frame.setFinishState(frame.finishStates.finished);
@@ -99,10 +91,18 @@ describe('Frame', function() {
 
   describe('#updateFinishState', function() {
     it('updates the finish state to finished if both values have a score', function() {
-      firstRoll.getScore.and.returnValue(4);
-      secondRoll.getScore.and.returnValue(3);
+      firstRoll.isScored.and.returnValue(true);
+      secondRoll.isScored.and.returnValue(true);
       frame.updateFinishState();
       expect(frame.finishState).toEqual(frame.finishStates.finished);
+    });
+    it('updates the finish state to spare if both values add up to 10', function() {
+      firstRoll.isScored.and.returnValue(true);
+      secondRoll.isScored.and.returnValue(true);
+      firstRoll.getScore.and.returnValue(5);
+      secondRoll.getScore.and.returnValue(5);
+      frame.updateFinishState();
+      expect(frame.finishState).toEqual(frame.finishStates.spare);
     });
   });
 });

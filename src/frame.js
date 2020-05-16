@@ -57,15 +57,20 @@ class Frame {
     this.finishState = finishState;
   }
 
-  calculateFinishState() {
-    if(this._checkForFinished) return this.finishStates.finished;
-  }
-
   updateFinishState() {
-    this.setFinishState(this.calculateFinishState());
+    this.setFinishState(this._calculateFinishState());
   }
 
   _checkForFinished() {
     if(this.rolls[0].isScored() && this.rolls[1].isScored()) return true;
+  }
+
+  _checkForSpare() {
+    if((this.rolls[0].getScore() + this.rolls[1].getScore()) == 10) return true;
+  }
+
+  _calculateFinishState() {
+    if(this._checkForSpare()) return this.finishStates.spare;
+    if(this._checkForFinished()) return this.finishStates.finished;
   }
 }

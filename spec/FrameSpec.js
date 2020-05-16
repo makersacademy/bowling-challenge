@@ -17,12 +17,23 @@ describe("Frame", function() {
 
     it("#hasStrike should return true if score is 10", function() {
       frame.first = 10;
-      expect(frame.hasStrike()).toEqual(true)
+      expect(frame.hasStrike()).toEqual(true);
     });
 
     it("#hasStrike should return false if score is not 10", function() {
       frame.first = 7;
-      expect(frame.hasStrike()).toEqual(false)
+      expect(frame.hasStrike()).toEqual(false);
+    });
+  });
+
+  describe("second roll", function() {
+    beforeEach(function() {
+      frame.first = 3;
+    });
+
+    it("should return score", function() {
+      frame.second = 5;
+      expect(frame.second).toEqual(5);
     });
   });
 });

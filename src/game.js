@@ -1,6 +1,8 @@
+'use strict';
+
 class Game {
-  constructor() {
-    this.frames = [new Frame(new Roll(-1), new Roll(-1))];
+  constructor(frameClass, rollClass) {
+    this.frames = [new frameClass(new rollClass(-1), new rollClass(-1))];
     this.currentFrameIndex = 0;
   }
 
@@ -13,8 +15,8 @@ class Game {
   }
 
   update() {
-    if(!this.frames[this.currentFrameIndex].finished()) {
-      this.frames[this.currentFrameIndex].nextRoll();
+    if(!this.getCurrentFrame().finished()) {
+      this.getCurrentFrame().nextRoll();
     }
   }
 }

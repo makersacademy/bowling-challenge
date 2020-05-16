@@ -1,7 +1,11 @@
 describe('Game', function() {
   var game;
   beforeEach(function() {
-    game = new Game();
+    frameClass = function() {}
+    frameClass.prototype.nextRoll = function() {}
+    frameClass.prototype.finished = function() {}
+    rollClass = function() {}
+    game = new Game(frameClass, rollClass);
   });
 
   describe('#frames', function() {
@@ -18,7 +22,7 @@ describe('Game', function() {
 
   describe('#getCurrentFrame', function() {
     it('returns the current frame object', function() {
-      expect(game.getCurrentFrame()).toBeInstanceOf(Frame);
+      expect(game.getCurrentFrame()).toBeInstanceOf(frameClass);
     });
   });
 
@@ -31,9 +35,10 @@ describe('Game', function() {
 
   describe('#update', function() {
     it('progresses the current frames roll if the current frame is not finished', function() {
-      game.frames[game.currentFrameIndex].setCurrentRollScore(9);
+      spyOn(frameClass.prototype, 'finished').and.returnValue(false);
+      spyOn(frameClass.prototype, 'nextRoll');
       game.update();
-      expect(game.frames[game.currentFrameIndex].currentRoll).toEqual(1);
+      expect(game.getCurrentFrame().nextRoll).toHaveBeenCalled();
     });
   });
 });

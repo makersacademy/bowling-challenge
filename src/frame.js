@@ -3,15 +3,19 @@
 class Frame {
   constructor(roll1, roll2) {
     this.rolls = [roll1, roll2];
-    this.currentRoll = 0;
+    this.currentRollIndex = 0;
+  }
+
+  getCurrentRoll() {
+    return this.rolls[this.currentRollIndex]
   }
 
   nextRoll() {
-    this.currentRoll += 1;
+    this.currentRollIndex += 1;
   }
 
   setCurrentRollScore(score) {
-    this.rolls[this.currentRoll].setScore(score);
+    this.getCurrentRoll().setScore(score);
   }
 
   finished() {

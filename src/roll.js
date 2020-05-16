@@ -1,3 +1,5 @@
+'use strict';
+
 class Roll {
   constructor(score) {
     this.score = score;

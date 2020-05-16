@@ -12,16 +12,26 @@ describe('Frame', function() {
     });
   });
 
-  describe('#currentRoll', function() {
+  describe('#currentRollIndex', function() {
     it('starts with a currentRoll of 0', function() {
-      expect(frame.currentRoll).toEqual(0);
+      expect(frame.currentRollIndex).toEqual(0);
     });
+  });
+
+  describe('getCurrentRoll', function() {
+    it('current roll is defined', function() {
+      expect(frame.getCurrentRoll()).toBeDefined();
+    });
+    it('can get the value of the current roll', function() {
+      firstRoll.getScore.and.returnValue(1);
+      expect(frame.getCurrentRoll().getScore()).toEqual(1);
+    })
   });
 
   describe('#nextRoll', function() {
     it('adds to currentRoll', function() {
       frame.nextRoll();
-      expect(frame.currentRoll).toEqual(1);
+      expect(frame.currentRollIndex).toEqual(1);
     });
   });
 

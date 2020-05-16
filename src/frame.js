@@ -61,6 +61,10 @@ class Frame {
     if(this._checkForFinished) return this.finishStates.finished;
   }
 
+  updateFinishState() {
+    this.setFinishState(this.calculateFinishState());
+  }
+
   _checkForFinished() {
     if(this.rolls[0].isScored() && this.rolls[1].isScored()) return true;
   }

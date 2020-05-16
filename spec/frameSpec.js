@@ -96,4 +96,13 @@ describe('Frame', function() {
       expect(frame.finishState).toEqual(frame.finishStates.finished);
     });
   });
+
+  describe('#updateFinishState', function() {
+    it('updates the finish state to finished if both values have a score', function() {
+      firstRoll.getScore.and.returnValue(4);
+      secondRoll.getScore.and.returnValue(3);
+      frame.updateFinishState();
+      expect(frame.finishState).toEqual(frame.finishStates.finished);
+    });
+  });
 });

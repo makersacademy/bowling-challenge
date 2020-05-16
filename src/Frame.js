@@ -2,6 +2,7 @@ class Frame {
   constructor(index) {
     this.index = index;
     this.turns = 0;
+    if (this._lastFrame()) this.third = 0;
   }
 
   set firstRoll(value) {
@@ -12,6 +13,12 @@ class Frame {
   set secondRoll(value) {
     this.second = value;
     if (this.hasSpare()) this.turns = 1;
+  }
+
+  set thirdRoll(value) {
+    if (this._lastFrame() && (this.hasSpare() || this.hasStrike())) {
+      this.third = value;
+    }
   }
 
   hasSpare() {
@@ -25,6 +32,7 @@ class Frame {
   };
 
   score() {
+    if (this._lastFrame()) return this.first + this.second + this.third;
     return this.first + this.second;
   };
 
@@ -33,4 +41,8 @@ class Frame {
     return "";
   };
 
+  _lastFrame() {
+    if (this.index == 10) return true;
+    return false;
+  };
 };

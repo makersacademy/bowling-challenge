@@ -62,4 +62,46 @@ describe("Frame", function() {
       expect(frame.turns).toEqual(1);
     });
   });
+
+  describe("lastFrame/#thirdRoll", function() {
+    beforeEach(function() {
+      lastFrame = new Frame(10);
+    });
+
+    describe("#hasSpare is true", function() {
+      beforeEach(function() {
+        lastFrame.firstRoll   = 5;
+        lastFrame.secondRoll  = 5;
+      });
+
+      it("returns final score on thirdRoll", function() {
+        lastFrame.thirdRoll =  8;
+        expect(lastFrame.score()).toEqual(18);
+      });
+    });
+
+    describe("#hasSpare && #hasStrike is false", function() {
+      beforeEach(function() {
+        lastFrame.firstRoll   = 5;
+        lastFrame.secondRoll  = 3;
+      });
+
+      it("returns final score on first two rolls only", function() {
+        lastFrame.thirdRoll =  8;
+        expect(lastFrame.score()).toEqual(8);
+      });
+    });
+
+    describe("#hasStrike is true", function() {
+      beforeEach(function() {
+        lastFrame.firstRoll = 10;
+        lastFrame.secondRoll = 8;
+      });
+
+      it("returns final score on thirdroll", function() {
+        lastFrame.thirdRoll =  8;
+        expect(lastFrame.score()).toEqual(26);
+      });
+    });
+  });
 });

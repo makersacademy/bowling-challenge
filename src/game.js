@@ -12,6 +12,7 @@ class Game {
 
   nextFrame() {
     this.currentFrameIndex += 1;
+    this.frames.push(frameFactory.instance());
   }
 
   getCurrentRoll() {
@@ -21,6 +22,8 @@ class Game {
   update() {
     if(!this.getCurrentFrame().finished()) {
       this.getCurrentFrame().nextRoll();
+    } else {
+      this.nextFrame();
     }
   }
 }

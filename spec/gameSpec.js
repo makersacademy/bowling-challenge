@@ -45,6 +45,10 @@ describe('Game', function() {
       game.nextFrame();
       expect(game.currentFrameIndex).toEqual(1);
     });
+    it('creates a new frame object', function() {
+      game.nextFrame();
+      expect(game.frames.length).toEqual(2);
+    });
   });
 
   describe('#update', function() {
@@ -53,6 +57,11 @@ describe('Game', function() {
       spyOn(frameClass.prototype, 'nextRoll');
       game.update();
       expect(game.getCurrentFrame().nextRoll).toHaveBeenCalled();
+    });
+    it('progresses currentFrameIndex to the next frame if current frame is finished', function() {
+      spyOn(frameClass.prototype, 'finished').and.returnValue(true);
+      game.update();
+      expect(game.currentFrameIndex).toEqual(1);
     });
   });
 });

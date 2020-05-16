@@ -9,7 +9,7 @@ $( document ).ready(function() {
     $('#current-score').val('');
     console.log(score);
     game.getCurrentFrame().setCurrentRollScore(score);
-    $(`#frame-${game.currentFrameIndex}-roll-${game.getCurrentFrame().currentRollIndex}`).text(game.getCurrentFrame().getCurrentRoll().getScore());
+    $(`#frame-${game.currentFrameIndex}-roll-${game.getCurrentFrame().currentRollIndex}`).text(game.getCurrentRoll().getScore());
     game.update();
   });
 });

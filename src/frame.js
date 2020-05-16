@@ -60,9 +60,7 @@ class Frame {
 			type = 'STRIKE!!!!!'
 		}else if(this.throws[0] + this.throws[1] == 10){
 			type = 'SPARE!!!!!'
-		}
-
-		if(((go == 1) && (this.throws[0] + this.throws[1] < 10)) || (go == 2)){
+		}else if(((go == 1) && (this.throws[0] + this.throws[1] < 10)) || (go == 2)){
 			type = 'GAME OVER!!!!!';
 		}
 

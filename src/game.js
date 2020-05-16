@@ -11,7 +11,9 @@ class ScoreCard {
   }
 
   score() {
-    this.scores.push(this.frames[0].total());
+    let frameScore = this.frames[0].total();
+    this.scores.push(frameScore);
+
     return this.scores;
   }
 }

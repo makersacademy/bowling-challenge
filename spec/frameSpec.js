@@ -60,4 +60,11 @@ describe('Frame', function() {
       expect(frame.finished()).toEqual(false);
     })
   });
+
+  describe('#rollReportText', function() {
+    it('returns an X if the roll was 10', function() {
+      firstRoll.getScore.and.returnValue(10);
+      expect(frame.rollReportText()).toEqual('X');
+    })
+  })
 });

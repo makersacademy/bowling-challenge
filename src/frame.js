@@ -27,4 +27,10 @@ class Frame {
       return false;
     }
   }
+
+  rollReportText() {
+    if(this.getCurrentRoll().getScore() == 10) {
+      return 'X';
+    }
+  }
 }

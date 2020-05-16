@@ -2,13 +2,20 @@ class Bowling {
 
   constructor() {
     this.MAX_FRAME_SCORE = 10;
+    this.MAX_FRAMES = 10;
     this.firstBowl = true;
-    this.frame = 1;
+    this.frame = 0;
     this.frameScore;
     this.gameScore = [];
   }
-
   countScore(score) {
+    if(this.frame > this.MAX_FRAMES) {
+      throw new Error('Game Over')
+    } else {
+      this._countScoreHelper(score);
+    }
+  }
+  _countScoreHelper(score) {
     if(score === this.MAX_FRAME_SCORE && this.firstBowl === true) {
       this._countHelperWhenStrike(score);
     } else {
@@ -54,16 +61,3 @@ class Bowling {
   }
 
 }
-
-
-function one() {
-  return this.two();
-}
-
-function two() {
-  // console.log('hello')
-  return 'hello'
-  
-}
-
-console.log(one())

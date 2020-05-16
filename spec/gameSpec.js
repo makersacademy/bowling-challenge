@@ -48,4 +48,15 @@ describe('Game', function() {
     expect(game.totalScore).toEqual(80);
   });
 
+
+  it ('gives a total score of 150 when just rolling 5s', function() {
+    for (let i = 0; i < 9; i ++) {game.addFrame([5, 5])};
+    game.addLastFrame([5, 5, 5]);
+
+    game.calculateTotalScore();
+    expect(game.totalScore).toEqual(150);
+  });
+
+
+
 });

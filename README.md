@@ -9,7 +9,7 @@
 
 ## Doing
 
-* Update Test Scripts to include Jasmine CLI
+* Something else
 
 ## Done
 
@@ -17,7 +17,7 @@
 * Setup Test Scripts
 * Setup Jasmine CLI
 * Setup Travis
-
+* Update Test Scripts to include Jasmine CLI
 
 
 ## Notes

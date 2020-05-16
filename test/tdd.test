@@ -15,7 +15,14 @@ else
 fi
 
 clear
-CMD="eslint $FILE_NAME"
+CMD="karma start karma.conf.js --single-run"
 echo -e "$HOSTNAME\$ $CMD\n"
 $CMD
 
+CMD="eslint $FILE_NAME"
+echo -e "$HOSTNAME\$ $CMD\n"
+$CMD
+# echo $?
+if [[ "$?" == 0 ]] ; then
+  echo -e "Woo! No ESLint errors! Beer?"
+fi

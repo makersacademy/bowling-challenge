@@ -56,12 +56,12 @@ class Frame {
 			total += value;
 		});
 
-		if(this.throws[go] == 10){
+		if(((go == 1) && (this.throws[0] + this.throws[1] < 10)) || (go == 2)){
+			type = 'GAME OVER!!!!!';
+		}else if(this.throws[go] == 10){
 			type = 'STRIKE!!!!!'
 		}else if(this.throws[0] + this.throws[1] == 10){
 			type = 'SPARE!!!!!'
-		}else if(((go == 1) && (this.throws[0] + this.throws[1] < 10)) || (go == 2)){
-			type = 'GAME OVER!!!!!';
 		}
 
 		return [total, type];

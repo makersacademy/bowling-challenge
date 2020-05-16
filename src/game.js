@@ -36,7 +36,9 @@ class Game {
       }
 
     });
+
     this.totalScore = total
+    return total
   }
 
 }

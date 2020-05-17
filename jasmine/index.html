@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<center>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Bowling Scoreboard</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link href='https://fonts.googleapis.com/css?family=Allerta Stencil' rel='stylesheet'>
+  </head>
+  <body>
+    <div id="container">
+      <div id="heading">
+    <h1>Bowling Calculator</h1>
+    <button id="reset">Reset</button>
+    <div class="strike">
+      <h1 id="strike"> STRIKE! </h1>
+      <h2 id="spare"> SPARE! </h2>
+      </div>
+    </div>
+    <div id="scoreboard">
+ <center>  <table>
+ <tr>
+  <th class="frames"scope="row colspan="1">Frames</th>
+  <td div id="frame" colspan="2">1</td>
+  <td div id="frame" colspan="2">2</td>
+  <td div id="frame" colspan="2">3</td>
+  <td div id="frame" colspan="2">4</td>
+  <td div id="frame" colspan="2">5</td>
+  <td div id="frame" colspan="2">6</td>
+  <td div id="frame" colspan="2">7</td>
+  <td div id="frame" colspan="2">8</td>
+  <td div id="frame" colspan="2">9</td>
+  <td div id="frame" colspan="2">10</td>
+ </tr>
+  <tr>
+  <th class="score" scope="row"><h4>Score</h4></th>
+  <center>
+  <TD div id="one"><button class="operators" id="plus_1">+</button><h5 class="number"id="1">0</h5><button class="operators" id="minus_1">-</button></TD>
+  <TD div id="one"><button class="operators" id="plus_2">+</button><h5 class="number"id="2">0</h5><button class="operators" id="minus_2">-</button></TD>
+  <TD div id="one"><button class="operators" id="plus_3">+</button><h5 class="number" id="3"> 0 </h5><button class="operators" id="minus_3">-</button></TD>
+  <TD div id="one"><button class="operators" id="plus_4">+</button><h5 class="number" id="4"> 0 </h5><button class="operators" id="minus_4">-</button></TD>
+  <TD div id="one"><button class="operators" id="plus_5">+</button><h5 class="number" id="5"> 0 </h5><button class="operators" id="minus_5">-</button></TD>
+  <TD div id="one"><button class="operators" id="plus_6">+</button><h5 class="number" id="6"> 0 </h5><button class="operators" id="minus_6">-</button></TD>
+  <TD div id="one"><button class="operators" id="plus_7">+</button><h5 class="number" id="7"> 0 </h5><button class="operators" id="minus_7">-</button></TD>
+  <TD div id="one"><button class="operators" id="plus_8">+</button><h5 class="number" id="8"> 0 </h5><button class="operators" id="minus_8">-</button></TD>
+  <TD div id="one"><button class="operators" id="plus_9">+</button><h5 class="number" id="9"> 0 </h5><button class="operators" id="minus_9">-</button></TD>
+  <TD div id="one"><button class="operators" id="plus_10">+</button><h5 class="number" id="10"> 0 </h5><button class="operators" id="minus_10">-</button></TD>
+  <TD div id="one"><button class="operators" id="plus_11">+</button><h5 class="number" id="11"> 0 </h5><button class="operators" id="minus_11">-</button></TD>
+  <TD div id="one"><button class="operators" id="plus_12">+</button><h5 class="number" id="12"> 0 </h5><button class="operators" id="minus_12">-</button></TD>
+  <TD div id="one"><button class="operators" id="plus_13">+</button><h5 class="number" id="13"> 0 </h5><button class="operators" id="minus_13">-</button></TD>
+  <TD div id="one"><button class="operators" id="plus_14">+</button><h5 class="number" id="14"> 0 </h5><button class="operators" id="minus_14">-</button></TD>
+  <TD div id="one"><button class="operators" id="plus_15">+</button><h5 class="number" id="15"> 0 </h5><button class="operators" id="minus_15">-</button></TD>
+  <TD div id="one"><button class="operators" id="plus_16">+</button><h5 class="number" id="16"> 0 </h5><button class="operators" id="minus_16">-</button></TD>
+  <TD div id="one"><button class="operators" id="plus_17">+</button><h5 class="number" id="17"> 0 </h5><button class="operators" id="minus_17">-</button></TD>
+  <TD div id="one"><button class="operators" id="plus_18">+</button><h5 class="number" id="18"> 0 </h5><button class="operators" id="minus_18">-</button></TD>
+  <TD div id="one"><button class="operators" id="plus_19">+</button><h5 class="number" id="19"> 0 </h5><button class="operators" id="minus_19">-</button></TD>
+  <TD div id="one"><button class="operators" id="plus_20">+</button><h5 class="number" id="10"> 0 </h5><button class="operators" id="minus_20">-</button></TD></tr>
+</table>
+</center>
+<h1 id="totalscore">Total Score: </h1><button class="total" id="total"> 0 </button><br><br>
+</div>
+</div>
+  <script src="src/bowlingcalculator.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="jquery_style.js"></script>
+      </body>
+</html>
+
+
+<!-- $('#here_table').append(  '<table />' );
+
+ for(i=0;i<3;i++){
+    $('#here_table table').append( '<tr><td>' + 'result' +  i + '</td></tr>' ); -->

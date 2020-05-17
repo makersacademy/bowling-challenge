@@ -4,19 +4,29 @@
 
 ## Todo
 
-* Write some code?
+* Implement Player
+* Refactor Player
+* Write/Implement/Refactor remaining classes
+* Redo CRC cards as Markdown table?
 
 ## Doing
 
-* CRC Cards ([Template](https://www.diagram.codes/d/system-layers/H%5Bresponsibilities%2Ccollaborators%5D%20with%20label%20%22Class%20Name%22%0Aresponsibilities%3DV%5B%22Responsibility%201%22%2C%22Responsibility%202%22%5D%20with%20label%20%22Responsibilities%22%0Acollaborators%3DV%5B%22Collaborator%201%22%2C%20%22Collaborator%202%22%5D%20with%20label%20%22Collaborators%22%0A))
+* Write Tests for Player
 
 ## Done
 
-* Setup ESLint
-* Setup Test Scripts
-* Setup Jasmine CLI
-* Setup Travis
+* CRC Cards ([arkon/crcmaker: A simple tool for generating CRC cards.](https://github.com/arkon/crcmaker))
 * Update Test Scripts to include Jasmine CLI
+* Setup Travis
+* Setup Jasmine CLI
+* Setup Test Scripts
+* Setup ESLint
+
+*Note: (reverse chronological)*
+
+## CRC Cards
+
+![CRC Cards for Bowling Challenge](images/bowling-crc.png)
 
 
 ## Notes

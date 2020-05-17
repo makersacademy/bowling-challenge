@@ -6,15 +6,15 @@ class ScoreBoard {
   }
 
   addScore(number) {
-    if (this.currentFrame.hasStrike() || this.currentFrame.hasSpare()) {
-      this._nextFrame();
-    };
+    if (this.currentFrame.hasStrike()) this._nextFrame();
 
     if (this.currentFrame.first != null) {
       this.currentFrame.secondRoll = number;
+      this._nextFrame();
     } else {
       this.currentFrame.firstRoll = number;
     };
+
     this._updateScores();
   };
 

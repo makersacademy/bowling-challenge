@@ -34,7 +34,6 @@ describe("ScoreBoard", function() {
     });
 
     it("scoreboard should be on 3rd frame", function() {
-      console.log(frames);
       expect(scoreBoard.currentFrame.index).toEqual(2);
     });
 
@@ -51,12 +50,29 @@ describe("ScoreBoard", function() {
     });
 
     it("scoreboard should be on 2nd frame", function() {
-      console.log(frames);
       expect(scoreBoard.currentFrame.index).toEqual(1);
     });
 
     it("first frame should have score of 20", function() {
       expect(scoreBoard.frames[0].score()).toEqual(20);
+    });
+  });
+
+  describe("Random Scores", function() {
+    beforeEach(function() {
+      rolls = [3, 2, 5, 5, 10, 10, 2, 7, 8, 2]
+      for (var i = 0; i < rolls.length; i++) {
+        scoreBoard.addScore(rolls[i]);
+      };
+    });
+
+    it("should be on correct frame", function() {
+      expect(scoreBoard.currentFrame.index).toEqual(6)
+    });
+
+    it("frame 1 should have correct score", function() {
+      frameOne = frames[0];
+      expect(frameOne.score()).toEqual(5);
     });
   });
 });

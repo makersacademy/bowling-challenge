@@ -10,6 +10,7 @@
     "eslint": "^7.0.0"
   },
   "devDependencies": {
+    "jasmine": "*",
     "jasmine-core": "*",
     "karma": "*",
     "karma-cli": "*",

@@ -14,5 +14,3 @@ class Player {
     this._name = value;
   }
 }
-
-// module.exports = Player;

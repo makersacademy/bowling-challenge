@@ -4,17 +4,19 @@
 
 ## Todo
 
-* Implement Player
-* Refactor Player
+* Solve ESLint errors - tried export/import and modules/require but currently unsuccessul
 * Write/Implement/Refactor remaining classes
 * Redo CRC cards as Markdown table?
 
 ## Doing
 
-* Write Tests for Player
+* Paused
 
 ## Done
 
+* Refactor Player
+* Implement Player
+* Write Tests for Player
 * CRC Cards ([arkon/crcmaker: A simple tool for generating CRC cards.](https://github.com/arkon/crcmaker))
 * Update Test Scripts to include Jasmine CLI
 * Setup Travis

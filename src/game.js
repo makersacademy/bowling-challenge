@@ -15,4 +15,8 @@ class ScoreCard {
 
     this.scores.push(frameScore);
   }
+
+  getScores() {
+    return this.scores;
+  }
 }

@@ -32,4 +32,13 @@ describe('ScoreCard', () => {
       expect(scoreCard.scores).toContain(frame.total());
     });
   });
+
+  describe('#getScores', () => {
+    it('returns the scores for each frame', () => {
+      scoreCard.addToFrames(frame);
+      scoreCard.setScore();
+
+      expect(scoreCard.getScores()).toContain(frame.total());
+    });
+  });
 });

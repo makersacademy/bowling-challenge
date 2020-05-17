@@ -75,7 +75,7 @@ $(document).ready(function() {
     for (var i = 0; i < 10; i++) {
       var frame = scoreBoard.frames[i]
       $('#frame-' + i + '-first-roll').text(frame.first);
-      $('#frame-' + i + '-second-roll').text(frame.second);
+      if(!frame.hasStrike()) $('#frame-' + i + '-second-roll').text(frame.second);
       $('#frame-' + i + '-score').text(frame.displayScore());
     };
     updateButtons()

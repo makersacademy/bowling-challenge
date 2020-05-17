@@ -27,5 +27,11 @@ describe('Game', () => {
       //expect(game.rolls[0]).toEqual(1);
       expect(game.currentRoll).toEqual(1);    
     });
+    
+    it('Adds second roll to array', () => {
+      game.roll(1);
+      game.roll(1);
+      expect(game.rolls[1]).toEqual(1)
+    })
   });
 });

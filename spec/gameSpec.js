@@ -24,11 +24,12 @@ describe('ScoreCard', () => {
     });
   });
 
-  describe('#setScores', () => {
-    it('can keep track of the score for a normal frame', () => {
+  describe('#setScore', () => {
+    it('can keep track of the score for each frame', () => {
       scoreCard.addToFrames(frame);
+      scoreCard.setScore();
 
-      expect(scoreCard.setScores()).toContain(frame.total());
+      expect(scoreCard.scores).toContain(frame.total());
     });
   });
 });

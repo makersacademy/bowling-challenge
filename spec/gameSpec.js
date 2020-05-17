@@ -53,12 +53,23 @@ describe('Game', function() {
   });
 
 
-  // it ('gives a total score of 300 when just rolling 10s', function() {
-  //   for (let i = 0; i < 9; i ++) {game.addFrame([10, 0])};
-  //   game.addLastFrame([10, 10, 10]);
-  //
-  //   expect(game.calculateTotalScore()).toEqual(300);
-  // });
+  it ('gives a total score of 114 when just rolling 5s then 4s', function() {
+    for (let i = 0; i < 5; i ++) {game.addFrame([5, 5])};
+    for (let i = 5; i < 9; i ++) {game.addFrame([4, 4])};
+    game.addLastFrame([4, 4]);
+
+    expect(game.calculateTotalScore()).toEqual(114);
+  });
+
+
+
+
+  it ('gives a total score of 300 when just rolling 10s', function() {
+    for (let i = 0; i < 9; i ++) {game.addFrame([10, 0])};
+    game.addLastFrame([10, 10, 10]);
+
+    expect(game.calculateTotalScore()).toEqual(300);
+  });
 
 
 });

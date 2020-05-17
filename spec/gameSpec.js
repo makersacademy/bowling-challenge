@@ -14,6 +14,7 @@ describe('Game', () => {
   describe('Roll', () => {
     it('Pushes pin input into array', () => {
       game.roll(1);
+      expect(game.currentRoll).toEqual(0)
       expect(game.rolls[0]).toEqual(1)
     })
   })

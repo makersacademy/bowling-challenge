@@ -26,8 +26,7 @@ describe('ScoreCard', () => {
 
   describe('#setScore', () => {
     it('can keep track of the score for each frame', () => {
-      scoreCard.addToFrames(frame);
-      scoreCard.setScore();
+      addFrameAndSetScore(frame);
 
       expect(scoreCard.scores).toContain(frame.total());
     });
@@ -35,10 +34,14 @@ describe('ScoreCard', () => {
 
   describe('#getScores', () => {
     it('returns the scores for each frame', () => {
-      scoreCard.addToFrames(frame);
-      scoreCard.setScore();
+      addFrameAndSetScore(frame);
 
       expect(scoreCard.getScores()).toContain(frame.total());
     });
   });
+
+  function addFrameAndSetScore(frame) {
+    scoreCard.addToFrames(frame);
+    scoreCard.setScore();
+  }
 });

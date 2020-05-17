@@ -4,12 +4,11 @@
 
 ## Todo
 
-* CRC Cards ([Template]("https://www.diagram.codes/d/system-layers/H%5Bresponsibilities%2Ccollaborators%5D%20with%20label%20%22Class%20Name%22%0Aresponsibilities%3DV%5B%22Responsibility%201%22%2C%22Responsibility%202%22%5D%20with%20label%20%22Responsibilities%22%0Acollaborators%3DV%5B%22Collaborator%201%22%2C%20%22Collaborator%202%22%5D%20with%20label%20%22Collaborators%22%0A"))
 * Write some code?
 
 ## Doing
 
-* Something else
+* CRC Cards ([Template](https://www.diagram.codes/d/system-layers/H%5Bresponsibilities%2Ccollaborators%5D%20with%20label%20%22Class%20Name%22%0Aresponsibilities%3DV%5B%22Responsibility%201%22%2C%22Responsibility%202%22%5D%20with%20label%20%22Responsibilities%22%0Acollaborators%3DV%5B%22Collaborator%201%22%2C%20%22Collaborator%202%22%5D%20with%20label%20%22Collaborators%22%0A))
 
 ## Done
 

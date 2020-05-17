@@ -6,17 +6,32 @@ class ScoreBoard {
   }
 
   addScore(number) {
-    if (this.currentFrame.hasStrike()) this._nextFrame();
-
-    if (this.currentFrame.first != null) {
-      this.currentFrame.secondRoll = number;
-      this._nextFrame();
+    if (this.currentFrame.isLastFrame()) {
+      this._executeLastFrame(number);
     } else {
-      this.currentFrame.firstRoll = number;
-    };
+      if (this.currentFrame.hasStrike()) this._nextFrame();
 
+      if (this.currentFrame.first != null) {
+        this.currentFrame.secondRoll = number;
+        this._nextFrame();
+      } else {
+        this.currentFrame.firstRoll = number;
+      };
+    }
     this._updateScores();
   };
+
+  _executeLastFrame(number) {
+    if(this.currentFrame.first != null) {
+      this.currentFrame.secondRoll = number;
+    } else {
+      this.currentFrame.firstRoll = number;
+    }
+
+    if(this.currentFrame.second != null) {
+      this.currentFrame.thirdRoll = number;
+    }
+  }
 
   _nextFrame() {
     this.currentFrame = this.frames[this.index += 1];

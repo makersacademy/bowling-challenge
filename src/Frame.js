@@ -21,7 +21,7 @@ class Frame {
   }
 
   hasSpare() {
-    if (this.hasStrike() == false && this.score() == 10) return true;
+    if (this.first + this.second == 10) return true;
     return false;
   };
 
@@ -44,20 +44,36 @@ class Frame {
   };
 
   update() {
-    if (this.hasStrike()) {
-      this.secondRoll = this.nextFrame.first;
+    if (this.isLastFrame()) return;
 
-      if (this.nextFrame.hasStrike()) {
-        this.thirdRoll = this.nextFrame.nextFrame.first;
-      } else {
-        this.thirdRoll = this.nextFrame.second;
-      };
+    if (this.hasStrike()) {
+      this._checkStrike();
     };
 
     if (this.hasSpare()) {
       this.thirdRoll = this.nextFrame.first;
     };
   };
+
+  isLastFrame() {
+    if (this.index == 9) return true;
+    return false;
+  };
+
+  _checkStrike() {
+    this.secondRoll = this.nextFrame.first;
+    if (this.nextFrame.hasStrike()) {
+      if (this.index == 8) {
+        this.thirdRoll = this.nextFrame.second;
+      }
+      else {
+        this.thirdRoll = this.nextFrame.nextFrame.first;
+      };
+    }
+    else {
+      this.thirdRoll = this.nextFrame.second;
+    };
+  }
 
   _canDisplay() {
     if (this.hasSpare() || this.hasStrike()) {
@@ -68,13 +84,4 @@ class Frame {
     return false;
   };
 
-  // _lastFrame() {
-  //   if (this.index == 9) return true;
-  //   return false;
-  // };
-  //
-  // _firstFrame() {
-  //   if (this.index == 0) return true;
-  //   return false;
-  // }
 };

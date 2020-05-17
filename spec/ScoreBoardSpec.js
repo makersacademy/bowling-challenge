@@ -60,19 +60,35 @@ describe("ScoreBoard", function() {
 
   describe("Random Scores", function() {
     beforeEach(function() {
-      rolls = [3, 2, 5, 5, 10, 10, 2, 7, 8, 2]
+      rolls = [3, 2, 5, 5, 10, 10, 2, 7, 8, 2, 6, 4, 5, 4, 7, 3, 10, 9, 1]
       for (var i = 0; i < rolls.length; i++) {
         scoreBoard.addScore(rolls[i]);
       };
     });
 
     it("should be on correct frame", function() {
-      expect(scoreBoard.currentFrame.index).toEqual(6)
+      console.log(scoreBoard);
+      expect(scoreBoard.currentFrame.index).toEqual(9)
     });
 
     it("frame 1 should have correct score", function() {
       frameOne = frames[0];
       expect(frameOne.score()).toEqual(5);
+    });
+
+    it("frame 2 should have correct score", function() {
+      frameTwo = frames[1];
+      expect(frameTwo.score()).toEqual(25);
+    });
+
+    it("frame 3 should have correct score", function() {
+      frameThree = frames[2];
+      expect(frameThree.score()).toEqual(47);
+    });
+
+    it("frame 8 should have correct score", function() {
+      frameFour = frames[7];
+      expect(frameFour.score()).toEqual(115);
     });
   });
 });

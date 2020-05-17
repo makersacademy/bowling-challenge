@@ -19,4 +19,16 @@ describe('ScoreCard', function () {
             expect(scorecard.total).toEqual(40)
         });
     });
+
+    describe('spareBonus', function(){
+        it('calculates a total of 84', function(){
+          for (let i = 0; i < 19; i++) {
+              scorecard.addScore(1, 1, 4);
+            }
+            scorecard.addScore(10, 2, 6)
+            scorecard.addScore(10, 3, 2)
+            scorecard.calculate()
+            expect(scorecard.total).toEqual(84)
+        });
+    });
 });

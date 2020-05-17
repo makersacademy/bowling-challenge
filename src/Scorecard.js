@@ -20,6 +20,27 @@ class ScoreCard{
       }
 
       // add bonus for strike
+      this.strikeBonus();
+
+      // add bonus for spare
+      this.spareBonus();
+
+      // check total
+      console.log(this.total)
+    }
+
+    spareBonus(){
+      for(let i = 0; i < (this.scoreboard.length - 1); i += 2) {
+        if((this.scoreboard[i].knocked + this.scoreboard[i+1].knocked) === 10
+        && this.scoreboard[i].knocked !== 10 && this.scoreboard[i+1].knocked !== 10){
+          if(this.scoreboard[i + 2].roll !== 3){
+            this.total += this.scoreboard[i + 2].knocked;
+          }
+        }
+      }
+    }
+
+    strikeBonus(){
       for(let i = 0; i < this.scoreboard.length; i++) {
         if(this.scoreboard[i].roll === 3){
           return;
@@ -32,16 +53,6 @@ class ScoreCard{
           }
         }
       }
-
-      // add bonus for spare
-      for(let i = 0; i < (this.scoreboard.length - 1); i += 2) {
-        if((this.scoreboard[i].knocked + this.scoreboard[i+1].knocked) === 10
-        && this.scoreboard[i].knocked !== 10 && this.scoreboard[i+1].knocked !== 10){
-          if(this.scoreboard[i + 2].roll !== 3){
-            this.total += this.scoreboard[i + 2].knocked;
-          }
-        }
-      }
-      console.log(this.total)
     }
+
 }

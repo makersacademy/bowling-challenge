@@ -5,12 +5,11 @@ class Game {
       this.frame = 1;
       this.roll = 1;
       this.knocked = 0;
-      this.score = [];
       this.isEnded = false;
     }
 
     play(pins){
-      // prevents someone from playing if game has ended
+      // prevents from playing if game has ended
       if(this.isEnded || this.frame >= 11){
         return this.end();
       }
@@ -31,22 +30,30 @@ class Game {
 
     finalFrameRules(pins){
       this.scorecard.addScore(this.frame, this.roll, pins)
-      // checks if player can have an extra round
-      if(this.roll === 2){
-        if(this.isExtraRound()){
-          this.roll ++;
-          return;
-        } else {
-          return this.end();
-        }
-      }
       // prevents any extra rounds if extra round already played
       if(this.roll === 3){
         return this.end();
       }
-      // increments roll for the first roll
+
+      // if scored a strike, increment roll by 2
+      if(this.roll === 1 && pins === 10){
+        this.roll += 2;
+        return;
+      }
+      // if roll is two, check if they can have an extra round
+      if(this.roll === 2){
+        if(this.isExtraRound()){
+          this.roll ++;
+          return;
+        }else{
+          return this.end();
+        }
+      }
+
+      // if roll is one but no strike, increment by 1
       if(this.roll === 1){
         this.roll ++;
+        return;
       }
     }
 

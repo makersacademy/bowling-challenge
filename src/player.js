@@ -2,12 +2,17 @@
 
 class Player {
 
-  constuctor(name) {
-
+  constructor(name) {
+    this._name = name;
   }
 
-  getName() {
-    return 'Dave';
+  get name() {
+    return this._name;
   }
 
+  set name(value) {
+    this._name = value;
+  }
 }
+
+// module.exports = Player;

@@ -1,4 +1,5 @@
 'use strict';
+// const Player = require('../src/player.js');
 
 describe('Player', function(){
 
@@ -9,7 +10,7 @@ describe('Player', function(){
   });
 
   it('has a name', function(){
-    expect(player.getName()).toEqual('Dave');
+    expect(player.name).toEqual('Dave');
   });
 
 });

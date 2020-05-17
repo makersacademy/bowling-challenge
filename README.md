@@ -8,7 +8,7 @@ For this challenge I used JavaScript & JQuery to construct an interactive Bowlin
 I used two models. A ScoreBoard which updates the frames scores accordingly and a seperate frame model that houses all the necessary attributes.
 
 | ScoreBoard        | Attributes                | Methods  |
-| -------------     |:-------------:            | -----:|
+| -------------     |-------------              | ----- |
 |                   | this.index                | addScore(number) |
 |                   | this.frames               | _assignFrame(number) |
 |                   | this.currentFrame         | _assignLastFrame(number) |
@@ -16,7 +16,7 @@ I used two models. A ScoreBoard which updates the frames scores accordingly and 
 |                   |                           | _constructFrames()) |
 
 | Frame             | Attributes                | Methods  |
-| -------------     |:-------------:            | -----:|
+| -------------     |-------------              | ----- |
 |                   | this.index                | set firstRoll(number) |
 |                   | this.first                | set secondRoll(number) |
 |                   | this.second               | set thirdRoll(number) |

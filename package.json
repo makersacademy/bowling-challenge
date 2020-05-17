@@ -1,7 +1,7 @@
 {
   "name": "bowling-challenge",
   "version": "1.0.0",
-  "description": "Not quite sure? Setting up ELSLint for the first time",
+  "description": "",
   "main": "index.js",
   "directories": {
     "doc": "docs"
@@ -12,9 +12,9 @@
   "devDependencies": {
     "jasmine-core": "*",
     "karma": "*",
-    "karma-chrome-launcher": "*",
     "karma-cli": "*",
-    "karma-jasmine": "^3.1.1"
+    "karma-jasmine": "*",
+    "karma-chrome-launcher": "*"
   },
   "scripts": {
     "test": "karma start karma.conf.js --single-run"

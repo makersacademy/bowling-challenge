@@ -1,9 +1,11 @@
 'use strict';
-// const Player = require('../src/player.js');
+// let player = require('../src/player.js');
+let player;
 
 describe('Player', function(){
 
-  let player;
+  // let player;
+  // let player = require('../src/player.js');
 
   beforeEach(function(){
     player = new Player('Dave');

@@ -15,11 +15,11 @@ else
 fi
 
 clear
-CMD="karma start karma.conf.js --single-run"
+CMD="npx karma start karma.conf.js --single-run"
 echo -e "$HOSTNAME\$ $CMD\n"
 $CMD
 
-CMD="eslint $FILE_NAME"
+CMD="npx eslint $FILE_NAME"
 echo -e "$HOSTNAME\$ $CMD\n"
 $CMD
 # echo $?

@@ -1,26 +1,48 @@
 
-Domain model: 
+Personal note:
+
+This week's challenge was definitely challenging but i'm happy with how it went. I started by breaking the requirements into user stories, as demonstrated below. I'm happy with the Javascript logic for the game and I stuck to SRP. A user can input two numbers and the score for that frame is calculated whether it's a regular score, spare or strike. The difficulty was working out how to add the next bowl to the score, if the next bowl hasn't been played yet. For this, I introduced a 'switch spare/strike/ bonus on' function with conditions if the user had bowled two bowls resulting in 10(spare) or one bowl is 10 (strike). 
+
+The Sinatra app is set up to remember the params passed into the form, and back end integration has started. The Jquery part is not fully functioning but this can be focussed on at a later date. For now the functionality is there, the interface will be the part I would like to focus on after this weekend.
+
+Thanks,
+Jo
+
+
+User stories: 
 
 As a player
 So that I can keep scores
-I want the scorecard to be blank
+I want the scorecard to be blank 
+Done
 
 As a player
 So that I can record the scores
 I want to input my rolls for each round
+Done
 
 As a player
 So that I can see my score for that round
 I want the knocked down pins to total score
+Done
 
 As a player
 So that I can see my score when i get a spare
-I want to see the total plus 5 points (and add the next knocked down pin)
+I would like my frame score to add my score + next bowl
+Done
 
 As a player
 So that I can see my score when i get a strike
-I want to see the total plus 10 points (and add the next two knocked down rolls)
+I want to my frame score to add my score + the next two bowls
+Done
 
+
+Scorecard responsibilities:
+
+- Takes in 2 numbers
+- Calculates scores per frame
+- Remembers if the last bowl was a spare or a strike
+- Shows scores so far
 
 
 Bowling Challenge

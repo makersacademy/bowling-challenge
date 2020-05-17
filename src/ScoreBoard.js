@@ -1,8 +1,9 @@
 class ScoreBoard {
-  constructor(frames){
-    this.frames = frames;
+  constructor(){
     this.index = 0;
-    this.currentFrame = this.frames[this.index];
+    this.frames = [];
+    this._constructFrames();
+    this.currentFrame = this.frames[0];
   }
 
   addScore(number) {
@@ -19,6 +20,24 @@ class ScoreBoard {
       };
     }
     this._updateScores();
+  };
+
+  _constructFrames() {
+    for (var i = 0; i < 10; i++) {
+      this.frames.push(new Frame(i));
+    };
+
+    for (var i = 0; i < 10; i++) {
+      frame = this.frames[i];
+      if (i == 0) {
+        frame.nextFrame = this.frames[i + 1];
+      } else if (i == 9) {
+        frame.prevFrame = this.frames[i - 1];
+      } else {
+        frame.nextFrame = this.frames[i + 1];
+        frame.prevFrame = this.frames[i - 1];
+      };
+    };
   };
 
   _executeLastFrame(number) {

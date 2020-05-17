@@ -15,18 +15,17 @@ class ScoreBoard {
     } else {
       this.currentFrame.firstRoll = number;
     };
-    // this._updateScores();
+    this._updateScores();
   };
 
   _nextFrame() {
     this.currentFrame = this.frames[this.index += 1];
   };
 
-  // _updateScores() {
-  //   for (var i = 0; i < 10; i++) {
-  //     frame = this.frames[i];
-  //     frame.update();
-  //   };
-  // };
-
+  _updateScores() {
+    for (var i = 0; i < 10; i++) {
+      frame = this.frames[i];
+      frame.update();
+    };
+  };
 }

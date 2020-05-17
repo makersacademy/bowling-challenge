@@ -79,7 +79,7 @@ class Frame {
     if (this.hasSpare() || this.hasStrike()) {
       if (this.third) return true;
     } else {
-      if (this.first && this.second) return true;
+      if (this.first != null && this.second != null) return true;
     };
     return false;
   };

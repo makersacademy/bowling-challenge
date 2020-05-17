@@ -28,7 +28,7 @@ class ScoreBoard {
     };
 
     for (var i = 0; i < 10; i++) {
-      frame = this.frames[i];
+      var frame = this.frames[i];
       if (i == 0) {
         frame.nextFrame = this.frames[i + 1];
       } else if (i == 9) {
@@ -58,7 +58,7 @@ class ScoreBoard {
 
   _updateScores() {
     for (var i = 0; i < 10; i++) {
-      frame = this.frames[i];
+      var frame = this.frames[i];
       frame.update();
     };
   };

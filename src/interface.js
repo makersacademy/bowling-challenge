@@ -74,7 +74,9 @@ $(document).ready(function() {
   function updateScoreBoard() {
     for (var i = 0; i < 10; i++) {
       var frame = scoreBoard.frames[i]
-      $('#frame-' + i).text(frame.displayScore());
+      $('#frame-' + i + '-first-roll').text(frame.first);
+      $('#frame-' + i + '-second-roll').text(frame.second);
+      $('#frame-' + i + '-score').text(frame.displayScore());
     };
     disableButtons()
   };

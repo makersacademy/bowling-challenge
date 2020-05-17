@@ -8,6 +8,7 @@ class Game {
   }
 
   addFrame(frame){
+    // frame = new Frame(frame);
     this.frames.push(frame)
   }
 
@@ -15,14 +16,15 @@ class Game {
     this.frames.push(frame)
   }
 
-  calculateTotalScore() {
+
+  calculateCurrentScore() {
     var total = 0
 
     this.frames.forEach(function (value, index, array) {
 
-      // if strike
-      if (value[0] === 10) {
+      if (isStrike(value)) {
 
+        // 8 and 9 to 0 and 1
         if (index !== 8 && index !== 9) {
           if (array[index + 1][0] === 10) {
             total += value[0] + array[index + 1][0] + array[index + 2][0];
@@ -37,8 +39,8 @@ class Game {
           total += value[0] + value[1] + value[2];
         }
 
-      // if spare
-      } else if (value[0] + value[1] === 10) {
+
+      } else if (isSpare(value)) {
 
         if (index !== 9){
           total += value[0] + value[1] + array[index + 1][0]
@@ -46,7 +48,7 @@ class Game {
           total += value[0] + value[1] + value[2]
         }
 
-      // if no strike or spare
+
       } else {
         total += value[0] + value[1];
       }
@@ -55,5 +57,12 @@ class Game {
     this.totalScore = total
     return total
   }
-
 }
+
+function isStrike(value){
+  return value[0] === 10;
+};
+
+function isSpare(value){
+  return value[0] + value[1] === 10 && value[0] !== 10;
+};

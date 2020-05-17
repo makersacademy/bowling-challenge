@@ -26,6 +26,7 @@ class Game {
           this.roll ++;
         }
       }
+      this.scorecard.calculate();
     }
 
     finalFrameRules(pins){

@@ -15,15 +15,20 @@ class ScoreCard{
     }
 
     calculate(){
+      this.total = 0;
       for(let i = 0; i < this.scoreboard.length; i++) {
         this.total += this.scoreboard[i].knocked;
       }
 
-      // add bonus for strike
-      this.strikeBonus();
+      // add bonus for strike from the fourth round onwards, if there is an even number of plays or the length is 21 (bonus round)
+      if(this.scoreboard.length >= 4 && (this.scoreboard.length % 2 === 0 || this.scoreboard.length === 21)){
+        this.strikeBonus();
+      }
 
-      // add bonus for spare
-      this.spareBonus();
+      // add bonus for spare from the third round onwards, if there is an odd number of plays
+      if(this.scoreboard.length >= 3 && this.scoreboard.length % 2 !== 0){
+        this.spareBonus();
+      }
 
       // check total
       console.log(this.total)
@@ -42,7 +47,7 @@ class ScoreCard{
 
     strikeBonus(){
       for(let i = 0; i < this.scoreboard.length; i++) {
-        if(this.scoreboard[i].roll === 3){
+        if(i === (this.scoreboard.length -1) || i === (this.scoreboard.length -2)){
           return;
         }
         if(this.scoreboard[i].knocked === 10){

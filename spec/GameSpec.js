@@ -29,7 +29,6 @@ describe('Game', function () {
           for (let i = 0; i < 11; i += 1) {
             game.play(10)
           };
-          game.play(2);
           expect(game.scorecard.scoreboard[game.scorecard.scoreboard.length - 1].roll).toEqual(3);
         });
         it('spare - so is an extra round', function () {
@@ -56,7 +55,7 @@ describe('Game', function () {
 
     describe('isExtraRound', function () {
         it('returns true for a strike', function(){
-          for (let i = 0; i < 20; i += 1) {
+          for (let i = 0; i < 11; i += 1) {
             game.play(10)
           };
           expect(game.isExtraRound()).toEqual(true)

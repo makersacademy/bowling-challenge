@@ -109,4 +109,8 @@ class Scorecard {
     return totalScore
   }
 
+  scorecardArray(){
+    return this.totalArr;
+  }
+
 }

@@ -8,15 +8,14 @@
 <body>
   
   <section>
-    <form action="/frameform" method="post">
-      <input name="roll1" type="text" placeholder="First bowl"></input>
-      <input name="roll2" type="text" placeholder="Second bowl"></input>
+    <form>
+      <input id="roll1" name="roll1" type="text" placeholder="First bowl"></input>
+      <input id="roll2" name="roll2" type="text" placeholder="Second bowl"></input>
       <input type="submit" value="Submit"/>
     </form>
   </section>
 
-  <%= @roll1 %>
-  <%= @roll2 %>
+  <span id="scorecard"></span>
 
 </body>
 </html>

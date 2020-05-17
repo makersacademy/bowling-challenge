@@ -20,8 +20,7 @@ class Game {
 
     this.frames.forEach(function (value, index, array) {
 
-      var merged = [].concat.apply([], array);
-
+      // if strike
       if (value[0] === 10) {
 
         if (index !== 8 && index !== 9) {
@@ -38,16 +37,19 @@ class Game {
           total += value[0] + value[1] + value[2];
         }
 
-
+      // if spare
       } else if (value[0] + value[1] === 10) {
-        total += merged[(index * 2)] + merged[(index * 2) + 1] + merged[(index * 2) + 2]
 
+        if (index !== 9){
+          total += value[0] + value[1] + array[index + 1][0]
+        } else {
+          total += value[0] + value[1] + value[2]
+        }
 
+      // if no strike or spare
       } else {
-        total += merged[(index * 2)] + merged[(index * 2) + 1]
+        total += value[0] + value[1];
       }
-
-
     });
 
     this.totalScore = total

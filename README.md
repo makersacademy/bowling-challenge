@@ -7,25 +7,30 @@ For this challenge I used JavaScript & JQuery to construct an interactive Bowlin
 ## Models
 I used two models. A ScoreBoard which updates the frames scores accordingly and a seperate frame model that houses all the necessary attributes.
 
-| ScoreBoard        | Attributes                | Methods  |
-| -------------     |-------------              | ----- |
-|                   | this.index                | addScore(number) |
-|                   | this.frames               | _assignFrame(number) |
-|                   | this.currentFrame         | _assignLastFrame(number) |
-|                   |                           | _nextFrame()) |
-|                   |                           | _constructFrames()) |
+## Reflection
+While the application does work the models have a lots of things going on. It's not a SOLID design. I should have spent more time planning before implementation. I knew half way through that my approach was ineffiecent but I was "stuck in" the code. I'm hoping that I can refactor this and break the models down so that it's more scalable and everything has a clearer purpose. 
 
-| Frame             | Attributes                | Methods  |
-| -------------     |-------------              | ----- |
-|                   | this.index                | set firstRoll(number) |
-|                   | this.first                | set secondRoll(number) |
-|                   | this.second               | set thirdRoll(number) |
-|                   | this.third                | hasSpare()) |
-|                   | this.prevFrame            | hasStrike()) |
-|                   | this.nextFrame            | score()) |
-|                   |                           | isLastFrame()) |
-|                   |                           | _checkBonusRolls()) |
-|                   |                           | _canDisplay()) |
+### ScoreBoard
+| Attributes                | Methods  |
+|-------------              | ----- |
+| this.index                | addScore(number) |
+| this.frames               | _assignFrame(number) |
+| this.currentFrame         | _assignLastFrame(number) |
+|                           | _nextFrame()) |
+|                           | _constructFrames()) |
+
+### Frame
+| Attributes                | Methods  |
+|-------------              | ----- |
+| this.index                | set firstRoll(number) |
+| this.first                | set secondRoll(number) |
+| this.second               | set thirdRoll(number) |
+| this.third                | hasSpare()) |
+| this.prevFrame            | hasStrike()) |
+| this.nextFrame            | score()) |
+|                           | isLastFrame()) |
+|                           | _checkBonusRolls()) |
+|                           | _canDisplay()) |
 
 ## Bowling — how does it work?
 
@@ -57,12 +62,3 @@ In the image below you can find some score examples.
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

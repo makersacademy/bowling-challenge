@@ -12,7 +12,8 @@ describe('Frame', function() {
       rolls: [firstFrameRoll]
     }
     secondFrame = {};
-    frame = new Frame(FinishStates, firstRoll, secondRoll, firstFrame, secondFrame);
+    afmClass = function() {};
+    frame = new Frame(afmClass, FinishStates, firstRoll, secondRoll, firstFrame, secondFrame);
   });
 
   describe('#rolls', function() {
@@ -184,4 +185,20 @@ describe('Frame', function() {
       expect(frame.adjacentFrames.length).toEqual(2);
     });
   });
+
+  describe('#initializeAdjacentFrames', function() {
+    it('initiailizes adjacent frame manager with adjacent frames', function() {
+      aFrame1 = function() {};
+      aFrame2 = function() {};
+      frame.initializeAdjacentFrameManager(aFrame1, aFrame2);
+      expect(frame.adjacentFrameManager).toBeInstanceOf(afmClass);
+    });
+    it('adds frames passed in to afm constructor', function() {
+      aFrame1 = function() {};
+      aFrame2 = function() {};
+      spyOn(window, 'afmClass');
+      frame.initializeAdjacentFrameManager(aFrame1, aFrame2);
+      expect(window.afmClass).toHaveBeenCalledWith(aFrame1, aFrame2);
+    })
+  })
 });

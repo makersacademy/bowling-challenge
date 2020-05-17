@@ -4,6 +4,7 @@ describe('Game', function() {
     frameClass = function() {}
     rollClass = function() {}
     frameClass.prototype.nextRoll = function() {}
+    frameClass.prototype.initializeAdjacentFrameManager = function() {}
     frameClass.prototype.finished = function() {}
     frameClass.prototype.updateFinishState = function() {}
     frameFactory = {
@@ -59,6 +60,14 @@ describe('Game', function() {
       spyOn(frameClass.prototype, 'finished').and.returnValue(true);
       game.update();
       expect(game.currentFrameIndex).toEqual(1);
+    });
+  });
+
+  describe('#setUpAdjacencies', function() {
+    it('assigns frames 2 and 3 to frame 1', function() {
+      spyOn(game.frames[0], 'initializeAdjacentFrameManager');
+      game.setUpAdjacencies();
+      expect(game.frames[0].initializeAdjacentFrameManager).toHaveBeenCalledWith(game.frames[1], game.frames[2]);
     });
   });
 });

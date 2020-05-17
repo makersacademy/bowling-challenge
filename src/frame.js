@@ -1,13 +1,15 @@
 'use strict';
 
 class Frame {
-  constructor(finishStates, roll1, roll2, frame1, frame2) {
+  constructor(afmClass, finishStates, roll1, roll2, frame1, frame2) {
     this.rolls = [roll1, roll2];
     this.currentRollIndex = 0;
     this.finishStates = finishStates;
     this.finishState = this.finishStates().unfinished;
     this.isBonus = false;
     this.adjacentFrames = [frame1, frame2];
+    this.afmClass = afmClass;
+    this.adjacentFrameManager = undefined;
   }
 
   getCurrentRoll() {
@@ -81,6 +83,10 @@ class Frame {
 
     // but this is not the case if its a bonus round because it will sum all three.
     // also what if the getScore is as yet undefined.
+  }
+
+  initializeAdjacentFrameManager(aFrame1, aFrame2) {
+    this.adjacentFrameManager = new afmClass(aFrame1, aFrame2);
   }
 
   reportTotalScore() {

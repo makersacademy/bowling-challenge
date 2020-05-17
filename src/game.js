@@ -30,4 +30,8 @@ class Game {
       this.nextFrame();
     }
   }
+
+  setUpAdjacencies() {
+    this.frames[0].initializeAdjacentFrameManager(this.frames[1], this.frames[2]);
+  }
 }

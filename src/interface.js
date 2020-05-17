@@ -78,21 +78,31 @@ $(document).ready(function() {
       $('#frame-' + i + '-second-roll').text(frame.second);
       $('#frame-' + i + '-score').text(frame.displayScore());
     };
-    disableButtons()
+    updateButtons()
   };
 
-  function disableButtons() {
+  function updateButtons() {
     var currentFrame = scoreBoard.currentFrame
+
+    if (currentFrame.isLastFrame() && currentFrame.hasSpare()) {
+      _enableButtons()
+      return;
+    }
+
     if (currentFrame.first != null && !currentFrame.hasStrike()) {
       var difference = (10 - currentFrame.first) + 1
-      for (var i = difference; i < 11; i++) {
-        $('#' + i).prop('disabled', true);
-      }
+      _disableButtons(difference)
     } else {
-      for (var i = 0; i < 11; i++) {
-        $('#' + i).prop('disabled', false);
-      }
+      _enableButtons();
     }
+  }
+
+  function _enableButtons() {
+    for (var i = 0; i <= 10; i++) $('#' + i).prop('disabled', false);
+  }
+
+  function _disableButtons(difference) {
+    for (var i = difference; i <= 10; i++) $('#' + i).prop('disabled', true);
   }
 
 });

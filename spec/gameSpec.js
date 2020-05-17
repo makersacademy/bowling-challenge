@@ -33,8 +33,26 @@ describe('Game', () => {
       game.roll(1);
       expect(game.rolls[1]).toEqual(1);
     });
+
     it('Has max pin input of 10', () => {
       expect(game.roll(11)).toContain("Please choose number between 1 to 10.");
     });
+
+    it("Cannot input more than 21 numbers", () => {
+      for (var i = 1; i < 22; i++) {
+        game.roll(1);
+      }
+      game.roll(9);
+      expect(game.rolls.length).toEqual(21);
+    });
+
+    it("Adds 21 pin inputs", () => {
+      for (var i = 1; i < 22; i++) {
+        game.roll(9);
+      }
+      console.log(game.rolls);
+      expect(game.rolls).toEqual([9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9])
+      expect(game.rolls).not.toContain(0)
+    })
   });
 });

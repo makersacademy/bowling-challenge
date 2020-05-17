@@ -2,7 +2,6 @@ class Frame {
   constructor(array) {
     this.rolls = array;
   }
-
   getRolls() {
     return this.rolls;
   }
@@ -17,5 +16,4 @@ class Frame {
   isStrike() {
     return this.rolls[0] == 10;
   }
-
 }

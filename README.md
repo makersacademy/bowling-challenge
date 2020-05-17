@@ -7,7 +7,10 @@ Bowling Challenge
 * initialise project with Jasmine
 * create Frame and Game classes
 * add methods to calculate points within frame (without bonus)
-
+* add methods to calculate points within game for pins
+* calculate bonus points within game
+* calculate bonus points for last frame (edge case)
+* test for gutter game and perfect game (edge cases)
 
 ## The Task
 

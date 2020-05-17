@@ -14,42 +14,42 @@ class Game {
   }
   calculatePins() {
     var total = 0;
-    if (this.frames.length === 10) {
+    if (this.isGameFinished()) {
       for (var i = 0; i < this.frames.length - 1; i++) {
-        total = total + this.frames[i].pins();
+        total += this.frames[i].pins();
       }
-      if (typeof this.frames[9] !== 'undefined') {
-        total = total + this.frames[9].getRolls()[0];
-      }
+        total += this.frames[9].getRolls()[0];
     } else {
-      this.frames.forEach((item, i) => {
-        total = total + item.pins();
+      this.frames.forEach((frame) => {
+        total += frame.pins();
       });
     }
     return total;
   }
   calculateGameScore() {
-    if (this.frames.length == 1) {
-      return this.calculatePins();
-    }
     return this.calculatePins() + this.calculateBonus();
   }
   calculateBonus() {
-    return (this.calculateAllFramesButLast() + this.calculateBonusForLast());
+    return (this.calculateBonusAllFramesButLast() + this.calculateBonusForLast());
   }
-  calculateAllFramesButLast() {
+  calculateBonusAllFramesButLast() {
     var total = 0;
+
     for (var i = 0; i < this.frames.length - 1; i++) {
-      if (this.frames[i].isSpare()) {
-          total = total + this.frames[i+1].getRolls()[0];
-      } else if (this.frames[i].isStrike() && (this.frames[i+1].isStrike())) {
+      var currentFrame = this.frames[i];
+      var nextFrame = this.frames[i+1];
+
+      if (currentFrame.isSpare()) {
+          total += nextFrame.getRolls()[0];
+      } else if (currentFrame.isStrike() && (nextFrame.isStrike())) {
         if (i === 8) {
-          total = total + (this.frames[9].getRolls()[0] + this.frames[9].getRolls()[1]);
+          var lastFrameRolls = this.frames[9].getRolls();
+          total += (lastFrameRolls[0] + lastFrameRolls[1]);
         } else {
-          total = total + (10 + this.frames[i+2].getRolls()[0]);
+          total += (10 + this.frames[i+2].getRolls()[0]);
         }
-      } else if (this.frames[i].isStrike() && (this.frames[i+1].isStrike() == false)) {
-        total = total + (this.frames[i+1].pins());
+      } else if (currentFrame.isStrike() && (nextFrame.isStrike() == false)) {
+        total += (nextFrame.pins());
       } else {
         total;
       }
@@ -57,16 +57,21 @@ class Game {
     return total;
   }
   calculateBonusForLast() {
-    if (typeof this.frames[9] !== 'undefined') {
-      if (this.frames[9].isSpare()) {
-        return this.frames[9].getRolls()[2];
-      } else if (this.frames[9].isStrike()) {
-        return this.frames[9].getRolls()[1] + this.frames[9].getRolls()[2];
+    if (this.isGameFinished()) {
+      var lastFrame = this.frames[9];
+
+      if (lastFrame.isSpare()) {
+        return lastFrame.getRolls()[2];
+      } else if (lastFrame.isStrike()) {
+        return lastFrame.getRolls()[1] + lastFrame.getRolls()[2];
       } else {
         return 0;
       }
     } else {
       return 0;
     }
+  }
+  isGameFinished() {
+    return this.frames.length == 10;
   }
 }

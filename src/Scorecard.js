@@ -55,4 +55,9 @@ class ScoreCard{
       }
     }
 
+    reset(){
+      this.total = 0;
+      this.scoreboard = [];
+    }
+
 }

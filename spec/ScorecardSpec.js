@@ -31,4 +31,17 @@ describe('ScoreCard', function () {
             expect(scorecard.total).toEqual(84)
         });
     });
+
+    describe('reset', function(){
+        it('sets total to 0 and clears scoreboard', function(){
+          for (let i = 0; i < 19; i++) {
+              scorecard.addScore(1, 1, 4);
+            }
+          scorecard.calculate()
+          expect(scorecard.total).toEqual(76)
+          scorecard.reset()
+          expect(scorecard.total).toEqual(0)
+          expect(scorecard.scoreboard.length).toEqual(0)
+        });
+    });
 });

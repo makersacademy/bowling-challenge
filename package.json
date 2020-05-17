@@ -1,0 +1,32 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "index.js",
+  "devDependencies": {
+    "jasmine-core": "*",
+    "karma": "*",
+    "karma-cli": "*",
+    "karma-jasmine": "*",
+    "karma-chrome-launcher": "*",
+    "karma-spec-reporter": "*",
+    "karma-super-dots-reporter": "*",
+    "karma-coverage": "*"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "karma start karma.conf.js --single-run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dpwdec/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dpwdec/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/dpwdec/bowling-challenge#readme"
+}

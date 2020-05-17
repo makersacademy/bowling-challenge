@@ -8,8 +8,8 @@ describe('ScoreCard', () => {
 
   beforeEach(() => {
     scoreCard = new ScoreCard();
-    frame = jasmine.createSpyObj(Frame, ['total']);
-    nextFrame = jasmine.createSpyObj(Frame, ['total', 'getRolls']);
+    frame = jasmine.createSpyObj(Frame, ['total', 'getRolls', 'rolls', 'setRolls']);
+    nextFrame = jasmine.createSpyObj(Frame, ['total', 'getRolls', 'rolls', 'setRolls']);
   });
 
   it('holds game frames in an array', () => {
@@ -40,15 +40,18 @@ describe('ScoreCard', () => {
     });
   });
 
-  describe('#updatePreviousFrameScore', () => {
+  describe('#updateFrameScore', () => {
     describe('when a strike frame is followed by a normal frame', () => {
       it('updates the previous frame with strike bonus', () => {
+        frame.setRolls.withArgs(10);
         frame.total.and.returnValue(10);
-        nextFrame.total.and.returnValue(7);
         addFrameAndSetScore(frame);
+        nextFrame.setRolls.withArgs(5);
+        nextFrame.setRolls.withArgs(2);
+        nextFrame.total.and.returnValue(7);
         addFrameAndSetScore(nextFrame);
 
-        scoreCard.updatePreviousFrameScore();
+        scoreCard.updateFrameScore();
 
         expect(scoreCard.getScores()).toEqual([17, 7]);
       });
@@ -59,9 +62,9 @@ describe('ScoreCard', () => {
     //     let nextNextFrame = jasmine.createSpyObj(Frame, ['total', 'getRolls']);
     //
     //     frame.total.and.returnValue(10);
-    //     nextFrame.getRolls.and.returnValue([10]);
+    //     // nextFrame.getRolls.and.returnValue([10]);
     //     nextFrame.total.and.returnValue(10);
-    //     nextFrame.getRolls.and.returnValue([5, 2]);
+    //     // nextFrame.getRolls.and.returnValue([5, 2]);
     //     nextNextFrame.total.and.returnValue(7);
     //     addFrameAndSetScore(frame);
     //     addFrameAndSetScore(nextFrame);
@@ -69,7 +72,7 @@ describe('ScoreCard', () => {
     //
     //     scoreCard.updatePreviousFrameScore();
     //
-    //     expect(scoreCard.scores).toEqual([25, 10, 7]);
+    //     expect(scoreCard.scores).toEqual([25, 17, 7]);
     //   });
     // });
   });

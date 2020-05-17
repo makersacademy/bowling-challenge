@@ -20,7 +20,13 @@ class ScoreCard {
     return this.scores;
   }
 
-  updatePreviousFrameScore() {
-    this.scores[this.scores.length - 2] += this.scores.slice(-1)[0];
+  updateFrameScore() {
+    let size = this.scores.length;
+
+    for (let i = 0; i < size; i++) {
+      if (this.scores[i] === 10) {
+        this.scores[i] += this.scores[i + 1];
+      }
+    }
   }
 }

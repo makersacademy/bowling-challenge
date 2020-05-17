@@ -4,7 +4,6 @@
 
 ## Todo
 
-* Solve ESLint errors - tried export/import and modules/require but currently unsuccessul
 * Write/Implement/Refactor remaining classes
 * Redo CRC cards as Markdown table?
 
@@ -14,6 +13,7 @@
 
 ## Done
 
+* Solve ESLint errors - tried export/import and modules/require but currently unsuccessful
 * Refactor Player
 * Implement Player
 * Write Tests for Player

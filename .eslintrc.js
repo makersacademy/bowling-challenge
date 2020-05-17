@@ -1,6 +1,7 @@
 /* eslint-disable */
 
 module.exports = {
+  'plugins': ['jasmine'],
   'env': {
     'browser': true,
     'jasmine': true,
@@ -8,6 +9,7 @@ module.exports = {
     'es6': true
   },
   'extends': 'eslint:recommended',
+  'extends': 'plugin:jasmine/recommended',
   'globals': {
     'Atomics': 'readonly',
     'SharedArrayBuffer': 'readonly'

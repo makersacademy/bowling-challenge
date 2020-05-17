@@ -13,7 +13,7 @@
 
 ## Done
 
-* Solve ESLint errors - tried export/import and modules/require but currently unsuccessful
+* Solve ESLint errors - added [eslint-plugin-jasmine](https://www.npmjs.com/package/eslint-plugin-jasmine)
 * Refactor Player
 * Implement Player
 * Write Tests for Player

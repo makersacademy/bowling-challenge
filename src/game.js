@@ -19,4 +19,8 @@ class ScoreCard {
   getScores() {
     return this.scores;
   }
+
+  updatePreviousFrameScore() {
+    this.scores[this.scores.length - 2] += this.scores.slice(-1)[0];
+  }
 }

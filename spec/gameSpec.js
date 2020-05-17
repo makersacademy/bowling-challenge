@@ -8,8 +8,8 @@ describe('ScoreCard', () => {
 
   beforeEach(() => {
     scoreCard = new ScoreCard();
-    frame = jasmine.createSpyObj(Frame, ['total', 'setRolls']);
-    nextFrame = jasmine.createSpyObj(Frame, ['setRolls']);
+    frame = jasmine.createSpyObj(Frame, ['total']);
+    nextFrame = jasmine.createSpyObj(Frame, ['total', 'getRolls']);
   });
 
   it('holds game frames in an array', () => {
@@ -38,6 +38,40 @@ describe('ScoreCard', () => {
 
       expect(scoreCard.getScores()).toContain(frame.total());
     });
+  });
+
+  describe('#updatePreviousFrameScore', () => {
+    describe('when a strike frame is followed by a normal frame', () => {
+      it('updates the previous frame with strike bonus', () => {
+        frame.total.and.returnValue(10);
+        nextFrame.total.and.returnValue(7);
+        addFrameAndSetScore(frame);
+        addFrameAndSetScore(nextFrame);
+
+        scoreCard.updatePreviousFrameScore();
+
+        expect(scoreCard.getScores()).toEqual([17, 7]);
+      });
+    });
+
+    // describe('when a strike frame is followed by another strike frame', () => {
+    //   it('updates the previous frame with the correct bonus', () => {
+    //     let nextNextFrame = jasmine.createSpyObj(Frame, ['total', 'getRolls']);
+    //
+    //     frame.total.and.returnValue(10);
+    //     nextFrame.getRolls.and.returnValue([10]);
+    //     nextFrame.total.and.returnValue(10);
+    //     nextFrame.getRolls.and.returnValue([5, 2]);
+    //     nextNextFrame.total.and.returnValue(7);
+    //     addFrameAndSetScore(frame);
+    //     addFrameAndSetScore(nextFrame);
+    //     addFrameAndSetScore(nextNextFrame);
+    //
+    //     scoreCard.updatePreviousFrameScore();
+    //
+    //     expect(scoreCard.scores).toEqual([25, 10, 7]);
+    //   });
+    // });
   });
 
   function addFrameAndSetScore(frame) {

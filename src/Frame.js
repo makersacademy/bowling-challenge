@@ -4,6 +4,8 @@ class Frame {
     this.first  = null;
     this.second = null;
     this.third  = null;
+    this.prevFrame = null;
+    this.nextFrame = null;
   }
 
   set firstRoll(value) {
@@ -29,7 +31,11 @@ class Frame {
   };
 
   score() {
-    return this.first + this.second + this.third;
+    if (this.prevFrame == null) {
+      return this.first + this.second + this.third;
+    } else {
+      return this.prevFrame.score() + this.first + this.second + this.third;
+    }
   };
 
   displayScore() {
@@ -37,22 +43,38 @@ class Frame {
     return "";
   };
 
+  update() {
+    if (this.hasStrike()) {
+      this.secondRoll = this.nextFrame.first;
+
+      if (this.nextFrame.hasStrike()) {
+        this.thirdRoll = this.nextFrame.nextFrame.first;
+      } else {
+        this.thirdRoll = this.nextFrame.second;
+      };
+    };
+
+    if (this.hasSpare()) {
+      this.thirdRoll = this.nextFrame.first;
+    };
+  };
+
   _canDisplay() {
     if (this.hasSpare() || this.hasStrike()) {
       if (this.third) return true;
     } else {
       if (this.first && this.second) return true;
-    }
-    return false;
-  }
-
-  _lastFrame() {
-    if (this.index == 10) return true;
+    };
     return false;
   };
 
-  _firstFrame() {
-    if (this.index == 1) return true;
-    return false;
-  }
+  // _lastFrame() {
+  //   if (this.index == 9) return true;
+  //   return false;
+  // };
+  //
+  // _firstFrame() {
+  //   if (this.index == 0) return true;
+  //   return false;
+  // }
 };

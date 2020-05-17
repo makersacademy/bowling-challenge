@@ -22,14 +22,14 @@ class ScoreBoard {
   };
 
   _executeLastFrame(number) {
-    if(this.currentFrame.first != null) {
-      this.currentFrame.secondRoll = number;
-    } else {
-      this.currentFrame.firstRoll = number;
+    if(this.currentFrame.first == null){
+      this.currentFrame.firstRoll = number
     }
-
-    if(this.currentFrame.second != null) {
-      this.currentFrame.thirdRoll = number;
+    else if (this.currentFrame.second == null) {
+      this.currentFrame.secondRoll = number
+    }
+    else if (this.currentFrame.third == null) {
+      this.currentFrame.thirdRoll = number
     }
   }
 

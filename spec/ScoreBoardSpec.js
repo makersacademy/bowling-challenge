@@ -13,7 +13,7 @@ describe("ScoreBoard", function() {
       if (i == 0) {
         frame.nextFrame = frames[i + 1];
       } else if (i == 9) {
-        frame.previousFrame = frames[i - 1];
+        frame.prevFrame = frames[i - 1];
       } else {
         frame.nextFrame = frames[i + 1];
         frame.prevFrame = frames[i - 1];
@@ -87,8 +87,18 @@ describe("ScoreBoard", function() {
     });
 
     it("frame 8 should have correct score", function() {
-      frameFour = frames[7];
-      expect(frameFour.score()).toEqual(115);
+      frameEight = frames[7];
+      expect(frameEight.score()).toEqual(115);
+    });
+
+    it("frame 9 should have correct score", function() {
+      frameNine = frames[8];
+      expect(frameNine.score()).toEqual(135);
+    });
+
+    it("frame 10 should have correct score", function() {
+      frameTen = frames[9];
+      expect(frameTen.score()).toEqual(155);
     });
   });
 });

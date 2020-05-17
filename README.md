@@ -1,40 +1,36 @@
 
 Bowling Challenge
 =================
+## Summary
+For this challenge I used JavaScript & JQuery to construct an interactive Bowling Score Card that's embedded with in an HTML file.
 
+## Models
+I used two models. A ScoreBoard which updates the frames scores accordingly and a seperate frame model that houses all the necessary attributes.
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+## Reflection
+While the application does work the models have a lots of things going on. It's not a SOLID design. I should have spent more time planning before implementation. I knew half way through that my approach was ineffiecent but I was "stuck in" the code. I'm hoping that I can refactor this and break the models down so that it's more scalable and everything has a clearer purpose. 
 
-## The Task
+### ScoreBoard
+| Attributes                | Methods  |
+|-------------              | ----- |
+| this.index                | addScore(number) |
+| this.frames               | _assignFrame(number) |
+| this.currentFrame         | _assignLastFrame(number) |
+|                           | _nextFrame()) |
+|                           | _constructFrames()) |
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
-
-Count and sum the scores of a bowling game for one player (in JavaScript).
-
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
-
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+### Frame
+| Attributes                | Methods  |
+|-------------              | ----- |
+| this.index                | set firstRoll(number) |
+| this.first                | set secondRoll(number) |
+| this.second               | set thirdRoll(number) |
+| this.third                | hasSpare()) |
+| this.prevFrame            | hasStrike()) |
+| this.nextFrame            | score()) |
+|                           | isLastFrame()) |
+|                           | _checkBonusRolls()) |
+|                           | _canDisplay()) |
 
 ## Bowling — how does it work?
 
@@ -66,12 +62,3 @@ In the image below you can find some score examples.
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

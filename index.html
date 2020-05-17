@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bowling</title>
+    <style type="text/css">
+      table, th, td {
+        border: 1px solid black;
+      }
+   </style>
+  </head>
+  <body>
+    <section>
+      <h1 id="Bowling">Bowling Score Board</h1>
+      <br>
+      <img src="images/ball_and_pins_header.jpg">
+      <br>
+      <p>
+        <p>Pins</p>
+        <button id="0">0</button>
+        <button id="1">1</button>
+        <button id="2">2</button>
+        <button id="3">3</button>
+        <button id="4">4</button>
+        <button id="5">5</button>
+        <button id="6">6</button>
+        <button id="7">7</button>
+        <button id="8">8</button>
+        <button id="9">9</button>
+        <button id="10">10</button>
+      </p>
+    </section>
+    <section>
+      <table style="width:70%">
+        <tr>
+          <th>----</th>
+          <th>Frame 1</th>
+          <th>Frame 2</th>
+          <th>Frame 3</th>
+          <th>Frame 4</th>
+          <th>Frame 5</th>
+          <th>Frame 6</th>
+          <th>Frame 7</th>
+          <th>Frame 8</th>
+          <th>Frame 9</th>
+          <th>Frame 10</th>
+        </tr>
+        <tr>
+          <td>First Roll: </td>
+          <th><span id="frame-0-first-roll"></span></th>
+          <th><span id="frame-1-first-roll"></span></th>
+          <th><span id="frame-2-first-roll"></span></th>
+          <th><span id="frame-3-first-roll"></span></th>
+          <th><span id="frame-4-first-roll"></span></th>
+          <th><span id="frame-5-first-roll"></span></th>
+          <th><span id="frame-6-first-roll"></span></th>
+          <th><span id="frame-7-first-roll"></span></th>
+          <th><span id="frame-8-first-roll"></span></th>
+          <th><span id="frame-9-first-roll"></span></th>
+        </tr>
+        <tr>
+          <td>Second Roll: </td>
+          <th><span id="frame-0-second-roll"></span></th>
+          <th><span id="frame-1-second-roll"></span></th>
+          <th><span id="frame-2-second-roll"></span></th>
+          <th><span id="frame-3-second-roll"></span></th>
+          <th><span id="frame-4-second-roll"></span></th>
+          <th><span id="frame-5-second-roll"></span></th>
+          <th><span id="frame-6-second-roll"></span></th>
+          <th><span id="frame-7-second-roll"></span></th>
+          <th><span id="frame-8-second-roll"></span></th>
+          <th><span id="frame-9-second-roll"></span></th>
+        </tr>
+        <tr>
+          <td>Score: </td>
+          <th><span id="frame-0-score"></span></th>
+          <th><span id="frame-1-score"></span></th>
+          <th><span id="frame-2-score"></span></th>
+          <th><span id="frame-3-score"></span></th>
+          <th><span id="frame-4-score"></span></th>
+          <th><span id="frame-5-score"></span></th>
+          <th><span id="frame-6-score"></span></th>
+          <th><span id="frame-7-score"></span></th>
+          <th><span id="frame-8-score"></span></th>
+          <th><span id="frame-9-score"></span></th>
+        </tr>
+      </table>
+    </section>
+
+    <script src="src/ScoreBoard.js"></script>
+    <script src="src/Frame.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="src/interface.js"></script>
+  </body>
+</html>

@@ -6,6 +6,7 @@ class Game {
 
   roll(pins) {
     this.rolls[this.currentRoll] = pins
+    this.currentRoll ++
   }
 }
 

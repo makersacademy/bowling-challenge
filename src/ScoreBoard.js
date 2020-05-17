@@ -8,39 +8,26 @@ class ScoreBoard {
 
   addScore(number) {
     if (this.currentFrame.isLastFrame()) {
-      this._executeLastFrame(number);
-    } else {
-      if (this.currentFrame.hasStrike()) this._nextFrame();
-
-      if (this.currentFrame.first != null) {
-        this.currentFrame.secondRoll = number;
-        this._nextFrame();
-      } else {
-        this.currentFrame.firstRoll = number;
-      };
+      this._assignLastFrame(number);
     }
+    else this._assignFrame(number);
+
     this._updateScores();
   };
 
-  _constructFrames() {
-    for (var i = 0; i < 10; i++) {
-      this.frames.push(new Frame(i));
-    };
+  _assignFrame(number) {
+    if (this.currentFrame.hasStrike()) this._nextFrame();
 
-    for (var i = 0; i < 10; i++) {
-      var frame = this.frames[i];
-      if (i == 0) {
-        frame.nextFrame = this.frames[i + 1];
-      } else if (i == 9) {
-        frame.prevFrame = this.frames[i - 1];
-      } else {
-        frame.nextFrame = this.frames[i + 1];
-        frame.prevFrame = this.frames[i - 1];
-      };
+    if (this.currentFrame.first != null) {
+      this.currentFrame.secondRoll = number;
+      this._nextFrame();
+    }
+    else {
+      this.currentFrame.firstRoll = number;
     };
   };
 
-  _executeLastFrame(number) {
+  _assignLastFrame(number) {
     if(this.currentFrame.first == null){
       this.currentFrame.firstRoll = number
     }
@@ -60,6 +47,24 @@ class ScoreBoard {
     for (var i = 0; i < 10; i++) {
       var frame = this.frames[i];
       frame.update();
+    };
+  };
+
+  _constructFrames() {
+    for (var i = 0; i < 10; i++) {
+      this.frames.push(new Frame(i));
+    };
+
+    for (var i = 0; i < 10; i++) {
+      var frame = this.frames[i];
+      if (i == 0) {
+        frame.nextFrame = this.frames[i + 1];
+      } else if (i == 9) {
+        frame.prevFrame = this.frames[i - 1];
+      } else {
+        frame.nextFrame = this.frames[i + 1];
+        frame.prevFrame = this.frames[i - 1];
+      };
     };
   };
 }

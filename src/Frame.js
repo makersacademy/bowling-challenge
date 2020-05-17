@@ -47,7 +47,7 @@ class Frame {
     if (this.isLastFrame()) return;
 
     if (this.hasStrike()) {
-      this._checkStrike();
+      this._checkBonusRolls();
     };
 
     if (this.hasSpare()) {
@@ -60,7 +60,7 @@ class Frame {
     return false;
   };
 
-  _checkStrike() {
+  _checkBonusRolls() {
     this.secondRoll = this.nextFrame.first;
     if (this.nextFrame.hasStrike()) {
       if (this.index == 8) {

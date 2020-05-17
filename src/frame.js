@@ -19,8 +19,8 @@ class Frame {
   }
 
   setRolls(pins) {
-    let numberOfPinsError = 'Total number of pins cannot be more than 10';
-    let twoRollsPerFrameError = 'Only two rolls per frame are allowed';
+    const numberOfPinsError = 'Total number of pins cannot be more than 10';
+    const twoRollsPerFrameError = 'Only two rolls per frame are allowed';
 
     if (this.total() + pins > 10) {
       throw new Error(numberOfPinsError);

@@ -10,9 +10,13 @@ class ScoreCard {
     this.frames.push(frame);
   }
 
-  score() {
-    let frameScore = this.frames[0].total();
-    this.scores.push(frameScore);
+  setScores() {
+    let frameScore;
+
+    for (let i = 0; i < this.frames.length; i++) {
+      frameScore = this.frames[i].total();
+      this.scores.push(frameScore);
+    }
 
     return this.scores;
   }

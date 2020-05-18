@@ -75,3 +75,8 @@ count towards your score.
 rolling a bowling ball. The ramp is for physical disabilities and not to be used to
 just increase a score.
 - Bumpers are not allowed.
+
+<p align="center">
+    <img width="600" src="./images/bowling_01.png">  
+    *Bowling Score Board Preview* 
+</p>

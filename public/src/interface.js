@@ -6,7 +6,7 @@ $(document).ready(function() {
     btn.show();
   }
 
-  $('#reload').on('click', () => {
+  $('#reload').click(() => {
     location.reload();
   });
 
@@ -21,70 +21,69 @@ $(document).ready(function() {
     $('#frame-' + bowling.frame + '-pos-' + bowling.firstBowl).text(bowling.pins);
   }
 
-  $('#btn-zero').on('click', () => {
+  $('#btn-zero').click(() => {
     let hideBtn = $('');
     uiScore(hideBtn, 0)
   });
 
-  $('#btn-one').on('click', () => {
+  $('#btn-one').click(() => {
     showAllBtn();
     let hideBtn = $('#btn-ten');
     uiScore(hideBtn, 1)
   });
 
-  $('#btn-two').on('click', () => {
+  $('#btn-two').click(() => {
     showAllBtn();
     let hideBtn = $('#btn-nine, #btn-ten');
     uiScore(hideBtn, 2)
   });
 
-  $('#btn-three').on('click', () => {
+  $('#btn-three').click(() => {
     showAllBtn();
     let hideBtn = $('#btn-eight, #btn-nine, #btn-ten');
     uiScore(hideBtn, 3)
   });
 
-  $('#btn-four').on('click', () => {
+  $('#btn-four').click(() => {
     showAllBtn();
     let hideBtn = $('#btn-seven, #btn-eight, #btn-nine, #btn-ten');
     uiScore(hideBtn, 4)
   });
 
-  $('#btn-five').on('click', () => {
+  $('#btn-five').click(() => {
     showAllBtn();
     let hideBtn = $('#btn-six, #btn-seven, #btn-eight, #btn-nine, #btn-ten');
     uiScore(hideBtn, 5)
   });
 
-  $('#btn-six').on('click', () => {
+  $('#btn-six').click(() => {
     showAllBtn();
     let hideBtn = $('#btn-five, #btn-six, #btn-seven, #btn-eight, #btn-nine, #btn-ten');
     uiScore(hideBtn, 6)
   });
 
-  $('#btn-seven').on('click', () => {
+  $('#btn-seven').click(() => {
     showAllBtn();
     let hideBtn = $('#btn-four, #btn-five, #btn-six, #btn-seven, #btn-eight, #btn-nine, #btn-ten');
     uiScore(hideBtn, 7)
   });
 
-  $('#btn-eight').on('click', () => {
+  $('#btn-eight').click(() => {
     showAllBtn();
     let hideBtn = $('#btn-three, #btn-four, #btn-five, #btn-six, #btn-seven, #btn-eight, #btn-nine, #btn-ten');
     uiScore(hideBtn, 8)
   });
 
-  $('#btn-nine').on('click', () => {
+  $('#btn-nine').click(() => {
     showAllBtn();
     let hideBtn = $('#btn-two, #btn-three, #btn-four, #btn-five, #btn-six, #btn-seven, #btn-eight, #btn-nine, #btn-ten');
     uiScore(hideBtn, 9)
   });
 
-  $('#btn-ten').on('click', () => {
+  $('#btn-ten').click(() => {
     showAllBtn();
     let hideBtn = $('#btn-one, #btn-two, #btn-three, #btn-four, #btn-five, #btn-six, #btn-seven, #btn-eight, #btn-nine, #btn-ten');
     uiScore(hideBtn, 10)
   });
-
 
 });

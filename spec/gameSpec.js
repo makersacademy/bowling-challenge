@@ -34,13 +34,13 @@ describe('ScoreCard', () => {
     });
   });
 
-  // describe('#getScores', () => {
-  //   it('returns the scores for each frame', () => {
-  //     addFrameAndSetScore(frame);
-  //
-  //     expect(scoreCard.getScores()).toContain(frame.rolls);
-  //   });
-  // });
+  describe('#getScores', () => {
+    it('returns the scores for each frame', () => {
+      addFrameAndSetScore(frame);
+
+      expect(scoreCard.getScores()).toContain(frame.rolls);
+    });
+  });
 
   // describe('#updateFrameScore', () => {
   //   describe('when a strike frame is followed by a normal frame', () => {

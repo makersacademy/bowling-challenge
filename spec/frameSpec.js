@@ -37,15 +37,6 @@ describe('Frame', () => {
     });
   });
 
-  // describe('#setMarker', () => {
-  //   it('sets a marker if the frame ends as strike', () => {
-  //     frame.setRolls(10);
-  //     frame.setMarker();
-  //
-  //     expect(frame.marker).toEqual('STRIKE!');
-  //   });
-  // });
-
   describe('#total', () => {
     describe('when a frame is not a spare or strike', () => {
       it('calculates a frame score', () => {

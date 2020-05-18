@@ -1,6 +1,15 @@
 $(document).ready(function() {
   var bowling = new Bowling();
-  
+
+  function showAllBtn() {
+    let btn = $('#btn-one, #btn-two, #btn-three, #btn-four, #btn-five, #btn-six, #btn-seven, #btn-eight, #btn-nine, #btn-ten');
+    btn.show();
+  }
+
+  $('#reload').on('click', () => {
+    location.reload();
+  });
+
   function uiScore(hideBtn, value) {
     bowling.countScore(value);
     if(bowling.firstBowl === false) {
@@ -9,12 +18,6 @@ $(document).ready(function() {
       hideBtn.show();
     }
     $('#game-score').text(bowling.getTotalScore());
-    let position;
-    if(bowling.firstBowl === true) {
-      position = 0;
-    } else {
-      position = 1;
-    }
     $('#frame-' + bowling.frame + '-pos-' + bowling.firstBowl).text(bowling.pins);
   }
 
@@ -24,51 +27,61 @@ $(document).ready(function() {
   });
 
   $('#btn-one').on('click', () => {
+    showAllBtn();
     let hideBtn = $('#btn-ten');
     uiScore(hideBtn, 1)
   });
 
   $('#btn-two').on('click', () => {
+    showAllBtn();
     let hideBtn = $('#btn-nine, #btn-ten');
     uiScore(hideBtn, 2)
   });
 
   $('#btn-three').on('click', () => {
+    showAllBtn();
     let hideBtn = $('#btn-eight, #btn-nine, #btn-ten');
     uiScore(hideBtn, 3)
   });
 
   $('#btn-four').on('click', () => {
+    showAllBtn();
     let hideBtn = $('#btn-seven, #btn-eight, #btn-nine, #btn-ten');
     uiScore(hideBtn, 4)
   });
 
   $('#btn-five').on('click', () => {
+    showAllBtn();
     let hideBtn = $('#btn-six, #btn-seven, #btn-eight, #btn-nine, #btn-ten');
     uiScore(hideBtn, 5)
   });
 
   $('#btn-six').on('click', () => {
+    showAllBtn();
     let hideBtn = $('#btn-five, #btn-six, #btn-seven, #btn-eight, #btn-nine, #btn-ten');
     uiScore(hideBtn, 6)
   });
 
   $('#btn-seven').on('click', () => {
+    showAllBtn();
     let hideBtn = $('#btn-four, #btn-five, #btn-six, #btn-seven, #btn-eight, #btn-nine, #btn-ten');
     uiScore(hideBtn, 7)
   });
 
   $('#btn-eight').on('click', () => {
+    showAllBtn();
     let hideBtn = $('#btn-three, #btn-four, #btn-five, #btn-six, #btn-seven, #btn-eight, #btn-nine, #btn-ten');
     uiScore(hideBtn, 8)
   });
 
   $('#btn-nine').on('click', () => {
+    showAllBtn();
     let hideBtn = $('#btn-two, #btn-three, #btn-four, #btn-five, #btn-six, #btn-seven, #btn-eight, #btn-nine, #btn-ten');
     uiScore(hideBtn, 9)
   });
 
   $('#btn-ten').on('click', () => {
+    showAllBtn();
     let hideBtn = $('#btn-one, #btn-two, #btn-three, #btn-four, #btn-five, #btn-six, #btn-seven, #btn-eight, #btn-nine, #btn-ten');
     uiScore(hideBtn, 10)
   });

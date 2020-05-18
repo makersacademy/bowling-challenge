@@ -14,26 +14,26 @@ describe('Frame', () => {
     });
   });
 
-  describe('#setRolls', () => {
+  describe('#roll', () => {
     it('sets the number of pins of the roll', () => {
-      frame.setRolls(7);
+      frame.roll(7);
 
       expect(frame.rolls).toContain(7);
     });
 
     it('the total score of a frame cannot be more than 10', () => {
       let error = 'Total number of pins cannot be more than 10';
-      frame.setRolls(7);
+      frame.roll(7);
 
-      expect(function () { frame.setRolls(5); }).toThrow(new Error(error));
+      expect(function () { frame.roll(5); }).toThrow(new Error(error));
     });
 
     it('can only store two rolls', () => {
       let error = 'Only two rolls per frame are allowed';
-      frame.setRolls(5);
-      frame.setRolls(2);
+      frame.roll(5);
+      frame.roll(2);
 
-      expect(function () { frame.setRolls(1); }).toThrow(new Error(error));
+      expect(function () { frame.roll(1); }).toThrow(new Error(error));
     });
   });
 

@@ -18,7 +18,7 @@ class Frame {
     return this.rolls;
   }
 
-  setRolls(pins) {
+  roll(pins) {
     const numberOfPinsError = 'Total number of pins cannot be more than 10';
     const twoRollsPerFrameError = 'Only two rolls per frame are allowed';
 

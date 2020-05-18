@@ -3,22 +3,135 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link rel='stylesheet' type='text/css' href='../css/styles.css' >
-  <title>Bowling</title>
+  <title>Thermostat</title>
 </head>
 <body>
+  
+  <nav class="navbar navbar-dark bg-primary">
 
-  <header>
-    <h1>Bowling</h1>
-  </header>
-  <div id='container'>
+  </nav>
+
+  <div class='container'>
+    <div class='page-header'>
+      <div class="row justify-content-md-center">
+        <h1 class='col-md-center'>Bowling Score Board</h1>
+      </div>
+    </div>
+    <div class='jumbotron'>
+      <div class="row justify-content-md-center">
+        <h3>Choose The Score For The Spin</h3>
+      </div>
+      <div class="row justify-content-md-center">
+        <div>
+          <button id='btn-zero' value='0' type="button" class="btn btn-primary btn-sm">0</button>
+          <button id='btn-one' value='1' type="button" class="btn btn-primary btn-sm">1</button>
+          <button id='btn-two' value='2' type="button" class="btn btn-primary btn-sm">2</button>
+          <button id='btn-three' value='3' type="button" class="btn btn-primary btn-sm">3</button>
+          <button id='btn-four' value='4' type="button" class="btn btn-primary btn-sm">4</button>
+          <button id='btn-five' value='5' type="button" class="btn btn-primary btn-sm">5</button>
+          <button id='btn-six' value='6' type="button" class="btn btn-primary btn-sm">6</button>
+          <button id='btn-seven' value='7' type="button" class="btn btn-primary btn-sm">7</button>
+          <button id='btn-eight' value='8' type="button" class="btn btn-primary btn-sm">8</button>
+          <button id='btn-nine' value='9' type="button" class="btn btn-primary btn-sm">9</button>
+          <button id='btn-ten' value='10' type="button" class="btn btn-primary btn-sm">10</button>
+        </div>
+      </div>
+    </div>
     
-  </div>
-  <footer>
-    <p>&copy; <a href='https://github.com/EdAncerys'>Ed Ancerys</a></p>
-  </footer>
+    <div class="row justify-content-md-center shadow-sm">
+      <div id='game-score' class="shadow-sm p-3 mb-5 bg-white rounded">Game Score</div>
+    </div>
 
+    <div class='overflow-auto text-nowrap'>
+      <table class="table table-sm table-dark table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Frame 1</th>
+            <th scope="col">Frame 2</th>
+            <th scope="col">Frame 3</th>
+            <th scope="col">Frame 4</th>
+            <th scope="col">Frame 5</th>
+            <th scope="col">Frame 6</th>
+            <th scope="col">Frame 7</th>
+            <th scope="col">Frame 8</th>
+            <th scope="col">Frame 9</th>
+            <th scope="col">Frame 10</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>
+              <div class="row justify-content-md-center">
+                <spam id='frame-0-pos-false'>D</spam>
+                <spam id='frame-1-pos-true'>D</spam>
+              </div>
+            </td>
+            <td>
+              <div class="row justify-content-md-center">
+                <spam id='frame-1-pos-false'>D</spam>
+                <spam id='frame-2-pos-true'>D</spam>
+              </div>
+            </td>
+            <td>
+              <div class="row justify-content-md-center">
+                <spam id='frame-2-pos-false'>D</spam>
+                <spam id='frame-3-pos-true'>D</spam>
+              </div>
+            </td>
+            <td>
+              <div class="row justify-content-md-center">
+                <spam id='frame-3-pos-false'>D</spam>
+                <spam id='frame-4-pos-true'>D</spam>
+              </div>
+            </td>
+            <td>
+              <div class="row justify-content-md-center">
+                <spam id='frame-4-pos-false'>D</spam>
+                <spam id='frame-5-pos-true'>D</spam>
+              </div>
+            </td>
+            <td>
+              <div class="row justify-content-md-center">
+                <spam id='frame-5-pos-false'>D</spam>
+                <spam id='frame-6-pos-true'>D</spam>
+              </div>
+            </td>
+            <td>
+              <div class="row justify-content-md-center">
+                <spam id='frame-6-pos-false'>D</spam>
+                <spam id='frame-7-pos-true'>D</spam>
+              </div>
+            </td>
+            <td>
+              <div class="row justify-content-md-center">
+                <spam id='frame-7-pos-false'>D</spam>
+                <spam id='frame-8-pos-true'>D</spam>
+              </div>
+            </td>
+            <td>
+              <div class="row justify-content-md-center">
+                <spam id='frame-8-pos-false'>D</spam>
+                <spam id='frame-9-pos-true'>D</spam>
+              </div>
+            </td>
+            <td>
+              <div class="row justify-content-md-center">
+                <spam id='frame-9-pos-false'>D</spam>
+                <spam id='frame-10-pos-true'>D</spam>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
   <script src="../src/bowling.js"></script>
   <script src="../src/interface.js"></script>
 </body>

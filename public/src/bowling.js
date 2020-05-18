@@ -4,16 +4,18 @@ class Bowling {
     this.MAX_FRAME_SCORE = 10;
     this.MAX_FRAMES = 10;
     this.firstBowl = true;
+    this.pins;
     this.frame = 0;
     this.frameScore;
     this.gameScore = [];
   }
   countScore(score) {
-    if(this.frame > this.MAX_FRAMES) {
+    if(this.frame === this.MAX_FRAMES) {
       throw new Error('Game Over')
     } else {
       this._countScoreHelper(score);
     }
+    this.pins = score;
   }
   _countScoreHelper(score) {
     if(score === this.MAX_FRAME_SCORE && this.firstBowl === true) {

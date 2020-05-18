@@ -4,49 +4,10 @@ body {
   background-color: #f4f4f4;
   line-height: 1.5em;
 }
-header {
-  background: #333;
-  color: #fff;
-  padding: 20px;
+.navbar {
+  height: 60px;
+}
+#game-score {
+  width: 150px;
   text-align: center;
-  border-bottom: 4px #000 solid;
-  margin-bottom: 10px;
-}
-footer {
-  background: #999;
-  color: #fff;
-  padding: 20px;
-  text-align: left;
-  border-top: 4px #000 solid;
-  margin-bottom: 10px;
-}
-#container {
-  width: 90%;
-  margin: auto;
-  padding: 10px;
-}
-#thermostat-data {
-  margin: 10px;
-  font-size: 12px;
-  line-height: 0.5em;
-  color: #333;
-  border: 2px #333 solid;
-}
-li {
-  list-style: none;
-}
-a {
-  text-decoration: none;
-  color: #fff;
-}
-.low-usage {
-  color: blue;
-}
-
-.medium-usage {
-  color: green;
-}
-
-.high-usage {
-  color: red;
 }

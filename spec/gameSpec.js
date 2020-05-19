@@ -67,7 +67,7 @@ describe('ScoreCard', () => {
 
     describe('when a strike frame is followed by another frame', () => {
       it('updates the strike frame with strike bonus', () => {
-        frame.roll(10);
+        aStrikeFrame(frame);
         addFrameAndSetRollsAndScore(frame);
         aNormalFrame(nextFrame);
         addFrameAndSetRollsAndScore(nextFrame);

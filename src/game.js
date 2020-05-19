@@ -18,11 +18,11 @@ class ScoreCard {
   }
 
   setScore() {
-    let roll1 = this.gameRolls.slice(-1)[0][0];
-    let roll2 = this.gameRolls.slice(-1)[0].length === 2 ? this.gameRolls.slice(-1)[0][1] : 0;
-    let frameScore = roll1 + roll2;
+    let size = this.gameRolls.length;
+    let roll1 = this.gameRolls[size - 1][0];
+    let roll2 = this.gameRolls[size - 1].length === 2 ? this.gameRolls[size - 1][1] : 0;
 
-    this.score.push(frameScore);
+    this.score.push(roll1 + roll2);
   }
 
   getScore() {
@@ -31,16 +31,13 @@ class ScoreCard {
 
   updateFrameScore() {
     let size = this.score.length;
-    let frames = this.frames;
 
-    for (let i = 0; i < size; i++) {
-      if (this.gameRolls[i].length === 1) {
-        this.score[i] += this.score[i + 1];
-      }
+    if (this.gameRolls[size - 2].length === 1) {
+      this.score[size - 2] += this.score[size - 1];
+    }
 
-      if (this.score[i] === 10) {
-        this.score[i] += this.gameRolls[i + 1][0];
-      }
+    if (this.score[size - 2] === 10) {
+      this.score[size - 2] += this.gameRolls[size - 1][0];
     }
   }
 }

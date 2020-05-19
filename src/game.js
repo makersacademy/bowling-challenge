@@ -29,18 +29,18 @@ class ScoreCard {
     return this.score;
   }
 
-//   updateFrameScore() {
-//     let size = this.scores.length;
-//     let frames = this.frames;
-//
-//     for (let i = 0; i < size; i++) {
-//       if (this.scores[i] === 10 && this.scores[i + 1] === 10) {
-//         this.scores[i] += this.scores[i + 1] + frames[i + 2].rolls[0];
-//       }
-//
-//       if (this.scores[i] === 10) {
-//         this.scores[i] += this.scores[i + 1];
-//       }
-//     }
-//   }
+  updateFrameScore() {
+    let size = this.score.length;
+    let frames = this.frames;
+
+    for (let i = 0; i < size; i++) {
+      // if (this.score[i] === 10 && this.score[i + 1] === 10) {
+      //   this.score[i] += this.score[i + 1] + frames[i + 2].rolls[0];
+      // }
+
+      if (this.score[i] === 10) {
+        this.score[i] += this.gameRolls[i + 1][0];
+      }
+    }
+  }
 }

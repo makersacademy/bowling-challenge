@@ -4,15 +4,12 @@ describe('ScoreCard', () => {
 
   let scoreCard;
   let frame;
-  let frame2;
-  let frame3;
+  let nextFrame;
 
   beforeEach(() => {
     scoreCard = new ScoreCard();
     frame = new Frame();
-    // frame = jasmine.createSpyObj(Frame, ['getRolls', 'rolls', 'roll']);
-    // frame2 = jasmine.createSpyObj(Frame, ['total', 'getRolls', 'rolls', 'roll']);
-    // frame3 = jasmine.createSpyObj(Frame, ['total', 'getRolls', 'rolls', 'roll']);
+    nextFrame = new Frame();
   });
 
   it('holds game frames in an array', () => {
@@ -21,7 +18,7 @@ describe('ScoreCard', () => {
 
   describe('#addToFrames', () => {
     it('can add a new frame to frames array', () => {
-      scoreCard.addToFrames(frame);
+      addFrameAndSetRollsAndScore(frame);
 
       expect(scoreCard.frames).toContain(frame);
     });
@@ -29,7 +26,7 @@ describe('ScoreCard', () => {
 
   describe('#setRolls', () => {
     it('can keep track of the rolls for each frame', () => {
-      addFrameAndSetRolls(frame);
+      addFrameAndSetRollsAndScore(frame);
 
       expect(scoreCard.gameRolls).toContain(frame.rolls);
     });
@@ -37,14 +34,9 @@ describe('ScoreCard', () => {
 
   describe('#setScore', () => {
     it('keeps track of the frames scores', () => {
-      // frame.roll.withArgs(5);
-      // frame.roll.withArgs(3);
-      // frame.getRolls.and.returnValue([5, 3]);
       frame.roll(5);
       frame.roll(3);
-      scoreCard.addToFrames(frame);
-      scoreCard.setRolls();
-      scoreCard.setScore();
+      addFrameAndSetRollsAndScore(frame);
 
       expect(scoreCard.score).toContain(8);
     });
@@ -54,32 +46,32 @@ describe('ScoreCard', () => {
     it('returns the scores for each frame', () => {
       frame.roll(5);
       frame.roll(3);
-      addFrameAndSetRolls(frame);
-      scoreCard.setScore();
+      addFrameAndSetRollsAndScore(frame);
 
       expect(scoreCard.getScore()).toContain(8);
     });
   });
 
-  // describe('#updateFrameScore', () => {
-  //   describe('when a spare frame is followed by a normal frame', () => {
-  //     it('updates the previous frame with spare bonus', () => {
-  //       frame.setRolls.withArgs(5);
-  //       frame.setRolls.withArgs(5);
-  //       addFrameAndSetScore(frame);
-  //       frame2.setRolls.withArgs(4);
-  //       frame2.setRolls.withArgs(3);
-  //       addFrameAndSetScore(frame2);
-  //
-  //       scoreCard.updateFrameScore();
-  //
-  //       expect(scoreCard.getScores()).toEqual([5, 5], [4, 3]);
-  //     });
-  //   });
-  // });
+  describe('#updateFrameScore', () => {
+    describe('when a spare frame is followed by a normal frame', () => {
+      it('updates the previous frame with spare bonus', () => {
+        frame.roll(7);
+        frame.roll(3);
+        addFrameAndSetRollsAndScore(frame);
+        nextFrame.roll(5);
+        nextFrame.roll(3);
+        addFrameAndSetRollsAndScore(nextFrame);
 
-  function addFrameAndSetRolls(frame) {
+        scoreCard.updateFrameScore();
+
+        expect(scoreCard.getScore()).toEqual([15, 8]);
+      });
+    });
+  });
+
+  function addFrameAndSetRollsAndScore(frame) {
     scoreCard.addToFrames(frame);
     scoreCard.setRolls();
+    scoreCard.setScore();
   }
 });

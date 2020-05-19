@@ -34,7 +34,7 @@ describe('ScoreCard', () => {
 
   describe('#setScore', () => {
     it('keeps track of the frames scores', () => {
-      aNormalFrame();
+      aNormalFrame(frame);
       addFrameAndSetRollsAndScore(frame);
 
       expect(scoreCard.score).toContain(8);
@@ -43,7 +43,7 @@ describe('ScoreCard', () => {
 
   describe('#getScore', () => {
     it('returns the scores for each frame', () => {
-      aNormalFrame();
+      aNormalFrame(frame);
       addFrameAndSetRollsAndScore(frame);
 
       expect(scoreCard.getScore()).toContain(8);
@@ -56,8 +56,7 @@ describe('ScoreCard', () => {
         frame.roll(7);
         frame.roll(3);
         addFrameAndSetRollsAndScore(frame);
-        nextFrame.roll(5);
-        nextFrame.roll(3);
+        aNormalFrame(nextFrame);
         addFrameAndSetRollsAndScore(nextFrame);
 
         scoreCard.updateFrameScore();
@@ -73,8 +72,9 @@ describe('ScoreCard', () => {
     scoreCard.setScore();
   }
 
-  function aNormalFrame() {
-    frame.roll(5);
-    frame.roll(3);
+  function aNormalFrame(frame) {
+    let frameType = frame;
+    frameType.roll(5);
+    frameType.roll(3);
   }
 });

@@ -51,8 +51,8 @@ describe('ScoreCard', () => {
   });
 
   describe('#updateFrameScore', () => {
-    describe('when a spare frame is followed by a normal frame', () => {
-      it('updates the previous frame with spare bonus', () => {
+    describe('when a spare frame is followed by another frame', () => {
+      it('updates the spare frame score with spare bonus', () => {
         frame.roll(7);
         frame.roll(3);
         addFrameAndSetRollsAndScore(frame);
@@ -62,6 +62,19 @@ describe('ScoreCard', () => {
         scoreCard.updateFrameScore();
 
         expect(scoreCard.getScore()).toEqual([15, 8]);
+      });
+    });
+
+    describe('when a strike frame is followed by another frame', () => {
+      it('updates the strike frame with strike bonus', () => {
+        frame.roll(10);
+        addFrameAndSetRollsAndScore(frame);
+        aNormalFrame(nextFrame);
+        addFrameAndSetRollsAndScore(nextFrame);
+
+        scoreCard.updateFrameScore();
+
+        expect(scoreCard.getScore()).toEqual([18, 8]);
       });
     });
   });
@@ -76,5 +89,10 @@ describe('ScoreCard', () => {
     let frameType = frame;
     frameType.roll(5);
     frameType.roll(3);
+  }
+
+  function aStrikeFrame(frame) {
+    let frameType = frame;
+    frameType.roll(10);
   }
 });

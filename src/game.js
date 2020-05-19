@@ -34,9 +34,9 @@ class ScoreCard {
     let frames = this.frames;
 
     for (let i = 0; i < size; i++) {
-      // if (this.score[i] === 10 && this.score[i + 1] === 10) {
-      //   this.score[i] += this.score[i + 1] + frames[i + 2].rolls[0];
-      // }
+      if (this.gameRolls[i].length === 1) {
+        this.score[i] += this.score[i + 1];
+      }
 
       if (this.score[i] === 10) {
         this.score[i] += this.gameRolls[i + 1][0];

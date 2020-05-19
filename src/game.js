@@ -4,6 +4,7 @@ class ScoreCard {
   constructor() {
     this.frames = [];
     this.gameRolls = [];
+    this.score = [];
   }
 
   addToFrames(frame) {
@@ -16,9 +17,17 @@ class ScoreCard {
     this.gameRolls.push(frameScore);
   }
 
-  // getScores() {
-  //   return this.scores;
-  // }
+  setScore() {
+    let roll1 = this.gameRolls.slice(-1)[0][0];
+    let roll2 = this.gameRolls.slice(-1)[0].length === 2 ? this.gameRolls.slice(-1)[0][1] : 0;
+    let frameScore = roll1 + roll2;
+
+    this.score.push(frameScore);
+  }
+
+  getScore() {
+    return this.score;
+  }
 
 //   updateFrameScore() {
 //     let size = this.scores.length;

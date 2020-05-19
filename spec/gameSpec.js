@@ -9,9 +9,10 @@ describe('ScoreCard', () => {
 
   beforeEach(() => {
     scoreCard = new ScoreCard();
-    frame = jasmine.createSpyObj(Frame, ['getRolls', 'rolls', 'setRolls']);
-    frame2 = jasmine.createSpyObj(Frame, ['total', 'getRolls', 'rolls', 'setRolls']);
-    frame3 = jasmine.createSpyObj(Frame, ['total', 'getRolls', 'rolls', 'setRolls']);
+    frame = new Frame();
+    // frame = jasmine.createSpyObj(Frame, ['getRolls', 'rolls', 'roll']);
+    // frame2 = jasmine.createSpyObj(Frame, ['total', 'getRolls', 'rolls', 'roll']);
+    // frame3 = jasmine.createSpyObj(Frame, ['total', 'getRolls', 'rolls', 'roll']);
   });
 
   it('holds game frames in an array', () => {
@@ -27,20 +28,38 @@ describe('ScoreCard', () => {
   });
 
   describe('#setRolls', () => {
-    it('can keep track of the score for each frame', () => {
+    it('can keep track of the rolls for each frame', () => {
       addFrameAndSetRolls(frame);
 
       expect(scoreCard.gameRolls).toContain(frame.rolls);
     });
   });
 
-  // describe('#getScores', () => {
-  //   it('returns the scores for each frame', () => {
-  //     addFrameAndSetScore(frame);
-  //
-  //     expect(scoreCard.getScores()).toContain(frame.rolls);
-  //   });
-  // });
+  describe('#setScore', () => {
+    it('keeps track of the frames scores', () => {
+      // frame.roll.withArgs(5);
+      // frame.roll.withArgs(3);
+      // frame.getRolls.and.returnValue([5, 3]);
+      frame.roll(5);
+      frame.roll(3);
+      scoreCard.addToFrames(frame);
+      scoreCard.setRolls();
+      scoreCard.setScore();
+
+      expect(scoreCard.score).toContain(8);
+    });
+  });
+
+  describe('#getScore', () => {
+    it('returns the scores for each frame', () => {
+      frame.roll(5);
+      frame.roll(3);
+      addFrameAndSetRolls(frame);
+      scoreCard.setScore();
+
+      expect(scoreCard.getScore()).toContain(8);
+    });
+  });
 
   // describe('#updateFrameScore', () => {
   //   describe('when a spare frame is followed by a normal frame', () => {

@@ -55,8 +55,7 @@ describe('ScoreCard', () => {
   describe('#updateFrameScore', () => {
     describe('when a spare is followed by another frame', () => {
       it('updates the spare frame score with spare bonus', () => {
-        frame.roll(7);
-        frame.roll(3);
+        aSpareFrame(frame);
         addFrameAndSetRollsAndScore(frame);
         aNormalFrame(nextFrame);
         addFrameAndSetRollsAndScore(nextFrame);
@@ -82,10 +81,7 @@ describe('ScoreCard', () => {
 
     describe('when a strike is followed by another strike frame', () => {
       it('updates the strike frame with strike bonus', () => {
-        aStrikeFrame(frame);
-        addFrameAndSetRollsAndScore(frame);
-        aStrikeFrame(nextFrame);
-        addFrameAndSetRollsAndScore(nextFrame);
+        twoStrikesInARow(frame, nextFrame);
 
         scoreCard.updateFrameScore();
 
@@ -100,10 +96,7 @@ describe('ScoreCard', () => {
 
     describe('when a strike is followed by two consecutive strikes', () => {
       it('updates the strike frame with strike bonus', () => {
-        aStrikeFrame(frame);
-        addFrameAndSetRollsAndScore(frame);
-        aStrikeFrame(nextFrame);
-        addFrameAndSetRollsAndScore(nextFrame);
+        twoStrikesInARow(frame, nextFrame);
 
         scoreCard.updateFrameScore();
 
@@ -129,8 +122,21 @@ describe('ScoreCard', () => {
     frameType.roll(3);
   }
 
+  function aSpareFrame(frame) {
+    let frameType = frame;
+    frameType.roll(7);
+    frameType.roll(3);
+  }
+
   function aStrikeFrame(frame) {
     let frameType = frame;
     frameType.roll(10);
+  }
+
+  function twoStrikesInARow(frame, nextFrame) {
+    aStrikeFrame(frame);
+    addFrameAndSetRollsAndScore(frame);
+    aStrikeFrame(nextFrame);
+    addFrameAndSetRollsAndScore(nextFrame);
   }
 });

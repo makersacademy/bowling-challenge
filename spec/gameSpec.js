@@ -5,11 +5,13 @@ describe('ScoreCard', () => {
   let scoreCard;
   let frame;
   let nextFrame;
+  let nextNextFrame;
 
   beforeEach(() => {
     scoreCard = new ScoreCard();
     frame = new Frame();
     nextFrame = new Frame();
+    nextNextFrame = new Frame();
   });
 
   it('holds game frames in an array', () => {
@@ -65,7 +67,7 @@ describe('ScoreCard', () => {
       });
     });
 
-    describe('when a strike frame is followed by another frame', () => {
+    describe('when a strike frame is followed by a normal frame', () => {
       it('updates the strike frame with strike bonus', () => {
         aStrikeFrame(frame);
         addFrameAndSetRollsAndScore(frame);
@@ -75,6 +77,24 @@ describe('ScoreCard', () => {
         scoreCard.updateFrameScore();
 
         expect(scoreCard.getScore()).toEqual([18, 8]);
+      });
+    });
+
+    describe('when a strike frame is followed by another strike frame', () => {
+      it('updates the strike frame with strike bonus', () => {
+        aStrikeFrame(frame);
+        addFrameAndSetRollsAndScore(frame);
+        aStrikeFrame(nextFrame);
+        addFrameAndSetRollsAndScore(nextFrame);
+
+        scoreCard.updateFrameScore();
+
+        aNormalFrame(nextNextFrame);
+        addFrameAndSetRollsAndScore(nextNextFrame);
+
+        scoreCard.updateFrameScore();
+
+        expect(scoreCard.getScore()).toEqual([25, 18, 8]);
       });
     });
   });

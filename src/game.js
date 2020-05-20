@@ -32,7 +32,11 @@ class ScoreCard {
   updateFrameScore() {
     let size = this.score.length;
 
-    if (this.gameRolls[size - 2].length === 1) {
+    if (this.gameRolls[size - 3] && this.gameRolls[size - 3].length === 1 && this.gameRolls[size - 2].length === 1) {
+      this.score[size - 3] += this.gameRolls[size - 1][0];
+    }
+
+    if (this.gameRolls[size - 2] && this.gameRolls[size - 2].length === 1) {
       this.score[size - 2] += this.score[size - 1];
     }
 

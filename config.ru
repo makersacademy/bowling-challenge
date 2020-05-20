@@ -1,2 +1,2 @@
 require_relative './app'
-run Bowling
+run Bowling 

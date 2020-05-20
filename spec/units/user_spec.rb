@@ -1,4 +1,4 @@
-require_relative '../../user'
+require_relative '../../lib/user'
 describe User do
   subject(:user) { described_class.new }
   describe ' #creates' do

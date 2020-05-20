@@ -12,22 +12,30 @@ class Frame {
     return sum;
   }
 
-  getRolls() {
-    return this.rolls;
-  }
+  // getRolls() {
+  //   return this.rolls;
+  // }
 
   roll(pins) {
     const numberOfPinsError = 'Total number of pins cannot be more than 10';
     const twoRollsPerFrameError = 'Only two rolls per frame are allowed';
 
-    if (this.total() + pins > 10) {
+    if (this.isNumberOfPinsError(pins)) {
       throw new Error(numberOfPinsError);
     }
 
-    if (this.rolls.length < 2) {
+    if (this.isTwoRollsPerFrameError()) {
       this.rolls.push(pins);
     } else {
       throw new Error(twoRollsPerFrameError);
     }
+  }
+
+  isNumberOfPinsError(pins) {
+    return this.total() + pins > 10;
+  }
+
+  isTwoRollsPerFrameError() {
+    return this.rolls.length < 2;
   }
 }

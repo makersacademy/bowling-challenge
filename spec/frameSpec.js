@@ -8,11 +8,11 @@ describe('Frame', () => {
     frame = new Frame();
   });
 
-  describe('#getRolls', () => {
-    it('returns the frame rolls', () => {
-      expect(frame.getRolls()).toEqual(frame.rolls);
-    });
-  });
+  // describe('#getRolls', () => {
+  //   it('returns the frame rolls', () => {
+  //     expect(frame.getRolls()).toEqual(frame.rolls);
+  //   });
+  // });
 
   describe('#roll', () => {
     it('sets the number of pins of the roll', () => {

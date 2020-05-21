@@ -3,8 +3,9 @@ require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
 require 'setup_test_database'
-require 'database_helpers'
+require_relative '../lib/database_connection'
 
+ENV['RACK_ENV'] = 'test'
 ENV['ENVIRONMENT'] = 'test'
 
 RSpec.configure do |config|

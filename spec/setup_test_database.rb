@@ -1,4 +1,6 @@
+
 def setup_test_database
-  connection = PG.connect(dbname: 'bowling_test')
-  connection.exec("TRUNCATE users;")
+  DatabaseConnection.setup('bowling_test')
+  DatabaseConnection.query('TRUNCATE users')
+  DatabaseConnection.query("INSERT INTO users(email, password) VALUES('test@example.com', 12345);")
 end 

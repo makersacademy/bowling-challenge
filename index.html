@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Bowling Scorecard</title>
+  </head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <section>
+      <h1>Welcome to the 10 pin bowling scorecard!</h1>
+      <h1 id="game-info">Game info will go here</h1>
+      <h1>User input:</h1>
+      <input id="user-input" type="text" name="user-input">
+      <button id="play-button" type="button" name="Submit">Play!</button>
+    </section>
+    <section>
+      <h1>Scorecard</h1>
+      <table id="scorecard" width=70%;>
+        <tr>
+         <th>Frame</th>
+         <th>Roll</th>
+         <th>Pins Knocked</th>
+         <th>Total</th>
+        </tr>
+      </table>
+
+      <h1 id="total"></h1>
+    </section>
+    <script src="src/Game.js"></script>
+    <script src="src/ScoreCard.js"></script>
+    <script src="interface.js"></script>
+  </body>
+</html>

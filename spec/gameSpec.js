@@ -22,4 +22,13 @@ describe('Game', function() {
     expect(game.calculateCurrentScore()).toEqual(0);
   });
 
+  it('returns a final score of 20 when rolling all 1s', function() {
+    for (let i = 1; i <= 9; i += 1) {
+      game.addFrame([1, 1]);
+    }
+    game.addLastFrame([1, 1]);
+
+    expect(game.calculateCurrentScore()).toEqual(20);
+  });
+
 });

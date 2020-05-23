@@ -7,7 +7,13 @@ class Game {
   }
 
   calculateCurrentScore(){
-    return 0
+    var total = 0
+
+    this.frames.forEach(function(frame){
+      total += frame[0] + frame[1]
+    });
+
+    return total
   }
 
   addFrame(frame){

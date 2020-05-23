@@ -11,7 +11,7 @@
 
 ## Doing
 
-
+* Test and implement Player.score
 * Add interface to Game
 
 ## Done
@@ -41,22 +41,23 @@
 | ```Responsibilities```       | ```Collaborators``` |
 | .new(player) | Player |
 | .player | Frame |
-| .frames | |
-| .score | |
+| .frames ||
+| .score ||
 
 
 | ```Class```                  | Player              |
 | :--                          | :--:                |
 | ```Responsibilities```       | ```Collaborators``` |
 | .new(name) | Game |
-| .name | |
+| .name ||
+| .score ||
 
 | ```Class```                  | Frame               |
 | :--                          | :--:                |
 | ```Responsibilities```       | ```Collaborators``` |
 | .new(number) | Lane |
 | .score | Score |
-| .bowl | |
+| .bowl ||
 
 
 | ```Class```                  | Lane                |
@@ -65,7 +66,7 @@
 | .new | Frame |
 | .status | Ball |
 | .reset | Pin |
-| .bowl | |
+| .bowl ||
 
 | ```Class```                  | Ball                |
 | :--                          | :--:                |
@@ -76,13 +77,13 @@
 | :--                          | :--:                |
 | ```Responsibilities```       | ```Collaborators``` |
 | .new | Lane |
-| .up? | |
+| .up? ||
 
 | ```Class```                  | Score               |
 | :--                          | :--:                |
 | ```Responsibilities```       | ```Collaborators``` |
 | .new | Frame |
-| .add(number, bonus) | |
+| .add(number, bonus) ||
 
 ## Notes
 

@@ -16,7 +16,7 @@
 
 ## Done
 
-* Add jQuery support to Karma/Jasmine
+* Add jQuery support to Karma/Jasmine [@metahub/karma-jasmine-jquery - npm](https://www.npmjs.com/package/@metahub/karma-jasmine-jquery)
 * Write Tests for Game.new(player) and Game.player
 * Implement Game.new(player) and Game.player
 * Update CRC cards

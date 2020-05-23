@@ -1,20 +1,24 @@
-// 'use strict'
+'use strict';
 
-// var score 
+console.log("I AM IN THE SPEC!")
 
-// beforeEach(function() {
-//   score = new Score 
-// })
+describe('Score', () => {
 
-// beforeEach(function() {
-//   spyOn(score, "game ").and.returnValue([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];)
-// })
+  var score 
+  var game 
 
-// describe("Score", () => 
-//   describe('')
-    
-// )
+  beforeEach(function(){
+    score = new Score
+    game = new Game // How to spy this? 
+  });
 
-// //    beforeEach(function(){
-// //   spyOn(airPort, 'isStormy').and.returnValue(false);
-// // });
+  describe("Scoring function", () => {
+    it('Keeps a running score', () => {
+      game.roll(1);
+      game.roll(1);
+
+      expect(score.scoring(game)).toEqual(2)
+      console.log(score.scoring(game))
+    });
+  });
+});

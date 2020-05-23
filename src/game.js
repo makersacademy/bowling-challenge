@@ -6,6 +6,10 @@ class Game {
     this.frames = []
   }
 
+  addFrame(frame){
+    this.frames.push(frame)
+  }
+
   calculateCurrentScore(){
     var total = 0
 
@@ -33,21 +37,11 @@ class Game {
         } else {
           total += frame[0] + frame[1]
         }
-
     });
 
     return total
   }
-
-  addFrame(frame){
-    this.frames.push(frame)
-  }
-
-  addLastFrame(frame){
-    this.frames.push(frame)
-  }
 }
-
 
 function isSpare(frame){
   return frame[0] + frame[1] === 10 && frame[0] !== 10

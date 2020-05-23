@@ -8,10 +8,11 @@
 
 ## Doing
 
-* Update CRC cards
+* Add interface to Player class
 
 ## Done
 
+* Update CRC cards
 * Redo CRC cards as Markdown table
 * Solve ESLint errors - added [eslint-plugin-jasmine](https://www.npmjs.com/package/eslint-plugin-jasmine)
 * Refactor Player
@@ -40,6 +41,7 @@
 | :--                          | :--:                |
 | ```Responsibilities```       | ```Collaborators``` |
 | .new(name) | Game |
+| .name | |
 
 | ```Class```                  | Frame               |
 | :--                          | :--:                |

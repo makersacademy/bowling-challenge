@@ -110,6 +110,21 @@ describe('ScoreCard', () => {
     });
   });
 
+  describe('#runningTotal()', () => {
+    describe('when a normal frame by another normal frame', () => {
+      it('keeps a running total of the game', () => {
+        aNormalFrame(frame);
+        addFrameAndSetRollsAndScore(frame);
+        aNormalFrame(nextFrame);
+        addFrameAndSetRollsAndScore(nextFrame);
+
+        scoreCard.runningTotal();
+
+        expect(scoreCard.runner).toEqual([8, 16]);
+      });
+    });
+  });
+
   function addFrameAndSetRollsAndScore(frame) {
     scoreCard.addToFrames(frame);
     scoreCard.setRolls();

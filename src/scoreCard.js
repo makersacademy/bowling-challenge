@@ -5,6 +5,7 @@ class ScoreCard {
     this.frames = [];
     this.gameRolls = [];
     this.score = [];
+    this.runner = [];
   }
 
   addToFrames(frame) {
@@ -43,5 +44,10 @@ class ScoreCard {
     if (this.score[size - 2] === 10) {
       this.score[size - 2] += this.gameRolls[size - 1][0];
     }
+  }
+
+  runningTotal() {
+    this.score.reduce((a, b, i) => this.runner[i] = a + b, 0);
+    return this.runner;
   }
 }

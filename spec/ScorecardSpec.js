@@ -3,45 +3,29 @@ describe('ScoreCard', function () {
     var scorecard;
     beforeEach(function () {
         scorecard = new ScoreCard();
-    })
-    describe('addScore', function(){
-        it('adds score from round to array as hash', function () {
-            scorecard.addScore(1, 1, 4);
-            expect(scorecard.scoreboard).toEqual([{frame: 1, roll: 1, knocked: 4}]);
-        });
     });
+
     describe('calculate', function(){
-        it('calculates the total', function(){
-            for (let i = 0; i < 10; i++) {
-                scorecard.addScore(1, 1, 4);
-              }
-            scorecard.calculate()
-            expect(scorecard.total).toEqual(40)
+        it('changes total from 0 to 5', function(){
+          scorecard.calculate(5);
+          expect(scorecard.total).toEqual(5);
+        });
+
+        it('adds 5 to totalArray', function(){
+          scorecard.calculate(5);
+          expect(scorecard.totalArray[scorecard.totalArray.length - 1]).toEqual(5)
         });
     });
 
-    describe('spareBonus', function(){
-        it('calculates a total of 84', function(){
-          for (let i = 0; i < 19; i++) {
-              scorecard.addScore(1, 1, 4);
-            }
-            scorecard.addScore(10, 2, 6)
-            scorecard.addScore(10, 3, 2)
-            scorecard.calculate()
-            expect(scorecard.total).toEqual(84)
+    describe('updateScoreboard', function(){
+        it('adds frame, roll and knocked pins to scoreboard', function(){
+          scorecard.updateScoreboard(1, 1, 5);
+          expect(scorecard.scoreboard).toEqual([{frame: 1, roll: 1, knocked: 5}]);
         });
-    });
 
-    describe('reset', function(){
-        it('sets total to 0 and clears scoreboard', function(){
-          for (let i = 0; i < 19; i++) {
-              scorecard.addScore(1, 1, 4);
-            }
-          scorecard.calculate()
-          expect(scorecard.total).toEqual(76)
-          scorecard.reset()
-          expect(scorecard.total).toEqual(0)
-          expect(scorecard.scoreboard.length).toEqual(0)
+        it('adds knocked pins to rollArray', function(){
+          scorecard.updateScoreboard(1, 1, 5);
+          expect(scorecard.rollArray).toEqual([5]);
         });
     });
-});
+  });

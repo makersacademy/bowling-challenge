@@ -3,66 +3,62 @@ class ScoreCard{
     constructor(){
       this.total = 0;
       this.scoreboard = [];
+      this.totalArray = [];
+      this.rollArray = [];
+      this.spareBonusStatus = false;
+      this.strikeBonusStatus = false;
+      this.anotherRoll = false;
     }
 
-    addScore(frame, roll, knocked){
-      if(knocked === 10 && roll !== 3){
-        this.scoreboard.push({frame: frame, roll: roll, knocked: knocked})
-        this.scoreboard.push({frame: frame, roll: 2, knocked: 0})
+    updateScoreboard(frame, roll, knocked){
+      this.scoreboard.push({frame: frame, roll: roll, knocked: knocked})
+      this.rollArray.push(knocked)
+      this.calculate(knocked)
+      this.addSpareBonus()
+      if(this.rollArray.length % 2 === 0){this.addStrikeBonus()}
+      if(this.rollArray.length % 2 === 0){this.isSpareBonus()}
+      if(this.rollArray.length % 2 === 0){this.isStrikeBonus()}
+    }
+
+    calculate(knocked){
+      this.totalArray.push(knocked)
+      return this.total = this.totalArray.reduce((a,b) => a + b, 0)
+    }
+
+    addSpareBonus(){
+      if(this.spareBonusStatus === true){
+        this.calculate(this.rollArray[this.rollArray.length - 1]);
+        this.spareBonusStatus = false;
+      }
+    }
+    addStrikeBonus(){
+      if(this.anotherRoll === true ){
+        this.calculate(this.rollArray[this.rollArray.length - 2])
+        this.anotherRoll = false;
+      }
+      if(this.strikeBonusStatus === true){
+        this.calculate(this.rollArray[this.rollArray.length - 2]);
+        this.calculate(this.rollArray[this.rollArray.length - 1]);
+        if(this.rollArray[this.rollArray.length - 2] === 10){
+          this.anotherRoll = true;
+        } else {this.strikeBonusStatus = false;}
+      }
+    }
+
+    // has to be implemented on an even number of array elements
+    isSpareBonus(){
+      if((this.rollArray[this.rollArray.length - 1] + this.rollArray[this.rollArray.length - 2]) === 10 && this.rollArray[this.rollArray.length - 2] !==10){
+        return this.spareBonusStatus = true;
       } else {
-        this.scoreboard.push({frame: frame, roll: roll, knocked: knocked})
+        return this.spareBonusStatus = false;
       }
     }
-
-    calculate(){
-      this.total = 0;
-      for(let i = 0; i < this.scoreboard.length; i++) {
-        this.total += this.scoreboard[i].knocked;
-      }
-
-      // add bonus for strike from the fourth round onwards, if there is an even number of plays or the length is 21 (bonus round)
-      if(this.scoreboard.length >= 4 && (this.scoreboard.length % 2 === 0 || this.scoreboard.length === 21)){
-        this.strikeBonus();
-      }
-
-      // add bonus for spare from the third round onwards, if there is an odd number of plays
-      if(this.scoreboard.length >= 3 && this.scoreboard.length % 2 !== 0){
-        this.spareBonus();
-      }
-
-      // check total
-      console.log(this.total)
-    }
-
-    spareBonus(){
-      for(let i = 0; i < (this.scoreboard.length - 1); i += 2) {
-        if((this.scoreboard[i].knocked + this.scoreboard[i+1].knocked) === 10
-        && this.scoreboard[i].knocked !== 10 && this.scoreboard[i+1].knocked !== 10){
-          if(this.scoreboard[i + 2].roll !== 3){
-            this.total += this.scoreboard[i + 2].knocked;
-          }
-        }
+    // has to be implemented on an even number of array elements
+    isStrikeBonus(){
+       if(this.rollArray[this.rollArray.length - 2] === 10){
+        return this.strikeBonusStatus = true;
+      } else {
+        return this.strikeBonusStatus = false;
       }
     }
-
-    strikeBonus(){
-      for(let i = 0; i < this.scoreboard.length; i++) {
-        if(i === (this.scoreboard.length -1) || i === (this.scoreboard.length -2)){
-          return;
-        }
-        if(this.scoreboard[i].knocked === 10){
-          if(this.scoreboard[i].frame !== 10){
-            this.total += (this.scoreboard[i + 2].knocked + this.scoreboard[i + 3].knocked);
-          }else{
-            this.total += (this.scoreboard[i + 2].knocked);
-          }
-        }
-      }
-    }
-
-    reset(){
-      this.total = 0;
-      this.scoreboard = [];
-    }
-
 }

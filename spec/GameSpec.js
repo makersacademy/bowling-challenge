@@ -27,7 +27,8 @@ describe('Game', function () {
         });
         it('strike - so is an extra round', function () {
           for (let i = 0; i < 11; i += 1) {
-            game.play(10)
+            game.play(10);
+            game.play(0);
           };
           expect(game.scorecard.scoreboard[game.scorecard.scoreboard.length - 1].roll).toEqual(3);
         });

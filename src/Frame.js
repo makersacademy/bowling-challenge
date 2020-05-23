@@ -1,9 +1,11 @@
+'use strict';
+
 class Frame {
   constructor() {
     this.firstRoll = null;
     this.secondRoll = null;
     this.thirdRoll = null;
-    this.index = 0;
+    this.index = -1;
   }
   roll(number) {
     if (!this.firstRoll) {
@@ -14,7 +16,17 @@ class Frame {
       this.thirdRoll = number;
     }
   }
+
   calculatePins() {
+    if (this.firstRoll == null) {
+      this.firstRoll = 0;
+    }
+    if (this.secondRoll == null) {
+      this.secondRoll = 0;
+    }
+    if (this.thirdRoll == null) {
+      this.thirdRoll = 0;
+    }
     return this.firstRoll + this.secondRoll + this.thirdRoll;
   }
   hasSpare() {
@@ -27,4 +39,8 @@ class Frame {
       return true;
     }
   }
+  getIndex() {
+    return this.index;
+  }
+
 }

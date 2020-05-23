@@ -2,9 +2,13 @@
 
 describe('Frame', function() {
   var frame;
+  var frame2;
+  var game;
 
   beforeEach(function() {
     frame = new Frame();
+    frame2 = new Frame();
+    game = jasmine.createSpyObj('game', ['getFrame', 'getFrames', 'calculateGameScore']);
   })
 
   it('has first roll', function() {
@@ -34,4 +38,6 @@ describe('Frame', function() {
       expect(frame.hasStrike()).toEqual(true);
     })
   })
+
+
 })

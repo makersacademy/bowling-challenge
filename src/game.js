@@ -34,6 +34,10 @@ class Game {
 
         if (isSpare(frame) && index === array.length - 1){
           total = total
+
+        } else if (isStrike(frame) && index === array.length - 1) {
+          total = total
+
         } else if (isSpare(frame)){
           total += frame[0] + frame[1] + array[index + 1][0]
         } else {

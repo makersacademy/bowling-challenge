@@ -67,17 +67,6 @@ describe('Game', function() {
     expect(game.calculateCurrentScore()).toEqual(150);
   });
 
-
-  it('returns a running total of 60 when rolling 5 frames of 5s', function() {
-    for (let i = 1; i <= 5; i += 1) {
-      game.addFrame([5, 5]);
-    }
-
-    expect(game.calculateCurrentScore()).toEqual(60);
-  });
-
-  // it('returns a final score of x when rolling a 5 frames of strikes',
-
   it('returns a final score of 300 when rolling a perfect game', function() {
     for (let i = 1; i <= 9; i += 1) {
       game.addFrame([10, 0]);
@@ -85,7 +74,33 @@ describe('Game', function() {
     game.addLastFrame([10, 10, 10]);
 
     expect(game.calculateCurrentScore()).toEqual(300);
-
   });
 
+
+  describe('Game has not finished', function(){
+    it('returns a running total of 60 when rolling 5 frames of 5s', function() {
+      for (let i = 1; i <= 5; i += 1) {
+        game.addFrame([5, 5]);
+      }
+
+      expect(game.calculateCurrentScore()).toEqual(60);
+    });
+
+    it('returns a final score of 16 when rolling 4 frames of 2s and then a strike', function() {
+      for (let i = 1; i <= 4; i += 1) {
+        game.addFrame([2, 2]);
+      }
+      game.addFrame([10, 0])
+
+      expect(game.calculateCurrentScore()).toEqual(16);
+    });
+
+    // it('returns a final score of 90 when rolling 5 frames of strikes', function() {
+    //   for (let i = 1; i <= 5; i += 1) {
+    //     game.addFrame([10, 0]);
+    //   }
+    //
+    //   expect(game.calculateCurrentScore()).toEqual(90);
+    // });
+  });
 });

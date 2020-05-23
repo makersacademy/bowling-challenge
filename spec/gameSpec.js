@@ -67,6 +67,13 @@ describe('Game', function() {
     expect(game.calculateCurrentScore()).toEqual(150);
   });
 
+  it('returns a running total of 60 when rolling 5 frames of 5s', function() {
+    for (let i = 1; i <= 5; i += 1) {
+      game.addFrame([5, 5]);
+    }
+
+    expect(game.calculateCurrentScore()).toEqual(60);
+  });
 
 
 

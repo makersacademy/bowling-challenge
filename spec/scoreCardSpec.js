@@ -43,15 +43,6 @@ describe('ScoreCard', () => {
     });
   });
 
-  describe('#getScore', () => {
-    it('returns the scores for each frame', () => {
-      aNormalFrame(frame);
-      addFrameAndSetRollsAndScore(frame);
-
-      expect(scoreCard.getScore()).toContain(8);
-    });
-  });
-
   describe('#updateFrameScore', () => {
     describe('when a spare is followed by another frame', () => {
       it('updates the spare frame score with spare bonus', () => {
@@ -62,7 +53,7 @@ describe('ScoreCard', () => {
 
         scoreCard.updateFrameScore();
 
-        expect(scoreCard.getScore()).toEqual([15, 8]);
+        expect(scoreCard.score).toEqual([15, 8]);
       });
     });
 
@@ -75,7 +66,7 @@ describe('ScoreCard', () => {
 
         scoreCard.updateFrameScore();
 
-        expect(scoreCard.getScore()).toEqual([18, 8]);
+        expect(scoreCard.score).toEqual([18, 8]);
       });
     });
 
@@ -90,7 +81,7 @@ describe('ScoreCard', () => {
 
         scoreCard.updateFrameScore();
 
-        expect(scoreCard.getScore()).toEqual([25, 18, 8]);
+        expect(scoreCard.score).toEqual([25, 18, 8]);
       });
     });
 
@@ -105,7 +96,7 @@ describe('ScoreCard', () => {
 
         scoreCard.updateFrameScore();
 
-        expect(scoreCard.getScore()).toEqual([30, 20, 10]);
+        expect(scoreCard.score).toEqual([30, 20, 10]);
       });
     });
   });

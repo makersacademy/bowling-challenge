@@ -26,10 +26,6 @@ class ScoreCard {
     this.score.push(roll1 + roll2);
   }
 
-  getScore() {
-    return this.score;
-  }
-
   updateFrameScore() {
     let size = this.score.length;
 

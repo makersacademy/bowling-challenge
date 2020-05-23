@@ -67,6 +67,7 @@ describe('Game', function() {
     expect(game.calculateCurrentScore()).toEqual(150);
   });
 
+
   it('returns a running total of 60 when rolling 5 frames of 5s', function() {
     for (let i = 1; i <= 5; i += 1) {
       game.addFrame([5, 5]);
@@ -75,6 +76,16 @@ describe('Game', function() {
     expect(game.calculateCurrentScore()).toEqual(60);
   });
 
+  // it('returns a final score of x when rolling a 5 frames of strikes',
 
+  it('returns a final score of 300 when rolling a perfect game', function() {
+    for (let i = 1; i <= 9; i += 1) {
+      game.addFrame([10, 0]);
+    }
+    game.addLastFrame([10, 10, 10]);
+
+    expect(game.calculateCurrentScore()).toEqual(300);
+
+  });
 
 });

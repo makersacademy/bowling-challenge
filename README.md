@@ -8,10 +8,12 @@
 
 ## Doing
 
-* Add interface to Player class
+* Add interface to Game
 
 ## Done
 
+* Write Tests for Game.new(player) and Game.player
+* Implement Game.new(player) and Game.player
 * Update CRC cards
 * Redo CRC cards as Markdown table
 * Solve ESLint errors - added [eslint-plugin-jasmine](https://www.npmjs.com/package/eslint-plugin-jasmine)
@@ -33,8 +35,9 @@
 | :--                          | :--:                |
 | ```Responsibilities```       | ```Collaborators``` |
 | .new(player) | Player |
-| .score | Frame |
+| .player | Frame |
 | .frames | |
+| .score | |
 
 
 | ```Class```                  | Player              |

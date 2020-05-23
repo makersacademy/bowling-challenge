@@ -111,5 +111,33 @@ describe('Game', function() {
 
       expect(game.calculateCurrentScore()).toEqual(90);
     });
+
+
+
+    it ('gives a total score of 114 when rolling 5s then 4s', function() {
+      for (let i = 1; i <= 5; i ++) {game.addFrame([5, 5])};
+      for (let i = 6; i <= 9; i ++) {game.addFrame([4, 4])};
+      game.addLastFrame([4, 4]);
+
+      expect(game.calculateCurrentScore()).toEqual(114);
+    });
+
+    it ('gives a total score of 159 when rolling 10s then 3s', function() {
+      for (let i = 1; i <= 5; i ++) {game.addFrame([10, 0])};
+      for (let i = 6; i <= 9; i ++) {game.addFrame([3, 3])};
+      game.addLastFrame([3, 3]);
+
+      expect(game.calculateCurrentScore()).toEqual(159);
+    });
+
+
+    it ('gives a total score of 123 when rolling 5s, 10s, then 3s', function() {
+      for (let i = 1; i <= 3; i ++) {game.addFrame([5, 5])};
+      for (let i = 4; i <= 6; i ++) {game.addFrame([10, 0])};
+      for (let i = 7; i <= 9; i ++) {game.addFrame([3, 3])};
+      game.addLastFrame([3, 3]);
+
+      expect(game.calculateCurrentScore()).toEqual(143);
+    });
   });
 });

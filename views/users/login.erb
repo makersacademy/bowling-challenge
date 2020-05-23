@@ -1,0 +1,9 @@
+<h1>Please log-in<h1>
+<form method="post" action="/users/log-in">
+  <input type = "email" name="email" placeholder="email" value="test@example.com">
+  <input type = "password" name="password" placeholder="password" value="12345">
+  <input type = "submit" name="submit" value="Log in">
+  <input type = "submit" name="submit" value="Sign up">
+</form>
+
+<h2><%=session[:notice]%></h2>

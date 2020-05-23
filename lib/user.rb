@@ -1,3 +1,4 @@
+require_relative './database_connection_setup'
 require_relative './database_connection'
 class User 
 
@@ -12,8 +13,8 @@ class User
     User.new(id: result['id'], email: result['email'])
   end
 
-  def find(email:) 
-    result = DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}';").first
+  def self.find(email:) 
+    DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}';").first
   end
 
 

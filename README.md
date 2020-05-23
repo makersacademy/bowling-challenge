@@ -8,10 +8,11 @@
 
 ## Doing
 
-* Redo CRC cards as Markdown table
+* Update CRC cards
 
 ## Done
 
+* Redo CRC cards as Markdown table
 * Solve ESLint errors - added [eslint-plugin-jasmine](https://www.npmjs.com/package/eslint-plugin-jasmine)
 * Refactor Player
 * Implement Player
@@ -27,8 +28,51 @@
 
 ## CRC Cards
 
-![CRC Cards for Bowling Challenge](images/bowling-crc.png)
+| ```Class```                  | Game                |
+| :--                          | :--:                |
+| ```Responsibilities```       | ```Collaborators``` |
+| .new(player) | Player |
+| .score | Frame |
+| .frames | |
 
+
+| ```Class```                  | Player              |
+| :--                          | :--:                |
+| ```Responsibilities```       | ```Collaborators``` |
+| .new(name) | Game |
+
+| ```Class```                  | Frame               |
+| :--                          | :--:                |
+| ```Responsibilities```       | ```Collaborators``` |
+| .new(number) | Lane |
+| .score | Score |
+| .bowl | |
+
+
+| ```Class```                  | Lane                |
+| :--                          | :--:                |
+| ```Responsibilities```       | ```Collaborators``` |
+| .new | Frame |
+| .status | Ball |
+| .reset | Pin |
+| .bowl | |
+
+| ```Class```                  | Ball                |
+| :--                          | :--:                |
+| ```Responsibilities```       | ```Collaborators``` |
+| .new | Lane |
+
+| ```Class```                  | Pin                 |
+| :--                          | :--:                |
+| ```Responsibilities```       | ```Collaborators``` |
+| .new | Lane |
+| .up? | |
+
+| ```Class```                  | Score               |
+| :--                          | :--:                |
+| ```Responsibilities```       | ```Collaborators``` |
+| .new | Frame |
+| .add(number, bonus) | |
 
 ## Notes
 

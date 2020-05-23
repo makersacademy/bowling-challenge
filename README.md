@@ -5,15 +5,18 @@
 ## Todo
 
 * Write/Implement/Refactor remaining classes
+* Add ability to change Player name
 * Add installation details (npm install)
+* Implement feature test in Jasmine?
 
 ## Doing
 
-* Add jQuery support to Karma/Jasmine
+
 * Add interface to Game
 
 ## Done
 
+* Add jQuery support to Karma/Jasmine
 * Write Tests for Game.new(player) and Game.player
 * Implement Game.new(player) and Game.player
 * Update CRC cards

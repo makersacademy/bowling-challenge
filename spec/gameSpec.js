@@ -40,4 +40,23 @@ describe('Game', function() {
     expect(game.calculateCurrentScore()).toEqual(40);
   });
 
+  it('returns a final score of 60 when rolling all 3s', function() {
+    for (let i = 1; i <= 9; i += 1) {
+      game.addFrame([3, 3]);
+    }
+    game.addLastFrame([3, 3]);
+
+    expect(game.calculateCurrentScore()).toEqual(60);
+  });
+
+  it('returns a final score of 80 when rolling all 4s', function() {
+    for (let i = 1; i <= 9; i += 1) {
+      game.addFrame([4, 4]);
+    }
+    game.addLastFrame([4, 4]);
+
+    expect(game.calculateCurrentScore()).toEqual(80);
+  });
+
+
 });

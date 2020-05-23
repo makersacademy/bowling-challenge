@@ -11,11 +11,14 @@
 
 ## Doing
 
-* Test and implement Player.score
-* Add interface to Game
+* Test and implement Frame
 
 ## Done
 
+* Add Player score to interface
+* Add Player name to interface
+* Test and implement Player.score
+* Add interface to Game
 * Add jQuery support to Karma/Jasmine [@metahub/karma-jasmine-jquery - npm](https://www.npmjs.com/package/@metahub/karma-jasmine-jquery)
 * Write Tests for Game.new(player) and Game.player
 * Implement Game.new(player) and Game.player

@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 describe('Game', () => {
   
@@ -35,8 +35,10 @@ describe('Game', () => {
     });
 
     it('Has max pin input of 10', () => {
-      expect(game.roll(11)).toContain("Please choose number between 1 to 10.");
+      expect(game.roll(11)).toContain("Please choose number between 0 to 10.");
     });
+
+
 
     it("Cannot input more than 21 numbers", () => {
       for (var i = 1; i < 22; i++) {

@@ -5,16 +5,17 @@ class Game {
     this.maxPins = 10;
     this.maxLength = 21;
   }
+};
 
-  roll(pins) {
-    if(pins > this.maxPins){
-      return 'Please choose number between 1 to 10.';
-    }
-    else if(this.rolls.length === this.maxLength && !this.rolls.includes(0)){
-      return;
-    }
-    this.rolls[this.currentRoll] = pins
-    this.currentRoll ++
+Game.prototype.roll = function(pins) {
+  if(pins > this.maxPins){
+    return 'Please choose number between 0 to 10.';
   }
-}
-
+  else if(this.rolls.length === this.maxLength && !this.rolls.includes(0)){
+    return;
+  }
+  this.rolls[this.currentRoll] = pins;
+  this.currentRoll ++;
+};
+// if index === strike 
+// if index === spare 

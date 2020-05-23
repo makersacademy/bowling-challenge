@@ -15,4 +15,8 @@ $(document).ready(function() {
     $('#playerScore').text(game.player.score);
   }
 
+  function updatePlayerScore() {
+    $('#playerScore').text(game.player.score);
+  }
+
 });

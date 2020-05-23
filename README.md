@@ -5,11 +5,10 @@
 ## Todo
 
 * Write/Implement/Refactor remaining classes
-* Redo CRC cards as Markdown table?
 
 ## Doing
 
-* Paused
+* Redo CRC cards as Markdown table
 
 ## Done
 

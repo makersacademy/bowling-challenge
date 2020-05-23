@@ -95,6 +95,15 @@ describe('Game', function() {
       expect(game.calculateCurrentScore()).toEqual(16);
     });
 
+    it('returns a final score of 30 when rolling a strike and then 4 frames of 2s', function() {
+      game.addFrame([10, 0])
+      for (let i = 1; i <= 4; i += 1) {
+        game.addFrame([2, 2]);
+      }
+
+      expect(game.calculateCurrentScore()).toEqual(30);
+    });
+
     // it('returns a final score of 90 when rolling 5 frames of strikes', function() {
     //   for (let i = 1; i <= 5; i += 1) {
     //     game.addFrame([10, 0]);

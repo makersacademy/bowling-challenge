@@ -5,9 +5,14 @@ $(document).ready(function() {
   var game = new Game(player);
 
   updatePlayerName();
+  updatePlayerScore();
 
   function updatePlayerName() {
     $('#playerName').text(game.player.name);
+  }
+
+  function updatePlayerScore() {
+    $('#playerScore').text(game.player.score);
   }
 
 });

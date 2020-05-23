@@ -110,12 +110,6 @@ describe('ScoreCard', () => {
     });
   });
 
-  // describe('#totalScore()', () => {
-  //   it('keeps a running total of the game', () => {
-  //
-  //   });
-  // });
-
   function addFrameAndSetRollsAndScore(frame) {
     scoreCard.addToFrames(frame);
     scoreCard.setRolls();

@@ -31,4 +31,13 @@ describe('Game', function() {
     expect(game.calculateCurrentScore()).toEqual(20);
   });
 
+  it('returns a final score of 40 when rolling all 2s', function() {
+    for (let i = 1; i <= 9; i += 1) {
+      game.addFrame([2, 2]);
+    }
+    game.addLastFrame([2, 2]);
+
+    expect(game.calculateCurrentScore()).toEqual(40);
+  });
+
 });

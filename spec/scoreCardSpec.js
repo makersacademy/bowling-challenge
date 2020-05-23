@@ -112,15 +112,40 @@ describe('ScoreCard', () => {
 
   describe('#runningTotal()', () => {
     describe('when a normal frame by another normal frame', () => {
-      it('keeps a running total of the game', () => {
+      it('keeps a corect running total of the game', () => {
         aNormalFrame(frame);
         addFrameAndSetRollsAndScore(frame);
+
+        scoreCard.runningTotal();
+
         aNormalFrame(nextFrame);
         addFrameAndSetRollsAndScore(nextFrame);
 
         scoreCard.runningTotal();
 
         expect(scoreCard.runner).toEqual([8, 16]);
+      });
+    });
+
+    describe('when a normal frame is followed by a strike frame, followed by a normal frame', () => {
+      it('keeps a corect running total of the game', () => {
+        aNormalFrame(frame);
+        addFrameAndSetRollsAndScore(frame);
+
+        scoreCard.runningTotal();
+
+        aStrikeFrame(nextFrame);
+        addFrameAndSetRollsAndScore(nextFrame);
+
+        scoreCard.runningTotal();
+
+        aNormalFrame(nextNextFrame);
+        addFrameAndSetRollsAndScore(nextNextFrame);
+        scoreCard.updateFrameScore();
+
+        scoreCard.runningTotal();
+
+        expect(scoreCard.runner).toEqual([8, 26, 34]);
       });
     });
   });

@@ -13,9 +13,12 @@
     "eslint-plugin-jasmine": "*",
     "jasmine": "*",
     "jasmine-core": "*",
+    "jasmine-jquery": "*",
     "karma": "*",
     "karma-cli": "*",
     "karma-jasmine": "*",
+    "karma-jquery": "*",
+    "@metahub/karma-jasmine-jquery": "*",
     "karma-chrome-launcher": "*"
   },
   "scripts": {

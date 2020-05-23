@@ -5,9 +5,11 @@
 ## Todo
 
 * Write/Implement/Refactor remaining classes
+* Add installation details (npm install)
 
 ## Doing
 
+* Add jQuery support to Karma/Jasmine
 * Add interface to Game
 
 ## Done

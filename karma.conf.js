@@ -4,14 +4,18 @@
 module.exports = function(config) {
   config.set({
 
+    plugins: ['@metahub/karma-jasmine-jquery', 'karma-*'],
+
+
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
-
+    // frameworks: ['jasmine'],
+    // frameworks: ['jasmine-jquery', 'jquery-1.8.3'],
+    frameworks: ['jasmine-jquery'],
 
     // list of files / patterns to load in the browser
     files: [
@@ -31,6 +35,8 @@ module.exports = function(config) {
        // 'spec/*Spec.js': ['webpack'],
        // 'src/*.js': ['webpack']
     },
+
+
 
     // test results reporter to use
     // possible values: 'dots', 'progress'

@@ -32,13 +32,19 @@ class Game {
         // if game hasn't finished yet
       } else {
 
-        if (isSpare(frame) && index === array.length - 1){
+        if (index === array.length - 1 && isSpare(frame)){
           total = total
 
-        } else if (isStrike(frame) && index === array.length - 1) {
+
+        } else if (index === array.length - 1 && isStrike(frame)) {
           total = total
+        } else if (index === array.length - 2 && isStrike(frame) && isStrike(array[index + 1])) {
+          total = total
+        } else if (isStrike(frame) && isStrike(array[index + 1]) && index < 8) {
+          total += frame[0] + array[index + 1][0] + array[index + 2][0]
         } else if (isStrike(frame)) {
           total += frame[0] + array[index + 1][0] + array[index + 1][1]
+
 
         } else if (isSpare(frame)){
           total += frame[0] + frame[1] + array[index + 1][0]

@@ -104,12 +104,12 @@ describe('Game', function() {
       expect(game.calculateCurrentScore()).toEqual(30);
     });
 
-    // it('returns a final score of 90 when rolling 5 frames of strikes', function() {
-    //   for (let i = 1; i <= 5; i += 1) {
-    //     game.addFrame([10, 0]);
-    //   }
-    //
-    //   expect(game.calculateCurrentScore()).toEqual(90);
-    // });
+    it('returns a final score of 90 when rolling 5 frames of strikes', function() {
+      for (let i = 1; i <= 5; i += 1) {
+        game.addFrame([10, 0]);
+      }
+
+      expect(game.calculateCurrentScore()).toEqual(90);
+    });
   });
 });

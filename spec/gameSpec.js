@@ -58,5 +58,16 @@ describe('Game', function() {
     expect(game.calculateCurrentScore()).toEqual(80);
   });
 
+  it('returns a final score of 150 when rolling all 5s', function() {
+    for (let i = 1; i <= 9; i += 1) {
+      game.addFrame([5, 5]);
+    }
+    game.addLastFrame([5, 5, 5]);
+
+    expect(game.calculateCurrentScore()).toEqual(150);
+  });
+
+
+
 
 });

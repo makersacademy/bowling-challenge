@@ -16,17 +16,13 @@ $(document).ready(function(){
     updateScores()
   })
 
-  // function updateScores() {
-
-  // }
-
   function updateScores() {
     arr = scorecard.returnScorecard();
     console.log(arr)
     $('#full_array').text(arr);
 
 
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 35; i++) {
     console.log(arr[i])
     $('#roll-' + i).text(arr[i]);
 

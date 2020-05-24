@@ -118,12 +118,7 @@ describe('ScoreCard', () => {
   describe('#update10thFrame', () => {
     describe('when 10th frame ends with a spare', () => {
       it('keeps the correct score', () => {
-        for (let i = 0; i < 9; i++) {
-          let newFrame = new Frame();
-          newFrame.roll(5);
-          newFrame.roll(3);
-          addFrameAndSetRollsAndScore(newFrame);
-        }
+        nineNormalFrames();
 
         aSpareFrame(nextFrame);
         addFrameAndSetRollsAndScore(nextFrame);
@@ -139,12 +134,7 @@ describe('ScoreCard', () => {
 
     describe('when 10th frame ends with a strike', () => {
       it('keeps the correct score', () => {
-        for (let i = 0; i < 9; i++) {
-          let newFrame = new Frame();
-          newFrame.roll(5);
-          newFrame.roll(3);
-          addFrameAndSetRollsAndScore(newFrame);
-        }
+        nineNormalFrames();
 
         aStrikeFrame(nextFrame);
         addFrameAndSetRollsAndScore(nextFrame);
@@ -157,6 +147,10 @@ describe('ScoreCard', () => {
 
         expect(scoreCard.score).toEqual([8, 8, 8, 8, 8, 8, 8, 8, 8, 18]);
       });
+
+      // describe('when first bonus roll is a strike', () => {
+      //
+      // });
     });
   });
 
@@ -228,5 +222,14 @@ describe('ScoreCard', () => {
     addFrameAndSetRollsAndScore(frame);
     aStrikeFrame(nextFrame);
     addFrameAndSetRollsAndScore(nextFrame);
+  }
+
+  function nineNormalFrames() {
+    for (let i = 0; i < 9; i++) {
+      let newFrame = new Frame();
+      newFrame.roll(5);
+      newFrame.roll(3);
+      addFrameAndSetRollsAndScore(newFrame);
+    }
   }
 });

@@ -12,10 +12,6 @@ class Frame {
     return sum;
   }
 
-  // getRolls() {
-  //   return this.rolls;
-  // }
-
   roll(pins) {
     const numberOfPinsError = 'Total number of pins cannot be more than 10';
     const twoRollsPerFrameError = 'Only two rolls per frame are allowed';

@@ -9,7 +9,7 @@ class ScoreCard {
   }
 
   addToFrames(frame) {
-    this.frames.push(frame);
+    (this.frames.length < 10) && this.frames.push(frame);
   }
 
   setRolls() {

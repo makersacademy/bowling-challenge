@@ -2,7 +2,7 @@ $(document).ready(function () {
   let frame = new Frame();
   let scoreCard = new ScoreCard();
 
-  for (let i = 1; i <= 10;) {
+  for (let i = 1; i < 10;) {
     $('.btn').click(function () {
       let roll = $(this).text();
       console.log('roll: ' + roll);
@@ -39,9 +39,11 @@ $(document).ready(function () {
     scoreCard.addToFrames(frame);
     scoreCard.setRolls();
     scoreCard.setScore();
+    scoreCard.updateFrameScore();
+    scoreCard.runningTotal();
   }
 
   function runningTotal(i) {
-    $('#frame-' + i + '-score').text(scoreCard.score[scoreCard.score.length - 1]);
+    $('#frame-' + i + '-score').text(scoreCard.runner[scoreCard.runner.length - 1]);
   }
 });

@@ -24,6 +24,16 @@ describe('ScoreCard', () => {
 
       expect(scoreCard.frames).toContain(frame);
     });
+
+    it('can only store 10 frames', () => {
+      for (let i = 0; i < 10; i++) {
+        addFrameAndSetRollsAndScore(frame);
+      }
+
+      scoreCard.addToFrames(nextFrame);
+
+      expect(scoreCard.frames.length).toEqual(10);
+    });
   });
 
   describe('#setRolls', () => {

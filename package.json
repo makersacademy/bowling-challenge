@@ -10,16 +10,17 @@
     "eslint": "^7.0.0"
   },
   "devDependencies": {
+    "@metahub/karma-jasmine-jquery": "*",
+    "babel-eslint": "^10.1.0",
     "eslint-plugin-jasmine": "*",
     "jasmine": "*",
     "jasmine-core": "*",
     "jasmine-jquery": "*",
     "karma": "*",
+    "karma-chrome-launcher": "*",
     "karma-cli": "*",
     "karma-jasmine": "*",
-    "karma-jquery": "*",
-    "@metahub/karma-jasmine-jquery": "*",
-    "karma-chrome-launcher": "*"
+    "karma-jquery": "*"
   },
   "scripts": {
     "test": "karma start karma.conf.js --single-run"

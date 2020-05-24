@@ -14,9 +14,9 @@ module.exports = {
     'Atomics': 'readonly',
     'SharedArrayBuffer': 'readonly'
   },
+  'parser': 'babel-eslint',
   'parserOptions': {
-    'parser': 'babel-eslint',
-    'ecmaVersion': 2018,
+    'ecmaVersion': 11,
     'sourceType': 'module'
   },
   'rules': {

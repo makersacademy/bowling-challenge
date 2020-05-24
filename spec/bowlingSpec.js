@@ -49,4 +49,11 @@ describe('Bowling', function() {
     }
     expect(bowl.frame5()).toEqual(8);
   });
+
+  it('gives the score for frame 6', function() {
+    for (let i = 0; i < 12; i++) {
+      bowl.scoring(4);
+    }
+    expect(bowl.frame6()).toEqual(8);
+  });
 });

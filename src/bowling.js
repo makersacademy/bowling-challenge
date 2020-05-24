@@ -28,4 +28,8 @@ class Bowling{
   frame5() {
     return this.score[8] + this.score[9];
   };
+
+  frame6() {
+    return this.score[10] + this.score[11];
+  };
 };

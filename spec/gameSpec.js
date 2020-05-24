@@ -18,7 +18,7 @@ describe('Game', function() {
     }
     game.addFrame([4, 5])
 
-    expect(game.frames[game.frames.length - 1]).toEqual([0, 0]);
+    expect(game.frames.length).toEqual(10);
   });
 
   describe('Game has finished', function(){

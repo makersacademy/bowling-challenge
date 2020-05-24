@@ -1,7 +1,6 @@
 'use strict';
 
 class Frame {
-
   constructor(rolls){
     this.rolls = rolls
   }
@@ -13,5 +12,4 @@ class Frame {
   isStrike(){
     return this.rolls[0] === 10
   }
-
 }

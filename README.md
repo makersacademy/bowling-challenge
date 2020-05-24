@@ -1,9 +1,11 @@
 
+![Screenshot](images/screenshot.png)
+
 Personal note:
 
-This week's challenge was definitely challenging but i'm happy with how it went. I started by breaking the requirements into user stories, as demonstrated below. I'm happy with the Javascript logic for the game and I stuck to SRP. A user can input two numbers and the score for that frame is calculated whether it's a regular score, spare or strike. The difficulty was working out how to add the next bowl to the score, if the next bowl hasn't been played yet. For this, I introduced a 'switch spare/strike/ bonus on' function with conditions if the user had bowled two bowls resulting in 10(spare) or one bowl is 10 (strike). 
+The first weekend was definitely challenging, but I've got the app to a place i'm happy with it. I started by breaking the requirements into user stories, as demonstrated below. I'm happy with the Javascript logic for the game and I stuck to SRP. A user can input two numbers and the score for that frame is calculated whether it's a regular score, spare or strike. The difficulty was working out how to add the next bowl to the score, if the next bowl hasn't been played yet. For this, I introduced a 'switch spare/strike/ bonus on' function with conditions if the user had bowled two bowls resulting in 10(spare) or one bowl is 10 (strike). 
 
-The Sinatra app is set up to remember the params passed into the form, and back end integration has started. The Jquery part is not fully functioning but this can be focussed on at a later date. For now the functionality is there, the interface will be the part I would like to focus on after this weekend.
+For second weekend, I solely focussed on the front end - taking the input from the text input, executing the logic and iterating over the scorecard array so each result would display on the page, in the right table cell. Ensuring the table updates on each submit was the difficult part here as the spares and strikes needed to update as well as the current frame. Once that was achieved, I introduced bootstrap for styling and layout. 
 
 Thanks,
 Jo

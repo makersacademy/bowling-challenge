@@ -10,10 +10,14 @@ class Bowling{
   };
 
   frame1() {
-    return this.score[0] + this.score[1]
-  }
+    return this.score[0] + this.score[1];
+  };
 
   frame2() {
-    return this.score[2] + this.score[3]
-  }
+    return this.score[2] + this.score[3];
+  };
+
+  frame3() {
+    return this.score[4] + this.score[5];
+  };
 };

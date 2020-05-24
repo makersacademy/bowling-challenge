@@ -28,4 +28,11 @@ describe('Bowling', function() {
     }
     expect(bowl.frame2()).toEqual(8);
   });
+
+  it('gives the score for frame 3', function() {
+    for (let i = 0; i < 6; i++) {
+      bowl.scoring(4);
+    }
+    expect(bowl.frame3()).toEqual(8);
+  });
 });

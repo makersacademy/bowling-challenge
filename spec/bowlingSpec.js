@@ -63,4 +63,11 @@ describe('Bowling', function() {
     }
     expect(bowl.frame7()).toEqual(8);
   });
+
+  it('gives the score for frame 8', function() {
+    for (let i = 0; i < 16; i++) {
+      bowl.scoring(4);
+    }
+    expect(bowl.frame8()).toEqual(8);
+  });
 });

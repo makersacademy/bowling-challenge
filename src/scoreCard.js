@@ -44,7 +44,15 @@ class ScoreCard {
 
   update10thFrame() {
     let size = this.score.length;
-    this.score[size - 1] += this.gameRolls[this.gameRolls.length - 1][0];
+    let gameRollsSize = this.gameRolls.length;
+
+    if (this.gameRolls[gameRollsSize - 2].length === 1) {
+      this.score[size - 1] += this.gameRolls[gameRollsSize - 1][0] + this.gameRolls[gameRollsSize - 1][1];
+    }
+
+    if (this.gameRolls[gameRollsSize - 2].length !== 1) {
+      this.score[size - 1] += this.gameRolls[gameRollsSize - 1][0];
+    }
   }
 
   runningTotal() {

@@ -136,6 +136,28 @@ describe('ScoreCard', () => {
         expect(scoreCard.score).toEqual([8, 8, 8, 8, 8, 8, 8, 8, 8, 15]);
       });
     });
+
+    describe('when 10th frame ends with a strike', () => {
+      it('keeps the correct score', () => {
+        for (let i = 0; i < 9; i++) {
+          let newFrame = new Frame();
+          newFrame.roll(5);
+          newFrame.roll(3);
+          addFrameAndSetRollsAndScore(newFrame);
+        }
+
+        aStrikeFrame(nextFrame);
+        addFrameAndSetRollsAndScore(nextFrame);
+
+        frame.roll(5);
+        frame.roll(3);
+        addFrameAndSetRollsAndScore(frame);
+
+        scoreCard.update10thFrame();
+
+        expect(scoreCard.score).toEqual([8, 8, 8, 8, 8, 8, 8, 8, 8, 18]);
+      });
+    });
   });
 
   describe('#runningTotal', () => {

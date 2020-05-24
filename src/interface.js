@@ -2,10 +2,9 @@ $(document).ready(function () {
   let frame = new Frame();
   let scoreCard = new ScoreCard();
 
-  for (let i = 1; i < 10;) {
+  for (let i = 1; i <= 10;) {
     $('.btn').click(function () {
       let roll = $(this).text();
-      console.log('roll: ' + roll);
       frame.roll(parseInt(roll));
       $('#frame-' + i + '-roll-1').text(frame.rolls[0]);
 
@@ -15,9 +14,6 @@ $(document).ready(function () {
         runningTotal(i);
         frame = new Frame();
         i++;
-
-        console.log('scoreCard.gameRolls: ' + scoreCard.gameRolls);
-        console.log('scoreCard.score: ' + scoreCard.score);
       }
 
       if (frame.rolls.length === 2) {
@@ -26,9 +22,19 @@ $(document).ready(function () {
         runningTotal(i);
         frame = new Frame();
         i++;
+      }
 
-        console.log('scoreCard.gameRolls: ' + scoreCard.gameRolls);
-        console.log('scoreCard.score: ' + scoreCard.score);
+      if (scoreCard.frames.length >= 10) {
+        $('#bonus-' + (i - 11) + '-roll').text(scoreCard.gameRolls.slice(-1)[0][0]);
+        scoreCard.addToFrames(frame);
+        scoreCard.setRolls();
+
+        // scoreCard.update10thFrame();
+        // scoreCard.runningTotal();
+
+        $('#bonus-' + (i - 11) + '-score').text(scoreCard.runner[scoreCard.runner.length - 1]);
+        frame = new Frame();
+        i++;
       }
     });
 

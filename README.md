@@ -1,3 +1,14 @@
+## To do:
+
+* implement the bonus rolls in the interface
+* either disable buttons or hide them if the remaining pins are less then the buttons value
+* implement a reset button
+* implement register user, log in, log out
+* database setup with users and scorecards tables
+
+## Lessons learned
+
+Plan, plan, plan and plan again.
 
 Bowling Challenge
 =================

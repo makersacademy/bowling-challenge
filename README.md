@@ -66,7 +66,7 @@
 | ```Class```                  | Roll                |
 | :--                          | :--:                |
 | ```Responsibilities```       | ```Collaborators``` |
-| .new | Game |
+| .new(pinsDown) | Game |
 | pinsDown | Frame |
 
 

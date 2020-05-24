@@ -15,7 +15,9 @@ module.exports = {
     'SharedArrayBuffer': 'readonly'
   },
   'parserOptions': {
-    'ecmaVersion': 11
+    'parser': 'babel-eslint',
+    'ecmaVersion': 2018,
+    'sourceType': 'module'
   },
   'rules': {
     'indent': [

@@ -24,16 +24,6 @@ describe('ScoreCard', () => {
 
       expect(scoreCard.frames).toContain(frame);
     });
-
-    it('can only store 10 frames', () => {
-      for (let i = 0; i < 10; i++) {
-        addFrameAndSetRollsAndScore(frame);
-      }
-
-      scoreCard.addToFrames(nextFrame);
-
-      expect(scoreCard.frames.length).toEqual(10);
-    });
   });
 
   describe('#setRolls', () => {
@@ -50,6 +40,20 @@ describe('ScoreCard', () => {
       addFrameAndSetRollsAndScore(frame);
 
       expect(scoreCard.score).toContain(8);
+    });
+
+    it('can only track of 10 frames score', () => {
+      for (let i = 0; i < 10; i++) {
+        let newFrame = new Frame();
+        newFrame.roll(5);
+        newFrame.roll(3);
+        addFrameAndSetRollsAndScore(newFrame);
+      }
+
+      aSpareFrame(nextFrame);
+      addFrameAndSetRollsAndScore(nextFrame);
+
+      expect(scoreCard.score.length).toEqual(10);
     });
   });
 
@@ -111,7 +115,30 @@ describe('ScoreCard', () => {
     });
   });
 
-  describe('#runningTotal()', () => {
+  describe('#update10thFrame', () => {
+    describe('when 10th frame ends with a spare', () => {
+      it('keeps the correct score', () => {
+        for (let i = 0; i < 9; i++) {
+          let newFrame = new Frame();
+          newFrame.roll(5);
+          newFrame.roll(3);
+          addFrameAndSetRollsAndScore(newFrame);
+        }
+
+        aSpareFrame(nextFrame);
+        addFrameAndSetRollsAndScore(nextFrame);
+
+        nextNextFrame.roll(5);
+        addFrameAndSetRollsAndScore(nextNextFrame);
+
+        scoreCard.update10thFrame();
+
+        expect(scoreCard.score).toEqual([8, 8, 8, 8, 8, 8, 8, 8, 8, 15]);
+      });
+    });
+  });
+
+  describe('#runningTotal', () => {
     describe('when a normal frame by another normal frame', () => {
       it('keeps a corect running total of the game', () => {
         aNormalFrame(frame);

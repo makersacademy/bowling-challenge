@@ -9,7 +9,7 @@ class ScoreCard {
   }
 
   addToFrames(frame) {
-    (this.frames.length < 10) && this.frames.push(frame);
+    this.frames.push(frame);
   }
 
   setRolls() {
@@ -23,7 +23,7 @@ class ScoreCard {
     let roll1 = this.gameRolls[size - 1][0];
     let roll2 = this.gameRolls[size - 1].length === 2 ? this.gameRolls[size - 1][1] : 0;
 
-    this.score.push(roll1 + roll2);
+    (this.frames.length <= 10) && this.score.push(roll1 + roll2);
   }
 
   updateFrameScore() {
@@ -40,6 +40,11 @@ class ScoreCard {
     if (this.score[size - 2] === 10) {
       this.score[size - 2] += this.gameRolls[size - 1][0];
     }
+  }
+
+  update10thFrame() {
+    let size = this.score.length;
+    this.score[size - 1] += this.gameRolls[this.gameRolls.length - 1][0];
   }
 
   runningTotal() {

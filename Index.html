@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <div id="main">
+    <head>
+      <script src="js/jquery-2.1.4.min.js"></script>
+      <script type="text/javascript" src="interface.js"></script>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+      <script src="src/Game.js"></script>
+      <script src="src/Score.js"></script>
+      <title>Bowling Score Card</title>
+    
+    </head>
+    
+    <body>
+      <h1 id="BowlingScoreCard">Bowling Score Card</h1>
+      
+      <section id="buttons">
+        <p>
+          <div class="pin_buttons" id="pin_buttons">
+            <button id="1">1</button>
+            <button id="2">2</button>
+            <button id="3">3</button>
+            <button id="4">4</button>
+            <button id="5">5</button>
+            <button id="6">6</button>
+            <button id="7">7</button>
+            <button id="8">8</button>
+            <button id="9">9</button>
+            <button id="10">10</button>
+          </div>
+          <div class="new_game" id="new_game">
+            <form id="players">
+              <label for="add_player"> Add game for: 
+                <input id="add_player" type="text" placeholder="Enter player name"></input>
+              </label>
+              <input type="submit" value="Add"></input>
+            </form>
+          </div>
+          <div class="reset" id="reset">
+            <button id="reset"> Reset</button>
+          </div>
+        </p>
+      </section>
+    </body>
+  </div>
+</html>

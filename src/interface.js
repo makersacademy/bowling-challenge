@@ -12,15 +12,7 @@ $(document).ready(function() {
   }
 
   function updatePlayerScore() {
-    $('#playerScore').text(game.player.score);
-  }
-
-  function updatePlayerScore() {
-    $('#playerScore').text(game.player.score);
-  }
-
-  function updatePlayerScore() {
-    $('#playerScore').text(game.player.score);
+    $(`#playerScore`).text(game.player.score);
   }
 
 });

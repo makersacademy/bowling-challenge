@@ -4,12 +4,14 @@ Bowling Challenge
 
 ## Features:
 
-- Gutter game - jQuery alert
+- Gutter game (Edge case)
 - One frame
 - Multiple frames
 - Spares
 - Strikes
-- Final Frame
+- Final Frame (Edge case)
+- Strike bonus (Edge Case)
+- Spare bonus (Edge Case)
 
 Domain Model:
 -----

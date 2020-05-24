@@ -1,11 +1,13 @@
 
 ![Screenshot](images/screenshot.png)
 
-Personal note:
+Personal notes:
 
-The first weekend was definitely challenging, but I've got the app to a place i'm happy with it. I started by breaking the requirements into user stories, as demonstrated below. I'm happy with the Javascript logic for the game and I stuck to SRP. A user can input two numbers and the score for that frame is calculated whether it's a regular score, spare or strike. The difficulty was working out how to add the next bowl to the score, if the next bowl hasn't been played yet. For this, I introduced a 'switch spare/strike/ bonus on' function with conditions if the user had bowled two bowls resulting in 10(spare) or one bowl is 10 (strike). 
+For the bowling challenge i'm generally happy with how it went, although at times (very) challenging, i'm happy with the progress as a few weeks ago I wouldn't have been able to start a project like this. I started by breaking the requirements into user stories (user stories can be found below) then focussed on the logic. The Javascript logic for the game was fiddly but it achieves the brief and after various round of refactoring - I stuck as closely as possible to SRP. 
 
-For second weekend, I solely focussed on the front end - taking the input from the text input, executing the logic and iterating over the scorecard array so each result would display on the page, in the right table cell. Ensuring the table updates on each submit was the difficult part here as the spares and strikes needed to update as well as the current frame. Once that was achieved, I introduced bootstrap for styling and layout. 
+Logic: A user can input two numbers and the score for that frame is calculated whether it's a regular score, spare or strike. The difficulty was working out how to add the next bowl to the score, if the next bowl hasn't been played yet. For this, I introduced a 'switch spare/strike/ bonus on' function with conditions if the user had bowled two bowls resulting in 10(spare) or one bowl is 10 (strike). 
+
+Front end: For the second weekend I focussed on taking the input from the text box, executing the logic and iterating over the scorecard array so each result would display on the page, in the correct table cell. Ensuring the table updates on each submit was the difficult part as the spares and strikes needed to update as well as the current frame. Once that was achieved, I introduced bootstrap for styling and layout. 
 
 Thanks,
 Jo
@@ -13,27 +15,27 @@ Jo
 
 User stories: 
 
-As a player
+- As a player
 So that I can keep scores
 I want the scorecard to be blank 
 Done
 
-As a player
+- As a player
 So that I can record the scores
 I want to input my rolls for each round
 Done
 
-As a player
+- As a player
 So that I can see my score for that round
 I want the knocked down pins to total score
 Done
 
-As a player
+- As a player
 So that I can see my score when i get a spare
 I would like my frame score to add my score + next bowl
 Done
 
-As a player
+- As a player
 So that I can see my score when i get a strike
 I want to my frame score to add my score + the next two bowls
 Done

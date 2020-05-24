@@ -20,4 +20,15 @@ button {
 
 table {
   border-bottom: 1px solid #ddd;
+  border: thick solid;
 }
+
+/* .table table-bordered table-dark {
+  border-bottom: 1px solid #ddd;
+  color: white;
+} */
+
+/* th, td {
+  border-bottom: 1px solid #ddd;
+  color: white;
+} */

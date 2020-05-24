@@ -44,8 +44,9 @@
 | ```Responsibilities```       | ```Collaborators``` |
 | .new(player) | Player |
 | .player | Frame |
-| .frames ||
-| .score ||
+| .currentRoll | Roll |
+| @frames |
+| .addRolltoFrame(frame, roll)
 
 
 | ```Class```                  | Player              |
@@ -58,35 +59,17 @@
 | ```Class```                  | Frame               |
 | :--                          | :--:                |
 | ```Responsibilities```       | ```Collaborators``` |
-| .new(number) | Lane |
-| .score | Score |
-| .bowl ||
+| .new(number) | Game |
+| .add(roll) | Roll |
 
 
-| ```Class```                  | Lane                |
+| ```Class```                  | Roll                |
 | :--                          | :--:                |
 | ```Responsibilities```       | ```Collaborators``` |
-| .new | Frame |
-| .status | Ball |
-| .reset | Pin |
-| .bowl ||
+| .new | Game |
+| pinsDown | Frame |
 
-| ```Class```                  | Ball                |
-| :--                          | :--:                |
-| ```Responsibilities```       | ```Collaborators``` |
-| .new | Lane |
 
-| ```Class```                  | Pin                 |
-| :--                          | :--:                |
-| ```Responsibilities```       | ```Collaborators``` |
-| .new | Lane |
-| .up? ||
-
-| ```Class```                  | Score               |
-| :--                          | :--:                |
-| ```Responsibilities```       | ```Collaborators``` |
-| .new | Frame |
-| .add(number, bonus) ||
 
 ## Notes
 

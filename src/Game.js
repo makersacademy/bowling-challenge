@@ -11,7 +11,7 @@ Game.prototype.roll = function(pins) {
   if(pins > this.maxPins){
     return 'Please choose number between 0 to 10.';
   }
-  else if(this.rolls.length === this.maxLength && !this.rolls.includes(0)){
+  else if(this.currentRoll >= this.maxLength){
     return;
   }
   this.rolls[this.currentRoll] = pins;
@@ -19,3 +19,4 @@ Game.prototype.roll = function(pins) {
 };
 // if index === strike 
 // if index === spare 
+

@@ -38,8 +38,6 @@ describe('Game', () => {
       expect(game.roll(11)).toContain("Please choose number between 0 to 10.");
     });
 
-
-
     it("Cannot input more than 21 numbers", () => {
       for (var i = 1; i < 22; i++) {
         game.roll(1);
@@ -52,7 +50,6 @@ describe('Game', () => {
       for (var i = 1; i < 22; i++) {
         game.roll(9);
       }
-      console.log(game.rolls);
       expect(game.rolls).toEqual([9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9])
       expect(game.rolls).not.toContain(0)
     })

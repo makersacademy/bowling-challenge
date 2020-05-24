@@ -44,4 +44,8 @@ class Bowling{
   frame9() {
     return this.score[16] + this.score[17];
   };
+
+  frame10() {
+    return this.score[18] + this.score[19];
+  };
 };

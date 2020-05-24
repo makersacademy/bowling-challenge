@@ -3,3 +3,11 @@ td {
   vertical-align: middle;
   width: 20px;
 }
+
+body {
+  background-color: #929a9c;
+}
+
+button {
+  color: grey;
+}

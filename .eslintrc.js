@@ -30,7 +30,7 @@ module.exports = {
     ],
     'quotes': [
       'error',
-      'single'
+      'backtick'
     ],
     'semi': [
       'error',

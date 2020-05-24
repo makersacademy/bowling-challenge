@@ -1,13 +1,23 @@
 td {
   text-align: center;
   vertical-align: middle;
-  width: 20px;
+  width: 50px;
+}
+
+th {
+  text-align: center;
+  vertical-align: middle;
 }
 
 body {
-  background-color: #929a9c;
+  background-color: #adadad
 }
 
 button {
-  color: grey;
+  color: black;
+
+}
+
+table {
+  border-bottom: 1px solid #ddd;
 }

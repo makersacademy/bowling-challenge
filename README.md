@@ -15,7 +15,7 @@
 
 ## Done
 
-* Fixing ESLint errors
+* Fix ESLint errors
 * Add Player score to interface
 * Add Player name to interface
 * Test and implement Player.score

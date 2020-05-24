@@ -7,7 +7,7 @@ class Game {
   }
 
   addFrame(frame){
-    this.frames.push(frame)
+    if (this.frames.length <= 9) { this.frames.push(frame) }
   }
 
   calculateCurrentScore(){

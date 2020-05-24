@@ -12,6 +12,15 @@ describe('Game', function() {
     expect(game.calculateCurrentScore()).toEqual(0);
   });
 
+  it('does not allow more than 10 frames', function () {
+    for (let i = 1; i <= 10; i += 1) {
+      game.addFrame([0, 0]);
+    }
+    game.addFrame([4, 5])
+
+    expect(game.frames[game.frames.length - 1]).toEqual([0, 0]);
+  });
+
   describe('Game has finished', function(){
     it('returns a final score of 0 when rolling a gutter game', function() {
       for (let i = 1; i <= 10; i += 1) {

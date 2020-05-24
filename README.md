@@ -11,10 +11,11 @@
 
 ## Doing
 
-* Test and implement Roll
+* TBC
 
 ## Done
 
+* Fixing ESLint errors
 * Add Player score to interface
 * Add Player name to interface
 * Test and implement Player.score

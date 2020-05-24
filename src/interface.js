@@ -8,6 +8,10 @@ $(document).ready(function() {
   var frametenstrike = false;
   var firstroll;
 
+  function updateScore() {
+    $('#currenttotal').text(game.calculateCurrentScore());
+  };
+
   $('#zeropins').on('click', function(){
     currentframe = game.frames.length + 1
 
@@ -38,7 +42,7 @@ $(document).ready(function() {
       game.addFrame([firstroll, 0])
     }
 
-    $('#currenttotal').text(game.calculateCurrentScore());
+    updateScore();
   });
 
   $('#onepin').on('click', function(){
@@ -71,7 +75,7 @@ $(document).ready(function() {
       game.addFrame([firstroll, 1])
     }
 
-    $('#currenttotal').text(game.calculateCurrentScore());
+    updateScore();
   });
 
   $('#twopins').on('click', function(){
@@ -104,7 +108,7 @@ $(document).ready(function() {
       game.addFrame([firstroll, 2])
     }
 
-    $('#currenttotal').text(game.calculateCurrentScore());
+    updateScore();
   });
 
 
@@ -138,7 +142,7 @@ $(document).ready(function() {
       game.addFrame([firstroll, 3])
     }
 
-    $('#currenttotal').text(game.calculateCurrentScore());
+    updateScore();
   });
 
   $('#fourpins').on('click', function(){
@@ -171,7 +175,7 @@ $(document).ready(function() {
       game.addFrame([firstroll, 4])
     }
 
-    $('#currenttotal').text(game.calculateCurrentScore());
+    updateScore();
   });
 
 
@@ -195,7 +199,7 @@ $(document).ready(function() {
       game.addFrame([firstroll, 5])
     }
 
-    $('#currenttotal').text(game.calculateCurrentScore());
+    updateScore();
   });
 
 
@@ -236,7 +240,7 @@ $(document).ready(function() {
       game.addFrame([firstroll, 6])
     }
 
-    $('#currenttotal').text(game.calculateCurrentScore());
+    updateScore();
   });
 
 
@@ -271,7 +275,7 @@ $(document).ready(function() {
       game.addFrame([firstroll, 7])
     }
 
-    $('#currenttotal').text(game.calculateCurrentScore());
+    updateScore();
   });
 
 
@@ -305,7 +309,7 @@ $(document).ready(function() {
       game.addFrame([firstroll, 8])
     }
 
-    $('#currenttotal').text(game.calculateCurrentScore());
+    updateScore();
   });
 
 
@@ -339,7 +343,7 @@ $(document).ready(function() {
       game.addFrame([firstroll, 9])
     }
 
-    $('#currenttotal').text(game.calculateCurrentScore());
+    updateScore();
   });
 
 
@@ -378,7 +382,7 @@ $(document).ready(function() {
       secondroll = 10
     }
 
-    $('#currenttotal').text(game.calculateCurrentScore());
+    updateScore();
   });
 
 })

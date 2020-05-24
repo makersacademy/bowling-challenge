@@ -1,5 +1,6 @@
 
 $(document).ready(function(){
+  var roll = new BowlingCalculator;
 var roll_1 = new BowlingCalculator;
 var roll_2 = new BowlingCalculator;
 var roll_3 = new BowlingCalculator;
@@ -21,96 +22,109 @@ var roll_18 = new BowlingCalculator;
 var roll_19 = new BowlingCalculator;
 var roll_20 = new BowlingCalculator;
 
-
+$('.operators').show();
 $('#strike').hide();
 $('#spare').hide();
-$('#reset').click(function(){
-  $(".number").text(roll_1.DEFAULT_PINS);
-  $(".total").text((roll_1.DEFAULT_PINS));
-});
+$(".number").text(roll.DEFAULT_PINS);
+// $(".total").text(page_reset());
 
+//
+// $('#reset').click(function(){
+//   page_reset();
+// });
+//
+// function page_reset(){
+//   $('.operators').show();
+//   $('#strike').hide();
+//   $('#spare').hide();
+//   $(".number").text(0);
+//   $(".total").text((0));
+// };
 //STRIKE
 
 $('#plus_1').click(function() {
-roll_1.up();
-$('#1').text(roll_1.pins);
-$('.total').text(total());
-  if(roll_1.pins === roll_1.strike){
-  strike();
+   roll_1.up();
+  $('#1').text(roll_1.pins);
+  strikeCalculator();
+  if(game.roll_1 === roll.strike){
+  $('#plus_2').fadeOut(2000);
+  $('#minus_2').fadeOut(2000);
   $('#2').text(":)");
-  }
+}
 });
 
 //Minus
 
-$('#minus_1').click(function() {
-  roll_1.down();
- $('#1').text(roll_1.pins);
- $('.total').text(total());
-});
+  $('#minus_1').click(function() {
+    roll.down();
+   $('#1').text(roll.pins);
+   strikeCalculator();
+  });
 
   //SPARE
 
-$('#plus_2').click(function(){
-  let limit = 10 - roll_1.pins;
-  if (roll_2.pins < limit) {
-  roll_2.up()
-  $('#2').text(roll_2.pins);
-}
-  $('.total').text(total());
-  if(roll_1.pins + roll_2.pins == roll_1.strike) {
-  spare();
+  $('#plus_2').click(function(){
+    let limit =(10 - roll_1.pins);
+    if (roll_2.pins < limit) {
+    roll_2.up();
+    $('#2').text(roll_2.pins);
+    strikeCalculator();
   }
+   if(roll_1.pins + roll_2.pins == roll.strike) {
+   spareEffect();
+   }
 });
 
 //minus
 
-$('#minus_2').click(function() {
-  roll_2.down();
- $('#2').text(roll_2.getCurrentPins());
- $('.total').text(total());
-});
+  $('#minus_2').click(function() {
+   roll_2.down();
+   $('#2').text(roll_2.pins);
+   total();
+  });
 
 //STRIKE
 
 $('#plus_3').click(function() {
   roll_3.up();
   $('#3').text(roll_3.pins);
-  $('.total').text(total());
-  if(roll_3.pins === roll_3.strike){
-   strike();
-   $('#4').text(":)");
+  strikeCalculator();
+  if (roll_3.pins === roll.strike){
+    $('#plus_4').fadeOut(2000);
+    $('#minus_4').fadeOut(2000);
+    $('#4').text(":)");
+  } else {
   }
 });
+
 
 //minus
 
 $('#minus_3').click(function() {
   roll_3.down();
  $('#3').text(roll_3.getCurrentPins());
- $('.total').text(total());
+ strikeCalculator();
 });
 
 //SPARE
 
 $('#plus_4').click(function() {
-  let limit = 10 - roll_3.getCurrentPins();
-  if (roll_4.pins < limit) {
+  let limit = 10 - roll_3.pins;
   roll_4.up();
+  if (roll_4.pins <= limit) {
+    $('#4').text(roll_4.pins);
+    strikeCalculator();
   }
-  $('#4').text(roll_4.pins);
-  if(roll_3.pins + roll_4.pins == roll_1.strike) {
-  spare();
+  if(roll_3.pins + roll_4.pins == roll.strike) {
+  spareEffect();
   }
-  $('.total').text(total());
 });
-
 //minus
 
 $('#minus_4').click(function() {
   roll_4.down();
  $('#4').text(roll_4.getCurrentPins());
- $('.total').text(total());
+ total();
 });
 
 //STRIKE
@@ -118,36 +132,49 @@ $('#minus_4').click(function() {
 $('#plus_5').click(function() {
   roll_5.up();
   $('#5').text(roll_5.pins);
-  $('.total').text(total());
+  strikeCalculator();
   if(roll_5.pins === roll_5.strike){
-    strike();
+    $('#plus_6').fadeOut(2000);
+    $('#minus_6').fadeOut(2000);
     $('#6').text(":)");
   }
-});
+  });
 
+
+  $('#plus_3').click(function() {
+    roll_3.up();
+    $('#3').text(roll_3.pins);
+    strikeCalculator();
+    if (roll_3.pins === roll.strike){
+      $('#plus_4').fadeOut(2000);
+      $('#minus_4').fadeOut(2000);
+      $('#4').text(":)");
+    }
+  });
 //minus
 
 $('#minus_5').click(function() {
   roll_5.down();
- $('#5').text(roll_5.getCurrentPins());
- $('.total').text(total());
+ $('#5').text(roll_5.pins);
+ strikeTotal();
+ gameTotal();
 });
 
 //SPARE
 
 $('#plus_6').click(function() {
-  let limit = 10 - roll_5.getCurrentPins();
+  let limit = 10 - roll_5.pins;
   if (roll_6.getCurrentPins() < limit) {
   roll_6.up();
+  strikeCalculator();
+  $('#6').text(roll_6.pins);
+  $('.total').strikeTotal();
 }
-  $('#6').text(roll_6.getCurrentPins());
-  $('.total').text(total());
-  if(roll_5.pins + roll_6.pins == roll_1.strike) {
-  spare();
+  if(roll_5.pins + roll_6.pins == roll.strike) {
+  spareEffect();
   }
 });
 
-//minus
 
 $('#minus_6').click(function() {
   roll_6.down();
@@ -159,13 +186,16 @@ $('#minus_6').click(function() {
 
 $('#plus_7').click(function() {
   roll_7.up();
-  $('#7').text(roll_7.getCurrentPins());
-$('.total').text(total());
-  if(roll_7.pins === roll_7.strike){
-    strike();
+  strikeCalculator();
+  $('#7').text(roll_7.pins);
+  $('.total').text(total());
+  if (roll_7.pins === roll.strike){
+    $('#plus_8').fadeOut(2000);
+    $('#minus_8').fadeOut(2000);
     $('#8').text(":)");
   }
 });
+
 
 //minus
 
@@ -202,10 +232,11 @@ $('#plus_9').click(function() {
   roll_9.up();
   $('#9').text(roll_9.getCurrentPins());
   $('.total').text(total());
-  if(roll_9.pins === roll_9.strike){
-    strike();
+  if (roll_9.pins === roll.strike){
+    $('#plus_10').fadeOut(2000);
+    $('#minus_10').fadeOut(2000);
     $('#10').text(":)");
-}
+  }
 });
 
 //minus
@@ -229,7 +260,6 @@ $('#plus_10').click(function() {
   }
   $('#10').text(roll_10.pins);
   $('.total').text(total());
-
 });
 
 //minus
@@ -247,9 +277,10 @@ $('#plus_11').click(function() {
   $('#11').text(roll_11.getCurrentPins());
   $('.total').text(total());
   if(roll_11.pins === roll_11.strike){
-    strike();
-    $('#12').text(":)");
-}
+      $('#plus_12').fadeOut(2000);
+      $('#minus_12').fadeOut(2000);
+      $('#12').text(":)");
+    }
 });
 
 //minus
@@ -289,9 +320,10 @@ $('#plus_13').click(function() {
   $('#13').text(roll_13.getCurrentPins());
   $('.total').text(total());
   if(roll_13.pins === roll_13.strike){
-    strike();
-    $('#14').text(":)");
-  }
+      $('#plus_14').fadeOut(2000);
+      $('#minus_14').fadeOut(2000);
+      $('#14').text(":)");
+    }
 });
 
 //minus
@@ -331,9 +363,10 @@ $('#plus_15').click(function() {
   $('#15').text(roll_15.getCurrentPins());
   $('.total').text(total());
   if(roll_15.pins === roll_15.strike){
-    strike();
-    $('#16').text(":)");
-}
+      $('#plus_16').fadeOut(2000);
+      $('#minus_16').fadeOut(2000);
+      $('#16').text(":)");
+    }
 });
 
 //minus
@@ -371,9 +404,10 @@ $('#plus_17').click(function() {
   $('#17').text(roll_17.getCurrentPins());
   $('.total').text(total());
   if(roll_17.pins === roll_17.strike){
-    strike();
-    $('#18').text(":)");
-  }
+      $('#plus_18').fadeOut(2000);
+      $('#minus_18').fadeOut(2000);
+      $('#18').text(":)");
+    }
 });
 
 //minus
@@ -409,9 +443,10 @@ $('#plus_19').click(function() {
   $('.total').text(total());
   $('#19').text(roll_19.getCurrentPins());
   if(roll_19.pins === roll_19.strike){
-  strike();
-  $('#20').text(":)");
-}
+    $('#plus_20').fadeOut(2000);
+    $('#minus_20').fadeOut(2000);
+    $('#20').text(":)");
+  }
 });
 
 //minus
@@ -427,9 +462,9 @@ $('#minus_19').click(function() {
 $('#plus_20').click(function() {
   roll_20.up();
   $('.total').text(total());
-  $('#20').text(roll_20.getCurrentPins());
+  $('#20').text(roll_20.pins);
   if(roll_19.pins + roll_20.pins == roll_1.strike) {
-  spare();
+  spareEffect();
   }
 });
 
@@ -441,20 +476,102 @@ $('#minus_20').click(function() {
  $('#20').text(roll_20.getCurrentPins());
 });
 
-function total(){
-  return (roll_1.pins + roll_2.pins + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins
-  + roll_8.pins + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
-  + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins
-  + roll_20.pins);
-};
 
-function strike(){
-  $('#strike').fadeIn(2000);
-  $('#strike').fadeOut(2000);
+
+ //   if(roll_1.pins === roll.strike){
+ //    $('.total').text(roll_1.pins + ((roll_3.pins + roll_4.pins) * 2));
+ //  } else if (roll_3.pins === roll.strike){
+ //    $('.total').text(roll_3.pins + ((roll_5.pins + roll_6.pins) * 2));
+ //  } else if (roll_5.pins === roll.strike){
+ //    $('.total').text(roll_5.pins + ((roll_7.pins + roll_8.pins) * 2));
+ //  } else if (roll_7.pins === roll.strike){
+ //    $('.total').text(roll_7.pins + ((roll_9.pins + roll_10.pins) * 2));
+ //  } else if (roll_9.pins === roll.strike){
+ //    $('.total').text(roll_9.pins + ((roll_11.pins + roll_13.pins) * 2));
+ //  } else if (roll_11.pins === roll.strike){
+ //    $('.total').text(roll_11.pins + ((roll_13.pins + roll_15.pins) * 2));
+ //  } else if (roll_13.pins === roll.strike){
+ //    $('.total').text(roll_13.pins + ((roll_15.pins + roll_17.pins) * 2));
+ //  } else if (roll_15.pins === roll.strike){
+ //    $('.total').text(roll_15.pins + ((roll_17.pins + roll_19.pins) * 2));
+ // }
+
+function strikeCalculator(){
+  if (roll_1.pins === roll.strike) {
+    $('#1').text(roll_1.pins + (roll_3.pins + roll_4.pins));
+    $('.total').text(roll_1.pins + ((roll_3.pins + roll_4.pins) * 2));
+
+  } else if (roll_1.pins != roll.strike) {
+    $('.total').text(roll_1.pins + roll_2.pins + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins
+    + roll_8.pins + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
+    + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins);
+  }
+
+  if ((roll_1.pins === roll.strike) && (roll_3.pins === roll.strike)) {
+    $('#3').text(roll_3.pins + (roll_5.pins + roll_6.pins));
+    $('.total').text(roll_3.pins + ((roll_5.pins + roll_6.pins) * 2));
+
+  } else if ((roll_1.pins != roll.strike) && (roll_3.pins === roll.strike)) {
+    $('#3').text(roll_3.pins + (roll_5.pins + roll_6.pins));
+    $('.total').text(roll_3.pins + ((roll_5.pins + roll_6.pins) * 2));
+  }
+
+  if (roll_5.pins === roll.strike) {
+    $('#5').text(roll_5.pins + (roll_7.pins + roll_8.pins));
+    $('.total').text(roll_5.pins + ((roll_7.pins + roll_8.pins) * 2));
+
+  } else if (roll_5.pins != roll.strike) {
+    // $('.total').text($('#1') + $('#2' ) + $('#3') + $('#4') + $('#5'));
+    $('.total').text(roll_1.pins + roll_2.pins + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins
+    + roll_8.pins + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
+    + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins);
+  }
 }
 
-function spare(){
+//
+//
+//   } else if (roll_7.pins === roll.strike) {
+//    $('#7').text(roll_7.pins + (roll_9.pins + roll_11.pins));
+//    $('.total').text(roll_7.pins + ((roll_9.pins + roll_11.pins) * 2));
+//
+//  } else if (roll_7.pins != roll.strike) {
+//   $('.total').text(roll_1.pins + roll_2.pins + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins
+//      + roll_8.pins + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
+//      + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins);
+
+
+
+  // else if (roll_7.pins === roll.strike) {
+  //   $('#7').text(roll_7.pins + (roll_9.pins + roll_11.pins));
+  //   $('.total').text(roll_7.pins + ((roll_9.pins + roll_10.pins) * 2));
+  // }
+  // else if (roll_9.pins === roll.strike) {
+  //   $('#9').text(roll_9.pins + (roll_11.pins + roll_13.pins));
+  //   $('.total').text(roll_9.pins + ((roll_11.pins + roll_13.pins) * 2));
+  // }
+  // else if (roll_11.pins === roll.strike) {
+  //   $('#11').text(roll_11.pins + (roll_13.pins + roll_15.pins));
+  //   $('.total').text(roll_11.pins + ((roll_13.pins + roll_15.pins) * 2));
+  // }
+  // else if (roll_13.pins === roll.strike) {
+  //   $('#13').text(roll_13.pins + (roll_15.pins + roll_17.pins));
+  //   $('.total').text(roll_13.pins + ((roll_15.pins + roll_17.pins) * 2));
+  // }
+  // else if (roll_15.pins === roll.strike) {
+  //   $('#15').text(roll_15.pins + (roll_17.pins + roll_19.pins));
+  //   $('.total').text(roll_15.pins + ((roll_17.pins + roll_19.pins) * 2));
+  // } else {
+
+ function total(){
+$('.total').text($('#1') + $('#2' ) + $('#3') + $('#4') + $('#5'));
+// + roll_6.pins + roll_7.pins
+// + roll_8.pins + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
+// + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins);
+}
+
+
+  function spareEffect(){
     $("#spare").fadeIn(2000);
     $("#spare").fadeOut(2000);
- }
+  }
 });

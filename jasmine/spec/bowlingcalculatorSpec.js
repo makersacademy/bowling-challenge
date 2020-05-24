@@ -1,10 +1,10 @@
 'use strict';
 
-describe('BowlingCalculator', function() {
+describe('BowlingGame', function() {
   var roll;
 
   beforeEach(function(){
-    roll = new BowlingCalculator();
+    roll = new BowlingGame();
   });
 
   it('pins knocked down starts at 0', function() {

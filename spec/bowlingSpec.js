@@ -70,4 +70,11 @@ describe('Bowling', function() {
     }
     expect(bowl.frame8()).toEqual(8);
   });
+
+  it('gives the score for frame 9', function() {
+    for (let i = 0; i < 18; i++) {
+      bowl.scoring(4);
+    }
+    expect(bowl.frame9()).toEqual(8);
+  });
 });

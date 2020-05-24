@@ -71,11 +71,16 @@ describe('Score', () => {
       for (var i = 0; i < 22; i++) {
         game.roll(1);
       }
-      console.log("VVV")
-      console.log(game.rolls)
-      console.log("^^^")
 
       expect(score.scoring(game)).toEqual(20);
+    });
+
+    it("Gutter game",() => {
+      for (var i = 0; i < 22; i++) {
+        game.roll(0);
+      }
+
+      expect(score.scoring(game)).toEqual(0);
     });
 
 

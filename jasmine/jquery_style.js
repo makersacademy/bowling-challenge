@@ -34,8 +34,27 @@ $('#reset').click(function(){
   $('.operators').show();
   $('#strike').hide();
   $('#spare').hide();
-  $(".number").text(roll_1.reset());
-  $(".total").text(reset());
+  $("#1").text(roll_1.reset());
+  $("#2").text(roll_2.reset());
+  $("#3").text(roll_3.reset());
+  $("#4").text(roll_4.reset());
+  $("#5").text(roll_5.reset());
+  $("#6").text(roll_6.reset());
+  $("#7").text(roll_7.reset());
+  $("#8").text(roll_8.reset());
+  $("#9").text(roll_9.reset());
+  $("#10").text(roll_10.reset());
+  $("#11").text(roll_11.reset());
+  $("#12").text(roll_12.reset());
+  $("#13").text(roll_13.reset());
+  $("#14").text(roll_14.reset());
+  $("#15").text(roll_15.reset());
+  $("#16").text(roll_16.reset());
+  $("#17").text(roll_17.reset());
+  $("#18").text(roll_18.reset());
+  $("#19").text(roll_19.reset());
+  $("#20").text(roll_20.reset());
+  $('.total').text(roll.DEFAULT_PINS)
 });
 
 $('#plus_1').click(function() {

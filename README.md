@@ -11,10 +11,11 @@
 
 ## Doing
 
-* Add Roll to SpecRunner
+* Test and implement Frame 
 
 ## Done
 
+* Add Roll to SpecRunner
 * Fix ESLint errors
 * Add Player score to interface
 * Add Player name to interface

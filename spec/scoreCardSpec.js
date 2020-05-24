@@ -134,55 +134,23 @@ describe('ScoreCard', () => {
 
     describe('when 10th frame ends with a strike', () => {
       it('keeps the correct score', () => {
+        let bonus1 = new Frame();
+        let bonus2 = new Frame();
+
         nineNormalFrames();
 
         aStrikeFrame(nextFrame);
         addFrameAndSetRollsAndScore(nextFrame);
 
-        frame.roll(5);
-        frame.roll(3);
-        addFrameAndSetRollsAndScore(frame);
+        bonus1.roll(5);
+        addFrameAndSetRollsAndScore(bonus1);
+
+        bonus2.roll(3);
+        addFrameAndSetRollsAndScore(bonus2);
 
         scoreCard.update10thFrame();
 
         expect(scoreCard.score).toEqual([8, 8, 8, 8, 8, 8, 8, 8, 8, 18]);
-      });
-    });
-
-    describe('when first bonus roll is a spare', () => {
-      it('keeps the correct score', () => {
-        let bonus = new Frame();
-
-        nineNormalFrames();
-
-        aStrikeFrame(nextFrame);
-        addFrameAndSetRollsAndScore(nextFrame);
-
-        bonus.roll(7);
-        bonus.roll(3);
-        addFrameAndSetRollsAndScore(bonus);
-
-        scoreCard.update10thFrame();
-
-        expect(scoreCard.score).toEqual([8, 8, 8, 8, 8, 8, 8, 8, 8, 20]);
-      });
-    });
-
-    describe('when first bonus roll is a strike', () => {
-      it('keeps the correct score', () => {
-        let bonus = new Frame();
-
-        nineNormalFrames();
-
-        aStrikeFrame(nextFrame);
-        addFrameAndSetRollsAndScore(nextFrame);
-
-        bonus.roll(10);
-        addFrameAndSetRollsAndScore(bonus);
-
-        scoreCard.update10thFrame();
-
-        expect(scoreCard.score).toEqual([8, 8, 8, 8, 8, 8, 8, 8, 8, 20]);
       });
     });
   });

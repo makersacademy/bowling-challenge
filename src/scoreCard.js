@@ -46,12 +46,8 @@ class ScoreCard {
     let size = this.score.length;
     let gameRollsSize = this.gameRolls.length;
 
-    if (this.gameRolls[gameRollsSize - 2].length === 1 && this.gameRolls[gameRollsSize - 1][0] === 10) {
-      this.score[size - 1] += this.score[size - 1];
-    }
-
-    if (this.gameRolls[gameRollsSize - 2].length === 1  && this.gameRolls[gameRollsSize - 1].length === 2) {
-      this.score[size - 1] += this.gameRolls[gameRollsSize - 1].reduce((a, b) => a + b, 0);
+    if (this.score[size - 1] && this.gameRolls[gameRollsSize - 3].length == 1) {
+      this.score[size - 1] += this.gameRolls[gameRollsSize - 2][0] + this.gameRolls[gameRollsSize - 1][0];
     }
 
     if (this.gameRolls[gameRollsSize - 2].length !== 1) {

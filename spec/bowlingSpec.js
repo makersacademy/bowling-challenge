@@ -26,62 +26,62 @@ describe('Bowling', function() {
     for (let i = 0; i < 4; i++) {
       bowl.scoring(4);
     }
-    expect(bowl.frame2()).toEqual(8);
+    expect(bowl.frame2()).toEqual(16);
   });
 
   it('gives the score for frame 3', function() {
     for (let i = 0; i < 6; i++) {
       bowl.scoring(4);
     }
-    expect(bowl.frame3()).toEqual(8);
+    expect(bowl.frame3()).toEqual(24);
   });
 
   it('gives the score for frame 4', function() {
     for (let i = 0; i < 8; i++) {
       bowl.scoring(4);
     }
-    expect(bowl.frame4()).toEqual(8);
+    expect(bowl.frame4()).toEqual(32);
   });
 
   it('gives the score for frame 5', function() {
     for (let i = 0; i < 10; i++) {
       bowl.scoring(4);
     }
-    expect(bowl.frame5()).toEqual(8);
+    expect(bowl.frame5()).toEqual(40);
   });
 
   it('gives the score for frame 6', function() {
     for (let i = 0; i < 12; i++) {
       bowl.scoring(4);
     }
-    expect(bowl.frame6()).toEqual(8);
+    expect(bowl.frame6()).toEqual(48);
   });
 
   it('gives the score for frame 7', function() {
     for (let i = 0; i < 14; i++) {
       bowl.scoring(4);
     }
-    expect(bowl.frame7()).toEqual(8);
+    expect(bowl.frame7()).toEqual(56);
   });
 
   it('gives the score for frame 8', function() {
     for (let i = 0; i < 16; i++) {
       bowl.scoring(4);
     }
-    expect(bowl.frame8()).toEqual(8);
+    expect(bowl.frame8()).toEqual(64);
   });
 
   it('gives the score for frame 9', function() {
     for (let i = 0; i < 18; i++) {
       bowl.scoring(4);
     }
-    expect(bowl.frame9()).toEqual(8);
+    expect(bowl.frame9()).toEqual(72);
   });
 
   it('gives the score for frame 10', function() {
     for (let i = 0; i < 20; i++) {
       bowl.scoring(4);
     }
-    expect(bowl.frame10()).toEqual(8);
+    expect(bowl.frame10()).toEqual(80);
   });
 });

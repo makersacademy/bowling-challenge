@@ -16,9 +16,16 @@ describe('Bowling', function() {
     expect(bowl.score.length).toEqual(1);
   });
 
-  it('sums the first 2 elements of the array', function() {
+  it('gives the score for frame 1', function() {
     bowl.scoring(4);
     bowl.scoring(4);
     expect(bowl.frame1()).toEqual(8);
+  });
+
+  it('gives the score for frame 2', function() {
+    for (let i = 0; i < 4; i++) {
+      bowl.scoring(4);
+    }
+    expect(bowl.frame2()).toEqual(8);
   });
 });

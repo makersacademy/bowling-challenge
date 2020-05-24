@@ -1,52 +1,48 @@
 
 $(document).ready(function(){
-  var roll = new BowlingCalculator;
-var roll_1 = new BowlingCalculator;
-var roll_2 = new BowlingCalculator;
-var roll_3 = new BowlingCalculator;
-var roll_4 = new BowlingCalculator;
-var roll_5 = new BowlingCalculator;
-var roll_6 = new BowlingCalculator;
-var roll_7 = new BowlingCalculator;
-var roll_8 = new BowlingCalculator;
-var roll_9 = new BowlingCalculator;
-var roll_10 = new BowlingCalculator;
-var roll_11= new BowlingCalculator;
-var roll_12 = new BowlingCalculator;
-var roll_13 = new BowlingCalculator;
-var roll_14 = new BowlingCalculator;
-var roll_15 = new BowlingCalculator;
-var roll_16= new BowlingCalculator;
-var roll_17 = new BowlingCalculator;
-var roll_18 = new BowlingCalculator;
-var roll_19 = new BowlingCalculator;
-var roll_20 = new BowlingCalculator;
+  var roll_reset = new Roll;
+  var roll = new Roll;
+var roll_1 = new Roll;
+var roll_2 = new Roll;
+var roll_3 = new Roll;
+var roll_4 = new Roll;
+var roll_5 = new Roll;
+var roll_6 = new Roll;
+var roll_7 = new Roll;
+var roll_8 = new Roll;
+var roll_9 = new Roll;
+var roll_10 = new Roll;
+var roll_11= new Roll;
+var roll_12 = new Roll;
+var roll_13 = new Roll;
+var roll_14 = new Roll;
+var roll_15 = new Roll;
+var roll_16= new Roll;
+var roll_17 = new Roll;
+var roll_18 = new Roll;
+var roll_19 = new Roll;
+var roll_20 = new Roll;
+
 
 $('.operators').show();
 $('#strike').hide();
 $('#spare').hide();
-$(".number").text(roll.DEFAULT_PINS);
-// $(".total").text(page_reset());
+$(".number").text(roll_reset.reset());
+$(".total").text();
 
-//
-// $('#reset').click(function(){
-//   page_reset();
-// });
-//
-// function page_reset(){
-//   $('.operators').show();
-//   $('#strike').hide();
-//   $('#spare').hide();
-//   $(".number").text(0);
-//   $(".total").text((0));
-// };
-//STRIKE
+$('#reset').click(function(){
+  $('.operators').show();
+  $('#strike').hide();
+  $('#spare').hide();
+  $(".number").text(roll_1.reset());
+  $(".total").text(reset());
+});
 
 $('#plus_1').click(function() {
    roll_1.up();
   $('#1').text(roll_1.pins);
   strikeCalculator();
-  if(game.roll_1 === roll.strike){
+  if(roll_1.pins === roll.strike){
   $('#plus_2').fadeOut(2000);
   $('#minus_2').fadeOut(2000);
   $('#2').text(":)");
@@ -57,7 +53,7 @@ $('#plus_1').click(function() {
 
   $('#minus_1').click(function() {
     roll.down();
-   $('#1').text(roll.pins);
+   $('#1').text(roll_1.pins);
    strikeCalculator();
   });
 

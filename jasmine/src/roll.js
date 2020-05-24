@@ -1,6 +1,6 @@
 'use strict';
 
-class BowlingCalculator {
+class Roll {
 
   constructor() {
     this.DEFAULT_PINS = 0;
@@ -33,8 +33,10 @@ class BowlingCalculator {
   }
 
   reset(){
-    return this.pins = this.DEFAULT_PINS;
-    //create a new object to enable reset
+    if (this.pins != this.DEFAULT_PINS) {
+    this.pins--;
+   }
+   return this.pins;
   }
   //
   // function strikeCalculator(){

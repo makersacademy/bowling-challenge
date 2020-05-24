@@ -1,6 +1,6 @@
 'use strict';
 
-describe('BowlingGame', function() {
+describe('Roll', function() {
   var roll;
 
   beforeEach(function(){

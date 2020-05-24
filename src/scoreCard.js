@@ -23,7 +23,7 @@ class ScoreCard {
     let roll1 = this.gameRolls[size - 1][0];
     let roll2 = this.gameRolls[size - 1].length === 2 ? this.gameRolls[size - 1][1] : 0;
 
-    (this.frames.length <= 10) && this.score.push(roll1 + roll2);
+    (this.score.length < 10) && this.score.push(roll1 + roll2);
   }
 
   updateFrameScore() {
@@ -46,8 +46,12 @@ class ScoreCard {
     let size = this.score.length;
     let gameRollsSize = this.gameRolls.length;
 
-    if (this.gameRolls[gameRollsSize - 2].length === 1) {
-      this.score[size - 1] += this.gameRolls[gameRollsSize - 1][0] + this.gameRolls[gameRollsSize - 1][1];
+    if (this.gameRolls[gameRollsSize - 2].length === 1 && this.gameRolls[gameRollsSize - 1][0] === 10) {
+      this.score[size - 1] += this.score[size - 1];
+    }
+
+    if (this.gameRolls[gameRollsSize - 2].length === 1  && this.gameRolls[gameRollsSize - 1].length === 2) {
+      this.score[size - 1] += this.gameRolls[gameRollsSize - 1].reduce((a, b) => a + b, 0);
     }
 
     if (this.gameRolls[gameRollsSize - 2].length !== 1) {

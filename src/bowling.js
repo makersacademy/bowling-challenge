@@ -73,6 +73,9 @@ class Bowling{
   };
 
   frame10() {
+    if(this.score[18] + this.score[19] === 10) {
+            return this.score[18] + this.score[19] + this.score[20] + this.frame9();
+        }
     return this.score[18] + this.score[19] + this.frame9();
   };
 };

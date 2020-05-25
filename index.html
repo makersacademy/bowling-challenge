@@ -6,8 +6,17 @@
   </head>
   <body>
   <h1>🎳 SCORECARD 🎳</h1>
-
+  <h4>Frames: <span id="scoreCard" class="medium-use"></span></h4>
   <h4>Total Score: <span id='score'></span></h4>
+  <section id="scoring_input">
+    <h5>Please enter your score:</h5>
+    <form id = "scoreForm">
+      Ball 1 : <input type="number" value="0" min="0" max="10" name="a" id="a">
+      Ball 2 : <input type="number" value="0" min="0" max="10" name="b" id="b"><br>
+      <button id ="addScore" >Add</button>
+    </form>
+    <h5>Current Frame: <span id="frame" class="medium-use"></span></h5>
+  </section>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script  type="text/javascript"  src="src/bowling.js"></script>

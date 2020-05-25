@@ -18,6 +18,10 @@ class Bowling {
       this.previousFrameHad = "aStrike"
       this._scoringHelper(currentFrameScore)
       return "X";
+    } else if (currentFrameTotal === 10) {
+      this.previousFrameHad = "aSpare"
+      this._scoringHelper(currentFrameScore)
+      return "/";
     } else {
       this._scoringHelper(currentFrameScore)
       this.calcScore(currentFrameScore, currentFrameTotal)
@@ -39,10 +43,14 @@ class Bowling {
   calcScore(currentFrameScore, currentFrameTotal) {
     if(this.previousFrameHad === "aStrike") {
       this._calcScoreWithStrike(currentFrameTotal)
+    } else if (this.previousFrameHad === "aSpare") {
+        let spare = currentFrameTotal + currentFrameScore[0] + 10;
+        this.score += spare;
     } else {
-      this.score += currentFrameTotal
-      this.previousFrameHad === "normal"
+        this.score += currentFrameTotal
+        this.previousFrameHad === "normal"
     }
+
   }
 
   _scoringHelper(currentFrameScore) {

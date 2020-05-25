@@ -91,6 +91,19 @@ describe("Bowling", function() {
       expect(bowling.score).toEqual(167);
     });
 
+    it("know's that a spare has been scored.", function() {
+      expect(bowling.scoring([5,5])).toEqual("/")
+    });
 
+    it("remembers that a spare has been scored.", function() {
+      bowling.scoring([4,6]);
+      expect(bowling.previousFrameHad).toEqual("aSpare");
+    });
+
+    it("knows how to calculate the score after a spare.", function() {
+      bowling.scoring([5,5]);
+      bowling.scoring([2,1]);
+      expect(bowling.score).toEqual(15);
+    });
 
 });

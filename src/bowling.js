@@ -18,12 +18,15 @@ class Bowling{
 
   frame2() {
     if(this.score[2] + this.score[3] === 10) {
-            return this.score[2] + this.score[3] + this.score[4];
+            return this.score[2] + this.score[3] + this.score[4] + this.frame1();
         }
     return this.score[2] + this.score[3] + this.frame1();
   };
 
   frame3() {
+    if(this.score[4] + this.score[5] === 10) {
+            return this.score[4] + this.score[5] + this.score[6] + this.frame2();
+        }
     return this.score[4] + this.score[5] + this.frame2();
   };
 

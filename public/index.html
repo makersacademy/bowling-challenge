@@ -14,11 +14,11 @@
 
   #centralsection {
 
-    height: 1000px;
+    height:1000px;
   }
 
   table {
-    border:1px solid black;
+    border:5px solid ;
     border-collapse: collapse;
   }
 
@@ -31,11 +31,10 @@
   }
 
   .total {
-    border-left: 1px solid black;
-  }
+    border-left:1px solid black;
+  } 
 
   </style>
-  <title>Bowling game</title>
   <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
   </head>
 
@@ -81,85 +80,21 @@
         <td class="total" id="frame9" colspan="2">0</td>
         <td class="total" id="frame10" colspan="3">0</td>
       </tr>
-
       </td>
-
       </table>
-      <br>
 
+      
       <form>
         <input id="hit" type="text" name="shotscore">
-        <button id="submit">Submit<value="SUBMIT">
+        <input id= "submit" type= "submit" value="SUBMIT">
       </form>
      </section>
 
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src='src/Frame.js'></script>
     <script src='src/Game.js'></script>
-    <script src='https://code.jquery.com/jquery-2.1.1.min.js'></script>
-
-    <script>
-      $(document).ready(function() {
-
-      var game = new Game();
-      game.create(Frame);
-
-        setScores = function(){
-          $('#frame1shot1').html(game.frames[0].firstroll || 0);
-          $('#frame1shot2').html(game.frames[0].secondroll || 0);
-          $('#frame2shot1').html(game.frames[1].firstroll || 0);
-          $('#frame2shot2').html(game.frames[1].secondroll || 0);
-          $('#frame3shot1').html(game.frames[2].firstroll || 0);
-          $('#frame3shot2').html(game.frames[2].secondroll || 0);
-          $('#frame4shot1').html(game.frames[3].firstroll || 0);
-          $('#frame4shot2').html(game.frames[3].secondroll || 0);
-          $('#frame5shot1').html(game.frames[4].firstroll || 0);
-          $('#frame5shot2').html(game.frames[4].secondroll || 0);
-          $('#frame6shot1').html(game.frames[5].firstroll || 0);
-          $('#frame6shot2').html(game.frames[5].secondroll || 0);
-          $('#frame7shot1').html(game.frames[6].firstroll || 0);
-          $('#frame7shot2').html(game.frames[6].secondroll || 0);
-          $('#frame8shot1').html(game.frames[7].firstroll || 0);
-          $('#frame8shot2').html(game.frames[7].secondroll || 0);
-          $('#frame9shot1').html(game.frames[8].firstroll || 0);
-          $('#frame9shot2').html(game.frames[8].secondroll || 0);
-          $('#frame10shot1').html(game.frames[9].firstroll || 0);
-          $('#frame10shot2').html(game.frames[9].secondroll || 0);
-          $('#frame10shot3').html(game.frames[9].thirdShot || 0);
-          $('#frame1').html(parseInt(game.frames[0].score) || 0);
-          $('#frame2').html(game.frames[1].score || 0);
-          $('#frame3').html(game.frames[2].score || 0);
-          $('#frame4').html(game.frames[3].score || 0);
-          $('#frame5').html(game.frames[4].score || 0);
-          $('#frame6').html(game.frames[5].score || 0);
-          $('#frame7').html(game.frames[6].score || 0);
-          $('#frame8').html(game.frames[7].score || 0);
-          $('#frame9').html(game.frames[8].score || 0);
-          $('#frame10').html(game.frames[9].score || 0);
-        };
-
-        setScores();
-
-
-
-        $('#submit').on('click', function() {
-          event.preventDefault();
-          enterScore();
-          setScores();
-        });
-
-        console.log(game)
-
-        var enterScore = function(){
-          var score = $('#hit').val();
-          $('#hit').val('');
-          player.bowl(score, game.frames[0]);
-        };
-
-      });
-      </script>
-
-   <!-- <script src='/javascripts/app.js'></script> -->
-
+    <script src='src/jquery.js'></script>
+   
   </body>
 
 </html>

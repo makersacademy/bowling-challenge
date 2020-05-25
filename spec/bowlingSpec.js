@@ -139,11 +139,22 @@ describe('Bowling', function() {
     });
   });
 
-  it('gives the score for frame 8', function() {
-    for (let i = 0; i < 16; i++) {
+  describe('frame8', function() {
+    it('gives the basic score', function() {
+      for (let i = 0; i < 16; i++) {
+        bowl.scoring(4);
+      }
+      expect(bowl.frame8()).toEqual(64);
+    });
+
+    it('checks and scores for a spare', function() {
+      for (let i = 0; i < 15; i++) {
+        bowl.scoring(4);
+      }
+      bowl.scoring(6);
       bowl.scoring(4);
-    }
-    expect(bowl.frame8()).toEqual(64);
+      expect(bowl.frame8()).toEqual(70);
+    });
   });
 
   it('gives the score for frame 9', function() {

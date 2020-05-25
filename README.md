@@ -1,7 +1,18 @@
-
 Bowling Challenge
 =================
 
+I actually found this one quite difficult but I gave it a good go. User stories are below. It works for basic scoring and for spares but I've yet to fully work out strikes. I can make it work if the player manually enters 'X' when they get a strike but that should happen automatically. It's a work in progress and so far will only work on the console. I need to learn more about jquery before being able to sort this.
+
+It's been interesting to do but I know my code needs refactoring! However, I need to learn more JS before continuing with this challenge. Happy though that I have a basic working scorecard as at one point, I wasn't even sure I'd manage that! Plenty of work still to do and I will do it!
+
+My user stories:
+1. As a user, I'd like somewhere to record my score.
+2. As a user, I'd like to be able to input my score.
+3. As a user, I'd like to be able to see my score after each frame.
+4. As a user, when I get a spare, I'd like it to add my frame score plus the next roll.
+5. As a user, when I get a strike, I'd like it to add my frame score plus the next 2 rolls.
+
+=================
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

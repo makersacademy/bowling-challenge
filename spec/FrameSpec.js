@@ -1,43 +1,39 @@
 'use strict';
 
 describe('Frame', function() {
-  var frame;
-  var frame2;
+  var frame0;
+  var frame1;
   var game;
 
   beforeEach(function() {
-    frame = new Frame();
-    frame2 = new Frame();
+    frame0 = new Frame(0);
+    frame1 = new Frame(1);
     game = jasmine.createSpyObj('game', ['getFrame', 'getFrames', 'calculateGameScore']);
   })
 
-  it('has first roll', function() {
-    frame.roll(2);
-    expect(frame.calculatePins()).toEqual(2);
+  it('has rolls', function() {
+    frame0.roll(1, 2);
+    expect(frame0.calculatePins()).toEqual(3);
   })
 
   describe('calculatePins', function() {
     it('returns total of roll scores', function() {
-      frame.roll(2);
-      frame.roll(3);
-      expect(frame.calculatePins()).toEqual(5);
+      frame0.roll(2, 3);
+      expect(frame0.calculatePins()).toEqual(5);
     })
   })
 
   describe('hasSpare', function() {
     it('can have a spare', function() {
-      frame.roll(2);
-      frame.roll(8);
-      expect(frame.hasSpare()).toEqual(true);
+      frame0.roll(2, 8);
+      expect(frame0.hasSpare()).toEqual(true);
     })
   })
 
   describe('hasStrike', function() {
     it('can have a strike', function() {
-      frame.roll(10);
-      expect(frame.hasStrike()).toEqual(true);
+      frame0.roll(10);
+      expect(frame0.hasStrike()).toEqual(true);
     })
   })
-
-
 })

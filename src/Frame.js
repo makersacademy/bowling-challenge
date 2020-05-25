@@ -1,36 +1,27 @@
 'use strict';
 
 class Frame {
-  constructor() {
-    this.firstRoll = null;
-    this.secondRoll = null;
-    this.thirdRoll = null;
-    this.index = -1;
+  constructor(index) {
+    this.firstRoll = 0;
+    this.secondRoll = 0;
+    this.thirdRoll = 0;
+    this.index = index;
   }
-  roll(number) {
-    if (!this.firstRoll) {
-      this.firstRoll = number;
-    } else if (!this.secondRoll) {
-      this.secondRoll = number;
-    } else {
-      this.thirdRoll = number;
+  roll(x,y,z) {
+    this.firstRoll = x;
+    if (y) {
+      this.secondRoll = y;
+    }
+    if (z) {
+      this.thirdRoll = z;
     }
   }
 
   calculatePins() {
-    if (this.firstRoll == null) {
-      this.firstRoll = 0;
-    }
-    if (this.secondRoll == null) {
-      this.secondRoll = 0;
-    }
-    if (this.thirdRoll == null) {
-      this.thirdRoll = 0;
-    }
     return this.firstRoll + this.secondRoll + this.thirdRoll;
   }
   hasSpare() {
-    if (this.firstRoll + this.secondRoll == 10) {
+    if (this.firstRoll + this.secondRoll == 10 && this.firstRoll != 10) {
       return true;
     }
   }

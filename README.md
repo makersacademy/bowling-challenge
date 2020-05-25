@@ -2,12 +2,32 @@
 
 [![Build Status](https://travis-ci.com/will-head/bowling-challenge.svg?branch=master)](https://api.travis-ci.com/will-head/bowling-challenge.svg?branch=master)
 
+## Setup
+
+```
+$ npm install
+```
+
+## Usage
+
+```
+$ ./run
+```
+This will open the default browser and load index.html
+
+## Testing
+
+To run Jasmine Unit tests and ESLint run script:
+./test/tdd.test
+
+To test in browser, run script:
+./test/web.test
+
 ## Todo
 
 * Error check if Frame.add is passed more than ten in total
 * Write/Implement/Refactor remaining classes
 * Add ability to change Player name
-* Add installation details (npm install)
 * Implement feature test in Jasmine?
 
 ## Doing
@@ -16,6 +36,7 @@
 
 ## Done
 
+* Add installation details (npm install)
 * Add Roll to SpecRunner
 * Fix ESLint errors
 * Add Player score to interface

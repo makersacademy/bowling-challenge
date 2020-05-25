@@ -16,10 +16,19 @@ describe('Bowling', function() {
     expect(bowl.score.length).toEqual(1);
   });
 
-  it('gives the score for frame 1', function() {
-    bowl.scoring(4);
-    bowl.scoring(4);
-    expect(bowl.frame1()).toEqual(8);
+  describe('frame1', function() {
+    it('gives the basic score', function() {
+      bowl.scoring(4);
+      bowl.scoring(4);
+      expect(bowl.frame1()).toEqual(8);
+    });
+    
+    it('checks and scores for a spare', function() {
+      bowl.scoring(4);
+      bowl.scoring(6);
+      bowl.scoring(4);
+      expect(bowl.frame1()).toEqual(14);
+    });
   });
 
   it('gives the score for frame 2', function() {

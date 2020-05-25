@@ -17,11 +17,15 @@ This will open the default browser and load index.html
 
 ## Testing
 
-To run Jasmine Unit tests and ESLint run script:
-./test/tdd.test
+To run Jasmine Unit tests and ESLint run script:  
+```
+$ ./test/tdd.test`
+```
 
-To test in browser, run script:
-./test/web.test
+To test in browser, run script:  
+```
+$ ./test/web.test
+```
 
 ## Todo
 

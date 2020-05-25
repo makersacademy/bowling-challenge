@@ -47,4 +47,50 @@ describe("Bowling", function() {
       expect(bowling.currentFrame()).toEqual(10);
     });
 
+    it("knows how to calculate the score after a normal frame.", function() {
+      bowling.scoring([3,0]);
+      bowling.scoring([2,1]);
+      expect(bowling.score).toEqual(6);
+    });
+
+    it("know's that a strike has been scored.", function() {
+      expect(bowling.scoring([10,0])).toEqual("X")
+    });
+
+    it("remembers that a strike has been scored.", function() {
+      bowling.scoring([10,0]);
+      expect(bowling.previousFrameHad).toEqual("aStrike");
+    });
+
+    it("knows how to calculate the score after a strike.", function() {
+      bowling.scoring([10,0]);
+      bowling.scoring([2,1]);
+      expect(bowling.score).toEqual(16);
+    });
+
+    it("knows how to calculate the score after a double strike.", function() {
+      bowling.scoring([10,0]);
+      bowling.scoring([10,0]);
+      bowling.scoring([3,4]);
+      expect(bowling.score).toEqual(47);
+    });
+
+    it("knows how to calculate the score after a triple 'turkey' strike.", function() {
+      for (let i = 0; i < 3; i++) {
+        bowling.scoring([10,0]);
+      }
+      bowling.scoring([3,4]);
+      expect(bowling.score).toEqual(77);
+    });
+
+    it("knows how to calculate the score after several strikes.", function() {
+      for (let i = 0; i < 6; i++) {
+        bowling.scoring([10,0]);
+      }
+      bowling.scoring([3,4]);
+      expect(bowling.score).toEqual(167);
+    });
+
+
+
 });

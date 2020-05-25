@@ -19,9 +19,13 @@ $(document).ready(function() {
   $('#play-button').click(function() {
     var num = $("#user-input").val();
     num = parseInt(num);
-    game.play(num);
-    updateTotal();
-    updateScoreboardInfo();
-    updateGameInfo();
+    if(game.play(num) === "Please enter a number that when added to your previous play is lower than or equal to 10."){
+      $('#error').text("Please enter a number that when added to your previous play is lower than or equal to 10.");
+    } else {
+      $('#error').text(" ");
+      updateTotal();
+      updateScoreboardInfo();
+      updateGameInfo();
+    }
   })
 });

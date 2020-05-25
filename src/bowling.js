@@ -31,6 +31,9 @@ class Bowling{
   };
 
   frame4() {
+    if(this.score[6] + this.score[7] === 10) {
+            return this.score[6] + this.score[7] + this.score[8] + this.frame3();
+        }
     return this.score[6] + this.score[7] + this.frame3();
   };
 

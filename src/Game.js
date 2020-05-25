@@ -10,6 +10,9 @@ class Game {
 
     play(pins){
       this.knocked = pins;
+      if(this.numberCheck(pins) === true){
+        return this.errorMessage();
+      }
       // prevents from playing if game has ended
       if(this.isEnded || this.frame >= 11){
         return this.end();
@@ -45,8 +48,20 @@ class Game {
           return this.end();
         }
       }
-
       this.roll ++;
+    }
+
+    numberCheck(pins){
+      if(this.roll === 2){
+        var previousPlay = this.scorecard.scoreboard[this.scorecard.scoreboard.length - 1].knocked
+        if(previousPlay + pins > 10){
+          return true
+        }
+      }
+    }
+
+    errorMessage(){
+      return "Please enter a number that when added to your previous play is lower than or equal to 10."
     }
 
     end(){

@@ -16,7 +16,7 @@ describe('Game', function () {
             expect(game.roll).toEqual(2);
         });
         it("increments frame by 1 if roll was 2", function () {
-            game.roll = 2;
+            game.play(4);
             game.play(4);
             expect(game.frame).toEqual(2);
             expect(game.roll).toEqual(1);
@@ -57,7 +57,8 @@ describe('Game', function () {
     describe('isExtraRound', function () {
         it('returns true for a strike', function(){
           for (let i = 0; i < 11; i += 1) {
-            game.play(10)
+            game.play(10);
+            game.play(0);
           };
           expect(game.isExtraRound()).toEqual(true)
         });
@@ -75,6 +76,18 @@ describe('Game', function () {
             game.play(4)
           };
           expect(game.isExtraRound()).toEqual(false)
+        });
+    });
+
+    describe('numberCheck', function () {
+        it('allows play if current play and previous play are equal to or lower than 10', function(){
+          game.play(6);
+          expect(game.numberCheck(4)).not.toEqual(true)
+        });
+
+        it('prevents play if current play and previous play are greater than 10', function(){
+          game.play(6);
+          expect(game.numberCheck(6)).toEqual(true)
         });
     });
 });

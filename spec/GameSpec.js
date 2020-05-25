@@ -19,6 +19,7 @@ describe('Game', function() {
 
   describe('#getFrame', function() {
     it('gets a new frame', function() {
+      frame0.getIndex.and.returnValue(0);
       game.getFrame(frame0);
       expect(game.getFrames()).toEqual([frame0]);
     })
@@ -31,6 +32,19 @@ describe('Game', function() {
       frame0.calculatePins.and.returnValue(7)
       game.getFrame(frame0);
       expect(game.calculateGameScore()).toEqual(7);
+    })
+  })
+
+  describe('calculateBonus', function() {
+    it('gets bonus when it has a spare', function() {
+      frame0.getIndex.and.returnValue(0);
+      frame0.roll.and.returnValue(5,5);
+      frame0.hasSpare.and.returnValue(true);
+      game.getFrame(frame0);
+      frame1.getIndex.and.returnValue(1);
+      frame1.roll.and.returnValue(3,5);
+      game.getFrame(frame1);
+      expect(game.calculateBonus(frame0)).toEqual(3);
     })
   })
 

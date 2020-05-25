@@ -6,6 +6,7 @@ class Frame {
     this.secondRoll = 0;
     this.thirdRoll = 0;
     this.index = index;
+    this.score = 0;
   }
   roll(x,y,z) {
     this.firstRoll = x;
@@ -16,9 +17,8 @@ class Frame {
       this.thirdRoll = z;
     }
   }
-
   calculatePins() {
-    return this.firstRoll + this.secondRoll + this.thirdRoll;
+    return this.score = this.firstRoll + this.secondRoll + this.thirdRoll;
   }
   hasSpare() {
     if (this.firstRoll + this.secondRoll == 10 && this.firstRoll != 10) {
@@ -33,5 +33,4 @@ class Frame {
   getIndex() {
     return this.index;
   }
-
 }

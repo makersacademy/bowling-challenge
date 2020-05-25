@@ -36,4 +36,5 @@ describe('Frame', function() {
       expect(frame0.hasStrike()).toEqual(true);
     })
   })
+
 })

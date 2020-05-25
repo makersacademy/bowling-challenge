@@ -4,6 +4,7 @@
 
 ## Todo
 
+* Error check if Frame.add is passed more than ten in total
 * Write/Implement/Refactor remaining classes
 * Add ability to change Player name
 * Add installation details (npm install)
@@ -11,7 +12,7 @@
 
 ## Doing
 
-* Test and implement Frame 
+* Test and implement Frame
 
 ## Done
 

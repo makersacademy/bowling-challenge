@@ -14,9 +14,18 @@ class Frame {
     }
 
     this._number = number;
+    this._rolls = [];
   }
 
   get number() {
     return this._number;
+  }
+
+  add(roll) {
+    this._rolls.push(roll);
+  }
+
+  get rolls() {
+    return this._rolls;
   }
 }

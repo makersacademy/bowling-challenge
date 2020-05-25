@@ -22,7 +22,7 @@ describe('Bowling', function() {
       bowl.scoring(4);
       expect(bowl.frame1()).toEqual(8);
     });
-    
+
     it('checks and scores for a spare', function() {
       bowl.scoring(4);
       bowl.scoring(6);
@@ -31,11 +31,22 @@ describe('Bowling', function() {
     });
   });
 
-  it('gives the score for frame 2', function() {
-    for (let i = 0; i < 4; i++) {
+  describe('frame2', function() {
+    it('gives the basic score', function() {
+      for (let i = 0; i < 4; i++) {
+        bowl.scoring(4);
+      }
+      expect(bowl.frame2()).toEqual(16);
+    });
+
+    it('checks and scores for a spare', function() {
+      for (let i = 0; i < 3; i++) {
+        bowl.scoring(4);
+      }
+      bowl.scoring(6);
       bowl.scoring(4);
-    }
-    expect(bowl.frame2()).toEqual(16);
+      expect(bowl.frame2()).toEqual(14);
+    });
   });
 
   it('gives the score for frame 3', function() {

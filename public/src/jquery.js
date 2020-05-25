@@ -1,67 +1,26 @@
 $(document).ready(function() {
-
+  var i = 0 ;
+  var score = 0;
   var game = new Game();
   game.create(Frame);
-    
-    $('#1').on('click', function() {
-      game.frames[0].receiveShot(1);
-      updateScoreBoard();
-    });
 
-    $('#2').on('click', function() {
-      game.frames[1].receiveShot(1);
-      updateScoreBoard();
-    });
+  $('.pins').on('click',function() {
+    var id = $(this).attr('id')
+    score = parseInt(id)
+    enterScore();
+ });
 
-    $('#3').on('click', function() {
-      game.frames[2].receiveShot(1);
-      updateScoreBoard();
-    });
+ $('#button').on('click',function() {
+  $('#total_last').text(game.score());
 
-    $('#4').on('click', function() {
-      game.frames[3].receiveShot(1);
-      updateScoreBoard();
-    });
+});
+  function enterScore(){
+    game.frames[i].receiveShot(score)
+    $('#frame' + (i+1) + 'shot1').text(game.frames[i].firstroll || 0);
+    $('#frame' + (i+1) + 'shot2').text(game.frames[i].secondroll || 0);
+    $('#frame' + (i+1)).text(game.frames[i].score|| 0);
+    if ( game.frames[i].secondroll !== null || game.frames[i].isStrike() ) {return i++;}
+  };
 
-    $('#5').on('click', function() {
-      game.frames[4].receiveShot(1);
-      updateScoreBoard();
-    });
-
-    $('#6').on('click', function() {
-      game.frames[5].receiveShot(1);
-      updateScoreBoard();
-    });
-
-    $('#7').on('click', function() {
-      game.frames[6].receiveShot(1);
-      updateScoreBoard();
-    });
-
-    $('#8').on('click', function() {
-      game.frames[7].receiveShot(1);
-      updateScoreBoard();
-    });
-
-    $('#9').on('click', function() {
-      game.frames[8].receiveShot(1);
-      updateScoreBoard();
-    });
-
-    $('#10').on('click', function() {
-      game.frames[9].receiveShot(1);
-      updateScoreBoard();
-    });
-
-    function updateScoreBoard() {
-      for (var i = 0; i < 10; i++) {
-        var frame = game.frames[i]
-        $('#frame' + (i+1) + 'shot1').text(frame.firstroll);
-        if(!frame.isStrike()) $('#frame' + (i+1) + 'shot2').text(frame.secondroll);
-        $('#frame' + (i+1) ).text(frame.score);
-      };
-    };
-
-
-
+ 
   });

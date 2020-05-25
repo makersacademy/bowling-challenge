@@ -19,17 +19,14 @@ frameCount = function() {
 
 score = function () {
   var total = 0;
-  for (var i = 0; i < this.frames.length; i++) { total += this.frames[i].score; }
+  for (var i = 0; i < this.frames.length; i++) { 
+    this._evaluateSpare(i);
+    this._evaluateStrike(i);  
+    total += this.frames[i].score; 
+  }
   return total;
 };
 
-
-evaluateScores = function() {
-  for (var i = 0; i < 9; i++) { 
-    this._evaluateSpare(i);
-    this._evaluateStrike(i);  
-  }
-};
 
 _evaluateSpare = function(i) {
    if (this.frames[i].isSpare()) { this.frames[i].score += this._firstExtraRoll(i); }

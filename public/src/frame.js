@@ -2,8 +2,8 @@ class Frame {
 
   constructor() {
     this.pins = 10;
-    this.firstroll = 0;
-    this.secondroll = 0;
+    this.firstroll = null;
+    this.secondroll = null;
     this.rollcount = 0;
     this.score = 0;
   };
@@ -13,8 +13,8 @@ class Frame {
     this.rollcount ++;
     if ( this.rollcount > 2 ) {throw new Error('Only two rolls'); }
     if ( this.pins < 0 ) {throw new Error('Not allowed more than ten balls'); }
-    this.firstroll === 0 ? this.firstroll = knocked_down_pin_number : this.secondroll = knocked_down_pin_number; 
-    this.score += knocked_down_pin_number;
+    this.firstroll === null ? this.firstroll = knocked_down_pin_number : this.secondroll = knocked_down_pin_number; 
+    this.score = this.score + knocked_down_pin_number;
   };
 
   isStrike(){
@@ -23,7 +23,7 @@ class Frame {
   };
 
   isSpare(){
-    if ( this.firstroll + this.secondroll === 10 && this.secondroll !==0 ) { return true }
+    if ( this.firstroll + this.secondroll === 10 && this.secondroll !==null ) { return true }
     else { return false }
   };
 

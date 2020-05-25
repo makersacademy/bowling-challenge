@@ -4,6 +4,7 @@
 
 ## Todo
 
+* Error check if Frame.add is passed more than ten in total
 * Write/Implement/Refactor remaining classes
 * Add ability to change Player name
 * Add installation details (npm install)
@@ -11,10 +12,11 @@
 
 ## Doing
 
-* Add Roll to SpecRunner
+* Test and implement Frame
 
 ## Done
 
+* Add Roll to SpecRunner
 * Fix ESLint errors
 * Add Player score to interface
 * Add Player name to interface

@@ -413,9 +413,14 @@ $('#minus_20').click(function() {
 
 
 
+array = [roll_1.pins, roll_2.pins, roll_3.pins, roll_4.pins, roll_5.pins, roll_6.pins, roll_7.pins,
+  roll_8.pins, roll_9.pins, roll_10.pins, roll_11.pins, roll_12.pins, roll_13.pins, roll_14.pins,
+  roll_15.pins, roll_16.pins, roll_17.pins, roll_18.pins, roll_19.pins, roll_20.pins]
 
 
-
+  array.find(function(element) {
+    return element ;
+  });
 
 function total(){
  return roll_1.pins + roll_2.pins + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins
@@ -596,7 +601,7 @@ function rollCalculator(){
       $('#minus_6').fadeOut(2000);
       $('#6').text(":)");
 
-    }  if (roll_7.pins === roll.strike){
+      if (roll_7.pins === roll.strike){
         $('#7').text(roll_7.pins + (roll_9.pins + roll_10.pins));
         $('.total').text(total() + roll_9.pins + roll_10.pins);
         $('#plus_8').fadeOut(2000);
@@ -606,12 +611,14 @@ function rollCalculator(){
 
         if (roll_9.pins === roll.strike){
           $('#9').text(roll_9.pins + (roll_11.pins + roll_13.pins));
-          $('.total').text(total() + roll_11.pins + roll_13.pins);
+          $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins
+           + roll_8.pins + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins);
         }
 
           if (roll_11.pins === roll.strike){
             $('#11').text(roll_11.pins + (roll_13.pins + roll_14.pins));
-            $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins);
+            $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins
+             + roll_8.pins + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins);
             $('#plus_12').fadeOut(2000);
             $('#minus_12').fadeOut(2000);
             $('#12').text(" X ");
@@ -636,7 +643,6 @@ function rollCalculator(){
                 $('#16').text(":)");
               }
 
-
                 if(roll_17.pins === roll_17.strike){
                   $('#17').text(roll_17.pins + (roll_19.pins + roll_20.pins));
                   $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
@@ -656,226 +662,275 @@ function rollCalculator(){
                     $('#20').text(" X ");
                   }
 
-  } else if (roll_5.pins != roll.strike)  {
-      $('.total').text(total());
+} else if (roll_5.pins != roll.strike)  {
+    $('.total').text(total());
 
-else if (roll_7.pins === roll.strike){
-    $('#7').text(roll_7.pins + (roll_9.pins + roll_10.pins));
-    $('.total').text(total() + roll_9.pins + roll_10.pins);
-    $('#plus_8').fadeOut(2000);
-    $('#minus_8').fadeOut(2000);
-    $('#8').text(" X ");
-  }
+  } else if (roll_7.pins === roll.strike){
 
-  if (roll_9.pins === roll.strike){
+    if (roll_9.pins === roll.strike){
+        $('#9').text(roll_9.pins + (roll_11.pins + roll_13.pins));
+        $('.total').text(total() + roll_11.pins + roll_13.pins);
+        $('#plus_10').fadeOut(2000);
+        $('#minus_10').fadeOut(2000);
+        $('#10').text(" X ");
+     }
+
+      if (roll_11.pins === roll.strike){
+        $('#11').text(roll_11.pins + (roll_13.pins + roll_14.pins));
+        $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins);
+        $('#plus_12').fadeOut(2000);
+        $('#minus_12').fadeOut(2000);
+        $('#12').text(" X ");
+      }
+
+        if(roll_13.pins === roll_13.strike){
+          $('#13').text(roll_13.pins + (roll_15.pins + roll_16.pins));
+          $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
+           + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins + roll_15.pins + roll_16.pins);
+          $('#plus_14').fadeOut(2000);
+          $('#minus_14').fadeOut(2000);
+          $('#14').text(":)");
+        }
+
+          if(roll_15.pins === roll_15.strike){
+            $('#15').text(roll_15.pins + (roll_17.pins + roll_18.pins));
+            $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
+             + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
+             + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins);
+            $('#plus_16').fadeOut(2000);
+            $('#minus_16').fadeOut(2000);
+            $('#16').text(":)");
+          }
+
+            if(roll_17.pins === roll_17.strike){
+              $('#17').text(roll_17.pins + (roll_19.pins + roll_20.pins));
+              $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
+               + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
+               + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins);
+              $('#plus_18').fadeOut(2000);
+              $('#minus_18').fadeOut(2000);
+              $('#18').text("X");
+            }
+
+              if(roll_19.pins === roll_19.strike){
+                $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
+                 + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
+                 + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins + roll.strike);
+                $('#plus_20').fadeOut(2000);
+                $('#minus_20').fadeOut(2000);
+                $('#20').text(" X ");
+              }
+
+} else if (roll_7.pins != roll.strike)  {
+    $('.total').text(total());
+
+  } else if  (roll_9.pins === roll.strike){
       $('#9').text(roll_9.pins + (roll_11.pins + roll_13.pins));
       $('.total').text(total() + roll_11.pins + roll_13.pins);
       $('#plus_10').fadeOut(2000);
       $('#minus_10').fadeOut(2000);
       $('#10').text(" X ");
-    }
 
-    if (roll_11.pins === roll.strike){
-      $('#11').text(roll_11.pins + (roll_13.pins + roll_14.pins));
-      $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins);
-      $('#plus_12').fadeOut(2000);
-      $('#minus_12').fadeOut(2000);
-      $('#12').text(" X ");
-    }
-
-      if(roll_13.pins === roll_13.strike){
-        $('#13').text(roll_13.pins + (roll_15.pins + roll_16.pins));
-        $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
-         + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins + roll_15.pins + roll_16.pins);
-        $('#plus_14').fadeOut(2000);
-        $('#minus_14').fadeOut(2000);
-        $('#14').text(":)");
+      if (roll_11.pins === roll.strike){
+        $('#11').text(roll_11.pins + (roll_13.pins + roll_14.pins));
+        $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins);
+        $('#plus_12').fadeOut(2000);
+        $('#minus_12').fadeOut(2000);
+        $('#12').text(" X ");
       }
 
-        if(roll_15.pins === roll_15.strike){
-          $('#15').text(roll_15.pins + (roll_17.pins + roll_18.pins));
+        if(roll_13.pins === roll_13.strike){
+          $('#13').text(roll_13.pins + (roll_15.pins + roll_16.pins));
           $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
-           + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
-           + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins);
-          $('#plus_16').fadeOut(2000);
-          $('#minus_16').fadeOut(2000);
-          $('#16').text(":)");
+           + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins + roll_15.pins + roll_16.pins);
+          $('#plus_14').fadeOut(2000);
+          $('#minus_14').fadeOut(2000);
+          $('#14').text(":)");
         }
 
-          if(roll_17.pins === roll_17.strike){
-            $('#17').text(roll_17.pins + (roll_19.pins + roll_20.pins));
+          if(roll_15.pins === roll_15.strike){
+            $('#15').text(roll_15.pins + (roll_17.pins + roll_18.pins));
             $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
              + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
-             + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins);
-            $('#plus_18').fadeOut(2000);
-            $('#minus_18').fadeOut(2000);
-            $('#18').text("X");
+             + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins);
+            $('#plus_16').fadeOut(2000);
+            $('#minus_16').fadeOut(2000);
+            $('#16').text(":)");
           }
 
-            if(roll_19.pins === roll_19.strike){
+            if(roll_17.pins === roll_17.strike){
+              $('#17').text(roll_17.pins + (roll_19.pins + roll_20.pins));
               $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
                + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
-               + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins + roll.strike);
-              $('#plus_20').fadeOut(2000);
-              $('#minus_20').fadeOut(2000);
-              $('#20').text(" X ");
+               + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins);
+              $('#plus_18').fadeOut(2000);
+              $('#minus_18').fadeOut(2000);
+              $('#18').text("X");
             }
 
-} else if (roll_7.pins != roll.strike)  {
+              if(roll_19.pins === roll_19.strike){
+                $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
+                 + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
+                 + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins + roll.strike);
+                $('#plus_20').fadeOut(2000);
+                $('#minus_20').fadeOut(2000);
+                $('#20').text(" X ");
+              }
+} else if (roll_9.pins != roll.strike)  {
     $('.total').text(total());
 
-else if  (roll_9.pins === roll.strike){
-    $('#9').text(roll_9.pins + (roll_11.pins + roll_13.pins));
-    $('.total').text(total() + roll_11.pins + roll_13.pins);
-    $('#plus_10').fadeOut(2000);
-    $('#minus_10').fadeOut(2000);
-    $('#10').text(" X ");
-  }
-
-    if (roll_11.pins === roll.strike){
-      $('#11').text(roll_11.pins + (roll_13.pins + roll_14.pins));
-      $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins);
-      $('#plus_12').fadeOut(2000);
-      $('#minus_12').fadeOut(2000);
-      $('#12').text(" X ");
-    }
-
-      if(roll_13.pins === roll_13.strike){
-        $('#13').text(roll_13.pins + (roll_15.pins + roll_16.pins));
-        $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
-         + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins + roll_15.pins + roll_16.pins);
-        $('#plus_14').fadeOut(2000);
-        $('#minus_14').fadeOut(2000);
-        $('#14').text(":)");
-      }
-
-        if(roll_15.pins === roll_15.strike){
-          $('#15').text(roll_15.pins + (roll_17.pins + roll_18.pins));
-          $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
-           + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
-           + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins);
-          $('#plus_16').fadeOut(2000);
-          $('#minus_16').fadeOut(2000);
-          $('#16').text(":)");
-        }
-
-          if(roll_17.pins === roll_17.strike){
-            $('#17').text(roll_17.pins + (roll_19.pins + roll_20.pins));
-            $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
-             + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
-             + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins);
-            $('#plus_18').fadeOut(2000);
-            $('#minus_18').fadeOut(2000);
-            $('#18').text("X");
-          }
-
-            if(roll_19.pins === roll_19.strike){
-              $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
-               + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
-               + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins + roll.strike);
-              $('#plus_20').fadeOut(2000);
-              $('#minus_20').fadeOut(2000);
-              $('#20').text(" X ");
-            }
-  } else if (roll_9.pins != roll.strike)  {
-      $('.total').text(total());
-
-} if (roll_11.pins === roll.strike){
-  $('#11').text(roll_11.pins + (roll_13.pins + roll_14.pins));
-  $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins);
-  $('#plus_12').fadeOut(2000);
-  $('#minus_12').fadeOut(2000);
-  $('#12').text(" X ");
+  } else if (roll_11.pins === roll.strike){
+    $('#11').text(roll_11.pins + (roll_13.pins + roll_14.pins));
+    $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins);
+    $('#plus_12').fadeOut(2000);
+    $('#minus_12').fadeOut(2000);
+    $('#12').text(" X ");
 
 
-  if(roll_13.pins === roll_13.strike){
-    $('#13').text(roll_13.pins + (roll_15.pins + roll_16.pins));
-    $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
-     + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins + roll_15.pins + roll_16.pins);
-    $('#plus_14').fadeOut(2000);
-    $('#minus_14').fadeOut(2000);
-    $('#14').text(":)");
-  }
-
-    if(roll_15.pins === roll_15.strike){
-      $('#15').text(roll_15.pins + (roll_17.pins + roll_18.pins));
+    if(roll_13.pins === roll_13.strike){
+      $('#13').text(roll_13.pins + (roll_15.pins + roll_16.pins));
       $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
-       + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
-       + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins);
-      $('#plus_16').fadeOut(2000);
-      $('#minus_16').fadeOut(2000);
-      $('#16').text(":)");
+       + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins + roll_15.pins + roll_16.pins);
+      $('#plus_14').fadeOut(2000);
+      $('#minus_14').fadeOut(2000);
+      $('#14').text(":)");
     }
 
-      if(roll_17.pins === roll_17.strike){
-        $('#17').text(roll_17.pins + (roll_19.pins + roll_20.pins));
+      if(roll_15.pins === roll_15.strike){
+        $('#15').text(roll_15.pins + (roll_17.pins + roll_18.pins));
         $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
          + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
-         + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins);
-        $('#plus_18').fadeOut(2000);
-        $('#minus_18').fadeOut(2000);
-        $('#18').text("X");
+         + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins);
+        $('#plus_16').fadeOut(2000);
+        $('#minus_16').fadeOut(2000);
+        $('#16').text(":)");
       }
 
-        if(roll_19.pins === roll_19.strike){
+        if(roll_17.pins === roll_17.strike){
+          $('#17').text(roll_17.pins + (roll_19.pins + roll_20.pins));
           $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
            + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
-           + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins + roll.strike);
-          $('#plus_20').fadeOut(2000);
-          $('#minus_20').fadeOut(2000);
-          $('#20').text(" X ");
-      }
+           + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins);
+          $('#plus_18').fadeOut(2000);
+          $('#minus_18').fadeOut(2000);
+          $('#18').text("X");
+        }
 
-    } else if (roll_9.pins != roll.strike)  {
-        $('.total').text(total());
+          if(roll_19.pins === roll_19.strike){
+            $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
+             + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
+             + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins + roll.strike);
+            $('#plus_20').fadeOut(2000);
+            $('#minus_20').fadeOut(2000);
+            $('#20').text(" X ");
+          }
 
-   } else if (roll_13.pins === roll_13.strike){
-       $('#13').text(roll_13.pins + (roll_15.pins + roll_16.pins));
+} else if (roll_11.pins != roll.strike)  {
+    $('.total').text(total());
+
+} else if (roll_13.pins === roll_13.strike){
+   $('#13').text(roll_13.pins + (roll_15.pins + roll_16.pins));
+   $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
+    + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins + roll_15.pins + roll_16.pins);
+   $('#plus_14').fadeOut(2000);
+   $('#minus_14').fadeOut(2000);
+   $('#14').text(":)");
+
+     if(roll_15.pins === roll_15.strike){
+       $('#15').text(roll_15.pins + (roll_17.pins + roll_18.pins));
        $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
-        + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins + roll_15.pins + roll_16.pins);
-       $('#plus_14').fadeOut(2000);
-       $('#minus_14').fadeOut(2000);
-       $('#14').text(":)");
-
+        + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
+        + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins);
+       $('#plus_16').fadeOut(2000);
+       $('#minus_16').fadeOut(2000);
+       $('#16').text(":)");
      }
 
-       if(roll_15.pins === roll_15.strike){
-         $('#15').text(roll_15.pins + (roll_17.pins + roll_18.pins));
+       if(roll_17.pins === roll_17.strike){
+         $('#17').text(roll_17.pins + (roll_19.pins + roll_20.pins));
          $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
           + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
-          + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins);
-         $('#plus_16').fadeOut(2000);
-         $('#minus_16').fadeOut(2000);
-         $('#16').text(":)");
-       }
+          + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins);
+         $('#plus_18').fadeOut(2000);
+         $('#minus_18').fadeOut(2000);
+        $('#18').text("X");
+        }
 
-         if(roll_17.pins === roll_17.strike){
-           $('#17').text(roll_17.pins + (roll_19.pins + roll_20.pins));
+         if(roll_19.pins === roll_19.strike){
            $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
             + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
-            + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins);
-           $('#plus_18').fadeOut(2000);
-           $('#minus_18').fadeOut(2000);
-           $('#18').text("X");
+            + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins + roll.strike);
+           $('#plus_20').fadeOut(2000);
+           $('#minus_20').fadeOut(2000);
+           $('#20').text(" X ");
+          }
+
+ } else if (roll_13.pins != roll.strike)  {
+     $('.total').text(total());
+
+     if(roll_15.pins === roll_15.strike){
+       $('#15').text(roll_15.pins + (roll_17.pins + roll_18.pins));
+       $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
+        + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
+        + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins);
+       $('#plus_16').fadeOut(2000);
+       $('#minus_16').fadeOut(2000);
+       $('#16').text(":)");
+     }
+
+       if(roll_17.pins === roll_17.strike){
+         $('#17').text(roll_17.pins + (roll_19.pins + roll_20.pins));
+         $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
+          + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
+          + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins);
+         $('#plus_18').fadeOut(2000);
+         $('#minus_18').fadeOut(2000);
+         $('#18').text("X");
+       }
+
+         if(roll_19.pins === roll_19.strike){
+           $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
+            + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
+            + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins + roll.strike);
+           $('#plus_20').fadeOut(2000);
+           $('#minus_20').fadeOut(2000);
+           $('#20').text(" X ");
          }
 
-           if(roll_19.pins === roll_19.strike){
-             $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
-              + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
-              + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins + roll.strike);
-             $('#plus_20').fadeOut(2000);
-             $('#minus_20').fadeOut(2000);
-             $('#20').text(" X ");
-         }
+ } else if (roll_15.pins != roll.strike)  {
+     $('.total').text(total());
 
-       } else if (roll_9.pins != roll.strike)  {
-           $('.total').text(total());
+   if(roll_17.pins === roll_17.strike){
+     $('#17').text(roll_17.pins + (roll_19.pins + roll_20.pins));
+     $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
+      + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
+      + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins);
+     $('#plus_18').fadeOut(2000);
+     $('#minus_18').fadeOut(2000);
+   $('#18').text("X");
+   }
 
+     if(roll_19.pins === roll_19.strike){
+       $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
+        + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
+        + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins + roll.strike);
+       $('#plus_20').fadeOut(2000);
+       $('#minus_20').fadeOut(2000);
+       $('#20').text(" X ");
+      }
 
+} else if (roll_17.pins != roll.strike){
+   $('.total').text(total());
 
-
+} else if (roll_19.pins === roll_19.strike){
+   $('.total').text(total() + roll_3.pins + roll_4.pins + roll_5.pins + roll_6.pins + roll_7.pins + roll_8.pins
+    + roll_9.pins + roll_10.pins + roll_11.pins + roll_12.pins + roll_13.pins + roll_14.pins
+    + roll_15.pins + roll_16.pins + roll_17.pins + roll_18.pins + roll_19.pins + roll_20.pins + roll.strike);
+   $('#plus_20').fadeOut(2000);
+   $('#minus_20').fadeOut(2000);
+   $('#20').text(" X ");
+ }
 }
-
 
 function reset(){
   $('.operators').show();

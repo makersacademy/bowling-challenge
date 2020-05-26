@@ -2,6 +2,15 @@
 Bowling Challenge
 =================
 
+
+Flow chart: 
+
+![flowchart](images/flowchart.png)
+
+Frontend/jquery
+
+![homepage](images/bowling.png)
+
 ## The Task
 
 **THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
@@ -39,11 +48,14 @@ In the image below you can find some score examples.
 
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+<!-- ![Ten Pin Score Example](images/example_ten_pin_scoring.png) -->
+
+
+
 
 # User stories
 =================
-
+```
 As a player,
 So i can play bowling game,
 I would like to see which frame i play.
@@ -71,9 +83,11 @@ I would like to see every each frame score.
 As a player,
 So i have perfect game and my friends dont belive, thought i cheated, 
 I REALLY would like to see (also to show them) 300 points. 
+```
 
 ## Extras
 -----------------------------------------------
+```
 As a player,
 I can play bowling,
 I would like to delete every each frame
@@ -113,8 +127,62 @@ I would like to my advantage point during game
 As a player,
 I can play bowling
 I would like to save my game
+```
 --------------------------------------------
+## Object 
+`Bowler`:
+| Field | Type |
+| --- | -------------------- |
+| Player | SERIAL PRIMARY ID |
+|        | email VARCHAR(200) |
+|        | password  VARCHAR(50) |
 
+
+`Game` :
+| Field | Type |
+| ---    |----------------- |
+| game   | total_score()    |
+|        | bonus_points() |
+|        | @bonus_status = false (default)  |
+|        | @total_score  |
+|        |  @player = new Player |
+|        |  @frame = new Frame |
+
+`frame` table:
+| Field | Type |
+| --- | -------------- |
+| frame      | @number |
+|            | @total_score |
+|            | first_roll |
+|            | @second_roll |
+|            | @pins|
+|            | .strike?|
+|            | .gutter_game? |
+|            | .perfect_game? |
+|            | .spare?|
+|            | .open_game|
+
+------------------------------------------------------------------
+
+
+### Example input:
+User selects knocked down pins number from buttons. ‘1’ pin = [ ]
+
+Logic for total score calculation :
+Frame class
+Frame is default 10
+Every frame has 2 rolls unless the player knocks down 10 pins in the first roll.
+Frame initialize with button number(score) 
+Maybe@score is 2D array
+@score = [ [1,9], [8,2], [10,0].. ] 
+@score[0] means first frame
+@score[0][0] means first frame first roll knocked down pin number.
+@total_scores is sum of every each frame
+Game class
+total score = every each frame sum + bonus points
+
+
+-------------------------------------------------
 
 TODO: make solid and refactor sign up and sign in
 TODO: bcrypted password

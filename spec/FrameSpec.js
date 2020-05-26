@@ -3,12 +3,10 @@
 describe('Frame', function() {
   var frame0;
   var frame1;
-  var game;
 
   beforeEach(function() {
     frame0 = new Frame(0);
     frame1 = new Frame(1);
-    game = jasmine.createSpyObj('game', ['getFrame', 'getFrames', 'calculateGameScore']);
   })
 
   it('has rolls', function() {
@@ -16,25 +14,24 @@ describe('Frame', function() {
     expect(frame0.calculatePins()).toEqual(3);
   })
 
-  describe('calculatePins', function() {
+  describe('#calculatePins', function() {
     it('returns total of roll scores', function() {
       frame0.roll(2, 3);
       expect(frame0.calculatePins()).toEqual(5);
     })
   })
 
-  describe('hasSpare', function() {
+  describe('#hasSpare', function() {
     it('can have a spare', function() {
       frame0.roll(2, 8);
       expect(frame0.hasSpare()).toEqual(true);
     })
   })
 
-  describe('hasStrike', function() {
+  describe('#hasStrike', function() {
     it('can have a strike', function() {
       frame0.roll(10);
       expect(frame0.hasStrike()).toEqual(true);
     })
   })
-
 })

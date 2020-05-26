@@ -17,18 +17,13 @@ $(document).ready(function() {
 
   updateScore();
 
-  // for (var i = 0; i < 10; i++) {
-  //   $('#button' + i).on('click', function() {
-  //
-  //     alert("hello")
-  //   })
-  // }
   $('#button0').on('click', function() {
     frame0.roll(parseInt($('#1roll0').val()), parseInt($('#2roll0').val()))
     game.getFrame(frame0);
     $('#score0').text(frame0.calculatePins());
     updateScore();
   })
+
   $('#button1').on('click', function() {
     frame1.roll(parseInt($('#1roll1').val()), parseInt($('#2roll1').val()))
     game.getFrame(frame1);
@@ -36,6 +31,7 @@ $(document).ready(function() {
     $('#score0').text(game.calculateFrameScore(frame0));
     updateScore();
   })
+
   $('#button2').on('click', function() {
     frame2.roll(parseInt($('#1roll2').val()), parseInt($('#2roll2').val()))
     game.getFrame(frame2);
@@ -44,6 +40,7 @@ $(document).ready(function() {
     $('#score0').text(game.calculateFrameScore(frame0));
     updateScore();
   })
+
   $('#button3').on('click', function() {
     frame3.roll(parseInt($('#1roll3').val()), parseInt($('#2roll3').val()))
     game.getFrame(frame3);
@@ -52,6 +49,7 @@ $(document).ready(function() {
     $('#score1').text(game.calculateFrameScore(frame1));
     updateScore();
   })
+
   $('#button4').on('click', function() {
     frame4.roll(parseInt($('#1roll4').val()), parseInt($('#2roll4').val()))
     game.getFrame(frame4);
@@ -60,6 +58,7 @@ $(document).ready(function() {
     $('#score2').text(game.calculateFrameScore(frame2));
     updateScore();
   })
+
   $('#button5').on('click', function() {
     frame5.roll(parseInt($('#1roll5').val()), parseInt($('#2roll5').val()))
     game.getFrame(frame5);
@@ -68,6 +67,7 @@ $(document).ready(function() {
     $('#score3').text(game.calculateFrameScore(frame3));
     updateScore();
   })
+
   $('#button6').on('click', function() {
     frame6.roll(parseInt($('#1roll6').val()), parseInt($('#2roll6').val()))
     game.getFrame(frame6);
@@ -76,6 +76,7 @@ $(document).ready(function() {
     $('#score4').text(game.calculateFrameScore(frame4));
     updateScore();
   })
+
   $('#button7').on('click', function() {
     frame7.roll(parseInt($('#1roll7').val()), parseInt($('#2roll7').val()))
     game.getFrame(frame7);
@@ -84,6 +85,7 @@ $(document).ready(function() {
     $('#score5').text(game.calculateFrameScore(frame5));
     updateScore();
   })
+
   $('#button8').on('click', function() {
     frame8.roll(parseInt($('#1roll8').val()), parseInt($('#2roll8').val()))
     game.getFrame(frame8);
@@ -92,12 +94,13 @@ $(document).ready(function() {
     $('#score6').text(game.calculateFrameScore(frame6));
     updateScore();
   })
+
   $('#button9').on('click', function() {
     frame9.roll(parseInt($('#1roll9').val()), parseInt($('#2roll9').val()), parseInt($('#3roll9').val()) )
     game.getFrame(frame9);
     $('#score9').text(frame9.calculatePins());
-    $('#score8').text(game.calculateFrameScore(frame8) + game.calculateBonusForLast());
+    $('#score8').text(game.calculateFrameScore(frame8));
     $('#score7').text(game.calculateFrameScore(frame7));
-    $('#final_score').text(game.calculateGameScore() + game.calculateBonusForLast());
+    $('#final_score').text(game.calculateGameScore());
   })
 })

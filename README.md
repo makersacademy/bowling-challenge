@@ -1,8 +1,8 @@
 Bowling Challenge
 =================
 
-Note:  This app has been written during week 6 of the makers course and after studying JavaScript for 1 week. 
-The application is still in development, almost fully functional, and is a true representation of my current learning. 
+Note:  This app has been written during week 6 of the makers course and after studying JavaScript for 1 week.
+The application is still in development, almost fully functional, and is a true representation of my current learning.
 
 Description
 -------
@@ -20,12 +20,11 @@ Instructions
     $ cd bowling-challenge
     $ open SpecRunner.html   # to run jasmine tests
     $ open index.html        # to run JavaScript app
-     
+
 ```    
 
 To Do
 -------
-  * Ensure full test coverage for strike method then make tests pass.
   * Finish off spare frame scoring functionality.
   * Implement bonus rounds for strike and spare scores in the 10th frame.
   * Refactor and test.
@@ -33,17 +32,17 @@ To Do
   * Set up Travis CI to run my tests.
   * Add ESLint to my codebase to ensure it conforms
   * Refactor and test.
-  
+
  Technologies Used
-------- 
-  
+-------
+
  * JavaScript
  * jQuery
  * HTML
  * Jasmine
 
 User Stories
-------- 
+-------
 
 ```
 1. As a player
@@ -51,13 +50,13 @@ User Stories
    I want a scoreboard to keep track of my game.
 
 2. As a player
-   so that I know what my score is 
+   so that I know what my score is
    I want the scoreboard to display my current score.
-   
+
 3. As a player
    so that I know my score for each frame played
    I want the scoreboard to list my score for each frame.
-   
+
 4. As a player
    so that I know what frame I'm currently playing
    I want the scoreboard to list the current frame.
@@ -65,9 +64,9 @@ User Stories
 5. As a player
    so that my score is correct
    the scoreboard should use traditional scoring.
-   
+
  ```  
-   
+
 ## Bowling — how does it work?
 
 ### Strikes

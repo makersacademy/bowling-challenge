@@ -65,14 +65,16 @@ describe("Bowling", function() {
     it("knows how to calculate the score after a strike.", function() {
       bowling.scoring([10,0]);
       bowling.scoring([2,1]);
-      expect(bowling.score).toEqual(16);
+      bowling.scoring([2,2])
+      expect(bowling.score).toEqual(20);
     });
 
     it("knows how to calculate the score after a double strike.", function() {
       bowling.scoring([10,0]);
       bowling.scoring([10,0]);
       bowling.scoring([3,4]);
-      expect(bowling.score).toEqual(47);
+      bowling.scoring([2,2])
+      expect(bowling.score).toEqual(51);
     });
 
     it("knows how to calculate the score after a triple 'turkey' strike.", function() {
@@ -80,7 +82,9 @@ describe("Bowling", function() {
         bowling.scoring([10,0]);
       }
       bowling.scoring([3,4]);
-      expect(bowling.score).toEqual(77);
+      bowling.scoring([2,2])
+      bowling.scoring([2,2])
+      expect(bowling.score).toEqual(85);
     });
 
     it("knows how to calculate the score after several strikes.", function() {
@@ -88,7 +92,9 @@ describe("Bowling", function() {
         bowling.scoring([10,0]);
       }
       bowling.scoring([3,4]);
-      expect(bowling.score).toEqual(167);
+      bowling.scoring([10,0])
+      bowling.scoring([2,2])
+      expect(bowling.score).toEqual(185);
     });
 
     it("know's that a spare has been scored.", function() {

@@ -99,8 +99,8 @@ $(document).ready(function() {
     frame9.roll(parseInt($('#1roll9').val()), parseInt($('#2roll9').val()), parseInt($('#3roll9').val()) )
     game.getFrame(frame9);
     $('#score9').text(frame9.calculatePins());
-    $('#score8').text(game.calculateFrameScore(frame8));
+    $('#score8').text(game.calculateFrameScore(frame8) + game.calculateBonusForLast());
     $('#score7').text(game.calculateFrameScore(frame7));
-    $('#final_score').text(game.calculateGameScore());
+    $('#final_score').text(game.calculateGameScore() + game.calculateBonusForLast());
   })
 })

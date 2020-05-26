@@ -53,9 +53,9 @@ class Game {
     return frame.score = total;
   }
   calculateBonusForLast() {
-    if (this.frames[8].hasStrike()) {
-      console.log(this.frames[9].firstRoll + this.frames[9].secondRoll)
-      return this.frames[9].firstRoll + this.frames[9].secondRoll;
+    if (this.frames[8].hasStrike() && this.frames[9].hasStrike()) {
+      console.log(this.frames[9].secondRoll)
+      return this.frames[9].secondRoll;
     } else {
       return 0;
     }

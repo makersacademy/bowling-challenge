@@ -1,4 +1,7 @@
 class Score {
+  constructor(){
+    this.frames = 0;
+  }
  
   scoring(x) {
     var score = 0 
@@ -7,6 +10,7 @@ class Score {
     var next2 = 0
     
     for(var frame = 0; frame < 10; frame++){
+      
 
       if(this.isStrike(x.rolls[frameIndex])){
         next = x.rolls[frameIndex + 1]
@@ -22,11 +26,12 @@ class Score {
         frameIndex += 2
       }
       else{
-        score += x.rolls[frameIndex] + x.rolls[frameIndex + 1];
-                
-        frameIndex += 2
+        score += x.rolls[frameIndex] + x.rolls[frameIndex + 1]; 
+        
+        frameIndex += 2 
       }
     }
+    this.frames ++
     return score 
   };
   

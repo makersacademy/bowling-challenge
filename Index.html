@@ -3,7 +3,7 @@
   <div id="main">
     <head>
       <script src="js/jquery-2.1.4.min.js"></script>
-      <script type="text/javascript" src="interface.js"></script>
+      <script type="text/javascript" src="src/interface.js"></script>
       <link rel="stylesheet" type="text/css" href="style.css" />
       <script src="src/Game.js"></script>
       <script src="src/Score.js"></script>
@@ -16,6 +16,8 @@
       <section id="buttons">
         <p>
           <div class="pin_buttons" id="pin_buttons">
+            <label for="pins"> Roll 1:  
+            <button id="0">0</button>
             <button id="1">1</button>
             <button id="2">2</button>
             <button id="3">3</button>
@@ -27,7 +29,8 @@
             <button id="9">9</button>
             <button id="10">10</button>
           </div>
-          <div class="new_game" id="new_game">
+
+          <!-- <div class="new_game" id="new_game">
             <form id="players">
               <label for="add_player"> Add game for: 
                 <input id="add_player" type="text" placeholder="Enter player name"></input>
@@ -37,9 +40,9 @@
           </div>
           <div class="reset" id="reset">
             <button id="reset"> Reset</button>
-          </div>
+          </div> -->
           
-          <div>
+          <div class="score_card_table" id="score_card_table">
             <table> 
               <tr>
                 <th></th>
@@ -56,32 +59,32 @@
               </tr>
               <tr>
                 <th> First Roll: </th>
-                  <td><span id="f1-r1"></span>testing</td>
-                  <td><span id="f1-r2"></span>testing</td>
-                  <td><span id="f1-r3"></span>testing</td>
-                  <td><span id="f1-r4"></span>testing</td>
-                  <td><span id="f1-r5"></span>testing</td>
-                  <td><span id="f1-r6"></span>testing</td>
-                  <td><span id="f1-r7"></span>testing</td>
-                  <td><span id="f1-r8"></span>testing</td>
-                  <td><span id="f1-r9"></span>testing</td>
-                  <td><span id="f1-r10"></span>testing</td>
+                  <td><span id="f1-r1"></span></td>
+                  <td><span id="f2-r1"></span></td>
+                  <td><span id="f3-r1"></span></td>
+                  <td><span id="f4-r1"></span></td>
+                  <td><span id="f5-r1"></span></td>
+                  <td><span id="f6-r1"></span></td>
+                  <td><span id="f7-r1"></span></td>
+                  <td><span id="f8-r1"></span></td>
+                  <td><span id="f9-r1"></span></td>
+                  <td><span id="f10-r1"></span></td>
               </tr>
               <tr>
                 <th> Second Roll: </th>
-                  <td><span id="f2-r1"></span>testing</th>
-                  <td><span id="f2-r2"></span>testing</th>
-                  <td><span id="f2-r3"></span>testing</th>
-                  <td><span id="f2-r4"></span>testing</th>
-                  <td><span id="f2-r5"></span>testing</th>
-                  <td><span id="f2-r6"></span>testing</th>
-                  <td><span id="f2-r7"></span>testing</th>
-                  <td><span id="f2-r8"></span>testing</th>
-                  <td><span id="f2-r9"></span>testing</th>
-                  <td><span id="f2-r10"></span>testing</th>
+                  <td><span id="f1-r2"></span></th>
+                  <td><span id="f2-r2"></span></th>
+                  <td><span id="f3-r2"></span></th>
+                  <td><span id="f4-r2"></span></th>
+                  <td><span id="f5-r2"></span></th>
+                  <td><span id="f6-r2"></span></th>
+                  <td><span id="f7-r2"></span></th>
+                  <td><span id="f8-r2"></span></th>
+                  <td><span id="f9-r2"></span></th>
+                  <td><span id="f10-r2"></span></th>
               </tr>
               <tr>
-                <th></th>
+                <th>10th Frame Bonus:</th>
                   <th></th>
                   <th></th>
                   <th></th>
@@ -91,20 +94,20 @@
                   <th></th>
                   <th></th>
                   <th></th>
-                  <td><span id="f2-r10"></span>testing</td>
+                  <td><span id="f2-r10"></span></td>
               </tr>
               <tr>
                 <th> Score: </td>
-                  <th><span id="f1-score"></span>testing</th>
-                  <th><span id="f2-score"></span>testing</th>
-                  <th><span id="f3-score"></span>testing</th>
-                  <th><span id="f4-score"></span>testing</th>
-                  <th><span id="f5-score"></span>testing</th>
-                  <th><span id="f6-score"></span>testing</th>
-                  <th><span id="f7-score"></span>testing</th>
-                  <th><span id="f8-score"></span>testing</th>
-                  <th><span id="f9-score"></span>testing</th>
-                  <th><span id="f10-score"></span>testing</th>
+                  <th><span id="f1-score"></span></th>
+                  <th><span id="f2-score"></span></th>
+                  <th><span id="f3-score"></span></th>
+                  <th><span id="f4-score"></span></th>
+                  <th><span id="f5-score"></span></th>
+                  <th><span id="f6-score"></span></th>
+                  <th><span id="f7-score"></span></th>
+                  <th><span id="f8-score"></span></th>
+                  <th><span id="f9-score"></span></th>
+                  <th><span id="f10-score"></span></th>
               </tr>
             </table>
           </div>

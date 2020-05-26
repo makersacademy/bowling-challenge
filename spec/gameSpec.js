@@ -52,6 +52,6 @@ describe('Game', () => {
       }
       expect(game.rolls).toEqual([9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9])
       expect(game.rolls).not.toContain(0)
-    })
+    });
   });
 });

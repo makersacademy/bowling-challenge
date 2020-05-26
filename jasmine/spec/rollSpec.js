@@ -4,7 +4,7 @@ describe('Roll', function() {
   var roll;
 
   beforeEach(function(){
-    roll = new BowlingGame();
+    roll = new Roll();
   });
 
   it('pins knocked down starts at 0', function() {

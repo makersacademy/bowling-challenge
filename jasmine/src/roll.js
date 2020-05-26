@@ -38,6 +38,37 @@ class Roll {
    }
    return this.pins;
   }
+
+  limit(roll_1, roll_2){
+  let limit = (10 - roll_1.pins);
+  if (roll_2.pins < limit) {
+  roll_2.up();
+  }
+  }
+
+spare(roll_1, roll_2){
+  if(roll_1.pins + roll_2.pins == roll.strike){
+    return "/";
+    }
+  }
+
+
+ //  totalScore(rollScore){
+ //   var sum = rollScore.reduce(function(a, b){
+ //   return a + b;
+ //   }, 0);
+ //   console.log(sum);
+ // }
+
+ rollScore(roll_1, roll_2, roll_3){
+   var rolls = []
+   rolls.push(roll_1.pins, roll_2.pins, roll_3.pins);
+   var sum = rolls.reduce(function(a, b){
+   return a + b;
+   }, 0);
+   return ((sum) + roll_2.pins + roll_3.pins);
+   }
+
   //
   // function strikeCalculator(){
   //   if (roll_1.pins === roll.strike) {
@@ -71,9 +102,6 @@ class Roll {
   //   }
   // }
   //
-
-
-
 
 
   }

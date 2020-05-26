@@ -25,6 +25,7 @@ Instructions
 
 To Do
 -------
+  * Ensure full test coverage for strike method then make tests pass.
   * Finish off spare frame scoring functionality.
   * Implement bonus rounds for strike and spare scores in the 10th frame.
   * Refactor and test.

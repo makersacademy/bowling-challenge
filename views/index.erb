@@ -1,0 +1,10 @@
+<form action = '/users/log-in' method='get'>
+  <%if session[:email]%>
+  <h1>Welcome, <%=session[:email]%></h1> 
+  <%else%>
+  <h1>Welcome, guest. Please log-in! </h1> 
+  <input type='submit' id='log-in'value='log-in'>
+  <%end%>
+</form>
+
+

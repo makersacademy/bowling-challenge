@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+
+<html>
+<center>
+  <head>
+
+  <style>
+
+  body {
+    font-size:18px;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  #centralsection {
+
+    height:1000px;
+  }
+
+  table {
+    border:3px solid ;
+    border-collapse: collapse;
+  }
+
+  td{
+    padding:10px;
+  }
+
+  .first, .second, .third, .fourth, .fifth, .sixth, .seventh, .eighth, .ninth, .tenth {
+    border: 3px solid black;
+    border-right:3px solid;
+  }
+
+  .total {
+    border: 3px solid black;
+    border-left:3px solid black;
+  } 
+
+  div {
+    color: red;
+  }
+
+  </style>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+  </head>
+
+  <body>
+
+  <section id="centralsection">
+    <h1></h1>
+
+      <table id="table" class="tbl">
+      <tr>
+        <td class="first" id="frame1shot1">0</td> <td class="first" id="frame1shot2">0</td> 
+        <td class="second" id="frame2shot1">0</td> <td class="second" id="frame2shot2">0</td>
+        <td class="third" id="frame3shot1">0</td> <td class="third" id="frame3shot2">0</td>
+        <td class="fourth" id="frame4shot1">0</td> <td class="fourth" id="frame4shot2">0</td> 
+        <td class="fifth" id="frame5shot1">0</td> <td class="fifth" id="frame5shot2">0</td>
+        <td class="sixth" id="frame6shot1">0</td> <td class="sixth" id="frame6shot2">0</td>
+        <td class="seventh" id="frame7shot1">0</td> <td class="seventh" id="frame7shot2">0</td> 
+        <td class="eighth" id="frame8shot1">0</td> <td class="eighth" id="frame8shot2">0</td>
+        <td class="ninth" id="frame9shot1">0</td> <td class="ninth" id="frame9shot2">0</td>
+        <td class="tenth" id="frame10shot1">0</td> <td class="tenth" id="frame10shot2">0</td> <td class="tenth" id="frame10shot3">0</td>
+      </tr>
+
+      <tr>
+        <td class="total" id="frame1" colspan="2">0</td>
+        <td class="total" id="frame2" colspan="2">0</td>
+        <td class="total" id="frame3" colspan="2">0</td>
+        <td class="total" id="frame4" colspan="2">0</td>
+        <td class="total" id="frame5" colspan="2">0</td>
+        <td class="total" id="frame6" colspan="2">0</td>
+        <td class="total" id="frame7" colspan="2">0</td>
+        <td class="total" id="frame8" colspan="2">0</td>
+        <td class="total" id="frame9" colspan="2">0</td>
+        <td class="total" id="frame10" colspan="3">0</td>
+      </tr>
+      </td>
+      <tr>
+        <td class="total" id="total" colspan="19">TOTAL :</td>
+        <td class="total" id="total_last" colspan="2">0</td>
+      </tr>
+      </table>
+
+      
+      <form>
+        <input id= "button" type= "button" value="SHOW TOTAL SCORE">
+        <input id= "0" class="pins" type= "button" value="0">
+        <input id= "1" class="pins" type= "button" value="1">
+        <input id= "2" class="pins" type= "button" value="2">
+        <input id= "3" class="pins" type= "button" value="3">
+        <input id= "4" class="pins" type= "button" value="4">
+        <input id= "5" class="pins" type= "button" value="5">
+        <input id= "6" class="pins" type= "button" value="6">
+        <input id= "7" class="pins" type= "button" value="7">
+        <input id= "8" class="pins" type= "button" value="8">
+        <input id= "9" class="pins" type= "button" value="9">
+        <input id= "10" class="pins"  type= "button" value="10">
+      </form>
+     </section>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src='src/Frame.js'></script>
+    <script src='src/Game.js'></script>
+    <script src='src/jquery.js'></script>
+   
+  </body>
+
+</html>

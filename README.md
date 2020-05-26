@@ -2,6 +2,12 @@
 Bowling Challenge
 =================
 
+## About my project: 
+
+- Used JS for front end logic 
+- Tested drove this with Jasmine 
+- Created an interactive page with HTML and JQuery 
+
 ## Features:
 
 - Gutter game (Edge case)
@@ -71,6 +77,15 @@ Interface |
             score card - shows pins knocked + score under + total
             NOTE: 10th if 10 > has extra input 
 
+
+
+## Still to do
+
+- Travis set up 
+- Add 10th frame bonus for strike and spare 
+- spare has / for second roll 
+- Have some kind of strike / spare this. statement < Test driven>
+- CSS 
     
 
 

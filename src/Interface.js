@@ -98,9 +98,22 @@ $(document).ready(function() {
 
   function printPin(n){
     index = score.frames 
+    console.log(roll)
+    if(score.frames === 9 && roll === 1){
+      $('#f' + (index + 1) + '-r1').text(n);
 
-    if(n === 10){
+      roll = 2
+    }
+    else if(score.frames === 9 && roll === 2){
       $('#f' + (index + 1) + '-r2').text(n);
+    
+      roll = 3
+    }
+    else if(roll === 3){
+      $('#f2-r').text(n);
+    }
+    else if(n === 10){
+      $('#f' + (index + 1) + '-r2').text("X");
       roll = 1
     }
     else if(roll === 2){
@@ -113,27 +126,9 @@ $(document).ready(function() {
 
       roll = 2 
     }
-
-    console.log(roll)
   };
 });
 
 
 
- // if(n === 10){
-    //   $('#f'+frame+'-r2').text("X")
-    //   pin += 2
-    // }
-    // else if(game.currentRoll % 2 === 0){
-    //   console.log(game.rolls[frame] + game.rolls[frame - 1])
-    //   $('#f' + frame + '-r2').text(n)
-    //   pin++ 
-    // }
-    // else{
-    //   $('#f' + frame + '-r1').text(n)
-    //   pin++ 
-    // 
 
-// Add third scor 
-// rolling 10 is not working √√√√√
-// spare has / for second roll 

@@ -469,27 +469,8 @@ $(document).ready(function(){
   $('#reset').click(function(){
     score = []
     roll_1.down();
-    $("#1").text(roll_1.pins = score.length);
-    $("#2").text(roll_2.pins = score.length);
-    $("#3").text(roll_3.pins = score.length);
-    $("#4").text(roll_4.pins = score.length);
-    $("#5").text(roll_5.pins = score.length);
-    $("#6").text(roll_6.pins = score.length);
-    $("#7").text(roll_7.pins = score.length);
-    $("#8").text(roll_8.pins = score.length);
-    $("#9").text(roll_9.pins = score.length);
-    $("#10").text(roll_10.pins = score.length);
-    $("#11").text(roll_11.pins = score.length);
-    $("#12").text(roll_12.pins = score.length);
-    $("#13").text(roll_13.pins = score.length);
-    $("#14").text(roll_14.pins = score.length);
-    $("#15").text(roll_15.pins = score.length);
-    $("#16").text(roll_16.pins = score.length);
-    $("#17").text(roll_17.pins = score.length);
-    $("#18").text(roll_18.pins = score.length);
-    $("#19").text(roll_19.pins = score.length);
-    $("#20").text(roll_20.pins = score.length);
-    $(".total").text(score.length);
+    $(".number").text(roll_1.reset(roll_1, score));
+    $(".total").text(roll_1.reset(roll_1, score));
     $('.operators').show();
     $('#strike').hide();
     $('#spare').hide();

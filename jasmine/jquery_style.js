@@ -114,6 +114,10 @@ $(document).ready(function(){
     if(roll_5.pins === roll.strike){
     $('#6').text("X");
   }
+    if (roll_1.pins === roll.strike && roll_3.pins === roll.strike){
+      $('#1').text(roll_1.pins + roll_3.pins + roll_5.pins);
+      score.push(roll_3.pins + roll_5.pins);
+    }
 
     if((roll_3.pins === roll.strike) || (roll_3.pins + roll_4.pins === roll.spare)){
     $('#3').text(roll_3.pins + roll_5.pins);
@@ -157,6 +161,10 @@ $(document).ready(function(){
       $('.total').text(score.length);
         if(roll_7.pins === roll.strike){
          $('#8').text("X");
+        }
+        if (roll_3.pins === roll.strike && roll_5.pins === roll.strike){
+          $('#3').text(roll_3.pins + roll_5.pins + roll_7.pins);
+          score.push(roll_5.pins + roll_7.pins);
         }
         if((roll_5.pins === roll.strike) || (roll_5.pins + roll_6.pins === roll.spare)){
           $('#5').text(roll_5.pins + roll_7.pins);
@@ -202,6 +210,10 @@ $(document).ready(function(){
       if(roll_9.pins === roll.strike){
       $('#10').text("X");
     }
+      if (roll_5.pins === roll.strike && roll_7.pins === roll.strike){
+        $('#5').text(roll_5.pins + roll_7.pins + roll_9.pins);
+        score.push(roll_7.pins + roll_9.pins);
+      }
 
       if((roll_7.pins === roll.strike) || (roll_7.pins + roll_8.pins === roll.spare)){
       $('#7').text(roll_7.pins + roll_9.pins);
@@ -248,6 +260,11 @@ $(document).ready(function(){
       $('.total').text(score.length);
       if(roll_11.pins === roll.strike){
       $('#12').text("X");
+    }
+
+    if (roll_7.pins === roll.strike && roll_9.pins === roll.strike){
+      $('#7').text(roll_7.pins + roll_9.pins + roll_11.pins);
+      score.push(roll_9.pins + roll_11.pins);
     }
 
       if((roll_9.pins === roll.strike) || (roll_9.pins + roll_10.pins === roll.spare)){
@@ -300,6 +317,11 @@ $(document).ready(function(){
     $('#14').text("X");
   }
 
+  if (roll_9.pins === roll.strike && roll_11.pins === roll.strike){
+    $('#9').text(roll_9.pins + roll_11.pins + roll_13.pins);
+    score.push(roll_11.pins + roll_13.pins);
+  }
+
     if((roll_11.pins === roll.strike) || (roll_11.pins + roll_12.pins === roll.spare)){
     $('#11').text(roll_11.pins + roll_13.pins);
     score.push(roll_13.pins);
@@ -347,6 +369,12 @@ $(document).ready(function(){
      if(roll_15.pins === roll.strike){
        $('#16').text("X");
      }
+
+     if (roll_11.pins === roll.strike && roll_13.pins === roll.strike){
+       $('#11').text(roll_11.pins + roll_13.pins + roll_15.pins);
+       score.push(roll_13.pins + roll_15.pins);
+     }
+
      if((roll_13.pins === roll.strike) || (roll_13.pins + roll_14.pins === roll.spare)){
        $('#13').text(roll_13.pins + roll_15.pins);
        score.push(roll_15.pins);
@@ -389,6 +417,11 @@ $(document).ready(function(){
       if(roll_17.pins === roll.strike){
         $('#18').text("X");
        }
+
+     if (roll_13.pins === roll.strike && roll_15.pins === roll.strike){
+       $('#13').text(roll_13.pins + roll_15.pins + roll_17.pins);
+       score.push(roll_15.pins + roll_17.pins);
+     }
       if((roll_15.pins === roll.strike) || (roll_15.pins + roll_16.pins === roll.spare)){
         $('#15').text(roll_15.pins + roll_17.pins);
         score.push(roll_17.pins);
@@ -431,6 +464,12 @@ $(document).ready(function(){
     if(roll_19.pins === roll.strike){
       $('#20').text("X");
     }
+
+    if (roll_15.pins === roll.strike && roll_17.pins === roll.strike){
+      $('#15').text(roll_15.pins + roll_17.pins + roll_19.pins);
+      score.push(roll_17.pins + roll_19.pins);
+    }
+
     if((roll_17.pins === roll.strike) || (roll_17.pins + roll_18.pins === roll.spare)){
       $('#17').text(roll_17.pins + roll_19.pins);
       score.push(roll_17.pins);
@@ -466,11 +505,30 @@ $(document).ready(function(){
     $('.total').text(score.length);
   });
 
+
   $('#reset').click(function(){
     score = []
-    roll_1.down();
-    $(".number").text(roll_1.reset(roll_1, score));
-    $(".total").text(roll_1.reset(roll_1, score));
+    $('#1').text(roll_1.pins = score.length);
+    $('#2').text(roll_2.pins = score.length);
+    $('#3').text(roll_3.pins = score.length);
+    $('#4').text(roll_4.pins = score.length);
+    $('#5').text(roll_5.pins = score.length);
+    $('#6').text(roll_6.pins = score.length);
+    $('#7').text(roll_7.pins = score.length);
+    $('#8').text(roll_8.pins = score.length);
+    $('#9').text(roll_9.pins = score.length);
+    $('#10').text(roll_10.pins = score.length);
+    $('#11').text(roll_11.pins = score.length);
+    $('#12').text(roll_12.pins = score.length);
+    $('#13').text(roll_13.pins = score.length);
+    $('#14').text(roll_14.pins = score.length);
+    $('#15').text(roll_15.pins = score.length);
+    $('#16').text(roll_16.pins = score.length);
+    $('#17').text(roll_17.pins = score.length);
+    $('#18').text(roll_18.pins = score.length);
+    $('#19').text(roll_19.pins = score.length);
+    $('#20').text(roll_20.pins = score.length);
+    $(".total").text(score.length);
     $('.operators').show();
     $('#strike').hide();
     $('#spare').hide();
@@ -481,4 +539,5 @@ $(document).ready(function(){
       return ("/");
     }
   }
+
 });

@@ -32,25 +32,27 @@ class Roll {
     this.pins--;
   }
 
-  reset(){
+  reset(roll_1){
+    roll_1.pins = 5
     if (this.pins != this.DEFAULT_PINS) {
     this.pins--;
+    return this.pins;
    }
-   return this.pins;
   }
 
   limit(roll_1, roll_2){
   let limit = (10 - roll_1.pins);
   if (roll_2.pins < limit) {
   roll_2.up();
+  // return score
   }
   }
 
-spare(roll_1, roll_2){
-  if(roll_1.pins + roll_2.pins == roll.strike){
-    return "/";
+  scoreReset(){
+    if(score.length != 0){
+      score.pop()
     }
-  }
+}
 
 
  //  totalScore(rollScore){

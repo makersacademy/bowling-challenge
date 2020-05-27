@@ -62,8 +62,8 @@ User Stories
    I want the scoreboard to list the current frame.
 
 5. As a player
-   so that my score is correct
-   the scoreboard should use traditional scoring.
+   so that I know my score is correct
+   I want the scoreboard use traditional scoring.
 
  ```  
 

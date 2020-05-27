@@ -23,6 +23,10 @@ $(document).ready(function(){
   var roll_18 = new Roll;
   var roll_19 = new Roll;
   var roll_20 = new Roll;
+  var roll_21 = new Roll;
+  var roll_22 = new Roll;
+  // var roll_23 = new Roll;
+  // var roll_24 = new Roll;
   var reset = new Roll;
   score = []
 
@@ -340,7 +344,7 @@ $(document).ready(function(){
 // //SPARE
 //
   $('#plus_14').click(function() {
-   roll.limit(roll_11, roll_12);
+   roll.limit(roll_13, roll_14);
    $('#14').text(roll_14.pins);
    score.push(roll_14.pins);
    $('#14').text(spare(roll_13, roll_14));
@@ -352,7 +356,6 @@ $(document).ready(function(){
    $('.total').text(score.length);
    }
   });
-
 
   $('#minus_14').click(function() {
     roll_14.down()
@@ -506,6 +509,56 @@ $(document).ready(function(){
   });
 
 
+  $('#plus_21').click(function() {
+    roll_21.up();
+    $('#21').text(roll_21.pins);
+    score.push(roll_21.pins)
+    $('.total').text(score.length);
+    if(roll_21.pins === roll.strike){
+      $('#22').text("X");
+    }
+
+    if (roll_17.pins === roll.strike && roll_19.pins === roll.strike){
+      $('#17').text(roll_17.pins + roll_19.pins + roll_21.pins);
+      score.push(roll_19.pins + roll_21.pins);
+    }
+
+    if((roll_19.pins === roll.strike) || (roll_19.pins + roll_20.pins === roll.spare)){
+      $('#19').text(roll_19.pins + roll_21.pins);
+      score.push(roll_21.pins);
+      $('.total').text(score.length);
+    }
+  });
+
+  $('#minus_21').click(function() {
+    roll_21.down()
+    score.pop();
+    $('#21').text(roll_21.pins);
+    $('.total').text(score.length);
+  });
+
+  $('#plus_22').click(function() {
+    roll.limit(roll_21, roll_22);
+    $('#22').text(roll_22.pins);
+    score.push(roll_22.pins);
+    $('#22').text(spare(roll_21, roll_22));
+    $('.total').text(score.length);
+
+    if(roll_19.pins === roll.strike){
+      $('#19').text(roll_19.pins + roll_21.pins + roll_22.pins);
+      score.push(roll_22.pins);
+      $('.total').text(score.length);
+     }
+  });
+
+  $('#minus_22').click(function() {
+    roll_22.down()
+    score.pop();
+    $('#22').text(roll_22.pins);
+    $('.total').text(score.length);
+  });
+
+
   $('#reset').click(function(){
     score = []
     $('#1').text(roll_1.pins = score.length);
@@ -528,6 +581,10 @@ $(document).ready(function(){
     $('#18').text(roll_18.pins = score.length);
     $('#19').text(roll_19.pins = score.length);
     $('#20').text(roll_20.pins = score.length);
+    $('#21').text(roll_17.pins = score.length);
+    $('#22').text(roll_18.pins = score.length);
+    // $('#23').text(roll_19.pins = score.length);
+    // $('#24').text(roll_20.pins = score.length);
     $(".total").text(score.length);
     $('.operators').show();
     $('#strike').hide();

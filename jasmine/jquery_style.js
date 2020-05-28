@@ -144,7 +144,7 @@ $(document).ready(function(){
     $('#6').text(spare(roll_5, roll_6));
     $('.total').text(score.length);
     if(roll_3.pins === roll.strike){
-        $('#5').text(roll_3.pins + roll_5.pins + roll_6.pins);
+        $('#3').text(roll_3.pins + roll_5.pins + roll_6.pins);
         score.push(roll_6.pins);
         $('.total').text(score.length);
     }

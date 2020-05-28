@@ -39,10 +39,12 @@ body {
   background-color: #fef3d0;
   padding: 10px;
   border-radius: 50%;
+  border: none;
+  box-shadow: 10px -7px 50px -4px rgba(0,0,0,0.3);
 }
 
 table {
-  padding-top: 30px;
+  padding-top: 35px;
   padding: auto;
   text-align: center;
   color: #293044;
@@ -54,20 +56,31 @@ table {
 
 #frame {
   background-color: #f4f3f8;
-  /* fcffe9 */
+  box-shadow: 10px -7px 40px -4px rgba(0,0,0,0.3);
 }
+
+#frame:hover {
+  transform: scale(1.0);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: #FA8072;
+}
+
 .frames {
-  padding-top: 30px;
-  font-size: 15px;
-  background-color: #eeefff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin: 2.5px;
+  font-size: 17px;
+  background-color: #f4f3f8;
   border-color: #f7f6f1;
 }
 
 
 .score {
   margin: 10px auto;
-  font-size: 15px;
-  background-color: #fcffe9;
+  font-size: 17px;
+  background-color: #fff0de;
   border-color: #e6f0ed;
 }
 
@@ -91,31 +104,74 @@ table {
   width: 100px;
   height: 100px;
   font-size: 30px;
+  background-color: #FFFAF0;
   color: #293044;
   padding-bottom: 5px;
   border-radius: 50%;
-  box-shadow: 15px -9px 68px -4px rgba(0,0,0,0.54), color: red;
+  box-shadow: 15px -9px 6px -4px rgba(0,0,0,0.5), color: red;
   border-color: #f7f6f1;
+  outline: none;
+  box-shadow: 10px -7px 15px -4px rgba(0,0,0,0.3);
+  outline: none;
+  color: #293044;
+  border: none;
 }
 
 #reset {
-  font-size: 15px;
-  color: #293044;
-  border-radius: 5%;
+  font-size: 17px;
+  color: #FA8072;
+  border-radius: 10px;
   margin-right: 85%;
-  padding: 5px;
+  padding: 10px;
+  border-radius: 30%;
+  border-color: white;
+  outline: none;
 }
 
 .operators {
   border-radius: 50%;
+  font-size: 17px;
   width: 40px;
   height: 40px;
   margin: 2.5px;
   margin-bottom: 23px;
   margin-top: 23px;
-  box-shadow: 10px -7px 68px -4px rgba(0,0,0,0.3);
-  border-color: #f7f6f1;
+  box-shadow: 10px -7px 15px -4px rgba(0,0,0,0.3);
+  outline: none;
+  color: #293044;
+  border: none;
 }
+
+@keyframes .operators {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+.operators:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: #FA8072;
+}
+
+ #reset:hover {
+   transform: scale(1.1);
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+ }
+
+#totalscore {
+  font-size: 30px;
+}
+/* #plus_1:active {
+text-decoration: none;
+}
+
+#plus_1:active {
+text-decoration: none;
+} */
 
 #one {
   background-color: #eefffe;

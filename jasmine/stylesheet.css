@@ -9,7 +9,7 @@ body {
 }
 
 #container {
-  width: 1300px;
+  width: 1350px;
   height: 770px;
   background-image: linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2)), url(background.jpg);
   margin: 20px auto;
@@ -171,20 +171,20 @@ table {
   font-size: 30px;
 }
 
-#svg1 {
+.svg1 {
    position: absolute;
-   height: 175px;
-   width: 175px;
-   left: 200px;
-   bottom: -80px;
+   left: 169px;
+   bottom: -170px;
 }
 
-#svg2 {
+.svg2 {
    position: absolute;
-   height: 175px;
-   width: 175px;
-   right: 200px;
-   bottom: -80px;
+   right: 155px;
+   bottom: -170px;
+}
+
+path {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 #one {

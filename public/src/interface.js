@@ -18,7 +18,15 @@ $(document).ready(function() {
       hideBtn.show();
     }
     $('#game-score').text(bowling.getTotalScore());
-    $('#frame-' + bowling.frame + '-pos-' + bowling.firstBowl).text(bowling.pins);
+    console.log(bowling.pins)
+    if(bowling.pins === 10) {
+        $('#frame-' + (bowling.frame - 1) + '-pos-false').text('Strike').append("&nbsp;");
+        $('#frame-' + bowling.frame + '-pos-' + bowling.firstBowl).text(`: ${bowling.pins}`);
+      } else if(bowling.firstBowl === false) {
+        $('#frame-' + bowling.frame + '-pos-' + bowling.firstBowl).text(bowling.pins).append("&nbsp;");
+    } else {
+        $('#frame-' + bowling.frame + '-pos-' + bowling.firstBowl).text(`: ${bowling.pins}`);
+    }
   }
 
   $('#btn-zero').click(() => {

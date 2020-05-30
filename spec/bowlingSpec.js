@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Bowling', function() {
     var bowling;
     beforeEach(function() {

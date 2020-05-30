@@ -1,69 +1,69 @@
+'use strict';
+
 class Bowling {
 
   constructor() {
-    this.MAX_FRAME_SCORE = 10;
-    this.MAX_FRAMES = 10;
-    this.firstBowl = true;
-    this.pins;
-    this.frame = 0;
-    this.frameScore;
-    this.gameScore = [[0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0]];
+    this.MAX_FRAME_SCORE = 10
+    this.MAX_FRAMES = 10
+    this.firstBowl = true
+    this.pins
+    this.frame = 0
+    this.frameScore
+    this.gameScore = new Array(12).fill([0,0])
   }
   countScore(score) {
     if(this.frame === this.MAX_FRAMES) {
-      this.firstBowl = true;
-      this.pins;
-      this.frame = 0;
-      this.frameScore;
-      this.gameScore = [[0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0]];
+      this._resetTheGame()
     } else {
-      this._countScoreHelper(score);
+      this._countTotalScore(score)
     }
-    this.pins = score;
+    this.pins = score
   }
-  _countScoreHelper(score) {
+  _resetTheGame() {
+    this.firstBowl = true
+    this.pins
+    this.frame = 0
+    this.frameScore
+    this.gameScore = new Array(12).fill([0, 0])
+  }
+
+  _countTotalScore(score) {
     if(score === this.MAX_FRAME_SCORE && this.firstBowl === true) {
-      this._countHelperWhenStrike(score);
+      this._countWhenStrike(score)
     } else {
-      this._countHelper(score);
+      this._countFrame(score)
     }
   }
   getTotalScore() {
-    let gameScore = this.gameScore;
-    let score_modified = [];
+    let gameScore = this.gameScore
+    let scoreModified = []
     gameScore.forEach(function(item, index) {
       if(gameScore[index][0] === 10) {
-        let indexPlusOne = gameScore[index + 1].reduce((a, b) => a + b, 0);
-        let indexPlusTwo = gameScore[index + 2][0];
-        let score = gameScore[index + 1][0] === 10 ? indexPlusOne + indexPlusTwo : indexPlusOne;
-        let frameTotal = gameScore[index][0]
-        score_modified.push(frameTotal + score)
+        _whenStrike(gameScore, index, scoreModified)
       } else if((gameScore[index].reduce((a, b) => a + b, 0)) === 10) {
-        let frameTotal = gameScore[index].reduce((a, b) => a + b, 0);
-        let score = gameScore[index + 1][0];
-        score_modified.push(frameTotal + score);
+        _whenSpare(gameScore, index, scoreModified)
       } else {
-        score_modified.push(gameScore[index].reduce((a, b) => a + b, 0))
+        _whenFrame(scoreModified, gameScore, index)
       }
     })
-    return score_modified.reduce((a, b) => a + b, 0)
+    return scoreModified.reduce((a, b) => a + b, 0)
   }
   
-  _countHelper(score) {
+  _countFrame(score) {
     if(this.firstBowl === false) {
-      this.gameScore[this.frame] = [this.frameScore, score];
-      this.firstBowl = true;
-      this.frameScore = 0;
-      this.frame += 1;
+      this.gameScore[this.frame] = [this.frameScore, score]
+      this.firstBowl = true
+      this.frameScore = 0
+      this.frame += 1
     } else {
-      this.firstBowl = false;
-      this.frameScore = score;
+      this.firstBowl = false
+      this.frameScore = score
     }
   }
-  _countHelperWhenStrike(score) {
+  _countWhenStrike(score) {
     this.gameScore[this.frame] = [score, 0]
-    this.firstBowl = true;
-    this.frame += 1;
+    this.firstBowl = true
+    this.frame += 1
   }
 
 }

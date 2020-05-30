@@ -26,7 +26,7 @@ learn Javascript conventions as you go along.
 ## UI preview
 
 <p align="center">
-    <img width="600" src="./images/bowling_01.png">      
+    <img width="600" src="./images/bowling_01.png"></br>
     *Bowling Score Board Preview*
 </p>
 

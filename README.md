@@ -1,6 +1,6 @@
 
-Bowling Challenge
-=================
+## **Bowling Challenge**
+
 
 ## The Task
 
@@ -22,6 +22,13 @@ In any order you like:
 
 You might even want to start with ESLint early on in your work — to help you
 learn Javascript conventions as you go along.
+
+## UI preview 
+
+<p align="center">
+    <img width="600" src="./images/bowling_01.png">  
+    *Bowling Score Board Preview*
+</p>
 
 ## Bowling — how does it work?
 
@@ -75,8 +82,3 @@ count towards your score.
 rolling a bowling ball. The ramp is for physical disabilities and not to be used to
 just increase a score.
 - Bumpers are not allowed.
-
-<p align="center">
-    <img width="600" src="./images/bowling_01.png">  
-    *Bowling Score Board Preview* 
-</p>

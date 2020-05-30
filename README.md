@@ -23,10 +23,10 @@ In any order you like:
 You might even want to start with ESLint early on in your work — to help you
 learn Javascript conventions as you go along.
 
-## UI preview 
+## UI preview
 
 <p align="center">
-    <img width="600" src="./images/bowling_01.png">  
+    <img width="600" src="./images/bowling_01.png">      
     *Bowling Score Board Preview*
 </p>
 

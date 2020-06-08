@@ -1,0 +1,133 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Phil's Bowling Scorecard</title>
+  <meta name="author" content="Phil Vigus">
+
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <div class="scorecard-container">
+    <div class="input-button-container">
+      <input id="input-score-0" class="input-button" type="button" value="0">
+      <input id="input-score-1" class="input-button" type="button" value="1">
+      <input id="input-score-2" class="input-button" type="button" value="2">
+      <input id="input-score-3" class="input-button" type="button" value="3">
+      <input id="input-score-4" class="input-button" type="button" value="4">
+      <input id="input-score-5" class="input-button" type="button" value="5">
+      <input id="input-score-6" class="input-button" type="button" value="6">
+      <input id="input-score-7" class="input-button" type="button" value="7">
+      <input id="input-score-8" class="input-button" type="button" value="8">
+      <input id="input-score-9" class="input-button" type="button" value="9">
+      <input id="input-score-10" class="input-button" type="button" value="10">
+      <input id="reset-game" class="input-button input-button__enabled" type="button" value="X">
+    </div>
+
+    <div class="scores standard-border">
+      <div class="frame">
+        <div class="frame-scores">
+          <div id="frame-0-score-1" class="frame-score-1"></div>
+          <div id="frame-0-score-2" class="frame-score-2"></div>
+        </div>
+        <div id="frame-0-total" class="frame-total">
+        </div>
+      </div>
+      <div class="frame">
+        <div class="frame-scores">
+          <div id="frame-1-score-1" class="frame-score-1"></div>
+          <div id="frame-1-score-2" class="frame-score-2"></div>
+        </div>
+        <div id="frame-1-total" class="frame-total">
+        </div>
+      </div>
+      <div class="frame">
+        <div class="frame-scores">
+          <div id="frame-2-score-1" class="frame-score-1"></div>
+          <div id="frame-2-score-2" class="frame-score-2"></div>
+        </div>
+        <div id="frame-2-total" class="frame-total">
+        </div>
+      </div>
+      <div class="frame">
+        <div class="frame-scores">
+          <div id="frame-3-score-1" class="frame-score-1"></div>
+          <div id="frame-3-score-2" class="frame-score-2"></div>
+        </div>
+        <div id="frame-3-total" class="frame-total">
+        </div>
+      </div>
+      <div class="frame">
+        <div class="frame-scores">
+          <div id="frame-4-score-1" class="frame-score-1"></div>
+          <div id="frame-4-score-2" class="frame-score-2"></div>
+        </div>
+        <div id="frame-4-total" class="frame-total">
+        </div>
+      </div>
+      <div class="frame">
+        <div class="frame-scores">
+          <div id="frame-5-score-1" class="frame-score-1"></div>
+          <div id="frame-5-score-2" class="frame-score-2"></div>
+        </div>
+        <div id="frame-5-total" class="frame-total">
+        </div>
+      </div>
+      <div class="frame">
+        <div class="frame-scores">
+          <div id="frame-6-score-1" class="frame-score-1"></div>
+          <div id="frame-6-score-2" class="frame-score-2"></div>
+        </div>
+        <div id="frame-6-total" class="frame-total">
+        </div>
+      </div>
+      <div class="frame">
+        <div class="frame-scores">
+          <div id="frame-7-score-1" class="frame-score-1"></div>
+          <div id="frame-7-score-2" class="frame-score-2"></div>
+        </div>
+        <div id="frame-7-total" class="frame-total">
+        </div>
+      </div>
+      <div class="frame">
+        <div class="frame-scores">
+          <div id="frame-8-score-1" class="frame-score-1"></div>
+          <div id="frame-8-score-2" class="frame-score-2"></div>
+        </div>
+        <div id="frame-8-total" class="frame-total">
+        </div>
+      </div>
+      <div class="frame">
+        <div class="frame-scores">
+          <div id="frame-9-score-1" class="frame-score-1"></div>
+          <div id="frame-9-score-2" class="frame-score-2"></div>
+          <div id="frame-9-score-3" class="frame-score-2"></div>
+        </div>
+        <div id="frame-9-total" class="frame-total">
+        </div>
+      </div>
+      <div class="frame">
+        <div id="game-total"></div>
+      </div>
+    </div>
+
+    <div class="message-display">
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
+  <script src="./src/model/frame.js"></script>
+  <script src="./src/model/frame-10.js"></script>
+  <script src="./src/model/game.js"></script>
+  <script src="./src/controllers/message-display-controller.js"></script>
+  <script src="./src/controllers/reset-button-controller.js"></script>
+  <script src="./src/controllers/score-button-controller.js"></script>
+  <script src="./src/controllers/frame-score-controller.js"></script>
+  <script src="./src/controllers/gamecard-controller.js"></script>
+  <script src="./src/index.js"></script>
+</body>
+</html>

@@ -19,12 +19,10 @@ class Scorecard {
   }
 
   record(score) {
-    if (this.gameOver()) {
-      throw "The game is over";
-    }
-    if (!this.currentAvailableRolls.includes(score)) {
+    if (this.gameOver()) throw "The game is over";
+    if (!this.currentAvailableRolls.includes(score))
       throw "Over total of 10 for frame";
-    }
+
     let frame = this.frames[this.frame];
     let prev1 = this.frame > 0 ? this.frames[this.frame - 1] : false;
     let prev2 = this.frame > 1 ? this.frames[this.frame - 2] : false;
@@ -49,7 +47,7 @@ class Scorecard {
     if (this.currentRoll === 1 && score != 10) {
       this.currentAvailableRolls = [...this.DEFAULT_AVAILABLE_ROLLS];
       this.currentAvailableRolls.splice(11 - score, score);
-      } else {
+    } else {
       this.currentAvailableRolls = [...this.DEFAULT_AVAILABLE_ROLLS];
     }
   }
@@ -79,10 +77,10 @@ class Scorecard {
 
   advance(frame) {
     if (frame.isComplete()) {
-      this.frame++
-      this.currentRoll = 1
+      this.frame++;
+      this.currentRoll = 1;
     } else {
-      this.currentRoll++
+      this.currentRoll++;
     }
   }
 

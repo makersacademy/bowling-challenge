@@ -28,7 +28,6 @@ describe('Frame', () => {
       frame.roll2 = 10
       expect(frame.isComplete()).toBe(true);
     });
-
   });
 
   describe('isSpare()', () => {

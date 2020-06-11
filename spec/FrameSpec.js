@@ -23,6 +23,12 @@ describe('Frame', () => {
       expect(frame.isComplete()).toBe(true);
     });
 
+    it('if the frame is a gutter then ten should be true', () => {
+      frame.roll1 = 0
+      frame.roll2 = 10
+      expect(frame.isComplete()).toBe(true);
+    });
+
   });
 
   describe('isSpare()', () => {

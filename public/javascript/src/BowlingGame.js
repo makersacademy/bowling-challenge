@@ -8,8 +8,8 @@ class BowlingGame {
         return this._id.toString()
     }
 
-    addScore(score, callback) {
-        $.post('/score', { id: this.getId(), value: score }, callback)
+    addScore(id, score, callback) {
+        $.post('/score', { id: id, value: score }, callback)
     }
 
     getScore() {

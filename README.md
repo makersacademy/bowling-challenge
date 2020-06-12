@@ -48,3 +48,11 @@ A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 str
     - Controlling the flow of scoring from frame to frame
     - If it is the 10th frame, calculating the final score correctly
     - Calculating score based on user input of bowls
+    
+## Class Diagram:
+
+<p align="center">
+<img src=/images/ClassDiagram.png width=30%>
+</p><br><br>
+
+I expect to add more functionality or amend these intial thoughts once I begin to create first tests and write some code.

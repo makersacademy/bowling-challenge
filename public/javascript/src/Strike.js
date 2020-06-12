@@ -9,6 +9,10 @@ class Strike {
         return this._id
     }
 
+    getScore2() {
+        return this._score2
+    }
+
     updateScore(value) {
         if (this._score1) {
             this._score2 = value;

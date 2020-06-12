@@ -18,6 +18,18 @@ describe("BowlingGame", function(){
         expect(newGame.getId()).toEqual('31')
     })
 
+    it('creates an instance of spare when spare called', function() {
+        newGame.spare(5, 'callback')
+        expect(newGame.getSpares()[0]).toBeInstanceOf(Spare)
+    })
+
+    it('creates an instance of strike when strike called', function() {
+        newGame.strike(5, 'callback')
+        expect(newGame.getSpares()[0]).toBeInstanceOf(Spare)
+    })
+
+    it('checkSpares will remove the ')
+
     
 
 })

@@ -2,6 +2,8 @@ class BowlingGame {
 
     constructor() {
         this._id = 11
+        this._strikes = []
+        this._spares = []
     }
 
     getId() {
@@ -17,6 +19,22 @@ class BowlingGame {
             var scores = json.parse(data);
             callback(scores);
         })
+    }
+
+    getSpares() {
+        return this._spares
+    }
+
+    getStrikes() {
+        return this._strikes
+    }
+
+    spare(value, callback) {
+        this._spares.push(new Spare(this.getId(), value));
+    }
+
+    strike(callback) {
+        this._strikes.push(new Strike(this.getId()));
     }
 
     updateId(score = null) {

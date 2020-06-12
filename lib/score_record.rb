@@ -27,7 +27,8 @@ class ScoreRecord
     end
 
     def update(id, value)
-        @record[find_id(id)][:score] = value
+        index = find_id(id)
+        @record[index][:score] = value.to_i
     end
 
     def find_id(id)
@@ -35,7 +36,7 @@ class ScoreRecord
     end
 
     def self.instance
-        @score ||= ScoreRecord.new
+        @score ||= self.new
     end
 
 end  

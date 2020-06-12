@@ -14,11 +14,46 @@ class BowlingGame {
         $.post('/score', { id: id, value: score }, callback)
     }
 
-    getScore() {
-        $.get('/score', function(data) {
-            var scores = json.parse(data);
+    getScore(callback) {
+        $.get("/score", function(data) {
+            var scores = JSON.parse(data);
             callback(scores);
         })
+    }
+
+    strikeScored(callback) {
+        this.endOfTurn(10, callback);
+        this.strike(callback)
+        this.updateId()
+    }
+
+    spareScored(value, callback) {
+        this.endOfTurn(value, callback);
+        this.spare(value, callback)
+        this.updateId()
+    }
+
+    score(value, callback) {
+        this.endOfTurn(value, callback);
+        this.addScore(this.getId(), value, callback);
+        this.updateId();
+    }
+
+    endOfTurn(value, callback) {
+        if (this.checkSparesStrikes(this.getStrikes())) {
+            this.strikesSparesUpdate(this.getStrikes());
+            var strikeScore = this.getStrikes()[0];
+            if (strikeScore.getScore2()) {
+                this.addScore(strikeScore.getId(), strikeScore.total(), callback);
+                this.deleteFirstValue(this.getStrikes())
+            }
+        };
+        if (this.checkSparesStrikes(this.getSpares())) {
+            this.strikesSparesUpdate(this.getSpares());
+            var spareScore = this.getSpares()[0];
+            this.addScore(spareScore.getId(), spareScore.total(), callback);
+            this.deleteFirstValue(this.getSpares())
+        };
     }
 
     getSpares() {
@@ -30,11 +65,32 @@ class BowlingGame {
     }
 
     spare(value, callback) {
-        this._spares.push(new Spare(this.getId(), value));
+        var id = this.getId()
+        this._spares.push(new Spare(id, value));
+    }
+
+    strikesSparesUpdate(array, value) {
+        array.forEach( function(instance){
+            instance.updateScore(value);
+        })
     }
 
     strike(callback) {
-        this._strikes.push(new Strike(this.getId()));
+        var id = this.getId()
+        var strikeInstance = new Strike(id)
+        this._strikes.push(strikeInstance);
+    }
+
+    checkSparesStrikes(array) {
+        if (array.length === 0) {
+            return false
+        } else {
+            return true
+        }
+    }
+
+    deleteFirstValue(array) {
+        array.shift()
     }
 
     updateId(score = null) {

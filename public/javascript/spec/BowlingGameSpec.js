@@ -24,11 +24,29 @@ describe("BowlingGame", function(){
     })
 
     it('creates an instance of strike when strike called', function() {
-        newGame.strike(5, 'callback')
-        expect(newGame.getSpares()[0]).toBeInstanceOf(Spare)
+        newGame.strike('callback')
+        expect(newGame.getStrikes()[0]).toBeInstanceOf(Strike)
     })
 
-    it('checkSpares will remove the ')
+    it('deleteSpares will remove the first value in array', function() {
+        newGame.spare(2, 'callback')
+        newGame.spare(5, 'callback')
+        newGame.deleteFirstValue(newGame.getSpares())
+        expect(newGame.getSpares().length).toEqual(1)
+    })
+
+    it('deleteSpares will remove the first value in array', function() {
+        newGame.strike('callback')
+        newGame.strike('callback')
+        newGame.deleteFirstValue(newGame.getStrikes())
+        expect(newGame.getStrikes().length).toEqual(1)
+    })
+
+    it('checks if strikes has values', function() {
+        expect(newGame.checkSparesStrikes(newGame.getStrikes())).toEqual(false)
+        newGame.strike('callback')
+        expect(newGame.checkSparesStrikes(newGame.getStrikes())).toEqual(true)
+    })
 
     
 

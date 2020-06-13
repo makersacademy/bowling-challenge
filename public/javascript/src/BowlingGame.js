@@ -24,7 +24,7 @@ class BowlingGame {
     strikeScored(callback) {
         this.endOfTurn(10, callback);
         this.strike(callback)
-        this.updateId()
+        this.updateId('strike')
     }
 
     spareScored(value, callback) {
@@ -41,7 +41,7 @@ class BowlingGame {
 
     endOfTurn(value, callback) {
         if (this.checkSparesStrikes(this.getStrikes())) {
-            this.strikesSparesUpdate(this.getStrikes());
+            this.strikesSparesUpdate(this.getStrikes(), value);
             var strikeScore = this.getStrikes()[0];
             if (strikeScore.getScore2()) {
                 this.addScore(strikeScore.getId(), strikeScore.total(), callback);
@@ -49,7 +49,7 @@ class BowlingGame {
             }
         };
         if (this.checkSparesStrikes(this.getSpares())) {
-            this.strikesSparesUpdate(this.getSpares());
+            this.strikesSparesUpdate(this.getSpares(), value);
             var spareScore = this.getSpares()[0];
             this.addScore(spareScore.getId(), spareScore.total(), callback);
             this.deleteFirstValue(this.getSpares())

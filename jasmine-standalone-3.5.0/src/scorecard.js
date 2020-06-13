@@ -20,3 +20,7 @@ Scorecard.prototype.rollResult = function(result) {
 Scorecard.prototype.reset = function() {
   this.pins = 10;
 }
+
+Scorecard.prototype.strike = function() {
+  this.pins = 0;
+}

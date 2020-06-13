@@ -29,6 +29,11 @@ describe('records roll', function () {
     expect(scorecard.pins).toEqual(9);
   });
 
+  it('records a strike', function () {
+    scorecard.strike();
+    expect(scorecard.pins).toEqual(0);
+  });
+
   it('raises error if user enters +10 points', function () {
     expect(scorecard.rollResult(11)).toBe("Error: Please enter a result from 1-10");
     expect(scorecard.pins).toEqual(scorecard.pins)
@@ -39,9 +44,6 @@ describe('records roll', function () {
     scorecard.reset();
     expect(scorecard.pins).toEqual(10)
     });
-  });
-
-describe('adds roll result', function () {
 
   it('records the result to the scorecard', function () {
     scorecard.rollResult(1);

@@ -15,4 +15,10 @@ describe('Frame', function() {
     frame.add(8);
     expect(frame.scores).toEqual([8]);
   });
+
+  it('Should be able to return a total for the frame', function() {
+    frame.add(5);
+    frame.add(4);
+    expect(frame.total()).toEqual(9);
+  })
 });

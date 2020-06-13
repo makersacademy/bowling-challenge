@@ -10,8 +10,12 @@ Scorecard.prototype.rollResult = function(result) {
   this.score = this.score += result;
 
   if(result > 10) {
-    this.pins = this.pins - result
-    this.score = this.score - result
+    this.pins = this.pins - result;
+    this.score = this.score - result;
     return "Error: Please enter a result from 1-10";
   };
 };
+
+Scorecard.prototype.reset = function() {
+  this.pins = 10;
+}

@@ -33,7 +33,13 @@ describe('records roll', function () {
     expect(scorecard.rollResult(11)).toBe("Error: Please enter a result from 1-10");
     expect(scorecard.pins).toEqual(scorecard.pins)
   });
-});
+
+  it('resets the pins', function () {
+    scorecard.rollResult(2);
+    scorecard.reset();
+    expect(scorecard.pins).toEqual(10)
+    });
+  });
 
 describe('adds roll result', function () {
 
@@ -42,5 +48,4 @@ describe('adds roll result', function () {
     expect(scorecard.score).toEqual(1);
   });
 });
-
-  });
+});

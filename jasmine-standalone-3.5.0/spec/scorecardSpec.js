@@ -13,4 +13,8 @@ describe('Scorecard', function () {
   it('starts with a player', function () {
     expect(scorecard.player).toEqual(1);
   });
+
+  it('starts with 10 frames', function () {
+    expect(scorecard.frames).toEqual(10);
+  });
 });

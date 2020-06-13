@@ -42,17 +42,17 @@ $('document').ready(function() {
     })
 
     function buttonCheck() {
-        if (game.getId().slice(-1) === '1') {
-                $('#spare').prop('disabled', true);
-                $('#strike').prop('disabled', false);
-            } else {
-                $('#spare').prop('disabled', false);;
-                $('#strike').prop('disabled', true);
-            }
+        if (parseInt(game.getId()) >= 102) {
+            $('#spare').prop('disabled', false);
+            $('#strike').prop('disabled', false);
+        } else if (game.getId().slice(-1) === '1') {
+            $('#spare').prop('disabled', true);
+            $('#strike').prop('disabled', false);
+        } else {
+            $('#spare').prop('disabled', false);;
+            $('#strike').prop('disabled', true);
+        }
     }
-
-
-
 
     function updateScores() { 
         game.getScore( function(data) {
@@ -66,13 +66,14 @@ $('document').ready(function() {
         }
 
         function endGame() {
-            if (parseInt(game.getId()) > 102) {
+            if (parseInt(game.getId()) > 103) {
             $('#strike').prop('disabled', true);
             $('#spare').prop('disabled', true);
             $('#gutter').prop('disabled', true);
             $('#pinsGo').prop('disabled', true);
             $('#pins').prop('disabled', true);
             finalScore();
+            game.clear()
         } else {
             $('#gutter').prop('disabled', false);
             $('#pinsGo').prop('disabled', false);

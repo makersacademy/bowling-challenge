@@ -24,13 +24,13 @@ class BowlingGame {
     strikeScored(callback) {
         this.endOfTurn(10, callback);
         this.strike(callback)
-        this.updateId('strike')
+        this.finalFrameId('strike')
     }
 
     spareScored(value, callback) {
         this.endOfTurn(value, callback);
         this.spare(value, callback)
-        this.updateId()
+        this.finalFrameId()
     }
 
     score(value, callback) {
@@ -110,6 +110,19 @@ class BowlingGame {
 
     finalTotal(array) {
        return array.reduce((a, b) => a + b, 0)
+    }
+
+    finalFrameId(value = null) {
+        if (this._id > 100){
+            this._id += 1
+        } else {
+            this.updateId(value)
+        }
+    }
+
+    clear() {
+        this._strikes = []
+        this._spares = []
     }
 
 }

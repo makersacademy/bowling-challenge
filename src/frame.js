@@ -19,6 +19,12 @@ class Frame {
   times2Bonus() {
     if (this.scores[0] === 10) {
       return true;
-    }
+    };
+  }
+
+  times1Bonus() {
+    if (this.scores[0] + this.scores[1] === 10) {
+      return true;
+    };
   }
 }

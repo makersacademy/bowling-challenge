@@ -26,4 +26,10 @@ describe('Frame', function() {
     frame.add(10);
     expect(frame.times2Bonus()).toBeTruthy();
   })
+
+  it('Should be able to check if both bowls = 10', function() {
+    frame.add(5);
+    frame.add(5);
+    expect(frame.times1Bonus()).toBeTruthy();
+  })
 });

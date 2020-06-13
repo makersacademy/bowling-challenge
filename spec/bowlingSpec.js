@@ -6,7 +6,7 @@ describe('Bowling', function() {
 
   beforeEach(function() {
     bowling = new Bowling();
-    frame = jasmine.createSpyObj('frame', ['add', 'total', 'spare'])
+    frame = jasmine.createSpyObj('frame', ['add', 'total', 'spare', 'strike'])
   });
 
   it('Should construct with an empty array to store bowls', function() {
@@ -40,7 +40,15 @@ describe('Bowling', function() {
     bowling.nextFrame()
     bowling.addFrame(frame);
     bowling.add(8);
-    expect(frame.add).toHaveBeenCalledWith(8);
+    expect(frame.spare).toHaveBeenCalledTimes(1);
   });
 
+  it('Should check if the last frame needs a bonus score for a strike', function() {
+    bowling.addFrame(frame);
+    bowling.add(10);
+    bowling.nextFrame()
+    bowling.addFrame(frame);
+    bowling.add(4);
+    expect(frame.strike).toHaveBeenCalledTimes(1);
+  })
 });

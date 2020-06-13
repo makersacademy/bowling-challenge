@@ -18,11 +18,19 @@ class Bowling {
     let i = this.frameNum
     this.gameFrames[i].add(num)
     this.spareCheck(num);
+    this.strikeCheck(num)
   }
 
   spareCheck(num) {
     let i = this.frameNum;
     if (this.gameFrames.length > 1 && this.gameFrames[i-1].spare()) {
+      this.gameFrames[i-1].add(num);
+    }
+  }
+
+  strikeCheck(num) {
+    let i = this.frameNum;
+    if (this.gameFrames.length > 1 && this.gameFrames[i-1].strike()) {
       this.gameFrames[i-1].add(num);
     }
   }

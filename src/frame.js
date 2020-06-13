@@ -23,8 +23,10 @@ class Frame {
   }
 
   spare() {
-    if (this.scores[0] + this.scores[1] === 10) {
+    if (this.scores.length > 1 && this.scores[0] + this.scores[1] === 10) {
       return true;
-    };
+    } else {
+      return false;
+    }
   }
 }

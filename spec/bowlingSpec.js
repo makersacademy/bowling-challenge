@@ -12,6 +12,11 @@ describe('Bowling', function() {
   });
 
   it('Should construct with a frame tracker starting at 0', function() {
-    expect(bowling.frameNum).toEqual(0)
-  })
+    expect(bowling.frameNum).toEqual(0);
+  });
+
+  it('Should have a method to increment frames', function() {
+    bowling.nextFrame();
+    expect(bowling.frameNum).toEqual(1);
+  });
 });

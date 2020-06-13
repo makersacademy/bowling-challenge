@@ -21,4 +21,10 @@ class Frame {
     }
   }
 
+  isASpare() {
+    if(this.bowlOne + this.bowlTwo === 10); {
+      return true;
+    }
+  }
+
 };

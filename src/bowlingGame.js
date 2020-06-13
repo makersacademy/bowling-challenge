@@ -11,13 +11,12 @@ class BowlingGame {
   score() {
     let result = 0;
     let rollIndex = 0;
-  
-    for(let turn = 0; turn < 10; turn++){
+    
       if (this.rolls[rollIndex] == 10) {
         result += parseFloat(this.rolls[rollIndex]) + parseFloat(this.rolls[rollIndex + 1]) + parseFloat(this.rolls[rollIndex + 2]);
         rollIndex ++;
       }
-      else if (this.rolls[rollIndex] + this.rolls[rollIndex + 1] == 10) {
+      else if (parseFloat(this.rolls[rollIndex]) + parseFloat(this.rolls[rollIndex + 1]) == 10) {
       result += parseFloat(this.rolls[rollIndex]) + parseFloat(this.rolls[rollIndex + 1]) + parseFloat(this.rolls[rollIndex + 2]);
       rollIndex += 2;
       }
@@ -28,9 +27,4 @@ class BowlingGame {
     return (result);
   }
   }
-
-  totalScore(){
-    this.total.push(this.score());
-    console.log(this.totalScore)
-  }
-}
+// }

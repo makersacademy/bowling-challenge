@@ -15,7 +15,7 @@ describe('Scorecard', function () {
   });
 
   it('starts with 10 frames', function () {
-    expect(scorecard.frames).toEqual(10);
+    expect(scorecard.frame).toEqual(10);
   });
 
   it('starts with 10 pins', function () {
@@ -46,6 +46,14 @@ describe('adds roll result', function () {
   it('records the result to the scorecard', function () {
     scorecard.rollResult(1);
     expect(scorecard.score).toEqual(1);
+  });
+});
+
+describe('reduces frame number after each frame', function() {
+
+  it('reduces frame when score recorded', function() {
+    scorecard.rollResult(1);
+    expect(scorecard.frame).toEqual(9)
   });
 });
 });

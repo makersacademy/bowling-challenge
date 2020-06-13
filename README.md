@@ -1,77 +1,51 @@
+# Bowling game 
 
-Bowling Challenge
-=================
+I must admit, at first glance this is a daunting challenge to take on single handedly. Sure on the surface it doesn't seem like much but in reality it is. 
 
+Over the first weekend I am going to be working out how the back end is going to work. at a basic level I have worked out that I will need the following for my code to work.
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+- A way to keep track of what frame it is
+- A way to increment the frame
+- A way to keep track of how many balls have been bowled in order to increment frames
+- A way to check if the first bowl was a strike (10 pins) so that we increment frames
+- A way to store each bowl/score for the current frame. 
+- A way to add up each frame to give the overall score and score per frame. 
 
-## The Task
+This does not seem too bad, the hard part comes in the way bowling is scored. 
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+if the first bowl is a strike, then the next two bowls scored are added as a bonus to that frame. if a spare is rolled (2 bowls knock over all pins) then the next bowl is added as a bonus to that frame. So as an example below
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+```
+bowlOne = strike
+frameOne = [10]
+frameTwo starts
+```
+```
+bowlOne = strike
+frameOne = [10, 10]
+frameTwo = [10]
+frameThree starts
+```
+```
+bowlOne = 8
+frameOne = [10, 10, 8] => frameOne score = 28
+frameTwo = [10, 8]
+frameThree = [8]
+bowlTwo = 1
+frameTwo = [10, 8, 1] => frameTwo score = 19 => total score 47
+frameThree = [8, 1] => frameThree score = 9 => total score 56
+frameFour starts
+```
+With this in mind, we can see that we may not be able to give the first round a score until the third frames first bowl. So because of this I now know:
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+- The code may need to keep track of 3 frames at a time
+- Each bowl, the code will need to check any previous frames and work out if this bowl needs to be added or not
+- Once a frame is over the code will need to total the frames scores and store them/pass them to our HTML page.
+- *it may be worth thinking about deleting old/completed frames*
 
-As usual please start by
+Looking at the above requirements I now know the following important points:
 
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
-
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
-
-## Bowling — how does it work?
-
-### Strikes
-
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
-
-### Spares
-
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-### 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-### Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-### Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+- I will only need to track a max of **three frames** at a time
+- Each frame can have a max of **three scores** and a min of **two scores** before it needs to be totaled
+- If the **first score** in a frame is 10 then we will need to add the **following two scores** to that frame
+- if by the **second score** the total of a frame is 10 then the **following score** needs to be added to that frame. 

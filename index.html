@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+      <link rel="stylesheet" href="style.css">
+    <title>Bowling Scorecard</title>
+  </head>
+  <body>
+    <h1>Bowling Scorecard</h1>
+    <table class="frames">
+      <tr>
+        <th></th>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+        <th>7</th>
+        <th>8</th>
+        <th>9</th>
+        <th>10</th>
+      </tr>
+      <tr>
+        <td>Roll 1</td>
+        <td><input id="1roll0" type="text" name="frame0roll" value=""></td>
+        <td><input id="1roll1" type="text" name="frame1roll" value=""></td>
+        <td><input id="1roll2" type="text" name="frame2roll" value=""></td>
+        <td><input id="1roll3" type="text" name="frame3roll" value=""></td>
+        <td><input id="1roll4" type="text" name="frame4roll" value=""></td>
+        <td><input id="1roll5" type="text" name="frame5roll" value=""></td>
+        <td><input id="1roll6" type="text" name="frame6roll" value=""></td>
+        <td><input id="1roll7" type="text" name="frame7roll" value=""></td>
+        <td><input id="1roll8" type="text" name="frame8roll" value=""></td>
+        <td><input id="1roll9" type="text" name="frame9roll" value=""></td>
+      </tr>
+      <tr>
+        <td>Roll 2</td>
+        <td><input  id="2roll0" type="text" name="frame0roll" value=""></td>
+        <td><input  id="2roll1" type="text" name="frame1roll" value=""></td>
+        <td><input  id="2roll2" type="text" name="frame2roll" value=""></td>
+        <td><input  id="2roll3" type="text" name="frame3roll" value=""></td>
+        <td><input  id="2roll4" type="text" name="frame4roll" value=""></td>
+        <td><input  id="2roll5" type="text" name="frame5roll" value=""></td>
+        <td><input  id="2roll6" type="text" name="frame6roll" value=""></td>
+        <td><input  id="2roll7" type="text" name="frame7roll" value=""></td>
+        <td><input  id="2roll8" type="text" name="frame8roll" value=""></td>
+        <td><input  id="2roll9" type="text" name="frame9roll" value=""></td>
+      </tr>
+      <tr>
+        <td>Roll 3</td>
+        <td><input type="text" name="frame0roll" value="null"></td>
+        <td><input type="text" name="frame1roll" value="null"></td>
+        <td><input type="text" name="frame2roll" value="null"></td>
+        <td><input type="text" name="frame3roll" value="null"></td>
+        <td><input type="text" name="frame4roll" value="null"></td>
+        <td><input type="text" name="frame5roll" value="null"></td>
+        <td><input type="text" name="frame6roll" value="null"></td>
+        <td><input type="text" name="frame7roll" value="null"></td>
+        <td><input type="text" name="frame8roll" value="null"></td>
+        <td><input id="3roll9" type="text" name="frame9roll" value="0"></td>
+      </tr>
+      <tr>
+        <td>Score</td>
+        <td><p id="score0"></p></td>
+        <td><p id="score1"></p></td>
+        <td><p id="score2"></p></td>
+        <td><p id="score3"></p></td>
+        <td><p id="score4"></p></td>
+        <td><p id="score5"></p></td>
+        <td><p id="score6"></p></td>
+        <td><p id="score7"></p></td>
+        <td><p id="score8"></p></td>
+        <td><p id="score9"></p></td>
+      </tr>
+      <tr>
+        <td>Confirm</td>
+        <td><button id="button0" type="button" name="button">OK</button></td>
+        <td><button id="button1" type="button" name="button">OK</button></td>
+        <td><button id="button2" type="button" name="button">OK</button></td>
+        <td><button id="button3" type="button" name="button">OK</button></td>
+        <td><button id="button4" type="button" name="button">OK</button></td>
+        <td><button id="button5" type="button" name="button">OK</button></td>
+        <td><button id="button6" type="button" name="button">OK</button></td>
+        <td><button id="button7" type="button" name="button">OK</button></td>
+        <td><button id="button8" type="button" name="button">OK</button></td>
+        <td><button id="button9" type="button" name="button">OK</button></td>
+      </tr>
+    </table>
+    <h2>Your score: <span id='final_score'></span></h2>
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src='interface.js'> </script>
+    <script type="text/javascript" src='src/Frame.js'></script>
+    <script type="text/javascript" src='src/Game.js'></script>
+  </body>
+</html>

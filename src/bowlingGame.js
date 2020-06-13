@@ -9,9 +9,18 @@ class BowlingGame {
 
   score() {
     let result = 0;
-    for(let i = 0; i < 20; i++){
-    result += this.rolls[i];
+    let rollIndex = 0;
+
+    for(let turn = 0; turn < 10; turn++){
+      if (this.rolls[rollIndex] + this.rolls[rollIndex + 1] == 10) {
+      result += this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+      }
+      else {
+      result += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+      }
+      console.log(this.rolls[rollIndex])
+      rollIndex += 2;
   }
-  return result;
+    return result;
   }
 }

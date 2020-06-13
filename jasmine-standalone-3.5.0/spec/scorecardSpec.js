@@ -17,4 +17,8 @@ describe('Scorecard', function () {
   it('starts with 10 frames', function () {
     expect(scorecard.frames).toEqual(10);
   });
+
+  it('starts with 10 pins', function () {
+    expect(scorecard.pins).toEqual(10)
+  });
 });

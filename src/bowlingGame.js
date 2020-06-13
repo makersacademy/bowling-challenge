@@ -1,6 +1,7 @@
 class BowlingGame {
   constructor() {
   this.rolls = [];
+  this.total =[];
   }
 
   roll(pins){
@@ -13,18 +14,23 @@ class BowlingGame {
   
     for(let turn = 0; turn < 10; turn++){
       if (this.rolls[rollIndex] == 10) {
-        result += this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+        result += parseFloat(this.rolls[rollIndex]) + parseFloat(this.rolls[rollIndex + 1]) + parseFloat(this.rolls[rollIndex + 2]);
         rollIndex ++;
       }
       else if (this.rolls[rollIndex] + this.rolls[rollIndex + 1] == 10) {
-      result += this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+      result += parseFloat(this.rolls[rollIndex]) + parseFloat(this.rolls[rollIndex + 1]) + parseFloat(this.rolls[rollIndex + 2]);
       rollIndex += 2;
       }
       else {
-        result += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+        result += parseFloat(this.rolls[rollIndex]) + parseFloat(this.rolls[rollIndex + 1]);
         rollIndex += 2;
       }
-  }
     return (result);
+  }
+  }
+
+  totalScore(){
+    this.total.push(this.score());
+    console.log(this.totalScore)
   }
 }

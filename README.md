@@ -36,10 +36,11 @@ index.html - for display
 jquery.js - to interact between model and page
 frame.js - hold num pins knocked over in frame and rolls used
 score.js - to deal with the calculation of the score (deals with the spare/strike complications)
+scorecard.js - to deal with dispalying the scores
 
 ### frame.js
 
-takes rolls as input - outputs total knocked over to score 
+takes rolls as input - outputs total knocked over to score
 
 ### Optional Extras
 

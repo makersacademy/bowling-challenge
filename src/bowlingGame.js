@@ -17,14 +17,14 @@ class BowlingGame {
         rollIndex ++;
       }
       else if (this.rolls[rollIndex] + this.rolls[rollIndex + 1] == 10) {
-       result += this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
-       rollIndex += 2;
+      result += this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+      rollIndex += 2;
       }
       else {
         result += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
         rollIndex += 2;
       }
   }
-    return result;
+    return (result);
   }
 }

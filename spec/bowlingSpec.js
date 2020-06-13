@@ -10,4 +10,8 @@ describe('Bowling', function() {
   it('Should construct with an empty array to store bowls', function() {
     expect(bowling.frames).toEqual([]);
   });
+
+  it('Should construct with a frame tracker starting at 0', function() {
+    expect(bowling.frameNum).toEqual(0)
+  })
 });

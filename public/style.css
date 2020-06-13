@@ -1,0 +1,25 @@
+body{
+  background-image: url('https://media.giphy.com/media/Kto2WhhTPwRcQ/giphy.gif');
+  background-size: cover;
+  
+  
+  
+  height: 100vh;
+  padding:0;
+  margin:0;
+}
+h1, h2{
+font-family: 'Smokum', cursive;
+text-align: center;
+color: aliceblue;
+}
+
+button, input{
+  font-family: 'Pacifico', cursive;
+  font-size: 20px;
+
+}
+
+h1, h2{
+  font-size: 100px;
+}

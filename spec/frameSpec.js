@@ -17,19 +17,20 @@ describe('Frame', function() {
   });
 
   it('Should be able to return a total for the frame', function() {
-    frame.add(5);
-    frame.add(4);
-    expect(frame.total()).toEqual(9);
+    for (let i = 0; i < 3; i++) {
+      frame.add(10);
+    }
+    expect(frame.total()).toEqual(30);
   })
 
   it('Should be able to check if the first score is 10', function() {
     frame.add(10);
-    expect(frame.times2Bonus()).toBeTruthy();
+    expect(frame.strike()).toBeTruthy();
   })
 
   it('Should be able to check if both bowls = 10', function() {
     frame.add(5);
     frame.add(5);
-    expect(frame.times1Bonus()).toBeTruthy();
+    expect(frame.spare()).toBeTruthy();
   })
 });

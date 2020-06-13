@@ -16,13 +16,13 @@ class Frame {
     return this.frameScore
   }
 
-  times2Bonus() {
+  strike() {
     if (this.scores[0] === 10) {
       return true;
     };
   }
 
-  times1Bonus() {
+  spare() {
     if (this.scores[0] + this.scores[1] === 10) {
       return true;
     };

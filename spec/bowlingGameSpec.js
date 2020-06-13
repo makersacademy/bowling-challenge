@@ -4,7 +4,7 @@ describe('BowlingGame', function() {
     game = new BowlingGame();
   });
 
-  it('should begin with rolls empty', function () {
+  it('should begin with no score', function () {
       expect(game.rolls).toEqual([]);
     });
 
@@ -24,7 +24,6 @@ describe('BowlingGame', function() {
     game.roll(3)
     rollMany(0,17)
     expect(game.score()).toEqual(16)
-
   });
 
   it('can roll a strike', function(){
@@ -35,6 +34,11 @@ describe('BowlingGame', function() {
     expect(game.score()).toEqual(24)
 
   });
+
+  it('can roll a perfect game', function(){
+    rollMany(10,12)
+    expect(game.score()).toEqual(300)
+  })
 
   function rollMany(pins, rolls) {
     for(let i = 0; i < rolls; i++){

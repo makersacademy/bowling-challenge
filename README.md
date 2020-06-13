@@ -25,6 +25,22 @@ As usual please start by
 
 ___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
 
+
+# Plan
+
+work on getting scorecard for a 0 spare/strike game first.
+
+## Needed files
+
+index.html - for display
+jquery.js - to interact between model and page
+frame.js - hold num pins knocked over in frame and rolls used
+score.js - to deal with the calculation of the score (deals with the spare/strike complications)
+
+### frame.js
+
+takes rolls as input - outputs total knocked over to score 
+
 ### Optional Extras
 
 In any order you like:

@@ -2,22 +2,22 @@ $('document').ready(function() {
     var game = new BowlingGame
     updateScores()
 
-     $('#gutter').click(function(){
-         game.score(0, updateScores())
-        })
+    $('#gutter').click(function(){
+        game.score(0, updateScores)
+    })
 
-     $('#pinsGo').click(function(){
+    $('#pinsGo').click(function(){
         var score = parseInt($('#pins').val())
-        game.score(score, updateScores())
+        game.score(score, updateScores)
     })
 
     $('#spare').click(function(){
         var score = parseInt($('#pins').val())
-        game.spareScored(score, updateScores())
+        game.spareScored(score, updateScores)
     })
 
     $('#strike').click(function(){
-        game.strikeScored(updateScores())
+        game.strikeScored(updateScores)
     })
 
 
@@ -26,7 +26,7 @@ $('document').ready(function() {
     function updateScores() { 
         game.getScore( function(data) {
         data.bowling.forEach( function(scoreCard) {
-            $(scoreCard.id).text(scoreCard.score)
+            $('#'+scoreCard.id).text(scoreCard.score);
         })
         }
         )};

@@ -16,7 +16,7 @@ class BowlingGame {
 
     getScore(callback) {
         $.get("/score", function(data) {
-            var scores = JSON.parse(data);
+            var scores = JSON.parse(data)
             callback(scores);
         })
     }

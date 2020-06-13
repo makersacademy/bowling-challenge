@@ -21,4 +21,9 @@ describe('Frame', function() {
     frame.add(4);
     expect(frame.total()).toEqual(9);
   })
+
+  it('Should be able to check if the first score is 10', function() {
+    frame.add(10);
+    expect(frame.times2Bonus()).toBeTruthy();
+  })
 });

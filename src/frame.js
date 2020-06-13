@@ -15,4 +15,10 @@ class Frame {
     });
     return this.frameScore
   }
+
+  times2Bonus() {
+    if (this.scores[0] === 10) {
+      return true;
+    }
+  }
 }

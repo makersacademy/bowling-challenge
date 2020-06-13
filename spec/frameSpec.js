@@ -17,9 +17,19 @@ describe('Frame', function () {
     expect(frame.isAStrike()).toEqual(true);
   });
 
+  it('knows if frame is was not a strike', function () {
+    let frame = new Frame(9,1);
+    expect(frame.isAStrike()).toEqual(false);
+  });
+
   it('knows if bowl two was a spare', function () {
     let frame = new Frame(3,7);
     expect(frame.isASpare()).toEqual(true);
+  });
+
+  it('knows if frame was not a spare', function () {
+    let frame = new Frame(3,4);
+    expect(frame.isASpare()).toEqual(false);
   });
 
 });

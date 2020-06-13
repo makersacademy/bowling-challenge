@@ -1,7 +1,5 @@
 describe('Scorecard', function () {
 
-  var scorecard
-
   beforeEach(function () {
     scorecard = new Scorecard();
   });
@@ -20,5 +18,13 @@ describe('Scorecard', function () {
 
   it('starts with 10 pins', function () {
     expect(scorecard.pins).toEqual(10)
+  });
+});
+
+describe('records roll', function () {
+
+  it('records results of roll', function() {
+    scorecard.rollResult(1);
+    expect(scorecard.pins).toEqual(9)
   });
 });

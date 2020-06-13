@@ -10,12 +10,17 @@ class Bowling < Sinatra::Base
 
     get "/score" do 
         bowling = ScoreRecord.instance
-        { bowling: bowling.record }.to_json
+        { bowling: bowling.record, totals: bowling.total }.to_json
     end 
 
     post "/score" do 
         bowling = ScoreRecord.instance
         bowling.update(params[:id], params[:value])
+        { status: 200 }.to_json
+    end
+
+    post "/newgame" do 
+        ScoreRecord.newgame
         { status: 200 }.to_json
     end
 

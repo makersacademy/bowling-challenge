@@ -69,5 +69,31 @@ describe ScoreRecord do
         end
     end
 
+    describe '.total' do 
+        it 'should return an array of totals' do 
+            totals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            expect(subject.total).to eq(totals)
+        end
+
+        it 'one roll added still returns 0' do 
+            subject.update('11', 7)
+            totals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            expect(subject.total).to eq(totals)
+        end
+
+        it 'a whole frame added returns total' do 
+            subject.update('11', 7)
+            subject.update('12', 3)
+            totals = [10, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            expect(subject.total).to eq(totals)
+        end
+
+        it 'a strike will set total' do 
+            subject.update('11', 14)
+            totals = [14, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            expect(subject.total).to eq(totals)
+        end
+    end
+
 
 end

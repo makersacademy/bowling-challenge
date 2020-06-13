@@ -48,6 +48,11 @@ describe("BowlingGame", function(){
         expect(newGame.checkSparesStrikes(newGame.getStrikes())).toEqual(true)
     })
 
+    it('adds up an array .finalTotal', function() {
+        array = [1, 2, 3, 4, 5]
+        expect(newGame.finalTotal(array)).toEqual(15)
+    })
+
     
 
 })

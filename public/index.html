@@ -5,9 +5,9 @@
 
 <body>
 <div id="scores">
-    <button id="gutter" >Gutter</button>
-    Pins: <input id="pins" type="number" min=0 max=10>
-    <button id="pinsGo">Go</button>
+    <button id="gutter" disabled='enabled'>Gutter</button>
+    Pins: <input id="pins" type="number" min=0 max=10 disabled='enabled'>
+    <button id="pinsGo" disabled='enabled'>Go</button>
     <button id="spare" disabled='disabled'>Spare</button>
     <button id="strike" disabled='disabled'>Strike!</button>
 </div>
@@ -88,6 +88,7 @@
     </table>
 
 </div>
+<button id='newGame'>New Game</button>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="javascript/src/BowlingGame.js"></script>

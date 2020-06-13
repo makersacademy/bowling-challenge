@@ -39,4 +39,27 @@ class ScoreRecord
         @score ||= self.new
     end
 
+    def total
+        @totals = []
+        i = 0
+        loop do
+            if  @record[i][:score].nil?
+                @totals.push(0)
+            elsif @record[i][:score] > 10
+                @totals.push(@record[i][:score])
+            elsif @record[i + 1][:score].nil?
+                @totals.push(0)
+            else
+                @totals.push(@record[i][:score] + @record[i+1][:score])
+            end
+            i += 2
+            break if i >= 20
+        end
+        @totals
+    end
+
+    def self.newgame
+        @score = nil
+    end
+
 end  

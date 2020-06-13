@@ -104,5 +104,13 @@ class BowlingGame {
         }
     }
 
+    reset() {
+        this._id = 11
+    }
+
+    finalTotal(array) {
+       return array.reduce((a, b) => a + b, 0)
+    }
+
 }
 

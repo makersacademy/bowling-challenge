@@ -58,3 +58,8 @@ A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 str
 </p><br><br>
 
 I expect to add more functionality or amend these intial thoughts once I begin to create first tests and write some code.
+
+
+## Updates:
+
+* Realised quickly that frame needs to take arguments of bowl one and bowl two that can then be used to determine whether there was a strike or not.

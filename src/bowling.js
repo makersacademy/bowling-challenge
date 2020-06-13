@@ -10,4 +10,7 @@ class Bowling {
     this.frameNum ++;
   };
 
+  addFrame(frame = new Frame()) {
+    this.gameFrames.push(frame);
+  }
 }

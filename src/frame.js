@@ -16,7 +16,7 @@ class Frame {
   };
 
   isAStrike() {
-    if(this.bowlOne === 10) {
+    if(this.bowlOne === this.MAX_SCORE) {
       return true;
     } else { 
       return false; 
@@ -24,7 +24,7 @@ class Frame {
   }
 
   isASpare() {
-    if(this.bowlOne + this.bowlTwo === 10) {
+    if(this.bowlOne + this.bowlTwo === this.MAX_SCORE) {
       return true;
     } else {
       return false;

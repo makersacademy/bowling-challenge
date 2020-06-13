@@ -1,6 +1,10 @@
 'use strict';
 class Frame {
   constructor() {
-    this.scores =[];
+    this.scores = [];
+  }
+
+  add(num) {
+    this.scores.push(num);
   }
 }

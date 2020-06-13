@@ -2,11 +2,12 @@
 
 class Bowling {
   constructor() {
-    this.frames = [];
+    this.gameFrames = [];
     this.frameNum = 0;
   };
 
   nextFrame() {
     this.frameNum ++;
   };
+
 }

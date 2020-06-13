@@ -23,15 +23,19 @@ class Bowling {
 
   spareCheck(num) {
     let i = this.frameNum;
-    if (this.gameFrames.length > 1 && this.gameFrames[i-1].spare()) {
+    if (this.frameCheck() > 1 && this.gameFrames[i-1].spare()) {
       this.gameFrames[i-1].add(num);
     }
   }
 
   strikeCheck(num) {
     let i = this.frameNum;
-    if (this.gameFrames.length > 1 && this.gameFrames[i-1].strike()) {
+    if (this.frameCheck() > 1 && this.gameFrames[i-1].strike()) {
       this.gameFrames[i-1].add(num);
     }
   }
+
+  frameCheck() {
+    return this.gameFrames.length
+  } 
 }

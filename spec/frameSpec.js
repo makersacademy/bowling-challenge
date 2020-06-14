@@ -22,4 +22,10 @@ describe('Frame class', function(){
     frame.secondRoll(4);
     expect(frame.totPointsBeforeBonus()).toEqual(7);
   });
+  describe('possible errors to be raised', function(){
+    it('raise error if points given to single roll > 10', function(){
+      expect(function(){frame.firstRoll(11);}).toThrowError('invalid amount of points for single roll');
+    });
+
+  });
 });

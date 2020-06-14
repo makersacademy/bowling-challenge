@@ -53,5 +53,10 @@ describe('records roll', function () {
     frame.resetRolls();
     expect(frame.rolls).toEqual(2);
   });
+
+  it('records when uses rolls', function () {
+    frame.rollResult(1);
+    expect(frame.rolls).toEqual(1);
+});
 });
 });

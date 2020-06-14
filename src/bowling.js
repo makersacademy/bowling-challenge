@@ -18,7 +18,8 @@ class Bowling {
     let i = this.frameNum
     this.gameFrames[i].add(num)
     this.spareCheck(num);
-    this.strikeCheck(num)
+    this.strikeCheckOne(num);
+    this.strikeCheckTwo(num);
   }
 
   spareCheck(num) {
@@ -28,10 +29,17 @@ class Bowling {
     }
   }
 
-  strikeCheck(num) {
+  strikeCheckOne(num) {
     let i = this.frameNum;
     if (this.frameCheck() > 1 && this.gameFrames[i-1].strike()) {
       this.gameFrames[i-1].add(num);
+    }
+  }
+
+  strikeCheckTwo(num) {
+    let i = this.frameNum;
+    if (this.frameCheck() > 2 && this.gameFrames[i-2].strike()) {
+      this.gameFrames[i-2].add(num);
     }
   }
 

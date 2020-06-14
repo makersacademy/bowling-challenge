@@ -51,4 +51,16 @@ describe('Bowling', function() {
     bowling.add(4);
     expect(frame.strike).toHaveBeenCalledTimes(1);
   })
+
+  it('Should check if the frame before last needs a bonus score for a strike', function() {
+    bowling.addFrame(frame);
+    bowling.add(10);
+    bowling.nextFrame()
+    bowling.addFrame(frame);
+    bowling.add(10);
+    bowling.nextFrame()
+    bowling.addFrame(frame);
+    bowling.add(4);
+    expect(frame.strike).toHaveBeenCalledTimes(3);
+  })
 });

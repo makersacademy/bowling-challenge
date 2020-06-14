@@ -15,14 +15,20 @@ $('document').ready(function() {
     })
 
     $('#spare').click(function(){
-        var score = 10 - ($('#'+(parseInt(game.getId() - 1))).val())
-        $('#'+((parseInt(game.getId())) - 1).toString() + '1').text('/')
+        var score = 10 - ($('#'+(game.getIdInt() - 1)).val())
+        $('#'+(game.getIdInt() - 1).toString() + '1').text('/')
         game.spareScored(score, updateScores);
         endTurn();
     })
 
     $('#strike').click(function(){
         $('#'+game.getId() + '1').text('X')
+        if (game.getIdInt() === 101) {
+            game.finalFrameStrike();
+        }
+        if (game.getIdInt() === 102) {
+            game.finalFrameStrike2();
+        }
         game.strikeScored(updateScores);
         endTurn();
     })
@@ -37,10 +43,15 @@ $('document').ready(function() {
     })
 
     function buttonCheck() {
-        if (parseInt(game.getId()) >= 102) {
-            $('#spare').prop('disabled', false);
+        if (game.getIdInt() === 102 && game.getfinalFrameStrikeScored()) {
+            $('#spare').prop('disabled', true);
             $('#strike').prop('disabled', false);
-        } else if (game.getId().slice(-1) === '1') {
+        } 
+        else if (game.getIdInt() === 103 && game.getfinalFrameStrikeScored2()) {
+            $('#spare').prop('disabled', true);
+            $('#strike').prop('disabled', false);
+        }
+        else if (game.getId().slice(-1) === '1') {
             $('#spare').prop('disabled', true);
             $('#strike').prop('disabled', false);
         } else {
@@ -68,9 +79,6 @@ $('document').ready(function() {
         game.getScore( function(data) {
             data.bowling.forEach( function(scoreCard) {
                 $('#'+scoreCard.id).text(scoreCard.score);
-                if (game.getId() === '102' && scoreCard.id === '101' && scoreCard.score === null) {
-                    game.finalFrameStrike();
-                };
             });
             for (var i = 1; i <= 10; i++) {
                 $('#total' + i.toString()).text(data.totals[i-1])
@@ -109,5 +117,4 @@ $('document').ready(function() {
                 }
             }
         }
-
 })

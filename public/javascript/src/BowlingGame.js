@@ -5,10 +5,15 @@ class BowlingGame {
         this._strikes = []
         this._spares = []
         this._finalFrameStrikeScored = false
+        this._finalFrameStrikeScored2 = false
     }
     // get functions
     getId() {
         return this._id.toString()
+    }
+
+    getIdInt() {
+        return this._id
     }
 
     getSpares() {
@@ -17,6 +22,14 @@ class BowlingGame {
 
     getStrikes() {
         return this._strikes
+    }
+
+    getfinalFrameStrikeScored() {
+        return this._finalFrameStrikeScored
+    }
+
+    getfinalFrameStrikeScored2() {
+        return this._finalFrameStrikeScored2
     }
     // link functions to sinatra
     addScore(id, score, callback) {
@@ -40,6 +53,10 @@ class BowlingGame {
     spareScored(value, callback) {
         this.endOfTurn(value, callback);
         this.spare(value)
+        if (this._id === 103) {
+            console.log(value)
+            this.finalChecks(callback)
+        }
         this.getScore(callback)
         this.finalFrameId()
     }
@@ -130,11 +147,22 @@ class BowlingGame {
     finalFrameStrike() {
         this._finalFrameStrikeScored = true
     }
+
+    finalFrameStrike2() {
+        this._finalFrameStrikeScored = true
+    }
     // new game functions
     reset() {
         this._id = 11
         this._finalFrameStrikeScored = false
+        this._finalFrameStrikeScored2 = false
         this.clear()
+    }
+
+    finalChecks(callback) {
+            this.strikesSparesUpdate(this.getSpares(), 0);
+            var spareScore = this.getSpares()[0];
+            this.addScore(spareScore.getId(), spareScore.total(), callback);
     }
 
 }

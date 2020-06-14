@@ -25,6 +25,7 @@ class Bowling {
     this.spareCheck(num);
     this.strikeCheckOne(num);
     this.strikeCheckTwo(num);
+    this.nextTurn();
   }
 
   spareCheck(num) {

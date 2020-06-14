@@ -25,6 +25,7 @@ class BowlingGame {
     strikeScored(callback) {
         this.endOfTurn(10, callback);
         this.strike(callback)
+        this.getScore(callback)
         this.finalFrameId('strike')
     }
 

@@ -75,3 +75,14 @@ In code review we'll be hoping to see:
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+
+
+# Run this repo
+
+
+## Planning phase
+
+# Read the repo a few times and I'm still pretty confused about how we're supposed to go about doing this.
+# I'd feel more confident If we could generate random rolls and simulate a game of bowling but apparently that's not the right way to go.
+
+# I'll set up the project files and do some more research.

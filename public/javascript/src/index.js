@@ -16,11 +16,13 @@ $('document').ready(function() {
 
     $('#spare').click(function(){
         var score = 10 - ($('#'+(parseInt(game.getId() - 1))).val())
+        $('#'+((parseInt(game.getId())) - 1).toString() + '1').text('/')
         game.spareScored(score, updateScores);
         endTurn();
     })
 
     $('#strike').click(function(){
+        $('#'+game.getId() + '1').text('X')
         game.strikeScored(updateScores);
         endTurn();
     })
@@ -31,6 +33,7 @@ $('document').ready(function() {
         updateScores();
         finalScore();
         endTurn();
+        resetNotes();
     })
 
     function buttonCheck() {
@@ -82,14 +85,29 @@ $('document').ready(function() {
         }
 
         function currentIdFormatting() {
-            $(".score").css('border', '1px solid white');
-            $('#' + game.getId()).css('border', '1px solid red');
+            if (parseInt(game.getId()) <= 103) {
+                $(".score").css('border', '1px solid white');
+                $('#' + game.getId()).css('border', '1px solid red');
+            }
         }
 
         function endTurn() {
             buttonCheck();
             endGame();
             currentIdFormatting();
+        }
+
+        function resetNotes() {
+            for (let i = 111; i < 1012; i += 100) {
+                if (i === 1011) {
+                    $('#1011').empty();
+                    $('#1021').empty();
+                    $('#1031').empty();
+                } else {
+                    id = i.toString();
+                    $('#' + id).empty();
+                }
+            }
         }
 
 })

@@ -134,6 +134,7 @@ class BowlingGame {
     reset() {
         this._id = 11
         this._finalFrameStrikeScored = false
+        this.clear()
     }
 
 }

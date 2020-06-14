@@ -1,8 +1,11 @@
 function Scorecard(scores) {
   this.scores = scores;
-  console.log(this.scores)
 }
 
 Scorecard.prototype.score = function(num) {
-  return (this.scores[0].score());
+  total = 0
+  for (i = 0; i < num; i ++) {
+    total += this.scores[i].score()
+  }
+  return (total);
 }

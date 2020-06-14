@@ -9,10 +9,12 @@ class Bowling {
 
   nextFrame() {
     this.frameNum ++;
+    this.addFrame()
   };
 
-  nextTurn() {
+  nextTurn(num) {
     this.turn++;
+    this.nextFrameCheck(num)
   }
 
   addFrame(frame = new Frame()) {
@@ -25,31 +27,41 @@ class Bowling {
     this.spareCheck(num);
     this.strikeCheckOne(num);
     this.strikeCheckTwo(num);
-    this.nextTurn();
+    this.nextTurn(num);
   }
 
   spareCheck(num) {
     let i = this.frameNum;
-    if (this.frameCheck() > 1 && this.gameFrames[i-1].spare()) {
+    if (this.frameLengthCheck() > 1 && this.gameFrames[i-1].spare()) {
       this.gameFrames[i-1].add(num);
     }
   }
 
   strikeCheckOne(num) {
     let i = this.frameNum;
-    if (this.frameCheck() > 1 && this.gameFrames[i-1].strike()) {
+    if (this.frameLengthCheck() > 1 && this.gameFrames[i-1].strike()) {
       this.gameFrames[i-1].add(num);
     }
   }
 
   strikeCheckTwo(num) {
     let i = this.frameNum;
-    if (this.frameCheck() > 2 && this.gameFrames[i-2].strike()) {
+    if (this.frameLengthCheck() > 2 && this.gameFrames[i-2].strike()) {
       this.gameFrames[i-2].add(num);
     }
   }
 
-  frameCheck() {
+  frameLengthCheck() {
     return this.gameFrames.length
   } 
+
+  nextFrameCheck(num) {
+    if (this.turn === 2) {
+      this.turn = 0;
+      this.nextFrame();
+    } else if (num === 10) {
+      this.turn = 0;
+      this.nextFrame();
+    }
+  }
 }

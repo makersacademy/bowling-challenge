@@ -43,28 +43,20 @@ describe('Bowling', function() {
   it('Should check if last frame needs bonus score for spare adding', function () {
     bowling.add(5);
     bowling.add(5);
-    bowling.nextFrame()
-    bowling.addFrame(frame);
     bowling.add(8);
     expect(frame.spare).toHaveBeenCalledTimes(1);
   });
 
   it('Should check if the last frame needs a bonus score for a strike', function() {
     bowling.add(10);
-    bowling.nextFrame()
-    bowling.addFrame(frame);
     bowling.add(4);
     expect(frame.strike).toHaveBeenCalledTimes(1);
   })
 
   it('Should check if the frame before last needs a bonus score for a strike', function() {
     bowling.add(10);
-    bowling.nextFrame()
-    bowling.addFrame(frame);
     bowling.add(10);
-    bowling.nextFrame()
-    bowling.addFrame(frame);
     bowling.add(4);
-    expect(frame.strike).toHaveBeenCalledTimes(3);
+    expect(frame.strike).toHaveBeenCalledTimes(2);
   }) // all these tests will be reduced in size once I have started to add them as callbacks.
 });

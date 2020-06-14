@@ -6,10 +6,11 @@ function Frame() {
 Frame.prototype.rollResult = function(result) {
   this.pins -= result;
 
-  if(result > 10) {
-    this.pins = this.pins - result;
-    // need to ammend function to not reduce frame or pins
-    return "Error: Please enter a result from 1-10";
+  if(this.pins < 0 ) {
+    this.pins = this.pins + result;
+    this.rolls = this.rolls + 1;
+    // need to ammend function to not reduce frame when error raised
+    return "Error: Each Frame Consists of 10 Pins";
   };
 
 Frame.prototype.reset = function () {
@@ -18,5 +19,10 @@ Frame.prototype.reset = function () {
 
 Frame.prototype.roll = function () {
   this.rolls -= 1;
+
+  if(this.rolls < 0 ) {
+    this.rolls = 0;
+    return "Error: Maximum 2 Rolls per Frame";
+  };
 };
 };

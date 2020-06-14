@@ -22,12 +22,15 @@ describe('records roll', function () {
   });
 
   it('raises error if user enters +10 points', function () {
-    expect(frame.rollResult(11)).toBe("Error: Please enter a result from 1-10");
-    expect(frame.pins).toEqual(frame.pins)
+    frame.rollResult(2);
+    frame.roll();
+    expect(frame.rollResult(11)).toBe("Error: Each Frame Consists of 10 Pins");
+    expect(frame.pins).toEqual(8);
+    expect(frame.rolls).toEqual(2);
   });
 
   it('resets the pins', function () {
-    frame.rollResult(2);
+    frame.rollResult(1);
     frame.reset();
     expect(frame.pins).toEqual(10);
   });
@@ -35,6 +38,13 @@ describe('records roll', function () {
   it('records only 1 roll', function () {
     frame.roll();
     expect(frame.rolls).toEqual(1);
+  });
+
+  it('has a max of 2 rolls', function () {
+    frame.roll();
+    frame.roll();
+    expect(frame.roll()).toBe("Error: Maximum 2 Rolls per Frame");
+    expect(frame.rolls).toEqual(0);
   });
   });
 });

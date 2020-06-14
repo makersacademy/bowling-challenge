@@ -10,6 +10,7 @@ $('document').ready(function() {
         game.score(0, updateScores);
         buttonCheck();
         endGame();
+        currentIdFormatting();
     })
 
     $('#pinsGo').click(function(){
@@ -17,6 +18,7 @@ $('document').ready(function() {
         game.score(score, updateScores);
         buttonCheck();
         endGame();
+        currentIdFormatting();
     })
 
     $('#spare').click(function(){
@@ -24,12 +26,14 @@ $('document').ready(function() {
         game.spareScored(score, updateScores);
         buttonCheck();
         endGame();
+        currentIdFormatting();
     })
 
     $('#strike').click(function(){
         game.strikeScored(updateScores);
         buttonCheck();
         endGame();
+        currentIdFormatting();
     })
 
     $('#newGame').click( function() {
@@ -39,6 +43,7 @@ $('document').ready(function() {
         endGame();
         buttonCheck();
         finalScore();
+        currentIdFormatting();
     })
 
     function buttonCheck() {
@@ -85,6 +90,11 @@ $('document').ready(function() {
             game.getScore( function(data) {
                 $('#finalscore').text(game.finalTotal(data.totals))
             })
+        }
+
+        function currentIdFormatting() {
+            $(".score").css('border', '1px solid white');
+            $('#' + game.getId()).css('border', '1px solid red');
         }
 
 })

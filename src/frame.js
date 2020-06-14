@@ -1,12 +1,19 @@
 class Frame {
-  constructor(bowlOne, bowlTwo) {
-    this.bowlOne = bowlOne;
-    this.bowlTwo = bowlTwo;
-  }
+  constructor() {}
 
   score() {
     return this.bowlOne + this.bowlTwo;
   }
 
-  
+  reportBowlOne(bowlOne) {
+    this.bowlOne = bowlOne;
+  }
+
+  reportBowlTwo(bowlTwo) {
+    this.bowlTwo = bowlTwo;
+  }
+
+  strike() {
+    return this.bowlOne === 10;
+  }
 }

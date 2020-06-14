@@ -4,10 +4,12 @@ class Frame {
     this.spareBonus = null;
     this.bowlOne = null;
     this.bowlTwo = null;
+    this.frameScore = null;
   }
 
   score() {
-    return this.bowlOne + this.bowlTwo;
+  this.frameScore = this.bowlOne + this.bowlTwo
+    return this.frameScore ;
   }
 
   reportBowlOne(bowlOne) {
@@ -19,12 +21,10 @@ class Frame {
   }
 
   strike() {
-    this.strikeBonus = true;
     return this.bowlOne === 10;
   }
 
   spare() {
-    this.spareBonus = true;
-    return this.score() === 10;
+    return (this.score() === 10 && this.bowlTwo != null ) ;
   }
 }

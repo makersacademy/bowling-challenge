@@ -17,6 +17,10 @@ describe('Bowling', function() {
     expect(bowling.frameNum).toEqual(0);
   });
 
+  it('Should construct with a number of bowls tracker', function() {
+    expect(bowling.turn).toEqual(0);
+  });
+
   it('Should have a method to increment frames', function() {
     bowling.nextFrame();
     expect(bowling.frameNum).toEqual(1);
@@ -62,5 +66,5 @@ describe('Bowling', function() {
     bowling.addFrame(frame);
     bowling.add(4);
     expect(frame.strike).toHaveBeenCalledTimes(3);
-  })
+  }) // all these tests will be reduced in size once I have started to add them as callbacks.
 });

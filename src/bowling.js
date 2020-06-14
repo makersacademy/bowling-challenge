@@ -4,6 +4,7 @@ class Bowling {
   constructor() {
     this.gameFrames = [];
     this.frameNum = 0;
+    this.turn = 0;
   };
 
   nextFrame() {

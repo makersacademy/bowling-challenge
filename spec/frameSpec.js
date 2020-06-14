@@ -23,9 +23,13 @@ describe('Frame class', function(){
     expect(frame.totPointsBeforeBonus()).toEqual(7);
   });
   describe('possible errors to be raised', function(){
-    it('raise error if points given to single roll > 10', function(){
+    it('raises error if points given to single roll > 10', function(){
       expect(function(){frame.firstRoll(11);}).toThrowError('invalid amount of points for single roll');
       expect(function(){frame.secondRoll(11);}).toThrowError('invalid amount of points for single roll');
+    });
+    it('raises error if, with the second roll, the total frame points get greater than 10', function(){
+      frame.firstRoll(9);
+      expect(function(){frame.secondRoll(2);}).toThrowError('invalid amount of points for single frame');
     });
 
 

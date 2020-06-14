@@ -1,10 +1,14 @@
 class Game {
   constructor() {
-    this.score = 0;
+    this.totalScore = 0;
   }
 
   currentScore() {
-    return this.score;
+    return this.totalScore;
+  }
+
+  addRoll(num) {
+    return this.totalScore += num;
   }
 };
 

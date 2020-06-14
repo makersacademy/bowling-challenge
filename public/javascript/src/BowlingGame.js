@@ -6,11 +6,19 @@ class BowlingGame {
         this._spares = []
         this._finalFrameStrikeScored = false
     }
-
+    // get functions
     getId() {
         return this._id.toString()
     }
 
+    getSpares() {
+        return this._spares
+    }
+
+    getStrikes() {
+        return this._strikes
+    }
+    // link functions to sinatra
     addScore(id, score, callback) {
         $.post('/score', { id: id, value: score }, callback)
     }
@@ -21,17 +29,17 @@ class BowlingGame {
             callback(scores);
         })
     }
-
+    // scoring functions
     strikeScored(callback) {
         this.endOfTurn(10, callback);
-        this.strike(callback)
+        this.strike()
         this.getScore(callback)
         this.finalFrameId('strike')
     }
 
     spareScored(value, callback) {
         this.endOfTurn(value, callback);
-        this.spare(value, callback)
+        this.spare(value)
         this.getScore(callback)
         this.finalFrameId()
     }
@@ -40,6 +48,35 @@ class BowlingGame {
         this.endOfTurn(value, callback);
         this.addScore(this.getId(), value, callback);
         this.updateId();
+    }
+
+    spare(value) {
+        var id = this.getId()
+        this._spares.push(new Spare(id, value));
+    }
+
+    strike() {
+        var id = this.getId()
+        var strikeInstance = new Strike(id)
+        this._strikes.push(strikeInstance);
+    }
+    // end of turn functions
+    strikesSparesUpdate(array, value) {
+        array.forEach( function(instance){
+            instance.updateScore(value);
+        })
+    }
+
+    checkSparesStrikes(array) {
+        if (array.length === 0) {
+            return false
+        } else {
+            return true
+        }
+    }
+
+    deleteFirstValue(array) {
+        array.shift()
     }
 
     endOfTurn(value, callback) {
@@ -59,43 +96,6 @@ class BowlingGame {
         };
     }
 
-    getSpares() {
-        return this._spares
-    }
-
-    getStrikes() {
-        return this._strikes
-    }
-
-    spare(value, callback) {
-        var id = this.getId()
-        this._spares.push(new Spare(id, value));
-    }
-
-    strikesSparesUpdate(array, value) {
-        array.forEach( function(instance){
-            instance.updateScore(value);
-        })
-    }
-
-    strike(callback) {
-        var id = this.getId()
-        var strikeInstance = new Strike(id)
-        this._strikes.push(strikeInstance);
-    }
-
-    checkSparesStrikes(array) {
-        if (array.length === 0) {
-            return false
-        } else {
-            return true
-        }
-    }
-
-    deleteFirstValue(array) {
-        array.shift()
-    }
-
     updateId(score = null) {
         if (this._finalFrameStrikeScored) {
             this._id += 1
@@ -109,12 +109,7 @@ class BowlingGame {
             this._id += 1
         }
     }
-
-    reset() {
-        this._id = 11
-        this._finalFrameStrikeScored = false
-    }
-
+    // end of game functions
     finalTotal(array) {
        return array.reduce((a, b) => a + b, 0)
     }
@@ -134,6 +129,11 @@ class BowlingGame {
 
     finalFrameStrike() {
         this._finalFrameStrikeScored = true
+    }
+    // new game functions
+    reset() {
+        this._id = 11
+        this._finalFrameStrikeScored = false
     }
 
 }

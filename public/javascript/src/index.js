@@ -1,7 +1,7 @@
 $('document').ready(function() {
     var game = new BowlingGame
     updateScores()
-    buttonCheck()
+    endTurn()
 
     $('#gutter').click(function(){
         game.score(0, updateScores);
@@ -67,7 +67,7 @@ $('document').ready(function() {
                 $('#'+scoreCard.id).text(scoreCard.score);
                 if (game.getId() === '102' && scoreCard.id === '101' && scoreCard.score === null) {
                     game.finalFrameStrike();
-                }
+                };
             });
             for (var i = 1; i <= 10; i++) {
                 $('#total' + i.toString()).text(data.totals[i-1])

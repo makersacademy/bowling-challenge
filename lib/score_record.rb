@@ -43,8 +43,10 @@ class ScoreRecord
         @totals = []
         i = 0
         loop do
-            if  @record[i][:score].nil?
+            if @record[i][:score].nil?
                 @totals.push(0)
+            elsif i == 18 
+                @totals.push(last_frame_total)
             elsif @record[i][:score] > 10
                 @totals.push(@record[i][:score])
             elsif @record[i + 1][:score].nil?
@@ -56,6 +58,18 @@ class ScoreRecord
             break if i >= 20
         end
         @totals
+    end
+
+    def last_frame_total
+        if !!@record[19][:score] && !!@record[20][:score]
+            return @record[18][:score] + @record[19][:score] + @record[20][:score]
+        elsif !@record[19][:score] && !!@record[20][:score]
+            return @record[18][:score] + @record[20][:score]
+        elsif !!@record[19][:score] && !@record[20][:score]
+            return @record[18][:score] + @record[19][:score]
+        else
+            return @record[18][:score]
+        end
     end
 
     def self.newgame

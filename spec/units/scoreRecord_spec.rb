@@ -93,6 +93,30 @@ describe ScoreRecord do
             totals = [14, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             expect(subject.total).to eq(totals)
         end
+
+        it 'calculates final frame total correctly. strike, score, strike' do 
+            subject.update('101', 14)
+            subject.update('102', 4)
+            subject.update('103', 10)
+            totals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 28]
+            expect(subject.total).to eq(totals)
+        end
+
+        it 'calculates final frame total correctly. strike, score, score' do 
+            subject.update('101', 14)
+            subject.update('102', 2)
+            subject.update('103', 2)
+            totals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 18]
+            expect(subject.total).to eq(totals)
+        end
+
+        it 'calculates final frame total correctly. strike, strike, score' do 
+            subject.update('101', 24)
+            subject.update('102', 10)
+            subject.update('103', 4)
+            totals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 38]
+            expect(subject.total).to eq(totals)
+        end
     end
 
 

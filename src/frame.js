@@ -22,6 +22,9 @@ class Frame {
   }
 
   secondRoll(points){
+    if (points > this.MAX_SINGLE_ROLL_PTS) {
+      throw new Error('invalid amount of points for single roll');
+    }
     this._roll2 = points;
   }
 
@@ -29,8 +32,8 @@ class Frame {
     return this._roll1 + this._roll2;
   }
 
-  _isMoreThanMaxPointsForSingleRoll() {
-    return (this.firstRoll(points) > this.MAX_FIRST_ROLL_PTS);
-  }
+  // _isMoreThanMaxPointsForSingleRoll() {
+  //   return (this.firstRoll(points) > this.MAX_FIRST_ROLL_PTS);
+  // }
 
 }

@@ -2,23 +2,27 @@
 
 class Frame {
   constructor(){
-    this._roll1 = null
-    this._roll2 = null
+    this._roll1 = null;
+    this._roll2 = null;
   }
 
   pointsFirstRoll(){
-    return this._roll1
+    return this._roll1;
   }
 
   pointsSecondRoll(){
-    return this._roll2
+    return this._roll2;
   }
   firstRoll(points){
-    this._roll1 = points
+    this._roll1 = points;
   }
 
   secondRoll(points){
-    this._roll2 = points
+    this._roll2 = points;
+  }
+
+  totPointsBeforeBonus() {
+    return this._roll1 + this._roll2;
   }
 
 }

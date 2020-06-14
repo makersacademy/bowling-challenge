@@ -17,4 +17,9 @@ describe('Frame class', function(){
     frame.secondRoll(2);
     expect(frame.pointsSecondRoll()).toEqual(2);
   });
+  it('is determining the basic frame total pts, without considering bonus pts', function(){
+    frame.firstRoll(3);
+    frame.secondRoll(4);
+    expect(frame.totPointsBeforeBonus()).toEqual(7);
+  });
 });

@@ -1,22 +1,24 @@
 class Scorecard {
   constructor() {
     this.frameArray = [new Frame(), new Frame()];
-    this.currentScore = 0;
-    this.index = 0;
   }
 
   computeScore() {
-  
-    this.frameArray.forEach((frame) => {
-      this.currentScore += frame.score();
+    this.currentScore = 0;
+    this.index = 0;
 
+    this.frameArray.forEach((frame) => {
+      this.bonus = 0;
       if (frame.spare() === true) {
-        frame.frameScore += this.frameArray[this.index + 1].bowlOne;
+        this.bonus = this.frameArray[this.index + 1].bowlOne;
       } else if (frame.strike() === true) {
-        frame.frameScore += this.frameArray[this.index + 1].score();
+        this.bonus = this.frameArray[this.index + 1].score();
       }
 
+      // this.bonusScore = bonusScoreCalculation(frame, this.index);
+      this.currentScore += frame.score() + this.bonus;
       this.index += 1;
     });
+    return this.bonus;
   }
 }

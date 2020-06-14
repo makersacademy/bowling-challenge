@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="js/jquery.min.js"></script>
+    <script src="interface.js"></script>
+    <script src="src/scorecard.js"></script>
+    <script src="src/frame.js"></script>
+    <script>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap"
+        rel="stylesheet"
+      ></link>;
+    </script>
+  </head>
+  <body>
+    <section>
+      <h1>Current Score</h1>
+      <h2 id="current-score"></h2>
+
+      <label for="frame1-bowl1 ">(frame 1 bowl 1 :</label>
+      <input type="number" id="frame1-bowl1" min="0" max="10" />
+      <label for="frame1-bowl2 ">(frame 1 bowl 2 :</label>
+      <input type="number" id="frame1-bowl2" min="0" max="10" />
+      <label for="frame2-bowl1 ">(frame 1 bowl 2 :</label>
+      <input type="number" id="frame2-bowl1" min="0" max="10" />
+      <label for="frame2-bowl2 ">(frame 2 bowl 2 :</label>
+      <input type="number" id="frame2-bowl2" min="0" max="10" />
+      <button id="update">-</button>
+    </section>
+  </body>
+</html>

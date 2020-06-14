@@ -1,15 +1,16 @@
 class Frame {
   constructor() {
-    this.strikeBonus = null;
-    this.spareBonus = null;
-    this.bowlOne = null;
-    this.bowlTwo = null;
-    this.frameScore = null;
+    this.frameScore = 0;
   }
 
   score() {
-  this.frameScore = this.bowlOne + this.bowlTwo
-    return this.frameScore ;
+    this.frameScore = 0;
+    if (isNaN(this.bowlTwo) === true) {
+      this.frameScore = this.bowlOne;
+    } else {
+      this.frameScore = this.bowlOne + this.bowlTwo;
+    }
+    return this.frameScore;
   }
 
   reportBowlOne(bowlOne) {
@@ -25,6 +26,6 @@ class Frame {
   }
 
   spare() {
-    return (this.score() === 10 && this.bowlTwo != null ) ;
+    return this.score() === 10 && isNaN(this.bowlTwo) === false;
   }
 }

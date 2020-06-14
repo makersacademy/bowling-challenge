@@ -9,7 +9,7 @@ describe('Bowl', function() {
   });
 
   it('is true', function() {
-    expect(bowl).toEqual(true);
+    expect(bowl.cool()).toEqual(true);
   });
 
 });

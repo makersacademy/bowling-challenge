@@ -1,6 +1,12 @@
-function Frame(num1, num2) {
-  this.roll1 = num1;
-  this.roll2 = num2;
+function Frame() {
+}
+
+Frame.prototype.roll1 = function (num) {
+  this.roll1 = num
+}
+
+Frame.prototype.roll2 = function (num) {
+  this.roll2 = num
 }
 
 Frame.prototype.baseScore = function () {

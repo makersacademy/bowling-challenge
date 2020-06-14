@@ -21,6 +21,11 @@ describe('Bowling', function() {
     expect(bowling.turn).toEqual(0);
   });
 
+  it('Should have a method to increment turn', function() {
+    bowling.nextTurn();
+    expect(bowling.turn).toEqual(1);
+  })
+
   it('Should have a method to increment frames', function() {
     bowling.nextFrame();
     expect(bowling.frameNum).toEqual(1);

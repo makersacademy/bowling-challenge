@@ -1,5 +1,10 @@
 class Frame {
-  constructor() {}
+  constructor() {
+    this.strikeBonus = null;
+    this.spareBonus = null;
+    this.bowlOne = null;
+    this.bowlTwo = null;
+  }
 
   score() {
     return this.bowlOne + this.bowlTwo;
@@ -14,10 +19,12 @@ class Frame {
   }
 
   strike() {
+    this.strikeBonus = true;
     return this.bowlOne === 10;
   }
 
   spare() {
+    this.spareBonus = true;
     return this.score() === 10;
   }
 }

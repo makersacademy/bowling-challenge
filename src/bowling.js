@@ -1,8 +1,8 @@
 'use strict';
 
 class Bowling {
-  constructor() {
-    this.gameFrames = [];
+  constructor(frame = new Frame()) {
+    this.gameFrames = [frame];
     this.frameNum = 0;
     this.turn = 0;
   };
@@ -21,7 +21,7 @@ class Bowling {
 
   add(num) {
     let i = this.frameNum
-    this.gameFrames[i].add(num)
+    this.gameFrames[i].add(num);
     this.spareCheck(num);
     this.strikeCheckOne(num);
     this.strikeCheckTwo(num);

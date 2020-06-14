@@ -4,6 +4,7 @@ class BowlingGame {
         this._id = 11
         this._strikes = []
         this._spares = []
+        this._finalFrameStrikeScored = false
     }
 
     getId() {
@@ -30,6 +31,7 @@ class BowlingGame {
     spareScored(value, callback) {
         this.endOfTurn(value, callback);
         this.spare(value, callback)
+        this.getScore(callback)
         this.finalFrameId()
     }
 
@@ -94,7 +96,10 @@ class BowlingGame {
     }
 
     updateId(score = null) {
-        if(score && this.getId().slice(-1) === '1') {
+        if (this._finalFrameStrikeScored) {
+            this._id += 1
+        }
+        else if(score && this.getId().slice(-1) === '1') {
             this._id += 10
         } 
         else if (this.getId().slice(-1) === '2') {
@@ -106,6 +111,7 @@ class BowlingGame {
 
     reset() {
         this._id = 11
+        this._finalFrameStrikeScored = false
     }
 
     finalTotal(array) {
@@ -123,6 +129,10 @@ class BowlingGame {
     clear() {
         this._strikes = []
         this._spares = []
+    }
+
+    finalFrameStrike() {
+        this._finalFrameStrikeScored = true
     }
 
 }

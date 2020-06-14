@@ -59,10 +59,13 @@ $('document').ready(function() {
         }
     }
 
-    function updateScores() { 
+    function updateScores() { // CALLBACK
         game.getScore( function(data) {
             data.bowling.forEach( function(scoreCard) {
                 $('#'+scoreCard.id).text(scoreCard.score);
+                if (game.getId() === '101' && scoreCard.id === '101' && scoreCard.score === null) {
+                    game.finalFrameStrike();
+                }
             });
             for (var i = 1; i <= 10; i++) {
                 $('#total' + i.toString()).text(data.totals[i-1])

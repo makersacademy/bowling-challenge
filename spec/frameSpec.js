@@ -23,4 +23,15 @@ describe('Frame', function () {
     frame.reportBowlTwo(1);
     expect(frame.strike()).toEqual(false);
   });
+  it('knows if there has been a spare', function () {
+    frame.reportBowlOne(8);
+    frame.reportBowlTwo(2);
+    expect(frame.spare()).toEqual(true);
+  });
+
+  it('knows if there has NOT been a spare', function () {
+    frame.reportBowlOne(8);
+    frame.reportBowlTwo(1);
+    expect(frame.spare()).toEqual(false);
+  });
 });

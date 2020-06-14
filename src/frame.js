@@ -16,4 +16,8 @@ class Frame {
   strike() {
     return this.bowlOne === 10;
   }
+
+  spare() {
+    return this.score() === 10;
+  }
 }

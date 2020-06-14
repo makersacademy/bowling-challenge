@@ -23,6 +23,10 @@ Frame.prototype.roll = function () {
   if(this.rolls < 0 ) {
     this.rolls = 0;
     return "Error: Maximum 2 Rolls per Frame";
-  };
+};
+
+Frame.prototype.resetRolls = function () {
+  this.rolls = 2;
+};
 };
 };

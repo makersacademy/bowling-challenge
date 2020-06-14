@@ -46,5 +46,12 @@ describe('records roll', function () {
     expect(frame.roll()).toBe("Error: Maximum 2 Rolls per Frame");
     expect(frame.rolls).toEqual(0);
   });
+
+
+  it('resets the rolls to 2', function () {
+    frame.roll();
+    frame.resetRolls();
+    expect(frame.rolls).toEqual(2);
   });
+});
 });

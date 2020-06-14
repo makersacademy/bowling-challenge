@@ -11,4 +11,10 @@ describe('frame', function() {
     frame.roll1(7)
     expect(frame.roll1result()).toEqual(7)
   })
+
+  it('should have its second roll visible', function() {
+    var frame = new Frame
+    frame.roll2(1)
+    expect(frame.roll2result()).toEqual(1)
+  })
 })

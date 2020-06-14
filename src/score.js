@@ -4,6 +4,9 @@ function Score(frameNum, bonus1) {
 }
 
 Score.prototype.score = function() {
+  if (this.frameNum.roll1result() === 10) {
+    return (10 + this.bonusFrame1.baseScore());
+  }
   if (this.frameNum.baseScore() === 10) {
     return (10 + this.bonusFrame1.roll1result());
   }

@@ -16,3 +16,7 @@ Frame.prototype.baseScore = function() {
 Frame.prototype.roll1result = function() {
   return (this.roll1)
 }
+
+Frame.prototype.roll2result = function() {
+  return (this.roll2)
+}

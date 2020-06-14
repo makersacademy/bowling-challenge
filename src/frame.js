@@ -16,17 +16,18 @@ class Frame {
     return this._roll2;
   }
   firstRoll(points){
-    if (points > this.MAX_SINGLE_ROLL_PTS) {
+
+    if (this._isMoreThanMaxPointsForSingleRoll(points)) {
       throw new Error('invalid amount of points for single roll');
     }
     this._roll1 = points;
   }
 
   secondRoll(points){
-    if (points > this.MAX_SINGLE_ROLL_PTS) {
+    if (this._isMoreThanMaxPointsForSingleRoll(points)) {
       throw new Error('invalid amount of points for single roll');
     }
-    if ((points + this.pointsFirstRoll())> this.MAX_FRAME_PTS) {
+    if (this._isMoreThanFrameMaxPoints(points)) {
       throw new Error('invalid amount of points for single frame');
     }
     this._roll2 = points;
@@ -36,8 +37,12 @@ class Frame {
     return this._roll1 + this._roll2;
   }
 
-  // _isMoreThanMaxPointsForSingleRoll() {
-  //   return (this.firstRoll(points) > this.MAX_FIRST_ROLL_PTS);
-  // }
+  _isMoreThanMaxPointsForSingleRoll(points) {
+    return points > this.MAX_SINGLE_ROLL_PTS
+  }
+
+  _isMoreThanFrameMaxPoints(points) {
+    return (points + this.pointsFirstRoll()) > this.MAX_FRAME_PTS
+  }
 
 }

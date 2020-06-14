@@ -86,3 +86,5 @@ Reviewers will potentially be using this [code review rubric](docs/review.md).  
 # I'd feel more confident If we could generate random rolls and simulate a game of bowling but apparently that's not the right way to go.
 
 # I'll set up the project files and do some more research.
+
+# Hours and some meditation later I refactior and pass the first test.

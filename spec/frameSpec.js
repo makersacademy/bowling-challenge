@@ -33,4 +33,5 @@ describe('Frame', function() {
     frame.add(5);
     expect(frame.spare()).toBeTruthy();
   })
+
 });

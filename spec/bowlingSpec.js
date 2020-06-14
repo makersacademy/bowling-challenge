@@ -22,7 +22,7 @@ describe('Bowling', function() {
   });
 
   it('Should increment turn on each call of add', function() {
-    bowling.add(6);
+    bowling.bowl(6);
     expect(bowling.turn).toEqual(1);
   })
 
@@ -36,27 +36,27 @@ describe('Bowling', function() {
   })
 
   it('Should be able to add the a score via the Bowling class', function() {
-    bowling.add(8);
+    bowling.bowl(8);
     expect(frame.add).toHaveBeenCalledWith(8);
   })
 
   it('Should check if last frame needs bonus score for spare adding', function () {
-    bowling.add(5);
-    bowling.add(5);
-    bowling.add(8);
+    bowling.bowl(5);
+    bowling.bowl(5);
+    bowling.bowl(8);
     expect(frame.spare).toHaveBeenCalledTimes(1);
   });
 
   it('Should check if the last frame needs a bonus score for a strike', function() {
-    bowling.add(10);
-    bowling.add(4);
+    bowling.bowl(10);
+    bowling.bowl(4);
     expect(frame.strike).toHaveBeenCalledTimes(1);
   })
 
   it('Should check if the frame before last needs a bonus score for a strike', function() {
-    bowling.add(10);
-    bowling.add(10);
-    bowling.add(4);
+    bowling.bowl(10);
+    bowling.bowl(10);
+    bowling.bowl(4);
     expect(frame.strike).toHaveBeenCalledTimes(2);
   }) // all these tests will be reduced in size once I have started to add them as callbacks.
 });

@@ -7,12 +7,10 @@ class Frame {
 
   add(num) {
     this.scores.push(num);
+    this.frameScore += num
   }
 
   total() {
-    this.frameScore = this.scores.reduce(function(a, b) {
-      return a + b;
-    });
     return this.frameScore
   }
 
@@ -29,4 +27,5 @@ class Frame {
       return false;
     }
   }
+
 }

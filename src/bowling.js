@@ -21,7 +21,7 @@ class Bowling {
     this.gameFrames.push(frame);
   }
 
-  add(num) {
+  bowl(num) {
     let i = this.frameNum
     this.gameFrames[i].add(num);
     this.spareCheck(num);

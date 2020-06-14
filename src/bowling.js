@@ -5,6 +5,7 @@ class Bowling {
     this.gameFrames = [frame];
     this.frameNum = 0;
     this.turn = 0;
+    this.gameTotal = 0
   };
 
   nextFrame() {
@@ -64,4 +65,5 @@ class Bowling {
       this.nextFrame();
     }
   }
+
 }

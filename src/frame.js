@@ -3,11 +3,12 @@ class Frame {
   constructor() {
     this.scores = [];
     this.frameScore = 0;
+    this.returned = false;
   }
 
   add(num) {
     this.scores.push(num);
-    this.frameScore += num
+    this.frameScore += num;
   }
 
   total() {
@@ -29,12 +30,14 @@ class Frame {
   }
 
   returnTotal() {
-    if (this.frameLength() == 2 && this.total() < 10) {
-      return true;
-    } else if (this.frameLength >= 3) {
-      return true;
+    if (this.frameLength() === 2 && this.total() < 10 && this.returned === false) {
+      this.returned = true;
+      this.total();
+    } else if (this.frameLength() === 3 && this.returned === false) {
+      this.returned = true;
+      this.total();
     } else {
-      return false;
+      return 0;
     }
   }
 

@@ -5,7 +5,7 @@ describe('Bowling', function() {
   let frame;
 
   beforeEach(function() {
-    frame = jasmine.createSpyObj('frame', ['add', 'total', 'spare', 'strike']);
+    frame = jasmine.createSpyObj('frame', ['add', 'total', 'spare', 'strike', 'returnTotal']);
     bowling = new Bowling(frame);
   });
 
@@ -58,5 +58,12 @@ describe('Bowling', function() {
     bowling.bowl(10);
     bowling.bowl(4);
     expect(frame.strike).toHaveBeenCalledTimes(2);
-  }) // all these tests will be reduced in size once I have started to add them as callbacks.
+  }) 
+  
+  it('Should work out when a round is ready to return and store score', function() {
+    for (let i = 0; i < 4; i++) {
+      bowling.bowl(10);
+    }
+    expect(bowling.gameTotal).toEqual(60)
+  }) // need to work out a way to get scores from each round
 });

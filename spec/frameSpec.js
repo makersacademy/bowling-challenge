@@ -34,10 +34,4 @@ describe('Frame', function() {
     expect(frame.spare()).toBeTruthy();
   })
 
-  it('Should be able to check if a frame score is ready to be returned', function() {
-    frame.add(5)
-    frame.add(2)
-    expect(frame.returnTotal()).toBeTruthy();
-  })
-
 });

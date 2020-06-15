@@ -49,3 +49,10 @@ Looking at the above requirements I now know the following important points:
 - Each frame can have a max of **three scores** and a min of **two scores** before it needs to be totaled
 - If the **first score** in a frame is 10 then we will need to add the **following two scores** to that frame
 - if by the **second score** the total of a frame is 10 then the **following score** needs to be added to that frame. 
+
+### Weekend one ###
+
+overall I was happy with how the first weekend went considering this is the biggest challenge we have had on the course so far and its my first week working with JavaScript properly. 
+
+I feel like I may have gone down the rabbit hole a touch and may have slightly over engineered the code but it is working almost as I would like it to. The last thing I need to implement is a check for the last frame to ensure that if someone does not knock all 10 pins down they cant bowl a 3rd bonus ball. 
+

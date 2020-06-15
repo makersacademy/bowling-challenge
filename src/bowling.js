@@ -80,5 +80,4 @@ class Bowling {
   resetTurn() {
     this.turn = 0;
   }
-
 }

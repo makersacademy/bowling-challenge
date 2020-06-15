@@ -100,7 +100,7 @@ class BowlingGame {
         if (this.checkSparesStrikes(this.getStrikes())) {
             this.strikesSparesUpdate(this.getStrikes(), value);
             var strikeScore = this.getStrikes()[0];
-            if (strikeScore.getScore2()) {
+            if (strikeScore.getScore2() || strikeScore.getScore2() === 0) {
                 this.addScore(strikeScore.getId(), strikeScore.total(), callback);
                 this.deleteFirstValue(this.getStrikes())
             }

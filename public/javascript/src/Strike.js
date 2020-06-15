@@ -14,7 +14,7 @@ class Strike {
     }
 
     updateScore(value) {
-        if (this._score1) {
+        if (this._score1 || this._score1 === 0) {
             this._score2 = value;
         } else {
             this._score1 = value;

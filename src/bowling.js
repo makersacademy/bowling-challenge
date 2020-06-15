@@ -71,7 +71,7 @@ class Bowling {
   } 
 
   nextFrameCheck(num) {
-    if (this.turn === 2 || num === 10) {
+    if (this.turn > 1 || num === 10) {
       this.resetTurn();
       this.nextFrame();
     }

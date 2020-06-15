@@ -19,6 +19,6 @@ class Scorecard {
       this.currentScore += frame.score() + this.bonus;
       this.index += 1;
     });
-    return this.bonus;
+    // return this.bonus;
   }
 }

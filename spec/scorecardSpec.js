@@ -22,7 +22,7 @@ describe('Scorecard', function () {
     scorecard.frameArray[0].reportBowlTwo(7);
     scorecard.frameArray[1].reportBowlOne(8);
     scorecard.computeScore();
-    expect(scorecard.frameArray[0].frameScore).toEqual(18);
+    expect(scorecard.currentScore).toEqual(26);
   });
 
   it('adds strike bonus', function () {
@@ -30,6 +30,6 @@ describe('Scorecard', function () {
     scorecard.frameArray[1].reportBowlOne(8);
     scorecard.frameArray[1].reportBowlTwo(1);
     scorecard.computeScore();
-    expect(scorecard.frameArray[0].frameScore).toEqual(19);
+    expect(scorecard.currentScore).toEqual(28);
   });
 });

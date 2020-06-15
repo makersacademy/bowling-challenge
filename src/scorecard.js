@@ -15,10 +15,9 @@ class Scorecard {
         this.bonus = this.frameArray[this.index + 1].score();
       }
 
-      // this.bonusScore = bonusScoreCalculation(frame, this.index);
       this.currentScore += frame.score() + this.bonus;
       this.index += 1;
     });
-    // return this.bonus;
+    return this.currentScore;
   }
 }

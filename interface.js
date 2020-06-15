@@ -15,7 +15,6 @@ $(document).ready(function () {
   });
 
   function updateScore() {
-    scorecard.computeScore();
-    $('#current-score').text(scorecard.currentScore);
+    $('#current-score').text(scorecard.computeScore());
   }
 });

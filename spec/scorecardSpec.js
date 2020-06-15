@@ -14,22 +14,20 @@ describe('Scorecard', function () {
     scorecard.frameArray[1].reportBowlTwo(5);
 
     scorecard.computeScore();
-    expect(scorecard.currentScore).toEqual(18);
+    expect(scorecard.computeScore()).toEqual(18);
   });
 
   it('adds spare bonus', function () {
     scorecard.frameArray[0].reportBowlOne(3);
     scorecard.frameArray[0].reportBowlTwo(7);
     scorecard.frameArray[1].reportBowlOne(8);
-    scorecard.computeScore();
-    expect(scorecard.currentScore).toEqual(26);
+    expect(scorecard.computeScore()).toEqual(26);
   });
 
   it('adds strike bonus', function () {
     scorecard.frameArray[0].reportBowlOne(10);
     scorecard.frameArray[1].reportBowlOne(8);
     scorecard.frameArray[1].reportBowlTwo(1);
-    scorecard.computeScore();
-    expect(scorecard.currentScore).toEqual(28);
+    expect(scorecard.computeScore()).toEqual(28);
   });
 });

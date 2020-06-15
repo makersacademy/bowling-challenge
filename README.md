@@ -91,4 +91,6 @@ Reviewers will potentially be using this [code review rubric](docs/review.md).  
 
 # Hours and some meditation later I refactior and pass the first test.
 
-# set up the first proper test
+
+
+# Now I think I understand what directon to go in. I will do some more planning and apempt this again next weekend.

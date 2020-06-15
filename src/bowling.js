@@ -9,8 +9,10 @@ class Bowling {
   };
 
   nextFrame() {
-    this.frameNum ++;
-    this.addFrame()
+    if (this.frameNum < 9) {
+      this.frameNum ++;
+      this.addFrame()
+    }
   };
 
   nextTurn(num) {

@@ -3,7 +3,6 @@ class Frame {
   constructor() {
     this.scores = [];
     this.frameScore = 0;
-    this.returned = false;
   }
 
   add(num) {
@@ -16,7 +15,7 @@ class Frame {
   }
 
   strike() {
-    if (this.scores[0] === 10) {
+    if (this.scores[0] === 10 && this.frameLength() < 3) {
       return true;
     };
   }

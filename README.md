@@ -77,7 +77,9 @@ In code review we'll be hoping to see:
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
 
 
-# Run this repo
+## Run this repo
+
+# open SpecRunner.html
 
 
 ## Planning phase
@@ -88,3 +90,5 @@ Reviewers will potentially be using this [code review rubric](docs/review.md).  
 # I'll set up the project files and do some more research.
 
 # Hours and some meditation later I refactior and pass the first test.
+
+# set up the first proper test

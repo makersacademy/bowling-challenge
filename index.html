@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+
+  <script src="src/Scorecard.js"></script>
+  <script src="src/Frame.js"></script>
+  <script src="src/Frame10.js"></script>
+  <script src="jquery.js"></script>
+  <script src="Interface.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="fonts.css">
+
+  <title>Bowling Scorecard</title>
+</head>
+
+<body>
+
+  <video autoplay muted loop id="video" src="videos/bowling-ambience.mp4" type="video/mp4"></video>
+
+  <div class="sheet">
+    <h1 id="title">Bowling Scorecard</h1>
+
+    <div id="help">
+      <p>Use the buttons below to record your score.</p>
+    </div>
+
+    <div id="controls">
+      <button id="ambience" class="button">ambience: <span>off</span></button>
+      <button id="reset" class="button">reset</button>
+    </div>
+
+    <div id="table">
+      <div id="name" class="side-box">
+        <div class="label">NAME</div>
+        <div id="name" class="field">the Dude</div>
+      </div>
+      <div id="frame0" class="frame">
+        <div class="number">1</div>
+        <div class="roll1"></div>
+        <div class="roll2"></div>
+        <div class="running-total"></div>
+      </div>
+      <div id="frame1" class="frame">
+        <div class="number">2</div>
+        <div class="roll1"></div>
+        <div class="roll2"></div>
+        <div class="running-total"></div>
+      </div>
+      <div id="frame2" class="frame">
+        <div class="number">3</div>
+        <div class="roll1"></div>
+        <div class="roll2"></div>
+        <div class="running-total"></div>
+      </div>
+      <div id="frame3" class="frame">
+        <div class="number">4</div>
+        <div class="roll1"></div>
+        <div class="roll2"></div>
+        <div class="running-total"></div>
+      </div>
+      <div id="frame4" class="frame">
+        <div class="number">5</div>
+        <div class="roll1"></div>
+        <div class="roll2"></div>
+        <div class="running-total"></div>
+      </div>
+      <div id="frame5" class="frame">
+        <div class="number">6</div>
+        <div class="roll1"></div>
+        <div class="roll2"></div>
+        <div class="running-total"></div>
+      </div>
+      <div id="frame6" class="frame">
+        <div class="number">7</div>
+        <div class="roll1"></div>
+        <div class="roll2"></div>
+        <div class="running-total"></div>
+      </div>
+      <div id="frame7" class="frame">
+        <div class="number">8</div>
+        <div class="roll1"></div>
+        <div class="roll2"></div>
+        <div class="running-total"></div>
+      </div>
+      <div id="frame8" class="frame">
+        <div class="number">9</div>
+        <div class="roll1"></div>
+        <div class="roll2"></div>
+        <div class="running-total"></div>
+      </div>
+      <div id="frame9" class="frame">
+        <div class="number">10</div>
+        <div class="roll1"></div>
+        <div class="roll2"></div>
+        <div class="roll3"></div>
+        <div class="running-total"></div>
+      </div>
+      <div id="total" class="side-box">
+        <div class="label">TOTAL</div>
+        <div id="grand-total" class="field"></div>
+      </div>
+    </div>
+
+    <div id="input">
+      <button id="0" value="0" class="button record">miss</button>
+      <button id="1" value="1" class="button record">1</button>
+      <button id="2" value="2" class="button record">2</button>
+      <button id="3" value="3" class="button record">3</button>
+      <button id="4" value="4" class="button record">4</button>
+      <button id="5" value="5" class="button record">5</button>
+      <button id="6" value="6" class="button record">6</button>
+      <button id="7" value="7" class="button record">7</button>
+      <button id="8" value="8" class="button record">8</button>
+      <button id="9" value="9" class="button record">9</button>
+      <button id="10" value="10" class="button record">strike</button>
+      <!-- <button value="spare" class="button record" disabled>spare</button> -->
+    </div>
+  </div>
+</body>
+
+</html>

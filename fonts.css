@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'Rock Salt';
+  src: url('fonts/RockSalt-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Special Elite';
+  src: url('fonts/SpecialElite-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Faster One';
+  src: url('fonts/FasterOne-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

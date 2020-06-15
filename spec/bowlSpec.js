@@ -12,4 +12,8 @@ describe('Bowl', function() {
     expect(bowl.cool()).toEqual(true);
   });
 
+  it('should have a score of zero to begin', function() {
+    expect(bowl.score()).toEqual(0);
+  });
+
 });

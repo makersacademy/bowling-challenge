@@ -40,6 +40,11 @@ describe('Bowling', function() {
     expect(frame.add).toHaveBeenCalledWith(8);
   })
 
+  it('Should increase the score for each bowl added', function() {
+    bowling.bowl(6);
+    expect(bowling.currentScore()).toEqual(6)
+  })
+
   it('Should check if last frame needs bonus score for spare adding', function () {
     bowling.bowl(5);
     bowling.bowl(5);
@@ -60,10 +65,10 @@ describe('Bowling', function() {
     expect(frame.strike).toHaveBeenCalledTimes(2);
   }) 
   
-  it('Should work out when a round is ready to return and store score', function() {
+  it('Should keep track of current score', function() {
     for (let i = 0; i < 4; i++) {
-      bowling.bowl(10);
+      bowling.bowl(4);
     }
-    expect(bowling.gameTotal).toEqual(60)
+    expect(bowling.gameTotal).toEqual(16)
   }) // need to work out a way to get scores from each round
 });

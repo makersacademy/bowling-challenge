@@ -29,18 +29,6 @@ class Frame {
     }
   }
 
-  returnTotal() {
-    if (this.frameLength() === 2 && this.total() < 10 && this.returned === false) {
-      this.returned = true;
-      this.total();
-    } else if (this.frameLength() === 3 && this.returned === false) {
-      this.returned = true;
-      this.total();
-    } else {
-      return 0;
-    }
-  }
-
   frameLength() {
     return this.scores.length;
   }

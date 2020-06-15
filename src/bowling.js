@@ -18,13 +18,22 @@ class Bowling {
     this.nextFrameCheck(num)
   }
 
+  currentScore() {
+    return this.gameTotal;
+  }
+
   addFrame(frame = new Frame()) {
     this.gameFrames.push(frame);
+  }
+
+  increaseScore(num) {
+    this.gameTotal += num;
   }
 
   bowl(num) {
     let i = this.frameNum
     this.gameFrames[i].add(num);
+    this.increaseScore(num);
     this.spareCheck(num);
     this.strikeCheckOne(num);
     this.strikeCheckTwo(num);
@@ -35,6 +44,7 @@ class Bowling {
     let i = this.frameNum;
     if (this.frameLengthCheck() > 1 && this.gameFrames[i-1].spare()) {
       this.gameFrames[i-1].add(num);
+      this.increaseScore(num);
     }
   }
 
@@ -42,6 +52,7 @@ class Bowling {
     let i = this.frameNum;
     if (this.frameLengthCheck() > 1 && this.gameFrames[i-1].strike()) {
       this.gameFrames[i-1].add(num);
+      this.increaseScore(num);
     }
   }
 
@@ -49,6 +60,7 @@ class Bowling {
     let i = this.frameNum;
     if (this.frameLengthCheck() > 2 && this.gameFrames[i-2].strike()) {
       this.gameFrames[i-2].add(num);
+      this.increaseScore(num);
     }
   }
 
@@ -57,13 +69,14 @@ class Bowling {
   } 
 
   nextFrameCheck(num) {
-    if (this.turn === 2) {
-      this.turn = 0;
-      this.nextFrame();
-    } else if (num === 10) {
-      this.turn = 0;
+    if (this.turn === 2 || num === 10) {
+      this.resetTurn();
       this.nextFrame();
     }
+  }
+
+  resetTurn() {
+    this.turn = 0;
   }
 
 }

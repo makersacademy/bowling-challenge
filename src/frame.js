@@ -6,6 +6,8 @@ class Frame {
     this._roll2 = null;
     this.MAX_SINGLE_ROLL_PTS = 10;
     this.MAX_FRAME_PTS = 10;
+    this.next_Roll = null;
+    this.next_Next_Roll = null;
   }
 
   pointsFirstRoll(){
@@ -35,6 +37,14 @@ class Frame {
 
   totPointsBeforeBonus() {
     return this._roll1 + this._roll2;
+  }
+
+  getNextRoll(frame) {
+    this.next_Roll = frame;
+  }
+
+  getNextNextRoll(frame) {
+    this.next_Next_Roll = frame;
   }
 
   _isMoreThanMaxPointsForSingleRoll(points) {

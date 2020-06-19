@@ -2,8 +2,12 @@
 
 describe('Frame class', function(){
   var frame;
+  var game;
   beforeEach(function(){
     frame = new Frame ();
+    game = jasmine.createSpyObj('game', ['sharingInfoAboutFrames'])
+    // frame1 = new Frame ();
+    // frame2 = new Frame ();
   });
   it('when created has 2 properties - roll1,roll2 - equal to null and 2 methods for visualizing them', function(){
     expect(frame.pointsFirstRoll()).toEqual(null);
@@ -31,7 +35,5 @@ describe('Frame class', function(){
       frame.firstRoll(9);
       expect(function(){frame.secondRoll(2);}).toThrowError('invalid amount of points for single frame');
     });
-
-
   });
 });

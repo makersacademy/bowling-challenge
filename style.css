@@ -29,7 +29,7 @@ body {
   "title help controls"
   "table table table"
   "input input input";
-  grid-template-columns: 8em 1fr 16em;
+  grid-template-columns: 8em 1fr 24em;
   gap: 1em;
   align-items: center;
   background-image: url(images/rice-paper-3.png);

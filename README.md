@@ -36,7 +36,7 @@ index.html - for display
 jquery.js - to interact between model and page
 frame.js - hold num pins knocked over in frame and rolls used
 score.js - to deal with the calculation of the score (deals with the spare/strike complications)
-scorecard.js - to deal with dispalying the scores
+scorecard.js - to deal with displaying the scores
 
 ### frame.js
 

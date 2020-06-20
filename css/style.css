@@ -2,6 +2,7 @@
   display: flex;
   flex-wrap: wrap;
 }
+
 .frame {
   display: flex;
   border: 2px solid black;
@@ -21,6 +22,7 @@
 .left{
   height: 40px;
   width: 40px;
+  background-color: white;
 }
 
 .right {
@@ -34,7 +36,6 @@
 .right-bonus {
   border-left: 2px solid black;
   border-bottom: 2px solid black;
-  background-color: white;
   height: 40px;
   width: 40px;
 }

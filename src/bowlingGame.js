@@ -2,18 +2,20 @@
 
 class BowlingGame {
   constructor() {
-    this.frame = [];
+    this.rolls = [];
+    this.pins = 10
   }
 
-    roll(pins) {
-      this.frame.push(pins);
-    }
+   roll(downPins) {
+     this.rolls.push(downPins);
+     this.pins -= downPins;
+   }
 
-    score() {
-        var array = this.frame
-        var total = array.reduce(function(a, b) {
-            return a + b;
-        }, 0);
-        return total; 
-    }
+   score() {
+     var array = this.rolls
+     var total = array.reduce(function(a, b) {
+       return a + b;
+       }, 0);
+     return total; 
+   }
 }

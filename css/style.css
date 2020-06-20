@@ -45,6 +45,7 @@
   width: 80px;
 }
 .frame-number {
+  background-color: rgb(245,222,179);
   height:20px;
   border-bottom: 2px solid black;
   text-align: center;

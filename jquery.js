@@ -2,4 +2,5 @@
 
 $(document).ready(function() {
   bowling = new Bowling();
+
 });

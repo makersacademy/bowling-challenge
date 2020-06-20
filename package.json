@@ -7,7 +7,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,10 @@
   },
   "homepage": "https://github.com/victorvallet/bowling-challenge#readme",
   "devDependencies": {
-    "jest": "^26.0.1"
+    "jest": "^26.0.1",
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }

@@ -5,16 +5,18 @@ $(document).ready(function() {
 
   $('.pins').click(function() {
     let num = $(this).val()
-    console.log(num)
-});
+    let frame = bowling.currentFrame()
+    bowling.bowl(num)
+    $(`#${frame} .left`).text(num)
+  });
 })
 
 
-/* <div class="frame" id="1">
+/* <div class="frame" id="0">
         <div class="frame-number">1</div>
           <div class="top">
-            <div class="left" id="1"></div>
-            <div class="right" id="1"></div>
+            <div class="left" id="0"></div>
+            <div class="right" id="0"></div>
           </div>
-          <div class="bottom" id="1"></div>
+          <div class="bottom" id="0"></div>
       </div> */

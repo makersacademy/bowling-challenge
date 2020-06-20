@@ -29,7 +29,6 @@ $(document).ready(function() {
 
   updateScores()
 
-
   $('#roll1frame1').submit(function() {
     var roll = $('#roll').val();
     frame1.roll1(roll);

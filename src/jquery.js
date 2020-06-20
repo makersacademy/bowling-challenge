@@ -7,8 +7,10 @@ $(document).ready(function() {
     let num = $(this).val();
     let frame = bowling.currentFrame();
     let score = parseInt(num);
-    leftOrRightScore(score, frame)
-    updateTotal()
+    let turn = bowling.currentTurn();
+    removeButton(score, turn);
+    leftOrRightScore(score, frame);
+    updateTotal();
   });
 
   function leftOrRightScore(score, frame) {
@@ -27,6 +29,26 @@ $(document).ready(function() {
 
   function updateTotal() {
     $('.total').text(bowling.currentScore());
+  }
+
+  function removeButton(score, turn) {
+    if (turn < 1 && score < 10) {
+      let buttons = returnButtonArray(score);
+      $.each(buttons, function(index, value) {
+        $('.pins-hit').find(`#${value}`).addClass('hidden');
+      });
+    } else {
+      $('.pins').removeClass('hidden')
+    }
+  }
+
+  function returnButtonArray(score) {
+    let invalidButtons = []
+    let num = 10 - (score - 1)
+    for (let i = num; i <= 10; i++) {
+      invalidButtons.push(i)
+    }
+    return invalidButtons;
   }
 
 });

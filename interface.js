@@ -31,51 +31,203 @@ $(document).ready(function() {
 
 
   $('#roll1frame1').submit(function(event) {
-    console.log("yes")
     var roll = $('#roll').val();
     frame1.roll1(roll);
     $('#roll1frame1cell').html(roll);
-    console.log(frame1.roll1result())
     updateScores()
   })
   $('#roll2frame1').submit(function(event) {
-    console.log("yes")
     var roll = $('#roll').val();
     frame1.roll2(roll);
     $('#roll2frame1cell').html(roll);
-    console.log(frame1.roll2result())
     updateScores()
   })
 
   $('#roll1frame2').submit(function(event) {
-    console.log("yes")
     var roll = $('#roll').val();
     frame2.roll1(roll);
     $('#roll1frame2cell').html(roll);
-    console.log(frame2.roll1result())
     updateScores()
   })
   $('#roll2frame2').submit(function(event) {
-    console.log("yes")
     var roll = $('#roll').val();
     frame2.roll2(roll);
     $('#roll2frame2cell').html(roll);
-    console.log(frame2.roll2result())
     updateScores()
   })
+
+  $('#roll1frame3').submit(function(event) {
+    var roll = $('#roll').val();
+    frame3.roll1(roll);
+    $('#roll1frame3cell').html(roll);
+    updateScores()
+  })
+  $('#roll2frame3').submit(function(event) {
+    var roll = $('#roll').val();
+    frame3.roll2(roll);
+    $('#roll2frame3cell').html(roll);
+    updateScores()
+  })
+
+  $('#roll1frame4').submit(function(event) {
+    var roll = $('#roll').val();
+    frame4.roll1(roll);
+    $('#roll1frame4cell').html(roll);
+    updateScores()
+  })
+  $('#roll2frame4').submit(function(event) {
+    var roll = $('#roll').val();
+    frame4.roll2(roll);
+    $('#roll2frame4cell').html(roll);
+    updateScores()
+  })
+
+  $('#roll1frame5').submit(function(event) {
+    var roll = $('#roll').val();
+    frame5.roll1(roll);
+    $('#roll1frame5cell').html(roll);
+    updateScores()
+  })
+  $('#roll2frame5').submit(function(event) {
+    var roll = $('#roll').val();
+    frame5.roll2(roll);
+    $('#roll2frame5cell').html(roll);
+    updateScores()
+  })
+
+  $('#roll1frame6').submit(function(event) {
+    var roll = $('#roll').val();
+    frame6.roll1(roll);
+    $('#roll1frame6cell').html(roll);
+    updateScores()
+  })
+  $('#roll2frame6').submit(function(event) {
+    var roll = $('#roll').val();
+    frame6.roll2(roll);
+    $('#roll2frame6cell').html(roll);
+    updateScores()
+  })
+
+  $('#roll1frame7').submit(function(event) {
+    var roll = $('#roll').val();
+    frame7.roll1(roll);
+    $('#roll1frame7cell').html(roll);
+    updateScores()
+  })
+  $('#roll2frame7').submit(function(event) {
+    var roll = $('#roll').val();
+    frame7.roll2(roll);
+    $('#roll2frame7cell').html(roll);
+    updateScores()
+  })
+
+  $('#roll1frame8').submit(function(event) {
+    var roll = $('#roll').val();
+    frame8.roll1(roll);
+    $('#roll1frame8cell').html(roll);
+    updateScores()
+  })
+  $('#roll2frame8').submit(function(event) {
+    var roll = $('#roll').val();
+    frame8.roll2(roll);
+    $('#roll2frame8cell').html(roll);
+    updateScores()
+  })
+
+  $('#roll1frame9').submit(function(event) {
+    var roll = $('#roll').val();
+    frame9.roll1(roll);
+    $('#roll1frame9cell').html(roll);
+    updateScores()
+  })
+  $('#roll2frame9').submit(function(event) {
+    var roll = $('#roll').val();
+    frame9.roll2(roll);
+    $('#roll2frame9cell').html(roll);
+    updateScores()
+  })
+
+  $('#roll1frame10').submit(function(event) {
+    var roll = $('#roll').val();
+    frame10.roll1(roll);
+    $('#roll1frame10cell').html(roll);
+    updateScores()
+  })
+  $('#roll2frame10').submit(function(event) {
+    var roll = $('#roll').val();
+    frame10.roll2(roll);
+    $('#roll2frame10cell').html(roll);
+    updateScores()
+  })
+
+  $('#roll1frame11').submit(function(event) {
+    var roll = $('#roll').val();
+    frame11.roll1(roll);
+    $('#roll1frame11cell').html(roll);
+    updateScores()
+  })
+  $('#roll2frame11').submit(function(event) {
+    var roll = $('#roll').val();
+    frame11.roll2(roll);
+    $('#roll2frame11cell').html(roll);
+    updateScores()
+  })
+
+  $('#roll1frame12').submit(function(event) {
+    var roll = $('#roll').val();
+    frame12.roll1(roll);
+    $('#roll1frame12cell').html(roll);
+    updateScores()
+  })
+  $('#roll2frame12').submit(function(event) {
+    var roll = $('#roll').val();
+    frame12.roll2(roll);
+    $('#roll2frame12cell').html(roll);
+    updateScores()
+  })
+
+
 
   function updateScores() {
     if(isNaN(score1.score())){
     }else{
-      console.log(score1.score())
-      console.log(scorecard.score(1))
 	     $('#scoreframe1').html(scorecard.score(1));
     }
     if(isNaN(score2.score())){
     }else{
-      console.log(score2.score())
-      console.log(scorecard.score(2))
 	     $('#scoreframe2').html(scorecard.score(2));
+    }
+    if(isNaN(score3.score())){
+    }else{
+	     $('#scoreframe3').html(scorecard.score(3));
+    }
+    if(isNaN(score4.score())){
+    }else{
+	     $('#scoreframe4').html(scorecard.score(4));
+    }
+    if(isNaN(score5.score())){
+    }else{
+	     $('#scoreframe5').html(scorecard.score(5));
+    }
+    if(isNaN(score6.score())){
+    }else{
+	     $('#scoreframe6').html(scorecard.score(6));
+    }
+    if(isNaN(score7.score())){
+    }else{
+	     $('#scoreframe7').html(scorecard.score(7));
+    }
+    if(isNaN(score8.score())){
+    }else{
+	     $('#scoreframe8').html(scorecard.score(8));
+    }
+    if(isNaN(score9.score())){
+    }else{
+	     $('#scoreframe9').html(scorecard.score(9));
+    }
+    if(isNaN(score10.score())){
+    }else{
+	     $('#scoreframe10').html(scorecard.score(10));
     }
   }
 

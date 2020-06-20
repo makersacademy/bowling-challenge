@@ -36,4 +36,15 @@ describe('Frame class', function(){
       expect(function(){frame.secondRoll(2);}).toThrowError('invalid amount of points for single frame');
     });
   });
+
+  describe('strike', function(){
+    it('knows if the frame is a strike', function(){
+      frame.firstRoll(10);
+      expect(frame._isAStrike()).toBe(true);
+    });
+    it('knows if the frame is NOT a strike', function(){
+      frame.firstRoll(2);
+      expect(frame._isAStrike()).not.toBe(true);
+    });
+  });
 });

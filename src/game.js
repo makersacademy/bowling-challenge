@@ -19,7 +19,7 @@ class Game {
     for (var i=0; i < this.frames.length; i++) {
       this.frames[i].getNextRoll(this.frames[i+1]);
       this.frames[i].getNextNextRoll(this.frames[i+2]);
-    };
+    }
 
   }
 

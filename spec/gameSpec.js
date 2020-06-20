@@ -11,16 +11,16 @@ describe('Game class', function(){
   });
   it('has an array that contains the game frames', function(){
     expect(game.gameFrames()).toEqual([]);
-  })
+  });
   it('includes multiple frames in the gameFrames array', function(){
     game.addFrame(frame1);
     game.addFrame(frame2);
     game.addFrame(frame3);
-    expect(game.gameFrames()).toEqual([frame1, frame2, frame3])
+    expect(game.gameFrames()).toEqual([frame1, frame2, frame3]);
   });
   it('does not allow to add more than 10 frames', function(){
     for(var i=0; i<11; i++) {
-      game.addFrame(frame1)
+      game.addFrame(frame1);
     }
     expect(game.gameFrames().length).toEqual(10);
   });

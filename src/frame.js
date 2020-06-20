@@ -47,12 +47,16 @@ class Frame {
     this.next_Next_Roll = frame;
   }
 
+  _isAStrike() {
+    return this._roll1 === this.MAX_FRAME_PTS;
+  }
+
   _isMoreThanMaxPointsForSingleRoll(points) {
-    return points > this.MAX_SINGLE_ROLL_PTS
+    return points > this.MAX_SINGLE_ROLL_PTS;
   }
 
   _isMoreThanFrameMaxPoints(points) {
-    return (points + this.pointsFirstRoll()) > this.MAX_FRAME_PTS
+    return (points + this.pointsFirstRoll()) > this.MAX_FRAME_PTS;
   }
 
 }

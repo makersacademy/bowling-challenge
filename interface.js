@@ -30,169 +30,167 @@ $(document).ready(function() {
   updateScores()
 
 
-  $('#roll1frame1').submit(function(event) {
+  $('#roll1frame1').submit(function() {
     var roll = $('#roll').val();
     frame1.roll1(roll);
     $('#roll1frame1cell').html(roll);
     updateScores()
   })
-  $('#roll2frame1').submit(function(event) {
+  $('#roll2frame1').submit(function() {
     var roll = $('#roll').val();
     frame1.roll2(roll);
     $('#roll2frame1cell').html(roll);
     updateScores()
   })
 
-  $('#roll1frame2').submit(function(event) {
+  $('#roll1frame2').submit(function() {
     var roll = $('#roll').val();
     frame2.roll1(roll);
     $('#roll1frame2cell').html(roll);
     updateScores()
   })
-  $('#roll2frame2').submit(function(event) {
+  $('#roll2frame2').submit(function() {
     var roll = $('#roll').val();
     frame2.roll2(roll);
     $('#roll2frame2cell').html(roll);
     updateScores()
   })
 
-  $('#roll1frame3').submit(function(event) {
+  $('#roll1frame3').submit(function() {
     var roll = $('#roll').val();
     frame3.roll1(roll);
     $('#roll1frame3cell').html(roll);
     updateScores()
   })
-  $('#roll2frame3').submit(function(event) {
+  $('#roll2frame3').submit(function() {
     var roll = $('#roll').val();
     frame3.roll2(roll);
     $('#roll2frame3cell').html(roll);
     updateScores()
   })
 
-  $('#roll1frame4').submit(function(event) {
+  $('#roll1frame4').submit(function() {
     var roll = $('#roll').val();
     frame4.roll1(roll);
     $('#roll1frame4cell').html(roll);
     updateScores()
   })
-  $('#roll2frame4').submit(function(event) {
+  $('#roll2frame4').submit(function() {
     var roll = $('#roll').val();
     frame4.roll2(roll);
     $('#roll2frame4cell').html(roll);
     updateScores()
   })
 
-  $('#roll1frame5').submit(function(event) {
+  $('#roll1frame5').submit(function() {
     var roll = $('#roll').val();
     frame5.roll1(roll);
     $('#roll1frame5cell').html(roll);
     updateScores()
   })
-  $('#roll2frame5').submit(function(event) {
+  $('#roll2frame5').submit(function() {
     var roll = $('#roll').val();
     frame5.roll2(roll);
     $('#roll2frame5cell').html(roll);
     updateScores()
   })
 
-  $('#roll1frame6').submit(function(event) {
+  $('#roll1frame6').submit(function() {
     var roll = $('#roll').val();
     frame6.roll1(roll);
     $('#roll1frame6cell').html(roll);
     updateScores()
   })
-  $('#roll2frame6').submit(function(event) {
+  $('#roll2frame6').submit(function() {
     var roll = $('#roll').val();
     frame6.roll2(roll);
     $('#roll2frame6cell').html(roll);
     updateScores()
   })
 
-  $('#roll1frame7').submit(function(event) {
+  $('#roll1frame7').submit(function() {
     var roll = $('#roll').val();
     frame7.roll1(roll);
     $('#roll1frame7cell').html(roll);
     updateScores()
   })
-  $('#roll2frame7').submit(function(event) {
+  $('#roll2frame7').submit(function() {
     var roll = $('#roll').val();
     frame7.roll2(roll);
     $('#roll2frame7cell').html(roll);
     updateScores()
   })
 
-  $('#roll1frame8').submit(function(event) {
+  $('#roll1frame8').submit(function() {
     var roll = $('#roll').val();
     frame8.roll1(roll);
     $('#roll1frame8cell').html(roll);
     updateScores()
   })
-  $('#roll2frame8').submit(function(event) {
+  $('#roll2frame8').submit(function() {
     var roll = $('#roll').val();
     frame8.roll2(roll);
     $('#roll2frame8cell').html(roll);
     updateScores()
   })
 
-  $('#roll1frame9').submit(function(event) {
+  $('#roll1frame9').submit(function() {
     var roll = $('#roll').val();
     frame9.roll1(roll);
     $('#roll1frame9cell').html(roll);
     updateScores()
   })
-  $('#roll2frame9').submit(function(event) {
+  $('#roll2frame9').submit(function() {
     var roll = $('#roll').val();
     frame9.roll2(roll);
     $('#roll2frame9cell').html(roll);
     updateScores()
   })
 
-  $('#roll1frame10').submit(function(event) {
+  $('#roll1frame10').submit(function() {
     var roll = $('#roll').val();
     frame10.roll1(roll);
     $('#roll1frame10cell').html(roll);
     updateScores()
   })
-  $('#roll2frame10').submit(function(event) {
+  $('#roll2frame10').submit(function() {
     var roll = $('#roll').val();
     frame10.roll2(roll);
     $('#roll2frame10cell').html(roll);
     updateScores()
   })
 
-  $('#roll1frame11').submit(function(event) {
+  $('#roll1frame11').submit(function() {
     var roll = $('#roll').val();
     frame11.roll1(roll);
     $('#roll1frame11cell').html(roll);
     updateScores()
   })
-  $('#roll2frame11').submit(function(event) {
+  $('#roll2frame11').submit(function() {
     var roll = $('#roll').val();
     frame11.roll2(roll);
     $('#roll2frame11cell').html(roll);
     updateScores()
   })
 
-  $('#roll1frame12').submit(function(event) {
+  $('#roll1frame12').submit(function() {
     var roll = $('#roll').val();
     frame12.roll1(roll);
     $('#roll1frame12cell').html(roll);
     updateScores()
   })
-  $('#roll2frame12').submit(function(event) {
+  $('#roll2frame12').submit(function() {
     var roll = $('#roll').val();
     frame12.roll2(roll);
     $('#roll2frame12cell').html(roll);
     updateScores()
   })
 
-
-
   function updateScores() {
     for (var i = 0; i < 10; i ++) {
       if(isNaN(scorecard.score(i))) {
       }else{
-	     $(`#scoreframe${i}`).html(scorecard.score(i));
+        $(`#scoreframe${i}`).html(scorecard.score(i));
       }
     }
   }

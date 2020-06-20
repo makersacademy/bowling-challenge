@@ -40,11 +40,19 @@ class Frame {
   }
 
   getNextRoll(frame) {
-    this.next_Roll = frame;
+    return this.next_Roll = frame;
+  }
+
+  nextRoll() {
+    return this.next_Roll
   }
 
   getNextNextRoll(frame) {
-    this.next_Next_Roll = frame;
+    return this.next_Next_Roll = frame;
+  }
+
+  nextNextRoll() {
+    return this.next_Next_Roll
   }
 
   _isAStrike() {

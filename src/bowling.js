@@ -9,7 +9,7 @@ class Bowling {
   };
 
   nextFrame() {
-    if (this.frameNum < 10) {
+    if (this.frameNum < 9) {
       this.frameNum ++;
       this.addFrame()
     }
@@ -19,9 +19,17 @@ class Bowling {
     return this.frameNum
   }
 
+  currentTurn() {
+    return this.turn
+  }
+
   nextTurn(num) {
-    this.turn++;
-    this.nextFrameCheck(num)
+    if (this.currentFrame() < 9) {
+      this.turn++;
+      this.nextFrameCheck(num)
+    } else {
+      this.turn++
+    }
   }
 
   currentScore() {

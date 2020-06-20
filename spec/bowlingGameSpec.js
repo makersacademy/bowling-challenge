@@ -15,4 +15,10 @@ describe('BowlingGame', function() {
         expect(game.frame).toEqual([4, 3]);
     });
     
+    it('calculate my total score', function() {
+        var game = new BowlingGame();
+        game.roll(5);
+        game.roll(4);
+        expect(game.score()).toEqual(9);
+    });
 });

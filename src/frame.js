@@ -51,6 +51,10 @@ class Frame {
     return this._roll1 === this.MAX_FRAME_PTS;
   }
 
+  _isASpare() {
+    return (this._roll1 !== this.MAX_FRAME_PTS) && (this.totPointsBeforeBonus() === this.MAX_FRAME_PTS);
+  }
+
   _isMoreThanMaxPointsForSingleRoll(points) {
     return points > this.MAX_SINGLE_ROLL_PTS;
   }

@@ -47,4 +47,17 @@ describe('Frame class', function(){
       expect(frame._isAStrike()).not.toBe(true);
     });
   });
+
+  describe('spare', function(){
+    it('knows if this frame is a spare', function(){
+      frame.firstRoll(2);
+      frame.secondRoll(8);
+      expect(frame._isASpare()).toBe(true);
+    });
+    it('knows if this frame is NOT a spare', function(){
+      frame.firstRoll(0);
+      frame.secondRoll(5);
+      expect(frame._isASpare()).not.toBe(true);
+    });
+  });
 });

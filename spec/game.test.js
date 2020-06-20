@@ -4,9 +4,9 @@ const Game = require('../lib/game');
 
 describe('Game class', () => {
     var game = new Game();
-    test('it starts at frame 1 with 10 pins', () => {
+    test('it starts with 10 pins at first frame', () => {
         expect(game.pins).toEqual(10);
-        expect(game.frame).toEqual(1);
+        expect(game.frames.length).toEqual(0);
     });
 });
 

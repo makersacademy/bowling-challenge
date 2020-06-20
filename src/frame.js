@@ -15,18 +15,12 @@ class Frame {
   }
 
   isStrike() {
-    if (this.scores[0] === 10 && this.frameLength() < 3) {
-      return true;
-    };
+    return this.scores[0] === 10 && this.frameLength() < 3
   }
 
   isSpare() {
     const scoreCheck = this.scores[0] + this.scores[1] === 10
-    if (this.frameLength() === 2 && scoreCheck) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.frameLength() === 2 && scoreCheck
   }
 
   frameLength() {

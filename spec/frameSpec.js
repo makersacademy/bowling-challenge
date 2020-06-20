@@ -25,13 +25,13 @@ describe('Frame', function() {
 
   it('Should be able to check if the first score is 10', function() {
     frame.add(10);
-    expect(frame.strike()).toBeTruthy();
+    expect(frame.isStrike()).toBeTruthy();
   })
 
   it('Should be able to check if both bowls = 10', function() {
     frame.add(5);
     frame.add(5);
-    expect(frame.spare()).toBeTruthy();
+    expect(frame.isSpare()).toBeTruthy();
   })
 
 });

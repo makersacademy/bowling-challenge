@@ -5,7 +5,7 @@ describe('Bowling', function() {
   let frame;
 
   beforeEach(function() {
-    frame = jasmine.createSpyObj('frame', ['add', 'total', 'spare', 'strike', 'returnTotal']);
+    frame = jasmine.createSpyObj('frame', ['add', 'total', 'isSpare', 'isStrike', 'returnTotal']);
     bowling = new Bowling(frame);
   });
 
@@ -49,20 +49,20 @@ describe('Bowling', function() {
     bowling.bowl(5);
     bowling.bowl(5);
     bowling.bowl(8);
-    expect(frame.spare).toHaveBeenCalledTimes(1);
+    expect(frame.isSpare).toHaveBeenCalledTimes(1);
   });
 
   it('Should check if the last frame needs a bonus score for a strike', function() {
     bowling.bowl(10);
     bowling.bowl(4);
-    expect(frame.strike).toHaveBeenCalledTimes(1);
+    expect(frame.isStrike).toHaveBeenCalledTimes(1);
   })
 
   it('Should check if the frame before last needs a bonus score for a strike', function() {
     bowling.bowl(10);
     bowling.bowl(10);
     bowling.bowl(4);
-    expect(frame.strike).toHaveBeenCalledTimes(2);
+    expect(frame.isStrike).toHaveBeenCalledTimes(2);
   }) 
   
   it('Should keep track of current score', function() {

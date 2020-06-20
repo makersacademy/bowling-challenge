@@ -44,7 +44,7 @@ class Bowling {
 
   spareCheck(num) {
     let i = this.frameNum;
-    if (this.frameLengthCheck() > 1 && this.gameFrames[i-1].spare()) {
+    if (this.frameLengthCheck() > 1 && this.gameFrames[i-1].isSpare()) {
       this.gameFrames[i-1].add(num);
       this.increaseScore(num);
     }
@@ -52,7 +52,7 @@ class Bowling {
 
   strikeCheckOne(num) {
     let i = this.frameNum;
-    if (this.frameLengthCheck() > 1 && this.gameFrames[i-1].strike()) {
+    if (this.frameLengthCheck() > 1 && this.gameFrames[i-1].isStrike()) {
       this.gameFrames[i-1].add(num);
       this.increaseScore(num);
     }
@@ -60,7 +60,7 @@ class Bowling {
 
   strikeCheckTwo(num) {
     let i = this.frameNum;
-    if (this.frameLengthCheck() > 2 && this.gameFrames[i-2].strike()) {
+    if (this.frameLengthCheck() > 2 && this.gameFrames[i-2].isStrike()) {
       this.gameFrames[i-2].add(num);
       this.increaseScore(num);
     }

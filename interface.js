@@ -189,45 +189,11 @@ $(document).ready(function() {
 
 
   function updateScores() {
-    if(isNaN(score1.score())){
-    }else{
-	     $('#scoreframe1').html(scorecard.score(1));
-    }
-    if(isNaN(score2.score())){
-    }else{
-	     $('#scoreframe2').html(scorecard.score(2));
-    }
-    if(isNaN(score3.score())){
-    }else{
-	     $('#scoreframe3').html(scorecard.score(3));
-    }
-    if(isNaN(score4.score())){
-    }else{
-	     $('#scoreframe4').html(scorecard.score(4));
-    }
-    if(isNaN(score5.score())){
-    }else{
-	     $('#scoreframe5').html(scorecard.score(5));
-    }
-    if(isNaN(score6.score())){
-    }else{
-	     $('#scoreframe6').html(scorecard.score(6));
-    }
-    if(isNaN(score7.score())){
-    }else{
-	     $('#scoreframe7').html(scorecard.score(7));
-    }
-    if(isNaN(score8.score())){
-    }else{
-	     $('#scoreframe8').html(scorecard.score(8));
-    }
-    if(isNaN(score9.score())){
-    }else{
-	     $('#scoreframe9').html(scorecard.score(9));
-    }
-    if(isNaN(score10.score())){
-    }else{
-	     $('#scoreframe10').html(scorecard.score(10));
+    for (var i = 0; i < 10; i ++) {
+      if(isNaN(scorecard.score(i))) {
+      }else{
+	     $(`#scoreframe${i}`).html(scorecard.score(i));
+      }
     }
   }
 

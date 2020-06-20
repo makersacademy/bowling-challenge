@@ -92,4 +92,8 @@ class Bowling {
   resetTurn() {
     this.turn = 0;
   }
+
+  returnGameFrames() {
+    return this.gameFrames
+  }
 }

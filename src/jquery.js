@@ -28,14 +28,5 @@ $(document).ready(function() {
   function updateTotal() {
     $('.total').text(bowling.currentScore());
   }
-})
 
-
-/* <div class="frame" id="0">
-        <div class="frame-number">1</div>
-          <div class="top">
-            <div class="left" id="0"></div>
-            <div class="right" id="0"></div>
-          </div>
-          <div class="bottom" id="0"></div>
-      </div> */
+});

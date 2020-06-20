@@ -23,6 +23,13 @@ describe('Frame', function() {
     expect(frame.total()).toEqual(30);
   })
 
+  it('Should be able to tell when a total is ready to return', function() {
+    for (let i = 0; i < 3; i++) {
+      frame.add(10);
+    }
+    expect(frame.isTotalReady()).toBeTruthy();
+  })
+
   it('Should be able to check if the first score is 10', function() {
     frame.add(10);
     expect(frame.isStrike()).toBeTruthy();

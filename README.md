@@ -40,7 +40,15 @@ scorecard.js - to deal with dispalying the scores
 
 ### frame.js
 
-takes rolls as input - outputs total knocked over to score
+takes rolls as input - outputs total knocked over to score and how many in each roll
+
+### score.js
+
+calculates the score for the given frame, (using input of extra frames when needed)
+
+### scorecard.js
+
+holds the score object for each frame and puts out the running total of the game
 
 ### Optional Extras
 

@@ -18,6 +18,6 @@ describe('roll()', () => {
         expect(roll).toBeLessThanOrEqual(10);
     });
     test('it adds the knocked down pins to the frame', () => {
-        expect(game.frames).toContain([10 - roll]);
+        expect(game.frames[0]).toEqual([10 - roll]);
     });
 });

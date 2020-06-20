@@ -10,7 +10,7 @@ Frame.prototype.roll2 = function(num) {
 }
 
 Frame.prototype.baseScore = function() {
-  return Number((this.roll1 + this.roll2));
+  return (Number(this.roll1) + Number(this.roll2));
 };
 
 Frame.prototype.roll1result = function() {

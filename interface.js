@@ -47,12 +47,35 @@ $(document).ready(function() {
     updateScores()
   })
 
+  $('#roll1frame2').submit(function(event) {
+    console.log("yes")
+    var roll = $('#roll').val();
+    frame2.roll1(roll);
+    $('#roll1frame2cell').html(roll);
+    console.log(frame2.roll1result())
+    updateScores()
+  })
+  $('#roll2frame2').submit(function(event) {
+    console.log("yes")
+    var roll = $('#roll').val();
+    frame2.roll2(roll);
+    $('#roll2frame2cell').html(roll);
+    console.log(frame2.roll2result())
+    updateScores()
+  })
+
   function updateScores() {
     if(isNaN(score1.score())){
     }else{
       console.log(score1.score())
       console.log(scorecard.score(1))
 	     $('#scoreframe1').html(scorecard.score(1));
+    }
+    if(isNaN(score2.score())){
+    }else{
+      console.log(score2.score())
+      console.log(scorecard.score(2))
+	     $('#scoreframe2').html(scorecard.score(2));
     }
   }
 

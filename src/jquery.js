@@ -8,9 +8,13 @@ $(document).ready(function() {
     let frame = bowling.currentFrame();
     let score = parseInt(num);
     let turn = bowling.currentTurn();
-    removeButton(score, turn);
-    leftOrRightScore(score, frame);
-    updateTotal();
+    if (isGameOver(turn)) {
+      return
+    } else {
+      removeButton(score, turn);
+      leftOrRightScore(score, frame);
+      updateTotal();
+    };
   });
 
   function leftOrRightScore(score, frame) {
@@ -49,6 +53,14 @@ $(document).ready(function() {
       invalidButtons.push(i)
     }
     return invalidButtons;
+  }
+
+  function isGameOver(turn) {
+    let gameFrames = bowling.returnGameFrames();
+    let i = gameFrames.length;
+    let lastFrame = gameFrames[i-1];
+    let lastFrameCheck = turn == 2 && lastFrame.total() < 10;
+    return turn >= 3 || lastFrameCheck;
   }
 
 });

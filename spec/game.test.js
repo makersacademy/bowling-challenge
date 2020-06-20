@@ -1,4 +1,4 @@
-const { TestScheduler } = require("jest")
+const { TestScheduler } = require("jest");
 
 const Game = require('../lib/game');
 

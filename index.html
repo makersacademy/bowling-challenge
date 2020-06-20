@@ -5,7 +5,7 @@
     <script src="src/frame.js"></script>
     <script src="src/score.js"></script>
     <script src="src/scorecard.js"></script>
-    <script src="js/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="interface.js"></script>
 
     <! link rel="stylesheet" href='style.css' >
@@ -22,14 +22,19 @@
            </tr>
            <tr>
               <td>1</td>
-              <td id="roll1frame1">
+              <td id="roll1frame1cell">
                 <form id="roll1frame1">
-                  <input id="roll1frame1" type="number" step="1"></input>
+                  <input id="roll" type="number" step="1"></input>
                   <input id="submit" type="submit" value="enter"></input>
                   </form>
                 </td>
-              <td>roll2</td>
-              <td>score1</td>
+              <td id="roll2frame1cell">
+                <form id="roll2frame1">
+                  <input id="roll" type="number" step="1"></input>
+                  <input id="submit" type="submit" value="enter"></input>
+                  </form>
+                </td>
+              <td id="scoreframe1">score1</td>
            </tr>
            <tr>
               <td>2</td>

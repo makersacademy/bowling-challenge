@@ -5,12 +5,12 @@ describe('score', function() {
   var frame3
 
   beforeEach( function (){
-    frame1 = jasmine.createSpyObj('frame1', ['roll1result', 'baseScore']);
+    frame1 = jasmine.createSpyObj('frame1', ['roll1result', 'roll2result', 'baseScore']);
     frame1.roll1result.and.callFake(function() {
       return (2);
     });
-    frame1.baseScore.and.callFake(function() {
-      return (2 + 5);
+    frame1.roll2result.and.callFake(function() {
+      return (5);
     });
     score1 = new Score(frame1)
   })

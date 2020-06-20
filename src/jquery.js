@@ -4,10 +4,12 @@ $(document).ready(function() {
   const bowling = new Bowling();
 
   $('.pins').click(function() {
-    let num = $(this).val()
-    let frame = bowling.currentFrame()
-    bowling.bowl(num)
-    $(`#${frame} .left`).text(num)
+    let num = $(this).val();
+    let frame = bowling.currentFrame();
+    let score = parseInt(num);
+    console.log(bowling.currentScore());
+    bowling.bowl(score);
+    $(`#${frame} .left`).text(num);
   });
 })
 

@@ -13,4 +13,8 @@ class Scorecard {
     }
   }
 
+  storeFrame(score) {
+    this.frames.push(score);
+  }
+
 };

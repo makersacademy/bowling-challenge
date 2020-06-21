@@ -3,11 +3,16 @@
 describe('Frame class', function(){
   var frame;
   var game;
+  var spare;
+  var strike;
   beforeEach(function(){
     frame = new Frame ();
     game = jasmine.createSpyObj('game', ['sharingInfoAboutFrames'])
-    // frame1 = new Frame ();
-    // frame2 = new Frame ();
+    spare = new Frame ();
+    spare.firstRoll(6);
+    spare.secondRoll(4);
+    strike = new Frame();
+    strike.firstRoll(10);
   });
   it('when created has 2 properties - roll1,roll2 - equal to null and 2 methods for visualizing them', function(){
     expect(frame.pointsFirstRoll()).toEqual(null);
@@ -58,6 +63,13 @@ describe('Frame class', function(){
       frame.firstRoll(0);
       frame.secondRoll(5);
       expect(frame._isASpare()).not.toBe(true);
+    });
+  });
+
+  describe('calculate its bonus', function(){
+    it('knows how to calculate spare bonus', function(){
+      spare.getNextRoll(strike);
+      expect(spare.calculateBonus()).toEqual(10);
     });
   });
 });

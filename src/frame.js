@@ -17,7 +17,7 @@ class Frame {
   pointsSecondRoll(){
     return this._roll2;
   }
-  
+
   firstRoll(points){
     if (this._isMoreThanMaxPointsForSingleRoll(points)) {
       throw new Error('invalid amount of points for single roll');
@@ -55,12 +55,22 @@ class Frame {
     return this.next_Next_Roll
   }
 
+  calculateBonus() {
+    if (this._isASpare()) {
+      return this._spareBonus()
+    }
+  }
+
   _isAStrike() {
     return this._roll1 === this.MAX_FRAME_PTS;
   }
 
   _isASpare() {
     return (this._roll1 !== this.MAX_FRAME_PTS) && (this.totPointsBeforeBonus() === this.MAX_FRAME_PTS);
+  }
+
+  _spareBonus() {
+    return this.nextRoll().pointsFirstRoll()
   }
 
   _isMoreThanMaxPointsForSingleRoll(points) {

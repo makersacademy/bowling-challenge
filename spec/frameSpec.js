@@ -1,6 +1,6 @@
 'use strict';
 
-describe('frame', function () {
+describe('Frame', function () {
   var frame;
 
   describe('when a bowler throws two non-bonus bowls', function () {
@@ -53,6 +53,13 @@ describe('frame', function () {
       expect(frame.isASpare()).toEqual(false);
     });
 
+  });
+
+  describe('calculating bonus scores', function () {
+
+    it('checks if previous frame was a strike', function () {
+
+    });
   });
 
 });

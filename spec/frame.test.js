@@ -8,5 +8,9 @@ describe('Frame Class', () => {
     test('it returns Strike if the player knocks down 10 pins', () => {
         var frame = new Frame([10])
         expect(frame.isStrike()).toBeTrue
-    })
+    });
+    test('it returns a gutter if the player knocks down 0 pins', () => {
+        var frame = new Frame([0])
+        expect(frame.isGutter()).toBeTrue
+    });
 });

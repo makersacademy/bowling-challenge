@@ -35,6 +35,7 @@ $(document).ready(function() {
     frame1.roll1(roll);
     $('#roll1frame1cell').html(roll);
     updateScores()
+    if (roll == 10) { strike(1) }
   })
   $('#roll2frame1').submit(function() {
     var roll = $('#roll').val();
@@ -48,6 +49,7 @@ $(document).ready(function() {
     frame2.roll1(roll);
     $('#roll1frame2cell').html(roll);
     updateScores()
+    if (roll == 10) { strike(2) }
   })
   $('#roll2frame2').submit(function() {
     var roll = $('#roll').val();
@@ -61,6 +63,7 @@ $(document).ready(function() {
     frame3.roll1(roll);
     $('#roll1frame3cell').html(roll);
     updateScores()
+    if (roll == 10) { strike(3) }
   })
   $('#roll2frame3').submit(function() {
     var roll = $('#roll').val();
@@ -74,6 +77,7 @@ $(document).ready(function() {
     frame4.roll1(roll);
     $('#roll1frame4cell').html(roll);
     updateScores()
+    if (roll == 10) { strike(4) }
   })
   $('#roll2frame4').submit(function() {
     var roll = $('#roll').val();
@@ -87,6 +91,7 @@ $(document).ready(function() {
     frame5.roll1(roll);
     $('#roll1frame5cell').html(roll);
     updateScores()
+    if (roll == 10) { strike(5) }
   })
   $('#roll2frame5').submit(function() {
     var roll = $('#roll').val();
@@ -100,6 +105,7 @@ $(document).ready(function() {
     frame6.roll1(roll);
     $('#roll1frame6cell').html(roll);
     updateScores()
+    if (roll == 10) { strike(6) }
   })
   $('#roll2frame6').submit(function() {
     var roll = $('#roll').val();
@@ -113,6 +119,7 @@ $(document).ready(function() {
     frame7.roll1(roll);
     $('#roll1frame7cell').html(roll);
     updateScores()
+    if (roll == 10) { strike(7) }
   })
   $('#roll2frame7').submit(function() {
     var roll = $('#roll').val();
@@ -126,6 +133,7 @@ $(document).ready(function() {
     frame8.roll1(roll);
     $('#roll1frame8cell').html(roll);
     updateScores()
+    if (roll == 10) { strike(8) }
   })
   $('#roll2frame8').submit(function() {
     var roll = $('#roll').val();
@@ -139,6 +147,7 @@ $(document).ready(function() {
     frame9.roll1(roll);
     $('#roll1frame9cell').html(roll);
     updateScores()
+    if (roll == 10) { strike(9) }
   })
   $('#roll2frame9').submit(function() {
     var roll = $('#roll').val();
@@ -152,15 +161,8 @@ $(document).ready(function() {
     frame10.roll1(roll);
     $('#roll1frame10cell').html(roll);
     updateScores()
-    if(isNaN(score10.score()) & roll == 10) {
-      console.log(score10.score())
-      console.log('vis')
-      $('#bonus1').attr('class', 'visible');
-    }else{
-      console.log(score10.score())
-      console.log('hid')
-      $('#bonus1').attr('class', 'hidden');
-    }
+    makevisible('#bonus1')
+    if (roll == 10) { strike(10) }
   })
   $('#roll2frame10').submit(function() {
     var roll = $('#roll').val();
@@ -176,13 +178,16 @@ $(document).ready(function() {
     $('#roll1frame11cell').html(roll);
     updateScores()
     makevisible('#roll2frame11')
+    if (roll == 10) {
+      strike(11)
+      $('#bonus2').attr('class', 'visible')
+    }
   })
   $('#roll2frame11').submit(function() {
     var roll = $('#roll').val();
     frame11.roll2(roll);
     $('#roll2frame11cell').html(roll);
     updateScores()
-    makevisible('#bonus2')
   })
 
   $('#roll1frame12').submit(function() {
@@ -191,6 +196,11 @@ $(document).ready(function() {
     $('#roll1frame12cell').html(roll);
     updateScores()
   })
+
+  function strike(frameNum) {
+    console.log("strike")
+    $(`#roll2frame${frameNum}cell`).html("");
+  }
 
   function updateScores() {
     for (var i = 1; i < 11; i ++) {

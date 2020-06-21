@@ -8,9 +8,9 @@ describe('BowlingGame', function() {
       game = new BowlingGame();
     });
     
-    it('has default 10 pins for each frame', function() {
+    it('can roll once', function() {
        game.roll(5);
-       expect(game.pins).toEqual(5);
+       expect(game.rolls).toEqual([5]);
     });
 
     it('can roll multiple times', function() {
@@ -25,10 +25,4 @@ describe('BowlingGame', function() {
       expect(game.score()).toEqual(9);
     });
 
-    it('can reset pins back to 10 after 1 frame', function() {
-      game.roll(3);
-      game.roll(4);
-      game.resetPins();
-      expect(game.pins).toEqual(10);
-    });
 });

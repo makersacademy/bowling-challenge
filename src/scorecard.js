@@ -2,7 +2,7 @@
 
 class Scorecard {
   constructor () {
-    this.frames = []
+    this.frames = [];
   }
 
   isComplete() {
@@ -13,8 +13,18 @@ class Scorecard {
     }
   }
 
-  storeFrame(score) {
-    this.frames.push(score);
+  storeFrame(frame = new Frame) {
+    this.frames.push(frame);
+  }
+
+  isPreviousFrameAStrike(frame) {
+    if (this.frames.indexOf(frame) > 0) {
+      var i = this.frames.indexOf(frame);
+      var isAStrike = this.frames[i - 1].isStrike;
+      return isAStrike;
+    } else {
+      return false;
+    }
   }
 
 };

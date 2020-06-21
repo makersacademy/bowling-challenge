@@ -2,6 +2,7 @@
 
 describe('Scorecard', function () {
   var scorecard;
+  var testFrame = { score: 8 };
 
   beforeEach(function () {
     scorecard = new Scorecard();
@@ -13,7 +14,14 @@ describe('Scorecard', function () {
   });
 
   it('stores a frame score', function () {
-    scorecard.storeFrame(9);
+    scorecard.storeFrame(testFrame);
     expect(scorecard.frames.length).toEqual(1);
+  });
+
+  it('checks if previous frame was a strike', function () {
+    let testStrikeFrame = { isStrike: true };
+    scorecard.frames.push(testStrikeFrame);
+    scorecard.frames.push(testFrame);
+    expect(scorecard.isPreviousFrameAStrike(testFrame)).toEqual(true);
   });
 });

@@ -7,7 +7,7 @@ class Frame {
     this.MAX_SCORE = 10;
     this.isStrike = false;
     this.isSpare = false;
-    this.score;
+    this.score = 0;
   }
 
   addBowlOneScore(pins) {
@@ -32,18 +32,6 @@ class Frame {
 
   calculateTotal() {
     return this.bowlOne + this.bowlTwo;
-  };
-
-  isAStrike() {
-    if(this.bowlOne === this.MAX_SCORE) {
-      this.isStrike = true;
-    }
-  };
-
-  isASpare() {
-    if(this.bowlOne + this.bowlTwo === this.MAX_SCORE) {
-      this.isSpare = true;
-    }
   };
 
 };

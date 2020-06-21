@@ -27,3 +27,7 @@ table, td, th {
 td {
   width: 100px;
 }
+
+#scoreframe10 {
+  font-weight: bold;
+}

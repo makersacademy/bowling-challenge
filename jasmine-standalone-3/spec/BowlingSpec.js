@@ -34,10 +34,24 @@ describe("Game", function(){
     expect(game.score()).toBe(14)
   })
 
-  it ("can play a perfect game", function(){
+  it ("can play a spare on the last frame", function(){
+    rollTurns(0, 18);
+    game.roll(5);
+    game.roll(5);
+    game.roll(5);
+
+    expect(game.score()).toBe(15);
+  })
+
+  it ("can play a strike on the last frame", function(){
     rollTurns(10, 12);
     expect(game.score()).toBe(300);
   })
+
+  // it ("knows when the game is up", function(){
+  //   rollTurns(0, 21);
+  //   expect(game) to throw an error.
+  // })
 
   var rollTurns = function (pins, rolls) {
     for (var i = 0; i < rolls; i++) {

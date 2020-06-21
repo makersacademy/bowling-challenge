@@ -27,16 +27,10 @@ $(document).ready(function() {
   var scorecard = new Scorecard([score1, score2, score3, score4, score5,
      score6, score7, score8, score9, score10])
 
-  var selectList = "<select id='roll'>";
-  for (var x = 0; x < 11; x++) {
-     selectList += `<option value='${x}'>` + x + "</option>";
-  }
-  selectList += "</select><input id='select' type='submit' value='enter'></input>";
-
   $('#bonus1').attr('class', 'hidden')
   $('#bonus2').attr('class', 'hidden')
 
-  askForRoll('#roll1frame1')
+  askForRoll('#roll1frame1', 0)
 
   $('#roll1frame1').submit(function() {
     var roll = $('#roll').val();
@@ -46,14 +40,14 @@ $(document).ready(function() {
     if (roll == 10) {
       strike(1)
     } else {
-      askForRoll('#roll2frame1')
+      askForRoll('#roll2frame1', roll)
     }
   })
   $('#roll2frame1').submit(function() {
     var roll = $('#roll').val();
     frame1.roll2(roll);
     $('#roll2frame1cell').html(roll);
-    askForRoll('#roll1frame2')
+    askForRoll('#roll1frame2', 0)
     updateScores()
   })
 
@@ -65,7 +59,7 @@ $(document).ready(function() {
     if (roll == 10) {
       strike(2)
     } else {
-      askForRoll('#roll2frame2')
+      askForRoll('#roll2frame2', roll)
     }
   })
   $('#roll2frame2').submit(function() {
@@ -73,7 +67,7 @@ $(document).ready(function() {
     frame2.roll2(roll);
     $('#roll2frame2cell').html(roll);
     updateScores()
-    askForRoll('#roll1frame3')
+    askForRoll('#roll1frame3', 0)
   })
 
   $('#roll1frame3').submit(function() {
@@ -84,7 +78,7 @@ $(document).ready(function() {
     if (roll == 10) {
       strike(3)
     } else {
-      askForRoll('#roll2frame3')
+      askForRoll('#roll2frame3', roll)
     }
   })
   $('#roll2frame3').submit(function() {
@@ -92,7 +86,7 @@ $(document).ready(function() {
     frame3.roll2(roll);
     $('#roll2frame3cell').html(roll);
     updateScores()
-    askForRoll('#roll1frame4')
+    askForRoll('#roll1frame4', 0)
   })
 
   $('#roll1frame4').submit(function() {
@@ -103,7 +97,7 @@ $(document).ready(function() {
     if (roll == 10) {
       strike(4)
     } else {
-      askForRoll('#roll2frame4')
+      askForRoll('#roll2frame4', roll)
     }
   })
   $('#roll2frame4').submit(function() {
@@ -111,7 +105,7 @@ $(document).ready(function() {
     frame4.roll2(roll);
     $('#roll2frame4cell').html(roll);
     updateScores()
-    askForRoll('#roll1frame5')
+    askForRoll('#roll1frame5', 0)
   })
 
   $('#roll1frame5').submit(function() {
@@ -122,7 +116,7 @@ $(document).ready(function() {
     if (roll == 10) {
       strike(5)
     } else {
-      askForRoll('#roll2frame5')
+      askForRoll('#roll2frame5', roll)
     }
   })
   $('#roll2frame5').submit(function() {
@@ -130,7 +124,7 @@ $(document).ready(function() {
     frame5.roll2(roll);
     $('#roll2frame5cell').html(roll);
     updateScores()
-    askForRoll('#roll1frame6')
+    askForRoll('#roll1frame6', 0)
   })
 
   $('#roll1frame6').submit(function() {
@@ -141,7 +135,7 @@ $(document).ready(function() {
     if (roll == 10) {
       strike(6)
     } else {
-      askForRoll('#roll2frame6')
+      askForRoll('#roll2frame6', roll)
     }
   })
   $('#roll2frame6').submit(function() {
@@ -149,7 +143,7 @@ $(document).ready(function() {
     frame6.roll2(roll);
     $('#roll2frame6cell').html(roll);
     updateScores()
-    askForRoll('#roll1frame7')
+    askForRoll('#roll1frame7', 0)
   })
 
   $('#roll1frame7').submit(function() {
@@ -160,7 +154,7 @@ $(document).ready(function() {
     if (roll == 10) {
       strike(7)
     } else {
-      askForRoll('#roll2frame7')
+      askForRoll('#roll2frame7', roll)
     }
   })
   $('#roll2frame7').submit(function() {
@@ -168,7 +162,7 @@ $(document).ready(function() {
     frame7.roll2(roll);
     $('#roll2frame7cell').html(roll);
     updateScores()
-    askForRoll('#roll1frame8')
+    askForRoll('#roll1frame8', 0)
   })
 
   $('#roll1frame8').submit(function() {
@@ -179,7 +173,7 @@ $(document).ready(function() {
     if (roll == 10) {
       strike(8)
     } else {
-      askForRoll('#roll2frame8')
+      askForRoll('#roll2frame8', roll)
     }
   })
   $('#roll2frame8').submit(function() {
@@ -187,7 +181,7 @@ $(document).ready(function() {
     frame8.roll2(roll);
     $('#roll2frame8cell').html(roll);
     updateScores()
-    askForRoll('#roll1frame9')
+    askForRoll('#roll1frame9', 0)
   })
 
   $('#roll1frame9').submit(function() {
@@ -198,7 +192,7 @@ $(document).ready(function() {
     if (roll == 10) {
       strike(9)
     } else {
-      askForRoll('#roll2frame9')
+      askForRoll('#roll2frame9', roll)
     }
   })
   $('#roll2frame9').submit(function() {
@@ -206,7 +200,7 @@ $(document).ready(function() {
     frame9.roll2(roll);
     $('#roll2frame9cell').html(roll);
     updateScores()
-    askForRoll('#roll1frame10')
+    askForRoll('#roll1frame10', 0)
   })
 
   $('#roll1frame10').submit(function() {
@@ -218,7 +212,7 @@ $(document).ready(function() {
       makevisible('#bonus1')
       strike(10)
     } else {
-      askForRoll('#roll2frame10')
+      askForRoll('#roll2frame10', roll)
     }
   })
   $('#roll2frame10').submit(function() {
@@ -227,7 +221,7 @@ $(document).ready(function() {
     $('#roll2frame10cell').html(roll);
     updateScores()
     makevisible('#bonus1')
-    askForRoll('#roll1frame11')
+    askForRoll('#roll1frame11', 0)
   })
 
   $('#roll1frame11').submit(function() {
@@ -239,7 +233,7 @@ $(document).ready(function() {
       makevisible('#bonus2')
       strike(11)
     } else {
-      askForRoll('#roll2frame11')
+      askForRoll('#roll2frame11', roll)
     }
   })
   $('#roll2frame11').submit(function() {
@@ -248,7 +242,7 @@ $(document).ready(function() {
     $('#roll2frame11cell').html(roll);
     updateScores()
     makevisible('#bonus2')
-    askForRoll('#roll1frame12')
+    strike( 11 )
   })
 
   $('#roll1frame12').submit(function() {
@@ -259,7 +253,7 @@ $(document).ready(function() {
   })
 
   function strike(frameNum) {
-    askForRoll(`#roll1frame${frameNum + 1}`)
+    askForRoll(`#roll1frame${frameNum + 1}`, 0)
   }
 
   function updateScores() {
@@ -271,9 +265,12 @@ $(document).ready(function() {
     }
   }
 
-  $('#my-container').html(selectList);
-
-  function askForRoll(id) {
+  function askForRoll(id, number) {
+    var selectList = "<select id='roll'>";
+    for (var x = 0; x < (11 - number); x++) {
+       selectList += `<option value='${x}'>` + x + "</option>";
+    }
+    selectList += "</select><input id='select' type='submit' value='enter'></input>";
     $(`${id}`).html(selectList);
   }
 

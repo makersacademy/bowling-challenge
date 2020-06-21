@@ -16,6 +16,10 @@ $(document).ready(function() {
       updateTotal();
     };
   });
+  
+  $('.reset').click(function() {
+    location.reload();
+  });
 
   function leftOrRightScore(score, frame) {
     let turn = bowling.currentTurn();

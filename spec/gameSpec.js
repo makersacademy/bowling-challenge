@@ -1,3 +1,4 @@
+'use strict';
 describe('Game class', function(){
   var game;
   var frame1;

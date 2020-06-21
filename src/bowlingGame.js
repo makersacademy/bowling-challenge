@@ -10,6 +10,7 @@ class Game{
   }
 
   score(a, b){
+    this.frame ++;
     if (this.canPlay() === false) {
       throw 'End of Game'
     }
@@ -33,7 +34,6 @@ class Game{
   }
 
   canPlay(){
-    this.frame ++
     return (this.frame < 10)
   }
 
@@ -48,12 +48,11 @@ class Game{
   }
 
   strikeBonus(){
-
+    this.strike = false
   }
 
   spareBonus(){
-
-
+    this.spare = false
   }
 
 

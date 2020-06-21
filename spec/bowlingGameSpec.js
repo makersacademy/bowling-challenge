@@ -6,7 +6,7 @@ describe("Game", function(){
       game = new Game();
     });
     it("always starts with a score of 0", function(){
-      expect(game.frame).toEqual(0);
+      expect(game.gameScore).toEqual(0);
     });
 
     it("sums the total of 2 scores", function(){

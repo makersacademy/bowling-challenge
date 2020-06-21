@@ -67,6 +67,7 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
+
 ## Code Review
 
 In code review we'll be hoping to see:
@@ -91,6 +92,18 @@ Reviewers will potentially be using this [code review rubric](docs/review.md).  
 
 # Hours and some meditation later I refactior and pass the first test.
 
-
-
 # Now I think I understand what directon to go in. I will do some more planning and apempt this again next weekend.
+
+# Passes a first test earlier and then when to do more research about bowling and I think have a pretty good undersrtanding the the rules.
+
+#Then I did more reseach and made some notes...
+
+![Bowling Notes Page 1](images/page1.jpg)
+
+![Bowling Notes Page 2](images/page2.jpg)
+
+![Bowling Notes Page 3](images/page3.jpg)
+
+# I'm just adding these in here to make up for the fact that I didn't get far with the weekend challenge.
+
+# Still with these notes I have a much better idia od what I should be writing.

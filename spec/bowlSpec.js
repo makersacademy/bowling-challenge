@@ -13,7 +13,7 @@ describe('Bowl', function() {
   });
 
   it('should expect a gutter game to equal zero', function() {
-    expect(bowl.gutter()).toEqual(0);
+    expect(bowl.totalscore()).toEqual(0);
   });
 
 });

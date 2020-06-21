@@ -8,9 +8,4 @@ class Bowl {
   totalscore() {
     return this.score
   }
-
-  gutter() {
-    return 0
-  }
-  
 }

@@ -20,7 +20,7 @@ describe('Frame', function () {
     });
 
     it('calculates the total of two bowls', function () {
-      expect(frame.total()).toEqual(9);
+      expect(frame.calculateTotal()).toEqual(9);
     });
     
   });
@@ -33,24 +33,24 @@ describe('Frame', function () {
 
     it('knows if bowl one was a strike', function () {
       frame.addBowlOneScore(10);
-      expect(frame.isAStrike()).toEqual(true);
+      expect(frame.isStrike).toEqual(true);
     });
 
     it('knows if frame is was not a strike', function () {
-      this.bowlOne = 5;
-      expect(frame.isAStrike()).toEqual(false);
+      frame.addBowlOneScore(6);
+      expect(frame.isStrike).toEqual(false);
     });
 
     it('knows if bowl two was a spare', function () {
       frame.addBowlOneScore(6);
       frame.addBowlTwoScore(4);
-      expect(frame.isASpare()).toEqual(true);
+      expect(frame.isSpare).toEqual(true);
     });
 
     it('knows if frame was not a spare', function () {
-      this.bowlOne = 6;
-      this.bowlTwo = 3;
-      expect(frame.isASpare()).toEqual(false);
+      frame.addBowlOneScore(6);
+      frame.addBowlTwoScore(3);
+      expect(frame.isSpare).toEqual(false);
     });
 
   });

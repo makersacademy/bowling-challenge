@@ -21,8 +21,7 @@ describe("game",function(){
 
   it("Adds a roll score to the frame score", function() {
     game.addRoll(5)
-    game.addRoll(3)
-    expect(game.currentFrameScore()).toEqual(8)
+    expect(game.currentFrameScore()).toEqual(5)
   });
 
   it("Adds a frame score to totalScore after 2 rolls", function() {
@@ -30,6 +29,13 @@ describe("game",function(){
     game.addRoll(3) 
     expect(game.currentScore()).toEqual(8)
   });
+
+  it("Only adds a frame score to totalScore after 2 rolls", function() {
+    game.addRoll(4)
+    expect(game.currentScore()).toEqual(0)
+  });
+
+
 
   // it ("Only adds a complete frame to the total score", function() {
   //   game.addRoll(6);

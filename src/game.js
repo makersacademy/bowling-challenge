@@ -20,12 +20,12 @@ class Game {
 
   addRoll(num) {
     this.frameScore.push(num)
-    console.log(this.frameScore);
-    var sum = this.frameScore.reduce(function(a, b){
-      return a + b;
-  }, 0);
-    this.totalScore = sum
-    // return this.totalScore += num;
+    if (this.frameScore.length === 2) {
+      this.totalScore = this.frameScore.reduce(function(a, b){
+        return a + b;
+      }, 0);
+      this.frameScore = [];
+    }
   }
 
 };

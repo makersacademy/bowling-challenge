@@ -10,19 +10,30 @@ class Game{
   }
 
   score(a, b){
-    if (a === 10) {
+    if (this.canPlay() === false) {
+      throw 'End of Game'
+    }
+    else if ((this.canPlay() && a === 10)) {
       this.isStrike
+      this.frame ++
       return "strike";
     } else if (a + b === 10) {
       this.isSpare
+      this.frame ++
       return "spare";
     } else {
       this.gameScore += a + b
       this.rolls.push(a, b)
       this.frame ++
       return this.gameScore
-
     }
-}
+  }
+
+  canPlay(){
+    return (this.frame < 10)
+  }
+
+
+
 
 };

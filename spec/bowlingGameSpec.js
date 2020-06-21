@@ -19,12 +19,12 @@ describe("Game", function(){
     });
 
     it("adds a spare correctly", function(){
-      game.score(1, 9);
+      game.score(2, 8);
       game.score(2, 4);
       expect(game.gameScore).toEqual(18);
-
-
     })
+
+
 
 
 

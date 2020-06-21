@@ -18,10 +18,18 @@ describe("Game", function(){
       expect(game.frame).toEqual(1);
     });
 
-    it("adds a spare correctly", function(){
+   it("adds a spare correctly", function(){
+      game.score(2, 4);
       game.score(2, 8);
       game.score(2, 4);
-      expect(game.gameScore).toEqual(18);
+      expect(game.gameScore).toEqual(24);
+    })
+
+    it("adds a strike correctly", function(){
+      game.score(2, 4);
+      game.score(10, 0);
+      game.score(2, 4);
+      expect(game.gameScore).toEqual(28)
     })
 
 

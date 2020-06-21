@@ -23,11 +23,9 @@ class Game{
       this.rolls.push(a, b)
       this.isSpare();
     } else if (this.spare === true){
-      this.gameScore += (a * 2) + b
+      this.gameScore += 10 + (a * 2) + b
     } else if (this.strike === true){
-      this.gameScore += a + b
-      // this.rolls.push(a, b)
-      // this.strikeBonus();
+      this.gameScore += 10 + (a * 2) + (b * 2)
     } else {
       this.gameScore += a + b
       this.rolls.push(a, b)
@@ -42,12 +40,10 @@ class Game{
   }
 
   isStrike(){
-    this.gameScore += 10 + this.score(a);
     this.strike = true
   }
 
   isSpare(){
-    this.gameScore += 10
     this.spare = true
   }
 

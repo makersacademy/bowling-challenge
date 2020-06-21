@@ -26,9 +26,18 @@ describe('Scorecard', function () {
   });
 
   it('checks if previous frame was a spare', function () {
-    let testSpareFrame = { isSpare: true }
+    let testSpareFrame = { isSpare: true };
     scorecard.frames.push(testSpareFrame);
     scorecard.frames.push(testFrame);
     expect(scorecard.isPreviousFrameASpare(testFrame)).toEqual(true);
+  });
+
+  it('checks if two frames back was a strike', function () {
+    let testStrikeFrame = { isStrike: true };
+    let thirdTestFrame = { total: 7 };
+    scorecard.frames.push(testStrikeFrame);
+    scorecard.frames.push(testFrame);
+    scorecard.frames.push(thirdTestFrame);
+    expect(scorecard.isTwoFramesAgoStrike(thirdTestFrame)).toEqual(true);
   });
 });

@@ -22,4 +22,19 @@ describe('FinalFrame', function (){
       expect(finalF.pointsThirdRoll()).toEqual(2);
     });
   });
+  // describe('possible errors to be raised' function(){
+  //   it('raises error if any roll points exceed the max single roll points', function(){
+  //     expect(function(){finalF.firstRoll(12)};).toThrowError('invalid amount of points for single roll')
+  //     expect(function(){finalF.secondRoll(11)};).toThrowError('invalid amount of points for single roll')
+  //     expect(function(){finalF.thirdRoll(12)};).toThrowError('invalid amount of points for single roll')
+  //   });
+  // });
+  describe('possible errors to be raised', function(){
+    it('raises error if any roll points exceed the max single roll points', function(){
+      expect(function(){finalF.firstRoll(12);}).toThrowError('invalid amount of points for single roll');
+      expect(function(){finalF.secondRoll(11);}).toThrowError('invalid amount of points for single roll');
+      expect(function(){finalF.thirdRoll(12);}).toThrowError('invalid amount of points for single roll');
+
+    });
+  });
 });

@@ -19,4 +19,16 @@ class FinalFrame {
     return this._roll3;
   }
 
+  firstRoll(points) {
+    this._roll1 = points;
+  }
+
+  secondRoll(points) {
+    this._roll2 = points;
+  }
+
+  thirdRoll(points) {
+    this._roll3 = points;
+  }
+
 }

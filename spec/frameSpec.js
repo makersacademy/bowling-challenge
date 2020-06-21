@@ -2,6 +2,7 @@
 
 describe('Frame', function () {
   var frame;
+  var scorecard;
 
   describe('when a bowler throws two non-bonus bowls', function () {
   
@@ -57,9 +58,18 @@ describe('Frame', function () {
 
   describe('calculating bonus scores', function () {
 
-    it('checks if previous frame was a strike', function () {
-
+    beforeEach(function() {
+      scorecard = jasmine.createSpyObj(
+        'scorecard', [
+          'storeFrame',
+          'isPreviousFrameASpare',
+          'isPreviousFrameAStrike',
+          'isTwoFramesAgoAStrike'
+        ]
+      );
+      frame = new Frame;
     });
+
   });
 
 });

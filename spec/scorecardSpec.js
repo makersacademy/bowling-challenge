@@ -38,6 +38,6 @@ describe('Scorecard', function () {
     scorecard.frames.push(testStrikeFrame);
     scorecard.frames.push(testFrame);
     scorecard.frames.push(thirdTestFrame);
-    expect(scorecard.isTwoFramesAgoStrike(thirdTestFrame)).toEqual(true);
+    expect(scorecard.isTwoFramesAgoAStrike(thirdTestFrame)).toEqual(true);
   });
 });

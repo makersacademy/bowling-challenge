@@ -37,7 +37,7 @@ class Scorecard {
     }
   }
 
-  isTwoFramesAgoStrike(frame) {
+  isTwoFramesAgoAStrike(frame) {
     if (this.frames.indexOf(frame) > 1) {
       var i = this.frames.indexOf(frame);
       var isAStrike = this.frames[i - 2].isStrike;

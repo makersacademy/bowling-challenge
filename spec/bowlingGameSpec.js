@@ -20,9 +20,18 @@ describe('BowlingGame', function() {
     });
     
     it('calculate my total score', function() {
-      game.roll(5);
-      game.roll(4);
-      expect(game.score()).toEqual(9);
+      for ( var i = 1; i < 11; i++ ) {
+        game.roll(4);
+      }
+      for ( var i = 1; i < 11; i++ ) {
+        game.roll(3);
+      }
+      expect(game.score()).toEqual(70);
+    });
+
+    it('can roll a Gutter Game', function() {
+      for ( var i = 1; i < 21; i++) { game.roll(0); }
+      expect(game.score()).toBe(0);
     });
 
 });

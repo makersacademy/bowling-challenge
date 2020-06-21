@@ -220,8 +220,12 @@ $(document).ready(function() {
     frame10.roll2(roll);
     $('#roll2frame10cell').html(roll);
     updateScores()
-    makevisible('#bonus1')
-    askForRoll('#roll1frame11', 0)
+    if(isNaN(scorecard.score(10))) {
+      akevisible('#bonus1')
+      askForRoll('#roll1frame11', 0)
+    }
+    // makevisible('#bonus1')
+    // askForRoll('#roll1frame11', 0)
   })
 
   $('#roll1frame11').submit(function() {

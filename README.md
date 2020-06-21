@@ -4,37 +4,49 @@ Bowling Challenge
 
 Just a scorecard for a game of bowling.
 
-# How to Use
+## How to Use
 
 Open index.html in a browser
 
 ``` open index.html ```
 
+## Example Screenshot
 
+![alt text](https://github.com/RaeRachael/bowling-challenge/blob/master/example_screenshot.png)
 
-# Plan
+## Plan
 
-work on getting scorecard for a 0 spare/strike game first.
+* Work on getting the logic of the game done first, completed in the first weekend
+* Build a simple static html to hold the output
+* Create a JQuery file to interact with the model and display to the html page, testing it with just the first few frames
+* Finish the JQuery file for the full game, and improve the code on it
+* Style as much as I can be bothered to
 
-## Needed files
+### Needed files
 
 index.html - for display
-jquery.js - to interact between model and page
+jquery.js - to interact between model and page (renamed to interface.js)
 frame.js - hold num pins knocked over in frame and rolls used
 score.js - to deal with the calculation of the score (deals with the spare/strike complications)
 scorecard.js - to deal with displaying the scores
 
-### frame.js
+##### frame.js
 
 takes rolls as input - outputs total knocked over to score and how many in each roll
 
-### score.js
+##### score.js
 
 calculates the score for the given frame, (using input of extra frames when needed)
 
-### scorecard.js
+##### scorecard.js
 
 holds the score object for each frame and puts out the running total of the game
+
+##### interface.js
+
+A JQuery file that interacts with the model and outputs the results to the html page, also was made to constrain the possible inputs a user can make so that only valid bowling inputs can occur
+
+
 
 ### Optional Extras
 

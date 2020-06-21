@@ -233,6 +233,7 @@ $(document).ready(function() {
       makevisible('#bonus2')
       strike(11)
     } else {
+      makevisible('#roll2frame11cell')
       askForRoll('#roll2frame11', roll)
     }
   })
@@ -241,8 +242,6 @@ $(document).ready(function() {
     frame11.roll2(roll);
     $('#roll2frame11cell').html(roll);
     updateScores()
-    makevisible('#bonus2')
-    strike( 11 )
   })
 
   $('#roll1frame12').submit(function() {

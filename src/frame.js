@@ -1,10 +1,17 @@
 'use strict';
 
 class Frame {
-  constructor(bowlOne, bowlTwo) {
-    this.MAX_SCORE = 10;
-    this.bowlOne = bowlOne;
-    this.bowlTwo = bowlTwo;
+  constructor () {
+    this.bowlOne = 0;
+    this.bowlTwo = 0;
+    this.MAX_SCORE = 10;  }
+
+  addBowlOneScore(pins) {
+    this.bowlOne = pins;
+  }
+
+  addBowlTwoScore(pins) {
+    this.bowlTwo = pins;
   }
 
   getMaxScore() {

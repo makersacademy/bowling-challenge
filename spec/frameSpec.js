@@ -5,14 +5,18 @@ describe('Frame class', function(){
   var game;
   var spare;
   var strike;
+  var zeropinsframe;
   beforeEach(function(){
-    frame = new Frame ();
+    frame = new Frame();
     game = jasmine.createSpyObj('game', ['sharingInfoAboutFrames'])
     spare = new Frame ();
     spare.firstRoll(6);
     spare.secondRoll(4);
     strike = new Frame();
     strike.firstRoll(10);
+    zeropinsframe = new Frame();
+    zeropinsframe.firstRoll(0);
+    zeropinsframe.secondRoll(0);
   });
   it('when created has 2 properties - roll1,roll2 - equal to null and 2 methods for visualizing them', function(){
     expect(frame.pointsFirstRoll()).toEqual(null);
@@ -92,6 +96,20 @@ describe('Frame class', function(){
       frame.firstRoll(5);
       frame.secondRoll(2);
       expect(frame.calculateBonus()).toEqual(0);
+    });
+  });
+  describe('calculates total frame score', function(){
+    it('when no pins are knocked down', function(){
+      expect(zeropinsframe.totalFrameScore()).toEqual(0)
+    });
+    it('when the frame is a strike and also the next and next next frames are strike', function(){
+      strike.getNextRoll(strike);
+      strike.getNextNextRoll(strike);
+      expect(strike.totalFrameScore()).toEqual(30)
+    });
+    it('when the frame is a strike and the next one is not a strike', function(){
+      strike.getNextRoll(spare);
+      expect(strike.totalFrameScore()).toEqual(20)
     });
   });
 });

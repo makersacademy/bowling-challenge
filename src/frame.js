@@ -57,14 +57,18 @@ class Frame {
 
   calculateBonus() {
     if (this._isASpare()) {
-      return this._spareBonus()
+      return this._spareBonus();
     }
     if (this._isAStrike()) {
-      return this._strikeBonus()
+      return this._strikeBonus();
     }
     else {
-      return 0
+      return 0;
     }
+  }
+
+  totalFrameScore() {
+    return this.calculateScore() + this.calculateBonus();
   }
 
   _isAStrike() {

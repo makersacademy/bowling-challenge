@@ -48,11 +48,6 @@ describe("Game", function(){
     expect(game.score()).toBe(300);
   })
 
-  // it ("knows when the game is up", function(){
-  //   rollTurns(0, 21);
-  //   expect(game) to throw an error.
-  // })
-
   var rollTurns = function (pins, rolls) {
     for (var i = 0; i < rolls; i++) {
       game.roll(pins);

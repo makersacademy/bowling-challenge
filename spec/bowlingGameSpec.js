@@ -3,19 +3,28 @@
 describe("Game", function(){
     let game
     beforeEach(function(){
-        game = new Game();
+      game = new Game();
     });
     it("always starts with a score of 0", function(){
-        expect(game.roll).toEqual(0);
+      expect(game.frame).toEqual(0);
     });
 
-    it("is a strike if roll_1 = 10", function(){
-        expect(game.isStrike()).toEqual(false);
+    it("sums the total of 2 scores", function(){
+      expect(game.score(2, 3)).toEqual(5);
     });
 
-    it("is a spare if roll_1 + roll_2 = 10", function(){
-        expect(game.isStrike()).toEqual(false);
+    it("accumulates frame number each frame", function(){
+      game.score(2, 3);
+      expect(game.frame).toEqual(1);
     });
+
+    it("adds a spare correctly", function(){
+      game.score(1, 9);
+      game.score(2, 4);
+      expect(game.gameScore).toEqual(18);
+
+
+    })
 
 
 

@@ -2,25 +2,27 @@
 
 class Game{
   constructor() {
-    this.roll = 0
     this.rolls = []
+    this.gameScore = 0
+    this.frame = 0
+    this.spare = false
+    this.strike = false
   }
 
-  isStrike(x){
-    return this.rolls[x] === 10;
-  }
+  score(a, b){
+    if (a === 10) {
+      this.isStrike
+      return "strike";
+    } else if (a + b === 10) {
+      this.isSpare
+      return "spare";
+    } else {
+      this.gameScore += a + b
+      this.rolls.push(a, b)
+      this.frame ++
+      return this.gameScore
 
-
-  isSpare(roll_1, roll_2){
-    return this.rolls[x] && this.rolls[x + 1] === 10
-  }
-
-  strikeBonus(){
-    return this.rolls[x + 1] + this.rolls[x + 2];
-  }
-
-  spareBonus(){
-    return this.rolls[x + 2];
-  }
+    }
+}
 
 };

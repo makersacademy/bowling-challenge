@@ -32,9 +32,6 @@ class FinalFrame {
     if (this._isMoreThanMaxPointsForSingleRoll(points)) {
       throw new Error('invalid amount of points for single roll');
     }
-    if (this._isMoreThanFrameMaxPoints(points)) {
-      throw new Error('invalid amount of points for single frame');
-    }
     this._roll2 = points;
   }
 
@@ -47,6 +44,23 @@ class FinalFrame {
     }
     this._bonusRoll = points;
   }
+
+  calculateScore() {
+    return this.pointsFirstRoll() + this.pointsSecondRoll()
+  }
+
+  calculateBonus() {
+    if (this._isNotEligibleForBonus()) {
+     return 0;
+    }
+    return this.pointsBonusRoll();
+    }
+
+  totalFrameScore() {
+    return this.calculateScore() + this.calculateBonus();
+  }
+
+
 
   _isMoreThanMaxPointsForSingleRoll(points) {
     return points > this.MAX_SINGLE_ROLL_PTS;

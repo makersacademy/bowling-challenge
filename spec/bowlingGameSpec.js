@@ -20,9 +20,15 @@ describe('BowlingGame', function() {
     });
     
     it('calculate my total score', function() {
-      var game = new BowlingGame();
       game.roll(5);
       game.roll(4);
       expect(game.score()).toEqual(9);
+    });
+
+    it('can reset pins back to 10 after 1 frame', function() {
+      game.roll(3);
+      game.roll(4);
+      game.resetPins();
+      expect(game.pins).toEqual(10);
     });
 });

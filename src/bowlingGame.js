@@ -3,7 +3,7 @@
 class BowlingGame {
   constructor() {
     this.rolls = [];
-    this.pins = 10
+    this.pins = 10;
   }
 
    roll(downPins) {
@@ -17,5 +17,9 @@ class BowlingGame {
        return a + b;
        }, 0);
      return total; 
+   }
+
+   resetPins() {
+     this.pins = 10
    }
 }

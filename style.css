@@ -9,3 +9,17 @@ html * {
 .visible {
   visibility: visible;
 }
+
+body {
+  text-align: center;
+}
+
+table {
+  margin-left:auto;
+  margin-right:auto;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+}

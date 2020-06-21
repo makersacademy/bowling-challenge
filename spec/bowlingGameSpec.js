@@ -20,17 +20,14 @@ describe('BowlingGame', function() {
     });
     
     it('calculate my total score', function() {
-      for ( var i = 1; i < 11; i++ ) {
+      for ( var i = 0; i < 20; i++ ) {
         game.roll(4);
       }
-      for ( var i = 1; i < 11; i++ ) {
-        game.roll(3);
-      }
-      expect(game.score()).toEqual(70);
+      expect(game.score()).toEqual(80);
     });
 
     it('can roll a Gutter Game', function() {
-      for ( var i = 1; i < 21; i++) { game.roll(0); }
+      for ( var i = 0; i < 20; i++) { game.roll(0); }
       expect(game.score()).toBe(0);
     });
 

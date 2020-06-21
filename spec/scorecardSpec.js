@@ -24,4 +24,11 @@ describe('Scorecard', function () {
     scorecard.frames.push(testFrame);
     expect(scorecard.isPreviousFrameAStrike(testFrame)).toEqual(true);
   });
+
+  it('checks if previous frame was a spare', function () {
+    let testSpareFrame = { isSpare: true }
+    scorecard.frames.push(testSpareFrame);
+    scorecard.frames.push(testFrame);
+    expect(scorecard.isPreviousFrameASpare(testFrame)).toEqual(true);
+  });
 });

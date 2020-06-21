@@ -27,4 +27,14 @@ class Scorecard {
     }
   }
 
+  isPreviousFrameASpare(frame) {
+    if (this.frames.indexOf(frame) > 0) {
+      var i = this.frames.indexOf(frame);
+      var isASpare = this.frames[i - 1].isSpare;
+      return isASpare;
+    } else {
+      return false;
+    }
+  }
+
 };

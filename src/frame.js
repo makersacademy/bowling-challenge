@@ -62,6 +62,9 @@ class Frame {
     if (this._isAStrike()) {
       return this._strikeBonus()
     }
+    else {
+      return 0
+    }
   }
 
   _isAStrike() {

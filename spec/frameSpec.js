@@ -83,10 +83,15 @@ describe('Frame class', function(){
       strike.getNextNextRoll(frame);
       expect(strike.calculateBonus()).toEqual(12);
     });
-    it('knows how to calculate strike bonus when only the next frame is available(nineth frame case)', function(){
+    it('knows how to calculate strike bonus when only the next frame is available(ninth frame case)', function(){
       strike.getNextRoll(spare);
       strike.getNextNextRoll(null);
       expect(strike.calculateBonus()).toEqual(10);
+    });
+    it('knows that if frame is not a spare nor a strike, it has a bonus equal to 0', function(){
+      frame.firstRoll(5);
+      frame.secondRoll(2);
+      expect(frame.calculateBonus()).toEqual(0);
     });
   });
 });

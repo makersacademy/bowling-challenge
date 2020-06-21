@@ -2,14 +2,8 @@ class Game {
   constructor() {
     this.totalScore = 0;
     this.frameScore = []
+    this.numberOfFrames = 0
   }
-
-  currentScore() {
-    return this.totalScore;
-  }
-  myFunction(total, value) {
-    return total + value;
-    }
 
   currentFrameScore() {
     var sum = this.frameScore.reduce(function(a, b){
@@ -25,6 +19,7 @@ class Game {
         return a + b;
       }, 0);
       this.frameScore = [];
+      this.numberOfFrames += 1
     }
   }
 

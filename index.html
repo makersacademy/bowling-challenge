@@ -8,7 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="interface.js"></script>
 
-    <! link rel="stylesheet" href='style.css' >
+    <link rel="stylesheet" href='style.css'>
   </head>
   <body>
     <h1>Bowling Scorecard</h1>
@@ -180,7 +180,7 @@
                 </td>
               <td id="scoreframe10">score10</td>
            </tr>
-           <tr>
+           <tr id="bonus1">
               <td>Bonus1</td>
               <td id="roll1frame11cell">
                 <form id="roll1frame11">
@@ -188,7 +188,7 @@
                   <input id="submit" type="submit" value="enter"></input>
                   </form>
                 </td>
-              <td id="roll2frame11cell">
+              <td id="roll2frame11cell" class="hidden">
                 <form id="roll2frame11">
                   <input id="roll" type="number" step="1"></input>
                   <input id="submit" type="submit" value="enter"></input>
@@ -196,7 +196,7 @@
                 </td>
               <td></td>
             </tr>
-            <tr>
+            <tr id="bonus2">
                <td>Bonus2</td>
                <td id="roll1frame12cell">
                  <form id="roll1frame12">
@@ -204,13 +204,6 @@
                    <input id="submit" type="submit" value="enter"></input>
                    </form>
                  </td>
-               <td id="roll2frame12cell">
-                 <form id="roll2frame12">
-                   <input id="roll" type="number" step="1"></input>
-                   <input id="submit" type="submit" value="enter"></input>
-                   </form>
-                 </td>
-               <td></td>
              </tr>
 
         </table>

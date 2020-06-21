@@ -27,7 +27,8 @@ $(document).ready(function() {
   var scorecard = new Scorecard([score1, score2, score3, score4, score5,
      score6, score7, score8, score9, score10])
 
-  updateScores()
+  $('#bonus1').attr('class', 'hidden')
+  $('#bonus2').attr('class', 'hidden')
 
   $('#roll1frame1').submit(function() {
     var roll = $('#roll').val();
@@ -151,12 +152,22 @@ $(document).ready(function() {
     frame10.roll1(roll);
     $('#roll1frame10cell').html(roll);
     updateScores()
+    if(isNaN(score10.score()) & roll == 10) {
+      console.log(score10.score())
+      console.log('vis')
+      $('#bonus1').attr('class', 'visible');
+    }else{
+      console.log(score10.score())
+      console.log('hid')
+      $('#bonus1').attr('class', 'hidden');
+    }
   })
   $('#roll2frame10').submit(function() {
     var roll = $('#roll').val();
     frame10.roll2(roll);
     $('#roll2frame10cell').html(roll);
     updateScores()
+    makevisible('#bonus1')
   })
 
   $('#roll1frame11').submit(function() {
@@ -164,12 +175,14 @@ $(document).ready(function() {
     frame11.roll1(roll);
     $('#roll1frame11cell').html(roll);
     updateScores()
+    makevisible('#roll2frame11')
   })
   $('#roll2frame11').submit(function() {
     var roll = $('#roll').val();
     frame11.roll2(roll);
     $('#roll2frame11cell').html(roll);
     updateScores()
+    makevisible('#bonus2')
   })
 
   $('#roll1frame12').submit(function() {
@@ -178,19 +191,21 @@ $(document).ready(function() {
     $('#roll1frame12cell').html(roll);
     updateScores()
   })
-  $('#roll2frame12').submit(function() {
-    var roll = $('#roll').val();
-    frame12.roll2(roll);
-    $('#roll2frame12cell').html(roll);
-    updateScores()
-  })
 
   function updateScores() {
-    for (var i = 0; i < 10; i ++) {
+    for (var i = 1; i < 11; i ++) {
       if(isNaN(scorecard.score(i))) {
       }else{
         $(`#scoreframe${i}`).html(scorecard.score(i));
       }
+    }
+  }
+
+  function makevisible(id) {
+    if(isNaN(score10.score())) {
+      $(`${id}`).attr('class', 'visible');
+    }else{
+      $(`${id}`).attr('class', 'hidden');
     }
   }
 

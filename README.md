@@ -22,8 +22,10 @@ As a player, so that I can play a bowling game, I would like to roll a ball to k
 
 As a player, so that I can play a frame, I would like to keep track on my score.
 ```
-
-
+![Planning Example](images/planningScoreBoard.png)
+<!-- <p align="center">
+<img src=/images/planningScoreBoard.png width=60%>
+</p> -->
 
 As usual please start by
 

@@ -29,7 +29,7 @@ describe('Frame class', function(){
   it('is determining the basic frame total pts, without considering bonus pts', function(){
     frame.firstRoll(3);
     frame.secondRoll(4);
-    expect(frame.totPointsBeforeBonus()).toEqual(7);
+    expect(frame.calculateScore()).toEqual(7);
   });
   describe('possible errors to be raised', function(){
     it('raises error if points given to single roll > 10', function(){
@@ -66,10 +66,27 @@ describe('Frame class', function(){
     });
   });
 
-  describe('calculate its bonus', function(){
+  describe('calculates its own bonus', function(){
     it('knows how to calculate spare bonus', function(){
       spare.getNextRoll(strike);
       expect(spare.calculateBonus()).toEqual(10);
+    });
+    it('knows how to calculate strike bonus when next frame is not a strike one', function(){
+      strike.getNextRoll(spare);
+      strike.getNextNextRoll(spare);
+      expect(strike.calculateBonus()).toEqual(10);
+    });
+    it('knows how to calculate strike bonus when next frame is a strike one and next next frame is a normal one', function(){
+      strike.getNextRoll(strike);
+      frame.firstRoll(2)
+      frame.secondRoll(5)
+      strike.getNextNextRoll(frame);
+      expect(strike.calculateBonus()).toEqual(12);
+    });
+    it('knows how to calculate strike bonus when only the next frame is available(nineth frame case)', function(){
+      strike.getNextRoll(spare);
+      strike.getNextNextRoll(null);
+      expect(strike.calculateBonus()).toEqual(10);
     });
   });
 });

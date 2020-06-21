@@ -35,7 +35,7 @@ class Frame {
     this._roll2 = points;
   }
 
-  totPointsBeforeBonus() {
+  calculateScore() {
     return this._roll1 + this._roll2;
   }
 
@@ -59,6 +59,9 @@ class Frame {
     if (this._isASpare()) {
       return this._spareBonus()
     }
+    if (this._isAStrike()) {
+      return this._strikeBonus()
+    }
   }
 
   _isAStrike() {
@@ -66,11 +69,18 @@ class Frame {
   }
 
   _isASpare() {
-    return (this._roll1 !== this.MAX_FRAME_PTS) && (this.totPointsBeforeBonus() === this.MAX_FRAME_PTS);
+    return (this._roll1 !== this.MAX_FRAME_PTS) && (this.calculateScore() === this.MAX_FRAME_PTS);
   }
 
   _spareBonus() {
-    return this.nextRoll().pointsFirstRoll()
+    return this.nextRoll().pointsFirstRoll();
+  }
+
+  _strikeBonus() {
+    if (this.nextRoll()._isAStrike()) {
+      return this.MAX_FRAME_PTS + this.nextNextRoll().pointsFirstRoll();
+    }
+    return this.nextRoll().pointsFirstRoll() + this.nextRoll().pointsSecondRoll();
   }
 
   _isMoreThanMaxPointsForSingleRoll(points) {

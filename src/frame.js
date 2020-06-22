@@ -84,6 +84,9 @@ class Frame {
   }
 
   _strikeBonus() {
+    if (this.nextRoll()._isAStrike() && this.nextNextRoll() === undefined) {
+      return this.nextRoll().pointsFirstRoll() + this.nextRoll().pointsSecondRoll();
+    }
     if (this.nextRoll()._isAStrike()) {
       return this.MAX_FRAME_PTS + this.nextNextRoll().pointsFirstRoll();
     }

@@ -19,7 +19,7 @@ class Game {
   }
 
   sharingInfoWithFrames() {
-    for (var i=0; i < this.frames.length; i++) {
+    for (var i=0; i < this.frames.length-1; i++) {
       this.frames[i].getNextRoll(this.frames[i+1]);
       this.frames[i].getNextNextRoll(this.frames[i+2]);
     }
@@ -28,7 +28,7 @@ class Game {
   getFramesScores() {
     var frames_scores = []
     this.frames.forEach(function(frame){
-      frames_scores.push(frame);
+      frames_scores.push(frame.totalFrameScore());
     });
     this.frames_scores = frames_scores
   }

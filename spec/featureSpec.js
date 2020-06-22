@@ -50,13 +50,52 @@ describe('feature-test', function(){
 
 
   describe('game calculates the final game score', function(){
-    xit('perfect game', function(){
-      for(var i=0; i<10; i++) {
+    it('perfect game', function(){
+      for(var i=0; i<9; i++) {
         game.addFrame(strike);
       }
       game.addFrame(finalF1);
       game.sharingInfoWithFrames();
+      game.getFramesScores()
+      console.log(game.framesScores())
       expect(game.finalScore()).toEqual(300)
     });
   });
 });
+
+
+game = new Game()
+frame1 = new Frame()
+frame1.firstRoll(10)
+frame2 = new Frame()
+frame2.firstRoll(10)
+frame3 = new Frame()
+frame3.firstRoll(10)
+frame4 = new Frame()
+frame4.firstRoll(10)
+frame5 = new Frame()
+frame5.firstRoll(10)
+frame6 = new Frame()
+frame6.firstRoll(10)
+frame7 = new Frame()
+frame7.firstRoll(10)
+frame8 = new Frame()
+frame8.firstRoll(10)
+frame9 = new Frame()
+frame9.firstRoll(10)
+frame10 = new FinalFrame()
+frame10.firstRoll(10)
+frame10.secondRoll(10)
+frame10.bonusRoll(10)
+game.addFrame(frame1)
+game.addFrame(frame2)
+game.addFrame(frame3)
+game.addFrame(frame4)
+game.addFrame(frame5)
+game.addFrame(frame6)
+game.addFrame(frame7)
+game.addFrame(frame8)
+game.addFrame(frame9)
+game.addFrame(frame10)
+game.sharingInfoWithFrames()
+game.getFramesScores()

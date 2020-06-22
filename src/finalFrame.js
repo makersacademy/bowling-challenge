@@ -66,12 +66,13 @@ class FinalFrame {
     return points > this.MAX_SINGLE_ROLL_PTS;
   }
 
-  _isMoreThanFrameMaxPoints(points) {
-    return (points + this.pointsFirstRoll()) > this.MAX_FRAME_PTS;
-  }
 
   _isNotEligibleForBonus() {
     return (this.pointsFirstRoll() + this.pointsSecondRoll()) < this.MAX_FRAME_PTS;
+  }
+
+  _isAStrike() {
+    return this._roll1 === this.MAX_SINGLE_ROLL_PTS;
   }
 
 }

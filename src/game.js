@@ -13,13 +13,15 @@ class Game {
   }
 
   addRoll(num) {
-    this.frameScore.push(num)
-    if (this.frameScore.length === 2) {
-      this.totalScore = this.frameScore.reduce(function(a, b){
-        return a + b;
-      }, 0);
-      this.frameScore = [];
-      this.numberOfFrames += 1
+    if (this.numberOfFrames < 10) {
+      this.frameScore.push(num)
+      if (this.frameScore.length === 2) {
+        this.totalScore = this.frameScore.reduce(function(a, b){
+          return a + b;
+        }, 0);
+        this.frameScore = [];
+        this.numberOfFrames += 1
+      }
     }
   }
 

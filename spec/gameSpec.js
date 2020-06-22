@@ -37,4 +37,11 @@ describe("game",function(){
     expect(game.numberOfFrames).toEqual(6)
   });
 
+  it("Won't add to the score after 10 frames have been completed", function() {
+    for (var i = 0; i < 23; i++) {
+      game.addRoll(6);
+    }
+    expect(game.numberOfFrames).toEqual(10)
+  })
+
 });

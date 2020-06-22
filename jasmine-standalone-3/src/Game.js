@@ -20,7 +20,7 @@ class Game {
         rollIndex += 2;
       }
       else {
-        result += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+        result += this.rolls[rollIndex] + this.rolls[rollIndex + 1]; 
         rollIndex += 2;
       };
     }

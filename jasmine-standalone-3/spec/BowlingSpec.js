@@ -36,9 +36,7 @@ describe("Game", function(){
 
   it ("can play a spare on the last frame", function(){
     rollTurns(0, 18);
-    game.roll(5);
-    game.roll(5);
-    game.roll(5);
+    threeRolls(5, 3);
 
     expect(game.score()).toBe(15);
   })
@@ -54,6 +52,12 @@ describe("Game", function(){
   // })
 
   var rollTurns = function (pins, rolls) {
+    for (var i = 0; i < rolls; i++) {
+      game.roll(pins);
+    }
+  };
+
+  var threeRolls = function (pins, rolls) {
     for (var i = 0; i < rolls; i++) {
       game.roll(pins);
     }

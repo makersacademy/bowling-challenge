@@ -6,9 +6,9 @@ describe('Game class', function(){
   var frame3;
   beforeEach(function(){
     game = new Game();
-    frame1 = jasmine.createSpyObj('frame',['pointsFirstRoll', 'pointsSecondRoll']);
-    frame2 = jasmine.createSpyObj('frame',['pointsFirstRoll', 'pointsSecondRoll']);
-    frame3 = jasmine.createSpyObj('frame',['pointsFirstRoll', 'pointsSecondRoll']);
+    frame1 = jasmine.createSpyObj('frame1',['pointsFirstRoll', 'pointsSecondRoll', 'totalFrameScore']);
+    frame2 = jasmine.createSpyObj('frame2',['pointsFirstRoll', 'pointsSecondRoll']);
+    frame3 = jasmine.createSpyObj('frame3',['pointsFirstRoll', 'pointsSecondRoll']);
   });
   it('has an array that contains the game frames', function(){
     expect(game.gameFrames()).toEqual([]);
@@ -25,5 +25,21 @@ describe('Game class', function(){
     }
     expect(game.gameFrames().length).toEqual(10);
   });
+
+  describe('has an array that contains all the single frames points', function(){
+    it('starts as an empty array', function(){
+      expect(game.framesScores()).toEqual([]);
+    });
+  //   it('gets populated using getFramesScores function', function(){
+  //     spyOn('frame1', "totalFrameScore").and.returnValue(10);
+  //     for(var i=0; i<3; i++) {
+  //       game.addFrame(frame1);
+  //     }
+  //     game.getFramesScores();
+  //     expect(game.framesScores()).toEqual([10, 10, 10]);
+  //   });
+  });
+
+  // CHECK HOW TO STUB IN UNIT TEST
 
 });

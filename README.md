@@ -63,3 +63,6 @@ I expect to add more functionality or amend these intial thoughts once I begin t
 ## Updates:
 
 * Realised quickly that frame needs to take arguments of bowl one and bowl two that can then be used to determine whether there was a strike or not.
+* Amended Game class to be a Scorecard class.
+* removed bowlOne and bowlTwo as arguments for a new frame and just had within the constructor function.
+* Realised that did not need functions for is a strike or is a spare, but checker functions that are able to toggle a variable from false to true.

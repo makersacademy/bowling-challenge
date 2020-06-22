@@ -18,24 +18,43 @@ describe("Game", function(){
       expect(game.frame).toEqual(1);
     });
 
-   it("adds a spare correctly", function(){
+   it("adds a single spare correctly", function(){
       game.score(2, 4);
       game.score(2, 8);
       game.score(2, 4);
       expect(game.gameScore).toEqual(24);
     })
 
-    it("adds a strike correctly", function(){
+    it("adds a single strike correctly", function(){
       game.score(2, 4);
       game.score(10, 0);
       game.score(2, 4);
       expect(game.gameScore).toEqual(28)
     })
 
+    it("adds concurrent spares correctly", function(){
+      game.score(2, 4);
+      game.score(2, 8);
+      game.score(1, 9);
+      game.score(2, 4);
+      expect(game.gameScore).toEqual(35);
+    })
 
-
-
-
-
+    // it("adds concurrent strikes correctly", function(){
+    //   game.score(2, 4);
+    //   game.score(10, 0);
+    //   game.score(10, 0);
+    //   game.score(2, 4);
+    //   expect(game.gameScore).toEqual(50);
+    // })
+    //
+    // it("adds concurrent strikes correctly", function(){
+    //   game.score(2, 4);
+    //   game.score(10, 0);
+    //   game.score(10, 0);
+    //   game.score(10, 0);
+    //   game.score(2, 4);
+    //   expect(game.gameScore).toEqual(80);
+    // })
 
 });

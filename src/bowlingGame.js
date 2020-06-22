@@ -10,25 +10,23 @@ class Game{
   }
 
   score(a, b){
-    this.pin_1 = a
-    this.pin_2 = b
+    this.rolls.push(a, b);
     this.frame ++;
     if (this.canPlay() === false) {
       throw 'End of Game'
-    }
-    else if ((this.canPlay() && a === 10)) {
-      this.rolls.push(a, b)
+    } else if ((a === 10) && (this.strike === false)) {
       this.isStrike();
-    } else if (a + b === 10) {
-      this.rolls.push(a, b)
+    } else if ((a === 10) && (this.strike === true)) {
+      this.gameScore += 10
+   }  else if (a + b === 10) {
+      this.gameScore += a
       this.isSpare();
     } else if (this.spare === true){
-      this.gameScore += 10 + (a * 2) + b
+      this.gameScore += a + b
     } else if (this.strike === true){
-      this.gameScore += 10 + (a * 2) + (b * 2)
+      this.gameScore += (a * 2) + (b * 2)
     } else {
       this.gameScore += a + b
-      this.rolls.push(a, b)
       this.strike = false
       this.spare = false
       return this.gameScore
@@ -40,10 +38,12 @@ class Game{
   }
 
   isStrike(){
+    this.gameScore += 10
     this.strike = true
   }
 
   isSpare(){
+    this.gameScore += 10
     this.spare = true
   }
 

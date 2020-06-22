@@ -121,18 +121,10 @@ $(document).ready(function() {
   })
   $('#roll2frame11').submit(function() {
     roll2(11)
-    // var roll = $('#roll').val();
-    // frame11.roll2(roll);
-    // $('#roll2frame11cell').html(roll);
-    // updateScores()
   })
 
   $('#roll1frame12').submit(function() {
-    roll1(12)
-    // var roll = $('#roll').val();
-    // frame12.roll1(roll);
-    // $('#roll1frame12cell').html(roll);
-    // updateScores()
+    roll1(12))
   })
 
   function roll1(frame) {

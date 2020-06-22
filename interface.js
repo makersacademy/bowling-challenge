@@ -124,7 +124,7 @@ $(document).ready(function() {
   })
 
   $('#roll1frame12').submit(function() {
-    roll1(12))
+    roll1(12)
   })
 
   function roll1(frame) {

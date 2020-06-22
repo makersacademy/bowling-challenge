@@ -1,4 +1,4 @@
-#scorecard {
+.scorecard {
   display: flex;
   flex-wrap: wrap;
 }

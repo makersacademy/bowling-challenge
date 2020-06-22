@@ -1,6 +1,6 @@
-### Rubbish and basic logic model:
+### Rubbish and basic logic model
 
-<p align="center>
+<p align="center">
 <img src=/images/very_basic_model.png>
 </p>
 

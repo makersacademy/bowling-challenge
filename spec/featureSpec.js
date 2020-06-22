@@ -4,19 +4,28 @@ describe('feature-test', function(){
   var spare;
   var strike;
   var finalF1;
+  var finalF2;
+  var unluckyframe;
 
   beforeEach(function(){
     game = new Game();
     frame = new Frame();
     spare = new Frame();
-      spare.firstRoll(8);
-      spare.secondRoll(2);
+      spare.firstRoll(5);
+      spare.secondRoll(5);
     strike = new Frame();
       strike.firstRoll(10);
     finalF1 = new FinalFrame();
       finalF1.firstRoll(10);
       finalF1.secondRoll(10);
       finalF1.bonusRoll(10);
+    unluckyframe = new Frame()
+      unluckyframe.firstRoll(0)
+      unluckyframe.secondRoll(0)
+    finalF2 = new FinalFrame();
+      finalF2.firstRoll(0);
+      finalF2.secondRoll(0);
+
   });
   describe('game shares info regarding next frames with every frame', function(){
     it('frame knows which are its next and next_next frames', function(){
@@ -49,7 +58,7 @@ describe('feature-test', function(){
   // });
 
 
-  describe('game calculates the final game score', function(){
+  describe('calculates the final score for the game', function(){
     it('perfect game', function(){
       for(var i=0; i<9; i++) {
         game.addFrame(strike);
@@ -57,9 +66,34 @@ describe('feature-test', function(){
       game.addFrame(finalF1);
       game.sharingInfoWithFrames();
       game.getFramesScores()
-      console.log(game.framesScores())
+      // console.log(game.frames[9].totalFrameScore())
+      // console.log(game.framesScores())
       expect(game.finalScore()).toEqual(300)
     });
+
+    it('super unlucky game', function(){
+      for(var i=0; i<9; i++) {
+        game.addFrame(unluckyframe);
+      }
+      game.addFrame(finalF2);
+      game.sharingInfoWithFrames();
+      game.getFramesScores()
+      expect(game.finalScore()).toEqual(0)
+    });
+
+    // it('extra example', function(){
+    //   for(var i=0; i<9; i++) {
+    //     game.addFrame(spare);
+    //   }
+    //   game.addFrame(finalF1);
+    //   game.sharingInfoWithFrames();
+    //   // console.log(game.frames[2])
+    //   game.getFramesScores();
+    //   console.log(game.framesScores())
+    //   expect(game.finalScore()).toEqual(165);
+    // });
+
+
   });
 });
 

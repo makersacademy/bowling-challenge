@@ -99,39 +99,24 @@ $(document).ready(function() {
   })
 
   $('#roll1frame10').submit(function() {
-    var roll = $('#roll').val();
-    frame10.roll1(roll);
-    $('#roll1frame10cell').html(roll);
-    updateScores()
-    if (roll == 10) {
+    roll1(10)
+    if (frame10.roll1result() === 10) {
       makevisible('#bonus1')
-      strike(10)
-    } else {
-      askForRoll('#roll2frame10', roll)
     }
   })
   $('#roll2frame10').submit(function() {
-    var roll = $('#roll').val();
-    frame10.roll2(roll);
-    $('#roll2frame10cell').html(roll);
-    updateScores()
-    if(isNaN(scorecard.score(10))) {
+    roll2(10)
+    if (isNaN(scorecard.score(10))) {
       makevisible('#bonus1')
-      askForRoll('#roll1frame11', 0)
     }
   })
 
   $('#roll1frame11').submit(function() {
-    var roll = $('#roll').val();
-    frame11.roll1(roll);
-    $('#roll1frame11cell').html(roll);
-    updateScores()
+    roll1(11)
     if (roll == 10) {
       makevisible('#bonus2')
-      strike(11)
     } else {
       makevisible('#roll2frame11cell')
-      askForRoll('#roll2frame11', roll)
     }
   })
   $('#roll2frame11').submit(function() {
@@ -165,7 +150,7 @@ $(document).ready(function() {
     frames[frame - 1].roll2(roll);
     $(`#roll2frame${frame}cell`).html(roll);
     updateScores()
-    askForRoll(`#roll1frame${frame + 1}`, roll)
+    askForRoll(`#roll1frame${frame + 1}`, 0)
   }
 
   function strike(frameNum) {

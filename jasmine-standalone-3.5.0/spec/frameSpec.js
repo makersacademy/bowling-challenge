@@ -4,59 +4,59 @@ describe('Frame', function () {
 
   beforeEach(function () {
     frame = new Frame();
+  });
+
+describe('it constructs with', function () {
+
+  it('10 pins', function () {
+    expect(frame.pins).toEqual(10);
+  });
+
+  it('2 rolls', function () {
+    expect(frame.rolls).toEqual(2);
+  });
 });
 
-it('starts with 10 pins', function () {
-  expect(frame.pins).toEqual(10);
-});
+describe('rollResult', function () {
 
-it('starts with 2 rolls', function () {
-  expect(frame.rolls).toEqual(2);
-});
-
-describe('records roll', function () {
-
-  it('records results of roll', function () {
+  it('records results of each roll', function () {
     frame.rollResult(1);
     expect(frame.pins).toEqual(9);
   });
 
   it('raises error if user enters +10 points', function () {
     frame.rollResult(2);
-    frame.roll();
     expect(frame.rollResult(11)).toBe("Error: Each Frame Consists of 10 Pins");
     expect(frame.pins).toEqual(8);
-    expect(frame.rolls).toEqual(2);
+    expect(frame.rolls).toEqual(1);
   });
+});
 
-  it('resets the pins', function () {
-    frame.rollResult(1);
-    frame.reset();
-    expect(frame.pins).toEqual(10);
-  });
+describe('records amount of rolls', function () {
 
   it('records only 1 roll', function () {
     frame.roll();
     expect(frame.rolls).toEqual(1);
   });
 
-  it('has a max of 2 rolls', function () {
+  it('has a max of 2 rolls per frame', function () {
     frame.roll();
     frame.roll();
     expect(frame.roll()).toBe("Error: Maximum 2 Rolls per Frame");
     expect(frame.rolls).toEqual(0);
   });
 
-
-  it('resets the rolls to 2', function () {
-    frame.roll();
-    frame.resetRolls();
-    expect(frame.rolls).toEqual(2);
-  });
-
-  it('records when uses rolls', function () {
+  it('records result of roll', function () {
     frame.rollResult(1);
     expect(frame.rolls).toEqual(1);
+  });
 });
+
+describe('calculateScore', function () {
+
+  it('calculates the score of each roll', function () {
+    frame.rollResult(1);
+    expect(frame.calculateScore()).toEqual(1);
+  });
 });
 });

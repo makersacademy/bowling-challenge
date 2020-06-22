@@ -13,6 +13,9 @@ $(document).ready(function() {
   var frame11 = new Frame
   var frame12 = new Frame
 
+  var frames = [frame1, frame2, frame3, frame4, frame5, frame6,
+    frame7, frame8, frame9, frame10, frame11, frame12]
+
   var score1 = new Score(frame1,frame2,frame3)
   var score2 = new Score(frame2,frame3,frame4)
   var score3 = new Score(frame3,frame4,frame5)
@@ -33,174 +36,66 @@ $(document).ready(function() {
   askForRoll('#roll1frame1', 0)
 
   $('#roll1frame1').submit(function() {
-    var roll = $('#roll').val();
-    frame1.roll1(roll);
-    $('#roll1frame1cell').html(roll);
-    updateScores()
-    if (roll == 10) {
-      strike(1)
-    } else {
-      askForRoll('#roll2frame1', roll)
-    }
+    roll1(1)
   })
   $('#roll2frame1').submit(function() {
-    var roll = $('#roll').val();
-    frame1.roll2(roll);
-    $('#roll2frame1cell').html(roll);
-    askForRoll('#roll1frame2', 0)
-    updateScores()
+    roll2(1)
   })
 
   $('#roll1frame2').submit(function() {
-    var roll = $('#roll').val();
-    frame2.roll1(roll);
-    $('#roll1frame2cell').html(roll);
-    updateScores()
-    if (roll == 10) {
-      strike(2)
-    } else {
-      askForRoll('#roll2frame2', roll)
-    }
+    roll1(2)
   })
   $('#roll2frame2').submit(function() {
-    var roll = $('#roll').val();
-    frame2.roll2(roll);
-    $('#roll2frame2cell').html(roll);
-    updateScores()
-    askForRoll('#roll1frame3', 0)
+    roll2(2)
   })
 
   $('#roll1frame3').submit(function() {
-    var roll = $('#roll').val();
-    frame3.roll1(roll);
-    $('#roll1frame3cell').html(roll);
-    updateScores()
-    if (roll == 10) {
-      strike(3)
-    } else {
-      askForRoll('#roll2frame3', roll)
-    }
+    roll1(3)
   })
   $('#roll2frame3').submit(function() {
-    var roll = $('#roll').val();
-    frame3.roll2(roll);
-    $('#roll2frame3cell').html(roll);
-    updateScores()
-    askForRoll('#roll1frame4', 0)
+    roll2(3)
   })
 
   $('#roll1frame4').submit(function() {
-    var roll = $('#roll').val();
-    frame4.roll1(roll);
-    $('#roll1frame4cell').html(roll);
-    updateScores()
-    if (roll == 10) {
-      strike(4)
-    } else {
-      askForRoll('#roll2frame4', roll)
-    }
+    roll1(4)
   })
   $('#roll2frame4').submit(function() {
-    var roll = $('#roll').val();
-    frame4.roll2(roll);
-    $('#roll2frame4cell').html(roll);
-    updateScores()
-    askForRoll('#roll1frame5', 0)
+    roll2(4)
   })
 
   $('#roll1frame5').submit(function() {
-    var roll = $('#roll').val();
-    frame5.roll1(roll);
-    $('#roll1frame5cell').html(roll);
-    updateScores()
-    if (roll == 10) {
-      strike(5)
-    } else {
-      askForRoll('#roll2frame5', roll)
-    }
+    roll1(5)
   })
   $('#roll2frame5').submit(function() {
-    var roll = $('#roll').val();
-    frame5.roll2(roll);
-    $('#roll2frame5cell').html(roll);
-    updateScores()
-    askForRoll('#roll1frame6', 0)
+    roll2(5)
   })
 
   $('#roll1frame6').submit(function() {
-    var roll = $('#roll').val();
-    frame6.roll1(roll);
-    $('#roll1frame6cell').html(roll);
-    updateScores()
-    if (roll == 10) {
-      strike(6)
-    } else {
-      askForRoll('#roll2frame6', roll)
-    }
+    roll1(6)
   })
   $('#roll2frame6').submit(function() {
-    var roll = $('#roll').val();
-    frame6.roll2(roll);
-    $('#roll2frame6cell').html(roll);
-    updateScores()
-    askForRoll('#roll1frame7', 0)
+    roll2(6)
   })
 
   $('#roll1frame7').submit(function() {
-    var roll = $('#roll').val();
-    frame7.roll1(roll);
-    $('#roll1frame7cell').html(roll);
-    updateScores()
-    if (roll == 10) {
-      strike(7)
-    } else {
-      askForRoll('#roll2frame7', roll)
-    }
+    roll1(7)
   })
   $('#roll2frame7').submit(function() {
-    var roll = $('#roll').val();
-    frame7.roll2(roll);
-    $('#roll2frame7cell').html(roll);
-    updateScores()
-    askForRoll('#roll1frame8', 0)
+    roll2(7)
   })
 
   $('#roll1frame8').submit(function() {
-    var roll = $('#roll').val();
-    frame8.roll1(roll);
-    $('#roll1frame8cell').html(roll);
-    updateScores()
-    if (roll == 10) {
-      strike(8)
-    } else {
-      askForRoll('#roll2frame8', roll)
-    }
+    roll1(8)
   })
   $('#roll2frame8').submit(function() {
-    var roll = $('#roll').val();
-    frame8.roll2(roll);
-    $('#roll2frame8cell').html(roll);
-    updateScores()
-    askForRoll('#roll1frame9', 0)
+    roll2(8)
   })
 
   $('#roll1frame9').submit(function() {
-    var roll = $('#roll').val();
-    frame9.roll1(roll);
-    $('#roll1frame9cell').html(roll);
-    updateScores()
-    if (roll == 10) {
-      strike(9)
-    } else {
-      askForRoll('#roll2frame9', roll)
-    }
+    roll1(9)
   })
   $('#roll2frame9').submit(function() {
-    var roll = $('#roll').val();
-    frame9.roll2(roll);
-    $('#roll2frame9cell').html(roll);
-    updateScores()
-    askForRoll('#roll1frame10', 0)
+    roll2(9)
   })
 
   $('#roll1frame10').submit(function() {
@@ -252,6 +147,26 @@ $(document).ready(function() {
     $('#roll1frame12cell').html(roll);
     updateScores()
   })
+
+  function roll1(frame) {
+    var roll = $('#roll').val();
+    frames[frame - 1].roll1(roll);
+    $(`#roll1frame${frame}cell`).html(roll);
+    updateScores()
+    if (roll == 10) {
+      strike(frame)
+    } else {
+      askForRoll(`#roll2frame${frame}`, roll)
+    }
+  }
+
+  function roll2(frame) {
+    var roll = $('#roll').val();
+    frames[frame - 1].roll2(roll);
+    $(`#roll2frame${frame}cell`).html(roll);
+    updateScores()
+    askForRoll(`#roll1frame${frame + 1}`, roll)
+  }
 
   function strike(frameNum) {
     askForRoll(`#roll1frame${frameNum + 1}`, 0)

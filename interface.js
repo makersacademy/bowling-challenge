@@ -221,11 +221,9 @@ $(document).ready(function() {
     $('#roll2frame10cell').html(roll);
     updateScores()
     if(isNaN(scorecard.score(10))) {
-      akevisible('#bonus1')
+      makevisible('#bonus1')
       askForRoll('#roll1frame11', 0)
     }
-    // makevisible('#bonus1')
-    // askForRoll('#roll1frame11', 0)
   })
 
   $('#roll1frame11').submit(function() {

@@ -58,5 +58,14 @@ describe("Game", function(){
     }
   };
 
+  it ("can't hits more than 10 pins in one roll", function() {
+    
+    expect(game(){game.roll(11)}).toThrow('Too many pins');
+    
+  });
+
+         
+  // Usage: expect(function() {<expectation>}).toThrow()
+  // expect(game.roll(11)).toThrow(new Error("too many pins"));
 
 });

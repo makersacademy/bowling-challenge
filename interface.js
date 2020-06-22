@@ -113,7 +113,7 @@ $(document).ready(function() {
 
   $('#roll1frame11').submit(function() {
     roll1(11)
-    if (roll == 10) {
+    if (frame11.roll1result() === 10) {
       makevisible('#bonus2')
     } else {
       makevisible('#roll2frame11cell')

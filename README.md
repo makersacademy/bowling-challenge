@@ -38,12 +38,8 @@ A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 str
 
 # My Approach
 
-## Main technologies used
+## Technologies used
 
- * Project language - Javascript
- * Testing - Jasmine
- * CI - Travis
- 
  | Purpose | Technology |
  | ----- | ----- |
  | Language | Javascript |

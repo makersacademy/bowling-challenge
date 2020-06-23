@@ -4,19 +4,12 @@ Bowling Challenge
 ![Scorecard screenshot](./bowling-screenshot.png)
 
 See the deployed project here:- http://phils-bowlingcard.surge.sh/
+
 ## The Task
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
 
 ## Bowling — how does it work?
 
@@ -93,8 +86,6 @@ npm run test
 
 ## Approach
 
-Note - what follows is the approach I took on my second attempt through the challenge. As I will discuss in the challenges section, my first attempt was unsuccessful, partly because it didn't follow the consistent, logical approach set out below.
-
 ### User stories
 
 My first task was to convert the brief into user stories
@@ -155,16 +146,13 @@ So that I don't make mistakes or have to worry
 I want the scorecard to automatically keep the right score
 ```
 
-This was where the majority of the work was carried out. The logic and rules for scoring bowling are a lot more complex than they seem, and I spent a great deal of time working out how to break them down into small increments that I could implement with TDD.
+This was where the majority of the work was carried out. The logic and rules for scoring bowling are a lot more complex than they seem, and I was careful tobreak them down into small increments that I could implement with TDD.
 
-As I progressed I realised that there were several issues with my approach to testing:
+I found using spies in Jasmine challenging, and it took me a while to understand how to use them in conjunction with the dependency injection I had implemented to separate the Game and Frame functions.
 
-* The tests I was writing for the main Game function were not unit tests, instead effectively functioning as somewhere between feature and integration tests
-* The tests made no attempt to isolate individual functions and instances so that true unit testing could be carried out
+As I progressed I realised that there were was an issue with my approach to testing. The tests I was writing for the main Game function were not unit tests, instead effectively functioning as somewhere between feature and integration tests. Also, in a number of places, the tests were not properly isolated, so were not functioning as proper unit tests.
 
-I found using spies in Jasmine extremely challenging, and it took me a long time to understand how to use the in conjunction with the dependency injection I had implemented to separate the Game and Frame functions.
-
-Once I had eventually worked out a way of approaching the problem though, I was able to write actual unit tests for the Game function. This required a complete rewrite of the existing tests, and I took the opportunity to move many of them into a feature test folder and keep them.
+Once I had identified the problem, I was able to write actual unit tests for the Game function. I also moved the majority of the existing tests to a feature test folder.
 
 #### 4th user story
 
@@ -174,12 +162,11 @@ So that the scorecard is easy and interesting to read
 I want it to be graphically well designed and interesting to look at
 ```
 
-I decided on a minimal, 'arcade' style interface, which I thought would be quick to implement. However, formatting the scorecard itself with the correct borders and spacing proved much more challenging than I anticipated. I ended up making extensive use of css flex-boxes to make it work, but I feel there is probably a more intuitive approach that I am missing.
-
+I decided on a minimal, 'arcade' style interface, which I thought would be quick to implement. The formatting of the scorecard itself with the correct borders and spacing proved to be an interesting challenge, requiring extensive use of css flex-boxes.
 
 #### Refactoring intermission
 
-It was at this point I realised that outside of the main model functions, my code was poorly organised. I spent some time refactoring, following a rough parallel to the idea of MVC.
+It was at this point I realised that a number of my functions were a little too large, with multiple responsibilities. I spent some time refactoring, following a rough parallel to the idea of MVC.
 
 * I moved the Game and Frame functions into the model
 * I split the large game-controller function into smaller controllers for the different buttons and parts of the display
@@ -202,24 +189,18 @@ As already commented, this story was quite simple to implement following the ref
 
 ## Challenges
 
-### My first attempt
+### Misreading the specification
 
-My initial attempt at this challenge was unsuccessful. I did not plan sufficiently, and did not properly follow TDD. I also misread the specification and how the frame scores were supposed to be calculated.
-
-About 6 hours into the implementation I realised there was a problem and attempted to fix it. However, due to the approach I had taken, this proved to be extremely difficult. I eventually decided to go back to a much earlier version of the code and start a new branch, appropriately titled, 'second-attempt'. This now contains the completed version of the challenge.
+About 6 hours into the implementation I realised that I had misread the specification about how frame scores were supposed to be calculated. I spent some time attempting to fix the problem, but a number of core design decisions made this very difficult. I eventually had to go back to a much earlier commit, starting a new branch, appropriately titled 'second-attempt', which contains the completed version of the challenge.
 
 ### My second attempt
 
-As commented in the 'My approach' section, I found setting up tests for the model extremely challenging. This was largely due to unfamiliarity with the way Jasmine spys worked, but alo because I had failed to properly differentiate between unit and feature/integration tests.
+As commented in the 'My approach' section, I found setting up tests for the model challenging. This was largely due to unfamiliarity with the way Jasmine spys worked, but also because my unit tests were actually functioning more as feature tests.
 
 Once these two problems were solved, my tests became much clearer and fit for their intended purpose.
 
-I also left it quite late to refactor the game-controller code. By the time I realised something needed to be done, it was far too large and this made it much harder to refactor.
-
 ## Further work
 
-The challenge is essentially feature complete. However, there are additional things I would do given more time:
+The challenge is essentially feature complete. However, there is one piece of work I would do given more time:
 
-* Code coverage - At present the project does not use a code coverage tool. This is an important metric, and I would add the Istanbul npm module as it works well with Jasmine.
-* End-to-end testing - There are no tests covering the controller code. I realise this is far from ideal, and that I could have implemented something that tested their interaction with the model. However, I chose not to for the following reason. I believe an end-to-end testing module, eg Cypress, that exercises the code by directly controlling the browser would be the most effective way of testing this code. Anything I had done without a library such as this would have been very awkward and incomplete because of the interactions between the controller code and web-page DOM model. The challenge did not involve setting one of these up, but if I were to continue working on this, I would do so as a priority.
-
+* Code coverage - At present the project does not use a code coverage tool. This is an important metric, and I would add the Istanbul npm module as it works well with Jasmine. There is also no coverage of the controller code at present, which would require the use of a library such as Cypress in order to exercise the gui elements.

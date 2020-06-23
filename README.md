@@ -1,7 +1,7 @@
 
 Bowling Challenge
 =================
-![Scorecard screenshot](./screenshot.png)
+![Scorecard screenshot](./bowling-screenshot.png)
 
 See the deployed project here:- http://phils-bowlingcard.surge.sh/
 ## The Task

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='./css/style.css'>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
     <script src="./src/bowling.js"></script>
     <script src="./src/frame.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src='./src/jquery.js'></script>
+    <script src="./src/jquery.js"></script>
     <title>Bowling Score Card</title>
   </head>
   <body>
@@ -15,104 +15,104 @@
     <div class="scorecard">
       <div class="frame" id="0">
         <div class="frame-number">1</div>
-          <div class="top">
-            <div class="left" id="0"></div>
-            <div class="right" id="0"></div>
-          </div>
-          <div class="bottom" id="0"></div>
+        <div class="top">
+          <div class="left" id="0"></div>
+          <div class="right" id="0"></div>
+        </div>
+        <div class="bottom" id="0"></div>
       </div>
       <div class="frame" id="1">
         <div class="frame-number">2</div>
-          <div class="top">
-            <div class="left" id="1"></div>
-            <div class="right" id="1"></div>
-          </div>
-          <div class="bottom" id="1"></div>
+        <div class="top">
+          <div class="left" id="1"></div>
+          <div class="right" id="1"></div>
+        </div>
+        <div class="bottom" id="1"></div>
       </div>
       <div class="frame" id="2">
         <div class="frame-number">3</div>
-          <div class="top">
-            <div class="left" id="2"></div>
-            <div class="right" id="2"></div>
-          </div>
-          <div class="bottom" id="2"></div>
+        <div class="top">
+          <div class="left" id="2"></div>
+          <div class="right" id="2"></div>
+        </div>
+        <div class="bottom" id="2"></div>
       </div>
       <div class="frame" id="3">
         <div class="frame-number">4</div>
-          <div class="top">
-            <div class="left" id="3"></div>
-            <div class="right" id="3"></div>
-          </div>
-          <div class="bottom" id="3"></div>
+        <div class="top">
+          <div class="left" id="3"></div>
+          <div class="right" id="3"></div>
+        </div>
+        <div class="bottom" id="3"></div>
       </div>
       <div class="frame" id="4">
         <div class="frame-number">5</div>
-          <div class="top">
-            <div class="left" id="4"></div>
-            <div class="right" id="4"></div>
-          </div>
-          <div class="bottom" id="4"></div>
+        <div class="top">
+          <div class="left" id="4"></div>
+          <div class="right" id="4"></div>
+        </div>
+        <div class="bottom" id="4"></div>
       </div>
       <div class="frame" id="5">
         <div class="frame-number">6</div>
-          <div class="top">
-            <div class="left" id="5"></div>
-            <div class="right" id="5"></div>
-          </div>
-          <div class="bottom" id="5"></div>
+        <div class="top">
+          <div class="left" id="5"></div>
+          <div class="right" id="5"></div>
+        </div>
+        <div class="bottom" id="5"></div>
       </div>
       <div class="frame" id="6">
         <div class="frame-number">7</div>
-          <div class="top">
-            <div class="left" id="6"></div>
-            <div class="right" id="6"></div>
-          </div>
-          <div class="bottom" id="6"></div>
+        <div class="top">
+          <div class="left" id="6"></div>
+          <div class="right" id="6"></div>
+        </div>
+        <div class="bottom" id="6"></div>
       </div>
       <div class="frame" id="7">
         <div class="frame-number">8</div>
-          <div class="top">
-            <div class="left" id="7"></div>
-            <div class="right" id="7"></div>
-          </div>
-          <div class="bottom" id="7"></div>
+        <div class="top">
+          <div class="left" id="7"></div>
+          <div class="right" id="7"></div>
+        </div>
+        <div class="bottom" id="7"></div>
       </div>
       <div class="frame" id="8">
         <div class="frame-number">9</div>
-          <div class="top">
-            <div class="left" id="8"></div>
-            <div class="right" id="8"></div>
-          </div>
-          <div class="bottom" id="8"></div>
+        <div class="top">
+          <div class="left" id="8"></div>
+          <div class="right" id="8"></div>
+        </div>
+        <div class="bottom" id="8"></div>
       </div>
-    <div class="frame" id="9">
-      <div class="frame-number">10</div>
+      <div class="frame" id="9">
+        <div class="frame-number">10</div>
         <div class="top">
           <div class="left" id="9"></div>
           <div class="right" id="9"></div>
-          <div class='right-bonus' id='9'></div>
+          <div class="right-bonus" id="9"></div>
         </div>
         <div class="bottom" id="9"></div>
+      </div>
+      <div class="frame" id="total-score">
+        <div class="frame-number">Score</div>
+        <div class="total"></div>
+      </div>
     </div>
-    <div class="frame" id="total-score">
-      <div class="frame-number">Score</div>
-      <div class="total"></div>
+    <div class="pins-hit">
+      <button class="pins" id="0" value="0">0</button>
+      <button class="pins" id="1" value="1">1</button>
+      <button class="pins" id="2" value="2">2</button>
+      <button class="pins" id="3" value="3">3</button>
+      <button class="pins" id="4" value="4">4</button>
+      <button class="pins" id="5" value="5">5</button>
+      <button class="pins" id="6" value="6">6</button>
+      <button class="pins" id="7" value="7">7</button>
+      <button class="pins" id="8" value="8">8</button>
+      <button class="pins" id="9" value="9">9</button>
+      <button class="pins" id="10" value="10">10</button>
     </div>
-  </div>
-  <div class="pins-hit">
-    <button class="pins" id="0" value="0">0</button>
-    <button class="pins" id="1" value="1">1</button>
-    <button class="pins" id="2" value="2">2</button>
-    <button class="pins" id="3" value="3">3</button>
-    <button class="pins" id="4" value="4">4</button>
-    <button class="pins" id="5" value="5">5</button>
-    <button class="pins" id="6" value="6">6</button>
-    <button class="pins" id="7" value="7">7</button>
-    <button class="pins" id="8" value="8">8</button>
-    <button class="pins" id="9" value="9">9</button>
-    <button class="pins" id="10" value="10">10</button>
-  </div>
-  <br>
-  <button class='reset'>Reset Card</button>
+    <br />
+    <button class="reset">Reset Card</button>
   </body>
 </html>

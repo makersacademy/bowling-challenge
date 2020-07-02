@@ -34,5 +34,10 @@ describe('scorecard', function() {
     it('score starts at 0', () => {
       expect(scorecard.score).toEqual(0);
     });
+
+    it('score starts at 0', () => {
+      scorecard.addRoll(1);
+      expect(scorecard.score).toEqual(1);
+    });
   });
 });

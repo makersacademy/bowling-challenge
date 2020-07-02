@@ -35,9 +35,14 @@ describe('scorecard', function() {
       expect(scorecard.score).toEqual(0);
     });
 
-    it('score starts at 0', () => {
+    it('Add roll 1', () => {
       scorecard.addRoll(1);
       expect(scorecard.score).toEqual(1);
+    });
+
+    it('Add roll 3', () => {
+      scorecard.addRoll(3);
+      expect(scorecard.score).toEqual(3);
     });
   });
 });

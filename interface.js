@@ -4,17 +4,15 @@ $(document).ready(function() {
 
   $('.record').click(function(e) {
     e.preventDefault(e);
-
     numberOfRolls += 1;
-
     const rollScore = parseInt(e.currentTarget.value);
-
     scorecard.addRoll(rollScore);
+    const frameNumber = scorecard.frames.length;
 
     $('#score').text(scorecard.score);
-    $('#frames').text(scorecard.frames.length);
+    $('#frames').text(frameNumber);
 
-    if (scorecard.frames.length >= 10 && rollScore === 10) {
+    if (frameNumber >= 10 && rollScore === 10) {
       $('#roll' + numberOfRolls).text(rollScore);
     } else if (rollScore === 10) {
       $('#roll' + numberOfRolls).text(rollScore);
@@ -30,8 +28,8 @@ $(document).ready(function() {
     $('#frame' + scorecard.frames.length).text(scorecard.score);
   });
 
-  function updateButtons(numberOfRolls, rollScore) {
-    if (numberOfRolls === 1) {
+  function updateButtons(rollsThisFrame, rollScore) {
+    if (rollsThisFrame === 1) {
       for (i = 11-rollScore; i < 11; i++) {
         $(`#${i}.record`).prop('disabled', true);
       }

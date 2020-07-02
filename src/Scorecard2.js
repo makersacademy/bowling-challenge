@@ -1,11 +1,14 @@
 class Scorecard2 {
   constructor() {
     this.score = 0;
-    this.frames= [];
+    this.frames= [
+    ];
     this.TEN_FRAMES = 10;
   }
-  addRoll() {
-    // this.rolls.push(score);
+  addRoll(score) {
+    if (score === 10) {
+      this.addFrame(new Frame(10));
+    }
   }
   addFrame(frame) {
     if (this.frames.length >= this.TEN_FRAMES) {

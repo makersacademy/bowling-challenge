@@ -31,9 +31,14 @@ describe('scorecard', function() {
   });
 
   describe('adding rolls', function() {
-    it('adding 1 roll returns no frames', () => {
+    it('adding 1 roll of 1returns no frames', () => {
       scorecard.addRoll(1);
       expect(scorecard.frames).toEqual([]);
+    });
+
+    it('adding 1 roll of 10 returns a frame', () => {
+      scorecard.addRoll(10);
+      expect(scorecard.frames[0].roll1).toEqual(10);
     });
   });
 

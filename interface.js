@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  const scorecard = new Scorecard();
+  const scorecard = new Scorecard2();
   let numberOfRolls = 0;
 
   // $('#addFrame').click(function(e) {
@@ -24,19 +24,19 @@ $(document).ready(function() {
   //   }
   // });
 
-  $('#addRoll').click(function(e) {
-    e.preventDefault();
+  // $('#addRoll').click(function(e) {
+  //   e.preventDefault();
 
-    numberOfRolls += 1;
+  //   numberOfRolls += 1;
 
-    let roll = parseInt($('#roll').val());
+  //   let roll = parseInt($('#roll').val());
 
-    if (isNaN(roll)) {
-      roll = 0;
-    }
+  //   if (isNaN(roll)) {
+  //     roll = 0;
+  //   }
 
-    $('#roll' + numberOfRolls).text(roll);
-  });
+  //   $('#roll' + numberOfRolls).text(roll);
+  // });
 
   $('.record').click(function(e) {
     e.preventDefault(e);
@@ -45,6 +45,18 @@ $(document).ready(function() {
 
     let rollScore = parseInt(e.currentTarget.value);
 
+    scorecard.addRoll(rollScore);
+
     $('#roll' + numberOfRolls).text(rollScore);
+    $('#score').text(scorecard.score);
+    $('#frames').text(scorecard.frames.length);
+
+    if (scorecard.rolls.length === 1) {
+      for (i = 11-rollScore; i < 11; i++) {
+        $(`#${i}.record`).prop('disabled', true);
+      }
+    } else {
+      $('.record').prop('disabled', false);
+    }
   });
 });

@@ -47,9 +47,17 @@ $(document).ready(function() {
 
     scorecard.addRoll(rollScore);
 
-    $('#roll' + numberOfRolls).text(rollScore);
+
     $('#score').text(scorecard.score);
     $('#frames').text(scorecard.frames.length);
+
+    if (rollScore === 10) {
+      $('#roll' + numberOfRolls).text(rollScore);
+      numberOfRolls += 1;
+      $('#roll' + numberOfRolls).text('/');
+    } else {
+      $('#roll' + numberOfRolls).text(rollScore);
+    }
 
     if (scorecard.rolls.length === 1) {
       for (i = 11-rollScore; i < 11; i++) {

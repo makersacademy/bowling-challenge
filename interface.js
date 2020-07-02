@@ -36,16 +36,9 @@ $(document).ready(function() {
     }
 
     $('#roll' + numberOfRolls).text(roll);
+  });
 
-    // scorecard.addFrame(new Frame(roll1, roll2));
-
-    // $('#score').text(scorecard.score);
-    // $('#frames').text(scorecard.frames.length);
-    // if (scorecard.frames.length === 1) {
-    //   console.log('hello');
-    //   $('#r1').text(roll1);
-    //   $('#r2').text(roll2);
-    //   $('#frame1').text(roll1+roll2);
-    // }
+  $('.record').click(function(e) {
+    e.preventDefault(e);
   });
 });

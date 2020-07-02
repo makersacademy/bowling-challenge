@@ -11,12 +11,7 @@ $(document).ready(function() {
       roll2 = 0;
     }
 
-    // $('#r1').text(5);
-
-
-    console.log(scorecard.frames.length);
     scorecard.addFrame(new Frame(roll1, roll2));
-    console.log(scorecard.frames.length);
 
     $('#score').text(scorecard.score);
     $('#frames').text(scorecard.frames.length);

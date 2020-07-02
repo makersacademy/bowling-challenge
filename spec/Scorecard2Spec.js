@@ -27,19 +27,12 @@ describe('scorecard', function() {
   };
 
   beforeEach(function() {
-    scorecard = new Scorecard();
+    scorecard = new Scorecard2();
   });
 
-  describe('adding frames', function() {
+  describe('adding rolls', function() {
     it('can accept a new frame', () => {
-      scorecard.addFrame(new Framedouble(2, 2));
-      expect(scorecard.frames[0]).toBeInstanceOf(Framedouble);
-    });
-
-    it('can accept two frames', () => {
-      scorecard.addFrame(new Framedouble(2, 2));
-      scorecard.addFrame(new Framedouble(10));
-      expect(scorecard.frames[1]).toBeInstanceOf(Framedouble);
+      expect(scorecard.score).toEqual(0);
     });
   });
 });

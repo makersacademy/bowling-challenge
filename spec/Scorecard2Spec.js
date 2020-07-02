@@ -31,18 +31,24 @@ describe('scorecard', function() {
   });
 
   describe('adding rolls', function() {
-    it('score starts at 0', () => {
-      expect(scorecard.score).toEqual(0);
+    it('rolls start as an empty array', () => {
+      expect(scorecard.rolls).toEqual([]);
     });
 
     it('Add roll 1', () => {
       scorecard.addRoll(1);
-      expect(scorecard.score).toEqual(1);
+      expect(scorecard.rolls).toEqual([1]);
     });
 
     it('Add roll 3', () => {
       scorecard.addRoll(3);
-      expect(scorecard.score).toEqual(3);
+      expect(scorecard.rolls).toEqual([3]);
+    });
+
+    it('Add two rolls', () => {
+      scorecard.addRoll(3);
+      scorecard.addRoll(3);
+      expect(scorecard.rolls).toEqual([3, 3]);
     });
   });
 });

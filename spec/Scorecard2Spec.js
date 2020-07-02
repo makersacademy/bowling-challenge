@@ -31,7 +31,7 @@ describe('scorecard', function() {
   });
 
   describe('adding rolls', function() {
-    it('can accept a new frame', () => {
+    it('score starts at 0', () => {
       expect(scorecard.score).toEqual(0);
     });
   });

@@ -9,11 +9,9 @@ function Frame() {
 
 Frame.prototype.addScore = function(score) {
     if (this.rollOne === null) {
-        this.rollOne = score
-        return this.rollOne
+        return this.rollOne = score
     } else {
-        this.rollTwo = score
-        return this.rollTwo
+        return this.rollTwo = score
     }
 }
 

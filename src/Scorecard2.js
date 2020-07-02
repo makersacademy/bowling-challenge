@@ -55,11 +55,11 @@ class Scorecard2 {
   addStrike(frame, frameNumber, frames) {
     this.score += 10;
     if (this.nextRollIsUndefined(frameNumber, frames)) {
-      this.score = 'Add another frame.';
+      // this.score = 'Add another frame.';
     } else if (this.nextRollIsSpare(frameNumber, frames)) {
       this.score += 10;
     } else if (this.rollAfterNextIsUndefined(frameNumber, frames)) {
-      this.score = 'Add another frame.';
+      // this.score = 'Add another frame.';
     } else if (this.nextRollIsStrike(frameNumber, frames)) {
       this.score += 10;
       this.score += frames[frameNumber+2].roll1;

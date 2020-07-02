@@ -1,8 +1,8 @@
 class Scorecard2 {
   constructor() {
-    this.score = 0;
+    this.rolls = [];
   }
   addRoll(score) {
-    this.score += score;
+    this.rolls.push(score);
   }
 }

@@ -3,10 +3,12 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  
 
 }
 
 .scorecardbox {
+  text-align: center;
   border-style: solid;
   /* display: flex;
   justify-content: center; */
@@ -18,7 +20,12 @@ table, th, td {
   border-collapse: collapse;
 }
 
+th {
+  text-align: center;
+  width: 60px
+}
+
 td {
-  height: 20px;
-  width: 20px;
+  height: 30px;
+  width: 30px;
 }

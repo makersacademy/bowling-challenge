@@ -2,3 +2,8 @@
   border-style: solid;
   text-align: center;
 }
+
+table, th, td {
+  /* border-style: 5px solid black; */
+  border-style: solid;
+}

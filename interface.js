@@ -26,7 +26,7 @@ $(document).ready(function() {
 
   $('#addRoll').click(function(e) {
     e.preventDefault();
-    console.log(numberOfRolls);
+
     numberOfRolls += 1;
 
     let roll = parseInt($('#roll').val());
@@ -34,14 +34,8 @@ $(document).ready(function() {
     if (isNaN(roll)) {
       roll = 0;
     }
-    console.log(numberOfRolls);
 
-    if (numberOfRolls === 1) {
-      $('#roll1').text(roll);
-    }
-    if (numberOfRolls === 2) {
-      $('#roll2').text(roll);
-    }
+    $('#roll' + numberOfRolls).text(roll);
 
     // scorecard.addFrame(new Frame(roll1, roll2));
 

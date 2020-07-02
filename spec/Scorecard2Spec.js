@@ -30,6 +30,13 @@ describe('scorecard', function() {
     scorecard = new Scorecard2();
   });
 
+  describe('adding rolls', function() {
+    it('adding 1 roll returns no frames', () => {
+      scorecard.addRoll(1);
+      expect(scorecard.frames).toEqual([]);
+    });
+  });
+
   describe('adding frames', function() {
     it('can accept a new frame', () => {
       scorecard.addFrame(new Framedouble(2, 2));

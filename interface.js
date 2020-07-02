@@ -40,5 +40,11 @@ $(document).ready(function() {
 
   $('.record').click(function(e) {
     e.preventDefault(e);
+
+    numberOfRolls += 1;
+
+    let rollScore = parseInt(e.currentTarget.value);
+
+    $('#roll' + numberOfRolls).text(rollScore);
   });
 });

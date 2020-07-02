@@ -1,6 +1,16 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
 .scorecardbox {
   border-style: solid;
-  text-align: center;
+  /* display: flex;
+  justify-content: center; */
+  
 }
 
 table, th, td {

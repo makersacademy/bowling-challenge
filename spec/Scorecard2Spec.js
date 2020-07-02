@@ -36,6 +36,13 @@ describe('scorecard', function() {
       expect(scorecard.frames).toEqual([]);
     });
 
+    it('adding 2 rolls of < 10', () => {
+      scorecard.addRoll(3);
+      scorecard.addRoll(3);
+      expect(scorecard.frames[0].roll1).toEqual(3);
+      expect(scorecard.frames[0].roll2).toEqual(3);
+    });
+
     it('adding 1 roll of 10 returns a frame', () => {
       scorecard.addRoll(10);
       expect(scorecard.frames[0].roll1).toEqual(10);

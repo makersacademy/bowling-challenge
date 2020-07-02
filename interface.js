@@ -46,17 +46,25 @@ $(document).ready(function() {
     let rollScore = parseInt(e.currentTarget.value);
 
     scorecard.addRoll(rollScore);
-
-
+    if (scorecard.gameComplete) {
+      $('.record').prop('disabled', true);
+    }
     $('#score').text(scorecard.score);
     $('#frames').text(scorecard.frames.length);
 
-    if (rollScore === 10) {
+    if (scorecard.frames.length >= 10 && rollScore === 10) {
+      $('#roll' + numberOfRolls).text(rollScore);
+    } else if (rollScore === 10) {
       $('#roll' + numberOfRolls).text(rollScore);
       numberOfRolls += 1;
       $('#roll' + numberOfRolls).text('/');
     } else {
       $('#roll' + numberOfRolls).text(rollScore);
+      $('#frame' + scorecard.frames.length).text;
+    }
+
+    if (scorecard.gameComplete) {
+      $('.record').prop('disabled', true);
     }
 
     if (scorecard.rolls.length === 1) {
@@ -66,5 +74,8 @@ $(document).ready(function() {
     } else {
       $('.record').prop('disabled', false);
     }
+
+
+    $('#frame' + scorecard.frames.length).text(scorecard.score);
   });
 });

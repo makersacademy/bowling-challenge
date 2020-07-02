@@ -4,6 +4,6 @@
 }
 
 table, th, td {
-  /* border-style: 5px solid black; */
-  border-style: solid;
+  border: 1px solid black;
+  border-collapse: collapse;
 }

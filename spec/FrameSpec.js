@@ -34,4 +34,14 @@ describe('Frame', function() {
       expect(frame0.hasStrike()).toEqual(true);
     })
   })
+
+  it('can have a spare', function() {
+    frame = new Frame([4,6]);
+    expect(frame.isSpare()).toBe(true);
+  })
+
+  it('can have a strike', function() {
+    frame = new Frame([10]);
+    expect(frame.isStrike()).toBe(true);
+  })
 })

@@ -1,6 +1,8 @@
 
 Bowling Challenge
 =================
+This is a weekend challenge I did during Week 5 and 6 at Makers Academy. The project was to code the business logic of a bowling scorecard with Javascript, and a dynamic interface with JQuery.
+The code was test-driven, and I used Jasmine for testing.
 
 ## My approach
 ----------
@@ -9,6 +11,13 @@ Bowling Challenge
 * add methods to calculate points within frame (without bonus) - `calculatePins()`, `hasSpare()`, `hasStrike()` methods in Frame class
 * add methods to calculate bonus points - `calculateGameScore()`, `calculateBonus(frame)`, `calculateFrameScore(frame)`, `calculateBonusForLast()` in Game class
 * add HTML and JQuery for interface
+
+## How to use
+* Clone the repo
+* Open `index.html` in the browser
+
+## How to run the tests
+* Open `SpecRunner.html` in the browser
 
 ## The Task
 

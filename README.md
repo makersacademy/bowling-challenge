@@ -1,27 +1,75 @@
+## Bowling Challenge
 
-## **Bowling Challenge**
+[Project Description](#project-description) | [Tech Stack](#tech-stack) | [Installation](#installation) | [Running tests](#running-tests) | [Development Process](#development-process) | [User Stories](#user-stories) | [Models](#models) | [Further development](#further-development)
 
+## Project Description
 
-## The Task
-
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
-
-Count and sum the scores of a bowling game for one player (in JavaScript).
+Goal is to create bowling game score count app that sums up the scores based on rules and gives a total. App must be developed following TDD principles and coded JavaScript.
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+## Tech Stack:
 
-### Optional Extras
+- [Jasmine](https://jasmine.github.io/) Jasmine is an open-source testing framework for JavaScript.
+- [Bootstrap](https://getbootstrap.com/) & CSS for styling.
+
+## Installation
+
+- Clone this repository
+  `$ git clone https://github.com/EdAncerys/bowling-challenge`
+- Navigate to local repository
+  `$ cd bowling-challenge`
+- Open index.html
+  `$ open index.html`
+
+## Running tests
+
+- Navigate to local repository
+  `$ cd bowling-challenge`
+- Open SpecRunner.html
+  `$ open SpecRunner.html`
+
+## Development Process
+
+During development process I used an agile development methodologies of using git, commit messages, git branches, merges and regular code refactor.
+
+## User Stories
+
+```
+As a app user
+So I can count the score
+I able to select total pins nocked out
+```
+
+```
+As a app user
+So I know whats a total score at any given moment
+I able to see total score
+```
+
+```
+As a app user
+So I don't need to focus on game rules
+I able follow app given instructions
+```
+
+## Models
+
+| `Bowling`          |
+| :----------------- |
+| #getTotalScore     |
+| #countScore        |
+| #\_resetTheGame    |
+| #\_countTotalScore |
+| #\_countFrame      |
+
+## Optional Extras
 
 In any order you like:
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+- Create a nice interactive animated interface with jQuery.
+- Set up [Travis CI](https://travis-ci.org) to run your tests.
+- Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
 
 ## UI preview
 
@@ -29,6 +77,14 @@ learn Javascript conventions as you go along.
     <img width="600" src="./images/bowling_01.png"></br>
     *Bowling Score Board Preview*
 </p>
+
+## Further Development
+
+Ideas to improve our application
+
+- Add feature to have multiplayer option.
+- Add feature to enter player names.
+- Build UI with React components.
 
 ## Bowling — how does it work?
 
@@ -59,26 +115,27 @@ A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 str
 
 In code review we'll be hoping to see:
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+- All tests passing
+- The code is elegant: every class has a clear responsibility, methods are short etc.
 
 #### Bowling Rules
+
 - The goal is to knock down all ten pins
 - Each frame consists of throwing the ball twice to knock down all the pins
 - If you knock down all the pins with the first ball, it is called a "strike"
 - If you knock down all the pins with the second ball, it is called a "spare"
 - Each games consists of ten frames. If you bowl a strike in the tenth frame, you get
-two more balls. If you throw a spare, you get one more ball.
+  two more balls. If you throw a spare, you get one more ball.
 - Open frames are frames without a strike or spare
 - Scoring is based on the number of pins you knock down. However, if you bowl a
-spare, you get to add the pins in your next ball to that frame. For strikes, you get
-the next two balls.
+  spare, you get to add the pins in your next ball to that frame. For strikes, you get
+  the next two balls.
 - An average of three games is played. You determine a 3 game average by adding
-all 3 scores and then dividing that number by 3.
+  all 3 scores and then dividing that number by 3.
 - Accurate preliminary scores are essential for fair divisioning.
 - Foul line is in effect. If you step over the foul line, any pins knocked down will not
-count towards your score.
+  count towards your score.
 - Ramp Bowling is allowed for those athletes that are not physically capable of
-rolling a bowling ball. The ramp is for physical disabilities and not to be used to
-just increase a score.
+  rolling a bowling ball. The ramp is for physical disabilities and not to be used to
+  just increase a score.
 - Bumpers are not allowed.

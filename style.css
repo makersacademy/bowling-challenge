@@ -1,0 +1,33 @@
+html * {
+  font-family: "Comic Sans MS",cursive,sans-serif;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
+
+body {
+  text-align: center;
+}
+
+table {
+  margin-left:auto;
+  margin-right:auto;
+  border-collapse: collapse;
+}
+
+table, td, th {
+  border: 1px solid black;
+}
+
+td {
+  width: 100px;
+}
+
+#scoreframe10 {
+  font-weight: bold;
+}

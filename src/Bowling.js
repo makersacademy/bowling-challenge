@@ -3,6 +3,7 @@ class Game{
   constructor() {
     this.MAXIMUM_POINTS = 10;
     this._frames = [];
+    this.rolls =[];
   }
 
   isSpare() {
@@ -15,6 +16,7 @@ class Game{
 
   }
   roll(pins) {
+    this.rolls.push(pins);
 
   }
 

@@ -14,4 +14,11 @@ class Game{
     return this.MAXIMUM_POINTS
 
   }
+  roll(pins) {
+
+  }
+
+  score() {
+    return 0;
+  }
 };

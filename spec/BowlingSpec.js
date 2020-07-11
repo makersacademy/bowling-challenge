@@ -19,8 +19,19 @@ describe('Game', function() {
     expect(newGame.isSpare()).toEqual(10)
   })
 
-  it('calculates a strike', function() {
-    expect(newGame.isStrike()).toEqual(10)
+  // it('calculates 2 strikes in one frame', function() {
+  //   var frame = 1
+  //   newGame.roll(10)
+  //   newGame.roll(10)
+  //   expect(newGame.score()).toEqual(20)
+  // })
+  it('calculates a gutter game', function() {
+    for(var i = 0; i < 20; i++) {
+    newGame.roll(0);
+    }
+    expect(newGame.score()).toEqual(0);
+
   })
+
 
 });

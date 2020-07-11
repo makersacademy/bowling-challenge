@@ -1,18 +1,26 @@
 class Bowling {
 
 constructor() {
-  this.frame = []
+  this.rolls = []
 };
 
 roll(n) {
-  this.frame.push(n)
+  this.rolls.push(n)
 };
 
 display() {
-  return this.frame;
+  return this.rolls;
 }
 
 total() {
-  return this.frame.reduce((a, b) => a + b, 0);
+  let total = 0;
+  let go = 0;
+
+  for (let frame = 0; frame < 10; frame++) {
+    total += this.rolls[go] + this.rolls[go+1]
+    frame+2
+  }
+  return total; 
+  // return this.rolls.reduce((a, b) => a + b, 0);
 }
 };

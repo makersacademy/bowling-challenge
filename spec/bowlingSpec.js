@@ -21,6 +21,12 @@ describe('Bowling', function() {
       bowling.roll(2);
       expect(bowling.display()).toContain(5,2);
     });
+    xit('can roll a spare', function() {
+      bowling.roll(5);
+      bowling.roll(5);
+      bowling.roll(3);
+      expect(bowling.total()).toEqual(16);
+    });
   });
 
   describe('total', function() {

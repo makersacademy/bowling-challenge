@@ -13,7 +13,6 @@ class Game{
 
   isStrike() {
     return this.MAXIMUM_POINTS
-
   }
   roll(pins) {
     this.rolls.push(pins);

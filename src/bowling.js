@@ -11,4 +11,5 @@ roll(n) {
 display() {
   return this.frame;
 }
+
 }

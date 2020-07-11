@@ -12,4 +12,7 @@ display() {
   return this.frame;
 }
 
+total() {
+  return this.frame.reduce((a, b) => a + b, 0);
 }
+};

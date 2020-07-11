@@ -75,3 +75,36 @@ In code review we'll be hoping to see:
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+
+User stories:
+Must have
+
+As a bowler 
+So that I can see what score I have
+I want to input my scores for each frame into a scorecard
+
+As a keen bowler
+So that I don’t have to do the maths
+I want the scorecard to add my bonus points for me
+
+As a super duper bowler
+So that I know how I did
+I want my score to be displayed to me a the end of the game
+
+Nice to have 
+
+As a time-pressed, cool-guy bowler
+So that I can prove how cool I am
+I want to put marks into my scorecard instead of numbers
+
+As a nosey bowler
+So that I can see what’s what throughout the game
+I want to see my scorecard update after each roll is input
+
+Technologies used: 
+[Jasmine](https://jasmine.github.io/pages/getting_started.html) for testing
+node.js so that I could download [ES lint](https://eslint.org/docs/user-guide/getting-started)
+
+How to set up: 
+run index.html in browser
+main code in index.js

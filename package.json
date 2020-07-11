@@ -1,0 +1,32 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "bowling scorecard weekend challenge",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/indisaurusrex/bowling-challenge.git"
+  },
+  "keywords": [
+    "javascript",
+    "bowling"
+  ],
+  "author": "India Rex",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/indisaurusrex/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/indisaurusrex/bowling-challenge#readme",
+  "devDependencies": {
+    "eslint": "^7.4.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "jasmine": "^3.5.0"
+  }
+}

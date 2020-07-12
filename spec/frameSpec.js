@@ -12,11 +12,16 @@ describe('Frame', function(){
     expect(frame.roll2).toEqual(0);
   });
 
-  it("knows the score on a standard round", function () {
+  it("knows the score on a standard round", function(){
     frame.addRoll(3);
     frame.addRoll(4);
     expect(frame.roll1).toEqual(3);
     expect(frame.roll2).toEqual(4);
     expect(frame.score()).toEqual(7);
+  });
+  it("knows when there's a strike", function(){
+    expect(frame.mark).toEqual("none");
+    frame.addRoll(10);
+    expect(frame.mark).toEqual("strike");
   });
 });

@@ -29,4 +29,15 @@ class Card {
     this.frameCount = 0;
     this.rollCount = 1;
       }
+
+    addRollScore(roll){
+      this.frames[0].addRoll(roll);
+      console.log("this is after addRoll " + roll)
+    }
+
+    totalScore(){
+      var total = this.frames[0].score();
+      return total;
+    }
+
     }

@@ -13,10 +13,12 @@ class Frame{
     if(this._rollCount === 1){
       this.roll1 = roll;
       this._rollCount += 1;
+      console.log("this is after if" + roll);
     }
     else{
       this.roll2 = roll;
       this._rollCount -= 1;
+      console.log("this is after else" + roll);
     }
     this.isMark();
   }

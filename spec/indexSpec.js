@@ -29,5 +29,11 @@ describe ('Scorecard', function(){
     expect(card.frameCount).toEqual(1);
     expect(card.frames[1].roll1).toEqual(1);
   });
+  it("adds the bonus to the previous frame for a spare", function(){
+    card.addRollScore(4);
+    card.addRollScore(6);
+    card.addRollScore(5);
+    expect(card.frames[0].bonus1).toEqual(5);
+  });
 
 });

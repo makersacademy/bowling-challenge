@@ -32,31 +32,34 @@ class Card {
 
     addRollScore(roll){
       this.frames[this.frameCount].addRoll(roll);
-      if(roll === 10){
+      this.adjustRollCount(roll);
+      if(this.frameCount > 0){
+        this.checkBonus(roll);
+      }
+    }
+
+    checkBonus(roll){
+      var oldFrame;
+      var old;
+      old = this.frameCount - 1
+      oldFrame = this.frames[old];
+      if(oldFrame.mark != "none"){
+        oldFrame.addBonus1(roll);
+      }
+    }
+
+    adjustRollCount(roll){
+      if (roll === 10) {
         this.frameCount += 1;
       }
-      else{
+      else {
         this.rollCount += 1;
         if (this.rollCount === 3) {
           this.frameCount += 1;
           this.rollCount = 1;
         }
       }
-      
-      // this.adjustRollCount(roll);
     }
-
-    // adjustRollCount(roll){
-    //   if (roll === 10) {
-    //     this.frameCount += 1;
-    //   }
-    //   else if (this.rollCount === 2) {
-    //     this.frameCount -= 1;
-    //   }
-    //   else {
-    //     this.rollCount += 1;
-    //   }
-    // }
 
     // need to expand to a foreach function to get through array
     totalScore(){

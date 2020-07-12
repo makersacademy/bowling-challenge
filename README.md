@@ -77,4 +77,7 @@ In code review we'll be hoping to see:
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
 
 ## Progress so far
-
+- Each game will be initialized with a scorecard array.
+- Totals for imperfect games can be played, tests passing without failure.
+- Gutterball game can be played and return final score of 0, with passing test.
+- Spares can now be achieved in game, test now passing.

@@ -16,5 +16,11 @@ describe ('Scorecard', function(){
     card.addRollScore(3);
     expect(card.totalScore()).toEqual(7);
   });
+  it("knows which frame it should add scores to", function(){
+    card.addRollScore(4);
+    card.addRollScore(6);
+    card.addRollScore(3);
+    expect(card.frameCount).toEqual(1);
+  });
 
 });

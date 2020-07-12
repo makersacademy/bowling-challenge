@@ -21,8 +21,16 @@ class Frame{
     this.isMark();
   }
 
+  addBonus1(roll){
+    this.bonus1 = roll;
+  }
+
+  addBonus2(roll){
+    this.bonus2 = roll;
+  }
+
   score(){
-    return this.roll1 + this.roll2;
+    return this.roll1 + this.roll2 + this.bonus1 + this.bonus2;
   }
 
   isMark(){

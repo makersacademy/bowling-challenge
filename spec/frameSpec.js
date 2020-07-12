@@ -11,7 +11,6 @@ describe('Frame', function(){
     expect(frame.roll1).toEqual(0);
     expect(frame.roll2).toEqual(0);
   });
-
   it("knows the score on a standard round", function(){
     frame.addRoll(3);
     frame.addRoll(4);
@@ -33,4 +32,11 @@ describe('Frame', function(){
     expect(frame.bonus1).toEqual(0);
     expect(frame.bonus2).toEqual(0);
   });
+  it("includes the bonus in the score", function(){
+    frame.addRoll(10);
+    frame.addBonus1(5);
+    frame.addBonus2(5);
+    expect(frame.score()).toEqual(20);
+  })
+
 });

@@ -24,4 +24,9 @@ describe('Frame', function(){
     frame.addRoll(10);
     expect(frame.mark).toEqual("strike");
   });
+  it("knows when there's a spare", function(){
+    frame.addRoll(2);
+    frame.addRoll(8);
+    expect(frame.mark).toEqual("spare");
+  });
 });

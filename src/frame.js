@@ -27,6 +27,9 @@ class Frame{
     if(this.roll1 === 10){
       this.mark = "strike";
     }
+    else if(this.roll1 + this.roll2 === 10){
+      this.mark = "spare";
+    }
   }
 
 };

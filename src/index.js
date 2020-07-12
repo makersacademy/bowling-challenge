@@ -32,11 +32,17 @@ class Card {
 
     addRollScore(roll){
       this.frames[this.frameCount].addRoll(roll);
-      this.rollCount += 1;
-      if(this.rollCount === 3){
+      if(roll === 10){
         this.frameCount += 1;
-        this.rollCount = 1;
       }
+      else{
+        this.rollCount += 1;
+        if (this.rollCount === 3) {
+          this.frameCount += 1;
+          this.rollCount = 1;
+        }
+      }
+      
       // this.adjustRollCount(roll);
     }
 

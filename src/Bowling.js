@@ -3,6 +3,7 @@ class BowlingGame{
   constructor() {
     this.MAXIMUM_POINTS = 10;
     this.rolls =[];
+    this._frames = [];
   }
 
   isSpare() {
@@ -17,6 +18,10 @@ class BowlingGame{
   roll(pins) {
     this.rolls.push(pins);
 
+  }
+
+  addFrame(frame) {
+    this._frames.push(frame);
   }
 
   score() {

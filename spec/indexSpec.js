@@ -18,4 +18,11 @@ describe ('Scorecard', function(){
     expect(card.getTotalScore()).toEqual(10);
   });
 
+  it('adds bonus points for a spare', function(){
+    card.addScore(6);
+    card.addScore(4);
+    card.addScore(5);
+    expect(card.getTotalScore()).toEqual(20);
+  });
+
 });

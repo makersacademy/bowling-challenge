@@ -5,6 +5,15 @@ Bowling Challenge
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
+## Installation/Usage Instructions in README
+
+How to download and run the tests:
+
+```sh
+$ git clone git@github.com:[USERNAME]/bowling-challenge.git
+$ cd bowling-challenge
+$ open SpecRunner.html
+```
 
 ### Optional Extras
 

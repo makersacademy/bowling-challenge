@@ -6,6 +6,8 @@ class Frame{
     this.roll2 = 0
     this._rollCount = 1
     this.mark = "none"
+    this.bonus1 = 0
+    this.bonus2 = 0
   }
   addRoll(roll){
     if(this._rollCount === 1){

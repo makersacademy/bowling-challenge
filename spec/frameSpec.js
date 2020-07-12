@@ -29,4 +29,8 @@ describe('Frame', function(){
     frame.addRoll(8);
     expect(frame.mark).toEqual("spare");
   });
+  it("has space for 2 bonus scores", function(){
+    expect(frame.bonus1).toEqual(0);
+    expect(frame.bonus2).toEqual(0);
+  });
 });

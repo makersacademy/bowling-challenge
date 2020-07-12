@@ -21,11 +21,14 @@ describe('Bowling', function() {
       bowling.roll(2);
       expect(bowling.display()).toContain(5,2);
     });
-    xit('can roll a spare', function() {
-      bowling.roll(5);
-      bowling.roll(5);
-      bowling.roll(3);
-      expect(bowling.total()).toEqual(16);
+    it('can roll a spare', function() {
+       bowling.roll(5);
+       bowling.roll(5);
+       bowling.roll(3);
+      for (var i = 0; i < 17; i++) {
+        bowling.roll(0);
+      }
+      expect(bowling.total()).toBe(16);
     });
   });
 

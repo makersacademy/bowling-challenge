@@ -13,14 +13,19 @@ display() {
 }
 
 total() {
-  let total = 0;
+  let score = 0;
   let go = 0;
 
   for (let frame = 0; frame < 10; frame++) {
-    total += this.rolls[go] + this.rolls[go+1]
-    frame+2
+    if(this.rolls[go] + this.rolls[go+1] == 10) {
+      score += this.rolls[go] + this.rolls[go+1] + this.rolls[go+2];
+    }
+    else
+    { score += this.rolls[go] + this.rolls[go+1]
+    } 
+    go+=2;
   }
-  return total; 
+  return score; 
   // return this.rolls.reduce((a, b) => a + b, 0);
 }
 };

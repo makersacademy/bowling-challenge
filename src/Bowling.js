@@ -31,4 +31,8 @@ class BowlingGame{
     return this.rolls[0]
 
   }
+  roll2(pins) {
+    return this.rolls[1]
+
+  }
 };

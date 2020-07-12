@@ -12,32 +12,35 @@ describe('Game', function() {
 
 
   it('calculates a perfect game', function() {
-    for(var i = 0; i < 20; i++) {
+    rollBalls(15,20)
     game.roll(15)
-    }
     expect(game.score()).toEqual(300)
   })
 
   it('calculates a gutter game', function() {
-    for(var i = 0; i < 20; i++) {
+    rollBalls(0,20)
     game.roll(0);
-    }
     expect(game.score()).toEqual(0);
   })
 
   it('calculates a spare', function() {
-    for(var i = 0; i < 20; i++) {
+    rollBalls(0,18)
     game.roll([5,5]);
-  }
     expect(game.isSpare()).toEqual(10);
   })
 
   it('calculates two strikes for one frame', function() {
-    for(var i = 0; i < 20; i++) {
     game.roll([10]);
-  }
+    game.roll([10]);
+    rollBalls(0,18);
     expect(game.isStrike()).toEqual(true);
   })
+
+  var rollBalls = function(pins, rolls) {
+    for(var i = 0; i < rolls; i++) {
+      game.roll(pins);
+  }
+};
 
 
 

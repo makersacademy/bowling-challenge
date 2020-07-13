@@ -1,0 +1,13 @@
+body {
+  font-size: 17px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f4f4;
+  line-height: 1.5em;
+}
+.navbar {
+  height: 60px;
+}
+#game-score {
+  width: 150px;
+  text-align: center;
+}

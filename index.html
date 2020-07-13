@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel='stylesheet' type='text/css' href='./public/css/styles.css' >
+  <title>Bowling</title>
+</head>
+  <body>
+    <nav class='navbar navbar-dark bg-dark'></nav>
+    <div class='container card-body'>
+      <div class='text-center'></div>
+      <div class='card text-dark bg-light my-5'>
+        <div class='card-header text-center'><h2>Bowling Score Board</h2></div>
+      </div>
+      <div class='card text-center'>
+        <div class='card-header'>
+          Score: <spam id='game-score'>0</spam>
+        </div>
+        <div class='align-self-center'>
+          <div class='card-body'>
+            <div>
+              <div class='text-dark my-4'>
+                <h4>Choose Number Of Pins Nocked Down</h4>
+              </div>
+              <div class='my-4'>
+                <button id='btn-zero' value='0' type="button" class="btn btn-primary btn-sm">0</button>
+                <button id='btn-one' value='1' type="button" class="btn btn-primary btn-sm">1</button>
+                <button id='btn-two' value='2' type="button" class="btn btn-primary btn-sm">2</button>
+                <button id='btn-three' value='3' type="button" class="btn btn-primary btn-sm">3</button>
+                <button id='btn-four' value='4' type="button" class="btn btn-primary btn-sm">4</button>
+                <button id='btn-five' value='5' type="button" class="btn btn-primary btn-sm">5</button>
+                <button id='btn-six' value='6' type="button" class="btn btn-primary btn-sm">6</button>
+                <button id='btn-seven' value='7' type="button" class="btn btn-primary btn-sm">7</button>
+                <button id='btn-eight' value='8' type="button" class="btn btn-primary btn-sm">8</button>
+                <button id='btn-nine' value='9' type="button" class="btn btn-primary btn-sm">9</button>
+                <button id='btn-ten' value='10' type="button" class="btn btn-primary btn-sm">10</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class='overflow-auto text-nowrap mx-3'>
+            <table class="table table-sm table-dark table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Frame 1</th>
+                  <th scope="col">Frame 2</th>
+                  <th scope="col">Frame 3</th>
+                  <th scope="col">Frame 4</th>
+                  <th scope="col">Frame 5</th>
+                  <th scope="col">Frame 6</th>
+                  <th scope="col">Frame 7</th>
+                  <th scope="col">Frame 8</th>
+                  <th scope="col">Frame 9</th>
+                  <th scope="col">Frame 10</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="row justify-content-md-center">
+                      <p id='frame-0-pos-false'></p>
+                      <p id='frame-1-pos-true'></p>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="row justify-content-md-center">
+                      <spam id='frame-1-pos-false'></spam> 
+                      <spam id='frame-2-pos-true'></spam>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="row justify-content-md-center">
+                      <spam id='frame-2-pos-false'></spam> 
+                      <spam id='frame-3-pos-true'></spam>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="row justify-content-md-center">
+                      <spam id='frame-3-pos-false'></spam> 
+                      <spam id='frame-4-pos-true'></spam>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="row justify-content-md-center">
+                      <spam id='frame-4-pos-false'></spam> 
+                      <spam id='frame-5-pos-true'></spam>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="row justify-content-md-center">
+                      <spam id='frame-5-pos-false'></spam> 
+                      <spam id='frame-6-pos-true'></spam>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="row justify-content-md-center">
+                      <spam id='frame-6-pos-false'></spam> 
+                      <spam id='frame-7-pos-true'></spam>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="row justify-content-md-center">
+                      <spam id='frame-7-pos-false'></spam> 
+                      <spam id='frame-8-pos-true'></spam>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="row justify-content-md-center">
+                      <spam id='frame-8-pos-false'></spam> 
+                      <spam id='frame-9-pos-true'></spam>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="row justify-content-md-center">
+                      <spam id='frame-9-pos-false'></spam> 
+                      <spam id='frame-10-pos-true'></spam>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <a href='#' id='reload' class='btn btn-primary mx-3'>Play Game Again</a>
+        <div class='card-footer text-muted'>
+          <h3>How To Play 🎳</h3>
+          <div class='card text-white bg-warning mb-3'>
+            Pick number of pins nocked down. Score will be calculated and updated after every frame! </br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <script src="./public/src/bowling.js"></script>
+  <script src="./public/src/frameCount.js"></script>
+  <script src="./public/src/interface.js"></script>
+  </body>
+</html>

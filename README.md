@@ -2,14 +2,77 @@
 Bowling Challenge
 =================
 
+This is a bowling score card.
+
+Planning:
+-------
+#### Page layout
+
+Main Page - Will contain a entry field for the user to enter their score.
+(If player doesn't score a strike, a 2nd input field with appear and allow the player to add a 2nd score for that current frame.)
+
+#### Step 1:
+
+Plan game logic and page layout.
+
+Required Elements:
+
+- User welcome message and prompts
+- User input box
+- Current frame
+- Current roll
+- Current score
+
+Input:      Output:
+10          STRIKE - Frame number increments, Current score added up.
+9-0         Nice Try! Try one more time! *Expect user to input another value* - Current roll increments, Current score added to total.
+
+
+Game Logic
+
+Score - Will handle the scoring of the game.
+This will include:
+
+- User input
+- Handling the current score maths.
+
+Game - Will manage the game state.
+This will include:
+
+- Initiating a new game
+- Running the game rounds(frame - Once the score on that frame reaches 10)
+- Running the current roll for the player. (if roll = < 9 then roll 2)
+
+
+Progress So Far:
+-------
+
+1. Added Jasmine files to the project for testing.
+
+Tests written so far: 
+Test coverage: %
+
+Installation:
+-------
+
+### Program installation
+
+1. Fork/Clone this repository.
+2. 
+
+### How to run tests
+
+1. Fork/Clone this repository.
+2. Open 'SpecRunner.html' on web browser.
+
+
+## The Task
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README
 * If you have a partial solution, **still check in a partial solution**
 * You must submit a pull request to this repo with your code by 9am Monday week
-
-## The Task
 
 **THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
 

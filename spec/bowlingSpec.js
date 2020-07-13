@@ -30,6 +30,15 @@ describe('Bowling', function() {
       }
       expect(bowling.total()).toBe(16);
     });
+    it('can roll a strike', function() {
+      bowling.roll(10);
+      bowling.roll(2);
+      bowling.roll(2);
+      for (var i = 0; i < 17; i++) {
+        bowling.roll(0);
+      }
+      expect(bowling.total()).toBe(18);
+    });
   });
 
   describe('total', function() {

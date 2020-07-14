@@ -39,6 +39,12 @@ describe('Bowling', function() {
       }
       expect(bowling.total()).toBe(18);
     });
+    it('can roll a perfect game', function() {
+      for (var i = 0; i < 20; i++) {
+        bowling.roll(10);
+      }
+      expect(bowling.total()).toBe(300);
+    });
   });
 
   describe('total', function() {

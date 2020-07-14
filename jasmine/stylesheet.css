@@ -4,13 +4,13 @@
  color: white;
 }
 
-body {
-  background-color: black;
-}
+/* body {
+  background-image: url(background.jpg);
+} */
 
-#container {
-  width: 1350px;
-  height: 770px;
+body {
+  width: 1300px;
+  height: 300px;
   background-image: linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2)), url(background.jpg);
   margin: 20px auto;
 }
@@ -18,7 +18,7 @@ body {
 #scoreboard{
   color: #293044;
   width: 1200px;
-  height: 475px;
+  height: 500px;
   background-color: #E8E8E8;
   centers it horizontally without changing the size
   margin: 0 auto;

@@ -14,7 +14,8 @@ describe ('Scorecard', function(){
   it("adds the score to the frame", function(){
     card.addRollScore(4);
     card.addRollScore(3);
-    expect(card.totalScore()).toEqual(7);
+    expect(card.frames[0].roll1).toEqual(4);
+    expect(card.frames[0].roll2).toEqual(3);
   });
   it("knows which frame it should add scores to for basic scores", function(){
     card.addRollScore(4);
@@ -35,5 +36,10 @@ describe ('Scorecard', function(){
     card.addRollScore(5);
     expect(card.frames[0].bonus1).toEqual(5);
   });
-
+  it("adds the bonus to the frame for a strike, even if the next ones a strike", function(){
+    card.addRollScore(10);
+    card.addRollScore(10);
+    card.addRollScore(4);
+    expect(card.frames[0].bonus2).toEqual(4);
+  });
 });

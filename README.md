@@ -81,3 +81,5 @@ Reviewers will potentially be using this [code review rubric](docs/review.md).  
 - Totals for imperfect games can be played, tests passing without failure.
 - Gutterball game can be played and return final score of 0, with passing test.
 - Spares can now be achieved in game, test now passing.
+- Strike can now be achieved in game, test now passing.
+- Perfect game can be now played, test written and passed.

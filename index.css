@@ -1,0 +1,31 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+
+}
+
+.scorecardbox {
+  text-align: center;
+  border-style: solid;
+  /* display: flex;
+  justify-content: center; */
+  
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: center;
+  width: 60px
+}
+
+td {
+  height: 30px;
+  width: 30px;
+}

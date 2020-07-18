@@ -15,8 +15,11 @@ describe('Frame', function(){
     frame.addRoll(3);
     frame.addRoll(4);
     expect(frame.roll1).toEqual(3);
+    console.log("this is roll1 " + frame.roll1);
     expect(frame.roll2).toEqual(4);
+    console.log("this is roll2 " + frame.roll2);
     expect(frame.score()).toEqual(7);
+    console.log("this is frame score " + frame.score());
   });
   it("knows when there's a strike", function(){
     expect(frame.mark).toEqual("none");
@@ -29,8 +32,8 @@ describe('Frame', function(){
     expect(frame.mark).toEqual("spare");
   });
   it("has space for 2 bonus scores", function(){
-    expect(frame.bonus1).toEqual(0);
-    expect(frame.bonus2).toEqual(0);
+    expect(frame.bonus1.length).toEqual(1);
+    expect(frame.bonus2.length).toEqual(1);
   });
   it("includes the bonus in the score", function(){
     frame.addRoll(10);

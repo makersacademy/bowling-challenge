@@ -9,19 +9,34 @@ class Card {
     }
   }
 
-  addRollScore(roll) {
-    this.frames[this.frameCount].addRoll(roll);
-    this.adjustRollCount(roll);
+  roll(roll) {
     if (this.frameCount > 0) {
       this.checkBonus(roll);
     }
+    this.frames[this.frameCount].addRoll(roll);
+    this.adjustRollCount(roll);
+    return 'your roll was added';
   }
 
   checkBonus(roll) {
     const old = this.frameCount - 1;
-    const oldFrame = this.frames[old];
-    if (oldFrame.mark !== 'none') {
-      oldFrame.addBonus1(roll);
+    const oneFrameAgo = this.frames[old];
+    const reallyOld = this.frameCount - 2;
+    const twoFrameAgo = this.frames[reallyOld];
+    // if its a spare and bonus1 = length 1, add roll to bonus1
+    // if its a strike and bonus1 = length 1, add roll to bonus1
+    // if its a strike and bonus1 = length 2, and bonus2 = length 1, add roll to bonus2
+    // do the same checks for the frame 2 ago
+
+    if (oneFrameAgo.mark !== 'none' && oneFrameAgo.bonus1.length === 1) {
+      oneFrameAgo.addBonus1(roll);
+    } else if (oneFrameAgo.mark === 'strike' && oneFrameAgo.bonus1.length === 2 && oneFrameAgo.bonus2.length === 1) {
+      oneFrameAgo.addBonus2(roll);
+    }
+    if (this.frameCount > 1) {
+      if (twoFrameAgo.mark === 'strike' && twoFrameAgo.bonus2.length === 1) {
+        twoFrameAgo.addBonus2(roll);
+      }
     }
   }
 

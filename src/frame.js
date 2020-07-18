@@ -4,8 +4,8 @@ class Frame {
     this.roll2 = 0;
     this.rollCount = 1;
     this.mark = 'none';
-    this.bonus1 = 0;
-    this.bonus2 = 0;
+    this.bonus1 = [0];
+    this.bonus2 = [0];
   }
 
   addRoll(roll) {
@@ -20,15 +20,17 @@ class Frame {
   }
 
   addBonus1(roll) {
-    this.bonus1 = roll;
+    this.bonus1.push(roll);
   }
 
   addBonus2(roll) {
-    this.bonus2 = roll;
+    this.bonus2.push(roll);
   }
 
   score() {
-    return this.roll1 + this.roll2 + this.bonus1 + this.bonus2;
+    const b1Sum = this.bonus1.reduce((a, b) => a + b, 0);
+    const b2Sum = this.bonus2.reduce((a, b) => a + b, 0);
+    return this.roll1 + this.roll2 + b1Sum + b2Sum;
   }
 
   isMark() {

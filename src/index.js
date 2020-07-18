@@ -3,7 +3,6 @@ class Card {
     this.frames = [];
     this.frameCount = 0;
     this.rollCount = 1;
-    this.markDebt = [];
     for (let i = 0; i < 10; i += 1) {
       this.frames.push(new Frame());
     }
@@ -13,25 +12,22 @@ class Card {
     if (this.frameCount > 0) {
       this.checkBonus(roll);
     }
-    this.frames[this.frameCount].addRoll(roll);
+    if (this.frameCount < 10) {
+      this.frames[this.frameCount].addRoll(roll);
+    }
     this.adjustRollCount(roll);
-    return 'your roll was added';
   }
 
   checkBonus(roll) {
-    const old = this.frameCount - 1;
-    const oneFrameAgo = this.frames[old];
-    const reallyOld = this.frameCount - 2;
-    const twoFrameAgo = this.frames[reallyOld];
-    // if its a spare and bonus1 = length 1, add roll to bonus1
-    // if its a strike and bonus1 = length 1, add roll to bonus1
-    // if its a strike and bonus1 = length 2, and bonus2 = length 1, add roll to bonus2
-    // do the same checks for the frame 2 ago
+    const oneFrameAgo = this.frames[this.frameCount - 1];
+    const twoFrameAgo = this.frames[this.frameCount - 2];
 
-    if (oneFrameAgo.mark !== 'none' && oneFrameAgo.bonus1.length === 1) {
-      oneFrameAgo.addBonus1(roll);
-    } else if (oneFrameAgo.mark === 'strike' && oneFrameAgo.bonus1.length === 2 && oneFrameAgo.bonus2.length === 1) {
-      oneFrameAgo.addBonus2(roll);
+    if (this.frameCount < 11){
+      if (oneFrameAgo.mark !== 'none' && oneFrameAgo.bonus1.length === 1) {
+        oneFrameAgo.addBonus1(roll);
+      } else if (oneFrameAgo.mark === 'strike' && oneFrameAgo.bonus1.length === 2 && oneFrameAgo.bonus2.length === 1) {
+        oneFrameAgo.addBonus2(roll);
+      }
     }
     if (this.frameCount > 1) {
       if (twoFrameAgo.mark === 'strike' && twoFrameAgo.bonus2.length === 1) {
@@ -41,8 +37,10 @@ class Card {
   }
 
   adjustRollCount(roll) {
-    if (roll === 10) {
+    if (roll === 10 && this.frameCount < 11) {
       this.frameCount += 1;
+    } else if (roll === 10 && this.frameCount === 11) {
+      this.frameCount = 11;
     } else {
       this.rollCount += 1;
       if (this.rollCount === 3) {
@@ -50,5 +48,19 @@ class Card {
         this.rollCount = 1;
       }
     }
+  }
+
+  totalScore() {
+    const fOne = this.frames[0].score();
+    const fTwo = this.frames[1].score();
+    const fThree = this.frames[2].score();
+    const fFour = this.frames[3].score();
+    const fFive = this.frames[4].score();
+    const fSix = this.frames[5].score();
+    const fSeven = this.frames[6].score();
+    const fEight = this.frames[7].score();
+    const fNine = this.frames[8].score();
+    const fTen = this.frames[9].score();
+    return fOne + fTwo + fThree + fFour + fFive + fSix + fSeven + fEight + fNine + fTen;
   }
 }

@@ -42,4 +42,40 @@ describe ('Scorecard', function(){
     card.roll(4);
     expect(card.frames[0].bonus2[1]).toEqual(4);
   });
+  it("knows the score of the whole game in a no-mark game", function(){
+    card.roll(1);
+    card.roll(6);
+    card.roll(4);
+    expect(card.totalScore()).toEqual(11);
+  });
+  it("knows the score of the whole game on a perfect game", function(){
+    card.roll(10);
+    card.roll(10);
+    card.roll(10);
+    card.roll(10);
+    card.roll(10);
+    card.roll(10);
+    card.roll(10);
+    card.roll(10);
+    card.roll(10);
+    card.roll(10);
+    card.roll(10);
+    card.roll(10);
+    expect(card.totalScore()).toEqual(300);
+  });
+  it("knows the score of a gutter game", function(){
+    card.roll(0);
+    card.roll(0);
+    card.roll(0);
+    card.roll(0);
+    card.roll(0);
+    card.roll(0);
+    card.roll(0);
+    card.roll(0);
+    card.roll(0);
+    card.roll(0);
+    card.roll(0);
+    card.roll(0);
+    expect(card.totalScore()).toEqual(0);
+  });
 });

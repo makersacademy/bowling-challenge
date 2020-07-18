@@ -1,22 +1,84 @@
 <html>
 <head>
   <link href="styles/styles.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <meta charset="utf-8">
   <script src="src/bowling.js"></script>
-  <!-- <script src="src/interface.js"></script> -->
   <title> BOWLARAMA </title>
-  <script type="text/javascript">
-    function picture() {
-      var pic =
-        "https://media.giphy.com/media/Ylx8ipBGlaPE4/giphy.gif"
-      document.getElementById('chicken').style.display = 'block';
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
     }
-  </script>
+    th,td {
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
 </head>
-<header>BOWLARAMA</header>
+<header class >Bowlarama
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQBg4VgLgJw3UGB1UTfMAaKPHIDHhnJm67QeA&usqp=CAU"
+    alt="Bowling">
+</header>
 
+<body>
+  <h1>Bowlarama score card</h1>
 
+  <form>
+Roll 1 
+  <input type="number" id="roll1" name="roll2" min="0" max="10">
+  <input type="submit" value="Submit">
+Roll 2
+  <input type="number" id="roll2" name="roll2" min="0" max="10">
+  <input type="submit" value="Submit">
+  </form>
+  <br>
+  <br>
+  <table style="width:100%">
+    <tr>
+      <th colspan="2">Round 1</th>
+      <th colspan="2">Round 2</th>
+      <th colspan="2">Round 3</th>
+      <th colspan="2">Round 4</th>
+      <th colspan="2">Round 5</th>
+      <th colspan="2">Round 6</th>
+      <th colspan="2">Round 7</th>
+      <th colspan="2">Round 8</th>
+      <th colspan="2">Round 9</th>
+      <th colspan="2">Round 10</th>
+      <th>Total</th>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+
+</body>
+<br>
+<br>
 <footer>
   A MATTYBWOY CREATION
 </footer>

@@ -1,5 +1,6 @@
 html {
-  font-family: 'Faster One', cursive;
+  font-family: 'Lobster',
+  cursive;
 }
 
 /* Style the header */
@@ -10,11 +11,11 @@ header {
   font-size: 35px;
   color: white;
 }
-.rainbow-text {
-  background-image: linear-gradient(to left, blue, rgb(0, 183, 255), yellow, orange, red);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+
+footer {
+  font-size: 10px;
+  font-family: 'Press Start 2P',
+  cursive;
 }
 /* Create two columns/boxes that floats next to each other */
 nav {

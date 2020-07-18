@@ -83,3 +83,7 @@ Reviewers will potentially be using this [code review rubric](docs/review.md).  
 - Spares can now be achieved in game, test now passing.
 - Strike can now be achieved in game, test now passing.
 - Perfect game can be now played, test written and passed.
+
+- Bowling score card page added
+- CSS almost complete, need centralize score input
+- Cannot get scores to display in table

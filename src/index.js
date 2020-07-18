@@ -3,6 +3,7 @@ class Card {
     this.frames = [];
     this.frameCount = 0;
     this.rollCount = 1;
+    this.scores = [];
     for (let i = 0; i < 10; i += 1) {
       this.frames.push(new Frame());
     }
@@ -63,4 +64,5 @@ class Card {
     const fTen = this.frames[9].score();
     return fOne + fTwo + fThree + fFour + fFive + fSix + fSeven + fEight + fNine + fTen;
   }
+
 }

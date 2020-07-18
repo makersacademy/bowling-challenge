@@ -30,12 +30,30 @@
 <body>
   <h1>Bowlarama score card</h1>
 
+  <script src="jquery.js"></script>
+
+  <script>
+  $(document).ready(function() {
+  bowling = new Bowling();
+  $("#roll1").click('submit', function () {
+  bowling.roll();
+  $('td').text(bowling.display());
+  bowling.display();
+  });
+  $("#roll2").click('submit', function () {
+  bowling.roll();
+  $('td').text(bowling.display());
+  bowling.display();
+  });
+  });
+  </script>
+
   <form>
 Roll 1 
-  <input type="number" id="roll1" name="roll1" min="0" max="10">
+  <input type="number" id="roll1" min="0" max="10">
   <input type="submit" value="Submit">
 Roll 2
-  <input type="number" id="roll2" name="roll2" min="0" max="10">
+  <input type="number" id="roll2" min="0" max="10">
   <input type="submit" value="Submit">
   </form>
   <br>
@@ -54,7 +72,7 @@ Roll 2
       <th colspan="2">Round 10</th>
       <th>Total</th>
     </tr>
-    <tr>
+    <td>
       <td></td>
       <td></td>
       <td></td>
@@ -76,7 +94,7 @@ Roll 2
       <td></td>
       <td></td>
       <td></td>
-    </tr>
+    </td>
   </table>
 
 </body>

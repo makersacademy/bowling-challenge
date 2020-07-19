@@ -1,4 +1,5 @@
 
+  
   frame = []
   frames = []
   total = 0
@@ -40,6 +41,7 @@
     total += pins
     if pins == 10
       puts "Please enter pins"
+      pins = gets.chomp.to_i
       total += pins
       puts total
     end

@@ -1,3 +1,6 @@
+'use strict';
+
+// this is the class for the whole game
 class Card {
   constructor() {
     this.frames = [];

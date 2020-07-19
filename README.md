@@ -108,3 +108,12 @@ node.js so that I could download [ES lint](https://eslint.org/docs/user-guide/ge
 How to set up: 
 run index.html in browser
 main code in index.js
+
+Tutorials and help: 
+[Neon light button animation effects on hover](https://www.youtube.com/watch?v=ex7jGbyFgpA)
+[Build a simple JS app the MVC way](https://www.awwwards.com/build-a-simple-javascript-app-the-mvc-way.html) 
+  This didn't run correctly. Moving on to: 
+[Model View Controller in Javascript](https://alexatnet.com/model-view-controller-mvc-in-javascript/)
+  This also didn't run easily when I copied it to my computer, although the live render works well, so on to: 
+[getting started with the web](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics)
+[w3schools](https://www.w3schools.com/) - many, many pages

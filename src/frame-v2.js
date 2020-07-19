@@ -12,7 +12,7 @@ class Frame{
   };
 
   game() {
-    while (frame <= 10) {
+    for (var frame = 0, frame < 10, frame++) {
       
     }
   }

@@ -30,18 +30,12 @@ Input:      Output:
 
 Game Logic
 
-Score - Will handle the scoring of the game.
-This will include:
-
-- User input
-- Handling the current score maths.
-
-Game - Will manage the game state.
+Frame - Will manage the game state and scoring.
 This will include:
 
 - Initiating a new game
 - Running the game rounds(frame - Once the score on that frame reaches 20)
-- Running the current roll for the player. (if roll = < 9 then roll 2)
+- Running the current roll for the player. (if roll 1 + 2 = 10 then roll a bonus roll)
 
 
 Progress So Far:
@@ -49,6 +43,7 @@ Progress So Far:
 
 1. Added Jasmine files to the project for testing.
 2. Created first 2 tests to test starting state of game including max score for strikes and rolls.
+3. Created and tested following 8 frames and logic with tests passing.
 
 Tests written so far: 2
 Test coverage: %

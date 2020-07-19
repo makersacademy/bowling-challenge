@@ -1,5 +1,3 @@
-'use strict';
-
 // this handles the rolls and adding them to each frame, it only knows about the one frame
 class Frame {
   constructor() {

@@ -1,5 +1,3 @@
-'use strict';
-
 // this is the class for the whole game
 class Card {
   constructor() {
@@ -26,7 +24,7 @@ class Card {
     const oneFrameAgo = this.frames[this.frameCount - 1];
     const twoFrameAgo = this.frames[this.frameCount - 2];
 
-    if (this.frameCount < 11){
+    if (this.frameCount < 11) {
       if (oneFrameAgo.mark !== 'none' && oneFrameAgo.bonus1.length === 1) {
         oneFrameAgo.addBonus1(roll);
       } else if (oneFrameAgo.mark === 'strike' && oneFrameAgo.bonus1.length === 2 && oneFrameAgo.bonus2.length === 1) {
@@ -67,5 +65,4 @@ class Card {
     const fTen = this.frames[9].score();
     return fOne + fTwo + fThree + fFour + fFive + fSix + fSeven + fEight + fNine + fTen;
   }
-
 }

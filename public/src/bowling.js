@@ -1,8 +1,3 @@
-//
-// This is only a SKELETON file for the 'Bowling' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
-
 class BowlingGame {
   constructor() {
     this.currScore = 0;
@@ -92,16 +87,12 @@ class BowlingGame {
   roll(pins) {
     if ((isNaN(pins)) || (pins == "")) throw new Error('Please enter a roll between 0 and ' + this.pinsRemaining);
     pins = parseInt(pins);    
-    if (pins < 0) throw new Error('Negative roll is invalid');
-    if (pins > this.pinsRemaining) throw new Error('Pin count exceeds pins on the lane');
-    if (this.complete) throw new Error('Cannot roll after game is over');
+    if (pins < 0) throw new Error('Negative roll is invalid!');
+    if (pins > this.pinsRemaining) throw new Error('Roll exceeds pins left on the lane!');
+    if (this.complete) throw new Error('Cannot roll after game is over!');
     this.currRoll = pins;
     this.updateScore();
     this.updateGameState();
   }
-
-  score() {
-    if (!this.complete) throw new Error('Score cannot be taken until the end of the game');
-    return this.currScore;
-  }
+  
 }

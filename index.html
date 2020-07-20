@@ -36,9 +36,10 @@
   $(document).ready(function() {
   bowling = new Bowling();
   $("#roll1").click('submit', function () {
+    console.log(roll1);
   bowling.roll();
   $('td').text(bowling.display());
-  bowling.display();
+  bowling.display('roll1');
   });
   $("#roll2").click('submit', function () {
   bowling.roll();
@@ -72,7 +73,7 @@ Roll 2
       <th colspan="2">Round 10</th>
       <th>Total</th>
     </tr>
-    <td>
+      <td><%=Bowling.rolls[0]%> </td>
       <td></td>
       <td></td>
       <td></td>
@@ -93,8 +94,6 @@ Roll 2
       <td></td>
       <td></td>
       <td></td>
-      <td></td>
-    </td>
   </table>
 
 </body>

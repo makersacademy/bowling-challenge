@@ -49,33 +49,15 @@ describe ('Scorecard', function(){
     expect(card.totalScore()).toEqual(11);
   });
   it("knows the score of the whole game on a perfect game", function(){
-    card.roll(10);
-    card.roll(10);
-    card.roll(10);
-    card.roll(10);
-    card.roll(10);
-    card.roll(10);
-    card.roll(10);
-    card.roll(10);
-    card.roll(10);
-    card.roll(10);
-    card.roll(10);
-    card.roll(10);
+    for (var i = 0; i < 12; i += 1) {
+      card.roll(10);
+    }
     expect(card.totalScore()).toEqual(300);
   });
   it("knows the score of a gutter game", function(){
-    card.roll(0);
-    card.roll(0);
-    card.roll(0);
-    card.roll(0);
-    card.roll(0);
-    card.roll(0);
-    card.roll(0);
-    card.roll(0);
-    card.roll(0);
-    card.roll(0);
-    card.roll(0);
-    card.roll(0);
+    for (var i = 0; i < 10; i += 1) {
+      card.roll(0);
+    }
     expect(card.totalScore()).toEqual(0);
   });
 });

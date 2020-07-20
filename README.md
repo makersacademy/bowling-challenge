@@ -34,32 +34,38 @@ So that I can see what’s what throughout the game
 I want to see my scorecard update after each roll is input
 
 ## Technologies used: 
-[Jasmine](https://jasmine.github.io/pages/getting_started.html) for testing
-node.js so that I could download [ES lint](https://eslint.org/docs/user-guide/getting-started)
+* [Jasmine](https://jasmine.github.io/pages/getting_started.html) for testing
+* node.js so that I could download [ES lint](https://eslint.org/docs/user-guide/getting-started)
 
 ## How to set up: 
-run index.html in browser
-main code in index.js
+run `index.html` in browser - ideally Chrome
 
 ## How it works:
 Add roll scores using the add roll button, view the outcome using Javascript Console, expand the frames to see the scores and marks in place. 
 
-You can see the overall score by doing scorecard.
+You can see the overall score by doing `scorecard.totalscore();`
 
 ## Screenshots:
+Open the index.html file in Chrome and open JS Console too
 ![Open index.html in Chrome, and JS Console](images/bowlingCard01.jpg)
+
+The button glows when you hover over it!
 ![The button glows when you hover on it](images/bowlingCard02.jpg)
+
+Click the button to add your score after a roll, then press enter
 ![Type in your score in the prompt after button click](images/bowlingCard03.jpg)
+
+Check out the console to see the results so far when you've had a few goes
 ![See the results of your input in the console after a few goes](images/bowlingCard04.jpg)
 
 ## Tutorials and help: 
-[Neon light button animation effects on hover](https://www.youtube.com/watch?v=ex7jGbyFgpA)
-[Build a simple JS app the MVC way](https://www.awwwards.com/build-a-simple-javascript-app-the-mvc-way.html) 
+* [w3schools](https://www.w3schools.com/) - many, many pages
+* [Neon light button animation effects on hover](https://www.youtube.com/watch?v=ex7jGbyFgpA), 
+* [Build a simple JS app the MVC way](https://www.awwwards.com/build-a-simple-javascript-app-the-mvc-way.html)
   This didn't run correctly. Moving on to: 
-[Model View Controller in Javascript](https://alexatnet.com/model-view-controller-mvc-in-javascript/)
+* [Model View Controller in Javascript](https://alexatnet.com/model-view-controller-mvc-in-javascript/)
   This also didn't run easily when I copied it to my computer, although the live render works well, so on to: 
-[getting started with the web](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics)
-[w3schools](https://www.w3schools.com/) - many, many pages
+* [getting started with the web](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics)
 
 ## What else
 Well, the logic took me most of the time. If you run the program using the JS console only, it runs well counting scores correctly for a perfect game and all other options. 
@@ -77,16 +83,20 @@ Improvements to be made:
 4. Add functionality to type in / for spare and X for strike when entering scores
 5. Make flashing badges for strike, spare and the title 'bowling'
 6. Don't let users enter numbers that make a frame add up to over 10 points 
+7. Stop the game when the max. appropriate rolls have been entered
 
 ## I don't understand 
 What these errors really mean on ES Lint 
 _for index.js_
+```
 'Card' is defined but never used
 'Frame' is not defined 
+```
 _for controller.js_
+```
   1:23   error    'Card' is not defined         no-undef
   5:21   warning  Unexpected prompt             no-alert
   10:23  error    Missing radix parameter       radix
   13:3   warning  Unexpected console statement  no-console
   16:18  warning  Unexpected unnamed function   func-names
-
+```

@@ -17,7 +17,7 @@ class Frame {
       this.roll2 = roll;
       this.rollCount -= 1;
     }
-    this.isMark();
+    this.isMarkScore();
   }
 
   addBonus1(roll) {
@@ -34,7 +34,7 @@ class Frame {
     return this.roll1 + this.roll2 + b1Sum + b2Sum;
   }
 
-  isMark() {
+  isMarkScore() {
     if (this.roll1 === 10) {
       this.mark = 'strike';
     } else if (this.roll1 + this.roll2 === 10) {

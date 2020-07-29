@@ -1,0 +1,76 @@
+<h4>Hello <%= name %>, ready to play?</h4>
+<button onclick="location.reload()">Roll it!</button>
+
+<div>
+    <h5>Your total score : <span id="total-score" style="font-weight:600;"></span></h5>
+    <p><%= game.roll() %></p>
+
+    <table style="width:60%">
+        <tr>
+            <th>Frame</th>
+            <th>Roll</th>
+            <th>Knocked down pins</th>
+            <th>Your score</th>
+            <th>Comments</th>
+        </tr>
+        <% game.frames.forEach(function(frame, index){ %>
+        <tr>
+            <td><%= index + 1 %></td>
+            <td><%= frame.length %></td>
+            <td><%= frame %></td>
+            <td class="res"><%= frame.reduce((a, b) => {
+                return a+b
+            }, 0) %></td>
+            <% if(frame == 10){ %>
+            <td>It's a STRIKE !!</td>
+            <% } else if ((frame.reduce((a, b) => {
+                return a+b
+            }, 0) == 10) && frame.length == 2){ %>
+            <td>Nice Spare !</td>
+            <% } else{ %>
+            <td>-</td>
+            <% } %>
+        </tr>
+        <% }) %>
+
+    </table>
+
+</div>
+
+<script>
+    var showResults = () => {
+        var table = document.querySelector('.hidden-default');
+        table.style.display = "block";
+    }
+
+    var count = 0
+    var scores = document.querySelectorAll('td.res');
+    scores.forEach((score) => {
+        count += parseInt(score.innerHTML)
+    });
+    var totalScore = document.querySelector('#total-score');
+    totalScore.textContent = count;
+</script>
+
+<style>
+    th,
+    td {
+        border-bottom: 1px solid #ddd;
+    }
+
+    tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    td {
+        text-align: center;
+    }
+
+    .hidden-default {
+        display: none;
+    }
+</style>

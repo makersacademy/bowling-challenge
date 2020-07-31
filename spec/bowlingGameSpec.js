@@ -1,55 +1,52 @@
-'use strict';
+"use strict";
 
-describe("Game", function() {
+describe("BowlingGame", () => {
+  let game;
 
-  var game;
-
-  // Institentiates a new version of game each time.
-  beforeEach(function() {
-    game = new Game(); 
+  beforeEach(() => {
+    game = new BowlingGame();
   });
 
- it('can roll a gutter game', function() {
-   rollMany(0, 20)
-   expect(game.score()).toBe(0); 
+  it("can roll a gutter game", () => {
+    rollMany(0, 20);
+    expect(game.score()).toBe(0);
   });
 
-  it('can roll all ones', function() {
-    rollMany(1, 20)
+  it("can roll all ones", () => {
+    rollMany(1, 20);
     expect(game.score()).toBe(20);
   });
 
-  // Bonus 3 points for doing a spare.
-  it('can roll a spare', function() {
-    game.roll(5)
-    game.roll(5)
-    game.roll(3)
-    rollMany(0, 17)
-    expect(game.score()).toBe(16); 
+  it("can roll a spare", () => {
+    game.roll(5);
+    game.roll(5);
+    game.roll(3);
+    // Bonus 3 points on that roll for getting a spare.
+    rollMany(0, 17);
+    expect(game.score()).toBe(16);
   });
 
-  it('can roll a strike', function(){
-    game.roll(10)
-    game.roll(4)
-    game.roll(3)
-    rollMany(0, 16)
+  it("can roll a strike", () => {
+    game.roll(10);
+    game.roll(3);
+    game.roll(4);
+    // First roll of 10 (strike) will count as 2 rolls.
+    rollMany(0, 16);
     expect(game.score()).toBe(24);
-  }); 
+  });
 
-  it('can roll a perfect game', function() {
-    rollMany(10, 12)
+  it("can roll a perfect game", () => {
+    // A perfect game is 10 regular strikes and 2 strikes for
+    // the bonus in the 10th frame
+    rollMany(10, 12);
     expect(game.score()).toBe(300);
   });
-// 10+2(10) for 10 frames - 2(10) is the bonus amount
-  var rollMany = function(pins_knocked, rolls) {
-    for(var i = 0; i < 20; i++) {
-      game.roll(pins_knocked);
+
+  let rollMany = function (pins, rolls) {
+    for (let i = 0; i < rolls; i++) {
+      game.roll(pins);
     }
   };
 });
- 
 
-
-// rollMany(Pins knocked down, how many times we bowl the ball)
-// A normal game is 20 rolls. 
-// A gutter game is 20 rolls of 0 pins_knocked. So i is the number of rolls.
+// Rollmany(Number of pins knocked down, Number of rolls left)

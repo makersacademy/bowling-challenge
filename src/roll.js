@@ -18,3 +18,7 @@ class Roll {
     return false;
   }
 }
+
+// roll returning a string instead of a valid number was a really bad idea
+// instead it should have defaulted to 0 I think
+// and then a score should have been assigned which sets score and isScored to true.

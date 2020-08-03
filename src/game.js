@@ -8,6 +8,7 @@ class Game {
       this.frames.push(frameFactory.instance());
     }
     this.currentFrameIndex = 0;
+    //this.f = new Frame();
   }
 
   getCurrentFrame() {

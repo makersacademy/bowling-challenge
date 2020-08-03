@@ -69,5 +69,8 @@ describe('Game', function() {
       game.setUpAdjacencies();
       expect(game.frames[0].initializeAdjacentFrameManager).toHaveBeenCalledWith(game.frames[1], game.frames[2]);
     });
+    it('assigns frame 10 to frame 9', function() {
+      
+    });
   });
 });

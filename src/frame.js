@@ -134,3 +134,6 @@ class Frame {
 //                         unless there is a strike in which case it counts the extra rolls
 // roll manager keeps tracks of two rolls
 // why not just create a length
+
+//return module.exports = Frame;
+//export default Frame;

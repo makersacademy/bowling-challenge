@@ -5,6 +5,7 @@ class Game {
     this.frames = [];
     this.frames_scores = [];
     this.MAX_FRAMES = 10;
+    this.currentFrame = 0
   }
 
   gameFrames(){
@@ -16,6 +17,7 @@ class Game {
       return;
     }
     this.frames.push(frame);
+    this._updateCurrentFrame();
   }
 
   sharingInfoWithFrames() {
@@ -46,5 +48,9 @@ class Game {
 
   _gameOver(){
     return this.gameFrames().length === this.MAX_FRAMES;
+  }
+
+  _updateCurrentFrame() {
+    this.currentFrame ++
   }
 }

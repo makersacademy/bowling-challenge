@@ -19,6 +19,14 @@ describe('Game class', function(){
     game.addFrame(frame3);
     expect(game.gameFrames()).toEqual([frame1, frame2, frame3]);
   });
+
+  it('updates current frame', function () {
+    game.addFrame(frame1);
+    expect(game.currentFrame).toEqual(1);
+    game.addFrame(frame2);
+    expect(game.currentFrame).toEqual(2);
+  });
+  
   it('does not allow to add more than 10 frames', function(){
     for(var i=0; i<11; i++) {
       game.addFrame(frame1);

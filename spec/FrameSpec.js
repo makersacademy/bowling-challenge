@@ -27,6 +27,23 @@ describe ('Frame', function () {
     });
   });
 
+  describe ('Strikes and spares', function () {
+    it ('knows if a strike has been scored', function() {
+      frame.pins('X')
+      expect(frame.strike()).toEqual(true);
+    });
+    it ('knows if a spare has been scored', function() {
+      frame.pins(5)
+      frame.pins('/')
+      expect(frame.spare()).toEqual(true);
+    });
+    it ('adds only the first roll a spare has been scored', function() {
+      frame.pins(5)
+      frame.pins('/')
+      expect(frame.getScore()).toEqual(5);
+    });
+  });
+
   describe ('Edge case errors', function () {
     it ('throws an error if adding a score more than 9', function() {
       expect(function() {frame.pins(10)}).toThrowError('Maximum score is 9 or strike!')
@@ -37,9 +54,23 @@ describe ('Frame', function () {
       expect(function() {frame.pins(6)}).toThrowError('Maximum score is 9 or spare!')
     });
 
+    it ('throws an error if total is equal to 10', function() {
+      frame.pins(5);
+      expect(function() {frame.pins(5)}).toThrowError('That was a spare')
+    });
+
     it ('throws an error if adding a score after a strike', function() {
       frame.pins('X');
       expect(function() {frame.pins(2)}).toThrowError('Frame closed!')
+    });
+
+    it ('throws an error if a spare is added as first roll', function() {
+      expect(function() {frame.pins('/')}).toThrowError('First roll cannot be a spare!')
+    });
+
+    it ('throws an error if a strike is added as second roll', function() {
+      frame.pins(5);
+      expect(function() {frame.pins('X')}).toThrowError('Second roll cannot be a strike, enter /')
     });
 
     it ('throws an error for more than two rolls', function() {

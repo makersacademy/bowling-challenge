@@ -49,6 +49,10 @@ describe ('Frame', function () {
       expect(function() {frame.pins(10)}).toThrowError('Maximum score is 9 or strike!')
     });
 
+    it ('throws an error if an incorrect value is entered', function() {
+      expect(function() {frame.pins('ralph')}).toThrowError('Incorrect input!')
+    });
+
     it ('throws an error if total is greater than 10', function() {
       frame.pins(6);
       expect(function() {frame.pins(6)}).toThrowError('Maximum score is 9 or spare!')

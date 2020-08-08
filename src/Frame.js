@@ -11,7 +11,10 @@ class Frame {
   pins(number) {
     var potentialScore = this.frameScore += number;
 
-    if (this.frameRolls.length === this.MAX_NORMAL_FRAME) {
+    if (number != 'X' && number != '/' && isNaN(number)) {
+      throw new Error('Incorrect input!');
+    }
+    else if (this.frameRolls.length === this.MAX_NORMAL_FRAME) {
       this.frameScore = this.frameRolls[0] + this.frameRolls[1];
       throw new Error('Two rolls only!');
     }

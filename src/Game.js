@@ -4,7 +4,8 @@ class Game {
   }
 
   frame(roll1, roll2) {
-    return [roll1,roll2];
+    this.score += (roll1+roll2)
+    return [roll1, roll2];
   }
 
   showScore() {

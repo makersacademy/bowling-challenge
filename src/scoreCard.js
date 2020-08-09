@@ -14,11 +14,16 @@ $(document).ready(function() {
       enterNormalFrame(firstBall, secondBall);
     } else {enterFinalFrame(firstBall, secondBall)}
     updateScore()
+    if (!finalframe._isNotEligibleForBonus()) {
+      _addBonusbox()
+      game.currentFrame --
+    }
     console.log(game)
   });
 
   $('#submit-bonus').click(function(){
     const bonusBall = parseInt($('#ball-3').val())
+    _checkBonusValidity(bonusBall)
     finalframe.bonusRoll(bonusBall)
     $(`#${game.currentFrame}.bonus-bowl`).text(bonusBall)
     updateScore()
@@ -53,35 +58,45 @@ $(document).ready(function() {
     finalframe.secondRoll(secondBall);
     $(`#${game.currentFrame}.first-bowl`).text(firstBall)
     $(`#${game.currentFrame}.second-bowl`).text(secondBall)
-      if (!finalframe._isNotEligibleForBonus()) {
-        _addBonusbox()
-        game.currentFrame --
-      }
     game.addFrame(finalframe)    
   }
 
   function _addBonusbox () {
-    if (isLastFrame()){
       $('#ball-1').addClass('hidden')
       $('#ball-2').addClass('hidden')
+      $('#submit').addClass('hidden')
       $('#ball-3').removeClass('hidden')
       $('#submit-bonus').removeClass('hidden')
-      $('#submit').addClass('hidden')
+  }
+
+  function _checkFrameValidity(firstBall, secondBall) {
+    if (_isSingleRollInvalid(firstBall, secondBall)) {
+      $('.errormessage').text('invalid amount of points for single roll (max is 10)')
+    }
+    else if (_isFrameInvalid(firstBall, secondBall)) {
+      console.log("frame invalid")
+      $('.errormessage').text('invalid amount of points for single frame (max is 10)')
+    }
+    else {$('.errormessage').empty()};
+  };
+
+  function _checkBonusValidity(bonusBall) {
+    if (_isBonusInvalid(bonusBall)) {
+      console.log("right")
+      $('.errormessage').text('invalid amount of points for bonus roll (max is 10)')
     }
   }
 
-  
-  
+  function _isSingleRollInvalid(firstBall, secondBall) {
+    return (firstBall > MAX_SINGLE_ROLL_PTS || secondBall > MAX_SINGLE_ROLL_PTS);
+  };
 
-  function _checkFrameValidity(firstBall, secondBall, bonus) {
+  function _isFrameInvalid(firstBall, secondBall) {
     console.log(firstBall)
-    if (firstBall > MAX_SINGLE_ROLL_PTS || secondBall > MAX_SINGLE_ROLL_PTS|| bonus > MAX_SINGLE_ROLL_PTS) {
-      console.log('working')
-      $('.errormessage').text('invalid amount of points for single roll (max is 10)')
-    }
-    else if (firstBall + secondBall > 10) {
-      $('.errormessage').text('invalid amount of points for single frame (max is 10)')
-    } 
-    else {$('.errormessage').empty()}
+    return (firstBall + secondBall > MAX_SINGLE_ROLL_PTS);
+  }
+
+  function _isBonusInvalid(bonusBall) {
+    return bonusBall > MAX_SINGLE_ROLL_PTS;
   }
 });

@@ -14,6 +14,7 @@ describe("Frame ", function() {
   describe('a single roll', function(){
     beforeEach(function() {
       frame = new Frame();
+      scorecard = jasmine.createSpyObj('scorecard', ['captureFrame']);
       frame.enterFirstRollScore(3, scorecard);
       frame.enterSecondRollScore(2, scorecard)
     });
@@ -40,5 +41,9 @@ it('displays score from second roll', function(){
   // frame.enterSecondRollScore(2, scorecard);
   expect(frame.secondRollScore).toEqual(2);
 });
+
+  it('adds total of frame to scorecard', function(){
+     expect(scorecard.captureFrame).toHaveBeenCalledWith(frame);
+  });
 
 });

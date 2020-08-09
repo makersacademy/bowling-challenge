@@ -29,3 +29,9 @@ As a User
 So that I can record a perfect game
 I would like the final frame to offer me chances to record bonuses
 ```
+### Running tests
+```shell
+$ git clone git@github.com:[USERNAME]/bowling-challenge.git
+$ cd bowling-challenge
+$ open SpecRunner.html
+```

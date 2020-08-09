@@ -26,6 +26,7 @@ class Game {
   }
   completeGame() {
     if (this.game.length === 10) {
+      console.log("You scored " + this.score)
       throw 'Game over'
     }
   }

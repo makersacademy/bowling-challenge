@@ -22,12 +22,16 @@ describe('Game', function() {
     game.roll(4)
     game.roll(3)
     game.roll(6)
-    expect(game.whichFrame()).toEqual(2)
+    expect(game.currentFrame()).toEqual(2)
   });
   it('limits to 10 frames', function() {
     for ( var i = 0; i < 20; i++) {
       game.roll(0)
     }
     expect(function() { game.roll(0) }).toThrow('Game over')
+  });
+  it('ends the frame if a strike is bowled', function() {
+    game.roll(10)
+    expect(game.currentFrame()).toEqual(2)
   })
 });

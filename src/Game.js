@@ -6,17 +6,20 @@ class Game {
     this.game =[]
   };
   roll(roll) {
-    this.completeFrame(roll)
     this.completeGame()
     this.frame.push(roll)
+    this.completeFrame(roll)
     this.score += roll
     return this.score
   };
-  whichFrame() {
+  currentFrame() {
     return this.game.length + 1
   };
-  completeFrame() {
+  completeFrame(roll) {
     if (this.frame.length === 2) {
+      this.game.push(this.frame)
+      this.frame = []
+    } else if (roll === 10) {
       this.game.push(this.frame)
       this.frame = []
     }

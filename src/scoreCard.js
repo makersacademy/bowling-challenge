@@ -1,12 +1,19 @@
 $(document).ready(function() {
   const game = new Game()
+  const MAX_SINGLE_ROLL_PTS = 10
   console.log(game)
+
 
   
   $('#submit').click(function(){
+    const firstBall = parseInt($('#ball-1').val())
+    const secondBall = parseInt($('#ball-2').val())
+    const bonus = parseInt($('#ball-3').val())
+    _checkFrameValidity(firstBall, secondBall, bonus)
     if (!isLastFrame()) {
-      enterNormalFrame()
-    } else {enterFinalFrame()}
+      enterNormalFrame(firstBall, secondBall);
+      _addBonusbox();
+    } else {enterFinalFrame(firstBall, secondBall, bonus)}
     updateScore()
     console.log(game)
   });
@@ -25,23 +32,17 @@ $(document).ready(function() {
     return game.currentFrame === 9
   }
 
-  function enterNormalFrame() {
+  function enterNormalFrame(firstBall, secondBall) {
     const frame = new Frame();
-    const firstBall = parseInt($('#ball-1').val())
-    const secondBall = parseInt($('#ball-2').val())
     frame.firstRoll(firstBall);
     frame.secondRoll(secondBall);
     $(`#${game.currentFrame}.first-bowl`).text(firstBall)
     $(`#${game.currentFrame}.second-bowl`).text(secondBall)
     game.addFrame(frame)
-    _addBonusbox()
   }
 
-  function enterFinalFrame() {
+  function enterFinalFrame(firstBall, secondBall, bonus) {
     const finalframe = new FinalFrame()
-    const firstBall = parseInt($('#ball-1').val())
-    const secondBall = parseInt($('#ball-2').val())
-    const bonus = parseInt($('#ball-3').val())
     finalframe.firstRoll(firstBall);
     finalframe.secondRoll(secondBall);
     finalframe.bonusRoll(bonus);
@@ -54,6 +55,17 @@ $(document).ready(function() {
   function _addBonusbox () {
     if (isLastFrame()){
       $('#ball-3').removeClass('hidden')
+    }
+  }
+
+  function _checkFrameValidity(firstBall, secondBall, bonus) {
+    console.log(firstBall)
+    if (firstBall > MAX_SINGLE_ROLL_PTS || secondBall > MAX_SINGLE_ROLL_PTS|| bonus > MAX_SINGLE_ROLL_PTS) {
+      console.log('working')
+      $('.errormessage').text('invalid amount of points for single roll (max is 10)')
+    }
+    if (firstBall + secondBall > 10) {
+      $('.errormessage').text('invalid amount of points for single frame (max is 10)')
     }
   }
 });

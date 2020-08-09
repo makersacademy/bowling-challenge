@@ -25,9 +25,9 @@ describe('Game', function() {
     expect(game.whichFrame()).toEqual(2)
   });
   it('limits to 10 frames', function() {
-    for ( var i = 0; i < 10; i++) {
+    for ( var i = 0; i < 20; i++) {
       game.roll(0)
     }
-    expect(function() {game.roll(0) }).toThrow('Game over')
+    expect(function() { game.roll(0) }).toThrow('Game over')
   })
 });

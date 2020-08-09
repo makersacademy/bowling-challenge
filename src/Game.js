@@ -6,7 +6,8 @@ class Game {
     this.game =[]
   };
   roll(roll) {
-    this.complete(roll)
+    this.completeFrame(roll)
+    this.completeGame()
     this.frame.push(roll)
     this.score += roll
     return this.score
@@ -14,10 +15,15 @@ class Game {
   whichFrame() {
     return this.game.length + 1
   };
-  complete() {
+  completeFrame() {
     if (this.frame.length === 2) {
       this.game.push(this.frame)
       this.frame = []
+    }
+  }
+  completeGame() {
+    if (this.game.length === 10) {
+      throw 'Game over'
     }
   }
 };

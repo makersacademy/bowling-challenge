@@ -6,7 +6,7 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 ### Scoring requirements identified
 - [x] Enter a number of pins
 - [x] Up to two rolls for each frame
-- [ ] 10 frames
+- [x] 10 frames
 - [ ] Strikes
 - [ ] Spares
 - [ ] Final frame

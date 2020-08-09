@@ -11,6 +11,10 @@ $(document).ready(function() {
     console.log(game)
   });
 
+  $('#reset').click(function(){
+    location.reload();
+  })
+
   function updateScore () {
     game.sharingInfoWithFrames();
     game.getFramesScores()

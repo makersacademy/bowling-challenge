@@ -97,24 +97,65 @@
       </div>
     </div>
   </div>
-  <div class='add-frame' id='enter'>
-    <input id = "ball-1" type='number' placeholder="first bowl goes here">
-    <input id = "ball-2" type='number' placeholder="second bowl goes here">
-    <input class = "hidden" id = "ball-3" type='number' placeholder="bonus bowl goes here"><br>
+  <div class='add-frame' id='enter-frame'>
+    <label for="first-roll" id = 'label1'>First roll</label>
+    <select name="first-roll" id="ball-1">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    <!-- <input id = "ball-1" type='number' placeholder="first bowl goes here"> -->
+    <label for="second-roll" id = 'label2'>Second roll</label>
+    <select name="second-roll" id="ball-2">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
     <button id = 'submit'>Add Frame</button>
-    <button class = 'hidden' id = 'submit-bonus'>Add Bonus</button>
   </div>
+    <!-- <input id = "ball-2" type='number' placeholder="second bowl goes here"> -->
+    <div class = hidden id = "bonus-form">
+    <label id = 'label3' for="first-roll">Bonus roll</label>
+    <select name="first-roll" id="ball-3">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    <button id = 'submit-bonus'>Add Bonus</button>
+  </div>
+    <!-- <input class = "hidden" id = "ball-3" type='number' placeholder="bonus bowl goes here"><br> -->
+    
+   
+  
   <div>
     <button id = "reset">Reset Scorecard</button>
   </div>
 
   <span class = "errormessage"></span>
-  <!-- <div class='add-last-frame hidden' id='enter'>
-    <input id = "first-ball" type='number' placeholder="first bowl goes here"> <br>
-    <input id = "second-ball" type='number' placeholder="second bowl goes here"><br>
-    <input id = "third-ball" type='number' placeholder="bonus bowl goes here"><br>
-    <button id = 'submit frame'>Add Last Frame</button>
-  </div> -->
   <script src="./src/frame.js"></script>
   <script src="./src/finalFrame.js"></script>
   <script src="./src/game.js"></script>

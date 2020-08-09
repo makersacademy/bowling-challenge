@@ -15,9 +15,10 @@ $(document).ready(function() {
     } else {enterFinalFrame(firstBall, secondBall)}
     updateScore()
     if (!finalframe._isNotEligibleForBonus()) {
-      _addBonusbox()
+      _addBonusForm()
       game.currentFrame --
     }
+
     console.log(game)
   });
 
@@ -61,12 +62,9 @@ $(document).ready(function() {
     game.addFrame(finalframe)    
   }
 
-  function _addBonusbox () {
-      $('#ball-1').addClass('hidden')
-      $('#ball-2').addClass('hidden')
-      $('#submit').addClass('hidden')
-      $('#ball-3').removeClass('hidden')
-      $('#submit-bonus').removeClass('hidden')
+  function _addBonusForm () {
+      $('#enter-frame').addClass('hidden')
+      $('#bonus-form').removeClass('hidden')
   }
 
   function _checkFrameValidity(firstBall, secondBall) {

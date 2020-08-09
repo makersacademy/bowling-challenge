@@ -47,6 +47,9 @@ So my score is accurate,
 I want to b prevented from entering an invalid score per roll and frame
 ```
 
+*_Error: A maximum of 10 points per frame_
+
+
 <br>
 
 ```

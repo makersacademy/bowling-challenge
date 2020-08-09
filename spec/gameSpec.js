@@ -8,7 +8,21 @@ describe('Game', function() {
     expect(game.score).toEqual(0)
   });
   it('keeps score of the game', function() {
-    game.roll(4, 3)
-    expect(game.score).toEqual(7)
+    game.roll(4)
+    expect(game.score).toEqual(4)
   });
+  it('adds multiple rolls together', function() {
+    game.roll(4)
+    game.roll(3)
+    game.roll(6)
+    game.roll(2)
+    expect(game.score).toEqual(15)
+  });
+  it('keeps track of the frame', function() {
+    game.roll(4)
+    game.roll(3)
+    game.roll(6)
+    expect(game.whichFrame()).toEqual(2)
+  });
+
 });

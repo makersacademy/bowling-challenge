@@ -14,10 +14,14 @@ $(document).ready(function() {
       enterNormalFrame(firstBall, secondBall);
     } else {enterFinalFrame(firstBall, secondBall)}
     updateScore()
+    if (game._gameOver()) {
+      _removeInputArea()
+    }
     if (!finalframe._isNotEligibleForBonus()) {
       _addBonusForm()
       game.currentFrame --
     }
+   
 
     console.log(game)
   });
@@ -27,6 +31,7 @@ $(document).ready(function() {
     finalframe.bonusRoll(bonusBall)
     $(`#${game.currentFrame}.bonus-bowl`).text(bonusBall)
     updateScore()
+    _removeInputArea()
     console.log(finalframe)
   })
 
@@ -62,8 +67,12 @@ $(document).ready(function() {
   }
 
   function _addBonusForm () {
-      $('#enter-frame').addClass('hidden')
-      $('#bonus-form').removeClass('hidden')
+    $('#bonus-form').removeClass('hidden')
+  }
+  
+  function _removeInputArea () {
+    $('#enter-frame').addClass('hidden')
+    $('#bonus-form').addClass('hidden')
   }
 
   function _checkFrameValidity(firstBall, secondBall) {

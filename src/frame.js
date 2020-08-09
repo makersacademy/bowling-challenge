@@ -80,11 +80,17 @@ class Frame {
   }
 
   _spareBonus() {
-    return this.nextRoll().pointsFirstRoll();
+    if (this._isNextRollNull()) {
+      return 0
+    } else {return this.nextRoll().pointsFirstRoll()}
+   
   }
 
   _strikeBonus() {
-    if (this.nextRoll()._isAStrike() && this.nextNextRoll() === undefined) {
+    if (this._isNextRollNull()) {
+      return 0
+    }
+    if (this.nextRoll()._isAStrike() && (this._isNextNextRollNull())) {
       return this.nextRoll().pointsFirstRoll() + this.nextRoll().pointsSecondRoll();
     }
     if (this.nextRoll()._isAStrike()) {
@@ -100,5 +106,15 @@ class Frame {
   _isMoreThanFrameMaxPoints(points) {
     return (points + this.pointsFirstRoll()) > this.MAX_FRAME_PTS;
   }
+
+  _isNextRollNull() {
+    return this.nextRoll() === null || this.nextRoll() === undefined;
+  }
+
+  _isNextNextRollNull(){
+    return this.nextNextRoll() === undefined || this.nextRoll() === null;
+  }
+
+
 
 }

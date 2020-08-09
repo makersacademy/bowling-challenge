@@ -2,6 +2,7 @@ $(document).ready(function() {
   const game = new Game()
   console.log(game)
 
+  
   $('#submit').click(function(){
     const frame = new Frame();
     const firstBall = parseInt($('#ball-1').val())
@@ -11,6 +12,13 @@ $(document).ready(function() {
     $(`#${game.currentFrame}.first-bowl`).text(firstBall)
     $(`#${game.currentFrame}.second-bowl`).text(secondBall)
     game.addFrame(frame)
+    updateScore()
     console.log(game)
   });
+
+  function updateScore () {
+    game.sharingInfoWithFrames();
+    game.getFramesScores()
+    $('.total').text(game.finalScore())
+  }
 });

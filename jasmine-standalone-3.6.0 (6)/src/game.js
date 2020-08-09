@@ -4,6 +4,6 @@ class Frame{
   }
 
   enterFirstRollScore(pinsDown, scorecard){
-    this.firstRollScore = pinsDown
+    this.firstRollScore = pinsDown;
   }
 }

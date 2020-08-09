@@ -12,10 +12,11 @@ describe("Frame ", function() {
   describe('a single roll', function(){
     beforeEach(function() {
       frame = new Frame();
+
+      frame.enterFirstRollScore(3, scorecard);
     });
 
     it('displays score for a single roll', function(){
-      frame.enterFirstRollScore(3, scorecard);
       expect(frame.firstRollScore).toEqual(3);
     });
   });

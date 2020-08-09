@@ -10,5 +10,5 @@ class Game {
 
   showScore() {
     return this.score;
-  };
-};
+  }
+}

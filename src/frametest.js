@@ -1,4 +1,4 @@
-class Frame {
+class Test {
   constructor(){
     this.frameNumber = 1;
     this.frameScore = 0;
@@ -11,17 +11,17 @@ class Frame {
   enterPins(number) {
 
     if (this.VALID_INPUTS.includes(number) === false) {
-      return ('Incorrect input!')
+      return ('incorrect input')
     } else if (this.isOpen() === false) {
-      return ('Frame closed!')
+      return ('frame closed')
     } else if (this.frameRolls.length === 1 && number === 'X') {
-        return ('Second roll cannot be a strike!')
+        return ('second roll cannot be a strike')
     } else if (number === 'X') {
       this.frameRolls.push(number)
     } else if (number === '/' && this.frameRolls.length === 0) {
-      return ('First roll cannot be a spare!')
+      return ('first roll cannot be a spare')
     } else if (number >= this.PINS) {
-      return ('Maximum score is 9 or spare!')
+      return ('max score 9 or spare')
     } else {
       this.frameRolls.push(number)
       this.frameScore += number;
@@ -30,10 +30,8 @@ class Frame {
   }
 
   getScore() {
-    if (this.hasStrike()) {
+    if (this.strike()) {
       return 0
-    } else if (this.hasSpare()) {
-      return this.frameRolls[0]
     }
     return this.frameScore
   }

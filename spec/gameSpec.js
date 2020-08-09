@@ -34,4 +34,11 @@ describe('Game', function() {
     game.roll(10)
     expect(game.currentFrame()).toEqual(2)
   })
+//  it('calculates the bonus for a spare', function() {
+//    game.roll(9)
+//    game.roll(1)
+//    game.roll(5)
+//    game.roll(3)
+//    expect(game.score).toEqual(23)
+//  })
 });

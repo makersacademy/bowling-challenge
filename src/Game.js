@@ -2,12 +2,12 @@
 class Game {
   constructor() {
     this.score = 0
-    this._frame = []
+    this._frame = new Frame
     this.game =[]
   };
   roll(roll) {
     this.completeGame()
-    this._frame.push(roll)
+    this._frame.roll(roll)
     this.completeFrame(roll)
     this.score += roll
     return this.score
@@ -16,12 +16,12 @@ class Game {
     return this.game.length + 1
   };
   completeFrame(roll) {
-    if (this._frame.length === 2) {
+    if (this._frame.rolls.length === 2) {
       this.game.push(this._frame)
-      this._frame = []
+      this._frame = new Frame
     } else if (roll === 10) {
       this.game.push(this._frame)
-      this._frame = []
+      this._frame = new Frame
     }
   }
   completeGame() {

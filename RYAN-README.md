@@ -15,3 +15,7 @@ As a User
 So I can focus on the bowling
 I want a program to count and sum my bowling score automatically
 ```
+
+### Diagram
+
+<img src="public/images/BowlingChallenge.png">

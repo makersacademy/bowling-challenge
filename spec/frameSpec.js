@@ -9,4 +9,4 @@ describe('Frame', function() {
     frame.roll(5)
     expect(frame.rolls).toEqual([3, 5])
   })
-})
+});

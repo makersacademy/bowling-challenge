@@ -2,14 +2,19 @@
 
 describe("Frame", function() {
   var frame;
-
-  describe("isStrike()", function() {
+  beforeEach(function() {
     frame = new Frame();
-
+  })
+  describe("isStrike()", function() {
     it("returns true when first roll is a strike", function() {
-      var firstRoll = 10;
-      frame.add(firstRoll);
+      var strikeRoll = 10;
+      frame.add(strikeRoll);
       expect(frame.isStrike()).toBe(true);
+    })
+    it("returns false when first roll is not a strike", function () {
+      var nonStrikeRoll = 5;
+      frame.add(nonStrikeRoll);
+      expect(frame.isStrike()).toBe(false);
     })
   })
 })

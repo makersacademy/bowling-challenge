@@ -17,9 +17,6 @@ class Frame {
   }
 
   isStrike() {
-    if (this._rolls[0] === 10) {
-      return true ;
-    } 
-    false;
-  }
-}
+    return (this._rolls[0] === 10) 
+  };
+};

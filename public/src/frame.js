@@ -6,8 +6,8 @@ class Frame {
   }
 
   add(roll) {
-    if (this._rolls.length === 2) {
-      return "Two rolls per frame MAX";
+    if (this._rolls.length === 2 || this.isStrike()) {
+      return "No more rolls can be added to this frame";
     }
     this._rolls.push(roll);
   }
@@ -17,6 +17,10 @@ class Frame {
   }
 
   isStrike() {
-    return (this._rolls[0] === 10) 
-  };
-};
+    return (this._rolls[0] === 10);
+  }
+
+  isSpare() {
+    return (this._rolls[0] + this._rolls[1] == 10);
+  }
+}

@@ -15,4 +15,11 @@ class Frame {
   showRolls() {
     return this._rolls;
   }
+
+  isStrike() {
+    if (this._rolls[0] === 10) {
+      return true ;
+    } 
+    false;
+  }
 }

@@ -11,6 +11,10 @@ Weekend Challange to build a program that counts and sums the scores of a bowlin
 
 ### User Stories
 ```
+As a User
+So I can keep a record of my rolls
+I want the results of them to be stored on a per frame basis
+
 As a User 
 So I can focus on getting sweet strikes and spares
 I want a program to count and sum my bowling scores

@@ -6,6 +6,9 @@ class Frame {
   }
 
   add(roll) {
+    if (this._rolls.length === 2) {
+      return "Two rolls per frame MAX"
+    }
     this._rolls.push(roll);
   }
 

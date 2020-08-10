@@ -28,6 +28,8 @@ describe("Feature Test", function() {
       }
       expect(game.frames).toContain(frame);
       expect(game.frames.length).toBe(10);
+      game.add(frame);
+      expect(game.frames.length).toBe(10)
     });
   })
 });

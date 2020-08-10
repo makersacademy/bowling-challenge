@@ -12,8 +12,8 @@ Weekend Challange to build a program that counts and sums the scores of a bowlin
 ### User Stories
 ```
 As a User 
-So I can focus on the bowling
-I want a program to count and sum my bowling score automatically
+So I can focus on getting sweet strikes and spares
+I want a program to count and sum my bowling scores
 ```
 
 ### Diagram

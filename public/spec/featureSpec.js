@@ -27,7 +27,7 @@ describe("Feature Test", function() {
       expect(frame.showRolls().length).toBe(1);
       expect(frame.showRolls()).not.toContain(aRoll);
     });
-  }); 
+  });
   describe("adding frames to game", function() {
     it("records 10 frames per game", function() {
       for (var i = 1; i <= 10; i += 1) {

@@ -13,7 +13,7 @@ describe("Frame", function() {
     it("returns true when first roll is a strike", function() {
       frame.add(strikeRoll);
       expect(frame.isStrike()).toBe(true);
-    })
+    });
     it("returns false when first roll is not a strike", function () {
       frame.add(nonStrikeRoll);
       expect(frame.isStrike()).toBe(false);
@@ -35,6 +35,6 @@ describe("Frame", function() {
       frame.add(nonStrikeRoll);
       frame.add(nonStrikeRoll);
       expect(frame.getBasePoints()).toBe(nonStrikeRoll + nonStrikeRoll);
-    })
-  })
+    });
+  });
 });

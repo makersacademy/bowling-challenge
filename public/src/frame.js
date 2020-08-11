@@ -21,6 +21,6 @@ class Frame {
   }
 
   isSpare() {
-    return (this._rolls[0] + this._rolls[1] == 10);
+    return (this._rolls[0] + this._rolls[1] === 10);
   }
 }

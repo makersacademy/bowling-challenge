@@ -11,4 +11,13 @@ class Game {
     }
     this.frames.push(frame);
   }
+
+  getPoints() {
+    var points = 0;
+    this.frames[0]._rolls.forEach(sum);
+    function sum(rollScore) {
+      points += rollScore;
+    }
+    return points;
+  }
 }

@@ -23,6 +23,7 @@ describe("Feature Test", function() {
       var strikeRoll = 10;
       frame.add(strikeRoll);
       frame.add(aRoll);
+      expect(frame.showRolls()).toContain(strikeRoll);
       expect(frame.showRolls().length).toBe(1);
       expect(frame.showRolls()).not.toContain(aRoll);
     });

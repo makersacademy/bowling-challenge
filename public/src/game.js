@@ -14,10 +14,13 @@ class Game {
 
   getTotalPoints() {
     var points = 0;
-    this.frames.forEach(sum);
-    function sum(frame) {
+    var frameArr = this.frames;
+    frameArr.forEach(function(frame, index) {
+      if (frame.isSpare()) {
+        points += frameArr[index+1]._rolls[0];
+      }
       points += frame.getBasePoints();
-    }
+    });
     return points;
   }
 }

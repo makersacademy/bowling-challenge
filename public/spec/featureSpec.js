@@ -19,7 +19,7 @@ describe("Feature Test", function() {
       expect(frame.showRolls().length).toBe(2);
       expect(frame.showRolls()).not.toContain(extraRoll);
     });
-    it("only records one roll if first roll is strike", function() {
+    it("only records one roll per frame if first roll is strike", function() {
       var strikeRoll = 10;
       frame.add(strikeRoll);
       frame.add(aRoll);

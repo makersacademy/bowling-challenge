@@ -1,9 +1,7 @@
 "use strict";
 
 describe("Frame", function() {
-  var frame;
-  var nonStrikeRoll;
-  var strikeRoll;
+  var frame, nonStrikeRoll, strikeRoll;
   beforeEach(function() {
     frame = new Frame();
     nonStrikeRoll = 5;

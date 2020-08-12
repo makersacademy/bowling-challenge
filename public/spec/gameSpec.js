@@ -9,13 +9,13 @@ describe("Game", function() {
     game = new Game();
     frame = new Frame();
     aRoll = 4;
-    spyFrame = jasmine.createSpyObj("spyFrame",['isStrike', 'isSpare', 'getBasePoints', '_rolls']);
+    spyFrame = jasmine.createSpyObj("spyFrame",{
+      'isStrike': false,
+      'isSpare': false, 
+      'getBasePoints': (aRoll + aRoll),
+      '_rolls': [aRoll, aRoll]
+    });
   });
-  // describe("nextFrameFirstRoll()", function() {
-  //   it("returns the next frames first roll", function() {
-      
-  //   });
-  // });
   describe("getTotalPoints() returns total points for frame", function() {
     it("when no bonus points accrued", function() {
       spyFrame.getBasePoints.and.returnValue(aRoll + aRoll);
@@ -25,15 +25,25 @@ describe("Game", function() {
       expect(game.getTotalPoints()).toBe(aRoll * 4);
     });
     it("when there is a spare", function() {
-      // var spareSpyFrame = jasmine.createSpyObj("spareSpyFrame",['isStrike', 'isSpare', 'getBasePoints', '_rolls']);
       var anotherRoll = 5;
+      var spareSpyFrame = jasmine.createSpyObj("spareSpyFrame",{
+        'isStrike': false,
+        'isSpare': true,
+        'getBasePoints': (anotherRoll + anotherRoll),
+        '_rolls': [anotherRoll, anotherRoll]
+      });
+      
       // spareSpyFrame.isSpare.and.returnValue(true);
       // spareSpyFrame.getBasePoints.and.returnValue(anotherRoll + anotherRoll);
       // spyFrame.getBasePoints.and.returnValue(aRoll + aRoll);
       // spyFrame._rolls.and.returnValue([aRoll, aRoll])
       // spyOn(spyFrame._rolls[0]).and.returnValue(aRoll);
+
       // game.add(spareSpyFrame);
       // game.add(spyFrame);
+
+      // spyFrame._rolls[0] = jasmine.createSpy("_rolls[0] spy").and.returnValue(aRoll);
+
       var anotherFrame = new Frame();
       
       anotherFrame.add(anotherRoll);

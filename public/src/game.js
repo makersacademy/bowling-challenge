@@ -11,10 +11,9 @@ class Game {
     }
     this.frames.push(frame);
   }
-
+  
   getTotalPoints() {
-    var points = 0;
-    var frameArr = this.frames;
+    var points = 0, frameArr = this.frames;
     frameArr.forEach(function(frame, index) {
       if (frame.isStrike()) {
         points += frameArr[index+1]._rolls[0];

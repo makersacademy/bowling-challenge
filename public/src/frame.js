@@ -1,15 +1,8 @@
 "use strict";
 
 class Frame {
-  constructor() {
-    this._rolls = [];
-  }
-
-  add(roll) {
-    if (this._rolls.length === 2 || this.isStrike()) {
-      return "No more rolls can be added to this frame";
-    }
-    this._rolls.push(roll);
+  constructor(rolls) {
+    this._rolls = rolls;
   }
 
   showRolls() {

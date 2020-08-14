@@ -36,5 +36,12 @@ describe("Game", function() {
       game.add(spareFrame);
       expect(game.getTotalPoints()).toBe(30);
     });
+    it("when there is a spare and then a strike", function() {
+      frame = new Frame([5, 5]);
+      var strikeFrame = new Frame([10]);
+      game.add(frame);
+      game.add(strikeFrame);
+      expect(game.getTotalPoints()).toBe(30);
+    });
   });
 });

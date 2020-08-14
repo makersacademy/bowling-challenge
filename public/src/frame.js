@@ -5,10 +5,6 @@ class Frame {
     this._rolls = rolls;
   }
 
-  showRolls() {
-    return this._rolls;
-  }
-
   isStrike() {
     return (this._rolls[0] === 10);
   }

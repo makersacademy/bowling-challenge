@@ -16,7 +16,7 @@ describe("Frame", function() {
   });
   describe("isSpare()", function() {
     it("returns true when frame base point total is 10", function() {
-      frame = new Frame([5,5]);
+      frame = new Frame([5, 5]);
       expect(frame.isSpare()).toBe(true);
     });
     it("returns false when first roll is a strike", function() {
@@ -26,8 +26,14 @@ describe("Frame", function() {
   });
   describe("getBasePoints()", function() {
     it("returns base points of frame", function() {
-      frame = new Frame([3,4])
+      frame = new Frame([3, 4])
       expect(frame.getBasePoints()).toBe(7);
     });
   });
+  describe("spareBonus", function() {
+    it("returns points for first roll of frame", function() {
+    frame = new Frame([3,6]);
+    expect(frame.spareBonus()).toBe(3);
+    })
+  })
 });

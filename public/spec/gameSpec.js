@@ -6,9 +6,9 @@ describe("Game", function() {
   beforeEach(function() {
     game = new Game();
     });
-  describe("getTotalPoints() returns total points for frame", function() {
+  describe("getTotalPoints() returns total points for game", function() {
     it("when no bonus points accrued", function() {
-      frame = new Frame([4,4]);
+      frame = new Frame([4, 4]);
       for (var i = 0; i <= 9; i += 1) {
         game.add(frame);
       }
@@ -16,6 +16,11 @@ describe("Game", function() {
       expect(game.getTotalPoints()).toBe(80);
     });
     it("when there is a spare", function() {
+      frame = new Frame([5, 5]);
+      var anotherFrame = new Frame([4, 4]);
+      game.add(frame);
+      game.add(anotherFrame);
+      expect(game.getTotalPoints()).toBe(22);
     });
     it("when there is a strike", function() {
     });

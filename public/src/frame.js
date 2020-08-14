@@ -18,11 +18,12 @@ class Frame {
   }
 
   getBasePoints() {
-    var points = 0;
-    this._rolls.forEach(sum);
-    function sum(rollScore) {
-      points += rollScore;
+    return this._rolls.reduce(pointSum);
+    function pointSum(total, rollPoints) {
+      return total + rollPoints
     }
-    return points;
+  }
+  spareBonus() {
+    return this._rolls[0];
   }
 }

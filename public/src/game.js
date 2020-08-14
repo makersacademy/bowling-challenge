@@ -18,7 +18,7 @@ class Game {
       if (frame.isStrike()) {
         points += frameArr[index+1].getBasePoints();
       } else if (frame.isSpare()) {
-        points += frameArr[index+1]._rolls[0];
+        points += frameArr[index+1].spareBonus();
       }
       points += frame.getBasePoints();
     });

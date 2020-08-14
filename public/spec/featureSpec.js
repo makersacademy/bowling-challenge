@@ -4,7 +4,7 @@ describe("Feature Test", function() {
   var game;
   var frame;
   beforeEach(function() {
-    frame = new Frame();
+    frame = new Frame([4, 4]);
     game = new Game();
   });
   describe("adding frames to game", function() {

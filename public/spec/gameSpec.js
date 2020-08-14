@@ -23,6 +23,11 @@ describe("Game", function() {
       expect(game.getTotalPoints()).toBe(22);
     });
     it("when there is a strike", function() {
+      frame = new Frame([10]);
+      var anotherFrame = new Frame([4, 4]);
+      game.add(frame);
+      game.add(anotherFrame);
+      expect(game.getTotalPoints()).toBe(26);
     });
   });
 });

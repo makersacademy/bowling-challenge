@@ -39,7 +39,7 @@ describe("Frame", function() {
   describe("strikeBonus()", function() {
     it("returns points for first two rolls of frame", function() {
       frame = new Frame([3,6]);
-    expect(frame.strikeBonus()).toBe(9);
+      expect(frame.strikeBonus()).toBe(9);
     })
   })
 });

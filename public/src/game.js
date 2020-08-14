@@ -16,7 +16,7 @@ class Game {
     var points = 0, frameArr = this.frames;
     frameArr.forEach(function(frame, index) {
       if (frame.isStrike()) {
-        points += frameArr[index+1].getBasePoints();
+        points += frameArr[index+1].strikeBonus();
       } else if (frame.isSpare()) {
         points += frameArr[index+1].spareBonus();
       }

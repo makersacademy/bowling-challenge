@@ -30,10 +30,16 @@ describe("Frame", function() {
       expect(frame.getBasePoints()).toBe(7);
     });
   });
-  describe("spareBonus", function() {
+  describe("spareBonus()", function() {
     it("returns points for first roll of frame", function() {
     frame = new Frame([3,6]);
     expect(frame.spareBonus()).toBe(3);
+    })
+  })
+  describe("strikeBonus()", function() {
+    it("returns points for first two rolls of frame", function() {
+      frame = new Frame([3,6]);
+    expect(frame.strikeBonus()).toBe(9);
     })
   })
 });

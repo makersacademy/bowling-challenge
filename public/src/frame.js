@@ -23,7 +23,12 @@ class Frame {
       return total + rollPoints
     }
   }
+
   spareBonus() {
     return this._rolls[0];
+  }
+
+  strikeBonus() {
+    return this.getBasePoints();
   }
 }

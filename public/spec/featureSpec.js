@@ -19,13 +19,19 @@ describe("Feature Test", function() {
       expect(game.frames.length).not.toBe(11);
     });
   });
-  describe("getting game total points", function () {
+  describe("Points total for whole games", function () {
     it("Gutter Game results in 0 points", function() {
       var gutterFrame = new Frame([0,0]);
       for (var i = 0; i <= 9; i += 1) {
         game.add(gutterFrame);
       }
       expect(game.getTotalPoints()).toBe(0);
+    });
+    it("No spare/strike game results in no bonus points", function() {
+      for (var i = 0; i <= 9; i += 1) {
+        game.add(frame);
+      }
+      expect(game.getTotalPoints()).toBe(80);
     });
   });
 });

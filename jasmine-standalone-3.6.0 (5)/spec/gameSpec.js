@@ -16,13 +16,21 @@ describe("Frame ", function() {
       frame = new Frame();
       // scorecard = jasmine.createSpyObj('scorecard', ['captureFrame']);
       frame.enterFirstRollScore(3, scorecard);
-      // frame.enterSecondRollScore(2, scorecard)
+      frame.enterSecondRollScore(2, scorecard)
     });
 
     it('displays score for a single roll', function(){
+      var frame = new Frame();
+      frame.enterFirstRollScore(3, scorecard);
       expect(frame.firstRollScore).toEqual(3);
     });
   });
+
+  it('displays score from second roll', function(){
+    var frame = new Frame();
+    frame.enterSecondRollScore(2, scorecard);
+    expect(frame.secondRollScore).toEqual(2);
+});
 
 //   Calculate frame score.
 // ----------------
@@ -37,10 +45,7 @@ describe("Frame ", function() {
 
 
 
-// it('displays score from second roll', function(){
-//   // frame.enterSecondRollScore(2, scorecard);
-//   expect(frame.secondRollScore).toEqual(2);
-// });
+
 
 //   it('adds total of frame to scorecard', function(){
 //      expect(scorecard.captureFrame).toHaveBeenCalledWith(frame);

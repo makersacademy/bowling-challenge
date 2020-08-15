@@ -14,9 +14,9 @@ class Frame{
   // this.calculatorTotalScore;
   };
 
-  // enterSecondRollScore(pinsDown, scorecard){
-  //   this.secondRollScore = pinsDown;
-  // };
+  enterSecondRollScore(pinsDown, scorecard){
+    this.secondRollScore = pinsDown;
+  };
 
   // calculatorTotalScore(){
   //   this.firstRollScore = pinsDown;

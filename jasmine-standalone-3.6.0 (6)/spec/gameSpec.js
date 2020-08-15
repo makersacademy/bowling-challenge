@@ -46,4 +46,12 @@ it('displays score from second roll', function(){
      expect(scorecard.captureFrame).toHaveBeenCalledWith(frame);
   });
 
+  describe('when score is invalid', function(){
+    it('replies with error message', function(){
+      expect(function(){ frame.enterFirstRollScore(11) }).toThrow(
+       'A maximum of 10 points per frame')
+      
+    })
+  })
+
 });

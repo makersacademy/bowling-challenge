@@ -27,7 +27,7 @@ describe("Frame", function() {
   describe("getBasePoints()", function() {
     it("returns base points of frame", function() {
       frame = new Frame([3, 4])
-      expect(frame.getBasePoints()).toBe(7);
+      expect(frame.points()).toBe(7);
     });
   });
   describe("spareBonus()", function() {

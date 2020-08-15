@@ -19,7 +19,7 @@ describe("Feature Test", function() {
       expect(game.frames.length).not.toBe(11);
     });
   });
-  describe("Points total for whole games", function () {
+  describe("Points total", function () {
     it("Gutter Game", function() {
       var gutterFrame = new Frame([0,0]);
       for (var i = 0; i <= 9; i += 1) {
@@ -41,6 +41,15 @@ describe("Feature Test", function() {
       var finalFrame = new Frame([5, 5, 5]);
       game.add(finalFrame);
       expect(game.getTotalPoints()).toBe(150);
+    });
+    it("Game of strikes", function() {
+      var strikeFrame = new Frame([10]);
+      for (var i = 0; i <= 8; i += 1) {
+        game.add(strikeFrame);
+      }
+      var finalFrame = new Frame([10, 10, 10]);
+      game.add(finalFrame);
+      expect(game.getTotalPoints()).toBe(300);
     });
   });
 });

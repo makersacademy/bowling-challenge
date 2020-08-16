@@ -13,35 +13,35 @@ describe("Game", function() {
         game.add(frame);
       }
       expect(game.frames.length).toBe(10);
-      expect(game.getTotalPoints()).toBe(80);
+      expect(game.totalPoints()).toBe(80);
     });
     it("when there is a spare", function() {
       frame = new Frame([5, 5]);
       var anotherFrame = new Frame([4, 4]);
       game.add(frame);
       game.add(anotherFrame);
-      expect(game.getTotalPoints()).toBe(22);
+      expect(game.totalPoints()).toBe(22);
     });
     it("when there is a strike", function() {
       frame = new Frame([10]);
       var anotherFrame = new Frame([4, 4]);
       game.add(frame);
       game.add(anotherFrame);
-      expect(game.getTotalPoints()).toBe(26);
+      expect(game.totalPoints()).toBe(26);
     });
     it("when there is a strike and then a spare", function() {
       frame = new Frame([10]);
       var spareFrame = new Frame([5, 5]);
       game.add(frame);
       game.add(spareFrame);
-      expect(game.getTotalPoints()).toBe(30);
+      expect(game.totalPoints()).toBe(30);
     });
     it("when there is a spare and then a strike", function() {
       frame = new Frame([5, 5]);
       var strikeFrame = new Frame([10]);
       game.add(frame);
       game.add(strikeFrame);
-      expect(game.getTotalPoints()).toBe(30);
+      expect(game.totalPoints()).toBe(30);
     });
   });
 });

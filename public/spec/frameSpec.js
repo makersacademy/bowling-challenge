@@ -2,12 +2,12 @@
 
 describe("Frame", function() {
   
-  var frame;
+  var frame, spareFrame, strikeFrame;
 
   describe("isStrike()", function() {
     it("returns true when first roll is a strike", function() {
-      frame = new Frame([10]);
-      expect(frame.isStrike()).toBe(true);
+      strikeFrame = new Frame([10]);
+      expect(strikeFrame.isStrike()).toBe(true);
     });
     it("returns false when first roll is not a strike", function () {
       frame = new Frame([5, 4]);
@@ -15,31 +15,33 @@ describe("Frame", function() {
     });
   });
   describe("isSpare()", function() {
-    it("returns true when frame base point total is 10", function() {
-      frame = new Frame([5, 5]);
-      expect(frame.isSpare()).toBe(true);
+    it("returns true when first two rolls total 10", function() {
+      spareFrame = new Frame([5, 5]);
+      expect(spareFrame.isSpare()).toBe(true);
     });
     it("returns false when first roll is a strike", function() {
-      frame = new Frame([10]);
-      expect(frame.isSpare()).toBe(false);
+      strikeFrame = new Frame([10]);
+      expect(strikeFrame.isSpare()).toBe(false);
     });
   });
   describe("getBasePoints()", function() {
     it("returns base points of frame", function() {
-      frame = new Frame([3, 4])
+      frame = new Frame([3, 4]);
       expect(frame.points()).toBe(7);
     });
   });
   describe("spareBonus()", function() {
     it("returns points for first roll of frame", function() {
-    frame = new Frame([3,6]);
-    expect(frame.spareBonus()).toBe(3);
-    })
-  })
+      spareFrame = new Frame([5, 5]);
+      frame = new Frame([3, 6]);
+      expect(spareFrame.spareBonus(frame)).toBe(3);
+    });
+  });
   describe("strikeBonus()", function() {
     it("returns points for first two rolls of frame", function() {
-      frame = new Frame([3,6]);
-      expect(frame.strikeBonus()).toBe(9);
-    })
-  })
+      strikeFrame = new Frame([10]);
+      frame = new Frame([3, 6]);
+      expect(strikeFrame.strikeBonus(frame)).toBe(9);
+    });
+  });
 });

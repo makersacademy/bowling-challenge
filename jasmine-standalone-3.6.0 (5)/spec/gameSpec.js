@@ -46,12 +46,6 @@ describe("Frame ", function() {
   });
 
 
-  it('has a max of 10 in each frame except the last', function(){
-      frame.enterFirstRollScore(2)
-      frame.enterSecondRollScore(3);
-      frame.add(2,3)
-    expect(frame.add).toEqual(5)
-  })
 
 //if the score typed in is greater that 10, error shows but if now, continue playing
   // it('adds score of first annd second roll to frame total', function(){
@@ -94,12 +88,13 @@ describe("Frame ", function() {
     it('knows when it is a spare', function(){
       frame.enterFirstRollScore(10);
       expect(frame.spare()).toEqual(true)
-    });
+    })
 
     it('knows when there is not a spare',function(){
       frame.enterFirstRollScore(3);
-      frame.enterSecondRollScore(5);
+      frame.enterSecondRollScore(2);
     expect(frame.spare()).toEqual(false)
     });
+    
   })
 });

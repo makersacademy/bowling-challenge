@@ -14,9 +14,9 @@ describe("Frame ", function() {
   describe('a single roll', function(){
     beforeEach(function() {
       frame = new Frame();
-      // scorecard = jasmine.createSpyObj('scorecard', ['captureFrame']);
       frame.enterFirstRollScore(3, scorecard);
       frame.enterSecondRollScore(2, scorecard)
+      // scorecard = jasmine.createSpyObj('scorecard', ['captureFrame']);
     });
 
     it('displays score for a single roll', function(){
@@ -27,7 +27,7 @@ describe("Frame ", function() {
   });
 
   it('displays score from second roll', function(){
-    var frame = new Frame();
+    frame = new Frame();
     frame.enterSecondRollScore(2, scorecard);
     expect(frame.secondRollScore).toEqual(2);
 });
@@ -37,11 +37,22 @@ describe("Frame ", function() {
 // As a bowler, 
 // So I can calculate my score for each frame,
 // I want to see the total score for each frame for pins I have knocked out (not strike/10 down
+  it ('can only display figures 10 and below', function(){
+    var i;
+    for(i=0; i<10; i++){
+      frame.displays(11);
+    }
+    expect(frame.totalScorePerFrame).toEqual('ERROR- ABOVE 10');
+    });
 
-//   it('adds score of first roll to frame total', function(){
-//     frame.calculateTotalScore(frame)
-//     expect(frame.calculateTotalScore()).toEqual(3);
-//   })
+
+  // it('adds score of first annd second roll to frame total', function(){
+  //   var frame = new Frame();
+  //   frame.enterFirstRollScore(3, scorecard); 
+  //   frame.enterSecondRollScore(2, scorecard);
+  //   frame.calculateTotalScore(3,2);
+  //   expect(frame.addTotalScore(3,2)).toEqual(5);
+  // });
 
 
 

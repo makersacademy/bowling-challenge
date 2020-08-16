@@ -1,10 +1,12 @@
 class Frame{
-  constructor(firstRollScore, calculatorTotalScore, secondRollScore){
+  constructor(firstRollScore, addTotalScore, secondRollScore){
   this.firstRollScore = firstRollScore;
-  this.calculatorTotalScore = calculatorTotalScore
+  this.addTotalScore = addTotalScore
   this.secondRollScore = secondRollScore;
+  this.totalScorePerFrame = 'ERROR- ABOVE 10'
+  this.captureFrame = this.firstRollScore + this.secondRollScore
   this.scoreCard = function(){
-    return ++this.calculatorTotalScore;
+    return ++this.addTotalScore;
   };
   }
 
@@ -18,8 +20,12 @@ class Frame{
     this.secondRollScore = pinsDown;
   };
 
-  // calculatorTotalScore(){
-  //   this.firstRollScore = pinsDown;
+  displays(){
+    this.totalScorePerFrame 
+  }
+
+  // calculatorTotalScore() {
+  // this.addTotalScore = (this.firstRollScore + this.secondRollScore)
   // }
 }
 

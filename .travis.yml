@@ -1,4 +1,7 @@
 language: node_js
-
+script: node_modules/karma/bin/karma start my.conf.js --single-run
+before_install:
+    - export DISPLAY=:99.0
+    - sh -e /etc/init.d/xvfb start
 before_script:
-    - "npm i -g jasmine-node"
+    - npm install

@@ -3,7 +3,6 @@
 class Frame {
   constructor(rolls) {
     this._rolls = rolls;
-    this._firstRoll = rolls[0]
   }
 
 
@@ -23,7 +22,7 @@ class Frame {
   }
 
   spareBonus() {
-    return this._firstRoll;
+    return this._rolls[0];
   }
 
   strikeBonus() {

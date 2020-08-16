@@ -53,16 +53,30 @@ describe("Feature Test", function() {
     });
     it("half spares and then half strikes", function() {
       var spareFrame = new Frame([5, 5]);
+      var strikeFrame = new Frame([10]);
       for (var i = 0; i < 5; i += 1) {
         game.add(spareFrame);
       }
-      var strikeFrame = new Frame([10]);
       for (var i = 0; i < 4; i += 1) {
         game.add(strikeFrame);
       }
       var finalFrame = new Frame([10, 10, 10]);
       game.add(finalFrame);
       expect(game.getTotalPoints()).toBe(230);
+    })
+    it("half strikes and then half spares", function() {
+      var strikeFrame = new Frame([10]);
+      var spareFrame = new Frame([5, 5]);
+      for (var i = 0; i < 5; i += 1) {
+        game.add(strikeFrame);
+      }
+      
+      for (var i = 0; i < 4; i += 1) {
+        game.add(spareFrame);
+      }
+      var finalFrame = new Frame([5, 5, 5]);
+      game.add(finalFrame);
+      expect(game.getTotalPoints()).toBe(210);
     })
   });
 });

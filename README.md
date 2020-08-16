@@ -8,8 +8,10 @@ Bowling Challenge
 - Includes all bonus points for strikes/spares/final frame. 
 - Travis CI implemented and passing. 
 - Important learning step in using Jasmine CLI and linking spec/source files via module.exports 
+- Installing npm modules such as ESlint, jasmine CLI etc. 
 
 ### Tools used: 
 - Node_JS
 - Jasmine
 - Travis 
+- ESlint 

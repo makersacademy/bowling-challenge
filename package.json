@@ -2,10 +2,11 @@
   "name": "bowling-challenge",
   "version": "1.0.0",
   "description": "bowling challenge json",
-  "main": "index.js",
+  "main": "src/bowlingGame.js",
   "directories": {
     "doc": "docs",
-    "lib": "lib"
+    "lib": "lib",
+    "src": "src"
   },
   "dependencies": {},
   "devDependencies": {

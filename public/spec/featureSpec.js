@@ -8,18 +8,6 @@ describe("Feature Test", function() {
     strikeFrame = new Frame([10]);
     spareFrame = new Frame([5, 5]);
   });
-  describe("adding frames to game", function() {
-    it("records 10 frames per game", function() {
-      for (var i = 0; i <= 9; i += 1) {
-        game.add(frame);
-      }
-      expect(game.frames).toContain(frame);
-      expect(game.frames.length).toBe(10);
-      game.add(frame);
-      expect(game.frames.length).toBe(10);
-      expect(game.frames.length).not.toBe(11);
-    });
-  });
   describe("Points total", function () {
     it("Gutter Game", function() {
       var gutterFrame = new Frame([0, 0]);
@@ -29,7 +17,7 @@ describe("Feature Test", function() {
       expect(game.totalPoints()).toBe(0);
     });
     it("No spare/strike game", function() {
-      for (var i = 0; i < 10; i += 1) {
+      for (var i = 0; i <= 9; i += 1) {
         game.add(frame);
       }
       expect(game.totalPoints()).toBe(80);

@@ -29,28 +29,25 @@ class Frame {
       return this.strikeBonus(nextFrame, nextNextFrame);
     } else if (this.isSpare()) {
       return this.spareBonus(nextFrame);
-    } else {
-    return 0;
     }
+    return 0;
   }
 
   spareBonus(nextFrame) {
-    if (nextFrame !== undefined) {
-      return nextFrame._firstRoll();
-    }
-    return 0;
+    return (nextFrame !== undefined ? nextFrame._firstRoll(): 0);
   }
 
   strikeBonus(nextFrame, nextNextFrame) {
-    if (nextFrame === undefined) {
-      return 0;
-    } else if (nextFrame.isStrike() && nextNextFrame !== undefined) {
-      return nextFrame._firstRoll() + nextNextFrame._firstRoll();
-    } else if (nextFrame.isStrike() && nextNextFrame === undefined) {
-      if (nextFrame._rolls.length < 2) {
-        return nextFrame._firstRoll();
+    if (nextFrame === undefined) return 0;
+    if (nextFrame.isStrike()) {
+      if (nextNextFrame !== undefined) {
+        return nextFrame._firstRoll() + nextNextFrame._firstRoll();
       } else {
-      return nextFrame._firstRoll() + nextFrame._rolls[1];
+        if (nextFrame._rolls.length === 1) {
+          return nextFrame._firstRoll();
+        } else {
+          return nextFrame._firstRoll() + nextFrame._rolls[1];
+        }
       }
     }
     return nextFrame.points();

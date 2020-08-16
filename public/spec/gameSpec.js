@@ -6,7 +6,7 @@ describe("Game", function() {
   beforeEach(function() {
     game = new Game();
     });
-  describe("getTotalPoints() returns total points for game", function() {
+  describe("totalPoints()", function() {
     it("when no bonus points accrued", function() {
       frame = new Frame([4, 4]);
       for (var i = 0; i <= 9; i += 1) {

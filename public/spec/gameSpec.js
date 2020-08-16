@@ -12,7 +12,6 @@ describe("Game", function() {
       for (var i = 0; i <= 9; i += 1) {
         game.add(frame);
       }
-      expect(game.frames.length).toBe(10);
       expect(game.totalPoints()).toBe(80);
     });
     it("when there is a spare", function() {

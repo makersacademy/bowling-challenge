@@ -1,10 +1,12 @@
+
 class Frame{
   constructor(firstRollScore, addTotalScore, secondRollScore){
   this.firstRollScore = firstRollScore;
   this.addTotalScore = addTotalScore
   this.secondRollScore = secondRollScore;
+  const MAX_FRAMECAPTURED = 10
   this.totalScorePerFrame = 'ERROR- ABOVE 10'
-  this.captureFrame = this.firstRollScore + this.secondRollScore
+  this.add = this.firstRollScore + this.secondRollScore
   this.scoreCard = function(){
     return ++this.addTotalScore;
   };
@@ -17,15 +19,26 @@ class Frame{
   };
 
   enterSecondRollScore(pinsDown, scorecard){
-    this.secondRollScore = pinsDown;
+  this.secondRollScore = pinsDown;
   };
 
   displays(){
-    this.totalScorePerFrame 
+    if(this.captureFrame > this.MAX_FRAMECAPTURED){
+      return this.totalScorePerFrame 
+  }
   }
 
-  // calculatorTotalScore() {
-  // this.addTotalScore = (this.firstRollScore + this.secondRollScore)
+  captureFrame(){
+    this.add()
+  }
+
+  strike(){
+    return this.firstRollScore === 10;
+  }
+
+
+  // calculateTotalScore() {
+  // // this.addTotalScore = (this.enterFirstRollScore + this.enterSecondRollScore)
   // }
 }
 

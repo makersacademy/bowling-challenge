@@ -7,8 +7,9 @@ describe("Bowling Scorecard", function(){
     bowling.roll(3)
     bowling.roll(4)
     bowling.score()
+    bowling.saveFrameTotal()
     bowling.tally()
-    expect(bowling.totalScore).toEqual(7)
+    expect(bowling.total).toEqual(7)
   });
 
   it("contains a log of all rolls up to present", function() {
@@ -17,7 +18,47 @@ describe("Bowling Scorecard", function(){
     bowling.roll(1)
     bowling.roll(3)
     bowling.score()
+    bowling.saveFrameTotal()
     bowling.tally()
-    expect(bowling.totalScore).toEqual(11)
+    expect(bowling.total).toEqual(11)
+  });
+
+  it("can recognise a strike and add the appropriate score", function() {
+    bowling.roll(10)
+    bowling.roll(3)
+    bowling.roll(1)
+    bowling.score()
+    bowling.saveFrameTotal()
+    bowling.evaluateStrike()
+    bowling.tally()
+    expect(bowling.total).toEqual(18)
+  });
+
+  it("can recognise a spare and add the appropriate score", function() {
+    bowling.roll(4)
+    bowling.roll(6)
+    bowling.roll(3)
+    bowling.roll(3)
+    bowling.score()
+    bowling.saveFrameTotal()
+    bowling.evaluateSpare()
+    bowling.tally()
+    expect(bowling.total).toEqual(19)
+  });
+
+  it("can recognise a spare and a strike in the same game and add the appropriate score", function() {
+    bowling.roll(4)
+    bowling.roll(6)
+    bowling.roll(3)
+    bowling.roll(3)
+    bowling.roll(10)
+    bowling.roll(3)
+    bowling.roll(1)
+    bowling.score()
+    bowling.saveFrameTotal()
+    bowling.evaluateSpare()
+    bowling.evaluateStrike()
+    bowling.tally()
+    expect(bowling.total).toEqual(37)
   });
 });

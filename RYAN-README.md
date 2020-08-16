@@ -2,11 +2,13 @@
 
 Weekend Challange to build a program that counts and sums the scores of a bowling game for one player.
 
+[![Build Status](https://travis-ci.com/rjkviegas/bowling-challenge.svg?branch=master)](https://travis-ci.com/rjkviegas/bowling-challenge)* Did not set up properly
+
 ### Technologies Used
 
 - Program model written in JavaScript
-- Testing is done using Jasmine 3.6.0
-- ESLint used to make code conform to conventions
+- Testing is done using Jasmine 3.6.0 in Goggle Chrome
+- ESLint used to make code conform to widley accepted conventions
 
 
 ### User Stories

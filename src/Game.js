@@ -9,10 +9,10 @@ class Game {
     if (this.isGameOver()) {
       throw new Error("game over")
     }
-    this.Frame = [roll1, roll2]
+    this.frame = [roll1, roll2]
     this.addScore(roll1, roll2)
 
-    this.isFrameASpare(roll1, roll2)
+    this.isFrameASpareOrStrike(roll1, roll2)
 
     ++this.frameCounter
   }
@@ -33,8 +33,11 @@ class Game {
     return false
   }
 
-  isFrameASpare(roll1, roll2) {
-    if (roll1 + roll2 === this.MAX_FRAME) {
+  isFrameASpareOrStrike(roll1, roll2) {
+    if (roll1 === this.MAX_FRAME) {
+      this.lastFrameStatus = "strike"
+    }
+    else if (roll1 + roll2 === this.MAX_FRAME) {
       this.lastFrameStatus = "spare"
     }
   }
@@ -43,9 +46,22 @@ class Game {
     this.score += lastFrame[0]
   }
 
+  addStrikeScore(frame) {
+    this.score += frame[0]
+    if (lastFrame[0] === 10) {
+      // this.score += the next frame also
+    }
+    else {
+      this.score += frame[1]
+    }
+  }
+
   checkLastFrameStatus() {
-    if (this.lastFrameStatus === "spare") {
-      this.addSpareScore(this.Frame)
+    if (this.lastFrameStatus === "strike") {
+      this.addStrikeScore(this.frame)
+    }
+    else if (this.lastFrameStatus === "spare") {
+      this.addSpareScore(this.frame)
     }
   }
 }

@@ -27,17 +27,22 @@ describe('Bowling', function() {
       game.bowlFrame(8,1)
       expect(game.showScore()).toEqual(27)
     })
+    it('Score saves previous roll as a strike, next two rolls are added to that score', function() {
+      game.bowlFrame(10,0)
+      game.bowlFrame(2,4)
+      expect(game.showScore()).toEqual(22)
+    })
   });
 
   describe('frame', function() {
     it('A user can bowl a whole frame', function() {
       game.bowlFrame(3, 4)
-      expect(game.Frame).toEqual([3,4])
+      expect(game.frame).toEqual([3,4])
     });
     it('A user can bowl more than one frame', function() {
       game.bowlFrame(1,1)
       game.bowlFrame(3,4)
-      expect(game.Frame).toEqual([3,4])
+      expect(game.frame).toEqual([3,4])
     })
     it('A user can bowl 10 frames after this its the end', function() {
       manyFrames();
@@ -47,6 +52,10 @@ describe('Bowling', function() {
     it('A player can roll a spare, the status of that roll is made a spare', function() {
       game.bowlFrame(3,7)
       expect(game.lastFrameStatus).toEqual("spare")
+    })
+    it('A player can roll a strike, the status of that roll is made a strike', function() {
+      game.bowlFrame(10,0)
+      expect(game.lastFrameStatus).toEqual("strike")
     })
   });
 

@@ -27,3 +27,6 @@ A player can roll a spare
 and then roll another frame
 They are returned a score, based on rolling the spare
 ```
+```
+A player can roll a strike
+```

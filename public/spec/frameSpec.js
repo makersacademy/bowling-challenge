@@ -7,7 +7,7 @@ describe("Frame", function() {
   describe("isStrike()", function() {
     it("returns true when first roll is a strike", function() {
       strikeFrame = new Frame([10]);
-      expect(strikeFrame.isStrike()).toBe(true);
+      expect(strikeFrame.isStrike()).toBe(false);
     });
     it("returns false when first roll is not a strike", function () {
       frame = new Frame([5, 4]);

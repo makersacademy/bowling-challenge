@@ -11,7 +11,7 @@
     "eslint": "^7.6.0"
   },
   "scripts": {
-    "test": "open SpecRUnner.html"
+    "test": "open SpecRunner.html"
   },
   "repository": {
     "type": "git",

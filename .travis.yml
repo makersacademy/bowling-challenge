@@ -1,6 +1,4 @@
 language: node_js
 os: osx
 node_js:
-    - "14.7"
-before_script:
-    - "open SpecRunner.html"
+    - "14.7.0"

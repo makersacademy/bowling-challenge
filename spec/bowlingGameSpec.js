@@ -1,7 +1,8 @@
 describe('BowlingGame', function () {
-  var game = require("../src/bowlingGame.js");
+  var BowlingGame = require("../src/bowlingGame.js");
+
   beforeEach(function () {
-  game = new BowlingGame();
+  game = new BowlingGame;
   });
 
   function rollMultiple(rolls, pins) {

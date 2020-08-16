@@ -61,3 +61,4 @@ class BowlingGame {
     return this._rollScores;
   }
 }
+module.exports = BowlingGame;

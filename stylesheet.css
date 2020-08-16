@@ -1,0 +1,62 @@
+button {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: #909bf7;
+  border: 1px solid slategrey;
+  color: white;
+  padding: 10px 25px;
+  cursor: pointer;
+  float: left;
+}
+
+button:not(:last-child) {
+  border-right: none;
+}
+
+button:hover {
+  animation-delay: 0.5s;
+  background-color: #888bf7;
+}
+
+button:active {
+  background-color: #909bf7
+}
+
+#border {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    position: relative;
+    top: 0%;
+    left: 0%;
+    height: 35%;
+    width: 18%;
+    border:1em solid #FFFFFF;
+    margin:2%;
+    margin-left: 15%;
+    transition: all 0.2s;
+    background-color: white;
+    box-shadow: 5px 5px 10px #272727;
+    padding-bottom: 2%
+}
+
+#nada {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  position: absolute;
+  top: 0%;
+  right: 30%;
+  height: 35%;
+  width: 18%;
+  border:1em solid #FFFFFF;
+  margin:2%;
+  margin-left: 15%;
+  transition: all 0.2s;
+  background-color: white;
+  box-shadow: 5px 5px 10px #272727;
+  padding-bottom: 2%;
+  float: right;
+}

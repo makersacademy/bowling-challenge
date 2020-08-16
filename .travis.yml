@@ -3,4 +3,4 @@ os: osx
 node_js:
     - "14.7"
 before_script:
-    - "npm i -g jasmine-node"
+    - "open SpecRunner.html"

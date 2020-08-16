@@ -14,7 +14,14 @@ attributes:
 
 User Stories:
 ```
-A user can have a go bowling
+A player can have a go bowling
 They get two rolls per go
 They are returned a score for their rolls
+```
+```
+A player can roll 10 frames
+before the game ends
+```
+```
+A player can roll a strike
 ```

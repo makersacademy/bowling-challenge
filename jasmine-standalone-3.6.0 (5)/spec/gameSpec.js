@@ -90,4 +90,16 @@ describe("Frame ", function() {
     })
   })
 
+  describe('spare', function(){
+    it('knows when it is a spare', function(){
+      frame.enterFirstRollScore(10);
+      expect(frame.spare()).toEqual(true)
+    });
+
+    it('knows when there is not a spare',function(){
+      frame.enterFirstRollScore(3);
+      frame.enterSecondRollScore(5);
+    expect(frame.spare()).toEqual(false)
+    });
   })
+});

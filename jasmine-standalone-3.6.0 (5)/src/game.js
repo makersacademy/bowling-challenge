@@ -36,7 +36,9 @@ class Frame{
     return this.firstRollScore === 10;
   }
 
-
+  spare(){
+    return this.firstRollScore === 10;
+  }
   // calculateTotalScore() {
   // // this.addTotalScore = (this.enterFirstRollScore + this.enterSecondRollScore)
   // }

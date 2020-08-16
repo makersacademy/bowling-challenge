@@ -1,0 +1,32 @@
+Plan:
+
+- Have a counter which increments and it knows which frame you are on
+- If you get a strike on roll 1 of a frame, you go straight to next frame and do not roll again
+- If you get a spare or strike you get 1/2 more rolls on the last frame
+- Score needs to be some accumulative variable as well.
+- If you get a strike your score is 10 + value of next two rolls
+- If you get a spare your score is 10 + value of next roll
+
+
+attributes:
+* currentFrame
+* previousFrame
+
+User Stories:
+```
+A player can have a go bowling
+They get two rolls per go
+They are returned a score for their rolls
+```
+```
+A player can roll 10 frames
+before the game ends
+```
+```
+A player can roll a spare
+and then roll another frame
+They are returned a score, based on rolling the spare
+```
+```
+A player can roll a strike
+```

@@ -1,0 +1,33 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "bowling challenge json",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
+  },
+  "scripts": {
+    "test": "jasmine-node spec/bowlingGameSpec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harrylb14/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harrylb14/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/harrylb14/bowling-challenge#readme"
+}

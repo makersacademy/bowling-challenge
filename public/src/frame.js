@@ -25,30 +25,21 @@ class Frame {
   }
 
   bonusPoints(nextFrame, nextNextFrame) {
-    if (this.isStrike()) {
-      return this.strikeBonus(nextFrame, nextNextFrame);
-    } else if (this.isSpare()) {
-      return this.spareBonus(nextFrame);
-    }
+    if (this.isStrike()) return this.strikeBonus(nextFrame, nextNextFrame);
+    if (this.isSpare()) return this.spareBonus(nextFrame);
     return 0;
   }
 
   spareBonus(nextFrame) {
-    return (nextFrame !== undefined ? nextFrame._firstRoll(): 0);
+    return (nextFrame !== undefined ? nextFrame._firstRoll() : 0);
   }
 
   strikeBonus(nextFrame, nextNextFrame) {
     if (nextFrame === undefined) return 0;
-    if (nextFrame.isStrike()) {
-      if (nextNextFrame !== undefined) {
-        return nextFrame._firstRoll() + nextNextFrame._firstRoll();
-      } else {
-        if (nextFrame._rolls.length === 1) {
-          return nextFrame._firstRoll();
-        } else {
-          return nextFrame._firstRoll() + nextFrame._rolls[1];
-        }
-      }
+    if (nextFrame.isStrike() && nextNextFrame !== undefined) {
+      return nextFrame._firstRoll() + nextNextFrame._firstRoll();
+    } else if (nextFrame.isStrike() && nextNextFrame === undefined) {
+      return (nextFrame._rolls.length === 1 ? nextFrame._firstRoll() : nextFrame._firstRoll() + nextFrame._rolls[1]);
     }
     return nextFrame.points();
   }

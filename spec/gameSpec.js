@@ -33,7 +33,20 @@ describe('Game', function() {
   it('ends the frame if a strike is bowled', function() {
     game.roll(10)
     expect(game.currentFrame()).toEqual(2)
-  })
+  });
+  it('calls the final frame for the end of the game', function() {
+    game.roll(4,4)
+    game.roll(4,4)
+    game.roll(4,4)
+    game.roll(4,4)
+    game.roll(4,4)
+    game.roll(4,4)
+    game.roll(4,4)
+    game.roll(4,4)
+    game.roll(4,4)
+    game.roll(4)
+    expect(game.frame).toBeInstanceOf(finalFrame)
+  });
 //  it('calculates the bonus for a spare', function() {
 //    game.roll(9)
 //    game.roll(1)

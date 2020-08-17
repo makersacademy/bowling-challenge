@@ -1,27 +1,34 @@
-'use strict';
+'use strict()';
 class Game {
   constructor() {
-    this.score = 0
-    this._frame = new Frame
-    this.game =[]
-  };
+    this.score = 0;
+    this.frame = new Frame();
+    this.game =[];
+  }
+  startFrame() {
+    if (this.game.length == 9) {
+      this.frame = new finalFrame();
+    } else {
+      this.frame = new Frame();
+    }
+  }
   roll(roll) {
-    this.completeGame()
-    this._frame.roll(roll)
-    this.completeFrame(roll)
-    this.score += roll
-    return this.score
-  };
+    this.completeGame();
+    this.frame.roll(roll);
+    this.completeFrame(roll);
+    this.score += roll;
+    return this.score;
+  }
   currentFrame() {
-    return this.game.length + 1
-  };
+    return this.game.length + 1;
+  }
   completeFrame(roll) {
-    if (this._frame.rolls.length === 2) {
-      this.game.push(this._frame)
-      this._frame = new Frame
+    if (this.frame.rolls.length === 2) {
+      this.game.push(this.frame);
+      this.startFrame();
     } else if (roll === 10) {
-      this.game.push(this._frame)
-      this._frame = new Frame
+      this.game.push(this.frame);
+      this.startFrame();
     }
   }
   completeGame() {
@@ -30,4 +37,4 @@ class Game {
       throw 'Game over'
     }
   }
-};
+}

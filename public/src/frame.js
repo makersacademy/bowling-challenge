@@ -3,14 +3,15 @@
 class Frame {
   constructor(rolls) {
     this._rolls = rolls;
+    this._MAXIMUM_SCORE = 10;
   }
 
   isStrike() {
-    return (this._firstRoll() === 10);
+    return (this._firstRoll() === this._MAXIMUM_SCORE);
   }
 
   isSpare() {
-    return (this._firstRoll() + this._rolls[1] === 10);
+    return (this._firstRoll() + this._rolls[1] === this._MAXIMUM_SCORE);
   }
 
   points() {

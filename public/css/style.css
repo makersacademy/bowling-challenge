@@ -1,0 +1,13 @@
+body {
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 200px;
+  margin-left: 200px;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+}

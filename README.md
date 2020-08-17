@@ -1,6 +1,30 @@
-
 Bowling Challenge
 =================
+
+User Stories
+------------
+
+As a bowler
+So that I can keep score of my game
+I want to be able to get an empty score card
+
+As a bowler
+So that I can record how many pins I knocked down
+I want to be able to add the score to a scorecard
+
+As a bowler
+So that I can see how well I'm doing overall
+I want to be able to see a running total of my scores
+
+As a bowler
+So that I can avoid doing any maths
+I want my bonus scores to be worked out for me, and added to my total
+
+
+
+
+
+
 
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README

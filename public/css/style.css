@@ -1,0 +1,87 @@
+body {
+  background-image: url("https://cdn.asme.org/getmedia/c53bada1-e094-47cc-a4db-5a7b348633ed/Having-a-Bowling-Ball_hero.jpg.aspx"), url("https://cdn.asme.org/getmedia/c53bada1-e094-47cc-a4db-5a7b348633ed/Having-a-Bowling-Ball_hero.jpg.aspx");
+  background-position: left bottom, right bottom;
+  background-repeat: no-repeat, no-repeat;
+  background-attachment: fixed;
+  font-family:
+  Georgia, "Times New Roman",
+  Times, serif
+}
+
+
+
+h1 {
+  text-align: center;
+}
+
+button {
+  background-color: red;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 22px;
+  text-decoration: none;
+  margin: 8px;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+}
+
+table {
+  border: 3px solid black;
+  width: 75%;
+  text-align: center;
+  margin: auto;
+}
+
+table, td, th {
+  height: 20px;
+}
+
+table, td {
+  border: 3px solid black;
+  border-collapse: collapse;
+}
+
+th {
+	border-right: 3px solid black;
+  border-bottom: 3px solid black;
+}
+
+td {
+	min-width: 30px;
+  max-width: 30px;
+}
+
+.frame-score {
+	border: none;
+	height: 1.3em;
+
+}
+
+.track-score {
+	height: 1.3em;
+    border: none;
+}
+
+.scoring-buttons {
+  text-align: center;
+  margin: 1em;
+}
+
+.strike {
+  border-radius: 100%;
+  display: block;
+  position: relative;
+  margin: 30px 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.no-score {
+    border-radius: 1100%;
+    display: block;
+    position: relative;
+    margin: 30px 10px;
+    margin-left: auto;
+    margin-right: auto;
+}

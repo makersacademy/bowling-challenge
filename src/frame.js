@@ -5,6 +5,8 @@ class Frame {
   }
 
   roll(score) {
-    this.firstTurn = 5;
+    this.firstTurn == undefined
+      ? (this.firstTurn = score)
+      : (this.secondTurn = score);
   }
 }

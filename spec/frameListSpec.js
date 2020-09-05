@@ -14,5 +14,10 @@ describe("FrameList", () => {
       frameList.add(5, 5);
       expect(frameList.frames).toEqual(["Spare"]);
     });
+
+    it("adds Strike to the frame list when player Strikes", () => {
+      frameList.add("Strike");
+      expect(frameList.frames).toEqual(["Strike"]);
+    });
   });
 });

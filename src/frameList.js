@@ -12,5 +12,24 @@ class FrameList {
     } else {
       this.frames.push(total);
     }
+
+    this.calculate(roll_1, roll_2);
+  }
+
+  calculate(roll_1, roll_2) {
+    let result = [];
+    let strikes = 0;
+    this.frames.map((frame) => {
+      if (frame == "Strike") {
+        strikes += 10;
+        result.push(frame);
+      } else if (strikes > 0) {
+        result.push((roll_1 + roll_2) * 2 + strikes);
+        strikes = 0;
+      } else {
+        result.push(frame);
+      }
+    });
+    this.frames = result;
   }
 }

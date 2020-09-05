@@ -20,4 +20,13 @@ describe("FrameList", () => {
       expect(frameList.frames).toEqual(["Strike"]);
     });
   });
+
+  describe("calculate", () => {
+    it("add Strike + bonus from the next round", () => {
+      frameList.add("Strike");
+      frameList.add(4, 1);
+      frameList.calculate();
+      expect(frameList.frames).toEqual(["Strike", 20]);
+    });
+  });
 });

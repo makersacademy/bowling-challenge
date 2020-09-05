@@ -72,6 +72,25 @@ describe("Player", () => {
       player.newFrame(frame2);
       expect(player.frameScore()).toEqual(["Spare", 18]);
     });
+
+    it("Calculate the score of Spare + Strike round", () => {
+      var frame1 = jasmine.createSpyObj("frame", ["SomeFn"], {
+        firstTurn: 5,
+        secondTurn: 5,
+      });
+      var frame2 = jasmine.createSpyObj("frame", ["SomeFn"], {
+        firstTurn: "Strike",
+        secondTurn: undefined,
+      });
+      var frame3 = jasmine.createSpyObj("frame", ["SomeFn"], {
+        firstTurn: 1,
+        secondTurn: 4,
+      });
+      player.newFrame(frame1);
+      player.newFrame(frame2);
+      player.newFrame(frame3);
+      expect(player.frameScore()).toEqual(["Spare", "Strike", 40]);
+    });
   });
 
   describe("totalScore", () => {

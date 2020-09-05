@@ -6,6 +6,13 @@ class Player {
   }
 
   newFrame(frame) {
+    if (
+      this.turns == 10 &&
+      (this.frames[-1] != "strike" || this.frames[-1] != "spare")
+    ) {
+      throw new Error("Max frames reached for the game");
+    }
+
     this.frames.push(frame);
     this.frameCounter();
   }

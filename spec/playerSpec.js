@@ -22,6 +22,15 @@ describe("Player", () => {
       player.newFrame("this is a frame");
       expect(player.frames.length).toEqual(1);
     });
+
+    it("Raise error if player try to play more then 10 turns", () => {
+      for (var i = 0; i < 10; i++) {
+        player.newFrame("this is a frame");
+      }
+      expect(() => {
+        player.newFrame("11th frame");
+      }).toThrow(new Error("Max frames reached for the game"));
+    });
   });
 
   describe("frameScore", () => {

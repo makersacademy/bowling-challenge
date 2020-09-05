@@ -4,6 +4,7 @@ class Player {
     this.frames = [];
     this.turns = 0;
     this.strike = 0;
+    this.spare = 0;
   }
 
   newFrame(frame) {
@@ -19,18 +20,27 @@ class Player {
   }
 
   frameScore() {
-    let score = this.frames.map((each) => {
+    let score = [];
+    this.frames.map((each) => {
       if (each.firstTurn == "Strike") {
         this.strike += 10;
-        return each.firstTurn;
+        score.push(each.firstTurn);
+      } else if (each.firstTurn + each.secondTurn == 10) {
+        this.spare += 10;
+        score.push("Spare");
       } else {
         if (this.strike > 0) {
-          return (each.firstTurn + each.secondTurn) * 2 + this.strike;
+          score.push((each.firstTurn + each.secondTurn) * 2 + this.strike);
+          this.strike = 0;
+        } else if (this.spare > 0) {
+          score.push(each.firstTurn * 2 + each.secondTurn + this.spare);
+          this.spare = 0;
         } else {
-          return each.firstTurn + each.secondTurn;
+          score.push(each.firstTurn + each.secondTurn);
         }
       }
     });
+
     return score;
   }
 

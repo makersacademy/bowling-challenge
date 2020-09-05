@@ -1,8 +1,13 @@
 describe("Player", () => {
   var player;
-
+  var frame;
   beforeEach(() => {
     player = new Player("Player 1");
+
+    frame = jasmine.createSpyObj("frame", ["SomeFn"], {
+      firstTurn: 3,
+      secondTurn: 5,
+    });
   });
 
   it("Displays player name", () => {
@@ -35,10 +40,6 @@ describe("Player", () => {
 
   describe("frameScore", () => {
     it("Display the score for each frame", () => {
-      var frame = jasmine.createSpyObj("frame", ["SomeFn"], {
-        firstTurn: 3,
-        secondTurn: 5,
-      });
       player.newFrame(frame);
       player.newFrame(frame);
       expect(player.frameScore()).toEqual([8, 8]);
@@ -57,14 +58,24 @@ describe("Player", () => {
       player.newFrame(frame2);
       expect(player.frameScore()).toEqual(["Strike", 20]);
     });
+
+    it("Calculate the score of Spare round", () => {
+      var frame1 = jasmine.createSpyObj("frame", ["SomeFn"], {
+        firstTurn: 5,
+        secondTurn: 5,
+      });
+      var frame2 = jasmine.createSpyObj("frame", ["SomeFn"], {
+        firstTurn: 2,
+        secondTurn: 4,
+      });
+      player.newFrame(frame1);
+      player.newFrame(frame2);
+      expect(player.frameScore()).toEqual(["Spare", 18]);
+    });
   });
 
   describe("totalScore", () => {
     it("return the total score of the game", () => {
-      var frame = jasmine.createSpyObj("frame", ["SomeFn"], {
-        firstTurn: 3,
-        secondTurn: 5,
-      });
       player.newFrame(frame);
       player.newFrame(frame);
       expect(player.totalScore()).toEqual(16);

@@ -19,10 +19,17 @@ class FrameList {
   calculate(roll_1, roll_2) {
     let result = [];
     let strikes = 0;
+    let spares = 0;
     this.frames.map((frame) => {
       if (frame == "Strike") {
         strikes += 10;
         result.push(frame);
+      } else if (frame == "Spare") {
+        spares += 10;
+        result.push(frame);
+      } else if (spares > 0) {
+        result.push(roll_1 * 2 + roll_2 + spares);
+        spares = 0;
       } else if (strikes > 0) {
         result.push((roll_1 + roll_2) * 2 + strikes);
         strikes = 0;

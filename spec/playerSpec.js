@@ -43,6 +43,20 @@ describe("Player", () => {
       player.newFrame(frame);
       expect(player.frameScore()).toEqual([8, 8]);
     });
+
+    it("Display the strike and calculate the bonus for the next frame", () => {
+      var frame1 = jasmine.createSpyObj("frame", ["SomeFn"], {
+        firstTurn: "Strike",
+        secondTurn: undefined,
+      });
+      var frame2 = jasmine.createSpyObj("frame", ["SomeFn"], {
+        firstTurn: 4,
+        secondTurn: 1,
+      });
+      player.newFrame(frame1);
+      player.newFrame(frame2);
+      expect(player.frameScore()).toEqual(["Strike", 20]);
+    });
   });
 
   describe("totalScore", () => {

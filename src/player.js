@@ -3,6 +3,7 @@ class Player {
     this.name = name;
     this.frames = [];
     this.turns = 0;
+    this.strike = 0;
   }
 
   newFrame(frame) {
@@ -18,7 +19,18 @@ class Player {
   }
 
   frameScore() {
-    let score = this.frames.map((each) => each.firstTurn + each.secondTurn);
+    let score = this.frames.map((each) => {
+      if (each.firstTurn == "Strike") {
+        this.strike += 10;
+        return each.firstTurn;
+      } else {
+        if (this.strike > 0) {
+          return (each.firstTurn + each.secondTurn) * 2 + this.strike;
+        } else {
+          return each.firstTurn + each.secondTurn;
+        }
+      }
+    });
     return score;
   }
 

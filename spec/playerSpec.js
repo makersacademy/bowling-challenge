@@ -13,6 +13,10 @@ describe("Player", () => {
     expect(player.frames).toEqual([]);
   });
 
+  it("Show the number of turns each player did", () => {
+    expect(player.turns).toEqual(0);
+  });
+
   describe("newFrame", () => {
     it("add new frame to the frames list", () => {
       player.newFrame("this is a frame");
@@ -44,7 +48,7 @@ describe("Player", () => {
     });
   });
 
-  describe("turns", () => {
+  describe("frameCounter", () => {
     it("Counts the number of frames played by the player", () => {
       player.newFrame("this is a fake frame");
       expect(player.turns).toEqual(1);

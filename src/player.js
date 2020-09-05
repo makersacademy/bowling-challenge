@@ -7,6 +7,7 @@ class Player {
 
   newFrame(frame) {
     this.frames.push(frame);
+    this.frameCounter();
   }
 
   frameScore() {
@@ -19,5 +20,7 @@ class Player {
     return score;
   }
 
-  frameCounter() {}
+  frameCounter() {
+    this.turns = this.frames.length;
+  }
 }

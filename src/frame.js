@@ -3,11 +3,13 @@
 class Frame {
 
   constructor() {
-    this.frame = []
+    this.frame = [];
+    this.score = 0;
   }
 
   bowl(score) {
     this.frame.push(score);
+    this.score += score;
   }
 
   firstBowl() {
@@ -30,11 +32,7 @@ class Frame {
     return this.frame.length === 2 && (this.firstBowl() + this.secondBowl() === 10)
   }
 
-  score() {
-    if(this.isAStrike() === true) {
-      return 10;
-    } else  {
-      return this.firstBowl() + this.secondBowl();
-    }
+  getScore()  {
+    return this.score
   }
 }

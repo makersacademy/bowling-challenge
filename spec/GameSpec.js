@@ -25,6 +25,11 @@ describe('Game', function(){
   });
 
   describe('#recordRoll', function() {
+    it('starts a new frame after a strike', function() {
+      game.recordRoll(10);
+      expect(game.frameCount).toEqual(2);
+    });
+
     beforeEach(function() {
       game.recordRoll(4);
     });
@@ -89,7 +94,6 @@ describe('Game', function(){
       game.recordRoll(10);
       game.recordRoll(10);
       expect(game.score()).toEqual(40);
-
     });
   });
 });

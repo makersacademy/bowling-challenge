@@ -6,7 +6,7 @@ describe('Game', function(){
     game = new Game();
   });
 
-  describe('a new game', function() {
+  describe('new Game()', function() {
     it('starts on the first frame', function() {
       expect(game.frameCount).toEqual(1);
     });
@@ -20,7 +20,7 @@ describe('Game', function(){
     });
   });
 
-  describe('a new roll', function() {
+  describe('#newRoll', function() {
     beforeEach(function() {
       game.newRoll(4);
     });
@@ -31,6 +31,19 @@ describe('Game', function(){
 
     it('decreases the roll count', function() {
       expect(game.rollCount).toEqual(1);
+    });
+
+    it('can\'t roll below 0', function() {
+      expect(function() { game.newRoll(7); }).toThrowError('Invalid roll');
+    });
+
+    it('can\'t have a negative roll count', function() {
+      game.newRoll(1);
+      expect(function() { game.newRoll(1); }).toThrowError('Unable to roll');
+    });
+
+    it('can\'t roll a number greater than 10', function() {
+      expect(function() {game.newRoll(11); }).toThrowError('Invalid roll');
     });
   });
 });

@@ -45,5 +45,9 @@ describe('Game', function(){
     it('can\'t roll a number greater than 10', function() {
       expect(function() {game.newRoll(11); }).toThrowError('Invalid roll');
     });
+
+    it('can\'t roll a number less than 10', function() {
+      expect(function() {game.newRoll(-1); }).toThrowError('Invalid roll');
+    })
   });
 });

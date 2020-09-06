@@ -45,4 +45,18 @@ describe('Game', function(){
       expect(function() {game.recordRoll(-1); }).toThrowError('Invalid roll');
     });
   });
+
+  describe('#calculateScore', function() {
+    it('knows a strike', function() {
+    });
+
+    it('knows a spare', function() {
+    });
+
+    it('records the score', function() {
+      game.recordRoll(3);
+      game.recordRoll(5);
+      expect(game.score).toEqual(8);
+    });
+  });
 });

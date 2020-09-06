@@ -3,14 +3,18 @@
 class Frame {
 
   constructor() {
-    this.firstBowl = '-'
+    this.frame = []
   }
 
   bowl(score) {
-    this.firstBowl = score;
+    this.frame.push(score);
   }
 
   firstBowl() {
-    return this._firstBowl;
+    return this.frame[0];
+  }
+
+  secondBowl() {
+    return this.frame[1];
   }
 }

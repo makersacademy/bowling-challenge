@@ -7,13 +7,13 @@ class Game {
   };
 
   isNotAbleToRoll() {
-    if(this.rollCount === 0) {
+    if(this.rollCount == 0) {
       return true;
     }
   };
 
   isABadRoll(score) {
-    if((this.pins - score) < 0) {
+    if((this.pins - score) < 0 || score < 0) {
       return true;
     }
   };

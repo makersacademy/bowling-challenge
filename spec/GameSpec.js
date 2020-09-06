@@ -25,7 +25,7 @@ describe('Game', function(){
       game.newRoll(4);
     });
 
-    it('pins to decrease when a user rolls', function() {
+    it('decreases pins', function() {
       expect(game.pins).toEqual(6);
     });
 
@@ -46,8 +46,8 @@ describe('Game', function(){
       expect(function() {game.newRoll(11); }).toThrowError('Invalid roll');
     });
 
-    it('can\'t roll a number less than 10', function() {
+    it('can\'t roll a number less than 0', function() {
       expect(function() {game.newRoll(-1); }).toThrowError('Invalid roll');
-    })
+    });
   });
 });

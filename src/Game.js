@@ -6,4 +6,9 @@ class Game {
     this.rollCount = 2;
   };
 
+  newRoll(score) {
+    this.pins -= score
+    this.rollCount -= 1
+  };
+
 };

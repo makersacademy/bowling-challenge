@@ -16,7 +16,7 @@ describe('Game', function(){
     });
   
     it('starts with 2 rolls', function() {
-      expect(game.rolls).toEqual(2);
+      expect(game.rollCount).toEqual(2);
     });
   });
 });

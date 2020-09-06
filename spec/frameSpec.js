@@ -31,6 +31,11 @@ describe('Frame', function() {
       frame.bowl(2);
       expect(frame.isComplete()).toBe(true);
     });
+
+    it('is true when there is a strike', function() {
+      frame.bowl(10);
+      expect(frame.isComplete()).toBe(true);
+    });
   });
 
   describe('Strike', function(){

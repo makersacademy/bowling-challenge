@@ -4,6 +4,7 @@ class Game {
     this.frameCount = 1;
     this.pins = 10;
     this.rollCount = 2;
+    this.playerScore = 0;
   }
 
   isLastRoll() {
@@ -26,6 +27,17 @@ class Game {
     this.isLastRoll();
 
     this.pins -= score;
+
+    this.calculateScore(score);
+    
     this.rollCount -= 1;
+  }
+
+  score() {
+    return this.playerScore;
+  }
+
+  calculateScore(score) {
+    this.playerScore += score;
   }
 }

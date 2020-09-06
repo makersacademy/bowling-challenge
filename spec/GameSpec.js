@@ -18,6 +18,10 @@ describe('Game', function(){
     it('starts with 2 rolls', function() {
       expect(game.rollCount).toEqual(2);
     });
+
+    it('starts with no score', function() {
+      expect(game.playerScore).toEqual(0);
+    });
   });
 
   describe('#recordRoll', function() {
@@ -56,7 +60,7 @@ describe('Game', function(){
     it('records the score', function() {
       game.recordRoll(3);
       game.recordRoll(5);
-      expect(game.score).toEqual(8);
+      expect(game.score()).toEqual(8);
     });
   });
 });

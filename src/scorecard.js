@@ -8,7 +8,7 @@ class Scorecard  {
 
   play(score) {
     if(this.frames[this.frames.length-1].isComplete() === true)  {
-      this.frames.push(new Frame());
+      this.addNewFrame();
     }
     this.frames[this.frames.length-1].bowl(score);
   }
@@ -21,5 +21,11 @@ class Scorecard  {
     return score;
   }
 
-
+  addNewFrame() {
+    if(this.frames.length === 9) {
+      this.frames.push(new FinalFrame());
+    } else {
+      this.frames.push(new Frame());
+    }
+  }
 }

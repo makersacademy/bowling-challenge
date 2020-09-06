@@ -35,4 +35,5 @@ class Frame {
   getScore()  {
     return this.score
   }
+
 }

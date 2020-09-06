@@ -28,4 +28,21 @@ describe('Scorecard', function(){
       expect(scorecard.getScore()).toEqual(5);
     });
   });
+
+  describe('Scoring situations', function() {
+    it('gutter ball game', function() {
+      for(var i=0; i<20; i++)  {
+        scorecard.play(0);
+      }
+      expect(scorecard.getScore()).toEqual(0);
+    });
+
+    it('7 every round game', function() {
+      for(var i=0; i<10; i++) {
+        scorecard.play(4);
+        scorecard.play(3);
+      }
+      expect(scorecard.getScore()).toEqual(70);
+    });
+  });
 });

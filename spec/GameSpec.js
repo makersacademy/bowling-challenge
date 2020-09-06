@@ -71,14 +71,24 @@ describe('Game', function(){
     });
 
     it('records a spare bonus', function() {
-
+      game.recordRoll(1);
+      game.recordRoll(9);
+      game.recordRoll(4);
+      game.recordRoll(3);
+      expect(game.score()).toEqual(18);
     });
 
     it('records a strike bonus', function() {
-
+      game.recordRoll(10);
+      game.recordRoll(4);
+      game.recordRoll(3);
+      expect(game.score()).toEqual(24);
     });
 
     it('records a strike bonus: strike', function() {
+      game.recordRoll(10);
+      game.recordRoll(10);
+      expect(game.score()).toEqual(40);
 
     });
   });

@@ -29,13 +29,6 @@ class FrameList {
       if (value === "Strike" || value === "Spare") {
         displayFrames.push(value);
         bonus += 10;
-        if (
-          this.frames[key - 1] == "Strike" ||
-          this.frames[key - 1] == "Spare"
-        ) {
-          console.log("BONUS");
-          bonus += 10;
-        }
       } else if (this.frames[key - 1] == "Strike") {
         displayFrames.push((roll_1 + roll_2) * 2 + bonus);
         this.bonus = 0;

@@ -54,5 +54,12 @@ describe("FrameList", () => {
       frameList.add(4, 2);
       expect(frameList.displayFrames).toEqual(["Strike", "Strike", 42]);
     });
+
+    it("add Strike + Strike + bonus from the next round", () => {
+      frameList.add("Spare");
+      frameList.add(3, 7);
+      frameList.add(4, 2);
+      expect(frameList.displayFrames).toEqual(["Spare", "Spare", 33]);
+    });
   });
 });

@@ -20,7 +20,7 @@ describe('Game', function(){
     });
   });
 
-  describe('#newRoll', function() {
+  describe('#recordRoll', function() {
     beforeEach(function() {
       game.recordRoll(4);
     });

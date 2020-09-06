@@ -37,11 +37,6 @@ describe('Game', function(){
       expect(function() { game.newRoll(7); }).toThrowError('Invalid roll');
     });
 
-    it('can\'t have a negative roll count', function() {
-      game.newRoll(1);
-      expect(function() { game.newRoll(1); }).toThrowError('Unable to roll');
-    });
-
     it('can\'t roll a number greater than 10', function() {
       expect(function() {game.newRoll(11); }).toThrowError('Invalid roll');
     });

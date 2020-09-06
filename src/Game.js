@@ -6,22 +6,24 @@ class Game {
     this.rollCount = 2;
   };
 
-  isNotAbleToRoll() {
-    if(this.rollCount == 0) {
-      return true;
+  isLastRoll() {
+    if(this.rollCount == 0 && this.frameCount != 10) {
+      this.frameCount += 1;
+      this.rollCount = 2;
+      this.pins = 10;
     }
   };
 
   isABadRoll(score) {
     if((this.pins - score) < 0 || score < 0) {
-      return true;
+      throw new Error('Invalid roll');
     }
   };
 
   newRoll(score) {
-    if(this.isABadRoll(score)) throw new Error('Invalid roll');
+    this.isABadRoll(score)
     
-    if(this.isNotAbleToRoll()) throw new Error('Unable to roll');  
+    this.isLastRoll()
 
     this.pins -= score;
     this.rollCount -= 1;

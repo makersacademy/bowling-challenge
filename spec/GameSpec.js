@@ -25,11 +25,6 @@ describe('Game', function(){
   });
 
   describe('#recordRoll', function() {
-    it('starts a new frame after a strike', function() {
-      game.recordRoll(10);
-      expect(game.frameCount).toEqual(2);
-    });
-
     beforeEach(function() {
       game.recordRoll(4);
     });
@@ -53,6 +48,12 @@ describe('Game', function(){
     it('can\'t roll a number less than 0', function() {
       expect(function() {game.recordRoll(-1); }).toThrowError('Invalid roll');
     });
+  });
+
+  it('starts a new frame after a strike', function() {
+    game.recordRoll(10);
+    game.recordRoll(1);
+    expect(game.frameCount).toEqual(2);
   });
 
   describe('#calculateScore', function() {

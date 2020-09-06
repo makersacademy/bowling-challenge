@@ -9,7 +9,7 @@ class Game {
   }
 
   isLastRoll() {
-    if(this.rollCount == 0 && this.frameCount != 10) {
+    if(this.rollCount == 0 && this.frameCount != 10 || this.pins == 0) {
       this.frameCount += 1;
       this.rollCount = 2;
       this.pins = 10;
@@ -17,9 +17,7 @@ class Game {
   }
 
   isABadRoll(score) {
-    if((this.pins - score) < 0 || score < 0) {
-      throw new Error('Invalid roll');
-    }
+    if((this.pins - score) < 0 || score < 0) throw new Error('Invalid roll');
   }
 
   recordRoll(score) {

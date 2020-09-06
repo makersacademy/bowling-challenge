@@ -19,7 +19,7 @@ class Frame {
   }
 
   isComplete() {
-    return this.frame.length === 2;
+    return this.frame.length === 2 || this.isAStrike();
   }
 
   isAStrike() {

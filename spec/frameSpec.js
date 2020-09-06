@@ -64,6 +64,11 @@ describe('Frame', function() {
       frame.bowl(2);
       expect(frame.isASpare()).toBe(false);
     });
+
+    it('knows it is not a spare when strike bowled', function(){
+      frame.bowl(10);
+      expect(frame.isASpare()).toBe(false);
+    });
   });
 
 

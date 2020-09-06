@@ -29,4 +29,12 @@ class Frame {
   isASpare()  {
     return this.frame.length === 2 && (this.firstBowl() + this.secondBowl() === 10)
   }
+
+  score() {
+    if(this.isAStrike() === true) {
+      return 10;
+    } else  {
+      return this.firstBowl() + this.secondBowl();
+    }
+  }
 }

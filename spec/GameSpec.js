@@ -52,9 +52,15 @@ describe('Game', function(){
 
   describe('#calculateScore', function() {
     it('knows a strike', function() {
+      game.recordRoll(10);
+      expect(game.isAStrike()).toBe(true);
     });
 
     it('knows a spare', function() {
+      game.recordRoll(1);
+      game.recordRoll(9);
+      expect(game.isASpare()).toBe(true);
+      expect(game.isAStrike()).toBe(false);
     });
 
     it('records the score', function() {

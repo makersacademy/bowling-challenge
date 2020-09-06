@@ -51,43 +51,48 @@ describe('FinalFrame', function() {
 
   describe('Complete', function(){
     it('starts off incomplete', function(){
-      expect(finalframe.isComplete()).toBe(false);
+      expect(finalframe.isComplete()).toEqual(false);
+    });
+
+    it('is false after 1 bowl', function() {
+      finalframe.bowl(5);
+      expect(finalframe.isComplete()).toEqual(false);
     });
 
     it('is true when 2 under 10 bowls have happened', function() {
       finalframe.bowl(5);
       finalframe.bowl(2);
-      expect(finalframe.isComplete()).toBe(true);
+      expect(finalframe.isComplete()).toEqual(true);
     });
 
     it('is true after 3 turns when there is a strike or spare', function() {
       finalframe.bowl(10);
       finalframe.bowl(10);
       finalframe.bowl(10);
-      expect(finalframe.isComplete()).toBe(true);
+      expect(finalframe.isComplete()).toEqual(true);
     });
   });
 
   describe('Third Bowl Allowed', function(){
     it('starts off false', function() {
-      expect(finalframe.isThirdBowlAllowed()).toBe(false);
+      expect(finalframe.isThirdBowlAllowed()).toEqual(false);
     });
 
     it('is false after 2 under 10 bowls', function() {
       finalframe.bowl(3);
       finalframe.bowl(4);
-      expect(finalframe.isThirdBowlAllowed()).toBe(false);
+      expect(finalframe.isThirdBowlAllowed()).toEqual(false);
     });
 
     it('is true after a spare', function() {
       finalframe.bowl(8);
       finalframe.bowl(2);
-      expect(finalframe.isThirdBowlAllowed()).toBe(true);
+      expect(finalframe.isThirdBowlAllowed()).toEqual(true);
     });
 
     it('is true after a strike', function() {
       finalframe.bowl(10);
-      expect(finalframe.isThirdBowlAllowed()).toBe(true);
+      expect(finalframe.isThirdBowlAllowed()).toEqual(true);
     });
   });
 

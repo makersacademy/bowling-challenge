@@ -28,11 +28,11 @@ class Frame {
     return this.firstBowl() === 10;
   }
 
-  isASpare()  {
+  isASpare() {
     return this.frame.length === 2 && (this.firstBowl() + this.secondBowl() === 10)
   }
 
-  getScore()  {
+  getScore() {
     return this.score
   }
 

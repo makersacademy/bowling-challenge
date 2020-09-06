@@ -46,33 +46,33 @@ describe('Frame', function() {
     });
   });
 
-  describe('Complete', function(){
+  describe('Complete', function() {
     it('starts off incomplete', function(){
-      expect(frame.isComplete()).toBe(false);
+      expect(frame.isComplete()).toEqual(false);
     });
 
     it('is true when 2 bowls have happened', function() {
       frame.bowl(5);
       frame.bowl(2);
-      expect(frame.isComplete()).toBe(true);
+      expect(frame.isComplete()).toEqual(true);
     });
 
     it('is true when there is a strike', function() {
       frame.bowl(10);
-      expect(frame.isComplete()).toBe(true);
+      expect(frame.isComplete()).toEqual(true);
     });
   });
 
   describe('Strike', function() {
     it('knows when it is a strike', function(){
       frame.bowl(10);
-      expect(frame.isAStrike()).toBe(true);
+      expect(frame.isAStrike()).toEqual(true);
     });
 
     it('knows when it is not a strike', function(){
-      expect(frame.isAStrike()).toBe(false);
+      expect(frame.isAStrike()).toEqual(false);
       frame.bowl(5);
-      expect(frame.isAStrike()).toBe(false);
+      expect(frame.isAStrike()).toEqual(false);
     });
   });
 
@@ -80,21 +80,19 @@ describe('Frame', function() {
     it('knows when it is a spare', function(){
       frame.bowl(6);
       frame.bowl(4);
-      expect(frame.isASpare()).toBe(true);
+      expect(frame.isASpare()).toEqual(true);
     });
 
     it('knows when it is not a spare', function(){
-      expect(frame.isASpare()).toBe(false);
+      expect(frame.isASpare()).toEqual(false);
       frame.bowl(5);
       frame.bowl(2);
-      expect(frame.isASpare()).toBe(false);
+      expect(frame.isASpare()).toEqual(false);
     });
 
     it('knows it is not a spare when strike bowled', function(){
       frame.bowl(10);
-      expect(frame.isASpare()).toBe(false);
+      expect(frame.isASpare()).toEqual(false);
     });
   });
-
-
 });

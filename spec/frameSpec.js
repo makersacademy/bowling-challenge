@@ -38,7 +38,7 @@ describe('Frame', function() {
     });
   });
 
-  describe('Strike', function(){
+  describe('Strike', function() {
     it('knows when it is a strike', function(){
       frame.bowl(10);
       expect(frame.isAStrike()).toBe(true);
@@ -48,6 +48,21 @@ describe('Frame', function() {
       expect(frame.isAStrike()).toBe(false);
       frame.bowl(5);
       expect(frame.isAStrike()).toBe(false);
+    });
+  });
+
+  describe('Spare', function() {
+    it('knows when it is a spare', function(){
+      frame.bowl(6);
+      frame.bowl(4);
+      expect(frame.isASpare()).toBe(true);
+    });
+
+    it('knows when it is not a spare', function(){
+      expect(frame.isASpare()).toBe(false);
+      frame.bowl(5);
+      frame.bowl(2);
+      expect(frame.isASpare()).toBe(false);
     });
   });
 

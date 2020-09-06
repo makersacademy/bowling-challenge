@@ -14,5 +14,5 @@ describe('Scorecard', function(){
     expect(scorecard.frames.length).toBe(1);
     expect(scorecard.frames[0]).toBeInstanceOf(Frame);
   });
-  
+
 });

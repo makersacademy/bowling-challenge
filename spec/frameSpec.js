@@ -36,13 +36,13 @@ describe('Frame', function() {
   describe('Strike', function(){
     it('knows when it is a strike', function(){
       frame.bowl(10);
-      expect(isAStrike()).toBe(true);
+      expect(frame.isAStrike()).toBe(true);
     });
 
     it('knows when it is not a strike', function(){
-      expect(isAStrike().toBe(false));
+      expect(frame.isAStrike()).toBe(false);
       frame.bowl(5);
-      expect(isAStrike().toBe(false));
+      expect(frame.isAStrike()).toBe(false);
     });
   });
 

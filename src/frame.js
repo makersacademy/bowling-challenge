@@ -21,4 +21,8 @@ class Frame {
   isComplete() {
     return this.frame.length === 2;
   }
+
+  isAStrike() {
+    return this.firstBowl() === 10;
+  }
 }

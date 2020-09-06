@@ -19,13 +19,9 @@ class Game {
   };
 
   newRoll(score) {
-    if(this.isABadRoll(score)) {
-      throw new Error('Invalid roll');
-    } 
+    if(this.isABadRoll(score)) throw new Error('Invalid roll');
     
-    if(this.isNotAbleToRoll()) {
-      throw new Error('Unable to roll');
-    }
+    if(this.isNotAbleToRoll()) throw new Error('Unable to roll');  
 
     this.pins -= score;
     this.rollCount -= 1;

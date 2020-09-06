@@ -17,4 +17,8 @@ class Frame {
   secondBowl() {
     return this.frame[1];
   }
+
+  isComplete() {
+    return this.frame.length === 2;
+  }
 }

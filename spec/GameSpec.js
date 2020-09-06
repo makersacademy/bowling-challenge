@@ -68,5 +68,17 @@ describe('Game', function(){
       game.recordRoll(5);
       expect(game.score()).toEqual(8);
     });
+
+    it('records a spare bonus', function() {
+
+    });
+
+    it('records a strike bonus', function() {
+
+    });
+
+    it('records a strike bonus: strike', function() {
+
+    });
   });
 });

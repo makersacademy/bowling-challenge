@@ -22,7 +22,7 @@ describe('Game', function(){
 
   describe('#newRoll', function() {
     beforeEach(function() {
-      game.newRoll(4);
+      game.recordRoll(4);
     });
 
     it('decreases pins', function() {
@@ -34,15 +34,15 @@ describe('Game', function(){
     });
 
     it('can\'t roll below 0', function() {
-      expect(function() { game.newRoll(7); }).toThrowError('Invalid roll');
+      expect(function() { game.recordRoll(7); }).toThrowError('Invalid roll');
     });
 
     it('can\'t roll a number greater than 10', function() {
-      expect(function() {game.newRoll(11); }).toThrowError('Invalid roll');
+      expect(function() {game.recordRoll(11); }).toThrowError('Invalid roll');
     });
 
     it('can\'t roll a number less than 0', function() {
-      expect(function() {game.newRoll(-1); }).toThrowError('Invalid roll');
+      expect(function() {game.recordRoll(-1); }).toThrowError('Invalid roll');
     });
   });
 });

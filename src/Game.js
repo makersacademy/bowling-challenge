@@ -20,7 +20,7 @@ class Game {
     }
   };
 
-  newRoll(score) {
+  recordRoll(score) {
     this.isABadRoll(score)
     
     this.isLastRoll()

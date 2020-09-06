@@ -13,8 +13,8 @@ class Xy {
     } else {
       this.frames.push(one, two);
     }
-    this.counter = 0;
 
+    this.counter = 0;
     this.calc();
   }
 
@@ -25,6 +25,8 @@ class Xy {
           return 0;
         } else if (this.frames[this.counter + 1] == "Strike") {
           return 10;
+        } else if (this.frames[this.counter + 1] == "Spare") {
+          return 5;
         } else {
           return this.frames[this.counter + 1];
         }
@@ -35,11 +37,12 @@ class Xy {
           return 0;
         } else if (this.frames[this.counter + 2] == "Strike") {
           return 10;
+        } else if (this.frames[this.counter + 2] == "Spare") {
+          return 5;
         } else {
           return this.frames[this.counter + 2];
         }
       };
-      console.log(frame);
 
       if (frame == "Strike") {
         this.scores[this.counter] = 10 + nextRoll() + twoRolls();

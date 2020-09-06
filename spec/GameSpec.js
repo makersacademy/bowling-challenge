@@ -81,7 +81,7 @@ describe('Game', function(){
       game.recordRoll(9);
       game.recordRoll(4);
       game.recordRoll(3);
-      expect(game.score()).toEqual(18);
+      expect(game.score()).toEqual(21);
     });
 
     it('records a strike bonus', function() {
@@ -91,7 +91,7 @@ describe('Game', function(){
       expect(game.score()).toEqual(24);
     });
 
-    it('records a strike bonus: strike', function() {
+    it('records a strike bonus: strike again', function() {
       game.recordRoll(10);
       game.recordRoll(10);
       expect(game.score()).toEqual(40);

@@ -6,6 +6,8 @@ class Game {
     this.rollCount = 2;
     this.playerScore = 0;
     this.rollScore = 0;
+    this.firstRolls = []
+    this.secondRolls = []
   }
 
   isLastRoll() {
@@ -25,21 +27,42 @@ class Game {
 
     this.isABadRoll(score);
 
-    this.rollScore = score
+    this.rollScore = score;
 
     this.pins -= score;
+
+    this.storeRoll(score)    
 
     this.calculateScore(score);
 
     this.rollCount -= 1;
   }
 
+  storeRoll(score) {
+    if(this.rollCount == 2 && score == 10) {
+      this.firstRolls.push(score)
+      this.secondRolls.push(0)
+    } else if(this.rollCount == 2) {
+      this.firstRolls.push(score)
+    } else if(this.rollCount == 1) {
+      this.secondRolls.push(score)
+    }
+  }
+
   isAStrike() {
-    return (this.rollCount == 2 && this.rollScore == 10)
+    return (this.rollCount == 2 && this.rollScore == 10);
+  }
+
+  calculateStrikeBonus() {
+    return this.firstRolls[this.frameCount-1] + this.secondRolls[this.frameCount-1]
+  }
+
+  calculateSpareBonus() {
+    return this.firstRolls[this.frameCount-1]
   }
 
   isASpare() {
-    return (this.rollCount == 1 && this.pins == 0)
+    return (this.rollCount == 1 && this.pins == 0);
   }
 
   score() {
@@ -47,9 +70,9 @@ class Game {
   }
 
   calculateScore(score) {
-    if(this.isAStrike()) this.playerScore += score + 999999;
+    if(this.isAStrike()) this.playerScore += score + this.calculateStrikeBonus();
 
-    if(this.isASpare()) this.playerScore += score + 555;
+    if(this.isASpare()) this.playerScore += score + this.calculateSpareBonus();
     
     this.playerScore += score;
   }

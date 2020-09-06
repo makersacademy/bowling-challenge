@@ -21,6 +21,31 @@ describe('Frame', function() {
     });
   });
 
+  describe('Score', function() {
+    it('gutter ball situation', function() {
+      frame.bowl(0);
+      frame.bowl(0);
+      expect(frame.score()).toEqual(0);
+    });
+
+    it('normal bowls situation', function() {
+      frame.bowl(4);
+      frame.bowl(3);
+      expect(frame.score()).toEqual(7);
+    });
+
+    it('spare situation', function() {
+      frame.bowl(5);
+      frame.bowl(5);
+      expect(frame.score()).toEqual(10);
+    });
+
+    it('strike situation', function(){
+      frame.bowl(10);
+      expect(frame.score()).toEqual(10);
+    });
+  });
+
   describe('Complete', function(){
     it('starts off incomplete', function(){
       expect(frame.isComplete()).toBe(false);

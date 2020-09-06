@@ -32,8 +32,16 @@ class Frame {
     return this.frame.length === 2 && (this.firstBowl() + this.secondBowl() === 10)
   }
 
+  isNeedingABonus() {
+    return this.isAStrike() || this.isASpare();
+  }
+
   getScore() {
-    return this.score
+    return this.score;
+  }
+
+  updateScore(amount) {
+    this.score += amount;
   }
 
 }

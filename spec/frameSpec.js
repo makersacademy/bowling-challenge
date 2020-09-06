@@ -95,4 +95,32 @@ describe('Frame', function() {
       expect(frame.isASpare()).toEqual(false);
     });
   });
+
+  describe('Needs a Bonus', function() {
+    it('is true if frame is a spare', function() {
+      frame.bowl(6);
+      frame.bowl(4);
+      expect(frame.isNeedingABonus()).toEqual(true);
+    });
+
+    it('is true if frame is a strike', function() {
+      frame.bowl(10);
+      expect(frame.isNeedingABonus()).toEqual(true);
+    });
+
+    it('is false otherwise', function() {
+      frame.bowl(2);
+      frame.bowl(4);
+      expect(frame.isNeedingABonus()).toEqual(false);
+    });
+  });
+
+  describe('Update Score', function() {
+    it('adds amount to score', function() {
+      frame.bowl(6);
+      frame.bowl(4);
+      frame.updateScore(5);
+      expect(frame.getScore()).toEqual(15);
+    });
+  });
 });

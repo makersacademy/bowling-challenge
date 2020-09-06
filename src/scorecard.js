@@ -7,10 +7,14 @@ class Scorecard  {
   }
 
   play(score) {
-    if(this.frames[this.frames.length-1].isComplete() === true)  {
+    if(this.lastFrame().isComplete() === true)  {
       this.addNewFrame();
     }
-    this.frames[this.frames.length-1].bowl(score);
+    this.lastFrame().bowl(score);
+  }
+
+  lastFrame() {
+    return this.frames[this.frames.length-1];
   }
 
   getScore() {

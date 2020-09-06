@@ -49,5 +49,19 @@ describe('Scorecard', function(){
       }
       expect(scorecard.getScore()).toEqual(70);
     });
+
+    it('Spare with 5 then 5 every round', function(){
+      for(var i=0; i<21; i++)  {
+        scorecard.play(5);
+      }
+      expect(scorecard.getScore()).toEqual(150);
+    });
+
+    it('Strikes every round', function(){
+      for(var i=0; i<12; i++)  {
+        scorecard.play(10);
+      }
+      expect(scorecard.getScore()).toEqual(300);
+    });
   });
 });

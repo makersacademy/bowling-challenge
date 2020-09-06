@@ -3,12 +3,9 @@
 describe('Scorecard', function(){
 
   var scorecard;
-  var frame;
-  var finalframe;
 
   beforeEach(function(){
     scorecard = new Scorecard();
-    frame = jasmine.createSpyObj('airport',['clearForLanding', 'clearForTakeOff']);
   });
 
   it('starts with 1 frame object', function() {
@@ -20,7 +17,15 @@ describe('Scorecard', function(){
     it('adds new frame object if previous frame complete', function() {
       scorecard.play(10);
       scorecard.play(5);
-      expect(scorecard.frames.length).toBe(2);
+      expect(scorecard.frames.length).toEqual(2);
+    });
+
+    it('adds final frame object for 10th round', function(){
+      for(var i=0; i<10; i++) {
+        scorecard.play(10);
+      }
+      expect(scorecard.frames.length).toEqual(10);
+      expect(scorecard.frames[9]).toBeInstanceOf(FinalFrame);
     });
 
     it('updates the score', function() {

@@ -8,7 +8,7 @@ describe('Frame', function() {
     frame = new Frame;
   });
 
-  describe('bowl', function() {
+  describe('Bowl', function() {
     it('adds score to first bowl on first go',  function(){
       frame.bowl(5);
       expect(frame.firstBowl()).toEqual(5);
@@ -21,7 +21,7 @@ describe('Frame', function() {
     });
   });
 
-  describe('complete', function(){
+  describe('Complete', function(){
     it('starts off incomplete', function(){
       expect(frame.isComplete()).toBe(false);
     });
@@ -30,7 +30,19 @@ describe('Frame', function() {
       frame.bowl(5);
       frame.bowl(2);
       expect(frame.isComplete()).toBe(true);
+    });
+  });
 
+  describe('Strike', function(){
+    it('knows when it is a strike', function(){
+      frame.bowl(10);
+      expect(isAStrike()).toBe(true);
+    });
+
+    it('knows when it is not a strike', function(){
+      expect(isAStrike().toBe(false));
+      frame.bowl(5);
+      expect(isAStrike().toBe(false));
     });
   });
 

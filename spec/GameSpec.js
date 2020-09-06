@@ -19,4 +19,18 @@ describe('Game', function(){
       expect(game.rollCount).toEqual(2);
     });
   });
+
+  describe('a new roll', function() {
+    beforeEach(function() {
+      game.newRoll(4);
+    });
+
+    it('pins to decrease when a user rolls', function() {
+      expect(game.pins).toEqual(6);
+    });
+
+    it('decreases the roll count', function() {
+      expect(game.rollCount).toEqual(1);
+    });
+  });
 });

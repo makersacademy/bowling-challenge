@@ -22,5 +22,10 @@ describe('Scorecard', function(){
       scorecard.play(5);
       expect(scorecard.frames.length).toBe(2);
     });
+
+    it('updates the score', function() {
+      scorecard.play(5);
+      expect(scorecard.getScore()).toEqual(5);
+    });
   });
 });

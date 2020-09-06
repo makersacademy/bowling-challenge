@@ -6,14 +6,11 @@ class Scorecard  {
     this.frames = [new Frame()];
   }
 
-  lastFrameIndex() {
-    return this.frames.length-1;
-  }
-
   play(score) {
-    if(this.frames[lastFrameIndex()].isComplete() === true)  {
+    if(this.frames[this.frames.length-1].isComplete() === true)  {
       this.frames.push(new Frame());
     }
-    this.frames[lastFrameIndex()].bowl(score);
+    this.frames[this.frames.length-1].bowl(score);
   }
+
 }

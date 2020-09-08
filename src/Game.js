@@ -8,6 +8,9 @@ class Game {
     this.rollScore = 0;
     this.firstRolls = []
     this.secondRolls = []
+    this.spareBonus = false
+    this.strikeBonus = false
+    this.doubleStrikeBonus = false
   }
 
   isLastRoll() {
@@ -31,9 +34,21 @@ class Game {
 
     this.pins -= score;
 
-    this.storeRoll(score)    
+    this.storeRoll(score)
+
+    if (this.spareBonus) {
+      this.playerScore += this.calculateSpareBonus()
+    }
+
+    if (this.strikeBonus && this.rollCount == 1) {
+      this.playerScore += this.calculateStrikeBonus()
+    }
 
     this.calculateScore(score);
+
+    if (this.doubleStrikeBonus) {
+      this.playerScore += this.calculateDoubleStrikeBonus()
+    }
 
     this.rollCount -= 1;
   }
@@ -57,6 +72,14 @@ class Game {
     return this.firstRolls[this.frameCount-1] + this.secondRolls[this.frameCount-1]
   }
 
+  isADoubleStrike() {
+    return (this.rollCount == 2 && this.rollScore == 10 && this.strikeBonus == true)
+  }
+
+  calculateDoubleStrikeBonus() {
+    return this.firstRolls[this.frameCount-1] + this.firstRolls[this.frameCount-2]
+  }
+
   calculateSpareBonus() {
     return this.firstRolls[this.frameCount-1]
   }
@@ -70,10 +93,23 @@ class Game {
   }
 
   calculateScore(score) {
-    if(this.isAStrike()) this.playerScore += score + this.calculateStrikeBonus();
-
-    if(this.isASpare()) this.playerScore += score + this.calculateSpareBonus();
+    if (this.isADoubleStrike()) {
+      this.doubleStrikeBonus = true
+      this.playerScore += score;
+    } else if(this.isAStrike()) {
+      this.strikeBonus = true
+      this.playerScore += score;
+    } else if (this.isASpare()) {
+      this.spareBonus = true
+      this.playerScore += score;
+    } else {
+      if (this.rollCount == 1) {
+        this.strikeBonus = false
+      }
+      this.doubleStrikeBonus = false
+      this.spareBonus = false
+      this.playerScore += score;
+    }
     
-    this.playerScore += score;
   }
 }

@@ -96,5 +96,43 @@ describe('Game', function(){
       game.recordRoll(10);
       expect(game.score()).toEqual(40);
     });
+
+    it('records a perfect game', function() {
+      for(i = 0; i < 11; i++) {
+        game.recordRoll(10)
+      }
+      expect(game.score()).toEqual(300);
+    });
+
+    it('records a gutter game', function() {
+      for(i = 0; i < 11; i++) {
+        game.recordRoll(0)
+        game.recordRoll(0)
+      }
+      expect(game.score()).toEqual(20);
+    });
+
+    it('passes the example scorecard', function() {
+      game.recordRoll(1)
+      game.recordRoll(4)
+      game.recordRoll(4)
+      game.recordRoll(5)
+      game.recordRoll(6)
+      game.recordRoll(4)
+      game.recordRoll(5)
+      game.recordRoll(5)
+      game.recordRoll(10)
+      game.recordRoll(0)
+      game.recordRoll(1)
+      game.recordRoll(7)
+      game.recordRoll(3)
+      game.recordRoll(6)
+      game.recordRoll(4)
+      game.recordRoll(10)
+      game.recordRoll(2)
+      game.recordRoll(8)
+      game.recordRoll(6)
+      expect(game.score()).toEqual(133);
+    });
   });
 });

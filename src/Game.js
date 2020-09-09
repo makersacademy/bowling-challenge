@@ -64,11 +64,9 @@ class Game {
 
     this.isGutterGame();
 
-    if(this.lastFrameScore()) {
-      this.playerScore += score;
-      return;
-    } else {
-
+    if(this.lastFrameScore()) return this.add(score);
+    
+    else {
       this.awardSpareBonus();
 
       this.awardStrikeBonus();
@@ -82,14 +80,11 @@ class Game {
   }
 
   storeRoll(score) {
-    if(this.rollCount == 2 && score == 10) {
-      this.firstRolls.push(score);
-      this.secondRolls.push(0);
-    } else if(this.rollCount == 2) {
-      this.firstRolls.push(score);
-    } else if(this.rollCount == 1) {
-      this.secondRolls.push(score);
-    }
+    if(this.rollCount == 2 && score == 10) return this.firstRolls.push(score), this.secondRolls.push(0);
+    
+    if(this.rollCount == 2) return this.firstRolls.push(score);
+    
+    if(this.rollCount == 1) return this.secondRolls.push(score);
   }
 
   isAStrike() {
@@ -120,25 +115,19 @@ class Game {
     return this.playerScore;
   }
 
+  add(score) {
+    this.playerScore += score
+  }
+
   calculateScore(score) {
-    if (this.isADoubleStrike()) {
-      this.doubleStrikeBonus = true;
-      this.playerScore += score;
-    } else if(this.isAStrike()) {
-      this.strikeBonus = true;
-      this.spareBonus = false;
-      this.playerScore += score;
-    } else if (this.isASpare()) {
-      this.spareBonus = true;
-      this.strikeBonus = false;
-      this.playerScore += score;
-    } else {
-      if (this.rollCount == 1) {
-        this.strikeBonus = false;
-      }
-      this.doubleStrikeBonus = false;
-      this.spareBonus = false;
-      this.playerScore += score;
-    }
+    if (this.isADoubleStrike()) return this.doubleStrikeBonus = true, this.add(score);
+
+    if (this.isAStrike()) return this.strikeBonus = true, this.spareBonus = false, this.add(score);
+    
+    if (this.isASpare()) return this.spareBonus = true, this.strikeBonus = false, this.add(score);
+    
+    if (this.rollCount == 1) this.strikeBonus = false;
+      
+    return this.doubleStrikeBonus = false, this.spareBonus = false, this.add(score);
   }
 }

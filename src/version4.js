@@ -3,18 +3,23 @@ class Version4 {
     this.display = [];
     this.scores = [];
     this.frame = undefined;
+    this.bonus_strike = 0;
+    this.bonus_spare = 0;
   }
 
   play(one, two) {
-    if (this.frame == "strike") {
-      this.bonus = 10;
-    } else if (this.frame == "spare") {
-      this.bonus = one;
+    if (this.frame == "strike" && this.bonus < 30) {
+      this.bonus_strike += 10;
+    } else if (this.frame == "strike" && this.bonus == 20) {
+      this.bonus_strike = 0;
+    } else if (this.frame == "spare" && one != 0) {
+      this.bonus_spare = 10 + one;
     } else {
-      this.bonus = 0;
+      this.bonus_strike = 0;
+      this.bonus_spare = 0;
     }
 
-    let rez = one + two + this.bonus;
+    let rez = one + two + this.bonus_spare + this.bonus_strike;
     this.scores.push(rez);
 
     if (one == 10) {

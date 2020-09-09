@@ -41,12 +41,10 @@ class Version4 {
       }
     };
 
-    console.log(nextFrameRoll_1(), nextFrameRoll_2());
     let result = [];
 
     this.frames.forEach((frame) => {
       if (frame == "Strike") {
-        console.log("STRIKE " + this.counter);
         result.push(10 + nextFrameRoll_1() + nextFrameRoll_2());
         this.counter++;
       } else if (frame == "Spare") {

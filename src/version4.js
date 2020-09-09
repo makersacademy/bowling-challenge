@@ -1,8 +1,7 @@
 class Version4 {
   constructor() {
-    //this.frames = [];
+    this.display = [];
     this.scores = [];
-    this.counter = 0;
     this.frame = undefined;
   }
 
@@ -20,10 +19,13 @@ class Version4 {
 
     if (one == 10) {
       this.frame = "strike";
+      this.display.push("Strike");
     } else if (one + two == 10) {
       this.frame = "spare";
+      this.display.push("Spare");
     } else {
       this.frame = undefined;
+      this.display.push(rez);
     }
     return rez;
   }

@@ -97,8 +97,15 @@ describe('Game', function(){
       expect(game.score()).toEqual(40);
     });
 
+    it('records a strike and then a spare', function() {
+      game.recordRoll(10)
+      game.recordRoll(1)
+      game.recordRoll(9)
+      expect(game.score()).toEqual(30);
+    })
+
     it('records a perfect game', function() {
-      for(i = 0; i < 11; i++) {
+      for(i = 0; i < 12; i++) {
         game.recordRoll(10)
       }
       expect(game.score()).toEqual(300);

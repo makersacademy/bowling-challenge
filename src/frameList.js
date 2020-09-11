@@ -1,43 +1,38 @@
 class FrameList {
   constructor() {
-    this.frames = {};
-    this.rounds = 1;
-    this.displayFrames = [];
+    this.rolls = [];
+    this.rollCounter = 0;
+    this.score = [];
   }
 
-  add(roll_1, roll_2) {
-    let total = roll_1 + roll_2;
-    if (total == 10 || roll_1 == "Spare") {
-      this.frames[[this.rounds]] = "Spare";
-      this.rounds++;
-    } else if (roll_1 == "Strike" || roll_1 == 10) {
-      this.frames[[this.rounds]] = "Strike";
-      this.rounds++;
-    } else {
-      this.frames[[this.rounds]] = total;
-      this.rounds++;
-    }
-
-    this.calculate(roll_1, roll_2);
+  roll(pins) {
+    this.rolls.push(pins);
+    this.rollCounter++;
   }
 
-  calculate(roll_1, roll_2) {
-    let bonus = 0;
-    let displayFrames = [];
+  calc() {
+    let count = 0;
+    let spare = false;
 
-    for (const [key, value] of Object.entries(this.frames)) {
-      if (value === "Strike" || value === "Spare") {
-        displayFrames.push(value);
-        bonus += 10;
-      } else if (this.frames[key - 1] == "Strike") {
-        displayFrames.push((roll_1 + roll_2) * 2 + bonus);
-        this.bonus = 0;
-      } else if (this.frames[key - 1] == "Spare") {
-        displayFrames.push(roll_1 * 2 + roll_2 + bonus);
-        this.bonus = 0;
+    this.rolls.map((roll) => {
+      if (roll == 10) {
+        this.score.push(10 + this.rolls[count + 1] + this.rolls[count + 2]);
+        count++;
+      } else if (roll + this.rolls[count + 1] == 10) {
+        spare = true;
+        this.score.push(10 + this.rolls[count + 2]);
+        count++;
+      } else if (spare == true) {
+        spare = false;
+        count++;
+      } else {
+        this.score.push(roll);
+        count++;
       }
-    }
+    });
+  }
 
-    this.displayFrames = displayFrames;
+  total() {
+    return this.score.reduce((a, b) => a + b, 0);
   }
 }

@@ -1,65 +1,89 @@
 describe("FrameList", () => {
   var frameList;
+
   beforeEach(() => {
     frameList = new FrameList();
   });
 
-  describe("add", () => {
-    it("adds last frame to the frame list", () => {
-      frameList.add(5, 3);
-      expect(frameList.frames).toEqual({ 1: 8 });
-    });
-
-    it("adds Spare to the frame list when player spare", () => {
-      frameList.add(5, 5);
-      expect(frameList.frames).toEqual({ 1: "Spare" });
-    });
-
-    it("adds Strike to the frame list when player Strikes", () => {
-      frameList.add("Strike");
-      expect(frameList.frames).toEqual({ 1: "Strike" });
+  describe("roll", () => {
+    it("Add roll to the game", () => {
+      frameList.roll(7);
+      expect(frameList.roll.length).toEqual(1);
     });
   });
 
-  describe("calculate", () => {
-    it("add Strike + bonus from the next round", () => {
-      frameList.add("Strike");
-      frameList.add(4, 1);
-      expect(frameList.displayFrames).toEqual(["Strike", 20]);
+  describe("calc", () => {
+    it("Return the result of the current game as array", () => {
+      frameList.roll(3);
+      frameList.roll(1);
+      frameList.calc();
+      expect(frameList.score).toEqual([3, 1]);
     });
 
-    it("add Strike + bonus from the next round", () => {
-      frameList.add(5, 5);
-      frameList.add(4, 1);
-      expect(frameList.displayFrames).toEqual(["Spare", 19]);
+    it("Return the correct score in case of Strike", () => {
+      frameList.roll(10);
+      frameList.roll(1);
+      frameList.roll(1);
+      frameList.calc();
+      expect(frameList.score).toEqual([12, 1, 1]);
     });
 
-    it("add Strike + Spare + bonus from the next round", () => {
-      frameList.add("Strike");
-      frameList.add(5, 5);
-      frameList.add(4, 1);
-      expect(frameList.displayFrames).toEqual(["Strike", "Spare", 39]);
+    it("Return the correct score in case of Spare", () => {
+      frameList.roll(5);
+      frameList.roll(5);
+      frameList.roll(1);
+      frameList.roll(2);
+      frameList.calc();
+      expect(frameList.score).toEqual([11, 1, 2]);
     });
 
-    it("add Spare + Strike + bonus from the next round", () => {
-      frameList.add("Spare");
-      frameList.add("Strike");
-      frameList.add(4, 1);
-      expect(frameList.displayFrames).toEqual(["Spare", "Strike", 40]);
+    it("Return the correct score in case of Spare plus Strike", () => {
+      frameList.roll(5);
+      frameList.roll(5);
+      frameList.roll(10);
+      frameList.roll(2);
+      frameList.roll(2);
+      frameList.calc();
+      expect(frameList.score).toEqual([20, 14, 2, 2]);
     });
 
-    it("add Strike + Strike + bonus from the next round", () => {
-      frameList.add("Strike");
-      frameList.add("Strike");
-      frameList.add(4, 2);
-      expect(frameList.displayFrames).toEqual(["Strike", "Strike", 42]);
+    it("Return the correct score in case of 3 Strikes in a roll", () => {
+      frameList.roll(10);
+      frameList.roll(10);
+      frameList.roll(10);
+      frameList.roll(2);
+      frameList.roll(2);
+      frameList.calc();
+      expect(frameList.score).toEqual([30, 22, 14, 2, 2]);
     });
 
-    it("add Strike + Strike + bonus from the next round", () => {
-      frameList.add("Spare");
-      frameList.add(3, 7);
-      frameList.add(4, 2);
-      expect(frameList.displayFrames).toEqual(["Spare", "Spare", 33]);
+    it("Return the correct score in case of 3 Spares in a roll", () => {
+      for (let i = 0; i < 4; i++) {
+        frameList.roll(5);
+      }
+      frameList.roll(2);
+      frameList.roll(2);
+      frameList.calc();
+      expect(frameList.score).toEqual([15, 15, 12, 2, 2]);
+    });
+
+    it("Return the correct score in case of 13 Strikes in a roll", () => {
+      for (let i = 0; i < 11; i++) {
+        frameList.roll(10);
+      }
+      frameList.roll(0);
+      frameList.roll(0);
+      frameList.calc();
+      expect(frameList.total()).toEqual(300);
+    });
+  });
+
+  describe("total", () => {
+    it("Calculate the total score of the game", () => {
+      frameList.roll(7);
+      frameList.roll(5);
+      frameList.calc();
+      expect(frameList.total()).toEqual(12);
     });
   });
 });

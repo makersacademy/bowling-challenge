@@ -32,3 +32,18 @@ h1 {
   font-size: 1em;
   width: 5em;
 }
+
+.button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.button:disabled {
+  opacity: .5;
+}
+
+.button:disabled:hover {
+  opacity: .5;
+  text-decoration: none;
+  cursor: default;
+}

@@ -7,6 +7,7 @@ const port = 4567;
 //middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.static("client/public"));
 
 const testRoute = require("./routes/test");
 app.use("/", testRoute);

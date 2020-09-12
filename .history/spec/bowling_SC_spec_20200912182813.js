@@ -34,7 +34,7 @@ describe('bowlingGame', function() {
       for (let i = 0; i < 17; i++) {
         game.roll(0);
       }
-      expect(game.score).toBe(16);
+      expect(game.score).toBe();
     });
 
   });

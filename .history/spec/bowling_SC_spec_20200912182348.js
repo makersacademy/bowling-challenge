@@ -1,7 +1,7 @@
 
 describe('bowlingGame', function() {
 
-  beforeEach(function() {
+  beforeEach(() => {
     game = new bowlingGame();
   });
 
@@ -25,16 +25,6 @@ describe('bowlingGame', function() {
         game.roll(1);
       }
       expect(game.score).toBe(20);
-    });
-
-    it('returns the expected score when a spare is rolled', function() {
-      game.roll(5);
-      game.roll(5);
-      game.roll(3);
-      for (let i = 0; i < 17; i++) {
-        game.roll(0);
-      }
-      expect(game.score).toBe(16);
     });
 
   });

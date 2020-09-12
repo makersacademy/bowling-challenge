@@ -31,10 +31,10 @@ describe('bowlingGame', function() {
       game.roll(5);
       game.roll(5);
       game.roll(3);
-      for (let i = 0; i < 17; i++) {
-        game.roll(0);
+      for (let i = 0; i < 20; i++) {
+        game.roll(1);
       }
-      expect(game.score).toBe(16);
+      expect(game.score).toBe();
     });
 
   });

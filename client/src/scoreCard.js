@@ -2,6 +2,8 @@ $(document).ready(() => {
   let frameList = new FrameList();
 
   $("#counter").text("Rolls played: " + frameList.rollCounter);
+  $("#game").text("------- --------");
+  $("#score").text("Score: " + frameList.total());
 
   $("#rollForm").submit((e) => {
     e.preventDefault();
@@ -11,14 +13,10 @@ $(document).ready(() => {
     frameList.roll(parseInt(pins));
 
     frameList.calc();
-    console.log(frameList.score);
 
+    $("#game").text(frameList.score.join(" - "));
+    $("#score").text("Score: " + frameList.total());
     $("#pins").val("");
     $("#counter").text("Rolls played: " + frameList.rollCounter);
-  });
-
-  $("#scoreBtn").click(() => {
-    frameList.calc();
-    console.log(frameList.score);
   });
 });

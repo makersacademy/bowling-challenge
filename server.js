@@ -12,10 +12,10 @@ app.use(express.json());
 app.use(express.static("client/src"));
 app.use(express.static(path.join(__dirname, "client", "public")));
 
-const testRoute = require("./routes/test");
+const home = require("./routes/home");
 const scoreCard = require("./routes/scoreCard");
 
-app.use("/", testRoute);
+app.use("/", home);
 app.use("/scoreCard", scoreCard);
 
 app.listen(port, () => {

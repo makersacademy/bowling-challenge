@@ -11,6 +11,7 @@ class FrameList {
   }
 
   calc() {
+    this.score = [];
     let count = 0;
     let spare = false;
 

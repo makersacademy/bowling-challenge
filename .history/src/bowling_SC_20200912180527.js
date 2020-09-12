@@ -10,9 +10,5 @@ class bowlingGame {
     this.score += points
   };
 
-  total_score() {
-    return this.score
-  };
-
 
 }; 

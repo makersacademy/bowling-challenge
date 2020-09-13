@@ -22,3 +22,11 @@ Check the tests
 Open the app while the server is running on
 
 - http://localhost:4567/
+
+## Gallery
+
+![alt text](https://github.com/Iliyan-Y/bowling-challenge/blob/master/images/home.png?raw=true)
+
+![alt text](https://github.com/Iliyan-Y/bowling-challenge/blob/master/images/players.png?raw=true)
+
+![alt text](https://github.com/Iliyan-Y/bowling-challenge/blob/master/images/cards.png?raw=true)

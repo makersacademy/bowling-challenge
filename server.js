@@ -8,6 +8,7 @@ const port = 4567;
 //middleware
 app.use(cors());
 app.use(express.json());
+
 //two ways of setting public fowlers
 app.use(express.static("client/src"));
 app.use(express.static(path.join(__dirname, "client", "public")));

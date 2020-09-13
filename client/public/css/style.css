@@ -1,6 +1,43 @@
 body {
   background: rgba(109, 131, 109, 0.301);
+  background-image: url("../img/background.jpg");
   text-align: center;
+}
+
+#PlayersName {
+  width: 50%;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#mine {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.outerDiv {
+  font-family: Courier New, Courier, Lucida Sans Typewriter, Lucida Typewriter,
+    monospace;
+  background: rgb(156, 221, 202);
+  background: linear-gradient(
+    45deg,
+    rgba(156, 221, 202, 1) 0%,
+    rgba(227, 209, 184, 1) 28%,
+    rgba(205, 200, 194, 1) 60%,
+    rgba(148, 187, 233, 1) 89%
+  );
+  padding: 0.4em;
+  text-align: center;
+  border-radius: 4px;
+  border: 1.6px solid black;
+  width: 30em;
+}
+
+.outerDiv:hover {
+  box-shadow: 0 0 4px hotpink;
 }
 
 #game {
@@ -8,6 +45,7 @@ body {
 }
 
 .btn {
+  margin: 0.2em;
   padding: 0.5em;
   border-radius: 10px;
   border: 1.8px solid grey;
@@ -23,6 +61,7 @@ body {
 }
 
 input {
+  margin: 0.5em;
   padding: 0.5em;
   border-radius: 4px;
   border: none;
@@ -42,4 +81,8 @@ input[type="number"] {
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+#players {
+  min-width: 180px;
 }

@@ -24,7 +24,7 @@ let cardInterface = (index) => {
   let displayScore = () => {
     $(`#game-${index}`).text(frameList.score.join(" - "));
     $(`#game-${index}`)
-      .css({ top: "-8em", opacity: "20%", "font-size": "0.1em" })
-      .animate({ top: "0", opacity: "100%", "font-size": "1.3em" }, 700);
+      .css({ top: "-8em", opacity: "20%", "font-size": "1px" })
+      .animate({ top: "0", opacity: "100%", "font-size": "14px" }, 700);
   };
 };

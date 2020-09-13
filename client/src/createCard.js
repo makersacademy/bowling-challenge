@@ -1,14 +1,27 @@
-let createCard = (index) => {
+$(document).ready(() => {
+  let data = localStorage.getItem("userData");
+  let playerData = JSON.parse(data);
+  let index = 0;
+  Object.values(playerData).map((player) => {
+    createCard(index, player);
+    index++;
+  });
+});
+
+let createCard = (index, name) => {
   let mine = document.getElementById("mine");
 
   let outerDiv = document.createElement("div");
-  outerDiv.setAttribute("class", `outerDiv-${index}`);
+  outerDiv.setAttribute("class", `outerDiv`);
   mine.appendChild(outerDiv);
 
   let title = document.createElement("h1");
-  title.setAttribute("id", `h1_test-${index}`);
   title.innerHTML = "Score card";
   outerDiv.appendChild(title);
+
+  let playerName = document.createElement("h2");
+  playerName.innerHTML = name;
+  outerDiv.appendChild(playerName);
 
   let div_2 = document.createElement("div");
   outerDiv.appendChild(div_2);
@@ -51,8 +64,3 @@ let createCard = (index) => {
 
   cardInterface(index);
 };
-
-$(document).ready(() => {
-  createCard(1);
-  createCard(2);
-});

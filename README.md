@@ -2,7 +2,7 @@
 Bowling Challenge
 =================
 
-##Screenshot of my Scorecard interface
+## Screenshot of my Scorecard interface
 
 ![My scorecard](images/bowling-scorecard.png)
 

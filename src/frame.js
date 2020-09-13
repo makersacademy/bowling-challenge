@@ -1,36 +1,46 @@
-export class Frame {
+class Frame {
     constructor() {
-        this.pins = 10;
-        this.shots = 0;
-        this.firstshot = null;
-        this.secondshot = null;
-        this.score = 0;
+        this.frame = []
+        this.score = 0
     }
 
-    getShot(hitpins) {
-        this._updateFrames(hitpins);
-        this.shots++;
+    addScore(score) {
+        this.frame.push(score);
+        this.score += score;
     }
 
-    _updateFrames(hitpins) {
-        this.pins -= hitpins;
-        this.score += hitpins;
-        if (this.firstshot === null) {
-            this.firstshot = hitpins;
-        } else {
-            this.secondshot = hitpins;
-        }
+    firstBall(score) {
+        return this.frame[0]
+    }
+
+    secondBall(score) {
+        return this.frame[1]
     }
 
     isSpare() {
-        if (((this.firstShot + this.secondShot) === 10) && this.secondShot !== null) { return true; }
+        return this.frame.length === 2 && (this.firstBall() + this.secondBall() === 10);
     }
 
     isStrike() {
-        if (this.firstShot === 10) { return true; }
+        return this.firstBall() === 10;
     }
+
+    scoreTotal() {
+        return this.score;
+    }
+
+    extraPoints() {
+        return this.isSpare() || this.isStrike();
+    }
+
+    editScore(hitpoints) {
+        this.score += hitpoints;
+    }
+
+    frameCompleted() {
+        return this.frame.length === 2 || this.isStrike();
+    }
+
 }
 
 //module.exports = Frame;
-
-export default Frame;

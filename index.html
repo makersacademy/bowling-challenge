@@ -3,11 +3,126 @@
 <html>
 
 <head>
-    <title>MakersBnB</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+    <title>Bowling</title>
+    <script language="JavaScript" type="text/javascript" src="src/jquery-3.5.1.min.js"></script>
+    <script src="src/frame.js"></script>
+    <script src="src/scorecard.js"></script>
+    <script src="src/interface.js"></script>
 </head>
 
 <body>
-    <h1>MakersBnB</h1>
+    <h1>Bowling Scorecard</h1>
+    <img src="https://iili.io/2qbOmP.png" style="height: 178px" ; width="150px" />
+    <h2>Select first bowl score</h2>
+    <div>
+        <button id="btn0" class="btn">0</button>
+        <button id="btn1" class="btn">1</button>
+        <button id="btn2" class="btn">2</button>
+        <button id="btn3" class="btn">3</button>
+        <button id="btn4" class="btn">4</button>
+        <button id="btn5" class="btn">5</button>
+        <button id="btn6" class="btn">6</button>
+        <button id="btn7" class="btn">7</button>
+        <button id="btn8" class="btn">8</button>
+        <button id="btn9" class="btn">9</button>
+        <button id="btn10" class="btn">10</button>
+    </div>
+    <h2>Select second bowl score</h2>
+    <div>
+        <button id="btn11" class="btn">0</button>
+        <button id="btn12" class="btn">1</button>
+        <button id="btn13" class="btn">2</button>
+        <button id="btn14" class="btn">3</button>
+        <button id="btn15" class="btn">4</button>
+        <button id="btn16" class="btn">5</button>
+        <button id="btn17" class="btn">6</button>
+        <button id="btn18" class="btn">7</button>
+        <button id="btn19" class="btn">8</button>
+        <button id="btn20" class="btn">9</button>
+        <button id="btn21" class="btn">10</button>
+    </div>
+    <br>
+    <div class="center">
+        <table>
+            <tr>
+                <td>
+                    <div>
+                        <div id="bowl1" class="inline">0</div>
+                        <div id="bowl2" class="inline" style="padding-left:15px">0</div>
+                        <div id="total1" style="padding-top:10px">0</div>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <div id="bowl3" class="inline">0</div>
+                        <div id="bowl4" class="inline" style="padding-left:15px">0</div>
+                        <div id="total2" style="padding-top:10px">0</div>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <div id="bowl5" class="inline">0</div>
+                        <div id="bowl6" class="inline" style="padding-left:15px">0</div>
+                        <div id="total3" style="padding-top:10px">0</div>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <div id="bowl7" class="inline">0</div>
+                        <div id="bowl8" class="inline" style="padding-left:15px">0</div>
+                        <div id="total4" style="padding-top:10px">0</div>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <div id="bowl9" class="inline">0</div>
+                        <div id="bowl10" class="inline" style="padding-left:15px">0</div>
+                        <div id="total5" style="padding-top:10px">0</div>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <div id="bowl11" class="inline">0</div>
+                        <div id="bowl12" class="inline" style="padding-left:15px">0</div>
+                        <div id="total6" style="padding-top:10px">0</div>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <div id="bowl13" class="inline">0</div>
+                        <div id="bowl14" class="inline" style="padding-left:15px">0</div>
+                        <div id="total7" style="padding-top:10px">0</div>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <div id="bowl14" class="inline">0</div>
+                        <div id="bowl15" class="inline" style="padding-left:15px">0</div>
+                        <div id="total8" style="padding-top:10px">0</div>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <div id="bowl16" class="inline">0</div>
+                        <div id="bowl17" class="inline" style="padding-left:15px">0</div>
+                        <div id="total9" style="padding-top:10px">0</div>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <div id="bowl17" class="inline">0</div>
+                        <div id="bowl18" class="inline" style="padding-left:15px">0</div>
+                        <div id="total10" style="padding-top:10px">0</div>
+                    </div>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <br><br>
+    <h2 class="gtotal">Game total: <span id="gametotal">0</span></h2>
 </body>
 
 </html>

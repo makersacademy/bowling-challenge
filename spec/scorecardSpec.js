@@ -1,43 +1,59 @@
 'use strict';
 
 //var Frame = require('../src/Frame');
-import Frame from '../src/frame.js'
+//import Frame from '../src/frame.js'
+//import LastFrame from '../src/lastFrame.js'
 //import Scorecard from '../src/scorecard.js'
 
 describe('Scorecard', function() {
 
-    let scorecard, frame;
+    let scorecard
 
     beforeEach(function() {
         scorecard = new Scorecard();
-        scorecard.createFrames(Frame);
+        // frame = new Frame();
     });
 
-    describe('Scorecard', function() {
+    it('should be able to create new frame', function() {
+        scorecard.createFrames(Frame);
+        expect(scorecard.frames.length).toEqual(2);
+    });
 
-        it('can create 10 new frames', function() {
-            //scorecard.createFrames("frame");
-            expect(scorecard.frames.length).toEqual(9);
-        });
+    it('should start a new frame after 1 frame is completed', function() {
+        scorecard.bowl(10);
+        scorecard.bowl(6);
+        expect(scorecard.frames.length).toEqual(2);
+    });
 
-        it('should be able to show number of frames', function() {
-            //scorecard.createFrames("frame");
-            expect(scorecard.frameCount()).toEqual(9);
-        });
+    it('should calculate score', function() {
+        scorecard.bowl(7);
+        expect(scorecard.calculateScore()).toEqual(7);
+    });
 
-        it('score should start at 0', function() {
-            expect(scorecard.score()).toEqual(0);
-        });
+    // it('should calculate bonus score', function() {
+    //     scorecard.bowl(5);
+    //     scorecard.bowl(5);
+    //     scorecard.bowl(5);
+    //     expect(scorecard.bonus()).toEqual(15);
+    // });
 
-        it('should be able to detemine the current score after shots', function() {
-            scorecard.frames[0].getShot(5);
-            scorecard.frames[0].getShot(3);
-            scorecard.frames[1].getShot(4);
-            scorecard.frames[1].getShot(1);
-            expect(scorecard.score()).toEqual(13);
-        });
+    it('should calculate a perfect game', function() {
+        for (var i = 0; i < 12; i++) {
+            scorecard.bowl(10)
+        }
+        expect(scorecard.calculateScore()).toEqual(300);
+    });
 
+    it('should calculate score after a strike', function() {
+        //expect(scorecard.frames[0].score).toEqual(18);
+    });
 
+    it('should calculate score after two strikes in a row', function() {
+        //expect(scorecard.frames[0].score).toEqual(30);
+    });
+
+    it('should update a frames score if it was a spare', function() {
+        //expect(scorecard.frames[0].score).toEqual(16);
     });
 
 });

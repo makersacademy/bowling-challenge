@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  border-collapse: collapse;
+}
+
+table, td, th {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="src/bowling.js"></script>
+  <script src="src/interface.js"></script>
+
+<h1>Bowling scorecard:</h1>
+<table>
+  <col>
+  <colgroup span="2"></colgroup>
+  <tr>
+    <td rowspan="1"></td>
+    <th colspan="2" scope="colgroup">Frame 1</th>
+    <th colspan="2" scope="colgroup">Frame 2</th>
+    <th colspan="2" scope="colgroup">Frame 3</th>
+    <th colspan="2" scope="colgroup">Frame 4</th>
+    <th colspan="2" scope="colgroup">Frame 5</th>
+    <th colspan="2" scope="colgroup">Frame 6</th>
+    <th colspan="2" scope="colgroup">Frame 7</th>
+    <th colspan="2" scope="colgroup">Frame 8</th>
+    <th colspan="2" scope="colgroup">Frame 9</th>
+    <th colspan="2" scope="colgroup">Frame 10</th>
+  </tr>
+  <tr>
+    <th scope="row">Score</th>
+    <td><input type="text" id="s1" name="score1" value="" size="2"></td>
+    <td><input type="text" id="s2" name="score2" value="" size="2"></td>
+    <td><input type="text" id="s3" name="score3" value="" size="2"></td>
+    <td><input type="text" id="s4" name="score4" value="" size="2"></td>
+    <td><input type="text" id="s5" name="score5" value="" size="2"></td>
+    <td><input type="text" id="s6" name="score6" value="" size="2"></td>
+    <td><input type="text" id="s7" name="score7" value="" size="2"></td>
+    <td><input type="text" id="s8" name="score8" value="" size="2"></td>
+    <td><input type="text" id="s9" name="score9" value="" size="2"></td>
+    <td><input type="text" id="s10" name="score10" value="" size="2"></td>
+    <td><input type="text" id="s11" name="score11" value="" size="2"></td>
+    <td><input type="text" id="s12" name="score12" value="" size="2"></td>
+    <td><input type="text" id="s13" name="score13" value="" size="2"></td>
+    <td><input type="text" id="s14" name="score14" value="" size="2"></td>
+    <td><input type="text" id="s15" name="score15" value="" size="2"></td>
+    <td><input type="text" id="s16" name="score16" value="" size="2"></td>
+    <td><input type="text" id="s17" name="score17" value="" size="2"></td>
+    <td><input type="text" id="s18" name="score18" value="" size="2"></td>
+    <td><input type="text" id="s19" name="score19" value="" size="2"></td>
+    <td><input type="text" id="s20" name="score20" value="" size="2"></td>
+  </tr>
+  <tr>
+    <th scope="row">Total</th>
+    <th colspan="2" id="fs1" scope="colgroup"></th>
+    <th colspan="2" id="fs2" scope="colgroup"></th>
+    <th colspan="2" id="fs3" scope="colgroup"></th>
+    <th colspan="2" id="fs4" scope="colgroup"></th>
+    <th colspan="2" id="fs5" scope="colgroup"></th>
+    <th colspan="2" id="fs6" scope="colgroup"></th>
+    <th colspan="2" id="fs7" scope="colgroup"></th>
+    <th colspan="2" id="fs8" scope="colgroup"></th>
+    <th colspan="2" id="fs9" scope="colgroup"></th>
+    <th colspan="2" id="fs10" scope="colgroup"></th>
+  </tr>
+</table>
+<button type="submit" value="submit" id="update">Update</button>
+</body>

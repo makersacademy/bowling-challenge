@@ -21,15 +21,15 @@ class bowlingGame {
   bonusCalc() {
     let bonus = 0;
 
-      if (this.isStrike()) {
-        bonus += this.strikeBonus()
+      if (this.isStrike(this.rollIndex)) {
+        bonus += this.strikeBonus(this.rollIndex)
         this.rollIndex++;
       };
 
       const frameTotal = this.rolls[this.rollIndex] + this.rolls[this.rollIndex + 1];
       
       if (this.isSpare(frameTotal)) {
-        bonus += this.spareBonus();
+        bonus += this.spareBonus(this.rollIndex);
       };
       this.rollIndex += 2;
 
@@ -40,15 +40,15 @@ class bowlingGame {
     return frameTotal === 10;
   };
   
-  spareBonus() {
+  spareBonus(this.rollIndex) {
     return this.rolls[this.rollIndex + 2];
   };
 
-  isStrike() {
+  isStrike(this.rollIndex) {
     return this.rolls[this.rollIndex] === 10;
   };
 
-  strikeBonus() {
+  strikeBonus(this.rollIndex) {
     return this.rolls[this.rollIndex + 1] + this.rolls[this.rollIndex + 2];
   };
 

@@ -21,17 +21,17 @@ class bowlingGame {
   bonusCalc() {
     let bonus = 0;
 
-      if (this.isStrike()) {
-        bonus += this.strikeBonus()
-        this.rollIndex++;
+      if (this.isStrike(rollIndex)) {
+        bonus += this.strikeBonus(rollIndex)
+        rollIndex++;
       };
 
-      const frameTotal = this.rolls[this.rollIndex] + this.rolls[this.rollIndex + 1];
+      const frameTotal = this.rolls[rollIndex] + this.rolls[rollIndex + 1];
       
       if (this.isSpare(frameTotal)) {
-        bonus += this.spareBonus();
+        bonus += this.spareBonus(rollIndex);
       };
-      this.rollIndex += 2;
+      rollIndex += 2;
 
     this.runningScore += bonus;
   };
@@ -40,16 +40,16 @@ class bowlingGame {
     return frameTotal === 10;
   };
   
-  spareBonus() {
-    return this.rolls[this.rollIndex + 2];
+  spareBonus(rollIndex) {
+    return this.rolls[rollIndex + 2];
   };
 
-  isStrike() {
-    return this.rolls[this.rollIndex] === 10;
+  isStrike(rollIndex) {
+    return this.rolls[rollIndex] === 10;
   };
 
-  strikeBonus() {
-    return this.rolls[this.rollIndex + 1] + this.rolls[this.rollIndex + 2];
+  strikeBonus(rollIndex) {
+    return this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
   };
 
 }; 

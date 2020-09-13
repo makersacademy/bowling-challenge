@@ -15,6 +15,7 @@ describe('bowlingGame', function() {
       game.roll(0);
     }
     expect(game.runningScore).toBe(0);
+
   });
 
   it('returns a total score', function() {

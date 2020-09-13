@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bowling Scorecard</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+  </head>
+
+  <body>
+
+    <div id="wrapper">
+
+      <header>
+        <h1 id="welcome_message">Welcome to Bowling Scorecard</h1>
+        <%= bowlingGame.gameTotal() %>
+        <h2 id="frame_data"></h2>
+        <p id="pin_request">Please enter pins hit:</p>
+        <aside id="message_box">
+          <h2 id="messages"></h2>
+        </aside>
+        <form id="enter_name_form">
+          Please enter your name: <input type="text" id="enter_name">
+          <input type="submit" id="name_submit" value="Start Game">
+        </form>
+      </header>
+
+      <section id="selection">
+        <ul id="list">
+          <li id="0" data-pick="0">0</li>
+          <li id="1" data-pick="1">1</li>
+          <li id="2" data-pick="2">2</li>
+          <li id="3" data-pick="3">3</li>
+          <li id="4" data-pick="4">4</li>
+          <li id="5" data-pick="5">5</li>
+          <li id="6" data-pick="6">6</li>
+          <li id="7" data-pick="7">7</li>
+          <li id="8" data-pick="8">8</li>
+          <li id="9" data-pick="9">9</li>
+          <li id="10" data-pick="10">10</li>
+        </ul>
+      </section>
+
+      <article id="table">
+        <table id="table_data">
+        </table>
+      <article>
+
+    </div>
+
+    <script type='text/javascript' src='/js/player.js'></script>
+    <script type='text/javascript' src='/js/frame.js'></script>
+    <script type='text/javascript' src='/js/scoreCard.js'></script>
+    <script type='text/javascript' src='/js/message.js'></script>
+    <script type='text/javascript' src='/js/jquery-2.1.1.min.js'></script>
+    <script type='text/javascript' src='/js/jquery-ui.min.js'></script>
+    <script type='text/javascript' src='/js/app.js'></script>
+
+  </body>
+
+</html>
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/thermo_colours.css">
+    <title>Bowling Scorecard</title>
+  </head>
+  <body>
+    <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+    <h1> Bowling Scorecard </h1>
+    <p>
+      <form id="roll">
+        <label>Insert roll score:</label><br>
+        <input id="increase" type="text">
+        <input type="submit" value="Submit">
+      </form>
+      <form id="decrease_temp">
+        <label>Decrease Temperature:</label><br>
+        <input id="decrease" type="text">
+        <input type="submit" value="-">
+      </form>
+    </p>
+
+
+    <script src="src/bowling_SC.js"></script>
+    <script src="src/interface.js"></script>
+  </body>
+</html> -->

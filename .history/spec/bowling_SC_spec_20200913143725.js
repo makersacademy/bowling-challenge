@@ -41,7 +41,6 @@ describe('bowlingGame', function() {
       for (let i = 0; i < 17; i++) {
         game.roll(0);
       }
-      game.bonusCalc();
       expect(game.runningScore).toBe(16);
     });
 
@@ -51,8 +50,7 @@ describe('bowlingGame', function() {
       game.roll(2);
       for (let i = 0; i < 17; i++) {
         game.roll(0);
-      }
-      game.bonusCalc();  
+      }  
       expect(game.runningScore).toBe(18);
     });
   });

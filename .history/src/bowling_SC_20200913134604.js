@@ -6,7 +6,6 @@ class bowlingGame {
     this.rolls = [];
     this.runningScore = 0
     this.frameIndex = 1
-    this.rollIndex = 0
   };
 
   nextFrame() {
@@ -20,18 +19,19 @@ class bowlingGame {
 
   bonusCalc() {
     let bonus = 0;
+    let rollIndex = 0;
 
-      if (this.isStrike()) {
-        bonus += this.strikeBonus()
-        this.rollIndex++;
+      if (this.isStrike(rollIndex)) {
+        bonus += this.strikeBonus(rollIndex)
+        rollIndex++;
       };
 
-      const frameTotal = this.rolls[this.rollIndex] + this.rolls[this.rollIndex + 1];
+      const frameTotal = this.rolls[rollIndex] + this.rolls[rollIndex + 1];
       
       if (this.isSpare(frameTotal)) {
-        bonus += this.spareBonus();
+        bonus += this.spareBonus(rollIndex);
       };
-      this.rollIndex += 2;
+      rollIndex += 2;
 
     this.runningScore += bonus;
   };
@@ -40,16 +40,16 @@ class bowlingGame {
     return frameTotal === 10;
   };
   
-  spareBonus() {
-    return this.rolls[this.rollIndex + 2];
+  spareBonus(rollNum) {
+    return this.rolls[rollNum + 2];
   };
 
-  isStrike() {
-    return this.rolls[this.rollIndex] === 10;
+  isStrike(rollNum) {
+    return this.rolls[rollNum] === 10;
   };
 
-  strikeBonus() {
-    return this.rolls[this.rollIndex + 1] + this.rolls[this.rollIndex + 2];
+  strikeBonus(rollNum) {
+    return this.rolls[rollNum + 1] + this.rolls[rollNum + 2];
   };
 
 }; 

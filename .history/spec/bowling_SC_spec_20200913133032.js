@@ -15,13 +15,7 @@ describe('bowlingGame', function() {
       game.roll(0);
     }
     expect(game.runningScore).toBe(0);
-  });
 
-  it('returns a total score', function() {
-    for (let i = 0; i < 20; i++) {
-      game.roll(2);
-    }
-    expect(game.runningScore).toEqual(40);  
   });
   
   describe('roll combinations', function() {
@@ -51,10 +45,20 @@ describe('bowlingGame', function() {
       game.roll(2);
       for (let i = 0; i < 17; i++) {
         game.roll(0);
-      }
-      game.bonusCalc();  
+      }  
       expect(game.runningScore).toBe(18);
     });
+  });
+  
+  describe('Game Total', function() {
+
+    it('returns a total score', function() {
+      for (let i = 0; i < 20; i++) {
+        game.roll(2);
+      }
+      expect(game.runningScore).toEqual(40);  
+    });
+
   });
 
 

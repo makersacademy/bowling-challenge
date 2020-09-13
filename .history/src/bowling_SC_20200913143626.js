@@ -15,6 +15,7 @@ class bowlingGame {
 
   roll(points) {
     this.rolls.push(points);
+    this.bonusCalc()
     this.runningScore += points;
   };
 

@@ -6,9 +6,7 @@ class Bowling {
     
         }
 
-    getCurrentScore(){
-        return this.score
-    }
+  
 
     roll(Roll) {
        

@@ -21,6 +21,7 @@ class bowlingGame {
     this.rolls[this.frameIndex -1].push(points);
     this.runningScore += points;
     this.frameIndex++
+    this["marker" [this.frameIndex - 2]].innerHTML
   };
 
   spareCalc() {

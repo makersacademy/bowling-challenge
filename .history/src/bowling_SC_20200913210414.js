@@ -9,6 +9,19 @@ class bowlingGame {
     this.rollIndex = 0;
   };
 
+  frameScore = function() {
+    frame1.innerHTML = game.frameScore['1'];
+    frame2.innerHTML = game.frameScore['2'];
+    frame3.innerHTML = game.frameScore['3'];
+    frame4.innerHTML = game.frameScore['4']
+    frame5.innerHTML = game.frameScore['5']
+    frame6.innerHTML = game.frameScore['6']
+    frame7.innerHTML = game.frameScore['7']
+    frame8.innerHTML = game.frameScore['8']
+    frame9.innerHTML = game.frameScore['9']
+    frame10.innerHTML = game.frameScore['10']
+  };
+
   firstRoll(points) {
     this.rolls[this.frameIndex -1].push(points);
     this.runningScore += points;
@@ -21,6 +34,7 @@ class bowlingGame {
     this.rolls[this.frameIndex -1].push(points);
     this.runningScore += points;
     this.frameIndex++
+    this["marker" [this.frameIndex - 2]].innerHTML
   };
 
   spareCalc() {

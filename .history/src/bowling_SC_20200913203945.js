@@ -9,6 +9,19 @@ class bowlingGame {
     this.rollIndex = 0;
   };
 
+  frameScore() {
+    frame1.innerHTML = this.rolls[0];
+    frame2.innerHTML = this.rolls[1];
+    frame3.innerHTML = this.rolls[2];
+    frame4.innerHTML = this.rolls[3];
+    frame5.innerHTML = this.rolls[4];
+    frame6.innerHTML = this.rolls[5];
+    frame7.innerHTML = this.rolls[6];
+    frame8.innerHTML = this.rolls[7];
+    frame9.innerHTML = this.rolls[8];
+    frame10.innerHTML = this.rolls[9];
+  };
+
   firstRoll(points) {
     this.rolls[this.frameIndex -1].push(points);
     this.runningScore += points;
@@ -56,4 +69,4 @@ class bowlingGame {
     return this.rolls[this.frameIndex - 2][this.rollIndex] + this.rolls[this.frameIndex - 2][this.rollIndex + 1];
   };
 
-};
+}; 

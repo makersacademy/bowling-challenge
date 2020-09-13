@@ -40,7 +40,6 @@ class bowlingGame {
       bonus += this.strikeBonus()
       this.rollIndex++;
     };
-    this.runningScore += bonus;
   };
 
   isSpare(frameTotal) {

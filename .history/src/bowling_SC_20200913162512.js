@@ -23,23 +23,21 @@ class bowlingGame {
     this.frameIndex++
   };
 
-  spareCalc() {
+  bonusCalc() {
     let bonus = 0;
-    const frameTotal = this.rolls[this.frameIndex - 2][this.rollIndex] + this.rolls[this.frameIndex - 2][this.rollIndex + 1];
-    if (this.isSpare(frameTotal)) {
-      bonus += this.spareBonus();
-    };
-    this.rollIndex += 2;
-    this.runningScore += bonus;
-  };
 
+      if (this.isStrike()) {
+        bonus += this.strikeBonus()
+        this.rollIndex++;
+      };
 
-  strikeCalc() {
-    let bonus = 0;
-    if (this.isStrike()) {
-      bonus += this.strikeBonus()
-      this.rollIndex++;
-    };
+      const frameTotal = this.rolls[this.frameIndex - 2][this.rollIndex] + this.rolls[this.frameIndex - 2][this.rollIndex + 1];
+      
+      if (this.isSpare(frameTotal)) {
+        bonus += this.spareBonus();
+      };
+      this.rollIndex += 2;
+
     this.runningScore += bonus;
   };
 

@@ -34,13 +34,12 @@ class bowlingGame {
   };
 
 
-  strikeCalc() {
+  bonusCalc() {
     let bonus = 0;
     if (this.isStrike()) {
       bonus += this.strikeBonus()
       this.rollIndex++;
     };
-    this.runningScore += bonus;
   };
 
   isSpare(frameTotal) {

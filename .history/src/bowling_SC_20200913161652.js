@@ -12,7 +12,7 @@ class bowlingGame {
   firstRoll(points) {
     this.rolls[this.frameIndex -1].push(points);
     this.runningScore += points;
-    if (points === 10) {
+    if (this.isStrike()) {
       this.frameIndex++
     };
   };
@@ -23,23 +23,21 @@ class bowlingGame {
     this.frameIndex++
   };
 
-  spareCalc() {
+  bonusCalc() {
     let bonus = 0;
-    const frameTotal = this.rolls[this.frameIndex - 2][this.rollIndex] + this.rolls[this.frameIndex - 2][this.rollIndex + 1];
-    if (this.isSpare(frameTotal)) {
-      bonus += this.spareBonus();
-    };
-    this.rollIndex += 2;
-    this.runningScore += bonus;
-  };
 
+      if (this.isStrike()) {
+        bonus += this.strikeBonus()
+        this.rollIndex++;
+      };
 
-  strikeCalc() {
-    let bonus = 0;
-    if (this.isStrike()) {
-      bonus += this.strikeBonus()
-      this.rollIndex++;
-    };
+      const frameTotal = this.rolls[this.frameIndex - 2][this.rollIndex] + this.rolls[this.frameIndex - 2][this.rollIndex + 1];
+      
+      if (this.isSpare(frameTotal)) {
+        bonus += this.spareBonus();
+      };
+      this.rollIndex += 2;
+
     this.runningScore += bonus;
   };
 
@@ -52,11 +50,11 @@ class bowlingGame {
   };
 
   isStrike() {
-    return this.rolls[this.frameIndex - 3][this.rollIndex] === 10;
+    return this.rolls[this.frameIndex - 2][this.rollIndex] === 10;
   };
 
   strikeBonus() {
-    return this.rolls[this.frameIndex - 2][this.rollIndex] + this.rolls[this.frameIndex - 2][this.rollIndex + 1];
+    return this.rolls[this.frameIndex - 1][this.rollIndex] + this.rolls[this.frameIndex - 1][this.rollIndex + 1];
   };
 
 }; 

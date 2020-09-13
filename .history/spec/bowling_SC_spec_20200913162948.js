@@ -37,7 +37,7 @@ describe('bowlingGame', function() {
       game.firstRoll(5);
       game.secondRoll(5);
       game.firstRoll(3);
-      game.spareCalc();
+      game.bonusCalc();
       for (let i = 0; i < 17; i++) {
         game.firstRoll(0);
       }
@@ -46,12 +46,12 @@ describe('bowlingGame', function() {
 
     it('returns the expected score when a strike is rolled', function() {
       game.firstRoll(10);
-      game.firstRoll(2);
       game.secondRoll(2);
-      game.strikeCalc(); 
+      game.firstRoll(2);
       for (let i = 0; i < 17; i++) {
         game.firstRoll(0);
-      } 
+      }
+      game.bonusCalc();  
       expect(game.runningScore).toBe(18);
     });
   });

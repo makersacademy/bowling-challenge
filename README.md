@@ -37,6 +37,9 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
+## My app
+
+![Scorecard App](/images/bowling-scorecard-480px.gif)
 ## Tech Stack
 Javascript
 Jasmine 3.6.0

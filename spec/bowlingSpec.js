@@ -196,5 +196,47 @@ describe('Bowling', function(){
             expect(bowling.calculateScore(bowling.scoreCard)).toEqual(103)  
 
         })
+
+        it('adds multiple strike bonuses to score', function() {
+            bowling.roll(4)
+            bowling.roll(4)
+            bowling.roll(2)
+            bowling.roll(5)
+            bowling.roll(4)
+            bowling.roll(5)
+            bowling.roll(1) 
+            bowling.roll(5)
+            bowling.roll(10)
+            bowling.roll(7)
+            bowling.roll(1)
+            bowling.roll(10)
+            bowling.roll(6)
+            bowling.roll(3)
+            bowling.roll(6)
+            bowling.roll(3)
+            bowling.roll(4)
+            bowling.roll(3)
+
+            expect(bowling.calculateScore(bowling.scoreCard)).toEqual(100)  
+
+        })
+
+        it('300 for perfect game', function() {
+            bowling.roll(10)
+            bowling.roll(10)
+            bowling.roll(10)
+            bowling.roll(10)
+            bowling.roll(10)
+            bowling.roll(10)
+            bowling.roll(10)
+            bowling.roll(10)
+            bowling.roll(10)
+            bowling.roll(10)
+            bowling.roll(10)
+            bowling.roll(10)
+           
+            
+            expect(bowling.calculateScore(bowling.scoreCard)).toEqual(300)  
+        })
     })
 })

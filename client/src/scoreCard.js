@@ -1,13 +1,13 @@
-$(document).ready(() => {
+let interface = (index) => {
   let frameList = new FrameList();
 
-  $("#counter").text("Rolls played: " + frameList.rollCounter);
-  $("#game").text("------- --------");
-  $("#score").text("Score: " + frameList.total());
+  $(`#counter-${index}`).text("Rolls played: " + frameList.rollCounter);
+  $(`#game-${index}`).text("------- --------");
+  $(`#score-${index}`).text("Score: " + frameList.total());
 
-  $("#rollForm").submit((e) => {
+  $(`#rollForm-${index}`).submit((e) => {
     e.preventDefault();
-    let pins = $("#pins").val();
+    let pins = $(`#pins-${index}`).val();
     frameList.roll(parseInt(pins));
     frameList.calc();
 
@@ -16,15 +16,15 @@ $(document).ready(() => {
   });
 
   let refreshPage = () => {
-    $("#score").text("Score: " + frameList.total());
-    $("#pins").val("");
-    $("#counter").text("Rolls played: " + frameList.rollCounter);
+    $(`#score-${index}`).text("Score: " + frameList.total());
+    $(`#pins-${index}`).val("");
+    $(`#counter-${index}`).text("Rolls played: " + frameList.rollCounter);
   };
 
   let displayScore = () => {
-    $("#game").text(frameList.score.join(" - "));
-    $("#game")
+    $(`#game-${index}`).text(frameList.score.join(" - "));
+    $(`#game-${index}`)
       .css({ top: "-8em", opacity: "20%", "font-size": "0.1em" })
       .animate({ top: "0", opacity: "100%", "font-size": "1.3em" }, 700);
   };
-});
+};

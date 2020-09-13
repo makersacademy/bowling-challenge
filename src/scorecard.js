@@ -21,7 +21,6 @@ class Scorecard {
         for (var i = 0; i < this.frames.length; i++) {
             total += this.frames[i].score;
         }
-        return total;
     }
 
 }

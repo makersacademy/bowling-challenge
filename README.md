@@ -40,7 +40,11 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 ## My app
 
 ![Scorecard App](/images/bowling-scorecard-480px.gif)
+
+I've managed to get the basic functionality in place and a UI. It can handle gutter games, perfect games and for the most part regular games (a few edge cases can slip through the logic) including the 10th frame bonuses.  
+
+For future work I would clean up the UI further (the 10th frame layout isn't very clean) and I'd also DRY up the `interface.js` file. Lastly, there is also scope for improvement in the `Game.js` file as this really could be moved into separate classes - I think there is a bit of redundant logic in there too.
 ## Tech Stack
-Javascript
+Javascript  
 Jasmine 3.6.0
 

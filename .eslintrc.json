@@ -1,1 +1,7 @@
 {"extends": "strongloop"}
+
+plugins:
+  - jasmine
+env:
+  jasmine: true
+extends: 'plugin:jasmine/recommended'

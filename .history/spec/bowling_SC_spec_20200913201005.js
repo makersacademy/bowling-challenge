@@ -33,10 +33,6 @@ describe('bowlingGame', function() {
       expect(game.runningScore).toBe(20);
     });
 
-  });
-
-  describe('spare calculator', function() {
-
     it('returns the expected score when a spare is rolled', function() {
       game.firstRoll(5);
       game.secondRoll(5);
@@ -47,10 +43,6 @@ describe('bowlingGame', function() {
       }
       expect(game.runningScore).toEqual(16);
     });
-
-  });  
-
-  describe('strike calculator', function() {
 
     it('returns the expected score when a strike is rolled', function() {
       game.firstRoll(10);

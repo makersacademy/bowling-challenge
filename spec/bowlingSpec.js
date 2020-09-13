@@ -21,4 +21,16 @@ describe("Bowling", function() {
     expect(bowling.firstTurn(10,0)).toBe(10);
     expect(bowling.nextTurn(10,0)).toBe(30);
   });
+  it("Returns the correct total after 4 turns", function() {
+    bowling.firstTurn(1,2);
+    bowling.nextTurn(3,4);
+    bowling.nextTurn(1,2);
+    bowling.nextTurn(3,4);
+    bowling.nextTurn(1,2);
+    bowling.nextTurn(3,4);
+    bowling.nextTurn(1,2);
+    bowling.nextTurn(3,4);
+    bowling.nextTurn(1,2);
+    expect(bowling.nextTurn(3,4)).toBe(50);
+  });
 });

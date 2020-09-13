@@ -1,6 +1,5 @@
-let cardContent = (index) => {
-
-  let mine = document.getElementById("mine")
+let createCard = (index) => {
+  let mine = document.getElementById("mine");
 
   let outerDiv = document.createElement("div");
   outerDiv.setAttribute("class", `outerDiv-${index}`);
@@ -44,19 +43,16 @@ let cardContent = (index) => {
     value: "Add",
     type: "submit",
   });
-  rollForm.appendChild(btn)
+  rollForm.appendChild(btn);
 
-  let score = document.createElement("h2")
-  score.setAttribute("id", `score-${index}`)
-  div_2.appendChild(score)
+  let score = document.createElement("h2");
+  score.setAttribute("id", `score-${index}`);
+  div_2.appendChild(score);
 
-
-  interface(index);
-  
+  cardInterface(index);
 };
 
 $(document).ready(() => {
-  cardContent(1);
-  cardContent(2);
- 
+  createCard(1);
+  createCard(2);
 });

@@ -1,4 +1,4 @@
-let interface = (index) => {
+let cardInterface = (index) => {
   let frameList = new FrameList();
 
   $(`#counter-${index}`).text("Rolls played: " + frameList.rollCounter);

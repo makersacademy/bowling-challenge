@@ -1,3 +1,45 @@
 body {
   background: rgba(109, 131, 109, 0.301);
+  text-align: center;
+}
+
+#game {
+  position: relative;
+}
+
+.btn {
+  padding: 0.5em;
+  border-radius: 10px;
+  border: 1.8px solid grey;
+  outline: none;
+  color: black;
+  transition: all 0.5s ease-out;
+}
+
+.btn:hover {
+  padding: 0.6em;
+  background: rgb(199, 170, 226);
+  cursor: pointer;
+}
+
+#pins {
+  padding: 0.5em;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  transition: all 0.5s ease-out;
+}
+
+#pins:focus {
+  border: none;
+  box-shadow: 0 0 5px rgb(192, 154, 228);
+  padding: 0.7em;
+}
+
+#pins[type="number"] {
+  -moz-appearance: textfield;
+}
+#pins::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

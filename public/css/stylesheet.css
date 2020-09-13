@@ -1,0 +1,54 @@
+table {
+  font-family: 'Roboto', sans-serif;
+  border-collapse: collapse;
+  background-color:white;
+  width: 100%;
+}
+
+td, th {
+  border: 0.1em solid grey;
+  text-align: left;
+  padding: 1em;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+body {
+  background-image: url("https://thumbs.gfycat.com/GorgeousEvilJoey-mobile.mp4");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: black;
+}
+
+h1 {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: white;
+  text-align: center
+}
+
+.frame-total {
+  font-weight: bold;
+}
+
+.button {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  font-size: 1em;
+  width: 5em;
+}
+
+.button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.button:disabled {
+  opacity: .5;
+}
+
+.button:disabled:hover {
+  opacity: .5;
+  text-decoration: none;
+  cursor: default;
+}

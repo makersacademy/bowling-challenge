@@ -28,9 +28,18 @@ describe('Scorecard', function(){
       expect(scorecard.frames[9]).toBeInstanceOf(FinalFrame);
     });
 
+    it('does not add a frame if game is over', function(){
+      for(var i=0; i<10; i++) {
+        scorecard.play(4);
+        scorecard.play(3);
+      }
+      scorecard.play(5);
+      expect(scorecard.frames.length).toEqual(10);
+    });
+
     it('updates the score', function() {
       scorecard.play(5);
-      expect(scorecard.getScore()).toEqual(5);
+      expect(scorecard.getRunningTotalUpTo(0)).toEqual(5);
     });
   });
 
@@ -39,7 +48,7 @@ describe('Scorecard', function(){
       for(var i=0; i<20; i++)  {
         scorecard.play(0);
       }
-      expect(scorecard.getScore()).toEqual(0);
+      expect(scorecard.getFinalScore()).toEqual(0);
     });
 
     it('7 every round game', function() {
@@ -47,21 +56,21 @@ describe('Scorecard', function(){
         scorecard.play(4);
         scorecard.play(3);
       }
-      expect(scorecard.getScore()).toEqual(70);
+      expect(scorecard.getFinalScore()).toEqual(70);
     });
 
     it('Spare with 5 then 5 every round', function(){
       for(var i=0; i<21; i++)  {
         scorecard.play(5);
       }
-      expect(scorecard.getScore()).toEqual(150);
+      expect(scorecard.getFinalScore()).toEqual(150);
     });
 
     it('Strikes every round', function(){
       for(var i=0; i<12; i++)  {
         scorecard.play(10);
       }
-      expect(scorecard.getScore()).toEqual(300);
+      expect(scorecard.getFinalScore()).toEqual(300);
     });
   });
 });

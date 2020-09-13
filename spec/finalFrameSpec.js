@@ -21,6 +21,17 @@ describe('FinalFrame', function() {
     });
   });
 
+  describe('Valid Bowl', function() {
+    it('is false if bowl amount is greater than 10', function() {
+      expect(finalframe.isValidBowl(11)).toEqual(false);
+    });
+
+    it('is false if second bowl makes total greater than 10', function() {
+      finalframe.bowl(5)
+      expect(finalframe.isValidBowl(7)).toEqual(false);
+    });
+  });
+
   describe('Score', function() {
     it('gutter ball situation', function() {
       finalframe.bowl(0);

@@ -8,8 +8,18 @@ class FinalFrame {
   }
 
   bowl(score) {
-    this.frame.push(score);
-    this.score += score;
+    if(this.isValidBowl(score)) {
+      this.frame.push(score);
+      this.score += score;
+    }
+  }
+
+  isValidBowl(score) {
+    if(this.frame.length === 1 && this.firstBowl() < 10) {
+      return this.score + score <= 10;
+    } else {
+      return score >= 0 && score <= 10
+    }
   }
 
   firstBowl() {
@@ -18,6 +28,10 @@ class FinalFrame {
 
   secondBowl() {
     return this.frame[1];
+  }
+
+  thirdBowl() {
+    return this.frame[2];
   }
 
   getScore()  {
@@ -29,11 +43,8 @@ class FinalFrame {
   }
 
   isComplete() {
-    if(this.isThirdBowlAllowed() === true && this.frame.length === 3 ||
-    this.isThirdBowlAllowed() === false && this.frame.length === 2) {
-      return true
-    }
-    return false
+    return this.isThirdBowlAllowed() === true && this.frame.length === 3 ||
+    this.isThirdBowlAllowed() === false && this.frame.length === 2
   }
 
 }

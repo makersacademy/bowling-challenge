@@ -5,11 +5,18 @@ class Frame {
   constructor() {
     this.frame = [];
     this.score = 0;
+    this.bonusesAdded = 0
   }
 
   bowl(score) {
-    this.frame.push(score);
-    this.score += score;
+    if(this.isValidBowl(score)) {
+      this.frame.push(score);
+      this.score += score;
+    }
+  }
+
+  isValidBowl(score) {
+    return score <= 10 && this.score + score <= 10;
   }
 
   firstBowl() {
@@ -29,11 +36,11 @@ class Frame {
   }
 
   isASpare() {
-    return this.frame.length === 2 && (this.firstBowl() + this.secondBowl() === 10)
+    return this.frame.length === 2 && (this.score === 10);
   }
 
   isNeedingABonus() {
-    return this.isAStrike() || this.isASpare();
+    return this.isASpare() && this.bonusesAdded !== 1 || this.isAStrike() && this.bonusesAdded !== 2;
   }
 
   getScore() {
@@ -42,6 +49,7 @@ class Frame {
 
   updateScore(amount) {
     this.score += amount;
+    this.bonusesAdded ++
   }
 
 }

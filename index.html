@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <title>Bowling Scorecard</title>
+  </head>
+  <body>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="src/scorecard.js"></script>
+    <script src="src/finalFrame.js"></script>
+    <script src="src/frame.js"></script>
+    <script src="src/interface.js"></script>
+
+    <section>
+      <h2> Click your last score and the scorecard will update automatically </h2>
+      <h3> Score: </h3><h3 id="game-score"></h3>
+      <p>
+        <button id="0">0</button>
+        <button id="1">1</button>
+        <button id="2">2</button>
+        <button id="3">3</button>
+        <button id="4">4</button>
+        <button id="5">5</button>
+        <button id="6">6</button>
+        <button id="7">7</button>
+        <button id="8">8</button>
+        <button id="9">9</button>
+        <button id="10">10</button>
+
+
+        <br><br>Frame1 Bowl 1: <span id="1-1">-</span><br>
+        Frame1 Bowl 2: <span id="1-2">-</span><br>
+        Frame 1 Score: <span id="1-score">-</span><br>
+        <br>Frame2 Bowl 1: <span id="2-1">-</span><br>
+        Frame2 Bowl 2: <span id="2-2">-</span><br>
+        Frame 1 Score: <span id="2-score">-</span><br>
+        <br>Frame3 Bowl 1: <span id="3-1">-</span><br>
+        Frame3 Bowl 2: <span id="3-2">-</span><br>
+        Frame 1 Score: <span id="3-score">-</span><br>
+        <br>Frame4 Bowl 1: <span id="4-1">-</span><br>
+        Frame4 Bowl 2: <span id="4-2">-</span><br>
+        Frame 1 Score: <span id="4-score">-</span><br>
+        <br>Frame5 Bowl 1: <span id="5-1">-</span><br>
+        Frame5 Bowl 2: <span id="5-2">-</span><br>
+        Frame 1 Score: <span id="5-score">-</span><br>
+        <br>Frame6 Bowl 1: <span id="6-1">-</span><br>
+        Frame6 Bowl 2: <span id="6-2">-</span><br>
+        Frame 1 Score: <span id="6-score">-</span><br>
+        <br>Frame7 Bowl 1: <span id="7-1">-</span><br>
+        Frame7 Bowl 2: <span id="7-2">-</span><br>
+        Frame 1 Score: <span id="7-score">-</span><br>
+        <br>Frame8 Bowl 1: <span id="8-1">-</span><br>
+        Frame8 Bowl 2: <span id="8-2">-</span><br>
+        Frame 1 Score: <span id="8-score">-</span><br>
+        <br>Frame9 Bowl 1: <span id="9-1">-</span><br>
+        Frame9 Bowl 2: <span id="9-2">-</span><br>
+        Frame 1 Score: <span id="9-score">-</span><br>
+        <br>Frame10 Bowl 1: <span id="10-1">-</span><br>
+        Frame10 Bowl 2: <span id="10-2">-</span><br>
+        Frame10 Bowl 3: <span id="10-3">-</span><br>
+        Final Score: <span id="10-score">-</span><br>
+
+
+        <button id="powersaving-on">Turn Power Saving Mode On</button>
+        <button id="powersaving-off">Turn Power Saving Mode Off</button>
+      </p>
+    </section>
+    <section>
+      <h3>Local temperature: <span id="local-temperature"></span></h3>
+
+    <section>
+  <h1><span id="city-name">London</span> temperature: <span id="select-temperature">20</span></h1>
+  <form id="select-city">
+    <input id="typed-city" type="text" placeholder="Enter a city"></input>
+    <input type="submit"></input>
+  </form>
+</section>
+  </body>
+</html>

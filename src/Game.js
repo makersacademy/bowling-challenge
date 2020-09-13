@@ -11,6 +11,7 @@ class Game {
     this.spareBonus = false;
     this.strikeBonus = false;
     this.doubleStrikeBonus = false;
+    this.numberOfRolls = 0
   }
 
   isLastRoll() {
@@ -50,6 +51,10 @@ class Game {
   }
 
   recordRoll(score) {
+    this.numberOfRolls += 1
+    if (this.numberOfRolls > 21) return;
+    if (this.frameCount == 11 && this.strikeBonus == false) return; 
+    if (this.frameCount == 12) return;
     this.isLastFrame();
 
     this.isLastRoll();
@@ -77,6 +82,9 @@ class Game {
     }
 
     this.rollCount -= 1;
+    console.log(this.numberOfRolls)
+    console.log(this.frameCount)
+    console.log('-------------')
   }
 
   storeRoll(score) {
@@ -116,7 +124,7 @@ class Game {
   }
 
   add(score) {
-    this.playerScore += score
+    this.playerScore += score;
   }
 
   calculateScore(score) {

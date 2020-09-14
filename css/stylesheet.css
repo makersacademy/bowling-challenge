@@ -1,0 +1,97 @@
+body {
+  background-image: url("../images/bowling-background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.instructions {
+  width: 400px;
+  margin: 20px auto;
+  padding: 40px;
+  text-align: center;
+  border: 1px solid red;
+}
+}
+
+.buttons {
+  padding: 20px;
+  text-align: center;
+  margin: 20px auto;
+}
+
+
+.button {
+  border: #000000 solid 2px;
+  border-radius: 5px;
+  color: #FFFFFF;
+  background-color: #7a2dff;
+  padding: 2px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  width: 50px;
+  font-weight: bold;
+}
+
+.tg  {
+  border-collapse:collapse;border-spacing:0;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
+.tg td {
+  border-color:black;
+  border-style:solid;
+  border-width:1px;
+  font-family:Arial, sans-serif;
+  font-size:14px;
+  overflow:hidden;
+  padding:10px 5px;
+  word-break:normal;
+}
+
+.tg th{
+  border-color:black;
+  border-style:solid;
+  border-width:1px;
+  font-family:Arial, sans-serif;
+  font-size:14px;
+  font-weight:normal;
+  overflow:hidden;
+  padding:10px 5px;
+  word-break:normal;
+}
+
+.tg .tg-3nmk{
+  background-color:#7a2dff;
+  border-color:inherit;
+  color:#ffffff;
+  font-size:20px;
+  text-align:center;
+  vertical-align:top
+}
+
+.tg .tg-bzci{
+  font-size:20px;
+  text-align:center;
+  vertical-align:top
+}
+
+.tg .tg-19m5{
+  background-color:#7a2dff;
+  color:#ffffff;
+  font-size:20px;
+  text-align:center;
+  vertical-align:top
+}
+
+.tg .tg-lvth{
+  font-size:16px;
+  text-align:center;
+  vertical-align:top
+}

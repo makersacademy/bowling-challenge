@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+    <title>Bowling Scorecard</title>
+  </head>
+  <body>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="src/scorecard.js"></script>
+    <script src="src/finalFrame.js"></script>
+    <script src="src/frame.js"></script>
+    <script src="src/interface.js"></script>
+
+    <div class=instructions>Click your last score and the scorecard will update automatically </div>
+    <div class=buttons>
+      <button class="button" id="0">0</button>
+      <button class="button"id="1">1</button>
+      <button class="button"id="2">2</button>
+      <button class="button"id="3">3</button>
+      <button class="button"id="4">4</button>
+      <button class="button"id="5">5</button>
+      <button class="button"id="6">6</button>
+      <button class="button"id="7">7</button>
+      <button class="button"id="8">8</button>
+      <button class="button"id="9">9</button>
+      <button class="button"id="10">10</button>
+    </div>
+    <table class="tg">
+    <tbody>
+      <tr>
+        <td class="tg-3nmk" colspan="2">Frame 1</td>
+        <td class="tg-19m5" colspan="2">Frame 2</td>
+        <td class="tg-19m5" colspan="2">Frame 3</td>
+        <td class="tg-19m5" colspan="2">Frame 4</td>
+        <td class="tg-19m5" colspan="2">Frame 5</td>
+        <td class="tg-19m5" colspan="2">Frame 6</td>
+        <td class="tg-3nmk" colspan="2">Frame 7</td>
+        <td class="tg-3nmk" colspan="2">Frame 8</td>
+        <td class="tg-19m5" colspan="2">Frame 9</td>
+        <td class="tg-19m5" colspan="3">Frame 10</td>
+      </tr>
+      <tr>
+        <td class="tg-lvth"><span id="1-1"></span></td>
+        <td class="tg-lvth"><span id="1-2"></span></td>
+        <td class="tg-lvth"><span id="2-1"></span></td>
+        <td class="tg-lvth"><span id="2-2"></span></td>
+        <td class="tg-lvth"><span id="3-1"></span></td>
+        <td class="tg-lvth"><span id="3-2"></span></td>
+        <td class="tg-lvth"><span id="4-1"></span></td>
+        <td class="tg-lvth"><span id="4-2"></span></td>
+        <td class="tg-lvth"><span id="5-1"></span></td>
+        <td class="tg-lvth"><span id="5-2"></span></td>
+        <td class="tg-lvth"><span id="6-1"></span></td>
+        <td class="tg-lvth"><span id="6-2"></span></td>
+        <td class="tg-lvth"><span id="7-1"></span></td>
+        <td class="tg-lvth"><span id="7-2"></span></td>
+        <td class="tg-lvth"><span id="8-1"></span></td>
+        <td class="tg-lvth"><span id="8-2"></span></td>
+        <td class="tg-lvth"><span id="9-1"></span></td>
+        <td class="tg-lvth"><span id="9-2"></span></td>
+        <td class="tg-lvth"><span id="10-1"></span></td>
+        <td class="tg-lvth"><span id="10-2"></span></td>
+        <td class="tg-lvth"><span id="10-3"></span></td>
+      </tr>
+      <tr>
+        <td class="tg-bzci" colspan="2"><span id="1-score" style="font-weight:400;font-style:normal"></span></td>
+        <td class="tg-bzci" colspan="2"><span id="2-score" style="font-weight:400;font-style:normal"></span></td>
+        <td class="tg-bzci" colspan="2"><span id="3-score" style="font-weight:400;font-style:normal"></span></td>
+        <td class="tg-bzci" colspan="2"><span id="4-score" style="font-weight:400;font-style:normal"></span></td>
+        <td class="tg-bzci" colspan="2"><span id="5-score" style="font-weight:400;font-style:normal"></span></td>
+        <td class="tg-bzci" colspan="2"><span id="6-score" style="font-weight:400;font-style:normal"></span></td>
+        <td class="tg-bzci" colspan="2"><span id="7-score" style="font-weight:400;font-style:normal"></span></td>
+        <td class="tg-bzci" colspan="2"><span id="8-score" style="font-weight:400;font-style:normal"></span></td>
+        <td class="tg-bzci" colspan="2"><span id="9-score" style="font-weight:400;font-style:normal"></span></td>
+        <td class="tg-bzci" colspan="3"><span id="10-score" style="font-weight:400;font-style:normal"></span></td>
+      </tr>
+    </tbody>
+    </table>
+  </body>
+</html>

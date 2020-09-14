@@ -1,7 +1,5 @@
 'use strict';
 
-//import Frame from '../src/frame.js'
-
 class Scorecard {
     constructor() {
         this.frames = [new Frame()];
@@ -57,5 +55,3 @@ class Scorecard {
         }
     }
 }
-
-//export default Scorecard;

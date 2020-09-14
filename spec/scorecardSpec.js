@@ -1,10 +1,5 @@
 'use strict';
 
-//var Frame = require('../src/Frame');
-//import Frame from '../src/frame.js'
-//import LastFrame from '../src/lastFrame.js'
-//import Scorecard from '../src/scorecard.js'
-
 describe('Scorecard', function() {
 
     let scorecard

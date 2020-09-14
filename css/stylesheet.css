@@ -7,17 +7,20 @@ body {
 
 .instructions {
   width: 400px;
-  margin: 20px auto;
-  padding: 40px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.6);
   text-align: center;
-  border: 1px solid red;
-}
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 20px;
+  font-weight: 50;
+  font-weight: bold;
 }
 
 .buttons {
   padding: 20px;
   text-align: center;
-  margin: 20px auto;
+  margin: auto;
 }
 
 
@@ -25,7 +28,7 @@ body {
   border: #000000 solid 2px;
   border-radius: 5px;
   color: #FFFFFF;
-  background-color: #7a2dff;
+  background-color: #000000;
   padding: 2px;
   text-align: center;
   text-decoration: none;
@@ -38,10 +41,7 @@ body {
 
 .tg  {
   border-collapse:collapse;border-spacing:0;
-  margin-top: 100px;
-  margin-bottom: 100px;
-  margin-right: 100px;
-  margin-left: 100px;
+  margin: auto;
 }
 
 .tg td {
@@ -68,7 +68,7 @@ body {
 }
 
 .tg .tg-3nmk{
-  background-color:#7a2dff;
+  background-color:#000000;
   border-color:inherit;
   color:#ffffff;
   font-size:20px;
@@ -83,7 +83,7 @@ body {
 }
 
 .tg .tg-19m5{
-  background-color:#7a2dff;
+  background-color:#000000;
   color:#ffffff;
   font-size:20px;
   text-align:center;

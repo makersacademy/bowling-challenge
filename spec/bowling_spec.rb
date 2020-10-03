@@ -32,4 +32,59 @@ describe Bowling do
     expect(@game.total_score).to eq 23
   end
 
+  it "calculates a spare score from 3 rounds" do
+    scores = [5,2,4,6,2,2]
+    scores.each do |score|
+      @game.score(score)
+    end
+    expect(@game.total_score).to eq 23
+  end
+
+  it "calculates a strike and next round" do
+    scores = [10,4,4]
+    scores.each do |score|
+      @game.score(score)
+    end
+    expect(@game.total_score).to eq 26
+  end
+
+  it "calculates strike, new round, strike, next round" do
+    scores = [10,4,4,10,2,2]
+    scores.each do |score|
+      @game.score(score)
+    end
+    expect(@game.total_score).to eq 44
+  end
+
+  it "calculates spare, next round" do
+    scores = [4,6,2,2]
+    scores.each do |score|
+      @game.score(score)
+    end
+    expect(@game.total_score).to eq 16
+  end
+
+  it "calculates strike, spare, next round" do
+    scores = [10,4,6,2,2]
+    scores.each do |score|
+      @game.score(score)
+    end
+    expect(@game.total_score).to eq 36
+  end
+
+  it "calculates 2 strikes and a next round" do
+    scores = [10,10,6,2]
+    scores.each do |score|
+      @game.score(score)
+    end
+    expect(@game.total_score).to eq 52
+  end
+
+
+  # it "a perfect game scores 300" do
+  #   12.times do
+  #     @game.score(10)
+  #   end
+  #     expect(@game.total_score).to eq 300
+  # end
 end

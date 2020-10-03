@@ -1,5 +1,7 @@
 class Roll
-  class << self
+
+
+
 
     def pins_hit(pins)
       @pins = pins
@@ -8,5 +10,4 @@ class Roll
     def strike?
       @pins == 10
     end
-  end
 end

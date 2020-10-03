@@ -1,6 +1,14 @@
 require 'frame'
 
 describe Frame do
+
+  describe '.count' do
+    it 'returns the frame count' do
+      allow(Frame).to receive(:count) {5}
+      expect(Frame.count).to eq 5
+    end
+  end
+
   describe '.increase' do
     it 'increases the frame count' do
       expect { Frame.increase }.to change { Frame.count }.by(1)
@@ -16,8 +24,6 @@ describe Frame do
       allow(Frame).to receive(:count) { 9 }
       Frame.count
       expect(Frame.final?).to be_truthy
-    end
-    
+    end 
   end
-
 end

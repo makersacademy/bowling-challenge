@@ -11,8 +11,7 @@ class Frame
     end
 
     def final?
-      Frame.count == 9 ? true : false
-    end
+      Frame.count == 9
+    end 
   end
-
 end

@@ -2,42 +2,37 @@ class Bowling
 
   def initialize
     @total_score = 0
-    @round = 1
     @frame_score = 0
-    @strike_bonus = 0
     @strike = false
     @spare = false
-    @roll = 0
+    @roll = 1
   end
   
-  def score(score)
-    
-    @frame_score += score
-    
-    strike if score == 10 
- 
-    if @spare == true
-     p @total_score += score
-      @spare = false
-    end
-
-    if @strike == true && @roll == 2 #@roll / @round
-      @total_score += @frame_score + score
+  def score(pins)
+    @frame_score += pins
+    @roll_score = pins
+    strike if pins == 10 
+    calculate
+  end
+  
+  def calculate
+    spare(@frame_score)
+    if @strike == true && @roll == 2 
+      @total_score += @frame_score + @frame_score
       @strike = false
       @frame_score = 0
     end
-
-    spare if @round == 2 && @frame_score == 10
-    
-    @total_score += score
-    
-    @round += 1
-    if @round == 3
-      @round = 1
-      @frame_score = 0
-    end
+    @spare = true if @roll == 2 && @frame_score == 10
+    @total_score += @roll_score
     @roll += 1
-    
+    if @roll == 3
+      reset_frame
+    end
+  end
+
+  def reset_frame
+    @roll = 1
+    @frame_score = 0
   end
 
   def total_score
@@ -45,15 +40,15 @@ class Bowling
   end
   
   def strike
-    puts "Strike!"
     @roll = 1
     @frame_score = 0
     @strike = true
   end
 
-  def spare
-    @spare = true 
+  def spare(pins)
+    if @spare == true
+      @total_score += pins
+      @spare = false
+    end
   end
-
- 
 end

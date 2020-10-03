@@ -2,7 +2,7 @@ require "sinatra/base"
 class Bowling < Sinatra::Base 
 
 	get '/' do 
-		erb :main_page
+		"Welcome to the bowling alley"
 	end 
 
 	  run! if app_file == $0

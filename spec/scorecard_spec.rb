@@ -1,6 +1,6 @@
 require 'scorecard'
 
-Describe "scorecard" do
+describe "scorecard" do
   it "" do
   end
 

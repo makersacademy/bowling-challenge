@@ -40,4 +40,33 @@ describe Frame do
     frame.add_roll(5)
     expect { frame.add_roll(1) }.to raise_error "You have already finished this frame"
   end
+
+  it "allows the frame to be updated with information from the next frame when frame was a spare" do
+    frame = Frame.new
+    frame.add_roll(5)
+    frame.add_roll(5)
+    expect(frame.frame_score).to eq 0
+    frame.add_following_frame_roll(3)
+    expect(frame.frame_score).to eq 13
+  end
+
+  it "allows the frame to be updated with information from the next frame when frame was a spare" do
+    frame = Frame.new
+    frame.add_roll(10)
+    expect(frame.frame_score).to eq 0
+    frame.add_following_frame_roll(3)
+    expect(frame.frame_score).to eq 0
+    frame.add_following_frame_roll(6)
+    expect(frame.frame_score).to eq 19
+  end
+
+  it "handles 3 strikes in a row" do
+    frame = Frame.new
+    frame.add_roll(10)
+    expect(frame.frame_score).to eq 0
+    frame.add_following_frame_roll(10)
+    expect(frame.frame_score).to eq 0
+    frame.add_following_frame_roll(10)
+    expect(frame.frame_score).to eq 30
+  end
 end

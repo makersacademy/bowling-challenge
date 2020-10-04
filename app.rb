@@ -1,9 +1,11 @@
 require 'sinatra'
+require_relative './lib/frame.rb'
+require_relative './lib/game.rb'
 
 class Balls < Sinatra::Base
 
   get '/' do
-    "This is balls"
+    erb :home
   end
 
   get '/game' do

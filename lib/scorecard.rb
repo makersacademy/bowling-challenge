@@ -5,7 +5,7 @@ class ScoreCard
     @total_score
   end
 
-  def self.add_roll(score)
+  def add_roll(score)
     @total_score = score
   end
 end

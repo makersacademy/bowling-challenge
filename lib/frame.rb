@@ -8,17 +8,14 @@ class Frame
   end
 
   def add_roll(roll)
-    unless tenth_frame? && ( spare? || strike? || double_strike? )
-      raise "No more rolls, already had 2." if num_rolls >= 2
-      raise "No more rolls, already bowled 10 pins." if total_pins >= 10
-      raise "Invalid roll, cannot bowl more than 10 pins in this frame." if total_pins + roll.pins > 10
-    end
+    raise "No more rolls, frame is complete" if complete?
+    raise "Invalid roll" if num_rolls == 1 && ( total_pins + roll.pins > 10 ) unless strike?
     @rolls << roll
   end
 
   def complete?
     return false if num_rolls < 2 && total_pins < 10
-    return false if tenth_frame? && ( spare? || strike? || double_strike? )
+    return false if has_third_roll?
     true
   end
 
@@ -30,8 +27,9 @@ class Frame
     @rolls.reduce(0) { |sum, num| sum + num.pins }
   end
 
+  # score doesn't currently cater for frame 10
   def score(frame_n1 = nil, frame_n2 = nil)
-    return false if !complete?
+    return false unless complete?
     bonus = 0
     bonus = spare_bonus(frame_n1) if spare?
     bonus = strike_bonus(frame_n1, frame_n2) if strike?
@@ -49,8 +47,10 @@ class Frame
     num_rolls == 1 && total_pins == 10
   end
 
-  def double_strike?
-    num_rolls == 2 && total_pins == 20
+  def has_third_roll?
+    return false unless tenth_frame?
+    return true if spare? || (@rolls[0].pins == 10 && num_rolls < 3)
+    false
   end
 
   def spare_bonus(frame_n1)

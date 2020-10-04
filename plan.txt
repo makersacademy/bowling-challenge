@@ -24,3 +24,55 @@
   #Perfect Game 
     #12 strikes (10 regular, 2 bonus)
     #score = 300
+
+    ### Setup ###
+
+>Store number of frames
+  >Number of rolls in each frame 
+
+>Store the score 
+  >Overall score 
+  >Score for each frame 
+
+  ### Game ###
+
+  # Frame 1 
+    # Roll 1 - Player enters score 
+        # if score == 10 
+          # skip to frame 2
+          # score = 10 
+          # bonus points of next two rolls
+        # else
+          # roll again - enter score
+            # if roll_1 + roll_2 == 10 
+              # score = 10 
+              # bonus points of next roll to be added on 
+            # else 
+              # score = score = roll_1 + roll_2
+            # end
+        # end 
+
+ # Do this 10 times 
+
+  ### Dealing with strikes ###
+
+  #Store scores from each frame in a hash
+    #key is @current_frame
+    #value is array containing scores for each roll 
+
+    #For each frame iterate through the scores 
+      #if the score is a strike 
+        #add the points from the next frame to tge score of the current_frame 
+
+
+### Dealing with bonus rolls after frame 10 ###
+
+  #Frame 10 
+    # if scores[10].length == 1
+      #bonus_1 = gets.chomp 
+      #bonus_2 = gets.chomp
+      #@scores[:bonus] = bonus_1 + bonus_2
+    # else scores[10].sum == 10 
+        #bonus_1 = gets.chomp
+        #@scores[:bonus] = bonus_1
+    # end 

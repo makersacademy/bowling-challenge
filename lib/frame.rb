@@ -9,17 +9,26 @@ class Frame
 
   def add_roll(roll)
     raise "No more rolls, already had 2." if num_rolls >= 2
-    raise "No more rolls, already bowled 10 pins." if running_score >= 10
-    raise "Invalid roll, cannot bowl more than 10 pins in this frame." if running_score + roll.pins > 10
+    raise "No more rolls, already bowled 10 pins." if total_pins >= 10
+    raise "Invalid roll, cannot bowl more than 10 pins in this frame." if total_pins + roll.pins > 10
     @rolls << roll
+  end
+
+  def complete?
+    return false if num_rolls < 2 && total_pins < 10
+    true
   end
 
   def num_rolls
     @rolls.count
   end
 
-  def running_score
+  def total_pins
     @rolls.reduce(0) { |sum, num| sum + num.pins }
+  end
+
+  def score
+
   end
 
 end

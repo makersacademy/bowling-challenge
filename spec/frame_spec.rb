@@ -25,7 +25,7 @@ describe Frame do
     expect{ Frame.new(11) }.to raise_error(RuntimeError)
   end
 
-  describe '.add_roll(roll)' do
+  describe '#add_roll(roll)' do
     context 'frame number is 1-9' do
       it 'adds the roll to rolls if roll count < 2 AND new frame score would be <= 10' do
         frame.add_roll(roll_2)
@@ -53,5 +53,31 @@ describe Frame do
     context 'frame number is 10' do
       #TODO
     end
+  end
+
+  describe '#complete?' do
+    it 'returns true if the frame has 2 rolls' do
+      frame.add_roll(roll_2)
+      frame.add_roll(roll_2)
+      expect(frame.complete?).to eq true
+    end
+
+    it 'returns true if the frame has a strike' do
+      frame.add_roll(roll_10)
+      expect(frame.complete?).to eq true
+    end
+
+    it 'returns false if the frame has 1 roll and < 10 total pins' do
+      frame.add_roll(roll_8)
+      expect(frame.complete?).to eq false
+    end
+
+    it 'returns false if the frame has 0 rolls' do
+      expect(frame.complete?).to eq false
+    end
+  end
+
+  describe '#score(frame_n+1, frame_n+2)' do
+    
   end
 end

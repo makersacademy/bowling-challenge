@@ -1,9 +1,10 @@
-require "sinatra/base"
-class Bowling < Sinatra::Base 
+#require "sinatra/base"
 
-	get '/' do 
-		erb :main_page
-	end 
+# class Bowling < Sinatra::Base 
 
-	  run! if app_file == $0
-end
+# 	get '/' do 
+# 		erb :main_page
+# 	end 
+
+# 	  run! if app_file == $0
+# end

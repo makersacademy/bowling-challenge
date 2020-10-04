@@ -12,9 +12,9 @@ class Score
       Score.total
     end
 
-    def increase(roll_score)
+    def increase(points)
       @total ||= 0
-      @total += roll_score
+      @total += points
     end
 
     def reset

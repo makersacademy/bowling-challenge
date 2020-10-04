@@ -10,6 +10,10 @@ class Frame
       @count += 1
     end
 
+    def reset
+      @count = 0
+    end
+
     def final?
       Frame.count == 9
     end 

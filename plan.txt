@@ -1,0 +1,26 @@
+#player rolls
+  #if strike 
+    # frame ends
+    #bonus is the number of pins knocked down by the next 
+    #two rolls unless they score another strike
+  #elsif player knocks down all 10 pins with two rolls in 
+  #frame
+    #bonus is number of pins knocked down in first roll of 
+    #next frame
+  #else 
+    #score is the number of pins knocked down in frame
+
+#Tenth frame 
+  #if player scores a strike 
+    #two additional rolls (never more than 3 rolls)
+  #elsif player scores a spare
+    #one additional roll 
+  (additional rolls only count for bonus not regular 
+  frame count)
+
+  #Gutter game 
+    #20 zeroes 
+
+  #Perfect Game 
+    #12 strikes (10 regular, 2 bonus)
+    #score = 300

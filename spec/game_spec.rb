@@ -34,6 +34,11 @@ describe Game do
             expect(game.score).to eq 22
         end
           
+        it 'Roll a perfect game' do
+            game = Game.new
+            12.times{game.roll(10)}
+            expect(game.score).to eq 300
+        end
 
     end
 

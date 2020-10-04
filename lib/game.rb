@@ -9,33 +9,44 @@ class Game
     end
 
     def score
-        result = 0
-        rollIndex = 0
+        total = 0
+        roll_index = 0
         10.times do
-            if @rolls[rollIndex] == 10
-                result += @rolls[rollIndex] + @rolls[rollIndex + 1] + @rolls[rollIndex + 2]
-                rollIndex += 1
-            elsif spare?(rollIndex)
-                result += spare_score(rollIndex)
-                rollIndex += 2
+            if strike?(roll_index)
+                total += strike_score(roll_index)
+                roll_index += 1
+            elsif spare?(roll_index)
+                total += spare_score(roll_index)
+                roll_index += 2
             else
-                result += frame_score(rollIndex)
-                rollIndex += 2
+                total += frame_score(roll_index)
+                roll_index += 2
             end
         end
-        result
+        total
     end
 
-    def spare?(rollIndex)
-        @rolls[rollIndex] + @rolls[rollIndex + 1] == 10
+
+    private
+    def spare?(roll_index)
+        @rolls[roll_index] + @rolls[roll_index + 1] == 10
+    end
+    
+    def strike?(roll_index)
+        @rolls[roll_index] == 10
     end
 
-    def spare_score(rollIndex)
-        @rolls[rollIndex] + @rolls[rollIndex + 1] + @rolls[rollIndex + 2]
+    def spare_score(roll_index)
+        @rolls[roll_index] + @rolls[roll_index + 1] + @rolls[roll_index + 2]
     end
 
-    def frame_score(rollIndex)
-        @rolls[rollIndex] + @rolls[rollIndex + 1]
+    def frame_score(roll_index)
+        @rolls[roll_index] + @rolls[roll_index + 1]
+    end
+
+
+    def strike_score(roll_index)
+        @rolls[roll_index] + @rolls[roll_index + 1] + @rolls[roll_index + 2]
     end
 
 end

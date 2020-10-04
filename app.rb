@@ -11,11 +11,12 @@ class BowlingGame < Sinatra::Base
 
 	post '/game' do
 		@player = Player.new(params[:name])
+		@game = Bowling.new
 	end 
 
 	get '/game' do
 		erb :game
 	end 
-	
+
   run! if app_file == $PROGRAM_NAME
 end

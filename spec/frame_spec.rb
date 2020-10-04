@@ -77,7 +77,68 @@ describe Frame do
     end
   end
 
-  describe '#score(frame_n+1, frame_n+2)' do
-    
+  describe '#score(frame_n1, frame_n2)' do
+    context 'frame is complete' do
+      context 'total pins < 10' do
+        it 'returns the score as the sum of roll 1 and roll 2 pins' do
+          frame.add_roll(roll_2)
+          frame.add_roll(roll_2)
+          expect(frame.score).to eq 4
+        end
+      end
+
+      context 'SPARE: total pins = 10 AND number of rolls = 2' do
+        before :each do
+          frame.add_roll(roll_8)
+          frame.add_roll(roll_2)
+        end
+        it 'returns false if next roll (for bonus) is not provided' do
+          expect(frame.score).to eq false
+        end
+        it 'returns the sum of total pins + pins of next roll, if given' do
+          frame_n1 = Frame.new(2)
+          frame_n1.add_roll(roll_2)
+          expect(frame.score(frame_n1)).to eq 12
+        end
+      end
+
+      context 'STRIKE: total pins = 10 AND number of rolls = 1' do
+        before :each do
+          frame.add_roll(roll_10)
+        end
+        it 'returns false if the next two rolls (for bonus) are not provided' do
+          frame_n1 = Frame.new(2)
+          frame_n1.add_roll(roll_10)
+          frame_n2 = Frame.new(3)
+          expect(frame.score(frame_n1, frame_n2)).to eq false
+        end
+        it 'returns the sum of total pins + pins of next 2 rolls, if given' do
+          frame_n1 = Frame.new(2)
+          frame_n1.add_roll(roll_2)
+          frame_n1.add_roll(roll_2)
+          frame_n2 = Frame.new(3)
+          frame_n2.add_roll(roll_2)
+          expect(frame.score(frame_n1, frame_n2)).to eq 14
+        end
+        it 'returns the sum of total pins + pins of next 2 rolls, if given' do
+          frame_n1 = Frame.new(2)
+          frame_n1.add_roll(roll_10)
+          frame_n2 = Frame.new(3)
+          frame_n2.add_roll(roll_2)
+          expect(frame.score(frame_n1, frame_n2)).to eq 22
+        end
+      end
+    end
+
+    context 'frame is incomplete' do
+      it 'returns false if no rolls' do
+        expect(frame.score).to eq false
+      end
+
+      it 'returns false if 1 roll and total pins < 10' do
+        frame.add_roll(roll_8)
+        expect(frame.score).to eq false
+      end
+    end
   end
 end

@@ -25,6 +25,16 @@ describe Game do
             expect(game.score).to eq 20
         end
 
+        it 'Roll a strike' do
+            game = Game.new
+            game.roll(10)
+            game.roll(2)
+            game.roll(4)
+            16.times{game.roll(0)}
+            expect(game.score).to eq 22
+        end
+          
+
     end
 
 end

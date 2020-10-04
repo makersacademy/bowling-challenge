@@ -43,6 +43,23 @@
           null
         ]
       },
+      "/Users/samcolson/Documents/Projects/Weekend_Challenges/bowling-challenge/spec/feature/feature_tests_spec.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
       "/Users/samcolson/Documents/Projects/Weekend_Challenges/bowling-challenge/spec/frame_spec.rb": {
         "lines": [
           1,
@@ -54,7 +71,6 @@
           null,
           null,
           1,
-          null,
           null,
           null,
           null
@@ -76,6 +92,6 @@
         ]
       }
     },
-    "timestamp": 1601825243
+    "timestamp": 1601826389
   }
 }

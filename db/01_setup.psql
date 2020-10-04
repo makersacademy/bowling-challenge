@@ -1,8 +1,7 @@
 CREATE DATABASE bowling;
 
-CREATE TABLE balls(
+CREATE TABLE frames(
   id SERIAL PRIMARY KEY,
   round_number INT4,
   score INT4
-
 );

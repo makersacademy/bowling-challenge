@@ -3,28 +3,15 @@ class ScoreCard
 attr_accessor :current_frame, :scores, :frames, :bonus, :frame_scores, :last_2_shots
 def initialize 
 @frames = [] 
-@scores = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0, 0]] #Array.new(9, [0,0]) << [0,0,0]#[[1, 0], [2, 0], [3, 0], [4, 0], [6, 0], [6, 0], [6, 0], [6, 0], [6, 0], [0, 0, 0]] #
+@scores = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0, 0]] #Array.new(9, [0,0]) << [0,0,0] <- need to research the behaviour of this because using it in my code was prtty wil, I think it gave all the sub-arrays the same index.
 @frame_scores = []
 @current_frame = []
 @last_2_shots = []
 end
 
-def total_score
-  
-end
-=begin
-def last_three(last_shot)
-  if @last_3_shots.length < 3
-    @last_3_shots << last_shot
-  else
-    @last_3_shots.shift
-    @last_3_shots << last_shot
-  end
-end
-=end
 
 
-def fuckmyass(last_shot)
+def last_shot_swapper(last_shot)
   if @last_2_shots.length < 2
     @last_2_shots << last_shot
   else
@@ -62,9 +49,6 @@ def score_this_shot(shot_score)
   end
 end
 
-def score_bonus_round
-
-end
 
 def add_strike_bonus
   @frame_scores[frame_number - 3] += @last_2_shots.sum unless @frames.length >= 9
@@ -73,11 +57,6 @@ def add_strike_bonus
 
   @frame_scores[frame_number - 3] += @last_2_shots.sum if (@frames.length == 9 && @last_2_shots == [@current_frame[1], @current_frame[2]] )
   @frame_scores[frame_number - 2] += @last_2_shots.sum if (@frames.length == 9 && @last_2_shots == [@current_frame[0], @current_frame[1]] && @current_frame[2] == 10 ) 
- #strike_bonus = @scores[frame_number -2] + @scores[frame_number -1]
- #strike_bonus.delete(0)
-
-  #strike_bonus
-  #@frame_scores[frame_number - 3] += @last_2_shots.sum unless @current_frame.length > 2
 
 end
 
@@ -94,7 +73,7 @@ def last_frame_spare?
 end #(@current_frame[0]
 
 def strike_bonus_round?
-   (frame_number == 10 && @current_frame.last == 10 && @current_frame.length < 3)
+   (frame_number == 10 && @current_frame.first == 10 && @current_frame.length < 3)
 end
 
 def spare_bonus_round?
@@ -162,7 +141,7 @@ def run
     puts @current_frame
     
     game.score_this_shot(last_shot)
-    game.fuckmyass(last_shot)
+    game.last_shot_swapper(last_shot)
     game.score_statement
     game.shot_sorter
     puts "instance length #{game.current_frame.length}"

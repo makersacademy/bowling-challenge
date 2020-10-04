@@ -25,6 +25,14 @@ describe Bowling_v2 do
     17.times{@game.roll(0)}
     expect(@game.score).to eq 22
   end
+  it 'scores 2 strikes' do
+    @game.roll(10)
+    @game.roll(10)
+    @game.roll(7)
+    @game.roll(3)
+    14.times{@game.roll(0)}
+    expect(@game.score).to eq 57
+  end
   it 'scores a perfect game' do
     12.times{@game.roll(10)}
     expect(@game.score).to eq 300

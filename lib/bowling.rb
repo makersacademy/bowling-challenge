@@ -1,26 +1,27 @@
+# frozen_string_literal: true
 
 class Bowling
-	attr_reader :score
-	def initialize
+  attr_reader :score
+  def initialize
     @rolls = []
   end
 
-	def roll(pins)
-		@rolls << pins 
-	end 
+  def roll(pins)
+    @rolls << pins
+  end
 
   def score
     result = 0
     frame = 0
     10.times do
       if strike?(frame)
-        result = result + strike_bonus(frame) 
+        result += strike_bonus(frame)
         frame += 1
       elsif spare?(frame)
-        result +=  spare_bonus(frame)
+        result += spare_bonus(frame)
         frame += 2
       else
-        result = result + sum(frame)
+        result += sum(frame)
         frame += 2
       end
     end
@@ -47,4 +48,3 @@ class Bowling
     @rolls[frame] + @rolls[frame + 1] == 10
   end
 end
-

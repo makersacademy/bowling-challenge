@@ -1,10 +1,11 @@
-require "sinatra/base"
-require "./lib/bowling"
-class BowlingGame < Sinatra::Base 
+# frozen_string_literal: true
 
-	get '/' do 
-		erb :main_page
-	end 
+require 'sinatra/base'
+require './lib/bowling'
+class BowlingGame < Sinatra::Base
+  get '/' do
+    erb :main_page
+  end
 
-	  run! if app_file == $0
+  run! if app_file == $PROGRAM_NAME
 end

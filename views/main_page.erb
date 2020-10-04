@@ -1,7 +1,58 @@
+<style>
+body {
+	
+background-image: url('https://www.mytimeactive.co.uk/sites/default/files/inline-images/mytime-active-pavilion-november-2014%20%28738%29.jpg');
+background - position : center;
+background-repeat: no - repeat;
+background-size: cover;
+text-align: center;
+font - family : 'Bangers', cursive;
+color: white;
+text-shadow : 2px 1px white;
+font-size: 30px;
+}
+div {
+	margin-top: 120px;
+}
+input[type = "submit"]{-moz - appearance: button;
+  -moz-binding: none;
+  -moz-box-sizing: border-box;
+  -moz-user-select: none;
+	background-color: #CE6C47;
+  border: 2px outset buttonface;
+  color: buttontext;
+  cursor: default;
+  line-height: normal;
+  padding: 0 6px;
+  text-align: center;
+  text-shadow: none;
+  white-space: pre;
+  width: 300px;
+	height: 55px;
+	border-radius : 4px;
+	font-size: 20px;
+}
+input[type = "text"]{
+  width: 300px;
+  height: 55px;
+  text-align: center;
+  margin-bottom: 20px;
+	margin-top: 50px;
+	border-radius: 4px;
+	font-size: 20px;
+	}
 
+</style>
+<head>
+<title>Bowling</title>
+</head>
+<body>
+<div>
 <h1>Welcome to the bowling alley!</h1>
-<h2>Submit your name to start the game: <h2>
+<h2>Submit your name and start the game: <h2>
 <form action="/game" method="post">
-<input type="name" name="name" placeholder="your name here" required>
+<input type="text" name="name" placeholder="your name here" required>
 <input type="submit" value="Start the game">
 </form>
+</div>
+</body>

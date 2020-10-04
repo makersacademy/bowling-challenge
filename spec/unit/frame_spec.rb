@@ -41,6 +41,13 @@ describe Frame do
     expect { frame.add_roll(1) }.to raise_error "You have already finished this frame"
   end
 
+  it "doesn't allow you to enter any more rolls after a spare" do
+    frame = Frame.new
+    frame.add_roll(10)
+    frame.add_following_frame_roll(9)
+    expect { frame.add_following_frame_roll(2) }.to raise_error "You can only fell 10 pins in a frame"
+  end
+
   it "allows the frame to be updated with information from the next frame when frame was a spare" do
     frame = Frame.new
     frame.add_roll(5)

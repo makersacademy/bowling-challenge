@@ -18,6 +18,10 @@ class Frame
   end
 
   def frame_score
+    if !frame_completed?
+      return 0
+    end
+
     if !is_strike? && !is_spare?
       return @score
     end
@@ -32,12 +36,14 @@ class Frame
       if @following_frame_rolls.length < 1
         return 0
       end
-      return @score + @following_frame_rolls.sum
+      return @score + @following_frame_rolls[0]
     end
   end
 
   def add_following_frame_roll(pins_felled)
-    raise "You have added too many rolls" if @following_frame_rolls.length >= 2
+    if @following_frame_rolls.length >= 2
+      return
+    end
 
     raise "You cannot fell more pins than 10" if pins_felled > 10
     raise "You cannot fell fewer pins than 0" if pins_felled < 0
@@ -55,5 +61,9 @@ class Frame
 
   def is_strike?
     return @rolls == 1 && @pins == 0
+  end
+
+  def frame_completed?
+    return @pins == 0 || @rolls == 2
   end
 end

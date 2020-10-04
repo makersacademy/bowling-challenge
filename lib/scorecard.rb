@@ -1,8 +1,8 @@
 
 class ScoreCard
-attr_accessor :current_frame, :scores, :frames
+attr_accessor :current_frame, :scores, :frames, :bonus
 def initialize 
-@frames = []
+@frames = [[10], [10], [10], [10], [5,3], [10], [10], [10], [10]] 
 @scores = Array.new(10, 0)
 @total = 0
 @current_frame = []
@@ -13,12 +13,14 @@ def shot_sorter
     if frame_ended? && !(strike_bonus_round? || spare_bonus_round?)
     frames << @current_frame
     @current_frame = []
+    @bonus = false
 
     end
 end
 
 def score_this_shot(shot_score)
-  if shot_in_frame == 1
+ # @current_frame << shot_score
+  if shot_in_frame == 1 || 2
     @current_frame << shot_score
   elsif strike_bonus_round?
     @current_frame << shot_score
@@ -26,8 +28,7 @@ def score_this_shot(shot_score)
   elsif spare_bonus_round?
     @current_frame << shot_score
     @bonus = true
-  else 
-    @current_frame << shot_score
+  else
     shot_sorter
   end
 end
@@ -37,14 +38,14 @@ def strike_bonus_round?
 end
 
 def spare_bonus_round?
-  (frame_number == 10 && @current_frame.length < 3  && @current_frame[0] + @current_frame[1] == 10 )
+  (frame_number == 10 && @current_frame.length == 2  && @current_frame[0] + @current_frame[1] == 10 )
 end
 
 def frame_ended?
   if @bonus
-    @current_frame.length == 3
+    shot_in_frame > 2
   else
-    (@current_frame.length == 2 || @current_frame.sum ==10)
+    (@current_frame.length >= 2 || @current_frame.sum ==10)
   end
 end
 
@@ -73,12 +74,11 @@ def shot_in_frame
 end
 
 def score_statement
-  @frames.each do |frame|
-    print "Frame: #{frame_number}. Shot 1: #{frame[0]}"
-    puts "Shot 2: #{frame[1]}" if frame.length >= 2
-    puts "Bonus shot: #{frame[2]}" if @bonus
-    puts "#{frame_name(frame)}"
-  end
+  
+    print "Frame: #{frame_number}. Shot 1: #{@current_frame[0]}"
+    puts "Shot 2: #{@current_frame[1]}" if @current_frame.length >= 2
+    puts "Bonus shot: #{@current_frame[2]}" if @bonus
+    puts "#{frame_name(@current_frame)}"
 end
 
 def run
@@ -86,9 +86,17 @@ def run
   until game.frame_number == 11 
     puts "Enter score for Frame: #{game.frame_number} Shot: #{game.shot_in_frame}"
     last_shot = gets.chomp.to_i
+    puts @current_frame
     game.score_this_shot(last_shot)
-    game.shot_sorter
     game.score_statement
+    game.shot_sorter
+    puts "instance length #{game.current_frame.length}"
+    puts "shot in frame + #{game.shot_in_frame}"
+    puts "bonus: #{game.bonus}"
+    puts "strike #{game.strike_bonus_round?}"
+    puts "spare #{game.spare_bonus_round?}"
+    puts "frame_ended #{game.frame_ended?}"
+    
   end
 end
 

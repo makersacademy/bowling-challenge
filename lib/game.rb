@@ -9,6 +9,6 @@ class Game
 
   def self.all
     result = DatabaseConnection.query("SELECT * FROM frames;")
-    result.map {|frame| Frame.new(id: frame['id'], round_number: frame['round_number'], round_score: frame['round_score']) }
+    result.map { |frame| Frame.new(id: frame['id'], round_number: frame['round_number'], round_score: frame['round_score']) }
   end
 end

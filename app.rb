@@ -9,6 +9,7 @@ class Balls < Sinatra::Base
   end
 
   get '/game' do
+    @scores = Game.all
     erb :game
   end
 

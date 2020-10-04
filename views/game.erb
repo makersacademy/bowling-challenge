@@ -7,4 +7,8 @@
 
 <hr>
 <h2>Game total</h2>
-<%= %>
+<% @scores.each { |frame| %>
+<%= frame.id %>
+<%= frame.round_number %>
+<%= frame.round_score %>
+<% } %>

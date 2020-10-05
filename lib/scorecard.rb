@@ -15,9 +15,13 @@ class Scorecard
     while @current_frame <= FRAMES do 
       frame = FrameScore.new
       frame.first_roll
-      @scores << frame.score 
+      @scores[frame] = frame.score 
       @current_frame += 1
     end 
+  end 
+
+  def results
+    @scores.values
   end 
 
 end 

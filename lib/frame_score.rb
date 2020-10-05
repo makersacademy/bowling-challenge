@@ -9,7 +9,8 @@ class FrameScore
   def first_roll
     puts "Enter score for first roll"
     score = gets.chomp.to_i
-    score.strike? == false ? second_roll : @score << score 
+    @score << score
+    strike(score) == false ? second_roll : @score << 0
   end 
 
   def second_roll 
@@ -18,10 +19,8 @@ class FrameScore
     @score << score 
   end 
 
-  def strike? 
-    if score == 10 
-      @score << 10 << 0
-    end 
+  def strike(score)
+    score == 10 ? true : false 
   end 
 
 end

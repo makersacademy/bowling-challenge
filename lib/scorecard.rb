@@ -1,4 +1,4 @@
-require "frame"
+require "./lib/frame"
 
 class ScoreCard
   def initialize

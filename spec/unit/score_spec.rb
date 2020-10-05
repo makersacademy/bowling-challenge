@@ -17,12 +17,12 @@ describe Score do
     end
   end
 
-  describe '.display' do
-    it 'displays the current score' do
-      allow(Score).to receive(:total) { 5 }
-      expect(Score.display).to eq 5
-    end
-  end
+  # describe '.display' do
+  #   it 'displays the current frame scores' do
+  #     allow(Score).to receive(:total) { 5 }
+  #     expect(Score.display()).to eq 5
+  #   end
+  # end
 
   describe '.increase' do
     it 'increases the score by 4' do

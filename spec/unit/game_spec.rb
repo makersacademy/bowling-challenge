@@ -38,7 +38,7 @@ describe Game do
         @game.first_roll(10)
         @game.end_frame
         expect(@game.frame_pins).to be_empty
-        expect(@game.pins_sequence).to eq [["X"]]
+        expect(@game.roll_display).to eq [["X"]]
       end
     end
 
@@ -48,7 +48,7 @@ describe Game do
         @game.second_roll(6)
         @game.end_frame
         expect(@game.frame_pins).to be_empty
-        expect(@game.pins_sequence).to eq [[4,"/"]]
+        expect(@game.roll_display).to eq [[4,"/"]]
       end
     end
   end

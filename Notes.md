@@ -109,10 +109,26 @@ Frame10
 
 # Start with Roll Class
 1. Create environment
-2. Start with the smalles problem possible, which in this case is the Roll/Pins
+2. Start with the smallest problem possible, which in this case is the Roll/Pins
 3. Unit test for Roll taking pins as parameter -> first test state: how many pins can one roll put down?
-4. Then initialize @pins and insert condition to be between 0 - 10
+4. Then initialize @pins and insert condition to be between 0 - 10 (invalid inputs are errors)
 
+# Continute with Frame Class
+1. What can Frame do - what is frame responsible for?
+ - Frame has a mnumber between 1-10 (10 Frames = 1 Game)
+ - Invalid inputs if Frame < 0 && Frame > 10
+ - Frame can add rolls (each frame made of 2 rolls, so roll count has to be < 2 and the frame score has to be <= 10)
+ 
+2. Unit test for the state of frame and its invalid inputs
+3. Initialize the variables and raise invalid inputs as errors
+
+
+
+ - Frame max is 10, which finishes the game (complete)
+ - Invalid inputs if Frame < 0 && Frame > 10
+ - Frames 1-9 are the same (one context)
+ - Frame 10 has different number of rolls depending on Strike or Spare (if Strike or Frame, roll count goes up) (another context)
+ - 
 
 
 

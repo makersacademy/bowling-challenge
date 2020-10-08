@@ -44,4 +44,14 @@ frame8
 
 frame9
 
-frame10
+frame10   1/1
+
+frame10   10/-
+strike
+xroll1
+xroll2
+
+
+frame10  1/9
+spare
+xroll1

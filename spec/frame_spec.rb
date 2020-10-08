@@ -49,6 +49,21 @@ describe Frame do
         end 
       end
     end
+
+    context 'frame 10' do
+      
+      describe 'spare_frame10' do
+      
+      
+      end
+
+      describe 'strike_frame10' do
+      
+      
+      end
+
+
+    end
 end
 
 

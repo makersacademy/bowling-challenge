@@ -61,49 +61,6 @@ points == 10 plus frame =+ 1 (roll1)
 F3
 if roll1+roll2 < 10
 Points == roll1+roll2
-
-
-     INPUT(roll1/roll2)           |         OUTPUT (points)
-            0 / 0                              0
-            10 / 0
-
-Frame1  
-10
--
-
-Frame2  
-2
-3
-
-Frame3  
-5
-5
-
-Frame4  
-5
-1
-
-Frame5  
-0
-10
-
-Frame6  
-0
-1
-
-Frame7  
-10
--
-
-Frame8  
-10
--
-
-Frame9  
-0
-1
-
-Frame10
   
 
 
@@ -124,11 +81,22 @@ Frame10
 
 4. What can a Frame do? (behaviour)
 -------
- - Frame can add rolls (method)
+ - Frame can add rolls (method) to rolls array
    - Frame = 2 rolls, so roll count has to be < 2 to be able to add new roll to frame. In this case, score has to also be <= 10
    - score = roll_n
    - so add_roll takes roll_n as argument
 -------
+- In the Context of frames 1 - 9, as they will be the same:
+  - Invalid input if tries to roll more than 2 times
+  - Can roll once if roll_10, second roll is error (strike)
+  - Cannot roll more than 10 pins
+  - spare?
+  - strike?
+  
+  
+ 
+ 
+ 
  - Frame max is 10, which finishes the game (complete)
  - Invalid inputs if Frame < 0 && Frame > 10
  - Frames 1-9 are the same (one context)

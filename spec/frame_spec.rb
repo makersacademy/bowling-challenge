@@ -2,37 +2,53 @@ require 'frame'
 
 describe Frame do
   
-  subject(:frame) { Frame.new(1) } # argument here is number of frame
-  let(:roll_1) { double { Roll.new(1) } }
-  let(:roll_5) { double { Roll.new(5) } }
-  let(:roll_10) { double { Roll.new(10) } }
-  let(:roll_9) { double { Roll.new(9) } }
-
-
-  # state - frame number, so I know in which frame I am  in
-  it 'is between 1 - 10' do
-    frame_1 = Frame.new(1)
-    expect(frame_1.number).to eq 1
-    frame_10 = Frame.new(10)
-    expect(frame_10.number).to eq 10
-  end
-
-  # invalid frame number
-  it 'raises error if frame_number < 1' do
-    expect{ Frame.new(0) }.to raise_error(RuntimeError)
-  end
-  
-  it 'raises error id frame_number > 10' do
-    expect{ Frame.new(11) }.to raise_error(RuntimeError)
-  end
+  subject(:frame) { Frame.new } # argument here is number of frame
 
   describe '#add_roll(roll)' do
-    it 'adds the roll to all the rolls(array) if roll_count < 2 && score of this frame is <= 10' do
-      frame.add_roll(roll_1) # 1 pin down
-      frame.add_roll(roll_5) # 5 pins down
-      expect(frame.rolls).to include(roll_1)
-      expect(frame.rolls).to include(roll_5)
+    it 'adds the roll to all the score(array)' do
+      frame.add_roll(1) # 1 pin down
+      frame.add_roll(5) # 5 pins down
+      expect(frame.rolls_score).to eq [1, 5]
     end
   end
+    
+    context 'frame 1-9' do
+      
+      describe 'spare?' do
+        it 'puts down 10 pins in 2 rolls' do
+          frame.add_roll(1)
+          frame.add_roll(9)
+          expect(frame.rolls_score).to eq [1, 9]
+        end 
+      end
 
+      describe 'spare_bonus' do  
+        it 'gets the points of the first roll(roll_count +2) of the next frame' do
+          frame.add_roll(1)
+          frame.add_roll(9)
+          frame.add_roll(1)
+          expect(frame.rolls_score).to eq [1, 9, 1]
+        end
+      end 
+
+      describe 'strike?' do
+        it 'puts 10 pins down in one roll' do
+          frame.add_roll(10)
+          expect(frame.rolls_score).to eq [10]
+        end
+      end
+      
+      describe 'strike_bonus' do  
+        it 'bonus sums the pins of two next rolls' do
+          frame.add_roll(10)
+          frame.add_roll(1)
+          frame.add_roll(1)
+          frame.add_roll(5)
+          frame.add_roll(5)
+          expect(frame.rolls_score).to eq [10, 1, 1, 5, 5]
+        end 
+      end
+    end
 end
+
+

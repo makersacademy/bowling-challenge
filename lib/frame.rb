@@ -1,16 +1,41 @@
 class Frame
 
-  attr_reader :number, :rolls
+  attr_reader :rolls_score, :roll_count
   
 
-  def initialize(frame_number)
-    raise 'Frame number does not exist' unless frame_number.between?(1, 10)
-    @number = frame_number
-    @rolls = []
+  def initialize
+    @rolls_score = []
+    @roll_count = 0
   end 
 
-  def add_roll(roll)
-    @rolls << roll
+  def add_roll(pins)
+    @rolls_score << pins
   end
+
+
+
+
+  private
+  
+  def spare?
+    @rolls_score[@roll_count] + @rolls_score[@roll_count + 1] == 10
+    @rolls_score << pins
+  end
+
+  def spare_bonus
+    10 + @rolls_score[@roll_count + 2]
+  end
+
+  def strike?
+    @rolls_score[@roll_count] == 10
+    @rolls_score << pins
+  end
+
+  def strike_bonus
+    10 + @rolls_score[@roll_count + 3] + @rolls_score[@roll_count + 4]
+  end
+
+
+
 
 end

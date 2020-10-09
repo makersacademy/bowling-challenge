@@ -1,6 +1,7 @@
 # Objectives
 Count and sum the scores of a bowling game for one player
 
+
 # Game structure
 Strike = 10 pins down in the first roll of frame (no more rolls allowed)
 

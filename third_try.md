@@ -29,7 +29,14 @@ INPUT        |    OUTPUT
 
 -------------------
 
-
+- Now I want to define what a strike is:
+  - 1. strike is when a user rolls 10 pins in the first roll
+    - Unit test for rolling 10 pins in the first roll
+    - Implement a frame_score to accept this points
+    - For this, I need to implement a roll_index in the score method, so I can fetch the points from that position of the array - strike takes roll_index as argument because the position of the roll is a 'determinator' - strike is always counted for the first roll of the frame
+  - 2. define strike_score: if user roll(10), the points should be the actual 10 from this roll plus the points from the next 2 rolls / next frame
+  
+- Unit test:
 
 
 
@@ -59,8 +66,8 @@ Spare Bonus points => Points from frame =+ 1 (in the 1st roll)
 10Strike => 10 pins down in the first roll of frame, plus 2 extra rolls and it’s points (Points = 10 + n + m)
 10Spare => 10 pins down in two rolls (i.e. 4 pins in 1st roll, 6 pins in 2nd roll) and points for 1 extra  roll (Points = 4+6, plus i.e.5)
 
-Gutter Game = zero points, never hits pins
-- User inputs 0 
+Gutter Game = zero points, never hits pins X
+
 
 
 Perfect Game = 300 points (12 Strikes - 10 * 10 for normal frame strikes, plus points from one subsequent rolls(because it is a strike),  and 10 * 2 for extra rolls)

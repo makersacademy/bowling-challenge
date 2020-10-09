@@ -12,7 +12,23 @@ class Game
   end
 
   def score
+    # roll_index = 0
     total = @rolls.sum
+    
+
   end
 
+
+  # private
+  # def strike?(roll_index)
+  #   roll_index = 0
+  #   @rolls[roll_index] == 10
+  # end
+
+  # def frame_score
+  #   @rolls[roll_index] + @rolls[roll_index + 1] + @rolls[roll_index + 2]
+  # end
+
+  
+  
 end

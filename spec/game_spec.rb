@@ -23,6 +23,23 @@ describe Game do
     end
   end
 
+  describe 'strike?(roll_index)' do
+    it 'rolls 10 pins' do
+      game.roll(10)
+      19.times { game.roll(1) }
+      expect(game.score).to eq 29
+    end
+  end
+
+  # describe 'strike_score' do
+  #   it 'sums the points of the strike and subsequent 2 rolls' do
+  #     game.roll(10)
+  #     game.roll(2)
+  #     game.roll(2)
+  #     expect(game.frame_score).to eq 14
+  #   end
+  # end
+
 
 
 end

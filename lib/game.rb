@@ -37,6 +37,16 @@ class Game
     @rolls[roll_index] + @rolls[roll_index + 1]
   end
 
+  def spare
+    roll_index = 0
+    @rolls[roll_index] + @rolls[roll_index + 1] == 10
+  end
+
+  def spare_score
+    roll_index = 0
+  @rolls[roll_index] + @rolls[roll_index + 1] + @rolls[roll_index + 2] + @rolls[roll_index + 2]
+
+  end
   
   
 end

@@ -50,5 +50,24 @@ describe Game do
     end
   end
 
+  describe '#spare?' do
+    it 'frame sums 10 in two different rolls' do
+      game.roll(1)
+      game.roll(9)
+      18.times { game.roll(1) }
+      expect(game.score).to eq 28
+    end
+  end
+
+  describe '#spare_score' do
+    it 'sums 10 in different rolls plus the roll1 and points of roll1 of next frame' do
+      game.roll(1)
+      game.roll(9)
+      game.roll(3) # subsequent roll1
+      game.roll(3) # points of subsequent roll1
+      expect(game.spare_score).to eq 16
+    end
+  end
+
 
 end

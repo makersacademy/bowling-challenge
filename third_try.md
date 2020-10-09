@@ -31,16 +31,19 @@ INPUT        |    OUTPUT
 
 - Now I want to define what a strike is:
   - 1. Strike is when a user rolls 10 pins in the first roll
-    - Unit test for rolling 10 pins in the first roll
+    - Unit test for rolling 10 pins in the first roll, rest of game rolls 1
     - Implement method strike?(roll_index) if it is a strike, the @rolls will grab the points of the roll strike
     - For this, I need to implement a roll_index in the score method, so I can fetch the points from that position of the array - strike takes roll_index as argument because the position of the roll is a 'determinator' - strike is always counted for the first roll of the frame
-  - 2. If it is a strike, I expect to be able to sum the points of the roll, plus the points of the two subsequent rolls --> roll_index
+  - 2. If it is a strike, I expect to be able to sum the points of the roll, which is 10, plus the points of the two subsequent rolls + the points of the rolls themselves --> roll_index
   - Unit test for _strike_score_    
   - Add method for _strike_score_
 
 - I feel the need to create a frame_score as the tests are asking for it
   - Unit test for frame_score, where two rolls are rolled and the output is the total of this two rolls 
 
+- I want to create a spare? method
+  - 1. Unit test for spare, where frame_score == 10, but in two rolls, rest of game rolls 1
+  - 2. Unit test for spare_score
     
 
 

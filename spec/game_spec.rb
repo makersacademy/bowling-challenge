@@ -16,6 +16,13 @@ describe Game do
     end
   end
 
+  describe 'gutter_game' do
+    it 'rolls 0 pins in the the whole game' do
+      20.times { game.roll(0) }
+      expect(game.score).to eq 0
+    end
+  end
+
 
 
 end

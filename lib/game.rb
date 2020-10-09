@@ -35,10 +35,10 @@ class Game
   end 
 
   def spare?
-    @rolls[roll_index] + @rolls[roll_index + 1] == 10
+    frame_score == 10
   end
 
   def spare_score
-    @rolls[roll_index] + @rolls[roll_index + 1] + @rolls[roll_index + 2] + @rolls[roll_index + 2]
+    frame_score + @rolls[roll_index + 2] + @rolls[roll_index + 2]
   end
 end

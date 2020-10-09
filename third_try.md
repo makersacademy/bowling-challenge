@@ -50,7 +50,18 @@ INPUT        |    OUTPUT
 - the code is long and looking confusing
 - there is a need for separation between frames 1-9
 - handle frame 10 separately
+-----------
 
+- Add 10th frame context to tests
+- what are my possibilites of the frame10
+  - can be a normal frame
+  - can have strike as roll1
+  - can have spare in roll1+roll2
+------------
+
+## Second refactor time!
+- there is a need of adding a current_score to be able to track the whole score points
+- which might be responsibility of another class to count the entire score of the game
 
 
 
@@ -75,11 +86,11 @@ Spare Bonus points => Points from frame =+ 1 (in the 1st roll) X
 
 10th frame => if Strike or Spare
 
-10Strike => 10 pins down in the first roll of frame, plus 2 extra rolls and it’s points (Points = 10 + n + m)
-10Spare => 10 pins down in two rolls (i.e. 4 pins in 1st roll, 6 pins in 2nd roll) and points for 1 extra  roll (Points = 4+6, plus i.e.5)
+10Strike => 10 pins down in the first roll of frame, plus 2 extra rolls and it’s points (Points = 10 + n + m) x
+10Spare => 10 pins down in two rolls (i.e. 4 pins in 1st roll, 6 pins in 2nd roll) and points for 1 extra  roll (Points = 4+6, plus i.e.5) x
 
 Gutter Game = zero points, never hits pins X
 
 
 
-Perfect Game = 300 points (12 Strikes - 10 * 10 for normal frame strikes, plus points from one subsequent rolls(because it is a strike),  and 10 * 2 for extra rolls)
+Perfect Game = 300 points (12 Strikes - 10 * 10 for normal frame strikes, plus points from one subsequent rolls(because it is a strike),  and 10 * 2 for extra rolls) x

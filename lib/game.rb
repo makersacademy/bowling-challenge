@@ -1,10 +1,11 @@
 class Game
   
-  attr_reader :rolls, :roll_index
+  attr_reader :rolls, :roll_index, :total
 
   def initialize
     @rolls = []
     @roll_index = 0
+    @total = 0
   end
 
   # my roll takes pins as arguments, then stores 
@@ -14,12 +15,8 @@ class Game
   end
 
   def score
-    # roll_index = 0
-    total = @rolls.sum
-    # context
+    total = @rolls.sum 
   end
-
-
 
 
   def frame_score
@@ -41,4 +38,18 @@ class Game
   def spare_score
     frame_score + @rolls[roll_index + 2] + @rolls[roll_index + 2]
   end
+
+  def frame10
+    frame_score
+  end
+
+  def strike10
+    @rolls[roll_index] + @rolls[roll_index + 1] + @rolls[roll_index + 2]
+  end
+
+  def spare10
+    @rolls[roll_index] + @rolls[roll_index + 1] + @rolls[roll_index + 2]
+  end
+
+
 end

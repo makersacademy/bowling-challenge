@@ -10,6 +10,15 @@ describe Game do
       expect(game.score).to eq 0
     end
   end
+
+   describe 'perfect_game' do
+     it 'scores 10 strikes plus 2 extra strikes' do
+       10.times { game.roll(10) }
+       20.times { game.roll(10) } # bonus
+       expect(game.score).to eq 300
+     end
+   end
+  
   
   context 'frames 1-9' do # 18 rolls or 9 frames
     describe 'roll(pins)' do
@@ -22,7 +31,7 @@ describe Game do
     end
 
     describe '#strike?(roll_index)' do
-      it 'rolls 10 pins' do
+      it 'rolls 10 pins in one roll of the game' do
         game.roll(10)
         17.times { game.roll(1) }
         expect(game.score).to eq 27
@@ -39,6 +48,10 @@ describe Game do
         expect(game.strike_score).to eq 18
       end
     end
+
+    # describe '#strike_bonus' do
+     
+    # end
   
     describe '#frame_score' do
       it 'sums two subsequent rolls' do
@@ -66,17 +79,32 @@ describe Game do
         expect(game.spare_score).to eq 16
       end
     end
+    # describe '#spare_bonus' do
+      
+    # end
   end
-
-  context '10th frame' do
-    describe '10th frame' do
-      it '' do
+  
+  context 'frame10' do
+    describe '10frame' do
+      it 'has a normal frame_score' do
+        game.roll(4)
+        game.roll(3)
+        expect(game.frame10).to eq 7
+      end
+      it 'has a strike score that sums the points only from extra 2 rolls' do
+        game.roll(10)
+        game.roll(10)
+        game.roll(10)
+        expect(game.strike10).to eq 30
+      end
+      it 'has a spare score that sums the points only from 1 extra roll' do
+        game.roll(1)
+        game.roll(9)
+        game.roll(5)
+        expect(game.spare10).to eq 15
       end
     end
-
-
-
-
   end
-
+  
 end
+ 

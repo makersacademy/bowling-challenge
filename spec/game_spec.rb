@@ -4,6 +4,9 @@ describe Game do
   
   subject(:game) { Game.new }
 
+  
+  
+  
   describe 'roll(pins)' do 
     # specification: 1 game = 20 rolls
     it 'rolls pins and returns score for one game' do

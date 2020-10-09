@@ -18,7 +18,9 @@ INPUT        |    OUTPUT
 - Rspec, no method score
 - Create method score, hard code first output 20 to make tests pass
 - But if I want my score to be counted related to number of rolls and pins down, I have to change my method _score_ to be able to count how many rolls and the referred pins down
-- So, in my method _score_, I add a roll_count to be able to count how many rolls I am doing
+- So, in my method _score_, I add _total_, so I can show the total points, which is my rolls array all summed up
+
+
 
 - Same methodology for testing a _gutter game_
 

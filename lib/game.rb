@@ -12,7 +12,7 @@ class Game
   end
 
   def score
-    20
+    total = @rolls.sum
   end
 
 end

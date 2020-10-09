@@ -1,9 +1,9 @@
 $(function() {
 
 	var bowling = new Bowling();
-	var runScore = [];
-	var rollCounter = 1;
-	var counter = 1;
+	var rolls = [];
+	var rollCount = 1;
+	var count = 1;
 
 
 	$('#roll-0').on('click', function () {
@@ -60,15 +60,20 @@ $(function() {
 	$('#roll-10').on('click', function () {
 		bowling.roll(10);
 		getScore(10);
+		var n = bowling.currentTotal();
+		fillFrame(n);
 	});
 	
 
 	function getScore(num) {
-		$('#roll' + counter).append(num);
-		rollCounter += 1
-		if (rollCounter % 2 == 0 && rollCounter > 0) {
-			counter += 1;
-			rollCounter += 1;
+		$('#roll' + count).append(num);
+		rollCount += 1
+		if (rollCount % 2 == 0 && rollCount > 0) {
+			count += 1;
+			rollCount += 1;
 		}
+	}
+	function fillFrame(n) {
+		$('#marker' + count).append(n);
 	}
 });

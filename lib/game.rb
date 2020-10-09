@@ -37,7 +37,7 @@ class Game
     @rolls[roll_index] + @rolls[roll_index + 1]
   end
 
-  def spare
+  def spare?
     roll_index = 0
     @rolls[roll_index] + @rolls[roll_index + 1] == 10
   end

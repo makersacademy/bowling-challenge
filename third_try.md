@@ -45,6 +45,11 @@ INPUT        |    OUTPUT
   - 1. Unit test for spare, where frame_score == 10, but in two rolls, rest of game rolls 1
   - 2. Unit test for spare_score
     
+-----------
+## Time for refactoring before inserting 10th frame!
+- the code is long and looking confusing
+- there is a need for separation between frames 1-9
+- handle frame 10 separately
 
 
 
@@ -60,13 +65,13 @@ INPUT        |    OUTPUT
 
 
 # Game structure
-Strike = 10 pins down in the first roll of frame (no more rolls allowed)
+Strike = 10 pins down in the first roll of frame (no more rolls allowed) X
 
-Strike Bonus points => Points from frame =+ 1 (in the 2 rolls)
+Strike Bonus points => Points from frame =+ 1 (in the 2 rolls) X
 
-Spare = 10 pins down in two rolls (i.e. 4 pins in 1st roll, 6 pins in 2nd roll)
+Spare = 10 pins down in two rolls (i.e. 4 pins in 1st roll, 6 pins in 2nd roll) X
 
-Spare Bonus points => Points from frame =+ 1 (in the 1st roll)
+Spare Bonus points => Points from frame =+ 1 (in the 1st roll) X
 
 10th frame => if Strike or Spare
 

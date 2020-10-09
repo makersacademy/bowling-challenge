@@ -5,6 +5,20 @@ describe ("Bowling", function() {
 		game = new Bowling();
 	});
 
+	it("can store rolls correctly", function(){
+		game.roll(2);
+		game.roll(2);
+		game.roll(2);
+		expect(game.rolls).toEqual([2, 2, 2]);
+	});
+
+	it("can show a current result", function(){
+		game.roll(2);
+		game.roll(4);
+		game.roll(9);
+		expect(game.currentTotal()).toEqual(15)
+	});
+
 	 it("can score the gutter game score", function(){
 		 rollFew(0, 20);
 	 	expect(game.score()).toEqual(0)

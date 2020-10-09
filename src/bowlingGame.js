@@ -8,6 +8,18 @@
 		this.rolls.push(pins);
 		}; 
 
+		Bowling.prototype.restart= function() {
+			this.rolls = [] ;
+			}
+		Bowling.prototype.currentTotal = function() {
+			var sum = this.rolls.reduce(add, 0);
+			function add(x, y) {
+				return x + y
+			}
+			return sum
+			};
+		
+
 	Bowling.prototype.score = function() {
 			var result = 0;
 			var rollIndex = 0;

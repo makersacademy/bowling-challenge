@@ -14,9 +14,7 @@ describe ("Bowling", function() {
 
 	it("can show a current result", function(){
 		game.roll(2);
-		game.roll(4);
-		game.roll(9);
-		expect(game.currentTotal()).toEqual(15)
+		expect(game.currentTotal()).toEqual(2)
 	});
 
 	 it("can score the gutter game score", function(){

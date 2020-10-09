@@ -10,7 +10,8 @@
 
 		Bowling.prototype.restart= function() {
 			this.rolls = [] ;
-			}
+			};
+			
 		Bowling.prototype.currentTotal = function() {
 			var sum = this.rolls.reduce(add, 0);
 			function add(x, y) {

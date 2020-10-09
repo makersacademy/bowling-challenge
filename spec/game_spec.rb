@@ -38,11 +38,17 @@ describe Game do
       game.roll(2) # subsequent roll2
       game.roll(2) # points for subsequent roll1
       game.roll(2) # points for subsequent roll2
-      17.times { game.roll(1) }
-      expect(game.score).to eq 35
+      expect(game.strike_score).to eq 18
     end
   end
 
+  describe '#frame_score' do
+    it 'sums two subsequent rolls' do
+      game.roll(1)
+      game.roll(5)
+      expect(game.frame_score).to eq 6
+    end
+  end
 
 
 end

@@ -34,14 +34,10 @@ INPUT        |    OUTPUT
     - Unit test for rolling 10 pins in the first roll
     - Implement method strike?(roll_index) if it is a strike, the @rolls will grab the points of the roll strike
     - For this, I need to implement a roll_index in the score method, so I can fetch the points from that position of the array - strike takes roll_index as argument because the position of the roll is a 'determinator' - strike is always counted for the first roll of the frame
-  - 2. If it is a strike, I expect to be able to sum the points of the roll, plus the points of the two subsequent rolls --> roll_indexUnit test for _strike_score_     
+  - 2. If it is a strike, I expect to be able to sum the points of the roll, plus the points of the two subsequent rolls --> roll_index
+  - Unit test for _strike_score_     
 
-    - Implement a frame_score to accept this points
-    - 
-  - 2. define strike_score: if user roll(10), the points should be the actual 10 from this roll plus the points from the next 2 rolls / next frame
-  
-- Unit test:
-
+    
 
 
 

@@ -29,7 +29,7 @@ class Game
 
   def strike_score
     roll_index = 0
-    @rolls[roll_index] + @rolls[roll_index + 1] + @rolls[roll_index + 2]
+    @rolls[roll_index] + @rolls[roll_index + 1] + @rolls[roll_index + 2] + @rolls[roll_index + 1] + @rolls[roll_index + 2]
   end 
 
   # def frame_score

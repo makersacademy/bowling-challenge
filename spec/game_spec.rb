@@ -31,13 +31,15 @@ describe Game do
     end
   end
 
-  describe '#strike_score' do
-    it 'sums the points of the strike and subsequent 2 rolls' do
+  describe '#strike_score' do # error in logic for the test!
+    it 'sums the points of the strike and subsequent 2 rolls plus the points of the subsequent rolls' do
       game.roll(10)
-      game.roll(2)
-      game.roll(2)
+      game.roll(2) # subsequent roll1
+      game.roll(2) # subsequent roll2
+      game.roll(2) # points for subsequent roll1
+      game.roll(2) # points for subsequent roll2
       17.times { game.roll(1) }
-      expect(game.score).to eq 31
+      expect(game.score).to eq 35
     end
   end
 

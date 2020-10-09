@@ -67,4 +67,16 @@ describe Game do
       end
     end
   end
+
+  context '10th frame' do
+    describe '10th frame' do
+      it '' do
+      end
+    end
+
+
+
+
+  end
+
 end

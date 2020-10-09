@@ -1,15 +1,10 @@
 $(function() {
-	var newGame = new Bowling();
 
-	$('#roll-1').on('submit', function () {
-		newGame.roll(1);
-		$('#current-total').text(newGame.rolls);
-	})
+	var game = new Bowling();
 
-	$('#roll-1').on('click', function() {
-		newGame.roll(1);
-		
-	})
-
+	$('#roll-0').on('submit', function () {
+		game.roll(0);
+		$('#totals').text(game.currentTotal());
+	});
 	
 });

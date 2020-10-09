@@ -1,18 +1,17 @@
 'use strict';
-
- var Bowling = function() {
+class Bowling {
+	constructor () {
 		this.rolls = []; 
- };
-
-	Bowling.prototype.roll = function(pins) {
-		this.rolls.push(pins);
+	}
+		roll(pins) {
+			this.rolls.push(pins);
 		}; 
 
-		Bowling.prototype.restart= function() {
+		restart() {
 			this.rolls = [] ;
-			};
+		};
 			
-		Bowling.prototype.currentTotal = function() {
+		currentTotal() {
 			var sum = this.rolls.reduce(add, 0);
 			function add(x, y) {
 				return x + y
@@ -21,7 +20,7 @@
 			};
 		
 
-	Bowling.prototype.score = function() {
+		score(){
 			var result = 0;
 			var rollIndex = 0;
 			var bowlinggame = this;
@@ -63,5 +62,5 @@
 		
 	};
 	
-
+	};
 

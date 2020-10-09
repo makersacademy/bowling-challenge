@@ -1,3 +1,5 @@
+'use strict';
+
 describe("Roll", function() {
 
   it("doesn't throw an error when number of pins is 0-10", function() {

@@ -26,6 +26,10 @@ class Bowling {
   isTenthFrame(callback) {
     return (callback.length == 9)
   }
+  
+  isSecondRoll(callback) {
+    return (callback.length == 1)
+  }
 
   addToScore(frame) {
     this.score += frame.flat().reduce((a, b) => a+b, 0)

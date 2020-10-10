@@ -65,13 +65,31 @@ describe("Bowling", function() {
 
   describe("addToScore", function() {
     it("adds the score of a frame to the total score", function() {
-      var frame;
-      frame = [[4, 3]]
+      frame = [4, 3]
       game.addToScore(frame)
       expect(game.score).toBe(7)
     })
-
   })
   
-});
+  describe("isSecondRoll", function() {
+    it("returns true if there is already a number recorded in the frame", function() {
+      frame = [3]
+      expect(game.isSecondRoll(frame)).toBe(true)
+    })
 
+    it("returns false if there is no recorded number in the frame", function() {
+      frame = []
+      expect(game.isSecondRoll(frame)).toBe(false)
+    })
+
+    it("returns false if there are two recorded numbers in the frame", function() {
+      frame = [3,5]
+      expect(game.isSecondRoll(frame)).toBe(false)
+    })
+  })
+
+  // describe("newRoll", function() {
+  //   it("accepts a number and progresses ")
+  // })
+
+});

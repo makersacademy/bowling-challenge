@@ -7,6 +7,7 @@ class Bowling {
     this.score = 0
     this.frame = []
     this.frameCount = 0
+    this.ball_number = 1
   }
 
   // newRoll () {
@@ -51,6 +52,10 @@ class Bowling {
 
   resetFrame() {
     this.frame = []
+  }
+
+  nextRoll() {
+    this.ball_number ++
   }
 
   // isPerfectGame(callback) {

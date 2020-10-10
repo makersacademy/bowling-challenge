@@ -5,6 +5,7 @@ class Bowling {
   constructor() {
     this.game = []
     this.score = 0
+    this.frame = []
   }
 
   // newRoll () {
@@ -33,6 +34,10 @@ class Bowling {
 
   addToScore(frame) {
     this.score += frame.flat().reduce((a, b) => a+b, 0)
+  }
+
+  addRoll(roll) {
+    this.frame.push(roll)
   }
 
   // isPerfectGame(callback) {

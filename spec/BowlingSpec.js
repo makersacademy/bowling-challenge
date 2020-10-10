@@ -3,6 +3,7 @@
 describe("Bowling", function() {
   var game;
   var frame;
+  var roll;
 
   beforeEach(function() {
     game = new Bowling()
@@ -91,5 +92,20 @@ describe("Bowling", function() {
   // describe("newRoll", function() {
   //   it("accepts a number and progresses ")
   // })
+
+  describe("addRoll", function() {
+    it("Adds the roll to the frame", function() {
+      roll = 4
+      game.addRoll(roll)
+      expect(game.frame).toEqual([4])
+    })
+
+    it("adds another roll to a frame where a number already exists", function() {
+      roll = 5
+      game.frame = [4]
+      game.addRoll(roll)
+      expect(game.frame).toEqual([4, 5])
+    })
+  })
 
 });

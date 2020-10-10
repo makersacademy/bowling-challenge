@@ -24,14 +24,6 @@ describe('Frame', function() {
       expect(function() { frame.addRoll(roll) }).not.toThrow();
     })
 
-    it('throws an error if the frame already has 2 rolls', function() {
-      let roll = { pins: 3 };
-      frame.addRoll(roll);
-      frame.addRoll(roll);
-
-      expect(function() { frame.addRoll(roll) }).toThrow();
-    })
-
     it('throws an error if the first roll had 10 pins', function() {
       let roll10 = { pins: 10 };
       let roll3 = { pins: 3 };
@@ -46,7 +38,26 @@ describe('Frame', function() {
       frame.addRoll(roll7);
 
       expect(function() { frame.addRoll(roll5) }).toThrow();
+      expect(frame.countRolls()).toEqual(1);
     })
+  });
+
+  describe('isComplete()', function() {
+    it('returns false if the frame has <= 1 roll and < 10 pins', function() {
+      let roll = { pins: 5 };
+      frame.addRoll(roll);
+
+      expect(frame.isComplete()).toEqual(false);
+    })
+
+    it('returns true if the frame already has 2 rolls', function() {
+      let roll = { pins: 3 };
+      frame.addRoll(roll);
+      frame.addRoll(roll);
+
+      expect(frame.isComplete()).toEqual(true);
+    })
+
 
   })
 

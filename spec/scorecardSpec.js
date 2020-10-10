@@ -22,5 +22,4 @@ describe('Scorecard', function() {
       expect(scorecard.calculateScore()).toEqual(20)
     });
   });
-
 });

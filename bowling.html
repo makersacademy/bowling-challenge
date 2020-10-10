@@ -1,0 +1,35 @@
+<head>
+<title>Bowling</title>
+<script src="./src/jquery-3.5.1.js"></script>
+<script src="./src/bowling.js"></script>
+<script src="./src/bowling_jquery.js"></script>
+</head>
+
+<body>
+  <div id="header">
+    <h1>Bowling scorecard</h1>
+    <h3>Current game score: <span id="game_score"></span></h3>
+    <h3>Current frame number: <span class="frame_number"></span></h3>
+  </div>
+
+<br>
+<hr>
+<br>
+
+  <div id="add_score_form">
+    <h2>Score form</h2>
+    <p>Add score for frame number: <span class="frame_number"></span>, ball number: <span class="ball_number"></span></p>
+    
+    <form class="roll_form">
+      <input type="number" name="number">
+      <input type="submit" id="submit_roll">
+    </form>
+
+    <p id="roll_value">Replace this</p>
+
+    <p>Current frame score: <span id='frame_output'></span></p>
+
+  </div>
+
+
+</body>

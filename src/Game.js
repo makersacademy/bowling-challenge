@@ -10,8 +10,6 @@ class Game {
       this.frame.push(score);
     } else if (score <= 10 && score >= 0) {
       this.frame.push(score);
-    } else {
-      alert("Score must be between 0-10");
     }
   }
 

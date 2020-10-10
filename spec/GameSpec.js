@@ -15,9 +15,6 @@ describe("Game", function () {
       game.roll(6);
       expect(game.frame).toEqual([5, 6]);
     });
-    it("rolling a number greater than 10 throws an alert", function () {
-      expect(game.roll(11)).toBe(alert("Score must be between 0-10"));
-    });
   });
 
   describe("Store frames into the game instance variable", function () {

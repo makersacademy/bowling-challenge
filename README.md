@@ -31,7 +31,7 @@ A bowling game consists of :
 - The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. 
 - After every frame the 10 pins are reset.
 
-Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+![](https://miro.medium.com/max/970/1*AwRfqPQFozt7q1jUR6PzNg.png)
 
 ## Bowling — how does it work?
 

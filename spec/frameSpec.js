@@ -94,5 +94,46 @@ describe('Frame', function() {
     })
   })
 
+  describe('#scoreFrame(nextFrame, nextNextFrame)', function() {
+    it('STANDARD: returns the sum of roll 1 and roll 2 pins', function() {
+      let roll3 = { pins: 3 };
+      let roll5 = { pins: 5 };
+      frame.addRoll(roll3);
+      frame.addRoll(roll5);
+
+      expect(frame.scoreFrame()).toEqual(8);
+    })
+
+    it('SPARE: returns the sum of total pins + pins of next roll, if given', function() {
+      let nextFrame = new Frame(2);
+      let roll2 = { pins: 2 };
+      let roll8 = { pins: 8 };
+      frame.addRoll(roll2);
+      frame.addRoll(roll8);
+      nextFrame.addRoll(roll2);
+      nextFrame.addRoll(roll2);
+
+      expect(frame.scoreFrame(nextFrame)).toEqual(12);
+    })
+
+    it('STRIKE: returns the sum of total pins + pins of next 2 rolls, if given', function() {
+      let nextFrame = new Frame(2);
+      let roll2 = { pins: 2 };
+      let roll10 = { pins: 10 };
+      frame.addRoll(roll10);
+      nextFrame.addRoll(roll2);
+      nextFrame.addRoll(roll2);
+
+      expect(frame.scoreFrame(nextFrame)).toEqual(14);
+    })
+
+    it('returns false if the score cannot be calculated based on given rolls', function() {
+      let nextFrame = new Frame(2);
+      let roll10 = { pins: 10 };
+      frame.addRoll(roll10);
+      nextFrame.addRoll(roll10);
+
+      expect(frame.scoreFrame(nextFrame)).toEqual(false);
+    })
   })
 })

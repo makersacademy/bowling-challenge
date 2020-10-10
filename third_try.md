@@ -61,7 +61,10 @@ INPUT        |    OUTPUT
 
 ## Second refactor time!
 - there is a need of adding a current_score to be able to track the whole score points
-- which might be responsibility of another class to count the entire score of the game
+- which might be responsibility of another class to count the entire score of the game??? (not sure how to do it)
+- current_score should be defined as taking the number of frames and summing up the score, according to roll index
+- take into account strikes, spares and normal rolls
+- take into account also the length of the @rolls to know if it is inside frames 1-9 
 
 
 

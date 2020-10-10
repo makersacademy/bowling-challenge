@@ -5,7 +5,7 @@ describe Game do
   subject(:game) { Game.new }
 
   describe 'gutter_game' do
-    it 'rolls 0 pins in the the whole game' do
+    it 'rolls 0 pins in the whole game' do
       20.times { game.roll(0) }
       expect(game.score).to eq 0
     end
@@ -14,11 +14,16 @@ describe Game do
    describe 'perfect_game' do
      it 'scores 10 strikes plus 2 extra strikes' do
        10.times { game.roll(10) }
-       20.times { game.roll(10) } # bonus
+       20.times { game.roll(10) } # bonus 
        expect(game.score).to eq 300
      end
    end
-  
+
+   describe '#current_score' do
+    it 'sums up the rolls in a frame taking conditionals' do
+      # strike: if the roll_index equals the roll length, 
+    end
+  end
   
   context 'frames 1-9' do # 18 rolls or 9 frames
     describe 'roll(pins)' do

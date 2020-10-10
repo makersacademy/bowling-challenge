@@ -1,22 +1,11 @@
-function Player() {
-}
-Player.prototype.play = function(song) {
-  this.currentlyPlayingSong = song;
-  this.isPlaying = true;
-};
+class Player {
 
-Player.prototype.pause = function() {
-  this.isPlaying = false;
-};
-
-Player.prototype.resume = function() {
-  if (this.isPlaying) {
-    throw new Error("song is already playing");
+  constructor(){
+     this.score = 0;
   }
 
-  this.isPlaying = true;
-};
+  throw(pins) {
+    this.score += pins
+ }
 
-Player.prototype.makeFavorite = function() {
-  this.currentlyPlayingSong.persistFavoriteStatus(true);
-};
+}

@@ -135,5 +135,17 @@ describe('Frame', function() {
 
       expect(frame.scoreFrame(nextFrame)).toEqual(false);
     })
+
+    it('Frame 10: returns the sum of all pins in the frame when frame has 3 rolls', function() {
+      let frame = new Frame(10);
+      let roll2 = { pins: 2 };
+      let roll10 = { pins: 10 };
+      frame.addRoll(roll10);
+      frame.addRoll(roll2);
+      frame.addRoll(roll2);
+
+      expect(frame.scoreFrame()).toEqual(14);
+
+    })
   })
 })

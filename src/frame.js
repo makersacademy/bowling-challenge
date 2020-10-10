@@ -11,12 +11,8 @@ class Frame {
   }
 
   isComplete() {
-    if (this._countRolls() < 2 && this._totalPins() < 10) {
-      return false;
-    } else if (this._hasThirdRoll()) {
-      return false;
-    }
-    return true;
+    if (this._countRolls() < 2 && this._totalPins() < 10) { return false; }
+    return !this._hasThirdRoll();
   }
 
   scoreFrame(nextFrame, nextNextFrame) {
@@ -29,7 +25,7 @@ class Frame {
   _validateRoll(roll) {
     if (this.isComplete()) {
       throw "Invalid roll for this frame";
-    } else if (this._countRolls() === 1 && this._firstRollPins() + roll.pins > 10 && !this._isStrike()) {
+    } else if (this._countRolls() === 1 && (this._firstRollPins() + roll.pins > 10) && !this._isStrike()) {
       throw "Invalid roll for this frame";
     }
   }
@@ -51,12 +47,12 @@ class Frame {
   }
 
   _isStrike() {
-    return this._firstRollPins() === 10;
+    return this._countRolls() === 1 && this._firstRollPins() === 10;
   }
 
   _hasThirdRoll() {
     return (this._isTenthFrame() &&
-      (this._isSpare() || this._isStrike() && this._countRolls() < 3));
+      (this._isSpare() || this._firstRollPins() === 10 && this._countRolls() < 3));
   }
 
   _calculateBonus(nextFrame, nextNextFrame) {

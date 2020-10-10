@@ -89,7 +89,11 @@ class Scorecard {
   getScore() {
     var sum = 0; 
     for (let i = 0; i < this.frameScores.length; i ++) {
-      sum += this.frameScores[i].reduce((result,number) => result + number);
+      if (this.frameScores[i] === [10,0]){
+        sum += 10 + this.frameScores[i+1].reduce((result,number) => result + number);
+      } else {
+        sum += this.frameScores[i].reduce((result,number) => result + number);
+      };
     };
     this.total = sum;
     return this.total;

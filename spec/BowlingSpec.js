@@ -132,4 +132,11 @@ describe("Bowling", function() {
     })
   })
 
+  describe("resetFrame", function() {
+    it("Rests the frame to be an empty array", function() {
+      game.frame = [1,4]
+      game.resetFrame()
+      expect(game.frame).toEqual([])
+    })
+  })
 });

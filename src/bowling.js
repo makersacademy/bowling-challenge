@@ -49,6 +49,10 @@ class Bowling {
     this.frameCount = this.game.length
   }
 
+  resetFrame() {
+    this.frame = []
+  }
+
   // isPerfectGame(callback) {
   //   return (callback.flat().reduce((a, b) => a + b, 0) == 300)
   // }

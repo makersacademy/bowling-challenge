@@ -1,4 +1,5 @@
 describe('TenthFrame', function() {
+  var TenthFrame = require("../src/TenthFrame.js");
   let tenthFrame;
 
   beforeEach(function() {

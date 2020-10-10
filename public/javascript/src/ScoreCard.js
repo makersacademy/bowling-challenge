@@ -1,3 +1,6 @@
+const Frame = require("./Frame");
+const TenthFrame = require("./TenthFrame");
+
 class ScoreCard {
   constructor() {
     this.frames = [];
@@ -31,3 +34,5 @@ class ScoreCard {
     };
   };
 };
+
+module.exports = ScoreCard;

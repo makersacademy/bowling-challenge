@@ -54,3 +54,6 @@ class TenthFrame {
     return ((this.score <= 9 && this.rolls === 2) || (this.score >= 10 && this.rolls === 3));
   }
 };
+
+
+module.exports = TenthFrame;

@@ -1,4 +1,8 @@
+
 describe('Frame', function() {
+
+  var Frame = require("../src/Frame");
+
   let frame;
 
   beforeEach(function() {

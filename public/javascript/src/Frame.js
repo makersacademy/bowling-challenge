@@ -88,3 +88,5 @@ class Frame {
     return sum;
   }
 };
+
+module.exports = Frame;

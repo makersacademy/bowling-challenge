@@ -1,4 +1,6 @@
 describe('ScoreCard', function() {
+  var ScoreCard = require("../src/ScoreCard.js");
+
   beforeEach(function() {
     scorecard = new ScoreCard();
   });

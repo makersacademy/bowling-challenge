@@ -12,6 +12,10 @@ As a user
 So I know my current score
 I would like to see my current score displayed 
 
+As a user 
+So I know where I am in the game
+I want to see the current frame  
+
 As a user
 So i don't have to calculate my own bonuses
 I want the scorecard to keep track of any bonuses from strikes or spares

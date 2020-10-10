@@ -10,7 +10,7 @@ class Game {
     this.spareScore = [];
     this.strikeScoreCounter = 0;
     this.strikeScore = [];
-    this.multiStrikeCounter = 0;
+    this.strikeStreak = 0;
   }
 
   roll(score) {

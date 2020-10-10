@@ -65,4 +65,9 @@ describe("Scorecard", function() {
    expect(scorecard.getCurrentFrameScore()).toEqual([]); 
   });
 
+  it('should end current frame if the player scores a strike', function() {
+    scorecard.addScore(10);
+    expect(scorecard.getCurrentFrame()).toEqual(2);
+  });
+
 });

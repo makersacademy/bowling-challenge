@@ -35,12 +35,13 @@ class Scorecard {
   };
 
   addScoreToFrame() {
-    if (this.isGameOver()) {
-        throw "game over";
-    } else {
+   if (this.isGameOver()) throw 'game over';
+   if (this.isStrike()) {
+      this.strike();
+   } else {
       this.currentFrameScore.push(this.score);
-      this.addToFrameScores();
     };
+    this.addToFrameScores();
   };
 
   addToFrameScores() {
@@ -70,5 +71,15 @@ class Scorecard {
       return true;
     }
   };
+
+  //dealing with strikes 
+
+  isStrike() {
+    if (this.score === 10) return true;
+  };
+
+  strike() {
+    this.currentFrameScore.push(10, 0);
+  }
 
 };

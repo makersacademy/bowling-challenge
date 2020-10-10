@@ -16,11 +16,16 @@ class ScoreCard {
   };
 
   addRoll(pinsFelled) {
-    if (this.frames.length === 0 || this.frames[this.frames.length - 1].frameCompleted()) {
+
+    if (this.frames.length === 9 && this.frames[this.frames.length - 1].frameCompleted()) {
+      this.frames.push(new TenthFrame());
+    } else if (this.frames.length === 0 || this.frames[this.frames.length - 1].frameCompleted()) {
       this.frames.push(new Frame());
     };
 
     this.frames[this.frames.length - 1].addRoll(pinsFelled);
+
+
 
     if (this.frames.length > 1) {
       this.frames[this.frames.length - 2].addFollowingFrameRoll(pinsFelled)

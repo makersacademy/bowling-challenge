@@ -38,7 +38,7 @@ describe('Frame', function () {
     expect(function () { frame.addRoll(1) }).toThrow(new Error("You have already finished this frame"));
   });
 
-  it('', function () {
+  it('doesn\'t allow more than 10 pins to be felled in a frame', function () {
     frame.addRoll(10);
     frame.addFollowingFrameRoll(9);
     expect(function () { frame.addFollowingFrameRoll(2) }).toThrow(new Error("You can only fell 10 pins in a frame"));
@@ -59,6 +59,15 @@ describe('Frame', function () {
     expect(frame.frameScore()).toEqual(0);
     frame.addFollowingFrameRoll(6);
     expect(frame.frameScore()).toEqual(19);
+  });
+
+  it('handles 3 strikes in a row', function () {
+    frame.addRoll(10);
+    expect(frame.frameScore()).toEqual(0);
+    frame.addFollowingFrameRoll(10);
+    expect(frame.frameScore()).toEqual(0);
+    frame.addFollowingFrameRoll(10);
+    expect(frame.frameScore()).toEqual(30);
   });
 
   it('handles 3 strikes in a row', function () {

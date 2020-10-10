@@ -50,7 +50,19 @@ describe('TenthFrame', function () {
     expect(function () { tenthFrame.addRoll(6); }).toThrow(new Error("You can only fell 10 pins total in the tenth frame unless you have scored a spare or strike"));
   });
 
+  it('has a score of 30 for 3 strikes in a row', function () {
+    tenthFrame.addRoll(10);
+    tenthFrame.addRoll(10);
+    tenthFrame.addRoll(10);
+    expect(tenthFrame.frameScore()).toEqual(30);
+  });
 
+  it('has a score of 20 for a spare followed by a  strike ', function () {
+    tenthFrame.addRoll(1);
+    tenthFrame.addRoll(9);
+    tenthFrame.addRoll(10);
+    expect(tenthFrame.frameScore()).toEqual(20);
+  });
 
 
 });

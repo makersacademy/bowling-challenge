@@ -15,6 +15,7 @@ describe('ScoreCard', function () {
     expect(scorecard.totalScore()).toEqual(47)
   });
 
+
   it('Feature test of entire bowling game', function () {
     /*Frame 1: Roll 1*/
     scorecard.addRoll(1)
@@ -68,8 +69,11 @@ describe('ScoreCard', function () {
     scorecard.addRoll(2)
     expect(scorecard.totalScore()).toEqual(97)
     /*Frame 10: Roll 2*/
-    scorecard.addRoll(7)
-    expect(scorecard.totalScore()).toEqual(125)
+    scorecard.addRoll(8)
+    expect(scorecard.totalScore()).toEqual(117)
+    /*Frame 10: Roll 3*/
+    scorecard.addRoll(6)
+    expect(scorecard.totalScore()).toEqual(133)
   });
 
 

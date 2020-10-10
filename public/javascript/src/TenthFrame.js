@@ -9,7 +9,6 @@ class TenthFrame {
 
   addRoll(pinsFelled) {
 
-    console.log(this.rolls)
     if (this.rolls >= 2 && this.score <= 9) {
       throw new Error("You have already finished this frame");
     };
@@ -42,10 +41,20 @@ class TenthFrame {
 
   };
 
+  frameScore() {
+    if (!this.frameCompleted()) {
+      return 0;
+    };
+    return this.score
+  }
+
 
   isStrike() {
     return this.rolls === 1 && this.pins === 0
   };
 
+  frameCompleted() {
+    return ((this.score <= 9 && this.rolls === 2) || (this.score >= 10 && this.rolls === 3))
+  }
 
 };

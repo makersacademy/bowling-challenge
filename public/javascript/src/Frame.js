@@ -57,6 +57,7 @@ class Frame {
     if (pinsFelled > 10) {
       throw new Error("You cannot fell more pins than 10")
     };
+
     if (pinsFelled < 0) {
       throw new Error("You cannot fell fewer pins than 0")
     };

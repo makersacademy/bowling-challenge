@@ -5,6 +5,7 @@ class Scorecard {
     this.frameScores = [];
     this.currentFrameScore = [];
     this.currentFrame = 1;
+    this.STRIKE = 10;
   };
 
   //viewing the current frame
@@ -75,7 +76,7 @@ class Scorecard {
   //dealing with strikes 
 
   isStrike() {
-    if (this.score === 10) return true;
+    if (this.score === this.STRIKE) return true;
   };
 
   strike() {

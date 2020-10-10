@@ -72,4 +72,12 @@ describe("Game", function () {
       expect(game.currentScore).toEqual(63);
     });
   });
+
+  describe("Game knows how to deal with strikes", function () {
+    it("calculates the correct score for a strike", function () {
+      simulateRolls([10, 5, 3]);
+      game.calculateScore();
+      expect(game.currentScore).toEqual(26);
+    });
+  });
 });

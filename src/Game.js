@@ -47,8 +47,11 @@ class Game {
   }
 
   _addRoll(score) {
-    if (score <= 10 && score >= 0) {
+    if (score < 10 && score >= 0) {
       this.frame.push(score);
+    } else if (score == 10) {
+      this.frame.push(score);
+      this.addFrame();
     }
   }
 

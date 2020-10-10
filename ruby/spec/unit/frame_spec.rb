@@ -57,7 +57,7 @@ describe Frame do
     expect(frame.frame_score).to eq 13
   end
 
-  it "allows the frame to be updated with information from the next frame when frame was a spare" do
+  it "allows the frame to be updated with information from the next frame when frame was a strike" do
     frame = Frame.new
     frame.add_roll(10)
     expect(frame.frame_score).to eq 0

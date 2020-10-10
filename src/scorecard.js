@@ -41,7 +41,14 @@ class Scorecard {
   addToFrameScores() {
     if (this.currentFrameScore.length === 2) {
       this.frameScores.push(this.currentFrameScore);
+      this.incrementFrameCount();
     };
+  };
+
+  // incrementing frame count
+
+  incrementFrameCount () {
+    this.currentFrame ++;
   };
 
 };

@@ -9,17 +9,27 @@ class Scorecard {
     this._updateFrames();
   }
 
-  calculateScore() {
-    // let score = 0
-    // this.rolls.forEach(function(roll) {
-    //   score += roll.pins
-    // })
-    // return score
+  calcRunningScore(frameNumber) {
+    let score = 0;
+    for (let i = 0; i < frameNumber; i++) {
+      let frameScore = this._getFrameScore(i);
+      if (frameScore === false) { return false; }
+      score += frameScore;
+    }
+    return score;
   }
-  //
+
+  _getFrameScore(frameNumber) {
+    if (this.frames[frameNumber + 1] !== undefined && this.frames[frameNumber + 2] !== undefined) {
+      return this.frames[frameNumber].scoreFrame(this.frames[frameNumber + 1], this.frames[frameNumber + 2]);
+    } else if (this.frames[frameNumber + 1] !== undefined) {
+      return this.frames[frameNumber].scoreFrame(this.frames[frameNumber + 1]);
+    } else {
+      return this.frames[frameNumber].scoreFrame();
+    }
+  }
 
   _updateFrames() {
-    console.log(this._currentFrame().number)
     if (this._currentFrame().isComplete() && this._currentFrame().number !== 10) {
       let nextFrameNum = this._currentFrame().number + 1;
       this.frames.push(new Frame(nextFrameNum));

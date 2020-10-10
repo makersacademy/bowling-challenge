@@ -7,6 +7,7 @@ describe('Scorecard', function() {
     frame = {
       number: 1,
       addRoll: function(roll) { rolls = [roll] },
+      scoreFrame: function() { return 8; },
       isComplete: function() { return false; }
     }
     spyOn(frame, 'addRoll');
@@ -37,21 +38,19 @@ describe('Scorecard', function() {
     })
   })
 
-  
+  describe('#calcRunningScore(frameNumber)', function() {
+    it('returns the total score of frames up to the given number', function() {
+      scorecard = new Scorecard([frame, frame, frame, frame, frame, frame])
+      expect(scorecard.calcRunningScore(6)).toEqual(48);
+    })
 
-  // describe('calculateScore', function() {
-  //   it('returns 0 for a game of 20 gutter balls (0 pins)', function() {
-  //     for(let i = 0; i < 20; i++){
-  //       scorecard.addRoll(0);
-  //     }
-  //     expect(scorecard.calculateScore()).toEqual(0)
-  //   });
-  //
-  //   it('returns 20 for a game of 20 rolls that knocked down 1 pin each', function() {
-  //     for(let i = 0; i < 20; i++){
-  //       scorecard.addRoll(1);
-  //     }
-  //     expect(scorecard.calculateScore()).toEqual(20)
-  //   });
-  // });
+    it('returns false if the running score cannot be calculated due to insufficient rolls', function() {
+      let frame5 = {
+        number: 5,
+        scoreFrame: function() { return false; }
+      }
+      scorecard = new Scorecard([frame, frame, frame, frame, frame5])
+      expect(scorecard.calcRunningScore(5)).toEqual(false);
+    })
+  })
 });

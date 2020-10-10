@@ -31,6 +31,7 @@ class Scorecard {
 
   addScore(pinsKnockedDown) {
     this.score = pinsKnockedDown;
+    this.addScoreToFrame();
   };
 
   addScoreToFrame() {

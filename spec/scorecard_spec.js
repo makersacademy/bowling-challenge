@@ -16,9 +16,7 @@ describe("Scorecard", function() {
 
   it('should allow the user to see their current score for a frame', function() {
     scorecard.addScore(3);
-    scorecard.addScoreToFrame();
     scorecard.addScore(5);
-    scorecard.addScoreToFrame();
     expect(scorecard.getCurrentFrameScore()).toEqual([3, 5]);
   });
 
@@ -28,17 +26,13 @@ describe("Scorecard", function() {
 
   it('should push the currentFrameScore to the frameScores once complete', function() {
     scorecard.addScore(4);
-    scorecard.addScoreToFrame();
     scorecard.addScore(1);
-    scorecard.addScoreToFrame();
     expect(scorecard.frameScores).toEqual([[4,1]]);
   });
 
   it('should increase the currentFrameCount by 1 after a frame has been completed', function() {
     scorecard.addScore(2);
-    scorecard.addScoreToFrame();
     scorecard.addScore(7);
-    scorecard.addScoreToFrame();
     expect(scorecard.getCurrentFrame()).toEqual(2);
   });
 

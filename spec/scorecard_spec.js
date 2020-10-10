@@ -14,4 +14,24 @@ describe("Scorecard", function() {
     expect(scorecard.getCurrentScore()).toEqual(5);
   });
 
+  it('should allow the user to see their current score for a frame', function() {
+    scorecard.addScore(3);
+    scorecard.addScoreToFrame();
+    scorecard.addScore(5);
+    scorecard.addScoreToFrame();
+    expect(scorecard.getCurrentFrameScore()).toEqual([3, 5]);
+  });
+
+  it('should allow the user to see the current frame', function() {
+    expect(scorecard.getCurrentFrame()).toEqual(1);
+  });
+
+  it('should push the currentFrameScore to the frameScores once complete', function() {
+    scorecard.addScore(4);
+    scorecard.addScoreToFrame();
+    scorecard.addScore(1);
+    scorecard.addScoreToFrame();
+    expect(scorecard.frameScores).toEqual([[4,1]]);
+  });
+
 });

@@ -36,7 +36,7 @@ describe("Game", function () {
   describe("calculates the score at the end of the game", function () {
     it("shows the correct score for a standard game with no bonuses", function () {
       simulateRolls(randomGame);
-      game.score();
+      game.calculateScore();
       expect(game.finalScore).toEqual(78);
     });
   });

@@ -54,6 +54,22 @@ describe("Bowling", function() {
       game.game = []
       expect(game.isTenthFrame(game.game)).toBe(false)
     })
+  })
+
+  // describe("isPerfectGame", function() {
+  //   it("returns true if the player has got 12 strikes", function() {
+  //     game.game = [[10], [10], [10], [10], [10], [10], [10], [10], [10], [10], [10], [10]]
+  //     expect(game.isPerfectGame(game.game)).toBe(true)
+  //   })
+  // })
+
+  describe("addToScore", function() {
+    it("adds the score of a frame to the total score", function() {
+      var frame;
+      frame = [[4, 3]]
+      game.addToScore(frame)
+      expect(game.score).toBe(7)
+    })
 
   })
   

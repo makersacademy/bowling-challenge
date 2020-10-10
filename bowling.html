@@ -19,9 +19,15 @@
   <div id="add_score_form">
     <h2>Score form</h2>
     <p>Add score for frame number: <span class="frame_number"></span>, ball number: <span class="ball_number"></span></p>
-    <form>
-
+    
+    <form class="roll_form">
+      <input type="number" name="number">
+      <input type="submit" id="submit_roll">
     </form>
+
+    <p id="roll_value">Replace this</p>
+
+    <p>Current frame score: <span id='frame_output'></span></p>
 
   </div>
 

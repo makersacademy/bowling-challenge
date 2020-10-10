@@ -57,13 +57,6 @@ describe("Bowling", function() {
     })
   })
 
-  // describe("isPerfectGame", function() {
-  //   it("returns true if the player has got 12 strikes", function() {
-  //     game.game = [[10], [10], [10], [10], [10], [10], [10], [10], [10], [10], [10], [10]]
-  //     expect(game.isPerfectGame(game.game)).toBe(true)
-  //   })
-  // })
-
   describe("addToScore", function() {
     it("adds the score of a frame to the total score", function() {
       frame = [4, 3]
@@ -88,10 +81,6 @@ describe("Bowling", function() {
       expect(game.isSecondRoll(frame)).toBe(false)
     })
   })
-
-  // describe("newRoll", function() {
-  //   it("accepts a number and progresses ")
-  // })
 
   describe("addRoll", function() {
     it("Adds the roll to the frame", function() {
@@ -140,3 +129,10 @@ describe("Bowling", function() {
     })
   })
 });
+
+  // describe("isPerfectGame", function() {
+  //   it("returns true if the player has got 12 strikes", function() {
+  //     game.game = [[10], [10], [10], [10], [10], [10], [10], [10], [10], [10], [10], [10]]
+  //     expect(game.isPerfectGame(game.game)).toBe(true)
+  //   })
+  // })

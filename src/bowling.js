@@ -10,10 +10,6 @@ class Bowling {
     this.ball_number = 1
   }
 
-  // newRoll () {
-  //   var frame = new Frame
-  // }
-
   isStrike(frame) { // checks whether the role was a strike.
     return (frame[0] == 10)
   }

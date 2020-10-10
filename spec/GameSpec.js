@@ -86,5 +86,12 @@ describe("Game", function () {
       game.calculateScore();
       expect(game.currentScore).toEqual(51);
     });
+
+    it("calculates the correct score for a strike", function () {
+      simulateRolls([10, 10, 10, 5, 3]);
+      console.log(game.strikeScore);
+      game.calculateScore();
+      expect(game.currentScore).toEqual(81);
+    });
   });
 });

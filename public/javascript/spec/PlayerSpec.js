@@ -34,14 +34,22 @@ describe("Player", function() {
       expect(player.Score()).toEqual(22)
     });
     // Strike!
-    it("Strike should return 22 if spare once", function() {
+    it("1 Strike should return 22 if spare once", function() {
       player.throw(10)
       player.throw(4) 
       player.throw(3) // 10 + 4(bonus) + 3(bonus) + 4 + 3 should be 26
       for (let i = 0; i < 16; i++) {
       player.throw(0)
       }
-      expect(player.Score()).toEqual(26)
+      expect(player.Score()).toEqual(24)
     });
+    // Strikes!
+    it("All Strikes should return 300", function() {
+      for (let i = 0; i < 12; i++) {
+        player.throw(10)
+      }
+      expect(player.Score()).toEqual(300)
+    });
+
   });
 });

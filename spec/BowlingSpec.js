@@ -108,4 +108,28 @@ describe("Bowling", function() {
     })
   })
 
+  describe("addFrameToGame", function() {
+    it("adds the frame to the array of frames in this.game", function() {
+      frame = [3,5]
+      game.addFrameToGame(frame)
+      expect(game.game).toEqual([[3,5]])
+    })
+
+    it("adds the frame in sequential order", function() {
+      game.game = [[3,5], [8,1]]
+      frame = [1,4]
+      game.addFrameToGame(frame)
+      expect(game.game).toEqual([[3,5], [8,1], [1,4]])
+    })
+  })
+
+  describe("updateFrameCount", function() {
+    it("Updates the frame count", function() {
+      frame = [1,4]
+      game.addFrameToGame(frame)
+      game.updateFrameCount()
+      expect(game.frameCount).toBe(1)
+    })
+  })
+
 });

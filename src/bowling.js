@@ -6,6 +6,7 @@ class Bowling {
     this.game = []
     this.score = 0
     this.frame = []
+    this.frameCount = 0
   }
 
   // newRoll () {
@@ -38,6 +39,14 @@ class Bowling {
 
   addRoll(roll) {
     this.frame.push(roll)
+  }
+
+  addFrameToGame(frame) {
+    this.game.push(frame)
+  }
+
+  updateFrameCount() {
+    this.frameCount = this.game.length
   }
 
   // isPerfectGame(callback) {

@@ -8,8 +8,9 @@ class Game {
     this.round = 1;
     this.spareBonus = false;
     this.spareScore = [];
-    this.strikeCounter = 0;
+    this.strikeScoreCounter = 0;
     this.strikeScore = [];
+    this.multiStrikeCounter = 0;
   }
 
   roll(score) {
@@ -17,23 +18,20 @@ class Game {
     this.addStrikeScore(score);
     this.isStrike(score);
     this.addSpareScore(score);
-    this._isSpare();
-    if (this.frame.length == 2) {
-      this.addFrame();
-      this.round++;
-    }
+    this.isSpare();
+    this.nextFrame();
   }
 
   addStrikeScore(score) {
-    if (this.strikeCounter > 0) {
+    if (this.strikeScoreCounter > 0) {
       this.strikeScore.push(score);
-      this.strikeCounter--;
+      this.strikeScoreCounter--;
     }
   }
 
   isStrike(score) {
     if (score == 10) {
-      this.strikeCounter += 2;
+      this.strikeScoreCounter += 2;
     }
   }
 
@@ -42,9 +40,24 @@ class Game {
     this.frame = [];
   }
 
+  nextFrame() {
+    if (this.frame.length == 2) {
+      this.addFrame();
+      this.round++;
+    }
+  }
+
   addSpareScore(score) {
     if (this.spareBonus == true) {
       this.spareScore.push(score);
+    }
+  }
+
+  isSpare() {
+    if (this._sumArray(this.frame) === 10) {
+      this.spareBonus = true;
+    } else {
+      this.spareBonus = false;
     }
   }
 
@@ -70,14 +83,6 @@ class Game {
     } else if (score == 10) {
       this.frame.push(score);
       this.addFrame();
-    }
-  }
-
-  _isSpare() {
-    if (this._sumArray(this.frame) === 10) {
-      this.spareBonus = true;
-    } else {
-      this.spareBonus = false;
     }
   }
 }

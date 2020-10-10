@@ -6,6 +6,7 @@ class Scorecard {
     this.currentFrameScore = [];
     this.currentFrame = 1;
     this.STRIKE = 10;
+    this.total = 0;
   };
 
   //viewing the current frame
@@ -81,6 +82,17 @@ class Scorecard {
 
   strike() {
     this.currentFrameScore.push(10, 0);
-  }
+  };
+
+// getting the current score including any bonuses for strikes and spares
+
+  getScore() {
+    var sum = 0; 
+    for (let i = 0; i < this.frameScores.length; i ++) {
+      sum += this.frameScores[i].reduce((result,number) => result + number);
+    };
+    this.total = sum;
+    return this.total;
+  };
 
 };

@@ -1,5 +1,5 @@
 class Scorecard {
-  constructor(){
+  constructor() {
     this.rolls = []
   }
 

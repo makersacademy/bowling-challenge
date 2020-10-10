@@ -18,10 +18,9 @@ class Bowling {
     return (frame.reduce((a, b) => a + b, 0) == 10)
   }
 
-  true() {
-    true
+  isGutterGame(callback) {
+    return (callback.flat().reduce((a, b) => a + b, 0) == 0)
   }
-
 }
 
 

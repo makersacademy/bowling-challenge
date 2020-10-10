@@ -35,9 +35,29 @@ describe("Scorecard", function() {
     expect(scorecard.getCurrentFrame()).toEqual(2);
   });
 
-  // it('should end the game after frame 10', function() {
-  //  expect(scorecard.addScore(3)).toEqual("Game over!") 
-  // });
+  it('should end the game after frame 10', function() {
+    scorecard.addScore(2);
+    scorecard.addScore(7);
+    scorecard.addScore(2);
+    scorecard.addScore(7);
+    scorecard.addScore(2);
+    scorecard.addScore(7);
+    scorecard.addScore(2);
+    scorecard.addScore(7);
+    scorecard.addScore(2);
+    scorecard.addScore(7);
+    scorecard.addScore(2);
+    scorecard.addScore(7);
+    scorecard.addScore(2);
+    scorecard.addScore(7);
+    scorecard.addScore(2);
+    scorecard.addScore(7);
+    scorecard.addScore(2);
+    scorecard.addScore(7);
+    scorecard.addScore(2);
+    scorecard.addScore(7);
+    expect(function() { scorecard.addScore(3) }).toThrow() 
+  });
 
   it('should empty currentFrameScore after frame is completed', function() {
    scorecard.addScore(5);

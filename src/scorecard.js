@@ -35,9 +35,12 @@ class Scorecard {
   };
 
   addScoreToFrame() {
-    this.currentFrameScore.push(this.score);
-    this.addToFrameScores();
-    this.isGameOver();
+    if (this.isGameOver()) {
+        throw "game over";
+    } else {
+      this.currentFrameScore.push(this.score);
+      this.addToFrameScores();
+    };
   };
 
   addToFrameScores() {
@@ -64,7 +67,7 @@ class Scorecard {
 
   isGameOver() {
     if (this.currentFrame > 10) {
-      return "Game Over";
+      return true;
     }
   };
 

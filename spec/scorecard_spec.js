@@ -76,15 +76,15 @@ describe("Scorecard", function() {
     scorecard.addScore(10);
     scorecard.addScore(2);
     scorecard.addScore(3);
-    expect(scorecard.getScore()).toEqual(15);
+    expect(scorecard.getScoreSoFar()).toEqual(15);
   });
 
-  it('should return 18 when given [4, 5) and [3, 6]', function(){
+  it('should return 18 when given [4, 5) and [3, 6]', function() {
       scorecard.addScore(4);
       scorecard.addScore(5);
       scorecard.addScore(3);
       scorecard.addScore(6);
-      expect(scorecard.getScore()).toEqual(18);
+      expect(scorecard.getScoreSoFar()).toEqual(18);
   });
-
+  
 });

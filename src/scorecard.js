@@ -86,14 +86,10 @@ class Scorecard {
 
 // getting the current score including any bonuses for strikes and spares
 
-  getScore() {
+  getScoreSoFar() {
     var sum = 0; 
     for (let i = 0; i < this.frameScores.length; i ++) {
-      if (this.frameScores[i] === [10,0]){
-        sum += 10 + this.frameScores[i+1].reduce((result,number) => result + number);
-      } else {
         sum += this.frameScores[i].reduce((result,number) => result + number);
-      };
     };
     this.total = sum;
     return this.total;

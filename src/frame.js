@@ -6,28 +6,45 @@ class Frame {
   }
 
   addRoll(roll) {
-    if(this.rolls.length >= 2) {
-      throw "Invalid roll for this frame"
-    } else if(this.totalPins() >= 10) {
-      throw "Invalid roll for this frame"
-    }else if(this.countRolls() === 1 && this.rolls[0].pins + roll.pins > 10) {
-      throw "Invalid roll for this frame"
+    if(this.isComplete()) {
+      throw "Invalid roll for this frame";
+    }else if(this._countRolls() === 1 && this.rolls[0].pins + roll.pins > 10 && !this._isStrike()) {
+      throw "Invalid roll for this frame";
     }
     this.rolls.push(roll)
-  };
+  }
 
   isComplete() {
-    if(this.rolls.length < 2 && this.totalPins() < 10) {
+    if(this._countRolls() < 2 && this._totalPins() < 10) {
+      return false;
+    } else if(this._hasThirdRoll()) {
       return false;
     }
     return true;
-  };
+  }
 
-  countRolls() {
+  _countRolls() {
     return this.rolls.length;
   }
 
-  totalPins() {
-    return this.rolls.reduce((sum, roll) => sum + roll.pins, 0)
-  };
-};
+  _totalPins() {
+    return this.rolls.reduce((sum, roll) => sum + roll.pins, 0);
+  }
+
+  _isSpare() {
+    return (this._countRolls() === 2 && this._totalPins() === 10);
+  }
+
+  _isStrike() {
+    return this.rolls[0].pins === 10;
+  }
+
+  _hasThirdRoll() {
+    return (this._isTenthFrame() &&
+      (this._isSpare() || this._isStrike() && this._countRolls() < 3));
+  }
+
+  _isTenthFrame() {
+    return this.number === 10;
+  }
+}

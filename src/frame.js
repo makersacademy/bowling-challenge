@@ -6,11 +6,7 @@ class Frame {
   }
 
   addRoll(roll) {
-    if(this.isComplete()) {
-      throw "Invalid roll for this frame";
-    }else if(this._countRolls() === 1 && this.rolls[0].pins + roll.pins > 10 && !this._isStrike()) {
-      throw "Invalid roll for this frame";
-    }
+    this._validateRoll(roll)
     this.rolls.push(roll)
   }
 
@@ -21,6 +17,14 @@ class Frame {
       return false;
     }
     return true;
+  }
+
+  _validateRoll(roll) {
+    if(this.isComplete()) {
+      throw "Invalid roll for this frame";
+    }else if(this._countRolls() === 1 && this.rolls[0].pins + roll.pins > 10 && !this._isStrike()) {
+      throw "Invalid roll for this frame";
+    }
   }
 
   _countRolls() {

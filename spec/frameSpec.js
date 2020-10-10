@@ -5,9 +5,9 @@ describe('Frame', function() {
 
   beforeEach(function() {
     frame = new Frame(1);
-  });
+  })
 
-  describe('addRoll(roll)', function() {
+  describe('#addRoll(roll)', function() {
 
     it("adds the given roll to the frame's rolls if frame is incomplete", function() {
       let roll = { pins: 3 };
@@ -25,7 +25,7 @@ describe('Frame', function() {
 
       expect(function() { frame.addRoll(roll2) }).toThrow();
       expect(frame._countRolls()).toEqual(2);
-    });
+    })
 
     it('throws an error if the first roll pins + this roll is > 10 pins, and first roll was not a strike', function() {
       let roll7 = { pins: 7 };
@@ -34,10 +34,10 @@ describe('Frame', function() {
 
       expect(function() { frame.addRoll(roll5) }).toThrow();
       expect(frame._countRolls()).toEqual(1);
-    });
-  });
+    })
+  })
 
-  describe('isComplete()', function() {
+  describe('#isComplete()', function() {
     it('returns false if the frame has <= 1 roll and < 10 pins', function() {
       let roll = { pins: 5 };
       frame.addRoll(roll);
@@ -94,5 +94,5 @@ describe('Frame', function() {
     })
   })
 
-
+  })
 })

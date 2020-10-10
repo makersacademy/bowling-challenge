@@ -4,13 +4,15 @@ class Game {
   constructor() {
     this.frame = [];
     this.gameFrames = [];
-    this.finalScore = 0;
+    this.currentScore = 0;
     this.round = 1;
     this.spareBonus = false;
+    this.spareScore = [];
   }
 
   roll(score) {
     this._addRoll(score);
+    this.addSpareScore(score);
     this._isSpare();
     if (this.frame.length == 2) {
       this.addFrame();
@@ -23,11 +25,19 @@ class Game {
     this.frame = [];
   }
 
+  addSpareScore(score) {
+    if (this.spareBonus == true) {
+      this.spareScore.push(score);
+    }
+  }
+
   calculateScore() {
+    this.currentScore = 0;
     for (let index = 0; index < this.gameFrames.length; index++) {
       const element = this.gameFrames[index];
-      this.finalScore += this._sumArray(element);
+      this.currentScore += this._sumArray(element);
     }
+    this.currentScore += this._sumArray(this.spareScore);
   }
 
   _sumArray(arr) {

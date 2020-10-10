@@ -34,7 +34,7 @@ describe("Game", function () {
     it("shows the correct score for a standard game with no bonuses considered", function () {
       simulateRolls(randomGame);
       game.calculateScore();
-      expect(game.finalScore).toEqual(78);
+      expect(game.currentScore).toEqual(78);
     });
   });
 
@@ -60,6 +60,16 @@ describe("Game", function () {
     it("checks if a frame has a spare", function () {
       simulateRolls([5, 4]);
       expect(game.spareBonus).toEqual(false);
+    });
+    it("calculates the correct score with a spare bonus", function () {
+      simulateRolls([5, 5, 4, 5]);
+      game.calculateScore();
+      expect(game.currentScore).toEqual(23);
+    });
+    it("calculates the correct score with a spare bonus", function () {
+      simulateRolls([5, 5, 4, 5, 5, 5, 5, 5, 6, 3]);
+      game.calculateScore();
+      expect(game.currentScore).toEqual(63);
     });
   });
 });

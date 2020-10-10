@@ -1,18 +1,31 @@
+'use strict';
+
 class Bowling {
   
   constructor() {
     this.game = []
   }
 
+  // newRoll () {
+  //   var frame = new Frame
+  // }
 
   isStrike(frame) { // checks whether the role was a strike.
-    frame[0] = 10 ? true : false
+    return (frame[0] == 10)
   }
 
   isSpare(frame) { // checks whether the role was a spare
-    frame.reduce((a, b) => a + b, 0) == 10 ? true : false
+    return (frame.reduce((a, b) => a + b, 0) == 10)
   }
 
-
+  true() {
+    true
+  }
 
 }
+
+
+
+// class Frame {
+
+// }

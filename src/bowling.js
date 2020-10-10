@@ -21,10 +21,8 @@ class Bowling {
   isGutterGame(callback) {
     return (callback.flat().reduce((a, b) => a + b, 0) == 0)
   }
+
+  isTenthFrame(callback) {
+    return (callback.length == 9)
+  }
 }
-
-
-
-// class Frame {
-
-// }

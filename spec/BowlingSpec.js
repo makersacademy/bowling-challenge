@@ -42,6 +42,18 @@ describe("Bowling", function() {
       game.game = [[4,5], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [10,0]]
       expect(game.isGutterGame(game.game)).toBe(false)
     })
+  })
+
+  describe("isTenthFrame", function() {
+    it("returns true if the number of frames already played is 9", function() {
+      game.game = [[4,5], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0]]
+      expect(game.isTenthFrame(game.game)).toBe(true)
+    })
+
+    it("returns false if the number of frames != 9", function() {
+      game.game = []
+      expect(game.isTenthFrame(game.game)).toBe(false)
+    })
 
   })
   

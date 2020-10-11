@@ -1,6 +1,6 @@
 "use strict";
 
-class Game {
+class Bowling {
   constructor() {
     this.frame = [];
     this.gameFrames = [];

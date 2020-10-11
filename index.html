@@ -6,13 +6,13 @@
   <title>Bowling Scorecard</title>
 </head>
 <body>
-  <section>
+  <section id="form">
     <form id="bowl">
-      <input id="pins-bowled" type="text" placeholder="Number of pins">
+      <label for="pins-bowled">Pins bowled:</label>
+      <input id="pins-bowled" type="number" min="0" max="10">
       <input type="submit" value="Add bowl">
     </form>
-    <h2>Current frame: <span id="current-frame"></span></h2>
-    <h2>Running score: <span id="running-score"></span></h2>
+    <h3><span id="error"></span></h3>
   </section>
 
   <div id='scorecard'>
@@ -30,7 +30,7 @@
         <th colspan='6'>Frame 10</th>
       </tr>
       <tr>
-        <td colspan='3'></td><td id="frame1"colspan='3'></td>
+        <td colspan='3'></td><td id="frame1" colspan='3'></td>
         <td colspan='3'></td><td id="frame2" colspan='3'></td>
         <td colspan='3'></td><td id="frame3" colspan='3'></td>
         <td colspan='3'></td><td id="frame4" colspan='3'></td>
@@ -42,16 +42,16 @@
         <td colspan='3'></td><td id="frame10" colspan='3'></td>
       </tr>
       <tr>
-        <td colspan='6'id="score1"></td>
-        <td colspan='6'id="score2"></td>
-        <td colspan='6'id="score3"></td>
-        <td colspan='6'id="score4"></td>
-        <td colspan='6'id="score5"></td>
-        <td colspan='6'id="score6"></td>
-        <td colspan='6'id="score7"></td>
-        <td colspan='6'id="score8"></td>
-        <td colspan='6'id="score9"></td>
-        <td colspan='6'id="score10"></td>
+        <td colspan='6' id="score1"></td>
+        <td colspan='6' id="score2"></td>
+        <td colspan='6' id="score3"></td>
+        <td colspan='6' id="score4"></td>
+        <td colspan='6' id="score5"></td>
+        <td colspan='6' id="score6"></td>
+        <td colspan='6' id="score7"></td>
+        <td colspan='6' id="score8"></td>
+        <td colspan='6' id="score9"></td>
+        <td colspan='6' id="score10"></td>
       </tr>
     </table>
   </div>

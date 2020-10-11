@@ -3,11 +3,10 @@ class Scorecard {
     this.frames = frames;
   }
 
-  addRoll(pins, callback) {
+  addRoll(pins) {
     let roll = new Roll(pins);
     this._currentFrame().addRoll(roll);
     this._updateFrames();
-    callback();
   }
 
   calcRunningScore(frameNumber) {

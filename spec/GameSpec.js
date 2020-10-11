@@ -5,6 +5,7 @@ describe("Bowling Tests", function () {
   var randomGame = [4, 5, 4, 4, 6, 3, 3, 5, 7, 2, 8, 1, 2, 7, 2, 4, 5, 1, 2, 3];
   var tenth = [4, 5, 4, 4, 6, 3, 3, 5, 7, 2, 8, 1, 2, 7, 2, 4, 5, 1, 10, 3, 5];
   var tenth2 = [4, 5, 4, 4, 6, 3, 3, 5, 7, 2, 8, 1, 2, 7, 2, 4, 5, 1, 5, 5, 3];
+  var tenth3 = [4, 5, 4, 4, 6, 3, 3, 5, 7, 2, 8, 1, 2, 7, 2, 4, 5, 5, 5, 5, 3];
   beforeEach(function () {
     game = new Bowling();
   });
@@ -135,7 +136,7 @@ describe("Bowling Tests", function () {
       console.log(game.frame);
       expect(game.currentScore).toEqual(78);
     });
-    it("can calculate the correct score of a perfect game after the 10th round", function () {
+    /*it("can calculate the correct score of a perfect game after the 10th round", function () {
       simulateRolls([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]);
       game.calculateScore();
       expect(game.currentScore).toEqual(300);
@@ -144,11 +145,16 @@ describe("Bowling Tests", function () {
       simulateRolls(tenth);
       game.calculateScore();
       expect(game.currentScore).toEqual(91);
-    });
+    });*/
     it("can calculate the score of a game with a spare on the 10th round", function () {
       simulateRolls(tenth2);
       game.calculateScore();
       expect(game.currentScore).toEqual(86);
+    });
+    it("can calculate the score of a game with a spare on the 9th and 10th round", function () {
+      simulateRolls(tenth3);
+      game.calculateScore();
+      expect(game.currentScore).toEqual(95);
     });
   });
 });

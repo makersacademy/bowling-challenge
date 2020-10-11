@@ -1,22 +1,27 @@
-function Player() {
-}
-Player.prototype.play = function(song) {
-  this.currentlyPlayingSong = song;
-  this.isPlaying = true;
-};
+'use strict';
 
-Player.prototype.pause = function() {
-  this.isPlaying = false;
-};
+class BowlingGame {
+  // constructor() {
+  //   this.minimumScore = 0;
+  //   this.maximumScore = 300;
+  //   this.score = [];
+  // }
 
-Player.prototype.resume = function() {
-  if (this.isPlaying) {
-    throw new Error("song is already playing");
-  }
+  // roll(pins) {
+    
+  // }
+  
+ 
 
-  this.isPlaying = true;
-};
 
-Player.prototype.makeFavorite = function() {
-  this.currentlyPlayingSong.persistFavoriteStatus(true);
+
+
+
+
+
+
+
+
+
+
 };

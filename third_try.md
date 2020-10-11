@@ -1,6 +1,6 @@
 ## AFTER PROCESS REVIEW
 
-# Objectives
+## Objectives
 
 _Count and sum the scores of a bowling game for one player_
 
@@ -65,7 +65,21 @@ INPUT        |    OUTPUT
 - current_score should be defined as taking the number of frames and summing up the score, according to roll index
 - take into account strikes, spares and normal rolls
 - take into account also the length of the @rolls to know if it is inside frames 1-9 
+- RUBY UNFINISHED!
 
+-----------------------------------------
+# JS
+
+- It is a good practice to review the code logic and try to implement different classes and responsibilities
+- Set up the the environment first, add Jasmine and create file structure
+
+## Create Frame.js
+
+- What is Frame?
+  - It starts with 10 pins, so expect a new Frame to have a pinCount toEqual 10
+  - Create Frame Class and initialise pinCount 
+
+- WHat is it responsible for?
 
 
 

@@ -36,4 +36,9 @@ describe('Frame', function() {
     expect(frame.isSpare()).toBe(true);
   });
 
+  it('knows when it is strike', function() {
+    frame.receiveRoll(10);
+    expect(frame.isStrike()).toBe(true);
+  });
+
 });

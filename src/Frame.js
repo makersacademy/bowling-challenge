@@ -21,6 +21,9 @@ isSpare() {
   if(this.pinCount === 0 && this.roll2 !== null ) { return true };
 };
 
+isStrike() {
+  if(this.pinCount === 0 && this.roll1 !== null ) { return true };
+};
 
 
 };

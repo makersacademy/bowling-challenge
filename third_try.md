@@ -104,10 +104,8 @@ INPUT        |    OUTPUT
  4. it should know if it is spare
    - if pinCount is 0, meaning all pins were down and roll2 has a value (there were pins down here), then it is a spare (true)
 
-   
-
-
- - it should know if it is strike
+ 5. it should know if it is strike
+   - same inplementation logic as spare
 
 
  - if on 10th frame, should accept 2 rolls if not strike or spare

@@ -74,25 +74,25 @@ describe("Game", function () {
   });
 
   describe("Game knows how to deal with strikes (including edge cases)", function () {
-    it("calculates the correct score for a strike", function () {
+    it("calculates the correct score for a single strike", function () {
       simulateRolls([10, 5, 3]);
       game.calculateScore();
       expect(game.currentScore).toEqual(26);
     });
 
-    it("calculates the correct score for a strike", function () {
+    it("calculates the correct score for multiple strikes in a row", function () {
       simulateRolls([10, 10, 5, 3]);
       game.calculateScore();
       expect(game.currentScore).toEqual(51);
     });
 
-    it("calculates the correct score for a strike", function () {
+    it("calculates the correct score for multiple strikes in a row", function () {
       simulateRolls([10, 10, 10, 5, 3]);
       game.calculateScore();
       expect(game.currentScore).toEqual(81);
     });
 
-    it("calculates the correct score for a strike", function () {
+    it("calculates the correct score for single and multiple strikes in a row", function () {
       simulateRolls([10, 5, 3, 10, 10, 5, 3]);
       game.calculateScore();
       expect(game.currentScore).toEqual(77);
@@ -100,25 +100,25 @@ describe("Game", function () {
   });
 
   describe("Game knows how to deal with strike and spare bonuses together (including edge cases)", function () {
-    it("calculates the correct score for strike and spare bonuses", function () {
+    it("single strike and spare in a row with the correct score", function () {
       simulateRolls([10, 5, 5, 4, 3]);
       game.calculateScore();
       expect(game.currentScore).toEqual(41);
     });
 
-    it("calculates the correct score for strike and spare bonuses", function () {
+    it("multiple strikes and spares in a row with the correct score", function () {
       simulateRolls([10, 10, 5, 5, 5, 5, 10, 4, 3]);
       game.calculateScore();
       expect(game.currentScore).toEqual(104);
     });
 
-    it("calculates the correct score for strike and spare bonuses", function () {
+    it("multiple strikes and spares in a row with the correct score", function () {
       simulateRolls([10, 10, 10, 5, 5, 5, 5, 4, 3]);
       game.calculateScore();
       expect(game.currentScore).toEqual(111);
     });
 
-    it("calculates the correct score for strike and spare bonuses", function () {
+    it("multiple strikes and spares in a row with the correct score", function () {
       simulateRolls([10, 10, 5, 5, 5, 5, 10, 10, 4, 3]);
       game.calculateScore();
       expect(game.currentScore).toEqual(128);

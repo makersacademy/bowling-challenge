@@ -16,7 +16,7 @@ class Scorecard {
     return this.sumTotal();
   };
 
-  // calculating the score 
+  // calculating the score for complete frames
 
   sumTotal() {
     let score = 0;

@@ -38,5 +38,41 @@ describe("#score", function() {
     }
     expect(game.score()).toEqual(80);
   });
+
+  it('when provided with 12 bowls of 10, total score = 300', function() {
+    for (i=0; i < 12; i++) { 
+      game.bowl(10) 
+    }
+    expect(game.score()).toEqual(300);
+  });
+
+  it('when provided with [8,2,10,8,2,8,2,4,4,9,1,4,2], total score = 300', function() {
+    var bowls = [8,2,10,8,2,8,2,4,4,9,1,4,2]
+    for (i=0; i < 13; i++) { 
+      game.bowl(bowls[i]) 
+    }
+    expect(game.score()).toEqual(100);
+  });
+  it('when provided with [10,10,10,10,10,10,10,10,10,8,2,10], total score = 278', function() {
+    var bowls = [10,10,10,10,10,10,10,10,10,8,2,10]
+    for (i=0; i < 12; i++) { 
+      game.bowl(bowls[i]) 
+    }
+    expect(game.score()).toEqual(278);
+  });
+  it('when provided with [10,10,10,10,10,10,10,10,8,2,8,2,10], total score = 266', function() {
+    var bowls = [10,10,10,10,10,10,10,10,8,2,8,2,10]
+    for (i=0; i < 13; i++) { 
+      game.bowl(bowls[i]) 
+    }
+    expect(game.score()).toEqual(266);
+  });
+  it('when provided with [1,4,4,5,6,4,5,5,10,0,1,7,3,6,4,10,2,8,6], total score = 133', function() {
+    var bowls = [1,4,4,5,6,4,5,5,10,0,1,7,3,6,4,10,2,8,6]
+    for (i=0; i < 19; i++) { 
+      game.bowl(bowls[i]) 
+    }
+    expect(game.score()).toEqual(133);
+  });
 });
 

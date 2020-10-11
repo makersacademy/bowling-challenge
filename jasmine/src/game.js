@@ -16,22 +16,14 @@ class Game {
     var i;
     for (i = 0; i < this.bowls.length; i++) {
       var bowl = this.bowls[i]
-      this.regularFrame(bowl)
-      console.log(bowl)
+      if (this.frameNumber == 10) {
+        this.frameTen(bowl)
+      } else {
+        this.regularFrame(bowl)
+      }
     }
-    // console.log(this.totalScore)
     return this.totalScore
   }
-  // score() {
-  //   var i;
-  //   for (i = 0; i < this.bowls.length; i++) {
-  //     // if (this.frameNumber === 10) {
-  //     //   this.frameTen()
-  //     // } else {
-  //       this.regularFrame()
-  //     // }
-  //   }
-  // }
   
   addTripleScore(bowl) {
     this.totalScore += bowl * 3
@@ -42,9 +34,9 @@ class Game {
   addScore(bowl) {
     this.totalScore += bowl
   }
-  reduceDoublePointTurns() {
-    if (this.doublePointTurns > 0) {
-      this.doublePointTurns -= 1
+  reduceDoublePointsTurns() {
+    if (this.doublePointsTurns > 0) {
+      this.doublePointsTurns -= 1
     }
   }
   strike(bowl) {
@@ -73,7 +65,7 @@ class Game {
     return (this.triplePointsTurns == 1)
   }
   noBonuses() {
-    this.reduceDoublePointTurns()
+    this.reduceDoublePointsTurns()
     if (this.secondBowl() == true) {
       this.endFrame()
     } else {
@@ -103,10 +95,11 @@ class Game {
       this.addStrikeBonuses()
     } else if (this.spare(bowl) == true) {
       this.nextBowlWorthDouble()
+      this.triplePointsTurns = 0
     } else {
       this.noBonuses()
+      this.triplePointsTurns = 0
     }
-    this.triplePointsTurns = 0
   }
   noBonusThrow(bowl) {
     this.addScore(bowl)
@@ -126,5 +119,16 @@ class Game {
     } else {
       this.doublePointThrow(bowl)
     }
+  }
+  frameTen(bowl) {
+    if (this.turkeyAttempt() == true) {
+      this.addTripleScore(bowl)
+      this.triplePointsTurns = 0
+    } else if (this.doublePointsTurns > 0) {
+      this.addDoubleScore(bowl)
+    } else {
+      this.addScore(bowl)
+    }
+    this.reduceDoublePointsTurns()
   }
 }

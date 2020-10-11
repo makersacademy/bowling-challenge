@@ -22,6 +22,14 @@ class Scorecard {
     return this.score;
   };
 
+  getTotal() {
+    return this.sumTotal();
+  };
+
+  sumTotal() {
+    return this.total.reduce((result, number) => result + number);
+  };
+
   getCurrentFrameScore() {
     return this.currentFrameScore;
   };

@@ -57,15 +57,18 @@ describe("Scorecard", function() {
   // returning the score for complete games 
   
   it('should return 0 for gutter game', function() {
-    for (let count = 0; i < 20; count++) {
+    for (let count = 0; count < 20; count++) {
       scorecard.addScore(0);
     }
     expect(scorecard.getScore()).toEqual(0);
   });
 
-  // it('should return twenty for always knocking down 1', function() {
-  //   for (let count = 0; count < 20; count ++)
-  // });
+  it('should return twenty for always knocking down 1', function() {
+    for (let count = 0; count < 20; count ++) {
+      scorecard.addScore(1);
+    }
+    expect(scorecard.getTotal()).toEqual(20);
+  });
 
   // it('should return 15 for a strike and a frame of [2, 3]', function() {
   //   scorecard.addScore(10);

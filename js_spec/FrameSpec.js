@@ -3,13 +3,13 @@
   
 describe('Frame', function() {
   let frame;
-  let frameTen;
+  let isFrameTen;
 
   beforeEach(function() {
     frame = new Frame();
-    frameTen = new FrameTen();
-  })
-  
+    isFrameTen == false;
+  });
+
   it('should have a pinCount of max 10 pins', function() {
     expect(frame.pinCount).toEqual(10);
   });
@@ -33,23 +33,30 @@ describe('Frame', function() {
     expect(frame.roll2).toEqual(3);
   });
 
-  it('knows when it is spare', function() {
-    frame.receiveRoll(9);
-    frame.receiveRoll(1);
-    expect(frame.isSpare()).toBe(true);
+  describe('isSpare', function() {
+    it('knows when it is spare', function() {
+      frame.receiveRoll(9);
+      frame.receiveRoll(1);
+      expect(frame.isSpare()).toBe(true);
+    });
   });
 
-  it('knows when it is strike', function() {
-    frame.receiveRoll(10);
-    expect(frame.isStrike()).toBe(true);
+  describe('isStrike', function() {  
+    it('knows when it is strike', function() {
+      frame.receiveRoll(10);
+      expect(frame.isStrike()).toBe(true);
+    });
   });
-
-  it('in frameTen can receive only 2 rolls if not strike or spare', function() {
-    frameTen = new Frame();
-    frameTen.isFrameTen = true;
-    frameTen.receiveRoll(2);
-    frameTen.receiveRoll(4);
-    expect( function() { frameTen.receiveRoll(3); } ).toThrow( new Error ('Invalid roll!'));
+ 
+  describe('isFrameTen', function () {
+  
+    it('in frameTen can receive only 3 rolls if strike', function() {
+      frame.isFrameTen == true;
+      frame.receiveRoll(10);
+      frame.receiveRoll(4);
+      frame.receiveRoll(2);
+      expect( function () { frame.receiveRoll(2); } ).toThrow( new Error ('This was your last roll.'));
+    });
   });
 
   

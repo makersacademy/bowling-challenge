@@ -51,6 +51,17 @@ class Bowling {
     if (this.round == 10 && score == 10) {
       this._addRollTenth(score);
     }
+    this.addStrikeScoreTenth(score);
+  }
+
+  addStrikeScoreTenth(score) {
+    if (this.strikeScoreCounter > 0) {
+      this.strikeScore.push(score);
+      this.strikeScoreCounter--;
+    }
+    if (this.strikeStreak > 1) {
+      this.strikeScore.push(score);
+    }
   }
 
   addStrikeScore(score) {

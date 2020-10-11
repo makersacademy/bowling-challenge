@@ -56,43 +56,32 @@ describe("Scorecard", function() {
 
   // returning the score for complete games 
   
-  it('should return 0 for gutter game', function() {
+  it('should return score of 0 for gutter game', function() {
     generateRolls(0, 20)
     expect(scorecard.getTotal()).toEqual(0);
   });
 
-  it('should return twenty for always knocking down 1', function() {
+  it('should return score of 20 for always knocking down 1', function() {
     generateRolls(1, 20);
     expect(scorecard.getTotal()).toEqual(20);
   });
 
-  it('should return 19 when rolling a spare and 6', function() {
+  it('should return score of 19 when rolling a spare and 6', function() {
     scorecard.addScore(9);
     scorecard.addScore(1);
     scorecard.addScore(3);
     scorecard.addScore(3);
-   generateRolls(0, 16);
+    generateRolls(0, 16);
     expect(scorecard.getTotal()).toEqual(19);
   });
 
-  // it('should return 15 for a strike and a frame of [2, 3]', function() {
-  //   scorecard.addScore(10);
-  //   scorecard.addScore(2);
-  //   scorecard.addScore(3);
-  //   expect(scorecard.getScoreSoFar()).toEqual(15);
-  // });
-
-  // it('should return 18 when given [4, 5) and [3, 6]', function() {
-  //     scorecard.addScore(4);
-  //     scorecard.addScore(5);
-  //     scorecard.addScore(3);
-  //     scorecard.addScore(6);
-  //     expect(scorecard.getScoreSoFar()).toEqual(18);
-  // });
-
-  // it("allows player to enter 2 more scores if they score a strike in the final round", function(){
-
-  // });
+  it('should return score of 28 for strike and 9', function() {
+    scorecard.addScore(10);
+    scorecard.addScore(5);
+    scorecard.addScore(4);
+    generateRolls(0, 17);
+    expect(scorecard.getTotal()).toEqual(28);
+  });
 
   function generateRolls(pinsKnockedDown, rolls) {
     for (let count = 0; count < rolls; count ++) {

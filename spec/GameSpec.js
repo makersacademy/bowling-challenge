@@ -132,8 +132,6 @@ describe("Bowling Tests", function () {
     it("can calculate the correct score of a standard game after the 10th round", function () {
       simulateRolls(randomGame);
       game.calculateScore();
-      console.log(game.gameFrames);
-      console.log(game.frame);
       expect(game.currentScore).toEqual(78);
     });
     /*it("can calculate the correct score of a perfect game after the 10th round", function () {

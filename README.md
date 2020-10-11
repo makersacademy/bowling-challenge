@@ -2,13 +2,15 @@
 Bowling Challenge
 =================
 
-## The Task
+## My App
+This app is a bowling scorecard. 
+You can use it here: http://veronica-bowling.surge.sh
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+Rolls will be displayed on the scorecard as they are entered.
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+The running frame scores will display once they are able to be calculated - in the case of a spare or a strike, this will be after the following 1 or 2 rolls.
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+
 
 
 ## Bowling — how does it work?
@@ -38,35 +40,40 @@ A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 str
 
 In the image below you can find some score examples.
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
-## Design (WIP)
-The below are rough notes (WIP) on potential design, likely to change as I develop the scorecard program.
+## Domain Modelling & Design
 
-Scorecard
-* has a running total score, which is the sum of all frame scores
+### Process Flows
+![Bowling scorecard process flows](https://app.lucidchart.com/publicSegments/view/0fed0ca6-b8b2-4dca-be69-fbc4d3ff04ab/image.png "Bowling Scorecard Process Flows")
+
+#### Scorecard
+* calculates a running total score, which is the sum of all frame scores up to the given frame number
 * knows the current frame
 * takes user input of pins bowled and stores them in the correct frame
 * displays the bowls, frames and score
 
-Frame
+#### Frame
 * has a frame number
 * can have 1-2 rolls, with the exception of frame 10 which can have up to 3.
 	* Frames 1-9
 		* If bowl 1 of frame == 10 then it will only have one bowl
 		* Else will have 2 bowls
 	* Frame 10
-		* if bowl 1 and 2 are strikes or 2 is a spare then the player has a third bowl
+		* if bowl 1 is a strike or 2 is a spare then the player has a third bowl
 		* Else player has 2 bowls
 * has a frame score, which is calculated based on the rolls:
 	* if frame total is < 10 and count of rolls == 2
-		* then frame score = roll 1 + roll 2
+		* then frame score = total pins of frame rolls
 	* if frame total == 10 and count of rolls == 2 (i.e. SPARE)
-		* then frame score = roll 1 + roll 2 + bonus of the pinfall of the next roll
+		* then frame score = total pins of frame rolls + bonus of the pinfall of the next roll
 	* if frame total == 10 and count of rolls == 1 (i.e. STRIKE)
-		* then frame score = roll 1 + roll 2 + bonus of the pinfall of the next 2 rolls
+		* then frame score = total pins of frame rolls + bonus of the pinfall of the next 2 rolls
 
-Roll
+#### Roll
 * has a pin score of 0 - 10
+
+#### UI
+I have used the linked example for the table styling, but all coding of the logic and populating of the data is my own: 
+https://codepen.io/owenjam/pen/reeLWN

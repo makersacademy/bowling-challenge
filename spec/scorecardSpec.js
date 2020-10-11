@@ -44,13 +44,13 @@ describe('Scorecard', function() {
       expect(scorecard.calcRunningScore(6)).toEqual(48);
     })
 
-    it('returns false if the running score cannot be calculated due to insufficient rolls', function() {
+    it('returns undefined if the running score cannot be calculated due to insufficient rolls', function() {
       let frame5 = {
         number: 5,
         scoreFrame: function() { return false; }
       }
       scorecard = new Scorecard([frame, frame, frame, frame, frame5])
-      expect(scorecard.calcRunningScore(5)).toEqual(false);
+      expect(scorecard.calcRunningScore(5)).toEqual(undefined);
     })
   })
 });

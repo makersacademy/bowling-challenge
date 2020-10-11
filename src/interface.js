@@ -8,7 +8,7 @@ $(function() {
 
 	$('#roll-0').on('click', function () {
 		bowling.roll(0);
-		getScore(0);
+		getScore('/');
 	});
 
 	$('#roll-1').on('click', function () {
@@ -59,7 +59,7 @@ $(function() {
 
 	$('#roll-10').on('click', function () {
 		bowling.roll(10);
-		getScore(10);
+		getScore('X');
 		var n = bowling.currentTotal();
 		fillFrame(n);
 	});

@@ -148,21 +148,17 @@ describe("Bowling Tests", function () {
     it("can calculate the score of a game with a strike on the 10th round", function () {
       simulateRolls(tenth);
       game.calculateScore();
-      console.log(game.gameFrames);
       expect(game.currentScore).toEqual(91);
     });
     it("can calculate the score of a game with a strike on the 10th round and strike streak prior", function () {
       simulateRolls(tenth4);
       game.calculateScore();
-      console.log(game.round);
-      console.log(game.gameFrames);
-      console.log(game.strikeScore);
       expect(game.currentScore).toEqual(132);
     });
-    /*it("can calculate the correct score of a perfect game after the 10th round", function () {
+    it("can calculate the correct score of a perfect game after the 10th round", function () {
       simulateRolls([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]);
       game.calculateScore();
       expect(game.currentScore).toEqual(300);
-    });*/
+    });
   });
 });

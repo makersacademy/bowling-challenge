@@ -29,61 +29,14 @@ class Bowling {
     this.nextFrame();
   }
 
-  tenthRound(score) {
-    // logic for if you had spare prior to this 10th round
-    if (this.spareBonus == true && this.frame.length == 0) {
-      this.addSpareScore(score);
-      this.isSpare();
+  calculateScore() {
+    this.currentScore = 0;
+    for (let index = 0; index < this.gameFrames.length; index++) {
+      const element = this.gameFrames[index];
+      this.currentScore += this._sumArray(element);
     }
-    // logic for if you get a spare on the last round
-    if (this.spareBonus == true) {
-      this.addSpareScore(score);
-    }
-    //logic for normal rolls on 10th round
-    if (this.round == 10 && score < 10 && this.spareBonus == false) {
-      this._addRoll(score);
-      this.nextFrameTenth();
-      if (this.frame.length == 2 && this._sumArray(this.frame) < 10) {
-        this.nextFrame();
-      }
-    }
-
-    if (this.round == 10 && score == 10) {
-      this._addRollTenth(score);
-    }
-    this.addStrikeScoreTenth(score);
-  }
-
-  addStrikeScoreTenth(score) {
-    if (this.strikeScoreCounter > 0) {
-      this.strikeScore.push(score);
-      this.strikeScoreCounter--;
-    }
-    if (this.strikeStreak > 1) {
-      this.strikeScore.push(score);
-    }
-  }
-
-  addStrikeScore(score) {
-    if (this.strikeScoreCounter > 0) {
-      this.strikeScore.push(score);
-      this.strikeScoreCounter--;
-    }
-    if (this.strikeStreak > 1) {
-      this.strikeScore.push(score);
-    }
-  }
-
-  isStrike(score) {
-    if (score == 10 && this.strikeStreak > 0) {
-      this.strikeScoreCounter += 1;
-      this.strikeStreak++;
-    } else if (score == 10) {
-      this.strikeScoreCounter += 2;
-      this.strikeStreak++;
-    } else if (score != 10) {
-      this.strikeStreak = 0;
-    }
+    this.currentScore += this._sumArray(this.spareScore);
+    this.currentScore += this._sumArray(this.strikeScore);
   }
 
   addFrame() {
@@ -119,14 +72,67 @@ class Bowling {
     }
   }
 
-  calculateScore() {
-    this.currentScore = 0;
-    for (let index = 0; index < this.gameFrames.length; index++) {
-      const element = this.gameFrames[index];
-      this.currentScore += this._sumArray(element);
+  addStrikeScore(score) {
+    if (this.strikeScoreCounter > 0) {
+      this.strikeScore.push(score);
+      this.strikeScoreCounter--;
     }
-    this.currentScore += this._sumArray(this.spareScore);
-    this.currentScore += this._sumArray(this.strikeScore);
+    if (this.strikeStreak > 1) {
+      this.strikeScore.push(score);
+    }
+  }
+
+  addStrikeScoreTenth(score) {
+    if (this.strikeScoreCounter > 0) {
+      this.strikeScore.push(score);
+      this.strikeScoreCounter = 0;
+    }
+    if (this.strikeStreak > 1) {
+      this.strikeScore.push(score);
+    }
+  }
+
+  isStrike(score) {
+    if (score == 10 && this.strikeStreak > 0) {
+      this.strikeScoreCounter += 1;
+      this.strikeStreak++;
+    } else if (score == 10) {
+      this.strikeScoreCounter += 2;
+      this.strikeStreak++;
+    } else if (score != 10) {
+      this.strikeStreak = 0;
+    }
+  }
+
+  tenthRound(score) {
+    // logic for if you had spare prior to this 10th round
+    if (this.spareBonus == true && this.frame.length == 0) {
+      this.addSpareScore(score);
+      this.isSpare();
+    }
+    // logic for if you get a spare on the last round
+    if (this.spareBonus == true) {
+      this.addSpareScore(score);
+    }
+    //logic for normal rolls on 10th round
+    if (this.round == 10 && score < 10 && this.spareBonus == false) {
+      this._addRoll(score);
+      this.nextFrameTenth();
+      if (this.frame.length == 2 && this._sumArray(this.frame) < 10) {
+        this.nextFrame();
+      }
+    }
+
+    if (this.round == 10 && score == 10) {
+      this._addRollTenth(score);
+      if (this.frame.length == 3) {
+        this.nextFrameTenth();
+      }
+    }
+
+    if (this.round == 10 && score <= 10) {
+      this.addStrikeScoreTenth(score);
+    }
   }
 
   _sumArray(arr) {

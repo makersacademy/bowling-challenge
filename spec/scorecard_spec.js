@@ -83,6 +83,11 @@ describe("Scorecard", function() {
     expect(scorecard.getTotal()).toEqual(28);
   });
 
+  it('should return score of 300 for perfect game', function() {
+    generateRolls(10, 20);
+    expect(scorecard.getTotal()).toEqual(300);
+  });
+
   function generateRolls(pinsKnockedDown, rolls) {
     for (let count = 0; count < rolls; count ++) {
       scorecard.addScore(pinsKnockedDown);

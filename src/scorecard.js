@@ -12,9 +12,10 @@ class Scorecard {
 
   calcRunningScore(frameNumber) {
     let score = 0;
-    for (let i = 0; i < frameNumber; i++) {
+    for (let i = 1; i < frameNumber + 1; i++) {
       let frameScore = this._getFrameScore(i);
-      if (frameScore === false) { return false; }
+      if (frameScore === undefined) { return undefined; }
+      if (frameScore === false) { return undefined; }
       score += frameScore;
     }
     return score;

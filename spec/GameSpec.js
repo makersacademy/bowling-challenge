@@ -6,6 +6,7 @@ describe("Bowling Tests", function () {
   var tenth = [4, 5, 4, 4, 6, 3, 3, 5, 7, 2, 8, 1, 2, 7, 2, 4, 5, 1, 10, 3, 5];
   var tenth2 = [4, 5, 4, 4, 6, 3, 3, 5, 7, 2, 8, 1, 2, 7, 2, 4, 5, 1, 5, 5, 3];
   var tenth3 = [4, 5, 4, 4, 6, 3, 3, 5, 7, 2, 8, 1, 2, 7, 2, 4, 5, 5, 5, 5, 3];
+  var tenth4 = [4, 5, 4, 4, 6, 3, 3, 5, 7, 2, 8, 1, 2, 7, 10, 10, 10, 3, 5];
   beforeEach(function () {
     game = new Bowling();
   });
@@ -134,16 +135,6 @@ describe("Bowling Tests", function () {
       game.calculateScore();
       expect(game.currentScore).toEqual(78);
     });
-    /*it("can calculate the correct score of a perfect game after the 10th round", function () {
-      simulateRolls([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]);
-      game.calculateScore();
-      expect(game.currentScore).toEqual(300);
-    });*/
-    it("can calculate the score of a game with a strike on the 10th round", function () {
-      simulateRolls(tenth);
-      game.calculateScore();
-      expect(game.currentScore).toEqual(91);
-    });
     it("can calculate the score of a game with a spare on the 10th round", function () {
       simulateRolls(tenth2);
       game.calculateScore();
@@ -154,5 +145,20 @@ describe("Bowling Tests", function () {
       game.calculateScore();
       expect(game.currentScore).toEqual(95);
     });
+    it("can calculate the score of a game with a strike on the 10th round", function () {
+      simulateRolls(tenth);
+      game.calculateScore();
+      expect(game.currentScore).toEqual(91);
+    });
+    it("can calculate the score of a game with a strike on the 10th round and strike streak prior", function () {
+      simulateRolls(tenth4);
+      game.calculateScore();
+      expect(game.currentScore).toEqual(132);
+    });
+    /*it("can calculate the correct score of a perfect game after the 10th round", function () {
+      simulateRolls([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]);
+      game.calculateScore();
+      expect(game.currentScore).toEqual(300);
+    });*/
   });
 });

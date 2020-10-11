@@ -84,14 +84,23 @@ INPUT        |    OUTPUT
  1. it can receive a max of 2 rolls, if more than 2 rolls, invalid
    - set a variable pinCount = 10, initialised previously and subtracted in the function
    - set a variable this.rollCount = 0, initialised, then incremented in the function
+
+   Invalid case: receive more than 2 rolls
    
 
  2. it can receive only 2 rolls with total points of 10
    - create test for error if trying to hit more than 10 pins
    - receiveRoll function modified to lower pinCount and, if pinCount - pins < 0, error shows up. -> inverted from my ruby code
 
- 3. it should sum score for each roll  
- 
+   Invalid case: tries to roll more than 10 pins in a frame
+
+
+ 3. it knows the score for each roll  
+   - set variables for roll1 and roll2
+   - initialise as null, intentionally absence of value as values will be incorporated later on
+   - change the receiveRoll function to accept pins down as roll1 and roll2, since score is the number of pins down
+   
+
  
  
  - it should know if it is spare

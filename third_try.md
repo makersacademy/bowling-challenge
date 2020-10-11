@@ -108,7 +108,13 @@ INPUT        |    OUTPUT
    - same inplementation logic as spare
 
 
- - if on 10th frame, should accept 2 rolls if not strike or spare
+ 6. if on 10th frame, should accept 2 rolls if not strike or spare
+   - Create new file FrameTen.js, which will handle the 10th Frame, then implement tests in FrameSpec.js by creating frameTen variable
+   - first test to accept 2 rolls if not strike or spare
+
+
+
+
  - if on 10th frame, should accept 3 rolls if strike
  - if on 10th frame, should accept 3 rolls if spare 
 

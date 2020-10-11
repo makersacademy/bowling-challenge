@@ -1,10 +1,13 @@
 'use strict';
 
+  
 describe('Frame', function() {
-  let frame
+  let frame;
+  let frameTen;
 
   beforeEach(function() {
     frame = new Frame();
+    frameTen = new FrameTen();
   })
   
   it('should have a pinCount of max 10 pins', function() {
@@ -40,5 +43,15 @@ describe('Frame', function() {
     frame.receiveRoll(10);
     expect(frame.isStrike()).toBe(true);
   });
+
+  it('in frameTen can receive only 2 rolls if not strike or spare', function() {
+    frameTen = new Frame();
+    frameTen.isFrameTen = true;
+    frameTen.receiveRoll(2);
+    frameTen.receiveRoll(4);
+    expect( function() { frameTen.receiveRoll(3); } ).toThrow( new Error ('Invalid roll!'));
+  });
+
+  
 
 });

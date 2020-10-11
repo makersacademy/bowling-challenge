@@ -52,7 +52,7 @@ describe("Game", function () {
     });
   });
 
-  describe("Game knows how to deal with spares", function () {
+  describe("Game knows how to deal with spares (including edge cases)", function () {
     it("checks if a frame has a spare", function () {
       simulateRolls([5, 5]);
       expect(game.spareBonus).toEqual(true);
@@ -73,7 +73,7 @@ describe("Game", function () {
     });
   });
 
-  describe("Game knows how to deal with strikes", function () {
+  describe("Game knows how to deal with strikes (including edge cases)", function () {
     it("calculates the correct score for a strike", function () {
       simulateRolls([10, 5, 3]);
       game.calculateScore();
@@ -99,7 +99,7 @@ describe("Game", function () {
     });
   });
 
-  describe("Game knows how to deal with strike and spare bonuses together", function () {
+  describe("Game knows how to deal with strike and spare bonuses together (including edge cases)", function () {
     it("calculates the correct score for strike and spare bonuses", function () {
       simulateRolls([10, 5, 5, 4, 3]);
       game.calculateScore();
@@ -109,10 +109,19 @@ describe("Game", function () {
     it("calculates the correct score for strike and spare bonuses", function () {
       simulateRolls([10, 10, 5, 5, 5, 5, 10, 4, 3]);
       game.calculateScore();
-      console.log(game.strikeScore);
-      console.log(game.spareScore);
-      console.log(game.gameFrames);
       expect(game.currentScore).toEqual(104);
+    });
+
+    it("calculates the correct score for strike and spare bonuses", function () {
+      simulateRolls([10, 10, 10, 5, 5, 5, 5, 4, 3]);
+      game.calculateScore();
+      expect(game.currentScore).toEqual(111);
+    });
+
+    it("calculates the correct score for strike and spare bonuses", function () {
+      simulateRolls([10, 10, 5, 5, 5, 5, 10, 10, 4, 3]);
+      game.calculateScore();
+      expect(game.currentScore).toEqual(128);
     });
   });
 });

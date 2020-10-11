@@ -1,7 +1,7 @@
 class Scorecard {
 
   constructor() {
-    this.score = 0;
+    // this.score = 0;
     this.total = [];
     // this.frameScores = [];
     // this.currentFrameScore = [];
@@ -18,16 +18,31 @@ class Scorecard {
 
   // returning the scores
 
-  getScore() {
-    return this.score;
-  };
+  // getScore() {
+  //   return this.score;
+  // };
 
   getTotal() {
     return this.sumTotal();
   };
 
   sumTotal() {
-    return this.total.reduce((result, number) => result + number);
+    let score = 0;
+    let totalIndex = 0;
+
+    for (let frameIndex = 0; frameIndex < 10; frameIndex ++) {
+      let frameScore = this.total[totalIndex] + this.total[totalIndex + 1];
+      
+      if (frameScore === 10) {
+          score += 10 + this.total[totalIndex + 2];
+      } else {
+        score += frameScore;
+      }
+      totalIndex += 2;
+    }
+    //return this.total.reduce((result, number) => result + number);
+    
+    return score;
   };
 
   getCurrentFrameScore() {
@@ -41,8 +56,8 @@ class Scorecard {
   // adjusting this scores 
 
   addScore(pinsKnockedDown) {
-    this.score = pinsKnockedDown;
-    this.total.push(this.score);
+    // this.score = pinsKnockedDown;
+    this.total.push(pinsKnockedDown);
   };
 
   // addScoreToFrame() {
@@ -105,3 +120,4 @@ class Scorecard {
   };
 
 };
+

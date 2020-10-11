@@ -60,7 +60,7 @@ describe("Scorecard", function() {
     for (let count = 0; count < 20; count++) {
       scorecard.addScore(0);
     }
-    expect(scorecard.getScore()).toEqual(0);
+    expect(scorecard.getTotal()).toEqual(0);
   });
 
   it('should return twenty for always knocking down 1', function() {
@@ -68,6 +68,17 @@ describe("Scorecard", function() {
       scorecard.addScore(1);
     }
     expect(scorecard.getTotal()).toEqual(20);
+  });
+
+  it('should return 19 when rolling a spare and 6', function() {
+    scorecard.addScore(9);
+    scorecard.addScore(1);
+    scorecard.addScore(3);
+    scorecard.addScore(3);
+    for (let count = 0; count < 16; count ++) {
+      scorecard.addScore(0);
+    }
+    expect(scorecard.getTotal()).toEqual(19);
   });
 
   // it('should return 15 for a strike and a frame of [2, 3]', function() {
@@ -90,3 +101,4 @@ describe("Scorecard", function() {
   // });
 
 });
+

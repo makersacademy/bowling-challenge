@@ -148,6 +148,7 @@ describe("Bowling Tests", function () {
     it("can calculate the score of a game with a strike on the 10th round", function () {
       simulateRolls(tenth);
       game.calculateScore();
+      console.log(game.gameFrames);
       expect(game.currentScore).toEqual(91);
     });
     it("can calculate the score of a game with a strike on the 10th round and strike streak prior", function () {
@@ -155,7 +156,6 @@ describe("Bowling Tests", function () {
       game.calculateScore();
       console.log(game.round);
       console.log(game.gameFrames);
-      console.log(game.strikeStreak);
       console.log(game.strikeScore);
       expect(game.currentScore).toEqual(132);
     });

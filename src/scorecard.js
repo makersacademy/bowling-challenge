@@ -3,10 +3,11 @@ class Scorecard {
     this.frames = frames;
   }
 
-  addRoll(pins) {
+  addRoll(pins, callback) {
     let roll = new Roll(pins);
     this._currentFrame().addRoll(roll);
     this._updateFrames();
+    callback();
   }
 
   calcRunningScore(frameNumber) {
@@ -20,12 +21,15 @@ class Scorecard {
   }
 
   _getFrameScore(frameNumber) {
-    if (this.frames[frameNumber + 1] !== undefined && this.frames[frameNumber + 2] !== undefined) {
-      return this.frames[frameNumber].scoreFrame(this.frames[frameNumber + 1], this.frames[frameNumber + 2]);
-    } else if (this.frames[frameNumber + 1] !== undefined) {
-      return this.frames[frameNumber].scoreFrame(this.frames[frameNumber + 1]);
+    let i = frameNumber - 1;
+    if (this.frames[i] === undefined) {
+      return undefined;
+    } else if (this.frames[i + 1] !== undefined && this.frames[i + 2] !== undefined) {
+      return this.frames[i].scoreFrame(this.frames[i + 1], this.frames[i + 2]);
+    } else if (this.frames[i + 1] !== undefined) {
+      return this.frames[i].scoreFrame(this.frames[i + 1]);
     } else {
-      return this.frames[frameNumber].scoreFrame();
+      return this.frames[i].scoreFrame();
     }
   }
 

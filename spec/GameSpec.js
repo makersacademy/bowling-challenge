@@ -3,6 +3,7 @@
 describe("Bowling Tests", function () {
   var game;
   var randomGame = [4, 5, 4, 4, 6, 3, 3, 5, 7, 2, 8, 1, 2, 7, 2, 4, 5, 1, 2, 3];
+  var tenth = [4, 5, 4, 4, 6, 3, 3, 5, 7, 2, 8, 1, 2, 7, 2, 4, 5, 1, 10, 3, 5];
   beforeEach(function () {
     game = new Bowling();
   });
@@ -122,6 +123,24 @@ describe("Bowling Tests", function () {
       simulateRolls([10, 10, 5, 5, 5, 5, 10, 10, 4, 3]);
       game.calculateScore();
       expect(game.currentScore).toEqual(128);
+    });
+  });
+
+  describe("The class understands how to treat the 10th round differently", function () {
+    it("can calculate the correct score of a standard game after the 10th round", function () {
+      simulateRolls(randomGame);
+      game.calculateScore();
+      expect(game.currentScore).toEqual(78);
+    });
+    it("can calculate the correct score of a perfect game after the 10th round", function () {
+      simulateRolls([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]);
+      game.calculateScore();
+      expect(game.currentScore).toEqual(300);
+    });
+    it("can calculate the score of a game with a strike on the 10th round", function () {
+      simulateRolls(tenth);
+      game.calculateScore();
+      expect(game.currentScore).toEqual(91);
     });
   });
 });

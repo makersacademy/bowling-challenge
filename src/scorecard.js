@@ -33,8 +33,8 @@ class Scorecard {
     for (let frameIndex = 0; frameIndex < 10; frameIndex ++) {
       let frameScore = this.total[totalIndex] + this.total[totalIndex + 1];
       
-      if (frameScore === 10) {
-          score += 10 + this.total[totalIndex + 2];
+      if (this.isSpare(frameScore)) {
+          score += this.spareBonus(totalIndex);
       } else {
         score += frameScore;
       }
@@ -98,16 +98,21 @@ class Scorecard {
   //   }
   // };
 
-  //dealing with strikes 
+  //dealing with strikes and spares
 
   isStrike() {
     if (this.score === this.STRIKE) return true;
   };
 
-  strike() {
-    this.currentFrameScore.push(10, 0);
-  };
+  isSpare(frameScore) {
+    return frameScore === 10;
+  }
 
+  spareBonus(totalIndex) {
+    return 10 + this.total[totalIndex + 2];
+  }
+
+  
 // scores pre bonuses for spares and strikes
 
   getScoreSoFar() {

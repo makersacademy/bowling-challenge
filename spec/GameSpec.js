@@ -4,6 +4,7 @@ describe("Bowling Tests", function () {
   var game;
   var randomGame = [4, 5, 4, 4, 6, 3, 3, 5, 7, 2, 8, 1, 2, 7, 2, 4, 5, 1, 2, 3];
   var tenth = [4, 5, 4, 4, 6, 3, 3, 5, 7, 2, 8, 1, 2, 7, 2, 4, 5, 1, 10, 3, 5];
+  var tenth2 = [4, 5, 4, 4, 6, 3, 3, 5, 7, 2, 8, 1, 2, 7, 2, 4, 5, 1, 5, 5, 3];
   beforeEach(function () {
     game = new Bowling();
   });
@@ -115,6 +116,7 @@ describe("Bowling Tests", function () {
 
     it("multiple strikes and spares in a row with the correct score", function () {
       simulateRolls([10, 10, 10, 5, 5, 5, 5, 4, 3]);
+      console.log(game.gameFrames);
       game.calculateScore();
       expect(game.currentScore).toEqual(111);
     });
@@ -141,6 +143,11 @@ describe("Bowling Tests", function () {
       simulateRolls(tenth);
       game.calculateScore();
       expect(game.currentScore).toEqual(91);
+    });
+    it("can calculate the score of a game with a spare on the 10th round", function () {
+      simulateRolls(tenth2);
+      game.calculateScore();
+      expect(game.currentScore).toEqual(86);
     });
   });
 });

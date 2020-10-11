@@ -14,12 +14,24 @@ class Bowling {
   }
 
   roll(score) {
+    if (this.round == 10) {
+      this.tenthRound(score);
+      return;
+    }
     this._addRoll(score);
     this.addStrikeScore(score);
     this.isStrike(score);
     this.addSpareScore(score);
     this.isSpare();
     this.nextFrame();
+  }
+
+  tenthRound(score) {
+    //check if we are on round 10 and run all logic in this function then break
+    if (this.round == 10 && score < 10 && this.spareBonus == false) {
+      this._addRoll(score);
+      this.nextFrame();
+    }
   }
 
   addStrikeScore(score) {

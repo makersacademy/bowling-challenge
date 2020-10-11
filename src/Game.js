@@ -32,6 +32,10 @@ class Bowling {
       this.addSpareScore(score);
       this.isSpare();
     }
+    // logic for if you get a spare on the last round
+    if (this.spareBonus == true) {
+      this.addSpareScore(score);
+    }
     //logic for normal rolls on 10th round
     if (this.round == 10 && score < 10 && this.spareBonus == false) {
       this._addRoll(score);
@@ -39,10 +43,6 @@ class Bowling {
       if (this.frame.length == 2 && this._sumArray(this.frame) < 10) {
         this.nextFrame();
       }
-    }
-    // logic for if you get a spare on the last round
-    if (this.spareBonus == true) {
-      this.addSpareScore(score);
     }
   }
 

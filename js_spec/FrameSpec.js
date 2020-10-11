@@ -7,9 +7,20 @@ describe('Frame', function() {
     frame = new Frame();
   })
   
-  it('should have a pinCount of 10 pins', function(){
+  it('should have a pinCount of max 10 pins', function() {
     expect(frame.pinCount).toEqual(10);
   });
 
+  it('can receive a maximum of two rolls', function() {
+    frame.receiveRoll(4)
+    frame.receiveRoll(2)
+    // passing anonymous function for error to be thrown, why?
+    expect(function(){ frame.receiveRoll(4);} ).toThrow(new Error('Invalid roll!')) 
+  });
+
+  it('can receive a maximum of 10 pins in two rolls', function() {
+    frame.receiveRoll(9)
+    expect(function(){ frame.receiveRoll(4);} ).toThrow(new Error('You are not allowed to roll more than 10 pins per frame!')) 
+  });
 
 });

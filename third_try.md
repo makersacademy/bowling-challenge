@@ -76,11 +76,31 @@ INPUT        |    OUTPUT
 ## Create Frame.js
 
 - What is Frame?
-  - It starts with 10 pins, so expect a new Frame to have a pinCount toEqual 10
+  - It starts with 10 pins, so expect a new Frame to have a pinCount toEqual 10, and it will reduce according to the number of pins down
   - Create Frame Class and initialise pinCount 
 
 - WHat is it responsible for?
+ 
+ 1. it can receive a max of 2 rolls, if more than 2 rolls, invalid
+   - set a variable pinCount = 10, initialised previously and subtracted in the function
+   - set a variable this.rollCount = 0, initialised, then incremented in the function
+   
 
+ 2. it can receive only 2 rolls with total points of 10
+   - create test for error if trying to hit more than 10 pins
+   - receiveRoll function modified to lower pinCount and, if pinCount - pins < 0, error shows up. -> inverted from my ruby code
+
+ 3. it should sum score for each roll  
+ 
+ 
+ 
+ - it should know if it is spare
+ - it should know if it is strike
+
+
+ - if on 10th frame, should accept 2 rolls if not strike or spare
+ - if on 10th frame, should accept 3 rolls if strike
+ - if on 10th frame, should accept 3 rolls if spare 
 
 
  

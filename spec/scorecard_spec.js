@@ -57,16 +57,12 @@ describe("Scorecard", function() {
   // returning the score for complete games 
   
   it('should return 0 for gutter game', function() {
-    for (let count = 0; count < 20; count++) {
-      scorecard.addScore(0);
-    }
+    generateRolls(0, 20)
     expect(scorecard.getTotal()).toEqual(0);
   });
 
   it('should return twenty for always knocking down 1', function() {
-    for (let count = 0; count < 20; count ++) {
-      scorecard.addScore(1);
-    }
+    generateRolls(1, 20);
     expect(scorecard.getTotal()).toEqual(20);
   });
 
@@ -75,9 +71,7 @@ describe("Scorecard", function() {
     scorecard.addScore(1);
     scorecard.addScore(3);
     scorecard.addScore(3);
-    for (let count = 0; count < 16; count ++) {
-      scorecard.addScore(0);
-    }
+   generateRolls(0, 16);
     expect(scorecard.getTotal()).toEqual(19);
   });
 
@@ -99,6 +93,12 @@ describe("Scorecard", function() {
   // it("allows player to enter 2 more scores if they score a strike in the final round", function(){
 
   // });
+
+  function generateRolls(pinsKnockedDown, rolls) {
+    for (let count = 0; count < rolls; count ++) {
+      scorecard.addScore(pinsKnockedDown);
+    }
+  }
 
 });
 

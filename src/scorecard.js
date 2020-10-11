@@ -2,11 +2,12 @@ class Scorecard {
 
   constructor() {
     this.score = 0;
-    this.frameScores = [];
-    this.currentFrameScore = [];
-    this.currentFrame = 1;
-    this.STRIKE = 10;
-    this.total = 0;
+    this.total = [];
+    // this.frameScores = [];
+    // this.currentFrameScore = [];
+    // this.currentFrame = 1;
+    // this.STRIKE = 10;
+    // this.total = 0;
   };
 
   //viewing the current frame
@@ -17,7 +18,7 @@ class Scorecard {
 
   // returning the scores
 
-  getCurrentScore() {
+  getScore() {
     return this.score;
   };
 
@@ -33,46 +34,46 @@ class Scorecard {
 
   addScore(pinsKnockedDown) {
     this.score = pinsKnockedDown;
-    this.addScoreToFrame();
+    this.total.push(this.score);
   };
 
-  addScoreToFrame() {
-   if (this.isGameOver()) throw 'game over';
-   if (this.isStrike()) {
-      this.strike();
-   } else {
-      this.currentFrameScore.push(this.score);
-    };
-    this.addToFrameScores();
-  };
+  // addScoreToFrame() {
+  //  if (this.isGameOver()) throw 'game over';
+  //  if (this.isStrike()) {
+  //     this.strike();
+  //  } else {
+  //     this.currentFrameScore.push(this.score);
+  //   };
+  //   this.addToFrameScores();
+  // };
 
-  addToFrameScores() {
-    if (this.currentFrameScore.length === 2) {
-      this.frameScores.push(this.currentFrameScore);
-      this.incrementFrameCount();
-      this.resetFrameScore();
-    };
-  };
+  // addToFrameScores() {
+  //   if (this.currentFrameScore.length === 2) {
+  //     this.frameScores.push(this.currentFrameScore);
+  //     this.incrementFrameCount();
+  //     this.resetFrameScore();
+  //   };
+  // };
 
   // incrementing frame count
 
-  incrementFrameCount () {
-    this.currentFrame ++;
-  };
+  // incrementFrameCount () {
+  //   this.currentFrame ++;
+  // };
 
   // resetting frame score
 
-    resetFrameScore() {
-      this.currentFrameScore = [];
-    };
+    // resetFrameScore() {
+    //   this.currentFrameScore = [];
+    // };
 
   // ending this game 
 
-  isGameOver() {
-    if (this.currentFrame > 10) {
-      return true;
-    }
-  };
+  // isGameOver() {
+  //   if (this.currentFrame > 10) {
+  //     return true;
+  //   }
+  // };
 
   //dealing with strikes 
 
@@ -84,7 +85,7 @@ class Scorecard {
     this.currentFrameScore.push(10, 0);
   };
 
-// getting the current score including any bonuses for strikes and spares
+// scores pre bonuses for spares and strikes
 
   getScoreSoFar() {
     var sum = 0; 

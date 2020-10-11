@@ -1,0 +1,15 @@
+body {
+  background-color: aqua;
+  color: yellow;
+}
+
+table {
+  border-collapse: collapse;
+  border-radius: 15px;
+  width: 60%;
+  height: 30vh;
+}
+
+th, td {
+  border: 1px solid black;
+}

@@ -13,6 +13,17 @@ class Game {
     this.bowls.push(numberPins)
   }
   score() {
+    return this.totalScore
+  }
+  reset() {
+    this.doublePointsTurns = 0
+    this.triplePointsTurns = 0
+    this.frameScore = 0
+    this.frameNumber = 1
+    this.bowlNumber = 1
+    this.totalScore = 0
+  }
+  play() {
     var i;
     for (i = 0; i < this.bowls.length; i++) {
       var bowl = this.bowls[i]
@@ -22,7 +33,6 @@ class Game {
         this.regularFrame(bowl)
       }
     }
-    return this.totalScore
   }
   
   addTripleScore(bowl) {
@@ -121,14 +131,17 @@ class Game {
     }
   }
   frameTen(bowl) {
-    if (this.turkeyAttempt() == true) {
-      this.addTripleScore(bowl)
-      this.triplePointsTurns = 0
-    } else if (this.doublePointsTurns > 0) {
-      this.addDoubleScore(bowl)
-    } else {
-      this.addScore(bowl)
+    if (this.bowlNumber < 4) {
+      if (this.turkeyAttempt() == true) {
+        this.addTripleScore(bowl)
+        this.triplePointsTurns = 0
+      } else if (this.doublePointsTurns > 0) {
+        this.addDoubleScore(bowl)
+      } else {
+        this.addScore(bowl)
+      }
+      this.reduceDoublePointsTurns()
+      this.bowlNumber += 1
     }
-    this.reduceDoublePointsTurns()
   }
 }

@@ -1,8 +1,6 @@
-$( document ).ready(function() {
+$(document).ready(function() {
   var game = new Game();
-  $('#current-score').text('Current Score is :' + game.score());
-  $('#frame-number').text('Frame Number :' + game.frameNumber);
-  $('#bowl-number').text('Ball Number :' + game.bowlNumber);
+  updateScreen();
 
   $( '#1' ).click(function() {
     game.bowl(1);
@@ -45,6 +43,8 @@ $( document ).ready(function() {
     updateScreen();
   });
   function updateScreen() {
+    game.reset();
+    game.play();
     $('#current-score').text('Current Score is :' + game.score());
     $('#frame-number').text('Frame Number :' + game.frameNumber);
     $('#bowl-number').text('Ball Number :' + game.bowlNumber);

@@ -27,6 +27,9 @@ class Game {
       this.strikeScore.push(score);
       this.strikeScoreCounter--;
     }
+    if (this.strikeStreak > 1) {
+      this.strikeScore.push(score);
+    }
   }
 
   isStrike(score) {
@@ -34,7 +37,7 @@ class Game {
       this.strikeScoreCounter += 2;
       this.strikeStreak++;
     } else if (score != 10 && this.strikeStreak > 0) {
-      this.strikeStreak--;
+      this.strikeStreak = 0;
     }
   }
 

@@ -7,10 +7,10 @@ Bowling Challenge
 This is a javascript programme to work out the score for a game of bowling.
 Currently only works in the console. 
 Open scorecard.html and use the console to work out the score:
-  'scorecard = new Scorecard'
-  'scorecard.addScore(x)'
+  `scorecard = new Scorecard`
+  `scorecard.addScore(x)`
   After twenty moves have been added, use:
-  'scorecard.getTotal'
+  `scorecard.getTotal`
 
 ### To Do ###
 

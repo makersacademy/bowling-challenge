@@ -14,6 +14,9 @@ class Bowling {
   }
 
   roll(score) {
+    if (this.round >= 11) {
+      return; //placeholder for end game
+    }
     if (this.round == 10) {
       this.tenthRound(score);
       return;
@@ -37,7 +40,7 @@ class Bowling {
       this.addSpareScore(score);
     }
     //logic for normal rolls on 10th round
-    if (this.round == 10 && score < 10 && this.spareBonus == false) {
+    if (this.round == 10 && score <= 10 && this.spareBonus == false) {
       this._addRoll(score);
       this.nextFrameTenth();
       if (this.frame.length == 2 && this._sumArray(this.frame) < 10) {
@@ -118,6 +121,15 @@ class Bowling {
   }
 
   _addRoll(score) {
+    if (score < 10 && score >= 0) {
+      this.frame.push(score);
+    } else if (score == 10) {
+      this.frame.push(score);
+      this.addFrame();
+    }
+  }
+
+  _addRollTenth(score) {
     if (score < 10 && score >= 0) {
       this.frame.push(score);
     } else if (score == 10) {

@@ -138,12 +138,12 @@ describe("Bowling Tests", function () {
       simulateRolls([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]);
       game.calculateScore();
       expect(game.currentScore).toEqual(300);
-    });
+    });*/
     it("can calculate the score of a game with a strike on the 10th round", function () {
       simulateRolls(tenth);
       game.calculateScore();
       expect(game.currentScore).toEqual(91);
-    });*/
+    });
     it("can calculate the score of a game with a spare on the 10th round", function () {
       simulateRolls(tenth2);
       game.calculateScore();

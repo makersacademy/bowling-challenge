@@ -10,7 +10,7 @@ class Frame {
 };
 
 receiveRoll(pins) {
-  while(this.isFrameTen == false);
+  //while(this.isFrameTen == false);
     if(this.rollCount === 2 ) { 
       throw new Error ('Invalid roll!'); 
     };
@@ -31,7 +31,7 @@ isSpare() {
 
 isStrike() {
   if(this.pinCount === 0 && this.roll1 !== null ) { return true };
-  if(this.isFrameTen == true && this.pinCount === 0 && this.roll1 !== null ) { throw new Error ('This was your last roll'); };
+  //if(this.isFrameTen == true && this.pinCount === 0 && this.roll1 !== null ) { throw new Error ('This was your last roll'); };
 };
 
 

@@ -3,11 +3,11 @@
   
 describe('Frame', function() {
   let frame;
-  let isFrameTen;
+  // let FrameTen;
 
   beforeEach(function() {
     frame = new Frame();
-    isFrameTen == false;
+    // frameTen = new FrameTen();
   });
 
   it('should have a pinCount of max 10 pins', function() {
@@ -48,16 +48,24 @@ describe('Frame', function() {
     });
   });
  
-  describe('isFrameTen', function () {
+  // describe('isFrameTen', function () {
   
-    it('in frameTen can receive only 3 rolls if strike', function() {
-      frame.isFrameTen == true;
-      frame.receiveRoll(10);
-      frame.receiveRoll(4);
-      frame.receiveRoll(2);
-      expect( function () { frame.receiveRoll(2); } ).toThrow( new Error ('This was your last roll.'));
-    });
-  });
+  //   it('can receive a maximum of two rolls if not strike or spare', function() {
+  //     frame.isFrameTen == true;
+  //     frameTen.receiveRoll(4);
+  //     frameTen.receiveRoll(2);
+  //     // passing anonymous function for error to be thrown, why?
+  //     expect(function() { frameTen.receiveRoll(4);} ).toThrow(new Error('Invalid roll!')) 
+  //   });
+
+  //   it('in frameTen can receive only 3 rolls if strike', function() {
+  //     frame.isFrameTen == true;
+  //     frameTen.receiveRoll(10);
+  //     frameTen.receiveRoll(4);
+  //     frameTen.receiveRoll(2);
+  //     expect( function () { frameTen.receiveRoll(2); } ).toThrow( new Error ('This was your last roll.'));
+  //   });
+  // });
 
   
 

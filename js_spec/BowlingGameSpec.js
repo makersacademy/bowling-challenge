@@ -2,16 +2,14 @@
 
 describe('BowlingGame', function() {
   
+  beforeEach(function() {
+  bowlingGame = new BowlingGame();
+  })
 
-  
-  // beforeEach(function() {
-  //   bowlingGame = new BowlingGame();
-  
-  // })
-
-  // it('should start with a minimumScore of 0', function() {
-  //   expect(bowlingGame.minimumScore).toEqual(0);
-  // });
+  it('should be able to create a frame', function() {
+    bowlingGame.create(Frame);
+    expect(bowlingGame.frames[1].pinCount).toEqual(10);
+  });
 
   // it('should have a maximumScore of 300', function() {
   //   expect(bowlingGame.maximumScore).toEqual(300);
@@ -36,4 +34,4 @@ describe('BowlingGame', function() {
 
 
 
-})
+});

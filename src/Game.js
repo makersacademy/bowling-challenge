@@ -1,5 +1,4 @@
 "use strict";
-
 class Bowling {
   constructor() {
     this.frame = [];
@@ -105,16 +104,13 @@ class Bowling {
   }
 
   tenthRound(score) {
-    // logic for if you had spare prior to this 10th round
     if (this.spareBonus == true && this.frame.length == 0) {
       this.addSpareScore(score);
       this.isSpare();
     }
-    // logic for if you get a spare on the last round
     if (this.spareBonus == true) {
       this.addSpareScore(score);
     }
-    //logic for normal rolls on 10th round
     if (this.round == 10 && score < 10 && this.spareBonus == false) {
       this._addRoll(score);
       this.nextFrameTenth();
@@ -122,14 +118,12 @@ class Bowling {
         this.nextFrame();
       }
     }
-
     if (this.round == 10 && score == 10) {
       this._addRollTenth(score);
       if (this.frame.length == 3) {
         this.nextFrameTenth();
       }
     }
-
     if (this.round == 10 && score <= 10) {
       this.addStrikeScoreTenth(score);
     }

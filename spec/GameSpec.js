@@ -1,6 +1,6 @@
 "use strict";
 
-describe("Game", function () {
+describe("Bowling Tests", function () {
   var game;
   var randomGame = [4, 5, 4, 4, 6, 3, 3, 5, 7, 2, 8, 1, 2, 7, 2, 4, 5, 1, 2, 3];
   beforeEach(function () {

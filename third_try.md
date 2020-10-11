@@ -100,10 +100,13 @@ INPUT        |    OUTPUT
    - initialise as null, intentionally absence of value as values will be incorporated later on
    - change the receiveRoll function to accept pins down as roll1 and roll2, since score is the number of pins down
    
+ 
+ 4. it should know if it is spare
+   - if pinCount is 0, meaning all pins were down and roll2 has a value (there were pins down here), then it is a spare (true)
 
- 
- 
- - it should know if it is spare
+   
+
+
  - it should know if it is strike
 
 

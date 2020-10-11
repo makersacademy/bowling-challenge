@@ -30,4 +30,10 @@ describe('Frame', function() {
     expect(frame.roll2).toEqual(3);
   });
 
+  it('knows when it is spare', function() {
+    frame.receiveRoll(9);
+    frame.receiveRoll(1);
+    expect(frame.isSpare()).toBe(true);
+  });
+
 });

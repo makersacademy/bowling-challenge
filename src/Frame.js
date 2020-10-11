@@ -17,6 +17,9 @@ receiveRoll(pins) {
   else { this.roll2 = pins; }
 };
 
+isSpare() {
+  if(this.pinCount === 0 && this.roll2 !== null ) { return true };
+};
 
 
 

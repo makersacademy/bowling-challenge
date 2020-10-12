@@ -1,19 +1,13 @@
 'use strict';
 
 describe('BowlingGame', function() {
-  
+  let bowlingGame
+
   beforeEach(function() {
   bowlingGame = new BowlingGame();
   })
 
-  it('should be able to create a frame', function() {
-    bowlingGame.create(Frame);
-    expect(bowlingGame.frames[1].pinCount).toEqual(10);
-  });
-
-  // it('should have a maximumScore of 300', function() {
-  //   expect(bowlingGame.maximumScore).toEqual(300);
-  // });
+  
 
   // describe('roll', function() {
   //   it('enables a player to roll pins and return score for game', function(){

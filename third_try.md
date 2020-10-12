@@ -113,7 +113,8 @@ INPUT        |    OUTPUT
    - first test to accept 2 rolls if not strike or spare
 
  ------- everything broke now --------
- - I decide to start counting the points
+ - I decide to give BowlingGame the responsibility to create frames
+ - 
 
 
  

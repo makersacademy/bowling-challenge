@@ -1,5 +1,5 @@
 
-## Bowling Scorecard website: 
+## Bowling Scorecard: 
 ![Alt text](bowling.png)
 
 

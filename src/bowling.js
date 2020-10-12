@@ -6,8 +6,8 @@ class Bowling {
         this.is_strike = false;
         this.is_double = false;
 }
-
-game(ball_1, ball_2){
+    game(ball_1, ball_2){
+        this.addFrame
     if(this.is_double == true){
         var frame_score = ball_1 + (ball_1 + ball_2) * 2;
     }
@@ -15,18 +15,15 @@ game(ball_1, ball_2){
         if(ball_1 == 10)
         this.is_double = true;
     frame_score = (ball_1 + ball_2) * 2;
-    return frame_score;
 
 
     }
     else if(this.is_spare == true){
     frame_score = ball_1 * 2 + ball_2;
-    return 
     }
     else{
         frame_score = ball_1 + ball_2;
     }
-    this.score = this.score + frame_score;
 
     if(ball_1 == 10){
         this.is_strike = true;
@@ -42,7 +39,8 @@ game(ball_1, ball_2){
         this.is_strike = false;
         this.is_double = false;
     }
-
+    this.score = this.score + frame_score;
+    this.frame = this.frame + 1
 }
-   
+
 }

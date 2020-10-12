@@ -1,0 +1,25 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "dependencies": {
+    "jasmine": "^3.6.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.11.0",
+    "eslint-config-google": "^0.14.0"
+  },
+  "scripts": {
+    "test": "jasmine public/javascript/spec/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Catzkorn/bowling-challenge.git"
+  },
+  "author": "Catzkorn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Catzkorn/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/Catzkorn/bowling-challenge#readme"
+}

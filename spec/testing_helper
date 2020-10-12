@@ -1,0 +1,6 @@
+require './lib/bowling_game'
+require './lib/frame'
+
+frame = Frame.new
+
+bowling_game = BowlingGame.new

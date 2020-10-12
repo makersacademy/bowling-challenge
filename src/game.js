@@ -9,8 +9,11 @@ class Game {
 
     Game; score = function () {
         var result = 0
-        for (var i = 0; i < 20; i++) {
-            result += this.rolls[i];
+        var rollIndex = 0;
+
+        for (var frameIndex = 0; frameIndex < 10; frameIndex++) {   //frameIndex go through 10 frame
+            result += this.rolls[rollIndex] + this.rolls[rollIndex + 1]; // Gives two rolls in each frame
+            rollIndex += 2;      //increments by 2
         }
         return result;
     };

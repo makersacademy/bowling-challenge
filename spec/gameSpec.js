@@ -17,4 +17,14 @@ describe("Game", function () {
         }
         expect(game.score()).toEqual(20);
     });
+
+    it('can roll a spare', function () {
+        game.roll(5)
+        game.roll(5)
+        game.roll(4)
+        for (var i = 0; i < 17; i++) {
+            game.roll(0);
+        }
+        expect(game.score()).toEqual(14);
+    });
 });

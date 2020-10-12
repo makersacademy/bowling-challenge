@@ -46,3 +46,12 @@ charlotte@Charlottes-MBP bowling-challenge % irb
 2.7.0 :014 > game.total_score
  => 8 
  ```
+
+
+ # JavaScript
+
+ ## To Test
+
+ ```
+charlotte@Charlottes-MBP bowling-challenge % npm test
+ ```

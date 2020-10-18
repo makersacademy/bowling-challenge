@@ -4,7 +4,7 @@ Bowling Challenge
 
 ### Bowling Scorecard ###
 
-This is a javascript programme to work out the score for a game of bowling.
+This is a javascript program to work out the score for a game of bowling.
 Currently only works in the console. 
 Open scorecard.html and use the console to work out the score:
   

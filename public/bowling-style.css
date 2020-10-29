@@ -1,0 +1,35 @@
+table{
+  margin-top: 20px;
+  text-align: center;
+}
+
+.head {
+  background-color: white;
+  height: 60px;
+  text-align: center;
+  /* margin-top: 0px;
+  width: auto;
+  height: 60px;
+  margin-right: auto; */
+}
+
+.submit{
+  border-radius: 20px;
+  margin-left: 30px;
+  background-color: red;
+  color: white;
+  height: 25px;
+}
+
+body{
+  background-color: black;
+}
+
+.table_div{
+  border: black solid 5px;
+  border-radius: 30px;
+  background-color: white;
+  width: 930px;
+  margin-left: auto;
+  margin-right: auto;
+}

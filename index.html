@@ -35,6 +35,12 @@
   <script>
   $(document).ready(function() {
   bowling = new Bowling();
+
+  function roll() {
+    bowling.roll()
+    var x = document.getElementById('td1')
+    x.innerHTML = bowling.display()
+  }
   $("#roll1").click('submit', function () {
     console.log(roll1);
   bowling.roll();
@@ -49,10 +55,12 @@
   });
   </script>
 
-  <form>
+  <form id="rollOne">
 Roll 1 
   <input type="number" id="roll1" min="0" max="10">
-  <input type="submit" value="Submit">
+  <input type="submit" value="Submit" onsubmit="roll()">
+  </form>
+  <form id = "rollTwo">
 Roll 2
   <input type="number" id="roll2" min="0" max="10">
   <input type="submit" value="Submit">
@@ -73,8 +81,8 @@ Roll 2
       <th colspan="2">Round 10</th>
       <th>Total</th>
     </tr>
-      <td><%=Bowling.rolls[0]%> </td>
-      <td><%=Bowling.rolls[1]%></td>
+      <td id= "td1"></td>
+      <td></td>
       <td></td>
       <td></td>
       <td></td>

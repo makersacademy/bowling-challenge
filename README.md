@@ -92,6 +92,6 @@ To load in browser ```open index.html```
 - Cannot get scores to display in table
 
 ## Testing
-To run tests ```open spectrunner.html```
+To run tests ```open specrunner.html```
 
 8 tests written and passed

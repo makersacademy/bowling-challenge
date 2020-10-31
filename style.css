@@ -1,0 +1,31 @@
+.scorecard {
+    position: relative; 
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scorecard::before {
+  content: '';
+  background-image: url('bowling.jpg');
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.5;
+}
+
+table {
+  border-collapse: collapse;
+  border-radius: 50px;
+  width: 60%;
+  height: 30vh;
+}
+
+th, td {
+  border: 1px solid black;
+}

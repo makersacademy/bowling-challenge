@@ -2,6 +2,7 @@ require 'simplecov'
 require 'simplecov-console'
 require 'calculator'
 require 'bowling'
+require 'scorecard'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,

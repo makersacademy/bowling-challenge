@@ -1,19 +1,19 @@
 class Scorecard
 
-  attr_reader :round_score, :rounds, :total
+  attr_reader :frame_score, :frames, :total
 
   def initialize
-    @round_score = 0
-    @rounds = []
+    @frame_score = 0
+    @frames = []
     @total = 0
   end
 
   def score(pins)
-    @round_score += pins
+    @frame_score += pins
   end
 
-  def score_round(round)
-    @rounds.push(round)
+  def score_frame(round)
+    @frames.push(round)
     sum_total
   end
 
@@ -21,8 +21,8 @@ private
 
   def sum_total
     @total = 0
-    @rounds.each do |round|
-      @total += Calculator.new.add_round(round.round[:first_throw], round.round[:second_throw])
+    @frames.each do |frame|
+      @total += Calculator.new.add_frame(frame.frame[:first_throw], frame.frame[:second_throw])
     end
   end
 

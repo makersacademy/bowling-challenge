@@ -1,6 +1,6 @@
 class Calculator 
 
-  def add_round(num_1, num_2)
+  def add_frame(num_1, num_2)
     num_1 + num_2
   end
 

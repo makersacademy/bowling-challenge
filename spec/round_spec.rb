@@ -1,12 +1,12 @@
-describe Round do
+describe Frame do
 
-  let(:not_a_strike) { Round.new(5, 4)}
-  let(:strike) { Round.new(10, 0) }
-  let(:spare) { Round.new(7, 3) }
+  let(:not_a_strike) { Frame.new(5, 4)}
+  let(:strike) { Frame.new(10, 0) }
+  let(:spare) { Frame.new(7, 3) }
 
   it 'stores bowls in a hash' do
-  expect(not_a_strike.round[:first_throw]).to eq 5
-  expect(not_a_strike.round[:second_throw]).to eq 4
+  expect(not_a_strike.frame[:first_throw]).to eq 5
+  expect(not_a_strike.frame[:second_throw]).to eq 4
   end
 
   it '#is_strike? method changes strike status from false to true' do

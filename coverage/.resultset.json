@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/cameronlogie/codingprojects/makers/week_5/bowling-challenge/spec/bowling_spec.rb": {
+      "/Users/cameronlogie/codingprojects/makers/week_5/bowling-challenge/spec/bowl_spec.rb": {
         "lines": [
           1,
           null,
@@ -29,6 +29,7 @@
           1,
           null,
           null,
+          1,
           null,
           null
         ]
@@ -45,6 +46,17 @@
           null
         ]
       },
+      "/Users/cameronlogie/codingprojects/makers/week_5/bowling-challenge/spec/round_spec.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
       "/Users/cameronlogie/codingprojects/makers/week_5/bowling-challenge/spec/scorecard_spec.rb": {
         "lines": [
           1,
@@ -53,10 +65,15 @@
           null,
           null,
           1,
+          1,
+          1,
+          1,
+          1,
+          null,
           null
         ]
       }
     },
-    "timestamp": 1604249221
+    "timestamp": 1604252466
   }
 }

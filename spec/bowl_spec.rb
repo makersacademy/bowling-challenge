@@ -1,4 +1,4 @@
-describe Bowling do
+describe Bowl do
 
   it '#is_strike? method changes strike status from false to true' do
     expect(subject.strike).to eq false
@@ -23,6 +23,7 @@ describe Bowling do
     subject.is_spare?(7, 2)
     expect(subject.spare).to eq false
   end
-    
+   
+  it 'first_bowl method '
 
 end

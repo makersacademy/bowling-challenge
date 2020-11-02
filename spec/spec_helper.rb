@@ -1,7 +1,7 @@
 require 'simplecov'
 require 'simplecov-console'
 require 'calculator'
-require 'bowling'
+require 'bowl'
 require 'scorecard'
 require 'frame'
 

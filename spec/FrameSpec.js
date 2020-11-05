@@ -24,4 +24,23 @@ describe("Frame", function () {
       expect(frame.isStrike()).toEqual(false)
     })
   })
+
+  describe("#isSpare", function () {
+    it("Knows if it was a spare", function () {
+      frame.roll(7)
+      frame.roll(3)
+      expect(frame.isSpare()).toEqual(true)
+    })
+
+    it("Knows if it wasn't a spare", function () {
+      frame.roll(3)
+      frame.roll(4)
+      expect(frame.isSpare()).toEqual(false)
+    })
+
+    it("Knows a strike isn't a spare", function () {
+      frame.roll(10)
+      expect(frame.isSpare()).toEqual(false)
+    })
+  })
 })

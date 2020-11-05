@@ -14,4 +14,8 @@ class Frame {
   isStrike() {
     return this.rolls[0] == 10
   }
+
+  isSpare() {
+    return this.pins() == 10 && !this.isStrike()
+  }
 }

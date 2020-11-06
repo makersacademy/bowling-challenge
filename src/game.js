@@ -54,13 +54,19 @@ class Game {
 
   _endFrame(pins){
     this._frame.addToFrame(pins);
-    this._rolls.push(this._frame);
     this._roll_number += 1;
+    if(this._roll_number === 18){
+      this._frame.isFinal();
+    }
+    this._rolls.push(this._frame);
   }
 
   _createFrame(pins){
     this._frame = new Frame();
     this._frame.addToFrame(pins);
+    if(this._roll_number === 18){
+      this._frame.isFinal();
+    }
     this._roll_number += 1;
   }
 

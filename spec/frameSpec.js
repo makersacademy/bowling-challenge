@@ -62,8 +62,8 @@ describe('Frame', function(){
   }) 
 
   describe('isBonusFrame', function(){
-    it('returns true if bonus frame', function(){
-      frame.addToFrame(10);
+    it('returns true if frame length is three', function(){
+      frame.addToFrame(5);
       frame.addToFrame(0);
       frame.addToFrame(2);
       expect(frame.isBonusFrame()).toEqual(true);

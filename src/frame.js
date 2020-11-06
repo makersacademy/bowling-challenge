@@ -3,6 +3,7 @@
 class Frame {
   constructor(){
     this.currentFrame = [];
+    this.finalFrame = false;
   };
 
   currentFrame(){
@@ -10,8 +11,32 @@ class Frame {
   };
 
   addToFrame(pins){
+    this._guard(pins);
     this.currentFrame.push(pins);
   };
+
+  _guard(pins) {
+    this._isNumber(pins);
+    this._isCorrectNumber(pins);
+  }
+
+  _isCorrectNumber(pins){
+    if(pins > 10){
+      throw new Error("There aren't that many pins!");
+    }else if (this.finalFrame === false && this.firstRoll() + pins > 10){
+      throw new Error("There aren't that many pins!")
+    }
+  }
+
+  _isNumber(pins){
+    if(!Number.isInteger(pins)){
+      throw new Error('Not a number!');
+    }
+  }
+
+  isFinal(){
+    this.finalFrame = true;
+  }
 
   total(){
   let sum;

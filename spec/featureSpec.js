@@ -116,4 +116,13 @@ describe('Feature test', function(){
     game.bowl(6);
     expect(game.score()).toEqual(133);
   })
+
+  it('prevents user from hitting too many pins on first roll', function(){
+    expect(function(){ game.bowl(12); }).toThrowError("There aren't that many pins!");
+  })
+
+  it('prevents user from hitting too many pins on second roll', function(){
+    game.bowl(8)
+    expect(function(){ game.bowl(3); }).toThrowError("There aren't that many pins!");
+  })
 });

@@ -8,37 +8,50 @@ class Game {
   }
 
   bowl(pins){
-    if (this._roll_number % 2 === 0 && pins === 10 && this._roll_number < 18){
-      this._frame = new Frame();
-      this._completeFrame(pins);
-      this._roll_number += 2;
+    if (this._isStrike(pins)){
+      this._completeStrikeFrame();
     }
     else if (this._roll_number === 20){
       this._addBonusRoll(pins);
     }
-    else if (this._roll_number % 2 === 0){
-      this._frame = new Frame();
-      this._frame.addToFrame(pins);
-      this._roll_number += 1;
+    else if (this._isNewFrame()){
+      this._createFrame(pins);
     }
     else{
-      this._frame.addToFrame(pins);
-      this._rolls.push(this._frame);
-      this._roll_number += 1;
+      this._endFrame(pins);
     }
   };
 
-  rollNumber(){
-    return this._roll_number;
+  _isStrike(pins){
+    return this._roll_number % 2 === 0 && pins === 10 && this._roll_number < 18
   }
 
-  rolls(){
-    return this._rolls;
+  _completeStrikeFrame(){
+    this._frame = new Frame();
+    this._completeFrame(10);
+    this._roll_number += 2;
   }
 
-  last_roll(){
-    return this._rolls[this._rolls.length - 1].currentFrame;
+  _isNewFrame(){
+    return this._roll_number % 2 === 0
   }
+
+  _endFrame(pins){
+    this._frame.addToFrame(pins);
+    this._rolls.push(this._frame);
+    this._roll_number += 1;
+  }
+
+  _createFrame(pins){
+    this._frame = new Frame();
+    this._frame.addToFrame(pins);
+    this._roll_number += 1;
+  }
+
+  score(){
+    return this._calculateScore(); 
+  };
+
 
   _addBonusRoll(pins){
     this._rolls[this._rolls.length-1].addToFrame(pins);
@@ -67,10 +80,9 @@ class Game {
     }
   }
 
-  score(){
+  _calculateScore(){
     let score = 0;
-    let game_length = this._rolls.length;
-    for(var i = 0; i < game_length; i++){
+    for(var i = 0; i < this._rolls.length; i++){
       if(this._rolls[i].isStrike()){
         this._rolls[i].isBonusFrame() ? score += this._scoreFrame(i) : score += this._scoreRegularStrike(i);
       } else {
@@ -78,7 +90,7 @@ class Game {
       }
     };
     return score;
-  };
+  }
 
   _followedByStrike(i){
     return this._rolls[i+1].firstRoll() === 10 && this._rolls[i+2]

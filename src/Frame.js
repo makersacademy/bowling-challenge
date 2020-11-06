@@ -21,6 +21,10 @@ class Frame {
     }
   }
 
+  setNumber(n) {
+    this.number = n
+  }
+
   roll(n) {
     if (this.rolls.length < 2 && !this.isStrike()) {
       this.rolls.push(n)

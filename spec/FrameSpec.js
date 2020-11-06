@@ -57,4 +57,13 @@ describe("Frame", function () {
     })
   })
 
+  describe("#nextRoll2", function () {
+    it("On a standard frame when next frame isn't a strike gets second roll from next frame", function () {
+      standardFrame = new Frame([10], 4)
+      nextFrame1 = new Frame([4, 5], 5)
+      nextFrame2 = new Frame([3, 2], 6)
+      expect(standardFrame.nextRoll2(nextFrame1, nextFrame2)).toEqual(5)
+    })
+  })
+
 })

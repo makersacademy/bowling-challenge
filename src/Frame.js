@@ -6,7 +6,19 @@ class Frame {
   }
 
   getRoll(n) {
-    return this.rolls[n]
+    if (this.rolls[n] == null) {
+      return 0
+    } else {
+      return this.rolls[n]
+    }
+  }
+
+  getBonusRoll(n) {
+    if (this.bonusRolls[n] == null) {
+      return 0
+    } else {
+      return this.bonusRolls[n]
+    }
   }
 
   roll(n) {
@@ -36,6 +48,16 @@ class Frame {
       return 0
     } else {
       return nextFrame1.getRoll(0)
+    }
+  }
+
+  nextRoll2(nextFrame1 = new Frame([0, 0]), nextFrame2 = new Frame([0, 0])) {
+    if (nextFrame1.isStrike()) {
+      return nextFrame1.nextRoll1(nextFrame2)
+    } else if (this.number == 10) {
+      return this.getBonusRoll(1)
+    } else {
+      return nextFrame1.getRoll(1)
     }
   }
 }

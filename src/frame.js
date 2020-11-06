@@ -24,4 +24,12 @@ class Frame {
   firstRoll(){
     return this.currentFrame[0];
   }
+
+  isSpare(){
+    return this.total() === 10;
+  }
+
+  isStrike(){
+    return this.currentFrame[0] === 10;
+  }
 }

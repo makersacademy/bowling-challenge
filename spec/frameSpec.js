@@ -32,5 +32,32 @@ describe('Frame', function(){
       expect(frame.firstRoll()).toEqual(2);
     })
   })
-  describe 
+  
+  describe('isSpare', function(){
+    it('returns true if frame is a spare', function(){
+      frame.addToFrame(5);
+      frame.addToFrame(5);
+      expect(frame.isSpare()).toEqual(true);
+    })
+
+    it('returns false if frame is not a spare', function(){
+      frame.addToFrame(1);
+      frame.addToFrame(5);
+      expect(frame.isSpare()).toEqual(false);
+    })
+  }) 
+
+  describe('isStrike', function(){
+    it('returns true if frame is a strike', function(){
+      frame.addToFrame(10);
+      frame.addToFrame(0);
+      expect(frame.isStrike()).toEqual(true);
+    })
+
+    it('returns false if frame is not a strike', function(){
+      frame.addToFrame(1);
+      frame.addToFrame(5);
+      expect(frame.isStrike()).toEqual(false);
+    })
+  }) 
 })

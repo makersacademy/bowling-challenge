@@ -9,19 +9,19 @@ class Game {
 
   bowl(pins){
     if (this._roll_number % 2 === 0 && pins === 10){
-      this._frame = [];
-      this._frame.push(pins);
-      this._frame.push(0);
+      this._frame = new Frame();
+      this._frame.addToFrame(pins);
+      this._frame.addToFrame(0);
       this._rolls.push(this._frame);
       this._roll_number += 2;
     }
     else if (this._roll_number % 2 === 0){
-      this._frame = [];
-      this._frame.push(pins);
+      this._frame = new Frame();
+      this._frame.addToFrame(pins);
       this._roll_number += 1;
     }
     else{
-      this._frame.push(pins);
+      this._frame.addToFrame(pins);
       this._rolls.push(this._frame);
       this._roll_number += 1;
     }
@@ -31,22 +31,19 @@ class Game {
     let score = 0;
     let game_length = this._rolls.length;
     for(var i = 0; i < game_length; i++){
-      if(this._rolls[i][0] === 10){
-        score += 10 + this._rolls[i+1][0] + this._rolls[i+1][1];
+      if(this._rolls[i].isStrike()){
+        score += 10 + this._rolls[i+1].total();
       }
-      else if(this.scoreFrame(i) === 10){
-        score += 10 + this._rolls[i+1][0];
+      else if(this._rolls[i].isSpare()){
+        score += 10 + this._rolls[i+1].firstRoll();
       }
       else{
-        score += this.scoreFrame(i);
+        score += this._rolls[i].total();
       }
     };
     return score;
   };
 
-  scoreFrame(i){
-    return this._rolls[i][0] + this._rolls[i][1];
-  };
 
 
 };

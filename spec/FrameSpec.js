@@ -58,6 +58,9 @@ describe("Frame", function () {
   })
 
   describe("#nextRoll2", function () {
+    var standardFrame
+    var ninthFrame
+    var tenthFrame
     beforeEach(function () {
       standardFrame = new Frame([10], 4)
       ninthFrame = new Frame([10, 9])
@@ -80,6 +83,31 @@ describe("Frame", function () {
     })
     it("On the 10th frame, gets the second bonus roll", function () {
       expect(tenthFrame.nextRoll2()).toEqual(6)
+    })
+  })
+
+  describe("#bonus", function () {
+    var frame
+    var nextFrame1
+    var nextFrame2
+    beforeEach(function () {
+      frame = new Frame
+      spyOn(frame, 'nextRoll1').and.returnValue(3)
+      spyOn(frame, 'nextRoll2').and.returnValue(4)
+    })
+    it("for strike, sums next two rolls", function () {
+      frame.roll(10)
+      expect(frame.bonus(nextFrame1, nextFrame2)).toEqual(7)
+    })
+    it("for spare, return value of next roll", function () {
+      frame.roll(8)
+      frame.roll(2)
+      expect(frame.bonus(nextFrame1, nextFrame2)).toEqual(3)
+    })
+    it("will otherwise return 0", function () {
+      frame.roll(3)
+      frame.roll(2)
+      expect(frame.bonus(nextFrame1, nextFrame2)).toEqual(0)
     })
   })
 

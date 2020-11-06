@@ -41,6 +41,16 @@ class Frame {
     return this.pins() == 10 && !this.isStrike()
   }
 
+  bonus(nextFrame1 = null, nextFrame2 = null) {
+    if (this.isStrike()) {
+      return this.nextRoll1(nextFrame1) + this.nextRoll2(nextFrame1, nextFrame2)
+    } else if (this.isSpare()) {
+      return this.nextRoll1(nextFrame1)
+    } else {
+      return 0
+    }
+  }
+
   nextRoll1(nextFrame1 = null) {
     if (this.number == 10) {
       return this.bonusRolls[0]

@@ -111,4 +111,14 @@ describe("Frame", function () {
     })
   })
 
+  describe('#score', function () {
+    var nextFrame1
+    var nextFrame2
+    it("returns the sum of the pins and the bonus", function () {
+      spyOn(frame, 'pins').and.returnValue(10)
+      spyOn(frame, 'bonus').and.returnValue(7)
+      expect(frame.score(nextFrame1, nextFrame2)).toEqual(17)
+    })
+  })
+
 })

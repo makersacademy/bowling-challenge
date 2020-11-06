@@ -41,6 +41,10 @@ class Frame {
     return this.pins() == 10 && !this.isStrike()
   }
 
+  score(nextFrame1 = null, nextFrame2 = null) {
+    return this.pins() + this.bonus(nextFrame1, nextFrame2)
+  }
+
   bonus(nextFrame1 = null, nextFrame2 = null) {
     if (this.isStrike()) {
       return this.nextRoll1(nextFrame1) + this.nextRoll2(nextFrame1, nextFrame2)

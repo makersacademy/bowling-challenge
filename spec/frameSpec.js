@@ -75,4 +75,13 @@ describe('Frame', function(){
       expect(frame.isBonusFrame()).toEqual(false);
     })
   })
+
+  describe('firstTwoRolls', function(){
+    it('returns the sum of the first two rolls in a bonus frame', function(){
+      frame.addToFrame(5);
+      frame.addToFrame(5);
+      frame.addToFrame(3);
+      expect(frame.firstTwoRolls()).toEqual(10);
+    })
+  })
 })

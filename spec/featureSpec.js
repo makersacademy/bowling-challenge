@@ -77,4 +77,11 @@ describe('Feature test', function(){
     }
     expect(game.score()).toEqual(30);
   })
+
+  it('can score a perfect game', function(){
+    for (var i = 0; i < 12; i ++){
+      game.bowl(10);
+    }
+    expect(game.score()).toEqual(300);
+  })
 });

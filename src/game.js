@@ -59,7 +59,13 @@ class Game {
           score += this._rolls[i].total();
         }
         else {
-          score += 10 + this._rolls[i+1].total();
+          //if next frame is a strike:
+          if(this._rolls[i+1].firstRoll() === 10 && this._rolls[i+2]){
+            score += 10 + this._rolls[i+1].firstRoll() + this._rolls[i + 2].firstRoll();
+          }
+          else{
+            score += 10 + this._rolls[i+1].firstTwoRolls();
+          }
         }
       }
       else if(this._rolls[i].isSpare()){

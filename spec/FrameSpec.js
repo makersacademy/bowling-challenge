@@ -121,4 +121,53 @@ describe("Frame", function () {
     })
   })
 
+  describe("#isComplete", function () {
+    var frame
+    describe("for first nine frames", function () {
+      beforeEach(function () {
+        frame = new Frame([], 1)
+      })
+      it("returns true after two rolls", function () {
+        frame.roll(7)
+        frame.roll(2)
+        expect(frame.isComplete()).toEqual(true)
+      })
+      it("returns false after one roll", function () {
+        frame.roll(5)
+        expect(frame.isComplete()).toEqual(false)
+      })
+      it('returns true after a strike', function () {
+        frame.roll(10)
+        expect(frame.isComplete()).toEqual(true)
+      })
+    })
+    describe("for the tenth frame", function () {
+      beforeEach(function () {
+        frame = new Frame([], 10)
+      })
+      it("returns true after two standard rolls", function () {
+        frame.roll(7)
+        frame.roll(2)
+        expect(frame.isComplete()).toEqual(true)
+      })
+      it("returns false after a spare", function () {
+        frame.roll(7)
+        frame.roll(3)
+        expect(frame.isComplete()).toEqual(false)
+      })
+      it("returns true after a strike and two bonus rolls", function () {
+        frame.roll(10)
+        frame.roll(3)
+        frame.roll(4)
+        expect(frame.isComplete()).toEqual(true)
+      })
+      it("returns true after a spare and one bonus roll", function () {
+        frame.roll(7)
+        frame.roll(3)
+        frame.roll(4)
+        expect(frame.isComplete()).toEqual(true)
+      })
+    })
+  })
+
 })

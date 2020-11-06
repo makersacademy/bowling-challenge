@@ -58,11 +58,28 @@ describe("Frame", function () {
   })
 
   describe("#nextRoll2", function () {
-    it("On a standard frame when next frame isn't a strike gets second roll from next frame", function () {
+    beforeEach(function () {
       standardFrame = new Frame([10], 4)
+      ninthFrame = new Frame([10, 9])
+      tenthFrame = new Frame([10], 10)
+      tenthFrame.roll(4)
+      tenthFrame.roll(6)
+    })
+    it("On a standard frame, when next frame isn't a strike, gets second roll from next frame", function () {
       nextFrame1 = new Frame([4, 5], 5)
       nextFrame2 = new Frame([3, 2], 6)
       expect(standardFrame.nextRoll2(nextFrame1, nextFrame2)).toEqual(5)
+    })
+    it("On a standard frame, when next frame is a strike, gets first roll from frame after next", function () {
+      nextFrame1 = new Frame([10], 5)
+      nextFrame2 = new Frame([3, 2], 6)
+      expect(standardFrame.nextRoll2(nextFrame1, nextFrame2)).toEqual(3)
+    })
+    it("On 9th frame, when 10th frame is a strike, gets first bonus roll of 10th frame", function () {
+      expect(ninthFrame.nextRoll2(tenthFrame)).toEqual(4)
+    })
+    it("On the 10th frame, gets the second bonus roll", function () {
+      expect(tenthFrame.nextRoll2()).toEqual(6)
     })
   })
 

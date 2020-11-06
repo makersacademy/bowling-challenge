@@ -67,4 +67,14 @@ describe('Feature test', function(){
     game.bowl(2);
     expect(game.score()).toEqual(12);
   })
+
+  it('can score three strikes in the final frame', function(){
+    for (var i = 0; i < 18; i ++){
+      game.bowl(0);
+    }
+    for (var i = 0; i < 3; i ++){
+      game.bowl(10);
+    }
+    expect(game.score()).toEqual(30);
+  })
 });

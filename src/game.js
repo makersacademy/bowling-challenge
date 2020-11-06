@@ -8,7 +8,7 @@ class Game {
   }
 
   bowl(pins){
-    if (this._roll_number % 2 === 0 && pins === 10){
+    if (this._roll_number % 2 === 0 && pins === 10 && this._roll_number < 18){
       this._frame = new Frame();
       this._completeFrame(pins);
       this._roll_number += 2;
@@ -28,6 +28,18 @@ class Game {
     }
   };
 
+  rollNumber(){
+    return this._roll_number;
+  }
+
+  rolls(){
+    return this._rolls;
+  }
+
+  last_roll(){
+    return this._rolls[this._rolls.length - 1].currentFrame;
+  }
+
   _addBonusRoll(pins){
     this._rolls[this._rolls.length-1].addToFrame(pins);
   }
@@ -43,7 +55,12 @@ class Game {
     let game_length = this._rolls.length;
     for(var i = 0; i < game_length; i++){
       if(this._rolls[i].isStrike()){
-        score += 10 + this._rolls[i+1].total();
+        if(this._rolls[i].isBonusFrame()){
+          score += this._rolls[i].total();
+        }
+        else {
+          score += 10 + this._rolls[i+1].total();
+        }
       }
       else if(this._rolls[i].isSpare()){
         score += 10 + this._rolls[i+1].firstRoll();

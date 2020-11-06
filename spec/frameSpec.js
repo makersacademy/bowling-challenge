@@ -60,4 +60,19 @@ describe('Frame', function(){
       expect(frame.isStrike()).toEqual(false);
     })
   }) 
+
+  describe('isBonusFrame', function(){
+    it('returns true if bonus frame', function(){
+      frame.addToFrame(10);
+      frame.addToFrame(0);
+      frame.addToFrame(2);
+      expect(frame.isBonusFrame()).toEqual(true);
+    })
+
+    it('returns false if not bonus frame', function(){
+      frame.addToFrame(10);
+      frame.addToFrame(0);
+      expect(frame.isBonusFrame()).toEqual(false);
+    })
+  })
 })

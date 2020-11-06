@@ -32,4 +32,8 @@ class Frame {
   isStrike(){
     return this.currentFrame[0] === 10;
   }
+
+  isBonusFrame(){
+    return this.currentFrame.length === 3;
+  }
 }

@@ -5,7 +5,7 @@ $(document).ready(function() {
   $('#bowl').on('click', function() {
     const pins = parseInt($('#bowl_input').val())
     game.bowl(pins);
-
+    $('#bowl_input').val('');
   });
 
   $('#calculate-score').on('click', function() {

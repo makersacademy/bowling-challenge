@@ -56,4 +56,15 @@ describe('Feature test', function(){
     }
     expect(game.score()).toEqual(18);
   })
+
+  it('correctly scores spares in final frame', function(){
+    for (var i = 0; i < 18; i ++){
+      game.bowl(0);
+    }
+    for (var i = 0; i < 2; i ++){
+      game.bowl(5);
+    }
+    game.bowl(2);
+    expect(game.score()).toEqual(12);
+  })
 });

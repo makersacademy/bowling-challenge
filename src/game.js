@@ -15,6 +15,9 @@ class Game {
       this._rolls.push(this._frame);
       this._roll_number += 2;
     }
+    else if (this._roll_number === 20){
+      this._rolls[this._rolls.length-1].addToFrame(pins);
+    }
     else if (this._roll_number % 2 === 0){
       this._frame = new Frame();
       this._frame.addToFrame(pins);
@@ -43,7 +46,4 @@ class Game {
     };
     return score;
   };
-
-
-
 };

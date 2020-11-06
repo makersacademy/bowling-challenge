@@ -1,6 +1,12 @@
 class Frame {
-  constructor() {
-    this.rolls = []
+  constructor(rolls = [], number = null) {
+    this.rolls = rolls
+    this.bonusRolls = []
+    this.number = number
+  }
+
+  getRoll(n) {
+    return this.rolls[n]
   }
 
   roll(n) {
@@ -17,5 +23,15 @@ class Frame {
 
   isSpare() {
     return this.pins() == 10 && !this.isStrike()
+  }
+
+  nextRoll1(nextFrame1 = null) {
+    if (this.number == 10) {
+      return this.bonusRolls[0]
+    } else if (nextFrame1 == null) {
+      return 0
+    } else {
+      return nextFrame1.getRoll(0)
+    }
   }
 }

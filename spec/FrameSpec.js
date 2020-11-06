@@ -43,4 +43,13 @@ describe("Frame", function () {
       expect(frame.isSpare()).toEqual(false)
     })
   })
+
+  describe("#nextRoll1", function () {
+    it("on a standard frame gets the first roll from the next frame", function () {
+      var standardFrame = new Frame([7, 2], 7)
+      var nextFrame1 = new Frame([6, 2], 8)
+      expect(standardFrame.nextRoll1(nextFrame1)).toEqual(6)
+    })
+  })
+
 })

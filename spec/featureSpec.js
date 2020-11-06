@@ -45,4 +45,15 @@ describe('Feature test', function(){
     }
     expect(game.score()).toEqual(14);
   })
+
+  it('can score a strike followed by a double 2', function(){
+    game.bowl(10)
+    for (var i = 0; i < 2; i ++){
+      game.bowl(2);
+    }
+    for (var i = 0; i < 16; i ++){
+      game.bowl(0);
+    }
+    expect(game.score()).toEqual(18);
+  })
 });

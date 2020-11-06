@@ -1,7 +1,6 @@
 'use strict';
 
 class Game {
-
   constructor(){
     this._rolls = [];
     this._roll_number = 0;
@@ -11,19 +10,36 @@ class Game {
     if (this._isStrike(pins)){
       this._completeStrikeFrame();
     }
-    else if (this._roll_number === 20){
+    else if (this._isFinalFrame()){
       this._addBonusRoll(pins);
     }
-    else if (this._isNewFrame()){
-      this._createFrame(pins);
-    }
-    else{
-      this._endFrame(pins);
+    else {
+      this._isNewFrame() ? this._createFrame(pins) : this._endFrame(pins);
     }
   };
 
+  score(){
+    return this._calculateScore(); 
+  };
+
+  _calculateScore(){
+    let score = 0;
+    for(var i = 0; i < this._rolls.length; i++){
+      if(this._rolls[i].isStrike()){
+        this._rolls[i].isBonusFrame() ? score += this._scoreFrame(i) : score += this._scoreRegularStrike(i);
+      } else {
+        this._rolls[i].isSpare() ? score += this._scoreSpare(i) : score += this._scoreFrame(i);
+      }
+    };
+    return score;
+  }
+
   _isStrike(pins){
     return this._roll_number % 2 === 0 && pins === 10 && this._roll_number < 18
+  }
+
+  _isFinalFrame(){
+    return this._roll_number === 20
   }
 
   _completeStrikeFrame(){
@@ -48,11 +64,6 @@ class Game {
     this._roll_number += 1;
   }
 
-  score(){
-    return this._calculateScore(); 
-  };
-
-
   _addBonusRoll(pins){
     this._rolls[this._rolls.length-1].addToFrame(pins);
   }
@@ -72,23 +83,7 @@ class Game {
   }
 
   _scoreRegularStrike(i){
-    if(this._followedByStrike(i)){
-      return this._doubleStrikeBonus(i);
-    }
-    else{
-      return this._regularStrikeBonus(i);
-    }
-  }
-
-  _calculateScore(){
-    let score = 0;
-    for(var i = 0; i < this._rolls.length; i++){
-      if(this._rolls[i].isStrike()){
-        this._rolls[i].isBonusFrame() ? score += this._scoreFrame(i) : score += this._scoreRegularStrike(i);
-      } else {
-        this._rolls[i].isSpare() ? score += this._scoreSpare(i) : score += this._scoreFrame(i);
-      }
-    };
+    let score = this._followedByStrike(i) ? this._doubleStrikeBonus(i) : this._regularStrikeBonus(i);
     return score;
   }
 

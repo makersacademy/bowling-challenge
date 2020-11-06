@@ -50,6 +50,11 @@ describe("Frame", function () {
       var nextFrame1 = new Frame([6, 2], 8)
       expect(standardFrame.nextRoll1(nextFrame1)).toEqual(6)
     })
+    it("on the 10th frame gets the first bonus roll", function () {
+      lastFrame = new Frame([7, 3], 10)
+      lastFrame.roll(9)
+      expect(lastFrame.nextRoll1()).toEqual(9)
+    })
   })
 
 })

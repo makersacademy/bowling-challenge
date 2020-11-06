@@ -10,7 +10,11 @@ class Frame {
   }
 
   roll(n) {
-    this.rolls.push(n)
+    if (this.rolls.length < 2 && !this.isStrike()) {
+      this.rolls.push(n)
+    } else {
+      this.bonusRolls.push(n)
+    }
   }
 
   pins() {

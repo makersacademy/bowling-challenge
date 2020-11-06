@@ -25,10 +25,10 @@ class Game {
   _calculateScore(){
     let score = 0;
     for(var i = 0; i < this._rolls.length; i++){
-      if(this._rolls[i].isStrike()){
+      if(this._rolls[i].isStrike() && this._rolls[i+1]){
         this._rolls[i].isBonusFrame() ? score += this._scoreFrame(i) : score += this._scoreRegularStrike(i);
       } else {
-        this._rolls[i].isSpare() ? score += this._scoreSpare(i) : score += this._scoreFrame(i);
+        this._rolls[i].isSpare() && this._rolls[i+1] ? score += this._scoreSpare(i) : score += this._scoreFrame(i);
       }
     };
     return score;

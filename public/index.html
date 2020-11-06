@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
     <script src="./js/jquery-3.5.1.js"></script>
     <title>Bowling</title>
   </head>
@@ -9,11 +10,13 @@
       <h1 id="score"></h1>
       <p>
         <label for ="bowl_input">How many pins did you knock over?</label>
-        <input id="bowl_input" type="text">
-        <button id="bowl">Bowl!</button>
+        <input id="bowl_input" type="integer">
+        <button id="bowl">Bowl</button>
+        <button id="calculate-score">Score Frame</button>
       </p>
     </section>
     <script type="text/javascript" src='./js/src/game.js'></script>
+    <script type="text/javascript" src='./js/src/frame.js'></script>
     <script type="text/javascript" src="./js/src/interface.js"></script>
   </body>
 </html>

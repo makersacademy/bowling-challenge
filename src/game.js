@@ -58,22 +58,22 @@ class Game {
     return 10 + this._rolls[i+1].firstTwoRolls();
   }
 
+  _scoreRegularStrike(i){
+    if(this._followedByStrike(i)){
+      return this._doubleStrikeBonus(i);
+    }
+    else{
+      return this._regularStrikeBonus(i);
+    }
+  }
+
   score(){
     let score = 0;
     let game_length = this._rolls.length;
     for(var i = 0; i < game_length; i++){
       if(this._rolls[i].isStrike()){
-        if(this._rolls[i].isBonusFrame()){
-          score += this._scoreFrame(i);
-        }
-        else {
-          if(this._followedByStrike(i)){
-            score += this._doubleStrikeBonus(i);
-          }
-          else{
-            score += this._regularStrikeBonus(i);
-          }
-        }
+        this._rolls[i].isBonusFrame() ? score += this._scoreFrame(i) : score += this._scoreRegularStrike(i);
+        
       }
       else if(this._rolls[i].isSpare()){
         score += this._scoreSpare(i);

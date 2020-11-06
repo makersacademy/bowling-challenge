@@ -73,13 +73,8 @@ class Game {
     for(var i = 0; i < game_length; i++){
       if(this._rolls[i].isStrike()){
         this._rolls[i].isBonusFrame() ? score += this._scoreFrame(i) : score += this._scoreRegularStrike(i);
-        
-      }
-      else if(this._rolls[i].isSpare()){
-        score += this._scoreSpare(i);
-      }
-      else{
-        score += this._scoreFrame(i);
+      } else {
+        this._rolls[i].isSpare() ? score += this._scoreSpare(i) : score += this._scoreFrame(i);
       }
     };
     return score;

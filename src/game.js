@@ -49,6 +49,14 @@ class Game {
     this._frame.addToFrame(0);
     this._rolls.push(this._frame);
   };
+  
+  _doubleStrikeBonus(i){
+    return 10 + this._rolls[i+1].firstRoll() + this._rolls[i + 2].firstRoll();
+  }
+
+  _regularStrikeBonus(i){
+    return 10 + this._rolls[i+1].firstTwoRolls();
+  }
 
   score(){
     let score = 0;
@@ -56,25 +64,36 @@ class Game {
     for(var i = 0; i < game_length; i++){
       if(this._rolls[i].isStrike()){
         if(this._rolls[i].isBonusFrame()){
-          score += this._rolls[i].total();
+          score += this._scoreFrame(i);
         }
         else {
-          //if next frame is a strike:
-          if(this._rolls[i+1].firstRoll() === 10 && this._rolls[i+2]){
-            score += 10 + this._rolls[i+1].firstRoll() + this._rolls[i + 2].firstRoll();
+          if(this._followedByStrike(i)){
+            score += this._doubleStrikeBonus(i);
           }
           else{
-            score += 10 + this._rolls[i+1].firstTwoRolls();
+            score += this._regularStrikeBonus(i);
           }
         }
       }
       else if(this._rolls[i].isSpare()){
-        score += 10 + this._rolls[i+1].firstRoll();
+        score += this._scoreSpare(i);
       }
       else{
-        score += this._rolls[i].total();
+        score += this._scoreFrame(i);
       }
     };
     return score;
   };
+
+  _followedByStrike(i){
+    return this._rolls[i+1].firstRoll() === 10 && this._rolls[i+2]
+  };
+
+  _scoreFrame(i){
+    return this._rolls[i].total();
+  }
+
+  _scoreSpare(i){
+    return 10 + this._rolls[i+1].firstRoll();
+  }
 };

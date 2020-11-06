@@ -34,4 +34,15 @@ describe('Feature test', function(){
     }
     expect(game.score()).toEqual(40);
   })
+
+  it('can score a spare followed by a 2', function(){
+    for (var i = 0; i < 2; i ++){
+      game.bowl(5);
+    }
+    game.bowl(2);
+    for (var i = 0; i < 17; i ++){
+      game.bowl(0);
+    }
+    expect(game.score()).toEqual(14);
+  })
 });

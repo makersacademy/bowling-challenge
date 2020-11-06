@@ -11,4 +11,10 @@ describe('frame', function(){
     frame.recordRoll(7)
     expect(frame.points()).toEqual(7)
   })
+
+  it('records the number of pins knocked down over two rolls', function(){
+    frame.recordRoll(7)
+    frame.recordRoll(2)
+    expect(frame.points()).toEqual(9)
+  })
 })

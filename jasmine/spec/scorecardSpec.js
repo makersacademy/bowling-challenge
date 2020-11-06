@@ -47,4 +47,38 @@ describe('Scorecard', function() {
     expect(scorecard.total(1)).toEqual(18)
   });
 
+  it('checks that a strike on roll 2 of frame 1 adds bonus points of next frame', function() {
+    scorecard.addRoll(1.1, 0)
+    scorecard.addRoll(1.2, 10)
+    scorecard.addRoll(2.1, 8)
+    scorecard.addRoll(2.2, 1)
+    expect(scorecard.total(1)).toEqual(19)
+  });
+
+  it('checks that a strike on roll 2 of frame 5 adds bonus points of next frame', function() {
+    scorecard.addRoll(1.1, 0)
+    scorecard.addRoll(1.2, 2)
+    scorecard.addRoll(2.1, 8)
+    scorecard.addRoll(2.2, 1)
+    scorecard.addRoll(3.1, 0)
+    scorecard.addRoll(3.2, 1)
+    scorecard.addRoll(4.1, 8)
+    scorecard.addRoll(4.2, 1)
+    scorecard.addRoll(5.1, 0)
+    scorecard.addRoll(5.2, 10)
+    scorecard.addRoll(6.1, 6)
+    scorecard.addRoll(6.2, 3)
+    expect(scorecard.total(6)).toEqual(49)
+  });
+
+  it('checks that total calculates without subsequent rolls if a strike is rolled on roll 1 of frame 3', function() {
+    scorecard.addRoll(1.1, 0)
+    scorecard.addRoll(1.2, 2)
+    scorecard.addRoll(2.1, 8)
+    scorecard.addRoll(2.2, 1)
+    scorecard.addRoll(3.1, 0)
+    scorecard.addRoll(3.2, 10)
+    expect(scorecard.total(3)).toEqual(21)
+  });
+
 });

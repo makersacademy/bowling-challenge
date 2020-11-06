@@ -81,4 +81,52 @@ describe('Scorecard', function() {
     expect(scorecard.total(3)).toEqual(21)
   });
 
+  it('checks that a spare on frame 4 adds bonus points of next frame', function() {
+    scorecard.addRoll(1.1, 0)
+    scorecard.addRoll(1.2, 2)
+    scorecard.addRoll(2.1, 8)
+    scorecard.addRoll(2.2, 1)
+    scorecard.addRoll(3.1, 0)
+    scorecard.addRoll(3.2, 1)
+    scorecard.addRoll(4.1, 8)
+    scorecard.addRoll(4.2, 2)
+    scorecard.addRoll(5.1, 5)
+    scorecard.addRoll(5.2, 3)
+    scorecard.addRoll(6.1, 6)
+    scorecard.addRoll(6.2, 3)
+    expect(scorecard.total(6)).toEqual(44)
+  });
+
+  it('checks that total still calculates if spare at end of frame and next rolls not rolled yet', function() {
+    scorecard.addRoll(1.1, 0)
+    scorecard.addRoll(1.2, 2)
+    scorecard.addRoll(2.1, 8)
+    scorecard.addRoll(2.2, 2)
+    expect(scorecard.total(2)).toEqual(12)
+  });
+
+  it('checks 10th frame strike bonuses calculated correctly', function() {
+    scorecard.addRoll(1.1, 0)
+    scorecard.addRoll(1.2, 2)
+    scorecard.addRoll(2.1, 8)
+    scorecard.addRoll(2.2, 1)
+    scorecard.addRoll(3.1, 0)
+    scorecard.addRoll(3.2, 1)
+    scorecard.addRoll(4.1, 8)
+    scorecard.addRoll(4.2, 2)
+    scorecard.addRoll(5.1, 5)
+    scorecard.addRoll(5.2, 3)
+    scorecard.addRoll(6.1, 6)
+    scorecard.addRoll(6.2, 3)
+    scorecard.addRoll(7.1, 0)
+    scorecard.addRoll(7.2, 2)
+    scorecard.addRoll(8.1, 8)
+    scorecard.addRoll(8.2, 1)
+    scorecard.addRoll(9.1, 0)
+    scorecard.addRoll(9.2, 1)
+    scorecard.addRoll(10.1, 10)
+    scorecard.addRoll(10.2, 10)
+    scorecard.addRoll(10.3, 10)
+    expect(scorecard.total(10)).toEqual(86)
+  });
 });

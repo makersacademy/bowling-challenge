@@ -12,4 +12,16 @@ class Frame {
   addToFrame(pins){
     this.currentFrame.push(pins);
   };
+
+  total(){
+  let sum;
+  sum = this.currentFrame.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue;
+  });
+  return sum;
+  }
+
+  firstRoll(){
+    return this.currentFrame[0];
+  }
 }

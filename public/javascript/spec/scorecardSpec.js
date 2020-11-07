@@ -5,6 +5,7 @@ describe('scorecard', function(){
   var frame;
   var strike;
   var spare;
+  var frameArray;
 
   class FakeFrame{
 
@@ -16,11 +17,16 @@ describe('scorecard', function(){
       return 'Function called'
     }
 
+    score(){
+      return 7;
+    }
+
   };
 
   beforeEach(function(){
     frame = new FakeFrame;
     scorecard = new Scorecard(FakeFrame);
+    frameArray = [frame, frame, frame];
   });
 
   it('creates a frame object and pushes it to the frames array', function(){
@@ -32,6 +38,9 @@ describe('scorecard', function(){
     expect(frame.recordRoll()).toEqual('Function called')
   })
 
+  it('sums the scores of all frames and returns an integer', function(){
+    expect(scorecard.calculateScore(frameArray)).toEqual(21)
+  })
 
 
 })

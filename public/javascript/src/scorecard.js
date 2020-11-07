@@ -33,17 +33,15 @@ class Scorecard{
   calculateScore(frames = this.frames){
     var score = 0;
     frames.forEach(function (frame, index, array) {
-      if (array[index+1]) {
-        var nextRoll = array[index+1].contents[0]; }
-      else {
-        var nextRoll = 0;
-      }
-      score += frame.points(nextRoll);
+      if (typeof array[index+1] !== 'undefined' && array[index+1].contents.length === 2) {
+        console.log('this')
+        score += frame.points(array[index+1].contents[0], array[index+1].contents[1]);}
+      else if (typeof array[index+1] !== 'undefined' && array[index+1].contents.length < 2 && typeof array[index+1] !== 'undefined'){
+        console.log('that')
+        score += frame.points(array[index+1].contents[0], array[index+1].contents[1]);}
+      else {score += frame.points(); console.log('the other')}
+
     });
     return score;
   }
-
-  // _nextRoll(nextIndex){
-  //   return this.frames[nextIndex][0];
-  // }
 }

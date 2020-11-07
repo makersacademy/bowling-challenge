@@ -15,7 +15,8 @@ class Frame{
   }
 
   points(nextRoll = 0, nextNextRoll = 0){
-    this._applyBonus(nextRoll, nextNextRoll);
+    this._applySpare(nextRoll);
+    this._applyStrike(nextRoll, nextNextRoll);
     return this.contents.reduce((a, b) => a + b, 0);
   };
 
@@ -35,10 +36,21 @@ class Frame{
     }
   };
 
-  _applyBonus(nextRoll, nextNextRoll){
+  _applySpare(nextRoll){
     if (this.isSpare() && nextRoll > 0) {
       this.contents[1] += nextRoll;
       console.log(this.contents[1])
+    };
+  };
+
+  _applyStrike(nextRoll, nextNextRoll){
+    if (this.isStrike() && nextRoll > 0 && nextNextRoll > 0) {
+      this.contents[0] += nextRoll + nextNextRoll;
+      console.log(this.contents[0])
+    }
+    else if (this.isStrike() && nextRoll > 0) {
+      this.contents[0] += nextRoll
+      console.log(this.contents[0]);
     };
   };
 

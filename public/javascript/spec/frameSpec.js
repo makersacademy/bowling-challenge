@@ -48,4 +48,11 @@ describe('frame', function(){
       expect(frame.points(7)).toEqual(17)
     });
   });
+
+  describe('when the next two rolls are 4 and 2', function(){
+    it('can apply the bonus for a strike', function(){
+      frame.recordRoll(10)
+      expect(frame.points(4, 2)).toEqual(16)
+    });
+  });
 })

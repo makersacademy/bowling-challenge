@@ -1,12 +1,15 @@
 describe('Print', function() {
+  var scorecard
+  var print
 
   beforeEach(function() {
     printer = new Print;
     scorecard = new Scorecard;
   });
 
-  it('when given nested hash it returns all keys or turns', function() {
-    expect(printer.output({1.1:0, 1.2:2}, 2, 1)).toEqual("Frame.Roll = 1.1 Pins knocked = 0\nFrame.Roll = 1.2 Pins knocked = 2\n")
+  it('when given hash output function returns all turns', function() {
+    let string = printer.output({1.1:0, 1.2:2}, 2, 1)
+    expect(string).toEqual("Frame.Roll = 1.1 Pins knocked = 0\nFrame.Roll = 1.2 Pins knocked = 2\n")
   });
 
 });

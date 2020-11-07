@@ -1,4 +1,6 @@
 describe('Scorecard', function() {
+  var scorecard
+  var print
 
   beforeEach(function() {
     scorecard = new Scorecard;
@@ -129,4 +131,11 @@ describe('Scorecard', function() {
     scorecard.addRoll(10.3, 10)
     expect(scorecard.total(10)).toEqual(86)
   });
+
+  it('prints frame, roll, pins knocked and score', function() {
+    scorecard.addRoll(1.1, 0)
+    scorecard.addRoll(1.2, 2)
+    expect(scorecard.print({1.1:0, 1.2:2}, 1)).toEqual("Frame.Roll = 1.1 Pins knocked = 0\nFrame.Roll = 1.2 Pins knocked = 2\n")
+  });
+
 });

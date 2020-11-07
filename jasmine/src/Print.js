@@ -1,16 +1,17 @@
 class Print{
 
+  constructor(){
+    this.scorecard
+  };
+
   output(scorecard, scores, frame) {
+    let message = []
     Object.entries(scorecard).forEach(entry => {
     const [key, value] = entry
-    console.log(key, value);
-    let split_frame_and_roll = frame.floor
-    let roll = (frame % 1).toFixed(1)
-    if (roll = 2 || 3) {
-      {console.log(scores)
-    }
-  }
-})
-
+    message.push(`Frame.Roll = ${key} Pins knocked = ${value}`);
+    let split_frame_and_roll = Math.floor(key)
+    let roll = (key % 1).toFixed(1)
+    });
+    return message[0]+"\n"+message[1]+"\n"
 }
 }

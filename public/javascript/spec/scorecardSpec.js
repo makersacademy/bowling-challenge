@@ -3,8 +3,6 @@
 describe('scorecard', function(){
   var scorecard;
   var frame;
-  var strike;
-  var spare;
   var frameArray;
 
   class FakeFrame{
@@ -24,10 +22,6 @@ describe('scorecard', function(){
 
     points(){
       return 7;
-    }
-
-    isStrike(){
-      return false;
     }
 
   };

@@ -1,5 +1,9 @@
 'use strict';
 
+function isInExistence(object){
+  return typeof object !== 'undefined';
+}
+
 class Scorecard{
 
   constructor(frameClass = Frame){
@@ -23,10 +27,10 @@ class Scorecard{
   calculateScore(frames = this.frames){
     var score = 0;
     frames.forEach(function (frame, index, array) {
-      if (typeof array[index+1] !== 'undefined' && array[index+1].contents.length > 1) {
+      if ( isInExistence(array[index+1]) && array[index+1].rolls() > 1) {
         score += frame.points(array[index+1].contents[0], array[index+1].contents[1]);
       }
-      else if (typeof array[index+1] !== 'undefined' && array[index+1].contents.length < 2 && typeof array[index+1] !== 'undefined') {
+      else if (isInExistence(array[index+1]) && array[index+1].rolls() < 2 && isInExistence(array[index+2])) {
         score += frame.points(array[index+1].contents[0], array[index+2].contents[0]);
       }
       else {score += frame.points();

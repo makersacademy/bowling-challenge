@@ -31,6 +31,17 @@ describe('Frame',function () {
       frame.roll(1);
       expect(frame.rolls.length).toEqual(2)
     });
+    it('add roll only if number of pinsKnockedDown given is not greater then number of pins left',function () {
+      frame.roll(11);
+
+      expect(frame.rolls.length).toEqual(0)
+    });
+
+    it('add second roll  to the frame only if number of pinsKnockedDown given is not greater then number of pins left in the frame',function () {
+      frame.roll(1);
+      frame.roll(11);
+      expect(frame.rolls.length).toEqual(1)
+    });
   });
 
 });

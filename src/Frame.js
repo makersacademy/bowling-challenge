@@ -7,12 +7,18 @@ class Frame {
   }
 
   roll(pinsKnockedDown) {
+    if (this.isInputInvalid(pinsKnockedDown)) {
+      return;
+    }
     this.pinsLeft -= pinsKnockedDown
-    this.addRoll()
+    this.addRoll(pinsKnockedDown)
   }
 
   addRoll(pinsKnockedDown) {
     if (this.isMaxRollsInFrame()) {
+      return;
+    }
+    if (this.pinsLeft < pinsKnockedDown) {
       return;
     }
     var roll = new Roll(pinsKnockedDown);
@@ -21,6 +27,10 @@ class Frame {
 
   isMaxRollsInFrame() {
     return this.rolls.length === this.MAXROLLSPERFRAME
+  }
+
+  isInputInvalid(pinsKnockedDown) {
+    return this.pinsLeft < pinsKnockedDown
   }
 
 };

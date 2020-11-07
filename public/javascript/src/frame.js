@@ -10,6 +10,10 @@ class Frame{
     this.contents.push(pins)
   };
 
+  rolls(){
+    return this.contents.length
+  }
+
   points(){
     this.points = this.contents.reduce((a, b) => a + b, 0);
     return this.points;

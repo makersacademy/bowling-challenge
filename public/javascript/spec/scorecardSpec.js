@@ -13,12 +13,20 @@ describe('scorecard', function(){
       this.number;
     }
 
+    rolls(){
+      return 2;
+    }
+
     recordRoll(pins){
       return 'Function called'
     }
 
     points(){
       return 7;
+    }
+
+    isStrike(){
+      return false;
     }
 
   };
@@ -35,6 +43,8 @@ describe('scorecard', function(){
   });
 
   it('passes #roll on to the Frame class, where it is stored', function(){
+    scorecard.roll(2)
+    scorecard.roll(2)
     scorecard.roll(2)
     expect(frame.recordRoll()).toEqual('Function called')
   })

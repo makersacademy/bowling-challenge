@@ -4,9 +4,7 @@ class Scorecard{
 
   constructor(frameClass = Frame){
     this.frames = [];
-    var firstFrame = this._frameMaker(frameClass);
-    firstFrame.number = 1;
-    this._framePusher(firstFrame);
+    this._frameMaker(frameClass);
   }
 
   getCurrentFrame(){
@@ -16,15 +14,19 @@ class Scorecard{
   }
 
   _frameMaker(frameClass = Frame){
-    return new frameClass;
-  }
-
-  _framePusher(frame){
+    let frame = new frameClass;
+    frame.number = this.frames.length -1;
     this.frames.push(frame);
   }
 
+  _frameChecker(){
+    if (this.getCurrentFrame().rolls() === 2) {
+      this._frameMaker();
+    };
+  }
+
   roll(pins){
-    console.log(this.getCurrentFrame());
+    this._frameChecker();
     this.getCurrentFrame().recordRoll(pins);
   }
 

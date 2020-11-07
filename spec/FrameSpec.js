@@ -74,4 +74,12 @@ describe('Frame',function () {
     });
   });
 
+  describe('#isSpare', function() {
+    it('change this.spare to true if numbers of pins knocked down in two rolls is equal 10', function() {
+      frame.roll(2);
+      frame.roll(8);
+      expect(frame.spare).toEqual(true)
+    });
+  });
+
 });

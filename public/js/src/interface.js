@@ -12,11 +12,8 @@ $(document).ready(function() {
     const pins = parseInt($('#bowl_input').val());
     displayCurrentScore(pins);
     game.bowl(pins);
-    $('#bowl_input').val('');
-  });
-
-  $('#calculate-score').on('click', function() {
     updateScore();
+    $('#bowl_input').val('');
   });
 
   function updateScore() {

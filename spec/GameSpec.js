@@ -18,6 +18,21 @@ describe('Game', function() {
       expect(game.frames.length).toEqual(1)
     });
 
+    it('creates new frame every third roll and adds to an array', function() {
+      game.roll(1);
+      game.roll(1);
+      game.roll(1);
+
+      expect(game.frames.length).toEqual(2)
+    });
+
+    it('after a strike new roll creates a new frame', function() {
+      game.roll(10)
+      game.roll(1)
+
+      expect(game.frames.length).toEqual(2)
+    });
+
   });
 
 });

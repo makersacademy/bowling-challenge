@@ -12,19 +12,22 @@ class Game {
     }
   }
 
-
   addFrame(pinsKnockedDown) {
     var frame = new Frame();
     frame.roll(pinsKnockedDown)
     this.frames.push(frame);
   }
   isNewFrameNeeded() {
-    return this.frames.length === 0 || this.frames[this.frames.length -1].rolls.length === 2
+    return this.frames.length === 0 || this.frames[this.frames.length -1].rolls.length === 2 || this.wasStrike()
   }
 
   addRollToExistingFrame(pinsKnockedDown) {
     var frame = this.frames[this.frames.length -1]
     frame.roll(pinsKnockedDown)
+  }
+
+  wasStrike() {
+    return this.frames[this.frames.length -1].strike
   }
 
 };

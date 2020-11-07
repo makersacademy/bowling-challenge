@@ -25,6 +25,14 @@ describe('Bowling', function() {
       manyRolls(4, 18)
       expect(bowling.totalScore()).toEqual(86)
     });
+
+    it('returns the total score with one spare', function() {
+      manyRolls(5, 2)
+      bowling.roll(4)
+      bowling.roll(6)
+      manyRolls(4, 16)
+      expect(bowling.totalScore()).toEqual(92)
+    });
   });
 
   function manyRolls(pins,rolls) {

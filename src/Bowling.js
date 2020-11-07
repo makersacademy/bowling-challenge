@@ -14,6 +14,12 @@ class Bowling {
     let rollNumber = 0;
 
     for (let frame = 0; frame < 10; frame++) {
+      if (this.rolls[rollNumber] === 10) {
+        total += 10 + this.rolls[rollNumber + 1] + this.rolls[rollNumber + 2];
+        rollNumber++;
+        continue;
+      }
+      
       const frameScore = this.rolls[rollNumber] + this.rolls[rollNumber +1];
       
       if (this.isSpare(frameScore)) {

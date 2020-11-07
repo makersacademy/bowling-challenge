@@ -11,6 +11,7 @@ describe('scorecard', function(){
 
     constructor(){
       this.number;
+      this.contents = [3,4];
     }
 
     rolls(){

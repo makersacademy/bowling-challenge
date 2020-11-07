@@ -32,9 +32,18 @@ class Scorecard{
 
   calculateScore(frames = this.frames){
     var score = 0;
-    frames.forEach(frame => {
-      score += frame.points();
+    frames.forEach(function (frame, index, array) {
+      if (array[index+1]) {
+        var nextRoll = array[index+1].contents[0]; }
+      else {
+        var nextRoll = 0;
+      }
+      score += frame.points(nextRoll);
     });
     return score;
   }
+
+  // _nextRoll(nextIndex){
+  //   return this.frames[nextIndex][0];
+  // }
 }

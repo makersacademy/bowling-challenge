@@ -1,6 +1,6 @@
 class Roll {
 
-  constractor(pinsKnockedDown) {
+  constructor(pinsKnockedDown) {
     this.pinsKnockedDown = pinsKnockedDown
   }
 };

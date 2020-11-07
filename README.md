@@ -1,11 +1,45 @@
 
-Bowling Challenge
-=================
+Bowling Scorecard in Javascript
+================================
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+## Implementation
+
+- A class called BowlingGame
+- Methods: `roll` & `totalScore`
+- `roll` will be called at the correct number of times to complete a game.
+- `totalScore` will be called at the end of the game and should return the correct score.
+
+## Test examples
+
+- Can return the score when 10 frames of gutter rolls are bowled:  
+`[0,0] --> Bowling.totalScore --> 0`
+
+- Can return the score when score 10 frames of 4s are bowled:  
+`[4,4] --> Bowling.totalScore --> 80`
+
+- Can return the score when a spare is bowled followed by 9 frames of 4s:  
+`[5,5], 9 x [4,4] --> Bowling.totalScore --> 86`
+
+- Can return the score when score 2 spares are bowled followed by 9 frames of 4s:  
+`[5,5], [4,6], 8 x [4,4] --> Bowling.totalScore --> 92`
+
+- Can return the score when a strike is bowled followed by 9 frames of 4s:  
+`[10,-], 9 x [4,4] --> Bowling.totalScore --> 90`
+
+- Can return the score when 2 strikes are bowled followed by 8 frames of 4s:  
+`[10,-],[10,-], 8 x [4,4] --> Bowling.totalScore --> 106`
+
+- Can return the score when a spare is bowled in the 10th frame:  
+`9 x [7,7], [5,5,1] --> Bowling.totalScore --> 137`
+ 
+- Can return the score when a strike is bowled in the 10th frame:  
+`9 x [7,7], [10,1,1] --> Bowling.totalScore --> 138`
+
+- Can return the score when 2 strikes are bowled in the 10th frame:  
+`9 x [7,7], [10,10,1] --> Bowling.totalScore --> 147`
+
+- Can score a perfect game:  
+`10 x [10,-], 2 x [10,-] --> Bowling.totalScore --> 300`
 
 ## The Task
 
@@ -14,14 +48,6 @@ Bowling Challenge
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
 
 ### Optional Extras
 
@@ -65,11 +91,4 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
-## Code Review
 
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

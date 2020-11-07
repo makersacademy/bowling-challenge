@@ -11,11 +11,18 @@ describe('Frame',function () {
   });
 
   describe('#roll', function() {
-  
+
     it('deducts number of pinsLeft by number of pinsKnockedDown', function() {
       frame.roll(1);
 
       expect(frame.pinsLeft).toEqual(9)
+    });
+
+    it('adds Roll to the array of rolls', function () {
+
+      frame.roll(1);
+
+      expect(frame.rolls.length).toEqual(1)
     });
   });
 

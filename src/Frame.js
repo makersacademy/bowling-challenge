@@ -13,10 +13,10 @@ class Frame {
     if (this.isInputInvalid(pinsKnockedDown)) {
       return;
     }
-    this.isStrike(pinsKnockedDown)
     this.addRoll(pinsKnockedDown)
     this.pinsLeft -= pinsKnockedDown
     this.frame_score = 10 - this.pinsLeft
+    this.isStrike(pinsKnockedDown)
     this.isSpare()
   }
 

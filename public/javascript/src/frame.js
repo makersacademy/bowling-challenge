@@ -39,18 +39,15 @@ class Frame{
   _applySpare(nextRoll){
     if (this.isSpare() && nextRoll > 0) {
       this.contents[1] += nextRoll;
-      console.log(this.contents[1])
     };
   };
 
   _applyStrike(nextRoll, nextNextRoll){
     if (this.isStrike() && nextRoll > 0 && nextNextRoll > 0) {
       this.contents[0] += nextRoll + nextNextRoll;
-      console.log(this.contents[0])
     }
     else if (this.isStrike() && nextRoll > 0) {
-      this.contents[0] += nextRoll
-      console.log(this.contents[0]);
+      this.contents[0] += nextRoll;
     };
   };
 

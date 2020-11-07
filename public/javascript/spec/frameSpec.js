@@ -55,4 +55,14 @@ describe('frame', function(){
       expect(frame.points(4, 2)).toEqual(16)
     });
   });
+
+  describe('when it is the final frame', function(){
+    it('can apply the bonus roll correctly', function(){
+      frame.number = 10;
+      frame.recordRoll(8)
+      frame.recordRoll(2)
+      frame.recordRoll(4)
+      expect(frame.points()).toEqual(14)
+    });
+  });
 })

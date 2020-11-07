@@ -4,4 +4,8 @@ class Frame {
     this.pinsLeft = 10
   }
 
+  roll(pinsKnockedDown){
+    this.pinsLeft -= pinsKnockedDown
+  }
+
 };

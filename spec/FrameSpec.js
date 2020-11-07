@@ -1,10 +1,8 @@
 describe('Frame',function () {
   var frame;
-  var oneRoll;
 
   beforeEach(function() {
     frame = new Frame();
-    oneRoll = new Roll();
   });
 
   it('is initialize with 10 pins left',function() {
@@ -12,6 +10,13 @@ describe('Frame',function () {
     expect(frame.pinsLeft).toEqual(10)
   });
 
+  describe('#roll', function() {
+  
+    it('deducts number of pinsLeft by number of pinsKnockedDown', function() {
+      frame.roll(1);
 
+      expect(frame.pinsLeft).toEqual(9)
+    });
+  });
 
 });

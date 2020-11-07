@@ -22,4 +22,15 @@ describe('Bowling', function() {
       expect(bowling.totalScore()).toEqual(80)
     });
   });
+
+  describe('when rolling strikes or spares', function() {
+    it('returns the total score with one spare', function() {
+      bowling.roll(5);
+      bowling.roll(5);
+      for (let i = 0; i < 18; i++) {
+        bowling.roll(4);
+      }
+      expect(bowling.totalScore()).toEqual(86)
+    });
+  });
 });

@@ -24,13 +24,14 @@ $(document).ready(function() {
   function displayCurrentScore(pins) {
     let scoreDisplay;
     if (Number.isInteger(pins)) {
-      scoreDisplay = pins === 10 ? 'STRIKE' : pins;
+      scoreDisplay = pins === 10 ? 'STRIKE' : pins > 10 ? 'NOT POSSIBLE' : pins;
     }
     else {
       scoreDisplay = "That's not a number!";
     }
     $('#current_score').text(`${scoreDisplay}`);
   }
+  
 
   function isGameOver(bowl) {
     if (bowl === "GAME OVER") {

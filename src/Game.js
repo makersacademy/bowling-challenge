@@ -5,14 +5,8 @@ class Game {
   }
 
   roll(pinsKnockedDown) {
-    if (this.lastBall()) {
+    if (this.gameOver()){
       return
-    }
-    if (this.normal_end()) {
-      return;
-    }
-    if (this.spare_in_10th()) {
-      return;
     }
     if (this.isNewFrameNeeded()) {
       this.addFrame(pinsKnockedDown);
@@ -39,7 +33,7 @@ class Game {
     return this.frames[this.frames.length -1].strike
   }
 
-  normal_end() {
+  normalGameEnd() {
     return this.frames.length == 10 && this.frames[this.frames.length -1].rolls.length == 2 && this.frames[this.frames.length -1].pinsLeft != 0
   }
 
@@ -47,8 +41,11 @@ class Game {
     return this.frames.length == 11 && this.frames[this.frames.length -1].rolls.length == 1 && this.frames[9].spare
   }
 
-  lastBall() {
+  endAfterThreeStrikes() {
     return this.frames.length == 12
   }
 
+  gameOver(){
+    return (this.endAfterThreeStrikes() || this.normalGameEnd() || this.spare_in_10th())
+  }
 };

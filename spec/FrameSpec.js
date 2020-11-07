@@ -24,6 +24,13 @@ describe('Frame',function () {
 
       expect(frame.rolls.length).toEqual(1)
     });
+
+    it('adds max two rolls per frame',function () {
+      frame.roll(1);
+      frame.roll(1);
+      frame.roll(1);
+      expect(frame.rolls.length).toEqual(2)
+    });
   });
 
 });

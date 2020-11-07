@@ -10,12 +10,12 @@ describe('Bowling', function() {
   describe('without rolling any strikes or spares', function() {
     it('returns the total score of 10 frames of gutter rolls', function() {
       manyRolls(0, 20)
-      expect(bowling.totalScore()).toEqual(0)
+      expect(bowling.totalScore()).toEqual(0);
     });
 
     it('returns the total score of all rolls', function() {
       manyRolls(4, 20)
-      expect(bowling.totalScore()).toEqual(80)
+      expect(bowling.totalScore()).toEqual(80);
     });
   });
 
@@ -23,7 +23,7 @@ describe('Bowling', function() {
     it('returns the total score with one spare', function() {
       manyRolls(5, 2)
       manyRolls(4, 18)
-      expect(bowling.totalScore()).toEqual(86)
+      expect(bowling.totalScore()).toEqual(86);
     });
 
     it('returns the total score with two spare', function() {
@@ -31,13 +31,24 @@ describe('Bowling', function() {
       bowling.roll(4)
       bowling.roll(6)
       manyRolls(4, 16)
-      expect(bowling.totalScore()).toEqual(92)
+      expect(bowling.totalScore()).toEqual(92);
     });
 
     it('returns the total score with one strike', function() {
       bowling.roll(10)
       manyRolls(4, 18)
-      expect(bowling.totalScore()).toEqual(90)
+      expect(bowling.totalScore()).toEqual(90);
+    });
+
+    it('returns the total score with two strike', function() {
+      manyRolls(10, 2)
+      manyRolls(4, 17)
+      expect(bowling.totalScore()).toEqual(106);
+    });
+
+    it('returns the score of a perfect game', function() {
+      manyRolls(10, 12)
+      expect(bowling.totalScore()).toEqual(300);
     });
   });
 

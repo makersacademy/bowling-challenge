@@ -4,7 +4,7 @@ $(document).ready(function() {
 
   $('#new').on('click', function(){
     game.newGame();
-    $('#current_score').val('');
+    $('#current_score').text('');
     updateScore();
   });
 

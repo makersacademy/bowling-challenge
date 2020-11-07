@@ -5,6 +5,9 @@ class Game {
   }
 
   roll(pinsKnockedDown) {
+    if (this.normal_end()){
+      return;
+    }
     if (this.isNewFrameNeeded()) {
       this.addFrame(pinsKnockedDown);
     } else {
@@ -28,6 +31,10 @@ class Game {
 
   wasStrike() {
     return this.frames[this.frames.length -1].strike
+  }
+
+  normal_end() {
+    return this.frames.length === 10
   }
 
 };

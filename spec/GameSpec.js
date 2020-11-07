@@ -33,6 +33,14 @@ describe('Game', function() {
       expect(game.frames.length).toEqual(2)
     });
 
+    it('stops game after 10 frames', function() {
+      for (var i = 0; i < 21; i++) {
+        game.roll(1);
+      }
+
+      expect(game.frames.length).toEqual(10)
+    });
+
   });
 
 });

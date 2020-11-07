@@ -42,6 +42,31 @@ describe('Game', function() {
       expect(game.frames[game.frames.length -1].rolls.length).toEqual(2)
     });
 
+    it('add 11th frame if there was a spare in 10th frame ', function () {
+      for (var i = 0; i < 18; i++) {
+        game.roll(1);
+      }
+      game.roll(1);
+      game.roll(9);
+      game.roll(1);
+      expect(game.frames.length).toEqual(11)
+    });
+
+    it('allows only for one more roll if in 10th frame was a spare', function () {
+
+      for (var i = 0; i < 18; i++) {
+        game.roll(1);
+      }
+      game.roll(1);
+      game.roll(9);
+      game.roll(1);
+      game.roll(1);
+
+      expect(game.frames.length).toEqual(11)
+      expect(game.frames[game.frames.length -1].rolls.length).toEqual(1)
+
+    });
+
   });
 
 });

@@ -61,20 +61,20 @@ describe('Frame', function(){
     })
   }) 
 
-  describe('isBonusFrame', function(){
-    it('returns true if frame length is three', function(){
-      frame.addToFrame(5);
-      frame.addToFrame(0);
-      frame.addToFrame(2);
-      expect(frame.isBonusFrame()).toEqual(true);
-    })
+ // describe('isBonusFrame', function(){
+  //  it('returns true if frame length is three', function(){
+  //    frame.addToFrame(5);
+  //    frame.addToFrame(0);
+  //    frame.addToFrame(2);
+  //    expect(frame.isBonusFrame()).toEqual(true);
+  //  })
 
-    it('returns false if not bonus frame', function(){
-      frame.addToFrame(10);
-      frame.addToFrame(0);
-      expect(frame.isBonusFrame()).toEqual(false);
-    })
-  })
+   // it('returns false if not bonus frame', function(){
+   //   frame.addToFrame(10);
+   //   frame.addToFrame(0);
+   //   expect(frame.isBonusFrame()).toEqual(false);
+   // })
+  //})
 
   describe('firstTwoRolls', function(){
     it('returns the sum of the first two rolls in a bonus frame', function(){

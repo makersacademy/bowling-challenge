@@ -58,9 +58,9 @@ class Frame {
     return this.currentFrame[0] === 10;
   }
 
-  isBonusFrame(){
-    return this.currentFrame.length === 3;
-  }
+  //isBonusFrame(){
+  //  return this.currentFrame.length === 3;
+ // }
 
   firstTwoRolls(){
     return this.currentFrame[0] + this.currentFrame[1];

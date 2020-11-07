@@ -15,4 +15,14 @@ describe('Game', function(){
       expect(game.score()).toEqual(4);
     });
   });
+
+  describe('newGame', function(){
+    it('Wipes the current game score', function(){
+      for (var i = 0; i < 2; i ++){
+        game.bowl(2);
+      }
+      game.newGame();
+      expect(game.score()).toEqual(0);
+    });
+  });
 });

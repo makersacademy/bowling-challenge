@@ -34,7 +34,7 @@ class Game {
   }
 
   normal_end() {
-    return this.frames.length === 10
+    return this.frames.length === 10 && this.frames[this.frames.length -1].rolls.length === 2
   }
 
 };

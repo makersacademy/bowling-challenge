@@ -39,6 +39,7 @@ describe('Game', function() {
       }
 
       expect(game.frames.length).toEqual(10)
+      expect(game.frames[game.frames.length -1].rolls.length).toEqual(2)
     });
 
   });

@@ -5,7 +5,10 @@ class Game {
   }
 
   roll(pinsKnockedDown) {
-    if (this.normal_end()){
+    if (this.normal_end()) {
+      return;
+    }
+    if (this.spare_in_10th()) {
       return;
     }
     if (this.isNewFrameNeeded()) {
@@ -21,7 +24,7 @@ class Game {
     this.frames.push(frame);
   }
   isNewFrameNeeded() {
-    return this.frames.length === 0 || this.frames[this.frames.length -1].rolls.length === 2 || this.wasStrike()
+    return this.frames.length == 0 || this.frames[this.frames.length -1].rolls.length == 2 || this.wasStrike()
   }
 
   addRollToExistingFrame(pinsKnockedDown) {
@@ -34,7 +37,11 @@ class Game {
   }
 
   normal_end() {
-    return this.frames.length === 10 && this.frames[this.frames.length -1].rolls.length === 2 && this.frames[this.frames.length -1].pinsLeft != 0
+    return this.frames.length == 10 && this.frames[this.frames.length -1].rolls.length == 2 && this.frames[this.frames.length -1].pinsLeft != 0
+  }
+
+  spare_in_10th() {
+    return this.frames.length == 11 && this.frames[this.frames.length -1].rolls.length == 1 && this.frames[9].spare
   }
 
 };

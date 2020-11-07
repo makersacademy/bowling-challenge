@@ -64,7 +64,14 @@ describe('Game', function() {
 
       expect(game.frames.length).toEqual(11)
       expect(game.frames[game.frames.length -1].rolls.length).toEqual(1)
+    });
 
+    it('add 12th bonus frame if in 11th frame there was a strike',function () {
+      for (var i = 0; i < 18; i++) {
+        game.roll(1);
+      }
+
+      
     });
 
   });

@@ -11,9 +11,9 @@ class Game {
       this._completeStrikeFrame();
     }
     else if (this._isFinalFrame()){
-      if(this._rolls[this._rolls.length-1].isStrike() || this._rolls[this._rolls.length-1].isSpare()){
+      if (this._isBonus()){
         this._addBonusRoll(pins);
-      } else {
+      }else {
         return "GAME OVER"
       }
     }
@@ -21,6 +21,14 @@ class Game {
       this._isNewFrame() ? this._createFrame(pins) : this._endFrame(pins);
     }
   };
+
+  _isBonus(){
+    return (this._lastFrame().isStrike() || this._lastFrame().isSpare()) && this._lastFrame().currentFrame.length <= 2;
+  }
+
+  _lastFrame(){
+    return this._rolls[this._rolls.length-1]
+  }
 
   score(){
     return this._calculateScore(); 
@@ -34,13 +42,21 @@ class Game {
   _calculateScore(){
     let score = 0;
     for(var i = 0; i < this._rolls.length; i++){
-      if(this._rolls[i].isStrike() && this._rolls[i+1]){
-        score += this._scoreRegularStrike(i);
-      } else {
-        this._rolls[i].isSpare() && this._rolls[i+1] ? score += this._scoreSpare(i) : score += this._scoreFrame(i);
-      }
+       score += this._strikeNotPending(i) ? this._scoreRegularStrike(i) : this._scoreIncrement(i);
     };
     return score;
+  }
+
+  _scoreIncrement(i){
+    return this._spareNotPending(i) ? this._scoreSpare(i) : this._scoreFrame(i);
+  }
+
+  _strikeNotPending(i){
+    return this._rolls[i].isStrike() && this._rolls[i+1]
+  }
+
+  _spareNotPending(i){
+    return this._rolls[i].isSpare() && this._rolls[i+1] 
   }
 
   _isStrike(pins){
@@ -70,10 +86,14 @@ class Game {
   _createFrame(pins){
     this._frame = new Frame();
     this._frame.addToFrame(pins);
+    this._checkFinalFrame();
+    this._roll_number += 1;
+  }
+
+  _checkFinalFrame(){
     if(this._roll_number === 18){
       this._frame.isFinal(); 
     }
-    this._roll_number += 1;
   }
 
   _addBonusRoll(pins){
@@ -95,8 +115,7 @@ class Game {
   }
 
   _scoreRegularStrike(i){
-    let score = this._followedByStrike(i) ? this._doubleStrikeBonus(i) : this._regularStrikeBonus(i);
-    return score;
+    return this._followedByStrike(i) ? this._doubleStrikeBonus(i) : this._regularStrikeBonus(i);
   }
 
   _followedByStrike(i){

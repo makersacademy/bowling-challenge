@@ -142,6 +142,13 @@ describe('Feature test', function(){
       expect(game.bowl(2)).toEqual("GAME OVER");
     });
 
+    it("returns 'game over' at end of bonus frame", function(){
+      for (var i = 0; i < 12; i ++){
+        game.bowl(10);
+      }
+      expect(game.bowl(2)).toEqual("GAME OVER");
+    });
+
     it("doesn't continue to add rolls to score", function(){
       for (var i = 0; i < 21; i ++){
         game.bowl(2);

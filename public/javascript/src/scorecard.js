@@ -15,12 +15,12 @@ class Scorecard{
 
   _frameMaker(frameClass = Frame){
     let frame = new frameClass;
-    frame.number = this.frames.length -1;
+    frame.number = this.frames.length +1;
     this.frames.push(frame);
   }
 
   _frameChecker(){
-    if (this.getCurrentFrame().rolls() === 2) {
+    if (this.getCurrentFrame().rolls() === 2 || this.getCurrentFrame().isStrike()) {
       this._frameMaker();
     };
   }

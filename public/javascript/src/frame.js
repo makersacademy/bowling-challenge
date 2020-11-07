@@ -15,8 +15,7 @@ class Frame{
   }
 
   points(){
-    this.points = this.contents.reduce((a, b) => a + b, 0);
-    return this.points;
+    return this.contents.reduce((a, b) => a + b, 0);
   };
 
   isStrike(){

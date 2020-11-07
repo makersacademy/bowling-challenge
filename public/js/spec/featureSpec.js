@@ -78,6 +78,14 @@ describe('Feature test', function(){
     expect(game.score()).toEqual(30);
   })
 
+  it('can score a strike followed by a strike and a regular roll', function(){
+    game.bowl(10);
+    game.bowl(10);
+    game.bowl(4);
+    game.bowl(2);
+    expect(game.score()).toEqual(46)
+  })
+
   it('can score a perfect game', function(){
     for (var i = 0; i < 12; i ++){
       game.bowl(10);

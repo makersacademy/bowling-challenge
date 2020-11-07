@@ -28,6 +28,7 @@ class Game {
 
   newGame(){
     this._rolls = [];
+    this._roll_number = 0;
   }
   
   _calculateScore(){

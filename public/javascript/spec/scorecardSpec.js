@@ -31,10 +31,11 @@ describe('scorecard', function(){
 
   it('creates a frame object and pushes it to the frames array', function(){
     expect(scorecard.frames.length).toBe(1)
+    expect(scorecard.getCurrentFrame()).toBeInstanceOf(FakeFrame)
   });
 
   it('passes #roll on to the Frame class, where it is stored', function(){
-    scorecard.roll(frame, 2)
+    scorecard.roll(2)
     expect(frame.recordRoll()).toEqual('Function called')
   })
 

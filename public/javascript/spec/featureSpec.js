@@ -18,6 +18,31 @@ describe('feature tests', function(){
       scorecard.roll(6)
       expect(scorecard.calculateScore()).toEqual(21)
     });
+
+    it('can score a full game correctly', function(){
+      scorecard.roll(5)
+      scorecard.roll(2)
+      scorecard.roll(2)
+      scorecard.roll(3)
+      scorecard.roll(3)
+      scorecard.roll(4)
+      scorecard.roll(6)
+      scorecard.roll(2)
+      scorecard.roll(1)
+      scorecard.roll(6)
+      scorecard.roll(1)
+      scorecard.roll(2)
+      scorecard.roll(4)
+      scorecard.roll(3)
+      scorecard.roll(7)
+      scorecard.roll(1)
+      scorecard.roll(2)
+      scorecard.roll(1)
+      scorecard.roll(2)
+      scorecard.roll(1)
+      expect(scorecard.calculateScore()).toEqual(58)
+    });
+
   });
 
 })

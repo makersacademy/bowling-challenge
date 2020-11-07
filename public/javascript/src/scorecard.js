@@ -27,7 +27,7 @@ class Scorecard{
         score += frame.points(array[index+1].contents[0], array[index+1].contents[1]);
       }
       else if (typeof array[index+1] !== 'undefined' && array[index+1].contents.length < 2 && typeof array[index+1] !== 'undefined') {
-        score += frame.points(array[index+1].contents[0], array[index+1].contents[1]);
+        score += frame.points(array[index+1].contents[0], array[index+2].contents[0]);
       }
       else {score += frame.points();
       }

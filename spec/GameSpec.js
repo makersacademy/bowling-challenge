@@ -70,8 +70,11 @@ describe('Game', function() {
       for (var i = 0; i < 18; i++) {
         game.roll(1);
       }
-
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
       
+      expect(game.frames.length).toEqual(12)
     });
 
   });

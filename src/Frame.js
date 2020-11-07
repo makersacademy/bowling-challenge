@@ -17,7 +17,7 @@ class Frame {
     this.pinsLeft -= pinsKnockedDown
     this.frame_score = 10 - this.pinsLeft
     this.isStrike(pinsKnockedDown)
-    this.isSpare()
+    this.isSpare(pinsKnockedDown)
   }
 
   addRoll(pinsKnockedDown) {
@@ -39,12 +39,12 @@ class Frame {
     return this.pinsLeft < pinsKnockedDown
   }
   isStrike(pinsKnockedDown) {
-    if (pinsKnockedDown === 10) {
+    if (pinsKnockedDown == 10) {
       return this.strike = true
     }
   }
-  isSpare() {
-    if (this.pinsLeft === 0) {
+  isSpare(pinsKnockedDown) {
+    if (this.pinsLeft == 0 && pinsKnockedDown != 10 ) {
       return this.spare = true
     }
   }

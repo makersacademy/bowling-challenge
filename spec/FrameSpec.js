@@ -18,29 +18,51 @@ describe('Frame',function () {
       expect(frame.pinsLeft).toEqual(9)
     });
 
-    it('adds Roll to the array of rolls', function () {
+    it('adds Roll to the array of rolls', function() {
 
       frame.roll(1);
 
       expect(frame.rolls.length).toEqual(1)
     });
 
-    it('adds max two rolls per frame',function () {
+    it('adds max two rolls per frame',function() {
       frame.roll(1);
       frame.roll(1);
       frame.roll(1);
       expect(frame.rolls.length).toEqual(2)
     });
-    it('add roll only if number of pinsKnockedDown given is not greater then number of pins left',function () {
+    it('adds roll to the frame only if number of pinsKnockedDown given is not greater then number of pins left',function () {
       frame.roll(11);
 
       expect(frame.rolls.length).toEqual(0)
     });
 
-    it('add second roll  to the frame only if number of pinsKnockedDown given is not greater then number of pins left in the frame',function () {
+    it('adds second roll  to the frame only if number of pinsKnockedDown given is not greater then number of pins left in the frame',function () {
       frame.roll(1);
       frame.roll(11);
       expect(frame.rolls.length).toEqual(1)
+    });
+
+    it('does not add second roll to the frame if number of pinsKnockedDown in the first roll is equal to 10',function () {
+      frame.roll(10);
+      frame.roll(1);
+      expect(frame.rolls.length).toEqual(1)
+    });
+
+    it('add spare',function () {
+      frame.roll(2);
+      frame.roll(8);
+      expect(frame.rolls.length).toEqual(2)
+    });
+
+  });
+
+  describe('#frame_score',function() {
+    it('calculate score for the frame', function() {
+      frame.roll(1);
+      frame.roll(2);
+
+      expect(frame.frame_score).toEqual(3)
     });
   });
 

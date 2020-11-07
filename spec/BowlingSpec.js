@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Bowling', function() {
-  var bowling
+  let bowling
 
   beforeEach(function() {
     bowling = new Bowling();
@@ -9,10 +9,17 @@ describe('Bowling', function() {
 
   describe('without rolling any strikes or spares', function() {
     it('returns the total score of 10 frames of gutter rolls', function() {
-      for (var i = 0; i < 20; i++) {
+      for (let i = 0; i < 20; i++) {
         bowling.roll(0);
       }
       expect(bowling.totalScore()).toEqual(0)
+    });
+
+    it('returns the total score of all rolls', function() {
+      for (let i = 0; i < 20; i++) {
+        bowling.roll(4);
+      }
+      expect(bowling.totalScore()).toEqual(80)
     });
   });
 });

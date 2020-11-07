@@ -2,16 +2,23 @@ class Print{
 
   constructor(){
     this.scorecard
+    this.roll = 0
   };
 
-  output(scorecard, scores, frame) {
-    let message = []
+  output(scorecard, totalscore, turn) {
+    let outputmessage = []
+    let playertotal = []
+    let sth = []
+    let total = `Your score = ${totalscore}`
     Object.entries(scorecard).forEach(entry => {
     const [key, value] = entry
-    message.push(`Frame.Roll = ${key} Pins knocked = ${value}`);
-    let split_frame_and_roll = Math.floor(key)
-    let roll = (key % 1).toFixed(1)
-    });
-    return message[0]+"\n"+message[1]+"\n"
+    // this.roll = (key % 1).toFixed(1)
+    // if (this.roll == 0.2 || this.roll == 0.3) {
+    //
+    // }
+    outputmessage.push(`Frame.Roll = ${key} Pins knocked = ${value}`);
+  });
+    return outputmessage[0]+"\n"+outputmessage[1]+"\n"+total+"\n"
 }
+
 }

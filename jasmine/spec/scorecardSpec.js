@@ -135,7 +135,10 @@ describe('Scorecard', function() {
   it('prints frame, roll, pins knocked and score', function() {
     scorecard.addRoll(1.1, 0)
     scorecard.addRoll(1.2, 2)
-    expect(scorecard.print({1.1:0, 1.2:2}, 1)).toEqual("Frame.Roll = 1.1 Pins knocked = 0\nFrame.Roll = 1.2 Pins knocked = 2\n")
+    scorecard.addRoll(2.1, 5)
+    scorecard.addRoll(2.2, 3)
+    let string = scorecard.print(2)
+    expect(string).toEqual("Frame.Roll = 1.1 Pins knocked = 0\nFrame.Roll = 1.2 Pins knocked = 2\nYour score = 10\n")
   });
 
 });

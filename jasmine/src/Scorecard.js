@@ -51,9 +51,9 @@ class Scorecard{
     return this.sum
   };
 
-  print(score, frame) {
-    let something = this.total(frame)
-    this.printer.output(score, something, frame)
+  print(frame) {
+    let newtotal = this.total(frame)
+    return this.printer.output(this.score, newtotal, frame)
   };
 
 };

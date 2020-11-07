@@ -66,14 +66,27 @@ describe('Game', function() {
       expect(game.frames[game.frames.length -1].rolls.length).toEqual(1)
     });
 
-    it('add 12th bonus frame if in 11th frame there was a strike',function () {
+    it('adds 12th bonus frame if in 11th frame there was a strike',function () {
       for (var i = 0; i < 18; i++) {
         game.roll(1);
       }
       game.roll(10);
       game.roll(10);
       game.roll(10);
-      
+
+      expect(game.frames.length).toEqual(12)
+    });
+
+    it('stops adding new frame after triple strike in the 10th 11th and 12th frame',function () {
+      for (var i = 0; i < 18; i++) {
+        game.roll(1);
+      }
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+
+      game.roll(1);
+
       expect(game.frames.length).toEqual(12)
     });
 

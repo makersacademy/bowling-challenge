@@ -5,6 +5,9 @@ class Game {
   }
 
   roll(pinsKnockedDown) {
+    if (this.lastBall()) {
+      return
+    }
     if (this.normal_end()) {
       return;
     }
@@ -42,6 +45,10 @@ class Game {
 
   spare_in_10th() {
     return this.frames.length == 11 && this.frames[this.frames.length -1].rolls.length == 1 && this.frames[9].spare
+  }
+
+  lastBall() {
+    return this.frames.length == 12
   }
 
 };

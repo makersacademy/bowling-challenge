@@ -5,12 +5,14 @@ class Frame {
     this.rolls = []
     this.MAX_ROLLS_PER_FRAME = 2
     this.frame_score = 0
+    this.strike = false
   }
 
   roll(pinsKnockedDown) {
     if (this.isInputInvalid(pinsKnockedDown)) {
       return;
     }
+    this.isStrike(pinsKnockedDown)
     this.addRoll(pinsKnockedDown)
     this.pinsLeft -= pinsKnockedDown
     this.frame_score = 10 - this.pinsLeft
@@ -33,6 +35,11 @@ class Frame {
 
   isInputInvalid(pinsKnockedDown) {
     return this.pinsLeft < pinsKnockedDown
+  }
+  isStrike(pinsKnockedDown) {
+    if (pinsKnockedDown === 10) {
+      return this.strike = true
+    }
   }
 
 };

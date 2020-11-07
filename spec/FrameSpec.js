@@ -43,13 +43,13 @@ describe('Frame',function () {
       expect(frame.rolls.length).toEqual(1)
     });
 
-    it('does not add second roll to the frame if number of pinsKnockedDown in the first roll is equal to 10',function () {
+    it('does not add second roll to the frame if number of pinsKnockedDown in the first roll is equal to 10', function () {
       frame.roll(10);
       frame.roll(1);
       expect(frame.rolls.length).toEqual(1)
     });
 
-    it('add spare',function () {
+    it('add spare', function () {
       frame.roll(2);
       frame.roll(8);
       expect(frame.rolls.length).toEqual(2)
@@ -57,12 +57,20 @@ describe('Frame',function () {
 
   });
 
-  describe('#frame_score',function() {
+  describe('#frame_score', function() {
     it('calculate score for the frame', function() {
       frame.roll(1);
       frame.roll(2);
 
       expect(frame.frame_score).toEqual(3)
+    });
+  });
+
+  describe('#isStrike', function() {
+    it('change this.strike to true if numbers of pins knocked down is equal 10', function() {
+      frame.roll(10);
+
+      expect(frame.strike).toEqual(true)
     });
   });
 

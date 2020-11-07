@@ -3,3 +3,26 @@ body {
   font-family: 'Chivo', sans-serif;
   background-image: url("https://images.unsplash.com/photo-1581084094544-5195e8c7bf76?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2125&q=80");
 }
+
+.score_display { 
+  color: green;
+  animation-name: myAnimation;
+  animation-duration: 2000ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes myAnimation {
+  0%{
+    opacity: 1;
+    transform: rotateX(90deg);
+  }
+  50%{
+    opacity: 0.5;
+    transform: rotateX(0deg);
+  }
+  100%{
+    display: none;
+    opacity: 0;
+    transform: rotateX(90deg);
+  }
+}

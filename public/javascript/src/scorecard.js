@@ -31,7 +31,7 @@ class Scorecard{
   calculateScore(frames = this.frames){
     var score = 0;
     frames.forEach(frame => {
-      score += frame.score();
+      score += frame.points();
     });
     return score;
   }

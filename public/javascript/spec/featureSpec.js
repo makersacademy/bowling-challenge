@@ -16,7 +16,7 @@ describe('feature tests', function(){
       scorecard.roll(1)
       scorecard.roll(3)
       scorecard.roll(6)
-      expect(scorecard.calculate_score()).toEqual(21)
+      expect(scorecard.calculateScore()).toEqual(21)
     });
   });
 

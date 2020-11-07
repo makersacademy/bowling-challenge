@@ -17,7 +17,7 @@ describe('scorecard', function(){
       return 'Function called'
     }
 
-    score(){
+    points(){
       return 7;
     }
 

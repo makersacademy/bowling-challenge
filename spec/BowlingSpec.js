@@ -9,28 +9,28 @@ describe('Bowling', function() {
 
   describe('without rolling any strikes or spares', function() {
     it('returns the total score of 10 frames of gutter rolls', function() {
-      for (let i = 0; i < 20; i++) {
-        bowling.roll(0);
-      }
+      manyRolls(0, 20)
       expect(bowling.totalScore()).toEqual(0)
     });
 
     it('returns the total score of all rolls', function() {
-      for (let i = 0; i < 20; i++) {
-        bowling.roll(4);
-      }
+      manyRolls(4, 20)
       expect(bowling.totalScore()).toEqual(80)
     });
   });
 
   describe('when rolling strikes or spares', function() {
     it('returns the total score with one spare', function() {
-      bowling.roll(5);
-      bowling.roll(5);
-      for (let i = 0; i < 18; i++) {
-        bowling.roll(4);
-      }
+      manyRolls(5, 2)
+      manyRolls(4, 18)
       expect(bowling.totalScore()).toEqual(86)
     });
   });
+
+  function manyRolls(pins,rolls) {
+    for (let i = 0; i < rolls; i++) {
+      bowling.roll(pins);
+    }
+  }
 });
+

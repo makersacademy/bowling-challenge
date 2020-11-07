@@ -16,13 +16,21 @@ class Bowling {
     for (let frame = 0; frame < 10; frame++) {
       const frameScore = this.rolls[rollNumber] + this.rolls[rollNumber +1];
       
-      if (frameScore === 10) {
-        total += 10 + this.rolls[rollNumber + 2]
+      if (this.isSpare(frameScore)) {
+        total += this.spareScore(rollNumber);
       } else {
         total += frameScore;
       }
       rollNumber += 2
     }
     return total;
+  }
+
+  isSpare(frameScore) {
+    return frameScore === 10;
+  }
+
+  spareScore(rollNumber) {
+    return 10 + this.rolls[rollNumber + 2];
   }
 };

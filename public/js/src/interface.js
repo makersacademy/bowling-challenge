@@ -11,7 +11,8 @@ $(document).ready(function() {
   $('#bowl').on('click', function() {
     const pins = parseInt($('#bowl_input').val());
     displayCurrentScore(pins);
-    game.bowl(pins);
+    let bowl = game.bowl(pins);
+    isGameOver(bowl);
     updateScore();
     $('#bowl_input').val('');
   });
@@ -29,5 +30,11 @@ $(document).ready(function() {
       scoreDisplay = "That's not a number!";
     }
     $('#current_score').text(`${scoreDisplay}`);
+  }
+
+  function isGameOver(bowl) {
+    if (bowl === "GAME OVER") {
+      $('#current_score').text("GAME OVER");
+    };
   }
 });

@@ -16,3 +16,55 @@ def roll_double_2
   fill_in :bowl_input, with: 2
   click_button("bowl")
 end
+
+def roll_full_game
+  fill_in :bowl_input, with: 2
+  click_button("bowl")
+  fill_in :bowl_input, with: 2
+  click_button("bowl")
+
+  fill_in :bowl_input, with: 2
+  click_button("bowl")
+  fill_in :bowl_input, with: 2
+  click_button("bowl")
+
+  fill_in :bowl_input, with: 2
+  click_button("bowl")
+  fill_in :bowl_input, with: 2
+  click_button("bowl")
+
+  fill_in :bowl_input, with: 2
+  click_button("bowl")
+  fill_in :bowl_input, with: 2
+  click_button("bowl")
+
+  fill_in :bowl_input, with: 2
+  click_button("bowl")
+  fill_in :bowl_input, with: 2
+  click_button("bowl")
+
+  fill_in :bowl_input, with: 2
+  click_button("bowl")
+  fill_in :bowl_input, with: 2
+  click_button("bowl")
+
+  fill_in :bowl_input, with: 2
+  click_button("bowl")
+  fill_in :bowl_input, with: 2
+  click_button("bowl")
+
+  fill_in :bowl_input, with: 2
+  click_button("bowl")
+  fill_in :bowl_input, with: 2
+  click_button("bowl")
+
+  fill_in :bowl_input, with: 2
+  click_button("bowl")
+  fill_in :bowl_input, with: 2
+  click_button("bowl")
+
+  fill_in :bowl_input, with: 2
+  click_button("bowl")
+  fill_in :bowl_input, with: 2
+  click_button("bowl")
+end

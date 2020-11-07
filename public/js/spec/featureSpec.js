@@ -125,4 +125,21 @@ describe('Feature test', function(){
     game.bowl(8)
     expect(function(){ game.bowl(3); }).toThrowError("There aren't that many pins!");
   })
+  
+  describe('Game Over', function(){
+    it("returns 'game over' at end of game", function(){
+      for (var i = 0; i < 20; i ++){
+        game.bowl(0);
+      }
+      expect(game.bowl(2)).toEqual("GAME OVER");
+    });
+
+    it("doesn't continue to add rolls to score", function(){
+      for (var i = 0; i < 21; i ++){
+        game.bowl(2);
+      }
+      expect(game.score()).toEqual(40);
+    });
+  })
+  
 });

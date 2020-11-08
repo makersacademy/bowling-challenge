@@ -12,7 +12,10 @@ describe('Scoresheet', () => {
 
   describe('scoreTotal', () => {
     it('totals the scores from all of the frames without bonuses', () => {
-      expect(completeNormalGame.scoreTotal()).toEqual(90)
+      for (let step = 0; step < 10; step++) {
+        scoresheet.addFrame(frame)
+      }
+      expect(scoresheet.scoreTotal()).toEqual(90)
     });
   });
 

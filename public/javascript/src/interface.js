@@ -3,6 +3,12 @@ $(document).ready(function() {
   updateScore();
   updateFrame();
 
+  $('#no-pins').click(function(){
+    scorecard.roll(0);
+    updateScore();
+    updateFrame();
+  })
+
   $('#one-pin').click(function(){
     scorecard.roll(1);
     updateScore();

@@ -7,25 +7,30 @@
   <script src="javascript/src/scorecard.js"></script>
   <script src="javascript/src/interface.js"></script>
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class='all'>
+    <h1>Bowling Score Calculator</h1>
     <section id='pins'>
-      <div class='buttons'>
-        <button id="one-pin">1</button>
-        <button id="two-pins">2</button>
-        <button id="three-pins">3</button>
-        <button id="four-pins">4</button>
-        <button id="five-pins">5</button>
-        <button id="six-pins">6</button>
-        <button id="seven-pins">7</button>
-        <button id="eight-pins">8</button>
-        <button id="nine-pins">9</button>
-        <button id="ten-pins">10</button>
+      <div id='buttons'>
+        <button class='pin-button' id="no-pins">0</button>
+        <button class='pin-button' id="one-pin">1</button>
+        <button class='pin-button' id="two-pins">2</button>
+        <button class='pin-button' id="three-pins">3</button>
+        <button class='pin-button' id="four-pins">4</button>
+        <button class='pin-button' id="five-pins">5</button>
+        <button class='pin-button' id="six-pins">6</button>
+        <button class='pin-button' id="seven-pins">7</button>
+        <button class='pin-button' id="eight-pins">8</button>
+        <button class='pin-button' id="nine-pins">9</button>
+        <button class='pin-button' id="ten-pins">10</button>
       </div>
-        current frame: <span id=current-frame></span>
+      <div id='info'>
+        Current frame: <span id=current-frame></span><br>
         Current score: <span id='score'></span>
         <button id='reset'>reset</button>
+      </div>
     </section>
   </div>
 </body>

@@ -102,19 +102,27 @@ describe('Game', function() {
     });
 
     it('adds bonus for spare',function() {
-      game.roll(9);
-      game.roll(1);
-      game.roll(5);
-      expect(game.currentScore()).toEqual(20)
+      for (var i = 0; i < 3; i++) {
+        game.roll(9);
+        game.roll(1);
+        game.roll(5);
+        game.roll(4);
+      }
+      expect(game.currentScore()).toEqual(72)
     });
 
-    it('adds bonus for strike',function() {
+    xit('adds bonus for strike',function() {
       game.roll(10);
       game.roll(1);
       game.roll(5);
-      console.log(game.frames);
-      console.log(game.frames[game.frames.length -1].rolls.length);
       expect(game.currentScore()).toEqual(22)
+    });
+
+    xit('perfecr game', function() {
+      for (var i = 0; i < 12; i++) {
+        game.roll(10);
+      }
+      expect(game.currentScore()).toEqual(300)
     });
   });
 

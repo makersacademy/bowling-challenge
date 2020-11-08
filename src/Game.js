@@ -14,7 +14,6 @@ class Game {
     this.addRollToExistingFrame(pinsKnockedDown)
     }
     this.addBonusPointsforSpare(pinsKnockedDown);
-    this.addBonusPointsforStrike();
   }
 
   addFrame(pinsKnockedDown) {
@@ -59,14 +58,20 @@ class Game {
     return accumulator + currentValue;
     },0);
   }
-  addBonusPointsforSpare(pinsKnockedDown){
-    if (this.frames.length > 1 && this.frames[this.frames.length -2].spare){
-      return this.frames[this.frames.length -2].frame_score += pinsKnockedDown
+  addBonusPointsforSpare() {
+    if (this.frames.length > 1 && this.frames[this.frames.length -2].spare && this.frames[this.frames.length -1].rolls.length == 1){
+      return this.frames[this.frames.length -2].frame_score += this.frames[this.frames.length -1].frame_score
     }
   }
   addBonusPointsforStrike(){
-    if (this.frames.length > 1 && this.frames[this.frames.length - 2].strike && this.frames[this.frames.length -1].rolls.length == 2) {
+    if (this.frames.length > 1 && this.frames[this.frames.length -2].strike && this.frames[this.frames.length -1].rolls.length == 2) {
       return this.frames[this.frames.length -2].frame_score += this.frames[this.frames.length -1].frame_score
+    }
+    if (this.frames.length > 1 && this.frames[this.frames.length -2].strike && this.frames[this.frames.length -1].rolls.length == 1 && this.frames[this.frames.length -1].strike) {
+      return this.frames[this.frames.length -2].frame_score += this.frames[this.frames.length -1].frame_score
+    }
+    if (this.frames.length > 2 && this.frames[this.frames.length -3].strike && this.frames[this.frames.length -2].strike && this.frames[this.frames.length -2].strike) {
+        return this.frames[this.frames.length -3].frame_score += this.frames[this.frames.length -1].rolls[0].pinsKnockedDown
     }
   }
 };

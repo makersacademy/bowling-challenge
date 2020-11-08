@@ -52,10 +52,25 @@ describe('Bowling', function() {
     });
   });
 
+  describe('when rolling strikes or spares in the 10th frame', function() {
+    it('returns the total score when bowling a spare in the 10th frame', function() {
+      manyRolls(7, 18)
+      manyRolls(5, 2)
+      bowling.roll(1)
+      expect(bowling.totalScore()).toEqual(137);
+    });
+
+    it('returns the total score when bowling a strike in the 10th frame', function() {
+      manyRolls(7, 18)
+      bowling.roll(10)
+      manyRolls(1, 2)
+      expect(bowling.totalScore()).toEqual(138);
+    });
+  });
+
   function manyRolls(pins,rolls) {
     for (let i = 0; i < rolls; i++) {
       bowling.roll(pins);
     }
   }
 });
-

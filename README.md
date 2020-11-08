@@ -116,7 +116,7 @@ The player has a strike if he knocks down all 10 pins with the first roll in a f
 Thoughts:
 - If a player scores a strike before the 10th frame, the next roll should be counted as the beginning of the next frame, as opposed to the game expecting to recieve a score of 0 for the second roll of the same frame.
 - Rolls will need to be stored in order for scores to be correctly calculated.
-- Guard clauses will likely be required to prevent errors when trying to retrieve the score before a strike score can be calculated.
+- Guard clauses will be required to prevent errors when trying to retrieve the score before a strike score can be calculated.
 
 #### Spares
 
@@ -130,22 +130,9 @@ Thoughts:
 If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
 
 Thoughts:
-- There will likely need to be a length check of the score array to ensure that the player can't roll more than the allotted rolls in a game.
-- Perhaps an option for a user to restart a game if they attempt to roll again after completing a game.
+- Length check of the array to ensure player doesn't roll more than alloted rolls in a game.
+- Option for a user to restart after completing a game.
 
-#### Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-Thoughts:
-- Perhaps a message when this type of game is scored.
-
-#### Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-Thoughts:
-- Perhaps a message here as well.
 
 
 

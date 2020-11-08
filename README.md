@@ -1,5 +1,5 @@
 
-Bowling Challenge in Ruby
+Bowling Challenge
 =================
 
 ## Set Up

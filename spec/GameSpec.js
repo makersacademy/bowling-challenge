@@ -107,6 +107,15 @@ describe('Game', function() {
       game.roll(5);
       expect(game.currentScore()).toEqual(20)
     });
+
+    it('adds bonus for strike',function() {
+      game.roll(10);
+      game.roll(1);
+      game.roll(5);
+      console.log(game.frames);
+      console.log(game.frames[game.frames.length -1].rolls.length);
+      expect(game.currentScore()).toEqual(22)
+    });
   });
 
 });

@@ -5,6 +5,7 @@ Bowling Scorecard in Javascript
 ## Implementation
 
 - A class called BowlingGame
+- A constructor array - `rolls`  
 - Methods: `roll` & `totalScore`
 - `roll` will be called at the correct number of times to complete a game.
 - `totalScore` will be called at the end of the game and should return the correct score.

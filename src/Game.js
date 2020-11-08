@@ -65,18 +65,8 @@ class Game {
     }
   }
   addBonusPointsforStrike(){
-    if (this.frames.length > 1 && this.frames[this.frames.length -2].strike) {
-        return this.frames[this.frames.length -2].frame_score += this.frames.map(function(frame){ return frame.rolls})
-        .flat()
-        .slice(-1)
-        .reduce((a,b) => a + b.pinsKnockedDown, 0)
-    }
 
-    if (this.frames.length > 2 && this.frames[this.frames.length -3].strike) {
-        return this.frames[this.frames.length -3].frame_score += this.frames.map(function(frame){ return frame.rolls})
-        .flat()
-        .slice(-2)
-        .reduce((a,b) => a + b.pinsKnockedDown, 0);
-    }
   }
+
+
 };

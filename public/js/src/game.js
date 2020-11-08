@@ -29,7 +29,7 @@ class Game {
 
   isInvalidRoll(pins){
    if (this._frame){
-    let result = this._frame.finalFrame ? pins > 10 : this._frame.firstRoll() + pins > 10;
+    let result = this._frame.finalFrame ? pins > 10 : (this._frame.firstRoll() + pins > 10) && this._frame.currentFrame.length === 1;
     return result
     } else {
      return (pins > 10);

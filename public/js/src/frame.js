@@ -39,11 +39,11 @@ class Frame {
   }
 
   total(){
-  let sum;
-  sum = this.currentFrame.reduce((accumulator, currentValue) => {
-    return accumulator + currentValue;
-  });
-  return sum;
+    let sum;
+    sum = this.currentFrame.reduce((accumulator, currentValue) => {
+      return accumulator + currentValue;
+    });
+    return sum;
   }
 
   firstRoll(){

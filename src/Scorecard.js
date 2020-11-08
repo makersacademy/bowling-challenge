@@ -16,6 +16,7 @@ class Scorecard {
   }
 
   roll(n) {
+    this._checkGameOver()
     var currentFrame = this.frames[this.frames.length - 1]
     if (this.frames.length == 0 || currentFrame.isComplete()) {
       currentFrame = new Frame
@@ -31,9 +32,15 @@ class Scorecard {
 
   score(upTo = this.frames.length) {
     var total = 0
-    for (var i = 0; i <= upTo; i++) {
+    for (var i = 0; i < upTo; i++) {
       total += this.frames[i].score(this.frames[i + 1], this.frames[i + 2])
     }
     return total
+  }
+
+  _checkGameOver() {
+    if (this.frames.length == 10 && this.getLastFrame().isComplete()) {
+      throw new Error("The game is over.")
+    }
   }
 }

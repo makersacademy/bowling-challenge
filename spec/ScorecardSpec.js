@@ -65,5 +65,14 @@ describe("Scorecard", function () {
         expect(scorecard.getLastFrame().getRoll(0)).toEqual(8)
       })
     })
+    describe("After 10 complete frames", function () {
+      it("Will not let you roll anymore", function () {
+        for (var i = 0; i < 10; i++) {
+          scorecard.roll(3)
+          scorecard.roll(4)
+        }
+        expect(function () { scorecard.roll(3) }).toThrow(new Error("The game is over."))
+      })
+    })
   })
 })

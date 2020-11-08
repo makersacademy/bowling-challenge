@@ -21,6 +21,10 @@ class Frame {
     }
   }
 
+  getNumber() {
+    return this.number
+  }
+
   setNumber(n) {
     this.number = n
   }
@@ -77,13 +81,23 @@ class Frame {
     }
   }
 
-  nextRoll2(nextFrame1 = new Frame([0, 0]), nextFrame2 = new Frame([0, 0])) {
+  nextRoll2(nextFrame1 = null, nextFrame2 = null) {
+    nextFrame1 = this.handleNulls(nextFrame1)
+    nextFrame2 = this.handleNulls(nextFrame2)
     if (nextFrame1.isStrike()) {
       return nextFrame1.nextRoll1(nextFrame2)
     } else if (this.number == 10) {
       return this.getBonusRoll(1)
     } else {
       return nextFrame1.getRoll(1)
+    }
+  }
+
+  handleNulls(frame) {
+    if (frame == null) {
+      return new Frame([0, 0])
+    } else {
+      return frame
     }
   }
 }

@@ -11,6 +11,10 @@ class Scorecard {
     return this.frames[this.frames.length - 1]
   }
 
+  getNumFrames() {
+    return this.frames.length
+  }
+
   roll(n) {
     var currentFrame = this.frames[this.frames.length - 1]
     if (this.frames.length == 0 || currentFrame.isComplete()) {
@@ -25,9 +29,9 @@ class Scorecard {
     this.frames.push(frame)
   }
 
-  score() {
+  score(upTo = this.frames.length) {
     var total = 0
-    for (var i = 0; i < this.frames.length; i++) {
+    for (var i = 0; i <= upTo; i++) {
       total += this.frames[i].score(this.frames[i + 1], this.frames[i + 2])
     }
     return total

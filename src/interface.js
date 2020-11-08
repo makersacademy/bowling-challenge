@@ -8,6 +8,17 @@ $(document).ready(function () {
   })
 
   function printScores() {
-    $("#scores").text(`Total score: ${scorecard.score()}`)
+    $("#scores").empty()
+    for (i = 0; i < scorecard.getNumFrames(); i++) {
+      roll0 = scorecard.getFrame(i).getRoll(0)
+      roll1 = scorecard.getFrame(i).getRoll(1)
+      totalScore = scorecard.score(i)
+      html = `<div id="${i}" class = "frame">
+                <h3>${i}</h3>
+                ${roll0} ${roll1}<br>
+                ${totalScore}
+              </div>`
+      $("#scores").append(html)
+    }
   }
 })

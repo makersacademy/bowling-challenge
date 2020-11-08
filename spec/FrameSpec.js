@@ -49,7 +49,7 @@ describe('Frame',function () {
       expect(frame.rolls.length).toEqual(1)
     });
 
-    it('add spare', function () {
+    it('adds spare', function () {
       frame.roll(2);
       frame.roll(8);
       expect(frame.rolls.length).toEqual(2)
@@ -58,7 +58,7 @@ describe('Frame',function () {
   });
 
   describe('#frame_score', function() {
-    it('calculate score for the frame', function() {
+    it('calculates score for the frame', function() {
       frame.roll(1);
       frame.roll(2);
 
@@ -67,7 +67,7 @@ describe('Frame',function () {
   });
 
   describe('#isStrike', function() {
-    it('change this.strike to true if numbers of pins knocked down is equal 10', function() {
+    it('changes this.strike to true if numbers of pins knocked down is equal 10', function() {
       frame.roll(10);
 
       expect(frame.strike).toEqual(true)
@@ -75,10 +75,23 @@ describe('Frame',function () {
   });
 
   describe('#isSpare', function() {
-    it('change this.spare to true if number of pins knocked down in two rolls is equal 10', function() {
+    it('changes this.spare to true if number of pins knocked down in two rolls is equal 10', function() {
       frame.roll(2);
       frame.roll(8);
       expect(frame.spare).toEqual(true)
+    });
+  });
+
+  describe('#add roll', function() {
+
+    var roll = jasmine.createSpyObj('roll', ['pinsKnockedDown']);
+
+    it('adds roll to the frame', function() {
+
+      roll.pinsKnockedDown = 4
+      frame.rolls.push(roll)
+
+      expect(frame.rolls.length).toEqual(1)
     });
   });
 

@@ -39,12 +39,12 @@ class Frame {
     return this.pinsLeft < pinsKnockedDown
   }
   isStrike(pinsKnockedDown) {
-    if (pinsKnockedDown == 10) {
+    if (pinsKnockedDown === 10) {
       return this.strike = true
     }
   }
   isSpare(pinsKnockedDown) {
-    if (this.pinsLeft == 0 && pinsKnockedDown != 10 ) {
+    if (this.pinsLeft === 0 && pinsKnockedDown != 10 ) {
       return this.spare = true
     }
   }

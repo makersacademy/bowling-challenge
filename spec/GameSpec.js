@@ -92,4 +92,14 @@ describe('Game', function() {
 
   });
 
+  describe('#currentScore', function () {
+    it('calculate currentScore', function() {
+      game.roll(1);
+      game.roll(1);
+      game.roll(1);
+
+      expect(game.currentScore()).toEqual(3)
+    });
+  });
+
 });

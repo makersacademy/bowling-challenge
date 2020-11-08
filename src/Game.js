@@ -48,4 +48,14 @@ class Game {
   gameOver(){
     return (this.endAfterThreeStrikes() || this.normalGameEnd() || this.spare_in_10th())
   }
+
+  currentScore() {
+    var frameScoreArray = this.frames.map(function(frame){
+    return frame.frame_score;
+    })
+    var currentScore = frameScoreArray.reduce(function(accumulator, currentValue){
+    return accumulator + currentValue;
+    },0)
+    return currentScore
+  }
 };

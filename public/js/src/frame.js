@@ -21,17 +21,12 @@ class Frame {
   }
 
   _isCorrectNumber(pins){
-    if(pins > 10){
-      throw new Error("There aren't that many pins!");
-    }else if (this.finalFrame === false && this.firstRoll() + pins > 10){
-      throw new Error("There aren't that many pins!")
-    }
+    if (pins > 10) throw new Error("There aren't that many pins!");
+    if (this.finalFrame === false && this.firstRoll() + pins > 10) throw new Error("There aren't that many pins!");
   }
 
   _isNumber(pins){
-    if(!Number.isInteger(pins)){
-      throw new Error('Not a number!');
-    }
+    if(!Number.isInteger(pins)) throw new Error('Not a number!');
   }
 
   isFinal(){

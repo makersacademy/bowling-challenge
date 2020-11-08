@@ -7,16 +7,12 @@ class Game {
   }
 
   bowl(pins){
-    if (this._isStrike(pins)){
-      this._completeStrikeFrame();
-    }
-    else if (this._isFinalFrame()){
+    if (this._isStrike(pins)) return this._completeStrikeFrame();
+    if (this._isFinalFrame()){
       let result = this._isBonus() ? this._addBonusRoll(pins) : "GAME OVER";
       return result;
     }
-    else {
-      this._isNewFrame() ? this._createFrame(pins) : this._endFrame(pins);
-    }
+    this._isNewFrame() ? this._createFrame(pins) : this._endFrame(pins);
   };
 
   _isBonus(){
@@ -28,12 +24,11 @@ class Game {
   }
 
   isInvalidRoll(pins){
-   if (this._frame){
-    let result = this._frame.finalFrame ? pins > 10 : (this._frame.firstRoll() + pins > 10) && this._frame.currentFrame.length === 1;
-    return result
-    } else {
-     return (pins > 10);
-   };
+    if (this._frame){
+      let result = this._frame.finalFrame ? pins > 10 : (this._frame.firstRoll() + pins > 10) && this._frame.currentFrame.length === 1;
+      return result
+    }
+    return (pins > 10);
   };
 
   score(){
@@ -97,9 +92,7 @@ class Game {
   }
 
   _checkFinalFrame(){
-    if(this._roll_number === 18){
-      this._frame.isFinal(); 
-    }
+    if (this._roll_number === 18) this._frame.isFinal();
   }
 
   _addBonusRoll(pins){

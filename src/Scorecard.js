@@ -7,6 +7,19 @@ class Scorecard {
     return this.frames[n]
   }
 
+  getLastFrame() {
+    return this.frames[this.frames.length - 1]
+  }
+
+  roll(n) {
+    var currentFrame = this.frames[this.frames.length - 1]
+    if (this.frames.length == 0 || currentFrame.isComplete()) {
+      currentFrame = new Frame
+      this.add(currentFrame)
+    }
+    currentFrame.roll(n)
+  }
+
   add(frame) {
     frame.setNumber(this.frames.length + 1)
     this.frames.push(frame)

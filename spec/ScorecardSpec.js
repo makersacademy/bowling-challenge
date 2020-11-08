@@ -22,6 +22,7 @@ describe("Scorecard", function () {
       expect(scorecard.getFrame(0)).toEqual(f1)
     })
   })
+
   describe("#score", function () {
     it("calls score on each frame with the next two frames as arguments", function () {
       scorecard.add(f1)
@@ -31,6 +32,38 @@ describe("Scorecard", function () {
       expect(f1.score).toHaveBeenCalledWith(f2, f3)
       expect(f2.score).toHaveBeenCalledWith(f3, undefined)
       expect(f3.score).toHaveBeenCalledWith(undefined, undefined)
+    })
+  })
+
+  describe("#roll", function () {
+    var frameClass
+    beforeEach(function () {
+    })
+    describe("First roll", function () {
+      it("creates a frame, calls roll on it and adds it to the scorecard", function () {
+        scorecard.roll(8)
+        var frame = scorecard.getFrame(0)
+        expect(frame).toBeInstanceOf(Frame)
+        expect(frame.getRoll(0)).toEqual(8)
+      })
+    })
+    describe("Current frame incomplete", function () {
+      it("calls roll on that frame", function () {
+        spyOn(f1, 'isComplete').and.returnValue(false)
+        spyOn(f1, 'roll')
+        scorecard.add(f1)
+        scorecard.roll(2)
+        expect(f1.roll).toHaveBeenCalledWith(2)
+      })
+    })
+    describe("Current frame is complete", function () {
+      it("creates a new frame, calls rolls on it and adds it to the scorecard", function () {
+        spyOn(f1, 'isComplete').and.returnValue(true)
+        scorecard.add(f1)
+        scorecard.roll(8)
+        expect(scorecard.getLastFrame()).not.toEqual(f1)
+        expect(scorecard.getLastFrame().getRoll(0)).toEqual(8)
+      })
     })
   })
 })

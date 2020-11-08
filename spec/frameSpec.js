@@ -9,6 +9,11 @@ describe('Frame', () => {
   });
 
   describe('bowl', () => {
+
+    it('starts with 0 points scored', () => {
+      expect([]).toEqual([]);
+    });
+
     it('adds score to first bowl on first go', () => {
       frame.bowl(5);
       expect(frame.firstBowl()).toEqual(5);
@@ -37,8 +42,6 @@ describe('Frame', () => {
       frame.bowl(10);
       expect(frame.isComplete()).toBe(true);
     });
-
-
   });
 
   describe('strike', () => {
@@ -52,6 +55,27 @@ describe('Frame', () => {
       expect(frame.isAStrike()).toBe(false);
       frame.bowl(5);
       expect(frame.isAStrike()).toBe(false);
+    });
+  });
+
+  describe('Spare', () =>  {
+
+    it('knows when it is a spare', () => {
+      frame.bowl(5);
+      frame.bowl(5);
+      expect(frame.isASpare()).toBe(true);
+    });
+
+    it('knows when it is not a spare', () => {
+      expect(frame.isASpare()).toBe(false);
+      frame.bowl(3);
+      frame.bowl(3);
+      expect(frame.isASpare()).toBe(false);
+    });
+
+    it('knows it is not a spare when strike bowled', () =>{
+      frame.bowl(10);
+      expect(frame.isASpare()).toBe(false);
     });
   });
 

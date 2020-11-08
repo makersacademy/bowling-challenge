@@ -25,4 +25,8 @@ class Frame {
     return this.firstBowl() === 10;
   }
 
+  isASpare()  {
+    return this.frame.length === 2 && this.firstBowl() + this.secondBowl() === 10;
+  }
+
 }

@@ -15,4 +15,8 @@ describe('Frame', function(){
     expect(frame.rollOne(8)).toEqual(8);
   });
 
+  it('takes an argument and returns it for the second roll of each frame', function(){
+    expect(frame.rollTwo(1)).toEqual(1);
+  });
+
 });

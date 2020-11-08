@@ -9,8 +9,12 @@ class Frame {
     return this.frameNumber;
   };
 
-  rollOne(a){
-    return a
+  rollOne(first_roll){
+    return first_roll
+  };
+
+  rollTwo(second_roll){
+    return second_roll
   };
 
 };

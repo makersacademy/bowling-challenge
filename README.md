@@ -2,6 +2,14 @@
 Bowling Challenge
 =================
 
+## Goals
+This is the week 6 weekend challenge for Makers Academy. During this week, we were introduced to Javascript and JQuery.
+
+- Translate last weekend's bowling challenge from Ruby into Javascript.
+- Use JQuery to create a user interface.
+
+## My Project
+
 ## Set Up
 Clone the repository:
 ```
@@ -43,21 +51,9 @@ $ ruby app.rb
 - The user can start over with 'New Game' and score is reset:
 ![NewGame](https://i.imgur.com/YEOqlYW.png)
 
-
-
 ## Tests
 - Capybara feature tests can be run in the terminal with rspec.
 - Open SpecRunner.html to run Jasmine tests on Javascript code.
-
-
-## Goal:
-- Create a Bowling class capable of counting and summing the scores of a single player's bowling game.
-- Focus on high quality code, with a focus on:
-    - Diagramming & TDD
-    - Testing behaviour rather than state
-    - Frequent commits
-    - Single Responsibility Principle and encapsulation
-    - Clear and readable code
 
 ## Planning
 

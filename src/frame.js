@@ -9,4 +9,8 @@ class Frame {
     return this.frameNumber;
   };
 
+  rollOne(a){
+    return a
+  };
+
 };

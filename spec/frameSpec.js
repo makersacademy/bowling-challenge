@@ -27,12 +27,18 @@ describe('Frame', () => {
       expect(frame.isComplete()).toBe(false);
     });
 
-    it('true when 2 bowls have happened', () =>  {
-      frame.bowl(5);
-      frame.bowl(2);
+    it('is true when 2 bowls have happened', () =>  {
+      frame.bowl(3);
+      frame.bowl(3);
       expect(frame.isComplete()).toBe(true);
-
     });
+
+    it('is true when there is a strike', () => {
+      frame.bowl(10);
+      expect(frame.isComplete()).toBe(true);
+    });
+
+
   });
 
   describe('strike', () => {

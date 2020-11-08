@@ -13,6 +13,7 @@ class Game {
     } else {
     this.addRollToExistingFrame(pinsKnockedDown)
     }
+    this.addBonusPointsforSpare(pinsKnockedDown);
   }
 
   addFrame(pinsKnockedDown) {
@@ -56,5 +57,10 @@ class Game {
     .reduce(function(accumulator, currentValue){
     return accumulator + currentValue;
     },0);
+  }
+  addBonusPointsforSpare(pinsKnockedDown){
+    if (this.frames.length > 1 && this.frames[this.frames.length -2].spare){
+      return this.frames[this.frames.length -2].frame_score += pinsKnockedDown
+    }
   }
 };

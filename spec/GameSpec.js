@@ -93,12 +93,19 @@ describe('Game', function() {
   });
 
   describe('#currentScore', function () {
-    it('calculate currentScore', function() {
+    it('calculates currentScore', function() {
       game.roll(1);
       game.roll(1);
       game.roll(1);
 
       expect(game.currentScore()).toEqual(3)
+    });
+
+    it('adds bonus for spare',function() {
+      game.roll(9);
+      game.roll(1);
+      game.roll(5);
+      expect(game.currentScore()).toEqual(20)
     });
   });
 

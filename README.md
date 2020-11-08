@@ -76,3 +76,5 @@ Reviewers will potentially be using this [code review rubric](docs/review.md).  
 
 
 Progress
+
+1. Set up an initial plan which is saved in the images folder

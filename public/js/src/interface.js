@@ -24,7 +24,7 @@ $(document).ready(function() {
   function displayCurrentScore(pins) {
     let scoreDisplay;
     if (Number.isInteger(pins)) {
-      scoreDisplay = pins === 10 ? 'STRIKE' : pins > 10 ? 'NOT POSSIBLE' : pins;
+      scoreDisplay = game.isInvalidRoll(pins) ? 'NOT POSSIBLE' : pins === 10 ? 'STRIKE' : pins;
     }
     else {
       scoreDisplay = "That's not a number!";

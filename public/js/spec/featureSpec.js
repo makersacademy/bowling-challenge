@@ -156,5 +156,30 @@ describe('Feature test', function(){
       expect(game.score()).toEqual(40);
     });
   })
+
+  describe('invalidRoll', function(){
+    it('Returns true if roll is invalid', function(){
+      game.bowl(2)
+      expect(game.isInvalidRoll(9)).toEqual(true);
+    })
+
+    it('Returns true if player tries to roll more than 10', function(){
+      expect(game.isInvalidRoll(12)).toEqual(true);    
+    })
+
+    it('Returns false if roll is valid', function(){
+      game.bowl(3)
+      expect(game.isInvalidRoll(4)).toEqual(false);
+    })
+
+    it('Returns false if roll if valid in final frame', function(){
+      for (var i = 0; i < 18; i ++){
+        game.bowl(2);
+      }
+      game.bowl(10)
+      game.bowl(10)
+      expect(game.isInvalidRoll(5)).toEqual(false);
+    })
+  })
   
 });

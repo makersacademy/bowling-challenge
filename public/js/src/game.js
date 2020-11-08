@@ -11,11 +11,8 @@ class Game {
       this._completeStrikeFrame();
     }
     else if (this._isFinalFrame()){
-      if (this._isBonus()){
-        this._addBonusRoll(pins);
-      }else {
-        return "GAME OVER"
-      }
+      let result = this._isBonus() ? this._addBonusRoll(pins) : "GAME OVER";
+      return result;
     }
     else {
       this._isNewFrame() ? this._createFrame(pins) : this._endFrame(pins);
@@ -29,6 +26,15 @@ class Game {
   _lastFrame(){
     return this._rolls[this._rolls.length-1]
   }
+
+  isInvalidRoll(pins){
+   if (this._frame){
+    let result = this._frame.finalFrame ? pins > 10 : this._frame.firstRoll() + pins > 10;
+    return result
+    } else {
+     return (pins > 10);
+   };
+  };
 
   score(){
     return this._calculateScore(); 

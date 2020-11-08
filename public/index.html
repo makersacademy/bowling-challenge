@@ -8,14 +8,15 @@
   <body>
     <section>
       <h1 id="score"></h1>
-      <p>
+      <fieldset>
         <label for ="bowl_input">How many pins did you knock over?</label>
         <input id="bowl_input" type="integer">
         <button id="bowl">Bowl</button>
         <button id="new">New Game</button>
-        <h1 id="current_score" class="score_display"></h1>
-        <h1 id="result"></h1>
-      </p>
+      <fieldset>
+        <p id="current_score" class="score_display"></p>
+        <p id="error" class="score_display"></p>
+        <p id="result"></p>
     </section>
     <script type="text/javascript" src='./js/src/game.js'></script>
     <script type="text/javascript" src='./js/src/frame.js'></script>

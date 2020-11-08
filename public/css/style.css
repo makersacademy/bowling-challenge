@@ -13,13 +13,17 @@ body {
   font-size: 80px;
 }
 
-
 #new {
   margin: 20px
 }
 
-.score_display { 
+#current_score { 
   color: grey;
+  animation: blinker 1s step-start infinite;
+}
+
+#error { 
+  color: red;
   animation: blinker 1s step-start infinite;
 }
 

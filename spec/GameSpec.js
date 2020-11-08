@@ -126,7 +126,7 @@ describe('Game', function() {
       expect(game.currentScore()).toEqual(25)
     });
 
-    xit('two strikes in a row next normal', function() {
+    it('two strikes in a row next normal', function() {
       game.roll(10);
       game.roll(10);
       game.roll(5);
@@ -135,19 +135,10 @@ describe('Game', function() {
       expect(game.currentScore()).toEqual(53)
     });
 
-    it('perfect game', function() {
+    xit('perfect game', function() {
+      for (var i = 0; i < 12; i++) {
         game.roll(10);
-        game.roll(10);
-        game.roll(10);
-        game.roll(10);
-        game.roll(10);
-        game.roll(10);
-        game.roll(10);
-        game.roll(10);
-        game.roll(10);
-        game.roll(10);
-        game.roll(10);
-        game.roll(10);
+      }
 
       expect(game.currentScore()).toEqual(300)
     });

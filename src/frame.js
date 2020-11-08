@@ -3,10 +3,12 @@
 class Frame {
   constructor() {
     this.frame = [];
+    this.score = 0;
   }
 
   bowl(score) {
     this.frame.push(score);
+    this.score += score;
   }
 
   firstBowl() {
@@ -27,6 +29,10 @@ class Frame {
 
   isASpare()  {
     return this.frame.length === 2 && this.firstBowl() + this.secondBowl() === 10;
+  }
+
+  points() {
+    return this.score
   }
 
 }

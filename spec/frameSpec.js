@@ -58,7 +58,7 @@ describe('Frame', () => {
     });
   });
 
-  describe('Spare', () =>  {
+  describe('spare', () =>  {
 
     it('knows when it is a spare', () => {
       frame.bowl(5);
@@ -73,9 +73,35 @@ describe('Frame', () => {
       expect(frame.isASpare()).toBe(false);
     });
 
-    it('knows it is not a spare when strike bowled', () =>{
+    it('knows it is not a spare when strike bowled', () => {
       frame.bowl(10);
       expect(frame.isASpare()).toBe(false);
+    });
+  });
+
+  describe('points', () =>  {
+
+    it('gutter ball situation', () =>  {
+      frame.bowl(0);
+      frame.bowl(0);
+      expect(frame.points()).toEqual(0);
+    });
+
+    it('normal bowls situation', () =>  {
+      frame.bowl(3);
+      frame.bowl(3);
+      expect(frame.points()).toEqual(6);
+    });
+
+    it('spare situation', () =>  {
+      frame.bowl(5);
+      frame.bowl(5);
+      expect(frame.points()).toEqual(10);
+    });
+
+    it('strike situation', () => {
+      frame.bowl(10);
+      expect(frame.points()).toEqual(10);
     });
   });
 

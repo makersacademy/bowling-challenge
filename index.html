@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Bowling</title>
+  <title>Bowling Scorecard</title>
 
   <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
   <script src="src/Frame.js"></script>
@@ -10,7 +10,12 @@
 </head>
 
 <body>
-
+  <h1>Bowling Scorecard</h1>
+  <div id="scores"></div>
+  <form id="new-roll">
+    <input type="number" min="0" max="10" id="roll">
+    <input type="submit" value="Add roll" id="add-roll">
+  </form>
 </body>
 
 </html>

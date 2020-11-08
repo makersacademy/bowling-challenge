@@ -66,6 +66,13 @@ describe('Bowling', function() {
       manyRolls(1, 2)
       expect(bowling.totalScore()).toEqual(138);
     });
+
+    it('returns the total score when bowling 2 strikes in the 10th frame', function() {
+      manyRolls(7, 18)
+      manyRolls(10, 2)
+      bowling.roll(1)
+      expect(bowling.totalScore()).toEqual(147);
+    });
   });
 
   function manyRolls(pins,rolls) {

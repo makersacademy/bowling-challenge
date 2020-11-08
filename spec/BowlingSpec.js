@@ -6,10 +6,13 @@ describe('Bowling', function () {
     bowl = new Bowling();
   });
 
-  // it('score returns 0', function () {
-  //   bowl.roll(0)
-  //   expect(bowl.totalScore()).toEqual(0);
-  // });
+  it('score returns 0', function () {
+    bowl.roll(0)
+    for (let i = 0; i < 19; i++) {
+      bowl.roll(0)
+    }
+    expect(bowl.totalScore()).toEqual(0);
+  });
 
   it('scores 20 when only 1s are rolled', function () {
     for (let roll = 0; roll < 20; roll++) {
@@ -26,24 +29,33 @@ describe('Bowling', function () {
     expect(bowl.totalScore()).toEqual(0);
   });
 
-
-  // it('scores a gutter game', function () {
-  //   expect(bowl.bowlingScore([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])).toEqual(0);
-  // });
-
-  it('will add two rolls equal to 4 points in total', function() {
+  it('will add two rolls equal to 4 points in total', function () {
     bowl.roll(2);
     bowl.roll(2);
-    console.log(bowl.regularScore());
-    console.log(bowl.totalScore());
+    for (let i = 0; i < 18; i++) {
+      bowl.roll(0)
+    }
     expect(bowl.totalScore()).toEqual(4);
   });
 
-//   it('scores a strike', function() {
-//     bowl.roll(10);
-//     bowl.roll(2);
-//     bowl.roll(2);
-//     expect(bowl.totalScore()).toEqual(18);
-//   });
+  it('scores a strike', function() {
+    bowl.roll(10);
+    bowl.roll(2);
+    bowl.roll(2);
+    for (let i = 0; i < 17; i++) {
+      bowl.roll(0)
+    }
+    expect(bowl.totalScore()).toEqual(18);
+  });
+
+  it('scores a spare', function() {
+    bowl.roll(6);
+    bowl.roll(4);
+    bowl.roll(2);
+    for (let i = 0; i < 18; i++) {
+      bowl.roll(0)
+    }
+    expect(bowl.totalScore()).toEqual(12)
+  });
 
 });

@@ -2,11 +2,11 @@
 
 class Frame {
   constructor(){
-      this.frameNumber = 1;
+      this.frameCounter = 1;
   };
 
   returnFrameNumber(){
-    return this.frameNumber;
+    return this.frameCounter;
   };
 
   rollOne(first_roll){
@@ -16,5 +16,9 @@ class Frame {
   rollTwo(second_roll){
     return second_roll
   };
+
+  frameNumberCounter(){
+    return this.frameCounter += 1;
+  }
 
 };

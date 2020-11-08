@@ -78,3 +78,5 @@ Reviewers will potentially be using this [code review rubric](docs/review.md).  
 Progress
 
 1. Set up an initial plan which is saved in the images folder
+2. Created the Frame class
+3. Created 3 tests and 3 passes

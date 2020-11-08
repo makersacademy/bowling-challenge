@@ -111,17 +111,44 @@ describe('Game', function() {
       expect(game.currentScore()).toEqual(72)
     });
 
-    xit('adds bonus for strike',function() {
+    it('adds bonus for strike',function() {
       game.roll(10);
       game.roll(1);
       game.roll(5);
       expect(game.currentScore()).toEqual(22)
     });
 
-    xit('perfecr game', function() {
-      for (var i = 0; i < 12; i++) {
+    it('two strikes in a row', function() {
+      game.roll(10);
+      game.roll(10);
+      game.roll(5);
+
+      expect(game.currentScore()).toEqual(25)
+    });
+
+    xit('two strikes in a row next normal', function() {
+      game.roll(10);
+      game.roll(10);
+      game.roll(5);
+      game.roll(4);
+
+      expect(game.currentScore()).toEqual(53)
+    });
+
+    it('perfect game', function() {
         game.roll(10);
-      }
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+
       expect(game.currentScore()).toEqual(300)
     });
   });

@@ -13,7 +13,8 @@ class Game {
     } else {
     this.addRollToExistingFrame(pinsKnockedDown)
     }
-    this.addBonusPointsforSpare(pinsKnockedDown);
+    this.addBonusPointsforSpare();
+    this.addBonusPointsforStrike();
   }
 
   addFrame(pinsKnockedDown) {
@@ -64,14 +65,18 @@ class Game {
     }
   }
   addBonusPointsforStrike(){
-    if (this.frames.length > 1 && this.frames[this.frames.length -2].strike && this.frames[this.frames.length -1].rolls.length == 2) {
-      return this.frames[this.frames.length -2].frame_score += this.frames[this.frames.length -1].frame_score
+    if (this.frames.length > 1 && this.frames[this.frames.length -2].strike) {
+        return this.frames[this.frames.length -2].frame_score += this.frames.map(function(frame){ return frame.rolls})
+        .flat()
+        .slice(-1)
+        .reduce((a,b) => a + b.pinsKnockedDown, 0)
     }
-    if (this.frames.length > 1 && this.frames[this.frames.length -2].strike && this.frames[this.frames.length -1].rolls.length == 1 && this.frames[this.frames.length -1].strike) {
-      return this.frames[this.frames.length -2].frame_score += this.frames[this.frames.length -1].frame_score
-    }
-    if (this.frames.length > 2 && this.frames[this.frames.length -3].strike && this.frames[this.frames.length -2].strike && this.frames[this.frames.length -2].strike) {
-        return this.frames[this.frames.length -3].frame_score += this.frames[this.frames.length -1].rolls[0].pinsKnockedDown
+
+    if (this.frames.length > 2 && this.frames[this.frames.length -3].strike) {
+        return this.frames[this.frames.length -3].frame_score += this.frames.map(function(frame){ return frame.rolls})
+        .flat()
+        .slice(-2)
+        .reduce((a,b) => a + b.pinsKnockedDown, 0);
     }
   }
 };

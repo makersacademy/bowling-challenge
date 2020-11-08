@@ -19,9 +19,31 @@ Run app.rb:
 $ ruby app.rb
 ```
 
-- Visit http://localhost:4567/ in the browser
-- Add to the scorecard by inputting a roll and clicking 'Bowl'
-- Score can be updated whenever you'd like but will not add strike/spare bonuses until these frames have been followed by subsequent rolls. 
+- Visit http://localhost:4567/ in the browser:
+![Homepage](https://i.imgur.com/eBiWLaW.png)
+
+- Add to the scorecard by typing a valid number and clicking 'Bowl':
+![InputRoll](https://i.imgur.com/Sj2nQck.png)
+
+- If the roll is valid it will be displayed below:
+![DisplayScore](https://i.imgur.com/zKbR5i1.png)
+
+- If the user gets a strike, 'Strike' is displayed and counted initially as 10 points, with a bonus added after the next roll (spares are also scored this way):
+![Strike](https://i.imgur.com/JVDpYuX.png)
+
+- If number is invalid, error message is displayed on the page:
+![InvalidError](https://i.imgur.com/rk42Mxd.png)
+
+- If a non-integer is entered, 'That's not a number!' is displayed to the user:
+![NonNumber](https://i.imgur.com/MorSogJ.png)
+
+- At the end of a game, 'Game Over' is displayed to the user and any new rolls will not be added to the score:
+![GameOver](https://i.imgur.com/o9yseEw.png)
+
+- The user can start over with 'New Game' and score is reset:
+![NewGame](https://i.imgur.com/YEOqlYW.png)
+
+
 
 ## Tests
 - Capybara feature tests can be run in the terminal with rspec.

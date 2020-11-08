@@ -22,6 +22,7 @@ describe('Frame', () => {
   });
 
   describe('complete', () => {
+
     it('starts off incomplete', () => {
       expect(frame.isComplete()).toBe(false);
     });
@@ -31,6 +32,20 @@ describe('Frame', () => {
       frame.bowl(2);
       expect(frame.isComplete()).toBe(true);
 
+    });
+  });
+
+  describe('strike', () => {
+
+    it('knows when it is a strike', () => {
+      frame.bowl(10);
+      expect(frame.isAStrike()).toBe(true);
+    });
+
+    it('knows when it is not a strike', () => {
+      expect(frame.isAStrike()).toBe(false);
+      frame.bowl(5);
+      expect(frame.isAStrike()).toBe(false);
     });
   });
 

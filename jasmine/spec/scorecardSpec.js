@@ -1,4 +1,4 @@
-describe('Scorecard', function() {
+describe('Scorecard class', function() {
   var scorecard
   var print
 
@@ -6,6 +6,7 @@ describe('Scorecard', function() {
     scorecard = new Scorecard;
   });
 
+describe('this.score variable', function() {
   it('checks there is a blank scorecard to begin with', function(){
     expect(scorecard.score).toEqual({'1.1':0, '1.2':0, '2.1':0, '2.2':0, '3.1':0, '3.2':0, '4.1':0, '4.2':0, '5.1':0, '5.2':0, '6.1':0, '6.2':0, '7.1':0, '7.2':0, '8.1':0, '8.2':0, '9.1':0, '9.2':0, '10.1':0, '10.2':0, '10.3':0})
   });
@@ -22,7 +23,9 @@ describe('Scorecard', function() {
     scorecard.resetScorecard()
     expect(scorecard.score).toEqual({'1.1':0, '1.2':0, '2.1':0, '2.2':0, '3.1':0, '3.2':0, '4.1':0, '4.2':0, '5.1':0, '5.2':0, '6.1':0, '6.2':0, '7.1':0, '7.2':0, '8.1':0, '8.2':0, '9.1':0, '9.2':0, '10.1':0, '10.2':0, '10.3':0})
   });
+});
 
+describe('#total method', function() {
   it('checks that total adds one frame together', function(){
     scorecard.addRoll(1.1, 5)
     scorecard.addRoll(1.2, 3)
@@ -41,6 +44,7 @@ describe('Scorecard', function() {
     expect(scorecard.total(4)).toEqual(24)
   });
 
+describe('bonus roll tests', function() {
   it('checks that a strike on roll 1 on frame 1 adds bonus points of next frame', function(){
     scorecard.addRoll(1.1, 10)
     scorecard.addRoll(1.2, 0)
@@ -131,14 +135,24 @@ describe('Scorecard', function() {
     scorecard.addRoll(10.3, 10)
     expect(scorecard.total(10)).toEqual(86)
   });
+});
 
+});
+
+describe('#print method', function() {
   it('prints frame, roll, pins knocked and score', function() {
     scorecard.addRoll(1.1, 0)
     scorecard.addRoll(1.2, 2)
     scorecard.addRoll(2.1, 5)
     scorecard.addRoll(2.2, 3)
     let string = scorecard.print(2)
-    expect(string).toEqual("Frame.Roll = 1.1 Pins knocked = 0\nFrame.Roll = 1.2 Pins knocked = 2\nYour score = 10\n")
+    expect(string).toEqual("Frame.Roll = 1.1 Pins knocked = 0\nFrame.Roll = 1.2 Pins knocked = 2\nFrame.Roll = 2.1 Pins knocked = 5\nFrame.Roll = 2.2 Pins knocked = 3\nFrame.Roll = 3.1 Pins knocked = 0\nFrame.Roll = 3.2 Pins knocked = 0\nFrame.Roll = 4.1 Pins knocked = 0\nFrame.Roll = 4.2 Pins knocked = 0\nFrame.Roll = 5.1 Pins knocked = 0\nFrame.Roll = 5.2 Pins knocked = 0\nFrame.Roll = 6.1 Pins knocked = 0\nFrame.Roll = 6.2 Pins knocked = 0\nFrame.Roll = 7.1 Pins knocked = 0\nFrame.Roll = 7.2 Pins knocked = 0\nFrame.Roll = 8.1 Pins knocked = 0\nFrame.Roll = 8.2 Pins knocked = 0\nFrame.Roll = 9.1 Pins knocked = 0\nFrame.Roll = 9.2 Pins knocked = 0\nFrame.Roll = 10.1 Pins knocked = 0\nFrame.Roll = 10.2 Pins knocked = 0\nFrame.Roll = 10.3 Pins knocked = 0\nYour score = 10")
   });
+});
 
+describe('edge case', function() {
+  it('user cant enter more than 10 in one roll', function() {
+    expect(function() {scorecard.addRoll(1.1, 11)}).toThrowError('You cant roll more than 10')
+  });
+});
 });

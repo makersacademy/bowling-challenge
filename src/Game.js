@@ -50,12 +50,11 @@ class Game {
   }
 
   currentScore() {
-    var frameScoreArray = this.frames.map(function(frame){
-    return frame.frame_score;
-    })
-    var currentScore = frameScoreArray.reduce(function(accumulator, currentValue){
+    return this.frames
+    .map(function(frame){
+    return frame.frame_score;})
+    .reduce(function(accumulator, currentValue){
     return accumulator + currentValue;
-    },0)
-    return currentScore
+    },0);
   }
 };

@@ -14,19 +14,28 @@ describe('Frame', () => {
   describe('applyBonus', () => {
     it('adds a strike bonus to the frame if the frame was a strike', () => {
       strike.applyBonus()
-      expect(strike.frame['Bonus']).toEqual('strike')
+      expect(strike.frame.bonus).toEqual('strike')
     }); 
 
     it('adds a spare bonus to the frame if the frame was a spare', () => {
       spare.applyBonus()
-      expect(spare.frame['Bonus']).toEqual('spare')
+      expect(spare.frame.bonus).toEqual('spare')
     });
 
     it('does not add any bonus if the frame was not a strike or a spare', () => {
       normal.applyBonus()
-      expect(normal.frame['Bonus']).toBeUndefined()
+      expect(normal.frame.bonus).toBeUndefined()
     });
     
   });
+
+//   describe('frameTotal', () => {
+//     it('adds a new property to the frame object called frame total that is the sum of the two rolls', () => {
+//       spare.frameTotal()
+//       normal.frameTotal()
+//       expect(spare.frame.total).toEqual(10)
+//       expect(normal.frame.total).toEqual(7)
+//     });
+//   });
 
 })

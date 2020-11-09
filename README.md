@@ -80,3 +80,5 @@ Progress
 1. Set up an initial plan which is saved in the images folder
 2. Created the Frame class
 3. Created 3 tests and 3 passes
+4. Created 5 tests, 5 passes.
+5. I am currently attempting to pass a test for counting the total non bonus points....

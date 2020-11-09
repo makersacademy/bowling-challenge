@@ -1,0 +1,57 @@
+/* DivTable.com */
+
+#title {
+  padding-top: 45px;
+  font-size: 35px;
+  font-family: Leckerli One;
+  color: black;
+  text-align: center;
+}
+
+#title h1 {
+  background-color:rgba(255, 255, 255, 0.4);
+  width: 35%;
+  margin: 0 auto;
+  border: 2px solid black;
+}
+
+#buttons {
+  margin: 4%;
+  text-align: center;
+}
+
+#score-card {
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 40%;
+  margin: 0 auto;
+  text-align: center;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+table,
+td {
+  border: 1.5px solid black;
+  border-collapse: collapse;
+}
+
+th {
+  border-top: 0px;
+  border-right: 1.5px solid black;
+
+}
+
+td,
+th {
+  padding: 3px;
+  width: 30px;
+  height: 25px;
+}
+
+th {
+  background: lightgrey;
+}

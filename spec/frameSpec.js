@@ -23,4 +23,13 @@ describe('Frame', function(){
     expect(frame.frameNumberCounter()).toEqual(2);
   });
 
+  it('can determine if the frame being played is the last frame', function(){
+    expect(frame.islastFrame()).toBe(true);
+  });
+
+  it('shows the amount of current regular points', function(){
+    spyOn(currentTotalRegularPoints()).and.returnValue(5);
+    expect(function(){ points(); }).toEq(5)
+  })
+
 });

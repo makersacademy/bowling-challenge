@@ -5,17 +5,124 @@
  
   <!-- include source files here... -->
   <script src=“https://code.jquery.com/jquery-2.1.4.min.js”></script>
-  <script src="src/bowling.js"></script>
+  <script src="src/bowling.js"></script> -->
   <script src="src/interface.js"></script>
 
 
 </head>
-
+<link rel="stylesheet" href="mystyle.css">
 <body>
-    <h1 id =show_score> Bowling Bitches </h1>
-    <label for ="score_input">Enter your score you bastard!:</label>
+  <h1>PLEASE CLICK BEFORE COMPLETION!</h1>
+
+  <button onclick="sampleFunction()">Click Now</button>
+  <p id="greeting"></p>
+  
+<!-- 
+     <input id=“score_input” type=“text”>
+    <button id = 'score'>Input</button>
+    <h1 id =show_scoretwo> Bowling Bitches </h1>
+    <label for ="score_inputtwo">Enter your score you bastard!:</label>
+    <input id=“score_inputtwo” type=“text”>
+    <button id = 'score'>Input</button> -->
+
+
+    <h1 id =show_score> BOWLING SCORECARD! </h1>
+    <label for ="score_input">Lets be having ya scores!!:</label>
+    <h1></h1>
+ 
+    <h3><label for ="score_input">Frame 1!:</label></h3>
+    <h1></h1>
+    <label for ="score_input">Roll 1</label>
+    <input id=“scoreInputOne” type=“text”>
+    <button onclick='rollOne()'>Input</button>
+    <label for ="score_input">Roll 2</label>
+    <input id=“scoreInputTwo” type=“text”>
+    <button onclick='rolltTwo()'>Input</button>
+    <h1></h1>
+    <h3><label for ="score_input">Frame 2!:</label></h3>
+    <h1></h1>
+    <label for ="score_input">Roll 1</label>
+    <input id=“score_inputOne” type=“text”>
+    <button id ='score'>Input</button>
+    <label for ="score_input">Roll 2</label>
+    <input id=“score_inputtwo” type=“text”>
+    <button id='score'>Input</button>
+    <h1></h1>
+    <h3><label for ="score_input">Frame 3!:</label></h3>
+    <h1></h1>
+    <label for ="score_input">Roll 1</label>
+    <input id=“score_inputtwo” type=“text”>
+    <button id = 'score'>Input</button>
+    <label for ="score_input">Roll 2</label>
+    <input id=“score_inputtwo” type=“text”>
+    <button id = 'score'>Input</button>
+    <h1></h1>
+    <h3><label for ="score_input">Frame 4!:</label></h3>
+    <h1></h1>
+    <label for ="score_input">Roll 1</label>
+    <input id=“score_inputtwo” type=“text”>
+    <button id = 'score'>Input</button>
+    <label for ="score_input">Roll 2</label>
+    <input id=“score_inputtwo” type=“text”>
+    <button id = 'score'>Input</button>
+    <h1></h1>
+    <h3><label for ="score_input">Frame 5!:</label></h3>
+    <h1></h1>
+    <label for ="score_input">Roll 1</label>
+    <input id=“score_inputtwo” type=“text”>
+    <button id = 'score'>Input</button>
+    <label for ="score_input">Roll 2</label>
+    <input id=“score_inputtwo” type=“text”>
+    <button id = 'score'>Input</button>
+    <h1></h1>
+    <h3><label for ="score_input">Frame 6!:</label></h3>
+    <h1></h1>
+    <label for ="score_input">Roll 1</label>
+    <input id=“score_inputtwo” type=“text”>
+    <button id = 'score'>Input</button>
+    <label for ="score_input">Roll 2</label>
+    <input id=“score_inputtwo” type=“text”>
+    <button id = 'score'>Input</button>
+    <h1></h1>
+    <h3><label for ="score_input">Frame 7!:</label></h3>
+    <h1></h1>
+    <label for ="score_input">Roll 1</label>
+    <input id=“score_inputtwo” type=“text”>
+    <button id = 'score'>Input</button>
+    <label for ="score_input">Roll 2</label>
+    <input id=“score_inputtwo” type=“text”>
+    <button id = 'score'>Input</button>
+    <h1></h1>
+    <h3><label for ="score_input">Frame 8!:</label></h3>
+    <h1></h1>
+    <label for ="score_input">Roll 1</label>
+    <input id=“score_inputtwo” type=“text”>
+    <button id = 'score'>Input</button>
+    <label for ="score_input">Roll 2</label>
+    <input id=“score_inputtwo” type=“text”>
+    <button id = 'score'>Input</button>
+    <h1></h1>
+    <h3><label for ="score_input">Frame 9!:</label></h3>
+    <h1></h1>
+    <label for ="score_input">Roll 1</label>
+    <input id=“score_inputtwo” type=“text”>
+    <button id = 'score'>Input</button>
+    <label for ="score_input">Roll 2</label>
+    <input id=“score_inputtwo” type=“text”>
+    <button id = 'score'>Input</button>
+    <h1></h1>
+    <h3><label for ="score_input">Frame 10!:</label></h3>
+    <h1></h1>
+    <label for ="score_input">Roll 1</label>
     <input id=“score_input” type=“text”>
     <button id = 'score'>Input</button>
-
+    <label for ="score_input">Roll 2</label>
+    <input id=“score_input” type=“text”>
+    <button id = 'score'>Input</button>
+    <h1></h1>
+    <h3>SUBTOTAL     : <input type="text" name="total" id="total"/></h3>
+    <h3>BONUS POINTS : <input type="text" name="total" id="total"/></h3>
+    <h1>TOTAL : <input type="text" name="total" id="total"/></h1>
+  
 </body>
 </html>

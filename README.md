@@ -42,6 +42,11 @@ Bowling Scorecard in Javascript
 - Can score a perfect game:  
 `10 x [10,-], 2 x [10,-] --> Bowling.totalScore --> 300`
 
+## Planning the interface
+
+![interface](images/interface-plan.png)
+
+
 ## The Task
 
 **THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
@@ -81,6 +86,7 @@ If the player rolls a strike or spare in the 10th frame they can roll the additi
 ### Gutter Game
 
 A Gutter Game is when the player never hits a pin (20 zero scores).
+
 
 ### Perfect Game
 

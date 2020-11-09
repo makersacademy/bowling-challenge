@@ -10,14 +10,14 @@ describe('Frame', function(){
     expect(frame.currentFrame).toEqual([]);
   })
 
-  describe('addToFrame', function(){
+  describe('#addToFrame', function(){
     it('adds pins to current frame', function(){
       frame.addToFrame(10);
       expect(frame.currentFrame).toContain(10);
     })
   })
 
-  describe('total', function(){
+  describe('#total', function(){
     it('returns the sum of the current frame', function(){
       frame.addToFrame(3);
       frame.addToFrame(5);
@@ -25,7 +25,7 @@ describe('Frame', function(){
     })
   })
 
-  describe('firstRoll', function(){
+  describe('#firstRoll', function(){
     it('returns the first roll of the current frame', function(){
       frame.addToFrame(2);
       frame.addToFrame(5);
@@ -33,35 +33,35 @@ describe('Frame', function(){
     })
   })
   
-  describe('isSpare', function(){
+  describe('#isSpare', function(){
     it('returns true if frame is a spare', function(){
       frame.addToFrame(5);
       frame.addToFrame(5);
       expect(frame.isSpare()).toEqual(true);
     })
 
-    it('returns false if frame is not a spare', function(){
+    it('#returns false if frame is not a spare', function(){
       frame.addToFrame(1);
       frame.addToFrame(5);
       expect(frame.isSpare()).toEqual(false);
     })
   }) 
 
-  describe('isStrike', function(){
+  describe('#isStrike', function(){
     it('returns true if frame is a strike', function(){
       frame.addToFrame(10);
       frame.addToFrame(0);
       expect(frame.isStrike()).toEqual(true);
     })
 
-    it('returns false if frame is not a strike', function(){
+    it('#returns false if frame is not a strike', function(){
       frame.addToFrame(1);
       frame.addToFrame(5);
       expect(frame.isStrike()).toEqual(false);
     })
   }) 
 
-  describe('firstTwoRolls', function(){
+  describe('#firstTwoRolls', function(){
     it('returns the sum of the first two rolls in a bonus frame', function(){
       frame.addToFrame(5);
       frame.addToFrame(5);

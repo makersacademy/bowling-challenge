@@ -30,13 +30,17 @@ describe('Game', function(){
     isBonus(){
       return true
     }
+
+    total(){
+      return 'total has been called'
+    }
   }
 
   beforeEach(function(){
     game = new Game();
   });
   
-  describe('bowl', function(){
+  describe('#bowl', function(){
     it('creates a new frame', function(){
       game.bowl(2, frameDouble);
       expect(game._frame).toBeInstanceOf(frameDouble);
@@ -66,7 +70,16 @@ describe('Game', function(){
     })
   });
 
-  describe('newGame', function(){
+  describe('#score', function(){
+    it('adds total of frame to 0', function(){
+      for (var i = 0; i < 2; i ++){
+        game.bowl(2, frameDouble);
+      }
+      expect(game.score()).toEqual('0total has been called')
+    })
+  })
+
+  describe('#newGame', function(){
     it('Wipes the current rolls history and roll number', function(){
       for (var i = 0; i < 2; i ++){
         game.bowl(2, frameDouble);

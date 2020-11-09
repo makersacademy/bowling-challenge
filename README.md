@@ -2,6 +2,14 @@
 Bowling Challenge
 =================
 
+## Goals
+This is the week 6 weekend challenge for Makers Academy. During this week, we were introduced to Javascript and JQuery.
+
+- Translate last weekend's bowling challenge from Ruby into Javascript.
+- Use JQuery to create a user interface.
+
+## My Project
+
 ## Set Up
 Clone the repository:
 ```
@@ -19,23 +27,33 @@ Run app.rb:
 $ ruby app.rb
 ```
 
-- Visit http://localhost:4567/ in the browser
-- Add to the scorecard by inputting a roll and clicking 'Bowl'
-- Score can be updated whenever you'd like but will not add strike/spare bonuses until these frames have been followed by subsequent rolls. 
+- Visit http://localhost:4567/ in the browser:
+![Homepage](https://i.imgur.com/eBiWLaW.png)
+
+- Add to the scorecard by typing a valid number and clicking 'Bowl':
+![InputRoll](https://i.imgur.com/Sj2nQck.png)
+
+- If the roll is valid it will be displayed below:
+![DisplayScore](https://i.imgur.com/zKbR5i1.png)
+
+- If the user gets a strike, 'Strike' is displayed and counted initially as 10 points, with a bonus added after the next roll (spares are also scored this way):
+![Strike](https://i.imgur.com/JVDpYuX.png)
+
+- If number is invalid, error message is displayed on the page:
+![InvalidError](https://i.imgur.com/rk42Mxd.png)
+
+- If a non-integer is entered, 'That's not a number!' is displayed to the user:
+![NonNumber](https://i.imgur.com/MorSogJ.png)
+
+- At the end of a game, 'Game Over' is displayed to the user and any new rolls will not be added to the score:
+![GameOver](https://i.imgur.com/o9yseEw.png)
+
+- The user can start over with 'New Game' and score is reset:
+![NewGame](https://i.imgur.com/YEOqlYW.png)
 
 ## Tests
 - Capybara feature tests can be run in the terminal with rspec.
 - Open SpecRunner.html to run Jasmine tests on Javascript code.
-
-
-## Goal:
-- Create a Bowling class capable of counting and summing the scores of a single player's bowling game.
-- Focus on high quality code, with a focus on:
-    - Diagramming & TDD
-    - Testing behaviour rather than state
-    - Frequent commits
-    - Single Responsibility Principle and encapsulation
-    - Clear and readable code
 
 ## Planning
 
@@ -98,7 +116,7 @@ The player has a strike if he knocks down all 10 pins with the first roll in a f
 Thoughts:
 - If a player scores a strike before the 10th frame, the next roll should be counted as the beginning of the next frame, as opposed to the game expecting to recieve a score of 0 for the second roll of the same frame.
 - Rolls will need to be stored in order for scores to be correctly calculated.
-- Guard clauses will likely be required to prevent errors when trying to retrieve the score before a strike score can be calculated.
+- Guard clauses will be required to prevent errors when trying to retrieve the score before a strike score can be calculated.
 
 #### Spares
 
@@ -112,22 +130,9 @@ Thoughts:
 If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
 
 Thoughts:
-- There will likely need to be a length check of the score array to ensure that the player can't roll more than the allotted rolls in a game.
-- Perhaps an option for a user to restart a game if they attempt to roll again after completing a game.
+- Length check of the array to ensure player doesn't roll more than alloted rolls in a game.
+- Option for a user to restart after completing a game.
 
-#### Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-Thoughts:
-- Perhaps a message when this type of game is scored.
-
-#### Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-Thoughts:
-- Perhaps a message here as well.
 
 
 

@@ -6,13 +6,13 @@ class Game {
     this._roll_number = 0;
   }
 
-  bowl(pins){
-    if (this._isStrike(pins)) return this._completeStrikeFrame();
+  bowl(pins, frame = Frame){
+    if (this._isStrike(pins)) return this._completeStrikeFrame(frame);
     if (this._isFinalFrame()){
       let result = this._isBonus() ? this._addBonusRoll(pins) : "GAME OVER";
       return result;
     }
-    this._isNewFrame() ? this._createFrame(pins) : this._endFrame(pins);
+    this._isNewFrame() ? this._createFrame(pins, frame) : this._endFrame(pins, frame);
   };
 
   _isBonus(){
@@ -68,8 +68,8 @@ class Game {
     return this._roll_number === 20
   }
 
-  _completeStrikeFrame(){
-    this._frame = new Frame();
+  _completeStrikeFrame(frame){
+    this._frame = new frame();
     this._completeFrame(10);
     this._roll_number += 2;
   }
@@ -78,14 +78,14 @@ class Game {
     return this._roll_number % 2 === 0
   }
 
-  _endFrame(pins){
-    this._frame.addToFrame(pins);
+  _endFrame(pins, frame){
+    this._frame.addToFrame(pins, frame);
     this._roll_number += 1;
     this._rolls.push(this._frame);
   }
 
-  _createFrame(pins){
-    this._frame = new Frame();
+  _createFrame(pins, frame){
+    this._frame = new frame();
     this._frame.addToFrame(pins);
     this._checkFinalFrame();
     this._roll_number += 1;

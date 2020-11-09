@@ -32,6 +32,7 @@ class Scorecard{
   };
 
   total(frame) {
+    this.sum = 0
     this.frame = frame
     while (this.frame > 0) {
     let [currRoll1, currRoll2, nextRoll1, nextRoll2] = [this.score[this.frame+0.1], this.score[this.frame+0.2], this.score[this.frame+1.1], this.score[this.frame+1.2]];

@@ -1,6 +1,7 @@
 'use strict';
 
 class Scorecard  {
+
   constructor() {
     this.frames = [new Frame()];
   }
@@ -19,4 +20,4 @@ class Scorecard  {
     }
     return score;
   }
-}
+};

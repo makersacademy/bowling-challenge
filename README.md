@@ -5,7 +5,7 @@ Bowling Challenge
 ## Set Up
 Clone the repository:
 ```
-$ git clone https://github.com/emilyalice2708/bowling-challenge-ruby
+$ git clone https://github.com/emilyalice2708/bowling-challenge
 ```
 Run bundle:
 ```

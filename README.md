@@ -73,3 +73,12 @@ In code review we'll be hoping to see:
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+
+
+Progress
+
+1. Set up an initial plan which is saved in the images folder
+2. Created the Frame class
+3. Created 3 tests and 3 passes
+4. Created 5 tests, 5 passes.
+5. I am currently attempting to pass a test for counting the total non bonus points....

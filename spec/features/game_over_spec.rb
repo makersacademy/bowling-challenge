@@ -8,6 +8,6 @@ feature 'Game over' do
     roll_double_2
     
     expect(page.find('#score')).to have_content '40'
-    expect(page.find('#current_score')).to have_content 'GAME OVER'
+    expect(page.find('#current-score')).to have_content 'GAME OVER'
   end
 end

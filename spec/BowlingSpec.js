@@ -38,6 +38,8 @@ describe('Bowling', function () {
     expect(bowl.totalScore()).toEqual(4);
   });
 
+
+  // Strike test/function currently not catching in the conditional and ran out of brain juice last night.
   it('scores a strike', function() {
     bowl.roll(10);
     bowl.roll(2);

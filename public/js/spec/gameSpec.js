@@ -72,10 +72,10 @@ describe('Game', function(){
         game.bowl(2, frameDouble);
       }
       expect(game._rolls.length).toEqual(1);
-      expect(game._roll_number).toEqual(2);
+      expect(game._rollNumber).toEqual(2);
       game.newGame();
       expect(game._rolls).toEqual([]);
-      expect(game._roll_number).toEqual(0);
+      expect(game._rollNumber).toEqual(0);
     });
   });
 });

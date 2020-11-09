@@ -3,7 +3,7 @@
 class Game {
   constructor(){
     this._rolls = [];
-    this._roll_number = 0;
+    this._rollNumber = 0;
   }
 
   bowl(pins, frame = Frame){
@@ -37,7 +37,7 @@ class Game {
 
   newGame(){
     this._rolls = [];
-    this._roll_number = 0;
+    this._rollNumber = 0;
   }
   
   _calculateScore(){
@@ -61,26 +61,26 @@ class Game {
   }
 
   _isStrike(pins){
-    return this._roll_number % 2 === 0 && pins === 10 && this._roll_number < 18
+    return this._rollNumber % 2 === 0 && pins === 10 && this._rollNumber < 18
   }
 
   _isFinalFrame(){
-    return this._roll_number === 20
+    return this._rollNumber === 20
   }
 
   _completeStrikeFrame(frame){
     this._frame = new frame();
     this._completeFrame(10);
-    this._roll_number += 2;
+    this._rollNumber += 2;
   }
 
   _isNewFrame(){
-    return this._roll_number % 2 === 0
+    return this._rollNumber % 2 === 0
   }
 
   _endFrame(pins, frame){
     this._frame.addToFrame(pins, frame);
-    this._roll_number += 1;
+    this._rollNumber += 1;
     this._rolls.push(this._frame);
   }
 
@@ -88,11 +88,11 @@ class Game {
     this._frame = new frame();
     this._frame.addToFrame(pins);
     this._checkFinalFrame();
-    this._roll_number += 1;
+    this._rollNumber += 1;
   }
 
   _checkFinalFrame(){
-    if (this._roll_number === 18) this._frame.isFinal();
+    if (this._rollNumber === 18) this._frame.isFinal();
   }
 
   _addBonusRoll(pins){

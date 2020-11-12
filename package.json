@@ -1,0 +1,30 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "bowling practical",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^7.13.0",
+    "eslint-config-standard": "^16.0.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amittauro/bowling-challenge.git"
+  },
+  "author": "Amit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amittauro/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/amittauro/bowling-challenge#readme"
+}

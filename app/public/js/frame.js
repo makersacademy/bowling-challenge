@@ -4,6 +4,9 @@ class Frame {
   }
 
   store(int) {
+    if(this.rolls.length >= 2) {
+      throw new Error('Two rolls already recorded');
+    }
     this.rolls.push(int);
   }
 

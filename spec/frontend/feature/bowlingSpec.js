@@ -10,7 +10,7 @@ describe('bowling', () => {
     for(i = 0; i < 20; i++) {
       game.roll(2)
     }
-    expect(game.score()).toEqual(40)
+    expect(game.getScore()).toEqual(40)
   })
 
   it('adds scoring bonuses for spares', ()=> {
@@ -18,6 +18,6 @@ describe('bowling', () => {
       game.roll(5)
     }
     game.roll(5)
-    expect(game.score()).toEqual(150)
+    expect(game.getScore()).toEqual(150)
   })
 })

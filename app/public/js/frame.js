@@ -4,6 +4,10 @@ class Frame {
   }
 
   store(int) {
+    if(!this.scoreIsValid(int)) {
+      throw new Error('Total score for rolled balls cannot exceed 10');
+    }
+    
     if(this.isComplete()) {
       throw new Error('Two rolls already recorded');
     }
@@ -20,5 +24,9 @@ class Frame {
     }, 0);
     
     return total;
+  }
+
+  scoreIsValid(int) {
+    return int <= 10 && int >= 0 && this.total() + int <= 10
   }
 }

@@ -4,10 +4,14 @@ class Frame {
   }
 
   store(int) {
-    if(this.rolls.length >= 2) {
+    if(this.isComplete()) {
       throw new Error('Two rolls already recorded');
     }
     this.rolls.push(int);
+  }
+
+  isComplete() {
+    return this.rolls.length >= 2 
   }
 
   total() {

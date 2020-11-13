@@ -36,12 +36,18 @@ describe('Frame', () => {
   })
 
   describe('#isComplete', () => {
-    fit('returns true when two rolls have been recorded', () => {
+    it('returns true when two rolls have been recorded', () => {
       for (i = 0; i < 2; i++) {
         frame.store(2)
       }
       
       expect(frame.isComplete()).toEqual(true)
+    })
+
+    it('returns false when fewer than two rolls have been recorded', () => {
+      expect(frame.isComplete()).toEqual(false)
+      frame.store(2)
+      expect(frame.isComplete()).toEqual(false)
     })
   })
 })

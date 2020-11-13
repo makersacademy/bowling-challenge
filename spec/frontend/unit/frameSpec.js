@@ -17,11 +17,24 @@ describe('Frame', () => {
       for (i = 0; i < 2; i++) {
         frame.store(2)
       }
-      expect(() => {
+      expect(()=> {
         frame.store(2)
       }).toThrowError('Two rolls already recorded')
 
       expect(frame.total()).toEqual(4)
+    })
+
+    describe('validating eligible rolls', ()=> {
+      it('errors if the rolls total is greater than 10', ()=> {
+        expect(()=> {
+          frame.store(11)
+        }).toThrowError('Total score for rolled balls cannot exceed 10')
+        
+        frame.store(6)
+        expect(()=> {
+          frame.store(6)
+        }).toThrowError('Total score for rolled balls cannot exceed 10')
+      })
     })
   })
 

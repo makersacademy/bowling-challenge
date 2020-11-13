@@ -6,10 +6,10 @@ describe('Frame', () => {
     frame = new Frame()
   })
 
-  describe('#record', () => {
+  describe('#store', () => {
     it('stores the value of a roll', () => {
       frame.store(2)
-      
+
       expect(frame.total()).toEqual(2)
     })
 
@@ -32,6 +32,16 @@ describe('Frame', () => {
       }
 
       expect(frame.total()).toEqual(4)
+    })
+  })
+
+  describe('#isComplete', () => {
+    fit('returns true when two rolls have been recorded', () => {
+      for (i = 0; i < 2; i++) {
+        frame.store(2)
+      }
+      
+      expect(frame.isComplete()).toEqual(true)
     })
   })
 })

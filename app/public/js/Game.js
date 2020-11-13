@@ -2,16 +2,16 @@ class Game {
   constructor() {
     // this._frames = new Array(10).fill(new Frame());
     this._frames = new Array();
-    this.setupFrames()
+    this.setupFrames();
     this.currentFrame = 0;
   }
   
   roll(int) {
-    this.getCurrentFrame().store(int);
-    
-    if(this.getCurrentFrame().isComplete()) {
-      this.currentFrame ++;
+    if(this.isComplete()) {
+      throw new Error('Game is complete');
     }
+    this.getCurrentFrame().store(int);
+    this.updateCurrentFrame();
   }
 
   getCurrentFrame() {
@@ -29,9 +29,19 @@ class Game {
     return frame.total();
   }
 
+  isComplete() {
+    return this.currentFrame >= 10;
+  }
+
   setupFrames() {
     for(let i = 0; i < 10; i++) {
       this._frames.push(new Frame())
-    }
+    };
+  }
+
+  updateCurrentFrame() {
+    if(this.getCurrentFrame().isComplete()) {
+      this.currentFrame ++;
+    };
   }
 }

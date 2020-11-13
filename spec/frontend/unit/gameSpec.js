@@ -10,6 +10,15 @@ describe('Game', () => {
       game.roll(2)
       expect(game.score()).toEqual(2)
     })
+
+    it('errors if maximum rolls (20) are exceeded', ()=> {
+      for(let i = 0; i < 20; i++) {
+        game.roll(2)
+      }
+      expect(()=> {
+        game.roll(2)
+      }).toThrowError('Game is complete')
+    })
   })
 
   describe('#total', ()=> {

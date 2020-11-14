@@ -29,6 +29,15 @@ describe('Game', () => {
           game.roll(2)
         }).toThrowError('Game is complete')
       })
+
+      it('when a strike is rolled in the final frame, it errors if maximum rolls (22) are exceeded', ()=> {
+        for(let i = 0; i < 12; i++) {
+          game.roll(10)
+        }
+        expect(()=> {
+          game.roll(2)
+        }).toThrowError('Game is complete')
+      })
     })
   })
 

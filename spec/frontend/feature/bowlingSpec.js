@@ -1,4 +1,6 @@
 describe('bowling', () => {
+  let Game = require('../../../app/public/js/Game');
+  // let Frame = require('../../../app/public/js/Frame');  
   let game
   let i
 

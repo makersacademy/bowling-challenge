@@ -1,0 +1,12 @@
+{
+  "spec_dir": "spec/frontend",
+  "spec_files": [
+    "feature/**/*[sS]pec.js",
+    "unit/**/*[sS]pec.js"
+  ],
+  "helpers": [
+    "helpers/**/*.js"
+  ],
+  "stopSpecOnExpectationFailure": false,
+  "random": true
+}

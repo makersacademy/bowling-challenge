@@ -1,7 +1,7 @@
 {
   "name": "bowling-challenge",
   "version": "1.0.0",
-  "description": "Bowling Challenge =================",
+  "description": "Bowling Challenge",
   "main": "index.js",
   "directories": {
     "doc": "docs"
@@ -10,10 +10,11 @@
   "devDependencies": {
     "eslint": "^7.13.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1"
+    "eslint-plugin-import": "^2.22.1",
+    "jasmine": "^3.6.3"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",

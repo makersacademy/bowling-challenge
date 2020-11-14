@@ -1,4 +1,5 @@
 describe('Game', () => {
+  let Game = require('../../../app/public/js/Game');
   let game;
 
   beforeEach(() => {

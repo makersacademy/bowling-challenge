@@ -1,3 +1,5 @@
+let Frame = require('./Frame');
+
 class Game {
   constructor() {
     this._frames = [];
@@ -48,3 +50,5 @@ class Game {
       .filter((frame) => !frame.isComplete());
   }
 }
+
+module.exports = Game;

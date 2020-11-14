@@ -1,4 +1,5 @@
 describe('Frame', () => {
+  let Frame = require('../../../app/public/js/Frame');
   let frame;
   let i;
 

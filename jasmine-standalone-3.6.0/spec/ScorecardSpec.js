@@ -2,55 +2,63 @@ describe("Scorecard", () => {
   let scorecard
   let mockframes
   let mockroll = null
+  let mockrolls
+  let score
 
   beforeEach(() => {
-    mockframes = {
-      add: (frame, roll) => {
-        mockroll = roll
-      },
-      run: () => {}
+    score = jasmine.createSpy('score')
+    mockframe = jasmine.createSpy('mockframe')
+    mockrolls = [3, 6]
+    const mockFrame = class mockFrame {
+      constructor(rolls) {
+        this.rolls = rolls
+      }
+    }
+    const mockScore = class mockScore {
+      constructor(frames) {
+        this.frames = frames
+      }
     }
   })
 
   it('runs through the scores and asks frames to add a new frame', () => {
-    scorecard = new Scorecard([3,7], mockframes)
-    spyOn(mockframes, 'add')
-    scorecard.create()
-    expect(mockframes.add).toHaveBeenCalledWith(1, [3, 7])
+    scorecard = new Scorecard([3,7], mockframe)
+    scorecard.getFrames()
+    expect(mockframe).toHaveBeenCalled()
   })
 
   it('runs through the scores and asks frames to add a new strike', () => {
-    scorecard = new Scorecard([10], mockframes)
-    spyOn(mockframes, 'add')
-    scorecard.create()
-    expect(mockframes.add).toHaveBeenCalledWith(1, [10])
+    scorecard = new Scorecard([10], mockframe)
+    scorecard.getFrames()
+    expect(mockframe).toHaveBeenCalled()
   })
 
   it('can add the 10th frame', () => {
-    scorecard = new Scorecard([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10], mockframes)
-    spyOn(mockframes, 'add')
-    scorecard.create()
-    expect(mockframes.add).toHaveBeenCalledWith(10, [10, 10, 10])
+    scorecard = new Scorecard([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10], mockframe)
+    scorecard.getFrames()
+    expect(mockframe).toHaveBeenCalled()
   })
 
-  it('can add the 4th frame with previous strikes', () => {
-    scorecard = new Scorecard([3, 7, 4, 5, 10, 5, 6], mockframes)
-    spyOn(mockframes, 'add')
-    scorecard.create()
-    expect(mockframes.add).toHaveBeenCalledWith(4, [5, 6])
+  it('returns an array of frames', () => {
+    scorecard = new Scorecard([3, 7, 4, 5, 10, 5, 6, 3, 7, 10, 2, 2], mockframe)
+    scorecard.getFrames()
+    scorecard.frames.forEach(element => expect(element).toBeInstanceOf(mockframe))
+    expect(scorecard.frames.length).toEqual(10)
   })
 
-  it('can add the 7th frame with previous strikes', () => {
-    scorecard = new Scorecard([3, 7, 4, 5, 10, 5, 6, 3, 7, 10, 2, 2], mockframes)
-    spyOn(mockframes, 'add')
-    scorecard.create()
-    expect(mockframes.add).toHaveBeenCalledWith(7, [2, 2])
+  it('creates a new instance of Frame Score', () => {
+    scorecard = new Scorecard([3, 7, 4, 5, 10, 5, 6, 3, 7, 10, 2, 2], mockframe)
+    scorecard.getFrames()
+    scorecard.getScoresPerFrame()
+    expect(score).toHaveBeenCalled()
   })
 
-  it('asks frames to run', () => {
-    scorecard = new Scorecard([3, 7, 4, 5, 10, 5, 6, 3, 7, 10, 2, 2], mockframes)
-    spyOn(mockframes, 'run')
-    scorecard.create()
-    expect(mockframes.run).toHaveBeenCalledWith()
+  it('returns an array of frames', () => {
+    scorecard = new Scorecard([3, 7, 4, 5, 10, 5, 6, 3, 7, 10, 2, 2], mockframe)
+    scorecard.getFrames()
+    scorecard.getScoresPerFrame()
+    scorecard.scores.forEach(element => expect(element).toBeInstanceOf(mockScore))
+    expect(scorecard.scores.length).toEqual(10)
   })
+
 })

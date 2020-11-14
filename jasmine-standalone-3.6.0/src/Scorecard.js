@@ -1,32 +1,61 @@
 class Scorecard {
-  constructor(score, frames = new Frames) {
+  constructor(score, frame = Frame) {
     this.score = score
-    this.frames = frames
+    this.frame = frame
+    this.frames = []
+    this.STRIKE = 10
+    this.TENTHFRAME = 10
+    this.scores = []
   }
 
-  create() {
+  getFrames() {
     let totalRolls = this.score.length
-    let frame = 1
+    let frame
     let roll = 0
     let rolls
-    let i
-    for(i=1; i<=10; i++) {
+    for(frame=1; frame<=10; frame++) {
       if (roll === totalRolls) {
         break;
-      } else if (frame === 10) {
+      } else if (frame === this.TENTHFRAME) {
         rolls = this.score.slice(roll, totalRolls)
-        this.frames.add(frame, rolls)
-      } else if(this.score[roll] === 10) {
-        this.frames.add(frame, [10, 0])
+      } else if(this.score[roll] === this.STRIKE) {
+        rolls = [this.STRIKE]
         ++roll
-        ++frame
       } else {
         rolls = this.score.slice(roll, roll+2)
-        this.frames.add(frame, rolls)
         roll += 2
-        ++frame
       }
+      this.frames.push(new this.frame(rolls))
     }
-    return this.frames.run()
+    return this.frames
   }
+
+  getScoresPerFrame() {
+    let i
+    let score
+    let totalframes = this.frames.length
+    for(i=0;i<10;i++) {
+      if (i === totalframes - 1) {
+        score = this.frames[i].tenth()
+        this.scores.push(score)
+        break;
+      } else if (this.frames[i].isStrike() && this.frames[i+1].isStrike()) {
+        score = this.STRIKE + this.STRIKE + this.frames[i+2].first()
+      } else if (this.frames[i].isStrike()) {
+        score = this.STRIKE + this.frames[i+1].score()
+      } else if (this.frames[i].isSpare()) {
+        score = this.frames[i].score() + this.frames[i+1].first()
+      } else {
+        score = this.frames[i].score()
+      }
+      this.scores.push(score)
+    }
+  }
+
+  getTotalScore() {
+    debugger;
+    this.scores.forEach(score => console.log(score))
+    return this.scores.reduce(((accumulator, currentValue) => accumulator + currentValue))
+  }
+
 }

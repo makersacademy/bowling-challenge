@@ -1,18 +1,18 @@
-class Roll {
+class Frame {
   constructor(rolls) {
     this.rolls = rolls
   }
 
-  strike() {
+  isStrike() {
     console.log(this.rolls[0]);
-    if (this.rolls[0] === 10) {
+    if (this.rolls[0] === 10 && this.rolls.length === 1) {
       return true
     } else {
       return false
     }
   }
 
-  spare() {
+  isSpare() {
     let sum = this.rolls.reduce((accumulator, currentValue) => accumulator + currentValue)
     if (sum === 10) {
       return true

@@ -21,7 +21,7 @@ class Game {
 
   getScore() {
     return this._frames.map((frame)=> { 
-      return frame.total(); 
+      return frame.getTotal(); 
     }).reduce((a, b)=> {
       return a + b;
     });

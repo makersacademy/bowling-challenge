@@ -1,6 +1,5 @@
 class Game {
   constructor() {
-    // this._frames = new Array(10).fill(new Frame());
     this._frames = new Array();
     this.setupFrames();
     this.currentFrame = 0;
@@ -10,7 +9,9 @@ class Game {
     if(this.isComplete()) {
       throw new Error('Game is complete');
     }
-    this.getCurrentFrame().store(int);
+    this.getActiveFrames().forEach(frame => {
+      frame.store(int);
+    });
     this.updateCurrentFrame();
   }
 
@@ -18,19 +19,16 @@ class Game {
     return this._frames[this.currentFrame];
   }
 
-  score() {
-    return this._frames.map(this.getTotal)
-      .reduce((a, b)=> {
-        return a + b;
-      });
-  }
-
-  getTotal(frame) {
-    return frame.total();
+  getScore() {
+    return this._frames.map((frame)=> { 
+      return frame.total(); 
+    }).reduce((a, b)=> {
+      return a + b;
+    });
   }
 
   isComplete() {
-    return this.currentFrame >= 10;
+    return this._frames.every((frame)=> { return frame.isComplete() });
   }
 
   setupFrames() {
@@ -40,8 +38,18 @@ class Game {
   }
 
   updateCurrentFrame() {
-    if(this.getCurrentFrame().isComplete()) {
+    if(this.currentFrame == 9) { 
+      return
+    } 
+    if(this.getCurrentFrame().isFull()) {
       this.currentFrame ++;
     };
+  }
+
+  getActiveFrames() {
+    return this._frames.slice(0, this.currentFrame + 1)
+      .filter((frame)=> { 
+        return !frame.isComplete();
+      });
   }
 }

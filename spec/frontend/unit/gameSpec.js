@@ -7,19 +7,18 @@ describe('Game', () => {
   });
 
   describe('#roll', () => {
-    // records a roll in a frame
+    // A better test would spy on recording a roll in a frame.
+
     it('records the score from a roll', () => {
-      game.roll(2); // replace with something that shows the roll being passed to a frame?
-      expect(game.getScore()).toEqual(2); // get rid
+      game.roll(2);
+      expect(game.getScore()).toEqual(2);
     });
 
-    // does not record a roll in a complete frame
-
-    // when all frames are complete, it errors
-
     describe('preventing rolling excess balls', () => {
+      // These may properly be feature tests. An isolated test might just demonstrate passing
+      // in complete mock frames and seeing that the error occurs.
+
       it('when no bonuses are scored, it errors if maximum rolls (20) are exceeded', () => {
-        // put some of this out to a feature test
         for (let i = 0; i < 20; i++) {
           game.roll(2);
         }
@@ -49,7 +48,9 @@ describe('Game', () => {
   });
 
   describe('#getScore', () => {
-    //sums the totals from frames
+    // A better test would spy on all frames and see that they are all called for their totals.
+    // The final expectation, to prove that those results are summed would still be required.
+
     it('returns to sum of all recorded scores', () => {
       for (let i = 0; i < 5; i++) {
         game.roll(i);

@@ -14,10 +14,16 @@ describe('bowling', () => {
   })
 
   it('adds scoring bonuses for spares', ()=> {
-    for(i = 0; i < 20; i++) {
+    for(i = 0; i < 21; i++) {
       game.roll(5)
     }
-    game.roll(5)
     expect(game.getScore()).toEqual(150)
+  })
+
+  it('adds scoring bonuses for strikes', ()=> {
+    for(i = 0; i < 12; i++) {
+      game.roll(10)
+    }
+    expect(game.getScore()).toEqual(300)
   })
 })

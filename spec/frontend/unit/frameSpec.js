@@ -19,13 +19,13 @@ describe('Frame', () => {
       }
       expect(()=> {
         frame.store(2)
-      }).toThrowError('Two rolls already recorded')
+      }).toThrowError('All rolls and bonuses already recorded')
 
       expect(frame.total()).toEqual(4)
     })
 
     describe('validating eligible rolls', ()=> {
-      it('errors if the rolls total is greater than 10', ()=> {
+      it('errors if the rolls total (before bonuses) is greater than 10', ()=> {
         expect(()=> {
           frame.store(11)
         }).toThrowError('Total score for rolled balls cannot exceed 10')
@@ -48,7 +48,7 @@ describe('Frame', () => {
     })
   })
 
-  fdescribe('#isComplete', () => {
+  describe('#isComplete (all rolls and bonuses have been recorded)', () => {
     it('returns true when two rolls have been recorded and no bonus is due', () => {
       for (i = 0; i < 2; i++) {
         frame.store(2)
@@ -75,11 +75,9 @@ describe('Frame', () => {
       }
       expect(frame.isComplete()).toEqual(true)
     })
-
-
   })
 
-  describe('#isFull', () => {
+  describe('#isFull (all standard rolls have been made, though bonuses may be remaining)', () => {
     it('returns true when two rolls have been recorded', () => {
       for (i = 0; i < 2; i++) {
         frame.store(2)

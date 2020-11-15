@@ -1,2 +1,6 @@
 /**/.DS_Store
 node_modules
+spec/frontend/jasmine-reference/
+spec/jasmine_examples/
+spec/helpers/jasmine_examples/
+lib/jasmine_examples/

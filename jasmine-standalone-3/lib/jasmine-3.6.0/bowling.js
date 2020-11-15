@@ -13,11 +13,17 @@ class BowlingGame{
     let score = 0;
     let rollIndex=0;
     for (let frameIndex=0;frameIndex<10;frameIndex++){
-      const frameScore = this.rolls[rollIndex]+this.rolls[rollIndex+1];
+      //Strike logic
+      if (this.rolls[rollIndex]===10) {
+        score +=10 + this.rolls[rollIndex+1]+ this.rolls[rollIndex+2]
+        rollIndex++;
+        continue;
+      }
 
-      if (frameScore===10) {
+      const frameScore = this.rolls[rollIndex]+this.rolls[rollIndex+1];
+      if (this.isSpare(frameScore)) {
         //spare logic
-        score +=10 + this.rolls[rollIndex+2]
+        score +=this.spareBonus(rollIndex)
       } else {
         score +=frameScore
       }
@@ -25,4 +31,14 @@ class BowlingGame{
     }
     return score;
   }
+  isSpare(frameScore){
+    return frameScore===10
+  }
+
+  spareBonus(rollIndex){
+    return 10 + this.rolls[rollIndex+2]
+  }
+
+
+
 }

@@ -25,6 +25,14 @@ it('returns the correct score when spare is rolled', ()=> {
 });
 
 
+it('Returns the correct score if a strike is rolled', function () {
+  game.roll(10);
+  game.roll(3);
+  game.roll(4);
+  rollMany(0,17);
+  expect(game.score()).toEqual(24)
+});
+
 
 function rollMany(pins,rolls){
   for (let i=0;i<rolls;i++){

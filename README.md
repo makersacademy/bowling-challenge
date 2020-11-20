@@ -1,6 +1,13 @@
 
-Bowling Challenge
-=================
+# Bowling Challenge
+# =================
+
+[Analysis Discussion](./docs/analysis.md)
+
+[Domain Model](./docs/domain_model.md)
+
+[Interface Design](./docs/interface.md)
+
 
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README
@@ -63,7 +70,7 @@ In the image below you can find some score examples.
 
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+![Ten Pin Score Example](public/images/example_ten_pin_scoring.png)
 
 ## Code Review
 

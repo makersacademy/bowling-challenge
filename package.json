@@ -1,0 +1,26 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling scorecard",
+  "main": "bowlingCard.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GDCStoney/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GDCStoney/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/GDCStoney/bowling-challenge#readme",
+  "devDependencies": {
+    "eslint": "^7.13.0",
+    "eslint-config-google": "^0.14.0"
+  }
+}

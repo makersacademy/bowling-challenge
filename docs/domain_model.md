@@ -6,6 +6,32 @@
 
 [Interface Design](./interface.md)
 
+## Final Design Intent
+- treat frames, game and scorecard as separate objects (classes)
+- use extension and inheritance
+  - scorecard <- gameScore <- frameScore
+- this structure should enable each frame to be managed as an object
+  - be contained in a game
+    - to enable a scorecard to be produced.
+
+- opportunity to prefabricate the whole card, or build 'on the fly'
+  - each frame can be identical, but managed differently
+    - strike / spare scoring
+    - 10th frame bonus
+  - the GameScore can then have an array of frames to generate the total, as this is lagging due to strikes / spares.
+    - yet the framescore is always retained / updated as the game progresses.
+
+- Development decision to be made if frame will contain the 'frameScore', or just the 'pinScore'
+  - default is 'pinscore', as the complexities are a feature of the game, not frame
+
+- Development decision about strike / spare representation ... should this be retained in the frameScore (pinscore) object as an 'X' or '/'
+  - this might make processing easier / enable easier triggers
+  - might make interface management easier (no conversion needed)
+  - might make computation harder ... unless managed (as it should be) at gameScore level.
+  - initial decision - include symbols.
+
+
+
 ## User Story 1
 ```
 As a bowler,
@@ -113,4 +139,4 @@ I would like there to be only comments for strikes and spares (celebrations)
 ### Interface:
 - add button to switch 'notes' mode
   - add celebrations for spare / strike
-  - possible celebration for high game scoring 
+  - possible celebration for high game scoring

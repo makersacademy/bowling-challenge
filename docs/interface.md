@@ -23,3 +23,9 @@
   - switch (maybe at start of game setup?) for different comment styles
   - might be able to switch layout as part of setup phase
     - vertical (default) and horizontal (compact)
+
+- Development decision - should / could enable keyboard entry
+  - default is yes for ease of use
+
+- Development decision - should include strike / spare symbols in pin score dropdown?
+  - default is no ... to maintain simplicity of score entry / management

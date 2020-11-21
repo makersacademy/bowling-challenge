@@ -27,14 +27,15 @@ class Scorecard {
     if (this.rolls[9][1] === '/') {
       this.rolls[9][1] = 10 - parseInt(this.rolls[9][0])
     }
-    this.rolls[9][0] = parseInt(this.rolls[9][0])
-    this.rolls[9][1] = parseInt(this.rolls[9][1])
-    this.rolls[9][2] = parseInt(this.rolls[9][2])
-    for (let i = 0; i < this.rolls[9].length; i++) {
+    for (let i = 0; i < 3; i++) {
       if (['x', 'X'].includes(this.rolls[9][i])) {
         this.rolls[9][i] = 10
       }
     }
+    this.rolls[9][0] = parseInt(this.rolls[9][0])
+    this.rolls[9][1] = parseInt(this.rolls[9][1])
+    this.rolls[9][2] = parseInt(this.rolls[9][2])
+    console.log(this.rolls[9])
   }
 
   score (rolls = this.rolls) {
@@ -49,13 +50,9 @@ class Scorecard {
     const fr = frame - 1
     var score = 0
     if (fr === 9) {
-      if (this.rolls[9][0] === 10) {
-        score += (this.rolls[9][0] + this.rolls[9][1] + this.rolls[9][2])
+      for (var i = 0; i < 3; i++) {
+        score += this.rolls[9][i];
       }
-      if (this.rolls[9][1] === 10) {
-        score += (this.rolls[9][1] + this.rolls[9][2])
-      }
-      score += this.rolls[9][2]
     } else {
       score += (this.rolls[fr][0] + this.rolls[fr][1])
       if (this.frameOutcome(fr) === 'X') {

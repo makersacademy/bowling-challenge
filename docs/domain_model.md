@@ -8,11 +8,11 @@
 
 ## Final Design Intent
 - treat frames, game and scorecard as separate objects (classes)
-- use extension and inheritance
-  - scorecard <- gameScore <- frameScore
+- use separate classes for each object
+  - scorecard, gameScore, frameScore
 - this structure should enable each frame to be managed as an object
-  - be contained in a game
-    - to enable a scorecard to be produced.
+  - a collection of frames to be contained in a game
+    - to enable a scorecard to be produced (single responsibility).
 
 - opportunity to prefabricate the whole card, or build 'on the fly'
   - each frame can be identical, but managed differently

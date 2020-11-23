@@ -93,4 +93,5 @@ $(document).ready(function() {
   };
 
   optionListCreate('#roll01', 0);
+  console.log($('table tr'));
 });

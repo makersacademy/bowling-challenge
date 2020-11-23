@@ -10,8 +10,9 @@ table {
 }
 
 table caption {
-  height: 40px;
   margin-top: 20px;
+  font-size: 40px;
+  padding: 10px;
 }
 
 th {
@@ -20,7 +21,7 @@ th {
 }
 
 td {
-  height: 30px;
+  padding: 7px;
   font-size: 20px;
 }
 td.center {
@@ -33,7 +34,7 @@ td.finalScore {
 }
 
 tr:nth-child(even) {
-  background-color: #e2e2e2;
+  background-color: #f2f2f2;
 }
 
 .hide {
@@ -42,4 +43,8 @@ tr:nth-child(even) {
 
 .reveal {
   display: block;
+}
+
+[id^=notes] {
+  font-size: 16;
 }

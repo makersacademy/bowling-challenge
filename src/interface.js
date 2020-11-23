@@ -26,19 +26,19 @@ $(document).ready(function() {
     });
   };
 
-  const updateFrameScore = () => {
-    if (bowlingMin.framesArray.length > 0) {
+  const updateFrameScore = (framesArray) => {
+    if (framesArray.length > 0) {
       let gScore = 0;
-      for (i=0; i <= bowlingMin.framesArray.length - 1; i++) {
-        $('#fScore' + i).text(bowlingMin.framesArray[i].frameScore);
-        gScore += bowlingMin.framesArray[i].frameScore;
+      for (i=0; i <= framesArray.length - 1; i++) {
+        $('#fScore' + i).text(framesArray[i].frameScore);
+        gScore += framesArray[i].frameScore;
         if (!($('#fScore' + i).text() === '')) {
           $('#gScore' + i).text(gScore);
           if ($('#roll' + i + '1').val() === 'X') {
-            $('#notes' + i).text('STRIKE!  with ' + (bowlingMin.framesArray[i].frameScore - 10) + ' bonus points!');
+            $('#notes' + i).text('STRIKE!  with ' + (framesArray[i].frameScore - 10) + ' bonus points!');
           };
           if ($('#roll' + i + '2').val() === '/') {
-            $('#notes' + i).text('Spare!  with ' + (bowlingMin.framesArray[i].frameScore - 10) + ' bonus points!');
+            $('#notes' + i).text('Spare!  with ' + (framesArray[i].frameScore - 10) + ' bonus points!');
           };
           if (($('#roll' + i + '1').val() === '0') && ($('#roll' + i + '2').val() === '0')) {
             $('#notes' + i).text('Bad Luck! ');
@@ -59,8 +59,7 @@ $(document).ready(function() {
 
     $(currentElement).prop('disabled', true);
 
-    bowlingMin.pinsAdd($(currentElement).val());
-    updateFrameScore();
+    updateFrameScore(bowlingMin.pinsAdd($(currentElement).val()));
 
     if (/\d(1)/.test(currentElement)) {
       if ($(currentElement).val()  === 'X') {

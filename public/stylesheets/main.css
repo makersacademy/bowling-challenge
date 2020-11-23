@@ -27,8 +27,13 @@ td.center {
   text-align: center;
 }
 
+td.finalScore {
+  font-size: 24;
+  font-weight: bold;
+}
+
 tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #e2e2e2;
 }
 
 .hide {

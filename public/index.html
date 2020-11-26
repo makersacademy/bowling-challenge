@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script src="./js/jquery-3.5.1.js"></script>
+    <title>Bowling</title>
+  </head>
+  <body>
+    <section>
+      <h1 id="score"></h1>
+      <fieldset>
+        <label for ="bowl-input">How many pins did you knock over?</label>
+        <input id="bowl-input" type="number">
+        <button id="bowl">Bowl</button>
+        <button id="new">New Game</button>
+      <fieldset>
+        <p id="current-score" class="score_display"></p>
+        <p id="error" class="score_display"></p>
+        <p id="result"></p>
+    </section>
+    <script type="text/javascript" src='./js/src/game.js'></script>
+    <script type="text/javascript" src='./js/src/frame.js'></script>
+    <script type="text/javascript" src="./js/src/interface.js"></script>
+  </body>
+</html>

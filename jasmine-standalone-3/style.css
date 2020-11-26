@@ -3,17 +3,7 @@ input.score-input {
   height: 25px;
   padding: 5px;
   text-align: center;
-
 }
-/* input.score-input2 {
-  width: 40px;
-  height: 25px;
-  top: 0px;
-  left: 2px;
-  padding: 5px;
-  text-align: center;
-  position: relative;
-} */
 div.frame-score {
   width: 66px;
   height: 25px;

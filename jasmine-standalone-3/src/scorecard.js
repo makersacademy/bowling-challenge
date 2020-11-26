@@ -15,7 +15,7 @@ class Scorecard {
 
   cleanse () {
     for (let i = 0; i < 9; i++) {
-      if (['x', 'X'].includes(this.rolls[i][0]) || ['x', 'X'].includes(this.rolls[i][1])) {
+      if (['x', 'X'].includes(this.rolls[i][0]) || ['x', 'X'].includes(this.rolls[i][1])) { // use toLowerCase and switch the includes
         this.rolls[i][0] = 10
         this.rolls[i][1] = 0
       } else if (this.rolls[i][1] === '/') {

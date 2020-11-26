@@ -9,12 +9,12 @@ $(document).ready(function() {
     for (let i = 1; i < 11; i++) {
       for (let j = 1; j < 3; j++) {
         if (typeof $(`#f${i}r${j}`).val() !== 'undefined') {
-          scorecard.setScore(i, j, $(`#f${i}r${j}`).val() === '' ? 0 : $(`#f${i}r${j}`).val())
+          scorecard.setScore(i, j, $(`#f${i}r${j}`).val() === '' ? 0 : $(`#f${i}r${j}`).val()) // make lowercase and parseInt
         }
       }
     }
     scorecard.setScore(10, 3, $('#f10r3').val() === '' ? 0 : $('#f10r3').val())
-    reload(); // update view
+    reload();
   }
 
   function reload() {

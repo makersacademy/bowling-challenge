@@ -9,13 +9,25 @@ class Game {
     return this._frames;
   }
 
-  roll() {
-   return "hello"
-  }
+  roll(pins) {
+    if (this._currentFrame().isInPlay() === false) {
+      var newFrame = this._newFrame();
+      newFrame.knocked(pins);
+      this._frames.push(newFrame);
+    } else {
+      this._currentFrame().knocked(pins);
+    };
+  };
 
 
-  _currentFrame () {
+  _currentFrame() {
     return this._frames[this._frames.length - 1]
+  };
+
+
+  _newFrame() {
+    return new Frame()
   }
 
-}
+
+};

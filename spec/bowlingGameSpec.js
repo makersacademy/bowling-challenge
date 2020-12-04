@@ -15,4 +15,11 @@ describe('BowlingGame', function() {
         expect(game.score()).toEqual(0);
     });
 
+    it('can roll a all ones', function() {
+        for (let i = 0; i < 21; i++) {
+            game.roll(1);
+        }
+        expect(game.score()).toEqual(20);
+    });
+
 });

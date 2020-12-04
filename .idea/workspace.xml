@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="00212a75-072a-4510-b92d-5cde1516ad2c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/spec/bowlingGameSpec.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bowlingGame.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/bowlingGameSpec.js" beforeDir="false" afterPath="$PROJECT_DIR$/spec/bowlingGameSpec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bowlingGame.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/bowlingGame.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +37,16 @@
       <option name="presentableId" value="Default" />
       <updated>1607092574828</updated>
       <workItem from="1607092579479" duration="103000" />
-      <workItem from="1607092761920" duration="1714000" />
+      <workItem from="1607092761920" duration="5463000" />
     </task>
+    <task id="LOCAL-00001" summary="Set Up Game Structure &amp; Test.  Added first test and passed, with player being able to roll a gutter game">
+      <created>1607094714595</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1607094714595</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -53,5 +62,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Set Up Game Structure &amp; Test.  Added first test and passed, with player being able to roll a gutter game" />
+    <option name="LAST_COMMIT_MESSAGE" value="Set Up Game Structure &amp; Test.  Added first test and passed, with player being able to roll a gutter game" />
   </component>
 </project>

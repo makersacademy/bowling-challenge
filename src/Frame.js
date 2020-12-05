@@ -34,6 +34,7 @@ isSpare() {
 };
 
 knocked(pins) {
+  this._validRoll(pins);
   this._rolls.push(pins);
   this._score += pins;
   this._frameCheck();
@@ -49,7 +50,13 @@ _closePlay() {
 };
 
 _frameCheck() {
-  if (this._rolls.length === 2 && !this._frame10) {
+  if (this._rolls.length === 2) {
+    if (!this.isFrame10()) {
+      this._closePlay();
+    } else if (!this.isStrike() && !this.isSpare()) {
+      this._closePlay();
+    };
+  } else if (this._rolls.length === 3) {
     this._closePlay();
   };
 };
@@ -60,6 +67,16 @@ _strikeCheck() {
   };
 };
 
-}
+_validRoll (pins) {
+  if (pins > 10 || pins < 0) {
+    throw Error('Illegal move!');
+  } else if (!this.isFrame10() && (this._rolls[0] + pins > 10)) {
+    throw Error('Illegal move!');
+  } else {
+    return;
+  };
+};
+
+};
 
 

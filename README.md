@@ -2,10 +2,10 @@
 Bowling Challenge
 =================
 
-This is my solution to (this)[https://github.com/makersacademy/bowling-challenge] challenge.  
-I have also created a version of this in (Ruby)[https://github.com/AdamusBG/bowling-challenge-ruby].  
+This is my solution to [this](https://github.com/makersacademy/bowling-challenge) challenge.  
+I have also created a version of this in [Ruby](https://github.com/AdamusBG/bowling-challenge-ruby).  
 
-##Scoring in Bowling  
+## Scoring in Bowling  
 
 Bowling consists of ten frames (AKA turns) in which (usually) two rolls are made to try and knock over pins.  
 Scoring is not a matter of just adding up the knocked over pins.  

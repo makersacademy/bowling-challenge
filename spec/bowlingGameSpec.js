@@ -38,4 +38,17 @@ describe("BowlingGame", function() {
     expect(game.score()).toEqual (24);
   });
 
+  it("can roll a perfect game", function() {
+    for (var i = 0; i < 12; i++) {
+      game.roll(10);
+    }
+    expect(game.score()).toEqual (300);
+  });
+
+  it("can roll all spares", function() {
+    for (var i = 0; i < 21; i++) {
+      game.roll(5);
+    }
+    expect(game.score()).toEqual (150);
+  });
 });

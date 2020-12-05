@@ -22,4 +22,15 @@ describe('BowlingGame', function() {
         expect(game.score()).toEqual(20);
     });
 
+    it('can roll a spare', function() {
+        game.roll(5);
+        game.roll(5);
+        game.roll(3);
+        for (let i = 0; i < 18; i++) {
+            game.roll(0);
+        }
+        expect(game.score()).toEqual(16);
+    });
+
+
 });

@@ -8,4 +8,8 @@ describe('Game', function(){
   it('begins with frame number one', function() {
     expect(game.frameNumber).toEqual(1);
   });
+
+  it('begins with ten pins', function() {
+    expect(game.pins).toEqual(10);
+  });
 });

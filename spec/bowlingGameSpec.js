@@ -9,14 +9,14 @@ describe("BowlingGame", function() {
       game.roll(0);
     }
     expect(game.score()).toEqual (0);
-  })
+  });
 
   it("can roll all ones", function() {
     for (var i = 0; i < 20; i++) {
       game.roll(1);
     }
     expect(game.score()).toEqual (20);
-  })
+  });
 
   it("can roll a spare", function() {
     game.roll(5);
@@ -26,6 +26,6 @@ describe("BowlingGame", function() {
       game.roll(0);
     }
     expect(game.score()).toEqual (16);
-  })
+  });
 
 });

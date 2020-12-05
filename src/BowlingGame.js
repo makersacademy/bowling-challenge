@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 class BowlingGame {
 
   constructor() {
@@ -12,22 +13,25 @@ class BowlingGame {
     var result = 0;
     var rollIndex = 0;
     for (var i = 0; i < 10; i++) {
-      if _isSpare(rollIndex) {
-        result += _spareScore(rollIndex);
-        return result;
+      if (this._isSpare(rollIndex)) {
+        result += this._spareScore(rollIndex);
       } else {
-        result += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
-        return result;
-      };
-      rollIndex += 1
-    };
-  };
+        result += this._frameScore(rollIndex);
+      }
+      rollIndex += 2;
+    }
+    return result;
+  }
 
   _isSpare(rollIndex) {
-    this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10;
-  };
+    return (this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10);
+  }
 
   _spareScore(rollIndex) {
-    10 + this.rolls[rollIndex + 2];
-  };
-};
+    return (10 + this.rolls[rollIndex + 2]);
+  }
+
+  _frameScore(rollIndex) {
+    return (this.rolls[rollIndex] + this.rolls[rollIndex + 1]);
+  }
+}

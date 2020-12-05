@@ -25,6 +25,6 @@ This project has been written in JavaScript, linted with JSHint and tested using
 ## Outstanding Tasks
 
 * Set up Travis CI
-* Work through Ruby Bowling Game video, and create Ruby code
+* Had to remove Rubocop while working on other machine. Reinstate once back on Mac.
 * Translate to Javascript, in a TDD way.
 * Use jQuery to create an interactive interface.

@@ -12,4 +12,8 @@ describe('Game', function(){
   it('begins with ten pins', function() {
     expect(game.pins).toEqual(10);
   });
+
+  it('begins with two rolls', function() {
+    expect(game.rollNumber).toEqual(2);
+  });
 });

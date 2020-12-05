@@ -9,7 +9,7 @@ class BowlingGame{
 
     roll(pins) {
         this.rolls[this.currentRoll++] = pins;
-    };
+    }
 
     score() {
         let result = 0;
@@ -51,6 +51,6 @@ class BowlingGame{
             }
         }
         return result;
-    };
+    }
 
 }

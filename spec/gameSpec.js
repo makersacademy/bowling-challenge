@@ -6,7 +6,7 @@ describe('Game', function() {
     game = new Game();
   });
 
-  describe('new game', function() {
+  describe('new Game', function() {
     it('begins with frame number one', function() {
       expect(game.frameNumber).toEqual(1);
     });
@@ -20,7 +20,7 @@ describe('Game', function() {
     });
   });
 
-  describe('new roll', function() {
+  describe('#roll', function() {
     beforeEach(function() {
       game.roll(6);
     });
@@ -31,6 +31,18 @@ describe('Game', function() {
 
     it('decreses the roll number', function() {
       expect(game.rollNumber).toEqual(1);
+    });
+
+    it('throws error if roll goes below zero', function() {
+      expect(function() { game.roll(5); }).toThrowError('Invalid roll');
+    });
+
+    it('throws error if roll goes above 10', function() {
+      expect(function() { game.roll(11); }).toThrowError('Invalid roll');
+    });
+
+    it('throws error if roll a number less than 0', function() {
+      expect(function() { game.roll(-1); }).toThrowError('Invalid roll');
     });
   });
 });

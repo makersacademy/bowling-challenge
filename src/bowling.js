@@ -10,7 +10,7 @@ class Bowling {
     }
 
     score() {
-        return 0
+        return this.scorecard.reduce((a, b) => a + b, 0)
     }
 
 }

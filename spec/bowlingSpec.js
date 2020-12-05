@@ -15,4 +15,10 @@ describe('Bowling', function() {
         expect(game.score()).toEqual(0);
     });
 
+    it('should return a score of 20 if all rolls were 1', () => {
+        for (var i = 0; i < 20; i++) {
+            game.roll(1);
+        }
+        expect(game.score()).toEqual(20);
+    });
 });

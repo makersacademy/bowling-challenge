@@ -28,4 +28,14 @@ describe("BowlingGame", function() {
     expect(game.score()).toEqual (16);
   });
 
+  it("can roll a strike", function() {
+    game.roll(10);
+    game.roll(4);
+    game.roll(3);
+    for (var i = 0; i < 16; i++) {
+      game.roll(0);
+    }
+    expect(game.score()).toEqual (24);
+  });
+
 });

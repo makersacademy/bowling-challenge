@@ -26,11 +26,11 @@ isFrame10() {
 }
 
 isStrike() {
-  return Boolean(this._rolls[0] === 10);
+  return (this._rolls[0] === 10);
 };
 
 isSpare() {
-  return Boolean(this._rolls.reduce((a, b) => a + b, 0)  === 10);
+  return ((this._rolls.reduce((a, b) => a + b, 0)  === 10) && !(this.isStrike())) 
 };
 
 knocked(pins) {

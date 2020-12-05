@@ -2,11 +2,10 @@
 
 describe('Game', () => {
   var frame;
-  var _newFrame;
   var game;
 
   beforeEach(() => {
-  frame = jasmine.createSpyObj('frame', ['knocked','isInPlay']);
+  frame = jasmine.createSpyObj('frame', ['knocked', 'isInPlay', 'score', 'isStrike', 'isSpare']);
   game = new Game(frame);
   });
 
@@ -18,22 +17,28 @@ describe('Game', () => {
 
   });
 
-  describe('roll', () => {
-
-    describe('standard frame', () => {
-      it('calls the knocked function on the current frame', () => {
-        game.roll(3);
-        expect(frame.knocked).toHaveBeenCalledWith(3);
-      });
-
-      it('adds new frame objects to the frames property appropriately', () => {
-        frame.isInPlay.and.returnValue(false);
-        game.roll(3);
-        expect(game.frames().length).toEqual(2);
-      });
+  describe('standard frame', () => {
+    xit('calls the knocked function on the current frame', () => {
+      game.roll(3);
+      expect(frame.knocked).toHaveBeenCalled();
     });
 
+    it('adds new frame objects to the frames property appropriately', () => {
+      frame.isInPlay.and.returnValue(false);
+      game.roll(3);
+      expect(game.frames().length).toEqual(2);
+    });
+
+    xit('awards bonus points appropriately', () => {
+
+    });
   });
 
+  describe('total score', () => {
+    it('calculates the total score of the game', () => {
+      var frames = [{_score: 30}, {_score: 10}]
+      expect(game.totalScore(frames)).toEqual(40);
+    });
+  });
 
-});
+  });

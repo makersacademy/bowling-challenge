@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Bowling Scorecard</title>
+      <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+      <script src="../src/frame.js"></script>
+      <script src="../src/game.js"></script>
+      <script src="../src/script.js"></script>
+  </head>
+
+  <body>
+    <h1>Bowling Scorecard</h1>
+    <br>
+    <table>
+      <tr>
+        <th></th>
+        <th>Frame 1</th>
+        <th>Frame 2</th>
+        <th>Frame 3</th>
+        <th>Frame 4</th>
+        <th>Frame 5</th>
+        <th>Frame 6</th>
+        <th>Frame 7</th>
+        <th>Frame 8</th>
+        <th>Frame 9</th>
+        <th>Frame 10</th>
+      </tr>
+      <tr>
+        <th>Roll 1</th>
+        <td id="f1r1"></td>
+        <td id="f2r1"></td>
+        <td id="f3r1"></td>
+        <td id="f4r1"></td>
+        <td id="f5r1"></td>
+        <td id="f6r1"></td>
+        <td id="f7r1"></td>
+        <td id="f8r1"></td>
+        <td id="f9r1"></td>
+        <td id="f10r1"></td>
+      </tr>
+      <tr>
+        <th>Roll 2</th>
+        <td id="f1r2"></td>
+        <td id="f2r2"></td>
+        <td id="f3r2"></td>
+        <td id="f4r2"></td>
+        <td id="f5r2"></td>
+        <td id="f6r2"></td>
+        <td id="f7r2"></td>
+        <td id="f8r2"></td>
+        <td id="f9r2"></td>
+        <td id="f10r2"></td>
+      </tr>
+      <tr>
+        <th>Roll 3</th>
+        <td id="f1r3"></td>
+        <td id="f2r3"></td>
+        <td id="f3r3"></td>
+        <td id="f4r3"></td>
+        <td id="f5r3"></td>
+        <td id="f6r3"></td>
+        <td id="f7r3"></td>
+        <td id="f8r3"></td>
+        <td id="f9r3"></td>
+        <td id="f10r3"></td>
+      </tr>
+      <tr>
+        <th>Frame Total</th>
+        <td id="f1total"></td>
+        <td id="f2total"></td>
+        <td id="f3total"></td>
+        <td id="f4total"></td>
+        <td id="f5total"></td>
+        <td id="f6total"></td>
+        <td id="f7total"></td>
+        <td id="f8total"></td>
+        <td id="f9total"></td>
+        <td id="f10total"></td>
+      </tr>
+    </table>
+    <br>
+    <p>Input pins knocked over in Frame <span id="current-frame"></span>, Roll <span id="current-roll"></span>:</p>
+    <textarea id="current_pins" rows="1" cols="2"></textarea><br>
+    <button id="submit_current_pins">Submit</button>
+    <br>
+    <p class="message"></p>
+  </body>
+</html>

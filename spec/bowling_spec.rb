@@ -32,7 +32,7 @@ describe 'Bowling Game Behaviour' do
     expect(@game.score).to eq 24
   end
 
-  it 'can rolla perfect game' do
+  it 'can roll a perfect game' do
     12.times{@game.roll(10)}
     expect(@game.score).to eq 300
   end

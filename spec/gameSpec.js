@@ -18,6 +18,10 @@ describe('Game', function() {
     it('begins with two rolls', function() {
       expect(game.rollNumber).toEqual(2);
     });
+
+    it('begins with no score', function() {
+      expect(game.playerScore).toEqual(0);
+    });
   });
 
   describe('#roll', function() {
@@ -43,6 +47,14 @@ describe('Game', function() {
 
     it('throws error if roll a number less than 0', function() {
       expect(function() { game.roll(-1); }).toThrowError('Invalid roll');
+    });
+  });
+
+  describe('#scoreCalculator', function() {
+    it('stores the score', function() {
+      game.roll(5);
+      game.roll(2);
+      expect(game.score()).toEqual(7);
     });
   });
 });

@@ -6,6 +6,7 @@ class Game {
     this.frameNumber = 1
     this.pins = 10
     this.rollNumber = 2
+    this.playerScore = 0
   };
 
   isAWrongRoll(score) {
@@ -18,6 +19,15 @@ class Game {
     if(this.isAWrongRoll(score)) throw new Error('Invalid roll');
 
     this.pins -= score;
+    this.scoreCalculator(score);
     this.rollNumber --;
+  };
+
+  score() {
+    return this.playerScore;
+  };
+
+  scoreCalculator(score) {
+    this.playerScore += score;
   };
 };

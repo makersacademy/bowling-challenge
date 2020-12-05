@@ -28,8 +28,20 @@ class BowlingGame{
             return self.rolls[rollIndex + 2];
         }
 
+        function strike() {
+            return self.rolls[rollIndex] === 10;
+        }
+
+        function strikeScore() {
+            return self.rolls[rollIndex + 1] + self.rolls[rollIndex + 2];
+        }
+
         for (let i = 0; i < 10; i++) {
-            if (spare()) {
+            if (strike()) {
+                result += 10 + strikeScore();
+                rollIndex += 1;
+            }
+            else if (spare()) {
                 result += 10 + spareScore();
                 rollIndex += 2;
             }

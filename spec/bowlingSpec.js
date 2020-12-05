@@ -32,4 +32,27 @@ describe('Bowling', function() {
         expect(game.score()).toEqual(12);
     });
 
+    it('should calculate the bonus if there is a strike', () => {
+        game.roll(10);
+        game.roll(1);
+        game.roll(1);
+        for (var i = 0; i < 17; i++) {
+            game.roll(0);
+        }
+        expect(game.score()).toEqual(14);
+    });
+
+    it('can calculate a perfect game', () => {
+        for (var i = 0; i < 12; i++) {
+            game.roll(10);
+        }
+        expect(game.score()).toEqual(300);
+    });
+
+    it('can calculate all spare', () => {
+        for (var i = 0; i < 21; i++) {
+            game.roll(5);
+        }
+        expect(game.score()).toEqual(150);
+    });
 });

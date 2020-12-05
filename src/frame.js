@@ -17,10 +17,15 @@ class Frame {
   }
 
   pinsKnocked() {
-    var sum = this.rolls.reduce(function(a,b) {
-      return a + b;
-    });
-    return sum;
+    if (this.rolls === []) {
+      console.log("no rolls so should be returning 0");
+      return 0;
+    } else {
+      var sum = this.rolls.reduce(function(a,b) {
+        return a + b;
+      }, 0);
+      return sum;
+    }
   }
 
   currentRollNumber() {

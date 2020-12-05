@@ -8,6 +8,10 @@ class Game {
     return this.runningScore;
   }
 
+  getFrames() {
+    return this.frames;
+  }
+
   currentFrameNumber() {
     return this.frames.length;
   }

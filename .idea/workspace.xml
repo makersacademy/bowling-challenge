@@ -4,7 +4,6 @@
     <list default="true" id="00212a75-072a-4510-b92d-5cde1516ad2c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/bowlingGameSpec.js" beforeDir="false" afterPath="$PROJECT_DIR$/spec/bowlingGameSpec.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bowlingGame.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/bowlingGame.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +36,7 @@
       <option name="presentableId" value="Default" />
       <updated>1607092574828</updated>
       <workItem from="1607092579479" duration="103000" />
-      <workItem from="1607092761920" duration="8780000" />
+      <workItem from="1607092761920" duration="9265000" />
     </task>
     <task id="LOCAL-00001" summary="Set Up Game Structure &amp; Test.  Added first test and passed, with player being able to roll a gutter game">
       <created>1607094714595</created>
@@ -60,7 +59,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607163918809</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Player can roll a strike">
+      <created>1607164899574</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1607164899574</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -81,6 +87,7 @@
     <MESSAGE value="Set Up Game Structure &amp; Test.  Added first test and passed, with player being able to roll a gutter game" />
     <MESSAGE value="Player can roll all ones" />
     <MESSAGE value="Player can roll a spare" />
-    <option name="LAST_COMMIT_MESSAGE" value="Player can roll a spare" />
+    <MESSAGE value="Player can roll a strike" />
+    <option name="LAST_COMMIT_MESSAGE" value="Player can roll a strike" />
   </component>
 </project>

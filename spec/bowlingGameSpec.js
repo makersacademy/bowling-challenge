@@ -42,5 +42,19 @@ describe('BowlingGame', function() {
         expect(game.score()).toEqual(24);
     });
 
+    it('can roll a perfect game', function() {
+       for (let i = 0; i < 13; i++) {
+           game.roll(10);
+       }
+       expect(game.score()).toEqual(300);
+    });
+
+    it('can roll all spares', function() {
+        for (let i = 0; i < 22; i++) {
+            game.roll(5);
+        }
+        expect(game.score()).toEqual(150);
+    });
+
 
 });

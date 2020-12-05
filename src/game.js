@@ -49,6 +49,7 @@ class Game {
 
   _doubleUpdate() {
     if (this.frames[this.currentFrameNumber() - 2].isStrike()) {
+      console.log("In double update function, score to be added: "+this.currentFrameObject().pointsForStrike());
       this.frames[this.currentFrameNumber() - 2].addScore(this.currentFrameObject().pointsForStrike());
     } else if (this.frames[this.currentFrameNumber() - 2].isSpare()) {
       this.frames[this.currentFrameNumber() - 2].addScore(this.currentFrameObject().pointsForSpare());

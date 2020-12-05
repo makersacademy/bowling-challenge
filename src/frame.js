@@ -8,24 +8,24 @@ class Frame {
     return this.totalScore;
   }
 
+  getRolls() {
+    return this.rolls;
+  }
+
   inputRollScore(pins) {
     this.rolls.push(pins);
   }
 
   addScore(score) {
+    console.log("points added to frame: "+score);
     this.totalScore += score;
   }
 
   pinsKnocked() {
-    if (this.rolls === []) {
-      console.log("no rolls so should be returning 0");
-      return 0;
-    } else {
-      var sum = this.rolls.reduce(function(a,b) {
-        return a + b;
-      }, 0);
-      return sum;
-    }
+    var sum = this.rolls.reduce(function(a,b) {
+      return a + b;
+    }, 0);
+    return sum;
   }
 
   currentRollNumber() {
@@ -51,7 +51,11 @@ class Frame {
   }
 
   pointsForStrike() {
-    return this.rolls[0] + this.rolls[1];
+    if (this.rolls.length === 1) {
+      return this.rolls[0];
+    } else {
+      return this.rolls[0] + this.rolls[1];
+    }
   }
 
   pointsForSpare() {

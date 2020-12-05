@@ -21,4 +21,15 @@ describe('Bowling', function() {
         }
         expect(game.score()).toEqual(20);
     });
+
+    it('should calculate the bonus if there is a spare', () => {
+        game.roll(5);
+        game.roll(5);
+        game.roll(1);
+        for (var i = 0; i < 17; i++) {
+            game.roll(0);
+        }
+        expect(game.score()).toEqual(12);
+    });
+
 });

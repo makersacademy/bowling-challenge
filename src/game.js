@@ -4,21 +4,58 @@ class Game {
     this.runningScore = 0;
   };
 
-  getRunningScore() {};
+  getRunningScore() {
+    return this.runningScore;
+  };
 
-  currentFrameNumber() {};
+  currentFrameNumber() {
+    return this.frames.length;
+  };
 
-  currentFrameObject() {};
+  currentFrameObject() {
+    return this.frames[this.currentFrameNumber() - 1];
+  };
 
-  newFrame(frame) {};
+  newFrame(frame) {
+    this.frames.push(frame);
+  };
 
-  knocked(pins) {};
+  knocked(pins) {
+    this.currentFrameObject().inputRollScore(pins);
+  };
 
-  updateScore() {};
+  updateScore() {
+    this._normalUpdate();
+    if (this.currentFrameNumber() >= 2) {
+      this._doubleUpdate();
+    };
+    if (this.currentFrameNumber() >= 3) {
+      this._tripleUpdate();
+    };
+    var score = 0
+    this.frames.forEach(function(item, index) {
+      score += item.getTotalScore();
+    });
+    this.runningScore = score;
+  };
 
-  _normalUpdate() {};
+  _normalUpdate() {
+    this.currentFrameObject().addScore(this.currentFrameObject().pinsKnocked());
+  };
 
-  _doubleUpdate() {};
+  _doubleUpdate() {
+    if (this.frames[this.currentFrameNumber() - 2].isStrike()) {
+      this.frames[this.currentFrameNumber() - 2].addScore(this.currentFrameObject().pointsForStrike());
+    } else if (this.frames[this.currentFrameNumber() - 2].isSpare()) {
+      this.frames[this.currentFrameNumber() - 2].addScore(this.currentFrameObject().pointsForSpare());
+    };
+  };
 
-  _tripleUpdate() {};
+  _tripleUpdate() {
+    if (this.currentFrameObject().isStrike() &&
+        this.frames[this.currentFrameNumber() - 2].isStrike() &&
+        this.frames[this.currentFrameNumber() - 3].isStrike()) {
+          this.frames[this.currentFrameNumber() - 3].addScore(10);
+        };
+  };
 }

@@ -93,7 +93,7 @@ describe('BowlingScore', () => {
             [10, 0],
             [10, 0],
             [2, 2],
-            [4, 4],
+            [4, 5],
             [7, 3, 9]
         ]
         expect(bowlingScore(game)).toEqual(125)

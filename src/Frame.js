@@ -25,18 +25,18 @@ class Frame {
       throw new Error("You can only roll twice per frame");
     }
 
-    if (pins > 10) {
+    if(pins > 10) {
       throw new Error("You can't hit more than 10 pins per roll");
     }
   };
 
   _validateFramePins(frame, pins) {
-    var totalPins = pins + this.pinsFrame[frame - 1];
-    if(totalPins > 10) {
-      throw new Error("You can't hit more than 10 pins per frame");
-    }
-    this.pinsFrame[frame - 1] = totalPins;
+    if(frame < 10) {
+      var totalPins = pins + this.pinsFrame[frame - 1];
+      if(totalPins > 10) {
+        throw new Error("You can't hit more than 10 pins per frame");
+      }
+      this.pinsFrame[frame - 1] = totalPins;
+     }
   };
-
-
 };

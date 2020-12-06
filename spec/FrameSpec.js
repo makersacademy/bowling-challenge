@@ -30,5 +30,10 @@ describe('Frame Rules', function () {
     expect(function() { frame.play(1, 2, 4); }).toThrowError("You can't hit more than 10 pins per frame");
   });
 
+  it('will allow 3 rolls at the 10th frame if first roll hits 10', function() {
+    frame.play(10,1,10)
+    frame.play(10,2,5)
+    expect(frame.play(10,3,7)).toEqual(true)
+  });
 
 });

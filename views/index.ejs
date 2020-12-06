@@ -5,7 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bowling App</title>
 </head>
+<style>
+    @import "custom";
+    @import "~bootstrap/scss/bootstrap";
+</style>
 <body>
     <h1>Hello Bowling</h1>
+
+    <div class="container">
+        <form method="POST" action="/">
+        <% for (let i = 0; i < 9; i++) { %>
+        <div class="frame">
+            <p>Frame <%= i + 1 %> </p>
+            <input type="text" name="f<%= i + 1 %>-b1">
+            <input type="text" name="f<%= i + 1 %>-b2">
+        </div>
+        <% }; %>
+        <div class="frame">
+            <p>Frame 10 </p>
+            <input type="text" name="f10-b1">
+            <input type="text" name="f10-b2">
+            <input type="text" name="f10-b3">
+        </div>
+        <button>Submit</button>
+    </form>
+    </div>
 </body>
 </html>

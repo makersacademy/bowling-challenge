@@ -1,21 +1,42 @@
 'use strict';
 
 class Frame {
-  play(frame, roll, pins) {
-    this.frame = frame;
-    this.roll = roll;
-    this.pins = pins;
+  constructor(){
+    this.pinsFrame = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  }
 
-    if(this.frame > 10) {
+  play(frame, roll, pins) {
+
+    this._validateFrameValues(frame, roll, pins);
+    this._validateFramePins(frame, pins);
+
+    return true;
+  };
+
+  _validateFrameValues(frame, roll, pins) {
+    if(frame > 10) {
       throw new Error("There aren't more than 10 frames");
     }
-    if(this.frame < 1) {
+    if(frame < 1) {
       throw new Error("There can't be less than 1 frame");
     }
 
-    if(this.frame < 10 & this.roll > 2) {
+    if(frame < 10 & roll > 2) {
       throw new Error("You can only roll twice per frame");
     }
-    return true;
+
+    if (pins > 10) {
+      throw new Error("You can't hit more than 10 pins per roll");
     }
+  };
+
+  _validateFramePins(frame, pins) {
+    var totalPins = pins + this.pinsFrame[frame - 1];
+    if(totalPins > 10) {
+      throw new Error("You can't hit more than 10 pins per frame");
+    }
+    this.pinsFrame[frame - 1] = totalPins;
+  };
+
+
 };

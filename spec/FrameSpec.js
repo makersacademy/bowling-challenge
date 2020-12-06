@@ -21,5 +21,14 @@ describe('Frame Rules', function () {
     expect(frame.play(2,2,3)).toEqual(true);
   });
 
+  it("can't have more than 10 knocked pins in a frame", function() {
+    expect(function() { frame.play(1, 1, 11); }).toThrowError("You can't hit more than 10 pins per roll");
+  });
+
+  it("can't have more than 10 knocked pins in a frame", function() {
+    frame.play(1,1,7);
+    expect(function() { frame.play(1, 2, 4); }).toThrowError("You can't hit more than 10 pins per frame");
+  });
+
 
 });

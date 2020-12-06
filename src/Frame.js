@@ -13,7 +13,7 @@ class Frame {
       throw new Error("There can't be less than 1 frame");
     }
 
-    if(this.frame <= 10 & this.roll > 2) {
+    if(this.frame < 10 & this.roll > 2) {
       throw new Error("You can only roll twice per frame");
     }
     return true;

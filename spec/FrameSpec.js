@@ -16,7 +16,7 @@ describe('Frame Rules', function () {
     expect(function(){ frame.play(0,1,2); }).toThrowError("There can't be less than 1 frame");
   });
 
-  it('until the 9th frame, each frame allows a maximum of 2 rolls', function() {
+  it('until, the 9th frame (included), each frame allows a maximum of 2 rolls', function() {
     expect(function() { frame.play(1,3,4); }).toThrowError("You can only roll twice per frame");
     expect(frame.play(2,2,3)).toEqual(true);
   });

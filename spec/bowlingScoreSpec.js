@@ -82,4 +82,20 @@ describe('BowlingScore', () => {
         ]
         expect(bowlingScore(perfectGame)).toEqual(300)
     })
+
+    it('handles game with gratuitous strikes/spares and spare in frame 10', () => {
+        let game = [
+            [10, 0],
+            [3, 7],
+            [4, 4],
+            [7, 2],
+            [5, 2],
+            [10, 0],
+            [10, 0],
+            [2, 2],
+            [4, 4],
+            [7, 3, 9]
+        ]
+        expect(bowlingScore(game)).toEqual(125)
+    })
 })

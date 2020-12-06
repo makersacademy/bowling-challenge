@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Game', () => {
-  // var Game = require('../src/game.js');
+  var Game = require('../src/game.js');
   var game;
 
   beforeEach(() => {

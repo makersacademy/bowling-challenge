@@ -48,13 +48,53 @@ describe('Game', function() {
     it('throws error if roll a number less than 0', function() {
       expect(function() { game.roll(-1); }).toThrowError('Invalid roll');
     });
+
+    xit('starts a new frame after a strike', function() {
+      game.roll(10);
+      game.roll(1);
+      expect(game.frameNumber).toEqual(2);
+    });
   });
 
   describe('#scoreCalculator', function() {
+    it('is a strike'), function() {
+      game.rollNumber = 2;
+      game.roll = 10;
+      expect(game.isAStrike()).toBe(true);
+    };
+
+    it('is a spare', function() {
+      game.rollNumber = 1;
+      game.pins = 0;
+      expect(game.isAStrike()).toBe(false);
+      expect(game.isASpare()).toBe(true);
+    });
+
     it('stores the score', function() {
       game.roll(5);
       game.roll(2);
       expect(game.score()).toEqual(7);
+    });
+
+    xit('is a spare bonus', function() {
+      game.roll(3);
+      game.roll(7);
+      game.roll(2);
+      game.roll(4);
+      expect(game.score()).toEqual(18);
+    });
+
+    xit('is a strike bonus', function () {
+      game.roll(10);
+      game.roll(2);
+      game.roll(4);
+      expect(game.score()).toEqual(22);
+    });
+
+    xit('is second strike in a row', function() {
+      game.roll(10);
+      game.roll(10);
+      expect(game.score()).toEqual(40);
     });
   });
 });

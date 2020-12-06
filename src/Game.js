@@ -10,19 +10,19 @@ class Game {
   }
 
   roll(pins) {
-    if (!this._currentFrame().isInPlay() && this._frameCount() <= 9) {
+    if (!this.currentFrame().isInPlay() && this.frameCount() <= 9) {
       this._newFrame();
-      this._currentFrame().knocked(pins);
+      this.currentFrame().knocked(pins);
       this._doubleStrikeBonus(pins);
       this._strikeBonus(pins);
       this._spareBonus(pins);
       return;
-    } else if (this._currentFrame().isInPlay() && this._frameCount() <= 9) {
-      this._currentFrame().knocked(pins);
+    } else if (this.currentFrame().isInPlay() && this.frameCount() <= 9) {
+      this.currentFrame().knocked(pins);
       this._strikeBonus(pins);
       return;
-    } else if (this._currentFrame().isInPlay() && this._frameCount() === 10) {
-      this._currentFrame().knocked(pins);
+    } else if (this.currentFrame().isInPlay() && this.frameCount() === 10) {
+      this.currentFrame().knocked(pins);
       return;
     };
   };
@@ -35,7 +35,7 @@ class Game {
     return total;
   }
  
-  _currentFrame() {
+  currentFrame() {
     return this._frames[this._frames.length - 1];
   };
 
@@ -68,19 +68,19 @@ class Game {
   }
 
   _newFrame() {
-    if (this._frameCount() < 9) {
+    if (this.frameCount() < 9) {
       this._frames.push(new Frame());
-    } else if (this._frameCount() === 9) {
+    } else if (this.frameCount() === 9) {
       this._frames.push(new Frame(true));
     };
   };
 
-  _frameCount() {
+  frameCount() {
     return this._frames.length;
   };
 
   _isFirstFrame() {
-   return this._frameCount() === 1;
+   return this.frameCount() === 1;
   };
 
 };

@@ -20,7 +20,7 @@ describe('Game', () => {
   describe('standard frame', () => {
     xit('calls the knocked function on the current frame', () => {
       game.roll(3);
-      expect(frame.knocked).toHaveBeenCalled();
+      expect(game.currentFrame().knocked).toHaveBeenCalled();
     });
 
     it('adds new frame objects to the frames property appropriately', () => {

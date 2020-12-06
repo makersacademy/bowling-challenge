@@ -6,11 +6,11 @@ const bowlingScore = (game) => {
         let frameTotalPins = game[i][0] + game[i][1]
         runningTotal += frameTotalPins
 
-        if (frameTotalPins === 10) { modifiers[i] = 'spare' }
-        if (game[i][0] === 10) { modifiers[i] = 'strike' }
-        if (modifiers[i - 1] === 'spare') { runningTotal += game[i][0] }
-        if (modifiers[i - 1] === 'strike') { runningTotal += game[i][0] }
-        if (modifiers[i - 2] === 'strike') { runningTotal += game[i][0] }
+        if (frameTotalPins === 10) modifiers[i] = 'spare';
+        if (game[i][0] === 10) modifiers[i] = 'strike';
+        if (modifiers[i - 1] === 'spare') runningTotal += game[i][0];
+        if (modifiers[i - 1] === 'strike') runningTotal += game[i][0];
+        if (modifiers[i - 2] === 'strike') runningTotal += game[i][0];
     }
 
     if (modifiers[7] === 'strike') {

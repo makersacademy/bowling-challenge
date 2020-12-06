@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/lucy/Projects/bowling-challenge/spec/bowling_spec.rb": {
+      "/Users/stringiest/Projects/week_6/bowling-challenge/spec/bowling_spec.rb": {
         "lines": [
           1,
           null,
@@ -49,7 +49,7 @@
           null
         ]
       },
-      "/home/lucy/Projects/bowling-challenge/lib/bowling.rb": {
+      "/Users/stringiest/Projects/week_6/bowling-challenge/lib/bowling.rb": {
         "lines": [
           1,
           null,
@@ -105,6 +105,6 @@
         ]
       }
     },
-    "timestamp": 1607174062
+    "timestamp": 1607287901
   }
 }

@@ -1,0 +1,5 @@
+language: ruby
+# node_js: lts/*
+
+script:
+  - bundle exec rspec

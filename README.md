@@ -44,4 +44,3 @@ Then use your browser to navigate to 'index.html' in the new bowling-challenge f
 ## Outstanding Tasks
 
 * Set up Travis CI
-* Use jQuery to create an interactive interface.

@@ -50,4 +50,36 @@ describe('BowlingScore', () => {
         ]
         expect(bowlingScore(oneSpareGame)).toEqual(86)
     })
+
+    it('handles basic strike logic', () => {
+        let oneStrikeGame = [
+            [10, 0],
+            [4, 4],
+            [4, 4],
+            [4, 4],
+            [4, 4],
+            [4, 4],
+            [4, 4],
+            [4, 4],
+            [4, 4],
+            [4, 4]
+        ]
+        expect(bowlingScore(oneStrikeGame)).toEqual(90)
+    })
+
+    it('handles perfect game', () => {
+        let perfectGame = [
+            [10, 0],
+            [10, 0],
+            [10, 0],
+            [10, 0],
+            [10, 0],
+            [10, 0],
+            [10, 0],
+            [10, 0],
+            [10, 0],
+            [10, 10, 10]
+        ]
+        expect(bowlingScore(perfectGame)).toEqual(300)
+    })
 })

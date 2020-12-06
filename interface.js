@@ -3,19 +3,15 @@ $(document).ready(function() {
   var game = new BowlingGame();
 
   $('#submit_pins').on('click', function() {
-    var pins = $('#pins_hit').val();
+    var pinsString = $('#pins_hit').val();
+    var pins = parseInt(pinsString);
+    console.log(pins);
     game.roll(pins);
   });
 
-  // $('#final-score').on('click', function() { // event listener
-  //   game.score(); // update model
-  //   updateScore(); // update view
-  // });
-  //
-  // function updateScore() {
-  //   $('#score').text(game.score());
-  // }
+  $('#final-score').on('click', function() { // event listener
+    $('#score').text(game.score());
+  });
 
-
-
+  
 });

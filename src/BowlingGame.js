@@ -24,6 +24,7 @@ class BowlingGame {
         rollIndex += 2;
       }
     }
+    console.log(result);
     return result;
   }
 

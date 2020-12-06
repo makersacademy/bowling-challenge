@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express();
 const port = 9292;
+const scoreApi = require('./models/scoreApi')
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({
@@ -8,12 +9,13 @@ app.use(express.urlencoded({
 }))
 
 app.get('/', (req, res) => {
+    console.log(req.body)
     res.render('../views/index');
 })
 
 app.post('/', (req, res) => {
-    console.log(req.body)
-    res.redirect('/')
+    let score = scoreApi(req.body)
+    res.send(String(score))
 })
 
 app.listen(port);

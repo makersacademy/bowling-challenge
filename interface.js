@@ -1,12 +1,21 @@
+/*jshint esversion: 6 */
 $(document).ready(function() {
   var game = new BowlingGame();
 
-  function recordRoll(pins) {
-    // somehow I need to pass the pins to the model!!
-  }
-
-  $('#pins_hit').change(function(event) {
-    var pins = event.target.value;
-    recordRoll(pins);
+  $('#submit_pins').on('click', function() {
+    var pins = $('#pins_hit').val();
+    game.roll(pins);
   });
+
+  // $('#final-score').on('click', function() { // event listener
+  //   game.score(); // update model
+  //   updateScore(); // update view
+  // });
+  //
+  // function updateScore() {
+  //   $('#score').text(game.score());
+  // }
+
+
+
 });

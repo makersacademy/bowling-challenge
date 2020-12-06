@@ -27,6 +27,9 @@ Minimum requirements:
 Nice to have:
 - returns final scorecard, showing frame by frame rolls
 
+Even nicer to have:
+- scorecard tells you how many frames remaining during play.
+
 ## Technical Information
 
 This project has been written in JavaScript, linted with JSHint and tested using Jasmine.

@@ -15,7 +15,13 @@ $(document).ready(function() {
   });
 
   function updateFrameNumberInterface() {
-    $('#frame').text(Math.floor(game.frameNumber));
+    var frameNumber = game.frameNumber;
+    if (frameNumber < 11) {
+      $('#frame').text(Math.floor(game.frameNumber));
+    } else {
+      $('#frame').text(10);
+    }
+
   }
 
   updateFrameNumberInterface(1); // sets default frame number as 1

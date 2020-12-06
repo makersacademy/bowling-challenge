@@ -25,10 +25,9 @@ Minimum requirements:
 - returns their final score
 
 Nice to have:
+- scorecard tells you what frame you are on
+- scorecard tells you when the game is over
 - returns final scorecard, showing frame by frame rolls
-
-Even nicer to have:
-- scorecard tells you how many frames remaining during play.
 
 ## Technical Information
 

@@ -1,6 +1,5 @@
 describe('BowlingScore', () => {
-    const BowlingScore = require('../models/bowlingScore')
-
+    const bowlingScore = require('../models/bowlingScore')
     let gutterball = [
         '00',
         '00',
@@ -14,12 +13,8 @@ describe('BowlingScore', () => {
         '00'
     ]
 
-    beforeEach(() => {
-        let bowlingScore = new BowlingScore
-    })
-
     it('returns zero when given a gutterball game', () => {
-        expect(bowlingScore.calculate(gutterball)).toEqual(0)
+        expect(bowlingScore(gutterball)).toEqual(0)
     })
 
 })

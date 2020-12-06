@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Game', function() {
 
   var game;
@@ -95,6 +97,28 @@ describe('Game', function() {
       game.roll(10);
       game.roll(10);
       expect(game.score()).toEqual(40);
+    });
+
+    it('records a strike and then a spare', function() {
+      game.roll(10)
+      game.roll(1)
+      game.roll(9)
+      expect(game.score()).toEqual(30);
+    });
+
+    it('is a perfect game', function() {
+      for(var i = 0; i < 12; i++) {
+        game.roll(10)
+      }
+      expect(game.score()).toEqual(300);
+    });
+
+    it('is a gutter game', function() {
+      for(var i = 0; i < 11; i++) {
+        game.roll(0)
+        game.roll(0)
+      }
+      expect(game.score()).toEqual(20);
     });
   });
 });

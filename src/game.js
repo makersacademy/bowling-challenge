@@ -27,14 +27,37 @@ class Game {
     if((this.pins - score) < 0 || score < 0) throw new Error('Invalid roll');
   };
 
+  isLastFrame() {
+    if(this.frameNumber == 11 && this.spareBonus == false && this.strikeBonus == false)
+    return;
+  };
+
+  lastFrameScore() {
+    return (this.frameNumber == 11 && this.spareBonus == true || this.frameNumber == 11 && this.strikeBonus == true)
+  };
+
   roll(score) {
+    this.isLastFrame();
     this.isLastRoll();
     this.isAWrongRoll(score);
     this.rollScore = score;
     this.pins -= score;
     this.rollCalculator(score);
 
-    if (this.spareBonus) {
+    if(this.frameNumber == 10 && this.playerScore == 0) {
+      this.playerScore = 20
+    }
+
+    if(this.lastFrameScore() && this.playerScore == 0) {
+      this.playerScore = 20
+      return;
+    }
+
+    if(this.lastFrameScore()) {
+      this.playerScore += score
+      return
+    } else {
+      if (this.spareBonus) {
       this.playerScore += this.calculateSpareBonus()
     }
 
@@ -44,8 +67,9 @@ class Game {
 
     this.scoreCalculator(score);
 
-    if (this.doubleStrikeBonus) {
+    if (this.doubleStrikeBonus && this.frameNumber < 11) {
       this.playerScore += this.calculateDoubleStrikeBonus()
+    }
     }
 
     this.rollNumber --;
@@ -96,9 +120,11 @@ class Game {
       this.playerScore += score;
     } else if(this.isAStrike()) {
       this.strikeBonus = true
+      this.spareBonus = false
       this.playerScore += score;
     } else if (this.isASpare()) {
       this.spareBonus = true
+      this.strikeBonus = false
       this.playerScore += score;
     } else {
       if (this.rollNumber == 1) {

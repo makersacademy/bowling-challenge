@@ -1,7 +1,6 @@
 const bowlingScore = require('./bowlingScore')
 
 const scoreApi = (postRequest) => {
-    console.log(postRequest)
     let game = []
 
     for (let i = 0; i < 9; i++) {
@@ -16,7 +15,7 @@ const scoreApi = (postRequest) => {
         } else {
             frame[1] = 0
         }
-        
+
         game[i] = frame
     }
 
@@ -26,7 +25,6 @@ const scoreApi = (postRequest) => {
     frame10[2] = parseInt(postRequest[`f10-b3`])
 
     game[9] = frame10
-    console.log(game)
 
     return bowlingScore(game);
 }

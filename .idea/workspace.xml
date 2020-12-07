@@ -20,11 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d72e7f4-f773-424d-a5c8-04aa004696eb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/SpecRunner.html" beforeDir="false" afterPath="$PROJECT_DIR$/SpecRunner.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/unit/frameSpec.js" beforeDir="false" afterPath="$PROJECT_DIR$/spec/unit/FrameSpec.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/unit/gameSpec.js" beforeDir="false" afterPath="$PROJECT_DIR$/spec/unit/GameSpec.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/frame.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Frame.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/interface.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/interface.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +55,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1607261073140</updated>
-      <workItem from="1607261074194" duration="23370000" />
+      <workItem from="1607261074194" duration="27523000" />
     </task>
     <servers />
   </component>

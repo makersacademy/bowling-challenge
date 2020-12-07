@@ -4,7 +4,10 @@ $(document).ready(function() {
   let frameIndex;
 
   $('#frame-choice').change(function() {
-    $('#scoreCard #scoreCardBody #kdp11').html("Hey there1");
+    $('#kdp11').text($(this).val());
   });
 
+  $('#roll1').change(function() {
+    $('#kdp11').text($(this).val());
+  });
 });

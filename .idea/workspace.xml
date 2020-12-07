@@ -2,13 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="00212a75-072a-4510-b92d-5cde1516ad2c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bowlingGame.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/bowlingGame.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -21,6 +28,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -36,7 +44,7 @@
       <option name="presentableId" value="Default" />
       <updated>1607092574828</updated>
       <workItem from="1607092579479" duration="103000" />
-      <workItem from="1607092761920" duration="9978000" />
+      <workItem from="1607092761920" duration="11188000" />
     </task>
     <task id="LOCAL-00001" summary="Set Up Game Structure &amp; Test.  Added first test and passed, with player being able to roll a gutter game">
       <created>1607094714595</created>
@@ -73,7 +81,21 @@
       <option name="project" value="LOCAL" />
       <updated>1607165440602</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added ESLINT and cleaned up errors">
+      <created>1607166806027</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1607166806027</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Setting up Travis">
+      <created>1607167099552</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1607167099552</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -96,6 +118,8 @@
     <MESSAGE value="Player can roll a spare" />
     <MESSAGE value="Player can roll a strike" />
     <MESSAGE value="Player can roll a perfect game and all spares" />
-    <option name="LAST_COMMIT_MESSAGE" value="Player can roll a perfect game and all spares" />
+    <MESSAGE value="Added ESLINT and cleaned up errors" />
+    <MESSAGE value="Setting up Travis" />
+    <option name="LAST_COMMIT_MESSAGE" value="Setting up Travis" />
   </component>
 </project>

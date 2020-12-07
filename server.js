@@ -9,7 +9,6 @@ app.use(express.urlencoded({
 }))
 
 app.get('/', (req, res) => {
-    console.log(req.body)
     res.render('../views/index');
 })
 

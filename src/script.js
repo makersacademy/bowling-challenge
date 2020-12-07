@@ -51,12 +51,8 @@ $(document).ready(function () {
       var rolls = frame.getRolls();
       if (rolls.length !== 0) {
         rolls.forEach((roll, rollIndex) => {
-          console.log("frame "+(frameIndex + 1)+" roll "+(rollIndex + 1));
-          console.log(roll);
           $('#f'+(frameIndex + 1)+'r'+(rollIndex + 1)).text(roll);
         });
-        console.log("frame "+(frameIndex + 1));
-        console.log(frame.getTotalScore());
         $('#f'+(frameIndex + 1)+'total').text(frame.getTotalScore());
       };
     });

@@ -29,6 +29,10 @@ Nice to have:
 - scorecard tells you when the game is over
 - returns final scorecard, showing frame by frame rolls
 
+## The Interface
+
+![Bowling Scorecard Interface](images/bowling_scorecard_interface.png)
+
 ## Technical Information
 
 This project has been written in JavaScript, linted with JSHint and tested using Jasmine.
@@ -43,4 +47,4 @@ Then use your browser to navigate to 'index.html' in the new bowling-challenge f
 
 ## Outstanding Tasks
 
-* Set up Travis CI
+* Set up Travis CI to run tests in Jasmine.

@@ -25,9 +25,9 @@ If I were to continue working on this project, I would like to implement the fol
 
 ### Diagrams and Screenshots:
 
-![](images/Frame 1-9 logic.png)
-![](images/bowling frame 10.png)
-![](images/Complete Game.png)
+![](images/Frame%201-9%20logic.png)
+![](images/bowling%20frame%2010.png)
+![](images/Complete%20Game.png)
 
 
 ## Bowling — how does it work?

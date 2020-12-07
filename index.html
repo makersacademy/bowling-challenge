@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Bowling ScoreCard</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    </head>
+    <body class="text-center" style="background-color:#1f2736; color:white">
+        <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+            <header class="masthead mb-auto">
+                <div class="inner">
+                    <h1 class="masthead-brand">Bowling World</h1>
+                </div>
+            </header>
+            <br><br>
+            <main role="main" class="inner cover">
+                <p class="lead">Welcome to the Bowling World! Type in the score of each roll and submit it.</p>
+                <div class="form-group" style="max-width: 35%; margin: 0 auto;">
+                    <input list="frameSelection" class="form-control" id="frame-choice" name="frame-choice" placeholder="Select current frame">
+                    <datalist id="frameSelection" required>
+                        <option value="" disabled selected>Select current frame</option>
+                        <option value="1">Frame 1</option>
+                        <option value="2">Frame 2</option>
+                        <option value="3">Frame 3</option>
+                        <option value="4">Frame 4</option>
+                        <option value="5">Frame 5</option>
+                        <option value="6">Frame 6</option>
+                        <option value="7">Frame 7</option>
+                        <option value="8">Frame 8</option>
+                        <option value="9">Frame 9</option>
+                        <option value="10">Frame 10</option>
+                    </datalist>
+                    <br>
+                    <select class="custom-select" id="roll1" required>
+                        <option value="" disabled selected>Roll 1</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <br><br>
+                    <select class="custom-select" id="roll2" required>
+                        <option value="" disabled selected>Roll 2</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+                <br><br>
+                <table id="scoreCard" class="table table-hover table-dark" style="max-width: 75%; margin: 0 auto;">
+                    <thead id="scoreCardHead">
+                    <tr>
+                        <th scope="col">Frame</th>
+                        <th scope="col">Roll</th>
+                        <th scope="col">Knocked-down Pins</th>
+                        <th scope="col">Total Score</th>
+                        <th scope="col">Notes</th>
+                    </tr>
+                    </thead>
+                    <tbody id="scoreCardBody">
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td id="kdp11">#</td>
+                        <td id="ts11">#</td>
+                        <td>Lorum</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td id="kdp12">#</td>
+                        <td id="ts12">#</td>
+                        <td>Lorum</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>1</td>
+                        <td id="kdp21">#</td>
+                        <td id="ts21">#</td>
+                        <td>Lorum</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>2</td>
+                        <td id="kdp22">#</td>
+                        <td id="ts22">#</td>
+                        <td>Lorum</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>1</td>
+                        <td id="kdp31">#</td>
+                        <td id="ts31">#</td>
+                        <td>Lorum</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>2</td>
+                        <td id="kdp32">#</td>
+                        <td id="ts32">#</td>
+                        <td>Lorum</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>1</td>
+                        <td id="kdp41">#</td>
+                        <td id="ts41">#</td>
+                        <td>Lorum</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>2</td>
+                        <td id="kdp42">#</td>
+                        <td id="ts42">#</td>
+                        <td>Lorum</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>1</td>
+                        <td id="kdp51">#</td>
+                        <td id="ts51">#</td>
+                        <td>Lorum</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>2</td>
+                        <td id="kdp52">#</td>
+                        <td id="ts52">#</td>
+                        <td>Lorum</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>1</td>
+                        <td id="kdp61">#</td>
+                        <td id="ts61">#</td>
+                        <td>Lorum</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>2</td>
+                        <td id="kdp62">#</td>
+                        <td id="ts62">#</td>
+                        <td>Lorum</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>1</td>
+                        <td id="kdp71">#</td>
+                        <td id="ts71">#</td>
+                        <td>Lorum</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>2</td>
+                        <td id="kdp72">#</td>
+                        <td id="ts72">#</td>
+                        <td>Lorum</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>1</td>
+                        <td id="kdp81">#</td>
+                        <td id="ts81">#</td>
+                        <td>Lorum</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>2</td>
+                        <td id="kdp82">#</td>
+                        <td id="ts82">#</td>
+                        <td>Lorum</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>1</td>
+                        <td id="kdp91">#</td>
+                        <td id="ts91">#</td>
+                        <td>Lorum</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>2</td>
+                        <td id="kdp92">#</td>
+                        <td id="ts92">#</td>
+                        <td>Lorum</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>1</td>
+                        <td id="kdp101">#</td>
+                        <td id="ts101">#</td>
+                        <td>Lorum</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>2</td>
+                        <td id="kdp102">#</td>
+                        <td id="ts102">#</td>
+                        <td>Lorum</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>3</td>
+                        <td id="kdp103">#</td>
+                        <td id="ts103">#</td>
+                        <td>Lorum</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </main>
+            <br><br>
+            <footer class="mastfoot mt-auto">
+                <div class="inner">
+                    <p>Bowling World created by <a href="https://github.com/CodeZeus-dev">Constantine Akritides</a>.</p>
+                </div>
+            </footer>
+        </div>
+
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="../../assets/js/vendor/popper.min.js"></script>
+        <script src="../../dist/js/bootstrap.min.js"></script>
+        <script src="js/interface.js"></script>
+    </body>
+</html>

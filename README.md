@@ -25,3 +25,15 @@ There are special rules to consider when:
 ### Example game
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+
+## How to use
+
+Use the terminal on your computer to navigate to a directory in which you want to save the project to and enter:  
+
+```
+$ git clone https://github.com/AdamusBG/bowling-challenge.git
+$ cd bowling-challenge
+$ open views/index.html
+```
+
+The program will then open in your browser, enter your score for each roll and watch the scorecard update.  

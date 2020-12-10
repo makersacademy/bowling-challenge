@@ -1,0 +1,27 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "## The Task",
+  "main": "interface.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stringiest/bowling-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stringiest/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/stringiest/bowling-challenge#readme",
+  "devDependencies": {
+    "jasmine": "^3.6.3"
+  }
+}

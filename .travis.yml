@@ -7,12 +7,4 @@ matrix:
     - language: node_js
       node_js: lts/*
       script:
-        # - npm install && npm test
-        - jasmine
-    # I think that I probably need to add some more to this,
-    # perhaps:
-    # npm install -g jasmine
-    # jasmine init
-    # jasmine
-    # but when I tested this on my repo, runnign Jasmine from the command line,
-    # it didn't work (perhaps because my JS files are in src rather than lib?)
+        - npm install && npm test

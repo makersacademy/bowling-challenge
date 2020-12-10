@@ -15,9 +15,9 @@ $(document).ready(function() {
   });
 
   function updateFrameNumberInterface() {
-    var frameNumber = game.frameNumber;
+    var frameNumber = game.frameNumber();
     if (frameNumber < 11) {
-      $('#frame').text(Math.floor(game.frameNumber));
+      $('#frame').text(Math.floor(game.frameNumber()));
     } else {
       $('#frame').text(10);
     }

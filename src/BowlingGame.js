@@ -3,13 +3,11 @@ class BowlingGame {
 
   constructor() {
     this.rolls = [];
-    this.frameNumber = 1;
   }
 
   roll(pins) {
     this.rolls.push(pins);
     console.log('in the roll method');
-    this.updateFrameNumber();
   }
 
   score() {
@@ -31,9 +29,9 @@ class BowlingGame {
     return result;
   }
 
-  updateFrameNumber() {
+  frameNumber() {
     var rollIndex = 0;
-    this.frameNumber = 1;
+    var frameNumber = 1;
     console.log(this.rolls);
     for (var i = 0; i < this.rolls.length; i++) {
       console.log('in for loop');
@@ -41,14 +39,14 @@ class BowlingGame {
       console.log(rollIndex);
       if (this._isStrike(rollIndex)) {
         rollIndex += 1;
-        this.frameNumber += 1;
+        frameNumber += 1;
       } else {
         rollIndex += 1;
-        this.frameNumber += 0.5;
+        frameNumber += 0.5;
       }
     }
-    console.log(this.frameNumber);
-    return this.frameNumber;
+    console.log(frameNumber);
+    return frameNumber;
   }
 
   _isSpare(rollIndex) {

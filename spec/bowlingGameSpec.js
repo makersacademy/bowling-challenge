@@ -1,3 +1,7 @@
+/*jshint esversion: 6 */
+
+const BowlingGame = require('../src/BowlingGame.js');
+
 describe("BowlingGame", function() {
 
   beforeEach(function(){

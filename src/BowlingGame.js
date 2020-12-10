@@ -7,7 +7,6 @@ class BowlingGame {
 
   roll(pins) {
     this.rolls.push(pins);
-    console.log('in the roll method');
   }
 
   score() {
@@ -25,7 +24,6 @@ class BowlingGame {
         rollIndex += 2;
       }
     }
-    console.log(result);
     return result;
   }
 
@@ -69,3 +67,5 @@ class BowlingGame {
     return (this.rolls[rollIndex] + this.rolls[rollIndex + 1]);
   }
 }
+
+module.exports = BowlingGame;

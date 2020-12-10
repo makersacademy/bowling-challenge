@@ -4,10 +4,11 @@ matrix:
       script:
         - bundle exec rspec
 
-    # - language: node_js
-    #   node_js: lts/*
-    #   script:
-    #     - npm install
+    - language: node_js
+      node_js: lts/*
+      script:
+        # - npm install && npm test
+        - jasmine
     # I think that I probably need to add some more to this,
     # perhaps:
     # npm install -g jasmine

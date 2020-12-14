@@ -1,0 +1,10 @@
+matrix:
+  include:
+    - language: ruby
+      script:
+        - bundle exec rspec
+
+    - language: node_js
+      node_js: lts/*
+      script:
+        - npm install && npm test

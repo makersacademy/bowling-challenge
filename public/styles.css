@@ -1,0 +1,53 @@
+body {
+  background-color: #E0FFFF;
+  font-family: Arial, sans-serif;
+}
+h1 {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: black;
+}
+h2 {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: black;
+}
+h3 {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: black;
+}
+p {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+}
+select {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: black;
+}
+label {
+  font-family: Arial, sans-serif;
+}
+form {
+  font-family: Arial, sans-serif;
+}
+input {
+  text-align: center;
+  background-color: grey;
+  color: white;
+}
+
+.low-usage {
+  color: green;
+}
+
+.medium-usage {
+  color: black;
+}
+
+.high-usage {
+  color: red;
+}

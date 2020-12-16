@@ -2,11 +2,11 @@ class Bowling {
 
 constructor() {
   this.rolls = []
-};
+}
 
 roll(n) {
   this.rolls.push(n)
-};
+}
 
 display() {
   return this.rolls;
@@ -33,4 +33,4 @@ total() {
   return score; 
   // return this.rolls.reduce((a, b) => a + b, 0);
 }
-};
+}

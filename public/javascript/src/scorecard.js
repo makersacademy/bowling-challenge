@@ -35,7 +35,6 @@ class Scorecard{
       }
       else {score += frame.points();
       }
-      console.log(score)
     });
     return score;
   }

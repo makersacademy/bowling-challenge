@@ -8,7 +8,7 @@ class Frame{
   };
 
   recordRoll(pins){
-    if (this.contents.length == 1 && this.number != 10 && this.contents[0] + pins > 10) { throw "CHEATER ALERT!!! PLEASE INPUT A SCORE EQUAL TO OR LOWER THAN THE NUMBER OF AVAILABLE PINS" }
+    if (this.rolls() == 1 && this.number != 10 && this._rawScore() + pins > 10) { throw "CHEATER ALERT!!! PLEASE INPUT A SCORE EQUAL TO OR LOWER THAN THE NUMBER OF AVAILABLE PINS" }
     this.contents.push(pins)
   };
 

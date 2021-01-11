@@ -4,9 +4,11 @@ class Frame{
 
   constructor(){
     this.contents = [];
+    this.number;
   };
 
   recordRoll(pins){
+    if (this.contents.length == 1 && this.number != 10 && this.contents[0] + pins > 10) { throw "CHEATER ALERT!!! PLEASE INPUT A SCORE EQUAL TO OR LOWER THAN THE NUMBER OF AVAILABLE PINS" }
     this.contents.push(pins)
   };
 

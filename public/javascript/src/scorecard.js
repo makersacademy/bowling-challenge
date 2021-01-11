@@ -18,10 +18,10 @@ class Scorecard{
   }
 
   roll(pins){
+    this.getCurrentFrame().recordRoll(pins);
     if (this._isNotFinalFrame()) {
       this._frameChecker();
     }
-    this.getCurrentFrame().recordRoll(pins);
   }
 
   calculateScore(frames = this.frames){

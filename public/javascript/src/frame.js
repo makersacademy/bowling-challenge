@@ -5,11 +5,17 @@ class Frame{
   constructor(){
     this.contents = [];
     this.number;
+    this.remainingPins = 10;
   };
 
   recordRoll(pins){
-    if (this.rolls() == 1 && this.number != 10 && this._rawScore() + pins > 10) { throw "CHEATER ALERT!!! PLEASE INPUT A SCORE EQUAL TO OR LOWER THAN THE NUMBER OF AVAILABLE PINS" }
+    this._checkRemainingPins(pins)
+    this.remainingPins -= pins
     this.contents.push(pins)
+    if (this._isBonusRoll()) {
+      this._resetPins()
+    }
+    console.log(this._rawScore())
   };
 
   rolls(){
@@ -38,6 +44,15 @@ class Frame{
     }
   };
 
+  _isBonusRollStrike(){
+    let lastIndex = this.contents.length -1;
+    if (this.contents.length === 2 && this.contents[lastIndex] === 10){
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   _applySpare(nextRoll){
     if (this.isSpare() && nextRoll > 0) {
       this.contents[1] += nextRoll;
@@ -55,6 +70,22 @@ class Frame{
 
   _rawScore(){
     return this.contents.reduce((a, b) => a + b, 0);
+  }
+
+  _checkRemainingPins(pins){
+    if ( this.remainingPins - pins < 0) { throw "CHEATER ALERT!!! PLEASE INPUT A SCORE EQUAL TO OR LOWER THAN THE NUMBER OF AVAILABLE PINS" }
+  }
+
+  _isBonusRoll(){
+    if (this.number === 10 && (this.isStrike() || this.isSpare() || this._isBonusRollStrike())) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  _resetPins(){
+    this.remainingPins = 10;
   }
 
 }

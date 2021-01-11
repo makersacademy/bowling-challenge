@@ -65,4 +65,12 @@ describe('frame', function(){
       expect(frame.points()).toEqual(14)
     });
   });
+
+  describe('when the player tries to cheat by entering a score greater than the available number of pins', function(){
+    it('raises an error', function(){
+      frame.number = 3
+      frame.recordRoll(5)
+      expect(() => frame.recordRoll(7)).toThrow("CHEATER ALERT!!! PLEASE INPUT A SCORE EQUAL TO OR LOWER THAN THE NUMBER OF AVAILABLE PINS")
+    })
+  })
 })

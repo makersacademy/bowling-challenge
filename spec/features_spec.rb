@@ -9,6 +9,7 @@ feature 'correctly scoring a game' do
     expect(page.find('#current-frame')).to have_content '1'
     click_on('ten-pins')
     click_on('two-pins')
+    expect(page).not_to have_content('9')
     click_on('three-pins')
     expect(page.find('#score')).to have_content '20'
     expect(page.find('#current-frame')).to have_content '2'

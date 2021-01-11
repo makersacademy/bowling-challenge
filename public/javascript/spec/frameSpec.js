@@ -96,7 +96,20 @@ describe('frame', function(){
       frame.recordRoll(10)
       frame.recordRoll(10)
       frame.recordRoll(10)
-      expect(() => frame.recordRoll(7)).toThrow("CHEATER ALERT!!! PLEASE INPUT A SCORE EQUAL TO OR LOWER THAN THE NUMBER OF AVAILABLE PINS")
+      expect(() => frame.recordRoll(7)).toThrow("GAME OVER")
+    })
+    it('raises an error', function(){
+      frame.number = 10
+      frame.recordRoll(10)
+      frame.recordRoll(1)
+      frame.recordRoll(2)
+      expect(() => frame.recordRoll(4)).toThrow("GAME OVER")
+    })
+    it('raises an error', function(){
+      frame.number = 10
+      frame.recordRoll(2)
+      frame.recordRoll(3)
+      expect(() => frame.recordRoll(4)).toThrow("GAME OVER")
     })
   })
 })

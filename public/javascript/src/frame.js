@@ -9,13 +9,14 @@ class Frame{
   };
 
   recordRoll(pins){
+    this._breakIfGameOVer()
     this._checkRemainingPins(pins)
     this.remainingPins -= pins
     this.contents.push(pins)
     if (this._isBonusRoll()) {
       this._resetPins()
     }
-    console.log(this._rawScore())
+    
   };
 
   rolls(){
@@ -86,6 +87,24 @@ class Frame{
 
   _resetPins(){
     this.remainingPins = 10;
+  }
+
+  _breakIfGameOVer(){
+    if ( this.number === 10 && ( this._isGameOverWithNoBonusOnFinalFrame() || this._isGameOverWithBonusOnFinalFrame() )) {
+      throw "GAME OVER"
+    }
+  }
+
+  _isGameOverWithNoBonusOnFinalFrame(){
+    if ((this.contents[0] + this.contents[1] < 10) && (this.rolls() === 2)) {
+      return true
+    }
+  }
+
+  _isGameOverWithBonusOnFinalFrame(){
+    if ((this.contents[0] + this.contents[1] >= 10) && (this.rolls() === 3)) {
+      return true
+    }
   }
 
 }

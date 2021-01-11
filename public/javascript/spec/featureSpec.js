@@ -191,4 +191,11 @@ describe('feature tests', function(){
     })
   })
 
+  describe('when the player tries to cheat by entering more a score greater than the available number of pins', function(){
+    it('raises an error', function(){
+      scorecard.roll(5)
+      expect(() => scorecard.roll(7)).toThrow("CHEATER ALERT!!! PLEASE INPUT A SCORE EQUAL TO OR LOWER THAN THE NUMBER OF AVAILABLE PINS")
+    })
+  })
+
 })

@@ -57,12 +57,19 @@ describe('frame', function(){
   });
 
   describe('when it is the final frame', function(){
-    it('can apply the bonus roll correctly', function(){
+    it('can apply the bonus roll correctly for a spare', function(){
       frame.number = 10;
       frame.recordRoll(8)
       frame.recordRoll(2)
       frame.recordRoll(4)
       expect(frame.points()).toEqual(14)
+    });
+    it('can apply the bonus roll correctly for a strike', function(){
+      frame.number = 10;
+      frame.recordRoll(10)
+      frame.recordRoll(10)
+      frame.recordRoll(10)
+      expect(frame.points()).toEqual(30)
     });
   });
 
@@ -70,6 +77,25 @@ describe('frame', function(){
     it('raises an error', function(){
       frame.number = 3
       frame.recordRoll(5)
+      expect(() => frame.recordRoll(7)).toThrow("CHEATER ALERT!!! PLEASE INPUT A SCORE EQUAL TO OR LOWER THAN THE NUMBER OF AVAILABLE PINS")
+    })
+  })
+
+  describe('when the player tries to cheat on the bonus rolls', function(){
+    it('raises an error', function(){
+      frame.number = 10
+      frame.recordRoll(10)
+      frame.recordRoll(6)
+      expect(() => frame.recordRoll(7)).toThrow("CHEATER ALERT!!! PLEASE INPUT A SCORE EQUAL TO OR LOWER THAN THE NUMBER OF AVAILABLE PINS")
+    })
+  })
+
+  describe('when a player tries to record rolls beyond the end of the game', function(){
+    it('raises an error', function(){
+      frame.number = 10
+      frame.recordRoll(10)
+      frame.recordRoll(10)
+      frame.recordRoll(10)
       expect(() => frame.recordRoll(7)).toThrow("CHEATER ALERT!!! PLEASE INPUT A SCORE EQUAL TO OR LOWER THAN THE NUMBER OF AVAILABLE PINS")
     })
   })

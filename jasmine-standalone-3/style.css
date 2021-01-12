@@ -1,0 +1,41 @@
+input.score-input {
+  width: 25px;
+  height: 25px;
+  padding: 5px;
+  text-align: center;
+}
+div.frame-score {
+  width: 66px;
+  height: 25px;
+  padding: 5px;
+  text-align: center;
+  border-style: solid;
+  border-color: black;
+  display: inline-block;
+  vertical-align: middle;
+}
+div.frame-score10 {
+  width: 109px;
+  height: 25px;
+  padding: 5px;
+  text-align: center;
+  border-style: solid;
+  border-color: black;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+div.frame {
+
+}
+
+.score-inputs {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.score-inputs {
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+}

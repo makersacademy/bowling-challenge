@@ -2,11 +2,17 @@ class Game {
 
   constructor() {
     this.total = 0;
-    this.frame = new Frame();
+    this.currentFrame = [];
+    this.scorer = new Scorer();
   }
 
   roll(pins) {
-    this.frame.add(pins);
+    this.currentFrame.push(pins);
+    if (this.currentFrame.length === 2) {
+      this.frameComplete = true;
+      this.scorer.calculate(this.currentFrame);
+      this.currentFrame = [];
+    }
     this.total += pins;
   }
 

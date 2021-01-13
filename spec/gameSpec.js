@@ -1,16 +1,9 @@
 describe ('game', function() {
 
-  // class DoubleFrame {
-  //   setComplete() {
-  //     return true;
-  //   }
-  // }
-
-  var game, frame;
+  var game;
 
   beforeEach(function() {
     game = new Game();
-    // frame = new DoubleFrame();
   });
 
   describe('gameover', function() {
@@ -22,20 +15,19 @@ describe ('game', function() {
   describe('roll', function() {
     it('adds roll to frame', function() {
       game.roll(5);
-      expect(game.frame.pins).toEqual([5])
+      expect(game.currentFrame).toEqual([5])
     });
 
-    it('adds second roll to frame', function() {
+    it('sends full frame to scorer for calculation', function() {
       game.roll(5);
       game.roll(3);
-      expect(game.frame.pins).toEqual([5,3])
+      expect(game.scorer.scores).toEqual([8])
     });
 
     it('sets frame status as complete after 2 rolls', function() {
-      // spyOn(frame, 'setComplete');
       game.roll(5);
       game.roll(3);
-      expect(game.frame._isComplete).toBe(true);
+      expect(game.frameComplete).toBe(true);
     });
 
     // it('sends values to score as appropriate', function() {

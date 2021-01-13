@@ -23,4 +23,12 @@ describe ('game', function() {
     });
   });
 
+  describe('multiple frames, no spares/strikes', function() {
+    it('resets frame after every 2 rolls', function() {
+      game.roll(3);
+      game.roll(4);
+      expect(game.currentFrame).toEqual([]);
+    });
+  });
+
 });

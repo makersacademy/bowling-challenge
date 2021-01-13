@@ -1,3 +1,12 @@
+// throw error if pins is not number or not 0 < 10
+// spare followed by normal
+// strike followed by normal
+// strike followed by spare
+// strike followed by strike followed by normal
+// strike followed by strike followed by strike
+// final frame
+// all strikes - 300points
+
 describe ('game', function() {
 
   var game;

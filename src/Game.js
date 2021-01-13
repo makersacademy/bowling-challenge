@@ -5,6 +5,7 @@ class Game {
     this.scorer = new Scorer();
   }
 
+// protect against invalid pins entered
   roll(pins) {
     this.currentFrame.push(pins);
     if (this.currentFrame.length === 2) {

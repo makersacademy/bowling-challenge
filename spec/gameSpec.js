@@ -8,7 +8,9 @@ describe ('game', function() {
 
   describe('gameover', function() {
     it('returns the total score', function() {
-      expect(game.gameover()).toEqual(game.total)
+      game.roll(1);
+      game.roll(2);
+      expect(game.gameover()).toEqual(game.scorer.total())
     });
   });
 

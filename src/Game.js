@@ -1,7 +1,6 @@
 class Game {
 
   constructor() {
-    this.total = 0;
     this.currentFrame = [];
     this.scorer = new Scorer();
   }
@@ -13,11 +12,10 @@ class Game {
       this.scorer.calculate(this.currentFrame);
       this.currentFrame = [];
     }
-    this.total += pins;
   }
 
   gameover() {
-    return this.total
+    return this.scorer.total();
   }
 
 }

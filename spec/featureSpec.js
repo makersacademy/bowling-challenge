@@ -19,7 +19,7 @@ describe ('game', function() {
     it('returns total of frame', function() {
       game.roll(3);
       game.roll(4);
-      expect(game.total).toEqual(7);
+      expect(game.gameover()).toEqual(7);
     });
   });
 
@@ -28,6 +28,13 @@ describe ('game', function() {
       game.roll(3);
       game.roll(4);
       expect(game.currentFrame).toEqual([]);
+    });
+
+    it('saves all frames scores in scorer.scores', function() {
+      for (let i = 0; i < 4; i++) {
+        game.roll(4);
+      }
+      expect(game.scorer.scores).toEqual([8,8])
     });
   });
 

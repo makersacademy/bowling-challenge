@@ -9,4 +9,8 @@ class Scorer {
     this.scores.push(frameTotal);
   }
 
+  total() {
+    return this.scores.reduce((a, b) => a + b );
+  }
+
 }

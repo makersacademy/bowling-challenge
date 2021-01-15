@@ -5,12 +5,22 @@ class Scorer {
   }
 
   calculate(frame) {
-    let frameTotal = frame.reduce((a, b) => a + b );
-    this.scores.push(frameTotal);
+    if (frame.length === 2) {
+      let frameTotal = frame.reduce((a, b) => a + b );
+      if (frameTotal === 10) {
+        this.scores.push('/')
+      } else {
+        this.scores.push(frameTotal);
+      }
+    }
   }
 
   total() {
     return this.scores.reduce((a, b) => a + b );
+  }
+
+  bonus() {
+    
   }
 
 }

@@ -32,6 +32,10 @@ describe ('game', function() {
       expect(game.frameComplete).toBe(true);
     });
 
+    it('throws error for incorrect input', function() {
+      expect( function() { game.roll(11) } ).toThrow('Please enter number between 0 and 10');
+    })
+
     // it('sends values to score as appropriate', function() {
     //
     // });

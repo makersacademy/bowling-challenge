@@ -1,4 +1,3 @@
-// throw error if pins is not number or not 0 < 10
 // spare followed by normal
 // strike followed by normal
 // strike followed by spare
@@ -43,8 +42,31 @@ describe ('game', function() {
       for (let i = 0; i < 4; i++) {
         game.roll(4);
       }
-      expect(game.scorer.scores).toEqual([8,8])
+      expect(game.scorer.scores).toEqual([8, 8])
     });
+  });
+
+  describe('rolling a spare', function() {
+    it('returns score as /', function() {
+      game.roll(9);
+      game.roll(1);
+      expect(game.scorer.scores).toEqual(['/'])
+    });
+
+    // it('returns score of 14 following another roll of 4', function() {
+    //   game.roll(9);
+    //   game.roll(1);
+    //   game.roll(4);
+    //   game.roll(2);
+    //   expect(game.scorer.scores).toEqual([14, 6]);
+    // });
+    //
+    // it('updates score of 14 after just one roll', function() {
+    //   game.roll(9);
+    //   game.roll(1);
+    //   game.roll(4);
+    //   expect(game.scorer.scores).toEqual([14])
+    // });
   });
 
 });

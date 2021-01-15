@@ -15,9 +15,13 @@ describe ('game', function() {
   });
 
   describe('roll', function() {
+    it('throws error for incorrect input', function() {
+      expect( function() { game.roll(11) } ).toThrow('Please enter number between 0 and 10');
+    });
+
     it('adds roll to frame', function() {
       game.roll(5);
-      expect(game.currentFrame).toEqual([5])
+      expect(game.currentFrame.pins).toEqual([5])
     });
 
     it('sends full frame to scorer for calculation', function() {
@@ -26,19 +30,19 @@ describe ('game', function() {
       expect(game.scorer.scores).toEqual([8])
     });
 
-    it('sets frame status as complete after 2 rolls', function() {
+    it('resets frame', function() {
       game.roll(5);
       game.roll(3);
-      expect(game.frameComplete).toBe(true);
-    });
-
-    it('throws error for incorrect input', function() {
-      expect( function() { game.roll(11) } ).toThrow('Please enter number between 0 and 10');
+      expect(game.currentFrame.pins).toEqual([])
     })
+  });
 
-    // it('sends values to score as appropriate', function() {
-    //
-    // });
+  describe('endAndResetFrame', function() {
+    it('sends frame to scorer', function() {
+      game.roll(5);
+      game.roll(3);
+      expect(game.scorer.scores).toEqual([8])
+    });
   });
 
 });

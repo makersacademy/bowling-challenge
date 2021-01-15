@@ -35,7 +35,7 @@ describe ('game', function() {
     it('resets frame after every 2 rolls', function() {
       game.roll(3);
       game.roll(4);
-      expect(game.currentFrame).toEqual([]);
+      expect(game.currentFrame.pins).toEqual([]);
     });
 
     it('saves all frames scores in scorer.scores', function() {
@@ -53,20 +53,37 @@ describe ('game', function() {
       expect(game.scorer.scores).toEqual(['/'])
     });
 
-    // it('returns score of 14 following another roll of 4', function() {
-    //   game.roll(9);
-    //   game.roll(1);
-    //   game.roll(4);
-    //   game.roll(2);
-    //   expect(game.scorer.scores).toEqual([14, 6]);
-    // });
-    //
-    // it('updates score of 14 after just one roll', function() {
-    //   game.roll(9);
-    //   game.roll(1);
-    //   game.roll(4);
-    //   expect(game.scorer.scores).toEqual([14])
-    // });
+    it('adds bonus to score following next frame', function() {
+      game.roll(9);
+      game.roll(1);
+      game.roll(3);
+      game.roll(4);
+      expect(game.scorer.scores).toEqual([13, 7]);
+    });
+  });
+
+  describe('rolling a strike', function() {
+    it('returns strike as X', function() {
+      game.roll(10);
+      expect(game.scorer.scores).toEqual(['X']);
+    });
+
+    it('adds bonus to score following next frame', function() {
+      game.roll(10);
+      game.roll(4);
+      game.roll(2);
+      expect(game.scorer.scores).toEqual([16, 6]);
+    });
+  });
+
+  describe('rolling multiple strikes', function() {
+    it('adds bonus to first strike following 2 more frames', function() {
+      game.roll(10);
+      game.roll(10);
+      game.roll(6);
+      game.roll(3);
+      expect(game.scorer.scores).toEqual([29, 19, 9])
+    });
   });
 
 });

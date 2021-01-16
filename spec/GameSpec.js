@@ -119,10 +119,10 @@ describe("Game", () => {
   });
 
   describe("calculate strike and spare scores", () => {
-    it("should calculate previous score to be added if it's a strike", () => {
+    it("should calculate the final score for a strike", () => {
       game.frames = [[10],[5,4]];
-      game.scores = [10]
-      expect(game.calculateFinalScore(1)).toEqual(9);
+      game.frameScores = [10]
+      expect(game.calculateFinalScore(1)).toEqual(19);
     });
   })
 

@@ -3,22 +3,22 @@ Bowling Challenge
 =================
 
 ### Objects
-*Score: Calculates the score for each frame & overall game
+####Score: Calculates the score for each frame & overall game
 - Calculate frame score
 - Calculate total score
 
-* Frame: 
--Strike
--Spare
--Two rolls
+#### Frame: 
+-Determine strike
+-Determine spare
 -Array for storing the two rolls
--Frame score
+-Checking that the two rolls do not exceed 10 pins
 
-* Game: Run the frames
+#### Game: Run the frames
 - Store total score
 - Store & update frame scores
-- Gutter game
-- Determine bonus game  
+- Determine bonus round
+- Determine gutter game
+- Determine perfect game
 
 
 Jasmine

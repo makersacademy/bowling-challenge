@@ -28,9 +28,8 @@ class Scorecard{
 
   total(frame) {
     let sum = 0
-    this.frame = frame
-    while (this.frame > 0) {
-    let [currRoll1, currRoll2, nextRoll1, nextRoll2] = [this.score[this.frame+0.1], this.score[this.frame+0.2], this.score[this.frame+1.1], this.score[this.frame+1.2]];
+    while (frame > 0) {
+    let [currRoll1, currRoll2, nextRoll1, nextRoll2] = [this.score[frame+0.1], this.score[frame+0.2], this.score[frame+1.1], this.score[frame+1.2]];
     sum += currRoll1 + currRoll2
     if (this._isStrike(currRoll1, currRoll2)) {
       if (this._isNextRollNull(nextRoll1, nextRoll2)) {
@@ -39,9 +38,9 @@ class Scorecard{
     } else if (currRoll1 + currRoll2 === 10 && nextRoll1 != null) {
         sum += nextRoll1
       }
-    this.frame -= 1;
+    frame -= 1;
     };
-    let [tenthRoll1, tenthRoll2, tenthRoll3] = [this.score[this.frame+10.1], this.score[this.frame+10.2], this.score[this.frame+10.3]]
+    let [tenthRoll1, tenthRoll2, tenthRoll3] = [this.score[frame+10.1], this.score[frame+10.2], this.score[frame+10.3]]
     tenthRoll1+tenthRoll2 === 10 || 20 ? sum += tenthRoll3 : 0
     return sum
   };

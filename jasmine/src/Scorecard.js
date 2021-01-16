@@ -10,20 +10,20 @@ class Scorecard{
   };
 
   addRoll(turn, pins) {
-     this._checkFrameNotAboveTen(pins)
+     this.checkFrameNotAboveTen(pins)
      this.score[turn] = pins
   };
 
-  _checkFrameNotAboveTen(input) {
-    if (input > 10) throw new Error('You cant roll more than 10')
+  checkFrameNotAboveTen(pins) {
+    if (pins > 10) throw new Error('You cant roll more than 10')
   }
 
-  _isStrike(input1, input2) {
-    return input1 === 10 || input2 === 10
+  isStrike(currRoll1, currRoll2) {
+    return currRoll1 === 10 || currRoll2 === 10
   };
 
-  _isNextRollNull(input1, input2) {
-    return input1 != null || input2 != null
+  isNextRollNull(currRoll1, currRoll2) {
+    return currRoll1 != null || currRoll2 != null
   };
 
   total(frame) {
@@ -31,8 +31,8 @@ class Scorecard{
     while (frame > 0) {
     let [currRoll1, currRoll2, nextRoll1, nextRoll2] = [this.score[frame+0.1], this.score[frame+0.2], this.score[frame+1.1], this.score[frame+1.2]];
     turnScore += currRoll1 + currRoll2
-    if (this._isStrike(currRoll1, currRoll2)) {
-      if (this._isNextRollNull(nextRoll1, nextRoll2)) {
+    if (this.isStrike(currRoll1, currRoll2)) {
+      if (this.isNextRollNull(nextRoll1, nextRoll2)) {
         turnScore += nextRoll1 + nextRoll2
       };
     } else if (currRoll1 + currRoll2 === 10 && nextRoll1 != null) {

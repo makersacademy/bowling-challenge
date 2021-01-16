@@ -73,6 +73,36 @@ describe("BowlingGame", function() {
       bowlingGame.addRolls(3, 4);
       expect(bowlingGame.isPreviousFrameStrike()).toEqual(false);
     });
-  })
+  });
+// for the below describe block, need to try to use spies to mock for previous frames being strikes and spares
+  describe("addBonusScores", function() {
+    it("adds first throw of latest frame to total score of the previous frame if the previous frame was a spare", function() {
+      bowlingGame.addRolls(4, 6);
+      bowlingGame.addRolls(5, 2);
+      bowlingGame.addBonusScores();
+      expect(bowlingGame.getGameScore()).toEqual(22);
+    });
+
+    it("does not add first throw of latest frame to total score of the previous frame unless the previous frame was a spare", function() {
+      bowlingGame.addRolls(4, 5);
+      bowlingGame.addRolls(5, 3);
+      bowlingGame.addBonusScores();
+      expect(bowlingGame.getGameScore()).not.toEqual(22);
+    });
+
+    it("adds total score of latest frame to total score of the previous frame if the previous frame was a strike", function() {
+      bowlingGame.addRolls(10);
+      bowlingGame.addRolls(5, 2);
+      bowlingGame.addBonusScores();
+      expect(bowlingGame.getGameScore()).toEqual(24);
+    });
+
+    it("does not add total score of latest frame to total score of the previous frame unless the previous frame was a strike", function() {
+      bowlingGame.addRolls(7, 3);
+      bowlingGame.addRolls(5, 2);
+      bowlingGame.addBonusScores();
+      expect(bowlingGame.getGameScore()).not.toEqual(24);
+    });
+  });
 
 });

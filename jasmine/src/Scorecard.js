@@ -14,8 +14,7 @@ class Scorecard{
 
   addRoll(turn, pins) {
      this._checkFrameNotAboveTen(pins)
-     this.turn = turn
-     this.currentframe = parseInt(this.turn)
+     this.currentframe = parseInt(turn)
      this.score[turn] = pins
   };
 

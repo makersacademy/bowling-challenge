@@ -101,16 +101,22 @@ describe("Game", () => {
   })
 
   describe("updating previous game score in case of strike/spare", () => {
-    beforeEach(()=> {
-      spyOn(game, 'checkPreviousFrame').and.returnValue("strike");
-    });
+
     it("should update the previous frame score if it was a strike", () => {
-      game.frames = [[10],[5]];
-      game.frameScores = [10, 5];
-      game.updatePreviousScore(1, 5)
-      expect(game.frameScores).toEqual([15,5]);
-      
+      game.frames = [[10],[5,4]];
+      game.frameScores = [10];
+      game.updatePreviousScore(1)
+      expect(game.frameScores).toEqual([19,28]);
     });
+
+    it("should update the previous frame score if it was a spare", () => {
+      game.frames = [[6,4],[5,4]];
+      game.frameScores = [10];
+      game.updatePreviousScore(1);
+      console.log(game.frameScores)
+      expect(game.frameScores).toEqual([15,24]);
+    });
+
   });
 
 });

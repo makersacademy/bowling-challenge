@@ -15,27 +15,28 @@ class Game {
     this.frameScores.push(frameScore);
   };
 
-  spare(frame) {
-    if (!this.strike(frame) && (frame.reduce((a,b) => a + b, 0) === 10)) {
-      return true;
-    }
-  };
-
   strike(frame) {
     if (frame[0] === 10) {
       return true;
     };
   }
 
+
+  spare(frame) {
+    if (!this.strike(frame) && (frame.reduce((a,b) => a + b, 0) === 10)) {
+      return true;
+    }
+  };
+
+ 
   bonusRoll(frame) {
     if (this.strike(frame) || this.spare(frame)) {
       return true;
     };
   };
 
-
-  checkPreviousFrame(currentFrameNumber) {
-    const previousFrame = this.frames[currentFrameNumber - 1];
+  checkPreviousFrame(frame) {
+    let previousFrame = this.frames[frame - 1];
     if (this.strike(previousFrame)) {
       return "strike";
     } else if (this.spare(previousFrame)) {
@@ -43,18 +44,19 @@ class Game {
     };
   };
 
+  updatePreviousScore(frame) {
+    let previousScore = this.frameScores[frame - 1];
 
-  updatePreviousScore(currentFrameNumber, score) {
-    let previousFrameNumber = currentFrameNumber - 1;
-
-    let previousFrameScore = this.frameScores[previousFrameNumber];
-
-    let previousFrame = this.frames[previousFrameNumber];
-
-    if (this.checkPreviousFrame(currentFrameNumber) === "strike") {
-      this.frameScores[previousFrameNumber] += this.frameScores[currentFrameNumber];
-    } else if (previousFrame.spare()) {
-      this.frameScores[previousFrameNumber] += this.frameScores[currentFrameNumber];
+    if (this.checkPreviousFrame(frame) === "strike") {
+      let currentScore = this.frames[frame].reduce((a,b) => a + b, 0);
+      previousScore += currentScore
+      this.frameScores[frame - 1] = previousScore;
+      this.frameScores.push(previousScore + currentScore);
+    } else if (this.checkPreviousFrame(frame) === "spare") {
+      let currentScore = this.frames[frame][0]
+      previousScore += currentScore
+      this.frameScores[frame - 1] = previousScore;
+      this.frameScores.push(previousScore + currentScore + this.frames[frame][1]);
     };
   };
 

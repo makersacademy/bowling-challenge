@@ -12,6 +12,7 @@ class Bowling {
   score(scoreArray) {
     this.scoreArray = scoreArray
     this.scoresToFrames()
+    console.log(this.frameArray)
     this.addSpareBonuses()
     this.addStrikeBonuses()
     this.accumulator()
@@ -24,7 +25,7 @@ class Bowling {
       if( this.frameArray.length === 0 ){
         this.frameArray.push(new this.frameClass(score));
       }
-      else if( this.frameArray[this.frameArray.length - 1].isComplete()) {
+      else if( this.frameArray[this.frameArray.length - 1].isComplete() && this.frameArray.length < 10) {
         this.frameArray.push(new this.frameClass(score));
       }
       else {

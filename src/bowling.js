@@ -20,7 +20,7 @@ class Bowling {
   scoresToFrames() {
     this.scoreArray.forEach((score, index) => {
       if(index % 2 === 0) {
-        this.frameArray.push([score]);
+        this.frameArray.push();
       }
       else {
         this.frameArray[this.frameArray.length - 1].push(score);
@@ -48,12 +48,8 @@ class Bowling {
   }
 
   sumFrame(index) {
-    let sum = 0;
-
-    this.frameArray[index].forEach((roll, i) => {
-      sum += roll;
-    });
-
-    return sum;
+    return this.frameArray[index].reduce(function(a, b){
+      return a + b;
+    })
   }
 };

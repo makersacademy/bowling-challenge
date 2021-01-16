@@ -112,7 +112,7 @@ describe("BowlingGame", function() {
       bowlingGame.addRolls(5, 2);
       bowlingGame.addBonusScores();
       expect(bowlingGame.getGameScore()).toEqual(49);
-    })
+    });
 
     it("does not add first throw of latest frame to total score of 2 frames previous unless the 2 previous frames were both strikes", function() {
       bowlingGame.addRolls(10);
@@ -122,7 +122,88 @@ describe("BowlingGame", function() {
       bowlingGame.addRolls(5, 2);
       bowlingGame.addBonusScores();
       expect(bowlingGame.getGameScore()).not.toEqual(49);
-    })
+    });
+  });
+
+  describe("areBonusRollsNeeded", function() {
+    it("returns true if the 10th frame is a spare", function() {
+      for (var i = 0; i < 9; i++) {
+        bowlingGame.addRolls(6, 3);
+        bowlingGame.addBonusScores();
+      }
+      bowlingGame.addRolls(6, 4);
+      bowlingGame.addBonusScores();
+      expect(bowlingGame.areBonusRollsNeeded()).toEqual(true)
+    });
+
+    it("returns true if the 10th frame is a strike", function() {
+      for (var i = 0; i < 9; i++) {
+        bowlingGame.addRolls(6, 3);
+        bowlingGame.addBonusScores();
+      }
+      bowlingGame.addRolls(10);
+      bowlingGame.addBonusScores();
+      expect(bowlingGame.areBonusRollsNeeded()).toEqual(true)
+    });
+
+    it("returns true if the 9th & 10th frames are strikes", function() {
+      for (var i = 0; i < 8; i++) {
+        bowlingGame.addRolls(6, 3);
+        bowlingGame.addBonusScores();
+      }
+      for (var i = 0; i < 2; i++) {
+        bowlingGame.addRolls(10);
+        bowlingGame.addBonusScores();
+      }
+      expect(bowlingGame.areBonusRollsNeeded()).toEqual(true)
+    });
+
+    it("returns false if the 10th frame neither a strike nor a spare", function() {
+      for (var i = 0; i < 9; i++) {
+        bowlingGame.addRolls(10);
+        bowlingGame.addBonusScores();
+      }
+      bowlingGame.addRolls(6, 3);
+      bowlingGame.addBonusScores();
+      expect(bowlingGame.areBonusRollsNeeded()).toEqual(false)
+    });
+  });
+
+  describe("addFinalBonusScores", function() {
+    it("if the final frame is a spare, it gives you 1 extra bonus roll and it gets added to the total game score", function() {
+      for (var i = 0; i < 9; i++) {
+        bowlingGame.addRolls(6, 3);
+        bowlingGame.addBonusScores();
+      }
+      bowlingGame.addRolls(6, 4);
+      bowlingGame.addBonusScores();
+      bowlingGame.addFinalBonusScores(5);
+      expect(bowlingGame.getGameScore()).toEqual(96);
+    });
+
+    it("if the final frame is a strike, it gives you 2 extra bonus rolls and they get added to the total game score", function() {
+      for (var i = 0; i < 9; i++) {
+        bowlingGame.addRolls(6, 3);
+        bowlingGame.addBonusScores();
+      }
+      bowlingGame.addRolls(10);
+      bowlingGame.addBonusScores();
+      bowlingGame.addFinalBonusScores(5, 1);
+      expect(bowlingGame.getGameScore()).toEqual(97);
+    });
+
+    it("if the final 2 frames are strikes, it gives you 2 extra bonus rolls and the first roll is added twice to total game score and second roll added once", function() {
+      for (var i = 0; i < 8; i++) {
+        bowlingGame.addRolls(6, 3);
+        bowlingGame.addBonusScores();
+      }
+      for (var i = 0; i < 2; i++) {
+        bowlingGame.addRolls(10);
+        bowlingGame.addBonusScores();
+      }
+      bowlingGame.addFinalBonusScores(5, 1);
+      expect(bowlingGame.getGameScore()).toEqual(113);
+    });
   });
 
 });

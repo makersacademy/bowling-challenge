@@ -103,6 +103,26 @@ describe("BowlingGame", function() {
       bowlingGame.addBonusScores();
       expect(bowlingGame.getGameScore()).not.toEqual(24);
     });
+
+    it("adds first throw of latest frame to total score of 2 frames previous if the 2 previous frames were both strikes", function() {
+      bowlingGame.addRolls(10);
+      bowlingGame.addBonusScores();
+      bowlingGame.addRolls(10);
+      bowlingGame.addBonusScores();
+      bowlingGame.addRolls(5, 2);
+      bowlingGame.addBonusScores();
+      expect(bowlingGame.getGameScore()).toEqual(49);
+    })
+
+    it("does not add first throw of latest frame to total score of 2 frames previous unless the 2 previous frames were both strikes", function() {
+      bowlingGame.addRolls(10);
+      bowlingGame.addBonusScores();
+      bowlingGame.addRolls(5, 5);
+      bowlingGame.addBonusScores();
+      bowlingGame.addRolls(5, 2);
+      bowlingGame.addBonusScores();
+      expect(bowlingGame.getGameScore()).not.toEqual(49);
+    })
   });
 
 });

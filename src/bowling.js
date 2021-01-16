@@ -1,16 +1,23 @@
 'use strict';
 
 class Bowling {
-  score(score_array){
-    if( score_array.length <= 2 ) {
-      return [0]
-    }
-    else if ( score_array.length <= 4) {
-      return [0,0]
-    }
-    else if ( score_array.length <= 6) {
-      return [0,0,0]
-    }
-      return [0,0,0,0]
+
+  constructor() {
+    this.outputArray = [];
+    this.outputArrayIndex = 0;
+  }
+
+  score(scoreArray) {
+    scoreArray.forEach((score, index) => {
+      if(index % 2 === 0) {
+        this.outputArray.push(score);
+      }
+      else {
+        this.outputArray[this.outputArrayIndex] += score;
+        this.outputArrayIndex ++;
+      };
+    });
+
+    return this.outputArray;
   }
 }

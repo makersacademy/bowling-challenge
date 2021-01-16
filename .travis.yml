@@ -1,0 +1,11 @@
+language:
+  ruby
+
+rvm:
+  - 2.7
+
+services:
+- postgresql
+
+before_script:
+  - psql -c 'CREATE DATABASE chitter_test;' -U postgres script:   - bundle exec rspec

@@ -23,4 +23,10 @@ describe('User Stories:', function () {
     })
   })
 
+  describe('So I can receive a bonus in the 10th and final frame', function (){
+    it('I want to be able to add the score of a third roll', function () {
+      expect(bowling.score([10,10,10,10,10,10,10,10,10,10,10,10])).toEqual([30,60,90,120,150,180,210,240,270,300])
+    })
+  })
+
 })

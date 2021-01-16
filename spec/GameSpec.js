@@ -89,9 +89,23 @@ describe("Game", () => {
     });
 
     it("should return true if the previous frame was a strike", () => {
-      expect(game.checkPreviousStrike()).toBe(true);
+      game.frames = [[10], [1,2]];
+      expect(game.checkPreviousStrike(1)).toBe(true);
     });
     
   })
+
+  describe("updating previous game score in case of strike/spare", () => {
+    beforeEach(()=> {
+      spyOn(game, 'checkPreviousStrike').and.returnValue(true);
+    });
+    it("should update the previous frame score if it was a strike", () => {
+      game.frames = [[10],[5]];
+      game.frameScores = [10, 5];
+      game.updatePreviousScore(1, 5)
+      expect(game.frameScores).toEqual([15,5]);
+      
+    });
+  });
 
 });

@@ -17,7 +17,7 @@ class Game {
 
   checkPreviousStrike(currentFrameNumber) {
     const previousFrame = this.frames[currentFrameNumber - 1];
-    if (previousFrame.strike()) {
+    if (this.strike(previousFrame)) {
       return true;
     };
   };
@@ -29,22 +29,25 @@ class Game {
   };
 
   strike(frame) {
-    if (frame[0] === 10){
+    if (frame[0] === 10) {
       return true;
     };
   }
 
   bonusRoll(frame) {
-    if (this.strike(frame) || this.spare(frame)){
+    if (this.strike(frame) || this.spare(frame)) {
       return true;
     };
   };
 
-  updatePreviousScore(currentFrameNumber, score){
-    if (checkPreviousStrike(currentFrameNumber)) {
-      previousFrameScore += this.frameScores[frameNumber]
+  updatePreviousScore(currentFrameNumber, score) {
+    let previousFrameNumber = currentFrameNumber - 1;
+    let previousFrameScore = this.frameScores[previousFrameNumber];
+    let previousFrame = this.frames[previousFrameNumber];
+    if (this.checkPreviousStrike(currentFrameNumber)) {
+      this.frameScores[previousFrameNumber] += this.frameScores[currentFrameNumber];
     } else if (previousFrame.spare()) {
-      previousFrameScore += score;
+      this.frameScores[previousFrameNumber] += this.frameScores[currentFrameNumber];
     };
   };
 

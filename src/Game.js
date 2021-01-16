@@ -1,5 +1,7 @@
 'use strict';
+
 class Game {
+
   constructor(){
     this.frameScores = [];
     this.frames = [];
@@ -8,4 +10,9 @@ class Game {
   updateFramesArray(frame){
     this.frames.push(frame);
   }
+
+  updateFrameScores(frameScore){
+    this.frameScores.push(frameScore);
+  }
+
 }

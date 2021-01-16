@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Score', () => {
   var score;
   var frame;
@@ -5,14 +7,22 @@ describe('Score', () => {
 
   beforeEach(()=> {
     score = new Score();
-    frame = spyOn(frame);
-    game = spyOn(game);
+    frame = jasmine.createSpy(frame);
+    game = jasmine.createSpy(game);
   })
+
   describe("Frame Scores", () => {
 
     it("should calculate the frame score", () => {
-      
-      expect(score.frame(frame)).toEqual();
+      frame = [6,2]
+      expect(score.calculateFrameScore(frame)).toEqual(8);
+    })
+  })
+
+  describe("Total Score", () => {
+    it("should calculate the total score", () => {
+      let frameScores = [1,1,1,1,1]
+      expect(score.calculateTotalScore(frameScores)).toEqual(5);
     })
   })
 

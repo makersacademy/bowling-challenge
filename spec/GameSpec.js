@@ -39,4 +39,13 @@ describe("Game", () => {
 
   })
 
+  describe("updating frame scores array", () => {
+    it("should update the frame scores array depending on the frame score", () => {
+      game.updateFrameScores(8);
+      game.updateFrameScores(7);
+      game.updateFrameScores(5);
+      expect(game.frameScores).toEqual([8,7,5])
+    })
+  })
+
 });

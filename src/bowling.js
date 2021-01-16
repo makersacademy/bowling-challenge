@@ -45,7 +45,12 @@ class Bowling {
     this.frameArray.forEach((frame, index) => {
       if(this.frameArray[index].isStrike()) {
         frame.addBonus(this.frameArray[index + 1].firstRoll())
-        frame.addBonus(this.frameArray[index + 1].secondRoll())
+        if(this.frameArray[index + 1].isStrike()) {
+          frame.addBonus(this.frameArray[index + 2].firstRoll())
+        }
+        else {
+          frame.addBonus(this.frameArray[index + 1].secondRoll())
+        }
       }
     });
   };

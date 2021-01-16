@@ -14,4 +14,18 @@ describe('Game', () => {
     expect(game.frames[7]).toEqual(new Frame());
   });
 
+  xdescribe('getRoll', () => {
+    it('returns zero for a gutter game', () => {
+    });
+  });
+
+  xdescribe('play', () => {
+    it('returns zero for a gutter game', () => {
+    });
+    it('returns the correct score for a mix of score, strikes and spares', () => {
+    });
+    it('returns 300 for a perfect game', () => {
+    });
+  });
+
 });

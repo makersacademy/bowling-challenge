@@ -5,6 +5,11 @@ class Game {
     this.frames = Array(10).fill(new Frame());
   }
 
+  returnFrameScores() {
+    return this.frames.map((frame, index) => {
+      return frame.score;
+    });
+  }
 
   play() {
     for (let i = 0; i < 1; i++) {
@@ -18,7 +23,7 @@ class Game {
 
       this.frames[i].addScore(roll_1);
 
-      // console.log(this.frames);
+      return this.frames;
     }
 
   }

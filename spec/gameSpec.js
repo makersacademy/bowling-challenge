@@ -14,6 +14,11 @@ describe('Game', () => {
     expect(game.frames[7]).toEqual(new Frame());
   });
 
+  describe('returnFrameScores', () => {
+    it('prints out the score for all 10 frames', () => {
+      expect(game.returnFrameScores()).toEqual([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    });
+  });
   xdescribe('getRoll', () => {
     it('returns zero for a gutter game', () => {
     });

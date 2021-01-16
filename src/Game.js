@@ -42,8 +42,11 @@ class Game {
 
   updatePreviousScore(currentFrameNumber, score) {
     let previousFrameNumber = currentFrameNumber - 1;
+
     let previousFrameScore = this.frameScores[previousFrameNumber];
+    
     let previousFrame = this.frames[previousFrameNumber];
+
     if (this.checkPreviousStrike(currentFrameNumber)) {
       this.frameScores[previousFrameNumber] += this.frameScores[currentFrameNumber];
     } else if (previousFrame.spare()) {

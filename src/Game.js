@@ -43,12 +43,16 @@ class Game {
     };
   };
 
+  calculateCurrentScore(frame) {
+    return this.frames[frame].reduce((a,b) => a + b, 0)
+  }
+
   calculateFinalScore(frame) {
     let extraScore;
     let previousScore = this.frameScores[frame-1];
 
     if (this.checkPreviousFrame(frame) === "strike") {
-      extraScore = this.frames[frame].reduce((a,b) => a + b, 0);
+      extraScore = this.calculateCurrentScore(frame);
     } else if (this.checkPreviousFrame(frame) === "spare") {
       extraScore = this.frames[frame][0];
     }
@@ -57,14 +61,16 @@ class Game {
 
   updatePreviousScore(frame) {
     let finalScore = this.calculateFinalScore(frame);
-    let currentScore = this.frames[frame].reduce((a,b) => a + b, 0);
-    if (this.checkPreviousFrame(frame) === "strike") {
+
+    let currentScore = this.calculateCurrentScore(frame);
+
+    if (this.checkPreviousFrame(frame) === "strike" || 
+        this.checkPreviousFrame(frame) === "spare") {
+      
       this.frameScores[frame - 1] = finalScore;
       this.updateFrameScores(finalScore + currentScore);
-    } else if (this.checkPreviousFrame(frame) === "spare") {
-      this.frameScores[frame - 1] = finalScore;
-      this.updateFrameScores(finalScore + currentScore);
-    };
+    }
+
   };
 
 }

@@ -27,8 +27,8 @@ describe("Frame", () => {
     })
 
     it("the sum of first and second rolls should not exceed 10", () => {
-      this.firstRoll = 5
-      this.secondRoll = 8
+      frame.firstRoll = 5
+      frame.secondRoll = 8
       expect(() => {
         frame.checkPinsTotal()
       }).toThrowError('the sum of two pins exceeds maximum');
@@ -41,15 +41,25 @@ describe("Frame", () => {
     it("should return true if it's a strike", () => {
       frame.updatePinBoard(5);
       frame.updatePinBoard(5);
-      expect(frame.strike).toBe(true);
+      expect(frame.spare()).toBe(true);
+    });
+  });
+
+  describe("strike", () => {
+
+    it("should return true if it's a spare", () => {
+      frame.updatePinBoard(4);
+      frame.updatePinBoard(6);
+      expect(frame.spare()).toBe(true);
     });
   });
 
   describe("pinsSum", () => {
-    frame.firstRoll = 3;
-    frame.secondRoll = 8;
+    
     it("should return the sum of the two rolls", () => {
-      expect(frame.pinsSum).toBe(8);
-    })
-  })
+      frame.firstRoll = 3;
+      frame.secondRoll = 5;
+      expect(frame.pinsSum()).toBe(8);
+    });
+  });
 });

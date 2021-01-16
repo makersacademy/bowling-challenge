@@ -1,3 +1,10 @@
+Will's Readme
+=================
+
+I didn't have a lot of time this weekend. Current challenges:
+* how to create an array of 10 frame instances, not an array referencing the same instance 10 times
+* how to isolate the test for printScorecard
+
 
 Bowling Challenge
 =================

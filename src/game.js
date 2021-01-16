@@ -1,8 +1,8 @@
 class Game {
 
-  constructor() {
+  constructor(frame = new Frame()) {
     this.score = 0;
-    this.frames = Array(10).fill(new Frame());
+    this.frames = Array(10).fill(frame);
   }
 
   returnFrameScores() {

@@ -8,11 +8,12 @@ class Game {
   roll(pins) {
     if (pins < 0 || pins > 10) {
       throw "Please enter number between 0 and 10";
-    } else {
-      this.currentFrame.add(pins);
-      if (this.currentFrame._isComplete()) {
-        this.endAndResetFrame();
-      }
+    }
+    this.currentFrame.add(pins);
+    if (this.currentFrame._isComplete()) {
+      this.endAndResetFrame();
+    } else if (this.scorer._spareUpdateNeeded()) {
+      this.scorer._sparebonus(pins);
     }
   }
 

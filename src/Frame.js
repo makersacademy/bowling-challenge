@@ -13,7 +13,11 @@ class Frame {
   }
 
   result() {
-    return this.pins[0] + this.pins[1]
+    if (this._isaStrike()) {
+      return 10
+    } else {
+      return this.pins[0] + this.pins[1]
+    }
   }
 
   _isaStrike() {
@@ -21,6 +25,11 @@ class Frame {
   }
 
   _isaSpare() {
-    return this.result() === 10
+    return !this._isaStrike() && this.result() === 10
   }
+
+  _isNotStrikeOrSpare() {
+    return !this._isaSpare() && !this._isaStrike();
+  }
+
 }

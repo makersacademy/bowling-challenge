@@ -1,12 +1,9 @@
-// spare followed by normal
-// strike followed by normal
-// strike followed by spare
-// strike followed by strike followed by normal
-// strike followed by strike followed by strike
+// implement some sort of user interface with jquery - needs:
+  // index.html, interface.html, index.css
 // final frame
 // all strikes - 300points
 
-describe ('game', function() {
+describe ('bowling', function() {
 
   var game;
 
@@ -47,10 +44,10 @@ describe ('game', function() {
   });
 
   describe('rolling a spare', function() {
-    it('returns score as /', function() {
+    it('does not add to score list', function() {
       game.roll(9);
       game.roll(1);
-      expect(game.scorer.scores).toEqual(['/'])
+      expect(game.scorer.scores).toEqual([])
     });
 
     it('adds bonus to score following next frame', function() {
@@ -63,11 +60,6 @@ describe ('game', function() {
   });
 
   describe('rolling a strike', function() {
-    it('returns strike as X', function() {
-      game.roll(10);
-      expect(game.scorer.scores).toEqual(['X']);
-    });
-
     it('adds bonus to score following next frame', function() {
       game.roll(10);
       game.roll(4);
@@ -76,6 +68,17 @@ describe ('game', function() {
     });
   });
 
+  describe('strike followed by spare followed by normal', function() {
+    it(' should score correctly', function() {
+      game.roll(10);
+      game.roll(6);
+      game.roll(4);
+      game.roll(3);
+      game.roll(5);
+      expect(game.scorer.scores).toEqual([20, 13, 8])
+    });
+  })
+
   describe('rolling multiple strikes', function() {
     it('adds bonus to first strike following 2 more frames', function() {
       game.roll(10);
@@ -83,6 +86,14 @@ describe ('game', function() {
       game.roll(6);
       game.roll(3);
       expect(game.scorer.scores).toEqual([29, 19, 9])
+    });
+
+    it('awards 30, 30 if 4 strikes in row', function() {
+      for (let i = 0; i < 4; i++) {
+        game.roll(10);
+        console.log(`roll ${i}, scores are ${game.scorer.scores}`)
+      }
+      expect(game.scorer.scores).toEqual([30, 30]);
     });
   });
 

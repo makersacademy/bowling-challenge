@@ -55,4 +55,23 @@ describe ('frame', function() {
     });
   })
 
+  describe('_isNotStrikeOrSpare', function() {
+    it('returns true if frame is not strike or spare', function() {
+      frame.add(5);
+      frame.add(2);
+      expect(frame._isNotStrikeOrSpare()).toBe(true);
+    });
+
+    it('returns false if last frame is spare', function() {
+      frame.add(7);
+      frame.add(3);
+      expect(frame._isNotStrikeOrSpare()).toBe(false);
+    });
+
+    it('returns false if last frame is spare', function() {
+      frame.add(10);
+      expect(frame._isNotStrikeOrSpare()).toBe(false);
+    });
+  });
+
 });

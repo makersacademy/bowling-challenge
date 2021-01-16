@@ -19,6 +19,10 @@ describe ('Scorer', function() {
     _isaStrike() {
       return false;
     }
+
+    _isNotStrikeOrSpare() {
+      return true;
+    }
   }
 
   class DoubleStrike {
@@ -32,6 +36,10 @@ describe ('Scorer', function() {
 
     _isaStrike() {
       return true;
+    }
+
+    _isNotStrikeOrSpare() {
+      return false;
     }
   }
 
@@ -47,11 +55,17 @@ describe ('Scorer', function() {
     _isaStrike() {
       return false;
     }
+
+    _isNotStrikeOrSpare() {
+      return false;
+    }
   }
 
   beforeEach(function () {
     scorer = new Scorer();
     frame = new DoubleFrame();
+    spare = new DoubleSpare();
+    strike = new DoubleStrike();
   });
 
   describe('addFrame', function() {
@@ -61,6 +75,32 @@ describe ('Scorer', function() {
     });
   });
 
+  describe('updateNeeded', function() {
+    it ('returns false if frame length is equal to score length', function() {
+      expect(scorer.updateNeeded()).toBe(false);
+    });
+
+    it('returns false if frame length is different from score length', function() {
+      scorer.frames = [spare]
+      expect(scorer.updateNeeded()).toBe(true);
+    });
+  });
+
+  describe('update scores', function() {
+    it('calls on strikebonus', function() {
+      spyOn(scorer, '_strikeBonus');
+      scorer.frames = [strike];
+      scorer.addFrame(frame);
+      expect(scorer._strikeBonus).toHaveBeenCalled();
+    });
+
+    it('calls on _consecStrikeBonus', function() {
+      spyOn(scorer, '_consecStrikeBonus');
+      scorer.frames = [strike, strike];
+      scorer.addFrame(frame);
+      expect(scorer._consecStrikeBonus).toHaveBeenCalled();
+    });
+  });
 
   describe('calculate', function() {
     it('puts result of standard frame into scores array', function() {
@@ -73,37 +113,35 @@ describe ('Scorer', function() {
       scorer.calculate(frame);
       expect(scorer.scores).toEqual([7, 7]);
     });
+  });
 
-    it('identifies spare and inserts / into scores', function() {
-      spare = new DoubleSpare();
-      scorer.calculate(spare);
-      expect(scorer.scores).toEqual(['/']);
-    });
-
-    it('identifies strike and inserts X into scores', function() {
-      strike = new DoubleStrike();
-      scorer.calculate(strike);
-      expect(scorer.scores).toEqual(['X']);
-    });
-
+  describe('_spareUpdateNeeded', function() {
+    it('returns true if last frame was a spare', function() {
+      scorer.addFrame(spare);
+      expect(scorer._spareUpdateNeeded()).toBe(true)
+    })
   });
 
   describe('_lastFrame', function() {
     it('returns last frame in the array', function() {
-      spare = new DoubleSpare();
       scorer.addFrame(spare);
       scorer.addFrame(frame);
-      expect(scorer._lastFrame()).toBe(spare);
+      expect(scorer._lastFrame()).toBe(frame);
     });
   });
 
   describe('_isConsecutiveStrikeInProgress', function() {
     it('returns true for consecutive strikes', function() {
-      strike = new DoubleStrike();
-      scorer.addFrame(strike);
-      scorer.addFrame(strike);
-      scorer.addFrame(frame);
-      expect(scorer._isConsecutiveStrikeInProgress()).toBe(true)
+      scorer.frames = [strike, strike]
+      expect(scorer._isConsecutiveStrikeInProgress()).toBe(true);
+    });
+  });
+
+  describe('_consecStrikeBonus', function() {
+    it('pushes 20 + frame result to scores', function() {
+      scorer.frames = [strike, strike];
+      scorer._consecStrikeBonus(frame);
+      expect(scorer.scores[0]).toEqual(27);
     });
   });
 
@@ -116,19 +154,17 @@ describe ('Scorer', function() {
 
   describe('_sparebonus', function() {
     it('calculates bonus of spare as first roll of next frame', function() {
-      spare = new DoubleSpare();
       scorer.addFrame(spare);
-      scorer.addFrame(frame);
-      expect(scorer.scores).toEqual([14, 7]);
+      scorer._sparebonus(4);
+      expect(scorer.scores[0]).toEqual(14);
     });
   });
 
-  describe('_strikebonus', function() {
+  describe('_strikeBonus', function() {
     it('calculates bonus of strike as sum of next frame', function() {
-      strike = new DoubleStrike();
       scorer.addFrame(strike);
       scorer.addFrame(frame);
-      expect(scorer.scores).toEqual([17, 7]);
+      expect(scorer.scores[0]).toEqual(17);
     });
   });
 });

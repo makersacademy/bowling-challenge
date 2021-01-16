@@ -21,14 +21,12 @@ class Game {
     };
   }
 
-
   spare(frame) {
     if (!this.strike(frame) && (frame.reduce((a,b) => a + b, 0) === 10)) {
       return true;
     }
   };
 
- 
   bonusRoll(frame) {
     if (this.strike(frame) || this.spare(frame)) {
       return true;
@@ -43,6 +41,20 @@ class Game {
       return "spare";
     };
   };
+
+  calculateFinalScore(frame) {
+    let currentScore;
+    let previousScore = this.frameScores[this.frames.length - 2];
+    console.log(this.frameScores)
+    // console.log(previousScore);
+    if (this.checkPreviousFrame(frame) === "strike") {
+      currentScore = this.frames[frame].reduce((a,b) => a + b, 0);
+    } else if (this.checkPreviousFrame(frame) === "spare") {
+      currentScore = this.frames[frame][0];
+    }
+    let finalScore = currentScore + previousScore;
+    return finalScore;
+  }
 
   updatePreviousScore(frame) {
     let previousScore = this.frameScores[frame - 1];

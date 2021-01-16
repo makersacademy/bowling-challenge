@@ -113,10 +113,17 @@ describe("Game", () => {
       game.frames = [[6,4],[5,4]];
       game.frameScores = [10];
       game.updatePreviousScore(1);
-      console.log(game.frameScores)
       expect(game.frameScores).toEqual([15,24]);
     });
 
   });
+
+  describe("calculate strike and spare scores", () => {
+    it("should calculate previous score to be added if it's a strike", () => {
+      game.frames = [[10],[5,4]];
+      game.scores = [10]
+      expect(game.calculateFinalScore(1)).toEqual(9);
+    });
+  })
 
 });

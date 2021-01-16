@@ -3,31 +3,56 @@
 class Bowling {
 
   constructor() {
+    this.scoreArray = [];
+    this.frameArray = [];
     this.outputArray = [];
   };
 
   score(scoreArray) {
-    scoreArray.forEach((score, index) => {
-      if(index % 2 === 0) {
-        this.outputArray.push(this.lastOutputArrayElement());
-      }
-
-      this.add(score);
-    });
+    this.scoreArray = scoreArray
+    this.scoresToFrames()
+    this.accumulator()
 
     return this.outputArray;
   };
 
-  add(score) {
-    this.outputArray[this.outputArray.length - 1] += score;
+  scoresToFrames() {
+    this.scoreArray.forEach((score, index) => {
+      if(index % 2 === 0) {
+        this.frameArray.push(score);
+      }
+      else {
+        console.log(this.frameArray[index])
+        this.add(score)
+      };
+    });
   };
 
-  lastOutputArrayElement() {
-    if(this.outputArray.length === 0){
-      return 0;
-    }
-    else {
-      return this.outputArray[this.outputArray.length - 1];
-    };
+  add(score) {
+    this.frameArray[this.frameArray.length - 1] += score;
   };
+
+  accumulator() {
+    this.frameArray.forEach((frame, index) => {
+      if(index === 0){
+        this.outputArray.push(this.frameArray[index])
+      }
+      else {
+        this.outputArray.push(this.outputArray[index - 1 ] + this.frameArray[index])
+      }
+    });
+
+  }
+
+  // addSpares() {
+  //   console.log(this.outputArray)
+  //   this.outputArray.forEach((frameScore, index) => {
+  //     if(frameScore === 10){
+  //       this.outputArray[index] += this.outputArray[index + 1]
+  //     }
+  //   });
+  // };
+
+
+
 };

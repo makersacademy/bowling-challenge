@@ -15,13 +15,6 @@ class Game {
     this.frameScores.push(frameScore);
   };
 
-  checkPreviousStrike(currentFrameNumber) {
-    const previousFrame = this.frames[currentFrameNumber - 1];
-    if (this.strike(previousFrame)) {
-      return true;
-    };
-  };
-
   spare(frame) {
     if (!this.strike(frame) && (frame.reduce((a,b) => a + b, 0) === 10)) {
       return true;
@@ -40,14 +33,25 @@ class Game {
     };
   };
 
+
+  checkPreviousFrame(currentFrameNumber) {
+    const previousFrame = this.frames[currentFrameNumber - 1];
+    if (this.strike(previousFrame)) {
+      return "strike";
+    } else if (this.spare(previousFrame)) {
+      return "spare";
+    };
+  };
+
+
   updatePreviousScore(currentFrameNumber, score) {
     let previousFrameNumber = currentFrameNumber - 1;
 
     let previousFrameScore = this.frameScores[previousFrameNumber];
-    
+
     let previousFrame = this.frames[previousFrameNumber];
 
-    if (this.checkPreviousStrike(currentFrameNumber)) {
+    if (this.checkPreviousFrame(currentFrameNumber) === "strike") {
       this.frameScores[previousFrameNumber] += this.frameScores[currentFrameNumber];
     } else if (previousFrame.spare()) {
       this.frameScores[previousFrameNumber] += this.frameScores[currentFrameNumber];

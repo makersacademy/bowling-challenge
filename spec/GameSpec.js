@@ -39,14 +39,4 @@ describe("Game", () => {
 
   })
 
-  describe("updating frame scores", () => {
-
-    it("should calculate the frame score", () => {
-      frame = jasmine.createSpy(frame, 'reduce')
-      
-      expect(game.calculateInitialScore(frame)).toEqual();
-    })
-  })
-
-
 });

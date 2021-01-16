@@ -12,9 +12,7 @@ class Bowling {
     this.scoreArray = scoreArray
     this.scoresToFrames()
     this.addSpares()
-    console.log(this.frameArray)
     this.accumulator()
-
 
     return this.outputArray;
   };
@@ -22,23 +20,18 @@ class Bowling {
   scoresToFrames() {
     this.scoreArray.forEach((score, index) => {
       if(index % 2 === 0) {
-        this.frameArray.push(score);
+        this.frameArray.push([score]);
       }
       else {
-        console.log(this.frameArray[index])
-        this.add(score)
+        this.frameArray[this.frameArray.length - 1].push(score);
       };
     });
   };
 
-  add(score) {
-    this.frameArray[this.frameArray.length - 1] += score;
-  };
-
   addSpares() {
-    this.frameArray.forEach((frameScore, index) => {
-      if(frameScore === 10){
-        this.frameArray[index] += this.frameArray[index + 1]
+    this.frameArray.forEach((frame, index) => {
+      if(this.sumFrame(index) === 10){
+        frame.push(this.frameArray[index + 1][0])
       }
     });
   };
@@ -46,17 +39,21 @@ class Bowling {
   accumulator() {
     this.frameArray.forEach((frame, index) => {
       if(index === 0){
-        this.outputArray.push(this.frameArray[index])
+        this.outputArray.push(this.sumFrame(index))
       }
       else {
-        this.outputArray.push(this.outputArray[index - 1 ] + this.frameArray[index])
+        this.outputArray.push(this.outputArray[index - 1 ] + this.sumFrame(index))
       }
     });
-
   }
 
+  sumFrame(index) {
+    let sum = 0;
 
+    this.frameArray[index].forEach((roll, i) => {
+      sum += roll;
+    });
 
-
-
+    return sum;
+  }
 };

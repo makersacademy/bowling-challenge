@@ -16,4 +16,11 @@ describe('User Stories:', function () {
       expect(bowling.score([5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,0])).toEqual([15,30,45,60,75,90,105,120,135,140])
     })
   })
+
+  describe('So I can receive a bonus for rolling a strike', function (){
+    it('I want the total of the next two rolls to be added to my frame score', function() {
+      expect(bowling.score([10,10,10,10,10,10,10,10,10,0])).toEqual([30,60,90,120,150,180,210,240,270,280])
+    })
+  })
+
 })

@@ -19,6 +19,10 @@ class Frame {
     return this.frame.rolls[0]
   }
 
+  secondRoll() {
+    return this.frame.rolls[1]
+  }
+
   rollScore() {
     return this.frame.rolls.reduce(function(a, b){
       return a + b;
@@ -27,6 +31,18 @@ class Frame {
 
   totalScore() {
     return this.rollScore() + this.frame.bonus
+  }
+
+  isSpare() {
+    return this.rollScore() === 10 && this.frame.rolls.length === 2
+  }
+
+  isStrike() {
+    return this.rollScore() === 10 && this.frame.rolls.length === 1
+  }
+
+  isComplete() {
+    return this.frame.rolls.length === 2 || this.isStrike()
   }
 
 };

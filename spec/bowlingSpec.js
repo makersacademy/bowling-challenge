@@ -18,9 +18,13 @@ describe('Bowling', function(){
         expect(bowling.score([5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,0])).toEqual([15,30,45,60,75,90,105,120,135,140])
       })
 
-      it('e.g. return [20,30], for [10,5,5]', function(){
+      it('e.g. return [16,21], for [10,5,1]', function(){
         expect(bowling.score([10,5,1])).toEqual([16,22])
       })
+
+      // it('e.g. return [25,41,47], for [10,10,5,1]', function(){
+      //   expect(bowling.score([10,10,5,1])).toEqual([25,41,47])
+      // })
     })
   });
 });

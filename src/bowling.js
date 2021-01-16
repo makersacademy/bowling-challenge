@@ -12,7 +12,6 @@ class Bowling {
   score(scoreArray) {
     this.scoreArray = scoreArray
     this.scoresToFrames()
-    console.log(this.frameArray)
     this.addSpareBonuses()
     this.addStrikeBonuses()
     this.accumulator()
@@ -25,7 +24,7 @@ class Bowling {
       if( this.frameArray.length === 0 ){
         this.frameArray.push(new this.frameClass(score));
       }
-      else if( this.frameArray[this.frameArray.length - 1].frame.rolls.length === 2 || this.frameArray[this.frameArray.length - 1].firstRoll() === 10 ) {
+      else if( this.frameArray[this.frameArray.length - 1].isComplete()) {
         this.frameArray.push(new this.frameClass(score));
       }
       else {
@@ -36,8 +35,7 @@ class Bowling {
 
   addSpareBonuses() {
     this.frameArray.forEach((frame, index) => {
-      console.log(this.frameArray[index].frame.rolls.length)
-      if(this.frameArray[index].rollScore() === 10 && this.frameArray[index].frame.rolls.length === 2){
+      if(this.frameArray[index].isSpare()){
         frame.addBonus(this.frameArray[index + 1].firstRoll())
       }
     });
@@ -45,10 +43,9 @@ class Bowling {
 
   addStrikeBonuses() {
     this.frameArray.forEach((frame, index) => {
-      if(this.frameArray[index].rollScore() === 10 && this.frameArray[index].frame.rolls.length === 1) {
-        console.log(this.frameArray[index])
+      if(this.frameArray[index].isStrike()) {
         frame.addBonus(this.frameArray[index + 1].firstRoll())
-        frame.addBonus(this.frameArray[index + 1].frame.rolls[1])
+        frame.addBonus(this.frameArray[index + 1].secondRoll())
       }
     });
   };
@@ -63,4 +60,5 @@ class Bowling {
       }
     });
   }
+
 };

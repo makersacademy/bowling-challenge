@@ -13,8 +13,12 @@ describe('Bowling', function(){
         expect(bowling.score([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1])).toEqual([2,4,6,8,10,12,14,16,18,20])
       })
 
-      it('e.g. return [15,5], for [5, 5, 5]', function(){
-        expect(bowling.score([5, 5, 5])).toEqual([15,5])
+      it('e.g. return [15,20], for [5, 5, 5]', function(){
+        expect(bowling.score([5, 5, 5])).toEqual([15,20])
+      })
+
+      it('e.g. return [15,25], for [5, 5, 5, 5, 0]', function(){
+        expect(bowling.score([5, 5, 5, 5, 0])).toEqual([15,25,25])
       })
     })
   });

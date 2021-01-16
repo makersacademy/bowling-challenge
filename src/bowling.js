@@ -11,7 +11,10 @@ class Bowling {
   score(scoreArray) {
     this.scoreArray = scoreArray
     this.scoresToFrames()
+    this.addSpares()
+    console.log(this.frameArray)
     this.accumulator()
+
 
     return this.outputArray;
   };
@@ -32,6 +35,14 @@ class Bowling {
     this.frameArray[this.frameArray.length - 1] += score;
   };
 
+  addSpares() {
+    this.frameArray.forEach((frameScore, index) => {
+      if(frameScore === 10){
+        this.frameArray[index] += this.frameArray[index + 1]
+      }
+    });
+  };
+
   accumulator() {
     this.frameArray.forEach((frame, index) => {
       if(index === 0){
@@ -44,14 +55,7 @@ class Bowling {
 
   }
 
-  // addSpares() {
-  //   console.log(this.outputArray)
-  //   this.outputArray.forEach((frameScore, index) => {
-  //     if(frameScore === 10){
-  //       this.outputArray[index] += this.outputArray[index + 1]
-  //     }
-  //   });
-  // };
+
 
 
 

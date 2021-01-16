@@ -12,7 +12,7 @@ class Game {
   }
 
   play() {
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < 2; i++) {
       let roll_1;
       let roll_2;
 
@@ -21,9 +21,19 @@ class Game {
       }
       while (roll_1 <= 0 || roll_1 > 10);
 
+      console.log("frame 0 before:")
+      console.log(this.frames[i]);
+      console.log("frame 7 before:")
+      console.log(this.frames[7]);
+      console.log("i:")
+      console.log(i)
       this.frames[i].addScore(roll_1);
+      console.log("frame 0 after:")
+      console.log(this.frames[i]);
+      console.log("frame 7 after:")
+      console.log(this.frames[7]);
 
-      return this.frames;
+      console.log(this.frames);
     }
 
   }

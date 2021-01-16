@@ -12,7 +12,7 @@ class Frame {
   }
 
   addBonus(bonus) {
-    this.frame.bonus = bonus;
+    this.frame.bonus += bonus;
   }
 
   firstRoll() {

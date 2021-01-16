@@ -19,7 +19,7 @@ describe('User Stories:', function () {
 
   describe('So I can receive a bonus for rolling a strike', function (){
     it('I want the total of the next two rolls to be added to my frame score', function() {
-      expect(bowling.score([10,10,10,10,10,10,10,10,10,0])).toEqual([30,60,90,120,150,180,210,240,270,280])
+      expect(bowling.score([10,10,10,10,10,10,10,10,0,0])).toEqual([30,60,90,120,150,180,210,210,210,210])
     })
   })
 

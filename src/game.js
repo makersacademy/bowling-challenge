@@ -13,9 +13,12 @@ class Game {
 
       do {
         roll_1 = Number(prompt("How many pins did you knock down?: "));
-      } while (roll_1 <= 0 || roll_1 > 10);
+      }
+      while (roll_1 <= 0 || roll_1 > 10);
 
-      console.log(typeof roll_1);
+      this.frames[i].addScore(roll_1);
+
+      // console.log(this.frames);
     }
 
   }

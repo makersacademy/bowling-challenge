@@ -12,4 +12,11 @@ describe('Frame', () => {
     expect(frame.bonus_rolls).toEqual(0);
   });
 
+  describe('addScore', () => {
+    it('adds the argument to the frame score', () => {
+      frame.addScore(5);
+      expect(frame.score).toEqual(5);
+    });
+  });
+
 });

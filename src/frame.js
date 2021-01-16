@@ -5,5 +5,8 @@ class Frame {
     this.bonus_rolls = 0;
   }
 
+  addScore(amount) {
+    this.score += amount;
+  }
 
 }

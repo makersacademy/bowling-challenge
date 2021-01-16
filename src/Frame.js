@@ -22,15 +22,4 @@ class Frame {
     return (this.firstRoll + this.secondRoll);
   }
 
-  spare() {
-    if (!this.strike() && (this.pinBoard.reduce((a,b)=> a + b, 0) === 10)) {
-      return true;
-    }
-  };
-
-  strike() {
-    if (this.firstRoll === 10){
-      return true;
-    }
-  }
 };

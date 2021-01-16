@@ -48,4 +48,50 @@ describe("Game", () => {
     })
   })
 
+  describe("strike", () => {
+
+    it("should return true if it's a strike", () => {
+      let frame = [10]
+      expect(game.strike(frame)).toBe(true);
+    });
+  });
+
+  describe("spare", () => {
+
+    it("should return true if it's a spare", () => {
+      let frame = [3,7]
+      expect(game.spare(frame)).toBe(true);
+    });
+  });
+
+  describe("bonusRoll", () => {
+    it("should return true if the frame is a spare", () => {
+      let frame = [3,7];
+      expect(game.bonusRoll(frame)).toBe(true);
+    });
+
+    it("should return true if the frame is a strike", () => {
+      let frame = [10];
+      expect(game.bonusRoll(frame)).toBe(true);
+    });
+
+    it("should not return true otherwise", () => {
+      let frame = [3,3];
+      expect(game.bonusRoll(frame)).not.toBe(true);
+    });
+  });
+  
+  describe("check if previous frame was a spare or a strike", () => {
+    beforeEach(() => {
+      let previousFrame = jasmine.createSpyObj('Frame', ['spare', 'strike']);
+      previousFrame.spare.and.returnValue(true);
+      previousFrame.strike.and.returnValue(true);
+    });
+
+    it("should return true if the previous frame was a strike", () => {
+      expect(game.checkPreviousStrike()).toBe(true);
+    });
+    
+  })
+
 });

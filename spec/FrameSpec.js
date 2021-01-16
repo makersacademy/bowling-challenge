@@ -36,23 +36,6 @@ describe("Frame", () => {
 
   })
 
-  describe("strike", () => {
-
-    it("should return true if it's a strike", () => {
-      frame.updatePinBoard(5);
-      frame.updatePinBoard(5);
-      expect(frame.spare()).toBe(true);
-    });
-  });
-
-  describe("strike", () => {
-
-    it("should return true if it's a spare", () => {
-      frame.updatePinBoard(4);
-      frame.updatePinBoard(6);
-      expect(frame.spare()).toBe(true);
-    });
-  });
 
   describe("pinsSum", () => {
     
@@ -62,4 +45,6 @@ describe("Frame", () => {
       expect(frame.pinsSum()).toBe(8);
     });
   });
+
+  
 });

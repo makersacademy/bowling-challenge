@@ -15,6 +15,10 @@ class Frame {
     this.frame.bonus = bonus;
   }
 
+  firstRoll() {
+    return this.frame.rolls[0]
+  }
+
   rollScore() {
     return this.frame.rolls.reduce(function(a, b){
       return a + b;

@@ -2,7 +2,8 @@
 
 class Bowling {
 
-  constructor() {
+  constructor(frameClass = Frame) {
+    this.frameClass = frameClass;
     this.scoreArray = [];
     this.frameArray = [];
     this.outputArray = [];
@@ -20,18 +21,18 @@ class Bowling {
   scoresToFrames() {
     this.scoreArray.forEach((score, index) => {
       if(index % 2 === 0) {
-        this.frameArray.push();
+        this.frameArray.push(new this.frameClass(score));
       }
       else {
-        this.frameArray[this.frameArray.length - 1].push(score);
+        this.frameArray[this.frameArray.length - 1].addRoll(score);
       };
     });
   };
 
   addSpares() {
     this.frameArray.forEach((frame, index) => {
-      if(this.sumFrame(index) === 10){
-        frame.push(this.frameArray[index + 1][0])
+      if(this.frameArray[index].rollScore() === 10){
+        frame.addBonus(this.frameArray[index + 1].firstRoll())
       }
     });
   };
@@ -39,17 +40,11 @@ class Bowling {
   accumulator() {
     this.frameArray.forEach((frame, index) => {
       if(index === 0){
-        this.outputArray.push(this.sumFrame(index))
+        this.outputArray.push(this.frameArray[index].totalScore())
       }
       else {
-        this.outputArray.push(this.outputArray[index - 1 ] + this.sumFrame(index))
+        this.outputArray.push(this.outputArray[index - 1 ] + this.frameArray[index].totalScore())
       }
     });
-  }
-
-  sumFrame(index) {
-    return this.frameArray[index].reduce(function(a, b){
-      return a + b;
-    })
   }
 };

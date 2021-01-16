@@ -2,9 +2,7 @@ class Scorecard{
 
   constructor(printer = new Print){
     this.score = {'1.1':0, '1.2':0, '2.1':0, '2.2':0, '3.1':0, '3.2':0, '4.1':0, '4.2':0, '5.1':0, '5.2':0, '6.1':0, '6.2':0, '7.1':0, '7.2':0, '8.1':0, '8.2':0, '9.1':0, '9.2':0, '10.1':0, '10.2':0, '10.3':0}
-    this.currentframe = 0
     this.sum = 0
-    this.currentframe = 0
     this.printer = printer
   };
 
@@ -14,7 +12,6 @@ class Scorecard{
 
   addRoll(turn, pins) {
      this._checkFrameNotAboveTen(pins)
-     this.currentframe = parseInt(turn)
      this.score[turn] = pins
   };
 

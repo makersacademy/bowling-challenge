@@ -64,4 +64,30 @@ describe('Game', function(){
     expect(game.totalScore).toEqual(8);
     expect(game.strike).toEqual(false);
   });
+
+  it('plays frames correctly for a strike', function(){
+    game.playAFrame(10,5)
+    expect(game.totalScore).toEqual(10);
+    expect(game.strike).toEqual(true);
+  });
+
+  it('plays multiple frames correctly', function(){
+    game.playAFrame(1,4)
+    game.playAFrame(4,5)
+    game.playAFrame(6,4)
+    game.playAFrame(5,5)
+    game.playAFrame(10,0)
+    game.playAFrame(0,1)
+    expect(game.totalScore).toEqual(61);
+    expect(game.strike).toEqual(false);
+  });
+
+  it('calculates extra bonus points correctly for multiple strikes', function(){
+    [1,2,3,4,5,6,7,8,9,10].forEach(function() {
+    game.playAFrame(10,0)
+    });
+    expect(game.totalScore).toEqual(190);
+  });
+
+
 });

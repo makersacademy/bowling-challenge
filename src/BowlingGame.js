@@ -34,7 +34,7 @@ class BowlingGame {
   strikeScore(index) {
     this.result += 10 + this.array[this.index + 1] + this.array[this.index + 2]
   }
-  frameScore() {
+  frameScore(index) {
 
   }
 }

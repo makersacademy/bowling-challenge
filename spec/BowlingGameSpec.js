@@ -104,6 +104,12 @@ describe("Bowling Game", () => {
         it("is been defined", () => {
             expect(game.frameScore).toBeDefined()
         })
+        it("has an index as an argument", () => {
+            spyOn(game, "frameScore")
+            game.frameScore("index")
+            expect(game.frameScore).toHaveBeenCalled()
+            expect(game.frameScore).toHaveBeenCalledWith("index")
+        })
     })
 
 })

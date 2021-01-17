@@ -20,16 +20,22 @@ class Game {
         return roll_1 + roll_2
       }
     };
+
+    strikeIdentifier(roll_1) {
+      if(roll_1 === 10) {
+        this.strike = true
+      }
+      else {
+        this.strike = false
+      }
+    };
+
+    spareIdentifier(roll_1, roll_2) {
+      if(roll_1 + roll_2 === 10) {
+        this.spare = true
+      }
+      else {
+        this.spare = false
+      }
+    };
 };
-
-
-// def calculate_frame_score(roll_1, roll_2)
-//     if @strike == true 
-//       frame_score = (roll_1 + roll_2) * 2
-//     elsif @spare == true
-//       frame_score = (roll_1 * 2) + roll_2
-//     else
-//       frame_score = roll_1 + roll_2
-//     end 
-//     return frame_score
-//   end 

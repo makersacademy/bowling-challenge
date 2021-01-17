@@ -20,10 +20,29 @@ describe('Game', function(){
     expect(game.strike).toEqual(false);
   });
 
-  it('will add the the two rolls together if spare and strike are false', function(){
+  it('will add the the two rolls together correctly if spare and strike are false', function(){
     expect(game.calculateFrameScore(1,2)).toEqual(3);
   });
 
-  // add in additional tests for calculate score for strike and spare once the functions are written in
-  
+  it('will add the the two rolls together correctly if spare is true', function(){
+    game.spareIdentifier(6,4)
+    expect(game.calculateFrameScore(1,2)).toEqual(4);
+  });
+
+  it('will add the the two rolls together correctly if strike is true', function(){
+    game.strikeIdentifier(10)
+    expect(game.calculateFrameScore(1,2)).toEqual(6);
+  });
+
+  // remember you might need to change tests once doing gets.chomp and converting from string to integer
+
+  it('will identify a strike correctly', function(){
+    game.strikeIdentifier(10)
+    expect(game.strike).toEqual(true);
+  });
+
+  it('will identify a spare correctly', function(){
+    game.spareIdentifier(6,4)
+    expect(game.spare).toEqual(true);
+  });
 });

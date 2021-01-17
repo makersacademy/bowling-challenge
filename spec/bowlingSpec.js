@@ -49,7 +49,6 @@ describe('Bowling_challange', function() {
             newbowling.gameRound(3, 6)
             newbowling.gameRound(3, 6)
             newbowling.gameRound(3, 6)
-            newbowling.gameRound(3, 6)
             newbowling.gameRound(3, 6) 
             newbowling.gameRound(3, 6)
             expect(newbowling.gameRound(3, 3)).toEqual("Thats the game")
@@ -76,7 +75,7 @@ describe('Bowling_challange', function() {
         it('should return a score of 10 + a hight bounes that is douled by the next 2 round', function(){
             newbowling.gameRound(10, 0) 
             newbowling.gameRound(3, 5) 
-            expect(newbowling.game_score()).toEqual(26)
+            expect(newbowling.game_score()).toEqual(31)
         })
     })
 

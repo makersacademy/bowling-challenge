@@ -12,37 +12,37 @@ class bowling {
     } 
 
     gameRound(num_one, num_two) {    
-    while (this.number_rounds <= 10) {   
-        this.number_rounds ++
-        if (this.number_rounds <= 10) { 
-            if(num_one + num_two > 10) { 
-                return "Thats not a realy score, it must be below 10"  
-            } else if(num_one === 10) {
-                this.round.push(num_one, num_two, this.bonus, "X") 
-                return "strick"
-            } else if (num_one === 5 && num_two === 5) { 
-                this.round.push(num_one, num_two, "S") 
-                return "splite spare"
-            } else if (num_one + num_two === 10) {
-                this.round.push(num_one, num_two, this.bonus) 
-                return "spare"
-            } else {
-                this.round.push(num_one, num_two) 
-                return this.round
-            }  
-                } else if (this.round[-1] === "X") {
-                        this.round.push(num_one, num_two, "X", this.bounus) 
-                        return this.round      
-                } else if(this.round[-1] === "S") {  
-                        this.round.push(num_one, num_two, "S")
-                        return this.round
+        while (this.number_rounds <= 10) {   
+            this.number_rounds ++
+            if (this.number_rounds <= 10) { 
+                if(num_one + num_two > 10) { 
+                    return "Thats not a realy score, it must be below 10"  
+                } else if(num_one === 10) {
+                    this.round.push(num_one, num_two, this.bonus, "X") 
+                    return "strick"
+                } else if (num_one === 5 && num_two === 5) { 
+                    this.round.push(num_one, num_two, "S") 
+                    return "splite spare"
+                } else if (num_one + num_two === 10) {
+                    this.round.push(num_one, num_two, this.bonus) 
+                    return "spare"
                 } else {
-                    return "Thats the game"
-                } 
-
-        } 
-        
-    } 
+                    this.round.push(num_one, num_two) 
+                    return this.round
+                }  
+                    } else if (this.round[-1] === "X") {
+                            this.round.push(num_one, "X", this.bounus_two)  
+                            return [this.round, "The second roll does not count"]    
+                    } else if(this.round[-1] === "S") {  
+                            this.round.push(num_one, "S", this_bounus)
+                            return [this.round, "The second roll does not count"]
+                    } else {
+                        return "Thats the game"
+                    } 
+    
+            } 
+            
+        }
      
     
     game_score() {   
@@ -86,4 +86,25 @@ let newbowling = new bowling
 //    return "you have a another go"
 //} else {
 //   return "Thats the game"
-//}
+//} 
+
+//} else if (this.round[-2] === "X") {
+//    this.round.push(num_one, num_two, "X", this.bounus) 
+//    return this.round      
+//} else if(this.round[-1] === "S") {  
+//    this.round.push(num_one, num_two, "S")
+//    return this.round
+//} else {
+//return "Thats the game"
+//}  
+
+//if (this.number_rounds === 10 ) {
+//    if (this.round[-1] === "X"){
+//            this.round.push(num_one, num_two, "X", this.bounus) 
+//            return this.round
+//    } else if (this.round[-1] === "S") {
+//        this.round.push(num_one, num_two, "S")
+//        return this.round
+//    } else {
+//        return "Thats the game"
+//    }

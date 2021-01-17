@@ -93,11 +93,12 @@ describe("Bowling Game", () => {
         it("is been defined", () => {
             expect(game.strikeScore).toBeDefined()
         })
+        it("has an index as an argument", () => {
+            spyOn(game, "strikeScore")
+            game.strikeScore("index")
+            expect(game.strikeScore).toHaveBeenCalled()
+            expect(game.strikeScore).toHaveBeenCalledWith("index")
+        })
     })
-    it("has an index as an argument", () => {
-        spyOn(game, "strikeScore")
-        game.strikeScore("index")
-        expect(game.strikeScore).toHaveBeenCalled()
-        expect(game.strikeScore).toHaveBeenCalledWith("index")
-    })
+
 })

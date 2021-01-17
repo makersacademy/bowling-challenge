@@ -1,75 +1,126 @@
+## Bowling Challenge
+A small client-side JavaScript application for calculating ten pin bowling scores.
 
-Bowling Challenge
-=================
+## Motivation
+This is a translation of [bowling-challenge-ruby](https://github.com/chriswhitehouse/bowling-challenge-ruby). Converting a ruby application into JavaScript as means to help learn a new language.
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+## Build status
+In development.
 
-## The Task
+## Code style
+ESlint. JS Standard.
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+## Tech/framework used
+JacaScript with Jasmine test framework.
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+## Features
+### User Stories
+#### User Story 1
+```
+As a player
+So I know how many pins I've knocked down in total
+I want a record of pins knocked down by roll for each frame
+```
+#### User Story 2
+```
+As a player
+So I can receive a bonus for rolling a spare
+I want the total of the next roll to be added to my frame score
+```
+#### User Story 3
+```
+As a player
+So I can receive a bonus for rolling a strike
+I want the total of the next two rolls to be added to my frame score
+```
+#### User Story 4
+```
+As a player
+So I can receive a bonus in the 10th and final frame
+I want to be able to add the score of a third roll
+```
+## Code Example
+### Game class
+``` js
+class Game {
+  constructor(frameClass = Frame) {
+    this.frameClass = frameClass
+    this.frames = [];
+    this.outputArray = [];
+    this.MAX_NUMBER_FRAMES = 10;
+  }
 
-As usual please start by
+  isNew() {
+    return this.frames.length === 0;
+  }
 
-* Forking this repo
+  addFrame(score) {
+    this.frames.push(new this.frameClass(score))
+  }
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+  addRoll(score) {
+    this.currentFrame().addRoll(score)
+  }
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+  currentFrame() {
+    return this.frames[this.frames.length - 1]
+  }
 
-### Optional Extras
+  notFrameTen() {
+    return this.frames.length != this.MAX_NUMBER_FRAMES;
+  }
 
-In any order you like:
+  addSpareBonuses() {
+    this.frames.forEach((frame, index) => {
+      if(frame.isSpare()){
+        frame.addBonus(this.frames[index + 1].firstRoll())
+      }
+    });
+  }
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+  addStrikeBonuses() {
+    this.frames.forEach((frame, index) => {
+      if(frame.isStrike()) {
+        frame.addBonus(this.frames[index + 1].firstRoll())
+        if(this.frames[index + 1].isStrike()) {
+          frame.addBonus(this.frames[index + 2].firstRoll())
+        }
+        else {
+          frame.addBonus(this.frames[index + 1].secondRoll())
+        }
+      }
+    });
+  }
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+  cumulative() {
+    this.frames.forEach((frame, index) => {
+      if(index === 0){
+        this.outputArray.push(frame.totalScore())
+      }
+      else {
+        this.outputArray.push(this.outputArray[index - 1 ] + frame.totalScore())
+      }
+    });
 
-## Bowling — how does it work?
+    return this.outputArray
+  }
 
-### Strikes
+};
+```
+## Tests
+![Jasmine Tests](https://github.com/chriswhitehouse/bowling-challenge/blob/master/images/Screenshot%202021-01-17%20at%2019.32.50.png)
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
-
-### Spares
-
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-### 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-### Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-### Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+### Input/Output Table
+| Inputs (knocked down pins per roll array)  | Outputs (cumulative frame score array)     |
+| :------------- | :------------- |
+| [0] | [0] |
+| [0,0,0] | [0,0] |
+| [0,0,0,0,0] | [0,0,0] |
+| [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] | [0,0,0,0,0,0,0,0,0,0] |
+| [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1] | [2,2,2,2,2,2,2,2,2,2] |
+| [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,0] | [15,30,45,60,75,90,105,120,135,140] |
+| [10,10,10,10,10,10,10,10,10,0] | [30,60,90,120,150,180,210,240,270,280]|
+| [1,4,4,5,6,4,5,5,10,0,1,7,3,6,4,10,2,8,6] | [5,14,29,49,60,61,77,97,117,133] |
+| **Edge cases:** | |
+| *anything other than an array of at least 12, and up 21, integers between 1 and 10* | Error|

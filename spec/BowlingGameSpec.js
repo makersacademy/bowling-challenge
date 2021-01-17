@@ -59,5 +59,13 @@ describe("Bowling Game", () => {
             expect(game.isStrike).toHaveBeenCalled()
             expect(game.isStrike).toHaveBeenCalledWith("index")
         })
+        it("true", () => {
+            game.roll(10)
+            game.roll(3)
+            game.roll(4)
+            for (var i = 1; i <= 16; i++)
+                game.roll(0)
+            expect(game.score()).toEqual(24)
+        })
     })
 })

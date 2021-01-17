@@ -17,4 +17,7 @@ class BowlingGame {
     }
     return this.result
   }
+  isSpare(index) {
+
+  }
 }

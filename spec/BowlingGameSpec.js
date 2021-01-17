@@ -17,7 +17,7 @@ describe("Bowling Game", () => {
         it("is been defined", () => {
             expect(game.score).toBeDefined()
         })
-        it("gets 20 on roll all ones", () => {
+        it("gets 20 when roll all ones", () => {
             for (var i = 1; i <= 20; i++)
                 game.roll(1)
             expect(game.array.length).toEqual(20)
@@ -30,6 +30,17 @@ describe("Bowling Game", () => {
             for (var i = 1; i <= 17; i++)
                 game.roll(0)
             expect(game.score()).toEqual(16)
+        })
+    })
+    describe("isSpare()", () => {
+        it("is been defined", () => {
+            expect(game.isSpare).toBeDefined()
+        })
+        it("has an index as an argument", () => {
+            spyOn(game, "isSpare")
+            game.isSpare("index")
+            expect(game.isSpare).toHaveBeenCalled()
+            expect(game.isSpare).toHaveBeenCalledWith("index")
         })
     })
 })

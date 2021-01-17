@@ -16,7 +16,7 @@ class BowlingGame {
         this.spareScore()
         this.index += 2
       } else {
-        this.result += this.array[this.index] + this.array[this.index + 1]
+        this.frameScore()
         this.index += 2
       }
     }
@@ -35,6 +35,6 @@ class BowlingGame {
     this.result += 10 + this.array[this.index + 1] + this.array[this.index + 2]
   }
   frameScore(index) {
-
+    this.result += this.array[this.index] + this.array[this.index + 1]
   }
 }

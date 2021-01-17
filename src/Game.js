@@ -48,4 +48,8 @@ class Game {
     return this.scorer.frames.length === 0
   }
 
+  _isOver() {
+    return this.scorer.scores.length >= 10
+  }
+
 }

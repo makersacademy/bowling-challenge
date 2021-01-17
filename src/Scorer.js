@@ -53,7 +53,13 @@ class Scorer {
   }
 
   total() {
-    return this.scores.reduce((a, b) => a + b, 0);
+    let scores;
+    if (this.scores.length > 10) {
+      scores = this.scores.slice(0, 10);
+    } else {
+      scores = this.scores
+    }
+    return scores.reduce((a, b) => a + b, 0);
   }
 
   _spareBonus(pins) {

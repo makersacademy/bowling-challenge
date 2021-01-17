@@ -4,9 +4,13 @@ $(document).ready(function() {
   $('.User_Roll').change(function() {
     let pins = parseInt($('.User_Roll').val());
     $(`#f${game.frameCount()}r${game.rollCount()}`).text(pins);
+    if (game.rollCount() === 1 && pins === 10) {
+      $(`#f${game.frameCount()}r2`).text("X");
+    }
     game.roll(pins);
     frameResults();
     updateTotalScore();
+    checkgameover();
     $('.User_Roll option').prop('selected', function(){
       return this.defaultSelected;
     })
@@ -28,6 +32,12 @@ $(document).ready(function() {
       for (let i = 0; i < game.scoreCount(); i++) {
         $(`#frame${i + 1}_score`).text(game.scorer.scores[i]);
       }
+    }
+  }
+
+  function checkgameover() {
+    if (game._isOver()) {
+      $('#gameover').text("Game Over!")
     }
   }
 

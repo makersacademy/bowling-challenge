@@ -14,35 +14,37 @@ class Scorecard{
      this.score[turn] = pins
   };
 
-  checkFrameNotAboveTen(pins) {
-    if (pins > 10) throw new Error('You cant roll more than 10')
+  checkFrameNotAboveTen(input) {
+    if (input > 10) throw new Error('You cant roll more than 10')
   }
 
   isStrike(currRoll1, currRoll2) {
     return currRoll1 === 10 || currRoll2 === 10
   };
 
-  isNextRollNull(currRoll1, currRoll2) {
-    return currRoll1 != null || currRoll2 != null
+  isSpare(currRoll1, currRoll2) {
+    return (currRoll1 + currRoll2) === 10
   };
 
+  tenthFrameBonus(frame) {
+    let [tenthRoll1, tenthRoll2, tenthRoll3] = [this.score[frame+10.1], this.score[frame+10.2], this.score[frame+10.3]]
+    if(tenthRoll1+tenthRoll2 === 10 || 20) return tenthRoll3
+  }
+
   total(frame) {
-    let turnScore = 0
+    let score = 0
     while (frame > 0) {
     let [currRoll1, currRoll2, nextRoll1, nextRoll2] = [this.score[frame+0.1], this.score[frame+0.2], this.score[frame+1.1], this.score[frame+1.2]];
-    turnScore += currRoll1 + currRoll2
-    if (this.isStrike(currRoll1, currRoll2)) {
-      if (this.isNextRollNull(nextRoll1, nextRoll2)) {
-        turnScore += nextRoll1 + nextRoll2
-      };
-    } else if (currRoll1 + currRoll2 === 10 && nextRoll1 != null) {
-        turnScore += nextRoll1
+    score += currRoll1 + currRoll2
+      if (this.isStrike(currRoll1, currRoll2) && !isNaN(nextRoll1 && nextRoll2)) {
+          score += nextRoll1 + nextRoll2
+      } else if (this.isSpare(currRoll1, currRoll2) && !isNaN(nextRoll1)) {
+          score += nextRoll1
       }
     frame -= 1;
     };
-    let [tenthRoll1, tenthRoll2, tenthRoll3] = [this.score[frame+10.1], this.score[frame+10.2], this.score[frame+10.3]]
-    tenthRoll1+tenthRoll2 === 10 || 20 ? turnScore += tenthRoll3 : 0
-    return turnScore
+    score += this.tenthFrameBonus(frame)
+    return score
   };
 
   print(frame) {

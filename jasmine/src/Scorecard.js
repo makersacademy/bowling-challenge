@@ -31,16 +31,22 @@ class Scorecard{
     if(tenthRoll1+tenthRoll2 === 10 || 20) return tenthRoll3
   }
 
+  currentAndNextRolls(frame) {
+    let rolls = []
+    rolls.push(this.score[frame+0.1], this.score[frame+0.2], this.score[frame+1.1], this.score[frame+1.2])
+    return rolls
+  }
+
   total(frame) {
     let score = 0
     while (frame > 0) {
-    let [currRoll1, currRoll2, nextRoll1, nextRoll2] = [this.score[frame+0.1], this.score[frame+0.2], this.score[frame+1.1], this.score[frame+1.2]];
+    let [currRoll1, currRoll2, nextRoll1, nextRoll2] = this.currentAndNextRolls(frame)
     score += currRoll1 + currRoll2
-      if (this.isStrike(currRoll1, currRoll2) && !isNaN(nextRoll1 && nextRoll2)) {
-          score += nextRoll1 + nextRoll2
-      } else if (this.isSpare(currRoll1, currRoll2) && !isNaN(nextRoll1)) {
-          score += nextRoll1
-      }
+    if (this.isStrike(currRoll1, currRoll2) && !isNaN(nextRoll1 && nextRoll2)) {
+      score += nextRoll1 + nextRoll2
+    } else if (this.isSpare(currRoll1, currRoll2) && !isNaN(nextRoll1)) {
+      score += nextRoll1
+    }
     frame -= 1;
     };
     score += this.tenthFrameBonus(frame)

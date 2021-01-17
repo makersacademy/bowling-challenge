@@ -10,8 +10,6 @@ In development.
 ## Code style
 ESlint. JS Standard.
 
-## Screenshots
-Include logo/demo screenshot etc.
 
 ## Tech/framework used
 JacaScript with Jasmine test framework.
@@ -43,17 +41,75 @@ So I can receive a bonus in the 10th and final frame
 I want to be able to add the score of a third roll
 ```
 ## Code Example
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+### Game class
+``` js
+class Game {
+  constructor(frameClass = Frame) {
+    this.frameClass = frameClass
+    this.frames = [];
+    this.outputArray = [];
+    this.MAX_NUMBER_FRAMES = 10;
+  }
 
-## Installation
-Provide step by step series of examples and explanations about how to get a development env running.
+  isNew() {
+    return this.frames.length === 0;
+  }
 
-## API Reference
+  addFrame(score) {
+    this.frames.push(new this.frameClass(score))
+  }
 
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
+  addRoll(score) {
+    this.currentFrame().addRoll(score)
+  }
 
+  currentFrame() {
+    return this.frames[this.frames.length - 1]
+  }
+
+  notFrameTen() {
+    return this.frames.length != this.MAX_NUMBER_FRAMES;
+  }
+
+  addSpareBonuses() {
+    this.frames.forEach((frame, index) => {
+      if(frame.isSpare()){
+        frame.addBonus(this.frames[index + 1].firstRoll())
+      }
+    });
+  }
+
+  addStrikeBonuses() {
+    this.frames.forEach((frame, index) => {
+      if(frame.isStrike()) {
+        frame.addBonus(this.frames[index + 1].firstRoll())
+        if(this.frames[index + 1].isStrike()) {
+          frame.addBonus(this.frames[index + 2].firstRoll())
+        }
+        else {
+          frame.addBonus(this.frames[index + 1].secondRoll())
+        }
+      }
+    });
+  }
+
+  cumulative() {
+    this.frames.forEach((frame, index) => {
+      if(index === 0){
+        this.outputArray.push(frame.totalScore())
+      }
+      else {
+        this.outputArray.push(this.outputArray[index - 1 ] + frame.totalScore())
+      }
+    });
+
+    return this.outputArray
+  }
+
+};
+```
 ## Tests
-Describe and show how to run the tests with code examples.
+[Jasmine Tests]()
 
 ### Input/Output Table
 | Inputs (knocked down pins per roll array)  | Outputs (cumulative frame score array)     |
@@ -69,20 +125,3 @@ Describe and show how to run the tests with code examples.
 | [1,4,4,5,6,4,5,5,10,0,1,7,3,6,4,10,2,8,6] | [5,14,29,49,60,61,77,97,117,133] |
 | **Edge cases:** | |
 | *anything other than an array of at least 12, and up 21, integers between 1 and 10* | Error|
-
-## How to use?
-If people like your project they’ll want to learn how they can use it. To do so include step by step guide to use your project.
-
-## Contribute
-
-Let people know how they can contribute into your project. A [contributing guideline](https://github.com/zulip/zulip-electron/blob/master/CONTRIBUTING.md) will be a big plus.
-
-## Credits
-Give proper credits. This could be a link to any repo which inspired you to build this project, any blogposts or links to people who contrbuted in this project.
-
-#### Anything else that seems useful
-
-## License
-A short snippet describing the license (MIT, Apache etc)
-
-MIT © [Yourname]()

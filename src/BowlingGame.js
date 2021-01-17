@@ -10,7 +10,7 @@ class BowlingGame {
   score() {
     for (var i = 1; i <= 10; i++) {
       if (this.isStrike()) {
-        this.result += 10 + this.array[this.index + 1] + this.array[this.index + 2]
+        this.strikeScore()
         this.index += 1
       } else if (this.isSpare()) {
         this.spareScore()
@@ -32,6 +32,6 @@ class BowlingGame {
     return this.array[this.index] === 10
   }
   strikeScore(index) {
-
+    this.result += 10 + this.array[this.index + 1] + this.array[this.index + 2]
   }
 }

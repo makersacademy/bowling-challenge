@@ -21,6 +21,14 @@ describe('Scorecard', function(){
       scorecard.inputRoll(1)
       expect(scorecard.pinsKnocked()[1]).toEqual([1])
     })
+
+    it('correctly handles the 10th frame with all strikes', function(){
+      for (let i = 0; i < 12; i++) {
+        scorecard.inputRoll(10);
+      }
+      expect(scorecard.sum(scorecard.frameScores())).toEqual(300)
+    })
+
   })
 
   describe('calculateFrame', function(){

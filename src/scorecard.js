@@ -5,6 +5,7 @@ class Scorecard {
     this._roll = 0
     this._frameScores = []
     this._strikesSpares = {}
+    this._maxFrames = 9
   };
 
   inputRoll(number) {
@@ -17,7 +18,7 @@ class Scorecard {
       this.calculateFrame()
       this.newFrame()
     }
-  };
+  }
 
   calculateFrame() {
     this._frameScores.push(this.sum(this._pinsKnocked[this._frame]))
@@ -40,9 +41,7 @@ class Scorecard {
 
   newFrame() {
     this._frame++
-    if(this._frame < 10) {
-      this._roll = 0
-    }
+    this._roll = 0
   }
 
   strikeOrSpare() {

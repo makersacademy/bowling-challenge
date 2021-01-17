@@ -7,6 +7,12 @@ describe("Bowling Game", () => {
         it("is been defined", () => {
             expect(game.roll).toBeDefined()
         })
+        it("has pins as an argument", () => {
+            spyOn(game, "roll")
+            game.roll("pins")
+            expect(game.roll).toHaveBeenCalled()
+            expect(game.roll).toHaveBeenCalledWith("pins")
+        })
         it("can add a roll to the rollStorage", () => {
             for (var i = 1; i <= 20; i++)
                 game.roll(0)

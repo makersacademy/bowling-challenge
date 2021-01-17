@@ -15,6 +15,18 @@ describe('Bowling_challange', function() {
 
         it('should return a high bounes of 10', function() {
             expect(newbowling.bonus_two).toEqual(10)
+        }) 
+
+        it('should have zero playes', function(){
+            expect(newbowling.number_rounds).toEqual(0)
+        }) 
+
+        it('should match the bounes of 5', function() {
+            expect(newbowling.bonus).toEqual(5)
+        }) 
+
+        it('should match the high bounes of 10', function(){
+            expect(newbowling.bonus_two).toEqual(10)
         })
 
     });  

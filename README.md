@@ -109,7 +109,7 @@ class Game {
 };
 ```
 ## Tests
-[Jasmine Tests](https://github.com/chriswhitehouse/bowling-challenge/blob/master/images/Screenshot%202021-01-17%20at%2019.32.50.png)
+![Jasmine Tests](https://github.com/chriswhitehouse/bowling-challenge/blob/master/images/Screenshot%202021-01-17%20at%2019.32.50.png)
 
 ### Input/Output Table
 | Inputs (knocked down pins per roll array)  | Outputs (cumulative frame score array)     |

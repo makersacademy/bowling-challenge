@@ -20,4 +20,10 @@ describe('Game', function(){
     expect(game.strike).toEqual(false);
   });
 
+  it('will add the the two rolls together if spare and strike are false', function(){
+    expect(game.calculateFrameScore(1,2)).toEqual(3);
+  });
+
+  // add in additional tests for calculate score for strike and spare once the functions are written in
+  
 });

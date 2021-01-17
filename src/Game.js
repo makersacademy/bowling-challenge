@@ -81,17 +81,23 @@ class Game {
     var frame = 0;
     do {
       this.roll(frame);
+
       if (this.strike(frame) && !this.finalRound(frame)) {
         this.updateScores(frame)
         frame++;
         continue;
       }
+
       this.roll(frame);
+
       if (this.finalRound(frame)){
         this.bonusRoll(frame);
       }
+
       this.updateScores(frame);
+
       frame++;
+      
     } while (frame < this.MAX_FRAME)
   }
     

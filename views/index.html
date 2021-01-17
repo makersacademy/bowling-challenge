@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bowling Score Card</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+ <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <h1>Bowling Score Card</h1>
+    <img src="../images/bowling-pink.png">
+    <table>
+        <tbody>
+        <tr>
+            <td colspan="2">Frame 1</td>
+            <td colspan="2">Frame 2</td>
+            <td colspan="2">Frame 3</td>
+            <td colspan="2">Frame 4</td>
+            <td colspan="2">Frame 5</td>
+            <td colspan="2">Frame 6</td>
+            <td colspan="2">Frame 7</td>
+            <td colspan="2">Frame 8</td>
+            <td colspan="2">Frame 9</td>
+            <td colspan="2">Frame 10</td>
+            <td colspan="2">Total Score</td>
+        </tr>
+        <tr>
+        <td id="0" class="frame-box"></td>
+        <td id="1" class="frame-box"></td>
+        <td id="2" class="frame-box"></td>
+        <td id="3" class="frame-box"></td>
+        <td id="4" class="frame-box"></td>
+        <td id="5" class="frame-box"></td>
+        <td id="6" class="frame-box"></td>
+        <td id="7" class="frame-box"></td>
+        <td id="8" class="frame-box"></td>
+        <td id="9" class="frame-box"></td>
+        <td id="10" class="frame-box"></td>
+        <td id="11" class="frame-box"></td>
+        <td id="12" class="frame-box"></td>
+        <td id="13" class="frame-box"></td>
+        <td id="14" class="frame-box"></td>
+        <td id="15" class="frame-box"></td>
+        <td id="16" class="frame-box"></td>
+        <td id="17" class="frame-box"></td>
+        <td id="18" class="frame-box"></td>
+        <td id="19" class="frame-box"></td>
+        
+        <td rowspan="2" id="total-score">&nbsp;</td>
+        </tr>
+        <tr>
+        <td colspan="2">&nbsp;</td>
+        <td colspan="2">&nbsp;</td>
+        <td colspan="2">&nbsp;</td>
+        <td colspan="2">&nbsp;</td>
+        <td colspan="2">&nbsp;</td>
+        <td colspan="2">&nbsp;</td>
+        <td colspan="2">&nbsp;</td>
+        <td colspan="2">&nbsp;</td>
+        <td colspan="2">&nbsp;</td>
+        <td colspan="2">&nbsp;</td>
+        </tr>
+        </tbody>
+        </table>
+        <div class="score-buttons">
+          <button id="score-one">1</button>
+          <button id="score-two">2</button>
+          <button id="score-three">3</button>
+          <button id="score-four">4</button>
+          <button id="score-five">5</button>
+          <button id="score-six">6</button>
+          <button id="score-seven">7</button>
+          <button id="score-eight">8</button>
+          <button id="score-nine">9</button>
+          <button id="score-ten">10</button>
+        </div>
+
+    <button id="reset">New game</button>
+    <p id="copyright">CopyRight AraCho 2021</p>
+    <script src="../src/Game.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

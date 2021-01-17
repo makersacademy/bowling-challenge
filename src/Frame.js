@@ -3,7 +3,7 @@
 class Frame {
   constructor() {
     this._MAX_SCORE = 10;
-    this.pinBoard = [];
+    this.pinboard = [];
     this.firstRoll;
     this.secondRoll;
   };
@@ -24,11 +24,11 @@ class Frame {
     return (this.firstRoll + this.secondRoll);
   }
 
-  updatePinBoard(roll) {
+  updatePinboard(roll) {
     try {
       this.checkInput(roll);
       this.checkPinsTotal();
-      this.pinBoard.push(roll);
+      this.pinboard.push(roll);
     } catch (error) {
       alert('Invalid input');
     }

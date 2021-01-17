@@ -123,6 +123,13 @@ describe("Game", () => {
       expect(game.frameScores).toEqual([15,24]);
     });
 
+    it("should update the frame score correctly", () => {
+      game.frames = [[5,4],[6,4]];
+      game.frameScores = [9];
+      game.updatePreviousScore(1);
+      expect(game.frameScores).toEqual([9,19]);
+    });
+
   });
 
   describe("calculate strike and spare scores", () => {

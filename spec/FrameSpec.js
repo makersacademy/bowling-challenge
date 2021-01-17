@@ -14,7 +14,7 @@ describe("Frame", () => {
     });
 
     it ("should have an pin board to mark the no. of pins in each roll", () => {
-      expect(frame.pinBoard).toEqual([])
+      expect(frame.pinboard).toEqual([])
     })
   });
 
@@ -32,12 +32,12 @@ describe("Frame", () => {
     });
   })
 
-  describe("pinBoard", () => {
+  describe("pinboard", () => {
 
     it("should be updated with each roll", () => {
-      frame.updatePinBoard(1);
-      frame.updatePinBoard(2);
-      expect(frame.pinBoard).toEqual([1,2]);
+      frame.updatePinboard(1);
+      frame.updatePinboard(2);
+      expect(frame.pinboard).toEqual([1,2]);
     })
 
     it("the sum of first and second rolls should not exceed 10", () => {

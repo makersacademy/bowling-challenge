@@ -42,8 +42,8 @@ class Game {
         this._checkPreviousFrame(frame) === "spare") {
       
       this.frameScores[frame - 1] = finalScore;
-      this.updateFrameScores(finalScore + currentScore);
     }
+    this.updateFrameScores(finalScore + currentScore);
 
   };
 
@@ -53,7 +53,7 @@ class Game {
       return "strike";
     } else if (this.spare(previousFrame)) {
       return "spare";
-    };
+    } 
   };
 
   _calculateCurrentScore(frame) {
@@ -68,6 +68,8 @@ class Game {
       extraScore = this._calculateCurrentScore(frame);
     } else if (this._checkPreviousFrame(frame) === "spare") {
       extraScore = this.frames[frame][0];
+    } else {
+      extraScore = 0;
     }
     return extraScore + previousScore;
   }

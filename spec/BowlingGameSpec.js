@@ -100,5 +100,10 @@ describe("Bowling Game", () => {
             expect(game.strikeScore).toHaveBeenCalledWith("index")
         })
     })
+    describe("frameScore()", () => {
+        it("is been defined", () => {
+            expect(game.frameScore).toBeDefined()
+        })
+    })
 
 })

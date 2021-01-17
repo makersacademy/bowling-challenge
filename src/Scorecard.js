@@ -20,110 +20,41 @@ class Scorecard {
   }
 
   roll(pins) {
-    console.log(pins)
-    // add points to current frame
-    this._pushToCurrentFrame(pins)
-    // if tenth frame
+    this._pushPinsToCurrentFrame(pins)
+    // returns don't work when put in separate function
     if (this._isTenthFrame()) {
-      console.log("tenth frame")
-      if (this._isFirstRoll()) {
-        return;
-      } else if (this._isSecondRoll() && this._isStrikeOrSpare()) {
-        console.log("strike or spare in tenth")
+      if (this._isFirstRollOrSecondRollStrikeSpare()) {
         return;
       } else if (this._isSecondRoll()) {
-        // add current frame to frames
-        this._pushCurrentFrameToFrames()
-        // add sum of current frame to total
-        this._addSumCurrentFrameToTotal()
-        // if strike previous frame
-        if (this._isFollowingStrike()) {
-          console.log("last frame strike")
-          // add sum of current frame to total
-          this._addSumCurrentFrameToTotal()
-          // if following two strikes
-          if (this._isFollowingTwoStrikes()) {
-            console.log("is following two strikes")
-            this._addFirstRollToTotal()
-          }
-        // if spare previous frame
-        } else if (this._isLastFrameSpare()) {
-          console.log("last frame spare")
-          this._addFirstRollToTotal()
-        }
+        this._addFramesAndBonusTotal()
         return;
-      // if this is third roll
       } else {
-        // add current frame to frames
-        this._pushCurrentFrameToFrames()
-        // add sum of current frame to total
-        this._addSumCurrentFrameToTotal()
-        // if strike previous frame
-        if (this._isFollowingStrike()) {
-          console.log("last frame strike")
-          // add sum of current frame to total
-          this._addFirstRollToTotal()
-          this.total += (this.getCurrentFrame()[1])
-          // if following two strikes
-          if (this._isFollowingTwoStrikes()) {
-            console.log("is following two strikes")
-            this._addFirstRollToTotal()
-          }
-        // if spare previous frame
-        } else if (this._isLastFrameSpare()) {
-          console.log("last frame spare")
-          this._addFirstRollToTotal()
-        }
+        this._addFramesAndBonusTotal()
+        this._addThirdRollToTotal()
         return;
       }
     }
-    // if first roll and not strike, then return
-    if (this._isFirstRollAndNonStrike(pins)) {
-      console.log("first roll non strike")
+    if (this._isFirstRollAndNonStrike()) {
       return;
     }
-    // if first frame
+    this._firstFrameLogic()
+  }
+
+  _firstFrameLogic() {
     if (this._isFirstFrame()) {
-      console.log("first frame")
-      // add current frame to frames
-      this._pushCurrentFrameToFrames()
-      // add sum of current frame to total
-      this._addSumCurrentFrameToTotal()
-      // clear current frame
-      this.currentFrame = []
-    } else { // if not first frame
-      console.log("not first frame")
-
-      // add current frame to frames
-      this._pushCurrentFrameToFrames()
-      // add sum of current frame to total
-      this._addSumCurrentFrameToTotal()
-      // if strike previous frame
-      if (this._isFollowingStrike()) {
-        console.log("last frame strike")
-        // add sum of current frame to total
-        this._addSumCurrentFrameToTotal()
-        // return if second frame
-        if (this._isNotSecondFrame()) {
-          console.log("is second frame")
-          // if following two strikes
-          if (this._isFollowingTwoStrikes()) {
-            console.log("is following two strikes")
-            this._addFirstRollToTotal()
-          }
-        }
-      // if spare previous frame
-      } else if (this._isLastFrameSpare()) {
-        console.log("last frame spare")
-
-        this._addFirstRollToTotal()
-      }
-      // clear current frame
-      this.currentFrame = []
+      this._pushToFramesAndAddToTotal()
+      this._clearCurrentFrame()
+    } else {
+      this._addFramesAndBonusTotal()
+      this._clearCurrentFrame()
     }
   }
 
-  _pushToCurrentFrame(pins) {
+  _clearCurrentFrame() {
+    this.currentFrame = []
+  }
+
+  _pushPinsToCurrentFrame(pins) {
     this.currentFrame.push(pins)
   }
 
@@ -131,19 +62,72 @@ class Scorecard {
     this.frames.push(this.currentFrame)
   }
 
+  _sum(frame) {
+    if (frame.length === 1) {
+      return frame[0]
+    } else {
+      return frame[0] + frame[1]
+    }
+  }
+
   _addSumCurrentFrameToTotal() {
     this.total += this._sum(this.currentFrame)
   }
 
-  _sum(frame) {
-    var sum = frame.reduce(function(total, num) {
-      return total + num;
-    });
-    return sum
+  _addThirdRollToTotal() {
+    this.total += this.currentFrame[2]
   }
 
-  _isFirstRollAndNonStrike(pins) {
+  _numberOfFrames() {
+    return this.getFrames().length
+  }
+
+  _isNonStrike() {
+    return (this._getFramesFirstRoll() < 10)
+  }
+
+  _isStrikeOrSpare() {
+    return this._sum(this.getCurrentFrame()) >= 10
+  }
+
+  _isFirstRollAndNonStrike() {
     return (this._isFirstRoll() && this._isNonStrike())
+  }
+
+  _isFirstRollOrSecondRollStrikeSpare () {
+    return this._isFirstRoll() || this._isSecondRollAndStrikeOrSpare()
+  }
+
+  _getPreviousFrame() {
+    return this.getFrames()[this._numberOfFrames() - 2]
+  }
+  // not previous but the one before that
+  _getPreviousPreviousFrame() {
+    return this.getFrames()[this._numberOfFrames() - 3]
+  }
+
+  _isPreviousFrameSpare() {
+    return this._sum(this._getPreviousFrame()) === 10
+  }
+
+  _isPreviousFrameStrike() {
+    return (this._getPreviousFrame().length == 1)
+  }
+
+  _isPreviousTwoFramesStrikes() {
+    return (this._getPreviousPreviousFrame().length == 1)
+  }
+
+  _isFirstFrame() {
+    return this._numberOfFrames() === 0
+  }
+
+  _isThirdToNinthFrame() {
+    return this._numberOfFrames() > 2
+  }
+
+  _isTenthFrame() {
+    return this._numberOfFrames() >= 9
   }
 
   _isFirstRoll() {
@@ -154,55 +138,56 @@ class Scorecard {
     return this.getCurrentFrame().length == 2
   }
 
-  _isFollowingStrike() {
-    return (this._lastFrame().length == 1)
+  _isSecondRollAndStrikeOrSpare() {
+    return this._isSecondRoll() && this._isStrikeOrSpare()
   }
 
-  _isStrikeOrSpare() {
-    return this._sum(this.getCurrentFrame()) >= 10
+  _getFramesFirstRoll() {
+    return this.getCurrentFrame()[0]
   }
 
-  _isFollowingTwoStrikes() {
-    return (this._secondLastFrame().length == 1)
-  }
-
-  _isNonStrike() {
-    return (this._framesFirstRoll() < 10)
-  }
-
-  _isFirstFrame() {
-    return this._numberOfFrames() === 0
-  }
-
-  _isNotSecondFrame() {
-    return this._numberOfFrames() > 2
-  }
-
-  _isTenthFrame() {
-    return this._numberOfFrames() >= 9
-  }
-
-  _lastFrame() {
-    return this.getFrames()[this._numberOfFrames() - 2]
-  }
-
-  _secondLastFrame() {
-    return this.getFrames()[this._numberOfFrames() - 3]
-  }
-
-  _numberOfFrames() {
-    return this.getFrames().length
-  }
-
-  _isLastFrameSpare() {
-    return this._sum(this._lastFrame()) === 10
+  _getFramesSecondRoll() {
+    return this.getCurrentFrame()[1]
   }
 
   _addFirstRollToTotal() {
-    this.total += this._framesFirstRoll()
+    this.total += this._getFramesFirstRoll()
   }
 
-  _framesFirstRoll() {
-    return this.getCurrentFrame()[0]
+  _addSecondRollToTotal() {
+    this.total += this._getFramesSecondRoll()
   }
+
+  _addFirstTwoRollsToTotal() {
+    this._addFirstRollToTotal()
+    this._addSecondRollToTotal()
+  }
+
+  _pushToFramesAndAddToTotal() {
+    this._pushCurrentFrameToFrames()
+    this._addSumCurrentFrameToTotal()
+  }
+
+  _previousBonusPoints() {
+    if (this._isPreviousFrameStrike()) {
+      this._addSumCurrentFrameToTotal()
+      if (this._isThirdToNinthFrame()) {
+        this._doubleStrikeBonusPoints()
+      }
+    } else if (this._isPreviousFrameSpare()) {
+      this._addFirstRollToTotal()
+    }
+  }
+
+  _doubleStrikeBonusPoints() {
+    if (this._isPreviousTwoFramesStrikes()) {
+      this._addFirstRollToTotal()
+    }
+  }
+
+  _addFramesAndBonusTotal() {
+    this._pushToFramesAndAddToTotal()
+    this._previousBonusPoints()
+  }
+
 };

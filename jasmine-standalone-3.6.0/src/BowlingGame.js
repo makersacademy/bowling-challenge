@@ -38,7 +38,7 @@ class BowlingGame {
 
   addFinalBonusScores(roll1, roll2 = 'no throw') {
     if (this.areBonusRollsNeeded() === false) {
-      return;
+      throw new Error("You are not entitled to a bonus roll");
     }
     if (this._getFrameTotal(this.frameRolls[this.INDEX_OF_FINAL_FRAME]) === this.STRIKE_VALUE && this.frameRolls[this.INDEX_OF_FINAL_FRAME].length === 2) {
       // if your 10th frame is a spare
@@ -93,7 +93,7 @@ class BowlingGame {
       // if at least 2 frames have taken place and the previous frame was a spare, add the first roll of latest frame to score of previous frame
     }
     if (this.frameRolls.length >= 2 && this._isPreviousFrameStrike() === true) {
-      this.frameScores[this.frameScores.length - 2] += this.frameScores[this.frameScores.length - 1]
+      this.frameScores[this.frameScores.length - 2] += this.frameScores[this.frameScores.length - 1];
       // if at least 2 frames have taken place and the previous frame was a strike, add total score of latest frame to total score of the frame previous
     }
     if (this.frameRolls.length >= 3 && this._isPreviousFrameStrike() === true && this._isFrameBeforePreviousFrameStrike() === true) {

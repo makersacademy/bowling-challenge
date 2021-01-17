@@ -23,12 +23,14 @@ class BowlingGame {
     return this.result
   }
   // PRIVATE
+  // A spare (/) is when you knock down all the pins on your second try.
   _isSpare(frm_indx) {
     return this.frame[this.frm_indx] + this.frame[this.frm_indx + 1] === 10
   }
   _spareScore(frm_indx) {
     this.result += this.frame[this.frm_indx] + this.frame[this.frm_indx + 1] + this.frame[this.frm_indx + 2]
   }
+  // A strike(x) is when you knock down all the pins with the ball on your first try.
   _isStrike(frm_indx) {
     return this.frame[this.frm_indx] === 10
   }

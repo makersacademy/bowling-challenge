@@ -18,8 +18,8 @@ class Scorecard{
     if (input > 10) throw new Error('You cant roll more than 10')
   }
 
-  isStrike(currRoll1, currRoll2) {
-    return currRoll1 === 10 || currRoll2 === 10
+  isStrike(currRoll1, currRoll2, nextRoll1, nextRoll2) {
+    return (currRoll1 === 10 || currRoll2 === 10) && !isNaN(nextRoll1 && nextRoll2)
   };
 
   isSpare(currRoll1, currRoll2) {
@@ -42,7 +42,7 @@ class Scorecard{
     while (frame > 0) {
     let [currRoll1, currRoll2, nextRoll1, nextRoll2] = this.currentAndNextRolls(frame)
     score += currRoll1 + currRoll2
-    if (this.isStrike(currRoll1, currRoll2) && !isNaN(nextRoll1 && nextRoll2)) {
+    if (this.isStrike(currRoll1, currRoll2, nextRoll1, nextRoll2)) {
       score += nextRoll1 + nextRoll2
     } else if (this.isSpare(currRoll1, currRoll2) && !isNaN(nextRoll1)) {
       score += nextRoll1

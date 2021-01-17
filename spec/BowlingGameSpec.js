@@ -35,15 +35,15 @@ describe("Bowling Game", () => {
             expect(game.score()).toEqual(300)
         })
     })
-    describe("isSpare()", () => {
+    describe("_isSpare()", () => {
         it("is been defined", () => {
-            expect(game.isSpare).toBeDefined()
+            expect(game._isSpare).toBeDefined()
         })
         it("has an frm_indx as an argument", () => {
-            spyOn(game, "isSpare")
-            game.isSpare("frm_indx")
-            expect(game.isSpare).toHaveBeenCalled()
-            expect(game.isSpare).toHaveBeenCalledWith("frm_indx")
+            spyOn(game, "_isSpare")
+            game._isSpare("frm_indx")
+            expect(game._isSpare).toHaveBeenCalled()
+            expect(game._isSpare).toHaveBeenCalledWith("frm_indx")
         })
         it("rolls a spare", () => {
             game.roll(5)
@@ -59,15 +59,15 @@ describe("Bowling Game", () => {
             expect(game.score()).toEqual(150)
         })
     })
-    describe("isStrike()", () => {
+    describe("_isStrike()", () => {
         it("is been defined", () => {
-            expect(game.isStrike).toBeDefined()
+            expect(game._isStrike).toBeDefined()
         })
         it("has an frm_indx as an argument", () => {
-            spyOn(game, "isStrike")
-            game.isStrike("frm_indx")
-            expect(game.isStrike).toHaveBeenCalled()
-            expect(game.isStrike).toHaveBeenCalledWith("frm_indx")
+            spyOn(game, "_isStrike")
+            game._isStrike("frm_indx")
+            expect(game._isStrike).toHaveBeenCalled()
+            expect(game._isStrike).toHaveBeenCalledWith("frm_indx")
         })
         it("true", () => {
             game.roll(10)
@@ -78,37 +78,37 @@ describe("Bowling Game", () => {
             expect(game.score()).toEqual(24)
         })
     })
-    describe("spareScore()", () => {
+    describe("_spareScore()", () => {
         it("is been defined", () => {
-            expect(game.spareScore).toBeDefined()
+            expect(game._spareScore).toBeDefined()
         })
         it("has an frm_indx as an argument", () => {
-            spyOn(game, "spareScore")
-            game.spareScore("frm_indx")
-            expect(game.spareScore).toHaveBeenCalled()
-            expect(game.spareScore).toHaveBeenCalledWith("frm_indx")
+            spyOn(game, "_spareScore")
+            game._spareScore("frm_indx")
+            expect(game._spareScore).toHaveBeenCalled()
+            expect(game._spareScore).toHaveBeenCalledWith("frm_indx")
         })
     })
-    describe("strikeScore()", () => {
+    describe("_strikeScore()", () => {
         it("is been defined", () => {
-            expect(game.strikeScore).toBeDefined()
+            expect(game._strikeScore).toBeDefined()
         })
         it("has an frm_indx as an argument", () => {
-            spyOn(game, "strikeScore")
-            game.strikeScore("frm_indx")
-            expect(game.strikeScore).toHaveBeenCalled()
-            expect(game.strikeScore).toHaveBeenCalledWith("frm_indx")
+            spyOn(game, "_strikeScore")
+            game._strikeScore("frm_indx")
+            expect(game._strikeScore).toHaveBeenCalled()
+            expect(game._strikeScore).toHaveBeenCalledWith("frm_indx")
         })
     })
-    describe("frameScore()", () => {
+    describe("_frameScore()", () => {
         it("is been defined", () => {
-            expect(game.frameScore).toBeDefined()
+            expect(game._frameScore).toBeDefined()
         })
         it("has an frm_indx as an argument", () => {
-            spyOn(game, "frameScore")
-            game.frameScore("frm_indx")
-            expect(game.frameScore).toHaveBeenCalled()
-            expect(game.frameScore).toHaveBeenCalledWith("frm_indx")
+            spyOn(game, "_frameScore")
+            game._frameScore("frm_indx")
+            expect(game._frameScore).toHaveBeenCalled()
+            expect(game._frameScore).toHaveBeenCalledWith("frm_indx")
         })
     })
 

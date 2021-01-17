@@ -20,90 +20,47 @@ describe("Game", () => {
   });
 
   describe("updating frames array", () => {
-    beforeEach(() => {
-      frame = jasmine.createSpy(frame);
-    })
+
 
     it("should update the frames array depending on each frame's outcome", () => {
-      game.updateFramesArray(frame);
-      expect(game.frames).toEqual([frame]);
+      game.updateFramesArray(0,9);
+      expect(game.frames).toEqual([[9]]);
     } )
 
     it("should update multiple frames", () => {
-      let frameTwo;
-      frameTwo = jasmine.createSpy(frame);
-      game.updateFramesArray(frame);
-      game.updateFramesArray(frameTwo);
-      expect(game.frames).toEqual([frame, frameTwo]);
+      game.updateFramesArray(0,9);
+      game.updateFramesArray(0,1);
+      game.updateFramesArray(1,3);
+      game.updateFramesArray(1,4);
+      expect(game.frames).toEqual([[9,1],[3,4]]);
     })
 
   })
 
-  describe("updating frame scores array", () => {
-    it("should update the frame scores array depending on the frame score", () => {
-      game.updateFrameScores(8);
-      game.updateFrameScores(7);
-      game.updateFrameScores(5);
-      expect(game.frameScores).toEqual([8,7,5])
-    })
-  })
+
 
   describe("strike", () => {
 
     it("should return true if it's a strike", () => {
-      let frame = [10]
-      expect(game.strike(frame)).toBe(true);
+      game.frames = [[10]]
+      expect(game.strike(0)).toBe(true);
     });
   });
 
   describe("spare", () => {
 
     it("should return true if it's a spare", () => {
-      let frame = [3,7]
-      expect(game.spare(frame)).toBe(true);
+      game.frames = [[3,7]]
+      expect(game.spare(0)).toBe(true);
     });
   });
-
-  describe("bonusRoll", () => {
-    it("should return true if the frame is a spare", () => {
-      let frame = [3,7];
-      expect(game.bonusRoll(frame)).toBe(true);
-    });
-
-    it("should return true if the frame is a strike", () => {
-      let frame = [10];
-      expect(game.bonusRoll(frame)).toBe(true);
-    });
-
-    it("should not return true otherwise", () => {
-      let frame = [3,3];
-      expect(game.bonusRoll(frame)).not.toBe(true);
-    });
-  });
-  
-  describe("check if previous frame was a spare or a strike", () => {
-    beforeEach(() => {
-      let previousFrame = jasmine.createSpyObj('Frame', ['spare', 'strike']);
-      previousFrame.spare.and.returnValue(true);
-      previousFrame.strike.and.returnValue(true);
-    });
-
-    it("should return true if the previous frame was a strike", () => {
-      game.frames = [[10], [1,2]];
-      expect(game._checkPreviousFrame(1)).toEqual("strike");
-    });
-
-    it("should return true if the previous frame was a spare", () => {
-      game.frames = [[5,5], [1,2]];
-      expect(game._checkPreviousFrame(1)).toEqual("spare");
-    });
-    
-  })
 
   describe("calculate current score", () => {
     it("should calculate the sum of the current frame", () => {
       game.frames = [[1,4],[2,5]]
-      expect(game._calculateCurrentScore(1)).toEqual(7);
+      game.frameScores = [5]
+      game.calculateFrameScore(1)
+      expect(game.frameScores[1]).toEqual(12);
     })
   })
 
@@ -112,32 +69,30 @@ describe("Game", () => {
     it("should update the previous frame score if it was a strike", () => {
       game.frames = [[10],[5,4]];
       game.frameScores = [10];
-      game.updatePreviousScore(1)
+      game.updateScores(1);
       expect(game.frameScores).toEqual([19,28]);
     });
 
     it("should update the previous frame score if it was a spare", () => {
       game.frames = [[6,4],[5,4]];
       game.frameScores = [10];
-      game.updatePreviousScore(1);
+      game.updateScores(1)
       expect(game.frameScores).toEqual([15,24]);
     });
 
     it("should update the frame score correctly", () => {
       game.frames = [[5,4],[6,4]];
       game.frameScores = [9];
-      game.updatePreviousScore(1);
+      game.updateScores(1)
+      game.updatePreviousFrame(1);
       expect(game.frameScores).toEqual([9,19]);
     });
 
-  });
-
   describe("calculate strike and spare scores", () => {
     it("should calculate the final score for a strike", () => {
-      game.frames = [[10],[5,4]];
-      game.frameScores = [10]
-      expect(game._calculateFinalScore(1)).toEqual(19);
+      game.frameScores = [10, 19, 20, 34, 49, 55, 65, 74, 94, 101]
+      expect(game.totalScore()).toEqual(101);
     });
   })
-
+  });
 });

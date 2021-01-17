@@ -53,5 +53,11 @@ describe("Bowling Game", () => {
         it("is been defined", () => {
             expect(game.isStrike).toBeDefined()
         })
+        it("has an index as an argument", () => {
+            spyOn(game, "isStrike")
+            game.isStrike("index")
+            expect(game.isStrike).toHaveBeenCalled()
+            expect(game.isStrike).toHaveBeenCalledWith("index")
+        })
     })
 })

@@ -29,6 +29,11 @@ describe("Bowling Game", () => {
             expect(game.array.length).toEqual(20)
             expect(game.score()).toEqual(20)
         })
+        it("a perfect game", () => {
+            for (var i = 1; i <= 12; i++)
+                game.roll(10)
+            expect(game.score()).toEqual(300)
+        })
     })
     describe("isSpare()", () => {
         it("is been defined", () => {

@@ -13,7 +13,7 @@ class BowlingGame {
         this.result += 10 + this.array[this.index + 1] + this.array[this.index + 2]
         this.index += 1
       } else if (this.isSpare()) {
-        this.result += this.array[this.index] + this.array[this.index + 1] + this.array[this.index + 2]
+        this.spareScore()
         this.index += 2
       } else {
         this.result += this.array[this.index] + this.array[this.index + 1]
@@ -26,7 +26,7 @@ class BowlingGame {
     return this.array[this.index] + this.array[this.index + 1] === 10
   }
   spareScore(index) {
-
+    this.result += this.array[this.index] + this.array[this.index + 1] + this.array[this.index + 2]
   }
   isStrike(index) {
     return this.array[this.index] === 10

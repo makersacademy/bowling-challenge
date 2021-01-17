@@ -40,4 +40,119 @@ describe('Scorecard', function() {
 
     expect(scorecard.getFrames()).toEqual([[10]])
   })
+
+  it('gives bonus for one strike - next two rolls doubled', function() {
+    scorecard.roll(10)
+    scorecard.roll(2)
+    scorecard.roll(6)
+
+    expect(scorecard.getTotal()).toEqual(26)
+  });
+
+  it('gives bonus for spare - next roll doubled', function() {
+    scorecard.roll(5)
+    scorecard.roll(5)
+    scorecard.roll(2)
+    scorecard.roll(6)
+
+    expect(scorecard.getTotal()).toEqual(20)
+  })
+
+  it('gives bonus for double strike - two rolls after strikes doubles', function() {
+    scorecard.roll(10)
+    scorecard.roll(10)
+    scorecard.roll(2)
+    scorecard.roll(6)
+
+    expect(scorecard.getTotal()).toEqual(48)
+  })
+
+  it('works with ten frames', function() {
+    scorecard.roll(1)
+    scorecard.roll(4)
+    scorecard.roll(4)
+    scorecard.roll(5)
+    scorecard.roll(6)
+    scorecard.roll(4)
+    scorecard.roll(5)
+    scorecard.roll(5)
+    scorecard.roll(10)
+    scorecard.roll(0)
+    scorecard.roll(1)
+    scorecard.roll(7)
+    scorecard.roll(3)
+    scorecard.roll(6)
+    scorecard.roll(4)
+    scorecard.roll(10)
+    scorecard.roll(2)
+    scorecard.roll(4)
+
+    expect(scorecard.getTotal()).toEqual(119)
+  })
+
+  it('gives 0 for gutterball', function() {
+    scorecard.roll(0)
+    scorecard.roll(0)
+    scorecard.roll(0)
+    scorecard.roll(0)
+    scorecard.roll(0)
+    scorecard.roll(0)
+    scorecard.roll(0)
+    scorecard.roll(0)
+    scorecard.roll(0)
+    scorecard.roll(0)
+    scorecard.roll(0)
+    scorecard.roll(0)
+    scorecard.roll(0)
+    scorecard.roll(0)
+    scorecard.roll(0)
+    scorecard.roll(0)
+    scorecard.roll(0)
+    scorecard.roll(0)
+    scorecard.roll(0)
+    scorecard.roll(0)
+
+    expect(scorecard.getTotal()).toEqual(0)
+  })
+
+  it('tenth frame bonus - test with spare', function() {
+    scorecard.roll(1)
+    scorecard.roll(4)
+    scorecard.roll(4)
+    scorecard.roll(5)
+    scorecard.roll(6)
+    scorecard.roll(4)
+    scorecard.roll(5)
+    scorecard.roll(5)
+    scorecard.roll(10)
+    scorecard.roll(0)
+    scorecard.roll(1)
+    scorecard.roll(7)
+    scorecard.roll(3)
+    scorecard.roll(6)
+    scorecard.roll(4)
+    scorecard.roll(10)
+    scorecard.roll(2)
+    scorecard.roll(8)
+    scorecard.roll(6)
+
+    expect(scorecard.getTotal()).toEqual(133)
+  })
+
+  it('tests a perfect game', function() {
+    scorecard.roll(10)
+    scorecard.roll(10)
+    scorecard.roll(10)
+    scorecard.roll(10)
+    scorecard.roll(10)
+    scorecard.roll(10)
+    scorecard.roll(10)
+    scorecard.roll(10)
+    scorecard.roll(10)
+    scorecard.roll(10)
+    scorecard.roll(10)
+    scorecard.roll(10)
+
+    expect(scorecard.getTotal()).toEqual(300)
+  })
 })

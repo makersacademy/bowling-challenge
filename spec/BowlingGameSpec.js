@@ -89,4 +89,9 @@ describe("Bowling Game", () => {
             expect(game.spareScore).toHaveBeenCalledWith("index")
         })
     })
+    describe("strikeScore()", () => {
+        it("is been defined", () => {
+            expect(game.strikeScore).toBeDefined()
+        })
+    })
 })

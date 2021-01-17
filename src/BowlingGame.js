@@ -31,4 +31,7 @@ class BowlingGame {
   isStrike(index) {
     return this.array[this.index] === 10
   }
+  strikeScore() {
+
+  }
 }

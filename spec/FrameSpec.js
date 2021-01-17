@@ -18,6 +18,20 @@ describe("Frame", () => {
     })
   });
 
+  describe("check input", () => {
+    it("should accept a positive integer between 0 and 10 as input", () => {
+      expect(() => {
+        frame.checkInput(1);
+      }).not.toThrowError("Invalid input");
+    })
+
+    it("should throw an error otherwise", () => {
+      expect(() => {
+        frame.checkInput("string");
+      }).toThrowError("Invalid input");
+    });
+  })
+
   describe("pinBoard", () => {
 
     it("should be updated with each roll", () => {

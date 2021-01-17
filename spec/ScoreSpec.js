@@ -19,11 +19,11 @@ describe('Score', () => {
     })
   })
 
-  describe("Total Score", () => {
-    it("should calculate the total score", () => {
-      let frameScores = [1,1,1,1,1]
-      expect(score.calculateTotalScore(frameScores)).toEqual(5);
-    })
-  })
+  // describe("Total Score", () => {
+  //   it("should calculate the total score", () => {
+  //     let frameScores = [1,1,1,1,1]
+  //     expect(score.calculateTotalScore(frameScores)).toEqual(5);
+  //   })
+  // })
 
 })

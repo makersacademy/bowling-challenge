@@ -5,7 +5,6 @@ class Game {
   constructor(){
     this.frameScores = [];
     this.frames = [];
-    this.score = new Score();
   }
 
   updateFramesArray(frame){
@@ -34,7 +33,21 @@ class Game {
     };
   };
 
-  checkPreviousFrame(frame) {
+  updatePreviousScore(frame) {
+    let finalScore = this._calculateFinalScore(frame);
+
+    let currentScore = this._calculateCurrentScore(frame);
+
+    if (this._checkPreviousFrame(frame) === "strike" || 
+        this._checkPreviousFrame(frame) === "spare") {
+      
+      this.frameScores[frame - 1] = finalScore;
+      this.updateFrameScores(finalScore + currentScore);
+    }
+
+  };
+
+  _checkPreviousFrame(frame) {
     let previousFrame = this.frames[frame - 1];
     if (this.strike(previousFrame)) {
       return "strike";
@@ -43,34 +56,19 @@ class Game {
     };
   };
 
-  calculateCurrentScore(frame) {
+  _calculateCurrentScore(frame) {
     return this.frames[frame].reduce((a,b) => a + b, 0)
   }
 
-  calculateFinalScore(frame) {
+  _calculateFinalScore(frame) {
     let extraScore;
     let previousScore = this.frameScores[frame-1];
 
-    if (this.checkPreviousFrame(frame) === "strike") {
-      extraScore = this.calculateCurrentScore(frame);
-    } else if (this.checkPreviousFrame(frame) === "spare") {
+    if (this._checkPreviousFrame(frame) === "strike") {
+      extraScore = this._calculateCurrentScore(frame);
+    } else if (this._checkPreviousFrame(frame) === "spare") {
       extraScore = this.frames[frame][0];
     }
     return extraScore + previousScore;
   }
-
-  updatePreviousScore(frame) {
-    let finalScore = this.calculateFinalScore(frame);
-
-    let currentScore = this.calculateCurrentScore(frame);
-
-    if (this.checkPreviousFrame(frame) === "strike" || 
-        this.checkPreviousFrame(frame) === "spare") {
-      
-      this.frameScores[frame - 1] = finalScore;
-      this.updateFrameScores(finalScore + currentScore);
-    }
-
-  };
-
 }

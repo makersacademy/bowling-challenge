@@ -90,14 +90,21 @@ describe("Game", () => {
 
     it("should return true if the previous frame was a strike", () => {
       game.frames = [[10], [1,2]];
-      expect(game.checkPreviousFrame(1)).toEqual("strike");
+      expect(game._checkPreviousFrame(1)).toEqual("strike");
     });
 
     it("should return true if the previous frame was a spare", () => {
       game.frames = [[5,5], [1,2]];
-      expect(game.checkPreviousFrame(1)).toEqual("spare");
+      expect(game._checkPreviousFrame(1)).toEqual("spare");
     });
     
+  })
+
+  describe("calculate current score", () => {
+    it("should calculate the sum of the current frame", () => {
+      game.frames = [[1,4],[2,5]]
+      expect(game._calculateCurrentScore(1)).toEqual(7);
+    })
   })
 
   describe("updating previous game score in case of strike/spare", () => {
@@ -122,7 +129,7 @@ describe("Game", () => {
     it("should calculate the final score for a strike", () => {
       game.frames = [[10],[5,4]];
       game.frameScores = [10]
-      expect(game.calculateFinalScore(1)).toEqual(19);
+      expect(game._calculateFinalScore(1)).toEqual(19);
     });
   })
 

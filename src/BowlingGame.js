@@ -9,7 +9,7 @@ class BowlingGame {
   }
   score() {
     for (var i = 1; i <= 10; i++) {
-      if (this.isSpare())
+      if (this.array[this.index] + this.array[this.index + 1] === 10)
         this.result += this.array[this.index] + this.array[this.index + 1] + this.array[this.index + 2]
       else
         this.result += this.array[this.index] + this.array[this.index + 1]
@@ -18,6 +18,6 @@ class BowlingGame {
     return this.result
   }
   isSpare(index) {
-    return this.array[this.index] + this.array[this.index + 1] === 10
+
   }
 }

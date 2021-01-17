@@ -29,7 +29,14 @@ describe("Bowling Game", () => {
             expect(game.array.length).toEqual(20)
             expect(game.score()).toEqual(20)
         })
-
+        it("rolls a spare", () => {
+            game.roll(5)
+            game.roll(5)
+            game.roll(3)
+            for (var i = 1; i <= 17; i++)
+                game.roll(0)
+            expect(game.score()).toEqual(16)
+        })
     })
     describe("isSpare()", () => {
         it("is been defined", () => {
@@ -41,13 +48,6 @@ describe("Bowling Game", () => {
             expect(game.isSpare).toHaveBeenCalled()
             expect(game.isSpare).toHaveBeenCalledWith("index")
         })
-        it("rolls a spare", () => {
-            game.roll(5)
-            game.roll(5)
-            game.roll(3)
-            for (var i = 1; i <= 17; i++)
-                game.roll(0)
-            expect(game.score()).toEqual(16)
-        })
+
     })
 })

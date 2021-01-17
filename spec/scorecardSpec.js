@@ -45,4 +45,43 @@ describe('Scorecard', function(){
       expect(scorecard.strikesSpares()[0]).toEqual('spare')
     })
   })
+
+  describe('applyBonus', function(){
+    it('adds the correct bonus points to a strike frame', function(){
+      scorecard.inputRoll(10)
+      scorecard.inputRoll(1)
+      scorecard.inputRoll(1)
+      expect(scorecard.frameScores()[0]).toEqual(12)
+    })
+
+    it('adds the correct bonus points to a spare frame', function(){
+      scorecard.inputRoll(9)
+      scorecard.inputRoll(1)
+      scorecard.inputRoll(1)
+      scorecard.inputRoll(1)
+      expect(scorecard.frameScores()[0]).toEqual(11)
+    })
+
+    it('accounts for doubles', function(){
+      scorecard.inputRoll(10)
+      scorecard.inputRoll(10)
+      scorecard.inputRoll(9)
+      scorecard.inputRoll(0)
+      expect(scorecard.frameScores()[0]).toEqual(29)
+      expect(scorecard.frameScores()[1]).toEqual(19)
+      expect(scorecard.frameScores()[2]).toEqual(9)
+    })
+
+    it('accounts for turkeys', function(){
+      scorecard.inputRoll(10)
+      scorecard.inputRoll(10)
+      scorecard.inputRoll(10)
+      scorecard.inputRoll(9)
+      scorecard.inputRoll(0)
+      expect(scorecard.frameScores()[0]).toEqual(30)
+      expect(scorecard.frameScores()[1]).toEqual(29)
+      expect(scorecard.frameScores()[2]).toEqual(19)
+      expect(scorecard.frameScores()[3]).toEqual(9)
+    })
+  })
 })

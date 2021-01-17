@@ -15,13 +15,34 @@ class Scorecard {
     this._roll++
     if(this._isFrameComplete()) {
       this.calculateFrame()
-      this._frame++
+      this.newFrame()
     }
   };
 
   calculateFrame() {
     this._frameScores.push(this.sum(this._pinsKnocked[this._frame]))
     this.strikeOrSpare()
+    this.applyBonus()
+  }
+
+  applyBonus() {
+    if(this._strikesSpares[this._frame -1] === "strike" && this._strikesSpares[this._frame -2] === "strike"){
+      this._frameScores[this._frame -1] += this.sum(this._pinsKnocked[this._frame])
+      this._frameScores[this._frame -2] += this._pinsKnocked[this._frame][0]
+    }
+    else if(this._strikesSpares[this._frame -1] === "strike") {
+      this._frameScores[this._frame -1] += this.sum(this._pinsKnocked[this._frame])
+    }
+    else if(this._strikesSpares[this._frame -1] === "spare") {
+      this._frameScores[this._frame -1] += this._pinsKnocked[this._frame][0]
+    }
+  }
+
+  newFrame() {
+    this._frame++
+    if(this._frame < 10) {
+      this._roll = 0
+    }
   }
 
   strikeOrSpare() {

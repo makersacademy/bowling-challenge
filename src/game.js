@@ -8,57 +8,57 @@ class Game {
   }
 
 
-  play(frame) {
+  play(currentFrame) {
     this.round += 1;
-    this._checkPreviousFrame(frame);
+    this._checkPreviousFrame(currentFrame);
     if (this.round < 10) {
-      this._calculateStrike(frame);
-      this._calculateSpare(frame);
-      this.frames.push(frame);
+      this._calculateStrike(currentFrame);
+      this._calculateSpare(currentFrame);
+      this.frames.push(currentFrame);
       this._calculateScore();
     } else if (this.round == 10) {
-      this.checkLastFrame(frame);
+      this.checkLastFrame(currentFrame);
     } else {
       throw new TypeError('You cannot play more than 10 frames');
     }
   }
 
 
-  checkLastFrame(frame) {
+  checkLastFrame(currentFrame) {
     // # Roll 1 + Roll 2 < 10
-    if (frame.frameScore < 10) {
-      this.frames.push(frame);
+    if (currentFrame.frameScore < 10) {
+      this.frames.push(currentFrame);
       this._calculateScore;
       return;
     } // #  Strike at Roll 1 or Spare
-    if ((frame.roll1 == 10) || (frame.frameScore == 10)) {
-      frame.frameScore += frame.roll3;
-      this.frames.push(frame);
+    if ((currentFrame.roll1 == 10) || (currentFrame.frameScore == 10)) {
+      currentFrame.frameScore += currentFrame.roll3;
+      this.frames.push(currentFrame);
       this._calculateScore;
       return;
     }
   }
 
-  _checkPreviousFrame(frame) {
+  _checkPreviousFrame(currentFrame) {
     if (this.isStrike == true) {
-      let previousFrame = this.frames[this.frames.length - 1];
-      previousFrame.frameScore += (frame.roll1 + frame.roll2);
+      const previousFrame = this.frames[this.frames.length - 1];
+      previousFrame.frameScore += (currentFrame.roll1 + currentFrame.roll2);
     } else if (this.isSpare == true) {
-      let previousFrame = this.frames[this.frames.length - 1];
-      previousFrame.frameScore += frame.roll1;
+      const previousFrame = this.frames[this.frames.length - 1];
+      previousFrame.frameScore += currentFrame.roll1;
     }
   }
 
-  _calculateStrike(frame) {
-    if (frame.roll1 == 10) {
+  _calculateStrike(currentFrame) {
+    if (currentFrame.roll1 == 10) {
       this.isStrike = true;
-    }else{
+    } else {
       this.isStrike = false;
     }
   }
 
-  _calculateSpare(frame) {
-    if ((frame.frameScore == 10) && (frame.roll1 < 10)) {
+  _calculateSpare(currentFrame) {
+    if ((currentFrame.frameScore == 10) && (currentFrame.roll1 < 10)) {
       this.isSpare = true;
     } else {
       this.isSpare = false;
@@ -66,6 +66,6 @@ class Game {
   }
 
   _calculateScore() {
-    this.score = this.frames.reduce((sum, frame) => sum + frame.frameScore, 0)
+    this.score = this.frames.reduce((sum, frame) => sum + frame.frameScore, 0);
   }
 }

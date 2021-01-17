@@ -1,0 +1,48 @@
+body  {
+font-family: "Arial Black", Gadget, sans-serif;
+background-color: rgb(236, 212, 174);
+margin-top: 400px;
+max-width: 500px;
+margin: auto;
+
+}
+
+#bowling-game {
+}
+h1 {   font-size: 30px;
+    position: relative;
+    color: rgb(226, 154, 96);
+    text-align: center;
+    padding: 1em 2em;
+    
+}
+table {
+    padding: 20px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: 20px;
+    border-spacing: 0.5em;
+    border-collapse: collapse;
+}
+th, td {
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    padding: 8px;
+  }
+
+.btn {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-right: 80px;
+  margin-left: 80px;
+
+  }
+#score {
+
+   text-align: center;
+}
+
+#score_game {
+    margin-top: 20px;
+    text-align: center;
+}

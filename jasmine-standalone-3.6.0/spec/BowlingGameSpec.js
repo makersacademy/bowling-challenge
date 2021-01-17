@@ -152,6 +152,47 @@ describe("BowlingGame", function() {
     it("will throw an error if you're not entitled to a bonus roll", function() {
       spyOn(bowlingGame,'areBonusRollsNeeded').and.returnValue(false);
       expect(function() { bowlingGame.addFinalBonusScores(6, 3); }).toThrowError("You are not entitled to a bonus roll")
-    })
+    });
   });
+
+// describe("isPreviousFrameSpare", function() {
+//   it("will return true if previous roll was a spare", function() {
+//     bowlingGame.playFrame(4, 6);
+//     bowlingGame.playFrame(3, 4);
+//     expect(bowlingGame._isPreviousFrameSpare()).toEqual(true);
+//     // maybe use spies with this method later on when testing adding a bonus, same with below tests in describe block
+//   });
+//
+//   it("will return false if previous roll was neither spare nor strike", function() {
+//     bowlingGame.playFrame(4, 3);
+//     bowlingGame.playFrame(3, 4);
+//     expect(bowlingGame._isPreviousFrameSpare()).toEqual(false);
+//   });
+//
+//   it("will return false if previous roll was a strike", function() {
+//     bowlingGame.playFrame(10);
+//     bowlingGame.playFrame(3, 4);
+//     expect(bowlingGame._isPreviousFrameSpare()).toEqual(false);
+//   });
+// });
+//
+// describe("isPreviousFrameStrike", function() {
+//   it("will return true if previous roll was a strike", function() {
+//     bowlingGame.playFrame(10);
+//     bowlingGame.playFrame(3, 4);
+//     expect(bowlingGame._isPreviousFrameStrike()).toEqual(true);
+//   });
+//
+//   it("will return false if previous roll was a spare", function() {
+//     bowlingGame.playFrame(5, 5);
+//     bowlingGame.playFrame(3, 4);
+//     expect(bowlingGame._isPreviousFrameStrike()).toEqual(false);
+//   });
+//
+//   it("will return false if previous roll neither spare nor strike", function() {
+//     bowlingGame.playFrame(5, 2);
+//     bowlingGame.playFrame(3, 4);
+//     expect(bowlingGame._isPreviousFrameStrike()).toEqual(false);
+//   });
+// });
 });

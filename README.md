@@ -4,11 +4,11 @@ Week 6 - Bowling Challenge Javascript
 
 ## Functionality Applied
 ### Logic
-* Add scores (up to two for each frame for frames one to nine) - If a STRIKE and no second role applied, automatically defaults to 0 for second role ``` addScores(first roll, second roll) ```.
+* Add scores (up to two for each frame for frames one to nine) - If a STRIKE and no second role applied, automatically defaults to 0 for second role ``` addScores(first roll, second roll) ```. 
 * Add scores for the tenth frame (up to three rolls) to take into account for a bonus roll if needed (if not it defaults to 0) ``` tenthFrame() ```.
-* Display total score at any time by calling ``` getCurrentScore() ```.
-* Display the current frame by calling ``` getCurrentFrame() ```.
-* Call ``` spareLogic() ``` or ``` strikeLogic() ``` to check the previous frame to see whether it is a STRIKE or a SPARE and apply the correct bonus points as appropriate.
+* Display total score at any time by calling ``` getCurrentScore() ```.  
+* Display the current frame by calling ``` getCurrentFrame() ```.   
+* Call ``` spareLogic() ``` or ``` strikeLogic() ``` to check the previous frame to see whether it is a STRIKE or a SPARE and apply the correct bonus points as appropriate.  
 * Call ``` isPerfectGame() ``` or ``` isGutterGame() ``` to check if your game is a "gutter game" or a "perfect game". It will notify the player if they bowl or do not bowl either option with a message.
 
 ### Tech Stack
@@ -17,6 +17,10 @@ Week 6 - Bowling Challenge Javascript
 * HTML
 * CSS
 * ESLint
+
+## Next Steps
+
+* Apply JQuery to the HTML to link in the logic with the number inputs and click events.
 
 =========================================================
 ## The Task

@@ -32,13 +32,8 @@ class Scorecard{
   }
 
   strikeBonus(currRoll1, currRoll2, nextRoll1, nextRoll2) {
-    if (this.isStrike(currRoll1, currRoll2, nextRoll1, nextRoll2)) {
-      return (nextRoll1 + nextRoll2)
-    } else if (this.isSpare(currRoll1, currRoll2, nextRoll1, nextRoll2)) {
-      return nextRoll1
-    } else {
-      return 0
-    }
+    if (this.isStrike(currRoll1, currRoll2, nextRoll1, nextRoll2)) return (nextRoll1 + nextRoll2)
+    return (this.isSpare(currRoll1, currRoll2, nextRoll1, nextRoll2)) ? nextRoll1 : 0
   }
 
   currentAndNextRolls(frame) {

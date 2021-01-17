@@ -45,4 +45,23 @@ describe('Game', function(){
     game.spareIdentifier(6,4)
     expect(game.spare).toEqual(true);
   });
+
+  it('plays a frame correctly for a strike', function(){
+    game.playAFrame(10,0)
+    expect(game.totalScore).toEqual(10);
+    expect(game.strike).toEqual(true);
+  });
+
+  it('plays a frame correctly for a spare', function(){
+    game.playAFrame(5,5)
+    expect(game.totalScore).toEqual(10);
+    expect(game.strike).toEqual(false);
+    expect(game.spare).toEqual(true);
+  });
+
+  it('plays a frame correctly', function(){
+    game.playAFrame(3,5)
+    expect(game.totalScore).toEqual(8);
+    expect(game.strike).toEqual(false);
+  });
 });

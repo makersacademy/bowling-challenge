@@ -1,0 +1,53 @@
+body {
+  background-color: lightgoldenrodyellow;
+}
+
+.frame_results {
+  padding: 20px;
+  height: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.frame {
+  background-color: ivory;
+  border: dashed black 2px;
+  width: 9%;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.roll1 {
+  border-top: dashed black 1px;
+  border-bottom: dashed black 1px;
+  border-right: dashed black 1px;
+  width: 49%;
+  float: left;
+  height: 70px;
+}
+
+.roll2 {
+  border-top: dashed black 1px;
+  border-bottom: dashed black 1px;
+  width: 49%;
+  float: right;
+  height: 70px;
+}
+
+.frame_score {
+  padding-top: 85%;
+  font-size: 20px;
+}
+
+.overall_score {
+  float: right;
+}
+
+.User_Entries {
+  padding: 20px;
+  display: flex;
+  width: 20%;
+  justify-content: space-between;
+}

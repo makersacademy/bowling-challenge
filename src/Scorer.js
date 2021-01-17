@@ -30,7 +30,7 @@ class Scorer {
   }
 
   _spareUpdateNeeded() {
-    if (this.frames.length > 0) {
+    if (this.updateNeeded() && this.frames.length > 0) {
       return this._lastFrame()._isaSpare();
     }
   }
@@ -53,10 +53,10 @@ class Scorer {
   }
 
   total() {
-    return this.scores.reduce((a, b) => a + b );
+    return this.scores.reduce((a, b) => a + b, 0);
   }
 
-  _sparebonus(pins) {
+  _spareBonus(pins) {
     this.scores.push(10 + pins);
   }
 

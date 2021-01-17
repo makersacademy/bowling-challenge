@@ -91,7 +91,6 @@ describe ('bowling', function() {
     it('awards 30, 30 if 4 strikes in row', function() {
       for (let i = 0; i < 4; i++) {
         game.roll(10);
-        console.log(`roll ${i}, scores are ${game.scorer.scores}`)
       }
       expect(game.scorer.scores).toEqual([30, 30]);
     });

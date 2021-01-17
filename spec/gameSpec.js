@@ -10,7 +10,7 @@ describe ('game', function() {
     it('returns the total score', function() {
       game.roll(1);
       game.roll(2);
-      expect(game.gameover()).toEqual(game.scorer.total())
+      expect(game.gameover()).toEqual(3)
     });
   });
 
@@ -44,5 +44,56 @@ describe ('game', function() {
       expect(game.scorer.scores).toEqual([8])
     });
   });
+
+  describe('frameCount', function() {
+    it('returns 1 for first frame', function() {
+      game.roll(5);
+      expect(game.frameCount()).toBe(1);
+    });
+
+    it('returns 5 for start of 5th frame', function() {
+      for (let i = 0; i < 4; i++) {
+        game.roll(10);
+      }
+      expect(game.frameCount()).toBe(5);
+    })
+  });
+
+  describe('rollCount', function() {
+    it('returns 1 for first roll of frame', function() {
+      expect(game.rollCount()).toEqual(1);
+    });
+    it('returns 2 for second roll of frame', function() {
+      game.roll(3);
+      expect(game.rollCount()).toEqual(2);
+    })
+  });
+
+  describe('_isAtStart', function() {
+    it('returns true until first frame is complete', function() {
+      game.roll(3);
+      expect(game._isAtStart()).toBe(true);
+    });
+
+    it('returns false once first frame complete', function() {
+      game.roll(10);
+      expect(game._isAtStart()).toBe(false);
+    })
+  })
+
+  describe('scoreCount', function() {
+    it('returns 1 when first frame is finished', function() {
+      game.roll(3);
+      game.roll(5);
+      expect(game.scoreCount()).toEqual(1);
+    });
+
+    it('returns 1 when 3 strikes are rolled', function() {
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      expect(game.scoreCount()).toEqual(1);
+    });
+  })
 
 });

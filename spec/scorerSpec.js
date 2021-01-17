@@ -147,15 +147,15 @@ describe ('Scorer', function() {
 
   describe('total', function() {
     it('returns total of all scores', function() {
-      scorer.scores = [3, 7]
-      expect(scorer.total()).toEqual(10)
+      scorer.scores = [3, 7, 17]
+      expect(scorer.total()).toEqual(27)
     });
   });
 
-  describe('_sparebonus', function() {
+  describe('_spareBonus', function() {
     it('calculates bonus of spare as first roll of next frame', function() {
       scorer.addFrame(spare);
-      scorer._sparebonus(4);
+      scorer._spareBonus(4);
       expect(scorer.scores[0]).toEqual(14);
     });
   });

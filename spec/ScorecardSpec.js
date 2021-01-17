@@ -25,4 +25,19 @@ describe('Scorecard', function() {
 
     expect(scorecard.getFrames()).toEqual([[3, 4], [2, 5]])
   });
+
+  it('adds points to total once frame is complete', function() {
+    scorecard.roll(3)
+    scorecard.roll(4)
+    scorecard.roll(2)
+    scorecard.roll(5)
+
+    expect(scorecard.getTotal()).toEqual(14)
+  });
+
+  it('saves strike in frame alone', function() {
+    scorecard.roll(10)
+
+    expect(scorecard.getFrames()).toEqual([[10]])
+  })
 })

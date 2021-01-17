@@ -16,7 +16,7 @@ describe("Bowling Game", () => {
         it("can add a roll to the rollStorage", () => {
             for (var i = 1; i <= 20; i++)
                 game.roll(0)
-            expect(game.array.length).toEqual(20)
+            expect(game.frame.length).toEqual(20)
         })
     })
     describe("score()", () => {
@@ -26,7 +26,7 @@ describe("Bowling Game", () => {
         it("gets 20 when roll all ones", () => {
             for (var i = 1; i <= 20; i++)
                 game.roll(1)
-            expect(game.array.length).toEqual(20)
+            expect(game.frame.length).toEqual(20)
             expect(game.score()).toEqual(20)
         })
         it("a perfect game", () => {
@@ -39,11 +39,11 @@ describe("Bowling Game", () => {
         it("is been defined", () => {
             expect(game.isSpare).toBeDefined()
         })
-        it("has an index as an argument", () => {
+        it("has an frm_indx as an argument", () => {
             spyOn(game, "isSpare")
-            game.isSpare("index")
+            game.isSpare("frm_indx")
             expect(game.isSpare).toHaveBeenCalled()
-            expect(game.isSpare).toHaveBeenCalledWith("index")
+            expect(game.isSpare).toHaveBeenCalledWith("frm_indx")
         })
         it("rolls a spare", () => {
             game.roll(5)
@@ -63,11 +63,11 @@ describe("Bowling Game", () => {
         it("is been defined", () => {
             expect(game.isStrike).toBeDefined()
         })
-        it("has an index as an argument", () => {
+        it("has an frm_indx as an argument", () => {
             spyOn(game, "isStrike")
-            game.isStrike("index")
+            game.isStrike("frm_indx")
             expect(game.isStrike).toHaveBeenCalled()
-            expect(game.isStrike).toHaveBeenCalledWith("index")
+            expect(game.isStrike).toHaveBeenCalledWith("frm_indx")
         })
         it("true", () => {
             game.roll(10)
@@ -82,33 +82,33 @@ describe("Bowling Game", () => {
         it("is been defined", () => {
             expect(game.spareScore).toBeDefined()
         })
-        it("has an index as an argument", () => {
+        it("has an frm_indx as an argument", () => {
             spyOn(game, "spareScore")
-            game.spareScore("index")
+            game.spareScore("frm_indx")
             expect(game.spareScore).toHaveBeenCalled()
-            expect(game.spareScore).toHaveBeenCalledWith("index")
+            expect(game.spareScore).toHaveBeenCalledWith("frm_indx")
         })
     })
     describe("strikeScore()", () => {
         it("is been defined", () => {
             expect(game.strikeScore).toBeDefined()
         })
-        it("has an index as an argument", () => {
+        it("has an frm_indx as an argument", () => {
             spyOn(game, "strikeScore")
-            game.strikeScore("index")
+            game.strikeScore("frm_indx")
             expect(game.strikeScore).toHaveBeenCalled()
-            expect(game.strikeScore).toHaveBeenCalledWith("index")
+            expect(game.strikeScore).toHaveBeenCalledWith("frm_indx")
         })
     })
     describe("frameScore()", () => {
         it("is been defined", () => {
             expect(game.frameScore).toBeDefined()
         })
-        it("has an index as an argument", () => {
+        it("has an frm_indx as an argument", () => {
             spyOn(game, "frameScore")
-            game.frameScore("index")
+            game.frameScore("frm_indx")
             expect(game.frameScore).toHaveBeenCalled()
-            expect(game.frameScore).toHaveBeenCalledWith("index")
+            expect(game.frameScore).toHaveBeenCalledWith("frm_indx")
         })
     })
 

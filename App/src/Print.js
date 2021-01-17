@@ -7,8 +7,6 @@ class Print{
 
   output(scorecard, totalscore, turn) {
     let outputmessage = []
-    let playertotal = []
-    let sth = []
     let total = `Your score = ${totalscore}`
     Object.entries(scorecard).forEach(entry => {
     const [key, value] = entry

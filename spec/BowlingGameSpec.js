@@ -53,6 +53,11 @@ describe("Bowling Game", () => {
                 game.roll(0)
             expect(game.score()).toEqual(16)
         })
+        it("true", () => {
+            for (var i = 1; i <= 21; i++)
+                game.roll(5)
+            expect(game.score()).toEqual(150)
+        })
     })
     describe("isStrike()", () => {
         it("is been defined", () => {

@@ -22,8 +22,8 @@ class Scorecard{
     return (currRoll1 === 10 || currRoll2 === 10) && !isNaN(nextRoll1 && nextRoll2)
   };
 
-  isSpare(currRoll1, currRoll2) {
-    return (currRoll1 + currRoll2) === 10
+  isSpare(currRoll1, currRoll2, nextRoll1, nextRoll2) {
+    return (currRoll1 + currRoll2 === 10)  && !isNaN(nextRoll1)
   };
 
   tenthFrameBonus(frame) {
@@ -44,7 +44,7 @@ class Scorecard{
     score += currRoll1 + currRoll2
     if (this.isStrike(currRoll1, currRoll2, nextRoll1, nextRoll2)) {
       score += nextRoll1 + nextRoll2
-    } else if (this.isSpare(currRoll1, currRoll2) && !isNaN(nextRoll1)) {
+    } else if (this.isSpare(currRoll1, currRoll2, nextRoll1, nextRoll2)) {
       score += nextRoll1
     }
     frame -= 1;

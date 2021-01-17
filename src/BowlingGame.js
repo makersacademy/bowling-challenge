@@ -20,4 +20,5 @@ class BowlingGame {
   isSpare(index) {
     return this.array[this.index] + this.array[this.index + 1] === 10
   }
+  isStrike(index) {}
 }

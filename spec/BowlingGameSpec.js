@@ -49,4 +49,9 @@ describe("Bowling Game", () => {
             expect(game.score()).toEqual(16)
         })
     })
+    describe("isStrike()", () => {
+        it("is been defined", () => {
+            expect(game.isStrike).toBeDefined()
+        })
+    })
 })

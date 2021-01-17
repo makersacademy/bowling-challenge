@@ -1,12 +1,28 @@
 
-Bowling Challenge
+Week 6 - Bowling Challenge Javascript
 =================
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+## Functionality Applied
+### Logic
+* Add scores (up to two for each frame for frames one to nine) - If a STRIKE and no second role applied, automatically defaults to 0 for second role ``` addScores(first roll, second roll) ```. 
+* Add scores for the tenth frame (up to three rolls) to take into account for a bonus roll if needed (if not it defaults to 0) ``` tenthFrame() ```.
+* Display total score at any time by calling ``` getCurrentScore() ```.  
+* Display the current frame by calling ``` getCurrentFrame() ```.   
+* Call ``` spareLogic() ``` or ``` strikeLogic() ``` to check the previous frame to see whether it is a STRIKE or a SPARE and apply the correct bonus points as appropriate.  
+* Call ``` isPerfectGame() ``` or ``` isGutterGame() ``` to check if your game is a "gutter game" or a "perfect game". It will notify the player if they bowl or do not bowl either option with a message.
 
+### Tech Stack
+* JavaScript
+* TypeScript
+* HTML
+* CSS
+* ESLint
+
+## Next Steps
+
+* Apply JQuery to the HTML to link in the logic with the number inputs and click events.
+
+=========================================================
 ## The Task
 
 **THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
@@ -14,14 +30,6 @@ Bowling Challenge
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
 
 ### Optional Extras
 
@@ -65,11 +73,3 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

@@ -8,6 +8,9 @@ class BowlingGame {
   }
 
   playFrame(roll1, roll2 = 'no throw') {
+    if (this.frameRolls.length >= 10) {
+      throw new Error(`You have already played ${this.INDEX_OF_FINAL_FRAME + 1} frames`)
+    }
     this._addRolls(roll1, roll2);
     this._addBonusScores();
   }

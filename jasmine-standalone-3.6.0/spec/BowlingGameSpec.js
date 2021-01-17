@@ -71,6 +71,13 @@ describe("BowlingGame", function() {
       bowlingGame.playFrame(5, 2);
       expect(bowlingGame.getGameScore()).not.toEqual(49);
     });
+
+    it("throws an error if 10 frames have already been played", function() {
+      for (var i = 0; i < 10; i++) {
+        bowlingGame.playFrame(6, 3);
+      }
+      expect(function() { bowlingGame.playFrame(6, 3); }).toThrowError(`You have already played ${bowlingGame.INDEX_OF_FINAL_FRAME + 1} frames`)
+    })
   });
 
   describe("areBonusRollsNeeded", function() {

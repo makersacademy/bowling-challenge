@@ -5,6 +5,7 @@ class Game {
     this.scorer = new Scorer();
   }
 
+  // User adds a roll to their scorecard
   roll(pins) {
     if (pins < 0 || pins > 10) {
       throw "Please enter number between 0 and 10";
@@ -28,10 +29,12 @@ class Game {
     return this.scorer.total();
   }
 
+  // this return the frame number currently being played
   frameCount() {
     return this.scorer.frames.length + 1
   }
 
+  // identifies if on 1st or 2nd roll of frame. Used in the interface.
   rollCount() {
     if (this.currentFrame.pins.length === 0) {
       return 1;
@@ -40,16 +43,17 @@ class Game {
     }
   }
 
+  // helps to identify when final frame is played & gameover
   scoreCount() {
     return this.scorer.scores.length
   }
 
   _isAtStart() {
-    return this.scorer.frames.length === 0
+    return this.frameCount() === 1
   }
 
   _isOver() {
-    return this.scorer.scores.length >= 10
+    return this.scoreCount() >= 10
   }
 
 }

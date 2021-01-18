@@ -41,16 +41,16 @@ class BowlingGame {
       throw new Error("You are not entitled to a bonus roll");
     }
     if (this._getFrameTotal(this.frameRolls[this.INDEX_OF_FINAL_FRAME]) === this.STRIKE_VALUE && this.frameRolls[this.INDEX_OF_FINAL_FRAME].length === 2) {
-      // if your 10th frame is a spare
+      // if your 10th frame is a spare, take 1 bonus roll and add it to frame total of final frame
       this.frameRolls[this.INDEX_OF_FINAL_FRAME].push(roll1);
       this.frameScores[this.INDEX_OF_FINAL_FRAME] += roll1;
     } else if (this._getFrameTotal(this.frameRolls[this.INDEX_OF_FINAL_FRAME]) === this.STRIKE_VALUE && this.frameRolls[this.INDEX_OF_FINAL_FRAME].length === 1 && this._getFrameTotal(this.frameRolls[this.INDEX_OF_FINAL_FRAME - 1]) === this.STRIKE_VALUE && this.frameRolls[this.INDEX_OF_FINAL_FRAME - 1].length === 1) {
-      // if your 9th and 10th frames were both strikes
+      // if your 9th and 10th frames were both strikes, take 2 bonus rolls and add the first roll to the total score of the 9th and 10th frames, and second roll to total of 10th frame only.
       this.frameRolls[this.INDEX_OF_FINAL_FRAME].push(roll1, roll2);
       this.frameScores[this.INDEX_OF_FINAL_FRAME] += roll1 + roll2;
       this.frameScores[this.INDEX_OF_FINAL_FRAME - 1] += roll1;
     } else if (this._getFrameTotal(this.frameRolls[this.INDEX_OF_FINAL_FRAME]) === this.STRIKE_VALUE && this.frameRolls[this.INDEX_OF_FINAL_FRAME].length === 1) {
-      // if your 10th frame is a strike
+      // if your 10th frame is a strike, take 2 bonus rolls and add their total to the total score of 10th frame
       this.frameRolls[this.INDEX_OF_FINAL_FRAME].push(roll1, roll2);
       this.frameScores[this.INDEX_OF_FINAL_FRAME] += roll1 + roll2;
     }

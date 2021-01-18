@@ -29,9 +29,9 @@ class Game {
     }
   };
 
-  bonusRoll(frame) {
-    if (this.spare(frame) || this.spare(frame)) {
-      var bonus = prompt("Bonus roll. Enter the number of pins")
+  bonusRoll(frame, bonus) {
+    if (this.strike(frame) || this.spare(frame)) {
+      // var bonus = prompt("Bonus roll. Enter the number of pins")
       this.updateFramesArray(this.frames[this.frames.length - 1], bonus)
     }
   };
@@ -53,9 +53,13 @@ class Game {
     }
   }
 
+  validRoll(pins) {
+    return (roll < 0 ||  roll > 10 || !Number.isInteger(roll))
+  }
+
   roll(frame) {
     var roll = parseInt(prompt("Enter the number of pins down"))
-    if (roll < 0 ||  roll > 10 || !Number.isInteger(roll)) {
+    if (this.validRoll(roll)) {
       throw new Error("Invalid input")
     } else {
       this.updateFramesArray(frame, roll);

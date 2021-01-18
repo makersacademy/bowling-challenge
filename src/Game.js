@@ -38,21 +38,45 @@ class Game {
 
   calculateFrameScore(frame) {
     var frameScore = this.frames[frame].reduce((a,b) => a + b, 0)
+
     if (frame > 0) {
       frameScore += this.frameScores[frame-1]
     }
     this.frameScores.push(frameScore)
+    
   }
 
-  updatePreviousFrame(frame) {
+  previousStrike(frame) {
     if (this.strike(frame-1)) {
       this.frameScores[frame-1] += this.frames[frame][0]
-      this.frameScores[frame-1] += this.frames[frame][1]
-    } else if (this.spare(frame-1)) {
+      if (this.frames[frame].length > 1) {
+        this.frameScores[frame-1] += this.frames[frame][1]
+      }
+    }
+  }
+
+  previousSpare(frame) {
+    if (this.spare(frame-1)) {
       this.frameScores[frame-1] += this.frames[frame][0]
     }
   }
 
+  doubleStrike(frame) {
+    if (frame > 1) {
+      if (this.strike(frame-2) && this.strike(frame-1)) {
+        this.frameScores[frame-2] += this.frames[frame][0];
+        this.frameScores[frame-1] += 10;
+      }
+    }
+  }
+
+  updatePreviousFrame(frame) {
+    this.previousStrike(frame)
+    this.previousSpare(frame)
+    this.doubleStrike(frame)
+  }
+
+  
   validRoll(pins) {
     return (roll < 0 ||  roll > 10 || !Number.isInteger(roll))
   }
@@ -66,8 +90,12 @@ class Game {
     }
   }
 
+  strikeBonus(index) {
+    return this.frames[index + 1] + this.frames[index + 2];
+  }
+
   updateScores(frame) {
-    if (frame > 0 ) {
+    if (frame > 0) {
       this.updatePreviousFrame(frame);
     }
     this.calculateFrameScore(frame);

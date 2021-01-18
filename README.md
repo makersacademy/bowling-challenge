@@ -80,5 +80,5 @@ Reviewers will potentially be using this [code review rubric](docs/review.md).  
 * For variety, I decided to create everything under 1 class as opposed to extracting a frame class last week. On reflection, I feel I would have been better sticking to 2 classes.
 * I wasn't fully sure if I was supposed to be testing "private" methods denoted with an underscore as they're not technically private. I left some in my spec file commented out.
 * Drawback of using 1 class was that I couldn't find many places to practice implementing spies due to fewer dependencies. I used this in testing in my final describe block but am unsure if I have done it properly as I am setting up the correct conditions and then spying so maybe it's pointless.
-* While I didn't implement a userinterface, I was doubling work by having frameRolls and FrameScores in my constructor as I felt that it might have made things easier for me to implement the UI to have the throw values and scores apart.
-* Tried to make a better effort this week to test behaviour more in my tests.
+* I realise I was doubling information by having separate properties for the frame throws and then the frame scores as well. Would like to refacor out the frame scores property and implement another method to calculate this based on frame throws
+* Tried to make a better effort this week to test behaviour and not state.

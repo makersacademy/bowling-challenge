@@ -2,7 +2,10 @@ class Game {
 
   constructor(frame = new Frame()) {
     this.score = 0;
-    this.frames = Array(10).fill(frame);
+    // this.frames = Array(10).fill(frame);
+    // this.frames = [frame, frame, frame, frame, frame, frame, frame, frame, frame, frame];
+    this.frames = [new Frame(), new Frame(), new Frame(), new Frame(), new Frame(), new Frame(), new Frame(), new Frame(), new Frame(), new Frame()];
+
   }
 
   returnFrameScores() {
@@ -21,19 +24,9 @@ class Game {
       }
       while (roll_1 <= 0 || roll_1 > 10);
 
-      console.log("frame 0 before:")
-      console.log(this.frames[i]);
-      console.log("frame 7 before:")
-      console.log(this.frames[7]);
-      console.log("i:")
-      console.log(i)
+      
       this.frames[i].addScore(roll_1);
-      console.log("frame 0 after:")
-      console.log(this.frames[i]);
-      console.log("frame 7 after:")
-      console.log(this.frames[7]);
 
-      console.log(this.frames);
     }
 
   }

@@ -17,6 +17,9 @@ describe('Game', () => {
     expect(game.frames[0]).toEqual(exampleFrame);
     expect(game.frames[7]).toEqual(exampleFrame);
   });
+  it('is initialized 10 distinct frame instances', () => {
+    expect(game.frames[0]).not.toBe(game.frames[1]);
+  });
 
   describe('returnFrameScores', () => {
     it('prints out the score for all 10 frames', () => {

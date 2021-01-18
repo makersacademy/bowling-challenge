@@ -96,27 +96,27 @@ window.onload = (event) => {
     if (round >= 10) {
       return; 
     }
-    if (score === 10) {
+    if (score === 10) { //if it is a strike
       game.frames[round] = [score];
       game.updateScores(round);
-      roll = 0;
-      round++;
-    } else if (game.frames[round] === undefined) {
-      game.frames[round] = [score];
-      roll++;
+      roll = 0; // skip the next roll
+      round++; //go to the next round
+    } else if (game.frames[round] === undefined) { //if it is the first roll of the frame
+      game.frames[round] = [score]; //assign the new frame
+      roll++; // go to the second roll
     } else {
-      if (game.frames[round][0] + score > 10) {
-        alert("Invalid input. Try again");
+      if (game.frames[round][0] + score > 10) { // error if the second roll is too big
+        alert("Invalid pin. Please try again");
         return;
       } else {
-        game.frames[round].push(score);
-        game.updateScores(round);
+        game.frames[round].push(score); // update the second roll
+        game.updateScores(round); // update the frame score
         roll++;
-        round++;
+        round++; // go to the next round
       }
     }
     if (roll >= 2) {
-      roll = 0;
+      roll = 0; // reset the roll to 0
     }
 
   }

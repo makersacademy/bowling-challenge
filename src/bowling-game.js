@@ -6,8 +6,11 @@ class Game {
        this.totalScore = 0;
        this.spare = false;
        this.strike = false;
+       this.doubleStrike = false
        this.currentFrame = 1;
     };
+
+    // started to add in a doubleStrike method to deal with multiple strikes in a row and ran out of time
 
     calculateFrameScore(roll_1, roll_2) {
       if(this.strike === true) {
@@ -22,8 +25,12 @@ class Game {
     };
 
     strikeIdentifier(roll_1) {
-      if(roll_1 === 10) {
+      if(roll_1 === 10 && this.strike === false) {
         this.strike = true
+      }
+      else if(roll_1 === 10 && this.strike === true) {
+        this.strike = false
+        this.doubleStrike = true
       }
       else {
         this.strike = false
@@ -65,3 +72,14 @@ class Game {
       this.totalScore += extraBonusPoints
     }
 };
+
+// last bit of ruby code to add:
+// def play_a_game
+// while @current_frame < 11
+//   puts "Frame number: #{@current_frame}"
+//   play_a_frame
+//   @current_frame += 1
+// end
+// puts "Game End"
+// puts "Total score: #{@total_score}"
+// end

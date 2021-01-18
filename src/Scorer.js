@@ -5,8 +5,9 @@ class Scorer {
     this.frames = [];
   }
 
+  // This method adds the frame and sends it to the appropriate scoring method
   addFrame(frame) {
-    if (this.updateNeeded()) {
+    if (this._isUpdateNeeded()) {
       this.updateScores(frame, this.calculate.bind(this));
     } else {
       this.calculate(frame);
@@ -14,6 +15,8 @@ class Scorer {
     this.frames.push(frame);
   }
 
+  // This method updates previous scores that have not yet been entered
+  // ie strikes and scores waiting for bonus rolls
   updateScores(frame, callback) {
     if (this._isConsecutiveStrikeInProgress()) {
       this._consecStrikeBonus(frame);
@@ -21,16 +24,16 @@ class Scorer {
       this._strikeBonus(frame);
     }
     if (callback && typeof(callback) === "function") {
-      callback(frame);
+      callback(frame); // continue to calculate current frame if appropriate
     }
   }
 
-  updateNeeded() {
+  _isUpdateNeeded() {
     return !(this.frames.length === this.scores.length)
   }
 
   _spareUpdateNeeded() {
-    if (this.updateNeeded() && this.frames.length > 0) {
+    if (this._isUpdateNeeded() && this.frames.length > 0) {
       return this._lastFrame()._isaSpare();
     }
   }
@@ -53,13 +56,11 @@ class Scorer {
   }
 
   total() {
-    let scores;
     if (this.scores.length > 10) {
-      scores = this.scores.slice(0, 10);
+      return this.scores.slice(0, 10).reduce((a, b) => a + b, 0);
     } else {
-      scores = this.scores
+      return this.scores.reduce((a, b) => a + b, 0);
     }
-    return scores.reduce((a, b) => a + b, 0);
   }
 
   _spareBonus(pins) {

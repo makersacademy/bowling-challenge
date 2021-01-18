@@ -75,14 +75,14 @@ describe ('Scorer', function() {
     });
   });
 
-  describe('updateNeeded', function() {
+  describe('_isUpdateNeeded', function() {
     it ('returns false if frame length is equal to score length', function() {
-      expect(scorer.updateNeeded()).toBe(false);
+      expect(scorer._isUpdateNeeded()).toBe(false);
     });
 
     it('returns false if frame length is different from score length', function() {
       scorer.frames = [spare]
-      expect(scorer.updateNeeded()).toBe(true);
+      expect(scorer._isUpdateNeeded()).toBe(true);
     });
   });
 

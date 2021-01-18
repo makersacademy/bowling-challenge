@@ -2,8 +2,8 @@ $(document).ready(function() {
   var game = new Game();
 
   $('.User_Roll').change(function() {
-
-    displayPins();
+    let pins = parseInt($('.User_Roll').val());
+    displayPins(pins);
     game.roll(pins);
     frameResults();
     updateTotalScore();
@@ -20,11 +20,12 @@ $(document).ready(function() {
     $('#overall_score').text("");
   })
 
-  function displayPins() {
-    let pins = parseInt($('.User_Roll').val());
+  function displayPins(pins) {
     $(`#f${game.frameCount()}r${game.rollCount()}`).text(pins);
     if (game.rollCount() === 1 && pins === 10) {
       $(`#f${game.frameCount()}r2`).text("X");
+    } else if (game.rollCount() === 2 && parseInt($(`#f${game.frameCount()}r1`).text()) + pins === 10) {
+      $(`#f${game.frameCount()}r2`).text("/");
     }
   }
 

@@ -1,0 +1,56 @@
+body {
+  text-align: center;
+  margin-top: 50px;
+  font-family: 'Pacifico', cursive;
+  color: pink;
+}
+
+h1 {
+  font-size: 50px;
+  color: pink;
+}
+
+img {
+  height: 150px;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table {
+  width: 80%;
+  height: 150px;
+  margin: auto;
+  margin-top: 50px;
+  font-size: 20px;
+  
+}
+
+button {
+  padding: 8px;
+  background-color: pink;
+}
+
+.frame-box {
+  width: 50px;
+  height: 50px;
+}
+
+.score-buttons {
+  margin: 50px;
+}
+
+#total-score {
+  padding: 5px;
+}
+
+#copyright {
+  color: black;
+  font-size: 15px;
+  margin: 80px;
+}
+
+
+

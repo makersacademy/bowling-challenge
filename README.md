@@ -73,3 +73,12 @@ In code review we'll be hoping to see:
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+
+## Reflections
+* I have used basically the same logic as I did in the previous week with a few changes for edge cases I didn't consider last week.
+* While I am satisfied with my logic, I am not super happy at how long some of my conditions are for the counting of score and adding bonus rolls. Tried to see if I could simplify these but I felt that the only way I could do this was to extract a bunch of one-liner boolean returning methods that would only be used once. Not sure if that would be preferrable?
+* For variety, I decided to create everything under 1 class as opposed to extracting a frame class last week. On reflection, I feel I would have been better sticking to 2 classes.
+* I wasn't fully sure if I was supposed to be testing "private" methods denoted with an underscore as they're not technically private. I left some in my spec file commented out.
+* Drawback of using 1 class was that I couldn't find many places to practice implementing spies due to fewer dependencies. I used this in testing in my final describe block but am unsure if I have done it properly as I am setting up the correct conditions and then spying so maybe it's pointless.
+* I realise I was doubling information by having separate properties for the frame throws and then the frame scores as well. Would like to refacor out the frame scores property and implement another method to calculate this based on frame throws
+* Tried to make a better effort this week to test behaviour and not state.

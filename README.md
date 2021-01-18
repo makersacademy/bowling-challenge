@@ -8,7 +8,7 @@ I wanted to get to a point where I could test my understanding of mocking in Jas
 * 2 - Then move on to isolating printScorecard test (and subsequent tests) from the frame class.
 * 3 - Then continue to complete translation of ruby program into JS.
 
-To run:
+### To run:
 - Open SpecRunner.html in the browser
 - Inspect and open the console. Type in the following commands:
 ```

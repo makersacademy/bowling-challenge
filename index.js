@@ -96,7 +96,7 @@ window.onload = (event) => {
     if (round >= 10) {
       return; 
     }
-    if (score === 10) { //if it is a strike
+    if (score === 10 && !game.finalRound(round)) { //if it is a strike
       game.frames[round] = [score];
       game.updateScores(round);
       roll = 0; // skip the next roll
@@ -105,6 +105,10 @@ window.onload = (event) => {
       game.frames[round] = [score]; //assign the new frame
       roll++; // go to the second roll
     } else {
+      // if (game.finalRound(round)) {
+      //   game.frames[round].push(score)
+      //   game.updateScores(round);
+      // }
       if (game.frames[round][0] + score > 10) { // error if the second roll is too big
         alert("Invalid pin. Please try again");
         return;
@@ -115,6 +119,8 @@ window.onload = (event) => {
         round++; // go to the next round
       }
     }
+    console.log(game.frames)
+    console.log(game.frameScores)
     if (roll >= 2) {
       roll = 0; // reset the roll to 0
     }
@@ -145,5 +151,4 @@ window.onload = (event) => {
       document.getElementById("total-score").innerHTML = game.frameScores[game.frameScores.length - 1];
     }
   }
-
 };

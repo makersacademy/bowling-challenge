@@ -7,10 +7,8 @@ $(document).ready(function() {
     game.roll(pins);
     frameResults();
     updateTotalScore();
-    checkgameover();
-    $('.User_Roll option').prop('selected', function(){
-      return this.defaultSelected;
-    })
+    checkGameOver();
+    setUpOptions(pins);
   })
 
   $('#reset').click(function() {
@@ -41,9 +39,21 @@ $(document).ready(function() {
     }
   }
 
-  function checkgameover() {
+  function checkGameOver() {
     if (game._isOver()) {
       $('#gameover').text("Game Over!")
+    }
+  }
+
+  function setUpOptions(pins) {
+    $('.User_Roll option').prop('selected', function(){
+      return this.defaultSelected;
+    })
+    if (game.rollCount() === 1) {
+      for (let i = 10; i > 10 - pins; i--) {
+        $(`select[value=${i}]`).attr('disabled', 'disabled');
+        $(`select[value=${i}]`).addClass("disabled");
+      }
     }
   }
 

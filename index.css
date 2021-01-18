@@ -58,3 +58,9 @@ body {
   background-color: lightblue;
   font-size: 25px;
 }
+
+/* can't seem to get this to change dropdown menu appearance */
+.disabled {
+  opacity: 0.6;
+  background-color: darkgrey;
+}

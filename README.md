@@ -4,6 +4,7 @@ Bowling Challenge
 
 Hosted on Heroku: https://bowling-scorecard-ara.herokuapp.com/
 
+![screenshot](https://github.com/Aracho1/bowling-challenge/blob/master/images/screenshot.png)
 
 To run locally:
 ```

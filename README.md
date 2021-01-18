@@ -1,5 +1,14 @@
-
 Bowling Challenge
+=================
+
+## My Reflection
+
+I was pretty pleased with the progress I made with this in the end (caveat: it is by no means a finished product!).
+
+The interface needs improving with including a '/' for a strike. I'd like to grey out the options that are not possible (eg after a roll of 8, anything greater than 2 should be greyed out).
+
+I'm currently not sure how to 'catch' errors thrown by the backend as I would really like them to be displayed as an alert - something to work on.
+
 =================
 
 * Feel free to use google, your notes, books, etc. but work on your own

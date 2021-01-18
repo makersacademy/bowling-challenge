@@ -96,4 +96,13 @@ describe ('bowling', function() {
     });
   });
 
+  describe('max score', function() {
+    it('awards 300 for all strikes', function() {
+      for (let i = 0; i < 12; i++) {
+        game.roll(10);
+      }
+      expect(game.gameover()).toEqual(300);
+    });
+  });
+
 });

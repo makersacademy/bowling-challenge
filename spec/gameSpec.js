@@ -96,4 +96,13 @@ describe ('game', function() {
     });
   })
 
+  describe('_isOver', function() {
+    it('returns true at end of play', function() {
+      for (i = 0; i < 12; i++) {
+        game.roll(10);
+      }
+      expect(game._isOver()).toBe(true);
+    });
+  });
+
 });

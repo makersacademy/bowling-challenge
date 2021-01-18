@@ -3,6 +3,8 @@ class Scorer {
   constructor() {
     this.scores = [];
     this.frames = [];
+    this.MAXFRAMES = 10;
+    this.ALLPINS = 10;
   }
 
   // This method adds the frame and sends it to the appropriate scoring method
@@ -56,23 +58,23 @@ class Scorer {
   }
 
   total() {
-    if (this.scores.length > 10) {
-      return this.scores.slice(0, 10).reduce((a, b) => a + b, 0);
+    if (this.scores.length > this.MAXFRAMES) {
+      return this.scores.slice(0, this.MAXFRAMES).reduce((a, b) => a + b, 0);
     } else {
       return this.scores.reduce((a, b) => a + b, 0);
     }
   }
 
   _spareBonus(pins) {
-    this.scores.push(10 + pins);
+    this.scores.push(this.ALLPINS + pins);
   }
 
   _strikeBonus(frame) {
-    this.scores.push(10 + frame.result());
+    this.scores.push(this.ALLPINS + frame.result());
   }
 
   _consecStrikeBonus(frame) {
-    this.scores.push(20 + frame.result());
+    this.scores.push(2 * this.ALLPINS + frame.result());
     if (!frame._isaStrike()) {
       this._strikeBonus(frame);
     }

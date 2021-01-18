@@ -3,14 +3,16 @@ class Game {
   constructor() {
     this.currentFrame = new Frame();
     this.scorer = new Scorer();
+    this.MINPINS = 0;
+    this.MAXPINS = 10;
   }
 
   // User adds a roll to their scorecard
   roll(pins) {
-    if (pins < 0 || pins > 10) {
+    if (pins < this.MINPINS || pins > this.MAXPINS) {
       throw "Please enter number between 0 and 10";
-    } else if (this.currentFrame.pins[0] + pins > 10)
-      throw `Please enter number less than ${10 - this.currentFrame.pins[0]}`
+    } else if (this.currentFrame.pins[0] + pins > this.MAXPINS)
+      throw `Please enter number less than ${this.MAXPINS - this.currentFrame.pins[0]}`
     this.currentFrame.add(pins);
     if (this.scorer._spareUpdateNeeded()) {
       this.scorer._spareBonus(pins);
@@ -53,7 +55,7 @@ class Game {
   }
 
   _isOver() {
-    return this.scoreCount() >= 10
+    return this.scoreCount() >= this.scorer.MAXFRAMES
   }
 
 }

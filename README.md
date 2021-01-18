@@ -2,20 +2,27 @@
 Bowling Challenge
 =================
 
-### Objects
-#### Score: Calculates frame and total scores
+Hosted on Heroku: https://bowling-scorecard-ara.herokuapp.com/
 
-#### Frame: updates each frame
-- Determine strike
-- Determine spare
-- Array for storing the two rolls
-- Checking that the two rolls do not exceed 10 pins
 
-#### Game: updates the overall game
-- Store total score
-- Store & update frame scores
-- Determine bonus round
-- Determine gutter game
-- Determine perfect game
+To run locally:
+```
+git clone
+index.html
+```
+To play on the console:
+```
+game = new Game()
+game = play()
+```
+### Approach
+* TDD using Jasmine
+* Used pure Javascript
 
-Jasmine
+### Challenges & to Improve
+* Initially wanted to break down the classes to game, score and frame but had difficulties so everything is in one class (area of improvement)
+* It was challenging to adapt the source code to fit the interface - to keep in mind user interface when starting planning
+* Interface code needs to be cleaned up
+* Inaccurate scores for edge cases, especially in the bonus round
+
+

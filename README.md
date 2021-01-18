@@ -19,7 +19,7 @@ I'd like to grey out the options that are not possible (eg after a roll of 8, an
 
 The final frame does not display correctly on the website at the moment (ie bonus rolls are not visible)
 
-I'm also currently not sure how to 'catch' errors thrown by the backend as I would really like them to be displayed as an alert.
+I haven't implemented errors being displayed as an alert to the user
 
 =================
 

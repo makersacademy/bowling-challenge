@@ -19,6 +19,7 @@ game = play()
 ### Approach
 * TDD using Jasmine
 * Used pure Javascript
+* Managed to host the project on heroku - happy with that!
 
 ### Challenges & to Improve
 * Initially wanted to break down the classes to game, score and frame but had difficulties so everything is in one class (area of improvement)

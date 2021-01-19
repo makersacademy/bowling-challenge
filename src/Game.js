@@ -14,15 +14,15 @@ class Game {
     } else if (this.currentFrame.pins[0] + pins > this.MAXPINS)
       throw `Please enter number less than ${this.MAXPINS - this.currentFrame.pins[0]}`
     this.currentFrame.add(pins);
-    if (this.scorer._spareUpdateNeeded()) {
-      this.scorer._spareBonus(pins);
+    if (this.scorer.spareUpdateNeeded()) {
+      this.scorer.spareBonus(pins);
     }
-    if (this.currentFrame._isComplete()) {
-      this.endAndResetFrame();
+    if (this.currentFrame.isComplete()) {
+      this._endAndResetFrame();
     }
   }
 
-  endAndResetFrame() {
+  _endAndResetFrame() {
     this.scorer.addFrame(this.currentFrame);
     this.currentFrame = new Frame();
   }
@@ -50,11 +50,11 @@ class Game {
     return this.scorer.scores.length
   }
 
-  _isAtStart() {
+  isAtStart() {
     return this.frameCount() === 1
   }
 
-  _isOver() {
+  isOver() {
     return this.scoreCount() >= this.scorer.MAXFRAMES
   }
 

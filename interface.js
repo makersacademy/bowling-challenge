@@ -32,7 +32,7 @@ $(document).ready(function() {
   }
 
   function frameResults() {
-    if (!game._isAtStart()) {
+    if (!game.isAtStart()) {
       for (let i = 0; i < game.scoreCount(); i++) {
         $(`#frame${i + 1}_score`).text(game.scorer.scores[i]);
       }
@@ -40,7 +40,7 @@ $(document).ready(function() {
   }
 
   function checkGameOver() {
-    if (game._isOver()) {
+    if (game.isOver()) {
       $('#gameover').text("Game Over!")
     }
   }

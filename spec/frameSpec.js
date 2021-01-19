@@ -18,12 +18,12 @@ describe ('frame', function() {
     it('returns true after 2 rolls', function() {
       frame.add(4);
       frame.add(3);
-      expect(frame._isComplete()).toBe(true);
+      expect(frame.isComplete()).toBe(true);
     });
 
     it('returns true if strike', function() {
       frame.add(10);
-      expect(frame._isComplete()).toBe(true);
+      expect(frame.isComplete()).toBe(true);
     });
   });
 
@@ -35,42 +35,42 @@ describe ('frame', function() {
     });
   });
 
-  describe('_isaStrike', function() {
+  describe('isaStrike', function() {
     it('returns true if first roll is 10', function() {
       frame.add(10);
-      expect(frame._isaStrike()).toBe(true);
+      expect(frame.isaStrike()).toBe(true);
     });
   });
 
-  describe('_isaSpare', function() {
+  describe('isaSpare', function() {
     it('returns true if 2 rolls sum to 10', function() {
       frame.add(6);
       frame.add(4);
-      expect(frame._isaSpare()).toBe(true);
+      expect(frame.isaSpare()).toBe(true);
     });
 
     it('returns false if strike', function() {
       frame.add(10);
-      expect(frame._isaSpare()).toBe(false);
+      expect(frame.isaSpare()).toBe(false);
     });
   })
 
-  describe('_isNotStrikeOrSpare', function() {
+  describe('isNotStrikeOrSpare', function() {
     it('returns true if frame is not strike or spare', function() {
       frame.add(5);
       frame.add(2);
-      expect(frame._isNotStrikeOrSpare()).toBe(true);
+      expect(frame.isNotStrikeOrSpare()).toBe(true);
     });
 
     it('returns false if last frame is spare', function() {
       frame.add(7);
       frame.add(3);
-      expect(frame._isNotStrikeOrSpare()).toBe(false);
+      expect(frame.isNotStrikeOrSpare()).toBe(false);
     });
 
     it('returns false if last frame is spare', function() {
       frame.add(10);
-      expect(frame._isNotStrikeOrSpare()).toBe(false);
+      expect(frame.isNotStrikeOrSpare()).toBe(false);
     });
   });
 

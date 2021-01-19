@@ -72,12 +72,12 @@ describe ('game', function() {
   describe('_isAtStart', function() {
     it('returns true until first frame is complete', function() {
       game.roll(3);
-      expect(game._isAtStart()).toBe(true);
+      expect(game.isAtStart()).toBe(true);
     });
 
     it('returns false once first frame complete', function() {
       game.roll(10);
-      expect(game._isAtStart()).toBe(false);
+      expect(game.isAtStart()).toBe(false);
     })
   })
 
@@ -101,7 +101,7 @@ describe ('game', function() {
       for (i = 0; i < 12; i++) {
         game.roll(10);
       }
-      expect(game._isOver()).toBe(true);
+      expect(game.isOver()).toBe(true);
     });
   });
 

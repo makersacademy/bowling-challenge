@@ -10,19 +10,19 @@ class Scorer {
   // This method adds the frame and sends it to the appropriate scoring method
   addFrame(frame) {
     if (this._isUpdateNeeded()) {
-      this.updateScores(frame, this.calculate.bind(this));
+      this._updateScores(frame, this._calculate.bind(this));
     } else {
-      this.calculate(frame);
+      this._calculate(frame);
     }
     this.frames.push(frame);
   }
 
   // This method updates previous scores that have not yet been entered
   // ie strikes and scores waiting for bonus rolls
-  updateScores(frame, callback) {
+  _updateScores(frame, callback) {
     if (this._isConsecutiveStrikeInProgress()) {
       this._consecStrikeBonus(frame);
-    } else if (!frame._isaStrike()) {
+    } else if (!frame.isaStrike()) {
       this._strikeBonus(frame);
     }
     if (callback && typeof(callback) === "function") {
@@ -34,9 +34,9 @@ class Scorer {
     return !(this.frames.length === this.scores.length)
   }
 
-  _spareUpdateNeeded() {
+  spareUpdateNeeded() {
     if (this._isUpdateNeeded() && this.frames.length > 0) {
-      return this._lastFrame()._isaSpare();
+      return this._lastFrame().isaSpare();
     }
   }
 
@@ -47,12 +47,12 @@ class Scorer {
   _isConsecutiveStrikeInProgress() {
     if (this.frames.length > 1) {
       let lastTwoFrames = this.frames.slice(this.frames.length - 2);
-      return lastTwoFrames[0]._isaStrike() && lastTwoFrames[1]._isaStrike()
+      return lastTwoFrames[0].isaStrike() && lastTwoFrames[1].isaStrike()
     }
   }
 
-  calculate(frame) {
-    if (frame._isNotStrikeOrSpare()) {
+  _calculate(frame) {
+    if (frame.isNotStrikeOrSpare()) {
       this.scores.push(frame.result())
     }
   }
@@ -65,7 +65,7 @@ class Scorer {
     }
   }
 
-  _spareBonus(pins) {
+  spareBonus(pins) {
     this.scores.push(this.ALLPINS + pins);
   }
 
@@ -75,7 +75,7 @@ class Scorer {
 
   _consecStrikeBonus(frame) {
     this.scores.push(2 * this.ALLPINS + frame.result());
-    if (!frame._isaStrike()) {
+    if (!frame.isaStrike()) {
       this._strikeBonus(frame);
     }
   }

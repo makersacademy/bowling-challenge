@@ -12,15 +12,15 @@ describe ('Scorer', function() {
       return this.pins[0] + this.pins[1]
     }
 
-    _isaSpare() {
+    isaSpare() {
       return false;
     }
 
-    _isaStrike() {
+    isaStrike() {
       return false;
     }
 
-    _isNotStrikeOrSpare() {
+    isNotStrikeOrSpare() {
       return true;
     }
   }
@@ -30,15 +30,15 @@ describe ('Scorer', function() {
       this.pins = [10];
     }
 
-    _isaSpare() {
+    isaSpare() {
       return false;
     }
 
-    _isaStrike() {
+    isaStrike() {
       return true;
     }
 
-    _isNotStrikeOrSpare() {
+    isNotStrikeOrSpare() {
       return false;
     }
   }
@@ -48,15 +48,15 @@ describe ('Scorer', function() {
       this.pins = [6, 4];
     }
 
-    _isaSpare() {
+    isaSpare() {
       return true;
     }
 
-    _isaStrike() {
+    isaStrike() {
       return false;
     }
 
-    _isNotStrikeOrSpare() {
+    isNotStrikeOrSpare() {
       return false;
     }
   }
@@ -104,21 +104,21 @@ describe ('Scorer', function() {
 
   describe('calculate', function() {
     it('puts result of standard frame into scores array', function() {
-      scorer.calculate(frame);
+      scorer._calculate(frame);
       expect(scorer.scores).toEqual([7]);
     });
 
     it('adds total to scores list for multiple rolls', function() {
-      scorer.calculate(frame);
-      scorer.calculate(frame);
+      scorer._calculate(frame);
+      scorer._calculate(frame);
       expect(scorer.scores).toEqual([7, 7]);
     });
   });
 
-  describe('_spareUpdateNeeded', function() {
+  describe('spareUpdateNeeded', function() {
     it('returns true if last frame was a spare', function() {
       scorer.addFrame(spare);
-      expect(scorer._spareUpdateNeeded()).toBe(true)
+      expect(scorer.spareUpdateNeeded()).toBe(true)
     })
   });
 
@@ -155,7 +155,7 @@ describe ('Scorer', function() {
   describe('_spareBonus', function() {
     it('calculates bonus of spare as first roll of next frame', function() {
       scorer.addFrame(spare);
-      scorer._spareBonus(4);
+      scorer.spareBonus(4);
       expect(scorer.scores[0]).toEqual(14);
     });
   });

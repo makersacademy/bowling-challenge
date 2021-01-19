@@ -5,21 +5,12 @@ Bowling Challenge
 
 I was pretty pleased with the progress I made with this in the end (caveat: it is by no means a finished product!).
 
-### Questions:
-How do I decide which methods should be private? Should it be everything apart from game.roll because that needs to be called by the user?
-
-Does my html file look okay?
-
-My interface file $('.User_Roll').change method became quite busy. Is this okay or does it need refactoring?
-
 ### Still to do:
-The interface needs improving with including a '/' for a strike.
+Grey out options that are not possible (eg after a roll of 8, anything greater than 2 should be greyed out). They are currently disabled.
 
-I'd like to grey out the options that are not possible (eg after a roll of 8, anything greater than 2 should be greyed out).
+The final frame does not display correctly on the website at the moment (ie bonus rolls are not visible).
 
-The final frame does not display correctly on the website at the moment (ie bonus rolls are not visible)
-
-I haven't implemented errors being displayed as an alert to the user
+Handle thrown errors by displaying them as an alert to the user.
 
 =================
 

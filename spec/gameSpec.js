@@ -9,8 +9,7 @@ describe('Game', () => {
         this.bonus_rolls = 0;
       };
     }
-    test = new FrameClassDouble();
-    game = new Game();
+    exampleFrameDouble = new FrameClassDouble();
     gameWithDoubles = new Game(FrameClassDouble);
   });
 
@@ -19,11 +18,11 @@ describe('Game', () => {
   });
   it('by default is initialized with an array of 10 frame instances', () => {
     expect(gameWithDoubles.frames.length).toEqual(10);
-    expect(gameWithDoubles.frames[0]).toEqual(test);
-    expect(gameWithDoubles.frames[7]).toEqual(test);
+    expect(gameWithDoubles.frames[0]).toEqual(exampleFrameDouble);
+    expect(gameWithDoubles.frames[7]).toEqual(exampleFrameDouble);
   });
   it('by default is initialized 10 distinct frame instances', () => {
-    expect(game.frames[0]).not.toBe(game.frames[1]);
+    expect(gameWithDoubles.frames[0]).not.toBe(gameWithDoubles.frames[1]);
   });
   it('random', () => {
   });

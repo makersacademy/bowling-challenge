@@ -7,6 +7,8 @@ class Scorecard {
     this.frame_score = []
     this.scores = []
     this.running_score = []
+    this.cumul_score = ""
+    this.displayScores = []
     this.roll_num = 1
     this.bonus_roll = false
   }
@@ -16,6 +18,7 @@ class Scorecard {
       this.getRoll(pins);
       if (this.isStrike()){
         this.frames += 1;
+        this.displayScores.push(0);
         this.clearFrame();
       } else {
         this.roll_num += 1;
@@ -39,6 +42,7 @@ class Scorecard {
   getRoll(pins){
     this.frame_score.push(pins);
     this.scores.push(pins);
+    this.displayScores.push(pins);
   }
 
   getTenthFrameRoll(pins){
@@ -68,6 +72,15 @@ class Scorecard {
     return("Game over: You have played 10 frames")
   }
 
+  finalFrameCalc(){
+    var sum = this.frame_score.reduce((pv, cv) => pv + cv, 0);
+    if (sum > 10) {
+      this.running_score.push(this.scores.slice(-3)[0] + this.scores.slice(-2)[0] + this.scores.slice(-1)[0]);
+    } else {
+      this.running_score.push(this.scores.slice(-2)[0] + this.scores.slice(-1)[0]);
+    }
+  }
+
   cumulCalc(){
     var i = 0;
     while (i < this.scores.length-3){
@@ -82,8 +95,10 @@ class Scorecard {
         i += 2;
       }
     }
-    this.running_score.push(this.scores.slice(-3)[0] + this.scores.slice(-2)[0] + this.scores.slice(-1)[0]);
+    this.finalFrameCalc();
     var result = this.running_score.reduce(function(a,b,i){ return i === 0 ?  [b]: a.concat(a[i-1]+b);},0);
+    this.cumul_score = result
     return (result)
   }
+
 }

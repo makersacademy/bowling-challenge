@@ -1,0 +1,85 @@
+table {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  border-spacing: 0.5cm;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #FF7F50;
+  color: white;
+}
+
+tbody {
+  background-color: #FFF8DC;
+  font-weight: thin;
+}
+
+tfoot {
+  background-color: skyblue;
+}
+
+th, td {
+  border: 5px solid white;
+  text-align: center;
+  padding: 8px;
+}
+
+body {
+  font-family: "Arial Black", Gadget, sans-serif;
+  line-height: 100%;
+  background: url("tenpin.jpg");
+  background-size: cover;
+}
+
+.bn-panel {
+  font-size: 24px;
+  color: #63A5C7;
+  padding-bottom: 40px;
+  height: 50px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  text-align: center;
+  font-weight: bold;
+}
+
+#heading {
+  font-size: 40px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.bn {
+  color: black;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+}
+
+#final_frame_scores {
+  color: black;
+  background-color: skyblue;
+  padding: 10px;
+  width: 110px;
+  height: 55px;
+  border-radius: 4px;
+  position: absolute;
+  left: 670px;
+  top: 490px;
+}
+
+#reset_game {
+  color: black;
+  background-color: skyblue;
+  padding: 10px;
+  width: 60px;
+  height: 40px;
+  border-radius: 4px;
+  position: absolute;
+  left: 695px;
+  top: 560px;
+}

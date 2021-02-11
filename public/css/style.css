@@ -1,10 +1,28 @@
+@import url("https://fonts.googleapis.com/css?family=Warnes&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap");
+
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Rajdhani", cursive;
   font-size: 13px;
+  background-color: black;
 }
 
 h1 {
-  font-family: "neon-tubes-2-regular", sans-serif;
+  color: #dfe0e4;
+  font-family: "Warnes", cursive;
+  font-size: 60px;
+  text-align: center;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #d84c72, 0 0 20px #d84c72,
+      0 0 25px #d84c72, 0 0 30px #d84c72, 0 0 35px #d84c72;
+  }
+  to {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #d84c72,
+      0 0 40px #d84c72, 0 0 50px #d84c72, 0 0 60px #d84c72, 0 0 70px #d84c72;
+  }
 }
 
 .maincontainer {
@@ -16,21 +34,23 @@ h1 {
 }
 
 button {
+  color: #fff;
+  background-color: black;
+  padding: 10px;
   border-width: 2px;
-  color: white;
-  background-color: #f86732;
+  border-color: #fff;
   border-style: double;
-  padding: 5px;
-  border-radius: 8px;
+  font-family: "Rajdhani", cursive;
 }
 
 table.scorecard {
-  background-color: #ffffff;
+  min-width: 500px;
+  background-color: black;
   border-collapse: collapse;
   border-width: 2px;
-  border-color: #f86732;
+  border-color: #fff;
   border-style: double;
-  color: #000000;
+  color: #fff;
   table-layout: fixed;
   text-align: center;
   width: 50vw;
@@ -39,7 +59,7 @@ table.scorecard {
 table.scorecard td,
 table.scorecard th {
   border-width: 2px;
-  border-color: #f86732;
+  border-color: #fff;
   border-style: double;
   padding: 5px;
 }

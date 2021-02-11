@@ -1,9 +1,10 @@
-'use strict';
+"use strict";
 
 class Game {
-  constructor(frames = new Frame) {
-    this._frames = [frames];
-  };
+  constructor(frame = Frame) {
+    this._frame = frame;
+    this._frames = [new frame()];
+  }
 
   frames() {
     return this._frames;
@@ -24,43 +25,43 @@ class Game {
     } else if (this.currentFrame().isInPlay() && this.frameCount() === 10) {
       this.currentFrame().knocked(pins);
       return;
-    };
-  };
+    }
+  }
 
   totalScore(array = this.frames()) {
     var total = 0;
-    for ( var i = 0, _len = array.length; i < _len; i++ ) {
-        total += array[i]._score
+    for (var i = 0, _len = array.length; i < _len; i++) {
+      total += array[i]._score;
     }
     return total;
   }
- 
+
   currentFrame() {
     return this._frames[this._frames.length - 1];
-  };
+  }
 
   _lastFrame() {
     return this._frames[this._frames.length - 2];
-  };
+  }
 
   _spareBonus(pins) {
-    if (this._isFirstFrame()){
+    if (this._isFirstFrame()) {
       return;
     } else if (this._lastFrame().isSpare() === true) {
       this._lastFrame().pointBonus(pins);
-    };
-  };
+    }
+  }
 
   _strikeBonus(pins) {
-    if (this._isFirstFrame()){
+    if (this._isFirstFrame()) {
       return;
     } else if (this._lastFrame().isStrike()) {
       this._lastFrame().pointBonus(pins);
-    };
-  };
+    }
+  }
 
   _doubleStrikeBonus(pins) {
-    if (this._isFirstFrame()){
+    if (this._isFirstFrame()) {
       return;
     } else if (this._lastFrame().isStrike() && pins === 10) {
       this._lastFrame().pointBonus(pins);
@@ -69,18 +70,17 @@ class Game {
 
   _newFrame() {
     if (this.frameCount() < 9) {
-      this._frames.push(new Frame());
+      this._frames.push(new this._frame());
     } else if (this.frameCount() === 9) {
-      this._frames.push(new Frame(true));
-    };
-  };
+      this._frames.push(new this._frame(true));
+    }
+  }
 
   frameCount() {
     return this._frames.length;
-  };
+  }
 
   _isFirstFrame() {
-   return this.frameCount() === 1;
-  };
-
-};
+    return this.frameCount() === 1;
+  }
+}

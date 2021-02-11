@@ -63,6 +63,7 @@ describe("Game", () => {
 
   describe("total score", () => {
     it("calculates the total score of the game", () => {
+      game = new Game(FrameDoubleInPlay);
       var frames = [{ _score: 30 }, { _score: 10 }];
       expect(game.totalScore(frames)).toEqual(40);
     });

@@ -1,30 +1,30 @@
 'use strict';
 
 describe('Game', () => {
-  var frame;
+  var Frame;
   var game;
 
   beforeEach(() => {
-  frame = jasmine.createSpyObj('frame', ['knocked', 'isInPlay', 'score', 'isStrike', 'isSpare']);
-  game = new Game(frame);
+  Frame = jasmine.createSpyObj('Frame', ['knocked', 'isInPlay', 'score', 'isStrike', 'isSpare']);
+  game = new Game(Frame);
   });
 
   describe('constructor', () => {
 
     it('has property frames, with array of frame objects', () => {
-      expect(game.frames()).toEqual([frame]);
+      expect(game.frames()).toEqual([Frame]);
     });
 
   });
 
-  describe('standard frame', () => {
-    xit('calls the knocked function on the current frame', () => {
+  describe('roll', () => {
+    it('calls the knocked function on the current frame', () => {
       game.roll(3);
-      expect(game.currentFrame().knocked).toHaveBeenCalled();
+      expect(Frame.knocked).toHaveBeenCalled();
     });
 
     it('adds new frame objects to the frames property appropriately', () => {
-      frame.isInPlay.and.returnValue(false);
+      Frame.isInPlay.and.returnValue(false);
       game.roll(3);
       expect(game.frames().length).toEqual(2);
     });

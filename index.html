@@ -1,88 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bowling Scorecard</title>
-  <link rel="stylesheet" href="public/css/style.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bowling Scorecard</title>
+    <link rel="stylesheet" href="public/css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="maincontainer">
+      <table id="scorecard" class="scorecard">
+        <thead>
+          <tr style="height: 25px; width: 30px">
+            <th scope="col" colspan="2">Frame 1</th>
+            <th scope="col" colspan="2">Frame 2</th>
+            <th scope="col" colspan="2">Frame 3</th>
+            <th scope="col" colspan="2">Frame 4</th>
+            <th scope="col" colspan="2">Frame 5</th>
+            <th scope="col" colspan="2">Frame 6</th>
+            <th scope="col" colspan="2">Frame 7</th>
+            <th scope="col" colspan="2">Frame 8</th>
+            <th scope="col" colspan="2">Frame 9</th>
+            <th scope="col" colspan="3">Frame 10</th>
+            <th scope="col" colspan="2">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="height: 30px; width: 30px">
+            <td scope="row" id="f1r1" class="rolls"></td>
+            <td scope="row" id="f1r2" class="rolls"></td>
+            <td scope="row" id="f2r1" class="rolls"></td>
+            <td scope="row" id="f2r2" class="rolls"></td>
+            <td scope="row" id="f3r1" class="rolls"></td>
+            <td scope="row" id="f3r2" class="rolls"></td>
+            <td scope="row" id="f4r1" class="rolls"></td>
+            <td scope="row" id="f4r2" class="rolls"></td>
+            <td scope="row" id="f5r1" class="rolls"></td>
+            <td scope="row" id="f5r2" class="rolls"></td>
+            <td scope="row" id="f6r1" class="rolls"></td>
+            <td scope="row" id="f6r2" class="rolls"></td>
+            <td scope="row" id="f7r1" class="rolls"></td>
+            <td scope="row" id="f7r2" class="rolls"></td>
+            <td scope="row" id="f8r1" class="rolls"></td>
+            <td scope="row" id="f8r2" class="rolls"></td>
+            <td scope="row" id="f9r1" class="rolls"></td>
+            <td scope="row" id="f9r2" class="rolls"></td>
+            <td scope="row" id="f10r1" class="rolls"></td>
+            <td scope="row" id="f10r2" class="rolls"></td>
+            <td scope="row" id="f10r3" class="rolls"></td>
+            <td rowspan="2" colspan="2" id="total-score"></td>
+          </tr>
+          <tr style="height: 40px; width: 20px">
+            <td scope="row" colspan="2" id="f1" class="frames"></td>
+            <td scope="row" colspan="2" id="f2" class="frames"></td>
+            <td scope="row" colspan="2" id="f3" class="frames"></td>
+            <td scope="row" colspan="2" id="f4" class="frames"></td>
+            <td scope="row" colspan="2" id="f5" class="frames"></td>
+            <td scope="row" colspan="2" id="f6" class="frames"></td>
+            <td scope="row" colspan="2" id="f7" class="frames"></td>
+            <td scope="row" colspan="2" id="f8" class="frames"></td>
+            <td scope="row" colspan="2" id="f9" class="frames"></td>
+            <td scope="row" colspan="3" id="f10" class="frames"></td>
+          </tr>
+        </tbody>
+      </table>
 
-  <table id='scorecard' class='scorecard'>
+      <br /><br /><br />
 
-      <thead>
-        <tr style ="height:25px;width:30px;">
-          <th scope="col" colspan="2">Frame 1</th>
-          <th scope="col" colspan="2">Frame 2</th>
-          <th scope="col" colspan="2">Frame 3</th>
-          <th scope="col" colspan="2">Frame 4</th>
-          <th scope="col" colspan="2">Frame 5</th>
-          <th scope="col" colspan="2">Frame 6</th>
-          <th scope="col" colspan="2">Frame 7</th>
-          <th scope="col" colspan="2">Frame 8</th>
-          <th scope="col" colspan="2">Frame 9</th>
-          <th scope="col" colspan="3">Frame 10</th>
-          <th scope="col" colspan="1">Total Score</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style ="height:30px;width:30px;">
-          <td scope="row" id='f1r1' class='rolls'></td>
-          <td scope="row" id='f1r2' class='rolls'></td>
-          <td scope="row" id='f2r1' class='rolls'></td>
-          <td scope="row" id='f2r2' class='rolls'></td>
-          <td scope="row" id='f3r1' class='rolls'></td>
-          <td scope="row" id='f3r2' class='rolls'></td>
-          <td scope="row" id='f4r1' class='rolls'></td>
-          <td scope="row" id='f4r2' class='rolls'></td>
-          <td scope="row" id='f5r1' class='rolls'></td>
-          <td scope="row" id='f5r2' class='rolls'></td>
-          <td scope="row" id='f6r1' class='rolls'></td>
-          <td scope="row" id='f6r2' class='rolls'></td>
-          <td scope="row" id='f7r1' class='rolls'></td>
-          <td scope="row" id='f7r2' class='rolls'></td>
-          <td scope="row" id='f8r1' class='rolls'></td>
-          <td scope="row" id='f8r2' class='rolls'></td>
-          <td scope="row" id='f9r1' class='rolls'></td>
-          <td scope="row" id='f9r2' class='rolls'></td>
-          <td scope="row" id='f10r1' class='rolls'></td>
-          <td scope="row" id='f10r2' class='rolls'></td>
-          <td scope="row" id='f10r3' class='rolls'></td>
-          <td rowspan="2" id="total-score"></td>
-        </tr>
-        <tr style ="height:40px;width:20px;">
-          <td scope="row" colspan="2" id='f1' class='frames'></td>
-          <td scope="row" colspan="2" id='f2' class='frames'></td>
-          <td scope="row" colspan="2" id='f3' class='frames'></td>
-          <td scope="row" colspan="2" id='f4' class='frames'></td>
-          <td scope="row" colspan="2" id='f5' class='frames'></td>
-          <td scope="row" colspan="2" id='f6' class='frames'></td>
-          <td scope="row" colspan="2" id='f7' class='frames'></td>
-          <td scope="row" colspan="2" id='f8' class='frames'></td>
-          <td scope="row" colspan="2" id='f9' class='frames'></td>
-          <td scope="row" colspan="3" id='f10' class='frames'></td>
-        </tr>
-    </table>
-  <br><br><br>
-  
-  <div id='buttons'>
-  <button id ='0'>0</button>
-  <button id ='1'>1</button>
-  <button id ='2'>2</button>
-  <button id ='3'>3</button>
-  <button id ='4'>4</button>
-  <button id ='5'>5</button>
-  <button id ='6'>6</button>
-  <button id ='7'>7</button>
-  <button id ='8'>8</button>
-  <button id ='9'>9</button>
-  <button id ='10'>10</button>
-  <button id ='reset'>Reset</button>
-  </div>
-
-  <script src="src/Game.js"></script>
-  <script src="src/Frame.js"></script>
-  <script type="text/javascript" src="src/interface.js"></script>
-</body>
+      <div id="buttons">
+        <button id="0">0</button>
+        <button id="1">1</button>
+        <button id="2">2</button>
+        <button id="3">3</button>
+        <button id="4">4</button>
+        <button id="5">5</button>
+        <button id="6">6</button>
+        <button id="7">7</button>
+        <button id="8">8</button>
+        <button id="9">9</button>
+        <button id="10">10</button>
+        <button id="reset">Reset</button>
+      </div>
+    </div>
+    <script src="src/Game.js"></script>
+    <script src="src/Frame.js"></script>
+    <script type="text/javascript" src="src/interface.js"></script>
+  </body>
 </html>

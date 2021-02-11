@@ -1,43 +1,64 @@
 "use strict";
 
 describe("Game", () => {
-  var frameDouble;
   var game;
 
-  class FrameDouble {
-    kocked() {}
-    isInPlay() {}
+  class FrameDoubleInPlay {
+    constructor() {
+      this.knockedCallCount = 0;
+    }
+    knocked(pins) {
+      this.knockedCallCount++;
+    }
+    isInPlay() {
+      return true;
+    }
     score() {}
     isStrike() {}
     isSpare() {}
   }
 
-  // beforeEach(() => {
-  //   game = new Game(FrameDouble);
-  // });
+  class FrameDoubleNotInPlay {
+    constructor() {
+      this.knockedCallCount = 0;
+      this.strikeCallCount = 0;
+      this.spareCallCount = 0;
+    }
+    knocked(pins) {
+      this.knockedCallCount++;
+    }
+    isInPlay() {
+      return false;
+    }
+    score() {}
+    isStrike() {}
+    isSpare() {}
+  }
 
   describe("constructor", () => {
     it("has property frames, with array of frame objects", () => {
-      game = new Game(FrameDouble);
-      expect(game.frames()).toEqual([new FrameDouble()]);
+      game = new Game(FrameDoubleInPlay);
+      expect(game.frames()).toEqual([new FrameDoubleInPlay()]);
     });
   });
 
   describe("roll", () => {
     it("calls the knocked function on the current frame", () => {
-      game = new Game(FrameDouble);
-      game.currentFrame().returnValue(new FrameDouble());
+      game = new Game(FrameDoubleInPlay);
       game.roll(3);
-      expect(game.frames().knocked).toHaveBeenCalled();
+      expect(game.frames()[0].knockedCallCount).toEqual(1);
     });
 
     it("adds new frame objects to the frames property appropriately", () => {
-      Frame.isInPlay.and.returnValue(false);
+      game = new Game(FrameDoubleNotInPlay);
       game.roll(3);
       expect(game.frames().length).toEqual(2);
     });
 
-    xit("awards bonus points appropriately", () => {});
+    xit("awards bonus points appropriately", () => {
+      game = new Game(FrameDoubleNotInPlay);
+      expect(game.frames()[0].strikeCallCount).toEqual(1);
+    });
   });
 
   describe("total score", () => {

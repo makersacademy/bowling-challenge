@@ -3,7 +3,8 @@ body {
   font-size: 13px;
 }
 
-div#buttons {
+h1 {
+  font-family: "neon-tubes-2-regular", sans-serif;
 }
 
 .maincontainer {

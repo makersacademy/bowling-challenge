@@ -3,7 +3,11 @@
 class Game {
 
   constructor(){
-    this.roll = []
+    this.rolls = []
+  }
+
+  roll(pins){
+    this.rolls.push(pins)
   }
 
 }

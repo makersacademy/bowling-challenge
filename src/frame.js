@@ -41,11 +41,11 @@ class Frame {
     return false;
   }
 
-  // isSpareOrStrike() {
-  //   if(this.isStrike() || this.isSpare()) {
-  //     return true;
-  //   }
-  //   return false;
-  // }
+  isSpareOrStrike() {
+    if(this.isStrike() || this.isSpare()) {
+      return true;
+    }
+    return false;
+  }
 
 }

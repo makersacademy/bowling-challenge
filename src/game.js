@@ -15,6 +15,7 @@ class Game {
 
   bowl(score) {
     this.currentFrame().update(score);
+    this.updatePreviousFrames(score);
     if(this.currentFrame().isFinished()) {
       this.startNextFrame();
     }
@@ -26,6 +27,19 @@ class Game {
 
   currentFrame() {
     return this._frames[this._frameCounter];
+  }
+
+  previousFrame() {
+    return this._frames[this._frameCounter - 1];
+  }
+
+  updatePreviousFrames(score) {
+    if(this._frameCounter === 0 || !this.previousFrame().isSpareOrStrike()) {
+      return;
+    }
+    else if(this.currentFrame()._rollTwo === null) {
+      this.previousFrame().update(score);
+    }
   }
 
 }

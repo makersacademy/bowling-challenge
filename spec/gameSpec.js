@@ -2,12 +2,13 @@
 
 describe('Game', function() {
   let game;
-  let frameClass;
   let frame;
+  let frameTwo;
   
   beforeEach(function() {
 
-    frame = jasmine.createSpyObj('frame', ['update', 'isFinished']);
+    frame = jasmine.createSpyObj('frame', ['update', 'isFinished', 'isSpareOrStrike']);
+    frameTwo = jasmine.createSpyObj('frame', ['update', 'isFinished', 'isSpareOrStrike']);
     game = new Game();
     // To isolate unit tests:
     game._frames = [];
@@ -28,5 +29,18 @@ describe('Game', function() {
       game.bowl(10);
       expect(game._frameCounter).toEqual(1);
     });
+
+    // MAYBE JUST PUT EVERYTHING LIKE THIS IN A FEATURE TEST FILE...
+
+    // it('updates last frame if strike', function() {
+    //   frame.isFinished.and.returnValue(true)
+    //   game.bowl(10);
+    //   // expect(game._frameCounter).toEqual(1);
+    //   game.previousFrame.isSpareOrStrike.and.returnValue(true)
+    //   frameTwo.isFinished.and.returnValue(false)
+    //   game.bowl(6);
+    //   expect(game.previousFrame().update).toHaveBeenCalledWith(10);
+    //   expect(game.previousFrame().update).toHaveBeenCalledWith(6);
+    // });
   });
 });

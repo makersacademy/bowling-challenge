@@ -73,3 +73,13 @@ In code review we'll be hoping to see:
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+
+
+### Logic planning for updating previous scores:
+
+updatePreviousFrames()
+    If we are on the first frame, return.
+    If we are on the first roll of a frame and the previous was a spare or strike, UPDATE PREVIOUS
+    If we are on the second roll of a frame and the prvious was a strike, UPDATE PREVIOUS
+    If we are on the second frame, return.
+    If we are on the first roll of a frame and the previous frame and the frame before previous were both strikes, update frame before last.

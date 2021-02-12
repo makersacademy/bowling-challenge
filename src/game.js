@@ -15,10 +15,17 @@ class Game {
 
   bowl(score) {
     this.currentFrame().update(score);
+    if(this.currentFrame().isFinished()) {
+      this.startNextFrame();
+    }
+  }
+
+  startNextFrame() {
+    this._frameCounter ++;
   }
 
   currentFrame() {
-    return this._frames[this._frameCounter]
+    return this._frames[this._frameCounter];
   }
 
 }

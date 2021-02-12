@@ -6,7 +6,8 @@ describe('Game', function() {
   let frame;
   
   beforeEach(function() {
-    frame = jasmine.createSpyObj('frame', ['update']);
+
+    frame = jasmine.createSpyObj('frame', ['update', 'isFinished']);
     game = new Game();
     // To isolate unit tests:
     game._frames = [];
@@ -18,8 +19,14 @@ describe('Game', function() {
 
   describe('bowl', function() {
     it('updates the the current frame', function() {
+      frame.isFinished.and.returnValue(false)
       game.bowl(6);
-      expect(game._frames[game._frameCounter].update).toHaveBeenCalledWith(6);  
+      expect(game.currentFrame().update).toHaveBeenCalledWith(6);  
+    });
+    it('starts new frame if current one is finished', function() {
+      frame.isFinished.and.returnValue(true)
+      game.bowl(10);
+      expect(game._frameCounter).toEqual(1);
     });
   });
 });

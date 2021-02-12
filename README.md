@@ -21,6 +21,9 @@ This app is deployed on **[Heroku](https://sympinbowling.herokuapp.com/)**
     $ cd bowling-challenge
     $ open SpecRunner.html
 
+**Test suite screenshot**
+
+[jasminescreenshot](./images/bowlingtests.png)
 ### Planning & Design:
 
 ![](images/Frame%201-9%20logic.png)

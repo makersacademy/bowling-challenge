@@ -16,24 +16,29 @@ class Bowling {
     this.rolls.push(pins);
   };
 
+  currentScore = () => {
+    const add = (x, y) => x + y;
+    return this.rolls.reduce(add, 0);
+  };
+
   score = () => {
-    let rollIndex = 0;
+    let index = 0;
     let result = 0;
-    let  frameIndex;
-    for (frameIndex = 0; frameIndex < 10; frameIndex++) {
+    let  frameNumber;
+    for (frameNumber = 0; frameNumber < 10; frameNumber++) {
       this.frame++;
-      if (!this.isStrike(rollIndex)) {
-        const frameScore = this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+      if (!this.isStrike(index)) {
+        const frameScore = this.rolls[index] + this.rolls[index + 1];
         if (this.isSpare(frameScore)) {
-          result += this.spareScore(rollIndex);
-          rollIndex += 2;
+          result += this.spareScore(index);
+          index += 2;
         } else {
           result += frameScore;
-          rollIndex += 2;
+          index += 2;
         }
       } else {
-        result += this.strikeScore(rollIndex);
-        rollIndex += 1;
+        result += this.strikeScore(index);
+        index += 1;
       }
     }
 
@@ -44,16 +49,16 @@ class Bowling {
     return frameScore === this.MAX_SCORE;
   };
 
-  spareScore = rollIndex => {
-    return this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+  spareScore = index => {
+    return this.rolls[index] + this.rolls[index + 1] + this.rolls[index + 2];
   };
 
-  isStrike = rollIndex => {
-      return this.rolls[rollIndex] === this.MAX_SCORE;
+  isStrike = index => {
+      return this.rolls[index] === this.MAX_SCORE;
     };
 
-  strikeScore = rollIndex => {
-      return this.MAX_SCORE + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+  strikeScore = index => {
+      return this.MAX_SCORE + this.rolls[index + 1] + this.rolls[index + 2];
     };
 
   gameOver = () => {

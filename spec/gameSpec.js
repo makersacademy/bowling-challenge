@@ -62,6 +62,27 @@ describe('Bowling', () => {
       bowling.score();
       expect(function () {bowling.roll(1);}).toThrowError('Game is over!');
     });
+  });
+
+  describe('current score', () => {
+    it('allows a score to be calculated mid game', () => {
+      rollMultiple(1, 10);
+      expect(bowling.currentScore()).toEqual(10);
+    });
+
+    it('allows a score with a strike to be calculated mid game', () => {
+      bowling.roll(10);
+      rollMultiple(4, 2);
+      expect(bowling.currentScore()).toEqual(18);
+    });
+
+    it('allows a score with a strike & a strike to be calculated mid game', () => {
+      bowling.roll(10);
+      rollMultiple(4, 2);
+      rollMultiple(5, 2);
+      bowling.roll(1);
+      expect(bowling.currentScore()).toEqual(29);
+    });
 
   });
 

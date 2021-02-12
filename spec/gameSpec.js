@@ -50,6 +50,21 @@ describe('Bowling', () => {
     });
   });
 
+  describe('game over', () => {
+    it('it stops afer 10 normal frames', () => {
+      rollMultiple(1, 20);
+      bowling.score();
+      expect(function () {bowling.roll(1);}).toThrowError('Game is over!');
+    });
+
+    it('it stops afer a bonus roll', () => {
+      rollMultiple(10, 12);
+      bowling.score();
+      expect(function () {bowling.roll(1);}).toThrowError('Game is over!');
+    });
+
+  });
+
   function rollMultiple(pins, rolls) {
     for (let i = 0; i < rolls; i++) {
       bowling.roll(pins);

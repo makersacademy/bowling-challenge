@@ -2,11 +2,17 @@ class Bowling {
   constructor() {
     this.TEN = 10;
     this.rolls = [];
+    this.MAX_FRAMES = this.TEN;
     this.MAX_SCORE = this.TEN;
     this.frame = 0;
   }
 
   roll = pins => {
+    if (this.gameOver()) {
+      throw new Error('Game is over!');
+      this.rolls.push(pins);
+    }
+
     this.rolls.push(pins);
   };
 
@@ -50,4 +56,7 @@ class Bowling {
       return this.MAX_SCORE + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
     };
 
+  gameOver = () => {
+    return this.rolls.count >= 21 || this.frame >= this.MAX_FRAMES;
+  };
 };

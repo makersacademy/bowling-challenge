@@ -23,6 +23,33 @@ describe('Bowling', () => {
     });
   });
 
+  describe('Spares', () => {
+    it('can work out a spare when not in last frame', () => {
+      rollMultiple(0, 10);
+      rollMultiple(5, 2);
+      rollMultiple(1, 8);
+      expect(bowling.score()).toBe(19);
+    });
+
+    it('can work a full game of spares', () => {
+      rollMultiple(5, 21);
+      expect(bowling.score()).toEqual(150);
+    });
+  });
+
+  describe('Strikes', () => {
+    it('can work out a strike in one frame not in the last frame', () => {
+        rollMultiple(1, 10);
+        bowling.roll(10);
+        rollMultiple(1, 8);
+        expect(bowling.score()).toEqual(30);
+      });
+    it('can workout a perfect game', () => {
+      rollMultiple(10, 12);
+      expect(bowling.score()).toEqual(300);
+    });
+  });
+
   function rollMultiple(pins, rolls) {
     for (let i = 0; i < rolls; i++) {
       bowling.roll(pins);

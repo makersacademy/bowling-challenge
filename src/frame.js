@@ -14,7 +14,7 @@ class Frame {
     if(this._rollOne === null) {
       this._rollOne = score;
     }
-    else if(this._rollTwo === null) {
+    else if(this._rollTwo === null && !this.isStrike()) {
       this._rollTwo = score;
     }
     this._score += score;

@@ -5,7 +5,7 @@ class Frame {
     this.rolls = []
   }
 
-  add_roll(pins) {
+  addRoll(pins) {
     if (this.isCompleted()) {
       throw new Error("This frame is completed")
     }
@@ -14,7 +14,6 @@ class Frame {
 
   isCompleted() {
     if (this.number < 10) {
-      console.log(this.rolls.length)
       return ( this.rolls.length === 2) || ( this.rolls[0] === 10 )
     } else if ((this.rolls[0] + this.rolls[1]) < 10 ) {
       return this.rolls.length === 2

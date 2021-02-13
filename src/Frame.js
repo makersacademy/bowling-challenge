@@ -1,9 +1,13 @@
 class Frame{
   constructor(number = 1){
-    this.roll1 = null;
-    this.roll2 = null;
-    this.bonus_roll = null;
-    this.frame_score = null;
+    this.roll1 = 0;
+    this.roll2 = 0;
+    this.bonus_roll = 0;
+    this.frame_score = 0;
+    this.STRIKE = 10;
+    this.SPARE = 10;
+    this.FRAMES = 10;
+    this.number = number;
   }
 
   roll_1(){
@@ -20,5 +24,13 @@ class Frame{
 
   frame_Score(){
     return this.frame_score;
+  }
+
+  Number(){
+    return this.number;
+  }
+
+  Next(){
+    return this.number += 1;
   }
 }

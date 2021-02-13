@@ -23,7 +23,7 @@ class Frame{
   }
 
   frame_Score(){
-    return this.frame_score;
+    return (this.roll1 + this.roll2);
   }
 
   Number(){
@@ -32,5 +32,21 @@ class Frame{
 
   Next(){
     return this.number += 1;
+  }
+
+  isStrike(){
+    return this.roll1 === 10;
+  }
+
+  isSpare(){
+    return this.frame_score === 10;
+  }
+
+  AddRoll1(roll){
+     this.roll1 = roll;
+  }
+
+  AddRoll2(roll){
+     this.roll2 = roll;
   }
 }

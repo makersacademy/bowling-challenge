@@ -15,13 +15,13 @@ class Game {
 
   bowl(score) {
     this._currentFrame().update(score);
-    this.updatePreviousFrames(score);
+    this._updatePreviousFrames(score);
     if(this._currentFrame().isFinished()) {
-      this.startNextFrame();
+      this._startNextFrame();
     }
   }
 
-  startNextFrame() {
+  _startNextFrame() {
     this._frameCounter ++;
   }
 
@@ -37,20 +37,20 @@ class Game {
     return this._frames[this._frameCounter - 2];
   }
 
-  updatePreviousFrames(score) {
+  _updatePreviousFrames(score) {
     if(this._frameCounter === 0 || !this._previousFrame().isSpareOrStrike()) {
       return;
     }
     if(this._currentFrame()._rollTwo === null) {
       this._previousFrame().update(score);
-      this.updateFrameBeforeLast(score);
+      this._updateFrameBeforeLast(score);
     }
-    else if(this._previousFrame().isStrike()) {
+    else if(this._previousFrame().isStrike() && this._currentFrame()._rollThree === null) {
       this._previousFrame().update(score);
     }
   }
 
-  updateFrameBeforeLast(score) {
+  _updateFrameBeforeLast(score) {
     if(this._previousFrame().isStrike() && this._frameCounter > 1 && this._frameBeforeLast().isStrike()) {
       this._frameBeforeLast().update(score);
     }

@@ -7,6 +7,7 @@ class Frame {
   constructor() {
     this._rollOne = null;
     this._rollTwo = null;
+    this._rollThree = null;
     this._score = 0;
   }
 

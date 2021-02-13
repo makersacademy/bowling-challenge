@@ -25,4 +25,11 @@ class FrameTen extends Frame{
     this._score += score;
   }
 
+  isStrike() {
+    if(this._rollOne === STRIKE) {
+      return true;
+    }
+    return false;
+  }
+
 }

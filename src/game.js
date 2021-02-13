@@ -17,8 +17,7 @@ class Game {
 
   bowl(score) {
     if(score > MAX_SCORE || score < MIN_SCORE) {
-      alert('Score must be between ' + MIN_SCORE + ' and ' + MAX_SCORE + '!');
-      throw new Error('Score must be between ' + MIN_SCORE + ' and ' + MAX_SCORE + '!');
+      this.errorMessage();
     }
     this._currentFrame().update(score);
     this._updatePreviousFrames(score);
@@ -72,5 +71,10 @@ class Game {
     }
     return total;
   } 
+
+  errorMessage() {
+    alert('Score must be between ' + MIN_SCORE + ' and ' + MAX_SCORE + '!');
+    throw new Error('Score must be between ' + MIN_SCORE + ' and ' + MAX_SCORE + '!');
+  }
 
 }

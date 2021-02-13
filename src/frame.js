@@ -17,8 +17,7 @@ class Frame {
     }
     else if(this._rollTwo === null && !this.isStrike()) {
       if((this._rollOne + score) > MAX_SCORE) {
-        alert("There weren't that many pins standing!");
-        throw new Error("There weren't that many pins!");
+        this.errorMessage();
       }
       this._rollTwo = score;
     }
@@ -59,4 +58,8 @@ class Frame {
     return [this._rollOne, this._rollTwo, this._rollThree, this._score];
   }
 
+  errorMessage() {
+    alert("There weren't that many pins standing!");
+    throw new Error("There weren't that many pins!");
+  }
 }

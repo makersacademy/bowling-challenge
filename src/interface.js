@@ -17,11 +17,7 @@ $(document).ready(function() {
     }
   }
   function updateTotal() {
-    let total = 0;
-    for(let i = 0; i <=9; i++) {
-      total += game._frames[i]._score;
-    }
-    $('#total-score').text(total);
+    $('#total-score').text(game._totalScore());
   }
 
 })

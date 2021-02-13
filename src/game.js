@@ -1,16 +1,16 @@
 class Game {
   constructor() {
-    this.rolls = [];
+    this._rolls = [];
   }
 
   roll(pins) {
-    this.rolls.push(pins);
+    this._rolls.push(pins);
   }
 
   score() {
     var result = 0;
     for (var i = 0; i < 20; i++) {
-      result += this.rolls[i];
+      result += this._rolls[i];
     }
     return result;
   }

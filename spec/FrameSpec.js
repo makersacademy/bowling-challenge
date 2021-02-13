@@ -89,4 +89,12 @@ describe('frame', function() {
       expect(frame.frame_Score()).toEqual(17);
     })
   })
+
+  describe('#isFinished', function() {
+    it('tells us if the frame is done', function() {
+      frame.AddRoll1(1);
+      frame.AddRoll2(3);
+      expect(frame.isFinished()).toEqual(true);
+    })
+  })
 })

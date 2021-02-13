@@ -1,12 +1,13 @@
+const STRIKE = 10;
+const SPARE = 10;
+const FRAMES = 10;
+
 class Frame{
   constructor(number = 1){
     this.roll1 = 0;
     this.roll2 = 0;
     this.bonus_roll = 0;
     this.frame_score = 0;
-    this.STRIKE = 10;
-    this.SPARE = 10;
-    this.FRAMES = 10;
     this.number = number;
   }
 
@@ -35,22 +36,26 @@ class Frame{
   }
 
   isStrike(){
-    return this.roll1 === 10;
+    return this.roll1 === STRIKE;
   }
 
   isSpare(){
-    return this.frame_score === 10;
+    return (this.roll1 !== STRIKE && this.frame_score === SPARE);
   }
 
   AddRoll1(roll){
-    this.roll1 = roll;
+    return this.roll1 = roll;
   }
 
   AddRoll2(roll){
-    this.roll2 = roll;
+    return this.roll2 = roll;
   }
 
   AddBonusRoll(roll){
-    this.bonus_roll = roll;
+    return this.bonus_roll = roll;
+  }
+
+  isFinished(){
+    return (this.roll2 !== null || this.isStrike());
   }
 }

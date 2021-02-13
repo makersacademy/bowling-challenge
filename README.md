@@ -1,6 +1,6 @@
 
-Bowling Scorecard (JavaScript)
-=================
+# Bowling Scorecard (JavaScript)
+
 ## Brief
 
 The purpose of this project was to build a bowling scorecard in JavaScript, which sums the scores across ten frames of a game of ten pin bowling for a single player.
@@ -34,22 +34,27 @@ A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 str
 
 ## Getting Started
 
-This program runs in the terminal console allowing for user input.
+The app is hosted on surge at the below address:
 
-To begin,clone the repository from GitHub:
+http://bitter-kittens.surge.sh/
+
+Alternatively, you can also run the index.html:
 ```
-$ git clone ...
+$ open index.html
+```
+Or run on a local server, such as http-server:
+```
+$ npm install --global http-server
+$ http-server ./
+```
+
+Or run from the console, by first cloning the repository from GitHub:
+```
+$ git clone https://github.com/PiperS52/bowling-challenge.git
 $ cd bowling-challenge
 ```
 Create a new scorecard:
 ```
 var scorecard = new Scorecard();
 ```
-### Completed
-- Calculates correct cumulative scores for ten frames(inc bonus rolls)
-
-### To action
-- Build the interface
-
-### Queries
-- Originally planned to use one or two other classes, although with the approach I took, I ended up keeping it to a single class
+![](images/Scorecard-Screenshot.png)

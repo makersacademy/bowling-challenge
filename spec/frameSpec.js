@@ -19,6 +19,7 @@ describe('Frame', function() {
     });
     it('throws error if frame score is greater than 10', function() {
       frame.update(6);
+      spyOn(window, 'alert');
       expect(function() { frame.update(6)} ).toThrowError("There weren't that many pins!");
     });
   })

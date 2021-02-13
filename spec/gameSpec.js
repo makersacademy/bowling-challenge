@@ -32,10 +32,12 @@ describe('Game', function() {
     });
 
     it('throws error if score is greater than 10', function() {
+      spyOn(window, 'alert');
       expect(function() { game.bowl(11)} ).toThrowError('Score must be between ' + MIN_SCORE + ' and ' + MAX_SCORE + '!')
     });
 
     it('throws error if score is less than 0', function() {
+      spyOn(window, 'alert');
       expect(function() { game.bowl(-1)} ).toThrowError('Score must be between ' + MIN_SCORE + ' and ' + MAX_SCORE + '!')
     });
 

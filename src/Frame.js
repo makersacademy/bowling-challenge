@@ -23,7 +23,7 @@ class Frame{
   }
 
   frame_Score(){
-    return (this.roll1 + this.roll2);
+    return (this.roll1 + this.roll2 + this.bonus_roll);
   }
 
   Number(){
@@ -43,10 +43,14 @@ class Frame{
   }
 
   AddRoll1(roll){
-     this.roll1 = roll;
+    this.roll1 = roll;
   }
 
   AddRoll2(roll){
-     this.roll2 = roll;
+    this.roll2 = roll;
+  }
+
+  AddBonusRoll(roll){
+    this.bonus_roll = roll;
   }
 }

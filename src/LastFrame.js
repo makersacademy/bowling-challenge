@@ -16,6 +16,13 @@ class LastFrame extends Frame{
   }
 
   isFinished(){
-    return this.roll1 !== null && this.roll2 !== null && this.bonus_roll !== null
+    if(this.isSpare() && this.bonus_roll === null){
+      return false;
+    } else if(this.roll1 === STRIKE && this.roll2 !== null && this.bonus_roll !== null){
+      return true;
+    } else if(this.roll1 !== STRIKE && this.roll2 !== null && !this.isSpare()) {
+      return true;
+    }
+     return false;
   }
 };

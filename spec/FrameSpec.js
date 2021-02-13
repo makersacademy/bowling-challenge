@@ -26,9 +26,11 @@ describe('frame', function() {
 
   describe('#isSpare', function() {
     it('tells us if it is a spare', function() {
-      frame.frame_score  = 10;
+      frame.AddRolls(5);
+      frame.AddRolls(5);
       expect(frame.isSpare()).toEqual(true);
     })
+    
     it('tells us if it is not a strike', function() {
       expect(frame.isSpare()).toEqual(false);
     })

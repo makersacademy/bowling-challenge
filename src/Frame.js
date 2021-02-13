@@ -20,7 +20,7 @@ class Frame{
   }
 
   isSpare(){
-    return (this.roll1 !== STRIKE && this.roll1 + this.roll2=== SPARE);
+    return (this.roll1 !== STRIKE && this.roll1 + this.roll2 === SPARE);
   }
 
   AddRolls(roll){

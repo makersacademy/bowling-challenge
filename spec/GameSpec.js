@@ -6,7 +6,7 @@ describe('Game', function() {
   beforeEach(function(){
     game = new Game();
     frame = jasmine.createSpyObj('Frame',['frame_Score', 'AddRoll1', 'isStrike'])
-    frame_0 = jasmine.createSpyObj('Frame',['frame_Score', 'AddRoll1', 'isStrike'])
+    frame_1 = jasmine.createSpyObj('Frame',['frame_Score', 'AddRoll1', 'isStrike'])
   })
 
 });

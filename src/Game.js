@@ -14,6 +14,14 @@ class Game{
     this.frame_counter = 0
   }
 
+  run(roll){
+    this.CurrentFrame().AddRolls(roll);
+    this.UpdatePreviousFrame();
+    if(this.CurrentFrame().isFinished()){
+      this.NextFrame();
+    }
+  }
+
   NextFrame(){
     return this.frame_counter += 1;
   }
@@ -31,11 +39,28 @@ class Game{
   }
 
   AddStrikePoints(){
-    if( this.frame_counter === 0){
+    if( this.frame_counter === 0 || !this.PreviousFrame().isStrike() ){
       return;
     }
+    // if(this.CurrentFrame().roll2 === null){
+    //   this.PreviousFrame().AddRolls(roll);
+    // }
     else if( this.PreviousFrame().isStrike() ){
-      return this.PreviousFrame().frame_score += this.CurrentFrame().frame_score;
+      this.PreviousFrame().frame_score += this.CurrentFrame().frame_score;
     }
+  }
+
+  AddSparePoints(){
+    if( this.frame_counter === 0 || !this.PreviousFrame().isSpare() ){
+      return;
+    }
+    if( this.PreviousFrame().isSpare() ){
+      this.PreviousFrame().frame_score += this.CurrentFrame().roll1;
+    }
+  }
+
+  UpdatePreviousFrame(){
+    this.AddStrikePoints();
+    // this.AddSparePoints();
   }
 }

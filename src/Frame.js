@@ -2,7 +2,6 @@
 
 const STRIKE = 10;
 const SPARE = 10;
-const TOTAL_FRAMES = 10;
 
 class Frame{
   constructor(){
@@ -33,10 +32,6 @@ class Frame{
       }
       return this.roll2 = roll;
     }
-  }
-
-  AddBonusRoll(roll){
-    return this.bonus_roll = roll;
   }
 
   isFinished(){

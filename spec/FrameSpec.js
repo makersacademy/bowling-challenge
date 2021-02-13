@@ -52,20 +52,6 @@ describe('frame', function() {
     })
   })
 
-  describe('#AddBonusRoll', function() {
-    it('adds your score to the bonus roll', function() {
-      frame.AddBonusRoll(5);
-      expect(frame.frame_Score()).toEqual(5);
-    })
-
-    it('adds your score to the frame score', function() {
-      frame.AddRolls(10);
-      frame.AddRolls(4);
-      frame.AddBonusRoll(3);
-      expect(frame.frame_Score()).toEqual(17);
-    })
-  })
-
   describe('#isFinished', function() {
     it('tells us if the frame is done', function() {
       frame.AddRolls(1);

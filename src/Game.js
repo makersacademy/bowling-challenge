@@ -10,13 +10,14 @@ class Game{
     for (let i = 1; i < MAX_FRAMES; i++) {
       this.frames.push(new frameClass())
     }
+    this.frames.push(new LastFrame())
     this.frame_counter = 0
   }
 
   NextFrame(){
     return this.frame_counter += 1;
   }
-  
+
   CurrentFrame(){
     return this.frames[this.frame_counter];
   }
@@ -30,7 +31,10 @@ class Game{
   }
 
   AddStrikePoints(){
-    if( this.PreviousFrame().isStrike() ){
+    if( this.frame_counter === 0){
+      return;
+    }
+    else if( this.PreviousFrame().isStrike() ){
       return this.PreviousFrame().frame_score += this.CurrentFrame().frame_score;
     }
   }

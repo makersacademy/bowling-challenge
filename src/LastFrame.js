@@ -7,12 +7,13 @@ class LastFrame extends Frame{
 
   AddRolls(roll){
     if(this.roll1 === null){
-      return this.roll1 = roll;
+       this.roll1 = roll;
     }else if(this.roll2 === null){
-      return this.roll2 = roll;
+      this.roll2 = roll;
     }else if(this.bonus_roll === null){
-      return this.bonus_roll = roll;
+      this.bonus_roll = roll;
     }
+    this.frame_score += roll;
   }
 
   isFinished(){

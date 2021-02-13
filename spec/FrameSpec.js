@@ -1,13 +1,13 @@
 "use strict";
 
-describe('frame', function() {
+describe('Frame', function() {
   var frame;
 
   beforeEach(function() {
     frame = new Frame();
   });
 
-  describe('#attr reader functions', function() {
+  describe('#frame_Score', function() {
     it('should start with 0 for frame score', function() {
       expect(frame.frame_Score()).toEqual(0);
     })
@@ -30,7 +30,7 @@ describe('frame', function() {
       frame.AddRolls(5);
       expect(frame.isSpare()).toEqual(true);
     })
-    
+
     it('tells us if it is not a strike', function() {
       expect(frame.isSpare()).toEqual(false);
     })

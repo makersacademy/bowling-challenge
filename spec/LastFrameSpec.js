@@ -8,11 +8,23 @@ describe('LastFrame', function() {
   });
 
   describe('#AddRolls', function() {
-    it('adds your score to the roll1', function() {
+    it('when you have a strike', function() {
       frame10.AddRolls(10);
       frame10.AddRolls(4);
       frame10.AddRolls(3);
       expect(frame10.frame_Score()).toEqual(17);
+    })
+    it('when you have a spare', function() {
+      frame10.AddRolls(6);
+      frame10.AddRolls(4);
+      frame10.AddRolls(3);
+      expect(frame10.frame_Score()).toEqual(13);
+    })
+
+    it('when you have neither', function() {
+      frame10.AddRolls(6);
+      frame10.AddRolls(3);
+      expect(frame10.frame_Score()).toEqual(9);
     })
   });
 

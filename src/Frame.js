@@ -1,13 +1,16 @@
 class Frame {
   constructor() {
     this.score = [];
+    this.frameComplete = false;
   }
 
   roll = pins => {
     if(this.score.length === 2 || this.isStrike()){
-      throw new Error('frame complete')
+      throw new Error('frame complete');
+    } else {
+      this.score.push(pins);
+      this.frameCompleted();
     }
-    this.score.push(pins);
   }
 
   showScore = () => {
@@ -16,6 +19,10 @@ class Frame {
 
   isStrike = () => {
     if(this.score[0] === 10) {
+      this.score[0] = 'strike';
+    }
+
+    if(this.score[0] === 'strike') {
       return true;
     } else {
       return false;
@@ -28,5 +35,15 @@ class Frame {
     } else {
       return false;
     }
+  }
+
+  frameCompleted = () => {
+    if (this.score.length === 2 || this.isStrike()) {
+      this.frameComplete = true;
+    }
+  }
+
+  isComplete = () => {
+    return this.frameComplete;
   }
 }

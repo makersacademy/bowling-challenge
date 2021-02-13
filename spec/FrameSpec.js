@@ -57,4 +57,11 @@ describe ('Frame', function() {
       expect(frame.isSpare()).toEqual(false);
     })
   })
+
+  describe('isComplete', function() {
+    it('returns true when complete', function() {
+      frame.roll(10);
+      expect(frame.isComplete()).toEqual(true);
+    })
+  })
 })

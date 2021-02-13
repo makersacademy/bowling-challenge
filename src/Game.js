@@ -1,3 +1,5 @@
+"use strict";
+
 class Game {
 
   constructor() {
@@ -36,6 +38,14 @@ class Game {
       this.owedRolls[`frame_${this.frames.length}`] = owed
       this.createFrame()
     }
+  }
+
+  finalScore() {
+    let finalScore = 0
+    Object.values(this.scores).forEach( function(value) {
+      finalScore += value
+    })
+    return finalScore
   }
 
 }

@@ -1,8 +1,15 @@
 describe("Game", function() {
-  let game;
+  let game, frameSpy;
 
   beforeEach(function() {
     game = new Game();
+
+    // frameSpy = jasmine.createSpyObj("frameSpy", {
+    //   "addRoll": undefined,
+    //   "isCompleted": false,
+    //   "owedRolls": 2
+    //   })
+
   })
 
   describe("creates a frame", function() {
@@ -54,7 +61,14 @@ describe("Game", function() {
 
       game.inputRoll(2)
       expect(game.scores.frame_1).toEqual(12)
+    })
 
+    it("knows final score", function() {
+      rolls = [1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6]
+      rolls.forEach( (pins) => {
+        game.inputRoll(pins)
+      })
+      expect(game.finalScore()).toEqual(133)
     })
 
   })

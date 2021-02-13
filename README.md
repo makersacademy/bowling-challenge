@@ -1,6 +1,8 @@
 
 # Bowling Scorecard (JavaScript)
 
+![](images/Scorecard-Screenshot.png)
+
 ## Brief
 
 The purpose of this project was to build a bowling scorecard in JavaScript, which sums the scores across ten frames of a game of ten pin bowling for a single player.
@@ -57,4 +59,3 @@ Create a new scorecard:
 ```
 var scorecard = new Scorecard();
 ```
-![](images/Scorecard-Screenshot.png)

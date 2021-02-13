@@ -1,5 +1,17 @@
-
 Bowling Challenge
+=================
+
+## My Reflection
+
+I was pretty pleased with the progress I made with this in the end (caveat: it is by no means a finished product!).
+
+### Still to do:
+Grey out options that are not possible (eg after a roll of 8, anything greater than 2 should be greyed out). They are currently disabled.
+
+The final frame does not display correctly on the website at the moment (ie bonus rolls are not visible).
+
+Handle thrown errors by displaying them as an alert to the user.
+
 =================
 
 * Feel free to use google, your notes, books, etc. but work on your own

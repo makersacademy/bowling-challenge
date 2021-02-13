@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="index.css">
+    <script src="src/Game.js"></script>
+    <script src="src/Frame.js"></script>
+    <script src="src/Scorer.js"></script>
+  </head>
+  <body>
+    <script src="jquery.js"></script>
+    <script src="interface.js"></script>
+    <header>
+      Picture of 10 pin bowling
+      <button id="reset">Start Again</button>
+    </header>
+
+    <div class="frame_results">
+
+      <div class="frame">
+        <h3>Frame 1</h3>
+        <div class="roll1">
+          <h2 id="f1r1"></h2>
+        </div>
+        <div class="roll2">
+          <h2 id="f1r2"></h2>
+        </div>
+        <h3 class="frame_score" id="frame1_score"></h3>
+      </div>
+
+      <div class="frame">
+        <h3>Frame 2</h3>
+        <div class="roll1">
+          <h2 id="f2r1"></h2>
+        </div>
+        <div class="roll2">
+          <h2 id="f2r2"></h2>
+        </div>
+        <h3 class="frame_score" id="frame2_score"></h3>
+      </div>
+
+      <div class="frame">
+        <h3>Frame 3</h3>
+        <div class="roll1">
+          <h2 id="f3r1"></h2>
+        </div>
+        <div class="roll2">
+          <h2 id="f3r2"></h2>
+        </div>
+        <h3 class="frame_score" id="frame3_score"></h3>
+      </div>
+
+      <div class="frame">
+        <h3>Frame 4</h3>
+        <div class="roll1">
+          <h2 id="f4r1"></h2>
+        </div>
+        <div class="roll2">
+          <h2 id="f4r2"></h2>
+        </div>
+        <h3 class="frame_score" id="frame4_score"></h3>
+      </div>
+
+      <div class="frame">
+        <h3>Frame 5</h3>
+        <div class="roll1">
+          <h2 id="f5r1"></h2>
+        </div>
+        <div class="roll2">
+          <h2 id="f5r2"></h2>
+        </div>
+        <h3 class="frame_score" id="frame5_score"></h3>
+      </div>
+
+      <div class="frame">
+        <h3>Frame 6</h3>
+        <div class="roll1">
+          <h2 id="f6r1"></h2>
+        </div>
+        <div class="roll2">
+          <h2 id="f6r2"></h2>
+        </div>
+        <h3 class="frame_score" id="frame6_score"></h3>
+
+      </div>
+
+      <div class="frame">
+        <h3>Frame 7</h3>
+        <div class="roll1">
+          <h2 id="f7r1"></h2>
+        </div>
+        <div class="roll2">
+          <h2 id="f7r2"></h2>
+        </div>
+        <h3 class="frame_score" id="frame7_score"></h3>
+
+      </div>
+
+      <div class="frame">
+        <h3>Frame 8</h3>
+        <div class="roll1">
+          <h2 id="f8r1"></h2>
+        </div>
+        <div class="roll2">
+          <h2 id="f8r2"></h2>
+        </div>
+        <h3 class="frame_score" id="frame8_score"></h3>
+
+      </div>
+
+      <div class="frame">
+        <h3>Frame 9</h3>
+        <div class="roll1">
+          <h2 id="f9r1"></h2>
+        </div>
+        <div class="roll2">
+          <h2 id="f9r2"></h2>
+        </div>
+        <h3 class="frame_score" id="frame9_score"></h3>
+
+      </div>
+
+      <div class="frame">
+        <h3>Frame 10</h3>
+        <div class="roll1">
+          <h2 id="f10r1"></h2>
+        </div>
+        <div class="roll2">
+          <h2 id="f10r2"></h2>
+        </div>
+        <h3 class="frame_score" id="frame10_score"></h3>
+      </div>
+
+    </div>
+
+    <div class="overall_score">
+      <h1>Overall Score: </h1>
+      <h1 id="overall_score"></h1>
+    </div>
+
+    <div class="User_Entries" id="Roll_1">
+      <h1>Enter Roll:</h1>
+      <select class="User_Roll" name="User_Roll">
+          <option value="" selected="selected"></option>
+          <option value="0">0 pins</option>
+          <option value="1">1 pins</option>
+          <option value="2">2 pins</option>
+          <option value="3">3 pins</option>
+          <option value="4">4 pins</option>
+          <option value="5">5 pins</option>
+          <option value="6">6 pins</option>
+          <option value="7">7 pins</option>
+          <option value="8">8 pins</option>
+          <option value="9">9 pins</option>
+          <option value="10">10 pins</option>
+      </select>
+    </div>
+
+    <div class="gameover">
+      <h2 id="gameover"></h2>
+    </div>
+  </body>
+</html>

@@ -24,10 +24,20 @@ describe('Game', function() {
       game.bowl(6);
       expect(game._currentFrame().update).toHaveBeenCalledWith(6);  
     });
+
     it('starts new frame if current one is finished', function() {
       frame.isFinished.and.returnValue(true)
       game.bowl(10);
       expect(game._frameCounter).toEqual(1);
     });
+
+    it('throws error if score is greater than 10', function() {
+      expect(function() { game.bowl(11)} ).toThrowError('Score must be between ' + MIN_SCORE + ' and ' + MAX_SCORE + '!')
+    });
+
+    it('throws error if score is less than 0', function() {
+      expect(function() { game.bowl(-1)} ).toThrowError('Score must be between ' + MIN_SCORE + ' and ' + MAX_SCORE + '!')
+    });
+
   });
 });

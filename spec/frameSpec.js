@@ -17,6 +17,10 @@ describe('Frame', function() {
       frame.update(3);
       expect(frame._rollTwo).toEqual(3);
     });
+    it('throws error if frame score is greater than 10', function() {
+      frame.update(6);
+      expect(function() { frame.update(6)} ).toThrowError("There weren't that many pins!");
+    });
   })
 
   describe('isFinished', function() {

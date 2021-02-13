@@ -16,6 +16,9 @@ class Frame {
       this._rollOne = score;
     }
     else if(this._rollTwo === null && !this.isStrike()) {
+      if((this._rollOne + score) > MAX_SCORE) {
+        throw new Error("There weren't that many pins!");
+      }
       this._rollTwo = score;
     }
     this._score += score;

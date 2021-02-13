@@ -1,6 +1,8 @@
 "use strict";
 
 const NUMBER_OF_FRAMES = 10;
+const MAX_SCORE = 10;
+const MIN_SCORE = 0;
 
 class Game {
 
@@ -14,6 +16,9 @@ class Game {
   }
 
   bowl(score) {
+    if(score > MAX_SCORE || score < MIN_SCORE) {
+      throw new Error('Score must be between ' + MIN_SCORE + ' and ' + MAX_SCORE + '!');
+    }
     this._currentFrame().update(score);
     this._updatePreviousFrames(score);
     if(this._currentFrame().isFinished()) {

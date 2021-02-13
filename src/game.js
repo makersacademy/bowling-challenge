@@ -17,11 +17,15 @@ class Game {
 
   bowl(score) {
     if(score > MAX_SCORE || score < MIN_SCORE) {
+      alert('Score must be between ' + MIN_SCORE + ' and ' + MAX_SCORE + '!');
       throw new Error('Score must be between ' + MIN_SCORE + ' and ' + MAX_SCORE + '!');
     }
     this._currentFrame().update(score);
     this._updatePreviousFrames(score);
     if(this._currentFrame().isFinished()) {
+      if(this._frameCounter === 9) {
+        alert("Congratulations! You scored " + this._totalScore());
+      }
       this._startNextFrame();
     }
   }
@@ -60,5 +64,13 @@ class Game {
       this._frameBeforeLast().update(score);
     }
   }
+
+  _totalScore() {
+    let total = 0;
+    for(let i = 0; i <=9; i++) {
+      total += this._frames[i]._score;
+    }
+    return total;
+  } 
 
 }

@@ -1,15 +1,19 @@
-#main {
-  max-width: 600px;
-  margin: 0 auto; 
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(183, 231, 250);
 }
 
 .input {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
   display: block;
   position: relative;
   width: 25%;
   margin: 0px auto;
+  margin-top: 50px;
   padding: 10px;
   border: solid black 2px;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .bowl {
@@ -19,7 +23,7 @@
 .scorecard {
   display: block;
   position: relative;
-  width: 50%;
+  width: 25%;
   margin: 0px auto;
   padding: 10px;
 }
@@ -27,13 +31,24 @@
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
-  /* background-color: #2196F3; */
-  padding: 4px;
 }
+
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 0px;
   font-size: 18px;
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.total-score {
+  margin: 0px auto;
+  width: 3%;
+  padding: 20px;
 }

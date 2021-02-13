@@ -1,38 +1,19 @@
+"use strict";
+
 const STRIKE = 10;
 const SPARE = 10;
-const FRAMES = 10;
+const TOTAL_FRAMES = 10;
 
 class Frame{
-  constructor(number = 1){
-    this.roll1 = 0;
-    this.roll2 = 0;
-    this.bonus_roll = 0;
+  constructor(){
+    this.roll1 = null;
+    this.roll2 = null;
+    this.bonus_roll = null;
     this.frame_score = 0;
-    this.number = number;
-  }
-
-  roll_1(){
-    return this.roll1;
-  }
-
-  roll_2(){
-    return this.roll2;
-  }
-
-  bonus_Roll(){
-    return this.bonus_roll;
   }
 
   frame_Score(){
     return (this.roll1 + this.roll2 + this.bonus_roll);
-  }
-
-  Number(){
-    return this.number;
-  }
-
-  Next(){
-    return this.number += 1;
   }
 
   isStrike(){
@@ -43,12 +24,15 @@ class Frame{
     return (this.roll1 !== STRIKE && this.frame_score === SPARE);
   }
 
-  AddRoll1(roll){
-    return this.roll1 = roll;
-  }
-
-  AddRoll2(roll){
-    return this.roll2 = roll;
+  AddRolls(roll){
+    if( this.roll1 === null){
+      return this.roll1 = roll;
+    }else if( this.roll2 === null && !this.isStrike()){
+      if(this.roll1 + roll > MAX_SCORE){
+        throw new Error('There are not that many pins');
+      }
+      return this.roll2 = roll;
+    }
   }
 
   AddBonusRoll(roll){

@@ -12,7 +12,14 @@ class Game {
     this.frames[this.frames.length - 1].addRoll(pins)
     this.scores[`frame_${this.frames.length}`] += pins
 
-    owedRolls.forEach
+    Object.keys(this.owedRolls).forEach(key => {
+      if (this.owedRolls[key] === 0) {
+        return
+      } else {
+        this.scores[key] += pins;
+        this.owedRolls[key] -= 1
+      }
+    })
 
   }
 

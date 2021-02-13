@@ -47,6 +47,16 @@ describe("Game", function() {
       expect(game.owedRolls.frame_1).toEqual(1)
     })
 
+    it("adds on the next roll if there was a spare", function() {
+      game.inputRoll(4)
+      game.inputRoll(6)
+      expect(game.scores.frame_1).toEqual(10)
+
+      game.inputRoll(2)
+      expect(game.scores.frame_1).toEqual(12)
+
+    })
+
   })
 
 

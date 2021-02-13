@@ -9,8 +9,10 @@ class Game {
 
   score() {
     var result = 0;
-    for (var i = 0; i < 20; i++) {
-      result += this._rolls[i];
+    var index = 0;
+    for (var i = 0; i < 10; i++) {
+      result += this._rolls[index] + this._rolls[index + 1];
+      index += 2;
     }
     return result;
   }

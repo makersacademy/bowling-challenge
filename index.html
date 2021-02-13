@@ -9,21 +9,83 @@
 <body>
   <div id='input' class='container'>
     <section class='input'>
-      <h3>Score: <span id="bowl-score"></span></h3>
-      <form id="bowl">
-        <input id="bowl" type="number" placeholder="10"></input>
+      <form id="bowl-score">
+        <label>Score:</label>
+        <input class = "bowl" id="score" type="number" placeholder="10"></input>
         <input type="submit"></input>
       </form>
     </section>
   </div>
-  
+
   <div id='scorecard' class='container'>
     <section class='scorecard'>
-      <h1 id="scorecard">Scorecard</h1>
-      <div class='Headings'>
-        <p>
+      <h1>Scorecard</h1>
+      <div class="grid-container">
+        <div class="grid-item"><b>Frame</b></div>
+        <div class="grid-item"><b>1st</b></div>
+        <div class="grid-item"><b>2nd</b></div>  
+        <div class="grid-item"><b>Bonus</b></div>
+        <div class="grid-item"><b>Score</b></div>
 
-        </p>
+        <div class="grid-item">1</div>  
+        <div class="grid-item" id="f1r1">-</div>
+        <div class="grid-item" id="f1r2">-</div>
+        <div class="grid-item" id="f1r3">-</div>
+        <div class="grid-item" id="f1r4">-</div>
+
+        <div class="grid-item">2</div>  
+        <div class="grid-item" id="f2r1">-</div>
+        <div class="grid-item" id="f2r2">-</div>
+        <div class="grid-item" id="f2r3">-</div>
+        <div class="grid-item" id="f2r4">-</div>
+
+        <div class="grid-item">3</div>  
+        <div class="grid-item" id="f3r1">-</div>
+        <div class="grid-item" id="f3r2">-</div>
+        <div class="grid-item" id="f3r3">-</div>
+        <div class="grid-item" id="f3r4">-</div>
+
+        <div class="grid-item">4</div>  
+        <div class="grid-item" id="f4r1">-</div>
+        <div class="grid-item" id="f4r2">-</div>
+        <div class="grid-item" id="f4r3">-</div>
+        <div class="grid-item" id="f4r4">-</div>
+
+        <div class="grid-item">5</div>  
+        <div class="grid-item" id="f5r1">-</div>
+        <div class="grid-item" id="f5r2">-</div>
+        <div class="grid-item" id="f5r3">-</div>
+        <div class="grid-item" id="f5r4">-</div>
+
+        <div class="grid-item">6</div>  
+        <div class="grid-item" id="f6r1">-</div>
+        <div class="grid-item" id="f6r2">-</div>
+        <div class="grid-item" id="f6r3">-</div>
+        <div class="grid-item" id="f6r4">-</div>
+
+        <div class="grid-item">7</div>  
+        <div class="grid-item" id="f7r1">-</div>
+        <div class="grid-item" id="f7r2">-</div>
+        <div class="grid-item" id="f7r3">-</div>
+        <div class="grid-item" id="f7r4">-</div>
+
+        <div class="grid-item">8</div>  
+        <div class="grid-item" id="f8r1">-</div>
+        <div class="grid-item" id="f8r2">-</div>
+        <div class="grid-item" id="f8r3">-</div>
+        <div class="grid-item" id="f8r4">-</div>
+
+        <div class="grid-item">9</div>  
+        <div class="grid-item" id="f9r1">-</div>
+        <div class="grid-item" id="f9r2">-</div>
+        <div class="grid-item" id="f9r3">-</div>
+        <div class="grid-item" id="f9r4">-</div>
+
+        <div class="grid-item">5</div>  
+        <div class="grid-item" id="f10r1">-</div>
+        <div class="grid-item" id="f10r2">-</div>
+        <div class="grid-item" id="f10r3">-</div>
+        <div class="grid-item" id="f10r4">-</div>  
       </div>
     </section>
   </div>
@@ -32,6 +94,8 @@
   <script src="jquery.js"></script>
   <script src="src/interface.js"></script>
   <script src="src/game.js"></script>
+  <script src="src/frame.js"></script>
+  <script src="src/frameTen.js"></script>
 </body>
 
 </html>

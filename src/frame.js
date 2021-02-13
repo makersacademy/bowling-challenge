@@ -52,4 +52,8 @@ class Frame {
     return false;
   }
 
+  rollsAndScore() {
+    return [this._rollOne, this._rollTwo, this._rollThree, this._score];
+  }
+
 }

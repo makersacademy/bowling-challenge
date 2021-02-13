@@ -1,20 +1,19 @@
 $(document).ready(function() {
   let game = new Game();
 
-  // $('#select-city').submit(function(event){
-  //   event.preventDefault();
-  //   let city = $('#current-city').val();
-  //   displayWeather(city);
-  // })
+  $('#bowl-score').submit(function(event){
+    event.preventDefault();
+    let score = $('#score').val();
+    game.bowl(Number(score));
+    updateScorecard();
+  })
 
-  // function displayWeather(city) {
-  //   let url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city;
-  //   let token = '&appid=39f4e0936bb0edbcca55a829a6e33bc3';
-  //   let units = '&units=metric';
-  //   $.get(url + token + units, function(data){
-  //     $('#current-temperature').text(data.main.temp);
-  //   })
-  // }
-
+  function updateScorecard() {
+    for(let i = 0; i <=9; i++) {
+      for(let j = 1; j <=4; j++) {
+        $('#f'+ (i+1) +'r'+ j).text(game._frames[i].rollsAndScore()[j-1]);
+      }
+    }
+  }
 
 })

@@ -10,7 +10,7 @@ Navigate to the directory in the terminal and run:
 open index.html
 ```
 
-To run tests, run:
+To run tests:
 ```
 open SpecRunner.html
 ```

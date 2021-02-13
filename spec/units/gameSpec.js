@@ -1,9 +1,13 @@
 'use strict';
 
 describe('Game', function() {
-  let game = new Game();
+  var game;
 
-  describe('it initializes with an empty frames array', function() {
-    expect(game.frames).toBe([])
+  beforeEach(function() {
+    game = new Game();
+  });
+
+  it('initializes with an empty frames array', function() {
+    expect(game.frames).toEqual([])
   })
 })

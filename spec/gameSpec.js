@@ -7,10 +7,17 @@ describe("Game", function () {
 
   describe("score", function () {
     it("can return 0 if all fail", function () {
-      for (var i; (i = 0); i++) {
+      for (var i = 0; i < 20; i++) {
         game.roll(0);
       }
-      expect(game.score()).toEqual(0);
+      expect(game.score()).toBe(0);
+    });
+
+    it("can return score of 20 if all 1", function () {
+      for (var i = 0; i < 20; i++) {
+        game.roll(1);
+      }
+      expect(game.score()).toBe(20);
     });
   });
 });

@@ -20,11 +20,14 @@ describe("Game", function () {
       expect(game.score()).toBe(20);
     });
 
-    // it("can return a spare", function () {
-    //   game.roll(5);
-    //   game.roll(5);
-    //   game.roll(4);
-    //   expect(game.score).toBe(18);
-    // });
+    it("can return a spare", function () {
+      game.roll(5);
+      game.roll(5);
+      game.roll(4);
+      for (var i = 0; i < 17; i++) {
+        game.roll(0);
+      }
+      expect(game.score()).toBe(18);
+    });
   });
 });

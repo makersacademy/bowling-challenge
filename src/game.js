@@ -10,8 +10,14 @@ class Game {
   score() {
     var result = 0;
     var index = 0;
+
     for (var i = 0; i < 10; i++) {
-      result += this._rolls[index] + this._rolls[index + 1];
+      if (this._rolls[index] + this._rolls[index + 1] == 10) {
+        result +=
+          this._rolls[index] + this._rolls[index + 1] + this._rolls[index + 2];
+      } else {
+        result += this._rolls[index] + this._rolls[index + 1];
+      }
       index += 2;
     }
     return result;

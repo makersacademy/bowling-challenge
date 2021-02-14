@@ -5,19 +5,16 @@ $(document).ready(function() {
     $('#score').text(game.totalScore());
   }
 
-  seeFrames = () => {
-    $('#frames').text(game.showFrames());
-  }
-
   bowl = pins => {
     game.roll(pins);
+    console.log(game.totalScore())
+    
     updateScore();
-    seeFrames()
   }
 
   $('button').click(function() {
     var id = $(this).attr('id');
-    bowl(id);
+    bowl(+id);
   });
 
   updateScore();

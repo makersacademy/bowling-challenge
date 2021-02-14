@@ -30,6 +30,7 @@ class Game {
       this.currentScore += (this.currentFrame().frameScore * 2) + this.previousFrame().frameScore;
     } else if (this.frames.length > 1 && this.currentFrame().isComplete() && this.currentFrame().isStrike() && this.previousFrame().isStrike()) {
       this.previousFrame().update(10);
+      this.currentFrame().update(10)
       this.currentScore += (this.currentFrame().frameScore * 2) + this.previousFrame().frameScore;
     }
   }

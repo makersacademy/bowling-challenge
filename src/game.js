@@ -14,7 +14,16 @@ class Game {
   score() {
     for (let i = 1; i < 11; i++) {
       // where i is the frame number
-      if (this.rolls[this.rollIndex] + this.rolls[this.rollIndex + 1] === 10) {
+      if (this.rolls[this.rollIndex] === 10) {
+        // if a strike it hit add bonus points equal to the number of pins knocked on the next roll and the roll after that
+        this.points +=
+          this.rolls[this.rollIndex] +
+          this.rolls[this.rollIndex + 1] +
+          this.rolls[this.rollIndex + 2];
+        this.rollIndex += 1;
+      }
+
+      else if (this.rolls[this.rollIndex] + this.rolls[this.rollIndex + 1] === 10) {
         // if the frame is a spare add bonus points equal to the number of pins knocked on the next roll
         this.points +=
           this.rolls[this.rollIndex] +

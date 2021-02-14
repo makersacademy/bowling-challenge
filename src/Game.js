@@ -5,6 +5,7 @@ class Game {
   constructor() {
     this.frames = []
     this.scores = {}
+    this.cumulScores = {}
     this.owedRolls = {}
   }
 
@@ -22,11 +23,13 @@ class Game {
         this.owedRolls[key] -= 1
       }
     })
+    this.frameCumulScore()
   }
 
   createFrame() {
     this.frames.push(new Frame(this.frames.length + 1))
     this.scores[`frame_${this.frames.length}`] = 0
+    this.cumulScores[`frame_${this.frames.length}`] = 0
   }
 
   frameCheck() {
@@ -45,6 +48,13 @@ class Game {
       totalScore += value
     })
     return totalScore
+  }
+
+  frameCumulScore() {
+    this.cumulScores[`frame_1`] = this.scores[`frame_1`]
+    for (let i = 2; i < 11; i++) {
+      this.cumulScores[`frame_${i}`] = this.scores[`frame_${i}`] + this.cumulScores[`frame_${i - 1}`]
+    }
   }
 
 }

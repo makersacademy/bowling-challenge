@@ -64,6 +64,16 @@ describe("Game", function() {
       expect(game.totalScore()).toEqual(133)
     })
 
+    it("calculates cumulative scores", function() {
+      game.inputRoll(1)
+      game.inputRoll(9)
+      game.inputRoll(8)
+      expect(game.cumulScores.frame_2).toEqual(26)
+      game.inputRoll(0)
+      game.inputRoll(4)
+      expect(game.cumulScores.frame_2).toEqual(26)
+    })
+
   })
 
 

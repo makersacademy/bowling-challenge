@@ -14,6 +14,7 @@ class Game {
   score() {
     for (let i = 1; i < 11; i++) {
       // where i is the frame number
+
       if (this.isStrike()) {
         this.addStrikePointsToFrame();
         this.rollIndex += 1;
@@ -24,6 +25,22 @@ class Game {
         this.addPointsToFrame();
         this.rollIndex += 2;
       }
+
+      // // Using a Switch statament
+
+      // switch (typeof this.rolls[this.rollIndex] === 'number') {
+      //   case this.isStrike():
+      //     this.addStrikePointsToFrame();
+      //     this.rollIndex += 1;
+      //     break;
+      //   case this.isSpare():
+      //     this.addSparePointsToFrame();
+      //     this.rollIndex += 2;
+      //     break;
+      //   default:
+      //     this.addPointsToFrame();
+      //     this.rollIndex += 2
+      // }
     }
     return this.points;
   }

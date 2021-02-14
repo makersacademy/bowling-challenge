@@ -83,4 +83,30 @@ describe("score", () => {
     expect(game.score()).toBe(22);
     expect(game.score()).not.toBe(16);
   })
+
+  it("adds bonus points after getting a strike", () => {
+    game.roll(10);
+    game.roll(7);
+    game.roll(2);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    expect(game.score()).toBe(28);
+    expect(game.score()).not.toBe(19);
+    expect(game.score()).not.toBe(24);
+    expect(game.score()).not.toBe(26);
+  })
 });

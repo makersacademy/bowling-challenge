@@ -90,15 +90,19 @@ describe('Game', function() {
   describe('calculating bonuses', function() {
     it('strikes open bonus class status 2', function() {
       game.input_bowl(10);
+      game.input_bowl(2);
       expect(game.bonuses.length).toEqual(1);
-      expect(game.bonuses[0].status).toEqual(2);
+      expect(game.bonuses[0].status).toEqual(1);
     })
 
     it('spares open bonus class status 1', function() {
       game.input_bowl(8);
       game.input_bowl(2);
-      expect(game.bonuses.length).toEqual(1);
-      expect(game.bonuses[0].status).toEqual(1);
+      game.input_bowl(2);
+      expect(game.bonuses.length).toBe(1);
+      expect(game.bonuses[0].status).toBe(0);
+      game.calculateScore();
+      expect(game.score).toBe(14)
     })
   })
 })

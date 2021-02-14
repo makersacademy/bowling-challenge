@@ -13,8 +13,8 @@ class Frame {
     this.current = pins;
     if(this.isClosed()) this._open = false;
     if(this.isStrike()) { return this._bonus = 2 }
-    else if(this.isSpare()) { return this._bonus = 1 }
-    else { return this._bonus = 0 }
+    if(this.isSpare()) { return this._bonus = 1 }
+    // else { return this._bonus = 0 }
   }
 
   isClosed() {
@@ -24,7 +24,8 @@ class Frame {
   }
 
   isStrike() {
-    return this._rolls.length === 1 && this._pins === 10;
+    return this._number < 10 && this._rolls.length === 1 && this._pins === 10
+    || this._number === 10 && this._rolls.length <= 3 && this._pins === 10
   }
 
   isSpare() {

@@ -25,6 +25,15 @@ describe("Frame", function() {
       frame.add_roll(8);
       expect(frame.open).toBe(true);
     })
+
+    it('allows a third roll if strike', function() {
+      frame = new Frame(10,10);
+      expect(frame.open).toBe(true);
+      frame.add_roll(10);
+      expect(frame.open).toBe(true);
+      frame.add_roll(10);
+      expect(frame.open).toBe(false);
+    })
   })
 
 

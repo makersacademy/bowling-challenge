@@ -11,9 +11,6 @@ class Frame {
   add_roll(pins) {
     this.current = pins;
     if(this.isClosed()) this._open = false;
-
-
-
   }
 
   isClosed() {

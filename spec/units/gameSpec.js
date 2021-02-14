@@ -74,4 +74,16 @@ describe('Game', function() {
       expect(game.isOver()).toBe(true);
     })
   })
+
+  describe('end of game', function() {
+    it('prevents more rolls and says game over', function() {
+      for ( let i = 0; i < 20; i++ ) {
+        game.input_bowl(2);
+      }
+      console.log = jasmine.createSpy("log");
+      game.input_bowl(2);
+      expect(console.log).toHaveBeenCalledWith("Game over!");
+      expect(game.frames.length).toEqual(10);
+    })
+  })
 })

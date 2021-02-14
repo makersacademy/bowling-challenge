@@ -7,10 +7,14 @@ class Game {
   }
 
   input_bowl(pins) {
-    if(this.addFrame()) this.current = new Frame(this._frames.length + 1, pins);
-    this._frames[this._frames.length - 1].add_roll(pins);
-    // this.calculateScore();
-    return pins;
+    if(this.isOver()) {
+      return console.log("Game over!");
+
+    } else {
+      if(this.addFrame()) this.current = new Frame(this._frames.length + 1, pins);
+      this._frames[this._frames.length - 1].add_roll(pins);
+      this.calculateScore();
+      return pins };
   }
 
   addFrame() {

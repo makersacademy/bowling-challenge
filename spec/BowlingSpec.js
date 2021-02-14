@@ -50,6 +50,11 @@ describe('Bowling', function(){
     expect(game.score()).toEqual(22)
   })
 
-  
+  it('can roll a perfect game', function(){
+    for (var i = 0; i < 20; i++) {
+      game.roll(10)
+    }
+    expect(game.score()).toEqual(300)
+  })
 
 });

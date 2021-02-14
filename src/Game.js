@@ -15,11 +15,16 @@ class Game{
   }
 
   run(roll){
+    console.log(this.CurrentFrame());
     this.CurrentFrame().AddRolls(roll);
-    this.UpdatePreviousFrame();
+    console.log(this.CurrentFrame());
+    console.log(this.PreviousFrame());
     if(this.CurrentFrame().isFinished()){
+      this.UpdatePreviousFrame();
       this.NextFrame();
     }
+    console.log(this.PreviousFrame());
+    console.log(this.FrameBeforeLast());
   }
 
   NextFrame(){
@@ -42,9 +47,6 @@ class Game{
     if( this.frame_counter === 0 || !this.PreviousFrame().isStrike() ){
       return;
     }
-    // if(this.CurrentFrame().roll2 === null){
-    //   this.PreviousFrame().AddRolls(roll);
-    // }
     else if( this.PreviousFrame().isStrike() ){
       this.PreviousFrame().frame_score += this.CurrentFrame().frame_score;
     }
@@ -61,6 +63,14 @@ class Game{
 
   UpdatePreviousFrame(){
     this.AddStrikePoints();
-    // this.AddSparePoints();
+    this.AddSparePoints();
+  }
+
+  total_score() {
+    var total = 0
+    this.frames.forEach(function(frame){
+      total += frame.frame_score;
+    })
+    return total;
   }
 }

@@ -69,7 +69,7 @@ describe("frame scoring", () => {
     describe("when you score a spare", () => {
       beforeEach(() => {
         frame.addScore(score)
-        frame.addScore(10 - score)
+        frame.addScore(strike - score)
       })
       it("instantly sets need bonus to false", () => {
         expect(frame.isMissingBonus()).toBe(true)
@@ -103,11 +103,16 @@ describe("frame scoring", () => {
       })
     })
     describe("when you got a spare in the main frame", () => {
+      beforeEach(() => {
+        finalFrame.addScore(score)
+        finalFrame.addScore(strike - score)
+      })
       it("should not be complete", () => {
         expect(finalFrame.isComplete()).toBe(false)
-        finalFrame.addScore(score)
-        finalFrame.addScore(score)
-        expect(finalFrame.isComplete()).toBe(false)
+      })
+      it("is completed by adding a bonus", () => {
+        finalFrame.addBonusScore(score)
+        expect(finalFrame.isComplete()).toBe(true)
       })
     })
   })

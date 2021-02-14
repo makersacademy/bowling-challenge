@@ -19,8 +19,8 @@ class Frame {
   }
 
   isComplete() {
-    if(this.isFinalFrame) {
-      return this.scores.length === 2 && !this.isStrikeOrSpare()
+    if(this.isFinalFrame && this.isStrikeOrSpare()) {
+      return !this.isMissingBonus()
     } else {
       return this.isStrike() || this.scores.length === 2
     }

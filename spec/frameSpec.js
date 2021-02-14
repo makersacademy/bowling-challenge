@@ -1,7 +1,7 @@
 describe("frame scoring", () => {
-  let bad_score = 1;
-  let score = 5;
-  let strike = 10;
+  const badScore = 1;
+  const score = 5;
+  const strike = 10;
   let frame;
 
   beforeEach(() => {
@@ -20,6 +20,15 @@ describe("frame scoring", () => {
         frame.addScore(score)
         frame.addScore(score)
         expect(frame.isMissingBonus()).toBe(true)
+      })
+    })
+
+    describe("when you get less than 10 over two bowls", () => {
+      it("doesn't doesn't set needing bonus true", () => {
+        expect(frame.isMissingBonus()).toBe(false)
+        frame.addScore(badScore)
+        frame.addScore(badScore)
+        expect(frame.isMissingBonus()).toBe(false)
       })
     })
   })

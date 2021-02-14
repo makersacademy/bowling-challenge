@@ -7,7 +7,9 @@ class Frame {
 
   addScore(score) {
     this.totalScore += score;
-    this.needBonus = true;
+    if(this.totalScore == 10) {
+      this.needBonus = true;
+    }
   }
 
   isMissingBonus() {

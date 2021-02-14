@@ -12,9 +12,8 @@ class Game {
 
   score(){
     let result = 0
-    let rollsIndex = 0
     for (var i = 0; i < 20; i++) {
-      result += this.rolls[rollsIndex]
+      result += this.rolls[i]
     }
     return result;
   }

@@ -53,7 +53,7 @@ describe('Game', function() {
       expect(game.isOver()).toBe(true);
     })
 
-    it('allows a third roll if spare', function() {
+    it('allows third roll if spare', function() {
       for ( let i = 0; i < 19; i++ ) {
         game.input_bowl(2);
       }
@@ -66,6 +66,9 @@ describe('Game', function() {
       for ( let i = 0; i < 18; i++ ) {
         game.input_bowl(2);
       }
+      game.input_bowl(10);
+      expect(game.frames.length).toEqual(10);
+      expect(game.isOver()).toBe(false);
       game.input_bowl(10);
       expect(game.frames.length).toEqual(10);
       expect(game.isOver()).toBe(false);

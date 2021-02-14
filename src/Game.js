@@ -34,7 +34,7 @@ class Game {
   }
 
   bonus(pins) {
-    this.extra = new Bonus(this._frames[this._frames.length - 1].bonus);
+    if(this._bonuses.length < 10) this.extra = new Bonus(this._frames[this._frames.length - 1].bonus);
     for (var i = 0; i < this._bonuses.length; i++)
       {var bonus = this.bonuses[i];
         if (bonus.status > 0)

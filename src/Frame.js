@@ -10,6 +10,7 @@ class Frame {
   }
 
   add_roll(pins) {
+    if(this.lastRollBonus()) pins = 0;
     this.current = pins;
     if(this.isClosed()) this._open = false;
     if(this.isStrike()) { return this._bonus = 2 }
@@ -25,11 +26,15 @@ class Frame {
 
   isStrike() {
     return this._number < 10 && this._rolls.length === 1 && this._pins === 10
-    || this._number === 10 && this._rolls.length <= 3 && this._pins === 10
+    || this._number === 10 && this._rolls.length < 3 && this._pins === 10;
   }
 
   isSpare() {
     return this._rolls.length === 2 && this._rolls.reduce((a,b)=>a+b) === 10;
+  }
+
+  lastRollBonus() {
+    return this._number === 10 && this._rolls.length >= 1 && this._rolls.reduce((a,b)=>a+b) === 10;
   }
 
   get number() {

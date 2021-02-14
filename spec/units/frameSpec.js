@@ -32,6 +32,8 @@ describe("Frame", function() {
       frame.add_roll(10);
       expect(frame.open).toBe(true);
       frame.add_roll(10);
+      expect(frame.open).toBe(true);
+      frame.add_roll(10);
       expect(frame.open).toBe(false);
     })
   })

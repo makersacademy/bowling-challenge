@@ -58,4 +58,13 @@ describe("frame scoring", () => {
       })
     })
   })
+
+  describe("adding bonus scores", () => {
+    it("should change the total score by the amount given", () => {
+      frame.addScore(strike)
+      expect(frame.totalScore()).toEqual(10)
+      frame.addBonusScore(score)
+      expect(frame.totalScore()).toEqual(10 + score)
+    })
+  })
 })

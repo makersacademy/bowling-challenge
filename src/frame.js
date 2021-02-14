@@ -2,10 +2,15 @@ class Frame {
 
   constructor() {
     this.scores = []
+    this.bonusScores = []
   }
 
   addScore(score) {
     this.scores.push(score);
+  }
+
+  addBonusScore(score) {
+    this.bonusScores.push(score);
   }
 
   isMissingBonus() {
@@ -17,10 +22,16 @@ class Frame {
   }
 
   totalScore() {
-    return this.scores.reduce((total, score) => {
+    let standardScores = this.scores.reduce((total, score) => {
       return total + score
     }, 0)
+    let bonusScores = this.bonusScores.reduce((total, score) => {
+      return total + score
+    }, 0)
+    return standardScores + bonusScores;
   }
+
+
 
 }
 

@@ -35,7 +35,4 @@ describe("Frame", function() {
       expect(frame.open).toBe(false);
     })
   })
-
-
-
 })

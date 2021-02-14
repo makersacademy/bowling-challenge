@@ -28,4 +28,12 @@ describe('Feature Test:', function(){
     })
 
   })
+
+  describe('bonuses', function() {
+    it('saves a status of 2 if strike', function(){
+      game = new Game();
+      game.input_bowl(10);
+      expect(game.frames[0].bonus).toBe(2);
+    })
+  })
 })

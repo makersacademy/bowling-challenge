@@ -6,11 +6,15 @@ class Frame {
     this._pins = pins
     this._rolls = []
     this._open = true
+    this._bonus = 0
   }
 
   add_roll(pins) {
     this.current = pins;
     if(this.isClosed()) this._open = false;
+    if(this.isStrike()) { return this._bonus = 2 }
+    else if(this.isSpare()) { return this._bonus = 1 }
+    else { return this._bonus = 0 }
   }
 
   isClosed() {
@@ -29,6 +33,10 @@ class Frame {
 
   get number() {
     return this._number;
+  }
+
+  get bonus() {
+    return this._bonus;
   }
 
   get open() {

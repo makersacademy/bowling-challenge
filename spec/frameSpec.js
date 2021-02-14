@@ -13,5 +13,14 @@ describe("frame scoring", () => {
       frame.addScore(score)
       expect(frame.totalScore).toEqual(score)
     })
+
+    describe("when you get a spare", () => {
+      it("sets need bonus to true", () => {
+        expect(frame.isMissingBonus()).toBe(false)
+        frame.addScore(score)
+        frame.addScore(score)
+        expect(frame.isMissingBonus()).toBe(true)
+      })
+    })
   })
 })

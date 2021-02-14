@@ -22,7 +22,6 @@ class Game {
         this.owedRolls[key] -= 1
       }
     })
-
   }
 
   createFrame() {
@@ -40,12 +39,12 @@ class Game {
     }
   }
 
-  finalScore() {
-    let finalScore = 0
+  totalScore() {
+    let totalScore = 0
     Object.values(this.scores).forEach( function(value) {
-      finalScore += value
+      totalScore += value
     })
-    return finalScore
+    return totalScore
   }
 
 }

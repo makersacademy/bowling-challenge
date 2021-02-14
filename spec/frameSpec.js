@@ -88,4 +88,27 @@ describe("frame scoring", () => {
       })
     })
   })
+
+  describe("when it is the final frame", () => {
+    let finalFrame;
+    beforeEach(() => {
+      finalFrame = new Frame({finalFrame: true})
+    })
+    describe("when you scored < 10 in the first two bowls", () => {
+      it("should complete the frame", () => {
+        expect(finalFrame.isComplete()).toBe(false)
+        finalFrame.addScore(badScore)
+        finalFrame.addScore(badScore)
+        expect(finalFrame.isComplete()).toBe(true)
+      })
+    })
+    describe("when you got a spare in the main frame", () => {
+      it("should not be complete", () => {
+        expect(finalFrame.isComplete()).toBe(false)
+        finalFrame.addScore(score)
+        finalFrame.addScore(score)
+        expect(finalFrame.isComplete()).toBe(false)
+      })
+    })
+  })
 })

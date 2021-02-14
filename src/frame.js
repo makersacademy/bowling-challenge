@@ -1,8 +1,9 @@
 class Frame {
 
-  constructor() {
+  constructor( {finalFrame = false} = {} ) {
     this.scores = []
     this.bonusScores = []
+    this.isFinalFrame = finalFrame
   }
 
   addScore(score) {
@@ -18,7 +19,11 @@ class Frame {
   }
 
   isComplete() {
-    return this.isStrike() || this.scores.length === 2
+    if(this.isFinalFrame) {
+      return this.scores.length === 2 && !this.isStrikeOrSpare()
+    } else {
+      return this.isStrike() || this.scores.length === 2
+    }
   }
 
   totalScore() {

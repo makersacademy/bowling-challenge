@@ -28,12 +28,50 @@ describe('Game', function() {
         expect(game.score).toBe(9);
       })
 
-      it('knows when to initialize a new Frame', function() {
+      it('initializes a new Frame after two rolls', function() {
         game.input_bowl(2);
         game.input_bowl(7);
         expect(game.frames.length).toBe(1);
         game.input_bowl(7);
         expect(game.frames.length).toBe(2);
       })
+
+      it('initializes a new Frame after a strike', function() {
+        game.input_bowl(10);
+        expect(game.frames.length).toBe(1);
+        game.input_bowl(7);
+        expect(game.frames.length).toBe(2);
+      })
   });
+
+  describe('roll 10', function() {
+    it('straight game stops after 10 rolls', function() {
+      for ( let i = 0; i < 20; i++ ) {
+        game.input_bowl(2);
+      }
+      expect(game.frames.length).toEqual(10);
+      expect(game.isOver()).toBe(true);
+    })
+
+    it('allows a third roll if spare', function() {
+      for ( let i = 0; i < 19; i++ ) {
+        game.input_bowl(2);
+      }
+      game.input_bowl(8);
+      expect(game.frames.length).toEqual(10);
+      expect(game.isOver()).toBe(false);
+    })
+
+    it('allows second and third roll if strike', function() {
+      for ( let i = 0; i < 18; i++ ) {
+        game.input_bowl(2);
+      }
+      game.input_bowl(10);
+      expect(game.frames.length).toEqual(10);
+      expect(game.isOver()).toBe(false);
+      game.input_bowl(10);
+      expect(game.frames.length).toEqual(10);
+      expect(game.isOver()).toBe(true);
+    })
+  })
 })

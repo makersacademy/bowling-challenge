@@ -12,7 +12,21 @@ describe("Frame", function() {
     expect(frame.pins).toBe(3);
   })
 
-  
+  it('closes when strike', function() {
+    frame = new Frame(2,10);
+    frame.add_roll(10);
+    expect(frame.open).toBe(false);
+  })
+
+  describe('tenth frame', function() {
+    it('allows a third roll if spare', function() {
+      frame = new Frame(10,2);
+      frame.add_roll(2);
+      frame.add_roll(8);
+      expect(frame.open).toBe(true);
+    })
+  })
+
 
 
 })

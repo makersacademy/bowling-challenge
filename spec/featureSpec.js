@@ -2,19 +2,30 @@
 
 describe('Feature Test:', function(){
   var game;
+  var frame;
+  var frame2;
   // var bonus;
 
   beforeEach(function() {
     game = new Game();
+    game.input_bowl(3);
+    game.input_bowl(5);
+    frame = game.frames[0]
+    game.input_bowl(3);
+    game.input_bowl(5);
+    frame2 = game.frames[1]
   });
 
   describe('#input.bowl', function() {
     it('inputting a bowl initializes a Frame to store rolls', function() {
-      game.input_bowl(3);
-      game.input_bowl(5);
-      expect(game.frames[game.frames.length - 1].rolls).toEqual([3,5]);
+      expect(frame).toEqual(jasmine.any(Frame));
+      expect(frame.rolls).toEqual([3,5]);
     })
 
+    it('frames count their number', function() {
+      expect(frame.number).toEqual(1)
+      expect(frame2.number).toEqual(2)
+    })
 
   })
 })

@@ -10,8 +10,16 @@ class Frame {
 
   add_roll(pins) {
     this.current = pins;
-    if(this.isStrike() || this._rolls.length == 2) this._open = false
+    if(this.isClosed()) this._open = false;
 
+
+
+  }
+
+  isClosed() {
+    return this._number < 10 && (this.isStrike() || this._rolls.length == 2)
+      || this._rolls.length === 2 && !(this.isStrike() || this.isSpare())
+      || this._rolls.length === 3
   }
 
   isStrike() {

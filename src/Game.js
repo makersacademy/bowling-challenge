@@ -7,7 +7,7 @@ class Game {
   }
 
   input_bowl(pins) {
-    if(this.addFrame()) this.current = new Frame(frames.length + 1, pins);
+    if(this.addFrame()) this.current = new Frame(this._frames.length + 1, pins);
     this._frames[this._frames.length - 1].add_roll(pins);
     // this.calculateScore();
     return pins;
@@ -21,6 +21,10 @@ class Game {
     this._score = 0;
     this._frames.forEach(x => this._score += x.rolls.reduce((a,b)=>a+b));
     return this._score;
+  }
+
+  isOver() {
+    return this._frames.length === 10 && !this._frames[this._frames.length - 1].open
   }
 
   get frames() {

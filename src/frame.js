@@ -14,7 +14,9 @@ class Frame {
   }
 
   isMissingBonus() {
-    return this.totalScore() === 10
+    return this.scores.reduce((total, score) => {
+      return total + score
+    }, 0) === 10 && this.scores.length + this.bonusScores.length < 3
   }
 
   isComplete() {

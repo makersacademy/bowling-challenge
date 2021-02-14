@@ -66,5 +66,26 @@ describe("frame scoring", () => {
       frame.addBonusScore(score)
       expect(frame.totalScore()).toEqual(10 + score)
     })
+    describe("when you score a spare", () => {
+      beforeEach(() => {
+        frame.addScore(score)
+        frame.addScore(10 - score)
+      })
+      it("instantly sets need bonus to false", () => {
+        expect(frame.isMissingBonus()).toBe(true)
+        frame.addBonusScore(score)
+        expect(frame.isMissingBonus()).toBe(false)
+      })
+    })
+    describe("when the main score was a strike", () => {
+      beforeEach(() => {
+        frame.addScore(strike)
+      })
+      it("doesn't change need bonus after one bonus roll", () => {
+        expect(frame.isMissingBonus()).toBe(true)
+        frame.addBonusScore(score)
+        expect(frame.isMissingBonus()).toBe(true)
+      })
+    })
   })
 })

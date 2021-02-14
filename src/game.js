@@ -17,22 +17,19 @@ class Game {
     this.framesArray.forEach(() => {
       switch (typeof this.rollsArray[this.rollIndex] === "number") {
         case this.isStrike():
-          this.addStrikePointsToFrame();
-          this.rollIndex ++;
-          this.framesArray[this.frameIndex].push(this.points);
-          this.frameIndex ++;
+          this.addStrikePoints();
+          this.incrementRollIndexByOne();
+          this.addPointsToFramesArray();
           break;
         case this.isSpare():
-          this.addSparePointsToFrame();
-          this.rollIndex += 2;
-          this.framesArray[this.frameIndex].push(this.points);
-          this.frameIndex ++;
+          this.addSparePoints();
+          this.incrementRollIndexByTwo();
+          this.addPointsToFramesArray();
           break;
         default:
-          this.addPointsToFrame();
-          this.rollIndex += 2;
-          this.framesArray[this.frameIndex].push(this.points);
-          this.frameIndex ++;
+          this.addPoints();
+          this.incrementRollIndexByTwo();
+          this.addPointsToFramesArray();
       }
     });
     return this.points;
@@ -42,7 +39,7 @@ class Game {
     return this.rollsArray[this.rollIndex] === 10;
   }
 
-  addStrikePointsToFrame() {
+  addStrikePoints() {
     this.points +=
       this.rollsArray[this.rollIndex] +
       this.rollsArray[this.rollIndex + 1] +
@@ -50,17 +47,34 @@ class Game {
   }
 
   isSpare() {
-    return this.rollsArray[this.rollIndex] + this.rollsArray[this.rollIndex + 1] === 10;
+    return (
+      this.rollsArray[this.rollIndex] + this.rollsArray[this.rollIndex + 1] ===
+      10
+    );
   }
 
-  addSparePointsToFrame() {
+  addSparePoints() {
     this.points +=
       this.rollsArray[this.rollIndex] +
       this.rollsArray[this.rollIndex + 1] +
       this.rollsArray[this.rollIndex + 2];
   }
 
-  addPointsToFrame() {
-    this.points += this.rollsArray[this.rollIndex] + this.rollsArray[this.rollIndex + 1];
+  addPoints() {
+    this.points +=
+      this.rollsArray[this.rollIndex] + this.rollsArray[this.rollIndex + 1];
+  }
+
+  incrementRollIndexByOne() {
+    this.rollIndex++;
+  }
+
+  incrementRollIndexByTwo() {
+    this.rollIndex += 2;
+  }
+
+  addPointsToFramesArray() {
+    this.framesArray[this.frameIndex].push(this.points);
+    this.frameIndex++;
   }
 }

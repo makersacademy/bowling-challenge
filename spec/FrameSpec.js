@@ -10,7 +10,6 @@ describe('Frame', () => {
     describe('A Frame ', () => {
         
         it('can report its score', () => {
-            console.log(frame);
             frame.addRoll(5);
             frame.addRoll(3);
             expect(frame.score()).toEqual(8);      

@@ -40,6 +40,14 @@ class Game {
     return this.rolls[this.currentRoll() - 1];
   };
 
+  currentGameScore() {
+    let score = 0;
+    this.frames.forEach( frame => {
+      score += frame.id <= 10 ? frame.score() : 0;
+    })
+    return score;
+  }
+
   logRoll(pins) {
 
     this.rolls.push(pins);
@@ -92,6 +100,34 @@ class Game {
 
   gameInProgress() {
     return !this.gameIsOver();
+  };
+
+  displayFrameRolls(frameID) {
+    let displayRolls = "";
+    let traverseFrames = [this.frames[frameID - 1]];
+
+    if (frameID === 10) {
+      if (this.frames[10].rolls.length > 0) {
+        traverseFrames.push(this.frames[10]);
+      };
+      if (this.frames[11] && this.frames[11].rolls.length > 0) {
+        traverseFrames.push(this.frames[11]);
+      };
+    };
+
+    console.log(traverseFrames);
+
+    traverseFrames.forEach(frame => {
+      if (frame.isStrike()) {
+        displayRolls += "X"
+      } else if (frame.isSpare()) {
+        displayRolls += `${frame.rolls[0]}/`;
+      } else {
+        displayRolls += `${frame.rolls[0]}${frame.rolls[1]}`;
+      };
+    })
+
+    return displayRolls;
   };
 
 };

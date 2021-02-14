@@ -12,7 +12,7 @@ class Frame {
     };
 
     score() {
-        return this.rolls.reduce((a, b) => a + b) + this.bonus;
+        return this.rolls.reduce((a, b) => a + b, 0) + this.bonus;
     };
 
     isStrike() {

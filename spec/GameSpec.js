@@ -17,6 +17,17 @@ describe('Game', () => {
       game.roll(5);
       expect(game.currentFrame().score()).toEqual(5);
     });
+
+  });
+
+  describe('Scoring: -', () => {
+    it('reports 300 for a perfect game', () => {
+      for (var i = 0; i < 12; i++) {
+        game.roll(10);
+      }
+      expect(game.currentGameScore()).toEqual(300);
+    });
+    
   });
 
   

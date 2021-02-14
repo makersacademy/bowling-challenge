@@ -2,23 +2,35 @@
 <html>
   <head>
     <title>Bowling Scorecard</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-     <!-- <script src="jquery.js"></script> -->
+     <script src="jquery.js"></script>
     <section>
       <!-- <h1 class ='container'>Temperature</h1> -->
       Frame: <span id='frame'>1</span>
       <form class = 'rolls'>
         Roll 1:
         <input id='roll1' type="text" name="roll1">
+        <!-- <button id='roll_1'>Roll 1</button> -->
         Roll 2:
         <input id='roll2' type="text" name="roll2">
+        <!-- <button id='roll_2'>Roll 2</button> -->
         Bonus Roll:
         <input id='bonusroll' type="text" name="bonusroll">
-        <button id='sumbit'>Submit</button>
+        <button id='bonus_roll'>Bonus Roll</button>
     </section>
-    Frame: 1  Roll 1:<span id='roll_1'></span> Roll 2: <span id='roll_2'></span> Score: <span id='frame_score'></span>  
+    <div class="grid-container">
+      <div class="grid-item">1</div>
+      <div class="grid-item">2</div>
+      <div class="grid-item">3</div>
+      <div class="grid-item">4</div>
+      <div class="grid-item">5</div>
+      <div class="grid-item">6</div>
+      <div class="grid-item">7</div>
+      <div class="grid-item">8</div>
+      <div class="grid-item">9</div>
+    </div>
     <script src='src/interface.js'></script>
     <script src='src/frame.js'></script>
     <script src='src/game.js'></script>

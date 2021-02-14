@@ -14,26 +14,36 @@ class Frame {
   }
 
   isMissingBonus() {
-    return this.scores.reduce((total, score) => {
-      return total + score
-    }, 0) === 10 && this.scores.length + this.bonusScores.length < 3
+    return this.isStrikeOrSpare() && this.scores.length + this.bonusScores.length < 3
   }
 
   isComplete() {
-    return this.totalScore() === 10 || this.scores.length === 2
+    return this.isStrike() || this.scores.length === 2
   }
 
   totalScore() {
-    let standardScores = this.scores.reduce((total, score) => {
-      return total + score
-    }, 0)
-    let bonusScores = this.bonusScores.reduce((total, score) => {
-      return total + score
-    }, 0)
-    return standardScores + bonusScores;
+    return this.standardScore() + this.bonusScore();
   }
 
+  standardScore() {
+    return this.scores.reduce((total, score) => {
+      return total + score
+    }, 0)
+  }
 
+  bonusScore() {
+    return this.bonusScores.reduce((total, score) => {
+      return total + score
+    }, 0)
+  }
+
+  isStrike() {
+    return this.isStrikeOrSpare() && this.scores.length === 1
+  }
+
+  isStrikeOrSpare() {
+    return this.standardScore() === 10
+  }
 
 }
 

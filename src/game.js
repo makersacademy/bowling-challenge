@@ -13,6 +13,13 @@ class Game {
     this.rollsArray.push(pins);
   }
 
+  gameRoll(rollsArray) {
+    rollsArray.forEach((x) => {
+      this.roll(x);
+    });
+    return this.score();
+  }
+
   score() {
     this.framesArray.forEach(() => {
       switch (typeof this.rollsArray[this.rollIndex] === "number") {
@@ -30,6 +37,7 @@ class Game {
           this.addPoints();
           this.incrementRollIndexByTwo();
           this.addPointsToFramesArray();
+          break;
       }
     });
     return this.points;
@@ -66,7 +74,7 @@ class Game {
   }
 
   incrementRollIndexByOne() {
-    this.rollIndex++;
+    this.rollIndex ++;
   }
 
   incrementRollIndexByTwo() {
@@ -75,6 +83,6 @@ class Game {
 
   addPointsToFramesArray() {
     this.framesArray[this.frameIndex].push(this.points);
-    this.frameIndex++;
+    this.frameIndex ++;
   }
 }

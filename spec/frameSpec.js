@@ -9,9 +9,9 @@ describe("frame scoring", () => {
   })
   describe("Adding a score", () => {
     it("changes the total score by that amount", () => {
-      expect(frame.totalScore).toEqual(0)
+      expect(frame.totalScore()).toEqual(0)
       frame.addScore(score)
-      expect(frame.totalScore).toEqual(score)
+      expect(frame.totalScore()).toEqual(score)
     })
 
     describe("when you get a spare", () => {
@@ -29,6 +29,32 @@ describe("frame scoring", () => {
         frame.addScore(badScore)
         frame.addScore(badScore)
         expect(frame.isMissingBonus()).toBe(false)
+      })
+    })
+
+    describe("when you get a strike", () => {
+      it("sets need bonus to true", () => {
+        expect(frame.isMissingBonus()).toBe(false)
+        frame.addScore(strike)
+        expect(frame.isMissingBonus()).toBe(true)
+      })
+      it("should complete the frame", () => {
+        expect(frame.isComplete()).toBe(false)
+        frame.addScore(strike)
+        expect(frame.isComplete()).toBe(true)
+      })
+    })
+
+    describe("when the first bowl is not a strike", () => {
+      beforeEach(() => {
+        frame.addScore(badScore)
+      })
+      it("should not be complete", () => {
+        expect(frame.isComplete()).toBe(false)
+      })
+      it("should be completed by second bowl", () => {
+        frame.addScore(badScore)
+        expect(frame.isComplete()).toBe(true)
       })
     })
   })

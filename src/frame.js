@@ -1,20 +1,27 @@
 class Frame {
 
   constructor() {
-    this.totalScore = 0
-    this.needBonus = false
+    this.scores = []
   }
 
   addScore(score) {
-    this.totalScore += score;
-    if(this.totalScore == 10) {
-      this.needBonus = true;
-    }
+    this.scores.push(score);
   }
 
   isMissingBonus() {
-    return this.needBonus
+    return this.totalScore() === 10
   }
+
+  isComplete() {
+    return this.totalScore() === 10 || this.scores.length === 2
+  }
+
+  totalScore() {
+    return this.scores.reduce((total, score) => {
+      return total + score
+    }, 0)
+  }
+
 }
 
 Frame

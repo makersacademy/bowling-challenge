@@ -2,12 +2,11 @@
 
 describe("bowling game", () => {
   let game;
-  let score;
-  let strike = 10;
+  const score = 5;
+  const strike = 10;
 
   beforeEach(() => {
     game = new Game;
-    score = 5;
   })
 
   describe("entering scores", () => {

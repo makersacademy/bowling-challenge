@@ -15,4 +15,11 @@ describe('Bowling', function(){
     game.roll(3);
     expect(game.rolls).toEqual([3])
   })
+
+  it('can score a gutter game', function(){
+    for (var i = 0; i < 20; i++) {
+      game.roll(0)
+    }
+    expect(game.score()).toBe(0)
+  })
 });

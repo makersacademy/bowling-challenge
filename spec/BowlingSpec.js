@@ -39,4 +39,17 @@ describe('Bowling', function(){
     }
     expect(game.score()).toEqual(16)
   })
+
+  it('can score a strike', function(){
+    game.roll(10)
+    game.roll(3)
+    game.roll(3)
+    for (var i = 0; i < 16; i++) {
+      game.roll(0)
+    }
+    expect(game.score()).toEqual(22)
+  })
+
+  
+
 });

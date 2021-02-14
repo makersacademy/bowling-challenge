@@ -2,72 +2,65 @@
 
 class Game {
   constructor() {
-    this.rolls = [];
+    this.rollsArray = [];
     this.rollIndex = 0;
     this.points = 0;
+    this.framesArray = [[], [], [], [], [], [], [], [], [], []];
+    this.frameIndex = 0;
   }
 
   roll(pins) {
-    this.rolls.push(pins);
+    this.rollsArray.push(pins);
   }
 
   score() {
-    for (let i = 1; i < 11; i++) {
-      // where i is the frame number
-
-      // if (this.isStrike()) {
-      //   this.addStrikePointsToFrame();
-      //   this.rollIndex += 1;
-      // } else if (this.isSpare()) {
-      //   this.addSparePointsToFrame();
-      //   this.rollIndex += 2;
-      // } else {
-      //   this.addPointsToFrame();
-      //   this.rollIndex += 2;
-      // }
-
-      // Using a Switch statament
-
-      switch (typeof this.rolls[this.rollIndex] === 'number') {
+    this.framesArray.forEach(() => {
+      switch (typeof this.rollsArray[this.rollIndex] === "number") {
         case this.isStrike():
           this.addStrikePointsToFrame();
-          this.rollIndex += 1;
+          this.rollIndex ++;
+          this.framesArray[this.frameIndex].push(this.points);
+          this.frameIndex ++;
           break;
         case this.isSpare():
           this.addSparePointsToFrame();
           this.rollIndex += 2;
+          this.framesArray[this.frameIndex].push(this.points);
+          this.frameIndex ++;
           break;
         default:
           this.addPointsToFrame();
-          this.rollIndex += 2
+          this.rollIndex += 2;
+          this.framesArray[this.frameIndex].push(this.points);
+          this.frameIndex ++;
       }
-    }
+    });
     return this.points;
   }
 
   isStrike() {
-    return this.rolls[this.rollIndex] === 10;
+    return this.rollsArray[this.rollIndex] === 10;
   }
 
   addStrikePointsToFrame() {
     this.points +=
-      this.rolls[this.rollIndex] +
-      this.rolls[this.rollIndex + 1] +
-      this.rolls[this.rollIndex + 2];
+      this.rollsArray[this.rollIndex] +
+      this.rollsArray[this.rollIndex + 1] +
+      this.rollsArray[this.rollIndex + 2];
   }
 
   isSpare() {
-    return this.rolls[this.rollIndex] + this.rolls[this.rollIndex + 1] === 10;
+    return this.rollsArray[this.rollIndex] + this.rollsArray[this.rollIndex + 1] === 10;
   }
 
   addSparePointsToFrame() {
     this.points +=
-      this.rolls[this.rollIndex] +
-      this.rolls[this.rollIndex + 1] +
-      this.rolls[this.rollIndex + 2];
+      this.rollsArray[this.rollIndex] +
+      this.rollsArray[this.rollIndex + 1] +
+      this.rollsArray[this.rollIndex + 2];
   }
 
   addPointsToFrame() {
-    this.points += this.rolls[this.rollIndex] + this.rolls[this.rollIndex + 1];
+    this.points += this.rollsArray[this.rollIndex] + this.rollsArray[this.rollIndex + 1];
   }
 }

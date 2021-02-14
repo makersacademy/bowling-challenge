@@ -34,4 +34,28 @@ describe("score", () => {
     game.rolls(0);
     expect(game.score()).toBe(0);
   });
+
+  it("outputs a score of 60 after 20 consecutive rolls of hitting 3 pins", () => {
+    game.rolls(3);
+    game.rolls(3);
+    game.rolls(3);
+    game.rolls(3);
+    game.rolls(3);
+    game.rolls(3);
+    game.rolls(3);
+    game.rolls(3);
+    game.rolls(3);
+    game.rolls(3);
+    game.rolls(3);
+    game.rolls(3);
+    game.rolls(3);
+    game.rolls(3);
+    game.rolls(3);
+    game.rolls(3);
+    game.rolls(3);
+    game.rolls(3);
+    game.rolls(3);
+    game.rolls(3);
+    expect(game.score()).toBe(60);
+  });
 });

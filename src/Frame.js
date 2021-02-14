@@ -1,36 +1,48 @@
 class Frame {
   constructor() {
-    this.score = [];
+    this.scores = [];
     this.frameComplete = false;
+    this.frameScore = 0
   }
 
   roll = pins => {
-    if(this.score.length === 2 || this.isStrike()){
+    if(this.scores.length === 2 || this.isStrike() || this.isSpare()){
       throw new Error('frame complete');
     } else {
-      this.score.push(pins);
+      this.scores.push(pins);
+      this.strikeCheck();
+      this.spareCheck();  
       this.frameCompleted();
     }
   }
 
-  showScore = () => {
-    return this.score;
+  showScores = () => {
+    return this.scores;
+  }
+
+  strikeCheck = () => {
+    if(this.scores[0] === 10) {
+      this.scores[0] = 'strike';
+    }
   }
 
   isStrike = () => {
-    if(this.score[0] === 10) {
-      this.score[0] = 'strike';
-    }
-
-    if(this.score[0] === 'strike') {
+    if(this.scores[0] === 'strike') {
       return true;
     } else {
       return false;
     }
   }
 
+  spareCheck = () => {
+    if(this.scores[0] + this.scores[1] === 10) {
+      this.scores[0] = "spare";
+      this.scores.pop()
+    }
+  }
+
   isSpare = () => {
-    if(!this.isStrike() && this.score[0] + this.score[1] === 10) {
+    if(this.scores[0] === "spare") {
       return true;
     } else {
       return false;
@@ -38,12 +50,21 @@ class Frame {
   }
 
   frameCompleted = () => {
-    if (this.score.length === 2 || this.isStrike()) {
+    if (this.scores.length === 2 || this.isStrike() || this.isSpare()) {
       this.frameComplete = true;
+      this.calculateFrameScore();
     }
   }
 
-  isComplete = () => {
-    return this.frameComplete;
+  isComplete = () => this.frameComplete;
+
+  calculateFrameScore = () => {
+    if (!this.isStrike() && !this.isSpare()) {
+      this.frameScore += this.scores[0] + this.scores[1]
+    }
   }
+
+  update = score => this.frameScore = 10;
+
+  showFrameScore = () => this.frameScore;
 }

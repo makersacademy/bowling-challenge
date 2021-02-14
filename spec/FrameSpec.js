@@ -8,13 +8,13 @@ describe ('Frame', function() {
 
   it('can score a rolls', function() {
     frame.roll(5);
-    expect(frame.showScore()).toEqual([5])
+    expect(frame.showScores()).toEqual([5])
   })
 
   it('can score two rolls', function() {
     frame.roll(4);
     frame.roll(4);
-    expect(frame.showScore()).toEqual([4, 4])
+    expect(frame.showScores()).toEqual([4, 4])
   })
 
   it('throws an error when you try to roll a third', function() {
@@ -44,6 +44,13 @@ describe ('Frame', function() {
     })
   })
 
+  describe('strikeCheck', function() {
+    it('alters the scores to equal strike', function() {
+      frame.roll(10);
+      expect(frame.scores).toEqual(["strike"]);
+    })
+  })
+
   describe('isSpare', function() {
     it('returns true when there is a spare', function() {
       frame.roll(4);
@@ -55,6 +62,14 @@ describe ('Frame', function() {
       frame.roll(4);
       frame.roll(3);
       expect(frame.isSpare()).toEqual(false);
+    })
+  })
+
+  describe('spareCheck', function() {
+    it('alters the scores to equal spare', function() {
+      frame.roll(5);
+      frame.roll(5);
+      expect(frame.scores).toEqual(["spare"]);
     })
   })
 

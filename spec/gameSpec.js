@@ -3,6 +3,7 @@
 describe("bowling game", function() {
   let game;
   let score;
+  let strike = 10;
 
   beforeEach(function() {
     game = new Game;
@@ -23,6 +24,18 @@ describe("bowling game", function() {
           expect(game.frameNumber).toEqual(1);
           game.enterScore(score);
           expect(game.frameNumber).toEqual(1);
+        })
+        it("changes the bowl", function() {
+          expect(game.bowlNumber).toEqual(1);
+          game.enterScore(score);
+          expect(game.bowlNumber).toEqual(2);
+        })
+      })
+      describe("when you get a strike", function() {
+        it("Changes the frame", function() {
+          expect(game.frameNumber).toEqual(1);
+          game.enterScore(strike);
+          expect(game.frameNumber).toEqual(2);
         })
       })
     })

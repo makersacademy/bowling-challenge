@@ -19,6 +19,11 @@ describe("bowling game", function() {
           game.enterScore(score);
           expect(game.totalScore).toEqual(score);
         })
+        it("maintans the frame", function() {
+          expect(game.frameNumber).toEqual(1);
+          game.enterScore(score);
+          expect(game.frameNumber).toEqual(1);
+        })
       })
     })
   })

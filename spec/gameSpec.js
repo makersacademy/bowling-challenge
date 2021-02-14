@@ -80,7 +80,7 @@ describe("score", () => {
     game.roll(0);
     game.roll(0);
     game.roll(0);
-    expect(game.score()).not.toBe(16);
     expect(game.score()).toBe(22);
+    expect(game.score()).not.toBe(16);
   })
 });

@@ -58,4 +58,29 @@ describe("score", () => {
     game.roll(3);
     expect(game.score()).toBe(60);
   });
+
+  it("adds bonus points after getting a spare", () => {
+    game.roll(8);
+    game.roll(2);
+    game.roll(6);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    expect(game.score()).not.toBe(16);
+    expect(game.score()).toBe(22);
+  })
 });

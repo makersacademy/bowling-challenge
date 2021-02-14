@@ -115,5 +115,22 @@ describe("frame scoring", () => {
         expect(finalFrame.isComplete()).toBe(true)
       })
     })
+    describe("when you get a strike in the main frame", () => {
+      beforeEach(() => {
+        finalFrame.addScore(strike)
+      })
+      it("should not be complete", () => {
+        expect(finalFrame.isComplete()).toBe(false)
+      })
+      it("is not immediately completed by adding a bonus", () => {
+        finalFrame.addBonusScore(score)
+        expect(finalFrame.isComplete()).toBe(false)
+      })
+      it("is completed by adding a second bonus", () => {
+        finalFrame.addBonusScore(score)
+        finalFrame.addBonusScore(score)
+        expect(finalFrame.isComplete()).toBe(true)
+      })
+    })
   })
 })

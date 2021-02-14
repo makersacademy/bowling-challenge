@@ -11,9 +11,10 @@ class Game {
   enterScore(score) {
     this.totalScore += score;
     if(score === 10) {
-      this.frameNumber ++
+      this.frameNumber ++;
+    } else {
+      this.bowlNumber ++;
     }
-    this.bowlNumber += 1;
   }
 }
 

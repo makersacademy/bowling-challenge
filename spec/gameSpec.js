@@ -37,6 +37,11 @@ describe("bowling game", function() {
           game.enterScore(strike);
           expect(game.frameNumber).toEqual(2);
         })
+        it("Leaves the bowl number as 1", function() {
+          expect(game.bowlNumber).toEqual(1);
+          game.enterScore(strike);
+          expect(game.bowlNumber).toEqual(1);
+        })
       })
     })
   })

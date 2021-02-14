@@ -40,6 +40,13 @@ describe('Game', function() {
     expect(game.score).toEqual(14)
   })
 
+  it('can roll a perfect game', function(){
+    for (let i = 0; i < 12; i++){
+      game.roll(10);
+    }
+    expect(game.score).toEqual(300)
+  })
+
 })
 
 

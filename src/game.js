@@ -3,7 +3,6 @@
 class Game {
   constructor() {
     this.rolls = [];
-
   }
 
   roll(pins) {

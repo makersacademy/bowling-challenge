@@ -30,7 +30,7 @@ describe("Game", function () {
       expect(game.score()).toBe(18);
     });
 
-    it("can return a spare", function () {
+    it("can return a strike", function () {
       game.roll(10);
       game.roll(5);
       game.roll(4);

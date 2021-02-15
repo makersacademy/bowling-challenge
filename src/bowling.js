@@ -10,7 +10,7 @@ class Bowling {
     if (this.currentFrame.inTurn === false) {
       this.frames.push(this.currentFrame);
       if (this.frames.length === 10) {
-        if (this.currentFrame.pinsKnocked.reduce((a, b) => a + b, 0) === 10 )
+        if (this.currentFrame.pinsKnocked.reduce((a, b) => a + b, 0) === 10 || this.currentFrame.pinsKnocked.reduce((a, b) => a + b, 0) === 20 )
         {this.currentFrame.inTurn = true;}
         else { return this.score().reduce((a, b) => a + b, 0); };
       }

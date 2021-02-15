@@ -6,10 +6,16 @@ class Bowling {
   }
 
   roll(pinsDowned) {
-    if (this.currentFrame.inTurn === false) {
-      this.frames.push(this.currentFrame); this.currentFrame = new Frame;
-    }
     this.currentFrame.addTurn(pinsDowned);
+    if (this.currentFrame.inTurn === false) {
+      this.frames.push(this.currentFrame);
+      if (this.frames.length === 10) {
+        if (this.currentFrame.pinsKnocked.reduce((a, b) => a + b, 0) === 10 )
+        {this.currentFrame.inTurn = true;}
+        else { return this.score().reduce((a, b) => a + b, 0); };
+      }
+      this.currentFrame = new Frame;
+    }
   }
 
   score() {
@@ -18,7 +24,8 @@ class Bowling {
     this.frames.forEach( frame => {
       score.push( frame.pinsKnocked.reduce((a, b) => a + b, 0) + this.calculateBonus(frame, startingIndex));
       startingIndex += 1;
-    })
+    });
+    return score;
   }
 
   calculateBonus(frame, startingIndex) {
@@ -29,7 +36,8 @@ class Bowling {
           bonus += knocked;
           framesNotFound -= 1;
           if (framesNotFound === 0) { return bonus; }
-        } )
+        })
+        startingIndex += 1;
       }
     }
     else { return 0 };

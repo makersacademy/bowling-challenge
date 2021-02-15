@@ -3,9 +3,9 @@ describe('Bowling', () => {
 
   beforeEach(() => { game = new Bowling; });
 
-  it('can add a normal frame', () => {
-    for (let i = 0; i < 7; i++){ game.roll(2); }
-    expect(game.frames.length).toEqual(3)
+  it('can add the score of a normal game' () => {
+    for (let i = 0; i < 19; i++){ game.roll(2); }
+    expect(game.roll(2)).toEqual(40);
   });
 
 })

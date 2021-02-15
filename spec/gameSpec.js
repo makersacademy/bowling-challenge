@@ -13,9 +13,9 @@ describe("bowling game", () => {
     describe("when it is the first bowl of a frame", () => {
       describe("when you enter a score of 0-9", () => {
         it("changes the total score by that amount", () => {
-          expect(game.totalScore).toEqual(0);
+          expect(game.totalScore()).toEqual(0);
           game.enterScore(score);
-          expect(game.totalScore).toEqual(score);
+          expect(game.totalScore()).toEqual(score);
         })
         it("maintans the frame", () => {
           expect(game.frameNumber).toEqual(1);
@@ -40,18 +40,18 @@ describe("bowling game", () => {
           expect(game.bowlNumber).toEqual(1);
         })
         it("initially increases the score by 10", () => {
-          expect(game.totalScore).toEqual(0);
+          expect(game.totalScore()).toEqual(0);
           game.enterScore(strike);
-          expect(game.totalScore).toEqual(10);
+          expect(game.totalScore()).toEqual(10);
         })
         it("adds the next two bowls twice, once as a bonus", () => {
-          expect(game.totalScore).toEqual(0);
+          expect(game.totalScore()).toEqual(0);
           game.enterScore(strike);
-          expect(game.totalScore).toEqual(10);
+          expect(game.totalScore()).toEqual(10);
           game.enterScore(score)
-          expect(game.totalScore).toEqual(10 + 2 * score);
+          expect(game.totalScore()).toEqual(10 + 2 * score);
           game.enterScore(score)
-          expect(game.totalScore).toEqual(10 + 4 * score);
+          expect(game.totalScore()).toEqual(10 + 4 * score);
         })
       })
     })

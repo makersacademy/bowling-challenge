@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <title>10-Pin Bowling</title>
+</head>
+<body>
+    <main>
+        <heading>
+            <h1 id="heading">Welcome to Bowling!</h1>
+        </heading>
+        <div class="scorecard">
+            <div class="frame">
+                <div id="frame-01">1</div>
+                <div id="rolls-01"></div>
+                <div id="score-01"></div>
+            </div>
+            <div class="frame">
+                <div id="frame-02">2</div>
+                <div id="rolls-02"></div>
+                <div id="score-02"></div>
+            </div>
+            <div class="frame">
+                <div id="frame-03">3</div>
+                <div id="rolls-03"></div>
+                <div id="score-03"></div>
+            </div>
+            <div class="frame">
+                <div id="frame-04">4</div>
+                <div id="rolls-04"></div>
+                <div id="score-04"></div>
+            </div>
+            <div class="frame">
+                <div id="frame-05">5</div>
+                <div id="rolls-05"></div>
+                <div id="score-05"></div>
+            </div>
+            <div class="frame">
+                <div id="frame-06">6</div>
+                <div id="rolls-06"></div>
+                <div id="score-06"></div>
+            </div>
+            <div class="frame">
+                <div id="frame-07">7</div>
+                <div id="rolls-07"></div>
+                <div id="score-07"></div>
+            </div>
+            <div class="frame">
+                <div id="frame-08">8</div>
+                <div id="rolls-08"></div>
+                <div id="score-08"></div>
+            </div>
+            <div class="frame">
+                <div id="frame-09">9</div>
+                <div id="rolls-09"></div>
+                <div id="score-09"></div>
+            </div>
+            <div class="frame">
+                <div id="frame-10">10</div>
+                <div id="rolls-10"></div>
+                <div id="score-10"></div>
+            </div>
+        </div>
+        <div class="capture">
+            <form id="enter-score">
+                <input type="text" id="ent-score"></input>
+                <button type="submit"><i class="fas fa-bowling-ball"></i></button>
+            </form>
+        </div>
+    </main>
+
+    <script src="/src/Game.js"></script>
+    <script src="/src/Frame.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src="src/interface.js"></script>
+</body>
+</html>

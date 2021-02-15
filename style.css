@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Ranchers&family=Roboto:wght@400;700&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: rgb(245, 222, 222);
+    background: linear-gradient(white, rgb(245, 222, 222));
+}
+
+heading {
+    display: block;
+    text-align: center;
+    padding: 1.5rem;    
+    height: 10vh;
+    font-family: 'Ranchers', cursive;
+    letter-spacing: 0.2rem;
+}
+
+h1 {
+    color: #f7665c;
+    text-shadow: 18px 12px 25px #eeb1ad;
+}
+
+main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.scorecard {
+    display: flex;
+    box-shadow: 8px 10px 15px 0px #FFA59E;
+    border-radius: 1.6rem;
+    justify-content: space-evenly;
+    width: 600px;
+    height: 180px;
+    padding: 1.5rem;
+    background-color: cadetblue;
+    color: white;
+    font-size: 1.3rem;
+}
+
+.strike {
+    color: red;
+}
+
+.frame>div {
+    padding: 0.6rem;
+    text-align: center;
+}
+
+.capture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#enter-score {
+    position: relative;
+}
+
+input {
+    padding: 1rem;
+    font-size: 2.2rem;
+    border: none;
+    outline: none;
+    box-shadow: 8px 10px 15px 0px #FFA59E;
+    caret-color: cadetblue;
+}
+
+#ent-score {
+    width: 130px;
+    border-radius: 2.5rem;
+    padding-left: 1.5rem;
+}
+
+button {
+    font-size: 2.2rem;
+    outline: none;
+    background: transparent;
+    color: cadetblue;
+    border: none;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    color: rgb(70, 135, 138);
+}
+
+

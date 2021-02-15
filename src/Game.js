@@ -6,6 +6,7 @@ class Game {
     this.rolls = [];
     this.maxRolls = 21;
     this.frames = [new Frame(1)];
+    this.scoreCard = {};
   };
 
   roll(pins) {
@@ -14,7 +15,9 @@ class Game {
 
       this.logRoll(pins);
       this.checkIfBonus()
-    
+
+      this.updateScoreCard();
+
       if (this.currentFrame().isComplete()) {
         this.frames.push(new Frame(this.frames.length + 1));
       };
@@ -107,7 +110,7 @@ class Game {
     let traverseFrames = [this.frames[frameID - 1]];
 
     if (frameID === 10) {
-      if (this.frames[10].rolls.length > 0) {
+      if (this.frames[10] && this.frames[10].rolls.length > 0) {
         traverseFrames.push(this.frames[10]);
       };
       if (this.frames[11] && this.frames[11].rolls.length > 0) {
@@ -115,7 +118,7 @@ class Game {
       };
     };
 
-    console.log(traverseFrames);
+    // console.log(traverseFrames);
 
     traverseFrames.forEach(frame => {
       if (frame.isStrike()) {
@@ -123,11 +126,34 @@ class Game {
       } else if (frame.isSpare()) {
         displayRolls += `${frame.rolls[0]}/`;
       } else {
-        displayRolls += `${frame.rolls[0]}${frame.rolls[1]}`;
+        displayRolls += `${frame.rolls[0] === 0 ? "-" : frame.rolls[0]}`
+        if (frame.rolls[1] === 0) {
+          displayRolls += "-";
+        } else if (!frame.rolls[1]) {
+          displayRolls += " "
+        } else {
+          displayRolls += frame.rolls[1];
+        };
       };
     })
 
     return displayRolls;
+  };
+
+  updateScoreCard() {
+    console.log(this.frames);
+    let rollingScore = 0;
+
+    this.frames.forEach( frame => {
+      let score = frame.score();
+      rollingScore += score;
+      this.scoreCard[frame.id.toString().padStart(2, "0")] = {
+        rolls: this.displayFrameRolls(frame.id),
+        score: frame.score(),
+        rollingscore: rollingScore
+      };
+    })
+    console.log(this.scoreCard);
   };
 
 };

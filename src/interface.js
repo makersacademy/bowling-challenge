@@ -16,6 +16,13 @@ $(document).ready(function() {
         var score = $('#ent-score').val();
         game.roll(parseInt(score));
 
+        if (game.showMessage().includes('Strike')) {
+          $('.scorecard').addClass('shake');
+          setTimeout(() => {
+            $('.scorecard').removeClass('shake');
+        }, 1500);
+        };
+
         displayMessage(game.showMessage(), 3000);
         
         for (let [key, value] of Object.entries(game.scoreCard)) {

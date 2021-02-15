@@ -8,7 +8,11 @@ class Frame {
     };
 
     addRoll(pins) {
+        if (this.rolls.length > 0) {
+            pins = Math.min(pins, (10 - this.rolls[0]))
+        }
         this.rolls.push(pins);
+        return pins;
     };
 
     score() {

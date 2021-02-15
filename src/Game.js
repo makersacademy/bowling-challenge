@@ -61,8 +61,7 @@ class Game {
 
   logRoll(pins) {
 
-    this.rolls.push(pins);
-    this.currentFrame().addRoll(pins);
+    this.rolls.push(this.currentFrame().addRoll(pins));
 
     if (this.currentFrame().isStrike()) {
       this.message = 'KAPOW! Excellent Strike!!!'

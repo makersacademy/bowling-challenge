@@ -70,6 +70,7 @@ class BowlingScorecard {
   }
 
   calculateScores() {
+    this.total = 0
     console.log("in calculating scores");
     console.log(this.total);
     let index = 0
@@ -108,7 +109,7 @@ class BowlingScorecard {
       index += 1;
       console.log(this.total)
     }
-
+    this.getScore();
     this.reset();
 
   }

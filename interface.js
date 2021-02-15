@@ -4,7 +4,7 @@ $(document).ready(function() {
 
   function updateFrame() {
   $('#frame').text(scorecard.getFrame());
-    $('#score').text(scorecard.getScore());
+  $('#score').text(scorecard.getScore());
   }
 
   $('#0').on('click', function() { // event listener

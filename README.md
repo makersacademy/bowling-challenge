@@ -1,4 +1,4 @@
-![Bowling](https://www.dropbox.com/s/0jrbq9mr7ajueb3/Bowling_Score.png?dl=0)
+![Bowling](https://www.dropbox.com/s/0jrbq9mr7ajueb3/Bowling_Score.png)
 
 
 # Bowling Challenge - JS

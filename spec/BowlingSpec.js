@@ -18,7 +18,7 @@ describe('Bowling', function() {
     scorecard.frame(9, 0);
     scorecard.frame(0, 5);
     scorecard.frame(6, 3);
-    scorecard.calculateScores();
+    // scorecard.calculateScores();
     expect(scorecard.total).toEqual(79);
   });
 
@@ -34,7 +34,6 @@ describe('Bowling', function() {
     scorecard.frame(9, 0);
     scorecard.frame(0, 5);
     scorecard.frame(6, 3);
-    scorecard.calculateScores();
     expect(scorecard.total).toEqual(97);
   });
 
@@ -49,91 +48,106 @@ describe('Bowling', function() {
     scorecard.frame(9, 0)
     scorecard.frame(0, 5)
     scorecard.frame(6, 3)
-    scorecard.calculateScores();
+    // scorecard.calculateScores();
     expect(scorecard.total).toEqual(117)
   });
 
   it("correctly calculates the score (spare in frame 1, strikes in frames 5 and 6, spare in frame 10)", function() {
-    scorecard.frame(4, 6);
-    scorecard.frame(6, 2);
-    scorecard.frame(4, 2);
-    scorecard.frame(8, 1);
-    scorecard.frame(10, "x");
-    scorecard.frame(10, "x");
-    scorecard.frame(7, 2);
-    scorecard.frame(9, 0);
-    scorecard.frame(0, 5);
-    scorecard.frame(6, 4);
-    scorecard.frame(7, 0);
-    scorecard.calculateScores();
+    scorecard.checkRoll(4);
+    scorecard.checkRoll(6);
+    scorecard.checkRoll(6);
+    scorecard.checkRoll(2);
+    scorecard.checkRoll(4);
+    scorecard.checkRoll(2);
+    scorecard.checkRoll(8);
+    scorecard.checkRoll(1);
+    scorecard.checkRoll(10);
+    scorecard.checkRoll(10);
+    scorecard.checkRoll(7);
+    scorecard.checkRoll(2);
+    scorecard.checkRoll(9);
+    scorecard.checkRoll(0);
+    scorecard.checkRoll(0);
+    scorecard.checkRoll(5);
+    scorecard.checkRoll(6);
+    scorecard.checkRoll(4);
+    scorecard.checkRoll(7);
+    scorecard.checkRoll(0);
+   // scorecard.calculateScores();
     expect(scorecard.total).toEqual(125);
   });
 
   it("correctly calculates the score (perfect game)", function() {
-      scorecard.frame(10, "x");
-      scorecard.frame(10, "x");
-      scorecard.frame(10, "x");
-      scorecard.frame(10, "x");
-      scorecard.frame(10, "x");
-      scorecard.frame(10, "x");
-      scorecard.frame(10, "x");
-      scorecard.frame(10, "x");
-      scorecard.frame(10, "x");
-      scorecard.frame(10, "x");
+    scorecard.checkRoll(10);
+    scorecard.checkRoll(10);
+    scorecard.checkRoll(10);
+    scorecard.checkRoll(10);
+    scorecard.checkRoll(10);
+    scorecard.checkRoll(10);
+    scorecard.checkRoll(10);
+    scorecard.checkRoll(10);
+    scorecard.checkRoll(10);
+    scorecard.checkRoll(10);
       // console.log("bonus frame")
-      scorecard.frame(10, 10);
-      scorecard.calculateScores();
-      expect(scorecard.total).toEqual(300);
+    scorecard.checkRoll(10);
+    scorecard.checkRoll(10);
+      // scorecard.calculateScores();
+    expect(scorecard.total).toEqual(300);
     });
 
     it("correctly calculates the score (almost perfect game)", function() {
-        scorecard.frame(10, "x");
-        scorecard.frame(10, "x");
-        scorecard.frame(10, "x");
-        scorecard.frame(10, "x");
-        scorecard.frame(10, "x");
-        scorecard.frame(10, "x");
-        scorecard.frame(10, "x");
-        scorecard.frame(10, "x");
-        scorecard.frame(10, "x");
-        scorecard.frame(10, "x");
+      scorecard.checkRoll(10);
+      scorecard.checkRoll(10);
+      scorecard.checkRoll(10);
+      scorecard.checkRoll(10);
+      scorecard.checkRoll(10);
+      scorecard.checkRoll(10);
+      scorecard.checkRoll(10);
+      scorecard.checkRoll(10);
+      scorecard.checkRoll(10);
+      scorecard.checkRoll(10);
         // console.log("bonus frame")
-        scorecard.frame(0, 0);
-        scorecard.calculateScores();
+      scorecard.checkRoll(0);
+      scorecard.checkRoll(0);
+
+        // scorecard.calculateScores();
         expect(scorecard.total).toEqual(270);
       });
 
       it("correctly calculates the score (rarest score)", function() {
-          scorecard.frame(10, "x");
-          scorecard.frame(10, "x");
-          scorecard.frame(10, "x");
-          scorecard.frame(10, "x");
-          scorecard.frame(10, "x");
-          scorecard.frame(10, "x");
-          scorecard.frame(10, "x");
-          scorecard.frame(10, "x");
-          scorecard.frame(10, "x");
-          scorecard.frame(10, "x");
+        scorecard.checkRoll(10);
+        scorecard.checkRoll(10);
+        scorecard.checkRoll(10);
+        scorecard.checkRoll(10);
+        scorecard.checkRoll(10);
+        scorecard.checkRoll(10);
+        scorecard.checkRoll(10);
+        scorecard.checkRoll(10);
+        scorecard.checkRoll(10);
+        scorecard.checkRoll(10);
           // console.log("bonus frame")
-          scorecard.frame(10, 2);
-          scorecard.calculateScores();
+        scorecard.checkRoll(10);
+        scorecard.checkRoll(2);
+
+          // scorecard.calculateScores();
           expect(scorecard.total).toEqual(292);
         });
 
         it("correctly calculates the score (unusual score)", function() {
-            scorecard.frame(9, 1);
-            scorecard.frame(10, "x");
-            scorecard.frame(10, "x");
-            scorecard.frame(10, "x");
-            scorecard.frame(10, "x");
-            scorecard.frame(10, "x");
-            scorecard.frame(10, "x");
-            scorecard.frame(10, "x");
-            scorecard.frame(10, "x");
-            scorecard.frame(10, "x");
+            scorecard.checkRoll(9);
+            scorecard.checkRoll(1);
+            scorecard.checkRoll(10);
+            scorecard.checkRoll(10);
+            scorecard.checkRoll(10);
+            scorecard.checkRoll(10);
+            scorecard.checkRoll(10);
+            scorecard.checkRoll(10);
+            scorecard.checkRoll(10);
+            scorecard.checkRoll(10);
+            scorecard.checkRoll(10);
             // console.log("bonus frame")
             scorecard.frame(10, 1);
-            scorecard.calculateScores();
+            // scorecard.calculateScores();
             expect(scorecard.total).toEqual(281);
           });
 

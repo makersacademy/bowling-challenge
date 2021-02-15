@@ -6,7 +6,7 @@ class Frame {
 
   addTurn(pinsDowned) {
     this.pinsKnocked.push(pinsDowned);
-    checkTurn(pinsDowned);
+    this.checkTurn(pinsDowned);
   }
 
   checkTurn(pinsDowned) {

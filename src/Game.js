@@ -7,6 +7,7 @@ class Game {
     this.maxRolls = 21;
     this.frames = [new Frame(1)];
     this.scoreCard = {};
+    this.message = "Enter your first roll to get the game started"
   };
 
   roll(pins) {
@@ -25,11 +26,18 @@ class Game {
     };
     
     if (this.gameIsOver()) {
-      console.log(this.frames);
-      console.log('GAME OVER! Thanks for playing!')
+      this.message = `Thanks for playing - You scored ${this.currentGameScore()}!`;
     };
 
   }
+
+  showMessage() {
+    return this.message;
+  };
+
+  clearMessage() {
+    this.message = "";
+  };
 
   currentFrame() {
     return this.frames[this.frames.length - 1];
@@ -55,6 +63,13 @@ class Game {
 
     this.rolls.push(pins);
     this.currentFrame().addRoll(pins);
+
+    if (this.currentFrame().isStrike()) {
+      this.message = 'KAPOW! Excellent Strike!!!'
+    } else if (this.currentFrame().isSpare()) {
+      this.message = 'Well done, great Spare!'
+    };
+
     this.carryBonusToPrevFrames();
 
     if (this.currentFrame().isLastFrame()) {
@@ -118,8 +133,6 @@ class Game {
       };
     };
 
-    // console.log(traverseFrames);
-
     traverseFrames.forEach(frame => {
       if (frame.isStrike()) {
         displayRolls += "X"
@@ -141,7 +154,6 @@ class Game {
   };
 
   updateScoreCard() {
-    console.log(this.frames);
     let rollingScore = 0;
 
     this.frames.forEach( frame => {
@@ -153,7 +165,6 @@ class Game {
         rollingscore: rollingScore
       };
     })
-    console.log(this.scoreCard);
   };
 
 };

@@ -3,19 +3,22 @@ $(document).ready(function() {
 
     playGame();
 
-
     function playGame() {
-
+      let message = "";
 
       $("#ent-score").focus();
+
+      message = game.showMessage();
+      displayMessage(message, 3000);
       
       $('#enter-score').submit(function(event) {
         event.preventDefault();
         var score = $('#ent-score').val();
         game.roll(parseInt(score));
+
+        displayMessage(game.showMessage(), 3000);
         
         for (let [key, value] of Object.entries(game.scoreCard)) {
-          console.log(key, value);
           if (value.rolls.includes("X")) {
             $(`#rolls-${key}`).addClass('strike');
           };
@@ -25,6 +28,18 @@ $(document).ready(function() {
         $('#ent-score').val('')
         $("#ent-score").focus();
 
-          })
+      })
     }
+
+    function displayMessage(message, time) {
+      if (message) {
+        $('.message').text(message);
+        $('.message-block').addClass('show')
+        setTimeout(() => {
+          $('.message-block').removeClass('show');
+          game.clearMessage();
+      }, time);
+      };
+    };
+
   })

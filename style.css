@@ -31,6 +31,7 @@ main {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    position: relative;
 }
 
 .scorecard {
@@ -95,6 +96,29 @@ button {
 button:hover {
     transform: scale(1.05);
     color: rgb(70, 135, 138);
+}
+
+.message-block {
+    background: rgba(0, 0, 0, 0.8);
+    width: 600px;
+    height: 150px;
+    border-radius: 1.6rem 1.6rem 0 0;
+    padding: 2rem;
+    position: absolute;
+    bottom: -150px;
+    color: white;
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* display: none; */
+    transition: transform 1s ease-in-out;
+}
+
+.message-block.show {
+    /* display: inherit; */
+    /* bottom: 0; */
+    transform: translateY(-150px);
 }
 
 

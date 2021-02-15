@@ -15,16 +15,11 @@ class Game{
   }
 
   run(roll){
-    console.log(this.CurrentFrame());
     this.CurrentFrame().AddRolls(roll);
-    console.log(this.CurrentFrame());
-    console.log(this.PreviousFrame());
     if(this.CurrentFrame().isFinished()){
       this.UpdatePreviousFrame();
       this.NextFrame();
     }
-    console.log(this.PreviousFrame());
-    console.log(this.FrameBeforeLast());
   }
 
   NextFrame(){
@@ -49,6 +44,9 @@ class Game{
     }
     else if( this.PreviousFrame().isStrike() ){
       this.PreviousFrame().frame_score += this.CurrentFrame().frame_score;
+      if( this.frame_counter > 1 && this.FrameBeforeLast().isStrike() ){
+        this.FrameBeforeLast().frame_score += this.CurrentFrame().roll1;
+      }
     }
   }
 

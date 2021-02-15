@@ -1,9 +1,0 @@
-.container {
-  /* standard */
-  column-gap: <line-size>;
-  row-gap: <line-size>;
-
-  /* old */
-  grid-column-gap: <line-size>;
-  grid-row-gap: <line-size>;
-}

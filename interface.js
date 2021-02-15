@@ -1,13 +1,13 @@
 $(document).ready(function() {
   var game;
-  $('#frame').text(game.frame_counter);
+  game = new Game();
+  $('#frame').text(game.frame_counter + 1);
 
-  $('#bonus_roll').click(function() {
+  $('#submit').mouseover(function() {
+    // event.preventDefault();
     let roll = $('#roll1').val();
-    game.AddRolls(roll);
-    let roll2 = $('#roll2').val();
-    game.AddRolls(roll2);
-    $('#roll_one').text(game.frames[0]);
-    $('#roll_two').text(roll2);
+    console.log(roll);
+    game.run(roll);
+    $('#f1r1').text(game.frames[game.frame_counter].roll1);
   })
 })

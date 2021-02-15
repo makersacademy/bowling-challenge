@@ -1,4 +1,14 @@
 .grid-container {
   display: grid;
+  width: 500px;
   grid-template-columns: auto auto auto auto auto;
+  grid-column-gap: 50px;
+  column-gap: 10px;
+  row-gap: 15px;
+  margin-left: 150px;
+  border: 5px solid black;
+}
+
+.grid-item {
+    border: 2px solid black ;
 }

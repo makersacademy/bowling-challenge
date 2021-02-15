@@ -1,5 +1,4 @@
-![Bowling](https://www.dropbox.com/s/0jrbq9mr7ajueb3/Bowling_Score.png)
-
+![Bowling](https://github.com/Mornevanzyl/bowling-challenge/blob/master/images/bowling_score.png?raw=true)
 
 # Bowling Challenge - JS
 

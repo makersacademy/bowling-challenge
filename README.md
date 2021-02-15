@@ -15,13 +15,16 @@ open SpecRunner.html
 ## Usage
 
 ```JS
+open index.html # in your browser
+
+# Use the web interface or,
+# Use the console in Chrome Developer Tools
+
 game = new Game # returns instance of Game class
 
-frame = new Frame # returns instance of Frame class
-
-frame.add_roll(3) # registers a roll of 3 pins
-frame.add_roll(7) # completes frame, registers a spare
-frame.add_roll(10) # registers a strike
+game.roll(3) # registers a roll of 3 pins
+game.roll(7) # completes frame, registers a spare
+game.roll(10) # registers a strike
 ```
 
 ## Approach
@@ -36,7 +39,7 @@ This section outlines known/identified areas of improvement/optimisation that se
 
 - Extend to multi-player functionality.
 
-- Add a web front-end.
+- Add responsiveness to web-interface.
 
 ##  Acknowledgements/Appreciations
 - I'd like to thank the academy...

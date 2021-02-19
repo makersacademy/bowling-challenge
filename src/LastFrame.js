@@ -5,7 +5,7 @@ class LastFrame extends Frame{
     super();
   }
 
-  AddRolls(roll){
+  addRolls(roll){
     if(this.roll1 === null){
        this.roll1 = roll;
     }else if(this.roll2 === null){
@@ -19,9 +19,9 @@ class LastFrame extends Frame{
   isFinished(){
     if(this.isSpare() && this.bonus_roll === null){
       return false;
-    } else if(this.roll1 === STRIKE && this.roll2 !== null && this.bonus_roll !== null){
+    } else if( this.isStrike() && this.roll2 !== null && this.bonus_roll !== null){
       return true;
-    } else if(this.roll1 !== STRIKE && this.roll2 !== null && !this.isSpare()) {
+    } else if( !this.isStrike() && this.roll2 !== null && !this.isSpare()) {
       return true;
     }
      return false;

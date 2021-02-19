@@ -1,7 +1,7 @@
 'use strict';
 
 const MAX_FRAMES = 10;
-const MAX_SCORE = 10;
+const MAX_FFRAME_SCORE = 10;
 const MIN_SCORE = 0;
 
 class Game{
@@ -15,53 +15,53 @@ class Game{
   }
 
   run(roll){
-    this.CurrentFrame().AddRolls(roll);
-    if(this.CurrentFrame().isFinished()){
-      this.UpdatePreviousFrame();
-      this.NextFrame();
+    this.currentFrame().addRolls(roll);
+    if(this.currentFrame().isFinished()){
+      this.updatePreviousFrame();
+      this.moveToNextFrame();
     }
   }
 
-  NextFrame(){
+  moveToNextFrame(){
     return this.frame_counter += 1;
   }
 
-  CurrentFrame(){
+  currentFrame(){
     return this.frames[this.frame_counter];
   }
 
-  PreviousFrame(){
+  previousFrame(){
     return this.frames[this.frame_counter - 1];
   }
 
-  FrameBeforeLast(){
+  frameBeforeLast(){
     return this.frames[this.frame_counter - 2];
   }
 
-  AddStrikePoints(){
-    if( this.frame_counter === 0 || !this.PreviousFrame().isStrike() ){
+  addStrikePoints(){
+    if( this.frame_counter === 0 || !this.previousFrame().isStrike() ){
       return;
     }
-    else if( this.PreviousFrame().isStrike() ){
-      this.PreviousFrame().frame_score += this.CurrentFrame().frame_score;
-      if( this.frame_counter > 1 && this.FrameBeforeLast().isStrike() ){
-        this.FrameBeforeLast().frame_score += this.CurrentFrame().roll1;
+    else if( this.previousFrame().isStrike() ){
+      this.previousFrame().frame_score += this.currentFrame().frame_score;
+      if( this.frame_counter > 1 && this.frameBeforeLast().isStrike() ){
+        this.frameBeforeLast().frame_score += this.currentFrame().roll1;
       }
     }
   }
 
-  AddSparePoints(){
-    if( this.frame_counter === 0 || !this.PreviousFrame().isSpare() ){
+  addSparePoints(){
+    if( this.frame_counter === 0 || !this.previousFrame().isSpare() ){
       return;
     }
-    if( this.PreviousFrame().isSpare() ){
-      this.PreviousFrame().frame_score += this.CurrentFrame().roll1;
+    if( this.previousFrame().isSpare() ){
+      this.previousFrame().frame_score += this.currentFrame().roll1;
     }
   }
 
-  UpdatePreviousFrame(){
-    this.AddStrikePoints();
-    this.AddSparePoints();
+  updatePreviousFrame(){
+    this.addStrikePoints();
+    this.addSparePoints();
   }
 
   total_score() {

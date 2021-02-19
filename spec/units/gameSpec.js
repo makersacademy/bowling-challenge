@@ -108,4 +108,12 @@ describe('Game', function() {
       expect(game.score).toBe(14)
     })
   })
+
+  it('reduces the status of each bonus class by 1 each roll', function() {
+    game.input_bowl(10);
+    game.input_bowl(4);
+    game.input_bowl(4);
+    expect(game.calculateScore()).toBe(26);
+    // perRoll is currently being called under the wrong conditions
+  })
 })

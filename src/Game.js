@@ -38,7 +38,7 @@ class Game{
     return this.frames[this.frame_counter - 2];
   }
 
-  addStrikePoints(){
+  addStrikeBonusPoints(){
     if( this.frame_counter === 0 || !this.previousFrame().isStrike() ){
       return;
     }
@@ -50,7 +50,7 @@ class Game{
     }
   }
 
-  addSparePoints(){
+  addSpareBonusPoints(){
     if( this.frame_counter === 0 || !this.previousFrame().isSpare() ){
       return;
     }
@@ -60,8 +60,8 @@ class Game{
   }
 
   updatePreviousFrame(){
-    this.addStrikePoints();
-    this.addSparePoints();
+    this.addStrikeBonusPoints();
+    this.addSpareBonusPoints();
   }
 
   total_score() {

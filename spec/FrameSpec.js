@@ -26,8 +26,8 @@ describe('Frame', function() {
 
   describe('#isSpare', function() {
     it('tells us if it is a spare', function() {
-      frame.AddRolls(5);
-      frame.AddRolls(5);
+      frame.addRolls(5);
+      frame.addRolls(5);
       expect(frame.isSpare()).toEqual(true);
     })
 
@@ -36,28 +36,28 @@ describe('Frame', function() {
     })
   })
 
-  describe('#AddRolls', function() {
+  describe('#addRolls', function() {
     it('adds your score to the roll1', function() {
-      frame.AddRolls(3);
+      frame.addRolls(3);
       expect(frame.frame_Score()).toEqual(3);
     })
 
     it('adds your score to the roll2', function() {
-      frame.AddRolls(3);
-      frame.AddRolls(4);
+      frame.addRolls(3);
+      frame.addRolls(4);
       expect(frame.frame_Score()).toEqual(7);
     })
 
     it('throws an error if more than 10 in total', function() {
-      frame.AddRolls(5);
-      expect(function() { frame.AddRolls(6); }).toThrowError('There are not that many pins')
+      frame.addRolls(5);
+      expect(function() { frame.addRolls(6); }).toThrowError('Maximum pins are 10, you say you rolled 11??')
     })
   })
 
   describe('#isFinished', function() {
     it('tells us if the frame is done', function() {
-      frame.AddRolls(1);
-      frame.AddRolls(3);
+      frame.addRolls(1);
+      frame.addRolls(3);
       expect(frame.isFinished()).toEqual(true);
     })
   })

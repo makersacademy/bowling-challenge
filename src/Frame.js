@@ -25,7 +25,7 @@ class Frame{
        this.roll1 = roll;
     }else if( this.roll2 === null && !this.isStrike()){
       if(this.roll1 + roll > MAX_FFRAME_SCORE){
-        throw new Error('There are not that many pins');
+        throw new Error(`Maximum pins are 10, you say you rolled ${this.roll1 + roll}??`);
       }
        this.roll2 = roll;
     }

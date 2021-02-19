@@ -5,8 +5,8 @@ describe('Game', function() {
 
   beforeEach(function(){
     game = new Game();
-    frame = jasmine.createSpyObj('Frame',['frame_Score', 'AddRolls', 'isStrike'])
-    frame_1 = jasmine.createSpyObj('Frame',['frame_Score', 'AddRolls', 'isStrike'])
+    frame = jasmine.createSpyObj('Frame',['frame_Score', 'addRolls', 'isStrike'])
+    frame_1 = jasmine.createSpyObj('Frame',['frame_Score', 'addRolls', 'isStrike'])
   })
 
   describe('#NextFrame', function() {
@@ -32,7 +32,7 @@ describe('Game', function() {
       game.run(10);
       game.run(3);
       game.run(3);
-      expect(game.FrameBeforeLast().frame_score).toEqual(16);
+      expect(game.frameBeforeLast().frame_score).toEqual(16);
     })
 
     it('does not add strike points to the previous frame', function() {
@@ -40,7 +40,7 @@ describe('Game', function() {
       game.run(2);
       game.run(3);
       game.run(4);
-      expect(game.FrameBeforeLast().frame_score).toEqual(7);
+      expect(game.frameBeforeLast().frame_score).toEqual(7);
     })
   })
 
@@ -50,14 +50,14 @@ describe('Game', function() {
       game.run(4);
       game.run(3);
       game.run(3);
-      expect(game.FrameBeforeLast().frame_score).toEqual(13);
+      expect(game.frameBeforeLast().frame_score).toEqual(13);
     })
     it('does not add spare points to the previous frame', function() {
       game.run(5);
       game.run(2);
       game.run(3);
       game.run(4);
-      expect(game.FrameBeforeLast().frame_score).toEqual(7);
+      expect(game.frameBeforeLast().frame_score).toEqual(7);
     })
   })
 

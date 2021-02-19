@@ -12,18 +12,18 @@ describe('Game', function() {
   describe('#NextFrame', function() {
     it('goes to the next frame after a strike', function(){
       game.run(10);
-      expect(game.frame_counter).toEqual(1);
+      expect(game.frame_index).toEqual(1);
     })
 
     it('does not go to the next frame until finished', function(){
       game.run(4);
-      expect(game.frame_counter).toEqual(0);
+      expect(game.frame_index).toEqual(0);
     })
 
     it('goes to the next frame after frame finishes', function(){
       game.run(3);
       game.run(3);
-      expect(game.frame_counter).toEqual(1);
+      expect(game.frame_index).toEqual(1);
     })
   })
 

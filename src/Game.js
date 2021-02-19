@@ -11,7 +11,7 @@ class Game{
       this.frames.push(new frameClass())
     }
     this.frames.push(new LastFrame())
-    this.frame_counter = 0
+    this.frame_index = 0
   }
 
   run(roll){
@@ -23,35 +23,35 @@ class Game{
   }
 
   moveToNextFrame(){
-    return this.frame_counter += 1;
+    return this.frame_index += 1;
   }
 
   currentFrame(){
-    return this.frames[this.frame_counter];
+    return this.frames[this.frame_index];
   }
 
   previousFrame(){
-    return this.frames[this.frame_counter - 1];
+    return this.frames[this.frame_index - 1];
   }
 
   frameBeforeLast(){
-    return this.frames[this.frame_counter - 2];
+    return this.frames[this.frame_index - 2];
   }
 
   addStrikeBonusPoints(){
-    if( this.frame_counter === 0 || !this.previousFrame().isStrike() ){
+    if( this.frame_index === 0 || !this.previousFrame().isStrike() ){
       return;
     }
     else if( this.previousFrame().isStrike() ){
       this.previousFrame().frame_score += this.currentFrame().frame_score;
-      if( this.frame_counter > 1 && this.frameBeforeLast().isStrike() ){
+      if( this.frame_index > 1 && this.frameBeforeLast().isStrike() ){
         this.frameBeforeLast().frame_score += this.currentFrame().roll1;
       }
     }
   }
 
   addSpareBonusPoints(){
-    if( this.frame_counter === 0 || !this.previousFrame().isSpare() ){
+    if( this.frame_index === 0 || !this.previousFrame().isSpare() ){
       return;
     }
     if( this.previousFrame().isSpare() ){

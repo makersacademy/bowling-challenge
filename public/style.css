@@ -1,0 +1,18 @@
+.grid-container {
+  display: grid;
+  width: 500px;
+  grid-template-columns: auto auto auto auto auto;
+  grid-column-gap: 50px;
+  column-gap: 10px;
+  row-gap: 15px;
+  margin-left: 150px;
+  border: 5px solid rgb(152, 58, 158);
+  padding: 10;
+  background-color: pink;
+}
+
+.grid-item {
+  border: 2px solid rgb(180, 52, 158) ;
+  position: relative;
+  padding: 10;
+}

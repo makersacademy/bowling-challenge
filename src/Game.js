@@ -42,7 +42,7 @@ class Game{
     if( this.frame_index === 0 || !this.previousFrame().isStrike() ){
       return;
     }
-    else if( this.previousFrame().isStrike() ){
+    if( this.previousFrame().isStrike() ){
       this.previousFrame().frame_score += this.currentFrame().frame_score;
       if( this.frame_index > 1 && this.frameBeforeLast().isStrike() ){
         this.frameBeforeLast().frame_score += this.currentFrame().roll1;

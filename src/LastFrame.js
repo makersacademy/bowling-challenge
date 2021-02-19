@@ -19,9 +19,11 @@ class LastFrame extends Frame{
   isFinished(){
     if(this.isSpare() && this.bonus_roll === null){
       return false;
-    } else if( this.isStrike() && this.roll2 !== null && this.bonus_roll !== null){
+    }
+    if( this.isStrike() && this.roll2 !== null && this.bonus_roll !== null){
       return true;
-    } else if( !this.isStrike() && this.roll2 !== null && !this.isSpare()) {
+    }
+    if( !this.isStrike() && this.roll2 !== null && !this.isSpare()) {
       return true;
     }
      return false;

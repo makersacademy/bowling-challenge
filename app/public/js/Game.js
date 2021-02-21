@@ -1,4 +1,4 @@
-let Frame = require('./Frame');
+// let Frame = require('./Frame');
 
 class Game {
   constructor() {
@@ -51,4 +51,4 @@ class Game {
   }
 }
 
-module.exports = Game;
+// module.exports = Game;

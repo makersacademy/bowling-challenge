@@ -8,11 +8,11 @@ describe('Feature Test:', function(){
 
   beforeEach(function() {
     game = new Game();
-    game.input_bowl(3);
-    game.input_bowl(5);
+    game.inputBowl(3);
+    game.inputBowl(5);
     frame = game.frames[0]
-    game.input_bowl(3);
-    game.input_bowl(5);
+    game.inputBowl(3);
+    game.inputBowl(5);
     frame2 = game.frames[1]
   });
 
@@ -26,14 +26,20 @@ describe('Feature Test:', function(){
       expect(frame.number).toEqual(1)
       expect(frame2.number).toEqual(2)
     })
-
   })
 
   describe('bonuses', function() {
     it('saves a status of 2 if strike', function(){
+      game.inputBowl(10);
+      expect(game.frames[2].bonus).toBe(2);
+    })
+
+    it('has a score of 300 for a perfect game', function() {
       game = new Game();
-      game.input_bowl(10);
-      expect(game.frames[0].bonus).toBe(2);
+      for (let i = 0; i < 12; i++) {
+        game.inputBowl(10);
+      }
+      expect(game._score).toBe(300);
     })
   })
 })

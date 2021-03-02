@@ -3,7 +3,7 @@ Bowling Challenge
 =================
 
 This is my solution to [this](https://github.com/makersacademy/bowling-challenge) challenge.  
-I have also created a version of this in [Ruby](https://github.com/AdamusBG/bowling-challenge-ruby).  
+I have also created a command line based version of this in [Ruby](https://github.com/AdamusBG/bowling-challenge-ruby).  
 
 ## Scoring in Bowling  
 

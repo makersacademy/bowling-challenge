@@ -17,7 +17,6 @@ class Frame {
   }
 
   addScore(score) {
-    console.log("points added to frame: "+score);
     this.totalScore += score;
   }
 

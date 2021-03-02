@@ -1,6 +1,6 @@
 body  {
 font-family: "Arial Black", Gadget, sans-serif;
-background-color: rgb(236, 212, 174);
+background-color:white;
 margin-top: 400px;
 max-width: 500px;
 margin: auto;
@@ -11,7 +11,7 @@ margin: auto;
 }
 h1 {   font-size: 30px;
     position: relative;
-    color: rgb(226, 154, 96);
+    color:black;
     text-align: center;
     padding: 1em 2em;
     
@@ -30,11 +30,9 @@ th, td {
     padding: 8px;
   }
 
-.btn {
-  margin-top: 25px;
-  margin-bottom: 25px;
-  margin-right: 80px;
-  margin-left: 80px;
+#btn {
+display: flex;
+justify-content: space-around;
 
   }
 #score {

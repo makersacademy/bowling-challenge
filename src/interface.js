@@ -6,8 +6,7 @@ $(document).ready( function() {
   $('button').on('click', function(e) {
     roll = parseInt(e.target.innerHTML, 10);
     rollNumber += 1;
-
-    //   to disable button  $("#btn").attr("disabled", true);
+    
     if ((rollNumber%2)==0) {
       const frame = new Frame(roll1, roll);
       try {

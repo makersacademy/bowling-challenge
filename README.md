@@ -9,7 +9,7 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 
 Clone this repo
 ```
- git clone https://github.com/lisabardelli/bowling-challenge.git
+ git clone https://github.com/lisabardelli/bowling_challenge.git
 ```
 Move to the folder
 ```

@@ -13,7 +13,7 @@ Clone this repo
 ```
 Move to the folder
 ```
- cd bowling-challenge
+ cd bowling_challenge
 ```
 Run locally
 ```

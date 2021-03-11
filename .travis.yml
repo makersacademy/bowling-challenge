@@ -1,2 +1,2 @@
 language: javascript
-script: npx jasmine
+script: jasmine

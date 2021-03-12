@@ -13,4 +13,17 @@ describe('Frame', function() {
       expect(frame.score()).toBe(5)
     });
   });
+
+  describe('isOver', function() {
+    it('knows when it is over', function() {
+      frame.addRoll(5)
+      frame.addRoll(5)
+      expect(frame.isOver()).toBe(true)
+    });
+
+    it('knows when it is not over', function() {
+      frame.addRoll(5)
+      expect(frame.isOver()).toBe(false)
+    });
+  });
 });

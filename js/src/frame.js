@@ -13,4 +13,8 @@ class Frame {
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
     return this.rolls.reduce(reducer);
   }
+
+  isOver() {
+    return this.rolls.length >= 2;
+  }
 }

@@ -14,5 +14,3 @@ class Frame {
     return this.rolls.reduce(reducer);
   }
 }
-
-module.exports = Frame;

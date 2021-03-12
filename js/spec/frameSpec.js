@@ -4,9 +4,7 @@ describe('Frame', function() {
   let frame;
 
   beforeEach(function() {
-    let frameClass = require('../js/src/frame')
-    frame = new frameClass;
-    // frame = new Frame
+    frame = new Frame
   })
 
   describe('score', function() {

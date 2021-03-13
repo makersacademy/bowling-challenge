@@ -1,7 +1,8 @@
 
-Badge: jasmin 3.6.0, laguage JS, 
 Bowling Challenge
 =================
+
+Badge: jasmin 3.6.0, laguage JS, 
 
 ## How to run?
 ```
@@ -17,6 +18,7 @@ I decided to go back to last week challenge and adopt the same logic, as I wante
 
 This challenge gave me the biggest headeache so far. It was particular hard, as it was difficult to solve for the task ahead while looking to at the next step. I attempted to calculate each frame score while not having the next frame which made the task alomost impossible, however from the moment where I decided to first enter all the rolls, the flow sort of bacame clearer and it was easier to not get lost.
 
+**Object Mapping**
 | Object | Attributes       | Method        | Dependency |
 | ------ | ---------------- | ------------- | ---------- |
 | Game   | @max_frame = Int | play()        | Frame      |
@@ -28,7 +30,11 @@ This challenge gave me the biggest headeache so far. It was particular hard, as 
 |        |                  | strike?()     |            |
 |        |                  | completed?()  |            |
 
+**Programm Flow**
 ![Program Flow](https://github.com/sandyMax974/bowling-challenge-ruby/blob/main/images/flow%20diagram.png)
+
+**Interface Mock-up**
+![interface-mockup]()
 
 ### Bowling — how does it work?
 

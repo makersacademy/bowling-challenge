@@ -14,8 +14,8 @@
   <script src="js/src/game.js"></script>
 </head>
 <body>
-  <script src="js/src/interface.js"></script>
   <script src="js/lib/jquery.js"></script>
+  <script src="js/src/interface.js"></script>
 
   <header>
     <h1>Bowling</h1>
@@ -40,52 +40,52 @@
         <th colspan="3">Frame 10</th>
       </tr>
       <tr class="rolls">
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
+        <td id="1-1">-</td>
+        <td id="1-2">-</td>
+        <td id="2-1">-</td>
+        <td id="2-2">-</td>
+        <td id="3-1">-</td>
+        <td id="3-2">-</td>
+        <td id="4-1">-</td>
+        <td id="4-2">-</td>
+        <td id="5-1">-</td>
+        <td id="5-2">-</td>
+        <td id="6-1">-</td>
+        <td id="6-2">-</td>
+        <td id="7-1">-</td>
+        <td id="7-2">-</td>
+        <td id="8-1">-</td>
+        <td id="8-2">-</td>
+        <td id="9-1">-</td>
+        <td id="9-2">-</td>
+        <td id="10-1">-</td>
+        <td id="10-2">-</td>
+        <td id="10-3">-</td>
       </tr>
       <tr class="scores">
-        <td colspan="2">-</td>
-        <td colspan="2">-</td>
-        <td colspan="2">-</td>
-        <td colspan="2">-</td>
-        <td colspan="2">-</td>
-        <td colspan="2">-</td>
-        <td colspan="2">-</td>
-        <td colspan="2">-</td>
-        <td colspan="2">-</td>
-        <td colspan="3">-</td>
+        <td id="1" colspan="2">-</td>
+        <td id="2" colspan="2">-</td>
+        <td id="3" colspan="2">-</td>
+        <td id="4" colspan="2">-</td>
+        <td id="5" colspan="2">-</td>
+        <td id="6" colspan="2">-</td>
+        <td id="7" colspan="2">-</td>
+        <td id="8" colspan="2">-</td>
+        <td id="9" colspan="2">-</td>
+        <td id="10" colspan="3">-</td>
       </tr>
     </table>
   </main>
 
   <section>
     <p>Add a roll:</p>
-    <input type="number" min="0" max="10" name="roll">
-    <button>Add Roll</button>
+    <input required id="roll-input" type="number" min="0" max="10" name="roll">
+    <button id="add-roll">Add Roll</button>
   </section>
 
   <footer>
-    <p>© The Bowling Scoring Company</p>
-    <p>Proud to track your bowling scores since 2021</p>
+    <p>The Bowling Scoring Company ©</p>
+    <p>Tracking bowling scores since 2021</p>
   </footer>
 </body>
 </html>

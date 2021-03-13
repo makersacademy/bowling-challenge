@@ -6,9 +6,13 @@ class Game {
   }
 
   addRoll(pins) {
+    if (this._isGameOver()) { throw 'Game Over'; }
     if (this.frames.length === 0) { this._newFrame(); }
-    this.frames.forEach((frame) => { frame.addBonus(pins); });
-    this._currentFrame().addRoll(pins);
+
+    const roll = parseInt(pins);
+    this._validate(roll)
+    this.frames.forEach((frame) => { frame.addBonus(roll); });
+    this._currentFrame().addRoll(roll);
 
     if (this._isFinalFrame()) { return; }
     if (this._currentFrame().isOver()) { this._newFrame(); }
@@ -41,5 +45,23 @@ class Game {
 
   _isFinalFrame() {
     return this.frames.length === this.TOTAL_FRAMES;
+  }
+
+  _validate(roll) {
+    if (roll > 10 || roll < 0) { throw 'Invalid roll'; }
+    if (roll + this._currentFrame().score() > this._currentFrame().TOTAL_PINS) {
+      if (!this._isBonusRoll()) {
+        throw 'Invalid roll';
+      }
+    }
+  }
+
+  _isBonusRoll() {
+    const strikeRoll = this._isFinalFrame() && this._currentFrame()._isStrike()
+    return (strikeRoll || this._currentFrame()._isSpare());
+  }
+
+  _isGameOver() {
+    return this._isFinalFrame() && this._currentFrame().isOver();
   }
 }

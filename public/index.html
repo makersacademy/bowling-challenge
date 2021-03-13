@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Bowling</title>
+
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+
+  <script src="js/src/frame.js"></script>
+  <script src="js/src/game.js"></script>
+</head>
+<body>
+  <script src="js/src/interface.js"></script>
+  <script src="js/lib/jquery.js"></script>
+
+  <header>
+    <h1>Bowling</h1>
+  </header>
+
+  <main>
+    <h2>Score Board</h2>
+    <p id="score-board" class="score-board"></p>
+    <p id="total-score" class="total-score"></p>
+  </main>
+
+  <section>
+    <p>Add a roll:</p>
+    <input type="number" min="0" max="10" name="roll">
+    <button>Add Roll</button>
+  </section>
+
+  <footer>
+    <p>© The Bowling Scoring Company</p>
+    <p>Proud to track your bowling scores since 2021</p>
+  </footer>
+</body>
+</html>

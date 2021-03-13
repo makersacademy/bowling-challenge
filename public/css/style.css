@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+  text-align: center;
+  font-family: Arial;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+table, tr, th, td {
+  border: 1px solid black;
+  text-align: center;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input, button, section {
+  font-size: 20px;
+  border-radius: 25px;
+  padding: 10px;
+  text-align: center;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+}

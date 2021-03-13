@@ -4,9 +4,12 @@ class Game {
     this.frames = [];
     this._newFrame();
   }
-s
+
   addRoll(pins) {
     this._currentFrame().addRoll(pins);
+    if(this._currentFrame().isOver()) {
+      this._newFrame();
+    }
   }
 
   _currentFrame() {

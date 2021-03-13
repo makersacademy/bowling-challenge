@@ -37,5 +37,15 @@ describe("Score function", function() {
   });
 });
 
+describe('a spare function', function() {
+  it('scores a spare and adds a bonus to the next roll', function() {
+    for (let i = 1; i <= 2; i++) {
+      game.bowl(5);
+    }
+    game.bowl(4)
+    game.bowl(0)
+    expect(game.score()).toEqual(18);
+    });
+  });
 
 })

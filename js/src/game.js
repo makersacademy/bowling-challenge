@@ -14,10 +14,18 @@ class Game {
     if (this._currentFrame().isOver()) { this._newFrame(); }
   }
 
-  score() {
-    const scores = this.frames.map((frame) => frame.score());
+  totalScore() {
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
-    return scores.reduce(reducer);
+    return this._scores().reduce(reducer);
+  }
+
+  scoreBoard() {
+    const scores = (sum => value => sum += value)(0);
+    return this._scores().map(scores);
+  }
+
+  _scores() {
+    return this.frames.map((frame) => frame.score())
   }
 
   _currentFrame() {

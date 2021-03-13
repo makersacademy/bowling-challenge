@@ -23,6 +23,18 @@ describe("Score function", function() {
   it('throws an error if user inputs a score over 10', function() {
     expect(game.bowl(11)).toEqual('Invalid score, please try again.');
   });
+  it('stores a gutter game', function(){
+    for (let i = 1; i <= 20; i++) {
+      game.bowl(0);
+    }
+    expect(game.score()).toEqual(0);
+  });
+  it('stores a game of twos', function(){
+    for (let i = 1; i <= 20; i++) {
+      game.bowl(2);
+    }
+    expect(game.score()).toEqual(40);
+  });
 });
 
 

@@ -31,10 +31,13 @@ This challenge gave me the biggest headeache so far. It was particular hard, as 
 |        |                  | completed?()  |            |
 
 **Programm Flow**
+
 ![Program Flow](https://github.com/sandyMax974/bowling-challenge-ruby/blob/main/images/flow%20diagram.png)
 
 **Interface Mock-up**
+
 ![interface-mockup](https://github.com/sandyMax974/bowling-challenge/blob/master/interface.png)
+
 
 ### Bowling — how does it work?
 

@@ -45,7 +45,16 @@ describe('a spare function', function() {
     game.bowl(4)
     game.bowl(0)
     expect(game.score()).toEqual(18);
+  });
+});
+
+  describe('a strike function', function() {
+    it('scores a strike and adds a bonus to the next two rolls', function() {
+      game.bowl(10)
+      game.bowl(0)
+      game.bowl(4)
+      game.bowl(2)
+      expect(game.score()).toEqual(22);
     });
   });
-
 })

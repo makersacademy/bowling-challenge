@@ -7,7 +7,10 @@ class BowlingGame{
   };
 
   bowl = function(pins) {
-    this.score_card += pins;
+    if(pins === 11) {
+      return 'Invalid score, please try again.';
+    }
+    else this.score_card += pins;
   };
 
   score = function() {

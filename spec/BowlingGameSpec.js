@@ -20,6 +20,9 @@ describe("Score function", function() {
     game.bowl(3);
     expect(game.score()).toEqual(8);
   });
+  it('throws an error if user inputs a score over 10', function() {
+    expect(game.bowl(11)).toEqual('Invalid score, please try again.');
+  });
 });
 
 

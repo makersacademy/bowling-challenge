@@ -1,14 +1,13 @@
 'use strict';
 
 class Frame {
-  constructor(score1, score2 = 0){
+  constructor(score1, score2 = 0, score3 = 0){
   this._score1 = score1;
   this._score2 = score2;
+  this.frameScore = [score1, score2, score3];
   }
   get values() {
-    var array = [];
-    array.push(this._score1, this._score2);
-    return array;
+    return this.frameScore;
   }
 
   isStrike() {
@@ -16,9 +15,17 @@ class Frame {
   }
 
   isSpare() {
-    var sum = this.values.reduce((a, b)=> {
+    var sum = this.totalScore();
+    return ((sum === 10 && this._score2 !== 0));
+  }
+
+  totalScore() {
+    var total = this.frameScore.flat().reduce((a, b) => {
       return a + b;
     }, 0);
-    return ((sum === 10 && this._score2 !== 0));
+    return total;
+  }
+  add(point) {
+    this.frameScore.push(point)
   }
 }

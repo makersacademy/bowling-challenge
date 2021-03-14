@@ -1,9 +1,9 @@
 describe('Frame', () => {
   var frame;
   
-  it('should create a new frame with input of score as values for the frame', () => {
+  it('should create a new frame with input of score as values', () => {
     frame = new Frame(3, 4);
-    expect(frame.values).toEqual([3,4]);
+    expect(frame.totalScore()).toEqual(7);
   });
   
   describe('if frame is a strike', () => {
@@ -28,5 +28,10 @@ describe('Frame', () => {
       frame = new Frame(3, 2);
       expect(frame.isSpare()).toBe(false);
     });
+  });
+
+  it('returns the total score for the frame with totalScore()', () => {
+    frame = new Frame(5,3);
+    expect(frame.totalScore()).toEqual(8);
   });
 });

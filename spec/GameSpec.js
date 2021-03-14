@@ -55,6 +55,41 @@ describe('Game', () => {
 				expect(game.getCurrentScore()).toEqual(300);
 			});
 		});
-		
+	});
+
+	describe('"isPerfectGame" checks if the game is a perfect game', () => {
+		it('returns true for a perfect game', () => {
+			for(var i=0; i<9; i++) {
+				game.input(10,0)
+			}
+			game.input(10,10,10)
+			expect(game.isPerfectGame()).toEqual(true);
+		});
+	});
+	
+	describe('"isGutterGame" checks if the game is a gutter game', () => {
+		it('returns true for a gutter game', () => {
+			for(var i=0; i<10; i++) {
+				game.input(0,0)
+			}
+			expect(game.isGutterGame()).toEqual(true);
+		});
+	});
+
+	describe('throws an error for exceptional cases', () => {
+		it('throws an error when a letter is inputted', () => {
+			expect(function() {
+				game.input('d',1)
+			}).toThrow('Inputs must be a number!');
+		});
+
+		it('throws an error if user inputs a third roll for the 10th frame with no strike or spare', () => {
+			for(var i=0; i<9; i++) {
+				game.input(1,1)
+			}
+			expect(function(){
+				game.input(1, 2, 3)
+			}).toThrow('Cannot roll for third time unless striked or spared in last frame');
+		});
 	});
 });

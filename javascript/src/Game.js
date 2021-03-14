@@ -13,6 +13,9 @@ class Frame{
   };
 
   addRoll(roll, game){
+    if (isNaN(roll)) {
+      throw new Error("You must input a number from 1 to 10.")
+    }
     if ((this.score + roll > 10) && !game.finalFrame()) {
       throw new Error("There are only 10 pins in a frame!")
     }
@@ -38,7 +41,11 @@ class Game{
 
   getTotalScore() {
     return this.totalScore
-  }
+  };
+
+  getFrames(){
+    return this.frames;
+  };
 
   addFrame(frame){
     if (this.frames.length > 0) {
@@ -96,13 +103,13 @@ class Game{
 
   finalMessage(){
     if(this.getTotalScore() === 0) {
-      return `Your game is finished! You scored ${this.total}. Oh dear, that's a gutter game :(`;
+      return `Your game is finished! You scored ${this.totalScore}. Oh dear, that's a gutter game :(`;
     }
     if(this.getTotalScore() === 300) {
-      return `Your game is finished! You scored ${this.total}. You bowled the PERFECT GAME!`;
+      return `Your game is finished! You scored ${this.totalScore}. You bowled the PERFECT GAME!`;
     }
     else {
-      return `Your game is finished! You scored ${this.total}.`;
+      return `Your game is finished! You scored ${this.totalScore}.`;
     };
   };
 

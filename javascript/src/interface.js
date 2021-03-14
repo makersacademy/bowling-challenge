@@ -1,11 +1,14 @@
 let game = new Game
 let frame = new Frame
 
+$( "#message" ).text("Time to bowl!")
+
 $( "#add_roll" ).submit(function(event) {
   event.preventDefault();
+  $( "#message" ).text("Just keep bowling!")
   let roll = $( "#roll").val();
   frame.addRoll(parseInt(roll), game);
-  $( "#rolls" ).before(roll + " ")
+  $( "#rolls" ).append(roll + " ")
   if (game.finalFrame()) {
     if (frame.isStrike() && frame.rolls.length === 1) {
     $( "#message" ).text("You bowled a strike in the last frame! Two bonus rolls!")
@@ -14,9 +17,9 @@ $( "#add_roll" ).submit(function(event) {
     $( "#message" ).text("One more roll!");
     }
     if (frame.isStrike() && frame.rolls.length === 3) {
-      game.addFrame(frame)
-      $( "#add_rolls" ).hide()
-      $( "#message" ).text(`Your game is finished! Your total score is ${game.getTotalScore()}`)
+      game.addFrame(frame);
+      updateFrames();
+      endGame();
     }
     if (frame.isSpare() && frame.rolls.length === 2) {
     $( "#message" ).text("You bowled a spare in the last frame! One bonus roll!")
@@ -24,13 +27,11 @@ $( "#add_roll" ).submit(function(event) {
     if (frame.isSpare() && frame.rolls.length === 3) {
       game.addFrame(frame)
       updateFrames();
-      $( "#message" ).text(`Your game is finished! Your total score is ${game.getTotalScore()}`)
-      $( "#addRoll").hide()
+      endGame();
     } if (frame.rolls.length === 2 && (!frame.isStrike() && !frame.isSpare())) {
       game.addFrame(frame);
       updateFrames();
-      $( "#message" ).text(`Your game is finished! Your total score is ${game.getTotalScore()}`)
-      $( "#addRoll").hide()
+      endGame();
   }} else if (game.finalFrame() === false) {
   if (frame.isStrike()) {
     game.addFrame(frame);
@@ -55,7 +56,22 @@ $( "#add_roll" ).submit(function(event) {
 
   let updateFrames = function(){
     $( "#frames").empty()
-    for (frame of game.frames) {
-    $( "#frames").append(`<li>Frame score: ${frame.score}</li>`)
+    for (frame of game.getFrames()) {
+    $( "#frames").append(`<li>Frame score: ${frame.getScore()}</li>`)
     };
   };
+
+  let endGame = function(){
+    $( "#message" ).text(game.finalMessage());
+    $( "#add_roll").toggle();
+    $( "#new_game").toggle();
+  }
+
+  $( "#new_game" ).click(function(){
+    game = new Game
+    $( "#message" ).text("Time to bowl!")
+    updateFrames();
+    $( "#rolls" ).empty();
+    $( "#add_roll").toggle();
+    $( "#new_game").toggle();
+  })

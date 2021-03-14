@@ -39,9 +39,9 @@ class Game {
     } else if (this.currentBowl === 2) {
       let frame = this._getCurrentFrame();
       frame.addBowl(pins, this.currentBowl);
-      this._addScoreToTotal(frame);
       this.currentFrame += 1;
       this.currentBowl = 1;
+      this._addScoreToTotal(frame);
     }
   }
 

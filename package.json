@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "test": "karma start public/js/spec/karma.conf.js --single-run"
+    "test": "karma start public/js/spec/karma.conf.js --single-run",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "devDependencies": {
     "coveralls": "^3.1.0",
@@ -15,6 +16,7 @@
     "karma-cli": "^2.0.0",
     "karma-firefox-launcher": "^2.1.0",
     "karma-jasmine": "^4.0.1",
+    "nyc": "^15.1.0",
     "phantomjs-prebuilt": "^2.1.16"
   }
 }

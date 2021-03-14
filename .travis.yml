@@ -4,3 +4,4 @@ node_js:
 dist: trusty
 addons:
   chrome: stable
+after_success: npm run coverage

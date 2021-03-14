@@ -7,22 +7,33 @@ class Bowling {
     }
 
     newFrame(roll_1, roll_2 = 0) {
+
+        this.checkPins
         this.frame ++
 
-        this.score.push([roll_1, roll_2])
+        if (this.frame > 1 && this.isSpare(roll_1, roll_2)) {
+            this.score[(this.frame -2)].push([roll_1]);
+            this._addToScore(roll_1, roll_2);
+        }
+        else {
+            this._addToScore(roll_1, roll_2);
+        }
+
+        
     }
+
+    _addToScore(roll_1, roll_2) {
+        this.score.push([roll_1, roll_2]);
+    }
+
 
 
     isSpare(roll_1, roll_2) {
-        if (roll_1 + roll_2 === this.TOTAL_PINS) {
-          return 'Spare!';
-        }
+        return roll_1 + roll_2 === this.TOTAL_PINS;
     }
 
-    isStrike(roll_1, roll_2) {
-        if (roll_1 === this.TOTAL_PINS) {
-            return 'Strike!';
-        }
+    isStrike(roll_1) {
+        return (roll_1 === this.TOTAL_PINS);
     }
 
 

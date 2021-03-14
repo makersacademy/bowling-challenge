@@ -34,6 +34,12 @@ describe('for each new frame played', function() {
     it('should not allow a frame to be played if the total for both rolls is greater than 10', function(){
         expect(bowling.checkPins(8,3)).toEqual('Impossible score!');
     });
+
+    it('should add the first roll from the current frame to the previous frame if the previous frame was a spare', function()  {
+        bowling.newFrame(5,5)
+        bowling.newFrame(6,2)
+        expect(bowling.totalScore()).toEqual(24);
+    });
 });
 
 it('should give a total score', function() {
@@ -43,13 +49,13 @@ it('should give a total score', function() {
 
 });
 
-it('should return "Spare!" if the rolls in a frame total 10', function(){
-    expect(bowling.isSpare(5,5)).toEqual('Spare!');
+it('should return true if the rolls in a frame total 10', function(){
+    expect(bowling.isSpare(5,5)).toBe(true);
     
 });
 
-it('should return "Strike!" if the first roll in a frame is 10', function() {
-    expect(bowling.isStrike(10,0)).toEqual('Strike!');
+it('should return true if the first roll in a frame is 10', function() {
+    expect(bowling.isStrike(10,0)).toBe(true);
 
 });
 

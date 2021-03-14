@@ -77,12 +77,6 @@ describe('Game', () => {
 	});
 
 	describe('throws an error for exceptional cases', () => {
-		it('throws an error when a letter is inputted', () => {
-			expect(function() {
-				game.input('d',1)
-			}).toThrow('Inputs must be a number!');
-		});
-
 		it('throws an error if user inputs a third roll for the 10th frame with no strike or spare', () => {
 			for(var i=0; i<9; i++) {
 				game.input(1,1)

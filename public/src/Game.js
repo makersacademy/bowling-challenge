@@ -2,7 +2,6 @@
 
 class Game {
   constructor() {
-    this._score = 0;
     this._scoreSheet = [];
   }
   getCurrentScore() {
@@ -14,7 +13,12 @@ class Game {
     return total;
   }
   input(score1, score2 = 0, score3 = 0) {
-    this.errors(score1, score2, score3);
+    if (typeof score1 != "number") {
+      var score1 = Number(score1);
+      var score2 = Number(score2);
+      var score3 = Number(score3);
+    }
+    this.error(score1, score2, score3);
     var frame = new Frame(score1, score2, score3);
     this.scoreSheet.push(frame);
     this.addBonusPoints();
@@ -57,16 +61,17 @@ class Game {
   get frameCount() {
     return (this.scoreSheet).length;
   }
-  errors(score1, score2, score3) {
-    if (!(typeof score1 === "number" && typeof score2 === "number" && typeof score3 === "number")) {
-      throw 'Inputs must be a number!'
-    }
+  error(score1, score2, score3) {
     if (this.isFinalFrame() && (score1 + score2 < 10) && score3 !== 0) {
       throw 'Cannot roll for third time unless striked or spared in last frame'
     }
   }
   isFinalFrame() {
     return this.frameCount === 9;
+  }
+
+  resetGame() {
+    this._scoreSheet = [];
   }
 
 };

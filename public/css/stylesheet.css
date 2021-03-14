@@ -1,0 +1,104 @@
+* {
+  background-color:#fff;
+}
+h1 {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 50px;
+  color:rgb(10, 92, 168);
+}
+img {
+  margin-top: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+}
+h2 {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color:orangered;
+}
+.tg {
+  border-collapse:collapse;
+  border-color:#ccc;
+  border-spacing:0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+.tg td {
+  background-color:#fff;
+  border-color:#ccc;
+  border-style:solid;
+  border-width:1px;
+  color:#333;
+  font-family:Arial, sans-serif;
+  font-size:14px;
+  overflow:hidden;
+  padding:5px 5px;
+  word-break:normal;
+}
+.tg th {
+  background-color:#f0f0f0;
+  border-color:#ccc;
+  border-style:solid;
+  border-width:1px;
+  color:#333;
+  font-family:Arial, sans-serif;
+  font-size:14px;
+  font-weight:normal;
+  overflow:hidden;
+  padding:5px 5px;
+  word-break:normal;
+}
+.tg .tg-baqh {
+  text-align:center;
+  vertical-align:top
+}
+.tg .tg-c3ow {
+  border-color:inherit;
+  text-align:center;
+  vertical-align:top
+}
+.tg .tg-t7yf {
+  border-color:inherit;
+  font-family:serif !important;;
+  text-align:center;
+  vertical-align:top
+}
+.tg .tg-lqy6 {
+  text-align:right;
+  vertical-align:top
+}
+.tg .tg-0pky {
+  border-color:inherit;
+  text-align:left;
+  vertical-align:top
+}
+.tg .tg-dvpl {
+  border-color:inherit;
+  text-align:right;
+  vertical-align:top
+}
+.tg {
+  text-align:left;
+  vertical-align:top
+}
+#top, #bottom, #left, #right {
+	background: #a5ebff;
+	position: fixed;
+}
+#left, #right {
+	top: 0; bottom: 0;
+	width: 15px;
+}
+#left { left: 0; }
+#right { right: 0; }
+		
+#top, #bottom {
+  left: 0; right: 0;
+	height: 15px;
+}
+#top { top: 0; }
+#bottom { bottom: 0; }

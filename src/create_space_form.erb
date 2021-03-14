@@ -1,0 +1,76 @@
+
+<div class="header"> <%# /* fate of this TBD */ %>
+  <h1> Create a New Rspectors Listing </h1>
+</div>
+
+<div class="create_container page_info_container">
+  <div class="page_info_header_container">
+    <h3>Create a Listing</h3>
+  </div>
+  <div class="page_info_message_container">
+    <b>Did You Know</b> that 9/10 doctors agree, creating a new listing is the easiest way to find your space on the spaces page?
+    As incredulous as it sounds, users have often found this to be true.<br>
+    But what makes a listing a good one? Well, a niave individual might suggest taking plenty of pictures,
+    so that prospective rentees can "get a feel" for the place without even visiting. Well, we don't support
+    images yet, which makes those people idiots.
+
+    <% if @user_id == nil %>
+      <br><br>
+      <b>The first step, however (and, arguably the most important step), is to sign in to your account <br>
+      Please sign in to list your space<br>
+      It won't work if you don't
+      </b>
+    <% end %>
+  </div><br>
+</div>
+
+<div class="create_container main_body">
+  <div class="listing_form_container item_container">
+      <form class="CreateListing_form" action='/create_space' method='post'>
+        <div class="form_item">
+          <label for="Name">What would you like to call the space?</label>
+          <br>
+          <input type="text" name="Name" placeholder="Name of Space">
+        </div>
+
+        <div class="form_item form_description">
+          <label for="Description">How would you describe the space? i.e., is idylic?
+            peaceful? an earnest but misguided attempt at artestry?
+          </label>
+          <br>
+          <textarea class="description_input" name="Description" placeholder="Description" rows="8" cols="80"></textarea>
+        </div>
+
+        <div class="form_item">
+          <label for="Price">How much will it cost per night?</label>
+          <br>
+          £<input type="text" name="Price" placeholder="Price per night">
+        </div>
+
+        <div class="form_item">
+          <label for="available_from">Available From</label>
+          <br>
+          <input type="date" name="available_from"
+            value="<%= Date.today %>"
+             min=<%= Date.today %> max="2021-12-31">
+        </div>
+
+        <div class="form_item">
+          <label for="available_to">Available To</label>
+          <br>
+          <input type="date" name="available_to"
+            value="<%= Date.today %>"
+             min=<%= Date.today %> max="2021-12-31">
+        </div>
+
+
+        <div class="form_item submit_CreateListing">
+          <% if @user_id != nil %>
+            <input type="submit" value="Submit New Space">
+          <% else %>
+            <input type="submit" value="Submit New Space" disabled>
+          <% end %>
+        </div>
+      </form>
+  </div>
+</div>

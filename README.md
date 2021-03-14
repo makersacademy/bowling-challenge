@@ -35,7 +35,7 @@ $ open SpecRunner.html
 
 ```
 
-Repeat these commands, in the 10th frame, strike and spare bonus functions are disabled at round 10 so only bonus points(your base score) can be added. 
+Repeat these commands, in the 10th frame, strike and spare bonus functions are disabled so only base points are added(your 10th frame bonus points). 
 
 In the future, the User Interface could be updated so that each function is interactive and the scorecard could be used solely via it's interface.
 

@@ -87,7 +87,49 @@ describe('score', function() {
     });
   });
 
-  describe('totals', function() {
+  describe('.total', function() {
     
+    it("of frames [1, 4] to equal 5", function() {
+      score.scorecard = fillScoreCard([[1, 4]]);
+      // score.addScore(1, 1);
+      // score.addScore(1, 4);
+      expect(score.total()).toEqual(5)
+    });
+
+    it("of frames [[10], [4, 5]] to eq 28", function() {
+      score.scorecard = fillScoreCard([[10], [4, 5]]);
+      expect(score.total()).toEqual(28)
+    });
+
+    it("of frames [[10], [10], [3, 5]] to eq 49", function() {
+      score.scorecard = fillScoreCard([[10], [10], [3, 5]]);
+      expect(score.total()).toEqual(49)
+    });
+
+    it("of frames [[3, 7], [5, 0], [3, 5]] to eq 28", function() {
+      score.scorecard = fillScoreCard([[3, 7], [5, 0], [3, 5]]);
+      expect(score.total()).toEqual(28)
+    });
+
+    it("of frames [[3, 7], [10], [3,5], [6, 4],[1,2]] to eq 60", function() {
+      score.scorecard = fillScoreCard([[3, 7], [10], [3,5], [6, 4],[1,2]]);
+      expect(score.total()).toEqual(60)
+    });
+
+    it("of first score up to frame 9 to equal 107", function() {
+      score.scorecard = fillScoreCard([[1, 4], [4, 5], [6, 4], [5, 5], [10], [0, 1], [7, 3], [6, 4], [10]]);
+      expect(score.total()).toEqual(107)
+    });
+
+    it("of a perfect game equals 300", function() {
+      score.scorecard = fillScoreCard([[10], [10], [10], [10], [10], [10], [10], [10], [10], [10, 10, 10]] );
+      expect(score.total()).toEqual(300);
+    });
+
+    it("expect first score to equal 133", function() {
+      score.scorecard = fillScoreCard([[1, 4], [4, 5], [6, 4], [5, 5], [10], [0, 1], [7, 3], [6, 4], [10], [2, 8, 6]])
+      expect(score.total()).toEqual(133)
+    });
   });
 });
+

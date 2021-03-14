@@ -50,6 +50,7 @@ Open `public/index.html` in your browser
 Input your rolls one at a time and let the logic take care of the rest!
 
 ![perfect-game](public/images/perfect-game.gif)
+
 ***A perfect Game. Impressive stuff.***
 
 ## Approach and Design
@@ -91,8 +92,10 @@ The scoreboard is fully automated. All that is required from the user is to inpu
 - Using Karma, nyc and Coveralls to automate test coverage reports - 96% < coverage ✅
 - Translating specifications into user stories ✅
 - Domain modelling and sequence diagrams ✅
+- Styling with HTML and CSS ✅
 
 ![gutter-game](public/images/gutter-game.gif)
+
 ***Gutter game. Ouch...***
 
 ## Planning

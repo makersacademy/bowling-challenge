@@ -23,8 +23,21 @@ describe('for each new frame played', function() {
     it('increments the frame count by one', function() {
         bowling.newFrame(3,2);
         expect(bowling.checkFrameCount()).toEqual(1);
+    });
+
+
+    it('should add each roll to the score', function(){
+        bowling.newFrame(3,2);
+        expect(bowling.getScore()).toEqual([[3,2]]);
 
     });
+});
+
+it('should give a total score', function() {
+    bowling.newFrame(4,5);
+    bowling.newFrame(3,2);
+    expect(bowling.totalScore()).toEqual(14);
+
 });
 
 

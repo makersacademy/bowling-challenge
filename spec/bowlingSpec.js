@@ -29,7 +29,10 @@ describe('for each new frame played', function() {
     it('should add each roll to the score', function(){
         bowling.newFrame(3,2);
         expect(bowling.getScore()).toEqual([[3,2]]);
+    });
 
+    it('should not allow a frame to be played if the total for both rolls is greater than 10', function(){
+        expect(bowling.checkPins(8,3)).toEqual('Impossible score!');
     });
 });
 

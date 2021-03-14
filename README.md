@@ -4,7 +4,7 @@
 
 ## Task
 
-This is my submission for the week 6 weekend project of Makers Academy. The task was to translate our Bowling Scorecard project from last weeks Ruby challenge to JavaScript following our week of learning JS.
+This is my submission for the week 6 weekend project of Makers Academy. The task was to translate the Bowling Scorecard project from last weeks Ruby challenge to JavaScript following our week of learning JS.
 
 I have translated my Ruby code over to JS and created a user interface which utilises jQuery functions to make it interactive for the user. 
 
@@ -22,6 +22,21 @@ To run the tests:
 ```
 $open SpecRunner.html
 ```
+
+## How to use
+
+```
+- let game = new Game();
+- game.beginFrame
+- game.throwball(points)
+- game.addToScorecard
+- game.strikeBonus or game.spareBonus
+
+```
+
+Repeat these commands, in the 10th frame, strike and spare bonus functions are disabled at round 10 so only bonus points(your base score) can be added. 
+
+In the future, the User Interface could be updated so that each function is interactive and the scorecard could be used solely via it's interface.
 
 <img width="1344" alt="Screenshot 2021-03-14 at 13 23 32" src="https://user-images.githubusercontent.com/75075773/111070222-82efa080-84c8-11eb-8ebb-4a497c7f88cb.png">
 
@@ -55,12 +70,3 @@ In the image below you can find some score examples.
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

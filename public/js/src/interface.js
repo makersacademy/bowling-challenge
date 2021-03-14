@@ -51,7 +51,7 @@ $(function () {
 
     const showTotalScore = () => {
       if (game._isGameOver()) {
-        $('#total-score').text(`You scored: ${game.totalScore()} points`);
+        $('#total-score').text(`You scored ${game.totalScore()} points`);
       }
     }
   });

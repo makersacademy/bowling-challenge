@@ -1,38 +1,29 @@
+#Bowling Challenge
 
-Bowling Challenge
-=================
+![jQuery](https://user-images.githubusercontent.com/75075773/111069770-8550fb00-84c6-11eb-97a4-101b91744679.gif)
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+## Task
 
-## The Task
+This is my submission for the week 6 weekend project of Makers Academy. The task was to translate our Bowling Scorecard project from last weeks Ruby challenge to JavaScript following our week of learning JS.
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+I have translated my Ruby code over to JS and created a user interface which utilises jQuery functions to make it interactive for the user. 
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+## How to Install
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+```
+fork and clone this repo
+```
+To see the interface in the browser:
 
-As usual please start by
+```
+$open index.html
+```
+To run the tests:
+```
+$open SpecRunner.html
+```
 
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
-
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+<img width="1344" alt="Screenshot 2021-03-14 at 13 23 32" src="https://user-images.githubusercontent.com/75075773/111070222-82efa080-84c8-11eb-8ebb-4a497c7f88cb.png">
 
 ## Bowling — how does it work?
 

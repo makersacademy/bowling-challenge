@@ -9,7 +9,7 @@ class Game {
   }
 
   beginFrame() {
-    if(this.turn > this.MAXIMUM_FRAME) {
+    if(this.turn >= this.MAXIMUM_FRAME) {
       return this.finishGame();
     } 
     this.turn += 1;

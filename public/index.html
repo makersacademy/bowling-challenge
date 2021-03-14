@@ -24,7 +24,6 @@
   <main>
     <h2>Score Board</h2>
     <p id="score-board" class="score-board"></p>
-    <p id="total-score" class="total-score"></p>
 
     <table>
       <tr class="frames">
@@ -77,11 +76,12 @@
     </table>
   </main>
 
-  <section>
-    <p>Add a roll:</p>
-    <input required id="roll-input" type="number" min="0" max="10" name="roll">
+  <section class="input">
+    <input required id="roll-input" type="number" min="0" max="10" name="roll" value="0">
     <button id="add-roll">Add Roll</button>
   </section>
+
+  <p id="total-score" class="total-score"></p>
 
   <footer>
     <p>The Bowling Scoring Company ©</p>

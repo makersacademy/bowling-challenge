@@ -9,6 +9,7 @@ $(function () {
       game.addRoll($('#roll-input').val());
       updateScores();
       updateRolls();
+      showTotalScore();
     });
 
     const updateRolls = () => {
@@ -47,4 +48,10 @@ $(function () {
       $('#9').text(game.scoreBoard()[8]);
       $('#10').text(game.scoreBoard()[9]);
     };
+
+    const showTotalScore = () => {
+      if (game._isGameOver()) {
+        $('#total-score').text(`You scored: ${game.totalScore()} points`);
+      }
+    }
   });

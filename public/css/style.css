@@ -2,6 +2,8 @@
   box-sizing: border-box;
   text-align: center;
   font-family: Arial;
+  background-color: rgb(28, 28, 28);
+  color: white;
 }
 
 h1 {
@@ -13,18 +15,41 @@ h2 {
 }
 
 table, tr, th, td {
-  border: 1px solid black;
+  border: 1px solid white;
   text-align: center;
   padding: 10px;
+  font-size: 25px;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 5px;
 }
 
-input, button, section {
-  font-size: 20px;
-  border-radius: 25px;
-  padding: 10px;
+input, button  {
+  font-size: 25px;
+  border-radius: 30px;
+  padding: 20px;
   text-align: center;
+  font-weight: 900;
+  background-color: white;
+  color: rgb(28, 28, 28);
+}
+
+section, .input-title {
+  margin-top: 50px;
+  max-width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgb(28, 28, 28);
+  font-weight: 900;
+}
+
+section {
+  padding: 30px;
+}
+
+.total-score {
+  color: white;
+  font-weight: 900;
 }
 
 footer {

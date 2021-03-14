@@ -40,6 +40,11 @@ it('should give a total score', function() {
 
 });
 
+it('should return "spare!" if the rolls in a frame total 10', function(){
+    expect(bowling.isSpare(5,5)).toEqual('Spare!');
+    
+});
+
 
 
 

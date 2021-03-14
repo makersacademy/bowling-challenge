@@ -11,6 +11,14 @@ class Bowling {
         this.score.push([roll_1, roll_2])
     }
 
+
+    isSpare(roll_1, roll_2) {
+        if (roll_1 + roll_2 === 10) {
+          return 'Spare!';
+        }
+
+    }
+
     getScore() {
         return this.score;
     }

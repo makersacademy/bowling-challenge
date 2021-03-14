@@ -5,9 +5,9 @@
 
 ## Task
 
-This is my submission for the week 6 weekend project of Makers Academy. The task was to translate the Bowling Scorecard project from last weeks Ruby challenge to JavaScript following our week of learning JS.
+This is my submission for the week 6 weekend project of Makers Academy. The task was to translate the Bowling Scorecard project from last weeks Ruby challenge into JavaScript. 
 
-I have translated my Ruby code over to JS and created a user interface which utilises jQuery functions to make it interactive for the user. 
+I have translated my Ruby code over to JS and created a user interface which utilises jQuery functions to make it interactive for the user.
 
 ## How to Install
 
@@ -17,11 +17,11 @@ fork and clone this repo
 To see the interface in the browser:
 
 ```
-$open index.html
+$ open index.html
 ```
 To run the tests:
 ```
-$open SpecRunner.html
+$ open SpecRunner.html
 ```
 
 ## How to use

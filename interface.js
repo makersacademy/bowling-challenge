@@ -20,6 +20,7 @@ $(document).ready(function() {
     event.preventDefault();
     var points = $('#throw-input').val();
     game.throwBall(points);
+    updateScorecard();
   })
 
 })

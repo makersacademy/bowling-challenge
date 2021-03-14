@@ -1,38 +1,46 @@
+# Bowling Challenge
 
-Bowling Challenge
-=================
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+![bowling](https://user-images.githubusercontent.com/75075773/111071204-f1cef880-84cc-11eb-8278-1501835dd605.gif)
 
-## The Task
+## Task
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+This is my submission for the week 6 weekend project of Makers Academy. The task was to translate the Bowling Scorecard project from last weeks Ruby challenge into JavaScript. 
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+I have translated my Ruby code over to JS and created a user interface which utilises jQuery functions to make it interactive for the user.
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+## How to Install
 
-As usual please start by
+```
+fork and clone this repo
+```
+To see the interface in the browser:
 
-* Forking this repo
+```
+$ open index.html
+```
+To run the tests:
+```
+$ open SpecRunner.html
+```
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
+## How to use
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+```
+- let game = new Game();
+- game.beginFrame
+- game.throwball(points)
+- game.addToScorecard
+- game.strikeBonus or game.spareBonus
 
-### Optional Extras
+```
 
-In any order you like:
+Repeat these commands, in the 10th frame, strike and spare bonus functions are disabled so only base points are added(your 10th frame bonus points). 
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+In the future, the User Interface could be updated so that each function is interactive and the scorecard could be used solely via it's interface.
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+<img width="726" alt="Screenshot 2021-03-14 at 14 19 49" src="https://user-images.githubusercontent.com/75075773/111071940-5e97c200-84d0-11eb-9f5d-dc390299fa55.png">
+
 
 ## Bowling — how does it work?
 
@@ -64,12 +72,3 @@ In the image below you can find some score examples.
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

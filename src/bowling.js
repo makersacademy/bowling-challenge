@@ -16,7 +16,12 @@ class Bowling {
         if (roll_1 + roll_2 === 10) {
           return 'Spare!';
         }
+    }
 
+    isStrike(roll_1, roll_2) {
+        if (roll_1 === 10) {
+            return 'Strike!';
+        }
     }
 
     getScore() {

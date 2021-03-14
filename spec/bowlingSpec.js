@@ -40,9 +40,14 @@ it('should give a total score', function() {
 
 });
 
-it('should return "spare!" if the rolls in a frame total 10', function(){
+it('should return "Spare!" if the rolls in a frame total 10', function(){
     expect(bowling.isSpare(5,5)).toEqual('Spare!');
     
+});
+
+it('should return "Strike!" if the first roll in a frame is 10', function() {
+    expect(bowling.isStrike(10,0)).toEqual('Strike!');
+
 });
 
 

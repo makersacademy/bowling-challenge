@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/style.css" type="text/css">
+    <script src="javascript/src/jquery.js"> </script>
+    <script src="javascript/src/game.js"> </script>
+    <script defer src="javascript/src/interface.js"> </script>
+    <title>The Dude Abides</title>
+</head>
+<body>
+    <div id="scorecard">
+      <ol id = "frames"></ol>
+      <h3>Rolls:</h3>
+      <p id = "rolls"></p>
+    <p id="message"></p>
+</div>
+<div id="add_rolls">
+    <p><form id="add_roll">
+      <label for "roll">Number of pins knocked down:</label>
+      <input type="number" id="roll" max="10" min="0"/><p>
+      <input type="submit" value="Add roll"></input>
+    </form>
+    </div>
+    <button id="new_game">Start a new game</button>
+
+
+</body>
+
+</html>

@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "karma start public/js/spec/karma.conf.js --single-run",
+    "test": "nyc karma start public/js/spec/karma.conf.js --single-run",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "devDependencies": {

@@ -1,7 +1,7 @@
 # Bowling Challenge
 
 
-![jQueryGif](https://user-images.githubusercontent.com/75075773/111070945-dc0d0380-84cb-11eb-8574-fbc4199e4591.gif)
+![bowling](https://user-images.githubusercontent.com/75075773/111071204-f1cef880-84cc-11eb-8278-1501835dd605.gif)
 
 ## Task
 

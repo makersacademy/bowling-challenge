@@ -17,7 +17,7 @@ $(document).ready(function() {
   })
 
   $('#enter-points').submit(function(event) {
-    e.preventDefault();
+    event.preventDefault();
     var points = $('#throw-input').val();
     game.throwBall(points);
   })

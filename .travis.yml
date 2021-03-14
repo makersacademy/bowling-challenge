@@ -1,10 +1,6 @@
 language: node_js
 node_js:
   - '14'
-# before_script:
-#   - npm install
 dist: trusty
 addons:
   chrome: stable
-
-# script: npm test

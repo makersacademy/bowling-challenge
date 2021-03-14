@@ -3,7 +3,7 @@ describe('Bowling', function() {
 var bowling;
 
 beforeEach(function() {
-bowling = new bowling();
+bowling = new Bowling();
 });
 
 describe('before each game starts', function() {
@@ -13,7 +13,7 @@ describe('before each game starts', function() {
     });
 
 
-})
+});
 
 
 

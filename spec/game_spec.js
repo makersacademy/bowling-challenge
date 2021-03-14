@@ -19,8 +19,12 @@ describe('Game', function() {
       game.enterPins(7);
       game.enterPins(1);
 
+      let frame = game.frames[1];
+
       expect(game.currentFrame).toEqual(2);
       expect(game.currentBowl).toEqual(1);
+      expect(frame.score).toEqual(8);
+      expect(game.score).toEqual(8);
     });
 
     it('correctly records a strike', function() {
@@ -39,6 +43,7 @@ describe('Game', function() {
       expect(game.currentBowl).toEqual(1);
       expect(frame.score).toEqual(10);
       expect(frame.complete).toEqual(false);
+      expect(game.score).toEqual(0);
 
       game.enterPins(7);
       game.enterPins(2);
@@ -48,6 +53,7 @@ describe('Game', function() {
       expect(game.currentBowl).toEqual(2);
       expect(frame.score).toEqual(19);
       expect(frame.complete).toEqual(true);
+      expect(game.score).toEqual(28);
     });
   });
 });

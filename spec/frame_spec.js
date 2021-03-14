@@ -71,9 +71,9 @@ describe('Frame', function() {
     it('marks a frame as complete once bonus bowls have been assigned', function() {
       frame.addBowl(10,1);
       frame.addBonusPoints(8);
-      frame.addBonusPoints(9);
+      frame.addBonusPoints(1);
 
-      expect(frame.score).toEqual(27);
+      expect(frame.score).toEqual(19);
       expect(frame.bonusBowls).toEqual(0);
       expect(frame.complete).toEqual(true);
     });

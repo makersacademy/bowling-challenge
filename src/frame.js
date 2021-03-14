@@ -37,7 +37,9 @@ class Frame {
       } 
     }
     else {
-      if (this.bowlCount === 3) {
+      if (this.bowlCount === 2 && this.score < 10) {
+        this.complete = true;
+      } else if (this.bowlCount === 3) {
         this.complete = true;
       }
     }

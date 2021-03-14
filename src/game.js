@@ -8,6 +8,26 @@ class Game {
 
   enterPins(pins) {
     this.addBonusBowl(pins);
+    if (this.currentFrame < 10) {
+      this._enterPinsNormalRound(pins);
+    } else {
+      this._enterPinsFinalRound(pins);
+    }
+  }
+
+  addBonusBowl(pins) {
+    const frames = Object.values(this.frames)
+    for (const frame of frames) {
+      if (frame.complete === false && frame.number !== this.currentFrame) {
+        frame.addBonusPoints(pins)
+        if(frame.complete === true) {
+          this._addScoreToTotal(frame);
+        }
+      }
+    }
+  }
+
+  _enterPinsNormalRound(pins) {
     if (this.currentBowl === 1) {
       let frame = this._addFrame(this.currentFrame);
       frame.addBowl(pins, this.currentBowl);
@@ -19,16 +39,24 @@ class Game {
     } else if (this.currentBowl === 2) {
       let frame = this._getCurrentFrame();
       frame.addBowl(pins, this.currentBowl);
+      this._addScoreToTotal(frame);
       this.currentFrame += 1;
       this.currentBowl = 1;
     }
   }
 
-  addBonusBowl(pins) {
-    const frames = Object.values(this.frames)
-    for (const frame of frames) {
-      if (frame.complete === false) {
-        frame.addBonusPoints(pins)
+  _enterPinsFinalRound(pins) {
+    if (this.currentBowl === 1) {
+      let frame = this._addFrame(this.currentFrame);
+      frame.addBowl(pins, this.currentBowl);
+      this.currentBowl += 1;
+    } else {
+      let frame = this._getCurrentFrame();
+      frame.addBowl(pins, this.currentBowl);
+      if (frame.complete === true) {
+        this._addScoreToTotal(frame);
+      } else {
+        this.currentBowl += 1;
       }
     }
   }
@@ -51,6 +79,12 @@ class Game {
       return true;
     } else {
       return false;
+    }
+  }
+
+  _addScoreToTotal(frame) {
+    if (frame.complete === true) {
+      this.score += frame.score;
     }
   }
 }

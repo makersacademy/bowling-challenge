@@ -1,4 +1,4 @@
-#Bowling Challenge
+# Bowling Challenge
 
 ![jQuery](https://user-images.githubusercontent.com/75075773/111069770-8550fb00-84c6-11eb-97a4-101b91744679.gif)
 

@@ -12,6 +12,11 @@ describe('before each game starts', function() {
        expect(bowling.getScore()).toEqual(0);
     });
 
+    it('starts with a frame count of 0', function() {
+        expect(bowling.checkFrameCount()).toEqual(0);
+
+    });
+
 
 });
 

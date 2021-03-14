@@ -9,13 +9,12 @@ function Score (name = "Sisyphus"){
   };
 
   this.totals = {};
-  for(var i = 1; i <= 10; i ++){
-    this.totals[i] = 0
-  };
+  this.totalsCard = {};
 }
 
 
 Score.prototype = {
+  // functions for adding scores to the scorecard
   addScore: function (frame, score) {
     console.log('name: ' + this.name);
     console.log('frame: ' + frame + '\tscore: ' + score);
@@ -53,6 +52,7 @@ Score.prototype = {
     // this function almost 30 lines when I did it last week
   },
   _sum: function (arr) {
+    // sums that contents of an array. I couldn't find this built in to JS, but I also didn't look
     var count = 0;
     var i;
     for(i of arr){
@@ -61,6 +61,7 @@ Score.prototype = {
     return count;
   },
 
+  // functions for finding the totals
   total: function (frame = 10) {
     console.log('scorecard: ' + this.scorecard);
     for(var F = 1; F <= 9; F ++){
@@ -72,7 +73,9 @@ Score.prototype = {
     return this.totals;
   },
   _frameTotal10: function () {
-    return this.totals[10] = this._sum(this.scorecard[10])
+    var frameScore = this._sum(this.scorecard[10]);
+    this.totalsCard[10] = frameScore + this.totalsCard[9]
+    return this.totals[10] = frameScore;
   },
   _frameTotalMain: function (Nframe) {
     console.log('frame: ' + Nframe);
@@ -81,7 +84,9 @@ Score.prototype = {
     var nextScore = this._findnextScore(Nframe)
     var spare = nextScore[0] * (frameSum === 10)  // add the first score of next frame if this frame is a spare
     var strike = nextScore[1] * (frame[0] === 10) // add the second score of the next frame if this frame is a strike (note: )
-    this.totals[Nframe] = frameSum + strike + spare;
+    var frameScore = frameSum + strike + spare;
+    this.totals[Nframe] = frameScore;
+    this.totalsCard[Nframe] = frameScore + (this.totalsCard[Nframe - 1] || 0)
   },
   _findnextScore: function (F) {
     var scores = [];

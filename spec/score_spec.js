@@ -116,7 +116,7 @@ describe('score', function() {
       expect(score.total()).toEqual(60)
     });
 
-    it("of first score up to frame 9 to equal 107", function() {
+    it("of score up to frame 9 to equal 107", function() {
       score.scorecard = fillScoreCard([[1, 4], [4, 5], [6, 4], [5, 5], [10], [0, 1], [7, 3], [6, 4], [10]]);
       expect(score.total()).toEqual(107)
     });
@@ -126,10 +126,18 @@ describe('score', function() {
       expect(score.total()).toEqual(300);
     });
 
-    it("expect first score to equal 133", function() {
+    it("expect score to equal 133", function() {
       score.scorecard = fillScoreCard([[1, 4], [4, 5], [6, 4], [5, 5], [10], [0, 1], [7, 3], [6, 4], [10], [2, 8, 6]])
       expect(score.total()).toEqual(133)
     });
+
+    it("expect totals object to match", function() {
+      score.scorecard = fillScoreCard([[1, 4], [4, 5], [6, 4], [5, 5], [10], [0, 1], [7, 3], [6, 4], [10], [2, 8, 6]])
+      score.total();
+      var totalsCard = {1: 5, 2: 14, 3: 29, 4: 49, 5: 60, 6: 61, 7: 77, 8: 97, 9: 117, 10: 133};
+      expect(score.totalsCard).toEqual(totalsCard);
+    });
+
   });
 });
 

@@ -39,7 +39,8 @@ Repeat these commands, in the 10th frame, strike and spare bonus functions are d
 
 In the future, the User Interface could be updated so that each function is interactive and the scorecard could be used solely via it's interface.
 
-<img width="1344" alt="Screenshot 2021-03-14 at 13 23 32" src="https://user-images.githubusercontent.com/75075773/111070222-82efa080-84c8-11eb-8ebb-4a497c7f88cb.png">
+<img width="726" alt="Screenshot 2021-03-14 at 14 19 49" src="https://user-images.githubusercontent.com/75075773/111071940-5e97c200-84d0-11eb-9f5d-dc390299fa55.png">
+
 
 ## Bowling — how does it work?
 

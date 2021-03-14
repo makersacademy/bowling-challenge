@@ -29,4 +29,65 @@ describe('score', function() {
       expect(score.addScore(2, 10)).toEqual(0);
     });
   });
+
+  describe('tenth frame:', function() {
+
+    describe('first roll:', function() {
+      
+      it('returns 10 when first roll is 10', function() {
+        expect(score.addScore(10, 10)).toEqual(10);
+      });
+
+      it('returns 10 when first roll is 0', function() {
+        expect(score.addScore(10, 0)).toEqual(10)
+      });
+
+      it('return 6 when first roll is 4', function() {
+        expect(score.addScore(10, 4)).toEqual(6);
+      });
+    });
+    
+    describe('2nd roll: ', function() {
+
+      it("returns 0 when first two rolls are less than 10", function() {
+        score.addScore(10, 3);
+        expect(score.addScore(10, 4)).toEqual(0);
+      });
+
+      it('returns 10 when first two rolls equal 10', function() {
+        score.addScore(10, 3);
+        expect(score.addScore(10, 7)).toEqual(10);
+      });
+  
+      it('returns 10 when first two rolls are 10', function() {
+        score.addScore(10, 10);
+        expect(score.addScore(10, 10)).toEqual(10);
+      });
+  
+      it('returns 2 when first two rolls are [10, 8]', function() {
+        score.addScore(10, 10);
+        expect(score.addScore(10, 8)).toEqual(2);
+      });
+  
+      it('returns 10 when first two rolls are [10, 0]', function() {
+        score.addScore(10, 10);
+        expect(score.addScore(10, 0)).toEqual(10);
+      });
+  
+      it('returns 10 when first two rolls are [0, 10]', function() {
+        score.addScore(10, 0);
+        expect(score.addScore(10, 10)).toEqual(10);
+      });
+    });
+
+    it('returns 0 after 3 rolls', function() {
+      score.addScore(10, 10);
+      score.addScore(10, 3);
+      expect(score.addScore(10, 4)).toEqual(0);
+    });
+  });
+
+  describe('totals', function() {
+    
+  });
 });

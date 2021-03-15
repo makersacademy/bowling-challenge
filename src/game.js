@@ -53,7 +53,7 @@ class Game {
       if (frame.complete === true) {
         this._addScoreToTotal(frame);
       } else {
-        this.currentBowl += 1;
+        this.currentBowl += 1
       }
     }
   }

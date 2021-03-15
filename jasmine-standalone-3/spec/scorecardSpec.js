@@ -1,3 +1,6 @@
+'use strict';
+
+
 describe('Scorecard', function() {
 
   var scorecard;
@@ -6,9 +9,30 @@ describe('Scorecard', function() {
     scorecard = new Scorecard();
   });
 
-  describe('multiples of 3', function() {
-    it('fizzes for 3', function() {
-      expect(fizzBuzz.play(3)).toEqual('Fizz');
+  describe('roll', function() {
+    it('shows score of a gutter game', function() {
+      scorecard.player_roll(0)
+      scorecard.player_roll(0)
+      scorecard.player_roll(0)
+      scorecard.player_roll(0)
+      scorecard.player_roll(0)
+      scorecard.player_roll(0)
+      scorecard.player_roll(0)
+      scorecard.player_roll(0)
+      scorecard.player_roll(0)
+      scorecard.player_roll(0)
+      scorecard.player_roll(0)
+      scorecard.player_roll(0)
+      scorecard.player_roll(0)
+      scorecard.player_roll(0)
+      scorecard.player_roll(0)
+      scorecard.player_roll(0)
+      scorecard.player_roll(0)
+      scorecard.player_roll(0)
+      scorecard.player_roll(0)
+      scorecard.player_roll(0)
+      expect(scorecard.points()).toBe(0)
     });
-  
+  });
+
 });

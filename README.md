@@ -3,9 +3,16 @@ Bowling Challenge
 =================
 
 ## Ed ReadMe
-* Features still to be implemented. Currently records a roll and a frame once the frame has been completed.
-* Got stuck on adding feature to end game
+* Complete features - one game, multiple frames.
+* WIP - Final frame. Currently records a roll and a frame once the frame has been completed.
 * No strike or spare bonuses added yet.
+
+* How to run (tests):
+```sh
+$ git clone git@github.com:makersacademy/bowling-challenge.git
+$ cd bowling-challenge
+$ open SpecRunner.html
+```
 
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README

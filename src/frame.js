@@ -3,7 +3,6 @@ class Frame {
     this.number = number;
     this.score = 0;
     this.bonusBowls = 0;
-    // this.bonusPoints = 0;
     this.complete = false;
     this.bowls = {};
     this.bowlCount = 0;

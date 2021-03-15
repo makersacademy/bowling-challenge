@@ -21,7 +21,7 @@ recordRoll(userInput) {
 
   this.scorecard[this.currentFrame].push(userInput);
 
-  if (this.currentFrameRolls == 2) {
+  if (this.currentFrameRolls == 2 && this.currentFrame != 10) {
     this.newFrameNoBonus()
   }
 

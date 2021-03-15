@@ -31,8 +31,21 @@ describe('BowlingScorecard', function() {
       expect(scorecard.frameScore(2)).toEqual(3);
       expect(scorecard.frameScore(3)).toEqual(8);
     })
+    describe("10th frame", function() {
+      
+      it("ends the game if no strike or spare in two rolls", function() { 
+        for(let i=0; i < 18; i++) {
+          scorecard.recordRoll(2);
+        }
+        scorecard.recordRoll(3)
+        scorecard.recordRoll(3)
+        expect(scorecard.totalScore()).toEqual(42);
+        expect( function() { scorecard.recordRoll(6) } ).toThrow ("Game is finished")
+      })
+    
   });
 
 
 })
 
+});

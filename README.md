@@ -2,6 +2,11 @@
 Bowling Challenge
 =================
 
+## Ed ReadMe
+* Features still to be implemented. Currently records a roll and a frame once the frame has been completed.
+* Got stuck on adding feature to end game
+* No strike or spare bonuses added yet.
+
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README
 * If you have a partial solution, **still check in a partial solution**

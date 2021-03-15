@@ -2,6 +2,10 @@
 Bowling Challenge
 =================
 
+## Description
+
+A bowling scoring app built using Javascript and jQuery.
+
 ## How to use
 
 * Enter your score

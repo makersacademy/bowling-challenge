@@ -18,9 +18,21 @@ describe('BowlingScorecard', function() {
       expect( function() {scorecard.recordRoll("12")} ).toThrow ("Scores must be 0-10")
       expect( function() {scorecard.recordRoll("-2")} ).toThrow ("Scores must be 0-10")
     })
+    it("records a strike and updates frame accordingly", function() {
+      scorecard.recordRoll(10)
+      scorecard.recordRoll(6)
+      expect(scorecard.currentFrameNumber()).toEqual(2)
+      expect(scorecard.frameScore(1)).toEqual(10)
+      // scorecard.recordRoll(1)
+      // scorecard.roll(5)
+      // scorecard.roll(10)
+      // scorecard.roll(10)
+      // expect(scorecard.frameScore()).toEqual(10)
+      // expect(scorecard.frameScore(1)).toEqual(10)
+    })
   });
 
-  describe('Recording a frame', function(){
+  describe('Recording a frame', function() {
     it("can record a frame and track its score", function() { 
       scorecard.recordRoll(3)
       scorecard.recordRoll(5)
@@ -32,7 +44,6 @@ describe('BowlingScorecard', function() {
       expect(scorecard.frameScore(3)).toEqual(8);
     })
     describe("10th frame", function() {
-      
       it("ends the game if no strike or spare in two rolls", function() { 
         for(let i=0; i < 18; i++) {
           scorecard.recordRoll(2);

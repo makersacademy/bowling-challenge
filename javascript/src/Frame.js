@@ -20,7 +20,7 @@ class Frame{
     if (isNaN(roll)) {
       throw new Error("You must input a number from 1 to 10.")
     }
-    if ((this._score + roll > 10) && !game.finalFrame()) {
+    else if ((this._score + roll > 10) && this.finalFrameEdgeCases(game)) {
       throw new Error("There are only 10 pins in a frame!")
     }
     this._rolls.push(roll);
@@ -33,6 +33,18 @@ class Frame{
 
   isSpare(){
     return !this.isStrike() && this.getRolls()[0] + this.getRolls()[1] === 10;
+  };
+
+  finalFrameisStrike(game){
+    return (game.finalFrame() && this.isStrike());
+  }
+
+  finalFrameisSpareLastRoll(game){
+    return (game.finalFrame() && this.isSpare() && (this.getRolls().length === 2));
+  }
+
+  finalFrameEdgeCases(game){
+    return (!this.finalFrameisStrike(game) && !this.finalFrameisSpareLastRoll(game))
   }
 
 };

@@ -17,7 +17,7 @@ describe('Scorecard', function() {
       expect(scorecard.points()).toBe(0)
     });
   });
-  describe('isSpare', function() {
+  describe('points', function() {
     it('shows score with spare implementation', function() {
       scorecard.player_roll(7)
       scorecard.player_roll(3)
@@ -28,6 +28,23 @@ describe('Scorecard', function() {
       expect(scorecard.points()).toBe(20)
     });
   });
+
+  describe('points', function() {
+    it('shows score with strike implementation', function() {
+      scorecard.player_roll(10)
+      scorecard.player_roll(3)
+      scorecard.player_roll(5)
+      for (let i = 0; i < 16; i++) {
+        scorecard.player_roll(0)
+      }
+      expect(scorecard.points()).toBe(26)
+    });
+  });
+
+
+
+
+
 
 
 });

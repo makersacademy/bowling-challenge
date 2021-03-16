@@ -17,6 +17,10 @@ class Scorecard {
           score += this.player_rolls[player_rolls_index] + this.player_rolls[player_rolls_index + 1] + this.player_rolls[player_rolls_index + 2]
           player_rolls_index += 2
         }
+        else if (this.player_rolls[player_rolls_index] == 10) {
+          score += this.player_rolls[player_rolls_index] + this.player_rolls[player_rolls_index + 1] + this.player_rolls[player_rolls_index + 2]
+          player_rolls_index += 1
+        }
         else {
           score += this.player_rolls[player_rolls_index] + this.player_rolls[player_rolls_index + 1]
           player_rolls_index += 2

@@ -93,6 +93,7 @@ The scoreboard is fully automated. All that is required from the user is to inpu
 - Translating specifications into user stories ✅
 - Domain modelling and sequence diagrams ✅
 - Styling with HTML and CSS ✅
+- Linting - applying standard JS style with eslint ✅
 
 ![gutter-game](public/images/gutter-game.gif)
 

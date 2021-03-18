@@ -8,11 +8,11 @@ describe('Game', () => {
   beforeEach(() => {
     game = new Game(frameClass);
     frameClass = jasmine.createSpy('frameClass');
-    frame = jasmine.createSpyObj('frame', ['addRoll', 'isOver', 'isFinal', 'score']);
+    frame = jasmine.createSpyObj('frame', ['addRoll', 'isOver', 'isFinal', 'score', 'addBonus']);
     spyOn(game, '_newFrame').and.returnValue(game.frames.push(frame))
   });
 
-  xdescribe('addRoll', () => {
+  describe('addRoll', () => {
     it('adds roll to current frame', () => {
       game.addRoll(9);
       expect(frame.addRoll).toHaveBeenCalledWith(9);
@@ -28,13 +28,10 @@ describe('Game', () => {
     });
   });
 
-  xdescribe('score', () => {
+  describe('totalScore', () => {
     it('calculates the total score of all frames', () => {
-      spyOn(game, 'score').and.returnValues(5, 5)
       game.frames.push(frame)
-      console.log(typeof game.score())
-      console.log(game.score())
-      game.score()
+      game.totalScore()
       expect(frame.score).toHaveBeenCalled();
     });
   });

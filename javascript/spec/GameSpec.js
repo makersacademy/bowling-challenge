@@ -91,6 +91,38 @@ describe("Game", function() {
     });
   });
 
+  describe("bonuses", function(){
+    it("calls strike bonus method if last frame was a strike", function(){
+      let calcStrikespy = spyOn(Game.prototype, "calculateStrikeBonus")
+      spyOn(frame, "isStrike").and.returnValue(true);
+      game.addFrame(frame);
+      game.bonuses(frame)
+      expect(calcStrikespy).toHaveBeenCalled();
+    });
+    it("calls addScoreOfNextRoll bonus method if last frame was a spare", function(){
+      let addRollSpy = spyOn(Game.prototype, "addScoreOfNextRoll")
+      spyOn(frame, "isSpare").and.returnValue(true);
+      game.addFrame(frame);
+      game.bonuses(frame)
+      expect(addRollSpy).toHaveBeenCalled();
+    });
+  });
+
+  describe("finalMessage", function(){
+    it("should return special message for gutter game", function(){
+      spyOn(game, "getTotalScore").and.returnValue(0);
+      expect(game.finalMessage()).toEqual("Your game is finished! You scored 0. Oh dear, that's a gutter game :(")
+    });
+    it("should return special message for perfect game", function(){
+      spyOn(game, "getTotalScore").and.returnValue(300);
+      expect(game.finalMessage()).toEqual("Your game is finished! You scored 300. You bowled the PERFECT GAME!")
+    });
+    it("should return standard message for other games", function(){
+      spyOn(game, "getTotalScore").and.returnValue(160);
+      expect(game.finalMessage()).toEqual("Your game is finished! You scored 160.")
+    });
+  });
+
 
 
 });

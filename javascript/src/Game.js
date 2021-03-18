@@ -37,22 +37,16 @@ class Game{
     this._totalScore += bonus;
   }
 
-  calculateSpareBonus(previous_frame, next_frame){
-    let bonus = next_frame.getRolls()[0];
-    previous_frame.amendScore(bonus);
-    this._totalScore += bonus;
-  };
-
   secondStrikeBonus(frame) {
     let lastFrame = this.getFrames()[this.getFrames().length - 1]
     let previousFrameButOne = this.getFrames()[this.getFrames().length - 2]
     if (previousFrameButOne.isStrike() && lastFrame.isStrike())
-    this.calculateSecondStrikeBonus(previousFrameButOne, frame);
+    this.addScoreOfNextRoll(previousFrameButOne, frame);
   }
 
-  calculateSecondStrikeBonus(previousFrameButOne, nextFrame){
-    let bonus = nextFrame.getRolls()[0];
-    previousFrameButOne.amendScore(bonus);
+  addScoreOfNextRoll(frameToAmend, frame){
+    let bonus = frame.getRolls()[0];
+    frameToAmend.amendScore(bonus);
     this._totalScore += bonus;
   };
 
@@ -62,7 +56,7 @@ class Game{
       this.calculateStrikeBonus(lastFrame, frame);
     };
     if (lastFrame.isSpare()) {
-    this.calculateSpareBonus(lastFrame, frame);
+    this.addScoreOfNextRoll(lastFrame, frame);
     };
   };
 

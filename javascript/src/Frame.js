@@ -16,6 +16,14 @@ class Frame{
     return this._rolls;
   };
 
+  isStrike(){
+    return this.getRolls()[0] === 10;
+  }
+
+  isSpare(){
+    return !this.isStrike() && this.getRolls()[0] + this.getRolls()[1] === 10;
+  };
+
   addRoll(roll, game){
     if (isNaN(roll)) {
       throw new Error("You must input a number from 1 to 10.")
@@ -27,24 +35,16 @@ class Frame{
     this._score += roll;
   };
 
-  isStrike(){
-    return this.getRolls()[0] === 10;
-  }
-
-  isSpare(){
-    return !this.isStrike() && this.getRolls()[0] + this.getRolls()[1] === 10;
-  };
-
-  finalFrameisStrike(game){
+  isFFandStrike(game){
     return (game.finalFrame() && this.isStrike());
   }
 
-  finalFrameisSpareLastRoll(game){
+  isFFLastRollSpare(game){
     return (game.finalFrame() && this.isSpare() && (this.getRolls().length === 2));
   }
 
   finalFrameEdgeCases(game){
-    return (!this.finalFrameisStrike(game) && !this.finalFrameisSpareLastRoll(game))
+    return (!this.isFFandStrike(game) && !this.isFFLastRollSpare(game))
   }
 
 };

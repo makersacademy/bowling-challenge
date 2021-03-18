@@ -1,4 +1,4 @@
-describe("entire game run through", function() {
+describe("Entire game run throughs", function() {
   var game;
 
   beforeEach(function() {

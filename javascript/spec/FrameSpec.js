@@ -30,6 +30,30 @@ describe("Frame", function() {
     })
   })
 
+  describe("isStrike", function(){
+    it("returns true if roll is a strike", function(){
+      frame.addRoll(10);
+      expect(frame.isStrike()).toBe(true)
+    });
+    it("returns false if roll is not a strike", function(){
+      frame.addRoll(3);
+      frame.addRoll(7);
+      expect(frame.isStrike()).toBe(false)
+    });
+  });
+
+  describe("isSpare", function(){
+    it("returns true if roll is a spare", function(){
+      frame.addRoll(3);
+      frame.addRoll(7);
+      expect(frame.isSpare()).toBe(true)
+    });
+    it("returns false if roll is not a spare", function(){
+      frame.addRoll(10);
+      expect(frame.isSpare()).toBe(false)
+    });
+  });
+
   describe("addRoll", function(){
     it("adds the roll to the frame and adjusts score", function(){
       frame.addRoll(5, game)
@@ -68,26 +92,29 @@ describe("Frame", function() {
     });
   });
 
-  describe("isStrike", function(){
-    it("returns true if roll is a strike", function(){
-      frame.addRoll(10);
-      expect(frame.isStrike()).toBe(true)
-    });
-    it("returns false if roll is not a strike", function(){
-      frame.addRoll(3);
-      frame.addRoll(7);
-      expect(frame.isStrike()).toBe(false)
+  describe("isFFandStrike", function(){
+    it("returns true if game is on final frame and frame is a strike", function(){
+      spyOn(game, 'finalFrame').and.returnValue(true);
+      frame.addRoll(10, game);
+      expect(frame.isFFandStrike(game)).toBe(true);
     });
   });
-  describe("isSpare", function(){
-    it("returns true if roll is a spare", function(){
-      frame.addRoll(3);
-      frame.addRoll(7);
-      expect(frame.isSpare()).toBe(true)
+
+  describe("isFFLastRollSpare", function(){
+    it("returns true if game is on final frame last roll and frame is a spare", function(){
+      spyOn(game, 'finalFrame').and.returnValue(true);
+      frame.addRoll(6, game);
+      frame.addRoll(4, game);
+      expect(frame.isFFLastRollSpare(game)).toBe(true);
     });
-    it("returns false if roll is not a spare", function(){
-      frame.addRoll(10);
-      expect(frame.isSpare()).toBe(false)
+  });
+
+  describe("finalFrameEdgeCases", function(){
+    it("returns true if final frame is neither strike nor last roll of spare", function(){
+      spyOn(game, 'finalFrame').and.returnValue(true);
+      frame.addRoll(5, game);
+      frame.addRoll(3, game);
+      expect(frame.finalFrameEdgeCases(game)).toBe(true);
     });
   });
 

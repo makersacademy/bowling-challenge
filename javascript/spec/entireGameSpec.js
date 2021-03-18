@@ -49,7 +49,6 @@ describe("Entire game run throughs", function() {
   });
 
   it("scores correctly for perfect game", function() {
-    let i
     for(i = 0; i < 9; i++){
       let frame = new Frame
       frame.addRoll(10, game)
@@ -61,6 +60,16 @@ describe("Entire game run throughs", function() {
     }
     game.addFrame(final_frame)
     expect(game.getTotalScore()).toEqual(300)
+  });
+
+  it("scores correctly for gutter game", function() {
+    for(i = 0; i < 10; i++){
+      let frame = new Frame
+      frame.addRoll(0, game)
+      frame.addRoll(0, game)
+      game.addFrame(frame)
+    }
+    expect(game.getTotalScore()).toEqual(0)
   });
 
 });

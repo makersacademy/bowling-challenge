@@ -1,0 +1,20 @@
+{
+  "scripts": {
+    "test": "nyc karma start karma.conf.js --single-run",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "devDependencies": {
+    "coveralls": "^3.1.0",
+    "eslint": "^7.21.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "jasmine": "^3.6.4",
+    "karma": "^6.2.0",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-cli": "^2.0.0",
+    "karma-coverage": "^2.0.3",
+    "karma-coveralls": "^2.1.0",
+    "karma-jasmine": "^4.0.1",
+    "nyc": "^15.1.0"
+  }
+}

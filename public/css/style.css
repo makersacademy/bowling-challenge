@@ -1,0 +1,80 @@
+* {
+  box-sizing: border-box;
+  text-align: center;
+  font-family: Arial;
+  background-color: rgba(9, 128, 130, 0.365);
+  color: white;
+  border-radius: 5px;
+}
+
+h1 {
+  font-size: 40px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+table, tr, th, td {
+  border: 1px solid black;
+  color: black;
+  background-color: rgb(244, 210, 148);
+  text-align: center;
+  padding: 10px;
+  font-size: 25px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table {
+  border-radius: 10px;
+  padding: 60px;
+  background: repeating-linear-gradient(
+    to right,
+    #f6ba52,
+    #f6ba52 20px,
+    #ffd180 20px,
+    #ffd180 40px
+  )
+}
+
+input, button  {
+  font-size: 25px;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 14px;
+  text-align: center;
+  font-weight: 900;
+  background-color: rgb(242, 221, 182);
+  color: rgb(28, 28, 28);
+  border: 0px;
+}
+
+section, .input-title {
+  margin-top: 50px;
+  max-width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgb(28, 28, 28);
+  font-weight: 900;
+}
+
+section {
+  padding: 30px;
+}
+
+.total-score {
+  color: white;
+  font-weight: 900;
+  font-size: 30px;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+}

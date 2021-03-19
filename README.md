@@ -1,75 +1,144 @@
+Bowling Challenge 🎳
+====================
 
-Bowling Challenge
-=================
+[![Build Status](https://travis-ci.com/AJ8GH/bowling-challenge.svg?branch=master)](https://travis-ci.com/AJ8GH/bowling-challenge) [![Coverage Status](https://coveralls.io/repos/github/AJ8GH/bowling-challenge/badge.svg?branch=master)](https://coveralls.io/github/AJ8GH/bowling-challenge?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/a4fa6060a3a3e9fe32ef/maintainability)](https://codeclimate.com/github/AJ8GH/bowling-challenge/maintainability) ![Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+Bowling score tracker written in JavaScript
 
-## The Task
+**Check out the deployed app here:**
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+[Bowling Score Tracker](bowling-score-tracker.surge.sh)
+--------------------------------------------------------
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+![index](public/images/index.png)
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+## Dependencies
+- `"coveralls": "^3.1.0"`
+- `"eslint": "^7.21.0"`
+- `"eslint-config-airbnb-base": "^14.2.1"`
+- `"eslint-plugin-import": "^2.22.1"`
+- `"jasmine": "^3.6.4"`
+- `"karma": "^6.2.0"`
+- `"karma-chrome-launcher": "^3.1.0"`
+- `"karma-cli": "^2.0.0"`
+- `"karma-coverage": "^2.0.3"`
+- `"karma-coveralls": "^2.1.0"`
+- `"karma-jasmine": "^4.0.1"`
+- `"nyc": "^15.1.0"`
 
-As usual please start by
+## Getting Started
 
-* Forking this repo
+### Start by cloning this repository
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
+```shell
+git clone git@github.com:AJ8GH/bowling-challenge.git
+```
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+### Install dependencies
 
-### Optional Extras
+```shell
+npm install
+```
 
-In any order you like:
+### Runnning tests:
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+```shell
+npm test
+```
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+Or open `public/js/spec/SpecRunner.html` in your browser
 
-## Bowling — how does it work?
+## Usage
 
-### Strikes
+Open `public/index.html` in your browser
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+Input your rolls one at a time and let the logic take care of the rest!
 
-### Spares
+![perfect-game](public/images/perfect-game.gif)
 
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+***A perfect Game. Impressive stuff.***
 
-### 10th frame
+## Approach and Design
 
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
+The scoreboard is fully automated. All that is required from the user is to input their rolls one at a time and the program handles the, scoring, bonuses and final frame logic. User can see their running total displayed on the scoreboard and their final score is announced when the game is over.
 
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
+### Classes
 
-### Gutter Game
+#### Game class:
+- Knows how many frames it has
+- Understands how to create and store frames
+- Knows when it reaches the final frame
+- Knows when it is over
+- Knows its score
 
-A Gutter Game is when the player never hits a pin (20 zero scores).
+#### Frame class:
+- Knows how many rolls it has
+- Knows when it is over
+- Knows how many bonuses it needs
+- Knows its score
+- Can be made final by Game
 
-### Perfect Game
+### Interface:
+- Built using js and jQuery
+- Responsible for updating the view after each roll input
 
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+### Guard Conditions:
+- Input of invalid rolls is prevented:
+  - non-numbers
+  - null rolls
+  - rolls > 10 or < 0
+  - rolls > the remaining pins of the frame
 
-In the image below you can find some score examples.
+## Skills applied
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
+- Building a full stack web application using only javascript ✅
+- Using jQuery to create a responsive interface ✅
+- Using Karma and ChromeHeadless to implement CI with Travis - Build passing ✅
+- Using Karma, nyc and Coveralls to automate test coverage reports - 96% < coverage ✅
+- Translating specifications into user stories ✅
+- Domain modelling and sequence diagrams ✅
+- Styling with HTML and CSS ✅
+- Linting - applying standard JS style with eslint ✅
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+![gutter-game](public/images/gutter-game.gif)
 
-## Code Review
+***Gutter game. Ouch...***
 
-In code review we'll be hoping to see:
+## Planning
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+### Sequence Diagrams
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+#### Spare Bonus
+
+![spare-bonus](public/images/spare-bonus.png)
+
+#### Strike Bonus
+
+![strike-bonus](public/images/strike-bonus.png)
+
+### User Stories
+```
+As a bowler,
+So that I can track my score while I play,
+I want to be able to record a score from 1 roll.
+
+As a bowler,
+So that I can track my total score easily throughout a game,
+I want my scores to automatically accumlate as I enter them.
+
+As a bowler,
+So that my score is accurate and my experience is enjoyable,
+I want my bonuses to be added to frames automatically.
+
+As a bowler,
+So that I can get extra points,
+I want the final frame to allow a bonus roll if I get a spare.
+
+As a bowler,
+So that I can bowl a perfect game,
+I want the final frame to allow 2 bonus rolls if I get a strike.
+
+As a bowler,
+So that my game flows and I can focus on the bowling,
+I want the game to automatically register when it is the final frame.
+```

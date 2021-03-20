@@ -1,0 +1,80 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Bowling Score Calculator</title>
+  <link rel="stylesheet" href="css/stylesheet.css">
+</head>
+
+<body>
+  <h1>Ya' like bowlin? Calculate your high score</h1>
+  <center><button id="reset">New game</button></center>
+  <table class="tg">
+    <thead>
+      <tr>
+        <th class="tg-t7yf" colspan="2">Frame 1</th>
+        <th class="tg-t7yf" colspan="2">Frame 2</th>
+        <th class="tg-t7yf" colspan="2">Frame 3</th>
+        <th class="tg-t7yf" colspan="2">Frame 4</th>
+        <th class="tg-t7yf" colspan="2">Frame 5</th>
+        <th class="tg-c3ow" colspan="2">Frame 6</th>
+        <th class="tg-c3ow" colspan="2">Frame 7</th>
+        <th class="tg-c3ow" colspan="2">Frame 8</th>
+        <th class="tg-c3ow" colspan="2">Frame 9</th>
+        <th class="tg-baqh" colspan="3">Final Frame</th>
+        <th class="tg-c3ow">Total</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="frame1-input1"><input class='f1i1' type="number" min="0" max="10" size="2" placeholder="0" pattern="([1-9]|10)"></td>
+        <td class="frame1-input2"><input class='f1i2' type="number" min="0" max="10" size="2" placeholder="0"></td>
+        <td class="frame2-input1"><input class='f2i1' type="number" min="0" max="10" size="2" placeholder="0"></td>
+        <td class="frame2-input2"><input class='f2i2' type="number" min="0" max="10" size="2" placeholder="0"></td>
+        <td class="frame3-input1"><input class='f3i1' type="number" min="0" max="10" size="2" placeholder="0"></td>
+        <td class="frame3-input2"><input class='f3i2' type="number" min="0" max="10" size="2" placeholder="0"></td>
+        <td class="frame4-input1"><input class='f4i1' type="number" min="0" max="10" size="2" placeholder="0"</td>
+        <td class="frame4-input2"><input class='f4i2' type="number" min="0" max="10" size="2" placeholder="0"</td>
+        <td class="frame5-input1"><input class='f5i1' type="number" min="0" max="10" size="2" placeholder="0"</td>
+        <td class="frame5-input2"><input class='f5i2' type="number" min="0" max="10" size="2" placeholder="0"></td>
+        <td class="frame6-input1"><input class='f6i1' type="number" min="0" max="10" size="2" placeholder="0"></td>
+        <td class="frame6-input2"><input class='f6i2' type="number" min="0" max="10" size="2" placeholder="0"></td>
+        <td class="frame7-input1"><input class='f7i1' type="number" min="0" max="10" size="2" placeholder="0"></td>
+        <td class="frame7-input2"><input class='f7i2' type="number" min="0" max="10" size="2" placeholder="0"></td>
+        <td class="frame8-input1"><input class='f8i1' type="number" min="0" max="10" size="2" placeholder="0"></td>
+        <td class="frame8-input2"><input class='f8i2' type="number" min="0" max="10" size="2" placeholder="0"></td>
+        <td class="frame9-input1"><input class='f9i1' type="number" min="0" max="10" size="2" placeholder="0"></td>
+        <td class="frame9-input2"><input class='f9i2' type="number" min="0" max="10" size="2" placeholder="0"></td>
+        <td class="frame10-input1"><input class='f10i1' type="number" min="0" max="10" size="2" placeholder="0"></td>
+        <td class="frame10-input2"><input class='f10i2' type="number" min="0" max="10" size="2" placeholder="0"></td>
+        <td class="frame10-input3"><input class='f10i3' type="number" min="0" max="10" size="2" placeholder="0"></td>
+        <td class="totalscore" rowspan="2">0</td>
+      </tr>
+      <tr>
+        <td class="frame1score" colspan="2"><button id='i1'>input</button></td>
+        <td class="frame2score" colspan="2"><button id='i2'>input</button></td>
+        <td class="frame3score" colspan="2"><button id='i3'>input</button></td>
+        <td class="frame4score" colspan="2"><button id='i4'>input</button></td>
+        <td class="frame5score" colspan="2"><button id='i5'>input</button></td>
+        <td class="frame6score" colspan="2"><button id='i6'>input</button></td>
+        <td class="frame7score" colspan="2"><button id='i7'>input</button></td>
+        <td class="frame8score" colspan="2"><button id='i8'>input</button></td>
+        <td class="frame9score" colspan="2"><button id='i9'>input</button></td>
+        <td class="frame10score" colspan="3"><button id='i10'>input</button></td>
+      </tr>
+    </tbody>
+    </table>
+    <img src="https://i.ibb.co/6ZwcDkH/bowling.gif" width="300">
+    <h2 id="announcement"></h2>
+    <div id="left"></div>
+    <div id="right"></div>
+    <div id="top"></div>
+    <div id="bottom"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="../public/src/Game.js"></script>
+  <script src="../public/src/Frame.js"></script>
+  <script src="../public/src/View.js"></script>
+</body>
+</html>

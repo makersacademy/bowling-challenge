@@ -2,6 +2,31 @@
 Bowling Challenge
 =================
 
+## Description
+
+A bowling scoring app built using Javascript and jQuery.
+
+## How to use
+
+* Enter your score
+* Click input to log score for each frame at a time
+* Score will add bonus points for strikes and spares automatically
+* Total score is shown on the right of the table and will update everytime a frame is inputted
+
+### Perfect game of strikes
+![perfectgame](https://media.giphy.com/media/h3ZI6afoBZ6lxpUKHA/giphy.gif)
+
+### Gutter game
+![guttergame](https://media.giphy.com/media/p62oCxmXsx9MLtQDyM/giphy.gif)
+
+## How to run
+
+* Fork this repo and clone onto your local
+* Run `bundle` in root directory of this project
+* The app is available by opening public/index.html on your browser, or you can run `ruby app.rb`
+
+=================
+
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README
 * If you have a partial solution, **still check in a partial solution**

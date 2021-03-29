@@ -1,0 +1,20 @@
+.title {
+  color: rgb(38, 169, 204);
+}
+.button {
+  background-color: rgb(120, 204, 240);
+  color: rgba(0, 0, 0, 1);
+  border-radius: 8px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
+  height:50px;
+  width:150px;
+}
+#up {
+  background-color: rgb(246, 149, 20)
+}
+#pwsON{
+  background-color: rgb(119, 208, 77)
+}
+#reset{
+  background-color: rgb(249, 247, 70)
+}

@@ -1,19 +1,62 @@
+html {
+	height: 100%;
+	/* max-height: 600px; */
+	width: 1000px;
+	background-color: hsla(200,40%,30%,.4);
+	background-image:		
+		url('https://78.media.tumblr.com/cae86e76225a25b17332dfc9cf8b1121/tumblr_p7n8kqHMuD1uy4lhuo1_540.png'), 
+		url('https://78.media.tumblr.com/66445d34fe560351d474af69ef3f2fb0/tumblr_p7n908E1Jb1uy4lhuo1_1280.png'),
+		url('https://78.media.tumblr.com/8cd0a12b7d9d5ba2c7d26f42c25de99f/tumblr_p7n8kqHMuD1uy4lhuo2_1280.png'),
+		url('https://78.media.tumblr.com/5ecb41b654f4e8878f59445b948ede50/tumblr_p7n8on19cV1uy4lhuo1_1280.png'),
+		url('https://78.media.tumblr.com/28bd9a2522fbf8981d680317ccbf4282/tumblr_p7n8kqHMuD1uy4lhuo3_1280.png');
+	background-repeat: repeat-x;
+	background-position: 
+		0 20%,
+		0 100%,
+		0 50%,
+		0 100%,
+		0 0;
+	background-size: 
+		2500px,
+		800px,
+		500px 200px,
+		1000px,
+		400px 260px;
+	animation: 100s para infinite linear;
+	}
+
+@keyframes para {
+	100% {
+		background-position: 
+			-5000px 20%,
+			-800px 95%,
+			500px 50%,
+			1000px 100%,
+			400px 0;
+		}
+	}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: rgb(183, 231, 250);
+  background-color: rgba(183, 231, 250, 0.664);
+  margin-left: 250px;
+  margin-top:20px;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .input {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   display: block;
-  position: relative;
+  /* position: relative; */
   width: 25%;
-  margin: 0px auto;
+  margin: 1px auto;
   margin-top: 50px;
   padding: 10px;
   border: solid black 2px;
   background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 2px;
 }
 
 .bowl {
@@ -22,10 +65,11 @@ body {
 
 .scorecard {
   display: block;
-  position: relative;
-  width: 25%;
+  /* position: relative; */
+  width: 40%;
   margin: 0px auto;
   padding: 10px;
+  border-radius: 2px;
 }
 
 .grid-container {
@@ -42,9 +86,14 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-h1 {
+.total-score {
+  width:100%;
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+  padding-top: 0px;
+}
+
+h2 {
+  text-align: center;
 }
 
 .total-score {

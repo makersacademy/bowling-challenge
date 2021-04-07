@@ -1,5 +1,20 @@
+## Bowling Scorecard Challenge in JavaScript
 
-Bowling Challenge
-=================
+This is a ten-pin bowling score calculator. It's a translation of [this](https://github.com/mscwilson/bowling-challenge-ruby) Ruby project, with a basic jQuery UI.
 
-The same as [this](https://github.com/mscwilson/bowling-challenge-ruby), but in JavaScript, and with a jQuery/HTML UI.
+
+### The Task
+Ten-pin bowling has surprisingly [complex rules](https://en.wikipedia.org/wiki/Ten-pin_bowling#Scoring). Essentially the score is the number of pins knocked over per round (frame), but there are bonus points if all ten pins fall after only one or two consecutive rolls.
+
+This was the 6th weekend challenge for [Makers Academy](https://makers.tech). The goal was to practise JavaScript and jQuery.
+
+It looks like this:  
+
+
+### Installation and Usage
+* Clone this repo and navigate into it
+* Open `index.html` in your browser
+* Enter number of pins knocked down to see a cumulative score
+* To run the unit tests, open `SpecRunner.html` in your browser
+* 
+

@@ -1,0 +1,27 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Makers Academy week 6 weekend challenge",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "dependencies": {
+    "eslint": "^7.23.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StuBehan/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StuBehan/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/StuBehan/bowling-challenge#readme"
+}

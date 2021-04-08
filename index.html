@@ -1,38 +1,104 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Bowling Scorecard</title>
-</head>
-<body>
-  <h1>Bowling Scorecard</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bowling Scorecard</title>
+    <link rel="stylesheet" type="text/css" href="assets/style.css" />
+  </head>
+  <body>
+    <h1>Bowling Scorecard</h1>
 
-  <div>
-    What's your roll?
-    <form id="rolls-form">
-      <input type="text" id="input-roll"/>
-      <button type="submit">Enter</button>
-    </form>
+    <div>
+      What's your roll?
+      <form id="rolls-form">
+        <select id="input-roll">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+        <button type="submit">Enter</button>
+      </form>
+    </div>
+    <br />
+    <div id="scorecard" class="grid-container">
+      <div>Frames</div>
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+      <div>10</div>
 
-  </div>
-<br/>
-  <div>
-    <table id="score-table" border="1px solid black">
-      <tr>
-        <th colspan="21">Frames</th>
-      </tr>
-      <tr>
-        <th colspan="2">1</th>
-        <th colspan="2">2</th>
-        <th colspan="2">3</th>
-        <th colspan="2">4</th>
-        <th colspan="2">5</th>
-        <th colspan="2">6</th>
-        <th colspan="2">7</th>
-        <th colspan="2">8</th>
-        <th colspan="2">9</th>
-        <th colspan="3">10</th>
-      </tr>
-<!--       <tr>
+      <div id="fr1space"></div>
+      <div id="fr1roll1"></div>
+      <div id="fr1roll2"></div>
+
+      <div id="fr2space"></div>
+      <div id="fr2roll1"></div>
+      <div id="fr2roll2"></div>
+
+      <div id="fr3space"></div>
+      <div id="fr3roll1"></div>
+      <div id="fr3roll2"></div>
+
+      <div id="fr4space"></div>
+      <div id="fr4roll1"></div>
+      <div id="fr4roll2"></div>
+
+      <div id="fr5space"></div>
+      <div id="fr5roll1"></div>
+      <div id="fr5roll2"></div>
+
+      <div id="fr6space"></div>
+      <div id="fr6roll1"></div>
+      <div id="fr6roll2"></div>
+
+      <div id="fr7space"></div>
+      <div id="fr7roll1"></div>
+      <div id="fr7roll2"></div>
+
+      <div id="fr8space"></div>
+      <div id="fr8roll1"></div>
+      <div id="fr8roll2"></div>
+
+      <div id="fr9space"></div>
+      <div id="fr9roll1"></div>
+      <div id="fr9roll2"></div>
+
+      <div id="fr10roll1"></div>
+      <div id="fr10roll2"></div>
+      <div id="fr10roll3"></div>
+    </div>
+
+    <!--       <table id="score-table" border="1px solid black">
+        <tr>
+          <th colspan="21">Frames</th>
+        </tr>
+        <tr>
+          <th colspan="2">1</th>
+          <th colspan="2">2</th>
+          <th colspan="2">3</th>
+          <th colspan="2">4</th>
+          <th colspan="2">5</th>
+          <th colspan="2">6</th>
+          <th colspan="2">7</th>
+          <th colspan="2">8</th>
+          <th colspan="2">9</th>
+          <th colspan="3">10</th>
+        </tr>
+              <tr>
         <td><span id="pins1-1"></span></td>
         <td><span id="pins1-2"></span></td>
         <td><span id="pins2-1"></span></td>
@@ -54,28 +120,25 @@
         <td><span id="pins10-1"></span></td>
         <td><span id="pins10-2"></span></td>
         <td><span id="pins10-3"></span></td>
-      </tr> -->
-      <tr>
-        <td colspan="2"><span id="score1"></span></td>
-        <td colspan="2"><span id="score2"></span></td>
-        <td colspan="2"><span id="score3"></span></td>
-        <td colspan="2"><span id="score4"></span></td>
-        <td colspan="2"><span id="score5"></span></td>
-        <td colspan="2"><span id="score6"></span></td>
-        <td colspan="2"><span id="score7"></span></td>
-        <td colspan="2"><span id="score8"></span></td>
-        <td colspan="2"><span id="score9"></span></td>
-        <td colspan="3"><span id="score10"></span></td>
       </tr>
-    </table>
+        <tr>
+          <td colspan="2"><span id="score1"></span></td>
+          <td colspan="2"><span id="score2"></span></td>
+          <td colspan="2"><span id="score3"></span></td>
+          <td colspan="2"><span id="score4"></span></td>
+          <td colspan="2"><span id="score5"></span></td>
+          <td colspan="2"><span id="score6"></span></td>
+          <td colspan="2"><span id="score7"></span></td>
+          <td colspan="2"><span id="score8"></span></td>
+          <td colspan="2"><span id="score9"></span></td>
+          <td colspan="3"><span id="score10"></span></td>
+        </tr>
+      </table>
+    </div> -->
 
-</div>
-
-
-<script src="src/Game.js"></script>
-<script src="src/Frame.js"></script>
-<script src="src/jQuery.js"></script>
-<script src="src/BowlingJQuery.js"></script>
-
-</body>
+    <script src="src/Game.js"></script>
+    <script src="src/Frame.js"></script>
+    <script src="src/jQuery.js"></script>
+    <script src="src/BowlingJQuery.js"></script>
+  </body>
 </html>

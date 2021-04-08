@@ -1,7 +1,26 @@
-* {
-}
-
 body {
   color: #1b9009;
   background-color: #d5fccf;
+}
+
+.grid-container {
+  border: 1px solid blue;
+  display: grid;
+  grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px;
+  grid-template-rows: [row-title] auto [row-frames] auto [row-rolls] auto [row-scores] auto;
+}
+
+.grid-item {
+  border: 1px solid red;
+}
+
+#grid-title {
+  grid-column: 1 / end;
+  grid-row: row-title;
+}
+
+#frame-no {
+  border: 1px solid orange;
+  /* grid-column: 1 / end; */
+  grid-row: row-frames;
 }

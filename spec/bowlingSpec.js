@@ -1,3 +1,3 @@
-describe('Bowling', function() {
+describe('Bowling', function () {
 
-})
+});

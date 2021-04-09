@@ -22,6 +22,10 @@ $(document).ready( function() {
   function updateFrameScore() {
     for (let i = 1; i < Object.keys(game.scores).length + 1; i++) {
       $(`#fr${i}total`).text(game.cumulScores[`frame_${i}`]);
+
+      $(`#fr${i}roll1`).text(`${game.frames[i - 1].displayResults()[0]}`);
+      $(`#fr${i}roll2`).text(`${game.frames[i - 1].displayResults()[1]}`);
+      console.log(game.frames[i - 1].displayResults()[0]);
     }
   }
 
@@ -54,12 +58,5 @@ $(document).ready( function() {
     $('#input-roll').html(menuOptions)
   }
 
-  function displayIndividualRoll(roll) {
-    if (roll === 10) {
-      return { roll2: "X" }
-    } else {
-      return { roll1: roll }
-    }
-  }
 
 })

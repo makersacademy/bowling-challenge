@@ -4,11 +4,8 @@ body {
 }
 
 .grid-container {
-  border: 1px solid blue;
-  grid-gap: 1px;
-  background-color: black;
   display: grid;
-  grid-template-columns: repeat(29, auto);
+  grid-template-columns: repeat(30, 50px);
   grid-template-rows: [row-title-start] auto [row-frames-start] auto [row-rolls-start] auto [row-scores-start] 40px;
 }
 
@@ -22,7 +19,7 @@ body {
 }
 
 #grid-title {
-  grid-column: 1 / end;
+  grid-column: 1 / 21;
   grid-row: row-title-start;
   /* justify-self: center; */
   text-align: center;
@@ -30,8 +27,16 @@ body {
 
 .frame-no {
   border: 1px solid orange;
-  grid-column-start: span 3;
+  grid-column-start: span 2;
   grid-row: row-frames-start / row-rolls-start;
+  /* justify-self: center; */
+  text-align: center;
+}
+
+.frame-total {
+  border: 1px solid orange;
+  grid-column-start: span 2;
+  grid-row: row-title-start / row-rolls-start;
   /* justify-self: center; */
   text-align: center;
 }
@@ -43,9 +48,9 @@ body {
 }
 
 .total-score {
-  border: 1px solid greenyellow;
-  grid-column-start: span 3;
+  border: 1px solid black;
+  grid-column-start: span 2;
   grid-row: row-scores-start;
-  padding-left: 10px;
+  /* padding-left: 10px; */
   text-align: center;
 }

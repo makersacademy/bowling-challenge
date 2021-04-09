@@ -74,6 +74,18 @@ describe("Game", function() {
       expect(game.cumulScores.frame_2).toEqual(26)
     })
 
+    it("knows it's frame 1 to start with", function () {
+      expect(game.frameNumber).toEqual(1)
+    })
+
+    it
+
+    it("knows it's frame 2 after frame 1 is completed", function () {
+      game.inputRoll(1)
+      game.inputRoll(9)
+      expect(game.frameNumber).toEqual(2)
+    })
+
   })
 
 

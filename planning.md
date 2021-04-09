@@ -10,3 +10,15 @@ show cumulative scores per frame
 Need methods:
 frameNumber()
 remainingPins()
+
+
+
+frameNumber()
+at the start of the game | 1
+roll 4 | 1
+roll 5 | 2
+roll 2 | 2
+roll 7 | 3
+
+at the start of the game | 1
+roll 10 | 2

@@ -7,6 +7,7 @@ class Game {
     this.scores = {}
     this.cumulScores = {}
     this.owedRolls = {}
+    this.frameNumber = 1
   }
 
   inputRoll(pins) {
@@ -24,6 +25,7 @@ class Game {
       }
     })
     this.frameCumulScore()
+    this.setFrameNumber()
   }
 
   createFrame() {
@@ -39,6 +41,12 @@ class Game {
       let owed = this.frames[this.frames.length - 1].owedRolls()
       this.owedRolls[`frame_${this.frames.length}`] = owed
       this.createFrame()
+    }
+  }
+
+  setFrameNumber() {
+    if ( this.frames[this.frames.length - 1].isCompleted() ) {
+      this.frameNumber += 1
     }
   }
 

@@ -8,9 +8,14 @@ class Game {
     this.cumulScores = {}
     this.owedRolls = {}
     this.frameNumber = 1
+    this.isEnded = false
   }
 
   inputRoll(pins) {
+    if (this.isEnded) {
+      return "The game has ended."
+    }
+
     this.frameCheck()
 
     this.frames[this.frames.length - 1].addRoll(pins)
@@ -26,6 +31,7 @@ class Game {
     })
     this.frameCumulScore()
     this.setFrameNumber()
+    this.endedCheck()
   }
 
   createFrame() {
@@ -47,6 +53,12 @@ class Game {
   setFrameNumber() {
     if ( this.frames[this.frames.length - 1].isCompleted() ) {
       this.frameNumber += 1
+    }
+  }
+
+  endedCheck() {
+    if ("frame_10" in this.scores && this.frames[this.frames.length - 1].isCompleted() ) {
+      this.isEnded = true
     }
   }
 

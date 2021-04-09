@@ -14,11 +14,12 @@ $(document).ready( function() {
 
     frameScores()
     updateFrameNumber()
+    updateFinalScore()
   })
 
   function frameScores() {
-    for (let i = 1; i < 11; i++) {
-      $(`#score${i}`).text(game.cumulScores[`frame_${i}`]);
+    for (let i = 1; i < Object.keys(game.scores).length + 1; i++) {
+      $(`#fr${i}total`).text(game.cumulScores[`frame_${i}`]);
     }
   }
 
@@ -32,6 +33,15 @@ $(document).ready( function() {
   function updateFrameNumber() {
     const numberDisplay = $("#frame-number-span")
     numberDisplay.text(game.frameNumber)
+  }
+
+  function updateFinalScore() {
+    const finalTotalDisplay = $("#final-total")
+    if (game.isEnded) {
+      finalTotalDisplay.text(game.cumulScores[`frame_10`])
+    } else {
+      finalTotalDisplay.text("")
+    }
   }
 
 })

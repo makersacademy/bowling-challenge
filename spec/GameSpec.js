@@ -74,7 +74,11 @@ describe("Game", function() {
       expect(game.cumulScores.frame_2).toEqual(26)
     })
 
-    it("knows it's frame 1 to start with", function () {
+
+
+  })
+
+  it("knows it's frame 1 to start with", function () {
       expect(game.frameNumber).toEqual(1)
     })
 
@@ -84,9 +88,17 @@ describe("Game", function() {
       expect(game.frameNumber).toEqual(2)
     })
 
-  })
+    it("is not ended to start with", function () {
+      expect(game.isEnded).toEqual(false)
+    })
 
-
+    it("is ended after frame 10 is complete", function () {
+      rolls = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+      rolls.forEach( (pins) => {
+        game.inputRoll(pins)
+      })
+      expect(game.isEnded).toEqual(true)
+    })
 
 
 })

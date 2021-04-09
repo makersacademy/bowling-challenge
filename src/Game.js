@@ -77,4 +77,14 @@ class Game {
     }
   }
 
+  remainingPins() {
+    if ( this.frames.length === 0 ) {
+      return 10
+    } else if (this.frames[this.frames.length - 1].isCompleted()) {
+      return 10
+    } else {
+      return (10 - this.frames[this.frames.length - 1].rolls[0])
+    }
+  }
+
 }

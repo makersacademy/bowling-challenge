@@ -1,7 +1,7 @@
 $(document).ready( function() {
   let game = new Game()
 
-  frameScores()
+  updateFrameScore()
 
   $("#rolls-form").submit( function() {
     event.preventDefault();
@@ -12,12 +12,12 @@ $(document).ready( function() {
     let roll = parseInt(input);
     game.inputRoll(roll)
 
-    frameScores()
+    updateFrameScore()
     updateFrameNumber()
     updateFinalScore()
   })
 
-  function frameScores() {
+  function updateFrameScore() {
     for (let i = 1; i < Object.keys(game.scores).length + 1; i++) {
       $(`#fr${i}total`).text(game.cumulScores[`frame_${i}`]);
     }

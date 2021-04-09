@@ -100,5 +100,23 @@ describe("Game", function() {
       expect(game.isEnded).toEqual(true)
     })
 
+    describe("knows how many pins are standing", function () {
+      it("10 pins left at the start of the game", function () {
+        expect(game.remainingPins()).toEqual(10)
+      })
+
+      it("10 pins left at the start of a frame", function () {
+        game.inputRoll(10)
+        expect(game.remainingPins()).toEqual(10)
+      })
+
+      it("there are 3 pins left if roll 7", function () {
+        game.inputRoll(7)
+        expect(game.remainingPins()).toEqual(3)
+      })
+
+
+    })
+
 
 })

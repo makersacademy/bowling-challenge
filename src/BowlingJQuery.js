@@ -2,6 +2,7 @@ $(document).ready( function() {
   let game = new Game()
 
   updateFrameScore()
+  dropDownInput()
 
   $("#rolls-form").submit( function() {
     event.preventDefault();
@@ -15,6 +16,7 @@ $(document).ready( function() {
     updateFrameScore()
     updateFrameNumber()
     updateFinalScore()
+    dropDownInput()
   })
 
   function updateFrameScore() {
@@ -42,6 +44,15 @@ $(document).ready( function() {
     } else {
       finalTotalDisplay.text("")
     }
+  }
+
+  function dropDownInput() {
+    let menuOptions = ""
+    for (let i = 0; i < game.remainingPins() + 1; i++) {
+      menuOptions += `<option value="${i}">${i}</option>`
+    }4
+    console.log(menuOptions);
+    $('#input-roll').html(menuOptions)
   }
 
 })

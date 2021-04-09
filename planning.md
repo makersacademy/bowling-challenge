@@ -8,7 +8,9 @@ Show results: individual rolls (number of pins) - \ for spare X for strike
 show cumulative scores per frame
 
 
-Display a end of game message at the end?
+Display a end of game message at the end
+
+Add a reload/restart/clear button!
 
 
 Need methods:
@@ -36,11 +38,13 @@ setFrameNumber()
 input | output
 --------
 2, 3 | "2", "3", "", ""
-2, 8, 0 | "", "/", "", ""
-2, 8, 3 | "", "/", "3", ""
 10, 3 | "", "X", "3", ""
-2, 8, 3, 7 | "", "/", "/", ""
+2, 8, 3 | "", "/", "3", ""
 10, 3, 7 | "", "X", "/", ""
-10, 10, 0 | "", "X", "X", ""
 10, 10, 10 | "", "X", "X", "X"
 10, 10, 2 | "", "X", "X", "2"
+
+
+
+Bug: input form remembers last choice, can keep pressing enter
+Bug: frame 10 number of pins available not correct

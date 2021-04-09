@@ -25,7 +25,7 @@ $(document).ready( function() {
 
       $(`#fr${i}roll1`).text(`${game.frames[i - 1].displayResults()[0]}`);
       $(`#fr${i}roll2`).text(`${game.frames[i - 1].displayResults()[1]}`);
-      console.log(game.frames[i - 1].displayResults()[0]);
+
     }
   }
 

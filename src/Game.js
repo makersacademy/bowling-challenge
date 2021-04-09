@@ -51,6 +51,9 @@ class Game {
   }
 
   setFrameNumber() {
+    if (this.frames.length === 10 ) {
+      return
+    }
     if ( this.frames[this.frames.length - 1].isCompleted() ) {
       this.frameNumber += 1
     }

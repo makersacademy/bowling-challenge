@@ -14,10 +14,14 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jasmine": "^4.1.2",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.3.1"
+    "eslint-plugin-promise": "^4.3.1",
+    "jasmine-core": "^3.7.1",
+    "karma": "^6.3.2",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-jasmine": "^4.0.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "karma start karma.conf.js --single-run"
   },
   "repository": {
     "type": "git",

@@ -81,3 +81,21 @@ Bonuses
 - IF next ball IS a strike
 - check bonuses
 - Bowl last ball and add up
+
+- Final functionality create user
+
+Input/Output Table
+
+Input         |          Output
+
+3             |         3  => 'bowl second ball'
+10            |         "You got a strike", Next Frame
+[3, 4]        |         "You scored 7", Next Frame
+[3, 7]        |         "You got a spare", Next Frame
+[3] when prev frame = spare | "3", score: 13 for previous frame, bowl second ball
+[10] when prev frame = spare| "You got a Strike", score: 20 for prev frame
+[3, 4] when prev frame strike | "7", Score: 17 for prev frame
+[10] when prev frame strike   | strike
+[5, 5] when pres frame = strike| "spare", Score: 20 for prev frame
+[3] when prev frame 2x strike | "3" score: 23 for 2x prev frame, bowl second ball
+[10] when prev frame 2x strike| "strike", 30 for 2x prev frame

@@ -78,8 +78,6 @@ describe("Game", function() {
       expect(game.frameNumber).toEqual(1)
     })
 
-    it
-
     it("knows it's frame 2 after frame 1 is completed", function () {
       game.inputRoll(1)
       game.inputRoll(9)

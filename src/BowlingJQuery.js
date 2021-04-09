@@ -13,6 +13,7 @@ $(document).ready( function() {
     game.inputRoll(roll)
 
     frameScores()
+    updateFrameNumber()
   })
 
   function frameScores() {
@@ -26,6 +27,11 @@ $(document).ready( function() {
     if (!validNums.includes(input)) {
       return false
     }
+  }
+
+  function updateFrameNumber() {
+    const numberDisplay = $("#frame-number-span")
+    numberDisplay.text(game.frameNumber)
   }
 
 })

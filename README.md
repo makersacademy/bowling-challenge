@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/mstrivens/bowling-challenge.svg?branch=master)](https://travis-ci.com/mstrivens/bowling-challenge)
 
 Bowling Challenge
 =================

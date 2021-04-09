@@ -50,9 +50,16 @@ $(document).ready( function() {
     let menuOptions = ""
     for (let i = 0; i < game.remainingPins() + 1; i++) {
       menuOptions += `<option value="${i}">${i}</option>`
-    }4
-    console.log(menuOptions);
+    }
     $('#input-roll').html(menuOptions)
+  }
+
+  function displayIndividualRoll(roll) {
+    if (roll === 10) {
+      return { roll2: "X" }
+    } else {
+      return { roll1: roll }
+    }
   }
 
 })

@@ -40,4 +40,44 @@ class Frame {
     }
   }
 
+  displayResults() {
+    let firstRoll = this.rolls[0]
+    let secondRoll = this.rolls[1]
+    let thirdRoll = this.rolls[2]
+    let fourthRoll = ""
+
+    if (!secondRoll) secondRoll = ""
+    if (!thirdRoll) thirdRoll = ""
+
+    if (this.rolls[0] === 10 && this.rolls[1] === 10 && this.rolls[2] === 10) {
+      firstRoll = ""
+      secondRoll = "X"
+      thirdRoll = "X"
+      fourthRoll = "X"
+    } else if (this.rolls[0] === 10 && this.rolls[1] === 10) {
+      let finalBox = this.rolls[2]
+      if (!finalBox) finalBox = ""
+      firstRoll = ""
+      secondRoll = "X"
+      thirdRoll = "X"
+      fourthRoll = finalBox
+    } else if ((this.rolls[0] === 10) && (this.rolls[1] + this.rolls[2] === 10)) {
+      firstRoll = ""
+      secondRoll = "X"
+      thirdRoll = "/"
+    } else if (this.rolls[0] === 10 ) {
+      firstRoll = ""
+      secondRoll = "X"
+    } else if (this.rolls[0] + this.rolls[1] === 10) {
+      firstRoll = ""
+      secondRoll = "/"
+    }
+
+    if (this.number < 10) {
+      return [`${firstRoll}`, `${secondRoll}`]
+    } else {
+      return [`${firstRoll}`, `${secondRoll}`, `${thirdRoll}`, `${fourthRoll}`]
+    }
+  }
+
 }

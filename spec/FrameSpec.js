@@ -66,8 +66,74 @@ describe("Frame", function() {
       frame.addRoll(5)
       expect(frame.isCompleted()).toBe(true)
     })
+  })
 
+  describe("stores the display version of the rolls", function () {
+    it("'X' for a strike", function () {
+      frame.addRoll(10)
+      expect(frame.displayResults()).toEqual(["", "X"])
+    })
 
+    it("'/' for a spare", function () {
+      frame.addRoll(1)
+      frame.addRoll(9)
+      expect(frame.displayResults()).toEqual(["", "/"])
+    })
+
+    it("the actual numbers if no strike/spare", function () {
+      frame.addRoll(2)
+      frame.addRoll(3)
+      expect(frame.displayResults()).toEqual(["2", "3"])
+    })
+
+    it("just first roll if no strike/spare and not finished", function () {
+      frame.addRoll(2)
+      expect(frame.displayResults()).toEqual(["2", ""])
+    })
+
+    describe("with special 10th frame rules", function () {
+      beforeEach(function() {
+      frame = new Frame(10);
+      })
+
+      it("two empty strings if no strike or spare", function () {
+        frame.addRoll(2)
+        frame.addRoll(3)
+        expect(frame.displayResults()).toEqual(["2", "3", "", ""])
+      })
+
+      it("strike", function () {
+        frame.addRoll(10)
+        expect(frame.displayResults()).toEqual(["", "X", "", ""])
+      })
+
+      it("spare then another roll", function () {
+        frame.addRoll(2)
+        frame.addRoll(8)
+        frame.addRoll(3)
+        expect(frame.displayResults()).toEqual(["", "/", "3", ""])
+      })
+
+      it("strike then strike", function () {
+        frame.addRoll(10)
+        frame.addRoll(10)
+        expect(frame.displayResults()).toEqual(["", "X", "X", ""])
+      })
+
+      it("strike, strike, not strike", function () {
+        frame.addRoll(10)
+        frame.addRoll(10)
+        frame.addRoll(2)
+        expect(frame.displayResults()).toEqual(["", "X", "X", "2"])
+      })
+
+      it("strike then spare", function () {
+        frame.addRoll(10)
+        frame.addRoll(3)
+        frame.addRoll(7)
+        expect(frame.displayResults()).toEqual(["", "X", "/", ""])
+      })
+    })
   })
 
 })

@@ -114,9 +114,6 @@ describe("Game", function() {
         game.inputRoll(7)
         expect(game.remainingPins()).toEqual(3)
       })
-
-
     })
-
 
 })

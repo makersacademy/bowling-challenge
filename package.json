@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/mstrivens/bowling-challenge#readme",
   "devDependencies": {
-    "eslint": "^7.23.0"
+    "eslint": "^7.23.0",
+    "eslint-plugin-jasmine": "^4.1.2",
+    "jasmine": "^3.7.0"
   }
 }

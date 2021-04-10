@@ -25,7 +25,10 @@ $(document).ready( function() {
 
       $(`#fr${i}roll1`).text(`${game.frames[i - 1].displayResults()[0]}`);
       $(`#fr${i}roll2`).text(`${game.frames[i - 1].displayResults()[1]}`);
-
+    }
+    if (game.frames.length === 10) {
+      $(`#fr10roll3`).text(`${game.frames[9].displayResults()[2]}`);
+      $(`#fr10roll4`).text(`${game.frames[9].displayResults()[3]}`);
     }
   }
 

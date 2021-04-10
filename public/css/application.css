@@ -35,3 +35,19 @@ button {
 button:hover {
   border: 1px solid rgb(46, 44, 44);
 }
+
+/* text input */
+
+.textInvis {
+  border: rgba(46, 44, 44, 0);
+  background-color: rgb(46, 44, 44, 0);
+  width: 20px;
+  padding-left: 0rem !important;
+  padding-right: 0rem !important;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.textInvis:focus {
+  outline: none;
+}

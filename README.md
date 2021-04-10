@@ -83,10 +83,14 @@ In any order you like:
 You might even want to start with ESLint early on in your work — to help you
 learn Javascript conventions as you go along.
 
+### UI
+[ ] add roll1 score
+[ ] add roll2 score
+[ ] add roll3 score
 
 
-
-
+---
+#### console.log testing
 
 // let newGame = new BowlingGame();
 // // game 1

@@ -4,7 +4,7 @@ class ScoreCard {
     this.frame = null
   }
   play(pins) {
-    this.finalFrame() ? this.tenthRound(pins) : this.roll(pins)
+    return (this.finalFrame() ? this.tenthRound(pins) : this.roll(pins))
   }
   roll(pins) {
     if(!this.frame) 
@@ -19,6 +19,7 @@ class ScoreCard {
       this.frames.push(this.frame)
       this.frame = null
     }
+    return this.total()
   }
   total() {
     return this.frames.map((frame, index) => {

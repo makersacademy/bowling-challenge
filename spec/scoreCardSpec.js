@@ -79,4 +79,15 @@ describe('tenthRound', function() {
   })
 })
 
+describe('tenthRound', function() {
+  let scoreCard = new ScoreCard;
+  it('returns the final score when the game ends', function() {
+    for(let i = 0; i < 19; i++) {
+      scoreCard.play(4)
+    }
+    
+    expect(scoreCard.play(3)).toEqual(79)
+  })
+})
+
 

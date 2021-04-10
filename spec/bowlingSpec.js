@@ -74,5 +74,11 @@ describe("Bowling", function() {
       }
       expect(bowling.frames[9].scores).toEqual([10, 10, 10])
     });
+    it('Bonus points are still awarded to strikes in 9th frame ', () => {
+      for(let i = 0; i < 12; i++) {
+        bowling.roll(10);
+      }
+      expect(bowling.frames[8].scores).toEqual([10, 10, 10])
+    });
   });
 });

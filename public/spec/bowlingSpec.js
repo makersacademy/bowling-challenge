@@ -79,7 +79,7 @@ describe ('Bowling', function(){
 
   describe('frameStatus', function(){
     it('initializes as an empty string', function(){
-        expect(bowling.frameStatus).toEqual("")
+      expect(bowling.frameStatus).toEqual("")
     });
     it('is set to strike when a strike is bowled', function(){
       bowling.frame(10, 0)
@@ -94,7 +94,13 @@ describe ('Bowling', function(){
       expect(bowling.frameStatus).toEqual('openFrame')
     });
   });
+
   // describe('bonus', function (){
-  //   it('')
+  //   it('if strike not bowled, checks if prevFrame is a spare then adds both scores to the score array', function(){
+  //     bowling.prevFrame = 'spare'
+  //     bowling.frame(3, 5)
+  //     console.log(this.frameScore)
+  //     expect(bowling.bonus()).toEqual([10, 3])
+  //   });
   // });
 });

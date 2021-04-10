@@ -82,3 +82,55 @@ In any order you like:
 
 You might even want to start with ESLint early on in your work — to help you
 learn Javascript conventions as you go along.
+
+
+
+
+
+
+// let newGame = new BowlingGame();
+// // game 1
+// console.log("---Frame 1");
+// console.log(newGame.roll1(3));
+// console.log(newGame.roll2(4));
+// // game 2
+// console.log("---Frame 2");
+// console.log(newGame.roll1(10));
+// // game 3
+// console.log("---Frame 3");
+// console.log(newGame.roll1(2));
+// console.log(newGame.roll2(5));
+// // game 4
+// console.log("---Frame 4");
+// console.log(newGame.roll1(3));
+// console.log(newGame.roll2(4));
+// console.log(newGame.roll3(4));
+// // game 5
+// console.log("---Frame 5");
+// console.log(newGame.roll1(10));
+// // game 6
+// console.log("---Frame 6");
+// console.log(newGame.roll1(7));
+// console.log(newGame.roll2(1));
+// // game 7
+// console.log("---Frame 7");
+// console.log(newGame.roll1(3));
+// console.log(newGame.roll2(7));
+// // game 8
+// console.log("---Frame 8");
+// console.log(newGame.roll1(1));
+// console.log(newGame.roll2(8));
+// // game 9
+// console.log("---Frame 9");
+// console.log(newGame.roll1(5));
+// console.log(newGame.roll2(2));
+// console.log(newGame.newScorecard.roll3Score);
+// // game 10
+// console.log("---Frame 10");
+// console.log(newGame.roll1(10));
+// console.log(newGame.roll2(3));
+// console.log(newGame.roll3(4));
+//
+//
+// console.log(newGame.newScorecard.roll3Score);
+// console.log(newGame.view_scorecard());

@@ -21,5 +21,12 @@ describe("Bowling", function() {
       bowling.roll(2);
       expect(bowling.frames[1].scores).toEqual([2])
     });
+    it('Updates bonus points, if the previous frame is a spare', () => {
+      bowling.roll(5);
+      bowling.roll(5);
+      expect(bowling.frames[0].scores).toEqual([5,5])
+      bowling.roll(4);
+      expect(bowling.frames[0].scores).toEqual([5,5,4])
+    });
   });
 });

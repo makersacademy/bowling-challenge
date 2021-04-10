@@ -5,6 +5,16 @@ class Bowling {
   }
 
   roll(pins) {
+    this.createNewFrame();
+    this.getCurrentScores().push(pins);
+    this.updateBonusPoints(pins);
+  }
+
+  getCurrentScores() {
+    return this.frames[this.currentFrame].scores;
+  }
+
+  createNewFrame() {
     if (this.frames.length == 0) {
       this.frames.push(new Frame);
     }
@@ -12,12 +22,15 @@ class Bowling {
       this.frames.push(new Frame);
       this.currentFrame++;
     }
-    
-    // can use slice instead? better way to select last element?
-    this.getCurrentScores().push(pins);
   }
 
-  getCurrentScores() {
-    return this.frames[this.currentFrame].scores;
+  updateBonusPoints(pins) {
+    if (this.currentFrame > 0) {
+      var previousFrame = this.frames[this.currentFrame - 1];
+      if(previousFrame.isSpare()) {
+        previousFrame.scores.push(pins);
+      }
+    }
   }
+
 }

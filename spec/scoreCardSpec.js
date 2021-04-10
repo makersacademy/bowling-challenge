@@ -35,6 +35,13 @@ describe('total', function() {
 
     expect(scoreCard.total()).toEqual(17)
   })
+  it( 'should calculate a bonus for a strike as well', function() {
+    scoreCard.roll(10)
+    scoreCard.roll(1)
+    scoreCard.roll(7)
+
+    expect(scoreCard.total()).toEqual(43)
+  })
 })
 
 

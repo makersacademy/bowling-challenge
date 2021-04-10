@@ -15,5 +15,12 @@ describe('roll', function() {
 
     expect(scoreCard.frames.length).toEqual(1)
   })
+  it('saves each frame separately', function() {
+    scoreCard.roll(10)
+    scoreCard.roll(6)
+    scoreCard.roll(1)
+
+    expect(scoreCard.frames.length).toEqual(3)
+  })
 })
 

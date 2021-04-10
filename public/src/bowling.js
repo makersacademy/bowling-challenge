@@ -5,15 +5,20 @@ class Bowling {
 
   bowl1(score) {
     if (score === 10)  {
-      return 'strike';
+      return 'strike'
     }
     else {
       this.frame.push(score)
-      return score;
-    }
-  }
+      return score
+    };
+  };
 
   bowl2(score) {
-      return [3, score];
-  }
-}
+      if (Number(this.frame) + Number(score) === 10) {
+        return 'spare'
+      }
+    else {
+      return [3, score]
+    };
+  };
+};

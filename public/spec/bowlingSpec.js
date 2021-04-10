@@ -20,6 +20,10 @@ describe ('Bowling', function(){
     bowling.bowl1(3);
     expect(bowling.bowl2(5)).toEqual([3, 5])
     });
+    it('returns spare if the total for the first and second bowl is 10', function(){
+      bowling.bowl1(7)
+      expect(bowling.bowl2(3)).toEqual('spare')
+    });
   });
 
   describe('frame', function(){

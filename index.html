@@ -15,6 +15,11 @@
   <link rel="icon" href="public/favicon.ico">
   <link rel="manifest" href="/site.webmanifest">
 
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Bowling yo!</title>
@@ -38,33 +43,36 @@
         <th colspan="2">7</th>
         <th colspan="2">8</th>
         <th colspan="2">9</th>
-        <th colspan="2">10</th>
+        <th colspan="3">10</th>
         </tr></thead>
       <tbody>
         <tr>
           <td>Result</td>
-          <td><td></td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><input type="text" id='1-1' class='textInvis' maxlength="2"></td>
+          <td><input type="text" id='1-2' class='textInvis' maxlength="2"></td>
+          <td><input type="text" id='2-1' class='textInvis' maxlength="2"></td>
+          <td><input type="text" id='2-2' class='textInvis' maxlength="2"></td>
+          <td><input type="text" id='3-1' class='textInvis' maxlength="2"></td>
+          <td><input type="text" id='3-2' class='textInvis' maxlength="2"></td>
+          <td><input type="text" id='4-1' class='textInvis' maxlength="2"></td>
+          <td><input type="text" id='4-2' class='textInvis' maxlength="2"></td>
+          <td><input type="text" id='5-1' class='textInvis' maxlength="2"></td>
+          <td><input type="text" id='5-2' class='textInvis' maxlength="2"></td>
+          <td><input type="text" id='6-1' class='textInvis' maxlength="2"></td>
+          <td><input type="text" id='6-2' class='textInvis' maxlength="2"></td>
+          <td><input type="text" id='7-1' class='textInvis' maxlength="2"></td>
+          <td><input type="text" id='7-2' class='textInvis' maxlength="2"></td>
+          <td><input type="text" id='8-1' class='textInvis' maxlength="2"></td>
+          <td><input type="text" id='8-2' class='textInvis' maxlength="2"></td>
+          <td><input type="text" id='9-1' class='textInvis' maxlength="2"></td>
+          <td><input type="text" id='9-2' class='textInvis' maxlength="2"></td>
+          <td><input type="text" id='10-1' class='textInvis' maxlength="2"></td>
+          <td><input type="text" id='10-2' class='textInvis' maxlength="2"></td>
+          <td><input type="text" id='10-3' class='textInvis' maxlength="2"></td>
         </tr>
         <tr>
           <td>Score</td>
+          <td colspan="2"><p></p></td>
           <td colspan="2"></td>
           <td colspan="2"></td>
           <td colspan="2"></td>
@@ -73,8 +81,7 @@
           <td colspan="2"></td>
           <td colspan="2"></td>
           <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
+          <td colspan="3"></td>
         </tr>
       </tbody>
     </table>
@@ -84,6 +91,8 @@
 
   <footer>
   </footer>
+
+  <script type="text/javascript" src="src/bowling.js"></script>
 </body>
 
 </html>

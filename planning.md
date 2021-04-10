@@ -5,16 +5,19 @@ Drop down menu for rolls - could change displayed numbers depending on previous 
 Show results: individual rolls (number of pins) - \ for spare X for strike
 show cumulative scores per frame
 refactor the Frame displayResults to have 10th frame separately
-
-
-
-Not done:
-Display a end of game message at the end
-
 Add a reload/restart/clear button!
 
 
 
+Not done:
+Display a end of game message at the end - special message for perfect/gutter game
+Hide the roll input form at the end
+
+
+
+
+Nice to Have:
+Save the results to file??
 
 
 
@@ -45,5 +48,5 @@ input | output
 
 
 
-Bug: input form remembers last choice, can keep pressing enter
+Bug: input form remembers last choice, can keep pressing enter? Maybe that rolling 0 repeatedly doesn't work for some reason, second 0 doesn't show up
 

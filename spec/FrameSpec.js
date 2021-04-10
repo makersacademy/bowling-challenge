@@ -91,6 +91,12 @@ describe("Frame", function() {
       expect(frame.displayResults()).toEqual(["2", ""])
     })
 
+    it("works fine if rolling 0s", function () {
+      frame.addRoll(0)
+      frame.addRoll(0)
+      expect(frame.displayResults()).toEqual(["0", "0"])
+    })
+
     describe("with special 10th frame rules", function () {
       beforeEach(function() {
       frame = new Frame(10);

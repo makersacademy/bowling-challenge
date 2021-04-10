@@ -22,4 +22,9 @@ class Bowling {
       return this.frameScore
     };
   };
+
+  frame(score1, score2) {
+    this.bowl1(score1)
+    return this.bowl2(score2)
+  };
 };

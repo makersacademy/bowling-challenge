@@ -53,6 +53,9 @@ Frame
 - If total for frame is 10 frameStatus = spare
 - Otherwise totalScore is pushes into Frame array
 - frameScore and totalScore are returned to user
+- Creently have 2 bowl methods handling the scoring of each bowl.
+- Thinking add a frame method which handles the directing. I.e If bowl1 != 'strike' bowl 2
+else change prevFrame status to 1xstrike.
 
 Bonuses
 - When the first ball if NOT a strike:

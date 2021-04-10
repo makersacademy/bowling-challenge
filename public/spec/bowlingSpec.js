@@ -39,4 +39,10 @@ describe ('Bowling', function(){
       expect(bowling.frameScore).toEqual([3])
     });
   });
+
+  describe('frame', function(){
+    it('returns the frameScore array', function(){
+      expect(bowling.frame(3, 5)).toEqual([3, 5])
+    });
+  });
 });

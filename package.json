@@ -1,0 +1,27 @@
+{
+  "name": "bowling-challenge-js",
+  "version": "1.0.0",
+  "description": "makers academy week 6 weekend challenge",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackmcc08/bowling-challenge.git"
+  },
+  "author": "jackmcc08",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/jackmcc08/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/jackmcc08/bowling-challenge#readme",
+  "devDependencies": {
+    "eslint": "^7.24.0",
+    "eslint-plugin-jasmine": "^4.1.2",
+    "jasmine": "^3.7.0"
+  }
+}

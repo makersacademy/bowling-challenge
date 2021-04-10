@@ -24,7 +24,22 @@ describe("BowlingScorecard", function() {
     });
 
     // still need to check for invalid scores on the second roll
+    // will need to test end game functionality as well
   });
 
-  // describe
+  describe("#generateScorecardInfo", function() {
+    it("tells you your scores so far, after 1st throw", function() {
+      testScorecard.enterRoll(5)
+      expect(testScorecard.generateScorecardInfo()).toEqual(FIRST_THROW_SCORECARD)
+    });
+
+    it("tells you your scores so far, after 2nd throw", function() {
+      testScorecard.enterRoll(5)
+      testScorecard.enterRoll(4)
+      expect(testScorecard.generateScorecardInfo()).toEqual(SECOND_THROW_SCORECARD)
+    });
+
+    FIRST_THROW_SCORECARD = [{ frame: 1, first_roll: 5, second_roll: null }]
+    SECOND_THROW_SCORECARD = [{ frame: 1, first_roll: 5, second_roll: 4 }]
+  });
 });

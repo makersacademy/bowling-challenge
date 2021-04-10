@@ -44,17 +44,13 @@ describe('total', function() {
     expect(scoreCard.total()).toEqual(43)
   })
   it('can calculate the score with a spare', function() {
-    
+    newScore.roll(4)
+    newScore.roll(6)
+    newScore.roll(8)
+    newScore.roll(1)
+
+    expect(newScore.total()).toEqual(27)
   })
-
-//   it 'should calculate a spare as well' do
-//   bowl.roll(9)
-//   bowl.roll(1)
-//   bowl.roll(5)
-//   bowl.roll(3)
-
-//   expect(bowl.total).to eq 23
-// end
 })
 
 

@@ -23,6 +23,7 @@ class ScoreCard {
     return this.frames.map((frame, index) => {
       let bonus = 0 
       this.previousFrameIsStrike(index) ? bonus += frame.count() : bonus
+      this.previousFrameIsSpare(index) ? bonus += frame.rolls[0] : bonus
       let frameTotal = frame.count()
       return frameTotal += bonus
     }).reduce(function(acc, score) { return acc += score },0)
@@ -30,5 +31,7 @@ class ScoreCard {
   previousFrameIsStrike(index) {
     return (this.frames[index - 2] && this.frames[index - 1].isStrike())
   }
-  
+  previousFrameIsSpare(index) {
+    return (this.frames[index - 1] && this.frames[index - 1].isSpare())
+  }
 }

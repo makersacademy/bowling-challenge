@@ -30,6 +30,7 @@ describe('isStrike', function() {
 
 describe('isSpare', function() {
   let spare = new Frame;
+  let notSpare = new Frame;
 
   it ('should know when a spare was rolled', function() {
     spare.roll(4)
@@ -37,12 +38,10 @@ describe('isSpare', function() {
 
     expect(spare.isSpare()).toEqual(true)
   })
+  it ('should know when a spare was not rolled', function() {
+    notSpare.roll(3)
+    notSpare.roll(4)
+
+    expect(notSpare.isSpare()).toEqual(false)
+  })
 })
-
-// describe '#is_spare?' do
-// it 'should know a spare wass rolled' do
-//   frame.roll(4)
-//   frame.roll(6)
-
-//   expect(frame.is_spare?).to eq true
-// end

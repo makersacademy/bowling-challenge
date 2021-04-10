@@ -71,6 +71,11 @@ describe ('Bowling', function(){
     });
   });
 
+  describe('prevFrame', function(){
+    it('constructs as an empty string', function(){
+      expect(bowling.prevFrame).toEqual("")
+    });
+  });
   // describe('bonus', function (){
   //   it('')
   // });

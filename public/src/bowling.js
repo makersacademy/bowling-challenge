@@ -3,6 +3,7 @@ class Bowling {
     this.frameScore = []
     this.frameStatus = ""
     this.score = []
+    this.prevFrame = ""
   }
 
   bowl1(score) {

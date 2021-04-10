@@ -1,6 +1,6 @@
 class Bowling {
   constructor() {
-    this.frame = []
+    this.frameScore = []
   }
 
   bowl1(score) {
@@ -8,18 +8,18 @@ class Bowling {
       return 'strike'
     }
     else {
-      this.frame.push(score)
+      this.frameScore.push(score)
       return score
     };
   };
 
   bowl2(score) {
-      if (Number(this.frame) + Number(score) === 10) {
+      if (Number(this.frameScore) + Number(score) === 10) {
         return 'spare'
       }
     else {
-      this.frame.push(score)
-      return this.frame
+      this.frameScore.push(score)
+      return this.frameScore
     };
   };
 };

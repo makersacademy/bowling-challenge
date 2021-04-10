@@ -30,13 +30,13 @@ describe ('Bowling', function(){
     });
   });
 
-  describe('frame', function(){
+  describe('frameScore', function(){
     it('is an empty array', function(){
-      expect(bowling.frame).toEqual([])
+      expect(bowling.frameScore).toEqual([])
     });
     it('receives the score for the first bowl if not a strike', function(){
       bowling.bowl1(3)
-      expect(bowling.frame).toEqual([3])
+      expect(bowling.frameScore).toEqual([3])
     });
   });
 });

@@ -81,6 +81,18 @@ describe ('Bowling', function(){
     it('initializes as an empty string', function(){
         expect(bowling.frameStatus).toEqual("")
     });
+    it('is set to strike when a strike is bowled', function(){
+      bowling.frame(10, 0)
+      expect(bowling.frameStatus).toEqual('strike')
+    });
+    it('is set to spare when a spare is bowled', function(){
+      bowling.frame(7, 3)
+      expect(bowling.frameStatus).toEqual('spare')
+    });
+    it('is set to openFrame when a strike or spare isn\'t bowled', function(){
+      bowling.frame(3, 5)
+      expect(bowling.frameStatus).toEqual('openFrame')
+    });
   });
   // describe('bonus', function (){
   //   it('')

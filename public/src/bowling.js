@@ -23,6 +23,7 @@ class Bowling {
         return 'spare'
       }
     else {
+      this.frameStatus = 'openFrame'
       this.frameScore.push(score)
       return this.frameScore
     };

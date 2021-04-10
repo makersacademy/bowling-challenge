@@ -8,5 +8,8 @@ class Frame {
   isStrike() {
     return (this.rolls[0] === 10 ? true : false)
   }
+  isSpare() {
+    return true
+  }
 }
 

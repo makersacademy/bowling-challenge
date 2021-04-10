@@ -26,7 +26,20 @@ describe("Bowling", function() {
       bowling.roll(5);
       expect(bowling.frames[0].scores).toEqual([5,5])
       bowling.roll(4);
+      bowling.roll(4);
       expect(bowling.frames[0].scores).toEqual([5,5,4])
+    });
+    it('Strikes create a new frame', () => {
+      bowling.roll(10);
+      bowling.roll(5);
+      expect(bowling.frames[0].scores).toEqual([10, 5])
+      expect(bowling.frames[1].scores).toEqual([5])
+    });
+    it('Updates bonus points for strikes', () => {
+      bowling.roll(10);
+      bowling.roll(5);
+      bowling.roll(2);
+      expect(bowling.frames[0].scores).toEqual([10, 5, 2])
     });
   });
 });

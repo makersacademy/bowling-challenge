@@ -17,7 +17,11 @@ class Bowling {
   createNewFrame() {
     if (this.frames.length == 0) {
       this.frames.push(new Frame);
+    } else if (this.getCurrentScores().includes(10)) {
+      this.frames.push(new Frame);
+      this.currentFrame++;
     }
+
     if (this.getCurrentScores().length == 2) {
       this.frames.push(new Frame);
       this.currentFrame++;
@@ -27,7 +31,12 @@ class Bowling {
   updateBonusPoints(pins) {
     if (this.currentFrame > 0) {
       var previousFrame = this.frames[this.currentFrame - 1];
-      if(previousFrame.isSpare()) {
+      if (previousFrame.isSpare()) {
+        // isSpare checks if bonus not already added.
+        previousFrame.scores.push(pins);
+      }
+
+      if (previousFrame.isStrike()) {
         previousFrame.scores.push(pins);
       }
     }

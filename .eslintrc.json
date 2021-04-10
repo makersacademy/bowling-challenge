@@ -3,10 +3,12 @@
         "browser": true,
         "commonjs": true,
         "es2021": true,
-        "jasmine": true
+        "jasmine": true,
+        "jquery": true
     },
     "extends": [
-        "standard"
+        "standard",
+        "plugin:jquery/deprecated"
     ],
     "parserOptions": {
         "ecmaVersion": 12
@@ -15,6 +17,7 @@
       "semi": [2, "always"]
     }, 
     "plugins": [
-        "jasmine"
+        "jasmine",
+        "jquery"
     ]
 }

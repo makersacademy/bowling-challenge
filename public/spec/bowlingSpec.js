@@ -13,6 +13,10 @@ describe ('Bowling', function(){
     it("it return 'strike' when 10 is scored", function(){
       expect(bowling.bowl1(10)).toEqual("strike")
     });
+    it('changes the frameStatus to strike if a strike is bowled', function(){
+      bowling.frame(10, 0)
+      expect(bowling.frameStatus).toEqual('strike')
+    });
   });
 
   describe('bowl2', function(){
@@ -27,6 +31,10 @@ describe ('Bowling', function(){
     it('returns spare if the total for the first and second bowl is 10', function(){
       bowling.bowl1(7)
       expect(bowling.bowl2(3)).toEqual('spare')
+    });
+    it('changes the frameStatus to spare if spare is bowled', function(){
+      bowling.frame(6, 4)
+      expect(bowling.frameStatus).toEqual('spare')
     });
   });
 
@@ -49,14 +57,6 @@ describe ('Bowling', function(){
     });
     it('won\'t let the user enter a score if score1 is 10', function(){
       expect(function() { bowling.frame(10, 3) }).toThrowError('You may not bowl again in this frame')
-    });
-    it('changes the frameStatus to strike if a strike is bowled', function(){
-      bowling.frame(10, 0)
-      expect(bowling.frameStatus).toEqual('strike')
-    });
-    it('changes the frameStatus to spare if spare is bowled', function(){
-      bowling.frame(6, 4)
-      expect(bowling.frameStatus).toEqual('spare')
     });
   });
 });

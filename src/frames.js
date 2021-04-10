@@ -6,11 +6,7 @@ class Frame {
     this.rolls.push(pins);
   }
   isStrike() {
-    if(this.rolls[0] === 10) { 
-      return true 
-    } else {
-      return false
-    };
+    return (this.rolls[0] === 10 ? true : false)
   }
 }
 

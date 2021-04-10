@@ -66,8 +66,8 @@ class Frame {
     let thirdRoll = this.rolls[2]
     let fourthRoll = ""
 
-    if (!secondRoll) secondRoll = ""
-    if (!thirdRoll) thirdRoll = ""
+    if (typeof secondRoll === "undefined") secondRoll = ""
+    if (typeof thirdRoll === "undefined") thirdRoll = ""
 
     if (this.rolls[0] === 10 && this.rolls[1] === 10 && this.rolls[2] === 10) {
       firstRoll = ""

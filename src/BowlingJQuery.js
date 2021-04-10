@@ -7,9 +7,6 @@ $(document).ready( function() {
   $("#rolls-form").submit( function(event) {
     event.preventDefault();
     let input = $("#input-roll").val()
-    if (isValidInput(input) === false) {
-      return
-    }
     let roll = parseInt(input);
     game.inputRoll(roll)
 
@@ -17,13 +14,15 @@ $(document).ready( function() {
     updateFrameNumber()
     updateFinalScore()
     dropDownInput()
+
+    if (game.isEnded) {
+      endOfGame()
+    }
   })
 
   $("#clear-form").submit( function(event) {
     // event.preventDefault();
   })
-
-
 
   function updateFrameScore() {
     for (let i = 1; i < Object.keys(game.scores).length + 1; i++) {
@@ -38,12 +37,6 @@ $(document).ready( function() {
     }
   }
 
-  function isValidInput(input) {
-    let validNums = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
-    if (!validNums.includes(input)) {
-      return false
-    }
-  }
 
   function updateFrameNumber() {
     const numberDisplay = $("#frame-number-span")
@@ -65,6 +58,11 @@ $(document).ready( function() {
       menuOptions += `<option value="${i}">${i}</option>`
     }
     $('#input-roll').html(menuOptions)
+  }
+
+  function endOfGame() {
+    $('#enter-rolls').text("Game ended!")
+    $('#clear-button').text("Restart")
   }
 
 

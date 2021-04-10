@@ -1,24 +1,28 @@
 body {
   color: #1b9009;
   background-color: #d5fccf;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#card-and-reset {
+  position: absolute;
+  top: 150px;
 }
 
 .grid-container {
+  border: 1px solid black;
   display: grid;
-  grid-template-columns: repeat(30, 50px);
-  grid-template-rows: [row-title-start] 30px [row-frames-start] 30px [row-rolls-start] 30px [row-scores-start] 40px;
-}
-
-.grid-container > div {
-  background-color: #d5fccf;
+  grid-template-columns: repeat(22, 50px);
+  grid-template-rows: [row-title-start] 30px [row-frames-start] 30px [row-rolls-start] 30px [row-scores-start] 30px;
 }
 
 .grid-item {
-  border: 1px solid red;
   background-color: #d5fccf;
 }
 
 #grid-title {
+  /* border-top: 1px solid black;
+  border-left: 1px solid black; */
   grid-column: 1 / 21;
   grid-row: row-title-start;
   /* justify-self: center; */
@@ -26,7 +30,9 @@ body {
 }
 
 .frame-no {
-  border: 1px solid orange;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
   grid-column-start: span 2;
   grid-row: row-frames-start / row-rolls-start;
   /* justify-self: center; */
@@ -34,7 +40,10 @@ body {
 }
 
 .frame-total {
-  border: 1px solid orange;
+  /* border: 1px solid black; */
+  border-left: 1px solid black;
+  /* border-right: 1px solid black; */
+  border-bottom: 1px solid black;
   grid-column-start: span 2;
   grid-row: row-title-start / row-rolls-start;
   /* justify-self: center; */
@@ -42,15 +51,20 @@ body {
 }
 
 .roll {
-  border: 1px solid turquoise;
+  border-left: 1px solid black;
   /* grid-column: 1 / end; */
   grid-row: row-rolls-start;
 }
 
 .total-score {
-  border: 1px solid black;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
   grid-column-start: span 2;
   grid-row: row-scores-start;
   /* padding-left: 10px; */
   text-align: center;
+}
+
+#final-total {
+  font-size: 25px;
 }

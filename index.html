@@ -8,7 +8,7 @@
   <body>
     <h1>Bowling Scorecard</h1>
 
-    <div>
+    <div id="enter-rolls">
       Frame <span id="frame-number-span">1</span>: What's your roll?
       <form id="rolls-form">
         <select id="input-roll">
@@ -17,7 +17,7 @@
       </form>
     </div>
     <br />
-
+    <div id="card-and-reset">
     <div id="scorecard" class="grid-container">
       <div class="grid-item" id="grid-title">Frames</div>
       <div class="grid-item frame-no">1</div>
@@ -77,11 +77,12 @@
       <div class="grid-item total-score" id="fr10total"></div>
       <div class="grid-item total-score" id="final-total"></div>
     </div>
-    <div>
-      <form id="clear-form">
-        <button type="submit" id="clear-button">Clear All</button>
+    <div id="clear">
+      <form id="clear-form" action="index.html">
+        <button type="submit" id="clear-button" >Clear All</button>
       </form>
     </div>
+  </div>
 
     <script src="src/Game.js"></script>
     <script src="src/Frame.js"></script>

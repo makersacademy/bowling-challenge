@@ -6,14 +6,15 @@ Show results: individual rolls (number of pins) - \ for spare X for strike
 show cumulative scores per frame
 refactor the Frame displayResults to have 10th frame separately
 Add a reload/restart/clear button!
+Hide the roll input form at the end
+Stop the scorecard moving up when the form is hidden at the end
 
 
 
 Not done:
 Display a end of game message at the end - special message for perfect/gutter game
-Hide the roll input form at the end
 
-
+For spares, keep the first roll number visible in display
 
 
 Nice to Have:
@@ -47,6 +48,4 @@ input | output
 10, 10, 2 | "", "X", "X", "2"
 
 
-
-Bug: input form remembers last choice, can keep pressing enter? Maybe that rolling 0 repeatedly doesn't work for some reason, second 0 doesn't show up
 

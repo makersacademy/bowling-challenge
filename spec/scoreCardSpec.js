@@ -65,3 +65,18 @@ describe('total', function() {
   })
 })
 
+describe('tenthRound', function() {
+  let scoreCard = new ScoreCard;
+  it('allows for only 10 frames', function() {
+    for(let i = 0; i < 18; i++) {
+      scoreCard.roll(4)
+    }
+    scoreCard.play(10)
+    scoreCard.play(3)
+    scoreCard.play(2)
+
+    expect(scoreCard.frames.length).toEqual(10)
+  })
+})
+
+

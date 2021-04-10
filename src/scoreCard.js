@@ -3,11 +3,14 @@ class ScoreCard {
     this.frames = []
     this.frame = null
   }
+  play(pins) {
+    this.finalFrame() ? this.tenthRound(pins) : this.roll(pins)
+  }
   roll(pins) {
     if(!this.frame) 
     { this.frame = new Frame; 
       this.frame.roll(pins)
-    } else if(this.frame.isStrike()) {
+    } else if(this.frame.isStrike() && !this.finalFrame()) {
       this.frames.push(this.frame)
       this.frame = new Frame; 
       this.frame.roll(pins)
@@ -18,20 +21,13 @@ class ScoreCard {
     }
   }
   total() {
-    let frames = this.frames
-
     return this.frames.map((frame, index) => {
       let bonus = 0 
       if(this.previousTwoFramesAreStrikes(index)) { bonus += frame.rolls[0] + 10 }
-      console.log(`double strike ${bonus}`, this.frames)
       if(this.previousFrameIsStrike(index)) {
         bonus += frame.count()
-        console.log(`strike ${bonus}`, this.frames)
-
     } else if(this.previousFrameIsSpare(index)) {
        bonus += frame.rolls[0] 
-       console.log(`spare ${bonus}`)
-
     }
       let frameTotal = frame.count()
       return frameTotal += bonus
@@ -47,5 +43,24 @@ class ScoreCard {
   previousTwoFramesAreStrikes(index) {
     return (this.frames[index - 2] && this.frames[index - 2].isStrike() && this.previousFrameIsStrike(index))
   }
+  finalFrame() {
+    return this.frames.length > 9
+  }
+  tenthRound(pins) {
+
+  }
+
+//   def tenth_round_no_bonus
+//   @frames.last.rolls.length >= 2 && !@frames.last.is_strike? && !@frames.last.is_spare?
+// end 
+
+// def tenth_round_with_bonus
+//   @frames.last.rolls.length >= 3
+// end 
+
+//   def tenth_round(user_input)
+//   tenth_round_no_bonus || tenth_round_with_bonus ? game_over : @frames.last.roll(user_input) && tenth_round_score + @score
+// end
+
 
 }

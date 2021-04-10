@@ -41,5 +41,24 @@ describe("Bowling", function() {
       bowling.roll(2);
       expect(bowling.frames[0].scores).toEqual([10, 5, 2])
     });
+    it('Updates bonus scores for strikes and spares', () => {
+      bowling.roll(5);
+      bowling.roll(5);
+      bowling.roll(10);
+      bowling.roll(5);
+      bowling.roll(5);
+      expect(bowling.frames[0].scores).toEqual([5, 5, 10])
+      expect(bowling.frames[1].scores).toEqual([10, 5, 5])
+    });
+    it('Updates the score for consecuitive strikes', () => {
+      bowling.roll(10);
+      bowling.roll(10);
+      bowling.roll(10);
+      bowling.roll(10);
+      bowling.roll(10);
+      expect(bowling.frames[0].scores).toEqual([10, 10, 10])
+      expect(bowling.frames[1].scores).toEqual([10, 10, 10])
+      expect(bowling.frames[2].scores).toEqual([10, 10, 10])
+    });
   });
 });

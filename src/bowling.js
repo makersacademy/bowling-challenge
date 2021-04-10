@@ -39,6 +39,13 @@ class Bowling {
       if (previousFrame.isStrike()) {
         previousFrame.scores.push(pins);
       }
+      if (this.currentFrame > 1) {
+        var twoFramesAgo = this.frames[this.currentFrame - 2];
+        if (twoFramesAgo.isStrike()) {
+          twoFramesAgo.scores.push(pins);
+        }
+      }
+      
     }
   }
 

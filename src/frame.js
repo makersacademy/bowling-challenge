@@ -13,6 +13,10 @@ class Frame {
   }
 
   isStrike() {
+    if (this.scores.length < 3) {
     return this.scores[0] == 10;
+    } else {
+      return false;
+    }
   }
 }

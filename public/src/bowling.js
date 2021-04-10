@@ -24,11 +24,14 @@ class Bowling {
   };
 
   frame(score1, score2) {
+    if ((Number(score1) === 10) && (Number(score2) > 0)) {
+      throw new Error('You may not bowl again in this frame');
+    }
     if (this.bowl1(score1) === 'strike') {
       return 'strike'
     }
     else {
       return this.bowl2(score2)
-    }
+    };
   };
 };

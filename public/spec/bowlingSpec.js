@@ -17,8 +17,12 @@ describe ('Bowling', function(){
 
   describe('bowl2', function(){
     it('returns the score for bowl1 and bowl2', function(){
-    bowling.bowl1(3);
-    expect(bowling.bowl2(5)).toEqual([3, 5])
+      bowling.bowl1(3);
+      expect(bowling.bowl2(5)).toEqual([3, 5])
+    });
+    it('returns another score for bowl1 and bowl2', function(){
+      bowling.bowl1(5);
+      expect(bowling.bowl2(2)).toEqual([5, 2])
     });
     it('returns spare if the total for the first and second bowl is 10', function(){
       bowling.bowl1(7)

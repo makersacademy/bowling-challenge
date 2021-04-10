@@ -18,7 +18,8 @@ class Bowling {
         return 'spare'
       }
     else {
-      return [3, score]
+      this.frame.push(score)
+      return this.frame
     };
   };
 };

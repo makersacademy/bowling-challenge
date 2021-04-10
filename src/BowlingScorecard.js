@@ -1,20 +1,24 @@
+const Frame = require('./Frame.js');
+
 class BowlingScorecard {
+
   constructor() {
     this.frame = 1
-    this.first_roll = null
-    this.second_roll = null
+    this.frames = [new Frame(this.frame)]
   }
 
   enterRoll(score) {
     if (this._isInvalidScore(score)) return "Invalid score entered, score must be between 0 and 10.";
-
-    this._assignScore(score)
-
+    this._currentFrame().enterRoll(score)
+    this._checkFrameOver()
     return score
   }
 
   generateScorecardInfo() {
-    return [{ frame: this.frame, first_roll: this.first_roll, second_roll: this.second_roll }];
+    let results = this.frames.map(function(element) {
+      return { frame: element.frame, firstRoll: element.firstRoll, secondRoll: element.secondRoll };
+    });
+    return results
   }
 
   _isInvalidScore(score) {
@@ -24,12 +28,15 @@ class BowlingScorecard {
     return false
   }
 
-  _assignScore(score) {
-    if (this.first_roll === null) {
-      this.first_roll = score
-    } else {
-      this.second_roll = score
+  _checkFrameOver() {
+    if (this._currentFrame().isComplete()) {
+      this.frame++;
+      this.frames.push(new Frame(this.frame));
     }
+  }
+
+  _currentFrame() {
+    return this.frames[this.frames.length - 1]
   }
 }
 

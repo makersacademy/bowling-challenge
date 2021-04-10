@@ -39,7 +39,23 @@ describe("BowlingScorecard", function() {
       expect(testScorecard.generateScorecardInfo()).toEqual(SECOND_THROW_SCORECARD)
     });
 
-    FIRST_THROW_SCORECARD = [{ frame: 1, first_roll: 5, second_roll: null }]
-    SECOND_THROW_SCORECARD = [{ frame: 1, first_roll: 5, second_roll: 4 }]
+    it("tells you your scores so far, after 4th throw", function() {
+      testScorecard.enterRoll(5)
+      testScorecard.enterRoll(4)
+      testScorecard.enterRoll(4)
+      testScorecard.enterRoll(4)
+      expect(testScorecard.generateScorecardInfo()).toEqual(FOURTH_THROW_SCORECARD)
+    });
+
+    FIRST_THROW_SCORECARD = [{ frame: 1, firstRoll: 5, secondRoll: null }]
+    SECOND_THROW_SCORECARD = [
+      { frame: 1, firstRoll: 5, secondRoll: 4 },
+      { frame: 2, firstRoll: null, secondRoll: null }
+    ]
+    FOURTH_THROW_SCORECARD = [
+      { frame: 1, firstRoll: 5, secondRoll: 4 },
+      { frame: 2, firstRoll: 4, secondRoll: 4 },
+      { frame: 3, firstRoll: null, secondRoll: null }
+    ]
   });
 });

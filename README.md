@@ -11,7 +11,7 @@
 
 ---------
 ### How to use
-1. Command line: `open index.html`
+1. Command line: `open index.html` or url: https://shacheng.co.uk/bowling-challenge/
 2. Follow instructions on screen
 
 ---------

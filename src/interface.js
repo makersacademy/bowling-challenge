@@ -85,8 +85,10 @@ function nextRoll(pins) {
 function endGame() {
   $(".roll").slideUp();
   $(".pins-img").remove();
-  if (bowling.totalScore===300) {showKingpin();}
-  popGameOverMsg();
+  setTimeout(() => {
+    if (bowling.totalScore===300) {showKingpin();}
+    popGameOverMsg();
+  }, 300);
 }
 
 function popGameOverMsg() {

@@ -51,14 +51,28 @@ describe("Bowling", function() {
       expect(bowling.frames[1].scores).toEqual([10, 5, 5])
     });
     it('Updates the score for consecuitive strikes', () => {
-      bowling.roll(10);
-      bowling.roll(10);
-      bowling.roll(10);
-      bowling.roll(10);
-      bowling.roll(10);
+      for(let i = 0; i < 5; i++) {
+        bowling.roll(10);
+      }
       expect(bowling.frames[0].scores).toEqual([10, 10, 10])
       expect(bowling.frames[1].scores).toEqual([10, 10, 10])
       expect(bowling.frames[2].scores).toEqual([10, 10, 10])
+    });
+    it('Scoring a spare on the tenth frame does not end the frame', () => {
+      for(let i = 0; i < 9; i++) {
+        bowling.roll(10);
+      }
+      bowling.roll(5);
+      bowling.roll(5);
+      bowling.roll(5);
+      // 9 is the 10th index of frames
+      expect(bowling.frames[9].scores).toEqual([5, 5, 5])
+    });
+    it('Scoring a strike on the second roll in tenth does not end the frame', () => {
+      for(let i = 0; i < 12; i++) {
+        bowling.roll(10);
+      }
+      expect(bowling.frames[9].scores).toEqual([10, 10, 10])
     });
   });
 });

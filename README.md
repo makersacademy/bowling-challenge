@@ -16,10 +16,13 @@
 
 ---------
 ### How to test
-Command line: `open SpecRunner.html`
+1. git clone this repository
+2. command line `npm install`
+3. command line `npm run test`
 
 ---------
 ### Overview
-- Used jasmine and jQuery from CDN
-- Functions and tests are fully implemented
+- Use jQuery from CDN
+- Use jest for test
+- Functions and tests are fully implemented, test coverage: 98.41%
 - Some style and animation

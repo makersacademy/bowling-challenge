@@ -5,3 +5,33 @@ html { font-family: 'Titillium Web', sans-serif; }
 h1, h2, h3, h4 {
   font-family: 'Titillium Web', sans-serif;
 }
+
+/* table stuff */
+
+#bowling th, #bowling td {
+  padding: 8px;
+  border: 1px solid rgb(179, 172, 172);
+  width: 1%;
+  border-radius: 2px;
+}
+
+#bowling th:hover, #bowling td:hover {
+  border: 1px solid rgb(46, 44, 44);
+}
+
+#bowling {
+  max-width: auto;
+  border: 1px solid rgb(179, 172, 172);
+  border-radius: 2px;
+}
+
+/* button stuff */
+
+button {
+  border: 1px solid rgb(179, 172, 172);
+  border-radius: 2px;
+}
+
+button:hover {
+  border: 1px solid rgb(46, 44, 44);
+}

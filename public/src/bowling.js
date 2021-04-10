@@ -1,6 +1,7 @@
 class Bowling {
   constructor() {
     this.frameScore = []
+    this.frameStatus = ""
   }
 
   bowl1(score) {
@@ -31,7 +32,9 @@ class Bowling {
       return this.bowl2(score2)
     }
     else {
+      this.frameStatus = 'strike'
       return this.bowl1(score1)
+
     };
   };
 };

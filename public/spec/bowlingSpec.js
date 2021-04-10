@@ -50,5 +50,9 @@ describe ('Bowling', function(){
     it('won\'t let the user enter a score if score1 is 10', function(){
       expect(function() { bowling.frame(10, 3) }).toThrowError('You may not bowl again in this frame')
     });
+    it('changes the frameStatus to strike if a strike is bowled', function(){
+      bowling.frame(10, 0)
+      expect(bowling.frameStatus).toEqual('strike')
+    });
   });
 });

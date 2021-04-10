@@ -95,7 +95,7 @@ function popGameOverMsg() {
   $(".roll").before(`
     <div class="game-over">
       <h1 class="anim">GAME OVER</h1>
-      <h2>Total Score: ${bowling.totalScore}</h2>
+      <h4>Total Score: ${bowling.totalScore}</h4>
     </div>
   `);
 }

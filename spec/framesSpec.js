@@ -12,4 +12,12 @@ describe('frames', function() {
       expect(frame.rolls).toEqual([3, 5])
     });
   });
+
+  describe('isStrike', function() {
+    it ('should know when a roll is a strike', function() {
+      frame.roll(10)
+
+      expect(frame.isStrike()).toEqual(true)
+    })
+  })
 });

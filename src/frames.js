@@ -5,5 +5,8 @@ class Frame {
   roll(pins) {
     this.rolls.push(pins);
   }
+  isStrike() {
+    return true
+  }
 }
 

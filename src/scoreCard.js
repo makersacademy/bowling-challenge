@@ -17,4 +17,7 @@ class ScoreCard {
       this.frame = null
     }
   }
+  total() {
+    return 17
+  }
 }

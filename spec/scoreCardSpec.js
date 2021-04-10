@@ -24,3 +24,17 @@ describe('roll', function() {
   })
 })
 
+describe('total', function() {
+  let scoreCard = new ScoreCard;
+
+  it('should be able to calculate the total score', function() {
+    scoreCard.roll(3)
+    scoreCard.roll(6)
+    scoreCard.roll(1)
+    scoreCard.roll(7)
+
+    expect(scoreCard.total()).toEqual(17)
+  })
+})
+
+

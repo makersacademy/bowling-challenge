@@ -19,6 +19,15 @@ $(document).ready( function() {
     dropDownInput()
   })
 
+  $("#clear-form").submit( function(event) {
+    event.preventDefault();
+    console.log("hello");
+
+
+  })
+
+
+
   function updateFrameScore() {
     for (let i = 1; i < Object.keys(game.scores).length + 1; i++) {
       $(`#fr${i}total`).text(game.cumulScores[`frame_${i}`]);

@@ -58,7 +58,6 @@ class Frame {
 
       return [`${firstRoll}`, `${secondRoll}`]
     }
-
   }
 
   displayResults10thFrame() {
@@ -93,7 +92,6 @@ class Frame {
       firstRoll = ""
       secondRoll = "/"
     }
-
     return [`${firstRoll}`, `${secondRoll}`, `${thirdRoll}`, `${fourthRoll}`]
   }
 

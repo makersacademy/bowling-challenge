@@ -1,3 +1,5 @@
+import Bowling from './bowling.js';
+
 var bowling;
 
 $("#start-game").click(() => {
@@ -26,7 +28,7 @@ function refresh() {
   setRollArea(bowling.currentFrame.pinsLeft);
   $(".scorecard-body").empty();
   let accumScore = 0;
-  for (i = 0; i < bowling.frames.length; i++) {
+  for (let i = 0; i < bowling.frames.length; i++) {
     let frame = bowling.frames[i];
     accumScore += frame.score;
     $(".scorecard-body").append(`
@@ -50,7 +52,7 @@ function setRollArea(pinsLeft) {
 }
 
 function addRollButtons(pinsLeft) {
-  for ( i = 0; i <= pinsLeft; i++ ) {
+  for (let i = 0; i <= pinsLeft; i++) {
     $(".roll").append(`<button class="roll-choice" id="${i}">${i}</button>`);
   }
   addButtonListener();
@@ -61,7 +63,7 @@ function addPinsImages(pinsLeft) {
   <div class="pins-img">
   </div>
   `);
-  for ( i = 0; i < pinsLeft; i++ ) {
+  for (let i = 0; i < pinsLeft; i++) {
     $(".pins-img").append('<img class="pin-img" src="images/bowling-pin.png">');
   }
 }

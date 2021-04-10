@@ -1,3 +1,6 @@
+import Frame from './frame.js';
+
+let frame;
 describe("Frame", () => {
   beforeEach(() => {
     frame = new Frame();

@@ -1,4 +1,4 @@
-class Frame {
+export default class Frame {
   constructor() {
     this.rolls = [];
     this.pinsLeft = 10;
@@ -7,7 +7,7 @@ class Frame {
   }
 
   roll(pins, bonus=false) {
-    if (this.pinsLeft < pins) {throw "Not enough pins left"};
+    if (this.pinsLeft < pins) {throw "Not enough pins left"}
     this.rolls.push(pins);
     this.score += pins;
     if (bonus===false) {
@@ -28,5 +28,4 @@ class Frame {
     this.score += num;
   }
 }
-
 

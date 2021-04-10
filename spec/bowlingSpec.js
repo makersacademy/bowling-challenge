@@ -1,3 +1,6 @@
+import Bowling from './bowling.js';
+
+let bowling;
 describe("Bowling", () => {
   beforeEach(() => {
     bowling = new Bowling();
@@ -26,7 +29,7 @@ describe("Bowling", () => {
   });
 
   it("gameStatus change from true to false after 10 frames of strike with 2 bonus roll", () => {
-    for (i = 0; i < 11; i++) {
+    for (let i = 0; i < 11; i++) {
       bowling.roll(10);
       expect(bowling.gameStatus).toEqual(true);
     }
@@ -35,7 +38,7 @@ describe("Bowling", () => {
   });
 
   it("Score 300 after 10 frames of strike with 2 bonus roll", () => {
-    for (i = 0; i < 12; i++) {
+    for (let i = 0; i < 12; i++) {
       bowling.roll(10);
     }
     expect(bowling.totalScore).toEqual(300);

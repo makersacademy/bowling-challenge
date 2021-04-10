@@ -1,0 +1,29 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Scorecard",
+  "main": "interface.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "eslint-plugin-jasmine": "^4.1.2",
+    "eslint-plugin-jquery": "^1.5.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.24.0"
+  },
+  "scripts": {
+    "lint": "eslint ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cspoppuppy/bowling-challenge.git"
+  },
+  "author": "Sha Cheng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cspoppuppy/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/cspoppuppy/bowling-challenge#readme"
+}

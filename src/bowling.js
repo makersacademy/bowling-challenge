@@ -1,4 +1,6 @@
-class Bowling {
+import Frame from './frame.js';
+
+export default class Bowling {
   constructor() {
     this.frames = [];
     this.gameStatus = true;
@@ -65,7 +67,7 @@ class Bowling {
       this.frames[this.frames.length-1].rolls.length === 2) && this.frames.length <= 9)) {
       return true;
     } else {
-    return false;
+      return false;
     }
   }
 

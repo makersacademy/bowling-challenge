@@ -48,11 +48,18 @@ describe('isSpare', function() {
 
 describe('count', function() {
   let frame = new Frame;
+  let anotherFrame = new Frame;
 
   it ('can count up the pins rolled per frame', function() {
     frame.roll(4)
     frame.roll(3)
 
     expect(frame.count()).toEqual(7)
+  })
+  it ('can count up the pins rolled per frame', function() {
+    anotherFrame.roll(4)
+    anotherFrame.roll(5)
+
+    expect(anotherFrame.count()).toEqual(9)
   })
 })

@@ -4,7 +4,7 @@ $(document).ready( function() {
   updateFrameScore()
   dropDownInput()
 
-  $("#rolls-form").submit( function() {
+  $("#rolls-form").submit( function(event) {
     event.preventDefault();
     let input = $("#input-roll").val()
     if (isValidInput(input) === false) {
@@ -20,10 +20,7 @@ $(document).ready( function() {
   })
 
   $("#clear-form").submit( function(event) {
-    event.preventDefault();
-    console.log("hello");
-
-
+    // event.preventDefault();
   })
 
 

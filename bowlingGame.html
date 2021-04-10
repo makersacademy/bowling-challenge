@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="./css/styleSheet.css">
+  <script src="./node_modules/jquery/dist/jquery.js"></script>
+  <script src="./UI/interface.js"></script>
+  <script src="Jasmine/jasmine-standalone-3.7.1 (1)/src/bowlingGame.js"></script>
+  <script src="Jasmine/jasmine-standalone-3.7.1 (1)/src/scorecard.js"></script>
+  <title>Bowling Game</title>
+</head>
+<body>
+  <header>
+    <h1> <img src="https://www.pngrepo.com/png/155347/512/bowling.png"> Obviously, You're Not a Golfer </h1>
+    <p>10 pin bowling</p>
+  </header>
+  <div class="rollsubmissions">
+    <div>
+      <form id="submitRoll1">
+      <label for="fname">Roll 1 score:</label><br>
+      <input type="number" max="10" id="rollScore1">
+      <input type="submit" id="submit" value="Go!">
+      </form>
+    </div>
+    <div>
+      <form id="submitRoll2">
+      <label for="lname">Roll 2 score:</label><br>
+      <input type="number" max="10" id="rollScore2">
+      <input type="submit" id="submit" value="Go!">
+      </form>
+    </div>
+    <div>
+      <form id="submitRoll3">
+      <label for="lname">Roll 3 score:</label><br>
+      <input type="number" max="10" id="rollScore3">
+      <input type="submit" id="submit" value="Go!">
+      </form>
+    </div>
+  </div>
+
+  <div class="results">
+    <div>
+      <p id="Roll1Result"><p>
+    </div>
+    <div>
+      <p id="Roll2Result"><p>
+    </div>
+    <div>
+      <p id="Roll3Result"><p>
+    </div>
+  </div>
+
+
+</body>
+</html>

@@ -68,7 +68,7 @@ A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 str
 [ ]
 [ ]
 [ ]
-[ ]
+[ ] Roll 3 can be run at the end of frame 9 (frame number updates at the end of roll2)
 
 
 

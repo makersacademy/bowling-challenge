@@ -6,6 +6,7 @@ class Bowling {
 
   bowl1(score) {
     if (score === 10)  {
+      this.frameStatus = 'strike'
       return 'strike'
     }
     else {
@@ -16,6 +17,7 @@ class Bowling {
 
   bowl2(score) {
       if (Number(this.frameScore) + Number(score) === 10) {
+        this.frameStatus = 'spare'
         return 'spare'
       }
     else {
@@ -32,9 +34,7 @@ class Bowling {
       return this.bowl2(score2)
     }
     else {
-      this.frameStatus = 'strike'
       return this.bowl1(score1)
-
     };
   };
 };

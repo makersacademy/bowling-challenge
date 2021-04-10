@@ -54,5 +54,9 @@ describe ('Bowling', function(){
       bowling.frame(10, 0)
       expect(bowling.frameStatus).toEqual('strike')
     });
+    it('changes the frameStatus to spare if spare is bowled', function(){
+      bowling.frame(6, 4)
+      expect(bowling.frameStatus).toEqual('spare')
+    });
   });
 });

@@ -6,7 +6,7 @@ body {
 .grid-container {
   display: grid;
   grid-template-columns: repeat(30, 50px);
-  grid-template-rows: [row-title-start] auto [row-frames-start] auto [row-rolls-start] auto [row-scores-start] 40px;
+  grid-template-rows: [row-title-start] 30px [row-frames-start] 30px [row-rolls-start] 30px [row-scores-start] 40px;
 }
 
 .grid-container > div {

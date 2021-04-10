@@ -85,8 +85,21 @@ class Game {
       return 10
     } else if (this.frames[this.frames.length - 1].isCompleted()) {
       return 10
-    } else {
+    } else if (this.frameNumber < 10) {
       return (10 - this.frames[this.frames.length - 1].rolls[0])
+    } else if (this.frameNumber === 10) {
+      return this.remainingPins10thFrame()
+    }
+  }
+
+  remainingPins10thFrame() {
+    let frame10 = this.frames[9]
+    if (frame10.rolls[0] === 10 || (frame10.rolls[0] === 10 && frame10.rolls[1] === 10)) {
+      return 10
+    } else if (frame10.rolls[0] + frame10.rolls[1] === 10) {
+      return 10
+    } else {
+      return 10 - frame10.rolls[0]
     }
   }
 

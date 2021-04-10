@@ -114,6 +114,37 @@ describe("Game", function() {
         game.inputRoll(7)
         expect(game.remainingPins()).toEqual(3)
       })
+
+      describe("with special 10th frame rules", function () {
+        beforeEach(function () {
+          rolls = [10, 10, 10, 10, 10, 10, 10, 10, 10]
+          rolls.forEach( (pins) => {
+            game.inputRoll(pins)
+          })
+        })
+
+        it("an extra 10 pins if a spare", function () {
+          game.inputRoll(3)
+          game.inputRoll(7)
+          expect(game.remainingPins()).toEqual(10)
+        })
+
+        it("an extra 10 pins if a strike", function () {
+          game.inputRoll(10)
+          expect(game.remainingPins()).toEqual(10)
+        })
+
+        it("an extra 10 pins if two strikes", function () {
+          game.inputRoll(10)
+          game.inputRoll(10)
+          expect(game.remainingPins()).toEqual(10)
+        })
+
+        it("normal remainder after first non-strike roll", function () {
+          game.inputRoll(3)
+          expect(game.remainingPins()).toEqual(7)
+        })
+      })
     })
 
 })

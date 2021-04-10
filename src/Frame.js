@@ -52,7 +52,6 @@ class Frame {
         firstRoll = ""
         secondRoll = "X"
       } else if (this.rolls[0] + this.rolls[1] === 10) {
-        firstRoll = ""
         secondRoll = "/"
       }
 
@@ -84,12 +83,12 @@ class Frame {
     } else if ((this.rolls[0] === 10) && (this.rolls[1] + this.rolls[2] === 10)) {
       firstRoll = ""
       secondRoll = "X"
-      thirdRoll = "/"
+      thirdRoll = this.rolls[1]
+      fourthRoll = "/"
     } else if (this.rolls[0] === 10 ) {
       firstRoll = ""
       secondRoll = "X"
     } else if (this.rolls[0] + this.rolls[1] === 10) {
-      firstRoll = ""
       secondRoll = "/"
     }
     return [`${firstRoll}`, `${secondRoll}`, `${thirdRoll}`, `${fourthRoll}`]

@@ -77,7 +77,7 @@ describe("Frame", function() {
     it("'/' for a spare", function () {
       frame.addRoll(1)
       frame.addRoll(9)
-      expect(frame.displayResults()).toEqual(["", "/"])
+      expect(frame.displayResults()).toEqual(["1", "/"])
     })
 
     it("the actual numbers if no strike/spare", function () {
@@ -117,7 +117,7 @@ describe("Frame", function() {
         frame.addRoll(2)
         frame.addRoll(8)
         frame.addRoll(3)
-        expect(frame.displayResults()).toEqual(["", "/", "3", ""])
+        expect(frame.displayResults()).toEqual(["2", "/", "3", ""])
       })
 
       it("strike then strike", function () {
@@ -137,7 +137,7 @@ describe("Frame", function() {
         frame.addRoll(10)
         frame.addRoll(3)
         frame.addRoll(7)
-        expect(frame.displayResults()).toEqual(["", "X", "/", ""])
+        expect(frame.displayResults()).toEqual(["", "X", "3", "/"])
       })
     })
   })

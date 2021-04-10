@@ -1,21 +1,20 @@
 ### Interface plan
-
+Done:
 State which frame it is
 Drop down menu for rolls - could change displayed numbers depending on previous roll???
-or have a check to not allow extra pins falling within one frame
-
 Show results: individual rolls (number of pins) - \ for spare X for strike
 show cumulative scores per frame
+refactor the Frame displayResults to have 10th frame separately
 
 
+
+Not done:
 Display a end of game message at the end
 
 Add a reload/restart/clear button!
 
 
-Need methods:
-frameNumber()
-remainingPins()
+
 
 
 
@@ -47,4 +46,4 @@ input | output
 
 
 Bug: input form remembers last choice, can keep pressing enter
-Bug: frame 10 number of pins available not correct
+

@@ -41,6 +41,27 @@ class Frame {
   }
 
   displayResults() {
+    if (this.number === 10) {
+      return this.displayResults10thFrame()
+    } else {
+      let firstRoll = this.rolls[0]
+      let secondRoll = this.rolls[1]
+      if (!secondRoll) secondRoll = ""
+
+      if (this.rolls[0] === 10 ) {
+        firstRoll = ""
+        secondRoll = "X"
+      } else if (this.rolls[0] + this.rolls[1] === 10) {
+        firstRoll = ""
+        secondRoll = "/"
+      }
+
+      return [`${firstRoll}`, `${secondRoll}`]
+    }
+
+  }
+
+  displayResults10thFrame() {
     let firstRoll = this.rolls[0]
     let secondRoll = this.rolls[1]
     let thirdRoll = this.rolls[2]
@@ -73,11 +94,7 @@ class Frame {
       secondRoll = "/"
     }
 
-    if (this.number < 10) {
-      return [`${firstRoll}`, `${secondRoll}`]
-    } else {
-      return [`${firstRoll}`, `${secondRoll}`, `${thirdRoll}`, `${fourthRoll}`]
-    }
+    return [`${firstRoll}`, `${secondRoll}`, `${thirdRoll}`, `${fourthRoll}`]
   }
 
 }

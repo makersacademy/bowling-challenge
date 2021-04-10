@@ -2,6 +2,7 @@ class Bowling {
   constructor() {
     this.frameScore = []
     this.frameStatus = ""
+    this.score = []
   }
 
   bowl1(score) {

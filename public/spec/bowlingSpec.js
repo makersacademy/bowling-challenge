@@ -48,6 +48,12 @@ describe ('Bowling', function(){
     });
   });
 
+  describe('score', function(){
+    it('starts as an empty array', function(){
+      expect(bowling.score).toEqual([])
+    });
+  });
+
   describe('frame', function(){
     it('returns the frameScore array', function(){
       expect(bowling.frame(3, 5)).toEqual([3, 5])
@@ -59,4 +65,8 @@ describe ('Bowling', function(){
       expect(function() { bowling.frame(10, 3) }).toThrowError('You may not bowl again in this frame')
     });
   });
+
+  // describe('bonus', function (){
+  //   it('')
+  // });
 });

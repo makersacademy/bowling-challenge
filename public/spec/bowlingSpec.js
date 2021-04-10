@@ -76,6 +76,12 @@ describe ('Bowling', function(){
       expect(bowling.prevFrame).toEqual("")
     });
   });
+
+  describe('frameStatus', function(){
+    it('initializes as an empty string', function(){
+        expect(bowling.frameStatus).toEqual("")
+    });
+  });
   // describe('bonus', function (){
   //   it('')
   // });

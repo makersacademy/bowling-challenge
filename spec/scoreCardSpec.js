@@ -26,6 +26,7 @@ describe('roll', function() {
 
 describe('total', function() {
   let scoreCard = new ScoreCard;
+  let newScore = new ScoreCard;
 
   it('should be able to calculate the total score', function() {
     scoreCard.roll(3)
@@ -42,6 +43,18 @@ describe('total', function() {
 
     expect(scoreCard.total()).toEqual(43)
   })
+  it('can calculate the score with a spare', function() {
+    
+  })
+
+//   it 'should calculate a spare as well' do
+//   bowl.roll(9)
+//   bowl.roll(1)
+//   bowl.roll(5)
+//   bowl.roll(3)
+
+//   expect(bowl.total).to eq 23
+// end
 })
 
 

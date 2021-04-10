@@ -52,6 +52,11 @@ describe ('Bowling', function(){
     it('starts as an empty array', function(){
       expect(bowling.score).toEqual([])
     });
+    it('takes a running total of the score', function (){
+      bowling.frame(4, 3)
+      bowling.frame(2, 7)
+      expect(bowling.score).toEqual([4, 3, 2, 7])
+    });
   });
 
   describe('frame', function(){

@@ -32,6 +32,7 @@ class Bowling {
       throw new Error('You may not bowl again in this frame');
     }
     if (this.bowl1(score1) != 'strike') {
+      this.score.push(score1, score2)
       return this.bowl2(score2)
     }
     else {

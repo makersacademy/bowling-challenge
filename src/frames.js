@@ -9,11 +9,7 @@ class Frame {
     return (this.rolls[0] === 10 ? true : false)
   }
   isSpare() {
-    if(this.rolls.length === 2 && this.rolls[0] + this.rolls[1] === 10) {
-      return true
-    } else {
-      return false
-    };
+    return (this.rolls.length == 2 && this.rolls[0] + this.rolls[1] === 10 ? true : false)
   }
 }
 

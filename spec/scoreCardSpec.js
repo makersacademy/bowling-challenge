@@ -27,6 +27,7 @@ describe('roll', function() {
 describe('total', function() {
   let scoreCard = new ScoreCard;
   let newScore = new ScoreCard;
+  let doublesStrike = new ScoreCard;
 
   it('should be able to calculate the total score', function() {
     scoreCard.roll(3)
@@ -51,6 +52,16 @@ describe('total', function() {
 
     expect(newScore.total()).toEqual(27)
   })
-})
+  it ('knows what to do with a double strike', function() {
+    doublesStrike.roll(10)
+    doublesStrike.roll(10)
+    doublesStrike.roll(4)
+    doublesStrike.roll(2)
+    doublesStrike.roll(2)
+    doublesStrike.roll(1)
 
+
+    expect(doublesStrike.total()).toEqual(49)
+  })
+})
 

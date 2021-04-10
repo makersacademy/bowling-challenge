@@ -24,7 +24,11 @@ class Bowling {
   };
 
   frame(score1, score2) {
-    this.bowl1(score1)
-    return this.bowl2(score2)
+    if (this.bowl1(score1) === 'strike') {
+      return 'strike'
+    }
+    else {
+      return this.bowl2(score2)
+    }
   };
 };

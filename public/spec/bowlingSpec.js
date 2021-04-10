@@ -44,5 +44,8 @@ describe ('Bowling', function(){
     it('returns the frameScore array', function(){
       expect(bowling.frame(3, 5)).toEqual([3, 5])
     });
+    it('ends frame if bowl1 is a strike', function(){
+      expect(bowling.frame(10, 0)).toEqual('strike')
+    });
   });
 });

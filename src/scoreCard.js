@@ -2,6 +2,7 @@ class ScoreCard {
   constructor(frames, frame, score) {
     this.frames = []
     this.frame = null
+    this.lastFrame = null
   }
   play(pins) {
     return (this.finalFrame() ? this.tenthRound(pins) : this.roll(pins))
@@ -45,26 +46,36 @@ class ScoreCard {
     return (this.frames[index - 2] && this.frames[index - 2].isStrike() && this.previousFrameIsStrike(index))
   }
   finalFrame() {
-    return this.frames.length > 9
+    return this.frames.length === 9
   }
   tenthRound(pins) {
-    this.frame.roll(pins)
-    let totalScore = this.frame.count() + this.total()
-    return totalScore
+    if(!this.lastFrame) { 
+      this.lastFrame = new Frame; 
+      this.lastFrame.roll(pins)
+    } else if (this.tenthRoundNoBonus()) {
+      this.lastFrame.roll(pins)
+      let finalScore = this.total() + this.tenthRoundNoBonusScore()
+      this.frames.push(this.lastFrame)  
+      return `Game ended! Your score was ${finalScore}`
+    } else if (this.tenthRoundWithBonus()) {
+      this.lastFrame.roll(pins)
+      let finalScore = this.total() + this.tenthRoundWithBonusScore()
+      this.frames.push(this.lastFrame)
+      return `Game ended! Your score was ${finalScore}`
+    } else {
+      this.lastFrame.roll(pins)
+    }
   }
-
-
-//   def tenth_round_no_bonus
-//   @frames.last.rolls.length >= 2 && !@frames.last.is_strike? && !@frames.last.is_spare?
-// end 
-
-// def tenth_round_with_bonus
-//   @frames.last.rolls.length >= 3
-// end 
-
-//   def tenth_round(user_input)
-//   tenth_round_no_bonus || tenth_round_with_bonus ? game_over : @frames.last.roll(user_input) && tenth_round_score + @score
-// end
-
-
+  tenthRoundNoBonus() {
+    return (this.lastFrame.rolls.length >= 1 && !this.lastFrame.isSpare() && !this.lastFrame.isStrike())
+  }
+  tenthRoundWithBonus() {
+    return (this.lastFrame.rolls.length === 2)
+  }
+  tenthRoundWithBonusScore() {
+    return (this.lastFrame.rolls[0] + this.lastFrame.rolls[1] + this.lastFrame.rolls[2])
+  }
+  tenthRoundNoBonusScore() {
+    return (this.lastFrame.rolls[0] + this.lastFrame.rolls[1])
+  }
 }

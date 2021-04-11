@@ -86,7 +86,7 @@ describe('tenthRound', function() {
       scoreCard.play(4)
     }
 
-    expect(scoreCard.play(3)).toEqual(79)
+    expect(scoreCard.play(3)).toEqual('Game ended! Your score was 79')
   })
 })
 describe('tenthRoundStrike', function() {
@@ -98,9 +98,20 @@ describe('tenthRoundStrike', function() {
     scoreCard.play(10)
     scoreCard.play(3)
 
-    expect(scoreCard.play(2)).toEqual(87)
+    expect(scoreCard.play(2)).toEqual('Game ended! Your score was 87')
   })
 })
 
+describe('Tenth round without a third roll', function() {
+  let scoreCard = new ScoreCard;
+  it('wont allow a third roll in a tenth round without spare or strike', function() {
+    for(let i = 0; i < 18; i++) {
+      scoreCard.play(4)
+    }
+    scoreCard.play(4)
+
+    expect(scoreCard.play(4)).toEqual('Game ended! Your score was 80')
+  })
+})
 
 

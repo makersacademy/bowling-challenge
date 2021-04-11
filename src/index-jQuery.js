@@ -31,7 +31,11 @@ $( document ).ready(function() {
       if (element.firstRoll === "" && element.secondRoll === "") return;
 
       console.log(element);
-      $('#the-current-score-div').append(`<p class="scorecard-row">${element.frame} | ${element.firstRoll} | ${element.secondRoll} | ${element.total}</p>`);
+      if (element.frame === 10) {
+        $('#the-current-score-div').append(`<p class="scorecard-row">${element.frame} | ${element.firstRoll} | ${element.secondRoll} | ${element.thirdRoll} | ${element.total}</p>`);
+      } else {
+        $('#the-current-score-div').append(`<p class="scorecard-row">${element.frame} | ${element.firstRoll} | ${element.secondRoll} | ${element.total}</p>`);
+      }
       counter++
     });
     for (counter; counter <= 10; counter++) {

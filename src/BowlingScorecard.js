@@ -33,6 +33,11 @@ class BowlingScorecard {
       let firstRoll = thisIs._tidyDisplay(element.firstRoll, element.strike)
       let secondRoll = thisIs._tidyDisplay(element.secondRoll, element.strike, element.spare)
 
+      if (element.frame === 10) {
+        let thirdRoll = thisIs._tidyDisplay(element.thirdRoll, element.strike, element.spare, true)
+        return { frame: element.frame, firstRoll: firstRoll, secondRoll: secondRoll, thirdRoll: thirdRoll, strike: element.strike, spare: element.spare, total: element.total };
+      }
+
       return { frame: element.frame, firstRoll: firstRoll, secondRoll: secondRoll, strike: element.strike, spare: element.spare, total: element.total };
     });
     return results
@@ -46,6 +51,18 @@ class BowlingScorecard {
   }
 
   _maxRoll() {
+    if (this._currentFrame().isFirstRollComplete() && this.frame === 10) {
+      if (this._currentFrame().secondRoll === null) {
+        return 10
+      }
+    } else if (this.frame === 10 && this._currentFrame.firstRoll !== null) {
+      if (this._currentFrame().secondRoll === 10) {
+        return 10
+      } else {
+        return 10 - this._currentFrame().secondRoll
+      }
+    }
+
     let roll = this._currentFrame().firstRoll
     if (roll !== null) return (10 - roll)
 
@@ -53,7 +70,9 @@ class BowlingScorecard {
   }
 
   _checkFrameOver() {
+    console.log("test" + this._currentFrame().total)
     this._updateTotal()
+    console.log("test" + this._currentFrame().total)
 
     if (this._currentFrame().isComplete() && this.frame === 10) return "EndGame";
 
@@ -67,9 +86,11 @@ class BowlingScorecard {
     return this.frames[this.frames.length - 1]
   }
 
-  _tidyDisplay(roll, strike, spare = false) {
+  _tidyDisplay(roll, strike, spare = false, isThirdRoll = false) {
     if (roll === null) {
       return ("");
+    } else if (isThirdRoll) {
+      return roll
     } else if (strike) {
       return 'X';
     } else if (spare) {
@@ -85,6 +106,11 @@ class BowlingScorecard {
 
   _applyBonus() {
     if (this.frame === 1) return;
+    console.log(this._currentFrame().total)
+    console.log(this.currentScore())
+    if (this.frame === 10 && this._currentFrame().thirdRoll !== null) return;
+    console.log(this._currentFrame().total)
+    console.log(this.currentScore())
 
     let previousFrame = this.frames[this.frames.length - 2];
 

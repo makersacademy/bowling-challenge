@@ -25,6 +25,7 @@ describe("BowlingScorecard", function() {
 
     it("receives a second roll from the user which is too high a number and it rejects it as an invalid roll", function() {
       testScorecard.enterRoll(6)
+
       expect(testScorecard.enterRoll(6)).toEqual("Invalid score entered, score must be between 0 and 4.");
     });
 
@@ -34,6 +35,7 @@ describe("BowlingScorecard", function() {
         testScorecard.enterRoll(4)
         i++
       }
+
       expect(testScorecard.enterRoll(4)).toEqual("End of Game");
     });
 
@@ -118,6 +120,30 @@ describe("BowlingScorecard", function() {
       expect(testScorecard.generateScorecardInfo()).toEqual(DOUBLE_STRIKE_BONUS_THROW_SCORECARD)
     })
 
+    it("gives you a full game with 3 frames in 10th frame if you have 12 strikes in a row", function() {
+      let i = 1
+      while (i < 13 ) {
+        testScorecard.enterRoll(10)
+        i++
+      }
+
+      expect(testScorecard.generateScorecardInfo()).toEqual(ALL_STRIKE_THROW_SCORECARD)
+    })
+
+    it("gives you a full game with 3 frames in 10th frame if you have 9 strikes in a row, then a spare", function() {
+      let i = 1
+      while (i < 10 ) {
+        testScorecard.enterRoll(10)
+        i++
+      }
+      testScorecard.enterRoll(5)
+      testScorecard.enterRoll(5)
+      testScorecard.enterRoll(5)
+
+      expect(testScorecard.generateScorecardInfo()).toEqual(SOLUTION_ALT_THREE_THROW_SCORECARD)
+    })
+
+
 
     const FIRST_THROW_SCORECARD = [{ frame: 1, firstRoll: 5, secondRoll: "", strike: false, spare: false, total: 5 }]
     const SECOND_THROW_SCORECARD = [
@@ -155,6 +181,30 @@ describe("BowlingScorecard", function() {
       { frame: 2, firstRoll: 'X', secondRoll: "", strike: true, spare: false, total: 45 },
       { frame: 3, firstRoll: 5, secondRoll: "/", strike: false, spare: true, total: 55 },
       { frame: 4, firstRoll: "", secondRoll: "", strike: false, spare: false, total: 55 }
+    ]
+    const ALL_STRIKE_THROW_SCORECARD = [
+      { frame: 1, firstRoll: 'X', secondRoll: "", strike: true, spare: false, total: 30 },
+      { frame: 2, firstRoll: 'X', secondRoll: "", strike: true, spare: false, total: 60 },
+      { frame: 3, firstRoll: 'X', secondRoll: "", strike: true, spare: false, total: 90 },
+      { frame: 4, firstRoll: 'X', secondRoll: "", strike: true, spare: false, total: 120 },
+      { frame: 5, firstRoll: 'X', secondRoll: "", strike: true, spare: false, total: 150 },
+      { frame: 6, firstRoll: 'X', secondRoll: "", strike: true, spare: false, total: 180 },
+      { frame: 7, firstRoll: 'X', secondRoll: "", strike: true, spare: false, total: 210 },
+      { frame: 8, firstRoll: 'X', secondRoll: "", strike: true, spare: false, total: 240 },
+      { frame: 9, firstRoll: 'X', secondRoll: "", strike: true, spare: false, total: 270 },
+      { frame: 10, firstRoll: 'X', secondRoll: 'X', thirdRoll: 10, strike: true, spare: false, total: 300 }
+    ]
+    const SOLUTION_ALT_THREE_THROW_SCORECARD = [
+      { frame: 1, firstRoll: 'X', secondRoll: "", strike: true, spare: false, total: 30 },
+      { frame: 2, firstRoll: 'X', secondRoll: "", strike: true, spare: false, total: 60 },
+      { frame: 3, firstRoll: 'X', secondRoll: "", strike: true, spare: false, total: 90 },
+      { frame: 4, firstRoll: 'X', secondRoll: "", strike: true, spare: false, total: 120 },
+      { frame: 5, firstRoll: 'X', secondRoll: "", strike: true, spare: false, total: 150 },
+      { frame: 6, firstRoll: 'X', secondRoll: "", strike: true, spare: false, total: 180 },
+      { frame: 7, firstRoll: 'X', secondRoll: "", strike: true, spare: false, total: 210 },
+      { frame: 8, firstRoll: 'X', secondRoll: "", strike: true, spare: false, total: 235 },
+      { frame: 9, firstRoll: 'X', secondRoll: "", strike: true, spare: false, total: 255 },
+      { frame: 10, firstRoll: 5, secondRoll: '/', thirdRoll: 5, strike: false, spare: true, total: 270 }
     ]
   });
 });

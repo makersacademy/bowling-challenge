@@ -7,6 +7,9 @@ class Frame {
     this.strike = false
     this.spare = false
     this.total = currentTotal
+    if (frame === 10) {
+      this.thirdRoll = null
+    }
   }
 
   enterRoll(score) {
@@ -22,6 +25,11 @@ class Frame {
   }
 
   updateCurrentTotal() {
+    if (this.frame === 10 && this.thirdRoll !== null) {
+      this.total += this.thirdRoll
+      return this.total
+    }
+
     if (this.secondRoll === null ) {
       this.total += this.firstRoll
     } else {
@@ -37,17 +45,24 @@ class Frame {
   }
 
   _assignScore(score) {
+    if (this.frame === 10 && this.secondRoll !== null) {
+      this.thirdRoll = score
+    }
+
     if (this.firstRoll === null) {
-      if (score === 10) { this.strike = true};
+      if (score === 10) { this.strike = true}
       this.firstRoll = score
     } else {
-      if (this.frameScore + score === 10) { this.spare = true};
+      if (this.frameScore + score === 10) { this.spare = true}
       this.secondRoll = score
     }
   }
 
   _updateFrameScore() {
     this.frameScore = this.firstRoll + this.secondRoll
+    if (this.frame === 10) {
+      this.frameScore += this.thirdRoll
+    }
   }
 }
 

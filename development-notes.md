@@ -28,12 +28,13 @@ Finish off the logic.
 - total scoring - done
 - implement strike and spare logic - done
 - handling bonus points. - partial
-    - need to handle multiple strikes in a row
+    - need to handle multiple strikes in a row - done
 - final frame logic
     - need to look at 10th frame no strike or spare
     - need to look at strike
     - need to look at spare
 
+- add import/export
 - add Travis, Karma, etc...
 
 - optional - pictures and victory messages!

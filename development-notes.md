@@ -26,9 +26,13 @@ Build interface with jQuery
 Finish off the logic.
 - error handling for second roll - done
 - total scoring - done
-- implement strike and spare logic
-- handling bonus points.
+- implement strike and spare logic - done
+- handling bonus points. - partial
+    - need to handle multiple strikes in a row
 - final frame logic
+    - need to look at 10th frame no strike or spare
+    - need to look at strike
+    - need to look at spare
 
 - add Travis, Karma, etc...
 

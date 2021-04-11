@@ -109,6 +109,15 @@ describe("BowlingScorecard", function() {
       expect(testScorecard.generateScorecardInfo()).toEqual(STRIKE_BONUS_THROW_SCORECARD)
     })
 
+    it("gives you bonus points if you multiple strikes", function() {
+      testScorecard.enterRoll(10)
+      testScorecard.enterRoll(10)
+      testScorecard.enterRoll(5)
+      testScorecard.enterRoll(5)
+
+      expect(testScorecard.generateScorecardInfo()).toEqual(DOUBLE_STRIKE_BONUS_THROW_SCORECARD)
+    })
+
 
     const FIRST_THROW_SCORECARD = [{ frame: 1, firstRoll: 5, secondRoll: "", strike: false, spare: false, total: 5 }]
     const SECOND_THROW_SCORECARD = [
@@ -140,6 +149,12 @@ describe("BowlingScorecard", function() {
       { frame: 2, firstRoll: 'X', secondRoll: "", strike: true, spare: false, total: 29 },
       { frame: 3, firstRoll: 5, secondRoll: "/", strike: false, spare: true, total: 39 },
       { frame: 4, firstRoll: "", secondRoll: "", strike: false, spare: false, total: 39 }
+    ]
+    const DOUBLE_STRIKE_BONUS_THROW_SCORECARD = [
+      { frame: 1, firstRoll: 'X', secondRoll: "", strike: true, spare: false, total: 25 },
+      { frame: 2, firstRoll: 'X', secondRoll: "", strike: true, spare: false, total: 45 },
+      { frame: 3, firstRoll: 5, secondRoll: "/", strike: false, spare: true, total: 55 },
+      { frame: 4, firstRoll: "", secondRoll: "", strike: false, spare: false, total: 55 }
     ]
   });
 });

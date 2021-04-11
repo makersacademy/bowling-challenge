@@ -87,10 +87,24 @@ class BowlingScorecard {
     if (this.frame === 1) return;
 
     let previousFrame = this.frames[this.frames.length - 2];
+
+
     if (this._currentFrame().isFirstRollComplete()) {
       if (previousFrame.spare || previousFrame.strike) {
         previousFrame.frameScore += this._currentFrame().firstRoll;
         previousFrame.total += this._currentFrame().firstRoll;
+
+        this._currentFrame().total += this._currentFrame().firstRoll
+      }
+      if (this.frame === 2) return;
+
+      let previousTwoFrame = this.frames[this.frames.length - 3];
+      if (previousFrame.strike && previousTwoFrame.strike) {
+        previousTwoFrame.frameScore += this._currentFrame().firstRoll;
+        previousTwoFrame.total += this._currentFrame().firstRoll;
+
+        previousFrame.total += this._currentFrame().firstRoll;
+
         this._currentFrame().total += this._currentFrame().firstRoll
       }
     } else if (this._currentFrame().isComplete()) {
@@ -98,7 +112,6 @@ class BowlingScorecard {
         previousFrame.frameScore += this._currentFrame().secondRoll;
         previousFrame.total += this._currentFrame().secondRoll;
         this._currentFrame().total += this._currentFrame().secondRoll
-        this._currentFrame().secondRoll
       }
     }
   }

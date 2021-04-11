@@ -6,7 +6,7 @@ class Bowling {
     this.prevFrame = ""
   }
 
-  bowl1(score) {
+  _bowl1(score) {
     if (score === 10)  {
       this.frameStatus = 'strike'
       return 'strike'
@@ -17,7 +17,7 @@ class Bowling {
     };
   };
 
-  bowl2(score) {
+  _bowl2(score) {
       if (Number(this.frameScore) + Number(score) === 10) {
         this.frameStatus = 'spare'
         return 'spare'
@@ -33,12 +33,12 @@ class Bowling {
     if ((Number(score1) === 10) && (Number(score2) > 0)) {
       throw new Error('You may not bowl again in this frame');
     }
-    if (this.bowl1(score1) != 'strike') {
+    if (this._bowl1(score1) != 'strike') {
       this.score.push(score1, score2)
-      return this.bowl2(score2)
+      return this._bowl2(score2)
     }
     else {
-      return this.bowl1(score1)
+      return this._bowl1(score1)
     };
   };
 

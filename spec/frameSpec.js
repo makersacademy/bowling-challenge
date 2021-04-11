@@ -11,4 +11,18 @@ describe('Frame', function() {
         frame.storeRoll(1)
         expect(frame.totalRolls()).toEqual(1)
     });
+
+    it('sets up the next frame', function() {
+        for(let i = 1; i <=2; i ++) {
+            frame.storeRoll();
+        }
+        frame.totalRolls(2)
+        frame.newFrame()
+        expect(frame.totalRolls()).toEqual(0)
+    });
+
+    // it ('limits number of frames to no more than 10', function() {
+    //     frame.
+    //     expect(frame.finalFrame()).toEqual(10)
+    // });
 });

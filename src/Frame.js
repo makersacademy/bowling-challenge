@@ -35,7 +35,7 @@ class Frame {
       if (score === 10) { this.strike = true};
       this.firstRoll = score
     } else {
-      // if (this.frameScore + score === 10) { this.strike = true};
+      if (this.frameScore + score === 10) { this.spare = true};
       this.secondRoll = score
     }
   }

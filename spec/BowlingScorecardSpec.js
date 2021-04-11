@@ -80,6 +80,15 @@ describe("BowlingScorecard", function() {
       expect(testScorecard.generateScorecardInfo()).toEqual(STRIKE_THROW_SCORECARD)
     })
 
+    it("tells you if you score a spare", function() {
+      testScorecard.enterRoll(5)
+      testScorecard.enterRoll(4)
+      testScorecard.enterRoll(5)
+      testScorecard.enterRoll(5)
+
+      expect(testScorecard.generateScorecardInfo()).toEqual(SPARE_THROW_SCORECARD)
+    })
+
     const FIRST_THROW_SCORECARD = [{ frame: 1, firstRoll: 5, secondRoll: "", strike: false, spare: false, total: 5 }]
     const SECOND_THROW_SCORECARD = [
       { frame: 1, firstRoll: 5, secondRoll: 4, strike: false, spare: false, total: 9 },
@@ -93,6 +102,11 @@ describe("BowlingScorecard", function() {
     const STRIKE_THROW_SCORECARD = [
       { frame: 1, firstRoll: 5, secondRoll: 4, strike: false, spare: false, total: 9 },
       { frame: 2, firstRoll: 'X', secondRoll: "", strike: true, spare: false, total: 19 },
+      { frame: 3, firstRoll: "", secondRoll: "", strike: false, spare: false, total: 19 }
+    ]
+    const SPARE_THROW_SCORECARD = [
+      { frame: 1, firstRoll: 5, secondRoll: 4, strike: false, spare: false, total: 9 },
+      { frame: 2, firstRoll: 5, secondRoll: '/', strike: false, spare: true, total: 19 },
       { frame: 3, firstRoll: "", secondRoll: "", strike: false, spare: false, total: 19 }
     ]
   });

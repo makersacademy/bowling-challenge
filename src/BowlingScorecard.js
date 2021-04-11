@@ -30,7 +30,7 @@ class BowlingScorecard {
     let thisIs = this
     let results = this.frames.map(function(element) {
       let firstRoll = thisIs._tidyDisplay(element.firstRoll, element.strike)
-      let secondRoll = thisIs._tidyDisplay(element.secondRoll)
+      let secondRoll = thisIs._tidyDisplay(element.secondRoll, element.strike, element.spare)
 
       return { frame: element.frame, firstRoll: firstRoll, secondRoll: secondRoll, strike: element.strike, spare: element.spare, total: element.total };
     });
@@ -66,11 +66,13 @@ class BowlingScorecard {
     return this.frames[this.frames.length - 1]
   }
 
-  _tidyDisplay(roll, strike) {
+  _tidyDisplay(roll, strike, spare = false) {
     if (roll === null) {
       return ("");
     } else if (strike) {
       return 'X';
+    } else if (spare) {
+      return '/'
     } else {
       return roll
     }

@@ -1,0 +1,97 @@
+*{
+  font-family: "Courier New", sans-serif;
+}
+
+body {
+  background-image: linear-gradient(to right, #81AEB9 , #8192B9);
+  /* background-color: #4D9BB8; */
+  padding: 20px;
+}
+
+header {
+  position: absolute;
+  left:0;
+  right:0;
+  text-align: right;
+  background-color: #E8A997;
+  padding: 30px;
+  margin-top: -30px;
+  width: auto;
+}
+
+img {
+  width: 200px;
+}
+
+#submit {
+  background-color: #b3ffd9;
+  border-color: white;
+  border-radius: 20px;
+  height: 45px;
+  width: 45px;
+  margin-left: 30px;
+}
+
+#frameDiv {
+  margin-top: 250px;
+  padding-top: 80px;
+  font-size: 20px;
+  /* color: white; */
+  font-weight: bold;
+  text-align: center;
+}
+
+.rollsubmissions{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+}
+
+.results{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+
+.totals{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+
+#submitRoll1, #submitRoll2, #submitRoll3 {
+  background-color: #E897AD;
+  height: 50px;
+  width: 300px;
+  margin: 30px;
+  padding: 25px;
+  border: solid white 2px;
+  font-size: 20px;
+  border-radius: 30px;
+}
+
+#Roll1Result, #Roll2Result, #Roll3Result {
+  background-color: #6BCAC8;
+  height: 50px;
+  width: 300px;
+  margin: 0 45px 0px 45px;
+  padding: 15px;
+  border: solid white 2px;
+  font-size: 20px;
+  border-radius: 30px;
+}
+
+
+#rollsResult, #bonusResult, #totalResult {
+  background-color: #6BCAC8;
+  height: 50px;
+  width: 300px;
+  margin: 0 45px 45px 45px;
+  padding: 15px;
+  border: solid white 2px;
+  font-size: 20px;
+  border-radius: 30px;
+}

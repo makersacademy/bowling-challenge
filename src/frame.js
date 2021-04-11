@@ -1,6 +1,8 @@
 class Frame {
   constructor() {
     this.scores = new Array;
+    this.updated = false;
+    this.final = 0;
   }
 
   isSpare() {
@@ -16,6 +18,24 @@ class Frame {
       return this.scores[0] == 10;
     } else {
       return false;
+    }
+  }
+
+  isUpdatedSpare() {
+    return this.scores[0] + this.scores[1] == 10;
+  }
+
+  Update() {
+    if (this.isUpdatedSpare() || this.scores[0] == 10) {
+      if (this.scores.length == 3) {
+        this.updated = true;
+        this.final = this.scores.reduce((a, b) => a + b, 0);
+      }
+    } else {
+      if (this.scores.length == 2) {
+        this.updated = true;
+        this.final = this.scores.reduce((a, b) => a + b, 0);
+      }
     }
   }
 

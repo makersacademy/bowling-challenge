@@ -12,4 +12,6 @@ Implementation
 - Bonus points for spares are updated
 - Strikes create a new frame.
 - Bonus points for strikes for next two rolls, no consec strike.
-- 
+- Tenth frame
+- Update scores method
+- Interface

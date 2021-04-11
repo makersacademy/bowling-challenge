@@ -1,6 +1,6 @@
 class Bowling {
   constructor() {
-    this.frames = new Array;
+    this.frames = [new Frame];
     this.currentFrame = 0;
   }
 
@@ -17,10 +17,8 @@ class Bowling {
   }
 
   createNewFrame() {
-    if (this.frames.length == 0) {
-      this.frames.push(new Frame);
     // Tenth frame.
-    } else if (this.frames.length == 10) {
+    if (this.frames.length == 10) {
       if (this.frames[9].scores.length == 1) {
         return;
       }
@@ -30,8 +28,7 @@ class Bowling {
       } else {
         return; // end game function.
       }
-    }
-    else if (this.getCurrentScores().includes(10) || 
+    } else if (this.getCurrentScores().includes(10) || 
                this.getCurrentScores().length == 2) {
       this.frames.push(new Frame);
       this.currentFrame++;

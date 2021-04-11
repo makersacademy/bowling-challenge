@@ -28,6 +28,15 @@ describe("BowlingScorecard", function() {
       expect(testScorecard.enterRoll(6)).toEqual("Invalid score entered, score must be between 0 and 4.");
     });
 
+    it("receives end of game after 10 frames are completed", function() {
+      let i = 1
+      while (i < 20 ) {
+        testScorecard.enterRoll(4)
+        i++
+      }
+      expect(testScorecard.enterRoll(4)).toEqual("End of Game");
+    });
+
     // still need to check for invalid scores on the second roll
     // will need to test end game functionality as well
   });

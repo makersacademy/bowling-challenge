@@ -12,7 +12,8 @@ class BowlingScorecard {
 
     score = Number(score)
     this._currentFrame().enterRoll(score)
-    this._checkFrameOver()
+    if (this._checkFrameOver() === "EndGame") return "End of Game";
+    
     return score
   }
 
@@ -46,6 +47,8 @@ class BowlingScorecard {
   }
 
   _checkFrameOver() {
+    if (this._currentFrame().isComplete() && this.frame === 10) return "EndGame";
+
     if (this._currentFrame().isComplete()) {
       this.frame++;
       this.frames.push(new Frame(this.frame));
@@ -56,7 +59,7 @@ class BowlingScorecard {
     return this.frames[this.frames.length - 1]
   }
 
-  // Having issues implementing a refactor into the display scorecard class - it does not see the function - i believe due to using this method. 
+  // Having issues implementing a refactor into the display scorecard class - it does not see the function - i believe due to using this method.
   // _tidyDisplay(roll) {
   //   console.log(roll)
   //   if (roll === null) {

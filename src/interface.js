@@ -21,7 +21,7 @@ $( document ).ready (function() {
       $('#f1roll2').hide();
       $('#l1r2').hide();
       game.roll(parseInt(f1roll1));
-      $('#f1score').text(game.gameScore[0]);
+      updateScore();
     }
     if (f1roll1 == '') {
       alert('Please enter a value for frame 1, roll 1');
@@ -39,7 +39,7 @@ $( document ).ready (function() {
       alert('Please enter a value for frame 1, roll 2');
     } else {
       game.roll(parseInt(f1roll1), parseInt(f1roll2));
-      $('#f1score').text(game.gameScore[0]);
+      updateScore();
     }
   });
   // Hide roll 2 for frame 2, if roll 1 is a strike
@@ -306,7 +306,6 @@ $( document ).ready (function() {
     }
     game.roll(parseInt(f10roll1), parseInt(f10roll2), parseInt(f10roll3));
     updateScore();
-    console.log(game);
   });
   $( '#go' ).click(function() {
     $('header').hide();
@@ -322,15 +321,12 @@ $( document ).ready (function() {
     $('#l3r2').hide();
     $('#f3roll1').hide();
     $('#f3roll2').hide();
-    // $('#l4r1').hide();
     $('#l4r2').hide();
     $('#f4roll1').hide();
     $('#f4roll2').hide();
-    // $('#l5r1').hide();
     $('#l5r2').hide();
     $('#f5roll1').hide();
     $('#f5roll2').hide();
-    $('#l6r1').hide();
     $('#l6r2').hide();
     $('#f6roll1').hide();
     $('#f6roll2').hide();
@@ -364,15 +360,25 @@ $( document ).ready (function() {
     $('#f10score').hide();
     $('#go').hide();
     $('#reset').show();
+    checkGame();
     $('#l4r1').text('Your score is:');
-    console.log(game.gameScore.reduce((a, b) => a + b, 0));
-    console.log(game.gameScore);
     $('#l5r1').text(game.gameScore.reduce((a, b) => a + b, 0));
   });
   $( '#reset' ).click(function() {
     location.reload();
   });
 
+  let checkGame = ( ) => {
+    if ((game.gameScore.reduce((a, b) => a + b, 0)) == 300) {
+      $('#l6r1').text('...Perfect game!');
+    }
+    else if ((game.gameScore.reduce((a, b) => a + b, 0)) == 0) {
+      $('#l6r1').text('...Gutter game....');
+    }
+    else {
+      $('#l6r1').hide();
+    }
+  }
   let updateScore = ( ) => {
     $('#f1score').text(game.gameScore[0]);
     $('#f2score').text(game.gameScore[1]);
@@ -386,13 +392,3 @@ $( document ).ready (function() {
     $('#f10score').text(game.gameScore[9]);
   }
 });
-
-//   $('#power_mode').text(thermostat.getPowerSave())
-// });
-//
-// $('#temperature').text(thermostat.temperature);
-// if(thermostat.energyUse() === 'low-usage'){
-//   $('.dot').css('background-color', 'green');
-// }
-// $( '#cities' ).change(function() {
-//     let city = $('#cities').val();

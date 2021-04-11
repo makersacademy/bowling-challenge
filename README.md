@@ -1,5 +1,34 @@
 [![Build Status](https://travis-ci.com/mstrivens/bowling-challenge.svg?branch=master)](https://travis-ci.com/mstrivens/bowling-challenge)
 
+## How to use
+
+- Fork this repo
+- Clone to repository
+
+## Testing
+
+- open SpecRunner.html
+
+## Notes
+
+- Tests are all passing, including a feature test for running a short game not including the 10th frame.
+
+- The bonus system is working for retrospectively awarding scores for strikes and spares.
+
+- Extensive notes and approach in notes.md
+
+- I followed a strict TDD approach, writing tests, passing them with the code and committing.
+
+- If I had more time I would have finished the Frame Ten code. At current it is only partially functional.
+
+- The code could probably be more DRY, I felt quite unfamiliar with Javascript and as a result I wrote the methods quite longhand.
+
+- I tried to refactor using helper methods but I kept breaking the code.
+
+- I would say I am about half a day coding away from finishing the logic
+
+- I would then move onto building a app interface using HTML/CSS and JQuery.
+
 Bowling Challenge
 =================
 
@@ -20,7 +49,7 @@ As usual please start by
 
 * Forking this repo
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
+* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.
 
 ___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
 

@@ -165,6 +165,10 @@ describe ('Bowling', function(){
         console.log(bowling.frameScore)
         expect(bowling.frameScore).toEqual([6, 2])
       });
+      // it('is a spare and allows the player to bowl a third ball', function(){
+      //   bowling.frameTen(3, 7, 3)
+      //   expect(bowling.frameTenExtra()).toBeDefined()
+      // });
     });
     describe('neither a strike or spare are bowled', function(){
       it('ends the game', function(){
@@ -176,7 +180,15 @@ describe ('Bowling', function(){
         expect(bowling.score).toEqual([13, 3, 4])
       })
     });
+    describe('3 strikes are bowled in a row', function(){
+      it('gives bonuses for 3 strikes', function(){
+        bowling.frameTen(10, 10, 10)
+        expect(bowling.score).toEqual([30])
+      });
+    });
   });
+
+// Finished here. FrameTen is in progress. Haven't tested full functionality.
 
   describe('a short game is played', function(){
     it('plays a short game', function(){

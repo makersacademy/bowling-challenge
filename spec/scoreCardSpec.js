@@ -113,5 +113,18 @@ describe('Tenth round without a third roll', function() {
     expect(scoreCard.play(4)).toEqual('Game ended! Your score was 80')
   })
 })
+describe('third roll', function() {
+  let scoreCard = new ScoreCard;
+  it('should allow a third roll if the first roll is a strike', function() {
+    for(let i = 0; i < 18; i++) {
+      scoreCard.play(4)
+    }
+    scoreCard.play(10)
+    scoreCard.play(4)
 
+    expect(scoreCard.play(4)).toEqual('Game ended! Your score was 90')
+  })
+  
+
+})
 

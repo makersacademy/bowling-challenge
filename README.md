@@ -13,6 +13,8 @@
 
 - Tests are all passing, including a feature test for running a short game not including the 10th frame.
 
+- TravisCI didn't set up properly so it shows as tests failing.
+
 - The bonus system is working for retrospectively awarding scores for strikes and spares.
 
 - Extensive notes and approach in notes.md

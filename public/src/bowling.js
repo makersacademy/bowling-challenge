@@ -46,7 +46,7 @@ class Bowling {
   //   if ((this.frameStatus != 'strike') && (this.prevFrame == 'spare')) {
   //     this.score.push([10, this.frameScore])
   //   };
-  };
+  // };
 };
 
 // TESTS WRITTEN FOR BONUS METHOD. NEED TO WORK OUT HOW TO PUSH PREVIOUS

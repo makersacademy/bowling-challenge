@@ -142,6 +142,16 @@ describe ('Bowling', function(){
     });
   });
 
+  describe('frameCounter', function(){
+    it('counts each frame', function(){
+      bowling.frame(2, 5)
+      bowling.frame(2, 5)
+      bowling.frame(2, 5)
+      bowling.frame(2, 5)
+      expect(bowling.frameCounter).toEqual(4)
+    });
+  });
+
   describe('a short game is played', function(){
     it('plays a short game', function(){
       bowling.frame(10)

@@ -4,6 +4,7 @@ class Bowling {
     this.frameStatus = ""
     this.score = []
     this.prevFrame = ""
+    this.frameCounter = 0
   }
 
   frame(score1, score2 = 0) {
@@ -21,6 +22,7 @@ class Bowling {
     else {
       this._bowl1(score1)
     };
+    this.frameCounter++
     return this.bonus()
   };
 

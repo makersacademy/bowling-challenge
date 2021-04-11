@@ -58,6 +58,10 @@ class Bowling {
     this.prevFrame = this.frameStatus
   };
 
+  frameTen(score) {
+    this.frameScore.push(4)
+  }
+
   _bowl1(score) {
     if (score === 10)  {
       this.frameStatus = 'strike'

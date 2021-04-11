@@ -152,6 +152,15 @@ describe ('Bowling', function(){
     });
   });
 
+  describe('frameTen', function(){
+    describe('first ball is not a strike', function(){
+      it('checks bonuses', function(){
+          bowling.frameTen(4)
+          expect(bowling.frameScore).toEqual([4])
+      });
+    });
+  });
+
   describe('a short game is played', function(){
     it('plays a short game', function(){
       bowling.frame(10)

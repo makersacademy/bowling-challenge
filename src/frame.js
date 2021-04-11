@@ -8,4 +8,11 @@ function Frame (seqNum) {
     Frame.prototype.storeRoll = function(roll) {
         return (this.rolls.push(roll));
     };
+
+    Frame.prototype.newFrame = function() {
+        if (this.rolls.length === 2) {
+            this.rolls.splice(0, this.rolls.length)
+        }
+        return (this.rolls.length);
+    };
 };

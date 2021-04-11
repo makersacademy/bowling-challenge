@@ -4,10 +4,11 @@ class Bowling {
   constructor () {
     this.total = 0;
     this.frames = [];
+    this.framesTotalAcc = [];
     this.framesTotal = [];
     this.state = [];
     this.frameCounter = 0;
-  };
+  }
 
   frame (bowl1, bowl2 = 0) {
     if (bowl1 === 10) {
@@ -132,10 +133,24 @@ class Bowling {
   totalUpdate () {
     this.total = 0;
     // eslint-disable-next-line no-return-assign
-    this.framesTotal.forEach(frame => this.total += frame);
+    this.framesTotal.forEach(frame => this.total += frame,
+      this.framesTotalAcc.push(this.total));
+    // eslint-disable-next-line no-return-assign
+    this.updateTotalAccumulative();
   }
 
   openFrameScore () {
     this.framesTotal.push(this.currentOpenFrame());
+  }
+
+  updateTotalAccumulative () {
+    this.framesTotalAcc = [];
+    for (let i = 0; i < this.framesTotal.length; i++) {
+      if (this.framesTotalAcc.length === 0) {
+        this.framesTotalAcc.push(this.framesTotal[i]);
+      } else {
+        this.framesTotalAcc.push(this.framesTotalAcc[i - 1] + this.framesTotal[i]);
+      }
+    }
   }
 }

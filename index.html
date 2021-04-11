@@ -15,10 +15,7 @@
   <link rel="icon" href="public/favicon.ico">
   <link rel="manifest" href="/site.webmanifest">
 
-  <script
-  src="https://code.jquery.com/jquery-3.6.0.js"
-  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="src/jquery.js"></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -48,51 +45,64 @@
       <tbody>
         <tr>
           <td>Result</td>
-          <td><input type="text" id='1-1' class='textInvis' maxlength="2"></td>
-          <td><input type="text" id='1-2' class='textInvis' maxlength="2"></td>
-          <td><input type="text" id='2-1' class='textInvis' maxlength="2"></td>
-          <td><input type="text" id='2-2' class='textInvis' maxlength="2"></td>
-          <td><input type="text" id='3-1' class='textInvis' maxlength="2"></td>
-          <td><input type="text" id='3-2' class='textInvis' maxlength="2"></td>
-          <td><input type="text" id='4-1' class='textInvis' maxlength="2"></td>
-          <td><input type="text" id='4-2' class='textInvis' maxlength="2"></td>
-          <td><input type="text" id='5-1' class='textInvis' maxlength="2"></td>
-          <td><input type="text" id='5-2' class='textInvis' maxlength="2"></td>
-          <td><input type="text" id='6-1' class='textInvis' maxlength="2"></td>
-          <td><input type="text" id='6-2' class='textInvis' maxlength="2"></td>
-          <td><input type="text" id='7-1' class='textInvis' maxlength="2"></td>
-          <td><input type="text" id='7-2' class='textInvis' maxlength="2"></td>
-          <td><input type="text" id='8-1' class='textInvis' maxlength="2"></td>
-          <td><input type="text" id='8-2' class='textInvis' maxlength="2"></td>
-          <td><input type="text" id='9-1' class='textInvis' maxlength="2"></td>
-          <td><input type="text" id='9-2' class='textInvis' maxlength="2"></td>
-          <td><input type="text" id='10-1' class='textInvis' maxlength="2"></td>
-          <td><input type="text" id='10-2' class='textInvis' maxlength="2"></td>
-          <td><input type="text" id='10-3' class='textInvis' maxlength="2"></td>
+          <td id='1-1'></td>
+          <td id='1-2'></td>
+          <td id='2-1'></td>
+          <td id='2-2'></td>
+          <td id='3-1'></td>
+          <td id='3-2'></td>
+          <td id='4-1'></td>
+          <td id='4-2'></td>
+          <td id='5-1'></td>
+          <td id='5-2'></td>
+          <td id='6-1'></td>
+          <td id='6-2'></td>
+          <td id='7-1'></td>
+          <td id='7-2'></td>
+          <td id='8-1'></td>
+          <td id='8-2'></td>
+          <td id='9-1'></td>
+          <td id='9-2'></td>
+          <td id='10-1'></td>
+          <td id='10-2'></td>
+          <td id='10-3'></td>
         </tr>
         <tr>
           <td>Score</td>
-          <td colspan="2"><p></p></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="3"></td>
+          <td colspan="2" id='s1'></td>
+          <td colspan="2" id='s2'></td>
+          <td colspan="2" id='s3'></td>
+          <td colspan="2" id='s4'></td>
+          <td colspan="2" id='s5'></td>
+          <td colspan="2" id='s6'></td>
+          <td colspan="2" id='s7'></td>
+          <td colspan="2" id='s8'></td>
+          <td colspan="2" id='s9'></td>
+          <td colspan="3" id='s10'></td>
         </tr>
       </tbody>
     </table>
 
-    <button>Reset</button>
+    <form id='frameInput'>
+      <label for='bowl1'>Enter first roll:</label>
+      <input type='text' name='bowl1' id='bowl1' maxlength='2'>
+      <label for='bowl1'>Enter second roll:</label>
+      <input type='text' name='bowl2' id='bowl2' maxlength='2'>
+      <!-- <input type='submit' id='frameSubmit' value='submit'> -->
+    </form>
+    <button id='frameSubmit'>Submit</button>
+
+    <br>
+    <br>
+    <button id='reset'>Reset</button>
   </main>
 
   <footer>
   </footer>
 
+
   <script type="text/javascript" src="src/bowling.js"></script>
+  <script type="text/javascript" src="src/interface.js"></script>
 </body>
 
 </html>

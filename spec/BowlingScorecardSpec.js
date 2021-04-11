@@ -23,6 +23,11 @@ describe("BowlingScorecard", function() {
       expect(testScorecard.enterRoll('s')).toEqual("Invalid score entered, score must be between 0 and 10.");
     });
 
+    it("receives a second roll from the user which is too high a number and it rejects it as an invalid roll", function() {
+      testScorecard.enterRoll(6)
+      expect(testScorecard.enterRoll(6)).toEqual("Invalid score entered, score must be between 0 and 4.");
+    });
+
     // still need to check for invalid scores on the second roll
     // will need to test end game functionality as well
   });

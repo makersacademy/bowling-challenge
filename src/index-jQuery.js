@@ -12,12 +12,12 @@ let scorecard = new BowlingScorecard()
 $( document ).ready(function() {
 
   // alert( "Welcome to the scorecard!");
-
+  // console.log(scorecard._tidyDisplay(5))
   displayScorecard()
 
   $( '#enterRoll-form' ).submit(function( event ) {
     let score = $("#rollScore").val()
-    scorecard.enterRoll(score)
+    console.log(scorecard.enterRoll(score))
     displayScorecard()
     event.preventDefault();
   });

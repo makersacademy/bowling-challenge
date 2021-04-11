@@ -29,4 +29,6 @@ Finish off the logic.
 - handling bonus points.
 - final frame logic
 
+- add Travis, Karma, etc...
+
 - optional - pictures and victory messages!

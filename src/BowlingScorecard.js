@@ -8,7 +8,8 @@ class BowlingScorecard {
   }
 
   enterRoll(score) {
-    if (this._isInvalidScore(score)) return "Invalid score entered, score must be between 0 and 10.";
+    if (this._isInvalidScore(score)) return `Invalid score entered, score must be between 0 and ${this._maxRoll()}.`;
+
     score = Number(score)
     this._currentFrame().enterRoll(score)
     this._checkFrameOver()
@@ -17,7 +18,7 @@ class BowlingScorecard {
 
   generateScorecardInfo() {
     let results = this.frames.map(function(element) {
-      let firstRoll = element.firstRoll
+      let firstRoll = element.firstRoll;
       if (firstRoll === null) {
         firstRoll = ""
       }
@@ -31,10 +32,17 @@ class BowlingScorecard {
   }
 
   _isInvalidScore(score) {
-    if (score > 10 || score < 0) return true
+    if (score > this._maxRoll() || score < 0) return true
     if (`${score}`.match(/\D/) !== null) return true
 
     return false
+  }
+
+  _maxRoll() {
+    let roll = this._currentFrame().firstRoll
+    if (roll !== null) return (10 - roll)
+
+    return 10
   }
 
   _checkFrameOver() {
@@ -47,6 +55,16 @@ class BowlingScorecard {
   _currentFrame() {
     return this.frames[this.frames.length - 1]
   }
+
+  // Having issues implementing a refactor into the display scorecard class - it does not see the function - i believe due to using this method. 
+  // _tidyDisplay(roll) {
+  //   console.log(roll)
+  //   if (roll === null) {
+  //     return ("");
+  //   } else {
+  //     return roll
+  //   }
+  // }
 }
 
 // module.exports = BowlingScorecard;

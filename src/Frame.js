@@ -21,7 +21,6 @@ class Frame {
       this.secondRoll = score
     }
   }
-
 }
 
 // module.exports = Frame;

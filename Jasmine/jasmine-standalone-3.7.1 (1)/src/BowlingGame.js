@@ -49,16 +49,17 @@ class BowlingGame {
       this.updateScorecard();
     }
 
-    if(this.newScorecard.roll1Score + playersScore == 10){
+    if(this.newScorecard.roll1Score + playersScore === 10){
       this.spare = true;
       return "Spare!";
+    } else {
+      return "Great Job! That's the end of this frame";
     }
-    return "Great Job! That's the end of this frame";
   }
 
   roll3(playersScore){
     if(this.currentFrame < 10){
-      return "You can only roll a third time in the 10th frame";
+      return "You can roll in the 10th frame";
     }
     this.updateRoll3Score(playersScore);
     if(this.strike){
@@ -94,13 +95,14 @@ class BowlingGame {
 
   nextFrame(){
     if(this.currentFrame < 10){
-      this.currentFrame += 1
+      this.currentFrame += 1;
+      return "It's the next frame, ready, set, go!"
     } else {
       return this.endOfGame();
     }
   }
 
-  view_scorecard(){
+  viewScorecard(){
     return this.newScorecard.scorecard;
   }
 

@@ -40,53 +40,57 @@ A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 str
 
 ### modelling
 
-|     class      |   constructor                      |   function                                     |
-|----------------|------------------------------------|------------------------------------------------|
-|  BowlingGame   |  this.current_frame = 1            | roll_1(players_score)                          |
-|                |  this.strike = false               | roll_2(players_score)                          |
-|                |  this.spare = false                | roll_3(players_score)                          |
-|                |  this.scorecard = Scorecard.new    | roll_2(players_score)                          |
-|                |                                    | next_frame                                     |
-|                |                                    | update_roll_1_score(players_score)             |
-|                |                                    | update_roll_2_score(players_score)             |
-|                |                                    | update_roll_3_score(players_score)             |
-|                |                                    | update_bonus(players_score)                    |
-|                |                                    | update_scorecard                               |
-|                |                                    | view_scorecard                                 |
-|                |                                    | end_of_game                                    |
-|  Scorecard     |   this.scorecard = []              | update_bonus(players_score)                    |
-|                |   this.roll_1_score = 0            | update_scorecard(current_frame, strike, spare) |
-|                |   this.roll_2_score = 0            | running_total(current_frame)                   |
-|                |   this.roll_3_score = nil          |                                                |
-|                |   this.bonus_score = 0             |                                                |
-|                |   this.total_game_score = 0        |                                                |
+|     class      |   constructor                          |   function                                   |
+|----------------|----------------------------------------|----------------------------------------------|
+|  BowlingGame   |  this.current_frame = 1                | roll1(playersScore)                          |
+|                |  this.strike = false                   | roll2(playersScore)                          |
+|                |  this.spare = false                    | roll3(playersScore)                          |
+|                |  this.newScorecard = new Scorecard()   | roll2(players_score)                         |
+|                |                                        | nextFrame                                    |
+|                |                                        | updateRoll1Score(playersScore)               |
+|                |                                        | updateRoll2Score(playersScore)               |
+|                |                                        | updateRoll3Score(playersScore)               |
+|                |                                        | updateBonus(playersScore)                    |
+|                |                                        | updateScorecard                              |
+|                |                                        | viewScorecard                                |
+|                |                                        | endOfGame                                    |
+|  Scorecard     |   this.scorecard = []                  | updateBonus(playersScore)                    |
+|                |   this.roll1Score = 0                  | updateScorecard(currentFrame, strike, spare) |
+|                |   this.roll2Score = 0                  | runningTotal(currentFrame)                   |
+|                |   this.roll3Score = nil                |                                              |
+|                |   this.bonusScore = 0                  |                                              |
+|                |   this.totalGameScore = 0              |                                              |
 
 
 ----
 ### To-do:
-[ ]
-[ ]
-[ ]
-[ ]
-[ ] Roll 3 can be run at the end of frame 9 (frame number updates at the end of roll2)
-
+[ ] total score is printing weird stuff??
+[ ] bonus score not updating
+[ ] spare message not printing
+[ ] print scores for previous frames
+[ ] roll 2 cannot be played if roll 1 is a strike
+[ ] logic of more than one strike in a row
+[ ] roll 2 can be any number between 0-10, needs logic for the sum of roll1 and 2 to equal 10
+[ ] reset functionality to start a new game and reset scorecard
 
 
 ### Optional Extras
 
 In any order you like:
 
-* Create a nice interactive animated interface with jQuery.
+[x] Create a nice interactive animated interface with jQuery.
 * Set up [Travis CI](https://travis-ci.org) to run your tests.
 * Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
 
 ### UI
-[ ] add roll1 score
-[ ] add roll2 score
-[ ] add roll3 score
+[x] add roll1 score (a number between 0-10)
+[x] add roll2 score (a number between 0-10)
+[x] add roll3 score (a number between 0-10)
+[x] display frame number
+[ ] displays for roll scores
+[ ] display for score totals
+
 
 
 ---

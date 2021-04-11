@@ -6,7 +6,17 @@ $(document).ready(function() {
       if (!frame.updated) {
         frame.Update();
       }
-      if (frame.updated) {
+
+      if (!frame.added) {
+        if (i == 0) {
+          frame.added = true;
+        } else if (frame.updated) {
+          frame.final += bowling.frames[i - 1].final;
+          frame.added = true;
+        }
+      }
+
+      if (frame.added && frame.updated) {
         $(`#frame${i}`).text(`Frame ${i + 1}: ` + frame.final);
       }
     }

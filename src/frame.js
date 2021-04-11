@@ -3,6 +3,7 @@ class Frame {
     this.scores = new Array;
     this.updated = false;
     this.final = 0;
+    this.added = false;
   }
 
   isSpare() {

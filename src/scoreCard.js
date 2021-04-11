@@ -10,7 +10,7 @@ class ScoreCard {
     if(!this.frame) 
     { this.frame = new Frame; 
       this.frame.roll(pins)
-    } else if(this.frame.isStrike() && !this.finalFrame()) {
+    } else if(this.frame.isStrike()) {
       this.frames.push(this.frame)
       this.frame = new Frame; 
       this.frame.roll(pins)
@@ -48,8 +48,11 @@ class ScoreCard {
     return this.frames.length > 9
   }
   tenthRound(pins) {
-
+    this.frame.roll(pins)
+    let totalScore = this.frame.count() + this.total()
+    return totalScore
   }
+
 
 //   def tenth_round_no_bonus
 //   @frames.last.rolls.length >= 2 && !@frames.last.is_strike? && !@frames.last.is_spare?

@@ -85,9 +85,22 @@ describe('tenthRound', function() {
     for(let i = 0; i < 19; i++) {
       scoreCard.play(4)
     }
-    
+
     expect(scoreCard.play(3)).toEqual(79)
   })
 })
+describe('tenthRoundStrike', function() {
+  let scoreCard = new ScoreCard;
+  it('calculates the right bonus for a strike in the tenth round', function() {
+    for(let i = 0; i < 18; i++) {
+      scoreCard.play(4)
+    }
+    scoreCard.play(10)
+    scoreCard.play(3)
+
+    expect(scoreCard.play(2)).toEqual(87)
+  })
+})
+
 
 

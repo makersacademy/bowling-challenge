@@ -17,4 +17,16 @@ I reset up esLint as well, with a fresh download, and properly set up the config
 <!-- Reset esLint -  -->
 
 Build interface with jQuery
+- Installed jQuery - done
+- Building simple interface to:
+  - display scorecard - done simple interface
+  - allow rolls to be entered, - done simple entry using jQuery
+  - gives an error message if a wrong number is entered. - need to improve logic first
+
 Finish off the logic.
+- error handling for second roll
+- total scoring
+- handling bonus points.
+- final frame logic
+
+- optional - pictures and victory messages!

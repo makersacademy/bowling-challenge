@@ -18,6 +18,7 @@ describe("Frame", function() {
     it("will return true or false if the frame is over", function() {
       testFrame.enterRoll(5)
       testFrame.enterRoll(5)
+
       expect(testFrame.isComplete()).toEqual(true)
     })
   })

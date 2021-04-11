@@ -30,12 +30,14 @@ describe("BowlingScorecard", function() {
   describe("#generateScorecardInfo", function() {
     it("tells you your scores so far, after 1st throw", function() {
       testScorecard.enterRoll(5)
+
       expect(testScorecard.generateScorecardInfo()).toEqual(FIRST_THROW_SCORECARD)
     });
 
     it("tells you your scores so far, after 2nd throw", function() {
       testScorecard.enterRoll(5)
       testScorecard.enterRoll(4)
+
       expect(testScorecard.generateScorecardInfo()).toEqual(SECOND_THROW_SCORECARD)
     });
 
@@ -44,18 +46,19 @@ describe("BowlingScorecard", function() {
       testScorecard.enterRoll(4)
       testScorecard.enterRoll(4)
       testScorecard.enterRoll(4)
+
       expect(testScorecard.generateScorecardInfo()).toEqual(FOURTH_THROW_SCORECARD)
     });
 
-    FIRST_THROW_SCORECARD = [{ frame: 1, firstRoll: 5, secondRoll: null }]
-    SECOND_THROW_SCORECARD = [
+    const FIRST_THROW_SCORECARD = [{ frame: 1, firstRoll: 5, secondRoll: "" }]
+    const SECOND_THROW_SCORECARD = [
       { frame: 1, firstRoll: 5, secondRoll: 4 },
-      { frame: 2, firstRoll: null, secondRoll: null }
+      { frame: 2, firstRoll: "", secondRoll: "" }
     ]
-    FOURTH_THROW_SCORECARD = [
+    const FOURTH_THROW_SCORECARD = [
       { frame: 1, firstRoll: 5, secondRoll: 4 },
       { frame: 2, firstRoll: 4, secondRoll: 4 },
-      { frame: 3, firstRoll: null, secondRoll: null }
+      { frame: 3, firstRoll: "", secondRoll: "" }
     ]
   });
 });

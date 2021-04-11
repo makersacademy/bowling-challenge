@@ -1,6 +1,6 @@
 
 need to install eslint, jasmine & jQuery Plugins
-Need to install jQuery
+Need to install jQuery - don't think needed - should work off the bat.
 Jasmine should work straight off the bat
 
 Bowling Challenge

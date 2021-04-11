@@ -9,6 +9,7 @@ class BowlingScorecard {
 
   enterRoll(score) {
     if (this._isInvalidScore(score)) return "Invalid score entered, score must be between 0 and 10.";
+    score = Number(score)
     this._currentFrame().enterRoll(score)
     this._checkFrameOver()
     return score
@@ -16,7 +17,15 @@ class BowlingScorecard {
 
   generateScorecardInfo() {
     let results = this.frames.map(function(element) {
-      return { frame: element.frame, firstRoll: element.firstRoll, secondRoll: element.secondRoll };
+      let firstRoll = element.firstRoll
+      if (firstRoll === null) {
+        firstRoll = ""
+      }
+      let secondRoll = element.secondRoll
+      if (secondRoll === null) {
+        secondRoll = ""
+      }
+      return { frame: element.frame, firstRoll: firstRoll, secondRoll: secondRoll };
     });
     return results
   }

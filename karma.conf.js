@@ -9,6 +9,7 @@ module.exports = function (config) {
     frameworks: ['jasmine'],
 
     files: [
+      'src/jquery.js',
       'src/*.js',
       'spec/*Spec.js'
     ],

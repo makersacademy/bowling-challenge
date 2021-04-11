@@ -8,7 +8,8 @@
     },
     "extends": [
         "standard",
-        "plugin:jquery/deprecated"
+        "plugin:jquery/deprecated",
+        "eslint:recommended"
     ],
     "parserOptions": {
         "ecmaVersion": 12

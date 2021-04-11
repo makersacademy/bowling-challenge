@@ -114,7 +114,13 @@ describe ('Bowling', function(){
         bowling.frame(10)
         bowling.bonus()
         expect(bowling.prevFrame).toEqual('2xstrike')
-      })
+      });
+      it('checks if prevFrame is a 2xstrike and adds 30 to the score', function(){
+        bowling.prevFrame = '2xstrike'
+        bowling.frame(10)
+        bowling.bonus()
+        expect(bowling.score).toEqual([30])
+      });
     });
   });
 });

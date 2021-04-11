@@ -54,7 +54,10 @@ class Bowling {
     };
     if ((this.frameStatus == 'strike') && (this.prevFrame == 'strike')) {
       this.prevFrame = '2xstrike'
-    }
+    };
+    if ((this.frameStatus == 'strike') && (this.prevFrame == '2xstrike')) {
+      this.score.push(30)
+    };
   };
 };
 

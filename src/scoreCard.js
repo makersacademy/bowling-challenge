@@ -67,7 +67,7 @@ class ScoreCard {
     }
   }
   tenthRoundNoBonus() {
-    return (this.lastFrame.rolls.length >= 1 && !this.lastFrame.isSpare() && !this.lastFrame.isStrike())
+    return (this.lastFrame.rolls.length >= 1 && !this.lastFrame.count() == 10 && !this.lastFrame.isStrike())
   }
   tenthRoundWithBonus() {
     return (this.lastFrame.rolls.length === 2)

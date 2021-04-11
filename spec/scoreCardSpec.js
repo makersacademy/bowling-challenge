@@ -124,7 +124,17 @@ describe('third roll', function() {
 
     expect(scoreCard.play(4)).toEqual('Game ended! Your score was 90')
   })
-  
-
 })
 
+describe('third roll for a spare', function() {
+  let scoreCard= new ScoreCard;
+  it('should allow a third roll if the first two rolls were a spare', function() {
+    for(let i = 0; i < 18; i++) {
+      scoreCard.play(4)
+    }
+    scoreCard.play(6)
+    scoreCard.play(4)
+
+    expect(scoreCard.play(4)).toEqual('Game ended! Your score was 86')
+  })
+})

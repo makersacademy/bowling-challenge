@@ -60,7 +60,15 @@ else change prevFrame status to 1xstrike.
 Bonuses
 - When the first ball if NOT a strike:
 - Check if previous ball was a spare, if so add first round score to 10 for previous frame and push that into scores array
+
 - Check if 2x strike, if so add first bowl score to 20 and push into 2x previous frame array - come back to
+
+- if 2x strike and spare add 20 + first bowl to original strike frame
+and 20 to second
+-
+- if 2xstrike and not spare or strike add 20 + first score to 2x previous
+- add 10 + framescore
+
 - check if prevFrame is a strike and add 10 to frame score
 - If is a strike:
 - Check if previous ball was a spare and add 20 to previous frame

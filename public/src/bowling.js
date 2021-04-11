@@ -43,6 +43,10 @@ class Bowling {
     if ((this.frameStatus == 'strike') && (this.prevFrame == '2xstrike')) {
       this.score.push(30)
     };
+    if ((this.frameStatus == 'openFrame') && (this.prevFrame == '2xstrike')) {
+      this.score.splice(-3, 0, (20 + Number(this.frameScore[0])))
+      this.score.splice(-2, 0, (10 + Number(this.frameScore[0]) + Number(this.frameScore[1])))
+    }
   };
 
   _bowl1(score) {

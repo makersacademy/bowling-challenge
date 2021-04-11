@@ -98,11 +98,21 @@ describe ('Bowling', function(){
   });
 
   describe('bonus', function (){
-    describe('a strike isn\'t bowled', function(){
+    describe('a strike and spare isn\'t bowled', function(){
       it('checks if prevFrame is a spare then adds both scores to the score array', function(){
         bowling.prevFrame = 'spare'
         bowling.frame(3, 5)
         expect(bowling.bonus()).toEqual([13, 3, 5])
+      });
+      it('checks if prevFrame is 2xstrike and adds the bonus', function(){
+        bowling.prevFrame = '2xstrike'
+        bowling.frame(3, 5)
+        bowling.bonus()
+        console.log(this.frameScore)
+        console.log(this.score)
+        expect(bowling.score).toEqual([23, 18, 3, 5])
+        console.log(this.frameScore)
+        console.log(this.score)
       });
     });
     describe('a spare is bowled', function(){

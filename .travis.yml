@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - 14
+
+dist: xenial
+services:
+  - xvfb  # this adds display support to allow browser action
+
+addons:
+  chrome: stable   # adds chrome obvs, if you added other browsers add them here,
+                   # check travis docs to make sure you use the correct syntax

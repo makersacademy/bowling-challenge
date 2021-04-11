@@ -8,3 +8,13 @@ Miro Board: - Miro Board with logic
     - https://miro.com/app/board/o9J_lLjv0EE=/
 
 As I translate, I will also seek to refactor the model to extract the class further.
+
+I attempted to set up Jasmine via a node package manager but it was interfering with my attempt to build a web interface, something related to the use of require. Given time constraints I have reverted to the stand alone installation in order to be able to use it correctly.
+
+<!-- Reset up Jasmine - web based, -->
+
+I reset up esLint as well, with a fresh download, and properly set up the config file, to include jasmine and usual js files. Included Jasmine, Jquery Plugins as well.
+<!-- Reset esLint -  -->
+
+Build interface with jQuery
+Finish off the logic.

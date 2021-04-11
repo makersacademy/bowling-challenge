@@ -1,4 +1,4 @@
-const Frame = require('./Frame.js');
+// const Frame = require('./Frame.js');
 
 class BowlingScorecard {
 
@@ -40,6 +40,6 @@ class BowlingScorecard {
   }
 }
 
-module.exports = BowlingScorecard;
+// module.exports = BowlingScorecard;
 
 // console.log("0".match(/\D/g))

@@ -1,17 +1,22 @@
 {
     "env": {
         "browser": true,
-        "commonjs": true,
         "es2021": true,
         "jasmine": true
     },
-    "extends": "eslint:recommended",
+    "plugins": [
+      "jasmine",
+      "jquery"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:jasmine/recommended",
+      "plugin:jquery/deprecated"
+    ],
     "parserOptions": {
         "ecmaVersion": 12
     },
     "rules": {
     },
-    "plugins": [
-      "jasmine"
-    ]
+    "ignorePatterns": ["/lib/*"]
 }

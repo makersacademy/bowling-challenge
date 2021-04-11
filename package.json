@@ -1,13 +1,14 @@
 {
-  "name": "bowling-challenge-js",
+  "name": "bowling-challenge",
   "version": "1.0.0",
-  "description": "makers academy week 6 weekend challenge",
-  "main": "index.js",
+  "description": "Makers week 6 weekend challenge by jackmcc08",
+  "main": "index.html",
   "directories": {
-    "doc": "docs"
+    "doc": "docs",
+    "lib": "lib"
   },
   "scripts": {
-    "test": "jasmine"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,9 @@
   "devDependencies": {
     "eslint": "^7.24.0",
     "eslint-plugin-jasmine": "^4.1.2",
-    "jasmine": "^3.7.0"
+    "eslint-plugin-jquery": "^1.5.1"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0"
   }
 }

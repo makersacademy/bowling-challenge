@@ -1,5 +1,5 @@
 describe("BowlingScorecard", function() {
-  const BowlingScorecard = require('../src/BowlingScorecard.js');
+  // const BowlingScorecard = require('../src/BowlingScorecard.js');
   var testScorecard;
 
   beforeEach(function() {

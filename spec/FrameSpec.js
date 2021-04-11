@@ -1,5 +1,7 @@
+// import Frame from '../src/Frame.js'
+
 describe("Frame", function() {
-  const Frame = require('../src/Frame.js');
+  // const Frame = require('../src/Frame.js');
   var testFrame;
 
   beforeEach(function() {

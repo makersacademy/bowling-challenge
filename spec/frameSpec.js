@@ -36,4 +36,13 @@ describe('Frame', function() {
         }
         expect(frame.maxFrames()).toEqual(10)
     });
+
+
+
+    it ('starts a new game when 10 frames are played', function() {
+        for(let i = 1; i <=11; i ++) {
+            completedFrame();
+        }
+        expect(frame.maxFrames()).toEqual(10)
+    });
 });

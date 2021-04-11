@@ -4,6 +4,9 @@ function Frame (seqNum) {
         this.seqNum = seqNum || 0;
 
     Frame.prototype.totalRolls = function() {
+        // if (this.rolls.length === 3) {
+        //     this.rolls.splice(0, this.rolls.length)
+        // }
         return (this.rolls.length);
     };
     Frame.prototype.storeRoll = function(roll) {

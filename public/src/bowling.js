@@ -63,6 +63,10 @@ class Bowling {
       this.frameScore.push(score1, score2)
     // this.frameScore.push(score)
     }
+    if (score1 + score2 != 10) {
+      return 'Game Over'
+    }
+
   }
 // start of frameTen method. Currently pushes scores into frameScore
 // if the first ball isn't a strike

@@ -163,6 +163,12 @@ describe ('Bowling', function(){
         expect(bowling.frameScore).toEqual([6, 2])
       });
     });
+    describe('neither a strike or spare are bowled', function(){
+      it('ends the game', function(){
+        expect(bowling.frameTen(4, 2)).toEqual('Game Over')
+
+      })
+    });
   });
 
   describe('a short game is played', function(){

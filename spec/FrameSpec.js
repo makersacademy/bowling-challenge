@@ -22,4 +22,12 @@ describe("Frame", function() {
       expect(testFrame.isComplete()).toEqual(true)
     })
   })
+
+  describe("#updateTotal", function() {
+    it("will update the total score for the frame", function() {
+      testFrame.enterRoll(5)
+
+      expect(testFrame.updateCurrentTotal()).toEqual(5)
+    });
+  });
 });

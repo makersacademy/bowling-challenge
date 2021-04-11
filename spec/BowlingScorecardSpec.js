@@ -41,6 +41,14 @@ describe("BowlingScorecard", function() {
     // will need to test end game functionality as well
   });
 
+  describe("#currentScore", function() {
+    it("tells you your current scores so far, after 1st throw", function() {
+      testScorecard.enterRoll(5)
+
+      expect(testScorecard.currentScore()).toEqual(5)
+    })
+  });
+
   describe("#generateScorecardInfo", function() {
     it("tells you your scores so far, after 1st throw", function() {
       testScorecard.enterRoll(5)
@@ -64,15 +72,28 @@ describe("BowlingScorecard", function() {
       expect(testScorecard.generateScorecardInfo()).toEqual(FOURTH_THROW_SCORECARD)
     });
 
-    const FIRST_THROW_SCORECARD = [{ frame: 1, firstRoll: 5, secondRoll: "" }]
+    it("tells you if you score a strike", function() {
+      testScorecard.enterRoll(5)
+      testScorecard.enterRoll(4)
+      testScorecard.enterRoll(10)
+
+      expect(testScorecard.generateScorecardInfo()).toEqual(STRIKE_THROW_SCORECARD)
+    })
+
+    const FIRST_THROW_SCORECARD = [{ frame: 1, firstRoll: 5, secondRoll: "", strike: false, spare: false, total: 5 }]
     const SECOND_THROW_SCORECARD = [
-      { frame: 1, firstRoll: 5, secondRoll: 4 },
-      { frame: 2, firstRoll: "", secondRoll: "" }
+      { frame: 1, firstRoll: 5, secondRoll: 4, strike: false, spare: false, total: 9 },
+      { frame: 2, firstRoll: "", secondRoll: "", strike: false, spare: false, total: 9 }
     ]
     const FOURTH_THROW_SCORECARD = [
-      { frame: 1, firstRoll: 5, secondRoll: 4 },
-      { frame: 2, firstRoll: 4, secondRoll: 4 },
-      { frame: 3, firstRoll: "", secondRoll: "" }
+      { frame: 1, firstRoll: 5, secondRoll: 4, strike: false, spare: false, total: 9 },
+      { frame: 2, firstRoll: 4, secondRoll: 4, strike: false, spare: false, total: 17 },
+      { frame: 3, firstRoll: "", secondRoll: "", strike: false, spare: false, total: 17 }
+    ]
+    const STRIKE_THROW_SCORECARD = [
+      { frame: 1, firstRoll: 5, secondRoll: 4, strike: false, spare: false, total: 9 },
+      { frame: 2, firstRoll: 'X', secondRoll: "", strike: true, spare: false, total: 19 },
+      { frame: 3, firstRoll: "", secondRoll: "", strike: false, spare: false, total: 19 }
     ]
   });
 });

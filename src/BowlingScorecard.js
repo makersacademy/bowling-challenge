@@ -13,21 +13,26 @@ class BowlingScorecard {
     score = Number(score)
     this._currentFrame().enterRoll(score)
     if (this._checkFrameOver() === "EndGame") return "End of Game";
-    
+
     return score
   }
 
+  currentScore() {
+    let total = 0
+    this.frames.forEach(function(element) {
+      total += (element.frameScore)
+    })
+
+    return total
+  }
+
   generateScorecardInfo() {
+    let thisIs = this
     let results = this.frames.map(function(element) {
-      let firstRoll = element.firstRoll;
-      if (firstRoll === null) {
-        firstRoll = ""
-      }
-      let secondRoll = element.secondRoll
-      if (secondRoll === null) {
-        secondRoll = ""
-      }
-      return { frame: element.frame, firstRoll: firstRoll, secondRoll: secondRoll };
+      let firstRoll = thisIs._tidyDisplay(element.firstRoll, element.strike)
+      let secondRoll = thisIs._tidyDisplay(element.secondRoll)
+
+      return { frame: element.frame, firstRoll: firstRoll, secondRoll: secondRoll, strike: element.strike, spare: element.spare, total: element.total };
     });
     return results
   }
@@ -47,11 +52,13 @@ class BowlingScorecard {
   }
 
   _checkFrameOver() {
+    this._updateTotal()
+
     if (this._currentFrame().isComplete() && this.frame === 10) return "EndGame";
 
     if (this._currentFrame().isComplete()) {
       this.frame++;
-      this.frames.push(new Frame(this.frame));
+      this.frames.push(new Frame(this.frame, this.currentScore()));
     }
   }
 
@@ -59,15 +66,19 @@ class BowlingScorecard {
     return this.frames[this.frames.length - 1]
   }
 
-  // Having issues implementing a refactor into the display scorecard class - it does not see the function - i believe due to using this method.
-  // _tidyDisplay(roll) {
-  //   console.log(roll)
-  //   if (roll === null) {
-  //     return ("");
-  //   } else {
-  //     return roll
-  //   }
-  // }
+  _tidyDisplay(roll, strike) {
+    if (roll === null) {
+      return ("");
+    } else if (strike) {
+      return 'X';
+    } else {
+      return roll
+    }
+  }
+
+  _updateTotal() {
+    this._currentFrame().updateCurrentTotal();
+  }
 }
 
 // module.exports = BowlingScorecard;

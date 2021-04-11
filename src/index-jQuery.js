@@ -25,18 +25,20 @@ $( document ).ready(function() {
   function displayScorecard() {
     $('#the-current-score-div').empty()
     $('#the-current-score-div').append(`<p class="scorecard-row">Your current scorecard:</p>`);
-    $('#the-current-score-div').append(`<p class="scorecard-row">Frame | First Roll | Second roll</p>`);
+    $('#the-current-score-div').append(`<p class="scorecard-row">Frame | First Roll | Second roll | Total</p>`);
     var counter = 1
     scorecard.generateScorecardInfo().forEach(function(element) {
+      if (element.firstRoll === "" && element.secondRoll === "") return;
+
       console.log(element);
-      $('#the-current-score-div').append(`<p class="scorecard-row">${element.frame} | ${element.firstRoll} | ${element.secondRoll}</p>`);
+      $('#the-current-score-div').append(`<p class="scorecard-row">${element.frame} | ${element.firstRoll} | ${element.secondRoll} | ${element.total}</p>`);
       counter++
     });
     for (counter; counter <= 10; counter++) {
       $('#the-current-score-div').append(`<p class="scorecard-row">${counter} | | </p>`)
     }
+    $('#the-current-score-div').append(`<p class="scorecard-row">Current Score: ${scorecard.currentScore()}</p>`);
   }
 });
 
-// Create a function to print out the scorecard
-// create a function which returns an error message when the score is invalid.
+// Last line total score continues updating even after end game

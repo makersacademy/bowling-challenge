@@ -24,8 +24,9 @@ Build interface with jQuery
   - gives an error message if a wrong number is entered. - need to improve logic first
 
 Finish off the logic.
-- error handling for second roll
-- total scoring
+- error handling for second roll - done
+- total scoring - done
+- implement strike and spare logic
 - handling bonus points.
 - final frame logic
 

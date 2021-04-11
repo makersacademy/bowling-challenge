@@ -86,12 +86,19 @@ class BowlingScorecard {
   _applyBonus() {
     if (this.frame === 1) return;
 
+    let previousFrame = this.frames[this.frames.length - 2];
     if (this._currentFrame().isFirstRollComplete()) {
-      let previousFrame = this.frames[this.frames.length - 2];
-      if (previousFrame.spare) {
+      if (previousFrame.spare || previousFrame.strike) {
         previousFrame.frameScore += this._currentFrame().firstRoll;
         previousFrame.total += this._currentFrame().firstRoll;
         this._currentFrame().total += this._currentFrame().firstRoll
+      }
+    } else if (this._currentFrame().isComplete()) {
+      if (previousFrame.strike) {
+        previousFrame.frameScore += this._currentFrame().secondRoll;
+        previousFrame.total += this._currentFrame().secondRoll;
+        this._currentFrame().total += this._currentFrame().secondRoll
+        this._currentFrame().secondRoll
       }
     }
   }

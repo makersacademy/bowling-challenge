@@ -24,15 +24,15 @@ class ScoreCard {
   }
   total() {
     return this.frames.map((frame, index) => {
-      let bonus = 0 
-      if(this.previousTwoFramesAreStrikes(index)) { bonus += frame.rolls[0] + 10 }
-      if(this.previousFrameIsStrike(index)) {
-        bonus += frame.count()
-    } else if(this.previousFrameIsSpare(index)) {
-       bonus += frame.rolls[0] 
-    }
-      let frameTotal = frame.count()
-      return frameTotal += bonus
+        let bonus = 0 
+        if(this.previousTwoFramesAreStrikes(index)) { bonus += frame.rolls[0] + 10 }
+        if(this.previousFrameIsStrike(index)) {
+          bonus += frame.count()
+      } else if(this.previousFrameIsSpare(index)) {
+        bonus += frame.rolls[0] 
+      }
+        let frameTotal = frame.count()
+        return frameTotal += bonus
     }).reduce(function(acc, score) { return acc += score },0)
   }
 
@@ -53,13 +53,15 @@ class ScoreCard {
       this.lastFrame = new Frame; 
       this.lastFrame.roll(pins)
     } else if (this.tenthRoundNoBonus()) {
-      this.lastFrame.roll(pins)
       let finalScore = this.total() + this.tenthRoundNoBonusScore()
       this.frames.push(this.lastFrame)  
       return `Game ended! Your score was ${finalScore}`
     } else if (this.tenthRoundWithBonus()) {
       this.lastFrame.roll(pins)
-      let finalScore = this.total() + this.tenthRoundWithBonusScore()
+      console.log(this.frames)
+      console.log(this.total())
+      console.log(this.tenthRoundWithBonusScore())
+      let finalScore = this.total() === 300 ? 300 : this.total() + this.tenthRoundWithBonusScore()
       this.frames.push(this.lastFrame)
       return `Game ended! Your score was ${finalScore}`
     } else {
@@ -67,10 +69,10 @@ class ScoreCard {
     }
   }
   tenthRoundNoBonus() {
-    return (this.lastFrame.rolls.length >= 1 && !this.lastFrame.count() == 10 && !this.lastFrame.isStrike())
+    return (this.lastFrame.rolls.length >= 2 && !this.lastFrame.isSpare() && !this.lastFrame.isStrike())
   }
   tenthRoundWithBonus() {
-    return (this.lastFrame.rolls.length === 2)
+    return (this.lastFrame.rolls.length === 2 && this.lastFrame.isStrike() || this.lastFrame.isSpare())
   }
   tenthRoundWithBonusScore() {
     return (this.lastFrame.rolls[0] + this.lastFrame.rolls[1] + this.lastFrame.rolls[2])

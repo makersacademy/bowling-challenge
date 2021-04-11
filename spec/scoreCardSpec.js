@@ -82,11 +82,11 @@ describe('tenthRound', function() {
 describe('tenthRound', function() {
   let scoreCard = new ScoreCard;
   it('returns the final score when the game ends', function() {
-    for(let i = 0; i < 19; i++) {
+    for(let i = 0; i < 20; i++) {
       scoreCard.play(4)
     }
 
-    expect(scoreCard.play(3)).toEqual('Game ended! Your score was 79')
+    expect(scoreCard.play(3)).toEqual('Game ended! Your score was 80')
   })
 })
 describe('tenthRoundStrike', function() {
@@ -109,7 +109,7 @@ describe('Tenth round without a third roll', function() {
       scoreCard.play(4)
     }
     scoreCard.play(4)
-
+    scoreCard.play(4)
     expect(scoreCard.play(4)).toEqual('Game ended! Your score was 80')
   })
 })
@@ -138,3 +138,15 @@ describe('third roll for a spare', function() {
     expect(scoreCard.play(4)).toEqual('Game ended! Your score was 86')
   })
 })
+
+describe('perfect game', function() {
+  let scoreCard = new ScoreCard;
+  it('should return 300 on a prefect game', function() {
+    for(let i = 0; i < 12; i++) {
+      scoreCard.play(10)
+    }
+
+    expect(scoreCard.play(10)).toEqual('Game ended! Your score was 300')
+  })
+})
+

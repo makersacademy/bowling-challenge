@@ -28,5 +28,5 @@
 - Use jest for test
 - Use ESLint for code checks
 - Use Travis for integration
-- Functions and tests are fully implemented, test coverage: 98.41%
+- Functions and unit test are fully implemented, test coverage: 98.41%
 - Some style and animation

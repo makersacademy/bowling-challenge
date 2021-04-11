@@ -29,7 +29,7 @@ class Bowling {
     };
   };
 
-  frame(score1, score2) {
+  frame(score1, score2 = 0) {
     if ((Number(score1) === 10) && (Number(score2) > 0)) {
       throw new Error('You may not bowl again in this frame');
     }
@@ -48,6 +48,13 @@ class Bowling {
       this.score.splice(-2, 0, (10 + Number(this.frameScore[0])))
       return this.score
     };
+    if ((this.frameStatus == 'strike') && (this.prevFrame == 'spare')) {
+      this.score.push(20)
+      return this.score
+    };
+    if ((this.frameStatus == 'strike') && (this.prevFrame == 'strike')) {
+      this.prevFrame = '2xstrike'
+    }
   };
 };
 

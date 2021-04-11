@@ -104,7 +104,6 @@ describe ('Bowling', function(){
         bowling.frame(3, 5)
         expect(bowling.bonus()).toEqual([13, 3, 5])
       });
-      it('a ')
     });
     describe('a spare is bowled', function(){
       it('checks if the previous ball is a strike and adds bonus', function(){

@@ -23,21 +23,23 @@ class Bowling {
   };
 
   bonus() {
+    // prevFrame = spare
     if ((this.frameStatus != 'strike') && (this.prevFrame == 'spare')) {
-      // this.score.push(10 + Number(this.frameScore[0]))
       this.score.splice(-2, 0, (10 + Number(this.frameScore[0])))
       return this.score
-    };
-    if ((this.frameStatus == 'spare') && (this.prevFrame == 'strike')) {
-      this.score.push(20)
     };
     if ((this.frameStatus == 'strike') && (this.prevFrame == 'spare')) {
       this.score.push(20)
       return this.score
     };
+    // prevframe = strike
+    if ((this.frameStatus == 'spare') && (this.prevFrame == 'strike')) {
+      this.score.push(20)
+    };
     if ((this.frameStatus == 'strike') && (this.prevFrame == 'strike')) {
       this.prevFrame = '2xstrike'
     };
+    //prevFrame = 2xstrike
     if ((this.frameStatus == 'strike') && (this.prevFrame == '2xstrike')) {
       this.score.push(30)
     };

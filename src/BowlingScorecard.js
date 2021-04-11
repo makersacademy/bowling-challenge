@@ -70,11 +70,10 @@ class BowlingScorecard {
   }
 
   _checkFrameOver() {
-    console.log("test" + this._currentFrame().total)
     this._updateTotal()
-    console.log("test" + this._currentFrame().total)
 
-    if (this._currentFrame().isComplete() && this.frame === 10) return "EndGame";
+    if (this.frame === 10 && this._currentFrame.firstRoll !== null && this._currentFrame.secondRoll !== null && this._currentFrame.thirdRoll !== null ) return "EndGame";
+    if (this.frame === 10 && this._currentFrame.firstRoll !== null && this._currentFrame.secondRoll !== null && this._currentFrame.strike === false && this._currentFrame.spare === false) return "EndGame";
 
     if (this._currentFrame().isComplete()) {
       this.frame++;
@@ -106,11 +105,7 @@ class BowlingScorecard {
 
   _applyBonus() {
     if (this.frame === 1) return;
-    console.log(this._currentFrame().total)
-    console.log(this.currentScore())
     if (this.frame === 10 && this._currentFrame().thirdRoll !== null) return;
-    console.log(this._currentFrame().total)
-    console.log(this.currentScore())
 
     let previousFrame = this.frames[this.frames.length - 2];
 

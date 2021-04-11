@@ -30,11 +30,11 @@ Finish off the logic.
 - handling bonus points. - partial
     - need to handle multiple strikes in a row - done
 - final frame logic
-    - need to look at 10th frame no strike or spare
-    - need to look at strike
-    - need to look at spare
+    - need to look at 10th frame no strike or spare - done
+    - need to look at strike - done
+    - need to look at spare - done
 
-- add import/export
-- add Travis, Karma, etc...
+- add import/export - not done
+- add Travis, Karma, etc...- not done
 
-- optional - pictures and victory messages!
+- optional - pictures and victory messages!- not done

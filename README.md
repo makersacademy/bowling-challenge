@@ -1,10 +1,45 @@
 
-need to install eslint, jasmine & jQuery Plugins
-Need to install jQuery - don't think needed - should work off the bat.
-Jasmine should work straight off the bat
-
 Bowling Challenge
 =================
+
+This is my solution to the week 6 weekend challenge - bowling scorecard in javascript.
+
+I created a javascript model TDD through jasmine and using ESLINT for enforcing good code practice. I also created a basic UI and display using jQuery.
+
+I did not fully complete the end game condition logic.
+
+Things I liked:
+- I started extracting classes from the beginning so got a frame class in early on and that made some of the logic a lot simpler.
+- I liked my one line if guard statements in javascript.
+
+Things I could improve:
+- implementing travis and coverage reporting
+- refactoring in javascript - did not do well
+- understanding importing and exporting files
+- understanding node.js and package.json a bit more and running jasmine through node
+- understanding CDNs
+- could add CSS and improve UI - very basic
+
+On completion
+- all jasmine tests passed
+- esLint still had errors, but did not have time to fully resolve
+- The UI worked but is very simple
+- End game conditions not fully set up
+
+## To use:
+
+- jasmine and jQuery should work straight off the bat
+- if you want to run esLInt you will need to install eslint via node, run the following commands in your terminal:
+   - npm install esline --save-dev               
+   - npm install --save-dev eslint-plugin-jasmine
+   - npm install eslint-plugin-jquery --save-dev
+
+- To run:
+  - test jasmine through running the SpecRunner.html in your browser
+  - use the UI by running index.html in your browser
+
+
+## Original Instructions
 
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README

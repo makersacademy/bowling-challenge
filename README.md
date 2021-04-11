@@ -12,14 +12,15 @@
 
 ---------
 ### How to use
-1. URL: https://shacheng.co.uk/bowling-challenge/
+1. URL: <a href="https://shacheng.co.uk/bowling-challenge/" target="_blank">link</a>
 2. Follow instructions on screen
 
 ---------
 ### How to test
 1. git clone this repository
-2. command line `npm install`
-3. command line `npm run test`
+2. Install dependencies `npm install`
+3. Run test `npm run test`
+4. Run code checks `npm run lint`
 
 ---------
 ### Overview

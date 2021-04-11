@@ -42,11 +42,13 @@ class Bowling {
     };
   };
 
-  // bonus() {
-  //   if ((this.frameStatus != 'strike') && (this.prevFrame == 'spare')) {
-  //     this.score.push([10, this.frameScore])
-  //   };
-  // };
+  bonus() {
+    if ((this.frameStatus != 'strike') && (this.prevFrame == 'spare')) {
+      // this.score.push(10 + Number(this.frameScore[0]))
+      this.score.splice(-2, 0, (10 + Number(this.frameScore[0])))
+      return this.score
+    };
+  };
 };
 
 // TESTS WRITTEN FOR BONUS METHOD. NEED TO WORK OUT HOW TO PUSH PREVIOUS

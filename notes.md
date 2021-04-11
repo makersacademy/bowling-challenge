@@ -61,10 +61,13 @@ Bonuses
 - When the first ball if NOT a strike:
 - Check if previous ball was a spare, if so add first round score to 10 for previous frame and push that into scores array
 - Check if 2x strike, if so add first bowl score to 20 and push into 2x previous frame array - come back to
+- check if prevFrame is a strike and add 10 to frame score
 - If is a strike:
 - Check if previous ball was a spare and add 20 to previous frame
 - Check if previous ball was a strike, if so change frameStatus to 2x strike
 - Check if previous ball is 2x strike, if so add 30 to 2x previous frame array
+
+- framestatus is spare and prevframe is strike, 10+10
 
 10th Frame
 - If first ball NOT a strike

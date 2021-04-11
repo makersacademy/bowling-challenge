@@ -61,7 +61,9 @@ describe ('Bowling', function(){
 
   describe('frame', function(){
     it('returns the frameScore array', function(){
-      expect(bowling.frame(3, 5)).toEqual([3, 5])
+      // expect(bowling.frame(3, 5)).toEqual([3, 5])
+      bowling.frame(3, 5)
+      expect(bowling.score).toEqual([3, 5])
     });
     it('ends frame if bowl1 is a strike', function(){
       expect(bowling.frame(10, 0)).toEqual('strike')
@@ -101,6 +103,15 @@ describe ('Bowling', function(){
         bowling.prevFrame = 'spare'
         bowling.frame(3, 5)
         expect(bowling.bonus()).toEqual([13, 3, 5])
+      });
+      it('a ')
+    });
+    describe('a spare is bowled', function(){
+      it('checks if the previous ball is a strike and adds bonus', function(){
+        bowling.prevFrame = 'strike'
+        bowling.frame(5, 5)
+        bowling.bonus()
+        expect(bowling.score).toEqual([20])
       });
     });
     describe('a strike is bowled', function(){

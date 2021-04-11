@@ -1,5 +1,4 @@
 $( document ).ready (function() {
-  $('#reset').hide();
   let game = new Game();
   let strike = (roll1) => {
     if (roll1 == '10') {
@@ -22,6 +21,7 @@ $( document ).ready (function() {
       $('#f1roll2').hide();
       $('#l1r2').hide();
       game.roll(parseInt(f1roll1));
+      $('#f1score').text(game.gameScore[0]);
     }
     if (f1roll1 == '') {
       alert('Please enter a value for frame 1, roll 1');
@@ -39,6 +39,7 @@ $( document ).ready (function() {
       alert('Please enter a value for frame 1, roll 2');
     } else {
       game.roll(parseInt(f1roll1), parseInt(f1roll2));
+      $('#f1score').text(game.gameScore[0]);
     }
   });
   // Hide roll 2 for frame 2, if roll 1 is a strike
@@ -48,6 +49,7 @@ $( document ).ready (function() {
       $('#f2roll2').hide();
       $('#l2r2').hide();
       game.roll(parseInt(f2roll1));
+      updateScore();
     }
     if (f2roll1 == '') {
       alert('Please enter a value for frame 2, roll 1');
@@ -65,6 +67,7 @@ $( document ).ready (function() {
       alert('Please enter a value for frame 2, roll 2');
     } else {
       game.roll(parseInt(f2roll1), parseInt(f2roll2));
+      updateScore();
     }
   });
   // Hide roll 2 for frame 3, if roll 1 is a strike
@@ -74,6 +77,7 @@ $( document ).ready (function() {
       $('#f3roll2').hide();
       $('#l3r2').hide();
       game.roll(parseInt(f3roll1));
+      updateScore();
     }
     if (f1roll3 == '') {
       alert('Please enter a value for frame 3, roll 1');
@@ -91,6 +95,7 @@ $( document ).ready (function() {
       alert('Please enter a value for frame 3, roll 2');
     } else {
       game.roll(parseInt(f3roll1), parseInt(f3roll2));
+      updateScore();
     }
   });
   // Hide roll 2 for frame 4, if roll 1 is a strike
@@ -100,6 +105,7 @@ $( document ).ready (function() {
       $('#f4roll2').hide();
       $('#l4r2').hide();
       game.roll(parseInt(f4roll1));
+      updateScore();
     }
     if (f4roll1 == '') {
       alert('Please enter a value for frame 4, roll 1');
@@ -117,6 +123,7 @@ $( document ).ready (function() {
       alert('Please enter a value for frame 4, roll 2');
     } else {
       game.roll(parseInt(f4roll1), parseInt(f4roll2));
+      updateScore();
     }
   });
   // Hide roll 2 for frame 5, if roll 1 is a strike
@@ -126,6 +133,7 @@ $( document ).ready (function() {
       $('#f5roll2').hide();
       $('#l5r2').hide();
       game.roll(parseInt(f5roll1));
+      updateScore();
     }
     if (f5roll1 == '') {
       alert('Please enter a value for frame 5, roll 1');
@@ -143,6 +151,7 @@ $( document ).ready (function() {
       alert('Please enter a value for frame 5, roll 2');
     } else {
       game.roll(parseInt(f5roll1), parseInt(f5roll2));
+      updateScore();
     }
   });
   // Hide roll 2 for frame 6, if roll 1 is a strike
@@ -152,6 +161,7 @@ $( document ).ready (function() {
       $('#f6roll2').hide();
       $('#l6r2').hide();
       game.roll(parseInt(f6roll1));
+      updateScore();
     }
     if (f6roll1 == '') {
       alert('Please enter a value for frame 6, roll 1');
@@ -169,6 +179,7 @@ $( document ).ready (function() {
       alert('Please enter a value for frame 6, roll 2');
     } else {
       game.roll(parseInt(f6roll1), parseInt(f6roll2));
+      updateScore();
     }
   });
   // Hide roll 2 for frame 7, if roll 1 is a strike
@@ -178,6 +189,7 @@ $( document ).ready (function() {
       $('#f7roll2').hide();
       $('#l7r2').hide();
       game.roll(parseInt(f7roll1));
+      updateScore();
     }
     if (f7roll1 == '') {
       alert('Please enter a value for frame 7, roll 1');
@@ -195,6 +207,7 @@ $( document ).ready (function() {
       alert('Please enter a value for frame 7, roll 2');
     } else {
       game.roll(parseInt(f7roll1), parseInt(f7roll2));
+      updateScore();
     }
   });
   // Hide roll 2 for frame 8, if roll 1 is a strike
@@ -204,6 +217,7 @@ $( document ).ready (function() {
       $('#f8roll2').hide();
       $('#l8r2').hide();
       game.roll(parseInt(f8roll1));
+      updateScore();
     }
     if (f8roll1 == '') {
       alert('Please enter a value for frame 8, roll 1');
@@ -221,6 +235,7 @@ $( document ).ready (function() {
       alert('Please enter a value for frame 8, roll 2');
     } else {
       game.roll(parseInt(f8roll1), parseInt(f8roll2));
+      updateScore();
     }
   });
   // Hide roll 2 for frame 9, if roll 1 is a strike
@@ -230,6 +245,7 @@ $( document ).ready (function() {
       $('#f9roll2').hide();
       $('#l9r2').hide();
       game.roll(parseInt(f9roll1));
+      updateScore();
     }
     if (f9roll1 == '') {
       alert('Please enter a value for frame 9, roll 1');
@@ -247,6 +263,7 @@ $( document ).ready (function() {
       alert('Please enter a value for frame 9, roll 2');
     } else {
       game.roll(parseInt(f9roll1), parseInt(f9roll2));
+      updateScore();
     }
   });
   // Check if the user is correctly inputting frame 10
@@ -268,6 +285,7 @@ $( document ).ready (function() {
       $('#f10roll3').hide();
       $('#l10r3').hide();
       game.roll(parseInt(f10roll1), parseInt(f10roll2));
+      updateScore();
     }
   });
   $( '#f10roll3' ).change(function( event ) {
@@ -287,6 +305,7 @@ $( document ).ready (function() {
       }
     }
     game.roll(parseInt(f10roll1), parseInt(f10roll2), parseInt(f10roll3));
+    updateScore();
     console.log(game);
   });
   $( '#go' ).click(function() {
@@ -308,7 +327,7 @@ $( document ).ready (function() {
     $('#f4roll1').hide();
     $('#f4roll2').hide();
     // $('#l5r1').hide();
-    // $('#l5r2').hide();
+    $('#l5r2').hide();
     $('#f5roll1').hide();
     $('#f5roll2').hide();
     $('#l6r1').hide();
@@ -333,18 +352,39 @@ $( document ).ready (function() {
     $('#f10roll1').hide();
     $('#f10roll2').hide();
     $('#f10roll3').hide();
+    $('#f1score').hide();
+    $('#f2score').hide();
+    $('#f3score').hide();
+    $('#f4score').hide();
+    $('#f5score').hide();
+    $('#f6score').hide();
+    $('#f7score').hide();
+    $('#f8score').hide();
+    $('#f9score').hide();
+    $('#f10score').hide();
     $('#go').hide();
     $('#reset').show();
     $('#l4r1').text('Your score is:');
     console.log(game.gameScore.reduce((a, b) => a + b, 0));
     console.log(game.gameScore);
     $('#l5r1').text(game.gameScore.reduce((a, b) => a + b, 0));
-    $('#l5r2').text(game.gameScore);
   });
   $( '#reset' ).click(function() {
     location.reload();
   });
 
+  let updateScore = ( ) => {
+    $('#f1score').text(game.gameScore[0]);
+    $('#f2score').text(game.gameScore[1]);
+    $('#f3score').text(game.gameScore[2]);
+    $('#f4score').text(game.gameScore[3]);
+    $('#f5score').text(game.gameScore[4]);
+    $('#f6score').text(game.gameScore[5]);
+    $('#f7score').text(game.gameScore[6]);
+    $('#f8score').text(game.gameScore[7]);
+    $('#f9score').text(game.gameScore[8]);
+    $('#f10score').text(game.gameScore[9]);
+  }
 });
 
 //   $('#power_mode').text(thermostat.getPowerSave())

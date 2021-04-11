@@ -9,3 +9,5 @@
 - Only enter valid bowling scores as numbers in to the UI, it does not do any validation at this time
 
 I know this Readme is a bit thread bare, but I have created a guide concurrently with this project which covers all of the packages I used in this repo, you can find that [here](https://github.com/StuBehan/npm-eslint-jasmine-guide).
+
+Testing on `interface.js` is to come once I work out how to test jQuery! 

@@ -16,7 +16,7 @@ class Bowling {
       this.score.push(score1, score2)
       // return this._bowl2(score2)
     }
-    if (this._bowl2(score2) == 'spare') {
+    else if (this._bowl2(score2) == 'spare') {
       this._bowl2(score2)
     }
     else {
@@ -59,11 +59,12 @@ class Bowling {
   };
 
   frameTen(score1, score2 = 0) {
-    if (score1 != 10) {
-      this.frameScore.push(score1, score2)
-    // this.frameScore.push(score)
-    }
+    // if (score1 != 10) {
+    //   this.frameScore.push(score1, score2)
+    // // this.frameScore.push(score)
+    // }
     if (score1 + score2 != 10) {
+      this.frame(score1, score2)
       return 'Game Over'
     }
 

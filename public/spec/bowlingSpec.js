@@ -156,17 +156,24 @@ describe ('Bowling', function(){
     describe('first ball is not a strike', function(){
       it('returns the bowl', function(){
           bowling.frameTen(4)
-          expect(bowling.frameScore).toEqual([4, 0])
+          expect(bowling.score).toEqual([4, 0])
       });
       it('treats the first 2 bowls as a frame', function(){
         bowling.frameTen(6, 2)
+        console.log(bowling.score)
+        console.log(bowling.frameStatus)
+        console.log(bowling.frameScore)
         expect(bowling.frameScore).toEqual([6, 2])
       });
     });
     describe('neither a strike or spare are bowled', function(){
       it('ends the game', function(){
         expect(bowling.frameTen(4, 2)).toEqual('Game Over')
-
+      });
+      it('calculates the bonuses', function(){
+        bowling.prevFrame = 'spare'
+        bowling.frameTen(3, 4)
+        expect(bowling.score).toEqual([13, 3, 4])
       })
     });
   });

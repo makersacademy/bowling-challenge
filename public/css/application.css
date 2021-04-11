@@ -36,7 +36,7 @@ button:hover {
   border: 1px solid rgb(46, 44, 44);
 }
 
-/* text input */
+/* table text classes */
 
 .textInvis {
   border: rgba(46, 44, 44, 0);
@@ -50,4 +50,10 @@ button:hover {
 
 .textInvis:focus {
   outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

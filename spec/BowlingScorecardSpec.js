@@ -89,6 +89,16 @@ describe("BowlingScorecard", function() {
       expect(testScorecard.generateScorecardInfo()).toEqual(SPARE_THROW_SCORECARD)
     })
 
+    it("gives you bonus points if you get a spare", function() {
+      testScorecard.enterRoll(5)
+      testScorecard.enterRoll(4)
+      testScorecard.enterRoll(5)
+      testScorecard.enterRoll(5)
+      testScorecard.enterRoll(5)
+
+      expect(testScorecard.generateScorecardInfo()).toEqual(SPARE_BONUS_THROW_SCORECARD)
+    })
+
     const FIRST_THROW_SCORECARD = [{ frame: 1, firstRoll: 5, secondRoll: "", strike: false, spare: false, total: 5 }]
     const SECOND_THROW_SCORECARD = [
       { frame: 1, firstRoll: 5, secondRoll: 4, strike: false, spare: false, total: 9 },
@@ -108,6 +118,11 @@ describe("BowlingScorecard", function() {
       { frame: 1, firstRoll: 5, secondRoll: 4, strike: false, spare: false, total: 9 },
       { frame: 2, firstRoll: 5, secondRoll: '/', strike: false, spare: true, total: 19 },
       { frame: 3, firstRoll: "", secondRoll: "", strike: false, spare: false, total: 19 }
+    ]
+    const SPARE_BONUS_THROW_SCORECARD = [
+      { frame: 1, firstRoll: 5, secondRoll: 4, strike: false, spare: false, total: 9 },
+      { frame: 2, firstRoll: 5, secondRoll: '/', strike: false, spare: true, total: 24 },
+      { frame: 3, firstRoll: 5, secondRoll: "", strike: false, spare: false, total: 29 }
     ]
   });
 });

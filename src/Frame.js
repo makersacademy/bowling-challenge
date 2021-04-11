@@ -30,6 +30,12 @@ class Frame {
     return this.total
   }
 
+  isFirstRollComplete() {
+    if (this.secondRoll === null && this.firstRoll !== null) return true;
+
+    return false
+  }
+
   _assignScore(score) {
     if (this.firstRoll === null) {
       if (score === 10) { this.strike = true};

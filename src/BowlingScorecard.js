@@ -12,6 +12,7 @@ class BowlingScorecard {
 
     score = Number(score)
     this._currentFrame().enterRoll(score)
+    this._applyBonus()
     if (this._checkFrameOver() === "EndGame") return "End of Game";
 
     return score
@@ -80,6 +81,19 @@ class BowlingScorecard {
 
   _updateTotal() {
     this._currentFrame().updateCurrentTotal();
+  }
+
+  _applyBonus() {
+    if (this.frame === 1) return;
+
+    if (this._currentFrame().isFirstRollComplete()) {
+      let previousFrame = this.frames[this.frames.length - 2];
+      if (previousFrame.spare) {
+        previousFrame.frameScore += this._currentFrame().firstRoll;
+        previousFrame.total += this._currentFrame().firstRoll;
+        this._currentFrame().total += this._currentFrame().firstRoll
+      }
+    }
   }
 }
 

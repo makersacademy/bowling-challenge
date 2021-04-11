@@ -30,4 +30,11 @@ describe("Frame", function() {
       expect(testFrame.updateCurrentTotal()).toEqual(5)
     });
   });
+
+  describe("#isFirstRollComplete", function() {
+    it("returns true if it is the first roll of the frame", function() {
+      testFrame.enterRoll(5)
+      expect(testFrame.isFirstRollComplete()).toEqual(true)
+    })
+  })
 });

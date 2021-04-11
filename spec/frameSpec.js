@@ -5,14 +5,6 @@ describe('Frame', function(){
     frame = new Frame();
   });
 
-  describe('creating a new frame', function(){
-    it('sets total rolls to 2', function(){
-      expect(frame.totalRolls).toEqual(2);
-    });
-    it('sets roll number to 0', function(){
-      expect(frame.rollNumber).toEqual(0);
-    });
-  });
   describe('recognising a strike', function(){
     it('returns true if the first roll is 10', function(){
       expect(frame.strike(10)).toEqual(true);

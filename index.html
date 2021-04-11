@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="style.css" type="text/css">
+<html>
+  <header>
+    BOWLING SCORE CALCULATOR<br><br>
+    Please enter your rolls below!<p><p>
+  </header>
+  <body>
+    <script src="jquery.js"></script>
+    <script src="src/game.js"></script>
+    <script src="src/frame.js"></script>
+    <script src="src/score.js"></script>
+    <script src="src/interface.js"></script>
+    <div class = "grid-container">
+      <div class = "grid-item">
+        <div class = "dropdown" id="frame1">
+          <label for="f1roll1" id="l1r1">Enter roll 1</label>
+          <select name="f1roll1" id="f1roll1">
+            <option value=""></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select><p>
+          <label for="f1roll2" id="l1r2">Enter roll 2</label>
+          <select name="f1roll2" id="f1roll2">
+            <option value=""></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          <div id="f1score"> </div>
+        </div>
+      </div>
+      <div class = "grid-item">
+        <div class = "dropdown" id="frame2">
+          <label for="f2roll1" id="l2r1">Enter roll 1</label>
+          <select name="f2roll1" id="f2roll1">
+            <option value=""></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select><p>
+          <label for="f2roll2" id="l2r2">Enter roll 2</label>
+          <select name="f2roll2" id="f2roll2">
+            <option value=""></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          <div id="f2score"> </div>
+        </div>
+      </div>
+      <div class = "grid-item">
+        <div class = "dropdown" id="frame3">
+          <label for="f3roll1" id="l3r1">Enter roll 1</label>
+          <select name="f3roll1" id="f3roll1">
+            <option value=""></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select><p>
+          <label for="f3roll2" id="l3r2">Enter roll 2</label>
+          <select name="f3roll2" id="f3roll2">
+            <option value=""></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          <div id="f3score"> </div>
+        </div>
+      </div>
+      <div class = "grid-item">
+        <div class = "dropdown" id="frame4">
+          <label for="f4roll1" id="l4r1">Enter roll 1</label>
+          <select name="f4roll1" id="f4roll1">
+            <option value=""></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select><p>
+          <label for="f4roll2" id="l4r2">Enter roll 2</label>
+          <select name="f4roll2" id="f4roll2">
+            <option value=""></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          <div id="f4score"> </div>
+        </div>
+      </div>
+      <div class = "grid-item">
+        <div class = "dropdown" id="frame5">
+          <label for="f5roll1" id="l5r1">Enter roll 1</label>
+          <select name="f5roll1" id="f5roll1">
+            <option value=""></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select><p>
+          <label for="f5roll2" id="l5r2">Enter roll 2</label>
+          <select name="f5roll2" id="f5roll2">
+            <option value=""></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          <div id="f5score"> </div>
+        </div>
+      </div>
+      <div class = "grid-item">
+        <div class = "dropdown" id="frame6">
+          <label for="f6roll1" id="l6r1">Enter roll 1</label>
+          <select name="f6roll1" id="f6roll1">
+            <option value=""></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select><p>
+          <label for="f6roll2" id="l6r2">Enter roll 2</label>
+          <select name="f6roll2" id="f6roll2">
+            <option value=""></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          <div id="f6score"> </div>
+        </div>
+      </div>
+      <div class = "grid-item">
+        <div class = "dropdown" id="frame7">
+          <label for="f7roll1" id="l7r1">Enter roll 1</label>
+          <select name="f7roll1" id="f7roll1">
+            <option value=""></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select><p>
+          <label for="f7roll2" id="l7r2">Enter roll 2</label>
+          <select name="f7roll2" id="f7roll2">
+            <option value=""></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          <div id="f7score"> </div>
+        </div>
+      </div>
+      <div class = "grid-item">
+        <div class = "dropdown" id="frame8">
+          <label for="f8roll1" id="l8r1">Enter roll 1</label>
+          <select name="f8roll1" id="f8roll1">
+            <option value=""></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select><p>
+          <label for="f8roll2" id="l8r2">Enter roll 2</label>
+          <select name="f8roll2" id="f8roll2">
+            <option value=""></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          <div id="f8score"> </div>
+        </div>
+      </div>
+      <div class = "grid-item">
+        <div class = "dropdown" id="frame9">
+          <label for="f9roll1" id="l9r1">Enter roll 1</label>
+          <select name="f9roll1" id="f9roll1">
+            <option value=""></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select><p>
+          <label for="f9roll2" id="l9r2">Enter roll 2</label>
+          <select name="f9roll2" id="f9roll2">
+            <option value=""></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          <div id="f9score"> </div>
+        </div>
+      </div>
+      <div class = "grid-item">
+        <div class = "dropdown" id="frame10">
+          <label for="f10roll1" id="l10r1">Enter roll 1</label>
+          <select name="f10roll1" id="f10roll1">
+            <option value=""></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select><p>
+          <label for="f10roll2" id="l10r2">Enter roll 2</label>
+          <select name="f10roll2" id="f10roll2">
+            <option value=""></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select><p>
+          <label for="f10roll3" id="l10r3">Enter roll 3</label>
+          <select name="f10roll3" id="f10roll3">
+            <option value=""></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          <div id="f10score"> </div>
+          <button type="button" name="button" id="go">Go!</button>
+        </div>
+      </div>
+    </div>
+    <button type="button" name="button" id="reset">Reset</button>
+
+  </body>
+</html>

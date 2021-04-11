@@ -154,9 +154,13 @@ describe ('Bowling', function(){
 
   describe('frameTen', function(){
     describe('first ball is not a strike', function(){
-      it('checks bonuses', function(){
+      it('returns the bowl', function(){
           bowling.frameTen(4)
-          expect(bowling.frameScore).toEqual([4])
+          expect(bowling.frameScore).toEqual([4, 0])
+      });
+      it('treats the first 2 bowls as a frame', function(){
+        bowling.frameTen(6, 2)
+        expect(bowling.frameScore).toEqual([6, 2])
       });
     });
   });

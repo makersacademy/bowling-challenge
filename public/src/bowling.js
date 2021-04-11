@@ -7,6 +7,7 @@ class Bowling {
   }
 
   frame(score1, score2 = 0) {
+    this.frameScore = []
     if ((Number(score1) === 10) && (Number(score2) > 0)) {
       throw new Error('You may not bowl again in this frame');
     }
@@ -15,29 +16,30 @@ class Bowling {
       // return this._bowl2(score2)
     }
     if (this._bowl2(score2) == 'spare') {
-      return this._bowl2(score2)
+      this._bowl2(score2)
     }
     else {
-      return this._bowl1(score1)
+      this._bowl1(score1)
     };
+    return this.bonus()
   };
 
   bonus() {
     // prevFrame = spare
     if ((this.frameStatus != 'strike') && (this.prevFrame == 'spare')) {
       this.score.splice(-2, 0, (10 + Number(this.frameScore[0])))
-      return this.score
+      this.score
     };
     if ((this.frameStatus == 'strike') && (this.prevFrame == 'spare')) {
       this.score.push(20)
-      return this.score
+      this.score
     };
     // prevframe = strike
     if ((this.frameStatus == 'spare') && (this.prevFrame == 'strike')) {
       this.score.push(20)
     };
     if ((this.frameStatus == 'strike') && (this.prevFrame == 'strike')) {
-      this.prevFrame = '2xstrike'
+      return this.prevFrame = '2xstrike'
     };
     //prevFrame = 2xstrike
     if ((this.frameStatus == 'strike') && (this.prevFrame == '2xstrike')) {
@@ -51,6 +53,7 @@ class Bowling {
       this.score.splice(-3, 0, (20 + Number(this.frameScore[0])))
       this.score.splice(-2, 0, (10 + Number(this.frameScore[0]) + Number(this.frameScore[1])))
     };
+    this.prevFrame = this.frameStatus
   };
 
   _bowl1(score) {

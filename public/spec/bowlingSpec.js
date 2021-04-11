@@ -66,7 +66,8 @@ describe ('Bowling', function(){
       expect(bowling.score).toEqual([3, 5])
     });
     it('ends frame if bowl1 is a strike', function(){
-      expect(bowling.frame(10, 0)).toEqual('strike')
+      bowling.frame(10, 0)
+      expect(bowling.frameStatus).toEqual('strike')
     });
     it('won\'t let the user enter a score if score1 is 10', function(){
       expect(function() { bowling.frame(10, 3) }).toThrowError('You may not bowl again in this frame')
@@ -102,12 +103,11 @@ describe ('Bowling', function(){
       it('checks if prevFrame is a spare then adds both scores to the score array', function(){
         bowling.prevFrame = 'spare'
         bowling.frame(3, 5)
-        expect(bowling.bonus()).toEqual([13, 3, 5])
+        expect(bowling.score).toEqual([13, 3, 5])
       });
       it('checks if prevFrame is 2xstrike and adds the bonus', function(){
         bowling.prevFrame = '2xstrike'
         bowling.frame(3, 5)
-        bowling.bonus()
         expect(bowling.score).toEqual([23, 18, 3, 5])
       });
     });
@@ -115,34 +115,40 @@ describe ('Bowling', function(){
       it('checks if the previous ball is a strike and adds bonus', function(){
         bowling.prevFrame = 'strike'
         bowling.frame(5, 5)
-        bowling.bonus()
         expect(bowling.score).toEqual([20])
       });
       it('checks if the prevFrame is 2xstrike and adds bonus', function(){
         bowling.prevFrame = '2xstrike'
         bowling.frame(5, 5)
-        bowling.bonus()
         expect(bowling.score).toEqual([25, 20])
-      })
+      });
     });
     describe('a strike is bowled', function(){
       it('checks if prevFrame is a spare and adds 20 to the score', function (){
         bowling.prevFrame = 'spare'
         bowling.frame(10)
-        expect(bowling.bonus()).toEqual([20])
+        expect(bowling.score).toEqual([20])
       });
       it('checks if prevFrame is a strike and changes prevFrame to 2xstrike', function(){
         bowling.prevFrame = 'strike'
         bowling.frame(10)
-        bowling.bonus()
         expect(bowling.prevFrame).toEqual('2xstrike')
       });
       it('checks if prevFrame is a 2xstrike and adds 30 to the score', function(){
         bowling.prevFrame = '2xstrike'
         bowling.frame(10)
-        bowling.bonus()
         expect(bowling.score).toEqual([30])
       });
+    });
+  });
+
+  describe('a short game is played', function(){
+    it('plays a short game', function(){
+      bowling.frame(10)
+      bowling.frame(10)
+      bowling.frame(3, 7)
+      bowling.frame(3, 3)
+      expect(bowling.score).toEqual([23, 20, 13, 3, 3])
     });
   });
 });

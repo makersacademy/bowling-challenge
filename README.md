@@ -1,9 +1,9 @@
 
 Bowling Challenge
 =================
+![bowlingGame](bowlingGame.png)  
 
 BOWLING SCORECARD PROGRAM
-
 
 Count and sum the scores of a bowling game for one player.
 
@@ -64,81 +64,71 @@ A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 str
 
 ----
 ### To-do:
-[ ] total score is printing weird stuff??
-[ ] bonus score not updating
-[ ] spare message not printing
-[ ] print scores for previous frames
-[ ] roll 2 cannot be played if roll 1 is a strike
-[ ] logic of more than one strike in a row
-[ ] roll 2 can be any number between 0-10, needs logic for the sum of roll1 and 2 to equal 10
-[ ] reset functionality to start a new game and reset scorecard
+[ ] total score is printing weird stuff??  
+[ ] bonus score not updating  
+[ ] spare message not printing  
+[ ] print scores for previous frames  
+[ ] roll 2 cannot be played if roll 1 is a strike  
+[ ] logic of more than one strike in a row  
+[ ] roll 2 can be any number between 0-10, needs logic for the sum of roll1 and 2 to equal 10  
+[ ] reset functionality to start a new game and reset scorecard  
+[ ] rolls cannot be minus  
 
 
 ### Optional Extras
 
-In any order you like:
-
-[x] Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+In any order you like:  
+  
+[x] Create a nice interactive animated interface with jQuery.  
+[?] Set up [Travis CI](https://travis-ci.org) to run your tests.    
+[?] Add [ESLint](http://eslint.org/) to your codebase and make your code conform.    
+(Used Stu's guides for Travis and ESlint: https://github.com/StuBehan/npm-eslint-jasmine-guide)  
 
 
 ### UI
-[x] add roll1 score (a number between 0-10)
-[x] add roll2 score (a number between 0-10)
-[x] add roll3 score (a number between 0-10)
-[x] display frame number
-[ ] displays for roll scores
-[ ] display for score totals
-
-
+[x] add roll1 score (a number between 0-10)  
+[x] add roll2 score (a number between 0-10)  
+[x] add roll3 score (a number between 0-10)  
+[x] display frame number  
+[ ] displays for roll scores  
+[x] display for score totals  
+[x] display for bonus totals  
+[ ] full scorecard  
 
 ---
 #### console.log testing
 
-// let newGame = new BowlingGame();
-// // game 1
-// console.log("---Frame 1");
-// console.log(newGame.roll1(3));
-// console.log(newGame.roll2(4));
-// // game 2
-// console.log("---Frame 2");
-// console.log(newGame.roll1(10));
-// // game 3
-// console.log("---Frame 3");
-// console.log(newGame.roll1(2));
-// console.log(newGame.roll2(5));
-// // game 4
-// console.log("---Frame 4");
-// console.log(newGame.roll1(3));
-// console.log(newGame.roll2(4));
-// console.log(newGame.roll3(4));
-// // game 5
-// console.log("---Frame 5");
-// console.log(newGame.roll1(10));
-// // game 6
-// console.log("---Frame 6");
-// console.log(newGame.roll1(7));
-// console.log(newGame.roll2(1));
-// // game 7
-// console.log("---Frame 7");
-// console.log(newGame.roll1(3));
-// console.log(newGame.roll2(7));
-// // game 8
-// console.log("---Frame 8");
-// console.log(newGame.roll1(1));
-// console.log(newGame.roll2(8));
-// // game 9
-// console.log("---Frame 9");
-// console.log(newGame.roll1(5));
-// console.log(newGame.roll2(2));
-// console.log(newGame.newScorecard.roll3Score);
-// // game 10
-// console.log("---Frame 10");
-// console.log(newGame.roll1(10));
-// console.log(newGame.roll2(3));
-// console.log(newGame.roll3(4));
-//
-//
-// console.log(newGame.newScorecard.roll3Score);
-// console.log(newGame.view_scorecard());
+let newGame = new BowlingGame();  
+// game 1
+console.log(newGame.roll1(3));
+console.log(newGame.roll2(4));  
+// game 2
+console.log(newGame.roll1(10));  
+// game 3
+console.log(newGame.roll1(2));
+console.log(newGame.roll2(5));  
+// game 4
+console.log(newGame.roll1(3));
+console.log(newGame.roll2(4));
+console.log(newGame.roll3(4));  
+// game 5
+console.log(newGame.roll1(10));  
+// game 6
+console.log(newGame.roll1(7));
+console.log(newGame.roll2(1));  
+// game 7
+console.log(newGame.roll1(3));
+console.log(newGame.roll2(7));  
+// game 8
+console.log(newGame.roll1(1));
+console.log(newGame.roll2(8));  
+// game 9
+console.log(newGame.roll1(5));
+console.log(newGame.roll2(2));
+console.log(newGame.newScorecard.roll3Score); // game 10
+console.log(newGame.roll1(10));
+console.log(newGame.roll2(3));
+console.log(newGame.roll3(4));  
+
+console.log(newGame.newScorecard.roll3Score);
+console.log(newGame.view_scorecard());

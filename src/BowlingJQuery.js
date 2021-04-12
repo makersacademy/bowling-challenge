@@ -61,7 +61,7 @@ $(document).ready( function() {
   }
 
   function endOfGame() {
-    $('#enter-rolls').text("Game ended!")
+    $('#enter-rolls').text(`Game ended! Your score: ${game.cumulScores['frame_10']}`)
     $('#clear-button').text("Restart")
   }
 

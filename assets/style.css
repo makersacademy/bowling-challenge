@@ -27,13 +27,13 @@ h1 {
   font-family: "Dela Gothic One", cursive;
   font-size: 50px;
   padding-top: -100px;
+  text-shadow: 0 0 3px #fff, 0 0 3px #ff0000, 0 0 5px #0000ff;
 }
 #enter-rolls {
-  /* font-size: 20px; */
   padding-bottom: 40px;
-  /* position: absolute;
-  top: 120px; */
-  /* left: 400px; */
+  font-weight: bold;
+  text-shadow: 0 0 3px #ff0000, 0 0 5px #0000ff;
+  color: #fff;
 }
 
 #card-and-reset {
@@ -80,7 +80,7 @@ h1 {
   grid-row: row-rolls-start;
   text-align: center;
   line-height: 190%;
-  color: #000;
+  color: #242331;
 }
 
 .total-score {
@@ -90,7 +90,7 @@ h1 {
   grid-row: row-scores-start;
   text-align: center;
   line-height: 190%;
-  color: #000;
+  color: #242331;
 }
 
 #final-total {
@@ -101,4 +101,5 @@ h1 {
   font-size: 20px;
   font-weight: bold;
   line-height: 180%;
+  color: #242331;
 }

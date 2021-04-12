@@ -8,7 +8,7 @@ html {
 }
 
 .background {
-  background-image: url(/images/pexels-matthias-zomer-344034.jpg);
+  background-image: url("/images/pexels-matthias-zomer-344034.jpg");
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;

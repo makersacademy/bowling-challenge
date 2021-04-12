@@ -8,18 +8,23 @@ refactor the Frame displayResults to have 10th frame separately
 Add a reload/restart/clear button!
 Hide the roll input form at the end
 Stop the scorecard moving up when the form is hidden at the end
+For spares, keep the first roll number visible in display
 
 
 
 Not done:
 Display a end of game message at the end - special message for perfect/gutter game
+styling/design
 
-For spares, keep the first roll number visible in display
+fix the scorecard border
+
+looks terrible on mobile. layout/look should be completely different
+About section - if need to give image attibutions (modal?)
 
 
 Nice to Have:
 Save the results to file??
-
+add footer to link to my github/main page
 
 
 frameNumber()

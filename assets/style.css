@@ -1,70 +1,97 @@
-body {
-  color: #1b9009;
-  background-color: #d5fccf;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+body,
+html {
+  height: 100%;
+  color: #f0544f;
+  /* background-color: #791e94; */
+  font-family: "Roboto", sans-serif;
+  margin: 0px;
+}
+
+h1 {
+  font-family: "Dela Gothic One", cursive;
+  position: absolute;
+  left: 400px;
+}
+
+.background {
+  background-image: url(/images/pexels-matthias-zomer-344034.jpg);
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#enter-rolls {
+  font-size: 20px;
+  position: absolute;
+  top: 120px;
+  /* left: 400px; */
 }
 
 #card-and-reset {
   position: absolute;
-  top: 150px;
+  top: 200px;
 }
 
 .grid-container {
-  border: 1px solid black;
+  border: 1px solid white;
   display: grid;
   grid-template-columns: repeat(22, 50px);
   grid-template-rows: [row-title-start] 30px [row-frames-start] 30px [row-rolls-start] 30px [row-scores-start] 30px;
 }
 
-.grid-item {
+/* .grid-item {
   background-color: #d5fccf;
-}
+} */
 
 #grid-title {
-  /* border-top: 1px solid black;
-  border-left: 1px solid black; */
   grid-column: 1 / 21;
   grid-row: row-title-start;
-  /* justify-self: center; */
   text-align: center;
+  font-weight: bold;
+  line-height: 170%;
 }
 
 .frame-no {
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid white;
   grid-column-start: span 2;
   grid-row: row-frames-start / row-rolls-start;
-  /* justify-self: center; */
   text-align: center;
+  line-height: 170%;
 }
 
 .frame-total {
-  /* border: 1px solid black; */
-  border-left: 1px solid black;
-  /* border-right: 1px solid black; */
-  border-bottom: 1px solid black;
+  border-left: 1px solid white;
+  border-bottom: 2px solid white;
   grid-column-start: span 2;
   grid-row: row-title-start / row-rolls-start;
-  /* justify-self: center; */
   text-align: center;
+  line-height: 350%;
+  font-weight: bold;
 }
 
 .roll {
-  border-left: 1px solid black;
-  /* grid-column: 1 / end; */
+  border-left: 1px solid white;
   grid-row: row-rolls-start;
+  text-align: center;
+  line-height: 170%;
 }
 
 .total-score {
-  border-top: 1px solid black;
-  border-left: 1px solid black;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
   grid-column-start: span 2;
   grid-row: row-scores-start;
-  /* padding-left: 10px; */
   text-align: center;
+  line-height: 170%;
 }
 
 #final-total {
-  font-size: 25px;
+  border-left: 2px solid white;
+  border-right: 1px solid white;
+  border-top: 2px solid white;
+  border-bottom: 1px solid white;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 135%;
 }

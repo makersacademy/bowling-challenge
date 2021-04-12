@@ -71,7 +71,7 @@ h1 {
   grid-column-start: span 2;
   grid-row: row-title-start / row-rolls-start;
   text-align: center;
-  line-height: 350%;
+  line-height: 400%;
   font-weight: bold;
 }
 
@@ -79,8 +79,10 @@ h1 {
   border-left: 2px solid white;
   grid-row: row-rolls-start;
   text-align: center;
-  line-height: 190%;
+  line-height: 100%;
   color: #242331;
+  font-family: "Caveat", cursive;
+  font-size: 40px;
 }
 
 .total-score {
@@ -89,8 +91,10 @@ h1 {
   grid-column-start: span 2;
   grid-row: row-scores-start;
   text-align: center;
-  line-height: 190%;
+  line-height: 90%;
   color: #242331;
+  font-family: "Caveat", cursive;
+  font-size: 40px;
 }
 
 #final-total {
@@ -100,6 +104,7 @@ h1 {
   border-bottom: 2px solid white;
   font-size: 20px;
   font-weight: bold;
-  line-height: 180%;
+  line-height: 80%;
   color: #242331;
+  font-size: 40px;
 }

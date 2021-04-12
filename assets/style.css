@@ -36,9 +36,24 @@ h1 {
   color: #fff;
 }
 
+select {
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #f0544f;
+}
+
+button {
+  padding: 5px;
+  width: 100px;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #f0544f;
+  background-color: white;
+}
+
 #card-and-reset {
-  /* position: absolute;
-  top: 200px; */
+  /* for some reason the grid breaks if I remove this section */
 }
 
 .grid-container {
@@ -79,10 +94,10 @@ h1 {
   border-left: 2px solid white;
   grid-row: row-rolls-start;
   text-align: center;
-  line-height: 100%;
+  line-height: 110%;
   color: #242331;
   font-family: "Caveat", cursive;
-  font-size: 40px;
+  font-size: 35px;
 }
 
 .total-score {
@@ -91,10 +106,10 @@ h1 {
   grid-column-start: span 2;
   grid-row: row-scores-start;
   text-align: center;
-  line-height: 90%;
+  line-height: 100%;
   color: #242331;
   font-family: "Caveat", cursive;
-  font-size: 40px;
+  font-size: 35px;
 }
 
 #final-total {
@@ -104,7 +119,7 @@ h1 {
   border-bottom: 2px solid white;
   font-size: 20px;
   font-weight: bold;
-  line-height: 80%;
+  line-height: 90%;
   color: #242331;
-  font-size: 40px;
+  font-size: 35px;
 }

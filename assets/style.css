@@ -4,6 +4,7 @@ html {
   color: #f0544f;
   font-family: "Roboto", sans-serif;
   margin: auto;
+  font-size: 20px;
 }
 
 .background {
@@ -19,14 +20,17 @@ html {
   justify-content: center;
   align-items: center;
   display: flex;
-  height: 100vh;
+  height: 70vh;
 }
 
 h1 {
   font-family: "Dela Gothic One", cursive;
+  font-size: 50px;
+  padding-top: -100px;
 }
 #enter-rolls {
-  font-size: 20px;
+  /* font-size: 20px; */
+  padding-bottom: 40px;
   /* position: absolute;
   top: 120px; */
   /* left: 400px; */
@@ -38,16 +42,12 @@ h1 {
 }
 
 .grid-container {
-  background-color: rgba(255, 255, 255, 0.4);
-  border: 1px solid white;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 2px solid white;
   display: grid;
   grid-template-columns: repeat(22, 50px);
-  grid-template-rows: [row-title-start] 30px [row-frames-start] 30px [row-rolls-start] 30px [row-scores-start] 30px;
+  grid-template-rows: [row-title-start] 40px [row-frames-start] 40px [row-rolls-start] 40px [row-scores-start] 40px;
 }
-
-/* .grid-item {
-  background-color: #d5fccf;
-} */
 
 #grid-title {
   grid-column: 1 / 21;
@@ -58,7 +58,7 @@ h1 {
 }
 
 .frame-no {
-  border-bottom: 2px solid white;
+  border-bottom: 3px solid white;
   grid-column-start: span 2;
   grid-row: row-frames-start / row-rolls-start;
   text-align: center;
@@ -66,8 +66,8 @@ h1 {
 }
 
 .frame-total {
-  border-left: 1px solid white;
-  border-bottom: 2px solid white;
+  border-left: 2px solid white;
+  border-bottom: 3px solid white;
   grid-column-start: span 2;
   grid-row: row-title-start / row-rolls-start;
   text-align: center;
@@ -76,27 +76,29 @@ h1 {
 }
 
 .roll {
-  border-left: 1px solid white;
+  border-left: 2px solid white;
   grid-row: row-rolls-start;
   text-align: center;
-  line-height: 170%;
+  line-height: 190%;
+  color: #000;
 }
 
 .total-score {
-  border-top: 1px solid white;
-  border-left: 1px solid white;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
   grid-column-start: span 2;
   grid-row: row-scores-start;
   text-align: center;
-  line-height: 170%;
+  line-height: 190%;
+  color: #000;
 }
 
 #final-total {
-  border-left: 2px solid white;
-  border-right: 1px solid white;
-  border-top: 2px solid white;
-  border-bottom: 1px solid white;
+  border-left: 3px solid white;
+  border-right: 2px solid white;
+  border-top: 3px solid white;
+  border-bottom: 2px solid white;
   font-size: 20px;
   font-weight: bold;
-  line-height: 135%;
+  line-height: 180%;
 }

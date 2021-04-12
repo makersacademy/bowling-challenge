@@ -1,3 +1,11 @@
+Found this neat little node called seqNum which basically acts as a counter - I haven't used it yet. Why haven't I used it yet...
+
+        https://github.com/srijs/node-seqnum
+
+
+Not much writing has been done this weekend. I will need to revisit this challenge.
+
+
 
 Bowling Challenge
 =================

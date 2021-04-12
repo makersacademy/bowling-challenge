@@ -36,6 +36,15 @@ h1 {
   color: #fff;
 }
 
+.input-form {
+  padding-top: 10px;
+  padding-left: 35px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
 select {
   padding: 5px;
   border-radius: 10px;
@@ -50,6 +59,10 @@ button {
   font-size: 16px;
   color: #f0544f;
   background-color: white;
+}
+
+#clear-button {
+  margin-top: 5px;
 }
 
 #card-and-reset {

@@ -61,7 +61,13 @@ $(document).ready( function() {
   }
 
   function endOfGame() {
-    $('#enter-rolls').text("Game ended!")
+    let postGameForm = `Game ended! Your score: ${game.cumulScores['frame_10']}
+          <form class="input-form hidden" id="rolls-form">
+            <select id="input-roll">
+            </select>
+            <button type="submit">Yeah!</button>
+          </form>`
+    $('#enter-rolls').html(postGameForm)
     $('#clear-button').text("Restart")
   }
 

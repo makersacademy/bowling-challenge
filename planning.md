@@ -16,6 +16,11 @@ Not done:
 Display a end of game message at the end - special message for perfect/gutter game
 styling/design
 
+fix the scorecard border
+
+looks terrible on mobile. layout/look should be completely different
+About section - if need to give image attibutions (modal?)
+
 
 Nice to Have:
 Save the results to file??

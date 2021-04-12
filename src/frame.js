@@ -14,10 +14,22 @@ class Frame {
 	}
 
 	totalScore() {
-		let sum = 0
+		let total = 0
 		for (let i = 0; i < this.score.length; i++) {
-			sum += this.score[i]
+			total += this.score[i]
 		}
-		return sum
+		return total
+	}
+
+	spare() {
+		if (this.totalScore() === 10) {
+			return true
+		}
+	}
+
+	strike() {
+		if (this.score[0] === 10) {
+			return true
+		}
 	}
 }

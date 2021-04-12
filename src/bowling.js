@@ -22,7 +22,7 @@ class Bowling {
       if (this.frames[9].scores.length == 1) {
         return;
       }
-      // length is 2 or more
+      // second roll or third in tenth
       if (this.frames[9].isExtraRoll()) {
         return;
       } else {
@@ -54,3 +54,5 @@ class Bowling {
     }
   }
 }
+
+// could unhide all buttons when a new frame is created?

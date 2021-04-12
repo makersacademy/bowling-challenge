@@ -20,6 +20,14 @@ $(document).ready(function() {
         $(`#frame${i}`).text(`Frame ${i + 1}: ` + frame.final);
       }
     }
+    var currentScore = bowling.frames[bowling.currentFrame].scores;
+    if (currentScore.length == 1) {
+      $(`#${bowling.currentFrame}roll1`).text(`Roll 1: ${currentScore[0]}`);
+    } else if (currentScore.length == 2) {
+      $(`#${bowling.currentFrame}roll2`).text(`Roll 2: ${currentScore[1]}`);
+    } else {
+      $(`#9roll3`).text(`Roll 3: ${currentScore[2]}`);
+    }
   }
 
   $('#button0').on('click', function() {

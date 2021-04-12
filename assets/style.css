@@ -2,15 +2,8 @@ body,
 html {
   height: 100%;
   color: #f0544f;
-  /* background-color: #791e94; */
   font-family: "Roboto", sans-serif;
-  margin: 0px;
-}
-
-h1 {
-  font-family: "Dela Gothic One", cursive;
-  position: absolute;
-  left: 400px;
+  margin: auto;
 }
 
 .background {
@@ -21,19 +14,31 @@ h1 {
   background-size: cover;
 }
 
+.container {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 100vh;
+}
+
+h1 {
+  font-family: "Dela Gothic One", cursive;
+}
 #enter-rolls {
   font-size: 20px;
-  position: absolute;
-  top: 120px;
+  /* position: absolute;
+  top: 120px; */
   /* left: 400px; */
 }
 
 #card-and-reset {
-  position: absolute;
-  top: 200px;
+  /* position: absolute;
+  top: 200px; */
 }
 
 .grid-container {
+  background-color: rgba(255, 255, 255, 0.4);
   border: 1px solid white;
   display: grid;
   grid-template-columns: repeat(22, 50px);

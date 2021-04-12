@@ -55,3 +55,4 @@ input | output
 
 
 
+Bug: in 10th frame, rolling a strike and then a normal roll  - normal roll doesn't show up

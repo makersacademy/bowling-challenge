@@ -1,0 +1,28 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jasmine",
+     "test": "node ./node_modules/mocha/bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mstrivens/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mstrivens/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/mstrivens/bowling-challenge#readme",
+  "devDependencies": {
+    "eslint": "^7.23.0",
+    "eslint-plugin-jasmine": "^4.1.2",
+    "jasmine": "^3.7.0"
+  }
+}

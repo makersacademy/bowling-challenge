@@ -28,7 +28,7 @@ I chose a handwriting-style font for the scores to reference real, old-fashioned
 * To run the unit tests, open `SpecRunner.html` in your browser
 
 ### Known Issues
-* It looks bad on mobile browsers. To fix this I could create a new layout for mobile with a vertically aligned scorecard.
+* The scorecard grid has absolute sizes, it's not responsive. It doesn't fit the screen on mobile. To fix this ideally I would create a new layout for mobile, with a vertically aligned scorecard.
 * There's a bug around displaying the score in the 10th frame under certain conditions.
 * The code isn't the cleanest. The Frame logic around what to display in the scorecard is particularly in need of refactoring.
 * The scorecard borders aren't perfect; there are some unwanted double thickness sections down the left-hand side.

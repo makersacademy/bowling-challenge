@@ -2,6 +2,14 @@
 Bowling Challenge
 =================
 
+## Notes
+
+* This was a Makers challenge to build a bowling scorecard in javascript, for which the specs are below.
+* I completed this task in my second week of javascript - I thus didn't TDD it as much as I ought to have done, but subsequently went back and wrote a full suite of comprehensive tests. This actually helped me spot an edge case I hadn't previously identified, showing the value of TDD as a process!
+* Further ideas for developing this project include adding some styling to the interface, and hooking the scorecard up to a Ruby backend to enable scorecards to be stored on a database, and a full website that could keep track of games and scores across tournaments and seasions.
+
+## Spec and instructions from Makers
+
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README
 * If you have a partial solution, **still check in a partial solution**

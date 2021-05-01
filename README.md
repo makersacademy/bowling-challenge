@@ -12,7 +12,7 @@
 
 ---------
 ### How to use
-1. URL: <a href="https://shacheng.co.uk/bowling-challenge/" target="_blank">link</a>
+1. URL: [link](http://shacheng.co.uk/bowling-scorecard/)
 2. Follow instructions on screen
 
 ---------

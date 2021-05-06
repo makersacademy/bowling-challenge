@@ -12,5 +12,6 @@
   },
   "rules": {
     "no-underscore-dangle": "off"
-  }
+  },
+  "ignorePatterns": ["**/spec/**", "**/src/interface.js"]
 }

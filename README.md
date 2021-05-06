@@ -7,7 +7,7 @@ Bowling score tracker written in JavaScript
 
 **You can use the app here:**
 
-[Bowling Score Tracker](http://bowling-score-tracker.surge.sh/)
+[Bowling Score Tracker](https://bowling-score-tracker.surge.sh/)
 --------------------------------------------------------
 
 ![index](public/images/index.png)

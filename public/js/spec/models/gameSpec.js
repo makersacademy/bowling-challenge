@@ -1,5 +1,3 @@
-'use strict';
-
 describe('Game', () => {
   let game;
   let frame;
@@ -9,7 +7,7 @@ describe('Game', () => {
     game = new Game(frameClass);
     frameClass = jasmine.createSpy('frameClass');
     frame = jasmine.createSpyObj('frame', ['addRoll', 'isOver', 'isFinal', 'score', 'addBonus']);
-    spyOn(game, '_newFrame').and.returnValue(game.frames.push(frame))
+    spyOn(game, '_newFrame').and.returnValue(game.frames.push(frame));
   });
 
   describe('addRoll', () => {
@@ -30,8 +28,8 @@ describe('Game', () => {
 
   describe('totalScore', () => {
     it('calculates the total score of all frames', () => {
-      game.frames.push(frame)
-      game.totalScore()
+      game.frames.push(frame);
+      game.totalScore();
       expect(frame.score).toHaveBeenCalled();
     });
   });

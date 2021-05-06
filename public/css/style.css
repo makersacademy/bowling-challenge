@@ -61,6 +61,10 @@ section, .input-title {
   font-weight: 900;
 }
 
+main {
+  background: transparent;
+}
+
 section {
   padding: 30px;
 }

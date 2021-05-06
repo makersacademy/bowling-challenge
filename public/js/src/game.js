@@ -9,8 +9,8 @@ class Game {
     if (this._isGameOver()) { throw 'Game Over'; }
     if (this.frames.length === 0) { this._newFrame(); }
 
-    const roll = parseInt(pins);
-    this._validate(roll)
+    const roll = parseInt(pins, 10);
+    this._validate(roll);
     this.frames.forEach((frame) => { frame.addBonus(roll); });
     this._currentFrame().addRoll(roll);
 
@@ -24,12 +24,12 @@ class Game {
   }
 
   scoreBoard() {
-    const scores = (sum => value => sum += value)(0);
+    const scores = ((sum) => (value) => sum += value)(0);
     return this._scores().map(scores);
   }
 
   _scores() {
-    return this.frames.map((frame) => frame.score())
+    return this.frames.map((frame) => frame.score());
   }
 
   _currentFrame() {
@@ -57,7 +57,7 @@ class Game {
   }
 
   _isBonusRoll() {
-    const strikeRoll = this._isFinalFrame() && this._currentFrame()._isStrike()
+    const strikeRoll = this._isFinalFrame() && this._currentFrame()._isStrike();
     return (strikeRoll || this._currentFrame()._isSpare());
   }
 

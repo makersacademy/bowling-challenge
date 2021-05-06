@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 class Frame {
   constructor() {
     this.TOTAL_PINS = 10;
@@ -23,7 +24,6 @@ class Frame {
   score() {
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
     if (this.rolls.length === 0) { return this.bonus; }
-
     return this.rolls.reduce(reducer) + this.bonus;
   }
 
@@ -33,14 +33,12 @@ class Frame {
 
   addBonus(bonus) {
     if (this.bonusCount === 0) { return; }
-
     this.bonusCount -= this.SPARE_BONUS;
     this.bonus += bonus;
   }
 
   isOver() {
     if (!this.isFinal) { return this._isStrike() || this.rolls.length >= 2; }
-
     return this.rolls.length >= 3 || this._isTwoRollFinalFrame();
   }
 

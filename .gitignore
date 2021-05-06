@@ -4,3 +4,5 @@ instructions.md
 coverage
 coverage/
 .nyc_output
+.vscode
+.nyc_output

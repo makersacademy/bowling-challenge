@@ -7,10 +7,14 @@
   border-radius: 5px;
 }
 
+h1, main, table, body {
+  min-width: 1200px;
+}
+
 h1 {
   font-size: 40px;
   margin-bottom: 50px;
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
 h2 {
@@ -53,20 +57,21 @@ input, button  {
 }
 
 section, .input-title {
-  margin-top: 50px;
-  max-width: 30%;
+  margin-top: 30px;
+  max-width: 25%;
   margin-left: auto;
   margin-right: auto;
   color: rgb(28, 28, 28);
   font-weight: 900;
 }
 
-main {
+main, .content-wrapper, .page-container {
   background: transparent;
 }
 
 section {
-  padding: 30px;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .total-score {
@@ -76,9 +81,19 @@ section {
 }
 
 footer {
-  position: fixed;
+  position: absolute;
   left: 0;
   bottom: 0;
   text-align: center;
   width: 100%;
+  height: 5.2rem;
+}
+
+.page-container {
+  min-height: 97.5vh;
+  position: relative;
+}
+
+.content-wrapper {
+  padding-bottom: 4.5rem;
 }

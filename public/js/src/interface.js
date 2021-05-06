@@ -10,58 +10,29 @@ $(() => {
     showTotalScore();
   });
 
-  const updateRolls = () => {
-    $('#1-1').text(game.frames[0].rolls[0]);
-    $('#1-2').text(game.frames[0].rolls[1]);
+  function updateRolls() {
+    updateFrames();
+    updateFinalFrame();
+  }
 
-    if (game.frames.length === 2) {
-      $('#2-1').text(game.frames[1].rolls[0]);
-      $('#2-2').text(game.frames[1].rolls[1]);
+  function updateFrames() {
+    for (let i = 0; i < 9; i += 1) {
+      if (game.frames.length >= i + 1) {
+        $(`#${i + 1}-1`).text(game.frames[i].rolls[0]);
+        $(`#${i + 1}-2`).text(game.frames[i].rolls[1]);
+      }
     }
+  }
 
-    if (game.frames.length === 3) {
-      $('#3-1').text(game.frames[2].rolls[0]);
-      $('#3-2').text(game.frames[2].rolls[1]);
-    }
-
-    if (game.frames.length === 4) {
-      $('#4-1').text(game.frames[3].rolls[0]);
-      $('#4-2').text(game.frames[3].rolls[1]);
-    }
-
-    if (game.frames.length === 5) {
-      $('#5-1').text(game.frames[4].rolls[0]);
-      $('#5-2').text(game.frames[4].rolls[1]);
-    }
-
-    if (game.frames.length === 6) {
-      $('#6-1').text(game.frames[5].rolls[0]);
-      $('#6-2').text(game.frames[5].rolls[1]);
-    }
-
-    if (game.frames.length === 7) {
-      $('#7-1').text(game.frames[6].rolls[0]);
-      $('#7-2').text(game.frames[6].rolls[1]);
-    }
-
-    if (game.frames.length === 8) {
-      $('#8-1').text(game.frames[7].rolls[0]);
-      $('#8-2').text(game.frames[7].rolls[1]);
-    }
-
-    if (game.frames.length === 9) {
-      $('#9-1').text(game.frames[8].rolls[0]);
-      $('#9-2').text(game.frames[8].rolls[1]);
-    }
-
+  function updateFinalFrame() {
     if (game.frames.length === 10) {
       $('#10-1').text(game.frames[9].rolls[0]);
       $('#10-2').text(game.frames[9].rolls[1]);
       $('#10-3').text(game.frames[9].rolls[2]);
     }
-  };
+  }
 
-  const updateScores = () => {
+  function updateScores() {
     $('#1').text(game.scoreBoard()[0]);
     $('#2').text(game.scoreBoard()[1]);
     $('#3').text(game.scoreBoard()[2]);
@@ -72,11 +43,11 @@ $(() => {
     $('#8').text(game.scoreBoard()[7]);
     $('#9').text(game.scoreBoard()[8]);
     $('#10').text(game.scoreBoard()[9]);
-  };
+  }
 
-  const showTotalScore = () => {
+  function showTotalScore() {
     if (game._isGameOver()) {
       $('#total-score').text(`You scored ${game.totalScore()} points`);
     }
-  };
+  }
 });

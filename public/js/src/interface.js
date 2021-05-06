@@ -2,18 +2,18 @@ $(() => {
   const game = new Game();
 
   $('#add-roll').on('click', () => {
-    if (!$('#roll-input').val()) { return; }
+    if (!$('#roll-input').val()) {
+      alert('Please enter a valid roll!');
+      return;
+    }
+
     try {
       game.addRoll($('#roll-input').val());
       updateScores();
       updateRolls();
       showTotalScore();
     } catch (error) {
-      if (error === 'Invalid roll') {
-        alert('Please enter a valid roll!');
-      } else if (error === 'Game Over') {
-        alert('This game is over! Refresh to score a new game');
-      }
+      errorHandler(error);
     }
   });
 
@@ -48,6 +48,14 @@ $(() => {
   function showTotalScore() {
     if (game._isGameOver()) {
       $('#total-score').text(`You scored ${game.totalScore()} points`);
+    }
+  }
+
+  function errorHandler(error) {
+    if (error === 'Invalid roll') {
+      alert('Please enter a valid roll!');
+    } else if (error === 'Game Over') {
+      alert('This game is over! Refresh to score a new game');
     }
   }
 });

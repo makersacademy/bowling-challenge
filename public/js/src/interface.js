@@ -3,11 +3,18 @@ $(() => {
 
   $('#add-roll').on('click', () => {
     if (!$('#roll-input').val()) { return; }
-
-    game.addRoll($('#roll-input').val());
-    updateScores();
-    updateRolls();
-    showTotalScore();
+    try {
+      game.addRoll($('#roll-input').val());
+      updateScores();
+      updateRolls();
+      showTotalScore();
+    } catch (error) {
+      if (error === 'Invalid roll') {
+        alert('Please enter a valid roll!');
+      } else if (error === 'Game Over') {
+        alert('This game is over!');
+      }
+    }
   });
 
   function updateRolls() {

@@ -12,7 +12,7 @@ $(() => {
       if (error === 'Invalid roll') {
         alert('Please enter a valid roll!');
       } else if (error === 'Game Over') {
-        alert('This game is over!');
+        alert('This game is over! Refresh to score a new game');
       }
     }
   });

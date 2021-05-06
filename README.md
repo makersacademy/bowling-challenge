@@ -5,7 +5,7 @@ Bowling Challenge 🎳
 
 Bowling score tracker written in JavaScript
 
-**Check out the deployed app here:**
+**You can use the app here:**
 
 [Bowling Score Tracker](http://bowling-score-tracker.surge.sh/)
 --------------------------------------------------------

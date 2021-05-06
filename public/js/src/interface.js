@@ -33,16 +33,9 @@ $(() => {
   }
 
   function updateScores() {
-    $('#1').text(game.scoreBoard()[0]);
-    $('#2').text(game.scoreBoard()[1]);
-    $('#3').text(game.scoreBoard()[2]);
-    $('#4').text(game.scoreBoard()[3]);
-    $('#5').text(game.scoreBoard()[4]);
-    $('#6').text(game.scoreBoard()[5]);
-    $('#7').text(game.scoreBoard()[6]);
-    $('#8').text(game.scoreBoard()[7]);
-    $('#9').text(game.scoreBoard()[8]);
-    $('#10').text(game.scoreBoard()[9]);
+    for (let i = 0; i < 9; i += 1) {
+      $(`#${i}`).text(game.scoreBoard()[i]);
+    }
   }
 
   function showTotalScore() {

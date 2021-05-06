@@ -12,7 +12,9 @@ $(() => {
 
   function updateRolls() {
     updateFrames();
-    updateFinalFrame();
+    if (game.frames.length === 10) {
+      updateFinalFrame();
+    }
   }
 
   function updateFrames() {
@@ -25,16 +27,14 @@ $(() => {
   }
 
   function updateFinalFrame() {
-    if (game.frames.length === 10) {
-      $('#10-1').text(game.frames[9].rolls[0]);
-      $('#10-2').text(game.frames[9].rolls[1]);
-      $('#10-3').text(game.frames[9].rolls[2]);
+    for (let i = 0; i < 3; i += 1) {
+      $(`#10-${i + 1}`).text(game.frames[9].rolls[i]);
     }
   }
 
   function updateScores() {
-    for (let i = 0; i < 9; i += 1) {
-      $(`#${i}`).text(game.scoreBoard()[i]);
+    for (let i = 0; i < 10; i += 1) {
+      $(`#${i + 1}`).text(game.scoreBoard()[i]);
     }
   }
 

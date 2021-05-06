@@ -6,7 +6,7 @@ class Game {
   }
 
   addRoll(pins) {
-    if (this._isGameOver()) { throw 'Game Over'; }
+    if (this.isOver()) { throw new Error('Game Over'); }
     if (this.frames.length === 0) { this._newFrame(); }
 
     const roll = parseInt(pins, 10);
@@ -26,6 +26,10 @@ class Game {
   scoreBoard() {
     const scores = ((sum) => (value) => sum += value)(0);
     return this._scores().map(scores);
+  }
+
+  isOver() {
+    return this._isFinalFrame() && this._currentFrame().isOver();
   }
 
   _scores() {
@@ -48,10 +52,10 @@ class Game {
   }
 
   _validate(roll) {
-    if (roll > 10 || roll < 0) { throw 'Invalid roll'; }
+    if (roll > 10 || roll < 0) { throw new Error('Invalid roll'); }
     if (roll + this._currentFrame().score() > this._currentFrame().TOTAL_PINS) {
       if (!this._isBonusRoll()) {
-        throw 'Invalid roll';
+        throw new Error('Invalid roll');
       }
     }
   }
@@ -59,9 +63,5 @@ class Game {
   _isBonusRoll() {
     const strikeRoll = this._isFinalFrame() && this._currentFrame()._isStrike();
     return (strikeRoll || this._currentFrame()._isSpare());
-  }
-
-  _isGameOver() {
-    return this._isFinalFrame() && this._currentFrame().isOver();
   }
 }

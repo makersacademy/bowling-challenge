@@ -46,16 +46,17 @@ $(() => {
   }
 
   function showTotalScore() {
-    if (game._isGameOver()) {
+    if (game.isOver()) {
       $('#total-score').text(`You scored ${game.totalScore()} points`);
     }
   }
 
   function errorHandler(error) {
-    if (error === 'Invalid roll') {
-      alert('Please enter a valid roll!');
-    } else if (error === 'Game Over') {
+    if (error && game.isOver()) {
+      console.log(error)
       alert('This game is over! Refresh to score a new game');
+    } else if (error) {
+      alert('Please enter a valid roll!');
     }
   }
 });

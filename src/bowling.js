@@ -8,5 +8,10 @@ class Bowling {
   message() {
     return `You are currently on Frame ${this.frame}, with a total score of ${this.totalScore}.`
   }
-
+  roll(pins) {
+    
+  }
+  score() {
+    return 0
+  }
 }

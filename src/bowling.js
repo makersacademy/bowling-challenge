@@ -1,17 +1,23 @@
 'use strict';
 
 class Bowling {
-  constructor(frame = 1, totalScore = 0) {
-  this.frame = frame
-  this.totalScore = totalScore
+  constructor() {
+  this.rolls = [];
   }
-  message() {
-    return `You are currently on Frame ${this.frame}, with a total score of ${this.totalScore}.`
-  }
+  
   roll(pins) {
-    
+    this.rolls.push(pins)
   }
   score() {
-    return 0
+    let totalScore = 0;
+    for (let i = 0; i < 20; i++) {
+      totalScore += this.rolls[i]
+    }
+    return totalScore
   }
 }
+
+
+  // message() {
+  //   return `You are currently on Frame ${this.frame}, with a total score of ${totalScore}.`
+  // }

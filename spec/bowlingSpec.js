@@ -30,4 +30,12 @@ describe ('Bowling', () => {
     rollMany(0, 17);
     expect(bowling.score()).toEqual(16); 
   });
+
+  it('can score a strike', function() {
+    bowling.roll(10);
+    bowling.roll(5);
+    bowling.roll(2);
+    rollMany(0, 17);
+    expect(bowling.score()).toEqual(24);
+  });
 });

@@ -27,6 +27,16 @@ describe('Bowling', function() {
     })
   })
 
+  describe('spare game', function(){
+    it('can roll a spare game', function(){
+      bowling.roll(8)
+      bowling.roll(2)
+      bowling.roll(4)
+      manyRolls(0,17)
+      expect(bowling.score()).toEqual(18)
+    })
+  })
+
 })
 
 // describe('constructor', function() {

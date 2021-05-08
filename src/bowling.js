@@ -10,8 +10,14 @@ class Bowling {
   }
   score() {
     let totalScore = 0;
-    for (let i = 0; i < 20; i++) {
-      totalScore += this.rolls[i]
+    let rollNumber = 0;
+    for (let frame = 0; frame < 10; frame++) {
+      if (this.rolls[rollNumber] + this.rolls[rollNumber + 1] == 10) {
+        totalScore += this.rolls[rollNumber] + this.rolls[rollNumber + 1] + this.rolls[rollNumber + 2]
+      } else {
+      totalScore += this.rolls[rollNumber] + this.rolls[rollNumber + 1] 
+      }
+      rollNumber += 2
     }
     return totalScore
   }

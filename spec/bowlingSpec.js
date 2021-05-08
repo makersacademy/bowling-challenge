@@ -7,20 +7,22 @@ describe('Bowling', function() {
     bowling = new Bowling;
   });
 
+  let manyRolls = function (pins, rounds) {
+    for(let i = 0; i < rounds; i++) {
+      bowling.roll(pins)
+    }
+  };
+
   describe('guttergame', function() {
     it('can roll a gutter game' , function() {
-    for (let i = 0; i < 20; i++) {
-      bowling.roll(0);
-    }
+    manyRolls(0,20)
     expect(bowling.score()).toBe(0)
     })
   })
 
   describe('can roll a normal game', function() {
     it('can roll produces resuls from a normal game', function(){
-     for (let i = 0; i < 20; i++) {
-      bowling.roll(1)
-     }
+     manyRolls(1,20)
      expect(bowling.score()).toEqual(20)
     })
   })

@@ -4,6 +4,7 @@ describe ('Bowling', () => {
   let bowling;
 
   beforeEach( function() {
+    // eslint-disable-next-line no-undef
     bowling = new Bowling();
   });
 
@@ -45,7 +46,22 @@ describe ('Bowling', () => {
   });
 
   it('throws an error when wrong number of pins is called', function() {
-    spyOn(bowling, '_isWrongNumber').and.callFake(function() { return true });
     expect(function() { bowling.roll(12) } ).toThrow('Can only roll values of 10 and below');
+  });
+
+  it('calculates a strike in the 10th frame', function() {
+    rollMany(3, 18);
+    bowling.roll(10);
+    bowling.roll(4);
+    bowling.roll(5);
+    expect(bowling.score()).toEqual(73);
+  });
+
+  it('calculates a spare in the 10th frame', function() {
+    rollMany(4, 18);
+    bowling.roll(8);
+    bowling.roll(2);
+    bowling.roll(5);
+    expect(bowling.score()).toEqual(87);
   });
 });

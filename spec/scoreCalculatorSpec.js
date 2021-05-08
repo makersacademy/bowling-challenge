@@ -66,51 +66,60 @@ describe('ScoreCalculator', () => {
         ninthIndex = 8;
         tenthIndex = 9;
         eightFrames = [];
-        for(let i=0; i<9; i++) {
+        for(let i=0; i<8; i++) {
           eightFrames.push([0, 0]);
         }
-        nineFrames = eightFrames;
+        nineFrames = Object.assign([], eightFrames);
         nineFrames.push([0, 0]);
       });
 
       it('returns score for non-strike/spare in 10th frame', () => {
-        const frames = nineFrames << [4, 1];
+        const frames = nineFrames;
+        frames.push([4, 1]);
         const tenthFrameScore = 5;
         expect(scoreCalculator.frameScores(frames)[tenthIndex]).toEqual(tenthFrameScore);
       });
 
       it('returns score for spare in 10th frame (extra roll not yet rolled)', () => {
-        const frames = nineFrames << [8, 2];
+        const frames = nineFrames;
+        frames.push([8, 2]);
         const tenthFrameScore = 10;
         expect(scoreCalculator.frameScores(frames)[tenthIndex]).toEqual(tenthFrameScore);
       });
 
       it('returns score for spare in 10th frame with extra roll', () => {
-        const frames = nineFrames << [1, 9, 2];
+        const frames = nineFrames;
+        frames.push([1, 9, 2]);
         const tenthFrameScore = 12;
         expect(scoreCalculator.frameScores(frames)[tenthIndex]).toEqual(tenthFrameScore);
       });
 
       it('returns score for strike in 10th frame (extra roll not yet rolled)', () => {
-        const frames = nineFrames << [10];
+        const frames = nineFrames;
+        frames.push([10]);
         const tenthFrameScore = 10;
         expect(scoreCalculator.frameScores(frames)[tenthIndex]).toEqual(tenthFrameScore);
       });
 
       it('returns score for strike in 10th frame with extra rolls', () => {
-        const frames = nineFrames << [10, 3, 10];
+        const frames = nineFrames;
+        frames.push([10, 3, 10]);
         const tenthFrameScore = 23;
         expect(scoreCalculator.frameScores(frames)[tenthIndex]).toEqual(tenthFrameScore);
       });
 
       it('returns score for strike in 9th frame where extra rolls in tenth frame', () => {
-        const frames = eightFrames << [10] << [6, 4, 3];
+        const frames = eightFrames;
+        frames.push([10]);
+        frames.push([6, 4, 3]);
         const ninthFrameScore = 20;
         expect(scoreCalculator.frameScores(frames)[ninthIndex]).toEqual(ninthFrameScore);
       });
 
       it('returns score for strike in 9th frame where strike in 10th frame', () => {
-        const frames = eightFrames << [10] << [10, 2, 7];
+        const frames = eightFrames;
+        frames.push([10]);
+        frames.push([10, 2, 7]);
         const ninthFrameScore = 22;
         expect(scoreCalculator.frameScores(frames)[ninthIndex]).toEqual(ninthFrameScore);
       });

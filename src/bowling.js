@@ -29,7 +29,6 @@ class Bowling {
         score += frameScore;
       }
 
-      
       rollIndex += 2;
     }
     return score; 

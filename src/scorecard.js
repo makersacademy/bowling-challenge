@@ -39,6 +39,15 @@ class Scorecard {
     return total
   }
 
+  isGameOver() {
+    if(this.frame < 11 ||
+      (this.frame === 11 && (this._isStrike(this.scorecard[9]) || this._isSpare(this.scorecard[9]) && this.scorecard[10][0] === null)) ||
+      (this.frame === 12 && this._isStrike(this.scorecard[9]) && this._isStrike(this.scorecard[10]) && this.scorecard[11][0] === null)
+      ) {
+        return false
+      } else { return true }
+  }
+
   _next_frame() {
     this.roll = 1
     this.frame += 1

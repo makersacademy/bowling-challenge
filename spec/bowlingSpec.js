@@ -25,6 +25,9 @@ describe('Bowling', function() {
      manyRolls(1,20)
      expect(bowling.score()).toEqual(20)
     })
+    it('can raise error if more than 10 pins entered', function(){
+      expect(function () { bowling.roll(17) }).toThrowError(Error, 'Enter correct number of pins knowcked down: 1-10 only!')
+    })
   })
 
   describe('spare game', function(){

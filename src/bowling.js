@@ -6,6 +6,9 @@ class Bowling {
   }
   
   roll(pins) {
+    if(pins > 10) {
+      throw new Error('Enter correct number of pins knowcked down: 1-10 only!')
+    }
     this.rolls.push(pins)
   }
   score() {

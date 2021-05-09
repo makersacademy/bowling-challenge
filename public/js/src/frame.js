@@ -23,9 +23,7 @@ class Frame {
 
   score () {
     if (this.rolls.length === 0) { return this.bonus }
-
-    const reducer = (accumulator, currentValue) => accumulator + currentValue
-    return this.rolls.reduce(reducer) + this.bonus
+    return this.rolls.reduce((sum, roll) => sum + roll) + this.bonus
   }
 
   makeFinal () {

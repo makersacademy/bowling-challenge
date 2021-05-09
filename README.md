@@ -91,7 +91,7 @@ class Game {
 ### Code Quality:
 - My focus was around building encapsulated classes and single responsibility functions, to ensure the code is as readable and maintainable as possible.
 - For linting I used ESLint to enforce the standard JS style
-- I used CodeClimate and Better Code Hub to further check the repository for any code smells or technical debt. Both are reporting maximum code quality scores.
+- I used CodeClimate and Better Code Hub to check the repository for code smells and technical debt, with both at maximum scores.
 
 ### Workflow:
 - Git: small, consistent commits at green and refactoring stages, using clear and communicative commit messages

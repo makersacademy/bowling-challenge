@@ -11,7 +11,7 @@ class Scorecard {
         totalFrameScore: 0,
         totalScore: 0,
         isStrike: false,
-        spare: false,
+        isSpare: false,
       }
       counter ++
       this.scoreData.push(frame)
@@ -35,6 +35,7 @@ class Scorecard {
       this._switchRolls()
       this._updateFrameNumber()
     }
+    this._spare(score)
   };
 
   _updateFrameNumber(){
@@ -51,8 +52,9 @@ class Scorecard {
 
   _updateFirstRollScore(score) {
     this._updateStrikeBonus(score)
+    this._updateSpareBonus(score)
     this.scoreData[(this.currentFrameNumber - 1)].firstRollScore += score
-this._updateTotalScore(score)
+    this._updateTotalScore(score)
   }
 
   _updateSecondRollScore(score){
@@ -70,11 +72,29 @@ this._updateTotalScore(score)
     return score === 10
   }
 
+
   _updateStrikeBonus(score){
     if(this.currentFrameNumber > 1){
       if(this.scoreData[(this.currentFrameNumber - 2)].isStrike === true){
         this.scoreData[(this.currentFrameNumber - 2)].totalFrameScore += score
         this.scoreData[(this.currentFrameNumber - 2 )].totalScore += score
+        this.runningTotal += score
+      }
+    }
+  }
+
+  _spare(score){
+    if (this.currentFrameNumber > 1 && this.scoreData[this.currentFrameNumber - 2].totalFrameScore === 10) {
+      this.scoreData[this.currentFrameNumber - 2].isSpare = true
+
+    }  
+  }
+
+  _updateSpareBonus(score){
+    if(this.currentFrameNumber > 1){
+      if(this.scoreData[(this.currentFrameNumber - 2)].isSpare === true){
+        this.scoreData[(this.currentFrameNumber - 2)].totalFrameScore += score
+        this.scoreData[(this.currentFrameNumber - 2)].totalScore += score
         this.runningTotal += score
       }
     }

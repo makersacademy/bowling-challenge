@@ -51,27 +51,50 @@ describe("Scorecard", () => {
     expect(scorecard.scoreData[(scorecard.currentFrameNumber - 2)].totalScore).toEqual(12);
   });
 
-  it('if the player has a strike it will update the frame',() => {
+  describe('Strike', () => {
+    it('if the player has a strike it will update the frame',() => {
 
-    scorecard.addScore(10)
+      scorecard.addScore(10)
 
-    
+      expect(scorecard.scoreData[0].isStrike).toEqual(true);
+      expect(scorecard.currentRoll).toEqual(1);
+      expect(scorecard.currentFrameNumber).toEqual(2);
+    });
+  
+    it('updates the total score of last frame if we strike',() => {
+  
+      scorecard.addScore(10)
+      scorecard.addScore(5)
+      scorecard.addScore(4)
+  
+      expect(scorecard.scoreData[0].firstRollScore).toEqual(10);
+      expect(scorecard.scoreData[0].totalFrameScore).toEqual(19);
+      expect(scorecard.scoreData[1].totalFrameScore).toEqual(9);
+      expect(scorecard.scoreData[0].totalScore).toEqual(19);
+      expect(scorecard.scoreData[1].totalScore).toEqual(28);
+    });
+  })
 
-    expect(scorecard.scoreData[0].isStrike).toEqual(true);
-    expect(scorecard.currentRoll).toEqual(1);
-    expect(scorecard.currentFrameNumber).toEqual(2);
-  });
+  describe('Spare', () => {
+    it('updates the frame if spare occurs', () => {
+      scorecard.addScore(6)
+      scorecard.addScore(4)
 
-  it('updates the total score of last frame if we strike',() => {
+      expect(scorecard.scoreData[0].isSpare).toEqual(true)
+    })
 
-    scorecard.addScore(10)
-    scorecard.addScore(5)
-    scorecard.addScore(4)
+    it('adds bonus in running total', () => {
+      scorecard.addScore(6)
+      scorecard.addScore(4)
+      scorecard.addScore(5)
+      scorecard.addScore(4)
 
-    expect(scorecard.scoreData[0].firstRollScore).toEqual(10);
-    expect(scorecard.scoreData[0].totalFrameScore).toEqual(19);
-    expect(scorecard.scoreData[1].totalFrameScore).toEqual(9);
-    expect(scorecard.scoreData[0].totalScore).toEqual(19);
-    expect(scorecard.scoreData[1].totalScore).toEqual(28);
-  });
+      expect(scorecard.scoreData[0].totalFrameScore).toEqual(15)
+      expect(scorecard.scoreData[1].totalFrameScore).toEqual(9)
+      expect(scorecard.scoreData[0].totalScore).toEqual(15)
+      expect(scorecard.scoreData[1].totalScore).toEqual(24)
+    })
+  })
+
+  
 });

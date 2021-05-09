@@ -1,6 +1,6 @@
 exclude:
-- public/js/lib/**
-- node_modules/**
+  - /lib/.*
+  - /node_modules/.*
 test:
     include:
-      - public/js/spec/**
+      - /spec/.*

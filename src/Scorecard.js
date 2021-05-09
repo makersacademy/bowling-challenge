@@ -23,6 +23,10 @@ class Scorecard {
   };
 
   addScore(score){
+    if (this.currentFrameNumber === 11){
+      this._lastRound(score)
+      return
+    }
     if (this.currentRoll === 1){
       this._updateFirstRollScore(score)
       if(this._isStrike(score)){
@@ -104,5 +108,11 @@ class Scorecard {
     this.scoreData[(this.currentFrameNumber - 1)].totalFrameScore += score
     this.runningTotal += score
     this.scoreData[(this.currentFrameNumber - 1)].totalScore = this.runningTotal
+  }
+
+  _lastRound(score){
+    if(this.scoreData[(this.currentFrameNumber - 2)].isSpare === true){
+      this.scoreData[(this.currentFrameNumber - 2)].totalScore += score
+    }  
   }
 };

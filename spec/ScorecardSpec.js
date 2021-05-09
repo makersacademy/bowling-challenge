@@ -96,5 +96,22 @@ describe("Scorecard", () => {
     })
   })
 
+  describe('10th frame', () => {
+    it('spare', () => {
+      for (let i = 0; i < 9; i++){
+        scorecard.addScore(4)
+        scorecard.addScore(4)
+      }
+      
+      scorecard.addScore(5)
+      scorecard.addScore(5)
+      scorecard.addScore(5)
+
+      // expect(scorecard.currentFrameNumber).toEqual(10)
+      // expect(scorecard.scoreData[10].totalFrameScore).toEqual(9)
+      expect(scorecard.scoreData[9].totalScore).toEqual(87)
+    })
+  })
+
   
 });

@@ -70,7 +70,7 @@ class ScoreCalculator {
   };
 
   isAllPinsDown(score) {
-    return score == 10;
+    return score === 10;
   };
 
   isSpare(index) {
@@ -94,11 +94,11 @@ class ScoreCalculator {
   };
 
   isNinthFrame(index) {
-    return index == 8;
+    return index === 8;
   };
 
   isTenthFrame(index) {
-    return index == 9;
+    return index === 9;
   };
 
   sum(array) {

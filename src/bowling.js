@@ -3,15 +3,16 @@
 // eslint-disable-next-line no-unused-vars
 class Bowling {
   constructor() {
-    this.rolls = [];
-    //this.score = 0;
+    this.rolls = new Array(21).fill(null);
+    this.index = 0;
   }
 
   roll(pins) {
     if (this._isWrongNumber(pins)) {
       throw 'Can only roll positive values of 10 and below';
     } else {
-      this.rolls.push(pins);
+      this.rolls[this.index] = parseInt(pins);
+      this.index++
     }
   }
 
@@ -20,7 +21,6 @@ class Bowling {
     let rollIndex = 0;
 
     for (let frameIndex = 0; frameIndex < 10; frameIndex++) {
-
       if (this._isStrike(rollIndex)) {
         score += this.strikeBonus(rollIndex);
         rollIndex++;
@@ -28,21 +28,15 @@ class Bowling {
       }
 
       const frameScore = this.rolls[rollIndex] + this.rolls[rollIndex + 1];
-
+      console.log(frameScore);
       if (this._isSpare(frameScore)) {
         score += this.spareBonus(rollIndex);
       } else {
         score += frameScore;
       }
-
       rollIndex += 2;
     }
-    console.log(score);
-    return score; 
-  }
-
-  returnScore() {
-    return this.score();
+    return score;
   }
 
   _isWrongNumber(pins) {

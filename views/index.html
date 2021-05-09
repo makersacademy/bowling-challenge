@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bowling Scorecard!</title>
+  <script src="../interface.js"></script>
+  <script src="../src/scorecard.js"></script>
+</head>
+<body>
+  <h1>Bowling Scorecard</h1>
+  <h3>Current Score</h3>
+  <h3 id='current_score'></h3>
+  <table>
+    <tr>
+      <th>Frame 1</th>
+      <th>Frame 2</th>
+      <th>Frame 3</th>
+      <th>Frame 4</th>
+      <th>Frame 5</th>
+      <th>Frame 6</th>
+      <th>Frame 7</th>
+      <th>Frame 8</th>
+      <th>Frame 9</th>
+      <th>Frame 10</th>
+      <th>Bonus Rolls</th>
+    </tr>
+    <tr>
+      <td id='frame_1_roll_1'>/</td>
+      <td id='frame_2_roll_1'>/</td>
+      <td id='frame_3_roll_1'>/</td>
+      <td id='frame_4_roll_1'>/</td>
+      <td id='frame_5_roll_1'>/</td>
+      <td id='frame_6_roll_1'>/</td>
+      <td id='frame_7_roll_1'>/</td>
+      <td id='frame_8_roll_1'>/</td>
+      <td id='frame_9_roll_1'>/</td>
+      <td id='frame_10_roll_1'>/</td>
+      <td id='frame_11_roll_1'>/</td>
+    </tr>
+    <tr>
+      <td id='frame_1_roll_2'>/</td>
+      <td id='frame_2_roll_2'>/</td>
+      <td id='frame_3_roll_2'>/</td>
+      <td id='frame_4_roll_2'>/</td>
+      <td id='frame_5_roll_2'>/</td>
+      <td id='frame_6_roll_2'>/</td>
+      <td id='frame_7_roll_2'>/</td>
+      <td id='frame_8_roll_2'>/</td>
+      <td id='frame_9_roll_2'>/</td>
+      <td id='frame_10_roll_2'>/</td>
+      <td id='frame_11_roll_2'>/</td>
+    </tr>
+  </table>
+  <form id='new_score_form' action="">
+    <label for="new_score">Add Score:
+      <input type="number", id='new_score', name='new_score' min='0', max='10'>
+    </label>
+    <br>
+    <input type="submit" value='Submit'>
+  </form>
+</body>
+</html>

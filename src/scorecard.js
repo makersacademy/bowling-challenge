@@ -7,7 +7,8 @@ class Scorecard {
     this.STRIKE_SCORE = 10
   }
 
-  addScore(score) {
+  addScore(val) {
+    let score = parseInt(val)
     if(this.roll === 1) {
       if(score === this.STRIKE_SCORE) {
         this.scorecard[this.frame - 1] = [this.STRIKE_SCORE]

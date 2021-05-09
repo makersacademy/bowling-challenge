@@ -45,7 +45,7 @@ describe('Scorecard', function() {
 
       it('raises error if score for frame > 10', function() {
         scorecard.addScore(7)
-        expect(function() { scorecard.addScore(7) }).toThrowError(Error, "Error: Score for frame is greater than 10")
+        expect(function() { scorecard.addScore(7) }).toThrowError(Error, "Score for frame is greater than 10")
       })
     })
   })

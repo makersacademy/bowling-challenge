@@ -19,7 +19,7 @@ class Scorecard {
       }
     } else {
       if((this.scorecard[this.frame - 1][this.roll - 2] + score) > 10) {
-        throw new Error("Error: Score for frame is greater than 10")
+        throw new Error("Score for frame is greater than 10")
       }
       this._update_scorecard(score)
       this._next_frame()

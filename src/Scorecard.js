@@ -24,8 +24,13 @@ class Scorecard {
 
   addScore(score){
     if (this.currentFrameNumber === 11){
-      this._lastRound(score)
-      return
+      if(this.scoreData[(this.currentFrameNumber - 2)].isSpare === true){
+        this._lastRound(score)
+        return
+      }else {
+        console.log("game Over")
+        return
+      }  
     }
     if (this.currentRoll === 1){
       this._updateFirstRollScore(score)
@@ -37,7 +42,8 @@ class Scorecard {
     } else if (this.currentRoll === 2) {
       this._updateSecondRollScore(score)
       this._switchRolls()
-      this._updateFrameNumber()
+      this._updateFrameNumber() 
+       
     }
     this._spare(score)
   };
@@ -111,8 +117,11 @@ class Scorecard {
   }
 
   _lastRound(score){
-    if(this.scoreData[(this.currentFrameNumber - 2)].isSpare === true){
+    
       this.scoreData[(this.currentFrameNumber - 2)].totalScore += score
-    }  
+      this.scoreData[(this.currentFrameNumber - 2)].totalFrameScore += score
+      this.scoreData[9].thirdRoll = score
+      console.log(this.scoreData)
+    console.log('Game over') 
   }
 };

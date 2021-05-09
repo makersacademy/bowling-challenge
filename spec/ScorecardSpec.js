@@ -107,8 +107,8 @@ describe("Scorecard", () => {
       scorecard.addScore(5)
       scorecard.addScore(5)
 
-      // expect(scorecard.currentFrameNumber).toEqual(10)
-      // expect(scorecard.scoreData[10].totalFrameScore).toEqual(9)
+      console.log(scorecard.scoreData)
+      // expect(scorecard.scoreData[9].totalFrameScore).toEqual(15)
       expect(scorecard.scoreData[9].totalScore).toEqual(87)
     })
   })

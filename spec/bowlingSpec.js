@@ -35,12 +35,10 @@ describe('Bowling', function() {
       manyRolls(0,17)
       expect(bowling.score()).toEqual(18)
     })
+    it('can roll all spares in a game', function(){
+      manyRolls(5,21)
+      expect(bowling.score()).toEqual(150)
+    })
   })
 
 })
-
-// describe('constructor', function() {
-  //   it ('can show a new game is on Frame 1 with 0 points', function() {
-  //     expect(bowling.message()).toEqual('You are currently on Frame 1, with a total score of 0.')
-  //   })
-  // })

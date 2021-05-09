@@ -25,7 +25,7 @@ class Scorecard {
   addScore(score){
     if (this.currentRoll === 1){
       this._updateFirstRollScore(score)
-      if(this.isStrike(score)){
+      if(this._isStrike(score)){
         this._strike(score)
         return
       }
@@ -50,32 +50,15 @@ class Scorecard {
   }
 
   _updateFirstRollScore(score) {
-    if(this.currentFrameNumber > 1){
-      if(this.scoreData[(this.currentFrameNumber - 2)].isStrike === true){
-        this.scoreData[(this.currentFrameNumber - 2)].totalFrameScore += score
-        this.scoreData[(this.currentFrameNumber - 2 )].totalScore += score
-        this.runningTotal += score
-      }
-    }
+    this._updateStrikeBonus(score)
     this.scoreData[(this.currentFrameNumber - 1)].firstRollScore += score
-    this.scoreData[(this.currentFrameNumber - 1)].totalFrameScore += score
-    this.runningTotal += score
-    this.scoreData[(this.currentFrameNumber - 1)].totalScore = this.runningTotal
+this._updateTotalScore(score)
   }
 
   _updateSecondRollScore(score){
-
-    if(this.currentFrameNumber > 1){
-      if(this.scoreData[(this.currentFrameNumber - 2)].isStrike === true){
-        this.scoreData[(this.currentFrameNumber - 2)].totalFrameScore += score
-        this.scoreData[(this.currentFrameNumber - 2 )].totalScore += score
-        this.runningTotal += score
-      }
-    }
+    this._updateStrikeBonus(score)
     this.scoreData[(this.currentFrameNumber - 1)].secondRollScore += score
-    this.scoreData[(this.currentFrameNumber - 1)].totalFrameScore += score
-    this.runningTotal += score
-    this.scoreData[(this.currentFrameNumber - 1)].totalScore = this.runningTotal
+    this._updateTotalScore(score)
   }
 
   _strike(score){
@@ -83,7 +66,23 @@ class Scorecard {
     this._updateFrameNumber()
   }
 
-  isStrike(score){
+  _isStrike(score){
     return score === 10
+  }
+
+  _updateStrikeBonus(score){
+    if(this.currentFrameNumber > 1){
+      if(this.scoreData[(this.currentFrameNumber - 2)].isStrike === true){
+        this.scoreData[(this.currentFrameNumber - 2)].totalFrameScore += score
+        this.scoreData[(this.currentFrameNumber - 2 )].totalScore += score
+        this.runningTotal += score
+      }
+    }
+  }
+
+  _updateTotalScore(score){
+    this.scoreData[(this.currentFrameNumber - 1)].totalFrameScore += score
+    this.runningTotal += score
+    this.scoreData[(this.currentFrameNumber - 1)].totalScore = this.runningTotal
   }
 };

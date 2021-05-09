@@ -1,28 +1,26 @@
 'use strict';
 
 describe('Bowling', () => {
+  let game;
 
-  it('can create a game', function () {
-    let game = new Bowling();
+  beforeEach(() => {
+    game = new Bowling();
   });
 
   it('can roll a guttar game', function () {
-    let game = new Bowling();
-    for (let i = 0; i < 20; i++) {
-      game.roll(0);
-    }
+    loopFunction(0,20)
     expect(game.score()).toEqual(0);
   });
 
   it('can roll all ones', function() {
-    let game = new Bowling();
-    for (let i = 0; i < 20; i++) {
-      game.roll(1);
-    }
+    loopFunction(1,20)
     expect(game.score()).toEqual(20);
 
   });
 
-
-
+  function loopFunction(pins, rolls) {
+    for (let i = 0; i < rolls; i++) {
+      game.roll(pins);
+    }
+  }
 })

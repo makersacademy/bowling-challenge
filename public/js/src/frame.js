@@ -52,7 +52,6 @@ class Frame {
   }
 
   _isSpare () {
-    const pins = this.rolls[0] + this.rolls[1]
-    return pins === TOTAL_PINS && !this._isStrike()
+    return this.rolls[0] + this.rolls[1] === TOTAL_PINS && !this._isStrike()
   }
 }

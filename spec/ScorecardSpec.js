@@ -1,0 +1,81 @@
+describe("Scorecard", () => {
+  let scorecard;
+
+  beforeEach(() => {
+    scorecard = new Scorecard();
+  })
+
+
+  it("updates the first roll score", () => {
+    scorecard.addScore(6);
+  
+    expect(scorecard.scoreData[(scorecard.currentFrameNumber - 1)].firstRollScore).toEqual(6);
+  }); 
+
+  it("updates the total score", () => {
+    scorecard.addScore(5);
+
+    expect(scorecard.scoreData[(scorecard.currentFrameNumber - 1)].totalScore).toEqual(5);
+  }); 
+
+  it('adds score for two rolls', () =>{
+
+    scorecard.addScore(5)
+    scorecard.addScore(4)
+
+    expect(scorecard.scoreData[(scorecard.currentFrameNumber - 1)].firstRollScore).toEqual(5);
+    expect(scorecard.scoreData[(scorecard.currentFrameNumber - 1)].secondRollScore).toEqual(4);
+    expect(scorecard.scoreData[(scorecard.currentFrameNumber - 1)].totalFrameScore).toEqual(9);
+  });
+
+  it('adds score for multiple frames', () =>{
+
+    scorecard.addScore(5)
+    scorecard.addScore(4)
+    scorecard.updateFrameNumber()
+
+    scorecard.addScore(2)
+    scorecard.addScore(1)
+
+    expect(scorecard.scoreData[(scorecard.currentFrameNumber - 2)].totalFrameScore).toEqual(9);
+    expect(scorecard.scoreData[(scorecard.currentFrameNumber - 1)].totalFrameScore).toEqual(3);
+  });
+
+  it('updates the total cumulative score', () =>{
+
+    scorecard.addScore(5)
+    scorecard.addScore(4)
+    scorecard.updateFrameNumber()
+
+    scorecard.addScore(2)
+    scorecard.addScore(1)
+
+    console.log(scorecard.scoreData)
+    console.log(scorecard.currentRoll)
+    console.log(scorecard.currentFrameNumber)
+
+    expect(scorecard.scoreData[(scorecard.currentFrameNumber - 1)].totalScore).toEqual(12);
+  });
+
+  xit('updates the total score of last frame if we strike',() => {
+
+    scorecard.addScore(10)
+    scorecard.addScore(5)
+    scorecard.addScore(4)
+
+    expect(scorecard.scoreData[0].firstRollScore).toEqual(10);
+    expect(scorecard.scoreData[0].totalScore).toEqual(19);
+    expect(scorecard.scoreData[1].totalScore).toEqual(9);
+
+  });
+
+
+});
+
+
+
+
+
+
+
+

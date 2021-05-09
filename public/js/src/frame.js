@@ -2,7 +2,6 @@ const TOTAL_PINS = 10
 const STRIKE_BONUS = 2
 const SPARE_BONUS = 1
 
-// eslint-disable-next-line no-unused-vars
 class Frame {
   constructor () {
     this.bonusCount = 0
@@ -14,11 +13,8 @@ class Frame {
   addRoll (roll) {
     this.rolls.push(roll)
     if (this.isFinal) { return }
-    if (this._isStrike()) {
-      this.bonusCount += STRIKE_BONUS
-    } else if (this._isSpare()) {
-      this.bonusCount += SPARE_BONUS
-    }
+    if (this._isStrike()) { this.bonusCount += STRIKE_BONUS }
+    if (this._isSpare()) { this.bonusCount += SPARE_BONUS }
   }
 
   score () {

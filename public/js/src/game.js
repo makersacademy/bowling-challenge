@@ -1,8 +1,8 @@
-// eslint-disable-next-line no-unused-vars
+const TOTAL_FRAMES = 10
+
 class Game {
   constructor (frameClass = Frame) {
     this.FRAME_CLASS = frameClass
-    this.TOTAL_FRAMES = 10
     this.frames = []
   }
 
@@ -15,16 +15,16 @@ class Game {
     this.frames.forEach((frame) => { frame.addBonus(roll) })
     this._currentFrame().addRoll(roll)
 
-    if (this._isFinalFrame()) { return }
-    if (this._currentFrame().isOver()) { this._newFrame() }
+    if (this._currentFrame().isOver() && !this._isFinalFrame()) {
+      this._newFrame()
+    }
   }
 
   totalScore () {
-    const reducer = (accumulator, currentValue) => accumulator + currentValue
-    return this._scores().reduce(reducer)
+    return this._scores().reduce((sum, score) => sum + score)
   }
 
-  scoreBoard () {
+  calculateScores () {
     const accumulator = ((sum) => (value) => sum += value)(0)
     return this._scores().map(accumulator)
   }
@@ -47,7 +47,7 @@ class Game {
   }
 
   _isFinalFrame () {
-    return this.frames.length === this.TOTAL_FRAMES
+    return this.frames.length === TOTAL_FRAMES
   }
 
   _validate (roll) {

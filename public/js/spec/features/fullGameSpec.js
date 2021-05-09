@@ -10,7 +10,7 @@ describe('Feature testing a full game', () => {
 
     expect(game.frames.length).toBe(10);
     expect(game.totalScore()).toBe(0);
-    expect(game.scoreBoard()).toEqual([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    expect(game.calculateScores()).toEqual([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   });
 
   it('runs a correct game when every roll is 5', () => {
@@ -18,7 +18,7 @@ describe('Feature testing a full game', () => {
 
     expect(game.frames.length).toBe(10);
     expect(game.totalScore()).toBe(150);
-    expect(game.scoreBoard()).toEqual([15, 30, 45, 60, 75, 90, 105, 120, 135, 150]);
+    expect(game.calculateScores()).toEqual([15, 30, 45, 60, 75, 90, 105, 120, 135, 150]);
   });
 
   it('runs a correct game when each frame is 9-0', () => {
@@ -27,7 +27,7 @@ describe('Feature testing a full game', () => {
     }
     expect(game.frames.length).toBe(10);
     expect(game.totalScore()).toBe(90);
-    expect(game.scoreBoard()).toEqual([9, 18, 27, 36, 45, 54, 63, 72, 81, 90]);
+    expect(game.calculateScores()).toEqual([9, 18, 27, 36, 45, 54, 63, 72, 81, 90]);
   })
 
   it('runs a correct perfect game', () => {
@@ -35,7 +35,7 @@ describe('Feature testing a full game', () => {
 
     expect(game.frames.length).toBe(10);
     expect(game.totalScore()).toBe(300);
-    expect(game.scoreBoard()).toEqual([30, 60, 90, 120, 150, 180, 210, 240, 270, 300]);
+    expect(game.calculateScores()).toEqual([30, 60, 90, 120, 150, 180, 210, 240, 270, 300]);
   });
 
   it('runs a correct game for example game 1', () => {
@@ -44,7 +44,7 @@ describe('Feature testing a full game', () => {
 
     expect(game.frames.length).toBe(10);
     expect(game.totalScore()).toBe(133);
-    expect(game.scoreBoard()).toEqual([5, 14, 29, 49, 60, 61, 77, 97, 117, 133]);
+    expect(game.calculateScores()).toEqual([5, 14, 29, 49, 60, 61, 77, 97, 117, 133]);
   })
 
   it('runs a correct game for example game 2', () => {
@@ -53,6 +53,6 @@ describe('Feature testing a full game', () => {
 
     expect(game.frames.length).toBe(10);
     expect(game.totalScore()).toBe(176);
-    expect(game.scoreBoard()).toEqual([10, 30, 56, 74, 82, 100, 120, 139, 148, 176]);
+    expect(game.calculateScores()).toEqual([10, 30, 56, 74, 82, 100, 120, 139, 148, 176]);
   })
 });

@@ -4,8 +4,8 @@ describe('Game', () => {
   let frameClass;
 
   beforeEach(() => {
-    game = new Game(frameClass);
     frameClass = jasmine.createSpy('frameClass');
+    game = new Game(frameClass);
     frame = jasmine.createSpyObj('frame', ['addRoll', 'isOver', 'isFinal', 'score', 'addBonus']);
     spyOn(game, '_newFrame').and.returnValue(game.frames.push(frame));
   });

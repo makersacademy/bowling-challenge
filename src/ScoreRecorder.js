@@ -15,6 +15,7 @@ class ScoreRecorder {
     } else {
       this.addToLastFrame(score);
     };
+    return this._frames
   };
 
   nextInputRoll() {

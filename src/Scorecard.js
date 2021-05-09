@@ -31,14 +31,14 @@ class Scorecard {
         this._gameOver()
         return
       }  
-    } else if (this.currentRoll === 1){
+    } else if (this._isCurrentRollFirst()){
       this._updateFirstRollScore(score)
       if(this._isStrike(score)){
         this._strike(score)
         return
       }
       this._switchRolls()
-    } else if (this.currentRoll === 2) {
+    } else if (this._isCurrentRollSecond()) {
       this._updateSecondRollScore(score)
       this._switchRolls()
       this._updateFrameNumber()  
@@ -132,6 +132,14 @@ class Scorecard {
 
   _gameOver() {
     return 'Game Over'
+  }
+
+  _isCurrentRollFirst(){
+    return this.currentRoll === 1
+  }
+
+  _isCurrentRollSecond(){
+    return this.currentRoll === 2
   }
 
 };

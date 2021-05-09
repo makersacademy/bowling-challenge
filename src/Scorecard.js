@@ -9,7 +9,6 @@ function Scorecard(bowls){
   let total = 0
   for (let f = 0 ; f < 10 ; f++) {
     if (f <= 8) {
-      console.log(f, (bowls[f]))
       if ( strikeOrSpare(bowls[f]) ) {
         if ( strike(bowls[f]) ) {
           if ((f <= 7 && strike(bowls[f+1])) && (strike(bowls[f+2]))) {

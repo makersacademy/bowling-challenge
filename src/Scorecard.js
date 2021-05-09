@@ -25,10 +25,15 @@ class Scorecard {
   addScore(score){
     if (this.currentRoll === 1){
       this._updateFirstRollScore(score)
+      if(this.isStrike(score)){
+        this._strike(score)
+        return
+      }
       this._switchRolls()
     } else if (this.currentRoll === 2) {
       this._updateSecondRollScore(score)
       this._switchRolls()
+      this.updateFrameNumber()
     }
   };
 
@@ -45,6 +50,7 @@ class Scorecard {
   }
 
   _updateFirstRollScore(score) {
+    if(this.scoreData[(this.currentFrameNumber - 1)].firstRollScore += score)
     this.scoreData[(this.currentFrameNumber - 1)].firstRollScore += score
     this.scoreData[(this.currentFrameNumber - 1)].totalFrameScore += score
     this.runningTotal += score
@@ -56,5 +62,14 @@ class Scorecard {
     this.scoreData[(this.currentFrameNumber - 1)].totalFrameScore += score
     this.runningTotal += score
     this.scoreData[(this.currentFrameNumber - 1)].totalScore = this.runningTotal
+  }
+
+  _strike(score){
+    this.scoreData[(this.currentFrameNumber - 1)].isStrike = true
+    this.updateFrameNumber()
+  }
+
+  isStrike(score){
+    return score === 10
   }
 };

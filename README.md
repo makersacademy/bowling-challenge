@@ -1,18 +1,25 @@
 Bowling Score Tracker 🎳
 ========================
 
-[Dependencies](#dependencies) | [Getting Started](#getting-started) | [Running Tests](#runnning-tests) | [Objectives](#objectives) | [Design](#design) | [Usage](#usage) | [User Stories](#user-stories)
-
 [![Build Status](https://travis-ci.com/AJ8GH/bowling-challenge.svg?branch=master)](https://travis-ci.com/AJ8GH/bowling-challenge) [![Coverage Status](https://coveralls.io/repos/github/AJ8GH/bowling-challenge/badge.svg?branch=master)](https://coveralls.io/github/AJ8GH/bowling-challenge?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/a4fa6060a3a3e9fe32ef/maintainability)](https://codeclimate.com/github/AJ8GH/bowling-challenge/maintainability) ![Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg) [![BCH compliance](https://bettercodehub.com/edge/badge/AJ8GH/bowling-challenge?branch=master)](https://bettercodehub.com/)
 
 Bowling score tracker written in JavaScript
 
-**Use the deployed app here:**
+[Dependencies](#dependencies) | [Getting Started](#getting-started) | [Running Tests](#runnning-tests) | [Objectives](#objectives) | [Design](#design) | [Usage](#usage) | [User Stories](#user-stories) |[Deployed App](#deployed-version)
 
-[Bowling Score Tracker](https://bowling-score-tracker.surge.sh/)
---------------------------------------------------------
+## Example usage:
 
-![index](public/images/index.png)
+***A perfect game*** 🙂
+
+![perfect-game](public/images/perfect-game.gif)
+
+***A gutter game*** 🙁
+
+![gutter-game](public/images/gutter-game.gif)
+
+## Deployed app
+
+You can use the deployed app [here](https://bowling-score-tracker.surge.sh/)
 
 ## Dependencies
 - `"coveralls": "^3.1.0"`
@@ -87,17 +94,17 @@ class Game {
 - I used CodeClimate and Better Code Hub to further check the repository for any code smells or technical debt. Both are reporting maximum code quality scores.
 
 ### Workflow:
-- My git workflow consists of making small and consistent commits at every green and refactor stage.
-- Applying agile processes in translating specifications into user stories and then test driving and implementing those features
+- Git: small, consistent commits at green and refactoring stages, using clear and communicative commit messages
+- Agile: creating user stories from a fuzzy specification, then test driving and implementing the features
 
 ### Documentation:
-- My aim is to create comprehensive and easy to use documentation, to ensure other developers could use and contribute to the project with ease.
+- My aim was to create comprehensive and clear documentation, to ensure other developers could easily use and contribute to the project
 
 ### Design:
-- Private functions are prefixed with underscores
+- Private functions are prefixed with underscores, e.g. `frame._isStrike()`
 - Predicate functions which return boolean values begin with the word 'is', e.g. `game.isOver()`
-- **Game class**: responsible for tracking the frames and the progress of the game
-- **Frame class**: responsible for tracking its rolls, score and bonuses
+- **Game class**: Responsible for tracking the frames and the progress of the game
+- **Frame class**: Responsible for tracking its rolls, score and bonuses
 - **Interface**: Built using js and jQuery, responsible for updating the view after each roll input
 
 ## Usage
@@ -118,13 +125,6 @@ The Game object interacts with the Frames, the user does not interact with Frame
 - `#addBonus()` - Adds bonus score if needed (frames are aware of how many bonuses they need)
 - `#isOver()` - returns true if frame is over, false if it's not
 
-![perfect-game](public/images/perfect-game.gif)
-
-***A perfect Game***
-
-![gutter-game](public/images/gutter-game.gif)
-
-***Gutter game***
 
 ### Sequence Diagrams
 
